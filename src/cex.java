@@ -1,24 +1,43 @@
 import com.google.common.collect.ImmutableSet;
-import java.util.Comparator;
+import com.google.common.collect.Lists;
 import java.util.List;
 import java.util.Optional;
 import java.util.Set;
 
-public class cex extends cff<bux> {
-   private static final long b = 32L;
-   private static final long c = 16L;
-   public static final int a = 32;
-
+public class cex extends cfk<cmv> {
    @Override
-   public Set<cdz<?>> a() {
-      return ImmutableSet.of(cdz.L);
+   public Set<cee<?>> a() {
+      return ImmutableSet.of(cee.h, cee.aw, cee.aq, cee.ap, cee.as, cee.at, new cee[0]);
    }
 
-   protected void a(arm $$0, bux $$1) {
-      bvx<?> $$2 = $$1.ed();
-      List<ckq> $$3 = $$0.a(ckq.class, $$1.cS().c(32.0, 16.0, 32.0), $$0x -> true);
-      $$3.sort(Comparator.comparingDouble($$1::g));
-      Optional<ckq> $$4 = $$3.stream().filter($$1x -> $$1.i($$1x.m())).filter($$1x -> $$1x.a($$1, 32.0)).filter($$1::G).findFirst();
-      $$2.a(cdz.L, $$4);
+   protected void a(arn $$0, cmv $$1) {
+      bwc<?> $$2 = $$1.ed();
+      $$2.a(cee.aw, this.b($$0, $$1));
+      Optional<cnb> $$3 = Optional.empty();
+      int $$4 = 0;
+      List<cmv> $$5 = Lists.newArrayList();
+      ceg $$6 = $$2.c(cee.h).orElse(ceg.a());
+
+      for (bva $$7 : $$6.b($$0x -> !$$0x.p_() && ($$0x instanceof cnb || $$0x instanceof cmv))) {
+         if ($$7 instanceof cnb $$8) {
+            $$4++;
+            if ($$3.isEmpty()) {
+               $$3 = Optional.of($$8);
+            }
+         }
+
+         if ($$7 instanceof cmv $$9) {
+            $$5.add($$9);
+         }
+      }
+
+      $$2.a(cee.aq, $$3);
+      $$2.a(cee.ap, $$5);
+      $$2.a(cee.as, $$4);
+      $$2.a(cee.at, $$5.size());
+   }
+
+   private Optional<jh> b(arn $$0, cmv $$1) {
+      return jh.a($$1.dx(), 8, 4, $$1x -> $$0.a_($$1x).a(axa.aT));
    }
 }

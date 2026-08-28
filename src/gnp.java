@@ -1,23 +1,22 @@
-public class gnp<T extends cip> extends gmq<T, gty, fxt> {
-   public static final alh a = alh.b("textures/entity/horse/donkey.png");
-   public static final alh b = alh.b("textures/entity/horse/mule.png");
-   private final alh k;
+public class gnp extends gnd<clb, gub> {
+   private static final ali a = ali.b("textures/entity/skeleton/bogged.png");
+   private static final ali b = ali.b("textures/entity/skeleton/bogged_overlay.png");
 
-   public gnp(gnz.a $$0, float $$1, gaz $$2, gaz $$3, boolean $$4) {
-      super($$0, new fxt($$0.a($$2)), new fxt($$0.a($$3)), $$1);
-      this.k = $$4 ? b : a;
+   public gnp(gok.a $$0) {
+      super($$0, gbl.x, gbl.y, new fxt($$0.a(gbl.w)));
+      this.a(new gta<>(this, $$0.f(), gbl.z, b));
    }
 
-   public alh a(gty $$0) {
-      return this.k;
+   public ali a(gub $$0) {
+      return a;
    }
 
-   public gty a() {
-      return new gty();
+   public gub a() {
+      return new gub();
    }
 
-   public void a(T $$0, gty $$1, float $$2) {
+   public void a(clb $$0, gub $$1, float $$2) {
       super.a($$0, $$1, $$2);
-      $$1.a = $$0.t();
+      $$1.a = $$0.gy();
    }
 }

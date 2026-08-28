@@ -1,28 +1,26 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class ehe implements egj {
+public class ehe implements egp {
    public static final Codec<ehe> a = RecordCodecBuilder.create(
       $$0 -> $$0.group(
-               ere.a.fieldOf("state").forGetter($$0x -> $$0x.b),
-               Codec.BOOL.fieldOf("requires_block_below").orElse(true).forGetter($$0x -> $$0x.c),
-               Codec.INT.fieldOf("rock_count").orElse(4).forGetter($$0x -> $$0x.d),
-               Codec.INT.fieldOf("hole_count").orElse(1).forGetter($$0x -> $$0x.e),
-               ke.a(ly.f).fieldOf("valid_blocks").forGetter($$0x -> $$0x.f)
+               dvj.a.fieldOf("target").forGetter($$0x -> $$0x.b),
+               dvj.a.fieldOf("state").forGetter($$0x -> $$0x.c),
+               bri.b(0, 12).fieldOf("radius").forGetter($$0x -> $$0x.d)
             )
             .apply($$0, ehe::new)
    );
-   public final ere b;
-   public final boolean c;
-   public final int d;
-   public final int e;
-   public final jt<dhy> f;
+   public final dvj b;
+   public final dvj c;
+   private final bri d;
 
-   public ehe(ere $$0, boolean $$1, int $$2, int $$3, jt<dhy> $$4) {
+   public ehe(dvj $$0, dvj $$1, bri $$2) {
       this.b = $$0;
       this.c = $$1;
       this.d = $$2;
-      this.e = $$3;
-      this.f = $$4;
+   }
+
+   public bri a() {
+      return this.d;
    }
 }

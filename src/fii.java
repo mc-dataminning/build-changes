@@ -1,30 +1,36 @@
-import java.util.function.IntFunction;
+import com.mojang.logging.LogUtils;
+import org.slf4j.Logger;
 
-public enum fii implements azm {
-   a(0, "options.off"),
-   b(1, "options.attack.crosshair"),
-   c(2, "options.attack.hotbar");
+public class fii extends fig {
+   private static final Logger b = LogUtils.getLogger();
+   private static final xi c = xi.c("mco.create.world.wait");
+   private final String d;
+   private final String e;
+   private final long f;
 
-   private static final IntFunction<fii> d = aya.a(fii::b, values(), aya.a.b);
-   private final int e;
-   private final String f;
-
-   private fii(final int $$0, final String $$1) {
-      this.e = $$0;
-      this.f = $$1;
+   public fii(long $$0, String $$1, String $$2) {
+      this.f = $$0;
+      this.d = $$1;
+      this.e = $$2;
    }
 
    @Override
-   public int b() {
-      return this.e;
+   public void run() {
+      fer $$0 = fer.a();
+
+      try {
+         $$0.a(this.f, this.d, this.e);
+      } catch (fgc var3) {
+         b.error("Couldn't create world", var3);
+         this.a(var3);
+      } catch (Exception var4) {
+         b.error("Could not create world", var4);
+         this.a(var4);
+      }
    }
 
    @Override
-   public String a() {
-      return this.f;
-   }
-
-   public static fii a(int $$0) {
-      return d.apply($$0);
+   public xi a() {
+      return c;
    }
 }

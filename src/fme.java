@@ -1,111 +1,143 @@
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
-public abstract class fme extends fkz {
-   protected final alh a;
-   protected final int b;
-   protected final int c;
+public class fme extends fln<fme.a> {
+   private static final int a = 310;
+   private static final int m = 25;
+   private final fud n;
 
-   fme(int $$0, int $$1, xh $$2, int $$3, int $$4, alh $$5, fkz.c $$6, @Nullable fkz.b $$7) {
-      super(0, 0, $$0, $$1, $$2, $$6, $$7 == null ? q : $$7);
-      this.b = $$3;
-      this.c = $$4;
-      this.a = $$5;
+   public fme(fji $$0, int $$1, fud $$2) {
+      super($$0, $$1, $$2.s.d(), $$2.s.c(), 25);
+      this.e = false;
+      this.n = $$2;
    }
 
-   public static fme.a a(xh $$0, fkz.c $$1, boolean $$2) {
-      return new fme.a($$0, $$1, $$2);
+   public void a(fjl<?> $$0) {
+      this.b(fme.b.a(this.c.n, $$0, this.n));
    }
 
-   public static class a {
-      private final xh b;
-      private final fkz.c c;
-      private final boolean d;
-      private int e = 150;
-      private int f = 20;
-      @Nullable
-      private alh g;
-      private int h;
-      private int i;
-      @Nullable
-      fkz.b a;
+   public void a(fjl<?>... $$0) {
+      for (int $$1 = 0; $$1 < $$0.length; $$1 += 2) {
+         fjl<?> $$2 = $$1 < $$0.length - 1 ? $$0[$$1 + 1] : null;
+         this.b(fme.b.a(this.c.n, $$0[$$1], $$2, this.n));
+      }
+   }
 
-      public a(xh $$0, fkz.c $$1, boolean $$2) {
-         this.b = $$0;
-         this.c = $$1;
-         this.d = $$2;
+   public void a(List<flf> $$0) {
+      for (int $$1 = 0; $$1 < $$0.size(); $$1 += 2) {
+         this.a($$0.get($$1), $$1 < $$0.size() - 1 ? $$0.get($$1 + 1) : null);
+      }
+   }
+
+   public void a(flf $$0, @Nullable flf $$1) {
+      this.b(fme.a.a($$0, $$1, this.n));
+   }
+
+   @Override
+   public int b() {
+      return 310;
+   }
+
+   @Nullable
+   public flf b(fjl<?> $$0) {
+      for (fme.a $$1 : this.aI_()) {
+         if ($$1 instanceof fme.b $$2) {
+            flf $$3 = $$2.a.get($$0);
+            if ($$3 != null) {
+               return $$3;
+            }
+         }
       }
 
-      public fme.a a(int $$0) {
-         this.e = $$0;
-         return this;
-      }
+      return null;
+   }
 
-      public fme.a a(int $$0, int $$1) {
-         this.e = $$0;
-         this.f = $$1;
-         return this;
-      }
+   public void c() {
+      for (fme.a $$0 : this.aI_()) {
+         if ($$0 instanceof fme.b) {
+            fme.b $$1 = (fme.b)$$0;
 
-      public fme.a a(alh $$0, int $$1, int $$2) {
-         this.g = $$0;
-         this.h = $$1;
-         this.i = $$2;
-         return this;
-      }
-
-      public fme.a a(fkz.b $$0) {
-         this.a = $$0;
-         return this;
-      }
-
-      public fme a() {
-         if (this.g == null) {
-            throw new IllegalStateException("Sprite not set");
-         } else {
-            return (fme)(this.d
-               ? new fme.b(this.e, this.f, this.b, this.h, this.i, this.g, this.c, this.a)
-               : new fme.c(this.e, this.f, this.b, this.h, this.i, this.g, this.c, this.a));
+            for (flf $$2 : $$1.a.values()) {
+               if ($$2 instanceof fjl.i<?> $$3) {
+                  $$3.c();
+               }
+            }
          }
       }
    }
 
-   public static class b extends fme {
-      protected b(int $$0, int $$1, xh $$2, int $$3, int $$4, alh $$5, fkz.c $$6, @Nullable fkz.b $$7) {
-         super($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
+   public Optional<fne> e(double $$0, double $$1) {
+      for (fme.a $$2 : this.aI_()) {
+         for (fne $$3 : $$2.aI_()) {
+            if ($$3.c($$0, $$1)) {
+               return Optional.of($$3);
+            }
+         }
+      }
+
+      return Optional.empty();
+   }
+
+   protected static class a extends fln.a<fme.a> {
+      private final List<flf> a;
+      private final fra b;
+      private static final int c = 160;
+
+      a(List<flf> $$0, fra $$1) {
+         this.a = ImmutableList.copyOf($$0);
+         this.b = $$1;
+      }
+
+      public static fme.a a(List<flf> $$0, fra $$1) {
+         return new fme.a($$0, $$1);
+      }
+
+      public static fme.a a(flf $$0, @Nullable flf $$1, fra $$2) {
+         return $$1 == null ? new fme.a(ImmutableList.of($$0), $$2) : new fme.a(ImmutableList.of($$0, $$1), $$2);
       }
 
       @Override
-      public void b(fkm $$0, int $$1, int $$2, float $$3) {
-         super.b($$0, $$1, $$2, $$3);
-         int $$4 = this.D() + this.y() / 2 - this.b / 2;
-         int $$5 = this.E() + this.w() / 2 - this.c / 2;
-         $$0.a(gig::B, this.a, $$4, $$5, this.b, this.c);
+      public void a(fku $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
+         int $$10 = 0;
+         int $$11 = this.b.n / 2 - 155;
+
+         for (flf $$12 : this.a) {
+            $$12.c($$11 + $$10, $$2);
+            $$12.a($$0, $$6, $$7, $$9);
+            $$10 += 160;
+         }
       }
 
       @Override
-      public void a(fkm $$0, fkk $$1, int $$2) {
+      public List<? extends fne> aI_() {
+         return this.a;
+      }
+
+      @Override
+      public List<? extends fpd> b() {
+         return this.a;
       }
    }
 
-   public static class c extends fme {
-      protected c(int $$0, int $$1, xh $$2, int $$3, int $$4, alh $$5, fkz.c $$6, @Nullable fkz.b $$7) {
-         super($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
+   protected static class b extends fme.a {
+      final Map<fjl<?>, flf> a;
+
+      private b(Map<fjl<?>, flf> $$0, fud $$1) {
+         super(ImmutableList.copyOf($$0.values()), $$1);
+         this.a = $$0;
       }
 
-      @Override
-      public void b(fkm $$0, int $$1, int $$2, float $$3) {
-         super.b($$0, $$1, $$2, $$3);
-         int $$4 = this.D() + this.y() - this.b - 2;
-         int $$5 = this.E() + this.w() / 2 - this.c / 2;
-         $$0.a(gig::B, this.a, $$4, $$5, this.b, this.c);
+      public static fme.b a(fjm $$0, fjl<?> $$1, fud $$2) {
+         return new fme.b(ImmutableMap.of($$1, $$1.a($$0, 0, 0, 310)), $$2);
       }
 
-      @Override
-      public void a(fkm $$0, fkk $$1, int $$2) {
-         int $$3 = this.D() + 2;
-         int $$4 = this.D() + this.y() - this.b - 4;
-         int $$5 = this.D() + this.y() / 2;
-         a($$0, $$1, this.z(), $$5, $$3, this.E(), $$4, this.E() + this.w(), $$2);
+      public static fme.b a(fjm $$0, fjl<?> $$1, @Nullable fjl<?> $$2, fud $$3) {
+         flf $$4 = $$1.a($$0);
+         return $$2 == null ? new fme.b(ImmutableMap.of($$1, $$4), $$3) : new fme.b(ImmutableMap.of($$1, $$4, $$2, $$2.a($$0)), $$3);
       }
    }
 }

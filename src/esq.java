@@ -1,31 +1,25 @@
-import java.util.function.BiFunction;
-import java.util.function.Supplier;
+import javax.annotation.Nullable;
 
-public abstract class esq {
-   private boolean a;
+public class esq implements esr {
+   private final dfb b;
 
-   public abstract uj a(uj var1, jr.a var2);
-
-   public void c() {
-      this.a(true);
+   public esq(dfb $$0) {
+      this.b = $$0;
    }
 
-   public void a(boolean $$0) {
-      this.a = $$0;
+   @Override
+   public void a(jm $$0, dvj $$1, jh $$2, jh $$3, int $$4, int $$5) {
+      esr.a(this.b, $$0, $$2, $$3, $$1, $$4, $$5 - 1);
    }
 
-   public boolean d() {
-      return this.a;
+   @Override
+   public void a(jh $$0, die $$1, @Nullable ess $$2) {
+      dvj $$3 = this.b.a_($$0);
+      this.a($$3, $$0, $$1, $$2, false);
    }
 
-   public uj a(jr.a $$0) {
-      uj $$1 = new uj();
-      $$1.a("data", this.a(new uj(), $$0));
-      uy.e($$1);
-      this.a(false);
-      return $$1;
-   }
-
-   public static record a<T extends esq>(Supplier<T> a, BiFunction<uj, jr.a, T> b, bas c) {
+   @Override
+   public void a(dvj $$0, jh $$1, die $$2, @Nullable ess $$3, boolean $$4) {
+      esr.a(this.b, $$0, $$1, $$2, $$3, $$4);
    }
 }

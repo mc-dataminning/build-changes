@@ -1,21 +1,24 @@
 import com.mojang.serialization.MapCodec;
 
-public class eir extends eik {
-   public static final MapCodec<eir> b = dvd.a.fieldOf("state").xmap(dvc.a::b, dhy::m).xmap(eir::new, $$0 -> $$0.c);
-   private final dhy c;
+public class eir<P extends eiq> {
+   public static final eir<eiz> a = a("simple_state_provider", eiz.b);
+   public static final eir<eja> b = a("weighted_state_provider", eja.b);
+   public static final eir<eiv> c = a("noise_threshold_provider", eiv.b);
+   public static final eir<eiu> d = a("noise_provider", eiu.g);
+   public static final eir<eis> e = a("dual_noise_provider", eis.b);
+   public static final eir<eix> f = a("rotated_block_provider", eix.b);
+   public static final eir<eiw> g = a("randomized_int_state_provider", eiw.b);
+   private final MapCodec<P> h;
 
-   public eir(dhy $$0) {
-      this.c = $$0;
+   private static <P extends eiq> eir<P> a(String $$0, MapCodec<P> $$1) {
+      return kd.a(ly.T, $$0, new eir<>($$1));
    }
 
-   @Override
-   protected eil<?> a() {
-      return eil.f;
+   private eir(MapCodec<P> $$0) {
+      this.h = $$0;
    }
 
-   @Override
-   public dvd a(azr $$0, jg $$1) {
-      jl.a $$2 = jl.a.a($$0);
-      return this.c.m().c(dok.i, $$2);
+   public MapCodec<P> a() {
+      return this.h;
    }
 }

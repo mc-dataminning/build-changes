@@ -1,24 +1,43 @@
-import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.Iterables;
-import java.util.Collection;
-import java.util.List;
-import java.util.Set;
+public class ceo extends cem {
+   private boolean p;
 
-public class ceo extends cey<cmi> {
-   @Override
-   public Set<cdz<?>> a() {
-      return ImmutableSet.copyOf(Iterables.concat(super.a(), List.of(cdz.B)));
+   public ceo(bvc $$0, dfb $$1) {
+      super($$0, $$1);
    }
 
-   protected void a(arm $$0, cmi $$1) {
-      super.a($$0, $$1);
-      $$1.ed()
-         .c(cdz.g)
-         .stream()
-         .flatMap(Collection::stream)
-         .filter(bue.e)
-         .filter($$1x -> cff.c($$1, $$1x))
-         .findFirst()
-         .ifPresentOrElse($$1x -> $$1.ed().a(cdz.B, $$1x), () -> $$1.ed().b(cdz.B));
+   @Override
+   protected esa a(int $$0) {
+      this.p = this.a.ar() == bul.y;
+      this.o = new ese(this.p);
+      return new esa(this.o, $$0);
+   }
+
+   @Override
+   protected boolean a() {
+      return this.p || this.a.bo();
+   }
+
+   @Override
+   protected ezn b() {
+      return new ezn(this.a.dC(), this.a.e(0.5), this.a.dI());
+   }
+
+   @Override
+   protected double a(ezn $$0) {
+      return $$0.e;
+   }
+
+   @Override
+   protected boolean a(ezn $$0, ezn $$1) {
+      return a(this.a, $$0, $$1, false);
+   }
+
+   @Override
+   public boolean a(jh $$0) {
+      return !this.b.a_($$0).s();
+   }
+
+   @Override
+   public void a(boolean $$0) {
    }
 }

@@ -1,49 +1,42 @@
-import com.mojang.serialization.MapCodec;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
-public class dpf extends dgt {
-   public static final MapCodec<dpf> c = b(dpf::new);
-
+public interface dpf extends dil, dmu {
    @Override
-   public MapCodec<dpf> a() {
-      return c;
-   }
-
-   protected dpf(dvc.d $$0) {
-      super($$0);
+   default boolean a(@Nullable com $$0, deg $$1, jh $$2, dvj $$3, erj $$4) {
+      return $$4 == erl.c;
    }
 
    @Override
-   public dsg a(jg $$0, dvd $$1) {
-      return new dtv($$0, $$1);
-   }
-
-   @Nullable
-   @Override
-   public <T extends dsg> dsh<T> a(dev $$0, dvd $$1, dsi<T> $$2) {
-      return a($$0, $$2, dsi.B);
-   }
-
-   @Override
-   protected void a(dev $$0, jg $$1, coh $$2) {
-      dsg $$3 = $$0.c_($$1);
-      if ($$3 instanceof dtv) {
-         $$2.a((bsa)$$3);
-         $$2.a(awu.at);
-      }
-   }
-
-   @Override
-   public void a(dvd $$0, dev $$1, jg $$2, azr $$3) {
-      if ($$0.c(b)) {
-         double $$4 = (double)$$2.u() + 0.5;
-         double $$5 = (double)$$2.v();
-         double $$6 = (double)$$2.w() + 0.5;
-         if ($$3.j() < 0.1) {
-            $$1.a($$4, $$5, $$6, awk.yo, awl.e, 1.0F, 1.0F, false);
+   default boolean a(dfc $$0, jh $$1, dvj $$2, erk $$3) {
+      if (!$$2.c(dvz.C) && $$3.a() == erl.c) {
+         if (!$$0.y_()) {
+            $$0.a($$1, $$2.b(dvz.C, Boolean.valueOf(true)), 3);
+            $$0.a($$1, $$3.a(), $$3.a().a($$0));
          }
 
-         $$1.a(lq.ae, $$4, $$5 + 1.1, $$6, 0.0, 0.0, 0.0);
+         return true;
+      } else {
+         return false;
       }
+   }
+
+   @Override
+   default cwb a(@Nullable com $$0, dfc $$1, jh $$2, dvj $$3) {
+      if ($$3.c(dvz.C)) {
+         $$1.a($$2, $$3.b(dvz.C, Boolean.valueOf(false)), 3);
+         if (!$$3.a($$1, $$2)) {
+            $$1.b($$2, true);
+         }
+
+         return new cwb(cwf.qA);
+      } else {
+         return cwb.k;
+      }
+   }
+
+   @Override
+   default Optional<awk> at_() {
+      return erl.c.j();
    }
 }

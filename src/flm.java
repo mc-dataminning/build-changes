@@ -1,66 +1,25 @@
-import javax.annotation.Nullable;
+import com.google.common.collect.Lists;
+import java.util.List;
+import java.util.Optional;
 
-public abstract class flm extends fkx {
-   flm(int $$0, int $$1, int $$2, int $$3) {
-      super($$0, $$1, $$2, $$3, xg.a);
+public class flm {
+   private static final ayw a = ayw.codepoint(32, yf.a);
+
+   private static String a(String $$0) {
+      return fji.Q().n.M().c() ? $$0 : n.a($$0);
    }
 
-   public static flm a(int $$0, int $$1, alh $$2, int $$3, int $$4) {
-      return new flm.b(0, 0, $$0, $$1, $$2, $$3, $$4);
-   }
-
-   public static flm a(int $$0, int $$1, alh $$2) {
-      return new flm.a(0, 0, $$0, $$1, $$2);
-   }
-
-   @Override
-   protected void a(fox $$0) {
-   }
-
-   @Override
-   public void a(hcu $$0) {
-   }
-
-   @Override
-   public boolean C() {
-      return false;
-   }
-
-   @Nullable
-   @Override
-   public fkj a(fpd $$0) {
-      return null;
-   }
-
-   static class a extends flm {
-      private final alh a;
-
-      public a(int $$0, int $$1, int $$2, int $$3, alh $$4) {
-         super($$0, $$1, $$2, $$3);
-         this.a = $$4;
-      }
-
-      @Override
-      public void b(fkm $$0, int $$1, int $$2, float $$3) {
-         $$0.a(gig::B, this.a, this.D(), this.E(), this.y(), this.w());
-      }
-   }
-
-   static class b extends flm {
-      private final alh a;
-      private final int b;
-      private final int c;
-
-      public b(int $$0, int $$1, int $$2, int $$3, alh $$4, int $$5, int $$6) {
-         super($$0, $$1, $$2, $$3);
-         this.a = $$4;
-         this.b = $$5;
-         this.c = $$6;
-      }
-
-      @Override
-      protected void b(fkm $$0, int $$1, int $$2, float $$3) {
-         $$0.a(gig::B, this.a, this.D(), this.E(), 0.0F, 0.0F, this.y(), this.w(), this.b, this.c);
-      }
+   public static List<ayw> a(xn $$0, int $$1, fks $$2) {
+      fiw $$3 = new fiw();
+      $$0.a(($$1x, $$2x) -> {
+         $$3.a(xn.a(a($$2x), $$1x));
+         return Optional.empty();
+      }, yf.a);
+      List<ayw> $$4 = Lists.newArrayList();
+      $$2.b().a($$3.b(), $$1, yf.a, ($$1x, $$2x) -> {
+         ayw $$3x = uf.a().a($$1x);
+         $$4.add($$2x ? ayw.composite(a, $$3x) : $$3x);
+      });
+      return (List<ayw>)($$4.isEmpty() ? Lists.newArrayList(new ayw[]{ayw.a}) : $$4);
    }
 }

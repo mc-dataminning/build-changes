@@ -1,61 +1,39 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
-import java.util.Map;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
+import java.util.Set;
 
-public class ewm extends evj {
-   private static final Map<ks<?>, ewm.a<?>> b = Stream.of(
-         new ewm.a<>(kt.T, ddj::a),
-         new ewm.a<>(kt.I, cyj::a),
-         new ewm.a<>(kt.l, dbs::a),
-         new ewm.a<>(kt.H, dbs::a),
-         new ewm.a<>(kt.f, cyz::a),
-         new ewm.a<>(kt.n, cts::a),
-         new ewm.a<>(kt.m, cts::a),
-         new ewm.a<>(kt.o, cym::a),
-         new ewm.a<>(kt.aa, cwc::a)
-      )
-      .collect(Collectors.toMap(ewm.a::a, $$0 -> (ewm.a<?>)$$0));
-   private static final Codec<ewm.a<?>> c = lx.ao.q().comapFlatMap($$0 -> {
-      ewm.a<?> $$1 = b.get($$0);
-      return $$1 != null ? DataResult.success($$1) : DataResult.error(() -> "Can't toggle tooltip visiblity for " + lx.ao.b($$0));
-   }, ewm.a::a);
-   public static final MapCodec<ewm> a = RecordCodecBuilder.mapCodec(
-      $$0 -> a($$0).and(Codec.unboundedMap(c, Codec.BOOL).fieldOf("toggles").forGetter($$0x -> $$0x.d)).apply($$0, ewm::new)
-   );
-   private final Map<ewm.a<?>, Boolean> d;
+public class ewm extends evp {
+   static final MapCodec<ewm> a = RecordCodecBuilder.mapCodec($$0 -> a($$0).and(eyk.a.fieldOf("amplifier").forGetter($$0x -> $$0x.b)).apply($$0, ewm::new));
+   private final eyj b;
 
-   private ewm(List<exh> $$0, Map<ewm.a<?>, Boolean> $$1) {
+   private ewm(List<exn> $$0, eyj $$1) {
       super($$0);
-      this.d = $$1;
+      this.b = $$1;
    }
 
    @Override
-   protected cvx a(cvx $$0, etw $$1) {
-      this.d.forEach(($$1x, $$2) -> $$1x.a($$0, $$2));
+   public Set<ewv<?>> a() {
+      return this.b.a();
+   }
+
+   @Override
+   public evr<ewm> b() {
+      return evs.Q;
+   }
+
+   @Override
+   public cwb a(cwb $$0, euc $$1) {
+      int $$2 = azk.a(this.b.a($$1), 0, 4);
+      $$0.b(ku.aa, new cyz($$2));
       return $$0;
    }
 
-   @Override
-   public evl<ewm> b() {
-      return evm.P;
+   public eyj c() {
+      return this.b;
    }
 
-   static record a<T>(ks<T> a, ewm.b<T> b) {
-      public void a(cvx $$0, boolean $$1) {
-         T $$2 = $$0.a(this.a);
-         if ($$2 != null) {
-            $$0.b(this.a, this.b.withTooltip($$2, $$1));
-         }
-      }
-   }
-
-   @FunctionalInterface
-   interface b<T> {
-      T withTooltip(T var1, boolean var2);
+   public static evp.a<?> a(eyj $$0) {
+      return a($$1 -> new ewm($$1, $$0));
    }
 }

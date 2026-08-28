@@ -1,61 +1,45 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.Executor;
+import java.util.function.Consumer;
 
-public class bqy extends brd {
-   public static final MapCodec<bqy> a = RecordCodecBuilder.mapCodec(
-         $$0 -> $$0.group(
-                  Codec.FLOAT.fieldOf("mean").forGetter($$0x -> $$0x.b),
-                  Codec.FLOAT.fieldOf("deviation").forGetter($$0x -> $$0x.f),
-                  Codec.INT.fieldOf("min_inclusive").forGetter($$0x -> $$0x.g),
-                  Codec.INT.fieldOf("max_inclusive").forGetter($$0x -> $$0x.h)
-               )
-               .apply($$0, bqy::new)
-      )
-      .validate($$0 -> $$0.h < $$0.g ? DataResult.error(() -> "Max must be larger than min: [" + $$0.g + ", " + $$0.h + "]") : DataResult.success($$0));
-   private final float b;
-   private final float f;
-   private final int g;
-   private final int h;
+public interface bqy<R extends Runnable> extends AutoCloseable {
+   String x_();
 
-   public static bqy a(float $$0, float $$1, int $$2, int $$3) {
-      return new bqy($$0, $$1, $$2, $$3);
-   }
-
-   private bqy(float $$0, float $$1, int $$2, int $$3) {
-      this.b = $$0;
-      this.f = $$1;
-      this.g = $$2;
-      this.h = $$3;
-   }
+   void a_(R var1);
 
    @Override
-   public int a(azr $$0) {
-      return a($$0, this.b, this.f, (float)this.g, (float)this.h);
+   default void close() {
    }
 
-   public static int a(azr $$0, float $$1, float $$2, float $$3, float $$4) {
-      return (int)azj.a(azj.c($$0, $$1, $$2), $$3, $$4);
+   R f(Runnable var1);
+
+   default <Source> CompletableFuture<Source> a(Consumer<CompletableFuture<Source>> $$0) {
+      CompletableFuture<Source> $$1 = new CompletableFuture<>();
+      this.a_(this.f(() -> $$0.accept($$1)));
+      return $$1;
    }
 
-   @Override
-   public int a() {
-      return this.g;
-   }
+   static bqy<Runnable> a(final String $$0, final Executor $$1) {
+      return new bqy<Runnable>() {
+         @Override
+         public String x_() {
+            return $$0;
+         }
 
-   @Override
-   public int b() {
-      return this.h;
-   }
+         @Override
+         public void a_(Runnable $$0x) {
+            $$1.execute($$0);
+         }
 
-   @Override
-   public bre<?> c() {
-      return bre.f;
-   }
+         @Override
+         public Runnable f(Runnable $$0x) {
+            return $$0;
+         }
 
-   @Override
-   public String toString() {
-      return "normal(" + this.b + ", " + this.f + ") in [" + this.g + "-" + this.h + "]";
+         @Override
+         public String toString() {
+            return $$0;
+         }
+      };
    }
 }

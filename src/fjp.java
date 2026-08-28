@@ -1,34 +1,51 @@
-import com.google.common.collect.Maps;
-import java.util.ArrayList;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableMap;
 import java.util.List;
 import java.util.Map;
 
-public record fjp(float a, boolean b, Map<String, List<fjo>> c) {
-   public static class a {
-      private final float a;
-      private final Map<String, List<fjo>> b = Maps.newHashMap();
-      private boolean c;
+public enum fjp {
+   a(new cwb(cwf.qT)),
+   b(new cwb(dig.cj)),
+   c(new cwb(cwf.lH)),
+   d(new cwb(cwf.pf), new cwb(cwf.oX)),
+   e(new cwb(cwf.qB), new cwb(cwf.ov)),
+   f(new cwb(cwf.qT)),
+   g(new cwb(cwf.pY)),
+   h(new cwb(dig.b)),
+   i(new cwb(cwf.qB), new cwb(cwf.oB)),
+   j(new cwb(cwf.qT)),
+   k(new cwb(dig.dI)),
+   l(new cwb(cwf.pd), new cwb(cwf.pR)),
+   m(new cwb(cwf.qT)),
+   n(new cwb(cwf.pY)),
+   o(new cwb(cwf.fF)),
+   p(new cwb(cwf.pU)),
+   q(new cwb(cwf.pY)),
+   r(new cwb(cwf.hB));
 
-      public static fjp.a a(float $$0) {
-         return new fjp.a($$0);
-      }
+   public static final List<fjp> s = ImmutableList.of(m, n);
+   public static final List<fjp> t = ImmutableList.of(j, k, l);
+   public static final List<fjp> u = ImmutableList.of(f, g, h, i);
+   public static final List<fjp> v = ImmutableList.of(a, d, b, e, c);
+   public static final Map<fjp, List<fjp>> w = ImmutableMap.of(
+      a, ImmutableList.of(d, b, e, c), f, ImmutableList.of(g, h, i), j, ImmutableList.of(k, l), m, ImmutableList.of(n)
+   );
+   private final List<cwb> x;
 
-      private a(float $$0) {
-         this.a = $$0;
-      }
+   private fjp(final cwb... $$0) {
+      this.x = ImmutableList.copyOf($$0);
+   }
 
-      public fjp.a a() {
-         this.c = true;
-         return this;
-      }
+   public static List<fjp> a(cte $$0) {
+      return switch ($$0) {
+         case a -> v;
+         case b -> u;
+         case c -> t;
+         case d -> s;
+      };
+   }
 
-      public fjp.a a(String $$0, fjo $$1) {
-         this.b.computeIfAbsent($$0, $$0x -> new ArrayList<>()).add($$1);
-         return this;
-      }
-
-      public fjp b() {
-         return new fjp(this.a, this.c, this.b);
-      }
+   public List<cwb> a() {
+      return this.x;
    }
 }

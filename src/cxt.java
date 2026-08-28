@@ -1,43 +1,32 @@
-import java.util.List;
-import javax.annotation.Nullable;
+public interface cxt {
+   cxt.a a = new cxt.a(false, false);
+   cxt.a b = new cxt.a(true, false);
 
-public class cxt extends cvt {
-   public cxt(cvt.a $$0) {
-      super($$0);
-   }
+   boolean a();
 
-   @Override
-   public void a(cvx $$0, cvt.b $$1, List<xh> $$2, cxp $$3) {
-      czd $$4 = $$0.a(kt.S);
-      if ($$4 != null) {
-         if (!bag.h($$4.e())) {
-            $$2.add(xh.a("book.byAuthor", $$4.e()).a(n.h));
-         }
+   boolean b();
 
-         $$2.add(xh.c("book.generation." + $$4.f()).a(n.h));
-      }
-   }
-
-   @Override
-   public bry a(dev $$0, coh $$1, brx $$2) {
-      cvx $$3 = $$1.b($$2);
-      $$1.a($$3, $$2);
-      $$1.b(awu.c.b(this));
-      return bry.a;
-   }
-
-   public static boolean a(cvx $$0, ev $$1, @Nullable coh $$2) {
-      czd $$3 = $$0.a(kt.S);
-      if ($$3 != null && !$$3.g()) {
-         czd $$4 = $$3.a($$1, $$2);
-         if ($$4 != null) {
-            $$0.b(kt.S, $$4);
-            return true;
-         }
-
-         $$0.b(kt.S, $$3.c());
+   public static record a(boolean c, boolean d) implements cxt {
+      @Override
+      public boolean a() {
+         return this.c;
       }
 
-      return false;
+      @Override
+      public boolean b() {
+         return this.d;
+      }
+
+      public cxt.a c() {
+         return new cxt.a(this.c, true);
+      }
+
+      public boolean d() {
+         return this.c;
+      }
+
+      public boolean e() {
+         return this.d;
+      }
    }
 }

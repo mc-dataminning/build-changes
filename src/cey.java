@@ -1,22 +1,30 @@
 import com.google.common.collect.ImmutableSet;
-import java.util.Comparator;
-import java.util.List;
 import java.util.Set;
 
-public class cey<T extends buv> extends cff<T> {
+public class cey extends cfk<bva> {
    @Override
-   protected void a(arm $$0, T $$1) {
-      double $$2 = $$1.h(bwd.m);
-      ezc $$3 = $$1.cS().c($$2, $$2, $$2);
-      List<buv> $$4 = $$0.a(buv.class, $$3, $$1x -> $$1x != $$1 && $$1x.bM());
-      $$4.sort(Comparator.comparingDouble($$1::g));
-      bvx<?> $$5 = $$1.ed();
-      $$5.a(cdz.g, $$4);
-      $$5.a(cdz.h, new ceb($$1, $$4));
+   public Set<cee<?>> a() {
+      return ImmutableSet.of(cee.x, cee.y);
    }
 
    @Override
-   public Set<cdz<?>> a() {
-      return ImmutableSet.of(cdz.g, cdz.h);
+   protected void a(arn $$0, bva $$1) {
+      bwc<?> $$2 = $$1.ed();
+      bsu $$3 = $$1.eI();
+      if ($$3 != null) {
+         $$2.a(cee.x, $$1.eI());
+         bue $$4 = $$3.d();
+         if ($$4 instanceof bva) {
+            $$2.a(cee.y, (bva)$$4);
+         }
+      } else {
+         $$2.b(cee.x);
+      }
+
+      $$2.c(cee.y).ifPresent($$2x -> {
+         if (!$$2x.bM() || $$2x.dX() != $$0) {
+            $$2.b(cee.y);
+         }
+      });
    }
 }

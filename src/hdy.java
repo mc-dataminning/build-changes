@@ -1,36 +1,37 @@
-import java.util.function.Function;
+import java.time.Duration;
+import java.time.Instant;
+import java.util.Optional;
 
-public enum hdy {
-   a("movement", hdt::new),
-   b("find_tree", hds::new),
-   c("punch_tree", hdv::new),
-   d("open_inventory", hdu::new),
-   e("craft_planks", hdr::new),
-   f("none", hdq::new);
+public class hdy {
+   private static final int a = -1;
+   private Optional<Instant> b = Optional.empty();
+   private long c;
+   private long d;
 
-   private final String g;
-   private final Function<hdw, ? extends hdx> h;
-
-   private <T extends hdx> hdy(final String $$0, final Function<hdw, T> $$1) {
-      this.g = $$0;
-      this.h = $$1;
+   public void a() {
+      this.d = -1L;
+      if (this.b.isEmpty()) {
+         this.b = Optional.of(Instant.now());
+      }
    }
 
-   public hdx a(hdw $$0) {
-      return this.h.apply($$0);
-   }
-
-   public String a() {
-      return this.g;
-   }
-
-   public static hdy a(String $$0) {
-      for (hdy $$1 : values()) {
-         if ($$1.g.equals($$0)) {
-            return $$1;
-         }
+   public void a(long $$0) {
+      if (this.d != -1L) {
+         this.c = this.c + Math.max(0L, $$0 - this.d);
       }
 
-      return f;
+      this.d = $$0;
+   }
+
+   private int a(Instant $$0) {
+      Duration $$1 = Duration.between($$0, Instant.now());
+      return (int)$$1.toSeconds();
+   }
+
+   public void a(hdn $$0) {
+      this.b.ifPresent($$1 -> $$0.send(hdo.e, $$1x -> {
+            $$1x.a(hdq.p, this.a($$1));
+            $$1x.a(hdq.q, (int)this.c);
+         }));
    }
 }

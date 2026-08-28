@@ -1,30 +1,55 @@
-public class gqh<T extends chl> extends gmu<T, gwa, gac> {
-   private static final alh a = alh.b("textures/entity/squid/squid.png");
+public class gqh extends gpq<chm, gwe, fzy> {
+   private static final ali a = ali.b("textures/entity/fish/salmon.png");
+   private final fzy b;
+   private final fzy k;
+   private final fzy l;
 
-   public gqh(gnz.a $$0, gac $$1, gac $$2) {
-      super($$0, $$1, $$2, 0.7F);
+   public gqh(gok.a $$0) {
+      super($$0, new fzy($$0.a(gbl.ca)), 0.4F);
+      this.b = new fzy($$0.a(gbl.cb));
+      this.k = new fzy($$0.a(gbl.ca));
+      this.l = new fzy($$0.a(gbl.cc));
    }
 
-   public alh a(gwa $$0) {
+   public void a(chm $$0, gwe $$1, float $$2) {
+      super.a($$0, $$1, $$2);
+      $$1.a = $$0.gD();
+   }
+
+   public ali a(gwe $$0) {
       return a;
    }
 
-   public gwa c() {
-      return new gwa();
+   public gwe c() {
+      return new gwe();
    }
 
-   public void a(T $$0, gwa $$1, float $$2) {
-      super.a($$0, $$1, $$2);
-      $$1.a = azj.h($$2, $$0.cf, $$0.ce);
-      $$1.b = azj.h($$2, $$0.bZ, $$0.bY);
-      $$1.c = azj.h($$2, $$0.cb, $$0.ca);
+   protected void a(gwe $$0, feb $$1, float $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      float $$4 = 1.0F;
+      float $$5 = 1.0F;
+      if (!$$0.af) {
+         $$4 = 1.3F;
+         $$5 = 1.7F;
+      }
+
+      float $$6 = $$4 * 4.3F * azk.a($$5 * 0.6F * $$0.p);
+      $$1.a(a.d.rotationDegrees($$6));
+      if (!$$0.af) {
+         $$1.a(0.2F, 0.1F, 0.0F);
+         $$1.a(a.f.rotationDegrees(90.0F));
+      }
    }
 
-   protected void a(gwa $$0, fdt $$1, float $$2, float $$3) {
-      $$1.a(0.0F, $$0.ae ? 0.25F : 0.5F, 0.0F);
-      $$1.a(a.d.rotationDegrees(180.0F - $$2));
-      $$1.a(a.b.rotationDegrees($$0.b));
-      $$1.a(a.d.rotationDegrees($$0.c));
-      $$1.a(0.0F, $$0.ae ? -0.6F : -1.2F, 0.0F);
+   public void a(gwe $$0, feb $$1, gih $$2, int $$3) {
+      if ($$0.a == chm.a.a) {
+         this.h = this.b;
+      } else if ($$0.a == chm.a.c) {
+         this.h = this.l;
+      } else {
+         this.h = this.k;
+      }
+
+      super.a($$0, $$1, $$2, $$3);
    }
 }

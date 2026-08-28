@@ -1,10 +1,5 @@
-public class gwb extends gva implements gvs {
-   public boolean a;
+public class gwb extends gvl {
+   public float a;
    public boolean b;
-   public boolean c;
-
-   @Override
-   public boolean c() {
-      return this.a;
-   }
+   public chl.g c = chl.g.a;
 }

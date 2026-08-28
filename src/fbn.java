@@ -1,7 +1,9 @@
-public record fbn(ezh b, ezh c, ezh d) {
-   public static final fbn a = new fbn(ezh.c, new ezh(0.0, 0.0, -1.0), new ezh(0.0, 1.0, 0.0));
+import java.lang.annotation.ElementType;
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
+import javax.annotation.meta.TypeQualifierDefault;
 
-   public ezh a() {
-      return this.c.c(this.d);
-   }
+@TypeQualifierDefault({ElementType.TYPE, ElementType.METHOD})
+@Retention(RetentionPolicy.CLASS)
+public @interface fbn {
 }

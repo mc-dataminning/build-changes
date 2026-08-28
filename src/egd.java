@@ -1,23 +1,52 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.HashSet;
+import java.util.Set;
+import java.util.function.Predicate;
 
-public class egd implements egj {
-   public static final Codec<egd> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(brd.b(0, 3).fieldOf("reach").forGetter($$0x -> $$0x.b), brd.b(1, 10).fieldOf("height").forGetter($$0x -> $$0x.c)).apply($$0, egd::new)
-   );
-   private final brd b;
-   private final brd c;
-
-   public egd(brd $$0, brd $$1) {
-      this.b = $$0;
-      this.c = $$1;
+public class egd extends ega {
+   public egd(Codec<eho> $$0) {
+      super($$0);
    }
 
-   public brd a() {
-      return this.b;
+   @Override
+   protected Set<jh> a(dfy $$0, eho $$1, azs $$2, jh $$3, Predicate<dvj> $$4, int $$5, int $$6) {
+      Set<jh> $$7 = super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6);
+      Set<jh> $$8 = new HashSet<>();
+      jh.a $$9 = new jh.a();
+
+      for (jh $$10 : $$7) {
+         if (!a($$0, $$7, $$10, $$9)) {
+            $$8.add($$10);
+         }
+      }
+
+      for (jh $$11 : $$8) {
+         $$0.a($$11, dig.G.m(), 2);
+      }
+
+      return $$8;
    }
 
-   public brd b() {
-      return this.c;
+   private static boolean a(dfy $$0, Set<jh> $$1, jh $$2, jh.a $$3) {
+      return a($$0, $$2, $$3, jm.c) || a($$0, $$2, $$3, jm.f) || a($$0, $$2, $$3, jm.d) || a($$0, $$2, $$3, jm.e) || a($$0, $$2, $$3, jm.a);
+   }
+
+   private static boolean a(dfy $$0, jh $$1, jh.a $$2, jm $$3) {
+      $$2.a($$1, $$3);
+      return !$$0.a_($$2).c($$0, $$2, $$3.g());
+   }
+
+   @Override
+   protected boolean a(dfy $$0, eho $$1, dxg $$2, azs $$3, jh $$4) {
+      if (super.a($$0, $$1, $$2, $$3, $$4.e())) {
+         dvj $$5 = $$0.a_($$4);
+         if ($$5.b(dvz.C) && !$$5.c(dvz.C)) {
+            $$0.a($$4, $$5.b(dvz.C, Boolean.valueOf(true)), 2);
+         }
+
+         return true;
+      } else {
+         return false;
+      }
    }
 }

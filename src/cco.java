@@ -1,32 +1,39 @@
 import java.util.EnumSet;
 
-public class cco extends cbt {
-   private final bux a;
-   private double b;
-   private double c;
-   private int d;
+public class cco extends cby {
+   private final bvc a;
+   private bva b;
+   private int c;
 
-   public cco(bux $$0) {
+   public cco(bvc $$0) {
       this.a = $$0;
-      this.a(EnumSet.of(cbt.a.a, cbt.a.b));
+      this.a(EnumSet.of(cby.a.a, cby.a.b));
    }
 
    @Override
    public boolean b() {
-      return this.a.ea().i() < 0.02F;
+      bva $$0 = this.a.m();
+      if ($$0 == null) {
+         return false;
+      } else {
+         this.b = $$0;
+         return true;
+      }
    }
 
    @Override
    public boolean c() {
-      return this.d >= 0;
+      if (!this.b.bM()) {
+         return false;
+      } else {
+         return this.a.g(this.b) > 225.0 ? false : !this.a.P().m() || this.b();
+      }
    }
 
    @Override
-   public void d() {
-      double $$0 = (Math.PI * 2) * this.a.ea().j();
-      this.b = Math.cos($$0);
-      this.c = Math.sin($$0);
-      this.d = 20 + this.a.ea().a(20);
+   public void e() {
+      this.b = null;
+      this.a.P().o();
    }
 
    @Override
@@ -36,7 +43,23 @@ public class cco extends cbt {
 
    @Override
    public void a() {
-      this.d--;
-      this.a.K().a(this.a.dC() + this.b, this.a.dG(), this.a.dI() + this.c);
+      this.a.K().a(this.b, 30.0F, 30.0F);
+      double $$0 = (double)(this.a.ds() * 2.0F * this.a.ds() * 2.0F);
+      double $$1 = this.a.i(this.b.dC(), this.b.dE(), this.b.dI());
+      double $$2 = 0.8;
+      if ($$1 > $$0 && $$1 < 16.0) {
+         $$2 = 1.33;
+      } else if ($$1 < 225.0) {
+         $$2 = 0.6;
+      }
+
+      this.a.P().a(this.b, $$2);
+      this.c = Math.max(this.c - 1, 0);
+      if (!($$1 > $$0)) {
+         if (this.c <= 0) {
+            this.c = 20;
+            this.a.E(this.b);
+         }
+      }
    }
 }

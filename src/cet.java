@@ -1,30 +1,24 @@
 import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.Iterables;
+import java.util.Collection;
+import java.util.List;
 import java.util.Set;
 
-public class cet extends cff<buv> {
+public class cet extends cfd<cmn> {
    @Override
-   public Set<cdz<?>> a() {
-      return ImmutableSet.of(cdz.x, cdz.y);
+   public Set<cee<?>> a() {
+      return ImmutableSet.copyOf(Iterables.concat(super.a(), List.of(cee.B)));
    }
 
-   @Override
-   protected void a(arm $$0, buv $$1) {
-      bvx<?> $$2 = $$1.ed();
-      bsp $$3 = $$1.eI();
-      if ($$3 != null) {
-         $$2.a(cdz.x, $$1.eI());
-         btz $$4 = $$3.d();
-         if ($$4 instanceof buv) {
-            $$2.a(cdz.y, (buv)$$4);
-         }
-      } else {
-         $$2.b(cdz.x);
-      }
-
-      $$2.c(cdz.y).ifPresent($$2x -> {
-         if (!$$2x.bM() || $$2x.dX() != $$0) {
-            $$2.b(cdz.y);
-         }
-      });
+   protected void a(arn $$0, cmn $$1) {
+      super.a($$0, $$1);
+      $$1.ed()
+         .c(cee.g)
+         .stream()
+         .flatMap(Collection::stream)
+         .filter(buj.e)
+         .filter($$1x -> cfk.c($$1, $$1x))
+         .findFirst()
+         .ifPresentOrElse($$1x -> $$1.ed().a(cee.B, $$1x), () -> $$1.ed().b(cee.B));
    }
 }

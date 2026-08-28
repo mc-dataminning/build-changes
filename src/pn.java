@@ -1,32 +1,100 @@
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.google.common.hash.Hashing;
+import com.google.common.hash.HashingOutputStream;
+import com.mojang.logging.LogUtils;
+import java.io.ByteArrayOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
+import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.nio.file.Paths;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
+import java.util.concurrent.CompletableFuture;
 import java.util.stream.Stream;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class pn {
-   public static void a(String[] $$0) throws IOException {
-      ab.a(t.a);
-      alj.a();
+public class pn implements mf {
+   private static final Logger d = LogUtils.getLogger();
+   private final Iterable<Path> e;
+   private final mh f;
 
-      for (String $$1 : $$0) {
-         a($$1);
+   public pn(mh $$0, Collection<Path> $$1) {
+      this.e = $$1;
+      this.f = $$0;
+   }
+
+   @Override
+   public CompletableFuture<?> a(md $$0) {
+      Path $$1 = this.f.a();
+      List<CompletableFuture<?>> $$2 = new ArrayList<>();
+
+      for (Path $$3 : this.e) {
+         $$2.add(
+            CompletableFuture.<CompletableFuture>supplyAsync(
+                  () -> {
+                     try {
+                        CompletableFuture var4;
+                        try (Stream<Path> $$3x = Files.walk($$3)) {
+                           var4 = CompletableFuture.allOf(
+                              $$3x.filter($$0xx -> $$0xx.toString().endsWith(".nbt"))
+                                 .map($$3xx -> CompletableFuture.runAsync(() -> a($$0, $$3xx, a($$3, $$3xx), $$1), ae.h()))
+                                 .toArray(CompletableFuture[]::new)
+                           );
+                        }
+
+                        return var4;
+                     } catch (IOException var8) {
+                        d.error("Failed to read structure input directory", var8);
+                        return CompletableFuture.completedFuture(null);
+                     }
+                  },
+                  ae.g().a("NbtToSnbt")
+               )
+               .thenCompose($$0x -> $$0x)
+         );
+      }
+
+      return CompletableFuture.allOf($$2.toArray(CompletableFuture[]::new));
+   }
+
+   @Override
+   public final String a() {
+      return "NBT -> SNBT";
+   }
+
+   private static String a(Path $$0, Path $$1) {
+      String $$2 = $$0.relativize($$1).toString().replaceAll("\\\\", "/");
+      return $$2.substring(0, $$2.length() - ".nbt".length());
+   }
+
+   @Nullable
+   public static Path a(md $$0, Path $$1, String $$2, Path $$3) {
+      try {
+         Path var7;
+         try (
+            InputStream $$4 = Files.newInputStream($$1);
+            InputStream $$5 = new ayu($$4);
+         ) {
+            Path $$6 = $$3.resolve($$2 + ".snbt");
+            a($$0, $$6, uz.a(ux.a($$5, ut.a())));
+            d.info("Converted {} from NBT to SNBT", $$2);
+            var7 = $$6;
+         }
+
+         return var7;
+      } catch (IOException var12) {
+         d.error("Couldn't convert {} from NBT to SNBT at {}", new Object[]{$$2, $$1, var12});
+         return null;
       }
    }
 
-   private static void a(String $$0) throws IOException {
-      try (Stream<Path> $$1 = Files.walk(Paths.get($$0))) {
-         $$1.filter($$0x -> $$0x.toString().endsWith(".snbt")).forEach($$0x -> {
-            try {
-               String $$1x = Files.readString($$0x);
-               uj $$2 = uy.a($$1x);
-               uj $$3 = pp.a($$0x.toString(), $$2);
-               pm.a(mc.a, $$0x, uy.a($$3));
-            } catch (IOException | CommandSyntaxException var4) {
-               throw new RuntimeException(var4);
-            }
-         });
-      }
+   public static void a(md $$0, Path $$1, String $$2) throws IOException {
+      ByteArrayOutputStream $$3 = new ByteArrayOutputStream();
+      HashingOutputStream $$4 = new HashingOutputStream(Hashing.sha1(), $$3);
+      $$4.write($$2.getBytes(StandardCharsets.UTF_8));
+      $$4.write(10);
+      $$0.writeIfNeeded($$1, $$3.toByteArray(), $$4.hash());
    }
 }

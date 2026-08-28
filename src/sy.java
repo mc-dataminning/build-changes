@@ -1,33 +1,35 @@
-import java.util.Collection;
-import java.util.function.Consumer;
+import javax.annotation.Nullable;
 
-public record sy(String b, Collection<te> c, Consumer<arm> d, Consumer<arm> e) {
-   public static final String a = "defaultBatch";
+public class sy extends sx {
+   private final jh a;
+   private final jh b;
+   private final long c;
 
-   public sy(String b, Collection<te> c, Consumer<arm> d, Consumer<arm> e) {
-      if (c.isEmpty()) {
-         throw new IllegalArgumentException("A GameTestBatch must include at least one GameTestInfo!");
-      } else {
-         this.b = b;
-         this.c = c;
-         this.d = d;
-         this.e = e;
-      }
+   public sy(String $$0, jh $$1, jh $$2, long $$3) {
+      super($$0);
+      this.a = $$1;
+      this.b = $$2;
+      this.c = $$3;
    }
 
+   @Override
+   public String getMessage() {
+      String $$0 = this.a.u() + "," + this.a.v() + "," + this.a.w() + " (relative: " + this.b.u() + "," + this.b.v() + "," + this.b.w() + ")";
+      return super.getMessage() + " at " + $$0 + " (t=" + this.c + ")";
+   }
+
+   @Nullable
    public String a() {
+      return super.getMessage();
+   }
+
+   @Nullable
+   public jh b() {
       return this.b;
    }
 
-   public Collection<te> b() {
-      return this.c;
-   }
-
-   public Consumer<arm> c() {
-      return this.d;
-   }
-
-   public Consumer<arm> d() {
-      return this.e;
+   @Nullable
+   public jh c() {
+      return this.a;
    }
 }

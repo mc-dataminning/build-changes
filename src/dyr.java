@@ -1,98 +1,266 @@
 import com.mojang.logging.LogUtils;
-import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
-import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
-import it.unimi.dsi.fastutil.objects.Object2ObjectMap;
-import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
-import java.io.BufferedOutputStream;
+import it.unimi.dsi.fastutil.longs.Long2ObjectLinkedOpenHashMap;
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
-import java.util.zip.DeflaterOutputStream;
-import java.util.zip.GZIPInputStream;
-import java.util.zip.GZIPOutputStream;
-import java.util.zip.InflaterInputStream;
+import java.nio.file.Path;
+import java.util.BitSet;
+import java.util.LinkedHashMap;
+import java.util.Optional;
+import java.util.SequencedMap;
+import java.util.Map.Entry;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.atomic.AtomicBoolean;
+import java.util.function.Function;
+import java.util.function.Supplier;
 import javax.annotation.Nullable;
-import net.jpountz.lz4.LZ4BlockInputStream;
-import net.jpountz.lz4.LZ4BlockOutputStream;
 import org.slf4j.Logger;
 
-public class dyr {
-   private static final Logger g = LogUtils.getLogger();
-   private static final Int2ObjectMap<dyr> h = new Int2ObjectOpenHashMap();
-   private static final Object2ObjectMap<String, dyr> i = new Object2ObjectOpenHashMap();
-   public static final dyr a = a(new dyr(1, null, $$0 -> new ayt(new GZIPInputStream($$0)), $$0 -> new BufferedOutputStream(new GZIPOutputStream($$0))));
-   public static final dyr b = a(
-      new dyr(2, "deflate", $$0 -> new ayt(new InflaterInputStream($$0)), $$0 -> new BufferedOutputStream(new DeflaterOutputStream($$0)))
-   );
-   public static final dyr c = a(new dyr(3, "none", ayt::new, BufferedOutputStream::new));
-   public static final dyr d = a(
-      new dyr(4, "lz4", $$0 -> new ayt(new LZ4BlockInputStream($$0)), $$0 -> new BufferedOutputStream(new LZ4BlockOutputStream($$0)))
-   );
-   public static final dyr e = a(new dyr(127, null, $$0 -> {
-      throw new UnsupportedOperationException();
-   }, $$0 -> {
-      throw new UnsupportedOperationException();
-   }));
-   public static final dyr f = b;
-   private static volatile dyr j = f;
-   private final int k;
-   @Nullable
-   private final String l;
-   private final dyr.a<InputStream> m;
-   private final dyr.a<OutputStream> n;
+public class dyr implements dyo, AutoCloseable {
+   private static final Logger a = LogUtils.getLogger();
+   private final AtomicBoolean b = new AtomicBoolean();
+   private final bqv c;
+   private final dyw d;
+   private final SequencedMap<deh, dyr.a> e = new LinkedHashMap<>();
+   private final Long2ObjectLinkedOpenHashMap<CompletableFuture<BitSet>> f = new Long2ObjectLinkedOpenHashMap();
+   private static final int g = 1024;
 
-   private dyr(int $$0, @Nullable String $$1, dyr.a<InputStream> $$2, dyr.a<OutputStream> $$3) {
-      this.k = $$0;
-      this.l = $$1;
-      this.m = $$2;
-      this.n = $$3;
+   protected dyr(dyy $$0, Path $$1, boolean $$2) {
+      this.d = new dyw($$0, $$1, $$2);
+      this.c = new bqv(dyr.b.values().length, ae.h(), "IOWorker-" + $$0.c());
    }
 
-   private static dyr a(dyr $$0) {
-      h.put($$0.k, $$0);
-      if ($$0.l != null) {
-         i.put($$0.l, $$0);
+   public boolean a(deh $$0, int $$1) {
+      deh $$2 = new deh($$0.g - $$1, $$0.h - $$1);
+      deh $$3 = new deh($$0.g + $$1, $$0.h + $$1);
+
+      for (int $$4 = $$2.h(); $$4 <= $$3.h(); $$4++) {
+         for (int $$5 = $$2.i(); $$5 <= $$3.i(); $$5++) {
+            BitSet $$6 = this.a($$4, $$5).join();
+            if (!$$6.isEmpty()) {
+               deh $$7 = deh.a($$4, $$5);
+               int $$8 = Math.max($$2.g - $$7.g, 0);
+               int $$9 = Math.max($$2.h - $$7.h, 0);
+               int $$10 = Math.min($$3.g - $$7.g, 31);
+               int $$11 = Math.min($$3.h - $$7.h, 31);
+
+               for (int $$12 = $$8; $$12 <= $$10; $$12++) {
+                  for (int $$13 = $$9; $$13 <= $$11; $$13++) {
+                     int $$14 = $$13 * 32 + $$12;
+                     if ($$6.get($$14)) {
+                        return true;
+                     }
+                  }
+               }
+            }
+         }
       }
 
-      return $$0;
+      return false;
    }
 
-   @Nullable
-   public static dyr a(int $$0) {
-      return (dyr)h.get($$0);
-   }
+   private CompletableFuture<BitSet> a(int $$0, int $$1) {
+      long $$2 = deh.c($$0, $$1);
+      synchronized (this.f) {
+         CompletableFuture<BitSet> $$3 = (CompletableFuture<BitSet>)this.f.getAndMoveToFirst($$2);
+         if ($$3 == null) {
+            $$3 = this.b($$0, $$1);
+            this.f.putAndMoveToFirst($$2, $$3);
+            if (this.f.size() > 1024) {
+               this.f.removeLast();
+            }
+         }
 
-   public static void a(String $$0) {
-      dyr $$1 = (dyr)i.get($$0);
-      if ($$1 != null) {
-         j = $$1;
-      } else {
-         g.error("Invalid `region-file-compression` value `{}` in server.properties. Please use one of: {}", $$0, String.join(", ", i.keySet()));
+         return $$3;
       }
    }
 
-   public static dyr a() {
-      return j;
+   private CompletableFuture<BitSet> b(int $$0, int $$1) {
+      return CompletableFuture.supplyAsync(() -> {
+         deh $$2 = deh.a($$0, $$1);
+         deh $$3 = deh.b($$0, $$1);
+         BitSet $$4 = new BitSet();
+         deh.a($$2, $$3).forEach($$1xx -> {
+            vo $$2x = new vo(new vq(up.a, "DataVersion"), new vq(uk.b, "blending_data"));
+
+            try {
+               this.a($$1xx, $$2x).join();
+            } catch (Exception var7) {
+               a.warn("Failed to scan chunk {}", $$1xx, var7);
+               return;
+            }
+
+            if ($$2x.d() instanceof uk $$5 && this.a($$5)) {
+               int $$6 = $$1xx.k() * 32 + $$1xx.j();
+               $$4.set($$6);
+            }
+         });
+         return $$4;
+      }, ae.g());
    }
 
-   public static boolean b(int $$0) {
-      return h.containsKey($$0);
+   private boolean a(uk $$0) {
+      return $$0.b("DataVersion", 99) && $$0.h("DataVersion") >= 3441 ? $$0.b("blending_data", 10) : true;
    }
 
-   public int b() {
-      return this.k;
+   public CompletableFuture<Void> a(deh $$0, @Nullable uk $$1) {
+      return this.a($$0, () -> $$1);
    }
 
-   public OutputStream a(OutputStream $$0) throws IOException {
-      return this.n.wrap($$0);
+   public CompletableFuture<Void> a(deh $$0, Supplier<uk> $$1) {
+      return this.<CompletableFuture<Void>>a((Supplier<CompletableFuture<Void>>)(() -> {
+         uk $$2 = $$1.get();
+         dyr.a $$3 = this.e.computeIfAbsent($$0, $$1xx -> new dyr.a($$2));
+         $$3.a = $$2;
+         return $$3.b;
+      })).thenCompose(Function.identity());
    }
 
-   public InputStream a(InputStream $$0) throws IOException {
-      return this.m.wrap($$0);
+   public CompletableFuture<Optional<uk>> a(deh $$0) {
+      return this.a((dyr.c<Optional<uk>>)(() -> {
+         dyr.a $$1 = this.e.get($$0);
+         if ($$1 != null) {
+            return Optional.ofNullable($$1.a());
+         } else {
+            try {
+               uk $$2 = this.d.a($$0);
+               return Optional.ofNullable($$2);
+            } catch (Exception var4) {
+               a.warn("Failed to read chunk {}", $$0, var4);
+               throw var4;
+            }
+         }
+      }));
+   }
+
+   public CompletableFuture<Void> a(boolean $$0) {
+      CompletableFuture<Void> $$1 = this.<CompletableFuture<Void>>a(
+            (Supplier<CompletableFuture<Void>>)(() -> CompletableFuture.allOf(this.e.values().stream().map($$0x -> $$0x.b).toArray(CompletableFuture[]::new)))
+         )
+         .thenCompose(Function.identity());
+      return $$0 ? $$1.thenCompose($$0x -> this.a((dyr.c<Void>)(() -> {
+            try {
+               this.d.a();
+               return null;
+            } catch (Exception var2x) {
+               a.warn("Failed to synchronize chunks", var2x);
+               throw var2x;
+            }
+         }))) : $$1.thenCompose($$0x -> this.a((Supplier<Void>)(() -> null)));
+   }
+
+   @Override
+   public CompletableFuture<Void> a(deh $$0, ve $$1) {
+      return this.a((dyr.c<Void>)(() -> {
+         try {
+            dyr.a $$2 = this.e.get($$0);
+            if ($$2 != null) {
+               if ($$2.a != null) {
+                  $$2.a.b($$1);
+               }
+            } else {
+               this.d.a($$0, $$1);
+            }
+
+            return null;
+         } catch (Exception var4) {
+            a.warn("Failed to bulk scan chunk {}", $$0, var4);
+            throw var4;
+         }
+      }));
+   }
+
+   private <T> CompletableFuture<T> a(dyr.c<T> $$0) {
+      return this.c.a(dyr.b.a.ordinal(), $$1 -> {
+         if (!this.b.get()) {
+            try {
+               $$1.complete($$0.get());
+            } catch (Exception var4) {
+               $$1.completeExceptionally(var4);
+            }
+         }
+
+         this.c();
+      });
+   }
+
+   private <T> CompletableFuture<T> a(Supplier<T> $$0) {
+      return this.c.a(dyr.b.a.ordinal(), $$1 -> {
+         if (!this.b.get()) {
+            $$1.complete($$0.get());
+         }
+
+         this.c();
+      });
+   }
+
+   private void b() {
+      Entry<deh, dyr.a> $$0 = this.e.pollFirstEntry();
+      if ($$0 != null) {
+         this.a($$0.getKey(), $$0.getValue());
+         this.c();
+      }
+   }
+
+   private void c() {
+      this.c.a_(new bqx.c(dyr.b.b.ordinal(), this::b));
+   }
+
+   private void a(deh $$0, dyr.a $$1) {
+      try {
+         this.d.a($$0, $$1.a);
+         $$1.b.complete(null);
+      } catch (Exception var4) {
+         a.error("Failed to store chunk {}", $$0, var4);
+         $$1.b.completeExceptionally(var4);
+      }
+   }
+
+   @Override
+   public void close() throws IOException {
+      if (this.b.compareAndSet(false, true)) {
+         this.d();
+         this.c.close();
+
+         try {
+            this.d.close();
+         } catch (Exception var2) {
+            a.error("Failed to close storage", var2);
+         }
+      }
+   }
+
+   private void d() {
+      this.c.a(dyr.b.c.ordinal(), $$0 -> $$0.complete(bap.a)).join();
+   }
+
+   public dyy a() {
+      return this.d.b();
+   }
+
+   static class a {
+      @Nullable
+      uk a;
+      final CompletableFuture<Void> b = new CompletableFuture<>();
+
+      public a(@Nullable uk $$0) {
+         this.a = $$0;
+      }
+
+      @Nullable
+      uk a() {
+         uk $$0 = this.a;
+         return $$0 == null ? null : $$0.i();
+      }
+   }
+
+   static enum b {
+      a,
+      b,
+      c;
    }
 
    @FunctionalInterface
-   interface a<O> {
-      O wrap(O var1) throws IOException;
+   interface c<T> {
+      @Nullable
+      T get() throws Exception;
    }
 }

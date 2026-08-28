@@ -1,21 +1,24 @@
-import com.mojang.datafixers.Products.P1;
-import com.mojang.serialization.codecs.RecordCodecBuilder.Instance;
-import com.mojang.serialization.codecs.RecordCodecBuilder.Mu;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public abstract class ecr implements ecg {
-   protected final kk f;
+public class ecr extends ecx {
+   final axq<die> a;
+   public static final MapCodec<ecr> e = RecordCodecBuilder.mapCodec(
+      $$0 -> a($$0).and(axq.a(lz.f).fieldOf("tag").forGetter($$0x -> $$0x.a)).apply($$0, ecr::new)
+   );
 
-   protected static <P extends ecr> P1<Mu<P>, kk> a(Instance<P> $$0) {
-      return $$0.group(kk.v(16).optionalFieldOf("offset", kk.g).forGetter($$0x -> $$0x.f));
+   protected ecr(kl $$0, axq<die> $$1) {
+      super($$0);
+      this.a = $$1;
    }
 
-   protected ecr(kk $$0) {
-      this.f = $$0;
+   @Override
+   protected boolean a(dvj $$0) {
+      return $$0.a(this.a);
    }
 
-   public final boolean a(dfs $$0, jg $$1) {
-      return this.a($$0.a_($$1.a(this.f)));
+   @Override
+   public ecn<?> a() {
+      return ecn.b;
    }
-
-   protected abstract boolean a(dvd var1);
 }

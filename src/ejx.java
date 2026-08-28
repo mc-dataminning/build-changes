@@ -1,34 +1,29 @@
-import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class ejx extends ejy {
-   public static final ejx a = new ejx(ebt.a(0));
-   public static final MapCodec<ejx> b = ebt.a.fieldOf("value").xmap(ejx::new, ejx::b);
-   private final ebt d;
+public class ejx {
+   public static final Codec<ejx> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(Codec.intRange(0, dzf.c).fieldOf("height").forGetter(ejx::a), ly.e.q().fieldOf("block").orElse(dig.a).forGetter($$0x -> $$0x.b().b()))
+            .apply($$0, ejx::new)
+   );
+   private final die b;
+   private final int c;
 
-   public static ejx a(ebt $$0) {
-      return new ejx($$0);
+   public ejx(int $$0, die $$1) {
+      this.c = $$0;
+      this.b = $$1;
    }
 
-   private ejx(ebt $$0) {
-      this.d = $$0;
+   public int a() {
+      return this.c;
    }
 
-   public ebt b() {
-      return this.d;
-   }
-
-   @Override
-   public int a(azr $$0, ebw $$1) {
-      return this.d.a($$1);
-   }
-
-   @Override
-   public ejz<?> a() {
-      return ejz.a;
+   public dvj b() {
+      return this.b.m();
    }
 
    @Override
    public String toString() {
-      return this.d.toString();
+      return (this.c != 1 ? this.c + "*" : "") + ly.e.b(this.b);
    }
 }

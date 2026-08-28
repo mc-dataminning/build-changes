@@ -1,26 +1,17 @@
-public class gqt extends gpf<cma, gwj, gaj> {
-   private static final alh a = alh.b("textures/entity/illager/vex.png");
-   private static final alh b = alh.b("textures/entity/illager/vex_charging.png");
+public class gqt extends gnd<cmd, gwi> {
+   private static final ali a = ali.b("textures/entity/skeleton/stray.png");
+   private static final ali b = ali.b("textures/entity/skeleton/stray_overlay.png");
 
-   public gqt(gnz.a $$0) {
-      super($$0, new gaj($$0.a(gba.cS)), 0.3F);
-      this.a(new gsf<>(this, $$0.b()));
+   public gqt(gok.a $$0) {
+      super($$0, gbl.cB, gbl.cC, gbl.cD);
+      this.a(new gta<>(this, $$0.f(), gbl.cE, b));
    }
 
-   protected int a(cma $$0, jg $$1) {
-      return 15;
+   public ali b(gwi $$0) {
+      return a;
    }
 
-   public alh a(gwj $$0) {
-      return $$0.a ? b : a;
-   }
-
-   public gwj c() {
-      return new gwj();
-   }
-
-   public void a(cma $$0, gwj $$1, float $$2) {
-      super.a($$0, $$1, $$2);
-      $$1.a = $$0.gv();
+   public gwi c() {
+      return new gwi();
    }
 }

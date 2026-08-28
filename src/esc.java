@@ -1,86 +1,40 @@
-import java.util.Set;
+import it.unimi.dsi.fastutil.HashCommon;
+import org.jetbrains.annotations.Nullable;
 
-public record esc(arm d, ezh e, ezh f, float g, float h, boolean i, Set<bvj> j, esc.a k) {
-   public static final esc.a a = $$0 -> {
-   };
-   public static final esc.a b = esc::a;
-   public static final esc.a c = esc::b;
+public class esc {
+   private static final int a = 4096;
+   private static final int b = 4095;
+   private final long[] c = new long[4096];
+   private final esb[] d = new esb[4096];
 
-   public esc(arm $$0, ezh $$1, ezh $$2, float $$3, float $$4, esc.a $$5) {
-      this($$0, $$1, $$2, $$3, $$4, Set.of(), $$5);
+   public esb a(deg $$0, jh $$1) {
+      long $$2 = $$1.a();
+      int $$3 = a($$2);
+      esb $$4 = this.a($$3, $$2);
+      return $$4 != null ? $$4 : this.a($$0, $$1, $$3, $$2);
    }
 
-   public esc(arm $$0, ezh $$1, ezh $$2, float $$3, float $$4, Set<bvj> $$5, esc.a $$6) {
-      this($$0, $$1, $$2, $$3, $$4, false, $$5, $$6);
+   @Nullable
+   private esb a(int $$0, long $$1) {
+      return this.c[$$0] == $$1 ? this.d[$$0] : null;
    }
 
-   public esc(arm $$0, btz $$1, esc.a $$2) {
-      this($$0, a($$0, $$1), ezh.c, 0.0F, 0.0F, false, Set.of(), $$2);
+   private esb a(deg $$0, jh $$1, int $$2, long $$3) {
+      esb $$4 = esg.b($$0, $$1);
+      this.c[$$2] = $$3;
+      this.d[$$2] = $$4;
+      return $$4;
    }
 
-   private static void a(btz $$0) {
-      if ($$0 instanceof arn $$1) {
-         $$1.d.b(new adq(1032, jg.c, 0, false));
+   public void a(jh $$0) {
+      long $$1 = $$0.a();
+      int $$2 = a($$1);
+      if (this.c[$$2] == $$1) {
+         this.d[$$2] = null;
       }
    }
 
-   private static void b(btz $$0) {
-      $$0.f(jg.a((jz)$$0.dv()));
-   }
-
-   public static esc a(arm $$0, btz $$1, esc.a $$2) {
-      return new esc($$0, a($$0, $$1), ezh.c, 0.0F, 0.0F, true, Set.of(), $$2);
-   }
-
-   private static ezh a(arm $$0, btz $$1) {
-      return $$1.a($$0, $$0.W()).c();
-   }
-
-   public esc a(float $$0, float $$1) {
-      return new esc(this.a(), this.b(), this.c(), $$0, $$1, this.f(), this.g(), this.h());
-   }
-
-   public arm a() {
-      return this.d;
-   }
-
-   public ezh b() {
-      return this.e;
-   }
-
-   public ezh c() {
-      return this.f;
-   }
-
-   public float d() {
-      return this.g;
-   }
-
-   public float e() {
-      return this.h;
-   }
-
-   public boolean f() {
-      return this.i;
-   }
-
-   public Set<bvj> g() {
-      return this.j;
-   }
-
-   public esc.a h() {
-      return this.k;
-   }
-
-   @FunctionalInterface
-   public interface a {
-      void onTransition(btz var1);
-
-      default esc.a then(esc.a $$0) {
-         return $$1 -> {
-            this.onTransition($$1);
-            $$0.onTransition($$1);
-         };
-      }
+   private static int a(long $$0) {
+      return (int)HashCommon.mix($$0) & 4095;
    }
 }

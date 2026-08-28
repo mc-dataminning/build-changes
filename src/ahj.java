@@ -1,16 +1,23 @@
-public record ahj(int b, int c) implements zo<agu> {
-   public static final zf<we, ahj> a = zf.a(zd.u, ahj::b, zd.h, ahj::e, ahj::new);
+import io.netty.buffer.ByteBuf;
 
-   @Override
-   public zq<ahj> a() {
-      return ags.bu;
+public class ahj implements zp<agv> {
+   public static final ahj a = new ahj();
+   public static final zg<ByteBuf, ahj> b = zg.a(a);
+
+   private ahj() {
    }
 
-   public void a(agu $$0) {
+   @Override
+   public zr<ahj> a() {
+      return agt.bt;
+   }
+
+   public void a(agv $$0) {
       $$0.a(this);
    }
 
-   public int e() {
-      return this.c;
+   @Override
+   public boolean d() {
+      return true;
    }
 }

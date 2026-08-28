@@ -1,45 +1,19 @@
-import it.unimi.dsi.fastutil.ints.IntComparator;
+import com.google.common.collect.ImmutableList;
 
-public enum fpf {
-   a,
-   b,
-   c,
-   d;
-
-   private final IntComparator e = ($$0, $$1) -> $$0 == $$1 ? 0 : (this.b($$0, $$1) ? -1 : 1);
-
-   public fpe a() {
-      return switch (this) {
-         case a, b -> fpe.b;
-         case c, d -> fpe.a;
-      };
+public interface fpf {
+   default void a(fpe $$0, xi $$1) {
+      this.a($$0, fph.a($$1.getString()));
    }
 
-   public fpf b() {
-      return switch (this) {
-         case a -> b;
-         case b -> a;
-         case c -> d;
-         case d -> c;
-      };
+   default void a(fpe $$0, String $$1) {
+      this.a($$0, fph.a($$1));
    }
 
-   public boolean c() {
-      return switch (this) {
-         case a, c -> false;
-         case b, d -> true;
-      };
+   default void a(fpe $$0, xi... $$1) {
+      this.a($$0, fph.a(ImmutableList.copyOf($$1)));
    }
 
-   public boolean a(int $$0, int $$1) {
-      return this.c() ? $$0 > $$1 : $$1 > $$0;
-   }
+   void a(fpe var1, fph<?> var2);
 
-   public boolean b(int $$0, int $$1) {
-      return this.c() ? $$0 < $$1 : $$1 < $$0;
-   }
-
-   public IntComparator d() {
-      return this.e;
-   }
+   fpf a();
 }

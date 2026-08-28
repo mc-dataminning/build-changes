@@ -1,13 +1,25 @@
-import javax.annotation.Nullable;
+import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.Iterables;
+import java.util.Collection;
+import java.util.List;
+import java.util.Optional;
+import java.util.Set;
+import java.util.function.Predicate;
 
-public class cfp {
-   @Nullable
-   public static ezh a(bvd $$0, int $$1, int $$2, int $$3, ezh $$4, double $$5) {
-      ezh $$6 = $$4.a($$0.dC(), $$0.dE(), $$0.dI());
-      boolean $$7 = cfr.a($$0, $$1);
-      return cfu.a($$0, () -> {
-         jg $$7x = cfo.a($$0, $$1, $$2, $$3, $$6.d, $$6.f, $$5, $$7);
-         return $$7x != null && !cfr.a($$0, $$7x) ? $$7x : null;
-      });
+public class cfp extends cfd<cnp> {
+   @Override
+   public Set<cee<?>> a() {
+      return ImmutableSet.copyOf(Iterables.concat(super.a(), List.of(cee.B)));
+   }
+
+   protected void a(arn $$0, cnp $$1) {
+      super.a($$0, $$1);
+      a($$1, $$0x -> $$0x.ar() == bul.by)
+         .or(() -> a($$1, $$0xx -> $$0xx.ar() != bul.by))
+         .ifPresentOrElse($$1x -> $$1.ed().a(cee.B, $$1x), () -> $$1.ed().b(cee.B));
+   }
+
+   private static Optional<bva> a(cnp $$0, Predicate<bva> $$1) {
+      return $$0.ed().c(cee.g).stream().flatMap(Collection::stream).filter($$0::c).filter($$1).findFirst();
    }
 }

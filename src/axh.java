@@ -1,9 +1,11 @@
-public interface axh {
-   axp<cvq> a = a("regular_goat_horns");
-   axp<cvq> b = a("screaming_goat_horns");
-   axp<cvq> c = a("goat_horns");
+public class axh {
+   public static final axq<eag> a = a("vibrations");
+   public static final axq<eag> b = a("warden_can_listen");
+   public static final axq<eag> c = a("shrieker_can_listen");
+   public static final axq<eag> d = a("ignore_vibrations_sneaking");
+   public static final axq<eag> e = a("allay_can_listen");
 
-   private static axp<cvq> a(String $$0) {
-      return axp.a(ly.I, alh.b($$0));
+   private static axq<eag> a(String $$0) {
+      return axq.a(lz.G, ali.b($$0));
    }
 }

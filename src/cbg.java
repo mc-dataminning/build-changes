@@ -1,50 +1,64 @@
 import java.util.EnumSet;
+import javax.annotation.Nullable;
 
-public class cbg extends ccg {
-   private final cgp g;
+public class cbg extends cby {
+   private final chu a;
+   @Nullable
+   private com b;
+   private final dfb c;
+   private final float d;
+   private int e;
+   private final cfr f;
 
-   public cbg(cgp $$0, double $$1, int $$2) {
-      super($$0, $$1, $$2, 6);
-      this.g = $$0;
-      this.f = -2;
-      this.a(EnumSet.of(cbt.a.c, cbt.a.a));
+   public cbg(chu $$0, float $$1) {
+      this.a = $$0;
+      this.c = $$0.dX();
+      this.d = $$1;
+      this.f = cfr.b().a((double)$$1);
+      this.a(EnumSet.of(cby.a.b));
    }
 
    @Override
    public boolean b() {
-      return this.g.q() && !this.g.gv() && !this.g.gI() && super.b();
+      this.b = this.c.a(this.f, this.a);
+      return this.b == null ? false : this.a(this.b);
    }
 
    @Override
-   public void d() {
-      super.d();
-      this.g.y(false);
-   }
-
-   @Override
-   protected int a(bvd $$0) {
-      return 40;
-   }
-
-   @Override
-   public void e() {
-      super.e();
-      this.g.A(false);
-   }
-
-   @Override
-   public void a() {
-      super.a();
-      this.g.y(false);
-      if (!this.m()) {
-         this.g.A(false);
-      } else if (!this.g.gI()) {
-         this.g.A(true);
+   public boolean c() {
+      if (!this.b.bM()) {
+         return false;
+      } else {
+         return this.a.g(this.b) > (double)(this.d * this.d) ? false : this.e > 0 && this.a(this.b);
       }
    }
 
    @Override
-   protected boolean a(dey $$0, jg $$1) {
-      return $$0.u($$1.d()) && $$0.a_($$1).a(awz.S);
+   public void d() {
+      this.a.A(true);
+      this.e = this.a(40 + this.a.ea().a(40));
+   }
+
+   @Override
+   public void e() {
+      this.a.A(false);
+      this.b = null;
+   }
+
+   @Override
+   public void a() {
+      this.a.K().a(this.b.dC(), this.b.dG(), this.b.dI(), 10.0F, (float)this.a.ad());
+      this.e--;
+   }
+
+   private boolean a(com $$0) {
+      for (bsc $$1 : bsc.values()) {
+         cwb $$2 = $$0.b($$1);
+         if ($$2.a(cwf.rA) || this.a.l($$2)) {
+            return true;
+         }
+      }
+
+      return false;
    }
 }

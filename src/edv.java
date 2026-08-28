@@ -1,44 +1,48 @@
 import com.mojang.serialization.Codec;
-import java.util.List;
+import it.unimi.dsi.fastutil.ints.IntArrayList;
+import it.unimi.dsi.fastutil.ints.IntListIterator;
+import java.util.stream.IntStream;
 
-public class edv extends edt {
-   public edv(Codec<egq> $$0) {
+public class edv extends eel<egw> {
+   public edv(Codec<egw> $$0) {
       super($$0);
    }
 
    @Override
-   protected boolean a(dew $$0, azr $$1, jg $$2, dvd $$3) {
-      jg.a $$4 = $$2.k();
-      int $$5 = $$1.a(3) + 1;
+   public boolean a(een<egw> $$0) {
+      azs $$1 = $$0.d();
+      dfy $$2 = $$0.b();
+      deh $$3 = new deh($$0.e());
+      IntArrayList $$4 = ae.a(IntStream.rangeClosed($$3.d(), $$3.f()), $$1);
+      IntArrayList $$5 = ae.a(IntStream.rangeClosed($$3.e(), $$3.g()), $$1);
+      jh.a $$6 = new jh.a();
+      IntListIterator var8 = $$4.iterator();
 
-      for (int $$6 = 0; $$6 < $$5; $$6++) {
-         if (!this.b($$0, $$1, $$4, $$3)) {
-            return true;
-         }
+      while (var8.hasNext()) {
+         Integer $$7 = (Integer)var8.next();
+         IntListIterator var10 = $$5.iterator();
 
-         $$4.c(jl.b);
-      }
+         while (var10.hasNext()) {
+            Integer $$8 = (Integer)var10.next();
+            $$6.d($$7, 0, $$8);
+            jh $$9 = $$2.a(ebf.a.f, $$6);
+            if ($$2.u($$9) || $$2.a_($$9).g($$2, $$9).c()) {
+               $$2.a($$9, dig.cv.m(), 2);
+               bsj.a($$2, $$1, $$9, ety.a);
+               dvj $$10 = dig.cp.m();
 
-      jg $$7 = $$4.j();
-      int $$8 = $$1.a(3) + 2;
-      List<jl> $$9 = jl.c.a.c($$1);
+               for (jm $$11 : jm.c.a) {
+                  jh $$12 = $$9.a($$11);
+                  if ($$10.a($$2, $$12)) {
+                     $$2.a($$12, $$10, 2);
+                  }
+               }
 
-      for (jl $$11 : $$9.subList(0, $$8)) {
-         $$4.g($$7);
-         $$4.c($$11);
-         int $$12 = $$1.a(5) + 2;
-         int $$13 = 0;
-
-         for (int $$14 = 0; $$14 < $$12 && this.b($$0, $$1, $$4, $$3); $$14++) {
-            $$13++;
-            $$4.c(jl.b);
-            if ($$14 == 0 || $$13 >= 2 && $$1.i() < 0.25F) {
-               $$4.c($$11);
-               $$13 = 0;
+               return true;
             }
          }
       }
 
-      return true;
+      return false;
    }
 }

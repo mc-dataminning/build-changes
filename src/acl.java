@@ -1,53 +1,44 @@
-public class acl implements zo<acd> {
-   public static final zf<ws, acl> a = zo.a(acl::a, acl::new);
-   private final jg b;
-   private final int c;
-   private final int d;
-   private final dhy e;
+import java.util.function.BiFunction;
 
-   public acl(jg $$0, dhy $$1, int $$2, int $$3) {
+public class acl implements zp<ace> {
+   public static final zg<wt, acl> a = zg.a(jh.b, acl::b, ze.a(lz.h), acl::e, ze.q, acl::f, acl::new);
+   private final jh b;
+   private final dso<?> c;
+   private final uk d;
+
+   public static acl a(dsm $$0, BiFunction<dsm, ke, uk> $$1) {
+      ke $$2 = $$0.i().H_();
+      return new acl($$0.aB_(), $$0.q(), $$1.apply($$0, $$2));
+   }
+
+   public static acl a(dsm $$0) {
+      return a($$0, dsm::a);
+   }
+
+   private acl(jh $$0, dso<?> $$1, uk $$2) {
       this.b = $$0;
-      this.e = $$1;
-      this.c = $$2;
-      this.d = $$3;
-   }
-
-   private acl(ws $$0) {
-      this.b = $$0.e();
-      this.c = $$0.readUnsignedByte();
-      this.d = $$0.readUnsignedByte();
-      this.e = zd.a(ly.f).decode($$0);
-   }
-
-   private void a(ws $$0) {
-      $$0.a(this.b);
-      $$0.l(this.c);
-      $$0.l(this.d);
-      zd.a(ly.f).encode($$0, this.e);
+      this.c = $$1;
+      this.d = $$2;
    }
 
    @Override
-   public zq<acl> a() {
-      return ags.j;
+   public zr<acl> a() {
+      return agt.i;
    }
 
-   public void a(acd $$0) {
+   public void a(ace $$0) {
       $$0.a(this);
    }
 
-   public jg b() {
+   public jh b() {
       return this.b;
    }
 
-   public int e() {
+   public dso<?> e() {
       return this.c;
    }
 
-   public int f() {
+   public uk f() {
       return this.d;
-   }
-
-   public dhy g() {
-      return this.e;
    }
 }

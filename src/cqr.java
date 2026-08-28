@@ -1,70 +1,113 @@
-public class cqr extends cqf {
-   private final ddw c = new ddw() {
-      @Override
-      public void a(dev $$0, jg $$1, int $$2) {
-         $$0.a(cqr.this, (byte)$$2);
-      }
-   };
-   private final Runnable d;
+public abstract class cqr {
+   protected final cqk a;
 
-   public cqr(bug<? extends cqr> $$0, dev $$1) {
-      super($$0, $$1);
-      this.d = this.c($$1);
+   protected cqr(cqk $$0) {
+      this.a = $$0;
    }
 
-   public cqr(dev $$0, double $$1, double $$2, double $$3) {
-      super(bug.aU, $$0, $$1, $$2, $$3);
-      this.d = this.c($$0);
+   public void a(double $$0, double $$1, double $$2, float $$3, float $$4, int $$5) {
+      this.c($$0, $$1, $$2);
+      this.b($$3 % 360.0F);
+      this.a($$4 % 360.0F);
    }
 
-   @Override
-   protected cvt al_() {
-      return cwb.nM;
+   public double a() {
+      return this.l();
    }
 
-   private Runnable c(dev $$0) {
-      return $$0 instanceof arm ? () -> this.c.a((arm)$$0, this.dx()) : () -> this.c.a($$0, this.dx());
+   public double b() {
+      return this.m();
    }
 
-   @Override
-   public cqf.a y() {
-      return cqf.a.e;
+   public double c() {
+      return this.n();
    }
 
-   @Override
-   public dvd A() {
-      return dia.ct.m();
+   public float d() {
+      return this.o();
    }
 
-   @Override
-   protected void a(uj $$0) {
-      super.a($$0);
-      this.c.a(this.dX(), this.dx(), $$0);
+   public float e() {
+      return this.p();
    }
 
-   @Override
-   protected void b(uj $$0) {
-      super.b($$0);
-      this.c.a($$0);
+   public void a(double $$0, double $$1, double $$2) {
+      this.b($$0, $$1, $$2);
    }
 
-   @Override
-   public void b(byte $$0) {
-      this.c.a(this.dX(), $$0);
+   public abstract void f();
+
+   public dfb g() {
+      return this.a.dX();
    }
 
-   @Override
-   public void l() {
-      super.l();
-      this.d.run();
+   public abstract void h();
+
+   public abstract double a(jh var1, dwn var2, double var3);
+
+   public abstract boolean i();
+
+   public ezn j() {
+      return this.a.dA();
    }
 
-   public ddw E() {
-      return this.c;
+   public void a(ezn $$0) {
+      this.a.h($$0);
    }
 
-   @Override
-   public boolean cX() {
-      return true;
+   public void b(double $$0, double $$1, double $$2) {
+      this.a.n($$0, $$1, $$2);
    }
+
+   public ezn k() {
+      return this.a.dv();
+   }
+
+   public double l() {
+      return this.a.dC();
+   }
+
+   public double m() {
+      return this.a.dE();
+   }
+
+   public double n() {
+      return this.a.dI();
+   }
+
+   public void b(ezn $$0) {
+      this.a.b($$0);
+   }
+
+   public void c(double $$0, double $$1, double $$2) {
+      this.a.a_($$0, $$1, $$2);
+   }
+
+   public float o() {
+      return this.a.dP();
+   }
+
+   public void a(float $$0) {
+      this.a.w($$0);
+   }
+
+   public float p() {
+      return this.a.dN();
+   }
+
+   public void b(float $$0) {
+      this.a.v($$0);
+   }
+
+   public jm q() {
+      return this.a.cP();
+   }
+
+   public ezn c(ezn $$0) {
+      return $$0;
+   }
+
+   public abstract double r();
+
+   public abstract double s();
 }

@@ -1,112 +1,94 @@
-import it.unimi.dsi.fastutil.HashCommon;
-import java.util.Arrays;
-import java.util.Collection;
-import javax.annotation.Nullable;
+public abstract class cra extends bue {
+   protected static final akl<Integer> f = akp.a(cra.class, akn.b);
+   protected static final akl<Integer> g = akp.a(cra.class, akn.b);
+   protected static final akl<Float> h = akp.a(cra.class, akn.d);
 
-public final class cra {
-   private static final cra b = new cra(null, 0L);
-   public static final int a = 64;
-   @Nullable
-   private final crb c;
-   private final long d;
-
-   private cra(@Nullable crb $$0, long $$1) {
-      this.c = $$0;
-      this.d = $$1;
-   }
-
-   static cra a(crb $$0, Collection<cqy> $$1) {
-      if ($$1.isEmpty()) {
-         return b;
-      } else {
-         long $$2 = a($$0, 0L, $$1);
-         return new cra($$0, $$2);
-      }
-   }
-
-   public static cra a() {
-      return b;
-   }
-
-   public static cra a(cqy $$0) {
-      return new cra($$0.a, $$0.b);
-   }
-
-   public static cra a(cqy $$0, cqy... $$1) {
-      long $$2 = $$1.length == 0 ? $$0.b : a($$0.a, $$0.b, Arrays.asList($$1));
-      return new cra($$0.a, $$2);
-   }
-
-   private static long a(crb $$0, long $$1, Iterable<cqy> $$2) {
-      for (cqy $$3 : $$2) {
-         if ($$0 != $$3.a) {
-            throw new IllegalStateException("Mismatched feature universe, expected '" + $$0 + "', but got '" + $$3.a + "'");
-         }
-
-         $$1 |= $$3.b;
-      }
-
-      return $$1;
-   }
-
-   public boolean b(cqy $$0) {
-      return this.c != $$0.a ? false : (this.d & $$0.b) != 0L;
-   }
-
-   public boolean b() {
-      return this.equals(b);
-   }
-
-   public boolean a(cra $$0) {
-      if (this.c == null) {
-         return true;
-      } else {
-         return this.c != $$0.c ? false : (this.d & ~$$0.d) == 0L;
-      }
-   }
-
-   public boolean b(cra $$0) {
-      return this.c != null && $$0.c != null && this.c == $$0.c ? (this.d & $$0.d) != 0L : false;
-   }
-
-   public cra c(cra $$0) {
-      if (this.c == null) {
-         return $$0;
-      } else if ($$0.c == null) {
-         return this;
-      } else if (this.c != $$0.c) {
-         throw new IllegalArgumentException("Mismatched set elements: '" + this.c + "' != '" + $$0.c + "'");
-      } else {
-         return new cra(this.c, this.d | $$0.d);
-      }
-   }
-
-   public cra d(cra $$0) {
-      if (this.c == null || $$0.c == null) {
-         return this;
-      } else if (this.c != $$0.c) {
-         throw new IllegalArgumentException("Mismatched set elements: '" + this.c + "' != '" + $$0.c + "'");
-      } else {
-         long $$1 = this.d & ~$$0.d;
-         return $$1 == 0L ? b : new cra(this.c, $$1);
-      }
+   public cra(bul<?> $$0, dfb $$1) {
+      super($$0, $$1);
    }
 
    @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
+   public boolean a(bsu $$0, float $$1) {
+      if (this.dX().C || this.dS()) {
          return true;
-      } else {
-         if ($$0 instanceof cra $$1 && this.c == $$1.c && this.d == $$1.d) {
-            return true;
-         }
-
+      } else if (this.b($$0)) {
          return false;
+      } else {
+         this.m(-this.S());
+         this.d(10);
+         this.bE();
+         this.b(this.Q() + $$1 * 10.0F);
+         this.a(eag.o, $$0.d());
+         boolean $$2 = $$0.d() instanceof com && ((com)$$0.d()).gl().d;
+         if (($$2 || !(this.Q() > 40.0F)) && !this.d($$0)) {
+            if ($$2) {
+               this.av();
+            }
+         } else {
+            this.a($$0);
+         }
+
+         return true;
+      }
+   }
+
+   boolean d(bsu $$0) {
+      return false;
+   }
+
+   @Override
+   public boolean a(det $$0) {
+      return $$0.b() instanceof bvc && !this.dX().ac().b(dex.c);
+   }
+
+   public void b(cvx $$0) {
+      this.au();
+      if (this.dX().ac().b(dex.i)) {
+         cwb $$1 = new cwb($$0);
+         $$1.b(ku.g, this.ao());
+         this.b($$1);
       }
    }
 
    @Override
-   public int hashCode() {
-      return (int)HashCommon.mix(this.d);
+   protected void a(akp.a $$0) {
+      $$0.a(f, 0);
+      $$0.a(g, 1);
+      $$0.a(h, 0.0F);
    }
+
+   public void d(int $$0) {
+      this.am.a(f, $$0);
+   }
+
+   public void m(int $$0) {
+      this.am.a(g, $$0);
+   }
+
+   public void b(float $$0) {
+      this.am.a(h, $$0);
+   }
+
+   public float Q() {
+      return this.am.a(h);
+   }
+
+   public int R() {
+      return this.am.a(f);
+   }
+
+   public int S() {
+      return this.am.a(g);
+   }
+
+   protected void a(bsu $$0) {
+      this.b(this.al_());
+   }
+
+   @Override
+   public int bY() {
+      return 10;
+   }
+
+   abstract cvx al_();
 }

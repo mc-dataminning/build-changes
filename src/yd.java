@@ -1,68 +1,36 @@
-import com.mojang.logging.LogUtils;
-import java.util.function.BooleanSupplier;
+import com.google.common.primitives.Ints;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.security.SignatureException;
+import java.util.UUID;
 import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
-@FunctionalInterface
-public interface yd {
-   Logger a = LogUtils.getLogger();
-   yd b = xx::b;
-   yd c = $$0 -> {
-      a.error("Received chat message from {}, but they have no chat session initialized and secure chat is enforced", $$0.g());
-      return null;
-   };
+public record yd(int b, UUID c, UUID d) {
+   public static final Codec<yd> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(ayt.l.fieldOf("index").forGetter(yd::b), kk.a.fieldOf("sender").forGetter(yd::c), kk.a.fieldOf("session_id").forGetter(yd::d))
+            .apply($$0, yd::new)
+   );
+
+   public static yd a(UUID $$0) {
+      return a($$0, ae.e);
+   }
+
+   public static yd a(UUID $$0, UUID $$1) {
+      return new yd(0, $$0, $$1);
+   }
+
+   public void a(azw.a $$0) throws SignatureException {
+      $$0.update(kk.b(this.c));
+      $$0.update(kk.b(this.d));
+      $$0.update(Ints.toByteArray(this.b));
+   }
+
+   public boolean a(yd $$0) {
+      return this.b > $$0.b() && this.c.equals($$0.c()) && this.d.equals($$0.d());
+   }
 
    @Nullable
-   xx updateAndValidate(xx var1);
-
-   public static class a implements yd {
-      private final azw d;
-      private final BooleanSupplier e;
-      @Nullable
-      private xx f;
-      private boolean g = true;
-
-      public a(azw $$0, BooleanSupplier $$1) {
-         this.d = $$0;
-         this.e = $$1;
-      }
-
-      private boolean a(xx $$0) {
-         if ($$0.equals(this.f)) {
-            return true;
-         } else if (this.f != null && !$$0.k().a(this.f.k())) {
-            a.error(
-               "Received out-of-order chat message from {}: expected index > {} for session {}, but was {} for session {}",
-               new Object[]{$$0.g(), this.f.k().b(), this.f.k().d(), $$0.k().b(), $$0.k().d()}
-            );
-            return false;
-         } else {
-            return true;
-         }
-      }
-
-      private boolean b(xx $$0) {
-         if (this.e.getAsBoolean()) {
-            a.error("Received message from player with expired profile public key: {}", $$0);
-            return false;
-         } else if (!$$0.a(this.d)) {
-            a.error("Received message with invalid signature from {}", $$0.g());
-            return false;
-         } else {
-            return this.a($$0);
-         }
-      }
-
-      @Nullable
-      @Override
-      public xx updateAndValidate(xx $$0) {
-         this.g = this.g && this.b($$0);
-         if (!this.g) {
-            return null;
-         } else {
-            this.f = $$0;
-            return $$0;
-         }
-      }
+   public yd a() {
+      return this.b == Integer.MAX_VALUE ? null : new yd(this.b + 1, this.c, this.d);
    }
 }

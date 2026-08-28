@@ -1,34 +1,33 @@
+import com.mojang.serialization.Codec;
+
 public class ebb {
-   public final azr a;
-   private double b;
-   private boolean c;
+   public static enum a implements bag {
+      a("raw_generation"),
+      b("lakes"),
+      c("local_modifications"),
+      d("underground_structures"),
+      e("surface_structures"),
+      f("strongholds"),
+      g("underground_ores"),
+      h("underground_decoration"),
+      i("fluid_springs"),
+      j("vegetal_decoration"),
+      k("top_layer_modification");
 
-   public ebb(azr $$0) {
-      this.a = $$0;
-   }
+      public static final Codec<ebb.a> l = bag.a(ebb.a::values);
+      private final String m;
 
-   public void a() {
-      this.c = false;
-   }
+      private a(final String $$0) {
+         this.m = $$0;
+      }
 
-   public double b() {
-      if (this.c) {
-         this.c = false;
-         return this.b;
-      } else {
-         double $$0;
-         double $$1;
-         double $$2;
-         do {
-            $$0 = 2.0 * this.a.j() - 1.0;
-            $$1 = 2.0 * this.a.j() - 1.0;
-            $$2 = azj.k($$0) + azj.k($$1);
-         } while ($$2 >= 1.0 || $$2 == 0.0);
+      public String a() {
+         return this.m;
+      }
 
-         double $$3 = Math.sqrt(-2.0 * Math.log($$2) / $$2);
-         this.b = $$1 * $$3;
-         this.c = true;
-         return $$0 * $$3;
+      @Override
+      public String c() {
+         return this.m;
       }
    }
 }

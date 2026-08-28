@@ -1,12 +1,20 @@
-public record afw(xh b) implements zo<acd> {
-   public static final zf<ws, afw> a = zf.a(xj.d, afw::b, afw::new);
+public record afw(int b) implements zp<ace> {
+   public static final zg<wf, afw> a = zp.a(afw::a, afw::new);
 
-   @Override
-   public zq<afw> a() {
-      return ags.aO;
+   private afw(wf $$0) {
+      this($$0.l());
    }
 
-   public void a(acd $$0) {
+   private void a(wf $$0) {
+      $$0.c(this.b);
+   }
+
+   @Override
+   public zr<afw> a() {
+      return agt.aN;
+   }
+
+   public void a(ace $$0) {
       $$0.a(this);
    }
 }

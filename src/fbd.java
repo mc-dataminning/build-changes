@@ -1,29 +1,46 @@
-public enum fbd {
-   a(-3),
-   b(-2),
-   c(-1),
-   d(0),
-   e(1),
-   f(2),
-   g(3);
+import com.google.common.collect.Lists;
+import it.unimi.dsi.fastutil.objects.ObjectOpenCustomHashSet;
+import java.util.List;
+import java.util.Set;
 
-   private final int h;
+public class fbd<T> implements fbg<T>, fbi<T> {
+   private final List<fbe<T>> a = Lists.newArrayList();
+   private final Set<fbe<?>> b = new ObjectOpenCustomHashSet(fbe.a);
 
-   private fbd(final int $$0) {
-      this.h = $$0;
+   @Override
+   public void a(fbf<T> $$0) {
+      fbe<T> $$1 = new fbe<>($$0.a(), $$0.b(), 0, $$0.d());
+      this.a($$1);
    }
 
-   public static fbd a(int $$0) {
-      for (fbd $$1 : values()) {
-         if ($$1.h == $$0) {
-            return $$1;
-         }
+   private void a(fbe<T> $$0) {
+      if (this.b.add($$0)) {
+         this.a.add($$0);
       }
-
-      return $$0 < a.h ? a : g;
    }
 
+   @Override
+   public boolean a(jh $$0, T $$1) {
+      return this.b.contains(fbe.a($$1, $$0));
+   }
+
+   @Override
    public int a() {
-      return this.h;
+      return this.a.size();
+   }
+
+   @Override
+   public List<fbe<T>> a(long $$0) {
+      return this.a;
+   }
+
+   public List<fbe<T>> b() {
+      return List.copyOf(this.a);
+   }
+
+   public static <T> fbd<T> a(List<fbe<T>> $$0) {
+      fbd<T> $$1 = new fbd<>();
+      $$0.forEach($$1::a);
+      return $$1;
    }
 }

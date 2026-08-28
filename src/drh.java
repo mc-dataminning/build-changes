@@ -1,33 +1,35 @@
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class drh extends drc implements drd {
-   public static final MapCodec<drh> e = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(drd.a.e.fieldOf("weathering_state").forGetter(drh::q), t()).apply($$0, drh::new)
-   );
-   private final drd.a f;
+public class drh extends din {
+   public static final MapCodec<drh> a = b(drh::new);
+   protected static final fah b = die.a(1.0, 0.0, 1.0, 15.0, 1.5, 15.0);
 
    @Override
-   protected MapCodec<drh> a() {
-      return e;
+   public MapCodec<drh> a() {
+      return a;
    }
 
-   protected drh(drd.a $$0, dvc.d $$1) {
-      super($$1);
-      this.f = $$0;
+   protected drh(dvi.d $$0) {
+      super($$0);
    }
 
    @Override
-   protected void b(dvd $$0, arm $$1, jg $$2, azr $$3) {
-      this.a_($$0, $$1, $$2, $$3);
+   protected void a(dvj $$0, dfb $$1, jh $$2, bue $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      if ($$1 instanceof arn && $$3 instanceof cqm) {
+         $$1.a(new jh($$2), true, $$3);
+      }
    }
 
    @Override
-   protected boolean f(dvd $$0) {
-      return drd.c($$0.b()).isPresent();
+   protected fah a(dvj $$0, deg $$1, jh $$2, ezs $$3) {
+      return b;
    }
 
-   public drd.a q() {
-      return this.f;
+   @Override
+   protected boolean b(dvj $$0, deg $$1, jh $$2) {
+      erk $$3 = $$1.b_($$2);
+      erk $$4 = $$1.b_($$2.d());
+      return ($$3.a() == erl.c || $$0.b() instanceof dmb) && $$4.a() == erl.a;
    }
 }

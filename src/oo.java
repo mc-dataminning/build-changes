@@ -1,87 +1,76 @@
-import com.google.gson.JsonElement;
-import java.util.function.BiConsumer;
-import java.util.function.Consumer;
-import java.util.function.Function;
-import java.util.function.Supplier;
+import javax.annotation.Nullable;
 
-public class oo {
-   public static final oo.a a = a(om::a, ol.c);
-   public static final oo.a b = a(om::a, ol.d);
-   public static final oo.a c = a(om::a, ol.e);
-   public static final oo.a d = a(om::k, ol.j);
-   public static final oo.a e = a(om::k, ol.k);
-   public static final oo.a f = a(om::q, ol.n);
-   public static final oo.a g = a(om::l, ol.m);
-   public static final oo.a h = a(om::B, ol.p);
-   public static final oo.a i = a(om::A, ol.q);
-   public static final oo.a j = a(om::f, ol.aw);
-   public static final oo.a k = a(om::g, ol.ax);
-   public static final oo.a l = a(om::g, ol.ay);
-   public static final oo.a m = a(om::g, ol.az);
-   public static final oo.a n = a(om::g, ol.aA);
-   public static final oo.a o = a(om::i, ol.aD);
-   public static final oo.a p = a(om::j, ol.aB);
-   public static final oo.a q = a(om::u, ol.aa);
-   public static final oo.a r = a(om::D, ol.aS);
-   public static final oo.a s = a(om::a, ol.ad);
-   public static final oo.a t = a(om::x, ol.bd);
-   public static final oo.a u = a(om::x, ol.be);
-   public static final oo.a v = a(om::b, ol.bm);
-   public static final oo.a w = a(om::n, ol.j);
-   public static final oo.a x = a(om::n, ol.k);
-   public static final oo.a y = a(om::r, ol.n);
-   public static final oo.a z = a(om::s, ol.j);
-   private final om A;
-   private final ok B;
+public final class oo {
+   public static final oo a = a("all");
+   public static final oo b = a("texture", a);
+   public static final oo c = a("particle", b);
+   public static final oo d = a("end", a);
+   public static final oo e = a("bottom", d);
+   public static final oo f = a("top", d);
+   public static final oo g = a("front", a);
+   public static final oo h = a("back", a);
+   public static final oo i = a("side", a);
+   public static final oo j = a("north", i);
+   public static final oo k = a("south", i);
+   public static final oo l = a("east", i);
+   public static final oo m = a("west", i);
+   public static final oo n = a("up");
+   public static final oo o = a("down");
+   public static final oo p = a("cross");
+   public static final oo q = a("plant");
+   public static final oo r = a("wall", a);
+   public static final oo s = a("rail");
+   public static final oo t = a("wool");
+   public static final oo u = a("pattern");
+   public static final oo v = a("pane");
+   public static final oo w = a("edge");
+   public static final oo x = a("fan");
+   public static final oo y = a("stem");
+   public static final oo z = a("upperstem");
+   public static final oo A = a("crop");
+   public static final oo B = a("dirt");
+   public static final oo C = a("fire");
+   public static final oo D = a("lantern");
+   public static final oo E = a("platform");
+   public static final oo F = a("unsticky");
+   public static final oo G = a("torch");
+   public static final oo H = a("layer0");
+   public static final oo I = a("layer1");
+   public static final oo J = a("layer2");
+   public static final oo K = a("lit_log");
+   public static final oo L = a("candle");
+   public static final oo M = a("inside");
+   public static final oo N = a("content");
+   public static final oo O = a("inner_top");
+   public static final oo P = a("flowerbed");
+   private final String Q;
+   @Nullable
+   private final oo R;
 
-   private oo(om $$0, ok $$1) {
-      this.A = $$0;
-      this.B = $$1;
+   private static oo a(String $$0) {
+      return new oo($$0, null);
    }
 
-   public ok a() {
-      return this.B;
+   private static oo a(String $$0, oo $$1) {
+      return new oo($$0, $$1);
    }
 
-   public om b() {
-      return this.A;
+   private oo(String $$0, @Nullable oo $$1) {
+      this.Q = $$0;
+      this.R = $$1;
    }
 
-   public oo a(Consumer<om> $$0) {
-      $$0.accept(this.A);
-      return this;
+   public String a() {
+      return this.Q;
    }
 
-   public alh a(dhy $$0, BiConsumer<alh, Supplier<JsonElement>> $$1) {
-      return this.B.a($$0, this.A, $$1);
+   @Nullable
+   public oo b() {
+      return this.R;
    }
 
-   public alh a(dhy $$0, String $$1, BiConsumer<alh, Supplier<JsonElement>> $$2) {
-      return this.B.a($$0, $$1, this.A, $$2);
-   }
-
-   private static oo.a a(Function<dhy, om> $$0, ok $$1) {
-      return $$2 -> new oo($$0.apply($$2), $$1);
-   }
-
-   public static oo a(alh $$0) {
-      return new oo(om.b($$0), ol.c);
-   }
-
-   @FunctionalInterface
-   public interface a {
-      oo get(dhy var1);
-
-      default alh create(dhy $$0, BiConsumer<alh, Supplier<JsonElement>> $$1) {
-         return this.get($$0).a($$0, $$1);
-      }
-
-      default alh createWithSuffix(dhy $$0, String $$1, BiConsumer<alh, Supplier<JsonElement>> $$2) {
-         return this.get($$0).a($$0, $$1, $$2);
-      }
-
-      default oo.a updateTexture(Consumer<om> $$0) {
-         return $$1 -> this.get($$1).a($$0);
-      }
+   @Override
+   public String toString() {
+      return "#" + this.Q;
    }
 }

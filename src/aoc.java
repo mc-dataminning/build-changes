@@ -1,38 +1,39 @@
-import com.mojang.authlib.GameProfile;
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
+import com.mojang.brigadier.tree.LiteralCommandNode;
 import java.util.Collection;
 
 public class aoc {
-   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(xh.c("commands.op.failed"));
+   public static void a(CommandDispatcher<ew> $$0) {
+      LiteralCommandNode<ew> $$1 = $$0.register(
+         (LiteralArgumentBuilder)ex.a("msg").then(ex.a("targets", fj.d()).then(ex.a("message", fn.a()).executes($$0x -> {
+            Collection<aro> $$1x = fj.f($$0x, "targets");
+            if (!$$1x.isEmpty()) {
+               fn.a($$0x, "message", $$2 -> a((ew)$$0x.getSource(), $$1x, $$2));
+            }
 
-   public static void a(CommandDispatcher<ev> $$0) {
-      $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)ew.a("op").requires($$0x -> $$0x.c(3))).then(ew.a("targets", fk.a()).suggests(($$0x, $$1) -> {
-            avn $$2 = ((ev)$$0x.getSource()).l().ag();
-            return fa.b($$2.t().stream().filter($$1x -> !$$2.f($$1x.gj())).map($$0xx -> $$0xx.gj().getName()), $$1);
-         }).executes($$0x -> a((ev)$$0x.getSource(), fk.a($$0x, "targets"))))
+            return $$1x.size();
+         })))
       );
+      $$0.register((LiteralArgumentBuilder)ex.a("tell").redirect($$1));
+      $$0.register((LiteralArgumentBuilder)ex.a("w").redirect($$1));
    }
 
-   private static int a(ev $$0, Collection<GameProfile> $$1) throws CommandSyntaxException {
-      avn $$2 = $$0.l().ag();
-      int $$3 = 0;
+   private static void a(ew $$0, Collection<aro> $$1, xy $$2) {
+      xe.a $$3 = xe.a(xe.g, $$0);
+      xx $$4 = xx.a($$2);
+      boolean $$5 = false;
 
-      for (GameProfile $$4 : $$1) {
-         if (!$$2.f($$4)) {
-            $$2.a($$4);
-            $$3++;
-            $$0.a(() -> xh.a("commands.op.success", $$1.iterator().next().getName()), true);
-         }
+      for (aro $$6 : $$1) {
+         xe.a $$7 = xe.a(xe.h, $$0).c($$6.S_());
+         $$0.a($$4, false, $$7);
+         boolean $$8 = $$0.a($$6);
+         $$6.a($$4, $$8, $$3);
+         $$5 |= $$8 && $$2.j();
       }
 
-      if ($$3 == 0) {
-         throw a.create();
-      } else {
-         return $$3;
+      if ($$5) {
+         $$0.a(avo.e);
       }
    }
 }

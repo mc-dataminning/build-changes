@@ -1,37 +1,38 @@
-import javax.annotation.Nullable;
+import com.google.common.math.IntMath;
+import it.unimi.dsi.fastutil.doubles.DoubleList;
 
-public class ezv extends ezr {
-   @Nullable
-   private jg b;
-   @Nullable
-   private jg c;
+public final class ezv implements ezz {
+   private final ezt a;
+   private final int b;
+   private final int c;
 
-   protected ezv(cqf $$0, boolean $$1) {
-      super($$0, $$1);
-      this.a($$0);
-   }
-
-   private void a(cqf $$0) {
-      jg $$1 = $$0.q();
-      dvd $$2 = $$0.dX().a_($$1);
-      boolean $$3 = dhn.h($$2);
-      if ($$3) {
-         this.b = $$1.e();
-         dwh $$4 = $$2.c(((dhn)$$2.b()).c());
-         if ($$4.b()) {
-            this.c = switch ($$4) {
-               case c -> $$1.i();
-               case d -> $$1.h();
-               case e -> $$1.f();
-               case f -> $$1.g();
-               default -> null;
-            };
-         }
-      }
+   ezv(int $$0, int $$1) {
+      this.a = new ezt((int)fae.a($$0, $$1));
+      int $$2 = IntMath.gcd($$0, $$1);
+      this.b = $$0 / $$2;
+      this.c = $$1 / $$2;
    }
 
    @Override
-   public fab a(dvd $$0, dee $$1, jg $$2) {
-      return !$$2.equals(this.b) && !$$2.equals(this.c) ? super.a($$0, $$1, $$2) : ezy.a();
+   public boolean a(ezz.a $$0) {
+      int $$1 = this.a.size() - 1;
+
+      for (int $$2 = 0; $$2 < $$1; $$2++) {
+         if (!$$0.merge($$2 / this.c, $$2 / this.b, $$2)) {
+            return false;
+         }
+      }
+
+      return true;
+   }
+
+   @Override
+   public int size() {
+      return this.a.size();
+   }
+
+   @Override
+   public DoubleList a() {
+      return this.a;
    }
 }

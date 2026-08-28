@@ -1,16 +1,36 @@
-import com.mojang.datafixers.util.Either;
-import com.mojang.serialization.Codec;
+import com.google.common.collect.Sets;
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Set;
 
-public class exw {
-   private static final Codec<exv> d = lx.H.q().dispatch(exv::a, exu::a);
-   public static final Codec<exv> a = Codec.lazyInitialized(
-      () -> Codec.either(ext.c, d).xmap(Either::unwrap, $$0 -> $$0 instanceof ext $$1 ? Either.left($$1) : Either.right($$0))
+public record exw(eyj b, eub c) implements exn {
+   public static final MapCodec<exw> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(eyk.a.fieldOf("value").forGetter(exw::c), eub.a.fieldOf("range").forGetter(exw::d)).apply($$0, exw::new)
    );
-   public static final exu b = a("storage", exx.a);
-   public static final exu c = a("context", ext.b);
 
-   private static exu a(String $$0, MapCodec<? extends exv> $$1) {
-      return kc.a(lx.H, alh.b($$0), new exu($$1));
+   @Override
+   public exo b() {
+      return exp.r;
+   }
+
+   @Override
+   public Set<ewv<?>> a() {
+      return Sets.union(this.b.a(), this.c.a());
+   }
+
+   public boolean a(euc $$0) {
+      return this.c.b($$0, this.b.a($$0));
+   }
+
+   public static exn.a a(eyj $$0, eub $$1) {
+      return () -> new exw($$0, $$1);
+   }
+
+   public eyj c() {
+      return this.b;
+   }
+
+   public eub d() {
+      return this.c;
    }
 }

@@ -1,120 +1,22 @@
-public abstract class fkv extends fkx {
-   private static final alh a = alh.b("widget/slider");
-   private static final alh d = alh.b("widget/slider_highlighted");
-   private static final alh e = alh.b("widget/slider_handle");
-   private static final alh f = alh.b("widget/slider_handle_highlighted");
-   protected static final int b = 2;
-   private static final int m = 8;
-   private static final int n = 4;
-   protected double c;
-   private boolean o;
+import java.util.Set;
 
-   public fkv(int $$0, int $$1, int $$2, int $$3, xh $$4, double $$5) {
-      super($$0, $$1, $$2, $$3, $$4);
-      this.c = $$5;
-   }
+public class fkv extends gzh {
+   private static final Set<atz<?>> a = Set.of(gzp.a, gzv.c);
 
-   private alh c() {
-      return this.aN_() && !this.o ? d : a;
-   }
-
-   private alh e() {
-      return !this.i && !this.o ? e : f;
+   public fkv(gye $$0) {
+      super($$0, ali.b("textures/atlas/gui.png"), ali.b("gui"), a);
    }
 
    @Override
-   protected xv aP_() {
-      return xh.a("gui.narrate.slider", this.z());
+   public gyd a(ali $$0) {
+      return super.a($$0);
    }
 
-   @Override
-   public void a(fox $$0) {
-      $$0.a(fow.a, this.aP_());
-      if (this.j) {
-         if (this.aN_()) {
-            $$0.a(fow.d, xh.c("narration.slider.usage.focused"));
-         } else {
-            $$0.a(fow.d, xh.c("narration.slider.usage.hovered"));
-         }
-      }
+   public gzw a(gyd $$0) {
+      return this.b($$0).a();
    }
 
-   @Override
-   public void b(fkm $$0, int $$1, int $$2, float $$3) {
-      fja $$4 = fja.Q();
-      $$0.a(gig::B, this.c(), this.D(), this.E(), this.y(), this.w(), axu.a(this.l));
-      $$0.a(gig::B, this.e(), this.D() + (int)(this.c * (double)(this.g - 8)), this.E(), 8, this.w(), axu.a(this.l));
-      int $$5 = this.j ? 16777215 : 10526880;
-      this.a($$0, $$4.h, 2, $$5 | azj.f(this.l * 255.0F) << 24);
+   private gzv b(gyd $$0) {
+      return $$0.e().f().a(gzv.c).orElse(gzv.a);
    }
-
-   @Override
-   public void a(double $$0, double $$1) {
-      this.a($$0);
-   }
-
-   @Override
-   public void a(boolean $$0) {
-      super.a($$0);
-      if (!$$0) {
-         this.o = false;
-      } else {
-         fix $$1 = fja.Q().aZ();
-         if ($$1 == fix.b || $$1 == fix.d) {
-            this.o = true;
-         }
-      }
-   }
-
-   @Override
-   public boolean a(int $$0, int $$1, int $$2) {
-      if (fpc.a($$0)) {
-         this.o = !this.o;
-         return true;
-      } else {
-         if (this.o) {
-            boolean $$3 = $$0 == 263;
-            if ($$3 || $$0 == 262) {
-               float $$4 = $$3 ? -1.0F : 1.0F;
-               this.b(this.c + (double)($$4 / (float)(this.g - 8)));
-               return true;
-            }
-         }
-
-         return false;
-      }
-   }
-
-   private void a(double $$0) {
-      this.b(($$0 - (double)(this.D() + 4)) / (double)(this.g - 8));
-   }
-
-   private void b(double $$0) {
-      double $$1 = this.c;
-      this.c = azj.a($$0, 0.0, 1.0);
-      if ($$1 != this.c) {
-         this.a();
-      }
-
-      this.b();
-   }
-
-   @Override
-   protected void b(double $$0, double $$1, double $$2, double $$3) {
-      this.a($$0);
-      super.b($$0, $$1, $$2, $$3);
-   }
-
-   @Override
-   public void a(hcu $$0) {
-   }
-
-   @Override
-   public void a_(double $$0, double $$1) {
-      super.a(fja.Q().ak());
-   }
-
-   protected abstract void b();
-
-   protected abstract void a();
 }

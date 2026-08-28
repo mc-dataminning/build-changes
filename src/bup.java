@@ -1,38 +1,61 @@
-import com.mojang.serialization.Codec;
-import java.util.function.IntFunction;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+import javax.annotation.Nullable;
 
-public enum bup implements azm, baf {
-   a(0, "left", "options.mainHand.left"),
-   b(1, "right", "options.mainHand.right");
+public interface bup {
+   void a(bum var1, cwb var2);
 
-   public static final Codec<bup> c = baf.a(bup::values);
-   public static final IntFunction<bup> d = aya.a(bup::b, values(), aya.a.a);
-   private final int e;
-   private final String f;
-   private final String g;
+   cwb a(bum var1);
 
-   private bup(final int $$0, final String $$1, final String $$2) {
-      this.e = $$0;
-      this.f = $$1;
-      this.g = $$2;
+   void a(bum var1, float var2);
+
+   default void a(buo $$0, euf $$1) {
+      this.a($$0.a(), $$1, $$0.b());
    }
 
-   public bup e() {
-      return this == a ? b : a;
+   default void a(alh<euh> $$0, euf $$1, Map<bum, Float> $$2) {
+      this.a($$0, $$1, 0L, $$2);
    }
 
-   @Override
-   public int b() {
-      return this.e;
+   default void a(alh<euh> $$0, euf $$1, long $$2, Map<bum, Float> $$3) {
+      euh $$4 = $$1.a().o().bc().b($$0);
+      if ($$4 != euh.a) {
+         List<cwb> $$5 = $$4.a($$1, $$2);
+         List<bum> $$6 = new ArrayList<>();
+
+         for (cwb $$7 : $$5) {
+            bum $$8 = this.a($$7, $$6);
+            if ($$8 != null) {
+               cwb $$9 = $$8.a($$7);
+               this.a($$8, $$9);
+               Float $$10 = $$3.get($$8);
+               if ($$10 != null) {
+                  this.a($$8, $$10);
+               }
+
+               $$6.add($$8);
+            }
+         }
+      }
    }
 
-   @Override
-   public String a() {
-      return this.g;
-   }
+   @Nullable
+   default bum a(cwb $$0, List<bum> $$1) {
+      if ($$0.f()) {
+         return null;
+      } else {
+         ddn $$2 = $$0.a(ku.D);
+         if ($$2 != null) {
+            bum $$3 = $$2.a();
+            if (!$$1.contains($$3)) {
+               return $$3;
+            }
+         } else if (!$$1.contains(bum.a)) {
+            return bum.a;
+         }
 
-   @Override
-   public String c() {
-      return this.f;
+         return null;
+      }
    }
 }

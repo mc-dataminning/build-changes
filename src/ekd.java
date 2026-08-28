@@ -1,23 +1,34 @@
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class ekd extends ejy {
-   public static final MapCodec<ekd> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(bqg.b(ejy.c).fieldOf("distribution").forGetter($$0x -> $$0x.b)).apply($$0, ekd::new)
-   );
-   private final bqg<ejy> b;
+public class ekd extends eke {
+   public static final ekd a = new ekd(ebz.a(0));
+   public static final MapCodec<ekd> b = ebz.a.fieldOf("value").xmap(ekd::new, ekd::b);
+   private final ebz d;
 
-   public ekd(bqg<ejy> $$0) {
-      this.b = $$0;
+   public static ekd a(ebz $$0) {
+      return new ekd($$0);
+   }
+
+   private ekd(ebz $$0) {
+      this.d = $$0;
+   }
+
+   public ebz b() {
+      return this.d;
    }
 
    @Override
-   public int a(azr $$0, ebw $$1) {
-      return this.b.a($$0).orElseThrow(IllegalStateException::new).a($$0, $$1);
+   public int a(azs $$0, ecc $$1) {
+      return this.d.a($$1);
    }
 
    @Override
-   public ejz<?> a() {
-      return ejz.f;
+   public ekf<?> a() {
+      return ekf.a;
+   }
+
+   @Override
+   public String toString() {
+      return this.d.toString();
    }
 }

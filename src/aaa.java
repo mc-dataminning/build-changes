@@ -1,23 +1,29 @@
-import java.util.Optional;
-import java.util.UUID;
+public class aaa implements zp<zv> {
+   public static final zg<wf, aaa> a = zp.a(aaa::a, aaa::new);
+   private final int b;
 
-public record aaa(Optional<UUID> b) implements zo<zu> {
-   public static final zf<we, aaa> a = zo.a(aaa::a, aaa::new);
-
-   private aaa(we $$0) {
-      this($$0.b(kj.g));
+   public aaa(int $$0) {
+      this.b = $$0;
    }
 
-   private void a(we $$0) {
-      $$0.a(this.b, kj.g);
+   private aaa(wf $$0) {
+      this.b = $$0.readInt();
+   }
+
+   private void a(wf $$0) {
+      $$0.q(this.b);
    }
 
    @Override
-   public zq<aaa> a() {
-      return aag.f;
+   public zr<aaa> a() {
+      return aah.e;
    }
 
-   public void a(zu $$0) {
+   public void a(zv $$0) {
       $$0.a(this);
+   }
+
+   public int b() {
+      return this.b;
    }
 }

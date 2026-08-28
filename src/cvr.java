@@ -1,83 +1,73 @@
-import java.util.Iterator;
-import java.util.List;
-import java.util.Optional;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.Maps;
+import com.mojang.datafixers.util.Pair;
+import java.util.Map;
+import java.util.function.Consumer;
+import java.util.function.Predicate;
 
-public class cvr extends cvt {
-   private final axp<cvq> a;
+public class cvr extends cuu {
+   protected static final Map<die, Pair<Predicate<czu>, Consumer<czu>>> a = Maps.newHashMap(
+      ImmutableMap.of(
+         dig.i,
+         Pair.of(cvr::b, a(dig.cC.m())),
+         dig.kE,
+         Pair.of(cvr::b, a(dig.cC.m())),
+         dig.j,
+         Pair.of(cvr::b, a(dig.cC.m())),
+         dig.k,
+         Pair.of(cvr::b, a(dig.j.m())),
+         dig.sH,
+         Pair.of((Predicate<czu>)$$0 -> true, a(dig.j.m(), cwf.dO))
+      )
+   );
 
-   public cvr(axp<cvq> $$0, cvt.a $$1) {
-      super($$1);
-      this.a = $$0;
+   public cvr(cxs $$0, float $$1, float $$2, cvx.a $$3) {
+      super($$0, axa.bC, $$1, $$2, $$3);
    }
 
    @Override
-   public void a(cvx $$0, cvt.b $$1, List<xh> $$2, cxp $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      jr.a $$4 = $$1.a();
-      if ($$4 != null) {
-         Optional<jp<cvq>> $$5 = this.a($$0, $$4);
-         if ($$5.isPresent()) {
-            xv $$6 = $$5.get().a().d().f();
-            xk.a($$6, ye.a.a(n.h));
-            $$2.add($$6);
-         }
-      }
-   }
-
-   public static cvx a(cvt $$0, jp<cvq> $$1) {
-      cvx $$2 = new cvx($$0);
-      $$2.b(kt.Y, $$1);
-      return $$2;
-   }
-
-   @Override
-   public bry a(dev $$0, coh $$1, brx $$2) {
-      cvx $$3 = $$1.b($$2);
-      Optional<? extends jp<cvq>> $$4 = this.a($$3, $$1.dZ());
-      if ($$4.isPresent()) {
-         cvq $$5 = $$4.get().a();
-         $$1.c($$2);
-         a($$0, $$1, $$5);
-         $$1.gF().a($$3, azj.d($$5.b() * 20.0F));
-         $$1.b(awu.c.b(this));
-         return bry.c;
+   public bsd a(czu $$0) {
+      dfb $$1 = $$0.q();
+      jh $$2 = $$0.a();
+      Pair<Predicate<czu>, Consumer<czu>> $$3 = a.get($$1.a_($$2).b());
+      if ($$3 == null) {
+         return bsd.e;
       } else {
-         return bry.d;
-      }
-   }
-
-   @Override
-   public int a(cvx $$0, buv $$1) {
-      Optional<jp<cvq>> $$2 = this.a($$0, $$1.dZ());
-      return $$2.<Integer>map($$0x -> azj.d(((cvq)$$0x.a()).b() * 20.0F)).orElse(0);
-   }
-
-   private Optional<jp<cvq>> a(cvx $$0, jr.a $$1) {
-      jp<cvq> $$2 = $$0.a(kt.Y);
-      if ($$2 != null) {
-         return Optional.of($$2);
-      } else {
-         Optional<jt.c<cvq>> $$3 = $$1.d(ly.I).a(this.a);
-         if ($$3.isPresent()) {
-            Iterator<jp<cvq>> $$4 = $$3.get().iterator();
-            if ($$4.hasNext()) {
-               return Optional.of($$4.next());
+         Predicate<czu> $$4 = (Predicate<czu>)$$3.getFirst();
+         Consumer<czu> $$5 = (Consumer<czu>)$$3.getSecond();
+         if ($$4.test($$0)) {
+            com $$6 = $$0.o();
+            $$1.a($$6, $$2, awl.mm, awm.e, 1.0F, 1.0F);
+            if (!$$1.C) {
+               $$5.accept($$0);
+               if ($$6 != null) {
+                  $$0.n().a(1, $$6, bva.d($$0.p()));
+               }
             }
-         }
 
-         return Optional.empty();
+            return bsd.a;
+         } else {
+            return bsd.e;
+         }
       }
    }
 
-   @Override
-   public cvz a(cvx $$0) {
-      return cvz.i;
+   public static Consumer<czu> a(dvj $$0) {
+      return $$1 -> {
+         $$1.q().a($$1.a(), $$0, 11);
+         $$1.q().a(eag.c, $$1.a(), eag.a.a($$1.o(), $$0));
+      };
    }
 
-   private static void a(dev $$0, coh $$1, cvq $$2) {
-      awj $$3 = $$2.a().a();
-      float $$4 = $$2.c() / 16.0F;
-      $$0.a($$1, $$1, $$3, awl.c, $$4, 1.0F);
-      $$0.a(eaa.B, $$1.dv(), eaa.a.a($$1));
+   public static Consumer<czu> a(dvj $$0, dfa $$1) {
+      return $$2 -> {
+         $$2.q().a($$2.a(), $$0, 11);
+         $$2.q().a(eag.c, $$2.a(), eag.a.a($$2.o(), $$0));
+         die.a($$2.q(), $$2.a(), $$2.k(), new cwb($$1));
+      };
+   }
+
+   public static boolean b(czu $$0) {
+      return $$0.k() != jm.a && $$0.q().a_($$0.a().d()).l();
    }
 }

@@ -1,29 +1,23 @@
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.OpticFinder;
-import com.mojang.datafixers.TypeRewriteRule;
+import com.google.common.collect.ImmutableMap;
 import com.mojang.datafixers.schemas.Schema;
-import com.mojang.serialization.Dynamic;
-import java.util.Objects;
-import java.util.Optional;
+import java.util.Map;
 
-public class bdm extends DataFix {
+public class bdm extends big {
+   public static final Map<String, String> a = ImmutableMap.builder()
+      .put("minecraft:salmon_mob", "minecraft:salmon")
+      .put("minecraft:cod_mob", "minecraft:cod")
+      .build();
+   public static final Map<String, String> b = ImmutableMap.builder()
+      .put("minecraft:salmon_mob_spawn_egg", "minecraft:salmon_spawn_egg")
+      .put("minecraft:cod_mob_spawn_egg", "minecraft:cod_spawn_egg")
+      .build();
+
    public bdm(Schema $$0, boolean $$1) {
-      super($$0, $$1);
+      super("EntityCodSalmonFix", $$0, $$1);
    }
 
-   public TypeRewriteRule makeRule() {
-      OpticFinder<String> $$0 = DSL.fieldFinder("id", bjg.a());
-      return this.fixTypeEverywhereTyped(
-         "EntityCustomNameToComponentFix", this.getInputSchema().getType(bhs.B), $$1 -> $$1.update(DSL.remainderFinder(), $$2 -> {
-               Optional<String> $$3 = $$1.getOptional($$0);
-               return $$3.isPresent() && Objects.equals($$3.get(), "minecraft:commandblock_minecart") ? $$2 : a($$2);
-            })
-      );
-   }
-
-   public static Dynamic<?> a(Dynamic<?> $$0) {
-      String $$1 = $$0.get("CustomName").asString("");
-      return $$1.isEmpty() ? $$0.remove("CustomName") : $$0.set("CustomName", bar.a($$0.getOps(), $$1));
+   @Override
+   protected String a(String $$0) {
+      return a.getOrDefault($$0, $$0);
    }
 }

@@ -1,19 +1,29 @@
-public class aji {
-   public static final zq<ajd> a = a("custom_query");
-   public static final zq<aje> b = a("game_profile");
-   public static final zq<ajf> c = a("hello");
-   public static final zq<ajg> d = a("login_compression");
-   public static final zq<ajh> e = a("login_disconnect");
-   public static final zq<ajl> f = b("custom_query_answer");
-   public static final zq<ajm> g = b("hello");
-   public static final zq<ajn> h = b("key");
-   public static final zq<ajo> i = b("login_acknowledged");
+public class aji implements zp<ajd> {
+   public static final zg<wf, aji> a = zp.a(aji::a, aji::new);
+   private final xi b;
 
-   private static <T extends zo<ajc>> zq<T> a(String $$0) {
-      return new zq<>(zp.b, alh.b($$0));
+   public aji(xi $$0) {
+      this.b = $$0;
    }
 
-   private static <T extends zo<ajk>> zq<T> b(String $$0) {
-      return new zq<>(zp.a, alh.b($$0));
+   private aji(wf $$0) {
+      this.b = xi.a.b($$0.d(262144), ke.b);
+   }
+
+   private void a(wf $$0) {
+      $$0.a(xi.a.a(this.b, ke.b));
+   }
+
+   @Override
+   public zr<aji> a() {
+      return ajj.e;
+   }
+
+   public void a(ajd $$0) {
+      $$0.a(this);
+   }
+
+   public xi b() {
+      return this.b;
    }
 }

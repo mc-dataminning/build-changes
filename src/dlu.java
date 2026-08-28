@@ -1,75 +1,65 @@
 import com.mojang.serialization.MapCodec;
-import java.util.Map;
+import javax.annotation.Nullable;
 
-public class dlu extends dhy {
+public class dlu extends die implements dpf {
    public static final MapCodec<dlu> a = b(dlu::new);
-   public static final dvu b = dnl.b;
-   public static final dvu c = dnl.c;
-   public static final dvu d = dnl.d;
-   public static final dvu e = dnl.e;
-   public static final dvu f = dnl.f;
-   public static final dvu g = dnl.g;
-   private static final Map<jl, dvu> h = dnl.h;
+   private static final dwa c = dvz.C;
+   protected static final fah b = die.a(2.0, 10.0, 2.0, 14.0, 16.0, 14.0);
 
    @Override
    public MapCodec<dlu> a() {
       return a;
    }
 
-   public dlu(dvc.d $$0) {
+   protected dlu(dvi.d $$0) {
       super($$0);
-      this.l(
-         this.F
-            .b()
-            .b(b, Boolean.valueOf(true))
-            .b(c, Boolean.valueOf(true))
-            .b(d, Boolean.valueOf(true))
-            .b(e, Boolean.valueOf(true))
-            .b(f, Boolean.valueOf(true))
-            .b(g, Boolean.valueOf(true))
-      );
+      this.l(this.F.b().b(c, Boolean.valueOf(false)));
    }
 
    @Override
-   public dvd a(czm $$0) {
-      dea $$1 = $$0.q();
-      jg $$2 = $$0.a();
-      return this.m()
-         .b(g, Boolean.valueOf(!$$1.a_($$2.e()).a(this)))
-         .b(f, Boolean.valueOf(!$$1.a_($$2.d()).a(this)))
-         .b(b, Boolean.valueOf(!$$1.a_($$2.f()).a(this)))
-         .b(c, Boolean.valueOf(!$$1.a_($$2.i()).a(this)))
-         .b(d, Boolean.valueOf(!$$1.a_($$2.g()).a(this)))
-         .b(e, Boolean.valueOf(!$$1.a_($$2.h()).a(this)));
+   protected void a(dvk.a<die, dvj> $$0) {
+      $$0.a(c);
    }
 
    @Override
-   protected dvd a(dvd $$0, jl $$1, dvd $$2, dew $$3, jg $$4, jg $$5) {
-      return $$2.a(this) ? $$0.b(h.get($$1), Boolean.valueOf(false)) : super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   protected erk b_(dvj $$0) {
+      return $$0.c(c) ? erl.c.a(false) : super.b_($$0);
+   }
+
+   @Nullable
+   @Override
+   public dvj a(czs $$0) {
+      dvj $$1 = super.a($$0);
+      if ($$1 != null) {
+         erk $$2 = $$0.q().b_($$0.a());
+         return $$1.b(c, Boolean.valueOf($$2.a() == erl.c));
+      } else {
+         return null;
+      }
    }
 
    @Override
-   protected dvd a(dvd $$0, dol $$1) {
-      return $$0.b(h.get($$1.a(jl.c)), $$0.c(b))
-         .b(h.get($$1.a(jl.d)), $$0.c(d))
-         .b(h.get($$1.a(jl.f)), $$0.c(c))
-         .b(h.get($$1.a(jl.e)), $$0.c(e))
-         .b(h.get($$1.a(jl.b)), $$0.c(f))
-         .b(h.get($$1.a(jl.a)), $$0.c(g));
+   protected boolean a(dvj $$0, dfe $$1, jh $$2) {
+      jh $$3 = $$2.d();
+      dvj $$4 = $$1.a_($$3);
+      return $$4.c($$1, $$3, jm.a);
    }
 
    @Override
-   protected dvd a(dvd $$0, dmu $$1) {
-      return $$0.b(h.get($$1.b(jl.c)), $$0.c(b))
-         .b(h.get($$1.b(jl.d)), $$0.c(d))
-         .b(h.get($$1.b(jl.f)), $$0.c(c))
-         .b(h.get($$1.b(jl.e)), $$0.c(e))
-         .b(h.get($$1.b(jl.b)), $$0.c(f))
-         .b(h.get($$1.b(jl.a)), $$0.c(g));
+   protected fah a(dvj $$0, deg $$1, jh $$2, ezs $$3) {
+      return b;
    }
 
    @Override
-   protected void a(dve.a<dhy, dvd> $$0) {
-      $$0.a(f, g, b, c, d, e);
+   protected dvj a(dvj $$0, jm $$1, dvj $$2, dfc $$3, jh $$4, jh $$5) {
+      if ($$1 == jm.b && !this.a($$0, $$3, $$4)) {
+         return dig.a.m();
+      } else {
+         if ($$0.c(c)) {
+            $$3.a($$4, erl.c, erl.c.a($$3));
+         }
+
+         return super.a($$0, $$1, $$2, $$3, $$4, $$5);
+      }
    }
 }

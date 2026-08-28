@@ -1,58 +1,38 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import it.unimi.dsi.fastutil.objects.Object2IntMap.Entry;
 import java.util.Optional;
 
-public record bq(Optional<jt<dbm>> b, di.d c) {
-   public static final Codec<bq> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(ke.a(ly.aM).optionalFieldOf("enchantments").forGetter(bq::a), di.d.d.optionalFieldOf("levels", di.d.c).forGetter(bq::b))
-            .apply($$0, bq::new)
-   );
-
-   public bq(jp<dbm> $$0, di.d $$1) {
-      this(Optional.of(jt.a($$0)), $$1);
+public class bq extends dy<bq.a> {
+   @Override
+   public Codec<bq.a> a() {
+      return bq.a.a;
    }
 
-   public bq(jt<dbm> $$0, di.d $$1) {
-      this(Optional.of($$0), $$1);
+   public void a(aro $$0, cwb $$1, int $$2) {
+      this.a($$0, $$2x -> $$2x.a($$1, $$2));
    }
 
-   public boolean a(dbs $$0) {
-      if (this.b.isPresent()) {
-         for (jp<dbm> $$1 : this.b.get()) {
-            if (this.a($$0, $$1)) {
-               return true;
-            }
-         }
+   public static record a(Optional<bh> b, Optional<cu> c, dj.d d) implements dy.a {
+      public static final Codec<bq.a> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(
+                  bw.b.optionalFieldOf("player").forGetter(bq.a::a),
+                  cu.a.optionalFieldOf("item").forGetter(bq.a::c),
+                  dj.d.d.optionalFieldOf("levels", dj.d.c).forGetter(bq.a::d)
+               )
+               .apply($$0, bq.a::new)
+      );
 
-         return false;
-      } else if (this.c != di.d.c) {
-         for (Entry<jp<dbm>> $$2 : $$0.b()) {
-            if (this.c.d($$2.getIntValue())) {
-               return true;
-            }
-         }
-
-         return false;
-      } else {
-         return !$$0.d();
+      public static ap<bq.a> b() {
+         return ao.j.a(new bq.a(Optional.empty(), Optional.empty(), dj.d.c));
       }
-   }
 
-   private boolean a(dbs $$0, jp<dbm> $$1) {
-      int $$2 = $$0.a($$1);
-      if ($$2 == 0) {
-         return false;
-      } else {
-         return this.c == di.d.c ? true : this.c.d($$2);
+      public boolean a(cwb $$0, int $$1) {
+         return this.c.isPresent() && !this.c.get().a($$0) ? false : this.d.d($$1);
       }
-   }
 
-   public Optional<jt<dbm>> a() {
-      return this.b;
-   }
-
-   public di.d b() {
-      return this.c;
+      @Override
+      public Optional<bh> a() {
+         return this.b;
+      }
    }
 }

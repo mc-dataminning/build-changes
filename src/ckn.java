@@ -1,128 +1,103 @@
-import java.util.Optional;
+import java.util.Objects;
+import java.util.function.Predicate;
+import org.apache.commons.lang3.Validate;
 
-public class ckn {
-   public static final alg<ckm> a = a("kebab");
-   public static final alg<ckm> b = a("aztec");
-   public static final alg<ckm> c = a("alban");
-   public static final alg<ckm> d = a("aztec2");
-   public static final alg<ckm> e = a("bomb");
-   public static final alg<ckm> f = a("plant");
-   public static final alg<ckm> g = a("wasteland");
-   public static final alg<ckm> h = a("pool");
-   public static final alg<ckm> i = a("courbet");
-   public static final alg<ckm> j = a("sea");
-   public static final alg<ckm> k = a("sunset");
-   public static final alg<ckm> l = a("creebet");
-   public static final alg<ckm> m = a("wanderer");
-   public static final alg<ckm> n = a("graham");
-   public static final alg<ckm> o = a("match");
-   public static final alg<ckm> p = a("bust");
-   public static final alg<ckm> q = a("stage");
-   public static final alg<ckm> r = a("void");
-   public static final alg<ckm> s = a("skull_and_roses");
-   public static final alg<ckm> t = a("wither");
-   public static final alg<ckm> u = a("fighters");
-   public static final alg<ckm> v = a("pointer");
-   public static final alg<ckm> w = a("pigscene");
-   public static final alg<ckm> x = a("burning_skull");
-   public static final alg<ckm> y = a("skeleton");
-   public static final alg<ckm> z = a("donkey_kong");
-   public static final alg<ckm> A = a("earth");
-   public static final alg<ckm> B = a("wind");
-   public static final alg<ckm> C = a("water");
-   public static final alg<ckm> D = a("fire");
-   public static final alg<ckm> E = a("baroque");
-   public static final alg<ckm> F = a("humble");
-   public static final alg<ckm> G = a("meditative");
-   public static final alg<ckm> H = a("prairie_ride");
-   public static final alg<ckm> I = a("unpacked");
-   public static final alg<ckm> J = a("backyard");
-   public static final alg<ckm> K = a("bouquet");
-   public static final alg<ckm> L = a("cavebird");
-   public static final alg<ckm> M = a("changing");
-   public static final alg<ckm> N = a("cotan");
-   public static final alg<ckm> O = a("endboss");
-   public static final alg<ckm> P = a("fern");
-   public static final alg<ckm> Q = a("finding");
-   public static final alg<ckm> R = a("lowmist");
-   public static final alg<ckm> S = a("orb");
-   public static final alg<ckm> T = a("owlemons");
-   public static final alg<ckm> U = a("passage");
-   public static final alg<ckm> V = a("pond");
-   public static final alg<ckm> W = a("sunflowers");
-   public static final alg<ckm> X = a("tides");
+public abstract class ckn extends ckl {
+   protected static final Predicate<bue> c = $$0 -> $$0 instanceof ckn;
+   protected jm d;
 
-   public static void a(qx<ckm> $$0) {
-      a($$0, a, 1, 1);
-      a($$0, b, 1, 1);
-      a($$0, c, 1, 1);
-      a($$0, d, 1, 1);
-      a($$0, e, 1, 1);
-      a($$0, f, 1, 1);
-      a($$0, g, 1, 1);
-      a($$0, h, 2, 1);
-      a($$0, i, 2, 1);
-      a($$0, j, 2, 1);
-      a($$0, k, 2, 1);
-      a($$0, l, 2, 1);
-      a($$0, m, 1, 2);
-      a($$0, n, 1, 2);
-      a($$0, o, 2, 2);
-      a($$0, p, 2, 2);
-      a($$0, q, 2, 2);
-      a($$0, r, 2, 2);
-      a($$0, s, 2, 2);
-      a($$0, t, 2, 2, false);
-      a($$0, u, 4, 2);
-      a($$0, v, 4, 4);
-      a($$0, w, 4, 4);
-      a($$0, x, 4, 4);
-      a($$0, y, 4, 3);
-      a($$0, A, 2, 2, false);
-      a($$0, B, 2, 2, false);
-      a($$0, C, 2, 2, false);
-      a($$0, D, 2, 2, false);
-      a($$0, z, 4, 3);
-      a($$0, E, 2, 2);
-      a($$0, F, 2, 2);
-      a($$0, G, 1, 1);
-      a($$0, H, 1, 2);
-      a($$0, I, 4, 4);
-      a($$0, J, 3, 4);
-      a($$0, K, 3, 3);
-      a($$0, L, 3, 3);
-      a($$0, M, 4, 2);
-      a($$0, N, 3, 3);
-      a($$0, O, 3, 3);
-      a($$0, P, 3, 3);
-      a($$0, Q, 4, 2);
-      a($$0, R, 4, 2);
-      a($$0, S, 4, 4);
-      a($$0, T, 3, 3);
-      a($$0, U, 4, 2);
-      a($$0, V, 3, 4);
-      a($$0, W, 3, 3);
-      a($$0, X, 3, 3);
+   protected ckn(bul<? extends ckn> $$0, dfb $$1) {
+      super($$0, $$1);
+      this.d = jm.d;
    }
 
-   private static void a(qx<ckm> $$0, alg<ckm> $$1, int $$2, int $$3) {
-      a($$0, $$1, $$2, $$3, true);
+   protected ckn(bul<? extends ckn> $$0, dfb $$1, jh $$2) {
+      this($$0, $$1);
+      this.b = $$2;
    }
 
-   private static void a(qx<ckm> $$0, alg<ckm> $$1, int $$2, int $$3, boolean $$4) {
-      $$0.a(
-         $$1,
-         new ckm(
-            $$2,
-            $$3,
-            $$1.a(),
-            Optional.of(xh.c($$1.a().c("painting", "title")).a(n.o)),
-            $$4 ? Optional.of(xh.c($$1.a().c("painting", "author")).a(n.h)) : Optional.empty()
-         )
+   protected void a(jm $$0) {
+      Objects.requireNonNull($$0);
+      Validate.isTrue($$0.o().d());
+      this.d = $$0;
+      this.v((float)(this.d.e() * 90));
+      this.O = this.dN();
+      this.m();
+   }
+
+   @Override
+   protected final void m() {
+      if (this.d != null) {
+         ezi $$0 = this.a(this.b, this.d);
+         ezn $$1 = $$0.f();
+         this.o($$1.d, $$1.e, $$1.f);
+         this.a($$0);
+      }
+   }
+
+   protected abstract ezi a(jh var1, jm var2);
+
+   @Override
+   public boolean o() {
+      if (!this.dX().g(this)) {
+         return false;
+      } else {
+         boolean $$0 = jh.b(this.A()).allMatch($$0x -> {
+            dvj $$1 = this.dX().a_($$0x);
+            return $$1.e() || dkg.n($$1);
+         });
+         return !$$0 ? false : this.dX().a(this, this.cS(), c).isEmpty();
+      }
+   }
+
+   protected ezi A() {
+      return this.cS().a(this.d.m().mul(-0.5F)).h(1.0E-7);
+   }
+
+   @Override
+   public jm cP() {
+      return this.d;
+   }
+
+   public abstract void B();
+
+   @Override
+   public ckv a(cwb $$0, float $$1) {
+      ckv $$2 = new ckv(
+         this.dX(), this.dC() + (double)((float)this.d.j() * 0.15F), this.dE() + (double)$$1, this.dI() + (double)((float)this.d.l() * 0.15F), $$0
       );
+      $$2.q();
+      this.dX().b($$2);
+      return $$2;
    }
 
-   private static alg<ckm> a(String $$0) {
-      return alg.a(ly.X, alh.b($$0));
+   @Override
+   public float a(dor $$0) {
+      if (this.d.o() != jm.a.b) {
+         switch ($$0) {
+            case c:
+               this.d = this.d.g();
+               break;
+            case d:
+               this.d = this.d.i();
+               break;
+            case b:
+               this.d = this.d.h();
+         }
+      }
+
+      float $$1 = azk.h(this.dN());
+
+      return switch ($$0) {
+         case c -> $$1 + 180.0F;
+         case d -> $$1 + 90.0F;
+         case b -> $$1 + 270.0F;
+         default -> $$1;
+      };
+   }
+
+   @Override
+   public float a(dna $$0) {
+      return this.a($$0.a(this.d));
    }
 }

@@ -1,297 +1,532 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.Sets;
-import com.google.common.collect.ImmutableList.Builder;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Objects;
-import java.util.Set;
-import java.util.Map.Entry;
-import java.util.function.UnaryOperator;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
-import javax.annotation.Nullable;
+import com.google.common.annotations.VisibleForTesting;
+import com.google.common.base.MoreObjects;
 import org.joml.Matrix4f;
 
 public class gia {
-   public static final alh a = alh.b("main");
-   private final List<gic> b;
-   private final Map<alh, gib.d> c;
-   private final Set<alh> d;
+   private static final gir a = gir.t(ali.b("textures/map/map_background.png"));
+   private static final gir b = gir.t(ali.b("textures/map/map_background_checkerboard.png"));
+   private static final float c = -0.4F;
+   private static final float d = 0.2F;
+   private static final float e = -0.2F;
+   private static final float f = -0.6F;
+   private static final float g = 0.56F;
+   private static final float h = -0.52F;
+   private static final float i = -0.72F;
+   private static final float j = 45.0F;
+   private static final float k = -80.0F;
+   private static final float l = -20.0F;
+   private static final float m = -20.0F;
+   private static final float n = 10.0F;
+   private static final float o = 90.0F;
+   private static final float p = 30.0F;
+   private static final float q = 0.6F;
+   private static final float r = -0.5F;
+   private static final float s = 0.0F;
+   private static final double t = 27.0;
+   private static final float u = 0.8F;
+   private static final float v = 0.1F;
+   private static final float w = -0.3F;
+   private static final float x = 0.4F;
+   private static final float y = -0.4F;
+   private static final float z = 70.0F;
+   private static final float A = -20.0F;
+   private static final float B = -0.6F;
+   private static final float C = 0.8F;
+   private static final float D = 0.8F;
+   private static final float E = -0.75F;
+   private static final float F = -0.9F;
+   private static final float G = 45.0F;
+   private static final float H = -1.0F;
+   private static final float I = 3.6F;
+   private static final float J = 3.5F;
+   private static final float K = 5.6F;
+   private static final int L = 200;
+   private static final int M = -135;
+   private static final int N = 120;
+   private static final float O = -0.4F;
+   private static final float P = -0.2F;
+   private static final float Q = 0.0F;
+   private static final float R = 0.04F;
+   private static final float S = -0.72F;
+   private static final float T = -1.2F;
+   private static final float U = -0.5F;
+   private static final float V = 45.0F;
+   private static final float W = -85.0F;
+   private static final float X = 45.0F;
+   private static final float Y = 92.0F;
+   private static final float Z = -41.0F;
+   private static final float aa = 0.3F;
+   private static final float ab = -1.1F;
+   private static final float ac = 0.45F;
+   private static final float ad = 20.0F;
+   private static final float ae = 0.38F;
+   private static final float af = -0.5F;
+   private static final float ag = -0.5F;
+   private static final float ah = 0.0F;
+   private static final float ai = 0.0078125F;
+   private static final int aj = 7;
+   private static final int ak = 128;
+   private static final int al = 128;
+   private static final float am = 0.0F;
+   private static final float an = 0.0F;
+   private static final float ao = 0.04F;
+   private static final float ap = 0.0F;
+   private static final float aq = 0.004F;
+   private static final float ar = 0.0F;
+   private static final float as = 0.2F;
+   private static final float at = 0.1F;
+   private final fji au;
+   private final gxm av = new gxm();
+   private cwb aw = cwb.k;
+   private cwb ax = cwb.k;
+   private float ay;
+   private float az;
+   private float aA;
+   private float aB;
+   private final goi aC;
+   private final gpi aD;
 
-   private gia(List<gic> $$0, Map<alh, gib.d> $$1, Set<alh> $$2) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
+   public gia(fji $$0, goi $$1, gpi $$2) {
+      this.au = $$0;
+      this.aC = $$1;
+      this.aD = $$2;
    }
 
-   public static gia a(gib $$0, gxt $$1, gin $$2, Set<alh> $$3) throws gin.b {
-      Stream<alh> $$4 = $$0.b().stream().flatMap($$0x -> $$0x.b().stream()).flatMap($$0x -> $$0x.b().stream());
-      Set<alh> $$5 = $$4.filter($$1x -> !$$0.a().containsKey($$1x)).collect(Collectors.toSet());
-      Set<alh> $$6 = Sets.difference($$5, $$3);
-      if (!$$6.isEmpty()) {
-         throw new gin.b("Referenced external targets are not available in this context: " + $$6);
+   public void a(bva $$0, cwb $$1, cvz $$2, boolean $$3, feb $$4, gih $$5, int $$6) {
+      if (!$$1.f()) {
+         this.aD.a($$0, $$1, $$2, $$3, $$4, $$5, $$0.dX(), $$6, gxu.d, $$0.as() + $$2.ordinal());
+      }
+   }
+
+   private float a(float $$0) {
+      float $$1 = 1.0F - $$0 / 45.0F + 0.1F;
+      $$1 = azk.a($$1, 0.0F, 1.0F);
+      return -azk.b($$1 * (float) Math.PI) * 0.5F + 0.5F;
+   }
+
+   private void a(feb $$0, gih $$1, int $$2, buu $$3) {
+      gtq $$4 = (gtq)this.aC.<gha>a(this.au.t);
+      $$0.a();
+      float $$5 = $$3 == buu.b ? 1.0F : -1.0F;
+      $$0.a(a.d.rotationDegrees(92.0F));
+      $$0.a(a.b.rotationDegrees(45.0F));
+      $$0.a(a.f.rotationDegrees($$5 * -41.0F));
+      $$0.a($$5 * 0.3F, -1.1F, 0.45F);
+      ali $$6 = this.au.t.b().a();
+      if ($$3 == buu.b) {
+         $$4.a($$0, $$1, $$2, $$6, this.au.t.a(coo.d));
       } else {
-         Builder<gic> $$7 = ImmutableList.builder();
+         $$4.b($$0, $$1, $$2, $$6, this.au.t.a(coo.c));
+      }
 
-         for (gib.e $$8 : $$0.b()) {
-            $$7.add(a($$1, $$2, $$8));
-         }
+      $$0.b();
+   }
 
-         return new gia($$7.build(), $$0.a(), $$5);
+   private void a(feb $$0, gih $$1, int $$2, float $$3, buu $$4, float $$5, cwb $$6) {
+      float $$7 = $$4 == buu.b ? 1.0F : -1.0F;
+      $$0.a($$7 * 0.125F, -0.125F, 0.0F);
+      if (!this.au.t.cq()) {
+         $$0.a();
+         $$0.a(a.f.rotationDegrees($$7 * 10.0F));
+         this.a($$0, $$1, $$2, $$3, $$5, $$4);
+         $$0.b();
+      }
+
+      $$0.a();
+      $$0.a($$7 * 0.51F, -0.08F + $$3 * -1.2F, -0.75F);
+      float $$8 = azk.c($$5);
+      float $$9 = azk.a($$8 * (float) Math.PI);
+      float $$10 = -0.5F * $$9;
+      float $$11 = 0.4F * azk.a($$8 * (float) (Math.PI * 2));
+      float $$12 = -0.3F * azk.a($$5 * (float) Math.PI);
+      $$0.a($$7 * $$10, $$11 - 0.3F * $$9, $$12);
+      $$0.a(a.b.rotationDegrees($$9 * -45.0F));
+      $$0.a(a.d.rotationDegrees($$7 * $$9 * -30.0F));
+      this.a($$0, $$1, $$2, $$6);
+      $$0.b();
+   }
+
+   private void a(feb $$0, gih $$1, int $$2, float $$3, float $$4, float $$5) {
+      float $$6 = azk.c($$5);
+      float $$7 = -0.2F * azk.a($$5 * (float) Math.PI);
+      float $$8 = -0.4F * azk.a($$6 * (float) Math.PI);
+      $$0.a(0.0F, -$$7 / 2.0F, $$8);
+      float $$9 = this.a($$3);
+      $$0.a(0.0F, 0.04F + $$4 * -1.2F + $$9 * -0.5F, -0.72F);
+      $$0.a(a.b.rotationDegrees($$9 * -85.0F));
+      if (!this.au.t.cq()) {
+         $$0.a();
+         $$0.a(a.d.rotationDegrees(90.0F));
+         this.a($$0, $$1, $$2, buu.b);
+         this.a($$0, $$1, $$2, buu.a);
+         $$0.b();
+      }
+
+      float $$10 = azk.a($$6 * (float) Math.PI);
+      $$0.a(a.b.rotationDegrees($$10 * 20.0F));
+      $$0.b(2.0F, 2.0F, 2.0F);
+      this.a($$0, $$1, $$2, this.aw);
+   }
+
+   private void a(feb $$0, gih $$1, int $$2, cwb $$3) {
+      $$0.a(a.d.rotationDegrees(180.0F));
+      $$0.a(a.f.rotationDegrees(180.0F));
+      $$0.b(0.38F, 0.38F, 0.38F);
+      $$0.a(-0.5F, -0.5F, 0.0F);
+      $$0.b(0.0078125F, 0.0078125F, 0.0078125F);
+      etc $$4 = $$3.a(ku.L);
+      ete $$5 = cwo.a($$4, this.au.s);
+      fef $$6 = $$1.getBuffer($$5 == null ? a : b);
+      Matrix4f $$7 = $$0.c().a();
+      $$6.a($$7, -7.0F, 135.0F, 0.0F).a(-1).a(0.0F, 1.0F).c($$2);
+      $$6.a($$7, 135.0F, 135.0F, 0.0F).a(-1).a(1.0F, 1.0F).c($$2);
+      $$6.a($$7, 135.0F, -7.0F, 0.0F).a(-1).a(1.0F, 0.0F).c($$2);
+      $$6.a($$7, -7.0F, -7.0F, 0.0F).a(-1).a(0.0F, 0.0F).c($$2);
+      if ($$5 != null) {
+         gig $$8 = this.au.at();
+         $$8.a($$4, $$5, this.av);
+         $$8.a(this.av, $$0, $$1, false, $$2);
       }
    }
 
-   // $VF: Inserted dummy exception handlers to handle obfuscated exceptions
-   private static gic a(gxt $$0, gin $$1, gib.e $$2) throws gin.b {
-      alh $$3 = $$2.a();
-      ghf $$4 = $$1.b(new gio($$3, fdr.e, gim.a));
-
-      for (gib.h $$5 : $$2.d()) {
-         String $$6 = $$5.a();
-         if ($$4.a($$6) == null) {
-            throw new gin.b("Uniform '" + $$6 + "' does not exist for " + $$3);
-         }
+   private void a(feb $$0, gih $$1, int $$2, float $$3, float $$4, buu $$5) {
+      boolean $$6 = $$5 != buu.a;
+      float $$7 = $$6 ? 1.0F : -1.0F;
+      float $$8 = azk.c($$4);
+      float $$9 = -0.3F * azk.a($$8 * (float) Math.PI);
+      float $$10 = 0.4F * azk.a($$8 * (float) (Math.PI * 2));
+      float $$11 = -0.4F * azk.a($$4 * (float) Math.PI);
+      $$0.a($$7 * ($$9 + 0.64000005F), $$10 + -0.6F + $$3 * -0.6F, $$11 + -0.71999997F);
+      $$0.a(a.d.rotationDegrees($$7 * 45.0F));
+      float $$12 = azk.a($$4 * $$4 * (float) Math.PI);
+      float $$13 = azk.a($$8 * (float) Math.PI);
+      $$0.a(a.d.rotationDegrees($$7 * $$13 * 70.0F));
+      $$0.a(a.f.rotationDegrees($$7 * $$12 * -20.0F));
+      gha $$14 = this.au.t;
+      $$0.a($$7 * -1.0F, 3.6F, 3.5F);
+      $$0.a(a.f.rotationDegrees($$7 * 120.0F));
+      $$0.a(a.b.rotationDegrees(200.0F));
+      $$0.a(a.d.rotationDegrees($$7 * -135.0F));
+      $$0.a($$7 * 5.6F, 0.0F, 0.0F);
+      gtq $$15 = (gtq)this.aC.<gha>a($$14);
+      ali $$16 = $$14.b().a();
+      if ($$6) {
+         $$15.a($$0, $$1, $$2, $$16, $$14.a(coo.d));
+      } else {
+         $$15.b($$0, $$1, $$2, $$16, $$14.a(coo.c));
       }
-
-      String $$7 = $$3.toString();
-      gic $$8 = new gic($$7, $$4, $$2.c(), $$2.d());
-
-      for (gib.c $$9 : $$2.b()) {
-         Objects.requireNonNull($$9);
-         Throwable var45;
-         switch ($$9) {
-            case gib.g var11:
-               gib.g var53 = var11;
-
-               try {
-                  var54 = var53.a();
-               } catch (Throwable var31) {
-                  var45 = var31;
-                  boolean var66 = false;
-                  break;
-               }
-
-               String var36 = var54;
-               gib.g var55 = var11;
-
-               try {
-                  var56 = var55.c();
-               } catch (Throwable var30) {
-                  var45 = var30;
-                  boolean var67 = false;
-                  break;
-               }
-
-               alh var37 = var56;
-               gib.g var57 = var11;
-
-               try {
-                  var58 = var57.d();
-               } catch (Throwable var29) {
-                  var45 = var29;
-                  boolean var68 = false;
-                  break;
-               }
-
-               int var38 = var58;
-               gib.g var59 = var11;
-
-               try {
-                  var60 = var59.e();
-               } catch (Throwable var28) {
-                  var45 = var28;
-                  boolean var69 = false;
-                  break;
-               }
-
-               int var39 = var60;
-               gib.g var61 = var11;
-
-               try {
-                  var62 = var61.f();
-               } catch (Throwable var27) {
-                  var45 = var27;
-                  boolean var70 = false;
-                  break;
-               }
-
-               boolean var40 = var62;
-               gxd $$15x = $$0.a(var37.a((UnaryOperator<String>)($$0x -> "textures/effect/" + $$0x + ".png")));
-               $$15x.a(var40, false);
-               $$8.a(new gic.c(var36, $$15x, var38, var39));
-               continue;
-            case gib.f $$15:
-               gib.f var10000 = $$15;
-
-               try {
-                  var46 = var10000.a();
-               } catch (Throwable var26) {
-                  var45 = var26;
-                  boolean var10001 = false;
-                  break;
-               }
-
-               String var22 = var46;
-               gib.f var47 = $$15;
-
-               try {
-                  var48 = var47.c();
-               } catch (Throwable var25) {
-                  var45 = var25;
-                  boolean var63 = false;
-                  break;
-               }
-
-               alh var42 = var48;
-               gib.f var49 = $$15;
-
-               try {
-                  var50 = var49.d();
-               } catch (Throwable var24) {
-                  var45 = var24;
-                  boolean var64 = false;
-                  break;
-               }
-
-               boolean var43 = var50;
-               gib.f var51 = $$15;
-
-               try {
-                  var52 = var51.e();
-               } catch (Throwable var23) {
-                  var45 = var23;
-                  boolean var65 = false;
-                  break;
-               }
-
-               boolean var44 = var52;
-               $$8.a(new gic.b(var22, var42, var43, var44));
-               continue;
-            default:
-               throw new MatchException(null, null);
-         }
-
-         Throwable var35 = var45;
-         throw new MatchException(var35.toString(), var35);
-      }
-
-      return $$8;
    }
 
-   // $VF: Inserted dummy exception handlers to handle obfuscated exceptions
-   public void a(fbx $$0, int $$1, int $$2, gia.a $$3) {
-      Matrix4f $$4 = new Matrix4f().setOrtho(0.0F, (float)$$1, 0.0F, (float)$$2, 0.1F, 1000.0F);
-      Map<alh, fdf<fcd>> $$5 = new HashMap<>(this.c.size() + this.d.size());
-
-      for (alh $$6 : this.d) {
-         $$5.put($$6, $$3.b($$6));
+   private void a(feb $$0, float $$1, buu $$2, cwb $$3, com $$4) {
+      float $$5 = (float)$$4.fE() - $$1 + 1.0F;
+      float $$6 = $$5 / (float)$$3.a((bva)$$4);
+      if ($$6 < 0.8F) {
+         float $$7 = azk.e(azk.b($$5 / 4.0F * (float) Math.PI) * 0.1F);
+         $$0.a(0.0F, $$7, 0.0F);
       }
 
-      for (Entry<alh, gib.d> $$7 : this.c.entrySet()) {
-         alh $$8 = $$7.getKey();
-         gib.d var35;
-         Objects.requireNonNull(var35);
-         Object var11 = var35;
+      float $$8 = 1.0F - (float)Math.pow((double)$$6, 27.0);
+      int $$9 = $$2 == buu.b ? 1 : -1;
+      $$0.a($$8 * 0.6F * (float)$$9, $$8 * -0.5F, $$8 * 0.0F);
+      $$0.a(a.d.rotationDegrees((float)$$9 * $$8 * 90.0F));
+      $$0.a(a.b.rotationDegrees($$8 * 10.0F));
+      $$0.a(a.f.rotationDegrees((float)$$9 * $$8 * 30.0F));
+   }
 
-         var35 = $$7.getValue();
-         fdd $$11 = switch (var11) {
-            case gib.a var13 -> {
-               gib.a var29 = var13;
+   private void a(feb $$0, float $$1, buu $$2, cwb $$3, com $$4, float $$5) {
+      this.b($$0, $$2, $$5);
+      float $$6 = (float)($$4.fE() % 10);
+      float $$7 = $$6 - $$1 + 1.0F;
+      float $$8 = 1.0F - $$7 / 10.0F;
+      float $$9 = -90.0F;
+      float $$10 = 60.0F;
+      float $$11 = 150.0F;
+      float $$12 = -15.0F;
+      int $$13 = 2;
+      float $$14 = -15.0F + 75.0F * azk.b($$8 * 2.0F * (float) Math.PI);
+      if ($$2 != buu.b) {
+         $$0.a(0.1, 0.83, 0.35);
+         $$0.a(a.b.rotationDegrees(-80.0F));
+         $$0.a(a.d.rotationDegrees(-90.0F));
+         $$0.a(a.b.rotationDegrees($$14));
+         $$0.a(-0.3, 0.22, 0.35);
+      } else {
+         $$0.a(-0.25, 0.22, 0.35);
+         $$0.a(a.b.rotationDegrees(-80.0F));
+         $$0.a(a.d.rotationDegrees(90.0F));
+         $$0.a(a.f.rotationDegrees(0.0F));
+         $$0.a(a.b.rotationDegrees($$14));
+      }
+   }
 
-               int var26;
-               label56: {
-                  label76: {
-                     try {
-                        var31 = var29.a();
-                     } catch (Throwable var18) {
-                        var30 = var18;
-                        boolean var10001 = false;
-                        break label76;
-                     }
+   private void a(feb $$0, buu $$1, float $$2) {
+      int $$3 = $$1 == buu.b ? 1 : -1;
+      float $$4 = azk.a($$2 * $$2 * (float) Math.PI);
+      $$0.a(a.d.rotationDegrees((float)$$3 * (45.0F + $$4 * -20.0F)));
+      float $$5 = azk.a(azk.c($$2) * (float) Math.PI);
+      $$0.a(a.f.rotationDegrees((float)$$3 * $$5 * -20.0F));
+      $$0.a(a.b.rotationDegrees($$5 * -80.0F));
+      $$0.a(a.d.rotationDegrees((float)$$3 * -45.0F));
+   }
 
-                     var26 = var31;
-                     gib.a var32 = var13;
+   private void b(feb $$0, buu $$1, float $$2) {
+      int $$3 = $$1 == buu.b ? 1 : -1;
+      $$0.a((float)$$3 * 0.56F, -0.52F + $$2 * -0.6F, -0.72F);
+   }
 
-                     try {
-                        var33 = var32.b();
-                        break label56;
-                     } catch (Throwable var17) {
-                        var30 = var17;
-                        boolean var34 = false;
-                     }
-                  }
+   public void a(float $$0, feb $$1, gih.a $$2, ghd $$3, int $$4) {
+      float $$5 = $$3.D($$0);
+      bsc $$6 = (bsc)MoreObjects.firstNonNull($$3.aJ, bsc.a);
+      float $$7 = $$3.j($$0);
+      gia.a $$8 = a($$3);
+      float $$9 = azk.h($$0, $$3.cE, $$3.cC);
+      float $$10 = azk.h($$0, $$3.cD, $$3.cB);
+      $$1.a(a.b.rotationDegrees(($$3.h($$0) - $$9) * 0.1F));
+      $$1.a(a.d.rotationDegrees(($$3.i($$0) - $$10) * 0.1F));
+      if ($$8.d) {
+         float $$11 = $$6 == bsc.a ? $$5 : 0.0F;
+         float $$12 = 1.0F - azk.h($$0, this.az, this.ay);
+         this.a($$3, $$0, $$7, bsc.a, $$11, this.aw, $$12, $$1, $$2, $$4);
+      }
 
-                  Throwable var20 = var30;
-                  throw new MatchException(var20.toString(), var20);
-               }
+      if ($$8.e) {
+         float $$13 = $$6 == bsc.b ? $$5 : 0.0F;
+         float $$14 = 1.0F - azk.h($$0, this.aB, this.aA);
+         this.a($$3, $$0, $$7, bsc.b, $$13, this.ax, $$14, $$1, $$2, $$4);
+      }
 
-               int var27 = var33;
-               yield new fdd(var26, var27, true);
+      $$2.b();
+   }
+
+   @VisibleForTesting
+   static gia.a a(ghd $$0) {
+      cwb $$1 = $$0.fb();
+      cwb $$2 = $$0.fc();
+      boolean $$3 = $$1.a(cwf.ow) || $$2.a(cwf.ow);
+      boolean $$4 = $$1.a(cwf.vX) || $$2.a(cwf.vX);
+      if (!$$3 && !$$4) {
+         return gia.a.a;
+      } else if ($$0.fB()) {
+         return b($$0);
+      } else {
+         return a($$1) ? gia.a.b : gia.a.a;
+      }
+   }
+
+   private static gia.a b(ghd $$0) {
+      cwb $$1 = $$0.fD();
+      bsc $$2 = $$0.fC();
+      if (!$$1.a(cwf.ow) && !$$1.a(cwf.vX)) {
+         return $$2 == bsc.a && a($$0.fc()) ? gia.a.b : gia.a.a;
+      } else {
+         return gia.a.a($$2);
+      }
+   }
+
+   private static boolean a(cwb $$0) {
+      return $$0.a(cwf.vX) && cus.g($$0);
+   }
+
+   private void a(gha $$0, float $$1, float $$2, bsc $$3, float $$4, cwb $$5, float $$6, feb $$7, gih $$8, int $$9) {
+      if (!$$0.gI()) {
+         boolean $$10 = $$3 == bsc.a;
+         buu $$11 = $$10 ? $$0.fA() : $$0.fA().e();
+         $$7.a();
+         if ($$5.f()) {
+            if ($$10 && !$$0.cq()) {
+               this.a($$7, $$8, $$9, $$6, $$4, $$11);
             }
-            case gib.b var16 -> new fdd($$1, $$2, true);
-            default -> throw new MatchException(null, null);
-         };
-         $$5.put($$8, $$0.a($$8.toString(), $$11));
-      }
+         } else if ($$5.b(ku.L)) {
+            if ($$10 && this.ax.f()) {
+               this.a($$7, $$8, $$9, $$2, $$6, $$4);
+            } else {
+               this.a($$7, $$8, $$9, $$6, $$11, $$4, $$5);
+            }
+         } else if ($$5.a(cwf.vX)) {
+            boolean $$12 = cus.g($$5);
+            boolean $$13 = $$11 == buu.b;
+            int $$14 = $$13 ? 1 : -1;
+            if ($$0.fB() && $$0.fE() > 0 && $$0.fC() == $$3) {
+               this.b($$7, $$11, $$6);
+               $$7.a((float)$$14 * -0.4785682F, -0.094387F, 0.05731531F);
+               $$7.a(a.b.rotationDegrees(-11.935F));
+               $$7.a(a.d.rotationDegrees((float)$$14 * 65.3F));
+               $$7.a(a.f.rotationDegrees((float)$$14 * -9.785F));
+               float $$15 = (float)$$5.a((bva)$$0) - ((float)$$0.fE() - $$1 + 1.0F);
+               float $$16 = $$15 / (float)cus.b($$5, $$0);
+               if ($$16 > 1.0F) {
+                  $$16 = 1.0F;
+               }
 
-      for (gic $$12 : this.b) {
-         $$12.a($$0, $$5, $$4);
-      }
+               if ($$16 > 0.1F) {
+                  float $$17 = azk.a(($$15 - 0.1F) * 1.3F);
+                  float $$18 = $$16 - 0.1F;
+                  float $$19 = $$17 * $$18;
+                  $$7.a($$19 * 0.0F, $$19 * 0.004F, $$19 * 0.0F);
+               }
 
-      for (alh $$13 : this.d) {
-         $$3.a($$13, $$5.get($$13));
-      }
-   }
-
-   @Deprecated
-   public void a(fcd $$0, fdc $$1) {
-      fbx $$2 = new fbx();
-      gia.a $$3 = gia.a.b(a, $$2.a("main", $$0));
-      this.a($$2, $$0.c, $$0.d, $$3);
-      $$2.a($$1);
-   }
-
-   public void a(String $$0, float $$1) {
-      for (gic $$2 : this.b) {
-         $$2.a().b($$0).a($$1);
-      }
-   }
-
-   public interface a {
-      static gia.a b(final alh $$0, final fdf<fcd> $$1) {
-         return new gia.a() {
-            private fdf<fcd> c = $$1;
-
-            @Override
-            public void a(alh $$0x, fdf<fcd> $$1x) {
-               if ($$0.equals($$0)) {
-                  this.c = $$1;
-               } else {
-                  throw new IllegalArgumentException("No target with id " + $$0);
+               $$7.a($$16 * 0.0F, $$16 * 0.0F, $$16 * 0.04F);
+               $$7.b(1.0F, 1.0F, 1.0F + $$16 * 0.2F);
+               $$7.a(a.c.rotationDegrees((float)$$14 * 45.0F));
+            } else {
+               float $$20 = -0.4F * azk.a(azk.c($$4) * (float) Math.PI);
+               float $$21 = 0.2F * azk.a(azk.c($$4) * (float) (Math.PI * 2));
+               float $$22 = -0.2F * azk.a($$4 * (float) Math.PI);
+               $$7.a((float)$$14 * $$20, $$21, $$22);
+               this.b($$7, $$11, $$6);
+               this.a($$7, $$11, $$4);
+               if ($$12 && $$4 < 0.001F && $$10) {
+                  $$7.a((float)$$14 * -0.641864F, 0.0F, 0.0F);
+                  $$7.a(a.d.rotationDegrees((float)$$14 * 10.0F));
                }
             }
 
-            @Nullable
-            @Override
-            public fdf<fcd> a(alh $$0x) {
-               return $$0.equals($$0) ? this.c : null;
-            }
-         };
-      }
-
-      void a(alh var1, fdf<fcd> var2);
-
-      @Nullable
-      fdf<fcd> a(alh var1);
-
-      default fdf<fcd> b(alh $$0) {
-         fdf<fcd> $$1 = this.a($$0);
-         if ($$1 == null) {
-            throw new IllegalArgumentException("Missing target with id " + $$0);
+            this.a($$0, $$5, $$13 ? cvz.e : cvz.d, !$$13, $$7, $$8, $$9);
          } else {
-            return $$1;
+            boolean $$23 = $$11 == buu.b;
+            if ($$0.fB() && $$0.fE() > 0 && $$0.fC() == $$3) {
+               int $$24 = $$23 ? 1 : -1;
+               switch ($$5.w()) {
+                  case a:
+                     this.b($$7, $$11, $$6);
+                     break;
+                  case b:
+                  case c:
+                     this.a($$7, $$1, $$11, $$5, $$0);
+                     this.b($$7, $$11, $$6);
+                     break;
+                  case d:
+                     this.b($$7, $$11, $$6);
+                     break;
+                  case e:
+                     this.b($$7, $$11, $$6);
+                     $$7.a((float)$$24 * -0.2785682F, 0.18344387F, 0.15731531F);
+                     $$7.a(a.b.rotationDegrees(-13.935F));
+                     $$7.a(a.d.rotationDegrees((float)$$24 * 35.3F));
+                     $$7.a(a.f.rotationDegrees((float)$$24 * -9.785F));
+                     float $$25 = (float)$$5.a((bva)$$0) - ((float)$$0.fE() - $$1 + 1.0F);
+                     float $$26 = $$25 / 20.0F;
+                     $$26 = ($$26 * $$26 + $$26 * 2.0F) / 3.0F;
+                     if ($$26 > 1.0F) {
+                        $$26 = 1.0F;
+                     }
+
+                     if ($$26 > 0.1F) {
+                        float $$27 = azk.a(($$25 - 0.1F) * 1.3F);
+                        float $$28 = $$26 - 0.1F;
+                        float $$29 = $$27 * $$28;
+                        $$7.a($$29 * 0.0F, $$29 * 0.004F, $$29 * 0.0F);
+                     }
+
+                     $$7.a($$26 * 0.0F, $$26 * 0.0F, $$26 * 0.04F);
+                     $$7.b(1.0F, 1.0F, 1.0F + $$26 * 0.2F);
+                     $$7.a(a.c.rotationDegrees((float)$$24 * 45.0F));
+                     break;
+                  case f:
+                     this.b($$7, $$11, $$6);
+                     $$7.a((float)$$24 * -0.5F, 0.7F, 0.1F);
+                     $$7.a(a.b.rotationDegrees(-55.0F));
+                     $$7.a(a.d.rotationDegrees((float)$$24 * 35.3F));
+                     $$7.a(a.f.rotationDegrees((float)$$24 * -9.785F));
+                     float $$30 = (float)$$5.a((bva)$$0) - ((float)$$0.fE() - $$1 + 1.0F);
+                     float $$31 = $$30 / 10.0F;
+                     if ($$31 > 1.0F) {
+                        $$31 = 1.0F;
+                     }
+
+                     if ($$31 > 0.1F) {
+                        float $$32 = azk.a(($$30 - 0.1F) * 1.3F);
+                        float $$33 = $$31 - 0.1F;
+                        float $$34 = $$32 * $$33;
+                        $$7.a($$34 * 0.0F, $$34 * 0.004F, $$34 * 0.0F);
+                     }
+
+                     $$7.a(0.0F, 0.0F, $$31 * 0.2F);
+                     $$7.b(1.0F, 1.0F, 1.0F + $$31 * 0.2F);
+                     $$7.a(a.c.rotationDegrees((float)$$24 * 45.0F));
+                     break;
+                  case j:
+                     this.a($$7, $$1, $$11, $$5, $$0, $$6);
+               }
+            } else if ($$0.fx()) {
+               this.b($$7, $$11, $$6);
+               int $$35 = $$23 ? 1 : -1;
+               $$7.a((float)$$35 * -0.4F, 0.8F, 0.3F);
+               $$7.a(a.d.rotationDegrees((float)$$35 * 65.0F));
+               $$7.a(a.f.rotationDegrees((float)$$35 * -85.0F));
+            } else {
+               float $$36 = -0.4F * azk.a(azk.c($$4) * (float) Math.PI);
+               float $$37 = 0.2F * azk.a(azk.c($$4) * (float) (Math.PI * 2));
+               float $$38 = -0.2F * azk.a($$4 * (float) Math.PI);
+               int $$39 = $$23 ? 1 : -1;
+               $$7.a((float)$$39 * $$36, $$37, $$38);
+               this.b($$7, $$11, $$6);
+               this.a($$7, $$11, $$4);
+            }
+
+            this.a($$0, $$5, $$23 ? cvz.e : cvz.d, !$$23, $$7, $$8, $$9);
          }
+
+         $$7.b();
+      }
+   }
+
+   public void a() {
+      this.az = this.ay;
+      this.aB = this.aA;
+      ghd $$0 = this.au.t;
+      cwb $$1 = $$0.fb();
+      cwb $$2 = $$0.fc();
+      if (cwb.a(this.aw, $$1)) {
+         this.aw = $$1;
+      }
+
+      if (cwb.a(this.ax, $$2)) {
+         this.ax = $$2;
+      }
+
+      if ($$0.C()) {
+         this.ay = azk.a(this.ay - 0.4F, 0.0F, 1.0F);
+         this.aA = azk.a(this.aA - 0.4F, 0.0F, 1.0F);
+      } else {
+         float $$3 = $$0.H(1.0F);
+         this.ay = this.ay + azk.a((this.aw == $$1 ? $$3 * $$3 * $$3 : 0.0F) - this.ay, -0.4F, 0.4F);
+         this.aA = this.aA + azk.a((float)(this.ax == $$2 ? 1 : 0) - this.aA, -0.4F, 0.4F);
+      }
+
+      if (this.ay < 0.1F) {
+         this.aw = $$1;
+      }
+
+      if (this.aA < 0.1F) {
+         this.ax = $$2;
+      }
+   }
+
+   public void a(bsc $$0) {
+      if ($$0 == bsc.a) {
+         this.ay = 0.0F;
+      } else {
+         this.aA = 0.0F;
+      }
+   }
+
+   @VisibleForTesting
+   static enum a {
+      a(true, true),
+      b(true, false),
+      c(false, true);
+
+      final boolean d;
+      final boolean e;
+
+      private a(final boolean $$0, final boolean $$1) {
+         this.d = $$0;
+         this.e = $$1;
+      }
+
+      public static gia.a a(bsc $$0) {
+         return $$0 == bsc.a ? b : c;
       }
    }
 }

@@ -1,30 +1,55 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import javax.annotation.Nullable;
+import java.util.Optional;
 
-public record ds(boolean d, boolean e) implements bw {
-   public static final MapCodec<ds> b = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(Codec.BOOL.optionalFieldOf("has_raid", false).forGetter(ds::b), Codec.BOOL.optionalFieldOf("is_captain", false).forGetter(ds::c))
-            .apply($$0, ds::new)
-   );
-   public static final ds c = new ds(false, true);
-
+public class ds extends dy<ds.a> {
    @Override
-   public MapCodec<ds> a() {
-      return bx.e;
+   public Codec<ds.a> a() {
+      return ds.a.a;
    }
 
-   @Override
-   public boolean a(btz $$0, arm $$1, @Nullable ezh $$2) {
-      return !($$0 instanceof cpw $$3) ? false : $$3.gL() == this.d && $$3.gK() == this.e;
+   public void a(aro $$0) {
+      this.a($$0, $$0x -> true);
    }
 
-   public boolean b() {
-      return this.d;
-   }
+   public static record a(Optional<bh> b) implements dy.a {
+      public static final Codec<ds.a> a = RecordCodecBuilder.create($$0 -> $$0.group(bw.b.optionalFieldOf("player").forGetter(ds.a::a)).apply($$0, ds.a::new));
 
-   public boolean c() {
-      return this.e;
+      public static ap<ds.a> a(dh.a $$0) {
+         return ao.q.a(new ds.a(Optional.of(bw.a(bw.a.a().a($$0)))));
+      }
+
+      public static ap<ds.a> a(bw.a $$0) {
+         return ao.q.a(new ds.a(Optional.of(bw.a($$0.b()))));
+      }
+
+      public static ap<ds.a> a(Optional<bw> $$0) {
+         return ao.q.a(new ds.a(bw.a($$0)));
+      }
+
+      public static ap<ds.a> b() {
+         return ao.r.a(new ds.a(Optional.empty()));
+      }
+
+      public static ap<ds.a> c() {
+         return ao.I.a(new ds.a(Optional.empty()));
+      }
+
+      public static ap<ds.a> d() {
+         return ao.ab.a(new ds.a(Optional.empty()));
+      }
+
+      public static ap<ds.a> e() {
+         return ao.x.a(new ds.a(Optional.empty()));
+      }
+
+      public static ap<ds.a> a(jr<die> $$0, jr<cvx> $$1, die $$2, cvx $$3) {
+         return a(bw.a.a().a(bt.a.a().d(cu.a.a().a($$1, $$3))).b(dh.a.a().a(ax.a.a().a($$0, $$2))));
+      }
+
+      @Override
+      public Optional<bh> a() {
+         return this.b;
+      }
    }
 }

@@ -1,9 +1,22 @@
-public class ctk extends crl {
-   public ctk(int $$0, cog $$1) {
-      super(css.w, dap.d, csz.d, $$0, $$1);
+public class ctk implements csa {
+   private final int[] a;
+
+   public ctk(int $$0) {
+      this.a = new int[$$0];
    }
 
-   public ctk(int $$0, cog $$1, brr $$2, crv $$3) {
-      super(css.w, dap.d, csz.d, $$0, $$1, $$2, $$3);
+   @Override
+   public int a(int $$0) {
+      return this.a[$$0];
+   }
+
+   @Override
+   public void a(int $$0, int $$1) {
+      this.a[$$0] = $$1;
+   }
+
+   @Override
+   public int a() {
+      return this.a.length;
    }
 }

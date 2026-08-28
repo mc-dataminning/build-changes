@@ -1,19 +1,34 @@
-import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
-import java.util.function.Function;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public interface dcf {
-   Codec<dcf> b = lx.aw.q().dispatch(dcf::a, Function.identity());
+public record dcf(dbz d, dbz e, jq<bsw> f) implements dcj {
+   public static final MapCodec<dcf> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(
+               dbz.b.fieldOf("min_damage").forGetter(dcf::b), dbz.b.fieldOf("max_damage").forGetter(dcf::c), bsw.b.fieldOf("damage_type").forGetter(dcf::d)
+            )
+            .apply($$0, dcf::new)
+   );
 
-   static MapCodec<? extends dcf> a(kc<MapCodec<? extends dcf>> $$0) {
-      kc.a($$0, "add", dbw.a);
-      kc.a($$0, "all_of", dbx.c.a);
-      kc.a($$0, "multiply", dci.a);
-      kc.a($$0, "remove_binomial", dck.a);
-      return kc.a($$0, "set", dcp.a);
+   @Override
+   public void a(arn $$0, int $$1, dbr $$2, bue $$3, ezn $$4) {
+      float $$5 = azk.b($$3.ea(), this.d.a($$1), this.e.a($$1));
+      $$3.a(new bsu(this.f, $$2.c()), $$5);
    }
 
-   float a(int var1, azr var2, float var3);
+   @Override
+   public MapCodec<dcf> a() {
+      return a;
+   }
 
-   MapCodec<? extends dcf> a();
+   public dbz b() {
+      return this.d;
+   }
+
+   public dbz c() {
+      return this.e;
+   }
+
+   public jq<bsw> d() {
+      return this.f;
+   }
 }

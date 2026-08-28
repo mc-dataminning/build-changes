@@ -1,39 +1,26 @@
-import java.util.function.IntFunction;
+public enum fis {
+   a(true, false),
+   b(false, false),
+   c(false, true);
 
-public enum fis implements azm {
-   a(0, "options.graphics.fast"),
-   b(1, "options.graphics.fancy"),
-   c(2, "options.graphics.fabulous");
+   private static final fis[] d = values();
+   private final boolean e;
+   private final boolean f;
 
-   private static final IntFunction<fis> d = aya.a(fis::b, values(), aya.a.b);
-   private final int e;
-   private final String f;
-
-   private fis(final int $$0, final String $$1) {
+   private fis(final boolean $$0, final boolean $$1) {
       this.e = $$0;
       this.f = $$1;
    }
 
-   @Override
-   public int b() {
+   public boolean a() {
       return this.e;
    }
 
-   @Override
-   public String a() {
+   public boolean b() {
       return this.f;
    }
 
-   @Override
-   public String toString() {
-      return switch (this) {
-         case a -> "fast";
-         case b -> "fancy";
-         case c -> "fabulous";
-      };
-   }
-
-   public static fis a(int $$0) {
-      return d.apply($$0);
+   public fis c() {
+      return d[(this.ordinal() + 1) % d.length];
    }
 }

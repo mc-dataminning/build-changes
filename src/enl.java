@@ -1,25 +1,24 @@
-import com.mojang.serialization.MapCodec;
-import java.util.Optional;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.ImmutableMap.Builder;
+import java.util.List;
+import java.util.Map;
+import java.util.Objects;
 
-public class enl extends elr {
-   public static final MapCodec<enl> d = a(enl::new);
+@FunctionalInterface
+public interface enl {
+   enl a = $$0 -> $$0;
 
-   public enl(elr.c $$0) {
-      super($$0);
-   }
+   alh<enh> lookup(alh<enh> var1);
 
-   @Override
-   public Optional<elr.b> a(elr.a $$0) {
-      return a($$0, eaz.a.c, $$1 -> a($$1, $$0));
-   }
-
-   private static void a(emj $$0, elr.a $$1) {
-      jg $$2 = new jg($$1.h().a(9), 90, $$1.h().b(9));
-      $$0.a(new enk.a($$2));
-   }
-
-   @Override
-   public ema<?> e() {
-      return ema.a;
+   static enl create(List<enj> $$0, jh $$1, long $$2) {
+      if ($$0.isEmpty()) {
+         return a;
+      } else {
+         azs $$3 = azs.a($$2).e().a($$1);
+         Builder<alh<enh>, alh<enh>> $$4 = ImmutableMap.builder();
+         $$0.forEach($$2x -> $$2x.a($$3, $$4::put));
+         Map<alh<enh>, alh<enh>> $$5 = $$4.build();
+         return $$1x -> Objects.requireNonNull($$5.getOrDefault($$1x, $$1x), () -> "alias " + $$1x + " was mapped to null value");
+      }
    }
 }

@@ -1,95 +1,93 @@
 import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.Sets;
+import com.google.common.collect.ImmutableSet.Builder;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
+import java.util.Objects;
 import java.util.Set;
+import java.util.stream.Collectors;
 
-public class evb extends evj {
-   public static final int a = 0;
-   public static final MapCodec<evb> b = RecordCodecBuilder.mapCodec(
+public class evb extends evp {
+   public static final MapCodec<evb> a = RecordCodecBuilder.mapCodec(
       $$0 -> a($$0)
             .and(
                $$0.group(
-                  dbm.c.fieldOf("enchantment").forGetter($$0x -> $$0x.c),
-                  eye.a.fieldOf("count").forGetter($$0x -> $$0x.d),
-                  Codec.INT.optionalFieldOf("limit", 0).forGetter($$0x -> $$0x.e)
+                  ly.e.r().fieldOf("block").forGetter($$0x -> $$0x.b),
+                  Codec.STRING.listOf().fieldOf("properties").forGetter($$0x -> $$0x.c.stream().map(dwm::f).toList())
                )
             )
             .apply($$0, evb::new)
    );
-   private final jp<dbm> c;
-   private final eyd d;
-   private final int e;
+   private final jq<die> b;
+   private final Set<dwm<?>> c;
 
-   evb(List<exh> $$0, jp<dbm> $$1, eyd $$2, int $$3) {
+   evb(List<exn> $$0, jq<die> $$1, Set<dwm<?>> $$2) {
       super($$0);
-      this.c = $$1;
-      this.d = $$2;
-      this.e = $$3;
+      this.b = $$1;
+      this.c = $$2;
+   }
+
+   private evb(List<exn> $$0, jq<die> $$1, List<String> $$2) {
+      this($$0, $$1, $$2.stream().map($$1.a().l()::a).filter(Objects::nonNull).collect(Collectors.toSet()));
    }
 
    @Override
-   public evl<evb> b() {
-      return evm.m;
+   public evr<evb> b() {
+      return evs.D;
    }
 
    @Override
-   public Set<ewp<?>> a() {
-      return Sets.union(ImmutableSet.of(ews.d), this.d.a());
-   }
-
-   private boolean c() {
-      return this.e > 0;
+   public Set<ewv<?>> a() {
+      return ImmutableSet.of(ewy.g);
    }
 
    @Override
-   public cvx a(cvx $$0, etw $$1) {
-      btz $$2 = $$1.c(ews.d);
-      if ($$2 instanceof buv $$3) {
-         int $$4 = dbo.a(this.c, $$3);
-         if ($$4 == 0) {
-            return $$0;
-         }
+   protected cwb a(cwb $$0, euc $$1) {
+      dvj $$2 = $$1.c(ewy.g);
+      if ($$2 != null) {
+         $$0.a(ku.am, cyd.a, $$1x -> {
+            for (dwm<?> $$2x : this.c) {
+               if ($$2.b($$2x)) {
+                  $$1x = $$1x.a($$2x, $$2);
+               }
+            }
 
-         float $$5 = (float)$$4 * this.d.b($$1);
-         $$0.g(Math.round($$5));
-         if (this.c()) {
-            $$0.f(this.e);
-         }
+            return $$1x;
+         });
       }
 
       return $$0;
    }
 
-   public static evb.a a(jr.a $$0, eyd $$1) {
-      jr.b<dbm> $$2 = $$0.d(ly.aM);
-      return new evb.a($$2.b(dbr.s), $$1);
+   public static evb.a a(die $$0) {
+      return new evb.a($$0);
    }
 
-   public static class a extends evj.a<evb.a> {
-      private final jp<dbm> a;
-      private final eyd b;
-      private int c = 0;
+   public static class a extends evp.a<evb.a> {
+      private final jq<die> a;
+      private final Builder<dwm<?>> b = ImmutableSet.builder();
 
-      public a(jp<dbm> $$0, eyd $$1) {
-         this.a = $$0;
-         this.b = $$1;
+      a(die $$0) {
+         this.a = $$0.p();
+      }
+
+      public evb.a a(dwm<?> $$0) {
+         if (!this.a.a().l().d().contains($$0)) {
+            throw new IllegalStateException("Property " + $$0 + " is not present on block " + this.a);
+         } else {
+            this.b.add($$0);
+            return this;
+         }
       }
 
       protected evb.a a() {
          return this;
       }
 
-      public evb.a a(int $$0) {
-         this.c = $$0;
-         return this;
-      }
-
       @Override
-      public evk b() {
-         return new evb(this.g(), this.a, this.b, this.c);
+      public evq b() {
+         return new evb(this.g(), this.a, this.b.build());
       }
    }
 }

@@ -1,87 +1,92 @@
-import com.mojang.authlib.GameProfile;
+import java.util.Optional;
+import org.joml.Quaternionf;
 
 public class ggt extends ggp {
-   private ezh i = ezh.c;
-   private int cw;
+   private final eak a;
+   private float b;
+   private float F;
+   private float G;
+   private float H;
 
-   public ggt(gbx $$0, GameProfile $$1) {
-      super($$0, $$1);
-      this.ae = true;
+   ggt(gci $$0, double $$1, double $$2, double $$3, eak $$4, int $$5) {
+      super($$0, $$1, $$2, $$3, 0.0, 0.0, 0.0);
+      this.D = 0.3F;
+      this.a = $$4;
+      this.t = $$5;
+      Optional<ezn> $$6 = $$4.a($$0);
+      if ($$6.isPresent()) {
+         ezn $$7 = $$6.get();
+         double $$8 = $$1 - $$7.a();
+         double $$9 = $$2 - $$7.b();
+         double $$10 = $$3 - $$7.c();
+         this.F = this.b = (float)azk.d($$8, $$10);
+         this.H = this.G = (float)azk.d($$9, Math.sqrt($$8 * $$8 + $$10 * $$10));
+      }
    }
 
    @Override
-   public boolean a(double $$0) {
-      double $$1 = this.cS().a() * 10.0;
-      if (Double.isNaN($$1)) {
-         $$1 = 1.0;
-      }
-
-      $$1 *= 64.0 * cL();
-      return $$0 < $$1 * $$1;
+   public void a(fef $$0, fir $$1, float $$2) {
+      float $$3 = azk.a(((float)this.s + $$2 - (float) (Math.PI * 2)) * 0.05F) * 2.0F;
+      float $$4 = azk.h($$2, this.F, this.b);
+      float $$5 = azk.h($$2, this.H, this.G) + (float) (Math.PI / 2);
+      Quaternionf $$6 = new Quaternionf();
+      $$6.rotationY($$4).rotateX(-$$5).rotateY($$3);
+      this.a($$0, $$1, $$6, $$2);
+      $$6.rotationY((float) -Math.PI + $$4).rotateX($$5).rotateY($$3);
+      this.a($$0, $$1, $$6, $$2);
    }
 
    @Override
-   public boolean a(bsp $$0, float $$1) {
-      return true;
+   public int a(float $$0) {
+      return 240;
    }
 
    @Override
-   public void l() {
-      super.l();
-      this.s(false);
+   public gft b() {
+      return gft.c;
    }
 
    @Override
-   public void n_() {
-      if (this.bo > 0) {
-         this.a(this.bo, this.bp, this.bq, this.br, this.bs, this.bt);
-         this.bo--;
-      }
-
-      if (this.bv > 0) {
-         this.a(this.bv, this.bu);
-         this.bv--;
-      }
-
-      if (this.cw > 0) {
-         this.i(new ezh((this.i.d - this.dA().d) / (double)this.cw, (this.i.e - this.dA().e) / (double)this.cw, (this.i.f - this.dA().f) / (double)this.cw));
-         this.cw--;
-      }
-
-      this.cd = this.ce;
-      this.eZ();
-      float $$1;
-      if (this.aJ() && !this.eH()) {
-         $$1 = (float)Math.min(0.1, this.dA().i());
+   public void a() {
+      this.d = this.g;
+      this.e = this.h;
+      this.f = this.i;
+      if (this.s++ >= this.t) {
+         this.k();
       } else {
-         $$1 = 0.0F;
+         Optional<ezn> $$0 = this.a.a(this.c);
+         if ($$0.isEmpty()) {
+            this.k();
+         } else {
+            int $$1 = this.t - this.s;
+            double $$2 = 1.0 / (double)$$1;
+            ezn $$3 = $$0.get();
+            this.g = azk.d($$2, this.g, $$3.a());
+            this.h = azk.d($$2, this.h, $$3.b());
+            this.i = azk.d($$2, this.i, $$3.c());
+            double $$4 = this.g - $$3.a();
+            double $$5 = this.h - $$3.b();
+            double $$6 = this.i - $$3.c();
+            this.F = this.b;
+            this.b = (float)azk.d($$4, $$6);
+            this.H = this.G;
+            this.G = (float)azk.d($$5, Math.sqrt($$4 * $$4 + $$6 * $$6));
+         }
+      }
+   }
+
+   public static class a implements gfs<lw> {
+      private final ggk a;
+
+      public a(ggk $$0) {
+         this.a = $$0;
       }
 
-      this.ce = this.ce + ($$1 - this.ce) * 0.4F;
-      this.dX().ah().a("push");
-      this.r();
-      this.dX().ah().c();
-   }
-
-   @Override
-   public void l(double $$0, double $$1, double $$2) {
-      this.i = new ezh($$0, $$1, $$2);
-      this.cw = this.aq().p() + 1;
-   }
-
-   @Override
-   protected void ge() {
-   }
-
-   @Override
-   public void a(xh $$0) {
-      fja $$1 = fja.Q();
-      $$1.m.d().a($$0);
-   }
-
-   @Override
-   public void a(ace $$0) {
-      super.a($$0);
-      this.bA();
+      public gfp a(lw $$0, gci $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         ggt $$8 = new ggt($$1, $$2, $$3, $$4, $$0.b(), $$0.c());
+         $$8.a(this.a);
+         $$8.e(1.0F);
+         return $$8;
+      }
    }
 }

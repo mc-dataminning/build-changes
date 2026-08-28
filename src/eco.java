@@ -1,22 +1,16 @@
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
+import java.util.function.Function;
 
-class eco implements ecg {
-   public static final MapCodec<eco> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(ecg.b.fieldOf("predicate").forGetter($$0x -> $$0x.e)).apply($$0, eco::new)
-   );
-   private final ecg e;
+abstract class eco implements ecm {
+   protected final List<ecm> e;
 
-   public eco(ecg $$0) {
+   protected eco(List<ecm> $$0) {
       this.e = $$0;
    }
 
-   public boolean a(dfs $$0, jg $$1) {
-      return !this.e.test($$0, $$1);
-   }
-
-   @Override
-   public ech<?> a() {
-      return ech.k;
+   public static <T extends eco> MapCodec<T> a(Function<List<ecm>, T> $$0) {
+      return RecordCodecBuilder.mapCodec($$1 -> $$1.group(ecm.b.listOf().fieldOf("predicates").forGetter($$0xx -> $$0xx.e)).apply($$1, $$0));
    }
 }

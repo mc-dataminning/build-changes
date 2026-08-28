@@ -1,17 +1,30 @@
-import java.io.IOException;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class gym extends avf<int[]> {
-   private static final alh a = alh.b("textures/colormap/grass.png");
+public class gym implements gyh {
+   public static final MapCodec<gym> b = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(Codec.STRING.fieldOf("source").forGetter($$0x -> $$0x.c), Codec.STRING.fieldOf("prefix").forGetter($$0x -> $$0x.d)).apply($$0, gym::new)
+   );
+   private final String c;
+   private final String d;
 
-   protected int[] a(ava $$0, bok $$1) {
-      try {
-         return gyo.a($$0, a);
-      } catch (IOException var4) {
-         throw new IllegalStateException("Failed to load grass color texture", var4);
-      }
+   public gym(String $$0, String $$1) {
+      this.c = $$0;
+      this.d = $$1;
    }
 
-   protected void a(int[] $$0, ava $$1, bok $$2) {
-      det.a($$0);
+   @Override
+   public void a(avb $$0, gyh.a $$1) {
+      alb $$2 = new alb("textures/" + this.c, ".png");
+      $$2.a($$0).forEach(($$2x, $$3) -> {
+         ali $$4 = $$2.b($$2x).f(this.d);
+         $$1.a($$4, $$3);
+      });
+   }
+
+   @Override
+   public gyj a() {
+      return gyk.b;
    }
 }

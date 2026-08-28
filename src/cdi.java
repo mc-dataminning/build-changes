@@ -1,32 +1,30 @@
-public class cdi extends ccd {
-   private final cmf b;
-   private int c;
+public class cdi extends cby {
+   private final bvi a;
 
-   public cdi(cmf $$0, double $$1, boolean $$2) {
-      super($$0, $$1, $$2);
-      this.b = $$0;
+   public cdi(bvi $$0) {
+      this.a = $$0;
+   }
+
+   @Override
+   public boolean b() {
+      return this.a.aK() && !this.a.dX().b_(this.a.dx()).a(axg.a);
    }
 
    @Override
    public void d() {
-      super.d();
-      this.c = 0;
-   }
+      jh $$0 = null;
 
-   @Override
-   public void e() {
-      super.e();
-      this.b.w(false);
-   }
+      for (jh $$2 : jh.b(
+         azk.a(this.a.dC() - 2.0), azk.a(this.a.dE() - 2.0), azk.a(this.a.dI() - 2.0), azk.a(this.a.dC() + 2.0), this.a.dD(), azk.a(this.a.dI() + 2.0)
+      )) {
+         if (this.a.dX().b_($$2).a(axg.a)) {
+            $$0 = $$2;
+            break;
+         }
+      }
 
-   @Override
-   public void a() {
-      super.a();
-      this.c++;
-      if (this.c >= 5 && this.k() < this.l() / 2) {
-         this.b.w(true);
-      } else {
-         this.b.w(false);
+      if ($$0 != null) {
+         this.a.M().a((double)$$0.u(), (double)$$0.v(), (double)$$0.w(), 1.0);
       }
    }
 }

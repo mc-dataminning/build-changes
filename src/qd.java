@@ -1,60 +1,35 @@
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Optional;
 import java.util.concurrent.CompletableFuture;
 
-public class qd extends qg<ckm> {
-   public qd(mg $$0, CompletableFuture<jr.a> $$1) {
-      super($$0, ly.X, $$1);
+public abstract class qd extends qc<cvx> {
+   private final CompletableFuture<qh.c<die>> d;
+   private final Map<axq<die>, axq<cvx>> g = new HashMap<>();
+
+   public qd(mh $$0, CompletableFuture<js.a> $$1, CompletableFuture<qh.c<die>> $$2) {
+      super($$0, lz.K, $$1, $$0x -> $$0x.f().h());
+      this.d = $$2;
+   }
+
+   public qd(mh $$0, CompletableFuture<js.a> $$1, CompletableFuture<qh.c<cvx>> $$2, CompletableFuture<qh.c<die>> $$3) {
+      super($$0, lz.K, $$1, $$2, $$0x -> $$0x.f().h());
+      this.d = $$3;
+   }
+
+   protected void a(axq<die> $$0, axq<cvx> $$1) {
+      this.g.put($$0, $$1);
    }
 
    @Override
-   protected void a(jr.a $$0) {
-      this.b(axj.a)
-         .a(
-            ckn.a,
-            ckn.b,
-            ckn.c,
-            ckn.d,
-            ckn.e,
-            ckn.f,
-            ckn.g,
-            ckn.h,
-            ckn.i,
-            ckn.j,
-            ckn.k,
-            ckn.l,
-            ckn.m,
-            ckn.n,
-            ckn.o,
-            ckn.p,
-            ckn.q,
-            ckn.r,
-            ckn.s,
-            ckn.t,
-            ckn.u,
-            ckn.v,
-            ckn.w,
-            ckn.x,
-            ckn.y,
-            ckn.z,
-            ckn.E,
-            ckn.F,
-            ckn.G,
-            ckn.H,
-            ckn.I,
-            ckn.J,
-            ckn.K,
-            ckn.L,
-            ckn.M,
-            ckn.N,
-            ckn.O,
-            ckn.P,
-            ckn.Q,
-            ckn.R,
-            ckn.S,
-            ckn.T,
-            ckn.U,
-            ckn.V,
-            ckn.W,
-            ckn.X
-         );
+   protected CompletableFuture<js.a> b() {
+      return super.b().thenCombine(this.d, ($$0, $$1) -> {
+         this.g.forEach(($$1x, $$2) -> {
+            axn $$3 = this.c((axq<cvx>)$$2);
+            Optional<axn> $$4 = $$1.apply($$1x);
+            $$4.orElseThrow(() -> new IllegalStateException("Missing block tag " + $$2.b())).b().forEach($$3::a);
+         });
+         return (js.a)$$0;
+      });
    }
 }

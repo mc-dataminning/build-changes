@@ -1,19 +1,18 @@
-public final class bsg implements bsa {
-   private final xh a;
-   private final csr b;
+import javax.annotation.Nullable;
 
-   public bsg(csr $$0, xh $$1) {
-      this.b = $$0;
-      this.a = $$1;
+public interface bsg {
+   xi am();
+
+   default boolean an() {
+      return this.ao() != null;
    }
 
-   @Override
-   public xh S_() {
-      return this.a;
+   default xi S_() {
+      return this.am();
    }
 
-   @Override
-   public crj createMenu(int $$0, cog $$1, coh $$2) {
-      return this.b.createMenu($$0, $$1, $$2);
+   @Nullable
+   default xi ao() {
+      return null;
    }
 }

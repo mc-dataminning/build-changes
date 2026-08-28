@@ -1,19 +1,7 @@
-public class csa extends ctg {
-   private final crz a;
+public interface csa {
+   int a(int var1);
 
-   public csa(brr $$0, int $$1, int $$2, int $$3, crz $$4) {
-      super($$0, $$1, $$2, $$3);
-      this.a = $$4;
-   }
+   void a(int var1, int var2);
 
-   @Override
-   public boolean a(cvx $$0) {
-      return !this.a.e(this.d) && super.a($$0);
-   }
-
-   @Override
-   public void c() {
-      super.c();
-      this.a.a(this.c);
-   }
+   int a();
 }

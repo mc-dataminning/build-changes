@@ -1,9 +1,17 @@
-import java.net.URI;
-import java.nio.file.Path;
-import java.util.Optional;
+public enum wd {
+   a("handshake"),
+   b("play"),
+   c("status"),
+   d("login"),
+   e("configuration");
 
-public record wd(xh a, Optional<Path> b, Optional<URI> c) {
-   public wd(xh $$0) {
-      this($$0, Optional.empty(), Optional.empty());
+   private final String f;
+
+   private wd(final String $$0) {
+      this.f = $$0;
+   }
+
+   public String a() {
+      return this.f;
    }
 }

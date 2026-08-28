@@ -1,12 +1,8 @@
-public class crb {
-   private final String a;
+import javax.annotation.ParametersAreNonnullByDefault;
 
-   public crb(String $$0) {
-      this.a = $$0;
-   }
-
-   @Override
-   public String toString() {
-      return this.a;
-   }
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface crb {
 }

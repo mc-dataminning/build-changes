@@ -1,38 +1,31 @@
-public class gnm extends gpf<cky, gtv, fxr> {
-   private static final alh a = alh.b("textures/entity/creeper/creeper.png");
+public class gnm extends gnf<cgs, gty, fxo> {
+   private static final ali a = ali.b("textures/entity/bee/bee_angry.png");
+   private static final ali b = ali.b("textures/entity/bee/bee_angry_nectar.png");
+   private static final ali k = ali.b("textures/entity/bee/bee.png");
+   private static final ali l = ali.b("textures/entity/bee/bee_nectar.png");
 
-   public gnm(gnz.a $$0) {
-      super($$0, new fxr($$0.a(gba.W)), 0.5F);
-      this.a(new grp(this, $$0.f()));
+   public gnm(gok.a $$0) {
+      super($$0, new fxo($$0.a(gbl.q)), new fxo($$0.a(gbl.r)), 0.4F);
    }
 
-   protected void a(gtv $$0, fdt $$1) {
-      float $$2 = $$0.a;
-      float $$3 = 1.0F + azj.a($$2 * 100.0F) * $$2 * 0.01F;
-      $$2 = azj.a($$2, 0.0F, 1.0F);
-      $$2 *= $$2;
-      $$2 *= $$2;
-      float $$4 = (1.0F + $$2 * 0.4F) * $$3;
-      float $$5 = (1.0F + $$2 * 0.1F) / $$3;
-      $$1.b($$4, $$5, $$4);
+   public ali a(gty $$0) {
+      if ($$0.d) {
+         return $$0.e ? b : a;
+      } else {
+         return $$0.e ? l : k;
+      }
    }
 
-   protected float a(gtv $$0) {
-      float $$1 = $$0.a;
-      return (int)($$1 * 10.0F) % 2 == 0 ? 0.0F : azj.a($$1, 0.5F, 1.0F);
+   public gty a() {
+      return new gty();
    }
 
-   public alh b(gtv $$0) {
-      return a;
-   }
-
-   public gtv a() {
-      return new gtv();
-   }
-
-   public void a(cky $$0, gtv $$1, float $$2) {
+   public void a(cgs $$0, gty $$1, float $$2) {
       super.a($$0, $$1, $$2);
       $$1.a = $$0.J($$2);
-      $$1.b = $$0.t();
+      $$1.b = !$$0.gH();
+      $$1.c = $$0.aK() && $$0.dA().h() < 1.0E-7;
+      $$1.d = $$0.ae_();
+      $$1.e = $$0.gG();
    }
 }

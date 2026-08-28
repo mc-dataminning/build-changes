@@ -1,45 +1,31 @@
-public class afl implements zo<acd> {
-   public static final zf<we, afl> a = zo.a(afl::a, afl::new);
+import javax.annotation.Nullable;
+
+public class afl implements zp<ace> {
+   public static final zg<wf, afl> a = zp.a(afl::a, afl::new);
    private final int b;
    private final int c;
-   private final int d;
-   private final int e;
 
-   public afl(btz $$0) {
-      this($$0.ar(), $$0.dA());
+   public afl(bue $$0, @Nullable bue $$1) {
+      this.b = $$0.as();
+      this.c = $$1 != null ? $$1.as() : 0;
    }
 
-   public afl(int $$0, ezh $$1) {
-      this.b = $$0;
-      double $$2 = 3.9;
-      double $$3 = azj.a($$1.d, -3.9, 3.9);
-      double $$4 = azj.a($$1.e, -3.9, 3.9);
-      double $$5 = azj.a($$1.f, -3.9, 3.9);
-      this.c = (int)($$3 * 8000.0);
-      this.d = (int)($$4 * 8000.0);
-      this.e = (int)($$5 * 8000.0);
+   private afl(wf $$0) {
+      this.b = $$0.readInt();
+      this.c = $$0.readInt();
    }
 
-   private afl(we $$0) {
-      this.b = $$0.l();
-      this.c = $$0.readShort();
-      this.d = $$0.readShort();
-      this.e = $$0.readShort();
-   }
-
-   private void a(we $$0) {
-      $$0.c(this.b);
-      $$0.m(this.c);
-      $$0.m(this.d);
-      $$0.m(this.e);
+   private void a(wf $$0) {
+      $$0.q(this.b);
+      $$0.q(this.c);
    }
 
    @Override
-   public zq<afl> a() {
-      return ags.aE;
+   public zr<afl> a() {
+      return agt.aD;
    }
 
-   public void a(acd $$0) {
+   public void a(ace $$0) {
       $$0.a(this);
    }
 
@@ -47,15 +33,7 @@ public class afl implements zo<acd> {
       return this.b;
    }
 
-   public double e() {
-      return (double)this.c / 8000.0;
-   }
-
-   public double f() {
-      return (double)this.d / 8000.0;
-   }
-
-   public double g() {
-      return (double)this.e / 8000.0;
+   public int e() {
+      return this.c;
    }
 }

@@ -1,52 +1,30 @@
-import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import it.unimi.dsi.fastutil.ints.IntList;
 import java.util.List;
-import java.util.Optional;
 
-public class evy extends evj {
+public class evy extends evp {
    public static final MapCodec<evy> a = RecordCodecBuilder.mapCodec(
-      $$0 -> a($$0)
-            .and(
-               $$0.group(
-                  cyk.a.g.optionalFieldOf("shape").forGetter($$0x -> $$0x.c),
-                  cyk.b.optionalFieldOf("colors").forGetter($$0x -> $$0x.d),
-                  cyk.b.optionalFieldOf("fade_colors").forGetter($$0x -> $$0x.e),
-                  Codec.BOOL.optionalFieldOf("trail").forGetter($$0x -> $$0x.f),
-                  Codec.BOOL.optionalFieldOf("twinkle").forGetter($$0x -> $$0x.h)
-               )
-            )
-            .apply($$0, evy::new)
+      $$0 -> a($$0).and(kr.b.fieldOf("components").forGetter($$0x -> $$0x.b)).apply($$0, evy::new)
    );
-   public static final cyk b = new cyk(cyk.a.a, IntList.of(), IntList.of(), false, false);
-   final Optional<cyk.a> c;
-   final Optional<IntList> d;
-   final Optional<IntList> e;
-   final Optional<Boolean> f;
-   final Optional<Boolean> h;
+   private final kr b;
 
-   public evy(List<exh> $$0, Optional<cyk.a> $$1, Optional<IntList> $$2, Optional<IntList> $$3, Optional<Boolean> $$4, Optional<Boolean> $$5) {
+   private evy(List<exn> $$0, kr $$1) {
       super($$0);
-      this.c = $$1;
-      this.d = $$2;
-      this.e = $$3;
-      this.f = $$4;
-      this.h = $$5;
+      this.b = $$1;
    }
 
    @Override
-   protected cvx a(cvx $$0, etw $$1) {
-      $$0.a(kt.ad, b, this::a);
+   public evr<evy> b() {
+      return evs.k;
+   }
+
+   @Override
+   public cwb a(cwb $$0, euc $$1) {
+      $$0.a(this.b);
       return $$0;
    }
 
-   private cyk a(cyk $$0) {
-      return new cyk(this.c.orElseGet($$0::a), this.d.orElseGet($$0::b), this.e.orElseGet($$0::c), this.f.orElseGet($$0::d), this.h.orElseGet($$0::e));
-   }
-
-   @Override
-   public evl<evy> b() {
-      return evm.L;
+   public static <T> evp.a<?> a(kt<T> $$0, T $$1) {
+      return a($$2 -> new evy($$2, kr.a().a($$0, $$1).a()));
    }
 }

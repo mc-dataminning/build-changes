@@ -1,4 +1,8 @@
-public class guu extends gut {
-   public ezh[] a = new ezh[0];
-   public boolean i;
+import javax.annotation.Nullable;
+
+public class guu extends gun {
+   public boolean a;
+   @Nullable
+   public haf b;
+   public cwb c = cwb.k;
 }

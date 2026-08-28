@@ -1,24 +1,25 @@
-import com.mojang.serialization.MapCodec;
+import java.util.List;
+import java.util.Objects;
+import java.util.stream.Collectors;
+import javax.annotation.Nullable;
 
-public class dqg extends dqk {
-   public static final MapCodec<dqg> a = b(dqg::new);
+public interface dqg {
+   czc b();
 
-   @Override
-   public MapCodec<dqg> a() {
-      return a;
+   static List<dqg> c() {
+      return ly.g.s().map(dqg::a).filter(Objects::nonNull).collect(Collectors.toList());
    }
 
-   public dqg(dvc.d $$0) {
-      super($$0);
-   }
+   @Nullable
+   static dqg a(dfa $$0) {
+      if ($$0.j() instanceof cuh $$1) {
+         die var6 = $$1.d();
+         if (var6 instanceof dqg) {
+            return (dqg)var6;
+         }
+      }
 
-   @Override
-   protected boolean e_(dvd $$0) {
-      return false;
-   }
-
-   @Override
-   protected int i_(dvd $$0) {
-      return 15;
+      cvx $$2 = $$0.j();
+      return $$2 instanceof dqg ? (dqg)$$2 : null;
    }
 }

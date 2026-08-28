@@ -1,236 +1,225 @@
-import javax.annotation.Nullable;
+import java.util.ArrayList;
+import java.util.List;
 import org.joml.Matrix4f;
+import org.joml.Quaternionf;
 
-public abstract class gny<T extends btz, S extends guc> {
-   protected static final float c = 0.025F;
-   public static final int d = 24;
-   protected final gnx e;
-   private final fkk a;
-   protected float f;
-   protected float g = 1.0F;
-   private final S b = this.b();
+public abstract class gny<T extends buc, S, ST extends guh> extends goj<T, ST> {
+   private final goi a;
 
-   protected gny(gnz.a $$0) {
-      this.e = $$0.a();
-      this.a = $$0.j();
+   protected gny(gok.a $$0) {
+      super($$0);
+      this.a = $$0.a();
    }
 
-   public final int a(T $$0, float $$1) {
-      jg $$2 = jg.a((jz)$$0.n($$1));
-      return ghu.a(this.a($$0, $$2), this.b($$0, $$2));
-   }
-
-   protected int b(T $$0, jg $$1) {
-      return $$0.dX().a(dfe.a, $$1);
-   }
-
-   protected int a(T $$0, jg $$1) {
-      return $$0.bZ() ? 15 : $$0.dX().a(dfe.b, $$1);
-   }
-
-   public boolean a(T $$0, gln $$1, double $$2, double $$3, double $$4) {
-      if (!$$0.k($$2, $$3, $$4)) {
-         return false;
-      } else if (!this.b($$0)) {
-         return true;
-      } else {
-         ezc $$5 = this.a($$0).g(0.5);
-         if ($$5.e() || $$5.a() == 0.0) {
-            $$5 = new ezc($$0.dC() - 2.0, $$0.dE() - 2.0, $$0.dI() - 2.0, $$0.dC() + 2.0, $$0.dE() + 2.0, $$0.dI() + 2.0);
-         }
-
-         if ($$1.a($$5)) {
-            return true;
-         } else {
-            if ($$0 instanceof but $$6) {
-               btz $$7 = $$6.C();
-               if ($$7 != null) {
-                  return $$1.a(this.e.a($$7).a($$7));
-               }
-            }
-
-            return false;
-         }
-      }
-   }
-
-   protected ezc a(T $$0) {
-      return $$0.cS();
+   protected ezi a(T $$0) {
+      return $$0.m();
    }
 
    protected boolean b(T $$0) {
-      return true;
+      return $$0.o();
    }
 
-   public ezh a(S $$0) {
-      return $$0.x != null ? $$0.x : ezh.c;
+   private static int c(buc $$0) {
+      buc.k $$1 = $$0.q();
+      return $$1 != null ? $$1.c() : -1;
    }
 
-   public void a(S $$0, fdt $$1, ghw $$2, int $$3) {
-      guc.a $$4 = $$0.A;
+   protected int a(T $$0, jh $$1) {
+      int $$2 = c($$0);
+      return $$2 != -1 ? gif.b($$2) : super.b($$0, $$1);
+   }
+
+   protected int b(T $$0, jh $$1) {
+      int $$2 = c($$0);
+      return $$2 != -1 ? gif.a($$2) : super.a($$0, $$1);
+   }
+
+   public void a(ST $$0, feb $$1, gih $$2, int $$3) {
+      buc.k $$4 = $$0.b;
       if ($$4 != null) {
-         a($$1, $$2, $$4);
+         if ($$0.a()) {
+            float $$5 = $$0.c;
+            this.f = $$4.d().get($$5);
+            this.g = $$4.e().get($$5);
+            super.a($$0, $$1, $$2, $$3);
+            $$1.a();
+            $$1.a(this.a($$4, $$0, new Quaternionf()));
+            j $$6 = $$4.a().get($$5);
+            $$1.a($$6.c());
+            this.a($$0, $$1, $$2, $$3, $$5);
+            $$1.b();
+         }
+      }
+   }
+
+   private Quaternionf a(buc.k $$0, ST $$1, Quaternionf $$2) {
+      fir $$3 = this.a.b;
+
+      return switch ($$0.b()) {
+         case a -> $$2.rotationYXZ((float) (-Math.PI / 180.0) * $$1.d, (float) (Math.PI / 180.0) * $$1.e, 0.0F);
+         case c -> $$2.rotationYXZ((float) (-Math.PI / 180.0) * $$1.d, (float) (Math.PI / 180.0) * b($$3), 0.0F);
+         case b -> $$2.rotationYXZ((float) (-Math.PI / 180.0) * a($$3), (float) (Math.PI / 180.0) * $$1.e, 0.0F);
+         case d -> $$2.rotationYXZ((float) (-Math.PI / 180.0) * a($$3), (float) (Math.PI / 180.0) * b($$3), 0.0F);
+      };
+   }
+
+   private static float a(fir $$0) {
+      return $$0.e() - 180.0F;
+   }
+
+   private static float b(fir $$0) {
+      return -$$0.d();
+   }
+
+   private static <T extends buc> float a(T $$0, float $$1) {
+      return $$0.k($$1);
+   }
+
+   private static <T extends buc> float b(T $$0, float $$1) {
+      return $$0.j($$1);
+   }
+
+   protected abstract void a(ST var1, feb var2, gih var3, int var4, float var5);
+
+   public void a(T $$0, ST $$1, float $$2) {
+      super.a($$0, $$1, $$2);
+      $$1.b = $$0.q();
+      $$1.c = $$0.a($$2);
+      $$1.d = a($$0, $$2);
+      $$1.e = b($$0, $$2);
+   }
+
+   public static class a extends gny<buc.b, buc.b.a, gtz> {
+      private final gjk a;
+
+      protected a(gok.a $$0) {
+         super($$0);
+         this.a = $$0.d();
       }
 
-      if ($$0.y != null) {
-         this.a($$0, $$0.y, $$1, $$2, $$3);
+      public gtz a() {
+         return new gtz();
+      }
+
+      public void a(buc.b $$0, gtz $$1, float $$2) {
+         super.a($$0, $$1, $$2);
+         $$1.a = $$0.t();
+      }
+
+      public void a(gtz $$0, feb $$1, gih $$2, int $$3, float $$4) {
+         this.a.a($$0.a.a(), $$1, $$2, $$3, gxu.d);
       }
    }
 
-   private static void a(fdt $$0, ghw $$1, guc.a $$2) {
-      float $$3 = 0.025F;
-      float $$4 = (float)($$2.c.d - $$2.b.d);
-      float $$5 = (float)($$2.c.e - $$2.b.e);
-      float $$6 = (float)($$2.c.f - $$2.b.f);
-      float $$7 = azj.j($$4 * $$4 + $$6 * $$6) * 0.025F / 2.0F;
-      float $$8 = $$6 * $$7;
-      float $$9 = $$4 * $$7;
-      $$0.a();
-      $$0.a($$2.a);
-      fdx $$10 = $$1.getBuffer(gig.h());
-      Matrix4f $$11 = $$0.c().a();
+   public static class b extends gny<buc.g, buc.g.a, gvh> {
+      private final gpi a;
 
-      for (int $$12 = 0; $$12 <= 24; $$12++) {
-         a($$10, $$11, $$4, $$5, $$6, $$2.d, $$2.e, $$2.f, $$2.g, 0.025F, 0.025F, $$8, $$9, $$12, false);
+      protected b(gok.a $$0) {
+         super($$0);
+         this.a = $$0.b();
       }
 
-      for (int $$13 = 24; $$13 >= 0; $$13--) {
-         a($$10, $$11, $$4, $$5, $$6, $$2.d, $$2.e, $$2.f, $$2.g, 0.025F, 0.0F, $$8, $$9, $$13, true);
+      public gvh a() {
+         return new gvh();
       }
 
-      $$0.b();
+      public void a(buc.g $$0, gvh $$1, float $$2) {
+         super.a($$0, $$1, $$2);
+         buc.g.a $$3 = $$0.t();
+         if ($$3 != null) {
+            $$1.a = $$3;
+            $$1.f = this.a.a($$1.a.a(), $$0.dX(), null, $$0.as());
+         } else {
+            $$1.a = null;
+            $$1.f = null;
+         }
+      }
+
+      public void a(gvh $$0, feb $$1, gih $$2, int $$3, float $$4) {
+         buc.g.a $$5 = $$0.a;
+         haf $$6 = $$0.f;
+         if ($$5 != null && $$6 != null) {
+            $$1.a(a.d.rotation((float) Math.PI));
+            this.a.a($$5.a(), $$5.b(), false, $$1, $$2, $$3, gxu.d, $$6);
+         }
+      }
    }
 
-   private static void a(
-      fdx $$0,
-      Matrix4f $$1,
-      float $$2,
-      float $$3,
-      float $$4,
-      int $$5,
-      int $$6,
-      int $$7,
-      int $$8,
-      float $$9,
-      float $$10,
-      float $$11,
-      float $$12,
-      int $$13,
-      boolean $$14
-   ) {
-      float $$15 = (float)$$13 / 24.0F;
-      int $$16 = (int)azj.h($$15, (float)$$5, (float)$$6);
-      int $$17 = (int)azj.h($$15, (float)$$7, (float)$$8);
-      int $$18 = ghu.a($$16, $$17);
-      float $$19 = $$13 % 2 == ($$14 ? 1 : 0) ? 0.7F : 1.0F;
-      float $$20 = 0.5F * $$19;
-      float $$21 = 0.4F * $$19;
-      float $$22 = 0.3F * $$19;
-      float $$23 = $$2 * $$15;
-      float $$24 = $$3 > 0.0F ? $$3 * $$15 * $$15 : $$3 - $$3 * (1.0F - $$15) * (1.0F - $$15);
-      float $$25 = $$4 * $$15;
-      $$0.a($$1, $$23 - $$11, $$24 + $$10, $$25 + $$12).a($$20, $$21, $$22, 1.0F).c($$18);
-      $$0.a($$1, $$23 + $$11, $$24 + $$9 - $$10, $$25 - $$12).a($$20, $$21, $$22, 1.0F).c($$18);
-   }
+   public static class c extends gny<buc.l, buc.l.e, gwn> {
+      private final fks a;
 
-   protected boolean a(T $$0, double $$1) {
-      return $$0.cN() || $$0.am() && $$0 == this.e.c;
-   }
+      protected c(gok.a $$0) {
+         super($$0);
+         this.a = $$0.j();
+      }
 
-   public fkk d() {
-      return this.a;
-   }
+      public gwn a() {
+         return new gwn();
+      }
 
-   protected void a(S $$0, xh $$1, fdt $$2, ghw $$3, int $$4) {
-      ezh $$5 = $$0.z;
-      if ($$5 != null) {
-         boolean $$6 = !$$0.v;
-         int $$7 = "deadmau5".equals($$1.getString()) ? -10 : 0;
-         $$2.a();
-         $$2.a($$5.d, $$5.e + 0.5, $$5.f);
-         $$2.a(this.e.b());
-         $$2.b(0.025F, -0.025F, 0.025F);
-         Matrix4f $$8 = $$2.c().a();
-         float $$9 = fja.Q().n.a(0.25F);
-         int $$10 = (int)($$9 * 255.0F) << 24;
-         fkk $$11 = this.d();
-         float $$12 = (float)(-$$11.a($$1) / 2);
-         $$11.a($$1, $$12, (float)$$7, -2130706433, false, $$8, $$3, $$6 ? fkk.a.b : fkk.a.a, $$10, $$4);
-         if ($$6) {
-            $$11.a($$1, $$12, (float)$$7, -1, false, $$8, $$3, fkk.a.a, 0, $$4);
+      public void a(buc.l $$0, gwn $$1, float $$2) {
+         super.a($$0, $$1, $$2);
+         $$1.a = $$0.t();
+         $$1.f = $$0.a(this::a);
+      }
+
+      private buc.l.b a(xi $$0, int $$1) {
+         List<ayw> $$2 = this.a.c($$0, $$1);
+         List<buc.l.c> $$3 = new ArrayList<>($$2.size());
+         int $$4 = 0;
+
+         for (ayw $$5 : $$2) {
+            int $$6 = this.a.a($$5);
+            $$4 = Math.max($$4, $$6);
+            $$3.add(new buc.l.c($$5, $$6));
          }
 
-         $$2.b();
-      }
-   }
-
-   @Nullable
-   protected xh c(T $$0) {
-      return $$0.S_();
-   }
-
-   protected float b(S $$0) {
-      return this.f;
-   }
-
-   public abstract S b();
-
-   public final S b(T $$0, float $$1) {
-      S $$2 = this.b;
-      this.a($$0, $$2, $$1);
-      return $$2;
-   }
-
-   public void a(T $$0, S $$1, float $$2) {
-      $$1.m = azj.d((double)$$2, $$0.ab, $$0.dC());
-      $$1.n = azj.d((double)$$2, $$0.ac, $$0.dE());
-      $$1.o = azj.d((double)$$2, $$0.ad, $$0.dI());
-      $$1.u = $$0.cq();
-      $$1.p = (float)$$0.ag + $$2;
-      $$1.q = $$0.ds();
-      $$1.r = $$0.dt();
-      $$1.s = $$0.cT();
-      if ($$0.ca() && $$0.dl() instanceof cqf $$3 && $$3.m() instanceof cqt $$4 && $$4.u()) {
-         double $$5 = azj.d((double)$$2, $$3.ab, $$3.dC());
-         double $$6 = azj.d((double)$$2, $$3.ac, $$3.dE());
-         double $$7 = azj.d((double)$$2, $$3.ad, $$3.dI());
-         $$1.x = $$4.e($$2).d(new ezh($$5, $$6, $$7));
-      } else {
-         $$1.x = null;
+         return new buc.l.b($$3, $$4);
       }
 
-      $$1.t = this.e.b($$0);
-      boolean $$8 = $$1.t < 4096.0 && this.a($$0, $$1.t);
-      if ($$8) {
-         $$1.y = this.c($$0);
-         $$1.z = $$0.du().a(bua.c, 0, $$0.k($$2));
-      } else {
-         $$1.y = null;
-      }
-
-      $$1.v = $$0.ch();
-      btz $$10 = $$0 instanceof but $$9 ? $$9.C() : null;
-      if ($$10 != null) {
-         float $$11 = $$0.t($$2) * (float) (Math.PI / 180.0);
-         ezh $$12 = $$0.s($$2).b(-$$11);
-         jg $$13 = jg.a((jz)$$0.m($$2));
-         jg $$14 = jg.a((jz)$$10.m($$2));
-         if ($$1.A == null) {
-            $$1.A = new guc.a();
+      public void a(gwn $$0, feb $$1, gih $$2, int $$3, float $$4) {
+         buc.l.e $$5 = $$0.a;
+         byte $$6 = $$5.e();
+         boolean $$7 = ($$6 & 2) != 0;
+         boolean $$8 = ($$6 & 4) != 0;
+         boolean $$9 = ($$6 & 1) != 0;
+         buc.l.a $$10 = buc.l.a($$6);
+         byte $$11 = (byte)$$5.c().get($$4);
+         int $$13;
+         if ($$8) {
+            float $$12 = fji.Q().n.a(0.25F);
+            $$13 = (int)($$12 * 255.0F) << 24;
+         } else {
+            $$13 = $$5.d().get($$4);
          }
 
-         guc.a $$15 = $$1.A;
-         $$15.a = $$12;
-         $$15.b = $$0.o($$2).e($$12);
-         $$15.c = $$10.u($$2);
-         $$15.d = this.a($$0, $$13);
-         $$15.e = this.e.a($$10).a($$10, $$14);
-         $$15.f = $$0.dX().a(dfe.a, $$13);
-         $$15.g = $$0.dX().a(dfe.a, $$14);
-      } else {
-         $$1.A = null;
-      }
+         float $$15 = 0.0F;
+         Matrix4f $$16 = $$1.c().a();
+         $$16.rotate((float) Math.PI, 0.0F, 1.0F, 0.0F);
+         $$16.scale(-0.025F, -0.025F, -0.025F);
+         buc.l.b $$17 = $$0.f;
+         int $$18 = 1;
+         int $$19 = 9 + 1;
+         int $$20 = $$17.b();
+         int $$21 = $$17.a().size() * $$19 - 1;
+         $$16.translate(1.0F - (float)$$20 / 2.0F, (float)(-$$21), 0.0F);
+         if ($$13 != 0) {
+            fef $$22 = $$2.getBuffer($$7 ? gir.o() : gir.n());
+            $$22.a($$16, -1.0F, -1.0F, 0.0F).a($$13).c($$3);
+            $$22.a($$16, -1.0F, (float)$$21, 0.0F).a($$13).c($$3);
+            $$22.a($$16, (float)$$20, (float)$$21, 0.0F).a($$13).c($$3);
+            $$22.a($$16, (float)$$20, -1.0F, 0.0F).a($$13).c($$3);
+         }
 
-      $$1.w = $$0.cG();
+         for (buc.l.c $$23 : $$17.a()) {
+            float $$24 = switch ($$10) {
+               case b -> 0.0F;
+               case c -> (float)($$20 - $$23.b());
+               case a -> (float)$$20 / 2.0F - (float)$$23.b() / 2.0F;
+            };
+            this.a.a($$23.a(), $$24, $$15, $$11 << 24 | 16777215, $$9, $$16, $$2, $$7 ? fks.a.b : fks.a.c, 0, $$3);
+            $$15 += (float)$$19;
+         }
+      }
    }
 }

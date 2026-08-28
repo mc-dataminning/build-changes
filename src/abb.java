@@ -1,31 +1,31 @@
-public record abb(jg c, String d, int e) implements aar {
-   public static final zf<we, abb> a = aar.a(abb::a, abb::new);
-   public static final aar.b<abb> b = aar.a("debug/poi_added");
+public record abb(int c, ery d, float e) implements aas {
+   public static final zg<wf, abb> a = aas.a(abb::a, abb::new);
+   public static final aas.b<abb> b = aas.a("debug/path");
 
-   private abb(we $$0) {
-      this($$0.e(), $$0.p(), $$0.readInt());
+   private abb(wf $$0) {
+      this($$0.readInt(), ery.b($$0), $$0.readFloat());
    }
 
-   private void a(we $$0) {
-      $$0.a(this.c);
-      $$0.a(this.d);
-      $$0.q(this.e);
+   private void a(wf $$0) {
+      $$0.q(this.c);
+      this.d.a($$0);
+      $$0.a(this.e);
    }
 
    @Override
-   public aar.b<abb> a() {
+   public aas.b<abb> a() {
       return b;
    }
 
-   public jg b() {
+   public int b() {
       return this.c;
    }
 
-   public String c() {
+   public ery c() {
       return this.d;
    }
 
-   public int d() {
+   public float d() {
       return this.e;
    }
 }

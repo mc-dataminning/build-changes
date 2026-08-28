@@ -1,4 +1,7 @@
 public class aiz {
-   public static final wp.a<aja, we> a = zt.a(wc.a, $$0 -> $$0.a(aiy.a, aix.a));
-   public static final wp<aja> b = a.a(we::new);
+   public static final zr<aiy> a = a("intention");
+
+   private static <T extends zp<ajb>> zr<T> a(String $$0) {
+      return new zr<>(zq.a, ali.b($$0));
+   }
 }

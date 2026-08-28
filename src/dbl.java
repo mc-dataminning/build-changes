@@ -1,8 +1,15 @@
-import java.util.function.Consumer;
-import javax.annotation.Nullable;
+public class dbl extends czw {
+   public dbl(String $$0, dac $$1, dal $$2, cwb $$3, float $$4, int $$5) {
+      super(dav.d, $$0, $$1, $$2, $$3, $$4, $$5);
+   }
 
-public record dbl(cvx a, @Nullable buh b, @Nullable buv c, Consumer<cvt> d) {
-   public dbl(cvx $$0, buh $$1, buv $$2) {
-      this($$0, $$1, $$2, $$2x -> $$2.a($$2x, $$1));
+   @Override
+   public cwb g() {
+      return new cwb(dig.nV);
+   }
+
+   @Override
+   public dau<?> aq_() {
+      return dau.q;
    }
 }

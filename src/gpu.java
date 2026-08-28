@@ -1,26 +1,37 @@
-public class gpu extends gpf<clr, gvr, fzm> {
-   private static final alh a = alh.b("textures/entity/illager/ravager.png");
+public class gpu extends goj<bvg, gvr> {
+   private static final float a = 40.0F;
+   private static final int b = 50;
+   private final gpi h;
 
-   public gpu(gnz.a $$0) {
-      super($$0, new fzm($$0.a(gba.bZ)), 1.1F);
+   protected gpu(gok.a $$0) {
+      super($$0);
+      this.h = $$0.b();
    }
 
-   public alh a(gvr $$0) {
-      return a;
-   }
-
-   public gvr c() {
+   public gvr a() {
       return new gvr();
    }
 
-   public void a(clr $$0, gvr $$1, float $$2) {
+   public void a(bvg $$0, gvr $$1, float $$2) {
       super.a($$0, $$1, $$2);
-      $$1.a = (float)$$0.gv() > 0.0F ? (float)$$0.gv() - $$2 : 0.0F;
-      $$1.b = (float)$$0.t() > 0.0F ? (float)$$0.t() - $$2 : 0.0F;
-      if ($$0.gF() > 0) {
-         $$1.c = ((float)(20 - $$0.gF()) + $$2) / 20.0F;
-      } else {
-         $$1.c = 0.0F;
+      cwb $$3 = $$0.o();
+      $$1.b = $$3.v();
+      $$1.a = !$$3.f() ? this.h.a($$3, $$0.dX(), null, 0) : null;
+   }
+
+   public void a(gvr $$0, feb $$1, gih $$2, int $$3) {
+      haf $$4 = $$0.a;
+      if ($$4 != null) {
+         $$1.a();
+         if ($$0.p <= 50.0F) {
+            float $$5 = Math.min($$0.p, 50.0F) / 50.0F;
+            $$1.b($$5, $$5, $$5);
+         }
+
+         float $$6 = azk.h($$0.p * 40.0F);
+         $$1.a(a.d.rotationDegrees($$6));
+         gpg.a(this.h, $$1, $$2, 15728880, $$0.b, $$4, $$4.b(), azs.a());
+         $$1.b();
       }
    }
 }

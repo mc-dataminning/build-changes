@@ -1,48 +1,53 @@
-import it.unimi.dsi.fastutil.objects.Object2IntMap;
-import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
-import it.unimi.dsi.fastutil.objects.ObjectIterator;
-import it.unimi.dsi.fastutil.objects.Object2IntMap.Entry;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
-public class esx extends esq {
-   public static final String a = "idcounts";
-   private final Object2IntMap<String> b = new Object2IntOpenHashMap();
+public record esx(jh c, cuy d, Optional<xi> e) {
+   public static final Codec<esx> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               jh.a.fieldOf("pos").forGetter(esx::c),
+               cuy.q.lenientOptionalFieldOf("color", cuy.a).forGetter(esx::d),
+               xk.g.lenientOptionalFieldOf("name").forGetter(esx::e)
+            )
+            .apply($$0, esx::new)
+   );
+   public static final Codec<List<esx>> b = a.listOf();
 
-   public static esq.a<esx> a() {
-      return new esq.a<>(esx::new, esx::b, bas.k);
-   }
-
-   public esx() {
-      this.b.defaultReturnValue(-1);
-   }
-
-   public static esx b(uj $$0, jr.a $$1) {
-      esx $$2 = new esx();
-
-      for (String $$3 : $$0.e()) {
-         if ($$0.b($$3, 99)) {
-            $$2.b.put($$3, $$0.h($$3));
-         }
+   @Nullable
+   public static esx a(deg $$0, jh $$1) {
+      if ($$0.c_($$1) instanceof dsb $$3) {
+         cuy $$4 = $$3.f();
+         Optional<xi> $$5 = Optional.ofNullable($$3.ao());
+         return new esx($$1, $$4, $$5);
+      } else {
+         return null;
       }
-
-      return $$2;
    }
 
-   @Override
-   public uj a(uj $$0, jr.a $$1) {
-      ObjectIterator var3 = this.b.object2IntEntrySet().iterator();
-
-      while (var3.hasNext()) {
-         Entry<String> $$2 = (Entry<String>)var3.next();
-         $$0.a((String)$$2.getKey(), $$2.getIntValue());
-      }
-
-      return $$0;
+   public jq<esz> a() {
+      return switch (this.d) {
+         case a -> eta.k;
+         case b -> eta.l;
+         case c -> eta.m;
+         case d -> eta.n;
+         case e -> eta.o;
+         case f -> eta.p;
+         case g -> eta.q;
+         case h -> eta.r;
+         case i -> eta.s;
+         case j -> eta.t;
+         case k -> eta.u;
+         case l -> eta.v;
+         case m -> eta.w;
+         case n -> eta.x;
+         case o -> eta.y;
+         case p -> eta.z;
+      };
    }
 
-   public esw b() {
-      int $$0 = this.b.getInt("map") + 1;
-      this.b.put("map", $$0);
-      this.c();
-      return new esw($$0);
+   public String b() {
+      return "banner-" + this.c.u() + "," + this.c.v() + "," + this.c.w();
    }
 }

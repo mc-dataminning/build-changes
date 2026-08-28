@@ -1,56 +1,157 @@
-import com.google.common.annotations.VisibleForTesting;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.function.ToIntFunction;
+import com.mojang.serialization.Codec;
+import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
+import java.util.Map;
+import java.util.Optional;
+import java.util.Map.Entry;
+import java.util.function.BiConsumer;
+import java.util.function.Function;
+import javax.annotation.Nullable;
 
-class bth extends btc {
-   private static final int d = 2;
-   public static final int c = 2;
-   private final ToIntFunction<azr> e;
+public class bth implements crc {
+   public static final Codec<jq<bth>> a = ly.d.r();
+   public static final zg<wt, jq<bth>> b = ze.b(lz.W);
+   private static final int c = azk.d(38.25F);
+   private final Map<jq<bwd>, bth.a> d = new Object2ObjectOpenHashMap();
+   private final bti e;
+   private final int f;
+   private final Function<btj, lp> g;
+   @Nullable
+   private String h;
+   private int i;
+   private Optional<awk> j = Optional.empty();
+   private crf k = crh.h;
 
-   protected bth(btd $$0, int $$1, ToIntFunction<azr> $$2) {
-      super($$0, $$1, lq.U);
-      this.e = $$2;
+   protected bth(bti $$0, int $$1) {
+      this.e = $$0;
+      this.f = $$1;
+      this.g = $$1x -> {
+         int $$2 = $$1x.f() ? c : 255;
+         return lk.a(lr.u, axv.c($$2, $$1));
+      };
    }
 
-   @VisibleForTesting
-   protected static int a(int $$0, bth.a $$1, int $$2) {
-      return $$0 < 1 ? $$2 : azj.a(0, $$0 - $$1.count($$0), $$2);
+   protected bth(bti $$0, int $$1, lp $$2) {
+      this.e = $$0;
+      this.f = $$1;
+      this.g = $$1x -> $$2;
    }
 
-   @Override
-   public void a(buv $$0, int $$1, btz.c $$2) {
-      if ($$2 == btz.c.a) {
-         int $$3 = this.e.applyAsInt($$0.ea());
-         dev $$4 = $$0.dX();
-         int $$5 = $$4.ac().c(der.u);
-         int $$6 = a($$5, bth.a.a($$0), $$3);
+   public int b() {
+      return this.i;
+   }
 
-         for (int $$7 = 0; $$7 < $$6; $$7++) {
-            this.a($$0.dX(), $$0.dC(), $$0.dE() + 0.5, $$0.dI());
+   public boolean a(bva $$0, int $$1) {
+      return true;
+   }
+
+   public void a(@Nullable bue $$0, @Nullable bue $$1, bva $$2, int $$3, double $$4) {
+      this.a($$2, $$3);
+   }
+
+   public boolean a(int $$0, int $$1) {
+      return false;
+   }
+
+   public void b(bva $$0, int $$1) {
+   }
+
+   public void c(bva $$0, int $$1) {
+      this.j.ifPresent($$1x -> $$0.dX().a(null, $$0.dC(), $$0.dE(), $$0.dI(), $$1x, $$0.dn(), 1.0F, 1.0F));
+   }
+
+   public void a(bva $$0, int $$1, bue.c $$2) {
+   }
+
+   public void a(bva $$0, int $$1, bsu $$2, float $$3) {
+   }
+
+   public boolean a() {
+      return false;
+   }
+
+   protected String c() {
+      if (this.h == null) {
+         this.h = ae.a("effect", ly.d.b(this));
+      }
+
+      return this.h;
+   }
+
+   public String d() {
+      return this.c();
+   }
+
+   public xi e() {
+      return xi.c(this.d());
+   }
+
+   public bti f() {
+      return this.e;
+   }
+
+   public int g() {
+      return this.f;
+   }
+
+   public bth a(jq<bwd> $$0, ali $$1, double $$2, bwg.a $$3) {
+      this.d.put($$0, new bth.a($$1, $$2, $$3));
+      return this;
+   }
+
+   public bth a(int $$0) {
+      this.i = $$0;
+      return this;
+   }
+
+   public void a(int $$0, BiConsumer<jq<bwd>, bwg> $$1) {
+      this.d.forEach(($$2, $$3) -> $$1.accept((jq<bwd>)$$2, $$3.a($$0)));
+   }
+
+   public void a(bwf $$0) {
+      for (Entry<jq<bwd>, bth.a> $$1 : this.d.entrySet()) {
+         bwe $$2 = $$0.a($$1.getKey());
+         if ($$2 != null) {
+            $$2.c($$1.getValue().a());
          }
       }
    }
 
-   private void a(dev $$0, double $$1, double $$2, double $$3) {
-      clv $$4 = bug.aP.a($$0, buf.k);
-      if ($$4 != null) {
-         $$4.a(2, true);
-         $$4.b($$1, $$2, $$3, $$0.E_().i() * 360.0F, 0.0F);
-         $$0.b($$4);
+   public void a(bwf $$0, int $$1) {
+      for (Entry<jq<bwd>, bth.a> $$2 : this.d.entrySet()) {
+         bwe $$3 = $$0.a($$2.getKey());
+         if ($$3 != null) {
+            $$3.c($$2.getValue().a());
+            $$3.d($$2.getValue().a($$1));
+         }
       }
    }
 
-   @FunctionalInterface
-   protected interface a {
-      int count(int var1);
+   public boolean h() {
+      return this.e == bti.a;
+   }
 
-      static bth.a a(buv $$0) {
-         return $$1 -> {
-            List<clv> $$2 = new ArrayList<>();
-            $$0.dX().a(bug.aP, $$0.cS().g(2.0), $$1x -> $$1x != $$0, $$2, $$1);
-            return $$2.size();
-         };
+   public lp a(btj $$0) {
+      return this.g.apply($$0);
+   }
+
+   public bth a(awk $$0) {
+      this.j = Optional.of($$0);
+      return this;
+   }
+
+   public bth a(crd... $$0) {
+      this.k = crh.f.a($$0);
+      return this;
+   }
+
+   @Override
+   public crf i() {
+      return this.k;
+   }
+
+   static record a(ali a, double b, bwg.a c) {
+      public bwg a(int $$0) {
+         return new bwg(this.a, this.b * (double)($$0 + 1), this.c);
       }
    }
 }

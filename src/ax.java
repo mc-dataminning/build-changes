@@ -1,63 +1,95 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Arrays;
+import java.util.Collection;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
-public class ax extends dx<ax.a> {
-   @Override
-   public Codec<ax.a> a() {
-      return ax.a.a;
+public record ax(Optional<ju<die>> c, Optional<ee> d, Optional<dm> e) {
+   public static final Codec<ax> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               kf.a(lz.f).optionalFieldOf("blocks").forGetter(ax::b),
+               ee.a.optionalFieldOf("state").forGetter(ax::c),
+               dm.a.optionalFieldOf("nbt").forGetter(ax::d)
+            )
+            .apply($$0, ax::new)
+   );
+   public static final zg<wt, ax> b = zg.a(ze.a(ze.c(lz.f)), ax::b, ze.a(ee.b), ax::c, ze.a(dm.b), ax::d, ax::new);
+
+   public boolean a(arn $$0, jh $$1) {
+      if (!$$0.p($$1)) {
+         return false;
+      } else {
+         return !this.a($$0.a_($$1)) ? false : !this.e.isPresent() || a($$0, $$0.c_($$1), this.e.get());
+      }
    }
 
-   public void a(arn $$0, cgm $$1, cgm $$2, @Nullable btq $$3) {
-      etw $$4 = bv.b($$0, $$1);
-      etw $$5 = bv.b($$0, $$2);
-      etw $$6 = $$3 != null ? bv.b($$0, $$3) : null;
-      this.a($$0, $$3x -> $$3x.a($$4, $$5, $$6));
+   public boolean a(dvn $$0) {
+      return !this.a($$0.a()) ? false : !this.e.isPresent() || a($$0.c(), $$0.b(), this.e.get());
    }
 
-   public static record a(Optional<bg> b, Optional<bg> c, Optional<bg> d, Optional<bg> e) implements dx.a {
-      public static final Codec<ax.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(
-                  bv.b.optionalFieldOf("player").forGetter(ax.a::a),
-                  bv.b.optionalFieldOf("parent").forGetter(ax.a::c),
-                  bv.b.optionalFieldOf("partner").forGetter(ax.a::d),
-                  bv.b.optionalFieldOf("child").forGetter(ax.a::e)
-               )
-               .apply($$0, ax.a::new)
-      );
+   private boolean a(dvj $$0) {
+      return this.c.isPresent() && !$$0.a(this.c.get()) ? false : !this.d.isPresent() || this.d.get().a($$0);
+   }
 
-      public static ao<ax.a> b() {
-         return an.p.a(new ax.a(Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty()));
+   private static boolean a(dfe $$0, @Nullable dsm $$1, dm $$2) {
+      return $$1 != null && $$2.a($$1.b($$0.H_()));
+   }
+
+   public boolean a() {
+      return this.e.isPresent();
+   }
+
+   public Optional<ju<die>> b() {
+      return this.c;
+   }
+
+   public Optional<ee> c() {
+      return this.d;
+   }
+
+   public Optional<dm> d() {
+      return this.e;
+   }
+
+   public static class a {
+      private Optional<ju<die>> a = Optional.empty();
+      private Optional<ee> b = Optional.empty();
+      private Optional<dm> c = Optional.empty();
+
+      private a() {
       }
 
-      public static ao<ax.a> a(bv.a $$0) {
-         return an.p.a(new ax.a(Optional.empty(), Optional.empty(), Optional.empty(), Optional.of(bv.a($$0))));
+      public static ax.a a() {
+         return new ax.a();
       }
 
-      public static ao<ax.a> a(Optional<bv> $$0, Optional<bv> $$1, Optional<bv> $$2) {
-         return an.p.a(new ax.a(Optional.empty(), bv.a($$0), bv.a($$1), bv.a($$2)));
+      public ax.a a(jr<die> $$0, die... $$1) {
+         return this.a($$0, Arrays.asList($$1));
       }
 
-      public boolean a(etw $$0, etw $$1, @Nullable etw $$2) {
-         return !this.e.isPresent() || $$2 != null && this.e.get().a($$2) ? a(this.c, $$0) && a(this.d, $$1) || a(this.c, $$1) && a(this.d, $$0) : false;
+      public ax.a a(jr<die> $$0, Collection<die> $$1) {
+         this.a = Optional.of(ju.a(die::p, $$1));
+         return this;
       }
 
-      private static boolean a(Optional<bg> $$0, etw $$1) {
-         return $$0.isEmpty() || $$0.get().a($$1);
+      public ax.a a(jr<die> $$0, axq<die> $$1) {
+         this.a = Optional.of($$0.b($$1));
+         return this;
       }
 
-      @Override
-      public void a(bh $$0) {
-         dx.a.super.a($$0);
-         $$0.a(this.c, ".parent");
-         $$0.a(this.d, ".partner");
-         $$0.a(this.e, ".child");
+      public ax.a a(uk $$0) {
+         this.c = Optional.of(new dm($$0));
+         return this;
       }
 
-      @Override
-      public Optional<bg> a() {
-         return this.b;
+      public ax.a a(ee.a $$0) {
+         this.b = $$0.b();
+         return this;
+      }
+
+      public ax b() {
+         return new ax(this.a, this.b, this.c);
       }
    }
 }

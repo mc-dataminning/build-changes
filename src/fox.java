@@ -1,19 +1,18 @@
-import com.google.common.collect.ImmutableList;
+import java.util.function.Consumer;
 
-public interface fox {
-   default void a(fow $$0, xh $$1) {
-      this.a($$0, foz.a($$1.getString()));
+public interface fox extends foy {
+   void b(Consumer<foy> var1);
+
+   @Override
+   default void a(Consumer<flf> $$0) {
+      this.b($$1 -> $$1.a($$0));
    }
 
-   default void a(fow $$0, String $$1) {
-      this.a($$0, foz.a($$1));
+   default void a() {
+      this.b($$0 -> {
+         if ($$0 instanceof fox $$1) {
+            $$1.a();
+         }
+      });
    }
-
-   default void a(fow $$0, xh... $$1) {
-      this.a($$0, foz.a(ImmutableList.copyOf($$1)));
-   }
-
-   void a(fow var1, foz<?> var2);
-
-   fox a();
 }

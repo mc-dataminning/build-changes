@@ -1,22 +1,17 @@
-import com.mojang.logging.LogUtils;
-import java.net.InetAddress;
-import java.net.InetSocketAddress;
-import java.net.UnknownHostException;
-import java.util.Optional;
-import org.slf4j.Logger;
+import java.util.Locale;
 
-@FunctionalInterface
-public interface gdp {
-   Logger a = LogUtils.getLogger();
-   gdp b = $$0 -> {
-      try {
-         InetAddress $$1 = InetAddress.getByName($$0.a());
-         return Optional.of(gdn.a(new InetSocketAddress($$1, $$0.b())));
-      } catch (UnknownHostException var2) {
-         a.debug("Couldn't resolve server {} address", $$0.a(), var2);
-         return Optional.empty();
-      }
-   };
+public enum gdp {
+   a("chat"),
+   b("skin"),
+   c("username");
 
-   Optional<gdn> resolve(gdo var1);
+   private final String d;
+
+   private gdp(final String $$0) {
+      this.d = $$0.toUpperCase(Locale.ROOT);
+   }
+
+   public String a() {
+      return this.d;
+   }
 }

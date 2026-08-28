@@ -1,91 +1,84 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Maps;
-import com.mojang.datafixers.DataFixUtils;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Map;
-import java.util.Optional;
+import javax.annotation.Nullable;
 
-public class dgz extends dih {
-   public static final MapCodec<dgz> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(
-               alg.a(ly.f).fieldOf("fruit").forGetter($$0x -> $$0x.e),
-               alg.a(ly.f).fieldOf("stem").forGetter($$0x -> $$0x.f),
-               alg.a(ly.K).fieldOf("seed").forGetter($$0x -> $$0x.g),
-               t()
-            )
-            .apply($$0, dgz::new)
-   );
-   public static final dvx b = dlt.aF;
-   protected static final float c = 2.0F;
-   private static final Map<jl, fab> d = Maps.newEnumMap(
-      ImmutableMap.of(
-         jl.d,
-         dhy.a(6.0, 0.0, 6.0, 10.0, 10.0, 16.0),
-         jl.e,
-         dhy.a(0.0, 0.0, 6.0, 10.0, 10.0, 10.0),
-         jl.c,
-         dhy.a(6.0, 0.0, 0.0, 10.0, 10.0, 10.0),
-         jl.f,
-         dhy.a(6.0, 0.0, 6.0, 16.0, 10.0, 10.0)
-      )
-   );
-   private final alg<dhy> e;
-   private final alg<dhy> f;
-   private final alg<cvt> g;
+public abstract class dgz extends dhq {
+   public static final dwd a = dlz.aF;
+   public static final dwa b = dvz.r;
 
-   @Override
-   public MapCodec<dgz> a() {
-      return a;
-   }
-
-   protected dgz(alg<dhy> $$0, alg<dhy> $$1, alg<cvt> $$2, dvc.d $$3) {
-      super($$3);
-      this.l(this.F.b().b(b, jl.c));
-      this.f = $$0;
-      this.e = $$1;
-      this.g = $$2;
+   protected dgz(dvi.d $$0) {
+      super($$0);
+      this.l(this.F.b().b(a, jm.c).b(b, Boolean.valueOf(false)));
    }
 
    @Override
-   protected fab a(dvd $$0, dea $$1, jg $$2, ezm $$3) {
-      return d.get($$0.c(b));
-   }
+   protected abstract MapCodec<? extends dgz> a();
 
    @Override
-   protected dvd a(dvd $$0, jl $$1, dvd $$2, dew $$3, jg $$4, jg $$5) {
-      if (!$$2.a(this.e) && $$1 == $$0.c(b)) {
-         Optional<dhy> $$6 = $$3.H_().e(ly.f).f(this.f);
-         if ($$6.isPresent()) {
-            return $$6.get().m().c(dpu.c, Integer.valueOf(7));
-         }
+   protected bsd a(dvj $$0, dfb $$1, jh $$2, com $$3, ezj $$4) {
+      if (!$$1.C) {
+         this.a($$1, $$2, $$3);
       }
 
-      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
+      return bsd.a;
+   }
+
+   protected abstract void a(dfb var1, jh var2, com var3);
+
+   @Override
+   public dvj a(czs $$0) {
+      return this.m().b(a, $$0.g().g());
    }
 
    @Override
-   protected boolean b(dvd $$0, dea $$1, jg $$2) {
-      return $$0.a(dia.cC);
+   protected void a(dvj $$0, dfb $$1, jh $$2, dvj $$3, boolean $$4) {
+      if (!$$0.a($$3.b())) {
+         dsm $$5 = $$1.c_($$2);
+         if ($$5 instanceof dsa) {
+            if ($$1 instanceof arn) {
+               brz.a($$1, $$2, (dsa)$$5);
+               ((dsa)$$5).a((arn)$$1, ezn.b($$2));
+            }
+
+            super.a($$0, $$1, $$2, $$3, $$4);
+            $$1.c($$2, this);
+         } else {
+            super.a($$0, $$1, $$2, $$3, $$4);
+         }
+      }
    }
 
    @Override
-   public cvx a(dey $$0, jg $$1, dvd $$2) {
-      return new cvx((deu)DataFixUtils.orElse($$0.H_().e(ly.K).f(this.g), this));
+   protected boolean c_(dvj $$0) {
+      return true;
    }
 
    @Override
-   protected dvd a(dvd $$0, dol $$1) {
-      return $$0.b(b, $$1.a($$0.c(b)));
+   protected int a(dvj $$0, dfb $$1, jh $$2) {
+      return cro.a($$1.c_($$2));
    }
 
    @Override
-   protected dvd a(dvd $$0, dmu $$1) {
-      return $$0.a($$1.a($$0.c(b)));
+   protected dok a_(dvj $$0) {
+      return dok.c;
    }
 
    @Override
-   protected void a(dve.a<dhy, dvd> $$0) {
-      $$0.a(b);
+   protected dvj a(dvj $$0, dor $$1) {
+      return $$0.b(a, $$1.a($$0.c(a)));
+   }
+
+   @Override
+   protected dvj a(dvj $$0, dna $$1) {
+      return $$0.a($$1.a($$0.c(a)));
+   }
+
+   @Override
+   protected void a(dvk.a<die, dvj> $$0) {
+      $$0.a(a, b);
+   }
+
+   @Nullable
+   protected static <T extends dsm> dsn<T> a(dfb $$0, dso<T> $$1, dso<? extends dsa> $$2) {
+      return $$0.C ? null : a($$1, $$2, dsa::a);
    }
 }

@@ -1,62 +1,166 @@
-import java.util.Locale;
+import com.google.common.collect.Lists;
+import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.Iterator;
+import java.util.List;
+import javax.annotation.Nullable;
 
-public class fmp extends fmo {
-   private static final int f = -16711681;
-   private static final int g = -6250241;
-   private static final int h = -65536;
-   private static final int i = 1024;
-   private static final int j = 1048576;
-   private static final int k = 1048576;
+public class fmp implements hde {
+   private static final long a = 3000L;
+   private final fji b;
+   private final List<fmp.b> c = Lists.newArrayList();
+   private boolean d;
+   private final List<fmp.b> e = new ArrayList<>();
 
-   public fmp(fkk $$0, bmz $$1) {
-      super($$0, $$1);
+   public fmp(fji $$0) {
+      this.b = $$0;
    }
 
-   @Override
-   protected void d(fkm $$0, int $$1, int $$2, int $$3) {
-      this.a($$0, $$1, $$2, $$3, 64);
-      this.a($$0, $$1, $$2, $$3, 1024);
-      this.a($$0, $$1, $$2, $$3, 16384);
-      this.a($$0, c(1048576.0), $$1 + 1, $$3 - d(1048576.0) + 1);
-   }
+   public void a(fku $$0) {
+      hdf $$1 = this.b.ak();
+      if (!this.d && this.b.n.Y().c()) {
+         $$1.a(this);
+         this.d = true;
+      } else if (this.d && !this.b.n.Y().c()) {
+         $$1.b(this);
+         this.d = false;
+      }
 
-   private void a(fkm $$0, int $$1, int $$2, int $$3, int $$4) {
-      this.a($$0, $$1, $$2, $$3 - d((double)$$4), c((double)$$4));
-   }
+      if (this.d) {
+         fbv $$2 = $$1.b();
+         ezn $$3 = $$2.b();
+         ezn $$4 = $$2.c();
+         ezn $$5 = $$2.a();
+         this.e.clear();
 
-   private void a(fkm $$0, int $$1, int $$2, int $$3, String $$4) {
-      this.a($$0, $$4, $$1 + 1, $$3 + 1);
-      $$0.a(gig.G(), $$1, $$1 + $$2 - 1, $$3, -1);
-   }
+         for (fmp.b $$6 : this.c) {
+            if ($$6.c($$3)) {
+               this.e.add($$6);
+            }
+         }
 
-   @Override
-   protected String a(double $$0) {
-      return c(e($$0));
-   }
+         if (!this.e.isEmpty()) {
+            int $$7 = 0;
+            int $$8 = 0;
+            double $$9 = this.b.n.C().c();
+            Iterator<fmp.b> $$10 = this.e.iterator();
 
-   private static String c(double $$0) {
-      if ($$0 >= 1048576.0) {
-         return String.format(Locale.ROOT, "%.1f MiB/s", $$0 / 1048576.0);
-      } else {
-         return $$0 >= 1024.0 ? String.format(Locale.ROOT, "%.1f KiB/s", $$0 / 1024.0) : String.format(Locale.ROOT, "%d B/s", azj.a($$0));
+            while ($$10.hasNext()) {
+               fmp.b $$11 = $$10.next();
+               $$11.a(3000.0 * $$9);
+               if (!$$11.b()) {
+                  $$10.remove();
+               } else {
+                  $$8 = Math.max($$8, this.b.h.a($$11.a()));
+               }
+            }
+
+            $$8 += this.b.h.b("<") + this.b.h.b(" ") + this.b.h.b(">") + this.b.h.b(" ");
+
+            for (fmp.b $$12 : this.e) {
+               int $$13 = 255;
+               xi $$14 = $$12.a();
+               fmp.a $$15 = $$12.a($$3);
+               if ($$15 != null) {
+                  ezn $$16 = $$15.a.d($$3).d();
+                  double $$17 = $$5.b($$16);
+                  double $$18 = $$4.b($$16);
+                  boolean $$19 = $$18 > 0.5;
+                  int $$20 = $$8 / 2;
+                  int $$21 = 9;
+                  int $$22 = $$21 / 2;
+                  float $$23 = 1.0F;
+                  int $$24 = this.b.h.a($$14);
+                  int $$25 = azk.d(azk.b(255.0F, 75.0F, (float)(ae.c() - $$15.b) / (float)(3000.0 * $$9)));
+                  $$0.c().a();
+                  $$0.c().a((float)$$0.a() - (float)$$20 * 1.0F - 2.0F, (float)($$0.b() - 35) - (float)($$7 * ($$21 + 1)) * 1.0F, 0.0F);
+                  $$0.c().b(1.0F, 1.0F, 1.0F);
+                  $$0.a(-$$20 - 1, -$$22 - 1, $$20 + 1, $$22 + 1, this.b.n.b(0.8F));
+                  int $$26 = axv.a(255, $$25, $$25, $$25);
+                  if (!$$19) {
+                     if ($$17 > 0.0) {
+                        $$0.b(this.b.h, ">", $$20 - this.b.h.b(">"), -$$22, $$26);
+                     } else if ($$17 < 0.0) {
+                        $$0.b(this.b.h, "<", -$$20, -$$22, $$26);
+                     }
+                  }
+
+                  $$0.b(this.b.h, $$14, -$$24 / 2, -$$22, $$26);
+                  $$0.c().b();
+                  $$7++;
+               }
+            }
+         }
       }
    }
 
    @Override
-   protected int b(double $$0) {
-      return d(e($$0));
+   public void a(hca $$0, hdg $$1, float $$2) {
+      if ($$1.a() != null) {
+         xi $$3 = $$1.a();
+         if (!this.c.isEmpty()) {
+            for (fmp.b $$4 : this.c) {
+               if ($$4.a().equals($$3)) {
+                  $$4.b(new ezn($$0.h(), $$0.i(), $$0.j()));
+                  return;
+               }
+            }
+         }
+
+         this.c.add(new fmp.b($$3, $$2, new ezn($$0.h(), $$0.i(), $$0.j())));
+      }
    }
 
-   private static int d(double $$0) {
-      return (int)Math.round(Math.log($$0 + 1.0) * 60.0 / Math.log(1048576.0));
+   static record a(ezn a, long b) {
    }
 
-   @Override
-   protected int a(long $$0) {
-      return this.a(e((double)$$0), 0.0, -16711681, 8192.0, -6250241, 1.048576E7, -65536);
-   }
+   static class b {
+      private final xi a;
+      private final float b;
+      private final List<fmp.a> c = new ArrayList<>();
 
-   private static double e(double $$0) {
-      return $$0 * 20.0;
+      public b(xi $$0, float $$1, ezn $$2) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c.add(new fmp.a($$2, ae.c()));
+      }
+
+      public xi a() {
+         return this.a;
+      }
+
+      @Nullable
+      public fmp.a a(ezn $$0) {
+         if (this.c.isEmpty()) {
+            return null;
+         } else {
+            return this.c.size() == 1 ? this.c.getFirst() : this.c.stream().min(Comparator.comparingDouble($$1 -> $$1.a().f($$0))).orElse(null);
+         }
+      }
+
+      public void b(ezn $$0) {
+         this.c.removeIf($$1 -> $$0.equals($$1.a()));
+         this.c.add(new fmp.a($$0, ae.c()));
+      }
+
+      public boolean c(ezn $$0) {
+         if (Float.isInfinite(this.b)) {
+            return true;
+         } else if (this.c.isEmpty()) {
+            return false;
+         } else {
+            fmp.a $$1 = this.a($$0);
+            return $$1 == null ? false : $$0.a((ka)$$1.a, (double)this.b);
+         }
+      }
+
+      public void a(double $$0) {
+         long $$1 = ae.c();
+         this.c.removeIf($$2 -> (double)($$1 - $$2.b()) > $$0);
+      }
+
+      public boolean b() {
+         return !this.c.isEmpty();
+      }
    }
 }

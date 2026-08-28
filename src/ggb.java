@@ -1,99 +1,53 @@
-import java.util.Optional;
+public class ggb extends ggp {
+   protected final ggk a;
+   private float b;
+   private float F;
+   private float G;
+   private boolean H;
 
-public class ggb extends gge {
-   ggb(gbx $$0, gfz $$1, double $$2, double $$3, double $$4) {
-      super($$0, $$2, $$3 - 0.125, $$4);
-      this.b(0.01F, 0.01F);
-      this.a($$1);
-      this.D = this.D * (this.r.i() * 0.6F + 0.2F);
-      this.t = (int)(16.0 / (Math.random() * 0.8 + 0.2));
-      this.n = false;
-      this.B = 1.0F;
-      this.u = 0.0F;
+   protected ggb(gci $$0, double $$1, double $$2, double $$3, ggk $$4, float $$5) {
+      super($$0, $$1, $$2, $$3);
+      this.B = 0.91F;
+      this.u = $$5;
+      this.a = $$4;
    }
 
-   ggb(gbx $$0, gfz $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-      super($$0, $$2, $$3 - 0.125, $$4, $$5, $$6, $$7);
-      this.b(0.01F, 0.01F);
-      this.a($$1);
-      this.D = this.D * (this.r.i() * 0.6F + 0.6F);
-      this.t = (int)(16.0 / (Math.random() * 0.8 + 0.2));
-      this.n = false;
-      this.B = 1.0F;
-      this.u = 0.0F;
+   public void b(int $$0) {
+      float $$1 = (float)(($$0 & 0xFF0000) >> 16) / 255.0F;
+      float $$2 = (float)(($$0 & 0xFF00) >> 8) / 255.0F;
+      float $$3 = (float)(($$0 & 0xFF) >> 0) / 255.0F;
+      float $$4 = 1.0F;
+      this.a($$1 * 1.0F, $$2 * 1.0F, $$3 * 1.0F);
+   }
+
+   public void c(int $$0) {
+      this.b = (float)(($$0 & 0xFF0000) >> 16) / 255.0F;
+      this.F = (float)(($$0 & 0xFF00) >> 8) / 255.0F;
+      this.G = (float)(($$0 & 0xFF) >> 0) / 255.0F;
+      this.H = true;
    }
 
    @Override
-   public gfi b() {
-      return gfi.b;
+   public gft b() {
+      return gft.c;
    }
 
-   public static class a implements gfh<lu> {
-      private final gfz a;
-
-      public a(gfz $$0) {
-         this.a = $$0;
-      }
-
-      public gfe a(lu $$0, gbx $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         azr $$8 = $$1.A;
-         double $$9 = $$8.k() * 1.0E-6F;
-         double $$10 = $$8.k() * 1.0E-4F;
-         double $$11 = $$8.k() * 1.0E-6F;
-         ggb $$12 = new ggb($$1, this.a, $$2, $$3, $$4, $$9, $$10, $$11);
-         $$12.a(0.9F, 0.4F, 0.5F);
-         return $$12;
+   @Override
+   public void a() {
+      super.a();
+      this.b(this.a);
+      if (this.s > this.t / 2) {
+         this.e(1.0F - ((float)this.s - (float)(this.t / 2)) / (float)this.t);
+         if (this.H) {
+            this.v = this.v + (this.b - this.v) * 0.2F;
+            this.w = this.w + (this.F - this.w) * 0.2F;
+            this.x = this.x + (this.G - this.x) * 0.2F;
+         }
       }
    }
 
-   public static class b implements gfh<lu> {
-      private final gfz a;
-
-      public b(gfz $$0) {
-         this.a = $$0;
-      }
-
-      public gfe a(lu $$0, gbx $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         ggb $$8 = new ggb($$1, this.a, $$2, $$3, $$4, 0.0, -0.8F, 0.0) {
-            @Override
-            public Optional<ln> o() {
-               return Optional.of(ln.a);
-            }
-         };
-         $$8.t = azj.b($$1.A, 500, 1000);
-         $$8.u = 0.01F;
-         $$8.a(0.32F, 0.5F, 0.22F);
-         return $$8;
-      }
-   }
-
-   public static class c implements gfh<lu> {
-      private final gfz a;
-
-      public c(gfz $$0) {
-         this.a = $$0;
-      }
-
-      public gfe a(lu $$0, gbx $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         ggb $$8 = new ggb($$1, this.a, $$2, $$3, $$4);
-         $$8.a(0.4F, 0.4F, 0.7F);
-         return $$8;
-      }
-   }
-
-   public static class d implements gfh<lu> {
-      private final gfz a;
-
-      public d(gfz $$0) {
-         this.a = $$0;
-      }
-
-      public gfe a(lu $$0, gbx $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         double $$8 = (double)$$1.A.i() * -1.9 * (double)$$1.A.i() * 0.1;
-         ggb $$9 = new ggb($$1, this.a, $$2, $$3, $$4, 0.0, $$8, 0.0);
-         $$9.a(0.1F, 0.1F, 0.3F);
-         $$9.b(0.001F, 0.001F);
-         return $$9;
-      }
+   @Override
+   public int a(float $$0) {
+      return 15728880;
    }
 }

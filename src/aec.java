@@ -1,37 +1,33 @@
-public class aec implements zo<acd> {
-   public static final zf<we, aec> a = zo.a(aec::a, aec::new);
-   private final jg b;
-   private final boolean c;
+public class aec implements zp<ace> {
+   public static final zg<wt, aec> a = zg.a(ze.u, aec::b, ze.a(lz.V), aec::e, xk.d, aec::f, aec::new);
+   private final int b;
+   private final csx<?> c;
+   private final xi d;
 
-   public aec(jg $$0, boolean $$1) {
+   public aec(int $$0, csx<?> $$1, xi $$2) {
       this.b = $$0;
       this.c = $$1;
-   }
-
-   private aec(we $$0) {
-      this.b = $$0.e();
-      this.c = $$0.readBoolean();
-   }
-
-   private void a(we $$0) {
-      $$0.a(this.b);
-      $$0.a(this.c);
+      this.d = $$2;
    }
 
    @Override
-   public zq<aec> a() {
-      return ags.Y;
+   public zr<aec> a() {
+      return agt.X;
    }
 
-   public void a(acd $$0) {
+   public void a(ace $$0) {
       $$0.a(this);
    }
 
-   public jg b() {
+   public int b() {
       return this.b;
    }
 
-   public boolean e() {
+   public csx<?> e() {
       return this.c;
+   }
+
+   public xi f() {
+      return this.d;
    }
 }

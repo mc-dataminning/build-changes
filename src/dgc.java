@@ -1,245 +1,385 @@
+import com.google.common.collect.ImmutableList;
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import it.unimi.dsi.fastutil.longs.Long2FloatLinkedOpenHashMap;
 import java.util.Optional;
-import java.util.OptionalInt;
 import javax.annotation.Nullable;
 
-public class dgc {
+public final class dgc {
    public static final Codec<dgc> a = RecordCodecBuilder.create(
       $$0 -> $$0.group(
-               Codec.INT.fieldOf("fog_color").forGetter($$0x -> $$0x.b),
-               Codec.INT.fieldOf("water_color").forGetter($$0x -> $$0x.c),
-               Codec.INT.fieldOf("water_fog_color").forGetter($$0x -> $$0x.d),
-               Codec.INT.fieldOf("sky_color").forGetter($$0x -> $$0x.e),
-               Codec.INT.optionalFieldOf("foliage_color").forGetter($$0x -> $$0x.f),
-               Codec.INT.optionalFieldOf("grass_color").forGetter($$0x -> $$0x.g),
-               dgc.b.d.optionalFieldOf("grass_color_modifier", dgc.b.a).forGetter($$0x -> $$0x.h),
-               dfv.a.optionalFieldOf("particle").forGetter($$0x -> $$0x.i),
-               awj.b.optionalFieldOf("ambient_sound").forGetter($$0x -> $$0x.j),
-               dfu.a.optionalFieldOf("mood_sound").forGetter($$0x -> $$0x.k),
-               dft.a.optionalFieldOf("additions_sound").forGetter($$0x -> $$0x.l),
-               awh.a.optionalFieldOf("music").forGetter($$0x -> $$0x.m)
+               dgc.b.a.forGetter($$0x -> $$0x.i),
+               dgi.a.fieldOf("effects").forGetter($$0x -> $$0x.l),
+               dgd.b.forGetter($$0x -> $$0x.j),
+               dgo.c.forGetter($$0x -> $$0x.k)
             )
             .apply($$0, dgc::new)
    );
-   private final int b;
-   private final int c;
-   private final int d;
-   private final int e;
-   private final Optional<Integer> f;
-   private final Optional<Integer> g;
-   private final dgc.b h;
-   private final Optional<dfv> i;
-   private final Optional<jp<awj>> j;
-   private final Optional<dfu> k;
-   private final Optional<dft> l;
-   private final Optional<awh> m;
+   public static final Codec<dgc> b = RecordCodecBuilder.create(
+      $$0 -> $$0.group(dgc.b.a.forGetter($$0x -> $$0x.i), dgi.a.fieldOf("effects").forGetter($$0x -> $$0x.l))
+            .apply($$0, ($$0x, $$1) -> new dgc($$0x, $$1, dgd.a, dgo.b))
+   );
+   public static final Codec<jq<dgc>> c = ale.a(lz.aG, a);
+   public static final Codec<ju<dgc>> d = kf.a(lz.aG, a);
+   private static final eqp f = new eqp(new ece(new ebg(1234L)), ImmutableList.of(0));
+   static final eqp g = new eqp(new ece(new ebg(3456L)), ImmutableList.of(-2, -1, 0));
+   @Deprecated(
+      forRemoval = true
+   )
+   public static final eqp e = new eqp(new ece(new ebg(2345L)), ImmutableList.of(0));
+   private static final int h = 1024;
+   private final dgc.b i;
+   private final dgd j;
+   private final dgo k;
+   private final dgi l;
+   private final ThreadLocal<Long2FloatLinkedOpenHashMap> m = ThreadLocal.withInitial(() -> ae.a(() -> {
+         Long2FloatLinkedOpenHashMap $$0x = new Long2FloatLinkedOpenHashMap(1024, 0.25F) {
+            protected void rehash(int $$0) {
+            }
+         };
+         $$0x.defaultReturnValue(Float.NaN);
+         return $$0x;
+      }));
 
-   dgc(
-      int $$0,
-      int $$1,
-      int $$2,
-      int $$3,
-      Optional<Integer> $$4,
-      Optional<Integer> $$5,
-      dgc.b $$6,
-      Optional<dfv> $$7,
-      Optional<jp<awj>> $$8,
-      Optional<dfu> $$9,
-      Optional<dft> $$10,
-      Optional<awh> $$11
-   ) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
-      this.e = $$3;
-      this.f = $$4;
-      this.g = $$5;
-      this.h = $$6;
-      this.i = $$7;
-      this.j = $$8;
-      this.k = $$9;
-      this.l = $$10;
-      this.m = $$11;
+   dgc(dgc.b $$0, dgi $$1, dgd $$2, dgo $$3) {
+      this.i = $$0;
+      this.j = $$2;
+      this.k = $$3;
+      this.l = $$1;
    }
 
    public int a() {
-      return this.b;
+      return this.l.d();
    }
 
-   public int b() {
-      return this.c;
-   }
-
-   public int c() {
-      return this.d;
-   }
-
-   public int d() {
-      return this.e;
-   }
-
-   public Optional<Integer> e() {
-      return this.f;
-   }
-
-   public Optional<Integer> f() {
-      return this.g;
-   }
-
-   public dgc.b g() {
-      return this.h;
-   }
-
-   public Optional<dfv> h() {
-      return this.i;
-   }
-
-   public Optional<jp<awj>> i() {
-      return this.j;
-   }
-
-   public Optional<dfu> j() {
+   public dgo b() {
       return this.k;
    }
 
-   public Optional<dft> k() {
+   public boolean c() {
+      return this.i.a();
+   }
+
+   public dgc.c a(jh $$0, int $$1) {
+      if (!this.c()) {
+         return dgc.c.a;
+      } else {
+         return this.b($$0, $$1) ? dgc.c.c : dgc.c.b;
+      }
+   }
+
+   private float e(jh $$0, int $$1) {
+      float $$2 = this.i.d.a($$0, this.g());
+      int $$3 = $$1 + 17;
+      if ($$0.v() > $$3) {
+         float $$4 = (float)(f.a((double)((float)$$0.u() / 8.0F), (double)((float)$$0.w() / 8.0F), false) * 8.0);
+         return $$2 - ($$4 + (float)$$0.v() - (float)$$3) * 0.05F / 40.0F;
+      } else {
+         return $$2;
+      }
+   }
+
+   @Deprecated
+   private float f(jh $$0, int $$1) {
+      long $$2 = $$0.a();
+      Long2FloatLinkedOpenHashMap $$3 = this.m.get();
+      float $$4 = $$3.get($$2);
+      if (!Float.isNaN($$4)) {
+         return $$4;
+      } else {
+         float $$5 = this.e($$0, $$1);
+         if ($$3.size() == 1024) {
+            $$3.removeFirstFloat();
+         }
+
+         $$3.put($$2, $$5);
+         return $$5;
+      }
+   }
+
+   public boolean a(dfe $$0, jh $$1) {
+      return this.a($$0, $$1, true);
+   }
+
+   public boolean a(dfe $$0, jh $$1, boolean $$2) {
+      if (this.c($$1, $$0.N())) {
+         return false;
+      } else {
+         if ($$0.d($$1.v()) && $$0.a(dfk.b, $$1) < 10) {
+            dvj $$3 = $$0.a_($$1);
+            erk $$4 = $$0.b_($$1);
+            if ($$4.a() == erl.c && $$3.b() instanceof dmt) {
+               if (!$$2) {
+                  return true;
+               }
+
+               boolean $$5 = $$0.z($$1.h()) && $$0.z($$1.i()) && $$0.z($$1.f()) && $$0.z($$1.g());
+               if (!$$5) {
+                  return true;
+               }
+            }
+         }
+
+         return false;
+      }
+   }
+
+   public boolean b(jh $$0, int $$1) {
+      return !this.c($$0, $$1);
+   }
+
+   public boolean c(jh $$0, int $$1) {
+      return this.f($$0, $$1) >= 0.15F;
+   }
+
+   public boolean d(jh $$0, int $$1) {
+      return this.f($$0, $$1) > 0.1F;
+   }
+
+   public boolean b(dfe $$0, jh $$1) {
+      if (this.c($$1, $$0.N())) {
+         return false;
+      } else {
+         if ($$0.d($$1.v()) && $$0.a(dfk.b, $$1) < 10) {
+            dvj $$2 = $$0.a_($$1);
+            if (($$2.l() || $$2.a(dig.dN)) && dig.dN.m().a($$0, $$1)) {
+               return true;
+            }
+         }
+
+         return false;
+      }
+   }
+
+   public dgd d() {
+      return this.j;
+   }
+
+   public int e() {
+      return this.l.a();
+   }
+
+   public int a(double $$0, double $$1) {
+      int $$2 = this.l.f().orElseGet(this::p);
+      return this.l.g().a($$0, $$1, $$2);
+   }
+
+   private int p() {
+      double $$0 = (double)azk.a(this.i.c, 0.0F, 1.0F);
+      double $$1 = (double)azk.a(this.i.e, 0.0F, 1.0F);
+      return dez.a($$0, $$1);
+   }
+
+   public int f() {
+      return this.l.e().orElseGet(this::q);
+   }
+
+   private int q() {
+      double $$0 = (double)azk.a(this.i.c, 0.0F, 1.0F);
+      double $$1 = (double)azk.a(this.i.e, 0.0F, 1.0F);
+      return dev.a($$0, $$1);
+   }
+
+   public float g() {
+      return this.i.c;
+   }
+
+   public dgi h() {
       return this.l;
    }
 
-   public Optional<awh> l() {
-      return this.m;
+   public int i() {
+      return this.l.b();
+   }
+
+   public int j() {
+      return this.l.c();
+   }
+
+   public Optional<dgb> k() {
+      return this.l.h();
+   }
+
+   public Optional<jq<awk>> l() {
+      return this.l.i();
+   }
+
+   public Optional<dga> m() {
+      return this.l.j();
+   }
+
+   public Optional<dfz> n() {
+      return this.l.k();
+   }
+
+   public Optional<awi> o() {
+      return this.l.l();
    }
 
    public static class a {
-      private OptionalInt a = OptionalInt.empty();
-      private OptionalInt b = OptionalInt.empty();
-      private OptionalInt c = OptionalInt.empty();
-      private OptionalInt d = OptionalInt.empty();
-      private Optional<Integer> e = Optional.empty();
-      private Optional<Integer> f = Optional.empty();
-      private dgc.b g = dgc.b.a;
-      private Optional<dfv> h = Optional.empty();
-      private Optional<jp<awj>> i = Optional.empty();
-      private Optional<dfu> j = Optional.empty();
-      private Optional<dft> k = Optional.empty();
-      private Optional<awh> l = Optional.empty();
+      private boolean a = true;
+      @Nullable
+      private Float b;
+      private dgc.d c = dgc.d.a;
+      @Nullable
+      private Float d;
+      @Nullable
+      private dgi e;
+      @Nullable
+      private dgo f;
+      @Nullable
+      private dgd g;
 
-      public dgc.a a(int $$0) {
-         this.a = OptionalInt.of($$0);
+      public dgc.a a(boolean $$0) {
+         this.a = $$0;
          return this;
       }
 
-      public dgc.a b(int $$0) {
-         this.b = OptionalInt.of($$0);
+      public dgc.a a(float $$0) {
+         this.b = $$0;
          return this;
       }
 
-      public dgc.a c(int $$0) {
-         this.c = OptionalInt.of($$0);
+      public dgc.a b(float $$0) {
+         this.d = $$0;
          return this;
       }
 
-      public dgc.a d(int $$0) {
-         this.d = OptionalInt.of($$0);
+      public dgc.a a(dgi $$0) {
+         this.e = $$0;
          return this;
       }
 
-      public dgc.a e(int $$0) {
-         this.e = Optional.of($$0);
+      public dgc.a a(dgo $$0) {
+         this.f = $$0;
          return this;
       }
 
-      public dgc.a f(int $$0) {
-         this.f = Optional.of($$0);
-         return this;
-      }
-
-      public dgc.a a(dgc.b $$0) {
+      public dgc.a a(dgd $$0) {
          this.g = $$0;
          return this;
       }
 
-      public dgc.a a(dfv $$0) {
-         this.h = Optional.of($$0);
-         return this;
-      }
-
-      public dgc.a a(jp<awj> $$0) {
-         this.i = Optional.of($$0);
-         return this;
-      }
-
-      public dgc.a a(dfu $$0) {
-         this.j = Optional.of($$0);
-         return this;
-      }
-
-      public dgc.a a(dft $$0) {
-         this.k = Optional.of($$0);
-         return this;
-      }
-
-      public dgc.a a(@Nullable awh $$0) {
-         this.l = Optional.ofNullable($$0);
+      public dgc.a a(dgc.d $$0) {
+         this.c = $$0;
          return this;
       }
 
       public dgc a() {
-         return new dgc(
-            this.a.orElseThrow(() -> new IllegalStateException("Missing 'fog' color.")),
-            this.b.orElseThrow(() -> new IllegalStateException("Missing 'water' color.")),
-            this.c.orElseThrow(() -> new IllegalStateException("Missing 'water fog' color.")),
-            this.d.orElseThrow(() -> new IllegalStateException("Missing 'sky' color.")),
-            this.e,
-            this.f,
-            this.g,
-            this.h,
-            this.i,
-            this.j,
-            this.k,
-            this.l
-         );
+         if (this.b != null && this.d != null && this.e != null && this.f != null && this.g != null) {
+            return new dgc(new dgc.b(this.a, this.b, this.c, this.d), this.e, this.g, this.f);
+         } else {
+            throw new IllegalStateException("You are missing parameters to build a proper biome\n" + this);
+         }
+      }
+
+      @Override
+      public String toString() {
+         return "BiomeBuilder{\nhasPrecipitation="
+            + this.a
+            + ",\ntemperature="
+            + this.b
+            + ",\ntemperatureModifier="
+            + this.c
+            + ",\ndownfall="
+            + this.d
+            + ",\nspecialEffects="
+            + this.e
+            + ",\nmobSpawnSettings="
+            + this.f
+            + ",\ngenerationSettings="
+            + this.g
+            + ",\n}";
       }
    }
 
-   public static enum b implements baf {
-      a("none") {
-         @Override
-         public int a(double $$0, double $$1, int $$2) {
-            return $$2;
-         }
-      },
-      b("dark_forest") {
-         @Override
-         public int a(double $$0, double $$1, int $$2) {
-            return ($$2 & 16711422) + 2634762 >> 1;
-         }
-      },
-      c("swamp") {
-         @Override
-         public int a(double $$0, double $$1, int $$2) {
-            double $$3 = dfw.e.a($$0 * 0.0225, $$1 * 0.0225, false);
-            return $$3 < -0.1 ? 5011004 : 6975545;
-         }
-      };
+   static record b(boolean b, float c, dgc.d d, float e) {
+      public static final MapCodec<dgc.b> a = RecordCodecBuilder.mapCodec(
+         $$0 -> $$0.group(
+                  Codec.BOOL.fieldOf("has_precipitation").forGetter($$0x -> $$0x.b),
+                  Codec.FLOAT.fieldOf("temperature").forGetter($$0x -> $$0x.c),
+                  dgc.d.c.optionalFieldOf("temperature_modifier", dgc.d.a).forGetter($$0x -> $$0x.d),
+                  Codec.FLOAT.fieldOf("downfall").forGetter($$0x -> $$0x.e)
+               )
+               .apply($$0, dgc.b::new)
+      );
 
-      private final String e;
-      public static final Codec<dgc.b> d = baf.a(dgc.b::values);
-
-      public abstract int a(double var1, double var3, int var5);
-
-      b(final String $$0) {
-         this.e = $$0;
+      public boolean a() {
+         return this.b;
       }
 
-      public String a() {
+      public float b() {
+         return this.c;
+      }
+
+      public dgc.d c() {
+         return this.d;
+      }
+
+      public float d() {
          return this.e;
+      }
+   }
+
+   public static enum c implements bag {
+      a("none"),
+      b("rain"),
+      c("snow");
+
+      public static final Codec<dgc.c> d = bag.a(dgc.c::values);
+      private final String e;
+
+      private c(final String $$0) {
+         this.e = $$0;
       }
 
       @Override
       public String c() {
          return this.e;
+      }
+   }
+
+   public static enum d implements bag {
+      a("none") {
+         @Override
+         public float a(jh $$0, float $$1) {
+            return $$1;
+         }
+      },
+      b("frozen") {
+         @Override
+         public float a(jh $$0, float $$1) {
+            double $$2 = dgc.g.a((double)$$0.u() * 0.05, (double)$$0.w() * 0.05, false) * 7.0;
+            double $$3 = dgc.e.a((double)$$0.u() * 0.2, (double)$$0.w() * 0.2, false);
+            double $$4 = $$2 + $$3;
+            if ($$4 < 0.3) {
+               double $$5 = dgc.e.a((double)$$0.u() * 0.09, (double)$$0.w() * 0.09, false);
+               if ($$5 < 0.8) {
+                  return 0.2F;
+               }
+            }
+
+            return $$1;
+         }
+      };
+
+      private final String d;
+      public static final Codec<dgc.d> c = bag.a(dgc.d::values);
+
+      public abstract float a(jh var1, float var2);
+
+      d(final String $$0) {
+         this.d = $$0;
+      }
+
+      public String a() {
+         return this.d;
+      }
+
+      @Override
+      public String c() {
+         return this.d;
       }
    }
 }

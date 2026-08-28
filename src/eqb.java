@@ -1,11 +1,20 @@
-import com.mojang.serialization.Codec;
-import javax.annotation.Nullable;
+import com.mojang.serialization.MapCodec;
 
-public interface eqb {
-   Codec<eqb> c = lx.n.q().dispatch(eqb::a, eqc::codec);
+public class eqb extends ept {
+   public static final MapCodec<eqb> a = axq.a(lz.f).fieldOf("tag").xmap(eqb::new, $$0 -> $$0.b);
+   private final axq<die> b;
 
-   @Nullable
-   uj a(azr var1, @Nullable uj var2);
+   public eqb(axq<die> $$0) {
+      this.b = $$0;
+   }
 
-   eqc<?> a();
+   @Override
+   public boolean a(dvj $$0, azs $$1) {
+      return $$0.a(this.b);
+   }
+
+   @Override
+   protected epu<?> a() {
+      return epu.d;
+   }
 }

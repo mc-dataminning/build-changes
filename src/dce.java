@@ -1,31 +1,54 @@
-import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
-import java.util.function.Function;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
 
-public interface dce {
-   Codec<dce> c = lx.av.q().dispatch(dce::a, Function.identity());
+public record dce(ju<bth> d, dbz e, dbz f, dbz g, dbz h) implements dcj {
+   public static final MapCodec<dce> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(
+               kf.a(lz.W).fieldOf("to_apply").forGetter(dce::b),
+               dbz.b.fieldOf("min_duration").forGetter(dce::c),
+               dbz.b.fieldOf("max_duration").forGetter(dce::d),
+               dbz.b.fieldOf("min_amplifier").forGetter(dce::e),
+               dbz.b.fieldOf("max_amplifier").forGetter(dce::f)
+            )
+            .apply($$0, dce::new)
+   );
 
-   static MapCodec<? extends dce> b(kc<MapCodec<? extends dce>> $$0) {
-      kc.a($$0, "all_of", dbx.b.a);
-      kc.a($$0, "apply_mob_effect", dby.a);
-      kc.a($$0, "attribute", dcc.a);
-      kc.a($$0, "damage_entity", dbz.a);
-      kc.a($$0, "damage_item", dcb.a);
-      kc.a($$0, "explode", dcg.a);
-      kc.a($$0, "ignite", dch.a);
-      kc.a($$0, "play_sound", dcj.a);
-      kc.a($$0, "replace_block", dcl.a);
-      kc.a($$0, "replace_disk", dcm.a);
-      kc.a($$0, "run_function", dcn.a);
-      kc.a($$0, "set_block_properties", dco.a);
-      kc.a($$0, "spawn_particles", dcq.a);
-      return kc.a($$0, "summon_entity", dcr.a);
+   @Override
+   public void a(arn $$0, int $$1, dbr $$2, bue $$3, ezn $$4) {
+      if ($$3 instanceof bva $$5) {
+         azs $$6 = $$5.ea();
+         Optional<jq<bth>> $$7 = this.d.a($$6);
+         if ($$7.isPresent()) {
+            int $$8 = Math.round(azk.b($$6, this.e.a($$1), this.f.a($$1)) * 20.0F);
+            int $$9 = Math.max(0, Math.round(azk.b($$6, this.g.a($$1), this.h.a($$1))));
+            $$5.a(new btj($$7.get(), $$8, $$9));
+         }
+      }
    }
 
-   void a(arm var1, int var2, dbl var3, btz var4, ezh var5, boolean var6);
-
-   default void a(dbl $$0, btz $$1, ezh $$2, int $$3) {
+   @Override
+   public MapCodec<dce> a() {
+      return a;
    }
 
-   MapCodec<? extends dce> a();
+   public ju<bth> b() {
+      return this.d;
+   }
+
+   public dbz c() {
+      return this.e;
+   }
+
+   public dbz d() {
+      return this.f;
+   }
+
+   public dbz e() {
+      return this.g;
+   }
+
+   public dbz f() {
+      return this.h;
+   }
 }

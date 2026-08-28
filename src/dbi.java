@@ -1,8 +1,33 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+public record dbi(cwb a, cwb b, cwb c) implements das {
+   @Override
+   public cwb a(int $$0) {
+      return switch ($$0) {
+         case 0 -> this.a;
+         case 1 -> this.b;
+         case 2 -> this.c;
+         default -> throw new IllegalArgumentException("Recipe does not contain slot " + $$0);
+      };
+   }
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface dbi {
+   @Override
+   public int a() {
+      return 3;
+   }
+
+   @Override
+   public boolean b() {
+      return this.a.f() && this.b.f() && this.c.f();
+   }
+
+   public cwb c() {
+      return this.a;
+   }
+
+   public cwb d() {
+      return this.b;
+   }
+
+   public cwb e() {
+      return this.c;
+   }
 }

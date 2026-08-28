@@ -1,17 +1,13 @@
-import com.mojang.datafixers.util.Either;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import org.joml.Matrix4f;
 
-public record foe(alh c) implements foc {
-   public static final MapCodec<foe> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(alh.a.fieldOf("id").forGetter(foe::c)).apply($$0, foe::new));
+public class foe extends fod {
+   public static final foe a = new foe();
 
-   @Override
-   public fod a() {
-      return fod.e;
+   public foe() {
+      super(fob.b(ali.b("")), 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F);
    }
 
    @Override
-   public Either<foc.b, foc.c> b() {
-      return Either.right(new foc.c(this.c));
+   public void a(boolean $$0, float $$1, float $$2, Matrix4f $$3, fef $$4, float $$5, float $$6, float $$7, float $$8, int $$9) {
    }
 }

@@ -1,4 +1,3 @@
-import com.mojang.datafixers.DSL;
 import com.mojang.datafixers.schemas.Schema;
 import com.mojang.datafixers.types.templates.TypeTemplate;
 import java.util.Map;
@@ -11,8 +10,7 @@ public class bmm extends Schema {
 
    public Map<String, Supplier<TypeTemplate>> registerEntities(Schema $$0) {
       Map<String, Supplier<TypeTemplate>> $$1 = super.registerEntities($$0);
-      $$0.register($$1, "ZombieVillager", $$1x -> DSL.optionalFields("Offers", DSL.optionalFields("Recipes", DSL.list(bhs.x.in($$0))), bjh.a($$0)));
-      $$0.register($$1, "Husk", () -> bjh.a($$0));
+      $$0.register($$1, "ElderGuardian", () -> bjj.a($$0));
       return $$1;
    }
 }

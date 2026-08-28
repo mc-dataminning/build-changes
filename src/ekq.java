@@ -1,34 +1,27 @@
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.stream.Stream;
 
-public class ekq extends eky {
-   public static final MapCodec<ekq> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(ejy.c.fieldOf("height").forGetter($$0x -> $$0x.c)).apply($$0, ekq::new));
-   private final ejy c;
+public class ekq extends eld {
+   public static final MapCodec<ekq> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(ecm.b.fieldOf("predicate").forGetter($$0x -> $$0x.c)).apply($$0, ekq::new)
+   );
+   private final ecm c;
 
-   private ekq(ejy $$0) {
+   private ekq(ecm $$0) {
       this.c = $$0;
    }
 
-   public static ekq a(ejy $$0) {
+   public static ekq a(ecm $$0) {
       return new ekq($$0);
    }
 
-   public static ekq a(ebt $$0, ebt $$1) {
-      return a(ekb.a($$0, $$1));
-   }
-
-   public static ekq b(ebt $$0, ebt $$1) {
-      return a(eka.a($$0, $$1));
+   @Override
+   protected boolean a(elc $$0, azs $$1, jh $$2) {
+      return this.c.test($$0.d(), $$2);
    }
 
    @Override
-   public Stream<jg> a_(ekw $$0, azr $$1, jg $$2) {
-      return Stream.of($$2.h(this.c.a($$1, $$0)));
-   }
-
-   @Override
-   public ekz<?> b() {
-      return ekz.l;
+   public elf<?> b() {
+      return elf.a;
    }
 }

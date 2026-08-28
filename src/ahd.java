@@ -1,20 +1,44 @@
-public record ahd(xy.a b) implements zo<agu> {
-   public static final zf<we, ahd> a = zo.a(ahd::a, ahd::new);
+import java.time.Instant;
+import javax.annotation.Nullable;
 
-   private ahd(we $$0) {
-      this(xy.a.a($$0));
+public record ahd(String b, Instant c, long d, @Nullable xu e, xp.b f) implements zp<agv> {
+   public static final zg<wf, ahd> a = zp.a(ahd::a, ahd::new);
+
+   private ahd(wf $$0) {
+      this($$0.d(256), $$0.t(), $$0.readLong(), $$0.c(xu::a), new xp.b($$0));
    }
 
-   private void a(we $$0) {
-      xy.a.a($$0, this.b);
+   private void a(wf $$0) {
+      $$0.a(this.b, 256);
+      $$0.a(this.c);
+      $$0.b(this.d);
+      $$0.a(this.e, xu::a);
+      this.f.a($$0);
    }
 
    @Override
-   public zq<ahd> a() {
-      return ags.bo;
+   public zr<ahd> a() {
+      return agt.bn;
    }
 
-   public void a(agu $$0) {
+   public void a(agv $$0) {
       $$0.a(this);
+   }
+
+   public Instant e() {
+      return this.c;
+   }
+
+   public long f() {
+      return this.d;
+   }
+
+   @Nullable
+   public xu g() {
+      return this.e;
+   }
+
+   public xp.b h() {
+      return this.f;
    }
 }

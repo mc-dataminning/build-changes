@@ -1,42 +1,196 @@
-import java.util.Optional;
+import com.google.common.annotations.VisibleForTesting;
+import io.netty.buffer.ByteBuf;
+import java.util.EnumMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Objects;
 
-public record ess(jp<est> b, byte c, byte d, byte e, Optional<xh> f) {
-   public static final zf<ws, ess> a = zf.a(est.c, ess::c, zd.c, ess::d, zd.c, ess::e, zd.c, ess::f, xj.c, ess::g, ess::new);
+public class ess {
+   public static final zg<ByteBuf, ess> a = ze.a(ess::a, ess::i);
+   private static final ess[] b = ae.a(() -> {
+      ess[] $$0 = new ess[48];
+      a(new ess(jm.b, jm.c, ess.a.a), $$0);
+      return $$0;
+   });
+   private final jm c;
+   private final jm d;
+   private final jm e;
+   private final ess.a f;
+   private final int g;
+   private final List<jm> h;
+   private final List<jm> i;
+   private final List<jm> j;
+   private final Map<jm, ess> k = new EnumMap<>(jm.class);
+   private final Map<jm, ess> l = new EnumMap<>(jm.class);
+   private final Map<ess.a, ess> m = new EnumMap<>(ess.a.class);
 
-   public ess(jp<est> b, byte c, byte d, byte e, Optional<xh> f) {
-      e = (byte)(e & 15);
-      this.b = b;
-      this.c = c;
-      this.d = d;
-      this.e = e;
-      this.f = f;
+   private ess(jm $$0, jm $$1, ess.a $$2) {
+      this.c = $$0;
+      this.d = $$1;
+      this.f = $$2;
+      this.g = b($$0, $$1, $$2);
+      kl $$3 = $$1.q().d($$0.q());
+      jm $$4 = jm.a($$3, null);
+      Objects.requireNonNull($$4);
+      if (this.f == ess.a.b) {
+         this.e = $$4;
+      } else {
+         this.e = $$4.g();
+      }
+
+      this.h = List.of(this.d.g(), this.d, this.e, this.e.g(), this.c.g(), this.c);
+      this.i = this.h.stream().filter($$0x -> $$0x.o() != this.c.o()).toList();
+      this.j = this.h.stream().filter($$0x -> $$0x.o() == this.c.o()).toList();
    }
 
-   public alh a() {
-      return this.b.a().b();
+   public static ess a(jm $$0, jm $$1, ess.a $$2) {
+      return b[b($$0, $$1, $$2)];
    }
 
-   public boolean b() {
-      return this.b.a().c();
+   public ess a(jm $$0) {
+      return this.l.get($$0);
    }
 
-   public jp<est> c() {
-      return this.b;
+   public ess b(jm $$0) {
+      return this.k.get($$0);
    }
 
-   public byte d() {
-      return this.c;
+   public ess c(jm $$0) {
+      return $$0.o() == this.c.o() ? this : this.k.get($$0);
    }
 
-   public byte e() {
+   public ess d(jm $$0) {
+      ess $$1 = this.b($$0);
+      return this.d == $$1.e ? $$1.a() : $$1;
+   }
+
+   public ess a(ess.a $$0) {
+      return this.m.get($$0);
+   }
+
+   public ess a() {
+      return this.a(this.f.a());
+   }
+
+   public jm b() {
       return this.d;
    }
 
-   public byte f() {
+   public jm c() {
+      return this.c;
+   }
+
+   public jm d() {
       return this.e;
    }
 
-   public Optional<xh> g() {
+   public ess.a e() {
       return this.f;
+   }
+
+   public List<jm> f() {
+      return this.h;
+   }
+
+   public List<jm> g() {
+      return this.i;
+   }
+
+   public List<jm> h() {
+      return this.j;
+   }
+
+   @Override
+   public String toString() {
+      return "[up=" + this.c + ",front=" + this.d + ",sideBias=" + this.f + "]";
+   }
+
+   public int i() {
+      return this.g;
+   }
+
+   public static ess a(int $$0) {
+      return b[$$0];
+   }
+
+   public static ess a(azs $$0) {
+      return ae.a(b, $$0);
+   }
+
+   private static ess a(ess $$0, ess[] $$1) {
+      if ($$1[$$0.i()] != null) {
+         return $$1[$$0.i()];
+      } else {
+         $$1[$$0.i()] = $$0;
+
+         for (ess.a $$2 : ess.a.values()) {
+            $$0.m.put($$2, a(new ess($$0.c, $$0.d, $$2), $$1));
+         }
+
+         for (jm $$3 : jm.values()) {
+            jm $$4 = $$0.c;
+            if ($$3 == $$0.c) {
+               $$4 = $$0.d.g();
+            }
+
+            if ($$3 == $$0.c.g()) {
+               $$4 = $$0.d;
+            }
+
+            $$0.k.put($$3, a(new ess($$4, $$3, $$0.f), $$1));
+         }
+
+         for (jm $$5 : jm.values()) {
+            jm $$6 = $$0.d;
+            if ($$5 == $$0.d) {
+               $$6 = $$0.c.g();
+            }
+
+            if ($$5 == $$0.d.g()) {
+               $$6 = $$0.c;
+            }
+
+            $$0.l.put($$5, a(new ess($$5, $$6, $$0.f), $$1));
+         }
+
+         return $$0;
+      }
+   }
+
+   @VisibleForTesting
+   protected static int b(jm $$0, jm $$1, ess.a $$2) {
+      if ($$0.o() == $$1.o()) {
+         throw new IllegalStateException("Up-vector and front-vector can not be on the same axis");
+      } else {
+         int $$3;
+         if ($$0.o() == jm.a.b) {
+            $$3 = $$1.o() == jm.a.a ? 1 : 0;
+         } else {
+            $$3 = $$1.o() == jm.a.b ? 1 : 0;
+         }
+
+         int $$5 = $$3 << 1 | $$1.f().ordinal();
+         return (($$0.ordinal() << 2) + $$5 << 1) + $$2.ordinal();
+      }
+   }
+
+   public static enum a {
+      a("left"),
+      b("right");
+
+      private final String c;
+
+      private a(final String $$0) {
+         this.c = $$0;
+      }
+
+      public ess.a a() {
+         return this == a ? b : a;
+      }
+
+      @Override
+      public String toString() {
+         return this.c;
+      }
    }
 }

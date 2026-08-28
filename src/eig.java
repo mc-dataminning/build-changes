@@ -1,108 +1,50 @@
-import com.google.common.collect.Lists;
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.Optional;
-import java.util.function.BiConsumer;
 
-public class eig extends eih {
-   public static final int a = 8;
-   public static final int b = 15;
-   public static final MapCodec<eig> c = RecordCodecBuilder.mapCodec(
-      $$0 -> a($$0).and(eif.a.fieldOf("mangrove_root_placement").forGetter($$0x -> $$0x.h)).apply($$0, eig::new)
+public class eig extends eib {
+   public static final MapCodec<eig> a = RecordCodecBuilder.mapCodec(
+      $$0 -> b($$0)
+            .and(
+               $$0.group(
+                  bri.b(1, 512).fieldOf("foliage_height").forGetter($$0x -> $$0x.b),
+                  Codec.intRange(0, 256).fieldOf("leaf_placement_attempts").forGetter($$0x -> $$0x.c)
+               )
+            )
+            .apply($$0, eig::new)
    );
-   private final eif h;
+   private final bri b;
+   private final int c;
 
-   public eig(brd $$0, eik $$1, Optional<eie> $$2, eif $$3) {
-      super($$0, $$1, $$2);
-      this.h = $$3;
+   public eig(bri $$0, bri $$1, bri $$2, int $$3) {
+      super($$0, $$1);
+      this.b = $$2;
+      this.c = $$3;
    }
 
    @Override
-   public boolean a(dfb $$0, BiConsumer<jg, dvd> $$1, azr $$2, jg $$3, jg $$4, ehf $$5) {
-      List<jg> $$6 = Lists.newArrayList();
-      jg.a $$7 = $$3.k();
-
-      while ($$7.v() < $$4.v()) {
-         if (!this.a($$0, $$7)) {
-            return false;
-         }
-
-         $$7.c(jl.b);
-      }
-
-      $$6.add($$4.e());
-
-      for (jl $$8 : jl.c.a) {
-         jg $$9 = $$4.a($$8);
-         List<jg> $$10 = Lists.newArrayList();
-         if (!this.a($$0, $$2, $$9, $$8, $$4, $$10, 0)) {
-            return false;
-         }
-
-         $$6.addAll($$10);
-         $$6.add($$4.a($$8));
-      }
-
-      for (jg $$11 : $$6) {
-         this.a($$0, $$1, $$2, $$11, $$5);
-      }
-
-      return true;
+   protected eic<?> a() {
+      return eic.j;
    }
 
-   private boolean a(dfb $$0, azr $$1, jg $$2, jl $$3, jg $$4, List<jg> $$5, int $$6) {
-      int $$7 = this.h.e();
-      if ($$6 != $$7 && $$5.size() <= $$7) {
-         for (jg $$9 : this.a($$2, $$3, $$1, $$4)) {
-            if (this.a($$0, $$9)) {
-               $$5.add($$9);
-               if (!this.a($$0, $$1, $$9, $$3, $$4, $$5, $$6 + 1)) {
-                  return false;
-               }
-            }
-         }
+   @Override
+   protected void a(dfh $$0, eib.b $$1, azs $$2, ehl $$3, int $$4, eib.a $$5, int $$6, int $$7, int $$8) {
+      jh $$9 = $$5.a();
+      jh.a $$10 = $$9.k();
 
-         return true;
-      } else {
-         return false;
-      }
-   }
-
-   protected List<jg> a(jg $$0, jl $$1, azr $$2, jg $$3) {
-      jg $$4 = $$0.e();
-      jg $$5 = $$0.a($$1);
-      int $$6 = $$0.k($$3);
-      int $$7 = this.h.d();
-      float $$8 = this.h.f();
-      if ($$6 > $$7 - 3 && $$6 <= $$7) {
-         return $$2.i() < $$8 ? List.of($$4, $$5.e()) : List.of($$4);
-      } else if ($$6 > $$7) {
-         return List.of($$4);
-      } else if ($$2.i() < $$8) {
-         return List.of($$4);
-      } else {
-         return $$2.h() ? List.of($$5) : List.of($$4);
+      for (int $$11 = 0; $$11 < this.c; $$11++) {
+         $$10.a($$9, $$2.a($$7) - $$2.a($$7), $$2.a($$6) - $$2.a($$6), $$2.a($$7) - $$2.a($$7));
+         a($$0, $$1, $$2, $$3, $$10);
       }
    }
 
    @Override
-   protected boolean a(dfb $$0, jg $$1) {
-      return super.a($$0, $$1) || $$0.a($$1, $$0x -> $$0x.a(this.h.a()));
+   public int a(azs $$0, int $$1, ehl $$2) {
+      return this.b.a($$0);
    }
 
    @Override
-   protected void a(dfb $$0, BiConsumer<jg, dvd> $$1, azr $$2, jg $$3, ehf $$4) {
-      if ($$0.a($$3, $$0x -> $$0x.a(this.h.b()))) {
-         dvd $$5 = this.h.c().a($$2, $$3);
-         $$1.accept($$3, this.a($$0, $$3, $$5));
-      } else {
-         super.a($$0, $$1, $$2, $$3, $$4);
-      }
-   }
-
-   @Override
-   protected eii<?> a() {
-      return eii.a;
+   protected boolean a(azs $$0, int $$1, int $$2, int $$3, int $$4, boolean $$5) {
+      return false;
    }
 }

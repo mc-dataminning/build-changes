@@ -1,19 +1,14 @@
-import java.util.UUID;
-import java.util.function.Consumer;
-import javax.annotation.Nullable;
+import java.io.IOException;
+import java.util.concurrent.CompletableFuture;
 
-public interface dzq<T extends dzh> {
-   @Nullable
-   T a(int var1);
+public interface dzq<T> extends AutoCloseable {
+   CompletableFuture<dzl<T>> a(deh var1);
 
-   @Nullable
-   T a(UUID var1);
+   void a(dzl<T> var1);
 
-   Iterable<T> a();
+   void a(boolean var1);
 
-   <U extends T> void a(dzo<T, U> var1, axv<U> var2);
-
-   void a(ezc var1, Consumer<T> var2);
-
-   <U extends T> void a(dzo<T, U> var1, ezc var2, axv<U> var3);
+   @Override
+   default void close() throws IOException {
+   }
 }

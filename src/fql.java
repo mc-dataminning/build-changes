@@ -1,31 +1,41 @@
-public class fql extends fqs {
-   private static final xh a = xh.c("outOfMemory.title");
-   private static final xh b = xh.c("outOfMemory.message");
-   private static final int c = 300;
-   private final fon d = new fon(this);
+import javax.annotation.Nullable;
 
-   public fql() {
-      super(a);
+public class fql extends fra {
+   @Nullable
+   private fls a;
+
+   public fql(xi $$0) {
+      super($$0);
    }
 
    @Override
-   protected void aS_() {
-      this.d.a(a, this.p);
-      this.d.c(new flk(300, b, this.p));
-      fos $$0 = this.d.b(fos.e().a(8));
-      $$0.a(fkz.a(xg.l, $$0x -> this.m.a(new fqu())).a());
-      $$0.a(fkz.a(xh.c("menu.quit"), $$0x -> this.m.q()).a());
-      this.d.a(this::c);
+   protected void aR_() {
+      this.a = this.c(new fls(this.n, this.l, this.p, 12));
       this.c();
    }
 
    @Override
    protected void c() {
-      this.d.a();
+      if (this.a != null) {
+         this.a.b(this.n);
+         this.a.c(this.n / 2 - this.a.y() / 2, this.o / 2 - 9 / 2);
+      }
    }
 
    @Override
-   public boolean aI_() {
+   public boolean aH_() {
       return false;
+   }
+
+   @Override
+   protected boolean aQ_() {
+      return false;
+   }
+
+   @Override
+   public void b(fku $$0, int $$1, int $$2, float $$3) {
+      this.a($$0, $$3);
+      this.r();
+      this.a($$0);
    }
 }

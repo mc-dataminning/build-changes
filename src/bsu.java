@@ -1,46 +1,125 @@
-import java.util.Optional;
 import javax.annotation.Nullable;
 
-public record bsu(String i) {
-   public static final bsu a = new bsu("generic");
-   public static final bsu b = new bsu("ladder");
-   public static final bsu c = new bsu("vines");
-   public static final bsu d = new bsu("weeping_vines");
-   public static final bsu e = new bsu("twisting_vines");
-   public static final bsu f = new bsu("scaffolding");
-   public static final bsu g = new bsu("other_climbable");
-   public static final bsu h = new bsu("water");
+public class bsu {
+   private final jq<bsw> a;
+   @Nullable
+   private final bue b;
+   @Nullable
+   private final bue c;
+   @Nullable
+   private final ezn d;
 
-   public static bsu a(dvd $$0) {
-      if ($$0.a(dia.cO) || $$0.a(awz.Q)) {
-         return b;
-      } else if ($$0.a(dia.ff)) {
-         return c;
-      } else if ($$0.a(dia.oz) || $$0.a(dia.oA)) {
-         return d;
-      } else if ($$0.a(dia.oB) || $$0.a(dia.oC)) {
-         return e;
+   @Override
+   public String toString() {
+      return "DamageSource (" + this.k().a() + ")";
+   }
+
+   public float a() {
+      return this.k().c();
+   }
+
+   public boolean b() {
+      return this.b == this.c;
+   }
+
+   private bsu(jq<bsw> $$0, @Nullable bue $$1, @Nullable bue $$2, @Nullable ezn $$3) {
+      this.a = $$0;
+      this.b = $$2;
+      this.c = $$1;
+      this.d = $$3;
+   }
+
+   public bsu(jq<bsw> $$0, @Nullable bue $$1, @Nullable bue $$2) {
+      this($$0, $$1, $$2, null);
+   }
+
+   public bsu(jq<bsw> $$0, ezn $$1) {
+      this($$0, null, null, $$1);
+   }
+
+   public bsu(jq<bsw> $$0, @Nullable bue $$1) {
+      this($$0, $$1, $$1);
+   }
+
+   public bsu(jq<bsw> $$0) {
+      this($$0, null, null, null);
+   }
+
+   @Nullable
+   public bue c() {
+      return this.c;
+   }
+
+   @Nullable
+   public bue d() {
+      return this.b;
+   }
+
+   @Nullable
+   public cwb e() {
+      return this.c != null ? this.c.eb() : null;
+   }
+
+   public xi a(bva $$0) {
+      String $$1 = "death.attack." + this.k().a();
+      if (this.b == null && this.c == null) {
+         bva $$5 = $$0.eU();
+         String $$6 = $$1 + ".player";
+         return $$5 != null ? xi.a($$6, $$0.S_(), $$5.S_()) : xi.a($$1, $$0.S_());
       } else {
-         return $$0.a(dia.nS) ? f : g;
+         xi $$2 = this.b == null ? this.c.S_() : this.b.S_();
+         cwb $$4 = this.b instanceof bva $$3 ? $$3.fb() : cwb.k;
+         return !$$4.f() && $$4.b(ku.g) ? xi.a($$1 + ".item", $$0.S_(), $$2, $$4.J()) : xi.a($$1, $$0.S_(), $$2);
+      }
+   }
+
+   public String f() {
+      return this.k().a();
+   }
+
+   public boolean g() {
+      return switch (this.k().b()) {
+         case a -> false;
+         case b -> this.b instanceof bva && !(this.b instanceof com);
+         case c -> true;
+      };
+   }
+
+   public boolean h() {
+      if (this.d() instanceof com $$0 && $$0.gl().d) {
+         return true;
+      }
+
+      return false;
+   }
+
+   @Nullable
+   public ezn i() {
+      if (this.d != null) {
+         return this.d;
+      } else {
+         return this.c != null ? this.c.dv() : null;
       }
    }
 
    @Nullable
-   public static bsu a(buv $$0) {
-      Optional<jg> $$1 = $$0.eQ();
-      if ($$1.isPresent()) {
-         dvd $$2 = $$0.dX().a_($$1.get());
-         return a($$2);
-      } else {
-         return $$0.bk() ? h : null;
-      }
+   public ezn j() {
+      return this.d;
    }
 
-   public String a() {
-      return "death.fell.accident." + this.i;
+   public boolean a(axq<bsw> $$0) {
+      return this.a.a($$0);
    }
 
-   public String b() {
-      return this.i;
+   public boolean a(alh<bsw> $$0) {
+      return this.a.a($$0);
+   }
+
+   public bsw k() {
+      return this.a.a();
+   }
+
+   public jq<bsw> l() {
+      return this.a;
    }
 }

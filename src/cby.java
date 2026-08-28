@@ -1,36 +1,57 @@
-public class cby extends cbt {
-   private final chj a;
-   private arn b;
-   private boolean c;
+import java.util.EnumSet;
 
-   public cby(chj $$0) {
-      this.a = $$0;
+public abstract class cby {
+   private final EnumSet<cby.a> a = EnumSet.noneOf(cby.a.class);
+
+   public abstract boolean b();
+
+   public boolean c() {
+      return this.b();
    }
 
-   @Override
-   public boolean b() {
-      arn $$0 = (arn)this.a.T_();
-      boolean $$1 = $$0 != null && !$$0.R_() && !$$0.gl().b && !$$0.bk() && !$$0.aw;
-      return !this.a.gv() && $$1 && this.a.gL();
-   }
-
-   @Override
    public boolean U_() {
-      return !this.c;
+      return true;
    }
 
-   @Override
    public void d() {
-      this.b = (arn)this.a.T_();
-      this.c = false;
+   }
+
+   public void e() {
+   }
+
+   public boolean V_() {
+      return false;
+   }
+
+   public void a() {
+   }
+
+   public void a(EnumSet<cby.a> $$0) {
+      this.a.clear();
+      this.a.addAll($$0);
    }
 
    @Override
-   public void a() {
-      if (!this.c && !this.a.y() && !this.a.M_()) {
-         if (this.a.cS().c(this.b.cS())) {
-            this.c = this.a.b(this.b);
-         }
-      }
+   public String toString() {
+      return this.getClass().getSimpleName();
+   }
+
+   public EnumSet<cby.a> j() {
+      return this.a;
+   }
+
+   protected int a(int $$0) {
+      return this.V_() ? $$0 : b($$0);
+   }
+
+   protected static int b(int $$0) {
+      return azk.e($$0, 2);
+   }
+
+   public static enum a {
+      a,
+      b,
+      c,
+      d;
    }
 }

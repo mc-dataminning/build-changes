@@ -1,179 +1,343 @@
-import com.google.common.collect.ArrayTable;
-import com.google.common.collect.HashBasedTable;
-import com.google.common.collect.Table;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import it.unimi.dsi.fastutil.objects.ObjectIterator;
-import it.unimi.dsi.fastutil.objects.Reference2ObjectArrayMap;
-import java.util.Collection;
-import java.util.Collections;
 import java.util.Iterator;
-import java.util.Map;
-import java.util.Objects;
-import java.util.Optional;
-import java.util.Map.Entry;
-import java.util.function.Function;
-import java.util.stream.Collectors;
-import javax.annotation.Nullable;
+import java.util.List;
 
-public abstract class dvf<O, S> {
-   public static final String b = "Name";
-   public static final String c = "Properties";
-   private static final Function<Entry<dwg<?>, Comparable<?>>, String> a = new Function<Entry<dwg<?>, Comparable<?>>, String>() {
-      public String a(@Nullable Entry<dwg<?>, Comparable<?>> $$0) {
-         if ($$0 == null) {
-            return "<NULL>";
-         } else {
-            dwg<?> $$1 = $$0.getKey();
-            return $$1.f() + "=" + this.a($$1, $$0.getValue());
-         }
-      }
+public class dvf extends dsm {
+   private static final int b = 2;
+   private static final double c = 0.01;
+   public static final double a = 0.51;
+   private dvj d = dig.a.m();
+   private jm e;
+   private boolean f;
+   private boolean g;
+   private static final ThreadLocal<jm> h = ThreadLocal.withInitial(() -> null);
+   private float i;
+   private float j;
+   private long k;
+   private int l;
 
-      private <T extends Comparable<T>> String a(dwg<T> $$0, Comparable<?> $$1) {
-         return $$0.a((T)$$1);
-      }
-   };
-   protected final O d;
-   private final Reference2ObjectArrayMap<dwg<?>, Comparable<?>> f;
-   private Table<dwg<?>, Comparable<?>, S> g;
-   protected final MapCodec<S> e;
-
-   protected dvf(O $$0, Reference2ObjectArrayMap<dwg<?>, Comparable<?>> $$1, MapCodec<S> $$2) {
-      this.d = $$0;
-      this.f = $$1;
-      this.e = $$2;
+   public dvf(jh $$0, dvj $$1) {
+      super(dso.k, $$0, $$1);
    }
 
-   public <T extends Comparable<T>> S a(dwg<T> $$0) {
-      return this.b($$0, a($$0.a(), this.c($$0)));
-   }
-
-   protected static <T> T a(Collection<T> $$0, T $$1) {
-      Iterator<T> $$2 = $$0.iterator();
-
-      while ($$2.hasNext()) {
-         if ($$2.next().equals($$1)) {
-            if ($$2.hasNext()) {
-               return $$2.next();
-            }
-
-            return $$0.iterator().next();
-         }
-      }
-
-      return $$2.next();
+   public dvf(jh $$0, dvj $$1, dvj $$2, jm $$3, boolean $$4, boolean $$5) {
+      this($$0, $$1);
+      this.d = $$2;
+      this.e = $$3;
+      this.f = $$4;
+      this.g = $$5;
    }
 
    @Override
-   public String toString() {
-      StringBuilder $$0 = new StringBuilder();
-      $$0.append(this.d);
-      if (!this.G().isEmpty()) {
-         $$0.append('[');
-         $$0.append(this.G().entrySet().stream().map(a).collect(Collectors.joining(",")));
-         $$0.append(']');
-      }
-
-      return $$0.toString();
+   public uk a(js.a $$0) {
+      return this.e($$0);
    }
 
-   public Collection<dwg<?>> F() {
-      return Collections.unmodifiableCollection(this.f.keySet());
-   }
-
-   public <T extends Comparable<T>> boolean b(dwg<T> $$0) {
-      return this.f.containsKey($$0);
-   }
-
-   public <T extends Comparable<T>> T c(dwg<T> $$0) {
-      Comparable<?> $$1 = (Comparable<?>)this.f.get($$0);
-      if ($$1 == null) {
-         throw new IllegalArgumentException("Cannot get property " + $$0 + " as it does not exist in " + this.d);
-      } else {
-         return $$0.g().cast($$1);
-      }
-   }
-
-   public <T extends Comparable<T>> Optional<T> d(dwg<T> $$0) {
-      return Optional.ofNullable(this.e($$0));
-   }
-
-   public <T extends Comparable<T>> T a(dwg<T> $$0, T $$1) {
-      return Objects.requireNonNullElse(this.e($$0), $$1);
-   }
-
-   @Nullable
-   public <T extends Comparable<T>> T e(dwg<T> $$0) {
-      Comparable<?> $$1 = (Comparable<?>)this.f.get($$0);
-      return $$1 == null ? null : $$0.g().cast($$1);
-   }
-
-   public <T extends Comparable<T>, V extends T> S b(dwg<T> $$0, V $$1) {
-      Comparable<?> $$2 = (Comparable<?>)this.f.get($$0);
-      if ($$2 == null) {
-         throw new IllegalArgumentException("Cannot set property " + $$0 + " as it does not exist in " + this.d);
-      } else if ($$2.equals($$1)) {
-         return (S)this;
-      } else {
-         S $$3 = (S)this.g.get($$0, $$1);
-         if ($$3 == null) {
-            throw new IllegalArgumentException("Cannot set property " + $$0 + " to " + $$1 + " on " + this.d + ", it is not an allowed value");
-         } else {
-            return $$3;
-         }
-      }
-   }
-
-   public <T extends Comparable<T>, V extends T> S c(dwg<T> $$0, V $$1) {
-      Comparable<?> $$2 = (Comparable<?>)this.f.get($$0);
-      if ($$2 != null && !$$2.equals($$1)) {
-         S $$3 = (S)this.g.get($$0, $$1);
-         if ($$3 == null) {
-            throw new IllegalArgumentException("Cannot set property " + $$0 + " to " + $$1 + " on " + this.d + ", it is not an allowed value");
-         } else {
-            return $$3;
-         }
-      } else {
-         return (S)this;
-      }
-   }
-
-   public void a(Map<Map<dwg<?>, Comparable<?>>, S> $$0) {
-      if (this.g != null) {
-         throw new IllegalStateException();
-      } else {
-         Table<dwg<?>, Comparable<?>, S> $$1 = HashBasedTable.create();
-         ObjectIterator var3 = this.f.entrySet().iterator();
-
-         while (var3.hasNext()) {
-            Entry<dwg<?>, Comparable<?>> $$2 = (Entry<dwg<?>, Comparable<?>>)var3.next();
-            dwg<?> $$3 = $$2.getKey();
-
-            for (Comparable<?> $$4 : $$3.a()) {
-               if (!$$4.equals($$2.getValue())) {
-                  $$1.put($$3, $$4, $$0.get(this.d($$3, $$4)));
-               }
-            }
-         }
-
-         this.g = (Table<dwg<?>, Comparable<?>, S>)($$1.isEmpty() ? $$1 : ArrayTable.create($$1));
-      }
-   }
-
-   private Map<dwg<?>, Comparable<?>> d(dwg<?> $$0, Comparable<?> $$1) {
-      Map<dwg<?>, Comparable<?>> $$2 = new Reference2ObjectArrayMap(this.f);
-      $$2.put($$0, $$1);
-      return $$2;
-   }
-
-   public Map<dwg<?>, Comparable<?>> G() {
+   public boolean b() {
       return this.f;
    }
 
-   protected static <O, S extends dvf<O, S>> Codec<S> a(Codec<O> $$0, Function<O, S> $$1) {
-      return $$0.dispatch("Name", $$0x -> $$0x.d, $$1x -> {
-         S $$2 = $$1.apply((O)$$1x);
-         return $$2.G().isEmpty() ? MapCodec.unit($$2) : $$2.e.codec().lenientOptionalFieldOf("Properties").xmap($$1xx -> $$1xx.orElse($$2), Optional::of);
-      });
+   public jm c() {
+      return this.e;
+   }
+
+   public boolean d() {
+      return this.g;
+   }
+
+   public float a(float $$0) {
+      if ($$0 > 1.0F) {
+         $$0 = 1.0F;
+      }
+
+      return azk.h($$0, this.j, this.i);
+   }
+
+   public float b(float $$0) {
+      return (float)this.e.j() * this.e(this.a($$0));
+   }
+
+   public float c(float $$0) {
+      return (float)this.e.k() * this.e(this.a($$0));
+   }
+
+   public float d(float $$0) {
+      return (float)this.e.l() * this.e(this.a($$0));
+   }
+
+   private float e(float $$0) {
+      return this.f ? $$0 - 1.0F : 1.0F - $$0;
+   }
+
+   private dvj v() {
+      return !this.b() && this.d() && this.d.b() instanceof dvc
+         ? dig.bz.m().b(dvd.d, Boolean.valueOf(this.i > 0.25F)).b(dvd.c, this.d.a(dig.br) ? dwl.b : dwl.a).b(dvd.a, this.d.c(dvc.a))
+         : this.d;
+   }
+
+   private static void a(dfb $$0, jh $$1, float $$2, dvf $$3) {
+      jm $$4 = $$3.f();
+      double $$5 = (double)($$2 - $$3.i);
+      fah $$6 = $$3.v().g($$0, $$1);
+      if (!$$6.c()) {
+         ezi $$7 = a($$1, $$6.a(), $$3);
+         List<bue> $$8 = $$0.a_(null, dve.a($$7, $$4, $$5).b($$7));
+         if (!$$8.isEmpty()) {
+            List<ezi> $$9 = $$6.e();
+            boolean $$10 = $$3.d.a(dig.hV);
+            Iterator var12 = $$8.iterator();
+
+            while (true) {
+               bue $$11;
+               while (true) {
+                  if (!var12.hasNext()) {
+                     return;
+                  }
+
+                  $$11 = (bue)var12.next();
+                  if ($$11.k_() != erp.d) {
+                     if (!$$10) {
+                        break;
+                     }
+
+                     if (!($$11 instanceof aro)) {
+                        ezn $$12 = $$11.dA();
+                        double $$13 = $$12.d;
+                        double $$14 = $$12.e;
+                        double $$15 = $$12.f;
+                        switch ($$4.o()) {
+                           case a:
+                              $$13 = (double)$$4.j();
+                              break;
+                           case b:
+                              $$14 = (double)$$4.k();
+                              break;
+                           case c:
+                              $$15 = (double)$$4.l();
+                        }
+
+                        $$11.n($$13, $$14, $$15);
+                        break;
+                     }
+                  }
+               }
+
+               double $$16 = 0.0;
+
+               for (ezi $$17 : $$9) {
+                  ezi $$18 = dve.a(a($$1, $$17, $$3), $$4, $$5);
+                  ezi $$19 = $$11.cS();
+                  if ($$18.c($$19)) {
+                     $$16 = Math.max($$16, a($$18, $$4, $$19));
+                     if ($$16 >= $$5) {
+                        break;
+                     }
+                  }
+               }
+
+               if (!($$16 <= 0.0)) {
+                  $$16 = Math.min($$16, $$5) + 0.01;
+                  a($$4, $$11, $$16, $$4);
+                  if (!$$3.f && $$3.g) {
+                     a($$1, $$11, $$4, $$5);
+                  }
+               }
+            }
+         }
+      }
+   }
+
+   private static void a(jm $$0, bue $$1, double $$2, jm $$3) {
+      h.set($$0);
+      $$1.a(bve.c, new ezn($$2 * (double)$$3.j(), $$2 * (double)$$3.k(), $$2 * (double)$$3.l()));
+      $$1.aL();
+      h.set(null);
+   }
+
+   private static void b(dfb $$0, jh $$1, float $$2, dvf $$3) {
+      if ($$3.w()) {
+         jm $$4 = $$3.f();
+         if ($$4.o().d()) {
+            double $$5 = $$3.d.g($$0, $$1).c(jm.a.b);
+            ezi $$6 = a($$1, new ezi(0.0, $$5, 0.0, 1.0, 1.5000010000000001, 1.0), $$3);
+            double $$7 = (double)($$2 - $$3.i);
+
+            for (bue $$9 : $$0.a((bue)null, $$6, $$2x -> a($$6, $$2x, $$1))) {
+               a($$4, $$9, $$7, $$4);
+            }
+         }
+      }
+   }
+
+   private static boolean a(ezi $$0, bue $$1, jh $$2) {
+      return $$1.k_() == erp.a && $$1.aK() && ($$1.d($$2) || $$1.dC() >= $$0.a && $$1.dC() <= $$0.d && $$1.dI() >= $$0.c && $$1.dI() <= $$0.f);
+   }
+
+   private boolean w() {
+      return this.d.a(dig.pg);
+   }
+
+   public jm f() {
+      return this.f ? this.e : this.e.g();
+   }
+
+   private static double a(ezi $$0, jm $$1, ezi $$2) {
+      switch ($$1) {
+         case f:
+            return $$0.d - $$2.a;
+         case e:
+            return $$2.d - $$0.a;
+         case b:
+         default:
+            return $$0.e - $$2.b;
+         case a:
+            return $$2.e - $$0.b;
+         case d:
+            return $$0.f - $$2.c;
+         case c:
+            return $$2.f - $$0.c;
+      }
+   }
+
+   private static ezi a(jh $$0, ezi $$1, dvf $$2) {
+      double $$3 = (double)$$2.e($$2.i);
+      return $$1.d((double)$$0.u() + $$3 * (double)$$2.e.j(), (double)$$0.v() + $$3 * (double)$$2.e.k(), (double)$$0.w() + $$3 * (double)$$2.e.l());
+   }
+
+   private static void a(jh $$0, bue $$1, jm $$2, double $$3) {
+      ezi $$4 = $$1.cS();
+      ezi $$5 = fae.b().a().a($$0);
+      if ($$4.c($$5)) {
+         jm $$6 = $$2.g();
+         double $$7 = a($$5, $$6, $$4) + 0.01;
+         double $$8 = a($$5, $$6, $$4.a($$5)) + 0.01;
+         if (Math.abs($$7 - $$8) < 0.01) {
+            $$7 = Math.min($$7, $$3) + 0.01;
+            a($$2, $$1, $$7, $$6);
+         }
+      }
+   }
+
+   public dvj j() {
+      return this.d;
+   }
+
+   public void k() {
+      if (this.o != null && (this.j < 1.0F || this.o.C)) {
+         this.i = 1.0F;
+         this.j = this.i;
+         this.o.o(this.p);
+         this.aw_();
+         if (this.o.a_(this.p).a(dig.bQ)) {
+            dvj $$0;
+            if (this.g) {
+               $$0 = dig.a.m();
+            } else {
+               $$0 = die.b(this.d, this.o, this.p);
+            }
+
+            this.o.a(this.p, $$0, 3);
+            this.o.b(this.p, $$0.b(), eso.a(this.o, this.t(), null));
+         }
+      }
+   }
+
+   public jm t() {
+      return this.f ? this.e : this.e.g();
+   }
+
+   public static void a(dfb $$0, jh $$1, dvj $$2, dvf $$3) {
+      $$3.k = $$0.aa();
+      $$3.j = $$3.i;
+      if ($$3.j >= 1.0F) {
+         if ($$0.C && $$3.l < 5) {
+            $$3.l++;
+         } else {
+            $$0.o($$1);
+            $$3.aw_();
+            if ($$0.a_($$1).a(dig.bQ)) {
+               dvj $$4 = die.b($$3.d, $$0, $$1);
+               if ($$4.l()) {
+                  $$0.a($$1, $$3.d, 84);
+                  die.a($$3.d, $$4, $$0, $$1, 3);
+               } else {
+                  if ($$4.b(dvz.C) && $$4.c(dvz.C)) {
+                     $$4 = $$4.b(dvz.C, Boolean.valueOf(false));
+                  }
+
+                  $$0.a($$1, $$4, 67);
+                  $$0.b($$1, $$4.b(), eso.a($$0, $$3.t(), null));
+               }
+            }
+         }
+      } else {
+         float $$5 = $$3.i + 0.5F;
+         a($$0, $$1, $$5, $$3);
+         b($$0, $$1, $$5, $$3);
+         $$3.i = $$5;
+         if ($$3.i >= 1.0F) {
+            $$3.i = 1.0F;
+         }
+      }
+   }
+
+   @Override
+   protected void a(uk $$0, js.a $$1) {
+      super.a($$0, $$1);
+      jr<die> $$2 = (jr<die>)(this.o != null ? this.o.a(lz.f) : ly.e);
+      this.d = uz.a($$2, $$0.p("blockState"));
+      this.e = jm.a($$0.h("facing"));
+      this.i = $$0.j("progress");
+      this.j = this.i;
+      this.f = $$0.q("extending");
+      this.g = $$0.q("source");
+   }
+
+   @Override
+   protected void b(uk $$0, js.a $$1) {
+      super.b($$0, $$1);
+      $$0.a("blockState", uz.a(this.d));
+      $$0.a("facing", this.e.d());
+      $$0.a("progress", this.j);
+      $$0.a("extending", this.f);
+      $$0.a("source", this.g);
+   }
+
+   public fah a(deg $$0, jh $$1) {
+      fah $$2;
+      if (!this.f && this.g && this.d.b() instanceof dvc) {
+         $$2 = this.d.b(dvc.c, Boolean.valueOf(true)).g($$0, $$1);
+      } else {
+         $$2 = fae.a();
+      }
+
+      jm $$4 = h.get();
+      if ((double)this.i < 1.0 && $$4 == this.f()) {
+         return $$2;
+      } else {
+         dvj $$5;
+         if (this.d()) {
+            $$5 = dig.bz.m().b(dvd.a, this.e).b(dvd.d, Boolean.valueOf(this.f != 1.0F - this.i < 0.25F));
+         } else {
+            $$5 = this.d;
+         }
+
+         float $$7 = this.e(this.i);
+         double $$8 = (double)((float)this.e.j() * $$7);
+         double $$9 = (double)((float)this.e.k() * $$7);
+         double $$10 = (double)((float)this.e.l() * $$7);
+         return fae.a($$2, $$5.g($$0, $$1).a($$8, $$9, $$10));
+      }
+   }
+
+   public long u() {
+      return this.k;
+   }
+
+   @Override
+   public void a(dfb $$0) {
+      super.a($$0);
+      if ($$0.a(lz.f).a(this.d.b().p().h()).isEmpty()) {
+         this.d = dig.a.m();
+      }
    }
 }

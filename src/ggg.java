@@ -1,42 +1,56 @@
-public class ggg extends gfc {
-   private final btz a;
-   private int b;
-   private final int D;
-   private final lo E;
+public class ggg extends gfx {
+   private final ggk b;
+   protected boolean a;
 
-   public ggg(gbx $$0, btz $$1, lo $$2) {
-      this($$0, $$1, $$2, 3);
+   ggg(gci $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, ggk $$7) {
+      super($$0, $$1, $$2, $$3, $$4, $$5, $$6);
+      this.b = $$7;
+      this.d(1.5F);
+      this.b($$7);
    }
 
-   public ggg(gbx $$0, btz $$1, lo $$2, int $$3) {
-      this($$0, $$1, $$2, $$3, $$1.dA());
+   @Override
+   public int a(float $$0) {
+      return this.a ? 240 : super.a($$0);
    }
 
-   private ggg(gbx $$0, btz $$1, lo $$2, int $$3, ezh $$4) {
-      super($$0, $$1.dC(), $$1.e(0.5), $$1.dI(), $$4.d, $$4.e, $$4.f);
-      this.a = $$1;
-      this.D = $$3;
-      this.E = $$2;
-      this.a();
+   @Override
+   public gft b() {
+      return gft.c;
    }
 
    @Override
    public void a() {
-      for (int $$0 = 0; $$0 < 16; $$0++) {
-         double $$1 = (double)(this.r.i() * 2.0F - 1.0F);
-         double $$2 = (double)(this.r.i() * 2.0F - 1.0F);
-         double $$3 = (double)(this.r.i() * 2.0F - 1.0F);
-         if (!($$1 * $$1 + $$2 * $$2 + $$3 * $$3 > 1.0)) {
-            double $$4 = this.a.c($$1 / 4.0);
-            double $$5 = this.a.e(0.5 + $$2 / 4.0);
-            double $$6 = this.a.f($$3 / 4.0);
-            this.c.a(this.E, false, $$4, $$5, $$6, $$1, $$2 + 0.2, $$3);
-         }
+      super.a();
+      this.b(this.b);
+   }
+
+   public static class a implements gfs<lv> {
+      private final ggk a;
+
+      public a(ggk $$0) {
+         this.a = $$0;
       }
 
-      this.b++;
-      if (this.b >= this.D) {
-         this.k();
+      public gfp a(lv $$0, gci $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         ggg $$8 = new ggg($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
+         $$8.e(1.0F);
+         $$8.a = true;
+         return $$8;
+      }
+   }
+
+   public static class b implements gfs<lv> {
+      private final ggk a;
+
+      public b(ggk $$0) {
+         this.a = $$0;
+      }
+
+      public gfp a(lv $$0, gci $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         ggg $$8 = new ggg($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
+         $$8.e(1.0F);
+         return $$8;
       }
    }
 }

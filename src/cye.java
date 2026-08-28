@@ -1,3 +1,7 @@
-public interface cye {
-   void a(dev var1, buv var2, cvx var3, cyd var4);
+import java.util.List;
+
+public interface cye<T, C> {
+   List<asf<T>> a();
+
+   C a(List<asf<T>> var1);
 }

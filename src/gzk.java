@@ -1,14 +1,26 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.IllegalFormatException;
 
-public record gzk(gzl d) {
-   public static final gzk a = new gzk(gzl.b);
-   public static final Codec<gzk> b = RecordCodecBuilder.create(
-      $$0 -> $$0.group(gzl.a.optionalFieldOf("scaling", gzl.b).forGetter(gzk::a)).apply($$0, gzk::new)
-   );
-   public static final atz<gzk> c = atz.a("gui", b);
+public class gzk {
+   private static volatile uf a = uf.a();
 
-   public gzl a() {
-      return this.d;
+   private gzk() {
+   }
+
+   static void a(uf $$0) {
+      a = $$0;
+   }
+
+   public static String a(String $$0, Object... $$1) {
+      String $$2 = a.a($$0);
+
+      try {
+         return String.format($$2, $$1);
+      } catch (IllegalFormatException var4) {
+         return "Format error: " + $$2;
+      }
+   }
+
+   public static boolean a(String $$0) {
+      return a.b($$0);
    }
 }

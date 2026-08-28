@@ -1,77 +1,99 @@
-import java.util.HashSet;
-import java.util.Set;
-import java.util.function.Consumer;
+import com.mojang.logging.LogUtils;
+import java.util.concurrent.CompletableFuture;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class fgv extends hee {
-   private static final xh b = xh.c("mco.reset.world.seed");
-   public static final xh a = xh.c("mco.reset.world.generate");
-   private static final int c = 10;
-   private static final int B = 210;
-   private final fon C = new fon(this);
-   private final Consumer<fhr> D;
-   private fli E;
-   private fhl F = fhl.a;
-   private boolean G = true;
-   private final Set<String> H = new HashSet<>();
-   private final xh I;
+public class fgv extends hep {
+   private static final Logger a = LogUtils.getLogger();
+   private static final xi b = xi.c("mco.configure.world.buttons.invite");
+   private static final xi c = xi.c("mco.configure.world.invite.profile.name").b(-6250336);
+   private static final xi B = xi.c("mco.configure.world.players.inviting").b(-6250336);
+   private static final xi C = xi.c("mco.configure.world.players.error").b(-65536);
+   private final fow D = new fow(this);
+   private flq E;
+   private flh F;
+   private final ffi G;
+   private final fgq H;
+   private final fra I;
+   @Nullable
+   private xi J;
 
-   public fgv(Consumer<fhr> $$0, xh $$1) {
-      super(a);
-      this.D = $$0;
+   public fgv(fgq $$0, fra $$1, ffi $$2) {
+      super(b);
+      this.H = $$0;
       this.I = $$1;
+      this.G = $$2;
    }
 
    @Override
-   public void aS_() {
-      this.E = new fli(this.p, 210, 20, xh.c("mco.reset.world.seed"));
-      this.E.f(32);
-      this.C.a(this.l, this.p);
-      fos $$0 = this.C.c(fos.d()).a(10);
-      $$0.a(foj.a(this.p, this.E, b));
-      $$0.a(flg.a(fhl::a).a(fhl.values()).a(this.F).a(0, 0, 210, 20, xh.c("selectWorld.mapType"), ($$0x, $$1x) -> this.F = $$1x));
-      $$0.a(flg.b(this.G).a(0, 0, 210, 20, xh.c("selectWorld.mapFeatures"), ($$0x, $$1x) -> this.G = $$1x));
-      this.a($$0);
-      fos $$1 = this.C.b(fos.e().a(10));
-      $$1.a(fkz.a(this.I, $$0x -> this.D.accept(this.D())).a());
-      $$1.a(fkz.a(xg.k, $$0x -> this.d()).a());
-      this.C.a($$1x -> {
-         fkx var10000 = this.c($$1x);
+   public void aR_() {
+      this.D.a(b, this.p);
+      fpa $$0 = this.D.c(fpa.d().a(8));
+      this.E = new flq(this.m.h, 200, 20, xi.c("mco.configure.world.invite.profile.name"));
+      $$0.a(fos.a(this.p, this.E, c));
+      this.F = $$0.a(flh.a(b, $$0x -> this.D()).a(200).a());
+      this.D.b(flh.a(xh.k, $$0x -> this.d()).a(200).a());
+      this.D.a($$1 -> {
+         flf var10000 = this.c($$1);
       });
       this.c();
    }
 
    @Override
-   protected void aH_() {
-      this.b(this.E);
-   }
-
-   private void a(fos $$0) {
-      auk $$1 = aun.c();
-      $$1.a();
-      $$0.a(fkz.a(xh.c("selectWorld.experiments"), $$1x -> this.m.a(new fvs(this, $$1, $$0xx -> {
-            this.H.clear();
-
-            for (auh $$1xx : $$0xx.g()) {
-               if ($$1xx.l() == aul.d) {
-                  this.H.add($$1xx.g());
-               }
-            }
-
-            this.m.a(this);
-         }))).a(210).a());
-   }
-
-   private fhr D() {
-      return new fhr(this.E.a(), this.F, this.G, this.H);
+   protected void c() {
+      this.D.a();
    }
 
    @Override
-   protected void c() {
-      this.C.a();
+   protected void aG_() {
+      this.b(this.E);
+   }
+
+   private void D() {
+      if (bah.h(this.E.a())) {
+         this.a(C);
+      } else {
+         long $$0 = this.G.a;
+         String $$1 = this.E.a().trim();
+         this.F.j = false;
+         this.E.e(false);
+         this.a(B);
+         CompletableFuture.<ffi>supplyAsync(() -> {
+            try {
+               return fer.a().a($$0, $$1);
+            } catch (Exception var4) {
+               a.error("Couldn't invite user");
+               return null;
+            }
+         }, ae.h()).thenAcceptAsync($$0x -> {
+            if ($$0x != null) {
+               this.G.h = $$0x.h;
+               this.m.a(new fhb(this.H, this.G));
+            } else {
+               this.a(C);
+            }
+
+            this.E.e(true);
+            this.F.j = true;
+         }, this.r);
+      }
+   }
+
+   private void a(xi $$0) {
+      this.J = $$0;
+      this.m.aZ().c($$0);
    }
 
    @Override
    public void d() {
-      this.D.accept(null);
+      this.m.a(this.I);
+   }
+
+   @Override
+   public void a(fku $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      if (this.J != null) {
+         $$0.a(this.p, this.J, this.n / 2, this.F.E() + this.F.w() + 8, -1);
+      }
    }
 }

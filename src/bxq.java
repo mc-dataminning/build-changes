@@ -1,48 +1,32 @@
-import java.util.ArrayList;
-import java.util.List;
+import com.mojang.datafixers.kinds.App;
 import java.util.Optional;
-import java.util.function.BiPredicate;
 import java.util.function.Function;
+import java.util.function.Predicate;
 
-public class bxq<E extends bux> extends bxr<E> {
-   private final axp<dhy> m;
-   private final float n;
-   private final List<bxr.a> o = new ArrayList<>();
-   private boolean p;
-
-   public bxq(brj $$0, int $$1, int $$2, float $$3, Function<E, awj> $$4, axp<dhy> $$5, float $$6, BiPredicate<E, jg> $$7) {
-      super($$0, $$1, $$2, $$3, $$4, $$7);
-      this.m = $$5;
-      this.n = $$6;
+public class bxq {
+   public static <T extends bva> bwu<bva> a(bul<? extends T> $$0, int $$1, cee<T> $$2, float $$3, int $$4) {
+      return a($$0, $$1, $$0x -> true, $$0x -> true, $$2, $$3, $$4);
    }
 
-   @Override
-   protected void a(arm $$0, E $$1, long $$2) {
-      super.a($$0, $$1, $$2);
-      this.o.clear();
-      this.p = $$1.ea().i() < this.n;
-   }
-
-   @Override
-   protected Optional<bxr.a> a(arm $$0) {
-      if (!this.p) {
-         return super.a($$0);
-      } else {
-         jg.a $$1 = new jg.a();
-
-         while (!this.h.isEmpty()) {
-            Optional<bxr.a> $$2 = super.a($$0);
-            if ($$2.isPresent()) {
-               bxr.a $$3 = $$2.get();
-               if ($$0.a_($$1.a($$3.b(), jl.a)).a(this.m)) {
-                  return $$2;
-               }
-
-               this.o.add($$3);
-            }
-         }
-
-         return !this.o.isEmpty() ? Optional.of(this.o.remove(0)) : Optional.empty();
-      }
+   public static <E extends bva, T extends bva> bwu<E> a(bul<? extends T> $$0, int $$1, Predicate<E> $$2, Predicate<T> $$3, cee<T> $$4, float $$5, int $$6) {
+      int $$7 = $$1 * $$1;
+      Predicate<bva> $$8 = $$2x -> $$0.equals($$2x.ar()) && $$3.test((T)$$2x);
+      return cag.a(
+         (Function<cag.b<E>, ? extends App<cag.c<E>, caj<E>>>)($$6x -> $$6x.group($$6x.a($$4), $$6x.a(cee.n), $$6x.c(cee.m), $$6x.b(cee.h))
+               .apply($$6x, ($$6xx, $$7x, $$8x, $$9) -> ($$10, $$11, $$12) -> {
+                     ceg $$13 = $$6x.b($$9);
+                     if ($$2.test((E)$$11) && $$13.d($$8)) {
+                        Optional<bva> $$14 = $$13.a($$3xxxx -> $$3xxxx.g((bue)$$11) <= (double)$$7 && $$8.test($$3xxxx));
+                        $$14.ifPresent($$5xxxx -> {
+                           $$6xx.a($$5xxxx);
+                           $$7x.a(new bxe($$5xxxx, true));
+                           $$8x.a(new ceh(new bxe($$5xxxx, false), $$5, $$6));
+                        });
+                        return true;
+                     } else {
+                        return false;
+                     }
+                  }))
+      );
    }
 }

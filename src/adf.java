@@ -1,20 +1,25 @@
-public record adf(xt.a b) implements zo<acd> {
-   public static final zf<we, adf> a = zo.a(adf::a, adf::new);
+public record adf(long[] b, bmy c) implements zp<ace> {
+   public static final zg<wf, adf> a = zp.a(adf::a, adf::new);
 
-   private adf(we $$0) {
-      this(xt.a.a($$0));
+   private adf(wf $$0) {
+      this($$0.d(), $$0.b(bmy.class));
    }
 
-   private void a(we $$0) {
-      xt.a.a($$0, this.b);
+   private void a(wf $$0) {
+      $$0.a(this.b);
+      $$0.a(this.c);
    }
 
    @Override
-   public zq<adf> a() {
-      return ags.B;
+   public zr<adf> a() {
+      return agt.A;
    }
 
-   public void a(acd $$0) {
+   public void a(ace $$0) {
       $$0.a(this);
+   }
+
+   public bmy e() {
+      return this.c;
    }
 }

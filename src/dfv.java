@@ -1,23 +1,34 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
+import javax.annotation.Nullable;
 
-public class dfv {
-   public static final Codec<dfv> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(lq.bf.fieldOf("options").forGetter($$0x -> $$0x.b), Codec.FLOAT.fieldOf("probability").forGetter($$0x -> $$0x.c)).apply($$0, dfv::new)
-   );
-   private final lo b;
-   private final float c;
+public interface dfv {
+   void a(bul<?> var1, azs var2);
 
-   public dfv(lo $$0, float $$1) {
-      this.b = $$0;
-      this.c = $$1;
+   static void a(cwb $$0, List<xi> $$1, String $$2) {
+      xi $$3 = a($$0, $$2);
+      if ($$3 != null) {
+         $$1.add($$3);
+      } else {
+         $$1.add(xh.a);
+         $$1.add(xi.c("block.minecraft.spawner.desc1").a(n.h));
+         $$1.add(xh.a().b(xi.c("block.minecraft.spawner.desc2").a(n.j)));
+      }
    }
 
-   public lo a() {
-      return this.b;
+   @Nullable
+   static xi a(cwb $$0, String $$1) {
+      uk $$2 = $$0.a(ku.Y, cyk.a).d();
+      ali $$3 = a($$2, $$1);
+      return $$3 != null ? ly.f.b($$3).map($$0x -> xi.c($$0x.g()).a(n.h)).orElse(null) : null;
    }
 
-   public boolean a(azr $$0) {
-      return $$0.i() <= this.c;
+   @Nullable
+   private static ali a(uk $$0, String $$1) {
+      if ($$0.b($$1, 10)) {
+         String $$2 = $$0.p($$1).p("entity").l("id");
+         return ali.c($$2);
+      } else {
+         return null;
+      }
    }
 }

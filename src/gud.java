@@ -1,8 +1,10 @@
-public class gud extends gva {
+public class gud extends gvl {
+   public boolean a;
    public boolean b;
-   public boolean c;
-   public boolean d;
-   public float e;
-   public float f;
-   public float g;
+   public float c;
+   public final btw d = new btw();
+   public final btw e = new btw();
+   public final btw f = new btw();
+   public final btw g = new btw();
+   public final btw h = new btw();
 }

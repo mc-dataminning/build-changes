@@ -1,33 +1,29 @@
-public class aeb implements zo<acd> {
-   public static final zf<ws, aeb> a = zf.a(zd.u, aeb::b, zd.a(ly.V), aeb::e, xj.d, aeb::f, aeb::new);
-   private final int b;
-   private final css<?> c;
-   private final xh d;
+public class aeb implements zp<ace> {
+   public static final zg<wf, aeb> a = zp.a(aeb::a, aeb::new);
+   private final bsc b;
 
-   public aeb(int $$0, css<?> $$1, xh $$2) {
+   public aeb(bsc $$0) {
       this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
+   }
+
+   private aeb(wf $$0) {
+      this.b = $$0.b(bsc.class);
+   }
+
+   private void a(wf $$0) {
+      $$0.a(this.b);
    }
 
    @Override
-   public zq<aeb> a() {
-      return ags.X;
+   public zr<aeb> a() {
+      return agt.W;
    }
 
-   public void a(acd $$0) {
+   public void a(ace $$0) {
       $$0.a(this);
    }
 
-   public int b() {
+   public bsc b() {
       return this.b;
-   }
-
-   public css<?> e() {
-      return this.c;
-   }
-
-   public xh f() {
-      return this.d;
    }
 }

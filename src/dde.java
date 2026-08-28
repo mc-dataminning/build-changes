@@ -1,37 +1,26 @@
-import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public enum dde implements baf {
-   a(buh.f, 11, "helmet"),
-   b(buh.e, 16, "chestplate"),
-   c(buh.d, 15, "leggings"),
-   d(buh.c, 13, "boots"),
-   e(buh.g, 16, "body");
+public record dde(jq<dbs> c, bri d) implements dda {
+   public static final MapCodec<dde> b = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(dbs.c.fieldOf("enchantment").forGetter(dde::b), bri.c.fieldOf("level").forGetter(dde::c)).apply($$0, dde::new)
+   );
 
-   public static final Codec<dde> f = baf.b(dde::values);
-   private final buh g;
-   private final String h;
-   private final int i;
-
-   private dde(final buh $$0, final int $$1, final String $$2) {
-      this.g = $$0;
-      this.h = $$2;
-      this.i = $$1;
-   }
-
-   public int a(int $$0) {
-      return this.i * $$0;
-   }
-
-   public buh a() {
-      return this.g;
-   }
-
-   public String b() {
-      return this.h;
+   @Override
+   public void a(cwb $$0, dby.a $$1, azs $$2, bsb $$3) {
+      $$1.b(this.c, azk.a(this.d.a($$2), this.c.a().d(), this.c.a().e()));
    }
 
    @Override
-   public String c() {
-      return this.h;
+   public MapCodec<dde> a() {
+      return b;
+   }
+
+   public jq<dbs> b() {
+      return this.c;
+   }
+
+   public bri c() {
+      return this.d;
    }
 }

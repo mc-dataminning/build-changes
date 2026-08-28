@@ -1,18 +1,78 @@
+import com.mojang.brigadier.StringReader;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.stream.Stream;
+import javax.annotation.Nullable;
 
-public interface yj {
-   MapCodec<yj> c = xj.a(new yj.a[]{yk.b, yi.b, yr.b}, yj.a::a, yj::a, "source");
+public record yj(String d, @Nullable gu e) implements yk {
+   public static final MapCodec<yj> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(Codec.STRING.fieldOf("block").forGetter(yj::b)).apply($$0, yj::new));
+   public static final yk.a<yj> b = new yk.a<>(a, "block");
 
-   Stream<uj> a(ev var1) throws CommandSyntaxException;
+   public yj(String $$0) {
+      this($$0, a($$0));
+   }
 
-   yj.a<?> a();
-
-   public static record a<T extends yj>(MapCodec<T> a, String b) implements baf {
-      @Override
-      public String c() {
-         return this.b;
+   @Nullable
+   private static gu a(String $$0) {
+      try {
+         return gs.a().a(new StringReader($$0));
+      } catch (CommandSyntaxException var2) {
+         return null;
       }
+   }
+
+   @Override
+   public Stream<uk> a(ew $$0) {
+      if (this.e != null) {
+         arn $$1 = $$0.e();
+         jh $$2 = this.e.c($$0);
+         if ($$1.p($$2)) {
+            dsm $$3 = $$1.c_($$2);
+            if ($$3 != null) {
+               return Stream.of($$3.b($$0.v()));
+            }
+         }
+      }
+
+      return Stream.empty();
+   }
+
+   @Override
+   public yk.a<?> a() {
+      return b;
+   }
+
+   @Override
+   public String toString() {
+      return "block=" + this.d;
+   }
+
+   @Override
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else {
+         if ($$0 instanceof yj $$1 && this.d.equals($$1.d)) {
+            return true;
+         }
+
+         return false;
+      }
+   }
+
+   @Override
+   public int hashCode() {
+      return this.d.hashCode();
+   }
+
+   public String b() {
+      return this.d;
+   }
+
+   @Nullable
+   public gu c() {
+      return this.e;
    }
 }

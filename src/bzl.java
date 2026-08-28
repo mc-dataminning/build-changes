@@ -3,40 +3,21 @@ import java.util.function.Function;
 import org.apache.commons.lang3.mutable.MutableLong;
 
 public class bzl {
-   private static final int a = 60;
-
-   public static bwp<bvd> a(int $$0, float $$1) {
-      MutableLong $$2 = new MutableLong(0L);
-      return cab.a(
-         (Function<cab.b<bvd>, ? extends App<cab.c<bvd>, cae<bvd>>>)($$3 -> $$3.group($$3.c(cdz.o), $$3.c(cdz.m), $$3.a(cdz.n))
-               .apply($$3, ($$3x, $$4, $$5) -> ($$5x, $$6, $$7) -> {
-                     if (!$$5x.b_($$6.dx()).a(axf.a)) {
-                        return false;
-                     } else if ($$7 < $$2.getValue()) {
-                        $$2.setValue($$7 + 60L);
-                        return true;
-                     } else {
-                        jg $$8 = $$6.dx();
-                        jg.a $$9 = new jg.a();
-                        ezm $$10 = ezm.a($$6);
-
-                        for (jg $$11 : jg.a($$8, $$0, $$0, $$0)) {
-                           if ($$11.u() != $$8.u() || $$11.w() != $$8.w()) {
-                              dvd $$12 = $$5x.a_($$11);
-                              dvd $$13 = $$5x.a_($$9.a($$11, jl.a));
-                              if (!$$12.a(dia.G) && $$5x.b_($$11).c() && $$12.b($$5x, $$11, $$10).c() && $$13.c($$5x, $$9, jl.b)) {
-                                 jg $$14 = $$11.j();
-                                 $$5.a(new bwr($$14));
-                                 $$4.a(new cec(new bwr($$14), $$1, 1));
-                                 break;
-                              }
-                           }
-                        }
-
-                        $$2.setValue($$7 + 60L);
-                        return true;
-                     }
-                  }))
+   public static bwu<bvi> a(cee<jp> $$0, float $$1, int $$2, int $$3) {
+      MutableLong $$4 = new MutableLong(0L);
+      return cag.a(
+         (Function<cag.b<bvi>, ? extends App<cag.c<bvi>, caj<bvi>>>)($$5 -> $$5.group($$5.a(cee.m), $$5.b($$0)).apply($$5, ($$5x, $$6) -> ($$7, $$8, $$9) -> {
+                  jp $$10 = $$5.b($$6);
+                  if ($$7.ag() != $$10.a() || !$$10.b().a($$8.dv(), (double)$$3)) {
+                     return false;
+                  } else if ($$9 <= $$4.getValue()) {
+                     return true;
+                  } else {
+                     $$5x.a(new ceh($$10.b(), $$1, $$2));
+                     $$4.setValue($$9 + 80L);
+                     return true;
+                  }
+               }))
       );
    }
 }

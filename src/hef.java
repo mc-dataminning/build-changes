@@ -1,29 +1,41 @@
-import com.google.common.util.concurrent.RateLimiter;
-import java.time.Duration;
-import java.util.concurrent.atomic.AtomicReference;
+import javax.annotation.Nullable;
 
-public class hef {
-   private final float a;
-   private final AtomicReference<hef.a> b = new AtomicReference<>();
+public class hef implements hei {
+   private static final int a = 600;
+   private static final xi b = xi.c("tutorial.open_inventory.title");
+   private static final xi c = xi.a("tutorial.open_inventory.description", heh.a("inventory"));
+   private final heh d;
+   @Nullable
+   private fnt e;
+   private int f;
 
-   public hef(Duration $$0) {
-      this.a = 1000.0F / (float)$$0.toMillis();
+   public hef(heh $$0) {
+      this.d = $$0;
    }
 
-   public void a(fir $$0, xh $$1) {
-      hef.a $$2 = this.b.updateAndGet($$1x -> $$1x != null && $$1.equals($$1x.a) ? $$1x : new hef.a($$1, RateLimiter.create((double)this.a)));
-      if ($$2.b.tryAcquire(1)) {
-         $$0.c($$1);
+   @Override
+   public void a() {
+      this.f++;
+      if (!this.d.f()) {
+         this.d.a(hej.f);
+      } else {
+         if (this.f >= 600 && this.e == null) {
+            this.e = new fnt(fnt.a.d, b, c, false);
+            this.d.e().aA().a(this.e);
+         }
       }
    }
 
-   static class a {
-      final xh a;
-      final RateLimiter b;
-
-      a(xh $$0, RateLimiter $$1) {
-         this.a = $$0;
-         this.b = $$1;
+   @Override
+   public void b() {
+      if (this.e != null) {
+         this.e.d();
+         this.e = null;
       }
+   }
+
+   @Override
+   public void c() {
+      this.d.a(hej.e);
    }
 }

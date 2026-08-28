@@ -1,38 +1,81 @@
-import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
-import java.util.function.BiConsumer;
-import java.util.function.Function;
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-public interface end {
-   Codec<end> b = lx.ah.q().dispatch(end::b, Function.identity());
+public class end extends enf {
+   public static final MapCodec<end> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(enf.f.listOf().fieldOf("elements").forGetter($$0x -> $$0x.b), e()).apply($$0, end::new)
+   );
+   private final List<enf> b;
 
-   void a(azr var1, BiConsumer<alg<enb>, alg<enb>> var2);
-
-   Stream<alg<enb>> a();
-
-   static enc a(String $$0, String $$1) {
-      return a(re.a($$0), re.a($$1));
+   public end(List<enf> $$0, enh.a $$1) {
+      super($$1);
+      if ($$0.isEmpty()) {
+         throw new IllegalArgumentException("Elements are empty");
+      } else {
+         this.b = $$0;
+         this.b($$1);
+      }
    }
 
-   static enc a(alg<enb> $$0, alg<enb> $$1) {
-      return new enc($$0, $$1);
+   @Override
+   public kl a(eqa $$0, dor $$1) {
+      int $$2 = 0;
+      int $$3 = 0;
+      int $$4 = 0;
+
+      for (enf $$5 : this.b) {
+         kl $$6 = $$5.a($$0, $$1);
+         $$2 = Math.max($$2, $$6.u());
+         $$3 = Math.max($$3, $$6.v());
+         $$4 = Math.max($$4, $$6.w());
+      }
+
+      return new kl($$2, $$3, $$4);
    }
 
-   static eng a(String $$0, bqg<String> $$1) {
-      bqg.a<alg<enb>> $$2 = bqg.a();
-      $$1.e().forEach($$1x -> $$2.a(re.a((String)$$1x.b()), $$1x.a().a()));
-      return a(re.a($$0), $$2.a());
+   @Override
+   public List<epz.c> a(eqa $$0, jh $$1, dor $$2, azs $$3) {
+      return this.b.get(0).a($$0, $$1, $$2, $$3);
    }
 
-   static eng a(alg<enb> $$0, bqg<alg<enb>> $$1) {
-      return new eng($$0, $$1);
+   @Override
+   public elp a(eqa $$0, jh $$1, dor $$2) {
+      Stream<elp> $$3 = this.b.stream().filter($$0x -> $$0x != emy.b).map($$3x -> $$3x.a($$0, $$1, $$2));
+      return elp.b($$3::iterator).orElseThrow(() -> new IllegalStateException("Unable to calculate boundingbox for ListPoolElement"));
    }
 
-   static enh a(bqg<List<end>> $$0) {
-      return new enh($$0);
+   @Override
+   public boolean a(eqa $$0, dfy $$1, dfw $$2, dxg $$3, jh $$4, jh $$5, dor $$6, elp $$7, azs $$8, epj $$9, boolean $$10) {
+      for (enf $$11 : this.b) {
+         if (!$$11.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8, $$9, $$10)) {
+            return false;
+         }
+      }
+
+      return true;
    }
 
-   MapCodec<? extends end> b();
+   @Override
+   public eng<?> a() {
+      return eng.b;
+   }
+
+   @Override
+   public enf a(enh.a $$0) {
+      super.a($$0);
+      this.b($$0);
+      return this;
+   }
+
+   @Override
+   public String toString() {
+      return "List[" + this.b.stream().map(Object::toString).collect(Collectors.joining(", ")) + "]";
+   }
+
+   private void b(enh.a $$0) {
+      this.b.forEach($$1 -> $$1.a($$0));
+   }
 }

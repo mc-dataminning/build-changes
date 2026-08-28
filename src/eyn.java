@@ -1,16 +1,42 @@
-import com.mojang.datafixers.util.Either;
-import com.mojang.serialization.Codec;
+import com.google.common.collect.Sets;
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Set;
 
-public class eyn {
-   private static final Codec<eym> d = lx.I.q().dispatch(eym::a, eyl::a);
-   public static final Codec<eym> a = Codec.lazyInitialized(
-      () -> Codec.either(eyj.b, d).xmap(Either::unwrap, $$0 -> $$0 instanceof eyj $$1 ? Either.left($$1) : Either.right($$0))
+public record eyn(eyj b, eyj c) implements eyj {
+   public static final MapCodec<eyn> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(eyk.a.fieldOf("min").forGetter(eyn::c), eyk.a.fieldOf("max").forGetter(eyn::d)).apply($$0, eyn::new)
    );
-   public static final eyl b = a("fixed", eyk.a);
-   public static final eyl c = a("context", eyj.a);
 
-   private static eyl a(String $$0, MapCodec<? extends eym> $$1) {
-      return kc.a(lx.I, alh.b($$0), new eyl($$1));
+   @Override
+   public eyi b() {
+      return eyk.c;
+   }
+
+   public static eyn a(float $$0, float $$1) {
+      return new eyn(eyg.a($$0), eyg.a($$1));
+   }
+
+   @Override
+   public int a(euc $$0) {
+      return azk.a($$0.b(), this.b.a($$0), this.c.a($$0));
+   }
+
+   @Override
+   public float b(euc $$0) {
+      return azk.a($$0.b(), this.b.b($$0), this.c.b($$0));
+   }
+
+   @Override
+   public Set<ewv<?>> a() {
+      return Sets.union(this.b.a(), this.c.a());
+   }
+
+   public eyj c() {
+      return this.b;
+   }
+
+   public eyj d() {
+      return this.c;
    }
 }

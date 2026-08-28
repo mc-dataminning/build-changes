@@ -1,57 +1,84 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Collection;
 import java.util.Optional;
 
-public record cd(Optional<jt<erd>> b, Optional<ed> c) {
-   public static final Codec<cd> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(ke.a(ly.D).optionalFieldOf("fluids").forGetter(cd::a), ed.a.optionalFieldOf("state").forGetter(cd::b)).apply($$0, cd::new)
-   );
-
-   public boolean a(arm $$0, jg $$1) {
-      if (!$$0.p($$1)) {
-         return false;
-      } else {
-         ere $$2 = $$0.b_($$1);
-         return this.b.isPresent() && !$$2.a(this.b.get()) ? false : !this.c.isPresent() || this.c.get().a($$2);
-      }
+public class cd extends dy<cd.a> {
+   @Override
+   public Codec<cd.a> a() {
+      return cd.a.a;
    }
 
-   public Optional<jt<erd>> a() {
-      return this.b;
+   public void a(aro $$0, cwb $$1, cpc $$2, Collection<cwb> $$3) {
+      euc $$4 = bw.b($$0, (bue)($$2.q() != null ? $$2.q() : $$2));
+      this.a($$0, $$3x -> $$3x.a($$1, $$4, $$3));
    }
 
-   public Optional<ed> b() {
-      return this.c;
-   }
+   public static record a(Optional<bh> b, Optional<cu> c, Optional<bh> d, Optional<cu> e) implements dy.a {
+      public static final Codec<cd.a> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(
+                  bw.b.optionalFieldOf("player").forGetter(cd.a::a),
+                  cu.a.optionalFieldOf("rod").forGetter(cd.a::b),
+                  bw.b.optionalFieldOf("entity").forGetter(cd.a::c),
+                  cu.a.optionalFieldOf("item").forGetter(cd.a::d)
+               )
+               .apply($$0, cd.a::new)
+      );
 
-   public static class a {
-      private Optional<jt<erd>> a = Optional.empty();
-      private Optional<ed> b = Optional.empty();
-
-      private a() {
+      public static ap<cd.a> a(Optional<cu> $$0, Optional<bw> $$1, Optional<cu> $$2) {
+         return ao.E.a(new cd.a(Optional.empty(), $$0, bw.a($$1), $$2));
       }
 
-      public static cd.a a() {
-         return new cd.a();
+      public boolean a(cwb $$0, euc $$1, Collection<cwb> $$2) {
+         if (this.c.isPresent() && !this.c.get().a($$0)) {
+            return false;
+         } else if (this.d.isPresent() && !this.d.get().a($$1)) {
+            return false;
+         } else {
+            if (this.e.isPresent()) {
+               boolean $$3 = false;
+               bue $$4 = $$1.c(ewy.a);
+               if ($$4 instanceof ckv $$5 && this.e.get().a($$5.m())) {
+                  $$3 = true;
+               }
+
+               for (cwb $$6 : $$2) {
+                  if (this.e.get().a($$6)) {
+                     $$3 = true;
+                     break;
+                  }
+               }
+
+               if (!$$3) {
+                  return false;
+               }
+            }
+
+            return true;
+         }
       }
 
-      public cd.a a(erd $$0) {
-         this.a = Optional.of(jt.a($$0.k()));
-         return this;
+      @Override
+      public void a(bi $$0) {
+         dy.a.super.a($$0);
+         $$0.a(this.d, ".entity");
       }
 
-      public cd.a a(jt<erd> $$0) {
-         this.a = Optional.of($$0);
-         return this;
+      @Override
+      public Optional<bh> a() {
+         return this.b;
       }
 
-      public cd.a a(ed $$0) {
-         this.b = Optional.of($$0);
-         return this;
+      public Optional<cu> b() {
+         return this.c;
       }
 
-      public cd b() {
-         return new cd(this.a, this.b);
+      public Optional<bh> c() {
+         return this.d;
+      }
+
+      public Optional<cu> d() {
+         return this.e;
       }
    }
 }

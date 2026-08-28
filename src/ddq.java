@@ -1,57 +1,46 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
-import java.util.function.UnaryOperator;
+import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
+import java.util.Map;
 
-public record ddq(jp<cvt> d, int e, kr f, cvx g) {
+public record ddq(String e, jq<cvx> f, float g, Map<ali, String> h, xi i) {
    public static final Codec<ddq> a = RecordCodecBuilder.create(
       $$0 -> $$0.group(
-               cvx.a.fieldOf("id").forGetter(ddq::a),
-               ays.m.fieldOf("count").orElse(1).forGetter(ddq::b),
-               kr.a.optionalFieldOf("components", kr.c).forGetter(ddq::c)
+               ayt.C.fieldOf("asset_name").forGetter(ddq::a),
+               alf.a(lz.K).fieldOf("ingredient").forGetter(ddq::b),
+               Codec.FLOAT.fieldOf("item_model_index").forGetter(ddq::c),
+               Codec.unboundedMap(ali.a, Codec.STRING).optionalFieldOf("override_armor_materials", Map.of()).forGetter(ddq::d),
+               xk.a.fieldOf("description").forGetter(ddq::e)
             )
             .apply($$0, ddq::new)
    );
-   public static final zf<ws, ddq> b = zf.a(zd.b(ly.K), ddq::a, zd.h, ddq::b, kr.b, ddq::c, ddq::new);
-   public static final zf<ws, Optional<ddq>> c = b.a(zd::a);
+   public static final zg<wt, ddq> b = zg.a(
+      ze.m, ddq::a, ze.b(lz.K), ddq::b, ze.j, ddq::c, ze.a(Object2ObjectOpenHashMap::new, ali.b, ze.m), ddq::d, xk.b, ddq::e, ddq::new
+   );
+   public static final Codec<jq<ddq>> c = ale.a(lz.aX, a);
+   public static final zg<wt, jq<ddq>> d = ze.a(lz.aX, b);
 
-   public ddq(deu $$0) {
-      this($$0, 1);
+   public static ddq a(String $$0, cvx $$1, float $$2, xi $$3, Map<ali, String> $$4) {
+      return new ddq($$0, ly.g.e($$1), $$2, $$4, $$3);
    }
 
-   public ddq(deu $$0, int $$1) {
-      this($$0.j().f(), $$1, kr.c);
-   }
-
-   public ddq(jp<cvt> $$0, int $$1, kr $$2) {
-      this($$0, $$1, $$2, a($$0, $$1, $$2));
-   }
-
-   public ddq a(UnaryOperator<kr.a> $$0) {
-      return new ddq(this.d, this.e, $$0.apply(kr.a()).a());
-   }
-
-   private static cvx a(jp<cvt> $$0, int $$1, kr $$2) {
-      return new cvx($$0, $$1, $$2.c());
-   }
-
-   public boolean a(cvx $$0) {
-      return $$0.a(this.d) && this.f.a($$0);
-   }
-
-   public jp<cvt> a() {
-      return this.d;
-   }
-
-   public int b() {
+   public String a() {
       return this.e;
    }
 
-   public kr c() {
+   public jq<cvx> b() {
       return this.f;
    }
 
-   public cvx d() {
+   public float c() {
       return this.g;
+   }
+
+   public Map<ali, String> d() {
+      return this.h;
+   }
+
+   public xi e() {
+      return this.i;
    }
 }

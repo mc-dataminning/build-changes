@@ -1,82 +1,112 @@
-import com.google.common.annotations.VisibleForTesting;
-import java.util.concurrent.atomic.AtomicLong;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
+import java.util.concurrent.CompletableFuture;
+import java.util.stream.Stream;
 
-public class eba implements eao {
-   private static final int d = 48;
-   private static final long e = 281474976710655L;
-   private static final long f = 25214903917L;
-   private static final long g = 11L;
-   private final AtomicLong h = new AtomicLong();
-   private final ebb i = new ebb(this);
+public class eba extends dxg {
+   public static final MapCodec<eba> c = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(eka.a.fieldOf("settings").forGetter(eba::h)).apply($$0, $$0.stable(eba::new))
+   );
+   private final eka d;
 
-   public eba(long $$0) {
-      this.b($$0);
+   public eba(eka $$0) {
+      super(new dgn($$0.d()), ae.b($$0::a));
+      this.d = $$0;
    }
 
    @Override
-   public azr d() {
-      return new eba(this.g());
+   public dxh a(js<emd> $$0, ebt $$1, long $$2) {
+      Stream<jq<emd>> $$3 = this.d.c().map(ju::a).orElseGet(() -> $$0.c().map($$0xx -> $$0xx));
+      return dxh.a($$1, $$2, this.b, $$3);
    }
 
    @Override
-   public ebm e() {
-      return new eba.a(this.g());
+   protected MapCodec<? extends dxg> b() {
+      return c;
+   }
+
+   public eka h() {
+      return this.d;
    }
 
    @Override
-   public void b(long $$0) {
-      if (!this.h.compareAndSet(this.h.get(), ($$0 ^ 25214903917L) & 281474976710655L)) {
-         throw bai.a("LegacyRandomSource", null);
-      } else {
-         this.i.a();
-      }
+   public void a(arv $$0, dfw $$1, ebt $$2, dxf $$3) {
    }
 
    @Override
-   public int c(int $$0) {
-      long $$1 = this.h.get();
-      long $$2 = $$1 * 25214903917L + 11L & 281474976710655L;
-      if (!this.h.compareAndSet($$1, $$2)) {
-         throw bai.a("LegacyRandomSource", null);
-      } else {
-         return (int)($$2 >> 48 - $$0);
-      }
+   public int a(dfd $$0) {
+      return $$0.I_() + Math.min($$0.J_(), this.d.f().size());
    }
 
    @Override
-   public double k() {
-      return this.i.b();
+   public CompletableFuture<dxf> a(ech $$0, ebt $$1, dfw $$2, dxf $$3) {
+      List<dvj> $$4 = this.d.f();
+      jh.a $$5 = new jh.a();
+      ebf $$6 = $$3.a(ebf.a.c);
+      ebf $$7 = $$3.a(ebf.a.a);
+
+      for (int $$8 = 0; $$8 < Math.min($$3.J_(), $$4.size()); $$8++) {
+         dvj $$9 = $$4.get($$8);
+         if ($$9 != null) {
+            int $$10 = $$3.I_() + $$8;
+
+            for (int $$11 = 0; $$11 < 16; $$11++) {
+               for (int $$12 = 0; $$12 < 16; $$12++) {
+                  $$3.a($$5.d($$11, $$10, $$12), $$9, false);
+                  $$6.a($$11, $$10, $$12, $$9);
+                  $$7.a($$11, $$10, $$12, $$9);
+               }
+            }
+         }
+      }
+
+      return CompletableFuture.completedFuture($$3);
    }
 
-   public static class a implements ebm {
-      private final long a;
+   @Override
+   public int a(int $$0, int $$1, ebf.a $$2, dfd $$3, ebt $$4) {
+      List<dvj> $$5 = this.d.f();
 
-      public a(long $$0) {
-         this.a = $$0;
+      for (int $$6 = Math.min($$5.size() - 1, $$3.al()); $$6 >= 0; $$6--) {
+         dvj $$7 = $$5.get($$6);
+         if ($$7 != null && $$2.e().test($$7)) {
+            return $$3.I_() + $$6 + 1;
+         }
       }
 
-      @Override
-      public azr a(int $$0, int $$1, int $$2) {
-         long $$3 = azj.b($$0, $$1, $$2);
-         long $$4 = $$3 ^ this.a;
-         return new eba($$4);
-      }
+      return $$3.I_();
+   }
 
-      @Override
-      public azr a(String $$0) {
-         int $$1 = $$0.hashCode();
-         return new eba((long)$$1 ^ this.a);
-      }
+   @Override
+   public dfn a(int $$0, int $$1, dfd $$2, ebt $$3) {
+      return new dfn($$2.I_(), this.d.f().stream().limit((long)$$2.J_()).map($$0x -> $$0x == null ? dig.a.m() : $$0x).toArray(dvj[]::new));
+   }
 
-      @Override
-      public azr a(long $$0) {
-         return new eba($$0);
-      }
+   @Override
+   public void a(List<String> $$0, ebt $$1, jh $$2) {
+   }
 
-      @VisibleForTesting
-      @Override
-      public void a(StringBuilder $$0) {
-         $$0.append("LegacyPositionalRandomFactory{").append(this.a).append("}");
-      }
+   @Override
+   public void a(arv $$0, long $$1, ebt $$2, dge $$3, dfw $$4, dxf $$5) {
+   }
+
+   @Override
+   public void a(arv $$0) {
+   }
+
+   @Override
+   public int g() {
+      return 0;
+   }
+
+   @Override
+   public int e() {
+      return 384;
+   }
+
+   @Override
+   public int f() {
+      return -63;
    }
 }

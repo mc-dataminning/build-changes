@@ -1,78 +1,28 @@
-import java.util.List;
-import javax.annotation.Nullable;
+import java.util.EnumSet;
 
-public class cbs extends cbt {
-   public static final int a = 8;
-   public static final int b = 4;
-   public static final int c = 3;
-   private final cgm d;
-   @Nullable
-   private cgm e;
-   private final double f;
-   private int g;
+public class cbs extends cby {
+   private final bvc a;
 
-   public cbs(cgm $$0, double $$1) {
-      this.d = $$0;
-      this.f = $$1;
+   public cbs(bvc $$0) {
+      this.a = $$0;
+      this.a(EnumSet.of(cby.a.c));
+      $$0.P().a(true);
    }
 
    @Override
    public boolean b() {
-      if (this.d.g() >= 0) {
-         return false;
-      } else {
-         List<? extends cgm> $$0 = this.d.dX().a((Class<? extends cgm>)this.d.getClass(), this.d.cS().c(8.0, 4.0, 8.0));
-         cgm $$1 = null;
-         double $$2 = Double.MAX_VALUE;
-
-         for (cgm $$3 : $$0) {
-            if ($$3.g() >= 0) {
-               double $$4 = this.d.g($$3);
-               if (!($$4 > $$2)) {
-                  $$2 = $$4;
-                  $$1 = $$3;
-               }
-            }
-         }
-
-         if ($$1 == null) {
-            return false;
-         } else if ($$2 < 9.0) {
-            return false;
-         } else {
-            this.e = $$1;
-            return true;
-         }
-      }
+      return this.a.bk() && this.a.b(axg.a) > this.a.dr() || this.a.by();
    }
 
    @Override
-   public boolean c() {
-      if (this.d.g() >= 0) {
-         return false;
-      } else if (!this.e.bM()) {
-         return false;
-      } else {
-         double $$0 = this.d.g(this.e);
-         return !($$0 < 9.0) && !($$0 > 256.0);
-      }
-   }
-
-   @Override
-   public void d() {
-      this.g = 0;
-   }
-
-   @Override
-   public void e() {
-      this.e = null;
+   public boolean V_() {
+      return true;
    }
 
    @Override
    public void a() {
-      if (--this.g <= 0) {
-         this.g = this.a(10);
-         this.d.P().a(this.e, this.f);
+      if (this.a.ea().i() < 0.8F) {
+         this.a.O().a();
       }
    }
 }

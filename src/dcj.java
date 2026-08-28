@@ -1,38 +1,33 @@
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.function.Function;
 
-public record dcj(jp<awj> d, brb e, brb f) implements dcd {
-   public static final MapCodec<dcj> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(
-               awj.b.fieldOf("sound").forGetter(dcj::b),
-               brb.a(1.0E-5F, 10.0F).fieldOf("volume").forGetter(dcj::c),
-               brb.a(1.0E-5F, 2.0F).fieldOf("pitch").forGetter(dcj::d)
-            )
-            .apply($$0, dcj::new)
-   );
+public interface dcj extends dck {
+   Codec<dcj> b = ly.au.q().dispatch(dcj::a, Function.identity());
+
+   static MapCodec<? extends dcj> a(kd<MapCodec<? extends dcj>> $$0) {
+      kd.a($$0, "all_of", dcd.a.a);
+      kd.a($$0, "apply_mob_effect", dce.a);
+      kd.a($$0, "damage_entity", dcf.a);
+      kd.a($$0, "damage_item", dch.a);
+      kd.a($$0, "explode", dcm.a);
+      kd.a($$0, "ignite", dcn.a);
+      kd.a($$0, "play_sound", dcp.a);
+      kd.a($$0, "replace_block", dcr.a);
+      kd.a($$0, "replace_disk", dcs.a);
+      kd.a($$0, "run_function", dct.a);
+      kd.a($$0, "set_block_properties", dcu.a);
+      kd.a($$0, "spawn_particles", dcw.a);
+      return kd.a($$0, "summon_entity", dcx.a);
+   }
+
+   void a(arn var1, int var2, dbr var3, bue var4, ezn var5);
 
    @Override
-   public void a(arm $$0, int $$1, dbl $$2, btz $$3, ezh $$4) {
-      azr $$5 = $$3.ea();
-      if (!$$3.bc()) {
-         $$0.a(null, $$4.a(), $$4.b(), $$4.c(), this.d, $$3.dn(), this.e.a($$5), this.f.a($$5));
-      }
+   default void a(arn $$0, int $$1, dbr $$2, bue $$3, ezn $$4, boolean $$5) {
+      this.a($$0, $$1, $$2, $$3, $$4);
    }
 
    @Override
-   public MapCodec<dcj> a() {
-      return a;
-   }
-
-   public jp<awj> b() {
-      return this.d;
-   }
-
-   public brb c() {
-      return this.e;
-   }
-
-   public brb d() {
-      return this.f;
-   }
+   MapCodec<? extends dcj> a();
 }

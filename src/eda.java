@@ -1,31 +1,25 @@
-import java.util.Optional;
-import java.util.function.Function;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class eda extends ebw {
-   private final kd a;
-   private final ebd b;
-   private final ebn c;
-   private final ebq.o d;
+public class eda implements ecm {
+   public static final MapCodec<eda> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(kl.v(16).optionalFieldOf("offset", kl.g).forGetter($$0x -> $$0x.e), dvj.a.fieldOf("state").forGetter($$0x -> $$0x.f))
+            .apply($$0, eda::new)
+   );
+   private final kl e;
+   private final dvj f;
 
-   public eda(ebc $$0, kd $$1, dex $$2, ebd $$3, ebn $$4, ebq.o $$5) {
-      super($$0, $$2);
-      this.a = $$1;
-      this.b = $$3;
-      this.c = $$4;
-      this.d = $$5;
+   protected eda(kl $$0, dvj $$1) {
+      this.e = $$0;
+      this.f = $$1;
    }
 
-   @Deprecated
-   public Optional<dvd> a(Function<jg, jp<dfw>> $$0, dwz $$1, jg $$2, boolean $$3) {
-      return this.c.c().a(this.d, this, $$0, $$1, this.b, $$2, $$3);
+   public boolean a(dfy $$0, jh $$1) {
+      return this.f.a($$0, $$1.a(this.e));
    }
 
-   @Deprecated
-   public kd c() {
-      return this.a;
-   }
-
-   public ebn d() {
-      return this.c;
+   @Override
+   public ecn<?> a() {
+      return ecn.g;
    }
 }

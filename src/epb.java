@@ -1,20 +1,20 @@
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
 
-public class epb extends epq {
-   public static final MapCodec<epb> a = MapCodec.unit(() -> epb.b);
-   public static final epb b = new epb();
+public class epb extends ept {
+   public static final MapCodec<epb> a = ly.e.q().fieldOf("block").xmap(epb::new, $$0 -> $$0.b);
+   private final die b;
 
-   @Nullable
-   @Override
-   public ept.c a(dey $$0, jg $$1, jg $$2, ept.c $$3, ept.c $$4, epp $$5) {
-      jg $$6 = $$4.a();
-      boolean $$7 = $$0.a_($$6).a(dia.H);
-      return $$7 && !dhy.a($$4.b().f($$0, $$6)) ? new ept.c($$6, dia.H.m(), $$4.c()) : $$4;
+   public epb(die $$0) {
+      this.b = $$0;
    }
 
    @Override
-   protected eps<?> a() {
-      return eps.m;
+   public boolean a(dvj $$0, azs $$1) {
+      return $$0.a(this.b);
+   }
+
+   @Override
+   protected epu<?> a() {
+      return epu.b;
    }
 }

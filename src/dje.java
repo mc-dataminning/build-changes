@@ -1,96 +1,67 @@
 import com.mojang.serialization.MapCodec;
+import javax.annotation.Nullable;
 
-public class dje extends dnl {
+public class dje extends doq implements dpf {
    public static final MapCodec<dje> a = b(dje::new);
+   public static final dwa b = dvz.C;
+   protected static final float c = 6.5F;
+   protected static final float d = 9.5F;
+   protected static final fah e = die.a(6.5, 0.0, 6.5, 9.5, 16.0, 9.5);
+   protected static final fah f = die.a(6.5, 6.5, 0.0, 9.5, 9.5, 16.0);
+   protected static final fah g = die.a(0.0, 6.5, 6.5, 16.0, 9.5, 9.5);
 
    @Override
    public MapCodec<dje> a() {
       return a;
    }
 
-   protected dje(dvc.d $$0) {
-      super(0.3125F, $$0);
-      this.l(
-         this.F
-            .b()
-            .b(b, Boolean.valueOf(false))
-            .b(c, Boolean.valueOf(false))
-            .b(d, Boolean.valueOf(false))
-            .b(e, Boolean.valueOf(false))
-            .b(f, Boolean.valueOf(false))
-            .b(g, Boolean.valueOf(false))
-      );
+   public dje(dvi.d $$0) {
+      super($$0);
+      this.l(this.F.b().b(b, Boolean.valueOf(false)).b(i, jm.a.b));
    }
 
    @Override
-   public dvd a(czm $$0) {
-      return a($$0.q(), $$0.a(), this.m());
-   }
-
-   public static dvd a(dea $$0, jg $$1, dvd $$2) {
-      dvd $$3 = $$0.a_($$1.e());
-      dvd $$4 = $$0.a_($$1.d());
-      dvd $$5 = $$0.a_($$1.f());
-      dvd $$6 = $$0.a_($$1.i());
-      dvd $$7 = $$0.a_($$1.g());
-      dvd $$8 = $$0.a_($$1.h());
-      dhy $$9 = $$2.b();
-      return $$2.c(g, Boolean.valueOf($$3.a($$9) || $$3.a(dia.kv) || $$3.a(dia.fz)))
-         .c(f, Boolean.valueOf($$4.a($$9) || $$4.a(dia.kv)))
-         .c(b, Boolean.valueOf($$5.a($$9) || $$5.a(dia.kv)))
-         .c(c, Boolean.valueOf($$6.a($$9) || $$6.a(dia.kv)))
-         .c(d, Boolean.valueOf($$7.a($$9) || $$7.a(dia.kv)))
-         .c(e, Boolean.valueOf($$8.a($$9) || $$8.a(dia.kv)));
-   }
-
-   @Override
-   protected dvd a(dvd $$0, jl $$1, dvd $$2, dew $$3, jg $$4, jg $$5) {
-      if (!$$0.a($$3, $$4)) {
-         $$3.a($$4, this, 1);
-         return super.a($$0, $$1, $$2, $$3, $$4, $$5);
-      } else {
-         boolean $$6 = $$2.a(this) || $$2.a(dia.kv) || $$1 == jl.a && $$2.a(dia.fz);
-         return $$0.b(h.get($$1), Boolean.valueOf($$6));
+   protected fah a(dvj $$0, deg $$1, jh $$2, ezs $$3) {
+      switch ((jm.a)$$0.c(i)) {
+         case a:
+         default:
+            return g;
+         case c:
+            return f;
+         case b:
+            return e;
       }
    }
 
+   @Nullable
    @Override
-   protected void a(dvd $$0, arm $$1, jg $$2, azr $$3) {
-      if (!$$0.a($$1, $$2)) {
-         $$1.b($$2, true);
-      }
+   public dvj a(czs $$0) {
+      erk $$1 = $$0.q().b_($$0.a());
+      boolean $$2 = $$1.a() == erl.c;
+      return super.a($$0).b(b, Boolean.valueOf($$2));
    }
 
    @Override
-   protected boolean a(dvd $$0, dey $$1, jg $$2) {
-      dvd $$3 = $$1.a_($$2.e());
-      boolean $$4 = !$$1.a_($$2.d()).l() && !$$3.l();
-
-      for (jl $$5 : jl.c.a) {
-         jg $$6 = $$2.a($$5);
-         dvd $$7 = $$1.a_($$6);
-         if ($$7.a(this)) {
-            if ($$4) {
-               return false;
-            }
-
-            dvd $$8 = $$1.a_($$6.e());
-            if ($$8.a(this) || $$8.a(dia.fz)) {
-               return true;
-            }
-         }
+   protected dvj a(dvj $$0, jm $$1, dvj $$2, dfc $$3, jh $$4, jh $$5) {
+      if ($$0.c(b)) {
+         $$3.a($$4, erl.c, erl.c.a($$3));
       }
 
-      return $$3.a(this) || $$3.a(dia.fz);
+      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
    @Override
-   protected void a(dve.a<dhy, dvd> $$0) {
-      $$0.a(b, c, d, e, f, g);
+   protected void a(dvk.a<die, dvj> $$0) {
+      $$0.a(b).a(i);
    }
 
    @Override
-   protected boolean a(dvd $$0, ert $$1) {
+   protected erk b_(dvj $$0) {
+      return $$0.c(b) ? erl.c.a(false) : super.b_($$0);
+   }
+
+   @Override
+   protected boolean a(dvj $$0, erz $$1) {
       return false;
    }
 }

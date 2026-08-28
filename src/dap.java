@@ -1,18 +1,49 @@
-public interface dap<T extends daj<?>> {
-   dap<czz> a = a("crafting");
-   dap<dba> b = a("smelting");
-   dap<czt> c = a("blasting");
-   dap<dbf> d = a("smoking");
-   dap<czv> e = a("campfire_cooking");
-   dap<dbg> f = a("stonecutting");
-   dap<dbb> g = a("smithing");
+import com.mojang.serialization.Codec;
 
-   static <T extends daj<?>> dap<T> a(final String $$0) {
-      return kc.a(lx.q, alh.b($$0), new dap<T>() {
-         @Override
-         public String toString() {
-            return $$0;
+public interface dap<T extends das> {
+   Codec<dap<?>> h = ly.r.q().dispatch(dap::aq_, dau::a);
+   zg<wt, dap<?>> i = ze.a(lz.ae).b(dap::aq_, dau::b);
+
+   boolean a(T var1, dfb var2);
+
+   cwb a(T var1, js.a var2);
+
+   boolean a(int var1, int var2);
+
+   cwb a(js.a var1);
+
+   default jz<cwb> a(T $$0) {
+      jz<cwb> $$1 = jz.a($$0.a(), cwb.k);
+
+      for (int $$2 = 0; $$2 < $$1.size(); $$2++) {
+         cvx $$3 = $$0.a($$2).h();
+         if ($$3.l()) {
+            $$1.set($$2, new cwb($$3.k()));
          }
-      });
+      }
+
+      return $$1;
    }
+
+   default boolean ap_() {
+      return false;
+   }
+
+   default boolean h() {
+      return true;
+   }
+
+   default String c() {
+      return "";
+   }
+
+   default cwb g() {
+      return new cwb(dig.cA);
+   }
+
+   dau<?> aq_();
+
+   dav<?> e();
+
+   dao a();
 }

@@ -1,4 +1,4 @@
-public class gvv extends guc {
+public class gvv extends gvl {
    public float a;
-   public float b;
+   public int b;
 }

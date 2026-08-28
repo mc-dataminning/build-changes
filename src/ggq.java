@@ -1,20 +1,29 @@
-public class ggq {
-   public cof a = cof.b;
-   public float b;
-   public float c;
-
-   public void a(boolean $$0, float $$1) {
+public class ggq extends ggb {
+   ggq(gci $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, ggk $$7) {
+      super($$0, $$1, $$2, $$3, $$7, 1.25F);
+      this.B = 0.6F;
+      this.j = $$4;
+      this.k = $$5;
+      this.l = $$6;
+      this.D *= 0.75F;
+      this.t = 60 + this.r.a(12);
+      this.b($$7);
+      if (this.r.a(4) == 0) {
+         this.a(0.6F + this.r.i() * 0.2F, 0.6F + this.r.i() * 0.3F, this.r.i() * 0.2F);
+      } else {
+         this.a(0.1F + this.r.i() * 0.2F, 0.4F + this.r.i() * 0.3F, this.r.i() * 0.2F);
+      }
    }
 
-   public ezg a() {
-      return new ezg(this.b, this.c);
-   }
+   public static class a implements gfs<lv> {
+      private final ggk a;
 
-   public boolean b() {
-      return this.c > 1.0E-5F;
-   }
+      public a(ggk $$0) {
+         this.a = $$0;
+      }
 
-   public void c() {
-      this.a = new cof(this.a.a(), this.a.b(), this.a.c(), this.a.d(), true, this.a.f(), this.a.g());
+      public gfp a(lv $$0, gci $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new ggq($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
+      }
    }
 }

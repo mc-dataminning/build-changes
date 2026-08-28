@@ -1,20 +1,19 @@
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import com.mojang.serialization.Codec;
 
-public record dbw(dbt c) implements dcf {
-   public static final MapCodec<dbw> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(dbt.b.fieldOf("value").forGetter(dbw::b)).apply($$0, dbw::new));
+public enum dbw implements bag {
+   a("attacker"),
+   b("damaging_entity"),
+   c("victim");
 
-   @Override
-   public float a(int $$0, azr $$1, float $$2) {
-      return $$2 + this.c.a($$0);
+   public static final Codec<dbw> d = bag.a(dbw::values);
+   private final String e;
+
+   private dbw(final String $$0) {
+      this.e = $$0;
    }
 
    @Override
-   public MapCodec<dbw> a() {
-      return a;
-   }
-
-   public dbt b() {
-      return this.c;
+   public String c() {
+      return this.e;
    }
 }

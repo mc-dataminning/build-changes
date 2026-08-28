@@ -1,44 +1,29 @@
-import com.google.common.collect.Lists;
-import java.util.Collection;
+import com.google.common.collect.ImmutableList;
+import java.util.Collections;
+import java.util.List;
 
-public class gmg implements glw.a {
-   private static final int a = 160;
-   private static final float b = 0.04F;
-   private final fja c;
-   private Collection<jg> d = Lists.newArrayList();
+public class gmg implements gmh.a {
+   private final fji a;
+   private double b = Double.MIN_VALUE;
+   private List<fah> c = Collections.emptyList();
 
-   public gmg(fja $$0) {
-      this.c = $$0;
-   }
-
-   public void a(Collection<jg> $$0) {
-      this.d = $$0;
+   public gmg(fji $$0) {
+      this.a = $$0;
    }
 
    @Override
-   public void a(fdt $$0, ghw $$1, double $$2, double $$3, double $$4) {
-      jg $$5 = this.b().c();
-
-      for (jg $$6 : this.d) {
-         if ($$5.a($$6, 160.0)) {
-            a($$0, $$1, $$6);
-         }
+   public void a(feb $$0, gih $$1, double $$2, double $$3, double $$4) {
+      double $$5 = (double)ae.d();
+      if ($$5 - this.b > 1.0E8) {
+         this.b = $$5;
+         bue $$6 = this.a.j.k().g();
+         this.c = ImmutableList.copyOf($$6.dX().d($$6, $$6.cS().g(6.0)));
       }
-   }
 
-   private static void a(fdt $$0, ghw $$1, jg $$2) {
-      glw.a($$0, $$1, $$2, 1.0F, 0.0F, 0.0F, 0.15F);
-      a($$0, $$1, "Raid center", $$2, -65536);
-   }
+      fef $$7 = $$1.getBuffer(gir.y());
 
-   private static void a(fdt $$0, ghw $$1, String $$2, jg $$3, int $$4) {
-      double $$5 = (double)$$3.u() + 0.5;
-      double $$6 = (double)$$3.v() + 1.3;
-      double $$7 = (double)$$3.w() + 0.5;
-      glw.a($$0, $$1, $$2, $$5, $$6, $$7, $$4, 0.04F, true, 0.0F, true);
-   }
-
-   private fij b() {
-      return this.c.j.k();
+      for (fah $$8 : this.c) {
+         gmh.a($$0, $$7, $$8, -$$2, -$$3, -$$4, 1.0F, 1.0F, 1.0F, 1.0F, true);
+      }
    }
 }

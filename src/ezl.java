@@ -1,20 +1,26 @@
-public interface ezl {
-   ezl a = ($$0, $$1) -> false;
-   ezl b = ($$0, $$1) -> !$$0 && !$$1;
-   ezl c = ($$0, $$1) -> $$1 && !$$0;
-   ezl d = ($$0, $$1) -> !$$0;
-   ezl e = ($$0, $$1) -> $$0 && !$$1;
-   ezl f = ($$0, $$1) -> !$$1;
-   ezl g = ($$0, $$1) -> $$0 != $$1;
-   ezl h = ($$0, $$1) -> !$$0 || !$$1;
-   ezl i = ($$0, $$1) -> $$0 && $$1;
-   ezl j = ($$0, $$1) -> $$0 == $$1;
-   ezl k = ($$0, $$1) -> $$1;
-   ezl l = ($$0, $$1) -> !$$0 || $$1;
-   ezl m = ($$0, $$1) -> $$0;
-   ezl n = ($$0, $$1) -> $$0 || !$$1;
-   ezl o = ($$0, $$1) -> $$0 || $$1;
-   ezl p = ($$0, $$1) -> true;
+public abstract class ezl {
+   protected final ezn a;
 
-   boolean apply(boolean var1, boolean var2);
+   protected ezl(ezn $$0) {
+      this.a = $$0;
+   }
+
+   public double a(bue $$0) {
+      double $$1 = this.a.d - $$0.dC();
+      double $$2 = this.a.e - $$0.dE();
+      double $$3 = this.a.f - $$0.dI();
+      return $$1 * $$1 + $$2 * $$2 + $$3 * $$3;
+   }
+
+   public abstract ezl.a d();
+
+   public ezn g() {
+      return this.a;
+   }
+
+   public static enum a {
+      a,
+      b,
+      c;
+   }
 }

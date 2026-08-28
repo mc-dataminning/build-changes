@@ -1,32 +1,23 @@
-import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Optional;
 
-public record dcr(jt<bug<?>> d, boolean e) implements dcd {
+public record dcr(kl d, Optional<ecm> e, eiq f, Optional<jq<eag>> g) implements dcj {
    public static final MapCodec<dcr> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(ke.a(ly.z).fieldOf("entity").forGetter(dcr::b), Codec.BOOL.optionalFieldOf("join_team", false).forGetter(dcr::c)).apply($$0, dcr::new)
+      $$0 -> $$0.group(
+               kl.f.optionalFieldOf("offset", kl.g).forGetter(dcr::b),
+               ecm.b.optionalFieldOf("predicate").forGetter(dcr::c),
+               eiq.a.fieldOf("block_state").forGetter(dcr::d),
+               eag.aj.optionalFieldOf("trigger_game_event").forGetter(dcr::e)
+            )
+            .apply($$0, dcr::new)
    );
 
    @Override
-   public void a(arm $$0, int $$1, dbl $$2, btz $$3, ezh $$4) {
-      jg $$5 = jg.a((jz)$$4);
-      if (dev.l($$5)) {
-         Optional<jp<bug<?>>> $$6 = this.b().a($$0.E_());
-         if (!$$6.isEmpty()) {
-            btz $$7 = $$6.get().a().a($$0, $$5, buf.k);
-            if ($$7 != null) {
-               if ($$7 instanceof buu $$8 && $$2.c() instanceof arn $$9) {
-                  $$8.b($$9);
-               }
-
-               if (this.e && $$3.cs() != null) {
-                  $$0.f().a($$7.cJ(), $$3.cs());
-               }
-
-               $$7.b($$4.d, $$4.e, $$4.f, $$7.dN(), $$7.dP());
-            }
-         }
+   public void a(arn $$0, int $$1, dbr $$2, bue $$3, ezn $$4) {
+      jh $$5 = jh.a((ka)$$4).a(this.d);
+      if (this.e.map($$2x -> $$2x.test($$0, $$5)).orElse(true) && $$0.b($$5, this.f.a($$3.ea(), $$5))) {
+         this.g.ifPresent($$3x -> $$0.a($$3, $$3x, $$5));
       }
    }
 
@@ -35,11 +26,19 @@ public record dcr(jt<bug<?>> d, boolean e) implements dcd {
       return a;
    }
 
-   public jt<bug<?>> b() {
+   public kl b() {
       return this.d;
    }
 
-   public boolean c() {
+   public Optional<ecm> c() {
       return this.e;
+   }
+
+   public eiq d() {
+      return this.f;
+   }
+
+   public Optional<jq<eag>> e() {
+      return this.g;
    }
 }

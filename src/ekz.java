@@ -1,25 +1,38 @@
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public interface ekz<P extends eky> {
-   ekz<ekk> a = a("block_predicate_filter", ekk.a);
-   ekz<elb> b = a("rarity_filter", elb.a);
-   ekz<eld> c = a("surface_relative_threshold_filter", eld.a);
-   ekz<ele> d = a("surface_water_depth_filter", ele.a);
-   ekz<ekj> e = a("biome", ekj.a);
-   ekz<ekn> f = a("count", ekn.a);
-   ekz<ekt> g = a("noise_based_count", ekt.a);
-   ekz<eku> h = a("noise_threshold_count", eku.a);
-   ekz<ekm> i = a("count_on_every_layer", ekm.a);
-   ekz<eko> j = a("environment_scan", eko.a);
-   ekz<ekr> k = a("heightmap", ekr.a);
-   ekz<ekq> l = a("height_range", ekq.a);
-   ekz<eks> m = a("in_square", eks.a);
-   ekz<ela> n = a("random_offset", ela.a);
-   ekz<ekp> o = a("fixed_placement", ekp.a);
+public class ekz extends eli {
+   public static final MapCodec<ekz> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(
+               Codec.INT.fieldOf("noise_to_count_ratio").forGetter($$0x -> $$0x.c),
+               Codec.DOUBLE.fieldOf("noise_factor").forGetter($$0x -> $$0x.d),
+               Codec.DOUBLE.fieldOf("noise_offset").orElse(0.0).forGetter($$0x -> $$0x.e)
+            )
+            .apply($$0, ekz::new)
+   );
+   private final int c;
+   private final double d;
+   private final double e;
 
-   MapCodec<P> codec();
+   private ekz(int $$0, double $$1, double $$2) {
+      this.c = $$0;
+      this.d = $$1;
+      this.e = $$2;
+   }
 
-   private static <P extends eky> ekz<P> a(String $$0, MapCodec<P> $$1) {
-      return kc.a(lx.S, $$0, () -> $$1);
+   public static ekz a(int $$0, double $$1, double $$2) {
+      return new ekz($$0, $$1, $$2);
+   }
+
+   @Override
+   protected int a(azs $$0, jh $$1) {
+      double $$2 = dgc.e.a((double)$$1.u() / this.d, (double)$$1.w() / this.d, false);
+      return (int)Math.ceil(($$2 + this.e) * (double)this.c);
+   }
+
+   @Override
+   public elf<?> b() {
+      return elf.g;
    }
 }

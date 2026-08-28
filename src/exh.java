@@ -1,27 +1,34 @@
 import com.mojang.serialization.Codec;
-import java.util.function.Predicate;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Set;
 
-public interface exh extends etx, Predicate<etw> {
-   Codec<exh> d = lx.F.q().dispatch("condition", exh::b, exi::a);
-   Codec<exh> e = Codec.lazyInitialized(() -> Codec.withAlternative(d, ewu.b));
-   Codec<jp<exh>> f = ald.a(ly.bf, e);
+public record exh(boolean b) implements exn {
+   public static final MapCodec<exh> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(Codec.BOOL.fieldOf("active").forGetter(exh::e)).apply($$0, exh::new));
 
-   exi b();
+   public boolean a(euc $$0) {
+      return $$0.b(ewy.l) == this.b;
+   }
 
-   @FunctionalInterface
-   public interface a {
-      exh build();
+   @Override
+   public exo b() {
+      return exp.s;
+   }
 
-      default exh.a invert() {
-         return exe.a(this);
-      }
+   @Override
+   public Set<ewv<?>> a() {
+      return Set.of(ewy.l);
+   }
 
-      default ewv.a or(exh.a $$0) {
-         return ewv.a(this, $$0);
-      }
+   public static exn.a c() {
+      return () -> new exh(true);
+   }
 
-      default ewu.a and(exh.a $$0) {
-         return ewu.a(this, $$0);
-      }
+   public static exn.a d() {
+      return () -> new exh(false);
+   }
+
+   public boolean e() {
+      return this.b;
    }
 }

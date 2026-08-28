@@ -1,78 +1,131 @@
-import com.mojang.logging.LogUtils;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-import java.util.function.Function;
-import org.slf4j.Logger;
+import com.mojang.datafixers.util.Either;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.OptionalInt;
 
-public class gzw {
-   private static final Logger e = LogUtils.getLogger();
-   private static final String f = "map";
-   private static final String g = "map=true";
-   private static final String h = "map=false";
-   private static final dve<dhy, dvd> i = new dve.a<dhy, dvd>(dia.a).a(dvu.a("map")).a(dhy::m, dvd::new);
-   private static final alh j = alh.b("glow_item_frame");
-   private static final alh k = alh.b("item_frame");
-   private static final Map<alh, dve<dhy, dvd>> l = Map.of(k, i, j, i);
-   public static final hai a = new hai(j, "map=true");
-   public static final hai b = new hai(j, "map=false");
-   public static final hai c = new hai(k, "map=true");
-   public static final hai d = new hai(k, "map=false");
-   private final han m;
+public interface gzw {
+   Codec<gzw> a = gzw.d.d.dispatch(gzw::a, gzw.d::a);
+   gzw b = new gzw.b();
 
-   public gzw(han $$0) {
-      this.m = $$0;
-   }
+   gzw.d a();
 
-   public static Function<alh, dve<dhy, dvd>> a() {
-      Map<alh, dve<dhy, dvd>> $$0 = new HashMap<>(l);
+   public static record a(int d, int e, gzw.a.a f, boolean g) implements gzw {
+      public static final MapCodec<gzw.a> c = RecordCodecBuilder.mapCodec(
+            $$0 -> $$0.group(
+                     ayt.m.fieldOf("width").forGetter(gzw.a::b),
+                     ayt.m.fieldOf("height").forGetter(gzw.a::c),
+                     gzw.a.a.g.fieldOf("border").forGetter(gzw.a::d),
+                     Codec.BOOL.optionalFieldOf("stretch_inner", false).forGetter(gzw.a::e)
+                  )
+                  .apply($$0, gzw.a::new)
+         )
+         .validate(gzw.a::a);
 
-      for (dhy $$1 : lx.e) {
-         $$0.put($$1.p().h().a(), $$1.l());
-      }
-
-      return $$0::get;
-   }
-
-   public gzw.c a(alh $$0, dve<dhy, dvd> $$1, List<gzw.a> $$2) {
-      List<dvd> $$3 = $$1.a();
-      Map<dvd, gzw.b> $$4 = new HashMap<>();
-      Map<hai, gzw.b> $$5 = new HashMap<>();
-
-      try {
-         for (gzw.a $$6 : $$2) {
-            $$6.b.a($$1, $$0 + "/" + $$6.a).forEach(($$1x, $$2x) -> $$4.put($$1x, new gzw.b($$1x, $$2x)));
-         }
-      } finally {
-         Iterator var12 = $$3.iterator();
-
-         while (true) {
-            if (!var12.hasNext()) {
-               ;
-            } else {
-               dvd $$10 = (dvd)var12.next();
-               hai $$11 = giy.a($$0, $$10);
-               gzw.b $$12 = $$4.get($$10);
-               if ($$12 == null) {
-                  e.warn("Missing blockstate definition: '{}' missing model for variant: '{}'", $$0, $$11);
-                  $$12 = new gzw.b($$10, this.m);
-               }
-
-               $$5.put($$11, $$12);
-            }
+      private static DataResult<gzw.a> a(gzw.a $$0) {
+         gzw.a.a $$1 = $$0.d();
+         if ($$1.a() + $$1.c() >= $$0.b()) {
+            return DataResult.error(() -> "Nine-sliced texture has no horizontal center slice: " + $$1.a() + " + " + $$1.c() + " >= " + $$0.b());
+         } else {
+            return $$1.b() + $$1.d() >= $$0.c()
+               ? DataResult.error(() -> "Nine-sliced texture has no vertical center slice: " + $$1.b() + " + " + $$1.d() + " >= " + $$0.c())
+               : DataResult.success($$0);
          }
       }
 
-      return new gzw.c($$5);
+      @Override
+      public gzw.d a() {
+         return gzw.d.c;
+      }
+
+      public int b() {
+         return this.d;
+      }
+
+      public int c() {
+         return this.e;
+      }
+
+      public gzw.a.a d() {
+         return this.f;
+      }
+
+      public boolean e() {
+         return this.g;
+      }
+
+      public static record a(int a, int b, int c, int d) {
+         private static final Codec<gzw.a.a> e = ayt.m.flatComapMap($$0 -> new gzw.a.a($$0, $$0, $$0, $$0), $$0 -> {
+            OptionalInt $$1 = $$0.e();
+            return $$1.isPresent() ? DataResult.success($$1.getAsInt()) : DataResult.error(() -> "Border has different side sizes");
+         });
+         private static final Codec<gzw.a.a> f = RecordCodecBuilder.create(
+            $$0 -> $$0.group(
+                     ayt.l.fieldOf("left").forGetter(gzw.a.a::a),
+                     ayt.l.fieldOf("top").forGetter(gzw.a.a::b),
+                     ayt.l.fieldOf("right").forGetter(gzw.a.a::c),
+                     ayt.l.fieldOf("bottom").forGetter(gzw.a.a::d)
+                  )
+                  .apply($$0, gzw.a.a::new)
+         );
+         static final Codec<gzw.a.a> g = Codec.either(e, f).xmap(Either::unwrap, $$0 -> $$0.e().isPresent() ? Either.left($$0) : Either.right($$0));
+
+         private OptionalInt e() {
+            return this.a() == this.b() && this.b() == this.c() && this.c() == this.d() ? OptionalInt.of(this.a()) : OptionalInt.empty();
+         }
+      }
    }
 
-   public static record a(String a, gjj b) {
+   public static record b() implements gzw {
+      public static final MapCodec<gzw.b> c = MapCodec.unit(gzw.b::new);
+
+      @Override
+      public gzw.d a() {
+         return gzw.d.a;
+      }
    }
 
-   public static record b(dvd a, han b) {
+   public static record c(int d, int e) implements gzw {
+      public static final MapCodec<gzw.c> c = RecordCodecBuilder.mapCodec(
+         $$0 -> $$0.group(ayt.m.fieldOf("width").forGetter(gzw.c::b), ayt.m.fieldOf("height").forGetter(gzw.c::c)).apply($$0, gzw.c::new)
+      );
+
+      @Override
+      public gzw.d a() {
+         return gzw.d.b;
+      }
+
+      public int b() {
+         return this.d;
+      }
+
+      public int c() {
+         return this.e;
+      }
    }
 
-   public static record c(Map<hai, gzw.b> a) {
+   public static enum d implements bag {
+      a("stretch", gzw.b.c),
+      b("tile", gzw.c.c),
+      c("nine_slice", gzw.a.c);
+
+      public static final Codec<gzw.d> d = bag.a(gzw.d::values);
+      private final String e;
+      private final MapCodec<? extends gzw> f;
+
+      private d(final String $$0, final MapCodec<? extends gzw> $$1) {
+         this.e = $$0;
+         this.f = $$1;
+      }
+
+      @Override
+      public String c() {
+         return this.e;
+      }
+
+      public MapCodec<? extends gzw> a() {
+         return this.f;
+      }
    }
 }

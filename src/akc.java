@@ -1,8 +1,8 @@
-public interface akc extends ajw, vy {
-   @Override
-   default wc b() {
-      return wc.c;
-   }
+import javax.annotation.ParametersAreNonnullByDefault;
 
-   void a(akd var1);
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface akc {
 }

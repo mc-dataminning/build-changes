@@ -1,53 +1,22 @@
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
-import java.util.Set;
-import java.util.function.BiPredicate;
-import java.util.function.Predicate;
+import java.util.UUID;
 
-public class cev<T extends buv> extends cff<T> {
-   private final BiPredicate<T, buv> a;
-   private final Predicate<T> b;
-   private final cdz<Boolean> c;
-   private final int d;
+public class cev extends cfe {
+   public static final float a = 10.0F;
 
-   public cev(int $$0, BiPredicate<T, buv> $$1, Predicate<T> $$2, cdz<Boolean> $$3, int $$4) {
-      super($$0);
-      this.a = $$1;
-      this.b = $$2;
-      this.c = $$3;
-      this.d = $$4;
+   @Override
+   protected boolean a(bva $$0, bva $$1) {
+      return !$$0.ed().a(cee.U) && cfk.c($$0, $$1) && cil.j($$1) && !this.e($$0, $$1) ? $$1.a($$0, 10.0) : false;
+   }
+
+   private boolean e(bva $$0, bva $$1) {
+      List<UUID> $$2 = $$0.ed().c(cee.aa).orElseGet(ArrayList::new);
+      return $$2.contains($$1.cH());
    }
 
    @Override
-   protected void a(arm $$0, T $$1) {
-      if (!this.b.test($$1)) {
-         this.c($$1);
-      } else {
-         this.a($$1);
-      }
-   }
-
-   @Override
-   public Set<cdz<?>> a() {
-      return Set.of(cdz.g);
-   }
-
-   @Override
-   public void a(T $$0) {
-      Optional<List<buv>> $$1 = $$0.ed().c(cdz.g);
-      if (!$$1.isEmpty()) {
-         boolean $$2 = $$1.get().stream().anyMatch($$1x -> this.a.test($$0, $$1x));
-         if ($$2) {
-            this.b($$0);
-         }
-      }
-   }
-
-   public void b(T $$0) {
-      $$0.ed().a(this.c, true, (long)this.d);
-   }
-
-   public void c(T $$0) {
-      $$0.ed().b(this.c);
+   protected cee<bva> b() {
+      return cee.B;
    }
 }

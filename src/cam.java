@@ -1,20 +1,31 @@
-import com.mojang.datafixers.kinds.App;
-import java.util.Optional;
-import java.util.function.Function;
+import com.google.common.collect.ImmutableMap;
 
-public class cam {
-   public static bwp<buv> a() {
-      return cab.a(
-         (Function<cab.b<buv>, ? extends App<cab.c<buv>, cae<buv>>>)($$0 -> $$0.group($$0.a(cdz.n), $$0.a(cdz.az), $$0.a(cdz.ay), $$0.c(cdz.o))
-               .apply($$0, ($$1, $$2, $$3, $$4) -> ($$4x, $$5, $$6) -> {
-                     Optional<jg> $$7 = $$0.<buv>a($$3).map(btz::dx).or(() -> $$0.a($$2));
-                     if ($$7.isEmpty()) {
-                        return false;
-                     } else {
-                        $$1.a(new bwr($$7.get()));
-                        return true;
-                     }
-                  }))
-      );
+public class cam<E extends cnp> extends bwt<E> {
+   public cam(int $$0) {
+      super(ImmutableMap.of(cee.o, cef.b, cee.m, cef.b), $$0);
+   }
+
+   protected boolean a(arn $$0, E $$1, long $$2) {
+      return $$1.dT() == null;
+   }
+
+   protected boolean a(arn $$0, E $$1) {
+      return $$1.aK() || $$1.bk() || $$1.by();
+   }
+
+   protected void b(arn $$0, E $$1, long $$2) {
+      if ($$1.aK()) {
+         $$1.b(bvm.o);
+         $$1.a(awl.BP, 5.0F, 1.0F);
+      } else {
+         $$1.a(awl.BK, 5.0F, 1.0F);
+         this.c($$0, $$1, $$2);
+      }
+   }
+
+   protected void c(arn $$0, E $$1, long $$2) {
+      if ($$1.dT() == null) {
+         $$1.a(bue.c.b);
+      }
    }
 }

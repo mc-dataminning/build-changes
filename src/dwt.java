@@ -1,15 +1,23 @@
-public enum dwt {
-   a(4259712),
-   b(16724016),
-   c(2138367);
+public enum dwt implements bag {
+   a("save"),
+   b("load"),
+   c("corner"),
+   d("data");
 
-   private final int d;
+   private final String e;
+   private final xi f;
 
-   private dwt(final int $$0) {
-      this.d = $$0;
+   private dwt(final String $$0) {
+      this.e = $$0;
+      this.f = xi.c("structure_block.mode_info." + $$0);
    }
 
-   public int a() {
-      return this.d;
+   @Override
+   public String c() {
+      return this.e;
+   }
+
+   public xi a() {
+      return this.f;
    }
 }

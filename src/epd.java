@@ -1,18 +1,20 @@
-import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
 
-public enum epd implements baf {
-   a("ignore_waterlogging"),
-   b("apply_waterlogging");
+public class epd extends ept {
+   public static final MapCodec<epd> a = dvj.a.fieldOf("block_state").xmap(epd::new, $$0 -> $$0.b);
+   private final dvj b;
 
-   public static Codec<epd> c = baf.b(epd::values);
-   private final String d;
-
-   private epd(final String $$0) {
-      this.d = $$0;
+   public epd(dvj $$0) {
+      this.b = $$0;
    }
 
    @Override
-   public String c() {
-      return this.d;
+   public boolean a(dvj $$0, azs $$1) {
+      return $$0 == this.b;
+   }
+
+   @Override
+   protected epu<?> a() {
+      return epu.c;
    }
 }

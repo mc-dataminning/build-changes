@@ -1,79 +1,82 @@
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import it.unimi.dsi.fastutil.objects.Object2ObjectArrayMap;
+import java.util.Map;
 
-public class dpg extends dhy {
-   public static final MapCodec<dpg> a = b(dpg::new);
-   public static final int b = 2;
-   public static final dwd c = dvt.aE;
-   private static final int d = 24000;
-   private static final int e = 12000;
-   private static final int f = 300;
-   private static final fab g = dhy.a(1.0, 0.0, 2.0, 15.0, 16.0, 14.0);
-
-   @Override
-   public MapCodec<dpg> a() {
-      return a;
-   }
-
-   public dpg(dvc.d $$0) {
-      super($$0);
-      this.l(this.F.b().b(c, Integer.valueOf(0)));
-   }
+public class dpg extends dha {
+   public static final MapCodec<dpg> c = RecordCodecBuilder.mapCodec($$0 -> $$0.group(dpg.a.b.fieldOf("kind").forGetter(dha::b), t()).apply($$0, dpg::new));
+   public static final int d = dwp.a();
+   private static final int b = d + 1;
+   public static final dwj e = dvz.ba;
+   protected static final fah f = die.a(4.0, 0.0, 4.0, 12.0, 8.0, 12.0);
+   protected static final fah g = die.a(3.0, 0.0, 3.0, 13.0, 8.0, 13.0);
 
    @Override
-   protected void a(dve.a<dhy, dvd> $$0) {
-      $$0.a(c);
+   public MapCodec<? extends dpg> a() {
+      return c;
+   }
+
+   protected dpg(dpg.a $$0, dvi.d $$1) {
+      super($$0, $$1);
+      this.l(this.m().b(e, Integer.valueOf(0)));
    }
 
    @Override
-   public fab a(dvd $$0, dea $$1, jg $$2, ezm $$3) {
-      return g;
-   }
-
-   public int o(dvd $$0) {
-      return $$0.c(c);
-   }
-
-   private boolean q(dvd $$0) {
-      return this.o($$0) == 2;
+   protected fah a(dvj $$0, deg $$1, jh $$2, ezs $$3) {
+      return this.b() == dpg.b.h ? g : f;
    }
 
    @Override
-   public void a(dvd $$0, arm $$1, jg $$2, azr $$3) {
-      if (!this.q($$0)) {
-         $$1.a(null, $$2, awk.yC, awl.e, 0.7F, 0.9F + $$3.i() * 0.2F);
-         $$1.a($$2, $$0.b(c, Integer.valueOf(this.o($$0) + 1)), 2);
-      } else {
-         $$1.a(null, $$2, awk.yD, awl.e, 0.7F, 0.9F + $$3.i() * 0.2F);
-         $$1.b($$2, false);
-         cjd $$4 = bug.aR.a($$1, buf.e);
-         if ($$4 != null) {
-            ezh $$5 = $$2.b();
-            $$4.a(true);
-            $$4.b($$5.a(), $$5.b(), $$5.c(), azj.h($$1.A.i() * 360.0F), 0.0F);
-            $$1.b($$4);
-         }
+   protected fah d_(dvj $$0) {
+      return fae.a();
+   }
+
+   @Override
+   public dvj a(czs $$0) {
+      return super.a($$0).b(e, Integer.valueOf(dwp.a($$0.i())));
+   }
+
+   @Override
+   protected dvj a(dvj $$0, dor $$1) {
+      return $$0.b(e, Integer.valueOf($$1.a($$0.c(e), b)));
+   }
+
+   @Override
+   protected dvj a(dvj $$0, dna $$1) {
+      return $$0.b(e, Integer.valueOf($$1.a($$0.c(e), b)));
+   }
+
+   @Override
+   protected void a(dvk.a<die, dvj> $$0) {
+      super.a($$0);
+      $$0.a(e);
+   }
+
+   public interface a extends bag {
+      Map<String, dpg.a> a = new Object2ObjectArrayMap();
+      Codec<dpg.a> b = Codec.stringResolver(bag::c, a::get);
+   }
+
+   public static enum b implements dpg.a {
+      c("skeleton"),
+      d("wither_skeleton"),
+      e("player"),
+      f("zombie"),
+      g("creeper"),
+      h("piglin"),
+      i("dragon");
+
+      private final String j;
+
+      private b(final String $$0) {
+         this.j = $$0;
+         a.put($$0, this);
       }
-   }
 
-   @Override
-   public void b(dvd $$0, dev $$1, jg $$2, dvd $$3, boolean $$4) {
-      boolean $$5 = a($$1, $$2);
-      if (!$$1.y_() && $$5) {
-         $$1.c(3009, $$2, 0);
+      @Override
+      public String c() {
+         return this.j;
       }
-
-      int $$6 = $$5 ? 12000 : 24000;
-      int $$7 = $$6 / 3;
-      $$1.a(eaa.i, $$2, eaa.a.a($$0));
-      $$1.a($$2, this, $$7 + $$1.A.a(300));
-   }
-
-   @Override
-   public boolean a(dvd $$0, ert $$1) {
-      return false;
-   }
-
-   public static boolean a(dea $$0, jg $$1) {
-      return $$0.a_($$1.e()).a(awz.cu);
    }
 }

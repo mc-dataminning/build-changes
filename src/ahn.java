@@ -1,20 +1,30 @@
-public record ahn(bmw b) implements zo<agu> {
-   public static final zf<we, ahn> a = zo.a(ahn::a, ahn::new);
+public record ahn(int b, int c, boolean d) implements zp<agv> {
+   public static final zg<wf, ahn> a = zp.a(ahn::a, ahn::new);
 
-   private ahn(we $$0) {
-      this($$0.b(bmw.class));
+   private ahn(wf $$0) {
+      this($$0.l(), $$0.x(), $$0.readBoolean());
    }
 
-   private void a(we $$0) {
-      $$0.a(this.b);
+   private void a(wf $$0) {
+      $$0.c(this.b);
+      $$0.f(this.c);
+      $$0.a(this.d);
    }
 
    @Override
-   public zq<ahn> a() {
-      return ags.by;
+   public zr<ahn> a() {
+      return agt.bx;
    }
 
-   public void a(agu $$0) {
+   public void a(agv $$0) {
       $$0.a(this);
+   }
+
+   public int e() {
+      return this.c;
+   }
+
+   public boolean f() {
+      return this.d;
    }
 }

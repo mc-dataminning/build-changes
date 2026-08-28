@@ -1,32 +1,37 @@
-public class fzr extends fxz<gvv> {
-   private static final String a = "main";
-   private final gbb b;
+public class fzr extends fyk<gun> {
+   private final gbm a;
+   private final gbm b;
 
-   public fzr(gbb $$0) {
+   public fzr(gbm $$0) {
       super($$0);
-      this.b = $$0.b("main");
+      this.a = $$0.b("left_blue_fin");
+      this.b = $$0.b("right_blue_fin");
    }
 
-   public static gbh a() {
-      gbj $$0 = new gbj();
-      gbl $$1 = $$0.a();
-      $$1.a(
-         "main",
-         gbg.c()
-            .a(0, 0)
-            .a(-4.0F, -4.0F, -1.0F, 8.0F, 8.0F, 2.0F)
-            .a(0, 10)
-            .a(-1.0F, -4.0F, -4.0F, 2.0F, 8.0F, 8.0F)
-            .a(20, 0)
-            .a(-4.0F, -1.0F, -4.0F, 8.0F, 2.0F, 8.0F),
-         gbd.a
-      );
-      return gbh.a($$0, 64, 32);
+   public static gbs a() {
+      gbu $$0 = new gbu();
+      gbw $$1 = $$0.a();
+      int $$2 = 22;
+      $$1.a("body", gbr.c().a(0, 0).a(-4.0F, -8.0F, -4.0F, 8.0F, 8.0F, 8.0F), gbo.a(0.0F, 22.0F, 0.0F));
+      $$1.a("right_blue_fin", gbr.c().a(24, 0).a(-2.0F, 0.0F, -1.0F, 2.0F, 1.0F, 2.0F), gbo.a(-4.0F, 15.0F, -2.0F));
+      $$1.a("left_blue_fin", gbr.c().a(24, 3).a(0.0F, 0.0F, -1.0F, 2.0F, 1.0F, 2.0F), gbo.a(4.0F, 15.0F, -2.0F));
+      $$1.a("top_front_fin", gbr.c().a(15, 17).a(-4.0F, -1.0F, 0.0F, 8.0F, 1.0F, 0.0F), gbo.a(0.0F, 14.0F, -4.0F, (float) (Math.PI / 4), 0.0F, 0.0F));
+      $$1.a("top_middle_fin", gbr.c().a(14, 16).a(-4.0F, -1.0F, 0.0F, 8.0F, 1.0F, 1.0F), gbo.a(0.0F, 14.0F, 0.0F));
+      $$1.a("top_back_fin", gbr.c().a(23, 18).a(-4.0F, -1.0F, 0.0F, 8.0F, 1.0F, 0.0F), gbo.a(0.0F, 14.0F, 4.0F, (float) (-Math.PI / 4), 0.0F, 0.0F));
+      $$1.a("right_front_fin", gbr.c().a(5, 17).a(-1.0F, -8.0F, 0.0F, 1.0F, 8.0F, 0.0F), gbo.a(-4.0F, 22.0F, -4.0F, 0.0F, (float) (-Math.PI / 4), 0.0F));
+      $$1.a("left_front_fin", gbr.c().a(1, 17).a(0.0F, -8.0F, 0.0F, 1.0F, 8.0F, 0.0F), gbo.a(4.0F, 22.0F, -4.0F, 0.0F, (float) (Math.PI / 4), 0.0F));
+      $$1.a("bottom_front_fin", gbr.c().a(15, 20).a(-4.0F, 0.0F, 0.0F, 8.0F, 1.0F, 0.0F), gbo.a(0.0F, 22.0F, -4.0F, (float) (-Math.PI / 4), 0.0F, 0.0F));
+      $$1.a("bottom_middle_fin", gbr.c().a(15, 20).a(-4.0F, 0.0F, 0.0F, 8.0F, 1.0F, 0.0F), gbo.a(0.0F, 22.0F, 0.0F));
+      $$1.a("bottom_back_fin", gbr.c().a(15, 20).a(-4.0F, 0.0F, 0.0F, 8.0F, 1.0F, 0.0F), gbo.a(0.0F, 22.0F, 4.0F, (float) (Math.PI / 4), 0.0F, 0.0F));
+      $$1.a("right_back_fin", gbr.c().a(9, 17).a(-1.0F, -8.0F, 0.0F, 1.0F, 8.0F, 0.0F), gbo.a(-4.0F, 22.0F, 4.0F, 0.0F, (float) (Math.PI / 4), 0.0F));
+      $$1.a("left_back_fin", gbr.c().a(9, 17).a(0.0F, -8.0F, 0.0F, 1.0F, 8.0F, 0.0F), gbo.a(4.0F, 22.0F, 4.0F, 0.0F, (float) (-Math.PI / 4), 0.0F));
+      return gbs.a($$0, 32, 32);
    }
 
-   public void a(gvv $$0) {
+   @Override
+   public void a(gun $$0) {
       super.a($$0);
-      this.b.f = $$0.b * (float) (Math.PI / 180.0);
-      this.b.e = $$0.a * (float) (Math.PI / 180.0);
+      this.b.g = -0.2F + 0.4F * azk.a($$0.p * 0.2F);
+      this.a.g = 0.2F - 0.4F * azk.a($$0.p * 0.2F);
    }
 }

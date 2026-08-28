@@ -1,87 +1,54 @@
-import com.google.common.collect.Sets;
-import java.util.Iterator;
-import java.util.Objects;
-import java.util.Set;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.Executor;
-import java.util.function.Consumer;
+import java.util.List;
+import java.util.Locale;
+import java.util.function.Function;
 import java.util.stream.Stream;
-import javax.annotation.Nullable;
 
-public class hcj {
-   private final Set<hcj.a> a = Sets.newIdentityHashSet();
-   final fbl b;
-   final Executor c;
-
-   public hcj(fbl $$0, Executor $$1) {
-      this.b = $$0;
-      this.c = $$1;
-   }
-
-   public CompletableFuture<hcj.a> a(fbl.c $$0) {
-      CompletableFuture<hcj.a> $$1 = new CompletableFuture<>();
-      this.c.execute(() -> {
-         fbk $$2 = this.b.a($$0);
-         if ($$2 != null) {
-            hcj.a $$3 = new hcj.a($$2);
-            this.a.add($$3);
-            $$1.complete($$3);
-         } else {
-            $$1.complete(null);
+public interface hcj<T> {
+   static <T> hcj<T> a() {
+      return new hcj<T>() {
+         @Override
+         public List<T> a(String $$0) {
+            return List.of();
          }
-      });
-      return $$1;
-   }
 
-   public void a(Consumer<Stream<fbk>> $$0) {
-      this.c.execute(() -> $$0.accept(this.a.stream().map($$0xx -> $$0xx.b).filter(Objects::nonNull)));
-   }
-
-   public void a() {
-      this.c.execute(() -> {
-         Iterator<hcj.a> $$0 = this.a.iterator();
-
-         while ($$0.hasNext()) {
-            hcj.a $$1 = $$0.next();
-            $$1.b.j();
-            if ($$1.b.h()) {
-               $$1.b();
-               $$0.remove();
-            }
+         @Override
+         public List<T> b(String $$0) {
+            return List.of();
          }
-      });
+      };
    }
 
-   public void b() {
-      this.a.forEach(hcj.a::b);
-      this.a.clear();
-   }
+   static <T> hcj<T> a(List<T> $$0, Function<T, Stream<ali>> $$1) {
+      if ($$0.isEmpty()) {
+         return a();
+      } else {
+         final hcl<T> $$2 = new hcl<>();
+         final hcl<T> $$3 = new hcl<>();
 
-   public class a {
-      @Nullable
-      fbk b;
-      private boolean c;
+         for (T $$4 : $$0) {
+            $$1.apply($$4).forEach($$3x -> {
+               $$2.a($$4, $$3x.b().toLowerCase(Locale.ROOT));
+               $$3.a($$4, $$3x.a().toLowerCase(Locale.ROOT));
+            });
+         }
 
-      public boolean a() {
-         return this.c;
-      }
-
-      public a(final fbk $$1) {
-         this.b = $$1;
-      }
-
-      public void a(Consumer<fbk> $$0) {
-         hcj.this.c.execute(() -> {
-            if (this.b != null) {
-               $$0.accept(this.b);
+         $$2.a();
+         $$3.a();
+         return new hcj<T>() {
+            @Override
+            public List<T> a(String $$0) {
+               return $$2.a($$0);
             }
-         });
-      }
 
-      public void b() {
-         this.c = true;
-         hcj.this.b.a(this.b);
-         this.b = null;
+            @Override
+            public List<T> b(String $$0) {
+               return $$3.a($$0);
+            }
+         };
       }
    }
+
+   List<T> a(String var1);
+
+   List<T> b(String var1);
 }

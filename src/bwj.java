@@ -1,79 +1,106 @@
+import com.google.common.collect.ImmutableMap;
+import com.mojang.logging.LogUtils;
 import java.util.Map;
-import java.util.Optional;
-import java.util.function.Function;
-import java.util.function.Predicate;
-import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class bwj<E extends bvd> extends bwo<E> {
-   private static final int c = 100;
-   private static final int d = 120;
-   private static final int e = 5;
-   private static final int f = 4;
-   private final float g;
-   private final Function<bvd, axp<bsr>> h;
+public class bwj {
+   private static final Logger a = LogUtils.getLogger();
+   private static final Map<bul<? extends bva>, bwh> b = ImmutableMap.builder()
+      .put(bul.a, chx.q().a())
+      .put(bul.c, cia.q().a())
+      .put(bul.d, ckk.q().a())
+      .put(bul.f, cid.gw().a())
+      .put(bul.g, cgl.q().a())
+      .put(bul.h, cgs.gI().a())
+      .put(bul.i, cla.q().a())
+      .put(bul.l, clb.gx().a())
+      .put(bul.p, cgu.gK().a())
+      .put(bul.o, cii.q().a())
+      .put(bul.q, clc.q().a())
+      .put(bul.t, cgw.q().a())
+      .put(bul.u, cgn.q().a())
+      .put(bul.w, cgy.q().a())
+      .put(bul.x, cld.q().a())
+      .put(bul.y, cgz.gu().a())
+      .put(bul.z, ciu.q().a())
+      .put(bul.B, clf.q().a())
+      .put(bul.D, clg.q().a())
+      .put(bul.H, clh.q().a())
+      .put(bul.I, cli.q().a())
+      .put(bul.F, cjo.t().a())
+      .put(bul.J, clk.t().a())
+      .put(bul.m, cmn.q().a())
+      .put(bul.Q, chb.q().a())
+      .put(bul.R, cil.gu().a())
+      .put(bul.T, cll.y().a())
+      .put(bul.U, clm.q().a())
+      .put(bul.W, bus.gu().a())
+      .put(bul.X, cir.t().a())
+      .put(bul.Y, cln.gu().a())
+      .put(bul.Z, cmv.q().a())
+      .put(bul.ab, civ.gW().a())
+      .put(bul.ac, cmk.gx().a())
+      .put(bul.ad, clp.t().a())
+      .put(bul.af, chd.q().a())
+      .put(bul.an, ciy.gG().a())
+      .put(bul.ap, clq.q().a())
+      .put(bul.as, cgy.q().a())
+      .put(bul.at, ciu.q().a())
+      .put(bul.au, chf.q().a())
+      .put(bul.aw, chg.gH().a())
+      .put(bul.ax, chh.gG().a())
+      .put(bul.ay, clr.gA().a())
+      .put(bul.az, chi.q().a())
+      .put(bul.aA, cnb.gB().a())
+      .put(bul.aB, cne.y().a())
+      .put(bul.aC, clu.t().a())
+      .put(bul.by, com.fZ().a())
+      .put(bul.aD, chj.q().a())
+      .put(bul.aF, cgn.q().a())
+      .put(bul.aG, chl.t().a())
+      .put(bul.aH, clw.q().a())
+      .put(bul.aI, cgn.q().a())
+      .put(bul.aJ, chn.q().a())
+      .put(bul.aK, clx.q().a())
+      .put(bul.aM, cly.q().a())
+      .put(bul.aN, ckz.q().a())
+      .put(bul.aO, cjb.q().a())
+      .put(bul.aP, clr.gA().a())
+      .put(bul.aR, cji.q().a())
+      .put(bul.aS, chp.q().a())
+      .put(bul.aW, cmc.t().a())
+      .put(bul.aX, chq.gu().a())
+      .put(bul.aY, ckz.q().a())
+      .put(bul.aZ, cme.t().a())
+      .put(bul.ba, cio.gw().a())
+      .put(bul.be, ciy.gG().a())
+      .put(bul.bg, cgn.q().a())
+      .put(bul.bh, chs.y().a())
+      .put(bul.bi, cmf.q().a())
+      .put(bul.bj, cny.gD().a())
+      .put(bul.bk, cmg.t().a())
+      .put(bul.bm, cnp.q().a())
+      .put(bul.bl, bvc.E().a())
+      .put(bul.bo, cmh.t().a())
+      .put(bul.bp, cki.t().a())
+      .put(bul.bq, ckz.q().a())
+      .put(bul.bs, chu.gI().a())
+      .put(bul.bt, cmj.q().a())
+      .put(bul.bu, cmk.gx().a())
+      .put(bul.bv, cjf.q().a())
+      .put(bul.bw, cmk.gx().a())
+      .put(bul.bx, cmm.gD().a())
+      .build();
 
-   public bwj(float $$0) {
-      this($$0, $$0x -> axb.F);
+   public static bwh a(bul<? extends bva> $$0) {
+      return b.get($$0);
    }
 
-   public bwj(float $$0, Function<bvd, axp<bsr>> $$1) {
-      super(Map.of(cdz.Z, cea.c, cdz.x, cea.c), 100, 120);
-      this.g = $$0;
-      this.h = $$1;
+   public static boolean b(bul<?> $$0) {
+      return b.containsKey($$0);
    }
 
-   protected boolean a(arm $$0, E $$1) {
-      return $$1.ed().c(cdz.x).map($$1x -> $$1x.a(this.h.apply($$1))).orElse(false) || $$1.ed().a(cdz.Z);
-   }
-
-   protected boolean a(arm $$0, E $$1, long $$2) {
-      return true;
-   }
-
-   protected void b(arm $$0, E $$1, long $$2) {
-      $$1.ed().a(cdz.Z, true);
-      $$1.ed().b(cdz.m);
-   }
-
-   protected void c(arm $$0, E $$1, long $$2) {
-      bvx<?> $$3 = $$1.ed();
-      $$3.b(cdz.Z);
-   }
-
-   protected void d(arm $$0, E $$1, long $$2) {
-      if ($$1.P().m()) {
-         ezh $$3 = this.a($$1, $$0);
-         if ($$3 != null) {
-            $$1.ed().a(cdz.m, new cec($$3, this.g, 0));
-         }
-      }
-   }
-
-   @Nullable
-   private ezh a(E $$0, arm $$1) {
-      if ($$0.bZ()) {
-         Optional<ezh> $$2 = this.a((dea)$$1, $$0).map(ezh::c);
-         if ($$2.isPresent()) {
-            return $$2.get();
-         }
-      }
-
-      return cft.a($$0, 5, 4);
-   }
-
-   private Optional<jg> a(dea $$0, btz $$1) {
-      jg $$2 = $$1.dx();
-      if (!$$0.a_($$2).g($$0, $$2).c()) {
-         return Optional.empty();
-      } else {
-         Predicate<jg> $$3;
-         if (azj.f($$1.ds()) == 2) {
-            $$3 = $$1x -> jg.a($$1x).allMatch($$1xx -> $$0.b_($$1xx).a(axf.a));
-         } else {
-            $$3 = $$1x -> $$0.b_($$1x).a(axf.a);
-         }
-
-         return jg.a($$2, 5, 1, $$3);
-      }
+   public static void a() {
+      ly.f.s().filter($$0 -> $$0.f() != bvd.h).filter($$0 -> !b((bul<?>)$$0)).map(ly.f::b).forEach($$0 -> ae.b("Entity " + $$0 + " has no attributes"));
    }
 }

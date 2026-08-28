@@ -1,55 +1,54 @@
 import java.util.List;
 
 public class rz {
-   public static final alg<edr<?, ?>> a = ry.a("ice_spike");
-   public static final alg<edr<?, ?>> b = ry.a("ice_patch");
-   public static final alg<edr<?, ?>> c = ry.a("forest_rock");
-   public static final alg<edr<?, ?>> d = ry.a("iceberg_packed");
-   public static final alg<edr<?, ?>> e = ry.a("iceberg_blue");
-   public static final alg<edr<?, ?>> f = ry.a("blue_ice");
-   public static final alg<edr<?, ?>> g = ry.a("lake_lava");
-   public static final alg<edr<?, ?>> h = ry.a("disk_clay");
-   public static final alg<edr<?, ?>> i = ry.a("disk_gravel");
-   public static final alg<edr<?, ?>> j = ry.a("disk_sand");
-   public static final alg<edr<?, ?>> k = ry.a("freeze_top_layer");
-   public static final alg<edr<?, ?>> l = ry.a("disk_grass");
-   public static final alg<edr<?, ?>> m = ry.a("bonus_chest");
-   public static final alg<edr<?, ?>> n = ry.a("void_start_platform");
-   public static final alg<edr<?, ?>> o = ry.a("desert_well");
-   public static final alg<edr<?, ?>> p = ry.a("spring_lava_overworld");
-   public static final alg<edr<?, ?>> q = ry.a("spring_lava_frozen");
-   public static final alg<edr<?, ?>> r = ry.a("spring_water");
+   public static void a(qy<edx<?, ?>> $$0) {
+      rw.a($$0);
+      rx.a($$0);
+      ry.a($$0);
+      sa.a($$0);
+      sb.a($$0);
+      sc.a($$0);
+      sd.a($$0);
+      se.a($$0);
+      sf.a($$0);
+   }
 
-   public static void a(qx<edr<?, ?>> $$0) {
-      ry.a($$0, a, eef.s);
-      ry.a($$0, b, eef.G, new egg(eis.a(dia.iC), ecg.c(List.of(dia.j, dia.i, dia.l, dia.k, dia.fl, dia.dP, dia.dO)), brj.a(2, 3), 1));
-      ry.a($$0, c, eef.F, new egc(dia.cn.m()));
-      ry.a($$0, d, eef.E, new egc(dia.iC.m()));
-      ry.a($$0, e, eef.E, new egc(dia.mW.m()));
-      ry.a($$0, f, eef.D);
-      ry.a($$0, g, eef.H, new eeu.a(eik.a(dia.H.m()), eik.a(dia.b.m())));
-      ry.a($$0, h, eef.G, new egg(eis.a(dia.dR), ecg.c(List.of(dia.j, dia.dR)), brj.a(2, 3), 1));
-      ry.a($$0, i, eef.G, new egg(eis.a(dia.L), ecg.c(List.of(dia.j, dia.i)), brj.a(2, 5), 2));
-      ry.a(
-         $$0, j, eef.G, new egg(new eis(eik.a(dia.I), List.of(new eis.a(ecg.a(jl.a.q(), dia.a), eik.a(dia.aV)))), ecg.c(List.of(dia.j, dia.i)), brj.a(2, 6), 2)
-      );
-      ry.a($$0, k, eef.u);
-      ry.a(
-         $$0,
-         l,
-         eef.G,
-         new egg(
-            new eis(eik.a(dia.j), List.of(new eis.a(ecg.a(ecg.b(ecg.b(jl.b.q()), ecg.a(jl.b.q(), erf.c))), eik.a(dia.i)))),
-            ecg.c(List.of(dia.j, dia.sI)),
-            brj.a(2, 6),
-            2
-         )
-      );
-      ry.a($$0, m, eef.ad);
-      ry.a($$0, n, eef.n);
-      ry.a($$0, o, eef.o);
-      ry.a($$0, p, eef.k, new ehe(erf.e.g(), true, 4, 1, jt.a(dhy::p, dia.b, dia.c, dia.e, dia.g, dia.sJ, dia.qz, dia.qN, dia.j)));
-      ry.a($$0, q, eef.k, new ehe(erf.e.g(), true, 4, 1, jt.a(dhy::p, dia.dP, dia.qP, dia.iC)));
-      ry.a($$0, r, eef.k, new ehe(erf.c.g(), true, 4, 1, jt.a(dhy::p, dia.b, dia.c, dia.e, dia.g, dia.sJ, dia.qz, dia.qN, dia.j, dia.dP, dia.qP, dia.iC)));
+   private static ecm a(List<die> $$0) {
+      ecm $$1;
+      if (!$$0.isEmpty()) {
+         $$1 = ecm.a(ecm.c, ecm.a(jm.a.q(), $$0));
+      } else {
+         $$1 = ecm.c;
+      }
+
+      return $$1;
+   }
+
+   public static ehc a(int $$0, jq<elb> $$1) {
+      return new ehc($$0, 7, 3, $$1);
+   }
+
+   public static <FC extends egp, F extends eel<FC>> ehc a(F $$0, FC $$1, List<die> $$2, int $$3) {
+      return a($$3, so.a($$0, $$1, a($$2)));
+   }
+
+   public static <FC extends egp, F extends eel<FC>> ehc a(F $$0, FC $$1, List<die> $$2) {
+      return a($$0, $$1, $$2, 96);
+   }
+
+   public static <FC extends egp, F extends eel<FC>> ehc a(F $$0, FC $$1) {
+      return a($$0, $$1, List.of(), 96);
+   }
+
+   public static alh<edx<?, ?>> a(String $$0) {
+      return alh.a(lz.aJ, ali.b($$0));
+   }
+
+   public static void a(qy<edx<?, ?>> $$0, alh<edx<?, ?>> $$1, eel<egw> $$2) {
+      a($$0, $$1, $$2, egp.m);
+   }
+
+   public static <FC extends egp, F extends eel<FC>> void a(qy<edx<?, ?>> $$0, alh<edx<?, ?>> $$1, F $$2, FC $$3) {
+      $$0.a($$1, new edx($$2, $$3));
    }
 }

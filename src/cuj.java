@@ -1,246 +1,127 @@
-import java.util.Optional;
-import org.apache.commons.lang3.math.Fraction;
+import javax.annotation.Nullable;
 
-public class cuj extends cvt {
-   public static final int a = 4;
-   public static final int b = 3;
-   public static final int c = 12;
-   public static final int d = 11;
-   private static final int l = axu.a(1.0F, 1.0F, 0.33F, 0.33F);
-   private static final int m = axu.a(1.0F, 0.44F, 0.53F, 1.0F);
-   private static final int n = 10;
-   private static final int o = 2;
-   private static final int p = 60;
-   private final alh q;
-   private final alh r;
+public class cuj extends cvx {
+   public static final int a = 3;
+   public static final int b = 1;
+   public static final int c = 3;
 
-   public cuj(alh $$0, alh $$1, cvt.a $$2) {
-      super($$2);
-      this.q = $$0;
-      this.r = $$1;
-   }
-
-   public static float b(cvx $$0) {
-      cyb $$1 = $$0.a(kt.O, cyb.a);
-      return $$1.f().floatValue();
-   }
-
-   public alh b() {
-      return this.q;
-   }
-
-   public alh c() {
-      return this.r;
+   public cuj(cvx.a $$0) {
+      super($$0);
    }
 
    @Override
-   public boolean a(cvx $$0, ctg $$1, crt $$2, coh $$3) {
-      cyb $$4 = $$0.a(kt.O);
-      if ($$4 == null) {
-         return false;
+   public bsd a(czu $$0) {
+      dfb $$1 = $$0.q();
+      jh $$2 = $$0.a();
+      jh $$3 = $$2.a($$0.k());
+      if (a($$0.n(), $$1, $$2)) {
+         if (!$$1.C) {
+            $$0.o().a(eag.C);
+            $$1.c(1505, $$2, 15);
+         }
+
+         return bsd.a;
       } else {
-         cvx $$5 = $$1.g();
-         cyb.a $$6 = new cyb.a($$4);
-         if ($$2 == crt.a && !$$5.f()) {
-            if ($$6.a($$1, $$3) > 0) {
-               b($$3);
-            } else {
-               c($$3);
+         dvj $$4 = $$1.a_($$2);
+         boolean $$5 = $$4.c($$1, $$2, $$0.k());
+         if ($$5 && a($$0.n(), $$1, $$3, $$0.k())) {
+            if (!$$1.C) {
+               $$0.o().a(eag.C);
+               $$1.c(1505, $$3, 15);
             }
 
-            $$0.b(kt.O, $$6.d());
-            return true;
-         } else if ($$2 == crt.b && $$5.f()) {
-            cvx $$7 = $$6.b();
-            if ($$7 != null) {
-               cvx $$8 = $$1.d($$7);
-               if ($$8.L() > 0) {
-                  $$6.a($$8);
-               } else {
-                  a($$3);
-               }
-            }
-
-            $$0.b(kt.O, $$6.d());
-            return true;
+            return bsd.a;
          } else {
-            return false;
+            return bsd.e;
          }
       }
    }
 
-   @Override
-   public boolean a(cvx $$0, cvx $$1, ctg $$2, crt $$3, coh $$4, bvn $$5) {
-      if ($$3 == crt.a && $$1.f()) {
-         a($$0, -1);
-         return false;
-      } else {
-         cyb $$6 = $$0.a(kt.O);
-         if ($$6 == null) {
-            return false;
-         } else {
-            cyb.a $$7 = new cyb.a($$6);
-            if ($$3 == crt.a && !$$1.f()) {
-               if ($$2.b($$4) && $$7.a($$1) > 0) {
-                  b($$4);
-               } else {
-                  c($$4);
-               }
+   public static boolean a(cwb $$0, dfb $$1, jh $$2) {
+      dvj $$3 = $$1.a_($$2);
+      if ($$3.b() instanceof dih $$4 && $$4.b($$1, $$2, $$3)) {
+         if ($$1 instanceof arn) {
+            if ($$4.a($$1, $$1.A, $$2, $$3)) {
+               $$4.a((arn)$$1, $$1.A, $$2, $$3);
+            }
 
-               $$0.b(kt.O, $$7.d());
-               return true;
-            } else if ($$3 == crt.b && $$1.f()) {
-               if ($$2.b($$4)) {
-                  cvx $$8 = $$7.b();
-                  if ($$8 != null) {
-                     a($$4);
-                     $$5.a($$8);
+            $$0.h(1);
+         }
+
+         return true;
+      }
+
+      return false;
+   }
+
+   public static boolean a(cwb $$0, dfb $$1, jh $$2, @Nullable jm $$3) {
+      if ($$1.a_($$2).a(dig.G) && $$1.b_($$2).e() == 8) {
+         if (!($$1 instanceof arn)) {
+            return true;
+         } else {
+            azs $$4 = $$1.E_();
+
+            label80:
+            for (int $$5 = 0; $$5 < 128; $$5++) {
+               jh $$6 = $$2;
+               dvj $$7 = dig.bw.m();
+
+               for (int $$8 = 0; $$8 < $$5 / 16; $$8++) {
+                  $$6 = $$6.b($$4.a(3) - 1, ($$4.a(3) - 1) * $$4.a(3) / 2, $$4.a(3) - 1);
+                  if ($$1.a_($$6).m($$1, $$6)) {
+                     continue label80;
                   }
                }
 
-               $$0.b(kt.O, $$7.d());
-               return true;
-            } else {
-               return false;
+               jq<dgc> $$9 = $$1.t($$6);
+               if ($$9.a(awz.ac)) {
+                  if ($$5 == 0 && $$3 != null && $$3.o().d()) {
+                     $$7 = ly.e.a(axa.as, $$1.A).map($$0x -> ((die)$$0x.a()).m()).orElse($$7);
+                     if ($$7.b(dhp.c)) {
+                        $$7 = $$7.b(dhp.c, $$3);
+                     }
+                  } else if ($$4.a(4) == 0) {
+                     $$7 = ly.e.a(axa.aq, $$1.A).map($$0x -> ((die)$$0x.a()).m()).orElse($$7);
+                  }
+               }
+
+               if ($$7.a(axa.as, $$0x -> $$0x.b(dhp.c))) {
+                  for (int $$10 = 0; !$$7.a((dfe)$$1, $$6) && $$10 < 4; $$10++) {
+                     $$7 = $$7.b(dhp.c, jm.c.a.a($$4));
+                  }
+               }
+
+               if ($$7.a((dfe)$$1, $$6)) {
+                  dvj $$11 = $$1.a_($$6);
+                  if ($$11.a(dig.G) && $$1.b_($$6).e() == 8) {
+                     $$1.a($$6, $$7, 3);
+                  } else if ($$11.a(dig.bw) && ((dih)dig.bw).b($$1, $$6, $$11) && $$4.a(10) == 0) {
+                     ((dih)dig.bw).a((arn)$$1, $$4, $$6, $$11);
+                  }
+               }
             }
-         }
-      }
-   }
 
-   @Override
-   public bry a(dev $$0, coh $$1, brx $$2) {
-      if ($$0.C) {
-         return bry.c;
-      } else {
-         $$1.c($$2);
-         return bry.b;
-      }
-   }
-
-   private void a(coh $$0, cvx $$1) {
-      if (this.a($$1, $$0)) {
-         d($$0);
-         $$0.b(awu.c.b(this));
-      }
-   }
-
-   @Override
-   public boolean c(cvx $$0) {
-      cyb $$1 = $$0.a(kt.O, cyb.a);
-      return $$1.f().compareTo(Fraction.ZERO) > 0;
-   }
-
-   @Override
-   public int d(cvx $$0) {
-      cyb $$1 = $$0.a(kt.O, cyb.a);
-      return Math.min(1 + azj.a($$1.f(), 12), 13);
-   }
-
-   @Override
-   public int e(cvx $$0) {
-      cyb $$1 = $$0.a(kt.O, cyb.a);
-      return $$1.f().compareTo(Fraction.ONE) >= 0 ? l : m;
-   }
-
-   public static void a(cvx $$0, int $$1) {
-      cyb $$2 = $$0.a(kt.O);
-      if ($$2 != null) {
-         cyb.a $$3 = new cyb.a($$2);
-         $$3.a($$1);
-         $$0.b(kt.O, $$3.d());
-      }
-   }
-
-   public static boolean f(cvx $$0) {
-      cyb $$1 = $$0.a(kt.O, cyb.a);
-      return $$1.h() != -1;
-   }
-
-   public static int g(cvx $$0) {
-      cyb $$1 = $$0.a(kt.O, cyb.a);
-      return $$1.h();
-   }
-
-   public static cvx h(cvx $$0) {
-      cyb $$1 = $$0.a(kt.O, cyb.a);
-      return $$1.a($$1.h());
-   }
-
-   public static int i(cvx $$0) {
-      cyb $$1 = $$0.a(kt.O, cyb.a);
-      return $$1.a();
-   }
-
-   private boolean a(cvx $$0, coh $$1) {
-      cyb $$2 = $$0.a(kt.O);
-      if ($$2 != null && !$$2.g()) {
-         Optional<cvx> $$3 = a($$0, $$1, $$2);
-         if ($$3.isPresent()) {
-            $$1.a($$3.get(), true);
+            $$0.h(1);
             return true;
-         } else {
-            return false;
          }
       } else {
          return false;
       }
    }
 
-   private static Optional<cvx> a(cvx $$0, coh $$1, cyb $$2) {
-      cyb.a $$3 = new cyb.a($$2);
-      cvx $$4 = $$3.b();
-      if ($$4 != null) {
-         a($$1);
-         $$0.b(kt.O, $$3.d());
-         return Optional.of($$4);
-      } else {
-         return Optional.empty();
-      }
-   }
-
-   @Override
-   public void a(dev $$0, buv $$1, cvx $$2, int $$3) {
-      if (!$$0.C && $$1 instanceof coh $$4) {
-         int $$5 = this.a($$2, $$1);
-         boolean $$6 = $$3 == $$5;
-         if ($$6 || $$3 < $$5 - 10 && $$3 % 2 == 0) {
-            this.a($$4, $$2);
+   public static void a(dfc $$0, jh $$1, int $$2) {
+      dvj $$3 = $$0.a_($$1);
+      if ($$3.b() instanceof dih $$4) {
+         jh $$5 = $$4.a($$1);
+         switch ($$4.ar_()) {
+            case a:
+               azo.a($$0, $$5, $$2 * 3, 3.0, 1.0, false, lr.O);
+               break;
+            case b:
+               azo.a($$0, $$5, $$2, lr.O);
          }
+      } else if ($$3.a(dig.G)) {
+         azo.a($$0, $$1, $$2 * 3, 3.0, 1.0, false, lr.O);
       }
-   }
-
-   @Override
-   public int a(cvx $$0, buv $$1) {
-      return 60;
-   }
-
-   @Override
-   public Optional<ctq> j(cvx $$0) {
-      return !$$0.b(kt.r) && !$$0.b(kt.q) ? Optional.ofNullable($$0.a(kt.O)).map(ctp::new) : Optional.empty();
-   }
-
-   @Override
-   public void a(ckq $$0) {
-      cyb $$1 = $$0.m().a(kt.O);
-      if ($$1 != null) {
-         $$0.m().b(kt.O, cyb.a);
-         cwa.a($$0, $$1.d());
-      }
-   }
-
-   private static void a(btz $$0) {
-      $$0.a(awk.dr, 0.8F, 0.8F + $$0.dX().E_().i() * 0.4F);
-   }
-
-   private static void b(btz $$0) {
-      $$0.a(awk.dp, 0.8F, 0.8F + $$0.dX().E_().i() * 0.4F);
-   }
-
-   private static void c(btz $$0) {
-      $$0.a(awk.dq, 1.0F, 1.0F);
-   }
-
-   private static void d(btz $$0) {
-      $$0.a(awk.do, 0.8F, 0.8F + $$0.dX().E_().i() * 0.4F);
    }
 }

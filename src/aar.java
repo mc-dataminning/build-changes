@@ -1,51 +1,61 @@
-import io.netty.buffer.ByteBuf;
-import java.util.List;
-import java.util.Map;
-import java.util.stream.Collectors;
+import java.util.UUID;
 
-public interface aar {
-   aar.b<? extends aar> a();
+public record aar(aar.a c) implements aas {
+   public static final zg<wf, aar> a = aas.a(aar::a, aar::new);
+   public static final aas.b<aar> b = aas.a("debug/breeze");
 
-   static <B extends ByteBuf, T extends aar> zf<B, T> a(zi<B, T> $$0, zg<B, T> $$1) {
-      return zf.a($$0, $$1);
+   private aar(wf $$0) {
+      this(new aar.a($$0));
    }
 
-   static <T extends aar> aar.b<T> a(String $$0) {
-      return new aar.b<>(alh.b($$0));
+   private void a(wf $$0) {
+      this.c.a($$0);
    }
 
-   static <B extends we> zf<B, aar> a(final aar.a<B> $$0, List<aar.c<? super B, ?>> $$1) {
-      final Map<alh, zf<? super B, ? extends aar>> $$2 = $$1.stream().collect(Collectors.toUnmodifiableMap($$0x -> $$0x.a().a(), aar.c::b));
-      return new zf<B, aar>() {
-         private zf<? super B, ? extends aar> a(alh $$0x) {
-            zf<? super B, ? extends aar> $$1 = $$2.get($$0);
-            return $$1 != null ? $$1 : $$0.create($$0);
-         }
-
-         private <T extends aar> void a(B $$0x, aar.b<T> $$1, aar $$2x) {
-            $$0.a($$1.a());
-            zf<B, T> $$3 = this.a($$1.a);
-            $$3.encode($$0, (T)$$2);
-         }
-
-         public void a(B $$0x, aar $$1) {
-            this.a($$0, $$1.a(), $$1);
-         }
-
-         public aar a(B $$0x) {
-            alh $$1 = $$0.q();
-            return (aar)this.a($$1).decode($$0);
-         }
-      };
+   @Override
+   public aas.b<aar> a() {
+      return b;
    }
 
-   public interface a<B extends we> {
-      zf<B, ? extends aar> create(alh var1);
+   public aar.a b() {
+      return this.c;
    }
 
-   public static record b<T extends aar>(alh a) {
-   }
+   public static record a(UUID a, int b, Integer c, jh d) {
+      public a(wf $$0) {
+         this($$0.n(), $$0.readInt(), $$0.c(wf::readInt), $$0.c(jh.b));
+      }
 
-   public static record c<B extends we, T extends aar>(aar.b<T> a, zf<B, T> b) {
+      public void a(wf $$0) {
+         $$0.a(this.a);
+         $$0.q(this.b);
+         $$0.a(this.c, wf::q);
+         $$0.a(this.d, jh.b);
+      }
+
+      public String a() {
+         return agr.a(this.a);
+      }
+
+      @Override
+      public String toString() {
+         return this.a();
+      }
+
+      public UUID b() {
+         return this.a;
+      }
+
+      public int c() {
+         return this.b;
+      }
+
+      public Integer d() {
+         return this.c;
+      }
+
+      public jh e() {
+         return this.d;
+      }
    }
 }

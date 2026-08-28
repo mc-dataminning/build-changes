@@ -1,11 +1,21 @@
 import com.mojang.brigadier.StringReader;
-import java.util.stream.Stream;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import java.util.Optional;
 
-public interface bnx extends bns<StringReader> {
-   Stream<alh> a();
+public class bnx implements bns<StringReader, ali> {
+   public static final bns<StringReader, ali> a = new bnx();
+
+   private bnx() {
+   }
 
    @Override
-   default Stream<String> possibleValues(bnp<StringReader> $$0) {
-      return this.a().map(alh::toString);
+   public Optional<ali> a(bnr<StringReader> $$0) {
+      $$0.b().skipWhitespace();
+
+      try {
+         return Optional.of(ali.b($$0.b()));
+      } catch (CommandSyntaxException var3) {
+         return Optional.empty();
+      }
    }
 }

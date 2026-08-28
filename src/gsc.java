@@ -1,82 +1,75 @@
-public class gsc<S extends gus, M extends fym<S>, A extends fym<S>> extends gsm<S, M> {
-   private final A a;
-   private final A b;
-   private final A c;
-   private final A d;
-   private final grx e;
+import java.util.Map;
 
-   public gsc(gpv<S, M> $$0, A $$1, A $$2, grx $$3) {
-      this($$0, $$1, $$2, $$1, $$2, $$3);
+public class gsc<S extends gvl, M extends fyk<S> & fyt> extends gsx<S, M> {
+   private static final float a = 0.625F;
+   private static final float b = 1.1875F;
+   private final gsc.a c;
+   private final Map<dpg.a, gah> d;
+   private final gpi e;
+
+   public gsc(gqg<S, M> $$0, gbi $$1, gpi $$2) {
+      this($$0, $$1, gsc.a.a, $$2);
    }
 
-   public gsc(gpv<S, M> $$0, A $$1, A $$2, A $$3, A $$4, grx $$5) {
+   public gsc(gqg<S, M> $$0, gbi $$1, gsc.a $$2, gpi $$3) {
       super($$0);
-      this.a = $$1;
-      this.b = $$2;
-      this.c = $$3;
-      this.d = $$4;
-      this.e = $$5;
+      this.c = $$2;
+      this.d = glh.a($$1);
+      this.e = $$3;
    }
 
-   public static boolean a(cvx $$0, buh $$1) {
-      ddh $$2 = $$0.a(kt.D);
-      return $$2 != null && a($$2, $$1);
-   }
+   public void a(feb $$0, gih $$1, int $$2, S $$3, float $$4, float $$5) {
+      cwb $$6 = $$3.ao;
+      haf $$7 = $$3.an;
+      if (!$$6.f() && $$7 != null) {
+         label17: {
+            cvx $$8 = $$6.h();
+            $$0.a();
+            $$0.b(this.c.c(), 1.0F, this.c.c());
+            M $$9 = this.d();
+            $$9.e().a($$0);
+            $$9.b().a($$0);
+            if ($$8 instanceof cuh $$10 && $$10.d() instanceof dha $$11) {
+               $$0.a(0.0F, this.c.b(), 0.0F);
+               $$0.b(1.1875F, -1.1875F, -1.1875F);
+               cza $$12 = $$6.a(ku.ag);
+               $$0.a(-0.5, 0.0, -0.5);
+               dpg.a $$13 = $$11.b();
+               gah $$14 = this.d.get($$13);
+               gir $$15 = glh.a($$13, $$12);
+               glh.a(null, 180.0F, $$3.Z, $$0, $$1, $$2, $$14, $$15);
+               break label17;
+            }
 
-   private static boolean a(ddh $$0, buh $$1) {
-      return $$0.c().isPresent() && $$0.a() == $$1;
-   }
+            if (!gsn.a($$6, bum.f)) {
+               a($$0, this.c);
+               this.e.a($$6, cvz.f, false, $$0, $$1, $$2, gxu.d, $$7);
+            }
+         }
 
-   public void a(fdt $$0, ghw $$1, int $$2, S $$3, float $$4, float $$5) {
-      this.a($$0, $$1, $$3, $$3.Q, buh.e, $$2, this.a($$3, buh.e));
-      this.a($$0, $$1, $$3, $$3.R, buh.d, $$2, this.a($$3, buh.d));
-      this.a($$0, $$1, $$3, $$3.S, buh.c, $$2, this.a($$3, buh.c));
-      this.a($$0, $$1, $$3, $$3.ao, buh.f, $$2, this.a($$3, buh.f));
-   }
-
-   private void a(fdt $$0, ghw $$1, S $$2, cvx $$3, buh $$4, int $$5, A $$6) {
-      ddh $$7 = $$3.a(kt.D);
-      if ($$7 != null && a($$7, $$4)) {
-         $$6.a($$2);
-         this.a($$6, $$4);
-         alh $$8 = $$7.c().orElseThrow();
-         ddf.d $$9 = this.a($$4) ? ddf.d.b : ddf.d.a;
-         this.e.a($$9, $$8, $$6, $$3, gig::a, $$0, $$1, $$5);
+         $$0.b();
       }
    }
 
-   protected void a(A $$0, buh $$1) {
-      $$0.c_(false);
-      switch ($$1) {
-         case f:
-            $$0.o.k = true;
-            $$0.p.k = true;
-            break;
-         case e:
-            $$0.q.k = true;
-            $$0.r.k = true;
-            $$0.s.k = true;
-            break;
-         case d:
-            $$0.q.k = true;
-            $$0.t.k = true;
-            $$0.u.k = true;
-            break;
-         case c:
-            $$0.t.k = true;
-            $$0.u.k = true;
-      }
+   public static void a(feb $$0, gsc.a $$1) {
+      $$0.a(0.0F, -0.25F + $$1.a(), 0.0F);
+      $$0.a(a.d.rotationDegrees(180.0F));
+      $$0.b(0.625F, -0.625F, -0.625F);
    }
 
-   private A a(S $$0, buh $$1) {
-      if (this.a($$1)) {
-         return $$0.ae ? this.c : this.a;
-      } else {
-         return $$0.ae ? this.d : this.b;
-      }
-   }
+   public static record a(float b, float c, float d) {
+      public static final gsc.a a = new gsc.a(0.0F, 0.0F, 1.0F);
 
-   private boolean a(buh $$0) {
-      return $$0 == buh.d;
+      public float a() {
+         return this.b;
+      }
+
+      public float b() {
+         return this.c;
+      }
+
+      public float c() {
+         return this.d;
+      }
    }
 }

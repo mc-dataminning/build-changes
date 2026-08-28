@@ -1,4 +1,2 @@
-@FunctionalInterface
-public interface def {
-   int getColor(dfw var1, double var2, double var4);
+public record def(jh a, die b, int c, int d) {
 }

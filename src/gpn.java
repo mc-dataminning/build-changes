@@ -1,33 +1,31 @@
-public class gpn extends gpf<clo, gvk, fyy> {
-   private static final alh a = alh.b("textures/entity/phantom.png");
+public class gpn extends goj<cpf, gvn> {
+   private static final ali a = ali.b("textures/entity/llama/spit.png");
+   private final fzd b;
 
-   public gpn(gnz.a $$0) {
-      super($$0, new fyy($$0.a(gba.bs)), 0.75F);
-      this.a(new gsk(this));
+   public gpn(gok.a $$0) {
+      super($$0);
+      this.b = new fzd($$0.a(gbl.bg));
    }
 
-   public alh a(gvk $$0) {
-      return a;
-   }
-
-   public gvk c() {
-      return new gvk();
-   }
-
-   public void a(clo $$0, gvk $$1, float $$2) {
-      super.a($$0, $$1, $$2);
-      $$1.a = (float)$$0.t() + $$1.p;
-      $$1.b = $$0.q();
-   }
-
-   protected void a(gvk $$0, fdt $$1) {
-      float $$2 = 1.0F + 0.15F * (float)$$0.b;
-      $$1.b($$2, $$2, $$2);
-      $$1.a(0.0F, 1.3125F, 0.1875F);
-   }
-
-   protected void a(gvk $$0, fdt $$1, float $$2, float $$3) {
+   public void a(gvn $$0, feb $$1, gih $$2, int $$3) {
+      $$1.a();
+      $$1.a(0.0F, 0.15F, 0.0F);
+      $$1.a(a.d.rotationDegrees($$0.a - 90.0F));
+      $$1.a(a.f.rotationDegrees($$0.b));
+      this.b.a($$0);
+      fef $$4 = $$2.getBuffer(this.b.a(a));
+      this.b.a($$1, $$4, $$3, gxu.d);
+      $$1.b();
       super.a($$0, $$1, $$2, $$3);
-      $$1.a(a.b.rotationDegrees($$0.V));
+   }
+
+   public gvn a() {
+      return new gvn();
+   }
+
+   public void a(cpf $$0, gvn $$1, float $$2) {
+      super.a($$0, $$1, $$2);
+      $$1.b = $$0.j($$2);
+      $$1.a = $$0.k($$2);
    }
 }

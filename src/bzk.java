@@ -1,28 +1,29 @@
 import com.mojang.datafixers.kinds.App;
-import com.mojang.datafixers.util.Pair;
-import java.util.List;
+import java.util.Optional;
 import java.util.function.Function;
+import org.apache.commons.lang3.mutable.MutableLong;
 
 public class bzk {
-   public static <E extends buv> bxz<E> a(List<Pair<? extends cae<? super E>, Integer>> $$0) {
-      return a($$0, bxc.a.b, bxc.b.a);
-   }
+   private static final int a = 180;
+   private static final int b = 8;
+   private static final int c = 6;
 
-   public static <E extends buv> bxz<E> a(List<Pair<? extends cae<? super E>, Integer>> $$0, bxc.a $$1, bxc.b $$2) {
-      byx<cae<? super E>> $$3 = new byx<>();
-      $$0.forEach($$1x -> $$3.a((cae<? super E>)$$1x.getFirst(), (Integer)$$1x.getSecond()));
-      return cab.a((Function<cab.b<E>, ? extends App<cab.c<E>, cae<E>>>)($$3x -> $$3x.a((cae<E>)(($$3xx, $$4, $$5) -> {
-            if ($$1 == bxc.a.b) {
-               $$3.a();
-            }
-
-            for (cae<? super E> $$6 : $$3) {
-               if ($$6.trigger($$3xx, $$4, $$5) && $$2 == bxc.b.a) {
-                  break;
-               }
-            }
-
-            return true;
-         }))));
+   public static bye<bvi> a(cee<jp> $$0, float $$1, int $$2) {
+      MutableLong $$3 = new MutableLong(0L);
+      return cag.a(
+         (Function<cag.b<bvi>, ? extends App<cag.c<bvi>, caj<bvi>>>)($$4 -> $$4.group($$4.a(cee.m), $$4.b($$0)).apply($$4, ($$4x, $$5) -> ($$6, $$7, $$8) -> {
+                  jp $$9 = $$4.b($$5);
+                  if ($$6.ag() != $$9.a() || !$$9.b().a($$7.dv(), (double)$$2)) {
+                     return false;
+                  } else if ($$8 <= $$3.getValue()) {
+                     return true;
+                  } else {
+                     Optional<ezn> $$10 = Optional.ofNullable(cfy.a($$7, 8, 6));
+                     $$4x.a($$10.map($$1xxxx -> new ceh($$1xxxx, $$1, 1)));
+                     $$3.setValue($$8 + 180L);
+                     return true;
+                  }
+               }))
+      );
    }
 }

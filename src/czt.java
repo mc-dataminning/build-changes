@@ -1,15 +1,62 @@
-public class czt extends czq {
-   public czt(String $$0, czw $$1, daf $$2, cvx $$3, float $$4, int $$5) {
-      super(dap.c, $$0, $$1, $$2, $$3, $$4, $$5);
+public class czt extends czs {
+   private final jm b;
+
+   public czt(dfb $$0, jh $$1, jm $$2, cwb $$3, jm $$4) {
+      super($$0, null, bsc.a, $$3, new ezj(ezn.c($$1), $$4, $$1, false));
+      this.b = $$2;
    }
 
    @Override
-   public cvx g() {
-      return new cvx(dia.nW);
+   public jh a() {
+      return this.j().b();
    }
 
    @Override
-   public dao<?> ar_() {
-      return dao.p;
+   public boolean b() {
+      return this.q().a_(this.j().b()).a(this);
+   }
+
+   @Override
+   public boolean c() {
+      return this.b();
+   }
+
+   @Override
+   public jm d() {
+      return jm.a;
+   }
+
+   @Override
+   public jm[] f() {
+      switch (this.b) {
+         case a:
+         default:
+            return new jm[]{jm.a, jm.c, jm.f, jm.d, jm.e, jm.b};
+         case b:
+            return new jm[]{jm.a, jm.b, jm.c, jm.f, jm.d, jm.e};
+         case c:
+            return new jm[]{jm.a, jm.c, jm.f, jm.e, jm.b, jm.d};
+         case d:
+            return new jm[]{jm.a, jm.d, jm.f, jm.e, jm.b, jm.c};
+         case e:
+            return new jm[]{jm.a, jm.e, jm.d, jm.b, jm.c, jm.f};
+         case f:
+            return new jm[]{jm.a, jm.f, jm.d, jm.b, jm.c, jm.e};
+      }
+   }
+
+   @Override
+   public jm g() {
+      return this.b.o() == jm.a.b ? jm.c : this.b;
+   }
+
+   @Override
+   public boolean h() {
+      return false;
+   }
+
+   @Override
+   public float i() {
+      return (float)(this.b.e() * 90);
    }
 }

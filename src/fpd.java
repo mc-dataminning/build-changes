@@ -1,32 +1,17 @@
-public interface fpd {
-   fpf a();
+public interface fpd extends fmr, fpg {
+   fpd.a u();
 
-   public static record a(fpf a) implements fpd {
-      @Override
-      public fpf a() {
-         return this.a.a() == fpe.b ? this.a : fpf.b;
-      }
-
-      public fpf b() {
-         return this.a;
-      }
+   default boolean C() {
+      return true;
    }
 
-   public static class b implements fpd {
-      @Override
-      public fpf a() {
-         return fpf.b;
-      }
-   }
+   public static enum a {
+      a,
+      b,
+      c;
 
-   public static record c(boolean a) implements fpd {
-      @Override
-      public fpf a() {
-         return this.a ? fpf.b : fpf.a;
-      }
-
-      public boolean b() {
-         return this.a;
+      public boolean a() {
+         return this == c;
       }
    }
 }

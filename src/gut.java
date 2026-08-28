@@ -1,9 +1,8 @@
-public class gut extends gva {
-   public boolean b;
-   public boolean c;
-   public bup d = bup.b;
-   public ckt.a e = ckt.a.h;
-   public int f;
-   public int g;
+public class gut extends gvl {
+   public boolean d;
+   public boolean e;
+   public boolean f;
+   public float g;
    public float h;
+   public float i;
 }

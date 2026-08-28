@@ -1,97 +1,80 @@
-import com.mojang.datafixers.util.Either;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
-import java.util.function.IntFunction;
+import com.google.common.collect.ImmutableMap;
+import java.util.Map;
 
-public class enw extends elr {
-   public static final MapCodec<enw> d = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(a($$0), enw.a.c.fieldOf("mineshaft_type").forGetter($$0x -> $$0x.e)).apply($$0, enw::new)
-   );
-   private final enw.a e;
+public class enw {
+   public static final int a = 90;
+   static final ali b = ali.b("igloo/top");
+   private static final ali c = ali.b("igloo/middle");
+   private static final ali d = ali.b("igloo/bottom");
+   static final Map<ali, jh> e = ImmutableMap.of(b, new jh(3, 5, 5), c, new jh(1, 3, 1), d, new jh(3, 6, 7));
+   static final Map<ali, jh> f = ImmutableMap.of(b, jh.c, c, new jh(2, -3, 4), d, new jh(0, -3, -2));
 
-   public enw(elr.c $$0, enw.a $$1) {
-      super($$0);
-      this.e = $$1;
+   public static void a(eqa $$0, jh $$1, dor $$2, emc $$3, azs $$4) {
+      if ($$4.j() < 0.5) {
+         int $$5 = $$4.a(8) + 4;
+         $$3.a(new enw.a($$0, d, $$1, $$2, $$5 * 3));
+
+         for (int $$6 = 0; $$6 < $$5 - 1; $$6++) {
+            $$3.a(new enw.a($$0, c, $$1, $$2, $$6 * 3));
+         }
+      }
+
+      $$3.a(new enw.a($$0, b, $$1, $$2, 0));
    }
 
-   @Override
-   public Optional<elr.b> a(elr.a $$0) {
-      $$0.f().j();
-      deb $$1 = $$0.h();
-      jg $$2 = new jg($$1.b(), 50, $$1.e());
-      emj $$3 = new emj();
-      int $$4 = this.a($$3, $$0);
-      return Optional.of(new elr.b($$2.b(0, $$4, 0), Either.right($$3)));
-   }
-
-   private int a(emj $$0, elr.a $$1) {
-      deb $$2 = $$1.h();
-      eby $$3 = $$1.f();
-      dxa $$4 = $$1.b();
-      env.d $$5 = new env.d(0, $$3, $$2.a(2), $$2.b(2), this.e);
-      $$0.a($$5);
-      $$5.a($$5, $$0, $$3);
-      int $$6 = $$4.f();
-      if (this.e == enw.a.b) {
-         jg $$7 = $$0.d().g();
-         int $$8 = $$4.a($$7.u(), $$7.w(), eaz.a.a, $$1.i(), $$1.d());
-         int $$9 = $$8 <= $$6 ? $$6 : azj.b($$3, $$6, $$8);
-         int $$10 = $$9 - $$7.v();
-         $$0.a($$10);
-         return $$10;
-      } else {
-         return $$0.a($$6, $$4.g(), $$3, 10);
-      }
-   }
-
-   @Override
-   public ema<?> e() {
-      return ema.h;
-   }
-
-   public static enum a implements baf {
-      a("normal", dia.U, dia.n, dia.dU),
-      b("mesa", dia.aa, dia.t, dia.ki);
-
-      public static final Codec<enw.a> c = baf.a(enw.a::values);
-      private static final IntFunction<enw.a> d = aya.a(Enum::ordinal, values(), aya.a.a);
-      private final String e;
-      private final dvd f;
-      private final dvd g;
-      private final dvd h;
-
-      private a(final String $$0, final dhy $$1, final dhy $$2, final dhy $$3) {
-         this.e = $$0;
-         this.f = $$1.m();
-         this.g = $$2.m();
-         this.h = $$3.m();
+   public static class a extends emh {
+      public a(eqa $$0, ali $$1, jh $$2, dor $$3, int $$4) {
+         super(emo.I, 0, $$0, $$1, $$1.toString(), a($$3, $$1), a($$1, $$2, $$4));
       }
 
-      public String a() {
-         return this.e;
+      public a(eqa $$0, uk $$1) {
+         super(emo.I, $$1, $$0, $$1x -> a(dor.valueOf($$1.l("Rot")), $$1x));
       }
 
-      public static enw.a a(int $$0) {
-         return d.apply($$0);
+      private static epv a(dor $$0, ali $$1) {
+         return new epv().a($$0).a(dna.a).a(enw.e.get($$1)).a(epa.b).a(epj.a);
       }
 
-      public dvd b() {
-         return this.f;
-      }
-
-      public dvd d() {
-         return this.g;
-      }
-
-      public dvd e() {
-         return this.h;
+      private static jh a(ali $$0, jh $$1, int $$2) {
+         return $$1.a(enw.f.get($$0)).c($$2);
       }
 
       @Override
-      public String c() {
-         return this.e;
+      protected void a(emn $$0, uk $$1) {
+         super.a($$0, $$1);
+         $$1.a("Rot", this.c.d().name());
+      }
+
+      @Override
+      protected void a(String $$0, jh $$1, dfr $$2, azs $$3, elp $$4) {
+         if ("chest".equals($$0)) {
+            $$2.a($$1, dig.a.m(), 3);
+            dsm $$5 = $$2.c_($$1.e());
+            if ($$5 instanceof dst) {
+               ((dst)$$5).a(ety.B, $$3.g());
+            }
+         }
+      }
+
+      @Override
+      public void a(dfy $$0, dfw $$1, dxg $$2, azs $$3, elp $$4, deh $$5, jh $$6) {
+         ali $$7 = ali.a(this.a);
+         epv $$8 = a(this.c.d(), $$7);
+         jh $$9 = enw.f.get($$7);
+         jh $$10 = this.d.a((kl)epz.a($$8, new jh(3 - $$9.u(), 0, -$$9.w())));
+         int $$11 = $$0.a(ebf.a.a, $$10.u(), $$10.w());
+         jh $$12 = this.d;
+         this.d = this.d.b(0, $$11 - 90 - 1, 0);
+         super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6);
+         if ($$7.equals(enw.b)) {
+            jh $$13 = this.d.a((kl)epz.a($$8, new jh(3, 0, 5)));
+            dvj $$14 = $$0.a_($$13.e());
+            if (!$$14.l() && !$$14.a(dig.cO)) {
+               $$0.a($$13, dig.dP.m(), 3);
+            }
+         }
+
+         this.d = $$12;
       }
    }
 }

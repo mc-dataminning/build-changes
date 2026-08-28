@@ -1,71 +1,125 @@
 import com.mojang.serialization.MapCodec;
 import javax.annotation.Nullable;
 
-public class djl extends dhk implements doz {
+public class djl extends dlz implements dih {
    public static final MapCodec<djl> a = b(djl::new);
-   public static final dvu b = dvt.C;
-   private static final int d = 3;
-   protected static final fab c = dhy.a(5.0, 5.0, 5.0, 11.0, 11.0, 11.0);
+   public static final int b = 2;
+   public static final dwj c = dvz.ar;
+   protected static final int d = 4;
+   protected static final int e = 5;
+   protected static final int f = 2;
+   protected static final int g = 6;
+   protected static final int h = 7;
+   protected static final int i = 3;
+   protected static final int j = 8;
+   protected static final int k = 9;
+   protected static final int l = 4;
+   protected static final fah[] m = new fah[]{
+      die.a(11.0, 7.0, 6.0, 15.0, 12.0, 10.0), die.a(9.0, 5.0, 5.0, 15.0, 12.0, 11.0), die.a(7.0, 3.0, 4.0, 15.0, 12.0, 12.0)
+   };
+   protected static final fah[] n = new fah[]{
+      die.a(1.0, 7.0, 6.0, 5.0, 12.0, 10.0), die.a(1.0, 5.0, 5.0, 7.0, 12.0, 11.0), die.a(1.0, 3.0, 4.0, 9.0, 12.0, 12.0)
+   };
+   protected static final fah[] o = new fah[]{
+      die.a(6.0, 7.0, 1.0, 10.0, 12.0, 5.0), die.a(5.0, 5.0, 1.0, 11.0, 12.0, 7.0), die.a(4.0, 3.0, 1.0, 12.0, 12.0, 9.0)
+   };
+   protected static final fah[] G = new fah[]{
+      die.a(6.0, 7.0, 11.0, 10.0, 12.0, 15.0), die.a(5.0, 5.0, 9.0, 11.0, 12.0, 15.0), die.a(4.0, 3.0, 7.0, 12.0, 12.0, 15.0)
+   };
 
    @Override
    public MapCodec<djl> a() {
       return a;
    }
 
-   public djl(dvc.d $$0) {
+   public djl(dvi.d $$0) {
       super($$0);
-      this.l(this.F.b().b(b, Boolean.valueOf(true)));
+      this.l(this.F.b().b(aF, jm.c).b(c, Integer.valueOf(0)));
    }
 
    @Override
-   protected void a(dve.a<dhy, dvd> $$0) {
-      $$0.a(b);
+   protected boolean f(dvj $$0) {
+      return $$0.c(c) < 2;
    }
 
    @Override
-   public dsg a(jg $$0, dvd $$1) {
-      return new dss($$0, $$1);
+   protected void b(dvj $$0, arn $$1, jh $$2, azs $$3) {
+      if ($$1.A.a(5) == 0) {
+         int $$4 = $$0.c(c);
+         if ($$4 < 2) {
+            $$1.a($$2, $$0.b(c, Integer.valueOf($$4 + 1)), 2);
+         }
+      }
+   }
+
+   @Override
+   protected boolean a(dvj $$0, dfe $$1, jh $$2) {
+      dvj $$3 = $$1.a_($$2.a($$0.c(aF)));
+      return $$3.a(axa.A);
+   }
+
+   @Override
+   protected fah a(dvj $$0, deg $$1, jh $$2, ezs $$3) {
+      int $$4 = $$0.c(c);
+      switch ((jm)$$0.c(aF)) {
+         case d:
+            return G[$$4];
+         case c:
+         default:
+            return o[$$4];
+         case e:
+            return n[$$4];
+         case f:
+            return m[$$4];
+      }
    }
 
    @Nullable
    @Override
-   public <T extends dsg> dsh<T> a(dev $$0, dvd $$1, dsi<T> $$2) {
-      return a($$2, dsi.z, $$0.C ? dss::a : dss::b);
-   }
+   public dvj a(czs $$0) {
+      dvj $$1 = this.m();
+      dfe $$2 = $$0.q();
+      jh $$3 = $$0.a();
 
-   @Override
-   protected doe a_(dvd $$0) {
-      return doe.b;
-   }
-
-   @Override
-   protected ere b_(dvd $$0) {
-      return $$0.c(b) ? erf.c.a(false) : super.b_($$0);
-   }
-
-   @Override
-   protected dvd a(dvd $$0, jl $$1, dvd $$2, dew $$3, jg $$4, jg $$5) {
-      if ($$0.c(b)) {
-         $$3.a($$4, erf.c, erf.c.a($$3));
+      for (jm $$4 : $$0.f()) {
+         if ($$4.o().d()) {
+            $$1 = $$1.b(aF, $$4);
+            if ($$1.a($$2, $$3)) {
+               return $$1;
+            }
+         }
       }
 
-      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
+      return null;
    }
 
    @Override
-   protected fab a(dvd $$0, dea $$1, jg $$2, ezm $$3) {
-      return c;
-   }
-
-   @Nullable
-   @Override
-   public dvd a(czm $$0) {
-      ere $$1 = $$0.q().b_($$0.a());
-      return this.m().b(b, Boolean.valueOf($$1.a(axf.a) && $$1.e() == 8));
+   protected dvj a(dvj $$0, jm $$1, dvj $$2, dfc $$3, jh $$4, jh $$5) {
+      return $$1 == $$0.c(aF) && !$$0.a($$3, $$4) ? dig.a.m() : super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
    @Override
-   protected boolean a(dvd $$0, ert $$1) {
+   public boolean b(dfe $$0, jh $$1, dvj $$2) {
+      return $$2.c(c) < 2;
+   }
+
+   @Override
+   public boolean a(dfb $$0, azs $$1, jh $$2, dvj $$3) {
+      return true;
+   }
+
+   @Override
+   public void a(arn $$0, azs $$1, jh $$2, dvj $$3) {
+      $$0.a($$2, $$3.b(c, Integer.valueOf($$3.c(c) + 1)), 2);
+   }
+
+   @Override
+   protected void a(dvk.a<die, dvj> $$0) {
+      $$0.a(aF, c);
+   }
+
+   @Override
+   protected boolean a(dvj $$0, erz $$1) {
       return false;
    }
 }

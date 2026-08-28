@@ -1,17 +1,31 @@
-import java.util.Locale;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import java.util.function.Supplier;
 
-public enum gde {
-   a("chat"),
-   b("skin"),
-   c("username");
+public interface gde {
+   Codec<gde> a = bag.a(gde.a::values).dispatch(gde::a, gde.a::a);
 
-   private final String d;
+   gde.a a();
 
-   private gde(final String $$0) {
-      this.d = $$0.toUpperCase(Locale.ROOT);
-   }
+   public static enum a implements bag {
+      a("player", () -> gdf.a.b),
+      b("system", () -> gdf.b.b);
 
-   public String a() {
-      return this.d;
+      private final String c;
+      private final Supplier<MapCodec<? extends gde>> d;
+
+      private a(final String $$0, final Supplier<MapCodec<? extends gde>> $$1) {
+         this.c = $$0;
+         this.d = $$1;
+      }
+
+      private MapCodec<? extends gde> a() {
+         return this.d.get();
+      }
+
+      @Override
+      public String c() {
+         return this.c;
+      }
    }
 }

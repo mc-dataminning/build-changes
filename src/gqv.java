@@ -1,22 +1,16 @@
-public class gqv extends gos<cmb, gut> {
-   private static final alh a = alh.b("textures/entity/illager/vindicator.png");
+public class gqv extends gpq<cio, gvl, gap> {
+   private static final ali a = ali.b("textures/entity/tadpole/tadpole.png");
 
-   public gqv(gnz.a $$0) {
-      super($$0, new fyn<>($$0.a(gba.cU)), 0.5F);
-      this.a(new gsf<gut, fyn<gut>>(this, $$0.b()) {
-         public void a(fdt $$0, ghw $$1, int $$2, gut $$3, float $$4, float $$5) {
-            if ($$3.c) {
-               super.a($$0, $$1, $$2, $$3, $$4, $$5);
-            }
-         }
-      });
+   public gqv(gok.a $$0) {
+      super($$0, new gap($$0.a(gbl.cH)), 0.14F);
    }
 
-   public alh a(gut $$0) {
+   @Override
+   public ali b(gvl $$0) {
       return a;
    }
 
-   public gut c() {
-      return new gut();
+   public gvl c() {
+      return new gvl();
    }
 }

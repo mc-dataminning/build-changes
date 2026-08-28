@@ -1,261 +1,120 @@
-import com.google.common.collect.Lists;
-import com.google.common.util.concurrent.RateLimiter;
-import com.mojang.logging.LogUtils;
-import it.unimi.dsi.fastutil.booleans.BooleanConsumer;
+import com.mojang.blaze3d.systems.RenderSystem;
+import java.util.Collection;
 import java.util.List;
-import java.util.Locale;
-import java.util.concurrent.TimeUnit;
-import java.util.concurrent.locks.ReentrantLock;
 import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
-public class fgl extends hee {
-   private static final Logger a = LogUtils.getLogger();
-   private static final ReentrantLock b = new ReentrantLock();
-   private static final int c = 200;
-   private static final int B = 80;
-   private static final int C = 95;
-   private static final int D = 1;
-   private final fqs E;
-   private final ffo F;
-   private final xh G;
-   private final RateLimiter H;
-   private fkz I;
-   private final String J;
-   private final fgl.a K;
+public class fgl extends hep {
+   private static final xi a = xi.c("mco.selectServer.popup");
+   private static final xi b = xi.c("mco.selectServer.close");
+   private static final ali c = ali.b("popup/background");
+   private static final ali B = ali.b("icon/trial_available");
+   private static final fmu C = new fmu(ali.b("widget/cross_button"), ali.b("widget/cross_button_highlighted"));
+   private static final int D = 236;
+   private static final int E = 34;
+   private static final int F = 6;
+   private static final int G = 195;
+   private static final int H = 152;
+   private static final int I = 4;
+   private static final int J = 10;
+   private static final int K = 320;
+   private static final int L = 172;
+   private static final int M = 100;
+   private static final int N = 99;
+   private static final int O = 100;
+   private static List<ali> P = List.of();
+   private final fra Q;
+   private final boolean R;
    @Nullable
-   private volatile xh L;
-   private volatile xh M = xh.c("mco.download.preparing");
-   @Nullable
-   private volatile String N;
-   private volatile boolean O;
-   private volatile boolean P = true;
-   private volatile boolean Q;
-   private volatile boolean R;
-   @Nullable
-   private Long S;
-   @Nullable
-   private Long T;
-   private long U;
-   private int V;
-   private static final String[] W = new String[]{"", ".", ". .", ". . ."};
-   private int X;
-   private boolean Y;
-   private final BooleanConsumer Z;
+   private flh S;
+   private int T;
+   private int U;
 
-   public fgl(fqs $$0, ffo $$1, String $$2, BooleanConsumer $$3) {
-      super(fir.a);
-      this.Z = $$3;
-      this.E = $$0;
-      this.J = $$2;
-      this.F = $$1;
-      this.K = new fgl.a();
-      this.G = xh.c("mco.download.title");
-      this.H = RateLimiter.create(0.1F);
+   public fgl(fra $$0, boolean $$1) {
+      super(a);
+      this.Q = $$0;
+      this.R = $$1;
+   }
+
+   public static void a(avb $$0) {
+      Collection<ali> $$1 = $$0.b("textures/gui/images", $$0x -> $$0x.a().endsWith(".png")).keySet();
+      P = $$1.stream().filter($$0x -> $$0x.b().equals("realms")).toList();
    }
 
    @Override
-   public void aS_() {
-      this.I = this.c(fkz.a(xg.e, $$0 -> this.d()).a((this.n - 200) / 2, this.o - 42, 200, 20).a());
-      this.D();
-   }
-
-   private void D() {
-      if (!this.Q && !this.Y) {
-         this.Y = true;
-         if (this.a(this.F.a) >= 5368709120L) {
-            xh $$0 = xh.a("mco.download.confirmation.oversized", fef.b(5368709120L));
-            this.m.a(fgu.c(this, $$0, $$0x -> {
-               this.m.a(this);
-               this.F();
-            }));
-         } else {
-            this.F();
-         }
+   protected void aR_() {
+      this.Q.a(this.m, this.n, this.o);
+      if (this.R) {
+         this.S = this.c(flh.a(xi.c("mco.selectServer.trial"), fpx.b(this, ayg.q)).a(this.F() - 10 - 99, this.G() - 10 - 4 - 40, 99, 20).a());
       }
-   }
 
-   private long a(String $$0) {
-      feg $$1 = new feg();
-      return $$1.a($$0);
+      this.c(flh.a(xi.c("mco.selectServer.buy"), fpx.b(this, ayg.r)).a(this.F() - 10 - 99, this.G() - 10 - 20, 99, 20).a());
+      flt $$0 = this.c(new flt(this.D() + 4, this.E() + 4, 14, 14, C, $$0x -> this.d(), b));
+      $$0.a(fms.a(b));
+      int $$1 = 142 - (this.R ? 40 : 20);
+      flr $$2 = new flr(this.F() - 10 - 100, this.E() + 10, 100, $$1, a, this.p);
+      if ($$2.j()) {
+         $$2.k(100 - $$2.f());
+      }
+
+      this.c($$2);
    }
 
    @Override
    public void e() {
       super.e();
-      this.V++;
-      if (this.M != null && this.H.tryAcquire(1)) {
-         xh $$0 = this.E();
-         this.m.ba().c($$0);
+      if (++this.U > 100) {
+         this.U = 0;
+         this.T = (this.T + 1) % P.size();
       }
    }
 
-   private xh E() {
-      List<xh> $$0 = Lists.newArrayList();
-      $$0.add(this.G);
-      $$0.add(this.M);
-      if (this.N != null) {
-         $$0.add(xh.a("mco.download.percent", this.N));
-         $$0.add(xh.a("mco.download.speed.narration", fef.b(this.U)));
+   @Override
+   public void a(fku $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      if (this.S != null) {
+         a($$0, this.S);
       }
+   }
 
-      if (this.L != null) {
-         $$0.add(this.L);
+   public static void a(fku $$0, flh $$1) {
+      int $$2 = 8;
+      $$0.c().a();
+      $$0.c().a(0.0F, 0.0F, 110.0F);
+      $$0.a(gir::B, B, $$1.D() + $$1.y() - 8 - 4, $$1.E() + $$1.w() / 2 - 4, 8, 8);
+      $$0.c().b();
+   }
+
+   @Override
+   public void b(fku $$0, int $$1, int $$2, float $$3) {
+      this.Q.a($$0, -1, -1, $$3);
+      $$0.d();
+      RenderSystem.clear(256);
+      this.B();
+      this.b($$0);
+      $$0.a(gir::B, c, this.D(), this.E(), 320, 172);
+      if (!P.isEmpty()) {
+         $$0.a(gir::B, P.get(this.T), this.D() + 10, this.E() + 10, 0.0F, 0.0F, 195, 152, 195, 152);
       }
+   }
 
-      return xg.a($$0);
+   private int D() {
+      return (this.n - 320) / 2;
+   }
+
+   private int E() {
+      return (this.o - 172) / 2;
+   }
+
+   private int F() {
+      return this.D() + 320;
+   }
+
+   private int G() {
+      return this.E() + 172;
    }
 
    @Override
    public void d() {
-      this.O = true;
-      if (this.Q && this.Z != null && this.L == null) {
-         this.Z.accept(true);
-      }
-
-      this.m.a(this.E);
-   }
-
-   @Override
-   public void a(fkm $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      $$0.a(this.p, this.G, this.n / 2, 20, -1);
-      $$0.a(this.p, this.M, this.n / 2, 50, -1);
-      if (this.P) {
-         this.c($$0);
-      }
-
-      if (this.K.a != 0L && !this.O) {
-         this.d($$0);
-         this.e($$0);
-      }
-
-      if (this.L != null) {
-         $$0.a(this.p, this.L, this.n / 2, 110, -65536);
-      }
-   }
-
-   private void c(fkm $$0) {
-      int $$1 = this.p.a(this.M);
-      if (this.V != 0 && this.V % 10 == 0) {
-         this.X++;
-      }
-
-      $$0.a(this.p, W[this.X % W.length], this.n / 2 + $$1 / 2 + 5, 50, -1, false);
-   }
-
-   private void d(fkm $$0) {
-      double $$1 = Math.min((double)this.K.a / (double)this.K.b, 1.0);
-      this.N = String.format(Locale.ROOT, "%.1f", $$1 * 100.0);
-      int $$2 = (this.n - 200) / 2;
-      int $$3 = $$2 + (int)Math.round(200.0 * $$1);
-      $$0.a($$2 - 1, 79, $$3 + 1, 96, -1);
-      $$0.a($$2, 80, $$3, 95, -8355712);
-      $$0.a(this.p, xh.a("mco.download.percent", this.N), this.n / 2, 84, -1);
-   }
-
-   private void e(fkm $$0) {
-      if (this.V % 20 == 0) {
-         if (this.S != null) {
-            long $$1 = ad.c() - this.T;
-            if ($$1 == 0L) {
-               $$1 = 1L;
-            }
-
-            this.U = 1000L * (this.K.a - this.S) / $$1;
-            this.a($$0, this.U);
-         }
-
-         this.S = this.K.a;
-         this.T = ad.c();
-      } else {
-         this.a($$0, this.U);
-      }
-   }
-
-   private void a(fkm $$0, long $$1) {
-      if ($$1 > 0L) {
-         int $$2 = this.p.b(this.N);
-         $$0.a(this.p, xh.a("mco.download.speed", fef.b($$1)), this.n / 2 + $$2 / 2 + 15, 84, -1, false);
-      }
-   }
-
-   private void F() {
-      new Thread(() -> {
-         try {
-            try {
-               if (!b.tryLock(1L, TimeUnit.SECONDS)) {
-                  this.M = xh.c("mco.download.failed");
-                  return;
-               }
-
-               if (this.O) {
-                  this.G();
-                  return;
-               }
-
-               this.M = xh.a("mco.download.downloading", this.J);
-               feg $$0 = new feg();
-               $$0.a(this.F.a);
-               $$0.a(this.F, this.J, this.K, this.m.m());
-
-               while (!$$0.b()) {
-                  if ($$0.c()) {
-                     $$0.a();
-                     this.L = xh.c("mco.download.failed");
-                     this.I.b(xg.d);
-                     return;
-                  }
-
-                  if ($$0.d()) {
-                     if (!this.R) {
-                        this.M = xh.c("mco.download.extracting");
-                     }
-
-                     this.R = true;
-                  }
-
-                  if (this.O) {
-                     $$0.a();
-                     this.G();
-                     return;
-                  }
-
-                  try {
-                     Thread.sleep(500L);
-                  } catch (InterruptedException var8) {
-                     a.error("Failed to check Realms backup download status");
-                  }
-               }
-
-               this.Q = true;
-               this.M = xh.c("mco.download.done");
-               this.I.b(xg.d);
-               return;
-            } catch (InterruptedException var9) {
-               a.error("Could not acquire upload lock");
-            } catch (Exception var10) {
-               this.L = xh.c("mco.download.failed");
-               a.info("Exception while downloading world", var10);
-            }
-         } finally {
-            if (!b.isHeldByCurrentThread()) {
-               return;
-            } else {
-               b.unlock();
-               this.P = false;
-               this.Q = true;
-            }
-         }
-      }).start();
-   }
-
-   private void G() {
-      this.M = xh.c("mco.download.cancelled");
-   }
-
-   public static class a {
-      public volatile long a;
-      public volatile long b;
+      this.m.a(this.Q);
    }
 }

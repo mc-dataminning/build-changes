@@ -1,45 +1,73 @@
 import com.mojang.serialization.Codec;
 
-public class edn extends eef<egb> {
-   public edn(Codec<egb> $$0) {
+public abstract class edn extends eel<egr> {
+   public edn(Codec<egr> $$0) {
       super($$0);
    }
 
+   protected void a(dfc $$0, azs $$1, jh $$2, egr $$3, int $$4, jh.a $$5) {
+      for (int $$6 = 0; $$6 < $$4; $$6++) {
+         $$5.g($$2).c(jm.b, $$6);
+         if (!$$0.a_($$5).s()) {
+            this.a($$0, $$5, $$3.c.a($$1, $$2));
+         }
+      }
+   }
+
+   protected int a(azs $$0) {
+      int $$1 = $$0.a(3) + 4;
+      if ($$0.a(12) == 0) {
+         $$1 *= 2;
+      }
+
+      return $$1;
+   }
+
+   protected boolean a(dfc $$0, jh $$1, int $$2, jh.a $$3, egr $$4) {
+      int $$5 = $$1.v();
+      if ($$5 >= $$0.I_() + 1 && $$5 + $$2 + 1 <= $$0.al()) {
+         dvj $$6 = $$0.a_($$1.e());
+         if (!b($$6) && !$$6.a(axa.bb)) {
+            return false;
+         } else {
+            for (int $$7 = 0; $$7 <= $$2; $$7++) {
+               int $$8 = this.a(-1, -1, $$4.d, $$7);
+
+               for (int $$9 = -$$8; $$9 <= $$8; $$9++) {
+                  for (int $$10 = -$$8; $$10 <= $$8; $$10++) {
+                     dvj $$11 = $$0.a_($$3.a($$1, $$9, $$7, $$10));
+                     if (!$$11.l() && !$$11.a(axa.P)) {
+                        return false;
+                     }
+                  }
+               }
+            }
+
+            return true;
+         }
+      } else {
+         return false;
+      }
+   }
+
    @Override
-   public boolean a(eeh<egb> $$0) {
-      jg $$1 = $$0.e();
-      dfs $$2 = $$0.b();
-      azr $$3 = $$0.d();
-      egb $$4 = $$0.f();
-      if ($$1.v() < $$2.I_() + 5) {
+   public boolean a(een<egr> $$0) {
+      dfy $$1 = $$0.b();
+      jh $$2 = $$0.e();
+      azs $$3 = $$0.d();
+      egr $$4 = $$0.f();
+      int $$5 = this.a($$3);
+      jh.a $$6 = new jh.a();
+      if (!this.a($$1, $$2, $$5, $$6, $$4)) {
          return false;
       } else {
-         int $$5 = 2 + $$3.a(2);
-         int $$6 = 2 + $$3.a(2);
-
-         for (jg $$7 : jg.c($$1.b(-$$5, 0, -$$6), $$1.b($$5, 1, $$6))) {
-            int $$8 = $$1.u() - $$7.u();
-            int $$9 = $$1.w() - $$7.w();
-            if ((float)($$8 * $$8 + $$9 * $$9) <= $$3.i() * 10.0F - $$3.i() * 6.0F) {
-               this.a($$2, $$7, $$3, $$4);
-            } else if ((double)$$3.i() < 0.031) {
-               this.a($$2, $$7, $$3, $$4);
-            }
-         }
-
+         this.a($$1, $$3, $$2, $$5, $$6, $$4);
+         this.a($$1, $$3, $$2, $$4, $$5, $$6);
          return true;
       }
    }
 
-   private boolean a(dew $$0, jg $$1, azr $$2) {
-      jg $$3 = $$1.e();
-      dvd $$4 = $$0.a_($$3);
-      return $$4.a(dia.kE) ? $$2.h() : $$4.c($$0, $$3, jl.b);
-   }
+   protected abstract int a(int var1, int var2, int var3, int var4);
 
-   private void a(dew $$0, jg $$1, azr $$2, egb $$3) {
-      if ($$0.u($$1) && this.a($$0, $$1, $$2)) {
-         $$0.a($$1, $$3.b.a($$2, $$1), 4);
-      }
-   }
+   protected abstract void a(dfc var1, azs var2, jh var3, int var4, jh.a var5, egr var6);
 }

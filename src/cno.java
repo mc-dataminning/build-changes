@@ -1,218 +1,192 @@
-import com.google.common.collect.Lists;
-import com.mojang.logging.LogUtils;
+import com.google.common.annotations.VisibleForTesting;
+import com.google.common.collect.Streams;
+import com.mojang.datafixers.util.Pair;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import it.unimi.dsi.fastutil.objects.Object2IntMap;
+import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
+import it.unimi.dsi.fastutil.objects.ObjectIterator;
+import it.unimi.dsi.fastutil.objects.Object2IntMap.Entry;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.List;
+import java.util.Optional;
+import java.util.UUID;
+import java.util.function.Predicate;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
-public abstract class cno extends btq implements cnr, cns, ddr {
-   private static final akk<Integer> ca = ako.a(cno.class, akm.b);
-   private static final Logger cb = LogUtils.getLogger();
-   public static final int bY = 300;
-   private static final int cc = 8;
-   @Nullable
-   private coh cd;
-   @Nullable
-   protected ddt bZ;
-   private final bsf ce = new bsf(8);
+public class cno {
+   @VisibleForTesting
+   protected static final int a = 2;
+   @VisibleForTesting
+   protected static final int b = 150;
+   private static final int f = 1;
+   private int g = azk.b(azs.a(), 0, 2);
+   int h;
+   private static final Codec<Pair<UUID, Integer>> i = RecordCodecBuilder.create(
+      $$0 -> $$0.group(kk.a.fieldOf("uuid").forGetter(Pair::getFirst), ayt.l.fieldOf("anger").forGetter(Pair::getSecond)).apply($$0, Pair::of)
+   );
+   private final Predicate<bue> j;
+   @VisibleForTesting
+   protected final ArrayList<bue> c;
+   private final cno.a k;
+   @VisibleForTesting
+   protected final Object2IntMap<bue> d;
+   @VisibleForTesting
+   protected final Object2IntMap<UUID> e;
 
-   public cno(bug<? extends cno> $$0, dev $$1) {
-      super($$0, $$1);
-      this.a(erv.n, 16.0F);
-      this.a(erv.o, -1.0F);
+   public static Codec<cno> a(Predicate<bue> $$0) {
+      return RecordCodecBuilder.create(
+         $$1 -> $$1.group(i.listOf().fieldOf("suspects").orElse(Collections.emptyList()).forGetter(cno::b)).apply($$1, $$1x -> new cno($$0, $$1x))
+      );
    }
 
-   @Override
-   public bvo a(dfl $$0, brw $$1, buf $$2, @Nullable bvo $$3) {
-      if ($$3 == null) {
-         $$3 = new btq.a(false);
+   public cno(Predicate<bue> $$0, List<Pair<UUID, Integer>> $$1) {
+      this.j = $$0;
+      this.c = new ArrayList<>();
+      this.k = new cno.a(this);
+      this.d = new Object2IntOpenHashMap();
+      this.e = new Object2IntOpenHashMap($$1.size());
+      $$1.forEach($$0x -> this.e.put((UUID)$$0x.getFirst(), (Integer)$$0x.getSecond()));
+   }
+
+   private List<Pair<UUID, Integer>> b() {
+      return Streams.concat(
+            new Stream[]{
+               this.c.stream().map($$0 -> Pair.of($$0.cH(), this.d.getInt($$0))),
+               this.e.object2IntEntrySet().stream().map($$0 -> Pair.of((UUID)$$0.getKey(), $$0.getIntValue()))
+            }
+         )
+         .collect(Collectors.toList());
+   }
+
+   public void a(arn $$0, Predicate<bue> $$1) {
+      this.g--;
+      if (this.g <= 0) {
+         this.a($$0);
+         this.g = 2;
       }
 
-      return super.a($$0, $$1, $$2, $$3);
-   }
+      ObjectIterator<Entry<UUID>> $$2 = this.e.object2IntEntrySet().iterator();
 
-   public int q() {
-      return this.am.a(ca);
-   }
-
-   public void s(int $$0) {
-      this.am.a(ca, $$0);
-   }
-
-   @Override
-   public int t() {
-      return 0;
-   }
-
-   @Override
-   protected void a(ako.a $$0) {
-      super.a($$0);
-      $$0.a(ca, 0);
-   }
-
-   @Override
-   public void a(@Nullable coh $$0) {
-      this.cd = $$0;
-   }
-
-   @Nullable
-   @Override
-   public coh gv() {
-      return this.cd;
-   }
-
-   public boolean gw() {
-      return this.cd != null;
-   }
-
-   @Override
-   public ddt gx() {
-      if (this.dX().C) {
-         throw new IllegalStateException("Cannot load Villager offers on the client");
-      } else {
-         if (this.bZ == null) {
-            this.bZ = new ddt();
-            this.gC();
-         }
-
-         return this.bZ;
-      }
-   }
-
-   @Override
-   public void a(@Nullable ddt $$0) {
-   }
-
-   @Override
-   public void t(int $$0) {
-   }
-
-   @Override
-   public void a(dds $$0) {
-      $$0.l();
-      this.bM = -this.T();
-      this.b($$0);
-      if (this.cd instanceof arn) {
-         an.t.a((arn)this.cd, this, $$0.f());
-      }
-   }
-
-   protected abstract void b(dds var1);
-
-   @Override
-   public boolean gy() {
-      return true;
-   }
-
-   @Override
-   public void k(cvx $$0) {
-      if (!this.dX().C && this.bM > -this.T() + 20) {
-         this.bM = -this.T();
-         this.b(this.x(!$$0.f()));
-      }
-   }
-
-   @Override
-   public awj gz() {
-      return awk.Bc;
-   }
-
-   protected awj x(boolean $$0) {
-      return $$0 ? awk.Bc : awk.Ba;
-   }
-
-   public void gA() {
-      this.b(awk.AX);
-   }
-
-   @Override
-   public void b(uj $$0) {
-      super.b($$0);
-      if (!this.dX().C) {
-         ddt $$1 = this.gx();
-         if (!$$1.isEmpty()) {
-            $$0.a("Offers", (vg)ddt.a.encodeStart(this.dZ().a(ux.a), $$1).getOrThrow());
+      while ($$2.hasNext()) {
+         Entry<UUID> $$3 = (Entry<UUID>)$$2.next();
+         int $$4 = $$3.getIntValue();
+         if ($$4 <= 1) {
+            $$2.remove();
+         } else {
+            $$3.setValue($$4 - 1);
          }
       }
 
-      this.b($$0, this.dZ());
-   }
+      ObjectIterator<Entry<bue>> $$5 = this.d.object2IntEntrySet().iterator();
 
-   @Override
-   public void a(uj $$0) {
-      super.a($$0);
-      if ($$0.e("Offers")) {
-         ddt.a.parse(this.dZ().a(ux.a), $$0.c("Offers")).resultOrPartial(ad.a("Failed to load offers: ", cb::warn)).ifPresent($$0x -> this.bZ = $$0x);
+      while ($$5.hasNext()) {
+         Entry<bue> $$6 = (Entry<bue>)$$5.next();
+         int $$7 = $$6.getIntValue();
+         bue $$8 = (bue)$$6.getKey();
+         bue.c $$9 = $$8.dT();
+         if ($$7 > 1 && $$1.test($$8) && $$9 == null) {
+            $$6.setValue($$7 - 1);
+         } else {
+            this.c.remove($$8);
+            $$5.remove();
+            if ($$7 > 1 && $$9 != null) {
+               switch ($$9) {
+                  case e:
+                  case c:
+                  case d:
+                     this.e.put($$8.cH(), $$7 - 1);
+               }
+            }
+         }
       }
 
-      this.a($$0, this.dZ());
+      this.c();
    }
 
-   @Nullable
-   @Override
-   public btz b(esc $$0) {
-      this.gB();
-      return super.b($$0);
-   }
-
-   protected void gB() {
-      this.a(null);
-   }
-
-   @Override
-   public void a(bsp $$0) {
-      super.a($$0);
-      this.gB();
-   }
-
-   protected void a(lo $$0) {
-      for (int $$1 = 0; $$1 < 5; $$1++) {
-         double $$2 = this.af.k() * 0.02;
-         double $$3 = this.af.k() * 0.02;
-         double $$4 = this.af.k() * 0.02;
-         this.dX().a($$0, this.d(1.0), this.dF() + 1.0, this.g(1.0), $$2, $$3, $$4);
+   private void c() {
+      this.h = 0;
+      this.c.sort(this.k);
+      if (this.c.size() == 1) {
+         this.h = this.d.getInt(this.c.get(0));
       }
    }
 
-   @Override
-   public boolean A() {
-      return false;
-   }
+   private void a(arn $$0) {
+      ObjectIterator<Entry<UUID>> $$1 = this.e.object2IntEntrySet().iterator();
 
-   @Override
-   public bsf y() {
-      return this.ce;
-   }
-
-   @Override
-   public bvn a_(int $$0) {
-      int $$1 = $$0 - 300;
-      return $$1 >= 0 && $$1 < this.ce.b() ? bvn.a(this.ce, $$1) : super.a_($$0);
-   }
-
-   protected abstract void gC();
-
-   protected void a(ddt $$0, cnx.g[] $$1, int $$2) {
-      ArrayList<cnx.g> $$3 = Lists.newArrayList($$1);
-      int $$4 = 0;
-
-      while ($$4 < $$2 && !$$3.isEmpty()) {
-         dds $$5 = $$3.remove(this.af.a($$3.size())).a(this, this.af);
-         if ($$5 != null) {
-            $$0.add($$5);
-            $$4++;
+      while ($$1.hasNext()) {
+         Entry<UUID> $$2 = (Entry<UUID>)$$1.next();
+         int $$3 = $$2.getIntValue();
+         bue $$4 = $$0.a((UUID)$$2.getKey());
+         if ($$4 != null) {
+            this.d.put($$4, $$3);
+            this.c.add($$4);
+            $$1.remove();
          }
       }
    }
 
-   @Override
-   public ezh u(float $$0) {
-      float $$1 = azj.h($$0, this.aV, this.aU) * (float) (Math.PI / 180.0);
-      ezh $$2 = new ezh(0.0, this.cS().c() - 1.0, 0.2);
-      return this.o($$0).e($$2.b(-$$1));
+   public int a(bue $$0, int $$1) {
+      boolean $$2 = !this.d.containsKey($$0);
+      int $$3 = this.d.computeInt($$0, ($$1x, $$2x) -> Math.min(150, ($$2x == null ? 0 : $$2x) + $$1));
+      if ($$2) {
+         int $$4 = this.e.removeInt($$0.cH());
+         $$3 += $$4;
+         this.d.put($$0, $$3);
+         this.c.add($$0);
+      }
+
+      this.c();
+      return $$3;
    }
 
-   @Override
-   public boolean gD() {
-      return this.dX().C;
+   public void a(bue $$0) {
+      this.d.removeInt($$0);
+      this.c.remove($$0);
+      this.c();
+   }
+
+   @Nullable
+   private bue d() {
+      return this.c.stream().filter(this.j).findFirst().orElse(null);
+   }
+
+   public int b(@Nullable bue $$0) {
+      return $$0 == null ? this.h : this.d.getInt($$0);
+   }
+
+   public Optional<bva> a() {
+      return Optional.ofNullable(this.d()).filter($$0 -> $$0 instanceof bva).map($$0 -> (bva)$$0);
+   }
+
+   @VisibleForTesting
+   protected static record a(cno a) implements Comparator<bue> {
+      public int a(bue $$0, bue $$1) {
+         if ($$0.equals($$1)) {
+            return 0;
+         } else {
+            int $$2 = this.a.d.getOrDefault($$0, 0);
+            int $$3 = this.a.d.getOrDefault($$1, 0);
+            this.a.h = Math.max(this.a.h, Math.max($$2, $$3));
+            boolean $$4 = cnn.a($$2).d();
+            boolean $$5 = cnn.a($$3).d();
+            if ($$4 != $$5) {
+               return $$4 ? -1 : 1;
+            } else {
+               boolean $$6 = $$0 instanceof com;
+               boolean $$7 = $$1 instanceof com;
+               if ($$6 != $$7) {
+                  return $$6 ? -1 : 1;
+               } else {
+                  return Integer.compare($$3, $$2);
+               }
+            }
+         }
+      }
    }
 }

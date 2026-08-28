@@ -1,20 +1,29 @@
-public record agz(int b) implements zo<agu> {
-   public static final zf<we, agz> a = zo.a(agz::a, agz::new);
+public class agz implements zp<agv> {
+   public static final zg<wf, agz> a = zp.a(agz::a, agz::new);
+   private final bsa b;
 
-   private agz(we $$0) {
-      this($$0.l());
+   public agz(bsa $$0) {
+      this.b = $$0;
    }
 
-   private void a(we $$0) {
-      $$0.c(this.b);
+   private agz(wf $$0) {
+      this.b = bsa.a($$0.readUnsignedByte());
+   }
+
+   private void a(wf $$0) {
+      $$0.l(this.b.a());
    }
 
    @Override
-   public zq<agz> a() {
-      return ags.bk;
+   public zr<agz> a() {
+      return agt.bj;
    }
 
-   public void a(agu $$0) {
+   public void a(agv $$0) {
       $$0.a(this);
+   }
+
+   public bsa b() {
+      return this.b;
    }
 }

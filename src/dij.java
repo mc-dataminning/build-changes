@@ -1,98 +1,104 @@
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import javax.annotation.Nullable;
 
-public class dij extends dhy {
-   public static final MapCodec<dij> a = b(dij::new);
-   public static final dwd b = dvt.aw;
-   public static final int c = 15;
-   protected static final int d = 1;
-   protected static final fab e = dhy.a(1.0, 0.0, 1.0, 15.0, 15.0, 15.0);
-   protected static final fab f = dhy.a(1.0, 0.0, 1.0, 15.0, 16.0, 15.0);
+public class dij extends dhq implements dky {
+   public static final MapCodec<dij> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(
+               ly.e.q().fieldOf("turns_into").forGetter(dij::b),
+               ly.b.q().fieldOf("brush_sound").forGetter(dij::c),
+               ly.b.q().fieldOf("brush_completed_sound").forGetter(dij::d),
+               t()
+            )
+            .apply($$0, dij::new)
+   );
+   private static final dwj c = dvz.bv;
+   public static final int b = 2;
+   private final die d;
+   private final awk e;
+   private final awk f;
 
    @Override
    public MapCodec<dij> a() {
       return a;
    }
 
-   protected dij(dvc.d $$0) {
-      super($$0);
-      this.l(this.F.b().b(b, Integer.valueOf(0)));
+   public dij(die $$0, awk $$1, awk $$2, dvi.d $$3) {
+      super($$3);
+      this.d = $$0;
+      this.e = $$1;
+      this.f = $$2;
+      this.l(this.F.b().b(c, Integer.valueOf(0)));
    }
 
    @Override
-   protected void a(dvd $$0, arm $$1, jg $$2, azr $$3) {
-      if (!$$0.a($$1, $$2)) {
-         $$1.b($$2, true);
-      }
+   protected void a(dvk.a<die, dvj> $$0) {
+      $$0.a(c);
    }
 
    @Override
-   protected void b(dvd $$0, arm $$1, jg $$2, azr $$3) {
-      jg $$4 = $$2.d();
-      if ($$1.u($$4)) {
-         int $$5 = 1;
-
-         while ($$1.a_($$2.c($$5)).a(this)) {
-            $$5++;
-         }
-
-         if ($$5 < 3) {
-            int $$6 = $$0.c(b);
-            if ($$6 == 15) {
-               $$1.b($$4, this.m());
-               dvd $$7 = $$0.b(b, Integer.valueOf(0));
-               $$1.a($$2, $$7, 4);
-               $$1.a($$7, $$4, this, null, false);
-            } else {
-               $$1.a($$2, $$0.b(b, Integer.valueOf($$6 + 1)), 4);
-            }
-         }
-      }
+   public dok a_(dvj $$0) {
+      return dok.c;
    }
 
    @Override
-   protected fab b(dvd $$0, dea $$1, jg $$2, ezm $$3) {
-      return e;
+   public void b(dvj $$0, dfb $$1, jh $$2, dvj $$3, boolean $$4) {
+      $$1.a($$2, this, 2);
    }
 
    @Override
-   protected fab a(dvd $$0, dea $$1, jg $$2, ezm $$3) {
-      return f;
-   }
-
-   @Override
-   protected dvd a(dvd $$0, jl $$1, dvd $$2, dew $$3, jg $$4, jg $$5) {
-      if (!$$0.a($$3, $$4)) {
-         $$3.a($$4, this, 1);
-      }
-
+   public dvj a(dvj $$0, jm $$1, dvj $$2, dfc $$3, jh $$4, jh $$5) {
+      $$3.a($$4, this, 2);
       return super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
    @Override
-   protected boolean a(dvd $$0, dey $$1, jg $$2) {
-      for (jl $$3 : jl.c.a) {
-         dvd $$4 = $$1.a_($$2.a($$3));
-         if ($$4.e() || $$1.b_($$2.a($$3)).a(axf.b)) {
-            return false;
-         }
+   public void a(dvj $$0, arn $$1, jh $$2, azs $$3) {
+      if ($$1.c_($$2) instanceof dsq $$4) {
+         $$4.a($$1);
       }
 
-      dvd $$5 = $$1.a_($$2.e());
-      return ($$5.a(dia.dQ) || $$5.a(awz.I)) && !$$1.a_($$2.d()).n();
+      if (dkz.n($$1.a_($$2.e())) && $$2.v() >= $$1.I_()) {
+         cku $$5 = cku.a($$1, $$2, $$0);
+         $$5.o();
+      }
    }
 
    @Override
-   protected void a(dvd $$0, dev $$1, jg $$2, btz $$3) {
-      $$3.a($$1.ak().k(), 1.0F);
+   public void a(dfb $$0, jh $$1, cku $$2) {
+      ezn $$3 = $$2.cS().f();
+      $$0.c(2001, jh.a((ka)$$3), die.j($$2.q()));
+      $$0.a($$2, eag.f, $$3);
    }
 
    @Override
-   protected void a(dve.a<dhy, dvd> $$0) {
-      $$0.a(b);
+   public void a(dvj $$0, dfb $$1, jh $$2, azs $$3) {
+      if ($$3.a(16) == 0) {
+         jh $$4 = $$2.e();
+         if (dkz.n($$1.a_($$4))) {
+            double $$5 = (double)$$2.u() + $$3.j();
+            double $$6 = (double)$$2.v() - 0.05;
+            double $$7 = (double)$$2.w() + $$3.j();
+            $$1.a(new lj(lr.C, $$0), $$5, $$6, $$7, 0.0, 0.0, 0.0);
+         }
+      }
    }
 
+   @Nullable
    @Override
-   protected boolean a(dvd $$0, ert $$1) {
-      return false;
+   public dsm a(jh $$0, dvj $$1) {
+      return new dsq($$0, $$1);
+   }
+
+   public die b() {
+      return this.d;
+   }
+
+   public awk c() {
+      return this.e;
+   }
+
+   public awk d() {
+      return this.f;
    }
 }

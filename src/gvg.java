@@ -1,7 +1,5 @@
-import javax.annotation.Nullable;
-
-public class gvg extends guc {
-   @Nullable
-   public gzu a;
-   public cvx b = cvx.k;
+public class gvg extends gvl {
+   public float a;
+   public int b;
+   public bub.a c = bub.a.a;
 }

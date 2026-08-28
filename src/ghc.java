@@ -1,21 +1,26 @@
-public class ghc {
-   public static final def a = dfw::a;
-   public static final def b = ($$0, $$1, $$2) -> $$0.f();
-   public static final def c = ($$0, $$1, $$2) -> $$0.i();
+public class ghc extends ghb {
+   private final fjm d;
 
-   private static int a(ddx $$0, jg $$1, def $$2) {
-      return $$0.a($$1, $$2);
+   public ghc(fjm $$0) {
+      this.d = $$0;
    }
 
-   public static int a(ddx $$0, jg $$1) {
-      return a($$0, $$1, a);
+   private static float a(boolean $$0, boolean $$1) {
+      if ($$0 == $$1) {
+         return 0.0F;
+      } else {
+         return $$0 ? 1.0F : -1.0F;
+      }
    }
 
-   public static int b(ddx $$0, jg $$1) {
-      return a($$0, $$1, b);
-   }
-
-   public static int c(ddx $$0, jg $$1) {
-      return a($$0, $$1, c);
+   @Override
+   public void a(boolean $$0, float $$1) {
+      this.a = new cok(this.d.v.e(), this.d.x.e(), this.d.w.e(), this.d.y.e(), this.d.z.e(), this.d.A.e(), this.d.B.e());
+      this.c = a(this.a.a(), this.a.b());
+      this.b = a(this.a.c(), this.a.d());
+      if ($$0) {
+         this.b *= $$1;
+         this.c *= $$1;
+      }
    }
 }

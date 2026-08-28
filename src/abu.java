@@ -1,23 +1,10 @@
-import io.netty.buffer.ByteBuf;
-
-public class abu implements zo<abt> {
-   public static final abu a = new abu();
-   public static final zf<ByteBuf, abu> b = zf.a(a);
-
-   private abu() {
-   }
-
+public interface abu extends aai {
    @Override
-   public zq<abu> a() {
-      return abr.f;
+   default wd b() {
+      return wd.e;
    }
 
-   public void a(abt $$0) {
-      $$0.a(this);
-   }
+   void a(abv var1);
 
-   @Override
-   public boolean d() {
-      return true;
-   }
+   void a(abw var1);
 }

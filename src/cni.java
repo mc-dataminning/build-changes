@@ -1,44 +1,27 @@
-import java.util.Arrays;
+import com.mojang.datafixers.kinds.App;
+import java.util.List;
+import java.util.function.Function;
 
-public enum cni {
-   a(0, awk.BL, awk.BT),
-   b(40, awk.BK, awk.BU),
-   c(80, awk.BM, awk.BU);
-
-   private static final cni[] d = ad.a(values(), $$0 -> Arrays.sort($$0, ($$0x, $$1) -> Integer.compare($$1.e, $$0x.e)));
-   private final int e;
-   private final awj f;
-   private final awj g;
-
-   private cni(final int $$0, final awj $$1, final awj $$2) {
-      this.e = $$0;
-      this.f = $$1;
-      this.g = $$2;
+public class cni {
+   public static bye<cnb> a() {
+      return cag.a(
+         (Function<cag.b<cnb>, ? extends App<cag.c<cnb>, caj<cnb>>>)($$0 -> $$0.group($$0.b(cee.ak), $$0.c(cee.ab), $$0.c(cee.ah), $$0.a(cee.ao))
+               .apply($$0, ($$1, $$2, $$3, $$4) -> ($$3x, $$4x, $$5) -> {
+                     if (!$$4x.p_() && !$$0.<List>a($$4).map($$0xxx -> $$0xxx.stream().anyMatch(cni::a)).isPresent()) {
+                        cmv $$6 = $$0.b($$1);
+                        cnc.c($$4x, $$6);
+                        cnc.c((cna)$$4x);
+                        cnc.b($$4x, $$6);
+                        $$0.<List>a($$4).ifPresent($$0xxx -> $$0xxx.forEach(cnc::c));
+                        return true;
+                     } else {
+                        return false;
+                     }
+                  }))
+      );
    }
 
-   public int a() {
-      return this.e;
-   }
-
-   public awj b() {
-      return this.f;
-   }
-
-   public awj c() {
-      return this.g;
-   }
-
-   public static cni a(int $$0) {
-      for (cni $$1 : d) {
-         if ($$0 >= $$1.e) {
-            return $$1;
-         }
-      }
-
-      return a;
-   }
-
-   public boolean d() {
-      return this == c;
+   private static boolean a(cna $$0) {
+      return $$0.ed().a(cee.ah);
    }
 }

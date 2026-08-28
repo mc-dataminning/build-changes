@@ -1,22 +1,24 @@
 import com.mojang.logging.LogUtils;
 import org.slf4j.Logger;
 
-public class fie extends fhy {
+public class fie extends fig {
    private static final Logger b = LogUtils.getLogger();
-   private static final xh c = xh.c("mco.backup.restoring");
-   private final fep d;
-   private final long e;
-   private final fgi f;
+   private static final xi c = xi.c("mco.download.preparing");
+   private final long d;
+   private final int e;
+   private final fra f;
+   private final String g;
 
-   public fie(fep $$0, long $$1, fgi $$2) {
+   public fie(long $$0, int $$1, String $$2, fra $$3) {
       this.d = $$0;
       this.e = $$1;
-      this.f = $$2;
+      this.f = $$3;
+      this.g = $$2;
    }
 
    @Override
    public void run() {
-      fej $$0 = fej.a();
+      fer $$0 = fer.a();
       int $$1 = 0;
 
       while ($$1 < 25) {
@@ -25,35 +27,36 @@ public class fie extends fhy {
                return;
             }
 
-            $$0.b(this.e, this.d.a);
+            ffw $$2 = $$0.b(this.d, this.e);
             a(1L);
             if (this.d()) {
                return;
             }
 
-            a(this.f.g());
+            a(new fgt(this.f, $$2, this.g, $$0x -> {
+            }));
             return;
-         } catch (ffv var4) {
+         } catch (fgd var4) {
             if (this.d()) {
                return;
             }
 
             a((long)var4.c);
             $$1++;
-         } catch (ffu var5) {
+         } catch (fgc var5) {
             if (this.d()) {
                return;
             }
 
-            b.error("Couldn't restore backup", var5);
-            a(new fgm(var5, this.f));
+            b.error("Couldn't download world data", var5);
+            a(new fgu(var5, this.f));
             return;
          } catch (Exception var6) {
             if (this.d()) {
                return;
             }
 
-            b.error("Couldn't restore backup", var6);
+            b.error("Couldn't download world data", var6);
             this.a(var6);
             return;
          }
@@ -61,7 +64,7 @@ public class fie extends fhy {
    }
 
    @Override
-   public xh a() {
+   public xi a() {
       return c;
    }
 }

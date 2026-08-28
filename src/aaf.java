@@ -1,31 +1,25 @@
-import java.util.Map;
+public record aaf(String b, int c) implements zp<zv> {
+   public static final zg<wf, aaf> a = zp.a(aaf::a, aaf::new);
 
-public class aaf implements zo<zu> {
-   public static final zf<we, aaf> a = zo.a(aaf::a, aaf::new);
-   private final Map<alg<? extends kc<?>>, axr.a> b;
-
-   public aaf(Map<alg<? extends kc<?>>, axr.a> $$0) {
-      this.b = $$0;
+   private aaf(wf $$0) {
+      this($$0.p(), $$0.l());
    }
 
-   private aaf(we $$0) {
-      this.b = $$0.a(we::r, axr.a::b);
-   }
-
-   private void a(we $$0) {
-      $$0.a(this.b, we::b, ($$0x, $$1) -> $$1.a($$0x));
+   private void a(wf $$0) {
+      $$0.a(this.b);
+      $$0.c(this.c);
    }
 
    @Override
-   public zq<aaf> a() {
-      return aag.k;
+   public zr<aaf> a() {
+      return aah.j;
    }
 
-   public void a(zu $$0) {
+   public void a(zv $$0) {
       $$0.a(this);
    }
 
-   public Map<alg<? extends kc<?>>, axr.a> b() {
-      return this.b;
+   public int e() {
+      return this.c;
    }
 }

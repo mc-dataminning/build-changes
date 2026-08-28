@@ -1,24 +1,40 @@
-import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class eil<P extends eik> {
-   public static final eil<eit> a = a("simple_state_provider", eit.b);
-   public static final eil<eiu> b = a("weighted_state_provider", eiu.b);
-   public static final eil<eip> c = a("noise_threshold_provider", eip.b);
-   public static final eil<eio> d = a("noise_provider", eio.g);
-   public static final eil<eim> e = a("dual_noise_provider", eim.b);
-   public static final eil<eir> f = a("rotated_block_provider", eir.b);
-   public static final eil<eiq> g = a("randomized_int_state_provider", eiq.b);
-   private final MapCodec<P> h;
+public record eil(ju<die> b, ju<die> c, eiq d, int e, int f, float g) {
+   public static final Codec<eil> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               kf.a(lz.f).fieldOf("can_grow_through").forGetter($$0x -> $$0x.b),
+               kf.a(lz.f).fieldOf("muddy_roots_in").forGetter($$0x -> $$0x.c),
+               eiq.a.fieldOf("muddy_roots_provider").forGetter($$0x -> $$0x.d),
+               Codec.intRange(1, 12).fieldOf("max_root_width").forGetter($$0x -> $$0x.e),
+               Codec.intRange(1, 64).fieldOf("max_root_length").forGetter($$0x -> $$0x.f),
+               Codec.floatRange(0.0F, 1.0F).fieldOf("random_skew_chance").forGetter($$0x -> $$0x.g)
+            )
+            .apply($$0, eil::new)
+   );
 
-   private static <P extends eik> eil<P> a(String $$0, MapCodec<P> $$1) {
-      return kc.a(lx.T, $$0, new eil<>($$1));
+   public ju<die> a() {
+      return this.b;
    }
 
-   private eil(MapCodec<P> $$0) {
-      this.h = $$0;
+   public ju<die> b() {
+      return this.c;
    }
 
-   public MapCodec<P> a() {
-      return this.h;
+   public eiq c() {
+      return this.d;
+   }
+
+   public int d() {
+      return this.e;
+   }
+
+   public int e() {
+      return this.f;
+   }
+
+   public float f() {
+      return this.g;
    }
 }

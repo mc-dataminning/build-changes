@@ -1,30 +1,81 @@
-import it.unimi.dsi.fastutil.objects.Reference2ObjectArrayMap;
-import java.util.List;
-import java.util.Map;
+import java.util.Optional;
 
-public class gij implements AutoCloseable {
-   private static final List<gig> b = gig.L();
-   public static final int a = b.stream().mapToInt(gig::M).sum();
-   private final Map<gig, fdq> c = ad.a(new Reference2ObjectArrayMap(b.size()), $$0 -> {
-      for (gig $$1 : b) {
-         $$0.put($$1, new fdq($$1.M()));
-      }
-   });
+public class gij implements gih {
+   private final gih.a a;
+   private final gih.a b = gih.a(new fdy(1536));
+   private int c = 255;
+   private int d = 255;
+   private int e = 255;
+   private int f = 255;
 
-   public fdq a(gig $$0) {
-      return this.c.get($$0);
-   }
-
-   public void a() {
-      this.c.values().forEach(fdq::b);
-   }
-
-   public void b() {
-      this.c.values().forEach(fdq::c);
+   public gij(gih.a $$0) {
+      this.a = $$0;
    }
 
    @Override
-   public void close() {
-      this.c.values().forEach(fdq::close);
+   public fef getBuffer(gir $$0) {
+      if ($$0.Q()) {
+         fef $$1 = this.b.getBuffer($$0);
+         return new gij.a($$1, this.c, this.d, this.e, this.f);
+      } else {
+         fef $$2 = this.a.getBuffer($$0);
+         Optional<gir> $$3 = $$0.P();
+         if ($$3.isPresent()) {
+            fef $$4 = this.b.getBuffer($$3.get());
+            gij.a $$5 = new gij.a($$4, this.c, this.d, this.e, this.f);
+            return fei.a($$5, $$2);
+         } else {
+            return $$2;
+         }
+      }
+   }
+
+   public void a(int $$0, int $$1, int $$2, int $$3) {
+      this.c = $$0;
+      this.d = $$1;
+      this.e = $$2;
+      this.f = $$3;
+   }
+
+   public void a() {
+      this.b.b();
+   }
+
+   static record a(fef a, int b) implements fef {
+      public a(fef $$0, int $$1, int $$2, int $$3, int $$4) {
+         this($$0, axv.a($$4, $$1, $$2, $$3));
+      }
+
+      @Override
+      public fef a(float $$0, float $$1, float $$2) {
+         this.a.a($$0, $$1, $$2).a(this.b);
+         return this;
+      }
+
+      @Override
+      public fef a(int $$0, int $$1, int $$2, int $$3) {
+         return this;
+      }
+
+      @Override
+      public fef a(float $$0, float $$1) {
+         this.a.a($$0, $$1);
+         return this;
+      }
+
+      @Override
+      public fef a(int $$0, int $$1) {
+         return this;
+      }
+
+      @Override
+      public fef b(int $$0, int $$1) {
+         return this;
+      }
+
+      @Override
+      public fef b(float $$0, float $$1, float $$2) {
+         return this;
+      }
    }
 }

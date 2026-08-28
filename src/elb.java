@@ -1,24 +1,57 @@
-import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
+import java.util.Optional;
+import java.util.stream.Stream;
+import org.apache.commons.lang3.mutable.MutableBoolean;
 
-public class elb extends ekx {
-   public static final MapCodec<elb> a = ays.m.fieldOf("chance").xmap(elb::new, $$0 -> $$0.c);
-   private final int c;
+public record elb(jq<edx<?, ?>> e, List<ele> f) {
+   public static final Codec<elb> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(edx.b.fieldOf("feature").forGetter($$0x -> $$0x.e), ele.b.listOf().fieldOf("placement").forGetter($$0x -> $$0x.f)).apply($$0, elb::new)
+   );
+   public static final Codec<jq<elb>> b = ale.a(lz.aR, a);
+   public static final Codec<ju<elb>> c = kf.a(lz.aR, a);
+   public static final Codec<List<ju<elb>>> d = kf.a(lz.aR, a, true).listOf();
 
-   private elb(int $$0) {
-      this.c = $$0;
+   public boolean a(dfy $$0, dxg $$1, azs $$2, jh $$3) {
+      return this.a(new elc($$0, $$1, Optional.empty()), $$2, $$3);
    }
 
-   public static elb a(int $$0) {
-      return new elb($$0);
+   public boolean b(dfy $$0, dxg $$1, azs $$2, jh $$3) {
+      return this.a(new elc($$0, $$1, Optional.of(this)), $$2, $$3);
+   }
+
+   private boolean a(elc $$0, azs $$1, jh $$2) {
+      Stream<jh> $$3 = Stream.of($$2);
+
+      for (ele $$4 : this.f) {
+         $$3 = $$3.flatMap($$3x -> $$4.a_($$0, $$1, $$3x));
+      }
+
+      edx<?, ?> $$5 = this.e.a();
+      MutableBoolean $$6 = new MutableBoolean();
+      $$3.forEach($$4 -> {
+         if ($$5.a($$0.d(), $$0.f(), $$1, $$4)) {
+            $$6.setTrue();
+         }
+      });
+      return $$6.isTrue();
+   }
+
+   public Stream<edx<?, ?>> a() {
+      return this.e.a().a();
    }
 
    @Override
-   protected boolean a(ekw $$0, azr $$1, jg $$2) {
-      return $$1.i() < 1.0F / (float)this.c;
+   public String toString() {
+      return "Placed " + this.e;
    }
 
-   @Override
-   public ekz<?> b() {
-      return ekz.b;
+   public jq<edx<?, ?>> b() {
+      return this.e;
+   }
+
+   public List<ele> c() {
+      return this.f;
    }
 }

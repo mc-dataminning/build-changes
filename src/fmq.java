@@ -1,40 +1,66 @@
-import java.util.Locale;
+public class fmq extends flf {
+   private static final fmu a = new fmu(
+      ali.b("widget/tab_selected"), ali.b("widget/tab"), ali.b("widget/tab_selected_highlighted"), ali.b("widget/tab_highlighted")
+   );
+   private static final int b = 3;
+   private static final int c = 1;
+   private static final int d = 1;
+   private static final int e = 4;
+   private static final int f = 2;
+   private final fnl m;
+   private final fnk n;
 
-public class fmq extends fmo {
-   private static final int f = 30;
-   private static final double g = 33.333333333333336;
-
-   public fmq(fkk $$0, bmz $$1) {
-      super($$0, $$1);
+   public fmq(fnl $$0, fnk $$1, int $$2, int $$3) {
+      super(0, 0, $$2, $$3, $$1.a());
+      this.m = $$0;
+      this.n = $$1;
    }
 
    @Override
-   protected void d(fkm $$0, int $$1, int $$2, int $$3) {
-      this.a($$0, "30 FPS", $$1 + 1, $$3 - 60 + 1);
-      this.a($$0, "60 FPS", $$1 + 1, $$3 - 30 + 1);
-      $$0.a(gig.G(), $$1, $$1 + $$2 - 1, $$3 - 30, -1);
-      int $$4 = fja.Q().n.h().c();
-      if ($$4 > 0 && $$4 <= 250) {
-         $$0.a(gig.G(), $$1, $$1 + $$2 - 1, $$3 - this.b(1.0E9 / (double)$$4) - 1, -16711681);
+   public void b(fku $$0, int $$1, int $$2, float $$3) {
+      $$0.a(gir::B, a.a(this.b(), this.B()), this.D(), this.E(), this.g, this.h);
+      fks $$4 = fji.Q().h;
+      int $$5 = this.j ? -1 : -6250336;
+      this.a($$0, $$4, $$5);
+      if (this.b()) {
+         this.a($$0, this.D() + 2, this.E() + 2, this.F() - 2, this.G());
+         this.b($$0, $$4, $$5);
       }
    }
 
-   @Override
-   protected String a(double $$0) {
-      return String.format(Locale.ROOT, "%d ms", (int)Math.round(c($$0)));
+   protected void a(fku $$0, int $$1, int $$2, int $$3, int $$4) {
+      fra.a($$0, fra.g, $$1, $$2, 0.0F, 0.0F, $$3 - $$1, $$4 - $$2);
+   }
+
+   public void a(fku $$0, fks $$1, int $$2) {
+      int $$3 = this.D() + 1;
+      int $$4 = this.E() + (this.b() ? 0 : 3);
+      int $$5 = this.D() + this.y() - 1;
+      int $$6 = this.E() + this.w();
+      a($$0, $$1, this.z(), $$3, $$4, $$5, $$6, $$2);
+   }
+
+   private void b(fku $$0, fks $$1, int $$2) {
+      int $$3 = Math.min($$1.a(this.z()), this.y() - 4);
+      int $$4 = this.D() + (this.y() - $$3) / 2;
+      int $$5 = this.E() + this.w() - 2;
+      $$0.a($$4, $$5, $$4 + $$3, $$5 + 1, $$2);
    }
 
    @Override
-   protected int b(double $$0) {
-      return (int)Math.round(c($$0) * 60.0 / 33.333333333333336);
+   protected void a(fpf $$0) {
+      $$0.a(fpe.a, xi.a("gui.narrate.tab", this.n.a()));
    }
 
    @Override
-   protected int a(long $$0) {
-      return this.a(c((double)$$0), 0.0, -16711936, 28.0, -256, 56.0, -65536);
+   public void a(hdf $$0) {
    }
 
-   private static double c(double $$0) {
-      return $$0 / 1000000.0;
+   public fnk a() {
+      return this.n;
+   }
+
+   public boolean b() {
+      return this.m.a() == this.n;
    }
 }

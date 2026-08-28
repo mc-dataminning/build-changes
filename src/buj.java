@@ -1,47 +1,55 @@
-import com.google.common.collect.Maps;
-import com.mojang.datafixers.util.Either;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Map;
-import java.util.function.Function;
+import com.google.common.base.Predicates;
+import java.util.function.Predicate;
 
-public record buj(alg<eub> c, Map<buh, Float> d) {
-   public static final Codec<Map<buh, Float>> a = Codec.either(Codec.FLOAT, Codec.unboundedMap(buh.k, Codec.FLOAT))
-      .xmap($$0 -> (Map)$$0.map(buj::a, Function.identity()), $$0 -> {
-         boolean $$1 = $$0.values().stream().distinct().count() == 1L;
-         boolean $$2 = $$0.keySet().containsAll(Arrays.asList(buh.i));
-         return $$1 && $$2 ? Either.left($$0.values().stream().findFirst().orElse(0.0F)) : Either.right($$0);
-      });
-   public static final Codec<buj> b = RecordCodecBuilder.create(
-      $$0 -> $$0.group(alg.a(ly.bd).fieldOf("loot_table").forGetter(buj::a), a.optionalFieldOf("slot_drop_chances", Map.of()).forGetter(buj::b))
-            .apply($$0, buj::new)
-   );
+public final class buj {
+   public static final Predicate<bue> a = bue::bM;
+   public static final Predicate<bue> b = $$0 -> $$0.bM() && $$0 instanceof bva;
+   public static final Predicate<bue> c = $$0 -> $$0.bM() && !$$0.cb() && !$$0.ca();
+   public static final Predicate<bue> d = $$0 -> $$0 instanceof brw && $$0.bM();
+   public static final Predicate<bue> e = $$0 -> !($$0 instanceof com) || !$$0.R_() && !((com)$$0).f();
+   public static final Predicate<bue> f = $$0 -> !$$0.R_();
+   public static final Predicate<bue> g = f.and(bue::bO);
+   public static final Predicate<bue> h = f.and(bue::bI);
 
-   public buj(alg<eub> $$0, float $$1) {
-      this($$0, a($$1));
+   private buj() {
    }
 
-   private static Map<buh, Float> a(float $$0) {
-      return a(List.of(buh.values()), $$0);
+   public static Predicate<bue> a(double $$0, double $$1, double $$2, double $$3) {
+      double $$4 = $$3 * $$3;
+      return $$4x -> $$4x != null && $$4x.i($$0, $$1, $$2) <= $$4;
    }
 
-   private static Map<buh, Float> a(List<buh> $$0, float $$1) {
-      Map<buh, Float> $$2 = Maps.newHashMap();
-
-      for (buh $$3 : $$0) {
-         $$2.put($$3, $$1);
-      }
-
-      return $$2;
+   public static Predicate<bue> a(bue $$0) {
+      fau $$1 = $$0.cs();
+      fau.a $$2 = $$1 == null ? fau.a.a : $$1.l();
+      return (Predicate<bue>)($$2 == fau.a.b ? Predicates.alwaysFalse() : f.and($$3 -> {
+         if (!$$3.bJ()) {
+            return false;
+         } else if (!$$0.dX().C || $$3 instanceof com && ((com)$$3).g()) {
+            fau $$4 = $$3.cs();
+            fau.a $$5 = $$4 == null ? fau.a.a : $$4.l();
+            if ($$5 == fau.a.b) {
+               return false;
+            } else {
+               boolean $$6 = $$1 != null && $$1.a($$4);
+               return ($$2 == fau.a.d || $$5 == fau.a.d) && $$6 ? false : $$2 != fau.a.c && $$5 != fau.a.c || $$6;
+            }
+         } else {
+            return false;
+         }
+      }));
    }
 
-   public alg<eub> a() {
-      return this.c;
-   }
+   public static Predicate<bue> b(bue $$0) {
+      return $$1 -> {
+         while ($$1.ca()) {
+            $$1 = $$1.dl();
+            if ($$1 == $$0) {
+               return false;
+            }
+         }
 
-   public Map<buh, Float> b() {
-      return this.d;
+         return true;
+      };
    }
 }

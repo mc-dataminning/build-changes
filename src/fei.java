@@ -1,73 +1,142 @@
-import com.google.common.collect.Lists;
-import java.net.InetSocketAddress;
-import java.net.Socket;
-import java.net.SocketAddress;
-import java.util.Comparator;
-import java.util.List;
-import org.apache.commons.io.IOUtils;
+import java.util.function.Consumer;
 
 public class fei {
-   public static List<ffi> a(fei.a... $$0) {
-      for (fei.a $$1 : $$0) {
-         a($$1.j);
-      }
-
-      List<ffi> $$2 = Lists.newArrayList();
-
-      for (fei.a $$3 : $$0) {
-         $$2.add(new ffi($$3.i, a($$3.j)));
-      }
-
-      $$2.sort(Comparator.comparingInt(ffi::a));
-      return $$2;
+   public static fef a() {
+      throw new IllegalArgumentException();
    }
 
-   private static int a(String $$0) {
-      int $$1 = 700;
-      long $$2 = 0L;
-      Socket $$3 = null;
+   public static fef a(fef $$0) {
+      return $$0;
+   }
 
-      for (int $$4 = 0; $$4 < 5; $$4++) {
-         try {
-            SocketAddress $$5 = new InetSocketAddress($$0, 80);
-            $$3 = new Socket();
-            long $$6 = b();
-            $$3.connect($$5, 700);
-            $$2 += b() - $$6;
-         } catch (Exception var12) {
-            $$2 += 700L;
-         } finally {
-            IOUtils.closeQuietly($$3);
+   public static fef a(fef $$0, fef $$1) {
+      return new fei.a($$0, $$1);
+   }
+
+   public static fef a(fef... $$0) {
+      return new fei.b($$0);
+   }
+
+   static class a implements fef {
+      private final fef a;
+      private final fef b;
+
+      public a(fef $$0, fef $$1) {
+         if ($$0 == $$1) {
+            throw new IllegalArgumentException("Duplicate delegates");
+         } else {
+            this.a = $$0;
+            this.b = $$1;
          }
       }
 
-      return (int)((double)$$2 / 5.0);
+      @Override
+      public fef a(float $$0, float $$1, float $$2) {
+         this.a.a($$0, $$1, $$2);
+         this.b.a($$0, $$1, $$2);
+         return this;
+      }
+
+      @Override
+      public fef a(int $$0, int $$1, int $$2, int $$3) {
+         this.a.a($$0, $$1, $$2, $$3);
+         this.b.a($$0, $$1, $$2, $$3);
+         return this;
+      }
+
+      @Override
+      public fef a(float $$0, float $$1) {
+         this.a.a($$0, $$1);
+         this.b.a($$0, $$1);
+         return this;
+      }
+
+      @Override
+      public fef a(int $$0, int $$1) {
+         this.a.a($$0, $$1);
+         this.b.a($$0, $$1);
+         return this;
+      }
+
+      @Override
+      public fef b(int $$0, int $$1) {
+         this.a.b($$0, $$1);
+         this.b.b($$0, $$1);
+         return this;
+      }
+
+      @Override
+      public fef b(float $$0, float $$1, float $$2) {
+         this.a.b($$0, $$1, $$2);
+         this.b.b($$0, $$1, $$2);
+         return this;
+      }
+
+      @Override
+      public void a(float $$0, float $$1, float $$2, int $$3, float $$4, float $$5, int $$6, int $$7, float $$8, float $$9, float $$10) {
+         this.a.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8, $$9, $$10);
+         this.b.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8, $$9, $$10);
+      }
    }
 
-   private static long b() {
-      return ad.c();
-   }
+   static record b(fef[] a) implements fef {
+      b(fef[] a) {
+         for (int $$1 = 0; $$1 < a.length; $$1++) {
+            for (int $$2 = $$1 + 1; $$2 < a.length; $$2++) {
+               if (a[$$1] == a[$$2]) {
+                  throw new IllegalArgumentException("Duplicate delegates");
+               }
+            }
+         }
 
-   public static List<ffi> a() {
-      return a(fei.a.values());
-   }
+         this.a = a;
+      }
 
-   static enum a {
-      a("us-east-1", "ec2.us-east-1.amazonaws.com"),
-      b("us-west-2", "ec2.us-west-2.amazonaws.com"),
-      c("us-west-1", "ec2.us-west-1.amazonaws.com"),
-      d("eu-west-1", "ec2.eu-west-1.amazonaws.com"),
-      e("ap-southeast-1", "ec2.ap-southeast-1.amazonaws.com"),
-      f("ap-southeast-2", "ec2.ap-southeast-2.amazonaws.com"),
-      g("ap-northeast-1", "ec2.ap-northeast-1.amazonaws.com"),
-      h("sa-east-1", "ec2.sa-east-1.amazonaws.com");
+      private void a(Consumer<fef> $$0) {
+         for (fef $$1 : this.a) {
+            $$0.accept($$1);
+         }
+      }
 
-      final String i;
-      final String j;
+      @Override
+      public fef a(float $$0, float $$1, float $$2) {
+         this.a($$3 -> $$3.a($$0, $$1, $$2));
+         return this;
+      }
 
-      private a(final String $$0, final String $$1) {
-         this.i = $$0;
-         this.j = $$1;
+      @Override
+      public fef a(int $$0, int $$1, int $$2, int $$3) {
+         this.a($$4 -> $$4.a($$0, $$1, $$2, $$3));
+         return this;
+      }
+
+      @Override
+      public fef a(float $$0, float $$1) {
+         this.a($$2 -> $$2.a($$0, $$1));
+         return this;
+      }
+
+      @Override
+      public fef a(int $$0, int $$1) {
+         this.a($$2 -> $$2.a($$0, $$1));
+         return this;
+      }
+
+      @Override
+      public fef b(int $$0, int $$1) {
+         this.a($$2 -> $$2.b($$0, $$1));
+         return this;
+      }
+
+      @Override
+      public fef b(float $$0, float $$1, float $$2) {
+         this.a($$3 -> $$3.b($$0, $$1, $$2));
+         return this;
+      }
+
+      @Override
+      public void a(float $$0, float $$1, float $$2, int $$3, float $$4, float $$5, int $$6, int $$7, float $$8, float $$9, float $$10) {
+         this.a($$11 -> $$11.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8, $$9, $$10));
       }
    }
 }

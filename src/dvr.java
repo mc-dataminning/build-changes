@@ -1,17 +1,18 @@
-public enum dvr implements baf {
-   a("floor"),
-   b("ceiling"),
-   c("single_wall"),
-   d("double_wall");
+import java.util.function.Predicate;
+import javax.annotation.Nullable;
 
-   private final String e;
+public class dvr implements Predicate<dvj> {
+   private final die a;
 
-   private dvr(final String $$0) {
-      this.e = $$0;
+   public dvr(die $$0) {
+      this.a = $$0;
    }
 
-   @Override
-   public String c() {
-      return this.e;
+   public static dvr a(die $$0) {
+      return new dvr($$0);
+   }
+
+   public boolean a(@Nullable dvj $$0) {
+      return $$0 != null && $$0.a(this.a);
    }
 }

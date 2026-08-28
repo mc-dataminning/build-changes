@@ -1,115 +1,73 @@
 import com.mojang.serialization.MapCodec;
+import java.util.Optional;
 
-public class dlr extends dln {
-   public static final MapCodec<dlr> a = b(dlr::new);
-   private static final double c = 0.2058;
-   private static final double e = 0.1568;
-   private static final double f = 0.1274;
-   private static final int g = 20;
-   protected static final fab b = dhy.a(1.0, 0.0, 1.0, 15.0, 15.0, 15.0);
-
-   @Override
-   public MapCodec<dlr> a() {
-      return a;
-   }
-
-   public dlr(dvc.d $$0) {
-      super($$0);
-   }
-
-   private static boolean c(btz $$0) {
-      return $$0 instanceof buv || $$0 instanceof cqf || $$0 instanceof ckr || $$0 instanceof cqh;
+public abstract class dlr extends dlq implements dih {
+   protected dlr(dvi.d $$0, jm $$1, fah $$2, boolean $$3) {
+      super($$0, $$1, $$2, $$3);
    }
 
    @Override
-   protected fab b(dvd $$0, dea $$1, jg $$2, ezm $$3) {
-      return b;
+   protected abstract MapCodec<? extends dlr> a();
+
+   protected dvj a(dvj $$0, dvj $$1) {
+      return $$1;
    }
 
    @Override
-   public void a(dev $$0, dvd $$1, jg $$2, btz $$3, float $$4) {
-      $$3.a(awk.mz, 1.0F, 1.0F);
-      if (!$$0.C) {
-         $$0.a($$3, (byte)54);
+   protected dvj a(dvj $$0, jm $$1, dvj $$2, dfc $$3, jh $$4, jh $$5) {
+      if ($$1 == this.a.g() && !$$0.a($$3, $$4)) {
+         $$3.a($$4, this, 1);
       }
 
-      if ($$3.a($$4, 0.2F, $$0.ak().l())) {
-         $$3.a(this.aK.g(), this.aK.a() * 0.5F, this.aK.b() * 0.75F);
-      }
-   }
-
-   @Override
-   protected void a(dvd $$0, dev $$1, jg $$2, btz $$3) {
-      if (this.a($$2, $$3)) {
-         this.a($$3, $$2);
-         this.d($$3);
-         this.a($$1, $$3);
-      }
-
-      super.a($$0, $$1, $$2, $$3);
-   }
-
-   private boolean a(jg $$0, btz $$1) {
-      if ($$1.aJ()) {
-         return false;
-      } else if ($$1.dE() > (double)$$0.v() + 0.9375 - 1.0E-7) {
-         return false;
-      } else if ($$1.dA().e >= -0.1568) {
-         return false;
+      dls $$6 = this.c();
+      if ($$1 == this.a && !$$2.a(this) && !$$2.a($$6)) {
+         return this.a($$0, $$6.a($$3));
       } else {
-         double $$2 = Math.abs((double)$$0.u() + 0.5 - $$1.dC());
-         double $$3 = Math.abs((double)$$0.w() + 0.5 - $$1.dI());
-         double $$4 = 0.4375 + (double)($$1.ds() / 2.0F);
-         return $$2 + 1.0E-7 > $$4 || $$3 + 1.0E-7 > $$4;
-      }
-   }
-
-   private void a(btz $$0, jg $$1) {
-      if ($$0 instanceof arn && $$0.dX().aa() % 20L == 0L) {
-         an.K.a((arn)$$0, $$0.dX().a_($$1));
-      }
-   }
-
-   private void d(btz $$0) {
-      ezh $$1 = $$0.dA();
-      if ($$0.dA().e < -0.2058) {
-         double $$2 = $$0.dA().e / 0.98F + 0.08;
-         double $$3 = -0.1274 / $$2;
-         $$0.h(new ezh($$1.d * $$3, -0.1274, $$1.f * $$3));
-      } else {
-         $$0.h(new ezh($$1.d, -0.1274, $$1.f));
-      }
-
-      $$0.n();
-   }
-
-   private void a(dev $$0, btz $$1) {
-      if (c($$1)) {
-         if ($$0.A.a(5) == 0) {
-            $$1.a(awk.mz, 1.0F, 1.0F);
+         if (this.b) {
+            $$3.a($$4, erl.c, erl.c.a($$3));
          }
 
-         if (!$$0.C && $$0.A.a(5) == 0) {
-            $$0.a($$1, (byte)53);
-         }
+         return super.a($$0, $$1, $$2, $$3, $$4, $$5);
       }
    }
 
-   public static void a(btz $$0) {
-      a($$0, 5);
+   @Override
+   public cwb a(dfe $$0, jh $$1, dvj $$2) {
+      return new cwb(this.c());
    }
 
-   public static void b(btz $$0) {
-      a($$0, 10);
+   @Override
+   public boolean b(dfe $$0, jh $$1, dvj $$2) {
+      Optional<jh> $$3 = this.a($$0, $$1, $$2.b());
+      return $$3.isPresent() && this.c().h($$0.a_($$3.get().a(this.a)));
    }
 
-   private static void a(btz $$0, int $$1) {
-      if ($$0.dX().C) {
-         dvd $$2 = dia.pg.m();
+   @Override
+   public boolean a(dfb $$0, azs $$1, jh $$2, dvj $$3) {
+      return true;
+   }
 
-         for (int $$3 = 0; $$3 < $$1; $$3++) {
-            $$0.dX().a(new li(lq.b, $$2), $$0.dC(), $$0.dE(), $$0.dI(), 0.0, 0.0, 0.0);
-         }
+   @Override
+   public void a(arn $$0, azs $$1, jh $$2, dvj $$3) {
+      Optional<jh> $$4 = this.a($$0, $$2, $$3.b());
+      if ($$4.isPresent()) {
+         dvj $$5 = $$0.a_($$4.get());
+         ((dls)$$5.b()).a($$0, $$1, $$4.get(), $$5);
       }
+   }
+
+   private Optional<jh> a(deg $$0, jh $$1, die $$2) {
+      return l.a($$0, $$1, $$2, this.a, this.c());
+   }
+
+   @Override
+   protected boolean a(dvj $$0, czs $$1) {
+      boolean $$2 = super.a($$0, $$1);
+      return $$2 && $$1.n().a(this.c().j()) ? false : $$2;
+   }
+
+   @Override
+   protected die b() {
+      return this;
    }
 }

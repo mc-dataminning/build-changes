@@ -1,53 +1,30 @@
-public class gev extends gge {
-   gev(gbx $$0, double $$1, double $$2, double $$3) {
-      super($$0, $$1, $$2, $$3, 0.0, 0.0, 0.0);
-      this.C = true;
-      this.B = 0.86F;
-      this.j *= 0.01F;
-      this.k *= 0.01F;
-      this.l *= 0.01F;
-      this.k += 0.1;
-      this.D *= 1.5F;
-      this.t = 16;
-      this.n = false;
+public class gev extends geh {
+   private static final int a = 12235202;
+
+   protected gev(gci $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, float $$7, ggk $$8) {
+      super($$0, $$1, $$2, $$3, 0.7F, 0.6F, 0.7F, $$4, $$5 + 0.15F, $$6, $$7, $$8, 0.5F, 7, 0.5F, false);
+      float $$9 = (float)Math.random() * 0.2F;
+      this.v = (float)axv.b(12235202) / 255.0F - $$9;
+      this.w = (float)axv.c(12235202) / 255.0F - $$9;
+      this.x = (float)axv.d(12235202) / 255.0F - $$9;
    }
 
    @Override
-   public gfi b() {
-      return gfi.b;
+   public void a() {
+      this.u = 0.88F * this.u;
+      this.B = 0.92F * this.B;
+      super.a();
    }
 
-   @Override
-   public float b(float $$0) {
-      return this.D * azj.a(((float)this.s + $$0) / (float)this.t * 32.0F, 0.0F, 1.0F);
-   }
+   public static class a implements gfs<lv> {
+      private final ggk a;
 
-   public static class a implements gfh<lu> {
-      private final gfz a;
-
-      public a(gfz $$0) {
+      public a(ggk $$0) {
          this.a = $$0;
       }
 
-      public gfe a(lu $$0, gbx $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         gev $$8 = new gev($$1, $$2, $$3 + 0.5, $$4);
-         $$8.a(this.a);
-         $$8.a(1.0F, 1.0F, 1.0F);
-         return $$8;
-      }
-   }
-
-   public static class b implements gfh<lu> {
-      private final gfz a;
-
-      public b(gfz $$0) {
-         this.a = $$0;
-      }
-
-      public gfe a(lu $$0, gbx $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         gev $$8 = new gev($$1, $$2, $$3, $$4);
-         $$8.a(this.a);
-         return $$8;
+      public gfp a(lv $$0, gci $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new gev($$1, $$2, $$3, $$4, $$5, $$6, $$7, 1.0F, this.a);
       }
    }
 }

@@ -1,138 +1,60 @@
-public class ceg extends ceh {
-   private boolean p;
+import com.google.common.collect.Iterables;
+import it.unimi.dsi.fastutil.objects.Object2BooleanOpenHashMap;
+import java.util.List;
+import java.util.Optional;
+import java.util.function.Predicate;
+import java.util.stream.Stream;
 
-   public ceg(bux $$0, dev $$1) {
-      super($$0, $$1);
+public class ceg {
+   private static final ceg a = new ceg();
+   private final List<bva> b;
+   private final Predicate<bva> c;
+
+   private ceg() {
+      this.b = List.of();
+      this.c = $$0 -> false;
    }
 
-   @Override
-   protected eru a(int $$0) {
-      this.o = new esa();
-      this.o.a(true);
-      return new eru(this.o, $$0);
+   public ceg(bva $$0, List<bva> $$1) {
+      this.b = $$1;
+      Object2BooleanOpenHashMap<bva> $$2 = new Object2BooleanOpenHashMap($$1.size());
+      Predicate<bva> $$3 = $$1x -> cfk.b($$0, $$1x);
+      this.c = $$2x -> $$2.computeIfAbsent($$2x, $$3);
    }
 
-   @Override
-   protected boolean a() {
-      return this.a.aJ() || this.a.bo() || this.a.ca();
+   public static ceg a() {
+      return a;
    }
 
-   @Override
-   protected ezh b() {
-      return new ezh(this.a.dC(), (double)this.t(), this.a.dI());
-   }
-
-   @Override
-   public ers a(jg $$0, int $$1) {
-      dxj $$2 = this.b.P().a(ki.a($$0.u()), ki.a($$0.w()));
-      if ($$2 == null) {
-         return null;
-      } else {
-         if ($$2.a_($$0).l()) {
-            jg.a $$3 = $$0.k().c(jl.a);
-
-            while ($$3.v() > this.b.I_() && $$2.a_($$3).l()) {
-               $$3.c(jl.a);
-            }
-
-            if ($$3.v() > this.b.I_()) {
-               return super.a($$3.d(), $$1);
-            }
-
-            $$3.q($$0.v() + 1);
-
-            while ($$3.v() <= this.b.an() && $$2.a_($$3).l()) {
-               $$3.c(jl.b);
-            }
-
-            $$0 = $$3;
-         }
-
-         if (!$$2.a_($$0).e()) {
-            return super.a($$0, $$1);
-         } else {
-            jg.a $$4 = $$0.k().c(jl.b);
-
-            while ($$4.v() <= this.b.an() && $$2.a_($$4).e()) {
-               $$4.c(jl.b);
-            }
-
-            return super.a($$4.j(), $$1);
+   public Optional<bva> a(Predicate<bva> $$0) {
+      for (bva $$1 : this.b) {
+         if ($$0.test($$1) && this.c.test($$1)) {
+            return Optional.of($$1);
          }
       }
+
+      return Optional.empty();
    }
 
-   @Override
-   public ers a(btz $$0, int $$1) {
-      return this.a($$0.dx(), $$1);
+   public Iterable<bva> b(Predicate<bva> $$0) {
+      return Iterables.filter(this.b, $$1 -> $$0.test($$1) && this.c.test($$1));
    }
 
-   private int t() {
-      if (this.a.bk() && this.q()) {
-         int $$0 = this.a.dD();
-         dvd $$1 = this.b.a_(jg.a(this.a.dC(), (double)$$0, this.a.dI()));
-         int $$2 = 0;
-
-         while ($$1.a(dia.G)) {
-            $$1 = this.b.a_(jg.a(this.a.dC(), (double)(++$$0), this.a.dI()));
-            if (++$$2 > 16) {
-               return this.a.dD();
-            }
-         }
-
-         return $$0;
-      } else {
-         return azj.a(this.a.dE() + 0.5);
-      }
+   public Stream<bva> c(Predicate<bva> $$0) {
+      return this.b.stream().filter($$1 -> $$0.test($$1) && this.c.test($$1));
    }
 
-   @Override
-   protected void W_() {
-      super.W_();
-      if (this.p) {
-         if (this.b.h(jg.a(this.a.dC(), this.a.dE() + 0.5, this.a.dI()))) {
-            return;
-         }
+   public boolean a(bva $$0) {
+      return this.b.contains($$0) && this.c.test($$0);
+   }
 
-         for (int $$0 = 0; $$0 < this.c.e(); $$0++) {
-            erq $$1 = this.c.a($$0);
-            if (this.b.h(new jg($$1.a, $$1.b, $$1.c))) {
-               this.c.b($$0);
-               return;
-            }
+   public boolean d(Predicate<bva> $$0) {
+      for (bva $$1 : this.b) {
+         if ($$0.test($$1) && this.c.test($$1)) {
+            return true;
          }
       }
-   }
 
-   protected boolean a(erv $$0) {
-      if ($$0 == erv.j) {
-         return false;
-      } else {
-         return $$0 == erv.i ? false : $$0 != erv.b;
-      }
-   }
-
-   public void b(boolean $$0) {
-      this.o.b($$0);
-   }
-
-   public boolean e() {
-      return this.o.d();
-   }
-
-   public void c(boolean $$0) {
-      this.o.a($$0);
-   }
-
-   public boolean f() {
-      return this.o.d();
-   }
-
-   public void d(boolean $$0) {
-      this.p = $$0;
-   }
-
-   public void e(boolean $$0) {
-      this.o.d($$0);
+      return false;
    }
 }

@@ -1,59 +1,81 @@
-import it.unimi.dsi.fastutil.objects.Object2ObjectLinkedOpenHashMap;
-import java.util.SequencedMap;
+import java.util.Set;
+import javax.annotation.Nullable;
 
-public class gie {
-   private final gij a = new gij();
-   private final gik b;
-   private final ghw.a c;
-   private final ghw.a d;
-   private final ghy e;
+public class gie implements gil.a {
+   public static final ali a = gil.a;
+   public static final ali b = ali.b("translucent");
+   public static final ali c = ali.b("item_entity");
+   public static final ali d = ali.b("particles");
+   public static final ali e = ali.b("weather");
+   public static final ali f = ali.b("clouds");
+   public static final ali g = ali.b("entity_outline");
+   public static final Set<ali> h = Set.of(a);
+   public static final Set<ali> i = Set.of(a, g);
+   public static final Set<ali> j = Set.of(a, b, c, d, e, f);
+   public fdn<fcl> k = fdn.a();
+   @Nullable
+   public fdn<fcl> l;
+   @Nullable
+   public fdn<fcl> m;
+   @Nullable
+   public fdn<fcl> n;
+   @Nullable
+   public fdn<fcl> o;
+   @Nullable
+   public fdn<fcl> p;
+   @Nullable
+   public fdn<fcl> q;
 
-   public gie(int $$0) {
-      this.b = gik.a($$0);
-      SequencedMap<gig, fdq> $$1 = ad.a(new Object2ObjectLinkedOpenHashMap(), $$0x -> {
-         $$0x.put(gir.h(), this.a.a(gig.c()));
-         $$0x.put(gir.i(), this.a.a(gig.e()));
-         $$0x.put(gir.a(), this.a.a(gig.d()));
-         $$0x.put(gir.j(), this.a.a(gig.f()));
-         a($$0x, gir.b());
-         a($$0x, gir.c());
-         a($$0x, gir.d());
-         a($$0x, gir.e());
-         a($$0x, gir.f());
-         $$0x.put(gir.g(), new fdq(786432));
-         a($$0x, gig.j());
-         a($$0x, gig.l());
-         a($$0x, gig.k());
-         a($$0x, gig.m());
-         a($$0x, gig.i());
-      });
-      this.c = ghw.a($$1, new fdq(786432));
-      this.e = new ghy(this.c);
-      SequencedMap<gig, fdq> $$2 = ad.a(new Object2ObjectLinkedOpenHashMap(), $$0x -> hae.l.forEach($$1x -> a($$0x, $$1x)));
-      this.d = ghw.a($$2, new fdq(0));
+   @Override
+   public void a(ali $$0, fdn<fcl> $$1) {
+      if ($$0.equals(a)) {
+         this.k = $$1;
+      } else if ($$0.equals(b)) {
+         this.l = $$1;
+      } else if ($$0.equals(c)) {
+         this.m = $$1;
+      } else if ($$0.equals(d)) {
+         this.n = $$1;
+      } else if ($$0.equals(e)) {
+         this.o = $$1;
+      } else if ($$0.equals(f)) {
+         this.p = $$1;
+      } else {
+         if (!$$0.equals(g)) {
+            throw new IllegalArgumentException("No target with id " + $$0);
+         }
+
+         this.q = $$1;
+      }
    }
 
-   private static void a(Object2ObjectLinkedOpenHashMap<gig, fdq> $$0, gig $$1) {
-      $$0.put($$1, new fdq($$1.M()));
+   @Nullable
+   @Override
+   public fdn<fcl> a(ali $$0) {
+      if ($$0.equals(a)) {
+         return this.k;
+      } else if ($$0.equals(b)) {
+         return this.l;
+      } else if ($$0.equals(c)) {
+         return this.m;
+      } else if ($$0.equals(d)) {
+         return this.n;
+      } else if ($$0.equals(e)) {
+         return this.o;
+      } else if ($$0.equals(f)) {
+         return this.p;
+      } else {
+         return $$0.equals(g) ? this.q : null;
+      }
    }
 
-   public gij a() {
-      return this.a;
-   }
-
-   public gik b() {
-      return this.b;
-   }
-
-   public ghw.a c() {
-      return this.c;
-   }
-
-   public ghw.a d() {
-      return this.d;
-   }
-
-   public ghy e() {
-      return this.e;
+   public void a() {
+      this.k = fdn.a();
+      this.l = null;
+      this.m = null;
+      this.n = null;
+      this.o = null;
+      this.p = null;
+      this.q = null;
    }
 }

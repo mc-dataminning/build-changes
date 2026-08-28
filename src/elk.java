@@ -1,26 +1,30 @@
-public interface elk {
-   alg<elx> a = a("villages");
-   alg<elx> b = a("desert_pyramids");
-   alg<elx> c = a("igloos");
-   alg<elx> d = a("jungle_temples");
-   alg<elx> e = a("swamp_huts");
-   alg<elx> f = a("pillager_outposts");
-   alg<elx> g = a("ocean_monuments");
-   alg<elx> h = a("woodland_mansions");
-   alg<elx> i = a("buried_treasures");
-   alg<elx> j = a("mineshafts");
-   alg<elx> k = a("ruined_portals");
-   alg<elx> l = a("shipwrecks");
-   alg<elx> m = a("ocean_ruins");
-   alg<elx> n = a("nether_complexes");
-   alg<elx> o = a("nether_fossils");
-   alg<elx> p = a("end_cities");
-   alg<elx> q = a("ancient_cities");
-   alg<elx> r = a("strongholds");
-   alg<elx> s = a("trail_ruins");
-   alg<elx> t = a("trial_chambers");
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-   private static alg<elx> a(String $$0) {
-      return alg.a(ly.aU, alh.b($$0));
+public class elk extends eld {
+   public static final MapCodec<elk> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(Codec.INT.fieldOf("max_water_depth").forGetter($$0x -> $$0x.c)).apply($$0, elk::new)
+   );
+   private final int c;
+
+   private elk(int $$0) {
+      this.c = $$0;
+   }
+
+   public static elk a(int $$0) {
+      return new elk($$0);
+   }
+
+   @Override
+   protected boolean a(elc $$0, azs $$1, jh $$2) {
+      int $$3 = $$0.a(ebf.a.d, $$2.u(), $$2.w());
+      int $$4 = $$0.a(ebf.a.b, $$2.u(), $$2.w());
+      return $$4 - $$3 <= this.c;
+   }
+
+   @Override
+   public elf<?> b() {
+      return elf.d;
    }
 }

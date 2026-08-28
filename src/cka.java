@@ -1,45 +1,100 @@
-import com.mojang.logging.LogUtils;
 import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
-public class cka {
-   private static final Logger a = LogUtils.getLogger();
-   private final cjj b;
-   private final cjt[] c = new cjt[cjz.c()];
+public class cka extends cjr {
+   private static final int b = 200;
+   private static final int c = 4;
+   private static final int d = 10;
+   private int e;
+   private int f;
    @Nullable
-   private cjt d;
+   private btx g;
 
-   public cka(cjj $$0) {
-      this.b = $$0;
-      this.a(cjz.k);
+   public cka(cjo $$0) {
+      super($$0);
    }
 
-   public void a(cjz<?> $$0) {
-      if (this.d == null || $$0 != this.d.i()) {
-         if (this.d != null) {
-            this.d.e();
-         }
+   @Override
+   public void b() {
+      this.e++;
+      if (this.e % 2 == 0 && this.e < 10) {
+         ezn $$0 = this.a.J(1.0F).d();
+         $$0.b((float) (-Math.PI / 4));
+         double $$1 = this.a.d.dC();
+         double $$2 = this.a.d.e(0.5);
+         double $$3 = this.a.d.dI();
 
-         this.d = this.b((cjz<cjt>)$$0);
-         if (!this.b.dX().C) {
-            this.b.av().a(cjj.b, $$0.b());
-         }
+         for (int $$4 = 0; $$4 < 8; $$4++) {
+            double $$5 = $$1 + this.a.ea().k() / 2.0;
+            double $$6 = $$2 + this.a.ea().k() / 2.0;
+            double $$7 = $$3 + this.a.ea().k() / 2.0;
 
-         a.debug("Dragon is now in phase {} on the {}", $$0, this.b.dX().C ? "client" : "server");
-         this.d.d();
+            for (int $$8 = 0; $$8 < 6; $$8++) {
+               this.a.dX().a(lr.h, $$5, $$6, $$7, -$$0.d * 0.08F * (double)$$8, -$$0.e * 0.6F, -$$0.f * 0.08F * (double)$$8);
+            }
+
+            $$0.b((float) (Math.PI / 16));
+         }
       }
    }
 
-   public cjt a() {
-      return this.d;
+   @Override
+   public void c() {
+      this.e++;
+      if (this.e >= 200) {
+         if (this.f >= 4) {
+            this.a.gr().a(cke.e);
+         } else {
+            this.a.gr().a(cke.g);
+         }
+      } else if (this.e == 10) {
+         ezn $$0 = new ezn(this.a.d.dC() - this.a.dC(), 0.0, this.a.d.dI() - this.a.dI()).d();
+         float $$1 = 5.0F;
+         double $$2 = this.a.d.dC() + $$0.d * 5.0 / 2.0;
+         double $$3 = this.a.d.dI() + $$0.f * 5.0 / 2.0;
+         double $$4 = this.a.d.e(0.5);
+         double $$5 = $$4;
+         jh.a $$6 = new jh.a($$2, $$4, $$3);
+
+         while (this.a.dX().u($$6)) {
+            if (--$$5 < 0.0) {
+               $$5 = $$4;
+               break;
+            }
+
+            $$6.b($$2, $$5, $$3);
+         }
+
+         $$5 = (double)(azk.a($$5) + 1);
+         this.g = new btx(this.a.dX(), $$2, $$5, $$3);
+         this.g.a(this.a);
+         this.g.a(5.0F);
+         this.g.a(200);
+         this.g.a(lr.h);
+         this.g.a(new btj(btl.g));
+         this.a.dX().b(this.g);
+      }
    }
 
-   public <T extends cjt> T b(cjz<T> $$0) {
-      int $$1 = $$0.b();
-      if (this.c[$$1] == null) {
-         this.c[$$1] = $$0.a(this.b);
-      }
+   @Override
+   public void d() {
+      this.e = 0;
+      this.f++;
+   }
 
-      return (T)this.c[$$1];
+   @Override
+   public void e() {
+      if (this.g != null) {
+         this.g.av();
+         this.g = null;
+      }
+   }
+
+   @Override
+   public cke<cka> i() {
+      return cke.f;
+   }
+
+   public void j() {
+      this.f = 0;
    }
 }

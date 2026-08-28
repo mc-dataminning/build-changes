@@ -1,57 +1,61 @@
-public class buw extends btz {
-   private static final String b = "data";
-   private uj c = new uj();
+public class buw {
+   private static final int a = 140;
+   private static final int b = 700;
+   private final akp c;
+   private final akl<Integer> d;
+   private final akl<Boolean> e;
+   private boolean f;
+   private int g;
 
-   public buw(bug<?> $$0, dev $$1) {
-      super($$0, $$1);
-      this.ae = true;
+   public buw(akp $$0, akl<Integer> $$1, akl<Boolean> $$2) {
+      this.c = $$0;
+      this.d = $$1;
+      this.e = $$2;
    }
 
-   @Override
-   public void l() {
+   public void a() {
+      this.f = true;
+      this.g = 0;
    }
 
-   @Override
-   protected void a(ako.a $$0) {
+   public boolean a(azs $$0) {
+      if (this.f) {
+         return false;
+      } else {
+         this.f = true;
+         this.g = 0;
+         this.c.a(this.d, $$0.a(841) + 140);
+         return true;
+      }
    }
 
-   @Override
-   protected void a(uj $$0) {
-      this.c = $$0.p("data");
+   public void b() {
+      if (this.f && this.g++ > this.e()) {
+         this.f = false;
+      }
    }
 
-   @Override
-   protected void b(uj $$0) {
-      $$0.a("data", this.c.i());
+   public float c() {
+      return this.f ? 1.0F + 1.15F * azk.a((float)this.g / (float)this.e() * (float) Math.PI) : 1.0F;
    }
 
-   @Override
-   public zo<acd> a(arl $$0) {
-      throw new IllegalStateException("Markers should never be sent");
+   private int e() {
+      return this.c.a(this.d);
    }
 
-   @Override
-   protected boolean r(btz $$0) {
-      return false;
+   public void a(uk $$0) {
+      $$0.a("Saddle", this.d());
    }
 
-   @Override
-   protected boolean bS() {
-      return false;
+   public void b(uk $$0) {
+      this.a($$0.q("Saddle"));
    }
 
-   @Override
-   protected void p(btz $$0) {
-      throw new IllegalStateException("Should never addPassenger without checking couldAcceptPassenger()");
+   public void a(boolean $$0) {
+      this.c.a(this.e, $$0);
    }
 
-   @Override
-   public erj k_() {
-      return erj.d;
-   }
-
-   @Override
-   public boolean r_() {
-      return true;
+   public boolean d() {
+      return this.c.a(this.e);
    }
 }

@@ -1,84 +1,54 @@
-import com.google.common.collect.Maps;
-import java.util.Map;
-import java.util.stream.Stream;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 public class etb {
-   private static final String a = "command_storage_";
-   private final Map<String, etb.a> b = Maps.newHashMap();
-   private final ete c;
+   private final jh a;
+   private final int b;
+   private final int c;
 
-   public etb(ete $$0) {
-      this.c = $$0;
+   public etb(jh $$0, int $$1, int $$2) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
    }
 
-   private etb.a a(String $$0) {
-      etb.a $$1 = new etb.a();
-      this.b.put($$0, $$1);
-      return $$1;
-   }
-
-   private esq.a<etb.a> b(String $$0) {
-      return new esq.a<>(() -> this.a($$0), ($$1, $$2) -> this.a($$0).a($$1), bas.h);
-   }
-
-   public uj a(alh $$0) {
-      String $$1 = $$0.b();
-      etb.a $$2 = this.c.b(this.b($$1), c($$1));
-      return $$2 != null ? $$2.a($$0.a()) : new uj();
-   }
-
-   public void a(alh $$0, uj $$1) {
-      String $$2 = $$0.b();
-      this.c.a(this.b($$2), c($$2)).a($$0.a(), $$1);
-   }
-
-   public Stream<alh> a() {
-      return this.b.entrySet().stream().flatMap($$0 -> $$0.getValue().b($$0.getKey()));
-   }
-
-   private static String c(String $$0) {
-      return "command_storage_" + $$0;
-   }
-
-   static class a extends esq {
-      private static final String a = "contents";
-      private final Map<String, uj> b = Maps.newHashMap();
-
-      etb.a a(uj $$0) {
-         uj $$1 = $$0.p("contents");
-
-         for (String $$2 : $$1.e()) {
-            this.b.put($$2, $$1.p($$2));
-         }
-
-         return this;
+   @Nullable
+   public static etb a(uk $$0) {
+      Optional<jh> $$1 = uz.a($$0, "pos");
+      if ($$1.isEmpty()) {
+         return null;
+      } else {
+         int $$2 = $$0.h("rotation");
+         int $$3 = $$0.h("entity_id");
+         return new etb($$1.get(), $$2, $$3);
       }
+   }
 
-      @Override
-      public uj a(uj $$0, jr.a $$1) {
-         uj $$2 = new uj();
-         this.b.forEach(($$1x, $$2x) -> $$2.a($$1x, $$2x.i()));
-         $$0.a("contents", $$2);
-         return $$0;
-      }
+   public uk a() {
+      uk $$0 = new uk();
+      $$0.a("pos", uz.a(this.a));
+      $$0.a("rotation", this.b);
+      $$0.a("entity_id", this.c);
+      return $$0;
+   }
 
-      public uj a(String $$0) {
-         uj $$1 = this.b.get($$0);
-         return $$1 != null ? $$1 : new uj();
-      }
+   public jh b() {
+      return this.a;
+   }
 
-      public void a(String $$0, uj $$1) {
-         if ($$1.g()) {
-            this.b.remove($$0);
-         } else {
-            this.b.put($$0, $$1);
-         }
+   public int c() {
+      return this.b;
+   }
 
-         this.c();
-      }
+   public int d() {
+      return this.c;
+   }
 
-      public Stream<alh> b(String $$0) {
-         return this.b.keySet().stream().map($$1 -> alh.a($$0, $$1));
-      }
+   public String e() {
+      return a(this.a);
+   }
+
+   public static String a(jh $$0) {
+      return "frame-" + $$0.u() + "," + $$0.v() + "," + $$0.w();
    }
 }

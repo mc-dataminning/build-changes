@@ -1,185 +1,84 @@
-import com.google.common.collect.Maps;
-import java.util.Map;
-import java.util.Optional;
+import java.util.function.BooleanSupplier;
 import javax.annotation.Nullable;
 
-public class fqy {
-   private final fja a;
-   private final frc b;
-   private final fqz c;
-   private final int d;
-   private final ah e;
-   private final as f;
-   private final cvx g;
-   private final xh h;
-   private final fra i;
-   private final Map<ag, fra> j = Maps.newLinkedHashMap();
-   private double k;
-   private double l;
-   private int m = Integer.MAX_VALUE;
-   private int n = Integer.MAX_VALUE;
-   private int o = Integer.MIN_VALUE;
-   private int p = Integer.MIN_VALUE;
-   private float q;
-   private boolean r;
-
-   public fqy(fja $$0, frc $$1, fqz $$2, int $$3, ah $$4, as $$5) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
-      this.e = $$4;
-      this.f = $$5;
-      this.g = $$5.c();
-      this.h = $$5.a();
-      this.i = new fra(this, $$0, $$4, $$5);
-      this.a(this.i, $$4.b());
-   }
-
-   public fqz a() {
-      return this.c;
-   }
-
-   public int b() {
-      return this.d;
-   }
-
-   public ah c() {
-      return this.e;
-   }
-
-   public xh d() {
-      return this.h;
-   }
-
-   public as e() {
-      return this.f;
-   }
-
-   public void a(fkm $$0, int $$1, int $$2, boolean $$3) {
-      this.c.a($$0, $$1, $$2, $$3, this.d);
-   }
-
-   public void a(fkm $$0, int $$1, int $$2) {
-      this.c.a($$0, $$1, $$2, this.d, this.g);
-   }
-
-   public void b(fkm $$0, int $$1, int $$2) {
-      if (!this.r) {
-         this.k = (double)(117 - (this.o + this.m) / 2);
-         this.l = (double)(56 - (this.p + this.n) / 2);
-         this.r = true;
-      }
-
-      $$0.c($$1, $$2, $$1 + 234, $$2 + 113);
-      $$0.c().a();
-      $$0.c().a((float)$$1, (float)$$2, 0.0F);
-      alh $$3 = this.f.d().orElse(gxt.a);
-      int $$4 = azj.a(this.k);
-      int $$5 = azj.a(this.l);
-      int $$6 = $$4 % 16;
-      int $$7 = $$5 % 16;
-
-      for (int $$8 = -1; $$8 <= 15; $$8++) {
-         for (int $$9 = -1; $$9 <= 8; $$9++) {
-            $$0.a(gig::B, $$3, $$6 + 16 * $$8, $$7 + 16 * $$9, 0.0F, 0.0F, 16, 16, 16, 16);
-         }
-      }
-
-      this.i.a($$0, $$4, $$5, true);
-      this.i.a($$0, $$4, $$5, false);
-      this.i.a($$0, $$4, $$5);
-      $$0.c().b();
-      $$0.e();
-   }
-
-   public void a(fkm $$0, int $$1, int $$2, int $$3, int $$4) {
-      $$0.c().a();
-      $$0.c().a(0.0F, 0.0F, -200.0F);
-      $$0.a(0, 0, 234, 113, azj.d(this.q * 255.0F) << 24);
-      boolean $$5 = false;
-      int $$6 = azj.a(this.k);
-      int $$7 = azj.a(this.l);
-      if ($$1 > 0 && $$1 < 234 && $$2 > 0 && $$2 < 113) {
-         for (fra $$8 : this.j.values()) {
-            if ($$8.a($$6, $$7, $$1, $$2)) {
-               $$5 = true;
-               $$8.a($$0, $$6, $$7, this.q, $$3, $$4);
-               break;
-            }
-         }
-      }
-
-      $$0.c().b();
-      if ($$5) {
-         this.q = azj.a(this.q + 0.02F, 0.0F, 0.3F);
-      } else {
-         this.q = azj.a(this.q - 0.04F, 0.0F, 1.0F);
-      }
-   }
-
-   public boolean a(int $$0, int $$1, double $$2, double $$3) {
-      return this.c.a($$0, $$1, this.d, $$2, $$3);
-   }
-
+public class fqy extends fra {
+   private static final xi a = xi.c("multiplayer.downloadingTerrain");
+   private static final long b = 30000L;
+   private final long c;
+   private final BooleanSupplier d;
+   private final fqy.a s;
    @Nullable
-   public static fqy a(fja $$0, frc $$1, int $$2, ah $$3) {
-      Optional<as> $$4 = $$3.a().c();
-      if ($$4.isEmpty()) {
-         return null;
+   private gyd u;
+
+   public fqy(BooleanSupplier $$0, fqy.a $$1) {
+      super(fiz.a);
+      this.d = $$0;
+      this.s = $$1;
+      this.c = ae.c();
+   }
+
+   @Override
+   public boolean aH_() {
+      return false;
+   }
+
+   @Override
+   protected boolean aQ_() {
+      return false;
+   }
+
+   @Override
+   public void a(fku $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      $$0.a(this.p, a, this.n / 2, this.o / 2 - 50, -1);
+   }
+
+   @Override
+   public void b(fku $$0, int $$1, int $$2, float $$3) {
+      switch (this.s) {
+         case a:
+            $$0.a(gir::A, this.m(), 0, 0, $$0.a(), $$0.b());
+            break;
+         case b:
+            $$0.b(gir.t(), 0, 0, this.n, this.o, 0);
+            break;
+         case c:
+            this.a($$0, $$3);
+            this.r();
+            this.a($$0);
+      }
+   }
+
+   private gyd m() {
+      if (this.u != null) {
+         return this.u;
       } else {
-         for (fqz $$5 : fqz.values()) {
-            if ($$2 < $$5.a()) {
-               return new fqy($$0, $$1, $$5, $$2, $$3, $$4.get());
-            }
-
-            $$2 -= $$5.a();
-         }
-
-         return null;
+         this.u = this.m.ap().a().a(dig.ed.m());
+         return this.u;
       }
    }
 
-   public void a(double $$0, double $$1) {
-      if (this.o - this.m > 234) {
-         this.k = azj.a(this.k + $$0, (double)(-(this.o - 234)), 0.0);
-      }
-
-      if (this.p - this.n > 113) {
-         this.l = azj.a(this.l + $$1, (double)(-(this.p - 113)), 0.0);
+   @Override
+   public void e() {
+      if (this.d.getAsBoolean() || ae.c() > this.c + 30000L) {
+         this.d();
       }
    }
 
-   public void a(ah $$0) {
-      Optional<as> $$1 = $$0.a().c();
-      if (!$$1.isEmpty()) {
-         fra $$2 = new fra(this, this.a, $$0, $$1.get());
-         this.a($$2, $$0.b());
-      }
+   @Override
+   public void d() {
+      this.m.aZ().c(xi.c("narrator.ready_to_play"));
+      super.d();
    }
 
-   private void a(fra $$0, ag $$1) {
-      this.j.put($$1, $$0);
-      int $$2 = $$0.d();
-      int $$3 = $$2 + 28;
-      int $$4 = $$0.c();
-      int $$5 = $$4 + 27;
-      this.m = Math.min(this.m, $$2);
-      this.o = Math.max(this.o, $$3);
-      this.n = Math.min(this.n, $$4);
-      this.p = Math.max(this.p, $$5);
-
-      for (fra $$6 : this.j.values()) {
-         $$6.b();
-      }
+   @Override
+   public boolean k() {
+      return false;
    }
 
-   @Nullable
-   public fra a(ag $$0) {
-      return this.j.get($$0);
-   }
-
-   public frc f() {
-      return this.b;
+   public static enum a {
+      a,
+      b,
+      c;
    }
 }

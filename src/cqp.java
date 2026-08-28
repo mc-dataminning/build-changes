@@ -1,138 +1,89 @@
-public class cqp extends cqf {
-   private static final akk<Boolean> e = ako.a(cqp.class, akm.k);
-   private static final int i = 3600;
-   private static final int j = 32000;
-   private int k;
-   public double c;
-   public double d;
+import java.util.function.Function;
+import javax.annotation.Nullable;
 
-   public cqp(bug<? extends cqp> $$0, dev $$1) {
-      super($$0, $$1);
+public class cqp {
+   public static int[][] a(jm $$0) {
+      jm $$1 = $$0.h();
+      jm $$2 = $$1.g();
+      jm $$3 = $$0.g();
+      return new int[][]{
+         {$$1.j(), $$1.l()},
+         {$$2.j(), $$2.l()},
+         {$$3.j() + $$1.j(), $$3.l() + $$1.l()},
+         {$$3.j() + $$2.j(), $$3.l() + $$2.l()},
+         {$$0.j() + $$1.j(), $$0.l() + $$1.l()},
+         {$$0.j() + $$2.j(), $$0.l() + $$2.l()},
+         {$$3.j(), $$3.l()},
+         {$$0.j(), $$0.l()}
+      };
    }
 
-   public cqp(dev $$0, double $$1, double $$2, double $$3) {
-      super(bug.S, $$0, $$1, $$2, $$3);
+   public static boolean a(double $$0) {
+      return !Double.isInfinite($$0) && $$0 < 1.0;
    }
 
-   @Override
-   public cqf.a y() {
-      return cqf.a.c;
-   }
-
-   @Override
-   protected void a(ako.a $$0) {
-      super.a($$0);
-      $$0.a(e, false);
-   }
-
-   @Override
-   public void l() {
-      super.l();
-      if (!this.dX().y_()) {
-         if (this.k > 0) {
-            this.k--;
+   public static boolean a(dek $$0, bva $$1, ezi $$2) {
+      for (fah $$4 : $$0.e($$1, $$2)) {
+         if (!$$4.c()) {
+            return false;
          }
-
-         if (this.k <= 0) {
-            this.c = 0.0;
-            this.d = 0.0;
-         }
-
-         this.s(this.k > 0);
       }
 
-      if (this.E() && this.af.a(4) == 0) {
-         this.dX().a(lq.X, this.dC(), this.dE() + 0.8, this.dI(), 0.0, 0.0, 0.0);
-      }
+      return $$0.C_().a($$2);
    }
 
-   @Override
-   protected double t() {
-      return this.bk() ? super.t() * 0.75 : super.t() * 0.5;
+   public static boolean a(dek $$0, ezn $$1, bva $$2, bvm $$3) {
+      return a($$0, $$2, $$2.f($$3).c($$1));
    }
 
-   @Override
-   protected cvt al_() {
-      return cwb.nO;
+   public static fah a(deg $$0, jh $$1) {
+      dvj $$2 = $$0.a_($$1);
+      return !$$2.a(axa.aQ) && (!($$2.b() instanceof dqr) || !$$2.c(dqr.b)) ? $$2.g($$0, $$1) : fae.a();
    }
 
-   @Override
-   protected void v() {
-      double $$0 = 1.0E-4;
-      double $$1 = 0.001;
-      super.v();
-      ezh $$2 = this.dA();
-      double $$3 = $$2.j();
-      double $$4 = this.c * this.c + this.d * this.d;
-      if ($$4 > 1.0E-4 && $$3 > 0.001) {
-         double $$5 = Math.sqrt($$3);
-         double $$6 = Math.sqrt($$4);
-         this.c = $$2.d / $$5 * $$6;
-         this.d = $$2.f / $$5 * $$6;
-      }
-   }
+   public static double a(jh $$0, int $$1, Function<jh, fah> $$2) {
+      jh.a $$3 = $$0.k();
+      int $$4 = 0;
 
-   @Override
-   protected ezh a(ezh $$0) {
-      double $$1 = this.c * this.c + this.d * this.d;
-      ezh $$2;
-      if ($$1 > 1.0E-7) {
-         $$1 = Math.sqrt($$1);
-         this.c /= $$1;
-         this.d /= $$1;
-         $$2 = $$0.d(0.8, 0.0, 0.8).b(this.c, 0.0, this.d);
-         if (this.bk()) {
-            $$2 = $$2.c(0.1);
+      while ($$4 < $$1) {
+         fah $$5 = $$2.apply($$3);
+         if (!$$5.c()) {
+            return (double)($$0.v() + $$4) + $$5.b(jm.a.b);
          }
+
+         $$4++;
+         $$3.c(jm.b);
+      }
+
+      return Double.POSITIVE_INFINITY;
+   }
+
+   @Nullable
+   public static ezn a(bul<?> $$0, dek $$1, jh $$2, boolean $$3) {
+      if ($$3 && $$0.a($$1.a_($$2))) {
+         return null;
       } else {
-         $$2 = $$0.d(0.98, 0.0, 0.98);
+         double $$4 = $$1.a(a((deg)$$1, $$2), () -> a((deg)$$1, $$2.e()));
+         if (!a($$4)) {
+            return null;
+         } else if ($$3 && $$4 <= 0.0 && $$0.a($$1.a_($$2.e()))) {
+            return null;
+         } else {
+            ezn $$5 = ezn.a($$2, $$4);
+            ezi $$6 = $$0.n().a($$5);
+
+            for (fah $$8 : $$1.e(null, $$6)) {
+               if (!$$8.c()) {
+                  return null;
+               }
+            }
+
+            if ($$0 != bul.by || !$$1.a_($$2).a(axa.cs) && !$$1.a_($$2.d()).a(axa.cs)) {
+               return !$$1.C_().a($$6) ? null : $$5;
+            } else {
+               return null;
+            }
+         }
       }
-
-      return super.a($$2);
-   }
-
-   @Override
-   public bry a(coh $$0, brx $$1) {
-      cvx $$2 = $$0.b($$1);
-      if ($$2.a(axi.bN) && this.k + 3600 <= 32000) {
-         $$2.a(1, $$0);
-         this.k += 3600;
-      }
-
-      if (this.k > 0) {
-         this.c = this.dC() - $$0.dC();
-         this.d = this.dI() - $$0.dI();
-      }
-
-      return bry.a;
-   }
-
-   @Override
-   protected void b(uj $$0) {
-      super.b($$0);
-      $$0.a("PushX", this.c);
-      $$0.a("PushZ", this.d);
-      $$0.a("Fuel", (short)this.k);
-   }
-
-   @Override
-   protected void a(uj $$0) {
-      super.a($$0);
-      this.c = $$0.k("PushX");
-      this.d = $$0.k("PushZ");
-      this.k = $$0.g("Fuel");
-   }
-
-   protected boolean E() {
-      return this.am.a(e);
-   }
-
-   protected void s(boolean $$0) {
-      this.am.a(e, $$0);
-   }
-
-   @Override
-   public dvd A() {
-      return dia.cD.m().b(dle.a, jl.c).b(dle.b, Boolean.valueOf(this.E()));
    }
 }

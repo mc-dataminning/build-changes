@@ -1,6 +1,6 @@
-public enum dvw implements baf {
-   a("compare"),
-   b("subtract");
+public enum dvw implements bag {
+   a("head"),
+   b("foot");
 
    private final String c;
 

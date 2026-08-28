@@ -1,95 +1,86 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import io.netty.buffer.ByteBuf;
-import java.util.List;
-import java.util.function.IntFunction;
+import java.util.Optional;
 
-public record xe(String c, List<xe.a> d, ye e) {
+public record xe(xf l, xf m) {
    public static final Codec<xe> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               Codec.STRING.fieldOf("translation_key").forGetter(xe::a),
-               xe.a.d.listOf().fieldOf("parameters").forGetter(xe::b),
-               ye.b.b.optionalFieldOf("style", ye.a).forGetter(xe::c)
-            )
-            .apply($$0, xe::new)
+      $$0 -> $$0.group(xf.a.fieldOf("chat").forGetter(xe::a), xf.a.fieldOf("narration").forGetter(xe::b)).apply($$0, xe::new)
    );
-   public static final zf<ws, xe> b = zf.a(zd.m, xe::a, xe.a.e.a(zd.a()), xe::b, ye.b.c, xe::c, xe::new);
+   public static final zg<wt, xe> b = zg.a(xf.b, xe::a, xf.b, xe::b, xe::new);
+   public static final zg<wt, jq<xe>> c = ze.a(lz.aH, b);
+   public static final xf d = xf.a("chat.type.text");
+   public static final alh<xe> e = a("chat");
+   public static final alh<xe> f = a("say_command");
+   public static final alh<xe> g = a("msg_command_incoming");
+   public static final alh<xe> h = a("msg_command_outgoing");
+   public static final alh<xe> i = a("team_msg_command_incoming");
+   public static final alh<xe> j = a("team_msg_command_outgoing");
+   public static final alh<xe> k = a("emote_command");
 
-   public static xe a(String $$0) {
-      return new xe($$0, List.of(xe.a.a, xe.a.c), ye.a);
+   private static alh<xe> a(String $$0) {
+      return alh.a(lz.aH, ali.b($$0));
    }
 
-   public static xe b(String $$0) {
-      ye $$1 = ye.a.a(n.h).b(true);
-      return new xe($$0, List.of(xe.a.a, xe.a.c), $$1);
+   public static void a(qy<xe> $$0) {
+      $$0.a(e, new xe(d, xf.a("chat.type.text.narrate")));
+      $$0.a(f, new xe(xf.a("chat.type.announcement"), xf.a("chat.type.text.narrate")));
+      $$0.a(g, new xe(xf.b("commands.message.display.incoming"), xf.a("chat.type.text.narrate")));
+      $$0.a(h, new xe(xf.c("commands.message.display.outgoing"), xf.a("chat.type.text.narrate")));
+      $$0.a(i, new xe(xf.d("chat.type.team.text"), xf.a("chat.type.text.narrate")));
+      $$0.a(j, new xe(xf.d("chat.type.team.sent"), xf.a("chat.type.text.narrate")));
+      $$0.a(k, new xe(xf.a("chat.type.emote"), xf.a("chat.type.emote")));
    }
 
-   public static xe c(String $$0) {
-      ye $$1 = ye.a.a(n.h).b(true);
-      return new xe($$0, List.of(xe.a.b, xe.a.c), $$1);
+   public static xe.a a(alh<xe> $$0, bue $$1) {
+      return a($$0, $$1.dX().H_(), $$1.S_());
    }
 
-   public static xe d(String $$0) {
-      return new xe($$0, List.of(xe.a.b, xe.a.a, xe.a.c), ye.a);
+   public static xe.a a(alh<xe> $$0, ew $$1) {
+      return a($$0, $$1.v(), $$1.b());
    }
 
-   public xh a(xh $$0, xd.a $$1) {
-      Object[] $$2 = this.b($$0, $$1);
-      return xh.a(this.c, $$2).c(this.e);
+   public static xe.a a(alh<xe> $$0, ke $$1, xi $$2) {
+      kd<xe> $$3 = $$1.e(lz.aH);
+      return new xe.a($$3.b($$0), $$2);
    }
 
-   private xh[] b(xh $$0, xd.a $$1) {
-      xh[] $$2 = new xh[this.d.size()];
+   public xf a() {
+      return this.l;
+   }
 
-      for (int $$3 = 0; $$3 < $$2.length; $$3++) {
-         xe.a $$4 = this.d.get($$3);
-         $$2[$$3] = $$4.a($$0, $$1);
+   public xf b() {
+      return this.m;
+   }
+
+   public static record a(jq<xe> b, xi c, Optional<xi> d) {
+      public static final zg<wt, xe.a> a = zg.a(xe.c, xe.a::a, xk.d, xe.a::b, xk.e, xe.a::c, xe.a::new);
+
+      a(jq<xe> $$0, xi $$1) {
+         this($$0, $$1, Optional.empty());
       }
 
-      return $$2;
-   }
-
-   public String a() {
-      return this.c;
-   }
-
-   public List<xe.a> b() {
-      return this.d;
-   }
-
-   public ye c() {
-      return this.e;
-   }
-
-   public static enum a implements baf {
-      a(0, "sender", ($$0, $$1) -> $$1.b()),
-      b(1, "target", ($$0, $$1) -> $$1.c().orElse(xg.a)),
-      c(2, "content", ($$0, $$1) -> $$0);
-
-      private static final IntFunction<xe.a> f = aya.a($$0 -> $$0.g, values(), aya.a.a);
-      public static final Codec<xe.a> d = baf.a(xe.a::values);
-      public static final zf<ByteBuf, xe.a> e = zd.a(f, $$0 -> $$0.g);
-      private final int g;
-      private final String h;
-      private final xe.a.a i;
-
-      private a(final int $$0, final String $$1, final xe.a.a $$2) {
-         this.g = $$0;
-         this.h = $$1;
-         this.i = $$2;
+      public xi a(xi $$0) {
+         return this.b.a().a().a($$0, this);
       }
 
-      public xh a(xh $$0, xd.a $$1) {
-         return this.i.select($$0, $$1);
+      public xi b(xi $$0) {
+         return this.b.a().b().a($$0, this);
       }
 
-      @Override
-      public String c() {
-         return this.h;
+      public xe.a c(xi $$0) {
+         return new xe.a(this.b, this.c, Optional.of($$0));
       }
 
-      public interface a {
-         xh select(xh var1, xd.a var2);
+      public jq<xe> a() {
+         return this.b;
+      }
+
+      public xi b() {
+         return this.c;
+      }
+
+      public Optional<xi> c() {
+         return this.d;
       }
    }
 }

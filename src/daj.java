@@ -1,49 +1,68 @@
-import com.mojang.serialization.Codec;
+import it.unimi.dsi.fastutil.ints.IntArrayList;
+import it.unimi.dsi.fastutil.ints.IntList;
 
-public interface daj<T extends dam> {
-   Codec<daj<?>> h = lx.r.q().dispatch(daj::ar_, dao::a);
-   zf<ws, daj<?>> i = zd.a(ly.ae).b(daj::ar_, dao::b);
+public class daj extends dag {
+   private static final dal a = dal.a(cwf.ux);
 
-   boolean a(T var1, dev var2);
+   public daj(dad $$0) {
+      super($$0);
+   }
 
-   cvx a(T var1, jr.a var2);
+   public boolean a(dae $$0, dfb $$1) {
+      boolean $$2 = false;
+      boolean $$3 = false;
 
-   boolean a(int var1, int var2);
+      for (int $$4 = 0; $$4 < $$0.a(); $$4++) {
+         cwb $$5 = $$0.a($$4);
+         if (!$$5.f()) {
+            if ($$5.h() instanceof cuz) {
+               $$2 = true;
+            } else {
+               if (!a.a($$5)) {
+                  return false;
+               }
 
-   cvx a(jr.a var1);
+               if ($$3) {
+                  return false;
+               }
 
-   default jy<cvx> a(T $$0) {
-      jy<cvx> $$1 = jy.a($$0.a(), cvx.k);
-
-      for (int $$2 = 0; $$2 < $$1.size(); $$2++) {
-         cvt $$3 = $$0.a($$2).h();
-         if ($$3.l()) {
-            $$1.set($$2, new cvx($$3.k()));
+               $$3 = true;
+            }
          }
       }
 
-      return $$1;
+      return $$3 && $$2;
    }
 
-   default boolean aq_() {
-      return false;
+   public cwb a(dae $$0, js.a $$1) {
+      IntList $$2 = new IntArrayList();
+      cwb $$3 = null;
+
+      for (int $$4 = 0; $$4 < $$0.a(); $$4++) {
+         cwb $$5 = $$0.a($$4);
+         cvx $$6 = $$5.h();
+         if ($$6 instanceof cuz) {
+            $$2.add(((cuz)$$6).b().f());
+         } else if (a.a($$5)) {
+            $$3 = $$5.c(1);
+         }
+      }
+
+      if ($$3 != null && !$$2.isEmpty()) {
+         $$3.a(ku.ae, cyq.a, $$2, cyq::a);
+         return $$3;
+      } else {
+         return cwb.k;
+      }
    }
 
-   default boolean h() {
-      return true;
+   @Override
+   public boolean a(int $$0, int $$1) {
+      return $$0 * $$1 >= 2;
    }
 
-   default String c() {
-      return "";
+   @Override
+   public dau<?> aq_() {
+      return dau.i;
    }
-
-   default cvx g() {
-      return new cvx(dia.cA);
-   }
-
-   dao<?> ar_();
-
-   dap<?> e();
-
-   dai a();
 }

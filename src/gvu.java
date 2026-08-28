@@ -1,7 +1,10 @@
-public class gvu extends gva {
-   public float a;
+public class gvu extends gvl {
+   public chh.b a;
    public float b;
-   public boolean c;
-   public cuu d = cuu.a;
-   public int e;
+   public fzi.a c;
+
+   public gvu() {
+      this.a = chh.b.a;
+      this.c = fzi.a.a;
+   }
 }

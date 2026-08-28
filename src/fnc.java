@@ -1,9 +1,36 @@
-import java.util.function.Consumer;
+import javax.annotation.Nullable;
 
-public interface fnc {
-   xh a();
+public abstract class fnc implements fnd {
+   @Nullable
+   private fne a;
+   private boolean b;
 
-   void a(Consumer<fkx> var1);
+   @Override
+   public final boolean aK_() {
+      return this.b;
+   }
 
-   void a(fph var1);
+   @Override
+   public final void b_(boolean $$0) {
+      this.b = $$0;
+   }
+
+   @Nullable
+   @Override
+   public fne aL_() {
+      return this.a;
+   }
+
+   @Override
+   public void a(@Nullable fne $$0) {
+      if (this.a != null) {
+         this.a.a(false);
+      }
+
+      if ($$0 != null) {
+         $$0.a(true);
+      }
+
+      this.a = $$0;
+   }
 }

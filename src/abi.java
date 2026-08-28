@@ -1,46 +1,29 @@
-public record abi(jg c, float d, float e, float f, float g, float h) implements aar {
-   public static final zf<we, abi> a = aar.a(abi::a, abi::new);
-   public static final aar.b<abi> b = aar.a("debug/worldgen_attempt");
+import java.util.HashSet;
+import java.util.Set;
 
-   private abi(we $$0) {
-      this($$0.e(), $$0.readFloat(), $$0.readFloat(), $$0.readFloat(), $$0.readFloat(), $$0.readFloat());
+public record abi(Set<kj> c, Set<kj> d) implements aas {
+   public static final zg<wf, abi> a = aas.a(abi::a, abi::new);
+   public static final aas.b<abi> b = aas.a("debug/village_sections");
+
+   private abi(wf $$0) {
+      this($$0.a(HashSet::new, wf::g), $$0.a(HashSet::new, wf::g));
    }
 
-   private void a(we $$0) {
-      $$0.a(this.c);
-      $$0.a(this.d);
-      $$0.a(this.e);
-      $$0.a(this.f);
-      $$0.a(this.g);
-      $$0.a(this.h);
+   private void a(wf $$0) {
+      $$0.a(this.c, wf::a);
+      $$0.a(this.d, wf::a);
    }
 
    @Override
-   public aar.b<abi> a() {
+   public aas.b<abi> a() {
       return b;
    }
 
-   public jg b() {
+   public Set<kj> b() {
       return this.c;
    }
 
-   public float c() {
+   public Set<kj> c() {
       return this.d;
-   }
-
-   public float d() {
-      return this.e;
-   }
-
-   public float e() {
-      return this.f;
-   }
-
-   public float f() {
-      return this.g;
-   }
-
-   public float g() {
-      return this.h;
    }
 }

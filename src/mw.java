@@ -1,43 +1,47 @@
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
+import com.mojang.serialization.JsonOps;
 import java.nio.file.Path;
 import java.util.concurrent.CompletableFuture;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
-public class mw implements me {
-   private final mg d;
+public class mw implements mf {
+   private final mh d;
+   private final CompletableFuture<js.a> e;
 
-   public mw(mg $$0) {
+   public mw(mh $$0, CompletableFuture<js.a> $$1) {
       this.d = $$0;
+      this.e = $$1;
    }
 
    @Override
-   public CompletableFuture<?> a(mc $$0) {
-      Path $$1 = this.d.a(mg.b.c).resolve("packets.json");
-      return me.a($$0, this.b(), $$1);
-   }
-
-   private JsonElement b() {
-      JsonObject $$0 = new JsonObject();
-      Stream.of(aiz.a, aki.c, aki.a, ajj.c, ajj.a, abs.c, abs.a, agt.b, agt.a).collect(Collectors.groupingBy(wp.a::a)).forEach(($$1, $$2) -> {
-         JsonObject $$3 = new JsonObject();
-         $$0.add($$1.a(), $$3);
-         $$2.forEach($$1x -> {
-            JsonObject $$2x = new JsonObject();
-            $$3.add($$1x.b().b(), $$2x);
-            $$1x.a(($$1xx, $$2xx) -> {
-               JsonObject $$3x = new JsonObject();
-               $$3x.addProperty("protocol_id", $$2xx);
-               $$2x.add($$1xx.b().toString(), $$3x);
-            });
-         });
-      });
-      return $$0;
+   public CompletableFuture<?> a(md $$0) {
+      Path $$1 = this.d.a(mh.b.c).resolve("items.json");
+      return this.e
+         .thenCompose(
+            $$2 -> {
+               JsonObject $$3 = new JsonObject();
+               alg<JsonElement> $$4 = $$2.a(JsonOps.INSTANCE);
+               $$2.d(lz.K)
+                  .c()
+                  .forEach(
+                     $$2x -> {
+                        JsonObject $$3x = new JsonObject();
+                        $$3x.add(
+                           "components",
+                           (JsonElement)kq.b
+                              .encodeStart($$4, ((cvx)$$2x.a()).g())
+                              .getOrThrow($$0xxx -> new IllegalStateException("Failed to encode components: " + $$0xxx))
+                        );
+                        $$3.add($$2x.g(), $$3x);
+                     }
+                  );
+               return mf.a($$0, $$3, $$1);
+            }
+         );
    }
 
    @Override
-   public String a() {
-      return "Packet Report";
+   public final String a() {
+      return "Item List";
    }
 }

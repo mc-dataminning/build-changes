@@ -1,82 +1,68 @@
-import com.google.common.base.Predicates;
 import com.mojang.serialization.MapCodec;
 
-public class dkn extends dhy {
+public class dkn extends dkz {
    public static final MapCodec<dkn> a = b(dkn::new);
-   public static final dvx b = dlt.aF;
-   public static final dvu c = dvt.h;
-   protected static final fab d = dhy.a(0.0, 0.0, 0.0, 16.0, 13.0, 16.0);
-   protected static final fab e = dhy.a(4.0, 13.0, 4.0, 12.0, 16.0, 12.0);
-   protected static final fab f = ezy.a(d, e);
-   private static dvi g;
+   protected static final fah b = die.a(1.0, 0.0, 1.0, 15.0, 16.0, 15.0);
 
    @Override
    public MapCodec<dkn> a() {
       return a;
    }
 
-   public dkn(dvc.d $$0) {
+   public dkn(dvi.d $$0) {
       super($$0);
-      this.l(this.F.b().b(b, jl.c).b(c, Boolean.valueOf(false)));
    }
 
    @Override
-   protected boolean g_(dvd $$0) {
-      return true;
+   protected fah a(dvj $$0, deg $$1, jh $$2, ezs $$3) {
+      return b;
    }
 
    @Override
-   protected fab a(dvd $$0, dea $$1, jg $$2, ezm $$3) {
-      return $$0.c(c) ? f : d;
+   protected bsd a(dvj $$0, dfb $$1, jh $$2, com $$3, ezj $$4) {
+      this.e($$0, $$1, $$2);
+      return bsd.a;
    }
 
    @Override
-   public dvd a(czm $$0) {
-      return this.m().b(b, $$0.g().g()).b(c, Boolean.valueOf(false));
+   protected void a_(dvj $$0, dfb $$1, jh $$2, com $$3) {
+      this.e($$0, $$1, $$2);
    }
 
-   @Override
-   protected boolean c_(dvd $$0) {
-      return true;
-   }
+   private void e(dvj $$0, dfb $$1, jh $$2) {
+      dxa $$3 = $$1.C_();
 
-   @Override
-   protected int a(dvd $$0, dev $$1, jg $$2) {
-      return $$0.c(c) ? 15 : 0;
-   }
+      for (int $$4 = 0; $$4 < 1000; $$4++) {
+         jh $$5 = $$2.b($$1.A.a(16) - $$1.A.a(16), $$1.A.a(8) - $$1.A.a(8), $$1.A.a(16) - $$1.A.a(16));
+         if ($$1.a_($$5).l() && $$3.a($$5)) {
+            if ($$1.C) {
+               for (int $$6 = 0; $$6 < 128; $$6++) {
+                  double $$7 = $$1.A.j();
+                  float $$8 = ($$1.A.i() - 0.5F) * 0.2F;
+                  float $$9 = ($$1.A.i() - 0.5F) * 0.2F;
+                  float $$10 = ($$1.A.i() - 0.5F) * 0.2F;
+                  double $$11 = azk.d($$7, (double)$$5.u(), (double)$$2.u()) + ($$1.A.j() - 0.5) + 0.5;
+                  double $$12 = azk.d($$7, (double)$$5.v(), (double)$$2.v()) + $$1.A.j() - 0.5;
+                  double $$13 = azk.d($$7, (double)$$5.w(), (double)$$2.w()) + ($$1.A.j() - 0.5) + 0.5;
+                  $$1.a(lr.ac, $$11, $$12, $$13, (double)$$8, (double)$$9, (double)$$10);
+               }
+            } else {
+               $$1.a($$5, $$0, 2);
+               $$1.a($$2, false);
+            }
 
-   @Override
-   protected dvd a(dvd $$0, dol $$1) {
-      return $$0.b(b, $$1.a($$0.c(b)));
-   }
-
-   @Override
-   protected dvd a(dvd $$0, dmu $$1) {
-      return $$0.a($$1.a($$0.c(b)));
-   }
-
-   @Override
-   protected void a(dve.a<dhy, dvd> $$0) {
-      $$0.a(b, c);
-   }
-
-   public static dvi b() {
-      if (g == null) {
-         g = dvj.a()
-            .a("?vvv?", ">???<", ">???<", ">???<", "?^^^?")
-            .a('?', dvh.a(dvm.a))
-            .a('^', dvh.a(dvm.a(dia.fy).a(c, Predicates.equalTo(true)).a(b, Predicates.equalTo(jl.d))))
-            .a('>', dvh.a(dvm.a(dia.fy).a(c, Predicates.equalTo(true)).a(b, Predicates.equalTo(jl.e))))
-            .a('v', dvh.a(dvm.a(dia.fy).a(c, Predicates.equalTo(true)).a(b, Predicates.equalTo(jl.c))))
-            .a('<', dvh.a(dvm.a(dia.fy).a(c, Predicates.equalTo(true)).a(b, Predicates.equalTo(jl.f))))
-            .b();
+            return;
+         }
       }
-
-      return g;
    }
 
    @Override
-   protected boolean a(dvd $$0, ert $$1) {
+   protected int b() {
+      return 5;
+   }
+
+   @Override
+   protected boolean a(dvj $$0, erz $$1) {
       return false;
    }
 }

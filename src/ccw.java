@@ -1,24 +1,13 @@
-public class ccw extends cbt {
-   private final bvd a;
+import javax.annotation.Nullable;
 
-   public ccw(bvd $$0) {
-      this.a = $$0;
+public class ccw extends ccv {
+   public ccw(bvi $$0, double $$1, int $$2) {
+      super($$0, $$1, $$2);
    }
 
+   @Nullable
    @Override
-   public boolean b() {
-      return this.a.dX().S() && this.a.a(buh.f).f() && cfr.a(this.a);
-   }
-
-   @Override
-   public void d() {
-      ((ceg)this.a.P()).d(true);
-   }
-
-   @Override
-   public void e() {
-      if (cfr.a(this.a)) {
-         ((ceg)this.a.P()).d(false);
-      }
+   protected ezn h() {
+      return bwv.a(this.b, 10, 7);
    }
 }

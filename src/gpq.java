@@ -1,16 +1,14 @@
-public class gpq extends gos<clp, gut> {
-   private static final alh a = alh.b("textures/entity/illager/pillager.png");
-
-   public gpq(gnz.a $$0) {
-      super($$0, new fyn<>($$0.a(gba.bH)), 0.5F);
-      this.a(new gsf<>(this, $$0.b()));
+public abstract class gpq<T extends bvc, S extends gvl, M extends fyk<? super S>> extends gpl<T, S, M> {
+   public gpq(gok.a $$0, M $$1, float $$2) {
+      super($$0, $$1, $$2);
    }
 
-   public alh a(gut $$0) {
-      return a;
+   protected boolean a(T $$0, double $$1) {
+      return super.a($$0, $$1) && ($$0.cN() || $$0.an() && $$0 == this.e.c);
    }
 
-   public gut c() {
-      return new gut();
+   @Override
+   protected float g(S $$0) {
+      return super.g($$0) * $$0.ab;
    }
 }

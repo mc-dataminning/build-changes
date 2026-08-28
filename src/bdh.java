@@ -1,19 +1,21 @@
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.Typed;
+import com.mojang.datafixers.DataFix;
+import com.mojang.datafixers.TypeRewriteRule;
 import com.mojang.datafixers.schemas.Schema;
+import com.mojang.datafixers.types.Type;
 import com.mojang.serialization.Dynamic;
 
-public class bdh extends bgn {
-   public bdh(Schema $$0, boolean $$1) {
-      super($$0, $$1, "EntityArmorStandSilentFix", bhs.B, "ArmorStand");
+public class bdh extends DataFix {
+   public bdh(Schema $$0) {
+      super($$0, false);
    }
 
-   public Dynamic<?> a(Dynamic<?> $$0) {
-      return $$0.get("Silent").asBoolean(false) && !$$0.get("Marker").asBoolean(false) ? $$0.remove("Silent") : $$0;
-   }
-
-   @Override
-   protected Typed<?> a(Typed<?> $$0) {
-      return $$0.update(DSL.remainderFinder(), this::a);
+   public TypeRewriteRule makeRule() {
+      Type<?> $$0 = this.getInputSchema().getType(bhu.x);
+      return this.writeFixAndRead("EmptyItemInVillagerTradeFix", $$0, $$0, $$0x -> {
+         Dynamic<?> $$1 = $$0x.get("buyB").orElseEmptyMap();
+         String $$2 = bji.a($$1.get("id").asString("minecraft:air"));
+         int $$3 = $$1.get("count").asInt(0);
+         return !$$2.equals("minecraft:air") && $$3 != 0 ? $$0x : $$0x.remove("buyB");
+      });
    }
 }

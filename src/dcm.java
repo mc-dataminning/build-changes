@@ -1,33 +1,52 @@
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Optional;
+import javax.annotation.Nullable;
 
-public record dcm(dbt d, dbt e, kk f, Optional<ecg> g, eik h, Optional<jp<eaa>> i) implements dcd {
+public record dcm(boolean d, Optional<jq<bsw>> e, Optional<dbz> f, Optional<ju<die>> g, ezn h, dbz i, boolean j, dfb.a k, lp l, lp m, jq<awk> n) implements dcj {
    public static final MapCodec<dcm> a = RecordCodecBuilder.mapCodec(
       $$0 -> $$0.group(
-               dbt.b.fieldOf("radius").forGetter(dcm::b),
-               dbt.b.fieldOf("height").forGetter(dcm::c),
-               kk.f.optionalFieldOf("offset", kk.g).forGetter(dcm::d),
-               ecg.b.optionalFieldOf("predicate").forGetter(dcm::e),
-               eik.a.fieldOf("block_state").forGetter(dcm::f),
-               eaa.aj.optionalFieldOf("trigger_game_event").forGetter(dcm::g)
+               Codec.BOOL.optionalFieldOf("attribute_to_user", false).forGetter(dcm::b),
+               bsw.b.optionalFieldOf("damage_type").forGetter(dcm::c),
+               dbz.b.optionalFieldOf("knockback_multiplier").forGetter(dcm::d),
+               kf.a(lz.f).optionalFieldOf("immune_blocks").forGetter(dcm::e),
+               ezn.a.optionalFieldOf("offset", ezn.c).forGetter(dcm::f),
+               dbz.b.fieldOf("radius").forGetter(dcm::g),
+               Codec.BOOL.optionalFieldOf("create_fire", false).forGetter(dcm::h),
+               dfb.a.f.fieldOf("block_interaction").forGetter(dcm::i),
+               lr.bf.fieldOf("small_particle").forGetter(dcm::j),
+               lr.bf.fieldOf("large_particle").forGetter(dcm::k),
+               awk.b.fieldOf("sound").forGetter(dcm::l)
             )
             .apply($$0, dcm::new)
    );
 
    @Override
-   public void a(arm $$0, int $$1, dbl $$2, btz $$3, ezh $$4) {
-      jg $$5 = jg.a((jz)$$4).a(this.f);
-      azr $$6 = $$3.ea();
-      int $$7 = (int)this.d.a($$1);
-      int $$8 = (int)this.e.a($$1);
+   public void a(arn $$0, int $$1, dbr $$2, bue $$3, ezn $$4) {
+      ezn $$5 = $$4.e(this.h);
+      $$0.a(
+         this.d ? $$3 : null,
+         this.a($$3, $$5),
+         new dft(this.k != dfb.a.a, this.e.isPresent(), this.f.map($$1x -> $$1x.a($$1)), this.g),
+         $$5.a(),
+         $$5.b(),
+         $$5.c(),
+         Math.max(this.i.a($$1), 0.0F),
+         this.j,
+         this.k,
+         this.l,
+         this.m,
+         this.n
+      );
+   }
 
-      for (jg $$9 : jg.c($$5.b(-$$7, 0, -$$7), $$5.b($$7, Math.min($$8 - 1, 0), $$7))) {
-         if ($$9.c($$4.a(), (double)$$9.v() + 0.5, $$4.c()) < (double)azj.h($$7)
-            && this.g.map($$2x -> $$2x.test($$0, $$9)).orElse(true)
-            && $$0.b($$9, this.h.a($$6, $$9))) {
-            this.i.ifPresent($$3x -> $$0.a($$3, $$3x, $$9));
-         }
+   @Nullable
+   private bsu a(bue $$0, ezn $$1) {
+      if (this.e.isEmpty()) {
+         return null;
+      } else {
+         return this.d ? new bsu(this.e.get(), $$0) : new bsu(this.e.get(), $$1);
       }
    }
 
@@ -36,27 +55,47 @@ public record dcm(dbt d, dbt e, kk f, Optional<ecg> g, eik h, Optional<jp<eaa>> 
       return a;
    }
 
-   public dbt b() {
+   public boolean b() {
       return this.d;
    }
 
-   public dbt c() {
+   public Optional<jq<bsw>> c() {
       return this.e;
    }
 
-   public kk d() {
+   public Optional<dbz> d() {
       return this.f;
    }
 
-   public Optional<ecg> e() {
+   public Optional<ju<die>> e() {
       return this.g;
    }
 
-   public eik f() {
+   public ezn f() {
       return this.h;
    }
 
-   public Optional<jp<eaa>> g() {
+   public dbz g() {
       return this.i;
+   }
+
+   public boolean h() {
+      return this.j;
+   }
+
+   public dfb.a i() {
+      return this.k;
+   }
+
+   public lp j() {
+      return this.l;
+   }
+
+   public lp k() {
+      return this.m;
+   }
+
+   public jq<awk> l() {
+      return this.n;
    }
 }

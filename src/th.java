@@ -1,212 +1,148 @@
-import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Lists;
-import com.mojang.logging.LogUtils;
-import it.unimi.dsi.fastutil.longs.LongArraySet;
-import it.unimi.dsi.fastutil.longs.LongSet;
+import com.google.common.collect.Maps;
+import com.google.common.collect.Sets;
+import java.lang.annotation.Annotation;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
+import java.util.Arrays;
 import java.util.Collection;
-import java.util.List;
+import java.util.Comparator;
+import java.util.Map;
 import java.util.Optional;
-import java.util.stream.Collectors;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import java.util.Set;
+import java.util.function.Consumer;
+import java.util.function.Function;
+import java.util.stream.Stream;
 
 public class th {
-   public static final int a = 8;
-   private static final Logger b = LogUtils.getLogger();
-   final arm c;
-   private final tk d;
-   private final List<te> e;
-   private ImmutableList<sy> f;
-   final List<ta> g = Lists.newArrayList();
-   private final List<te> h = Lists.newArrayList();
-   private final th.b i;
-   private boolean j = true;
-   @Nullable
-   sy k;
-   private final th.c l;
-   private final th.c m;
-   final boolean n;
+   private static final Collection<tz> a = Lists.newArrayList();
+   private static final Set<String> b = Sets.newHashSet();
+   private static final Map<String, Consumer<arn>> c = Maps.newHashMap();
+   private static final Map<String, Consumer<arn>> d = Maps.newHashMap();
+   private static final Set<tz> e = Sets.newHashSet();
 
-   protected th(th.b $$0, Collection<sy> $$1, arm $$2, tk $$3, th.c $$4, th.c $$5, boolean $$6) {
-      this.c = $$2;
-      this.d = $$3;
-      this.i = $$0;
-      this.l = $$4;
-      this.m = $$5;
-      this.f = ImmutableList.copyOf($$1);
-      this.n = $$6;
-      this.e = this.f.stream().flatMap($$0x -> $$0x.b().stream()).collect(ad.b());
-      $$3.a(this);
-      this.e.forEach($$0x -> $$0x.a(new tq()));
+   public static void a(Class<?> $$0) {
+      Arrays.stream($$0.getDeclaredMethods()).sorted(Comparator.comparing(Method::getName)).forEach(th::a);
    }
 
-   public List<te> a() {
-      return this.e;
+   public static void a(Method $$0) {
+      String $$1 = $$0.getDeclaringClass().getSimpleName();
+      sw $$2 = $$0.getAnnotation(sw.class);
+      if ($$2 != null) {
+         a.add(c($$0));
+         b.add($$1);
+      }
+
+      td $$3 = $$0.getAnnotation(td.class);
+      if ($$3 != null) {
+         a.addAll(b($$0));
+         b.add($$1);
+      }
+
+      a($$0, su.class, su::a, c);
+      a($$0, st.class, st::a, d);
    }
 
-   public void b() {
-      this.j = false;
-      this.a(0);
-   }
-
-   public void c() {
-      this.j = true;
-      if (this.k != null) {
-         this.k.d().accept(this.c);
+   private static <T extends Annotation> void a(Method $$0, Class<T> $$1, Function<T, String> $$2, Map<String, Consumer<arn>> $$3) {
+      T $$4 = $$0.getAnnotation($$1);
+      if ($$4 != null) {
+         String $$5 = $$2.apply($$4);
+         Consumer<arn> $$6 = $$3.putIfAbsent($$5, (Consumer<arn>)d($$0));
+         if ($$6 != null) {
+            throw new RuntimeException("Hey, there should only be one " + $$1 + " method per batch. Batch '" + $$5 + "' has more than one!");
+         }
       }
    }
 
-   public void a(te $$0) {
-      te $$1 = $$0.B();
-      $$0.A().forEach($$2 -> $$2.a($$0, $$1, this));
-      this.e.add($$1);
-      this.h.add($$1);
-      if (this.j) {
-         this.d();
-      }
+   public static Stream<tz> a(String $$0) {
+      return a.stream().filter($$1 -> a($$1, $$0));
    }
 
-   void a(final int $$0) {
-      if ($$0 >= this.f.size()) {
-         this.d();
+   public static Collection<tz> a() {
+      return a;
+   }
+
+   public static Collection<String> b() {
+      return b;
+   }
+
+   public static boolean b(String $$0) {
+      return b.contains($$0);
+   }
+
+   public static Consumer<arn> c(String $$0) {
+      return c.getOrDefault($$0, $$0x -> {
+      });
+   }
+
+   public static Consumer<arn> d(String $$0) {
+      return d.getOrDefault($$0, $$0x -> {
+      });
+   }
+
+   public static Optional<tz> e(String $$0) {
+      return a().stream().filter($$1 -> $$1.c().equalsIgnoreCase($$0)).findFirst();
+   }
+
+   public static tz f(String $$0) {
+      Optional<tz> $$1 = e($$0);
+      if ($$1.isEmpty()) {
+         throw new IllegalArgumentException("Can't find the test function for " + $$0);
       } else {
-         this.k = (sy)this.f.get($$0);
-         this.l.a(this.c);
-         this.m.a(this.c);
-         Collection<te> $$1 = this.a(this.k.b());
-         String $$2 = this.k.a();
-         b.info("Running test batch '{}' ({} tests)...", $$2, $$1.size());
-         this.k.c().accept(this.c);
-         this.g.forEach($$0x -> $$0x.a(this.k));
-         final tp $$3 = new tp();
-         $$1.forEach($$3::a);
-         $$3.a(new tf() {
-            private void a() {
-               if ($$3.i()) {
-                  th.this.k.d().accept(th.this.c);
-                  th.this.g.forEach($$0xxx -> $$0xxx.b(th.this.k));
-                  LongSet $$0 = new LongArraySet(th.this.c.w());
-                  $$0.forEach($$0xxx -> th.this.c.a(deb.a($$0xxx), deb.b($$0xxx), false));
-                  th.this.a($$0 + 1);
-               }
+         return $$1.get();
+      }
+   }
+
+   private static Collection<tz> b(Method $$0) {
+      try {
+         Object $$1 = $$0.getDeclaringClass().newInstance();
+         return (Collection<tz>)$$0.invoke($$1);
+      } catch (ReflectiveOperationException var2) {
+         throw new RuntimeException(var2);
+      }
+   }
+
+   private static tz c(Method $$0) {
+      sw $$1 = $$0.getAnnotation(sw.class);
+      String $$2 = $$0.getDeclaringClass().getSimpleName();
+      String $$3 = $$2.toLowerCase();
+      String $$4 = $$3 + "." + $$0.getName().toLowerCase();
+      String $$5 = $$1.g().isEmpty() ? $$4 : $$3 + "." + $$1.g();
+      String $$6 = $$1.b();
+      dor $$7 = tv.a($$1.d());
+      return new tz($$6, $$4, $$5, $$7, $$1.a(), $$1.h(), $$1.e(), $$1.f(), $$1.j(), $$1.i(), $$1.c(), (Consumer<te>)d($$0));
+   }
+
+   private static Consumer<?> d(Method $$0) {
+      return $$1 -> {
+         try {
+            Object $$2 = $$0.getDeclaringClass().newInstance();
+            $$0.invoke($$2, $$1);
+         } catch (InvocationTargetException var3) {
+            if (var3.getCause() instanceof RuntimeException) {
+               throw (RuntimeException)var3.getCause();
+            } else {
+               throw new RuntimeException(var3.getCause());
             }
-
-            @Override
-            public void a(te $$0x) {
-            }
-
-            @Override
-            public void a(te $$0x, th $$1) {
-               this.a();
-            }
-
-            @Override
-            public void b(te $$0x, th $$1) {
-               if (th.this.n) {
-                  th.this.k.d().accept(th.this.c);
-                  LongSet $$2 = new LongArraySet(th.this.c.w());
-                  $$2.forEach($$0xxx -> th.this.c.a(deb.a($$0xxx), deb.b($$0xxx), false));
-                  tk.a.a();
-               } else {
-                  this.a();
-               }
-            }
-
-            @Override
-            public void a(te $$0x, te $$1, th $$2) {
-            }
-         });
-         $$1.forEach(this.d::a);
-      }
+         } catch (ReflectiveOperationException var4) {
+            throw new RuntimeException(var4);
+         }
+      };
    }
 
-   private void d() {
-      if (!this.h.isEmpty()) {
-         b.info("Starting re-run of tests: {}", this.h.stream().map($$0 -> $$0.u().c()).collect(Collectors.joining(", ")));
-         this.f = ImmutableList.copyOf(this.i.batch(this.h));
-         this.h.clear();
-         this.j = false;
-         this.a(0);
-      } else {
-         this.f = ImmutableList.of();
-         this.j = true;
-      }
+   private static boolean a(tz $$0, String $$1) {
+      return $$0.c().toLowerCase().startsWith($$1.toLowerCase() + ".");
    }
 
-   public void a(ta $$0) {
-      this.g.add($$0);
+   public static Stream<tz> c() {
+      return e.stream();
    }
 
-   private Collection<te> a(Collection<te> $$0) {
-      return $$0.stream().map(this::b).flatMap(Optional::stream).toList();
+   public static void a(tz $$0) {
+      e.add($$0);
    }
 
-   private Optional<te> b(te $$0) {
-      return $$0.c() == null ? this.m.spawnStructure($$0) : this.l.spawnStructure($$0);
-   }
-
-   public static void a(arm $$0) {
-      agr.a($$0);
-   }
-
-   public static class a {
-      private final arm a;
-      private final tk b = tk.a;
-      private th.b c = sz.a();
-      private th.c d = th.c.a;
-      private th.c e = th.c.b;
-      private final Collection<sy> f;
-      private boolean g = false;
-
-      private a(Collection<sy> $$0, arm $$1) {
-         this.f = $$0;
-         this.a = $$1;
-      }
-
-      public static th.a a(Collection<sy> $$0, arm $$1) {
-         return new th.a($$0, $$1);
-      }
-
-      public static th.a b(Collection<te> $$0, arm $$1) {
-         return a(sz.a().batch($$0), $$1);
-      }
-
-      public th.a a(boolean $$0) {
-         this.g = $$0;
-         return this;
-      }
-
-      public th.a a(th.c $$0) {
-         this.e = $$0;
-         return this;
-      }
-
-      public th.a a(tt $$0) {
-         this.d = $$0;
-         return this;
-      }
-
-      public th.a a(th.b $$0) {
-         this.c = $$0;
-         return this;
-      }
-
-      public th a() {
-         return new th(this.c, this.f, this.a, this.b, this.d, this.e, this.g);
-      }
-   }
-
-   public interface b {
-      Collection<sy> batch(Collection<te> var1);
-   }
-
-   public interface c {
-      th.c a = $$0 -> Optional.of($$0.n().a().a(1));
-      th.c b = $$0 -> Optional.empty();
-
-      Optional<te> spawnStructure(te var1);
-
-      default void a(arm $$0) {
-      }
+   public static void d() {
+      e.clear();
    }
 }

@@ -1,33 +1,29 @@
-import java.util.UUID;
-import javax.annotation.Nullable;
+public class air implements zp<agv> {
+   public static final zg<wf, air> a = zp.a(air::a, air::new);
+   private final bsc b;
 
-public class air implements zo<agu> {
-   public static final zf<we, air> a = zo.a(air::a, air::new);
-   private final UUID b;
-
-   public air(UUID $$0) {
+   public air(bsc $$0) {
       this.b = $$0;
    }
 
-   private air(we $$0) {
-      this.b = $$0.n();
+   private air(wf $$0) {
+      this.b = $$0.b(bsc.class);
    }
 
-   private void a(we $$0) {
+   private void a(wf $$0) {
       $$0.a(this.b);
    }
 
    @Override
-   public zq<air> a() {
-      return ags.ce;
+   public zr<air> a() {
+      return agt.cd;
    }
 
-   public void a(agu $$0) {
+   public void a(agv $$0) {
       $$0.a(this);
    }
 
-   @Nullable
-   public btz a(arm $$0) {
-      return $$0.a(this.b);
+   public bsc b() {
+      return this.b;
    }
 }

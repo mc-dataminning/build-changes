@@ -1,79 +1,76 @@
-public class gfj extends gge {
-   private final gfz a;
+public class gfj extends gfp {
+   private static final int a = 3;
+   private final gip b;
+   private final bue D;
+   private final bue E;
+   private int F;
+   private final goi G;
+   private double H;
+   private double I;
+   private double J;
+   private double K;
+   private double L;
+   private double M;
 
-   gfj(gbx $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, gfz $$7) {
-      super($$0, $$1, $$2, $$3, 0.0, 0.0, 0.0);
-      this.B = 0.96F;
-      this.a = $$7;
-      float $$8 = 2.5F;
-      this.j *= 0.1F;
-      this.k *= 0.1F;
-      this.l *= 0.1F;
-      this.j += $$4;
-      this.k += $$5;
-      this.l += $$6;
-      float $$9 = 1.0F - (float)(Math.random() * 0.3F);
-      this.v = $$9;
-      this.w = $$9;
-      this.x = $$9;
-      this.D *= 1.875F;
-      int $$10 = (int)(8.0 / (Math.random() * 0.8 + 0.3));
-      this.t = (int)Math.max((float)$$10 * 2.5F, 1.0F);
-      this.n = false;
-      this.b($$7);
+   public gfj(goi $$0, gip $$1, gci $$2, bue $$3, bue $$4) {
+      this($$0, $$1, $$2, $$3, $$4, $$3.dA());
+   }
+
+   private gfj(goi $$0, gip $$1, gci $$2, bue $$3, bue $$4, ezn $$5) {
+      super($$2, $$3.dC(), $$3.dE(), $$3.dI(), $$5.d, $$5.e, $$5.f);
+      this.b = $$1;
+      this.D = this.a($$3);
+      this.E = $$4;
+      this.G = $$0;
+      this.c();
+      this.d();
+   }
+
+   private bue a(bue $$0) {
+      return (bue)(!($$0 instanceof ckv) ? $$0 : ((ckv)$$0).A());
    }
 
    @Override
-   public gfi b() {
-      return gfi.c;
+   public gft b() {
+      return gft.d;
    }
 
    @Override
-   public float b(float $$0) {
-      return this.D * azj.a(((float)this.s + $$0) / (float)this.t * 32.0F, 0.0F, 1.0F);
+   public void a(fef $$0, fir $$1, float $$2) {
+      float $$3 = ((float)this.F + $$2) / 3.0F;
+      $$3 *= $$3;
+      double $$4 = azk.d((double)$$2, this.K, this.H);
+      double $$5 = azk.d((double)$$2, this.L, this.I);
+      double $$6 = azk.d((double)$$2, this.M, this.J);
+      double $$7 = azk.d((double)$$3, this.D.dC(), $$4);
+      double $$8 = azk.d((double)$$3, this.D.dE(), $$5);
+      double $$9 = azk.d((double)$$3, this.D.dI(), $$6);
+      gih.a $$10 = this.b.c();
+      ezn $$11 = $$1.b();
+      this.G.a(this.D, $$7 - $$11.a(), $$8 - $$11.b(), $$9 - $$11.c(), $$2, new feb(), $$10, this.G.a(this.D, $$2));
+      $$10.b();
    }
 
    @Override
    public void a() {
-      super.a();
-      if (!this.o) {
-         this.b(this.a);
-         coh $$0 = this.c.a(this.g, this.h, this.i, 2.0, false);
-         if ($$0 != null) {
-            double $$1 = $$0.dE();
-            if (this.h > $$1) {
-               this.h = this.h + ($$1 - this.h) * 0.2;
-               this.k = this.k + ($$0.dA().e - this.k) * 0.2;
-               this.c(this.g, this.h, this.i);
-            }
-         }
+      this.F++;
+      if (this.F == 3) {
+         this.k();
       }
+
+      this.d();
+      this.c();
    }
 
-   public static class a implements gfh<lu> {
-      private final gfz a;
-
-      public a(gfz $$0) {
-         this.a = $$0;
-      }
-
-      public gfe a(lu $$0, gbx $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new gfj($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
-      }
+   private void c() {
+      this.H = this.E.dC();
+      this.I = (this.E.dE() + this.E.dG()) / 2.0;
+      this.J = this.E.dI();
    }
 
-   public static class b implements gfh<lu> {
-      private final gfz a;
-
-      public b(gfz $$0) {
-         this.a = $$0;
-      }
-
-      public gfe a(lu $$0, gbx $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         gfe $$8 = new gfj($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
-         $$8.a(200.0F, 50.0F, 120.0F);
-         $$8.e(0.4F);
-         return $$8;
-      }
+   private void d() {
+      this.K = this.H;
+      this.L = this.I;
+      this.M = this.J;
    }
 }

@@ -1,31 +1,23 @@
-public class gnb extends gmu<cgn, gtn, fxd> {
-   private static final alh a = alh.b("textures/entity/bee/bee_angry.png");
-   private static final alh b = alh.b("textures/entity/bee/bee_angry_nectar.png");
-   private static final alh k = alh.b("textures/entity/bee/bee.png");
-   private static final alh l = alh.b("textures/entity/bee/bee_nectar.png");
+public abstract class gnb<T extends civ, S extends guo, M extends fyk<? super S>> extends gnf<T, S, M> {
+   private final float a;
 
-   public gnb(gnz.a $$0) {
-      super($$0, new fxd($$0.a(gba.q)), new fxd($$0.a(gba.r)), 0.4F);
+   public gnb(gok.a $$0, M $$1, M $$2, float $$3) {
+      super($$0, $$1, $$2, 0.75F);
+      this.a = $$3;
    }
 
-   public alh a(gtn $$0) {
-      if ($$0.d) {
-         return $$0.e ? b : a;
-      } else {
-         return $$0.e ? l : k;
-      }
+   protected void a(S $$0, feb $$1) {
+      $$1.b(this.a, this.a, this.a);
+      super.a($$0, $$1);
    }
 
-   public gtn a() {
-      return new gtn();
-   }
-
-   public void a(cgn $$0, gtn $$1, float $$2) {
+   public void a(T $$0, S $$1, float $$2) {
       super.a($$0, $$1, $$2);
-      $$1.a = $$0.J($$2);
-      $$1.b = !$$0.gI();
-      $$1.c = $$0.aJ() && $$0.dA().h() < 1.0E-7;
-      $$1.d = $$0.ae_();
-      $$1.e = $$0.gH();
+      $$1.b = $$0.i();
+      $$1.c = $$0.cb();
+      $$1.e = $$0.J($$2);
+      $$1.f = $$0.K($$2);
+      $$1.g = $$0.L($$2);
+      $$1.d = $$0.cq > 0;
    }
 }

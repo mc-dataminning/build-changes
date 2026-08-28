@@ -1,37 +1,55 @@
-public enum coi {
-   a(0, "cape"),
-   b(1, "jacket"),
-   c(2, "left_sleeve"),
-   d(3, "right_sleeve"),
-   e(4, "left_pants_leg"),
-   f(5, "right_pants_leg"),
-   g(6, "hat");
+public class coi {
+   public boolean a;
+   public boolean b;
+   public boolean c;
+   public boolean d;
+   public boolean e = true;
+   private float f = 0.05F;
+   private float g = 0.1F;
 
-   private final int h;
-   private final int i;
-   private final String j;
-   private final xh k;
-
-   private coi(final int $$0, final String $$1) {
-      this.h = $$0;
-      this.i = 1 << $$0;
-      this.j = $$1;
-      this.k = xh.c("options.modelPart." + $$1);
+   public void a(uk $$0) {
+      uk $$1 = new uk();
+      $$1.a("invulnerable", this.a);
+      $$1.a("flying", this.b);
+      $$1.a("mayfly", this.c);
+      $$1.a("instabuild", this.d);
+      $$1.a("mayBuild", this.e);
+      $$1.a("flySpeed", this.f);
+      $$1.a("walkSpeed", this.g);
+      $$0.a("abilities", $$1);
    }
 
-   public int a() {
-      return this.i;
+   public void b(uk $$0) {
+      if ($$0.b("abilities", 10)) {
+         uk $$1 = $$0.p("abilities");
+         this.a = $$1.q("invulnerable");
+         this.b = $$1.q("flying");
+         this.c = $$1.q("mayfly");
+         this.d = $$1.q("instabuild");
+         if ($$1.b("flySpeed", 99)) {
+            this.f = $$1.j("flySpeed");
+            this.g = $$1.j("walkSpeed");
+         }
+
+         if ($$1.b("mayBuild", 1)) {
+            this.e = $$1.q("mayBuild");
+         }
+      }
    }
 
-   public int b() {
-      return this.h;
+   public float a() {
+      return this.f;
    }
 
-   public String c() {
-      return this.j;
+   public void a(float $$0) {
+      this.f = $$0;
    }
 
-   public xh d() {
-      return this.k;
+   public float b() {
+      return this.g;
+   }
+
+   public void b(float $$0) {
+      this.g = $$0;
    }
 }

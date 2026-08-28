@@ -1,78 +1,26 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Lists;
-import com.mojang.logging.LogUtils;
-import java.util.List;
-import java.util.Locale;
-import java.util.Map;
-import org.slf4j.Logger;
+import com.mojang.serialization.MapCodec;
 
-public record emg(List<elv> a) {
-   private static final Logger b = LogUtils.getLogger();
-   private static final alh c = alh.b("jigsaw");
-   private static final Map<alh, alh> d = ImmutableMap.builder()
-      .put(alh.b("nvi"), c)
-      .put(alh.b("pcp"), c)
-      .put(alh.b("bastionremnant"), c)
-      .put(alh.b("runtime"), c)
-      .build();
+public interface emg<S extends elx> {
+   emg<enr> a = a("buried_treasure", enr.d);
+   emg<ent> b = a("desert_pyramid", ent.d);
+   emg<env> c = a("end_city", env.d);
+   emg<eoe> d = a("fortress", eoe.e);
+   emg<enx> e = a("igloo", enx.d);
+   emg<eny> f = a("jigsaw", eny.i);
+   emg<eoa> g = a("jungle_temple", eoa.d);
+   emg<eoc> h = a("mineshaft", eoc.d);
+   emg<eog> i = a("nether_fossil", eog.d);
+   emg<eoi> j = a("ocean_monument", eoi.d);
+   emg<eok> k = a("ocean_ruin", eok.d);
+   emg<eom> l = a("ruined_portal", eom.d);
+   emg<eoo> m = a("shipwreck", eoo.d);
+   emg<eoq> n = a("stronghold", eoq.d);
+   emg<eos> o = a("swamp_hut", eos.d);
+   emg<eou> p = a("woodland_mansion", eou.d);
 
-   public emg(final List<elv> a) {
-      this.a = List.copyOf(a);
-   }
+   MapCodec<S> codec();
 
-   public boolean a() {
-      return this.a.isEmpty();
-   }
-
-   public boolean a(jg $$0) {
-      for (elv $$1 : this.a) {
-         if ($$1.f().b($$0)) {
-            return true;
-         }
-      }
-
-      return false;
-   }
-
-   public vg a(emh $$0) {
-      up $$1 = new up();
-
-      for (elv $$2 : this.a) {
-         $$1.add($$2.a($$0));
-      }
-
-      return $$1;
-   }
-
-   public static emg a(up $$0, emh $$1) {
-      List<elv> $$2 = Lists.newArrayList();
-
-      for (int $$3 = 0; $$3 < $$0.size(); $$3++) {
-         uj $$4 = $$0.a($$3);
-         String $$5 = $$4.l("id").toLowerCase(Locale.ROOT);
-         alh $$6 = alh.a($$5);
-         alh $$7 = d.getOrDefault($$6, $$6);
-         emi $$8 = lx.Q.a($$7);
-         if ($$8 == null) {
-            b.error("Unknown structure piece id: {}", $$7);
-         } else {
-            try {
-               elv $$9 = $$8.load($$1, $$4);
-               $$2.add($$9);
-            } catch (Exception var10) {
-               b.error("Exception loading structure piece with id {}", $$7, var10);
-            }
-         }
-      }
-
-      return new emg($$2);
-   }
-
-   public elj b() {
-      return elv.a(this.a.stream());
-   }
-
-   public List<elv> c() {
-      return this.a;
+   private static <S extends elx> emg<S> a(String $$0, MapCodec<S> $$1) {
+      return kd.a(ly.R, $$0, () -> $$1);
    }
 }

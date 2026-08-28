@@ -1,32 +1,92 @@
-public interface cvs {
-   int a = 256;
-   float b = 7.0F;
-   alg<cvq> c = a("ponder_goat_horn");
-   alg<cvq> d = a("sing_goat_horn");
-   alg<cvq> e = a("seek_goat_horn");
-   alg<cvq> f = a("feel_goat_horn");
-   alg<cvq> g = a("admire_goat_horn");
-   alg<cvq> h = a("call_goat_horn");
-   alg<cvq> i = a("yearn_goat_horn");
-   alg<cvq> j = a("dream_goat_horn");
+import com.google.common.base.Suppliers;
+import com.google.common.collect.BiMap;
+import com.google.common.collect.ImmutableBiMap;
+import java.util.Optional;
+import java.util.function.Supplier;
 
-   private static alg<cvq> a(String $$0) {
-      return alg.a(ly.I, alh.b($$0));
+public class cvs extends cvx implements cxf {
+   public static final Supplier<BiMap<die, die>> a = Suppliers.memoize(
+      () -> ImmutableBiMap.builder()
+            .put(dig.qW, dig.rw)
+            .put(dig.qX, dig.ry)
+            .put(dig.qY, dig.rx)
+            .put(dig.qZ, dig.rz)
+            .put(dig.rf, dig.rD)
+            .put(dig.re, dig.rC)
+            .put(dig.rd, dig.rB)
+            .put(dig.rc, dig.rA)
+            .put(dig.rv, dig.rL)
+            .put(dig.ru, dig.rK)
+            .put(dig.rt, dig.rJ)
+            .put(dig.rs, dig.rI)
+            .put(dig.rr, dig.rH)
+            .put(dig.rq, dig.rG)
+            .put(dig.rp, dig.rF)
+            .put(dig.ro, dig.rE)
+            .put(dig.rj, dig.rn)
+            .put(dig.ri, dig.rm)
+            .put(dig.rh, dig.rl)
+            .put(dig.rg, dig.rk)
+            .put(dig.rM, dig.rQ)
+            .put(dig.rN, dig.rR)
+            .put(dig.rP, dig.rT)
+            .put(dig.rO, dig.rS)
+            .put(dig.rU, dig.rY)
+            .put(dig.rV, dig.rZ)
+            .put(dig.rX, dig.sb)
+            .put(dig.rW, dig.sa)
+            .put(dig.sc, dig.sg)
+            .put(dig.sd, dig.sh)
+            .put(dig.se, dig.si)
+            .put(dig.sf, dig.sj)
+            .put(dig.sk, dig.so)
+            .put(dig.sl, dig.sp)
+            .put(dig.sm, dig.sq)
+            .put(dig.sn, dig.sr)
+            .build()
+   );
+   public static final Supplier<BiMap<die, die>> b = Suppliers.memoize(() -> a.get().inverse());
+
+   public cvs(cvx.a $$0) {
+      super($$0);
    }
 
-   static void a(qx<cvq> $$0) {
-      a($$0, c, (jp<awj>)awk.mE.get(0), 7.0F, 256.0F);
-      a($$0, d, (jp<awj>)awk.mE.get(1), 7.0F, 256.0F);
-      a($$0, e, (jp<awj>)awk.mE.get(2), 7.0F, 256.0F);
-      a($$0, f, (jp<awj>)awk.mE.get(3), 7.0F, 256.0F);
-      a($$0, g, (jp<awj>)awk.mE.get(4), 7.0F, 256.0F);
-      a($$0, h, (jp<awj>)awk.mE.get(5), 7.0F, 256.0F);
-      a($$0, i, (jp<awj>)awk.mE.get(6), 7.0F, 256.0F);
-      a($$0, j, (jp<awj>)awk.mE.get(7), 7.0F, 256.0F);
+   @Override
+   public bsd a(czu $$0) {
+      dfb $$1 = $$0.q();
+      jh $$2 = $$0.a();
+      dvj $$3 = $$1.a_($$2);
+      return a($$3).map($$3x -> {
+         com $$4 = $$0.o();
+         cwb $$5 = $$0.n();
+         if ($$4 instanceof aro $$6) {
+            ao.N.a($$6, $$2, $$5);
+         }
+
+         $$5.h(1);
+         $$1.a($$2, $$3x, 11);
+         $$1.a(eag.c, $$2, eag.a.a($$4, $$3x));
+         $$1.a($$4, 3003, $$2, 0);
+         return bsd.a;
+      }).orElse(bsd.e);
    }
 
-   static void a(qx<cvq> $$0, alg<cvq> $$1, jp<awj> $$2, float $$3, float $$4) {
-      xv $$5 = xh.c(ad.a("instrument", $$1.a()));
-      $$0.a($$1, new cvq($$2, $$3, $$4, $$5));
+   public static Optional<dvj> a(dvj $$0) {
+      return Optional.ofNullable((die)a.get().get($$0.b())).map($$1 -> ((die)$$1).m($$0));
+   }
+
+   @Override
+   public boolean a(dfb $$0, dty $$1, boolean $$2, com $$3) {
+      if ($$1.b(true)) {
+         $$0.a(null, 3003, $$1.aB_(), 0);
+         return true;
+      } else {
+         return false;
+      }
+   }
+
+   @Override
+   public boolean a(dtz $$0, com $$1) {
+      return true;
    }
 }

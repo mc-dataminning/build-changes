@@ -1,142 +1,111 @@
-import java.util.function.Consumer;
+import it.unimi.dsi.fastutil.ints.IntConsumer;
+import java.nio.ByteBuffer;
+import java.nio.FloatBuffer;
+import javax.annotation.Nullable;
+import org.apache.commons.lang3.mutable.MutableLong;
+import org.joml.Vector3f;
+import org.lwjgl.system.MemoryUtil;
 
-public class fea {
-   public static fdx a() {
-      throw new IllegalArgumentException();
+public class fea implements AutoCloseable {
+   private final fdy.a a;
+   @Nullable
+   private fdy.a b;
+   private final fea.a c;
+
+   public fea(fdy.a $$0, fea.a $$1) {
+      this.a = $$0;
+      this.c = $$1;
    }
 
-   public static fdx a(fdx $$0) {
-      return $$0;
-   }
+   private static Vector3f[] a(ByteBuffer $$0, int $$1, feg $$2) {
+      int $$3 = $$2.a(feh.b);
+      if ($$3 == -1) {
+         throw new IllegalArgumentException("Cannot identify quad centers with no position element");
+      } else {
+         FloatBuffer $$4 = $$0.asFloatBuffer();
+         int $$5 = $$2.b() / 4;
+         int $$6 = $$5 * 4;
+         int $$7 = $$1 / 4;
+         Vector3f[] $$8 = new Vector3f[$$7];
 
-   public static fdx a(fdx $$0, fdx $$1) {
-      return new fea.a($$0, $$1);
-   }
-
-   public static fdx a(fdx... $$0) {
-      return new fea.b($$0);
-   }
-
-   static class a implements fdx {
-      private final fdx a;
-      private final fdx b;
-
-      public a(fdx $$0, fdx $$1) {
-         if ($$0 == $$1) {
-            throw new IllegalArgumentException("Duplicate delegates");
-         } else {
-            this.a = $$0;
-            this.b = $$1;
-         }
-      }
-
-      @Override
-      public fdx a(float $$0, float $$1, float $$2) {
-         this.a.a($$0, $$1, $$2);
-         this.b.a($$0, $$1, $$2);
-         return this;
-      }
-
-      @Override
-      public fdx a(int $$0, int $$1, int $$2, int $$3) {
-         this.a.a($$0, $$1, $$2, $$3);
-         this.b.a($$0, $$1, $$2, $$3);
-         return this;
-      }
-
-      @Override
-      public fdx a(float $$0, float $$1) {
-         this.a.a($$0, $$1);
-         this.b.a($$0, $$1);
-         return this;
-      }
-
-      @Override
-      public fdx a(int $$0, int $$1) {
-         this.a.a($$0, $$1);
-         this.b.a($$0, $$1);
-         return this;
-      }
-
-      @Override
-      public fdx b(int $$0, int $$1) {
-         this.a.b($$0, $$1);
-         this.b.b($$0, $$1);
-         return this;
-      }
-
-      @Override
-      public fdx b(float $$0, float $$1, float $$2) {
-         this.a.b($$0, $$1, $$2);
-         this.b.b($$0, $$1, $$2);
-         return this;
-      }
-
-      @Override
-      public void a(float $$0, float $$1, float $$2, int $$3, float $$4, float $$5, int $$6, int $$7, float $$8, float $$9, float $$10) {
-         this.a.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8, $$9, $$10);
-         this.b.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8, $$9, $$10);
-      }
-   }
-
-   static record b(fdx[] a) implements fdx {
-      b(fdx[] a) {
-         for (int $$1 = 0; $$1 < a.length; $$1++) {
-            for (int $$2 = $$1 + 1; $$2 < a.length; $$2++) {
-               if (a[$$1] == a[$$2]) {
-                  throw new IllegalArgumentException("Duplicate delegates");
-               }
-            }
+         for (int $$9 = 0; $$9 < $$7; $$9++) {
+            int $$10 = $$9 * $$6 + $$3;
+            int $$11 = $$10 + $$5 * 2;
+            float $$12 = $$4.get($$10 + 0);
+            float $$13 = $$4.get($$10 + 1);
+            float $$14 = $$4.get($$10 + 2);
+            float $$15 = $$4.get($$11 + 0);
+            float $$16 = $$4.get($$11 + 1);
+            float $$17 = $$4.get($$11 + 2);
+            $$8[$$9] = new Vector3f(($$12 + $$15) / 2.0F, ($$13 + $$16) / 2.0F, ($$14 + $$17) / 2.0F);
          }
 
-         this.a = a;
+         return $$8;
       }
+   }
 
-      private void a(Consumer<fdx> $$0) {
-         for (fdx $$1 : this.a) {
-            $$0.accept($$1);
+   public ByteBuffer a() {
+      return this.a.a();
+   }
+
+   @Nullable
+   public ByteBuffer b() {
+      return this.b != null ? this.b.a() : null;
+   }
+
+   public fea.a c() {
+      return this.c;
+   }
+
+   @Nullable
+   public fea.b a(fdy $$0, fej $$1) {
+      if (this.c.d() != feg.c.h) {
+         return null;
+      } else {
+         Vector3f[] $$2 = a(this.a.a(), this.c.b(), this.c.a());
+         fea.b $$3 = new fea.b($$2, this.c.e());
+         this.b = $$3.a($$0, $$1);
+         return $$3;
+      }
+   }
+
+   @Override
+   public void close() {
+      this.a.close();
+      if (this.b != null) {
+         this.b.close();
+      }
+   }
+
+   public static record a(feg a, int b, int c, feg.c d, feg.b e) {
+   }
+
+   public static record b(Vector3f[] a, feg.b b) {
+      @Nullable
+      public fdy.a a(fdy $$0, fej $$1) {
+         int[] $$2 = $$1.sort(this.a);
+         long $$3 = $$0.a($$2.length * 6 * this.b.d);
+         IntConsumer $$4 = this.a($$3, this.b);
+
+         for (int $$5 : $$2) {
+            $$4.accept($$5 * 4 + 0);
+            $$4.accept($$5 * 4 + 1);
+            $$4.accept($$5 * 4 + 2);
+            $$4.accept($$5 * 4 + 2);
+            $$4.accept($$5 * 4 + 3);
+            $$4.accept($$5 * 4 + 0);
          }
+
+         return $$0.a();
       }
 
-      @Override
-      public fdx a(float $$0, float $$1, float $$2) {
-         this.a($$3 -> $$3.a($$0, $$1, $$2));
-         return this;
-      }
+      private IntConsumer a(long $$0, feg.b $$1) {
+         MutableLong $$2 = new MutableLong($$0);
 
-      @Override
-      public fdx a(int $$0, int $$1, int $$2, int $$3) {
-         this.a($$4 -> $$4.a($$0, $$1, $$2, $$3));
-         return this;
-      }
-
-      @Override
-      public fdx a(float $$0, float $$1) {
-         this.a($$2 -> $$2.a($$0, $$1));
-         return this;
-      }
-
-      @Override
-      public fdx a(int $$0, int $$1) {
-         this.a($$2 -> $$2.a($$0, $$1));
-         return this;
-      }
-
-      @Override
-      public fdx b(int $$0, int $$1) {
-         this.a($$2 -> $$2.b($$0, $$1));
-         return this;
-      }
-
-      @Override
-      public fdx b(float $$0, float $$1, float $$2) {
-         this.a($$3 -> $$3.b($$0, $$1, $$2));
-         return this;
-      }
-
-      @Override
-      public void a(float $$0, float $$1, float $$2, int $$3, float $$4, float $$5, int $$6, int $$7, float $$8, float $$9, float $$10) {
-         this.a($$11 -> $$11.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8, $$9, $$10));
+         return switch ($$1) {
+            case a -> $$1x -> MemoryUtil.memPutShort($$2.getAndAdd(2L), (short)$$1x);
+            case b -> $$1x -> MemoryUtil.memPutInt($$2.getAndAdd(4L), $$1x);
+         };
       }
    }
 }

@@ -1,55 +1,100 @@
 import com.mojang.serialization.MapCodec;
+import javax.annotation.Nullable;
 
-public class dkc extends dhy {
+public class dkc extends dhq {
    public static final MapCodec<dkc> a = b(dkc::new);
-   protected static final fab b = dku.c;
+   public static final dwj b = dvz.aT;
+   public static final dwa c = dvz.p;
+   protected static final fah d = die.a(0.0, 0.0, 0.0, 16.0, 6.0, 16.0);
 
    @Override
    public MapCodec<dkc> a() {
       return a;
    }
 
-   protected dkc(dvc.d $$0) {
+   public dkc(dvi.d $$0) {
       super($$0);
+      this.l(this.F.b().b(b, Integer.valueOf(0)).b(c, Boolean.valueOf(false)));
    }
 
    @Override
-   protected boolean g_(dvd $$0) {
+   protected fah a(dvj $$0, deg $$1, jh $$2, ezs $$3) {
+      return d;
+   }
+
+   @Override
+   protected boolean g_(dvj $$0) {
       return true;
    }
 
    @Override
-   public dvd a(czm $$0) {
-      return !this.m().a((dey)$$0.q(), $$0.a()) ? dhy.a(this.m(), dia.j.m(), $$0.q(), $$0.a()) : super.a($$0);
+   protected int a(dvj $$0, deg $$1, jh $$2, jm $$3) {
+      return $$0.c(b);
    }
 
-   @Override
-   protected dvd a(dvd $$0, jl $$1, dvd $$2, dew $$3, jg $$4, jg $$5) {
-      if ($$1 == jl.b && !$$0.a($$3, $$4)) {
-         $$3.a($$4, this, 1);
+   private static void e(dvj $$0, dfb $$1, jh $$2) {
+      int $$3 = $$1.a(dfk.a, $$2) - $$1.B_();
+      float $$4 = $$1.a(1.0F);
+      boolean $$5 = $$0.c(c);
+      if ($$5) {
+         $$3 = 15 - $$3;
+      } else if ($$3 > 0) {
+         float $$6 = $$4 < (float) Math.PI ? 0.0F : (float) (Math.PI * 2);
+         $$4 += ($$6 - $$4) * 0.2F;
+         $$3 = Math.round((float)$$3 * azk.b($$4));
       }
 
-      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
+      $$3 = azk.a($$3, 0, 15);
+      if ($$0.c(b) != $$3) {
+         $$1.a($$2, $$0.b(b, Integer.valueOf($$3)), 3);
+      }
    }
 
    @Override
-   protected void a(dvd $$0, arm $$1, jg $$2, azr $$3) {
-      dku.a(null, $$0, $$1, $$2);
+   protected bsd a(dvj $$0, dfb $$1, jh $$2, com $$3, ezj $$4) {
+      if (!$$3.gw()) {
+         return super.a($$0, $$1, $$2, $$3, $$4);
+      } else {
+         if (!$$1.C) {
+            dvj $$5 = $$0.a(c);
+            $$1.a($$2, $$5, 2);
+            $$1.a(eag.c, $$2, eag.a.a($$3, $$5));
+            e($$5, $$1, $$2);
+         }
+
+         return bsd.a;
+      }
    }
 
    @Override
-   protected boolean a(dvd $$0, dey $$1, jg $$2) {
-      dvd $$3 = $$1.a_($$2.d());
-      return !$$3.e() || $$3.b() instanceof dkw;
+   protected dok a_(dvj $$0) {
+      return dok.c;
    }
 
    @Override
-   protected fab a(dvd $$0, dea $$1, jg $$2, ezm $$3) {
-      return b;
+   protected boolean f_(dvj $$0) {
+      return true;
    }
 
    @Override
-   protected boolean a(dvd $$0, ert $$1) {
-      return false;
+   public dsm a(jh $$0, dvj $$1) {
+      return new dtb($$0, $$1);
+   }
+
+   @Nullable
+   @Override
+   public <T extends dsm> dsn<T> a(dfb $$0, dvj $$1, dso<T> $$2) {
+      return !$$0.C && $$0.D_().g() ? a($$2, dso.q, dkc::a) : null;
+   }
+
+   private static void a(dfb $$0, jh $$1, dvj $$2, dtb $$3) {
+      if ($$0.aa() % 20L == 0L) {
+         e($$2, $$0, $$1);
+      }
+   }
+
+   @Override
+   protected void a(dvk.a<die, dvj> $$0) {
+      $$0.a(b, c);
    }
 }

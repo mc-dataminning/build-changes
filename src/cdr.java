@@ -1,40 +1,68 @@
 import java.util.EnumSet;
+import java.util.function.Predicate;
+import javax.annotation.Nullable;
 
-public class cdr extends cdt {
-   private final bvs a;
-   private buv b;
-   private int c;
+public class cdr<T extends bva> extends cdy {
+   private static final int i = 10;
+   protected final Class<T> a;
+   protected final int b;
+   @Nullable
+   protected bva c;
+   protected cfr d;
 
-   public cdr(bvs $$0) {
-      super($$0, false);
-      this.a = $$0;
-      this.a(EnumSet.of(cbt.a.d));
+   public cdr(bvc $$0, Class<T> $$1, boolean $$2) {
+      this($$0, $$1, 10, $$2, false, null);
+   }
+
+   public cdr(bvc $$0, Class<T> $$1, boolean $$2, Predicate<bva> $$3) {
+      this($$0, $$1, 10, $$2, false, $$3);
+   }
+
+   public cdr(bvc $$0, Class<T> $$1, boolean $$2, boolean $$3) {
+      this($$0, $$1, 10, $$2, $$3, null);
+   }
+
+   public cdr(bvc $$0, Class<T> $$1, int $$2, boolean $$3, boolean $$4, @Nullable Predicate<bva> $$5) {
+      super($$0, $$3, $$4);
+      this.a = $$1;
+      this.b = b($$2);
+      this.a(EnumSet.of(cby.a.d));
+      this.d = cfr.a().a(this.l()).a($$5);
    }
 
    @Override
    public boolean b() {
-      if (this.a.q() && !this.a.gv()) {
-         buv $$0 = this.a.T_();
-         if ($$0 == null) {
-            return false;
-         } else {
-            this.b = $$0.eu();
-            int $$1 = $$0.ev();
-            return $$1 != this.c && this.a(this.b, cfm.a) && this.a.a(this.b, $$0);
-         }
-      } else {
+      if (this.b > 0 && this.e.ea().a(this.b) != 0) {
          return false;
+      } else {
+         this.h();
+         return this.c != null;
+      }
+   }
+
+   protected ezi a(double $$0) {
+      return this.e.cS().c($$0, $$0, $$0);
+   }
+
+   protected void h() {
+      if (this.a != com.class && this.a != aro.class) {
+         this.c = this.e.dX().a(this.e.dX().a(this.a, this.a(this.l()), $$0 -> true), this.i(), this.e, this.e.dC(), this.e.dG(), this.e.dI());
+      } else {
+         this.c = this.e.dX().a(this.i(), this.e, this.e.dC(), this.e.dG(), this.e.dI());
       }
    }
 
    @Override
    public void d() {
-      this.e.h(this.b);
-      buv $$0 = this.a.T_();
-      if ($$0 != null) {
-         this.c = $$0.ev();
-      }
-
+      this.e.h(this.c);
       super.d();
+   }
+
+   public void a(@Nullable bva $$0) {
+      this.c = $$0;
+   }
+
+   private cfr i() {
+      return this.d.a(this.l());
    }
 }

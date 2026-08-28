@@ -1,127 +1,137 @@
+import com.google.common.annotations.VisibleForTesting;
 import com.mojang.serialization.Codec;
-import java.util.List;
-import java.util.function.BiPredicate;
 
-public interface ecg extends BiPredicate<dfs, jg> {
-   Codec<ecg> b = lx.M.q().dispatch(ecg::a, ech::codec);
-   ecg c = a(dia.a);
-   ecg d = a(dia.a, dia.G);
+public class ecg implements azs {
+   private static final float c = 5.9604645E-8F;
+   private static final double d = 1.110223E-16F;
+   public static final Codec<ecg> b = ecf.a.xmap($$0 -> new ecg($$0), $$0 -> $$0.e);
+   private ecf e;
+   private final ebh f = new ebh(this);
 
-   ech<?> a();
-
-   static ecg a(List<ecg> $$0) {
-      return new ece($$0);
+   public ecg(long $$0) {
+      this.e = new ecf(ebu.c($$0));
    }
 
-   static ecg a(ecg... $$0) {
-      return a(List.of($$0));
+   public ecg(ebu.a $$0) {
+      this.e = new ecf($$0);
    }
 
-   static ecg a(ecg $$0, ecg $$1) {
-      return a(List.of($$0, $$1));
+   public ecg(long $$0, long $$1) {
+      this.e = new ecf($$0, $$1);
    }
 
-   static ecg b(List<ecg> $$0) {
-      return new ecf($$0);
+   private ecg(ecf $$0) {
+      this.e = $$0;
    }
 
-   static ecg b(ecg... $$0) {
-      return b(List.of($$0));
+   @Override
+   public azs d() {
+      return new ecg(this.e.a(), this.e.a());
    }
 
-   static ecg b(ecg $$0, ecg $$1) {
-      return b(List.of($$0, $$1));
+   @Override
+   public ebs e() {
+      return new ecg.a(this.e.a(), this.e.a());
    }
 
-   static ecg a(kk $$0, List<dhy> $$1) {
-      return new ecm($$0, jt.a(dhy::p, $$1));
+   @Override
+   public void b(long $$0) {
+      this.e = new ecf(ebu.c($$0));
+      this.f.a();
    }
 
-   static ecg c(List<dhy> $$0) {
-      return a(kk.g, $$0);
+   @Override
+   public int f() {
+      return (int)this.e.a();
    }
 
-   static ecg a(kk $$0, dhy... $$1) {
-      return a($$0, List.of($$1));
+   @Override
+   public int a(int $$0) {
+      if ($$0 <= 0) {
+         throw new IllegalArgumentException("Bound must be positive");
+      } else {
+         long $$1 = Integer.toUnsignedLong(this.f());
+         long $$2 = $$1 * (long)$$0;
+         long $$3 = $$2 & 4294967295L;
+         if ($$3 < (long)$$0) {
+            for (int $$4 = Integer.remainderUnsigned(~$$0 + 1, $$0); $$3 < (long)$$4; $$3 = $$2 & 4294967295L) {
+               $$1 = Integer.toUnsignedLong(this.f());
+               $$2 = $$1 * (long)$$0;
+            }
+         }
+
+         long $$5 = $$2 >> 32;
+         return (int)$$5;
+      }
    }
 
-   static ecg a(dhy... $$0) {
-      return a(kk.g, $$0);
+   @Override
+   public long g() {
+      return this.e.a();
    }
 
-   static ecg a(kk $$0, axp<dhy> $$1) {
-      return new ecl($$0, $$1);
+   @Override
+   public boolean h() {
+      return (this.e.a() & 1L) != 0L;
    }
 
-   static ecg a(axp<dhy> $$0) {
-      return a(kk.g, $$0);
+   @Override
+   public float i() {
+      return (float)this.c(24) * 5.9604645E-8F;
    }
 
-   static ecg b(kk $$0, List<erd> $$1) {
-      return new ecn($$0, jt.a(erd::k, $$1));
+   @Override
+   public double j() {
+      return (double)this.c(53) * 1.110223E-16F;
    }
 
-   static ecg a(kk $$0, erd... $$1) {
-      return b($$0, List.of($$1));
+   @Override
+   public double k() {
+      return this.f.b();
    }
 
-   static ecg a(erd... $$0) {
-      return a(kk.g, $$0);
+   @Override
+   public void b(int $$0) {
+      for (int $$1 = 0; $$1 < $$0; $$1++) {
+         this.e.a();
+      }
    }
 
-   static ecg a(ecg $$0) {
-      return new eco($$0);
+   private long c(int $$0) {
+      return this.e.a() >>> 64 - $$0;
    }
 
-   static ecg a(kk $$0) {
-      return new ecp($$0);
-   }
+   public static class a implements ebs {
+      private final long a;
+      private final long b;
 
-   static ecg b() {
-      return a(kk.g);
-   }
+      public a(long $$0, long $$1) {
+         this.a = $$0;
+         this.b = $$1;
+      }
 
-   static ecg a(dvd $$0, kk $$1) {
-      return new ecu($$1, $$0);
-   }
+      @Override
+      public azs a(int $$0, int $$1, int $$2) {
+         long $$3 = azk.b($$0, $$1, $$2);
+         long $$4 = $$3 ^ this.a;
+         return new ecg($$4, this.b);
+      }
 
-   static ecg a(kk $$0, jl $$1) {
-      return new ecj($$0, $$1);
-   }
+      @Override
+      public azs a(String $$0) {
+         ebu.a $$1 = ebu.a($$0);
+         return new ecg($$1.a(this.a, this.b));
+      }
 
-   static ecg a(jl $$0) {
-      return a(kk.g, $$0);
-   }
+      @Override
+      public azs a(long $$0) {
+         return new ecg($$0 ^ this.a, $$0 ^ this.b);
+      }
 
-   static ecg b(kk $$0) {
-      return new ecq($$0);
-   }
-
-   static ecg c() {
-      return b(kk.g);
-   }
-
-   static ecg d() {
-      return c(kk.g);
-   }
-
-   static ecg c(kk $$0) {
-      return a($$0, erf.a);
-   }
-
-   static ecg d(kk $$0) {
-      return new eck($$0);
-   }
-
-   static ecg e() {
-      return ecs.a;
-   }
-
-   static ecg e(kk $$0) {
-      return new ect($$0);
-   }
-
-   static ecg f() {
-      return e(kk.g);
+      @VisibleForTesting
+      @Override
+      public void a(StringBuilder $$0) {
+         $$0.append("seedLo: ").append(this.a).append(", seedHi: ").append(this.b);
+      }
    }
 }

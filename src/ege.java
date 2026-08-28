@@ -1,18 +1,96 @@
 import com.mojang.serialization.Codec;
 
-public class ege implements egj {
-   public static final Codec<ege> a = brd.b(0, 256).fieldOf("count").xmap(ege::new, ege::a).codec();
-   private final brd b;
+public class ege extends eel<egw> {
+   private static final jm[] a = jm.values();
 
-   public ege(int $$0) {
-      this.b = bra.a($$0);
+   public ege(Codec<egw> $$0) {
+      super($$0);
    }
 
-   public ege(brd $$0) {
-      this.b = $$0;
+   @Override
+   public boolean a(een<egw> $$0) {
+      dfy $$1 = $$0.b();
+      jh $$2 = $$0.e();
+      azs $$3 = $$0.d();
+      if (!$$1.u($$2)) {
+         return false;
+      } else {
+         dvj $$4 = $$1.a_($$2.d());
+         if (!$$4.a(dig.dV) && !$$4.a(dig.kK)) {
+            return false;
+         } else {
+            this.a($$1, $$3, $$2);
+            this.b($$1, $$3, $$2);
+            return true;
+         }
+      }
    }
 
-   public brd a() {
-      return this.b;
+   private void a(dfc $$0, azs $$1, jh $$2) {
+      $$0.a($$2, dig.kK.m(), 2);
+      jh.a $$3 = new jh.a();
+      jh.a $$4 = new jh.a();
+
+      for (int $$5 = 0; $$5 < 200; $$5++) {
+         $$3.a($$2, $$1.a(6) - $$1.a(6), $$1.a(2) - $$1.a(5), $$1.a(6) - $$1.a(6));
+         if ($$0.u($$3)) {
+            int $$6 = 0;
+
+            for (jm $$7 : a) {
+               dvj $$8 = $$0.a_($$4.a($$3, $$7));
+               if ($$8.a(dig.dV) || $$8.a(dig.kK)) {
+                  $$6++;
+               }
+
+               if ($$6 > 1) {
+                  break;
+               }
+            }
+
+            if ($$6 == 1) {
+               $$0.a($$3, dig.kK.m(), 2);
+            }
+         }
+      }
+   }
+
+   private void b(dfc $$0, azs $$1, jh $$2) {
+      jh.a $$3 = new jh.a();
+
+      for (int $$4 = 0; $$4 < 100; $$4++) {
+         $$3.a($$2, $$1.a(8) - $$1.a(8), $$1.a(2) - $$1.a(7), $$1.a(8) - $$1.a(8));
+         if ($$0.u($$3)) {
+            dvj $$5 = $$0.a_($$3.d());
+            if ($$5.a(dig.dV) || $$5.a(dig.kK)) {
+               int $$6 = azk.a($$1, 1, 8);
+               if ($$1.a(6) == 0) {
+                  $$6 *= 2;
+               }
+
+               if ($$1.a(5) == 0) {
+                  $$6 = 1;
+               }
+
+               int $$7 = 17;
+               int $$8 = 25;
+               a($$0, $$1, $$3, $$6, 17, 25);
+            }
+         }
+      }
+   }
+
+   public static void a(dfc $$0, azs $$1, jh.a $$2, int $$3, int $$4, int $$5) {
+      for (int $$6 = 0; $$6 <= $$3; $$6++) {
+         if ($$0.u($$2)) {
+            if ($$6 == $$3 || !$$0.u($$2.e())) {
+               $$0.a($$2, dig.oz.m().b(dls.e, Integer.valueOf(azk.a($$1, $$4, $$5))), 2);
+               break;
+            }
+
+            $$0.a($$2, dig.oA.m(), 2);
+         }
+
+         $$2.c(jm.a);
+      }
    }
 }

@@ -1,22 +1,19 @@
 import com.mojang.serialization.MapCodec;
 
-public abstract class dlt extends dhy {
-   public static final dvx aF = dvt.R;
+public class dlt extends die {
+   public static final MapCodec<dlt> d = b(dlt::new);
 
-   protected dlt(dvc.d $$0) {
+   @Override
+   protected MapCodec<? extends dlt> a() {
+      return d;
+   }
+
+   protected dlt(dvi.d $$0) {
       super($$0);
    }
 
    @Override
-   protected abstract MapCodec<? extends dlt> a();
-
-   @Override
-   protected dvd a(dvd $$0, dol $$1) {
-      return $$0.b(aF, $$1.a($$0.c(aF)));
-   }
-
-   @Override
-   protected dvd a(dvd $$0, dmu $$1) {
-      return $$0.a($$1.a($$0.c(aF)));
+   protected boolean b(dvj $$0, dvj $$1, jm $$2) {
+      return $$1.a(this) ? true : super.b($$0, $$1, $$2);
    }
 }

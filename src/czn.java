@@ -1,62 +1,31 @@
-public class czn extends czm {
-   private final jl b;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
 
-   public czn(dev $$0, jg $$1, jl $$2, cvx $$3, jl $$4) {
-      super($$0, null, brx.a, $$3, new ezd(ezh.c($$1), $$4, $$1, false));
-      this.b = $$2;
-   }
+public interface czn {
+   Codec<czn> d = ly.ay.q().dispatch(czn::a, czn.a::a);
+   zg<wt, czn> e = ze.a(lz.aE).b(czn::a, czn.a::b);
 
-   @Override
-   public jg a() {
-      return this.j().b();
-   }
+   czn.a<? extends czn> a();
 
-   @Override
-   public boolean b() {
-      return this.q().a_(this.j().b()).a(this);
-   }
+   boolean a(dfb var1, cwb var2, bva var3);
 
-   @Override
-   public boolean c() {
-      return this.b();
-   }
+   public static record a<T extends czn>(MapCodec<T> f, zg<wt, T> g) {
+      public static final czn.a<czl> a = a("apply_effects", czl.a, czl.b);
+      public static final czn.a<czp> b = a("remove_effects", czp.a, czp.b);
+      public static final czn.a<czm> c = a("clear_all_effects", czm.b, czm.c);
+      public static final czn.a<czq> d = a("teleport_randomly", czq.a, czq.b);
+      public static final czn.a<czo> e = a("play_sound", czo.a, czo.b);
 
-   @Override
-   public jl d() {
-      return jl.a;
-   }
-
-   @Override
-   public jl[] f() {
-      switch (this.b) {
-         case a:
-         default:
-            return new jl[]{jl.a, jl.c, jl.f, jl.d, jl.e, jl.b};
-         case b:
-            return new jl[]{jl.a, jl.b, jl.c, jl.f, jl.d, jl.e};
-         case c:
-            return new jl[]{jl.a, jl.c, jl.f, jl.e, jl.b, jl.d};
-         case d:
-            return new jl[]{jl.a, jl.d, jl.f, jl.e, jl.b, jl.c};
-         case e:
-            return new jl[]{jl.a, jl.e, jl.d, jl.b, jl.c, jl.f};
-         case f:
-            return new jl[]{jl.a, jl.f, jl.d, jl.b, jl.c, jl.e};
+      private static <T extends czn> czn.a<T> a(String $$0, MapCodec<T> $$1, zg<wt, T> $$2) {
+         return kd.a(ly.ay, $$0, new czn.a<>($$1, $$2));
       }
-   }
 
-   @Override
-   public jl g() {
-      return this.b.o() == jl.a.b ? jl.c : this.b;
-   }
+      public MapCodec<T> a() {
+         return this.f;
+      }
 
-   @Override
-   public boolean h() {
-      return false;
-   }
-
-   @Override
-   public float i() {
-      return (float)(this.b.e() * 90);
+      public zg<wt, T> b() {
+         return this.g;
+      }
    }
 }

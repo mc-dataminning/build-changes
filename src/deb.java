@@ -1,209 +1,201 @@
-import java.util.Spliterators.AbstractSpliterator;
-import java.util.function.Consumer;
-import java.util.stream.Stream;
-import java.util.stream.StreamSupport;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import javax.annotation.Nullable;
+import net.minecraft.server.MinecraftServer;
 
-public class deb {
-   private static final int g = 1056;
-   public static final long a = c(1875066, 1875066);
-   public static final deb b = new deb(0, 0);
-   private static final long h = 32L;
-   private static final long i = 4294967295L;
-   private static final int j = 5;
-   public static final int c = 32;
-   private static final int k = 31;
-   public static final int d = 31;
-   public final int e;
-   public final int f;
-   private static final int l = 1664525;
-   private static final int m = 1013904223;
-   private static final int n = -559038737;
+public abstract class deb implements ev {
+   private static final SimpleDateFormat b = new SimpleDateFormat("HH:mm:ss");
+   private static final xi c = xi.b("@");
+   private long d = -1L;
+   private boolean e = true;
+   private int f;
+   private boolean g = true;
+   @Nullable
+   private xi h;
+   private String i = "";
+   @Nullable
+   private xi j;
 
-   public deb(int $$0, int $$1) {
-      this.e = $$0;
-      this.f = $$1;
+   public int k() {
+      return this.f;
    }
 
-   public deb(jg $$0) {
-      this.e = ki.a($$0.u());
-      this.f = ki.a($$0.w());
+   public void a(int $$0) {
+      this.f = $$0;
    }
 
-   public deb(long $$0) {
-      this.e = (int)$$0;
-      this.f = (int)($$0 >> 32);
+   public xi l() {
+      return this.h == null ? xh.a : this.h;
    }
 
-   public static deb a(int $$0, int $$1) {
-      return new deb($$0 << 5, $$1 << 5);
+   public uk a(uk $$0, js.a $$1) {
+      $$0.a("Command", this.i);
+      $$0.a("SuccessCount", this.f);
+      if (this.j != null) {
+         $$0.a("CustomName", xi.a.a(this.j, $$1));
+      }
+
+      $$0.a("TrackOutput", this.g);
+      if (this.h != null && this.g) {
+         $$0.a("LastOutput", xi.a.a(this.h, $$1));
+      }
+
+      $$0.a("UpdateLastExecution", this.e);
+      if (this.e && this.d > 0L) {
+         $$0.a("LastExecution", this.d);
+      }
+
+      return $$0;
    }
 
-   public static deb b(int $$0, int $$1) {
-      return new deb(($$0 << 5) + 31, ($$1 << 5) + 31);
-   }
-
-   public long a() {
-      return c(this.e, this.f);
-   }
-
-   public static long c(int $$0, int $$1) {
-      return (long)$$0 & 4294967295L | ((long)$$1 & 4294967295L) << 32;
-   }
-
-   public static long a(jg $$0) {
-      return c(ki.a($$0.u()), ki.a($$0.w()));
-   }
-
-   public static int a(long $$0) {
-      return (int)($$0 & 4294967295L);
-   }
-
-   public static int b(long $$0) {
-      return (int)($$0 >>> 32 & 4294967295L);
-   }
-
-   @Override
-   public int hashCode() {
-      return d(this.e, this.f);
-   }
-
-   public static int d(int $$0, int $$1) {
-      int $$2 = 1664525 * $$0 + 1013904223;
-      int $$3 = 1664525 * ($$1 ^ -559038737) + 1013904223;
-      return $$2 ^ $$3;
-   }
-
-   @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
+   public void b(uk $$0, js.a $$1) {
+      this.i = $$0.l("Command");
+      this.f = $$0.h("SuccessCount");
+      if ($$0.b("CustomName", 8)) {
+         this.b(dsm.a($$0.l("CustomName"), $$1));
       } else {
-         return !($$0 instanceof deb $$1) ? false : this.e == $$1.e && this.f == $$1.f;
+         this.b(null);
+      }
+
+      if ($$0.b("TrackOutput", 1)) {
+         this.g = $$0.q("TrackOutput");
+      }
+
+      if ($$0.b("LastOutput", 8) && this.g) {
+         try {
+            this.h = xi.a.a($$0.l("LastOutput"), $$1);
+         } catch (Throwable var4) {
+            this.h = xi.b(var4.getMessage());
+         }
+      } else {
+         this.h = null;
+      }
+
+      if ($$0.e("UpdateLastExecution")) {
+         this.e = $$0.q("UpdateLastExecution");
+      }
+
+      if (this.e && $$0.e("LastExecution")) {
+         this.d = $$0.i("LastExecution");
+      } else {
+         this.d = -1L;
       }
    }
 
-   public int b() {
-      return this.a(8);
+   public void a(String $$0) {
+      this.i = $$0;
+      this.f = 0;
    }
 
-   public int c() {
-      return this.b(8);
+   public String m() {
+      return this.i;
    }
 
-   public int d() {
-      return ki.c(this.e);
+   public boolean a(dfb $$0) {
+      if ($$0.C || $$0.aa() == this.d) {
+         return false;
+      } else if ("Searge".equalsIgnoreCase(this.i)) {
+         this.h = xi.b("#itzlipofutzli");
+         this.f = 1;
+         return true;
+      } else {
+         this.f = 0;
+         MinecraftServer $$1 = this.e().o();
+         if ($$1.q() && !bah.b(this.i)) {
+            try {
+               this.h = null;
+               ew $$2 = this.i().a((et)(($$0x, $$1x) -> {
+                  if ($$0x) {
+                     this.f++;
+                  }
+               }));
+               $$1.aG().a($$2, this.i);
+            } catch (Throwable var6) {
+               o $$4 = o.a(var6, "Executing command block");
+               p $$5 = $$4.a("Command to be executed");
+               $$5.a("Command", this::m);
+               $$5.a("Name", () -> this.n().getString());
+               throw new z($$4);
+            }
+         }
+
+         if (this.e) {
+            this.d = $$0.aa();
+         } else {
+            this.d = -1L;
+         }
+
+         return true;
+      }
    }
 
-   public int e() {
-      return ki.c(this.f);
+   public xi n() {
+      return this.j != null ? this.j : c;
    }
 
-   public int f() {
-      return this.a(15);
+   @Nullable
+   public xi o() {
+      return this.j;
    }
 
-   public int g() {
-      return this.b(15);
-   }
-
-   public int h() {
-      return this.e >> 5;
-   }
-
-   public int i() {
-      return this.f >> 5;
-   }
-
-   public int j() {
-      return this.e & 31;
-   }
-
-   public int k() {
-      return this.f & 31;
-   }
-
-   public jg a(int $$0, int $$1, int $$2) {
-      return new jg(this.a($$0), $$1, this.b($$2));
-   }
-
-   public int a(int $$0) {
-      return ki.a(this.e, $$0);
-   }
-
-   public int b(int $$0) {
-      return ki.a(this.f, $$0);
-   }
-
-   public jg c(int $$0) {
-      return new jg(this.b(), $$0, this.c());
+   public void b(@Nullable xi $$0) {
+      this.j = $$0;
    }
 
    @Override
-   public String toString() {
-      return "[" + this.e + ", " + this.f + "]";
+   public void a(xi $$0) {
+      if (this.g) {
+         this.h = xi.b("[" + b.format(new Date()) + "] ").b($$0);
+         this.f();
+      }
    }
 
-   public jg l() {
-      return new jg(this.d(), 0, this.e());
+   public abstract arn e();
+
+   public abstract void f();
+
+   public void c(@Nullable xi $$0) {
+      this.h = $$0;
    }
 
-   public int a(deb $$0) {
-      return this.e($$0.e, $$0.f);
+   public void a(boolean $$0) {
+      this.g = $$0;
    }
 
-   public int e(int $$0, int $$1) {
-      return Math.max(Math.abs(this.e - $$0), Math.abs(this.f - $$1));
+   public boolean p() {
+      return this.g;
    }
 
-   public int b(deb $$0) {
-      return this.f($$0.e, $$0.f);
-   }
-
-   public int c(long $$0) {
-      return this.f(a($$0), b($$0));
-   }
-
-   private int f(int $$0, int $$1) {
-      int $$2 = $$0 - this.e;
-      int $$3 = $$1 - this.f;
-      return $$2 * $$2 + $$3 * $$3;
-   }
-
-   public static Stream<deb> a(deb $$0, int $$1) {
-      return a(new deb($$0.e - $$1, $$0.f - $$1), new deb($$0.e + $$1, $$0.f + $$1));
-   }
-
-   public static Stream<deb> a(final deb $$0, final deb $$1) {
-      int $$2 = Math.abs($$0.e - $$1.e) + 1;
-      int $$3 = Math.abs($$0.f - $$1.f) + 1;
-      final int $$4 = $$0.e < $$1.e ? 1 : -1;
-      final int $$5 = $$0.f < $$1.f ? 1 : -1;
-      return StreamSupport.stream(new AbstractSpliterator<deb>((long)($$2 * $$3), 64) {
-         @Nullable
-         private deb e;
-
-         @Override
-         public boolean tryAdvance(Consumer<? super deb> $$0x) {
-            if (this.e == null) {
-               this.e = $$0;
-            } else {
-               int $$1 = this.e.e;
-               int $$2 = this.e.f;
-               if ($$1 == $$1.e) {
-                  if ($$2 == $$1.f) {
-                     return false;
-                  }
-
-                  this.e = new deb($$0.e, $$2 + $$5);
-               } else {
-                  this.e = new deb($$1 + $$4, $$2);
-               }
-            }
-
-            $$0.accept(this.e);
-            return true;
+   public bsd a(com $$0) {
+      if (!$$0.gH()) {
+         return bsd.e;
+      } else {
+         if ($$0.cV().C) {
+            $$0.a(this);
          }
-      }, false);
+
+         return bsd.a;
+      }
    }
+
+   public abstract ezn g();
+
+   public abstract ew i();
+
+   @Override
+   public boolean l_() {
+      return this.e().ac().b(dex.p) && this.g;
+   }
+
+   @Override
+   public boolean w_() {
+      return this.g;
+   }
+
+   @Override
+   public boolean L_() {
+      return this.e().ac().b(dex.j);
+   }
+
+   public abstract boolean j();
 }

@@ -1,102 +1,89 @@
-import com.google.common.collect.Lists;
-import java.util.Collections;
-import java.util.EnumSet;
 import java.util.List;
+import java.util.function.Predicate;
 import javax.annotation.Nullable;
-import org.jetbrains.annotations.VisibleForTesting;
+import org.apache.commons.lang3.Validate;
 
-public class dya {
-   public static final int a = 8;
-   private static final EnumSet<eaz.a> o = EnumSet.of(eaz.a.c, eaz.a.a);
-   public static final EnumSet<eaz.a> b = EnumSet.of(eaz.a.d, eaz.a.b, eaz.a.e, eaz.a.f);
-   public static final dya c = a("empty", null, o, dye.a);
-   public static final dya d = a("structure_starts", c, o, dye.a);
-   public static final dya e = a("structure_references", d, o, dye.a);
-   public static final dya f = a("biomes", e, o, dye.a);
-   public static final dya g = a("noise", f, o, dye.a);
-   public static final dya h = a("surface", g, o, dye.a);
-   public static final dya i = a("carvers", h, b, dye.a);
-   public static final dya j = a("features", i, b, dye.a);
-   public static final dya k = a("initialize_light", j, b, dye.a);
-   public static final dya l = a("light", k, b, dye.a);
-   public static final dya m = a("spawn", l, b, dye.a);
-   public static final dya n = a("full", m, b, dye.b);
-   private final int p;
-   private final dya q;
-   private final dye r;
-   private final EnumSet<eaz.a> s;
+public class dya<T> implements dxv<T> {
+   private final jv<T> a;
+   @Nullable
+   private T b;
+   private final dxw<T> c;
 
-   private static dya a(String $$0, @Nullable dya $$1, EnumSet<eaz.a> $$2, dye $$3) {
-      return kc.a(lx.l, $$0, new dya($$1, $$2, $$3));
-   }
-
-   public static List<dya> a() {
-      List<dya> $$0 = Lists.newArrayList();
-
-      dya $$1;
-      for ($$1 = n; $$1.c() != $$1; $$1 = $$1.c()) {
-         $$0.add($$1);
+   public dya(jv<T> $$0, dxw<T> $$1, List<T> $$2) {
+      this.a = $$0;
+      this.c = $$1;
+      if ($$2.size() > 0) {
+         Validate.isTrue($$2.size() <= 1, "Can't initialize SingleValuePalette with %d values.", (long)$$2.size());
+         this.b = $$2.get(0);
       }
-
-      $$0.add($$1);
-      Collections.reverse($$0);
-      return $$0;
    }
 
-   @VisibleForTesting
-   protected dya(@Nullable dya $$0, EnumSet<eaz.a> $$1, dye $$2) {
-      this.q = $$0 == null ? this : $$0;
-      this.r = $$2;
-      this.s = $$1;
-      this.p = $$0 == null ? 0 : $$0.b() + 1;
-   }
-
-   public int b() {
-      return this.p;
-   }
-
-   public dya c() {
-      return this.q;
-   }
-
-   public dye d() {
-      return this.r;
-   }
-
-   public static dya a(String $$0) {
-      return lx.l.a(alh.c($$0));
-   }
-
-   public EnumSet<eaz.a> e() {
-      return this.s;
-   }
-
-   public boolean a(dya $$0) {
-      return this.b() >= $$0.b();
-   }
-
-   public boolean b(dya $$0) {
-      return this.b() > $$0.b();
-   }
-
-   public boolean c(dya $$0) {
-      return this.b() <= $$0.b();
-   }
-
-   public boolean d(dya $$0) {
-      return this.b() < $$0.b();
-   }
-
-   public static dya a(dya $$0, dya $$1) {
-      return $$0.b($$1) ? $$0 : $$1;
+   public static <A> dxv<A> a(int $$0, jv<A> $$1, dxw<A> $$2, List<A> $$3) {
+      return new dya<>($$1, $$2, $$3);
    }
 
    @Override
-   public String toString() {
-      return this.f();
+   public int a(T $$0) {
+      if (this.b != null && this.b != $$0) {
+         return this.c.onResize(1, $$0);
+      } else {
+         this.b = $$0;
+         return 0;
+      }
    }
 
-   public String f() {
-      return lx.l.b(this).toString();
+   @Override
+   public boolean a(Predicate<T> $$0) {
+      if (this.b == null) {
+         throw new IllegalStateException("Use of an uninitialized palette");
+      } else {
+         return $$0.test(this.b);
+      }
+   }
+
+   @Override
+   public T a(int $$0) {
+      if (this.b != null && $$0 == 0) {
+         return this.b;
+      } else {
+         throw new IllegalStateException("Missing Palette entry for id " + $$0 + ".");
+      }
+   }
+
+   @Override
+   public void a(wf $$0) {
+      this.b = this.a.b($$0.l());
+   }
+
+   @Override
+   public void b(wf $$0) {
+      if (this.b == null) {
+         throw new IllegalStateException("Use of an uninitialized palette");
+      } else {
+         $$0.c(this.a.a(this.b));
+      }
+   }
+
+   @Override
+   public int a() {
+      if (this.b == null) {
+         throw new IllegalStateException("Use of an uninitialized palette");
+      } else {
+         return wz.a(this.a.a(this.b));
+      }
+   }
+
+   @Override
+   public int b() {
+      return 1;
+   }
+
+   @Override
+   public dxv<T> a(dxw<T> $$0) {
+      if (this.b == null) {
+         throw new IllegalStateException("Use of an uninitialized palette");
+      } else {
+         return this;
+      }
    }
 }

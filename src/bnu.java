@@ -1,65 +1,9 @@
-import com.mojang.brigadier.StringReader;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.suggestion.Suggestions;
-import com.mojang.brigadier.suggestion.SuggestionsBuilder;
-import java.util.List;
-import java.util.Optional;
-import java.util.concurrent.CompletableFuture;
-import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
-public record bnu<T>(bnm<StringReader> a, bnk<T> b) {
-   public Optional<T> a(bnp<StringReader> $$0) {
-      return $$0.a(this.b);
-   }
+public interface bnu<S> {
+   Stream<String> possibleValues(bnr<S> var1);
 
-   public T a(StringReader $$0) throws CommandSyntaxException {
-      bnn.a<StringReader> $$1 = new bnn.a<>();
-      bny $$2 = new bny(this.a(), $$1, $$0);
-      Optional<T> $$3 = this.a($$2);
-      if ($$3.isPresent()) {
-         return $$3.get();
-      } else {
-         List<Exception> $$4 = $$1.a().stream().<Exception>mapMulti(($$0x, $$1x) -> {
-            if ($$0x.c() instanceof Exception $$3x) {
-               $$1x.accept($$3x);
-            }
-         }).toList();
-
-         for (Exception $$5 : $$4) {
-            if ($$5 instanceof CommandSyntaxException $$6) {
-               throw $$6;
-            }
-         }
-
-         if ($$4.size() == 1 && $$4.get(0) instanceof RuntimeException $$7) {
-            throw $$7;
-         } else {
-            throw new IllegalStateException("Failed to parse: " + $$1.a().stream().map(bno::toString).collect(Collectors.joining(", ")));
-         }
-      }
-   }
-
-   public CompletableFuture<Suggestions> a(SuggestionsBuilder $$0) {
-      StringReader $$1 = new StringReader($$0.getInput());
-      $$1.setCursor($$0.getStart());
-      bnn.a<StringReader> $$2 = new bnn.a<>();
-      bny $$3 = new bny(this.a(), $$2, $$1);
-      this.a($$3);
-      List<bno<StringReader>> $$4 = $$2.a();
-      if ($$4.isEmpty()) {
-         return $$0.buildFuture();
-      } else {
-         SuggestionsBuilder $$5 = $$0.createOffset($$2.b());
-
-         for (bno<StringReader> $$6 : $$4) {
-            if ($$6.b() instanceof bnx $$7) {
-               fa.a($$7.a(), $$5);
-            } else {
-               fa.b($$6.b().possibleValues($$3), $$5);
-            }
-         }
-
-         return $$5.buildFuture();
-      }
+   static <S> bnu<S> b() {
+      return $$0 -> Stream.empty();
    }
 }

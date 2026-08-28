@@ -1,19 +1,11 @@
-import com.mojang.serialization.MapCodec;
-
-public class dky extends djs {
-   public static final MapCodec<dky> b = b(dky::new);
-
-   @Override
-   public MapCodec<dky> a() {
-      return b;
+public interface dky {
+   default void a(dfb $$0, jh $$1, dvj $$2, dvj $$3, cku $$4) {
    }
 
-   protected dky(dvc.d $$0) {
-      super($$0);
+   default void a(dfb $$0, jh $$1, cku $$2) {
    }
 
-   @Override
-   protected bry a(dvd $$0, dev $$1, jg $$2, coh $$3, ezd $$4) {
-      return bry.e;
+   default bsu a(bue $$0) {
+      return $$0.dY().a($$0);
    }
 }

@@ -1,33 +1,44 @@
-public class acz implements zo<acd> {
-   public static final zf<we, acz> a = zo.a(acz::a, acz::new);
+import java.util.List;
+
+public class acz implements zp<ace> {
+   public static final zg<wt, acz> a = zp.a(acz::a, acz::new);
    private final int b;
    private final int c;
-   private final int d;
+   private final List<cwb> d;
+   private final cwb e;
 
-   public acz(int $$0, int $$1, int $$2) {
+   public acz(int $$0, int $$1, jz<cwb> $$2, cwb $$3) {
       this.b = $$0;
       this.c = $$1;
-      this.d = $$2;
+      this.d = jz.a($$2.size(), cwb.k);
+
+      for (int $$4 = 0; $$4 < $$2.size(); $$4++) {
+         this.d.set($$4, $$2.get($$4).v());
+      }
+
+      this.e = $$3.v();
    }
 
-   private acz(we $$0) {
+   private acz(wt $$0) {
       this.b = $$0.x();
-      this.c = $$0.readShort();
-      this.d = $$0.readShort();
+      this.c = $$0.l();
+      this.d = cwb.j.decode($$0);
+      this.e = cwb.h.decode($$0);
    }
 
-   private void a(we $$0) {
+   private void a(wt $$0) {
       $$0.f(this.b);
-      $$0.m(this.c);
-      $$0.m(this.d);
+      $$0.c(this.c);
+      cwb.j.encode($$0, this.d);
+      cwb.h.encode($$0, this.e);
    }
 
    @Override
-   public zq<acz> a() {
-      return ags.v;
+   public zr<acz> a() {
+      return agt.u;
    }
 
-   public void a(acd $$0) {
+   public void a(ace $$0) {
       $$0.a(this);
    }
 
@@ -35,11 +46,15 @@ public class acz implements zo<acd> {
       return this.b;
    }
 
-   public int e() {
-      return this.c;
+   public List<cwb> e() {
+      return this.d;
    }
 
-   public int f() {
-      return this.d;
+   public cwb f() {
+      return this.e;
+   }
+
+   public int g() {
+      return this.c;
    }
 }

@@ -1,61 +1,114 @@
-import java.util.List;
+import javax.annotation.Nullable;
 
-public class clb extends cli {
-   public static final float b = bug.D.l() / bug.Y.l();
-   private static final int e = 1200;
-   private static final int bY = 50;
-   private static final int bZ = 6000;
-   private static final int ca = 2;
-   private static final int cb = 1200;
+public class clb extends ckz implements bvr {
+   private static final int c = 50;
+   private static final int d = 70;
+   private static final akl<Boolean> e = akp.a(clb.class, akn.k);
+   public static final String b = "sheared";
 
-   public clb(bug<? extends clb> $$0, dev $$1) {
+   public static bwh.a gx() {
+      return ckz.q().a(bwi.s, 16.0);
+   }
+
+   public clb(bul<? extends clb> $$0, dfb $$1) {
       super($$0, $$1);
-      this.gb();
-      if (this.d != null) {
-         this.d.c(400);
+   }
+
+   @Override
+   protected void a(akp.a $$0) {
+      super.a($$0);
+      $$0.a(e, false);
+   }
+
+   @Override
+   public void b(uk $$0) {
+      super.b($$0);
+      $$0.a("sheared", this.gy());
+   }
+
+   @Override
+   public void a(uk $$0) {
+      super.a($$0);
+      this.x($$0.q("sheared"));
+   }
+
+   public boolean gy() {
+      return this.am.a(e);
+   }
+
+   public void x(boolean $$0) {
+      this.am.a(e, $$0);
+   }
+
+   @Override
+   protected bsd b(com $$0, bsc $$1) {
+      cwb $$2 = $$0.b($$1);
+      if ($$2.a(cwf.rW) && this.a()) {
+         this.a(awm.h, $$2);
+         this.a(eag.M, $$0);
+         if (!this.dX().C) {
+            $$2.a(1, $$0, d($$1));
+         }
+
+         return bsd.a;
+      } else {
+         return super.b($$0, $$1);
       }
    }
 
-   public static bwc.a q() {
-      return cli.gv().a(bwd.v, 0.3F).a(bwd.c, 8.0).a(bwd.s, 80.0);
+   @Override
+   protected awk w() {
+      return awl.cn;
    }
 
    @Override
-   public int t() {
-      return 60;
+   protected awk d(bsu $$0) {
+      return awl.cp;
    }
 
    @Override
-   protected awj w() {
-      return this.bn() ? awk.hP : awk.hQ;
+   protected awk o_() {
+      return awl.co;
    }
 
    @Override
-   protected awj d(bsp $$0) {
-      return this.bn() ? awk.hV : awk.hW;
+   protected awk t() {
+      return awl.cr;
    }
 
    @Override
-   protected awj o_() {
-      return this.bn() ? awk.hS : awk.hT;
-   }
-
-   @Override
-   protected awj y() {
-      return awk.hU;
-   }
-
-   @Override
-   protected void ac() {
-      super.ac();
-      if ((this.ag + this.ar()) % 1200 == 0) {
-         bte $$0 = new bte(btg.d, 6000, 2);
-         List<arn> $$1 = btf.a((arm)this.dX(), this, this.dv(), 50.0, $$0, 1200);
-         $$1.forEach($$0x -> $$0x.d.b(new adk(adk.l, this.bc() ? 0.0F : 1.0F)));
+   protected cou a(cwb $$0, float $$1, @Nullable cwb $$2) {
+      cou $$3 = super.a($$0, $$1, $$2);
+      if ($$3 instanceof cow $$4) {
+         $$4.a(new btj(btl.s, 100));
       }
 
-      if (!this.gh()) {
-         this.a(this.dx(), 16);
-      }
+      return $$3;
+   }
+
+   @Override
+   protected int gu() {
+      return 50;
+   }
+
+   @Override
+   protected int gv() {
+      return 70;
+   }
+
+   @Override
+   public void a(awm $$0, cwb $$1) {
+      this.dX().a(null, this, awl.cq, $$0, 1.0F, 1.0F);
+      this.k($$1);
+      this.x(true);
+   }
+
+   private void k(cwb $$0) {
+      this.a(ety.aQ, $$0, $$0x -> this.a($$0x, this.dt()));
+   }
+
+   @Override
+   public boolean a() {
+      return !this.gy() && this.bM();
    }
 }

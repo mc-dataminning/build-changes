@@ -1,556 +1,550 @@
-import com.google.common.annotations.VisibleForTesting;
-import com.google.common.base.Splitter;
-import com.google.common.base.Strings;
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Lists;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.logging.LogUtils;
-import it.unimi.dsi.fastutil.objects.Object2IntMap;
-import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
-import java.util.Collections;
-import java.util.Comparator;
+import com.mojang.datafixers.util.Pair;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.DynamicOps;
+import com.mojang.serialization.MapLike;
+import com.mojang.serialization.RecordBuilder;
+import com.mojang.serialization.RecordBuilder.AbstractStringBuilder;
+import it.unimi.dsi.fastutil.bytes.ByteArrayList;
+import it.unimi.dsi.fastutil.ints.IntArrayList;
+import it.unimi.dsi.fastutil.longs.LongArrayList;
+import java.nio.ByteBuffer;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collection;
 import java.util.List;
-import java.util.Locale;
 import java.util.Map;
 import java.util.Optional;
-import java.util.UUID;
 import java.util.Map.Entry;
-import java.util.function.Function;
-import java.util.stream.Collectors;
+import java.util.function.BiConsumer;
+import java.util.function.Consumer;
+import java.util.stream.IntStream;
+import java.util.stream.LongStream;
+import java.util.stream.Stream;
 import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
-public final class uy {
-   private static final Comparator<up> b = Comparator.<up>comparingInt($$0 -> $$0.e(1)).thenComparingInt($$0 -> $$0.e(0)).thenComparingInt($$0 -> $$0.e(2));
-   private static final Comparator<up> c = Comparator.<up>comparingDouble($$0 -> $$0.h(1))
-      .thenComparingDouble($$0 -> $$0.h(0))
-      .thenComparingDouble($$0 -> $$0.h(2));
-   public static final String a = "data";
-   private static final char d = '{';
-   private static final char e = '}';
-   private static final String f = ",";
-   private static final char g = ':';
-   private static final Splitter h = Splitter.on(",");
-   private static final Splitter i = Splitter.on(':').limit(2);
-   private static final Logger j = LogUtils.getLogger();
-   private static final int k = 2;
-   private static final int l = -1;
+public class uy implements DynamicOps<vh> {
+   public static final uy a = new uy();
+   private static final String b = "";
 
-   private uy() {
+   protected uy() {
    }
 
-   @VisibleForTesting
-   public static boolean a(@Nullable vg $$0, @Nullable vg $$1, boolean $$2) {
-      if ($$0 == $$1) {
-         return true;
-      } else if ($$0 == null) {
-         return true;
-      } else if ($$1 == null) {
-         return false;
-      } else if (!$$0.getClass().equals($$1.getClass())) {
-         return false;
-      } else if ($$0 instanceof uj $$3) {
-         uj $$4 = (uj)$$1;
-         if ($$4.f() < $$3.f()) {
-            return false;
-         } else {
-            for (String $$5 : $$3.e()) {
-               vg $$6 = $$3.c($$5);
-               if (!a($$6, $$4.c($$5), $$2)) {
-                  return false;
-               }
-            }
+   public vh a() {
+      return um.b;
+   }
 
-            return true;
-         }
+   public <U> U a(DynamicOps<U> $$0, vh $$1) {
+      return (U)(switch ($$1.b()) {
+         case 0 -> (Object)$$0.empty();
+         case 1 -> (Object)$$0.createByte(((va)$$1).i());
+         case 2 -> (Object)$$0.createShort(((va)$$1).h());
+         case 3 -> (Object)$$0.createInt(((va)$$1).g());
+         case 4 -> (Object)$$0.createLong(((va)$$1).f());
+         case 5 -> (Object)$$0.createFloat(((va)$$1).k());
+         case 6 -> (Object)$$0.createDouble(((va)$$1).j());
+         case 7 -> (Object)$$0.createByteList(ByteBuffer.wrap(((uh)$$1).e()));
+         case 8 -> (Object)$$0.createString($$1.s_());
+         case 9 -> (Object)this.convertList($$0, $$1);
+         case 10 -> (Object)this.convertMap($$0, $$1);
+         case 11 -> (Object)$$0.createIntList(Arrays.stream(((uo)$$1).g()));
+         case 12 -> (Object)$$0.createLongList(Arrays.stream(((ur)$$1).g()));
+         default -> throw new IllegalStateException("Unknown tag type: " + $$1);
+      });
+   }
+
+   public DataResult<Number> a(vh $$0) {
+      return $$0 instanceof va $$1 ? DataResult.success($$1.l()) : DataResult.error(() -> "Not a number");
+   }
+
+   public vh a(Number $$0) {
+      return ul.a($$0.doubleValue());
+   }
+
+   public vh a(byte $$0) {
+      return ui.a($$0);
+   }
+
+   public vh a(short $$0) {
+      return vc.a($$0);
+   }
+
+   public vh a(int $$0) {
+      return up.a($$0);
+   }
+
+   public vh a(long $$0) {
+      return us.a($$0);
+   }
+
+   public vh a(float $$0) {
+      return un.a($$0);
+   }
+
+   public vh a(double $$0) {
+      return ul.a($$0);
+   }
+
+   public vh a(boolean $$0) {
+      return ui.a($$0);
+   }
+
+   public DataResult<String> b(vh $$0) {
+      return $$0 instanceof vf $$1 ? DataResult.success($$1.s_()) : DataResult.error(() -> "Not a string");
+   }
+
+   public vh a(String $$0) {
+      return vf.a($$0);
+   }
+
+   public DataResult<vh> a(vh $$0, vh $$1) {
+      return k($$0).map($$1x -> DataResult.success($$1x.a($$1).a())).orElseGet(() -> DataResult.error(() -> "mergeToList called with not a list: " + $$0, $$0));
+   }
+
+   public DataResult<vh> a(vh $$0, List<vh> $$1) {
+      return k($$0).map($$1x -> DataResult.success($$1x.a($$1).a())).orElseGet(() -> DataResult.error(() -> "mergeToList called with not a list: " + $$0, $$0));
+   }
+
+   public DataResult<vh> a(vh $$0, vh $$1, vh $$2) {
+      if (!($$0 instanceof uk) && !($$0 instanceof um)) {
+         return DataResult.error(() -> "mergeToMap called with not a map: " + $$0, $$0);
+      } else if (!($$1 instanceof vf)) {
+         return DataResult.error(() -> "key is not a string: " + $$1, $$0);
       } else {
-         if ($$0 instanceof up $$7 && $$2) {
-            up $$8 = (up)$$1;
-            if ($$7.isEmpty()) {
-               return $$8.isEmpty();
-            }
-
-            if ($$8.size() < $$7.size()) {
-               return false;
-            }
-
-            for (vg $$9 : $$7) {
-               boolean $$10 = false;
-
-               for (vg $$11 : $$8) {
-                  if (a($$9, $$11, $$2)) {
-                     $$10 = true;
-                     break;
-                  }
-               }
-
-               if (!$$10) {
-                  return false;
-               }
-            }
-
-            return true;
-         }
-
-         return $$0.equals($$1);
+         uk $$4 = $$0 instanceof uk $$3 ? $$3.h() : new uk();
+         $$4.a($$1.s_(), $$2);
+         return DataResult.success($$4);
       }
    }
 
-   public static un a(UUID $$0) {
-      return new un(kj.a($$0));
-   }
-
-   public static UUID a(vg $$0) {
-      if ($$0.c() != un.a) {
-         throw new IllegalArgumentException("Expected UUID-Tag to be of type " + un.a.a() + ", but found " + $$0.c().a() + ".");
+   public DataResult<vh> a(vh $$0, MapLike<vh> $$1) {
+      if (!($$0 instanceof uk) && !($$0 instanceof um)) {
+         return DataResult.error(() -> "mergeToMap called with not a map: " + $$0, $$0);
       } else {
-         int[] $$1 = ((un)$$0).g();
-         if ($$1.length != 4) {
-            throw new IllegalArgumentException("Expected UUID-Array to be of length 4, but found " + $$1.length + ".");
-         } else {
-            return kj.a($$1);
-         }
-      }
-   }
-
-   public static Optional<jg> a(uj $$0, String $$1) {
-      int[] $$2 = $$0.n($$1);
-      return $$2.length == 3 ? Optional.of(new jg($$2[0], $$2[1], $$2[2])) : Optional.empty();
-   }
-
-   public static vg a(jg $$0) {
-      return new un(new int[]{$$0.u(), $$0.v(), $$0.w()});
-   }
-
-   public static dvd a(jq<dhy> $$0, uj $$1) {
-      if (!$$1.b("Name", 8)) {
-         return dia.a.m();
-      } else {
-         alh $$2 = alh.a($$1.l("Name"));
-         Optional<? extends jp<dhy>> $$3 = $$0.a(alg.a(ly.f, $$2));
-         if ($$3.isEmpty()) {
-            return dia.a.m();
-         } else {
-            dhy $$4 = $$3.get().a();
-            dvd $$5 = $$4.m();
-            if ($$1.b("Properties", 10)) {
-               uj $$6 = $$1.p("Properties");
-               dve<dhy, dvd> $$7 = $$4.l();
-
-               for (String $$8 : $$6.e()) {
-                  dwg<?> $$9 = $$7.a($$8);
-                  if ($$9 != null) {
-                     $$5 = a($$5, $$9, $$8, $$6, $$1);
-                  }
-               }
+         uk $$3 = $$0 instanceof uk $$2 ? $$2.h() : new uk();
+         List<vh> $$4 = new ArrayList<>();
+         $$1.entries().forEach($$2x -> {
+            vh $$3x = (vh)$$2x.getFirst();
+            if (!($$3x instanceof vf)) {
+               $$4.add($$3x);
+            } else {
+               $$3.a($$3x.s_(), (vh)$$2x.getSecond());
             }
-
-            return $$5;
-         }
+         });
+         return !$$4.isEmpty() ? DataResult.error(() -> "some keys are not strings: " + $$4, $$3) : DataResult.success($$3);
       }
    }
 
-   private static <S extends dvf<?, S>, T extends Comparable<T>> S a(S $$0, dwg<T> $$1, String $$2, uj $$3, uj $$4) {
-      Optional<T> $$5 = $$1.b($$3.l($$2));
-      if ($$5.isPresent()) {
-         return $$0.b($$1, $$5.get());
+   public DataResult<vh> a(vh $$0, Map<vh, vh> $$1) {
+      if (!($$0 instanceof uk) && !($$0 instanceof um)) {
+         return DataResult.error(() -> "mergeToMap called with not a map: " + $$0, $$0);
       } else {
-         j.warn("Unable to read property: {} with value: {} for blockstate: {}", new Object[]{$$2, $$3.l($$2), $$4});
+         uk $$3 = $$0 instanceof uk $$2 ? $$2.h() : new uk();
+         List<vh> $$4 = new ArrayList<>();
+
+         for (Entry<vh, vh> $$5 : $$1.entrySet()) {
+            vh $$6 = $$5.getKey();
+            if ($$6 instanceof vf) {
+               $$3.a($$6.s_(), $$5.getValue());
+            } else {
+               $$4.add($$6);
+            }
+         }
+
+         return !$$4.isEmpty() ? DataResult.error(() -> "some keys are not strings: " + $$4, $$3) : DataResult.success($$3);
+      }
+   }
+
+   public DataResult<Stream<Pair<vh, vh>>> c(vh $$0) {
+      return $$0 instanceof uk $$1
+         ? DataResult.success($$1.j().stream().map($$0x -> Pair.of(this.a((String)$$0x.getKey()), (vh)$$0x.getValue())))
+         : DataResult.error(() -> "Not a map: " + $$0);
+   }
+
+   public DataResult<Consumer<BiConsumer<vh, vh>>> d(vh $$0) {
+      return $$0 instanceof uk $$1 ? DataResult.success((Consumer<BiConsumer>)$$1x -> {
+         for (Entry<String, vh> $$2 : $$1.j()) {
+            $$1x.accept(this.a($$2.getKey()), $$2.getValue());
+         }
+      }) : DataResult.error(() -> "Not a map: " + $$0);
+   }
+
+   public DataResult<MapLike<vh>> e(vh $$0) {
+      return $$0 instanceof uk $$1 ? DataResult.success(new MapLike<vh>() {
+         @Nullable
+         public vh a(vh $$0) {
+            return $$1.c($$0.s_());
+         }
+
+         @Nullable
+         public vh a(String $$0) {
+            return $$1.c($$0);
+         }
+
+         public Stream<Pair<vh, vh>> entries() {
+            return $$1.j().stream().map($$0 -> Pair.of(uy.this.a($$0.getKey()), $$0.getValue()));
+         }
+
+         @Override
+         public String toString() {
+            return "MapLike[" + $$1 + "]";
+         }
+      }) : DataResult.error(() -> "Not a map: " + $$0);
+   }
+
+   public vh a(Stream<Pair<vh, vh>> $$0) {
+      uk $$1 = new uk();
+      $$0.forEach($$1x -> $$1.a(((vh)$$1x.getFirst()).s_(), (vh)$$1x.getSecond()));
+      return $$1;
+   }
+
+   private static vh a(uk $$0) {
+      if ($$0.f() == 1) {
+         vh $$1 = $$0.c("");
+         if ($$1 != null) {
+            return $$1;
+         }
+      }
+
+      return $$0;
+   }
+
+   public DataResult<Stream<vh>> f(vh $$0) {
+      if ($$0 instanceof uq $$1) {
+         return $$1.f() == 10 ? DataResult.success($$1.stream().map($$0x -> a((uk)$$0x))) : DataResult.success($$1.stream());
+      } else {
+         return $$0 instanceof uj<?> $$2 ? DataResult.success($$2.stream().map($$0x -> $$0x)) : DataResult.error(() -> "Not a list");
+      }
+   }
+
+   public DataResult<Consumer<Consumer<vh>>> g(vh $$0) {
+      if ($$0 instanceof uq $$1) {
+         return $$1.f() == 10 ? DataResult.success((Consumer<Consumer>)$$1x -> {
+            for (vh $$2x : $$1) {
+               $$1x.accept(a((uk)$$2x));
+            }
+         }) : DataResult.success($$1::forEach);
+      } else {
+         return $$0 instanceof uj<?> $$2 ? DataResult.success($$2::forEach) : DataResult.error(() -> "Not a list: " + $$0);
+      }
+   }
+
+   public DataResult<ByteBuffer> h(vh $$0) {
+      return $$0 instanceof uh $$1 ? DataResult.success(ByteBuffer.wrap($$1.e())) : super.getByteBuffer($$0);
+   }
+
+   public vh a(ByteBuffer $$0) {
+      ByteBuffer $$1 = $$0.duplicate().clear();
+      byte[] $$2 = new byte[$$0.capacity()];
+      $$1.get(0, $$2, 0, $$2.length);
+      return new uh($$2);
+   }
+
+   public DataResult<IntStream> i(vh $$0) {
+      return $$0 instanceof uo $$1 ? DataResult.success(Arrays.stream($$1.g())) : super.getIntStream($$0);
+   }
+
+   public vh a(IntStream $$0) {
+      return new uo($$0.toArray());
+   }
+
+   public DataResult<LongStream> j(vh $$0) {
+      return $$0 instanceof ur $$1 ? DataResult.success(Arrays.stream($$1.g())) : super.getLongStream($$0);
+   }
+
+   public vh a(LongStream $$0) {
+      return new ur($$0.toArray());
+   }
+
+   public vh b(Stream<vh> $$0) {
+      return uy.d.a.a($$0).a();
+   }
+
+   public vh a(vh $$0, String $$1) {
+      if ($$0 instanceof uk $$2) {
+         uk $$3 = $$2.h();
+         $$3.r($$1);
+         return $$3;
+      } else {
          return $$0;
       }
    }
 
-   public static uj a(dvd $$0) {
-      uj $$1 = new uj();
-      $$1.a("Name", lx.e.b($$0.b()).toString());
-      Map<dwg<?>, Comparable<?>> $$2 = $$0.G();
-      if (!$$2.isEmpty()) {
-         uj $$3 = new uj();
-
-         for (Entry<dwg<?>, Comparable<?>> $$4 : $$2.entrySet()) {
-            dwg<?> $$5 = $$4.getKey();
-            $$3.a($$5.f(), a($$5, $$4.getValue()));
-         }
-
-         $$1.a("Properties", $$3);
-      }
-
-      return $$1;
+   @Override
+   public String toString() {
+      return "NBT";
    }
 
-   public static uj a(ere $$0) {
-      uj $$1 = new uj();
-      $$1.a("Name", lx.c.b($$0.a()).toString());
-      Map<dwg<?>, Comparable<?>> $$2 = $$0.G();
-      if (!$$2.isEmpty()) {
-         uj $$3 = new uj();
-
-         for (Entry<dwg<?>, Comparable<?>> $$4 : $$2.entrySet()) {
-            dwg<?> $$5 = $$4.getKey();
-            $$3.a($$5.f(), a($$5, $$4.getValue()));
-         }
-
-         $$1.a("Properties", $$3);
-      }
-
-      return $$1;
+   public RecordBuilder<vh> mapBuilder() {
+      return new uy.h();
    }
 
-   private static <T extends Comparable<T>> String a(dwg<T> $$0, Comparable<?> $$1) {
-      return $$0.a((T)$$1);
-   }
-
-   public static String b(vg $$0) {
-      return a($$0, false);
-   }
-
-   public static String a(vg $$0, boolean $$1) {
-      return a(new StringBuilder(), $$0, 0, $$1).toString();
-   }
-
-   public static StringBuilder a(StringBuilder $$0, vg $$1, int $$2, boolean $$3) {
-      switch ($$1.b()) {
-         case 0:
-            break;
-         case 1:
-         case 2:
-         case 3:
-         case 4:
-         case 5:
-         case 6:
-         case 8:
-            $$0.append($$1);
-            break;
-         case 7:
-            ug $$4 = (ug)$$1;
-            byte[] $$5 = $$4.e();
-            int $$6 = $$5.length;
-            a($$2, $$0).append("byte[").append($$6).append("] {\n");
-            if ($$3) {
-               a($$2 + 1, $$0);
-
-               for (int $$7 = 0; $$7 < $$5.length; $$7++) {
-                  if ($$7 != 0) {
-                     $$0.append(',');
-                  }
-
-                  if ($$7 % 16 == 0 && $$7 / 16 > 0) {
-                     $$0.append('\n');
-                     if ($$7 < $$5.length) {
-                        a($$2 + 1, $$0);
-                     }
-                  } else if ($$7 != 0) {
-                     $$0.append(' ');
-                  }
-
-                  $$0.append(String.format(Locale.ROOT, "0x%02X", $$5[$$7] & 255));
-               }
-            } else {
-               a($$2 + 1, $$0).append(" // Skipped, supply withBinaryBlobs true");
-            }
-
-            $$0.append('\n');
-            a($$2, $$0).append('}');
-            break;
-         case 9:
-            up $$8 = (up)$$1;
-            int $$9 = $$8.size();
-            int $$10 = $$8.f();
-            String $$11 = $$10 == 0 ? "undefined" : vj.a($$10).b();
-            a($$2, $$0).append("list<").append($$11).append(">[").append($$9).append("] [");
-            if ($$9 != 0) {
-               $$0.append('\n');
-            }
-
-            for (int $$12 = 0; $$12 < $$9; $$12++) {
-               if ($$12 != 0) {
-                  $$0.append(",\n");
-               }
-
-               a($$2 + 1, $$0);
-               a($$0, $$8.k($$12), $$2 + 1, $$3);
-            }
-
-            if ($$9 != 0) {
-               $$0.append('\n');
-            }
-
-            a($$2, $$0).append(']');
-            break;
-         case 10:
-            uj $$19 = (uj)$$1;
-            List<String> $$20 = Lists.newArrayList($$19.e());
-            Collections.sort($$20);
-            a($$2, $$0).append('{');
-            if ($$0.length() - $$0.lastIndexOf("\n") > 2 * ($$2 + 1)) {
-               $$0.append('\n');
-               a($$2 + 1, $$0);
-            }
-
-            int $$21 = $$20.stream().mapToInt(String::length).max().orElse(0);
-            String $$22 = Strings.repeat(" ", $$21);
-
-            for (int $$23 = 0; $$23 < $$20.size(); $$23++) {
-               if ($$23 != 0) {
-                  $$0.append(",\n");
-               }
-
-               String $$24 = $$20.get($$23);
-               a($$2 + 1, $$0).append('"').append($$24).append('"').append($$22, 0, $$22.length() - $$24.length()).append(": ");
-               a($$0, $$19.c($$24), $$2 + 1, $$3);
-            }
-
-            if (!$$20.isEmpty()) {
-               $$0.append('\n');
-            }
-
-            a($$2, $$0).append('}');
-            break;
-         case 11:
-            un $$13 = (un)$$1;
-            int[] $$14 = $$13.g();
-            int $$15 = 0;
-
-            for (int $$16 : $$14) {
-               $$15 = Math.max($$15, String.format(Locale.ROOT, "%X", $$16).length());
-            }
-
-            int $$17 = $$14.length;
-            a($$2, $$0).append("int[").append($$17).append("] {\n");
-            if ($$3) {
-               a($$2 + 1, $$0);
-
-               for (int $$18 = 0; $$18 < $$14.length; $$18++) {
-                  if ($$18 != 0) {
-                     $$0.append(',');
-                  }
-
-                  if ($$18 % 16 == 0 && $$18 / 16 > 0) {
-                     $$0.append('\n');
-                     if ($$18 < $$14.length) {
-                        a($$2 + 1, $$0);
-                     }
-                  } else if ($$18 != 0) {
-                     $$0.append(' ');
-                  }
-
-                  $$0.append(String.format(Locale.ROOT, "0x%0" + $$15 + "X", $$14[$$18]));
-               }
-            } else {
-               a($$2 + 1, $$0).append(" // Skipped, supply withBinaryBlobs true");
-            }
-
-            $$0.append('\n');
-            a($$2, $$0).append('}');
-            break;
-         case 12:
-            uq $$25 = (uq)$$1;
-            long[] $$26 = $$25.g();
-            long $$27 = 0L;
-
-            for (long $$28 : $$26) {
-               $$27 = Math.max($$27, (long)String.format(Locale.ROOT, "%X", $$28).length());
-            }
-
-            long $$29 = (long)$$26.length;
-            a($$2, $$0).append("long[").append($$29).append("] {\n");
-            if ($$3) {
-               a($$2 + 1, $$0);
-
-               for (int $$30 = 0; $$30 < $$26.length; $$30++) {
-                  if ($$30 != 0) {
-                     $$0.append(',');
-                  }
-
-                  if ($$30 % 16 == 0 && $$30 / 16 > 0) {
-                     $$0.append('\n');
-                     if ($$30 < $$26.length) {
-                        a($$2 + 1, $$0);
-                     }
-                  } else if ($$30 != 0) {
-                     $$0.append(' ');
-                  }
-
-                  $$0.append(String.format(Locale.ROOT, "0x%0" + $$27 + "X", $$26[$$30]));
-               }
-            } else {
-               a($$2 + 1, $$0).append(" // Skipped, supply withBinaryBlobs true");
-            }
-
-            $$0.append('\n');
-            a($$2, $$0).append('}');
-            break;
-         default:
-            $$0.append("<UNKNOWN :(>");
-      }
-
-      return $$0;
-   }
-
-   private static StringBuilder a(int $$0, StringBuilder $$1) {
-      int $$2 = $$1.lastIndexOf("\n") + 1;
-      int $$3 = $$1.length() - $$2;
-
-      for (int $$4 = 0; $$4 < 2 * $$0 - $$3; $$4++) {
-         $$1.append(' ');
-      }
-
-      return $$1;
-   }
-
-   public static xh c(vg $$0) {
-      return new vl("").a($$0);
-   }
-
-   public static String a(uj $$0) {
-      return new vc().a((vg)b($$0));
-   }
-
-   public static uj a(String $$0) throws CommandSyntaxException {
-      return c(vh.a($$0));
-   }
-
-   @VisibleForTesting
-   static uj b(uj $$0) {
-      boolean $$1 = $$0.b("palettes", 9);
-      up $$2;
-      if ($$1) {
-         $$2 = $$0.c("palettes", 9).b(0);
+   private static Optional<uy.f> k(vh $$0) {
+      if ($$0 instanceof um) {
+         return Optional.of(uy.d.a);
       } else {
-         $$2 = $$0.c("palette", 10);
-      }
-
-      up $$4 = $$2.stream().map(uj.class::cast).map(uy::d).map(ve::a).collect(Collectors.toCollection(up::new));
-      $$0.a("palette", $$4);
-      if ($$1) {
-         up $$5 = new up();
-         up $$6 = $$0.c("palettes", 9);
-         $$6.stream().map(up.class::cast).forEach($$2x -> {
-            uj $$3x = new uj();
-
-            for (int $$4x = 0; $$4x < $$2x.size(); $$4x++) {
-               $$3x.a($$4.j($$4x), d($$2x.a($$4x)));
+         if ($$0 instanceof uj<?> $$1) {
+            if ($$1.isEmpty()) {
+               return Optional.of(uy.d.a);
             }
 
-            $$5.add($$3x);
-         });
-         $$0.a("palettes", $$5);
-      }
-
-      if ($$0.b("entities", 9)) {
-         up $$7 = $$0.c("entities", 10);
-         up $$8 = $$7.stream().map(uj.class::cast).sorted(Comparator.comparing($$0x -> $$0x.c("pos", 6), c)).collect(Collectors.toCollection(up::new));
-         $$0.a("entities", $$8);
-      }
-
-      up $$9 = $$0.c("blocks", 10)
-         .stream()
-         .map(uj.class::cast)
-         .sorted(Comparator.comparing($$0x -> $$0x.c("pos", 3), b))
-         .peek($$1x -> $$1x.a("state", $$4.j($$1x.h("state"))))
-         .collect(Collectors.toCollection(up::new));
-      $$0.a("data", $$9);
-      $$0.r("blocks");
-      return $$0;
-   }
-
-   @VisibleForTesting
-   static uj c(uj $$0) {
-      up $$1 = $$0.c("palette", 8);
-      Map<String, vg> $$2 = $$1.stream().map(ve.class::cast).map(ve::s_).collect(ImmutableMap.toImmutableMap(Function.identity(), uy::b));
-      if ($$0.b("palettes", 9)) {
-         $$0.a(
-            "palettes",
-            $$0.c("palettes", 10)
-               .stream()
-               .map(uj.class::cast)
-               .map($$1x -> $$2.keySet().stream().map($$1x::l).map(uy::b).collect(Collectors.toCollection(up::new)))
-               .collect(Collectors.toCollection(up::new))
-         );
-         $$0.r("palette");
-      } else {
-         $$0.a("palette", $$2.values().stream().collect(Collectors.toCollection(up::new)));
-      }
-
-      if ($$0.b("data", 9)) {
-         Object2IntMap<String> $$3 = new Object2IntOpenHashMap();
-         $$3.defaultReturnValue(-1);
-
-         for (int $$4 = 0; $$4 < $$1.size(); $$4++) {
-            $$3.put($$1.j($$4), $$4);
-         }
-
-         up $$5 = $$0.c("data", 10);
-
-         for (int $$6 = 0; $$6 < $$5.size(); $$6++) {
-            uj $$7 = $$5.a($$6);
-            String $$8 = $$7.l("state");
-            int $$9 = $$3.getInt($$8);
-            if ($$9 == -1) {
-               throw new IllegalStateException("Entry " + $$8 + " missing from palette");
+            if ($$1 instanceof uq $$2) {
+               return switch ($$2.f()) {
+                  case 0 -> Optional.of(uy.d.a);
+                  case 10 -> Optional.of(new uy.b($$2));
+                  default -> Optional.of(new uy.c($$2));
+               };
             }
 
-            $$7.a("state", $$9);
+            if ($$1 instanceof uh $$3) {
+               return Optional.of(new uy.a($$3.e()));
+            }
+
+            if ($$1 instanceof uo $$4) {
+               return Optional.of(new uy.e($$4.g()));
+            }
+
+            if ($$1 instanceof ur $$5) {
+               return Optional.of(new uy.g($$5.g()));
+            }
          }
 
-         $$0.a("blocks", $$5);
-         $$0.r("data");
+         return Optional.empty();
       }
-
-      return $$0;
    }
 
-   @VisibleForTesting
-   static String d(uj $$0) {
-      StringBuilder $$1 = new StringBuilder($$0.l("Name"));
-      if ($$0.b("Properties", 10)) {
-         uj $$2 = $$0.p("Properties");
-         String $$3 = $$2.e().stream().sorted().map($$1x -> $$1x + ":" + $$2.c($$1x).s_()).collect(Collectors.joining(","));
-         $$1.append('{').append($$3).append('}');
+   static class a implements uy.f {
+      private final ByteArrayList a = new ByteArrayList();
+
+      public a(byte $$0) {
+         this.a.add($$0);
       }
 
-      return $$1.toString();
-   }
+      public a(byte[] $$0) {
+         this.a.addElements(0, $$0);
+      }
 
-   @VisibleForTesting
-   static uj b(String $$0) {
-      uj $$1 = new uj();
-      int $$2 = $$0.indexOf(123);
-      String $$3;
-      if ($$2 >= 0) {
-         $$3 = $$0.substring(0, $$2);
-         uj $$4 = new uj();
-         if ($$2 + 2 <= $$0.length()) {
-            String $$5 = $$0.substring($$2 + 1, $$0.indexOf(125, $$2));
-            h.split($$5).forEach($$2x -> {
-               List<String> $$3x = i.splitToList($$2x);
-               if ($$3x.size() == 2) {
-                  $$4.a($$3x.get(0), $$3x.get(1));
-               } else {
-                  j.error("Something went wrong parsing: '{}' -- incorrect gamedata!", $$0);
-               }
-            });
-            $$1.a("Properties", $$4);
+      @Override
+      public uy.f a(vh $$0) {
+         if ($$0 instanceof ui $$1) {
+            this.a.add($$1.i());
+            return this;
+         } else {
+            return new uy.b(this.a).a($$0);
          }
-      } else {
-         $$3 = $$0;
       }
 
-      $$1.a("Name", $$3);
-      return $$1;
+      @Override
+      public vh a() {
+         return new uh(this.a.toByteArray());
+      }
    }
 
-   public static uj e(uj $$0) {
-      int $$1 = ab.b().d().c();
-      return a($$0, $$1);
+   static class b implements uy.f {
+      private final uq a = new uq();
+
+      public b() {
+      }
+
+      public b(Collection<vh> $$0) {
+         this.a.addAll($$0);
+      }
+
+      public b(IntArrayList $$0) {
+         $$0.forEach($$0x -> this.a.add(c(up.a($$0x))));
+      }
+
+      public b(ByteArrayList $$0) {
+         $$0.forEach($$0x -> this.a.add(c(ui.a($$0x))));
+      }
+
+      public b(LongArrayList $$0) {
+         $$0.forEach($$0x -> this.a.add(c(us.a($$0x))));
+      }
+
+      private static boolean a(uk $$0) {
+         return $$0.f() == 1 && $$0.e("");
+      }
+
+      private static vh b(vh $$0) {
+         if ($$0 instanceof uk $$1 && !a($$1)) {
+            return $$1;
+         }
+
+         return c($$0);
+      }
+
+      private static uk c(vh $$0) {
+         uk $$1 = new uk();
+         $$1.a("", $$0);
+         return $$1;
+      }
+
+      @Override
+      public uy.f a(vh $$0) {
+         this.a.add(b($$0));
+         return this;
+      }
+
+      @Override
+      public vh a() {
+         return this.a;
+      }
    }
 
-   public static uj a(uj $$0, int $$1) {
-      $$0.a("DataVersion", $$1);
-      return $$0;
+   static class c implements uy.f {
+      private final uq a = new uq();
+
+      c(vh $$0) {
+         this.a.add($$0);
+      }
+
+      c(uq $$0) {
+         this.a.addAll($$0);
+      }
+
+      @Override
+      public uy.f a(vh $$0) {
+         if ($$0.b() != this.a.f()) {
+            return new uy.b().a(this.a).a($$0);
+         } else {
+            this.a.add($$0);
+            return this;
+         }
+      }
+
+      @Override
+      public vh a() {
+         return this.a;
+      }
    }
 
-   public static int b(uj $$0, int $$1) {
-      return $$0.b("DataVersion", 99) ? $$0.h("DataVersion") : $$1;
+   static class d implements uy.f {
+      public static final uy.d a = new uy.d();
+
+      private d() {
+      }
+
+      @Override
+      public uy.f a(vh $$0) {
+         if ($$0 instanceof uk $$1) {
+            return new uy.b().a($$1);
+         } else if ($$0 instanceof ui $$2) {
+            return new uy.a($$2.i());
+         } else if ($$0 instanceof up $$3) {
+            return new uy.e($$3.g());
+         } else {
+            return (uy.f)($$0 instanceof us $$4 ? new uy.g($$4.f()) : new uy.c($$0));
+         }
+      }
+
+      @Override
+      public vh a() {
+         return new uq();
+      }
+   }
+
+   static class e implements uy.f {
+      private final IntArrayList a = new IntArrayList();
+
+      public e(int $$0) {
+         this.a.add($$0);
+      }
+
+      public e(int[] $$0) {
+         this.a.addElements(0, $$0);
+      }
+
+      @Override
+      public uy.f a(vh $$0) {
+         if ($$0 instanceof up $$1) {
+            this.a.add($$1.g());
+            return this;
+         } else {
+            return new uy.b(this.a).a($$0);
+         }
+      }
+
+      @Override
+      public vh a() {
+         return new uo(this.a.toIntArray());
+      }
+   }
+
+   interface f {
+      uy.f a(vh var1);
+
+      default uy.f a(Iterable<vh> $$0) {
+         uy.f $$1 = this;
+
+         for (vh $$2 : $$0) {
+            $$1 = $$1.a($$2);
+         }
+
+         return $$1;
+      }
+
+      default uy.f a(Stream<vh> $$0) {
+         return this.a($$0::iterator);
+      }
+
+      vh a();
+   }
+
+   static class g implements uy.f {
+      private final LongArrayList a = new LongArrayList();
+
+      public g(long $$0) {
+         this.a.add($$0);
+      }
+
+      public g(long[] $$0) {
+         this.a.addElements(0, $$0);
+      }
+
+      @Override
+      public uy.f a(vh $$0) {
+         if ($$0 instanceof us $$1) {
+            this.a.add($$1.f());
+            return this;
+         } else {
+            return new uy.b(this.a).a($$0);
+         }
+      }
+
+      @Override
+      public vh a() {
+         return new ur(this.a.toLongArray());
+      }
+   }
+
+   class h extends AbstractStringBuilder<vh, uk> {
+      protected h() {
+         super(uy.this);
+      }
+
+      protected uk a() {
+         return new uk();
+      }
+
+      protected uk a(String $$0, vh $$1, uk $$2) {
+         $$2.a($$0, $$1);
+         return $$2;
+      }
+
+      protected DataResult<vh> a(uk $$0, vh $$1) {
+         if ($$1 == null || $$1 == um.b) {
+            return DataResult.success($$0);
+         } else if (!($$1 instanceof uk $$2)) {
+            return DataResult.error(() -> "mergeToMap called with not a map: " + $$1, $$1);
+         } else {
+            uk $$3 = $$2.h();
+
+            for (Entry<String, vh> $$4 : $$0.j()) {
+               $$3.a($$4.getKey(), $$4.getValue());
+            }
+
+            return DataResult.success($$3);
+         }
+      }
    }
 }

@@ -1,66 +1,161 @@
-import javax.annotation.Nullable;
+import com.google.common.collect.ImmutableMap;
+import java.util.List;
+import java.util.Map;
 
-public class glg implements ddx {
-   public static final int a = 1;
-   public static final int b = 3;
-   private final int e;
-   private final int f;
-   protected final glf[] c;
-   protected final dev d;
+public class glg implements gks<dty> {
+   private static final int a = -988212;
+   private static final int b = azk.h(16);
+   private static final float c = 0.6666667F;
+   private static final ezn d = new ezn(0.0, 0.33333334F, 0.046666667F);
+   private final Map<dww, glg.a> e;
+   private final fks f;
 
-   glg(dev $$0, int $$1, int $$2, glf[] $$3) {
-      this.d = $$0;
-      this.e = $$1;
-      this.f = $$2;
-      this.c = $$3;
+   public glg(gkt.a $$0) {
+      this.e = dww.a().collect(ImmutableMap.toImmutableMap($$0x -> $$0x, $$1 -> new glg.a(a($$0.e(), $$1, true), a($$0.e(), $$1, false))));
+      this.f = $$0.f();
    }
 
-   @Override
-   public dvd a_(jg $$0) {
-      return this.a(ki.a($$0.u()), ki.a($$0.w())).b($$0);
+   public void a(dty $$0, float $$1, feb $$2, gih $$3, int $$4, int $$5) {
+      dvj $$6 = $$0.m();
+      dpe $$7 = (dpe)$$6.b();
+      dww $$8 = dpe.a($$7);
+      glg.a $$9 = this.e.get($$8);
+      fzf $$10 = $$6.b() instanceof dpz ? $$9.a() : $$9.b();
+      this.a($$0, $$2, $$3, $$4, $$5, $$6, $$7, $$8, $$10);
    }
 
-   @Override
-   public ere b_(jg $$0) {
-      return this.a(ki.a($$0.u()), ki.a($$0.w())).b($$0).y();
+   public float b() {
+      return 0.6666667F;
    }
 
-   @Override
-   public float a(jl $$0, boolean $$1) {
-      return this.d.a($$0, $$1);
+   public float c() {
+      return 0.6666667F;
    }
 
-   @Override
-   public eqt z_() {
-      return this.d.z_();
+   void a(dty $$0, feb $$1, gih $$2, int $$3, int $$4, dvj $$5, dpe $$6, dww $$7, fzf $$8) {
+      $$1.a();
+      this.a($$1, -$$6.h($$5), $$5);
+      this.a($$1, $$2, $$3, $$4, $$7, $$8);
+      this.a($$0.aB_(), $$0.j(), $$1, $$2, $$3, $$0.b(), $$0.c(), true);
+      this.a($$0.aB_(), $$0.k(), $$1, $$2, $$3, $$0.b(), $$0.c(), false);
+      $$1.b();
    }
 
-   @Nullable
-   @Override
-   public dsg c_(jg $$0) {
-      return this.a(ki.a($$0.u()), ki.a($$0.w())).a($$0);
+   void a(feb $$0, float $$1, dvj $$2) {
+      $$0.a(0.5F, 0.75F * this.b(), 0.5F);
+      $$0.a(a.d.rotationDegrees($$1));
+      if (!($$2.b() instanceof dpz)) {
+         $$0.a(0.0F, -0.3125F, -0.4375F);
+      }
    }
 
-   private glf a(int $$0, int $$1) {
-      return this.c[a(this.e, this.f, $$0, $$1)];
+   void a(feb $$0, gih $$1, int $$2, int $$3, dww $$4, fzf $$5) {
+      $$0.a();
+      float $$6 = this.b();
+      $$0.b($$6, -$$6, -$$6);
+      ham $$7 = this.a($$4);
+      fef $$8 = $$7.a($$1, $$5::a);
+      $$5.a($$0, $$8, $$2, $$3);
+      $$0.b();
    }
 
-   @Override
-   public int a(jg $$0, def $$1) {
-      return this.d.a($$0, $$1);
+   ham a(dww $$0) {
+      return gjc.a($$0);
    }
 
-   @Override
-   public int I_() {
-      return this.d.I_();
+   void a(jh $$0, dtz $$1, feb $$2, gih $$3, int $$4, int $$5, int $$6, boolean $$7) {
+      $$2.a();
+      this.a($$2, $$7, this.d());
+      int $$8 = a($$1);
+      int $$9 = 4 * $$5 / 2;
+      ayw[] $$10 = $$1.a(fji.Q().aU(), $$1x -> {
+         List<ayw> $$2x = this.f.c($$1x, $$6);
+         return $$2x.isEmpty() ? ayw.a : $$2x.get(0);
+      });
+      int $$11;
+      boolean $$12;
+      int $$13;
+      if ($$1.a()) {
+         $$11 = $$1.b().g();
+         $$12 = a($$0, $$11);
+         $$13 = 15728880;
+      } else {
+         $$11 = $$8;
+         $$12 = false;
+         $$13 = $$4;
+      }
+
+      for (int $$17 = 0; $$17 < 4; $$17++) {
+         ayw $$18 = $$10[$$17];
+         float $$19 = (float)(-this.f.a($$18) / 2);
+         if ($$12) {
+            this.f.a($$18, $$19, (float)($$17 * $$5 - $$9), $$11, $$8, $$2.c().a(), $$3, $$13);
+         } else {
+            this.f.a($$18, $$19, (float)($$17 * $$5 - $$9), $$11, false, $$2.c().a(), $$3, fks.a.c, 0, $$13);
+         }
+      }
+
+      $$2.b();
    }
 
-   @Override
-   public int J_() {
-      return this.d.J_();
+   private void a(feb $$0, boolean $$1, ezn $$2) {
+      if (!$$1) {
+         $$0.a(a.d.rotationDegrees(180.0F));
+      }
+
+      float $$3 = 0.015625F * this.c();
+      $$0.a($$2);
+      $$0.b($$3, -$$3, $$3);
    }
 
-   public static int a(int $$0, int $$1, int $$2, int $$3) {
-      return $$2 - $$0 + ($$3 - $$1) * 3;
+   ezn d() {
+      return d;
+   }
+
+   static boolean a(jh $$0, int $$1) {
+      if ($$1 == cuy.p.g()) {
+         return true;
+      } else {
+         fji $$2 = fji.Q();
+         ghd $$3 = $$2.t;
+         if ($$3 != null && $$2.n.aD().a() && $$3.gI()) {
+            return true;
+         } else {
+            bue $$4 = $$2.ao();
+            return $$4 != null && $$4.f(ezn.b($$0)) < (double)b;
+         }
+      }
+   }
+
+   public static int a(dtz $$0) {
+      int $$1 = $$0.b().g();
+      if ($$1 == cuy.p.g() && $$0.a()) {
+         return -988212;
+      } else {
+         double $$2 = 0.4;
+         int $$3 = (int)((double)axv.b($$1) * 0.4);
+         int $$4 = (int)((double)axv.c($$1) * 0.4);
+         int $$5 = (int)((double)axv.d($$1) * 0.4);
+         return axv.a(0, $$3, $$4, $$5);
+      }
+   }
+
+   public static fzf a(gbi $$0, dww $$1, boolean $$2) {
+      gbk $$3 = $$2 ? gbl.a($$1) : gbl.b($$1);
+      return new fzf.a($$0.a($$3), gir::f);
+   }
+
+   public static gbs a(boolean $$0) {
+      gbu $$1 = new gbu();
+      gbw $$2 = $$1.a();
+      $$2.a("sign", gbr.c().a(0, 0).a(-12.0F, -14.0F, -1.0F, 24.0F, 12.0F, 2.0F), gbo.a);
+      if ($$0) {
+         $$2.a("stick", gbr.c().a(0, 14).a(-1.0F, -2.0F, -1.0F, 2.0F, 14.0F, 2.0F), gbo.a);
+      }
+
+      return gbs.a($$1, 64, 32);
+   }
+
+   static record a(fzf a, fzf b) {
    }
 }

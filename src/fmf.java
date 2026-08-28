@@ -1,36 +1,18 @@
-import javax.annotation.Nullable;
+public class fmf extends flh {
+   private final fks a;
+   private final xi b;
+   private final xi c;
 
-public class fmf extends fkx {
-   @Nullable
-   protected fmm a;
-   protected boolean b;
-
-   public fmf(int $$0, int $$1, int $$2, int $$3, boolean $$4) {
-      super($$0, $$1, $$2, $$3, xg.a);
+   public fmf(int $$0, int $$1, int $$2, int $$3, xi $$4, flh.c $$5, fks $$6) {
+      super($$0, $$1, $$2, $$3, $$4, $$5, q);
+      this.a = $$6;
       this.b = $$4;
-   }
-
-   public void a(fmm $$0) {
-      this.a = $$0;
-   }
-
-   public void b(boolean $$0) {
-      this.b = $$0;
-   }
-
-   public boolean a() {
-      return this.b;
+      this.c = xl.a($$4.f(), yf.a.c(true));
    }
 
    @Override
-   public void a(fox $$0) {
-      this.c($$0);
-   }
-
-   @Override
-   public void b(fkm $$0, int $$1, int $$2, float $$3) {
-      if (this.a != null) {
-         $$0.a(gig::B, this.a.a(this.b, this.B()), this.D(), this.E(), this.g, this.h);
-      }
+   public void b(fku $$0, int $$1, int $$2, float $$3) {
+      xi $$4 = this.B() ? this.c : this.b;
+      $$0.b(this.a, $$4, this.D(), this.E(), 16777215 | azk.f(this.l * 255.0F) << 24);
    }
 }

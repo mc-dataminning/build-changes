@@ -1,41 +1,41 @@
-public class cxj extends cvt {
-   public static final int a = 1200;
-   public static final float b = 0.1F;
+import javax.annotation.Nullable;
 
-   public cxj(cvt.a $$0) {
-      super($$0);
+public class cxj extends cuh implements cuw {
+   private final awk a;
+
+   public cxj(die $$0, awk $$1, cvx.a $$2) {
+      super($$0, $$2);
+      this.a = $$1;
    }
 
    @Override
-   public int a(cvx $$0, buv $$1) {
-      return 1200;
+   public bsd a(czu $$0) {
+      bsd $$1 = super.a($$0);
+      com $$2 = $$0.o();
+      if ($$1.a() && $$2 != null) {
+         $$2.a($$0.p(), cun.a($$0.n(), $$2));
+      }
+
+      return $$1;
    }
 
    @Override
-   public cvz a(cvx $$0) {
-      return cvz.h;
+   protected awk a(dvj $$0) {
+      return this.a;
    }
 
    @Override
-   public bry a(dev $$0, coh $$1, brx $$2) {
-      $$1.a(awk.zb, 1.0F, 1.0F);
-      $$1.b(awu.c.b(this));
-      return cwa.a($$0, $$1, $$2);
-   }
+   public boolean a(@Nullable com $$0, dfb $$1, jh $$2, @Nullable ezj $$3) {
+      if ($$1.k($$2) && $$1.u($$2)) {
+         if (!$$1.C) {
+            $$1.a($$2, this.d().m(), 3);
+         }
 
-   @Override
-   public cvx a(cvx $$0, dev $$1, buv $$2) {
-      this.a($$2);
-      return $$0;
-   }
-
-   @Override
-   public boolean a(cvx $$0, dev $$1, buv $$2, int $$3) {
-      this.a($$2);
-      return true;
-   }
-
-   private void a(buv $$0) {
-      $$0.a(awk.zc, 1.0F, 1.0F);
+         $$1.a($$0, eag.z, $$2);
+         $$1.a($$0, $$2, this.a, awm.e, 1.0F, 1.0F);
+         return true;
+      } else {
+         return false;
+      }
    }
 }

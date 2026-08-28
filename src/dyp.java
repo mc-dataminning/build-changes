@@ -1,399 +1,114 @@
-import com.google.common.annotations.VisibleForTesting;
-import com.mojang.logging.LogUtils;
-import java.io.ByteArrayInputStream;
-import java.io.ByteArrayOutputStream;
-import java.io.DataInputStream;
-import java.io.DataOutputStream;
+import com.mojang.datafixers.DataFixer;
+import com.mojang.serialization.MapCodec;
 import java.io.IOException;
-import java.io.InputStream;
-import java.nio.ByteBuffer;
-import java.nio.IntBuffer;
-import java.nio.channels.FileChannel;
-import java.nio.file.Files;
 import java.nio.file.Path;
-import java.nio.file.StandardCopyOption;
-import java.nio.file.StandardOpenOption;
+import java.util.Optional;
+import java.util.concurrent.CompletableFuture;
+import java.util.function.Supplier;
 import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
 public class dyp implements AutoCloseable {
-   private static final Logger c = LogUtils.getLogger();
-   private static final int d = 4096;
-   @VisibleForTesting
-   protected static final int a = 1024;
-   private static final int e = 5;
-   private static final int f = 0;
-   private static final ByteBuffer g = ByteBuffer.allocateDirect(1);
-   private static final String h = ".mcc";
-   private static final int i = 128;
-   private static final int j = 256;
-   private static final int k = 0;
-   final dys l;
-   private final Path m;
-   private final FileChannel n;
-   private final Path o;
-   final dyr p;
-   private final ByteBuffer q = ByteBuffer.allocateDirect(8192);
-   private final IntBuffer r;
-   private final IntBuffer s;
-   @VisibleForTesting
-   protected final dyo b = new dyo();
-
-   public dyp(dys $$0, Path $$1, Path $$2, boolean $$3) throws IOException {
-      this($$0, $$1, $$2, dyr.a(), $$3);
-   }
-
-   public dyp(dys $$0, Path $$1, Path $$2, dyr $$3, boolean $$4) throws IOException {
-      this.l = $$0;
-      this.m = $$1;
-      this.p = $$3;
-      if (!Files.isDirectory($$2)) {
-         throw new IllegalArgumentException("Expected directory, got " + $$2.toAbsolutePath());
-      } else {
-         this.o = $$2;
-         this.r = this.q.asIntBuffer();
-         this.r.limit(1024);
-         this.q.position(4096);
-         this.s = this.q.asIntBuffer();
-         if ($$4) {
-            this.n = FileChannel.open($$1, StandardOpenOption.CREATE, StandardOpenOption.READ, StandardOpenOption.WRITE, StandardOpenOption.DSYNC);
-         } else {
-            this.n = FileChannel.open($$1, StandardOpenOption.CREATE, StandardOpenOption.READ, StandardOpenOption.WRITE);
-         }
-
-         this.b.a(0, 2);
-         this.q.position(0);
-         int $$5 = this.n.read(this.q, 0L);
-         if ($$5 != -1) {
-            if ($$5 != 8192) {
-               c.warn("Region file {} has truncated header: {}", $$1, $$5);
-            }
-
-            long $$6 = Files.size($$1);
-
-            for (int $$7 = 0; $$7 < 1024; $$7++) {
-               int $$8 = this.r.get($$7);
-               if ($$8 != 0) {
-                  int $$9 = b($$8);
-                  int $$10 = a($$8);
-                  if ($$9 < 2) {
-                     c.warn("Region file {} has invalid sector at index: {}; sector {} overlaps with header", new Object[]{$$1, $$7, $$9});
-                     this.r.put($$7, 0);
-                  } else if ($$10 == 0) {
-                     c.warn("Region file {} has an invalid sector at index: {}; size has to be > 0", $$1, $$7);
-                     this.r.put($$7, 0);
-                  } else if ((long)$$9 * 4096L > $$6) {
-                     c.warn("Region file {} has an invalid sector at index: {}; sector {} is out of bounds", new Object[]{$$1, $$7, $$9});
-                     this.r.put($$7, 0);
-                  } else {
-                     this.b.a($$9, $$10);
-                  }
-               }
-            }
-         }
-      }
-   }
-
-   public Path a() {
-      return this.m;
-   }
-
-   private Path f(deb $$0) {
-      String $$1 = "c." + $$0.e + "." + $$0.f + ".mcc";
-      return this.o.resolve($$1);
-   }
-
+   public static final int d = 1493;
+   private final dyr a;
+   protected final DataFixer e;
    @Nullable
-   public synchronized DataInputStream a(deb $$0) throws IOException {
-      int $$1 = this.g($$0);
-      if ($$1 == 0) {
-         return null;
+   private volatile els b;
+
+   public dyp(dyy $$0, Path $$1, DataFixer $$2, boolean $$3) {
+      this.e = $$2;
+      this.a = new dyr($$0, $$1, $$3);
+   }
+
+   public boolean b(deh $$0, int $$1) {
+      return this.a.a($$0, $$1);
+   }
+
+   public uk a(alh<dfb> $$0, Supplier<etk> $$1, uk $$2, Optional<alh<MapCodec<? extends dxg>>> $$3) {
+      int $$4 = a($$2);
+      if ($$4 == ab.b().d().c()) {
+         return $$2;
       } else {
-         int $$2 = b($$1);
-         int $$3 = a($$1);
-         int $$4 = $$3 * 4096;
-         ByteBuffer $$5 = ByteBuffer.allocate($$4);
-         this.n.read($$5, (long)($$2 * 4096));
-         $$5.flip();
-         if ($$5.remaining() < 5) {
-            c.error("Chunk {} header is truncated: expected {} but read {}", new Object[]{$$0, $$4, $$5.remaining()});
-            return null;
-         } else {
-            int $$6 = $$5.getInt();
-            byte $$7 = $$5.get();
-            if ($$6 == 0) {
-               c.warn("Chunk {} is allocated, but stream is missing", $$0);
-               return null;
-            } else {
-               int $$8 = $$6 - 1;
-               if (a($$7)) {
-                  if ($$8 != 0) {
-                     c.warn("Chunk has both internal and external streams");
-                  }
-
-                  return this.a($$0, b($$7));
-               } else if ($$8 > $$5.remaining()) {
-                  c.error("Chunk {} stream is truncated: expected {} but read {}", new Object[]{$$0, $$8, $$5.remaining()});
-                  return null;
-               } else if ($$8 < 0) {
-                  c.error("Declared size {} of chunk {} is negative", $$6, $$0);
-                  return null;
-               } else {
-                  boq.f.a(this.l, $$0, this.p, $$8);
-                  return this.a($$0, $$7, a($$5, $$8));
-               }
-            }
-         }
-      }
-   }
-
-   private static int c() {
-      return (int)(ad.e() / 1000L);
-   }
-
-   private static boolean a(byte $$0) {
-      return ($$0 & 128) != 0;
-   }
-
-   private static byte b(byte $$0) {
-      return (byte)($$0 & -129);
-   }
-
-   @Nullable
-   private DataInputStream a(deb $$0, byte $$1, InputStream $$2) throws IOException {
-      dyr $$3 = dyr.a($$1);
-      if ($$3 == dyr.e) {
-         String $$4 = new DataInputStream($$2).readUTF();
-         alh $$5 = alh.c($$4);
-         if ($$5 != null) {
-            c.error("Unrecognized custom compression {}", $$5);
-            return null;
-         } else {
-            c.error("Invalid custom compression id {}", $$4);
-            return null;
-         }
-      } else if ($$3 == null) {
-         c.error("Chunk {} has invalid chunk stream version {}", $$0, $$1);
-         return null;
-      } else {
-         return new DataInputStream($$3.a($$2));
-      }
-   }
-
-   @Nullable
-   private DataInputStream a(deb $$0, byte $$1) throws IOException {
-      Path $$2 = this.f($$0);
-      if (!Files.isRegularFile($$2)) {
-         c.error("External chunk path {} is not file", $$2);
-         return null;
-      } else {
-         return this.a($$0, $$1, Files.newInputStream($$2));
-      }
-   }
-
-   private static ByteArrayInputStream a(ByteBuffer $$0, int $$1) {
-      return new ByteArrayInputStream($$0.array(), $$0.position(), $$1);
-   }
-
-   private int a(int $$0, int $$1) {
-      return $$0 << 8 | $$1;
-   }
-
-   private static int a(int $$0) {
-      return $$0 & 0xFF;
-   }
-
-   private static int b(int $$0) {
-      return $$0 >> 8 & 16777215;
-   }
-
-   private static int c(int $$0) {
-      return ($$0 + 4096 - 1) / 4096;
-   }
-
-   public boolean b(deb $$0) {
-      int $$1 = this.g($$0);
-      if ($$1 == 0) {
-         return false;
-      } else {
-         int $$2 = b($$1);
-         int $$3 = a($$1);
-         ByteBuffer $$4 = ByteBuffer.allocate(5);
-
          try {
-            this.n.read($$4, (long)($$2 * 4096));
-            $$4.flip();
-            if ($$4.remaining() != 5) {
-               return false;
-            } else {
-               int $$5 = $$4.getInt();
-               byte $$6 = $$4.get();
-               if (a($$6)) {
-                  if (!dyr.b(b($$6))) {
-                     return false;
-                  }
-
-                  if (!Files.isRegularFile(this.f($$0))) {
-                     return false;
-                  }
-               } else {
-                  if (!dyr.b($$6)) {
-                     return false;
-                  }
-
-                  if ($$5 == 0) {
-                     return false;
-                  }
-
-                  int $$7 = $$5 - 1;
-                  if ($$7 < 0 || $$7 > 4096 * $$3) {
-                     return false;
-                  }
+            if ($$4 < 1493) {
+               $$2 = bat.c.a(this.e, $$2, $$4, 1493);
+               if ($$2.p("Level").q("hasLegacyStructureData")) {
+                  els $$5 = this.a($$0, $$1);
+                  $$2 = $$5.a($$2);
                }
-
-               return true;
             }
-         } catch (IOException var9) {
-            return false;
+
+            a($$2, $$0, $$3);
+            $$2 = bat.c.a(this.e, $$2, Math.max(1493, $$4));
+            b($$2);
+            uz.e($$2);
+            return $$2;
+         } catch (Exception var9) {
+            o $$7 = o.a(var9, "Updated chunk");
+            p $$8 = $$7.a("Updated chunk details");
+            $$8.a("Data version", $$4);
+            throw new z($$7);
          }
       }
    }
 
-   public DataOutputStream c(deb $$0) throws IOException {
-      return new DataOutputStream(this.p.a(new dyp.a($$0)));
+   private els a(alh<dfb> $$0, Supplier<etk> $$1) {
+      els $$2 = this.b;
+      if ($$2 == null) {
+         synchronized (this) {
+            $$2 = this.b;
+            if ($$2 == null) {
+               this.b = $$2 = els.a($$0, $$1.get());
+            }
+         }
+      }
+
+      return $$2;
    }
 
-   public void b() throws IOException {
-      this.n.force(true);
+   public static void a(uk $$0, alh<dfb> $$1, Optional<alh<MapCodec<? extends dxg>>> $$2) {
+      uk $$3 = new uk();
+      $$3.a("dimension", $$1.a().toString());
+      $$2.ifPresent($$1x -> $$3.a("generator", $$1x.a().toString()));
+      $$0.a("__context", $$3);
    }
 
-   public void d(deb $$0) throws IOException {
-      int $$1 = h($$0);
-      int $$2 = this.r.get($$1);
-      if ($$2 != 0) {
-         this.r.put($$1, 0);
-         this.s.put($$1, c());
-         this.e();
-         Files.deleteIfExists(this.f($$0));
-         this.b.b(b($$2), a($$2));
+   private static void b(uk $$0) {
+      $$0.r("__context");
+   }
+
+   public static int a(uk $$0) {
+      return uz.b($$0, -1);
+   }
+
+   public CompletableFuture<Optional<uk>> d(deh $$0) {
+      return this.a.a($$0);
+   }
+
+   public CompletableFuture<Void> a(deh $$0, Supplier<uk> $$1) {
+      this.e($$0);
+      return this.a.a($$0, $$1);
+   }
+
+   protected void e(deh $$0) {
+      if (this.b != null) {
+         this.b.a($$0.a());
       }
    }
 
-   protected synchronized void a(deb $$0, ByteBuffer $$1) throws IOException {
-      int $$2 = h($$0);
-      int $$3 = this.r.get($$2);
-      int $$4 = b($$3);
-      int $$5 = a($$3);
-      int $$6 = $$1.remaining();
-      int $$7 = c($$6);
-      int $$9;
-      dyp.b $$10;
-      if ($$7 >= 256) {
-         Path $$8 = this.f($$0);
-         c.warn("Saving oversized chunk {} ({} bytes} to external file {}", new Object[]{$$0, $$6, $$8});
-         $$7 = 1;
-         $$9 = this.b.a($$7);
-         $$10 = this.a($$8, $$1);
-         ByteBuffer $$11 = this.d();
-         this.n.write($$11, (long)($$9 * 4096));
-      } else {
-         $$9 = this.b.a($$7);
-         $$10 = () -> Files.deleteIfExists(this.f($$0));
-         this.n.write($$1, (long)($$9 * 4096));
-      }
-
-      this.r.put($$2, this.a($$9, $$7));
-      this.s.put($$2, c());
-      this.e();
-      $$10.run();
-      if ($$4 != 0) {
-         this.b.b($$4, $$5);
-      }
-   }
-
-   private ByteBuffer d() {
-      ByteBuffer $$0 = ByteBuffer.allocate(5);
-      $$0.putInt(1);
-      $$0.put((byte)(this.p.b() | 128));
-      $$0.flip();
-      return $$0;
-   }
-
-   private dyp.b a(Path $$0, ByteBuffer $$1) throws IOException {
-      Path $$2 = Files.createTempFile(this.o, "tmp", null);
-
-      try (FileChannel $$3 = FileChannel.open($$2, StandardOpenOption.CREATE, StandardOpenOption.WRITE)) {
-         $$1.position(5);
-         $$3.write($$1);
-      }
-
-      return () -> Files.move($$2, $$0, StandardCopyOption.REPLACE_EXISTING);
-   }
-
-   private void e() throws IOException {
-      this.q.position(0);
-      this.n.write(this.q, 0L);
-   }
-
-   private int g(deb $$0) {
-      return this.r.get(h($$0));
-   }
-
-   public boolean e(deb $$0) {
-      return this.g($$0) != 0;
-   }
-
-   private static int h(deb $$0) {
-      return $$0.j() + $$0.k() * 32;
+   public void o() {
+      this.a.a(true).join();
    }
 
    @Override
    public void close() throws IOException {
-      try {
-         this.f();
-      } finally {
-         try {
-            this.n.force(true);
-         } finally {
-            this.n.close();
-         }
-      }
+      this.a.close();
    }
 
-   private void f() throws IOException {
-      int $$0 = (int)this.n.size();
-      int $$1 = c($$0) * 4096;
-      if ($$0 != $$1) {
-         ByteBuffer $$2 = g.duplicate();
-         $$2.position(0);
-         this.n.write($$2, (long)($$1 - 1));
-      }
+   public dyo p() {
+      return this.a;
    }
 
-   class a extends ByteArrayOutputStream {
-      private final deb b;
-
-      public a(final deb $$0) {
-         super(8096);
-         super.write(0);
-         super.write(0);
-         super.write(0);
-         super.write(0);
-         super.write(dyp.this.p.b());
-         this.b = $$0;
-      }
-
-      @Override
-      public void close() throws IOException {
-         ByteBuffer $$0 = ByteBuffer.wrap(this.buf, 0, this.count);
-         int $$1 = this.count - 5 + 1;
-         boq.f.b(dyp.this.l, this.b, dyp.this.p, $$1);
-         $$0.putInt(0, $$1);
-         dyp.this.a(this.b, $$0);
-      }
-   }
-
-   interface b {
-      void run() throws IOException;
+   protected dyy q() {
+      return this.a.a();
    }
 }

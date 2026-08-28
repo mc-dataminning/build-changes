@@ -1,143 +1,83 @@
-public interface foq {
-   foq a(int var1);
+public abstract class foq implements fox {
+   private int c;
+   private int d;
+   protected int a;
+   protected int b;
 
-   foq a(int var1, int var2);
-
-   foq a(int var1, int var2, int var3, int var4);
-
-   foq b(int var1);
-
-   foq c(int var1);
-
-   foq d(int var1);
-
-   foq e(int var1);
-
-   foq f(int var1);
-
-   foq g(int var1);
-
-   foq a(float var1, float var2);
-
-   foq a(float var1);
-
-   foq b(float var1);
-
-   default foq a() {
-      return this.a(0.0F);
+   public foq(int $$0, int $$1, int $$2, int $$3) {
+      this.c = $$0;
+      this.d = $$1;
+      this.a = $$2;
+      this.b = $$3;
    }
 
-   default foq b() {
-      return this.a(0.5F);
+   @Override
+   public void m(int $$0) {
+      this.b($$1 -> {
+         int $$2 = $$1.D() + ($$0 - this.D());
+         $$1.m($$2);
+      });
+      this.c = $$0;
    }
 
-   default foq c() {
-      return this.a(1.0F);
+   @Override
+   public void n(int $$0) {
+      this.b($$1 -> {
+         int $$2 = $$1.E() + ($$0 - this.E());
+         $$1.n($$2);
+      });
+      this.d = $$0;
    }
 
-   default foq d() {
-      return this.b(0.0F);
+   @Override
+   public int D() {
+      return this.c;
    }
 
-   default foq e() {
-      return this.b(0.5F);
+   @Override
+   public int E() {
+      return this.d;
    }
 
-   default foq f() {
-      return this.b(1.0F);
+   @Override
+   public int y() {
+      return this.a;
    }
 
-   foq g();
-
-   foq.a h();
-
-   static foq i() {
-      return new foq.a();
+   @Override
+   public int w() {
+      return this.b;
    }
 
-   public static class a implements foq {
-      public int a;
-      public int b;
-      public int c;
-      public int d;
-      public float e;
-      public float f;
+   protected abstract static class a {
+      public final foy a;
+      public final foz.a b;
 
-      public a() {
-      }
-
-      public a(foq.a $$0) {
-         this.a = $$0.a;
-         this.b = $$0.b;
-         this.c = $$0.c;
-         this.d = $$0.d;
-         this.e = $$0.e;
-         this.f = $$0.f;
-      }
-
-      public foq.a h(int $$0) {
-         return this.b($$0, $$0);
-      }
-
-      public foq.a b(int $$0, int $$1) {
-         return this.m($$0).n($$1);
-      }
-
-      public foq.a b(int $$0, int $$1, int $$2, int $$3) {
-         return this.i($$0).k($$2).j($$1).l($$3);
-      }
-
-      public foq.a i(int $$0) {
+      protected a(foy $$0, foz $$1) {
          this.a = $$0;
-         return this;
+         this.b = $$1.h();
       }
 
-      public foq.a j(int $$0) {
-         this.b = $$0;
-         return this;
+      public int a() {
+         return this.a.w() + this.b.b + this.b.d;
       }
 
-      public foq.a k(int $$0) {
-         this.c = $$0;
-         return this;
+      public int b() {
+         return this.a.y() + this.b.a + this.b.c;
       }
 
-      public foq.a l(int $$0) {
-         this.d = $$0;
-         return this;
+      public void a(int $$0, int $$1) {
+         float $$2 = (float)this.b.a;
+         float $$3 = (float)($$1 - this.a.y() - this.b.c);
+         int $$4 = (int)azk.h(this.b.e, $$2, $$3);
+         this.a.m($$4 + $$0);
       }
 
-      public foq.a m(int $$0) {
-         return this.i($$0).k($$0);
-      }
-
-      public foq.a n(int $$0) {
-         return this.j($$0).l($$0);
-      }
-
-      public foq.a b(float $$0, float $$1) {
-         this.e = $$0;
-         this.f = $$1;
-         return this;
-      }
-
-      public foq.a c(float $$0) {
-         this.e = $$0;
-         return this;
-      }
-
-      public foq.a d(float $$0) {
-         this.f = $$0;
-         return this;
-      }
-
-      public foq.a j() {
-         return new foq.a(this);
-      }
-
-      @Override
-      public foq.a h() {
-         return this;
+      public void b(int $$0, int $$1) {
+         float $$2 = (float)this.b.b;
+         float $$3 = (float)($$1 - this.a.w() - this.b.d);
+         int $$4 = Math.round(azk.h(this.b.f, $$2, $$3));
+         this.a.n($$4 + $$0);
       }
    }
 }

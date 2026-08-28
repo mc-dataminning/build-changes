@@ -1,5 +1,11 @@
-public class gwh extends gva {
-   public chm.b a = chm.b.g;
-   public int b = -1;
-   public int c = -1;
+import javax.annotation.Nullable;
+
+public class gwh extends gvl {
+   public ezn a = ezn.c;
+   @Nullable
+   public cuy b;
+   public float c;
+   public float d;
+   public float e;
+   public jm f = jm.a;
 }

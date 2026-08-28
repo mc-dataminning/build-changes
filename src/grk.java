@@ -1,13 +1,22 @@
-public class grk extends gsm<gtr, fxk> {
-   private static final gig a = gig.q(alh.b("textures/entity/breeze/breeze_eyes.png"));
+public class grk extends gpq<cmh, gwy, gaz> {
+   private static final ali a = ali.b("textures/entity/witch.png");
 
-   public grk(gpv<gtr, fxk> $$0) {
-      super($$0);
+   public grk(gok.a $$0) {
+      super($$0, new gaz($$0.a(gbl.cY)), 0.5F);
+      this.a(new gtk(this, $$0.b()));
    }
 
-   public void a(fdt $$0, ghw $$1, int $$2, gtr $$3, float $$4, float $$5) {
-      fdx $$6 = $$1.getBuffer(a);
-      fxk $$7 = this.d();
-      gnf.a($$7, $$7.a(), $$7.b()).a($$0, $$6, $$2, gxj.d);
+   public ali a(gwy $$0) {
+      return a;
+   }
+
+   public gwy c() {
+      return new gwy();
+   }
+
+   public void a(cmh $$0, gwy $$1, float $$2) {
+      super.a($$0, $$1, $$2);
+      $$1.a = $$0.as();
+      $$1.b = !$$0.fb().f();
    }
 }

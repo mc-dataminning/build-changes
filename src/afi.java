@@ -1,45 +1,37 @@
-import java.util.Objects;
-import javax.annotation.Nullable;
+public class afi implements zp<ace> {
+   public static final zg<wf, afi> a = zp.a(afi::a, afi::new);
+   private final jh b;
+   private final float c;
 
-public class afi implements zo<acd> {
-   public static final zf<we, afi> a = zo.a(afi::a, afi::new);
-   private final fad b;
-   private final String c;
-
-   public afi(fad $$0, @Nullable fae $$1) {
+   public afi(jh $$0, float $$1) {
       this.b = $$0;
-      if ($$1 == null) {
-         this.c = "";
-      } else {
-         this.c = $$1.b();
-      }
+      this.c = $$1;
    }
 
-   private afi(we $$0) {
-      this.b = $$0.a(fad.u);
-      this.c = $$0.p();
+   private afi(wf $$0) {
+      this.b = $$0.e();
+      this.c = $$0.readFloat();
    }
 
-   private void a(we $$0) {
-      $$0.a(fad::a, this.b);
+   private void a(wf $$0) {
+      $$0.a(this.b);
       $$0.a(this.c);
    }
 
    @Override
-   public zq<afi> a() {
-      return ags.aB;
+   public zr<afi> a() {
+      return agt.aA;
    }
 
-   public void a(acd $$0) {
+   public void a(ace $$0) {
       $$0.a(this);
    }
 
-   public fad b() {
+   public jh b() {
       return this.b;
    }
 
-   @Nullable
-   public String e() {
-      return Objects.equals(this.c, "") ? null : this.c;
+   public float e() {
+      return this.c;
    }
 }

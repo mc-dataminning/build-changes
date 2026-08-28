@@ -1,4 +1,5 @@
-public class gtv extends gva {
+public class gtv extends gun {
    public float a;
-   public boolean b;
+   public float b;
+   public float c;
 }

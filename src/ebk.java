@@ -1,95 +1,117 @@
-public class ebk implements deh {
-   private int a;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
 
-   @Override
-   public int a(arm $$0, boolean $$1, boolean $$2) {
-      if (!$$1) {
-         return 0;
-      } else if (!$$0.ac().b(der.K)) {
-         return 0;
-      } else {
-         azr $$3 = $$0.A;
-         this.a--;
-         if (this.a > 0) {
-            return 0;
-         } else {
-            this.a = this.a + 12000 + $$3.a(1200);
-            long $$4 = $$0.ab() / 24000L;
-            if ($$4 < 5L || !$$0.S()) {
-               return 0;
-            } else if ($$3.a(5) != 0) {
-               return 0;
-            } else {
-               int $$5 = $$0.x().size();
-               if ($$5 < 1) {
-                  return 0;
-               } else {
-                  coh $$6 = $$0.x().get($$3.a($$5));
-                  if ($$6.R_()) {
-                     return 0;
-                  } else if ($$0.a($$6.dx(), 2)) {
-                     return 0;
-                  } else {
-                     int $$7 = (24 + $$3.a(24)) * ($$3.h() ? -1 : 1);
-                     int $$8 = (24 + $$3.a(24)) * ($$3.h() ? -1 : 1);
-                     jg.a $$9 = $$6.dx().k().e($$7, 0, $$8);
-                     int $$10 = 10;
-                     if (!$$0.b($$9.u() - 10, $$9.w() - 10, $$9.u() + 10, $$9.w() + 10)) {
-                        return 0;
-                     } else {
-                        jp<dfw> $$11 = $$0.t($$9);
-                        if ($$11.a(awy.ag)) {
-                           return 0;
-                        } else {
-                           int $$12 = 0;
-                           int $$13 = (int)Math.ceil((double)$$0.d_($$9).b()) + 1;
+public record ebk(ebn j, dvj k, dvj l, ebl m, ebw.o n, List<dgl.d> o, int p, boolean q, boolean r, boolean s, boolean t) {
+   public static final Codec<ebk> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               ebn.a.fieldOf("noise").forGetter(ebk::f),
+               dvj.a.fieldOf("default_block").forGetter(ebk::g),
+               dvj.a.fieldOf("default_fluid").forGetter(ebk::h),
+               ebl.a.fieldOf("noise_router").forGetter(ebk::i),
+               ebw.o.b.fieldOf("surface_rule").forGetter(ebk::j),
+               dgl.d.a.listOf().fieldOf("spawn_target").forGetter(ebk::k),
+               Codec.INT.fieldOf("sea_level").forGetter(ebk::l),
+               Codec.BOOL.fieldOf("disable_mob_generation").forGetter(ebk::a),
+               Codec.BOOL.fieldOf("aquifers_enabled").forGetter(ebk::b),
+               Codec.BOOL.fieldOf("ore_veins_enabled").forGetter(ebk::c),
+               Codec.BOOL.fieldOf("legacy_random_source").forGetter(ebk::n)
+            )
+            .apply($$0, ebk::new)
+   );
+   public static final Codec<jq<ebk>> b = ale.a(lz.aP, a);
+   public static final alh<ebk> c = alh.a(lz.aP, ali.b("overworld"));
+   public static final alh<ebk> d = alh.a(lz.aP, ali.b("large_biomes"));
+   public static final alh<ebk> e = alh.a(lz.aP, ali.b("amplified"));
+   public static final alh<ebk> f = alh.a(lz.aP, ali.b("nether"));
+   public static final alh<ebk> g = alh.a(lz.aP, ali.b("end"));
+   public static final alh<ebk> h = alh.a(lz.aP, ali.b("caves"));
+   public static final alh<ebk> i = alh.a(lz.aP, ali.b("floating_islands"));
 
-                           for (int $$14 = 0; $$14 < $$13; $$14++) {
-                              $$12++;
-                              $$9.q($$0.a(eaz.a.f, $$9).v());
-                              if ($$14 == 0) {
-                                 if (!this.a($$0, $$9, $$3, true)) {
-                                    break;
-                                 }
-                              } else {
-                                 this.a($$0, $$9, $$3, false);
-                              }
-
-                              $$9.p($$9.u() + $$3.a(5) - $$3.a(5));
-                              $$9.r($$9.w() + $$3.a(5) - $$3.a(5));
-                           }
-
-                           return $$12;
-                        }
-                     }
-                  }
-               }
-            }
-         }
-      }
+   @Deprecated
+   public boolean a() {
+      return this.q;
    }
 
-   private boolean a(arm $$0, jg $$1, azr $$2, boolean $$3) {
-      dvd $$4 = $$0.a_($$1);
-      if (!dfg.a($$0, $$1, $$4, $$4.y(), bug.aC)) {
-         return false;
-      } else if (!cln.b(bug.aC, $$0, buf.p, $$1, $$2)) {
-         return false;
-      } else {
-         cln $$5 = bug.aC.a($$0, buf.p);
-         if ($$5 != null) {
-            if ($$3) {
-               $$5.x(true);
-               $$5.gD();
-            }
+   public boolean b() {
+      return this.r;
+   }
 
-            $$5.a_((double)$$1.u(), (double)$$1.v(), (double)$$1.w());
-            $$5.a($$0, $$0.d_($$1), buf.p, null);
-            $$0.a_($$5);
-            return true;
-         } else {
-            return false;
-         }
-      }
+   public boolean c() {
+      return this.s;
+   }
+
+   public ece.a d() {
+      return this.t ? ece.a.a : ece.a.b;
+   }
+
+   public static void a(qy<ebk> $$0) {
+      $$0.a(c, a($$0, false, false));
+      $$0.a(d, a($$0, false, true));
+      $$0.a(e, a($$0, true, false));
+      $$0.a(f, c($$0));
+      $$0.a(g, b($$0));
+      $$0.a(h, d($$0));
+      $$0.a(i, e($$0));
+   }
+
+   private static ebk b(qy<?> $$0) {
+      return new ebk(ebn.d, dig.fz.m(), dig.a.m(), ebm.a($$0.a(lz.aK)), rl.c(), List.of(), 0, true, false, false, true);
+   }
+
+   private static ebk c(qy<?> $$0) {
+      return new ebk(ebn.c, dig.dV.m(), dig.H.m(), ebm.a($$0.a(lz.aK), $$0.a(lz.aQ)), rl.b(), List.of(), 32, false, false, false, true);
+   }
+
+   private static ebk a(qy<?> $$0, boolean $$1, boolean $$2) {
+      return new ebk(ebn.b, dig.b.m(), dig.G.m(), ebm.a($$0.a(lz.aK), $$0.a(lz.aQ), $$2, $$1), rl.a(), new dgs().a(), 63, false, true, true, false);
+   }
+
+   private static ebk d(qy<?> $$0) {
+      return new ebk(ebn.e, dig.b.m(), dig.G.m(), ebm.b($$0.a(lz.aK), $$0.a(lz.aQ)), rl.a(false, true, true), List.of(), 32, false, false, false, true);
+   }
+
+   private static ebk e(qy<?> $$0) {
+      return new ebk(ebn.f, dig.b.m(), dig.G.m(), ebm.c($$0.a(lz.aK), $$0.a(lz.aQ)), rl.a(false, false, false), List.of(), -64, false, false, false, true);
+   }
+
+   public static ebk e() {
+      return new ebk(ebn.b, dig.b.m(), dig.a.m(), ebm.a(), rl.d(), List.of(), 63, true, false, false, false);
+   }
+
+   public ebn f() {
+      return this.j;
+   }
+
+   public dvj g() {
+      return this.k;
+   }
+
+   public dvj h() {
+      return this.l;
+   }
+
+   public ebl i() {
+      return this.m;
+   }
+
+   public ebw.o j() {
+      return this.n;
+   }
+
+   public List<dgl.d> k() {
+      return this.o;
+   }
+
+   public int l() {
+      return this.p;
+   }
+
+   public boolean m() {
+      return this.r;
+   }
+
+   public boolean n() {
+      return this.t;
    }
 }

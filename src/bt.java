@@ -1,133 +1,119 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Optional;
+import javax.annotation.Nullable;
 
-public record bt(
-   Optional<Boolean> b, Optional<Boolean> c, Optional<Boolean> d, Optional<Boolean> e, Optional<Boolean> f, Optional<Boolean> g, Optional<Boolean> h
-) {
+public record bt(Optional<cu> b, Optional<cu> c, Optional<cu> d, Optional<cu> e, Optional<cu> f, Optional<cu> g, Optional<cu> h) {
    public static final Codec<bt> a = RecordCodecBuilder.create(
       $$0 -> $$0.group(
-               Codec.BOOL.optionalFieldOf("is_on_ground").forGetter(bt::a),
-               Codec.BOOL.optionalFieldOf("is_on_fire").forGetter(bt::b),
-               Codec.BOOL.optionalFieldOf("is_sneaking").forGetter(bt::c),
-               Codec.BOOL.optionalFieldOf("is_sprinting").forGetter(bt::d),
-               Codec.BOOL.optionalFieldOf("is_swimming").forGetter(bt::e),
-               Codec.BOOL.optionalFieldOf("is_flying").forGetter(bt::f),
-               Codec.BOOL.optionalFieldOf("is_baby").forGetter(bt::g)
+               cu.a.optionalFieldOf("head").forGetter(bt::a),
+               cu.a.optionalFieldOf("chest").forGetter(bt::b),
+               cu.a.optionalFieldOf("legs").forGetter(bt::c),
+               cu.a.optionalFieldOf("feet").forGetter(bt::d),
+               cu.a.optionalFieldOf("body").forGetter(bt::e),
+               cu.a.optionalFieldOf("mainhand").forGetter(bt::f),
+               cu.a.optionalFieldOf("offhand").forGetter(bt::g)
             )
             .apply($$0, bt::new)
    );
 
-   public boolean a(btz $$0) {
-      if (this.b.isPresent() && $$0.aJ() != this.b.get()) {
-         return false;
-      } else if (this.c.isPresent() && $$0.bZ() != this.c.get()) {
-         return false;
-      } else if (this.d.isPresent() && $$0.cj() != this.d.get()) {
-         return false;
-      } else if (this.e.isPresent() && $$0.ck() != this.e.get()) {
-         return false;
-      } else if (this.f.isPresent() && $$0.cl() != this.f.get()) {
-         return false;
-      } else {
-         if (this.g.isPresent()) {
-            boolean var10000;
-            label53: {
-               if ($$0 instanceof buv $$1 && ($$1.fL() || $$1 instanceof coh $$2 && $$2.gl().b)) {
-                  var10000 = true;
-                  break label53;
-               }
+   public static bt a(jr<cvx> $$0, jr<dsc> $$1) {
+      return bt.a.a().a(cu.a.a().a($$0, cwf.uR).a(ks.a(cqa.a($$1).a(), ku.ai, ku.h))).b();
+   }
 
-               var10000 = false;
-            }
-
-            boolean $$3 = var10000;
-            if ($$3 != this.g.get()) {
-               return false;
-            }
-         }
-
-         if (this.h.isPresent() && $$0 instanceof buv $$4 && $$4.p_() != this.h.get()) {
+   public boolean a(@Nullable bue $$0) {
+      if ($$0 instanceof bva $$1) {
+         if (this.b.isPresent() && !this.b.get().a($$1.a(bum.f))) {
             return false;
+         } else if (this.c.isPresent() && !this.c.get().a($$1.a(bum.e))) {
+            return false;
+         } else if (this.d.isPresent() && !this.d.get().a($$1.a(bum.d))) {
+            return false;
+         } else if (this.e.isPresent() && !this.e.get().a($$1.a(bum.c))) {
+            return false;
+         } else if (this.f.isPresent() && !this.f.get().a($$1.a(bum.g))) {
+            return false;
+         } else {
+            return this.g.isPresent() && !this.g.get().a($$1.a(bum.a)) ? false : !this.h.isPresent() || this.h.get().a($$1.a(bum.b));
          }
-
-         return true;
+      } else {
+         return false;
       }
    }
 
-   public Optional<Boolean> a() {
+   public Optional<cu> a() {
       return this.b;
    }
 
-   public Optional<Boolean> b() {
+   public Optional<cu> b() {
       return this.c;
    }
 
-   public Optional<Boolean> c() {
+   public Optional<cu> c() {
       return this.d;
    }
 
-   public Optional<Boolean> d() {
+   public Optional<cu> d() {
       return this.e;
    }
 
-   public Optional<Boolean> e() {
+   public Optional<cu> e() {
       return this.f;
    }
 
-   public Optional<Boolean> f() {
+   public Optional<cu> f() {
       return this.g;
    }
 
-   public Optional<Boolean> g() {
+   public Optional<cu> g() {
       return this.h;
    }
 
    public static class a {
-      private Optional<Boolean> a = Optional.empty();
-      private Optional<Boolean> b = Optional.empty();
-      private Optional<Boolean> c = Optional.empty();
-      private Optional<Boolean> d = Optional.empty();
-      private Optional<Boolean> e = Optional.empty();
-      private Optional<Boolean> f = Optional.empty();
-      private Optional<Boolean> g = Optional.empty();
+      private Optional<cu> a = Optional.empty();
+      private Optional<cu> b = Optional.empty();
+      private Optional<cu> c = Optional.empty();
+      private Optional<cu> d = Optional.empty();
+      private Optional<cu> e = Optional.empty();
+      private Optional<cu> f = Optional.empty();
+      private Optional<cu> g = Optional.empty();
 
       public static bt.a a() {
          return new bt.a();
       }
 
-      public bt.a a(Boolean $$0) {
-         this.a = Optional.of($$0);
+      public bt.a a(cu.a $$0) {
+         this.a = Optional.of($$0.b());
          return this;
       }
 
-      public bt.a b(Boolean $$0) {
-         this.b = Optional.of($$0);
+      public bt.a b(cu.a $$0) {
+         this.b = Optional.of($$0.b());
          return this;
       }
 
-      public bt.a c(Boolean $$0) {
-         this.c = Optional.of($$0);
+      public bt.a c(cu.a $$0) {
+         this.c = Optional.of($$0.b());
          return this;
       }
 
-      public bt.a d(Boolean $$0) {
-         this.d = Optional.of($$0);
+      public bt.a d(cu.a $$0) {
+         this.d = Optional.of($$0.b());
          return this;
       }
 
-      public bt.a e(Boolean $$0) {
-         this.e = Optional.of($$0);
+      public bt.a e(cu.a $$0) {
+         this.e = Optional.of($$0.b());
          return this;
       }
 
-      public bt.a f(Boolean $$0) {
-         this.f = Optional.of($$0);
+      public bt.a f(cu.a $$0) {
+         this.f = Optional.of($$0.b());
          return this;
       }
 
-      public bt.a g(Boolean $$0) {
-         this.g = Optional.of($$0);
+      public bt.a g(cu.a $$0) {
+         this.g = Optional.of($$0.b());
          return this;
       }
 

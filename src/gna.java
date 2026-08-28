@@ -1,22 +1,14 @@
-public class gna extends gpf<cgg, gtm, fxc> {
-   private static final alh a = alh.b("textures/entity/bat.png");
-
-   public gna(gnz.a $$0) {
-      super($$0, new fxc($$0.a(gba.n)), 0.25F);
+public abstract class gna<T extends bvc & cmx> extends gnf<T, gvb, fyu> {
+   public gna(gok.a $$0, gbk $$1, gbk $$2, float $$3) {
+      super($$0, new fyu($$0.a($$1)), new fyu($$0.a($$2)), $$3);
    }
 
-   public alh a(gtm $$0) {
-      return a;
+   public gvb a() {
+      return new gvb();
    }
 
-   public gtm a() {
-      return new gtm();
-   }
-
-   public void a(cgg $$0, gtm $$1, float $$2) {
+   public void a(T $$0, gvb $$1, float $$2) {
       super.a($$0, $$1, $$2);
-      $$1.a = $$0.t();
-      $$1.b.a($$0.d);
-      $$1.c.a($$0.e);
+      $$1.a = $$0.gu();
    }
 }

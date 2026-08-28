@@ -1,62 +1,53 @@
-import com.mojang.serialization.Codec;
+import com.google.common.collect.Sets;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Set;
 
-public record eyf(eym b, String c, float d) implements eyd {
+public record eyf(eyj b, eyj c) implements eyj {
    public static final MapCodec<eyf> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(
-               eyn.a.fieldOf("target").forGetter(eyf::c),
-               Codec.STRING.fieldOf("score").forGetter(eyf::d),
-               Codec.FLOAT.fieldOf("scale").orElse(1.0F).forGetter(eyf::e)
-            )
-            .apply($$0, eyf::new)
+      $$0 -> $$0.group(eyk.a.fieldOf("n").forGetter(eyf::c), eyk.a.fieldOf("p").forGetter(eyf::d)).apply($$0, eyf::new)
    );
 
    @Override
-   public eyc b() {
-      return eye.e;
+   public eyi b() {
+      return eyk.d;
    }
 
    @Override
-   public Set<ewp<?>> a() {
-      return this.b.b();
-   }
+   public int a(euc $$0) {
+      int $$1 = this.b.a($$0);
+      float $$2 = this.c.b($$0);
+      azs $$3 = $$0.b();
+      int $$4 = 0;
 
-   public static eyf a(etw.b $$0, String $$1) {
-      return a($$0, $$1, 1.0F);
-   }
-
-   public static eyf a(etw.b $$0, String $$1, float $$2) {
-      return new eyf(eyj.a($$0), $$1, $$2);
-   }
-
-   @Override
-   public float b(etw $$0) {
-      fal $$1 = this.b.a($$0);
-      if ($$1 == null) {
-         return 0.0F;
-      } else {
-         fam $$2 = $$0.d().f();
-         fae $$3 = $$2.a(this.c);
-         if ($$3 == null) {
-            return 0.0F;
-         } else {
-            fai $$4 = $$2.d($$1, $$3);
-            return $$4 == null ? 0.0F : (float)$$4.a() * this.d;
+      for (int $$5 = 0; $$5 < $$1; $$5++) {
+         if ($$3.i() < $$2) {
+            $$4++;
          }
       }
+
+      return $$4;
    }
 
-   public eym c() {
+   @Override
+   public float b(euc $$0) {
+      return (float)this.a($$0);
+   }
+
+   public static eyf a(int $$0, float $$1) {
+      return new eyf(eyg.a((float)$$0), eyg.a($$1));
+   }
+
+   @Override
+   public Set<ewv<?>> a() {
+      return Sets.union(this.b.a(), this.c.a());
+   }
+
+   public eyj c() {
       return this.b;
    }
 
-   public String d() {
+   public eyj d() {
       return this.c;
-   }
-
-   public float e() {
-      return this.d;
    }
 }

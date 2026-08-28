@@ -1,23 +1,37 @@
-public class gmw extends gmu<chv, gti, fwv> {
-   private static final alh a = alh.b("textures/entity/armadillo.png");
+import com.google.common.collect.Sets;
+import java.util.Set;
 
-   public gmw(gnz.a $$0) {
-      super($$0, new fwv($$0.a(gba.b)), new fwv($$0.a(gba.c)), 0.4F);
+public class gmw implements gmh.a {
+   private static final int a = 60;
+   private final Set<kj> b = Sets.newHashSet();
+
+   gmw() {
    }
 
-   public alh a(gti $$0) {
-      return a;
+   @Override
+   public void a() {
+      this.b.clear();
    }
 
-   public gti a() {
-      return new gti();
+   public void a(kj $$0) {
+      this.b.add($$0);
    }
 
-   public void a(chv $$0, gti $$1, float $$2) {
-      super.a($$0, $$1, $$2);
-      $$1.a = $$0.y();
-      $$1.d.a($$0.ce);
-      $$1.b.a($$0.cc);
-      $$1.c.a($$0.cd);
+   public void b(kj $$0) {
+      this.b.remove($$0);
+   }
+
+   @Override
+   public void a(feb $$0, gih $$1, double $$2, double $$3, double $$4) {
+      jh $$5 = jh.a($$2, $$3, $$4);
+      this.b.forEach($$3x -> {
+         if ($$5.a($$3x.k(), 60.0)) {
+            a($$0, $$1, $$3x);
+         }
+      });
+   }
+
+   private static void a(feb $$0, gih $$1, kj $$2) {
+      gmh.a($$0, $$1, $$2.k(), 0.2F, 1.0F, 0.2F, 0.15F);
    }
 }

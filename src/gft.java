@@ -1,44 +1,80 @@
-public class gft extends gge {
-   private final gfz a;
+import com.mojang.blaze3d.systems.RenderSystem;
+import javax.annotation.Nullable;
 
-   protected gft(gbx $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, gfz $$7) {
-      super($$0, $$1, $$2, $$3);
-      this.u = 0.225F;
-      this.B = 1.0F;
-      this.a = $$7;
-      this.j = $$4 + (Math.random() * 2.0 - 1.0) * 0.05F;
-      this.k = $$5 + (Math.random() * 2.0 - 1.0) * 0.05F;
-      this.l = $$6 + (Math.random() * 2.0 - 1.0) * 0.05F;
-      this.D = 0.1F * (this.r.i() * this.r.i() * 1.0F + 1.0F);
-      this.t = (int)(16.0 / ((double)this.r.i() * 0.8 + 0.2)) + 2;
-      this.b($$7);
-   }
-
-   @Override
-   public gfi b() {
-      return gfi.b;
-   }
-
-   @Override
-   public void a() {
-      super.a();
-      this.b(this.a);
-      this.j *= 0.95F;
-      this.k *= 0.9F;
-      this.l *= 0.95F;
-   }
-
-   public static class a implements gfh<lu> {
-      private final gfz a;
-
-      public a(gfz $$0) {
-         this.a = $$0;
+public interface gft {
+   gft a = new gft() {
+      @Override
+      public fdw a(fed $$0, gye $$1) {
+         RenderSystem.enableBlend();
+         RenderSystem.defaultBlendFunc();
+         RenderSystem.depthMask(true);
+         RenderSystem.setShader(ghr.c);
+         RenderSystem.setShaderTexture(0, gyc.d);
+         return $$0.a(feg.c.h, fdz.d);
       }
 
-      public gfe a(lu $$0, gbx $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         gft $$8 = new gft($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
-         $$8.a(0.923F, 0.964F, 0.999F);
-         return $$8;
+      @Override
+      public String toString() {
+         return "TERRAIN_SHEET";
       }
-   }
+   };
+   gft b = new gft() {
+      @Override
+      public fdw a(fed $$0, gye $$1) {
+         RenderSystem.disableBlend();
+         RenderSystem.depthMask(true);
+         RenderSystem.setShader(ghr.c);
+         RenderSystem.setShaderTexture(0, gyc.e);
+         return $$0.a(feg.c.h, fdz.d);
+      }
+
+      @Override
+      public String toString() {
+         return "PARTICLE_SHEET_OPAQUE";
+      }
+   };
+   gft c = new gft() {
+      @Override
+      public fdw a(fed $$0, gye $$1) {
+         RenderSystem.depthMask(true);
+         RenderSystem.setShader(ghr.c);
+         RenderSystem.setShaderTexture(0, gyc.e);
+         RenderSystem.enableBlend();
+         RenderSystem.defaultBlendFunc();
+         return $$0.a(feg.c.h, fdz.d);
+      }
+
+      @Override
+      public String toString() {
+         return "PARTICLE_SHEET_TRANSLUCENT";
+      }
+   };
+   gft d = new gft() {
+      @Override
+      public fdw a(fed $$0, gye $$1) {
+         RenderSystem.depthMask(true);
+         RenderSystem.disableBlend();
+         return $$0.a(feg.c.h, fdz.d);
+      }
+
+      @Override
+      public String toString() {
+         return "CUSTOM";
+      }
+   };
+   gft e = new gft() {
+      @Nullable
+      @Override
+      public fdw a(fed $$0, gye $$1) {
+         return null;
+      }
+
+      @Override
+      public String toString() {
+         return "NO_RENDER";
+      }
+   };
+
+   @Nullable
+   fdw a(fed var1, gye var2);
 }

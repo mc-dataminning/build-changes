@@ -1,53 +1,45 @@
-public class ait implements zo<agu> {
-   public static final zf<we, ait> a = zo.a(ait::a, ait::new);
-   private final brx b;
-   private final int c;
-   private final float d;
-   private final float e;
+public class ait implements zp<agv> {
+   public static final zg<wf, ait> a = zp.a(ait::a, ait::new);
+   private final ezj b;
+   private final bsc c;
+   private final int d;
 
-   public ait(brx $$0, int $$1, float $$2, float $$3) {
-      this.b = $$0;
-      this.c = $$1;
+   public ait(bsc $$0, ezj $$1, int $$2) {
+      this.c = $$0;
+      this.b = $$1;
       this.d = $$2;
-      this.e = $$3;
    }
 
-   private ait(we $$0) {
-      this.b = $$0.b(brx.class);
-      this.c = $$0.l();
-      this.d = $$0.readFloat();
-      this.e = $$0.readFloat();
+   private ait(wf $$0) {
+      this.c = $$0.b(bsc.class);
+      this.b = $$0.v();
+      this.d = $$0.l();
    }
 
-   private void a(we $$0) {
+   private void a(wf $$0) {
+      $$0.a(this.c);
       $$0.a(this.b);
-      $$0.c(this.c);
-      $$0.a(this.d);
-      $$0.a(this.e);
+      $$0.c(this.d);
    }
 
    @Override
-   public zq<ait> a() {
-      return ags.cg;
+   public zr<ait> a() {
+      return agt.cf;
    }
 
-   public void a(agu $$0) {
+   public void a(agv $$0) {
       $$0.a(this);
    }
 
-   public brx b() {
-      return this.b;
-   }
-
-   public int e() {
+   public bsc b() {
       return this.c;
    }
 
-   public float f() {
-      return this.d;
+   public ezj e() {
+      return this.b;
    }
 
-   public float g() {
-      return this.e;
+   public int f() {
+      return this.d;
    }
 }

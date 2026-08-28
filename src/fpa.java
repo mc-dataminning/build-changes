@@ -1,88 +1,111 @@
-import com.google.common.collect.Maps;
-import java.util.Comparator;
-import java.util.Map;
 import java.util.function.Consumer;
 
-public class fpa {
-   int a;
-   final Map<fpa.a, fpa.b> b = Maps.newTreeMap(Comparator.<fpa.a, fow>comparing($$0 -> $$0.a).thenComparing($$0 -> $$0.b));
+public class fpa implements fox {
+   private final fov a;
+   private final fpa.a b;
+   private int c = 0;
 
-   public void a(Consumer<fox> $$0) {
-      this.a++;
-      $$0.accept(new fpa.c(0));
+   private fpa(fpa.a $$0) {
+      this(0, 0, $$0);
    }
 
-   public String a(boolean $$0) {
-      final StringBuilder $$1 = new StringBuilder();
-      Consumer<String> $$2 = new Consumer<String>() {
-         private boolean b = true;
+   public fpa(int $$0, int $$1, fpa.a $$2) {
+      this.a = new fov($$0, $$1);
+      this.b = $$2;
+   }
 
-         public void a(String $$0) {
-            if (!this.b) {
-               $$1.append(". ");
-            }
+   public fpa a(int $$0) {
+      this.b.a(this.a, $$0);
+      return this;
+   }
 
-            this.b = false;
-            $$1.append($$0);
+   public foz b() {
+      return this.a.b();
+   }
+
+   public foz c() {
+      return this.a.c();
+   }
+
+   public <T extends foy> T a(T $$0, foz $$1) {
+      return this.b.a(this.a, $$0, this.c++, $$1);
+   }
+
+   public <T extends foy> T a(T $$0) {
+      return this.a($$0, this.b());
+   }
+
+   public <T extends foy> T a(T $$0, Consumer<foz> $$1) {
+      return this.b.a(this.a, $$0, this.c++, ae.a(this.b(), $$1));
+   }
+
+   @Override
+   public void b(Consumer<foy> $$0) {
+      this.a.b($$0);
+   }
+
+   @Override
+   public void a() {
+      this.a.a();
+   }
+
+   @Override
+   public int y() {
+      return this.a.y();
+   }
+
+   @Override
+   public int w() {
+      return this.a.w();
+   }
+
+   @Override
+   public void m(int $$0) {
+      this.a.m($$0);
+   }
+
+   @Override
+   public void n(int $$0) {
+      this.a.n($$0);
+   }
+
+   @Override
+   public int D() {
+      return this.a.D();
+   }
+
+   @Override
+   public int E() {
+      return this.a.E();
+   }
+
+   public static fpa d() {
+      return new fpa(fpa.a.b);
+   }
+
+   public static fpa e() {
+      return new fpa(fpa.a.a);
+   }
+
+   public static enum a {
+      a,
+      b;
+
+      void a(fov $$0, int $$1) {
+         switch (this) {
+            case a:
+               $$0.a($$1);
+               break;
+            case b:
+               $$0.b($$1);
          }
-      };
-      this.b.forEach(($$2x, $$3) -> {
-         if ($$3.b == this.a && ($$0 || !$$3.c)) {
-            $$3.a.a($$2);
-            $$3.c = true;
-         }
-      });
-      return $$1.toString();
-   }
-
-   static class a {
-      final fow a;
-      final int b;
-
-      a(fow $$0, int $$1) {
-         this.a = $$0;
-         this.b = $$1;
-      }
-   }
-
-   static class b {
-      foz<?> a;
-      int b;
-      boolean c;
-
-      b() {
-         this.a = foz.a;
-         this.b = -1;
       }
 
-      public fpa.b a(int $$0, foz<?> $$1) {
-         if (!this.a.equals($$1)) {
-            this.a = $$1;
-            this.c = false;
-         } else if (this.b + 1 != $$0) {
-            this.c = false;
-         }
-
-         this.b = $$0;
-         return this;
-      }
-   }
-
-   class c implements fox {
-      private final int b;
-
-      c(final int $$0) {
-         this.b = $$0;
-      }
-
-      @Override
-      public void a(fow $$0, foz<?> $$1) {
-         fpa.this.b.computeIfAbsent(new fpa.a($$0, this.b), $$0x -> new fpa.b()).a(fpa.this.a, $$1);
-      }
-
-      @Override
-      public fox a() {
-         return fpa.this.new c(this.b + 1);
+      public <T extends foy> T a(fov $$0, T $$1, int $$2, foz $$3) {
+         return (T)(switch (this) {
+            case a -> (foy)$$0.a($$1, 0, $$2, $$3);
+            case b -> (foy)$$0.a($$1, $$2, 0, $$3);
+         });
       }
    }
 }

@@ -1,28 +1,9 @@
-import com.mojang.serialization.Codec;
+import javax.annotation.Nullable;
 
-public enum bsn implements baf {
-   a("hurt", awk.uk),
-   b("thorns", awk.zB),
-   c("drowning", awk.ul),
-   d("burning", awk.un),
-   e("poking", awk.uo),
-   f("freezing", awk.um);
+public interface bsn extends brw {
+   int[] a(jm var1);
 
-   public static final Codec<bsn> g = baf.a(bsn::values);
-   private final String h;
-   private final awj i;
+   boolean a(int var1, cwb var2, @Nullable jm var3);
 
-   private bsn(final String $$0, final awj $$1) {
-      this.h = $$0;
-      this.i = $$1;
-   }
-
-   @Override
-   public String c() {
-      return this.h;
-   }
-
-   public awj a() {
-      return this.i;
-   }
+   boolean b(int var1, cwb var2, jm var3);
 }

@@ -1,99 +1,160 @@
-import com.google.common.collect.ImmutableList;
-import java.util.List;
-import java.util.Optional;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import java.util.BitSet;
+import java.util.function.Supplier;
+import javax.annotation.Nullable;
+import org.apache.commons.lang3.StringUtils;
 
-public interface xm {
-   Optional<bao> a = Optional.of(bao.a);
-   xm b = new xm() {
-      @Override
-      public <T> Optional<T> a(xm.a<T> $$0) {
-         return Optional.empty();
-      }
+public class xm {
+   public static final Codec<xm> a = bag.a(xm.a::values).dispatch(xm::c, xm.a::a);
+   public static final xm b = new xm(new BitSet(0), xm.a.b);
+   public static final xm c = new xm(new BitSet(0), xm.a.a);
+   public static final yf d = yf.a.a(n.i).a(new xo(xo.a.a, xi.c("chat.filtered")));
+   static final MapCodec<xm> e = MapCodec.unit(c);
+   static final MapCodec<xm> f = MapCodec.unit(b);
+   static final MapCodec<xm> g = ayt.w.xmap(xm::new, xm::d).fieldOf("value");
+   private static final char h = '#';
+   private final BitSet i;
+   private final xm.a j;
 
-      @Override
-      public <T> Optional<T> a(xm.b<T> $$0, ye $$1) {
-         return Optional.empty();
-      }
-   };
+   private xm(BitSet $$0, xm.a $$1) {
+      this.i = $$0;
+      this.j = $$1;
+   }
 
-   <T> Optional<T> a(xm.a<T> var1);
+   private xm(BitSet $$0) {
+      this.i = $$0;
+      this.j = xm.a.c;
+   }
 
-   <T> Optional<T> a(xm.b<T> var1, ye var2);
+   public xm(int $$0) {
+      this(new BitSet($$0), xm.a.c);
+   }
 
-   static xm e(final String $$0) {
-      return new xm() {
-         @Override
-         public <T> Optional<T> a(xm.a<T> $$0x) {
-            return $$0.accept($$0);
-         }
+   private xm.a c() {
+      return this.j;
+   }
 
-         @Override
-         public <T> Optional<T> a(xm.b<T> $$0x, ye $$1) {
-            return $$0.accept($$1, $$0);
-         }
+   private BitSet d() {
+      return this.i;
+   }
+
+   public static xm a(wf $$0) {
+      xm.a $$1 = $$0.b(xm.a.class);
+
+      return switch ($$1) {
+         case a -> c;
+         case b -> b;
+         case c -> new xm($$0.w(), xm.a.c);
       };
    }
 
-   static xm a(final String $$0, final ye $$1) {
-      return new xm() {
-         @Override
-         public <T> Optional<T> a(xm.a<T> $$0x) {
-            return $$0.accept($$0);
-         }
-
-         @Override
-         public <T> Optional<T> a(xm.b<T> $$0x, ye $$1x) {
-            return $$0.accept($$1.a($$1), $$0);
-         }
-      };
+   public static void a(wf $$0, xm $$1) {
+      $$0.a($$1.j);
+      if ($$1.j == xm.a.c) {
+         $$0.a($$1.i);
+      }
    }
 
-   static xm a(xm... $$0) {
-      return a(ImmutableList.copyOf($$0));
+   public void a(int $$0) {
+      this.i.set($$0);
    }
 
-   static xm a(final List<? extends xm> $$0) {
-      return new xm() {
-         @Override
-         public <T> Optional<T> a(xm.a<T> $$0x) {
-            for (xm $$1 : $$0) {
-               Optional<T> $$2 = $$1.a($$0);
-               if ($$2.isPresent()) {
-                  return $$2;
+   @Nullable
+   public String a(String $$0) {
+      return switch (this.j) {
+         case a -> $$0;
+         case b -> null;
+         case c -> {
+            char[] $$1 = $$0.toCharArray();
+
+            for (int $$2 = 0; $$2 < $$1.length && $$2 < this.i.length(); $$2++) {
+               if (this.i.get($$2)) {
+                  $$1[$$2] = '#';
                }
             }
 
-            return Optional.empty();
-         }
-
-         @Override
-         public <T> Optional<T> a(xm.b<T> $$0x, ye $$1) {
-            for (xm $$2 : $$0) {
-               Optional<T> $$3 = $$2.a($$0, $$1);
-               if ($$3.isPresent()) {
-                  return $$3;
-               }
-            }
-
-            return Optional.empty();
+            yield new String($$1);
          }
       };
    }
 
-   default String getString() {
-      StringBuilder $$0 = new StringBuilder();
-      this.a($$1 -> {
-         $$0.append($$1);
-         return Optional.empty();
-      });
-      return $$0.toString();
+   @Nullable
+   public xi b(String $$0) {
+      return switch (this.j) {
+         case a -> xi.b($$0);
+         case b -> null;
+         case c -> {
+            xw $$1 = xi.i();
+            int $$2 = 0;
+            boolean $$3 = this.i.get(0);
+
+            while (true) {
+               int $$4 = $$3 ? this.i.nextClearBit($$2) : this.i.nextSetBit($$2);
+               $$4 = $$4 < 0 ? $$0.length() : $$4;
+               if ($$4 == $$2) {
+                  yield $$1;
+               }
+
+               if ($$3) {
+                  $$1.b(xi.b(StringUtils.repeat('#', $$4 - $$2)).c(d));
+               } else {
+                  $$1.f($$0.substring($$2, $$4));
+               }
+
+               $$3 = !$$3;
+               $$2 = $$4;
+            }
+         }
+      };
    }
 
-   public interface a<T> {
-      Optional<T> accept(String var1);
+   public boolean a() {
+      return this.j == xm.a.a;
    }
 
-   public interface b<T> {
-      Optional<T> accept(ye var1, String var2);
+   public boolean b() {
+      return this.j == xm.a.b;
+   }
+
+   @Override
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else if ($$0 != null && this.getClass() == $$0.getClass()) {
+         xm $$1 = (xm)$$0;
+         return this.i.equals($$1.i) && this.j == $$1.j;
+      } else {
+         return false;
+      }
+   }
+
+   @Override
+   public int hashCode() {
+      int $$0 = this.i.hashCode();
+      return 31 * $$0 + this.j.hashCode();
+   }
+
+   static enum a implements bag {
+      a("pass_through", () -> xm.e),
+      b("fully_filtered", () -> xm.f),
+      c("partially_filtered", () -> xm.g);
+
+      private final String d;
+      private final Supplier<MapCodec<xm>> e;
+
+      private a(final String $$0, final Supplier<MapCodec<xm>> $$1) {
+         this.d = $$0;
+         this.e = $$1;
+      }
+
+      @Override
+      public String c() {
+         return this.d;
+      }
+
+      private MapCodec<xm> a() {
+         return this.e.get();
+      }
    }
 }

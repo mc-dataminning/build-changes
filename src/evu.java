@@ -2,62 +2,40 @@ import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
+import java.util.function.BiFunction;
 
-public class evu extends evj {
+public class evu implements evq {
    public static final MapCodec<evu> a = RecordCodecBuilder.mapCodec(
-      $$0 -> a($$0)
-            .and(
-               $$0.group(
-                  alg.a(ly.bd).fieldOf("name").forGetter($$0x -> $$0x.b),
-                  Codec.LONG.optionalFieldOf("seed", 0L).forGetter($$0x -> $$0x.c),
-                  lx.j.r().fieldOf("type").forGetter($$0x -> $$0x.d)
-               )
-            )
-            .apply($$0, evu::new)
+      $$0 -> $$0.group(evs.b.listOf().fieldOf("functions").forGetter($$0x -> $$0x.c)).apply($$0, evu::new)
    );
-   private final alg<eub> b;
-   private final long c;
-   private final jp<dsi<?>> d;
+   public static final Codec<evu> b = evs.b.listOf().xmap(evu::new, $$0 -> $$0.c);
+   private final List<evq> c;
+   private final BiFunction<cwb, euc, cwb> d;
 
-   private evu(List<exh> $$0, alg<eub> $$1, long $$2, jp<dsi<?>> $$3) {
-      super($$0);
-      this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
+   private evu(List<evq> $$0) {
+      this.c = $$0;
+      this.d = evs.a($$0);
+   }
+
+   public static evu a(List<evq> $$0) {
+      return new evu(List.copyOf($$0));
+   }
+
+   public cwb a(cwb $$0, euc $$1) {
+      return this.d.apply($$0, $$1);
    }
 
    @Override
-   public evl<evu> b() {
-      return evm.y;
-   }
+   public void a(eui $$0) {
+      evq.super.a($$0);
 
-   @Override
-   public cvx a(cvx $$0, etw $$1) {
-      if ($$0.f()) {
-         return $$0;
-      } else {
-         $$0.b(kt.ao, new cyv(this.b, this.c));
-         return $$0;
+      for (int $$1 = 0; $$1 < this.c.size(); $$1++) {
+         this.c.get($$1).a($$0.a(".function[" + $$1 + "]"));
       }
    }
 
    @Override
-   public void a(euc $$0) {
-      super.a($$0);
-      if (!$$0.b()) {
-         $$0.b("Uses reference to " + this.b.a() + ", but references are not allowed");
-      } else {
-         if ($$0.a().c(this.b).isEmpty()) {
-            $$0.b("Missing loot table used for container: " + this.b.a());
-         }
-      }
-   }
-
-   public static evj.a<?> a(dsi<?> $$0, alg<eub> $$1) {
-      return a($$2 -> new evu($$2, $$1, 0L, $$0.a()));
-   }
-
-   public static evj.a<?> a(dsi<?> $$0, alg<eub> $$1, long $$2) {
-      return a($$3 -> new evu($$3, $$1, $$2, $$0.a()));
+   public evr<evu> b() {
+      return evs.I;
    }
 }

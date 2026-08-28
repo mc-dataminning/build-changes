@@ -1,179 +1,97 @@
-public abstract class cgi extends cho implements cgo {
-   private static final akk<Boolean> b = ako.a(cgi.class, akm.k);
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.Maps;
+import java.util.Locale;
+import java.util.Map;
+import java.util.Optional;
+import java.util.Set;
 
-   public cgi(bug<? extends cgi> $$0, dev $$1) {
-      super($$0, $$1);
-      this.bP = new cgi.a(this);
+public class cgi {
+   public static final alh<cgh> a = a("armorer");
+   public static final alh<cgh> b = a("butcher");
+   public static final alh<cgh> c = a("cartographer");
+   public static final alh<cgh> d = a("cleric");
+   public static final alh<cgh> e = a("farmer");
+   public static final alh<cgh> f = a("fisherman");
+   public static final alh<cgh> g = a("fletcher");
+   public static final alh<cgh> h = a("leatherworker");
+   public static final alh<cgh> i = a("librarian");
+   public static final alh<cgh> j = a("mason");
+   public static final alh<cgh> k = a("shepherd");
+   public static final alh<cgh> l = a("toolsmith");
+   public static final alh<cgh> m = a("weaponsmith");
+   public static final alh<cgh> n = a("home");
+   public static final alh<cgh> o = a("meeting");
+   public static final alh<cgh> p = a("beehive");
+   public static final alh<cgh> q = a("bee_nest");
+   public static final alh<cgh> r = a("nether_portal");
+   public static final alh<cgh> s = a("lodestone");
+   public static final alh<cgh> t = a("lightning_rod");
+   private static final Set<dvj> u = ImmutableList.of(
+         dig.bn, dig.bo, dig.bk, dig.bl, dig.bi, dig.bg, dig.bm, dig.bc, dig.bh, dig.be, dig.bb, dig.ba, new die[]{dig.bf, dig.bj, dig.aZ, dig.bd}
+      )
+      .stream()
+      .flatMap($$0 -> $$0.l().a().stream())
+      .filter($$0 -> $$0.c(dhx.b) == dvw.a)
+      .collect(ImmutableSet.toImmutableSet());
+   private static final Set<dvj> v = ImmutableList.of(dig.ft, dig.fv, dig.fu, dig.fw)
+      .stream()
+      .flatMap($$0 -> $$0.l().a().stream())
+      .collect(ImmutableSet.toImmutableSet());
+   private static final Map<dvj, jq<cgh>> w = Maps.newHashMap();
+
+   private static Set<dvj> a(die $$0) {
+      return ImmutableSet.copyOf($$0.l().a());
    }
 
-   public static bwc.a q() {
-      return bux.E().a(bwd.s, 3.0);
+   private static alh<cgh> a(String $$0) {
+      return alh.a(lz.aa, ali.b($$0));
    }
 
-   @Override
-   public boolean Z() {
-      return super.Z() || this.t();
+   private static cgh a(kd<cgh> $$0, alh<cgh> $$1, Set<dvj> $$2, int $$3, int $$4) {
+      cgh $$5 = new cgh($$2, $$3, $$4);
+      kd.a($$0, $$1, $$5);
+      a($$0.b($$1), $$2);
+      return $$5;
    }
 
-   @Override
-   public boolean h(double $$0) {
-      return !this.t() && !this.am();
-   }
-
-   @Override
-   public int aj() {
-      return 8;
-   }
-
-   @Override
-   protected void a(ako.a $$0) {
-      super.a($$0);
-      $$0.a(b, false);
-   }
-
-   @Override
-   public boolean t() {
-      return this.am.a(b);
-   }
-
-   @Override
-   public void x(boolean $$0) {
-      this.am.a(b, $$0);
-   }
-
-   @Override
-   public void b(uj $$0) {
-      super.b($$0);
-      $$0.a("FromBucket", this.t());
-   }
-
-   @Override
-   public void a(uj $$0) {
-      super.a($$0);
-      this.x($$0.q("FromBucket"));
-   }
-
-   @Override
-   protected void D() {
-      super.D();
-      this.bS.a(0, new ccm(this, 1.25));
-      this.bS.a(2, new cba<>(this, coh.class, 8.0F, 1.6, 1.4, bue.f::test));
-      this.bS.a(4, new cgi.b(this));
-   }
-
-   @Override
-   protected ceh b(dev $$0) {
-      return new cej(this, $$0);
-   }
-
-   @Override
-   public void a_(ezh $$0) {
-      if (this.dj() && this.bk()) {
-         this.a(0.01F, $$0);
-         this.a(buz.a, this.dA());
-         this.h(this.dA().c(0.9));
-         if (this.m() == null) {
-            this.h(this.dA().b(0.0, -0.005, 0.0));
+   private static void a(jq<cgh> $$0, Set<dvj> $$1) {
+      $$1.forEach($$1x -> {
+         jq<cgh> $$2 = w.put($$1x, $$0);
+         if ($$2 != null) {
+            throw (IllegalStateException)ae.b(new IllegalStateException(String.format(Locale.ROOT, "%s is defined in more than one PoI type", $$1x)));
          }
-      } else {
-         super.a_($$0);
-      }
+      });
    }
 
-   @Override
-   public void n_() {
-      if (!this.bk() && this.aJ() && this.R) {
-         this.h(this.dA().b((double)((this.af.i() * 2.0F - 1.0F) * 0.05F), 0.4F, (double)((this.af.i() * 2.0F - 1.0F) * 0.05F)));
-         this.d(false);
-         this.as = true;
-         this.b(this.gw());
-      }
-
-      super.n_();
+   public static Optional<jq<cgh>> a(dvj $$0) {
+      return Optional.ofNullable(w.get($$0));
    }
 
-   @Override
-   protected bry b(coh $$0, brx $$1) {
-      return cgo.a($$0, $$1, this).orElse(super.b($$0, $$1));
+   public static boolean b(dvj $$0) {
+      return w.containsKey($$0);
    }
 
-   @Override
-   public void k(cvx $$0) {
-      cgo.a(this, $$0);
-   }
-
-   @Override
-   public void h(uj $$0) {
-      cgo.a(this, $$0);
-   }
-
-   @Override
-   public awj y() {
-      return awk.dk;
-   }
-
-   protected boolean gv() {
-      return true;
-   }
-
-   protected abstract awj gw();
-
-   @Override
-   protected awj aV() {
-      return awk.iW;
-   }
-
-   @Override
-   protected void b(jg $$0, dvd $$1) {
-   }
-
-   static class a extends caw {
-      private final cgi l;
-
-      a(cgi $$0) {
-         super($$0);
-         this.l = $$0;
-      }
-
-      @Override
-      public void a() {
-         if (this.l.a(axf.a)) {
-            this.l.h(this.l.dA().b(0.0, 0.005, 0.0));
-         }
-
-         if (this.k == caw.a.b && !this.l.P().m()) {
-            float $$0 = (float)(this.h * this.l.h(bwd.v));
-            this.l.C(azj.h(0.125F, this.l.fr(), $$0));
-            double $$1 = this.e - this.l.dC();
-            double $$2 = this.f - this.l.dE();
-            double $$3 = this.g - this.l.dI();
-            if ($$2 != 0.0) {
-               double $$4 = Math.sqrt($$1 * $$1 + $$2 * $$2 + $$3 * $$3);
-               this.l.h(this.l.dA().b(0.0, (double)this.l.fr() * ($$2 / $$4) * 0.1, 0.0));
-            }
-
-            if ($$1 != 0.0 || $$3 != 0.0) {
-               float $$5 = (float)(azj.d($$3, $$1) * 180.0F / (float)Math.PI) - 90.0F;
-               this.l.v(this.b(this.l.dN(), $$5, 90.0F));
-               this.l.aU = this.l.dN();
-            }
-         } else {
-            this.l.C(0.0F);
-         }
-      }
-   }
-
-   static class b extends ccr {
-      private final cgi i;
-
-      public b(cgi $$0) {
-         super($$0, 1.0, 40);
-         this.i = $$0;
-      }
-
-      @Override
-      public boolean b() {
-         return this.i.gv() && super.b();
-      }
+   public static cgh a(kd<cgh> $$0) {
+      a($$0, a, a(dig.nW), 1, 1);
+      a($$0, b, a(dig.nV), 1, 1);
+      a($$0, c, a(dig.nX), 1, 1);
+      a($$0, d, a(dig.fs), 1, 1);
+      a($$0, e, a(dig.pc), 1, 1);
+      a($$0, f, a(dig.nU), 1, 1);
+      a($$0, g, a(dig.nY), 1, 1);
+      a($$0, h, v, 1, 1);
+      a($$0, i, a(dig.oa), 1, 1);
+      a($$0, j, a(dig.oc), 1, 1);
+      a($$0, k, a(dig.nT), 1, 1);
+      a($$0, l, a(dig.ob), 1, 1);
+      a($$0, m, a(dig.nZ), 1, 1);
+      a($$0, n, u, 1, 1);
+      a($$0, o, a(dig.od), 32, 6);
+      a($$0, p, a(dig.pf), 0, 1);
+      a($$0, q, a(dig.pe), 0, 1);
+      a($$0, r, a(dig.ed), 0, 1);
+      a($$0, s, a(dig.pq), 0, 1);
+      return a($$0, t, a(dig.ss), 0, 1);
    }
 }

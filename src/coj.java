@@ -1,19 +1,30 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.security.PrivateKey;
-import java.time.Instant;
+import java.util.function.IntFunction;
 
-public record coj(PrivateKey b, cok c, Instant d) {
-   public static final Codec<coj> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               ayh.g.fieldOf("private_key").forGetter(coj::b),
-               cok.c.fieldOf("public_key").forGetter(coj::c),
-               ays.q.fieldOf("refreshed_after").forGetter(coj::d)
-            )
-            .apply($$0, coj::new)
-   );
+public enum coj implements azn {
+   a(0, "options.chat.visibility.full"),
+   b(1, "options.chat.visibility.system"),
+   c(2, "options.chat.visibility.hidden");
 
-   public boolean a() {
-      return this.d.isBefore(Instant.now());
+   private static final IntFunction<coj> d = ayb.a(coj::b, values(), ayb.a.b);
+   private final int e;
+   private final String f;
+
+   private coj(final int $$0, final String $$1) {
+      this.e = $$0;
+      this.f = $$1;
+   }
+
+   @Override
+   public int b() {
+      return this.e;
+   }
+
+   @Override
+   public String a() {
+      return this.f;
+   }
+
+   public static coj a(int $$0) {
+      return d.apply($$0);
    }
 }

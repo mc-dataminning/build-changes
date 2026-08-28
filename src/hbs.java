@@ -1,52 +1,34 @@
-public class hbs {
-   public static class a extends hay {
-      private final ggs n;
+public class hbs extends hbj {
+   private static final float n = 0.0F;
+   private static final float o = 1.0F;
+   private static final float p = 0.7F;
+   private static final float q = 0.5F;
+   private final cln r;
 
-      protected a(ggs $$0, awj $$1) {
-         super($$1, awl.i, hbp.t());
-         this.n = $$0;
-         this.i = false;
-         this.j = 0;
-         this.d = 1.0F;
-         this.l = true;
-      }
-
-      @Override
-      public void q() {
-         if (this.n.dS() || !this.n.bp()) {
-            this.n();
-         }
-      }
+   public hbs(cln $$0) {
+      super(awl.lr, awm.f, hca.t());
+      this.r = $$0;
+      this.k = hca.a.a;
+      this.i = true;
+      this.j = 0;
    }
 
-   public static class b extends hay {
-      public static final int n = 40;
-      private final ggs o;
-      private int p;
+   @Override
+   public boolean s() {
+      return !this.r.bc();
+   }
 
-      public b(ggs $$0) {
-         super(awk.z, awl.i, hbp.t());
-         this.o = $$0;
-         this.i = true;
-         this.j = 0;
-         this.d = 1.0F;
-         this.l = true;
-      }
-
-      @Override
-      public void q() {
-         if (!this.o.dS() && this.p >= 0) {
-            if (this.o.bp()) {
-               this.p++;
-            } else {
-               this.p -= 2;
-            }
-
-            this.p = Math.min(this.p, 40);
-            this.d = Math.max(0.0F, Math.min((float)this.p / 40.0F, 1.0F));
-         } else {
-            this.n();
-         }
+   @Override
+   public void q() {
+      if (!this.r.dS() && this.r.m() == null) {
+         this.f = (double)((float)this.r.dC());
+         this.g = (double)((float)this.r.dE());
+         this.h = (double)((float)this.r.dI());
+         float $$0 = this.r.L(0.0F);
+         this.d = 0.0F + 1.0F * $$0 * $$0;
+         this.e = 0.7F + 0.5F * $$0;
+      } else {
+         this.n();
       }
    }
 }

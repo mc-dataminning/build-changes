@@ -1,49 +1,51 @@
+import com.google.common.collect.Lists;
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
 
-public record eis(eik b, List<eis.a> c) {
-   public static final Codec<eis> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(eik.a.fieldOf("fallback").forGetter(eis::a), eis.a.a.listOf().fieldOf("rules").forGetter(eis::b)).apply($$0, eis::new)
+public class eis extends eiu {
+   public static final MapCodec<eis> b = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(
+               azc.a(Codec.INT, 1, 64).fieldOf("variety").forGetter($$0x -> $$0x.i),
+               eqn.a.a.fieldOf("slow_noise").forGetter($$0x -> $$0x.j),
+               ayt.o.fieldOf("slow_scale").forGetter($$0x -> $$0x.k)
+            )
+            .and(b($$0))
+            .apply($$0, eis::new)
    );
+   private final azc<Integer> i;
+   private final eqn.a j;
+   private final float k;
+   private final eqn l;
 
-   public static eis a(eik $$0) {
-      return new eis($$0, List.of());
+   public eis(azc<Integer> $$0, eqn.a $$1, float $$2, long $$3, eqn.a $$4, float $$5, List<dvj> $$6) {
+      super($$3, $$4, $$5, $$6);
+      this.i = $$0;
+      this.j = $$1;
+      this.k = $$2;
+      this.l = eqn.b(new ece(new ebg($$3)), $$1);
    }
 
-   public static eis a(dhy $$0) {
-      return a(eik.a($$0));
+   @Override
+   protected eir<?> a() {
+      return eir.e;
    }
 
-   public dvd a(dfs $$0, azr $$1, jg $$2) {
-      for (eis.a $$3 : this.c) {
-         if ($$3.a().test($$0, $$2)) {
-            return $$3.b().a($$1, $$2);
-         }
+   @Override
+   public dvj a(azs $$0, jh $$1) {
+      double $$2 = this.a($$1);
+      int $$3 = (int)azk.a($$2, -1.0, 1.0, (double)this.i.a().intValue(), (double)(this.i.b() + 1));
+      List<dvj> $$4 = Lists.newArrayListWithCapacity($$3);
+
+      for (int $$5 = 0; $$5 < $$3; $$5++) {
+         $$4.add(this.a(this.h, this.a($$1.b($$5 * 54545, 0, $$5 * 34234))));
       }
 
-      return this.b.a($$1, $$2);
+      return this.a($$4, $$1, (double)this.e);
    }
 
-   public eik a() {
-      return this.b;
-   }
-
-   public List<eis.a> b() {
-      return this.c;
-   }
-
-   public static record a(ecg b, eik c) {
-      public static final Codec<eis.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(ecg.b.fieldOf("if_true").forGetter(eis.a::a), eik.a.fieldOf("then").forGetter(eis.a::b)).apply($$0, eis.a::new)
-      );
-
-      public ecg a() {
-         return this.b;
-      }
-
-      public eik b() {
-         return this.c;
-      }
+   protected double a(jh $$0) {
+      return this.l.a((double)((float)$$0.u() * this.k), (double)((float)$$0.v() * this.k), (double)((float)$$0.w() * this.k));
    }
 }

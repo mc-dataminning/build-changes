@@ -1,29 +1,32 @@
-import net.minecraft.server.MinecraftServer;
+import com.google.common.collect.ImmutableSet;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Set;
 
-public class eyq implements eys<MinecraftServer> {
-   final alh a;
+public record eyq(String b) implements eys {
+   public static final MapCodec<eyq> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(Codec.STRING.fieldOf("name").forGetter(eyq::c)).apply($$0, eyq::new));
 
-   public eyq(alh $$0) {
-      this.a = $$0;
+   public static eys a(String $$0) {
+      return new eyq($$0);
    }
 
-   public void a(MinecraftServer $$0, eyu<MinecraftServer> $$1, long $$2) {
-      alw $$3 = $$0.aE();
-      $$3.a(this.a).ifPresent($$1x -> $$3.a($$1x, $$3.c()));
+   @Override
+   public eyr a() {
+      return eyt.b;
    }
 
-   public static class a extends eys.a<MinecraftServer, eyq> {
-      public a() {
-         super(alh.b("function"), eyq.class);
-      }
+   @Override
+   public far a(euc $$0) {
+      return far.c(this.b);
+   }
 
-      public void a(uj $$0, eyq $$1) {
-         $$0.a("Name", $$1.a.toString());
-      }
+   @Override
+   public Set<ewv<?>> b() {
+      return ImmutableSet.of();
+   }
 
-      public eyq a(uj $$0) {
-         alh $$1 = alh.a($$0.l("Name"));
-         return new eyq($$1);
-      }
+   public String c() {
+      return this.b;
    }
 }

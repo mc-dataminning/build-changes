@@ -1,52 +1,56 @@
 import com.mojang.logging.LogUtils;
 import org.slf4j.Logger;
 
-public class fig extends fhy {
+public abstract class fig implements Runnable {
+   protected static final int a = 25;
    private static final Logger b = LogUtils.getLogger();
-   private static final xh c = xh.c("mco.minigame.world.slot.screen.title");
-   private final long d;
-   private final int e;
-   private final Runnable f;
+   private boolean c = false;
 
-   public fig(long $$0, int $$1, Runnable $$2) {
-      this.d = $$0;
-      this.e = $$1;
-      this.f = $$2;
-   }
-
-   @Override
-   public void run() {
-      fej $$0 = fej.a();
-
-      for (int $$1 = 0; $$1 < 25; $$1++) {
-         try {
-            if (this.d()) {
-               return;
-            }
-
-            if ($$0.a(this.d, this.e)) {
-               this.f.run();
-               break;
-            }
-         } catch (ffv var4) {
-            if (this.d()) {
-               return;
-            }
-
-            a((long)var4.c);
-         } catch (Exception var5) {
-            if (this.d()) {
-               return;
-            }
-
-            b.error("Couldn't switch world!");
-            this.a(var5);
-         }
+   protected static void a(long $$0) {
+      try {
+         Thread.sleep($$0 * 1000L);
+      } catch (InterruptedException var3) {
+         Thread.currentThread().interrupt();
+         b.error("", var3);
       }
    }
 
-   @Override
-   public xh a() {
-      return c;
+   public static void a(fra $$0) {
+      fji $$1 = fji.Q();
+      $$1.execute(() -> $$1.a($$0));
+   }
+
+   protected void a(xi $$0) {
+      this.b();
+      fji $$1 = fji.Q();
+      $$1.execute(() -> $$1.a(new fgu($$0, new fem(new frc()))));
+   }
+
+   protected void a(Exception $$0) {
+      if ($$0 instanceof fgc $$1) {
+         this.a($$1.a.b());
+      } else {
+         this.a(xi.b($$0.getMessage()));
+      }
+   }
+
+   protected void a(fgc $$0) {
+      this.a($$0.a.b());
+   }
+
+   public abstract xi a();
+
+   public boolean d() {
+      return this.c;
+   }
+
+   public void c() {
+   }
+
+   public void e() {
+   }
+
+   public void b() {
+      this.c = true;
    }
 }

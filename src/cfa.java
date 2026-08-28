@@ -1,30 +1,53 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.Lists;
 import java.util.List;
 import java.util.Optional;
 import java.util.Set;
+import java.util.function.BiPredicate;
+import java.util.function.Predicate;
 
-public class cfa extends cff<buv> {
-   @Override
-   public Set<cdz<?>> a() {
-      return ImmutableSet.of(cdz.h, cdz.M, cdz.an);
+public class cfa<T extends bva> extends cfk<T> {
+   private final BiPredicate<T, bva> a;
+   private final Predicate<T> b;
+   private final cee<Boolean> c;
+   private final int d;
+
+   public cfa(int $$0, BiPredicate<T, bva> $$1, Predicate<T> $$2, cee<Boolean> $$3, int $$4) {
+      super($$0);
+      this.a = $$1;
+      this.b = $$2;
+      this.c = $$3;
+      this.d = $$4;
    }
 
    @Override
-   protected void a(arm $$0, buv $$1) {
-      bvx<?> $$2 = $$1.ed();
-      List<cmv> $$3 = Lists.newArrayList();
-      ceb $$4 = $$2.c(cdz.h).orElse(ceb.a());
-      Optional<bux> $$5 = $$4.a($$0x -> $$0x instanceof cmd || $$0x instanceof ckd).map(bux.class::cast);
+   protected void a(arn $$0, T $$1) {
+      if (!this.b.test($$1)) {
+         this.c($$1);
+      } else {
+         this.a($$1);
+      }
+   }
 
-      for (buv $$7 : $$2.c(cdz.g).orElse(ImmutableList.of())) {
-         if ($$7 instanceof cmv && ((cmv)$$7).gw()) {
-            $$3.add((cmv)$$7);
+   @Override
+   public Set<cee<?>> a() {
+      return Set.of(cee.g);
+   }
+
+   @Override
+   public void a(T $$0) {
+      Optional<List<bva>> $$1 = $$0.ed().c(cee.g);
+      if (!$$1.isEmpty()) {
+         boolean $$2 = $$1.get().stream().anyMatch($$1x -> this.a.test($$0, $$1x));
+         if ($$2) {
+            this.b($$0);
          }
       }
+   }
 
-      $$2.a(cdz.M, $$5);
-      $$2.a(cdz.an, $$3);
+   public void b(T $$0) {
+      $$0.ed().a(this.c, true, (long)this.d);
+   }
+
+   public void c(T $$0) {
+      $$0.ed().b(this.c);
    }
 }

@@ -1,70 +1,45 @@
-import java.util.EnumSet;
-import javax.annotation.Nullable;
+public class cbm extends ccl {
+   private final cgu g;
 
-public class cbm extends cbt {
-   protected final bvd a;
-   private double b;
-   private double c;
-   private double d;
-   private final double e;
-   private final dev f;
-
-   public cbm(bvd $$0, double $$1) {
-      this.a = $$0;
-      this.e = $$1;
-      this.f = $$0.dX();
-      this.a(EnumSet.of(cbt.a.a));
+   public cbm(cgu $$0, double $$1) {
+      super($$0, $$1, 8);
+      this.g = $$0;
    }
 
    @Override
    public boolean b() {
-      if (this.a.m() != null) {
-         return false;
-      } else if (!this.f.S()) {
-         return false;
-      } else if (!this.a.bZ()) {
-         return false;
-      } else if (!this.f.h(this.a.dx())) {
-         return false;
-      } else {
-         return !this.a.a(buh.f).f() ? false : this.h();
-      }
-   }
-
-   protected boolean h() {
-      ezh $$0 = this.i();
-      if ($$0 == null) {
-         return false;
-      } else {
-         this.b = $$0.d;
-         this.c = $$0.e;
-         this.d = $$0.f;
-         return true;
-      }
-   }
-
-   @Override
-   public boolean c() {
-      return !this.a.P().m();
+      return this.g.q() && !this.g.gu() && super.b();
    }
 
    @Override
    public void d() {
-      this.a.P().a(this.b, this.c, this.d, this.e);
+      super.d();
+      this.g.y(false);
    }
 
-   @Nullable
-   protected ezh i() {
-      azr $$0 = this.a.ea();
-      jg $$1 = this.a.dx();
+   @Override
+   public void e() {
+      super.e();
+      this.g.y(false);
+   }
 
-      for (int $$2 = 0; $$2 < 10; $$2++) {
-         jg $$3 = $$1.b($$0.a(20) - 10, $$0.a(6) - 3, $$0.a(20) - 10);
-         if (!this.f.h($$3) && this.a.c($$3) < 0.0F) {
-            return ezh.c($$3);
+   @Override
+   public void a() {
+      super.a();
+      this.g.y(this.m());
+   }
+
+   @Override
+   protected boolean a(dfe $$0, jh $$1) {
+      if (!$$0.u($$1.d())) {
+         return false;
+      } else {
+         dvj $$2 = $$0.a_($$1);
+         if ($$2.a(dig.cv)) {
+            return dst.a($$0, $$1) < 1;
+         } else {
+            return $$2.a(dig.cD) && $$2.c(dlk.b) ? true : $$2.a(axa.S, $$0x -> $$0x.d(dhx.b).map($$0xx -> $$0xx != dvw.a).orElse(true));
          }
       }
-
-      return null;
    }
 }

@@ -1,27 +1,44 @@
-import java.util.UUID;
+import javax.annotation.Nullable;
 
-public record ajm(String b, UUID c) implements zo<ajk> {
-   public static final zf<we, ajm> a = zo.a(ajm::a, ajm::new);
+public record ajm(int b, @Nullable ajq c) implements zp<ajl> {
+   public static final zg<wf, ajm> a = zp.a(ajm::c, ajm::a);
+   private static final int d = 1048576;
 
-   private ajm(we $$0) {
-      this($$0.d(16), $$0.n());
+   private static ajm a(wf $$0) {
+      int $$1 = $$0.l();
+      return new ajm($$1, a($$1, $$0));
    }
 
-   private void a(we $$0) {
-      $$0.a(this.b, 16);
-      $$0.a(this.c);
+   private static ajq a(int $$0, wf $$1) {
+      return b($$1);
+   }
+
+   private static ajq b(wf $$0) {
+      int $$1 = $$0.readableBytes();
+      if ($$1 >= 0 && $$1 <= 1048576) {
+         $$0.k($$1);
+         return ajs.a;
+      } else {
+         throw new IllegalArgumentException("Payload may not be larger than 1048576 bytes");
+      }
+   }
+
+   private void c(wf $$0) {
+      $$0.c(this.b);
+      $$0.a(this.c, ($$0x, $$1) -> $$1.a($$0x));
    }
 
    @Override
-   public zq<ajm> a() {
-      return aji.g;
+   public zr<ajm> a() {
+      return ajj.f;
    }
 
-   public void a(ajk $$0) {
+   public void a(ajl $$0) {
       $$0.a(this);
    }
 
-   public UUID e() {
+   @Nullable
+   public ajq e() {
       return this.c;
    }
 }

@@ -1,21 +1,20 @@
-public record adg(xh b, xd.a c) implements zo<acd> {
-   public static final zf<ws, adg> a = zf.a(xj.d, adg::b, xd.a.a, adg::e, adg::new);
+public record adg(xu.a b) implements zp<ace> {
+   public static final zg<wf, adg> a = zp.a(adg::a, adg::new);
 
-   @Override
-   public zq<adg> a() {
-      return ags.C;
+   private adg(wf $$0) {
+      this(xu.a.a($$0));
    }
 
-   public void a(acd $$0) {
+   private void a(wf $$0) {
+      xu.a.a($$0, this.b);
+   }
+
+   @Override
+   public zr<adg> a() {
+      return agt.B;
+   }
+
+   public void a(ace $$0) {
       $$0.a(this);
-   }
-
-   @Override
-   public boolean c() {
-      return true;
-   }
-
-   public xd.a e() {
-      return this.c;
    }
 }

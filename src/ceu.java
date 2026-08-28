@@ -1,18 +1,13 @@
 import com.google.common.collect.ImmutableSet;
 import java.util.Set;
 
-public class ceu extends cff<buv> {
+public class ceu extends cfk<bva> {
    @Override
-   public Set<cdz<?>> a() {
-      return ImmutableSet.of(cdz.X);
+   protected void a(arn $$0, bva $$1) {
    }
 
    @Override
-   protected void a(arm $$0, buv $$1) {
-      if ($$1.bk()) {
-         $$1.ed().a(cdz.X, bao.a);
-      } else {
-         $$1.ed().b(cdz.X);
-      }
+   public Set<cee<?>> a() {
+      return ImmutableSet.of();
    }
 }

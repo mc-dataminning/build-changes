@@ -1,32 +1,78 @@
-import java.nio.file.Path;
-import java.util.List;
+import com.google.common.collect.ImmutableSet;
+import java.util.Set;
+import java.util.function.Supplier;
+import javax.annotation.Nullable;
+import org.apache.commons.lang3.tuple.Pair;
 
-public interface boj {
-   char d = '\u001e';
+public class boj implements bok {
+   public static final boj a = new boj();
 
-   List<bom> a(String var1);
-
-   boolean a(Path var1);
-
-   long a();
-
-   int b();
-
-   long c();
-
-   int d();
-
-   default long g() {
-      return this.c() - this.a();
+   private boj() {
    }
 
-   default int f() {
-      return this.d() - this.b();
+   @Override
+   public void a() {
    }
 
-   String e();
+   @Override
+   public void b() {
+   }
 
-   static String b(String $$0) {
-      return $$0.replace('\u001e', '.');
+   @Override
+   public void a(String $$0) {
+   }
+
+   @Override
+   public void a(Supplier<String> $$0) {
+   }
+
+   @Override
+   public void a(bpv $$0) {
+   }
+
+   @Override
+   public void c() {
+   }
+
+   @Override
+   public void b(String $$0) {
+   }
+
+   @Override
+   public void b(Supplier<String> $$0) {
+   }
+
+   @Override
+   public bos d(String $$0) {
+      return bos.a;
+   }
+
+   @Override
+   public bos c(Supplier<String> $$0) {
+      return bos.a;
+   }
+
+   @Override
+   public void a(String $$0, int $$1) {
+   }
+
+   @Override
+   public void a(Supplier<String> $$0, int $$1) {
+   }
+
+   @Override
+   public bol d() {
+      return boh.a;
+   }
+
+   @Nullable
+   @Override
+   public bof.a c(String $$0) {
+      return null;
+   }
+
+   @Override
+   public Set<Pair<String, bpv>> e() {
+      return ImmutableSet.of();
    }
 }

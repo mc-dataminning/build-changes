@@ -1,8 +1,5 @@
-import javax.annotation.ParametersAreNonnullByDefault;
-
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface ajt {
+public record ajt(ali a) implements ajr {
+   @Override
+   public void a(wf $$0) {
+   }
 }

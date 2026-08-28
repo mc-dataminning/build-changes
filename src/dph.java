@@ -1,124 +1,111 @@
 import com.mojang.serialization.MapCodec;
 import javax.annotation.Nullable;
 
-public class dph extends dhy {
+public class dph extends die implements dpf {
    public static final MapCodec<dph> a = b(dph::new);
-   public static final int b = 8;
-   public static final dwd c = dvt.aF;
-   protected static final fab[] d = new fab[]{
-      ezy.a(),
-      dhy.a(0.0, 0.0, 0.0, 16.0, 2.0, 16.0),
-      dhy.a(0.0, 0.0, 0.0, 16.0, 4.0, 16.0),
-      dhy.a(0.0, 0.0, 0.0, 16.0, 6.0, 16.0),
-      dhy.a(0.0, 0.0, 0.0, 16.0, 8.0, 16.0),
-      dhy.a(0.0, 0.0, 0.0, 16.0, 10.0, 16.0),
-      dhy.a(0.0, 0.0, 0.0, 16.0, 12.0, 16.0),
-      dhy.a(0.0, 0.0, 0.0, 16.0, 14.0, 16.0),
-      dhy.a(0.0, 0.0, 0.0, 16.0, 16.0, 16.0)
-   };
-   public static final int e = 5;
+   public static final dwh<dwr> b = dvz.bh;
+   public static final dwa c = dvz.C;
+   protected static final fah d = die.a(0.0, 0.0, 0.0, 16.0, 8.0, 16.0);
+   protected static final fah e = die.a(0.0, 8.0, 0.0, 16.0, 16.0, 16.0);
 
    @Override
-   public MapCodec<dph> a() {
+   public MapCodec<? extends dph> a() {
       return a;
    }
 
-   protected dph(dvc.d $$0) {
+   public dph(dvi.d $$0) {
       super($$0);
-      this.l(this.F.b().b(c, Integer.valueOf(1)));
+      this.l(this.m().b(b, dwr.b).b(c, Boolean.valueOf(false)));
    }
 
    @Override
-   protected boolean a(dvd $$0, ert $$1) {
-      switch ($$1) {
-         case a:
-            return $$0.c(c) < 5;
-         case b:
-            return false;
+   protected boolean g_(dvj $$0) {
+      return $$0.c(b) != dwr.c;
+   }
+
+   @Override
+   protected void a(dvk.a<die, dvj> $$0) {
+      $$0.a(b, c);
+   }
+
+   @Override
+   protected fah a(dvj $$0, deg $$1, jh $$2, ezs $$3) {
+      dwr $$4 = $$0.c(b);
+      switch ($$4) {
          case c:
-            return false;
+            return fae.b();
+         case a:
+            return e;
          default:
-            return false;
-      }
-   }
-
-   @Override
-   protected fab a(dvd $$0, dea $$1, jg $$2, ezm $$3) {
-      return d[$$0.c(c)];
-   }
-
-   @Override
-   protected fab b(dvd $$0, dea $$1, jg $$2, ezm $$3) {
-      return d[$$0.c(c) - 1];
-   }
-
-   @Override
-   protected fab b_(dvd $$0, dea $$1, jg $$2) {
-      return d[$$0.c(c)];
-   }
-
-   @Override
-   protected fab c(dvd $$0, dea $$1, jg $$2, ezm $$3) {
-      return d[$$0.c(c)];
-   }
-
-   @Override
-   protected boolean g_(dvd $$0) {
-      return true;
-   }
-
-   @Override
-   protected float c(dvd $$0, dea $$1, jg $$2) {
-      return $$0.c(c) == 8 ? 0.2F : 1.0F;
-   }
-
-   @Override
-   protected boolean a(dvd $$0, dey $$1, jg $$2) {
-      dvd $$3 = $$1.a_($$2.e());
-      if ($$3.a(awz.cq)) {
-         return false;
-      } else {
-         return $$3.a(awz.cr) ? true : dhy.a($$3.g($$1, $$2.e()), jl.b) || $$3.a(this) && $$3.c(c) == 8;
-      }
-   }
-
-   @Override
-   protected dvd a(dvd $$0, jl $$1, dvd $$2, dew $$3, jg $$4, jg $$5) {
-      return !$$0.a($$3, $$4) ? dia.a.m() : super.a($$0, $$1, $$2, $$3, $$4, $$5);
-   }
-
-   @Override
-   protected void b(dvd $$0, arm $$1, jg $$2, azr $$3) {
-      if ($$1.a(dfe.b, $$2) > 11) {
-         c($$0, $$1, $$2);
-         $$1.a($$2, false);
-      }
-   }
-
-   @Override
-   protected boolean a(dvd $$0, czm $$1) {
-      int $$2 = $$0.c(c);
-      if (!$$1.n().a(this.j()) || $$2 >= 8) {
-         return $$2 == 1;
-      } else {
-         return $$1.c() ? $$1.k() == jl.b : true;
+            return d;
       }
    }
 
    @Nullable
    @Override
-   public dvd a(czm $$0) {
-      dvd $$1 = $$0.q().a_($$0.a());
-      if ($$1.a(this)) {
-         int $$2 = $$1.c(c);
-         return $$1.b(c, Integer.valueOf(Math.min(8, $$2 + 1)));
+   public dvj a(czs $$0) {
+      jh $$1 = $$0.a();
+      dvj $$2 = $$0.q().a_($$1);
+      if ($$2.a(this)) {
+         return $$2.b(b, dwr.c).b(c, Boolean.valueOf(false));
       } else {
-         return super.a($$0);
+         erk $$3 = $$0.q().b_($$1);
+         dvj $$4 = this.m().b(b, dwr.b).b(c, Boolean.valueOf($$3.a() == erl.c));
+         jm $$5 = $$0.k();
+         return $$5 != jm.a && ($$5 == jm.b || !($$0.l().e - (double)$$1.v() > 0.5)) ? $$4 : $$4.b(b, dwr.a);
       }
    }
 
    @Override
-   protected void a(dve.a<dhy, dvd> $$0) {
-      $$0.a(c);
+   protected boolean a(dvj $$0, czs $$1) {
+      cwb $$2 = $$1.n();
+      dwr $$3 = $$0.c(b);
+      if ($$3 == dwr.c || !$$2.a(this.j())) {
+         return false;
+      } else if ($$1.c()) {
+         boolean $$4 = $$1.l().e - (double)$$1.a().v() > 0.5;
+         jm $$5 = $$1.k();
+         return $$3 == dwr.b ? $$5 == jm.b || $$4 && $$5.o().d() : $$5 == jm.a || !$$4 && $$5.o().d();
+      } else {
+         return true;
+      }
+   }
+
+   @Override
+   protected erk b_(dvj $$0) {
+      return $$0.c(c) ? erl.c.a(false) : super.b_($$0);
+   }
+
+   @Override
+   public boolean a(dfc $$0, jh $$1, dvj $$2, erk $$3) {
+      return $$2.c(b) != dwr.c ? dpf.super.a($$0, $$1, $$2, $$3) : false;
+   }
+
+   @Override
+   public boolean a(@Nullable com $$0, deg $$1, jh $$2, dvj $$3, erj $$4) {
+      return $$3.c(b) != dwr.c ? dpf.super.a($$0, $$1, $$2, $$3, $$4) : false;
+   }
+
+   @Override
+   protected dvj a(dvj $$0, jm $$1, dvj $$2, dfc $$3, jh $$4, jh $$5) {
+      if ($$0.c(c)) {
+         $$3.a($$4, erl.c, erl.c.a($$3));
+      }
+
+      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   }
+
+   @Override
+   protected boolean a(dvj $$0, erz $$1) {
+      switch ($$1) {
+         case a:
+            return false;
+         case b:
+            return $$0.y().a(axg.a);
+         case c:
+            return false;
+         default:
+            return false;
+      }
    }
 }

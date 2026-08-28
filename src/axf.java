@@ -1,11 +1,10 @@
-public final class axf {
-   public static final axp<erd> a = a("water");
-   public static final axp<erd> b = a("lava");
+public class axf {
+   public static final axq<ejy> a = a("visible");
 
    private axf() {
    }
 
-   private static axp<erd> a(String $$0) {
-      return axp.a(ly.D, alh.b($$0));
+   private static axq<ejy> a(String $$0) {
+      return axq.a(lz.aO, ali.b($$0));
    }
 }

@@ -1,209 +1,261 @@
-import com.mojang.blaze3d.platform.GlStateManager;
-import com.mojang.blaze3d.systems.RenderSystem;
-import java.nio.ByteBuffer;
+import java.nio.ByteOrder;
+import java.util.stream.Collectors;
 import javax.annotation.Nullable;
-import org.joml.Matrix4f;
+import org.lwjgl.system.MemoryUtil;
 
-public class fdw implements AutoCloseable {
-   private final fdw.a a;
-   private int b;
-   private int c;
-   private int d;
-   @Nullable
-   private fdy e;
-   @Nullable
-   private RenderSystem.a f;
-   private fdy.b g;
-   private int h;
-   private fdy.c i;
+public class fdw implements fef {
+   private static final long a = -1L;
+   private static final long b = -1L;
+   private static final boolean c = ByteOrder.nativeOrder() == ByteOrder.LITTLE_ENDIAN;
+   private final fdy d;
+   private long e = -1L;
+   private int f;
+   private final feg g;
+   private final feg.c h;
+   private final boolean i;
+   private final boolean j;
+   private final int k;
+   private final int l;
+   private final int[] m;
+   private int n;
+   private boolean o = true;
 
-   public fdw(fdw.a $$0) {
-      this.a = $$0;
-      RenderSystem.assertOnRenderThread();
-      this.b = GlStateManager._glGenBuffers();
-      this.c = GlStateManager._glGenBuffers();
-      this.d = GlStateManager._glGenVertexArrays();
-   }
-
-   public void a(fds $$0) {
-      fds var2 = $$0;
-
-      label40: {
-         try {
-            if (this.e()) {
-               break label40;
-            }
-
-            RenderSystem.assertOnRenderThread();
-            fds.a $$1 = $$0.c();
-            this.e = this.a($$1, $$0.a());
-            this.f = this.b($$1, $$0.b());
-            this.h = $$1.c();
-            this.g = $$1.e();
-            this.i = $$1.d();
-         } catch (Throwable var6) {
-            if ($$0 != null) {
-               try {
-                  var2.close();
-               } catch (Throwable var5) {
-                  var6.addSuppressed(var5);
-               }
-            }
-
-            throw var6;
-         }
-
-         if ($$0 != null) {
-            $$0.close();
-         }
-
-         return;
+   public fdw(fdy $$0, feg.c $$1, feg $$2) {
+      if (!$$2.b(feh.b)) {
+         throw new IllegalArgumentException("Cannot build mesh with no position element");
+      } else {
+         this.d = $$0;
+         this.h = $$1;
+         this.g = $$2;
+         this.k = $$2.b();
+         this.l = $$2.f() & ~feh.b.a();
+         this.m = $$2.e();
+         boolean $$3 = $$2 == fdz.c;
+         boolean $$4 = $$2 == fdz.b;
+         this.i = $$3 || $$4;
+         this.j = $$3;
       }
-
-      if ($$0 != null) {
-         $$0.close();
-      }
-   }
-
-   public void a(fdq.a $$0) {
-      fdq.a var2 = $$0;
-
-      label40: {
-         try {
-            if (this.e()) {
-               break label40;
-            }
-
-            RenderSystem.assertOnRenderThread();
-            GlStateManager._glBindBuffer(34963, this.c);
-            RenderSystem.glBufferData(34963, $$0.a(), this.a.c);
-            this.f = null;
-         } catch (Throwable var6) {
-            if ($$0 != null) {
-               try {
-                  var2.close();
-               } catch (Throwable var5) {
-                  var6.addSuppressed(var5);
-               }
-            }
-
-            throw var6;
-         }
-
-         if ($$0 != null) {
-            $$0.close();
-         }
-
-         return;
-      }
-
-      if ($$0 != null) {
-         $$0.close();
-      }
-   }
-
-   private fdy a(fds.a $$0, @Nullable ByteBuffer $$1) {
-      boolean $$2 = false;
-      if (!$$0.a().equals(this.e)) {
-         if (this.e != null) {
-            this.e.h();
-         }
-
-         GlStateManager._glBindBuffer(34962, this.b);
-         $$0.a().g();
-         $$2 = true;
-      }
-
-      if ($$1 != null) {
-         if (!$$2) {
-            GlStateManager._glBindBuffer(34962, this.b);
-         }
-
-         RenderSystem.glBufferData(34962, $$1, this.a.c);
-      }
-
-      return $$0.a();
    }
 
    @Nullable
-   private RenderSystem.a b(fds.a $$0, @Nullable ByteBuffer $$1) {
-      if ($$1 != null) {
-         GlStateManager._glBindBuffer(34963, this.c);
-         RenderSystem.glBufferData(34963, $$1, this.a.c);
+   public fea a() {
+      this.c();
+      this.f();
+      fea $$0 = this.d();
+      this.o = false;
+      this.e = -1L;
+      return $$0;
+   }
+
+   public fea b() {
+      fea $$0 = this.a();
+      if ($$0 == null) {
+         throw new IllegalStateException("BufferBuilder was empty");
+      } else {
+         return $$0;
+      }
+   }
+
+   private void c() {
+      if (!this.o) {
+         throw new IllegalStateException("Not building!");
+      }
+   }
+
+   @Nullable
+   private fea d() {
+      if (this.f == 0) {
          return null;
       } else {
-         RenderSystem.a $$2 = RenderSystem.getSequentialBuffer($$0.d());
-         if ($$2 != this.f || !$$2.a($$0.c())) {
-            $$2.b($$0.c());
+         fdy.a $$0 = this.d.a();
+         if ($$0 == null) {
+            return null;
+         } else {
+            int $$1 = this.h.a(this.f);
+            feg.b $$2 = feg.b.a(this.f);
+            return new fea($$0, new fea.a(this.g, this.f, $$1, this.h, $$2));
          }
-
-         return $$2;
       }
    }
 
-   public void a() {
-      fdp.b();
-      GlStateManager._glBindVertexArray(this.d);
+   private long e() {
+      this.c();
+      this.f();
+      this.f++;
+      long $$0 = this.d.a(this.k);
+      this.e = $$0;
+      return $$0;
    }
 
-   public static void b() {
-      fdp.b();
-      GlStateManager._glBindVertexArray(0);
+   private long a(feh $$0) {
+      int $$1 = this.n;
+      int $$2 = $$1 & ~$$0.a();
+      if ($$2 == $$1) {
+         return -1L;
+      } else {
+         this.n = $$2;
+         long $$3 = this.e;
+         if ($$3 == -1L) {
+            throw new IllegalArgumentException("Not currently building vertex");
+         } else {
+            return $$3 + (long)this.m[$$0.c()];
+         }
+      }
    }
 
-   public void c() {
-      RenderSystem.drawElements(this.i.i, this.h, this.f().c);
+   private void f() {
+      if (this.f != 0) {
+         if (this.n != 0) {
+            String $$0 = feh.b(this.n).map(this.g::c).collect(Collectors.joining(", "));
+            throw new IllegalStateException("Missing elements in vertex: " + $$0);
+         } else {
+            if (this.h == feg.c.a || this.h == feg.c.b) {
+               long $$1 = this.d.a(this.k);
+               MemoryUtil.memCopy($$1 - (long)this.k, $$1, (long)this.k);
+               this.f++;
+            }
+         }
+      }
    }
 
-   private fdy.b f() {
-      RenderSystem.a $$0 = this.f;
-      return $$0 != null ? $$0.a() : this.g;
+   private static void a(long $$0, int $$1) {
+      int $$2 = axv.i($$1);
+      MemoryUtil.memPutInt($$0, c ? $$2 : Integer.reverseBytes($$2));
    }
 
-   public void a(Matrix4f $$0, Matrix4f $$1, @Nullable ghf $$2) {
-      if ($$2 != null) {
-         RenderSystem.assertOnRenderThread();
-         $$2.a(this.i, $$0, $$1, fja.Q().aP());
-         $$2.b();
-         this.c();
-         $$2.a();
+   private static void b(long $$0, int $$1) {
+      if (c) {
+         MemoryUtil.memPutInt($$0, $$1);
+      } else {
+         MemoryUtil.memPutShort($$0, (short)($$1 & 65535));
+         MemoryUtil.memPutShort($$0 + 2L, (short)($$1 >> 16 & 65535));
       }
    }
 
    @Override
-   public void close() {
-      if (this.b >= 0) {
-         RenderSystem.glDeleteBuffers(this.b);
-         this.b = -1;
-      }
-
-      if (this.c >= 0) {
-         RenderSystem.glDeleteBuffers(this.c);
-         this.c = -1;
-      }
-
-      if (this.d >= 0) {
-         RenderSystem.glDeleteVertexArrays(this.d);
-         this.d = -1;
-      }
+   public fef a(float $$0, float $$1, float $$2) {
+      long $$3 = this.e() + (long)this.m[feh.b.c()];
+      this.n = this.l;
+      MemoryUtil.memPutFloat($$3, $$0);
+      MemoryUtil.memPutFloat($$3 + 4L, $$1);
+      MemoryUtil.memPutFloat($$3 + 8L, $$2);
+      return this;
    }
 
-   public fdy d() {
-      return this.e;
+   @Override
+   public fef a(int $$0, int $$1, int $$2, int $$3) {
+      long $$4 = this.a(feh.c);
+      if ($$4 != -1L) {
+         MemoryUtil.memPutByte($$4, (byte)$$0);
+         MemoryUtil.memPutByte($$4 + 1L, (byte)$$1);
+         MemoryUtil.memPutByte($$4 + 2L, (byte)$$2);
+         MemoryUtil.memPutByte($$4 + 3L, (byte)$$3);
+      }
+
+      return this;
    }
 
-   public boolean e() {
-      return this.d == -1;
+   @Override
+   public fef a(int $$0) {
+      long $$1 = this.a(feh.c);
+      if ($$1 != -1L) {
+         a($$1, $$0);
+      }
+
+      return this;
    }
 
-   public static enum a {
-      a(35044),
-      b(35048);
+   @Override
+   public fef a(float $$0, float $$1) {
+      long $$2 = this.a(feh.d);
+      if ($$2 != -1L) {
+         MemoryUtil.memPutFloat($$2, $$0);
+         MemoryUtil.memPutFloat($$2 + 4L, $$1);
+      }
 
-      final int c;
+      return this;
+   }
 
-      private a(final int $$0) {
-         this.c = $$0;
+   @Override
+   public fef a(int $$0, int $$1) {
+      return this.a((short)$$0, (short)$$1, feh.f);
+   }
+
+   @Override
+   public fef b(int $$0) {
+      long $$1 = this.a(feh.f);
+      if ($$1 != -1L) {
+         b($$1, $$0);
+      }
+
+      return this;
+   }
+
+   @Override
+   public fef b(int $$0, int $$1) {
+      return this.a((short)$$0, (short)$$1, feh.g);
+   }
+
+   @Override
+   public fef c(int $$0) {
+      long $$1 = this.a(feh.g);
+      if ($$1 != -1L) {
+         b($$1, $$0);
+      }
+
+      return this;
+   }
+
+   private fef a(short $$0, short $$1, feh $$2) {
+      long $$3 = this.a($$2);
+      if ($$3 != -1L) {
+         MemoryUtil.memPutShort($$3, $$0);
+         MemoryUtil.memPutShort($$3 + 2L, $$1);
+      }
+
+      return this;
+   }
+
+   @Override
+   public fef b(float $$0, float $$1, float $$2) {
+      long $$3 = this.a(feh.h);
+      if ($$3 != -1L) {
+         MemoryUtil.memPutByte($$3, a($$0));
+         MemoryUtil.memPutByte($$3 + 1L, a($$1));
+         MemoryUtil.memPutByte($$3 + 2L, a($$2));
+      }
+
+      return this;
+   }
+
+   private static byte a(float $$0) {
+      return (byte)((int)(azk.a($$0, -1.0F, 1.0F) * 127.0F) & 0xFF);
+   }
+
+   @Override
+   public void a(float $$0, float $$1, float $$2, int $$3, float $$4, float $$5, int $$6, int $$7, float $$8, float $$9, float $$10) {
+      if (this.i) {
+         long $$11 = this.e();
+         MemoryUtil.memPutFloat($$11 + 0L, $$0);
+         MemoryUtil.memPutFloat($$11 + 4L, $$1);
+         MemoryUtil.memPutFloat($$11 + 8L, $$2);
+         a($$11 + 12L, $$3);
+         MemoryUtil.memPutFloat($$11 + 16L, $$4);
+         MemoryUtil.memPutFloat($$11 + 20L, $$5);
+         long $$12;
+         if (this.j) {
+            b($$11 + 24L, $$6);
+            $$12 = $$11 + 28L;
+         } else {
+            $$12 = $$11 + 24L;
+         }
+
+         b($$12 + 0L, $$7);
+         MemoryUtil.memPutByte($$12 + 4L, a($$8));
+         MemoryUtil.memPutByte($$12 + 5L, a($$9));
+         MemoryUtil.memPutByte($$12 + 6L, a($$10));
+      } else {
+         fef.super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8, $$9, $$10);
       }
    }
 }

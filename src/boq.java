@@ -1,91 +1,47 @@
 import com.mojang.logging.LogUtils;
-import java.net.SocketAddress;
-import java.nio.file.Path;
+import java.io.File;
+import java.util.function.LongSupplier;
 import javax.annotation.Nullable;
 import org.slf4j.Logger;
 
-public interface boq {
-   boq f = (boq)(Runtime.class.getModule().getLayer().findModule("jdk.jfr").isPresent() ? bop.a() : new boq.a());
+public class boq {
+   private static final Logger a = LogUtils.getLogger();
+   private final LongSupplier b;
+   private final long c;
+   private int d;
+   private final File e;
+   private bok f = boj.a;
 
-   boolean a(boo var1);
+   public boq(LongSupplier $$0, String $$1, long $$2) {
+      this.b = $$0;
+      this.e = new File("debug", $$1);
+      this.c = $$2;
+   }
 
-   Path b();
+   public bon a() {
+      this.f = new bof(this.b, () -> this.d, false);
+      this.d++;
+      return this.f;
+   }
 
-   boolean c();
-
-   boolean d();
-
-   void a(float var1);
-
-   void a(wc var1, zq<?> var2, SocketAddress var3, int var4);
-
-   void b(wc var1, zq<?> var2, SocketAddress var3, int var4);
-
-   void a(dys var1, deb var2, dyr var3, int var4);
-
-   void b(dys var1, deb var2, dyr var3, int var4);
+   public void b() {
+      if (this.f != boj.a) {
+         bol $$0 = this.f.d();
+         this.f = boj.a;
+         if ($$0.g() >= this.c) {
+            File $$1 = new File(this.e, "tick-results-" + ae.f() + ".txt");
+            $$0.a($$1.toPath());
+            a.info("Recorded long tick -- wrote info to: {}", $$1.getAbsolutePath());
+         }
+      }
+   }
 
    @Nullable
-   bot e();
+   public static boq a(String $$0) {
+      return null;
+   }
 
-   @Nullable
-   bot a(deb var1, alg<dev> var2, String var3);
-
-   public static class a implements boq {
-      private static final Logger b = LogUtils.getLogger();
-      static final bot a = () -> {
-      };
-
-      @Override
-      public boolean a(boo $$0) {
-         b.warn("Attempted to start Flight Recorder, but it's not supported on this JVM");
-         return false;
-      }
-
-      @Override
-      public Path b() {
-         throw new IllegalStateException("Attempted to stop Flight Recorder, but it's not supported on this JVM");
-      }
-
-      @Override
-      public boolean c() {
-         return false;
-      }
-
-      @Override
-      public boolean d() {
-         return false;
-      }
-
-      @Override
-      public void a(wc $$0, zq<?> $$1, SocketAddress $$2, int $$3) {
-      }
-
-      @Override
-      public void b(wc $$0, zq<?> $$1, SocketAddress $$2, int $$3) {
-      }
-
-      @Override
-      public void a(dys $$0, deb $$1, dyr $$2, int $$3) {
-      }
-
-      @Override
-      public void b(dys $$0, deb $$1, dyr $$2, int $$3) {
-      }
-
-      @Override
-      public void a(float $$0) {
-      }
-
-      @Override
-      public bot e() {
-         return a;
-      }
-
-      @Nullable
-      @Override
-      public bot a(deb $$0, alg<dev> $$1, String $$2) {
-         return null;
-      }
+   public static bon a(bon $$0, @Nullable boq $$1) {
+      return $$1 != null ? bon.a($$1.a(), $$0) : $$0;
    }
 }

@@ -1,37 +1,26 @@
+import com.google.common.collect.Iterables;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Optional;
+import java.util.function.Predicate;
 
-public class be extends dx<be.a> {
-   @Override
-   public Codec<be.a> a() {
-      return be.a.a;
-   }
-
-   public void a(arn $$0, int $$1) {
-      this.a($$0, $$1x -> $$1x.a($$1));
-   }
-
-   public static record a(Optional<bg> b, di.d c) implements dx.a {
-      public static final Codec<be.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(bv.b.optionalFieldOf("player").forGetter(be.a::a), di.d.d.optionalFieldOf("level", di.d.c).forGetter(be.a::c)).apply($$0, be.a::new)
+public record be<T, P extends Predicate<T>>(Optional<bc<T, P>> a, Optional<bd<T, P>> b, Optional<dj.d> c) implements Predicate<Iterable<T>> {
+   public static <T, P extends Predicate<T>> Codec<be<T, P>> a(Codec<P> $$0) {
+      return RecordCodecBuilder.create(
+         $$1 -> $$1.group(
+                  bc.a($$0).optionalFieldOf("contains").forGetter(be::a),
+                  bd.a($$0).optionalFieldOf("count").forGetter(be::b),
+                  dj.d.d.optionalFieldOf("size").forGetter(be::c)
+               )
+               .apply($$1, be::new)
       );
+   }
 
-      public static ao<be.a> b() {
-         return an.m.a(new be.a(Optional.empty(), di.d.c));
-      }
-
-      public static ao<be.a> a(di.d $$0) {
-         return an.m.a(new be.a(Optional.empty(), $$0));
-      }
-
-      public boolean a(int $$0) {
-         return this.c.d($$0);
-      }
-
-      @Override
-      public Optional<bg> a() {
-         return this.b;
+   public boolean a(Iterable<T> $$0) {
+      if (this.a.isPresent() && !this.a.get().test($$0)) {
+         return false;
+      } else {
+         return this.b.isPresent() && !this.b.get().test($$0) ? false : !this.c.isPresent() || this.c.get().d(Iterables.size($$0));
       }
    }
 }

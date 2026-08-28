@@ -1,51 +1,51 @@
-public class gku implements gkh<dtr> {
-   private final gku.a a;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.Maps;
+import com.google.common.collect.ImmutableMap.Builder;
+import java.util.Map;
 
-   public gku(gki.a $$0) {
-      this.a = new gku.a($$0.a(gba.cj));
+public class gku {
+   private static final Map<dso<?>, gkt<?>> a = Maps.newHashMap();
+
+   private static <T extends dsm> void a(dso<? extends T> $$0, gkt<T> $$1) {
+      a.put($$0, $$1);
    }
 
-   public void a(dtr $$0, float $$1, fdt $$2, ghw $$3, int $$4, int $$5) {
-      jl $$6 = jl.b;
-      if ($$0.l()) {
-         dvd $$7 = $$0.i().a_($$0.aC_());
-         if ($$7.b() instanceof dox) {
-            $$6 = $$7.c(dox.b);
+   public static Map<dso<?>, gks<?>> a(gkt.a $$0) {
+      Builder<dso<?>, gks<?>> $$1 = ImmutableMap.builder();
+      a.forEach(($$2, $$3) -> {
+         try {
+            $$1.put($$2, $$3.create($$0));
+         } catch (Exception var5) {
+            throw new IllegalStateException("Failed to create model for " + ly.j.b((dso<?>)$$2), var5);
          }
-      }
-
-      cuu $$8 = $$0.t();
-      hab $$9;
-      if ($$8 == null) {
-         $$9 = gir.i;
-      } else {
-         $$9 = gir.j.get($$8.a());
-      }
-
-      $$2.a();
-      $$2.a(0.5F, 0.5F, 0.5F);
-      float $$11 = 0.9995F;
-      $$2.b(0.9995F, 0.9995F, 0.9995F);
-      $$2.a($$6.b());
-      $$2.b(1.0F, -1.0F, -1.0F);
-      $$2.a(0.0F, -1.0F, 0.0F);
-      this.a.a($$0, $$1);
-      fdx $$12 = $$9.a($$3, this.a::a);
-      this.a.a($$2, $$12, $$4, $$5);
-      $$2.b();
+      });
+      return $$1.build();
    }
 
-   static class a extends fyu {
-      private final gbb a;
-
-      public a(gbb $$0) {
-         super($$0, gig::f);
-         this.a = $$0.b("lid");
-      }
-
-      public void a(dtr $$0, float $$1) {
-         this.a.a(0.0F, 24.0F - $$0.a($$1) * 0.5F * 16.0F, 0.0F);
-         this.a.f = 270.0F * $$0.a($$1) * (float) (Math.PI / 180.0);
-      }
+   static {
+      a(dso.h, glg::new);
+      a(dso.i, glc::new);
+      a(dso.j, gli::new);
+      a(dso.k, gle::new);
+      a(dso.b, gky::new);
+      a(dso.d, gky::new);
+      a(dso.c, gky::new);
+      a(dso.m, glb::new);
+      a(dso.D, gld::new);
+      a(dso.n, gll::new);
+      a(dso.v, glk::new);
+      a(dso.o, gko::new);
+      a(dso.p, glh::new);
+      a(dso.t, gkn::new);
+      a(dso.u, glj::new);
+      a(dso.x, glf::new);
+      a(dso.y, gkp::new);
+      a(dso.z, gkz::new);
+      a(dso.E, gkq::new);
+      a(dso.G, gkx::new);
+      a(dso.N, gkw::new);
+      a(dso.O, gla::new);
+      a(dso.Q, glm::new);
+      a(dso.R, gln::new);
    }
 }

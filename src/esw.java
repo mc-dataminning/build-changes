@@ -1,15 +1,31 @@
-import com.mojang.serialization.Codec;
-import io.netty.buffer.ByteBuf;
+import java.util.function.BiFunction;
+import java.util.function.Supplier;
 
-public record esw(int c) {
-   public static final Codec<esw> a = Codec.INT.xmap(esw::new, esw::b);
-   public static final zf<ByteBuf, esw> b = zd.h.a(esw::new, esw::b);
+public abstract class esw {
+   private boolean a;
 
-   public String a() {
-      return "map_" + this.c;
+   public abstract uk a(uk var1, js.a var2);
+
+   public void c() {
+      this.a(true);
    }
 
-   public int b() {
-      return this.c;
+   public void a(boolean $$0) {
+      this.a = $$0;
+   }
+
+   public boolean d() {
+      return this.a;
+   }
+
+   public uk a(js.a $$0) {
+      uk $$1 = new uk();
+      $$1.a("data", this.a(new uk(), $$0));
+      uz.e($$1);
+      this.a(false);
+      return $$1;
+   }
+
+   public static record a<T extends esw>(Supplier<T> a, BiFunction<uk, js.a, T> b, bat c) {
    }
 }

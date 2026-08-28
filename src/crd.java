@@ -1,8 +1,9 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+public class crd {
+   final crg a;
+   final long b;
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface crd {
+   crd(crg $$0, int $$1) {
+      this.a = $$0;
+      this.b = 1L << $$1;
+   }
 }

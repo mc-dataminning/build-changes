@@ -1,46 +1,46 @@
-import it.unimi.dsi.fastutil.objects.Object2IntMap;
-import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
-import it.unimi.dsi.fastutil.objects.Reference2ObjectOpenHashMap;
-import java.util.Collections;
-import java.util.Map;
-import java.util.function.Consumer;
-import javax.annotation.Nullable;
+public final class fag extends ezw {
+   private final ezw d;
+   private final int e;
+   private final int f;
+   private final int g;
+   private final int h;
+   private final int i;
+   private final int j;
 
-class fag {
-   private final Reference2ObjectOpenHashMap<fae, faj> a = new Reference2ObjectOpenHashMap(16, 0.5F);
-
-   @Nullable
-   public faj a(fae $$0) {
-      return (faj)this.a.get($$0);
+   protected fag(ezw $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6) {
+      super($$4 - $$1, $$5 - $$2, $$6 - $$3);
+      this.d = $$0;
+      this.e = $$1;
+      this.f = $$2;
+      this.g = $$3;
+      this.h = $$4;
+      this.i = $$5;
+      this.j = $$6;
    }
 
-   public faj a(fae $$0, Consumer<faj> $$1) {
-      return (faj)this.a.computeIfAbsent($$0, $$1x -> {
-         faj $$2 = new faj();
-         $$1.accept($$2);
-         return $$2;
-      });
+   @Override
+   public boolean b(int $$0, int $$1, int $$2) {
+      return this.d.b(this.e + $$0, this.f + $$1, this.g + $$2);
    }
 
-   public boolean b(fae $$0) {
-      return this.a.remove($$0) != null;
+   @Override
+   public void c(int $$0, int $$1, int $$2) {
+      this.d.c(this.e + $$0, this.f + $$1, this.g + $$2);
    }
 
-   public boolean a() {
-      return !this.a.isEmpty();
+   @Override
+   public int a(jm.a $$0) {
+      return this.a($$0, this.d.a($$0));
    }
 
-   public Object2IntMap<fae> b() {
-      Object2IntMap<fae> $$0 = new Object2IntOpenHashMap();
-      this.a.forEach(($$1, $$2) -> $$0.put($$1, $$2.a()));
-      return $$0;
+   @Override
+   public int b(jm.a $$0) {
+      return this.a($$0, this.d.b($$0));
    }
 
-   void a(fae $$0, faj $$1) {
-      this.a.put($$0, $$1);
-   }
-
-   Map<fae, faj> c() {
-      return Collections.unmodifiableMap(this.a);
+   private int a(jm.a $$0, int $$1) {
+      int $$2 = $$0.a(this.e, this.f, this.g);
+      int $$3 = $$0.a(this.h, this.i, this.j);
+      return azk.a($$1, $$2, $$3) - $$2;
    }
 }

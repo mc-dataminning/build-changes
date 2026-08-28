@@ -1,98 +1,76 @@
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
-public class dai {
-   public static final dai a = new dai(List.of(), List.of());
-   private final List<col.a<jp<cvt>>> b;
-   private final List<Optional<dai.a>> c;
+public class dai extends dag {
+   private static final dal a = dal.a(cwf.qP);
+   private static final dal b = dal.a(cwf.pv);
+   private static final dal c = dal.a(cwf.ux);
 
-   private dai(List<col.a<jp<cvt>>> $$0, List<Optional<dai.a>> $$1) {
-      this.b = $$0;
-      this.c = $$1;
+   public dai(dad $$0) {
+      super($$0);
    }
 
-   private static col.a<jp<cvt>> c(List<cvx> $$0) {
-      return com.a($$0.stream().map(cvx::i));
-   }
+   public boolean a(dae $$0, dfb $$1) {
+      boolean $$2 = false;
+      int $$3 = 0;
 
-   private static List<cvx> b(daf $$0) {
-      return $$0.a().stream().map(cvx::new).toList();
-   }
+      for (int $$4 = 0; $$4 < $$0.a(); $$4++) {
+         cwb $$5 = $$0.a($$4);
+         if (!$$5.f()) {
+            if (a.a($$5)) {
+               if ($$2) {
+                  return false;
+               }
 
-   public static dai a(daf $$0) {
-      List<cvx> $$1 = b($$0);
-      if ($$1.isEmpty()) {
-         return a;
-      } else {
-         col.a<jp<cvt>> $$2 = c($$1);
-         dai.a $$3 = new dai.a($$1, 0);
-         return new dai(List.of($$2), List.of(Optional.of($$3)));
-      }
-   }
-
-   public static dai a(List<Optional<daf>> $$0) {
-      int $$1 = $$0.size();
-      List<col.a<jp<cvt>>> $$2 = new ArrayList<>($$1);
-      List<Optional<dai.a>> $$3 = new ArrayList<>($$1);
-      int $$4 = 0;
-
-      for (Optional<daf> $$5 : $$0) {
-         if ($$5.isPresent()) {
-            List<cvx> $$6 = b($$5.get());
-            if ($$6.isEmpty()) {
-               return a;
+               $$2 = true;
+            } else if (b.a($$5)) {
+               if (++$$3 > 3) {
+                  return false;
+               }
+            } else if (!c.a($$5)) {
+               return false;
             }
-
-            $$2.add(c($$6));
-            $$3.add(Optional.of(new dai.a($$6, $$4++)));
-         } else {
-            $$3.add(Optional.empty());
          }
       }
 
-      return new dai($$2, $$3);
+      return $$2 && $$3 >= 1;
    }
 
-   public static dai b(List<daf> $$0) {
-      int $$1 = $$0.size();
-      List<col.a<jp<cvt>>> $$2 = new ArrayList<>($$1);
-      List<Optional<dai.a>> $$3 = new ArrayList<>($$1);
+   public cwb a(dae $$0, js.a $$1) {
+      List<cyq> $$2 = new ArrayList<>();
+      int $$3 = 0;
 
-      for (int $$4 = 0; $$4 < $$1; $$4++) {
-         daf $$5 = $$0.get($$4);
-         List<cvx> $$6 = b($$5);
-         if ($$6.isEmpty()) {
-            return a;
-         }
-
-         $$2.add(c($$6));
-         $$3.add(Optional.of(new dai.a($$6, $$4)));
-      }
-
-      return new dai($$2, $$3);
-   }
-
-   public List<Optional<dai.a>> a() {
-      return this.c;
-   }
-
-   public List<col.a<jp<cvt>>> b() {
-      return this.b;
-   }
-
-   public boolean c() {
-      return this.c.isEmpty();
-   }
-
-   public static record a(List<cvx> a, int b) {
-      public a(List<cvx> a, int b) {
-         if (a.isEmpty()) {
-            throw new IllegalArgumentException("Possible items list must be not empty");
-         } else {
-            this.a = a;
-            this.b = b;
+      for (int $$4 = 0; $$4 < $$0.a(); $$4++) {
+         cwb $$5 = $$0.a($$4);
+         if (!$$5.f()) {
+            if (b.a($$5)) {
+               $$3++;
+            } else if (c.a($$5)) {
+               cyq $$6 = $$5.a(ku.ae);
+               if ($$6 != null) {
+                  $$2.add($$6);
+               }
+            }
          }
       }
+
+      cwb $$7 = new cwb(cwf.uw, 3);
+      $$7.b(ku.af, new cyr($$3, $$2));
+      return $$7;
+   }
+
+   @Override
+   public boolean a(int $$0, int $$1) {
+      return $$0 * $$1 >= 2;
+   }
+
+   @Override
+   public cwb a(js.a $$0) {
+      return new cwb(cwf.uw);
+   }
+
+   @Override
+   public dau<?> aq_() {
+      return dau.g;
    }
 }

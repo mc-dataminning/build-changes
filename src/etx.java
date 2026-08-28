@@ -1,11 +1,3 @@
-import java.util.Set;
-
-public interface etx {
-   default Set<ewp<?>> a() {
-      return Set.of();
-   }
-
-   default void a(euc $$0) {
-      $$0.a(this);
-   }
+public interface etx extends etm {
+   void a(jh var1, float var2);
 }

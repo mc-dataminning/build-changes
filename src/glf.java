@@ -1,71 +1,51 @@
-import com.google.common.collect.ImmutableMap;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import javax.annotation.Nullable;
+public class glf implements gks<dtx> {
+   private final glf.a a;
 
-class glf {
-   private final Map<jg, dsg> a;
-   @Nullable
-   private final List<dxr<dvd>> b;
-   private final boolean c;
-   private final dxj d;
+   public glf(gkt.a $$0) {
+      this.a = new glf.a($$0.a(gbl.cj));
+   }
 
-   glf(dxj $$0) {
-      this.d = $$0;
-      this.c = $$0.E().aj();
-      this.a = ImmutableMap.copyOf($$0.F());
-      if ($$0 instanceof dxf) {
-         this.b = null;
-      } else {
-         dxk[] $$1 = $$0.d();
-         this.b = new ArrayList<>($$1.length);
-
-         for (dxk $$2 : $$1) {
-            this.b.add($$2.c() ? null : $$2.h().d());
+   public void a(dtx $$0, float $$1, feb $$2, gih $$3, int $$4, int $$5) {
+      jm $$6 = jm.b;
+      if ($$0.l()) {
+         dvj $$7 = $$0.i().a_($$0.aB_());
+         if ($$7.b() instanceof dpd) {
+            $$6 = $$7.c(dpd.b);
          }
       }
-   }
 
-   @Nullable
-   public dsg a(jg $$0) {
-      return this.a.get($$0);
-   }
-
-   public dvd b(jg $$0) {
-      int $$1 = $$0.u();
-      int $$2 = $$0.v();
-      int $$3 = $$0.w();
-      if (this.c) {
-         dvd $$4 = null;
-         if ($$2 == 60) {
-            $$4 = dia.hW.m();
-         }
-
-         if ($$2 == 70) {
-            $$4 = eaq.a($$1, $$3);
-         }
-
-         return $$4 == null ? dia.a.m() : $$4;
-      } else if (this.b == null) {
-         return dia.a.m();
+      cuy $$8 = $$0.t();
+      ham $$9;
+      if ($$8 == null) {
+         $$9 = gjc.i;
       } else {
-         try {
-            int $$5 = this.d.f($$2);
-            if ($$5 >= 0 && $$5 < this.b.size()) {
-               dxr<dvd> $$6 = this.b.get($$5);
-               if ($$6 != null) {
-                  return $$6.a($$1 & 15, $$2 & 15, $$3 & 15);
-               }
-            }
+         $$9 = gjc.j.get($$8.a());
+      }
 
-            return dia.a.m();
-         } catch (Throwable var8) {
-            o $$8 = o.a(var8, "Getting block state");
-            p $$9 = $$8.a("Block being got");
-            $$9.a("Location", () -> p.a(this.d, $$1, $$2, $$3));
-            throw new z($$8);
-         }
+      $$2.a();
+      $$2.a(0.5F, 0.5F, 0.5F);
+      float $$11 = 0.9995F;
+      $$2.b(0.9995F, 0.9995F, 0.9995F);
+      $$2.a($$6.b());
+      $$2.b(1.0F, -1.0F, -1.0F);
+      $$2.a(0.0F, -1.0F, 0.0F);
+      this.a.a($$0, $$1);
+      fef $$12 = $$9.a($$3, this.a::a);
+      this.a.a($$2, $$12, $$4, $$5);
+      $$2.b();
+   }
+
+   static class a extends fzf {
+      private final gbm a;
+
+      public a(gbm $$0) {
+         super($$0, gir::f);
+         this.a = $$0.b("lid");
+      }
+
+      public void a(dtx $$0, float $$1) {
+         this.a.a(0.0F, 24.0F - $$0.a($$1) * 0.5F * 16.0F, 0.0F);
+         this.a.f = 270.0F * $$0.a($$1) * (float) (Math.PI / 180.0);
       }
    }
 }

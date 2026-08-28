@@ -1,52 +1,45 @@
 import com.mojang.serialization.Codec;
-import java.util.Optional;
 
-public abstract class edt extends eef<egq> {
-   public edt(Codec<egq> $$0) {
+public class edt extends eel<egh> {
+   public edt(Codec<egh> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(eeh<egq> $$0) {
-      azr $$1 = $$0.d();
-      dfs $$2 = $$0.b();
-      jg $$3 = $$0.e();
-      Optional<dhy> $$4 = lx.e.a(awz.ar, $$1).map(jp::a);
-      return $$4.isEmpty() ? false : this.a($$2, $$1, $$3, $$4.get().m());
-   }
+   public boolean a(een<egh> $$0) {
+      jh $$1 = $$0.e();
+      dfy $$2 = $$0.b();
+      azs $$3 = $$0.d();
+      egh $$4 = $$0.f();
+      if ($$1.v() < $$2.I_() + 5) {
+         return false;
+      } else {
+         int $$5 = 2 + $$3.a(2);
+         int $$6 = 2 + $$3.a(2);
 
-   protected abstract boolean a(dew var1, azr var2, jg var3, dvd var4);
-
-   protected boolean b(dew $$0, azr $$1, jg $$2, dvd $$3) {
-      jg $$4 = $$2.d();
-      dvd $$5 = $$0.a_($$2);
-      if (($$5.a(dia.G) || $$5.a(awz.au)) && $$0.a_($$4).a(dia.G)) {
-         $$0.a($$2, $$3, 3);
-         if ($$1.i() < 0.25F) {
-            lx.e.a(awz.au, $$1).map(jp::a).ifPresent($$2x -> $$0.a($$4, $$2x.m(), 2));
-         } else if ($$1.i() < 0.05F) {
-            $$0.a($$4, dia.mV.m().b(dov.c, Integer.valueOf($$1.a(4) + 1)), 2);
-         }
-
-         for (jl $$6 : jl.c.a) {
-            if ($$1.i() < 0.2F) {
-               jg $$7 = $$2.a($$6);
-               if ($$0.a_($$7).a(dia.G)) {
-                  lx.e.a(awz.as, $$1).map(jp::a).ifPresent($$3x -> {
-                     dvd $$4x = $$3x.m();
-                     if ($$4x.b(dhj.c)) {
-                        $$4x = $$4x.b(dhj.c, $$6);
-                     }
-
-                     $$0.a($$7, $$4x, 2);
-                  });
-               }
+         for (jh $$7 : jh.c($$1.b(-$$5, 0, -$$6), $$1.b($$5, 1, $$6))) {
+            int $$8 = $$1.u() - $$7.u();
+            int $$9 = $$1.w() - $$7.w();
+            if ((float)($$8 * $$8 + $$9 * $$9) <= $$3.i() * 10.0F - $$3.i() * 6.0F) {
+               this.a($$2, $$7, $$3, $$4);
+            } else if ((double)$$3.i() < 0.031) {
+               this.a($$2, $$7, $$3, $$4);
             }
          }
 
          return true;
-      } else {
-         return false;
+      }
+   }
+
+   private boolean a(dfc $$0, jh $$1, azs $$2) {
+      jh $$3 = $$1.e();
+      dvj $$4 = $$0.a_($$3);
+      return $$4.a(dig.kE) ? $$2.h() : $$4.c($$0, $$3, jm.b);
+   }
+
+   private void a(dfc $$0, jh $$1, azs $$2, egh $$3) {
+      if ($$0.u($$1) && this.a($$0, $$1, $$2)) {
+         $$0.a($$1, $$3.b.a($$2, $$1), 4);
       }
    }
 }

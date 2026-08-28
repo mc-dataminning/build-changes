@@ -1,57 +1,32 @@
+import io.netty.buffer.ByteBuf;
 import java.util.List;
 
-public record abg(alg<dev> c, elj d, List<abg.a> e) implements aar {
-   public static final zf<we, abg> a = aar.a(abg::a, abg::new);
-   public static final aar.b<abg> b = aar.a("debug/structures");
-
-   private abg(we $$0) {
-      this($$0.a(ly.bb), b($$0), $$0.a(abg.a::new));
-   }
-
-   private void a(we $$0) {
-      $$0.b(this.c);
-      a($$0, this.d);
-      $$0.a(this.e, ($$1, $$2) -> $$2.a($$0));
-   }
+public record abg(long c, List<abg.a> d) implements aas {
+   public static final aas.b<abg> a = aas.a("debug/redstone_update_order");
+   public static final zg<wf, abg> b = zg.a(ze.i, abg::b, abg.a.a.a(ze.a()), abg::c, abg::new);
 
    @Override
-   public aar.b<abg> a() {
-      return b;
+   public aas.b<abg> a() {
+      return a;
    }
 
-   static elj b(we $$0) {
-      return new elj($$0.readInt(), $$0.readInt(), $$0.readInt(), $$0.readInt(), $$0.readInt(), $$0.readInt());
-   }
-
-   static void a(we $$0, elj $$1) {
-      $$0.q($$1.h());
-      $$0.q($$1.i());
-      $$0.q($$1.j());
-      $$0.q($$1.k());
-      $$0.q($$1.l());
-      $$0.q($$1.m());
-   }
-
-   public alg<dev> b() {
+   public long b() {
       return this.c;
    }
 
-   public elj c() {
+   public List<abg.a> c() {
       return this.d;
    }
 
-   public List<abg.a> d() {
-      return this.e;
-   }
+   public static record a(jh b, ess c) {
+      public static final zg<ByteBuf, abg.a> a = zg.a(jh.b, abg.a::a, ess.a, abg.a::b, abg.a::new);
 
-   public static record a(elj a, boolean b) {
-      public a(we $$0) {
-         this(abg.b($$0), $$0.readBoolean());
+      public jh a() {
+         return this.b;
       }
 
-      public void a(we $$0) {
-         abg.a($$0, this.a);
-         $$0.a(this.b);
+      public ess b() {
+         return this.c;
       }
    }
 }

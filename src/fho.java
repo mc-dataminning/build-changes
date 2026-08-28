@@ -1,41 +1,167 @@
-import com.mojang.authlib.yggdrasil.ProfileResult;
-import java.util.Date;
-import java.util.UUID;
+import com.mojang.datafixers.util.Either;
+import com.mojang.logging.LogUtils;
+import java.time.Duration;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.concurrent.Callable;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.Executor;
+import java.util.concurrent.TimeUnit;
+import java.util.function.Consumer;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
 public class fho {
-   private static final xh a = xh.c("mco.util.time.now");
-   private static final int b = 60;
-   private static final int c = 3600;
-   private static final int d = 86400;
+   static final Logger a = LogUtils.getLogger();
+   final Executor b;
+   final TimeUnit c;
+   final bak d;
 
-   public static xh a(long $$0) {
-      if ($$0 < 0L) {
-         return a;
+   public fho(Executor $$0, TimeUnit $$1, bak $$2) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
+   }
+
+   public <T> fho.e<T> a(String $$0, Callable<T> $$1, Duration $$2, fhp $$3) {
+      long $$4 = this.c.convert($$2);
+      if ($$4 == 0L) {
+         throw new IllegalArgumentException("Period of " + $$2 + " too short for selected resolution of " + this.c);
       } else {
-         long $$1 = $$0 / 1000L;
-         if ($$1 < 60L) {
-            return xh.a("mco.time.secondsAgo", $$1);
-         } else if ($$1 < 3600L) {
-            long $$2 = $$1 / 60L;
-            return xh.a("mco.time.minutesAgo", $$2);
-         } else if ($$1 < 86400L) {
-            long $$3 = $$1 / 3600L;
-            return xh.a("mco.time.hoursAgo", $$3);
-         } else {
-            long $$4 = $$1 / 86400L;
-            return xh.a("mco.time.daysAgo", $$4);
+         return new fho.e<>($$0, $$1, $$4, $$3);
+      }
+   }
+
+   public fho.c a() {
+      return new fho.c();
+   }
+
+   static record a<T>(Either<T, Exception> a, long b) {
+   }
+
+   class b<T> {
+      private final fho.e<T> a;
+      private final Consumer<T> b;
+      private long c = -1L;
+
+      b(final fho.e<T> $$0, final Consumer<T> $$1) {
+         this.a = $$0;
+         this.b = $$1;
+      }
+
+      void a(long $$0) {
+         this.a.a($$0);
+         this.a();
+      }
+
+      void a() {
+         fho.d<T> $$0 = this.a.g;
+         if ($$0 != null && this.c < $$0.b) {
+            this.b.accept($$0.a);
+            this.c = $$0.b;
+         }
+      }
+
+      void b() {
+         fho.d<T> $$0 = this.a.g;
+         if ($$0 != null) {
+            this.b.accept($$0.a);
+            this.c = $$0.b;
+         }
+      }
+
+      void c() {
+         this.a.a();
+         this.c = -1L;
+      }
+   }
+
+   public class c {
+      private final List<fho.b<?>> b = new ArrayList<>();
+
+      public <T> void a(fho.e<T> $$0, Consumer<T> $$1) {
+         fho.b<T> $$2 = fho.this.new b<>($$0, $$1);
+         this.b.add($$2);
+         $$2.a();
+      }
+
+      public void a() {
+         for (fho.b<?> $$0 : this.b) {
+            $$0.b();
+         }
+      }
+
+      public void b() {
+         for (fho.b<?> $$0 : this.b) {
+            $$0.a(fho.this.d.get(fho.this.c));
+         }
+      }
+
+      public void c() {
+         for (fho.b<?> $$0 : this.b) {
+            $$0.c();
          }
       }
    }
 
-   public static xh a(Date $$0) {
-      return a(System.currentTimeMillis() - $$0.getTime());
+   static record d<T>(T a, long b) {
    }
 
-   public static void a(fkm $$0, int $$1, int $$2, int $$3, UUID $$4) {
-      fja $$5 = fja.Q();
-      ProfileResult $$6 = $$5.am().fetchProfile($$4, false);
-      gyt $$7 = $$6 != null ? $$5.an().b($$6.profile()) : gyk.a($$4);
-      fly.a($$0, $$7, $$1, $$2, $$3);
+   public class e<T> {
+      private final String b;
+      private final Callable<T> c;
+      private final long d;
+      private final fhp e;
+      @Nullable
+      private CompletableFuture<fho.a<T>> f;
+      @Nullable
+      fho.d<T> g;
+      private long h = -1L;
+
+      e(final String $$1, final Callable<T> $$2, final long $$3, final fhp $$4) {
+         this.b = $$1;
+         this.c = $$2;
+         this.d = $$3;
+         this.e = $$4;
+      }
+
+      void a(long $$0) {
+         if (this.f != null) {
+            fho.a<T> $$1 = this.f.getNow(null);
+            if ($$1 == null) {
+               return;
+            }
+
+            this.f = null;
+            long $$2 = $$1.b;
+            $$1.a().ifLeft($$1x -> {
+               this.g = new fho.d<>((T)$$1x, $$2);
+               this.h = $$2 + this.d * this.e.a();
+            }).ifRight($$1x -> {
+               long $$2x = this.e.b();
+               fho.a.warn("Failed to process task {}, will repeat after {} cycles", new Object[]{this.b, $$2x, $$1x});
+               this.h = $$2 + this.d * $$2x;
+            });
+         }
+
+         if (this.h <= $$0) {
+            this.f = CompletableFuture.supplyAsync(() -> {
+               try {
+                  T $$0x = this.c.call();
+                  long $$1x = fho.this.d.get(fho.this.c);
+                  return new fho.a<>(Either.left($$0x), $$1x);
+               } catch (Exception var4x) {
+                  long $$3 = fho.this.d.get(fho.this.c);
+                  return new fho.a<>(Either.right(var4x), $$3);
+               }
+            }, fho.this.b);
+         }
+      }
+
+      public void a() {
+         this.f = null;
+         this.g = null;
+         this.h = -1L;
+      }
    }
 }

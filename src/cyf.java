@@ -1,26 +1,209 @@
+import com.google.common.collect.Lists;
+import com.mojang.serialization.Codec;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Stream;
+import javax.annotation.Nullable;
+import org.apache.commons.lang3.math.Fraction;
 
-public class cyf {
-   public static final cyd a = a().a();
-   public static final cyd b = b().a();
-   public static final cyd c = b().a(2.0F).a(awk.mC).a(new czj(btg.s)).a();
-   public static final cyd d = b().b(awk.sq).a();
-   public static final cyd e = a().a(0.8F).a();
-   public static final cyd f = a().a(new czf(new bte(btg.q, 600, 0), 0.3F)).a();
-   public static final cyd g = a().a(new czf(List.of(new bte(btg.j, 400, 1), new bte(btg.k, 6000, 0), new bte(btg.l, 6000, 0), new bte(btg.v, 2400, 3)))).a();
-   public static final cyd h = a().a(new czf(List.of(new bte(btg.j, 100, 1), new bte(btg.v, 2400, 0)))).a();
-   public static final cyd i = a().a(new czf(new bte(btg.s, 100, 0), 0.6F)).a();
-   public static final cyd j = a().a(new czf(List.of(new bte(btg.s, 1200, 1), new bte(btg.q, 300, 2), new bte(btg.i, 300, 0)))).a();
-   public static final cyd k = a().a(new czf(new bte(btg.q, 600, 0), 0.8F)).a();
-   public static final cyd l = a().a(new czf(new bte(btg.s, 100, 0))).a();
-   public static final cyd m = b().a(czg.a).a();
-   public static final cyd n = a().a(new czk()).a();
+public final class cyf implements ctv {
+   public static final cyf a = new cyf(List.of());
+   public static final Codec<cyf> b = cwb.b.listOf().xmap(cyf::new, $$0 -> $$0.g);
+   public static final zg<wt, cyf> c = cwb.i.a(ze.a()).a(cyf::new, $$0 -> $$0.g);
+   private static final Fraction e = Fraction.getFraction(1, 16);
+   private static final int f = -1;
+   public static final int d = -1;
+   final List<cwb> g;
+   final Fraction h;
+   final int i;
 
-   public static cyd.a a() {
-      return cyd.b().a(1.6F).a(cvz.b).a(awk.ke).a(true);
+   cyf(List<cwb> $$0, Fraction $$1, int $$2) {
+      this.g = $$0;
+      this.h = $$1;
+      this.i = $$2;
    }
 
-   public static cyd.a b() {
-      return cyd.b().a(1.6F).a(cvz.c).a(awk.kd).a(false);
+   public cyf(List<cwb> $$0) {
+      this($$0, a($$0), -1);
+   }
+
+   private static Fraction a(List<cwb> $$0) {
+      Fraction $$1 = Fraction.ZERO;
+
+      for (cwb $$2 : $$0) {
+         $$1 = $$1.add(b($$2).multiplyBy(Fraction.getFraction($$2.L(), 1)));
+      }
+
+      return $$1;
+   }
+
+   static Fraction b(cwb $$0) {
+      cyf $$1 = $$0.a(ku.P);
+      if ($$1 != null) {
+         return e.add($$1.f());
+      } else {
+         List<dsj.c> $$2 = $$0.a(ku.an, List.of());
+         return !$$2.isEmpty() ? Fraction.ONE : Fraction.getFraction(1, $$0.k());
+      }
+   }
+
+   public static boolean a(cwb $$0) {
+      return !$$0.f() && $$0.h().e();
+   }
+
+   public int a() {
+      int $$0 = this.e();
+      int $$1 = $$0 > 12 ? 11 : 12;
+      int $$2 = $$0 % 4;
+      int $$3 = $$2 == 0 ? 0 : 4 - $$2;
+      return Math.min($$0, $$1 - $$3);
+   }
+
+   public cwb a(int $$0) {
+      return this.g.get($$0);
+   }
+
+   public Stream<cwb> b() {
+      return this.g.stream().map(cwb::v);
+   }
+
+   public Iterable<cwb> c() {
+      return this.g;
+   }
+
+   public Iterable<cwb> d() {
+      return Lists.transform(this.g, cwb::v);
+   }
+
+   public int e() {
+      return this.g.size();
+   }
+
+   public Fraction f() {
+      return this.h;
+   }
+
+   public boolean g() {
+      return this.g.isEmpty();
+   }
+
+   public int h() {
+      return this.i;
+   }
+
+   public boolean i() {
+      return this.i != -1;
+   }
+
+   @Override
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else {
+         return !($$0 instanceof cyf $$1) ? false : this.h.equals($$1.h) && cwb.a(this.g, $$1.g);
+      }
+   }
+
+   @Override
+   public int hashCode() {
+      return cwb.a(this.g);
+   }
+
+   @Override
+   public String toString() {
+      return "BundleContents" + this.g;
+   }
+
+   public static class a {
+      private final List<cwb> a;
+      private Fraction b;
+      private int c;
+
+      public a(cyf $$0) {
+         this.a = new ArrayList<>($$0.g);
+         this.b = $$0.h;
+         this.c = $$0.i;
+      }
+
+      public cyf.a a() {
+         this.a.clear();
+         this.b = Fraction.ZERO;
+         this.c = -1;
+         return this;
+      }
+
+      private int b(cwb $$0) {
+         if (!$$0.l()) {
+            return -1;
+         } else {
+            for (int $$1 = 0; $$1 < this.a.size(); $$1++) {
+               if (cwb.c(this.a.get($$1), $$0)) {
+                  return $$1;
+               }
+            }
+
+            return -1;
+         }
+      }
+
+      private int c(cwb $$0) {
+         Fraction $$1 = Fraction.ONE.subtract(this.b);
+         return Math.max($$1.divideBy(cyf.b($$0)).intValue(), 0);
+      }
+
+      public int a(cwb $$0) {
+         if (!cyf.a($$0)) {
+            return 0;
+         } else {
+            int $$1 = Math.min($$0.L(), this.c($$0));
+            if ($$1 == 0) {
+               return 0;
+            } else {
+               this.b = this.b.add(cyf.b($$0).multiplyBy(Fraction.getFraction($$1, 1)));
+               int $$2 = this.b($$0);
+               if ($$2 != -1) {
+                  cwb $$3 = this.a.remove($$2);
+                  cwb $$4 = $$3.c($$3.L() + $$1);
+                  $$0.h($$1);
+                  this.a.add(0, $$4);
+               } else {
+                  this.a.add(0, $$0.a($$1));
+               }
+
+               return $$1;
+            }
+         }
+      }
+
+      public int a(ctl $$0, com $$1) {
+         cwb $$2 = $$0.g();
+         int $$3 = this.c($$2);
+         return cyf.a($$2) ? this.a($$0.b($$2.L(), $$3, $$1)) : 0;
+      }
+
+      public void a(int $$0) {
+         this.c = this.c != $$0 && $$0 < this.a.size() ? $$0 : -1;
+      }
+
+      @Nullable
+      public cwb b() {
+         if (this.a.isEmpty()) {
+            return null;
+         } else {
+            int $$0 = this.c != -1 && this.c < this.a.size() ? this.c : 0;
+            cwb $$1 = this.a.remove($$0).v();
+            this.b = this.b.subtract(cyf.b($$1).multiplyBy(Fraction.getFraction($$1.L(), 1)));
+            this.a(-1);
+            return $$1;
+         }
+      }
+
+      public Fraction c() {
+         return this.b;
+      }
+
+      public cyf d() {
+         return new cyf(List.copyOf(this.a), this.b, this.c);
+      }
    }
 }

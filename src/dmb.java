@@ -1,59 +1,51 @@
 import com.mojang.serialization.MapCodec;
 import javax.annotation.Nullable;
 
-public class dmb extends dlm implements dmo {
-   public static final MapCodec<dmb> c = b(dmb::new);
-   protected static final fab g = dhy.a(0.0, 0.0, 0.0, 16.0, 9.0, 16.0);
-   private static final double h = 0.14;
+public class dmb extends dlt {
+   public static final MapCodec<dmb> e = b(dmb::new);
 
    @Override
-   public MapCodec<dmb> a() {
-      return c;
+   public MapCodec<? extends dmb> a() {
+      return e;
    }
 
-   protected dmb(dvc.d $$0) {
-      super($$0, jl.b, g, true, 0.14);
+   public dmb(dvi.d $$0) {
+      super($$0);
    }
 
-   @Override
-   protected boolean h(dvd $$0) {
-      return $$0.a(dia.G);
+   public static dvj b() {
+      return dig.G.m();
    }
 
    @Override
-   protected dhy b() {
-      return dia.md;
+   public void a(dfb $$0, com $$1, jh $$2, dvj $$3, @Nullable dsm $$4, cwb $$5) {
+      super.a($$0, $$1, $$2, $$3, $$4, $$5);
+      if (!dbu.a($$5, axd.s)) {
+         if ($$0.D_().i()) {
+            $$0.a($$2, false);
+            return;
+         }
+
+         dvj $$6 = $$0.a_($$2.e());
+         if ($$6.d() || $$6.n()) {
+            $$0.b($$2, b());
+         }
+      }
    }
 
    @Override
-   protected boolean o(dvd $$0) {
-      return !$$0.a(dia.kJ);
+   protected void b(dvj $$0, arn $$1, jh $$2, azs $$3) {
+      if ($$1.a(dfk.b, $$2) > 11 - $$0.g()) {
+         this.e($$0, $$1, $$2);
+      }
    }
 
-   @Override
-   public boolean a(@Nullable coh $$0, dea $$1, jg $$2, dvd $$3, erd $$4) {
-      return false;
-   }
-
-   @Override
-   public boolean a(dew $$0, jg $$1, dvd $$2, ere $$3) {
-      return false;
-   }
-
-   @Override
-   protected int a(azr $$0) {
-      return 1;
-   }
-
-   @Nullable
-   @Override
-   public dvd a(czm $$0) {
-      ere $$1 = $$0.q().b_($$0.a());
-      return $$1.a(axf.a) && $$1.e() == 8 ? super.a($$0) : null;
-   }
-
-   @Override
-   protected ere b_(dvd $$0) {
-      return erf.c.a(false);
+   protected void e(dvj $$0, dfb $$1, jh $$2) {
+      if ($$1.D_().i()) {
+         $$1.a($$2, false);
+      } else {
+         $$1.b($$2, b());
+         $$1.b($$2, b().b(), null);
+      }
    }
 }

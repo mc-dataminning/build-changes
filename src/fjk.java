@@ -1,44 +1,37 @@
-import org.joml.Vector2i;
+import java.util.function.IntFunction;
 
-public class fjk {
-   private double a;
-   private double b;
+public enum fjk {
+   a(0, "options.narrator.off"),
+   b(1, "options.narrator.all"),
+   c(2, "options.narrator.chat"),
+   d(3, "options.narrator.system");
 
-   public Vector2i a(double $$0, double $$1) {
-      if (this.a != 0.0 && Math.signum($$0) != Math.signum(this.a)) {
-         this.a = 0.0;
-      }
+   private static final IntFunction<fjk> e = ayb.a(fjk::a, values(), ayb.a.b);
+   private final int f;
+   private final xi g;
 
-      if (this.b != 0.0 && Math.signum($$1) != Math.signum(this.b)) {
-         this.b = 0.0;
-      }
-
-      this.a += $$0;
-      this.b += $$1;
-      int $$2 = (int)this.a;
-      int $$3 = (int)this.b;
-      if ($$2 == 0 && $$3 == 0) {
-         return new Vector2i(0, 0);
-      } else {
-         this.a -= (double)$$2;
-         this.b -= (double)$$3;
-         return new Vector2i($$2, $$3);
-      }
+   private fjk(final int $$0, final String $$1) {
+      this.f = $$0;
+      this.g = xi.c($$1);
    }
 
-   public static int a(double $$0, int $$1, int $$2) {
-      int $$3 = (int)Math.signum($$0);
-      $$1 -= $$3;
-      $$1 = Math.max(-1, $$1);
+   public int a() {
+      return this.f;
+   }
 
-      while ($$1 < 0) {
-         $$1 += $$2;
-      }
+   public xi b() {
+      return this.g;
+   }
 
-      while ($$1 >= $$2) {
-         $$1 -= $$2;
-      }
+   public static fjk a(int $$0) {
+      return e.apply($$0);
+   }
 
-      return $$1;
+   public boolean c() {
+      return this == b || this == c;
+   }
+
+   public boolean d() {
+      return this == b || this == d;
    }
 }

@@ -4,14 +4,13 @@ import com.mojang.datafixers.types.templates.TypeTemplate;
 import java.util.Map;
 import java.util.function.Supplier;
 
-public class bmg extends bjg {
+public class bmg extends bji {
    public bmg(int $$0, Schema $$1) {
       super($$0, $$1);
    }
 
-   public Map<String, Supplier<TypeTemplate>> registerEntities(Schema $$0) {
-      Map<String, Supplier<TypeTemplate>> $$1 = super.registerEntities($$0);
-      $$0.register($$1, "minecraft:ominous_item_spawner", () -> DSL.optionalFields("item", bhs.t.in($$0)));
-      return $$1;
+   public void registerTypes(Schema $$0, Map<String, Supplier<TypeTemplate>> $$1, Map<String, Supplier<TypeTemplate>> $$2) {
+      super.registerTypes($$0, $$1, $$2);
+      $$0.registerType(true, bhu.y, () -> DSL.optionalFields("item", bhu.t.in($$0), "block_state", bhu.u.in($$0)));
    }
 }

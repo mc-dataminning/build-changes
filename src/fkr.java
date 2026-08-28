@@ -1,71 +1,54 @@
 import javax.annotation.Nullable;
 
-public abstract class fkr extends fkx implements fmv {
-   @Nullable
-   private fmw a;
-   private boolean b;
-
-   public fkr(int $$0, int $$1, int $$2, int $$3, xh $$4) {
-      super($$0, $$1, $$2, $$3, $$4);
-   }
-
-   @Override
-   public final boolean aL_() {
-      return this.b;
-   }
-
-   @Override
-   public final void b_(boolean $$0) {
-      this.b = $$0;
+public interface fkr {
+   static fkr a(fne $$0) {
+      return new fkr.a($$0);
    }
 
    @Nullable
-   @Override
-   public fmw aM_() {
-      return this.a;
+   static fkr a(fnd $$0, @Nullable fkr $$1) {
+      return $$1 == null ? null : new fkr.b($$0, $$1);
    }
 
-   @Override
-   public void a(@Nullable fmw $$0) {
-      if (this.a != null) {
-         this.a.a(false);
+   static fkr a(fne $$0, fnd... $$1) {
+      fkr $$2 = a($$0);
+
+      for (fnd $$3 : $$1) {
+         $$2 = a($$3, $$2);
       }
 
-      if ($$0 != null) {
-         $$0.a(true);
+      return $$2;
+   }
+
+   fne a();
+
+   void a(boolean var1);
+
+   public static record a(fne a) implements fkr {
+      @Override
+      public void a(boolean $$0) {
+         this.a.a($$0);
+      }
+   }
+
+   public static record b(fnd a, fkr b) implements fkr {
+      @Override
+      public void a(boolean $$0) {
+         if (!$$0) {
+            this.a.a(null);
+         } else {
+            this.a.a(this.b.a());
+         }
+
+         this.b.a($$0);
       }
 
-      this.a = $$0;
-   }
+      public fnd b() {
+         return this.a;
+      }
 
-   @Nullable
-   @Override
-   public fkj a(fpd $$0) {
-      return fmv.super.a($$0);
-   }
-
-   @Override
-   public boolean a(double $$0, double $$1, int $$2) {
-      return fmv.super.a($$0, $$1, $$2);
-   }
-
-   @Override
-   public boolean b(double $$0, double $$1, int $$2) {
-      return fmv.super.b($$0, $$1, $$2);
-   }
-
-   @Override
-   public boolean a(double $$0, double $$1, int $$2, double $$3, double $$4) {
-      return fmv.super.a($$0, $$1, $$2, $$3, $$4);
-   }
-
-   @Override
-   public boolean aN_() {
-      return fmv.super.aN_();
-   }
-
-   @Override
-   public void a(boolean $$0) {
-      fmv.super.a($$0);
+      public fkr c() {
+         return this.b;
+      }
    }
 }

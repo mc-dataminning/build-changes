@@ -1,43 +1,45 @@
+import java.util.UUID;
 import java.util.function.Consumer;
 import javax.annotation.Nullable;
 
-public class dzx<T extends eac> {
-   private final T a;
-   @Nullable
-   private ki b;
+public class dzx<T extends dzn> implements dzw<T> {
+   private final dzp<T> a;
+   private final dzs<T> b;
 
-   public dzx(T $$0) {
+   public dzx(dzp<T> $$0, dzs<T> $$1) {
       this.a = $$0;
+      this.b = $$1;
    }
 
-   public void a(arm $$0) {
-      this.c($$0);
+   @Nullable
+   @Override
+   public T a(int $$0) {
+      return this.a.a($$0);
    }
 
-   public T a() {
-      return this.a;
+   @Nullable
+   @Override
+   public T a(UUID $$0) {
+      return this.a.a($$0);
    }
 
-   public void b(arm $$0) {
-      a($$0, this.b, $$0x -> $$0x.b(this.a));
+   @Override
+   public Iterable<T> a() {
+      return this.a.a();
    }
 
-   public void c(arm $$0) {
-      this.a.a().a($$0).map(ki::a).ifPresent($$1 -> {
-         if (this.b == null || !this.b.equals($$1)) {
-            a($$0, this.b, $$0xx -> $$0xx.b(this.a));
-            this.b = $$1;
-            a($$0, this.b, $$0xx -> $$0xx.a(this.a));
-         }
-      });
+   @Override
+   public <U extends T> void a(dzu<T, U> $$0, axw<U> $$1) {
+      this.a.a($$0, $$1);
    }
 
-   private static void a(dey $$0, @Nullable ki $$1, Consumer<ead> $$2) {
-      if ($$1 != null) {
-         dwz $$3 = $$0.a($$1.a(), $$1.c(), dya.n, false);
-         if ($$3 != null) {
-            $$2.accept($$3.a($$1.b()));
-         }
-      }
+   @Override
+   public void a(ezi $$0, Consumer<T> $$1) {
+      this.b.b($$0, axw.forConsumer($$1));
+   }
+
+   @Override
+   public <U extends T> void a(dzu<T, U> $$0, ezi $$1, axw<U> $$2) {
+      this.b.a($$0, $$1, $$2);
    }
 }

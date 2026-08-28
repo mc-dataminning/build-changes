@@ -1,17 +1,20 @@
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public abstract class eik {
-   public static final Codec<eik> a = lx.T.q().dispatch(eik::a, eil::a);
+public record eik(eiq b, float c) {
+   public static final Codec<eik> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               eiq.a.fieldOf("above_root_provider").forGetter($$0x -> $$0x.b),
+               Codec.floatRange(0.0F, 1.0F).fieldOf("above_root_placement_chance").forGetter($$0x -> $$0x.c)
+            )
+            .apply($$0, eik::new)
+   );
 
-   public static eit a(dvd $$0) {
-      return new eit($$0);
+   public eiq a() {
+      return this.b;
    }
 
-   public static eit a(dhy $$0) {
-      return new eit($$0.m());
+   public float b() {
+      return this.c;
    }
-
-   protected abstract eil<?> a();
-
-   public abstract dvd a(azr var1, jg var2);
 }

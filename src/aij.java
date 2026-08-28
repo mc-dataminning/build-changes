@@ -1,29 +1,18 @@
-public class aij implements zo<agu> {
-   public static final zf<we, aij> a = zo.a(aij::a, aij::new);
-   private final int b;
+import java.util.Optional;
 
-   public aij(int $$0) {
-      this.b = $$0;
-   }
-
-   private aij(we $$0) {
-      this.b = $$0.readShort();
-   }
-
-   private void a(we $$0) {
-      $$0.m(this.b);
-   }
+public record aij(Optional<jq<bth>> b, Optional<jq<bth>> c) implements zp<agv> {
+   public static final zg<wt, aij> a = zg.a(bth.b.a(ze::a), aij::b, bth.b.a(ze::a), aij::e, aij::new);
 
    @Override
-   public zq<aij> a() {
-      return ags.bW;
+   public zr<aij> a() {
+      return agt.bV;
    }
 
-   public void a(agu $$0) {
+   public void a(agv $$0) {
       $$0.a(this);
    }
 
-   public int b() {
-      return this.b;
+   public Optional<jq<bth>> e() {
+      return this.c;
    }
 }

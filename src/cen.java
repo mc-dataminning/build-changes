@@ -1,25 +1,50 @@
-public class cen extends cez {
-   public static final float a = 8.0F;
+import javax.annotation.Nullable;
 
-   @Override
-   protected boolean a(buv $$0, buv $$1) {
-      return this.f($$0, $$1) && $$1.bn() && (this.b($$1) || this.e($$0, $$1)) && cff.c($$0, $$1);
-   }
+public class cen extends cel {
+   @Nullable
+   private jh p;
 
-   private boolean e(buv $$0, buv $$1) {
-      return !$$0.ed().a(cdz.U) && $$1.aq().a(axd.j);
-   }
-
-   private boolean b(buv $$0) {
-      return $$0.aq().a(axd.i);
-   }
-
-   private boolean f(buv $$0, buv $$1) {
-      return $$1.g((btz)$$0) <= 64.0;
+   public cen(bvc $$0, dfb $$1) {
+      super($$0, $$1);
    }
 
    @Override
-   protected cdz<buv> b() {
-      return cdz.B;
+   public ery a(jh $$0, int $$1) {
+      this.p = $$0;
+      return super.a($$0, $$1);
+   }
+
+   @Override
+   public ery a(bue $$0, int $$1) {
+      this.p = $$0.dx();
+      return super.a($$0, $$1);
+   }
+
+   @Override
+   public boolean a(bue $$0, double $$1) {
+      ery $$2 = this.a($$0, 0);
+      if ($$2 != null) {
+         return this.a($$2, $$1);
+      } else {
+         this.p = $$0.dx();
+         this.d = $$1;
+         return true;
+      }
+   }
+
+   @Override
+   public void c() {
+      if (!this.m()) {
+         super.c();
+      } else {
+         if (this.p != null) {
+            if (!this.p.a(this.a.dv(), (double)this.a.ds())
+               && (!(this.a.dE() > (double)this.p.v()) || !jh.a((double)this.p.u(), this.a.dE(), (double)this.p.w()).a(this.a.dv(), (double)this.a.ds()))) {
+               this.a.M().a((double)this.p.u(), (double)this.p.v(), (double)this.p.w(), this.d);
+            } else {
+               this.p = null;
+            }
+         }
+      }
    }
 }

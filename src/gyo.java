@@ -1,17 +1,152 @@
+import com.google.common.base.Suppliers;
+import com.mojang.logging.LogUtils;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import it.unimi.dsi.fastutil.ints.Int2IntMap;
+import it.unimi.dsi.fastutil.ints.Int2IntOpenHashMap;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Optional;
+import java.util.Map.Entry;
+import java.util.function.IntUnaryOperator;
+import java.util.function.Supplier;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class gyo {
-   @Deprecated
-   public static int[] a(ava $$0, alh $$1) throws IOException {
-      int[] var4;
-      try (
-         InputStream $$2 = $$0.open($$1);
-         fct $$3 = fct.a($$2);
-      ) {
-         var4 = $$3.f();
+public class gyo implements gyh {
+   static final Logger c = LogUtils.getLogger();
+   public static final MapCodec<gyo> b = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(
+               Codec.list(ali.a).fieldOf("textures").forGetter($$0x -> $$0x.d),
+               ali.a.fieldOf("palette_key").forGetter($$0x -> $$0x.f),
+               Codec.unboundedMap(Codec.STRING, ali.a).fieldOf("permutations").forGetter($$0x -> $$0x.e)
+            )
+            .apply($$0, gyo::new)
+   );
+   private final List<ali> d;
+   private final Map<String, ali> e;
+   private final ali f;
+
+   private gyo(List<ali> $$0, ali $$1, Map<String, ali> $$2) {
+      this.d = $$0;
+      this.e = $$2;
+      this.f = $$1;
+   }
+
+   @Override
+   public void a(avb $$0, gyh.a $$1) {
+      Supplier<int[]> $$2 = Suppliers.memoize(() -> a($$0, this.f));
+      Map<String, Supplier<IntUnaryOperator>> $$3 = new HashMap<>();
+      this.e.forEach(($$3x, $$4x) -> $$3.put($$3x, Suppliers.memoize(() -> a($$2.get(), a($$0, $$4x)))));
+
+      for (ali $$4 : this.d) {
+         ali $$5 = a.a($$4);
+         Optional<auz> $$6 = $$0.getResource($$5);
+         if ($$6.isEmpty()) {
+            c.warn("Unable to find texture {}", $$5);
+         } else {
+            gyn $$7 = new gyn($$5, $$6.get(), $$3.size());
+
+            for (Entry<String, Supplier<IntUnaryOperator>> $$8 : $$3.entrySet()) {
+               ali $$9 = $$4.g("_" + $$8.getKey());
+               $$1.a($$9, new gyo.a($$7, $$8.getValue(), $$9));
+            }
+         }
+      }
+   }
+
+   private static IntUnaryOperator a(int[] $$0, int[] $$1) {
+      if ($$1.length != $$0.length) {
+         c.warn("Palette mapping has different sizes: {} and {}", $$0.length, $$1.length);
+         throw new IllegalArgumentException();
+      } else {
+         Int2IntMap $$2 = new Int2IntOpenHashMap($$1.length);
+
+         for (int $$3 = 0; $$3 < $$0.length; $$3++) {
+            int $$4 = $$0[$$3];
+            if (axv.a($$4) != 0) {
+               $$2.put(axv.g($$4), $$1[$$3]);
+            }
+         }
+
+         return $$1x -> {
+            int $$2x = axv.a($$1x);
+            if ($$2x == 0) {
+               return $$1x;
+            } else {
+               int $$3x = axv.g($$1x);
+               int $$4x = $$2.getOrDefault($$3x, axv.f($$3x));
+               int $$5 = axv.a($$4x);
+               return axv.c($$2x * $$5 / 255, $$4x);
+            }
+         };
+      }
+   }
+
+   private static int[] a(avb $$0, ali $$1) {
+      Optional<auz> $$2 = $$0.getResource(a.a($$1));
+      if ($$2.isEmpty()) {
+         c.error("Failed to load palette image {}", $$1);
+         throw new IllegalArgumentException();
+      } else {
+         try {
+            int[] var5;
+            try (
+               InputStream $$3 = $$2.get().d();
+               fdb $$4 = fdb.a($$3);
+            ) {
+               var5 = $$4.e();
+            }
+
+            return var5;
+         } catch (Exception var11) {
+            c.error("Couldn't load texture {}", $$1, var11);
+            throw new IllegalArgumentException();
+         }
+      }
+   }
+
+   @Override
+   public gyj a() {
+      return gyk.e;
+   }
+
+   static record a(gyn a, Supplier<IntUnaryOperator> b, ali c) implements gyh.b {
+      @Nullable
+      public gxx a(gyg $$0) {
+         Object var3;
+         try {
+            fdb $$1 = this.a.a().a(this.b.get());
+            return new gxx(this.c, new gzr($$1.a(), $$1.b()), $$1, avd.a);
+         } catch (IllegalArgumentException | IOException var7) {
+            gyo.c.error("unable to apply palette to {}", this.c, var7);
+            var3 = null;
+         } finally {
+            this.a.b();
+         }
+
+         return (gxx)var3;
       }
 
-      return var4;
+      @Override
+      public void a() {
+         this.a.b();
+      }
+
+      public gyn b() {
+         return this.a;
+      }
+
+      public Supplier<IntUnaryOperator> c() {
+         return this.b;
+      }
+
+      public ali d() {
+         return this.c;
+      }
    }
 }

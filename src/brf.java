@@ -1,25 +1,45 @@
-import java.util.Arrays;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
 
-public class brf implements brg {
-   private final brg[] a;
+public class brf extends bri {
+   public static final brf a = new brf(0);
+   public static final MapCodec<brf> b = Codec.INT.fieldOf("value").xmap(brf::a, brf::d);
+   private final int f;
 
-   public brf(brg... $$0) {
-      this.a = $$0;
+   public static brf a(int $$0) {
+      return $$0 == 0 ? a : new brf($$0);
+   }
+
+   private brf(int $$0) {
+      this.f = $$0;
+   }
+
+   public int d() {
+      return this.f;
    }
 
    @Override
-   public float a(azr $$0) {
-      float $$1 = 1.0F;
+   public int a(azs $$0) {
+      return this.f;
+   }
 
-      for (brg $$2 : this.a) {
-         $$1 *= $$2.a($$0);
-      }
+   @Override
+   public int a() {
+      return this.f;
+   }
 
-      return $$1;
+   @Override
+   public int b() {
+      return this.f;
+   }
+
+   @Override
+   public brj<?> c() {
+      return brj.a;
    }
 
    @Override
    public String toString() {
-      return "MultipliedFloats" + Arrays.toString((Object[])this.a);
+      return Integer.toString(this.f);
    }
 }

@@ -1,48 +1,40 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableList.Builder;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
 import java.util.Optional;
 
-public record bk(List<ef<bsr>> b, Optional<bv> c, Optional<bv> d, Optional<Boolean> e) {
+public record bk(dj.c b, dj.c c, Optional<bw> d, Optional<Boolean> e, Optional<bl> f) {
    public static final Codec<bk> a = RecordCodecBuilder.create(
       $$0 -> $$0.group(
-               ef.a(ly.s).listOf().optionalFieldOf("tags", List.of()).forGetter(bk::a),
-               bv.a.optionalFieldOf("direct_entity").forGetter(bk::b),
-               bv.a.optionalFieldOf("source_entity").forGetter(bk::c),
-               Codec.BOOL.optionalFieldOf("is_direct").forGetter(bk::d)
+               dj.c.d.optionalFieldOf("dealt", dj.c.c).forGetter(bk::a),
+               dj.c.d.optionalFieldOf("taken", dj.c.c).forGetter(bk::b),
+               bw.a.optionalFieldOf("source_entity").forGetter(bk::c),
+               Codec.BOOL.optionalFieldOf("blocked").forGetter(bk::d),
+               bl.a.optionalFieldOf("type").forGetter(bk::e)
             )
             .apply($$0, bk::new)
    );
 
-   public boolean a(arn $$0, bsp $$1) {
-      return this.a($$0.B(), $$0.dv(), $$1);
-   }
-
-   public boolean a(arm $$0, ezh $$1, bsp $$2) {
-      for (ef<bsr> $$3 : this.b) {
-         if (!$$3.a($$2.l())) {
-            return false;
-         }
-      }
-
-      if (this.c.isPresent() && !this.c.get().a($$0, $$1, $$2.c())) {
+   public boolean a(aro $$0, bsu $$1, float $$2, float $$3, boolean $$4) {
+      if (!this.b.d((double)$$2)) {
+         return false;
+      } else if (!this.c.d((double)$$3)) {
+         return false;
+      } else if (this.d.isPresent() && !this.d.get().a($$0, $$1.d())) {
          return false;
       } else {
-         return this.d.isPresent() && !this.d.get().a($$0, $$1, $$2.d()) ? false : !this.e.isPresent() || this.e.get() == $$2.b();
+         return this.e.isPresent() && this.e.get() != $$4 ? false : !this.f.isPresent() || this.f.get().a($$0, $$1);
       }
    }
 
-   public List<ef<bsr>> a() {
+   public dj.c a() {
       return this.b;
    }
 
-   public Optional<bv> b() {
+   public dj.c b() {
       return this.c;
    }
 
-   public Optional<bv> c() {
+   public Optional<bw> c() {
       return this.d;
    }
 
@@ -50,38 +42,53 @@ public record bk(List<ef<bsr>> b, Optional<bv> c, Optional<bv> d, Optional<Boole
       return this.e;
    }
 
+   public Optional<bl> e() {
+      return this.f;
+   }
+
    public static class a {
-      private final Builder<ef<bsr>> a = ImmutableList.builder();
-      private Optional<bv> b = Optional.empty();
-      private Optional<bv> c = Optional.empty();
+      private dj.c a = dj.c.c;
+      private dj.c b = dj.c.c;
+      private Optional<bw> c = Optional.empty();
       private Optional<Boolean> d = Optional.empty();
+      private Optional<bl> e = Optional.empty();
 
       public static bk.a a() {
          return new bk.a();
       }
 
-      public bk.a a(ef<bsr> $$0) {
-         this.a.add($$0);
+      public bk.a a(dj.c $$0) {
+         this.a = $$0;
          return this;
       }
 
-      public bk.a a(bv.a $$0) {
-         this.b = Optional.of($$0.b());
+      public bk.a b(dj.c $$0) {
+         this.b = $$0;
          return this;
       }
 
-      public bk.a b(bv.a $$0) {
-         this.c = Optional.of($$0.b());
+      public bk.a a(bw $$0) {
+         this.c = Optional.of($$0);
          return this;
       }
 
-      public bk.a a(boolean $$0) {
+      public bk.a a(Boolean $$0) {
          this.d = Optional.of($$0);
          return this;
       }
 
+      public bk.a a(bl $$0) {
+         this.e = Optional.of($$0);
+         return this;
+      }
+
+      public bk.a a(bl.a $$0) {
+         this.e = Optional.of($$0.b());
+         return this;
+      }
+
       public bk b() {
-         return new bk(this.a.build(), this.b, this.c, this.d);
+         return new bk(this.a, this.b, this.c, this.d, this.e);
       }
    }
 }

@@ -1,35 +1,144 @@
-import com.mojang.serialization.Codec;
+import com.mojang.logging.LogUtils;
+import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
+import it.unimi.dsi.fastutil.objects.ObjectLinkedOpenHashSet;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
+import java.util.Map;
+import java.util.Optional;
+import java.util.Set;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public enum am implements baf {
-   a("task", n.k),
-   b("challenge", n.f),
-   c("goal", n.k);
+public class am {
+   private static final Logger a = LogUtils.getLogger();
+   private final Map<ali, ai> b = new Object2ObjectOpenHashMap();
+   private final Set<ai> c = new ObjectLinkedOpenHashSet();
+   private final Set<ai> d = new ObjectLinkedOpenHashSet();
+   @Nullable
+   private am.a e;
 
-   public static final Codec<am> d = baf.a(am::values);
-   private final String e;
-   private final n f;
-   private final xh g;
+   private void a(ai $$0) {
+      for (ai $$1 : $$0.e()) {
+         this.a($$1);
+      }
 
-   private am(final String $$0, final n $$1) {
+      a.info("Forgot about advancement {}", $$0.b());
+      this.b.remove($$0.b().a());
+      if ($$0.c() == null) {
+         this.c.remove($$0);
+         if (this.e != null) {
+            this.e.b($$0);
+         }
+      } else {
+         this.d.remove($$0);
+         if (this.e != null) {
+            this.e.d($$0);
+         }
+      }
+   }
+
+   public void a(Set<ali> $$0) {
+      for (ali $$1 : $$0) {
+         ai $$2 = this.b.get($$1);
+         if ($$2 == null) {
+            a.warn("Told to remove advancement {} but I don't know what that is", $$1);
+         } else {
+            this.a($$2);
+         }
+      }
+   }
+
+   public void a(Collection<ah> $$0) {
+      List<ah> $$1 = new ArrayList<>($$0);
+
+      while (!$$1.isEmpty()) {
+         if (!$$1.removeIf(this::b)) {
+            a.error("Couldn't load advancements: {}", $$1);
+            break;
+         }
+      }
+
+      a.info("Loaded {} advancements", this.b.size());
+   }
+
+   private boolean b(ah $$0) {
+      Optional<ali> $$1 = $$0.b().b();
+      ai $$2 = $$1.map(this.b::get).orElse(null);
+      if ($$2 == null && $$1.isPresent()) {
+         return false;
+      } else {
+         ai $$3 = new ai($$0, $$2);
+         if ($$2 != null) {
+            $$2.b($$3);
+         }
+
+         this.b.put($$0.a(), $$3);
+         if ($$2 == null) {
+            this.c.add($$3);
+            if (this.e != null) {
+               this.e.a($$3);
+            }
+         } else {
+            this.d.add($$3);
+            if (this.e != null) {
+               this.e.c($$3);
+            }
+         }
+
+         return true;
+      }
+   }
+
+   public void a() {
+      this.b.clear();
+      this.c.clear();
+      this.d.clear();
+      if (this.e != null) {
+         this.e.a();
+      }
+   }
+
+   public Iterable<ai> b() {
+      return this.c;
+   }
+
+   public Collection<ai> c() {
+      return this.b.values();
+   }
+
+   @Nullable
+   public ai a(ali $$0) {
+      return this.b.get($$0);
+   }
+
+   @Nullable
+   public ai a(ah $$0) {
+      return this.b.get($$0.a());
+   }
+
+   public void a(@Nullable am.a $$0) {
       this.e = $$0;
-      this.f = $$1;
-      this.g = xh.c("advancements.toast." + $$0);
+      if ($$0 != null) {
+         for (ai $$1 : this.c) {
+            $$0.a($$1);
+         }
+
+         for (ai $$2 : this.d) {
+            $$0.c($$2);
+         }
+      }
    }
 
-   public n a() {
-      return this.f;
-   }
+   public interface a {
+      void a(ai var1);
 
-   public xh b() {
-      return this.g;
-   }
+      void b(ai var1);
 
-   @Override
-   public String c() {
-      return this.e;
-   }
+      void c(ai var1);
 
-   public xv a(ag $$0, arn $$1) {
-      return xh.a("chat.type.advancement." + this.e, $$1.S_(), af.a($$0));
+      void d(ai var1);
+
+      void a();
    }
 }

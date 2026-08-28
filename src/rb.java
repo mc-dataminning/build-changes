@@ -1,72 +1,24 @@
+import java.util.OptionalLong;
+
 public class rb {
-   @Deprecated
-   public static final eqh.a a = new eqh.a(-3, 1.0, 1.0, 1.0, 0.0);
-
-   public static void a(qx<eqh.a> $$0) {
-      a($$0, 0, ebi.a, ebi.b, ebi.c, ebi.d);
-      a($$0, -2, ebi.e, ebi.f, ebi.g, ebi.h);
-      a($$0, ebi.i, -7, 1.0, 2.0, 1.0, 0.0, 0.0, 0.0);
-      $$0.a(ebi.j, a);
-      a($$0, ebi.k, -3, 1.0);
-      a($$0, ebi.l, -7, 1.0);
-      a($$0, ebi.m, -1, 1.0);
-      a($$0, ebi.n, -5, 1.0);
-      a($$0, ebi.o, -7, 1.0, 1.0);
-      a($$0, ebi.p, -8, 1.0);
-      a($$0, ebi.q, -8, 1.0);
-      a($$0, ebi.r, -7, 1.0);
-      a($$0, ebi.s, -8, 1.0);
-      a($$0, ebi.t, -11, 1.0);
-      a($$0, ebi.u, -11, 1.0);
-      a($$0, ebi.v, -7, 1.0);
-      a($$0, ebi.w, -7, 1.0);
-      a($$0, ebi.x, -11, 1.0);
-      a($$0, ebi.y, -8, 1.0);
-      a($$0, ebi.z, -5, 1.0);
-      a($$0, ebi.A, -8, 1.0);
-      a($$0, ebi.B, -7, 0.4, 0.5, 1.0);
-      a($$0, ebi.C, -8, 1.0);
-      a($$0, ebi.D, -8, 0.5, 1.0, 2.0, 1.0, 2.0, 1.0, 0.0, 2.0, 0.0);
-      a($$0, ebi.E, -8, 1.0);
-      a($$0, ebi.F, -7, 1.0);
-      a($$0, ebi.G, -7, 1.0);
-      a($$0, ebi.H, -5, 1.0);
-      a($$0, ebi.I, -8, 1.0);
-      a($$0, ebi.J, -8, 1.0);
-      a($$0, ebi.K, -7, 1.0);
-      a($$0, ebi.L, -7, 1.0);
-      a($$0, ebi.M, -16, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0);
-      a($$0, ebi.N, -6, 1.0, 1.0, 1.0);
-      a($$0, ebi.O, -6, 1.0, 1.0, 0.0, 1.0);
-      a($$0, ebi.P, -8, 1.0);
-      a($$0, ebi.Q, -2, 1.0, 1.0, 1.0, 1.0);
-      a($$0, ebi.R, -8, 1.0);
-      a($$0, ebi.S, -6, 1.0, 1.0, 1.0);
-      a($$0, ebi.T, -6, 1.0, 1.0, 1.0, 1.0);
-      a($$0, ebi.U, -3, 1.0);
-      a($$0, ebi.V, -6, 1.0, 1.0, 1.0);
-      a($$0, ebi.W, -2, 1.0);
-      a($$0, ebi.X, -9, 1.0, 1.0, 1.0, 1.0);
-      a($$0, ebi.Y, -8, 1.0, 1.0, 1.0, 1.0);
-      a($$0, ebi.Z, -6, 1.0, 1.0, 1.0, 1.0);
-      a($$0, ebi.aa, -7, 1.0, 1.0, 1.0, 1.0);
-      a($$0, ebi.ab, -4, 1.0, 1.0, 1.0, 1.0);
-      a($$0, ebi.ac, -8, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.013333333333333334);
-      a($$0, ebi.ad, -8, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.013333333333333334);
-      a($$0, ebi.ae, -5, 1.0, 0.0, 0.0, 0.0, 0.0, 0.013333333333333334);
-      a($$0, ebi.af, -3, 1.0, 0.0, 0.0, 0.35);
-      a($$0, ebi.ag, -3, 1.0, 0.0, 0.0, 0.9);
-      a($$0, ebi.ah, -4, 1.0);
-   }
-
-   private static void a(qx<eqh.a> $$0, int $$1, alg<eqh.a> $$2, alg<eqh.a> $$3, alg<eqh.a> $$4, alg<eqh.a> $$5) {
-      a($$0, $$2, -10 + $$1, 1.5, 0.0, 1.0, 0.0, 0.0, 0.0);
-      a($$0, $$3, -8 + $$1, 1.0, 1.0, 0.0, 0.0, 0.0, 0.0);
-      a($$0, $$4, -9 + $$1, 1.0, 1.0, 2.0, 2.0, 2.0, 1.0, 1.0, 1.0, 1.0);
-      a($$0, $$5, -9 + $$1, 1.0, 1.0, 0.0, 1.0, 1.0);
-   }
-
-   private static void a(qx<eqh.a> $$0, alg<eqh.a> $$1, int $$2, double $$3, double... $$4) {
-      $$0.a($$1, new eqh.a($$2, $$3, $$4));
+   public static void a(qy<dzf> $$0) {
+      $$0.a(
+         dzd.a,
+         new dzf(OptionalLong.empty(), true, false, false, true, 1.0, true, false, -64, 384, 384, axa.bc, dzd.e, 0.0F, new dzf.a(false, true, bro.a(0, 7), 0))
+      );
+      $$0.a(
+         dzd.b,
+         new dzf(OptionalLong.of(18000L), false, true, true, false, 8.0, false, true, 0, 256, 128, axa.bd, dzd.f, 0.1F, new dzf.a(true, false, brf.a(7), 15))
+      );
+      $$0.a(
+         dzd.c,
+         new dzf(
+            OptionalLong.of(6000L), false, false, false, false, 1.0, false, false, 0, 256, 256, axa.be, dzd.g, 0.0F, new dzf.a(false, true, bro.a(0, 7), 0)
+         )
+      );
+      $$0.a(
+         dzd.d,
+         new dzf(OptionalLong.empty(), true, true, false, true, 1.0, true, false, -64, 384, 384, axa.bc, dzd.e, 0.0F, new dzf.a(false, true, bro.a(0, 7), 0))
+      );
    }
 }

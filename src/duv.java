@@ -1,113 +1,76 @@
-import com.mojang.serialization.MapCodec;
-import java.util.Collections;
-import java.util.List;
-import javax.annotation.Nullable;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import it.unimi.dsi.fastutil.objects.ObjectLinkedOpenHashSet;
+import java.util.Set;
+import java.util.UUID;
+import java.util.stream.Collectors;
 
-public class duv extends dhk {
-   public static final MapCodec<duv> a = b(duv::new);
-   public static final dvx b = dux.a;
-   public static final dwb<dwf> c = dux.c;
+public class duv {
+   static final String a = "shared_data";
+   static Codec<duv> b = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               cwb.a("display_item").forGetter($$0x -> $$0x.d),
+               kk.c.lenientOptionalFieldOf("connected_players", Set.of()).forGetter($$0x -> $$0x.e),
+               Codec.DOUBLE.lenientOptionalFieldOf("connected_particles_range", dut.b.d()).forGetter($$0x -> $$0x.f)
+            )
+            .apply($$0, duv::new)
+   );
+   private cwb d = cwb.k;
+   private Set<UUID> e = new ObjectLinkedOpenHashSet();
+   private double f = dut.b.d();
+   boolean c;
 
-   @Override
-   public MapCodec<duv> a() {
-      return a;
+   duv(cwb $$0, Set<UUID> $$1, double $$2) {
+      this.d = $$0;
+      this.e.addAll($$1);
+      this.f = $$2;
    }
 
-   public duv(dvc.d $$0) {
-      super($$0);
-      this.l(this.F.b().b(b, jl.c).b(c, dwf.a));
+   duv() {
    }
 
-   @Nullable
-   @Override
-   public dsg a(jg $$0, dvd $$1) {
-      return null;
+   public cwb a() {
+      return this.d;
    }
 
-   public static dsg a(jg $$0, dvd $$1, dvd $$2, jl $$3, boolean $$4, boolean $$5) {
-      return new duz($$0, $$1, $$2, $$3, $$4, $$5);
+   public boolean b() {
+      return !this.d.f();
    }
 
-   @Nullable
-   @Override
-   public <T extends dsg> dsh<T> a(dev $$0, dvd $$1, dsi<T> $$2) {
-      return a($$2, dsi.k, duz::a);
-   }
-
-   @Override
-   protected void a(dvd $$0, dev $$1, jg $$2, dvd $$3, boolean $$4) {
-      if (!$$0.a($$3.b())) {
-         dsg $$5 = $$1.c_($$2);
-         if ($$5 instanceof duz) {
-            ((duz)$$5).k();
-         }
+   public void a(cwb $$0) {
+      if (!cwb.a(this.d, $$0)) {
+         this.d = $$0.v();
+         this.f();
       }
    }
 
-   @Override
-   public void a(dew $$0, jg $$1, dvd $$2) {
-      jg $$3 = $$1.a($$2.c(b).g());
-      dvd $$4 = $$0.a_($$3);
-      if ($$4.b() instanceof duw && $$4.c(duw.c)) {
-         $$0.a($$3, false);
+   boolean c() {
+      return !this.e.isEmpty();
+   }
+
+   Set<UUID> d() {
+      return this.e;
+   }
+
+   double e() {
+      return this.f;
+   }
+
+   void a(arn $$0, jh $$1, duu $$2, dut $$3, double $$4) {
+      Set<UUID> $$5 = $$3.a().detect($$0, $$3.g(), $$1, $$4, false).stream().filter($$1x -> !$$2.b().contains($$1x)).collect(Collectors.toSet());
+      if (!this.e.equals($$5)) {
+         this.e = $$5;
+         this.f();
       }
    }
 
-   @Override
-   protected bry a(dvd $$0, dev $$1, jg $$2, coh $$3, ezd $$4) {
-      if (!$$1.C && $$1.c_($$2) == null) {
-         $$1.a($$2, false);
-         return bry.c;
-      } else {
-         return bry.e;
-      }
+   private void f() {
+      this.c = true;
    }
 
-   @Override
-   protected List<cvx> a(dvd $$0, etz.a $$1) {
-      duz $$2 = this.a($$1.a(), jg.a($$1.a(ews.f)));
-      return $$2 == null ? Collections.emptyList() : $$2.j().a($$1);
-   }
-
-   @Override
-   protected fab a(dvd $$0, dea $$1, jg $$2, ezm $$3) {
-      return ezy.a();
-   }
-
-   @Override
-   protected fab b(dvd $$0, dea $$1, jg $$2, ezm $$3) {
-      duz $$4 = this.a($$1, $$2);
-      return $$4 != null ? $$4.a($$1, $$2) : ezy.a();
-   }
-
-   @Nullable
-   private duz a(dea $$0, jg $$1) {
-      dsg $$2 = $$0.c_($$1);
-      return $$2 instanceof duz ? (duz)$$2 : null;
-   }
-
-   @Override
-   public cvx a(dey $$0, jg $$1, dvd $$2) {
-      return cvx.k;
-   }
-
-   @Override
-   protected dvd a(dvd $$0, dol $$1) {
-      return $$0.b(b, $$1.a($$0.c(b)));
-   }
-
-   @Override
-   protected dvd a(dvd $$0, dmu $$1) {
-      return $$0.a($$1.a($$0.c(b)));
-   }
-
-   @Override
-   protected void a(dve.a<dhy, dvd> $$0) {
-      $$0.a(b, c);
-   }
-
-   @Override
-   protected boolean a(dvd $$0, ert $$1) {
-      return false;
+   void a(duv $$0) {
+      this.d = $$0.d;
+      this.e = $$0.e;
+      this.f = $$0.f;
    }
 }

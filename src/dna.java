@@ -1,22 +1,57 @@
-import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.Codec;
 
-public class dna extends dpp {
-   public static final MapCodec<dna> a = b(dna::new);
+public enum dna implements bag {
+   a("none", h.a),
+   b("left_right", h.B),
+   c("front_back", h.z);
 
-   @Override
-   public MapCodec<dna> a() {
-      return a;
+   public static final Codec<dna> d = bag.a(dna::values);
+   private final String e;
+   private final xi f;
+   private final h g;
+
+   private dna(final String $$0, final h $$1) {
+      this.e = $$0;
+      this.f = xi.c("mirror." + $$0);
+      this.g = $$1;
    }
 
-   public dna(dvc.d $$0) {
-      super($$0);
-   }
-
-   @Override
-   public void a(dvd $$0, dev $$1, jg $$2, azr $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      if ($$3.a(10) == 0) {
-         $$1.a(lq.Z, (double)$$2.u() + $$3.j(), (double)$$2.v() + 1.1, (double)$$2.w() + $$3.j(), 0.0, 0.0, 0.0);
+   public int a(int $$0, int $$1) {
+      int $$2 = $$1 / 2;
+      int $$3 = $$0 > $$2 ? $$0 - $$1 : $$0;
+      switch (this) {
+         case b:
+            return ($$2 - $$3 + $$1) % $$1;
+         case c:
+            return ($$1 - $$3) % $$1;
+         default:
+            return $$0;
       }
+   }
+
+   public dor a(jm $$0) {
+      jm.a $$1 = $$0.o();
+      return (this != b || $$1 != jm.a.c) && (this != c || $$1 != jm.a.a) ? dor.a : dor.c;
+   }
+
+   public jm b(jm $$0) {
+      if (this == c && $$0.o() == jm.a.a) {
+         return $$0.g();
+      } else {
+         return this == b && $$0.o() == jm.a.c ? $$0.g() : $$0;
+      }
+   }
+
+   public h a() {
+      return this.g;
+   }
+
+   public xi b() {
+      return this.f;
+   }
+
+   @Override
+   public String c() {
+      return this.e;
    }
 }

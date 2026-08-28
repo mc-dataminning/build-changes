@@ -1,45 +1,58 @@
-public class csi extends ctg {
-   private final coh a;
-   private int b;
+public abstract class csi {
+   private int a;
 
-   public csi(coh $$0, brr $$1, int $$2, int $$3, int $$4) {
-      super($$1, $$2, $$3, $$4);
+   public static csi a(final csa $$0, final int $$1) {
+      return new csi() {
+         @Override
+         public int b() {
+            return $$0.a($$1);
+         }
+
+         @Override
+         public void a(int $$0x) {
+            $$0.a($$1, $$0);
+         }
+      };
+   }
+
+   public static csi a(final int[] $$0, final int $$1) {
+      return new csi() {
+         @Override
+         public int b() {
+            return $$0[$$1];
+         }
+
+         @Override
+         public void a(int $$0x) {
+            $$0[$$1] = $$0;
+         }
+      };
+   }
+
+   public static csi a() {
+      return new csi() {
+         private int a;
+
+         @Override
+         public int b() {
+            return this.a;
+         }
+
+         @Override
+         public void a(int $$0) {
+            this.a = $$0;
+         }
+      };
+   }
+
+   public abstract int b();
+
+   public abstract void a(int var1);
+
+   public boolean c() {
+      int $$0 = this.b();
+      boolean $$1 = $$0 != this.a;
       this.a = $$0;
-   }
-
-   @Override
-   public boolean a(cvx $$0) {
-      return false;
-   }
-
-   @Override
-   public cvx a(int $$0) {
-      if (this.h()) {
-         this.b = this.b + Math.min($$0, this.g().L());
-      }
-
-      return super.a($$0);
-   }
-
-   @Override
-   public void a(coh $$0, cvx $$1) {
-      this.b_($$1);
-      super.a($$0, $$1);
-   }
-
-   @Override
-   protected void a(cvx $$0, int $$1) {
-      this.b += $$1;
-      this.b_($$0);
-   }
-
-   @Override
-   protected void b_(cvx $$0) {
-      $$0.a(this.a.dX(), this.a, this.b);
-      if (this.a instanceof arn $$1 && this.c instanceof dru $$2) {
-         $$2.a($$1);
-      }
-
-      this.b = 0;
+      return $$1;
    }
 }

@@ -1,15 +1,8 @@
-public class hbb extends hbc {
-   public hbb(cgn $$0) {
-      super($$0, awk.bR, awl.g);
-   }
+import javax.annotation.ParametersAreNonnullByDefault;
 
-   @Override
-   protected hay o() {
-      return new hba(this.n);
-   }
-
-   @Override
-   protected boolean p() {
-      return this.n.ae_();
-   }
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface hbb {
 }

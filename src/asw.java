@@ -1,15 +1,27 @@
-import java.util.function.Consumer;
+import com.google.common.collect.ImmutableList;
+import java.util.List;
+import java.util.concurrent.CompletableFuture;
 
-public class asw implements asd {
-   public static final asd.a a = new asd.a("join_world");
+public interface asw {
+   asw e = new asw() {
+      @Override
+      public CompletableFuture<asg> a(String $$0) {
+         return CompletableFuture.completedFuture(asg.a($$0));
+      }
 
-   @Override
-   public void a(Consumer<zo<?>> $$0) {
-      $$0.accept(abm.a);
+      @Override
+      public CompletableFuture<List<asg>> a(List<String> $$0) {
+         return CompletableFuture.completedFuture($$0.stream().map(asg::a).collect(ImmutableList.toImmutableList()));
+      }
+   };
+
+   default void a() {
    }
 
-   @Override
-   public asd.a a() {
-      return a;
+   default void b() {
    }
+
+   CompletableFuture<asg> a(String var1);
+
+   CompletableFuture<List<asg>> a(List<String> var1);
 }

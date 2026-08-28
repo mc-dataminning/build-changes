@@ -1,22 +1,24 @@
 import com.mojang.brigadier.StringReader;
-import java.util.Optional;
 
-public class boa implements bnq<StringReader, vg> {
-   public static final bnq<StringReader, vg> a = new boa();
+public class boa extends bnr<StringReader> {
+   private final StringReader a;
 
-   private boa() {
+   public boa(bno<StringReader> $$0, bnp<StringReader> $$1, StringReader $$2) {
+      super($$0, $$1);
+      this.a = $$2;
+   }
+
+   public StringReader d() {
+      return this.a;
    }
 
    @Override
-   public Optional<vg> a(bnp<StringReader> $$0) {
-      $$0.b().skipWhitespace();
-      int $$1 = $$0.c();
+   public int c() {
+      return this.a.getCursor();
+   }
 
-      try {
-         return Optional.of(new vh($$0.b()).d());
-      } catch (Exception var4) {
-         $$0.a().a($$1, var4);
-         return Optional.empty();
-      }
+   @Override
+   public void a(int $$0) {
+      this.a.setCursor($$0);
    }
 }

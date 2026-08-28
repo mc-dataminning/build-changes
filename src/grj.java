@@ -1,12 +1,26 @@
-public class grj<M extends fze> extends gsu<M> {
-   private static final alh a = alh.b("textures/entity/bee/bee_stinger.png");
+public class grj extends goj<cpw, gun> {
+   private static final ali a = ali.b("textures/entity/projectiles/wind_charge.png");
+   private final gay b;
 
-   public grj(gpa<?, gvn, M> $$0, gnz.a $$1) {
-      super($$0, new fxe($$1.a(gba.s)), a, gsu.a.b);
+   public grj(gok.a $$0) {
+      super($$0);
+      this.b = new gay($$0.a(gbl.cX));
    }
 
    @Override
-   protected int a(gvn $$0) {
-      return $$0.f;
+   public void a(gun $$0, feb $$1, gih $$2, int $$3) {
+      fef $$4 = $$2.getBuffer(gir.a(a, this.a($$0.p) % 1.0F, 0.0F));
+      this.b.a($$0);
+      this.b.a($$1, $$4, $$3, gxu.d);
+      super.a($$0, $$1, $$2, $$3);
+   }
+
+   protected float a(float $$0) {
+      return $$0 * 0.03F;
+   }
+
+   @Override
+   public gun b() {
+      return new gun();
    }
 }

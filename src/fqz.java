@@ -1,125 +1,132 @@
-enum fqz {
-   a(
-      new fqz.a(alh.b("advancements/tab_above_left_selected"), alh.b("advancements/tab_above_middle_selected"), alh.b("advancements/tab_above_right_selected")),
-      new fqz.a(alh.b("advancements/tab_above_left"), alh.b("advancements/tab_above_middle"), alh.b("advancements/tab_above_right")),
-      28,
-      32,
-      8
-   ),
-   b(
-      new fqz.a(alh.b("advancements/tab_below_left_selected"), alh.b("advancements/tab_below_middle_selected"), alh.b("advancements/tab_below_right_selected")),
-      new fqz.a(alh.b("advancements/tab_below_left"), alh.b("advancements/tab_below_middle"), alh.b("advancements/tab_below_right")),
-      28,
-      32,
-      8
-   ),
-   c(
-      new fqz.a(alh.b("advancements/tab_left_top_selected"), alh.b("advancements/tab_left_middle_selected"), alh.b("advancements/tab_left_bottom_selected")),
-      new fqz.a(alh.b("advancements/tab_left_top"), alh.b("advancements/tab_left_middle"), alh.b("advancements/tab_left_bottom")),
-      32,
-      28,
-      5
-   ),
-   d(
-      new fqz.a(alh.b("advancements/tab_right_top_selected"), alh.b("advancements/tab_right_middle_selected"), alh.b("advancements/tab_right_bottom_selected")),
-      new fqz.a(alh.b("advancements/tab_right_top"), alh.b("advancements/tab_right_middle"), alh.b("advancements/tab_right_bottom")),
-      32,
-      28,
-      5
-   );
+import com.mojang.logging.LogUtils;
+import it.unimi.dsi.fastutil.booleans.BooleanConsumer;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.time.Instant;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-   private final fqz.a e;
-   private final fqz.a f;
-   private final int g;
-   private final int h;
-   private final int i;
+public class fqz extends fra {
+   private static final Logger a = LogUtils.getLogger();
+   private static final int b = 25;
+   private static final xi c = xi.c("recover_world.title").a(n.r);
+   private static final xi d = xi.c("recover_world.bug_tracker");
+   private static final xi s = xi.c("recover_world.restore");
+   private static final xi u = xi.c("recover_world.no_fallback");
+   private static final xi v = xi.c("recover_world.done.title");
+   private static final xi w = xi.c("recover_world.done.success");
+   private static final xi x = xi.c("recover_world.done.failed");
+   private static final xi y = xi.c("recover_world.issue.none").a(n.k);
+   private static final xi z = xi.c("recover_world.issue.missing_file").a(n.m);
+   private final BooleanConsumer A;
+   private final fpa B = fpa.d().a(8);
+   private final xi C;
+   private final fmb D;
+   private final fmb E;
+   private final etq.c F;
 
-   private fqz(final fqz.a $$0, final fqz.a $$1, final int $$2, final int $$3, final int $$4) {
-      this.e = $$0;
-      this.f = $$1;
-      this.g = $$2;
-      this.h = $$3;
-      this.i = $$4;
+   public fqz(fji $$0, BooleanConsumer $$1, etq.c $$2) {
+      super(c);
+      this.A = $$1;
+      this.C = xi.a("recover_world.message", xi.b($$2.f()).a(n.h));
+      this.D = new fmb(this.C, $$0.h);
+      this.F = $$2;
+      Exception $$3 = this.a($$2, false);
+      Exception $$4 = this.a($$2, true);
+      xi $$5 = xi.i().b(this.a($$2, false, $$3)).f("\n").b(this.a($$2, true, $$4));
+      this.E = new fmb($$5, $$0.h);
+      boolean $$6 = $$3 != null && $$4 == null;
+      this.B.c().b();
+      this.B.a(new fmo(this.l, $$0.h));
+      this.B.a(this.D.b(true));
+      this.B.a(this.E);
+      fpa $$7 = fpa.e().a(5);
+      $$7.a(flh.a(d, fpx.b(this, ayg.j)).b(120, 20).a());
+      $$7.a(flh.a(s, $$1x -> this.a($$0)).b(120, 20).a($$6 ? null : fms.a(u)).a()).j = $$6;
+      this.B.a($$7);
+      this.B.a(flh.a(xh.k, $$0x -> this.d()).b(120, 20).a());
+      this.B.a(this::c);
    }
 
-   public int a() {
-      return this.i;
-   }
-
-   public void a(fkm $$0, int $$1, int $$2, boolean $$3, int $$4) {
-      fqz.a $$5 = $$3 ? this.e : this.f;
-      alh $$6;
-      if ($$4 == 0) {
-         $$6 = $$5.a();
-      } else if ($$4 == this.i - 1) {
-         $$6 = $$5.c();
+   private void a(fji $$0) {
+      Exception $$1 = this.a(this.F, false);
+      Exception $$2 = this.a(this.F, true);
+      if ($$1 != null && $$2 == null) {
+         $$0.d(new fql(xi.c("recover_world.restoring")));
+         fwa.a(this.F);
+         if (this.F.n()) {
+            $$0.a(new fpy(this.A, v, w, xh.j, xh.k));
+         } else {
+            $$0.a(new fpt(() -> this.A.accept(false), v, x));
+         }
       } else {
-         $$6 = $$5.b();
-      }
-
-      $$0.a(gig::B, $$6, $$1 + this.a($$4), $$2 + this.b($$4), this.g, this.h);
-   }
-
-   public void a(fkm $$0, int $$1, int $$2, int $$3, cvx $$4) {
-      int $$5 = $$1 + this.a($$3);
-      int $$6 = $$2 + this.b($$3);
-      switch (this) {
-         case a:
-            $$5 += 6;
-            $$6 += 9;
-            break;
-         case b:
-            $$5 += 6;
-            $$6 += 6;
-            break;
-         case c:
-            $$5 += 10;
-            $$6 += 5;
-            break;
-         case d:
-            $$5 += 6;
-            $$6 += 5;
-      }
-
-      $$0.b($$4, $$5, $$6);
-   }
-
-   public int a(int $$0) {
-      switch (this) {
-         case a:
-            return (this.g + 4) * $$0;
-         case b:
-            return (this.g + 4) * $$0;
-         case c:
-            return -this.g + 4;
-         case d:
-            return 248;
-         default:
-            throw new UnsupportedOperationException("Don't know what this tab type is!" + this);
+         a.error(
+            "Failed to recover world, files not as expected. level.dat: {}, level.dat_old: {}",
+            $$1 != null ? $$1.getMessage() : "no issues",
+            $$2 != null ? $$2.getMessage() : "no issues"
+         );
+         $$0.a(new fpt(() -> this.A.accept(false), v, x));
       }
    }
 
-   public int b(int $$0) {
-      switch (this) {
-         case a:
-            return -this.h + 4;
-         case b:
-            return 136;
-         case c:
-            return this.h * $$0;
-         case d:
-            return this.h * $$0;
-         default:
-            throw new UnsupportedOperationException("Don't know what this tab type is!" + this);
+   private xi a(etq.c $$0, boolean $$1, @Nullable Exception $$2) {
+      if ($$1 && $$2 instanceof FileNotFoundException) {
+         return xi.i();
+      } else {
+         xw $$3 = xi.i();
+         Instant $$4 = $$0.a($$1);
+         xw $$5 = $$4 != null ? xi.b(fwl.a.format($$4)) : xi.c("recover_world.state_entry.unknown");
+         $$3.b(xi.a("recover_world.state_entry", $$5.a(n.h)));
+         if ($$2 == null) {
+            $$3.b(y);
+         } else if ($$2 instanceof FileNotFoundException) {
+            $$3.b(z);
+         } else if ($$2 instanceof vb) {
+            $$3.b(xi.b($$2.getCause().toString()).a(n.m));
+         } else {
+            $$3.b(xi.b($$2.toString()).a(n.m));
+         }
+
+         return $$3;
       }
    }
 
-   public boolean a(int $$0, int $$1, int $$2, double $$3, double $$4) {
-      int $$5 = $$0 + this.a($$2);
-      int $$6 = $$1 + this.b($$2);
-      return $$3 > (double)$$5 && $$3 < (double)($$5 + this.g) && $$4 > (double)$$6 && $$4 < (double)($$6 + this.h);
+   @Nullable
+   private Exception a(etq.c $$0, boolean $$1) {
+      try {
+         if (!$$1) {
+            $$0.a($$0.h());
+         } else {
+            $$0.a($$0.i());
+         }
+
+         return null;
+      } catch (uv | vb | IOException var4) {
+         return var4;
+      }
    }
 
-   static record a(alh a, alh b, alh c) {
+   @Override
+   protected void aR_() {
+      super.aR_();
+      this.c();
+   }
+
+   @Override
+   protected void c() {
+      this.E.d(this.n - 50);
+      this.D.d(this.n - 50);
+      this.B.a();
+      fou.a(this.B, this.H());
+   }
+
+   @Override
+   public xi i() {
+      return xh.a(super.i(), this.C);
+   }
+
+   @Override
+   public void d() {
+      this.A.accept(false);
    }
 }

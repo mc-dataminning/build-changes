@@ -1,98 +1,38 @@
-import java.util.ArrayList;
-import java.util.EnumMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Map.Entry;
-import javax.annotation.Nullable;
-
 public class bub {
-   private final Map<bua, List<ezh>> a;
+   public static final bub a = new bub(0.75F, 0.5F, 0.25F);
+   public static final bub b = new bub(0.95F, 0.69F, 0.32F);
+   private final float c;
+   private final float d;
+   private final float e;
 
-   bub(Map<bua, List<ezh>> $$0) {
-      this.a = $$0;
+   private bub(float $$0, float $$1, float $$2) {
+      this.c = $$0;
+      this.d = $$1;
+      this.e = $$2;
    }
 
-   public static bub a(float $$0, float $$1) {
-      return a().a($$0, $$1);
-   }
-
-   public static bub.a a() {
-      return new bub.a();
-   }
-
-   public bub a(float $$0, float $$1, float $$2) {
-      Map<bua, List<ezh>> $$3 = new EnumMap<>(bua.class);
-
-      for (Entry<bua, List<ezh>> $$4 : this.a.entrySet()) {
-         $$3.put($$4.getKey(), a($$4.getValue(), $$0, $$1, $$2));
-      }
-
-      return new bub($$3);
-   }
-
-   private static List<ezh> a(List<ezh> $$0, float $$1, float $$2, float $$3) {
-      List<ezh> $$4 = new ArrayList<>($$0.size());
-
-      for (ezh $$5 : $$0) {
-         $$4.add($$5.d((double)$$1, (double)$$2, (double)$$3));
-      }
-
-      return $$4;
-   }
-
-   @Nullable
-   public ezh a(bua $$0, int $$1, float $$2) {
-      List<ezh> $$3 = this.a.get($$0);
-      return $$1 >= 0 && $$1 < $$3.size() ? a($$3.get($$1), $$2) : null;
-   }
-
-   public ezh b(bua $$0, int $$1, float $$2) {
-      ezh $$3 = this.a($$0, $$1, $$2);
-      if ($$3 == null) {
-         throw new IllegalStateException("Had no attachment point of type: " + $$0 + " for index: " + $$1);
+   public bub.a a(float $$0) {
+      if ($$0 < this.e) {
+         return bub.a.d;
+      } else if ($$0 < this.d) {
+         return bub.a.c;
       } else {
-         return $$3;
+         return $$0 < this.c ? bub.a.b : bub.a.a;
       }
    }
 
-   public ezh c(bua $$0, int $$1, float $$2) {
-      List<ezh> $$3 = this.a.get($$0);
-      if ($$3.isEmpty()) {
-         throw new IllegalStateException("Had no attachment points of type: " + $$0);
-      } else {
-         ezh $$4 = $$3.get(azj.a($$1, 0, $$3.size() - 1));
-         return a($$4, $$2);
-      }
+   public bub.a a(cwb $$0) {
+      return !$$0.m() ? bub.a.a : this.a($$0.o(), $$0.p());
    }
 
-   private static ezh a(ezh $$0, float $$1) {
-      return $$0.b(-$$1 * (float) (Math.PI / 180.0));
+   public bub.a a(int $$0, int $$1) {
+      return this.a((float)($$1 - $$0) / (float)$$1);
    }
 
-   public static class a {
-      private final Map<bua, List<ezh>> a = new EnumMap<>(bua.class);
-
-      a() {
-      }
-
-      public bub.a a(bua $$0, float $$1, float $$2, float $$3) {
-         return this.a($$0, new ezh((double)$$1, (double)$$2, (double)$$3));
-      }
-
-      public bub.a a(bua $$0, ezh $$1) {
-         this.a.computeIfAbsent($$0, $$0x -> new ArrayList<>(1)).add($$1);
-         return this;
-      }
-
-      public bub a(float $$0, float $$1) {
-         Map<bua, List<ezh>> $$2 = new EnumMap<>(bua.class);
-
-         for (bua $$3 : bua.values()) {
-            List<ezh> $$4 = this.a.get($$3);
-            $$2.put($$3, $$4 != null ? List.copyOf($$4) : $$3.a($$0, $$1));
-         }
-
-         return new bub($$2);
-      }
+   public static enum a {
+      a,
+      b,
+      c,
+      d;
    }
 }

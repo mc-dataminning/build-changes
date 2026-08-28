@@ -1,3 +1,3 @@
-public class gvp extends gva {
-   public int a;
+public class gvp extends gvo {
+   public float C = -1.0F;
 }

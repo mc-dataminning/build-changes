@@ -1,46 +1,35 @@
 import com.mojang.serialization.MapCodec;
 import javax.annotation.Nullable;
 
-public class dhq extends dhk implements dhp {
-   public static final MapCodec<dhq> a = b(dhq::new);
-
-   @Override
-   public MapCodec<dhq> a() {
-      return a;
-   }
-
-   public dhq(dvc.d $$0) {
+public abstract class dhq extends die implements dkw {
+   protected dhq(dvi.d $$0) {
       super($$0);
    }
 
    @Override
-   public cuu b() {
-      return cuu.a;
+   protected abstract MapCodec<? extends dhq> a();
+
+   @Override
+   protected dok a_(dvj $$0) {
+      return dok.a;
    }
 
    @Override
-   public dsg a(jg $$0, dvd $$1) {
-      return new dsb($$0, $$1);
+   protected boolean a(dvj $$0, dfb $$1, jh $$2, int $$3, int $$4) {
+      super.a($$0, $$1, $$2, $$3, $$4);
+      dsm $$5 = $$1.c_($$2);
+      return $$5 == null ? false : $$5.a_($$3, $$4);
    }
 
    @Nullable
    @Override
-   public <T extends dsg> dsh<T> a(dev $$0, dvd $$1, dsi<T> $$2) {
-      return a($$2, dsi.o, dsb::a);
+   protected bsf b(dvj $$0, dfb $$1, jh $$2) {
+      dsm $$3 = $$1.c_($$2);
+      return $$3 instanceof bsf ? (bsf)$$3 : null;
    }
 
-   @Override
-   protected bry a(dvd $$0, dev $$1, jg $$2, coh $$3, ezd $$4) {
-      if (!$$1.C && $$1.c_($$2) instanceof dsb $$5) {
-         $$3.a($$5);
-         $$3.a(awu.ab);
-      }
-
-      return bry.a;
-   }
-
-   @Override
-   protected doe a_(dvd $$0) {
-      return doe.c;
+   @Nullable
+   protected static <E extends dsm, A extends dsm> dsn<A> a(dso<A> $$0, dso<E> $$1, dsn<? super E> $$2) {
+      return $$1 == $$0 ? $$2 : null;
    }
 }

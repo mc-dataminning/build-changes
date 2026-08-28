@@ -1,148 +1,77 @@
+import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.ImmutableSet.Builder;
 import java.util.ArrayDeque;
 import java.util.Deque;
-import java.util.function.Consumer;
-import javax.annotation.Nullable;
+import java.util.Set;
 
-public class vo implements vd {
-   private String a = "";
-   @Nullable
-   private vg b;
-   private final Deque<Consumer<vg>> c = new ArrayDeque<>();
+public class vo extends vp {
+   private int a;
+   private final Set<vj<?>> b;
+   private final Deque<vr> c = new ArrayDeque<>();
 
-   @Nullable
-   public vg d() {
-      return this.b;
-   }
+   public vo(vq... $$0) {
+      this.a = $$0.length;
+      Builder<vj<?>> $$1 = ImmutableSet.builder();
+      vr $$2 = vr.a();
 
-   protected int e() {
-      return this.c.size();
-   }
-
-   private void a(vg $$0) {
-      this.c.getLast().accept($$0);
-   }
-
-   @Override
-   public vd.b a() {
-      this.a(ul.b);
-      return vd.b.a;
-   }
-
-   @Override
-   public vd.b a(String $$0) {
-      this.a(ve.a($$0));
-      return vd.b.a;
-   }
-
-   @Override
-   public vd.b a(byte $$0) {
-      this.a(uh.a($$0));
-      return vd.b.a;
-   }
-
-   @Override
-   public vd.b a(short $$0) {
-      this.a(vb.a($$0));
-      return vd.b.a;
-   }
-
-   @Override
-   public vd.b a(int $$0) {
-      this.a(uo.a($$0));
-      return vd.b.a;
-   }
-
-   @Override
-   public vd.b a(long $$0) {
-      this.a(ur.a($$0));
-      return vd.b.a;
-   }
-
-   @Override
-   public vd.b a(float $$0) {
-      this.a(um.a($$0));
-      return vd.b.a;
-   }
-
-   @Override
-   public vd.b a(double $$0) {
-      this.a(uk.a($$0));
-      return vd.b.a;
-   }
-
-   @Override
-   public vd.b a(byte[] $$0) {
-      this.a(new ug($$0));
-      return vd.b.a;
-   }
-
-   @Override
-   public vd.b a(int[] $$0) {
-      this.a(new un($$0));
-      return vd.b.a;
-   }
-
-   @Override
-   public vd.b a(long[] $$0) {
-      this.a(new uq($$0));
-      return vd.b.a;
-   }
-
-   @Override
-   public vd.b a(vi<?> $$0, int $$1) {
-      return vd.b.a;
-   }
-
-   @Override
-   public vd.a b(vi<?> $$0, int $$1) {
-      this.c($$0);
-      return vd.a.a;
-   }
-
-   @Override
-   public vd.a a(vi<?> $$0) {
-      return vd.a.a;
-   }
-
-   @Override
-   public vd.a a(vi<?> $$0, String $$1) {
-      this.a = $$1;
-      this.c($$0);
-      return vd.a.a;
-   }
-
-   private void c(vi<?> $$0) {
-      if ($$0 == up.a) {
-         up $$1 = new up();
-         this.a($$1);
-         this.c.addLast($$1::add);
-      } else if ($$0 == uj.b) {
-         uj $$2 = new uj();
-         this.a($$2);
-         this.c.addLast($$1 -> $$2.a(this.a, $$1));
+      for (vq $$3 : $$0) {
+         $$2.a($$3);
+         $$1.add($$3.b());
       }
+
+      this.c.push($$2);
+      $$1.add(uk.b);
+      this.b = $$1.build();
    }
 
    @Override
-   public vd.b b() {
-      this.c.removeLast();
-      return vd.b.a;
+   public ve.b b(vj<?> $$0) {
+      return $$0 != uk.b ? ve.b.c : super.b($$0);
    }
 
    @Override
-   public vd.b b(vi<?> $$0) {
-      if ($$0 == up.a) {
-         up $$1 = new up();
-         this.b = $$1;
-         this.c.addLast($$1::add);
-      } else if ($$0 == uj.b) {
-         uj $$2 = new uj();
-         this.b = $$2;
-         this.c.addLast($$1 -> $$2.a(this.a, $$1));
+   public ve.a a(vj<?> $$0) {
+      vr $$1 = this.c.element();
+      if (this.e() > $$1.b()) {
+         return super.a($$0);
+      } else if (this.a <= 0) {
+         return ve.a.d;
       } else {
-         this.c.addLast($$0x -> this.b = $$0x);
+         return !this.b.contains($$0) ? ve.a.b : super.a($$0);
+      }
+   }
+
+   @Override
+   public ve.a a(vj<?> $$0, String $$1) {
+      vr $$2 = this.c.element();
+      if (this.e() > $$2.b()) {
+         return super.a($$0, $$1);
+      } else if ($$2.c().remove($$1, $$0)) {
+         this.a--;
+         return super.a($$0, $$1);
+      } else {
+         if ($$0 == uk.b) {
+            vr $$3 = $$2.d().get($$1);
+            if ($$3 != null) {
+               this.c.push($$3);
+               return super.a($$0, $$1);
+            }
+         }
+
+         return ve.a.b;
+      }
+   }
+
+   @Override
+   public ve.b b() {
+      if (this.e() == this.c.element().b()) {
+         this.c.pop();
       }
 
-      return vd.b.a;
+      return super.b();
+   }
+
+   public int c() {
+      return this.a;
    }
 }

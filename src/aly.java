@@ -1,17 +1,9 @@
-public interface aly extends alx {
-   aqf a();
+public interface aly {
+   String ae();
 
-   String b();
+   String M();
 
-   int d();
+   int N();
 
-   String h();
-
-   String[] P();
-
-   String s();
-
-   String u();
-
-   String a(String var1);
+   int O();
 }

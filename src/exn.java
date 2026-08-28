@@ -1,50 +1,27 @@
-import com.google.common.collect.ImmutableSet;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Set;
+import java.util.function.Predicate;
 
-public record exn(float b, dbt c, jp<dbm> g) implements exh {
-   public static final MapCodec<exn> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(
-               Codec.floatRange(0.0F, 1.0F).fieldOf("unenchanted_chance").forGetter(exn::c),
-               dbt.b.fieldOf("enchanted_chance").forGetter(exn::d),
-               dbm.c.fieldOf("enchantment").forGetter(exn::e)
-            )
-            .apply($$0, exn::new)
-   );
+public interface exn extends eud, Predicate<euc> {
+   Codec<exn> d = ly.F.q().dispatch("condition", exn::b, exo::a);
+   Codec<exn> e = Codec.lazyInitialized(() -> Codec.withAlternative(d, exa.b));
+   Codec<jq<exn>> f = ale.a(lz.bf, e);
 
-   @Override
-   public exi b() {
-      return exj.e;
-   }
+   exo b();
 
-   @Override
-   public Set<ewp<?>> a() {
-      return ImmutableSet.of(ews.d);
-   }
+   @FunctionalInterface
+   public interface a {
+      exn build();
 
-   public boolean a(etw $$0) {
-      btz $$1 = $$0.c(ews.d);
-      int $$3 = $$1 instanceof buv $$2 ? dbo.a(this.g, $$2) : 0;
-      float $$4 = $$3 > 0 ? this.c.a($$3) : this.b;
-      return $$0.b().i() < $$4;
-   }
+      default exn.a invert() {
+         return exk.a(this);
+      }
 
-   public static exh.a a(jr.a $$0, float $$1, float $$2) {
-      jr.b<dbm> $$3 = $$0.d(ly.aM);
-      return () -> new exn($$1, new dbt.e($$1 + $$2, $$2), $$3.b(dbr.s));
-   }
+      default exb.a or(exn.a $$0) {
+         return exb.a(this, $$0);
+      }
 
-   public float c() {
-      return this.b;
-   }
-
-   public dbt d() {
-      return this.c;
-   }
-
-   public jp<dbm> e() {
-      return this.g;
+      default exa.a and(exn.a $$0) {
+         return exa.a(this, $$0);
+      }
    }
 }

@@ -1,118 +1,140 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import it.unimi.dsi.fastutil.objects.Reference2ObjectArrayMap;
-import java.util.stream.Stream;
-import javax.annotation.Nullable;
+import it.unimi.dsi.fastutil.longs.Long2IntOpenHashMap;
+import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
 
-public final class ere extends dvf<erd, ere> {
-   public static final Codec<ere> a = a(lx.c.q(), erd::g).stable();
-   public static final int f = 9;
-   public static final int g = 8;
-
-   public ere(erd $$0, Reference2ObjectArrayMap<dwg<?>, Comparable<?>> $$1, MapCodec<ere> $$2) {
-      super($$0, $$1, $$2);
+public class ere extends eqy<ere.a> {
+   protected ere(dxs $$0) {
+      super(dfk.a, $$0, new ere.a(new Long2ObjectOpenHashMap(), new Long2IntOpenHashMap(), Integer.MAX_VALUE));
    }
 
-   public erd a() {
-      return this.d;
+   @Override
+   protected int a(long $$0) {
+      return this.e($$0, false);
    }
 
-   public boolean b() {
-      return this.a().c(this);
-   }
+   protected int e(long $$0, boolean $$1) {
+      long $$2 = kj.e($$0);
+      int $$3 = kj.c($$2);
+      ere.a $$4 = $$1 ? this.d : this.c;
+      int $$5 = $$4.c.get(kj.f($$2));
+      if ($$5 != $$4.b && $$3 < $$5) {
+         dxk $$6 = this.a($$4, $$2);
+         if ($$6 == null) {
+            for ($$0 = jh.e($$0); $$6 == null; $$6 = this.a($$4, $$2)) {
+               if (++$$3 >= $$5) {
+                  return 15;
+               }
 
-   public boolean a(erd $$0) {
-      return this.d == $$0 && this.d.c(this);
-   }
-
-   public boolean c() {
-      return this.a().b();
-   }
-
-   public float a(dea $$0, jg $$1) {
-      return this.a().a(this, $$0, $$1);
-   }
-
-   public float d() {
-      return this.a().a(this);
-   }
-
-   public int e() {
-      return this.a().d(this);
-   }
-
-   public boolean b(dea $$0, jg $$1) {
-      for (int $$2 = -1; $$2 <= 1; $$2++) {
-         for (int $$3 = -1; $$3 <= 1; $$3++) {
-            jg $$4 = $$1.b($$2, 0, $$3);
-            ere $$5 = $$0.b_($$4);
-            if (!$$5.a().a(this.a()) && !$$0.a_($$4).s()) {
-               return true;
+               $$2 = kj.a($$2, jm.b);
             }
          }
+
+         return $$6.a(kj.b(jh.a($$0)), kj.b(jh.b($$0)), kj.b(jh.c($$0)));
+      } else {
+         return $$1 && !this.j($$2) ? 0 : 15;
+      }
+   }
+
+   @Override
+   protected void h(long $$0) {
+      int $$1 = kj.c($$0);
+      if (this.d.b > $$1) {
+         this.d.b = $$1;
+         this.d.c.defaultReturnValue(this.d.b);
       }
 
-      return false;
+      long $$2 = kj.f($$0);
+      int $$3 = this.d.c.get($$2);
+      if ($$3 < $$1 + 1) {
+         this.d.c.put($$2, $$1 + 1);
+      }
    }
 
-   public void a(dev $$0, jg $$1, dvd $$2) {
-      this.a().b($$0, $$1, $$2, this);
+   @Override
+   protected void i(long $$0) {
+      long $$1 = kj.f($$0);
+      int $$2 = kj.c($$0);
+      if (this.d.c.get($$1) == $$2 + 1) {
+         long $$3;
+         for ($$3 = $$0; !this.b($$3) && this.a($$2); $$3 = kj.a($$3, jm.a)) {
+            $$2--;
+         }
+
+         if (this.b($$3)) {
+            this.d.c.put($$1, $$2 + 1);
+         } else {
+            this.d.c.remove($$1);
+         }
+      }
    }
 
-   public void a(dev $$0, jg $$1, azr $$2) {
-      this.a().a($$0, $$1, this, $$2);
+   @Override
+   protected dxk g(long $$0) {
+      dxk $$1 = (dxk)this.g.get($$0);
+      if ($$1 != null) {
+         return $$1;
+      } else {
+         int $$2 = this.d.c.get(kj.f($$0));
+         if ($$2 != this.d.b && kj.c($$0) < $$2) {
+            long $$3 = kj.a($$0, jm.b);
+
+            dxk $$4;
+            while (($$4 = this.a($$3, true)) == null) {
+               $$3 = kj.a($$3, jm.b);
+            }
+
+            return a($$4);
+         } else {
+            return this.j($$0) ? new dxk(15) : new dxk();
+         }
+      }
    }
 
-   public boolean f() {
-      return this.a().i();
+   private static dxk a(dxk $$0) {
+      if ($$0.c()) {
+         return $$0.b();
+      } else {
+         byte[] $$1 = $$0.a();
+         byte[] $$2 = new byte[2048];
+
+         for (int $$3 = 0; $$3 < 16; $$3++) {
+            System.arraycopy($$1, 0, $$2, $$3 * 128, 128);
+         }
+
+         return new dxk($$2);
+      }
    }
 
-   public void b(dev $$0, jg $$1, azr $$2) {
-      this.a().b($$0, $$1, this, $$2);
+   protected boolean a(int $$0) {
+      return $$0 >= this.d.b;
    }
 
-   public ezh c(dea $$0, jg $$1) {
-      return this.a().a($$0, $$1, this);
+   protected boolean m(long $$0) {
+      long $$1 = kj.f($$0);
+      int $$2 = this.d.c.get($$1);
+      return $$2 == this.d.b || kj.c($$0) >= $$2;
    }
 
-   public dvd g() {
-      return this.a().b(this);
+   protected int n(long $$0) {
+      return this.d.c.get($$0);
    }
 
-   @Nullable
-   public lo h() {
-      return this.a().h();
+   protected int c() {
+      return this.d.b;
    }
 
-   public boolean a(axp<erd> $$0) {
-      return this.a().k().a($$0);
-   }
+   protected static final class a extends eqv<ere.a> {
+      int b;
+      final Long2IntOpenHashMap c;
 
-   public boolean a(jt<erd> $$0) {
-      return $$0.a(this.a().k());
-   }
+      public a(Long2ObjectOpenHashMap<dxk> $$0, Long2IntOpenHashMap $$1, int $$2) {
+         super($$0);
+         this.c = $$1;
+         $$1.defaultReturnValue($$2);
+         this.b = $$2;
+      }
 
-   public boolean b(erd $$0) {
-      return this.a() == $$0;
-   }
-
-   public float i() {
-      return this.a().c();
-   }
-
-   public boolean a(dea $$0, jg $$1, erd $$2, jl $$3) {
-      return this.a().a(this, $$0, $$1, $$2, $$3);
-   }
-
-   public fab d(dea $$0, jg $$1) {
-      return this.a().b(this, $$0, $$1);
-   }
-
-   public jp<erd> j() {
-      return this.d.k();
-   }
-
-   public Stream<axp<erd>> k() {
-      return this.d.k().c();
+      public ere.a a() {
+         return new ere.a(this.a.clone(), this.c.clone(), this.b);
+      }
    }
 }

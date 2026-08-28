@@ -1,46 +1,24 @@
-import java.util.Map;
-import java.util.Optional;
-import java.util.Map.Entry;
-import java.util.function.BiConsumer;
-
 public interface ddg {
-   alh a = alh.b("leather");
-   alh b = alh.b("chainmail");
-   alh c = alh.b("iron");
-   alh d = alh.b("gold");
-   alh e = alh.b("diamond");
-   alh f = alh.b("turtle_scute");
-   alh g = alh.b("netherite");
-   alh h = alh.b("armadillo_scute");
-   alh i = alh.b("elytra");
-   Map<cuu, alh> j = ad.a(cuu.class, $$0 -> alh.b($$0.c() + "_carpet"));
-   alh k = alh.b("trader_llama");
+   alh<dda> a = a("mob_spawn_equipment");
+   alh<dda> b = a("pillager_spawn_crossbow");
+   alh<dda> c = a("raid/pillager_post_wave_3");
+   alh<dda> d = a("raid/pillager_post_wave_5");
+   alh<dda> e = a("raid/vindicator");
+   alh<dda> f = a("raid/vindicator_post_wave_5");
+   alh<dda> g = a("enderman_loot_drop");
 
-   static void a(BiConsumer<alh, ddf> $$0) {
-      $$0.accept(a, ddf.a().a(alh.b("leather"), true).a(alh.b("leather_overlay"), false).a(ddf.d.e, ddf.c.a(alh.b("leather"), true)).a());
-      $$0.accept(b, a("chain"));
-      $$0.accept(c, b("iron"));
-      $$0.accept(d, b("gold"));
-      $$0.accept(e, b("diamond"));
-      $$0.accept(f, ddf.a().b(alh.b("turtle_scute"), false).a());
-      $$0.accept(g, a("diamond"));
-      $$0.accept(h, ddf.a().a(ddf.d.d, ddf.c.b(alh.b("armadillo_scute"), false)).a(ddf.d.d, ddf.c.b(alh.b("armadillo_scute_overlay"), true)).a());
-      $$0.accept(i, ddf.a().a(ddf.d.c, new ddf.c(alh.b("elytra"), Optional.empty(), true)).a());
-
-      for (Entry<cuu, alh> $$1 : j.entrySet()) {
-         cuu $$2 = $$1.getKey();
-         alh $$3 = $$1.getValue();
-         $$0.accept($$3, ddf.a().a(ddf.d.f, new ddf.c(alh.b($$2.c()))).a());
-      }
-
-      $$0.accept(k, ddf.a().a(ddf.d.f, new ddf.c(alh.b("trader_llama"))).a());
+   static void a(qy<dda> $$0) {
+      jr<dbs> $$1 = $$0.a(lz.aM);
+      $$0.a(a, new ddd($$1.b(axd.l), 5, 17));
+      $$0.a(b, new dde($$1.b(dbx.K), brf.a(1)));
+      $$0.a(c, new dde($$1.b(dbx.J), brf.a(1)));
+      $$0.a(d, new dde($$1.b(dbx.J), brf.a(2)));
+      $$0.a(e, new dde($$1.b(dbx.n), brf.a(1)));
+      $$0.a(f, new dde($$1.b(dbx.n), brf.a(2)));
+      $$0.a(g, new dde($$1.b(dbx.v), brf.a(1)));
    }
 
-   private static ddf a(String $$0) {
-      return ddf.a().a(alh.b($$0)).a();
-   }
-
-   private static ddf b(String $$0) {
-      return ddf.a().a(alh.b($$0)).a(ddf.d.e, ddf.c.a(alh.b($$0), false)).a();
+   static alh<dda> a(String $$0) {
+      return alh.a(lz.aN, ali.b($$0));
    }
 }

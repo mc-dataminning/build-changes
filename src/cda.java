@@ -1,48 +1,125 @@
-import java.util.EnumSet;
 import javax.annotation.Nullable;
 
-public class cda extends cbt {
-   private final cky a;
-   @Nullable
-   private buv b;
+public class cda extends ccl {
+   private final die g;
+   private final bvc h;
+   private int i;
+   private static final int j = 20;
 
-   public cda(cky $$0) {
-      this.a = $$0;
-      this.a(EnumSet.of(cbt.a.a));
+   public cda(die $$0, bvi $$1, double $$2, int $$3) {
+      super($$1, $$2, 24, $$3);
+      this.g = $$0;
+      this.h = $$1;
    }
 
    @Override
    public boolean b() {
-      buv $$0 = this.a.m();
-      return this.a.y() > 0 || $$0 != null && this.a.g((btz)$$0) < 9.0;
-   }
-
-   @Override
-   public void d() {
-      this.a.P().o();
-      this.b = this.a.m();
+      if (!this.h.dX().ac().b(dex.c)) {
+         return false;
+      } else if (this.c > 0) {
+         this.c--;
+         return false;
+      } else if (this.n()) {
+         this.c = b(20);
+         return true;
+      } else {
+         this.c = this.a(this.a);
+         return false;
+      }
    }
 
    @Override
    public void e() {
-      this.b = null;
+      super.e();
+      this.h.aa = 1.0F;
    }
 
    @Override
-   public boolean V_() {
-      return true;
+   public void d() {
+      super.d();
+      this.i = 0;
+   }
+
+   public void a(dfc $$0, jh $$1) {
+   }
+
+   public void a(dfb $$0, jh $$1) {
    }
 
    @Override
    public void a() {
-      if (this.b == null) {
-         this.a.b(-1);
-      } else if (this.a.g((btz)this.b) > 49.0) {
-         this.a.b(-1);
-      } else if (!this.a.Q().a(this.b)) {
-         this.a.b(-1);
-      } else {
-         this.a.b(1);
+      super.a();
+      dfb $$0 = this.h.dX();
+      jh $$1 = this.h.dx();
+      jh $$2 = this.a($$1, $$0);
+      azs $$3 = this.h.ea();
+      if (this.m() && $$2 != null) {
+         if (this.i > 0) {
+            ezn $$4 = this.h.dA();
+            this.h.n($$4.d, 0.3, $$4.f);
+            if (!$$0.C) {
+               double $$5 = 0.08;
+               ((arn)$$0)
+                  .a(
+                     new ln(lr.S, new cwb(cwf.qS)),
+                     (double)$$2.u() + 0.5,
+                     (double)$$2.v() + 0.7,
+                     (double)$$2.w() + 0.5,
+                     3,
+                     ((double)$$3.i() - 0.5) * 0.08,
+                     ((double)$$3.i() - 0.5) * 0.08,
+                     ((double)$$3.i() - 0.5) * 0.08,
+                     0.15F
+                  );
+            }
+         }
+
+         if (this.i % 2 == 0) {
+            ezn $$6 = this.h.dA();
+            this.h.n($$6.d, -0.3, $$6.f);
+            if (this.i % 6 == 0) {
+               this.a((dfc)$$0, this.e);
+            }
+         }
+
+         if (this.i > 60) {
+            $$0.a($$2, false);
+            if (!$$0.C) {
+               for (int $$7 = 0; $$7 < 20; $$7++) {
+                  double $$8 = $$3.k() * 0.02;
+                  double $$9 = $$3.k() * 0.02;
+                  double $$10 = $$3.k() * 0.02;
+                  ((arn)$$0).a(lr.ab, (double)$$2.u() + 0.5, (double)$$2.v(), (double)$$2.w() + 0.5, 1, $$8, $$9, $$10, 0.15F);
+               }
+
+               this.a($$0, $$2);
+            }
+         }
+
+         this.i++;
       }
+   }
+
+   @Nullable
+   private jh a(jh $$0, deg $$1) {
+      if ($$1.a_($$0).a(this.g)) {
+         return $$0;
+      } else {
+         jh[] $$2 = new jh[]{$$0.e(), $$0.h(), $$0.i(), $$0.f(), $$0.g(), $$0.e().e()};
+
+         for (jh $$3 : $$2) {
+            if ($$1.a_($$3).a(this.g)) {
+               return $$3;
+            }
+         }
+
+         return null;
+      }
+   }
+
+   @Override
+   protected boolean a(dfe $$0, jh $$1) {
+      dxf $$2 = $$0.a(kj.a($$1.u()), kj.a($$1.w()), dyg.n, false);
+      return $$2 == null ? false : $$2.a_($$1).a(this.g) && $$2.a_($$1.d()).l() && $$2.a_($$1.b(2)).l();
    }
 }

@@ -1,78 +1,15 @@
 import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.arguments.IntegerArgumentType;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import com.mojang.brigadier.builder.RequiredArgumentBuilder;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.Dynamic2CommandExceptionType;
-import com.mojang.brigadier.exceptions.DynamicCommandExceptionType;
-import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
-import java.util.Collection;
 
 public class anj {
-   private static final DynamicCommandExceptionType a = new DynamicCommandExceptionType($$0 -> xh.b("commands.enchant.failed.entity", $$0));
-   private static final DynamicCommandExceptionType b = new DynamicCommandExceptionType($$0 -> xh.b("commands.enchant.failed.itemless", $$0));
-   private static final DynamicCommandExceptionType c = new DynamicCommandExceptionType($$0 -> xh.b("commands.enchant.failed.incompatible", $$0));
-   private static final Dynamic2CommandExceptionType d = new Dynamic2CommandExceptionType(($$0, $$1) -> xh.b("commands.enchant.failed.level", $$0, $$1));
-   private static final SimpleCommandExceptionType e = new SimpleCommandExceptionType(xh.c("commands.enchant.failed"));
-
-   public static void a(CommandDispatcher<ev> $$0, er $$1) {
-      $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)ew.a("enchant").requires($$0x -> $$0x.c(2)))
-            .then(
-               ew.a("targets", fi.b())
-                  .then(
-                     ((RequiredArgumentBuilder)ew.a("enchantment", fu.a($$1, ly.aM))
-                           .executes($$0x -> a((ev)$$0x.getSource(), fi.b($$0x, "targets"), fu.g($$0x, "enchantment"), 1)))
-                        .then(
-                           ew.a("level", IntegerArgumentType.integer(0))
-                              .executes(
-                                 $$0x -> a(
-                                       (ev)$$0x.getSource(), fi.b($$0x, "targets"), fu.g($$0x, "enchantment"), IntegerArgumentType.getInteger($$0x, "level")
-                                    )
-                              )
-                        )
-                  )
-            )
-      );
-   }
-
-   private static int a(ev $$0, Collection<? extends btz> $$1, jp<dbm> $$2, int $$3) throws CommandSyntaxException {
-      dbm $$4 = $$2.a();
-      if ($$3 > $$4.e()) {
-         throw d.create($$3, $$4.e());
-      } else {
-         int $$5 = 0;
-
-         for (btz $$6 : $$1) {
-            if ($$6 instanceof buv) {
-               buv $$7 = (buv)$$6;
-               cvx $$8 = $$7.fb();
-               if (!$$8.f()) {
-                  if ($$4.c($$8) && dbo.a(dbo.b($$8).a(), $$2)) {
-                     $$8.a($$2, $$3);
-                     $$5++;
-                  } else if ($$1.size() == 1) {
-                     throw c.create($$8.y().getString());
-                  }
-               } else if ($$1.size() == 1) {
-                  throw b.create($$7.al().getString());
-               }
-            } else if ($$1.size() == 1) {
-               throw a.create($$6.al().getString());
-            }
-         }
-
-         if ($$5 == 0) {
-            throw e.create();
-         } else {
-            if ($$1.size() == 1) {
-               $$0.a(() -> xh.a("commands.enchant.success.single", dbm.a($$2, $$3), $$1.iterator().next().S_()), true);
-            } else {
-               $$0.a(() -> xh.a("commands.enchant.success.multiple", dbm.a($$2, $$3), $$1.size()), true);
-            }
-
-            return $$5;
-         }
-      }
+   public static void a(CommandDispatcher<ew> $$0) {
+      $$0.register((LiteralArgumentBuilder)ex.a("me").then(ex.a("action", fn.a()).executes($$0x -> {
+         fn.a($$0x, "action", $$1 -> {
+            ew $$2 = (ew)$$0x.getSource();
+            avo $$3 = $$2.l().ag();
+            $$3.a($$1, $$2, xe.a(xe.k, $$2));
+         });
+         return 1;
+      })));
    }
 }

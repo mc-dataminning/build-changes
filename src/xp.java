@@ -1,77 +1,71 @@
-import it.unimi.dsi.fastutil.objects.ObjectArrayList;
-import it.unimi.dsi.fastutil.objects.ObjectList;
+import com.google.common.primitives.Ints;
+import com.mojang.serialization.Codec;
+import java.security.SignatureException;
+import java.util.ArrayList;
 import java.util.BitSet;
-import java.util.Objects;
-import javax.annotation.Nullable;
+import java.util.List;
+import java.util.Optional;
 
-public class xp {
-   private final xr[] a;
-   private int b;
-   private int c;
-   @Nullable
-   private xt d;
+public record xp(List<xu> d) {
+   public static final Codec<xp> a = xu.a.listOf().xmap(xp::new, xp::a);
+   public static xp b = new xp(List.of());
+   public static final int c = 20;
 
-   public xp(int $$0) {
-      this.a = new xr[$$0];
-   }
+   public void a(azw.a $$0) throws SignatureException {
+      $$0.update(Ints.toByteArray(this.d.size()));
 
-   public boolean a(xt $$0, boolean $$1) {
-      if (Objects.equals($$0, this.d)) {
-         return false;
-      } else {
-         this.d = $$0;
-         this.a($$1 ? new xr($$0, true) : null);
-         return true;
+      for (xu $$1 : this.d) {
+         $$0.update($$1.b());
       }
    }
 
-   private void a(@Nullable xr $$0) {
-      int $$1 = this.b;
-      this.b = ($$1 + 1) % this.a.length;
-      this.c++;
-      this.a[$$1] = $$0;
+   public xp.a a(xv $$0) {
+      return new xp.a(this.d.stream().map($$1 -> $$1.a($$0)).toList());
    }
 
-   public void a(xt $$0) {
-      for (int $$1 = 0; $$1 < this.a.length; $$1++) {
-         xr $$2 = this.a[$$1];
-         if ($$2 != null && $$2.c() && $$0.equals($$2.b())) {
-            this.a[$$1] = null;
-            break;
+   public List<xu> a() {
+      return this.d;
+   }
+
+   public static record a(List<xu.a> b) {
+      public static final xp.a a = new xp.a(List.of());
+
+      public a(wf $$0) {
+         this($$0.a(wf.a(ArrayList::new, 20), xu.a::a));
+      }
+
+      public void a(wf $$0) {
+         $$0.a(this.b, xu.a::a);
+      }
+
+      public Optional<xp> a(xv $$0) {
+         List<xu> $$1 = new ArrayList<>(this.b.size());
+
+         for (xu.a $$2 : this.b) {
+            Optional<xu> $$3 = $$2.a($$0);
+            if ($$3.isEmpty()) {
+               return Optional.empty();
+            }
+
+            $$1.add($$3.get());
          }
+
+         return Optional.of(new xp($$1));
+      }
+
+      public List<xu.a> a() {
+         return this.b;
       }
    }
 
-   public int a() {
-      int $$0 = this.c;
-      this.c = 0;
-      return $$0;
-   }
-
-   public xp.a b() {
-      int $$0 = this.a();
-      BitSet $$1 = new BitSet(this.a.length);
-      ObjectList<xt> $$2 = new ObjectArrayList(this.a.length);
-
-      for (int $$3 = 0; $$3 < this.a.length; $$3++) {
-         int $$4 = (this.b + $$3) % this.a.length;
-         xr $$5 = this.a[$$4];
-         if ($$5 != null) {
-            $$1.set($$3, true);
-            $$2.add($$5.b());
-            this.a[$$4] = $$5.a();
-         }
+   public static record b(int a, BitSet b) {
+      public b(wf $$0) {
+         this($$0.l(), $$0.e(20));
       }
 
-      xo $$6 = new xo($$2);
-      xo.b $$7 = new xo.b($$0, $$1);
-      return new xp.a($$6, $$7);
-   }
-
-   public int c() {
-      return this.c;
-   }
-
-   public static record a(xo a, xo.b b) {
+      public void a(wf $$0) {
+         $$0.c(this.a);
+         $$0.a(this.b, 20);
+      }
    }
 }

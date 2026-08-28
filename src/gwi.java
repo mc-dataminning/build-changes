@@ -1,5 +1,4 @@
-public class gwi extends gva {
-   public boolean a;
+public class gwi extends gvd {
    public boolean b;
    public boolean c;
 }

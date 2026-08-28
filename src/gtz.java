@@ -1,7 +1,11 @@
 import javax.annotation.Nullable;
 
-public class gtz extends guc {
-   public boolean a = true;
+public class gtz extends guh {
    @Nullable
-   public ezh b;
+   public buc.b.a a;
+
+   @Override
+   public boolean a() {
+      return this.a != null;
+   }
 }

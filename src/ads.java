@@ -1,48 +1,101 @@
-import java.util.BitSet;
-import javax.annotation.Nullable;
+public class ads implements zp<ace> {
+   public static final zg<wt, ads> a = zp.a(ads::a, ads::new);
+   private final double b;
+   private final double c;
+   private final double d;
+   private final float e;
+   private final float f;
+   private final float g;
+   private final float h;
+   private final int i;
+   private final boolean j;
+   private final lp k;
 
-public class ads implements zo<acd> {
-   public static final zf<we, ads> a = zo.a(ads::a, ads::new);
-   private final int b;
-   private final int c;
-   private final adt d;
-
-   public ads(deb $$0, eqt $$1, @Nullable BitSet $$2, @Nullable BitSet $$3) {
-      this.b = $$0.e;
-      this.c = $$0.f;
-      this.d = new adt($$0, $$1, $$2, $$3);
+   public <T extends lp> ads(T $$0, boolean $$1, double $$2, double $$3, double $$4, float $$5, float $$6, float $$7, float $$8, int $$9) {
+      this.k = $$0;
+      this.j = $$1;
+      this.b = $$2;
+      this.c = $$3;
+      this.d = $$4;
+      this.e = $$5;
+      this.f = $$6;
+      this.g = $$7;
+      this.h = $$8;
+      this.i = $$9;
    }
 
-   private ads(we $$0) {
-      this.b = $$0.l();
-      this.c = $$0.l();
-      this.d = new adt($$0, this.b, this.c);
+   private ads(wt $$0) {
+      this.j = $$0.readBoolean();
+      this.b = $$0.readDouble();
+      this.c = $$0.readDouble();
+      this.d = $$0.readDouble();
+      this.e = $$0.readFloat();
+      this.f = $$0.readFloat();
+      this.g = $$0.readFloat();
+      this.h = $$0.readFloat();
+      this.i = $$0.readInt();
+      this.k = lr.bg.decode($$0);
    }
 
-   private void a(we $$0) {
-      $$0.c(this.b);
-      $$0.c(this.c);
-      this.d.a($$0);
+   private void a(wt $$0) {
+      $$0.a(this.j);
+      $$0.a(this.b);
+      $$0.a(this.c);
+      $$0.a(this.d);
+      $$0.a(this.e);
+      $$0.a(this.f);
+      $$0.a(this.g);
+      $$0.a(this.h);
+      $$0.q(this.i);
+      lr.bg.encode($$0, this.k);
    }
 
    @Override
-   public zq<ads> a() {
-      return ags.N;
+   public zr<ads> a() {
+      return agt.M;
    }
 
-   public void a(acd $$0) {
+   public void a(ace $$0) {
       $$0.a(this);
    }
 
-   public int b() {
+   public boolean b() {
+      return this.j;
+   }
+
+   public double e() {
       return this.b;
    }
 
-   public int e() {
+   public double f() {
       return this.c;
    }
 
-   public adt f() {
+   public double g() {
       return this.d;
+   }
+
+   public float h() {
+      return this.e;
+   }
+
+   public float i() {
+      return this.f;
+   }
+
+   public float j() {
+      return this.g;
+   }
+
+   public float k() {
+      return this.h;
+   }
+
+   public int l() {
+      return this.i;
+   }
+
+   public lp m() {
+      return this.k;
    }
 }

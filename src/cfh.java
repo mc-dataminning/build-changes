@@ -1,47 +1,33 @@
 import com.google.common.collect.ImmutableSet;
 import java.util.Comparator;
 import java.util.List;
+import java.util.Optional;
 import java.util.Set;
-import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
-public class cfh extends cff<bvd> {
-   private static final cfm a = cfm.b().d();
-   private final Predicate<cvx> b;
-
-   public cfh(Predicate<cvx> $$0) {
-      this.b = $$0;
-   }
-
-   protected void a(arm $$0, bvd $$1) {
-      bvx<?> $$2 = $$1.ed();
-      cfm $$3 = a.c().a((double)((float)$$1.h(bwd.E)));
-      List<coh> $$4 = $$0.x()
-         .stream()
-         .filter(bue.f)
-         .filter($$2x -> $$3.a($$1, $$2x))
-         .filter(this::a)
-         .filter($$1x -> !$$1.y($$1x))
-         .sorted(Comparator.comparingDouble($$1::g))
-         .collect(Collectors.toList());
-      if (!$$4.isEmpty()) {
-         coh $$5 = $$4.get(0);
-         $$2.a(cdz.O, $$5);
-      } else {
-         $$2.b(cdz.O);
-      }
-   }
-
-   private boolean a(coh $$0) {
-      return this.a($$0.fb()) || this.a($$0.fc());
-   }
-
-   private boolean a(cvx $$0) {
-      return this.b.test($$0);
+public class cfh extends cfk<bva> {
+   @Override
+   public Set<cee<?>> a() {
+      return ImmutableSet.of(cee.j, cee.k, cee.l);
    }
 
    @Override
-   public Set<cdz<?>> a() {
-      return ImmutableSet.of(cdz.O);
+   protected void a(arn $$0, bva $$1) {
+      List<com> $$2 = $$0.x()
+         .stream()
+         .filter(buj.f)
+         .filter($$1x -> $$1.a($$1x, this.a($$1)))
+         .sorted(Comparator.comparingDouble($$1::g))
+         .collect(Collectors.toList());
+      bwc<?> $$3 = $$1.ed();
+      $$3.a(cee.j, $$2);
+      List<com> $$4 = $$2.stream().filter($$1x -> b($$1, $$1x)).collect(Collectors.toList());
+      $$3.a(cee.k, $$4.isEmpty() ? null : $$4.get(0));
+      Optional<com> $$5 = $$4.stream().filter($$1x -> c($$1, $$1x)).findFirst();
+      $$3.a(cee.l, $$5);
+   }
+
+   protected double a(bva $$0) {
+      return $$0.h(bwi.m);
    }
 }

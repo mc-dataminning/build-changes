@@ -1,3 +1,7 @@
-public class guk extends guc {
-   public ezh a = ezh.c;
+import javax.annotation.Nullable;
+
+public class guk extends gun {
+   public boolean a = true;
+   @Nullable
+   public ezn b;
 }

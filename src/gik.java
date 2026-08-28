@@ -1,63 +1,25 @@
-import com.google.common.collect.Queues;
-import com.mojang.logging.LogUtils;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Queue;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
-
 public class gik {
-   private static final Logger a = LogUtils.getLogger();
-   private final Queue<gij> b;
-   private volatile int c;
+   public static final ali a = ali.b("textures/gui/title/background/panorama_overlay.png");
+   private final fji b;
+   private final ghs c;
+   private float d;
 
-   private gik(List<gij> $$0) {
-      this.b = Queues.newArrayDeque($$0);
-      this.c = this.b.size();
+   public gik(ghs $$0) {
+      this.c = $$0;
+      this.b = fji.Q();
    }
 
-   public static gik a(int $$0) {
-      int $$1 = Math.max(1, (int)((double)Runtime.getRuntime().maxMemory() * 0.3) / gij.a);
-      int $$2 = Math.max(1, Math.min($$0, $$1));
-      List<gij> $$3 = new ArrayList<>($$2);
-
-      try {
-         for (int $$4 = 0; $$4 < $$2; $$4++) {
-            $$3.add(new gij());
-         }
-      } catch (OutOfMemoryError var7) {
-         a.warn("Allocated only {}/{} buffers", $$3.size(), $$2);
-         int $$6 = Math.min($$3.size() * 2 / 3, $$3.size() - 1);
-
-         for (int $$7 = 0; $$7 < $$6; $$7++) {
-            $$3.remove($$3.size() - 1).close();
-         }
-      }
-
-      return new gik($$3);
+   public void a(fku $$0, int $$1, int $$2, float $$3, float $$4) {
+      float $$5 = this.b.av().b();
+      float $$6 = (float)((double)$$5 * this.b.n.t().c());
+      this.d = a(this.d + $$6 * 0.1F, 360.0F);
+      $$0.d();
+      this.c.a(this.b, 10.0F, -this.d, $$3);
+      $$0.d();
+      $$0.a(gir::B, a, 0, 0, 0.0F, 0.0F, $$1, $$2, 16, 128, 16, 128, axv.a($$3));
    }
 
-   @Nullable
-   public gij a() {
-      gij $$0 = this.b.poll();
-      if ($$0 != null) {
-         this.c = this.b.size();
-         return $$0;
-      } else {
-         return null;
-      }
-   }
-
-   public void a(gij $$0) {
-      this.b.add($$0);
-      this.c = this.b.size();
-   }
-
-   public boolean b() {
-      return this.b.isEmpty();
-   }
-
-   public int c() {
-      return this.c;
+   private static float a(float $$0, float $$1) {
+      return $$0 > $$1 ? $$0 - $$1 : $$0;
    }
 }

@@ -1,53 +1,55 @@
 import java.util.List;
 
 public class sa {
-   public static final alg<edr<?, ?>> a = ry.a("delta");
-   public static final alg<edr<?, ?>> b = ry.a("small_basalt_columns");
-   public static final alg<edr<?, ?>> c = ry.a("large_basalt_columns");
-   public static final alg<edr<?, ?>> d = ry.a("basalt_blobs");
-   public static final alg<edr<?, ?>> e = ry.a("blackstone_blobs");
-   public static final alg<edr<?, ?>> f = ry.a("glowstone_extra");
-   public static final alg<edr<?, ?>> g = ry.a("crimson_forest_vegetation");
-   public static final alg<edr<?, ?>> h = ry.a("crimson_forest_vegetation_bonemeal");
-   public static final alg<edr<?, ?>> i = ry.a("warped_forest_vegetation");
-   public static final alg<edr<?, ?>> j = ry.a("warped_forest_vegetation_bonemeal");
-   public static final alg<edr<?, ?>> k = ry.a("nether_sprouts");
-   public static final alg<edr<?, ?>> l = ry.a("nether_sprouts_bonemeal");
-   public static final alg<edr<?, ?>> m = ry.a("twisting_vines");
-   public static final alg<edr<?, ?>> n = ry.a("twisting_vines_bonemeal");
-   public static final alg<edr<?, ?>> o = ry.a("weeping_vines");
-   public static final alg<edr<?, ?>> p = ry.a("patch_crimson_roots");
-   public static final alg<edr<?, ?>> q = ry.a("basalt_pillar");
-   public static final alg<edr<?, ?>> r = ry.a("spring_lava_nether");
-   public static final alg<edr<?, ?>> s = ry.a("spring_nether_closed");
-   public static final alg<edr<?, ?>> t = ry.a("spring_nether_open");
-   public static final alg<edr<?, ?>> u = ry.a("patch_fire");
-   public static final alg<edr<?, ?>> v = ry.a("patch_soul_fire");
+   public static final alh<edx<?, ?>> a = rz.a("ice_spike");
+   public static final alh<edx<?, ?>> b = rz.a("ice_patch");
+   public static final alh<edx<?, ?>> c = rz.a("forest_rock");
+   public static final alh<edx<?, ?>> d = rz.a("iceberg_packed");
+   public static final alh<edx<?, ?>> e = rz.a("iceberg_blue");
+   public static final alh<edx<?, ?>> f = rz.a("blue_ice");
+   public static final alh<edx<?, ?>> g = rz.a("lake_lava");
+   public static final alh<edx<?, ?>> h = rz.a("disk_clay");
+   public static final alh<edx<?, ?>> i = rz.a("disk_gravel");
+   public static final alh<edx<?, ?>> j = rz.a("disk_sand");
+   public static final alh<edx<?, ?>> k = rz.a("freeze_top_layer");
+   public static final alh<edx<?, ?>> l = rz.a("disk_grass");
+   public static final alh<edx<?, ?>> m = rz.a("bonus_chest");
+   public static final alh<edx<?, ?>> n = rz.a("void_start_platform");
+   public static final alh<edx<?, ?>> o = rz.a("desert_well");
+   public static final alh<edx<?, ?>> p = rz.a("spring_lava_overworld");
+   public static final alh<edx<?, ?>> q = rz.a("spring_lava_frozen");
+   public static final alh<edx<?, ?>> r = rz.a("spring_water");
 
-   public static void a(qx<edr<?, ?>> $$0) {
-      ry.a($$0, a, eef.aa, new egf(dia.H.m(), dia.kJ.m(), brj.a(3, 7), brj.a(0, 2)));
-      ry.a($$0, b, eef.Z, new egd(bra.a(1), brj.a(1, 4)));
-      ry.a($$0, c, eef.Z, new egd(brj.a(2, 3), brj.a(5, 10)));
-      ry.a($$0, d, eef.ab, new egy(dia.dV.m(), dia.dY.m(), brj.a(3, 7)));
-      ry.a($$0, e, eef.ab, new egy(dia.dV.m(), dia.pr.m(), brj.a(3, 7)));
-      ry.a($$0, f, eef.t);
-      eiu $$1 = new eiu(bqg.<dvd>a().a(dia.oD.m(), 87).a(dia.ox.m(), 11).a(dia.oo.m(), 1));
-      ry.a($$0, g, eef.W, new egp($$1, 8, 4));
-      ry.a($$0, h, eef.W, new egp($$1, 3, 1));
-      eiu $$2 = new eiu(bqg.<dvd>a().a(dia.oq.m(), 85).a(dia.oD.m(), 1).a(dia.oo.m(), 13).a(dia.ox.m(), 1));
-      ry.a($$0, i, eef.W, new egp($$2, 8, 4));
-      ry.a($$0, j, eef.W, new egp($$2, 3, 1));
-      ry.a($$0, k, eef.W, new egp(eik.a(dia.or), 8, 4));
-      ry.a($$0, l, eef.W, new egp(eik.a(dia.or), 3, 1));
-      ry.a($$0, m, eef.Y, new ehg(8, 4, 8));
-      ry.a($$0, n, eef.Y, new ehg(3, 1, 2));
-      ry.a($$0, o, eef.X);
-      ry.a($$0, p, eef.i, ry.a(eef.T, new ehb(eik.a(dia.oD))));
-      ry.a($$0, q, eef.ae);
-      ry.a($$0, r, eef.k, new ehe(erf.e.g(), true, 4, 1, jt.a(dhy::p, dia.dV, dia.dW, dia.L, dia.kJ, dia.pr)));
-      ry.a($$0, s, eef.k, new ehe(erf.e.g(), false, 5, 0, jt.a(dhy::p, dia.dV)));
-      ry.a($$0, t, eef.k, new ehe(erf.e.g(), false, 4, 1, jt.a(dhy::p, dia.dV)));
-      ry.a($$0, u, eef.i, ry.a(eef.T, new ehb(eik.a(dia.cr)), List.of(dia.dV)));
-      ry.a($$0, v, eef.i, ry.a(eef.T, new ehb(eik.a(dia.cs)), List.of(dia.dX)));
+   public static void a(qy<edx<?, ?>> $$0) {
+      rz.a($$0, a, eel.s);
+      rz.a($$0, b, eel.G, new egm(eiy.a(dig.iC), ecm.c(List.of(dig.j, dig.i, dig.l, dig.k, dig.fl, dig.dP, dig.dO)), bro.a(2, 3), 1));
+      rz.a($$0, c, eel.F, new egi(dig.cn.m()));
+      rz.a($$0, d, eel.E, new egi(dig.iC.m()));
+      rz.a($$0, e, eel.E, new egi(dig.mW.m()));
+      rz.a($$0, f, eel.D);
+      rz.a($$0, g, eel.H, new efa.a(eiq.a(dig.H.m()), eiq.a(dig.b.m())));
+      rz.a($$0, h, eel.G, new egm(eiy.a(dig.dR), ecm.c(List.of(dig.j, dig.dR)), bro.a(2, 3), 1));
+      rz.a($$0, i, eel.G, new egm(eiy.a(dig.L), ecm.c(List.of(dig.j, dig.i)), bro.a(2, 5), 2));
+      rz.a(
+         $$0, j, eel.G, new egm(new eiy(eiq.a(dig.I), List.of(new eiy.a(ecm.a(jm.a.q(), dig.a), eiq.a(dig.aV)))), ecm.c(List.of(dig.j, dig.i)), bro.a(2, 6), 2)
+      );
+      rz.a($$0, k, eel.u);
+      rz.a(
+         $$0,
+         l,
+         eel.G,
+         new egm(
+            new eiy(eiq.a(dig.j), List.of(new eiy.a(ecm.a(ecm.b(ecm.b(jm.b.q()), ecm.a(jm.b.q(), erl.c))), eiq.a(dig.i)))),
+            ecm.c(List.of(dig.j, dig.sI)),
+            bro.a(2, 6),
+            2
+         )
+      );
+      rz.a($$0, m, eel.ad);
+      rz.a($$0, n, eel.n);
+      rz.a($$0, o, eel.o);
+      rz.a($$0, p, eel.k, new ehk(erl.e.g(), true, 4, 1, ju.a(die::p, dig.b, dig.c, dig.e, dig.g, dig.sJ, dig.qz, dig.qN, dig.j)));
+      rz.a($$0, q, eel.k, new ehk(erl.e.g(), true, 4, 1, ju.a(die::p, dig.dP, dig.qP, dig.iC)));
+      rz.a($$0, r, eel.k, new ehk(erl.c.g(), true, 4, 1, ju.a(die::p, dig.b, dig.c, dig.e, dig.g, dig.sJ, dig.qz, dig.qN, dig.j, dig.dP, dig.qP, dig.iC)));
    }
 }

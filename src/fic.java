@@ -1,13 +1,34 @@
-public class fic extends fid {
-   private final ffp b;
+public class fic extends fig {
+   private static final xi b = xi.c("mco.connect.connecting");
+   private final hem c;
+   private final ffi d;
+   private final ffj e;
 
-   public fic(ffp $$0, long $$1, xh $$2, Runnable $$3) {
-      super($$1, $$2, $$3);
-      this.b = $$0;
+   public fic(fra $$0, ffi $$1, ffj $$2) {
+      this.d = $$1;
+      this.e = $$2;
+      this.c = new hem($$0);
    }
 
    @Override
-   protected void a(fej $$0, long $$1) throws ffu {
-      $$0.d($$1, this.b.a);
+   public void run() {
+      this.c.a(this.d, gdz.a(this.e.a));
+   }
+
+   @Override
+   public void b() {
+      super.b();
+      this.c.a();
+      fji.Q().af().i();
+   }
+
+   @Override
+   public void c() {
+      this.c.b();
+   }
+
+   @Override
+   public xi a() {
+      return b;
    }
 }

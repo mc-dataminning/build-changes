@@ -1,44 +1,47 @@
-import com.mojang.brigadier.StringReader;
-import com.mojang.brigadier.arguments.ArgumentType;
-import com.mojang.brigadier.context.CommandContext;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.DynamicCommandExceptionType;
-import com.mojang.brigadier.suggestion.Suggestions;
-import com.mojang.brigadier.suggestion.SuggestionsBuilder;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.concurrent.CompletableFuture;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Objects;
+import javax.annotation.Nullable;
 
-public class fd implements ArgumentType<n> {
-   private static final Collection<String> b = Arrays.asList("red", "green");
-   public static final DynamicCommandExceptionType a = new DynamicCommandExceptionType($$0 -> xh.b("argument.color.invalid", $$0));
+public record fd(List<fd.a> b) {
+   public static final fd a = new fd(List.of());
+   private static final int c = 8;
+   private static final int d = 16;
 
-   private fd() {
+   public fd(wf $$0) {
+      this($$0.a(wf.a(ArrayList::new, 8), fd.a::new));
    }
 
-   public static fd a() {
-      return new fd();
+   public void a(wf $$0) {
+      $$0.a(this.b, ($$0x, $$1) -> $$1.a($$0x));
    }
 
-   public static n a(CommandContext<ev> $$0, String $$1) {
-      return (n)$$0.getArgument($$1, n.class);
+   public static fd a(ya<?> $$0, fd.b $$1) {
+      List<fd.a> $$2 = $$0.a().stream().map($$1x -> {
+         xu $$2x = $$1.sign($$1x.c());
+         return $$2x != null ? new fd.a($$1x.a(), $$2x) : null;
+      }).filter(Objects::nonNull).toList();
+      return new fd($$2);
    }
 
-   public n a(StringReader $$0) throws CommandSyntaxException {
-      String $$1 = $$0.readUnquotedString();
-      n $$2 = n.b($$1);
-      if ($$2 != null && !$$2.d()) {
-         return $$2;
-      } else {
-         throw a.createWithContext($$0, $$1);
+   public List<fd.a> a() {
+      return this.b;
+   }
+
+   public static record a(String a, xu b) {
+      public a(wf $$0) {
+         this($$0.d(16), xu.a($$0));
+      }
+
+      public void a(wf $$0) {
+         $$0.a(this.a, 16);
+         xu.a($$0, this.b);
       }
    }
 
-   public <S> CompletableFuture<Suggestions> listSuggestions(CommandContext<S> $$0, SuggestionsBuilder $$1) {
-      return fa.b(n.a(true, false), $$1);
-   }
-
-   public Collection<String> getExamples() {
-      return b;
+   @FunctionalInterface
+   public interface b {
+      @Nullable
+      xu sign(String var1);
    }
 }

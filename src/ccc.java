@@ -1,18 +1,7 @@
-public class ccc extends ccb {
-   private final cno h;
+import java.util.EnumSet;
 
-   public ccc(cno $$0) {
-      super($$0, coh.class, 8.0F);
-      this.h = $$0;
-   }
-
-   @Override
-   public boolean b() {
-      if (this.h.gw()) {
-         this.c = this.h.gv();
-         return true;
-      } else {
-         return false;
-      }
+public abstract class ccc extends cby {
+   public ccc() {
+      this.a(EnumSet.of(cby.a.a, cby.a.c));
    }
 }

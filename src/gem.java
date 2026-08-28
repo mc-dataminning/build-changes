@@ -1,42 +1,44 @@
-public class gem extends gge {
-   private final gfz a;
+public class gem extends ggp {
+   private final ggk a;
 
-   protected gem(gbx $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, gfz $$7) {
+   gem(gci $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, ggk $$7) {
       super($$0, $$1, $$2, $$3);
-      this.u = -0.1F;
-      this.B = 0.9F;
       this.a = $$7;
-      this.j = $$4 + (Math.random() * 2.0 - 1.0) * 0.05F;
-      this.k = $$5 + (Math.random() * 2.0 - 1.0) * 0.05F;
-      this.l = $$6 + (Math.random() * 2.0 - 1.0) * 0.05F;
-      float $$8 = this.r.i() * 0.3F + 0.7F;
-      this.v = $$8;
-      this.w = $$8;
-      this.x = $$8;
-      this.D = 0.1F * (this.r.i() * this.r.i() * 6.0F + 1.0F);
-      this.t = (int)(16.0 / ((double)this.r.i() * 0.8 + 0.2)) + 2;
+      this.t = 4;
+      this.u = 0.008F;
+      this.j = $$4;
+      this.k = $$5;
+      this.l = $$6;
       this.b($$7);
    }
 
    @Override
-   public gfi b() {
-      return gfi.b;
+   public void a() {
+      this.d = this.g;
+      this.e = this.h;
+      this.f = this.i;
+      if (this.s++ >= this.t) {
+         this.k();
+      } else {
+         this.k = this.k - (double)this.u;
+         this.a(this.j, this.k, this.l);
+         this.b(this.a);
+      }
    }
 
    @Override
-   public void a() {
-      super.a();
-      this.b(this.a);
+   public gft b() {
+      return gft.b;
    }
 
-   public static class a implements gfh<lu> {
-      private final gfz a;
+   public static class a implements gfs<lv> {
+      private final ggk a;
 
-      public a(gfz $$0) {
+      public a(ggk $$0) {
          this.a = $$0;
       }
 
-      public gfe a(lu $$0, gbx $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+      public gfp a(lv $$0, gci $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
          return new gem($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
       }
    }

@@ -1,42 +1,19 @@
-import com.google.common.collect.Lists;
 import com.mojang.serialization.Codec;
-import java.util.List;
-import java.util.function.Consumer;
+import com.mojang.serialization.DataResult;
+import java.util.Map;
 
-public record cyo(List<xh> e, List<xh> f) implements cyy {
-   public static final cyo a = new cyo(List.of());
-   public static final int b = 256;
-   private static final ye g = ye.a.a(n.f).b(true);
-   public static final Codec<cyo> c = xj.g.sizeLimitedListOf(256).xmap(cyo::new, cyo::a);
-   public static final zf<ws, cyo> d = xj.b.a(zd.c(256)).a(cyo::new, cyo::a);
+public record cyo(Map<jq<die>, dwm<?>> c) {
+   public static final cyo a = new cyo(Map.of());
+   public static final Codec<cyo> b = Codec.dispatchedMap(ly.e.r(), $$0 -> Codec.STRING.comapFlatMap($$1 -> {
+         dwm<?> $$2 = ((die)$$0.a()).l().a($$1);
+         return $$2 != null ? DataResult.success($$2) : DataResult.error(() -> "No property on " + $$0.g() + " with name: " + $$1);
+      }, dwm::f)).xmap(cyo::new, cyo::a);
 
-   public cyo(List<xh> $$0) {
-      this($$0, Lists.transform($$0, $$0x -> xk.a($$0x.f(), g)));
+   public cyo a(jq<die> $$0, dwm<?> $$1) {
+      return new cyo(ae.a(this.c, $$0, $$1));
    }
 
-   public cyo(List<xh> e, List<xh> f) {
-      if (e.size() > 256) {
-         throw new IllegalArgumentException("Got " + e.size() + " lines, but maximum is 256");
-      } else {
-         this.e = e;
-         this.f = f;
-      }
-   }
-
-   public cyo a(xh $$0) {
-      return new cyo(ad.a(this.e, $$0));
-   }
-
-   @Override
-   public void a(cvt.b $$0, Consumer<xh> $$1, cxp $$2) {
-      this.f.forEach($$1);
-   }
-
-   public List<xh> a() {
-      return this.e;
-   }
-
-   public List<xh> b() {
-      return this.f;
+   public Map<jq<die>, dwm<?>> a() {
+      return this.c;
    }
 }

@@ -2,53 +2,25 @@ import com.mojang.brigadier.StringReader;
 import com.mojang.brigadier.arguments.ArgumentType;
 import com.mojang.brigadier.context.CommandContext;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.DynamicCommandExceptionType;
-import com.mojang.brigadier.suggestion.Suggestions;
-import com.mojang.brigadier.suggestion.SuggestionsBuilder;
 import java.util.Arrays;
 import java.util.Collection;
-import java.util.concurrent.CompletableFuture;
 
-public class fp implements ArgumentType<String> {
-   private static final Collection<String> a = Arrays.asList("foo", "*", "012");
-   private static final DynamicCommandExceptionType b = new DynamicCommandExceptionType($$0 -> xh.b("arguments.objective.notFound", $$0));
-   private static final DynamicCommandExceptionType c = new DynamicCommandExceptionType($$0 -> xh.b("arguments.objective.readonly", $$0));
+public class fp implements ArgumentType<vh> {
+   private static final Collection<String> a = Arrays.asList("0", "0b", "0l", "0.0", "\"foo\"", "{foo=bar}", "[0]");
+
+   private fp() {
+   }
 
    public static fp a() {
       return new fp();
    }
 
-   public static fae a(CommandContext<ev> $$0, String $$1) throws CommandSyntaxException {
-      String $$2 = (String)$$0.getArgument($$1, String.class);
-      fam $$3 = ((ev)$$0.getSource()).l().aJ();
-      fae $$4 = $$3.a($$2);
-      if ($$4 == null) {
-         throw b.create($$2);
-      } else {
-         return $$4;
-      }
+   public static <S> vh a(CommandContext<S> $$0, String $$1) {
+      return (vh)$$0.getArgument($$1, vh.class);
    }
 
-   public static fae b(CommandContext<ev> $$0, String $$1) throws CommandSyntaxException {
-      fae $$2 = a($$0, $$1);
-      if ($$2.c().e()) {
-         throw c.create($$2.b());
-      } else {
-         return $$2;
-      }
-   }
-
-   public String a(StringReader $$0) throws CommandSyntaxException {
-      return $$0.readUnquotedString();
-   }
-
-   public <S> CompletableFuture<Suggestions> listSuggestions(CommandContext<S> $$0, SuggestionsBuilder $$1) {
-      S $$2 = (S)$$0.getSource();
-      if ($$2 instanceof ev $$3) {
-         return fa.b($$3.l().aJ().d(), $$1);
-      } else {
-         return $$2 instanceof fa $$4 ? $$4.a($$0) : Suggestions.empty();
-      }
+   public vh a(StringReader $$0) throws CommandSyntaxException {
+      return new vi($$0).d();
    }
 
    public Collection<String> getExamples() {

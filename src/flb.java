@@ -1,154 +1,171 @@
-import javax.annotation.Nullable;
+public abstract class flb extends flf {
+   private static final fmu a = new fmu(ali.b("widget/text_field"), ali.b("widget/text_field_highlighted"));
+   private static final ali b = ali.b("widget/scroller");
+   private static final int c = 4;
+   private static final int d = 8;
+   private double e;
+   private boolean f;
 
-public class flb extends fkq {
-   private static final alh a = alh.b("widget/checkbox_selected_highlighted");
-   private static final alh b = alh.b("widget/checkbox_selected");
-   private static final alh c = alh.b("widget/checkbox_highlighted");
-   private static final alh d = alh.b("widget/checkbox");
-   private static final int f = 14737632;
-   private static final int m = 4;
-   private static final int n = 8;
-   private boolean o;
-   private final flb.b p;
-   private final flt q;
-
-   flb(int $$0, int $$1, int $$2, xh $$3, fkk $$4, boolean $$5, flb.b $$6) {
-      super($$0, $$1, 0, 0, $$3);
-      this.g = this.a($$2, $$3, $$4);
-      this.q = new flt($$3, $$4).d(this.g).c(14737632);
-      this.h = this.b($$4);
-      this.o = $$5;
-      this.p = $$6;
-   }
-
-   private int a(int $$0, xh $$1, fkk $$2) {
-      return Math.min(b($$1, $$2), $$0);
-   }
-
-   private int b(fkk $$0) {
-      return Math.max(a($$0), this.q.w());
-   }
-
-   static int b(xh $$0, fkk $$1) {
-      return a($$1) + 4 + $$1.a($$0);
-   }
-
-   public static flb.a a(xh $$0, fkk $$1) {
-      return new flb.a($$0, $$1);
-   }
-
-   public static int a(fkk $$0) {
-      return 9 + 8;
+   public flb(int $$0, int $$1, int $$2, int $$3, xi $$4) {
+      super($$0, $$1, $$2, $$3, $$4);
    }
 
    @Override
-   public void b() {
-      this.o = !this.o;
-      this.p.onValueChange(this, this.o);
-   }
-
-   public boolean a() {
-      return this.o;
-   }
-
-   @Override
-   public void a(fox $$0) {
-      $$0.a(fow.a, this.aP_());
-      if (this.j) {
-         if (this.aN_()) {
-            $$0.a(fow.d, xh.c("narration.checkbox.usage.focused"));
+   public boolean a(double $$0, double $$1, int $$2) {
+      if (!this.k) {
+         return false;
+      } else {
+         boolean $$3 = this.b($$0, $$1);
+         boolean $$4 = this.e()
+            && $$0 >= (double)(this.D() + this.g)
+            && $$0 <= (double)(this.D() + this.g + 8)
+            && $$1 >= (double)this.E()
+            && $$1 < (double)(this.E() + this.h);
+         if ($$4 && $$2 == 0) {
+            this.f = true;
+            return true;
          } else {
-            $$0.a(fow.d, xh.c("narration.checkbox.usage.hovered"));
+            return $$3 || $$4;
          }
       }
    }
 
    @Override
-   public void b(fkm $$0, int $$1, int $$2, float $$3) {
-      fja $$4 = fja.Q();
-      fkk $$5 = $$4.h;
-      alh $$6;
-      if (this.o) {
-         $$6 = this.aN_() ? a : b;
+   public boolean b(double $$0, double $$1, int $$2) {
+      if ($$2 == 0) {
+         this.f = false;
+      }
+
+      return super.b($$0, $$1, $$2);
+   }
+
+   @Override
+   public boolean a(double $$0, double $$1, int $$2, double $$3, double $$4) {
+      if (this.k && this.aM_() && this.f) {
+         if ($$1 < (double)this.E()) {
+            this.a(0.0);
+         } else if ($$1 > (double)(this.E() + this.h)) {
+            this.a((double)this.d());
+         } else {
+            int $$5 = this.j();
+            double $$6 = (double)Math.max(1, this.d() / (this.h - $$5));
+            this.a(this.e + $$4 * $$6);
+         }
+
+         return true;
       } else {
-         $$6 = this.aN_() ? c : d;
-      }
-
-      int $$8 = a($$5);
-      $$0.a(gig::B, $$6, this.D(), this.E(), $$8, $$8, axu.a(this.l));
-      int $$9 = this.D() + $$8 + 4;
-      int $$10 = this.E() + $$8 / 2 - this.q.w() / 2;
-      this.q.c($$9, $$10);
-      this.q.b($$0, $$1, $$2, $$3);
-   }
-
-   public static class a {
-      private final xh a;
-      private final fkk b;
-      private int c;
-      private int d = 0;
-      private int e = 0;
-      private flb.b f = flb.b.a;
-      private boolean g = false;
-      @Nullable
-      private fjd<Boolean> h = null;
-      @Nullable
-      private fmk i = null;
-
-      a(xh $$0, fkk $$1) {
-         this.a = $$0;
-         this.b = $$1;
-         this.c = flb.b($$0, $$1);
-      }
-
-      public flb.a a(int $$0, int $$1) {
-         this.d = $$0;
-         this.e = $$1;
-         return this;
-      }
-
-      public flb.a a(flb.b $$0) {
-         this.f = $$0;
-         return this;
-      }
-
-      public flb.a a(boolean $$0) {
-         this.g = $$0;
-         this.h = null;
-         return this;
-      }
-
-      public flb.a a(fjd<Boolean> $$0) {
-         this.h = $$0;
-         this.g = $$0.c();
-         return this;
-      }
-
-      public flb.a a(fmk $$0) {
-         this.i = $$0;
-         return this;
-      }
-
-      public flb.a a(int $$0) {
-         this.c = $$0;
-         return this;
-      }
-
-      public flb a() {
-         flb.b $$0 = this.h == null ? this.f : ($$0x, $$1x) -> {
-            this.h.a($$1x);
-            this.f.onValueChange($$0x, $$1x);
-         };
-         flb $$1 = new flb(this.d, this.e, this.c, this.a, this.b, this.g, $$0);
-         $$1.a(this.i);
-         return $$1;
+         return false;
       }
    }
 
-   public interface b {
-      flb.b a = ($$0, $$1) -> {
-      };
-
-      void onValueChange(flb var1, boolean var2);
+   @Override
+   public boolean a(double $$0, double $$1, double $$2, double $$3) {
+      if (!this.k) {
+         return false;
+      } else {
+         this.a(this.e - $$3 * this.i());
+         return true;
+      }
    }
+
+   @Override
+   public boolean a(int $$0, int $$1, int $$2) {
+      boolean $$3 = $$0 == 265;
+      boolean $$4 = $$0 == 264;
+      if ($$3 || $$4) {
+         double $$5 = this.e;
+         this.a(this.e + (double)($$3 ? -1 : 1) * this.i());
+         if ($$5 != this.e) {
+            return true;
+         }
+      }
+
+      return super.a($$0, $$1, $$2);
+   }
+
+   @Override
+   public void b(fku $$0, int $$1, int $$2, float $$3) {
+      if (this.k) {
+         this.b($$0);
+         $$0.c(this.D() + 1, this.E() + 1, this.D() + this.g - 1, this.E() + this.h - 1);
+         $$0.c().a();
+         $$0.c().a(0.0, -this.e, 0.0);
+         this.c($$0, $$1, $$2, $$3);
+         $$0.c().b();
+         $$0.e();
+         this.a($$0);
+      }
+   }
+
+   private int j() {
+      return azk.a((int)((float)(this.h * this.h) / (float)this.k()), 32, this.h);
+   }
+
+   protected void a(fku $$0) {
+      if (this.e()) {
+         this.c($$0);
+      }
+   }
+
+   protected int a() {
+      return 4;
+   }
+
+   protected int b() {
+      return this.a() * 2;
+   }
+
+   protected double c() {
+      return this.e;
+   }
+
+   protected void a(double $$0) {
+      this.e = azk.a($$0, 0.0, (double)this.d());
+   }
+
+   protected int d() {
+      return Math.max(0, this.k() - (this.h - 4));
+   }
+
+   private int k() {
+      return this.h() + 4;
+   }
+
+   protected void b(fku $$0) {
+      this.a($$0, this.D(), this.E(), this.y(), this.w());
+   }
+
+   protected void a(fku $$0, int $$1, int $$2, int $$3, int $$4) {
+      ali $$5 = a.a(this.C(), this.aM_());
+      $$0.a(gir::B, $$5, $$1, $$2, $$3, $$4);
+   }
+
+   private void c(fku $$0) {
+      int $$1 = this.j();
+      int $$2 = this.D() + this.g;
+      int $$3 = Math.max(this.E(), (int)this.e * (this.h - $$1) / this.d() + this.E());
+      $$0.a(gir::B, b, $$2, $$3, 8, $$1);
+   }
+
+   protected boolean a(int $$0, int $$1) {
+      return (double)$$1 - this.e >= (double)this.E() && (double)$$0 - this.e <= (double)(this.E() + this.h);
+   }
+
+   protected boolean b(double $$0, double $$1) {
+      return $$0 >= (double)this.D() && $$0 < (double)(this.D() + this.g) && $$1 >= (double)this.E() && $$1 < (double)(this.E() + this.h);
+   }
+
+   protected boolean e() {
+      return this.h() > this.w();
+   }
+
+   public int f() {
+      return 8;
+   }
+
+   protected abstract int h();
+
+   protected abstract double i();
+
+   protected abstract void c(fku var1, int var2, int var3, float var4);
 }

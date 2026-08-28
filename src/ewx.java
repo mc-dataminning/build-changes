@@ -1,60 +1,54 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableList.Builder;
+import com.google.common.collect.BiMap;
+import com.google.common.collect.HashBiMap;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.function.Function;
-import java.util.function.Predicate;
+import com.mojang.serialization.DataResult;
+import java.util.Optional;
+import java.util.function.Consumer;
 
-public abstract class ewx implements exh {
-   protected final List<exh> c;
-   private final Predicate<etw> a;
+public class ewx {
+   private static final BiMap<ali, eww> y = HashBiMap.create();
+   public static final Codec<eww> a = ali.a
+      .comapFlatMap(
+         $$0 -> Optional.ofNullable((eww)y.get($$0))
+               .<DataResult>map(DataResult::success)
+               .orElseGet(() -> DataResult.error(() -> "No parameter set exists with id: '" + $$0 + "'")),
+         y.inverse()::get
+      );
+   public static final eww b = a("empty", $$0 -> {
+   });
+   public static final eww c = a("chest", $$0 -> $$0.a(ewy.f).b(ewy.a));
+   public static final eww d = a("command", $$0 -> $$0.a(ewy.f).b(ewy.a));
+   public static final eww e = a("selector", $$0 -> $$0.a(ewy.f).a(ewy.a));
+   public static final eww f = a("fishing", $$0 -> $$0.a(ewy.f).a(ewy.i).b(ewy.a));
+   public static final eww g = a("entity", $$0 -> $$0.a(ewy.a).a(ewy.f).a(ewy.c).b(ewy.d).b(ewy.e).b(ewy.b));
+   public static final eww h = a("equipment", $$0 -> $$0.a(ewy.f).a(ewy.a));
+   public static final eww i = a("archaeology", $$0 -> $$0.a(ewy.f).a(ewy.a).a(ewy.i));
+   public static final eww j = a("gift", $$0 -> $$0.a(ewy.f).a(ewy.a));
+   public static final eww k = a("barter", $$0 -> $$0.a(ewy.a));
+   public static final eww l = a("vault", $$0 -> $$0.a(ewy.f).b(ewy.a).b(ewy.i));
+   public static final eww m = a("advancement_reward", $$0 -> $$0.a(ewy.a).a(ewy.f));
+   public static final eww n = a("advancement_entity", $$0 -> $$0.a(ewy.a).a(ewy.f));
+   public static final eww o = a("advancement_location", $$0 -> $$0.a(ewy.a).a(ewy.f).a(ewy.i).a(ewy.g));
+   public static final eww p = a("block_use", $$0 -> $$0.a(ewy.a).a(ewy.f).a(ewy.g));
+   public static final eww q = a("generic", $$0 -> $$0.a(ewy.a).a(ewy.b).a(ewy.c).a(ewy.d).a(ewy.e).a(ewy.f).a(ewy.g).a(ewy.h).a(ewy.i).a(ewy.j));
+   public static final eww r = a("block", $$0 -> $$0.a(ewy.g).a(ewy.f).a(ewy.i).b(ewy.a).b(ewy.h).b(ewy.j));
+   public static final eww s = a("shearing", $$0 -> $$0.a(ewy.f).a(ewy.a).a(ewy.i));
+   public static final eww t = a("enchanted_damage", $$0 -> $$0.a(ewy.a).a(ewy.k).a(ewy.f).a(ewy.c).b(ewy.e).b(ewy.d));
+   public static final eww u = a("enchanted_item", $$0 -> $$0.a(ewy.i).a(ewy.k));
+   public static final eww v = a("enchanted_location", $$0 -> $$0.a(ewy.a).a(ewy.k).a(ewy.f).a(ewy.l));
+   public static final eww w = a("enchanted_entity", $$0 -> $$0.a(ewy.a).a(ewy.k).a(ewy.f));
+   public static final eww x = a("hit_block", $$0 -> $$0.a(ewy.a).a(ewy.k).a(ewy.f).a(ewy.g));
 
-   protected ewx(List<exh> $$0, Predicate<etw> $$1) {
-      this.c = $$0;
-      this.a = $$1;
-   }
-
-   protected static <T extends ewx> MapCodec<T> a(Function<List<exh>, T> $$0) {
-      return RecordCodecBuilder.mapCodec($$1 -> $$1.group(exh.e.listOf().fieldOf("terms").forGetter($$0xx -> $$0xx.c)).apply($$1, $$0));
-   }
-
-   protected static <T extends ewx> Codec<T> b(Function<List<exh>, T> $$0) {
-      return exh.e.listOf().xmap($$0, $$0x -> $$0x.c);
-   }
-
-   public final boolean a(etw $$0) {
-      return this.a.test($$0);
-   }
-
-   @Override
-   public void a(euc $$0) {
-      exh.super.a($$0);
-
-      for (int $$1 = 0; $$1 < this.c.size(); $$1++) {
-         this.c.get($$1).a($$0.a(".term[" + $$1 + "]"));
+   private static eww a(String $$0, Consumer<eww.a> $$1) {
+      eww.a $$2 = new eww.a();
+      $$1.accept($$2);
+      eww $$3 = $$2.a();
+      ali $$4 = ali.b($$0);
+      eww $$5 = (eww)y.put($$4, $$3);
+      if ($$5 != null) {
+         throw new IllegalStateException("Loot table parameter set " + $$4 + " is already registered");
+      } else {
+         return $$3;
       }
-   }
-
-   public abstract static class a implements exh.a {
-      private final Builder<exh> a = ImmutableList.builder();
-
-      protected a(exh.a... $$0) {
-         for (exh.a $$1 : $$0) {
-            this.a.add($$1.build());
-         }
-      }
-
-      public void a(exh.a $$0) {
-         this.a.add($$0.build());
-      }
-
-      @Override
-      public exh build() {
-         return this.a(this.a.build());
-      }
-
-      protected abstract exh a(List<exh> var1);
    }
 }

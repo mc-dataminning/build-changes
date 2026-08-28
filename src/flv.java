@@ -1,62 +1,31 @@
-import javax.annotation.Nullable;
+import java.util.UUID;
 
-public abstract class flv<E extends flv.a<E>> extends fku<E> {
-   private static final xh a = xh.c("narration.selection.usage");
+public class flv extends brt {
+   private static final long j = 100L;
+   protected float h;
+   protected long i;
 
-   public flv(fja $$0, int $$1, int $$2, int $$3, int $$4) {
-      super($$0, $$1, $$2, $$3, $$4);
-   }
-
-   @Nullable
-   @Override
-   public fkj a(fpd $$0) {
-      if (this.l() == 0) {
-         return null;
-      } else if (this.aN_() && $$0 instanceof fpd.a $$1) {
-         E $$2 = this.a($$1.b());
-         return $$2 != null ? fkj.a(this, fkj.a($$2)) : null;
-      } else if (!this.aN_()) {
-         E $$3 = this.h();
-         if ($$3 == null) {
-            $$3 = this.a($$0.a());
-         }
-
-         return $$3 == null ? null : fkj.a(this, fkj.a($$3));
-      } else {
-         return null;
-      }
+   public flv(UUID $$0, xi $$1, float $$2, brt.a $$3, brt.b $$4, boolean $$5, boolean $$6, boolean $$7) {
+      super($$0, $$1, $$3, $$4);
+      this.h = $$2;
+      this.b = $$2;
+      this.i = ae.c();
+      this.a($$5);
+      this.b($$6);
+      this.c($$7);
    }
 
    @Override
-   public void a(fox $$0) {
-      E $$1 = this.v();
-      if ($$1 != null) {
-         this.a($$0.a(), $$1);
-         $$1.b($$0);
-      } else {
-         E $$2 = this.h();
-         if ($$2 != null) {
-            this.a($$0.a(), $$2);
-            $$2.b($$0);
-         }
-      }
-
-      if (this.aN_()) {
-         $$0.a(fow.d, a);
-      }
+   public void a(float $$0) {
+      this.b = this.j();
+      this.h = $$0;
+      this.i = ae.c();
    }
 
-   public abstract static class a<E extends flv.a<E>> extends fku.a<E> implements foy {
-      public abstract xh a();
-
-      @Override
-      public boolean a(double $$0, double $$1, int $$2) {
-         return true;
-      }
-
-      @Override
-      public void b(fox $$0) {
-         $$0.a(fow.a, this.a());
-      }
+   @Override
+   public float j() {
+      long $$0 = ae.c() - this.i;
+      float $$1 = azk.a((float)$$0 / 100.0F, 0.0F, 1.0F);
+      return azk.h($$1, this.b, this.h);
    }
 }

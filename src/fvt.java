@@ -1,103 +1,149 @@
-import com.mojang.datafixers.DataFixer;
-import com.mojang.logging.LogUtils;
-import it.unimi.dsi.fastutil.booleans.BooleanConsumer;
-import it.unimi.dsi.fastutil.objects.Reference2IntOpenHashMap;
-import java.util.function.ToIntFunction;
+import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.List;
+import java.util.function.DoubleConsumer;
 import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
-public class fvt extends fqs {
-   private static final Logger a = LogUtils.getLogger();
-   private static final ToIntFunction<alg<dev>> b = ad.a(new Reference2IntOpenHashMap(), $$0 -> {
-      $$0.put(dev.i, -13408734);
-      $$0.put(dev.j, -10075085);
-      $$0.put(dev.k, -8943531);
-      $$0.defaultReturnValue(-2236963);
-   });
-   private final BooleanConsumer c;
-   private final brm d;
-
+public class fvt extends flb {
+   private static final int a = 32;
+   private static final String b = "telemetry.event.required";
+   private static final String c = "telemetry.event.optional";
+   private static final String d = "telemetry.event.optional.disabled";
+   private static final xi e = xi.c("telemetry_info.property_title").a(n.t);
+   private final fks f;
+   private fvt.a m;
    @Nullable
-   public static fvt a(fja $$0, BooleanConsumer $$1, DataFixer $$2, etk.c $$3, boolean $$4) {
-      try {
-         fvz $$5 = $$0.x();
-         auk $$6 = aun.a($$3);
+   private DoubleConsumer n;
 
-         fvt var10;
-         try (amg $$7 = $$5.a($$3.h(), false, $$6)) {
-            etq $$8 = $$7.d();
-            kd.b $$9 = $$7.c().a();
-            $$3.a($$9, $$8);
-            var10 = new fvt($$1, $$2, $$3, $$8.J(), $$4, $$9);
-         }
-
-         return var10;
-      } catch (Exception var13) {
-         a.warn("Failed to load datapacks, can't optimize world", var13);
-         return null;
-      }
+   public fvt(int $$0, int $$1, int $$2, int $$3, fks $$4) {
+      super($$0, $$1, $$2, $$3, xi.i());
+      this.f = $$4;
+      this.m = this.c(fji.Q().C());
    }
 
-   private fvt(BooleanConsumer $$0, DataFixer $$1, etk.c $$2, dez $$3, boolean $$4, kd $$5) {
-      super(xh.a("optimizeWorld.title", $$3.a()));
-      this.c = $$0;
-      this.d = new brm($$2, $$1, $$5, $$4, false);
+   public void b(boolean $$0) {
+      this.m = this.c($$0);
+      this.a(this.c());
    }
 
-   @Override
-   protected void aS_() {
-      super.aS_();
-      this.c(fkz.a(xg.e, $$0 -> {
-         this.d.a();
-         this.c.accept(false);
-      }).a(this.n / 2 - 100, this.o / 4 + 150, 200, 20).a());
-   }
-
-   @Override
-   public void e() {
-      if (this.d.b()) {
-         this.c.accept(true);
-      }
-   }
-
-   @Override
-   public void d() {
-      this.c.accept(false);
-   }
-
-   @Override
    public void j() {
-      this.d.a();
-      this.d.close();
+      this.m = this.c(fji.Q().C());
+      this.a(this.c());
+   }
+
+   private fvt.a c(boolean $$0) {
+      fvt.b $$1 = new fvt.b(this.k());
+      List<hdo> $$2 = new ArrayList<>(hdo.g());
+      $$2.sort(Comparator.comparing(hdo::d));
+
+      for (int $$3 = 0; $$3 < $$2.size(); $$3++) {
+         hdo $$4 = $$2.get($$3);
+         boolean $$5 = $$4.d() && !$$0;
+         this.a($$1, $$4, $$5);
+         if ($$3 < $$2.size() - 1) {
+            $$1.a(9);
+         }
+      }
+
+      return $$1.a();
+   }
+
+   public void a(@Nullable DoubleConsumer $$0) {
+      this.n = $$0;
    }
 
    @Override
-   public void a(fkm $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      $$0.a(this.p, this.l, this.n / 2, 20, 16777215);
-      int $$4 = this.n / 2 - 150;
-      int $$5 = this.n / 2 + 150;
-      int $$6 = this.o / 4 + 100;
-      int $$7 = $$6 + 10;
-      $$0.a(this.p, this.d.h(), this.n / 2, $$6 - 9 - 2, 10526880);
-      if (this.d.e() > 0) {
-         $$0.a($$4 - 1, $$6 - 1, $$5 + 1, $$7 + 1, -16777216);
-         $$0.b(this.p, xh.a("optimizeWorld.info.converted", this.d.f()), $$4, 40, 10526880);
-         $$0.b(this.p, xh.a("optimizeWorld.info.skipped", this.d.g()), $$4, 40 + 9 + 3, 10526880);
-         $$0.b(this.p, xh.a("optimizeWorld.info.total", this.d.e()), $$4, 40 + (9 + 3) * 2, 10526880);
-         int $$8 = 0;
+   protected void a(double $$0) {
+      super.a($$0);
+      if (this.n != null) {
+         this.n.accept(this.c());
+      }
+   }
 
-         for (alg<dev> $$9 : this.d.c()) {
-            int $$10 = azj.d(this.d.a($$9) * (float)($$5 - $$4));
-            $$0.a($$4 + $$8, $$6, $$4 + $$8 + $$10, $$7, b.applyAsInt($$9));
-            $$8 += $$10;
-         }
+   @Override
+   protected int h() {
+      return this.m.a().w();
+   }
 
-         int $$11 = this.d.f() + this.d.g();
-         xh $$12 = xh.a("optimizeWorld.progress.counter", $$11, this.d.e());
-         xh $$13 = xh.a("optimizeWorld.progress.percentage", azj.d(this.d.d() * 100.0F));
-         $$0.a(this.p, $$12, this.n / 2, $$6 + 2 * 9 + 2, 10526880);
-         $$0.a(this.p, $$13, this.n / 2, $$6 + ($$7 - $$6) / 2 - 9 / 2, 10526880);
+   @Override
+   protected double i() {
+      return 9.0;
+   }
+
+   @Override
+   protected void c(fku $$0, int $$1, int $$2, float $$3) {
+      int $$4 = this.E() + this.a();
+      int $$5 = this.D() + this.a();
+      $$0.c().a();
+      $$0.c().a((double)$$5, (double)$$4, 0.0);
+      this.m.a().a($$4x -> $$4x.a($$0, $$1, $$2, $$3));
+      $$0.c().b();
+   }
+
+   @Override
+   protected void a(fpf $$0) {
+      $$0.a(fpe.a, this.m.b());
+   }
+
+   private xi a(xi $$0, boolean $$1) {
+      return (xi)($$1 ? $$0.f().a(n.h) : $$0);
+   }
+
+   private void a(fvt.b $$0, hdo $$1, boolean $$2) {
+      String $$3 = $$1.d() ? ($$2 ? "telemetry.event.optional.disabled" : "telemetry.event.optional") : "telemetry.event.required";
+      $$0.b(this.f, this.a(xi.a($$3, $$1.e()), $$2));
+      $$0.b(this.f, $$1.f().a(n.h));
+      $$0.a(9 / 2);
+      $$0.a(this.f, this.a(e, $$2), 2);
+      this.a($$1, $$0, $$2);
+   }
+
+   private void a(hdo $$0, fvt.b $$1, boolean $$2) {
+      for (hdq<?> $$3 : $$0.b()) {
+         $$1.a(this.f, this.a($$3.a(), $$2));
+      }
+   }
+
+   private int k() {
+      return this.g - this.b();
+   }
+
+   static record a(fox a, xi b) {
+   }
+
+   static class b {
+      private final int a;
+      private final fpa b;
+      private final xw c = xi.i();
+
+      public b(int $$0) {
+         this.a = $$0;
+         this.b = fpa.d();
+         this.b.c().a();
+         this.b.a(fpb.a($$0));
+      }
+
+      public void a(fks $$0, xi $$1) {
+         this.a($$0, $$1, 0);
+      }
+
+      public void a(fks $$0, xi $$1, int $$2) {
+         this.b.a(new fmb($$1, $$0).d(this.a), $$1x -> $$1x.e($$2));
+         this.c.b($$1).f("\n");
+      }
+
+      public void b(fks $$0, xi $$1) {
+         this.b.a(new fmb($$1, $$0).d(this.a - 64).b(true), $$0x -> $$0x.b().f(32));
+         this.c.b($$1).f("\n");
+      }
+
+      public void a(int $$0) {
+         this.b.a(fpb.b($$0));
+      }
+
+      public fvt.a a() {
+         this.b.a();
+         return new fvt.a(this.b, this.c);
       }
    }
 }

@@ -1,61 +1,27 @@
-import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
-import java.util.Set;
 
-public record exp(Optional<Long> b, etv c) implements exh {
-   public static final MapCodec<exp> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(Codec.LONG.optionalFieldOf("period").forGetter(exp::c), etv.a.fieldOf("value").forGetter(exp::d)).apply($$0, exp::new)
-   );
+public class exp {
+   public static final exo a = a("inverted", exk.a);
+   public static final exo b = a("any_of", exb.a);
+   public static final exo c = a("all_of", exa.a);
+   public static final exo d = a("random_chance", exs.a);
+   public static final exo e = a("random_chance_with_enchanted_bonus", ext.a);
+   public static final exo f = a("entity_properties", exq.a);
+   public static final exo g = a("killed_by_player", exr.a);
+   public static final exo h = a("entity_scores", exi.a);
+   public static final exo i = a("block_state_property", exm.a);
+   public static final exo j = a("match_tool", exu.a);
+   public static final exo k = a("table_bonus", exc.a);
+   public static final exo l = a("survives_explosion", exj.a);
+   public static final exo m = a("damage_source_properties", exg.a);
+   public static final exo n = a("location_check", exl.a);
+   public static final exo o = a("weather_check", exx.a);
+   public static final exo p = a("reference", exe.a);
+   public static final exo q = a("time_check", exv.a);
+   public static final exo r = a("value_check", exw.a);
+   public static final exo s = a("enchantment_active_check", exh.a);
 
-   @Override
-   public exi b() {
-      return exj.q;
-   }
-
-   @Override
-   public Set<ewp<?>> a() {
-      return this.c.a();
-   }
-
-   public boolean a(etw $$0) {
-      arm $$1 = $$0.d();
-      long $$2 = $$1.ab();
-      if (this.b.isPresent()) {
-         $$2 %= this.b.get();
-      }
-
-      return this.c.b($$0, (int)$$2);
-   }
-
-   public static exp.a a(etv $$0) {
-      return new exp.a($$0);
-   }
-
-   public Optional<Long> c() {
-      return this.b;
-   }
-
-   public etv d() {
-      return this.c;
-   }
-
-   public static class a implements exh.a {
-      private Optional<Long> a = Optional.empty();
-      private final etv b;
-
-      public a(etv $$0) {
-         this.b = $$0;
-      }
-
-      public exp.a a(long $$0) {
-         this.a = Optional.of($$0);
-         return this;
-      }
-
-      public exp a() {
-         return new exp(this.a, this.b);
-      }
+   private static exo a(String $$0, MapCodec<? extends exn> $$1) {
+      return kd.a(ly.F, ali.b($$0), new exo($$1));
    }
 }

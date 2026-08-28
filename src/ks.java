@@ -1,90 +1,117 @@
+import com.google.common.collect.ImmutableList;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import java.util.Map;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
-import javax.annotation.Nullable;
+import java.util.function.Predicate;
+import java.util.stream.Collectors;
 
-public interface ks<T> {
-   Codec<ks<?>> a = Codec.lazyInitialized(() -> lx.ao.q());
-   zf<ws, ks<?>> b = zf.a($$0 -> zd.a(ly.az));
-   Codec<ks<?>> c = a.validate($$0 -> $$0.d() ? DataResult.error(() -> "Encountered transient component " + lx.ao.b($$0)) : DataResult.success($$0));
-   Codec<Map<ks<?>, Object>> d = Codec.dispatchedMap(c, ks::c);
+public final class ks implements Predicate<kq> {
+   public static final Codec<ks> a = kt.d
+      .xmap(
+         $$0 -> new ks($$0.entrySet().stream().map(kw::a).collect(Collectors.toList())),
+         $$0 -> $$0.d.stream().filter($$0x -> !$$0x.a().d()).collect(Collectors.toMap(kw::a, kw::b))
+      );
+   public static final zg<wt, ks> b = kw.a.a(ze.a()).a(ks::new, $$0 -> $$0.d);
+   public static final ks c = new ks(List.of());
+   private final List<kw<?>> d;
 
-   static <T> ks.a<T> a() {
-      return new ks.a<>();
+   ks(List<kw<?>> $$0) {
+      this.d = $$0;
    }
 
-   @Nullable
-   Codec<T> b();
+   public static ks.a a() {
+      return new ks.a();
+   }
 
-   default Codec<T> c() {
-      Codec<T> $$0 = this.b();
-      if ($$0 == null) {
-         throw new IllegalStateException(this + " is not a persistent component");
-      } else {
-         return $$0;
+   public static ks a(kq $$0) {
+      return new ks(ImmutableList.copyOf($$0));
+   }
+
+   public static ks a(kq $$0, kt<?>... $$1) {
+      ks.a $$2 = new ks.a();
+
+      for (kt<?> $$3 : $$1) {
+         kw<?> $$4 = $$0.c($$3);
+         if ($$4 != null) {
+            $$2.a($$4);
+         }
       }
+
+      return $$2.a();
    }
 
-   default boolean d() {
-      return this.b() == null;
+   @Override
+   public boolean equals(Object $$0) {
+      if ($$0 instanceof ks $$1 && this.d.equals($$1.d)) {
+         return true;
+      }
+
+      return false;
    }
 
-   zf<? super ws, T> e();
+   @Override
+   public int hashCode() {
+      return this.d.hashCode();
+   }
 
-   public static class a<T> {
-      @Nullable
-      private Codec<T> a;
-      @Nullable
-      private zf<? super ws, T> b;
-      private boolean c;
+   @Override
+   public String toString() {
+      return this.d.toString();
+   }
 
-      public ks.a<T> a(Codec<T> $$0) {
-         this.a = $$0;
+   public boolean b(kq $$0) {
+      for (kw<?> $$1 : this.d) {
+         Object $$2 = $$0.a($$1.a());
+         if (!Objects.equals($$1.b(), $$2)) {
+            return false;
+         }
+      }
+
+      return true;
+   }
+
+   public boolean a(kp $$0) {
+      return this.b($$0.a());
+   }
+
+   public boolean b() {
+      return this.d.isEmpty();
+   }
+
+   public kr c() {
+      kr.a $$0 = kr.a();
+
+      for (kw<?> $$1 : this.d) {
+         $$0.a($$1);
+      }
+
+      return $$0.a();
+   }
+
+   public static class a {
+      private final List<kw<?>> a = new ArrayList<>();
+
+      a() {
+      }
+
+      public <T> ks.a a(kw<T> $$0) {
+         return this.a($$0.a(), $$0.b());
+      }
+
+      public <T> ks.a a(kt<? super T> $$0, T $$1) {
+         for (kw<?> $$2 : this.a) {
+            if ($$2.a() == $$0) {
+               throw new IllegalArgumentException("Predicate already has component of type: '" + $$0 + "'");
+            }
+         }
+
+         this.a.add(new kw<>($$0, $$1));
          return this;
       }
 
-      public ks.a<T> a(zf<? super ws, T> $$0) {
-         this.b = $$0;
-         return this;
-      }
-
-      public ks.a<T> a() {
-         this.c = true;
-         return this;
-      }
-
-      public ks<T> b() {
-         zf<? super ws, T> $$0 = Objects.requireNonNullElseGet(this.b, () -> zd.d(Objects.requireNonNull(this.a, "Missing Codec for component")));
-         Codec<T> $$1 = this.c && this.a != null ? kt.a.a(this.a) : this.a;
-         return new ks.a.a<>($$1, $$0);
-      }
-
-      static class a<T> implements ks<T> {
-         @Nullable
-         private final Codec<T> e;
-         private final zf<? super ws, T> f;
-
-         a(@Nullable Codec<T> $$0, zf<? super ws, T> $$1) {
-            this.e = $$0;
-            this.f = $$1;
-         }
-
-         @Nullable
-         @Override
-         public Codec<T> b() {
-            return this.e;
-         }
-
-         @Override
-         public zf<? super ws, T> e() {
-            return this.f;
-         }
-
-         @Override
-         public String toString() {
-            return ad.a((kc<ks.a.a<T>>)lx.ao, this);
-         }
+      public ks a() {
+         return new ks(List.copyOf(this.a));
       }
    }
 }

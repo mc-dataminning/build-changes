@@ -1,25 +1,12 @@
-public final class dfh implements dww {
-   private final int a;
-   private final dvd[] b;
+import java.util.Optional;
+import java.util.function.Predicate;
 
-   public dfh(int $$0, dvd[] $$1) {
-      this.a = $$0;
-      this.b = $$1;
-   }
+public interface dfh {
+   boolean a(jh var1, Predicate<dvj> var2);
 
-   @Override
-   public dvd a(int $$0) {
-      int $$1 = $$0 - this.a;
-      return $$1 >= 0 && $$1 < this.b.length ? this.b[$$1] : dia.a.m();
-   }
+   boolean b(jh var1, Predicate<erk> var2);
 
-   @Override
-   public void a(int $$0, dvd $$1) {
-      int $$2 = $$0 - this.a;
-      if ($$2 >= 0 && $$2 < this.b.length) {
-         this.b[$$2] = $$1;
-      } else {
-         throw new IllegalArgumentException("Outside of column height: " + $$0);
-      }
-   }
+   <T extends dsm> Optional<T> a(jh var1, dso<T> var2);
+
+   jh a(ebf.a var1, jh var2);
 }

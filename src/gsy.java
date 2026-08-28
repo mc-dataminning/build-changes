@@ -1,45 +1,25 @@
-import javax.annotation.Nullable;
+public class gsy<S extends gvl & gwd, M extends fyk<? super S>> extends gsx<S, M> {
+   private final ali a;
+   private final M b;
+   private final M c;
 
-public class gsy<S extends gus, M extends fxz<S>> extends gsm<S, M> {
-   private final fxv a;
-   private final fxv b;
-   private final grx c;
-
-   public gsy(gpv<S, M> $$0, gax $$1, grx $$2) {
+   public gsy(gqg<S, M> $$0, M $$1, M $$2, ali $$3) {
       super($$0);
-      this.a = new fxv($$1.a(gba.ar));
-      this.b = new fxv($$1.a(gba.as));
+      this.b = $$1;
       this.c = $$2;
+      this.a = $$3;
    }
 
-   public void a(fdt $$0, ghw $$1, int $$2, S $$3, float $$4, float $$5) {
-      cvx $$6 = $$3.Q;
-      ddh $$7 = $$6.a(kt.D);
-      if ($$7 != null && !$$7.c().isEmpty()) {
-         alh $$8 = a($$3);
-         fxv $$9 = $$3.ae ? this.b : this.a;
-         alh $$10 = $$7.c().get();
-         $$0.a();
-         $$0.a(0.0F, 0.0F, 0.125F);
-         $$9.a($$3);
-         this.c.a(ddf.d.c, $$10, $$9, $$6, gig::a, $$0, $$1, $$2, $$8);
-         $$0.b();
-      }
+   public gsy(gqg<S, M> $$0, M $$1, ali $$2) {
+      this($$0, $$1, $$1, $$2);
    }
 
-   @Nullable
-   private static alh a(gus $$0) {
-      if ($$0 instanceof gvn $$1) {
-         gyt $$2 = $$1.a;
-         if ($$2.d() != null) {
-            return $$2.d();
-         }
-
-         if ($$2.c() != null && $$1.aw) {
-            return $$2.c();
-         }
+   public void a(feb $$0, gih $$1, int $$2, S $$3, float $$4, float $$5) {
+      if ($$3.c()) {
+         M $$6 = $$3.ae ? this.c : this.b;
+         $$6.a($$3);
+         fef $$7 = $$1.getBuffer(gir.f(this.a));
+         $$6.a($$0, $$7, $$2, gxu.d);
       }
-
-      return null;
    }
 }

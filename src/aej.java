@@ -1,23 +1,21 @@
-import java.util.List;
-import java.util.UUID;
+public record aej(int b, xi c) implements zp<ace> {
+   public static final zg<wt, aej> a = zg.a(ze.h, aej::b, xk.d, aej::e, aej::new);
 
-public record aej(List<UUID> b) implements zo<acd> {
-   public static final zf<we, aej> a = zo.a(aej::a, aej::new);
-
-   private aej(we $$0) {
-      this($$0.a(kj.g));
+   @Override
+   public zr<aej> a() {
+      return agt.ae;
    }
 
-   private void a(we $$0) {
-      $$0.a(this.b, kj.g);
+   public void a(ace $$0) {
+      $$0.a(this);
    }
 
    @Override
-   public zq<aej> a() {
-      return ags.af;
+   public boolean c() {
+      return true;
    }
 
-   public void a(acd $$0) {
-      $$0.a(this);
+   public xi e() {
+      return this.c;
    }
 }

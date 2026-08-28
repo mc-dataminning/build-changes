@@ -1,37 +1,61 @@
-public class ahv implements zo<agu> {
-   public static final zf<we, ahv> a = zo.a(ahv::a, ahv::new);
-   private final boolean b;
-   private final boolean c;
+public class ahv implements zp<agv> {
+   public static final zg<wf, ahv> a = zp.a(ahv::a, ahv::new);
+   private final double b;
+   private final double c;
+   private final double d;
+   private final float e;
+   private final float f;
 
-   public ahv(boolean $$0, boolean $$1) {
-      this.b = $$0;
-      this.c = $$1;
+   public ahv(bue $$0) {
+      this.b = $$0.dC();
+      this.c = $$0.dE();
+      this.d = $$0.dI();
+      this.e = $$0.dN();
+      this.f = $$0.dP();
    }
 
-   private ahv(we $$0) {
-      this.b = $$0.readBoolean();
-      this.c = $$0.readBoolean();
+   private ahv(wf $$0) {
+      this.b = $$0.readDouble();
+      this.c = $$0.readDouble();
+      this.d = $$0.readDouble();
+      this.e = $$0.readFloat();
+      this.f = $$0.readFloat();
    }
 
-   private void a(we $$0) {
+   private void a(wf $$0) {
       $$0.a(this.b);
       $$0.a(this.c);
-   }
-
-   public void a(agu $$0) {
-      $$0.a(this);
+      $$0.a(this.d);
+      $$0.a(this.e);
+      $$0.a(this.f);
    }
 
    @Override
-   public zq<ahv> a() {
-      return ags.bJ;
+   public zr<ahv> a() {
+      return agt.bI;
    }
 
-   public boolean b() {
+   public void a(agv $$0) {
+      $$0.a(this);
+   }
+
+   public double b() {
       return this.b;
    }
 
-   public boolean e() {
+   public double e() {
       return this.c;
+   }
+
+   public double f() {
+      return this.d;
+   }
+
+   public float g() {
+      return this.e;
+   }
+
+   public float h() {
+      return this.f;
    }
 }

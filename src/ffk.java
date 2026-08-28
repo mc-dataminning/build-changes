@@ -1,29 +1,34 @@
 import com.google.common.collect.Lists;
+import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
+import com.mojang.logging.LogUtils;
+import java.util.Iterator;
 import java.util.List;
+import org.slf4j.Logger;
 
-public class ffk extends ffn {
-   public long a;
-   public List<ffj> b = Lists.newArrayList();
+public class ffk extends ffv {
+   private static final Logger b = LogUtils.getLogger();
+   public List<ffi> a;
 
    public static ffk a(String $$0) {
       ffk $$1 = new ffk();
-      JsonParser $$2 = new JsonParser();
+      $$1.a = Lists.newArrayList();
 
       try {
-         JsonElement $$3 = $$2.parse($$0);
-         JsonObject $$4 = $$3.getAsJsonObject();
-         $$1.a = fhk.a("periodInMillis", $$4, -1L);
-         JsonElement $$5 = $$4.get("playerActivityDto");
-         if ($$5 != null && $$5.isJsonArray()) {
-            for (JsonElement $$7 : $$5.getAsJsonArray()) {
-               ffj $$8 = ffj.a($$7.getAsJsonObject());
-               $$1.b.add($$8);
+         JsonParser $$2 = new JsonParser();
+         JsonObject $$3 = $$2.parse($$0).getAsJsonObject();
+         if ($$3.get("servers").isJsonArray()) {
+            JsonArray $$4 = $$3.get("servers").getAsJsonArray();
+            Iterator<JsonElement> $$5 = $$4.iterator();
+
+            while ($$5.hasNext()) {
+               $$1.a.add(ffi.a($$5.next().getAsJsonObject()));
             }
          }
-      } catch (Exception var10) {
+      } catch (Exception var6) {
+         b.error("Could not parse McoServerList: {}", var6.getMessage());
       }
 
       return $$1;

@@ -1,50 +1,48 @@
-import java.util.List;
+public class frx extends frp<crv> {
+   private static final ali G = ali.b("container/brewing_stand/fuel_length");
+   private static final ali H = ali.b("container/brewing_stand/brew_progress");
+   private static final ali I = ali.b("container/brewing_stand/bubbles");
+   private static final ali J = ali.b("textures/gui/container/brewing_stand.png");
+   private static final int[] K = new int[]{29, 24, 20, 16, 11, 6, 0};
 
-public class frx {
-   private static final int a = 30;
-   private static final int b = 16;
-   private static final int c = 4;
-   private final int d;
-   private List<alh> e = List.of();
-   private int f;
-   private int g;
-
-   public frx(int $$0) {
-      this.d = $$0;
+   public frx(crv $$0, col $$1, xi $$2) {
+      super($$0, $$1, $$2);
    }
 
-   public void a(List<alh> $$0) {
-      if (!this.e.equals($$0)) {
-         this.e = $$0;
-         this.g = 0;
-      }
-
-      if (!this.e.isEmpty() && ++this.f % 30 == 0) {
-         this.g = (this.g + 1) % this.e.size();
-      }
+   @Override
+   protected void aR_() {
+      super.aR_();
+      this.v = (this.s - this.p.a(this.l)) / 2;
    }
 
-   public void a(crj $$0, fkm $$1, float $$2, int $$3, int $$4) {
-      ctg $$5 = $$0.b(this.d);
-      if (!this.e.isEmpty() && !$$5.h()) {
-         boolean $$6 = this.e.size() > 1 && this.f >= 30;
-         float $$7 = $$6 ? this.a($$2) : 1.0F;
-         if ($$7 < 1.0F) {
-            int $$8 = Math.floorMod(this.g - 1, this.e.size());
-            this.a($$5, this.e.get($$8), 1.0F - $$7, $$1, $$3, $$4);
+   @Override
+   public void a(fku $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      this.a($$0, $$1, $$2);
+   }
+
+   @Override
+   protected void a(fku $$0, float $$1, int $$2, int $$3) {
+      int $$4 = (this.n - this.s) / 2;
+      int $$5 = (this.o - this.u) / 2;
+      $$0.a(gir::B, J, $$4, $$5, 0.0F, 0.0F, this.s, this.u, 256, 256);
+      int $$6 = this.z.l();
+      int $$7 = azk.a((18 * $$6 + 20 - 1) / 20, 0, 18);
+      if ($$7 > 0) {
+         $$0.a(gir::B, G, 18, 4, 0, 0, $$4 + 60, $$5 + 44, $$7, 4);
+      }
+
+      int $$8 = this.z.m();
+      if ($$8 > 0) {
+         int $$9 = (int)(28.0F * (1.0F - (float)$$8 / 400.0F));
+         if ($$9 > 0) {
+            $$0.a(gir::B, H, 9, 28, 0, 0, $$4 + 97, $$5 + 16, 9, $$9);
          }
 
-         this.a($$5, this.e.get(this.g), $$7, $$1, $$3, $$4);
+         $$9 = K[$$8 / 2 % 7];
+         if ($$9 > 0) {
+            $$0.a(gir::B, I, 12, 29, 0, 29 - $$9, $$4 + 63, $$5 + 14 + 29 - $$9, 12, $$9);
+         }
       }
-   }
-
-   private void a(ctg $$0, alh $$1, float $$2, fkm $$3, int $$4, int $$5) {
-      gxs $$6 = fja.Q().a(gxr.d).apply($$1);
-      $$3.a(gig::B, $$6, $$4 + $$0.e, $$5 + $$0.f, 16, 16, axu.a($$2));
-   }
-
-   private float a(float $$0) {
-      float $$1 = (float)(this.f % 30) + $$0;
-      return Math.min($$1, 4.0F) / 4.0F;
    }
 }

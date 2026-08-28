@@ -1,115 +1,177 @@
-import com.mojang.blaze3d.platform.TextureUtil;
-import java.nio.file.Path;
+import com.google.common.collect.Queues;
+import java.util.ArrayList;
+import java.util.BitSet;
+import java.util.Deque;
+import java.util.List;
 import javax.annotation.Nullable;
 
-public class fns extends gxd implements gxe {
-   private static final int d = 256;
-   private final fnt e;
-   private final boolean f;
-   private final fns.a g;
+public class fns {
+   private static final int a = 5;
+   private static final int b = -1;
+   final fji c;
+   private final List<fns.a<?>> d = new ArrayList<>();
+   private final BitSet e = new BitSet(5);
+   private final Deque<fnr> f = Queues.newArrayDeque();
 
-   public fns(fnt $$0, boolean $$1) {
-      this.f = $$1;
-      this.g = new fns.a(0, 0, 256, 256);
-      TextureUtil.prepareImage($$1 ? fct.b.a : fct.b.d, this.a(), 256, 256);
-      this.e = $$0;
+   public fns(fji $$0) {
+      this.c = $$0;
    }
 
-   @Override
-   public void a(ava $$0) {
+   public void a() {
+      this.d.removeIf($$0 -> {
+         $$0.c();
+         if ($$0.b()) {
+            this.e.clear($$0.d, $$0.d + $$0.e);
+            return true;
+         } else {
+            return false;
+         }
+      });
+      if (!this.f.isEmpty() && this.e() > 0) {
+         this.f.removeIf($$0 -> {
+            int $$1 = $$0.g();
+            int $$2 = this.a($$1);
+            if ($$2 == -1) {
+               return false;
+            } else {
+               this.d.add(new fns.a<>($$0, $$2, $$1));
+               this.e.set($$2, $$2 + $$1);
+               return true;
+            }
+         });
+      }
    }
 
-   @Override
-   public void close() {
-      this.b();
+   public void a(fku $$0) {
+      if (!this.c.n.X) {
+         int $$1 = $$0.a();
+
+         for (fns.a<?> $$2 : this.d) {
+            $$2.a($$0, $$1);
+         }
+      }
+   }
+
+   private int a(int $$0) {
+      if (this.e() >= $$0) {
+         int $$1 = 0;
+
+         for (int $$2 = 0; $$2 < 5; $$2++) {
+            if (this.e.get($$2)) {
+               $$1 = 0;
+            } else if (++$$1 == $$0) {
+               return $$2 + 1 - $$1;
+            }
+         }
+      }
+
+      return -1;
+   }
+
+   private int e() {
+      return 5 - this.e.cardinality();
    }
 
    @Nullable
-   public fnv a(fbt $$0) {
-      if ($$0.c() != this.f) {
-         return null;
-      } else {
-         fns.a $$1 = this.g.a($$0);
-         if ($$1 != null) {
-            this.d();
-            $$0.a($$1.a, $$1.b);
-            float $$2 = 256.0F;
-            float $$3 = 256.0F;
-            float $$4 = 0.01F;
-            return new fnv(
-               this.e,
-               ((float)$$1.a + 0.01F) / 256.0F,
-               ((float)$$1.a - 0.01F + (float)$$0.a()) / 256.0F,
-               ((float)$$1.b + 0.01F) / 256.0F,
-               ((float)$$1.b - 0.01F + (float)$$0.b()) / 256.0F,
-               $$0.e(),
-               $$0.f(),
-               $$0.g(),
-               $$0.h()
-            );
-         } else {
-            return null;
+   public <T extends fnr> T a(Class<? extends T> $$0, Object $$1) {
+      for (fns.a<?> $$2 : this.d) {
+         if ($$2 != null && $$0.isAssignableFrom($$2.a().getClass()) && $$2.a().f().equals($$1)) {
+            return (T)$$2.a();
          }
       }
-   }
 
-   @Override
-   public void a(alh $$0, Path $$1) {
-      String $$2 = $$0.c();
-      TextureUtil.writeAsPNG($$1, $$2, this.a(), 0, 256, 256, $$0x -> ($$0x & 0xFF000000) == 0 ? -16777216 : $$0x);
-   }
-
-   static class a {
-      final int a;
-      final int b;
-      private final int c;
-      private final int d;
-      @Nullable
-      private fns.a e;
-      @Nullable
-      private fns.a f;
-      private boolean g;
-
-      a(int $$0, int $$1, int $$2, int $$3) {
-         this.a = $$0;
-         this.b = $$1;
-         this.c = $$2;
-         this.d = $$3;
+      for (fnr $$3 : this.f) {
+         if ($$0.isAssignableFrom($$3.getClass()) && $$3.f().equals($$1)) {
+            return (T)$$3;
+         }
       }
 
-      @Nullable
-      fns.a a(fbt $$0) {
-         if (this.e != null && this.f != null) {
-            fns.a $$1 = this.e.a($$0);
-            if ($$1 == null) {
-               $$1 = this.f.a($$0);
-            }
+      return null;
+   }
 
-            return $$1;
-         } else if (this.g) {
-            return null;
+   public void b() {
+      this.e.clear();
+      this.d.clear();
+      this.f.clear();
+   }
+
+   public void a(fnr $$0) {
+      this.f.add($$0);
+   }
+
+   public fji c() {
+      return this.c;
+   }
+
+   public double d() {
+      return this.c.n.C().c();
+   }
+
+   class a<T extends fnr> {
+      private static final long b = 600L;
+      private final T c;
+      final int d;
+      final int e;
+      private long f = -1L;
+      private long g = -1L;
+      private fnr.a h = fnr.a.a;
+      private long i;
+      private float j;
+      private boolean k;
+
+      a(final T $$0, final int $$1, final int $$2) {
+         this.c = $$0;
+         this.d = $$1;
+         this.e = $$2;
+      }
+
+      public T a() {
+         return this.c;
+      }
+
+      public boolean b() {
+         return this.k;
+      }
+
+      private void a(long $$0) {
+         float $$1 = azk.a((float)($$0 - this.f) / 600.0F, 0.0F, 1.0F);
+         $$1 *= $$1;
+         if (this.h == fnr.a.b) {
+            this.j = 1.0F - $$1;
          } else {
-            int $$2 = $$0.a();
-            int $$3 = $$0.b();
-            if ($$2 > this.c || $$3 > this.d) {
-               return null;
-            } else if ($$2 == this.c && $$3 == this.d) {
-               this.g = true;
-               return this;
-            } else {
-               int $$4 = this.c - $$2;
-               int $$5 = this.d - $$3;
-               if ($$4 > $$5) {
-                  this.e = new fns.a(this.a, this.b, $$2, this.d);
-                  this.f = new fns.a(this.a + $$2 + 1, this.b, this.c - $$2 - 1, this.d);
-               } else {
-                  this.e = new fns.a(this.a, this.b, this.c, $$3);
-                  this.f = new fns.a(this.a, this.b + $$3 + 1, this.c, this.d - $$3 - 1);
-               }
-
-               return this.e.a($$0);
-            }
+            this.j = $$1;
          }
+      }
+
+      public void c() {
+         long $$0 = ae.c();
+         if (this.f == -1L) {
+            this.f = $$0;
+            this.h.a(fns.this.c.ak());
+         }
+
+         if (this.h == fnr.a.a && $$0 - this.f <= 600L) {
+            this.g = $$0;
+         }
+
+         this.i = $$0 - this.g;
+         this.a($$0);
+         this.c.a(fns.this, this.i);
+         fnr.a $$1 = this.c.a();
+         if ($$1 != this.h) {
+            this.f = $$0 - (long)((int)((1.0F - this.j) * 600.0F));
+            this.h = $$1;
+            this.h.a(fns.this.c.ak());
+         }
+
+         this.k = this.h == fnr.a.b && $$0 - this.f > 600L;
+      }
+
+      public void a(fku $$0, int $$1) {
+         $$0.c().a();
+         $$0.c().a((float)$$1 - (float)this.c.b() * this.j, (float)(this.d * 32), 800.0F);
+         this.c.a($$0, fns.this.c.h, this.i);
+         $$0.c().b();
       }
    }
 }

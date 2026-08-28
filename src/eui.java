@@ -1,70 +1,62 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableList.Builder;
-import com.mojang.serialization.MapCodec;
-import java.util.List;
+import com.google.common.collect.ImmutableSet;
+import java.util.Optional;
+import java.util.Set;
 
-public class eui extends euf {
-   public static final MapCodec<eui> a = a(eui::new);
+public class eui {
+   private final azq a;
+   private final eww b;
+   private final Optional<jr.a> c;
+   private final Set<alh<?>> d;
 
-   eui(List<eum> $$0, List<exh> $$1) {
-      super($$0, $$1);
+   public eui(azq $$0, eww $$1, jr.a $$2) {
+      this($$0, $$1, Optional.of($$2), Set.of());
    }
 
-   @Override
-   public eun a() {
-      return euk.i;
+   public eui(azq $$0, eww $$1) {
+      this($$0, $$1, Optional.empty(), Set.of());
    }
 
-   @Override
-   protected eue a(List<? extends eue> $$0) {
-      return switch ($$0.size()) {
-         case 0 -> c;
-         case 1 -> (eue)$$0.get(0);
-         case 2 -> {
-            eue $$1 = $$0.get(0);
-            eue $$2 = $$0.get(1);
-            yield ($$2x, $$3) -> {
-               $$1.expand($$2x, $$3);
-               $$2.expand($$2x, $$3);
-               return true;
-            };
-         }
-         default -> ($$1x, $$2x) -> {
-         for (eue $$3 : $$0) {
-            $$3.expand($$1x, $$2x);
-         }
-
-         return true;
-      };
-      };
+   private eui(azq $$0, eww $$1, Optional<jr.a> $$2, Set<alh<?>> $$3) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+      this.d = $$3;
    }
 
-   public static eui.a a(eum.a<?>... $$0) {
-      return new eui.a($$0);
+   public eui a(String $$0) {
+      return new eui(this.a.a($$0), this.b, this.c, this.d);
    }
 
-   public static class a extends eum.a<eui.a> {
-      private final Builder<eum> a = ImmutableList.builder();
+   public eui a(String $$0, alh<?> $$1) {
+      Set<alh<?>> $$2 = ImmutableSet.builder().addAll(this.d).add($$1).build();
+      return new eui(this.a.a($$0), this.b, this.c, $$2);
+   }
 
-      public a(eum.a<?>... $$0) {
-         for (eum.a<?> $$1 : $$0) {
-            this.a.add($$1.b());
-         }
-      }
+   public boolean a(alh<?> $$0) {
+      return this.d.contains($$0);
+   }
 
-      protected eui.a a() {
-         return this;
-      }
+   public void b(String $$0) {
+      this.a.b($$0);
+   }
 
-      @Override
-      public eui.a b(eum.a<?> $$0) {
-         this.a.add($$0.b());
-         return this;
-      }
+   public void a(eud $$0) {
+      this.b.a(this, $$0);
+   }
 
-      @Override
-      public eum b() {
-         return new eui(this.a.build(), this.f());
-      }
+   public jr.a a() {
+      return this.c.orElseThrow(() -> new UnsupportedOperationException("References not allowed"));
+   }
+
+   public boolean b() {
+      return this.c.isPresent();
+   }
+
+   public eui a(eww $$0) {
+      return new eui(this.a, $$0, this.c, this.d);
+   }
+
+   public azq c() {
+      return this.a;
    }
 }

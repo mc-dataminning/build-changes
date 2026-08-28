@@ -1,354 +1,168 @@
-import com.google.common.collect.Maps;
-import com.google.common.collect.Sets;
-import java.util.Map;
-import java.util.Set;
-import java.util.function.UnaryOperator;
-import java.util.stream.Stream;
+import java.util.Optional;
+import java.util.stream.IntStream;
 
 public class om {
-   private final Map<on, alh> a = Maps.newHashMap();
-   private final Set<on> b = Sets.newHashSet();
-
-   public om a(on $$0, alh $$1) {
-      this.a.put($$0, $$1);
-      return this;
-   }
-
-   public om b(on $$0, alh $$1) {
-      this.a.put($$0, $$1);
-      this.b.add($$0);
-      return this;
-   }
-
-   public Stream<on> a() {
-      return this.b.stream();
-   }
-
-   public om a(on $$0, on $$1) {
-      this.a.put($$1, this.a.get($$0));
-      return this;
-   }
-
-   public om b(on $$0, on $$1) {
-      this.a.put($$1, this.a.get($$0));
-      this.b.add($$1);
-      return this;
-   }
-
-   public alh a(on $$0) {
-      for (on $$1 = $$0; $$1 != null; $$1 = $$1.b()) {
-         alh $$2 = this.a.get($$1);
-         if ($$2 != null) {
-            return $$2;
-         }
-      }
-
-      throw new IllegalStateException("Can't find texture for slot " + $$0);
-   }
-
-   public om c(on $$0, alh $$1) {
-      om $$2 = new om();
-      $$2.a.putAll(this.a);
-      $$2.b.addAll(this.b);
-      $$2.a($$0, $$1);
-      return $$2;
-   }
-
-   public static om a(dhy $$0) {
-      alh $$1 = G($$0);
-      return b($$1);
-   }
-
-   public static om b(dhy $$0) {
-      alh $$1 = G($$0);
-      return a($$1);
-   }
-
-   public static om a(alh $$0) {
-      return new om().a(on.b, $$0);
-   }
-
-   public static om b(alh $$0) {
-      return new om().a(on.a, $$0);
-   }
-
-   public static om c(dhy $$0) {
-      return d(on.p, G($$0));
-   }
-
-   public static om c(alh $$0) {
-      return d(on.p, $$0);
-   }
-
-   public static om d(dhy $$0) {
-      return d(on.q, G($$0));
-   }
-
-   public static om d(alh $$0) {
-      return d(on.q, $$0);
-   }
-
-   public static om e(dhy $$0) {
-      return d(on.s, G($$0));
-   }
-
-   public static om e(alh $$0) {
-      return d(on.s, $$0);
-   }
-
-   public static om f(dhy $$0) {
-      return d(on.t, G($$0));
-   }
-
-   public static om g(dhy $$0) {
-      return new om().a(on.P, G($$0)).a(on.y, a($$0, "_stem"));
-   }
-
-   public static om f(alh $$0) {
-      return d(on.t, $$0);
-   }
-
-   public static om h(dhy $$0) {
-      return d(on.y, G($$0));
-   }
-
-   public static om a(dhy $$0, dhy $$1) {
-      return new om().a(on.y, G($$0)).a(on.z, G($$1));
-   }
-
-   public static om i(dhy $$0) {
-      return d(on.u, G($$0));
-   }
-
-   public static om j(dhy $$0) {
-      return d(on.x, G($$0));
-   }
-
-   public static om g(alh $$0) {
-      return d(on.A, $$0);
-   }
-
-   public static om b(dhy $$0, dhy $$1) {
-      return new om().a(on.v, G($$0)).a(on.w, a($$1, "_top"));
-   }
-
-   public static om d(on $$0, alh $$1) {
-      return new om().a($$0, $$1);
-   }
-
-   public static om k(dhy $$0) {
-      return new om().a(on.i, a($$0, "_side")).a(on.d, a($$0, "_top"));
-   }
-
-   public static om l(dhy $$0) {
-      return new om().a(on.i, a($$0, "_side")).a(on.f, a($$0, "_top"));
-   }
-
-   public static om m(dhy $$0) {
-      return new om().a(on.q, a($$0, "_plant")).a(on.i, a($$0, "_side")).a(on.f, a($$0, "_top"));
-   }
-
-   public static om n(dhy $$0) {
-      return new om().a(on.i, G($$0)).a(on.d, a($$0, "_top")).a(on.c, G($$0));
-   }
-
-   public static om a(alh $$0, alh $$1) {
-      return new om().a(on.i, $$0).a(on.d, $$1);
-   }
-
-   public static om o(dhy $$0) {
-      return new om().a(on.b, G($$0)).a(on.i, a($$0, "_side")).a(on.f, a($$0, "_top"));
-   }
-
-   public static om p(dhy $$0) {
-      return new om().a(on.b, G($$0)).a(on.c, a($$0, "_particle"));
-   }
-
-   public static om q(dhy $$0) {
-      return new om().a(on.i, a($$0, "_side")).a(on.f, a($$0, "_top")).a(on.e, a($$0, "_bottom"));
-   }
-
-   public static om r(dhy $$0) {
-      alh $$1 = G($$0);
-      return new om().a(on.r, $$1).a(on.i, $$1).a(on.f, a($$0, "_top")).a(on.e, a($$0, "_bottom"));
-   }
-
-   public static om s(dhy $$0) {
-      alh $$1 = G($$0);
-      return new om().a(on.b, $$1).a(on.r, $$1).a(on.i, $$1).a(on.d, a($$0, "_top"));
-   }
-
-   public static om b(alh $$0, alh $$1) {
-      return new om().a(on.f, $$0).a(on.e, $$1);
-   }
-
-   public static om t(dhy $$0) {
-      return new om().a(on.f, a($$0, "_top")).a(on.e, a($$0, "_bottom"));
-   }
-
-   public static om u(dhy $$0) {
-      return new om().a(on.c, G($$0));
-   }
-
-   public static om h(alh $$0) {
-      return new om().a(on.c, $$0);
-   }
-
-   public static om v(dhy $$0) {
-      return new om().a(on.C, a($$0, "_0"));
-   }
-
-   public static om w(dhy $$0) {
-      return new om().a(on.C, a($$0, "_1"));
-   }
-
-   public static om x(dhy $$0) {
-      return new om().a(on.D, G($$0));
-   }
-
-   public static om y(dhy $$0) {
-      return new om().a(on.G, G($$0));
-   }
-
-   public static om i(alh $$0) {
-      return new om().a(on.G, $$0);
-   }
-
-   public static om a(dhy $$0, String $$1, String $$2) {
-      return new om().a(on.i, a($$0, $$1)).a(on.f, a($$0, $$2)).a(on.e, a($$0, "_bottom"));
-   }
-
-   public static om a(dhy $$0, String $$1, String $$2, String $$3, String $$4) {
-      return new om().a(on.g, a($$0, $$1)).a(on.i, a($$0, $$2)).a(on.f, a($$0, $$3)).a(on.e, a($$0, $$4));
-   }
-
-   public static om a(cvt $$0) {
-      return new om().a(on.c, c($$0));
-   }
-
-   public static om z(dhy $$0) {
-      return new om().a(on.i, a($$0, "_side")).a(on.g, a($$0, "_front")).a(on.h, a($$0, "_back"));
-   }
-
-   public static om A(dhy $$0) {
-      return new om().a(on.i, a($$0, "_side")).a(on.g, a($$0, "_front")).a(on.f, a($$0, "_top")).a(on.e, a($$0, "_bottom"));
-   }
-
-   public static om B(dhy $$0) {
-      return new om().a(on.i, a($$0, "_side")).a(on.g, a($$0, "_front")).a(on.f, a($$0, "_top"));
-   }
-
-   public static om C(dhy $$0) {
-      return new om().a(on.i, a($$0, "_side")).a(on.g, a($$0, "_front")).a(on.d, a($$0, "_end"));
-   }
-
-   public static om D(dhy $$0) {
-      return new om().a(on.f, a($$0, "_top"));
-   }
-
-   public static om c(dhy $$0, dhy $$1) {
-      return new om()
-         .a(on.c, a($$0, "_front"))
-         .a(on.o, G($$1))
-         .a(on.n, a($$0, "_top"))
-         .a(on.j, a($$0, "_front"))
-         .a(on.l, a($$0, "_side"))
-         .a(on.k, a($$0, "_side"))
-         .a(on.m, a($$0, "_front"));
-   }
-
-   public static om d(dhy $$0, dhy $$1) {
-      return new om()
-         .a(on.c, a($$0, "_front"))
-         .a(on.o, G($$1))
-         .a(on.n, a($$0, "_top"))
-         .a(on.j, a($$0, "_front"))
-         .a(on.k, a($$0, "_front"))
-         .a(on.l, a($$0, "_side"))
-         .a(on.m, a($$0, "_side"));
-   }
-
-   public static om a(String $$0) {
-      return new om()
-         .a(on.c, a(dia.mg, $$0 + "_north"))
-         .a(on.e, a(dia.mg, $$0 + "_bottom"))
-         .a(on.f, a(dia.mg, $$0 + "_top"))
-         .a(on.j, a(dia.mg, $$0 + "_north"))
-         .a(on.k, a(dia.mg, $$0 + "_south"))
-         .a(on.l, a(dia.mg, $$0 + "_east"))
-         .a(on.m, a(dia.mg, $$0 + "_west"));
-   }
-
-   public static om E(dhy $$0) {
-      return new om().a(on.K, a($$0, "_log_lit")).a(on.C, a($$0, "_fire"));
-   }
-
-   public static om a(dhy $$0, boolean $$1) {
-      return new om()
-         .a(on.c, a(dia.eg, "_side"))
-         .a(on.e, a(dia.eg, "_bottom"))
-         .a(on.f, a(dia.eg, "_top"))
-         .a(on.i, a(dia.eg, "_side"))
-         .a(on.L, a($$0, $$1 ? "_lit" : ""));
-   }
-
-   public static om j(alh $$0) {
-      return new om()
-         .a(on.c, a(dia.ft, "_side"))
-         .a(on.i, a(dia.ft, "_side"))
-         .a(on.f, a(dia.ft, "_top"))
-         .a(on.e, a(dia.ft, "_bottom"))
-         .a(on.M, a(dia.ft, "_inner"))
-         .a(on.N, $$0);
-   }
-
-   public static om a(boolean $$0) {
-      String $$1 = $$0 ? "_can_summon" : "";
-      return new om()
-         .a(on.c, a(dia.qV, "_bottom"))
-         .a(on.i, a(dia.qV, "_side"))
-         .a(on.f, a(dia.qV, "_top"))
-         .a(on.O, a(dia.qV, $$1 + "_inner_top"))
-         .a(on.e, a(dia.qV, "_bottom"));
-   }
-
-   public static om b(cvt $$0) {
-      return new om().a(on.H, c($$0));
-   }
-
-   public static om F(dhy $$0) {
-      return new om().a(on.H, G($$0));
-   }
-
-   public static om k(alh $$0) {
-      return new om().a(on.H, $$0);
-   }
-
-   public static om c(alh $$0, alh $$1) {
-      return new om().a(on.H, $$0).a(on.I, $$1);
-   }
-
-   public static om a(alh $$0, alh $$1, alh $$2) {
-      return new om().a(on.H, $$0).a(on.I, $$1).a(on.J, $$2);
-   }
-
-   public static alh G(dhy $$0) {
-      alh $$1 = lx.e.b($$0);
-      return $$1.f("block/");
-   }
-
-   public static alh a(dhy $$0, String $$1) {
-      alh $$2 = lx.e.b($$0);
-      return $$2.a((UnaryOperator<String>)($$1x -> "block/" + $$1x + $$1));
-   }
-
-   public static alh c(cvt $$0) {
-      alh $$1 = lx.g.b($$0);
-      return $$1.f("item/");
-   }
-
-   public static alh a(cvt $$0, String $$1) {
-      alh $$2 = lx.g.b($$0);
-      return $$2.a((UnaryOperator<String>)($$1x -> "item/" + $$1x + $$1));
+   public static final ol a = a("cube", oo.c, oo.j, oo.k, oo.l, oo.m, oo.n, oo.o);
+   public static final ol b = a("cube_directional", oo.c, oo.j, oo.k, oo.l, oo.m, oo.n, oo.o);
+   public static final ol c = a("cube_all", oo.a);
+   public static final ol d = a("cube_all_inner_faces", oo.a);
+   public static final ol e = a("cube_mirrored_all", "_mirrored", oo.a);
+   public static final ol f = a("cube_north_west_mirrored_all", "_north_west_mirrored", oo.a);
+   public static final ol g = a("cube_column_uv_locked_x", "_x", oo.d, oo.i);
+   public static final ol h = a("cube_column_uv_locked_y", "_y", oo.d, oo.i);
+   public static final ol i = a("cube_column_uv_locked_z", "_z", oo.d, oo.i);
+   public static final ol j = a("cube_column", oo.d, oo.i);
+   public static final ol k = a("cube_column_horizontal", "_horizontal", oo.d, oo.i);
+   public static final ol l = a("cube_column_mirrored", "_mirrored", oo.d, oo.i);
+   public static final ol m = a("cube_top", oo.f, oo.i);
+   public static final ol n = a("cube_bottom_top", oo.f, oo.e, oo.i);
+   public static final ol o = a("cube_bottom_top_inner_faces", oo.f, oo.e, oo.i);
+   public static final ol p = a("orientable", oo.f, oo.g, oo.i);
+   public static final ol q = a("orientable_with_bottom", oo.f, oo.e, oo.i, oo.g);
+   public static final ol r = a("orientable_vertical", "_vertical", oo.g, oo.i);
+   public static final ol s = a("button", oo.b);
+   public static final ol t = a("button_pressed", "_pressed", oo.b);
+   public static final ol u = a("button_inventory", "_inventory", oo.b);
+   public static final ol v = a("door_bottom_left", "_bottom_left", oo.f, oo.e);
+   public static final ol w = a("door_bottom_left_open", "_bottom_left_open", oo.f, oo.e);
+   public static final ol x = a("door_bottom_right", "_bottom_right", oo.f, oo.e);
+   public static final ol y = a("door_bottom_right_open", "_bottom_right_open", oo.f, oo.e);
+   public static final ol z = a("door_top_left", "_top_left", oo.f, oo.e);
+   public static final ol A = a("door_top_left_open", "_top_left_open", oo.f, oo.e);
+   public static final ol B = a("door_top_right", "_top_right", oo.f, oo.e);
+   public static final ol C = a("door_top_right_open", "_top_right_open", oo.f, oo.e);
+   public static final ol D = a("custom_fence_post", "_post", oo.b, oo.c);
+   public static final ol E = a("custom_fence_side_north", "_side_north", oo.b);
+   public static final ol F = a("custom_fence_side_east", "_side_east", oo.b);
+   public static final ol G = a("custom_fence_side_south", "_side_south", oo.b);
+   public static final ol H = a("custom_fence_side_west", "_side_west", oo.b);
+   public static final ol I = a("custom_fence_inventory", "_inventory", oo.b);
+   public static final ol J = a("fence_post", "_post", oo.b);
+   public static final ol K = a("fence_side", "_side", oo.b);
+   public static final ol L = a("fence_inventory", "_inventory", oo.b);
+   public static final ol M = a("template_wall_post", "_post", oo.r);
+   public static final ol N = a("template_wall_side", "_side", oo.r);
+   public static final ol O = a("template_wall_side_tall", "_side_tall", oo.r);
+   public static final ol P = a("wall_inventory", "_inventory", oo.r);
+   public static final ol Q = a("template_custom_fence_gate", oo.b, oo.c);
+   public static final ol R = a("template_custom_fence_gate_open", "_open", oo.b, oo.c);
+   public static final ol S = a("template_custom_fence_gate_wall", "_wall", oo.b, oo.c);
+   public static final ol T = a("template_custom_fence_gate_wall_open", "_wall_open", oo.b, oo.c);
+   public static final ol U = a("template_fence_gate", oo.b);
+   public static final ol V = a("template_fence_gate_open", "_open", oo.b);
+   public static final ol W = a("template_fence_gate_wall", "_wall", oo.b);
+   public static final ol X = a("template_fence_gate_wall_open", "_wall_open", oo.b);
+   public static final ol Y = a("pressure_plate_up", oo.b);
+   public static final ol Z = a("pressure_plate_down", "_down", oo.b);
+   public static final ol aa = a(oo.c);
+   public static final ol ab = a("slab", oo.e, oo.f, oo.i);
+   public static final ol ac = a("slab_top", "_top", oo.e, oo.f, oo.i);
+   public static final ol ad = a("leaves", oo.a);
+   public static final ol ae = a("stairs", oo.e, oo.f, oo.i);
+   public static final ol af = a("inner_stairs", "_inner", oo.e, oo.f, oo.i);
+   public static final ol ag = a("outer_stairs", "_outer", oo.e, oo.f, oo.i);
+   public static final ol ah = a("template_trapdoor_top", "_top", oo.b);
+   public static final ol ai = a("template_trapdoor_bottom", "_bottom", oo.b);
+   public static final ol aj = a("template_trapdoor_open", "_open", oo.b);
+   public static final ol ak = a("template_orientable_trapdoor_top", "_top", oo.b);
+   public static final ol al = a("template_orientable_trapdoor_bottom", "_bottom", oo.b);
+   public static final ol am = a("template_orientable_trapdoor_open", "_open", oo.b);
+   public static final ol an = a("pointed_dripstone", oo.p);
+   public static final ol ao = a("cross", oo.p);
+   public static final ol ap = a("tinted_cross", oo.p);
+   public static final ol aq = a("flower_pot_cross", oo.q);
+   public static final ol ar = a("tinted_flower_pot_cross", oo.q);
+   public static final ol as = a("rail_flat", oo.s);
+   public static final ol at = a("rail_curved", "_corner", oo.s);
+   public static final ol au = a("template_rail_raised_ne", "_raised_ne", oo.s);
+   public static final ol av = a("template_rail_raised_sw", "_raised_sw", oo.s);
+   public static final ol aw = a("carpet", oo.t);
+   public static final ol ax = a("flowerbed_1", "_1", oo.P, oo.y);
+   public static final ol ay = a("flowerbed_2", "_2", oo.P, oo.y);
+   public static final ol az = a("flowerbed_3", "_3", oo.P, oo.y);
+   public static final ol aA = a("flowerbed_4", "_4", oo.P, oo.y);
+   public static final ol aB = a("coral_fan", oo.x);
+   public static final ol aC = a("coral_wall_fan", oo.x);
+   public static final ol aD = a("template_glazed_terracotta", oo.u);
+   public static final ol aE = a("template_chorus_flower", oo.b);
+   public static final ol aF = a("template_daylight_detector", oo.f, oo.i);
+   public static final ol aG = a("template_glass_pane_noside", "_noside", oo.v);
+   public static final ol aH = a("template_glass_pane_noside_alt", "_noside_alt", oo.v);
+   public static final ol aI = a("template_glass_pane_post", "_post", oo.v, oo.w);
+   public static final ol aJ = a("template_glass_pane_side", "_side", oo.v, oo.w);
+   public static final ol aK = a("template_glass_pane_side_alt", "_side_alt", oo.v, oo.w);
+   public static final ol aL = a("template_command_block", oo.g, oo.h, oo.i);
+   public static final ol aM = a("template_chiseled_bookshelf_slot_top_left", "_slot_top_left", oo.b);
+   public static final ol aN = a("template_chiseled_bookshelf_slot_top_mid", "_slot_top_mid", oo.b);
+   public static final ol aO = a("template_chiseled_bookshelf_slot_top_right", "_slot_top_right", oo.b);
+   public static final ol aP = a("template_chiseled_bookshelf_slot_bottom_left", "_slot_bottom_left", oo.b);
+   public static final ol aQ = a("template_chiseled_bookshelf_slot_bottom_mid", "_slot_bottom_mid", oo.b);
+   public static final ol aR = a("template_chiseled_bookshelf_slot_bottom_right", "_slot_bottom_right", oo.b);
+   public static final ol aS = a("template_anvil", oo.f);
+   public static final ol[] aT = IntStream.range(0, 8).mapToObj($$0 -> a("stem_growth" + $$0, "_stage" + $$0, oo.y)).toArray(ol[]::new);
+   public static final ol aU = a("stem_fruit", oo.y, oo.z);
+   public static final ol aV = a("crop", oo.A);
+   public static final ol aW = a("template_farmland", oo.B, oo.f);
+   public static final ol aX = a("template_fire_floor", oo.C);
+   public static final ol aY = a("template_fire_side", oo.C);
+   public static final ol aZ = a("template_fire_side_alt", oo.C);
+   public static final ol ba = a("template_fire_up", oo.C);
+   public static final ol bb = a("template_fire_up_alt", oo.C);
+   public static final ol bc = a("template_campfire", oo.C, oo.K);
+   public static final ol bd = a("template_lantern", oo.D);
+   public static final ol be = a("template_hanging_lantern", "_hanging", oo.D);
+   public static final ol bf = a("template_torch", oo.G);
+   public static final ol bg = a("template_torch_wall", oo.G);
+   public static final ol bh = a("template_redstone_torch", oo.G);
+   public static final ol bi = a("template_redstone_torch_wall", oo.G);
+   public static final ol bj = a("template_piston", oo.E, oo.e, oo.i);
+   public static final ol bk = a("template_piston_head", oo.E, oo.i, oo.F);
+   public static final ol bl = a("template_piston_head_short", oo.E, oo.i, oo.F);
+   public static final ol bm = a("template_seagrass", oo.b);
+   public static final ol bn = a("template_turtle_egg", oo.a);
+   public static final ol bo = a("template_two_turtle_eggs", oo.a);
+   public static final ol bp = a("template_three_turtle_eggs", oo.a);
+   public static final ol bq = a("template_four_turtle_eggs", oo.a);
+   public static final ol br = a("template_single_face", oo.b);
+   public static final ol bs = a("template_cauldron_level1", oo.N, oo.M, oo.c, oo.f, oo.e, oo.i);
+   public static final ol bt = a("template_cauldron_level2", oo.N, oo.M, oo.c, oo.f, oo.e, oo.i);
+   public static final ol bu = a("template_cauldron_full", oo.N, oo.M, oo.c, oo.f, oo.e, oo.i);
+   public static final ol bv = a("template_azalea", oo.f, oo.i);
+   public static final ol bw = a("template_potted_azalea_bush", oo.q, oo.f, oo.i);
+   public static final ol bx = a("template_potted_azalea_bush", oo.q, oo.f, oo.i);
+   public static final ol by = a("sniffer_egg", oo.f, oo.e, oo.j, oo.k, oo.l, oo.m);
+   public static final ol bz = b("generated", oo.H);
+   public static final ol bA = b("template_music_disc", oo.H);
+   public static final ol bB = b("handheld", oo.H);
+   public static final ol bC = b("handheld_rod", oo.H);
+   public static final ol bD = b("generated", oo.H, oo.I);
+   public static final ol bE = b("generated", oo.H, oo.I, oo.J);
+   public static final ol bF = b("template_shulker_box", oo.c);
+   public static final ol bG = b("template_bed", oo.c);
+   public static final ol bH = b("template_banner");
+   public static final ol bI = b("template_skull");
+   public static final ol bJ = a("template_candle", oo.a, oo.c);
+   public static final ol bK = a("template_two_candles", oo.a, oo.c);
+   public static final ol bL = a("template_three_candles", oo.a, oo.c);
+   public static final ol bM = a("template_four_candles", oo.a, oo.c);
+   public static final ol bN = a("template_cake_with_candle", oo.L, oo.e, oo.i, oo.f, oo.c);
+   public static final ol bO = a("template_sculk_shrieker", oo.e, oo.i, oo.f, oo.c, oo.O);
+   public static final ol bP = a("template_vault", oo.f, oo.e, oo.i, oo.g);
+   public static final ol bQ = b("handheld_mace", oo.H);
+
+   private static ol a(oo... $$0) {
+      return new ol(Optional.empty(), Optional.empty(), $$0);
+   }
+
+   private static ol a(String $$0, oo... $$1) {
+      return new ol(Optional.of(ali.b("block/" + $$0)), Optional.empty(), $$1);
+   }
+
+   private static ol b(String $$0, oo... $$1) {
+      return new ol(Optional.of(ali.b("item/" + $$0)), Optional.empty(), $$1);
+   }
+
+   private static ol a(String $$0, String $$1, oo... $$2) {
+      return new ol(Optional.of(ali.b("block/" + $$0)), Optional.of($$1), $$2);
    }
 }

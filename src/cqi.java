@@ -1,199 +1,59 @@
-import javax.annotation.Nullable;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.Lists;
+import it.unimi.dsi.fastutil.ints.Int2ObjectAVLTreeMap;
+import it.unimi.dsi.fastutil.ints.Int2ObjectSortedMap;
+import java.util.Collection;
+import java.util.List;
 
-public class cqi extends cqh implements buo, cqj {
-   private static final int i = 27;
-   private jy<cvx> j = jy.a(27, cvx.k);
-   @Nullable
-   private alg<eub> k;
-   private long l;
+public class cqi {
+   private final List<cqf> a = Lists.newArrayList();
+   private int b;
 
-   public cqi(bug<? extends cqh> $$0, dev $$1) {
-      super($$0, $$1);
+   public ImmutableList<cqf> a() {
+      return ImmutableList.copyOf(this.a);
    }
 
-   public cqi(dev $$0, double $$1, double $$2, double $$3) {
-      super(bug.r, $$0);
-      this.a_($$1, $$2, $$3);
-      this.L = $$1;
-      this.M = $$2;
-      this.N = $$3;
+   public cqi a(int $$0, float $$1) {
+      this.a.add(new cqf($$0, $$1));
+      this.b();
+      return this;
    }
 
-   @Override
-   protected float v() {
-      return 0.15F;
+   public cqi a(Collection<cqf> $$0) {
+      this.a.addAll($$0);
+      this.b();
+      return this;
    }
 
-   @Override
-   protected int x() {
-      return 1;
+   private void b() {
+      Int2ObjectSortedMap<cqf> $$0 = new Int2ObjectAVLTreeMap();
+      this.a.forEach($$1 -> $$0.put($$1.a(), $$1));
+      this.a.clear();
+      this.a.addAll($$0.values());
+      this.b = 0;
    }
 
-   @Override
-   protected void b(uj $$0) {
-      super.b($$0);
-      this.a($$0, this.dZ());
-   }
-
-   @Override
-   protected void a(uj $$0) {
-      super.a($$0);
-      this.b($$0, this.dZ());
-   }
-
-   @Override
-   public void a(bsp $$0) {
-      this.b(this.al_());
-      this.a($$0, this.dX(), this);
-   }
-
-   @Override
-   public void a(btz.c $$0) {
-      if (!this.dX().C && $$0.a()) {
-         bru.a(this.dX(), this, this);
-      }
-
-      super.a($$0);
-   }
-
-   @Override
-   public bry a(coh $$0, brx $$1) {
-      if (!$$0.ga()) {
-         bry $$2 = super.a($$0, $$1);
-         if ($$2 != bry.e) {
-            return $$2;
-         }
-      }
-
-      if (this.r($$0) && !$$0.ga()) {
-         return bry.e;
+   public float a(int $$0) {
+      if (this.a.size() <= 0) {
+         return 0.0F;
       } else {
-         bry $$3 = this.c_($$0);
-         if ($$3.a()) {
-            this.a(eaa.k, $$0);
-            cmx.a($$0, true);
+         cqf $$1 = this.a.get(this.b);
+         cqf $$2 = this.a.get(this.a.size() - 1);
+         boolean $$3 = $$0 < $$1.a();
+         int $$4 = $$3 ? 0 : this.b;
+         float $$5 = $$3 ? $$2.b() : $$1.b();
+
+         for (int $$6 = $$4; $$6 < this.a.size(); $$6++) {
+            cqf $$7 = this.a.get($$6);
+            if ($$7.a() > $$0) {
+               break;
+            }
+
+            this.b = $$6;
+            $$5 = $$7.b();
          }
 
-         return $$3;
+         return $$5;
       }
-   }
-
-   @Override
-   public void b(coh $$0) {
-      $$0.a(this);
-      if (!$$0.dX().C) {
-         this.a(eaa.k, $$0);
-         cmx.a($$0, true);
-      }
-   }
-
-   @Override
-   public cvt al_() {
-      return switch (this.w()) {
-         case b -> cwb.nY;
-         case c -> cwb.oa;
-         case d -> cwb.oc;
-         case e -> cwb.oe;
-         case f -> cwb.og;
-         case g -> cwb.oi;
-         case h -> cwb.ok;
-         case i -> cwb.om;
-         default -> cwb.nW;
-      };
-   }
-
-   @Override
-   public void a() {
-      this.f();
-   }
-
-   @Override
-   public int b() {
-      return 27;
-   }
-
-   @Override
-   public cvx a(int $$0) {
-      return this.f_($$0);
-   }
-
-   @Override
-   public cvx a(int $$0, int $$1) {
-      return this.b($$0, $$1);
-   }
-
-   @Override
-   public cvx b(int $$0) {
-      return this.e_($$0);
-   }
-
-   @Override
-   public void a(int $$0, cvx $$1) {
-      this.c($$0, $$1);
-   }
-
-   @Override
-   public bvn a_(int $$0) {
-      return this.g_($$0);
-   }
-
-   @Override
-   public void e() {
-   }
-
-   @Override
-   public boolean a(coh $$0) {
-      return this.g($$0);
-   }
-
-   @Nullable
-   @Override
-   public crj createMenu(int $$0, cog $$1, coh $$2) {
-      if (this.k != null && $$2.R_()) {
-         return null;
-      } else {
-         this.e($$1.k);
-         return crs.a($$0, $$1, this);
-      }
-   }
-
-   public void e(@Nullable coh $$0) {
-      this.f($$0);
-   }
-
-   @Nullable
-   @Override
-   public alg<eub> E() {
-      return this.k;
-   }
-
-   @Override
-   public void a(@Nullable alg<eub> $$0) {
-      this.k = $$0;
-   }
-
-   @Override
-   public long F() {
-      return this.l;
-   }
-
-   @Override
-   public void a(long $$0) {
-      this.l = $$0;
-   }
-
-   @Override
-   public jy<cvx> G() {
-      return this.j;
-   }
-
-   @Override
-   public void I() {
-      this.j = jy.a(this.b(), cvx.k);
-   }
-
-   @Override
-   public void c(coh $$0) {
-      this.dX().a(eaa.j, this.dv(), eaa.a.a($$0));
    }
 }

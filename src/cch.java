@@ -1,42 +1,18 @@
-import java.util.EnumSet;
+public class cch extends ccg {
+   private final cnt h;
 
-public class cch extends cbt {
-   private final bvd a;
-   private double b;
-   private double c;
-   private double d;
-   private final double e;
-
-   public cch(bvd $$0, double $$1) {
-      this.a = $$0;
-      this.e = $$1;
-      this.a(EnumSet.of(cbt.a.a));
+   public cch(cnt $$0) {
+      super($$0, com.class, 8.0F);
+      this.h = $$0;
    }
 
    @Override
    public boolean b() {
-      if (this.a.gd()) {
-         return false;
+      if (this.h.gv()) {
+         this.c = this.h.gu();
+         return true;
       } else {
-         ezh $$0 = cfq.a(this.a, 16, 7, ezh.c(this.a.ge()), (float) (Math.PI / 2));
-         if ($$0 == null) {
-            return false;
-         } else {
-            this.b = $$0.d;
-            this.c = $$0.e;
-            this.d = $$0.f;
-            return true;
-         }
+         return false;
       }
-   }
-
-   @Override
-   public boolean c() {
-      return !this.a.P().m();
-   }
-
-   @Override
-   public void d() {
-      this.a.P().a(this.b, this.c, this.d, this.e);
    }
 }

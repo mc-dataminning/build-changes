@@ -1,23 +1,27 @@
-public class gsa extends gsm<gur, fyk> {
-   private final fyk a;
-   private final fyk b;
-   private final grx c;
+public class gsa extends gsh<gug, fyc> {
+   private static final ali a = ali.b("textures/entity/creeper/creeper_armor.png");
+   private final fyc b;
 
-   public gsa(gpv<gur, fyk> $$0, gax $$1, grx $$2) {
+   public gsa(gqg<gug, fyc> $$0, gbi $$1) {
       super($$0);
-      this.c = $$2;
-      this.a = new fyk($$1.a(gba.aR));
-      this.b = new fyk($$1.a(gba.aS));
+      this.b = new fyc($$1.a(gbl.X));
    }
 
-   public void a(fdt $$0, ghw $$1, int $$2, gur $$3, float $$4, float $$5) {
-      cvx $$6 = $$3.i;
-      ddh $$7 = $$6.a(kt.D);
-      if ($$7 != null && !$$7.c().isEmpty()) {
-         fyk $$8 = $$3.ae ? this.b : this.a;
-         alh $$9 = $$7.c().get();
-         $$8.a($$3);
-         this.c.a(ddf.d.e, $$9, $$8, $$6, gig::a, $$0, $$1, $$2);
-      }
+   protected boolean a(gug $$0) {
+      return $$0.b;
+   }
+
+   @Override
+   protected float a(float $$0) {
+      return $$0 * 0.01F;
+   }
+
+   @Override
+   protected ali a() {
+      return a;
+   }
+
+   protected fyc b() {
+      return this.b;
    }
 }

@@ -1,28 +1,27 @@
-public class cvc extends cvt implements cws {
-   public cvc(cvt.a $$0) {
+public class cvc extends cvx {
+   public cvc(cvx.a $$0) {
       super($$0);
    }
 
    @Override
-   public bry a(dev $$0, coh $$1, brx $$2) {
-      cvx $$3 = $$1.b($$2);
-      $$0.a(null, $$1.dC(), $$1.dE(), $$1.dI(), awk.iH, awl.g, 0.5F, 0.4F / ($$0.E_().i() * 0.4F + 0.8F));
-      if ($$0 instanceof arm $$4) {
-         cpb.a(cpm::new, $$4, $$3, $$1, -20.0F, 0.7F, 1.0F);
+   public bsd a(dfb $$0, com $$1, bsc $$2) {
+      cwb $$3 = $$1.b($$2);
+      if ($$0.C) {
+         return bsd.a;
+      } else {
+         $$3.a(1, $$1);
+         $$1.b(awv.c.b(this));
+         $$1.dX().a(null, $$1, awl.Ay, $$1.dn(), 1.0F, 1.0F);
+         cwb $$4 = cwo.a($$0, $$1.dB(), $$1.dH(), (byte)0, true, false);
+         if ($$3.f()) {
+            return bsd.a.a($$4);
+         } else {
+            if (!$$1.gk().f($$4.v())) {
+               $$1.a($$4, false);
+            }
+
+            return bsd.a;
+         }
       }
-
-      $$1.b(awu.c.b(this));
-      $$3.a(1, $$1);
-      return bry.a;
-   }
-
-   @Override
-   public cpb a(dev $$0, jz $$1, cvx $$2, jl $$3) {
-      return new cpm($$0, $$1.a(), $$1.b(), $$1.c(), $$2);
-   }
-
-   @Override
-   public cws.a c() {
-      return cws.a.a().a(cws.a.a.c() * 0.5F).b(cws.a.a.d() * 1.25F).a();
    }
 }

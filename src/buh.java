@@ -1,88 +1,43 @@
-import io.netty.buffer.ByteBuf;
-import java.util.List;
-import java.util.function.IntFunction;
-
-public enum buh implements baf {
-   a(buh.a.a, 0, 0, "mainhand"),
-   b(buh.a.a, 1, 5, "offhand"),
-   c(buh.a.b, 0, 1, 1, "feet"),
-   d(buh.a.b, 1, 1, 2, "legs"),
-   e(buh.a.b, 2, 1, 3, "chest"),
-   f(buh.a.b, 3, 1, 4, "head"),
-   g(buh.a.c, 0, 1, 6, "body");
-
-   public static final int h = 0;
-   public static final List<buh> i = List.of(values());
-   public static final IntFunction<buh> j = aya.a($$0 -> $$0.p, values(), aya.a.a);
-   public static final baf.a<buh> k = baf.a(buh::values);
-   public static final zf<ByteBuf, buh> l = zd.a(j, $$0 -> $$0.p);
-   private final buh.a m;
-   private final int n;
-   private final int o;
-   private final int p;
-   private final String q;
-
-   private buh(final buh.a $$0, final int $$1, final int $$2, final int $$3, final String $$4) {
-      this.m = $$0;
-      this.n = $$1;
-      this.o = $$2;
-      this.p = $$3;
-      this.q = $$4;
+public record buh(float a, float b, float c, bug d, boolean e) {
+   private buh(float $$0, float $$1, boolean $$2) {
+      this($$0, $$1, c($$1), bug.a($$0, $$1), $$2);
    }
 
-   private buh(final buh.a $$0, final int $$1, final int $$2, final String $$3) {
-      this($$0, $$1, 0, $$2, $$3);
+   private static float c(float $$0) {
+      return $$0 * 0.85F;
    }
 
-   public buh.a a() {
-      return this.m;
+   public ezi a(ezn $$0) {
+      return this.a($$0.d, $$0.e, $$0.f);
    }
 
-   public int b() {
-      return this.n;
+   public ezi a(double $$0, double $$1, double $$2) {
+      float $$3 = this.a / 2.0F;
+      float $$4 = this.b;
+      return new ezi($$0 - (double)$$3, $$1, $$2 - (double)$$3, $$0 + (double)$$3, $$1 + (double)$$4, $$2 + (double)$$3);
    }
 
-   public int a(int $$0) {
-      return $$0 + this.n;
+   public buh a(float $$0) {
+      return this.a($$0, $$0);
    }
 
-   public cvx a(cvx $$0) {
-      return this.o > 0 ? $$0.a(this.o) : $$0;
+   public buh a(float $$0, float $$1) {
+      return !this.e && ($$0 != 1.0F || $$1 != 1.0F) ? new buh(this.a * $$0, this.b * $$1, this.c * $$1, this.d.a($$0, $$1, $$0), false) : this;
    }
 
-   public int d() {
-      return this.p;
+   public static buh b(float $$0, float $$1) {
+      return new buh($$0, $$1, false);
    }
 
-   public int b(int $$0) {
-      return this.p + $$0;
+   public static buh c(float $$0, float $$1) {
+      return new buh($$0, $$1, true);
    }
 
-   public String e() {
-      return this.q;
+   public buh b(float $$0) {
+      return new buh(this.a, this.b, $$0, this.d, this.e);
    }
 
-   public boolean f() {
-      return this.m == buh.a.b || this.m == buh.a.c;
-   }
-
-   @Override
-   public String c() {
-      return this.q;
-   }
-
-   public static buh a(String $$0) {
-      buh $$1 = k.a($$0);
-      if ($$1 != null) {
-         return $$1;
-      } else {
-         throw new IllegalArgumentException("Invalid slot '" + $$0 + "'");
-      }
-   }
-
-   public static enum a {
-      a,
-      b,
-      c;
+   public buh a(bug.a $$0) {
+      return new buh(this.a, this.b, this.c, $$0.a(this.a, this.b), this.e);
    }
 }

@@ -1,8 +1,6 @@
-import javax.annotation.ParametersAreNonnullByDefault;
-
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface gwz {
+public class gwz extends gvl {
+   public float[] a = new float[2];
+   public float[] b = new float[2];
+   public float c;
+   public boolean d;
 }

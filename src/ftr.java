@@ -1,117 +1,86 @@
-public class ftr extends ftv {
-   private static final xh a = xh.c("options.languageAccuracyWarning").b(-4539718);
-   private static final int u = 53;
-   private ftr.a v;
-   final gzb w;
+import java.util.List;
+import javax.annotation.Nullable;
 
-   public ftr(fqs $$0, fje $$1, gzb $$2) {
-      super($$0, $$1, xh.c("options.language.title"));
-      this.w = $$2;
-      this.s.a(53);
+public class ftr extends fra {
+   private static final int a = 310;
+   private static final int b = 25;
+   private static final xi c = xi.c("menu.server_links.title");
+   private final fra d;
+   @Nullable
+   private ftr.a s;
+   final fow u = new fow(this);
+   final ama v;
+
+   public ftr(fra $$0, ama $$1) {
+      super(c);
+      this.d = $$0;
+      this.v = $$1;
    }
 
    @Override
-   protected void E() {
-      this.v = this.s.c(new ftr.a(this.m));
-   }
-
-   @Override
-   protected void m() {
-   }
-
-   @Override
-   protected void D() {
-      fos $$0 = this.s.b(fos.d()).a(8);
-      $$0.c().b();
-      $$0.a(new fmg(a, this.p));
-      fos $$1 = $$0.a(fos.e().a(8));
-      $$1.a(fkz.a(xh.c("options.font"), $$0x -> this.m.a(new ftq(this, this.c))).a());
-      $$1.a(fkz.a(xg.d, $$0x -> this.G()).a());
+   protected void aR_() {
+      this.u.a(this.l, this.p);
+      this.s = this.u.c(new ftr.a(this.m, this.n, this));
+      this.u.b(flh.a(xh.k, $$0 -> this.d()).a(200).a());
+      this.u.a($$1 -> {
+         flf var10000 = this.c($$1);
+      });
+      this.c();
    }
 
    @Override
    protected void c() {
-      super.c();
-      this.v.a(this.n, this.s);
-   }
-
-   void G() {
-      ftr.a.a $$0 = this.v.h();
-      if ($$0 != null && !$$0.b.equals(this.w.a())) {
-         this.w.a($$0.b);
-         this.c.ab = $$0.b;
-         this.m.l();
+      this.u.a();
+      if (this.s != null) {
+         this.s.a(this.n, this.u);
       }
-
-      this.m.a(this.b);
    }
 
-   class a extends flv<ftr.a.a> {
-      public a(final fja $$0) {
-         super($$0, ftr.this.n, ftr.this.o - 33 - 53, 33, 18);
-         String $$1 = ftr.this.w.a();
-         ftr.this.w.b().forEach(($$1x, $$2) -> {
-            ftr.a.a $$3 = new ftr.a.a($$1x, $$2);
-            this.b($$3);
-            if ($$1.equals($$1x)) {
-               this.a($$3);
-            }
-         });
-         if (this.h() != null) {
-            this.e(this.h());
-         }
+   @Override
+   public void d() {
+      this.m.a(this.d);
+   }
+
+   static class a extends fln<ftr.b> {
+      public a(fji $$0, int $$1, ftr $$2) {
+         super($$0, $$1, $$2.u.d(), $$2.u.c(), 25);
+         $$2.v.c().forEach($$1x -> this.b(new ftr.b($$2, $$1x)));
       }
 
       @Override
       public int b() {
-         return super.b() + 50;
+         return 310;
       }
 
-      public class a extends flv.a<ftr.a.a> {
-         final String b;
-         private final xh c;
-         private long d;
+      @Override
+      public void a(int $$0, fow $$1) {
+         super.a($$0, $$1);
+         int $$2 = $$0 / 2 - 155;
+         this.aI_().forEach($$1x -> $$1x.a.m($$2));
+      }
+   }
 
-         public a(final String $$1, final gza $$2) {
-            this.b = $$1;
-            this.c = $$2.a();
-         }
+   static class b extends fln.a<ftr.b> {
+      final flf a;
 
-         @Override
-         public void a(fkm $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
-            $$0.a(ftr.this.p, this.c, a.this.g / 2, $$2 + $$5 / 2 - 9 / 2, -1);
-         }
+      b(fra $$0, ama.a $$1) {
+         this.a = flh.a($$1.a(), fpx.b($$0, $$1.c(), false)).a(310).a();
+      }
 
-         @Override
-         public boolean a(int $$0, int $$1, int $$2) {
-            if (fpc.a($$0)) {
-               this.b();
-               ftr.this.G();
-               return true;
-            } else {
-               return super.a($$0, $$1, $$2);
-            }
-         }
+      @Override
+      public void a(fku $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
+         this.a.n($$2);
+         this.a.a($$0, $$6, $$7, $$9);
+      }
 
-         @Override
-         public boolean a(double $$0, double $$1, int $$2) {
-            this.b();
-            if (ad.c() - this.d < 250L) {
-               ftr.this.G();
-            }
+      @Override
+      public List<? extends fne> aI_() {
+         return List.of(this.a);
+      }
 
-            this.d = ad.c();
-            return super.a($$0, $$1, $$2);
-         }
-
-         private void b() {
-            a.this.a(this);
-         }
-
-         @Override
-         public xh a() {
-            return xh.a("narrator.select", this.c);
-         }
+      @Override
+      public List<? extends fpd> b() {
+         return List.of(this.a);
       }
    }
 }

@@ -1,104 +1,43 @@
-public class crs extends crj {
-   private final brr m;
-   private final int n;
+import com.mojang.datafixers.util.Pair;
+import javax.annotation.Nullable;
 
-   private crs(css<?> $$0, int $$1, cog $$2, int $$3) {
-      this($$0, $$1, $$2, new bsf(9 * $$3), $$3);
-   }
+class crs extends ctl {
+   private final bva a;
+   private final bum b;
+   @Nullable
+   private final ali g;
 
-   public static crs a(int $$0, cog $$1) {
-      return new crs(css.a, $$0, $$1, 1);
-   }
-
-   public static crs b(int $$0, cog $$1) {
-      return new crs(css.b, $$0, $$1, 2);
-   }
-
-   public static crs c(int $$0, cog $$1) {
-      return new crs(css.c, $$0, $$1, 3);
-   }
-
-   public static crs d(int $$0, cog $$1) {
-      return new crs(css.d, $$0, $$1, 4);
-   }
-
-   public static crs e(int $$0, cog $$1) {
-      return new crs(css.e, $$0, $$1, 5);
-   }
-
-   public static crs f(int $$0, cog $$1) {
-      return new crs(css.f, $$0, $$1, 6);
-   }
-
-   public static crs a(int $$0, cog $$1, brr $$2) {
-      return new crs(css.c, $$0, $$1, $$2, 3);
-   }
-
-   public static crs b(int $$0, cog $$1, brr $$2) {
-      return new crs(css.f, $$0, $$1, $$2, 6);
-   }
-
-   public crs(css<?> $$0, int $$1, cog $$2, brr $$3, int $$4) {
-      super($$0, $$1);
-      a($$3, $$4 * 9);
-      this.m = $$3;
-      this.n = $$4;
-      $$3.d_($$2.k);
-      int $$5 = 18;
-      this.d($$3, 8, 18);
-      int $$6 = 18 + this.n * 18 + 13;
-      this.c($$2, 8, $$6);
-   }
-
-   private void d(brr $$0, int $$1, int $$2) {
-      for (int $$3 = 0; $$3 < this.n; $$3++) {
-         for (int $$4 = 0; $$4 < 9; $$4++) {
-            this.a(new ctg($$0, $$4 + $$3 * 9, $$1 + $$4 * 18, $$2 + $$3 * 18));
-         }
-      }
+   public crs(brw $$0, bva $$1, bum $$2, int $$3, int $$4, int $$5, @Nullable ali $$6) {
+      super($$0, $$3, $$4, $$5);
+      this.a = $$1;
+      this.b = $$2;
+      this.g = $$6;
    }
 
    @Override
-   public boolean b(coh $$0) {
-      return this.m.a($$0);
+   public void a(cwb $$0, cwb $$1) {
+      this.a.a(this.b, $$1, $$0);
+      super.a($$0, $$1);
    }
 
    @Override
-   public cvx b(coh $$0, int $$1) {
-      cvx $$2 = cvx.k;
-      ctg $$3 = this.k.get($$1);
-      if ($$3 != null && $$3.h()) {
-         cvx $$4 = $$3.g();
-         $$2 = $$4.v();
-         if ($$1 < this.n * 9) {
-            if (!this.a($$4, this.n * 9, this.k.size(), true)) {
-               return cvx.k;
-            }
-         } else if (!this.a($$4, 0, this.n * 9, false)) {
-            return cvx.k;
-         }
-
-         if ($$4.f()) {
-            $$3.e(cvx.k);
-         } else {
-            $$3.c();
-         }
-      }
-
-      return $$2;
+   public int a() {
+      return 1;
    }
 
    @Override
-   public void a(coh $$0) {
-      super.a($$0);
-      this.m.c($$0);
+   public boolean a(cwb $$0) {
+      return this.b == this.a.f($$0);
    }
 
-   public brr l() {
-      return this.m;
+   @Override
+   public boolean a(com $$0) {
+      cwb $$1 = this.g();
+      return !$$1.f() && !$$0.f() && dbu.a($$1, dbt.E) ? false : super.a($$0);
    }
 
-   public int m() {
-      return this.n;
+   @Override
+   public Pair<ali, ali> b() {
+      return this.g != null ? Pair.of(csr.B, this.g) : super.b();
    }
 }

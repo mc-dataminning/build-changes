@@ -1,34 +1,36 @@
-public class gob extends gny<cot, gue> {
-   private static final alh a = alh.b("textures/entity/illager/evoker_fangs.png");
-   private final fya b;
+public class gob extends goj<cox, gun> {
+   private static final ali a = ali.b("textures/entity/enderdragon/dragon_fireball.png");
+   private static final gir b = gir.f(a);
 
-   public gob(gnz.a $$0) {
+   public gob(gok.a $$0) {
       super($$0);
-      this.b = new fya($$0.a(gba.ay));
    }
 
-   public void a(gue $$0, fdt $$1, ghw $$2, int $$3) {
-      float $$4 = $$0.b;
-      if ($$4 != 0.0F) {
-         $$1.a();
-         $$1.a(a.d.rotationDegrees(90.0F - $$0.a));
-         $$1.b(-1.0F, -1.0F, 1.0F);
-         $$1.a(0.0F, -1.501F, 0.0F);
-         this.b.a($$0);
-         fdx $$5 = $$2.getBuffer(this.b.a(a));
-         this.b.a($$1, $$5, $$3, gxj.d);
-         $$1.b();
-         super.a($$0, $$1, $$2, $$3);
-      }
+   protected int a(cox $$0, jh $$1) {
+      return 15;
    }
 
-   public gue a() {
-      return new gue();
+   @Override
+   public void a(gun $$0, feb $$1, gih $$2, int $$3) {
+      $$1.a();
+      $$1.b(2.0F, 2.0F, 2.0F);
+      $$1.a(this.e.b());
+      feb.a $$4 = $$1.c();
+      fef $$5 = $$2.getBuffer(b);
+      a($$5, $$4, $$3, 0.0F, 0, 0, 1);
+      a($$5, $$4, $$3, 1.0F, 0, 1, 1);
+      a($$5, $$4, $$3, 1.0F, 1, 1, 0);
+      a($$5, $$4, $$3, 0.0F, 1, 0, 0);
+      $$1.b();
+      super.a($$0, $$1, $$2, $$3);
    }
 
-   public void a(cot $$0, gue $$1, float $$2) {
-      super.a($$0, $$1, $$2);
-      $$1.a = $$0.dN();
-      $$1.b = $$0.a($$2);
+   private static void a(fef $$0, feb.a $$1, int $$2, float $$3, int $$4, int $$5, int $$6) {
+      $$0.a($$1, $$3 - 0.5F, (float)$$4 - 0.25F, 0.0F).a(-1).a((float)$$5, (float)$$6).b(gxu.d).c($$2).b($$1, 0.0F, 1.0F, 0.0F);
+   }
+
+   @Override
+   public gun b() {
+      return new gun();
    }
 }

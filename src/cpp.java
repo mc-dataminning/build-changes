@@ -1,105 +1,75 @@
-public class cpp extends coq {
-   private static final akk<Boolean> e = ako.a(cpp.class, akm.k);
+public class cpp extends cpn {
+   private static final buh b = buh.c(0.0F, 0.0F);
 
-   public cpp(bug<? extends cpp> $$0, dev $$1) {
+   public cpp(bul<? extends cpp> $$0, dfb $$1) {
       super($$0, $$1);
    }
 
-   public cpp(dev $$0, buv $$1, ezh $$2) {
-      super(bug.br, $$1, $$2, $$0);
+   public cpp(dfb $$0, bva $$1, cwb $$2) {
+      super(bul.C, $$1, $$0, $$2);
+   }
+
+   public cpp(dfb $$0, double $$1, double $$2, double $$3, cwb $$4) {
+      super(bul.C, $$1, $$2, $$3, $$0, $$4);
    }
 
    @Override
-   protected float t() {
-      return this.w() ? 0.73F : super.t();
-   }
+   public void b(byte $$0) {
+      if ($$0 == 3) {
+         double $$1 = 0.08;
 
-   @Override
-   public boolean bZ() {
-      return false;
-   }
-
-   @Override
-   public float a(den $$0, dea $$1, jg $$2, dvd $$3, ere $$4, float $$5) {
-      return this.w() && ckd.c($$3) ? Math.min(0.8F, $$5) : $$5;
-   }
-
-   @Override
-   protected void a(eze $$0) {
-      super.a($$0);
-      if (this.dX() instanceof arm $$1) {
-         btz var8 = $$0.a();
-         boolean $$7;
-         if (this.s() instanceof buv $$5) {
-            bsp $$6 = this.dY().a(this, $$5);
-            $$7 = var8.a($$6, 8.0F);
-            if ($$7) {
-               if (var8.bM()) {
-                  dbo.a($$1, var8, $$6);
-               } else {
-                  $$5.c(5.0F);
-               }
-            }
-         } else {
-            $$7 = var8.a(this.dY().q(), 5.0F);
-         }
-
-         if ($$7 && var8 instanceof buv $$9) {
-            int $$10 = 0;
-            if (this.dX().am() == brv.c) {
-               $$10 = 10;
-            } else if (this.dX().am() == brv.d) {
-               $$10 = 40;
-            }
-
-            if ($$10 > 0) {
-               $$9.b(new bte(btg.t, 20 * $$10, 1), this.F());
-            }
+         for (int $$2 = 0; $$2 < 8; $$2++) {
+            this.dX()
+               .a(
+                  new ln(lr.S, this.m()),
+                  this.dC(),
+                  this.dE(),
+                  this.dI(),
+                  ((double)this.af.i() - 0.5) * 0.08,
+                  ((double)this.af.i() - 0.5) * 0.08,
+                  ((double)this.af.i() - 0.5) * 0.08
+               );
          }
       }
    }
 
    @Override
-   protected void a(ezf $$0) {
+   protected void a(ezk $$0) {
+      super.a($$0);
+      $$0.a().a(this.dY().b(this, this.s()), 0.0F);
+   }
+
+   @Override
+   protected void a(ezl $$0) {
       super.a($$0);
       if (!this.dX().C) {
-         this.dX().a(this, this.dC(), this.dE(), this.dI(), 1.0F, false, dev.a.c);
-         this.au();
+         if (this.af.a(8) == 0) {
+            int $$1 = 1;
+            if (this.af.a(32) == 0) {
+               $$1 = 4;
+            }
+
+            for (int $$2 = 0; $$2 < $$1; $$2++) {
+               cgw $$3 = bul.t.a(this.dX(), buk.k);
+               if ($$3 != null) {
+                  $$3.c_(-24000);
+                  $$3.b(this.dC(), this.dE(), this.dI(), this.dN(), 0.0F);
+                  if (!$$3.a(b)) {
+                     break;
+                  }
+
+                  this.dX().b($$3);
+               }
+            }
+         }
+
+         this.dX().a(this, (byte)3);
+         this.av();
       }
    }
 
    @Override
-   public boolean a(bsp $$0, float $$1) {
-      return false;
-   }
-
-   @Override
-   protected void a(ako.a $$0) {
-      $$0.a(e, false);
-   }
-
-   public boolean w() {
-      return this.am.a(e);
-   }
-
-   public void a(boolean $$0) {
-      this.am.a(e, $$0);
-   }
-
-   @Override
-   protected boolean o() {
-      return false;
-   }
-
-   @Override
-   public void b(uj $$0) {
-      super.b($$0);
-      $$0.a("dangerous", this.w());
-   }
-
-   @Override
-   public void a(uj $$0) {
-      super.a($$0);
-      this.a($$0.q("dangerous"));
+   protected cvx o() {
+      return cwf.qS;
    }
 }

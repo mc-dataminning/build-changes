@@ -1,29 +1,29 @@
-public class ajh implements zo<ajc> {
-   public static final zf<we, ajh> a = zo.a(ajh::a, ajh::new);
-   private final xh b;
+public class ajh implements zp<ajd> {
+   public static final zg<wf, ajh> a = zp.a(ajh::a, ajh::new);
+   private final int b;
 
-   public ajh(xh $$0) {
+   public ajh(int $$0) {
       this.b = $$0;
    }
 
-   private ajh(we $$0) {
-      this.b = xh.a.b($$0.d(262144), kd.b);
+   private ajh(wf $$0) {
+      this.b = $$0.l();
    }
 
-   private void a(we $$0) {
-      $$0.a(xh.a.a(this.b, kd.b));
+   private void a(wf $$0) {
+      $$0.c(this.b);
    }
 
    @Override
-   public zq<ajh> a() {
-      return aji.e;
+   public zr<ajh> a() {
+      return ajj.d;
    }
 
-   public void a(ajc $$0) {
+   public void a(ajd $$0) {
       $$0.a(this);
    }
 
-   public xh b() {
+   public int b() {
       return this.b;
    }
 }

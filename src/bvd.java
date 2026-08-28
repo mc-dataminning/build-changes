@@ -1,64 +1,57 @@
-public abstract class bvd extends bux {
-   protected static final float bX = 0.0F;
+import com.mojang.serialization.Codec;
 
-   protected bvd(bug<? extends bvd> $$0, dev $$1) {
-      super($$0, $$1);
+public enum bvd implements bag {
+   a("monster", 70, false, false, 128),
+   b("creature", 10, true, true, 128),
+   c("ambient", 15, true, false, 128),
+   d("axolotls", 5, true, false, 128),
+   e("underground_water_creature", 5, true, false, 128),
+   f("water_creature", 5, true, false, 128),
+   g("water_ambient", 20, true, false, 64),
+   h("misc", -1, true, true, 128);
+
+   public static final Codec<bvd> i = bag.a(bvd::values);
+   private final int j;
+   private final boolean k;
+   private final boolean l;
+   private final String m;
+   private final int n = 32;
+   private final int o;
+
+   private bvd(final String $$0, final int $$1, final boolean $$2, final boolean $$3, final int $$4) {
+      this.m = $$0;
+      this.j = $$1;
+      this.k = $$2;
+      this.l = $$3;
+      this.o = $$4;
    }
 
-   public float c(jg $$0) {
-      return this.a($$0, this.dX());
-   }
-
-   public float a(jg $$0, dey $$1) {
-      return 0.0F;
-   }
-
-   @Override
-   public boolean a(dew $$0, buf $$1) {
-      return this.a(this.dx(), $$0) >= 0.0F;
-   }
-
-   public boolean gr() {
-      return !this.P().m();
-   }
-
-   public boolean gs() {
-      if (this.bC.a(cdz.Z)) {
-         return this.bC.c(cdz.Z).isPresent();
-      } else {
-         for (cdh $$0 : this.bS.b()) {
-            if ($$0.h() && $$0.k() instanceof ccm) {
-               return true;
-            }
-         }
-
-         return false;
-      }
-   }
-
-   protected boolean gt() {
-      return true;
+   public String a() {
+      return this.m;
    }
 
    @Override
-   public void b(btz $$0) {
-      super.b($$0);
-      if (this.gt() && !this.gs()) {
-         this.bS.b(cbt.a.a);
-         float $$1 = 2.0F;
-         float $$2 = this.f($$0);
-         ezh $$3 = new ezh($$0.dC() - this.dC(), $$0.dE() - this.dE(), $$0.dI() - this.dI()).d().c((double)Math.max($$2 - 2.0F, 0.0F));
-         this.P().a(this.dC() + $$3.d, this.dE() + $$3.e, this.dI() + $$3.f, this.gu());
-      }
+   public String c() {
+      return this.m;
    }
 
-   @Override
-   public boolean a(btz $$0, float $$1) {
-      this.a($$0.dx(), 5);
-      return true;
+   public int b() {
+      return this.j;
    }
 
-   protected double gu() {
-      return 1.0;
+   public boolean d() {
+      return this.k;
+   }
+
+   public boolean e() {
+      return this.l;
+   }
+
+   public int f() {
+      return this.o;
+   }
+
+   public int g() {
+      return 32;
    }
 }

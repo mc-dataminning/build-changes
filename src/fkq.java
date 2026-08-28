@@ -1,40 +1,58 @@
-public abstract class fkq extends fkx {
-   protected static final int e = 2;
-   private static final fmm a = new fmm(alh.b("widget/button"), alh.b("widget/button_disabled"), alh.b("widget/button_highlighted"));
+import org.joml.Vector2i;
 
-   public fkq(int $$0, int $$1, int $$2, int $$3, xh $$4) {
-      super($$0, $$1, $$2, $$3, $$4);
-   }
+public class fkq implements fkw {
+   private final fji a;
+   private final fjs b;
 
-   public abstract void b();
-
-   @Override
-   protected void b(fkm $$0, int $$1, int $$2, float $$3) {
-      fja $$4 = fja.Q();
-      $$0.a(gig::B, a.a(this.j, this.B()), this.D(), this.E(), this.y(), this.w(), axu.a(this.l));
-      int $$5 = this.j ? 16777215 : 10526880;
-      this.a($$0, $$4.h, $$5 | azj.f(this.l * 255.0F) << 24);
-   }
-
-   public void a(fkm $$0, fkk $$1, int $$2) {
-      this.a($$0, $$1, 2, $$2);
+   public fkq(fji $$0) {
+      this.a = $$0;
+      this.b = new fjs();
    }
 
    @Override
-   public void a(double $$0, double $$1) {
-      this.b();
+   public boolean a(ctl $$0) {
+      return $$0.g().a(cwf.qV);
    }
 
    @Override
-   public boolean a(int $$0, int $$1, int $$2) {
-      if (!this.j || !this.k) {
+   public boolean a(double $$0, double $$1, int $$2, cwb $$3) {
+      int $$4 = cuo.j($$3);
+      if ($$4 == 0) {
          return false;
-      } else if (fpc.a($$0)) {
-         this.a(fja.Q().ak());
-         this.b();
-         return true;
       } else {
-         return false;
+         Vector2i $$5 = this.b.a($$0, $$1);
+         int $$6 = $$5.y == 0 ? -$$5.x : $$5.y;
+         if ($$6 != 0) {
+            int $$7 = cuo.h($$3);
+            $$7 = fjs.a((double)$$6, $$7, $$4);
+            this.a($$3, $$2, $$7);
+         }
+
+         return true;
       }
+   }
+
+   @Override
+   public void b(ctl $$0) {
+      this.a($$0.g(), $$0.d);
+   }
+
+   @Override
+   public void a(ctl $$0, crz $$1) {
+      if ($$1 == crz.b) {
+         this.a($$0.g(), $$0.d);
+      }
+   }
+
+   private void a(cwb $$0, int $$1, int $$2) {
+      if (this.a.L() != null && $$2 < cuo.j($$0)) {
+         gcj $$3 = this.a.L();
+         cuo.a($$0, $$2);
+         $$3.b(new aih($$1, $$2));
+      }
+   }
+
+   public void a(cwb $$0, int $$1) {
+      this.a($$0, $$1, -1);
    }
 }

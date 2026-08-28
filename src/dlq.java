@@ -1,52 +1,56 @@
 import com.mojang.serialization.MapCodec;
+import javax.annotation.Nullable;
 
-public class dlq extends dhy implements doz {
-   public static final MapCodec<dlq> a = b(dlq::new);
-   private static final fab c = dhy.a(4.0, 0.0, 4.0, 12.0, 8.0, 12.0);
-   public static final dvu b = dvt.C;
+public abstract class dlq extends die {
+   protected final jm a;
+   protected final boolean b;
+   protected final fah d;
 
-   public dlq(dvc.d $$0) {
+   protected dlq(dvi.d $$0, jm $$1, fah $$2, boolean $$3) {
       super($$0);
-      this.l(this.F.b().b(b, Boolean.valueOf(false)));
+      this.a = $$1;
+      this.d = $$2;
+      this.b = $$3;
    }
 
    @Override
-   public MapCodec<dlq> a() {
-      return a;
+   protected abstract MapCodec<? extends dlq> a();
+
+   @Nullable
+   @Override
+   public dvj a(czs $$0) {
+      dvj $$1 = $$0.q().a_($$0.a().a(this.a));
+      return !$$1.a(this.c()) && !$$1.a(this.b()) ? this.a($$0.q()) : this.b().m();
+   }
+
+   public dvj a(dfc $$0) {
+      return this.m();
    }
 
    @Override
-   protected void a(dve.a<dhy, dvd> $$0) {
-      $$0.a(b);
+   protected boolean a(dvj $$0, dfe $$1, jh $$2) {
+      jh $$3 = $$2.a(this.a.g());
+      dvj $$4 = $$1.a_($$3);
+      return !this.o($$4) ? false : $$4.a(this.c()) || $$4.a(this.b()) || $$4.c($$1, $$3, this.a);
    }
 
    @Override
-   protected dvd a(dvd $$0, jl $$1, dvd $$2, dew $$3, jg $$4, jg $$5) {
-      if ($$0.c(b)) {
-         $$3.a($$4, erf.c, erf.c.a($$3));
+   protected void a(dvj $$0, arn $$1, jh $$2, azs $$3) {
+      if (!$$0.a($$1, $$2)) {
+         $$1.b($$2, true);
       }
+   }
 
-      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   protected boolean o(dvj $$0) {
+      return true;
    }
 
    @Override
-   protected ere b_(dvd $$0) {
-      return $$0.c(b) ? erf.c.a(false) : super.b_($$0);
+   protected fah a(dvj $$0, deg $$1, jh $$2, ezs $$3) {
+      return this.d;
    }
 
-   @Override
-   public dvd a(czm $$0) {
-      ere $$1 = $$0.q().b_($$0.a());
-      return this.m().b(b, Boolean.valueOf($$1.b(erf.c)));
-   }
+   protected abstract dls c();
 
-   @Override
-   protected fab a(dvd $$0, dea $$1, jg $$2, ezm $$3) {
-      return c;
-   }
-
-   @Override
-   protected boolean a(dvd $$0, ert $$1) {
-      return false;
-   }
+   protected abstract die b();
 }

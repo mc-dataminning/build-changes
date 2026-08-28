@@ -1,112 +1,11 @@
-import com.google.common.annotations.VisibleForTesting;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import it.unimi.dsi.fastutil.doubles.DoubleArrayList;
-import it.unimi.dsi.fastutil.doubles.DoubleList;
-import it.unimi.dsi.fastutil.doubles.DoubleListIterator;
-import java.util.List;
+import javax.annotation.Nullable;
 
-public class eqh {
-   private static final double a = 1.0181268882175227;
-   private static final double b = 0.3333333333333333;
-   private final double c;
-   private final eqi d;
-   private final eqi e;
-   private final double f;
-   private final eqh.a g;
+public interface eqh {
+   Codec<eqh> c = ly.n.q().dispatch(eqh::a, eqi::codec);
 
-   @Deprecated
-   public static eqh a(azr $$0, eqh.a $$1) {
-      return new eqh($$0, $$1, false);
-   }
+   @Nullable
+   uk a(azs var1, @Nullable uk var2);
 
-   public static eqh a(azr $$0, int $$1, double... $$2) {
-      return b($$0, new eqh.a($$1, new DoubleArrayList($$2)));
-   }
-
-   public static eqh b(azr $$0, eqh.a $$1) {
-      return new eqh($$0, $$1, true);
-   }
-
-   private eqh(azr $$0, eqh.a $$1, boolean $$2) {
-      int $$3 = $$1.c;
-      DoubleList $$4 = $$1.d;
-      this.g = $$1;
-      if ($$2) {
-         this.d = eqi.b($$0, $$3, $$4);
-         this.e = eqi.b($$0, $$3, $$4);
-      } else {
-         this.d = eqi.a($$0, $$3, $$4);
-         this.e = eqi.a($$0, $$3, $$4);
-      }
-
-      int $$5 = Integer.MAX_VALUE;
-      int $$6 = Integer.MIN_VALUE;
-      DoubleListIterator $$7 = $$4.iterator();
-
-      while ($$7.hasNext()) {
-         int $$8 = $$7.nextIndex();
-         double $$9 = $$7.nextDouble();
-         if ($$9 != 0.0) {
-            $$5 = Math.min($$5, $$8);
-            $$6 = Math.max($$6, $$8);
-         }
-      }
-
-      this.c = 0.16666666666666666 / a($$6 - $$5);
-      this.f = (this.d.a() + this.e.a()) * this.c;
-   }
-
-   public double a() {
-      return this.f;
-   }
-
-   private static double a(int $$0) {
-      return 0.1 * (1.0 + 1.0 / (double)($$0 + 1));
-   }
-
-   public double a(double $$0, double $$1, double $$2) {
-      double $$3 = $$0 * 1.0181268882175227;
-      double $$4 = $$1 * 1.0181268882175227;
-      double $$5 = $$2 * 1.0181268882175227;
-      return (this.d.a($$0, $$1, $$2) + this.e.a($$3, $$4, $$5)) * this.c;
-   }
-
-   public eqh.a b() {
-      return this.g;
-   }
-
-   @VisibleForTesting
-   public void a(StringBuilder $$0) {
-      $$0.append("NormalNoise {");
-      $$0.append("first: ");
-      this.d.a($$0);
-      $$0.append(", second: ");
-      this.e.a($$0);
-      $$0.append("}");
-   }
-
-   public static record a(int c, DoubleList d) {
-      public static final Codec<eqh.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(Codec.INT.fieldOf("firstOctave").forGetter(eqh.a::a), Codec.DOUBLE.listOf().fieldOf("amplitudes").forGetter(eqh.a::b))
-               .apply($$0, eqh.a::new)
-      );
-      public static final Codec<jp<eqh.a>> b = ald.a(ly.aQ, a);
-
-      public a(int $$0, List<Double> $$1) {
-         this($$0, new DoubleArrayList($$1));
-      }
-
-      public a(int $$0, double $$1, double... $$2) {
-         this($$0, ad.a(new DoubleArrayList($$2), $$1x -> $$1x.add(0, $$1)));
-      }
-
-      public int a() {
-         return this.c;
-      }
-
-      public DoubleList b() {
-         return this.d;
-      }
-   }
+   eqi<?> a();
 }

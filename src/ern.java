@@ -1,100 +1,213 @@
+import java.util.Optional;
 import javax.annotation.Nullable;
 
-public class ern extends esa {
-   private final boolean l;
-   private float m;
-   private float n;
+public abstract class ern extends eri {
+   public static final float e = 0.44444445F;
 
-   public ern(boolean $$0) {
-      this.l = $$0;
+   @Override
+   public erj d() {
+      return erl.d;
    }
 
    @Override
-   public void a(dfi $$0, bux $$1) {
-      super.a($$0, $$1);
-      $$1.a(erv.j, 0.0F);
-      this.m = $$1.a(erv.c);
-      $$1.a(erv.c, 6.0F);
-      this.n = $$1.a(erv.k);
-      $$1.a(erv.k, 4.0F);
+   public erj e() {
+      return erl.e;
    }
 
    @Override
-   public void b() {
-      this.b.a(erv.c, this.m);
-      this.b.a(erv.k, this.n);
-      super.b();
+   public cvx a() {
+      return cwf.qB;
    }
 
    @Override
-   public erq a() {
-      return !this.b.bk() ? super.a() : this.c(new jg(azj.a(this.b.cS().a), azj.a(this.b.cS().b + 0.5), azj.a(this.b.cS().c)));
-   }
+   public void a(dfb $$0, jh $$1, erk $$2, azs $$3) {
+      jh $$4 = $$1.d();
+      if ($$0.a_($$4).l() && !$$0.a_($$4).s()) {
+         if ($$3.a(100) == 0) {
+            double $$5 = (double)$$1.u() + $$3.j();
+            double $$6 = (double)$$1.v() + 1.0;
+            double $$7 = (double)$$1.w() + $$3.j();
+            $$0.a(lr.Y, $$5, $$6, $$7, 0.0, 0.0, 0.0);
+            $$0.a($$5, $$6, $$7, awl.nQ, awm.e, 0.2F + $$3.i() * 0.2F, 0.9F + $$3.i() * 0.15F, false);
+         }
 
-   @Override
-   public erz a(double $$0, double $$1, double $$2) {
-      return this.b($$0, $$1 + 0.5, $$2);
-   }
-
-   @Override
-   public int a(erq[] $$0, erq $$1) {
-      int $$2 = super.a($$0, $$1);
-      erv $$3 = this.b($$1.a, $$1.b + 1, $$1.c);
-      erv $$4 = this.b($$1.a, $$1.b, $$1.c);
-      int $$5;
-      if (this.b.a($$3) >= 0.0F && $$4 != erv.w) {
-         $$5 = azj.d(Math.max(1.0F, this.b.dR()));
-      } else {
-         $$5 = 0;
+         if ($$3.a(200) == 0) {
+            $$0.a((double)$$1.u(), (double)$$1.v(), (double)$$1.w(), awl.nO, awm.e, 0.2F + $$3.i() * 0.2F, 0.9F + $$3.i() * 0.15F, false);
+         }
       }
+   }
 
-      double $$7 = this.d(new jg($$1.a, $$1.b, $$1.c));
-      erq $$8 = this.a($$1.a, $$1.b + 1, $$1.c, Math.max(0, $$5 - 1), $$7, jl.b, $$4);
-      erq $$9 = this.a($$1.a, $$1.b - 1, $$1.c, $$5, $$7, jl.a, $$4);
-      if (this.b($$8, $$1)) {
-         $$0[$$2++] = $$8;
+   @Override
+   public void b(dfb $$0, jh $$1, erk $$2, azs $$3) {
+      if ($$0.ac().b(dex.b)) {
+         int $$4 = $$3.a(3);
+         if ($$4 > 0) {
+            jh $$5 = $$1;
+
+            for (int $$6 = 0; $$6 < $$4; $$6++) {
+               $$5 = $$5.b($$3.a(3) - 1, 1, $$3.a(3) - 1);
+               if (!$$0.p($$5)) {
+                  return;
+               }
+
+               dvj $$7 = $$0.a_($$5);
+               if ($$7.l()) {
+                  if (this.a((dfe)$$0, $$5)) {
+                     $$0.b($$5, dhr.a($$0, $$5));
+                     return;
+                  }
+               } else if ($$7.d()) {
+                  return;
+               }
+            }
+         } else {
+            for (int $$8 = 0; $$8 < 3; $$8++) {
+               jh $$9 = $$1.b($$3.a(3) - 1, 0, $$3.a(3) - 1);
+               if (!$$0.p($$9)) {
+                  return;
+               }
+
+               if ($$0.u($$9.d()) && this.b($$0, $$9)) {
+                  $$0.b($$9.d(), dhr.a($$0, $$9));
+               }
+            }
+         }
       }
+   }
 
-      if (this.b($$9, $$1) && $$4 != erv.e) {
-         $$0[$$2++] = $$9;
-      }
-
-      for (int $$10 = 0; $$10 < $$2; $$10++) {
-         erq $$11 = $$0[$$10];
-         if ($$11.l == erv.j && this.l && $$11.b < this.b.dX().N() - 10) {
-            $$11.k++;
+   private boolean a(dfe $$0, jh $$1) {
+      for (jm $$2 : jm.values()) {
+         if (this.b($$0, $$1.a($$2))) {
+            return true;
          }
       }
 
-      return $$2;
+      return false;
    }
 
-   private boolean b(@Nullable erq $$0, erq $$1) {
-      return this.a($$0, $$1) && $$0.l == erv.j;
+   private boolean b(dfe $$0, jh $$1) {
+      return $$0.d($$1.v()) && !$$0.B($$1) ? false : $$0.a_($$1).m();
+   }
+
+   @Nullable
+   @Override
+   public lp h() {
+      return lr.i;
    }
 
    @Override
-   protected boolean c() {
+   protected void a(dfc $$0, jh $$1, dvj $$2) {
+      this.a($$0, $$1);
+   }
+
+   @Override
+   public int b(dfe $$0) {
+      return $$0.D_().i() ? 4 : 2;
+   }
+
+   @Override
+   public dvj b(erk $$0) {
+      return dig.H.m().b(dmt.b, Integer.valueOf(e($$0)));
+   }
+
+   @Override
+   public boolean a(erj $$0) {
+      return $$0 == erl.e || $$0 == erl.d;
+   }
+
+   @Override
+   public int c(dfe $$0) {
+      return $$0.D_().i() ? 1 : 2;
+   }
+
+   @Override
+   public boolean a(erk $$0, deg $$1, jh $$2, erj $$3, jm $$4) {
+      return $$0.a($$1, $$2) >= 0.44444445F && $$3.a(axg.a);
+   }
+
+   @Override
+   public int a(dfe $$0) {
+      return $$0.D_().i() ? 10 : 30;
+   }
+
+   @Override
+   public int a(dfb $$0, jh $$1, erk $$2, erk $$3) {
+      int $$4 = this.a((dfe)$$0);
+      if (!$$2.c() && !$$3.c() && !$$2.c(a) && !$$3.c(a) && $$3.a($$0, $$1) > $$2.a($$0, $$1) && $$0.E_().a(4) != 0) {
+         $$4 *= 4;
+      }
+
+      return $$4;
+   }
+
+   private void a(dfc $$0, jh $$1) {
+      $$0.c(1501, $$1, 0);
+   }
+
+   @Override
+   protected boolean a(dfb $$0) {
+      return $$0.ac().b(dex.V);
+   }
+
+   @Override
+   protected void a(dfc $$0, jh $$1, dvj $$2, jm $$3, erk $$4) {
+      if ($$3 == jm.a) {
+         erk $$5 = $$0.b_($$1);
+         if (this.a(axg.b) && $$5.a(axg.a)) {
+            if ($$2.b() instanceof dmt) {
+               $$0.a($$1, dig.b.m(), 3);
+            }
+
+            this.a($$0, $$1);
+            return;
+         }
+      }
+
+      super.a($$0, $$1, $$2, $$3, $$4);
+   }
+
+   @Override
+   protected boolean i() {
       return true;
    }
 
    @Override
-   public erv a(erx $$0, int $$1, int $$2, int $$3) {
-      erv $$4 = $$0.a($$1, $$2, $$3);
-      if ($$4 == erv.j) {
-         jg.a $$5 = new jg.a();
+   protected float c() {
+      return 100.0F;
+   }
 
-         for (jl $$6 : jl.values()) {
-            $$5.d($$1, $$2, $$3).c($$6);
-            erv $$7 = $$0.a($$5.u(), $$5.v(), $$5.w());
-            if ($$7 == erv.a) {
-               return erv.k;
-            }
-         }
+   @Override
+   public Optional<awk> j() {
+      return Optional.of(awl.dl);
+   }
 
-         return erv.j;
-      } else {
-         return super.a($$0, $$1, $$2, $$3);
+   public static class a extends ern {
+      @Override
+      protected void a(dvk.a<erj, erk> $$0) {
+         super.a($$0);
+         $$0.a(b);
+      }
+
+      @Override
+      public int d(erk $$0) {
+         return $$0.c(b);
+      }
+
+      @Override
+      public boolean c(erk $$0) {
+         return false;
+      }
+   }
+
+   public static class b extends ern {
+      @Override
+      public int d(erk $$0) {
+         return 8;
+      }
+
+      @Override
+      public boolean c(erk $$0) {
+         return true;
       }
    }
 }

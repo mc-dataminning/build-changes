@@ -1,12 +1,18 @@
-public class akh {
-   public static final zq<akd> a = a("status_response");
-   public static final zq<akg> b = b("status_request");
+import io.netty.buffer.ByteBuf;
 
-   private static <T extends zo<akc>> zq<T> a(String $$0) {
-      return new zq<>(zp.b, alh.b($$0));
+public class akh implements zp<akg> {
+   public static final akh a = new akh();
+   public static final zg<ByteBuf, akh> b = zg.a(a);
+
+   private akh() {
    }
 
-   private static <T extends zo<akf>> zq<T> b(String $$0) {
-      return new zq<>(zp.a, alh.b($$0));
+   @Override
+   public zr<akh> a() {
+      return aki.b;
+   }
+
+   public void a(akg $$0) {
+      $$0.a(this);
    }
 }

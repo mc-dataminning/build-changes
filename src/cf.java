@@ -1,28 +1,21 @@
 import com.mojang.serialization.Codec;
+import java.util.Arrays;
+import java.util.List;
 
-public class cf implements aq<cf.a> {
-   @Override
-   public void a(alp $$0, aq.a<cf.a> $$1) {
+public record cf(List<dey> d) {
+   public static final cf a = a(dey.values());
+   public static final cf b = a(dey.a, dey.c);
+   public static final Codec<cf> c = dey.f.listOf().xmap(cf::new, cf::a);
+
+   public static cf a(dey... $$0) {
+      return new cf(Arrays.stream($$0).toList());
    }
 
-   @Override
-   public void b(alp $$0, aq.a<cf.a> $$1) {
+   public boolean a(dey $$0) {
+      return this.d.contains($$0);
    }
 
-   @Override
-   public void a(alp $$0) {
-   }
-
-   @Override
-   public Codec<cf.a> a() {
-      return cf.a.a;
-   }
-
-   public static record a() implements ar {
-      public static final Codec<cf.a> a = Codec.unit(new cf.a());
-
-      @Override
-      public void a(bh $$0) {
-      }
+   public List<dey> a() {
+      return this.d;
    }
 }

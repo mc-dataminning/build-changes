@@ -1,36 +1,51 @@
 import com.mojang.serialization.MapCodec;
 
-public class dpi extends dhy {
-   public static final MapCodec<dpi> b = b(dpi::new);
-   public static final dvu c = dvt.z;
+public class dpi extends dlt {
+   public static final MapCodec<dpi> a = b(dpi::new);
 
    @Override
-   protected MapCodec<? extends dpi> a() {
-      return b;
+   public MapCodec<dpi> a() {
+      return a;
    }
 
-   protected dpi(dvc.d $$0) {
+   public dpi(dvi.d $$0) {
       super($$0);
-      this.l(this.F.b().b(c, Boolean.valueOf(false)));
    }
 
    @Override
-   protected dvd a(dvd $$0, jl $$1, dvd $$2, dew $$3, jg $$4, jg $$5) {
-      return $$1 == jl.b ? $$0.b(c, Boolean.valueOf(o($$2))) : super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   public void a(dfb $$0, dvj $$1, jh $$2, bue $$3, float $$4) {
+      if ($$3.cg()) {
+         super.a($$0, $$1, $$2, $$3, $$4);
+      } else {
+         $$3.a($$4, 0.0F, $$0.ai().l());
+      }
    }
 
    @Override
-   public dvd a(czm $$0) {
-      dvd $$1 = $$0.q().a_($$0.a().d());
-      return this.m().b(c, Boolean.valueOf(o($$1)));
+   public void a(deg $$0, bue $$1) {
+      if ($$1.cg()) {
+         super.a($$0, $$1);
+      } else {
+         this.a($$1);
+      }
    }
 
-   private static boolean o(dvd $$0) {
-      return $$0.a(awz.bA);
+   private void a(bue $$0) {
+      ezn $$1 = $$0.dA();
+      if ($$1.e < 0.0) {
+         double $$2 = $$0 instanceof bva ? 1.0 : 0.8;
+         $$0.n($$1.d, -$$1.e * $$2, $$1.f);
+      }
    }
 
    @Override
-   protected void a(dve.a<dhy, dvd> $$0) {
-      $$0.a(c);
+   public void a(dfb $$0, jh $$1, dvj $$2, bue $$3) {
+      double $$4 = Math.abs($$3.dA().e);
+      if ($$4 < 0.1 && !$$3.cf()) {
+         double $$5 = 0.4 + $$4 * 0.2;
+         $$3.h($$3.dA().d($$5, 1.0, $$5));
+      }
+
+      super.a($$0, $$1, $$2, $$3);
    }
 }

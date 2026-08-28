@@ -1,85 +1,47 @@
-import com.google.common.net.HostAndPort;
-import com.mojang.logging.LogUtils;
-import java.net.IDN;
-import org.slf4j.Logger;
+import java.util.List;
+import java.util.Locale;
 
-public final class gdo {
-   private static final Logger a = LogUtils.getLogger();
-   private final HostAndPort b;
-   private static final gdo c = new gdo(HostAndPort.fromParts("server.invalid", 25565));
+public enum gdo {
+   a("i_want_to_report_them"),
+   b("hate_speech"),
+   c("harassment_or_bullying"),
+   d("self_harm_or_suicide"),
+   e("imminent_harm"),
+   f("defamation_impersonation_false_information"),
+   g("alcohol_tobacco_drugs"),
+   h("child_sexual_exploitation_or_abuse"),
+   i("terrorism_or_violent_extremism"),
+   j("non_consensual_intimate_imagery"),
+   k("sexually_inappropriate");
 
-   public gdo(String $$0, int $$1) {
-      this(HostAndPort.fromParts($$0, $$1));
-   }
+   private final String l;
+   private final xi m;
+   private final xi n;
 
-   private gdo(HostAndPort $$0) {
-      this.b = $$0;
+   private gdo(final String $$0) {
+      this.l = $$0.toUpperCase(Locale.ROOT);
+      String $$1 = "gui.abuseReport.reason." + $$0;
+      this.m = xi.c($$1);
+      this.n = xi.c($$1 + ".description");
    }
 
    public String a() {
-      try {
-         return IDN.toASCII(this.b.getHost());
-      } catch (IllegalArgumentException var2) {
-         return "";
-      }
+      return this.l;
    }
 
-   public int b() {
-      return this.b.getPort();
+   public xi b() {
+      return this.m;
    }
 
-   public static gdo a(String $$0) {
-      if ($$0 == null) {
-         return c;
-      } else {
-         try {
-            HostAndPort $$1 = HostAndPort.fromString($$0).withDefaultPort(25565);
-            return $$1.getHost().isEmpty() ? c : new gdo($$1);
-         } catch (IllegalArgumentException var2) {
-            a.info("Failed to parse URL {}", $$0, var2);
-            return c;
-         }
-      }
+   public xi c() {
+      return this.n;
    }
 
-   public static boolean b(String $$0) {
-      try {
-         HostAndPort $$1 = HostAndPort.fromString($$0);
-         String $$2 = $$1.getHost();
-         if (!$$2.isEmpty()) {
-            IDN.toASCII($$2);
-            return true;
-         }
-      } catch (IllegalArgumentException var3) {
-      }
-
-      return false;
-   }
-
-   static int c(String $$0) {
-      try {
-         return Integer.parseInt($$0.trim());
-      } catch (Exception var2) {
-         return 25565;
-      }
-   }
-
-   @Override
-   public String toString() {
-      return this.b.toString();
-   }
-
-   @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else {
-         return $$0 instanceof gdo ? this.b.equals(((gdo)$$0).b) : false;
-      }
-   }
-
-   @Override
-   public int hashCode() {
-      return this.b.hashCode();
+   public static List<gdo> a(gdp $$0) {
+      return switch ($$0) {
+         case a -> List.of(k);
+         case b -> List.of(e, f);
+         default -> List.of();
+      };
    }
 }

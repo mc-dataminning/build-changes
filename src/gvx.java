@@ -1,4 +1,6 @@
-public class gvx extends gus {
+public class gvx extends gvd {
+   public boolean a;
    public boolean b;
-   public boolean c;
+   public float c;
+   public cnd d = cnd.f;
 }

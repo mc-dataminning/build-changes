@@ -1,54 +1,28 @@
 import java.util.List;
-import java.util.Locale;
-import java.util.function.Function;
-import java.util.stream.Stream;
+import javax.annotation.Nullable;
 
-public interface hby<T> {
-   static <T> hby<T> a() {
-      return new hby<T>() {
-         @Override
-         public List<T> a(String $$0) {
-            return List.of();
-         }
+public class hby {
+   private final List<hbx> a;
+   private final boolean b;
+   @Nullable
+   private final String c;
 
-         @Override
-         public List<T> b(String $$0) {
-            return List.of();
-         }
-      };
+   public hby(List<hbx> $$0, boolean $$1, @Nullable String $$2) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
    }
 
-   static <T> hby<T> a(List<T> $$0, Function<T, Stream<alh>> $$1) {
-      if ($$0.isEmpty()) {
-         return a();
-      } else {
-         final hca<T> $$2 = new hca<>();
-         final hca<T> $$3 = new hca<>();
-
-         for (T $$4 : $$0) {
-            $$1.apply($$4).forEach($$3x -> {
-               $$2.a($$4, $$3x.b().toLowerCase(Locale.ROOT));
-               $$3.a($$4, $$3x.a().toLowerCase(Locale.ROOT));
-            });
-         }
-
-         $$2.a();
-         $$3.a();
-         return new hby<T>() {
-            @Override
-            public List<T> a(String $$0) {
-               return $$2.a($$0);
-            }
-
-            @Override
-            public List<T> b(String $$0) {
-               return $$3.a($$0);
-            }
-         };
-      }
+   public List<hbx> a() {
+      return this.a;
    }
 
-   List<T> a(String var1);
+   public boolean b() {
+      return this.b;
+   }
 
-   List<T> b(String var1);
+   @Nullable
+   public String c() {
+      return this.c;
+   }
 }

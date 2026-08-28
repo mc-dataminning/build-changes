@@ -1,160 +1,24 @@
-import javax.annotation.Nullable;
+import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
 
-public class eqt implements eqw {
-   public static final int b = 1;
-   public static final eqt c = new eqt();
-   protected final dex d;
-   @Nullable
-   private final eqv<?, ?> a;
-   @Nullable
-   private final eqv<?, ?> e;
-
-   public eqt(dxm $$0, boolean $$1, boolean $$2) {
-      this.d = $$0.q();
-      this.a = $$1 ? new eqm($$0) : null;
-      this.e = $$2 ? new eqx($$0) : null;
-   }
-
-   private eqt() {
-      this.d = dex.e(0, 0);
-      this.a = null;
-      this.e = null;
+public class eqt extends eqy<eqt.a> {
+   protected eqt(dxs $$0) {
+      super(dfk.b, $$0, new eqt.a(new Long2ObjectOpenHashMap()));
    }
 
    @Override
-   public void a(jg $$0) {
-      if (this.a != null) {
-         this.a.a($$0);
-      }
-
-      if (this.e != null) {
-         this.e.a($$0);
-      }
+   protected int a(long $$0) {
+      long $$1 = kj.e($$0);
+      dxk $$2 = this.a($$1, false);
+      return $$2 == null ? 0 : $$2.a(kj.b(jh.a($$0)), kj.b(jh.b($$0)), kj.b(jh.c($$0)));
    }
 
-   @Override
-   public boolean K_() {
-      return this.e != null && this.e.K_() ? true : this.a != null && this.a.K_();
-   }
-
-   @Override
-   public int a() {
-      int $$0 = 0;
-      if (this.a != null) {
-         $$0 += this.a.a();
+   protected static final class a extends eqv<eqt.a> {
+      public a(Long2ObjectOpenHashMap<dxk> $$0) {
+         super($$0);
       }
 
-      if (this.e != null) {
-         $$0 += this.e.a();
+      public eqt.a a() {
+         return new eqt.a(this.a.clone());
       }
-
-      return $$0;
-   }
-
-   @Override
-   public void a(ki $$0, boolean $$1) {
-      if (this.a != null) {
-         this.a.a($$0, $$1);
-      }
-
-      if (this.e != null) {
-         this.e.a($$0, $$1);
-      }
-   }
-
-   @Override
-   public void a(deb $$0, boolean $$1) {
-      if (this.a != null) {
-         this.a.a($$0, $$1);
-      }
-
-      if (this.e != null) {
-         this.e.a($$0, $$1);
-      }
-   }
-
-   @Override
-   public void b(deb $$0) {
-      if (this.a != null) {
-         this.a.b($$0);
-      }
-
-      if (this.e != null) {
-         this.e.b($$0);
-      }
-   }
-
-   public eqr a(dfe $$0) {
-      if ($$0 == dfe.b) {
-         return (eqr)(this.a == null ? eqr.a.a : this.a);
-      } else {
-         return (eqr)(this.e == null ? eqr.a.a : this.e);
-      }
-   }
-
-   public String a(dfe $$0, ki $$1) {
-      if ($$0 == dfe.b) {
-         if (this.a != null) {
-            return this.a.b($$1.s());
-         }
-      } else if (this.e != null) {
-         return this.e.b($$1.s());
-      }
-
-      return "n/a";
-   }
-
-   public eqs.b b(dfe $$0, ki $$1) {
-      if ($$0 == dfe.b) {
-         if (this.a != null) {
-            return this.a.c($$1.s());
-         }
-      } else if (this.e != null) {
-         return this.e.c($$1.s());
-      }
-
-      return eqs.b.a;
-   }
-
-   public void a(dfe $$0, ki $$1, @Nullable dxe $$2) {
-      if ($$0 == dfe.b) {
-         if (this.a != null) {
-            this.a.a($$1.s(), $$2);
-         }
-      } else if (this.e != null) {
-         this.e.a($$1.s(), $$2);
-      }
-   }
-
-   public void b(deb $$0, boolean $$1) {
-      if (this.a != null) {
-         this.a.b($$0, $$1);
-      }
-
-      if (this.e != null) {
-         this.e.b($$0, $$1);
-      }
-   }
-
-   public int a(jg $$0, int $$1) {
-      int $$2 = this.e == null ? 0 : this.e.b($$0) - $$1;
-      int $$3 = this.a == null ? 0 : this.a.b($$0);
-      return Math.max($$3, $$2);
-   }
-
-   public boolean a(long $$0) {
-      return this.a == null || this.a.f.k($$0) && (this.e == null || this.e.f.k($$0));
-   }
-
-   public int c() {
-      return this.d.ao() + 2;
-   }
-
-   public int d() {
-      return this.d.ap() - 1;
-   }
-
-   public int e() {
-      return this.d() + this.c();
    }
 }

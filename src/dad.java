@@ -1,68 +1,30 @@
-import it.unimi.dsi.fastutil.ints.IntArrayList;
-import it.unimi.dsi.fastutil.ints.IntList;
+import com.mojang.serialization.Codec;
+import io.netty.buffer.ByteBuf;
+import java.util.function.IntFunction;
 
-public class dad extends daa {
-   private static final daf a = daf.a(cwb.ux);
+public enum dad implements bag {
+   a("building", 0),
+   b("redstone", 1),
+   c("equipment", 2),
+   d("misc", 3);
 
-   public dad(czx $$0) {
-      super($$0);
-   }
+   public static final Codec<dad> e = bag.a(dad::values);
+   public static final IntFunction<dad> f = ayb.a(dad::a, values(), ayb.a.a);
+   public static final zg<ByteBuf, dad> g = ze.a(f, dad::a);
+   private final String h;
+   private final int i;
 
-   public boolean a(czy $$0, dev $$1) {
-      boolean $$2 = false;
-      boolean $$3 = false;
-
-      for (int $$4 = 0; $$4 < $$0.a(); $$4++) {
-         cvx $$5 = $$0.a($$4);
-         if (!$$5.f()) {
-            if ($$5.h() instanceof cuv) {
-               $$2 = true;
-            } else {
-               if (!a.a($$5)) {
-                  return false;
-               }
-
-               if ($$3) {
-                  return false;
-               }
-
-               $$3 = true;
-            }
-         }
-      }
-
-      return $$3 && $$2;
-   }
-
-   public cvx a(czy $$0, jr.a $$1) {
-      IntList $$2 = new IntArrayList();
-      cvx $$3 = null;
-
-      for (int $$4 = 0; $$4 < $$0.a(); $$4++) {
-         cvx $$5 = $$0.a($$4);
-         cvt $$6 = $$5.h();
-         if ($$6 instanceof cuv) {
-            $$2.add(((cuv)$$6).c().f());
-         } else if (a.a($$5)) {
-            $$3 = $$5.c(1);
-         }
-      }
-
-      if ($$3 != null && !$$2.isEmpty()) {
-         $$3.a(kt.ad, cyk.a, $$2, cyk::a);
-         return $$3;
-      } else {
-         return cvx.k;
-      }
+   private dad(final String $$0, final int $$1) {
+      this.h = $$0;
+      this.i = $$1;
    }
 
    @Override
-   public boolean a(int $$0, int $$1) {
-      return $$0 * $$1 >= 2;
+   public String c() {
+      return this.h;
    }
 
-   @Override
-   public dao<?> ar_() {
-      return dao.i;
+   private int a() {
+      return this.i;
    }
 }

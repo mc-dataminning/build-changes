@@ -1,82 +1,213 @@
-import java.util.function.Supplier;
-import javax.annotation.Nullable;
+import java.util.function.Consumer;
 
-public class flz extends fkx {
-   private static final float a = 0.0625F;
-   private static final float b = 2.125F;
-   private static final float c = 100.0F;
-   private static final float d = 2.5F;
-   private static final float e = -5.0F;
-   private static final float f = 30.0F;
-   private static final float m = 50.0F;
-   private final flz.a n;
-   private final Supplier<gyt> o;
-   private float p = -5.0F;
-   private float q = 30.0F;
+public class flz extends flb {
+   private static final int a = 1;
+   private static final int b = -3092272;
+   private static final String c = "_";
+   private static final int d = -2039584;
+   private static final int e = -857677600;
+   private static final int f = 300;
+   private final fks m;
+   private final xi n;
+   private final fmc o;
+   private long p = ae.c();
 
-   public flz(int $$0, int $$1, gax $$2, Supplier<gyt> $$3) {
-      super(0, 0, $$0, $$1, xg.a);
-      this.n = flz.a.a($$2);
-      this.o = $$3;
+   public flz(fks $$0, int $$1, int $$2, int $$3, int $$4, xi $$5, xi $$6) {
+      super($$1, $$2, $$3, $$4, $$6);
+      this.m = $$0;
+      this.n = $$5;
+      this.o = new fmc($$0, $$3 - this.b());
+      this.o.a(this::k);
+   }
+
+   public void a(int $$0) {
+      this.o.a($$0);
+   }
+
+   public void b(Consumer<String> $$0) {
+      this.o.a($$0);
+   }
+
+   public void a(String $$0) {
+      this.o.a($$0);
+   }
+
+   public String j() {
+      return this.o.c();
    }
 
    @Override
-   protected void b(fkm $$0, int $$1, int $$2, float $$3) {
-      $$0.c().a();
-      $$0.c().a((float)this.D() + (float)this.y() / 2.0F, (float)(this.E() + this.w()), 100.0F);
-      float $$4 = (float)this.w() / 2.125F;
-      $$0.c().b($$4, $$4, $$4);
-      $$0.c().a(0.0F, -0.0625F, 0.0F);
-      $$0.c().a(a.b.rotationDegrees(this.p), 0.0F, -1.0625F, 0.0F);
-      $$0.c().a(a.d.rotationDegrees(this.q));
-      $$0.d();
-      fcp.a(a.b.rotationDegrees(this.p));
-      this.n.a($$0, this.o.get());
-      $$0.d();
-      fcp.d();
-      $$0.c().b();
+   public void a(fpf $$0) {
+      $$0.a(fpe.a, xi.a("gui.narrate.editBox", this.z(), this.j()));
    }
 
    @Override
-   protected void b(double $$0, double $$1, double $$2, double $$3) {
-      this.p = azj.a(this.p - (float)$$3 * 2.5F, -50.0F, 50.0F);
-      this.q += (float)$$2 * 2.5F;
+   public boolean a(double $$0, double $$1, int $$2) {
+      if (this.b($$0, $$1) && $$2 == 0) {
+         this.o.a(fra.t());
+         this.e($$0, $$1);
+         return true;
+      } else {
+         return super.a($$0, $$1, $$2);
+      }
    }
 
    @Override
-   public void a(hcu $$0) {
+   public boolean a(double $$0, double $$1, int $$2, double $$3, double $$4) {
+      if (super.a($$0, $$1, $$2, $$3, $$4)) {
+         return true;
+      } else if (this.b($$0, $$1) && $$2 == 0) {
+         this.o.a(true);
+         this.e($$0, $$1);
+         this.o.a(fra.t());
+         return true;
+      } else {
+         return false;
+      }
    }
 
    @Override
-   protected void a(fox $$0) {
+   public boolean a(int $$0, int $$1, int $$2) {
+      return this.o.e($$0);
    }
 
    @Override
-   public boolean C() {
-      return false;
+   public boolean a(char $$0, int $$1) {
+      if (this.k && this.aM_() && bah.a($$0)) {
+         this.o.b(Character.toString($$0));
+         return true;
+      } else {
+         return false;
+      }
    }
 
-   @Nullable
    @Override
-   public fkj a(fpd $$0) {
-      return null;
+   protected void c(fku $$0, int $$1, int $$2, float $$3) {
+      String $$4 = this.o.c();
+      if ($$4.isEmpty() && !this.aM_()) {
+         $$0.a(this.m, (xn)this.n, this.D() + this.a(), this.E() + this.a(), this.g - this.b(), -857677600);
+      } else {
+         int $$5 = this.o.d();
+         boolean $$6 = this.aM_() && (ae.c() - this.p) / 300L % 2L == 0L;
+         boolean $$7 = $$5 < $$4.length();
+         int $$8 = 0;
+         int $$9 = 0;
+         int $$10 = this.E() + this.a();
+
+         for (fmc.a $$11 : this.o.h()) {
+            boolean $$12 = this.a($$10, $$10 + 9);
+            if ($$6 && $$7 && $$5 >= $$11.a() && $$5 <= $$11.b()) {
+               if ($$12) {
+                  $$8 = $$0.b(this.m, $$4.substring($$11.a(), $$5), this.D() + this.a(), $$10, -2039584) - 1;
+                  $$0.a($$8, $$10 - 1, $$8 + 1, $$10 + 1 + 9, -3092272);
+                  $$0.b(this.m, $$4.substring($$5, $$11.b()), $$8, $$10, -2039584);
+               }
+            } else {
+               if ($$12) {
+                  $$8 = $$0.b(this.m, $$4.substring($$11.a(), $$11.b()), this.D() + this.a(), $$10, -2039584) - 1;
+               }
+
+               $$9 = $$10;
+            }
+
+            $$10 += 9;
+         }
+
+         if ($$6 && !$$7 && this.a($$9, $$9 + 9)) {
+            $$0.b(this.m, "_", $$8, $$9, -3092272);
+         }
+
+         if (this.o.i()) {
+            fmc.a $$13 = this.o.e();
+            int $$14 = this.D() + this.a();
+            $$10 = this.E() + this.a();
+
+            for (fmc.a $$15 : this.o.h()) {
+               if ($$13.a() > $$15.b()) {
+                  $$10 += 9;
+               } else {
+                  if ($$15.a() > $$13.b()) {
+                     break;
+                  }
+
+                  if (this.a($$10, $$10 + 9)) {
+                     int $$16 = this.m.b($$4.substring($$15.a(), Math.max($$13.a(), $$15.a())));
+                     int $$17;
+                     if ($$13.b() > $$15.b()) {
+                        $$17 = this.g - this.a();
+                     } else {
+                        $$17 = this.m.b($$4.substring($$15.a(), $$13.b()));
+                     }
+
+                     this.b($$0, $$14 + $$16, $$10, $$14 + $$17, $$10 + 9);
+                  }
+
+                  $$10 += 9;
+               }
+            }
+         }
+      }
    }
 
-   static record a(fze a, fze b) {
-      public static flz.a a(gax $$0) {
-         fze $$1 = new fze($$0.a(gba.bI), false);
-         fze $$2 = new fze($$0.a(gba.bO), true);
-         return new flz.a($$1, $$2);
+   @Override
+   protected void a(fku $$0) {
+      super.a($$0);
+      if (this.o.b()) {
+         int $$1 = this.o.a();
+         xi $$2 = xi.a("gui.multiLineEditBox.character_limit", this.o.c().length(), $$1);
+         $$0.b(this.m, $$2, this.D() + this.g - this.m.a($$2), this.E() + this.h + 4, 10526880);
+      }
+   }
+
+   @Override
+   public int h() {
+      return 9 * this.o.f();
+   }
+
+   @Override
+   protected boolean e() {
+      return (double)this.o.f() > this.l();
+   }
+
+   @Override
+   protected double i() {
+      return 9.0 / 2.0;
+   }
+
+   private void b(fku $$0, int $$1, int $$2, int $$3, int $$4) {
+      $$0.a(gir.I(), $$1, $$2, $$3, $$4, -16776961);
+   }
+
+   private void k() {
+      double $$0 = this.c();
+      fmc.a $$1 = this.o.c((int)($$0 / 9.0));
+      if (this.o.d() <= $$1.a()) {
+         $$0 = (double)(this.o.g() * 9);
+      } else {
+         fmc.a $$2 = this.o.c((int)(($$0 + (double)this.h) / 9.0) - 1);
+         if (this.o.d() > $$2.b()) {
+            $$0 = (double)(this.o.g() * 9 - this.h + 9 + this.b());
+         }
       }
 
-      public void a(fkm $$0, gyt $$1) {
-         $$0.c().a();
-         $$0.c().b(1.0F, 1.0F, -1.0F);
-         $$0.c().a(0.0F, -1.501F, 0.0F);
-         fze $$2 = $$1.e() == gyt.a.a ? this.b : this.a;
-         gig $$3 = $$2.a($$1.a());
-         $$0.a($$3x -> $$2.a($$0.c(), $$3x.getBuffer($$3), 15728880, gxj.d));
-         $$0.c().b();
+      this.a($$0);
+   }
+
+   private double l() {
+      return (double)(this.h - this.b()) / 9.0;
+   }
+
+   private void e(double $$0, double $$1) {
+      double $$2 = $$0 - (double)this.D() - (double)this.a();
+      double $$3 = $$1 - (double)this.E() - (double)this.a() + this.c();
+      this.o.a($$2, $$3);
+   }
+
+   @Override
+   public void a(boolean $$0) {
+      super.a($$0);
+      if ($$0) {
+         this.p = ae.c();
       }
    }
 }

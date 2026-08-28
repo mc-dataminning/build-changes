@@ -1,60 +1,88 @@
-import java.util.UUID;
-import javax.annotation.Nullable;
+public class aef implements zp<ace> {
+   public static final zg<wf, aef> a = zp.a(aef::a, aef::new);
+   private static final int b = 1;
+   private static final int c = 2;
+   private static final int d = 4;
+   private static final int e = 8;
+   private final boolean f;
+   private final boolean g;
+   private final boolean h;
+   private final boolean i;
+   private final float j;
+   private final float k;
 
-public record aef(UUID b, int c, @Nullable xt d, ya.a e, @Nullable xh f, xl g, xd.a h) implements zo<acd> {
-   public static final zf<ws, aef> a = zo.a(aef::a, aef::new);
-
-   private aef(ws $$0) {
-      this($$0.n(), $$0.l(), $$0.c(xt::a), new ya.a($$0), we.a($$0, xj.d), xl.a($$0), xd.a.a.decode($$0));
+   public aef(coi $$0) {
+      this.f = $$0.a;
+      this.g = $$0.b;
+      this.h = $$0.c;
+      this.i = $$0.d;
+      this.j = $$0.a();
+      this.k = $$0.b();
    }
 
-   private void a(ws $$0) {
-      $$0.a(this.b);
-      $$0.c(this.c);
-      $$0.a(this.d, xt::a);
-      this.e.a($$0);
-      we.a($$0, this.f, xj.d);
-      xl.a($$0, this.g);
-      xd.a.a.encode($$0, this.h);
+   private aef(wf $$0) {
+      byte $$1 = $$0.readByte();
+      this.f = ($$1 & 1) != 0;
+      this.g = ($$1 & 2) != 0;
+      this.h = ($$1 & 4) != 0;
+      this.i = ($$1 & 8) != 0;
+      this.j = $$0.readFloat();
+      this.k = $$0.readFloat();
+   }
+
+   private void a(wf $$0) {
+      byte $$1 = 0;
+      if (this.f) {
+         $$1 = (byte)($$1 | 1);
+      }
+
+      if (this.g) {
+         $$1 = (byte)($$1 | 2);
+      }
+
+      if (this.h) {
+         $$1 = (byte)($$1 | 4);
+      }
+
+      if (this.i) {
+         $$1 = (byte)($$1 | 8);
+      }
+
+      $$0.l($$1);
+      $$0.a(this.j);
+      $$0.a(this.k);
    }
 
    @Override
-   public zq<aef> a() {
-      return ags.ab;
+   public zr<aef> a() {
+      return agt.aa;
    }
 
-   public void a(acd $$0) {
+   public void a(ace $$0) {
       $$0.a(this);
    }
 
-   @Override
-   public boolean c() {
-      return true;
-   }
-
-   public int e() {
-      return this.c;
-   }
-
-   @Nullable
-   public xt f() {
-      return this.d;
-   }
-
-   public ya.a g() {
-      return this.e;
-   }
-
-   @Nullable
-   public xh h() {
+   public boolean b() {
       return this.f;
    }
 
-   public xl i() {
+   public boolean e() {
       return this.g;
    }
 
-   public xd.a j() {
+   public boolean f() {
       return this.h;
+   }
+
+   public boolean g() {
+      return this.i;
+   }
+
+   public float h() {
+      return this.j;
+   }
+
+   public float i() {
+      return this.k;
    }
 }

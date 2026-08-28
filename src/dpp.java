@@ -1,46 +1,33 @@
 import com.mojang.serialization.MapCodec;
 
-public abstract class dpp extends dpi {
-   protected dpp(dvc.d $$0) {
-      super($$0);
+public class dpp extends dhr {
+   public static final MapCodec<dpp> c = b(dpp::new);
+
+   @Override
+   public MapCodec<dpp> a() {
+      return c;
    }
 
-   private static boolean b(dvd $$0, dey $$1, jg $$2) {
-      jg $$3 = $$2.d();
-      dvd $$4 = $$1.a_($$3);
-      if ($$4.a(dia.dN) && $$4.c(dph.c) == 1) {
-         return true;
-      } else if ($$4.y().e() == 8) {
-         return false;
-      } else {
-         int $$5 = eqv.a($$0, $$4, jl.b, $$4.g());
-         return $$5 < 15;
-      }
+   public dpp(dvi.d $$0) {
+      super($$0, 2.0F);
    }
 
    @Override
-   protected abstract MapCodec<? extends dpp> a();
-
-   private static boolean c(dvd $$0, dey $$1, jg $$2) {
-      jg $$3 = $$2.d();
-      return b($$0, $$1, $$2) && !$$1.b_($$3).a(axf.a);
+   protected dvj a(dvj $$0, jm $$1, dvj $$2, dfc $$3, jh $$4, jh $$5) {
+      return this.a($$0, $$3, $$4) ? this.m() : dig.a.m();
    }
 
    @Override
-   protected void b(dvd $$0, arm $$1, jg $$2, azr $$3) {
-      if (!b($$0, $$1, $$2)) {
-         $$1.b($$2, dia.j.m());
-      } else {
-         if ($$1.A($$2.d()) >= 9) {
-            dvd $$4 = this.m();
+   protected boolean a(dvj $$0, dfe $$1, jh $$2) {
+      return o($$1.a_($$2.e()));
+   }
 
-            for (int $$5 = 0; $$5 < 4; $$5++) {
-               jg $$6 = $$2.b($$3.a(3) - 1, $$3.a(5) - 3, $$3.a(3) - 1);
-               if ($$1.a_($$6).a(dia.j) && c($$4, $$1, $$6)) {
-                  $$1.b($$6, $$4.b(c, Boolean.valueOf($$1.a_($$6.d()).a(dia.dN))));
-               }
-            }
-         }
-      }
+   public static boolean o(dvj $$0) {
+      return $$0.a(axa.aU);
+   }
+
+   @Override
+   protected boolean g(dvj $$0) {
+      return true;
    }
 }

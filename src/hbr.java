@@ -1,32 +1,29 @@
-public class hbr implements haz {
-   public static final float a = 0.01F;
-   public static final float b = 0.001F;
-   public static final float c = 1.0E-4F;
-   private static final int d = 0;
-   private final ggs e;
-   private final hcu f;
-   private int g = 0;
+public class hbr extends hbj {
+   private final bue n;
 
-   public hbr(ggs $$0, hcu $$1) {
-      this.e = $$0;
-      this.f = $$1;
+   public hbr(awk $$0, awm $$1, float $$2, float $$3, bue $$4, long $$5) {
+      super($$0, $$1, azs.a($$5));
+      this.d = $$2;
+      this.e = $$3;
+      this.n = $$4;
+      this.f = (double)((float)this.n.dC());
+      this.g = (double)((float)this.n.dE());
+      this.h = (double)((float)this.n.dI());
    }
 
    @Override
-   public void a() {
-      this.g--;
-      if (this.g <= 0 && this.e.bp()) {
-         float $$0 = this.e.dX().A.i();
-         if ($$0 < 1.0E-4F) {
-            this.g = 0;
-            this.f.a((hbp)(new hbs.a(this.e, awk.C)));
-         } else if ($$0 < 0.001F) {
-            this.g = 0;
-            this.f.a((hbp)(new hbs.a(this.e, awk.B)));
-         } else if ($$0 < 0.01F) {
-            this.g = 0;
-            this.f.a((hbp)(new hbs.a(this.e, awk.A)));
-         }
+   public boolean s() {
+      return !this.n.bc();
+   }
+
+   @Override
+   public void q() {
+      if (this.n.dS()) {
+         this.n();
+      } else {
+         this.f = (double)((float)this.n.dC());
+         this.g = (double)((float)this.n.dE());
+         this.h = (double)((float)this.n.dI());
       }
    }
 }

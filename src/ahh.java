@@ -1,37 +1,15 @@
-public class ahh implements zo<agu> {
-   public static final zf<we, ahh> a = zo.a(ahh::a, ahh::new);
-   private final int b;
-   private final String c;
+import io.netty.buffer.ByteBuf;
 
-   public ahh(int $$0, String $$1) {
-      this.b = $$0;
-      this.c = $$1;
-   }
-
-   private ahh(we $$0) {
-      this.b = $$0.l();
-      this.c = $$0.d(32500);
-   }
-
-   private void a(we $$0) {
-      $$0.c(this.b);
-      $$0.a(this.c, 32500);
-   }
+public record ahh() implements zp<agv> {
+   public static final ahh a = new ahh();
+   public static final zg<ByteBuf, ahh> b = zg.a(a);
 
    @Override
-   public zq<ahh> a() {
-      return ags.bs;
+   public zr<ahh> a() {
+      return agt.br;
    }
 
-   public void a(agu $$0) {
+   public void a(agv $$0) {
       $$0.a(this);
-   }
-
-   public int b() {
-      return this.b;
-   }
-
-   public String e() {
-      return this.c;
    }
 }

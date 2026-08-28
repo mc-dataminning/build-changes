@@ -1,25 +1,33 @@
-public record aae(String b, int c) implements zo<zu> {
-   public static final zf<we, aae> a = zo.a(aae::a, aae::new);
+import io.netty.buffer.ByteBuf;
 
-   private aae(we $$0) {
-      this($$0.p(), $$0.l());
+public record aae(ali c, byte[] d) implements zp<zv> {
+   public static final zg<wf, aae> a = zp.a(aae::a, aae::new);
+   private static final int e = 5120;
+   public static final zg<ByteBuf, byte[]> b = ze.a(5120);
+
+   private aae(wf $$0) {
+      this($$0.q(), b.decode($$0));
    }
 
-   private void a(we $$0) {
-      $$0.a(this.b);
-      $$0.c(this.c);
+   private void a(wf $$0) {
+      $$0.a(this.c);
+      b.encode($$0, this.d);
    }
 
    @Override
-   public zq<aae> a() {
-      return aag.j;
+   public zr<aae> a() {
+      return aah.i;
    }
 
-   public void a(zu $$0) {
+   public void a(zv $$0) {
       $$0.a(this);
    }
 
-   public int e() {
+   public ali b() {
       return this.c;
+   }
+
+   public byte[] e() {
+      return this.d;
    }
 }

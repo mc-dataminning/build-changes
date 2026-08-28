@@ -1,392 +1,211 @@
-import com.google.common.hash.Hashing;
-import com.google.common.io.Files;
-import com.mojang.logging.LogUtils;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.io.BufferedInputStream;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.OutputStream;
-import java.util.Locale;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.ImmutableMap.Builder;
+import com.mojang.blaze3d.platform.GlStateManager;
+import com.mojang.blaze3d.systems.RenderSystem;
+import it.unimi.dsi.fastutil.ints.IntArrayList;
+import it.unimi.dsi.fastutil.ints.IntList;
+import java.util.Arrays;
+import java.util.List;
 import javax.annotation.Nullable;
-import org.apache.commons.compress.archivers.tar.TarArchiveEntry;
-import org.apache.commons.compress.archivers.tar.TarArchiveInputStream;
-import org.apache.commons.compress.compressors.gzip.GzipCompressorInputStream;
-import org.apache.commons.io.FileUtils;
-import org.apache.commons.io.IOUtils;
-import org.apache.commons.io.output.CountingOutputStream;
-import org.apache.commons.lang3.StringUtils;
-import org.apache.http.HttpResponse;
-import org.apache.http.client.config.RequestConfig;
-import org.apache.http.client.methods.CloseableHttpResponse;
-import org.apache.http.client.methods.HttpGet;
-import org.apache.http.impl.client.CloseableHttpClient;
-import org.apache.http.impl.client.HttpClientBuilder;
-import org.slf4j.Logger;
 
 public class feg {
-   static final Logger a = LogUtils.getLogger();
-   volatile boolean b;
-   volatile boolean c;
-   volatile boolean d;
-   volatile boolean e;
+   public static final int a = -1;
+   private final List<feh> b;
+   private final List<String> c;
+   private final int d;
+   private final int e;
+   private final int[] f = new int[32];
    @Nullable
-   private volatile File f;
-   volatile File g;
-   @Nullable
-   private volatile HttpGet h;
-   @Nullable
-   private Thread i;
-   private final RequestConfig j = RequestConfig.custom().setSocketTimeout(120000).setConnectTimeout(120000).build();
-   private static final String[] k = new String[]{
-      "CON",
-      "COM",
-      "PRN",
-      "AUX",
-      "CLOCK$",
-      "NUL",
-      "COM1",
-      "COM2",
-      "COM3",
-      "COM4",
-      "COM5",
-      "COM6",
-      "COM7",
-      "COM8",
-      "COM9",
-      "LPT1",
-      "LPT2",
-      "LPT3",
-      "LPT4",
-      "LPT5",
-      "LPT6",
-      "LPT7",
-      "LPT8",
-      "LPT9"
-   };
+   private fee g;
 
-   public long a(String $$0) {
-      CloseableHttpClient $$1 = null;
-      HttpGet $$2 = null;
+   feg(List<feh> $$0, List<String> $$1, IntList $$2, int $$3) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$3;
+      this.e = $$0.stream().mapToInt(feh::a).reduce(0, ($$0x, $$1x) -> $$0x | $$1x);
 
-      long var5;
-      try {
-         $$2 = new HttpGet($$0);
-         $$1 = HttpClientBuilder.create().setDefaultRequestConfig(this.j).build();
-         CloseableHttpResponse $$3 = $$1.execute($$2);
-         return Long.parseLong($$3.getFirstHeader("Content-Length").getValue());
-      } catch (Throwable var16) {
-         a.error("Unable to get content length for download");
-         var5 = 0L;
-      } finally {
-         if ($$2 != null) {
-            $$2.releaseConnection();
-         }
-
-         if ($$1 != null) {
-            try {
-               $$1.close();
-            } catch (IOException var15) {
-               a.error("Could not close http client", var15);
-            }
-         }
-      }
-
-      return var5;
-   }
-
-   public void a(ffo $$0, String $$1, fgl.a $$2, etk $$3) {
-      if (this.i == null) {
-         this.i = new Thread(() -> {
-            CloseableHttpClient $$4 = null;
-
-            try {
-               this.f = File.createTempFile("backup", ".tar.gz");
-               this.h = new HttpGet($$0.a);
-               $$4 = HttpClientBuilder.create().setDefaultRequestConfig(this.j).build();
-               HttpResponse $$5 = $$4.execute(this.h);
-               $$2.b = Long.parseLong($$5.getFirstHeader("Content-Length").getValue());
-               if ($$5.getStatusLine().getStatusCode() == 200) {
-                  OutputStream $$12 = new FileOutputStream(this.f);
-                  feg.b $$13 = new feg.b($$1.trim(), this.f, $$3, $$2);
-                  feg.a $$14 = new feg.a($$12);
-                  $$14.a($$13);
-                  IOUtils.copy($$5.getEntity().getContent(), $$14);
-                  return;
-               }
-
-               this.d = true;
-               this.h.abort();
-            } catch (Exception var93) {
-               a.error("Caught exception while downloading: {}", var93.getMessage());
-               this.d = true;
-               return;
-            } finally {
-               this.h.releaseConnection();
-               if (this.f != null) {
-                  this.f.delete();
-               }
-
-               if (!this.d) {
-                  if (!$$0.b.isEmpty() && !$$0.c.isEmpty()) {
-                     try {
-                        this.f = File.createTempFile("resources", ".tar.gz");
-                        this.h = new HttpGet($$0.b);
-                        HttpResponse $$28 = $$4.execute(this.h);
-                        $$2.b = Long.parseLong($$28.getFirstHeader("Content-Length").getValue());
-                        if ($$28.getStatusLine().getStatusCode() != 200) {
-                           this.d = true;
-                           this.h.abort();
-                           return;
-                        }
-
-                        OutputStream $$29 = new FileOutputStream(this.f);
-                        feg.c $$30 = new feg.c(this.f, $$2, $$0);
-                        feg.a $$31 = new feg.a($$29);
-                        $$31.a($$30);
-                        IOUtils.copy($$28.getEntity().getContent(), $$31);
-                     } catch (Exception var91) {
-                        a.error("Caught exception while downloading: {}", var91.getMessage());
-                        this.d = true;
-                     } finally {
-                        this.h.releaseConnection();
-                        if (this.f != null) {
-                           this.f.delete();
-                        }
-                     }
-                  } else {
-                     this.c = true;
-                  }
-               }
-
-               if ($$4 != null) {
-                  try {
-                     $$4.close();
-                  } catch (IOException var90) {
-                     a.error("Failed to close Realms download client");
-                  }
-               }
-            }
-         });
-         this.i.setUncaughtExceptionHandler(new ffs(a));
-         this.i.start();
+      for (int $$4 = 0; $$4 < this.f.length; $$4++) {
+         feh $$5 = feh.a($$4);
+         int $$6 = $$5 != null ? $$0.indexOf($$5) : -1;
+         this.f[$$4] = $$6 != -1 ? $$2.getInt($$6) : -1;
       }
    }
 
-   public void a() {
-      if (this.h != null) {
-         this.h.abort();
-      }
-
-      if (this.f != null) {
-         this.f.delete();
-      }
-
-      this.b = true;
+   public static feg.a a() {
+      return new feg.a();
    }
 
-   public boolean b() {
-      return this.c;
+   public void a(int $$0) {
+      int $$1 = 0;
+
+      for (String $$2 : this.d()) {
+         GlStateManager._glBindAttribLocation($$0, $$1, $$2);
+         $$1++;
+      }
    }
 
-   public boolean c() {
+   @Override
+   public String toString() {
+      return "VertexFormat" + this.c;
+   }
+
+   public int b() {
       return this.d;
    }
 
-   public boolean d() {
+   public List<feh> c() {
+      return this.b;
+   }
+
+   public List<String> d() {
+      return this.c;
+   }
+
+   public int[] e() {
+      return this.f;
+   }
+
+   public int a(feh $$0) {
+      return this.f[$$0.c()];
+   }
+
+   public boolean b(feh $$0) {
+      return (this.e & $$0.a()) != 0;
+   }
+
+   public int f() {
       return this.e;
    }
 
-   public static String b(String $$0) {
-      $$0 = $$0.replaceAll("[\\./\"]", "_");
+   public String c(feh $$0) {
+      int $$1 = this.b.indexOf($$0);
+      if ($$1 == -1) {
+         throw new IllegalArgumentException($$0 + " is not contained in format");
+      } else {
+         return this.c.get($$1);
+      }
+   }
 
-      for (String $$1 : k) {
-         if ($$0.equalsIgnoreCase($$1)) {
-            $$0 = "_" + $$0 + "_";
+   @Override
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else {
+         if ($$0 instanceof feg $$1 && this.e == $$1.e && this.d == $$1.d && this.c.equals($$1.c) && Arrays.equals(this.f, $$1.f)) {
+            return true;
          }
+
+         return false;
+      }
+   }
+
+   @Override
+   public int hashCode() {
+      return this.e * 31 + Arrays.hashCode(this.f);
+   }
+
+   public void g() {
+      RenderSystem.assertOnRenderThread();
+      int $$0 = this.b();
+
+      for (int $$1 = 0; $$1 < this.b.size(); $$1++) {
+         GlStateManager._enableVertexAttribArray($$1);
+         feh $$2 = this.b.get($$1);
+         $$2.a($$1, (long)this.a($$2), $$0);
+      }
+   }
+
+   public void h() {
+      RenderSystem.assertOnRenderThread();
+
+      for (int $$0 = 0; $$0 < this.b.size(); $$0++) {
+         GlStateManager._disableVertexAttribArray($$0);
+      }
+   }
+
+   public fee i() {
+      fee $$0 = this.g;
+      if ($$0 == null) {
+         this.g = $$0 = new fee(fee.a.b);
       }
 
       return $$0;
    }
 
-   void a(String $$0, @Nullable File $$1, etk $$2) throws IOException {
-      Pattern $$3 = Pattern.compile(".*-([0-9]+)$");
-      int $$4 = 1;
+   public static class a {
+      private final Builder<String, feh> a = ImmutableMap.builder();
+      private final IntList b = new IntArrayList();
+      private int c;
 
-      for (char $$5 : ab.be) {
-         $$0 = $$0.replace($$5, '_');
+      a() {
       }
 
-      if (StringUtils.isEmpty($$0)) {
-         $$0 = "Realm";
+      public feg.a a(String $$0, feh $$1) {
+         this.a.put($$0, $$1);
+         this.b.add(this.c);
+         this.c = this.c + $$1.b();
+         return this;
       }
 
-      $$0 = b($$0);
-
-      try {
-         for (etk.b $$6 : $$2.b()) {
-            String $$7 = $$6.a();
-            if ($$7.toLowerCase(Locale.ROOT).startsWith($$0.toLowerCase(Locale.ROOT))) {
-               Matcher $$8 = $$3.matcher($$7);
-               if ($$8.matches()) {
-                  int $$9 = Integer.parseInt($$8.group(1));
-                  if ($$9 > $$4) {
-                     $$4 = $$9;
-                  }
-               } else {
-                  $$4++;
-               }
-            }
-         }
-      } catch (Exception var43) {
-         a.error("Error getting level list", var43);
-         this.d = true;
-         return;
+      public feg.a a(int $$0) {
+         this.c += $$0;
+         return this;
       }
 
-      String $$13;
-      if ($$2.a($$0) && $$4 <= 1) {
-         $$13 = $$0;
-      } else {
-         $$13 = $$0 + ($$4 == 1 ? "" : "-" + $$4);
-         if (!$$2.a($$13)) {
-            boolean $$12 = false;
-
-            while (!$$12) {
-               $$4++;
-               $$13 = $$0 + ($$4 == 1 ? "" : "-" + $$4);
-               if ($$2.a($$13)) {
-                  $$12 = true;
-               }
-            }
-         }
-      }
-
-      TarArchiveInputStream $$14 = null;
-      File $$15 = new File(fja.Q().q.getAbsolutePath(), "saves");
-
-      try {
-         $$15.mkdir();
-         $$14 = new TarArchiveInputStream(new GzipCompressorInputStream(new BufferedInputStream(new FileInputStream($$1))));
-
-         for (TarArchiveEntry $$16 = $$14.getNextTarEntry(); $$16 != null; $$16 = $$14.getNextTarEntry()) {
-            File $$17 = new File($$15, $$16.getName().replace("world", $$13));
-            if ($$16.isDirectory()) {
-               $$17.mkdirs();
-            } else {
-               $$17.createNewFile();
-
-               try (FileOutputStream $$18 = new FileOutputStream($$17)) {
-                  IOUtils.copy($$14, $$18);
-               }
-            }
-         }
-      } catch (Exception var41) {
-         a.error("Error extracting world", var41);
-         this.d = true;
-      } finally {
-         if ($$14 != null) {
-            $$14.close();
-         }
-
-         if ($$1 != null) {
-            $$1.delete();
-         }
-
-         try (etk.c $$26 = $$2.d($$13)) {
-            $$26.b($$13);
-         } catch (uu | va | IOException var39) {
-            a.error("Failed to modify unpacked realms level {}", $$13, var39);
-         } catch (eyw var40) {
-            a.warn("{}", var40.getMessage());
-         }
-
-         this.g = new File($$15, $$13 + File.separator + "resources.zip");
+      public feg a() {
+         ImmutableMap<String, feh> $$0 = this.a.buildOrThrow();
+         ImmutableList<feh> $$1 = $$0.values().asList();
+         ImmutableList<String> $$2 = $$0.keySet().asList();
+         return new feg($$1, $$2, this.b, this.c);
       }
    }
 
-   static class a extends CountingOutputStream {
-      @Nullable
-      private ActionListener a;
+   public static enum b {
+      a(5123, 2),
+      b(5125, 4);
 
-      public a(OutputStream $$0) {
-         super($$0);
+      public final int c;
+      public final int d;
+
+      private b(final int $$0, final int $$1) {
+         this.c = $$0;
+         this.d = $$1;
       }
 
-      public void a(ActionListener $$0) {
-         this.a = $$0;
-      }
-
-      protected void afterWrite(int $$0) throws IOException {
-         super.afterWrite($$0);
-         if (this.a != null) {
-            this.a.actionPerformed(new ActionEvent(this, 0, null));
-         }
+      public static feg.b a(int $$0) {
+         return ($$0 & -65536) != 0 ? b : a;
       }
    }
 
-   class b implements ActionListener {
-      private final String b;
-      private final File c;
-      private final etk d;
-      private final fgl.a e;
+   public static enum c {
+      a(4, 2, 2, false),
+      b(5, 2, 1, true),
+      c(1, 2, 2, false),
+      d(3, 2, 1, true),
+      e(4, 3, 3, false),
+      f(5, 3, 1, true),
+      g(6, 3, 1, true),
+      h(4, 4, 4, false);
 
-      b(final String $$0, final File $$1, final etk $$2, final fgl.a $$3) {
-         this.b = $$0;
-         this.c = $$1;
-         this.d = $$2;
-         this.e = $$3;
+      public final int i;
+      public final int j;
+      public final int k;
+      public final boolean l;
+
+      private c(final int $$0, final int $$1, final int $$2, final boolean $$3) {
+         this.i = $$0;
+         this.j = $$1;
+         this.k = $$2;
+         this.l = $$3;
       }
 
-      @Override
-      public void actionPerformed(ActionEvent $$0) {
-         this.e.a = ((feg.a)$$0.getSource()).getByteCount();
-         if (this.e.a >= this.e.b && !feg.this.b && !feg.this.d) {
-            try {
-               feg.this.e = true;
-               feg.this.a(this.b, this.c, this.d);
-            } catch (IOException var3) {
-               feg.a.error("Error extracting archive", var3);
-               feg.this.d = true;
-            }
-         }
-      }
-   }
-
-   class c implements ActionListener {
-      private final File b;
-      private final fgl.a c;
-      private final ffo d;
-
-      c(final File $$0, final fgl.a $$1, final ffo $$2) {
-         this.b = $$0;
-         this.c = $$1;
-         this.d = $$2;
-      }
-
-      @Override
-      public void actionPerformed(ActionEvent $$0) {
-         this.c.a = ((feg.a)$$0.getSource()).getByteCount();
-         if (this.c.a >= this.c.b && !feg.this.b) {
-            try {
-               String $$1 = Hashing.sha1().hashBytes(Files.toByteArray(this.b)).toString();
-               if ($$1.equals(this.d.c)) {
-                  FileUtils.copyFile(this.b, feg.this.g);
-                  feg.this.c = true;
-               } else {
-                  feg.a.error("Resourcepack had wrong hash (expected {}, found {}). Deleting it.", this.d.c, $$1);
-                  FileUtils.deleteQuietly(this.b);
-                  feg.this.d = true;
-               }
-            } catch (IOException var3) {
-               feg.a.error("Error copying resourcepack file: {}", var3.getMessage());
-               feg.this.d = true;
-            }
-         }
+      public int a(int $$0) {
+         return switch (this) {
+            case a, h -> $$0 / 4 * 6;
+            case b, c, d, e, f, g -> $$0;
+            default -> 0;
+         };
       }
    }
 }

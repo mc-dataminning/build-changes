@@ -1,3 +1,7 @@
-public class gty extends gud {
-   public boolean a;
+public class gty extends gvl {
+   public float a;
+   public boolean b = true;
+   public boolean c;
+   public boolean d;
+   public boolean e;
 }

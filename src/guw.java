@@ -1,13 +1,10 @@
-import javax.annotation.Nullable;
-
-public class guw extends gtw {
-   @Nullable
-   public btx.g.a a;
-   @Nullable
-   public gzu f;
-
-   @Override
-   public boolean a() {
-      return this.a != null && this.f != null;
-   }
+public class guw extends gvl {
+   public float a;
+   public float b;
+   public boolean c;
+   public boolean d;
+   public boolean e;
+   public boolean f;
+   public boolean g;
+   public chb.v h = chb.v.a;
 }

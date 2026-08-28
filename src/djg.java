@@ -1,24 +1,26 @@
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class djg extends dkt {
-   public static final MapCodec<djg> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(ayd.a.fieldOf("falling_dust_color").forGetter($$0x -> $$0x.b), t()).apply($$0, djg::new)
-   );
-   private final ayd b;
+public class djg extends dmn {
+   public static final MapCodec<djg> a = b(djg::new);
 
    @Override
    public MapCodec<djg> a() {
       return a;
    }
 
-   public djg(ayd $$0, dvc.d $$1) {
-      super($$1);
-      this.b = $$0;
+   public djg(dvi.d $$0) {
+      super($$0);
    }
 
    @Override
-   public int b(dvd $$0, dea $$1, jg $$2) {
-      return this.b.a();
+   public void a(dvj $$0, dfb $$1, jh $$2, azs $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      if ($$3.a(10) == 0) {
+         jh $$4 = $$2.e();
+         dvj $$5 = $$1.a_($$4);
+         if (!a($$5.g($$1, $$4), jm.b)) {
+            azo.a($$1, $$2, $$3, lr.H);
+         }
+      }
    }
 }

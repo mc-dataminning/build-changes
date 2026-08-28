@@ -1,7 +1,19 @@
-public interface cxb {
-   boolean a(dev var1, dts var2, boolean var3, coh var4);
+public class cxb extends cvy {
+   private final aro a;
 
-   default boolean a(dtt $$0, coh $$1) {
-      return $$0.a($$1);
+   public cxb(aro $$0) {
+      this.a = $$0;
+   }
+
+   @Override
+   protected void b(ali $$0, int $$1) {
+      super.b($$0, $$1);
+      this.a.g.b(new adc($$0, $$1));
+   }
+
+   @Override
+   protected void b(ali $$0) {
+      super.b($$0);
+      this.a.g.b(new adc($$0, 0));
    }
 }

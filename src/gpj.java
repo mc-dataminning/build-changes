@@ -1,37 +1,25 @@
-public class gpj extends gny<bvb, gvg> {
-   private static final float a = 40.0F;
-   private static final int b = 50;
-   private final gox h;
+public class gpj extends goj<ckp, gun> {
+   private static final ali a = ali.b("textures/entity/lead_knot.png");
+   private final fzb b;
 
-   protected gpj(gnz.a $$0) {
+   public gpj(gok.a $$0) {
       super($$0);
-      this.h = $$0.b();
+      this.b = new fzb($$0.a(gbl.bb));
    }
 
-   public gvg a() {
-      return new gvg();
+   @Override
+   public void a(gun $$0, feb $$1, gih $$2, int $$3) {
+      $$1.a();
+      $$1.b(-1.0F, -1.0F, 1.0F);
+      this.b.a($$0);
+      fef $$4 = $$2.getBuffer(this.b.a(a));
+      this.b.a($$1, $$4, $$3, gxu.d);
+      $$1.b();
+      super.a($$0, $$1, $$2, $$3);
    }
 
-   public void a(bvb $$0, gvg $$1, float $$2) {
-      super.a($$0, $$1, $$2);
-      cvx $$3 = $$0.o();
-      $$1.b = $$3.v();
-      $$1.a = !$$3.f() ? this.h.a($$3, $$0.dX(), null, 0) : null;
-   }
-
-   public void a(gvg $$0, fdt $$1, ghw $$2, int $$3) {
-      gzu $$4 = $$0.a;
-      if ($$4 != null) {
-         $$1.a();
-         if ($$0.p <= 50.0F) {
-            float $$5 = Math.min($$0.p, 50.0F) / 50.0F;
-            $$1.b($$5, $$5, $$5);
-         }
-
-         float $$6 = azj.h($$0.p * 40.0F);
-         $$1.a(a.d.rotationDegrees($$6));
-         gov.a(this.h, $$1, $$2, 15728880, $$0.b, $$4, $$4.b(), azr.a());
-         $$1.b();
-      }
+   @Override
+   public gun b() {
+      return new gun();
    }
 }

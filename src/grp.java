@@ -1,27 +1,11 @@
-public class grp extends grw<gtv, fxr> {
-   private static final alh a = alh.b("textures/entity/creeper/creeper_armor.png");
-   private final fxr b;
+public class grp extends gna<cmj> {
+   private static final ali a = ali.b("textures/entity/hoglin/zoglin.png");
 
-   public grp(gpv<gtv, fxr> $$0, gax $$1) {
-      super($$0);
-      this.b = new fxr($$1.a(gba.X));
+   public grp(gok.a $$0) {
+      super($$0, gbl.dk, gbl.dl, 0.7F);
    }
 
-   protected boolean a(gtv $$0) {
-      return $$0.b;
-   }
-
-   @Override
-   protected float a(float $$0) {
-      return $$0 * 0.01F;
-   }
-
-   @Override
-   protected alh a() {
+   public ali a(gvb $$0) {
       return a;
-   }
-
-   protected fxr b() {
-      return this.b;
    }
 }

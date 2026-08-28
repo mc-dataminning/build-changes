@@ -1,47 +1,45 @@
-public class fxy extends fxz<guc> {
-   private static final int a = 4;
-   private static final int[][] b = new int[][]{{4, 3, 2}, {6, 4, 5}, {3, 3, 1}, {1, 2, 1}};
-   private static final int[][] c = new int[][]{{0, 0}, {0, 5}, {0, 14}, {0, 18}};
-   private final gbb[] d = new gbb[4];
+public class fxy extends fzf {
+   private static final String a = "bottom";
+   private static final String b = "lid";
+   private static final String c = "lock";
+   private final gbm d;
+   private final gbm e;
 
-   public fxy(gbb $$0) {
-      super($$0);
-
-      for (int $$1 = 0; $$1 < 4; $$1++) {
-         this.d[$$1] = $$0.b(a($$1));
-      }
+   public fxy(gbm $$0) {
+      super($$0, gir::c);
+      this.d = $$0.b("lid");
+      this.e = $$0.b("lock");
    }
 
-   private static String a(int $$0) {
-      return "segment" + $$0;
+   public static gbs a() {
+      gbu $$0 = new gbu();
+      gbw $$1 = $$0.a();
+      $$1.a("bottom", gbr.c().a(0, 19).a(1.0F, 0.0F, 1.0F, 14.0F, 10.0F, 14.0F), gbo.a);
+      $$1.a("lid", gbr.c().a(0, 0).a(1.0F, 0.0F, 0.0F, 14.0F, 5.0F, 14.0F), gbo.a(0.0F, 9.0F, 1.0F));
+      $$1.a("lock", gbr.c().a(0, 0).a(7.0F, -2.0F, 14.0F, 2.0F, 4.0F, 1.0F), gbo.a(0.0F, 9.0F, 1.0F));
+      return gbs.a($$0, 64, 64);
    }
 
-   public static gbh a() {
-      gbj $$0 = new gbj();
-      gbl $$1 = $$0.a();
-      float $$2 = -3.5F;
-
-      for (int $$3 = 0; $$3 < 4; $$3++) {
-         $$1.a(
-            a($$3),
-            gbg.c().a(c[$$3][0], c[$$3][1]).a((float)b[$$3][0] * -0.5F, 0.0F, (float)b[$$3][2] * -0.5F, (float)b[$$3][0], (float)b[$$3][1], (float)b[$$3][2]),
-            gbd.a(0.0F, (float)(24 - b[$$3][1]), $$2)
-         );
-         if ($$3 < 3) {
-            $$2 += (float)(b[$$3][2] + b[$$3 + 1][2]) * 0.5F;
-         }
-      }
-
-      return gbh.a($$0, 64, 32);
+   public static gbs b() {
+      gbu $$0 = new gbu();
+      gbw $$1 = $$0.a();
+      $$1.a("bottom", gbr.c().a(0, 19).a(1.0F, 0.0F, 1.0F, 15.0F, 10.0F, 14.0F), gbo.a);
+      $$1.a("lid", gbr.c().a(0, 0).a(1.0F, 0.0F, 0.0F, 15.0F, 5.0F, 14.0F), gbo.a(0.0F, 9.0F, 1.0F));
+      $$1.a("lock", gbr.c().a(0, 0).a(15.0F, -2.0F, 14.0F, 1.0F, 4.0F, 1.0F), gbo.a(0.0F, 9.0F, 1.0F));
+      return gbs.a($$0, 64, 64);
    }
 
-   @Override
-   public void a(guc $$0) {
-      super.a($$0);
+   public static gbs c() {
+      gbu $$0 = new gbu();
+      gbw $$1 = $$0.a();
+      $$1.a("bottom", gbr.c().a(0, 19).a(0.0F, 0.0F, 1.0F, 15.0F, 10.0F, 14.0F), gbo.a);
+      $$1.a("lid", gbr.c().a(0, 0).a(0.0F, 0.0F, 0.0F, 15.0F, 5.0F, 14.0F), gbo.a(0.0F, 9.0F, 1.0F));
+      $$1.a("lock", gbr.c().a(0, 0).a(0.0F, -2.0F, 14.0F, 1.0F, 4.0F, 1.0F), gbo.a(0.0F, 9.0F, 1.0F));
+      return gbs.a($$0, 64, 64);
+   }
 
-      for (int $$1 = 0; $$1 < this.d.length; $$1++) {
-         this.d[$$1].f = azj.b($$0.p * 0.9F + (float)$$1 * 0.15F * (float) Math.PI) * (float) Math.PI * 0.01F * (float)(1 + Math.abs($$1 - 2));
-         this.d[$$1].b = azj.a($$0.p * 0.9F + (float)$$1 * 0.15F * (float) Math.PI) * (float) Math.PI * 0.1F * (float)Math.abs($$1 - 2);
-      }
+   public void a(float $$0) {
+      this.d.e = -($$0 * (float) (Math.PI / 2));
+      this.e.e = this.d.e;
    }
 }

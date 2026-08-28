@@ -1,22 +1,21 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.stream.Stream;
 
-public class egv implements egj {
-   public static final Codec<egv> a = RecordCodecBuilder.create(
-      $$0 -> $$0.apply2(egv::new, efz.a.listOf().fieldOf("features").forGetter($$0x -> $$0x.b), ekv.b.fieldOf("default").forGetter($$0x -> $$0x.c))
+public class egv extends egh {
+   public static final Codec<egv> c = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               eiq.a.fieldOf("state_provider").forGetter($$0x -> $$0x.b),
+               ayt.m.fieldOf("spread_width").forGetter($$0x -> $$0x.d),
+               ayt.m.fieldOf("spread_height").forGetter($$0x -> $$0x.e)
+            )
+            .apply($$0, egv::new)
    );
-   public final List<efz> b;
-   public final jp<ekv> c;
+   public final int d;
+   public final int e;
 
-   public egv(List<efz> $$0, jp<ekv> $$1) {
-      this.b = $$0;
-      this.c = $$1;
-   }
-
-   @Override
-   public Stream<edr<?, ?>> e() {
-      return Stream.concat(this.b.stream().flatMap($$0 -> $$0.b.a().a()), this.c.a().a());
+   public egv(eiq $$0, int $$1, int $$2) {
+      super($$0);
+      this.d = $$1;
+      this.e = $$2;
    }
 }

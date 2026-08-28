@@ -1,36 +1,37 @@
 import com.mojang.serialization.Codec;
-import io.netty.buffer.ByteBuf;
 import java.util.function.IntFunction;
 
-public enum cvz implements baf {
+public enum cvz implements bag {
    a(0, "none"),
-   b(1, "eat"),
-   c(2, "drink"),
-   d(3, "block"),
-   e(4, "bow"),
-   f(5, "spear"),
-   g(6, "crossbow"),
-   h(7, "spyglass"),
-   i(8, "toot_horn"),
-   j(9, "brush");
+   b(1, "thirdperson_lefthand"),
+   c(2, "thirdperson_righthand"),
+   d(3, "firstperson_lefthand"),
+   e(4, "firstperson_righthand"),
+   f(5, "head"),
+   g(6, "gui"),
+   h(7, "ground"),
+   i(8, "fixed");
 
-   private static final IntFunction<cvz> m = aya.a(cvz::a, values(), aya.a.a);
-   public static final Codec<cvz> k = baf.a(cvz::values);
-   public static final zf<ByteBuf, cvz> l = zd.a(m, cvz::a);
-   private final int n;
-   private final String o;
+   public static final Codec<cvz> j = bag.a(cvz::values);
+   public static final IntFunction<cvz> k = ayb.a(cvz::a, values(), ayb.a.a);
+   private final byte l;
+   private final String m;
 
    private cvz(final int $$0, final String $$1) {
-      this.n = $$0;
-      this.o = $$1;
-   }
-
-   public int a() {
-      return this.n;
+      this.m = $$1;
+      this.l = (byte)$$0;
    }
 
    @Override
    public String c() {
-      return this.o;
+      return this.m;
+   }
+
+   public byte a() {
+      return this.l;
+   }
+
+   public boolean b() {
+      return this == d || this == e;
    }
 }

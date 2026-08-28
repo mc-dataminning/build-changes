@@ -1,42 +1,26 @@
-public interface fnj {
-   Object b = new Object();
-   int c = 160;
-   int d = 32;
+import java.util.function.Consumer;
 
-   fnj.a a();
+public class fnj implements fnk {
+   private final xi b;
+   protected final fov a = new fov();
 
-   void a(fnk var1, long var2);
-
-   void a(fkm var1, fkk var2, long var3);
-
-   default Object f() {
-      return b;
+   public fnj(xi $$0) {
+      this.b = $$0;
    }
 
-   default int b() {
-      return 160;
+   @Override
+   public xi a() {
+      return this.b;
    }
 
-   default int c() {
-      return 32;
+   @Override
+   public void a(Consumer<flf> $$0) {
+      this.a.a($$0);
    }
 
-   default int g() {
-      return azj.e(this.c(), 32);
-   }
-
-   public static enum a {
-      a(awk.AC),
-      b(awk.AD);
-
-      private final awj c;
-
-      private a(final awj $$0) {
-         this.c = $$0;
-      }
-
-      public void a(hcu $$0) {
-         $$0.a(hbk.a(this.c, 1.0F, 1.0F));
-      }
+   @Override
+   public void a(fpp $$0) {
+      this.a.a();
+      fou.a(this.a, $$0, 0.5F, 0.16666667F);
    }
 }

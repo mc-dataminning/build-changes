@@ -1,41 +1,73 @@
 import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.ImmutableMap.Builder;
 import java.util.Optional;
+import java.util.function.Function;
 
-public class bxg extends bwo<cnt> {
-   private static final int d = 1200;
-   final float c;
+public class bxg extends bwt<bvi> {
+   public static final int c = 100;
+   public static final double d = 2.5;
+   public static final double e = 3.5;
+   private final Function<bva, Float> f;
+   private final Function<bva, Double> g;
 
-   public bxg(float $$0) {
-      super(ImmutableMap.of(cdz.d, cea.a), 1200);
-      this.c = $$0;
+   public bxg(Function<bva, Float> $$0) {
+      this($$0, $$0x -> 2.5);
    }
 
-   protected boolean a(arm $$0, cnt $$1) {
-      return $$1.ed().g().map($$0x -> $$0x == cpz.b || $$0x == cpz.c || $$0x == cpz.d).orElse(true);
+   public bxg(Function<bva, Float> $$0, Function<bva, Double> $$1) {
+      super(ae.a(() -> {
+         Builder<cee<?>, cef> $$0x = ImmutableMap.builder();
+         $$0x.put(cee.n, cef.c);
+         $$0x.put(cee.m, cef.c);
+         $$0x.put(cee.P, cef.b);
+         $$0x.put(cee.R, cef.c);
+         $$0x.put(cee.O, cef.a);
+         $$0x.put(cee.r, cef.b);
+         $$0x.put(cee.Z, cef.b);
+         return $$0x.build();
+      }));
+      this.f = $$0;
+      this.g = $$1;
    }
 
-   protected boolean a(arm $$0, cnt $$1, long $$2) {
-      return $$1.ed().a(cdz.d);
+   protected float a(bvi $$0) {
+      return this.f.apply($$0);
    }
 
-   protected void b(arm $$0, cnt $$1, long $$2) {
-      bwq.a($$1, $$1.ed().c(cdz.d).get().b(), this.c, 1);
+   private Optional<com> b(bvi $$0) {
+      return $$0.ed().c(cee.O);
    }
 
-   protected void c(arm $$0, cnt $$1, long $$2) {
-      Optional<jo> $$3 = $$1.ed().c(cdz.d);
-      $$3.ifPresent($$1x -> {
-         jg $$2x = $$1x.b();
-         arm $$3x = $$0.o().a($$1x.a());
-         if ($$3x != null) {
-            cfz $$4 = $$3x.y();
-            if ($$4.a($$2x, $$0xx -> true)) {
-               $$4.b($$2x);
-            }
+   @Override
+   protected boolean a(long $$0) {
+      return false;
+   }
 
-            agr.c($$0, $$2x);
-         }
-      });
-      $$1.ed().b(cdz.d);
+   protected boolean a(arn $$0, bvi $$1, long $$2) {
+      return this.b($$1).isPresent() && !$$1.ed().a(cee.r) && !$$1.ed().a(cee.Z);
+   }
+
+   protected void b(arn $$0, bvi $$1, long $$2) {
+      $$1.ed().a(cee.R, true);
+   }
+
+   protected void c(arn $$0, bvi $$1, long $$2) {
+      bwc<?> $$3 = $$1.ed();
+      $$3.a(cee.P, 100);
+      $$3.a(cee.R, false);
+      $$3.b(cee.m);
+      $$3.b(cee.n);
+   }
+
+   protected void d(arn $$0, bvi $$1, long $$2) {
+      com $$3 = this.b($$1).get();
+      bwc<?> $$4 = $$1.ed();
+      $$4.a(cee.n, new bxe($$3, true));
+      double $$5 = this.g.apply($$1);
+      if ($$1.g($$3) < azk.k($$5)) {
+         $$4.b(cee.m);
+      } else {
+         $$4.a(cee.m, new ceh(new bxe($$3, false), this.a($$1), 2));
+      }
    }
 }

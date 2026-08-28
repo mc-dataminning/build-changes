@@ -1,35 +1,67 @@
-import java.net.InetSocketAddress;
+import com.mojang.authlib.yggdrasil.request.AbuseReportRequest.ClientInfo;
+import com.mojang.authlib.yggdrasil.request.AbuseReportRequest.RealmInfo;
+import com.mojang.authlib.yggdrasil.request.AbuseReportRequest.ThirdPartyServerInfo;
+import java.util.Locale;
+import javax.annotation.Nullable;
 
-public interface gdn {
-   String a();
+public record gdn(String a, @Nullable gdn.a b) {
+   public static gdn a() {
+      return a(null);
+   }
 
-   String b();
+   public static gdn a(String $$0) {
+      return a(new gdn.a.b($$0));
+   }
 
-   int c();
+   public static gdn a(ffi $$0) {
+      return a(new gdn.a.a($$0));
+   }
 
-   InetSocketAddress d();
+   public static gdn a(@Nullable gdn.a $$0) {
+      return new gdn(g(), $$0);
+   }
 
-   static gdn a(final InetSocketAddress $$0) {
-      return new gdn() {
-         @Override
-         public String a() {
-            return $$0.getAddress().getHostName();
+   public ClientInfo b() {
+      return new ClientInfo(this.a, Locale.getDefault().toLanguageTag());
+   }
+
+   @Nullable
+   public ThirdPartyServerInfo c() {
+      return this.b instanceof gdn.a.b $$0 ? new ThirdPartyServerInfo($$0.a) : null;
+   }
+
+   @Nullable
+   public RealmInfo d() {
+      return this.b instanceof gdn.a.a $$0 ? new RealmInfo(String.valueOf($$0.a()), $$0.b()) : null;
+   }
+
+   private static String g() {
+      StringBuilder $$0 = new StringBuilder();
+      $$0.append("24w37a");
+      if (fji.e().a()) {
+         $$0.append(" (modded)");
+      }
+
+      return $$0.toString();
+   }
+
+   public String e() {
+      return this.a;
+   }
+
+   @Nullable
+   public gdn.a f() {
+      return this.b;
+   }
+
+   public interface a {
+      public static record a(long a, int b) implements gdn.a {
+         public a(ffi $$0) {
+            this($$0.a, $$0.n);
          }
+      }
 
-         @Override
-         public String b() {
-            return $$0.getAddress().getHostAddress();
-         }
-
-         @Override
-         public int c() {
-            return $$0.getPort();
-         }
-
-         @Override
-         public InetSocketAddress d() {
-            return $$0;
-         }
-      };
+      public static record b(String a) implements gdn.a {
+      }
    }
 }

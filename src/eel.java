@@ -1,149 +1,145 @@
-import com.google.common.collect.Lists;
-import com.mojang.datafixers.util.Pair;
 import com.mojang.serialization.Codec;
-import java.util.List;
+import com.mojang.serialization.MapCodec;
+import java.util.Optional;
+import java.util.function.Function;
 import java.util.function.Predicate;
 
-public class eel extends eef<egk> {
-   private static final jl[] a = jl.values();
+public abstract class eel<FC extends egp> {
+   public static final eel<egw> e = a("no_op", new eff(egw.a));
+   public static final eel<ehl> f = a("tree", new efx(ehl.a));
+   public static final eel<ehc> g = a("flower", new efj(ehc.a));
+   public static final eel<ehc> h = a("no_bonemeal_flower", new efj(ehc.a));
+   public static final eel<ehc> i = a("random_patch", new efj(ehc.a));
+   public static final eel<egh> j = a("block_pile", new edt(egh.a));
+   public static final eel<ehk> k = a("spring_feature", new efw(ehk.a));
+   public static final eel<egw> l = a("chorus_plant", new edw(egw.a));
+   public static final eel<ehd> m = a("replace_single_block", new efm(ehd.a));
+   public static final eel<egw> n = a("void_start_platform", new egc(egw.a));
+   public static final eel<egw> o = a("desert_well", new eed(egw.a));
+   public static final eel<eeq> p = a("fossil", new eep(eeq.a));
+   public static final eel<egr> q = a("huge_red_mushroom", new eew(egr.a));
+   public static final eel<egr> r = a("huge_brown_mushroom", new eet(egr.a));
+   public static final eel<egw> s = a("ice_spike", new eex(egw.a));
+   public static final eel<egw> t = a("glowstone_blob", new ees(egw.a));
+   public static final eel<egw> u = a("freeze_top_layer", new efu(egw.a));
+   public static final eel<egw> v = a("vines", new egb(egw.a));
+   public static final eel<egg> w = a("block_column", new eds(egg.a));
+   public static final eel<eho> x = a("vegetation_patch", new ega(eho.a));
+   public static final eel<eho> y = a("waterlogged_vegetation_patch", new egd(eho.a));
+   public static final eel<ehf> z = a("root_system", new efn(ehf.a));
+   public static final eel<egu> A = a("multiface_growth", new efd(egu.a));
+   public static final eel<ehn> B = a("underwater_magma", new efz(ehn.a));
+   public static final eel<egw> C = a("monster_room", new efc(egw.a));
+   public static final eel<egw> D = a("blue_ice", new edu(egw.a));
+   public static final eel<egi> E = a("iceberg", new eey(egi.a));
+   public static final eel<egi> F = a("forest_rock", new edr(egi.a));
+   public static final eel<egm> G = a("disk", new eee(egm.a));
+   public static final eel<efa.a> H = a("lake", new efa(efa.a.a));
+   public static final eel<egx> I = a("ore", new efg(egx.a));
+   public static final eel<egw> J = a("end_platform", new eej(egw.a));
+   public static final eel<ehj> K = a("end_spike", new efv(ehj.a));
+   public static final eel<egw> L = a("end_island", new eei(egw.a));
+   public static final eel<ego> M = a("end_gateway", new eeh(ego.a));
+   public static final efr N = a("seagrass", new efr(egz.k));
+   public static final eel<egw> O = a("kelp", new eez(egw.a));
+   public static final eel<egw> P = a("coral_tree", new eeb(egw.a));
+   public static final eel<egw> Q = a("coral_mushroom", new eea(egw.a));
+   public static final eel<egw> R = a("coral_claw", new edy(egw.a));
+   public static final eel<egk> S = a("sea_pickle", new efq(egk.a));
+   public static final eel<ehh> T = a("simple_block", new efs(ehh.a));
+   public static final eel<egz> U = a("bamboo", new edo(egz.k));
+   public static final eel<eeu> V = a("huge_fungus", new eev(eeu.a));
+   public static final eel<egv> W = a("nether_forest_vegetation", new efe(egv.c));
+   public static final eel<egw> X = a("weeping_vines", new ege(egw.a));
+   public static final eel<ehm> Y = a("twisting_vines", new efy(ehm.a));
+   public static final eel<egj> Z = a("basalt_columns", new edp(egj.a));
+   public static final eel<egl> aa = a("delta_feature", new eec(egl.a));
+   public static final eel<ehe> ab = a("netherrack_replace_blobs", new efl(ehe.a));
+   public static final eel<egt> ac = a("fill_layer", new eeo(egt.a));
+   public static final edv ad = a("bonus_chest", new edv(egw.a));
+   public static final eel<egw> ae = a("basalt_pillar", new edq(egw.a));
+   public static final eel<egx> af = a("scattered_ore", new efo(egx.a));
+   public static final eel<ehb> ag = a("random_selector", new efk(ehb.a));
+   public static final eel<ehi> ah = a("simple_random_selector", new eft(ehi.a));
+   public static final eel<eha> ai = a("random_boolean_selector", new efi(eha.a));
+   public static final eel<egq> aj = a("geode", new eer(egq.b));
+   public static final eel<egn> ak = a("dripstone_cluster", new eef(egn.a));
+   public static final eel<egs> al = a("large_dripstone", new efb(egs.a));
+   public static final eel<egy> am = a("pointed_dripstone", new efh(egy.a));
+   public static final eel<ehg> an = a("sculk_patch", new efp(ehg.a));
+   private final MapCodec<edx<FC, eel<FC>>> a;
 
-   public eel(Codec<egk> $$0) {
-      super($$0);
+   private static <C extends egp, F extends eel<C>> F a(String $$0, F $$1) {
+      return kd.a(ly.O, $$0, $$1);
    }
 
-   @Override
-   public boolean a(eeh<egk> $$0) {
-      egk $$1 = $$0.f();
-      azr $$2 = $$0.d();
-      jg $$3 = $$0.e();
-      dfs $$4 = $$0.b();
-      int $$5 = $$1.l;
-      int $$6 = $$1.n;
-      List<Pair<jg, Integer>> $$7 = Lists.newLinkedList();
-      int $$8 = $$1.j.a($$2);
-      eby $$9 = new eby(new eba($$4.C()));
-      eqh $$10 = eqh.a($$9, -4, 1.0);
-      List<jg> $$11 = Lists.newLinkedList();
-      double $$12 = (double)$$8 / (double)$$1.i.b();
-      eay $$13 = $$1.d;
-      eaw $$14 = $$1.c;
-      eax $$15 = $$1.e;
-      double $$16 = 1.0 / Math.sqrt($$13.b);
-      double $$17 = 1.0 / Math.sqrt($$13.c + $$12);
-      double $$18 = 1.0 / Math.sqrt($$13.d + $$12);
-      double $$19 = 1.0 / Math.sqrt($$13.e + $$12);
-      double $$20 = 1.0 / Math.sqrt($$15.c + $$2.j() / 2.0 + ($$8 > 3 ? $$12 : 0.0));
-      boolean $$21 = (double)$$2.i() < $$15.b;
-      int $$22 = 0;
+   public eel(Codec<FC> $$0) {
+      this.a = $$0.fieldOf("config").xmap($$0x -> new edx<>(this, $$0x), edx::c);
+   }
 
-      for (int $$23 = 0; $$23 < $$8; $$23++) {
-         int $$24 = $$1.i.a($$2);
-         int $$25 = $$1.i.a($$2);
-         int $$26 = $$1.i.a($$2);
-         jg $$27 = $$3.b($$24, $$25, $$26);
-         dvd $$28 = $$4.a_($$27);
-         if ($$28.l() || $$28.a($$14.h)) {
-            if (++$$22 > $$1.p) {
-               return false;
-            }
-         }
+   public MapCodec<edx<FC, eel<FC>>> a() {
+      return this.a;
+   }
 
-         $$7.add(Pair.of($$27, $$1.k.a($$2)));
+   protected void a(dfj $$0, jh $$1, dvj $$2) {
+      $$0.a($$1, $$2, 3);
+   }
+
+   public static Predicate<dvj> a(axq<die> $$0) {
+      return $$1 -> !$$1.a($$0);
+   }
+
+   protected void a(dfy $$0, jh $$1, dvj $$2, Predicate<dvj> $$3) {
+      if ($$3.test($$0.a_($$1))) {
+         $$0.a($$1, $$2, 2);
       }
+   }
 
-      if ($$21) {
-         int $$29 = $$2.a(4);
-         int $$30 = $$8 * 2 + 1;
-         if ($$29 == 0) {
-            $$11.add($$3.b($$30, 7, 0));
-            $$11.add($$3.b($$30, 5, 0));
-            $$11.add($$3.b($$30, 1, 0));
-         } else if ($$29 == 1) {
-            $$11.add($$3.b(0, 7, $$30));
-            $$11.add($$3.b(0, 5, $$30));
-            $$11.add($$3.b(0, 1, $$30));
-         } else if ($$29 == 2) {
-            $$11.add($$3.b($$30, 7, $$30));
-            $$11.add($$3.b($$30, 5, $$30));
-            $$11.add($$3.b($$30, 1, $$30));
-         } else {
-            $$11.add($$3.b(0, 7, 0));
-            $$11.add($$3.b(0, 5, 0));
-            $$11.add($$3.b(0, 1, 0));
+   public abstract boolean a(een<FC> var1);
+
+   public boolean a(FC $$0, dfy $$1, dxg $$2, azs $$3, jh $$4) {
+      return $$1.f_($$4) ? this.a(new een<>(Optional.empty(), $$1, $$2, $$3, $$4, $$0)) : false;
+   }
+
+   protected static boolean a(dvj $$0) {
+      return $$0.a(axa.bf);
+   }
+
+   public static boolean b(dvj $$0) {
+      return $$0.a(axa.ag);
+   }
+
+   public static boolean a(dfh $$0, jh $$1) {
+      return $$0.a($$1, eel::b);
+   }
+
+   public static boolean a(Function<jh, dvj> $$0, jh $$1, Predicate<dvj> $$2) {
+      jh.a $$3 = new jh.a();
+
+      for (jm $$4 : jm.values()) {
+         $$3.a($$1, $$4);
+         if ($$2.test($$0.apply($$3))) {
+            return true;
          }
       }
 
-      List<jg> $$31 = Lists.newArrayList();
-      Predicate<dvd> $$32 = a($$1.c.g);
+      return false;
+   }
 
-      for (jg $$33 : jg.c($$3.b($$5, $$5, $$5), $$3.b($$6, $$6, $$6))) {
-         double $$34 = $$10.a((double)$$33.u(), (double)$$33.v(), (double)$$33.w()) * $$1.o;
-         double $$35 = 0.0;
-         double $$36 = 0.0;
+   public static boolean a(Function<jh, dvj> $$0, jh $$1) {
+      return a($$0, $$1, dvi.a::l);
+   }
 
-         for (Pair<jg, Integer> $$37 : $$7) {
-            $$35 += azj.f($$33.j((kk)$$37.getFirst()) + (double)((Integer)$$37.getSecond()).intValue()) + $$34;
+   protected void a(dfy $$0, jh $$1) {
+      jh.a $$2 = $$1.k();
+
+      for (int $$3 = 0; $$3 < 2; $$3++) {
+         $$2.c(jm.b);
+         if ($$0.a_($$2).l()) {
+            return;
          }
 
-         for (jg $$38 : $$11) {
-            $$36 += azj.f($$33.j($$38) + (double)$$15.d) + $$34;
-         }
-
-         if (!($$35 < $$19)) {
-            if ($$21 && $$36 >= $$20 && $$35 < $$16) {
-               this.a($$4, $$33, dia.a.m(), $$32);
-
-               for (jl $$39 : a) {
-                  jg $$40 = $$33.a($$39);
-                  ere $$41 = $$4.b_($$40);
-                  if (!$$41.c()) {
-                     $$4.a($$40, $$41.a(), 0);
-                  }
-               }
-            } else if ($$35 >= $$16) {
-               this.a($$4, $$33, $$14.a.a($$2, $$33), $$32);
-            } else if ($$35 >= $$17) {
-               boolean $$42 = (double)$$2.i() < $$1.g;
-               if ($$42) {
-                  this.a($$4, $$33, $$14.c.a($$2, $$33), $$32);
-               } else {
-                  this.a($$4, $$33, $$14.b.a($$2, $$33), $$32);
-               }
-
-               if ((!$$1.h || $$42) && (double)$$2.i() < $$1.f) {
-                  $$31.add($$33.j());
-               }
-            } else if ($$35 >= $$18) {
-               this.a($$4, $$33, $$14.d.a($$2, $$33), $$32);
-            } else if ($$35 >= $$19) {
-               this.a($$4, $$33, $$14.e.a($$2, $$33), $$32);
-            }
-         }
+         $$0.y($$2).e($$2);
       }
-
-      List<dvd> $$43 = $$14.f;
-
-      for (jg $$44 : $$31) {
-         dvd $$45 = ad.a($$43, $$2);
-
-         for (jl $$46 : a) {
-            if ($$45.b(dvt.P)) {
-               $$45 = $$45.b(dvt.P, $$46);
-            }
-
-            jg $$47 = $$44.a($$46);
-            dvd $$48 = $$4.a_($$47);
-            if ($$45.b(dvt.C)) {
-               $$45 = $$45.b(dvt.C, Boolean.valueOf($$48.y().b()));
-            }
-
-            if (dig.h($$48)) {
-               this.a($$4, $$47, $$45, $$32);
-               break;
-            }
-         }
-      }
-
-      return true;
    }
 }

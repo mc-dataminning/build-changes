@@ -1,56 +1,30 @@
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
 import java.util.Set;
-import org.slf4j.Logger;
 
-public class ewc extends evj {
-   private static final Logger b = LogUtils.getLogger();
-   public static final MapCodec<ewc> a = RecordCodecBuilder.mapCodec(
-      $$0 -> a($$0)
-            .and($$0.group(eye.a.fieldOf("damage").forGetter($$0x -> $$0x.c), Codec.BOOL.fieldOf("add").orElse(false).forGetter($$0x -> $$0x.d)))
-            .apply($$0, ewc::new)
-   );
-   private final eyd c;
-   private final boolean d;
+public class ewc extends evp {
+   static final MapCodec<ewc> a = RecordCodecBuilder.mapCodec($$0 -> a($$0).and(eyk.a.fieldOf("value").forGetter($$0x -> $$0x.b)).apply($$0, ewc::new));
+   private final eyj b;
 
-   private ewc(List<exh> $$0, eyd $$1, boolean $$2) {
+   private ewc(List<exn> $$0, eyj $$1) {
       super($$0);
-      this.c = $$1;
-      this.d = $$2;
+      this.b = $$1;
    }
 
    @Override
-   public evl<ewc> b() {
-      return evm.n;
+   public Set<ewv<?>> a() {
+      return this.b.a();
    }
 
    @Override
-   public Set<ewp<?>> a() {
-      return this.c.a();
+   public evr<ewc> b() {
+      return evs.R;
    }
 
    @Override
-   public cvx a(cvx $$0, etw $$1) {
-      if ($$0.m()) {
-         int $$2 = $$0.p();
-         float $$3 = this.d ? 1.0F - (float)$$0.o() / (float)$$2 : 0.0F;
-         float $$4 = 1.0F - azj.a(this.c.b($$1) + $$3, 0.0F, 1.0F);
-         $$0.b(azj.d($$4 * (float)$$2));
-      } else {
-         b.warn("Couldn't set damage of loot item {}", $$0);
-      }
-
+   public cwb a(cwb $$0, euc $$1) {
+      $$0.b(ku.p, new cyl(this.b.a($$1)));
       return $$0;
-   }
-
-   public static evj.a<?> a(eyd $$0) {
-      return a($$1 -> new ewc($$1, $$0, false));
-   }
-
-   public static evj.a<?> a(eyd $$0, boolean $$1) {
-      return a($$2 -> new ewc($$2, $$0, $$1));
    }
 }

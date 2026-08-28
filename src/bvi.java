@@ -1,40 +1,64 @@
-import java.util.Set;
+public abstract class bvi extends bvc {
+   protected static final float bX = 0.0F;
 
-public record bvi(ezh a, ezh b, float c, float d) {
-   public static bvi a(btz $$0) {
-      return new bvi($$0.dv(), $$0.ai(), $$0.dN(), $$0.dP());
+   protected bvi(bul<? extends bvi> $$0, dfb $$1) {
+      super($$0, $$1);
    }
 
-   public static bvi a(aem $$0) {
-      return new bvi($$0.e(), $$0.f(), $$0.g(), $$0.h());
+   public float c(jh $$0) {
+      return this.a($$0, this.dX());
    }
 
-   public static bvi a(esc $$0) {
-      return new bvi($$0.b(), $$0.c(), $$0.d(), $$0.e());
+   public float a(jh $$0, dfe $$1) {
+      return 0.0F;
    }
 
-   public static bvi a(bvi $$0, bvi $$1, Set<bvj> $$2) {
-      double $$3 = $$2.contains(bvj.a) ? $$0.a.d : 0.0;
-      double $$4 = $$2.contains(bvj.b) ? $$0.a.e : 0.0;
-      double $$5 = $$2.contains(bvj.c) ? $$0.a.f : 0.0;
-      float $$6 = $$2.contains(bvj.d) ? $$0.c : 0.0F;
-      float $$7 = $$2.contains(bvj.e) ? $$0.d : 0.0F;
-      ezh $$8 = new ezh($$3 + $$1.a.d, $$4 + $$1.a.e, $$5 + $$1.a.f);
-      float $$9 = $$6 + $$1.c;
-      float $$10 = $$7 + $$1.d;
-      ezh $$11 = $$0.b;
-      if ($$2.contains(bvj.i)) {
-         float $$12 = $$0.c - $$9;
-         float $$13 = $$0.d - $$10;
-         $$11 = $$11.a((float)Math.toRadians((double)$$13));
-         $$11 = $$11.b((float)Math.toRadians((double)$$12));
+   @Override
+   public boolean a(dfc $$0, buk $$1) {
+      return this.a(this.dx(), $$0) >= 0.0F;
+   }
+
+   public boolean gq() {
+      return !this.P().m();
+   }
+
+   public boolean gr() {
+      if (this.bF.a(cee.Z)) {
+         return this.bF.c(cee.Z).isPresent();
+      } else {
+         for (cdm $$0 : this.bS.b()) {
+            if ($$0.h() && $$0.k() instanceof ccr) {
+               return true;
+            }
+         }
+
+         return false;
       }
-
-      ezh $$14 = new ezh(a($$11.d, $$1.b.d, $$2, bvj.f), a($$11.e, $$1.b.e, $$2, bvj.g), a($$11.f, $$1.b.f, $$2, bvj.h));
-      return new bvi($$8, $$14, $$9, $$10);
    }
 
-   private static double a(double $$0, double $$1, Set<bvj> $$2, bvj $$3) {
-      return $$2.contains($$3) ? $$0 + $$1 : $$1;
+   protected boolean gs() {
+      return true;
+   }
+
+   @Override
+   public void b(bue $$0) {
+      super.b($$0);
+      if (this.gs() && !this.gr()) {
+         this.bS.b(cby.a.a);
+         float $$1 = 2.0F;
+         float $$2 = this.f($$0);
+         ezn $$3 = new ezn($$0.dC() - this.dC(), $$0.dE() - this.dE(), $$0.dI() - this.dI()).d().c((double)Math.max($$2 - 2.0F, 0.0F));
+         this.P().a(this.dC() + $$3.d, this.dE() + $$3.e, this.dI() + $$3.f, this.gt());
+      }
+   }
+
+   @Override
+   public boolean a(bue $$0, float $$1) {
+      this.a($$0.dx(), 5);
+      return true;
+   }
+
+   protected double gt() {
+      return 1.0;
    }
 }

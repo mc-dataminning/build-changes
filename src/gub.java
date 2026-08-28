@@ -1,7 +1,3 @@
-import javax.annotation.Nullable;
-
-public class gub extends gus {
+public class gub extends gwi {
    public boolean a;
-   @Nullable
-   public dvd b;
 }

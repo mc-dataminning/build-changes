@@ -1,50 +1,25 @@
-import java.util.Optional;
+public final class dfn implements dxc {
+   private final int a;
+   private final dvj[] b;
 
-public class dfn extends deo {
-   private final boolean a;
-   private final boolean b;
-   private final Optional<Float> c;
-   private final Optional<jt<dhy>> d;
-
-   public dfn(boolean $$0, boolean $$1, Optional<Float> $$2, Optional<jt<dhy>> $$3) {
+   public dfn(int $$0, dvj[] $$1) {
       this.a = $$0;
       this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
    }
 
    @Override
-   public Optional<Float> a(den $$0, dea $$1, jg $$2, dvd $$3, ere $$4) {
-      if (this.d.isPresent()) {
-         return $$3.a(this.d.get()) ? Optional.of(3600000.0F) : Optional.empty();
+   public dvj a(int $$0) {
+      int $$1 = $$0 - this.a;
+      return $$1 >= 0 && $$1 < this.b.length ? this.b[$$1] : dig.a.m();
+   }
+
+   @Override
+   public void a(int $$0, dvj $$1) {
+      int $$2 = $$0 - this.a;
+      if ($$2 >= 0 && $$2 < this.b.length) {
+         this.b[$$2] = $$1;
       } else {
-         return super.a($$0, $$1, $$2, $$3, $$4);
+         throw new IllegalArgumentException("Outside of column height: " + $$0);
       }
-   }
-
-   @Override
-   public boolean a(den $$0, dea $$1, jg $$2, dvd $$3, float $$4) {
-      return this.a;
-   }
-
-   @Override
-   public boolean a(den $$0, btz $$1) {
-      return this.b;
-   }
-
-   @Override
-   public float a(btz $$0) {
-      boolean var10000;
-      label17: {
-         if ($$0 instanceof coh $$1 && $$1.gl().b) {
-            var10000 = true;
-            break label17;
-         }
-
-         var10000 = false;
-      }
-
-      boolean $$2 = var10000;
-      return $$2 ? 0.0F : this.c.orElseGet(() -> super.a($$0));
    }
 }

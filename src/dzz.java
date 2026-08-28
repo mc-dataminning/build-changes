@@ -1,104 +1,133 @@
-import com.google.common.collect.Lists;
-import com.google.common.collect.Sets;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Optional;
-import java.util.Set;
+import com.mojang.logging.LogUtils;
+import it.unimi.dsi.fastutil.longs.LongOpenHashSet;
+import it.unimi.dsi.fastutil.longs.LongSet;
+import org.slf4j.Logger;
 
-public class dzz implements ead {
-   private final List<eac> b = Lists.newArrayList();
-   private final Set<eac> c = Sets.newHashSet();
-   private final List<eac> d = Lists.newArrayList();
-   private boolean e;
-   private final arm f;
-   private final int g;
-   private final dzz.a h;
+public class dzz<T extends dzn> {
+   static final Logger a = LogUtils.getLogger();
+   final dzv<T> b;
+   final dzp<T> c;
+   final dzs<T> d;
+   private final LongSet e = new LongOpenHashSet();
+   private final dzw<T> f;
 
-   public dzz(arm $$0, int $$1, dzz.a $$2) {
-      this.f = $$0;
-      this.g = $$1;
-      this.h = $$2;
+   public dzz(Class<T> $$0, dzv<T> $$1) {
+      this.c = new dzp<>();
+      this.d = new dzs<>($$0, $$0x -> this.e.contains($$0x) ? eaa.c : eaa.b);
+      this.b = $$1;
+      this.f = new dzx<>(this.c, this.d);
    }
 
-   @Override
-   public boolean a() {
-      return this.b.isEmpty();
+   public void a(deh $$0) {
+      long $$1 = $$0.a();
+      this.e.add($$1);
+      this.d.b($$1).forEach($$0x -> {
+         eaa $$1x = $$0x.a(eaa.c);
+         if (!$$1x.a()) {
+            $$0x.b().filter($$0xx -> !$$0xx.dW()).forEach(this.b::e);
+         }
+      });
    }
 
-   @Override
-   public void a(eac $$0) {
-      if (this.e) {
-         this.d.add($$0);
-      } else {
-         this.b.add($$0);
+   public void b(deh $$0) {
+      long $$1 = $$0.a();
+      this.e.remove($$1);
+      this.d.b($$1).forEach($$0x -> {
+         eaa $$1x = $$0x.a(eaa.b);
+         if ($$1x.a()) {
+            $$0x.b().filter($$0xx -> !$$0xx.dW()).forEach(this.b::d);
+         }
+      });
+   }
+
+   public dzw<T> a() {
+      return this.f;
+   }
+
+   public void a(T $$0) {
+      this.c.a($$0);
+      long $$1 = kj.c($$0.dx());
+      dzr<T> $$2 = this.d.c($$1);
+      $$2.a($$0);
+      $$0.a(new dzz.a($$0, $$1, $$2));
+      this.b.g($$0);
+      this.b.c($$0);
+      if ($$0.dW() || $$2.c().a()) {
+         this.b.e($$0);
+      }
+   }
+
+   @baq
+   public int b() {
+      return this.c.b();
+   }
+
+   void a(long $$0, dzr<T> $$1) {
+      if ($$1.a()) {
+         this.d.e($$0);
+      }
+   }
+
+   @baq
+   public String c() {
+      return this.c.b() + "," + this.d.b() + "," + this.e.size();
+   }
+
+   class a implements dzo {
+      private final T c;
+      private long d;
+      private dzr<T> e;
+
+      a(final T $$0, final long $$1, final dzr<T> $$2) {
+         this.c = $$0;
+         this.d = $$1;
+         this.e = $$2;
       }
 
-      agr.a(this.f, $$0);
-   }
+      @Override
+      public void a() {
+         jh $$0 = this.c.dx();
+         long $$1 = kj.c($$0);
+         if ($$1 != this.d) {
+            eaa $$2 = this.e.c();
+            if (!this.e.b(this.c)) {
+               dzz.a.warn("Entity {} wasn't found in section {} (moving to {})", new Object[]{this.c, kj.a(this.d), $$1});
+            }
 
-   @Override
-   public void b(eac $$0) {
-      if (this.e) {
-         this.c.add($$0);
-      } else {
-         this.b.remove($$0);
-      }
-
-      if (this.b.isEmpty()) {
-         this.h.apply(this.g);
-      }
-   }
-
-   @Override
-   public boolean a(jp<eaa> $$0, ezh $$1, eaa.a $$2, ead.a $$3) {
-      this.e = true;
-      boolean $$4 = false;
-
-      try {
-         Iterator<eac> $$5 = this.b.iterator();
-
-         while ($$5.hasNext()) {
-            eac $$6 = $$5.next();
-            if (this.c.remove($$6)) {
-               $$5.remove();
-            } else {
-               Optional<ezh> $$7 = a(this.f, $$1, $$6);
-               if ($$7.isPresent()) {
-                  $$3.visit($$6, $$7.get());
-                  $$4 = true;
+            dzz.this.a(this.d, this.e);
+            dzr<T> $$3 = dzz.this.d.c($$1);
+            $$3.a(this.c);
+            this.e = $$3;
+            this.d = $$1;
+            dzz.this.b.a(this.c);
+            if (!this.c.dW()) {
+               boolean $$4 = $$2.a();
+               boolean $$5 = $$3.c().a();
+               if ($$4 && !$$5) {
+                  dzz.this.b.d(this.c);
+               } else if (!$$4 && $$5) {
+                  dzz.this.b.e(this.c);
                }
             }
          }
-      } finally {
-         this.e = false;
       }
 
-      if (!this.d.isEmpty()) {
-         this.b.addAll(this.d);
-         this.d.clear();
+      @Override
+      public void a(bue.c $$0) {
+         if (!this.e.b(this.c)) {
+            dzz.a.warn("Entity {} wasn't found in section {} (destroying due to {})", new Object[]{this.c, kj.a(this.d), $$0});
+         }
+
+         eaa $$1 = this.e.c();
+         if ($$1.a() || this.c.dW()) {
+            dzz.this.b.d(this.c);
+         }
+
+         dzz.this.b.b(this.c);
+         dzz.this.b.f(this.c);
+         dzz.this.c.b(this.c);
+         this.c.a(a);
+         dzz.this.a(this.d, this.e);
       }
-
-      if (!this.c.isEmpty()) {
-         this.b.removeAll(this.c);
-         this.c.clear();
-      }
-
-      return $$4;
-   }
-
-   private static Optional<ezh> a(arm $$0, ezh $$1, eac $$2) {
-      Optional<ezh> $$3 = $$2.a().a($$0);
-      if ($$3.isEmpty()) {
-         return Optional.empty();
-      } else {
-         double $$4 = jg.a($$3.get()).j(jg.a((jz)$$1));
-         int $$5 = $$2.b() * $$2.b();
-         return $$4 > (double)$$5 ? Optional.empty() : $$3;
-      }
-   }
-
-   @FunctionalInterface
-   public interface a {
-      void apply(int var1);
    }
 }

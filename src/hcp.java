@@ -1,62 +1,23 @@
-import javax.annotation.Nullable;
-
 public class hcp {
-   private static final int a = 100;
-   private final azr b = azr.a();
-   private final fja c;
-   @Nullable
-   private hbp d;
-   private int e = 100;
+   private final String a;
+   private final String b;
+   private long c;
 
-   public hcp(fja $$0) {
-      this.c = $$0;
+   public hcp(String $$0, String $$1) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = ae.c();
    }
 
-   public void a() {
-      awh $$0 = this.c.al();
-      if (this.d != null) {
-         if (!$$0.a().a().a().equals(this.d.a()) && $$0.d()) {
-            this.c.ak().b(this.d);
-            this.e = azj.a(this.b, 0, $$0.b() / 2);
-         }
-
-         if (!this.c.ak().c(this.d)) {
-            this.d = null;
-            this.e = Math.min(this.e, azj.a(this.b, $$0.b(), $$0.c()));
-         }
-      }
-
-      this.e = Math.min(this.e, $$0.c());
-      if (this.d == null && this.e-- <= 0) {
-         this.a($$0);
-      }
+   public String a() {
+      return this.a;
    }
 
-   public void a(awh $$0) {
-      this.d = hbk.a($$0.a().a());
-      if (this.d.b() != hcu.b) {
-         this.c.ak().a(this.d);
-      }
-
-      this.e = Integer.MAX_VALUE;
+   public String b() {
+      return this.b;
    }
 
-   public void b(awh $$0) {
-      if (this.c($$0)) {
-         this.b();
-      }
-   }
-
-   public void b() {
-      if (this.d != null) {
-         this.c.ak().b(this.d);
-         this.d = null;
-      }
-
-      this.e += 100;
-   }
-
-   public boolean c(awh $$0) {
-      return this.d == null ? false : $$0.a().a().a().equals(this.d.a());
+   public void c() {
+      this.c = ae.c();
    }
 }

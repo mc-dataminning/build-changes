@@ -1,18 +1,13 @@
-public class gfx extends gem {
-   gfx(gbx $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, gfz $$7) {
-      super($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
-      this.u = 0.5F;
-   }
-
-   public static class a implements gfh<lu> {
-      private final gfz a;
-
-      public a(gfz $$0) {
-         this.a = $$0;
-      }
-
-      public gfe a(lu $$0, gbx $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new gfx($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
-      }
+public abstract class gfx extends ggp {
+   protected gfx(gci $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6) {
+      super($$0, $$1, $$2, $$3, $$4, $$5, $$6);
+      this.B = 0.96F;
+      this.j = this.j * 0.01F + $$4;
+      this.k = this.k * 0.01F + $$5;
+      this.l = this.l * 0.01F + $$6;
+      this.g = this.g + (double)((this.r.i() - this.r.i()) * 0.05F);
+      this.h = this.h + (double)((this.r.i() - this.r.i()) * 0.05F);
+      this.i = this.i + (double)((this.r.i() - this.r.i()) * 0.05F);
+      this.t = (int)(8.0 / (Math.random() * 0.8 + 0.2)) + 4;
    }
 }

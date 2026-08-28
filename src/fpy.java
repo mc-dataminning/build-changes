@@ -1,79 +1,102 @@
+import com.google.common.collect.Lists;
 import it.unimi.dsi.fastutil.booleans.BooleanConsumer;
+import java.util.List;
 
-public class fpy extends fqs {
-   private static final xh a = xh.c("addServer.enterIp");
-   private fkz b;
-   private final gcl c;
-   private fli d;
-   private final BooleanConsumer s;
-   private final fqs u;
+public class fpy extends fra {
+   private static final int d = 20;
+   private final xi s;
+   private fma u = fma.a;
+   protected xi a;
+   protected xi b;
+   private int v;
+   protected final BooleanConsumer c;
+   private final List<flh> w = Lists.newArrayList();
 
-   public fpy(fqs $$0, BooleanConsumer $$1, gcl $$2) {
-      super(xh.c("selectServer.direct"));
-      this.u = $$0;
-      this.c = $$2;
-      this.s = $$1;
+   public fpy(BooleanConsumer $$0, xi $$1, xi $$2) {
+      this($$0, $$1, $$2, xh.f, xh.g);
+   }
+
+   public fpy(BooleanConsumer $$0, xi $$1, xi $$2, xi $$3, xi $$4) {
+      super($$1);
+      this.c = $$0;
+      this.s = $$2;
+      this.a = $$3;
+      this.b = $$4;
    }
 
    @Override
-   public boolean a(int $$0, int $$1, int $$2) {
-      if (!this.b.j || this.aM_() != this.d || $$0 != 257 && $$0 != 335) {
-         return super.a($$0, $$1, $$2);
-      } else {
-         this.m();
-         return true;
+   public xi i() {
+      return xh.a(super.i(), this.s);
+   }
+
+   @Override
+   protected void aR_() {
+      super.aR_();
+      this.u = fma.a(this.p, this.s, this.n - 50);
+      int $$0 = azk.a(this.D() + this.E() + 20, this.o / 6 + 96, this.o - 24);
+      this.w.clear();
+      this.a($$0);
+   }
+
+   protected void a(int $$0) {
+      this.a(flh.a(this.a, $$0x -> this.c.accept(true)).a(this.n / 2 - 155, $$0, 150, 20).a());
+      this.a(flh.a(this.b, $$0x -> this.c.accept(false)).a(this.n / 2 - 155 + 160, $$0, 150, 20).a());
+   }
+
+   protected void a(flh $$0) {
+      this.w.add(this.c($$0));
+   }
+
+   @Override
+   public void a(fku $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      $$0.a(this.p, this.l, this.n / 2, this.m(), 16777215);
+      this.u.a($$0, this.n / 2, this.D());
+   }
+
+   private int m() {
+      int $$0 = (this.o - this.E()) / 2;
+      return azk.a($$0 - 20 - 9, 10, 80);
+   }
+
+   private int D() {
+      return this.m() + 20;
+   }
+
+   private int E() {
+      return this.u.a() * 9;
+   }
+
+   public void b(int $$0) {
+      this.v = $$0;
+
+      for (flh $$1 : this.w) {
+         $$1.j = false;
       }
    }
 
    @Override
-   protected void aS_() {
-      this.d = new fli(this.p, this.n / 2 - 100, 116, 200, 20, xh.c("addServer.enterIp"));
-      this.d.f(128);
-      this.d.a(this.m.n.Y);
-      this.d.b($$0 -> this.D());
-      this.d(this.d);
-      this.b = this.c(fkz.a(xh.c("selectServer.select"), $$0 -> this.m()).a(this.n / 2 - 100, this.o / 4 + 96 + 12, 200, 20).a());
-      this.c(fkz.a(xg.e, $$0 -> this.s.accept(false)).a(this.n / 2 - 100, this.o / 4 + 120 + 12, 200, 20).a());
-      this.D();
+   public void e() {
+      super.e();
+      if (--this.v == 0) {
+         for (flh $$0 : this.w) {
+            $$0.j = true;
+         }
+      }
    }
 
    @Override
-   protected void aH_() {
-      this.b(this.d);
+   public boolean aH_() {
+      return false;
    }
 
    @Override
-   public void a(fja $$0, int $$1, int $$2) {
-      String $$3 = this.d.a();
-      this.b($$0, $$1, $$2);
-      this.d.a($$3);
-   }
-
-   private void m() {
-      this.c.b = this.d.a();
-      this.s.accept(true);
-   }
-
-   @Override
-   public void d() {
-      this.m.a(this.u);
-   }
-
-   @Override
-   public void j() {
-      this.m.n.Y = this.d.a();
-      this.m.n.ay();
-   }
-
-   private void D() {
-      this.b.j = gdo.b(this.d.a());
-   }
-
-   @Override
-   public void a(fkm $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      $$0.a(this.p, this.l, this.n / 2, 20, 16777215);
-      $$0.b(this.p, a, this.n / 2 - 100 + 1, 100, 10526880);
-      this.d.a($$0, $$1, $$2, $$3);
+   public boolean a(int $$0, int $$1, int $$2) {
+      if ($$0 == 256) {
+         this.c.accept(false);
+         return true;
+      } else {
+         return super.a($$0, $$1, $$2);
+      }
    }
 }

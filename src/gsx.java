@@ -1,43 +1,25 @@
-import java.util.List;
+public abstract class gsx<S extends gun, M extends fyk<? super S>> {
+   private final gqg<S, M> a;
 
-public class gsx extends gsm<gwm, gam> {
-   private final alh a;
-   private final gsx.a b;
-   private final gsx.b c;
-
-   public gsx(gpv<gwm, gam> $$0, alh $$1, gsx.a $$2, gsx.b $$3) {
-      super($$0);
-      this.a = $$1;
-      this.b = $$2;
-      this.c = $$3;
+   public gsx(gqg<S, M> $$0) {
+      this.a = $$0;
    }
 
-   public void a(fdt $$0, ghw $$1, int $$2, gwm $$3, float $$4, float $$5) {
-      if (!$$3.u) {
-         this.a();
-         fdx $$6 = $$1.getBuffer(gig.j(this.a));
-         float $$7 = this.b.apply($$3, $$3.p);
-         int $$8 = axu.a(azj.d($$7 * 255.0F), 255, 255, 255);
-         this.d().a($$0, $$6, $$2, gpa.a($$3, 0.0F), $$8);
-         this.b();
+   protected static <S extends gvl> void a(fyk<S> $$0, ali $$1, feb $$2, gih $$3, int $$4, S $$5, int $$6) {
+      if (!$$5.u) {
+         $$0.a($$5);
+         b($$0, $$1, $$2, $$3, $$4, $$5, $$6);
       }
    }
 
-   private void a() {
-      List<gbb> $$0 = this.c.getPartsToDraw(this.d());
-      this.d().f().forEach($$0x -> $$0x.l = true);
-      $$0.forEach($$0x -> $$0x.l = false);
+   protected static void b(fyk<?> $$0, ali $$1, feb $$2, gih $$3, int $$4, gvl $$5, int $$6) {
+      fef $$7 = $$3.getBuffer(gir.f($$1));
+      $$0.a($$2, $$7, $$4, gpl.a($$5, 0.0F), $$6);
    }
 
-   private void b() {
-      this.d().f().forEach($$0 -> $$0.l = false);
+   public M d() {
+      return this.a.e();
    }
 
-   public interface a {
-      float apply(gwm var1, float var2);
-   }
-
-   public interface b {
-      List<gbb> getPartsToDraw(gam var1);
-   }
+   public abstract void a(feb var1, gih var2, int var3, S var4, float var5, float var6);
 }

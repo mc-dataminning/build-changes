@@ -1,93 +1,63 @@
-import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.ImmutableSet.Builder;
+import com.mojang.datafixers.util.Either;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
-import java.util.Objects;
-import java.util.Set;
-import java.util.stream.Collectors;
+import java.util.Optional;
+import java.util.function.Consumer;
 
-public class euv extends evj {
+public class euv extends euu {
    public static final MapCodec<euv> a = RecordCodecBuilder.mapCodec(
-      $$0 -> a($$0)
-            .and(
-               $$0.group(
-                  lx.e.r().fieldOf("block").forGetter($$0x -> $$0x.b),
-                  Codec.STRING.listOf().fieldOf("properties").forGetter($$0x -> $$0x.c.stream().map(dwg::f).toList())
-               )
-            )
-            .apply($$0, euv::new)
+      $$0 -> $$0.group(Codec.either(alh.a(lz.bd), euh.d).fieldOf("value").forGetter($$0x -> $$0x.j)).and(b($$0)).apply($$0, euv::new)
    );
-   private final jp<dhy> b;
-   private final Set<dwg<?>> c;
+   private final Either<alh<euh>, euh> j;
 
-   euv(List<exh> $$0, jp<dhy> $$1, Set<dwg<?>> $$2) {
-      super($$0);
-      this.b = $$1;
-      this.c = $$2;
-   }
-
-   private euv(List<exh> $$0, jp<dhy> $$1, List<String> $$2) {
-      this($$0, $$1, $$2.stream().map($$1.a().l()::a).filter(Objects::nonNull).collect(Collectors.toSet()));
+   private euv(Either<alh<euh>, euh> $$0, int $$1, int $$2, List<exn> $$3, List<evq> $$4) {
+      super($$1, $$2, $$3, $$4);
+      this.j = $$0;
    }
 
    @Override
-   public evl<euv> b() {
-      return evm.D;
+   public eut a() {
+      return euq.d;
    }
 
    @Override
-   public Set<ewp<?>> a() {
-      return ImmutableSet.of(ews.g);
+   public void a(Consumer<cwb> $$0, euc $$1) {
+      ((euh)this.j.map($$1x -> $$1.a().c($$1x).map(jq::a).orElse(euh.a), $$0x -> $$0x)).a($$1, $$0);
    }
 
    @Override
-   protected cvx a(cvx $$0, etw $$1) {
-      dvd $$2 = $$1.c(ews.g);
-      if ($$2 != null) {
-         $$0.a(kt.al, cxz.a, $$1x -> {
-            for (dwg<?> $$2x : this.c) {
-               if ($$2.b($$2x)) {
-                  $$1x = $$1x.a($$2x, $$2);
-               }
-            }
+   public void a(eui $$0) {
+      Optional<alh<euh>> $$1 = this.j.left();
+      if ($$1.isPresent()) {
+         alh<euh> $$2 = $$1.get();
+         if (!$$0.b()) {
+            $$0.b("Uses reference to " + $$2.a() + ", but references are not allowed");
+            return;
+         }
 
-            return $$1x;
-         });
-      }
-
-      return $$0;
-   }
-
-   public static euv.a a(dhy $$0) {
-      return new euv.a($$0);
-   }
-
-   public static class a extends evj.a<euv.a> {
-      private final jp<dhy> a;
-      private final Builder<dwg<?>> b = ImmutableSet.builder();
-
-      a(dhy $$0) {
-         this.a = $$0.p();
-      }
-
-      public euv.a a(dwg<?> $$0) {
-         if (!this.a.a().l().d().contains($$0)) {
-            throw new IllegalStateException("Property " + $$0 + " is not present on block " + this.a);
-         } else {
-            this.b.add($$0);
-            return this;
+         if ($$0.a($$2)) {
+            $$0.b("Table " + $$2.a() + " is recursively called");
+            return;
          }
       }
 
-      protected euv.a a() {
-         return this;
-      }
+      super.a($$0);
+      this.j
+         .ifLeft(
+            $$1x -> $$0.a()
+                  .c($$1x)
+                  .ifPresentOrElse($$2x -> ((euh)$$2x.a()).a($$0.a("->{" + $$1x.a() + "}", $$1x)), () -> $$0.b("Unknown loot table called " + $$1x.a()))
+         )
+         .ifRight($$1x -> $$1x.a($$0.a("->{inline}")));
+   }
 
-      @Override
-      public evk b() {
-         return new euv(this.g(), this.a, this.b.build());
-      }
+   public static euu.a<?> a(alh<euh> $$0) {
+      return a(($$1, $$2, $$3, $$4) -> new euv(Either.left($$0), $$1, $$2, $$3, $$4));
+   }
+
+   public static euu.a<?> a(euh $$0) {
+      return a(($$1, $$2, $$3, $$4) -> new euv(Either.right($$0), $$1, $$2, $$3, $$4));
    }
 }

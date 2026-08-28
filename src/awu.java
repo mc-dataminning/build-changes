@@ -1,98 +1,45 @@
-public class awu {
-   public static final awt<dhy> a = a("mined", lx.e);
-   public static final awt<cvt> b = a("crafted", lx.g);
-   public static final awt<cvt> c = a("used", lx.g);
-   public static final awt<cvt> d = a("broken", lx.g);
-   public static final awt<cvt> e = a("picked_up", lx.g);
-   public static final awt<cvt> f = a("dropped", lx.g);
-   public static final awt<bug<?>> g = a("killed", lx.f);
-   public static final awt<bug<?>> h = a("killed_by", lx.f);
-   public static final awt<alh> i = a("custom", lx.k);
-   public static final alh j = a("leave_game", aws.b);
-   public static final alh k = a("play_time", aws.e);
-   public static final alh l = a("total_world_time", aws.e);
-   public static final alh m = a("time_since_death", aws.e);
-   public static final alh n = a("time_since_rest", aws.e);
-   public static final alh o = a("sneak_time", aws.e);
-   public static final alh p = a("walk_one_cm", aws.d);
-   public static final alh q = a("crouch_one_cm", aws.d);
-   public static final alh r = a("sprint_one_cm", aws.d);
-   public static final alh s = a("walk_on_water_one_cm", aws.d);
-   public static final alh t = a("fall_one_cm", aws.d);
-   public static final alh u = a("climb_one_cm", aws.d);
-   public static final alh v = a("fly_one_cm", aws.d);
-   public static final alh w = a("walk_under_water_one_cm", aws.d);
-   public static final alh x = a("minecart_one_cm", aws.d);
-   public static final alh y = a("boat_one_cm", aws.d);
-   public static final alh z = a("pig_one_cm", aws.d);
-   public static final alh A = a("horse_one_cm", aws.d);
-   public static final alh B = a("aviate_one_cm", aws.d);
-   public static final alh C = a("swim_one_cm", aws.d);
-   public static final alh D = a("strider_one_cm", aws.d);
-   public static final alh E = a("jump", aws.b);
-   public static final alh F = a("drop", aws.b);
-   public static final alh G = a("damage_dealt", aws.c);
-   public static final alh H = a("damage_dealt_absorbed", aws.c);
-   public static final alh I = a("damage_dealt_resisted", aws.c);
-   public static final alh J = a("damage_taken", aws.c);
-   public static final alh K = a("damage_blocked_by_shield", aws.c);
-   public static final alh L = a("damage_absorbed", aws.c);
-   public static final alh M = a("damage_resisted", aws.c);
-   public static final alh N = a("deaths", aws.b);
-   public static final alh O = a("mob_kills", aws.b);
-   public static final alh P = a("animals_bred", aws.b);
-   public static final alh Q = a("player_kills", aws.b);
-   public static final alh R = a("fish_caught", aws.b);
-   public static final alh S = a("talked_to_villager", aws.b);
-   public static final alh T = a("traded_with_villager", aws.b);
-   public static final alh U = a("eat_cake_slice", aws.b);
-   public static final alh V = a("fill_cauldron", aws.b);
-   public static final alh W = a("use_cauldron", aws.b);
-   public static final alh X = a("clean_armor", aws.b);
-   public static final alh Y = a("clean_banner", aws.b);
-   public static final alh Z = a("clean_shulker_box", aws.b);
-   public static final alh aa = a("interact_with_brewingstand", aws.b);
-   public static final alh ab = a("interact_with_beacon", aws.b);
-   public static final alh ac = a("inspect_dropper", aws.b);
-   public static final alh ad = a("inspect_hopper", aws.b);
-   public static final alh ae = a("inspect_dispenser", aws.b);
-   public static final alh af = a("play_noteblock", aws.b);
-   public static final alh ag = a("tune_noteblock", aws.b);
-   public static final alh ah = a("pot_flower", aws.b);
-   public static final alh ai = a("trigger_trapped_chest", aws.b);
-   public static final alh aj = a("open_enderchest", aws.b);
-   public static final alh ak = a("enchant_item", aws.b);
-   public static final alh al = a("play_record", aws.b);
-   public static final alh am = a("interact_with_furnace", aws.b);
-   public static final alh an = a("interact_with_crafting_table", aws.b);
-   public static final alh ao = a("open_chest", aws.b);
-   public static final alh ap = a("sleep_in_bed", aws.b);
-   public static final alh aq = a("open_shulker_box", aws.b);
-   public static final alh ar = a("open_barrel", aws.b);
-   public static final alh as = a("interact_with_blast_furnace", aws.b);
-   public static final alh at = a("interact_with_smoker", aws.b);
-   public static final alh au = a("interact_with_lectern", aws.b);
-   public static final alh av = a("interact_with_campfire", aws.b);
-   public static final alh aw = a("interact_with_cartography_table", aws.b);
-   public static final alh ax = a("interact_with_loom", aws.b);
-   public static final alh ay = a("interact_with_stonecutter", aws.b);
-   public static final alh az = a("bell_ring", aws.b);
-   public static final alh aA = a("raid_trigger", aws.b);
-   public static final alh aB = a("raid_win", aws.b);
-   public static final alh aC = a("interact_with_anvil", aws.b);
-   public static final alh aD = a("interact_with_grindstone", aws.b);
-   public static final alh aE = a("target_hit", aws.b);
-   public static final alh aF = a("interact_with_smithing_table", aws.b);
+import java.util.IdentityHashMap;
+import java.util.Iterator;
+import java.util.Map;
 
-   private static alh a(String $$0, aws $$1) {
-      alh $$2 = alh.b($$0);
-      kc.a(lx.k, $$0, $$2);
-      i.a($$2, $$1);
-      return $$2;
+public class awu<T> implements Iterable<aws<T>> {
+   private final kd<T> a;
+   private final Map<T, aws<T>> b = new IdentityHashMap<>();
+   private final xi c;
+   private final zg<wt, aws<T>> d;
+
+   public awu(kd<T> $$0, xi $$1) {
+      this.a = $$0;
+      this.c = $$1;
+      this.d = ze.a($$0.g()).a(this::b, aws::b);
    }
 
-   private static <T> awt<T> a(String $$0, kc<T> $$1) {
-      xh $$2 = xh.c("stat_type.minecraft." + $$0);
-      return kc.a(lx.v, $$0, new awt<>($$1, $$2));
+   public zg<wt, aws<T>> a() {
+      return this.d;
+   }
+
+   public boolean a(T $$0) {
+      return this.b.containsKey($$0);
+   }
+
+   public aws<T> a(T $$0, awt $$1) {
+      return this.b.computeIfAbsent($$0, $$1x -> new aws<>(this, (T)$$1x, $$1));
+   }
+
+   public kd<T> b() {
+      return this.a;
+   }
+
+   @Override
+   public Iterator<aws<T>> iterator() {
+      return this.b.values().iterator();
+   }
+
+   public aws<T> b(T $$0) {
+      return this.a($$0, awt.b);
+   }
+
+   public xi c() {
+      return this.c;
    }
 }

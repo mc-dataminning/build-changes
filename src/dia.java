@@ -1,1196 +1,255 @@
-import com.google.common.collect.UnmodifiableIterator;
-import java.util.function.Function;
-import java.util.function.ToIntFunction;
+import com.mojang.serialization.MapCodec;
+import java.util.function.BiConsumer;
+import javax.annotation.Nullable;
 
-public class dia {
-   private static final dvc.f tu = ($$0x, $$1x, $$2) -> $$1x.c_($$2) instanceof dtr $$4 ? $$4.u() : true;
-   private static final dvc.f tv = ($$0x, $$1x, $$2) -> !$$0x.c(duw.c);
-   public static final dhy a = a("air", dgv::new, dvc.d.a().p().b().g().m());
-   public static final dhy b = a("stone", dvc.d.a().a(eri.l).a(dwe.b).n().a(1.5F, 6.0F));
-   public static final dhy c = a("granite", dvc.d.a().a(eri.k).a(dwe.b).n().a(1.5F, 6.0F));
-   public static final dhy d = a("polished_granite", dvc.d.a().a(eri.k).a(dwe.b).n().a(1.5F, 6.0F));
-   public static final dhy e = a("diorite", dvc.d.a().a(eri.o).a(dwe.b).n().a(1.5F, 6.0F));
-   public static final dhy f = a("polished_diorite", dvc.d.a().a(eri.o).a(dwe.b).n().a(1.5F, 6.0F));
-   public static final dhy g = a("andesite", dvc.d.a().a(eri.l).a(dwe.b).n().a(1.5F, 6.0F));
-   public static final dhy h = a("polished_andesite", dvc.d.a().a(eri.l).a(dwe.b).n().a(1.5F, 6.0F));
-   public static final dhy i = a("grass_block", dli::new, dvc.d.a().a(eri.b).e().d(0.6F).a(dpl.d));
-   public static final dhy j = a("dirt", dvc.d.a().a(eri.k).d(0.5F).a(dpl.c));
-   public static final dhy k = a("coarse_dirt", dvc.d.a().a(eri.k).d(0.5F).a(dpl.c));
-   public static final dhy l = a("podzol", dpi::new, dvc.d.a().a(eri.I).d(0.5F).a(dpl.c));
-   public static final dhy m = a("cobblestone", dvc.d.a().a(eri.l).a(dwe.b).n().a(2.0F, 6.0F));
-   public static final dhy n = a("oak_planks", dvc.d.a().a(eri.n).a(dwe.e).a(2.0F, 3.0F).a(dpl.b).i());
-   public static final dhy o = a("spruce_planks", dvc.d.a().a(eri.I).a(dwe.e).a(2.0F, 3.0F).a(dpl.b).i());
-   public static final dhy p = a("birch_planks", dvc.d.a().a(eri.c).a(dwe.e).a(2.0F, 3.0F).a(dpl.b).i());
-   public static final dhy q = a("jungle_planks", dvc.d.a().a(eri.k).a(dwe.e).a(2.0F, 3.0F).a(dpl.b).i());
-   public static final dhy r = a("acacia_planks", dvc.d.a().a(eri.p).a(dwe.e).a(2.0F, 3.0F).a(dpl.b).i());
-   public static final dhy s = a("cherry_planks", dvc.d.a().a(eri.K).a(dwe.e).a(2.0F, 3.0F).a(dpl.aU).i());
-   public static final dhy t = a("dark_oak_planks", dvc.d.a().a(eri.A).a(dwe.e).a(2.0F, 3.0F).a(dpl.b).i());
-   public static final dhy u = a("mangrove_planks", dvc.d.a().a(eri.C).a(dwe.e).a(2.0F, 3.0F).a(dpl.b).i());
-   public static final dhy v = a("bamboo_planks", dvc.d.a().a(eri.s).a(dwe.e).a(2.0F, 3.0F).a(dpl.aS).i());
-   public static final dhy w = a("bamboo_mosaic", dvc.d.a().a(eri.s).a(dwe.e).a(2.0F, 3.0F).a(dpl.aS).i());
-   public static final dhy x = a("oak_sapling", $$0x -> new dom(dus.b, $$0x), dvc.d.a().a(eri.h).b().e().d().a(dpl.d).a(erj.b));
-   public static final dhy y = a("spruce_sapling", $$0x -> new dom(dus.c, $$0x), dvc.d.a().a(eri.h).b().e().d().a(dpl.d).a(erj.b));
-   public static final dhy z = a("birch_sapling", $$0x -> new dom(dus.f, $$0x), dvc.d.a().a(eri.h).b().e().d().a(dpl.d).a(erj.b));
-   public static final dhy A = a("jungle_sapling", $$0x -> new dom(dus.g, $$0x), dvc.d.a().a(eri.h).b().e().d().a(dpl.d).a(erj.b));
-   public static final dhy B = a("acacia_sapling", $$0x -> new dom(dus.h, $$0x), dvc.d.a().a(eri.h).b().e().d().a(dpl.d).a(erj.b));
-   public static final dhy C = a("cherry_sapling", $$0x -> new dom(dus.i, $$0x), dvc.d.a().a(eri.u).b().e().d().a(dpl.aV).a(erj.b));
-   public static final dhy D = a("dark_oak_sapling", $$0x -> new dom(dus.j, $$0x), dvc.d.a().a(eri.h).b().e().d().a(dpl.d).a(erj.b));
-   public static final dhy E = a("mangrove_propagule", $$0x -> new dms(dus.d, $$0x), dvc.d.a().a(eri.h).b().e().d().a(dpl.d).a(dvc.c.b).a(erj.b));
-   public static final dhy F = a("bedrock", dvc.d.a().a(eri.l).a(dwe.b).a(-1.0F, 3600000.0F).g().a(dia::a));
-   public static final dhy G = a("water", $$0x -> new dmn(erf.c, $$0x), dvc.d.a().a(eri.m).p().b().d(100.0F).a(erj.b).g().j().a(dpl.a));
-   public static final dhy H = a("lava", $$0x -> new dmn(erf.e, $$0x), dvc.d.a().a(eri.e).p().b().e().d(100.0F).a($$0x -> 15).a(erj.b).g().j().a(dpl.a));
-   public static final dhy I = a("sand", $$0x -> new djg(new ayd(14406560), $$0x), dvc.d.a().a(eri.c).a(dwe.c).d(0.5F).a(dpl.j));
-   public static final dhy J = a("suspicious_sand", $$0x -> new did(I, awk.cT, awk.cT, $$0x), dvc.d.a().a(eri.c).a(dwe.c).d(0.25F).a(dpl.aZ).a(erj.b));
-   public static final dhy K = a("red_sand", $$0x -> new djg(new ayd(11098145), $$0x), dvc.d.a().a(eri.p).a(dwe.c).d(0.5F).a(dpl.j));
-   public static final dhy L = a("gravel", $$0x -> new djg(new ayd(-8356741), $$0x), dvc.d.a().a(eri.l).a(dwe.c).d(0.6F).a(dpl.c));
-   public static final dhy M = a("suspicious_gravel", $$0x -> new did(L, awk.cU, awk.cU, $$0x), dvc.d.a().a(eri.l).a(dwe.c).d(0.25F).a(dpl.ba).a(erj.b));
-   public static final dhy N = a("gold_ore", $$0x -> new dki(bra.a(0), $$0x), dvc.d.a().a(eri.l).a(dwe.b).n().a(3.0F, 3.0F));
-   public static final dhy O = a("deepslate_gold_ore", $$0x -> new dki(bra.a(0), $$0x), dvc.d.b(N).a(eri.ah).a(4.5F, 3.0F).a(dpl.aE));
-   public static final dhy P = a("iron_ore", $$0x -> new dki(bra.a(0), $$0x), dvc.d.a().a(eri.l).a(dwe.b).n().a(3.0F, 3.0F));
-   public static final dhy Q = a("deepslate_iron_ore", $$0x -> new dki(bra.a(0), $$0x), dvc.d.b(P).a(eri.ah).a(4.5F, 3.0F).a(dpl.aE));
-   public static final dhy R = a("coal_ore", $$0x -> new dki(brj.a(0, 2), $$0x), dvc.d.a().a(eri.l).a(dwe.b).n().a(3.0F, 3.0F));
-   public static final dhy S = a("deepslate_coal_ore", $$0x -> new dki(brj.a(0, 2), $$0x), dvc.d.b(R).a(eri.ah).a(4.5F, 3.0F).a(dpl.aE));
-   public static final dhy T = a("nether_gold_ore", $$0x -> new dki(brj.a(0, 1), $$0x), dvc.d.a().a(eri.J).a(dwe.b).n().a(3.0F, 3.0F).a(dpl.V));
-   public static final dhy U = a("oak_log", dok::new, a(eri.n, eri.I, dpl.b));
-   public static final dhy V = a("spruce_log", dok::new, a(eri.I, eri.A, dpl.b));
-   public static final dhy W = a("birch_log", dok::new, a(eri.c, eri.o, dpl.b));
-   public static final dhy X = a("jungle_log", dok::new, a(eri.k, eri.I, dpl.b));
-   public static final dhy Y = a("acacia_log", dok::new, a(eri.p, eri.l, dpl.b));
-   public static final dhy Z = a("cherry_log", dok::new, a(eri.K, eri.R, dpl.aU));
-   public static final dhy aa = a("dark_oak_log", dok::new, a(eri.A, eri.A, dpl.b));
-   public static final dhy ab = a("mangrove_log", dok::new, a(eri.C, eri.I, dpl.b));
-   public static final dhy ac = a("mangrove_roots", dmt::new, dvc.d.a().a(eri.I).a(dwe.e).d(0.7F).a(dpl.aK).c().b(dia::b).c(dia::b).c().i());
-   public static final dhy ad = a("muddy_mangrove_roots", dok::new, dvc.d.a().a(eri.I).d(0.7F).a(dpl.aL));
-   public static final dhy ae = a("bamboo_block", dok::new, a(eri.s, eri.h, dpl.aS));
-   public static final dhy af = a("stripped_spruce_log", dok::new, a(eri.I, eri.I, dpl.b));
-   public static final dhy ag = a("stripped_birch_log", dok::new, a(eri.c, eri.c, dpl.b));
-   public static final dhy ah = a("stripped_jungle_log", dok::new, a(eri.k, eri.k, dpl.b));
-   public static final dhy ai = a("stripped_acacia_log", dok::new, a(eri.p, eri.p, dpl.b));
-   public static final dhy aj = a("stripped_cherry_log", dok::new, a(eri.K, eri.Q, dpl.aU));
-   public static final dhy ak = a("stripped_dark_oak_log", dok::new, a(eri.A, eri.A, dpl.b));
-   public static final dhy al = a("stripped_oak_log", dok::new, a(eri.n, eri.n, dpl.b));
-   public static final dhy am = a("stripped_mangrove_log", dok::new, a(eri.C, eri.C, dpl.b));
-   public static final dhy an = a("stripped_bamboo_block", dok::new, a(eri.s, eri.s, dpl.aS));
-   public static final dhy ao = a("oak_wood", dok::new, dvc.d.a().a(eri.n).a(dwe.e).d(2.0F).a(dpl.b).i());
-   public static final dhy ap = a("spruce_wood", dok::new, dvc.d.a().a(eri.I).a(dwe.e).d(2.0F).a(dpl.b).i());
-   public static final dhy aq = a("birch_wood", dok::new, dvc.d.a().a(eri.c).a(dwe.e).d(2.0F).a(dpl.b).i());
-   public static final dhy ar = a("jungle_wood", dok::new, dvc.d.a().a(eri.k).a(dwe.e).d(2.0F).a(dpl.b).i());
-   public static final dhy as = a("acacia_wood", dok::new, dvc.d.a().a(eri.v).a(dwe.e).d(2.0F).a(dpl.b).i());
-   public static final dhy at = a("cherry_wood", dok::new, dvc.d.a().a(eri.R).a(dwe.e).d(2.0F).a(dpl.aU).i());
-   public static final dhy au = a("dark_oak_wood", dok::new, dvc.d.a().a(eri.A).a(dwe.e).d(2.0F).a(dpl.b).i());
-   public static final dhy av = a("mangrove_wood", dok::new, dvc.d.a().a(eri.C).a(dwe.e).d(2.0F).a(dpl.b).i());
-   public static final dhy aw = a("stripped_oak_wood", dok::new, dvc.d.a().a(eri.n).a(dwe.e).d(2.0F).a(dpl.b).i());
-   public static final dhy ax = a("stripped_spruce_wood", dok::new, dvc.d.a().a(eri.I).a(dwe.e).d(2.0F).a(dpl.b).i());
-   public static final dhy ay = a("stripped_birch_wood", dok::new, dvc.d.a().a(eri.c).a(dwe.e).d(2.0F).a(dpl.b).i());
-   public static final dhy az = a("stripped_jungle_wood", dok::new, dvc.d.a().a(eri.k).a(dwe.e).d(2.0F).a(dpl.b).i());
-   public static final dhy aA = a("stripped_acacia_wood", dok::new, dvc.d.a().a(eri.p).a(dwe.e).d(2.0F).a(dpl.b).i());
-   public static final dhy aB = a("stripped_cherry_wood", dok::new, dvc.d.a().a(eri.Q).a(dwe.e).d(2.0F).a(dpl.aU).i());
-   public static final dhy aC = a("stripped_dark_oak_wood", dok::new, dvc.d.a().a(eri.A).a(dwe.e).d(2.0F).a(dpl.b).i());
-   public static final dhy aD = a("stripped_mangrove_wood", dok::new, a(eri.C, eri.C, dpl.b));
-   public static final dhy aE = a("oak_leaves", dmh::new, a(dpl.d));
-   public static final dhy aF = a("spruce_leaves", dmh::new, a(dpl.d));
-   public static final dhy aG = a("birch_leaves", dmh::new, a(dpl.d));
-   public static final dhy aH = a("jungle_leaves", dmh::new, a(dpl.d));
-   public static final dhy aI = a("acacia_leaves", dmh::new, a(dpl.d));
-   public static final dhy aJ = a("cherry_leaves", dja::new, dvc.d.a().a(eri.u).d(0.2F).e().a(dpl.aW).c().a(dia::c).b(dia::b).c(dia::b).i().a(erj.b).a(dia::b));
-   public static final dhy aK = a("dark_oak_leaves", dmh::new, a(dpl.d));
-   public static final dhy aL = a("mangrove_leaves", dmr::new, a(dpl.d));
-   public static final dhy aM = a("azalea_leaves", dmh::new, a(dpl.ax));
-   public static final dhy aN = a("flowering_azalea_leaves", dmh::new, a(dpl.ax));
-   public static final dhy aO = a("sponge", dpn::new, dvc.d.a().a(eri.s).d(0.6F).a(dpl.be));
-   public static final dhy aP = a("wet_sponge", drp::new, dvc.d.a().a(eri.s).d(0.6F).a(dpl.bf));
-   public static final dhy aQ = a("glass", dqk::new, dvc.d.a().a(dwe.d).d(0.3F).a(dpl.h).c().a(dia::a).a(dia::b).b(dia::b).c(dia::b));
-   public static final dhy aR = a("lapis_ore", $$0x -> new dki(brj.a(2, 5), $$0x), dvc.d.a().a(eri.l).a(dwe.b).n().a(3.0F, 3.0F));
-   public static final dhy aS = a("deepslate_lapis_ore", $$0x -> new dki(brj.a(2, 5), $$0x), dvc.d.b(aR).a(eri.ah).a(4.5F, 3.0F).a(dpl.aE));
-   public static final dhy aT = a("lapis_block", dvc.d.a().a(eri.G).n().a(3.0F, 3.0F));
-   public static final dhy aU = a("dispenser", dkd::new, dvc.d.a().a(eri.l).a(dwe.b).n().d(3.5F));
-   public static final dhy aV = a("sandstone", dvc.d.a().a(eri.c).a(dwe.b).n().d(0.8F));
-   public static final dhy aW = a("chiseled_sandstone", dvc.d.a().a(eri.c).a(dwe.b).n().d(0.8F));
-   public static final dhy aX = a("cut_sandstone", dvc.d.a().a(eri.c).a(dwe.b).n().d(0.8F));
-   public static final dhy aY = a("note_block", dng::new, dvc.d.a().a(eri.n).a(dwe.e).a(dpl.b).d(0.8F).i());
-   public static final dhy aZ = a("white_bed", cuu.a);
-   public static final dhy ba = a("orange_bed", cuu.b);
-   public static final dhy bb = a("magenta_bed", cuu.c);
-   public static final dhy bc = a("light_blue_bed", cuu.d);
-   public static final dhy bd = a("yellow_bed", cuu.e);
-   public static final dhy be = a("lime_bed", cuu.f);
-   public static final dhy bf = a("pink_bed", cuu.g);
-   public static final dhy bg = a("gray_bed", cuu.h);
-   public static final dhy bh = a("light_gray_bed", cuu.i);
-   public static final dhy bi = a("cyan_bed", cuu.j);
-   public static final dhy bj = a("purple_bed", cuu.k);
-   public static final dhy bk = a("blue_bed", cuu.l);
-   public static final dhy bl = a("brown_bed", cuu.m);
-   public static final dhy bm = a("green_bed", cuu.n);
-   public static final dhy bn = a("red_bed", cuu.o);
-   public static final dhy bo = a("black_bed", cuu.p);
-   public static final dhy bp = a("powered_rail", dnu::new, dvc.d.a().b().d(0.7F).a(dpl.g));
-   public static final dhy bq = a("detector_rail", djz::new, dvc.d.a().b().d(0.7F).a(dpl.g));
-   public static final dhy br = a("sticky_piston", $$0x -> new duw(true, $$0x), a());
-   public static final dhy bs = a("cobweb", drl::new, dvc.d.a().a(eri.d).a(dpl.bi).k().b().n().d(4.0F).a(erj.b));
-   public static final dhy bt = a("short_grass", dqd::new, dvc.d.a().a(eri.h).p().b().d().a(dpl.d).a(dvc.c.c).i().a(erj.b));
-   public static final dhy bu = a("fern", dqd::new, dvc.d.a().a(eri.h).p().b().d().a(dpl.d).a(dvc.c.c).i().a(erj.b));
-   public static final dhy bv = a("dead_bush", djx::new, dvc.d.a().a(eri.n).p().b().d().a(dpl.d).i().a(erj.b));
-   public static final dhy bw = a("seagrass", dow::new, dvc.d.a().a(eri.m).p().b().d().a(dpl.q).a(erj.b));
-   public static final dhy bx = a("tall_seagrass", dqe::new, dvc.d.a().a(eri.m).p().b().d().a(dpl.q).a(dvc.c.b).a(erj.b));
-   public static final dhy by = a("piston", $$0x -> new duw(false, $$0x), a());
-   public static final dhy bz = a("piston_head", dux::new, dvc.d.a().a(eri.l).d(1.5F).g().a(erj.c));
-   public static final dhy bA = a("white_wool", dvc.d.a().a(eri.i).a(dwe.h).d(0.8F).a(dpl.i).i());
-   public static final dhy bB = a("orange_wool", dvc.d.a().a(eri.p).a(dwe.h).d(0.8F).a(dpl.i).i());
-   public static final dhy bC = a("magenta_wool", dvc.d.a().a(eri.q).a(dwe.h).d(0.8F).a(dpl.i).i());
-   public static final dhy bD = a("light_blue_wool", dvc.d.a().a(eri.r).a(dwe.h).d(0.8F).a(dpl.i).i());
-   public static final dhy bE = a("yellow_wool", dvc.d.a().a(eri.s).a(dwe.h).d(0.8F).a(dpl.i).i());
-   public static final dhy bF = a("lime_wool", dvc.d.a().a(eri.t).a(dwe.h).d(0.8F).a(dpl.i).i());
-   public static final dhy bG = a("pink_wool", dvc.d.a().a(eri.u).a(dwe.h).d(0.8F).a(dpl.i).i());
-   public static final dhy bH = a("gray_wool", dvc.d.a().a(eri.v).a(dwe.h).d(0.8F).a(dpl.i).i());
-   public static final dhy bI = a("light_gray_wool", dvc.d.a().a(eri.w).a(dwe.h).d(0.8F).a(dpl.i).i());
-   public static final dhy bJ = a("cyan_wool", dvc.d.a().a(eri.x).a(dwe.h).d(0.8F).a(dpl.i).i());
-   public static final dhy bK = a("purple_wool", dvc.d.a().a(eri.y).a(dwe.h).d(0.8F).a(dpl.i).i());
-   public static final dhy bL = a("blue_wool", dvc.d.a().a(eri.z).a(dwe.h).d(0.8F).a(dpl.i).i());
-   public static final dhy bM = a("brown_wool", dvc.d.a().a(eri.A).a(dwe.h).d(0.8F).a(dpl.i).i());
-   public static final dhy bN = a("green_wool", dvc.d.a().a(eri.B).a(dwe.h).d(0.8F).a(dpl.i).i());
-   public static final dhy bO = a("red_wool", dvc.d.a().a(eri.C).a(dwe.h).d(0.8F).a(dpl.i).i());
-   public static final dhy bP = a("black_wool", dvc.d.a().a(eri.D).a(dwe.h).d(0.8F).a(dpl.i).i());
-   public static final dhy bQ = a("moving_piston", duv::new, dvc.d.a().a(eri.l).k().d(-1.0F).f().g().c().a(dia::b).b(dia::b).c(dia::b).a(erj.c));
-   public static final dhy bR = a("dandelion", $$0x -> new dkz(btg.w, 0.35F, $$0x), dvc.d.a().a(eri.h).b().d().a(dpl.d).a(dvc.c.b).a(erj.b));
-   public static final dhy bS = a("torchflower", $$0x -> new dkz(btg.p, 5.0F, $$0x), dvc.d.a().a(eri.h).b().d().a(dpl.d).a(dvc.c.b).a(erj.b));
-   public static final dhy bT = a("poppy", $$0x -> new dkz(btg.p, 5.0F, $$0x), dvc.d.a().a(eri.h).b().d().a(dpl.d).a(dvc.c.b).a(erj.b));
-   public static final dhy bU = a("blue_orchid", $$0x -> new dkz(btg.w, 0.35F, $$0x), dvc.d.a().a(eri.h).b().d().a(dpl.d).a(dvc.c.b).a(erj.b));
-   public static final dhy bV = a("allium", $$0x -> new dkz(btg.l, 4.0F, $$0x), dvc.d.a().a(eri.h).b().d().a(dpl.d).a(dvc.c.b).a(erj.b));
-   public static final dhy bW = a("azure_bluet", $$0x -> new dkz(btg.o, 8.0F, $$0x), dvc.d.a().a(eri.h).b().d().a(dpl.d).a(dvc.c.b).a(erj.b));
-   public static final dhy bX = a("red_tulip", $$0x -> new dkz(btg.r, 9.0F, $$0x), dvc.d.a().a(eri.h).b().d().a(dpl.d).a(dvc.c.b).a(erj.b));
-   public static final dhy bY = a("orange_tulip", $$0x -> new dkz(btg.r, 9.0F, $$0x), dvc.d.a().a(eri.h).b().d().a(dpl.d).a(dvc.c.b).a(erj.b));
-   public static final dhy bZ = a("white_tulip", $$0x -> new dkz(btg.r, 9.0F, $$0x), dvc.d.a().a(eri.h).b().d().a(dpl.d).a(dvc.c.b).a(erj.b));
-   public static final dhy ca = a("pink_tulip", $$0x -> new dkz(btg.r, 9.0F, $$0x), dvc.d.a().a(eri.h).b().d().a(dpl.d).a(dvc.c.b).a(erj.b));
-   public static final dhy cb = a("oxeye_daisy", $$0x -> new dkz(btg.j, 8.0F, $$0x), dvc.d.a().a(eri.h).b().d().a(dpl.d).a(dvc.c.b).a(erj.b));
-   public static final dhy cc = a("cornflower", $$0x -> new dkz(btg.h, 6.0F, $$0x), dvc.d.a().a(eri.h).b().d().a(dpl.d).a(dvc.c.b).a(erj.b));
-   public static final dhy cd = a("wither_rose", $$0x -> new drq(btg.t, 8.0F, $$0x), dvc.d.a().a(eri.h).b().d().a(dpl.d).a(dvc.c.b).a(erj.b));
-   public static final dhy ce = a("lily_of_the_valley", $$0x -> new dkz(btg.s, 12.0F, $$0x), dvc.d.a().a(eri.h).b().d().a(dpl.d).a(dvc.c.b).a(erj.b));
-   public static final dhy cf = a("brown_mushroom", $$0x -> new dmz(sd.e, $$0x), dvc.d.a().a(eri.A).b().e().d().a(dpl.d).a($$0x -> 1).d(dia::a).a(erj.b));
-   public static final dhy cg = a("red_mushroom", $$0x -> new dmz(sd.f, $$0x), dvc.d.a().a(eri.C).b().e().d().a(dpl.d).d(dia::a).a(erj.b));
-   public static final dhy ch = a("gold_block", dvc.d.a().a(eri.E).a(dwe.g).n().a(3.0F, 6.0F).a(dpl.g));
-   public static final dhy ci = a("iron_block", dvc.d.a().a(eri.g).a(dwe.k).n().a(5.0F, 6.0F).a(dpl.g));
-   public static final dhy cj = a("bricks", dvc.d.a().a(eri.C).a(dwe.b).n().a(2.0F, 6.0F));
-   public static final dhy ck = a("tnt", dqh::new, dvc.d.a().a(eri.e).d().a(dpl.d).i().a(dia::b));
-   public static final dhy cl = a("bookshelf", dvc.d.a().a(eri.n).a(dwe.e).d(1.5F).a(dpl.b).i());
-   public static final dhy cm = a("chiseled_bookshelf", djc::new, dvc.d.a().a(eri.n).a(dwe.e).d(1.5F).a(dpl.aY).i());
-   public static final dhy cn = a("mossy_cobblestone", dvc.d.a().a(eri.l).a(dwe.b).n().a(2.0F, 6.0F));
-   public static final dhy co = a("obsidian", dvc.d.a().a(eri.D).a(dwe.b).n().a(50.0F, 1200.0F));
-   public static final dhy cp = a("torch", $$0x -> new dqi(lq.F, $$0x), dvc.d.a().b().d().a($$0x -> 14).a(dpl.b).a(erj.b));
-   public static final dhy cq = a("wall_torch", $$0x -> new dra(lq.F, $$0x), a(cp, true).b().d().a($$0x -> 14).a(dpl.b).a(erj.b));
-   public static final dhy cr = a("fire", dkx::new, dvc.d.a().a(eri.e).p().b().d().a($$0x -> 15).a(dpl.i).a(erj.b));
-   public static final dhy cs = a("soul_fire", dpj::new, dvc.d.a().a(eri.r).p().b().d().a($$0x -> 10).a(dpl.i).a(erj.b));
-   public static final dhy ct = a("spawner", dpm::new, dvc.d.a().a(eri.l).a(dwe.b).n().d(5.0F).a(dpl.bj).c());
-   public static final dhy cu = a("oak_stairs", n);
-   public static final dhy cv = a("chest", $$0x -> new djb(() -> dsi.b, $$0x), dvc.d.a().a(eri.n).a(dwe.e).d(2.5F).a(dpl.b).i());
-   public static final dhy cw = a("redstone_wire", doa::new, dvc.d.a().b().d().a(erj.b));
-   public static final dhy cx = a("diamond_ore", $$0x -> new dki(brj.a(3, 7), $$0x), dvc.d.a().a(eri.l).a(dwe.b).n().a(3.0F, 3.0F));
-   public static final dhy cy = a("deepslate_diamond_ore", $$0x -> new dki(brj.a(3, 7), $$0x), dvc.d.b(cx).a(eri.ah).a(4.5F, 3.0F).a(dpl.aE));
-   public static final dhy cz = a("diamond_block", dvc.d.a().a(eri.F).n().a(5.0F, 6.0F).a(dpl.g));
-   public static final dhy cA = a("crafting_table", djs::new, dvc.d.a().a(eri.n).a(dwe.e).d(2.5F).a(dpl.b).i());
-   public static final dhy cB = a("wheat", djt::new, dvc.d.a().a($$0x -> $$0x.c(djt.f) >= 6 ? eri.s : eri.h).b().e().d().a(dpl.w).a(erj.b));
-   public static final dhy cC = a("farmland", dku::new, dvc.d.a().a(eri.k).e().d(0.6F).a(dpl.c).c(dia::a).b(dia::a));
-   public static final dhy cD = a("furnace", dle::new, dvc.d.a().a(eri.l).a(dwe.b).n().d(3.5F).a(a(13)));
-   public static final dhy cE = a("oak_sign", $$0x -> new dpt(dwq.b, $$0x), dvc.d.a().a(eri.n).k().a(dwe.e).b().d(1.0F).i());
-   public static final dhy cF = a("spruce_sign", $$0x -> new dpt(dwq.c, $$0x), dvc.d.a().a(V.w()).k().a(dwe.e).b().d(1.0F).i());
-   public static final dhy cG = a("birch_sign", $$0x -> new dpt(dwq.d, $$0x), dvc.d.a().a(eri.c).k().a(dwe.e).b().d(1.0F).i());
-   public static final dhy cH = a("acacia_sign", $$0x -> new dpt(dwq.e, $$0x), dvc.d.a().a(eri.p).k().a(dwe.e).b().d(1.0F).i());
-   public static final dhy cI = a("cherry_sign", $$0x -> new dpt(dwq.f, $$0x), dvc.d.a().a(s.w()).k().a(dwe.e).b().d(1.0F).i());
-   public static final dhy cJ = a("jungle_sign", $$0x -> new dpt(dwq.g, $$0x), dvc.d.a().a(X.w()).k().a(dwe.e).b().d(1.0F).i());
-   public static final dhy cK = a("dark_oak_sign", $$0x -> new dpt(dwq.h, $$0x), dvc.d.a().a(aa.w()).k().a(dwe.e).b().d(1.0F).i());
-   public static final dhy cL = a("mangrove_sign", $$0x -> new dpt(dwq.k, $$0x), dvc.d.a().a(ab.w()).k().a(dwe.e).b().d(1.0F).i());
-   public static final dhy cM = a("bamboo_sign", $$0x -> new dpt(dwq.l, $$0x), dvc.d.a().a(v.w()).k().a(dwe.e).b().d(1.0F).i());
-   public static final dhy cN = a("oak_door", $$0x -> new dke(dvs.g, $$0x), dvc.d.a().a(n.w()).a(dwe.e).d(3.0F).c().i().a(erj.b));
-   public static final dhy cO = a("ladder", dmd::new, dvc.d.a().l().d(0.4F).a(dpl.m).c().a(erj.b));
-   public static final dhy cP = a("rail", dnx::new, dvc.d.a().b().d(0.7F).a(dpl.g));
-   public static final dhy cQ = a("cobblestone_stairs", m);
-   public static final dhy cR = a("oak_wall_sign", $$0x -> new dqy(dwq.b, $$0x), a(cE, true).a(eri.n).k().a(dwe.e).b().d(1.0F).i());
-   public static final dhy cS = a("spruce_wall_sign", $$0x -> new dqy(dwq.c, $$0x), a(cF, true).a(V.w()).k().a(dwe.e).b().d(1.0F).i());
-   public static final dhy cT = a("birch_wall_sign", $$0x -> new dqy(dwq.d, $$0x), a(cG, true).a(eri.c).k().a(dwe.e).b().d(1.0F).i());
-   public static final dhy cU = a("acacia_wall_sign", $$0x -> new dqy(dwq.e, $$0x), a(cH, true).a(eri.p).k().a(dwe.e).b().d(1.0F).i());
-   public static final dhy cV = a("cherry_wall_sign", $$0x -> new dqy(dwq.f, $$0x), a(cI, true).a(Z.w()).k().a(dwe.e).b().d(1.0F).i());
-   public static final dhy cW = a("jungle_wall_sign", $$0x -> new dqy(dwq.g, $$0x), a(cJ, true).a(X.w()).k().a(dwe.e).b().d(1.0F).i());
-   public static final dhy cX = a("dark_oak_wall_sign", $$0x -> new dqy(dwq.h, $$0x), a(cK, true).a(aa.w()).k().a(dwe.e).b().d(1.0F).i());
-   public static final dhy cY = a("mangrove_wall_sign", $$0x -> new dqy(dwq.k, $$0x), a(cL, true).a(ab.w()).k().a(dwe.e).b().d(1.0F).i());
-   public static final dhy cZ = a("bamboo_wall_sign", $$0x -> new dqy(dwq.l, $$0x), a(cM, true).a(v.w()).k().a(dwe.e).b().d(1.0F).i());
-   public static final dhy da = a("oak_hanging_sign", $$0x -> new dix(dwq.b, $$0x), dvc.d.a().a(U.w()).k().a(dwe.e).b().d(1.0F).i());
-   public static final dhy db = a("spruce_hanging_sign", $$0x -> new dix(dwq.c, $$0x), dvc.d.a().a(V.w()).k().a(dwe.e).b().d(1.0F).i());
-   public static final dhy dc = a("birch_hanging_sign", $$0x -> new dix(dwq.d, $$0x), dvc.d.a().a(eri.c).k().a(dwe.e).b().d(1.0F).i());
-   public static final dhy dd = a("acacia_hanging_sign", $$0x -> new dix(dwq.e, $$0x), dvc.d.a().a(eri.p).k().a(dwe.e).b().d(1.0F).i());
-   public static final dhy de = a("cherry_hanging_sign", $$0x -> new dix(dwq.f, $$0x), dvc.d.a().a(eri.Q).k().a(dwe.e).b().d(1.0F).i());
-   public static final dhy df = a("jungle_hanging_sign", $$0x -> new dix(dwq.g, $$0x), dvc.d.a().a(X.w()).k().a(dwe.e).b().d(1.0F).i());
-   public static final dhy dg = a("dark_oak_hanging_sign", $$0x -> new dix(dwq.h, $$0x), dvc.d.a().a(aa.w()).k().a(dwe.e).b().d(1.0F).i());
-   public static final dhy dh = a("crimson_hanging_sign", $$0x -> new dix(dwq.i, $$0x), dvc.d.a().a(eri.ab).k().a(dwe.e).b().d(1.0F));
-   public static final dhy di = a("warped_hanging_sign", $$0x -> new dix(dwq.j, $$0x), dvc.d.a().a(eri.ae).k().a(dwe.e).b().d(1.0F));
-   public static final dhy dj = a("mangrove_hanging_sign", $$0x -> new dix(dwq.k, $$0x), dvc.d.a().a(ab.w()).k().a(dwe.e).b().d(1.0F).i());
-   public static final dhy dk = a("bamboo_hanging_sign", $$0x -> new dix(dwq.l, $$0x), dvc.d.a().a(eri.s).k().a(dwe.e).b().d(1.0F).i());
-   public static final dhy dl = a("oak_wall_hanging_sign", $$0x -> new dqx(dwq.b, $$0x), a(da, true).a(U.w()).k().a(dwe.e).b().d(1.0F).i());
-   public static final dhy dm = a("spruce_wall_hanging_sign", $$0x -> new dqx(dwq.c, $$0x), a(db, true).a(eri.n).k().a(dwe.e).b().d(1.0F).i());
-   public static final dhy dn = a("birch_wall_hanging_sign", $$0x -> new dqx(dwq.d, $$0x), a(dc, true).a(eri.c).k().a(dwe.e).b().d(1.0F).i());
-   public static final dhy do = a("acacia_wall_hanging_sign", $$0x -> new dqx(dwq.e, $$0x), a(dd, true).a(eri.p).k().a(dwe.e).b().d(1.0F).i());
-   public static final dhy dp = a("cherry_wall_hanging_sign", $$0x -> new dqx(dwq.f, $$0x), a(de, true).a(eri.Q).k().a(dwe.e).b().d(1.0F).i());
-   public static final dhy dq = a("jungle_wall_hanging_sign", $$0x -> new dqx(dwq.g, $$0x), a(df, true).a(X.w()).k().a(dwe.e).b().d(1.0F).i());
-   public static final dhy dr = a("dark_oak_wall_hanging_sign", $$0x -> new dqx(dwq.h, $$0x), a(dg, true).a(aa.w()).k().a(dwe.e).b().d(1.0F).i());
-   public static final dhy ds = a("mangrove_wall_hanging_sign", $$0x -> new dqx(dwq.k, $$0x), a(dj, true).a(ab.w()).k().a(dwe.e).b().d(1.0F).i());
-   public static final dhy dt = a("crimson_wall_hanging_sign", $$0x -> new dqx(dwq.i, $$0x), a(dh, true).a(eri.ab).k().a(dwe.e).b().d(1.0F));
-   public static final dhy du = a("warped_wall_hanging_sign", $$0x -> new dqx(dwq.j, $$0x), a(di, true).a(eri.ae).k().a(dwe.e).b().d(1.0F));
-   public static final dhy dv = a("bamboo_wall_hanging_sign", $$0x -> new dqx(dwq.l, $$0x), a(dk, true).a(eri.s).k().a(dwe.e).b().d(1.0F).i());
-   public static final dhy dw = a("lever", dmk::new, dvc.d.a().b().d(0.5F).a(dpl.f).a(erj.b));
-   public static final dhy dx = a("stone_pressure_plate", $$0x -> new dnv(dvs.e, $$0x), dvc.d.a().a(eri.l).k().a(dwe.b).n().b().d(0.5F).a(erj.b));
-   public static final dhy dy = a("iron_door", $$0x -> new dke(dvs.b, $$0x), dvc.d.a().a(eri.g).n().d(5.0F).c().a(erj.b));
-   public static final dhy dz = a("oak_pressure_plate", $$0x -> new dnv(dvs.g, $$0x), dvc.d.a().a(n.w()).k().a(dwe.e).b().d(0.5F).i().a(erj.b));
-   public static final dhy dA = a("spruce_pressure_plate", $$0x -> new dnv(dvs.h, $$0x), dvc.d.a().a(o.w()).k().a(dwe.e).b().d(0.5F).i().a(erj.b));
-   public static final dhy dB = a("birch_pressure_plate", $$0x -> new dnv(dvs.i, $$0x), dvc.d.a().a(p.w()).k().a(dwe.e).b().d(0.5F).i().a(erj.b));
-   public static final dhy dC = a("jungle_pressure_plate", $$0x -> new dnv(dvs.l, $$0x), dvc.d.a().a(q.w()).k().a(dwe.e).b().d(0.5F).i().a(erj.b));
-   public static final dhy dD = a("acacia_pressure_plate", $$0x -> new dnv(dvs.j, $$0x), dvc.d.a().a(r.w()).k().a(dwe.e).b().d(0.5F).i().a(erj.b));
-   public static final dhy dE = a("cherry_pressure_plate", $$0x -> new dnv(dvs.k, $$0x), dvc.d.a().a(s.w()).k().a(dwe.e).b().d(0.5F).i().a(erj.b));
-   public static final dhy dF = a("dark_oak_pressure_plate", $$0x -> new dnv(dvs.m, $$0x), dvc.d.a().a(t.w()).k().a(dwe.e).b().d(0.5F).i().a(erj.b));
-   public static final dhy dG = a("mangrove_pressure_plate", $$0x -> new dnv(dvs.p, $$0x), dvc.d.a().a(u.w()).k().a(dwe.e).b().d(0.5F).i().a(erj.b));
-   public static final dhy dH = a("bamboo_pressure_plate", $$0x -> new dnv(dvs.q, $$0x), dvc.d.a().a(v.w()).k().a(dwe.e).b().d(0.5F).i().a(erj.b));
-   public static final dhy dI = a("redstone_ore", dnz::new, dvc.d.a().a(eri.l).a(dwe.b).n().e().a(a(9)).a(3.0F, 3.0F));
-   public static final dhy dJ = a("deepslate_redstone_ore", dnz::new, dvc.d.b(dI).a(eri.ah).a(4.5F, 3.0F).a(dpl.aE));
-   public static final dhy dK = a("redstone_torch", doc::new, dvc.d.a().b().d().a(a(7)).a(dpl.b).a(erj.b));
-   public static final dhy dL = a("redstone_wall_torch", dod::new, a(dK, true).b().d().a(a(7)).a(dpl.b).a(erj.b));
-   public static final dhy dM = a("stone_button", $$0x -> new dii(dvs.e, 20, $$0x), b());
-   public static final dhy dN = a("snow", dph::new, dvc.d.a().a(eri.i).p().l().e().d(0.1F).n().a(dpl.k).c(($$0x, $$1x, $$2) -> $$0x.c(dph.c) >= 8).a(erj.b));
-   public static final dhy dO = a("ice", dlv::new, dvc.d.a().a(eri.f).a(0.98F).e().d(0.5F).a(dpl.h).c().a(($$0x, $$1x, $$2, $$3) -> $$3 == bug.aD).a(dia::b));
-   public static final dhy dP = a("snow_block", dvc.d.a().a(eri.i).n().d(0.2F).a(dpl.k));
-   public static final dhy dQ = a("cactus", dij::new, dvc.d.a().a(eri.h).e().d(0.4F).a(dpl.i).a(erj.b));
-   public static final dhy dR = a("clay", dvc.d.a().a(eri.j).a(dwe.f).d(0.6F).a(dpl.c));
-   public static final dhy dS = a("sugar_cane", dpy::new, dvc.d.a().a(eri.h).b().e().d().a(dpl.d).a(erj.b));
-   public static final dhy dT = a("jukebox", dma::new, dvc.d.a().a(eri.k).a(dwe.e).a(2.0F, 6.0F).a(dpl.b).i());
-   public static final dhy dU = a("oak_fence", dkv::new, dvc.d.a().a(n.w()).k().a(dwe.e).a(2.0F, 3.0F).a(dpl.b).i());
-   public static final dhy dV = a("netherrack", dnf::new, dvc.d.a().a(eri.J).a(dwe.b).n().d(0.4F).a(dpl.M));
-   public static final dhy dW = a("soul_sand", dpk::new, dvc.d.a().a(eri.A).a(dwe.l).d(0.5F).b(0.4F).a(dpl.I).a(dia::b).a(dia::a).c(dia::a).b(dia::a));
-   public static final dhy dX = a("soul_soil", dvc.d.a().a(eri.A).d(0.5F).a(dpl.J));
-   public static final dhy dY = a("basalt", dok::new, dvc.d.a().a(eri.D).a(dwe.b).n().a(1.25F, 4.2F).a(dpl.K));
-   public static final dhy dZ = a("polished_basalt", dok::new, dvc.d.a().a(eri.D).a(dwe.b).n().a(1.25F, 4.2F).a(dpl.K));
-   public static final dhy ea = a("soul_torch", $$0x -> new dqi(lq.L, $$0x), dvc.d.a().b().d().a($$0x -> 10).a(dpl.b).a(erj.b));
-   public static final dhy eb = a("soul_wall_torch", $$0x -> new dra(lq.L, $$0x), a(ea, true).b().d().a($$0x -> 10).a(dpl.b).a(erj.b));
-   public static final dhy ec = a("glowstone", dvc.d.a().a(eri.c).a(dwe.p).d(0.3F).a(dpl.h).a($$0x -> 15).a(dia::b));
-   public static final dhy ed = a("nether_portal", dnb::new, dvc.d.a().b().e().d(-1.0F).a(dpl.h).a($$0x -> 11).a(erj.c));
-   public static final dhy ee = a("carved_pumpkin", dis::new, dvc.d.a().a(eri.p).d(1.0F).a(dpl.b).a(dia::b).a(erj.b));
-   public static final dhy ef = a("jack_o_lantern", dis::new, dvc.d.a().a(eri.p).d(1.0F).a(dpl.b).a($$0x -> 15).a(dia::b).a(erj.b));
-   public static final dhy eg = a("cake", dik::new, dvc.d.a().k().d(0.5F).a(dpl.i).a(erj.b));
-   public static final dhy eh = a("repeater", dof::new, dvc.d.a().d().a(dpl.f).a(erj.b));
-   public static final dhy ei = b("white_stained_glass", cuu.a);
-   public static final dhy ej = b("orange_stained_glass", cuu.b);
-   public static final dhy ek = b("magenta_stained_glass", cuu.c);
-   public static final dhy el = b("light_blue_stained_glass", cuu.d);
-   public static final dhy em = b("yellow_stained_glass", cuu.e);
-   public static final dhy en = b("lime_stained_glass", cuu.f);
-   public static final dhy eo = b("pink_stained_glass", cuu.g);
-   public static final dhy ep = b("gray_stained_glass", cuu.h);
-   public static final dhy eq = b("light_gray_stained_glass", cuu.i);
-   public static final dhy er = b("cyan_stained_glass", cuu.j);
-   public static final dhy es = b("purple_stained_glass", cuu.k);
-   public static final dhy et = b("blue_stained_glass", cuu.l);
-   public static final dhy eu = b("brown_stained_glass", cuu.m);
-   public static final dhy ev = b("green_stained_glass", cuu.n);
-   public static final dhy ew = b("red_stained_glass", cuu.o);
-   public static final dhy ex = b("black_stained_glass", cuu.p);
-   public static final dhy ey = a("oak_trapdoor", $$0x -> new dql(dvs.g, $$0x), dvc.d.a().a(eri.n).a(dwe.e).d(3.0F).c().a(dia::a).i());
-   public static final dhy ez = a("spruce_trapdoor", $$0x -> new dql(dvs.h, $$0x), dvc.d.a().a(eri.I).a(dwe.e).d(3.0F).c().a(dia::a).i());
-   public static final dhy eA = a("birch_trapdoor", $$0x -> new dql(dvs.i, $$0x), dvc.d.a().a(eri.c).a(dwe.e).d(3.0F).c().a(dia::a).i());
-   public static final dhy eB = a("jungle_trapdoor", $$0x -> new dql(dvs.l, $$0x), dvc.d.a().a(eri.k).a(dwe.e).d(3.0F).c().a(dia::a).i());
-   public static final dhy eC = a("acacia_trapdoor", $$0x -> new dql(dvs.j, $$0x), dvc.d.a().a(eri.p).a(dwe.e).d(3.0F).c().a(dia::a).i());
-   public static final dhy eD = a("cherry_trapdoor", $$0x -> new dql(dvs.k, $$0x), dvc.d.a().a(eri.K).a(dwe.e).d(3.0F).c().a(dia::a).i());
-   public static final dhy eE = a("dark_oak_trapdoor", $$0x -> new dql(dvs.m, $$0x), dvc.d.a().a(eri.A).a(dwe.e).d(3.0F).c().a(dia::a).i());
-   public static final dhy eF = a("mangrove_trapdoor", $$0x -> new dql(dvs.p, $$0x), dvc.d.a().a(eri.C).a(dwe.e).d(3.0F).c().a(dia::a).i());
-   public static final dhy eG = a("bamboo_trapdoor", $$0x -> new dql(dvs.q, $$0x), dvc.d.a().a(eri.s).a(dwe.e).d(3.0F).c().a(dia::a).i());
-   public static final dhy eH = a("stone_bricks", dvc.d.a().a(eri.l).a(dwe.b).n().a(1.5F, 6.0F));
-   public static final dhy eI = a("mossy_stone_bricks", dvc.d.a().a(eri.l).a(dwe.b).n().a(1.5F, 6.0F));
-   public static final dhy eJ = a("cracked_stone_bricks", dvc.d.a().a(eri.l).a(dwe.b).n().a(1.5F, 6.0F));
-   public static final dhy eK = a("chiseled_stone_bricks", dvc.d.a().a(eri.l).a(dwe.b).n().a(1.5F, 6.0F));
-   public static final dhy eL = a("packed_mud", dvc.d.b(j).a(1.0F, 3.0F).a(dpl.aO));
-   public static final dhy eM = a("mud_bricks", dvc.d.a().a(eri.S).a(dwe.b).n().a(1.5F, 3.0F).a(dpl.aN));
-   public static final dhy eN = a("infested_stone", $$0x -> new dlw(b, $$0x), dvc.d.a().a(eri.j));
-   public static final dhy eO = a("infested_cobblestone", $$0x -> new dlw(m, $$0x), dvc.d.a().a(eri.j));
-   public static final dhy eP = a("infested_stone_bricks", $$0x -> new dlw(eH, $$0x), dvc.d.a().a(eri.j));
-   public static final dhy eQ = a("infested_mossy_stone_bricks", $$0x -> new dlw(eI, $$0x), dvc.d.a().a(eri.j));
-   public static final dhy eR = a("infested_cracked_stone_bricks", $$0x -> new dlw(eJ, $$0x), dvc.d.a().a(eri.j));
-   public static final dhy eS = a("infested_chiseled_stone_bricks", $$0x -> new dlw(eK, $$0x), dvc.d.a().a(eri.j));
-   public static final dhy eT = a("brown_mushroom_block", dlu::new, dvc.d.a().a(eri.k).a(dwe.e).d(0.2F).a(dpl.b).i());
-   public static final dhy eU = a("red_mushroom_block", dlu::new, dvc.d.a().a(eri.C).a(dwe.e).d(0.2F).a(dpl.b).i());
-   public static final dhy eV = a("mushroom_stem", dlu::new, dvc.d.a().a(eri.d).a(dwe.e).d(0.2F).a(dpl.b).i());
-   public static final dhy eW = a("iron_bars", dly::new, dvc.d.a().n().a(5.0F, 6.0F).a(dpl.g).c());
-   public static final dhy eX = a("chain", diy::new, dvc.d.a().k().n().a(5.0F, 6.0F).a(dpl.U).c());
-   public static final dhy eY = a("glass_pane", dly::new, dvc.d.a().a(dwe.d).d(0.3F).a(dpl.h).c());
-   public static final dhy eZ = a(akv.a, dnw::new, dvc.d.a().a(eri.p).a(dwe.m).d(1.0F).a(dpl.b).a(erj.b));
-   public static final dhy fa = a(akv.d, dvc.d.a().a(eri.t).d(1.0F).a(dpl.b).a(erj.b));
-   public static final dhy fb = a(akv.c, $$0x -> new dgz(akv.b, akv.a, akw.a, $$0x), dvc.d.a().a(eri.h).b().d().a(dpl.b).a(erj.b));
-   public static final dhy fc = a(akv.f, $$0x -> new dgz(akv.e, akv.d, akw.b, $$0x), dvc.d.a().a(eri.h).b().d().a(dpl.b).a(erj.b));
-   public static final dhy fd = a(akv.b, $$0x -> new dpu(akv.a, akv.c, akw.a, $$0x), dvc.d.a().a(eri.h).b().e().d().a(dpl.x).a(erj.b));
-   public static final dhy fe = a(akv.e, $$0x -> new dpu(akv.d, akv.f, akw.b, $$0x), dvc.d.a().a(eri.h).b().e().d().a(dpl.x).a(erj.b));
-   public static final dhy ff = a("vine", dqu::new, dvc.d.a().a(eri.h).p().b().e().d(0.2F).a(dpl.y).i().a(erj.b));
-   public static final dhy fg = a("glow_lichen", dlh::new, dvc.d.a().a(eri.aj).p().b().d(0.2F).a(dpl.aD).a(dlh.b(7)).i().a(erj.b));
-   public static final dhy fh = a("oak_fence_gate", $$0x -> new dkw(dwq.b, $$0x), dvc.d.a().a(n.w()).k().a(dwe.e).a(2.0F, 3.0F).i());
-   public static final dhy fi = a("brick_stairs", cj);
-   public static final dhy fj = a("stone_brick_stairs", eH);
-   public static final dhy fk = a("mud_brick_stairs", eM);
-   public static final dhy fl = a("mycelium", dna::new, dvc.d.a().a(eri.y).e().d(0.6F).a(dpl.d));
-   public static final dhy fm = a("lily_pad", drb::new, dvc.d.a().a(eri.h).d().a(dpl.e).c().a(erj.b));
-   public static final dhy fn = a("nether_bricks", dvc.d.a().a(eri.J).a(dwe.b).n().a(2.0F, 6.0F).a(dpl.N));
-   public static final dhy fo = a("nether_brick_fence", dkv::new, dvc.d.a().a(eri.J).a(dwe.b).n().a(2.0F, 6.0F).a(dpl.N));
-   public static final dhy fp = a("nether_brick_stairs", fn);
-   public static final dhy fq = a("nether_wart", dne::new, dvc.d.a().a(eri.C).b().e().a(dpl.z).a(erj.b));
-   public static final dhy fr = a("enchanting_table", dkk::new, dvc.d.a().a(eri.C).a(dwe.b).n().a($$0x -> 7).a(5.0F, 1200.0F));
-   public static final dhy fs = a("brewing_stand", dic::new, dvc.d.a().a(eri.g).n().d(0.5F).a($$0x -> 1).c());
-   public static final dhy ft = a("cauldron", dit::new, dvc.d.a().a(eri.l).n().d(2.0F).c());
-   public static final dhy fu = a("water_cauldron", $$0x -> new dmg(dfw.c.b, km.d, $$0x), dvc.d.b(ft));
-   public static final dhy fv = a("lava_cauldron", dmf::new, dvc.d.b(ft).a($$0x -> 15));
-   public static final dhy fw = a("powder_snow_cauldron", $$0x -> new dmg(dfw.c.c, km.f, $$0x), dvc.d.b(ft));
-   public static final dhy fx = a("end_portal", dkm::new, dvc.d.a().a(eri.D).b().a($$0x -> 15).a(-1.0F, 3600000.0F).g().a(erj.c));
-   public static final dhy fy = a("end_portal_frame", dkn::new, dvc.d.a().a(eri.B).a(dwe.b).a(dpl.h).a($$0x -> 1).a(-1.0F, 3600000.0F).g());
-   public static final dhy fz = a("end_stone", dvc.d.a().a(eri.c).a(dwe.b).n().a(3.0F, 9.0F));
-   public static final dhy fA = a("dragon_egg", dkh::new, dvc.d.a().a(eri.D).a(3.0F, 9.0F).a($$0x -> 1).c().a(erj.b));
-   public static final dhy fB = a("redstone_lamp", dob::new, dvc.d.a().a(eri.L).a(a(15)).d(0.3F).a(dpl.h).a(dia::b));
-   public static final dhy fC = a("cocoa", djf::new, dvc.d.a().a(eri.h).e().a(0.2F, 3.0F).a(dpl.b).c().a(erj.b));
-   public static final dhy fD = a("sandstone_stairs", aV);
-   public static final dhy fE = a("emerald_ore", $$0x -> new dki(brj.a(3, 7), $$0x), dvc.d.a().a(eri.l).a(dwe.b).n().a(3.0F, 3.0F));
-   public static final dhy fF = a("deepslate_emerald_ore", $$0x -> new dki(brj.a(3, 7), $$0x), dvc.d.b(fE).a(eri.ah).a(4.5F, 3.0F).a(dpl.aE));
-   public static final dhy fG = a("ender_chest", dkp::new, dvc.d.a().a(eri.l).a(dwe.b).n().a(22.5F, 600.0F).a($$0x -> 7));
-   public static final dhy fH = a("tripwire_hook", dqp::new, dvc.d.a().b().a(dpl.b).a(erj.b));
-   public static final dhy fI = a("tripwire", $$0x -> new dqo(fH, $$0x), dvc.d.a().b().a(erj.b));
-   public static final dhy fJ = a("emerald_block", dvc.d.a().a(eri.H).a(dwe.n).n().a(5.0F, 6.0F).a(dpl.g));
-   public static final dhy fK = a("spruce_stairs", o);
-   public static final dhy fL = a("birch_stairs", p);
-   public static final dhy fM = a("jungle_stairs", q);
-   public static final dhy fN = a("command_block", $$0x -> new djh(false, $$0x), dvc.d.a().a(eri.A).n().a(-1.0F, 3600000.0F).g());
-   public static final dhy fO = a("beacon", dhq::new, dvc.d.a().a(eri.F).a(dwe.d).d(3.0F).a($$0x -> 15).c().a(dia::b));
-   public static final dhy fP = a("cobblestone_wall", dqw::new, dvc.d.b(m).k());
-   public static final dhy fQ = a("mossy_cobblestone_wall", dqw::new, dvc.d.b(m).k());
-   public static final dhy fR = a("flower_pot", $$0x -> new dla(a, $$0x), c());
-   public static final dhy fS = a("potted_torchflower", $$0x -> new dla(bS, $$0x), c());
-   public static final dhy fT = a("potted_oak_sapling", $$0x -> new dla(x, $$0x), c());
-   public static final dhy fU = a("potted_spruce_sapling", $$0x -> new dla(y, $$0x), c());
-   public static final dhy fV = a("potted_birch_sapling", $$0x -> new dla(z, $$0x), c());
-   public static final dhy fW = a("potted_jungle_sapling", $$0x -> new dla(A, $$0x), c());
-   public static final dhy fX = a("potted_acacia_sapling", $$0x -> new dla(B, $$0x), c());
-   public static final dhy fY = a("potted_cherry_sapling", $$0x -> new dla(C, $$0x), c());
-   public static final dhy fZ = a("potted_dark_oak_sapling", $$0x -> new dla(D, $$0x), c());
-   public static final dhy ga = a("potted_mangrove_propagule", $$0x -> new dla(E, $$0x), c());
-   public static final dhy gb = a("potted_fern", $$0x -> new dla(bu, $$0x), c());
-   public static final dhy gc = a("potted_dandelion", $$0x -> new dla(bR, $$0x), c());
-   public static final dhy gd = a("potted_poppy", $$0x -> new dla(bT, $$0x), c());
-   public static final dhy ge = a("potted_blue_orchid", $$0x -> new dla(bU, $$0x), c());
-   public static final dhy gf = a("potted_allium", $$0x -> new dla(bV, $$0x), c());
-   public static final dhy gg = a("potted_azure_bluet", $$0x -> new dla(bW, $$0x), c());
-   public static final dhy gh = a("potted_red_tulip", $$0x -> new dla(bX, $$0x), c());
-   public static final dhy gi = a("potted_orange_tulip", $$0x -> new dla(bY, $$0x), c());
-   public static final dhy gj = a("potted_white_tulip", $$0x -> new dla(bZ, $$0x), c());
-   public static final dhy gk = a("potted_pink_tulip", $$0x -> new dla(ca, $$0x), c());
-   public static final dhy gl = a("potted_oxeye_daisy", $$0x -> new dla(cb, $$0x), c());
-   public static final dhy gm = a("potted_cornflower", $$0x -> new dla(cc, $$0x), c());
-   public static final dhy gn = a("potted_lily_of_the_valley", $$0x -> new dla(ce, $$0x), c());
-   public static final dhy go = a("potted_wither_rose", $$0x -> new dla(cd, $$0x), c());
-   public static final dhy gp = a("potted_red_mushroom", $$0x -> new dla(cg, $$0x), c());
-   public static final dhy gq = a("potted_brown_mushroom", $$0x -> new dla(cf, $$0x), c());
-   public static final dhy gr = a("potted_dead_bush", $$0x -> new dla(bv, $$0x), c());
-   public static final dhy gs = a("potted_cactus", $$0x -> new dla(dQ, $$0x), c());
-   public static final dhy gt = a("carrots", diq::new, dvc.d.a().a(eri.h).b().e().d().a(dpl.w).a(erj.b));
-   public static final dhy gu = a("potatoes", dnr::new, dvc.d.a().a(eri.h).b().e().d().a(dpl.w).a(erj.b));
-   public static final dhy gv = a("oak_button", $$0x -> new dii(dvs.g, 30, $$0x), b());
-   public static final dhy gw = a("spruce_button", $$0x -> new dii(dvs.h, 30, $$0x), b());
-   public static final dhy gx = a("birch_button", $$0x -> new dii(dvs.i, 30, $$0x), b());
-   public static final dhy gy = a("jungle_button", $$0x -> new dii(dvs.l, 30, $$0x), b());
-   public static final dhy gz = a("acacia_button", $$0x -> new dii(dvs.j, 30, $$0x), b());
-   public static final dhy gA = a("cherry_button", $$0x -> new dii(dvs.k, 30, $$0x), b());
-   public static final dhy gB = a("dark_oak_button", $$0x -> new dii(dvs.m, 30, $$0x), b());
-   public static final dhy gC = a("mangrove_button", $$0x -> new dii(dvs.p, 30, $$0x), b());
-   public static final dhy gD = a("bamboo_button", $$0x -> new dii(dvs.q, 30, $$0x), b());
-   public static final dhy gE = a("skeleton_skull", $$0x -> new dpa(dpa.b.c, $$0x), dvc.d.a().a(dwe.r).d(1.0F).a(erj.b));
-   public static final dhy gF = a("skeleton_wall_skull", $$0x -> new dqz(dpa.b.c, $$0x), a(gE, true).d(1.0F).a(erj.b));
-   public static final dhy gG = a("wither_skeleton_skull", drr::new, dvc.d.a().a(dwe.u).d(1.0F).a(erj.b));
-   public static final dhy gH = a("wither_skeleton_wall_skull", drs::new, a(gG, true).d(1.0F).a(erj.b));
-   public static final dhy gI = a("zombie_head", $$0x -> new dpa(dpa.b.f, $$0x), dvc.d.a().a(dwe.q).d(1.0F).a(erj.b));
-   public static final dhy gJ = a("zombie_wall_head", $$0x -> new dqz(dpa.b.f, $$0x), a(gI, true).d(1.0F).a(erj.b));
-   public static final dhy gK = a("player_head", dnn::new, dvc.d.a().a(dwe.w).d(1.0F).a(erj.b));
-   public static final dhy gL = a("player_wall_head", dno::new, a(gK, true).d(1.0F).a(erj.b));
-   public static final dhy gM = a("creeper_head", $$0x -> new dpa(dpa.b.g, $$0x), dvc.d.a().a(dwe.s).d(1.0F).a(erj.b));
-   public static final dhy gN = a("creeper_wall_head", $$0x -> new dqz(dpa.b.g, $$0x), a(gM, true).d(1.0F).a(erj.b));
-   public static final dhy gO = a("dragon_head", $$0x -> new dpa(dpa.b.i, $$0x), dvc.d.a().a(dwe.t).d(1.0F).a(erj.b));
-   public static final dhy gP = a("dragon_wall_head", $$0x -> new dqz(dpa.b.i, $$0x), a(gO, true).d(1.0F).a(erj.b));
-   public static final dhy gQ = a("piglin_head", $$0x -> new dpa(dpa.b.h, $$0x), dvc.d.a().a(dwe.v).d(1.0F).a(erj.b));
-   public static final dhy gR = a("piglin_wall_head", dnj::new, a(gQ, true).d(1.0F).a(erj.b));
-   public static final dhy gS = a("anvil", dgy::new, dvc.d.a().a(eri.g).n().a(5.0F, 1200.0F).a(dpl.n).a(erj.c));
-   public static final dhy gT = a("chipped_anvil", dgy::new, dvc.d.a().a(eri.g).n().a(5.0F, 1200.0F).a(dpl.n).a(erj.c));
-   public static final dhy gU = a("damaged_anvil", dgy::new, dvc.d.a().a(eri.g).n().a(5.0F, 1200.0F).a(dpl.n).a(erj.c));
-   public static final dhy gV = a("trapped_chest", dqm::new, dvc.d.a().a(eri.n).a(dwe.e).d(2.5F).a(dpl.b).i());
-   public static final dhy gW = a("light_weighted_pressure_plate", $$0x -> new dro(15, dvs.d, $$0x), dvc.d.a().a(eri.E).k().n().b().d(0.5F).a(erj.b));
-   public static final dhy gX = a("heavy_weighted_pressure_plate", $$0x -> new dro(150, dvs.b, $$0x), dvc.d.a().a(eri.g).k().n().b().d(0.5F).a(erj.b));
-   public static final dhy gY = a("comparator", dji::new, dvc.d.a().d().a(dpl.f).a(erj.b));
-   public static final dhy gZ = a("daylight_detector", djw::new, dvc.d.a().a(eri.n).a(dwe.e).d(0.2F).a(dpl.b).i());
-   public static final dhy ha = a("redstone_block", dnt::new, dvc.d.a().a(eri.e).n().a(5.0F, 6.0F).a(dpl.g).a(dia::b));
-   public static final dhy hb = a("nether_quartz_ore", $$0x -> new dki(brj.a(2, 5), $$0x), dvc.d.a().a(eri.J).a(dwe.b).n().a(3.0F, 3.0F).a(dpl.P));
-   public static final dhy hc = a("hopper", dls::new, dvc.d.a().a(eri.l).n().a(3.0F, 4.8F).a(dpl.g).c());
-   public static final dhy hd = a("quartz_block", dvc.d.a().a(eri.o).a(dwe.b).n().d(0.8F));
-   public static final dhy he = a("chiseled_quartz_block", dvc.d.a().a(eri.o).a(dwe.b).n().d(0.8F));
-   public static final dhy hf = a("quartz_pillar", dok::new, dvc.d.a().a(eri.o).a(dwe.b).n().d(0.8F));
-   public static final dhy hg = a("quartz_stairs", hd);
-   public static final dhy hh = a("activator_rail", dnu::new, dvc.d.a().b().d(0.7F).a(dpl.g));
-   public static final dhy hi = a("dropper", dkj::new, dvc.d.a().a(eri.l).a(dwe.b).n().d(3.5F));
-   public static final dhy hj = a("white_terracotta", dvc.d.a().a(eri.K).a(dwe.b).n().a(1.25F, 4.2F));
-   public static final dhy hk = a("orange_terracotta", dvc.d.a().a(eri.L).a(dwe.b).n().a(1.25F, 4.2F));
-   public static final dhy hl = a("magenta_terracotta", dvc.d.a().a(eri.M).a(dwe.b).n().a(1.25F, 4.2F));
-   public static final dhy hm = a("light_blue_terracotta", dvc.d.a().a(eri.N).a(dwe.b).n().a(1.25F, 4.2F));
-   public static final dhy hn = a("yellow_terracotta", dvc.d.a().a(eri.O).a(dwe.b).n().a(1.25F, 4.2F));
-   public static final dhy ho = a("lime_terracotta", dvc.d.a().a(eri.P).a(dwe.b).n().a(1.25F, 4.2F));
-   public static final dhy hp = a("pink_terracotta", dvc.d.a().a(eri.Q).a(dwe.b).n().a(1.25F, 4.2F));
-   public static final dhy hq = a("gray_terracotta", dvc.d.a().a(eri.R).a(dwe.b).n().a(1.25F, 4.2F));
-   public static final dhy hr = a("light_gray_terracotta", dvc.d.a().a(eri.S).a(dwe.b).n().a(1.25F, 4.2F));
-   public static final dhy hs = a("cyan_terracotta", dvc.d.a().a(eri.T).a(dwe.b).n().a(1.25F, 4.2F));
-   public static final dhy ht = a("purple_terracotta", dvc.d.a().a(eri.U).a(dwe.b).n().a(1.25F, 4.2F));
-   public static final dhy hu = a("blue_terracotta", dvc.d.a().a(eri.V).a(dwe.b).n().a(1.25F, 4.2F));
-   public static final dhy hv = a("brown_terracotta", dvc.d.a().a(eri.W).a(dwe.b).n().a(1.25F, 4.2F));
-   public static final dhy hw = a("green_terracotta", dvc.d.a().a(eri.X).a(dwe.b).n().a(1.25F, 4.2F));
-   public static final dhy hx = a("red_terracotta", dvc.d.a().a(eri.Y).a(dwe.b).n().a(1.25F, 4.2F));
-   public static final dhy hy = a("black_terracotta", dvc.d.a().a(eri.Z).a(dwe.b).n().a(1.25F, 4.2F));
-   public static final dhy hz = a("white_stained_glass_pane", $$0x -> new dpr(cuu.a, $$0x), dvc.d.a().a(dwe.d).d(0.3F).a(dpl.h).c());
-   public static final dhy hA = a("orange_stained_glass_pane", $$0x -> new dpr(cuu.b, $$0x), dvc.d.a().a(dwe.d).d(0.3F).a(dpl.h).c());
-   public static final dhy hB = a("magenta_stained_glass_pane", $$0x -> new dpr(cuu.c, $$0x), dvc.d.a().a(dwe.d).d(0.3F).a(dpl.h).c());
-   public static final dhy hC = a("light_blue_stained_glass_pane", $$0x -> new dpr(cuu.d, $$0x), dvc.d.a().a(dwe.d).d(0.3F).a(dpl.h).c());
-   public static final dhy hD = a("yellow_stained_glass_pane", $$0x -> new dpr(cuu.e, $$0x), dvc.d.a().a(dwe.d).d(0.3F).a(dpl.h).c());
-   public static final dhy hE = a("lime_stained_glass_pane", $$0x -> new dpr(cuu.f, $$0x), dvc.d.a().a(dwe.d).d(0.3F).a(dpl.h).c());
-   public static final dhy hF = a("pink_stained_glass_pane", $$0x -> new dpr(cuu.g, $$0x), dvc.d.a().a(dwe.d).d(0.3F).a(dpl.h).c());
-   public static final dhy hG = a("gray_stained_glass_pane", $$0x -> new dpr(cuu.h, $$0x), dvc.d.a().a(dwe.d).d(0.3F).a(dpl.h).c());
-   public static final dhy hH = a("light_gray_stained_glass_pane", $$0x -> new dpr(cuu.i, $$0x), dvc.d.a().a(dwe.d).d(0.3F).a(dpl.h).c());
-   public static final dhy hI = a("cyan_stained_glass_pane", $$0x -> new dpr(cuu.j, $$0x), dvc.d.a().a(dwe.d).d(0.3F).a(dpl.h).c());
-   public static final dhy hJ = a("purple_stained_glass_pane", $$0x -> new dpr(cuu.k, $$0x), dvc.d.a().a(dwe.d).d(0.3F).a(dpl.h).c());
-   public static final dhy hK = a("blue_stained_glass_pane", $$0x -> new dpr(cuu.l, $$0x), dvc.d.a().a(dwe.d).d(0.3F).a(dpl.h).c());
-   public static final dhy hL = a("brown_stained_glass_pane", $$0x -> new dpr(cuu.m, $$0x), dvc.d.a().a(dwe.d).d(0.3F).a(dpl.h).c());
-   public static final dhy hM = a("green_stained_glass_pane", $$0x -> new dpr(cuu.n, $$0x), dvc.d.a().a(dwe.d).d(0.3F).a(dpl.h).c());
-   public static final dhy hN = a("red_stained_glass_pane", $$0x -> new dpr(cuu.o, $$0x), dvc.d.a().a(dwe.d).d(0.3F).a(dpl.h).c());
-   public static final dhy hO = a("black_stained_glass_pane", $$0x -> new dpr(cuu.p, $$0x), dvc.d.a().a(dwe.d).d(0.3F).a(dpl.h).c());
-   public static final dhy hP = a("acacia_stairs", r);
-   public static final dhy hQ = a("cherry_stairs", s);
-   public static final dhy hR = a("dark_oak_stairs", t);
-   public static final dhy hS = a("mangrove_stairs", u);
-   public static final dhy hT = a("bamboo_stairs", v);
-   public static final dhy hU = a("bamboo_mosaic_stairs", w);
-   public static final dhy hV = a("slime_block", dpc::new, dvc.d.a().a(eri.b).a(0.8F).a(dpl.o).c());
-   public static final dhy hW = a("barrier", dhf::new, dvc.d.a().a(-1.0F, 3600000.8F).a(a(eri.a)).g().c().a(dia::a).o().a(erj.c));
-   public static final dhy hX = a("light", dml::new, dvc.d.a().p().a(-1.0F, 3600000.8F).a(a(eri.a)).g().c().a(dml.e));
-   public static final dhy hY = a("iron_trapdoor", $$0x -> new dql(dvs.b, $$0x), dvc.d.a().a(eri.g).n().d(5.0F).c().a(dia::a));
-   public static final dhy hZ = a("prismarine", dvc.d.a().a(eri.x).a(dwe.b).n().a(1.5F, 6.0F));
-   public static final dhy ia = a("prismarine_bricks", dvc.d.a().a(eri.F).a(dwe.b).n().a(1.5F, 6.0F));
-   public static final dhy ib = a("dark_prismarine", dvc.d.a().a(eri.F).a(dwe.b).n().a(1.5F, 6.0F));
-   public static final dhy ic = a("prismarine_stairs", hZ);
-   public static final dhy id = a("prismarine_brick_stairs", ia);
-   public static final dhy ie = a("dark_prismarine_stairs", ib);
-   public static final dhy if = a("prismarine_slab", dpb::new, dvc.d.a().a(eri.x).a(dwe.b).n().a(1.5F, 6.0F));
-   public static final dhy ig = a("prismarine_brick_slab", dpb::new, dvc.d.a().a(eri.F).a(dwe.b).n().a(1.5F, 6.0F));
-   public static final dhy ih = a("dark_prismarine_slab", dpb::new, dvc.d.a().a(eri.F).a(dwe.b).n().a(1.5F, 6.0F));
-   public static final dhy ii = a("sea_lantern", dvc.d.a().a(eri.o).a(dwe.d).d(0.3F).a(dpl.h).a($$0x -> 15).a(dia::b));
-   public static final dhy ij = a("hay_block", dlp::new, dvc.d.a().a(eri.s).a(dwe.o).d(0.5F).a(dpl.d));
-   public static final dhy ik = a("white_carpet", $$0x -> new drt(cuu.a, $$0x), dvc.d.a().a(eri.i).d(0.1F).a(dpl.i).i());
-   public static final dhy il = a("orange_carpet", $$0x -> new drt(cuu.b, $$0x), dvc.d.a().a(eri.p).d(0.1F).a(dpl.i).i());
-   public static final dhy im = a("magenta_carpet", $$0x -> new drt(cuu.c, $$0x), dvc.d.a().a(eri.q).d(0.1F).a(dpl.i).i());
-   public static final dhy in = a("light_blue_carpet", $$0x -> new drt(cuu.d, $$0x), dvc.d.a().a(eri.r).d(0.1F).a(dpl.i).i());
-   public static final dhy io = a("yellow_carpet", $$0x -> new drt(cuu.e, $$0x), dvc.d.a().a(eri.s).d(0.1F).a(dpl.i).i());
-   public static final dhy ip = a("lime_carpet", $$0x -> new drt(cuu.f, $$0x), dvc.d.a().a(eri.t).d(0.1F).a(dpl.i).i());
-   public static final dhy iq = a("pink_carpet", $$0x -> new drt(cuu.g, $$0x), dvc.d.a().a(eri.u).d(0.1F).a(dpl.i).i());
-   public static final dhy ir = a("gray_carpet", $$0x -> new drt(cuu.h, $$0x), dvc.d.a().a(eri.v).d(0.1F).a(dpl.i).i());
-   public static final dhy is = a("light_gray_carpet", $$0x -> new drt(cuu.i, $$0x), dvc.d.a().a(eri.w).d(0.1F).a(dpl.i).i());
-   public static final dhy it = a("cyan_carpet", $$0x -> new drt(cuu.j, $$0x), dvc.d.a().a(eri.x).d(0.1F).a(dpl.i).i());
-   public static final dhy iu = a("purple_carpet", $$0x -> new drt(cuu.k, $$0x), dvc.d.a().a(eri.y).d(0.1F).a(dpl.i).i());
-   public static final dhy iv = a("blue_carpet", $$0x -> new drt(cuu.l, $$0x), dvc.d.a().a(eri.z).d(0.1F).a(dpl.i).i());
-   public static final dhy iw = a("brown_carpet", $$0x -> new drt(cuu.m, $$0x), dvc.d.a().a(eri.A).d(0.1F).a(dpl.i).i());
-   public static final dhy ix = a("green_carpet", $$0x -> new drt(cuu.n, $$0x), dvc.d.a().a(eri.B).d(0.1F).a(dpl.i).i());
-   public static final dhy iy = a("red_carpet", $$0x -> new drt(cuu.o, $$0x), dvc.d.a().a(eri.C).d(0.1F).a(dpl.i).i());
-   public static final dhy iz = a("black_carpet", $$0x -> new drt(cuu.p, $$0x), dvc.d.a().a(eri.D).d(0.1F).a(dpl.i).i());
-   public static final dhy iA = a("terracotta", dvc.d.a().a(eri.p).a(dwe.b).n().a(1.25F, 4.2F));
-   public static final dhy iB = a("coal_block", dvc.d.a().a(eri.D).a(dwe.b).n().a(5.0F, 6.0F));
-   public static final dhy iC = a("packed_ice", dvc.d.a().a(eri.f).a(dwe.i).a(0.98F).d(0.5F).a(dpl.h));
-   public static final dhy iD = a("sunflower", dqc::new, dvc.d.a().a(eri.h).b().d().a(dpl.d).a(dvc.c.b).i().a(erj.b));
-   public static final dhy iE = a("lilac", dqc::new, dvc.d.a().a(eri.h).b().d().a(dpl.d).a(dvc.c.b).i().a(erj.b));
-   public static final dhy iF = a("rose_bush", dqc::new, dvc.d.a().a(eri.h).b().d().a(dpl.d).a(dvc.c.b).i().a(erj.b));
-   public static final dhy iG = a("peony", dqc::new, dvc.d.a().a(eri.h).b().d().a(dpl.d).a(dvc.c.b).i().a(erj.b));
-   public static final dhy iH = a("tall_grass", dkg::new, dvc.d.a().a(eri.h).p().b().d().a(dpl.d).a(dvc.c.b).i().a(erj.b));
-   public static final dhy iI = a("large_fern", dkg::new, dvc.d.a().a(eri.h).p().b().d().a(dpl.d).a(dvc.c.b).i().a(erj.b));
-   public static final dhy iJ = a("white_banner", $$0x -> new dhd(cuu.a, $$0x), dvc.d.a().a(eri.n).k().a(dwe.e).b().d(1.0F).a(dpl.b).i());
-   public static final dhy iK = a("orange_banner", $$0x -> new dhd(cuu.b, $$0x), dvc.d.a().a(eri.n).k().a(dwe.e).b().d(1.0F).a(dpl.b).i());
-   public static final dhy iL = a("magenta_banner", $$0x -> new dhd(cuu.c, $$0x), dvc.d.a().a(eri.n).k().a(dwe.e).b().d(1.0F).a(dpl.b).i());
-   public static final dhy iM = a("light_blue_banner", $$0x -> new dhd(cuu.d, $$0x), dvc.d.a().a(eri.n).k().a(dwe.e).b().d(1.0F).a(dpl.b).i());
-   public static final dhy iN = a("yellow_banner", $$0x -> new dhd(cuu.e, $$0x), dvc.d.a().a(eri.n).k().a(dwe.e).b().d(1.0F).a(dpl.b).i());
-   public static final dhy iO = a("lime_banner", $$0x -> new dhd(cuu.f, $$0x), dvc.d.a().a(eri.n).k().a(dwe.e).b().d(1.0F).a(dpl.b).i());
-   public static final dhy iP = a("pink_banner", $$0x -> new dhd(cuu.g, $$0x), dvc.d.a().a(eri.n).k().a(dwe.e).b().d(1.0F).a(dpl.b).i());
-   public static final dhy iQ = a("gray_banner", $$0x -> new dhd(cuu.h, $$0x), dvc.d.a().a(eri.n).k().a(dwe.e).b().d(1.0F).a(dpl.b).i());
-   public static final dhy iR = a("light_gray_banner", $$0x -> new dhd(cuu.i, $$0x), dvc.d.a().a(eri.n).k().a(dwe.e).b().d(1.0F).a(dpl.b).i());
-   public static final dhy iS = a("cyan_banner", $$0x -> new dhd(cuu.j, $$0x), dvc.d.a().a(eri.n).k().a(dwe.e).b().d(1.0F).a(dpl.b).i());
-   public static final dhy iT = a("purple_banner", $$0x -> new dhd(cuu.k, $$0x), dvc.d.a().a(eri.n).k().a(dwe.e).b().d(1.0F).a(dpl.b).i());
-   public static final dhy iU = a("blue_banner", $$0x -> new dhd(cuu.l, $$0x), dvc.d.a().a(eri.n).k().a(dwe.e).b().d(1.0F).a(dpl.b).i());
-   public static final dhy iV = a("brown_banner", $$0x -> new dhd(cuu.m, $$0x), dvc.d.a().a(eri.n).k().a(dwe.e).b().d(1.0F).a(dpl.b).i());
-   public static final dhy iW = a("green_banner", $$0x -> new dhd(cuu.n, $$0x), dvc.d.a().a(eri.n).k().a(dwe.e).b().d(1.0F).a(dpl.b).i());
-   public static final dhy iX = a("red_banner", $$0x -> new dhd(cuu.o, $$0x), dvc.d.a().a(eri.n).k().a(dwe.e).b().d(1.0F).a(dpl.b).i());
-   public static final dhy iY = a("black_banner", $$0x -> new dhd(cuu.p, $$0x), dvc.d.a().a(eri.n).k().a(dwe.e).b().d(1.0F).a(dpl.b).i());
-   public static final dhy iZ = a("white_wall_banner", $$0x -> new dqv(cuu.a, $$0x), a(iJ, true).a(eri.n).k().a(dwe.e).b().d(1.0F).a(dpl.b).i());
-   public static final dhy ja = a("orange_wall_banner", $$0x -> new dqv(cuu.b, $$0x), a(iK, true).a(eri.n).k().a(dwe.e).b().d(1.0F).a(dpl.b).i());
-   public static final dhy jb = a("magenta_wall_banner", $$0x -> new dqv(cuu.c, $$0x), a(iL, true).a(eri.n).k().a(dwe.e).b().d(1.0F).a(dpl.b).i());
-   public static final dhy jc = a("light_blue_wall_banner", $$0x -> new dqv(cuu.d, $$0x), a(iM, true).a(eri.n).k().a(dwe.e).b().d(1.0F).a(dpl.b).i());
-   public static final dhy jd = a("yellow_wall_banner", $$0x -> new dqv(cuu.e, $$0x), a(iN, true).a(eri.n).k().a(dwe.e).b().d(1.0F).a(dpl.b).i());
-   public static final dhy je = a("lime_wall_banner", $$0x -> new dqv(cuu.f, $$0x), a(iO, true).a(eri.n).k().a(dwe.e).b().d(1.0F).a(dpl.b).i());
-   public static final dhy jf = a("pink_wall_banner", $$0x -> new dqv(cuu.g, $$0x), a(iP, true).a(eri.n).k().a(dwe.e).b().d(1.0F).a(dpl.b).i());
-   public static final dhy jg = a("gray_wall_banner", $$0x -> new dqv(cuu.h, $$0x), a(iQ, true).a(eri.n).k().a(dwe.e).b().d(1.0F).a(dpl.b).i());
-   public static final dhy jh = a("light_gray_wall_banner", $$0x -> new dqv(cuu.i, $$0x), a(iR, true).a(eri.n).k().a(dwe.e).b().d(1.0F).a(dpl.b).i());
-   public static final dhy ji = a("cyan_wall_banner", $$0x -> new dqv(cuu.j, $$0x), a(iS, true).a(eri.n).k().a(dwe.e).b().d(1.0F).a(dpl.b).i());
-   public static final dhy jj = a("purple_wall_banner", $$0x -> new dqv(cuu.k, $$0x), a(iT, true).a(eri.n).k().a(dwe.e).b().d(1.0F).a(dpl.b).i());
-   public static final dhy jk = a("blue_wall_banner", $$0x -> new dqv(cuu.l, $$0x), a(iU, true).a(eri.n).k().a(dwe.e).b().d(1.0F).a(dpl.b).i());
-   public static final dhy jl = a("brown_wall_banner", $$0x -> new dqv(cuu.m, $$0x), a(iV, true).a(eri.n).k().a(dwe.e).b().d(1.0F).a(dpl.b).i());
-   public static final dhy jm = a("green_wall_banner", $$0x -> new dqv(cuu.n, $$0x), a(iW, true).a(eri.n).k().a(dwe.e).b().d(1.0F).a(dpl.b).i());
-   public static final dhy jn = a("red_wall_banner", $$0x -> new dqv(cuu.o, $$0x), a(iX, true).a(eri.n).k().a(dwe.e).b().d(1.0F).a(dpl.b).i());
-   public static final dhy jo = a("black_wall_banner", $$0x -> new dqv(cuu.p, $$0x), a(iY, true).a(eri.n).k().a(dwe.e).b().d(1.0F).a(dpl.b).i());
-   public static final dhy jp = a("red_sandstone", dvc.d.a().a(eri.p).a(dwe.b).n().d(0.8F));
-   public static final dhy jq = a("chiseled_red_sandstone", dvc.d.a().a(eri.p).a(dwe.b).n().d(0.8F));
-   public static final dhy jr = a("cut_red_sandstone", dvc.d.a().a(eri.p).a(dwe.b).n().d(0.8F));
-   public static final dhy js = a("red_sandstone_stairs", jp);
-   public static final dhy jt = a("oak_slab", dpb::new, dvc.d.a().a(eri.n).a(dwe.e).a(2.0F, 3.0F).a(dpl.b).i());
-   public static final dhy ju = a("spruce_slab", dpb::new, dvc.d.a().a(eri.I).a(dwe.e).a(2.0F, 3.0F).a(dpl.b).i());
-   public static final dhy jv = a("birch_slab", dpb::new, dvc.d.a().a(eri.c).a(dwe.e).a(2.0F, 3.0F).a(dpl.b).i());
-   public static final dhy jw = a("jungle_slab", dpb::new, dvc.d.a().a(eri.k).a(dwe.e).a(2.0F, 3.0F).a(dpl.b).i());
-   public static final dhy jx = a("acacia_slab", dpb::new, dvc.d.a().a(eri.p).a(dwe.e).a(2.0F, 3.0F).a(dpl.b).i());
-   public static final dhy jy = a("cherry_slab", dpb::new, dvc.d.a().a(eri.K).a(dwe.e).a(2.0F, 3.0F).a(dpl.aU).i());
-   public static final dhy jz = a("dark_oak_slab", dpb::new, dvc.d.a().a(eri.A).a(dwe.e).a(2.0F, 3.0F).a(dpl.b).i());
-   public static final dhy jA = a("mangrove_slab", dpb::new, dvc.d.a().a(eri.C).a(dwe.e).a(2.0F, 3.0F).a(dpl.b).i());
-   public static final dhy jB = a("bamboo_slab", dpb::new, dvc.d.a().a(eri.s).a(dwe.e).a(2.0F, 3.0F).a(dpl.aS).i());
-   public static final dhy jC = a("bamboo_mosaic_slab", dpb::new, dvc.d.a().a(eri.s).a(dwe.e).a(2.0F, 3.0F).a(dpl.aS).i());
-   public static final dhy jD = a("stone_slab", dpb::new, dvc.d.a().a(eri.l).a(dwe.b).n().a(2.0F, 6.0F));
-   public static final dhy jE = a("smooth_stone_slab", dpb::new, dvc.d.a().a(eri.l).a(dwe.b).n().a(2.0F, 6.0F));
-   public static final dhy jF = a("sandstone_slab", dpb::new, dvc.d.a().a(eri.c).a(dwe.b).n().a(2.0F, 6.0F));
-   public static final dhy jG = a("cut_sandstone_slab", dpb::new, dvc.d.a().a(eri.c).a(dwe.b).n().a(2.0F, 6.0F));
-   public static final dhy jH = a("petrified_oak_slab", dpb::new, dvc.d.a().a(eri.n).a(dwe.b).n().a(2.0F, 6.0F));
-   public static final dhy jI = a("cobblestone_slab", dpb::new, dvc.d.a().a(eri.l).a(dwe.b).n().a(2.0F, 6.0F));
-   public static final dhy jJ = a("brick_slab", dpb::new, dvc.d.a().a(eri.C).a(dwe.b).n().a(2.0F, 6.0F));
-   public static final dhy jK = a("stone_brick_slab", dpb::new, dvc.d.a().a(eri.l).a(dwe.b).n().a(2.0F, 6.0F));
-   public static final dhy jL = a("mud_brick_slab", dpb::new, dvc.d.a().a(eri.S).a(dwe.b).n().a(1.5F, 3.0F).a(dpl.aN));
-   public static final dhy jM = a("nether_brick_slab", dpb::new, dvc.d.a().a(eri.J).a(dwe.b).n().a(2.0F, 6.0F).a(dpl.N));
-   public static final dhy jN = a("quartz_slab", dpb::new, dvc.d.a().a(eri.o).a(dwe.b).n().a(2.0F, 6.0F));
-   public static final dhy jO = a("red_sandstone_slab", dpb::new, dvc.d.a().a(eri.p).a(dwe.b).n().a(2.0F, 6.0F));
-   public static final dhy jP = a("cut_red_sandstone_slab", dpb::new, dvc.d.a().a(eri.p).a(dwe.b).n().a(2.0F, 6.0F));
-   public static final dhy jQ = a("purpur_slab", dpb::new, dvc.d.a().a(eri.q).a(dwe.b).n().a(2.0F, 6.0F));
-   public static final dhy jR = a("smooth_stone", dvc.d.a().a(eri.l).a(dwe.b).n().a(2.0F, 6.0F));
-   public static final dhy jS = a("smooth_sandstone", dvc.d.a().a(eri.c).a(dwe.b).n().a(2.0F, 6.0F));
-   public static final dhy jT = a("smooth_quartz", dvc.d.a().a(eri.o).a(dwe.b).n().a(2.0F, 6.0F));
-   public static final dhy jU = a("smooth_red_sandstone", dvc.d.a().a(eri.p).a(dwe.b).n().a(2.0F, 6.0F));
-   public static final dhy jV = a("spruce_fence_gate", $$0x -> new dkw(dwq.c, $$0x), dvc.d.a().a(o.w()).k().a(dwe.e).a(2.0F, 3.0F).i());
-   public static final dhy jW = a("birch_fence_gate", $$0x -> new dkw(dwq.d, $$0x), dvc.d.a().a(p.w()).k().a(dwe.e).a(2.0F, 3.0F).i());
-   public static final dhy jX = a("jungle_fence_gate", $$0x -> new dkw(dwq.g, $$0x), dvc.d.a().a(q.w()).k().a(dwe.e).a(2.0F, 3.0F).i());
-   public static final dhy jY = a("acacia_fence_gate", $$0x -> new dkw(dwq.e, $$0x), dvc.d.a().a(r.w()).k().a(dwe.e).a(2.0F, 3.0F).i());
-   public static final dhy jZ = a("cherry_fence_gate", $$0x -> new dkw(dwq.f, $$0x), dvc.d.a().a(s.w()).k().a(dwe.e).a(2.0F, 3.0F).i());
-   public static final dhy ka = a("dark_oak_fence_gate", $$0x -> new dkw(dwq.h, $$0x), dvc.d.a().a(t.w()).k().a(dwe.e).a(2.0F, 3.0F).i());
-   public static final dhy kb = a("mangrove_fence_gate", $$0x -> new dkw(dwq.k, $$0x), dvc.d.a().a(u.w()).k().a(dwe.e).a(2.0F, 3.0F).i());
-   public static final dhy kc = a("bamboo_fence_gate", $$0x -> new dkw(dwq.l, $$0x), dvc.d.a().a(v.w()).k().a(dwe.e).a(2.0F, 3.0F).i());
-   public static final dhy kd = a("spruce_fence", dkv::new, dvc.d.a().a(o.w()).a(dwe.e).a(2.0F, 3.0F).i().a(dpl.b));
-   public static final dhy ke = a("birch_fence", dkv::new, dvc.d.a().a(p.w()).a(dwe.e).a(2.0F, 3.0F).i().a(dpl.b));
-   public static final dhy kf = a("jungle_fence", dkv::new, dvc.d.a().a(q.w()).a(dwe.e).a(2.0F, 3.0F).i().a(dpl.b));
-   public static final dhy kg = a("acacia_fence", dkv::new, dvc.d.a().a(r.w()).a(dwe.e).a(2.0F, 3.0F).i().a(dpl.b));
-   public static final dhy kh = a("cherry_fence", dkv::new, dvc.d.a().a(s.w()).a(dwe.e).a(2.0F, 3.0F).i().a(dpl.aU));
-   public static final dhy ki = a("dark_oak_fence", dkv::new, dvc.d.a().a(t.w()).a(dwe.e).a(2.0F, 3.0F).i().a(dpl.b));
-   public static final dhy kj = a("mangrove_fence", dkv::new, dvc.d.a().a(u.w()).a(dwe.e).a(2.0F, 3.0F).i().a(dpl.b));
-   public static final dhy kk = a("bamboo_fence", dkv::new, dvc.d.a().a(v.w()).a(dwe.e).a(2.0F, 3.0F).a(dpl.aS).i());
-   public static final dhy kl = a("spruce_door", $$0x -> new dke(dvs.h, $$0x), dvc.d.a().a(o.w()).a(dwe.e).d(3.0F).c().i().a(erj.b));
-   public static final dhy km = a("birch_door", $$0x -> new dke(dvs.i, $$0x), dvc.d.a().a(p.w()).a(dwe.e).d(3.0F).c().i().a(erj.b));
-   public static final dhy kn = a("jungle_door", $$0x -> new dke(dvs.l, $$0x), dvc.d.a().a(q.w()).a(dwe.e).d(3.0F).c().i().a(erj.b));
-   public static final dhy ko = a("acacia_door", $$0x -> new dke(dvs.j, $$0x), dvc.d.a().a(r.w()).a(dwe.e).d(3.0F).c().i().a(erj.b));
-   public static final dhy kp = a("cherry_door", $$0x -> new dke(dvs.k, $$0x), dvc.d.a().a(s.w()).a(dwe.e).d(3.0F).c().i().a(erj.b));
-   public static final dhy kq = a("dark_oak_door", $$0x -> new dke(dvs.m, $$0x), dvc.d.a().a(t.w()).a(dwe.e).d(3.0F).c().i().a(erj.b));
-   public static final dhy kr = a("mangrove_door", $$0x -> new dke(dvs.p, $$0x), dvc.d.a().a(u.w()).a(dwe.e).d(3.0F).c().i().a(erj.b));
-   public static final dhy ks = a("bamboo_door", $$0x -> new dke(dvs.q, $$0x), dvc.d.a().a(v.w()).a(dwe.e).d(3.0F).c().i().a(erj.b));
-   public static final dhy kt = a("end_rod", dko::new, dvc.d.a().l().d().a($$0x -> 14).a(dpl.b).c());
-   public static final dhy ku = a("chorus_plant", dje::new, dvc.d.a().a(eri.y).l().d(0.4F).a(dpl.b).c().a(erj.b));
-   public static final dhy kv = a("chorus_flower", $$0x -> new djd(ku, $$0x), dvc.d.a().a(eri.y).l().e().d(0.4F).a(dpl.b).c().a(dia::a).a(erj.b).a(dia::b));
-   public static final dhy kw = a("purpur_block", dvc.d.a().a(eri.q).a(dwe.b).n().a(1.5F, 6.0F));
-   public static final dhy kx = a("purpur_pillar", dok::new, dvc.d.a().a(eri.q).a(dwe.b).n().a(1.5F, 6.0F));
-   public static final dhy ky = a("purpur_stairs", kw);
-   public static final dhy kz = a("end_stone_bricks", dvc.d.a().a(eri.c).a(dwe.b).n().a(3.0F, 9.0F));
-   public static final dhy kA = a("torchflower_crop", dqj::new, dvc.d.a().a(eri.h).b().e().d().a(dpl.w).a(erj.b));
-   public static final dhy kB = a("pitcher_crop", dnm::new, dvc.d.a().a(eri.h).b().e().d().a(dpl.w).a(erj.b));
-   public static final dhy kC = a("pitcher_plant", dkg::new, dvc.d.a().a(eri.h).b().d().a(dpl.w).a(dvc.c.b).i().a(erj.b));
-   public static final dhy kD = a("beetroots", dht::new, dvc.d.a().a(eri.h).b().e().d().a(dpl.w).a(erj.b));
-   public static final dhy kE = a("dirt_path", dkc::new, dvc.d.a().a(eri.k).d(0.65F).a(dpl.d).c(dia::a).b(dia::a));
-   public static final dhy kF = a("end_gateway", dkl::new, dvc.d.a().a(eri.D).b().a($$0x -> 15).a(-1.0F, 3600000.0F).g().a(erj.c));
-   public static final dhy kG = a("repeating_command_block", $$0x -> new djh(false, $$0x), dvc.d.a().a(eri.y).n().a(-1.0F, 3600000.0F).g());
-   public static final dhy kH = a("chain_command_block", $$0x -> new djh(true, $$0x), dvc.d.a().a(eri.B).n().a(-1.0F, 3600000.0F).g());
-   public static final dhy kI = a(
-      "frosted_ice", dlc::new, dvc.d.a().a(eri.f).a(0.98F).d(0.5F).a(dpl.h).c().a(($$0x, $$1x, $$2, $$3) -> $$3 == bug.aD).a(dia::b)
-   );
-   public static final dhy kJ = a(
-      "magma_block", dmq::new, dvc.d.a().a(eri.J).a(dwe.b).n().a($$0x -> 3).d(0.5F).a(($$0x, $$1x, $$2, $$3) -> $$3.d()).d(dia::a).e(dia::a)
-   );
-   public static final dhy kK = a("nether_wart_block", dvc.d.a().a(eri.C).d(1.0F).a(dpl.L));
-   public static final dhy kL = a("red_nether_bricks", dvc.d.a().a(eri.J).a(dwe.b).n().a(2.0F, 6.0F).a(dpl.N));
-   public static final dhy kM = a("bone_block", dok::new, dvc.d.a().a(eri.c).a(dwe.j).n().d(2.0F).a(dpl.Q));
-   public static final dhy kN = a("structure_void", dpx::new, dvc.d.a().p().b().g().o().a(erj.b));
-   public static final dhy kO = a("observer", dni::new, dvc.d.a().a(eri.l).a(dwe.b).d(3.0F).n().a(dia::b));
-   public static final dhy kP = a("shulker_box", $$0x -> new dox(null, $$0x), c(eri.y));
-   public static final dhy kQ = a("white_shulker_box", $$0x -> new dox(cuu.a, $$0x), c(eri.i));
-   public static final dhy kR = a("orange_shulker_box", $$0x -> new dox(cuu.b, $$0x), c(eri.p));
-   public static final dhy kS = a("magenta_shulker_box", $$0x -> new dox(cuu.c, $$0x), c(eri.q));
-   public static final dhy kT = a("light_blue_shulker_box", $$0x -> new dox(cuu.d, $$0x), c(eri.r));
-   public static final dhy kU = a("yellow_shulker_box", $$0x -> new dox(cuu.e, $$0x), c(eri.s));
-   public static final dhy kV = a("lime_shulker_box", $$0x -> new dox(cuu.f, $$0x), c(eri.t));
-   public static final dhy kW = a("pink_shulker_box", $$0x -> new dox(cuu.g, $$0x), c(eri.u));
-   public static final dhy kX = a("gray_shulker_box", $$0x -> new dox(cuu.h, $$0x), c(eri.v));
-   public static final dhy kY = a("light_gray_shulker_box", $$0x -> new dox(cuu.i, $$0x), c(eri.w));
-   public static final dhy kZ = a("cyan_shulker_box", $$0x -> new dox(cuu.j, $$0x), c(eri.x));
-   public static final dhy la = a("purple_shulker_box", $$0x -> new dox(cuu.k, $$0x), c(eri.U));
-   public static final dhy lb = a("blue_shulker_box", $$0x -> new dox(cuu.l, $$0x), c(eri.z));
-   public static final dhy lc = a("brown_shulker_box", $$0x -> new dox(cuu.m, $$0x), c(eri.A));
-   public static final dhy ld = a("green_shulker_box", $$0x -> new dox(cuu.n, $$0x), c(eri.B));
-   public static final dhy le = a("red_shulker_box", $$0x -> new dox(cuu.o, $$0x), c(eri.C));
-   public static final dhy lf = a("black_shulker_box", $$0x -> new dox(cuu.p, $$0x), c(eri.D));
-   public static final dhy lg = a("white_glazed_terracotta", dlg::new, dvc.d.a().a(cuu.a).a(dwe.b).n().d(1.4F).a(erj.e));
-   public static final dhy lh = a("orange_glazed_terracotta", dlg::new, dvc.d.a().a(cuu.b).a(dwe.b).n().d(1.4F).a(erj.e));
-   public static final dhy li = a("magenta_glazed_terracotta", dlg::new, dvc.d.a().a(cuu.c).a(dwe.b).n().d(1.4F).a(erj.e));
-   public static final dhy lj = a("light_blue_glazed_terracotta", dlg::new, dvc.d.a().a(cuu.d).a(dwe.b).n().d(1.4F).a(erj.e));
-   public static final dhy lk = a("yellow_glazed_terracotta", dlg::new, dvc.d.a().a(cuu.e).a(dwe.b).n().d(1.4F).a(erj.e));
-   public static final dhy ll = a("lime_glazed_terracotta", dlg::new, dvc.d.a().a(cuu.f).a(dwe.b).n().d(1.4F).a(erj.e));
-   public static final dhy lm = a("pink_glazed_terracotta", dlg::new, dvc.d.a().a(cuu.g).a(dwe.b).n().d(1.4F).a(erj.e));
-   public static final dhy ln = a("gray_glazed_terracotta", dlg::new, dvc.d.a().a(cuu.h).a(dwe.b).n().d(1.4F).a(erj.e));
-   public static final dhy lo = a("light_gray_glazed_terracotta", dlg::new, dvc.d.a().a(cuu.i).a(dwe.b).n().d(1.4F).a(erj.e));
-   public static final dhy lp = a("cyan_glazed_terracotta", dlg::new, dvc.d.a().a(cuu.j).a(dwe.b).n().d(1.4F).a(erj.e));
-   public static final dhy lq = a("purple_glazed_terracotta", dlg::new, dvc.d.a().a(cuu.k).a(dwe.b).n().d(1.4F).a(erj.e));
-   public static final dhy lr = a("blue_glazed_terracotta", dlg::new, dvc.d.a().a(cuu.l).a(dwe.b).n().d(1.4F).a(erj.e));
-   public static final dhy ls = a("brown_glazed_terracotta", dlg::new, dvc.d.a().a(cuu.m).a(dwe.b).n().d(1.4F).a(erj.e));
-   public static final dhy lt = a("green_glazed_terracotta", dlg::new, dvc.d.a().a(cuu.n).a(dwe.b).n().d(1.4F).a(erj.e));
-   public static final dhy lu = a("red_glazed_terracotta", dlg::new, dvc.d.a().a(cuu.o).a(dwe.b).n().d(1.4F).a(erj.e));
-   public static final dhy lv = a("black_glazed_terracotta", dlg::new, dvc.d.a().a(cuu.p).a(dwe.b).n().d(1.4F).a(erj.e));
-   public static final dhy lw = a("white_concrete", dvc.d.a().a(cuu.a).a(dwe.b).n().d(1.8F));
-   public static final dhy lx = a("orange_concrete", dvc.d.a().a(cuu.b).a(dwe.b).n().d(1.8F));
-   public static final dhy ly = a("magenta_concrete", dvc.d.a().a(cuu.c).a(dwe.b).n().d(1.8F));
-   public static final dhy lz = a("light_blue_concrete", dvc.d.a().a(cuu.d).a(dwe.b).n().d(1.8F));
-   public static final dhy lA = a("yellow_concrete", dvc.d.a().a(cuu.e).a(dwe.b).n().d(1.8F));
-   public static final dhy lB = a("lime_concrete", dvc.d.a().a(cuu.f).a(dwe.b).n().d(1.8F));
-   public static final dhy lC = a("pink_concrete", dvc.d.a().a(cuu.g).a(dwe.b).n().d(1.8F));
-   public static final dhy lD = a("gray_concrete", dvc.d.a().a(cuu.h).a(dwe.b).n().d(1.8F));
-   public static final dhy lE = a("light_gray_concrete", dvc.d.a().a(cuu.i).a(dwe.b).n().d(1.8F));
-   public static final dhy lF = a("cyan_concrete", dvc.d.a().a(cuu.j).a(dwe.b).n().d(1.8F));
-   public static final dhy lG = a("purple_concrete", dvc.d.a().a(cuu.k).a(dwe.b).n().d(1.8F));
-   public static final dhy lH = a("blue_concrete", dvc.d.a().a(cuu.l).a(dwe.b).n().d(1.8F));
-   public static final dhy lI = a("brown_concrete", dvc.d.a().a(cuu.m).a(dwe.b).n().d(1.8F));
-   public static final dhy lJ = a("green_concrete", dvc.d.a().a(cuu.n).a(dwe.b).n().d(1.8F));
-   public static final dhy lK = a("red_concrete", dvc.d.a().a(cuu.o).a(dwe.b).n().d(1.8F));
-   public static final dhy lL = a("black_concrete", dvc.d.a().a(cuu.p).a(dwe.b).n().d(1.8F));
-   public static final dhy lM = a("white_concrete_powder", $$0x -> new djk(lw, $$0x), dvc.d.a().a(cuu.a).a(dwe.c).d(0.5F).a(dpl.j));
-   public static final dhy lN = a("orange_concrete_powder", $$0x -> new djk(lx, $$0x), dvc.d.a().a(cuu.b).a(dwe.c).d(0.5F).a(dpl.j));
-   public static final dhy lO = a("magenta_concrete_powder", $$0x -> new djk(ly, $$0x), dvc.d.a().a(cuu.c).a(dwe.c).d(0.5F).a(dpl.j));
-   public static final dhy lP = a("light_blue_concrete_powder", $$0x -> new djk(lz, $$0x), dvc.d.a().a(cuu.d).a(dwe.c).d(0.5F).a(dpl.j));
-   public static final dhy lQ = a("yellow_concrete_powder", $$0x -> new djk(lA, $$0x), dvc.d.a().a(cuu.e).a(dwe.c).d(0.5F).a(dpl.j));
-   public static final dhy lR = a("lime_concrete_powder", $$0x -> new djk(lB, $$0x), dvc.d.a().a(cuu.f).a(dwe.c).d(0.5F).a(dpl.j));
-   public static final dhy lS = a("pink_concrete_powder", $$0x -> new djk(lC, $$0x), dvc.d.a().a(cuu.g).a(dwe.c).d(0.5F).a(dpl.j));
-   public static final dhy lT = a("gray_concrete_powder", $$0x -> new djk(lD, $$0x), dvc.d.a().a(cuu.h).a(dwe.c).d(0.5F).a(dpl.j));
-   public static final dhy lU = a("light_gray_concrete_powder", $$0x -> new djk(lE, $$0x), dvc.d.a().a(cuu.i).a(dwe.c).d(0.5F).a(dpl.j));
-   public static final dhy lV = a("cyan_concrete_powder", $$0x -> new djk(lF, $$0x), dvc.d.a().a(cuu.j).a(dwe.c).d(0.5F).a(dpl.j));
-   public static final dhy lW = a("purple_concrete_powder", $$0x -> new djk(lG, $$0x), dvc.d.a().a(cuu.k).a(dwe.c).d(0.5F).a(dpl.j));
-   public static final dhy lX = a("blue_concrete_powder", $$0x -> new djk(lH, $$0x), dvc.d.a().a(cuu.l).a(dwe.c).d(0.5F).a(dpl.j));
-   public static final dhy lY = a("brown_concrete_powder", $$0x -> new djk(lI, $$0x), dvc.d.a().a(cuu.m).a(dwe.c).d(0.5F).a(dpl.j));
-   public static final dhy lZ = a("green_concrete_powder", $$0x -> new djk(lJ, $$0x), dvc.d.a().a(cuu.n).a(dwe.c).d(0.5F).a(dpl.j));
-   public static final dhy ma = a("red_concrete_powder", $$0x -> new djk(lK, $$0x), dvc.d.a().a(cuu.o).a(dwe.c).d(0.5F).a(dpl.j));
-   public static final dhy mb = a("black_concrete_powder", $$0x -> new djk(lL, $$0x), dvc.d.a().a(cuu.p).a(dwe.c).d(0.5F).a(dpl.j));
-   public static final dhy mc = a("kelp", dmb::new, dvc.d.a().a(eri.m).b().e().d().a(dpl.q).a(erj.b));
-   public static final dhy md = a("kelp_plant", dmc::new, dvc.d.a().a(eri.m).b().d().a(dpl.q).a(erj.b));
-   public static final dhy me = a("dried_kelp_block", dvc.d.a().a(eri.B).a(0.5F, 2.5F).a(dpl.d));
-   public static final dhy mf = a("turtle_egg", dqq::new, dvc.d.a().a(eri.c).k().d(0.5F).a(dpl.g).e().c().a(erj.b));
-   public static final dhy mg = a("sniffer_egg", dpg::new, dvc.d.a().a(eri.C).d(0.5F).a(dpl.g).c());
-   public static final dhy mh = a("dead_tube_coral_block", dvc.d.a().a(eri.v).k().a(dwe.b).n().a(1.5F, 6.0F));
-   public static final dhy mi = a("dead_brain_coral_block", dvc.d.a().a(eri.v).k().a(dwe.b).n().a(1.5F, 6.0F));
-   public static final dhy mj = a("dead_bubble_coral_block", dvc.d.a().a(eri.v).k().a(dwe.b).n().a(1.5F, 6.0F));
-   public static final dhy mk = a("dead_fire_coral_block", dvc.d.a().a(eri.v).k().a(dwe.b).n().a(1.5F, 6.0F));
-   public static final dhy ml = a("dead_horn_coral_block", dvc.d.a().a(eri.v).k().a(dwe.b).n().a(1.5F, 6.0F));
-   public static final dhy mm = a("tube_coral_block", $$0x -> new djn(mh, $$0x), dvc.d.a().a(eri.z).a(dwe.b).n().a(1.5F, 6.0F).a(dpl.r));
-   public static final dhy mn = a("brain_coral_block", $$0x -> new djn(mi, $$0x), dvc.d.a().a(eri.u).a(dwe.b).n().a(1.5F, 6.0F).a(dpl.r));
-   public static final dhy mo = a("bubble_coral_block", $$0x -> new djn(mj, $$0x), dvc.d.a().a(eri.y).a(dwe.b).n().a(1.5F, 6.0F).a(dpl.r));
-   public static final dhy mp = a("fire_coral_block", $$0x -> new djn(mk, $$0x), dvc.d.a().a(eri.C).a(dwe.b).n().a(1.5F, 6.0F).a(dpl.r));
-   public static final dhy mq = a("horn_coral_block", $$0x -> new djn(ml, $$0x), dvc.d.a().a(eri.s).a(dwe.b).n().a(1.5F, 6.0F).a(dpl.r));
-   public static final dhy mr = a("dead_tube_coral", dhh::new, dvc.d.a().a(eri.v).k().a(dwe.b).n().b().d());
-   public static final dhy ms = a("dead_brain_coral", dhh::new, dvc.d.a().a(eri.v).k().a(dwe.b).n().b().d());
-   public static final dhy mt = a("dead_bubble_coral", dhh::new, dvc.d.a().a(eri.v).k().a(dwe.b).n().b().d());
-   public static final dhy mu = a("dead_fire_coral", dhh::new, dvc.d.a().a(eri.v).k().a(dwe.b).n().b().d());
-   public static final dhy mv = a("dead_horn_coral", dhh::new, dvc.d.a().a(eri.v).k().a(dwe.b).n().b().d());
-   public static final dhy mw = a("tube_coral", $$0x -> new djp(mr, $$0x), dvc.d.a().a(eri.z).b().d().a(dpl.q).a(erj.b));
-   public static final dhy mx = a("brain_coral", $$0x -> new djp(ms, $$0x), dvc.d.a().a(eri.u).b().d().a(dpl.q).a(erj.b));
-   public static final dhy my = a("bubble_coral", $$0x -> new djp(mt, $$0x), dvc.d.a().a(eri.y).b().d().a(dpl.q).a(erj.b));
-   public static final dhy mz = a("fire_coral", $$0x -> new djp(mu, $$0x), dvc.d.a().a(eri.C).b().d().a(dpl.q).a(erj.b));
-   public static final dhy mA = a("horn_coral", $$0x -> new djp(mv, $$0x), dvc.d.a().a(eri.s).b().d().a(dpl.q).a(erj.b));
-   public static final dhy mB = a("dead_tube_coral_fan", dhg::new, dvc.d.a().a(eri.v).k().a(dwe.b).n().b().d());
-   public static final dhy mC = a("dead_brain_coral_fan", dhg::new, dvc.d.a().a(eri.v).k().a(dwe.b).n().b().d());
-   public static final dhy mD = a("dead_bubble_coral_fan", dhg::new, dvc.d.a().a(eri.v).k().a(dwe.b).n().b().d());
-   public static final dhy mE = a("dead_fire_coral_fan", dhg::new, dvc.d.a().a(eri.v).k().a(dwe.b).n().b().d());
-   public static final dhy mF = a("dead_horn_coral_fan", dhg::new, dvc.d.a().a(eri.v).k().a(dwe.b).n().b().d());
-   public static final dhy mG = a("tube_coral_fan", $$0x -> new djo(mB, $$0x), dvc.d.a().a(eri.z).b().d().a(dpl.q).a(erj.b));
-   public static final dhy mH = a("brain_coral_fan", $$0x -> new djo(mC, $$0x), dvc.d.a().a(eri.u).b().d().a(dpl.q).a(erj.b));
-   public static final dhy mI = a("bubble_coral_fan", $$0x -> new djo(mD, $$0x), dvc.d.a().a(eri.y).b().d().a(dpl.q).a(erj.b));
-   public static final dhy mJ = a("fire_coral_fan", $$0x -> new djo(mE, $$0x), dvc.d.a().a(eri.C).b().d().a(dpl.q).a(erj.b));
-   public static final dhy mK = a("horn_coral_fan", $$0x -> new djo(mF, $$0x), dvc.d.a().a(eri.s).b().d().a(dpl.q).a(erj.b));
-   public static final dhy mL = a("dead_tube_coral_wall_fan", dhj::new, a(mB, false).a(eri.v).k().a(dwe.b).n().b().d());
-   public static final dhy mM = a("dead_brain_coral_wall_fan", dhj::new, a(mC, false).a(eri.v).k().a(dwe.b).n().b().d());
-   public static final dhy mN = a("dead_bubble_coral_wall_fan", dhj::new, a(mD, false).a(eri.v).k().a(dwe.b).n().b().d());
-   public static final dhy mO = a("dead_fire_coral_wall_fan", dhj::new, a(mE, false).a(eri.v).k().a(dwe.b).n().b().d());
-   public static final dhy mP = a("dead_horn_coral_wall_fan", dhj::new, a(mF, false).a(eri.v).k().a(dwe.b).n().b().d());
-   public static final dhy mQ = a("tube_coral_wall_fan", $$0x -> new djq(mL, $$0x), a(mG, false).a(eri.z).b().d().a(dpl.q).a(erj.b));
-   public static final dhy mR = a("brain_coral_wall_fan", $$0x -> new djq(mM, $$0x), a(mH, false).a(eri.u).b().d().a(dpl.q).a(erj.b));
-   public static final dhy mS = a("bubble_coral_wall_fan", $$0x -> new djq(mN, $$0x), a(mI, false).a(eri.y).b().d().a(dpl.q).a(erj.b));
-   public static final dhy mT = a("fire_coral_wall_fan", $$0x -> new djq(mO, $$0x), a(mJ, false).a(eri.C).b().d().a(dpl.q).a(erj.b));
-   public static final dhy mU = a("horn_coral_wall_fan", $$0x -> new djq(mP, $$0x), a(mK, false).a(eri.s).b().d().a(dpl.q).a(erj.b));
-   public static final dhy mV = a("sea_pickle", dov::new, dvc.d.a().a(eri.B).a($$0x -> dov.o($$0x) ? 0 : 3 + 3 * $$0x.c(dov.c)).a(dpl.o).c().a(erj.b));
-   public static final dhy mW = a("blue_ice", dln::new, dvc.d.a().a(eri.f).d(2.8F).a(0.989F).a(dpl.h));
-   public static final dhy mX = a("conduit", djl::new, dvc.d.a().a(eri.F).k().a(dwe.d).d(3.0F).a($$0x -> 15).c());
-   public static final dhy mY = a("bamboo_sapling", dhb::new, dvc.d.a().a(eri.n).k().e().d().b().d(1.0F).a(dpl.t).a(dvc.c.b).i().a(erj.b));
-   public static final dhy mZ = a("bamboo", dhc::new, dvc.d.a().a(eri.h).k().e().d().d(1.0F).a(dpl.s).c().f().a(dvc.c.b).i().a(erj.b).a(dia::b));
-   public static final dhy na = a("potted_bamboo", $$0x -> new dla(mZ, $$0x), c());
-   public static final dhy nb = a("void_air", dgv::new, dvc.d.a().p().b().g().m());
-   public static final dhy nc = a("cave_air", dgv::new, dvc.d.a().p().b().g().m());
-   public static final dhy nd = a("bubble_column", die::new, dvc.d.a().a(eri.m).p().b().g().a(erj.b).j().a(dpl.a));
-   public static final dhy ne = a("polished_granite_stairs", d);
-   public static final dhy nf = a("smooth_red_sandstone_stairs", jU);
-   public static final dhy ng = a("mossy_stone_brick_stairs", eI);
-   public static final dhy nh = a("polished_diorite_stairs", f);
-   public static final dhy ni = a("mossy_cobblestone_stairs", cn);
-   public static final dhy nj = a("end_stone_brick_stairs", kz);
-   public static final dhy nk = a("stone_stairs", b);
-   public static final dhy nl = a("smooth_sandstone_stairs", jS);
-   public static final dhy nm = a("smooth_quartz_stairs", jT);
-   public static final dhy nn = a("granite_stairs", c);
-   public static final dhy no = a("andesite_stairs", g);
-   public static final dhy np = a("red_nether_brick_stairs", kL);
-   public static final dhy nq = a("polished_andesite_stairs", h);
-   public static final dhy nr = a("diorite_stairs", e);
-   public static final dhy ns = a("polished_granite_slab", dpb::new, dvc.d.b(d));
-   public static final dhy nt = a("smooth_red_sandstone_slab", dpb::new, dvc.d.b(jU));
-   public static final dhy nu = a("mossy_stone_brick_slab", dpb::new, dvc.d.b(eI));
-   public static final dhy nv = a("polished_diorite_slab", dpb::new, dvc.d.b(f));
-   public static final dhy nw = a("mossy_cobblestone_slab", dpb::new, dvc.d.b(cn));
-   public static final dhy nx = a("end_stone_brick_slab", dpb::new, dvc.d.b(kz));
-   public static final dhy ny = a("smooth_sandstone_slab", dpb::new, dvc.d.b(jS));
-   public static final dhy nz = a("smooth_quartz_slab", dpb::new, dvc.d.b(jT));
-   public static final dhy nA = a("granite_slab", dpb::new, dvc.d.b(c));
-   public static final dhy nB = a("andesite_slab", dpb::new, dvc.d.b(g));
-   public static final dhy nC = a("red_nether_brick_slab", dpb::new, dvc.d.b(kL));
-   public static final dhy nD = a("polished_andesite_slab", dpb::new, dvc.d.b(h));
-   public static final dhy nE = a("diorite_slab", dpb::new, dvc.d.b(e));
-   public static final dhy nF = a("brick_wall", dqw::new, dvc.d.b(cj).k());
-   public static final dhy nG = a("prismarine_wall", dqw::new, dvc.d.b(hZ).k());
-   public static final dhy nH = a("red_sandstone_wall", dqw::new, dvc.d.b(jp).k());
-   public static final dhy nI = a("mossy_stone_brick_wall", dqw::new, dvc.d.b(eI).k());
-   public static final dhy nJ = a("granite_wall", dqw::new, dvc.d.b(c).k());
-   public static final dhy nK = a("stone_brick_wall", dqw::new, dvc.d.b(eH).k());
-   public static final dhy nL = a("mud_brick_wall", dqw::new, dvc.d.b(eM).k());
-   public static final dhy nM = a("nether_brick_wall", dqw::new, dvc.d.b(fn).k());
-   public static final dhy nN = a("andesite_wall", dqw::new, dvc.d.b(g).k());
-   public static final dhy nO = a("red_nether_brick_wall", dqw::new, dvc.d.b(kL).k());
-   public static final dhy nP = a("sandstone_wall", dqw::new, dvc.d.b(aV).k());
-   public static final dhy nQ = a("end_stone_brick_wall", dqw::new, dvc.d.b(kz).k());
-   public static final dhy nR = a("diorite_wall", dqw::new, dvc.d.b(e).k());
-   public static final dhy nS = a("scaffolding", don::new, dvc.d.a().a(eri.c).b().a(dpl.u).f().a(dia::a).a(erj.b).a(dia::b));
-   public static final dhy nT = a("loom", dmp::new, dvc.d.a().a(eri.n).a(dwe.e).d(2.5F).a(dpl.b).i());
-   public static final dhy nU = a("barrel", dhe::new, dvc.d.a().a(eri.n).a(dwe.e).d(2.5F).a(dpl.b).i());
-   public static final dhy nV = a("smoker", dpf::new, dvc.d.a().a(eri.l).a(dwe.b).n().d(3.5F).a(a(13)));
-   public static final dhy nW = a("blast_furnace", dhx::new, dvc.d.a().a(eri.l).a(dwe.b).n().d(3.5F).a(a(13)));
-   public static final dhy nX = a("cartography_table", dir::new, dvc.d.a().a(eri.n).a(dwe.e).d(2.5F).a(dpl.b).i());
-   public static final dhy nY = a("fletching_table", dky::new, dvc.d.a().a(eri.n).a(dwe.e).d(2.5F).a(dpl.b).i());
-   public static final dhy nZ = a("grindstone", dlj::new, dvc.d.a().a(eri.g).n().a(2.0F, 6.0F).a(dpl.f).a(erj.c));
-   public static final dhy oa = a("lectern", dmi::new, dvc.d.a().a(eri.n).a(dwe.e).d(2.5F).a(dpl.b).i());
-   public static final dhy ob = a("smithing_table", dpe::new, dvc.d.a().a(eri.n).a(dwe.e).d(2.5F).a(dpl.b).i());
-   public static final dhy oc = a("stonecutter", dpv::new, dvc.d.a().a(eri.l).a(dwe.b).n().d(3.5F));
-   public static final dhy od = a("bell", dhu::new, dvc.d.a().a(eri.E).k().n().d(5.0F).a(dpl.n).a(erj.b));
-   public static final dhy oe = a("lantern", dme::new, dvc.d.a().a(eri.g).k().n().d(3.5F).a(dpl.A).a($$0x -> 15).c().a(erj.b));
-   public static final dhy of = a("soul_lantern", dme::new, dvc.d.a().a(eri.g).k().n().d(3.5F).a(dpl.A).a($$0x -> 10).c().a(erj.b));
-   public static final dhy og = a("campfire", $$0x -> new dim(true, 1, $$0x), dvc.d.a().a(eri.I).a(dwe.e).d(2.0F).a(dpl.b).a(a(15)).c().i());
-   public static final dhy oh = a("soul_campfire", $$0x -> new dim(false, 2, $$0x), dvc.d.a().a(eri.I).a(dwe.e).d(2.0F).a(dpl.b).a(a(10)).c().i());
-   public static final dhy oi = a("sweet_berry_bush", dqb::new, dvc.d.a().a(eri.h).e().b().a(dpl.v).a(erj.b));
-   public static final dhy oj = a("warped_stem", dok::new, b(eri.ae));
-   public static final dhy ok = a("stripped_warped_stem", dok::new, b(eri.ae));
-   public static final dhy ol = a("warped_hyphae", dok::new, dvc.d.a().a(eri.af).a(dwe.e).d(2.0F).a(dpl.B));
-   public static final dhy om = a("stripped_warped_hyphae", dok::new, dvc.d.a().a(eri.af).a(dwe.e).d(2.0F).a(dpl.B));
-   public static final dhy on = a("warped_nylium", dnh::new, dvc.d.a().a(eri.ad).a(dwe.b).n().d(0.4F).a(dpl.C).e());
-   public static final dhy oo = a("warped_fungus", $$0x -> new dld(sd.d, on, $$0x), dvc.d.a().a(eri.x).d().b().a(dpl.D).a(erj.b));
-   public static final dhy op = a("warped_wart_block", dvc.d.a().a(eri.ag).d(1.0F).a(dpl.L));
-   public static final dhy oq = a("warped_roots", doj::new, dvc.d.a().a(eri.x).p().b().d().a(dpl.E).a(dvc.c.b).a(erj.b));
-   public static final dhy or = a("nether_sprouts", dnc::new, dvc.d.a().a(eri.x).p().b().d().a(dpl.O).a(dvc.c.b).a(erj.b));
-   public static final dhy os = a("crimson_stem", dok::new, b(eri.ab));
-   public static final dhy ot = a("stripped_crimson_stem", dok::new, b(eri.ab));
-   public static final dhy ou = a("crimson_hyphae", dok::new, dvc.d.a().a(eri.ac).a(dwe.e).d(2.0F).a(dpl.B));
-   public static final dhy ov = a("stripped_crimson_hyphae", dok::new, dvc.d.a().a(eri.ac).a(dwe.e).d(2.0F).a(dpl.B));
-   public static final dhy ow = a("crimson_nylium", dnh::new, dvc.d.a().a(eri.aa).a(dwe.b).n().d(0.4F).a(dpl.C).e());
-   public static final dhy ox = a("crimson_fungus", $$0x -> new dld(sd.b, ow, $$0x), dvc.d.a().a(eri.J).d().b().a(dpl.D).a(erj.b));
-   public static final dhy oy = a("shroomlight", dvc.d.a().a(eri.C).d(1.0F).a(dpl.F).a($$0x -> 15));
-   public static final dhy oz = a("weeping_vines", drm::new, dvc.d.a().a(eri.J).e().b().d().a(dpl.G).a(erj.b));
-   public static final dhy oA = a("weeping_vines_plant", drn::new, dvc.d.a().a(eri.J).b().d().a(dpl.G).a(erj.b));
-   public static final dhy oB = a("twisting_vines", dqr::new, dvc.d.a().a(eri.x).e().b().d().a(dpl.G).a(erj.b));
-   public static final dhy oC = a("twisting_vines_plant", dqs::new, dvc.d.a().a(eri.x).b().d().a(dpl.G).a(erj.b));
-   public static final dhy oD = a("crimson_roots", doj::new, dvc.d.a().a(eri.J).p().b().d().a(dpl.E).a(dvc.c.b).a(erj.b));
-   public static final dhy oE = a("crimson_planks", dvc.d.a().a(eri.ab).a(dwe.e).a(2.0F, 3.0F).a(dpl.aT));
-   public static final dhy oF = a("warped_planks", dvc.d.a().a(eri.ae).a(dwe.e).a(2.0F, 3.0F).a(dpl.aT));
-   public static final dhy oG = a("crimson_slab", dpb::new, dvc.d.a().a(oE.w()).a(dwe.e).a(2.0F, 3.0F).a(dpl.aT));
-   public static final dhy oH = a("warped_slab", dpb::new, dvc.d.a().a(oF.w()).a(dwe.e).a(2.0F, 3.0F).a(dpl.aT));
-   public static final dhy oI = a("crimson_pressure_plate", $$0x -> new dnv(dvs.n, $$0x), dvc.d.a().a(oE.w()).k().a(dwe.e).b().d(0.5F).a(erj.b));
-   public static final dhy oJ = a("warped_pressure_plate", $$0x -> new dnv(dvs.o, $$0x), dvc.d.a().a(oF.w()).k().a(dwe.e).b().d(0.5F).a(erj.b));
-   public static final dhy oK = a("crimson_fence", dkv::new, dvc.d.a().a(oE.w()).a(dwe.e).a(2.0F, 3.0F).a(dpl.aT));
-   public static final dhy oL = a("warped_fence", dkv::new, dvc.d.a().a(oF.w()).a(dwe.e).a(2.0F, 3.0F).a(dpl.aT));
-   public static final dhy oM = a("crimson_trapdoor", $$0x -> new dql(dvs.n, $$0x), dvc.d.a().a(oE.w()).a(dwe.e).d(3.0F).c().a(dia::a));
-   public static final dhy oN = a("warped_trapdoor", $$0x -> new dql(dvs.o, $$0x), dvc.d.a().a(oF.w()).a(dwe.e).d(3.0F).c().a(dia::a));
-   public static final dhy oO = a("crimson_fence_gate", $$0x -> new dkw(dwq.i, $$0x), dvc.d.a().a(oE.w()).k().a(dwe.e).a(2.0F, 3.0F));
-   public static final dhy oP = a("warped_fence_gate", $$0x -> new dkw(dwq.j, $$0x), dvc.d.a().a(oF.w()).k().a(dwe.e).a(2.0F, 3.0F));
-   public static final dhy oQ = a("crimson_stairs", oE);
-   public static final dhy oR = a("warped_stairs", oF);
-   public static final dhy oS = a("crimson_button", $$0x -> new dii(dvs.n, 30, $$0x), b());
-   public static final dhy oT = a("warped_button", $$0x -> new dii(dvs.o, 30, $$0x), b());
-   public static final dhy oU = a("crimson_door", $$0x -> new dke(dvs.n, $$0x), dvc.d.a().a(oE.w()).a(dwe.e).d(3.0F).c().a(erj.b));
-   public static final dhy oV = a("warped_door", $$0x -> new dke(dvs.o, $$0x), dvc.d.a().a(oF.w()).a(dwe.e).d(3.0F).c().a(erj.b));
-   public static final dhy oW = a("crimson_sign", $$0x -> new dpt(dwq.i, $$0x), dvc.d.a().a(oE.w()).a(dwe.e).k().b().d(1.0F));
-   public static final dhy oX = a("warped_sign", $$0x -> new dpt(dwq.j, $$0x), dvc.d.a().a(oF.w()).a(dwe.e).k().b().d(1.0F));
-   public static final dhy oY = a("crimson_wall_sign", $$0x -> new dqy(dwq.i, $$0x), a(oW, true).a(oE.w()).a(dwe.e).k().b().d(1.0F));
-   public static final dhy oZ = a("warped_wall_sign", $$0x -> new dqy(dwq.j, $$0x), a(oX, true).a(oF.w()).a(dwe.e).k().b().d(1.0F));
-   public static final dhy pa = a("structure_block", dpw::new, dvc.d.a().a(eri.w).n().a(-1.0F, 3600000.0F).g());
-   public static final dhy pb = a("jigsaw", dlz::new, dvc.d.a().a(eri.w).n().a(-1.0F, 3600000.0F).g());
-   public static final dhy pc = a("composter", djj::new, dvc.d.a().a(eri.n).a(dwe.e).d(0.6F).a(dpl.b).i());
-   public static final dhy pd = a("target", dqf::new, dvc.d.a().a(eri.o).d(0.5F).a(dpl.d));
-   public static final dhy pe = a("bee_nest", dhs::new, dvc.d.a().a(eri.s).a(dwe.e).d(0.3F).a(dpl.b).i());
-   public static final dhy pf = a("beehive", dhs::new, dvc.d.a().a(eri.n).a(dwe.e).d(0.6F).a(dpl.b).i());
-   public static final dhy pg = a("honey_block", dlr::new, dvc.d.a().a(eri.p).b(0.4F).c(0.5F).c().a(dpl.p));
-   public static final dhy ph = a("honeycomb_block", dvc.d.a().a(eri.p).d(0.6F).a(dpl.r));
-   public static final dhy pi = a("netherite_block", dvc.d.a().a(eri.D).n().a(50.0F, 1200.0F).a(dpl.R));
-   public static final dhy pj = a("ancient_debris", dvc.d.a().a(eri.D).n().a(30.0F, 1200.0F).a(dpl.S));
-   public static final dhy pk = a("crying_obsidian", djv::new, dvc.d.a().a(eri.D).a(dwe.b).n().a(50.0F, 1200.0F).a($$0x -> 10));
-   public static final dhy pl = a("respawn_anchor", dog::new, dvc.d.a().a(eri.D).a(dwe.b).n().a(50.0F, 1200.0F).a($$0x -> dog.a($$0x, 15)));
-   public static final dhy pm = a("potted_crimson_fungus", $$0x -> new dla(ox, $$0x), c());
-   public static final dhy pn = a("potted_warped_fungus", $$0x -> new dla(oo, $$0x), c());
-   public static final dhy po = a("potted_crimson_roots", $$0x -> new dla(oD, $$0x), c());
-   public static final dhy pp = a("potted_warped_roots", $$0x -> new dla(oq, $$0x), c());
-   public static final dhy pq = a("lodestone", dvc.d.a().a(eri.g).n().d(3.5F).a(dpl.T).a(erj.c));
-   public static final dhy pr = a("blackstone", dvc.d.a().a(eri.D).a(dwe.b).n().a(1.5F, 6.0F));
-   public static final dhy ps = a("blackstone_stairs", pr);
-   public static final dhy pt = a("blackstone_wall", dqw::new, dvc.d.b(pr).k());
-   public static final dhy pu = a("blackstone_slab", dpb::new, dvc.d.b(pr).a(2.0F, 6.0F));
-   public static final dhy pv = a("polished_blackstone", dvc.d.b(pr).a(2.0F, 6.0F));
-   public static final dhy pw = a("polished_blackstone_bricks", dvc.d.b(pv).a(1.5F, 6.0F));
-   public static final dhy px = a("cracked_polished_blackstone_bricks", dvc.d.b(pw));
-   public static final dhy py = a("chiseled_polished_blackstone", dvc.d.b(pv).a(1.5F, 6.0F));
-   public static final dhy pz = a("polished_blackstone_brick_slab", dpb::new, dvc.d.b(pw).a(2.0F, 6.0F));
-   public static final dhy pA = a("polished_blackstone_brick_stairs", pw);
-   public static final dhy pB = a("polished_blackstone_brick_wall", dqw::new, dvc.d.b(pw).k());
-   public static final dhy pC = a("gilded_blackstone", dvc.d.b(pr).a(dpl.W));
-   public static final dhy pD = a("polished_blackstone_stairs", pv);
-   public static final dhy pE = a("polished_blackstone_slab", dpb::new, dvc.d.b(pv));
-   public static final dhy pF = a("polished_blackstone_pressure_plate", $$0x -> new dnv(dvs.f, $$0x), dvc.d.a().a(eri.D).k().a(dwe.b).n().b().d(0.5F).a(erj.b));
-   public static final dhy pG = a("polished_blackstone_button", $$0x -> new dii(dvs.e, 20, $$0x), b());
-   public static final dhy pH = a("polished_blackstone_wall", dqw::new, dvc.d.b(pv).k());
-   public static final dhy pI = a("chiseled_nether_bricks", dvc.d.a().a(eri.J).a(dwe.b).n().a(2.0F, 6.0F).a(dpl.N));
-   public static final dhy pJ = a("cracked_nether_bricks", dvc.d.a().a(eri.J).a(dwe.b).n().a(2.0F, 6.0F).a(dpl.N));
-   public static final dhy pK = a("quartz_bricks", dvc.d.b(hd));
-   public static final dhy pL = a("candle", din::new, d(eri.c));
-   public static final dhy pM = a("white_candle", din::new, d(eri.d));
-   public static final dhy pN = a("orange_candle", din::new, d(eri.p));
-   public static final dhy pO = a("magenta_candle", din::new, d(eri.q));
-   public static final dhy pP = a("light_blue_candle", din::new, d(eri.r));
-   public static final dhy pQ = a("yellow_candle", din::new, d(eri.s));
-   public static final dhy pR = a("lime_candle", din::new, d(eri.t));
-   public static final dhy pS = a("pink_candle", din::new, d(eri.u));
-   public static final dhy pT = a("gray_candle", din::new, d(eri.v));
-   public static final dhy pU = a("light_gray_candle", din::new, d(eri.w));
-   public static final dhy pV = a("cyan_candle", din::new, d(eri.x));
-   public static final dhy pW = a("purple_candle", din::new, d(eri.y));
-   public static final dhy pX = a("blue_candle", din::new, d(eri.z));
-   public static final dhy pY = a("brown_candle", din::new, d(eri.A));
-   public static final dhy pZ = a("green_candle", din::new, d(eri.B));
-   public static final dhy qa = a("red_candle", din::new, d(eri.C));
-   public static final dhy qb = a("black_candle", din::new, d(eri.D));
-   public static final dhy qc = a("candle_cake", $$0x -> new dio(pL, $$0x), dvc.d.b(eg).a(a(3)));
-   public static final dhy qd = a("white_candle_cake", $$0x -> new dio(pM, $$0x), dvc.d.b(qc));
-   public static final dhy qe = a("orange_candle_cake", $$0x -> new dio(pN, $$0x), dvc.d.b(qc));
-   public static final dhy qf = a("magenta_candle_cake", $$0x -> new dio(pO, $$0x), dvc.d.b(qc));
-   public static final dhy qg = a("light_blue_candle_cake", $$0x -> new dio(pP, $$0x), dvc.d.b(qc));
-   public static final dhy qh = a("yellow_candle_cake", $$0x -> new dio(pQ, $$0x), dvc.d.b(qc));
-   public static final dhy qi = a("lime_candle_cake", $$0x -> new dio(pR, $$0x), dvc.d.b(qc));
-   public static final dhy qj = a("pink_candle_cake", $$0x -> new dio(pS, $$0x), dvc.d.b(qc));
-   public static final dhy qk = a("gray_candle_cake", $$0x -> new dio(pT, $$0x), dvc.d.b(qc));
-   public static final dhy ql = a("light_gray_candle_cake", $$0x -> new dio(pU, $$0x), dvc.d.b(qc));
-   public static final dhy qm = a("cyan_candle_cake", $$0x -> new dio(pV, $$0x), dvc.d.b(qc));
-   public static final dhy qn = a("purple_candle_cake", $$0x -> new dio(pW, $$0x), dvc.d.b(qc));
-   public static final dhy qo = a("blue_candle_cake", $$0x -> new dio(pX, $$0x), dvc.d.b(qc));
-   public static final dhy qp = a("brown_candle_cake", $$0x -> new dio(pY, $$0x), dvc.d.b(qc));
-   public static final dhy qq = a("green_candle_cake", $$0x -> new dio(pZ, $$0x), dvc.d.b(qc));
-   public static final dhy qr = a("red_candle_cake", $$0x -> new dio(qa, $$0x), dvc.d.b(qc));
-   public static final dhy qs = a("black_candle_cake", $$0x -> new dio(qb, $$0x), dvc.d.b(qc));
-   public static final dhy qt = a("amethyst_block", dgw::new, dvc.d.a().a(eri.y).d(1.5F).a(dpl.Y).n());
-   public static final dhy qu = a("budding_amethyst", dig::new, dvc.d.a().a(eri.y).e().d(1.5F).a(dpl.Y).n().a(erj.b));
-   public static final dhy qv = a("amethyst_cluster", $$0x -> new dgx(7.0F, 3.0F, $$0x), dvc.d.a().a(eri.y).k().c().a(dpl.Z).d(1.5F).a($$0x -> 5).a(erj.b));
-   public static final dhy qw = a("large_amethyst_bud", $$0x -> new dgx(5.0F, 3.0F, $$0x), dvc.d.b(qv).a(dpl.ab).a($$0x -> 4));
-   public static final dhy qx = a("medium_amethyst_bud", $$0x -> new dgx(4.0F, 3.0F, $$0x), dvc.d.b(qv).a(dpl.ac).a($$0x -> 2));
-   public static final dhy qy = a("small_amethyst_bud", $$0x -> new dgx(3.0F, 4.0F, $$0x), dvc.d.b(qv).a(dpl.aa).a($$0x -> 1));
-   public static final dhy qz = a("tuff", dvc.d.a().a(eri.R).a(dwe.b).a(dpl.ad).n().a(1.5F, 6.0F));
-   public static final dhy qA = a("tuff_slab", dpb::new, dvc.d.b(qz));
-   public static final dhy qB = a("tuff_stairs", $$0x -> new dps(qz.m(), $$0x), dvc.d.b(qz));
-   public static final dhy qC = a("tuff_wall", dqw::new, dvc.d.b(qz).k());
-   public static final dhy qD = a("polished_tuff", dvc.d.b(qz).a(dpl.af));
-   public static final dhy qE = a("polished_tuff_slab", dpb::new, dvc.d.b(qD));
-   public static final dhy qF = a("polished_tuff_stairs", $$0x -> new dps(qD.m(), $$0x), dvc.d.b(qD));
-   public static final dhy qG = a("polished_tuff_wall", dqw::new, dvc.d.b(qD).k());
-   public static final dhy qH = a("chiseled_tuff", dvc.d.b(qz));
-   public static final dhy qI = a("tuff_bricks", dvc.d.b(qz).a(dpl.ae));
-   public static final dhy qJ = a("tuff_brick_slab", dpb::new, dvc.d.b(qI));
-   public static final dhy qK = a("tuff_brick_stairs", $$0x -> new dps(qI.m(), $$0x), dvc.d.b(qI));
-   public static final dhy qL = a("tuff_brick_wall", dqw::new, dvc.d.b(qI).k());
-   public static final dhy qM = a("chiseled_tuff_bricks", dvc.d.b(qI));
-   public static final dhy qN = a("calcite", dvc.d.a().a(eri.K).a(dwe.b).a(dpl.ag).n().d(0.75F));
-   public static final dhy qO = a("tinted_glass", dqg::new, dvc.d.b(aQ).a(eri.v).c().a(dia::a).a(dia::b).b(dia::b).c(dia::b));
-   public static final dhy qP = a("powder_snow", dns::new, dvc.d.a().a(eri.i).d(0.25F).a(dpl.l).f().c().a(dia::b));
-   public static final dhy qQ = a("sculk_sensor", dor::new, dvc.d.a().a(eri.x).d(1.5F).a(dpl.ay).a($$0x -> 1).e(($$0x, $$1x, $$2) -> dor.o($$0x) == dwk.b));
-   public static final dhy qR = a("calibrated_sculk_sensor", dil::new, dvc.d.b(qQ));
-   public static final dhy qS = a("sculk", dop::new, dvc.d.a().a(eri.D).d(0.2F).a(dpl.aA));
-   public static final dhy qT = a("sculk_vein", dou::new, dvc.d.a().a(eri.D).k().b().d(0.2F).a(dpl.aB).a(erj.b));
-   public static final dhy qU = a("sculk_catalyst", doq::new, dvc.d.a().a(eri.D).a(3.0F, 3.0F).a(dpl.az).a($$0x -> 6));
-   public static final dhy qV = a("sculk_shrieker", dos::new, dvc.d.a().a(eri.D).a(3.0F, 3.0F).a(dpl.aC));
-   public static final dhy qW = a("copper_block", $$0x -> new drg(drd.a.a, $$0x), dvc.d.a().a(eri.p).n().a(3.0F, 6.0F).a(dpl.aj));
-   public static final dhy qX = a("exposed_copper", $$0x -> new drg(drd.a.b, $$0x), dvc.d.a(qW).a(eri.S));
-   public static final dhy qY = a("weathered_copper", $$0x -> new drg(drd.a.c, $$0x), dvc.d.a(qW).a(eri.ae));
-   public static final dhy qZ = a("oxidized_copper", $$0x -> new drg(drd.a.d, $$0x), dvc.d.a(qW).a(eri.ad));
-   public static final dhy ra = a("copper_ore", $$0x -> new dki(bra.a(0), $$0x), dvc.d.b(P));
-   public static final dhy rb = a("deepslate_copper_ore", $$0x -> new dki(bra.a(0), $$0x), dvc.d.b(ra).a(eri.ah).a(4.5F, 3.0F).a(dpl.aE));
-   public static final dhy rc = a("oxidized_cut_copper", $$0x -> new drg(drd.a.d, $$0x), dvc.d.a(qZ));
-   public static final dhy rd = a("weathered_cut_copper", $$0x -> new drg(drd.a.c, $$0x), dvc.d.a(qY));
-   public static final dhy re = a("exposed_cut_copper", $$0x -> new drg(drd.a.b, $$0x), dvc.d.a(qX));
-   public static final dhy rf = a("cut_copper", $$0x -> new drg(drd.a.a, $$0x), dvc.d.a(qW));
-   public static final dhy rg = a("oxidized_chiseled_copper", $$0x -> new drg(drd.a.d, $$0x), dvc.d.a(qZ));
-   public static final dhy rh = a("weathered_chiseled_copper", $$0x -> new drg(drd.a.c, $$0x), dvc.d.a(qY));
-   public static final dhy ri = a("exposed_chiseled_copper", $$0x -> new drg(drd.a.b, $$0x), dvc.d.a(qX));
-   public static final dhy rj = a("chiseled_copper", $$0x -> new drg(drd.a.a, $$0x), dvc.d.a(qW));
-   public static final dhy rk = a("waxed_oxidized_chiseled_copper", dvc.d.a(rg));
-   public static final dhy rl = a("waxed_weathered_chiseled_copper", dvc.d.a(rh));
-   public static final dhy rm = a("waxed_exposed_chiseled_copper", dvc.d.a(ri));
-   public static final dhy rn = a("waxed_chiseled_copper", dvc.d.a(rj));
-   public static final dhy ro = a("oxidized_cut_copper_stairs", $$0x -> new drj(drd.a.d, rc.m(), $$0x), dvc.d.a(rc));
-   public static final dhy rp = a("weathered_cut_copper_stairs", $$0x -> new drj(drd.a.c, rd.m(), $$0x), dvc.d.a(qY));
-   public static final dhy rq = a("exposed_cut_copper_stairs", $$0x -> new drj(drd.a.b, re.m(), $$0x), dvc.d.a(qX));
-   public static final dhy rr = a("cut_copper_stairs", $$0x -> new drj(drd.a.a, rf.m(), $$0x), dvc.d.a(qW));
-   public static final dhy rs = a("oxidized_cut_copper_slab", $$0x -> new dri(drd.a.d, $$0x), dvc.d.a(rc));
-   public static final dhy rt = a("weathered_cut_copper_slab", $$0x -> new dri(drd.a.c, $$0x), dvc.d.a(rd));
-   public static final dhy ru = a("exposed_cut_copper_slab", $$0x -> new dri(drd.a.b, $$0x), dvc.d.a(re));
-   public static final dhy rv = a("cut_copper_slab", $$0x -> new dri(drd.a.a, $$0x), dvc.d.a(rf));
-   public static final dhy rw = a("waxed_copper_block", dvc.d.a(qW));
-   public static final dhy rx = a("waxed_weathered_copper", dvc.d.a(qY));
-   public static final dhy ry = a("waxed_exposed_copper", dvc.d.a(qX));
-   public static final dhy rz = a("waxed_oxidized_copper", dvc.d.a(qZ));
-   public static final dhy rA = a("waxed_oxidized_cut_copper", dvc.d.a(qZ));
-   public static final dhy rB = a("waxed_weathered_cut_copper", dvc.d.a(qY));
-   public static final dhy rC = a("waxed_exposed_cut_copper", dvc.d.a(qX));
-   public static final dhy rD = a("waxed_cut_copper", dvc.d.a(qW));
-   public static final dhy rE = b("waxed_oxidized_cut_copper_stairs", rA);
-   public static final dhy rF = b("waxed_weathered_cut_copper_stairs", rB);
-   public static final dhy rG = b("waxed_exposed_cut_copper_stairs", rC);
-   public static final dhy rH = b("waxed_cut_copper_stairs", rD);
-   public static final dhy rI = a("waxed_oxidized_cut_copper_slab", dpb::new, dvc.d.a(rA).n());
-   public static final dhy rJ = a("waxed_weathered_cut_copper_slab", dpb::new, dvc.d.a(rB).n());
-   public static final dhy rK = a("waxed_exposed_cut_copper_slab", dpb::new, dvc.d.a(rC).n());
-   public static final dhy rL = a("waxed_cut_copper_slab", dpb::new, dvc.d.a(rD).n());
-   public static final dhy rM = a("copper_door", $$0x -> new drf(dvs.c, drd.a.a, $$0x), dvc.d.a().a(qW.w()).a(3.0F, 6.0F).c().n().a(erj.b));
-   public static final dhy rN = a("exposed_copper_door", $$0x -> new drf(dvs.c, drd.a.b, $$0x), dvc.d.a(rM).a(qX.w()));
-   public static final dhy rO = a("oxidized_copper_door", $$0x -> new drf(dvs.c, drd.a.d, $$0x), dvc.d.a(rM).a(qZ.w()));
-   public static final dhy rP = a("weathered_copper_door", $$0x -> new drf(dvs.c, drd.a.c, $$0x), dvc.d.a(rM).a(qY.w()));
-   public static final dhy rQ = a("waxed_copper_door", $$0x -> new dke(dvs.c, $$0x), dvc.d.a(rM));
-   public static final dhy rR = a("waxed_exposed_copper_door", $$0x -> new dke(dvs.c, $$0x), dvc.d.a(rN));
-   public static final dhy rS = a("waxed_oxidized_copper_door", $$0x -> new dke(dvs.c, $$0x), dvc.d.a(rO));
-   public static final dhy rT = a("waxed_weathered_copper_door", $$0x -> new dke(dvs.c, $$0x), dvc.d.a(rP));
-   public static final dhy rU = a("copper_trapdoor", $$0x -> new drk(dvs.c, drd.a.a, $$0x), dvc.d.a().a(qW.w()).a(3.0F, 6.0F).n().c().a(dia::a));
-   public static final dhy rV = a("exposed_copper_trapdoor", $$0x -> new drk(dvs.c, drd.a.b, $$0x), dvc.d.a(rU).a(qX.w()));
-   public static final dhy rW = a("oxidized_copper_trapdoor", $$0x -> new drk(dvs.c, drd.a.d, $$0x), dvc.d.a(rU).a(qZ.w()));
-   public static final dhy rX = a("weathered_copper_trapdoor", $$0x -> new drk(dvs.c, drd.a.c, $$0x), dvc.d.a(rU).a(qY.w()));
-   public static final dhy rY = a("waxed_copper_trapdoor", $$0x -> new dql(dvs.c, $$0x), dvc.d.a(rU));
-   public static final dhy rZ = a("waxed_exposed_copper_trapdoor", $$0x -> new dql(dvs.c, $$0x), dvc.d.a(rV));
-   public static final dhy sa = a("waxed_oxidized_copper_trapdoor", $$0x -> new dql(dvs.c, $$0x), dvc.d.a(rW));
-   public static final dhy sb = a("waxed_weathered_copper_trapdoor", $$0x -> new dql(dvs.c, $$0x), dvc.d.a(rX));
-   public static final dhy sc = a(
-      "copper_grate", $$0x -> new drh(drd.a.a, $$0x), dvc.d.a().a(3.0F, 6.0F).a(dpl.al).a(eri.p).c().n().a(dia::a).a(dia::b).b(dia::b).c(dia::b)
-   );
-   public static final dhy sd = a("exposed_copper_grate", $$0x -> new drh(drd.a.b, $$0x), dvc.d.a(sc).a(eri.S));
-   public static final dhy se = a("weathered_copper_grate", $$0x -> new drh(drd.a.c, $$0x), dvc.d.a(sc).a(eri.ae));
-   public static final dhy sf = a("oxidized_copper_grate", $$0x -> new drh(drd.a.d, $$0x), dvc.d.a(sc).a(eri.ad));
-   public static final dhy sg = a("waxed_copper_grate", drc::new, dvc.d.a(sc));
-   public static final dhy sh = a("waxed_exposed_copper_grate", drc::new, dvc.d.a(sd));
-   public static final dhy si = a("waxed_weathered_copper_grate", drc::new, dvc.d.a(se));
-   public static final dhy sj = a("waxed_oxidized_copper_grate", drc::new, dvc.d.a(sf));
-   public static final dhy sk = a("copper_bulb", $$0x -> new dre(drd.a.a, $$0x), dvc.d.a().a(qW.w()).a(3.0F, 6.0F).a(dpl.ak).n().a(dia::b).a(a(15)));
-   public static final dhy sl = a("exposed_copper_bulb", $$0x -> new dre(drd.a.b, $$0x), dvc.d.a(sk).a(eri.S).a(a(12)));
-   public static final dhy sm = a("weathered_copper_bulb", $$0x -> new dre(drd.a.c, $$0x), dvc.d.a(sk).a(eri.ae).a(a(8)));
-   public static final dhy sn = a("oxidized_copper_bulb", $$0x -> new dre(drd.a.d, $$0x), dvc.d.a(sk).a(eri.ad).a(a(4)));
-   public static final dhy so = a("waxed_copper_bulb", djm::new, dvc.d.a(sk));
-   public static final dhy sp = a("waxed_exposed_copper_bulb", djm::new, dvc.d.a(sl));
-   public static final dhy sq = a("waxed_weathered_copper_bulb", djm::new, dvc.d.a(sm));
-   public static final dhy sr = a("waxed_oxidized_copper_bulb", djm::new, dvc.d.a(sn));
-   public static final dhy ss = a("lightning_rod", dmm::new, dvc.d.a().a(eri.p).k().n().a(3.0F, 6.0F).a(dpl.aj).c());
-   public static final dhy st = a(
-      "pointed_dripstone", dnp::new, dvc.d.a().a(eri.W).k().a(dwe.b).c().a(dpl.ai).e().a(1.5F, 3.0F).f().a(dvc.c.b).a(erj.b).a(dia::b)
-   );
-   public static final dhy su = a("dripstone_block", dvc.d.a().a(eri.W).a(dwe.b).a(dpl.ah).n().a(1.5F, 1.0F));
-   public static final dhy sv = a("cave_vines", div::new, dvc.d.a().a(eri.h).e().b().a(diu.i_(14)).d().a(dpl.am).a(erj.b));
-   public static final dhy sw = a("cave_vines_plant", diw::new, dvc.d.a().a(eri.h).b().a(diu.i_(14)).d().a(dpl.am).a(erj.b));
-   public static final dhy sx = a("spore_blossom", dpo::new, dvc.d.a().a(eri.h).d().b().a(dpl.an).a(erj.b));
-   public static final dhy sy = a("azalea", dha::new, dvc.d.a().a(eri.h).l().d().a(dpl.ao).c().a(erj.b));
-   public static final dhy sz = a("flowering_azalea", dha::new, dvc.d.a().a(eri.h).l().d().a(dpl.ap).c().a(erj.b));
-   public static final dhy sA = a("moss_carpet", dip::new, dvc.d.a().a(eri.B).d(0.1F).a(dpl.aq).a(erj.b));
-   public static final dhy sB = a("pink_petals", dnk::new, dvc.d.a().a(eri.h).b().a(dpl.ar).a(erj.b));
-   public static final dhy sC = a("moss_block", dmv::new, dvc.d.a().a(eri.B).d(0.1F).a(dpl.as).a(erj.b));
-   public static final dhy sD = a("big_dripleaf", dhv::new, dvc.d.a().a(eri.h).l().d(0.1F).a(dpl.at).a(erj.b));
-   public static final dhy sE = a("big_dripleaf_stem", dhw::new, dvc.d.a().a(eri.h).b().d(0.1F).a(dpl.at).a(erj.b));
-   public static final dhy sF = a("small_dripleaf", dpd::new, dvc.d.a().a(eri.h).b().d().a(dpl.au).a(dvc.c.c).a(erj.b));
-   public static final dhy sG = a("hanging_roots", dlo::new, dvc.d.a().a(eri.k).p().b().d().a(dpl.aw).a(dvc.c.b).i().a(erj.b));
-   public static final dhy sH = a("rooted_dirt", doi::new, dvc.d.a().a(eri.k).d(0.5F).a(dpl.av));
-   public static final dhy sI = a("mud", dmw::new, dvc.d.b(j).a(eri.T).a(dia::b).a(dia::a).c(dia::a).b(dia::a).a(dpl.aM));
-   public static final dhy sJ = a("deepslate", dok::new, dvc.d.a().a(eri.ah).a(dwe.b).n().a(3.0F, 6.0F).a(dpl.aE));
-   public static final dhy sK = a("cobbled_deepslate", dvc.d.b(sJ).a(3.5F, 6.0F));
-   public static final dhy sL = a("cobbled_deepslate_stairs", sK);
-   public static final dhy sM = a("cobbled_deepslate_slab", dpb::new, dvc.d.b(sK));
-   public static final dhy sN = a("cobbled_deepslate_wall", dqw::new, dvc.d.b(sK).k());
-   public static final dhy sO = a("polished_deepslate", dvc.d.b(sK).a(dpl.aH));
-   public static final dhy sP = a("polished_deepslate_stairs", sO);
-   public static final dhy sQ = a("polished_deepslate_slab", dpb::new, dvc.d.b(sO));
-   public static final dhy sR = a("polished_deepslate_wall", dqw::new, dvc.d.b(sO).k());
-   public static final dhy sS = a("deepslate_tiles", dvc.d.b(sK).a(dpl.aG));
-   public static final dhy sT = a("deepslate_tile_stairs", sS);
-   public static final dhy sU = a("deepslate_tile_slab", dpb::new, dvc.d.b(sS));
-   public static final dhy sV = a("deepslate_tile_wall", dqw::new, dvc.d.b(sS).k());
-   public static final dhy sW = a("deepslate_bricks", dvc.d.b(sK).a(dpl.aF));
-   public static final dhy sX = a("deepslate_brick_stairs", sW);
-   public static final dhy sY = a("deepslate_brick_slab", dpb::new, dvc.d.b(sW));
-   public static final dhy sZ = a("deepslate_brick_wall", dqw::new, dvc.d.b(sW).k());
-   public static final dhy ta = a("chiseled_deepslate", dvc.d.b(sK).a(dpl.aF));
-   public static final dhy tb = a("cracked_deepslate_bricks", dvc.d.b(sW));
-   public static final dhy tc = a("cracked_deepslate_tiles", dvc.d.b(sS));
-   public static final dhy td = a("infested_deepslate", $$0x -> new dlx(sJ, $$0x), dvc.d.a().a(eri.ah).a(dpl.aE));
-   public static final dhy te = a("smooth_basalt", dvc.d.b(dY));
-   public static final dhy tf = a("raw_iron_block", dvc.d.a().a(eri.ai).a(dwe.b).n().a(5.0F, 6.0F));
-   public static final dhy tg = a("raw_copper_block", dvc.d.a().a(eri.p).a(dwe.b).n().a(5.0F, 6.0F));
-   public static final dhy th = a("raw_gold_block", dvc.d.a().a(eri.E).a(dwe.b).n().a(5.0F, 6.0F));
-   public static final dhy ti = a("potted_azalea_bush", $$0x -> new dla(sy, $$0x), c());
-   public static final dhy tj = a("potted_flowering_azalea_bush", $$0x -> new dla(sz, $$0x), c());
-   public static final dhy tk = a("ochre_froglight", dok::new, dvc.d.a().a(eri.c).d(0.3F).a($$0x -> 15).a(dpl.aI));
-   public static final dhy tl = a("verdant_froglight", dok::new, dvc.d.a().a(eri.aj).d(0.3F).a($$0x -> 15).a(dpl.aI));
-   public static final dhy tm = a("pearlescent_froglight", dok::new, dvc.d.a().a(eri.u).d(0.3F).a($$0x -> 15).a(dpl.aI));
-   public static final dhy tn = a("frogspawn", dlb::new, dvc.d.a().a(eri.m).d().c().b().a(dpl.aJ).a(erj.b));
-   public static final dhy to = a("reinforced_deepslate", dvc.d.a().a(eri.ah).a(dwe.b).a(dpl.aE).a(55.0F, 1200.0F));
-   public static final dhy tp = a("decorated_pot", djy::new, dvc.d.a().a(eri.Y).a(0.0F, 0.0F).a(erj.b).c());
-   public static final dhy tq = a("crafter", djr::new, dvc.d.a().a(eri.l).a(1.5F, 3.5F));
-   public static final dhy tr = a("trial_spawner", dqn::new, dvc.d.a().a(eri.l).a(dwe.b).a($$0x -> $$0x.c(dqn.b).a()).d(50.0F).a(dpl.bd).c(dia::b).c());
-   public static final dhy ts = a("vault", dqt::new, dvc.d.a().a(eri.l).a(dwe.b).c().a(dpl.bg).a($$0x -> $$0x.c(dqt.b).a()).d(50.0F).c(dia::b));
-   public static final dhy tt = a("heavy_core", dlq::new, dvc.d.a().a(eri.g).a(dwe.c).a(dpl.bh).d(10.0F).a(erj.a).f(1200.0F));
+public class dia extends dhq {
+   public static final MapCodec<dia> a = b(dia::new);
+   public static final dwd b = dlz.aF;
+   public static final dwh<dvx> c = dvz.V;
+   public static final dwa d = dvz.w;
+   private static final fah f = die.a(0.0, 0.0, 4.0, 16.0, 16.0, 12.0);
+   private static final fah g = die.a(4.0, 0.0, 0.0, 12.0, 16.0, 16.0);
+   private static final fah h = die.a(5.0, 6.0, 5.0, 11.0, 13.0, 11.0);
+   private static final fah i = die.a(4.0, 4.0, 4.0, 12.0, 6.0, 12.0);
+   private static final fah j = fae.a(i, h);
+   private static final fah k = fae.a(j, die.a(7.0, 13.0, 0.0, 9.0, 15.0, 16.0));
+   private static final fah l = fae.a(j, die.a(0.0, 13.0, 7.0, 16.0, 15.0, 9.0));
+   private static final fah m = fae.a(j, die.a(0.0, 13.0, 7.0, 13.0, 15.0, 9.0));
+   private static final fah n = fae.a(j, die.a(3.0, 13.0, 7.0, 16.0, 15.0, 9.0));
+   private static final fah o = fae.a(j, die.a(7.0, 13.0, 0.0, 9.0, 15.0, 13.0));
+   private static final fah G = fae.a(j, die.a(7.0, 13.0, 3.0, 9.0, 15.0, 16.0));
+   private static final fah H = fae.a(j, die.a(7.0, 13.0, 7.0, 9.0, 16.0, 9.0));
+   public static final int e = 1;
 
-   private static ToIntFunction<dvd> a(int $$0) {
-      return $$1 -> $$1.c(dvt.r) ? $$0 : 0;
+   @Override
+   public MapCodec<dia> a() {
+      return a;
    }
 
-   private static Function<dvd, eri> a(eri $$0) {
-      return $$1 -> $$1.c(dvt.C) ? eri.m : $$0;
+   public dia(dvi.d $$0) {
+      super($$0);
+      this.l(this.F.b().b(b, jm.c).b(c, dvx.a).b(d, Boolean.valueOf(false)));
    }
 
-   private static Boolean a(dvd $$0, dea $$1, jg $$2, bug<?> $$3) {
-      return false;
-   }
+   @Override
+   protected void a(dvj $$0, dfb $$1, jh $$2, die $$3, @Nullable ess $$4, boolean $$5) {
+      boolean $$6 = $$1.C($$2);
+      if ($$6 != $$0.c(d)) {
+         if ($$6) {
+            this.a($$1, $$2, null);
+         }
 
-   private static Boolean b(dvd $$0, dea $$1, jg $$2, bug<?> $$3) {
-      return true;
-   }
-
-   private static Boolean c(dvd $$0, dea $$1, jg $$2, bug<?> $$3) {
-      return $$3 == bug.au || $$3 == bug.ax;
-   }
-
-   private static dhy a(String $$0, cuu $$1) {
-      return a($$0, $$1x -> new dhr($$1, $$1x), dvc.d.a().a($$1x -> $$1x.c(dhr.b) == dvq.b ? $$1.e() : eri.d).a(dpl.b).d(0.2F).c().i().a(erj.b));
-   }
-
-   private static dvc.d a(eri $$0, eri $$1, dpl $$2) {
-      return dvc.d.a().a($$2x -> $$2x.c(dok.i) == jl.a.b ? $$0 : $$1).a(dwe.e).d(2.0F).a($$2).i();
-   }
-
-   private static dvc.d b(eri $$0) {
-      return dvc.d.a().a($$1 -> $$0).a(dwe.e).d(2.0F).a(dpl.B);
-   }
-
-   private static boolean a(dvd $$0, dea $$1, jg $$2) {
-      return true;
-   }
-
-   private static boolean b(dvd $$0, dea $$1, jg $$2) {
-      return false;
-   }
-
-   private static dhy b(String $$0, cuu $$1) {
-      return a($$0, $$1x -> new dpq($$1, $$1x), dvc.d.a().a($$1).a(dwe.d).d(0.3F).a(dpl.h).c().a(dia::a).a(dia::b).b(dia::b).c(dia::b));
-   }
-
-   private static dvc.d a(dpl $$0) {
-      return dvc.d.a().a(eri.h).d(0.2F).e().a($$0).c().a(dia::c).b(dia::b).c(dia::b).i().a(erj.b).a(dia::b);
-   }
-
-   private static dvc.d c(eri $$0) {
-      return dvc.d.a().a($$0).k().d(2.0F).f().c().b(tu).c(tu).a(erj.b);
-   }
-
-   private static dvc.d a() {
-      return dvc.d.a().a(eri.l).d(1.5F).a(dia::b).b(tv).c(tv).a(erj.c);
-   }
-
-   private static dvc.d b() {
-      return dvc.d.a().b().d(0.5F).a(erj.b);
-   }
-
-   private static dvc.d c() {
-      return dvc.d.a().d().c().a(erj.b);
-   }
-
-   private static dvc.d d(eri $$0) {
-      return dvc.d.a().a($$0).c().d(0.1F).a(dpl.X).a(din.i).a(erj.b);
-   }
-
-   @Deprecated
-   private static dhy a(String $$0, dhy $$1) {
-      return a($$0, $$1x -> new dps($$1.m(), $$1x), dvc.d.b($$1));
-   }
-
-   private static dhy b(String $$0, dhy $$1) {
-      return a($$0, $$1x -> new dps($$1.m(), $$1x), dvc.d.a($$1));
-   }
-
-   private static dvc.d a(dhy $$0, boolean $$1) {
-      dvc.d $$2 = $$0.s();
-      dvc.d $$3 = dvc.d.a().a($$0.u());
-      if ($$1) {
-         $$3 = $$3.a($$0.v());
+         $$1.a($$2, $$0.b(d, Boolean.valueOf($$6)), 3);
       }
-
-      return $$3;
    }
 
-   private static dhy a(alg<dhy> $$0, Function<dvc.d, dhy> $$1, dvc.d $$2) {
-      dhy $$3 = $$1.apply($$2.a($$0));
-      return kc.a(lx.e, $$0, $$3);
+   @Override
+   protected void a(dfb $$0, dvj $$1, ezj $$2, cpg $$3) {
+      bue $$4 = $$3.s();
+      com $$5 = $$4 instanceof com ? (com)$$4 : null;
+      this.a($$0, $$1, $$2, $$5, true);
    }
 
-   private static dhy a(alg<dhy> $$0, dvc.d $$1) {
-      return a($$0, dhy::new, $$1);
+   @Override
+   protected bsd a(dvj $$0, dfb $$1, jh $$2, com $$3, ezj $$4) {
+      return (bsd)(this.a($$1, $$0, $$4, $$3, true) ? bsd.a : bsd.e);
    }
 
-   private static alg<dhy> a(String $$0) {
-      return alg.a(ly.f, alh.b($$0));
+   public boolean a(dfb $$0, dvj $$1, ezj $$2, @Nullable com $$3, boolean $$4) {
+      jm $$5 = $$2.c();
+      jh $$6 = $$2.b();
+      boolean $$7 = !$$4 || this.a($$1, $$5, $$2.g().e - (double)$$6.v());
+      if ($$7) {
+         boolean $$8 = this.a($$3, $$0, $$6, $$5);
+         if ($$8 && $$3 != null) {
+            $$3.a(awv.az);
+         }
+
+         return true;
+      } else {
+         return false;
+      }
    }
 
-   private static dhy a(String $$0, Function<dvc.d, dhy> $$1, dvc.d $$2) {
-      return a(a($$0), $$1, $$2);
+   private boolean a(dvj $$0, jm $$1, double $$2) {
+      if ($$1.o() != jm.a.b && !($$2 > 0.8124F)) {
+         jm $$3 = $$0.c(b);
+         dvx $$4 = $$0.c(c);
+         switch ($$4) {
+            case a:
+               return $$3.o() == $$1.o();
+            case c:
+            case d:
+               return $$3.o() != $$1.o();
+            case b:
+               return true;
+            default:
+               return false;
+         }
+      } else {
+         return false;
+      }
    }
 
-   private static dhy a(String $$0, dvc.d $$1) {
-      return a($$0, dhy::new, $$1);
+   public boolean a(dfb $$0, jh $$1, @Nullable jm $$2) {
+      return this.a(null, $$0, $$1, $$2);
    }
 
-   static {
-      for (dhy $$0 : lx.e) {
-         UnmodifiableIterator var2 = $$0.l().a().iterator();
+   public boolean a(@Nullable bue $$0, dfb $$1, jh $$2, @Nullable jm $$3) {
+      dsm $$4 = $$1.c_($$2);
+      if (!$$1.C && $$4 instanceof dsk) {
+         if ($$3 == null) {
+            $$3 = $$1.a_($$2).c(b);
+         }
 
-         while (var2.hasNext()) {
-            dvd $$1 = (dvd)var2.next();
-            dhy.q.b($$1);
-            $$1.a();
+         ((dsk)$$4).a($$3);
+         $$1.a(null, $$2, awl.bZ, awm.e, 2.0F, 1.0F);
+         $$1.a($$0, eag.c, $$2);
+         return true;
+      } else {
+         return false;
+      }
+   }
+
+   private fah o(dvj $$0) {
+      jm $$1 = $$0.c(b);
+      dvx $$2 = $$0.c(c);
+      if ($$2 == dvx.a) {
+         return $$1 != jm.c && $$1 != jm.d ? g : f;
+      } else if ($$2 == dvx.b) {
+         return H;
+      } else if ($$2 == dvx.d) {
+         return $$1 != jm.c && $$1 != jm.d ? l : k;
+      } else if ($$1 == jm.c) {
+         return o;
+      } else if ($$1 == jm.d) {
+         return G;
+      } else {
+         return $$1 == jm.f ? n : m;
+      }
+   }
+
+   @Override
+   protected fah b(dvj $$0, deg $$1, jh $$2, ezs $$3) {
+      return this.o($$0);
+   }
+
+   @Override
+   protected fah a(dvj $$0, deg $$1, jh $$2, ezs $$3) {
+      return this.o($$0);
+   }
+
+   @Override
+   protected dok a_(dvj $$0) {
+      return dok.c;
+   }
+
+   @Nullable
+   @Override
+   public dvj a(czs $$0) {
+      jm $$1 = $$0.k();
+      jh $$2 = $$0.a();
+      dfb $$3 = $$0.q();
+      jm.a $$4 = $$1.o();
+      if ($$4 == jm.a.b) {
+         dvj $$5 = this.m().b(c, $$1 == jm.a ? dvx.b : dvx.a).b(b, $$0.g());
+         if ($$5.a((dfe)$$0.q(), $$2)) {
+            return $$5;
+         }
+      } else {
+         boolean $$6 = $$4 == jm.a.a && $$3.a_($$2.h()).c($$3, $$2.h(), jm.f) && $$3.a_($$2.i()).c($$3, $$2.i(), jm.e)
+            || $$4 == jm.a.c && $$3.a_($$2.f()).c($$3, $$2.f(), jm.d) && $$3.a_($$2.g()).c($$3, $$2.g(), jm.c);
+         dvj $$7 = this.m().b(b, $$1.g()).b(c, $$6 ? dvx.d : dvx.c);
+         if ($$7.a((dfe)$$0.q(), $$0.a())) {
+            return $$7;
+         }
+
+         boolean $$8 = $$3.a_($$2.e()).c($$3, $$2.e(), jm.b);
+         $$7 = $$7.b(c, $$8 ? dvx.a : dvx.b);
+         if ($$7.a((dfe)$$0.q(), $$0.a())) {
+            return $$7;
          }
       }
+
+      return null;
+   }
+
+   @Override
+   protected void a(dvj $$0, arn $$1, jh $$2, det $$3, BiConsumer<cwb, jh> $$4) {
+      if ($$3.f()) {
+         this.a($$1, $$2, null);
+      }
+
+      super.a($$0, $$1, $$2, $$3, $$4);
+   }
+
+   @Override
+   protected dvj a(dvj $$0, jm $$1, dvj $$2, dfc $$3, jh $$4, jh $$5) {
+      dvx $$6 = $$0.c(c);
+      jm $$7 = q($$0).g();
+      if ($$7 == $$1 && !$$0.a($$3, $$4) && $$6 != dvx.d) {
+         return dig.a.m();
+      } else {
+         if ($$1.o() == $$0.c(b).o()) {
+            if ($$6 == dvx.d && !$$2.c($$3, $$5, $$1)) {
+               return $$0.b(c, dvx.c).b(b, $$1.g());
+            }
+
+            if ($$6 == dvx.c && $$7.g() == $$1 && $$2.c($$3, $$5, $$0.c(b))) {
+               return $$0.b(c, dvx.d);
+            }
+         }
+
+         return super.a($$0, $$1, $$2, $$3, $$4, $$5);
+      }
+   }
+
+   @Override
+   protected boolean a(dvj $$0, dfe $$1, jh $$2) {
+      jm $$3 = q($$0).g();
+      return $$3 == jm.b ? die.a($$1, $$2.d(), jm.a) : dkx.b($$1, $$2, $$3);
+   }
+
+   private static jm q(dvj $$0) {
+      switch ((dvx)$$0.c(c)) {
+         case a:
+            return jm.b;
+         case b:
+            return jm.a;
+         default:
+            return $$0.c(b).g();
+      }
+   }
+
+   @Override
+   protected void a(dvk.a<die, dvj> $$0) {
+      $$0.a(b, c, d);
+   }
+
+   @Nullable
+   @Override
+   public dsm a(jh $$0, dvj $$1) {
+      return new dsk($$0, $$1);
+   }
+
+   @Nullable
+   @Override
+   public <T extends dsm> dsn<T> a(dfb $$0, dvj $$1, dso<T> $$2) {
+      return a($$2, dso.E, $$0.C ? dsk::a : dsk::b);
+   }
+
+   @Override
+   protected boolean a(dvj $$0, erz $$1) {
+      return false;
+   }
+
+   @Override
+   public dvj a(dvj $$0, dor $$1) {
+      return $$0.b(b, $$1.a($$0.c(b)));
+   }
+
+   @Override
+   public dvj a(dvj $$0, dna $$1) {
+      return $$0.a($$1.a($$0.c(b)));
    }
 }

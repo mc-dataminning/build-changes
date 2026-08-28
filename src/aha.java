@@ -1,20 +1,20 @@
-public record aha(String b) implements zo<agu> {
-   public static final zf<we, aha> a = zo.a(aha::a, aha::new);
+public record aha(int b) implements zp<agv> {
+   public static final zg<wf, aha> a = zp.a(aha::a, aha::new);
 
-   private aha(we $$0) {
-      this($$0.p());
+   private aha(wf $$0) {
+      this($$0.l());
    }
 
-   private void a(we $$0) {
-      $$0.a(this.b);
+   private void a(wf $$0) {
+      $$0.c(this.b);
    }
 
    @Override
-   public zq<aha> a() {
-      return ags.bl;
+   public zr<aha> a() {
+      return agt.bk;
    }
 
-   public void a(agu $$0) {
+   public void a(agv $$0) {
       $$0.a(this);
    }
 }

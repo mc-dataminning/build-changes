@@ -1,59 +1,59 @@
-import com.google.common.collect.Lists;
-import io.netty.buffer.ByteBuf;
-import java.util.ArrayList;
+import com.google.common.collect.Sets;
 import java.util.Collection;
 import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
-public class agm implements zo<acd> {
-   public static final zf<ws, agm> a = zf.a(zd.h, agm::b, agm.a.b.a(zd.a()), agm::e, agm::new);
-   private final int b;
-   private final List<agm.a> c;
+public class agm implements zp<ace> {
+   public static final zg<wt, agm> a = zp.a(agm::a, agm::new);
+   private final boolean b;
+   private final List<ah> c;
+   private final Set<ali> d;
+   private final Map<ali, aj> e;
 
-   public agm(int $$0, Collection<bvz> $$1) {
+   public agm(boolean $$0, Collection<ah> $$1, Set<ali> $$2, Map<ali, aj> $$3) {
       this.b = $$0;
-      this.c = Lists.newArrayList();
-
-      for (bvz $$2 : $$1) {
-         this.c.add(new agm.a($$2.a(), $$2.b(), $$2.c()));
-      }
+      this.c = List.copyOf($$1);
+      this.d = Set.copyOf($$2);
+      this.e = Map.copyOf($$3);
    }
 
-   private agm(int $$0, List<agm.a> $$1) {
-      this.b = $$0;
-      this.c = $$1;
+   private agm(wt $$0) {
+      this.b = $$0.readBoolean();
+      this.c = ah.b.decode($$0);
+      this.d = $$0.a(Sets::newLinkedHashSetWithExpectedSize, wf::q);
+      this.e = $$0.a(wf::q, aj::b);
+   }
+
+   private void a(wt $$0) {
+      $$0.a(this.b);
+      ah.b.encode($$0, this.c);
+      $$0.a(this.d, wf::a);
+      $$0.a(this.e, wf::a, ($$0x, $$1) -> $$1.a($$0x));
    }
 
    @Override
-   public zq<agm> a() {
-      return ags.bc;
+   public zr<agm> a() {
+      return agt.bb;
    }
 
-   public void a(acd $$0) {
+   public void a(ace $$0) {
       $$0.a(this);
    }
 
-   public int b() {
-      return this.b;
-   }
-
-   public List<agm.a> e() {
+   public List<ah> b() {
       return this.c;
    }
 
-   public static record a(jp<bvy> c, double d, Collection<bwb> e) {
-      public static final zf<ByteBuf, bwb> a = zf.a(alh.b, bwb::b, zd.k, bwb::c, bwb.a.e, bwb::d, bwb::new);
-      public static final zf<ws, agm.a> b = zf.a(bvy.b, agm.a::a, zd.k, agm.a::b, a.a(zd.a(ArrayList::new)), agm.a::c, agm.a::new);
+   public Set<ali> e() {
+      return this.d;
+   }
 
-      public jp<bvy> a() {
-         return this.c;
-      }
+   public Map<ali, aj> f() {
+      return this.e;
+   }
 
-      public double b() {
-         return this.d;
-      }
-
-      public Collection<bwb> c() {
-         return this.e;
-      }
+   public boolean g() {
+      return this.b;
    }
 }

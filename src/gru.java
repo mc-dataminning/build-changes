@@ -1,16 +1,12 @@
-public class gru extends gsm<gwr, fxu> {
-   private static final alh a = alh.b("textures/entity/zombie/drowned_outer_layer.png");
-   private final fxu b;
-   private final fxu c;
+public class gru<M extends fzp> extends gtf<M> {
+   private static final ali a = ali.b("textures/entity/bee/bee_stinger.png");
 
-   public gru(gpv<gwr, fxu> $$0, gax $$1) {
-      super($$0);
-      this.b = new fxu($$1.a(gba.al));
-      this.c = new fxu($$1.a(gba.ap));
+   public gru(gpl<?, gvy, M> $$0, gok.a $$1) {
+      super($$0, new fxp($$1.a(gbl.s)), a, gtf.a.b);
    }
 
-   public void a(fdt $$0, ghw $$1, int $$2, gwr $$3, float $$4, float $$5) {
-      fxu $$6 = $$3.ae ? this.c : this.b;
-      a($$6, a, $$0, $$1, $$2, $$3, -1);
+   @Override
+   protected int a(gvy $$0) {
+      return $$0.f;
    }
 }

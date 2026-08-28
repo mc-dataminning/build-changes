@@ -1,22 +1,15 @@
-public class gzd {
-   public static final int a = -1;
-   private final int b;
-   private final int c;
+public class gzd extends gzh {
+   private static final ali a = ali.b("back");
 
-   public gzd(int $$0) {
-      this($$0, -1);
+   public gzd(gye $$0) {
+      super($$0, ali.b("textures/atlas/paintings.png"), ali.b("paintings"));
    }
 
-   public gzd(int $$0, int $$1) {
-      this.b = $$0;
-      this.c = $$1;
+   public gyd a(ckr $$0) {
+      return this.a($$0.d());
    }
 
-   public int a(int $$0) {
-      return this.c == -1 ? $$0 : this.c;
-   }
-
-   public int a() {
-      return this.b;
+   public gyd a() {
+      return this.a(a);
    }
 }

@@ -1,29 +1,45 @@
-public class aid implements zo<agu> {
-   public static final zf<we, aid> a = zo.a(aid::a, aid::new);
-   private final alh b;
+public class aid implements zp<agv> {
+   public static final zg<wf, aid> a = zp.a(aid::a, aid::new);
+   private final cte b;
+   private final boolean c;
+   private final boolean d;
 
-   public aid(dal<?> $$0) {
-      this.b = $$0.a();
+   public aid(cte $$0, boolean $$1, boolean $$2) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
    }
 
-   private aid(we $$0) {
-      this.b = $$0.q();
+   private aid(wf $$0) {
+      this.b = $$0.b(cte.class);
+      this.c = $$0.readBoolean();
+      this.d = $$0.readBoolean();
    }
 
-   private void a(we $$0) {
+   private void a(wf $$0) {
       $$0.a(this.b);
+      $$0.a(this.c);
+      $$0.a(this.d);
    }
 
    @Override
-   public zq<aid> a() {
-      return ags.bR;
+   public zr<aid> a() {
+      return agt.bQ;
    }
 
-   public void a(agu $$0) {
+   public void a(agv $$0) {
       $$0.a(this);
    }
 
-   public alh b() {
+   public cte b() {
       return this.b;
+   }
+
+   public boolean e() {
+      return this.c;
+   }
+
+   public boolean f() {
+      return this.d;
    }
 }

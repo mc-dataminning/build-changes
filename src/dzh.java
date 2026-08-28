@@ -1,24 +1,91 @@
-import java.util.UUID;
-import java.util.stream.Stream;
+import com.google.common.collect.ImmutableList;
+import java.util.List;
 
-public interface dzh {
-   int ar();
+public enum dzh {
+   a {
+      @Override
+      public void a(arn $$0, dzi $$1, List<cjn> $$2, int $$3, jh $$4) {
+         jh $$5 = new jh(0, 128, 0);
 
-   UUID cH();
+         for (cjn $$6 : $$2) {
+            $$6.a($$5);
+         }
 
-   jg dx();
+         $$1.a(b);
+      }
+   },
+   b {
+      @Override
+      public void a(arn $$0, dzi $$1, List<cjn> $$2, int $$3, jh $$4) {
+         if ($$3 < 100) {
+            if ($$3 == 0 || $$3 == 50 || $$3 == 51 || $$3 == 52 || $$3 >= 95) {
+               $$0.c(3001, new jh(0, 128, 0), 0);
+            }
+         } else {
+            $$1.a(c);
+         }
+      }
+   },
+   c {
+      @Override
+      public void a(arn $$0, dzi $$1, List<cjn> $$2, int $$3, jh $$4) {
+         int $$5 = 40;
+         boolean $$6 = $$3 % 40 == 0;
+         boolean $$7 = $$3 % 40 == 39;
+         if ($$6 || $$7) {
+            List<efv.a> $$8 = efv.a($$0);
+            int $$9 = $$3 / 40;
+            if ($$9 < $$8.size()) {
+               efv.a $$10 = $$8.get($$9);
+               if ($$6) {
+                  for (cjn $$11 : $$2) {
+                     $$11.a(new jh($$10.a(), $$10.d() + 1, $$10.b()));
+                  }
+               } else {
+                  int $$12 = 10;
 
-   ezc cS();
+                  for (jh $$13 : jh.c(new jh($$10.a() - 10, $$10.d() - 10, $$10.b() - 10), new jh($$10.a() + 10, $$10.d() + 10, $$10.b() + 10))) {
+                     $$0.a($$13, false);
+                  }
 
-   void a(dzi var1);
+                  $$0.a(null, (double)((float)$$10.a() + 0.5F), (double)$$10.d(), (double)((float)$$10.b() + 0.5F), 5.0F, dfb.a.b);
+                  ehj $$14 = new ehj(true, ImmutableList.of($$10), new jh(0, 128, 0));
+                  eel.K.a($$14, $$0, $$0.l().g(), azs.a(), new jh($$10.a(), 45, $$10.b()));
+               }
+            } else if ($$6) {
+               $$1.a(d);
+            }
+         }
+      }
+   },
+   d {
+      @Override
+      public void a(arn $$0, dzi $$1, List<cjn> $$2, int $$3, jh $$4) {
+         if ($$3 >= 100) {
+            $$1.a(e);
+            $$1.h();
 
-   Stream<? extends dzh> dc();
+            for (cjn $$5 : $$2) {
+               $$5.a(null);
+               $$0.a($$5, $$5.dC(), $$5.dE(), $$5.dI(), 6.0F, dfb.a.a);
+               $$5.av();
+            }
+         } else if ($$3 >= 80) {
+            $$0.c(3001, new jh(0, 128, 0), 0);
+         } else if ($$3 == 0) {
+            for (cjn $$6 : $$2) {
+               $$6.a(new jh(0, 128, 0));
+            }
+         } else if ($$3 < 5) {
+            $$0.c(3001, new jh(0, 128, 0), 0);
+         }
+      }
+   },
+   e {
+      @Override
+      public void a(arn $$0, dzi $$1, List<cjn> $$2, int $$3, jh $$4) {
+      }
+   };
 
-   Stream<? extends dzh> dd();
-
-   void b(btz.c var1);
-
-   boolean dV();
-
-   boolean dW();
+   public abstract void a(arn var1, dzi var2, List<cjn> var3, int var4, jh var5);
 }

@@ -1,171 +1,128 @@
 import com.mojang.serialization.MapCodec;
 import javax.annotation.Nullable;
 
-public class dnm extends dkg implements dib {
-   public static final MapCodec<dnm> c = b(dnm::new);
-   public static final dwd d = dvt.at;
-   public static final int e = 4;
-   private static final int f = 3;
-   private static final int g = 1;
-   private static final fab h = dhy.a(3.0, 0.0, 3.0, 13.0, 15.0, 13.0);
-   private static final fab i = dhy.a(3.0, -1.0, 3.0, 13.0, 16.0, 13.0);
-   private static final fab j = dhy.a(5.0, -1.0, 5.0, 11.0, 3.0, 11.0);
-   private static final fab k = dhy.a(3.0, -1.0, 3.0, 13.0, 5.0, 13.0);
-   private static final fab[] l = new fab[]{dhy.a(3.0, 0.0, 3.0, 13.0, 11.0, 13.0), h};
-   private static final fab[] m = new fab[]{j, dhy.a(3.0, -1.0, 3.0, 13.0, 14.0, 13.0), i, i, i};
+public class dnm extends die {
+   public static final MapCodec<dnm> a = b(dnm::new);
+   public static final dwh<dwk> b = dvz.bf;
+   public static final dwa c = dvz.w;
+   public static final dwj d = dvz.aR;
+   public static final int e = 3;
 
    @Override
    public MapCodec<dnm> a() {
-      return c;
+      return a;
    }
 
-   public dnm(dvc.d $$0) {
+   public dnm(dvi.d $$0) {
       super($$0);
+      this.l(this.F.b().b(b, dwk.a).b(d, Integer.valueOf(0)).b(c, Boolean.valueOf(false)));
    }
 
-   @Nullable
-   @Override
-   public dvd a(czm $$0) {
-      return this.m();
-   }
-
-   @Override
-   public fab a(dvd $$0, dea $$1, jg $$2, ezm $$3) {
-      return $$0.c(b) == dvz.a ? l[Math.min(Math.abs(4 - ($$0.c(d) + 1)), l.length - 1)] : m[$$0.c(d)];
-   }
-
-   @Override
-   public fab b(dvd $$0, dea $$1, jg $$2, ezm $$3) {
-      if ($$0.c(d) == 0) {
-         return j;
+   private dvj b(dfc $$0, jh $$1, dvj $$2) {
+      dwk $$3 = $$0.a_($$1.d()).E();
+      if ($$3.e()) {
+         return $$2.b(b, $$3);
       } else {
-         return $$0.c(b) == dvz.b ? k : super.b($$0, $$1, $$2, $$3);
+         dwk $$4 = $$0.a_($$1.e()).E();
+         dwk $$5 = $$4.e() ? dwk.a : $$4;
+         return $$2.b(b, $$5);
       }
    }
 
    @Override
-   public dvd a(dvd $$0, jl $$1, dvd $$2, dew $$3, jg $$4, jg $$5) {
-      if (b($$0.c(d))) {
-         return super.a($$0, $$1, $$2, $$3, $$4, $$5);
-      } else {
-         return $$0.a($$3, $$4) ? $$0 : dia.a.m();
-      }
+   public dvj a(czs $$0) {
+      return this.b($$0.q(), $$0.a(), this.m());
    }
 
    @Override
-   public boolean a(dvd $$0, dey $$1, jg $$2) {
-      return o($$0) && !b($$1, $$2) ? false : super.a($$0, $$1, $$2);
+   protected dvj a(dvj $$0, jm $$1, dvj $$2, dfc $$3, jh $$4, jh $$5) {
+      boolean $$6 = $$1.o() == jm.a.b;
+      return $$6 ? this.b($$3, $$4, $$0) : super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
    @Override
-   protected boolean b(dvd $$0, dea $$1, jg $$2) {
-      return $$0.a(dia.cC);
-   }
-
-   @Override
-   protected void a(dve.a<dhy, dvd> $$0) {
-      $$0.a(d);
-      super.a($$0);
-   }
-
-   @Override
-   public void a(dvd $$0, dev $$1, jg $$2, btz $$3) {
-      if ($$3 instanceof clr && $$1.ac().b(der.c)) {
-         $$1.a($$2, true, $$3);
-      }
-
-      super.a($$0, $$1, $$2, $$3);
-   }
-
-   @Override
-   public boolean a(dvd $$0, czm $$1) {
-      return false;
-   }
-
-   @Override
-   public void a(dev $$0, jg $$1, dvd $$2, buv $$3, cvx $$4) {
-   }
-
-   @Override
-   public boolean f(dvd $$0) {
-      return $$0.c(b) == dvz.b && !this.q($$0);
-   }
-
-   @Override
-   public void b(dvd $$0, arm $$1, jg $$2, azr $$3) {
-      float $$4 = djt.a(this, $$1, $$2);
-      boolean $$5 = $$3.a((int)(25.0F / $$4) + 1) == 0;
-      if ($$5) {
-         this.a($$1, $$0, $$2, 1);
-      }
-   }
-
-   private void a(arm $$0, dvd $$1, jg $$2, int $$3) {
-      int $$4 = Math.min($$1.c(d) + $$3, 4);
-      if (this.a($$0, $$2, $$1, $$4)) {
-         dvd $$5 = $$1.b(d, Integer.valueOf($$4));
-         $$0.a($$2, $$5, 2);
-         if (b($$4)) {
-            $$0.a($$2.d(), $$5.b(b, dvz.a), 3);
+   protected void a(dvj $$0, dfb $$1, jh $$2, die $$3, @Nullable ess $$4, boolean $$5) {
+      boolean $$6 = $$1.C($$2);
+      if ($$6 != $$0.c(c)) {
+         if ($$6) {
+            this.a(null, $$0, $$1, $$2);
          }
+
+         $$1.a($$2, $$0.b(c, Boolean.valueOf($$6)), 3);
       }
    }
 
-   private static boolean a(dey $$0, jg $$1) {
-      dvd $$2 = $$0.a_($$1);
-      return $$2.l() || $$2.a(dia.kB);
+   private void a(@Nullable bue $$0, dvj $$1, dfb $$2, jh $$3) {
+      if ($$1.c(b).e() || $$2.a_($$3.d()).l()) {
+         $$2.a($$3, this, 0, 0);
+         $$2.a($$0, eag.H, $$3);
+      }
    }
 
-   private static boolean b(dey $$0, jg $$1) {
-      return djt.a($$0, $$1);
+   @Override
+   protected bsd a(cwb $$0, dvj $$1, dfb $$2, jh $$3, com $$4, bsc $$5, ezj $$6) {
+      return (bsd)($$0.a(axj.bw) && $$6.c() == jm.b ? bsd.e : super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6));
    }
 
-   private static boolean o(dvd $$0) {
-      return $$0.a(dia.kB) && $$0.c(b) == dvz.b;
+   @Override
+   protected bsd a(dvj $$0, dfb $$1, jh $$2, com $$3, ezj $$4) {
+      if (!$$1.C) {
+         $$0 = $$0.a(d);
+         $$1.a($$2, $$0, 3);
+         this.a($$3, $$0, $$1, $$2);
+         $$3.a(awv.ag);
+      }
+
+      return bsd.a;
    }
 
-   private static boolean b(int $$0) {
-      return $$0 >= 3;
+   @Override
+   protected void a_(dvj $$0, dfb $$1, jh $$2, com $$3) {
+      if (!$$1.C) {
+         this.a($$3, $$0, $$1, $$2);
+         $$3.a(awv.af);
+      }
    }
 
-   private boolean a(dey $$0, jg $$1, dvd $$2, int $$3) {
-      return !this.q($$2) && b($$0, $$1) && (!b($$3) || a($$0, $$1.d()));
+   public static float b(int $$0) {
+      return (float)Math.pow(2.0, (double)($$0 - 12) / 12.0);
    }
 
-   private boolean q(dvd $$0) {
-      return $$0.c(d) >= 4;
-   }
-
-   @Nullable
-   private dnm.a d(dey $$0, jg $$1, dvd $$2) {
-      if (o($$2)) {
-         return new dnm.a($$1, $$2);
+   @Override
+   protected boolean a(dvj $$0, dfb $$1, jh $$2, int $$3, int $$4) {
+      dwk $$5 = $$0.c(b);
+      float $$7;
+      if ($$5.b()) {
+         int $$6 = $$0.c(d);
+         $$7 = b($$6);
+         $$1.a(lr.aa, (double)$$2.u() + 0.5, (double)$$2.v() + 1.2, (double)$$2.w() + 0.5, (double)$$6 / 24.0, 0.0, 0.0);
       } else {
-         jg $$3 = $$1.e();
-         dvd $$4 = $$0.a_($$3);
-         return o($$4) ? new dnm.a($$3, $$4) : null;
+         $$7 = 1.0F;
       }
-   }
 
-   @Override
-   public boolean b(dey $$0, jg $$1, dvd $$2) {
-      dnm.a $$3 = this.d($$0, $$1, $$2);
-      return $$3 == null ? false : this.a($$0, $$3.a, $$3.b, $$3.b.c(d) + 1);
-   }
+      jq<awk> $$10;
+      if ($$5.d()) {
+         ali $$9 = this.a($$1, $$2);
+         if ($$9 == null) {
+            return false;
+         }
 
-   @Override
-   public boolean a(dev $$0, azr $$1, jg $$2, dvd $$3) {
+         $$10 = jq.a(awk.a($$9));
+      } else {
+         $$10 = $$5.a();
+      }
+
+      $$1.a(null, (double)$$2.u() + 0.5, (double)$$2.v() + 0.5, (double)$$2.w() + 0.5, $$10, awm.c, 3.0F, $$7, $$1.A.g());
       return true;
    }
 
-   @Override
-   public void a(arm $$0, azr $$1, jg $$2, dvd $$3) {
-      dnm.a $$4 = this.d($$0, $$2, $$3);
-      if ($$4 != null) {
-         this.a($$0, $$4.b, $$4.a, 1);
-      }
+   @Nullable
+   private ali a(dfb $$0, jh $$1) {
+      return $$0.c_($$1.d()) instanceof dua $$2 ? $$2.d() : null;
    }
 
-   static record a(jg a, dvd b) {
+   @Override
+   protected void a(dvk.a<die, dvj> $$0) {
+      $$0.a(b, c, d);
    }
 }

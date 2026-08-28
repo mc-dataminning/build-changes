@@ -1,195 +1,310 @@
-import java.util.List;
+import java.time.Duration;
+import java.util.function.Consumer;
 import javax.annotation.Nullable;
 
-public abstract class flf<E extends flf.a<E>> extends fku<E> {
-   public flf(fja $$0, int $$1, int $$2, int $$3, int $$4) {
-      super($$0, $$1, $$2, $$3, $$4);
+public abstract class flf implements fmk, fne, foy, fpd {
+   private static final double a = 0.5;
+   private static final double b = 3.0;
+   protected int g;
+   protected int h;
+   private int c;
+   private int d;
+   private xi e;
+   protected boolean i;
+   public boolean j = true;
+   public boolean k = true;
+   protected float l = 1.0F;
+   private int f;
+   private boolean m;
+   private final fmv n = new fmv();
+
+   public flf(int $$0, int $$1, int $$2, int $$3, xi $$4) {
+      this.c = $$0;
+      this.d = $$1;
+      this.g = $$2;
+      this.h = $$3;
+      this.e = $$4;
+   }
+
+   @Override
+   public int w() {
+      return this.h;
+   }
+
+   @Override
+   public final void a(fku $$0, int $$1, int $$2, float $$3) {
+      if (this.k) {
+         this.i = $$0.a($$1, $$2) && $$1 >= this.D() && $$2 >= this.E() && $$1 < this.D() + this.g && $$2 < this.E() + this.h;
+         this.b($$0, $$1, $$2, $$3);
+         this.n.a(this.A(), this.aM_(), this.H());
+      }
+   }
+
+   public void a(@Nullable fms $$0) {
+      this.n.a($$0);
+   }
+
+   @Nullable
+   public fms x() {
+      return this.n.a();
+   }
+
+   public void a(Duration $$0) {
+      this.n.a($$0);
+   }
+
+   protected xw aO_() {
+      return a_(this.z());
+   }
+
+   public static xw a_(xi $$0) {
+      return xi.a("gui.narrate.button", $$0);
+   }
+
+   protected abstract void b(fku var1, int var2, int var3, float var4);
+
+   protected static void a(fku $$0, fks $$1, xi $$2, int $$3, int $$4, int $$5, int $$6, int $$7) {
+      a($$0, $$1, $$2, ($$3 + $$5) / 2, $$3, $$4, $$5, $$6, $$7);
+   }
+
+   protected static void a(fku $$0, fks $$1, xi $$2, int $$3, int $$4, int $$5, int $$6, int $$7, int $$8) {
+      int $$9 = $$1.a($$2);
+      int $$10 = ($$5 + $$7 - 9) / 2 + 1;
+      int $$11 = $$6 - $$4;
+      if ($$9 > $$11) {
+         int $$12 = $$9 - $$11;
+         double $$13 = (double)ae.c() / 1000.0;
+         double $$14 = Math.max((double)$$12 * 0.5, 3.0);
+         double $$15 = Math.sin((Math.PI / 2) * Math.cos((Math.PI * 2) * $$13 / $$14)) / 2.0 + 0.5;
+         double $$16 = azk.d($$15, 0.0, (double)$$12);
+         $$0.c($$4, $$5, $$6, $$7);
+         $$0.b($$1, $$2, $$4 - (int)$$16, $$10, $$8);
+         $$0.e();
+      } else {
+         int $$17 = azk.a($$3, $$4 + $$9 / 2, $$6 - $$9 / 2);
+         $$0.a($$1, $$2, $$17, $$10, $$8);
+      }
+   }
+
+   protected void a(fku $$0, fks $$1, int $$2, int $$3) {
+      int $$4 = this.D() + $$2;
+      int $$5 = this.D() + this.y() - $$2;
+      a($$0, $$1, this.z(), $$4, this.E(), $$5, this.E() + this.w(), $$3);
+   }
+
+   public void a(double $$0, double $$1) {
+   }
+
+   public void a_(double $$0, double $$1) {
+   }
+
+   protected void b(double $$0, double $$1, double $$2, double $$3) {
+   }
+
+   @Override
+   public boolean a(double $$0, double $$1, int $$2) {
+      if (this.j && this.k) {
+         if (this.j($$2)) {
+            boolean $$3 = this.d($$0, $$1);
+            if ($$3) {
+               this.a(fji.Q().ak());
+               this.a($$0, $$1);
+               return true;
+            }
+         }
+
+         return false;
+      } else {
+         return false;
+      }
+   }
+
+   @Override
+   public boolean b(double $$0, double $$1, int $$2) {
+      if (this.j($$2)) {
+         this.a_($$0, $$1);
+         return true;
+      } else {
+         return false;
+      }
+   }
+
+   protected boolean j(int $$0) {
+      return $$0 == 0;
+   }
+
+   @Override
+   public boolean a(double $$0, double $$1, int $$2, double $$3, double $$4) {
+      if (this.j($$2)) {
+         this.b($$0, $$1, $$3, $$4);
+         return true;
+      } else {
+         return false;
+      }
+   }
+
+   protected boolean d(double $$0, double $$1) {
+      return this.j
+         && this.k
+         && $$0 >= (double)this.D()
+         && $$1 >= (double)this.E()
+         && $$0 < (double)(this.D() + this.y())
+         && $$1 < (double)(this.E() + this.w());
    }
 
    @Nullable
    @Override
-   public fkj a(fpd $$0) {
-      if (this.l() == 0) {
+   public fkr a(fpl $$0) {
+      if (!this.j || !this.k) {
          return null;
-      } else if (!($$0 instanceof fpd.a $$1)) {
-         return super.a($$0);
       } else {
-         E $$2 = this.j();
-         if ($$1.b().a() == fpe.a && $$2 != null) {
-            return fkj.a(this, $$2.a($$0));
-         } else {
-            int $$3 = -1;
-            fpf $$4 = $$1.b();
-            if ($$2 != null) {
-               $$3 = $$2.aJ_().indexOf($$2.aM_());
-            }
-
-            if ($$3 == -1) {
-               switch ($$4) {
-                  case c:
-                     $$3 = Integer.MAX_VALUE;
-                     $$4 = fpf.b;
-                     break;
-                  case d:
-                     $$3 = 0;
-                     $$4 = fpf.b;
-                     break;
-                  default:
-                     $$3 = 0;
-               }
-            }
-
-            E $$5 = $$2;
-
-            fkj $$6;
-            do {
-               $$5 = this.a($$4, $$0x -> !$$0x.aJ_().isEmpty(), $$5);
-               if ($$5 == null) {
-                  return null;
-               }
-
-               $$6 = $$5.a($$1, $$3);
-            } while ($$6 == null);
-
-            return fkj.a(this, $$6);
-         }
+         return !this.aM_() ? fkr.a(this) : null;
       }
    }
 
    @Override
-   public void a(@Nullable fmw $$0) {
-      if (this.j() != $$0) {
-         super.a($$0);
-         if ($$0 == null) {
-            this.a(null);
-         }
-      }
+   public boolean c(double $$0, double $$1) {
+      return this.j && this.k && $$0 >= (double)this.D() && $$1 >= (double)this.E() && $$0 < (double)(this.D() + this.g) && $$1 < (double)(this.E() + this.h);
+   }
+
+   public void a(hdf $$0) {
+      b($$0);
+   }
+
+   public static void b(hdf $$0) {
+      $$0.a(hbv.a(awl.Av, 1.0F));
    }
 
    @Override
-   public fov.a u() {
-      return this.aN_() ? fov.a.c : super.u();
+   public int y() {
+      return this.g;
+   }
+
+   public void k(int $$0) {
+      this.g = $$0;
+   }
+
+   public void l(int $$0) {
+      this.h = $$0;
+   }
+
+   public void a(float $$0) {
+      this.l = $$0;
+   }
+
+   public void b(xi $$0) {
+      this.e = $$0;
+   }
+
+   public xi z() {
+      return this.e;
    }
 
    @Override
-   protected boolean e(int $$0) {
-      return false;
+   public boolean aM_() {
+      return this.m;
+   }
+
+   public boolean A() {
+      return this.i;
+   }
+
+   public boolean B() {
+      return this.A() || this.aM_();
    }
 
    @Override
-   public void a(fox $$0) {
-      E $$1 = this.v();
-      if ($$1 != null) {
-         $$1.a($$0.a());
-         this.a($$0, $$1);
+   public boolean C() {
+      return this.k && this.j;
+   }
+
+   @Override
+   public void a(boolean $$0) {
+      this.m = $$0;
+   }
+
+   @Override
+   public fpd.a u() {
+      if (this.aM_()) {
+         return fpd.a.c;
       } else {
-         E $$2 = this.j();
-         if ($$2 != null) {
-            $$2.a($$0.a());
-            this.a($$0, $$2);
-         }
+         return this.i ? fpd.a.b : fpd.a.a;
       }
-
-      $$0.a(fow.d, xh.c("narration.component_list.usage"));
    }
 
-   public abstract static class a<E extends flf.a<E>> extends fku.a<E> implements fmv {
-      @Nullable
-      private fmw a;
-      @Nullable
-      private fov b;
-      private boolean c;
+   @Override
+   public final void b(fpf $$0) {
+      this.a($$0);
+      this.n.a($$0);
+   }
 
-      @Override
-      public boolean aL_() {
-         return this.c;
-      }
+   protected abstract void a(fpf var1);
 
-      @Override
-      public void b_(boolean $$0) {
-         this.c = $$0;
-      }
-
-      @Override
-      public boolean a(double $$0, double $$1, int $$2) {
-         return fmv.super.a($$0, $$1, $$2);
-      }
-
-      @Override
-      public void a(@Nullable fmw $$0) {
-         if (this.a != null) {
-            this.a.a(false);
-         }
-
-         if ($$0 != null) {
-            $$0.a(true);
-         }
-
-         this.a = $$0;
-      }
-
-      @Nullable
-      @Override
-      public fmw aM_() {
-         return this.a;
-      }
-
-      @Nullable
-      public fkj a(fpd $$0, int $$1) {
-         if (this.aJ_().isEmpty()) {
-            return null;
+   protected void c(fpf $$0) {
+      $$0.a(fpe.a, this.aO_());
+      if (this.j) {
+         if (this.aM_()) {
+            $$0.a(fpe.d, xi.c("narration.button.usage.focused"));
          } else {
-            fkj $$2 = this.aJ_().get(Math.min($$1, this.aJ_().size() - 1)).a($$0);
-            return fkj.a(this, $$2);
+            $$0.a(fpe.d, xi.c("narration.button.usage.hovered"));
          }
       }
+   }
 
-      @Nullable
-      @Override
-      public fkj a(fpd $$0) {
-         if ($$0 instanceof fpd.a $$1) {
-            int $$2 = switch ($$1.b()) {
-               case c -> -1;
-               case d -> 1;
-               case a, b -> 0;
-            };
-            if ($$2 == 0) {
-               return null;
-            }
+   @Override
+   public int D() {
+      return this.c;
+   }
 
-            int $$3 = azj.a($$2 + this.aJ_().indexOf(this.aM_()), 0, this.aJ_().size() - 1);
+   @Override
+   public void m(int $$0) {
+      this.c = $$0;
+   }
 
-            for (int $$4 = $$3; $$4 >= 0 && $$4 < this.aJ_().size(); $$4 += $$2) {
-               fmw $$5 = this.aJ_().get($$4);
-               fkj $$6 = $$5.a($$0);
-               if ($$6 != null) {
-                  return fkj.a(this, $$6);
-               }
-            }
-         }
+   @Override
+   public int E() {
+      return this.d;
+   }
 
-         return fmv.super.a($$0);
-      }
+   @Override
+   public void n(int $$0) {
+      this.d = $$0;
+   }
 
-      public abstract List<? extends fov> b();
+   public int F() {
+      return this.D() + this.y();
+   }
 
-      void a(fox $$0) {
-         List<? extends fov> $$1 = this.b();
-         fqs.b $$2 = fqs.a($$1, this.b);
-         if ($$2 != null) {
-            if ($$2.c.a()) {
-               this.b = $$2.a;
-            }
+   public int G() {
+      return this.E() + this.w();
+   }
 
-            if ($$1.size() > 1) {
-               $$0.a(fow.b, xh.a("narrator.position.object_list", $$2.b + 1, $$1.size()));
-               if ($$2.c == fov.a.c) {
-                  $$0.a(fow.d, xh.c("narration.component_list.usage"));
-               }
-            }
+   @Override
+   public void a(Consumer<flf> $$0) {
+      $$0.accept(this);
+   }
 
-            $$2.a.b($$0.a());
-         }
-      }
+   public void b(int $$0, int $$1) {
+      this.g = $$0;
+      this.h = $$1;
+   }
+
+   @Override
+   public fpp H() {
+      return foy.super.H();
+   }
+
+   public void a(int $$0, int $$1, int $$2, int $$3) {
+      this.b($$0, $$1);
+      this.c($$2, $$3);
+   }
+
+   @Override
+   public int I() {
+      return this.f;
+   }
+
+   public void o(int $$0) {
+      this.f = $$0;
    }
 }

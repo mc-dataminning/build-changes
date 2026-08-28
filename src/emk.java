@@ -1,8 +1,7 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+@FunctionalInterface
+public interface emk<C extends egp> {
+   void generatePieces(emp var1, emk.a<C> var2);
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface emk {
+   public static record a<C extends egp>(C a, dxg b, eqa c, deh d, dfd e, ece f, long g) {
+   }
 }

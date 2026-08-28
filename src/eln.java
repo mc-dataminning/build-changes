@@ -1,109 +1,113 @@
-import com.google.common.collect.Lists;
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Dynamic;
-import com.mojang.serialization.DynamicOps;
-import java.util.List;
-import java.util.Locale;
-import org.slf4j.Logger;
+import java.util.Map;
+import java.util.Objects;
+import java.util.Optional;
 
-public class eln extends elv {
-   private static final Logger d = LogUtils.getLogger();
-   protected final emz a;
-   protected jg b;
-   private final int h;
-   protected final dol c;
-   private final List<emu> i = Lists.newArrayList();
-   private final epu j;
-   private final epd k;
+public class eln {
+   public static final alh<elm> a = a("normal");
+   public static final alh<elm> b = a("flat");
+   public static final alh<elm> c = a("large_biomes");
+   public static final alh<elm> d = a("amplified");
+   public static final alh<elm> e = a("single_biome_surface");
+   public static final alh<elm> f = a("debug_all_block_states");
 
-   public eln(epu $$0, emz $$1, jg $$2, int $$3, dol $$4, elj $$5, epd $$6) {
-      super(emi.ad, 0, $$5);
-      this.j = $$0;
-      this.a = $$1;
-      this.b = $$2;
-      this.h = $$3;
-      this.c = $$4;
-      this.k = $$6;
+   public static void a(qy<elm> $$0) {
+      new eln.a($$0).a();
    }
 
-   public eln(emh $$0, uj $$1) {
-      super(emi.ad, $$1);
-      this.j = $$0.c();
-      this.b = new jg($$1.h("PosX"), $$1.h("PosY"), $$1.h("PosZ"));
-      this.h = $$1.h("ground_level_delta");
-      DynamicOps<vg> $$2 = $$0.b().a(ux.a);
-      this.a = (emz)emz.f.parse($$2, $$1.p("pool_element")).getPartialOrThrow($$0x -> new IllegalStateException("Invalid pool element found: " + $$0x));
-      this.c = dol.valueOf($$1.l("rotation"));
-      this.f = this.a.a(this.j, this.b, this.c);
-      up $$3 = $$1.c("junctions", 10);
-      this.i.clear();
-      $$3.forEach($$1x -> this.i.add(emu.a(new Dynamic($$2, $$1x))));
-      this.k = epd.c.parse(ux.a, $$1.c("liquid_settings")).result().orElse(ens.e);
+   private static alh<elm> a(String $$0) {
+      return alh.a(lz.aZ, ali.b($$0));
    }
 
-   @Override
-   protected void a(emh $$0, uj $$1) {
-      $$1.a("PosX", this.b.u());
-      $$1.a("PosY", this.b.v());
-      $$1.a("PosZ", this.b.w());
-      $$1.a("ground_level_delta", this.h);
-      DynamicOps<vg> $$2 = $$0.b().a(ux.a);
-      emz.f.encodeStart($$2, this.a).resultOrPartial(d::error).ifPresent($$1x -> $$1.a("pool_element", $$1x));
-      $$1.a("rotation", this.c.name());
-      up $$3 = new up();
+   public static Optional<alh<elm>> a(eca $$0) {
+      return $$0.a(dzg.b).flatMap($$0x -> {
+         Object var10000;
+         Objects.requireNonNull(var10000);
+         dxg $$1 = (dxg)var10000;
 
-      for (emu $$4 : this.i) {
-         $$3.add((vg)$$4.a($$2).getValue());
+         $$0x.b();
+         return switch ($$1) {
+            case eba $$3 -> Optional.of(b);
+            case eaw $$4 -> Optional.of(f);
+            case ebi $$5 -> Optional.of(a);
+            default -> Optional.empty();
+         };
+      });
+   }
+
+   public static eca a(js.a $$0) {
+      return $$0.d(lz.aZ).b(a).a().a();
+   }
+
+   public static dzg b(js.a $$0) {
+      return $$0.d(lz.aZ).b(a).a().b().orElseThrow();
+   }
+
+   public static eca c(js.a $$0) {
+      return $$0.d(lz.aZ).b(b).a().a();
+   }
+
+   static class a {
+      private final qy<elm> a;
+      private final jr<ebk> b;
+      private final jr<dgc> c;
+      private final jr<elb> d;
+      private final jr<emd> e;
+      private final jr<dgq> f;
+      private final jq<dzf> g;
+      private final dzg h;
+      private final dzg i;
+
+      a(qy<elm> $$0) {
+         this.a = $$0;
+         jr<dzf> $$1 = $$0.a(lz.aL);
+         this.b = $$0.a(lz.aP);
+         this.c = $$0.a(lz.aG);
+         this.d = $$0.a(lz.aR);
+         this.e = $$0.a(lz.aU);
+         this.f = $$0.a(lz.ba);
+         this.g = $$1.b(dzd.a);
+         jq<dzf> $$2 = $$1.b(dzd.b);
+         jq<ebk> $$3 = this.b.b(ebk.f);
+         jq.c<dgq> $$4 = this.f.b(dgr.a);
+         this.h = new dzg($$2, new ebi(dgp.a($$4), $$3));
+         jq<dzf> $$5 = $$1.b(dzd.c);
+         jq<ebk> $$6 = this.b.b(ebk.g);
+         this.i = new dzg($$5, new ebi(dgt.a(this.c), $$6));
       }
 
-      $$1.a("junctions", $$3);
-      if (this.k != ens.e) {
-         $$1.a("liquid_settings", (vg)epd.c.encodeStart(ux.a, this.k).getOrThrow());
+      private dzg a(dxg $$0) {
+         return new dzg(this.g, $$0);
       }
-   }
 
-   @Override
-   public void a(dfs $$0, dfq $$1, dxa $$2, azr $$3, elj $$4, deb $$5, jg $$6) {
-      this.a($$0, $$1, $$2, $$3, $$4, $$6, false);
-   }
+      private dzg a(dgg $$0, jq<ebk> $$1) {
+         return this.a(new ebi($$0, $$1));
+      }
 
-   public void a(dfs $$0, dfq $$1, dxa $$2, azr $$3, elj $$4, jg $$5, boolean $$6) {
-      this.a.a(this.j, $$0, $$1, $$2, this.b, $$5, this.c, $$4, $$3, this.k, $$6);
-   }
+      private elm a(dzg $$0) {
+         return new elm(Map.of(dzg.b, $$0, dzg.c, this.h, dzg.d, this.i));
+      }
 
-   @Override
-   public void a(int $$0, int $$1, int $$2) {
-      super.a($$0, $$1, $$2);
-      this.b = this.b.b($$0, $$1, $$2);
-   }
+      private void a(alh<elm> $$0, dzg $$1) {
+         this.a.a($$0, this.a($$1));
+      }
 
-   @Override
-   public dol a() {
-      return this.c;
-   }
+      private void a(dgg $$0) {
+         jq<ebk> $$1 = this.b.b(ebk.c);
+         this.a(eln.a, this.a($$0, $$1));
+         jq<ebk> $$2 = this.b.b(ebk.d);
+         this.a(eln.c, this.a($$0, $$2));
+         jq<ebk> $$3 = this.b.b(ebk.e);
+         this.a(eln.d, this.a($$0, $$3));
+      }
 
-   @Override
-   public String toString() {
-      return String.format(Locale.ROOT, "<%s | %s | %s | %s>", this.getClass().getSimpleName(), this.b, this.c, this.a);
-   }
-
-   public emz b() {
-      return this.a;
-   }
-
-   public jg c() {
-      return this.b;
-   }
-
-   public int d() {
-      return this.h;
-   }
-
-   public void a(emu $$0) {
-      this.i.add($$0);
-   }
-
-   public List<emu> e() {
-      return this.i;
+      public void a() {
+         jq.c<dgq> $$0 = this.f.b(dgr.b);
+         this.a(dgp.a($$0));
+         jq<ebk> $$1 = this.b.b(ebk.c);
+         jq.c<dgc> $$2 = this.c.b(dgj.b);
+         this.a(eln.e, this.a(new dgn($$2), $$1));
+         this.a(eln.b, this.a(new eba(eka.a(this.c, this.e, this.d))));
+         this.a(eln.f, this.a(new eaw($$2)));
+      }
    }
 }

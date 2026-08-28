@@ -1,36 +1,60 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import io.netty.buffer.ByteBuf;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Stream;
+import java.util.function.Consumer;
 
-public record czc(List<ase<String>> g) implements cya<String, czc> {
+public record czc(List<czc.a> e) implements cyi, cze {
    public static final czc a = new czc(List.of());
-   public static final int b = 1024;
-   public static final int c = 100;
-   private static final Codec<ase<String>> h = ase.a(Codec.string(0, 1024));
-   public static final Codec<List<ase<String>>> d = h.sizeLimitedListOf(100);
-   public static final Codec<czc> e = RecordCodecBuilder.create($$0 -> $$0.group(d.optionalFieldOf("pages", List.of()).forGetter(czc::a)).apply($$0, czc::new));
-   public static final zf<ByteBuf, czc> f = ase.a(zd.b(1024)).a(zd.c(100)).a(czc::new, czc::a);
+   public static final int b = 160;
+   public static final Codec<czc> c = czc.a.a.listOf().xmap(czc::new, czc::a);
+   public static final zg<wt, czc> d = czc.a.b.a(ze.a()).a(czc::new, czc::a);
 
-   public czc(List<ase<String>> g) {
-      if (g.size() > 100) {
-         throw new IllegalArgumentException("Got " + g.size() + " pages, but maximum is 100");
-      } else {
-         this.g = g;
-      }
-   }
-
-   public Stream<String> a(boolean $$0) {
-      return this.g.stream().map($$1 -> $$1.a($$0));
-   }
-
-   public czc b(List<ase<String>> $$0) {
-      return new czc($$0);
+   public czc a(czc.a $$0) {
+      return new czc(ae.a(this.e, $$0));
    }
 
    @Override
-   public List<ase<String>> a() {
-      return this.g;
+   public void a(dfb $$0, bva $$1, cwb $$2, cyh $$3) {
+      for (czc.a $$4 : this.e) {
+         $$1.a($$4.a());
+      }
+   }
+
+   @Override
+   public void a(cvx.b $$0, Consumer<xi> $$1, cxt $$2) {
+      if ($$2.b()) {
+         List<btj> $$3 = new ArrayList<>();
+
+         for (czc.a $$4 : this.e) {
+            $$3.add($$4.a());
+         }
+
+         cya.a($$3, $$1, 1.0F, $$0.b());
+      }
+   }
+
+   public List<czc.a> a() {
+      return this.e;
+   }
+
+   public static record a(jq<bth> c, int d) {
+      public static final Codec<czc.a> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(bth.a.fieldOf("id").forGetter(czc.a::b), Codec.INT.lenientOptionalFieldOf("duration", 160).forGetter(czc.a::c))
+               .apply($$0, czc.a::new)
+      );
+      public static final zg<wt, czc.a> b = zg.a(bth.b, czc.a::b, ze.h, czc.a::c, czc.a::new);
+
+      public btj a() {
+         return new btj(this.c, this.d);
+      }
+
+      public jq<bth> b() {
+         return this.c;
+      }
+
+      public int c() {
+         return this.d;
+      }
    }
 }

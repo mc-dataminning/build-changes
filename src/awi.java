@@ -1,18 +1,41 @@
-public class awi {
-   private static final int h = 20;
-   private static final int i = 600;
-   private static final int j = 12000;
-   private static final int k = 24000;
-   private static final int l = 6000;
-   public static final awh a = new awh(awk.qb, 20, 600, true);
-   public static final awh b = new awh(awk.pD, 12000, 24000, false);
-   public static final awh c = new awh(awk.pE, 0, 0, true);
-   public static final awh d = new awh(awk.pY, 0, 0, true);
-   public static final awh e = new awh(awk.pZ, 6000, 24000, true);
-   public static final awh f = a(awk.qA);
-   public static final awh g = a(awk.qa);
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-   public static awh a(jp<awj> $$0) {
-      return new awh($$0, 12000, 24000, false);
+public class awi {
+   public static final Codec<awi> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               awk.b.fieldOf("sound").forGetter($$0x -> $$0x.b),
+               Codec.INT.fieldOf("min_delay").forGetter($$0x -> $$0x.c),
+               Codec.INT.fieldOf("max_delay").forGetter($$0x -> $$0x.d),
+               Codec.BOOL.fieldOf("replace_current_music").forGetter($$0x -> $$0x.e)
+            )
+            .apply($$0, awi::new)
+   );
+   private final jq<awk> b;
+   private final int c;
+   private final int d;
+   private final boolean e;
+
+   public awi(jq<awk> $$0, int $$1, int $$2, boolean $$3) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
+      this.e = $$3;
+   }
+
+   public jq<awk> a() {
+      return this.b;
+   }
+
+   public int b() {
+      return this.c;
+   }
+
+   public int c() {
+      return this.d;
+   }
+
+   public boolean d() {
+      return this.e;
    }
 }

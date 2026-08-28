@@ -1,147 +1,94 @@
-import com.google.common.collect.Sets;
-import java.util.Optional;
+import com.mojang.serialization.Lifecycle;
+import java.util.Locale;
 import java.util.Set;
-import java.util.function.Consumer;
 import javax.annotation.Nullable;
-import net.minecraft.server.MinecraftServer;
 
-public class etw {
-   private final etz a;
-   private final azr b;
-   private final jq.a c;
-   private final Set<etw.c<?>> d = Sets.newLinkedHashSet();
+public interface etw {
+   int d = 19133;
+   int e = 19132;
 
-   etw(etz $$0, azr $$1, jq.a $$2) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
+   dfx D();
+
+   void a(dfx var1);
+
+   boolean F();
+
+   Set<String> G();
+
+   Set<String> H();
+
+   void a(String var1, boolean var2);
+
+   default void a(p $$0) {
+      $$0.a("Known server brands", () -> String.join(", ", this.G()));
+      $$0.a("Removed feature flags", () -> String.join(", ", this.H()));
+      $$0.a("Level was modded", () -> Boolean.toString(this.F()));
+      $$0.a("Level storage version", () -> {
+         int $$0x = this.x();
+         return String.format(Locale.ROOT, "0x%05X - %s", $$0x, this.f($$0x));
+      });
    }
 
-   public boolean a(ewp<?> $$0) {
-      return this.a.a($$0);
-   }
-
-   public <T> T b(ewp<T> $$0) {
-      return this.a.b($$0);
-   }
-
-   public void a(alh $$0, Consumer<cvx> $$1) {
-      this.a.a($$0, $$1);
+   default String f(int $$0) {
+      switch ($$0) {
+         case 19132:
+            return "McRegion";
+         case 19133:
+            return "Anvil";
+         default:
+            return "Unknown?";
+      }
    }
 
    @Nullable
-   public <T> T c(ewp<T> $$0) {
-      return this.a.d($$0);
-   }
+   uk E();
 
-   public boolean a(etw.c<?> $$0) {
-      return this.d.contains($$0);
-   }
+   void a(@Nullable uk var1);
 
-   public boolean b(etw.c<?> $$0) {
-      return this.d.add($$0);
-   }
+   etv I();
 
-   public void c(etw.c<?> $$0) {
-      this.d.remove($$0);
-   }
+   dff J();
 
-   public jq.a a() {
-      return this.c;
-   }
+   uk a(ke var1, @Nullable uk var2);
 
-   public azr b() {
-      return this.b;
-   }
+   boolean l();
 
-   public float c() {
-      return this.a.b();
-   }
+   int x();
 
-   public arm d() {
-      return this.a.a();
-   }
+   String e();
 
-   public static etw.c<eub> a(eub $$0) {
-      return new etw.c<>(ety.c, $$0);
-   }
+   dey k();
 
-   public static etw.c<exh> a(exh $$0) {
-      return new etw.c<>(ety.a, $$0);
-   }
+   void a(dey var1);
 
-   public static etw.c<evk> a(evk $$0) {
-      return new etw.c<>(ety.b, $$0);
-   }
+   boolean m();
 
-   public static class a {
-      private final etz a;
-      @Nullable
-      private azr b;
+   bsa q();
 
-      public a(etz $$0) {
-         this.a = $$0;
-      }
+   void a(bsa var1);
 
-      public etw.a a(long $$0) {
-         if ($$0 != 0L) {
-            this.b = azr.a($$0);
-         }
+   boolean r();
 
-         return this;
-      }
+   void d(boolean var1);
 
-      public etw.a a(azr $$0) {
-         this.b = $$0;
-         return this;
-      }
+   dex o();
 
-      public arm a() {
-         return this.a.a();
-      }
+   @Nullable
+   uk w();
 
-      public etw a(Optional<alh> $$0) {
-         arm $$1 = this.a();
-         MinecraftServer $$2 = $$1.o();
-         azr $$3 = Optional.ofNullable(this.b).or(() -> $$0.map($$1::a)).orElseGet($$1::E_);
-         return new etw(this.a, $$3, $$2.bd().a());
-      }
-   }
+   dzi.a C();
 
-   public static enum b implements baf {
-      a("this", ews.a),
-      b("attacker", ews.d),
-      c("direct_attacker", ews.e),
-      d("attacking_player", ews.b);
+   void a(dzi.a var1);
 
-      public static final baf.a<etw.b> e = baf.a(etw.b::values);
-      private final String f;
-      private final ewp<? extends btz> g;
+   ecd y();
 
-      private b(final String $$0, final ewp<? extends btz> $$1) {
-         this.f = $$0;
-         this.g = $$1;
-      }
+   boolean z();
 
-      public ewp<? extends btz> a() {
-         return this.g;
-      }
+   boolean A();
 
-      public static etw.b a(String $$0) {
-         etw.b $$1 = e.a($$0);
-         if ($$1 != null) {
-            return $$1;
-         } else {
-            throw new IllegalArgumentException("Invalid entity target " + $$0);
-         }
-      }
+   Lifecycle B();
 
-      @Override
-      public String c() {
-         return this.f;
-      }
-   }
-
-   public static record c<T>(ety<T> a, T b) {
+   default crf K() {
+      return this.D().b();
    }
 }

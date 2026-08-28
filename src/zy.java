@@ -1,29 +1,14 @@
-public class zy implements zo<zu> {
-   public static final zf<we, zy> a = zo.a(zy::a, zy::new);
-   private final long b;
+import io.netty.buffer.ByteBuf;
 
-   public zy(long $$0) {
-      this.b = $$0;
-   }
-
-   private zy(we $$0) {
-      this.b = $$0.readLong();
-   }
-
-   private void a(we $$0) {
-      $$0.b(this.b);
-   }
+public record zy(xi b) implements zp<zv> {
+   public static final zg<ByteBuf, zy> a = xk.f.a(zy::new, zy::b);
 
    @Override
-   public zq<zy> a() {
-      return aag.d;
+   public zr<zy> a() {
+      return aah.c;
    }
 
-   public void a(zu $$0) {
+   public void a(zv $$0) {
       $$0.a(this);
-   }
-
-   public long b() {
-      return this.b;
    }
 }

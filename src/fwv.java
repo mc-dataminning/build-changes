@@ -1,73 +1,110 @@
-public class fwv extends fxz<gti> {
-   public static final gbk a = gbk.scaling(0.6F);
-   private static final float b = 25.0F;
-   private static final float c = 22.5F;
-   private static final float d = 16.5F;
-   private static final float e = 2.5F;
-   private static final String f = "head_cube";
-   private static final String g = "right_ear_cube";
-   private static final String i = "left_ear_cube";
-   private final gbb j;
-   private final gbb k;
-   private final gbb l;
-   private final gbb m;
-   private final gbb n;
-   private final gbb o;
+import com.mojang.authlib.GameProfile;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
+import java.util.function.Supplier;
 
-   public fwv(gbb $$0) {
-      super($$0);
-      this.j = $$0.b("body");
-      this.k = $$0.b("right_hind_leg");
-      this.l = $$0.b("left_hind_leg");
-      this.n = this.j.b("head");
-      this.o = this.j.b("tail");
-      this.m = $$0.b("cube");
+public class fwv implements fwq, fwr {
+   private static final ali a = ali.b("spectator/teleport_to_team");
+   private static final xi b = xi.c("spectatorMenu.team_teleport");
+   private static final xi c = xi.c("spectatorMenu.team_teleport.prompt");
+   private final List<fwr> d;
+
+   public fwv() {
+      fji $$0 = fji.Q();
+      this.d = a($$0, $$0.s.O());
    }
 
-   public static gbh a() {
-      gbj $$0 = new gbj();
-      gbl $$1 = $$0.a();
-      gbl $$2 = $$1.a(
-         "body",
-         gbg.c().a(0, 20).a(-4.0F, -7.0F, -10.0F, 8.0F, 8.0F, 12.0F, new gbf(0.3F)).a(0, 40).a(-4.0F, -7.0F, -10.0F, 8.0F, 8.0F, 12.0F, new gbf(0.0F)),
-         gbd.a(0.0F, 21.0F, 4.0F)
-      );
-      $$2.a("tail", gbg.c().a(44, 53).a(-0.5F, -0.0865F, 0.0933F, 1.0F, 6.0F, 1.0F, new gbf(0.0F)), gbd.a(0.0F, -3.0F, 1.0F, 0.5061F, 0.0F, 0.0F));
-      gbl $$3 = $$2.a("head", gbg.c(), gbd.a(0.0F, -2.0F, -11.0F));
-      $$3.a("head_cube", gbg.c().a(43, 15).a(-1.5F, -1.0F, -1.0F, 3.0F, 5.0F, 2.0F, new gbf(0.0F)), gbd.a(0.0F, 0.0F, 0.0F, -0.3927F, 0.0F, 0.0F));
-      gbl $$4 = $$3.a("right_ear", gbg.c(), gbd.a(-1.0F, -1.0F, 0.0F));
-      $$4.a("right_ear_cube", gbg.c().a(43, 10).a(-2.0F, -3.0F, 0.0F, 2.0F, 5.0F, 0.0F, new gbf(0.0F)), gbd.a(-0.5F, 0.0F, -0.6F, 0.1886F, -0.3864F, -0.0718F));
-      gbl $$5 = $$3.a("left_ear", gbg.c(), gbd.a(1.0F, -2.0F, 0.0F));
-      $$5.a("left_ear_cube", gbg.c().a(47, 10).a(0.0F, -3.0F, 0.0F, 2.0F, 5.0F, 0.0F, new gbf(0.0F)), gbd.a(0.5F, 1.0F, -0.6F, 0.1886F, 0.3864F, 0.0718F));
-      $$1.a("right_hind_leg", gbg.c().a(51, 31).a(-1.0F, 0.0F, -1.0F, 2.0F, 3.0F, 2.0F, new gbf(0.0F)), gbd.a(-2.0F, 21.0F, 4.0F));
-      $$1.a("left_hind_leg", gbg.c().a(42, 31).a(-1.0F, 0.0F, -1.0F, 2.0F, 3.0F, 2.0F, new gbf(0.0F)), gbd.a(2.0F, 21.0F, 4.0F));
-      $$1.a("right_front_leg", gbg.c().a(51, 43).a(-1.0F, 0.0F, -1.0F, 2.0F, 3.0F, 2.0F, new gbf(0.0F)), gbd.a(-2.0F, 21.0F, -4.0F));
-      $$1.a("left_front_leg", gbg.c().a(42, 43).a(-1.0F, 0.0F, -1.0F, 2.0F, 3.0F, 2.0F, new gbf(0.0F)), gbd.a(2.0F, 21.0F, -4.0F));
-      $$1.a("cube", gbg.c().a(0, 0).a(-5.0F, -10.0F, -6.0F, 10.0F, 10.0F, 10.0F, new gbf(0.0F)), gbd.a(0.0F, 24.0F, 0.0F));
-      return gbh.a($$0, 64, 64);
+   private static List<fwr> a(fji $$0, fas $$1) {
+      return $$1.g().stream().flatMap($$1x -> fwv.a.a($$0, $$1x).stream()).toList();
    }
 
-   public void a(gti $$0) {
-      super.a($$0);
-      if ($$0.a) {
-         this.j.l = true;
-         this.l.k = false;
-         this.k.k = false;
-         this.o.k = false;
-         this.m.k = true;
-      } else {
-         this.j.l = false;
-         this.l.k = true;
-         this.k.k = true;
-         this.o.k = true;
-         this.m.k = false;
-         this.n.e = azj.a($$0.V, -22.5F, 25.0F) * (float) (Math.PI / 180.0);
-         this.n.f = azj.a($$0.U, -32.5F, 32.5F) * (float) (Math.PI / 180.0);
+   @Override
+   public List<fwr> a() {
+      return this.d;
+   }
+
+   @Override
+   public xi b() {
+      return c;
+   }
+
+   @Override
+   public void a(fwp $$0) {
+      $$0.a(this);
+   }
+
+   @Override
+   public xi aS_() {
+      return b;
+   }
+
+   @Override
+   public void a(fku $$0, float $$1, float $$2) {
+      $$0.a(gir::B, a, 0, 0, 16, 16, axv.a($$2, $$1, $$1, $$1));
+   }
+
+   @Override
+   public boolean aT_() {
+      return !this.d.isEmpty();
+   }
+
+   static class a implements fwr {
+      private final fan a;
+      private final Supplier<gze> b;
+      private final List<gct> c;
+
+      private a(fan $$0, List<gct> $$1, Supplier<gze> $$2) {
+         this.a = $$0;
+         this.c = $$1;
+         this.b = $$2;
       }
 
-      this.a(fjs.b, $$0.X, $$0.Y, 16.5F, 2.5F);
-      this.a($$0.b, fjs.d, $$0.p, 1.0F);
-      this.a($$0.c, fjs.a, $$0.p, 1.0F);
-      this.a($$0.d, fjs.c, $$0.p, 1.0F);
+      public static Optional<fwr> a(fji $$0, fan $$1) {
+         List<gct> $$2 = new ArrayList<>();
+
+         for (String $$3 : $$1.g()) {
+            gct $$4 = $$0.L().a($$3);
+            if ($$4 != null && $$4.e() != dey.d) {
+               $$2.add($$4);
+            }
+         }
+
+         if ($$2.isEmpty()) {
+            return Optional.empty();
+         } else {
+            GameProfile $$5 = $$2.get(azs.a().a($$2.size())).a();
+            Supplier<gze> $$6 = $$0.an().a($$5);
+            return Optional.of(new fwv.a($$1, $$2, $$6));
+         }
+      }
+
+      @Override
+      public void a(fwp $$0) {
+         $$0.a(new fwu(this.c));
+      }
+
+      @Override
+      public xi aS_() {
+         return this.a.c();
+      }
+
+      @Override
+      public void a(fku $$0, float $$1, float $$2) {
+         Integer $$3 = this.a.n().f();
+         if ($$3 != null) {
+            float $$4 = (float)($$3 >> 16 & 0xFF) / 255.0F;
+            float $$5 = (float)($$3 >> 8 & 0xFF) / 255.0F;
+            float $$6 = (float)($$3 & 0xFF) / 255.0F;
+            $$0.a(1, 1, 15, 15, axv.a($$2, $$4 * $$1, $$5 * $$1, $$6 * $$1));
+         }
+
+         fmg.a($$0, this.b.get(), 2, 2, 12, axv.a($$2, $$1, $$1, $$1));
+      }
+
+      @Override
+      public boolean aT_() {
+         return true;
+      }
    }
 }

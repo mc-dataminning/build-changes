@@ -1,3 +1,4 @@
-public class guf extends gut {
-   public boolean a;
+public class guf extends gvl {
+   public float a;
+   public float b;
 }

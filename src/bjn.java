@@ -1,4 +1,3 @@
-import com.mojang.datafixers.DSL;
 import com.mojang.datafixers.schemas.Schema;
 import com.mojang.datafixers.types.templates.TypeTemplate;
 import java.util.Map;
@@ -9,15 +8,9 @@ public class bjn extends Schema {
       super($$0, $$1);
    }
 
-   public void registerTypes(Schema $$0, Map<String, Supplier<TypeTemplate>> $$1, Map<String, Supplier<TypeTemplate>> $$2) {
-      super.registerTypes($$0, $$1, $$2);
-      $$0.registerType(
-         false,
-         bhs.b,
-         () -> DSL.optionalFields(
-               "RootVehicle", DSL.optionalFields("Entity", bhs.A.in($$0)), "Inventory", DSL.list(bhs.t.in($$0)), "EnderItems", DSL.list(bhs.t.in($$0))
-            )
-      );
-      $$0.registerType(true, bhs.A, () -> DSL.optionalFields("Passengers", DSL.list(bhs.A.in($$0)), bhs.B.in($$0)));
+   public Map<String, Supplier<TypeTemplate>> registerEntities(Schema $$0) {
+      Map<String, Supplier<TypeTemplate>> $$1 = super.registerEntities($$0);
+      $$1.remove("Minecart");
+      return $$1;
    }
 }

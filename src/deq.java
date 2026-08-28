@@ -1,34 +1,31 @@
-import it.unimi.dsi.fastutil.longs.LongOpenHashSet;
-import it.unimi.dsi.fastutil.longs.LongSet;
+import javax.annotation.Nullable;
 
-public class deq extends esq {
-   public static final String a = "chunks";
-   private static final String b = "Forced";
-   private final LongSet c;
+public enum deq implements deg {
+   a;
 
-   public static esq.a<deq> a() {
-      return new esq.a<>(deq::new, deq::b, bas.i);
-   }
-
-   private deq(LongSet $$0) {
-      this.c = $$0;
-   }
-
-   public deq() {
-      this(new LongOpenHashSet());
-   }
-
-   public static deq b(uj $$0, jr.a $$1) {
-      return new deq(new LongOpenHashSet($$0.o("Forced")));
+   @Nullable
+   @Override
+   public dsm c_(jh $$0) {
+      return null;
    }
 
    @Override
-   public uj a(uj $$0, jr.a $$1) {
-      $$0.a("Forced", this.c.toLongArray());
-      return $$0;
+   public dvj a_(jh $$0) {
+      return dig.a.m();
    }
 
-   public LongSet b() {
-      return this.c;
+   @Override
+   public erk b_(jh $$0) {
+      return erl.a.g();
+   }
+
+   @Override
+   public int I_() {
+      return 0;
+   }
+
+   @Override
+   public int J_() {
+      return 0;
    }
 }

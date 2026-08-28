@@ -1,28 +1,73 @@
 import com.mojang.serialization.Codec;
+import java.util.List;
 
-public class efd extends eef<egw> {
-   public efd(Codec<egw> $$0) {
+public class efd extends eel<egu> {
+   public efd(Codec<egu> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(eeh<egw> $$0) {
-      egw $$1 = $$0.f();
-      azr $$2 = $$0.d();
-      jg $$3 = $$0.e();
-      dfs $$4 = $$0.b();
-      int $$5 = 0;
-      jg.a $$6 = new jg.a();
-      int $$7 = $$1.b() + 1;
-      int $$8 = $$1.c() + 1;
+   public boolean a(een<egu> $$0) {
+      dfy $$1 = $$0.b();
+      jh $$2 = $$0.e();
+      azs $$3 = $$0.d();
+      egu $$4 = $$0.f();
+      if (!c($$1.a_($$2))) {
+         return false;
+      } else {
+         List<jm> $$5 = $$4.a($$3);
+         if (a($$1, $$2, $$1.a_($$2), $$4, $$3, $$5)) {
+            return true;
+         } else {
+            jh.a $$6 = $$2.k();
 
-      for (int $$9 = 0; $$9 < $$1.a(); $$9++) {
-         $$6.a($$3, $$2.a($$7) - $$2.a($$7), $$2.a($$8) - $$2.a($$8), $$2.a($$7) - $$2.a($$7));
-         if ($$1.d().a().a($$4, $$0.c(), $$2, $$6)) {
-            $$5++;
+            for (jm $$7 : $$5) {
+               $$6.g($$2);
+               List<jm> $$8 = $$4.a($$3, $$7.g());
+
+               for (int $$9 = 0; $$9 < $$4.c; $$9++) {
+                  $$6.a($$2, $$7);
+                  dvj $$10 = $$1.a_($$6);
+                  if (!c($$10) && !$$10.a($$4.b)) {
+                     break;
+                  }
+
+                  if (a($$1, $$6, $$10, $$4, $$3, $$8)) {
+                     return true;
+                  }
+               }
+            }
+
+            return false;
+         }
+      }
+   }
+
+   public static boolean a(dfy $$0, jh $$1, dvj $$2, egu $$3, azs $$4, List<jm> $$5) {
+      jh.a $$6 = $$1.k();
+
+      for (jm $$7 : $$5) {
+         dvj $$8 = $$0.a_($$6.a($$1, $$7));
+         if ($$8.a($$3.h)) {
+            dvj $$9 = $$3.b.c($$2, $$0, $$1, $$7);
+            if ($$9 == null) {
+               return false;
+            }
+
+            $$0.a($$1, $$9, 3);
+            $$0.y($$1).e($$1);
+            if ($$4.i() < $$3.g) {
+               $$3.b.c().a($$9, $$0, $$1, $$7, $$4, true);
+            }
+
+            return true;
          }
       }
 
-      return $$5 > 0;
+      return false;
+   }
+
+   private static boolean c(dvj $$0) {
+      return $$0.l() || $$0.a(dig.G);
    }
 }

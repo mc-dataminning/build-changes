@@ -1,25 +1,30 @@
+import com.mojang.datafixers.util.Either;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.function.BiConsumer;
-import java.util.stream.Stream;
+import java.util.Optional;
 
-record enc(alg<enb> c, alg<enb> d) implements end {
-   static MapCodec<enc> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(alg.a(ly.aV).fieldOf("alias").forGetter(enc::c), alg.a(ly.aV).fieldOf("target").forGetter(enc::d)).apply($$0, enc::new)
-   );
+public class enc extends ene {
+   public static final MapCodec<enc> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(d(), b(), e(), c()).apply($$0, enc::new));
 
-   @Override
-   public void a(azr $$0, BiConsumer<alg<enb>, alg<enb>> $$1) {
-      $$1.accept(this.c, this.d);
+   protected enc(Either<ali, epz> $$0, jq<epx> $$1, enh.a $$2, Optional<epj> $$3) {
+      super($$0, $$1, $$2, $$3);
    }
 
    @Override
-   public Stream<alg<enb>> a() {
-      return Stream.of(this.d);
+   protected epv a(dor $$0, elp $$1, epj $$2, boolean $$3) {
+      epv $$4 = super.a($$0, $$1, $$2, $$3);
+      $$4.b(epa.b);
+      $$4.a(epa.d);
+      return $$4;
    }
 
    @Override
-   public MapCodec<enc> b() {
-      return a;
+   public eng<?> a() {
+      return eng.e;
+   }
+
+   @Override
+   public String toString() {
+      return "LegacySingle[" + this.c + "]";
    }
 }

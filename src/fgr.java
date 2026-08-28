@@ -1,50 +1,27 @@
-import javax.annotation.Nullable;
+import it.unimi.dsi.fastutil.booleans.BooleanConsumer;
 
-public class fgr extends hee {
-   private static final xh a = xh.c("mco.account.privacy.information");
-   private static final int b = 15;
-   private final fos c = fos.d();
-   private final fqs B;
-   @Nullable
-   private flt C;
+public class fgr extends hep {
+   protected BooleanConsumer a;
+   private final xi b;
+   private final xi c;
 
-   public fgr(fqs $$0) {
-      super(fir.a);
-      this.B = $$0;
+   public fgr(BooleanConsumer $$0, xi $$1, xi $$2) {
+      super(fiz.a);
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
    }
 
    @Override
-   public void aS_() {
-      this.c.a(15).c().b();
-      this.C = new flt(a, this.p).b(true);
-      this.c.a(this.C);
-      fos $$0 = this.c.a(fos.e().a(8));
-      xh $$1 = xh.c("mco.account.privacy.info.button");
-      $$0.a(fkz.a($$1, fpp.b(this, ayf.a)).a());
-      $$0.a(fkz.a(xg.k, $$0x -> this.d()).a());
-      this.c.a($$1x -> {
-         fkx var10000 = this.c($$1x);
-      });
-      this.c();
+   public void aR_() {
+      this.c(flh.a(xh.f, $$0 -> this.a.accept(true)).a(this.n / 2 - 105, g(9), 100, 20).a());
+      this.c(flh.a(xh.g, $$0 -> this.a.accept(false)).a(this.n / 2 + 5, g(9), 100, 20).a());
    }
 
    @Override
-   public void d() {
-      this.m.a(this.B);
-   }
-
-   @Override
-   protected void c() {
-      if (this.C != null) {
-         this.C.d(this.n - 15);
-      }
-
-      this.c.a();
-      fol.a(this.c, this.H());
-   }
-
-   @Override
-   public xh i() {
-      return a;
+   public void a(fku $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      $$0.a(this.p, this.b, this.n / 2, g(3), -1);
+      $$0.a(this.p, this.c, this.n / 2, g(5), -1);
    }
 }

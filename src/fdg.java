@@ -2,7 +2,7 @@ import javax.annotation.ParametersAreNonnullByDefault;
 
 // $VF: synthetic class
 @ParametersAreNonnullByDefault
-@fbj
-@fbi
+@fbp
+@fbo
 interface fdg {
 }

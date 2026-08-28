@@ -1,36 +1,28 @@
-public record aes(agp e, byte f) implements zo<acd> {
-   public static final zf<ws, aes> a = zo.a(aes::a, aes::new);
-   public static final byte b = 1;
-   public static final byte c = 2;
-   public static final byte d = 3;
+import javax.annotation.Nullable;
 
-   private aes(ws $$0) {
-      this(new agp($$0), $$0.readByte());
+public record aes(String b, @Nullable String c) implements zp<ace> {
+   public static final zg<wf, aes> a = zp.a(aes::a, aes::new);
+
+   private aes(wf $$0) {
+      this($$0.p(), $$0.c(wf::p));
    }
 
-   private void a(ws $$0) {
-      this.e.a($$0);
-      $$0.l(this.f);
+   private void a(wf $$0) {
+      $$0.a(this.b);
+      $$0.a(this.c, wf::a);
    }
 
    @Override
-   public zq<aes> a() {
-      return ags.am;
+   public zr<aes> a() {
+      return agt.ch;
    }
 
-   public void a(acd $$0) {
+   public void a(ace $$0) {
       $$0.a(this);
    }
 
-   public boolean a(byte $$0) {
-      return (this.f & $$0) != 0;
-   }
-
-   public agp b() {
-      return this.e;
-   }
-
-   public byte e() {
-      return this.f;
+   @Nullable
+   public String e() {
+      return this.c;
    }
 }

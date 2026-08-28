@@ -1,35 +1,56 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
+public class eek extends eel<egw> {
+   public static final int a = 4;
+   public static final int b = 4;
+   public static final int c = 1;
+   public static final float d = 0.5F;
+   private static final jh ao = jh.c;
+   private final boolean ap;
 
-public class eek implements egj {
-   public static final Codec<eek> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               alh.a.listOf().fieldOf("fossil_structures").forGetter($$0x -> $$0x.b),
-               alh.a.listOf().fieldOf("overlay_structures").forGetter($$0x -> $$0x.c),
-               eps.d.fieldOf("fossil_processors").forGetter($$0x -> $$0x.d),
-               eps.d.fieldOf("overlay_processors").forGetter($$0x -> $$0x.e),
-               Codec.intRange(0, 7).fieldOf("max_empty_corners_allowed").forGetter($$0x -> $$0x.f)
-            )
-            .apply($$0, eek::new)
-   );
-   public final List<alh> b;
-   public final List<alh> c;
-   public final jp<epr> d;
-   public final jp<epr> e;
-   public final int f;
+   public static jh a(jh $$0) {
+      return ao.a((kl)$$0);
+   }
 
-   public eek(List<alh> $$0, List<alh> $$1, jp<epr> $$2, jp<epr> $$3, int $$4) {
-      if ($$0.isEmpty()) {
-         throw new IllegalArgumentException("Fossil structure lists need at least one entry");
-      } else if ($$0.size() != $$1.size()) {
-         throw new IllegalArgumentException("Fossil structure lists must be equal lengths");
-      } else {
-         this.b = $$0;
-         this.c = $$1;
-         this.d = $$2;
-         this.e = $$3;
-         this.f = $$4;
+   public eek(boolean $$0) {
+      super(egw.a);
+      this.ap = $$0;
+   }
+
+   @Override
+   public boolean a(een<egw> $$0) {
+      jh $$1 = $$0.e();
+      dfy $$2 = $$0.b();
+
+      for (jh $$3 : jh.c(new jh($$1.u() - 4, $$1.v() - 1, $$1.w() - 4), new jh($$1.u() + 4, $$1.v() + 32, $$1.w() + 4))) {
+         boolean $$4 = $$3.a($$1, 2.5);
+         if ($$4 || $$3.a($$1, 3.5)) {
+            if ($$3.v() < $$1.v()) {
+               if ($$4) {
+                  this.a($$2, $$3, dig.F.m());
+               } else if ($$3.v() < $$1.v()) {
+                  this.a($$2, $$3, dig.fz.m());
+               }
+            } else if ($$3.v() > $$1.v()) {
+               this.a($$2, $$3, dig.a.m());
+            } else if (!$$4) {
+               this.a($$2, $$3, dig.F.m());
+            } else if (this.ap) {
+               this.a($$2, new jh($$3), dig.fx.m());
+            } else {
+               this.a($$2, new jh($$3), dig.a.m());
+            }
+         }
       }
+
+      for (int $$5 = 0; $$5 < 4; $$5++) {
+         this.a($$2, $$1.b($$5), dig.F.m());
+      }
+
+      jh $$6 = $$1.b(2);
+
+      for (jm $$7 : jm.c.a) {
+         this.a($$2, $$6.a($$7), dig.cq.m().b(drg.g, $$7));
+      }
+
+      return true;
    }
 }

@@ -1,36 +1,17 @@
-import javax.annotation.Nullable;
-
-public abstract class fmu implements fmv {
-   @Nullable
-   private fmw a;
-   private boolean b;
-
-   @Override
-   public final boolean aL_() {
-      return this.b;
+public record fmu(ali a, ali b, ali c, ali d) {
+   public fmu(ali $$0, ali $$1) {
+      this($$0, $$0, $$1, $$1);
    }
 
-   @Override
-   public final void b_(boolean $$0) {
-      this.b = $$0;
+   public fmu(ali $$0, ali $$1, ali $$2) {
+      this($$0, $$1, $$2, $$1);
    }
 
-   @Nullable
-   @Override
-   public fmw aM_() {
-      return this.a;
-   }
-
-   @Override
-   public void a(@Nullable fmw $$0) {
-      if (this.a != null) {
-         this.a.a(false);
+   public ali a(boolean $$0, boolean $$1) {
+      if ($$0) {
+         return $$1 ? this.c : this.a;
+      } else {
+         return $$1 ? this.d : this.b;
       }
-
-      if ($$0 != null) {
-         $$0.a(true);
-      }
-
-      this.a = $$0;
    }
 }

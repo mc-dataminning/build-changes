@@ -1,415 +1,122 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.Queues;
-import com.google.common.collect.Sets;
-import com.mojang.logging.LogUtils;
+import it.unimi.dsi.fastutil.longs.Long2ObjectFunction;
 import it.unimi.dsi.fastutil.longs.Long2ObjectMap;
-import it.unimi.dsi.fastutil.longs.Long2ObjectMaps;
 import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
+import it.unimi.dsi.fastutil.longs.LongAVLTreeSet;
+import it.unimi.dsi.fastutil.longs.LongIterator;
 import it.unimi.dsi.fastutil.longs.LongOpenHashSet;
 import it.unimi.dsi.fastutil.longs.LongSet;
-import it.unimi.dsi.fastutil.longs.Long2ObjectMap.Entry;
-import it.unimi.dsi.fastutil.objects.ObjectIterator;
-import java.io.IOException;
-import java.io.UncheckedIOException;
-import java.io.Writer;
-import java.util.List;
-import java.util.Queue;
-import java.util.Set;
-import java.util.UUID;
-import java.util.function.Consumer;
-import java.util.stream.Collectors;
+import it.unimi.dsi.fastutil.longs.LongSortedSet;
+import java.util.Objects;
+import java.util.Spliterators;
+import java.util.PrimitiveIterator.OfLong;
+import java.util.stream.LongStream;
 import java.util.stream.Stream;
-import org.slf4j.Logger;
+import java.util.stream.StreamSupport;
+import javax.annotation.Nullable;
 
-public class dzs<T extends dzh> implements AutoCloseable {
-   static final Logger a = LogUtils.getLogger();
-   final Set<UUID> b = Sets.newHashSet();
-   final dzp<T> c;
-   private final dzk<T> d;
-   private final dzj<T> e;
-   final dzm<T> f;
-   private final dzq<T> g;
-   private final Long2ObjectMap<dzu> h = new Long2ObjectOpenHashMap();
-   private final Long2ObjectMap<dzs.b> i = new Long2ObjectOpenHashMap();
-   private final LongSet j = new LongOpenHashSet();
-   private final Queue<dzf<T>> k = Queues.newConcurrentLinkedQueue();
+public class dzs<T extends dzn> {
+   public static final int a = 2;
+   public static final int b = 4;
+   private final Class<T> c;
+   private final Long2ObjectFunction<eaa> d;
+   private final Long2ObjectMap<dzr<T>> e = new Long2ObjectOpenHashMap();
+   private final LongSortedSet f = new LongAVLTreeSet();
 
-   public dzs(Class<T> $$0, dzp<T> $$1, dzk<T> $$2) {
-      this.e = new dzj<>();
-      this.f = new dzm<>($$0, this.h);
-      this.h.defaultReturnValue(dzu.a);
-      this.i.defaultReturnValue(dzs.b.a);
-      this.c = $$1;
-      this.d = $$2;
-      this.g = new dzr<>(this.e, this.f);
+   public dzs(Class<T> $$0, Long2ObjectFunction<eaa> $$1) {
+      this.c = $$0;
+      this.d = $$1;
    }
 
-   void a(long $$0, dzl<T> $$1) {
-      if ($$1.a()) {
-         this.f.e($$0);
-      }
-   }
+   public void a(ezi $$0, axw<dzr<T>> $$1) {
+      int $$2 = kj.a($$0.a - 2.0);
+      int $$3 = kj.a($$0.b - 4.0);
+      int $$4 = kj.a($$0.c - 2.0);
+      int $$5 = kj.a($$0.d + 2.0);
+      int $$6 = kj.a($$0.e + 0.0);
+      int $$7 = kj.a($$0.f + 2.0);
 
-   private boolean b(T $$0) {
-      if (!this.b.add($$0.cH())) {
-         a.warn("UUID of added entity already exists: {}", $$0);
-         return false;
-      } else {
-         return true;
-      }
-   }
+      for (int $$8 = $$2; $$8 <= $$5; $$8++) {
+         long $$9 = kj.b($$8, 0, 0);
+         long $$10 = kj.b($$8, -1, -1);
+         LongIterator $$11 = this.f.subSet($$9, $$10 + 1L).iterator();
 
-   public boolean a(T $$0) {
-      return this.a($$0, false);
-   }
-
-   private boolean a(T $$0, boolean $$1) {
-      if (!this.b($$0)) {
-         return false;
-      } else {
-         long $$2 = ki.c($$0.dx());
-         dzl<T> $$3 = this.f.c($$2);
-         $$3.a($$0);
-         $$0.a(new dzs.a($$0, $$2, $$3));
-         if (!$$1) {
-            this.c.g($$0);
-         }
-
-         dzu $$4 = a($$0, $$3.c());
-         if ($$4.b()) {
-            this.e($$0);
-         }
-
-         if ($$4.a()) {
-            this.c($$0);
-         }
-
-         return true;
-      }
-   }
-
-   static <T extends dzh> dzu a(T $$0, dzu $$1) {
-      return $$0.dW() ? dzu.c : $$1;
-   }
-
-   public void a(Stream<T> $$0) {
-      $$0.forEach($$0x -> this.a((T)$$0x, true));
-   }
-
-   public void b(Stream<T> $$0) {
-      $$0.forEach($$0x -> this.a((T)$$0x, false));
-   }
-
-   void c(T $$0) {
-      this.c.e($$0);
-   }
-
-   void d(T $$0) {
-      this.c.d($$0);
-   }
-
-   void e(T $$0) {
-      this.e.a($$0);
-      this.c.c($$0);
-   }
-
-   void f(T $$0) {
-      this.c.b($$0);
-      this.e.b($$0);
-   }
-
-   public void a(deb $$0, arc $$1) {
-      dzu $$2 = dzu.a($$1);
-      this.a($$0, $$2);
-   }
-
-   public void a(deb $$0, dzu $$1) {
-      long $$2 = $$0.a();
-      if ($$1 == dzu.a) {
-         this.h.remove($$2);
-         this.j.add($$2);
-      } else {
-         this.h.put($$2, $$1);
-         this.j.remove($$2);
-         this.b($$2);
-      }
-
-      this.f.b($$2).forEach($$1x -> {
-         dzu $$2x = $$1x.a($$1);
-         boolean $$3 = $$2x.b();
-         boolean $$4 = $$1.b();
-         boolean $$5 = $$2x.a();
-         boolean $$6 = $$1.a();
-         if ($$5 && !$$6) {
-            $$1x.b().filter($$0xx -> !$$0xx.dW()).forEach(this::d);
-         }
-
-         if ($$3 && !$$4) {
-            $$1x.b().filter($$0xx -> !$$0xx.dW()).forEach(this::f);
-         } else if (!$$3 && $$4) {
-            $$1x.b().filter($$0xx -> !$$0xx.dW()).forEach(this::e);
-         }
-
-         if (!$$5 && $$6) {
-            $$1x.b().filter($$0xx -> !$$0xx.dW()).forEach(this::c);
-         }
-      });
-   }
-
-   private void b(long $$0) {
-      dzs.b $$1 = (dzs.b)this.i.get($$0);
-      if ($$1 == dzs.b.a) {
-         this.c($$0);
-      }
-   }
-
-   private boolean a(long $$0, Consumer<T> $$1) {
-      dzs.b $$2 = (dzs.b)this.i.get($$0);
-      if ($$2 == dzs.b.b) {
-         return false;
-      } else {
-         List<T> $$3 = this.f.b($$0).flatMap($$0x -> $$0x.b().filter(dzh::dV)).collect(Collectors.toList());
-         if ($$3.isEmpty()) {
-            if ($$2 == dzs.b.c) {
-               this.d.a(new dzf<>(new deb($$0), ImmutableList.of()));
+         while ($$11.hasNext()) {
+            long $$12 = $$11.nextLong();
+            int $$13 = kj.c($$12);
+            int $$14 = kj.d($$12);
+            if ($$13 >= $$3 && $$13 <= $$6 && $$14 >= $$4 && $$14 <= $$7) {
+               dzr<T> $$15 = (dzr<T>)this.e.get($$12);
+               if ($$15 != null && !$$15.a() && $$15.c().b() && $$1.accept($$15).a()) {
+                  return;
+               }
             }
-
-            return true;
-         } else if ($$2 == dzs.b.a) {
-            this.c($$0);
-            return false;
-         } else {
-            this.d.a(new dzf<>(new deb($$0), $$3));
-            $$3.forEach($$1);
-            return true;
          }
       }
    }
 
-   private void c(long $$0) {
-      this.i.put($$0, dzs.b.b);
-      deb $$1 = new deb($$0);
-      this.d.a($$1).thenAccept(this.k::add).exceptionally($$1x -> {
-         a.error("Failed to read chunk {}", $$1, $$1x);
-         return null;
-      });
-   }
-
-   private boolean d(long $$0) {
-      boolean $$1 = this.a($$0, $$0x -> $$0x.dd().forEach(this::g));
-      if (!$$1) {
-         return false;
+   public LongStream a(long $$0) {
+      int $$1 = deh.a($$0);
+      int $$2 = deh.b($$0);
+      LongSortedSet $$3 = this.a($$1, $$2);
+      if ($$3.isEmpty()) {
+         return LongStream.empty();
       } else {
-         this.i.remove($$0);
-         return true;
+         OfLong $$4 = $$3.iterator();
+         return StreamSupport.longStream(Spliterators.spliteratorUnknownSize($$4, 1301), false);
       }
    }
 
-   private void g(dzh $$0) {
-      $$0.b(btz.c.c);
-      $$0.a(dzi.a);
+   private LongSortedSet a(int $$0, int $$1) {
+      long $$2 = kj.b($$0, 0, $$1);
+      long $$3 = kj.b($$0, -1, $$1);
+      return this.f.subSet($$2, $$3 + 1L);
    }
 
-   private void g() {
-      this.j.removeIf($$0 -> this.h.get($$0) != dzu.a ? true : this.d($$0));
+   public Stream<dzr<T>> b(long $$0) {
+      return this.a($$0).<dzr<T>>mapToObj(this.e::get).filter(Objects::nonNull);
    }
 
-   private void h() {
-      dzf<T> $$0;
-      while (($$0 = this.k.poll()) != null) {
-         $$0.b().forEach($$0x -> this.a((T)$$0x, true));
-         this.i.put($$0.a().a(), dzs.b.c);
-      }
+   private static long f(long $$0) {
+      return deh.c(kj.b($$0), kj.d($$0));
    }
 
-   public void a() {
-      this.h();
-      this.g();
+   public dzr<T> c(long $$0) {
+      return (dzr<T>)this.e.computeIfAbsent($$0, this::g);
    }
 
-   private LongSet i() {
-      LongSet $$0 = this.f.a();
-      ObjectIterator var2 = Long2ObjectMaps.fastIterable(this.i).iterator();
+   @Nullable
+   public dzr<T> d(long $$0) {
+      return (dzr<T>)this.e.get($$0);
+   }
 
-      while (var2.hasNext()) {
-         Entry<dzs.b> $$1 = (Entry<dzs.b>)var2.next();
-         if ($$1.getValue() == dzs.b.c) {
-            $$0.add($$1.getLongKey());
-         }
-      }
+   private dzr<T> g(long $$0) {
+      long $$1 = f($$0);
+      eaa $$2 = (eaa)this.d.get($$1);
+      this.f.add($$0);
+      return new dzr<>(this.c, $$2);
+   }
 
+   public LongSet a() {
+      LongSet $$0 = new LongOpenHashSet();
+      this.e.keySet().forEach($$1 -> $$0.add(f($$1)));
       return $$0;
    }
 
-   public void b() {
-      this.i().forEach($$0 -> {
-         boolean $$1 = this.h.get($$0) == dzu.a;
-         if ($$1) {
-            this.d($$0);
-         } else {
-            this.a($$0, $$0x -> {
-            });
-         }
-      });
+   public void b(ezi $$0, axw<T> $$1) {
+      this.a($$0, $$2 -> $$2.a($$0, $$1));
    }
 
-   public void c() {
-      LongSet $$0 = this.i();
-
-      while (!$$0.isEmpty()) {
-         this.d.a(false);
-         this.h();
-         $$0.removeIf($$0x -> {
-            boolean $$1 = this.h.get($$0x) == dzu.a;
-            return $$1 ? this.d($$0x) : this.a($$0x, $$0xx -> {
-            });
-         });
-      }
-
-      this.d.a(true);
+   public <U extends T> void a(dzu<T, U> $$0, ezi $$1, axw<U> $$2) {
+      this.a($$1, $$3 -> $$3.a($$0, $$1, $$2));
    }
 
-   @Override
-   public void close() throws IOException {
-      this.c();
-      this.d.close();
+   public void e(long $$0) {
+      this.e.remove($$0);
+      this.f.remove($$0);
    }
 
-   public boolean a(UUID $$0) {
-      return this.b.contains($$0);
-   }
-
-   public dzq<T> d() {
-      return this.g;
-   }
-
-   public boolean a(jg $$0) {
-      return ((dzu)this.h.get(deb.a($$0))).a();
-   }
-
-   public boolean a(deb $$0) {
-      return ((dzu)this.h.get($$0.a())).a();
-   }
-
-   public boolean a(long $$0) {
-      return this.i.get($$0) == dzs.b.c;
-   }
-
-   public void a(Writer $$0) throws IOException {
-      ayj $$1 = ayj.a().a("x").a("y").a("z").a("visibility").a("load_status").a("entity_count").a($$0);
-      this.f.a().forEach($$1x -> {
-         dzs.b $$2 = (dzs.b)this.i.get($$1x);
-         this.f.a($$1x).forEach($$2x -> {
-            dzl<T> $$3 = this.f.d($$2x);
-            if ($$3 != null) {
-               try {
-                  $$1.a(ki.b($$2x), ki.c($$2x), ki.d($$2x), $$3.c(), $$2, $$3.d());
-               } catch (IOException var7) {
-                  throw new UncheckedIOException(var7);
-               }
-            }
-         });
-      });
-   }
-
-   @bap
-   public String e() {
-      return this.b.size() + "," + this.e.b() + "," + this.f.b() + "," + this.i.size() + "," + this.h.size() + "," + this.k.size() + "," + this.j.size();
-   }
-
-   @bap
-   public int f() {
-      return this.e.b();
-   }
-
-   class a implements dzi {
-      private final T c;
-      private long d;
-      private dzl<T> e;
-
-      a(final T $$0, final long $$1, final dzl<T> $$2) {
-         this.c = $$0;
-         this.d = $$1;
-         this.e = $$2;
-      }
-
-      @Override
-      public void a() {
-         jg $$0 = this.c.dx();
-         long $$1 = ki.c($$0);
-         if ($$1 != this.d) {
-            dzu $$2 = this.e.c();
-            if (!this.e.b(this.c)) {
-               dzs.a.warn("Entity {} wasn't found in section {} (moving to {})", new Object[]{this.c, ki.a(this.d), $$1});
-            }
-
-            dzs.this.a(this.d, this.e);
-            dzl<T> $$3 = dzs.this.f.c($$1);
-            $$3.a(this.c);
-            this.e = $$3;
-            this.d = $$1;
-            this.a($$2, $$3.c());
-         }
-      }
-
-      private void a(dzu $$0, dzu $$1) {
-         dzu $$2 = dzs.a(this.c, $$0);
-         dzu $$3 = dzs.a(this.c, $$1);
-         if ($$2 == $$3) {
-            if ($$3.b()) {
-               dzs.this.c.a(this.c);
-            }
-         } else {
-            boolean $$4 = $$2.b();
-            boolean $$5 = $$3.b();
-            if ($$4 && !$$5) {
-               dzs.this.f(this.c);
-            } else if (!$$4 && $$5) {
-               dzs.this.e(this.c);
-            }
-
-            boolean $$6 = $$2.a();
-            boolean $$7 = $$3.a();
-            if ($$6 && !$$7) {
-               dzs.this.d(this.c);
-            } else if (!$$6 && $$7) {
-               dzs.this.c(this.c);
-            }
-
-            if ($$5) {
-               dzs.this.c.a(this.c);
-            }
-         }
-      }
-
-      @Override
-      public void a(btz.c $$0) {
-         if (!this.e.b(this.c)) {
-            dzs.a.warn("Entity {} wasn't found in section {} (destroying due to {})", new Object[]{this.c, ki.a(this.d), $$0});
-         }
-
-         dzu $$1 = dzs.a(this.c, this.e.c());
-         if ($$1.a()) {
-            dzs.this.d(this.c);
-         }
-
-         if ($$1.b()) {
-            dzs.this.f(this.c);
-         }
-
-         if ($$0.a()) {
-            dzs.this.c.f(this.c);
-         }
-
-         dzs.this.b.remove(this.c.cH());
-         this.c.a(a);
-         dzs.this.a(this.d, this.e);
-      }
-   }
-
-   static enum b {
-      a,
-      b,
-      c;
+   @baq
+   public int b() {
+      return this.f.size();
    }
 }

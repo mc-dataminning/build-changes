@@ -1,82 +1,159 @@
-import java.util.List;
-
-public abstract class dst {
-   private static final int a = 5;
-   private int b;
-   private double c;
-
-   protected abstract void a(dev var1, jg var2, dvd var3);
-
-   protected abstract void b(dev var1, jg var2, dvd var3);
-
-   protected abstract void a(dev var1, jg var2, dvd var3, int var4, int var5);
-
-   protected abstract boolean a(coh var1);
-
-   public void a(coh $$0, dev $$1, jg $$2, dvd $$3) {
-      int $$4 = this.b++;
-      if ($$4 == 0) {
-         this.a($$1, $$2, $$3);
-         $$1.a($$0, eaa.k, $$2);
-         d($$1, $$2, $$3);
+public class dst extends dtt implements dtr {
+   private static final int d = 1;
+   private jz<cwb> e = jz.a(27, cwb.k);
+   private final dsz f = new dsz() {
+      @Override
+      protected void a(dfb $$0, jh $$1, dvj $$2) {
+         dst.a($$0, $$1, $$2, awl.eR);
       }
 
-      this.a($$1, $$2, $$3, $$4, this.b);
-      this.c = Math.max($$0.gK(), this.c);
-   }
-
-   public void b(coh $$0, dev $$1, jg $$2, dvd $$3) {
-      int $$4 = this.b--;
-      if (this.b == 0) {
-         this.b($$1, $$2, $$3);
-         $$1.a($$0, eaa.j, $$2);
-         this.c = 0.0;
+      @Override
+      protected void b(dfb $$0, jh $$1, dvj $$2) {
+         dst.a($$0, $$1, $$2, awl.eP);
       }
 
-      this.a($$1, $$2, $$3, $$4, this.b);
-   }
-
-   private List<coh> a(dev $$0, jg $$1) {
-      double $$2 = this.c + 4.0;
-      ezc $$3 = new ezc($$1).g($$2);
-      return $$0.a(dzo.a(coh.class), $$3, this::a);
-   }
-
-   public void c(dev $$0, jg $$1, dvd $$2) {
-      List<coh> $$3 = this.a($$0, $$1);
-      this.c = 0.0;
-
-      for (coh $$4 : $$3) {
-         this.c = Math.max($$4.gK(), this.c);
+      @Override
+      protected void a(dfb $$0, jh $$1, dvj $$2, int $$3, int $$4) {
+         dst.this.a($$0, $$1, $$2, $$3, $$4);
       }
 
-      int $$5 = $$3.size();
-      int $$6 = this.b;
-      if ($$6 != $$5) {
-         boolean $$7 = $$5 != 0;
-         boolean $$8 = $$6 != 0;
-         if ($$7 && !$$8) {
-            this.a($$0, $$1, $$2);
-            $$0.a(null, eaa.k, $$1);
-         } else if (!$$7) {
-            this.b($$0, $$1, $$2);
-            $$0.a(null, eaa.j, $$1);
+      @Override
+      protected boolean a(com $$0) {
+         if (!($$0.cd instanceof crx)) {
+            return false;
+         } else {
+            brw $$1 = ((crx)$$0.cd).l();
+            return $$1 == dst.this || $$1 instanceof brv && ((brv)$$1).a(dst.this);
+         }
+      }
+   };
+   private final dsu g = new dsu();
+
+   protected dst(dso<?> $$0, jh $$1, dvj $$2) {
+      super($$0, $$1, $$2);
+   }
+
+   public dst(jh $$0, dvj $$1) {
+      this(dso.b, $$0, $$1);
+   }
+
+   @Override
+   public int b() {
+      return 27;
+   }
+
+   @Override
+   protected xi j() {
+      return xi.c("container.chest");
+   }
+
+   @Override
+   protected void a(uk $$0, js.a $$1) {
+      super.a($$0, $$1);
+      this.e = jz.a(this.b(), cwb.k);
+      if (!this.b_($$0)) {
+         brx.b($$0, this.e, $$1);
+      }
+   }
+
+   @Override
+   protected void b(uk $$0, js.a $$1) {
+      super.b($$0, $$1);
+      if (!this.c_($$0)) {
+         brx.a($$0, this.e, $$1);
+      }
+   }
+
+   public static void a(dfb $$0, jh $$1, dvj $$2, dst $$3) {
+      $$3.g.a();
+   }
+
+   static void a(dfb $$0, jh $$1, dvj $$2, awk $$3) {
+      dwb $$4 = $$2.c(djh.d);
+      if ($$4 != dwb.b) {
+         double $$5 = (double)$$1.u() + 0.5;
+         double $$6 = (double)$$1.v() + 0.5;
+         double $$7 = (double)$$1.w() + 0.5;
+         if ($$4 == dwb.c) {
+            jm $$8 = djh.i($$2);
+            $$5 += (double)$$8.j() * 0.5;
+            $$7 += (double)$$8.l() * 0.5;
          }
 
-         this.b = $$5;
-      }
-
-      this.a($$0, $$1, $$2, $$6, $$5);
-      if ($$5 > 0) {
-         d($$0, $$1, $$2);
+         $$0.a(null, $$5, $$6, $$7, $$3, awm.e, 0.5F, $$0.A.i() * 0.1F + 0.9F);
       }
    }
 
-   public int a() {
-      return this.b;
+   @Override
+   public boolean a_(int $$0, int $$1) {
+      if ($$0 == 1) {
+         this.g.a($$1 > 0);
+         return true;
+      } else {
+         return super.a_($$0, $$1);
+      }
    }
 
-   private static void d(dev $$0, jg $$1, dvd $$2) {
-      $$0.a($$1, $$2.b(), 5);
+   @Override
+   public void d_(com $$0) {
+      if (!this.q && !$$0.R_()) {
+         this.f.a($$0, this.i(), this.aB_(), this.m());
+      }
+   }
+
+   @Override
+   public void c(com $$0) {
+      if (!this.q && !$$0.R_()) {
+         this.f.b($$0, this.i(), this.aB_(), this.m());
+      }
+   }
+
+   @Override
+   protected jz<cwb> f() {
+      return this.e;
+   }
+
+   @Override
+   protected void a(jz<cwb> $$0) {
+      this.e = $$0;
+   }
+
+   @Override
+   public float a(float $$0) {
+      return this.g.a($$0);
+   }
+
+   public static int a(deg $$0, jh $$1) {
+      dvj $$2 = $$0.a_($$1);
+      if ($$2.x()) {
+         dsm $$3 = $$0.c_($$1);
+         if ($$3 instanceof dst) {
+            return ((dst)$$3).f.a();
+         }
+      }
+
+      return 0;
+   }
+
+   public static void a(dst $$0, dst $$1) {
+      jz<cwb> $$2 = $$0.f();
+      $$0.a($$1.f());
+      $$1.a($$2);
+   }
+
+   @Override
+   protected cro a(int $$0, col $$1) {
+      return crx.a($$0, $$1, this);
+   }
+
+   public void k() {
+      if (!this.q) {
+         this.f.c(this.i(), this.aB_(), this.m());
+      }
+   }
+
+   protected void a(dfb $$0, jh $$1, dvj $$2, int $$3, int $$4) {
+      die $$5 = $$2.b();
+      $$0.a($$1, $$5, 1, $$4);
    }
 }

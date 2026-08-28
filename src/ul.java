@@ -2,36 +2,37 @@ import java.io.DataInput;
 import java.io.DataOutput;
 import java.io.IOException;
 
-public class ul implements vg {
-   private static final int c = 8;
-   public static final vi<ul> a = new vi<ul>() {
-      public ul a(DataInput $$0, us $$1) {
-         $$1.b(8L);
-         return ul.b;
+public class ul extends va {
+   private static final int c = 16;
+   public static final ul a = new ul(0.0);
+   public static final vj<ul> b = new vj.a<ul>() {
+      public ul a(DataInput $$0, ut $$1) throws IOException {
+         return ul.a(d($$0, $$1));
       }
 
       @Override
-      public vd.b a(DataInput $$0, vd $$1, us $$2) {
-         $$2.b(8L);
-         return $$1.a();
+      public ve.b a(DataInput $$0, ve $$1, ut $$2) throws IOException {
+         return $$1.a(d($$0, $$2));
+      }
+
+      private static double d(DataInput $$0, ut $$1) throws IOException {
+         $$1.b(16L);
+         return $$0.readDouble();
       }
 
       @Override
-      public void a(DataInput $$0, int $$1, us $$2) {
-      }
-
-      @Override
-      public void b(DataInput $$0, us $$1) {
+      public int c() {
+         return 8;
       }
 
       @Override
       public String a() {
-         return "END";
+         return "DOUBLE";
       }
 
       @Override
       public String b() {
-         return "TAG_End";
+         return "TAG_Double";
       }
 
       @Override
@@ -39,33 +40,34 @@ public class ul implements vg {
          return true;
       }
    };
-   public static final ul b = new ul();
+   private final double w;
 
-   private ul() {
+   private ul(double $$0) {
+      this.w = $$0;
+   }
+
+   public static ul a(double $$0) {
+      return $$0 == 0.0 ? a : new ul($$0);
    }
 
    @Override
    public void a(DataOutput $$0) throws IOException {
+      $$0.writeDouble(this.w);
    }
 
    @Override
    public int a() {
-      return 8;
+      return 16;
    }
 
    @Override
    public byte b() {
-      return 0;
+      return 6;
    }
 
    @Override
-   public vi<ul> c() {
-      return a;
-   }
-
-   @Override
-   public String toString() {
-      return this.s_();
+   public vj<ul> c() {
+      return b;
    }
 
    public ul e() {
@@ -73,12 +75,58 @@ public class ul implements vg {
    }
 
    @Override
-   public void a(vk $$0) {
+   public boolean equals(Object $$0) {
+      return this == $$0 ? true : $$0 instanceof ul && this.w == ((ul)$$0).w;
+   }
+
+   @Override
+   public int hashCode() {
+      long $$0 = Double.doubleToLongBits(this.w);
+      return (int)($$0 ^ $$0 >>> 32);
+   }
+
+   @Override
+   public void a(vl $$0) {
       $$0.a(this);
    }
 
    @Override
-   public vd.b a(vd $$0) {
-      return $$0.a();
+   public long f() {
+      return (long)Math.floor(this.w);
+   }
+
+   @Override
+   public int g() {
+      return azk.a(this.w);
+   }
+
+   @Override
+   public short h() {
+      return (short)(azk.a(this.w) & 65535);
+   }
+
+   @Override
+   public byte i() {
+      return (byte)(azk.a(this.w) & 0xFF);
+   }
+
+   @Override
+   public double j() {
+      return this.w;
+   }
+
+   @Override
+   public float k() {
+      return (float)this.w;
+   }
+
+   @Override
+   public Number l() {
+      return this.w;
+   }
+
+   @Override
+   public ve.b a(ve $$0) {
+      return $$0.a(this.w);
    }
 }

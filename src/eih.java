@@ -1,61 +1,48 @@
-import com.mojang.datafixers.Products.P3;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder.Instance;
-import com.mojang.serialization.codecs.RecordCodecBuilder.Mu;
-import java.util.Optional;
-import java.util.function.BiConsumer;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public abstract class eih {
-   public static final Codec<eih> d = lx.W.q().dispatch(eih::a, eii::a);
-   protected final brd e;
-   protected final eik f;
-   protected final Optional<eie> g;
+public class eih extends eib {
+   public static final MapCodec<eih> a = RecordCodecBuilder.mapCodec(
+      $$0 -> b($$0).and(bri.b(0, 24).fieldOf("trunk_height").forGetter($$0x -> $$0x.b)).apply($$0, eih::new)
+   );
+   private final bri b;
 
-   protected static <P extends eih> P3<Mu<P>, brd, eik, Optional<eie>> a(Instance<P> $$0) {
-      return $$0.group(
-         brd.c.fieldOf("trunk_offset_y").forGetter($$0x -> $$0x.e),
-         eik.a.fieldOf("root_provider").forGetter($$0x -> $$0x.f),
-         eie.a.optionalFieldOf("above_root_placement").forGetter($$0x -> $$0x.g)
-      );
+   public eih(bri $$0, bri $$1, bri $$2) {
+      super($$0, $$1);
+      this.b = $$2;
    }
 
-   public eih(brd $$0, eik $$1, Optional<eie> $$2) {
-      this.e = $$0;
-      this.f = $$1;
-      this.g = $$2;
+   @Override
+   protected eic<?> a() {
+      return eic.b;
    }
 
-   protected abstract eii<?> a();
+   @Override
+   protected void a(dfh $$0, eib.b $$1, azs $$2, ehl $$3, int $$4, eib.a $$5, int $$6, int $$7, int $$8) {
+      jh $$9 = $$5.a();
+      int $$10 = $$2.a(2);
+      int $$11 = 1;
+      int $$12 = 0;
 
-   public abstract boolean a(dfb var1, BiConsumer<jg, dvd> var2, azr var3, jg var4, jg var5, ehf var6);
-
-   protected boolean a(dfb $$0, jg $$1) {
-      return efr.c($$0, $$1);
-   }
-
-   protected void a(dfb $$0, BiConsumer<jg, dvd> $$1, azr $$2, jg $$3, ehf $$4) {
-      if (this.a($$0, $$3)) {
-         $$1.accept($$3, this.a($$0, $$3, this.f.a($$2, $$3)));
-         if (this.g.isPresent()) {
-            eie $$5 = this.g.get();
-            jg $$6 = $$3.d();
-            if ($$2.i() < $$5.b() && $$0.a($$6, dvc.a::l)) {
-               $$1.accept($$6, this.a($$0, $$6, $$5.a().a($$2, $$6)));
-            }
+      for (int $$13 = $$8; $$13 >= -$$6; $$13--) {
+         this.a($$0, $$1, $$2, $$3, $$9, $$10, $$13, $$5.c());
+         if ($$10 >= $$11) {
+            $$10 = $$12;
+            $$12 = 1;
+            $$11 = Math.min($$11 + 1, $$7 + $$5.b());
+         } else {
+            $$10++;
          }
       }
    }
 
-   protected dvd a(dfb $$0, jg $$1, dvd $$2) {
-      if ($$2.b(dvt.C)) {
-         boolean $$3 = $$0.b($$1, $$0x -> $$0x.a(axf.a));
-         return $$2.b(dvt.C, Boolean.valueOf($$3));
-      } else {
-         return $$2;
-      }
+   @Override
+   public int a(azs $$0, int $$1, ehl $$2) {
+      return Math.max(4, $$1 - this.b.a($$0));
    }
 
-   public jg a(jg $$0, azr $$1) {
-      return $$0.b(this.e.a($$1));
+   @Override
+   protected boolean a(azs $$0, int $$1, int $$2, int $$3, int $$4, boolean $$5) {
+      return $$1 == $$4 && $$3 == $$4 && $$4 > 0;
    }
 }

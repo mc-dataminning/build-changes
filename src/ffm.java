@@ -1,99 +1,54 @@
-import com.google.common.annotations.VisibleForTesting;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
-import com.mojang.logging.LogUtils;
-import java.net.URI;
-import java.net.URISyntaxException;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
+import java.util.Objects;
 import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
-public class ffm extends ffn {
-   private static final Logger a = LogUtils.getLogger();
-   private static final String b = "http://";
-   private static final int c = 8080;
-   private static final Pattern d = Pattern.compile("^[a-zA-Z][-a-zA-Z0-9+.]+:");
-   private final boolean e;
+public class ffm {
+   private static final String a = "translationKey";
+   private static final String b = "args";
+   private final String c;
    @Nullable
-   private final String f;
-   private final URI g;
+   private final String[] d;
 
-   private ffm(boolean $$0, @Nullable String $$1, URI $$2) {
-      this.e = $$0;
-      this.f = $$1;
-      this.g = $$2;
+   private ffm(String $$0, @Nullable String[] $$1) {
+      this.c = $$0;
+      this.d = $$1;
+   }
+
+   public xi a(xi $$0) {
+      return Objects.requireNonNullElse(this.a(), $$0);
    }
 
    @Nullable
-   public static ffm a(String $$0) {
-      try {
-         JsonParser $$1 = new JsonParser();
-         JsonObject $$2 = $$1.parse($$0).getAsJsonObject();
-         String $$3 = fhk.b("uploadEndpoint", $$2, null);
-         if ($$3 != null) {
-            int $$4 = fhk.a("port", $$2, -1);
-            URI $$5 = a($$3, $$4);
-            if ($$5 != null) {
-               boolean $$6 = fhk.a("worldClosed", $$2, false);
-               String $$7 = fhk.b("token", $$2, null);
-               return new ffm($$6, $$7, $$5);
-            }
-         }
-      } catch (Exception var8) {
-         a.error("Could not parse UploadInfo: {}", var8.getMessage());
-      }
-
-      return null;
-   }
-
-   @Nullable
-   @VisibleForTesting
-   public static URI a(String $$0, int $$1) {
-      Matcher $$2 = d.matcher($$0);
-      String $$3 = a($$0, $$2);
-
-      try {
-         URI $$4 = new URI($$3);
-         int $$5 = a($$1, $$4.getPort());
-         return $$5 != $$4.getPort() ? new URI($$4.getScheme(), $$4.getUserInfo(), $$4.getHost(), $$5, $$4.getPath(), $$4.getQuery(), $$4.getFragment()) : $$4;
-      } catch (URISyntaxException var6) {
-         a.warn("Failed to parse URI {}", $$3, var6);
+   public xi a() {
+      if (!gzk.a(this.c)) {
          return null;
-      }
-   }
-
-   private static int a(int $$0, int $$1) {
-      if ($$0 != -1) {
-         return $$0;
       } else {
-         return $$1 != -1 ? $$1 : 8080;
+         return this.d == null ? xi.c(this.c) : xi.a(this.c, this.d);
       }
    }
 
-   private static String a(String $$0, Matcher $$1) {
-      return $$1.find() ? $$0 : "http://" + $$0;
-   }
+   public static ffm a(JsonObject $$0) {
+      String $$1 = fhs.a("translationKey", $$0);
+      JsonElement $$2 = $$0.get("args");
+      String[] $$5;
+      if ($$2 != null && !$$2.isJsonNull()) {
+         JsonArray $$4 = $$2.getAsJsonArray();
+         $$5 = new String[$$4.size()];
 
-   public static String b(@Nullable String $$0) {
-      JsonObject $$1 = new JsonObject();
-      if ($$0 != null) {
-         $$1.addProperty("token", $$0);
+         for (int $$6 = 0; $$6 < $$4.size(); $$6++) {
+            $$5[$$6] = $$4.get($$6).getAsString();
+         }
+      } else {
+         $$5 = null;
       }
 
-      return $$1.toString();
+      return new ffm($$1, $$5);
    }
 
-   @Nullable
-   public String a() {
-      return this.f;
-   }
-
-   public URI b() {
-      return this.g;
-   }
-
-   public boolean c() {
-      return this.e;
+   @Override
+   public String toString() {
+      return this.c;
    }
 }

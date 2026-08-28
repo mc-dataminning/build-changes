@@ -1,8 +1,5 @@
-public class gws extends gwr implements gwk {
-   public cnu c = new cnu(cny.c, cnw.b, 1);
-
-   @Override
-   public cnu a() {
-      return this.c;
-   }
+public class gws extends gvl {
+   public chr.b a = chr.b.g;
+   public int b = -1;
+   public int c = -1;
 }

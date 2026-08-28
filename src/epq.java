@@ -1,15 +1,26 @@
-import java.util.List;
-import javax.annotation.Nullable;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public abstract class epq {
-   @Nullable
-   public ept.c a(dey $$0, jg $$1, jg $$2, ept.c $$3, ept.c $$4, epp $$5) {
-      return $$4;
+public class epq extends ept {
+   public static final MapCodec<epq> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(ly.e.q().fieldOf("block").forGetter($$0x -> $$0x.b), Codec.FLOAT.fieldOf("probability").forGetter($$0x -> $$0x.d)).apply($$0, epq::new)
+   );
+   private final die b;
+   private final float d;
+
+   public epq(die $$0, float $$1) {
+      this.b = $$0;
+      this.d = $$1;
    }
 
-   protected abstract eps<?> a();
+   @Override
+   public boolean a(dvj $$0, azs $$1) {
+      return $$0.a(this.b) && $$1.i() < this.d;
+   }
 
-   public List<ept.c> a(dfl $$0, jg $$1, jg $$2, List<ept.c> $$3, List<ept.c> $$4, epp $$5) {
-      return $$4;
+   @Override
+   protected epu<?> a() {
+      return epu.e;
    }
 }

@@ -1,42 +1,40 @@
 public interface axc {
-   axp<dbm> a = a("tooltip_order");
-   axp<dbm> b = a("exclusive_set/armor");
-   axp<dbm> c = a("exclusive_set/boots");
-   axp<dbm> d = a("exclusive_set/bow");
-   axp<dbm> e = a("exclusive_set/crossbow");
-   axp<dbm> f = a("exclusive_set/damage");
-   axp<dbm> g = a("exclusive_set/mining");
-   axp<dbm> h = a("exclusive_set/riptide");
-   axp<dbm> i = a("tradeable");
-   axp<dbm> j = a("double_trade_price");
-   axp<dbm> k = a("in_enchanting_table");
-   axp<dbm> l = a("on_mob_spawn_equipment");
-   axp<dbm> m = a("on_traded_equipment");
-   axp<dbm> n = a("on_random_loot");
-   axp<dbm> o = a("curse");
-   axp<dbm> p = a("smelts_loot");
-   axp<dbm> q = a("prevents_bee_spawns_when_mining");
-   axp<dbm> r = a("prevents_decorated_pot_shattering");
-   axp<dbm> s = a("prevents_ice_melting");
-   axp<dbm> t = a("prevents_infested_spawns");
-   axp<dbm> u = a("treasure");
-   axp<dbm> v = a("non_treasure");
-   axp<dbm> w = a("trades/desert_common");
-   axp<dbm> x = a("trades/jungle_common");
-   axp<dbm> y = a("trades/plains_common");
-   axp<dbm> z = a("trades/savanna_common");
-   axp<dbm> A = a("trades/snow_common");
-   axp<dbm> B = a("trades/swamp_common");
-   axp<dbm> C = a("trades/taiga_common");
-   axp<dbm> D = a("trades/desert_special");
-   axp<dbm> E = a("trades/jungle_special");
-   axp<dbm> F = a("trades/plains_special");
-   axp<dbm> G = a("trades/savanna_special");
-   axp<dbm> H = a("trades/snow_special");
-   axp<dbm> I = a("trades/swamp_special");
-   axp<dbm> J = a("trades/taiga_special");
+   axq<bsw> a = a("damages_helmet");
+   axq<bsw> b = a("bypasses_armor");
+   axq<bsw> c = a("bypasses_shield");
+   axq<bsw> d = a("bypasses_invulnerability");
+   axq<bsw> e = a("bypasses_cooldown");
+   axq<bsw> f = a("bypasses_effects");
+   axq<bsw> g = a("bypasses_resistance");
+   axq<bsw> h = a("bypasses_enchantments");
+   axq<bsw> i = a("is_fire");
+   axq<bsw> j = a("is_projectile");
+   axq<bsw> k = a("witch_resistant_to");
+   axq<bsw> l = a("is_explosion");
+   axq<bsw> m = a("is_fall");
+   axq<bsw> n = a("is_drowning");
+   axq<bsw> o = a("is_freezing");
+   axq<bsw> p = a("is_lightning");
+   axq<bsw> q = a("no_anger");
+   axq<bsw> r = a("no_impact");
+   axq<bsw> s = a("always_most_significant_fall");
+   axq<bsw> t = a("wither_immune_to");
+   axq<bsw> u = a("ignites_armor_stands");
+   axq<bsw> v = a("burns_armor_stands");
+   axq<bsw> w = a("avoids_guardian_thorns");
+   axq<bsw> x = a("always_triggers_silverfish");
+   axq<bsw> y = a("always_hurts_ender_dragons");
+   axq<bsw> z = a("no_knockback");
+   axq<bsw> A = a("always_kills_armor_stands");
+   axq<bsw> B = a("can_break_armor_stand");
+   axq<bsw> C = a("bypasses_wolf_armor");
+   axq<bsw> D = a("is_player_attack");
+   axq<bsw> E = a("burn_from_stepping");
+   axq<bsw> F = a("panic_causes");
+   axq<bsw> G = a("panic_environmental_causes");
+   axq<bsw> H = a("mace_smash");
 
-   private static axp<dbm> a(String $$0) {
-      return axp.a(ly.aM, alh.b($$0));
+   private static axq<bsw> a(String $$0) {
+      return axq.a(lz.s, ali.b($$0));
    }
 }

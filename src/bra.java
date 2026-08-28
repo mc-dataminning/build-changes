@@ -1,31 +1,38 @@
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class bra extends brd {
-   public static final bra a = new bra(0);
-   public static final MapCodec<bra> b = Codec.INT.fieldOf("value").xmap(bra::a, bra::d);
+public class bra extends bri {
+   public static final MapCodec<bra> a = RecordCodecBuilder.mapCodec(
+         $$0 -> $$0.group(Codec.INT.fieldOf("min_inclusive").forGetter($$0x -> $$0x.b), Codec.INT.fieldOf("max_inclusive").forGetter($$0x -> $$0x.f))
+               .apply($$0, bra::new)
+      )
+      .validate(
+         $$0 -> $$0.f < $$0.b
+               ? DataResult.error(() -> "Max must be at least min, min_inclusive: " + $$0.b + ", max_inclusive: " + $$0.f)
+               : DataResult.success($$0)
+      );
+   private final int b;
    private final int f;
 
-   public static bra a(int $$0) {
-      return $$0 == 0 ? a : new bra($$0);
+   private bra(int $$0, int $$1) {
+      this.b = $$0;
+      this.f = $$1;
    }
 
-   private bra(int $$0) {
-      this.f = $$0;
-   }
-
-   public int d() {
-      return this.f;
+   public static bra a(int $$0, int $$1) {
+      return new bra($$0, $$1);
    }
 
    @Override
-   public int a(azr $$0) {
-      return this.f;
+   public int a(azs $$0) {
+      return this.b + $$0.a($$0.a(this.f - this.b + 1) + 1);
    }
 
    @Override
    public int a() {
-      return this.f;
+      return this.b;
    }
 
    @Override
@@ -34,12 +41,12 @@ public class bra extends brd {
    }
 
    @Override
-   public bre<?> c() {
-      return bre.a;
+   public brj<?> c() {
+      return brj.c;
    }
 
    @Override
    public String toString() {
-      return Integer.toString(this.f);
+      return "[" + this.b + "-" + this.f + "]";
    }
 }

@@ -1,26 +1,36 @@
-import com.mojang.serialization.Codec;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.UnmodifiableIterator;
 import com.mojang.serialization.MapCodec;
+import java.util.List;
+import javax.annotation.Nullable;
 
-public interface eps<P extends epq> {
-   Codec<epq> a = lx.af.q().dispatch("processor_type", epq::a, eps::codec);
-   Codec<epr> b = a.listOf().xmap(epr::new, epr::a);
-   Codec<epr> c = Codec.withAlternative(b.fieldOf("processors").codec(), b);
-   Codec<jp<epr>> d = ald.a(ly.aT, c);
-   eps<eou> e = a("block_ignore", eou.a);
-   eps<eow> f = a("block_rot", eow.a);
-   eps<eoz> g = a("gravity", eoz.a);
-   eps<epa> h = a("jigsaw_replacement", epa.a);
-   eps<epm> i = a("rule", epm.a);
-   eps<epe> j = a("nop", epe.a);
-   eps<eot> k = a("block_age", eot.a);
-   eps<eos> l = a("blackstone_replace", eos.a);
-   eps<epb> m = a("lava_submerged_block", epb.a);
-   eps<epj> n = a("protected_blocks", epj.b);
-   eps<eoy> o = a("capped", eoy.a);
+public class eps extends epw {
+   public static final MapCodec<eps> a = epo.b.listOf().fieldOf("rules").xmap(eps::new, $$0 -> $$0.b);
+   private final ImmutableList<epo> b;
 
-   MapCodec<P> codec();
+   public eps(List<? extends epo> $$0) {
+      this.b = ImmutableList.copyOf($$0);
+   }
 
-   static <P extends epq> eps<P> a(String $$0, MapCodec<P> $$1) {
-      return kc.a(lx.af, $$0, () -> $$1);
+   @Nullable
+   @Override
+   public epz.c a(dfe $$0, jh $$1, jh $$2, epz.c $$3, epz.c $$4, epv $$5) {
+      azs $$6 = azs.a(azk.a($$4.a()));
+      dvj $$7 = $$0.a_($$4.a());
+      UnmodifiableIterator var9 = this.b.iterator();
+
+      while (var9.hasNext()) {
+         epo $$8 = (epo)var9.next();
+         if ($$8.a($$4.b(), $$7, $$3.a(), $$4.a(), $$2, $$6)) {
+            return new epz.c($$4.a(), $$8.a(), $$8.a($$6, $$4.c()));
+         }
+      }
+
+      return $$4;
+   }
+
+   @Override
+   protected epy<?> a() {
+      return epy.i;
    }
 }

@@ -1,160 +1,128 @@
-import com.google.common.annotations.VisibleForTesting;
-import java.util.Optional;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import javax.annotation.Nullable;
 
-public class dmy {
-   public static final dmy.e[] a = new dmy.e[]{dmy.e.a, dmy.e.b, dmy.e.c};
-   private final dmy.b b;
+public class dmy extends dos implements dpf {
+   public static final MapCodec<dmy> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(duy.a.fieldOf("tree").forGetter($$0x -> $$0x.i), t()).apply($$0, dmy::new)
+   );
+   public static final dwj b = dvz.at;
+   public static final int c = 4;
+   private static final fah[] j = new fah[]{
+      die.a(7.0, 13.0, 7.0, 9.0, 16.0, 9.0),
+      die.a(7.0, 10.0, 7.0, 9.0, 16.0, 9.0),
+      die.a(7.0, 7.0, 7.0, 9.0, 16.0, 9.0),
+      die.a(7.0, 3.0, 7.0, 9.0, 16.0, 9.0),
+      die.a(7.0, 0.0, 7.0, 9.0, 16.0, 9.0)
+   };
+   private static final dwa k = dvz.C;
+   public static final dwa d = dvz.j;
 
-   public dmy(dmx $$0) {
-      this(new dmy.a($$0));
+   @Override
+   public MapCodec<dmy> a() {
+      return a;
    }
 
-   public dmy(dmy.b $$0) {
-      this.b = $$0;
+   public dmy(duy $$0, dvi.d $$1) {
+      super($$0, $$1);
+      this.l(this.F.b().b(f, Integer.valueOf(0)).b(b, Integer.valueOf(0)).b(k, Boolean.valueOf(false)).b(d, Boolean.valueOf(false)));
    }
 
-   public boolean a(dvd $$0, dea $$1, jg $$2, jl $$3) {
-      return jl.a().anyMatch($$4 -> this.a($$0, $$1, $$2, $$3, $$4, this.b::a).isPresent());
+   @Override
+   protected void a(dvk.a<die, dvj> $$0) {
+      $$0.a(f).a(b).a(k).a(d);
    }
 
-   public Optional<dmy.c> a(dvd $$0, dew $$1, jg $$2, azr $$3) {
-      return jl.a($$3)
-         .stream()
-         .filter($$1x -> this.b.b($$0, $$1x))
-         .map($$4 -> this.a($$0, $$1, $$2, $$4, $$3, false))
-         .filter(Optional::isPresent)
-         .findFirst()
-         .orElse(Optional.empty());
+   @Override
+   protected boolean b(dvj $$0, deg $$1, jh $$2) {
+      return super.b($$0, $$1, $$2) || $$0.a(dig.dR);
    }
 
-   public long a(dvd $$0, dew $$1, jg $$2, boolean $$3) {
-      return jl.a().filter($$1x -> this.b.b($$0, $$1x)).map($$4 -> this.a($$0, $$1, $$2, $$4, $$3)).reduce(0L, Long::sum);
+   @Nullable
+   @Override
+   public dvj a(czs $$0) {
+      erk $$1 = $$0.q().b_($$0.a());
+      boolean $$2 = $$1.a() == erl.c;
+      return super.a($$0).b(k, Boolean.valueOf($$2)).b(b, Integer.valueOf(4));
    }
 
-   public Optional<dmy.c> a(dvd $$0, dew $$1, jg $$2, jl $$3, azr $$4, boolean $$5) {
-      return jl.a($$4).stream().map($$5x -> this.a($$0, $$1, $$2, $$3, $$5x, $$5)).filter(Optional::isPresent).findFirst().orElse(Optional.empty());
-   }
-
-   private long a(dvd $$0, dew $$1, jg $$2, jl $$3, boolean $$4) {
-      return jl.a().map($$5 -> this.a($$0, $$1, $$2, $$3, $$5, $$4)).filter(Optional::isPresent).count();
-   }
-
-   @VisibleForTesting
-   public Optional<dmy.c> a(dvd $$0, dew $$1, jg $$2, jl $$3, jl $$4, boolean $$5) {
-      return this.a($$0, $$1, $$2, $$3, $$4, this.b::a).flatMap($$2x -> this.a($$1, $$2x, $$5));
-   }
-
-   public Optional<dmy.c> a(dvd $$0, dea $$1, jg $$2, jl $$3, jl $$4, dmy.d $$5) {
-      if ($$4.o() == $$3.o()) {
-         return Optional.empty();
-      } else if (this.b.a($$0) || this.b.a($$0, $$3) && !this.b.a($$0, $$4)) {
-         for (dmy.e $$6 : this.b.a()) {
-            dmy.c $$7 = $$6.a($$2, $$4, $$3);
-            if ($$5.test($$1, $$2, $$7)) {
-               return Optional.of($$7);
-            }
-         }
-
-         return Optional.empty();
+   @Override
+   protected fah a(dvj $$0, deg $$1, jh $$2, ezs $$3) {
+      ezn $$4 = $$0.a($$2);
+      fah $$5;
+      if (!$$0.c(d)) {
+         $$5 = j[4];
       } else {
-         return Optional.empty();
+         $$5 = j[$$0.c(b)];
       }
+
+      return $$5.a($$4.d, $$4.e, $$4.f);
    }
 
-   public Optional<dmy.c> a(dew $$0, dmy.c $$1, boolean $$2) {
-      dvd $$3 = $$0.a_($$1.a());
-      return this.b.a($$0, $$1, $$3, $$2) ? Optional.of($$1) : Optional.empty();
+   @Override
+   protected boolean a(dvj $$0, dfe $$1, jh $$2) {
+      return o($$0) ? $$1.a_($$2.d()).a(dig.aL) : super.a($$0, $$1, $$2);
    }
 
-   public static class a implements dmy.b {
-      protected dmx a;
-
-      public a(dmx $$0) {
-         this.a = $$0;
+   @Override
+   protected dvj a(dvj $$0, jm $$1, dvj $$2, dfc $$3, jh $$4, jh $$5) {
+      if ($$0.c(k)) {
+         $$3.a($$4, erl.c, erl.c.a($$3));
       }
 
-      @Nullable
-      @Override
-      public dvd a(dvd $$0, dea $$1, jg $$2, jl $$3) {
-         return this.a.c($$0, $$1, $$2, $$3);
-      }
-
-      protected boolean a(dea $$0, jg $$1, jg $$2, jl $$3, dvd $$4) {
-         return $$4.l() || $$4.a(this.a) || $$4.a(dia.G) && $$4.y().b();
-      }
-
-      @Override
-      public boolean a(dea $$0, jg $$1, dmy.c $$2) {
-         dvd $$3 = $$0.a_($$2.a());
-         return this.a($$0, $$1, $$2.a(), $$2.b(), $$3) && this.a.a($$0, $$3, $$2.a(), $$2.b());
-      }
+      return $$1 == jm.b && !$$0.a($$3, $$4) ? dig.a.m() : super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
-   public interface b {
-      @Nullable
-      dvd a(dvd var1, dea var2, jg var3, jl var4);
+   @Override
+   protected erk b_(dvj $$0) {
+      return $$0.c(k) ? erl.c.a(false) : super.b_($$0);
+   }
 
-      boolean a(dea var1, jg var2, dmy.c var3);
-
-      default dmy.e[] a() {
-         return dmy.a;
-      }
-
-      default boolean a(dvd $$0, jl $$1) {
-         return dmx.a($$0, $$1);
-      }
-
-      default boolean a(dvd $$0) {
-         return false;
-      }
-
-      default boolean b(dvd $$0, jl $$1) {
-         return this.a($$0) || this.a($$0, $$1);
-      }
-
-      default boolean a(dew $$0, dmy.c $$1, dvd $$2, boolean $$3) {
-         dvd $$4 = this.a($$2, $$0, $$1.a(), $$1.b());
-         if ($$4 != null) {
-            if ($$3) {
-               $$0.y($$1.a()).e($$1.a());
-            }
-
-            return $$0.a($$1.a(), $$4, 2);
-         } else {
-            return false;
+   @Override
+   protected void b(dvj $$0, arn $$1, jh $$2, azs $$3) {
+      if (!o($$0)) {
+         if ($$3.a(7) == 0) {
+            this.a($$1, $$2, $$0, $$3);
+         }
+      } else {
+         if (!q($$0)) {
+            $$1.a($$2, $$0.a(b), 2);
          }
       }
    }
 
-   public static record c(jg a, jl b) {
+   @Override
+   public boolean b(dfe $$0, jh $$1, dvj $$2) {
+      return !o($$2) || !q($$2);
    }
 
-   @FunctionalInterface
-   public interface d {
-      boolean test(dea var1, jg var2, dmy.c var3);
+   @Override
+   public boolean a(dfb $$0, azs $$1, jh $$2, dvj $$3) {
+      return o($$3) ? !q($$3) : super.a($$0, $$1, $$2, $$3);
    }
 
-   public static enum e {
-      a {
-         @Override
-         public dmy.c a(jg $$0, jl $$1, jl $$2) {
-            return new dmy.c($$0, $$1);
-         }
-      },
-      b {
-         @Override
-         public dmy.c a(jg $$0, jl $$1, jl $$2) {
-            return new dmy.c($$0.a($$1), $$2);
-         }
-      },
-      c {
-         @Override
-         public dmy.c a(jg $$0, jl $$1, jl $$2) {
-            return new dmy.c($$0.a($$1).a($$2), $$1.g());
-         }
-      };
+   @Override
+   public void a(arn $$0, azs $$1, jh $$2, dvj $$3) {
+      if (o($$3) && !q($$3)) {
+         $$0.a($$2, $$3.a(b), 2);
+      } else {
+         super.a($$0, $$1, $$2, $$3);
+      }
+   }
 
-      public abstract dmy.c a(jg var1, jl var2, jl var3);
+   private static boolean o(dvj $$0) {
+      return $$0.c(d);
+   }
+
+   private static boolean q(dvj $$0) {
+      return $$0.c(b) == 4;
+   }
+
+   public static dvj c() {
+      return b(0);
+   }
+
+   public static dvj b(int $$0) {
+      return dig.E.m().b(d, Boolean.valueOf(true)).b(b, Integer.valueOf($$0));
    }
 }

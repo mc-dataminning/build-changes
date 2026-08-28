@@ -1,95 +1,103 @@
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import javax.annotation.Nullable;
 
-public class dmg extends dgr {
-   public static final MapCodec<dmg> d = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(dfw.c.d.fieldOf("precipitation").forGetter($$0x -> $$0x.j), km.b.fieldOf("interactions").forGetter($$0x -> $$0x.c), t())
-            .apply($$0, dmg::new)
-   );
-   public static final int e = 1;
-   public static final int f = 3;
-   public static final dwd g = dvt.aK;
-   private static final int h = 6;
-   private static final double i = 3.0;
-   private final dfw.c j;
+public class dmg extends dhq {
+   public static final MapCodec<dmg> a = b(dmg::new);
+   public static final dwa b = dvz.n;
 
    @Override
    public MapCodec<dmg> a() {
-      return d;
+      return a;
    }
 
-   public dmg(dfw.c $$0, km.a $$1, dvc.d $$2) {
-      super($$2, $$1);
-      this.j = $$0;
-      this.l(this.F.b().b(g, Integer.valueOf(1)));
-   }
-
-   @Override
-   public boolean d(dvd $$0) {
-      return $$0.c(g) == 3;
+   protected dmg(dvi.d $$0) {
+      super($$0);
+      this.l(this.F.b().b(b, Boolean.valueOf(false)));
    }
 
    @Override
-   protected boolean a(erd $$0) {
-      return $$0 == erf.c && this.j == dfw.c.b;
-   }
-
-   @Override
-   protected double b(dvd $$0) {
-      return (6.0 + (double)$$0.c(g).intValue() * 3.0) / 16.0;
-   }
-
-   @Override
-   protected void a(dvd $$0, dev $$1, jg $$2, btz $$3) {
-      if (!$$1.C && $$3.bZ() && this.a($$0, $$2, $$3)) {
-         $$3.aH();
-         if ($$3.a($$1, $$2)) {
-            this.f($$0, $$1, $$2);
-         }
+   public void a(dfb $$0, jh $$1, dvj $$2, @Nullable bva $$3, cwb $$4) {
+      super.a($$0, $$1, $$2, $$3, $$4);
+      cyk $$5 = $$4.a(ku.Y, cyk.a);
+      if ($$5.a("RecordItem")) {
+         $$0.a($$1, $$2.b(b, Boolean.valueOf(true)), 2);
       }
    }
 
-   private void f(dvd $$0, dev $$1, jg $$2) {
-      if (this.j == dfw.c.c) {
-         e(dia.fu.m().b(g, $$0.c(g)), $$1, $$2);
+   @Override
+   protected bsd a(dvj $$0, dfb $$1, jh $$2, com $$3, ezj $$4) {
+      if ($$0.c(b) && $$1.c_($$2) instanceof dtp $$5) {
+         $$5.t();
+         return bsd.a;
       } else {
-         e($$0, $$1, $$2);
-      }
-   }
-
-   public static void e(dvd $$0, dev $$1, jg $$2) {
-      int $$3 = $$0.c(g) - 1;
-      dvd $$4 = $$3 == 0 ? dia.ft.m() : $$0.b(g, Integer.valueOf($$3));
-      $$1.b($$2, $$4);
-      $$1.a(eaa.c, $$2, eaa.a.a($$4));
-   }
-
-   @Override
-   public void a(dvd $$0, dev $$1, jg $$2, dfw.c $$3) {
-      if (dit.a($$1, $$3) && $$0.c(g) != 3 && $$3 == this.j) {
-         dvd $$4 = $$0.a(g);
-         $$1.b($$2, $$4);
-         $$1.a(eaa.c, $$2, eaa.a.a($$4));
+         return bsd.e;
       }
    }
 
    @Override
-   protected int a(dvd $$0, dev $$1, jg $$2) {
-      return $$0.c(g);
-   }
-
-   @Override
-   protected void a(dve.a<dhy, dvd> $$0) {
-      $$0.a(g);
-   }
-
-   @Override
-   protected void a(dvd $$0, dev $$1, jg $$2, erd $$3) {
-      if (!this.d($$0)) {
-         dvd $$4 = $$0.b(g, Integer.valueOf($$0.c(g) + 1));
-         $$1.b($$2, $$4);
-         $$1.a(eaa.c, $$2, eaa.a.a($$4));
-         $$1.c(1047, $$2, 0);
+   protected bsd a(cwb $$0, dvj $$1, dfb $$2, jh $$3, com $$4, bsc $$5, ezj $$6) {
+      if ($$1.c(b)) {
+         return bsd.f;
+      } else {
+         cwb $$7 = $$4.b($$5);
+         bsd $$8 = cwg.a($$2, $$3, $$7, $$4);
+         return (bsd)(!$$8.a() ? bsd.f : $$8);
       }
+   }
+
+   @Override
+   protected void a(dvj $$0, dfb $$1, jh $$2, dvj $$3, boolean $$4) {
+      if (!$$0.a($$3.b())) {
+         if ($$1.c_($$2) instanceof dtp $$5) {
+            $$5.t();
+         }
+
+         super.a($$0, $$1, $$2, $$3, $$4);
+      }
+   }
+
+   @Override
+   public dsm a(jh $$0, dvj $$1) {
+      return new dtp($$0, $$1);
+   }
+
+   @Override
+   public boolean f_(dvj $$0) {
+      return true;
+   }
+
+   @Override
+   public int a(dvj $$0, deg $$1, jh $$2, jm $$3) {
+      if ($$1.c_($$2) instanceof dtp $$4 && $$4.j().a()) {
+         return 15;
+      }
+
+      return 0;
+   }
+
+   @Override
+   protected boolean c_(dvj $$0) {
+      return true;
+   }
+
+   @Override
+   protected int a(dvj $$0, dfb $$1, jh $$2) {
+      return $$1.c_($$2) instanceof dtp $$3 ? $$3.u() : 0;
+   }
+
+   @Override
+   protected dok a_(dvj $$0) {
+      return dok.c;
+   }
+
+   @Override
+   protected void a(dvk.a<die, dvj> $$0) {
+      $$0.a(b);
+   }
+
+   @Nullable
+   @Override
+   public <T extends dsm> dsn<T> a(dfb $$0, dvj $$1, dso<T> $$2) {
+      return $$1.c(b) ? a($$2, dso.e, dtp::a) : null;
    }
 }

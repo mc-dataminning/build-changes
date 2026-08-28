@@ -1,27 +1,7 @@
-public interface vk {
-   void a(ve var1);
+public class vk {
+   private static final vj<?>[] a = new vj[]{um.a, ui.a, vc.a, up.a, us.a, un.b, ul.b, uh.a, vf.a, uq.a, uk.b, uo.a, ur.a};
 
-   void a(uh var1);
-
-   void a(vb var1);
-
-   void a(uo var1);
-
-   void a(ur var1);
-
-   void a(um var1);
-
-   void a(uk var1);
-
-   void a(ug var1);
-
-   void a(un var1);
-
-   void a(uq var1);
-
-   void a(up var1);
-
-   void a(uj var1);
-
-   void a(ul var1);
+   public static vj<?> a(int $$0) {
+      return $$0 >= 0 && $$0 < a.length ? a[$$0] : vj.a($$0);
+   }
 }

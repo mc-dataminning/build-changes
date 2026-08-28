@@ -1,32 +1,29 @@
-import com.mojang.serialization.Codec;
+import com.google.common.collect.Lists;
+import java.util.List;
+import javax.annotation.Nullable;
 
-public enum fiw implements azm, baf {
-   a(0, "minimized", "options.inactivityFpsLimit.minimized"),
-   b(1, "afk", "options.inactivityFpsLimit.afk");
+public class fiw {
+   private final List<xn> a = Lists.newArrayList();
 
-   public static final Codec<fiw> c = baf.a(fiw::values);
-   private final int d;
-   private final String e;
-   private final String f;
-
-   private fiw(final int $$0, final String $$1, final String $$2) {
-      this.d = $$0;
-      this.e = $$1;
-      this.f = $$2;
+   public void a(xn $$0) {
+      this.a.add($$0);
    }
 
-   @Override
-   public int b() {
-      return this.d;
+   @Nullable
+   public xn a() {
+      if (this.a.isEmpty()) {
+         return null;
+      } else {
+         return this.a.size() == 1 ? this.a.get(0) : xn.a(this.a);
+      }
    }
 
-   @Override
-   public String a() {
-      return this.f;
+   public xn b() {
+      xn $$0 = this.a();
+      return $$0 != null ? $$0 : xn.b;
    }
 
-   @Override
-   public String c() {
-      return this.e;
+   public void c() {
+      this.a.clear();
    }
 }

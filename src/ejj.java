@@ -1,77 +1,45 @@
-import com.google.common.collect.Lists;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.OptionalInt;
-import java.util.function.BiConsumer;
 
-public class ejj extends ejn {
-   public static final MapCodec<ejj> a = RecordCodecBuilder.mapCodec($$0 -> a($$0).apply($$0, ejj::new));
+public class ejj extends ejh {
+   public static final MapCodec<ejj> a = MapCodec.unit(() -> ejj.b);
+   public static final ejj b = new ejj();
 
-   public ejj(int $$0, int $$1, int $$2) {
-      super($$0, $$1, $$2);
+   @Override
+   protected eji<?> a() {
+      return eji.a;
    }
 
    @Override
-   protected ejo<?> a() {
-      return ejo.b;
-   }
-
-   @Override
-   public List<ehv.a> a(dfb $$0, BiConsumer<jg, dvd> $$1, azr $$2, int $$3, jg $$4, ehf $$5) {
-      a($$0, $$1, $$2, $$4.e(), $$5);
-      List<ehv.a> $$6 = Lists.newArrayList();
-      jl $$7 = jl.c.a.a($$2);
-      int $$8 = $$3 - $$2.a(4) - 1;
-      int $$9 = 3 - $$2.a(3);
-      jg.a $$10 = new jg.a();
-      int $$11 = $$4.u();
-      int $$12 = $$4.w();
-      OptionalInt $$13 = OptionalInt.empty();
-
-      for (int $$14 = 0; $$14 < $$3; $$14++) {
-         int $$15 = $$4.v() + $$14;
-         if ($$14 >= $$8 && $$9 > 0) {
-            $$11 += $$7.j();
-            $$12 += $$7.l();
-            $$9--;
-         }
-
-         if (this.b($$0, $$1, $$2, $$10.d($$11, $$15, $$12), $$5)) {
-            $$13 = OptionalInt.of($$15 + 1);
-         }
-      }
-
-      if ($$13.isPresent()) {
-         $$6.add(new ehv.a(new jg($$11, $$13.getAsInt(), $$12), 1, false));
-      }
-
-      $$11 = $$4.u();
-      $$12 = $$4.w();
-      jl $$16 = jl.c.a.a($$2);
-      if ($$16 != $$7) {
-         int $$17 = $$8 - $$2.a(2) - 1;
-         int $$18 = 1 + $$2.a(3);
-         $$13 = OptionalInt.empty();
-
-         for (int $$19 = $$17; $$19 < $$3 && $$18 > 0; $$18--) {
-            if ($$19 >= 1) {
-               int $$20 = $$4.v() + $$19;
-               $$11 += $$16.j();
-               $$12 += $$16.l();
-               if (this.b($$0, $$1, $$2, $$10.d($$11, $$20, $$12), $$5)) {
-                  $$13 = OptionalInt.of($$20 + 1);
-               }
+   public void a(ejh.a $$0) {
+      azs $$1 = $$0.b();
+      $$0.c().forEach($$2 -> {
+         if ($$1.a(3) > 0) {
+            jh $$3 = $$2.h();
+            if ($$0.a($$3)) {
+               $$0.a($$3, dra.d);
             }
-
-            $$19++;
          }
 
-         if ($$13.isPresent()) {
-            $$6.add(new ehv.a(new jg($$11, $$13.getAsInt(), $$12), 0, false));
+         if ($$1.a(3) > 0) {
+            jh $$4 = $$2.i();
+            if ($$0.a($$4)) {
+               $$0.a($$4, dra.f);
+            }
          }
-      }
 
-      return $$6;
+         if ($$1.a(3) > 0) {
+            jh $$5 = $$2.f();
+            if ($$0.a($$5)) {
+               $$0.a($$5, dra.e);
+            }
+         }
+
+         if ($$1.a(3) > 0) {
+            jh $$6 = $$2.g();
+            if ($$0.a($$6)) {
+               $$0.a($$6, dra.c);
+            }
+         }
+      });
    }
 }

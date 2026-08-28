@@ -1,55 +1,52 @@
-import com.google.common.collect.Maps;
-import com.mojang.brigadier.context.CommandContext;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.suggestion.SuggestionProvider;
-import com.mojang.brigadier.suggestion.Suggestions;
-import com.mojang.brigadier.suggestion.SuggestionsBuilder;
-import java.util.Map;
-import java.util.concurrent.CompletableFuture;
+import com.google.gson.JsonObject;
+import com.mojang.brigadier.arguments.ArgumentType;
+import java.util.function.Function;
+import java.util.function.Supplier;
 
-public class iv {
-   private static final Map<alh, SuggestionProvider<fa>> e = Maps.newHashMap();
-   private static final alh f = alh.b("ask_server");
-   public static final SuggestionProvider<fa> a = a(f, ($$0, $$1) -> ((fa)$$0.getSource()).a($$0));
-   public static final SuggestionProvider<ev> b = a(alh.b("all_recipes"), ($$0, $$1) -> fa.a(((fa)$$0.getSource()).t(), $$1));
-   public static final SuggestionProvider<ev> c = a(alh.b("available_sounds"), ($$0, $$1) -> fa.a(((fa)$$0.getSource()).s(), $$1));
-   public static final SuggestionProvider<ev> d = a(
-      alh.b("summonable_entities"),
-      ($$0, $$1) -> fa.a(lx.f.s().filter($$1x -> $$1x.a(((fa)$$0.getSource()).w()) && $$1x.c()), $$1, bug::a, $$0x -> xh.c(ad.a("entity", bug.a($$0x))))
-   );
+public class iv<A extends ArgumentType<?>> implements is<A, iv<A>.a> {
+   private final iv<A>.a a;
 
-   public static <S extends fa> SuggestionProvider<S> a(alh $$0, SuggestionProvider<fa> $$1) {
-      if (e.containsKey($$0)) {
-         throw new IllegalArgumentException("A command suggestion provider is already registered with the name " + $$0);
-      } else {
-         e.put($$0, $$1);
-         return new iv.a($$0, $$1);
-      }
+   private iv(Function<es, A> $$0) {
+      this.a = new iv.a($$0);
    }
 
-   public static SuggestionProvider<fa> a(alh $$0) {
-      return e.getOrDefault($$0, a);
+   public static <T extends ArgumentType<?>> iv<T> a(Supplier<T> $$0) {
+      return new iv<>($$1 -> $$0.get());
    }
 
-   public static alh a(SuggestionProvider<fa> $$0) {
-      return $$0 instanceof iv.a ? ((iv.a)$$0).b : f;
+   public static <T extends ArgumentType<?>> iv<T> a(Function<es, T> $$0) {
+      return new iv<>($$0);
    }
 
-   public static SuggestionProvider<fa> b(SuggestionProvider<fa> $$0) {
-      return $$0 instanceof iv.a ? $$0 : a;
+   public void a(iv<A>.a $$0, wf $$1) {
    }
 
-   protected static class a implements SuggestionProvider<fa> {
-      private final SuggestionProvider<fa> a;
-      final alh b;
+   public void a(iv<A>.a $$0, JsonObject $$1) {
+   }
 
-      public a(alh $$0, SuggestionProvider<fa> $$1) {
-         this.a = $$1;
-         this.b = $$0;
+   public iv<A>.a a(wf $$0) {
+      return this.a;
+   }
+
+   public iv<A>.a b(A $$0) {
+      return this.a;
+   }
+
+   public final class a implements is.a<A> {
+      private final Function<es, A> b;
+
+      public a(final Function<es, A> $$1) {
+         this.b = $$1;
       }
 
-      public CompletableFuture<Suggestions> getSuggestions(CommandContext<fa> $$0, SuggestionsBuilder $$1) throws CommandSyntaxException {
-         return this.a.getSuggestions($$0, $$1);
+      @Override
+      public A b(es $$0) {
+         return this.b.apply($$0);
+      }
+
+      @Override
+      public is<A, ?> a() {
+         return iv.this;
       }
    }
 }

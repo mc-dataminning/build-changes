@@ -1,31 +1,37 @@
-public interface wn {
-   zp a();
+import com.mojang.logging.LogUtils;
+import io.netty.buffer.ByteBuf;
+import io.netty.channel.ChannelHandlerContext;
+import io.netty.handler.codec.MessageToByteEncoder;
+import org.slf4j.Logger;
 
-   wc b();
+public class wn<T extends wo> extends MessageToByteEncoder<zp<T>> {
+   private static final Logger a = LogUtils.getLogger();
+   private final wq<T> b;
 
-   void a(wd var1);
-
-   default void a(zo $$0, Exception $$1) throws z {
-      throw zr.a($$1, $$0, this);
+   public wn(wq<T> $$0) {
+      this.b = $$0;
    }
 
-   default wd a(xh $$0, Throwable $$1) {
-      return new wd($$0);
-   }
+   protected void a(ChannelHandlerContext $$0, zp<T> $$1, ByteBuf $$2) throws Exception {
+      zr<? extends zp<? super T>> $$3 = $$1.a();
 
-   boolean c();
+      try {
+         this.b.c().encode($$2, $$1);
+         int $$4 = $$2.readableBytes();
+         if (a.isDebugEnabled()) {
+            a.debug(wc.d, "OUT: [{}:{}] {} -> {} bytes", new Object[]{this.b.a().a(), $$3, $$1.getClass().getName(), $$4});
+         }
 
-   default boolean a(zo<?> $$0) {
-      return this.c();
-   }
+         bov.f.b(this.b.a(), $$3, $$0.channel().remoteAddress(), $$4);
+      } catch (Throwable var9) {
+         a.error("Error sending packet {}", $$3, var9);
+         if ($$1.c()) {
+            throw new wv(var9);
+         }
 
-   default void a(o $$0) {
-      p $$1 = $$0.a("Connection");
-      $$1.a("Protocol", () -> this.b().a());
-      $$1.a("Flow", () -> this.a().toString());
-      this.a($$0, $$1);
-   }
-
-   default void a(o $$0, p $$1) {
+         throw var9;
+      } finally {
+         wr.b($$0, $$1);
+      }
    }
 }

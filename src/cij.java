@@ -1,197 +1,107 @@
-import com.google.common.annotations.VisibleForTesting;
 import com.google.common.collect.ImmutableList;
-import com.mojang.serialization.Dynamic;
-import javax.annotation.Nullable;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.ImmutableSet;
+import com.mojang.datafixers.util.Pair;
+import java.util.function.Predicate;
 
-public class cij extends cgi {
-   @VisibleForTesting
-   public static int b = Math.abs(-24000);
-   public static final float c = 0.4F;
-   public static final float d = 0.3F;
-   private int ca;
-   protected static final ImmutableList<cfg<? extends cff<? super cij>>> bY = ImmutableList.of(cfg.c, cfg.d, cfg.f, cfg.s);
-   protected static final ImmutableList<cdz<?>> bZ = ImmutableList.of(cdz.n, cdz.h, cdz.m, cdz.E, cdz.t, cdz.K, cdz.P, cdz.R, cdz.O, cdz.r, cdz.Z);
+public class cij {
+   private static final float a = 4.0F;
+   private static final float b = 2.0F;
+   private static final float c = 2.5F;
+   private static final float d = 2.5F;
+   private static final float e = 1.0F;
+   private static final bro f = bro.a(5, 16);
+   private static final ImmutableList<cfl<? extends cfk<? super cii>>> g = ImmutableList.of(cfl.c, cfl.f, cfl.t, cfl.o);
+   private static final ImmutableList<cee<?>> h = ImmutableList.of(
+      cee.Z, cee.x, cee.y, cee.m, cee.n, cee.E, cee.t, cee.h, cee.O, cee.P, cee.Q, cee.R, new cee[]{cee.r, cee.K}
+   );
 
-   public cij(bug<? extends cgi> $$0, dev $$1) {
-      super($$0, $$1);
-      this.bP = new cay(this, 85, 10, 0.02F, 0.1F, true);
-      this.bO = new cax(this, 10);
+   protected static void a(cii $$0, azs $$1) {
    }
 
-   @Override
-   protected ceh b(dev $$0) {
-      return new cej(this, $$0);
+   public static bwc.b<cii> a() {
+      return bwc.a(h, g);
    }
 
-   @Override
-   protected bvx.b<cij> ee() {
-      return bvx.a(bZ, bY);
+   protected static bwc<?> a(bwc<cii> $$0) {
+      b($$0);
+      c($$0);
+      $$0.a(ImmutableSet.of(cqe.a));
+      $$0.b(cqe.b);
+      $$0.f();
+      return $$0;
    }
 
-   @Override
-   protected bvx<?> a(Dynamic<?> $$0) {
-      return cik.a(this.ee().a($$0));
+   private static void b(bwc<cii> $$0) {
+      $$0.a(cqe.a, 0, ImmutableList.of(new bzn(0.8F), new cij.a(4.0F), new bxz(45, 90), new byd(), new bwz(cee.P), new bwz(cee.Q)));
    }
 
-   @Override
-   public bvx<cij> ed() {
-      return (bvx<cij>)super.ed();
+   private static void c(bwc<cii> $$0) {
+      $$0.a(
+         cqe.b,
+         ImmutableList.of(
+            Pair.of(0, byt.a(bul.by, 6.0F, bro.a(30, 60))),
+            Pair.of(1, new bwn(bul.o)),
+            Pair.of(
+               2,
+               new byq(
+                  ImmutableList.of(Pair.of(new bxg($$0x -> 2.5F, $$0x -> $$0x.p_() ? 2.5 : 3.5), 1), Pair.of(cag.a(Predicate.not(cii::t), bwq.a(f, 2.5F)), 1))
+               )
+            ),
+            Pair.of(3, new byk(bro.a(150, 250), 30.0F, 0.0F, 0.0F)),
+            Pair.of(
+               4,
+               new byq(
+                  ImmutableMap.of(cee.m, cef.b),
+                  ImmutableList.of(
+                     Pair.of(cag.a(Predicate.not(cii::t), byl.a(2.0F)), 1),
+                     Pair.of(cag.a(Predicate.not(cii::t), bza.a(2.0F, 3)), 1),
+                     Pair.of(new cij.b(20), 1),
+                     Pair.of(new bxd(30, 60), 1)
+                  )
+               )
+            )
+         )
+      );
    }
 
-   @Override
-   protected awj gw() {
-      return awk.zy;
+   public static void a(cii $$0) {
+      $$0.ed().a(ImmutableList.of(cqe.b));
    }
 
-   @Override
-   protected void ac() {
-      this.dX().ah().a("tadpoleBrain");
-      this.ed().a((arm)this.dX(), this);
-      this.dX().ah().c();
-      this.dX().ah().a("tadpoleActivityUpdate");
-      cik.a(this);
-      this.dX().ah().c();
-      super.ac();
+   public static Predicate<cwb> b() {
+      return $$0 -> $$0.a(axj.ak);
    }
 
-   public static bwc.a gx() {
-      return cgm.gA().a(bwd.v, 1.0).a(bwd.s, 6.0);
-   }
+   public static class a extends bwo<cii> {
+      public a(float $$0) {
+         super($$0);
+      }
 
-   @Override
-   public void n_() {
-      super.n_();
-      if (!this.dX().C) {
-         this.c(this.ca + 1);
+      protected void a(arn $$0, cii $$1, long $$2) {
+         $$1.gJ();
+         super.b($$0, $$1, $$2);
       }
    }
 
-   @Override
-   public void b(uj $$0) {
-      super.b($$0);
-      $$0.a("Age", this.ca);
-   }
+   public static class b extends bwt<cii> {
+      private final int c;
 
-   @Override
-   public void a(uj $$0) {
-      super.a($$0);
-      this.c($$0.h("Age"));
-   }
-
-   @Nullable
-   @Override
-   protected awj w() {
-      return null;
-   }
-
-   @Nullable
-   @Override
-   protected awj d(bsp $$0) {
-      return awk.zA;
-   }
-
-   @Nullable
-   @Override
-   protected awj o_() {
-      return awk.zx;
-   }
-
-   @Override
-   public bry b(coh $$0, brx $$1) {
-      cvx $$2 = $$0.b($$1);
-      if (this.l($$2)) {
-         this.a($$0, $$2);
-         return bry.a;
-      } else {
-         return cgo.a($$0, $$1, this).orElse(super.b($$0, $$1));
+      public b(int $$0) {
+         super(ImmutableMap.of());
+         this.c = $$0 * 20;
       }
-   }
 
-   @Override
-   protected void ab() {
-      super.ab();
-      agr.a(this);
-   }
-
-   @Override
-   public boolean t() {
-      return true;
-   }
-
-   @Override
-   public void x(boolean $$0) {
-   }
-
-   @Override
-   public void k(cvx $$0) {
-      cgo.a(this, $$0);
-      cyg.a(kt.W, $$0, $$0x -> $$0x.a("Age", this.gy()));
-   }
-
-   @Override
-   public void h(uj $$0) {
-      cgo.a(this, $$0);
-      if ($$0.e("Age")) {
-         this.c($$0.h("Age"));
+      protected boolean a(arn $$0, cii $$1) {
+         return !$$1.bk() && $$1.gK() >= (long)this.c && !$$1.M_() && $$1.aK() && !$$1.cZ() && $$1.gu();
       }
-   }
 
-   @Override
-   public cvx X_() {
-      return new cvx(cwb.qL);
-   }
-
-   @Override
-   public awj y() {
-      return awk.dn;
-   }
-
-   private boolean l(cvx $$0) {
-      return $$0.a(axi.am);
-   }
-
-   private void a(coh $$0, cvx $$1) {
-      this.b($$0, $$1);
-      this.b(btq.d_(this.gA()));
-      this.dX().a(lq.O, this.d(1.0), this.dF() + 0.5, this.g(1.0), 0.0, 0.0, 0.0);
-   }
-
-   private void b(coh $$0, cvx $$1) {
-      $$1.a(1, $$0);
-   }
-
-   private int gy() {
-      return this.ca;
-   }
-
-   private void b(int $$0) {
-      this.c(this.ca + $$0 * 20);
-   }
-
-   private void c(int $$0) {
-      this.ca = $$0;
-      if (this.ca >= b) {
-         this.gz();
+      protected void a(arn $$0, cii $$1, long $$2) {
+         if ($$1.gx()) {
+            $$1.gI();
+         } else if (!$$1.gr()) {
+            $$1.gH();
+         }
       }
-   }
-
-   private void gz() {
-      if (this.dX() instanceof arm $$0) {
-         this.a(bug.R, btu.a(this, false, false), $$1 -> {
-            $$1.a($$0, this.dX().d_($$1.dx()), buf.i, null);
-            $$1.gb();
-            $$1.a(this.a(this.ax()));
-            this.a(awk.zz, 0.15F, 1.0F);
-         });
-      }
-   }
-
-   private int gA() {
-      return Math.max(0, b - this.ca);
-   }
-
-   @Override
-   public boolean eo() {
-      return false;
    }
 }

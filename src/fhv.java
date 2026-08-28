@@ -1,69 +1,57 @@
+import com.google.common.collect.Maps;
 import com.mojang.logging.LogUtils;
+import java.io.IOException;
+import java.nio.ByteBuffer;
+import java.util.Base64;
+import java.util.Map;
 import javax.annotation.Nullable;
+import org.lwjgl.system.MemoryUtil;
 import org.slf4j.Logger;
 
-public class fhv extends fhy {
+public class fhv {
+   private static final Map<String, fhv.a> a = Maps.newHashMap();
    private static final Logger b = LogUtils.getLogger();
-   private static final xh c = xh.c("mco.snapshot.creating");
-   private final long d;
-   private final fhr e;
-   private final String f;
-   private final String g;
-   private final fee h;
-   @Nullable
-   private fia i;
-   @Nullable
-   private fib j;
+   private static final ali c = ali.b("textures/gui/presets/isles.png");
 
-   public fhv(fee $$0, long $$1, fhr $$2, String $$3, String $$4) {
-      this.d = $$1;
-      this.e = $$2;
-      this.f = $$3;
-      this.g = $$4;
-      this.h = $$0;
+   public static ali a(String $$0, @Nullable String $$1) {
+      return $$1 == null ? c : b($$0, $$1);
    }
 
-   @Override
-   public void run() {
-      fej $$0 = fej.a();
+   private static ali b(String $$0, String $$1) {
+      fhv.a $$2 = a.get($$0);
+      if ($$2 != null && $$2.a().equals($$1)) {
+         return $$2.b;
+      } else {
+         fdb $$3 = a($$1);
+         if ($$3 == null) {
+            ali $$4 = gxt.b();
+            a.put($$0, new fhv.a($$1, $$4));
+            return $$4;
+         } else {
+            ali $$5 = ali.a("realms", "dynamic/" + $$0);
+            fji.Q().aa().a($$5, new gxq($$3));
+            a.put($$0, new fhv.a($$1, $$5));
+            return $$5;
+         }
+      }
+   }
+
+   @Nullable
+   private static fdb a(String $$0) {
+      byte[] $$1 = Base64.getDecoder().decode($$0);
+      ByteBuffer $$2 = MemoryUtil.memAlloc($$1.length);
 
       try {
-         ffa $$1 = $$0.a(Long.valueOf(this.d));
-         this.i = new fia($$1.a, this.f, this.g);
-         this.j = new fib(this.e, $$1.a, fgw.a, () -> fja.Q().execute(() -> fee.a($$1, this.h, true)));
-         if (this.d()) {
-            return;
-         }
-
-         this.i.run();
-         if (this.d()) {
-            return;
-         }
-
-         this.j.run();
-      } catch (ffu var3) {
-         b.error("Couldn't create snapshot world", var3);
-         this.a(var3);
-      } catch (Exception var4) {
-         b.error("Couldn't create snapshot world", var4);
-         this.a(var4);
+         return fdb.a($$2.put($$1).flip());
+      } catch (IOException var7) {
+         b.warn("Failed to load world image: {}", $$0, var7);
+      } finally {
+         MemoryUtil.memFree($$2);
       }
+
+      return null;
    }
 
-   @Override
-   public xh a() {
-      return c;
-   }
-
-   @Override
-   public void b() {
-      super.b();
-      if (this.i != null) {
-         this.i.b();
-      }
-
-      if (this.j != null) {
-         this.j.b();
-      }
+   public static record a(String a, ali b) {
    }
 }

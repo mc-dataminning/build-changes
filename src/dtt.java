@@ -1,127 +1,103 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Optional;
-import java.util.function.Function;
 import javax.annotation.Nullable;
 
-public class dtt {
-   private static final Codec<xh[]> c = xj.g
-      .listOf()
-      .comapFlatMap(
-         $$0 -> ad.a($$0, 4).map($$0x -> new xh[]{(xh)$$0x.get(0), (xh)$$0x.get(1), (xh)$$0x.get(2), (xh)$$0x.get(3)}),
-         $$0 -> List.of($$0[0], $$0[1], $$0[2], $$0[3])
-      );
-   public static final Codec<dtt> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               c.fieldOf("messages").forGetter($$0x -> $$0x.d),
-               c.lenientOptionalFieldOf("filtered_messages").forGetter(dtt::d),
-               cuu.q.fieldOf("color").orElse(cuu.p).forGetter($$0x -> $$0x.f),
-               Codec.BOOL.fieldOf("has_glowing_text").orElse(false).forGetter($$0x -> $$0x.g)
-            )
-            .apply($$0, dtt::a)
-   );
-   public static final int b = 4;
-   private final xh[] d;
-   private final xh[] e;
-   private final cuu f;
-   private final boolean g;
+public abstract class dtt extends dsg implements bsj {
    @Nullable
-   private ayv[] h;
-   private boolean i;
+   protected alh<euh> l;
+   protected long m = 0L;
 
-   public dtt() {
-      this(c(), c(), cuu.p, false);
+   protected dtt(dso<?> $$0, jh $$1, dvj $$2) {
+      super($$0, $$1, $$2);
    }
 
-   public dtt(xh[] $$0, xh[] $$1, cuu $$2, boolean $$3) {
-      this.d = $$0;
-      this.e = $$1;
-      this.f = $$2;
-      this.g = $$3;
+   @Nullable
+   @Override
+   public alh<euh> ax_() {
+      return this.l;
    }
 
-   private static xh[] c() {
-      return new xh[]{xg.a, xg.a, xg.a, xg.a};
+   @Override
+   public void a(@Nullable alh<euh> $$0) {
+      this.l = $$0;
    }
 
-   private static dtt a(xh[] $$0, Optional<xh[]> $$1, cuu $$2, boolean $$3) {
-      return new dtt($$0, $$1.orElse(Arrays.copyOf($$0, $$0.length)), $$2, $$3);
+   @Override
+   public long aA_() {
+      return this.m;
    }
 
-   public boolean a() {
-      return this.g;
+   @Override
+   public void a(long $$0) {
+      this.m = $$0;
    }
 
-   public dtt a(boolean $$0) {
-      return $$0 == this.g ? this : new dtt(this.d, this.e, this.f, $$0);
+   @Override
+   public boolean c() {
+      this.e_(null);
+      return super.c();
    }
 
-   public cuu b() {
-      return this.f;
+   @Override
+   public cwb a(int $$0) {
+      this.e_(null);
+      return super.a($$0);
    }
 
-   public dtt a(cuu $$0) {
-      return $$0 == this.b() ? this : new dtt(this.d, this.e, $$0, this.g);
+   @Override
+   public cwb a(int $$0, int $$1) {
+      this.e_(null);
+      return super.a($$0, $$1);
    }
 
-   public xh a(int $$0, boolean $$1) {
-      return this.b($$1)[$$0];
+   @Override
+   public cwb b(int $$0) {
+      this.e_(null);
+      return super.b($$0);
    }
 
-   public dtt a(int $$0, xh $$1) {
-      return this.a($$0, $$1, $$1);
+   @Override
+   public void a(int $$0, cwb $$1) {
+      this.e_(null);
+      super.a($$0, $$1);
    }
 
-   public dtt a(int $$0, xh $$1, xh $$2) {
-      xh[] $$3 = Arrays.copyOf(this.d, this.d.length);
-      xh[] $$4 = Arrays.copyOf(this.e, this.e.length);
-      $$3[$$0] = $$1;
-      $$4[$$0] = $$2;
-      return new dtt($$3, $$4, this.f, this.g);
+   @Override
+   public boolean d(com $$0) {
+      return super.d($$0) && (this.l == null || !$$0.R_());
    }
 
-   public boolean a(coh $$0) {
-      return Arrays.stream(this.b($$0.ab())).anyMatch($$0x -> !$$0x.getString().isEmpty());
-   }
-
-   public xh[] b(boolean $$0) {
-      return $$0 ? this.e : this.d;
-   }
-
-   public ayv[] a(boolean $$0, Function<xh, ayv> $$1) {
-      if (this.h == null || this.i != $$0) {
-         this.i = $$0;
-         this.h = new ayv[4];
-
-         for (int $$2 = 0; $$2 < 4; $$2++) {
-            this.h[$$2] = $$1.apply(this.a($$2, $$0));
-         }
+   @Nullable
+   @Override
+   public cro createMenu(int $$0, col $$1, com $$2) {
+      if (this.d($$2)) {
+         this.e_($$1.k);
+         return this.a($$0, $$1);
+      } else {
+         return null;
       }
-
-      return this.h;
    }
 
-   private Optional<xh[]> d() {
-      for (int $$0 = 0; $$0 < 4; $$0++) {
-         if (!this.e[$$0].equals(this.d[$$0])) {
-            return Optional.of(this.e);
-         }
+   @Override
+   protected void a(dsm.b $$0) {
+      super.a($$0);
+      czb $$1 = $$0.a(ku.ap);
+      if ($$1 != null) {
+         this.l = $$1.a();
+         this.m = $$1.b();
       }
-
-      return Optional.empty();
    }
 
-   public boolean b(coh $$0) {
-      for (xh $$1 : this.b($$0.ab())) {
-         ye $$2 = $$1.a();
-         xf $$3 = $$2.h();
-         if ($$3 != null && $$3.a() == xf.a.c) {
-            return true;
-         }
+   @Override
+   protected void a(kq.a $$0) {
+      super.a($$0);
+      if (this.l != null) {
+         $$0.a(ku.ap, new czb(this.l, this.m));
       }
+   }
 
-      return false;
+   @Override
+   public void a(uk $$0) {
+      super.a($$0);
+      $$0.r("LootTable");
+      $$0.r("LootTableSeed");
    }
 }

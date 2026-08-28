@@ -1,84 +1,165 @@
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
 
-public class dod extends doc {
-   public static final MapCodec<dod> h = b(dod::new);
-   public static final dvx i = dlt.aF;
-   public static final dvu j = doc.d;
+public class dod extends dht {
+   public static final MapCodec<dod> d = b(dod::new);
+   public static final dwh<dwn> e = dvz.ag;
 
    @Override
    public MapCodec<dod> a() {
-      return h;
+      return d;
    }
 
-   protected dod(dvc.d $$0) {
-      super($$0);
-      this.l(this.F.b().b(i, jl.c).b(j, Boolean.valueOf(true)));
-   }
-
-   @Override
-   protected fab a(dvd $$0, dea $$1, jg $$2, ezm $$3) {
-      return dra.o($$0);
+   protected dod(dvi.d $$0) {
+      super(false, $$0);
+      this.l(this.F.b().b(e, dwn.a).b(c, Boolean.valueOf(false)));
    }
 
    @Override
-   protected boolean a(dvd $$0, dey $$1, jg $$2) {
-      return dra.b($$1, $$2, $$0.c(i));
-   }
-
-   @Override
-   protected dvd a(dvd $$0, jl $$1, dvd $$2, dew $$3, jg $$4, jg $$5) {
-      return $$1.g() == $$0.c(i) && !$$0.a($$3, $$4) ? dia.a.m() : $$0;
-   }
-
-   @Nullable
-   @Override
-   public dvd a(czm $$0) {
-      dvd $$1 = dia.cq.a($$0);
-      return $$1 == null ? null : this.m().b(i, $$1.c(i));
-   }
-
-   @Override
-   public void a(dvd $$0, dev $$1, jg $$2, azr $$3) {
-      if ($$0.c(j)) {
-         jl $$4 = $$0.c(i).g();
-         double $$5 = 0.27;
-         double $$6 = (double)$$2.u() + 0.5 + ($$3.j() - 0.5) * 0.2 + 0.27 * (double)$$4.j();
-         double $$7 = (double)$$2.v() + 0.7 + ($$3.j() - 0.5) * 0.2 + 0.22;
-         double $$8 = (double)$$2.w() + 0.5 + ($$3.j() - 0.5) * 0.2 + 0.27 * (double)$$4.l();
-         $$1.a(ll.b, $$6, $$7, $$8, 0.0, 0.0, 0.0);
+   protected void a(dvj $$0, dfb $$1, jh $$2, die $$3) {
+      if ($$3.m().p() && new doe($$1, $$2, $$0).b() == 3) {
+         this.a($$1, $$2, $$0, false);
       }
    }
 
    @Override
-   protected boolean a(dev $$0, jg $$1, dvd $$2) {
-      jl $$3 = $$2.c(i).g();
-      return $$0.b($$1.a($$3), $$3);
+   public dwm<dwn> c() {
+      return e;
    }
 
    @Override
-   protected int a(dvd $$0, dea $$1, jg $$2, jl $$3) {
-      return $$0.c(j) && $$0.c(i) != $$3 ? 15 : 0;
+   protected dvj a(dvj $$0, dor $$1) {
+      dwn $$2 = $$0.c(e);
+
+      return $$0.b(e, switch ($$1) {
+         case c -> {
+            switch ($$2) {
+               case a:
+                  yield dwn.a;
+               case b:
+                  yield dwn.b;
+               case c:
+                  yield dwn.d;
+               case d:
+                  yield dwn.c;
+               case e:
+                  yield dwn.f;
+               case f:
+                  yield dwn.e;
+               case g:
+                  yield dwn.i;
+               case h:
+                  yield dwn.j;
+               case i:
+                  yield dwn.g;
+               case j:
+                  yield dwn.h;
+               default:
+                  throw new MatchException(null, null);
+            }
+         }
+         case d -> {
+            switch ($$2) {
+               case a:
+                  yield dwn.b;
+               case b:
+                  yield dwn.a;
+               case c:
+                  yield dwn.e;
+               case d:
+                  yield dwn.f;
+               case e:
+                  yield dwn.d;
+               case f:
+                  yield dwn.c;
+               case g:
+                  yield dwn.j;
+               case h:
+                  yield dwn.g;
+               case i:
+                  yield dwn.h;
+               case j:
+                  yield dwn.i;
+               default:
+                  throw new MatchException(null, null);
+            }
+         }
+         case b -> {
+            switch ($$2) {
+               case a:
+                  yield dwn.b;
+               case b:
+                  yield dwn.a;
+               case c:
+                  yield dwn.f;
+               case d:
+                  yield dwn.e;
+               case e:
+                  yield dwn.c;
+               case f:
+                  yield dwn.d;
+               case g:
+                  yield dwn.h;
+               case h:
+                  yield dwn.i;
+               case i:
+                  yield dwn.j;
+               case j:
+                  yield dwn.g;
+               default:
+                  throw new MatchException(null, null);
+            }
+         }
+         default -> $$2;
+      });
    }
 
    @Override
-   protected dvd a(dvd $$0, dol $$1) {
-      return $$0.b(i, $$1.a($$0.c(i)));
+   protected dvj a(dvj $$0, dna $$1) {
+      dwn $$2 = $$0.c(e);
+      switch ($$1) {
+         case b:
+            switch ($$2) {
+               case e:
+                  return $$0.b(e, dwn.f);
+               case f:
+                  return $$0.b(e, dwn.e);
+               case g:
+                  return $$0.b(e, dwn.j);
+               case h:
+                  return $$0.b(e, dwn.i);
+               case i:
+                  return $$0.b(e, dwn.h);
+               case j:
+                  return $$0.b(e, dwn.g);
+               default:
+                  return super.a($$0, $$1);
+            }
+         case c:
+            switch ($$2) {
+               case c:
+                  return $$0.b(e, dwn.d);
+               case d:
+                  return $$0.b(e, dwn.c);
+               case e:
+               case f:
+               default:
+                  break;
+               case g:
+                  return $$0.b(e, dwn.h);
+               case h:
+                  return $$0.b(e, dwn.g);
+               case i:
+                  return $$0.b(e, dwn.j);
+               case j:
+                  return $$0.b(e, dwn.i);
+            }
+      }
+
+      return super.a($$0, $$1);
    }
 
    @Override
-   protected dvd a(dvd $$0, dmu $$1) {
-      return $$0.a($$1.a($$0.c(i)));
-   }
-
-   @Override
-   protected void a(dve.a<dhy, dvd> $$0) {
-      $$0.a(i, j);
-   }
-
-   @Nullable
-   @Override
-   protected esm a(dev $$0, dvd $$1) {
-      return esi.a($$0, $$1.c(i).g(), jl.b);
+   protected void a(dvk.a<die, dvj> $$0) {
+      $$0.a(e, c);
    }
 }

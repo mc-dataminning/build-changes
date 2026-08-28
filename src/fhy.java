@@ -1,56 +1,18 @@
-import com.mojang.logging.LogUtils;
-import org.slf4j.Logger;
+import it.unimi.dsi.fastutil.longs.Long2ObjectMap;
+import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
 
-public abstract class fhy implements Runnable {
-   protected static final int a = 25;
-   private static final Logger b = LogUtils.getLogger();
-   private boolean c = false;
+public class fhy {
+   private static final Long2ObjectMap<String> a = new Long2ObjectOpenHashMap();
 
-   protected static void a(long $$0) {
-      try {
-         Thread.sleep($$0 * 1000L);
-      } catch (InterruptedException var3) {
-         Thread.currentThread().interrupt();
-         b.error("", var3);
-      }
+   public static String a(long $$0) {
+      return (String)a.get($$0);
    }
 
-   public static void a(fqs $$0) {
-      fja $$1 = fja.Q();
-      $$1.execute(() -> $$1.a($$0));
+   public static void b(long $$0) {
+      a.remove($$0);
    }
 
-   protected void a(xh $$0) {
-      this.b();
-      fja $$1 = fja.Q();
-      $$1.execute(() -> $$1.a(new fgm($$0, new fee(new fqu()))));
-   }
-
-   protected void a(Exception $$0) {
-      if ($$0 instanceof ffu $$1) {
-         this.a($$1.a.b());
-      } else {
-         this.a(xh.b($$0.getMessage()));
-      }
-   }
-
-   protected void a(ffu $$0) {
-      this.a($$0.a.b());
-   }
-
-   public abstract xh a();
-
-   public boolean d() {
-      return this.c;
-   }
-
-   public void c() {
-   }
-
-   public void e() {
-   }
-
-   public void b() {
-      this.c = true;
+   public static void a(long $$0, String $$1) {
+      a.put($$0, $$1);
    }
 }

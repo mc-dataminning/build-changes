@@ -1,37 +1,66 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Optional;
+import javax.annotation.Nullable;
 
-public class ca extends dx<ca.a> {
+public class ca extends dy<ca.a> {
    @Override
    public Codec<ca.a> a() {
       return ca.a.a;
    }
 
-   public void a(arn $$0, cvx $$1) {
-      this.a($$0, $$1x -> $$1x.a($$1));
+   public void a(aro $$0, ezn $$1, @Nullable bue $$2) {
+      ezn $$3 = $$0.dv();
+      euc $$4 = $$2 != null ? bw.b($$0, $$2) : null;
+      this.a($$0, $$4x -> $$4x.a($$0.B(), $$1, $$3, $$4));
    }
 
-   public static record a(Optional<bg> b, Optional<ct> c) implements dx.a {
+   public static record a(Optional<bh> b, Optional<dh> c, Optional<bn> d, Optional<bh> e) implements dy.a {
       public static final Codec<ca.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(bv.b.optionalFieldOf("player").forGetter(ca.a::a), ct.a.optionalFieldOf("item").forGetter(ca.a::b)).apply($$0, ca.a::new)
+         $$0 -> $$0.group(
+                  bw.b.optionalFieldOf("player").forGetter(ca.a::a),
+                  dh.a.optionalFieldOf("start_position").forGetter(ca.a::b),
+                  bn.a.optionalFieldOf("distance").forGetter(ca.a::c),
+                  bw.b.optionalFieldOf("cause").forGetter(ca.a::d)
+               )
+               .apply($$0, ca.a::new)
       );
 
-      public static ao<ca.a> a(ct.a $$0) {
-         return an.k.a(new ca.a(Optional.empty(), Optional.of($$0.b())));
-      }
-
-      public boolean a(cvx $$0) {
-         return !this.c.isPresent() || this.c.get().a($$0);
+      public static ap<ca.a> a(bn $$0, bw.a $$1) {
+         return ao.ae.a(new ca.a(Optional.empty(), Optional.empty(), Optional.of($$0), Optional.of(bw.a($$1))));
       }
 
       @Override
-      public Optional<bg> a() {
+      public void a(bi $$0) {
+         dy.a.super.a($$0);
+         $$0.a(this.d(), ".cause");
+      }
+
+      public boolean a(arn $$0, ezn $$1, ezn $$2, @Nullable euc $$3) {
+         if (this.c.isPresent() && !this.c.get().a($$0, $$1.d, $$1.e, $$1.f)) {
+            return false;
+         } else {
+            return this.d.isPresent() && !this.d.get().a($$1.d, $$1.e, $$1.f, $$2.d, $$2.e, $$2.f)
+               ? false
+               : !this.e.isPresent() || $$3 != null && this.e.get().a($$3);
+         }
+      }
+
+      @Override
+      public Optional<bh> a() {
          return this.b;
       }
 
-      public Optional<ct> b() {
+      public Optional<dh> b() {
          return this.c;
+      }
+
+      public Optional<bn> c() {
+         return this.d;
+      }
+
+      public Optional<bh> d() {
+         return this.e;
       }
    }
 }

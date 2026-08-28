@@ -1,3 +1,8 @@
-public interface had {
-   gzu a(alh var1, haj var2);
+import javax.annotation.ParametersAreNonnullByDefault;
+
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface had {
 }

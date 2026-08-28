@@ -1,30 +1,44 @@
-import com.mojang.serialization.Codec;
+public class brz {
+   public static void a(dfb $$0, jh $$1, brw $$2) {
+      a($$0, (double)$$1.u(), (double)$$1.v(), (double)$$1.w(), $$2);
+   }
 
-public record brz(String d) {
-   public static final brz a = new brz("");
-   public static final Codec<brz> b = Codec.STRING.xmap(brz::new, brz::a);
-   public static final String c = "Lock";
+   public static void a(dfb $$0, bue $$1, brw $$2) {
+      a($$0, $$1.dC(), $$1.dE(), $$1.dI(), $$2);
+   }
 
-   public boolean a(cvx $$0) {
-      if (this.d.isEmpty()) {
-         return true;
-      } else {
-         xh $$1 = $$0.a(kt.g);
-         return $$1 != null && this.d.equals($$1.getString());
+   private static void a(dfb $$0, double $$1, double $$2, double $$3, brw $$4) {
+      for (int $$5 = 0; $$5 < $$4.b(); $$5++) {
+         a($$0, $$1, $$2, $$3, $$4.a($$5));
       }
    }
 
-   public void a(uj $$0) {
-      if (!this.d.isEmpty()) {
-         $$0.a("Lock", this.d);
+   public static void a(dfb $$0, jh $$1, jz<cwb> $$2) {
+      $$2.forEach($$2x -> a($$0, (double)$$1.u(), (double)$$1.v(), (double)$$1.w(), $$2x));
+   }
+
+   public static void a(dfb $$0, double $$1, double $$2, double $$3, cwb $$4) {
+      double $$5 = (double)bul.ag.l();
+      double $$6 = 1.0 - $$5;
+      double $$7 = $$5 / 2.0;
+      double $$8 = Math.floor($$1) + $$0.A.j() * $$6 + $$7;
+      double $$9 = Math.floor($$2) + $$0.A.j() * $$6;
+      double $$10 = Math.floor($$3) + $$0.A.j() * $$6 + $$7;
+
+      while (!$$4.f()) {
+         ckv $$11 = new ckv($$0, $$8, $$9, $$10, $$4.a($$0.A.a(21) + 10));
+         float $$12 = 0.05F;
+         $$11.n($$0.A.a(0.0, 0.11485000171139836), $$0.A.a(0.2, 0.11485000171139836), $$0.A.a(0.0, 0.11485000171139836));
+         $$0.b($$11);
       }
    }
 
-   public static brz b(uj $$0) {
-      return $$0.b("Lock", 8) ? new brz($$0.l("Lock")) : a;
-   }
-
-   public String a() {
-      return this.d;
+   public static void a(dvj $$0, dvj $$1, dfb $$2, jh $$3) {
+      if (!$$0.a($$1.b())) {
+         if ($$2.c_($$3) instanceof brw $$5) {
+            a($$2, $$3, $$5);
+            $$2.c($$3, $$0.b());
+         }
+      }
    }
 }

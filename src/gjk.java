@@ -1,261 +1,81 @@
-import javax.annotation.Nullable;
-import org.joml.Matrix3f;
-import org.joml.Matrix4f;
-import org.joml.Quaternionf;
-import org.joml.Vector3f;
-import org.joml.Vector4f;
+public class gjk implements avc {
+   private final gjj a;
+   private final gjm b;
+   private final gho c;
+   private final gjl d;
+   private final azs e = azs.a();
+   private final fkk f;
 
-public class gjk {
-   public static final int a = 8;
-   private static final float d = 1.0F / (float)Math.cos((float) (Math.PI / 8)) - 1.0F;
-   private static final float e = 1.0F / (float)Math.cos((float) (Math.PI / 4)) - 1.0F;
-   public static final int b = 4;
-   private static final int f = 3;
-   public static final int c = 4;
+   public gjk(gjj $$0, gho $$1, fkk $$2) {
+      this.a = $$0;
+      this.c = $$1;
+      this.f = $$2;
+      this.b = new gjm(this.f);
+      this.d = new gjl();
+   }
 
-   public gjd a(Vector3f $$0, Vector3f $$1, gjf $$2, gxs $$3, jl $$4, haj $$5, @Nullable gjg $$6, boolean $$7, int $$8) {
-      gjh $$9 = $$2.d();
-      if ($$5.c()) {
-         $$9 = a($$2.d(), $$4, $$5.b());
+   public gjj a() {
+      return this.a;
+   }
+
+   public void a(dvj $$0, jh $$1, ded $$2, feb $$3, fef $$4) {
+      if ($$0.o() == dok.c) {
+         haf $$5 = this.a.b($$0);
+         long $$6 = $$0.b($$1);
+         this.b.a($$2, $$5, $$0, $$1, $$3, $$4, true, this.e, $$6, gxu.d);
       }
+   }
 
-      float[] $$10 = new float[$$9.a.length];
-      System.arraycopy($$9.a, 0, $$10, 0, $$10.length);
-      float $$11 = $$3.k();
-      float $$12 = ($$9.a[0] + $$9.a[0] + $$9.a[2] + $$9.a[2]) / 4.0F;
-      float $$13 = ($$9.a[1] + $$9.a[1] + $$9.a[3] + $$9.a[3]) / 4.0F;
-      $$9.a[0] = azj.h($$11, $$9.a[0], $$12);
-      $$9.a[2] = azj.h($$11, $$9.a[2], $$12);
-      $$9.a[1] = azj.h($$11, $$9.a[1], $$13);
-      $$9.a[3] = azj.h($$11, $$9.a[3], $$13);
-      int[] $$14 = this.a($$9, $$3, $$4, this.a($$0, $$1), $$5.b(), $$6);
-      jl $$15 = a($$14);
-      System.arraycopy($$10, 0, $$9.a, 0, $$10.length);
-      if ($$6 == null) {
-         this.a($$14, $$15);
+   public void a(dvj $$0, jh $$1, ded $$2, feb $$3, fef $$4, boolean $$5, azs $$6) {
+      try {
+         this.b.a($$2, this.a($$0), $$0, $$1, $$3, $$4, $$5, $$6, $$0.b($$1), gxu.d);
+      } catch (Throwable var11) {
+         o $$8 = o.a(var11, "Tesselating block in world");
+         p $$9 = $$8.a("Block being tesselated");
+         p.a($$9, $$2, $$1, $$0);
+         throw new z($$8);
       }
-
-      return new gjd($$14, $$2.b(), $$15, $$3, $$7, $$8);
    }
 
-   public static gjh a(gjh $$0, jl $$1, j $$2) {
-      Matrix4f $$3 = jf.a($$2, $$1).c();
-      float $$4 = $$0.a($$0.c(0));
-      float $$5 = $$0.b($$0.c(0));
-      Vector4f $$6 = $$3.transform(new Vector4f($$4 / 16.0F, $$5 / 16.0F, 0.0F, 1.0F));
-      float $$7 = 16.0F * $$6.x();
-      float $$8 = 16.0F * $$6.y();
-      float $$9 = $$0.a($$0.c(2));
-      float $$10 = $$0.b($$0.c(2));
-      Vector4f $$11 = $$3.transform(new Vector4f($$9 / 16.0F, $$10 / 16.0F, 0.0F, 1.0F));
-      float $$12 = 16.0F * $$11.x();
-      float $$13 = 16.0F * $$11.y();
-      float $$14;
-      float $$15;
-      if (Math.signum($$9 - $$4) == Math.signum($$12 - $$7)) {
-         $$14 = $$7;
-         $$15 = $$12;
-      } else {
-         $$14 = $$12;
-         $$15 = $$7;
+   public void a(jh $$0, ded $$1, fef $$2, dvj $$3, erk $$4) {
+      try {
+         this.d.a($$1, $$0, $$2, $$3, $$4);
+      } catch (Throwable var9) {
+         o $$6 = o.a(var9, "Tesselating liquid in world");
+         p $$7 = $$6.a("Block being tesselated");
+         p.a($$7, $$1, $$0, null);
+         throw new z($$6);
       }
-
-      float $$18;
-      float $$19;
-      if (Math.signum($$10 - $$5) == Math.signum($$13 - $$8)) {
-         $$18 = $$8;
-         $$19 = $$13;
-      } else {
-         $$18 = $$13;
-         $$19 = $$8;
-      }
-
-      float $$22 = (float)Math.toRadians((double)$$0.b);
-      Matrix3f $$23 = new Matrix3f($$3);
-      Vector3f $$24 = $$23.transform(new Vector3f(azj.b($$22), azj.a($$22), 0.0F));
-      int $$25 = Math.floorMod(-((int)Math.round(Math.toDegrees(Math.atan2((double)$$24.y(), (double)$$24.x())) / 90.0)) * 90, 360);
-      return new gjh(new float[]{$$14, $$18, $$15, $$19}, $$25);
    }
 
-   private int[] a(gjh $$0, gxs $$1, jl $$2, float[] $$3, j $$4, @Nullable gjg $$5) {
-      int[] $$6 = new int[32];
-
-      for (int $$7 = 0; $$7 < 4; $$7++) {
-         this.a($$6, $$7, $$2, $$0, $$3, $$1, $$4, $$5);
-      }
-
-      return $$6;
+   public gjm b() {
+      return this.b;
    }
 
-   private float[] a(Vector3f $$0, Vector3f $$1) {
-      float[] $$2 = new float[jl.values().length];
-      $$2[ghj.a.f] = $$0.x() / 16.0F;
-      $$2[ghj.a.e] = $$0.y() / 16.0F;
-      $$2[ghj.a.d] = $$0.z() / 16.0F;
-      $$2[ghj.a.c] = $$1.x() / 16.0F;
-      $$2[ghj.a.b] = $$1.y() / 16.0F;
-      $$2[ghj.a.a] = $$1.z() / 16.0F;
-      return $$2;
+   public haf a(dvj $$0) {
+      return this.a.b($$0);
    }
 
-   private void a(int[] $$0, int $$1, jl $$2, gjh $$3, float[] $$4, gxs $$5, j $$6, @Nullable gjg $$7) {
-      ghj.b $$8 = ghj.a($$2).a($$1);
-      Vector3f $$9 = new Vector3f($$4[$$8.a], $$4[$$8.b], $$4[$$8.c]);
-      this.a($$9, $$7);
-      this.a($$9, $$6);
-      this.a($$0, $$1, $$9, $$5, $$3);
-   }
-
-   private void a(int[] $$0, int $$1, Vector3f $$2, gxs $$3, gjh $$4) {
-      int $$5 = $$1 * 8;
-      $$0[$$5] = Float.floatToRawIntBits($$2.x());
-      $$0[$$5 + 1] = Float.floatToRawIntBits($$2.y());
-      $$0[$$5 + 2] = Float.floatToRawIntBits($$2.z());
-      $$0[$$5 + 3] = -1;
-      $$0[$$5 + 4] = Float.floatToRawIntBits($$3.a($$4.a($$1) / 16.0F));
-      $$0[$$5 + 4 + 1] = Float.floatToRawIntBits($$3.c($$4.b($$1) / 16.0F));
-   }
-
-   private void a(Vector3f $$0, @Nullable gjg $$1) {
-      if ($$1 != null) {
-         Vector3f $$2;
-         Vector3f $$3;
-         switch ($$1.b()) {
-            case a:
-               $$2 = new Vector3f(1.0F, 0.0F, 0.0F);
-               $$3 = new Vector3f(0.0F, 1.0F, 1.0F);
+   public void a(dvj $$0, feb $$1, gih $$2, int $$3, int $$4) {
+      dok $$5 = $$0.o();
+      if ($$5 != dok.a) {
+         switch ($$5) {
+            case c:
+               haf $$6 = this.a($$0);
+               int $$7 = this.f.a($$0, null, null, 0);
+               float $$8 = (float)($$7 >> 16 & 0xFF) / 255.0F;
+               float $$9 = (float)($$7 >> 8 & 0xFF) / 255.0F;
+               float $$10 = (float)($$7 & 0xFF) / 255.0F;
+               this.b.a($$1.c(), $$2.getBuffer(ghz.c($$0)), $$0, $$6, $$8, $$9, $$10, $$3, $$4);
                break;
             case b:
-               $$2 = new Vector3f(0.0F, 1.0F, 0.0F);
-               $$3 = new Vector3f(1.0F, 0.0F, 1.0F);
-               break;
-            case c:
-               $$2 = new Vector3f(0.0F, 0.0F, 1.0F);
-               $$3 = new Vector3f(1.0F, 1.0F, 0.0F);
-               break;
-            default:
-               throw new IllegalArgumentException("There are only 3 axes");
+               this.c.a(new cwb($$0.b()), cvz.a, $$1, $$2, $$3, $$4);
          }
-
-         Quaternionf $$10 = new Quaternionf().rotationAxis($$1.c() * (float) (Math.PI / 180.0), $$2);
-         if ($$1.d()) {
-            if (Math.abs($$1.c()) == 22.5F) {
-               $$3.mul(d);
-            } else {
-               $$3.mul(e);
-            }
-
-            $$3.add(1.0F, 1.0F, 1.0F);
-         } else {
-            $$3.set(1.0F, 1.0F, 1.0F);
-         }
-
-         this.a($$0, new Vector3f($$1.a()), new Matrix4f().rotation($$10), $$3);
       }
    }
 
-   public void a(Vector3f $$0, j $$1) {
-      if ($$1 != j.a()) {
-         this.a($$0, new Vector3f(0.5F, 0.5F, 0.5F), $$1.c(), new Vector3f(1.0F, 1.0F, 1.0F));
-      }
-   }
-
-   private void a(Vector3f $$0, Vector3f $$1, Matrix4f $$2, Vector3f $$3) {
-      Vector4f $$4 = $$2.transform(new Vector4f($$0.x() - $$1.x(), $$0.y() - $$1.y(), $$0.z() - $$1.z(), 1.0F));
-      $$4.mul(new Vector4f($$3, 1.0F));
-      $$0.set($$4.x() + $$1.x(), $$4.y() + $$1.y(), $$4.z() + $$1.z());
-   }
-
-   public static jl a(int[] $$0) {
-      Vector3f $$1 = new Vector3f(Float.intBitsToFloat($$0[0]), Float.intBitsToFloat($$0[1]), Float.intBitsToFloat($$0[2]));
-      Vector3f $$2 = new Vector3f(Float.intBitsToFloat($$0[8]), Float.intBitsToFloat($$0[9]), Float.intBitsToFloat($$0[10]));
-      Vector3f $$3 = new Vector3f(Float.intBitsToFloat($$0[16]), Float.intBitsToFloat($$0[17]), Float.intBitsToFloat($$0[18]));
-      Vector3f $$4 = new Vector3f($$1).sub($$2);
-      Vector3f $$5 = new Vector3f($$3).sub($$2);
-      Vector3f $$6 = new Vector3f($$5).cross($$4).normalize();
-      if (!$$6.isFinite()) {
-         return jl.b;
-      } else {
-         jl $$7 = null;
-         float $$8 = 0.0F;
-
-         for (jl $$9 : jl.values()) {
-            kk $$10 = $$9.q();
-            Vector3f $$11 = new Vector3f((float)$$10.u(), (float)$$10.v(), (float)$$10.w());
-            float $$12 = $$6.dot($$11);
-            if ($$12 >= 0.0F && $$12 > $$8) {
-               $$8 = $$12;
-               $$7 = $$9;
-            }
-         }
-
-         return $$7 == null ? jl.b : $$7;
-      }
-   }
-
-   private void a(int[] $$0, jl $$1) {
-      int[] $$2 = new int[$$0.length];
-      System.arraycopy($$0, 0, $$2, 0, $$0.length);
-      float[] $$3 = new float[jl.values().length];
-      $$3[ghj.a.f] = 999.0F;
-      $$3[ghj.a.e] = 999.0F;
-      $$3[ghj.a.d] = 999.0F;
-      $$3[ghj.a.c] = -999.0F;
-      $$3[ghj.a.b] = -999.0F;
-      $$3[ghj.a.a] = -999.0F;
-
-      for (int $$4 = 0; $$4 < 4; $$4++) {
-         int $$5 = 8 * $$4;
-         float $$6 = Float.intBitsToFloat($$2[$$5]);
-         float $$7 = Float.intBitsToFloat($$2[$$5 + 1]);
-         float $$8 = Float.intBitsToFloat($$2[$$5 + 2]);
-         if ($$6 < $$3[ghj.a.f]) {
-            $$3[ghj.a.f] = $$6;
-         }
-
-         if ($$7 < $$3[ghj.a.e]) {
-            $$3[ghj.a.e] = $$7;
-         }
-
-         if ($$8 < $$3[ghj.a.d]) {
-            $$3[ghj.a.d] = $$8;
-         }
-
-         if ($$6 > $$3[ghj.a.c]) {
-            $$3[ghj.a.c] = $$6;
-         }
-
-         if ($$7 > $$3[ghj.a.b]) {
-            $$3[ghj.a.b] = $$7;
-         }
-
-         if ($$8 > $$3[ghj.a.a]) {
-            $$3[ghj.a.a] = $$8;
-         }
-      }
-
-      ghj $$9 = ghj.a($$1);
-
-      for (int $$10 = 0; $$10 < 4; $$10++) {
-         int $$11 = 8 * $$10;
-         ghj.b $$12 = $$9.a($$10);
-         float $$13 = $$3[$$12.a];
-         float $$14 = $$3[$$12.b];
-         float $$15 = $$3[$$12.c];
-         $$0[$$11] = Float.floatToRawIntBits($$13);
-         $$0[$$11 + 1] = Float.floatToRawIntBits($$14);
-         $$0[$$11 + 2] = Float.floatToRawIntBits($$15);
-
-         for (int $$16 = 0; $$16 < 4; $$16++) {
-            int $$17 = 8 * $$16;
-            float $$18 = Float.intBitsToFloat($$2[$$17]);
-            float $$19 = Float.intBitsToFloat($$2[$$17 + 1]);
-            float $$20 = Float.intBitsToFloat($$2[$$17 + 2]);
-            if (azj.a($$13, $$18) && azj.a($$14, $$19) && azj.a($$15, $$20)) {
-               $$0[$$11 + 4] = $$2[$$17 + 4];
-               $$0[$$11 + 4 + 1] = $$2[$$17 + 4 + 1];
-            }
-         }
-      }
+   @Override
+   public void a(avb $$0) {
+      this.d.a();
    }
 }

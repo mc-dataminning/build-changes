@@ -1,34 +1,21 @@
-public class gou extends gpf<cgy, guv, fyo> {
-   private static final alh a = alh.b("textures/entity/iron_golem/iron_golem.png");
+public class gou extends gpq<cll, guy, fyp> {
+   private static final ali a = ali.b("textures/entity/ghast/ghast.png");
+   private static final ali b = ali.b("textures/entity/ghast/ghast_shooting.png");
 
-   public gou(gnz.a $$0) {
-      super($$0, new fyo($$0.a(gba.ba)), 0.7F);
-      this.a(new gsd(this));
-      this.a(new gse(this, $$0.d()));
+   public gou(gok.a $$0) {
+      super($$0, new fyp($$0.a(gbl.aD)), 1.5F);
    }
 
-   public alh a(guv $$0) {
-      return a;
+   public ali a(guy $$0) {
+      return $$0.a ? b : a;
    }
 
-   public guv c() {
-      return new guv();
+   public guy c() {
+      return new guy();
    }
 
-   public void a(cgy $$0, guv $$1, float $$2) {
+   public void a(cll $$0, guy $$1, float $$2) {
       super.a($$0, $$1, $$2);
-      $$1.a = (float)$$0.y() > 0.0F ? (float)$$0.y() - $$2 : 0.0F;
-      $$1.b = $$0.gv();
-      $$1.c = $$0.t();
-   }
-
-   protected void a(guv $$0, fdt $$1, float $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      if (!((double)$$0.Y < 0.01)) {
-         float $$4 = 13.0F;
-         float $$5 = $$0.X + 6.0F;
-         float $$6 = (Math.abs($$5 % 13.0F - 6.5F) - 3.25F) / 3.25F;
-         $$1.a(a.f.rotationDegrees(6.5F * $$6));
-      }
+      $$1.a = $$0.q();
    }
 }

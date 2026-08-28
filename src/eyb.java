@@ -1,25 +1,11 @@
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Set;
+import javax.annotation.Nullable;
 
-public record eyb(dbt b) implements eyd {
-   public static final MapCodec<eyb> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(dbt.b.fieldOf("amount").forGetter(eyb::c)).apply($$0, eyb::new));
+public interface eyb {
+   @Nullable
+   vh a(euc var1);
 
-   @Override
-   public float b(etw $$0) {
-      int $$1 = $$0.b(ews.k);
-      return this.b.a($$1);
-   }
+   Set<ewv<?>> b();
 
-   @Override
-   public eyc b() {
-      return eye.g;
-   }
-
-   public static eyb a(dbt $$0) {
-      return new eyb($$0);
-   }
-
-   public dbt c() {
-      return this.b;
-   }
+   eya a();
 }

@@ -1,47 +1,148 @@
-import com.mojang.logging.LogUtils;
-import java.io.File;
-import java.util.function.LongSupplier;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import java.util.function.Supplier;
 
-public class bon {
-   private static final Logger a = LogUtils.getLogger();
-   private final LongSupplier b;
-   private final long c;
-   private int d;
-   private final File e;
-   private boi f = boh.a;
+public interface bon {
+   String b = "root";
 
-   public bon(LongSupplier $$0, String $$1, long $$2) {
-      this.b = $$0;
-      this.e = new File("debug", $$1);
-      this.c = $$2;
+   void a();
+
+   void b();
+
+   void a(String var1);
+
+   void a(Supplier<String> var1);
+
+   void c();
+
+   void b(String var1);
+
+   void b(Supplier<String> var1);
+
+   default void e(String $$0) {
    }
 
-   public bok a() {
-      this.f = new bod(this.b, () -> this.d, false);
-      this.d++;
-      return this.f;
+   default void a(long $$0) {
    }
 
-   public void b() {
-      if (this.f != boh.a) {
-         boj $$0 = this.f.d();
-         this.f = boh.a;
-         if ($$0.g() >= this.c) {
-            File $$1 = new File(this.e, "tick-results-" + ad.f() + ".txt");
-            $$0.a($$1.toPath());
-            a.info("Recorded long tick -- wrote info to: {}", $$1.getAbsolutePath());
-         }
+   default void a(int $$0) {
+   }
+
+   default bos d(String $$0) {
+      this.a($$0);
+      return new bos(this);
+   }
+
+   default bos c(Supplier<String> $$0) {
+      this.a($$0);
+      return new bos(this);
+   }
+
+   void a(bpv var1);
+
+   default void f(String $$0) {
+      this.a($$0, 1);
+   }
+
+   void a(String var1, int var2);
+
+   default void d(Supplier<String> $$0) {
+      this.a($$0, 1);
+   }
+
+   void a(Supplier<String> var1, int var2);
+
+   static bon a(bon $$0, bon $$1) {
+      if ($$0 == boj.a) {
+         return $$1;
+      } else {
+         return (bon)($$1 == boj.a ? $$0 : new bon.a($$0, $$1));
       }
    }
 
-   @Nullable
-   public static bon a(String $$0) {
-      return null;
-   }
+   public static class a implements bon {
+      private final bon a;
+      private final bon c;
 
-   public static bok a(bok $$0, @Nullable bon $$1) {
-      return $$1 != null ? bok.a($$1.a(), $$0) : $$0;
+      public a(bon $$0, bon $$1) {
+         this.a = $$0;
+         this.c = $$1;
+      }
+
+      @Override
+      public void a() {
+         this.a.a();
+         this.c.a();
+      }
+
+      @Override
+      public void b() {
+         this.a.b();
+         this.c.b();
+      }
+
+      @Override
+      public void a(String $$0) {
+         this.a.a($$0);
+         this.c.a($$0);
+      }
+
+      @Override
+      public void a(Supplier<String> $$0) {
+         this.a.a($$0);
+         this.c.a($$0);
+      }
+
+      @Override
+      public void a(bpv $$0) {
+         this.a.a($$0);
+         this.c.a($$0);
+      }
+
+      @Override
+      public void c() {
+         this.a.c();
+         this.c.c();
+      }
+
+      @Override
+      public void b(String $$0) {
+         this.a.b($$0);
+         this.c.b($$0);
+      }
+
+      @Override
+      public void b(Supplier<String> $$0) {
+         this.a.b($$0);
+         this.c.b($$0);
+      }
+
+      @Override
+      public void a(String $$0, int $$1) {
+         this.a.a($$0, $$1);
+         this.c.a($$0, $$1);
+      }
+
+      @Override
+      public void a(Supplier<String> $$0, int $$1) {
+         this.a.a($$0, $$1);
+         this.c.a($$0, $$1);
+      }
+
+      @Override
+      public void e(String $$0) {
+         this.a.e($$0);
+         this.c.e($$0);
+      }
+
+      @Override
+      public void a(long $$0) {
+         this.a.a($$0);
+         this.c.a($$0);
+      }
+
+      @Override
+      public void a(int $$0) {
+         this.a.a($$0);
+         this.c.a($$0);
+      }
    }
 }

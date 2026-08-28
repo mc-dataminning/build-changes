@@ -2,56 +2,64 @@ import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Optional;
 
-public class dp extends dx<dp.a> {
+public class dp extends dy<dp.a> {
    @Override
    public Codec<dp.a> a() {
       return dp.a.a;
    }
 
-   public void a(arn $$0, cvx $$1, btz $$2) {
-      etw $$3 = bv.b($$0, $$2);
-      this.a($$0, $$2x -> $$2x.a($$1, $$3));
+   public void a(aro $$0, bue $$1, bsu $$2, float $$3, float $$4, boolean $$5) {
+      euc $$6 = bw.b($$0, $$1);
+      this.a($$0, $$6x -> $$6x.a($$0, $$6, $$2, $$3, $$4, $$5));
    }
 
-   public static record a(Optional<bg> b, Optional<ct> c, Optional<bg> d) implements dx.a {
+   public static record a(Optional<bh> b, Optional<bk> c, Optional<bh> d) implements dy.a {
       public static final Codec<dp.a> a = RecordCodecBuilder.create(
          $$0 -> $$0.group(
-                  bv.b.optionalFieldOf("player").forGetter(dp.a::a),
-                  ct.a.optionalFieldOf("item").forGetter(dp.a::b),
-                  bv.b.optionalFieldOf("entity").forGetter(dp.a::c)
+                  bw.b.optionalFieldOf("player").forGetter(dp.a::a),
+                  bk.a.optionalFieldOf("damage").forGetter(dp.a::c),
+                  bw.b.optionalFieldOf("entity").forGetter(dp.a::d)
                )
                .apply($$0, dp.a::new)
       );
 
-      public static ao<dp.a> a(Optional<bg> $$0, ct.a $$1, Optional<bg> $$2) {
-         return an.T.a(new dp.a($$0, Optional.of($$1.b()), $$2));
+      public static ap<dp.a> b() {
+         return ao.h.a(new dp.a(Optional.empty(), Optional.empty(), Optional.empty()));
       }
 
-      public static ao<dp.a> a(ct.a $$0, Optional<bg> $$1) {
-         return a(Optional.empty(), $$0, $$1);
+      public static ap<dp.a> a(Optional<bk> $$0) {
+         return ao.h.a(new dp.a(Optional.empty(), $$0, Optional.empty()));
       }
 
-      public boolean a(cvx $$0, etw $$1) {
-         return this.c.isPresent() && !this.c.get().a($$0) ? false : this.d.isEmpty() || this.d.get().a($$1);
+      public static ap<dp.a> a(bk.a $$0) {
+         return ao.h.a(new dp.a(Optional.empty(), Optional.of($$0.b()), Optional.empty()));
+      }
+
+      public static ap<dp.a> b(Optional<bw> $$0) {
+         return ao.h.a(new dp.a(Optional.empty(), Optional.empty(), bw.a($$0)));
+      }
+
+      public static ap<dp.a> a(Optional<bk> $$0, Optional<bw> $$1) {
+         return ao.h.a(new dp.a(Optional.empty(), $$0, bw.a($$1)));
+      }
+
+      public static ap<dp.a> a(bk.a $$0, Optional<bw> $$1) {
+         return ao.h.a(new dp.a(Optional.empty(), Optional.of($$0.b()), bw.a($$1)));
+      }
+
+      public boolean a(aro $$0, euc $$1, bsu $$2, float $$3, float $$4, boolean $$5) {
+         return this.c.isPresent() && !this.c.get().a($$0, $$2, $$3, $$4, $$5) ? false : !this.d.isPresent() || this.d.get().a($$1);
       }
 
       @Override
-      public void a(bh $$0) {
-         dx.a.super.a($$0);
+      public void a(bi $$0) {
+         dy.a.super.a($$0);
          $$0.a(this.d, ".entity");
       }
 
       @Override
-      public Optional<bg> a() {
+      public Optional<bh> a() {
          return this.b;
-      }
-
-      public Optional<ct> b() {
-         return this.c;
-      }
-
-      public Optional<bg> c() {
-         return this.d;
       }
    }
 }

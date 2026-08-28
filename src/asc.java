@@ -1,7 +1,8 @@
-import com.mojang.authlib.GameProfile;
+import javax.annotation.ParametersAreNonnullByDefault;
 
-public record asc(GameProfile a, int b, aqy c, boolean d) {
-   public static asc a(GameProfile $$0, boolean $$1) {
-      return new asc($$0, 0, aqy.a(), $$1);
-   }
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface asc {
 }

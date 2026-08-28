@@ -1,18 +1,29 @@
-import java.util.Optional;
+public class aii implements zp<agv> {
+   public static final zg<wf, aii> a = zp.a(aii::a, aii::new);
+   private final int b;
 
-public record aii(Optional<jp<btc>> b, Optional<jp<btc>> c) implements zo<agu> {
-   public static final zf<ws, aii> a = zf.a(btc.b.a(zd::a), aii::b, btc.b.a(zd::a), aii::e, aii::new);
-
-   @Override
-   public zq<aii> a() {
-      return ags.bV;
+   public aii(int $$0) {
+      this.b = $$0;
    }
 
-   public void a(agu $$0) {
+   private aii(wf $$0) {
+      this.b = $$0.l();
+   }
+
+   private void a(wf $$0) {
+      $$0.c(this.b);
+   }
+
+   @Override
+   public zr<aii> a() {
+      return agt.bU;
+   }
+
+   public void a(agv $$0) {
       $$0.a(this);
    }
 
-   public Optional<jp<btc>> e() {
-      return this.c;
+   public int b() {
+      return this.b;
    }
 }

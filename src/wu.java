@@ -1,7 +1,6 @@
-import io.netty.handler.codec.EncoderException;
-
-public class wu extends EncoderException {
-   public wu(Throwable $$0) {
-      super($$0);
+public interface wu extends wo {
+   @Override
+   default zq a() {
+      return zq.a;
    }
 }

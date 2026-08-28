@@ -1,62 +1,76 @@
-import java.util.List;
-
-public class cve extends cvt implements cws {
-   public static final byte[] a = new byte[]{1, 2, 3};
-   public static final double b = 0.15;
-
-   public cve(cvt.a $$0) {
+public class cve extends cvx {
+   public cve(cvx.a $$0) {
       super($$0);
    }
 
    @Override
-   public bry a(czo $$0) {
-      dev $$1 = $$0.q();
-      if ($$1 instanceof arm $$2) {
-         cvx $$3 = $$0.n();
-         ezh $$4 = $$0.l();
-         jl $$5 = $$0.k();
-         cpb.a(new cow($$1, $$0.o(), $$4.d + (double)$$5.j() * 0.15, $$4.e + (double)$$5.k() * 0.15, $$4.f + (double)$$5.l() * 0.15, $$3), $$2, $$3);
-         $$3.h(1);
-      }
+   public bsd a(czu $$0) {
+      dfb $$1 = $$0.q();
+      jh $$2 = $$0.a();
+      dvj $$3 = $$1.a_($$2);
+      if (!$$3.a(dig.fy) || $$3.c(dkt.c)) {
+         return bsd.e;
+      } else if ($$1.C) {
+         return bsd.a;
+      } else {
+         dvj $$4 = $$3.b(dkt.c, Boolean.valueOf(true));
+         die.a($$3, $$4, $$1, $$2);
+         $$1.a($$2, $$4, 2);
+         $$1.c($$2, dig.fy);
+         $$0.n().h(1);
+         $$1.c(1503, $$2, 0);
+         dvo.b $$5 = dkt.b().a($$1, $$2);
+         if ($$5 != null) {
+            jh $$6 = $$5.a().b(-3, 0, -3);
 
-      return bry.a;
-   }
+            for (int $$7 = 0; $$7 < 3; $$7++) {
+               for (int $$8 = 0; $$8 < 3; $$8++) {
+                  $$1.a($$6.b($$7, 0, $$8), dig.fx.m(), 2);
+               }
+            }
 
-   @Override
-   public bry a(dev $$0, coh $$1, brx $$2) {
-      if ($$1.fL()) {
-         cvx $$3 = $$1.b($$2);
-         if ($$0 instanceof arm $$4) {
-            cpb.a(new cow($$0, $$3, $$1), $$4, $$3);
-            $$3.a(1, $$1);
-            $$1.b(awu.c.b(this));
+            $$1.b(1038, $$6.b(1, 0, 1), 0);
          }
 
-         return bry.a;
+         return bsd.a;
+      }
+   }
+
+   @Override
+   public int a(cwb $$0, bva $$1) {
+      return 0;
+   }
+
+   @Override
+   public bsd a(dfb $$0, com $$1, bsc $$2) {
+      cwb $$3 = $$1.b($$2);
+      ezj $$4 = a($$0, $$1, dej.b.a);
+      if ($$4.d() == ezl.a.b && $$0.a_($$4.b()).a(dig.fy)) {
+         return bsd.e;
       } else {
-         return bry.e;
+         $$1.c($$2);
+         if ($$0 instanceof arn $$5) {
+            jh $$6 = $$5.a(axm.a, $$1.dx(), 100, false);
+            if ($$6 == null) {
+               return bsd.c;
+            }
+
+            coz $$7 = new coz($$0, $$1.dC(), $$1.e(0.5), $$1.dI());
+            $$7.a($$3);
+            $$7.a($$6);
+            $$0.a(eag.K, $$7.dv(), eag.a.a($$1));
+            $$0.b($$7);
+            if ($$1 instanceof aro $$8) {
+               ao.n.a($$8, $$6);
+            }
+
+            float $$9 = azk.h($$0.A.i(), 0.33F, 0.5F);
+            $$0.a(null, $$1.dC(), $$1.dE(), $$1.dI(), awl.ij, awm.g, 1.0F, $$9);
+            $$3.a(1, $$1);
+            $$1.b(awv.c.b(this));
+         }
+
+         return bsd.b;
       }
-   }
-
-   @Override
-   public void a(cvx $$0, cvt.b $$1, List<xh> $$2, cxp $$3) {
-      cyl $$4 = $$0.a(kt.ae);
-      if ($$4 != null) {
-         $$4.a($$1, $$2::add, $$3);
-      }
-   }
-
-   @Override
-   public cpb a(dev $$0, jz $$1, cvx $$2, jl $$3) {
-      return new cow($$0, $$2.c(1), $$1.a(), $$1.b(), $$1.c(), true);
-   }
-
-   @Override
-   public cws.a c() {
-      return cws.a.a().a(cve::a).a(1.0F).b(0.5F).a(1004).a();
-   }
-
-   private static ezh a(kx $$0, jl $$1) {
-      return $$0.a().b((double)$$1.j() * 0.5000099999997474, (double)$$1.k() * 0.5000099999997474, (double)$$1.l() * 0.5000099999997474);
    }
 }

@@ -1,32 +1,40 @@
-import com.mojang.serialization.Codec;
+import java.util.EnumSet;
 
-public enum cdw implements baf {
-   a("major_negative", -5, 100, 10, 10),
-   b("minor_negative", -1, 200, 20, 20),
-   c("minor_positive", 1, 25, 1, 5),
-   d("major_positive", 5, 20, 0, 20),
-   e("trading", 1, 25, 2, 20);
+public class cdw extends cdy {
+   private final bvx a;
+   private bva b;
+   private int c;
 
-   public static final int f = 25;
-   public static final int g = 20;
-   public static final int h = 2;
-   public final String i;
-   public final int j;
-   public final int k;
-   public final int l;
-   public final int m;
-   public static final Codec<cdw> n = baf.a(cdw::values);
-
-   private cdw(final String $$0, final int $$1, final int $$2, final int $$3, final int $$4) {
-      this.i = $$0;
-      this.j = $$1;
-      this.k = $$2;
-      this.l = $$3;
-      this.m = $$4;
+   public cdw(bvx $$0) {
+      super($$0, false);
+      this.a = $$0;
+      this.a(EnumSet.of(cby.a.d));
    }
 
    @Override
-   public String c() {
-      return this.i;
+   public boolean b() {
+      if (this.a.q() && !this.a.gu()) {
+         bva $$0 = this.a.T_();
+         if ($$0 == null) {
+            return false;
+         } else {
+            this.b = $$0.eu();
+            int $$1 = $$0.ev();
+            return $$1 != this.c && this.a(this.b, cfr.a) && this.a.a(this.b, $$0);
+         }
+      } else {
+         return false;
+      }
+   }
+
+   @Override
+   public void d() {
+      this.e.h(this.b);
+      bva $$0 = this.a.T_();
+      if ($$0 != null) {
+         this.c = $$0.ev();
+      }
+
+      super.d();
    }
 }

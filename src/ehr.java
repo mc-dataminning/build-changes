@@ -1,28 +1,19 @@
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class ehr extends ehq {
-   public static final MapCodec<ehr> c = RecordCodecBuilder.mapCodec($$0 -> a($$0).apply($$0, ehr::new));
+public class ehr<P extends ehq> {
+   public static final ehr<eht> a = a("two_layers_feature_size", eht.d);
+   public static final ehr<ehs> b = a("three_layers_feature_size", ehs.d);
+   private final MapCodec<P> c;
 
-   public ehr(brd $$0, brd $$1, int $$2) {
-      super($$0, $$1, $$2);
+   private static <P extends ehq> ehr<P> a(String $$0, MapCodec<P> $$1) {
+      return kd.a(ly.Y, $$0, new ehr<>($$1));
    }
 
-   @Override
-   protected ehw<?> a() {
-      return ehw.e;
+   private ehr(MapCodec<P> $$0) {
+      this.c = $$0;
    }
 
-   @Override
-   protected void a(dfb $$0, ehv.b $$1, azr $$2, ehf $$3, int $$4, ehv.a $$5, int $$6, int $$7, int $$8) {
-      for (int $$9 = $$8; $$9 >= $$8 - $$6; $$9--) {
-         int $$10 = $$7 + $$5.b() - 1 - $$9;
-         this.a($$0, $$1, $$2, $$3, $$5.a(), $$10, $$9, $$5.c());
-      }
-   }
-
-   @Override
-   protected boolean a(azr $$0, int $$1, int $$2, int $$3, int $$4, boolean $$5) {
-      return $$1 == $$4 && $$3 == $$4 && $$0.a(2) == 0;
+   public MapCodec<P> a() {
+      return this.c;
    }
 }

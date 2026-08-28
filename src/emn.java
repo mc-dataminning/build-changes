@@ -1,25 +1,8 @@
-import com.mojang.serialization.Codec;
+import net.minecraft.server.MinecraftServer;
 
-public enum emn implements baf {
-   a("linear"),
-   b("triangular");
-
-   public static final Codec<emn> c = baf.a(emn::values);
-   private final String d;
-
-   private emn(final String $$0) {
-      this.d = $$0;
-   }
-
-   @Override
-   public String c() {
-      return this.d;
-   }
-
-   public int a(azr $$0, int $$1) {
-      return switch (this) {
-         case a -> $$0.a($$1);
-         case b -> ($$0.a($$1) + $$0.a($$1)) / 2;
-      };
+public record emn(avb a, ke b, eqa c) {
+   public static emn a(arn $$0) {
+      MinecraftServer $$1 = $$0.o();
+      return new emn($$1.be(), $$1.ba(), $$1.aY());
    }
 }

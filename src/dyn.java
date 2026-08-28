@@ -1,31 +1,16 @@
-import com.mojang.datafixers.DataFixer;
-import java.io.IOException;
-import java.nio.file.Path;
-import java.util.concurrent.CompletableFuture;
-import javax.annotation.Nullable;
-import org.apache.commons.io.FileUtils;
+public interface dyn {
+   void a(Throwable var1, dyy var2, deh var3);
 
-public class dyn extends dyv {
-   private final dyl a;
-   private final Path b;
+   void b(Throwable var1, dyy var2, deh var3);
 
-   public dyn(dys $$0, Path $$1, dys $$2, Path $$3, DataFixer $$4, boolean $$5, bas $$6) {
-      super($$0, $$1, $$4, $$5, $$6);
-      this.b = $$3;
-      this.a = new dyl($$2, $$3, $$5);
+   static z a(deh $$0, deh $$1) {
+      o $$2 = o.a(new IllegalStateException("Retrieved chunk position " + $$0 + " does not match requested " + $$1), "Chunk found in invalid location");
+      p $$3 = $$2.a("Misplaced Chunk");
+      $$3.a("Stored Position", $$0::toString);
+      return new z($$2);
    }
 
-   @Override
-   public CompletableFuture<Void> a(deb $$0, @Nullable uj $$1) {
-      return this.a.a($$0, $$1);
-   }
-
-   @Override
-   public void close() throws IOException {
-      super.close();
-      this.a.close();
-      if (this.b.toFile().exists()) {
-         FileUtils.deleteDirectory(this.b.toFile());
-      }
+   default void a(deh $$0, deh $$1, dyy $$2) {
+      this.a(a($$0, $$1), $$2, $$1);
    }
 }

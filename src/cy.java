@@ -1,33 +1,67 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Arrays;
 import java.util.Optional;
-import java.util.function.Predicate;
 
-public record cy(Optional<bd<ase<String>, cy.a>> c) implements dy<czc> {
-   public static final Codec<cy> a = RecordCodecBuilder.create($$0 -> $$0.group(bd.a(cy.a.a).optionalFieldOf("pages").forGetter(cy::b)).apply($$0, cy::new));
-
+public class cy extends dy<cy.a> {
    @Override
-   public ks<czc> a() {
-      return kt.R;
+   public Codec<cy.a> a() {
+      return cy.a.a;
    }
 
-   public boolean a(cvx $$0, czc $$1) {
-      return !this.c.isPresent() || this.c.get().a($$1.a());
+   public void a(aro $$0, jh $$1, cwb $$2) {
+      arn $$3 = $$0.B();
+      dvj $$4 = $$3.a_($$1);
+      euf $$5 = new euf.a($$3).a(ewy.f, $$1.b()).a(ewy.a, $$0).a(ewy.g, $$4).a(ewy.i, $$2).a(ewx.o);
+      euc $$6 = new euc.a($$5).a(Optional.empty());
+      this.a($$0, $$1x -> $$1x.a($$6));
    }
 
-   public Optional<bd<ase<String>, cy.a>> b() {
-      return this.c;
-   }
+   public static record a(Optional<bh> b, Optional<bh> c) implements dy.a {
+      public static final Codec<cy.a> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(bw.b.optionalFieldOf("player").forGetter(cy.a::a), bh.a.optionalFieldOf("location").forGetter(cy.a::b)).apply($$0, cy.a::new)
+      );
 
-   public static record a(String b) implements Predicate<ase<String>> {
-      public static final Codec<cy.a> a = Codec.STRING.xmap(cy.a::new, cy.a::a);
-
-      public boolean a(ase<String> $$0) {
-         return $$0.a().equals(this.b);
+      public static ap<cy.a> a(die $$0) {
+         bh $$1 = bh.a(exm.a($$0).build());
+         return ao.z.a(new cy.a(Optional.empty(), Optional.of($$1)));
       }
 
-      public String a() {
+      public static ap<cy.a> a(exn.a... $$0) {
+         bh $$1 = bh.a(Arrays.stream($$0).map(exn.a::build).toArray(exn[]::new));
+         return ao.z.a(new cy.a(Optional.empty(), Optional.of($$1)));
+      }
+
+      private static cy.a c(dh.a $$0, cu.a $$1) {
+         bh $$2 = bh.a(exl.a($$0).build(), exu.a($$1).build());
+         return new cy.a(Optional.empty(), Optional.of($$2));
+      }
+
+      public static ap<cy.a> a(dh.a $$0, cu.a $$1) {
+         return ao.N.a(c($$0, $$1));
+      }
+
+      public static ap<cy.a> b(dh.a $$0, cu.a $$1) {
+         return ao.aa.a(c($$0, $$1));
+      }
+
+      public boolean a(euc $$0) {
+         return this.c.isEmpty() || this.c.get().a($$0);
+      }
+
+      @Override
+      public void a(bi $$0) {
+         dy.a.super.a($$0);
+         this.c.ifPresent($$1 -> $$0.a($$1, ewx.o, ".location"));
+      }
+
+      @Override
+      public Optional<bh> a() {
          return this.b;
+      }
+
+      public Optional<bh> b() {
+         return this.c;
       }
    }
 }

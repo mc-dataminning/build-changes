@@ -1,25 +1,19 @@
-public class dsc extends dsg {
-   private cuu a;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-   public dsc(jg $$0, dvd $$1) {
-      super(dsi.y, $$0, $$1);
-      this.a = ((dhr)$$1.b()).b();
+public record dsc(ali e, String f) {
+   public static final Codec<dsc> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(ali.a.fieldOf("asset_id").forGetter(dsc::a), Codec.STRING.fieldOf("translation_key").forGetter(dsc::b)).apply($$0, dsc::new)
+   );
+   public static final zg<wt, dsc> b = zg.a(ali.b, dsc::a, ze.m, dsc::b, dsc::new);
+   public static final Codec<jq<dsc>> c = ale.a(lz.d, a);
+   public static final zg<wt, jq<dsc>> d = ze.a(lz.d, b);
+
+   public ali a() {
+      return this.e;
    }
 
-   public dsc(jg $$0, dvd $$1, cuu $$2) {
-      super(dsi.y, $$0, $$1);
-      this.a = $$2;
-   }
-
-   public ack b() {
-      return ack.a(this);
-   }
-
-   public cuu c() {
-      return this.a;
-   }
-
-   public void a(cuu $$0) {
-      this.a = $$0;
+   public String b() {
+      return this.f;
    }
 }

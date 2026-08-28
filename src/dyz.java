@@ -1,233 +1,289 @@
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.Maps;
+import com.mojang.logging.LogUtils;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.DataResult;
 import com.mojang.serialization.Dynamic;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.nio.file.Path;
+import com.mojang.serialization.DynamicOps;
+import com.mojang.serialization.OptionalDynamic;
+import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
+import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
+import it.unimi.dsi.fastutil.longs.Long2ObjectMap;
+import it.unimi.dsi.fastutil.longs.Long2ObjectMaps;
+import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
+import it.unimi.dsi.fastutil.longs.LongIterator;
+import it.unimi.dsi.fastutil.longs.LongLinkedOpenHashSet;
+import it.unimi.dsi.fastutil.longs.LongOpenHashSet;
+import it.unimi.dsi.fastutil.longs.LongSet;
+import it.unimi.dsi.fastutil.longs.Long2ObjectMap.Entry;
+import java.io.IOException;
+import java.util.Iterator;
+import java.util.Map;
 import java.util.Optional;
-import java.util.OptionalLong;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.CompletionException;
+import java.util.function.BiFunction;
+import java.util.function.BooleanSupplier;
+import java.util.function.Function;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public record dyz(
-   OptionalLong l, boolean m, boolean n, boolean o, boolean p, double q, boolean r, boolean s, int t, int u, int v, axp<dhy> w, alh x, float y, dyz.a z
-) {
-   public static final int a = jg.d;
-   public static final int b = 16;
-   public static final int c = (1 << a) - 32;
-   public static final int d = (c >> 1) - 1;
-   public static final int e = d - c + 1;
-   public static final int f = d << 4;
-   public static final int g = e << 4;
-   public static final Codec<dyz> h = ays.d(
-      RecordCodecBuilder.create(
-         $$0 -> $$0.group(
-                  ays.a(Codec.LONG.lenientOptionalFieldOf("fixed_time")).forGetter(dyz::f),
-                  Codec.BOOL.fieldOf("has_skylight").forGetter(dyz::g),
-                  Codec.BOOL.fieldOf("has_ceiling").forGetter(dyz::h),
-                  Codec.BOOL.fieldOf("ultrawarm").forGetter(dyz::i),
-                  Codec.BOOL.fieldOf("natural").forGetter(dyz::j),
-                  Codec.doubleRange(1.0E-5F, 3.0E7).fieldOf("coordinate_scale").forGetter(dyz::k),
-                  Codec.BOOL.fieldOf("bed_works").forGetter(dyz::l),
-                  Codec.BOOL.fieldOf("respawn_anchor_works").forGetter(dyz::m),
-                  Codec.intRange(e, d).fieldOf("min_y").forGetter(dyz::n),
-                  Codec.intRange(16, c).fieldOf("height").forGetter(dyz::o),
-                  Codec.intRange(0, c).fieldOf("logical_height").forGetter(dyz::p),
-                  axp.b(ly.f).fieldOf("infiniburn").forGetter(dyz::q),
-                  alh.a.fieldOf("effects").orElse(dyx.e).forGetter(dyz::r),
-                  Codec.FLOAT.fieldOf("ambient_light").forGetter(dyz::s),
-                  dyz.a.a.forGetter(dyz::t)
-               )
-               .apply($$0, dyz::new)
-      )
-   );
-   public static final zf<ws, jp<dyz>> i = zd.b(ly.aL);
-   private static final int A = 8;
-   public static final float[] j = new float[]{1.0F, 0.75F, 0.5F, 0.25F, 0.0F, 0.25F, 0.5F, 0.75F};
-   public static final Codec<jp<dyz>> k = ald.a(ly.aL, h);
+public class dyz<R, P> implements AutoCloseable {
+   static final Logger a = LogUtils.getLogger();
+   private static final String b = "Sections";
+   private final dzb d;
+   private final Long2ObjectMap<Optional<R>> e = new Long2ObjectOpenHashMap();
+   private final LongLinkedOpenHashSet f = new LongLinkedOpenHashSet();
+   private final Codec<P> g;
+   private final Function<R, P> h;
+   private final BiFunction<P, Runnable, R> i;
+   private final Function<Runnable, R> j;
+   private final ke k;
+   private final dyn l;
+   protected final dfd c;
+   private final LongSet m = new LongOpenHashSet();
+   private final Long2ObjectMap<CompletableFuture<Optional<dyz.a<P>>>> n = new Long2ObjectOpenHashMap();
+   private final Object o = new Object();
 
-   public dyz(
-      OptionalLong l, boolean m, boolean n, boolean o, boolean p, double q, boolean r, boolean s, int t, int u, int v, axp<dhy> w, alh x, float y, dyz.a z
-   ) {
-      if (u < 16) {
-         throw new IllegalStateException("height has to be at least 16");
-      } else if (t + u > d + 1) {
-         throw new IllegalStateException("min_y + height cannot be higher than: " + (d + 1));
-      } else if (v > u) {
-         throw new IllegalStateException("logical_height cannot be higher than height");
-      } else if (u % 16 != 0) {
-         throw new IllegalStateException("height has to be multiple of 16");
-      } else if (t % 16 != 0) {
-         throw new IllegalStateException("min_y has to be a multiple of 16");
-      } else {
-         this.l = l;
-         this.m = m;
-         this.n = n;
-         this.o = o;
-         this.p = p;
-         this.q = q;
-         this.r = r;
-         this.s = s;
-         this.t = t;
-         this.u = u;
-         this.v = v;
-         this.w = w;
-         this.x = x;
-         this.y = y;
-         this.z = z;
-      }
+   public dyz(dzb $$0, Codec<P> $$1, Function<R, P> $$2, BiFunction<P, Runnable, R> $$3, Function<Runnable, R> $$4, ke $$5, dyn $$6, dfd $$7) {
+      this.d = $$0;
+      this.g = $$1;
+      this.h = $$2;
+      this.i = $$3;
+      this.j = $$4;
+      this.k = $$5;
+      this.l = $$6;
+      this.c = $$7;
    }
 
-   @Deprecated
-   public static DataResult<alg<dev>> a(Dynamic<?> $$0) {
-      Optional<Number> $$1 = $$0.asNumber().result();
-      if ($$1.isPresent()) {
-         int $$2 = $$1.get().intValue();
-         if ($$2 == -1) {
-            return DataResult.success(dev.j);
-         }
+   protected void a(BooleanSupplier $$0) {
+      LongIterator $$1 = this.f.iterator();
 
-         if ($$2 == 0) {
-            return DataResult.success(dev.i);
-         }
-
-         if ($$2 == 1) {
-            return DataResult.success(dev.k);
-         }
+      while ($$1.hasNext() && $$0.getAsBoolean()) {
+         deh $$2 = new deh($$1.nextLong());
+         $$1.remove();
+         this.e($$2);
       }
 
-      return dev.h.parse($$0);
+      this.c();
    }
 
-   public static double a(dyz $$0, dyz $$1) {
-      double $$2 = $$0.k();
-      double $$3 = $$1.k();
-      return $$2 / $$3;
-   }
+   private void c() {
+      synchronized (this.o) {
+         Iterator<Entry<CompletableFuture<Optional<dyz.a<P>>>>> $$0 = Long2ObjectMaps.fastIterator(this.n);
 
-   public static Path a(alg<dev> $$0, Path $$1) {
-      if ($$0 == dev.i) {
-         return $$1;
-      } else if ($$0 == dev.k) {
-         return $$1.resolve("DIM1");
-      } else {
-         return $$0 == dev.j ? $$1.resolve("DIM-1") : $$1.resolve("dimensions").resolve($$0.a().b()).resolve($$0.a().a());
+         while ($$0.hasNext()) {
+            Entry<CompletableFuture<Optional<dyz.a<P>>>> $$1 = $$0.next();
+            Optional<dyz.a<P>> $$2 = (Optional<dyz.a<P>>)((CompletableFuture)$$1.getValue()).getNow(null);
+            if ($$2 != null) {
+               long $$3 = $$1.getLongKey();
+               this.a(new deh($$3), $$2.orElse(null));
+               $$0.remove();
+               this.m.add($$3);
+            }
+         }
       }
    }
 
-   public boolean a() {
-      return this.l.isPresent();
-   }
-
-   public float a(long $$0) {
-      double $$1 = azj.e((double)this.l.orElse($$0) / 24000.0 - 0.25);
-      double $$2 = 0.5 - Math.cos($$1 * Math.PI) / 2.0;
-      return (float)($$1 * 2.0 + $$2) / 3.0F;
-   }
-
-   public int b(long $$0) {
-      return (int)($$0 / 24000L % 8L + 8L) % 8;
+   public void a() {
+      if (!this.f.isEmpty()) {
+         this.f.forEach($$0 -> this.e(new deh($$0)));
+         this.f.clear();
+      }
    }
 
    public boolean b() {
-      return this.z.a();
+      return !this.f.isEmpty();
    }
 
-   public boolean c() {
-      return this.z.b();
+   @Nullable
+   protected Optional<R> c(long $$0) {
+      return (Optional<R>)this.e.get($$0);
    }
 
-   public brd d() {
-      return this.z.c();
+   protected Optional<R> d(long $$0) {
+      if (this.e($$0)) {
+         return Optional.empty();
+      } else {
+         Optional<R> $$1 = this.c($$0);
+         if ($$1 != null) {
+            return $$1;
+         } else {
+            this.c(kj.a($$0).r());
+            $$1 = this.c($$0);
+            if ($$1 == null) {
+               throw (IllegalStateException)ae.b(new IllegalStateException());
+            } else {
+               return $$1;
+            }
+         }
+      }
    }
 
-   public int e() {
-      return this.z.d();
+   protected boolean e(long $$0) {
+      int $$1 = kj.c(kj.c($$0));
+      return this.c.e($$1);
    }
 
-   public OptionalLong f() {
-      return this.l;
+   protected R f(long $$0) {
+      if (this.e($$0)) {
+         throw (IllegalArgumentException)ae.b(new IllegalArgumentException("sectionPos out of bounds"));
+      } else {
+         Optional<R> $$1 = this.d($$0);
+         if ($$1.isPresent()) {
+            return $$1.get();
+         } else {
+            R $$2 = this.j.apply(() -> this.a($$0));
+            this.e.put($$0, Optional.of($$2));
+            return $$2;
+         }
+      }
    }
 
-   public boolean g() {
-      return this.m;
+   public CompletableFuture<?> a(deh $$0) {
+      synchronized (this.o) {
+         long $$1 = $$0.a();
+         return this.m.contains($$1) ? CompletableFuture.completedFuture(null) : (CompletableFuture)this.n.computeIfAbsent($$1, $$1x -> this.d($$0));
+      }
    }
 
-   public boolean h() {
-      return this.n;
+   private void c(deh $$0) {
+      long $$1 = $$0.a();
+      CompletableFuture<Optional<dyz.a<P>>> $$2;
+      synchronized (this.o) {
+         if (!this.m.add($$1)) {
+            return;
+         }
+
+         $$2 = (CompletableFuture<Optional<dyz.a<P>>>)this.n.computeIfAbsent($$1, $$1x -> this.d($$0));
+      }
+
+      this.a($$0, $$2.join().orElse(null));
+      synchronized (this.o) {
+         this.n.remove($$1);
+      }
    }
 
-   public boolean i() {
-      return this.o;
+   private CompletableFuture<Optional<dyz.a<P>>> d(deh $$0) {
+      alg<vh> $$1 = this.k.a(uy.a);
+      return this.d
+         .a($$0)
+         .thenApplyAsync($$1x -> $$1x.map($$1xx -> dyz.a.a(this.g, $$1, $$1xx, this.d, this.c)), ae.g().a("parseSection"))
+         .exceptionally($$1x -> {
+            if ($$1x instanceof IOException $$2) {
+               a.error("Error reading chunk {} data from disk", $$0, $$2);
+               this.l.a($$2, this.d.a(), $$0);
+               return Optional.empty();
+            } else {
+               throw new CompletionException($$1x);
+            }
+         });
    }
 
-   public boolean j() {
-      return this.p;
+   private void a(deh $$0, @Nullable dyz.a<P> $$1) {
+      if ($$1 == null) {
+         for (int $$2 = this.c.an(); $$2 <= this.c.ao(); $$2++) {
+            this.e.put(a($$0, $$2), Optional.empty());
+         }
+      } else {
+         boolean $$3 = $$1.b();
+
+         for (int $$4 = this.c.an(); $$4 <= this.c.ao(); $$4++) {
+            long $$5 = a($$0, $$4);
+            Optional<R> $$6 = Optional.ofNullable($$1.a.get($$4)).map($$1x -> this.i.apply((P)$$1x, () -> this.a($$5)));
+            this.e.put($$5, $$6);
+            $$6.ifPresent($$2 -> {
+               this.b($$5);
+               if ($$3) {
+                  this.a($$5);
+               }
+            });
+         }
+      }
    }
 
-   public double k() {
-      return this.q;
+   private void e(deh $$0) {
+      alg<vh> $$1 = this.k.a(uy.a);
+      Dynamic<vh> $$2 = this.a($$0, $$1);
+      vh $$3 = (vh)$$2.getValue();
+      if ($$3 instanceof uk) {
+         this.d.a($$0, (uk)$$3).exceptionally($$1x -> {
+            this.l.b($$1x, this.d.a(), $$0);
+            return null;
+         });
+      } else {
+         a.error("Expected compound tag, got {}", $$3);
+      }
    }
 
-   public boolean l() {
-      return this.r;
-   }
+   private <T> Dynamic<T> a(deh $$0, DynamicOps<T> $$1) {
+      Map<T, T> $$2 = Maps.newHashMap();
 
-   public boolean m() {
-      return this.s;
-   }
+      for (int $$3 = this.c.an(); $$3 <= this.c.ao(); $$3++) {
+         long $$4 = a($$0, $$3);
+         Optional<R> $$5 = (Optional<R>)this.e.get($$4);
+         if ($$5 != null && !$$5.isEmpty()) {
+            DataResult<T> $$6 = this.g.encodeStart($$1, this.h.apply($$5.get()));
+            String $$7 = Integer.toString($$3);
+            $$6.resultOrPartial(a::error).ifPresent($$3x -> $$2.put((T)$$1.createString($$7), (T)$$3x));
+         }
+      }
 
-   public int n() {
-      return this.t;
-   }
-
-   public int o() {
-      return this.u;
-   }
-
-   public int p() {
-      return this.v;
-   }
-
-   public axp<dhy> q() {
-      return this.w;
-   }
-
-   public alh r() {
-      return this.x;
-   }
-
-   public float s() {
-      return this.y;
-   }
-
-   public dyz.a t() {
-      return this.z;
-   }
-
-   public static record a(boolean b, boolean c, brd d, int e) {
-      public static final MapCodec<dyz.a> a = RecordCodecBuilder.mapCodec(
-         $$0 -> $$0.group(
-                  Codec.BOOL.fieldOf("piglin_safe").forGetter(dyz.a::a),
-                  Codec.BOOL.fieldOf("has_raids").forGetter(dyz.a::b),
-                  brd.b(0, 15).fieldOf("monster_spawn_light_level").forGetter(dyz.a::c),
-                  Codec.intRange(0, 15).fieldOf("monster_spawn_block_light_limit").forGetter(dyz.a::d)
-               )
-               .apply($$0, dyz.a::new)
+      return new Dynamic(
+         $$1, $$1.createMap(ImmutableMap.of($$1.createString("Sections"), $$1.createMap($$2), $$1.createString("DataVersion"), $$1.createInt(ab.b().d().c())))
       );
+   }
 
-      public boolean a() {
-         return this.b;
+   private static long a(deh $$0, int $$1) {
+      return kj.b($$0.g, $$1, $$0.h);
+   }
+
+   protected void b(long $$0) {
+   }
+
+   protected void a(long $$0) {
+      Optional<R> $$1 = (Optional<R>)this.e.get($$0);
+      if ($$1 != null && !$$1.isEmpty()) {
+         this.f.add(deh.c(kj.b($$0), kj.d($$0)));
+      } else {
+         a.warn("No data for position: {}", kj.a($$0));
       }
+   }
 
-      public boolean b() {
-         return this.c;
+   static int a(Dynamic<?> $$0) {
+      return $$0.get("DataVersion").asInt(1945);
+   }
+
+   public void b(deh $$0) {
+      if (this.f.remove($$0.a())) {
+         this.e($$0);
       }
+   }
 
-      public brd c() {
-         return this.d;
-      }
+   @Override
+   public void close() throws IOException {
+      this.d.close();
+   }
 
-      public int d() {
-         return this.e;
+   static record a<T>(Int2ObjectMap<T> a, boolean b) {
+
+      public static <T> dyz.a<T> a(Codec<T> $$0, DynamicOps<vh> $$1, vh $$2, dzb $$3, dfd $$4) {
+         Dynamic<vh> $$5 = new Dynamic($$1, $$2);
+         int $$6 = dyz.a($$5);
+         int $$7 = ab.b().d().c();
+         boolean $$8 = $$6 != $$7;
+         Dynamic<vh> $$9 = $$3.a($$5, $$6);
+         OptionalDynamic<vh> $$10 = $$9.get("Sections");
+         Int2ObjectMap<T> $$11 = new Int2ObjectOpenHashMap();
+
+         for (int $$12 = $$4.an(); $$12 <= $$4.ao(); $$12++) {
+            Optional<T> $$13 = $$10.get(Integer.toString($$12)).result().flatMap($$1x -> $$0.parse($$1x).resultOrPartial(dyz.a::error));
+            if ($$13.isPresent()) {
+               $$11.put($$12, $$13.get());
+            }
+         }
+
+         return new dyz.a<>($$11, $$8);
       }
    }
 }

@@ -1,14 +1,9 @@
-public abstract class zm<T extends wn> implements zo<T> {
-   private final Iterable<zo<? super T>> a;
-
-   protected zm(Iterable<zo<? super T>> $$0) {
-      this.a = $$0;
-   }
-
-   public final Iterable<zo<? super T>> b() {
-      return this.a;
+public abstract class zm<T extends wo> implements zp<T> {
+   @Override
+   public final void a(T $$0) {
+      throw new AssertionError("This packet should be handled by pipeline");
    }
 
    @Override
-   public abstract zq<? extends zm<T>> a();
+   public abstract zr<? extends zm<T>> a();
 }

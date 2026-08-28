@@ -1,52 +1,35 @@
+import com.mojang.datafixers.DSL;
 import com.mojang.datafixers.DataFix;
 import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.Typed;
 import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.Type;
-import com.mojang.datafixers.types.templates.TaggedChoice.TaggedChoiceType;
-import com.mojang.datafixers.util.Pair;
-import com.mojang.serialization.DynamicOps;
-import java.util.Locale;
-import java.util.function.Function;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.OptionalDynamic;
+import java.util.List;
 
-public abstract class bed extends DataFix {
-   protected final String a;
+public class bed extends DataFix {
+   private static final Codec<List<Float>> a = Codec.FLOAT.listOf();
 
-   public bed(String $$0, Schema $$1, boolean $$2) {
-      super($$1, $$2);
-      this.a = $$0;
+   public bed(Schema $$0, boolean $$1) {
+      super($$0, $$1);
    }
 
    public TypeRewriteRule makeRule() {
-      TaggedChoiceType<String> $$0 = this.getInputSchema().findChoiceType(bhs.B);
-      TaggedChoiceType<String> $$1 = this.getOutputSchema().findChoiceType(bhs.B);
-      Function<String, Type<?>> $$2 = ad.b($$2x -> {
-         Type<?> $$3 = (Type<?>)$$0.types().get($$2x);
-         return bau.a($$3, $$0, $$1);
-      });
-      return this.fixTypeEverywhere(
-         this.a,
-         $$0,
-         $$1,
-         $$2x -> $$3 -> {
-               String $$4 = (String)$$3.getFirst();
-               Type<?> $$5 = $$2.apply($$4);
-               Pair<String, Typed<?>> $$6 = this.a($$4, this.a($$3.getSecond(), $$2x, $$5));
-               Type<?> $$7 = (Type<?>)$$1.types().get($$6.getFirst());
-               if (!$$7.equals(((Typed)$$6.getSecond()).getType(), true, true)) {
-                  throw new IllegalStateException(
-                     String.format(Locale.ROOT, "Dynamic type check failed: %s not equal to %s", $$7, ((Typed)$$6.getSecond()).getType())
-                  );
-               } else {
-                  return Pair.of((String)$$6.getFirst(), ((Typed)$$6.getSecond()).getValue());
+      return this.fixTypeEverywhereTyped(
+         "EntityRedundantChanceTagsFix", this.getInputSchema().getType(bhu.B), $$0 -> $$0.update(DSL.remainderFinder(), $$0x -> {
+               if (a($$0x.get("HandDropChances"), 2)) {
+                  $$0x = $$0x.remove("HandDropChances");
                }
-            }
+
+               if (a($$0x.get("ArmorDropChances"), 4)) {
+                  $$0x = $$0x.remove("ArmorDropChances");
+               }
+
+               return $$0x;
+            })
       );
    }
 
-   private <A> Typed<A> a(Object $$0, DynamicOps<?> $$1, Type<A> $$2) {
-      return new Typed($$2, $$1, $$0);
+   private static boolean a(OptionalDynamic<?> $$0, int $$1) {
+      return $$0.flatMap(a::parse).map($$1x -> $$1x.size() == $$1 && $$1x.stream().allMatch($$0xx -> $$0xx == 0.0F)).result().orElse(false);
    }
-
-   protected abstract Pair<String, Typed<?>> a(String var1, Typed<?> var2);
 }

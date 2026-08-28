@@ -1,133 +1,63 @@
-import com.mojang.logging.LogUtils;
-import it.unimi.dsi.fastutil.longs.LongOpenHashSet;
-import it.unimi.dsi.fastutil.longs.LongSet;
-import org.slf4j.Logger;
+import it.unimi.dsi.fastutil.ints.Int2ObjectLinkedOpenHashMap;
+import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
+import it.unimi.dsi.fastutil.ints.Int2ObjectMaps;
+import it.unimi.dsi.fastutil.ints.Int2ObjectMap.Entry;
+import it.unimi.dsi.fastutil.objects.ObjectIterator;
+import java.util.function.Consumer;
+import javax.annotation.Nullable;
 
-public class dzt<T extends dzh> {
-   static final Logger a = LogUtils.getLogger();
-   final dzp<T> b;
-   final dzj<T> c;
-   final dzm<T> d;
-   private final LongSet e = new LongOpenHashSet();
-   private final dzq<T> f;
+public class dzt {
+   private Int2ObjectMap<bue> a = new Int2ObjectLinkedOpenHashMap();
+   private Int2ObjectMap<bue> b = new Int2ObjectLinkedOpenHashMap();
+   @Nullable
+   private Int2ObjectMap<bue> c;
 
-   public dzt(Class<T> $$0, dzp<T> $$1) {
-      this.c = new dzj<>();
-      this.d = new dzm<>($$0, $$0x -> this.e.contains($$0x) ? dzu.c : dzu.b);
-      this.b = $$1;
-      this.f = new dzr<>(this.c, this.d);
-   }
+   private void a() {
+      if (this.c == this.a) {
+         this.b.clear();
+         ObjectIterator $$1 = Int2ObjectMaps.fastIterable(this.a).iterator();
 
-   public void a(deb $$0) {
-      long $$1 = $$0.a();
-      this.e.add($$1);
-      this.d.b($$1).forEach($$0x -> {
-         dzu $$1x = $$0x.a(dzu.c);
-         if (!$$1x.a()) {
-            $$0x.b().filter($$0xx -> !$$0xx.dW()).forEach(this.b::e);
+         while ($$1.hasNext()) {
+            Entry<bue> $$0 = (Entry<bue>)$$1.next();
+            this.b.put($$0.getIntKey(), (bue)$$0.getValue());
          }
-      });
-   }
 
-   public void b(deb $$0) {
-      long $$1 = $$0.a();
-      this.e.remove($$1);
-      this.d.b($$1).forEach($$0x -> {
-         dzu $$1x = $$0x.a(dzu.b);
-         if ($$1x.a()) {
-            $$0x.b().filter($$0xx -> !$$0xx.dW()).forEach(this.b::d);
-         }
-      });
-   }
-
-   public dzq<T> a() {
-      return this.f;
-   }
-
-   public void a(T $$0) {
-      this.c.a($$0);
-      long $$1 = ki.c($$0.dx());
-      dzl<T> $$2 = this.d.c($$1);
-      $$2.a($$0);
-      $$0.a(new dzt.a($$0, $$1, $$2));
-      this.b.g($$0);
-      this.b.c($$0);
-      if ($$0.dW() || $$2.c().a()) {
-         this.b.e($$0);
+         Int2ObjectMap<bue> $$1x = this.a;
+         this.a = this.b;
+         this.b = $$1x;
       }
    }
 
-   @bap
-   public int b() {
-      return this.c.b();
+   public void a(bue $$0) {
+      this.a();
+      this.a.put($$0.as(), $$0);
    }
 
-   void a(long $$0, dzl<T> $$1) {
-      if ($$1.a()) {
-         this.d.e($$0);
-      }
+   public void b(bue $$0) {
+      this.a();
+      this.a.remove($$0.as());
    }
 
-   @bap
-   public String c() {
-      return this.c.b() + "," + this.d.b() + "," + this.e.size();
+   public boolean c(bue $$0) {
+      return this.a.containsKey($$0.as());
    }
 
-   class a implements dzi {
-      private final T c;
-      private long d;
-      private dzl<T> e;
+   public void a(Consumer<bue> $$0) {
+      if (this.c != null) {
+         throw new UnsupportedOperationException("Only one concurrent iteration supported");
+      } else {
+         this.c = this.a;
 
-      a(final T $$0, final long $$1, final dzl<T> $$2) {
-         this.c = $$0;
-         this.d = $$1;
-         this.e = $$2;
-      }
+         try {
+            ObjectIterator var2 = this.a.values().iterator();
 
-      @Override
-      public void a() {
-         jg $$0 = this.c.dx();
-         long $$1 = ki.c($$0);
-         if ($$1 != this.d) {
-            dzu $$2 = this.e.c();
-            if (!this.e.b(this.c)) {
-               dzt.a.warn("Entity {} wasn't found in section {} (moving to {})", new Object[]{this.c, ki.a(this.d), $$1});
+            while (var2.hasNext()) {
+               bue $$1 = (bue)var2.next();
+               $$0.accept($$1);
             }
-
-            dzt.this.a(this.d, this.e);
-            dzl<T> $$3 = dzt.this.d.c($$1);
-            $$3.a(this.c);
-            this.e = $$3;
-            this.d = $$1;
-            dzt.this.b.a(this.c);
-            if (!this.c.dW()) {
-               boolean $$4 = $$2.a();
-               boolean $$5 = $$3.c().a();
-               if ($$4 && !$$5) {
-                  dzt.this.b.d(this.c);
-               } else if (!$$4 && $$5) {
-                  dzt.this.b.e(this.c);
-               }
-            }
+         } finally {
+            this.c = null;
          }
-      }
-
-      @Override
-      public void a(btz.c $$0) {
-         if (!this.e.b(this.c)) {
-            dzt.a.warn("Entity {} wasn't found in section {} (destroying due to {})", new Object[]{this.c, ki.a(this.d), $$0});
-         }
-
-         dzu $$1 = this.e.c();
-         if ($$1.a() || this.c.dW()) {
-            dzt.this.b.d(this.c);
-         }
-
-         dzt.this.b.b(this.c);
-         dzt.this.b.f(this.c);
-         dzt.this.c.b(this.c);
-         this.c.a(a);
-         dzt.this.a(this.d, this.e);
       }
    }
 }

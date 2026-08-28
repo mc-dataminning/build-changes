@@ -1,18 +1,20 @@
-import io.netty.buffer.ByteBuf;
+public record acs(int b) implements zp<ace> {
+   public static final zg<wf, acs> a = zp.a(acs::a, acs::new);
 
-public class acs implements zo<acd> {
-   public static final acs a = new acs();
-   public static final zf<ByteBuf, acs> b = zf.a(a);
+   private acs(wf $$0) {
+      this($$0.l());
+   }
 
-   private acs() {
+   private void a(wf $$0) {
+      $$0.c(this.b);
    }
 
    @Override
-   public zq<acs> a() {
-      return ags.o;
+   public zr<acs> a() {
+      return agt.n;
    }
 
-   public void a(acd $$0) {
+   public void a(ace $$0) {
       $$0.a(this);
    }
 }

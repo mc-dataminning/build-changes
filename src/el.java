@@ -2,35 +2,39 @@ import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Optional;
 
-public class el extends dx<el.a> {
+public class el extends dy<el.a> {
    @Override
    public Codec<el.a> a() {
       return el.a.a;
    }
 
-   public void a(arn $$0, cvx $$1) {
+   public void a(aro $$0, cwb $$1) {
       this.a($$0, $$1x -> $$1x.a($$1));
    }
 
-   public static record a(Optional<bg> b, Optional<ct> c) implements dx.a {
+   public static record a(Optional<bh> b, Optional<cu> c) implements dy.a {
       public static final Codec<el.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(bv.b.optionalFieldOf("player").forGetter(el.a::a), ct.a.optionalFieldOf("item").forGetter(el.a::b)).apply($$0, el.a::new)
+         $$0 -> $$0.group(bw.b.optionalFieldOf("player").forGetter(el.a::a), cu.a.optionalFieldOf("item").forGetter(el.a::b)).apply($$0, el.a::new)
       );
 
-      public static ao<el.a> a(bv.a $$0, ct.a $$1) {
-         return an.W.a(new el.a(Optional.of(bv.a($$0)), Optional.of($$1.b())));
+      public static ap<el.a> a(cu $$0) {
+         return ao.C.a(new el.a(Optional.empty(), Optional.of($$0)));
       }
 
-      public boolean a(cvx $$0) {
-         return !this.c.isPresent() || this.c.get().a($$0);
+      public static ap<el.a> a(jr<cvx> $$0, dfa $$1) {
+         return ao.C.a(new el.a(Optional.empty(), Optional.of(cu.a.a().a($$0, $$1).b())));
+      }
+
+      public boolean a(cwb $$0) {
+         return this.c.isEmpty() || this.c.get().a($$0);
       }
 
       @Override
-      public Optional<bg> a() {
+      public Optional<bh> a() {
          return this.b;
       }
 
-      public Optional<ct> b() {
+      public Optional<cu> b() {
          return this.c;
       }
    }

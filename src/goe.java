@@ -1,38 +1,57 @@
-public class goe extends gny<ckp, guh> {
-   private final giz a;
+public class goe extends goj<cjn, guk> {
+   private static final ali a = ali.b("textures/entity/end_crystal/end_crystal.png");
+   private static final gir b = gir.f(a);
+   private final fyh h;
 
-   public goe(gnz.a $$0) {
+   public goe(gok.a $$0) {
       super($$0);
       this.f = 0.5F;
-      this.a = $$0.d();
+      this.h = new fyh($$0.a(gbl.aw));
    }
 
-   public boolean a(ckp $$0, gln $$1, double $$2, double $$3, double $$4) {
-      return !super.a($$0, $$1, $$2, $$3, $$4) ? false : $$0.q() != $$0.dX().a_($$0.dx());
+   public void a(guk $$0, feb $$1, gih $$2, int $$3) {
+      $$1.a();
+      $$1.b(2.0F, 2.0F, 2.0F);
+      $$1.a(0.0F, -0.5F, 0.0F);
+      this.h.a($$0);
+      this.h.a($$1, $$2.getBuffer(b), $$3, gxu.d);
+      $$1.b();
+      ezn $$4 = $$0.b;
+      if ($$4 != null) {
+         float $$5 = a($$0.p);
+         float $$6 = (float)$$4.d;
+         float $$7 = (float)$$4.e;
+         float $$8 = (float)$$4.f;
+         $$1.a($$4);
+         gof.a(-$$6, -$$7 + $$5, -$$8, $$0.p, $$1, $$2, $$3);
+      }
+
+      super.a($$0, $$1, $$2, $$3);
    }
 
-   public void a(guh $$0, fdt $$1, ghw $$2, int $$3) {
-      dvd $$4 = $$0.c;
-      if ($$4.o() == doe.c) {
-         $$1.a();
-         $$1.a(-0.5, 0.0, -0.5);
-         this.a.b().a($$0, this.a.a($$4), $$4, $$0.b, $$1, $$2.getBuffer(gho.b($$4)), false, azr.a(), $$4.b($$0.a), gxj.d);
-         $$1.b();
-         super.a($$0, $$1, $$2, $$3);
+   public static float a(float $$0) {
+      float $$1 = azk.a($$0 * 0.2F) / 2.0F + 0.5F;
+      $$1 = ($$1 * $$1 + $$1) * 0.4F;
+      return $$1 - 1.4F;
+   }
+
+   public guk a() {
+      return new guk();
+   }
+
+   public void a(cjn $$0, guk $$1, float $$2) {
+      super.a($$0, $$1, $$2);
+      $$1.p = (float)$$0.b + $$2;
+      $$1.a = $$0.o();
+      jh $$3 = $$0.m();
+      if ($$3 != null) {
+         $$1.b = ezn.b($$3).d($$0.o($$2));
+      } else {
+         $$1.b = null;
       }
    }
 
-   public guh a() {
-      return new guh();
-   }
-
-   public void a(ckp $$0, guh $$1, float $$2) {
-      super.a($$0, $$1, $$2);
-      jg $$3 = jg.a($$0.dC(), $$0.cS().e, $$0.dI());
-      $$1.a = $$0.m();
-      $$1.b = $$3;
-      $$1.c = $$0.q();
-      $$1.d = $$0.dX().t($$3);
-      $$1.e = $$0.dX();
+   public boolean a(cjn $$0, gly $$1, double $$2, double $$3, double $$4) {
+      return super.a($$0, $$1, $$2, $$3, $$4) || $$0.m() != null;
    }
 }

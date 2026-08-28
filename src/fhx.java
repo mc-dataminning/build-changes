@@ -1,122 +1,172 @@
-import com.mojang.logging.LogUtils;
-import java.net.URL;
-import java.nio.charset.StandardCharsets;
-import java.util.UUID;
-import java.util.concurrent.CancellationException;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.TimeoutException;
-import java.util.function.Function;
-import org.slf4j.Logger;
+import com.google.common.annotations.VisibleForTesting;
+import com.google.common.collect.Lists;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Objects;
+import javax.annotation.Nullable;
 
-public class fhx extends fhy {
-   private static final xh b = xh.c("multiplayer.applyingPack");
-   private static final Logger c = LogUtils.getLogger();
-   private static final xh d = xh.c("mco.connect.connecting");
-   private final ffa e;
-   private final fqs f;
-
-   public fhx(fqs $$0, ffa $$1) {
-      this.f = $$0;
-      this.e = $$1;
+public class fhx {
+   private fhx() {
    }
 
-   @Override
-   public void run() {
-      ffb $$0;
-      try {
-         $$0 = this.f();
-      } catch (CancellationException var4) {
-         c.info("User aborted connecting to realms");
-         return;
-      } catch (ffu var5) {
-         switch (var5.a.a()) {
-            case 6002:
-               a(new fhc(this.f, this.e));
-               return;
-            case 6006:
-               boolean $$3 = fja.Q().b(this.e.g);
-               a(
-                  (fqs)($$3
-                     ? new fgg(this.f, this.e.a, this.e.i())
-                     : new fgm(xh.c("mco.brokenworld.nonowner.title"), xh.c("mco.brokenworld.nonowner.error"), this.f))
-               );
-               return;
-            default:
-               this.a(var5);
-               c.error("Couldn't connect to world", var5);
-               return;
+   @VisibleForTesting
+   protected static List<String> a(String $$0) {
+      return Arrays.asList($$0.split("\\n"));
+   }
+
+   public static List<fhx.a> a(String $$0, fhx.b... $$1) {
+      return a($$0, Arrays.asList($$1));
+   }
+
+   private static List<fhx.a> a(String $$0, List<fhx.b> $$1) {
+      List<String> $$2 = a($$0);
+      return a($$2, $$1);
+   }
+
+   private static List<fhx.a> a(List<String> $$0, List<fhx.b> $$1) {
+      int $$2 = 0;
+      List<fhx.a> $$3 = Lists.newArrayList();
+
+      for (String $$4 : $$0) {
+         List<fhx.b> $$5 = Lists.newArrayList();
+
+         for (String $$7 : a($$4, "%link")) {
+            if ("%link".equals($$7)) {
+               $$5.add($$1.get($$2++));
+            } else {
+               $$5.add(fhx.b.a($$7));
+            }
          }
-      } catch (TimeoutException var6) {
-         this.a(xh.c("mco.errorMessage.connectionFailure"));
-         return;
-      } catch (Exception var7) {
-         c.error("Couldn't connect to world", var7);
-         this.a(var7);
-         return;
+
+         $$3.add(new fhx.a($$5));
       }
 
-      boolean $$7 = $$0.b != null && $$0.c != null;
-      fqs $$8 = (fqs)($$7 ? this.a($$0, a(this.e), this::a) : this.a($$0));
-      a($$8);
+      return $$3;
    }
 
-   private static UUID a(ffa $$0) {
-      return $$0.o != null
-         ? UUID.nameUUIDFromBytes(("minigame:" + $$0.o).getBytes(StandardCharsets.UTF_8))
-         : UUID.nameUUIDFromBytes(("realms:" + $$0.c + ":" + $$0.n).getBytes(StandardCharsets.UTF_8));
-   }
+   public static List<String> a(String $$0, String $$1) {
+      if ($$1.isEmpty()) {
+         throw new IllegalArgumentException("Delimiter cannot be the empty string");
+      } else {
+         List<String> $$2 = Lists.newArrayList();
+         int $$3 = 0;
 
-   @Override
-   public xh a() {
-      return d;
-   }
+         int $$4;
+         while (($$4 = $$0.indexOf($$1, $$3)) != -1) {
+            if ($$4 > $$3) {
+               $$2.add($$0.substring($$3, $$4));
+            }
 
-   private ffb f() throws ffu, TimeoutException, CancellationException {
-      fej $$0 = fej.a();
-
-      for (int $$1 = 0; $$1 < 40; $$1++) {
-         if (this.d()) {
-            throw new CancellationException();
+            $$2.add($$1);
+            $$3 = $$4 + $$1.length();
          }
 
-         try {
-            return $$0.c(this.e.a);
-         } catch (ffv var4) {
-            a((long)var4.c);
+         if ($$3 < $$0.length()) {
+            $$2.add($$0.substring($$3));
+         }
+
+         return $$2;
+      }
+   }
+
+   public static class a {
+      public final List<fhx.b> a;
+
+      a(fhx.b... $$0) {
+         this(Arrays.asList($$0));
+      }
+
+      a(List<fhx.b> $$0) {
+         this.a = $$0;
+      }
+
+      @Override
+      public String toString() {
+         return "Line{segments=" + this.a + "}";
+      }
+
+      @Override
+      public boolean equals(Object $$0) {
+         if (this == $$0) {
+            return true;
+         } else if ($$0 != null && this.getClass() == $$0.getClass()) {
+            fhx.a $$1 = (fhx.a)$$0;
+            return Objects.equals(this.a, $$1.a);
+         } else {
+            return false;
          }
       }
 
-      throw new TimeoutException();
+      @Override
+      public int hashCode() {
+         return Objects.hash(this.a);
+      }
    }
 
-   public fgo a(ffb $$0) {
-      return new fgp(this.f, new fhu(this.f, this.e, $$0));
-   }
+   public static class b {
+      private final String a;
+      @Nullable
+      private final String b;
+      @Nullable
+      private final String c;
 
-   private fmb a(ffb $$0, UUID $$1, Function<ffb, fqs> $$2) {
-      xh $$3 = xh.c("mco.configure.world.resourcepack.question");
-      return fgu.a(this.f, $$3, $$3x -> {
-         a(new fqd(b));
-         this.a($$0, $$1).thenRun(() -> a($$2.apply($$0))).exceptionally($$1xx -> {
-            fja.Q().af().i();
-            c.error("Failed to download resource pack from {}", $$0, $$1xx);
-            a(new fgm(xh.c("mco.download.resourcePack.fail"), this.f));
-            return null;
-         });
-      });
-   }
+      private b(String $$0) {
+         this.a = $$0;
+         this.b = null;
+         this.c = null;
+      }
 
-   private CompletableFuture<?> a(ffb $$0, UUID $$1) {
-      try {
-         har $$2 = fja.Q().af();
-         CompletableFuture<Void> $$3 = $$2.b($$1);
-         $$2.g();
-         $$2.a($$1, new URL($$0.b), $$0.c);
-         return $$3;
-      } catch (Exception var5) {
-         CompletableFuture<Void> $$5 = new CompletableFuture<>();
-         $$5.completeExceptionally(var5);
-         return $$5;
+      private b(String $$0, @Nullable String $$1, @Nullable String $$2) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
+      }
+
+      @Override
+      public boolean equals(Object $$0) {
+         if (this == $$0) {
+            return true;
+         } else if ($$0 != null && this.getClass() == $$0.getClass()) {
+            fhx.b $$1 = (fhx.b)$$0;
+            return Objects.equals(this.a, $$1.a) && Objects.equals(this.b, $$1.b) && Objects.equals(this.c, $$1.c);
+         } else {
+            return false;
+         }
+      }
+
+      @Override
+      public int hashCode() {
+         return Objects.hash(this.a, this.b, this.c);
+      }
+
+      @Override
+      public String toString() {
+         return "Segment{fullText='" + this.a + "', linkTitle='" + this.b + "', linkUrl='" + this.c + "'}";
+      }
+
+      public String a() {
+         return this.b() ? this.b : this.a;
+      }
+
+      public boolean b() {
+         return this.b != null;
+      }
+
+      public String c() {
+         if (!this.b()) {
+            throw new IllegalStateException("Not a link: " + this);
+         } else {
+            return this.c;
+         }
+      }
+
+      public static fhx.b a(String $$0, String $$1) {
+         return new fhx.b(null, $$0, $$1);
+      }
+
+      @VisibleForTesting
+      protected static fhx.b a(String $$0) {
+         return new fhx.b($$0);
       }
    }
 }

@@ -1,25 +1,22 @@
-public interface hdx {
-   default void b() {
+import java.time.Duration;
+import javax.annotation.Nullable;
+
+public class hdx {
+   private final boolean a;
+   @Nullable
+   private final Duration b;
+
+   public hdx(boolean $$0, @Nullable Duration $$1) {
+      this.b = $$1;
+      this.a = $$0;
    }
 
-   default void a() {
-   }
-
-   default void a(ggq $$0) {
-   }
-
-   default void a(double $$0, double $$1) {
-   }
-
-   default void a(gbx $$0, ezf $$1) {
-   }
-
-   default void a(gbx $$0, jg $$1, dvd $$2, float $$3) {
-   }
-
-   default void c() {
-   }
-
-   default void a(cvx $$0) {
+   public void a(hdn $$0) {
+      if (this.b != null) {
+         $$0.send(hdo.d, $$0x -> {
+            $$0x.a(hdq.x, (int)this.b.toMillis());
+            $$0x.a(hdq.y, this.a);
+         });
+      }
    }
 }

@@ -1,19 +1,40 @@
-public class grl extends gsm<gtr, fxk> {
-   private static final alh a = alh.b("textures/entity/breeze/breeze_wind.png");
-   private final fxk b;
+public class grl extends gpq<cki, gwz, gba> {
+   private static final ali a = ali.b("textures/entity/wither/wither_invulnerable.png");
+   private static final ali b = ali.b("textures/entity/wither/wither.png");
 
-   public grl(gnz.a $$0, gpv<gtr, fxk> $$1) {
-      super($$1);
-      this.b = new fxk($$0.a(gba.C));
+   public grl(gok.a $$0) {
+      super($$0, new gba($$0.a(gbl.cZ)), 1.0F);
+      this.a(new gtl(this, $$0.f()));
    }
 
-   public void a(fdt $$0, ghw $$1, int $$2, gtr $$3, float $$4, float $$5) {
-      fdx $$6 = $$1.getBuffer(gig.a(a, this.a($$3.p) % 1.0F, 0.0F));
-      this.b.a($$3);
-      gnf.a(this.b, this.b.d()).a($$0, $$6, $$2, gxj.d);
+   protected int a(cki $$0, jh $$1) {
+      return 15;
    }
 
-   private float a(float $$0) {
-      return $$0 * 0.02F;
+   public ali a(gwz $$0) {
+      int $$1 = azk.d($$0.c);
+      return $$1 > 0 && ($$1 > 80 || $$1 / 5 % 2 != 1) ? a : b;
+   }
+
+   public gwz c() {
+      return new gwz();
+   }
+
+   protected void a(gwz $$0, feb $$1) {
+      float $$2 = 2.0F;
+      if ($$0.c > 0.0F) {
+         $$2 -= $$0.c / 220.0F * 0.5F;
+      }
+
+      $$1.b($$2, $$2, $$2);
+   }
+
+   public void a(cki $$0, gwz $$1, float $$2) {
+      super.a($$0, $$1, $$2);
+      int $$3 = $$0.gv();
+      $$1.c = $$3 > 0 ? (float)$$3 - $$2 : 0.0F;
+      System.arraycopy($$0.gu(), 0, $$1.a, 0, $$1.a.length);
+      System.arraycopy($$0.y(), 0, $$1.b, 0, $$1.b.length);
+      $$1.d = $$0.gw();
    }
 }

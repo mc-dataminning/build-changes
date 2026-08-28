@@ -1,90 +1,61 @@
-import com.mojang.datafixers.util.Either;
-import com.mojang.serialization.Codec;
+import com.google.common.collect.Lists;
+import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
-import java.util.Optional;
-import java.util.function.Function;
-import java.util.stream.Collectors;
-import javax.annotation.Nullable;
 
-public abstract class emz {
-   public static final Codec<emz> f = lx.ag.q().dispatch("element_type", emz::a, ena::codec);
-   private static final jp<epr> a = jp.a(new epr(List.of()));
-   @Nullable
-   private volatile enb.a b;
+public class emz extends enf {
+   public static final MapCodec<emz> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(elb.b.fieldOf("feature").forGetter($$0x -> $$0x.b), e()).apply($$0, emz::new)
+   );
+   private final jq<elb> b;
+   private final uk c;
 
-   protected static <E extends emz> RecordCodecBuilder<E, enb.a> e() {
-      return enb.a.c.fieldOf("projection").forGetter(emz::f);
-   }
-
-   protected emz(enb.a $$0) {
+   protected emz(jq<elb> $$0, enh.a $$1) {
+      super($$1);
       this.b = $$0;
+      this.c = this.b();
    }
 
-   public abstract kk a(epu var1, dol var2);
-
-   public abstract List<ept.c> a(epu var1, jg var2, dol var3, azr var4);
-
-   public abstract elj a(epu var1, jg var2, dol var3);
-
-   public abstract boolean a(epu var1, dfs var2, dfq var3, dxa var4, jg var5, jg var6, dol var7, elj var8, azr var9, epd var10, boolean var11);
-
-   public abstract ena<?> a();
-
-   public void a(dew $$0, ept.c $$1, jg $$2, dol $$3, azr $$4, elj $$5) {
+   private uk b() {
+      uk $$0 = new uk();
+      $$0.a("name", "minecraft:bottom");
+      $$0.a("final_state", "minecraft:air");
+      $$0.a("pool", "minecraft:empty");
+      $$0.a("target", "minecraft:empty");
+      $$0.a("joint", dto.a.a.c());
+      return $$0;
    }
 
-   public emz a(enb.a $$0) {
-      this.b = $$0;
-      return this;
+   @Override
+   public kl a(eqa $$0, dor $$1) {
+      return kl.g;
    }
 
-   public enb.a f() {
-      enb.a $$0 = this.b;
-      if ($$0 == null) {
-         throw new IllegalStateException();
-      } else {
-         return $$0;
-      }
+   @Override
+   public List<epz.c> a(eqa $$0, jh $$1, dor $$2, azs $$3) {
+      List<epz.c> $$4 = Lists.newArrayList();
+      $$4.add(new epz.c($$1, dig.pb.m().b(dmf.b, jo.a(jm.a, jm.d)), this.c));
+      return $$4;
    }
 
-   public int g() {
-      return 1;
+   @Override
+   public elp a(eqa $$0, jh $$1, dor $$2) {
+      kl $$3 = this.a($$0, $$2);
+      return new elp($$1.u(), $$1.v(), $$1.w(), $$1.u() + $$3.u(), $$1.v() + $$3.v(), $$1.w() + $$3.w());
    }
 
-   public static Function<enb.a, ems> h() {
-      return $$0 -> ems.b;
+   @Override
+   public boolean a(eqa $$0, dfy $$1, dfw $$2, dxg $$3, jh $$4, jh $$5, dor $$6, elp $$7, azs $$8, epj $$9, boolean $$10) {
+      return this.b.a().a($$1, $$3, $$8, $$4);
    }
 
-   public static Function<enb.a, emw> a(String $$0) {
-      return $$1 -> new emw(Either.left(alh.a($$0)), a, $$1, Optional.empty());
+   @Override
+   public eng<?> a() {
+      return eng.c;
    }
 
-   public static Function<enb.a, emw> a(String $$0, jp<epr> $$1) {
-      return $$2 -> new emw(Either.left(alh.a($$0)), $$1, $$2, Optional.empty());
-   }
-
-   public static Function<enb.a, emy> b(String $$0) {
-      return $$1 -> new emy(Either.left(alh.a($$0)), a, $$1, Optional.empty());
-   }
-
-   public static Function<enb.a, emy> b(String $$0, jp<epr> $$1) {
-      return $$2 -> new emy(Either.left(alh.a($$0)), $$1, $$2, Optional.empty());
-   }
-
-   public static Function<enb.a, emy> a(String $$0, epd $$1) {
-      return $$2 -> new emy(Either.left(alh.a($$0)), a, $$2, Optional.of($$1));
-   }
-
-   public static Function<enb.a, emy> a(String $$0, jp<epr> $$1, epd $$2) {
-      return $$3 -> new emy(Either.left(alh.a($$0)), $$1, $$3, Optional.of($$2));
-   }
-
-   public static Function<enb.a, emt> a(jp<ekv> $$0) {
-      return $$1 -> new emt($$0, $$1);
-   }
-
-   public static Function<enb.a, emx> b(List<Function<enb.a, ? extends emz>> $$0) {
-      return $$1 -> new emx($$0.stream().map($$1x -> (emz)$$1x.apply($$1)).collect(Collectors.toList()), $$1);
+   @Override
+   public String toString() {
+      return "Feature[" + this.b + "]";
    }
 }

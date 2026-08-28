@@ -1,28 +1,133 @@
-public enum dvz implements baf {
-   a(jl.a),
-   b(jl.b);
-
-   private final jl c;
-
-   private dvz(final jl $$0) {
-      this.c = $$0;
-   }
-
-   public jl a() {
-      return this.c;
-   }
-
-   @Override
-   public String toString() {
-      return this.c();
-   }
-
-   @Override
-   public String c() {
-      return this == a ? "upper" : "lower";
-   }
-
-   public dvz b() {
-      return this == a ? b : a;
-   }
+public class dvz {
+   public static final dwa a = dwa.a("attached");
+   public static final dwa b = dwa.a("bottom");
+   public static final dwa c = dwa.a("conditional");
+   public static final dwa d = dwa.a("disarmed");
+   public static final dwa e = dwa.a("drag");
+   public static final dwa f = dwa.a("enabled");
+   public static final dwa g = dwa.a("extended");
+   public static final dwa h = dwa.a("eye");
+   public static final dwa i = dwa.a("falling");
+   public static final dwa j = dwa.a("hanging");
+   public static final dwa k = dwa.a("has_bottle_0");
+   public static final dwa l = dwa.a("has_bottle_1");
+   public static final dwa m = dwa.a("has_bottle_2");
+   public static final dwa n = dwa.a("has_record");
+   public static final dwa o = dwa.a("has_book");
+   public static final dwa p = dwa.a("inverted");
+   public static final dwa q = dwa.a("in_wall");
+   public static final dwa r = dwa.a("lit");
+   public static final dwa s = dwa.a("locked");
+   public static final dwa t = dwa.a("occupied");
+   public static final dwa u = dwa.a("open");
+   public static final dwa v = dwa.a("persistent");
+   public static final dwa w = dwa.a("powered");
+   public static final dwa x = dwa.a("short");
+   public static final dwa y = dwa.a("signal_fire");
+   public static final dwa z = dwa.a("snowy");
+   public static final dwa A = dwa.a("triggered");
+   public static final dwa B = dwa.a("unstable");
+   public static final dwa C = dwa.a("waterlogged");
+   public static final dwa D = dwa.a("berries");
+   public static final dwa E = dwa.a("bloom");
+   public static final dwa F = dwa.a("shrieking");
+   public static final dwa G = dwa.a("can_summon");
+   public static final dwh<jm.a> H = dwh.a("axis", jm.a.class, jm.a.a, jm.a.c);
+   public static final dwh<jm.a> I = dwh.a("axis", jm.a.class);
+   public static final dwa J = dwa.a("up");
+   public static final dwa K = dwa.a("down");
+   public static final dwa L = dwa.a("north");
+   public static final dwa M = dwa.a("east");
+   public static final dwa N = dwa.a("south");
+   public static final dwa O = dwa.a("west");
+   public static final dwd P = dwd.a("facing", jm.c, jm.f, jm.d, jm.e, jm.b, jm.a);
+   public static final dwd Q = dwd.a("facing", $$0 -> $$0 != jm.b);
+   public static final dwd R = dwd.a("facing", jm.c.a);
+   public static final dwj S = dwj.a("flower_amount", 1, 4);
+   public static final dwh<jo> T = dwh.a("orientation", jo.class);
+   public static final dwh<dvu> U = dwh.a("face", dvu.class);
+   public static final dwh<dvx> V = dwh.a("attachment", dvx.class);
+   public static final dwh<dwv> W = dwh.a("east", dwv.class);
+   public static final dwh<dwv> X = dwh.a("north", dwv.class);
+   public static final dwh<dwv> Y = dwh.a("south", dwv.class);
+   public static final dwh<dwv> Z = dwh.a("west", dwv.class);
+   public static final dwh<dwo> aa = dwh.a("east", dwo.class);
+   public static final dwh<dwo> ab = dwh.a("north", dwo.class);
+   public static final dwh<dwo> ac = dwh.a("south", dwo.class);
+   public static final dwh<dwo> ad = dwh.a("west", dwo.class);
+   public static final dwh<dwf> ae = dwh.a("half", dwf.class);
+   public static final dwh<dwi> af = dwh.a("half", dwi.class);
+   public static final dwh<dwn> ag = dwh.a("shape", dwn.class);
+   public static final dwh<dwn> ah = dwh.a("shape", dwn.class, $$0 -> $$0 != dwn.j && $$0 != dwn.i && $$0 != dwn.g && $$0 != dwn.h);
+   public static final int ai = 1;
+   public static final int aj = 2;
+   public static final int ak = 3;
+   public static final int al = 4;
+   public static final int am = 5;
+   public static final int an = 7;
+   public static final int ao = 15;
+   public static final int ap = 25;
+   public static final dwj aq = dwj.a("age", 0, 1);
+   public static final dwj ar = dwj.a("age", 0, 2);
+   public static final dwj as = dwj.a("age", 0, 3);
+   public static final dwj at = dwj.a("age", 0, 4);
+   public static final dwj au = dwj.a("age", 0, 5);
+   public static final dwj av = dwj.a("age", 0, 7);
+   public static final dwj aw = dwj.a("age", 0, 15);
+   public static final dwj ax = dwj.a("age", 0, 25);
+   public static final dwj ay = dwj.a("bites", 0, 6);
+   public static final dwj az = dwj.a("candles", 1, 4);
+   public static final dwj aA = dwj.a("delay", 1, 4);
+   public static final int aB = 7;
+   public static final dwj aC = dwj.a("distance", 1, 7);
+   public static final dwj aD = dwj.a("eggs", 1, 4);
+   public static final dwj aE = dwj.a("hatch", 0, 2);
+   public static final dwj aF = dwj.a("layers", 1, 8);
+   public static final int aG = 0;
+   public static final int aH = 1;
+   public static final int aI = 3;
+   public static final int aJ = 8;
+   public static final dwj aK = dwj.a("level", 1, 3);
+   public static final dwj aL = dwj.a("level", 0, 8);
+   public static final dwj aM = dwj.a("level", 1, 8);
+   public static final dwj aN = dwj.a("honey_level", 0, 5);
+   public static final int aO = 15;
+   public static final dwj aP = dwj.a("level", 0, 15);
+   public static final dwj aQ = dwj.a("moisture", 0, 7);
+   public static final dwj aR = dwj.a("note", 0, 24);
+   public static final dwj aS = dwj.a("pickles", 1, 4);
+   public static final dwj aT = dwj.a("power", 0, 15);
+   public static final dwj aU = dwj.a("stage", 0, 1);
+   public static final int aV = 7;
+   public static final dwj aW = dwj.a("distance", 0, 7);
+   public static final int aX = 0;
+   public static final int aY = 4;
+   public static final dwj aZ = dwj.a("charges", 0, 4);
+   public static final dwj ba = dwj.a("rotation", 0, dwp.a());
+   public static final dwh<dvw> bb = dwh.a("part", dvw.class);
+   public static final dwh<dwb> bc = dwh.a("type", dwb.class);
+   public static final dwh<dwc> bd = dwh.a("mode", dwc.class);
+   public static final dwh<dwe> be = dwh.a("hinge", dwe.class);
+   public static final dwh<dwk> bf = dwh.a("instrument", dwk.class);
+   public static final dwh<dwl> bg = dwh.a("type", dwl.class);
+   public static final dwh<dwr> bh = dwh.a("type", dwr.class);
+   public static final dwh<dws> bi = dwh.a("shape", dws.class);
+   public static final dwh<dwt> bj = dwh.a("mode", dwt.class);
+   public static final dwh<dvv> bk = dwh.a("leaves", dvv.class);
+   public static final dwh<dwu> bl = dwh.a("tilt", dwu.class);
+   public static final dwd bm = dwd.a("vertical_direction", jm.b, jm.a);
+   public static final dwh<dwg> bn = dwh.a("thickness", dwg.class);
+   public static final dwh<dwq> bo = dwh.a("sculk_sensor_phase", dwq.class);
+   public static final dwa bp = dwa.a("slot_0_occupied");
+   public static final dwa bq = dwa.a("slot_1_occupied");
+   public static final dwa br = dwa.a("slot_2_occupied");
+   public static final dwa bs = dwa.a("slot_3_occupied");
+   public static final dwa bt = dwa.a("slot_4_occupied");
+   public static final dwa bu = dwa.a("slot_5_occupied");
+   public static final dwj bv = dwj.a("dusted", 0, 3);
+   public static final dwa bw = dwa.a("cracked");
+   public static final dwa bx = dwa.a("crafting");
+   public static final dwh<dup> by = dwh.a("trial_spawner_state", dup.class);
+   public static final dwh<duw> bz = dwh.a("vault_state", duw.class);
+   public static final dwa bA = dwa.a("ominous");
 }

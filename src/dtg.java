@@ -1,15 +1,10 @@
-public interface dtg extends brr {
-   ezc t_ = dhy.a(0.0, 11.0, 0.0, 16.0, 32.0, 16.0).e().get(0);
-
-   default ezc an_() {
-      return t_;
+public class dtg extends dtf {
+   public dtg(jh $$0, dvj $$1) {
+      super(dso.g, $$0, $$1);
    }
 
-   double K();
-
-   double L();
-
-   double M();
-
-   boolean O();
+   @Override
+   protected xi j() {
+      return xi.c("container.dropper");
+   }
 }

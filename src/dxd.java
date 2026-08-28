@@ -1,49 +1,59 @@
-import java.io.IOException;
-import java.util.function.BooleanSupplier;
+import it.unimi.dsi.fastutil.longs.Long2ObjectMap;
+import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
+import it.unimi.dsi.fastutil.objects.ObjectIterator;
 import javax.annotation.Nullable;
 
-public abstract class dxd implements dxm, AutoCloseable {
+public class dxd implements AutoCloseable {
+   private final dfc a;
+   private final Long2ObjectMap<dxq> b = new Long2ObjectOpenHashMap();
    @Nullable
-   public dxj a(int $$0, int $$1, boolean $$2) {
-      return (dxj)this.a($$0, $$1, dya.n, $$2);
+   private dxq c;
+   private long d;
+
+   public dxd(dfc $$0) {
+      this.a = $$0;
    }
 
    @Nullable
-   public dxj a(int $$0, int $$1) {
-      return this.a($$0, $$1, false);
+   public dxq a(jh $$0) {
+      int $$1 = this.a.f($$0.v());
+      if ($$1 >= 0 && $$1 < this.a.am()) {
+         long $$2 = kj.c($$0);
+         if (this.c == null || this.d != $$2) {
+            this.c = (dxq)this.b.computeIfAbsent($$2, $$2x -> {
+               dxf $$3 = this.a.a(kj.a($$0.u()), kj.a($$0.w()));
+               dxq $$4 = $$3.b($$1);
+               $$4.a();
+               return $$4;
+            });
+            this.d = $$2;
+         }
+
+         return this.c;
+      } else {
+         return null;
+      }
    }
 
-   @Nullable
+   public dvj b(jh $$0) {
+      dxq $$1 = this.a($$0);
+      if ($$1 == null) {
+         return dig.a.m();
+      } else {
+         int $$2 = kj.b($$0.u());
+         int $$3 = kj.b($$0.v());
+         int $$4 = kj.b($$0.w());
+         return $$1.a($$2, $$3, $$4);
+      }
+   }
+
    @Override
-   public dxl c(int $$0, int $$1) {
-      return this.a($$0, $$1, dya.c, false);
-   }
+   public void close() {
+      ObjectIterator var1 = this.b.values().iterator();
 
-   public boolean b(int $$0, int $$1) {
-      return this.a($$0, $$1, dya.n, false) != null;
-   }
-
-   @Nullable
-   public abstract dwz a(int var1, int var2, dya var3, boolean var4);
-
-   public abstract void a(BooleanSupplier var1, boolean var2);
-
-   public void a(int $$0, int $$1, int $$2, boolean $$3) {
-   }
-
-   public abstract String e();
-
-   public abstract int j();
-
-   @Override
-   public void close() throws IOException {
-   }
-
-   public abstract eqt p();
-
-   public void b(boolean $$0) {
-   }
-
-   public void a(deb $$0, boolean $$1) {
+      while (var1.hasNext()) {
+         dxq $$0 = (dxq)var1.next();
+         $$0.b();
+      }
    }
 }

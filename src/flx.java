@@ -1,18 +1,49 @@
-public class flx extends fkz {
-   private final fkk a;
-   private final xh b;
-   private final xh c;
+public class flx extends flh {
+   private boolean a;
 
-   public flx(int $$0, int $$1, int $$2, int $$3, xh $$4, fkz.c $$5, fkk $$6) {
-      super($$0, $$1, $$2, $$3, $$4, $$5, q);
-      this.a = $$6;
-      this.b = $$4;
-      this.c = xk.a($$4.f(), ye.a.c(true));
+   public flx(int $$0, int $$1, flh.c $$2) {
+      super($$0, $$1, 20, 20, xi.c("narrator.button.difficulty_lock"), $$2, q);
    }
 
    @Override
-   public void b(fkm $$0, int $$1, int $$2, float $$3) {
-      xh $$4 = this.B() ? this.c : this.b;
-      $$0.b(this.a, $$4, this.D(), this.E(), 16777215 | azj.f(this.l * 255.0F) << 24);
+   protected xw aO_() {
+      return xh.a(super.aO_(), this.a() ? xi.c("narrator.button.difficulty_lock.locked") : xi.c("narrator.button.difficulty_lock.unlocked"));
+   }
+
+   public boolean a() {
+      return this.a;
+   }
+
+   public void b(boolean $$0) {
+      this.a = $$0;
+   }
+
+   @Override
+   public void b(fku $$0, int $$1, int $$2, float $$3) {
+      flx.a $$4;
+      if (!this.j) {
+         $$4 = this.a ? flx.a.c : flx.a.f;
+      } else if (this.B()) {
+         $$4 = this.a ? flx.a.b : flx.a.e;
+      } else {
+         $$4 = this.a ? flx.a.a : flx.a.d;
+      }
+
+      $$0.a(gir::B, $$4.g, this.D(), this.E(), this.g, this.h);
+   }
+
+   static enum a {
+      a(ali.b("widget/locked_button")),
+      b(ali.b("widget/locked_button_highlighted")),
+      c(ali.b("widget/locked_button_disabled")),
+      d(ali.b("widget/unlocked_button")),
+      e(ali.b("widget/unlocked_button_highlighted")),
+      f(ali.b("widget/unlocked_button_disabled"));
+
+      final ali g;
+
+      private a(final ali $$0) {
+         this.g = $$0;
+      }
    }
 }

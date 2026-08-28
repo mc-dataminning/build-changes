@@ -1,194 +1,214 @@
-public class fsj extends fqs {
-   private static final xh a = xh.c("jigsaw_block.joint_label");
-   private static final xh b = xh.c("jigsaw_block.pool");
-   private static final xh c = xh.c("jigsaw_block.name");
-   private static final xh d = xh.c("jigsaw_block.target");
-   private static final xh s = xh.c("jigsaw_block.final_state");
-   private static final xh u = xh.c("jigsaw_block.placement_priority");
-   private static final xh v = xh.c("jigsaw_block.placement_priority.tooltip");
-   private static final xh w = xh.c("jigsaw_block.selection_priority");
-   private static final xh x = xh.c("jigsaw_block.selection_priority.tooltip");
-   private final dti y;
-   private fli z;
-   private fli A;
-   private fli B;
-   private fli C;
-   private fli D;
-   private fli E;
-   int F;
-   private boolean G = true;
-   private flg<dti.a> H;
-   private fkz I;
-   private fkz J;
-   private dti.a K;
+import com.google.common.collect.Lists;
+import java.util.List;
+import java.util.Optional;
 
-   public fsj(dti $$0) {
-      super(fir.a);
-      this.y = $$0;
+public class fsj extends frp<csk> {
+   private static final ali[] M = new ali[]{
+      ali.b("container/enchanting_table/level_1"), ali.b("container/enchanting_table/level_2"), ali.b("container/enchanting_table/level_3")
+   };
+   private static final ali[] N = new ali[]{
+      ali.b("container/enchanting_table/level_1_disabled"),
+      ali.b("container/enchanting_table/level_2_disabled"),
+      ali.b("container/enchanting_table/level_3_disabled")
+   };
+   private static final ali O = ali.b("container/enchanting_table/enchantment_slot_disabled");
+   private static final ali P = ali.b("container/enchanting_table/enchantment_slot_highlighted");
+   private static final ali Q = ali.b("container/enchanting_table/enchantment_slot");
+   private static final ali R = ali.b("textures/gui/container/enchanting_table.png");
+   private static final ali S = ali.b("textures/entity/enchanting_table_book.png");
+   private final azs T = azs.a();
+   private fxu U;
+   public float G;
+   public float H;
+   public float I;
+   public float J;
+   public float K;
+   public float L;
+   private cwb V = cwb.k;
+
+   public fsj(csk $$0, col $$1, xi $$2) {
+      super($$0, $$1, $$2);
    }
 
-   private void m() {
-      this.E();
-      this.m.a(null);
+   @Override
+   protected void aR_() {
+      super.aR_();
+      this.U = new fxu(this.m.aS().a(gbl.A));
    }
 
-   private void D() {
-      this.m.a(null);
+   @Override
+   public void D() {
+      super.D();
+      this.F();
    }
 
-   private void E() {
-      this.m.L().b(new ain(this.y.aC_(), alh.a(this.z.a()), alh.a(this.A.a()), alh.a(this.B.a()), this.C.a(), this.K, this.b(this.D.a()), this.b(this.E.a())));
+   @Override
+   public boolean a(double $$0, double $$1, int $$2) {
+      int $$3 = (this.n - this.s) / 2;
+      int $$4 = (this.o - this.u) / 2;
+
+      for (int $$5 = 0; $$5 < 3; $$5++) {
+         double $$6 = $$0 - (double)($$3 + 60);
+         double $$7 = $$1 - (double)($$4 + 14 + 19 * $$5);
+         if ($$6 >= 0.0 && $$7 >= 0.0 && $$6 < 108.0 && $$7 < 19.0 && this.z.a(this.m.t, $$5)) {
+            this.m.r.a(this.z.l, $$5);
+            return true;
+         }
+      }
+
+      return super.a($$0, $$1, $$2);
    }
 
-   private int b(String $$0) {
-      try {
-         return Integer.parseInt($$0);
-      } catch (NumberFormatException var3) {
-         return 0;
+   @Override
+   protected void a(fku $$0, float $$1, int $$2, int $$3) {
+      int $$4 = (this.n - this.s) / 2;
+      int $$5 = (this.o - this.u) / 2;
+      $$0.a(gir::B, R, $$4, $$5, 0.0F, 0.0F, this.s, this.u, 256, 256);
+      this.d($$0, $$4, $$5, $$1);
+      fsi.a().a((long)this.z.m());
+      int $$6 = this.z.l();
+
+      for (int $$7 = 0; $$7 < 3; $$7++) {
+         int $$8 = $$4 + 60;
+         int $$9 = $$8 + 20;
+         int $$10 = this.z.m[$$7];
+         if ($$10 == 0) {
+            $$0.a(gir::B, O, $$8, $$5 + 14 + 19 * $$7, 108, 19);
+         } else {
+            String $$11 = $$10 + "";
+            int $$12 = 86 - this.p.b($$11);
+            xn $$13 = fsi.a().a(this.p, $$12);
+            int $$14 = 6839882;
+            if (($$6 < $$7 + 1 || this.m.t.cq < $$10) && !this.m.t.gl().d) {
+               $$0.a(gir::B, O, $$8, $$5 + 14 + 19 * $$7, 108, 19);
+               $$0.a(gir::B, N[$$7], $$8 + 1, $$5 + 15 + 19 * $$7, 16, 16);
+               $$0.a(this.p, $$13, $$9, $$5 + 16 + 19 * $$7, $$12, ($$14 & 16711422) >> 1);
+               $$14 = 4226832;
+            } else {
+               int $$15 = $$2 - ($$4 + 60);
+               int $$16 = $$3 - ($$5 + 14 + 19 * $$7);
+               if ($$15 >= 0 && $$16 >= 0 && $$15 < 108 && $$16 < 19) {
+                  $$0.a(gir::B, P, $$8, $$5 + 14 + 19 * $$7, 108, 19);
+                  $$14 = 16777088;
+               } else {
+                  $$0.a(gir::B, Q, $$8, $$5 + 14 + 19 * $$7, 108, 19);
+               }
+
+               $$0.a(gir::B, M[$$7], $$8 + 1, $$5 + 15 + 19 * $$7, 16, 16);
+               $$0.a(this.p, $$13, $$9, $$5 + 16 + 19 * $$7, $$12, $$14);
+               $$14 = 8453920;
+            }
+
+            $$0.b(this.p, $$11, $$9 + 86 - this.p.b($$11), $$5 + 16 + 19 * $$7 + 7, $$14);
+         }
       }
    }
 
-   private void F() {
-      this.m.L().b(new ahr(this.y.aC_(), this.F, this.G));
-   }
-
-   @Override
-   public void d() {
-      this.D();
-   }
-
-   @Override
-   protected void aS_() {
-      this.B = new fli(this.p, this.n / 2 - 153, 20, 300, 20, b);
-      this.B.f(128);
-      this.B.a(this.y.d().a().toString());
-      this.B.b($$0x -> this.G());
-      this.d(this.B);
-      this.z = new fli(this.p, this.n / 2 - 153, 55, 300, 20, c);
-      this.z.f(128);
-      this.z.a(this.y.b().toString());
-      this.z.b($$0x -> this.G());
-      this.d(this.z);
-      this.A = new fli(this.p, this.n / 2 - 153, 90, 300, 20, d);
-      this.A.f(128);
-      this.A.a(this.y.c().toString());
-      this.A.b($$0x -> this.G());
-      this.d(this.A);
-      this.C = new fli(this.p, this.n / 2 - 153, 125, 300, 20, s);
-      this.C.f(256);
-      this.C.a(this.y.f());
-      this.d(this.C);
-      this.D = new fli(this.p, this.n / 2 - 153, 160, 98, 20, w);
-      this.D.f(3);
-      this.D.a(Integer.toString(this.y.t()));
-      this.D.a(fmk.a(x));
-      this.d(this.D);
-      this.E = new fli(this.p, this.n / 2 - 50, 160, 98, 20, u);
-      this.E.f(3);
-      this.E.a(Integer.toString(this.y.k()));
-      this.E.a(fmk.a(v));
-      this.d(this.E);
-      this.K = this.y.j();
-      this.H = this.c(flg.<dti.a>a(dti.a::a).a(dti.a.values()).a(this.K).a().a(this.n / 2 + 54, 160, 100, 20, a, ($$0x, $$1) -> this.K = $$1));
-      boolean $$0 = dlz.o(this.y.m()).o().b();
-      this.H.j = $$0;
-      this.H.k = $$0;
-      this.c(new fkv(this.n / 2 - 154, 185, 100, 20, xg.a, 0.0) {
-         {
-            this.b();
-         }
-
-         @Override
-         protected void b() {
-            this.b(xh.a("jigsaw_block.levels", fsj.this.F));
-         }
-
-         @Override
-         protected void a() {
-            fsj.this.F = azj.a(azj.b(0.0, 20.0, this.c));
-         }
+   private void d(fku $$0, int $$1, int $$2, float $$3) {
+      float $$4 = azk.h($$3, this.L, this.K);
+      float $$5 = azk.h($$3, this.H, this.G);
+      $$0.d();
+      fcx.e();
+      $$0.c().a();
+      $$0.c().a((float)$$1 + 33.0F, (float)$$2 + 31.0F, 100.0F);
+      float $$6 = 40.0F;
+      $$0.c().b(-40.0F, 40.0F, 40.0F);
+      $$0.c().a(a.b.rotationDegrees(25.0F));
+      $$0.c().a((1.0F - $$4) * 0.2F, (1.0F - $$4) * 0.1F, (1.0F - $$4) * 0.25F);
+      float $$7 = -(1.0F - $$4) * 90.0F - 90.0F;
+      $$0.c().a(a.d.rotationDegrees($$7));
+      $$0.c().a(a.b.rotationDegrees(180.0F));
+      float $$8 = azk.a(azk.i($$5 + 0.25F) * 1.6F - 0.3F, 0.0F, 1.0F);
+      float $$9 = azk.a(azk.i($$5 + 0.75F) * 1.6F - 0.3F, 0.0F, 1.0F);
+      this.U.a(0.0F, $$8, $$9, $$4);
+      $$0.a($$1x -> {
+         fef $$2x = $$1x.getBuffer(this.U.a(S));
+         this.U.a($$0.c(), $$2x, 15728880, gxu.d);
       });
-      this.c(flg.b(this.G).a(this.n / 2 - 50, 185, 100, 20, xh.c("jigsaw_block.keep_jigsaws"), ($$0x, $$1) -> this.G = $$1));
-      this.J = this.c((fkz)fkz.a(xh.c("jigsaw_block.generate"), $$0x -> {
-         this.m();
-         this.F();
-      }).a(this.n / 2 + 54, 185, 100, 20).a());
-      this.I = this.c((fkz)fkz.a(xg.d, $$0x -> this.m()).a(this.n / 2 - 4 - 150, 210, 150, 20).a());
-      this.c((fkz)fkz.a(xg.e, $$0x -> this.D()).a(this.n / 2 + 4, 210, 150, 20).a());
-      this.G();
+      $$0.d();
+      $$0.c().b();
+      fcx.d();
    }
 
    @Override
-   protected void aH_() {
-      this.b(this.B);
+   public void a(fku $$0, int $$1, int $$2, float $$3) {
+      float $$4 = this.m.av().a(false);
+      super.a($$0, $$1, $$2, $$4);
+      this.a($$0, $$1, $$2);
+      boolean $$5 = this.m.t.gl().d;
+      int $$6 = this.z.l();
+
+      for (int $$7 = 0; $$7 < 3; $$7++) {
+         int $$8 = this.z.m[$$7];
+         Optional<jq.c<dbs>> $$9 = this.m.s.H_().e(lz.aM).c(this.z.n[$$7]);
+         if (!$$9.isEmpty()) {
+            int $$10 = this.z.o[$$7];
+            int $$11 = $$7 + 1;
+            if (this.a(60, 14 + 19 * $$7, 108, 17, (double)$$1, (double)$$2) && $$8 > 0 && $$10 >= 0 && $$9 != null) {
+               List<xi> $$12 = Lists.newArrayList();
+               $$12.add(xi.a("container.enchant.clue", dbs.a($$9.get(), $$10)).a(n.p));
+               if (!$$5) {
+                  $$12.add(xh.a);
+                  if (this.m.t.cq < $$8) {
+                     $$12.add(xi.a("container.enchant.level.requirement", this.z.m[$$7]).a(n.m));
+                  } else {
+                     xw $$13;
+                     if ($$11 == 1) {
+                        $$13 = xi.c("container.enchant.lapis.one");
+                     } else {
+                        $$13 = xi.a("container.enchant.lapis.many", $$11);
+                     }
+
+                     $$12.add($$13.a($$6 >= $$11 ? n.h : n.m));
+                     xw $$15;
+                     if ($$11 == 1) {
+                        $$15 = xi.c("container.enchant.level.one");
+                     } else {
+                        $$15 = xi.a("container.enchant.level.many", $$11);
+                     }
+
+                     $$12.add($$15.a(n.h));
+                  }
+               }
+
+               $$0.a(this.p, $$12, $$1, $$2);
+               break;
+            }
+         }
+      }
    }
 
-   @Override
-   public void b(fkm $$0, int $$1, int $$2, float $$3) {
-      this.b($$0);
-   }
+   public void F() {
+      cwb $$0 = this.z.b(0).g();
+      if (!cwb.a($$0, this.V)) {
+         this.V = $$0;
 
-   public static boolean a(String $$0) {
-      return alh.c($$0) != null;
-   }
+         do {
+            this.I = this.I + (float)(this.T.a(4) - this.T.a(4));
+         } while (this.G <= this.I + 1.0F && this.G >= this.I - 1.0F);
+      }
 
-   private void G() {
-      boolean $$0 = a(this.z.a()) && a(this.A.a()) && a(this.B.a());
-      this.I.j = $$0;
-      this.J.j = $$0;
-   }
+      this.H = this.G;
+      this.L = this.K;
+      boolean $$1 = false;
 
-   @Override
-   public void a(fja $$0, int $$1, int $$2) {
-      String $$3 = this.z.a();
-      String $$4 = this.A.a();
-      String $$5 = this.B.a();
-      String $$6 = this.C.a();
-      String $$7 = this.D.a();
-      String $$8 = this.E.a();
-      int $$9 = this.F;
-      dti.a $$10 = this.K;
-      this.b($$0, $$1, $$2);
-      this.z.a($$3);
-      this.A.a($$4);
-      this.B.a($$5);
-      this.C.a($$6);
-      this.F = $$9;
-      this.K = $$10;
-      this.H.a($$10);
-      this.D.a($$7);
-      this.E.a($$8);
-   }
+      for (int $$2 = 0; $$2 < 3; $$2++) {
+         if (this.z.m[$$2] != 0) {
+            $$1 = true;
+         }
+      }
 
-   @Override
-   public boolean a(int $$0, int $$1, int $$2) {
-      if (super.a($$0, $$1, $$2)) {
-         return true;
-      } else if (!this.I.j || $$0 != 257 && $$0 != 335) {
-         return false;
+      if ($$1) {
+         this.K += 0.2F;
       } else {
-         this.m();
-         return true;
+         this.K -= 0.2F;
       }
-   }
 
-   @Override
-   public void a(fkm $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      $$0.b(this.p, b, this.n / 2 - 153, 10, 10526880);
-      this.B.a($$0, $$1, $$2, $$3);
-      $$0.b(this.p, c, this.n / 2 - 153, 45, 10526880);
-      this.z.a($$0, $$1, $$2, $$3);
-      $$0.b(this.p, d, this.n / 2 - 153, 80, 10526880);
-      this.A.a($$0, $$1, $$2, $$3);
-      $$0.b(this.p, s, this.n / 2 - 153, 115, 10526880);
-      this.C.a($$0, $$1, $$2, $$3);
-      $$0.b(this.p, w, this.n / 2 - 153, 150, 10526880);
-      this.E.a($$0, $$1, $$2, $$3);
-      $$0.b(this.p, u, this.n / 2 - 50, 150, 10526880);
-      this.D.a($$0, $$1, $$2, $$3);
-      if (dlz.o(this.y.m()).o().b()) {
-         $$0.b(this.p, a, this.n / 2 + 53, 150, 10526880);
-      }
+      this.K = azk.a(this.K, 0.0F, 1.0F);
+      float $$3 = (this.I - this.G) * 0.4F;
+      float $$4 = 0.2F;
+      $$3 = azk.a($$3, -0.2F, 0.2F);
+      this.J = this.J + ($$3 - this.J) * 0.9F;
+      this.G = this.G + this.J;
    }
 }

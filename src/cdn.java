@@ -1,19 +1,32 @@
-import java.util.function.Predicate;
-import javax.annotation.Nullable;
+public class cdn extends cci {
+   private final cmk b;
+   private int c;
 
-public class cdn<T extends buv> extends cdm<T> {
-   private boolean i = true;
-
-   public cdn(cpw $$0, Class<T> $$1, int $$2, boolean $$3, boolean $$4, @Nullable Predicate<buv> $$5) {
-      super($$0, $$1, $$2, $$3, $$4, $$5);
-   }
-
-   public void a(boolean $$0) {
-      this.i = $$0;
+   public cdn(cmk $$0, double $$1, boolean $$2) {
+      super($$0, $$1, $$2);
+      this.b = $$0;
    }
 
    @Override
-   public boolean b() {
-      return this.i && super.b();
+   public void d() {
+      super.d();
+      this.c = 0;
+   }
+
+   @Override
+   public void e() {
+      super.e();
+      this.b.w(false);
+   }
+
+   @Override
+   public void a() {
+      super.a();
+      this.c++;
+      if (this.c >= 5 && this.k() < this.l() / 2) {
+         this.b.w(true);
+      } else {
+         this.b.w(false);
+      }
    }
 }

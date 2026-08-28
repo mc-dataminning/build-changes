@@ -1,56 +1,58 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import it.unimi.dsi.fastutil.objects.Object2IntMap.Entry;
 import java.util.Optional;
 
-public class br extends dx<br.a> {
-   @Override
-   public Codec<br.a> a() {
-      return br.a.a;
+public record br(Optional<ju<dbs>> b, dj.d c) {
+   public static final Codec<br> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(kf.a(lz.aM).optionalFieldOf("enchantments").forGetter(br::a), dj.d.d.optionalFieldOf("levels", dj.d.c).forGetter(br::b))
+            .apply($$0, br::new)
+   );
+
+   public br(jq<dbs> $$0, dj.d $$1) {
+      this(Optional.of(ju.a($$0)), $$1);
    }
 
-   public void a(arn $$0, dvd $$1) {
-      this.a($$0, $$1x -> $$1x.a($$1));
+   public br(ju<dbs> $$0, dj.d $$1) {
+      this(Optional.of($$0), $$1);
    }
 
-   public static record a(Optional<bg> b, Optional<jp<dhy>> c, Optional<ed> d) implements dx.a {
-      public static final Codec<br.a> a = RecordCodecBuilder.create(
-            $$0 -> $$0.group(
-                     bv.b.optionalFieldOf("player").forGetter(br.a::a),
-                     lx.e.r().optionalFieldOf("block").forGetter(br.a::b),
-                     ed.a.optionalFieldOf("state").forGetter(br.a::c)
-                  )
-                  .apply($$0, br.a::new)
-         )
-         .validate(br.a::a);
+   public boolean a(dby $$0) {
+      if (this.b.isPresent()) {
+         for (jq<dbs> $$1 : this.b.get()) {
+            if (this.a($$0, $$1)) {
+               return true;
+            }
+         }
 
-      private static DataResult<br.a> a(br.a $$0) {
-         return $$0.c
-            .<DataResult<br.a>>flatMap(
-               $$1 -> $$0.d.<String>flatMap($$1x -> $$1x.a(((dhy)$$1.a()).l())).map($$1x -> DataResult.error(() -> "Block" + $$1 + " has no property " + $$1x))
-            )
-            .orElseGet(() -> DataResult.success($$0));
-      }
+         return false;
+      } else if (this.c != dj.d.c) {
+         for (Entry<jq<dbs>> $$2 : $$0.b()) {
+            if (this.c.d($$2.getIntValue())) {
+               return true;
+            }
+         }
 
-      public static ao<br.a> a(dhy $$0) {
-         return an.e.a(new br.a(Optional.empty(), Optional.of($$0.p()), Optional.empty()));
+         return false;
+      } else {
+         return !$$0.d();
       }
+   }
 
-      public boolean a(dvd $$0) {
-         return this.c.isPresent() && !$$0.a(this.c.get()) ? false : !this.d.isPresent() || this.d.get().a($$0);
+   private boolean a(dby $$0, jq<dbs> $$1) {
+      int $$2 = $$0.a($$1);
+      if ($$2 == 0) {
+         return false;
+      } else {
+         return this.c == dj.d.c ? true : this.c.d($$2);
       }
+   }
 
-      @Override
-      public Optional<bg> a() {
-         return this.b;
-      }
+   public Optional<ju<dbs>> a() {
+      return this.b;
+   }
 
-      public Optional<jp<dhy>> b() {
-         return this.c;
-      }
-
-      public Optional<ed> c() {
-         return this.d;
-      }
+   public dj.d b() {
+      return this.c;
    }
 }

@@ -1,68 +1,65 @@
-import javax.annotation.Nullable;
+import java.util.Optional;
 
-public class ctb implements brr, cta {
-   private final jy<cvx> b = jy.a(1, cvx.k);
-   @Nullable
-   private dal<?> c;
-
-   @Override
-   public int b() {
-      return 1;
+public class ctb extends ctl {
+   public ctb(brw $$0, int $$1, int $$2, int $$3) {
+      super($$0, $$1, $$2, $$3);
    }
 
    @Override
-   public boolean c() {
-      for (cvx $$0 : this.b) {
-         if (!$$0.f()) {
-            return false;
-         }
-      }
+   public void b(cwb $$0, cwb $$1) {
+   }
 
+   @Override
+   public boolean a(com $$0) {
+      return false;
+   }
+
+   @Override
+   public Optional<cwb> a(int $$0, int $$1, com $$2) {
+      return Optional.empty();
+   }
+
+   @Override
+   public cwb b(int $$0, int $$1, com $$2) {
+      return cwb.k;
+   }
+
+   @Override
+   public cwb d(cwb $$0) {
+      return $$0;
+   }
+
+   @Override
+   public cwb b(cwb $$0, int $$1) {
+      return this.d($$0);
+   }
+
+   @Override
+   public boolean b(com $$0) {
+      return false;
+   }
+
+   @Override
+   public boolean a(cwb $$0) {
+      return false;
+   }
+
+   @Override
+   public cwb a(int $$0) {
+      return cwb.k;
+   }
+
+   @Override
+   public void a(com $$0, cwb $$1) {
+   }
+
+   @Override
+   public boolean e() {
+      return false;
+   }
+
+   @Override
+   public boolean f() {
       return true;
-   }
-
-   @Override
-   public cvx a(int $$0) {
-      return this.b.get(0);
-   }
-
-   @Override
-   public cvx a(int $$0, int $$1) {
-      return brs.a(this.b, 0);
-   }
-
-   @Override
-   public cvx b(int $$0) {
-      return brs.a(this.b, 0);
-   }
-
-   @Override
-   public void a(int $$0, cvx $$1) {
-      this.b.set(0, $$1);
-   }
-
-   @Override
-   public void e() {
-   }
-
-   @Override
-   public boolean a(coh $$0) {
-      return true;
-   }
-
-   @Override
-   public void a() {
-      this.b.clear();
-   }
-
-   @Override
-   public void a(@Nullable dal<?> $$0) {
-      this.c = $$0;
-   }
-
-   @Nullable
-   @Override
-   public dal<?> d() {
-      return this.c;
    }
 }

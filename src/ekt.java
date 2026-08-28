@@ -1,38 +1,28 @@
-import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class ekt extends elc {
-   public static final MapCodec<ekt> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(
-               Codec.INT.fieldOf("noise_to_count_ratio").forGetter($$0x -> $$0x.c),
-               Codec.DOUBLE.fieldOf("noise_factor").forGetter($$0x -> $$0x.d),
-               Codec.DOUBLE.fieldOf("noise_offset").orElse(0.0).forGetter($$0x -> $$0x.e)
-            )
-            .apply($$0, ekt::new)
-   );
-   private final int c;
-   private final double d;
-   private final double e;
+public class ekt extends eli {
+   public static final MapCodec<ekt> a = bri.b(0, 256).fieldOf("count").xmap(ekt::new, $$0 -> $$0.c);
+   private final bri c;
 
-   private ekt(int $$0, double $$1, double $$2) {
+   private ekt(bri $$0) {
       this.c = $$0;
-      this.d = $$1;
-      this.e = $$2;
    }
 
-   public static ekt a(int $$0, double $$1, double $$2) {
-      return new ekt($$0, $$1, $$2);
+   public static ekt a(bri $$0) {
+      return new ekt($$0);
    }
 
-   @Override
-   protected int a(azr $$0, jg $$1) {
-      double $$2 = dfw.e.a((double)$$1.u() / this.d, (double)$$1.w() / this.d, false);
-      return (int)Math.ceil(($$2 + this.e) * (double)this.c);
+   public static ekt a(int $$0) {
+      return a(brf.a($$0));
    }
 
    @Override
-   public ekz<?> b() {
-      return ekz.g;
+   protected int a(azs $$0, jh $$1) {
+      return this.c.a($$0);
+   }
+
+   @Override
+   public elf<?> b() {
+      return elf.f;
    }
 }

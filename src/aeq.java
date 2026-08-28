@@ -1,23 +1,36 @@
-import javax.annotation.Nullable;
+import it.unimi.dsi.fastutil.ints.IntArrayList;
+import it.unimi.dsi.fastutil.ints.IntList;
 
-public record aeq(int b, jp<btc> c) implements zo<acd> {
-   public static final zf<ws, aeq> a = zf.a(zd.h, aeq::b, btc.b, aeq::e, aeq::new);
+public class aeq implements zp<ace> {
+   public static final zg<wf, aeq> a = zp.a(aeq::a, aeq::new);
+   private final IntList b;
 
-   @Override
-   public zq<aeq> a() {
-      return ags.al;
+   public aeq(IntList $$0) {
+      this.b = new IntArrayList($$0);
    }
 
-   public void a(acd $$0) {
+   public aeq(int... $$0) {
+      this.b = new IntArrayList($$0);
+   }
+
+   private aeq(wf $$0) {
+      this.b = $$0.a();
+   }
+
+   private void a(wf $$0) {
+      $$0.a(this.b);
+   }
+
+   @Override
+   public zr<aeq> a() {
+      return agt.ak;
+   }
+
+   public void a(ace $$0) {
       $$0.a(this);
    }
 
-   @Nullable
-   public btz a(dev $$0) {
-      return $$0.a(this.b);
-   }
-
-   public jp<btc> e() {
-      return this.c;
+   public IntList b() {
+      return this.b;
    }
 }

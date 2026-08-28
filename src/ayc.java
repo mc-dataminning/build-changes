@@ -1,36 +1,77 @@
-import it.unimi.dsi.fastutil.objects.Object2IntMap;
-import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.Iterators;
+import com.google.common.collect.Lists;
+import com.google.common.collect.Maps;
+import java.util.AbstractCollection;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
 
-public class ayc {
-   public static final int a = -1;
-   private final Object2IntMap<Class<?>> b = ad.a(new Object2IntOpenHashMap(), $$0 -> $$0.defaultReturnValue(-1));
+public class ayc<T> extends AbstractCollection<T> {
+   private final Map<Class<?>, List<T>> a = Maps.newHashMap();
+   private final Class<T> b;
+   private final List<T> c = Lists.newArrayList();
 
-   public int a(Class<?> $$0) {
-      int $$1 = this.b.getInt($$0);
-      if ($$1 != -1) {
-         return $$1;
-      } else {
-         Class<?> $$2 = $$0;
+   public ayc(Class<T> $$0) {
+      this.b = $$0;
+      this.a.put($$0, this.c);
+   }
 
-         while (($$2 = $$2.getSuperclass()) != Object.class) {
-            int $$3 = this.b.getInt($$2);
-            if ($$3 != -1) {
-               return $$3;
-            }
+   @Override
+   public boolean add(T $$0) {
+      boolean $$1 = false;
+
+      for (Entry<Class<?>, List<T>> $$2 : this.a.entrySet()) {
+         if ($$2.getKey().isInstance($$0)) {
+            $$1 |= $$2.getValue().add($$0);
          }
+      }
 
-         return -1;
+      return $$1;
+   }
+
+   @Override
+   public boolean remove(Object $$0) {
+      boolean $$1 = false;
+
+      for (Entry<Class<?>, List<T>> $$2 : this.a.entrySet()) {
+         if ($$2.getKey().isInstance($$0)) {
+            List<T> $$3 = $$2.getValue();
+            $$1 |= $$3.remove($$0);
+         }
+      }
+
+      return $$1;
+   }
+
+   @Override
+   public boolean contains(Object $$0) {
+      return this.a($$0.getClass()).contains($$0);
+   }
+
+   public <S> Collection<S> a(Class<S> $$0) {
+      if (!this.b.isAssignableFrom($$0)) {
+         throw new IllegalArgumentException("Don't know how to search for " + $$0);
+      } else {
+         List<? extends T> $$1 = this.a.computeIfAbsent($$0, $$0x -> this.c.stream().filter($$0x::isInstance).collect(ae.b()));
+         return (Collection<S>)Collections.unmodifiableCollection($$1);
       }
    }
 
-   public int b(Class<?> $$0) {
-      return this.a($$0) + 1;
+   @Override
+   public Iterator<T> iterator() {
+      return (Iterator<T>)(this.c.isEmpty() ? Collections.emptyIterator() : Iterators.unmodifiableIterator(this.c.iterator()));
    }
 
-   public int c(Class<?> $$0) {
-      int $$1 = this.a($$0);
-      int $$2 = $$1 == -1 ? 0 : $$1 + 1;
-      this.b.put($$0, $$2);
-      return $$2;
+   public List<T> a() {
+      return ImmutableList.copyOf(this.c);
+   }
+
+   @Override
+   public int size() {
+      return this.c.size();
    }
 }

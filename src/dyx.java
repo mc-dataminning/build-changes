@@ -1,13 +1,98 @@
-public class dyx {
-   public static final alg<dyz> a = a("overworld");
-   public static final alg<dyz> b = a("the_nether");
-   public static final alg<dyz> c = a("the_end");
-   public static final alg<dyz> d = a("overworld_caves");
-   public static final alh e = alh.b("overworld");
-   public static final alh f = alh.b("the_nether");
-   public static final alh g = alh.b("the_end");
+import com.mojang.logging.LogUtils;
+import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
+import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
+import it.unimi.dsi.fastutil.objects.Object2ObjectMap;
+import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
+import java.io.BufferedOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.util.zip.DeflaterOutputStream;
+import java.util.zip.GZIPInputStream;
+import java.util.zip.GZIPOutputStream;
+import java.util.zip.InflaterInputStream;
+import javax.annotation.Nullable;
+import net.jpountz.lz4.LZ4BlockInputStream;
+import net.jpountz.lz4.LZ4BlockOutputStream;
+import org.slf4j.Logger;
 
-   private static alg<dyz> a(String $$0) {
-      return alg.a(ly.aL, alh.b($$0));
+public class dyx {
+   private static final Logger g = LogUtils.getLogger();
+   private static final Int2ObjectMap<dyx> h = new Int2ObjectOpenHashMap();
+   private static final Object2ObjectMap<String, dyx> i = new Object2ObjectOpenHashMap();
+   public static final dyx a = a(new dyx(1, null, $$0 -> new ayu(new GZIPInputStream($$0)), $$0 -> new BufferedOutputStream(new GZIPOutputStream($$0))));
+   public static final dyx b = a(
+      new dyx(2, "deflate", $$0 -> new ayu(new InflaterInputStream($$0)), $$0 -> new BufferedOutputStream(new DeflaterOutputStream($$0)))
+   );
+   public static final dyx c = a(new dyx(3, "none", ayu::new, BufferedOutputStream::new));
+   public static final dyx d = a(
+      new dyx(4, "lz4", $$0 -> new ayu(new LZ4BlockInputStream($$0)), $$0 -> new BufferedOutputStream(new LZ4BlockOutputStream($$0)))
+   );
+   public static final dyx e = a(new dyx(127, null, $$0 -> {
+      throw new UnsupportedOperationException();
+   }, $$0 -> {
+      throw new UnsupportedOperationException();
+   }));
+   public static final dyx f = b;
+   private static volatile dyx j = f;
+   private final int k;
+   @Nullable
+   private final String l;
+   private final dyx.a<InputStream> m;
+   private final dyx.a<OutputStream> n;
+
+   private dyx(int $$0, @Nullable String $$1, dyx.a<InputStream> $$2, dyx.a<OutputStream> $$3) {
+      this.k = $$0;
+      this.l = $$1;
+      this.m = $$2;
+      this.n = $$3;
+   }
+
+   private static dyx a(dyx $$0) {
+      h.put($$0.k, $$0);
+      if ($$0.l != null) {
+         i.put($$0.l, $$0);
+      }
+
+      return $$0;
+   }
+
+   @Nullable
+   public static dyx a(int $$0) {
+      return (dyx)h.get($$0);
+   }
+
+   public static void a(String $$0) {
+      dyx $$1 = (dyx)i.get($$0);
+      if ($$1 != null) {
+         j = $$1;
+      } else {
+         g.error("Invalid `region-file-compression` value `{}` in server.properties. Please use one of: {}", $$0, String.join(", ", i.keySet()));
+      }
+   }
+
+   public static dyx a() {
+      return j;
+   }
+
+   public static boolean b(int $$0) {
+      return h.containsKey($$0);
+   }
+
+   public int b() {
+      return this.k;
+   }
+
+   public OutputStream a(OutputStream $$0) throws IOException {
+      return this.n.wrap($$0);
+   }
+
+   public InputStream a(InputStream $$0) throws IOException {
+      return this.m.wrap($$0);
+   }
+
+   @FunctionalInterface
+   interface a<O> {
+      O wrap(O var1) throws IOException;
    }
 }

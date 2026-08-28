@@ -1,48 +1,74 @@
+import com.google.common.base.Joiner;
 import com.google.common.collect.ImmutableSet;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.ArrayList;
-import java.util.List;
+import com.google.common.collect.Sets;
 import java.util.Set;
 
-public record eww(jp<dbm> b, List<Float> c) implements exh {
-   public static final MapCodec<eww> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(dbm.c.fieldOf("enchantment").forGetter(eww::c), ays.a(Codec.FLOAT.listOf()).fieldOf("chances").forGetter(eww::d)).apply($$0, eww::new)
-   );
+public class eww {
+   private final Set<ewv<?>> a;
+   private final Set<ewv<?>> b;
 
-   @Override
-   public exi b() {
-      return exj.k;
+   eww(Set<ewv<?>> $$0, Set<ewv<?>> $$1) {
+      this.a = ImmutableSet.copyOf($$0);
+      this.b = ImmutableSet.copyOf(Sets.union($$0, $$1));
    }
 
-   @Override
-   public Set<ewp<?>> a() {
-      return ImmutableSet.of(ews.i);
+   public boolean a(ewv<?> $$0) {
+      return this.b.contains($$0);
    }
 
-   public boolean a(etw $$0) {
-      cvx $$1 = $$0.c(ews.i);
-      int $$2 = $$1 != null ? dbo.a(this.b, $$1) : 0;
-      float $$3 = this.c.get(Math.min($$2, this.c.size() - 1));
-      return $$0.b().i() < $$3;
+   public Set<ewv<?>> a() {
+      return this.a;
    }
 
-   public static exh.a a(jp<dbm> $$0, float... $$1) {
-      List<Float> $$2 = new ArrayList<>($$1.length);
-
-      for (float $$3 : $$1) {
-         $$2.add($$3);
-      }
-
-      return () -> new eww($$0, $$2);
-   }
-
-   public jp<dbm> c() {
+   public Set<ewv<?>> b() {
       return this.b;
    }
 
-   public List<Float> d() {
-      return this.c;
+   @Override
+   public String toString() {
+      return "[" + Joiner.on(", ").join(this.b.stream().map($$0 -> (this.a.contains($$0) ? "!" : "") + $$0.a()).iterator()) + "]";
+   }
+
+   public void a(eui $$0, eud $$1) {
+      this.a($$0.c(), $$1);
+   }
+
+   public void a(azq $$0, eud $$1) {
+      Set<ewv<?>> $$2 = $$1.a();
+      Set<ewv<?>> $$3 = Sets.difference($$2, this.b);
+      if (!$$3.isEmpty()) {
+         $$0.b("Parameters " + $$3 + " are not provided in this context");
+      }
+   }
+
+   public static eww.a c() {
+      return new eww.a();
+   }
+
+   public static class a {
+      private final Set<ewv<?>> a = Sets.newIdentityHashSet();
+      private final Set<ewv<?>> b = Sets.newIdentityHashSet();
+
+      public eww.a a(ewv<?> $$0) {
+         if (this.b.contains($$0)) {
+            throw new IllegalArgumentException("Parameter " + $$0.a() + " is already optional");
+         } else {
+            this.a.add($$0);
+            return this;
+         }
+      }
+
+      public eww.a b(ewv<?> $$0) {
+         if (this.a.contains($$0)) {
+            throw new IllegalArgumentException("Parameter " + $$0.a() + " is already required");
+         } else {
+            this.b.add($$0);
+            return this;
+         }
+      }
+
+      public eww a() {
+         return new eww(this.a, this.b);
+      }
    }
 }

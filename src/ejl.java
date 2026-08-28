@@ -4,38 +4,66 @@ import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
 import java.util.function.BiConsumer;
 
-public class ejl extends ejk {
-   public static final MapCodec<ejl> b = RecordCodecBuilder.mapCodec($$0 -> a($$0).apply($$0, ejl::new));
+public class ejl extends ejt {
+   public static final MapCodec<ejl> a = RecordCodecBuilder.mapCodec(
+      $$0 -> a($$0)
+            .and(
+               $$0.group(
+                  ayt.m.optionalFieldOf("min_height_for_leaves", 1).forGetter($$0x -> $$0x.b), bri.b(1, 64).fieldOf("bend_length").forGetter($$0x -> $$0x.h)
+               )
+            )
+            .apply($$0, ejl::new)
+   );
+   private final int b;
+   private final bri h;
 
-   public ejl(int $$0, int $$1, int $$2) {
+   public ejl(int $$0, int $$1, int $$2, int $$3, bri $$4) {
       super($$0, $$1, $$2);
+      this.b = $$3;
+      this.h = $$4;
    }
 
    @Override
-   protected ejo<?> a() {
-      return ejo.d;
+   protected eju<?> a() {
+      return eju.g;
    }
 
    @Override
-   public List<ehv.a> a(dfb $$0, BiConsumer<jg, dvd> $$1, azr $$2, int $$3, jg $$4, ehf $$5) {
-      List<ehv.a> $$6 = Lists.newArrayList();
-      $$6.addAll(super.a($$0, $$1, $$2, $$3, $$4, $$5));
+   public List<eib.a> a(dfh $$0, BiConsumer<jh, dvj> $$1, azs $$2, int $$3, jh $$4, ehl $$5) {
+      jm $$6 = jm.c.a.a($$2);
+      int $$7 = $$3 - 1;
+      jh.a $$8 = $$4.k();
+      jh $$9 = $$8.e();
+      a($$0, $$1, $$2, $$9, $$5);
+      List<eib.a> $$10 = Lists.newArrayList();
 
-      for (int $$7 = $$3 - 2 - $$2.a(4); $$7 > $$3 / 2; $$7 -= 2 + $$2.a(4)) {
-         float $$8 = $$2.i() * (float) (Math.PI * 2);
-         int $$9 = 0;
-         int $$10 = 0;
-
-         for (int $$11 = 0; $$11 < 5; $$11++) {
-            $$9 = (int)(1.5F + azj.b($$8) * (float)$$11);
-            $$10 = (int)(1.5F + azj.a($$8) * (float)$$11);
-            jg $$12 = $$4.b($$9, $$7 - 3 + $$11 / 2, $$10);
-            this.b($$0, $$1, $$2, $$12, $$5);
+      for (int $$11 = 0; $$11 <= $$7; $$11++) {
+         if ($$11 + 1 >= $$7 + $$2.a(2)) {
+            $$8.c($$6);
          }
 
-         $$6.add(new ehv.a($$4.b($$9, $$7, $$10), -2, false));
+         if (efx.c($$0, $$8)) {
+            this.b($$0, $$1, $$2, $$8, $$5);
+         }
+
+         if ($$11 >= this.b) {
+            $$10.add(new eib.a($$8.j(), 0, false));
+         }
+
+         $$8.c(jm.b);
       }
 
-      return $$6;
+      int $$12 = this.h.a($$2);
+
+      for (int $$13 = 0; $$13 <= $$12; $$13++) {
+         if (efx.c($$0, $$8)) {
+            this.b($$0, $$1, $$2, $$8, $$5);
+         }
+
+         $$10.add(new eib.a($$8.j(), 0, false));
+         $$8.c($$6);
+      }
+
+      return $$10;
    }
 }

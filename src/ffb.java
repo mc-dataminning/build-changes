@@ -1,27 +1,30 @@
 import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
 import com.mojang.logging.LogUtils;
+import java.util.Date;
+import java.util.UUID;
 import org.slf4j.Logger;
 
-public class ffb extends ffn {
-   private static final Logger d = LogUtils.getLogger();
+public class ffb extends ffv {
+   private static final Logger f = LogUtils.getLogger();
    public String a;
    public String b;
    public String c;
+   public UUID d;
+   public Date e;
 
-   public static ffb a(String $$0) {
-      JsonParser $$1 = new JsonParser();
-      ffb $$2 = new ffb();
+   public static ffb a(JsonObject $$0) {
+      ffb $$1 = new ffb();
 
       try {
-         JsonObject $$3 = $$1.parse($$0).getAsJsonObject();
-         $$2.a = fhk.b("address", $$3, null);
-         $$2.b = fhk.b("resourcePackUrl", $$3, null);
-         $$2.c = fhk.b("resourcePackHash", $$3, null);
-      } catch (Exception var4) {
-         d.error("Could not parse RealmsServerAddress: {}", var4.getMessage());
+         $$1.a = fhs.b("invitationId", $$0, "");
+         $$1.b = fhs.b("worldName", $$0, "");
+         $$1.c = fhs.b("worldOwnerName", $$0, "");
+         $$1.d = fhs.a("worldOwnerUuid", $$0, ae.e);
+         $$1.e = fhs.b("date", $$0);
+      } catch (Exception var3) {
+         f.error("Could not parse PendingInvite: {}", var3.getMessage());
       }
 
-      return $$2;
+      return $$1;
    }
 }

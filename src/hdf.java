@@ -1,165 +1,274 @@
-import com.mojang.authlib.minecraft.TelemetryPropertyContainer;
-import com.mojang.serialization.Codec;
-import it.unimi.dsi.fastutil.longs.LongArrayList;
-import it.unimi.dsi.fastutil.longs.LongList;
-import java.time.Instant;
-import java.time.ZoneId;
-import java.time.ZoneOffset;
-import java.time.format.DateTimeFormatter;
-import java.util.UUID;
-import java.util.function.Function;
-import java.util.stream.Collectors;
+import com.google.common.collect.Maps;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.reflect.TypeToken;
+import com.mojang.logging.LogUtils;
+import java.io.IOException;
+import java.io.Reader;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public record hdf<T>(String F, String G, Codec<T> H, hdf.a<T> I) {
-   private static final DateTimeFormatter J = DateTimeFormatter.ISO_OFFSET_DATE_TIME.withZone(ZoneId.from(ZoneOffset.UTC));
-   public static final hdf<String> a = b("user_id", "userId");
-   public static final hdf<String> b = b("client_id", "clientId");
-   public static final hdf<UUID> c = e("minecraft_session_id", "deviceSessionId");
-   public static final hdf<String> d = b("game_version", "buildDisplayName");
-   public static final hdf<String> e = b("operating_system", "buildPlatform");
-   public static final hdf<String> f = b("platform", "platform");
-   public static final hdf<Boolean> g = a("client_modded", "clientModded");
-   public static final hdf<String> h = b("launcher_name", "launcherName");
-   public static final hdf<UUID> i = e("world_session_id", "worldSessionId");
-   public static final hdf<Boolean> j = a("server_modded", "serverModded");
-   public static final hdf<hdf.c> k = a("server_type", "serverType", hdf.c.d, ($$0, $$1, $$2) -> $$0.addProperty($$1, $$2.c()));
-   public static final hdf<Boolean> l = a("opt_in", "isOptional");
-   public static final hdf<Instant> m = a("event_timestamp_utc", "eventTimestampUtc", ays.q, ($$0, $$1, $$2) -> $$0.addProperty($$1, J.format($$2)));
-   public static final hdf<hdf.b> n = a("game_mode", "playerGameMode", hdf.b.f, ($$0, $$1, $$2) -> $$0.addProperty($$1, $$2.a()));
-   public static final hdf<String> o = b("realms_map_content", "realmsMapContent");
-   public static final hdf<Integer> p = c("seconds_since_load", "secondsSinceLoad");
-   public static final hdf<Integer> q = c("ticks_since_load", "ticksSinceLoad");
-   public static final hdf<LongList> r = g("frame_rate_samples", "serializedFpsSamples");
-   public static final hdf<LongList> s = g("render_time_samples", "serializedRenderTimeSamples");
-   public static final hdf<LongList> t = g("used_memory_samples", "serializedUsedMemoryKbSamples");
-   public static final hdf<Integer> u = c("number_of_samples", "numSamples");
-   public static final hdf<Integer> v = c("render_distance", "renderDistance");
-   public static final hdf<Integer> w = c("dedicated_memory_kb", "dedicatedMemoryKb");
-   public static final hdf<Integer> x = c("world_load_time_ms", "worldLoadTimeMs");
-   public static final hdf<Boolean> y = a("new_world", "newWorld");
-   public static final hdf<hdj.a> z = f("load_time_total_time_ms", "loadTimeTotalTimeMs");
-   public static final hdf<hdj.a> A = f("load_time_pre_window_ms", "loadTimePreWindowMs");
-   public static final hdf<hdj.a> B = f("load_time_bootstrap_ms", "loadTimeBootstrapMs");
-   public static final hdf<hdj.a> C = f("load_time_loading_overlay_ms", "loadTimeLoadingOverlayMs");
-   public static final hdf<String> D = b("advancement_id", "advancementId");
-   public static final hdf<Long> E = d("advancement_game_time", "advancementGameTime");
+public class hdf extends avg<hdf.a> {
+   public static final ali a = ali.b("empty");
+   public static final hbx b = new hbx(a, bre.a(1.0F), bre.a(1.0F), 1, hbx.a.a, false, false, 16);
+   public static final ali c = ali.b("intentionally_empty");
+   public static final hdg d = new hdg(c, null);
+   public static final hbx e = new hbx(c, bre.a(1.0F), bre.a(1.0F), 1, hbx.a.a, false, false, 16);
+   static final Logger f = LogUtils.getLogger();
+   private static final String g = "sounds.json";
+   private static final Gson h = new GsonBuilder().registerTypeHierarchyAdapter(xi.class, new xi.b(ke.b)).registerTypeAdapter(hby.class, new hbz()).create();
+   private static final TypeToken<Map<String, hby>> i = new TypeToken<Map<String, hby>>() {
+   };
+   private final Map<ali, hdg> j = Maps.newHashMap();
+   private final hdc k;
+   private final Map<ali, auz> l = new HashMap<>();
 
-   public static <T> hdf<T> a(String $$0, String $$1, Codec<T> $$2, hdf.a<T> $$3) {
-      return new hdf<>($$0, $$1, $$2, $$3);
+   public hdf(fjm $$0) {
+      this.k = new hdc(this, $$0, ave.fromMap(this.l));
    }
 
-   public static hdf<Boolean> a(String $$0, String $$1) {
-      return a($$0, $$1, Codec.BOOL, TelemetryPropertyContainer::addProperty);
+   protected hdf.a a(avb $$0, bon $$1) {
+      hdf.a $$2 = new hdf.a();
+
+      try (bos $$3 = $$1.d("list")) {
+         $$2.a($$0);
+      }
+
+      for (String $$4 : $$0.a()) {
+         try (bos $$5 = $$1.d($$4)) {
+            for (auz $$7 : $$0.a(ali.a($$4, "sounds.json"))) {
+               $$1.a($$7.b());
+
+               try (Reader $$8 = $$7.e()) {
+                  $$1.a("parse");
+                  Map<String, hby> $$9 = aza.a(h, $$8, i);
+                  $$1.b("register");
+
+                  for (Entry<String, hby> $$10 : $$9.entrySet()) {
+                     $$2.a(ali.a($$4, $$10.getKey()), $$10.getValue());
+                  }
+
+                  $$1.c();
+               } catch (RuntimeException var19) {
+                  f.warn("Invalid {} in resourcepack: '{}'", new Object[]{"sounds.json", $$7.b(), var19});
+               }
+
+               $$1.c();
+            }
+         } catch (IOException var21) {
+         }
+      }
+
+      return $$2;
    }
 
-   public static hdf<String> b(String $$0, String $$1) {
-      return a($$0, $$1, Codec.STRING, TelemetryPropertyContainer::addProperty);
+   protected void a(hdf.a $$0, avb $$1, bon $$2) {
+      $$0.a(this.j, this.l, this.k);
+      if (ab.aV) {
+         for (ali $$3 : this.j.keySet()) {
+            hdg $$4 = this.j.get($$3);
+            if (!xl.b($$4.a()) && ly.b.d($$3)) {
+               f.error("Missing subtitle {} for sound event: {}", $$4.a(), $$3);
+            }
+         }
+      }
+
+      if (f.isDebugEnabled()) {
+         for (ali $$5 : this.j.keySet()) {
+            if (!ly.b.d($$5)) {
+               f.debug("Not having sound event for: {}", $$5);
+            }
+         }
+      }
+
+      this.k.a();
    }
 
-   public static hdf<Integer> c(String $$0, String $$1) {
-      return a($$0, $$1, Codec.INT, TelemetryPropertyContainer::addProperty);
+   public List<String> a() {
+      return this.k.h();
    }
 
-   public static hdf<Long> d(String $$0, String $$1) {
-      return a($$0, $$1, Codec.LONG, TelemetryPropertyContainer::addProperty);
+   public fbv b() {
+      return this.k.i();
    }
 
-   public static hdf<UUID> e(String $$0, String $$1) {
-      return a($$0, $$1, kj.d, ($$0x, $$1x, $$2) -> $$0x.addProperty($$1x, $$2.toString()));
-   }
-
-   public static hdf<hdj.a> f(String $$0, String $$1) {
-      return a($$0, $$1, hdj.a.a, ($$0x, $$1x, $$2) -> $$0x.addProperty($$1x, $$2.a()));
-   }
-
-   public static hdf<LongList> g(String $$0, String $$1) {
-      return a(
-         $$0,
-         $$1,
-         Codec.LONG.listOf().xmap(LongArrayList::new, Function.identity()),
-         ($$0x, $$1x, $$2) -> $$0x.addProperty($$1x, $$2.longStream().mapToObj(String::valueOf).collect(Collectors.joining(";")))
-      );
-   }
-
-   public void a(hdg $$0, TelemetryPropertyContainer $$1) {
-      T $$2 = $$0.a(this);
-      if ($$2 != null) {
-         this.I.apply($$1, this.G, $$2);
+   static boolean a(hbx $$0, ali $$1, ave $$2) {
+      ali $$3 = $$0.b();
+      if ($$2.getResource($$3).isEmpty()) {
+         f.warn("File {} does not exist, cannot add it to event {}", $$3, $$1);
+         return false;
       } else {
-         $$1.addNullProperty(this.G);
+         return true;
       }
    }
 
-   public xv a() {
-      return xh.c("telemetry.property." + this.F + ".title");
+   @Nullable
+   public hdg a(ali $$0) {
+      return this.j.get($$0);
    }
 
-   @Override
-   public String toString() {
-      return "TelemetryProperty[" + this.F + "]";
+   public Collection<ali> d() {
+      return this.j.keySet();
    }
 
-   public String b() {
-      return this.F;
+   public void a(hcb $$0) {
+      this.k.a($$0);
    }
 
-   public String c() {
-      return this.G;
+   public void a(hca $$0) {
+      this.k.c($$0);
    }
 
-   public Codec<T> d() {
-      return this.H;
+   public void a(hca $$0, int $$1) {
+      this.k.a($$0, $$1);
    }
 
-   public hdf.a<T> e() {
-      return this.I;
+   public void a(fir $$0) {
+      this.k.a($$0);
    }
 
-   public interface a<T> {
-      void apply(TelemetryPropertyContainer var1, String var2, T var3);
+   public void e() {
+      this.k.e();
    }
 
-   public static enum b implements baf {
-      a("survival", 0),
-      b("creative", 1),
-      c("adventure", 2),
-      d("spectator", 6),
-      e("hardcore", 99);
+   public void f() {
+      this.k.d();
+   }
 
-      public static final Codec<hdf.b> f = baf.a(hdf.b::values);
-      private final String g;
-      private final int h;
+   public void g() {
+      this.k.b();
+   }
 
-      private b(final String $$0, final int $$1) {
-         this.g = $$0;
-         this.h = $$1;
+   public void h() {
+      this.k.c();
+   }
+
+   public void a(boolean $$0) {
+      this.k.a($$0);
+   }
+
+   public void i() {
+      this.k.f();
+   }
+
+   public void a(awm $$0, float $$1) {
+      if ($$0 == awm.a && $$1 <= 0.0F) {
+         this.f();
       }
 
-      public int a() {
-         return this.h;
-      }
-
-      @Override
-      public String c() {
-         return this.g;
-      }
+      this.k.a($$0, $$1);
    }
 
-   public static enum c implements baf {
-      a("realm"),
-      b("local"),
-      c("server");
+   public void b(hca $$0) {
+      this.k.a($$0);
+   }
 
-      public static final Codec<hdf.c> d = baf.a(hdf.c::values);
-      private final String e;
+   public boolean c(hca $$0) {
+      return this.k.b($$0);
+   }
 
-      private c(final String $$0) {
-         this.e = $$0;
+   public void a(hde $$0) {
+      this.k.a($$0);
+   }
+
+   public void b(hde $$0) {
+      this.k.b($$0);
+   }
+
+   public void a(@Nullable ali $$0, @Nullable awm $$1) {
+      this.k.a($$0, $$1);
+   }
+
+   public String j() {
+      return this.k.g();
+   }
+
+   public void k() {
+      this.k.a();
+   }
+
+   protected static class a {
+      final Map<ali, hdg> a = Maps.newHashMap();
+      private Map<ali, auz> b = Map.of();
+
+      void a(avb $$0) {
+         this.b = hbx.a.a($$0);
       }
 
-      @Override
-      public String c() {
-         return this.e;
+      void a(ali $$0, hby $$1) {
+         hdg $$2 = this.a.get($$0);
+         boolean $$3 = $$2 == null;
+         if ($$3 || $$1.b()) {
+            if (!$$3) {
+               hdf.f.debug("Replaced sound event location {}", $$0);
+            }
+
+            $$2 = new hdg($$0, $$1.c());
+            this.a.put($$0, $$2);
+         }
+
+         ave $$4 = ave.fromMap(this.b);
+
+         for (final hbx $$5 : $$1.a()) {
+            final ali $$6 = $$5.a();
+            hdh<hbx> $$8;
+            switch ($$5.f()) {
+               case a:
+                  if (!hdf.a($$5, $$0, $$4)) {
+                     continue;
+                  }
+
+                  $$8 = $$5;
+                  break;
+               case b:
+                  $$8 = new hdh<hbx>() {
+                     @Override
+                     public int e() {
+                        hdg $$0 = a.this.a.get($$6);
+                        return $$0 == null ? 0 : $$0.e();
+                     }
+
+                     public hbx a(azs $$0) {
+                        hdg $$1 = a.this.a.get($$6);
+                        if ($$1 == null) {
+                           return hdf.b;
+                        } else {
+                           hbx $$2 = $$1.a($$0);
+                           return new hbx($$2.a(), new brk($$2.c(), $$5.c()), new brk($$2.d(), $$5.d()), $$5.e(), hbx.a.a, $$2.g() || $$5.g(), $$2.h(), $$2.i());
+                        }
+                     }
+
+                     @Override
+                     public void a(hdc $$0) {
+                        hdg $$1 = a.this.a.get($$6);
+                        if ($$1 != null) {
+                           $$1.a($$0);
+                        }
+                     }
+                  };
+                  break;
+               default:
+                  throw new IllegalStateException("Unknown SoundEventRegistration type: " + $$5.f());
+            }
+
+            $$2.a($$8);
+         }
+      }
+
+      public void a(Map<ali, hdg> $$0, Map<ali, auz> $$1, hdc $$2) {
+         $$0.clear();
+         $$1.clear();
+         $$1.putAll(this.b);
+
+         for (Entry<ali, hdg> $$3 : this.a.entrySet()) {
+            $$0.put($$3.getKey(), $$3.getValue());
+            $$3.getValue().a($$2);
+         }
       }
    }
 }

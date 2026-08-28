@@ -1,5 +1,7 @@
-public class gvr extends gva {
-   public float a;
-   public float b;
-   public float c;
+import javax.annotation.Nullable;
+
+public class gvr extends gun {
+   @Nullable
+   public haf a;
+   public cwb b = cwb.k;
 }

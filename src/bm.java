@@ -1,58 +1,43 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
 
-public record bm(di.c b, di.c c, di.c d, di.c e, di.c f) {
-   public static final Codec<bm> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               di.c.d.optionalFieldOf("x", di.c.c).forGetter(bm::a),
-               di.c.d.optionalFieldOf("y", di.c.c).forGetter(bm::b),
-               di.c.d.optionalFieldOf("z", di.c.c).forGetter(bm::c),
-               di.c.d.optionalFieldOf("horizontal", di.c.c).forGetter(bm::d),
-               di.c.d.optionalFieldOf("absolute", di.c.c).forGetter(bm::e)
-            )
-            .apply($$0, bm::new)
-   );
-
-   public static bm a(di.c $$0) {
-      return new bm(di.c.c, di.c.c, di.c.c, $$0, di.c.c);
+public class bm extends dy<bm.a> {
+   @Override
+   public Codec<bm.a> a() {
+      return bm.a.a;
    }
 
-   public static bm b(di.c $$0) {
-      return new bm(di.c.c, $$0, di.c.c, di.c.c, di.c.c);
+   public void a(aro $$0, jh $$1) {
+      arn $$2 = $$0.B();
+      dvj $$3 = $$2.a_($$1);
+      euf $$4 = new euf.a($$2).a(ewy.f, $$1.b()).a(ewy.a, $$0).a(ewy.g, $$3).a(ewx.p);
+      euc $$5 = new euc.a($$4).a(Optional.empty());
+      this.a($$0, $$1x -> $$1x.a($$5));
    }
 
-   public static bm c(di.c $$0) {
-      return new bm(di.c.c, di.c.c, di.c.c, di.c.c, $$0);
-   }
+   public static record a(Optional<bh> b, Optional<bh> c) implements dy.a {
+      public static final Codec<bm.a> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(bw.b.optionalFieldOf("player").forGetter(bm.a::a), bh.a.optionalFieldOf("location").forGetter(bm.a::b)).apply($$0, bm.a::new)
+      );
 
-   public boolean a(double $$0, double $$1, double $$2, double $$3, double $$4, double $$5) {
-      float $$6 = (float)($$0 - $$3);
-      float $$7 = (float)($$1 - $$4);
-      float $$8 = (float)($$2 - $$5);
-      if (!this.b.d((double)azj.e($$6)) || !this.c.d((double)azj.e($$7)) || !this.d.d((double)azj.e($$8))) {
-         return false;
-      } else {
-         return !this.e.e((double)($$6 * $$6 + $$8 * $$8)) ? false : this.f.e((double)($$6 * $$6 + $$7 * $$7 + $$8 * $$8));
+      public boolean a(euc $$0) {
+         return this.c.isEmpty() || this.c.get().a($$0);
       }
-   }
 
-   public di.c a() {
-      return this.b;
-   }
+      @Override
+      public void a(bi $$0) {
+         dy.a.super.a($$0);
+         this.c.ifPresent($$1 -> $$0.a($$1, ewx.p, ".location"));
+      }
 
-   public di.c b() {
-      return this.c;
-   }
+      @Override
+      public Optional<bh> a() {
+         return this.b;
+      }
 
-   public di.c c() {
-      return this.d;
-   }
-
-   public di.c d() {
-      return this.e;
-   }
-
-   public di.c e() {
-      return this.f;
+      public Optional<bh> b() {
+         return this.c;
+      }
    }
 }

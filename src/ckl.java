@@ -1,163 +1,132 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
+import com.mojang.logging.LogUtils;
 import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class ckl extends cki implements bvv<jp<ckm>> {
-   private static final akk<jp<ckm>> h = ako.a(ckl.class, akm.A);
-   public static final MapCodec<jp<ckm>> e = ckm.c.fieldOf("variant");
-   public static final Codec<jp<ckm>> f = e.codec();
-   public static final float g = 0.0625F;
+public abstract class ckl extends bue {
+   private static final Logger c = LogUtils.getLogger();
+   private int d;
+   protected jh b;
 
-   public ckl(bug<? extends ckl> $$0, dev $$1) {
+   protected ckl(bul<? extends ckl> $$0, dfb $$1) {
       super($$0, $$1);
    }
 
-   @Override
-   protected void a(ako.a $$0) {
-      $$0.a(h, this.dZ().e(ly.X).a().orElseThrow());
+   protected ckl(bul<? extends ckl> $$0, dfb $$1, jh $$2) {
+      this($$0, $$1);
+      this.b = $$2;
    }
+
+   protected abstract void m();
 
    @Override
-   public void a(akk<?> $$0) {
-      if (h.equals($$0)) {
-         this.m();
-      }
-   }
-
-   public void b(jp<ckm> $$0) {
-      this.am.a(h, $$0);
-   }
-
-   public jp<ckm> t() {
-      return this.am.a(h);
-   }
-
-   public static Optional<ckl> a(dev $$0, jg $$1, jl $$2) {
-      ckl $$3 = new ckl($$0, $$1);
-      List<jp<ckm>> $$4 = new ArrayList<>();
-      $$0.H_().e(ly.X).c(axj.a).forEach($$4::add);
-      if ($$4.isEmpty()) {
-         return Optional.empty();
-      } else {
-         $$3.a($$2);
-         $$4.removeIf($$1x -> {
-            $$3.b($$1x);
-            return !$$3.o();
-         });
-         if ($$4.isEmpty()) {
-            return Optional.empty();
-         } else {
-            int $$5 = $$4.stream().mapToInt(ckl::c).max().orElse(0);
-            $$4.removeIf($$1x -> c($$1x) < $$5);
-            Optional<jp<ckm>> $$6 = ad.b($$4, $$3.af);
-            if ($$6.isEmpty()) {
-               return Optional.empty();
-            } else {
-               $$3.b($$6.get());
-               $$3.a($$2);
-               return Optional.of($$3);
+   public void l() {
+      if (!this.dX().C) {
+         this.aC();
+         if (this.d++ == 100) {
+            this.d = 0;
+            if (!this.dS() && !this.o()) {
+               this.av();
+               this.b(null);
             }
          }
       }
    }
 
-   private static int c(jp<ckm> $$0) {
-      return $$0.a().a();
-   }
+   public abstract boolean o();
 
-   private ckl(dev $$0, jg $$1) {
-      super(bug.av, $$0, $$1);
-   }
-
-   public ckl(dev $$0, jg $$1, jl $$2, jp<ckm> $$3) {
-      this($$0, $$1);
-      this.b($$3);
-      this.a($$2);
+   @Override
+   public boolean bI() {
+      return true;
    }
 
    @Override
-   public void b(uj $$0) {
-      f.encodeStart(this.dZ().a(ux.a), this.t()).ifSuccess($$1 -> $$0.a((uj)$$1));
-      $$0.a("facing", (byte)this.d.e());
-      super.b($$0);
-   }
-
-   @Override
-   public void a(uj $$0) {
-      f.parse(this.dZ().a(ux.a), $$0).ifSuccess(this::b);
-      this.d = jl.b($$0.f("facing"));
-      super.a($$0);
-      this.a(this.d);
-   }
-
-   @Override
-   protected ezc a(jg $$0, jl $$1) {
-      float $$2 = 0.46875F;
-      ezh $$3 = ezh.b($$0).a($$1, -0.46875);
-      ckm $$4 = this.t().a();
-      double $$5 = this.b($$4.b());
-      double $$6 = this.b($$4.c());
-      jl $$7 = $$1.i();
-      ezh $$8 = $$3.a($$7, $$5).a(jl.b, $$6);
-      jl.a $$9 = $$1.o();
-      double $$10 = $$9 == jl.a.a ? 0.0625 : (double)$$4.b();
-      double $$11 = (double)$$4.c();
-      double $$12 = $$9 == jl.a.c ? 0.0625 : (double)$$4.b();
-      return ezc.a($$8, $$10, $$11, $$12);
-   }
-
-   private double b(int $$0) {
-      return $$0 % 2 == 0 ? 0.5 : 0.0;
-   }
-
-   @Override
-   public void b(@Nullable btz $$0) {
-      if (this.dX().ac().b(der.i)) {
-         this.a(awk.sr, 1.0F, 1.0F);
-         if ($$0 instanceof coh $$1 && $$1.fX()) {
-            return;
-         }
-
-         this.a(cwb.qa);
+   public boolean v(bue $$0) {
+      if ($$0 instanceof com $$1) {
+         return !this.dX().a($$1, this.b) ? true : this.a(this.dY().a($$1), 0.0F);
+      } else {
+         return false;
       }
    }
 
    @Override
-   public void B() {
-      this.a(awk.ss, 1.0F, 1.0F);
+   public boolean a(bsu $$0, float $$1) {
+      if (this.b($$0)) {
+         return false;
+      } else if (!this.dX().ac().b(dex.c) && $$0.d() instanceof bvc) {
+         return false;
+      } else {
+         if (!this.dS() && !this.dX().C) {
+            this.au();
+            this.bE();
+            this.b($$0.d());
+         }
+
+         return true;
+      }
    }
 
    @Override
-   public void b(double $$0, double $$1, double $$2, float $$3, float $$4) {
-      this.a_($$0, $$1, $$2);
+   public boolean a(det $$0) {
+      return $$0.g() ? super.a($$0) : true;
    }
 
    @Override
-   public void a(double $$0, double $$1, double $$2, float $$3, float $$4, int $$5) {
-      this.a_($$0, $$1, $$2);
+   public void a(bve $$0, ezn $$1) {
+      if (!this.dX().C && !this.dS() && $$1.h() > 0.0) {
+         this.au();
+         this.b(null);
+      }
    }
 
    @Override
-   public ezh dw() {
-      return ezh.a(this.b);
+   public void j(double $$0, double $$1, double $$2) {
+      if (!this.dX().C && !this.dS() && $$0 * $$0 + $$1 * $$1 + $$2 * $$2 > 0.0) {
+         this.au();
+         this.b(null);
+      }
    }
 
    @Override
-   public zo<acd> a(arl $$0) {
-      return new ace(this, this.d.d(), this.q());
+   public void b(uk $$0) {
+      jh $$1 = this.q();
+      $$0.a("TileX", $$1.u());
+      $$0.a("TileY", $$1.v());
+      $$0.a("TileZ", $$1.w());
    }
 
    @Override
-   public void a(ace $$0) {
-      super.a($$0);
-      this.a(jl.a($$0.p()));
+   public void a(uk $$0) {
+      jh $$1 = new jh($$0.h("TileX"), $$0.h("TileY"), $$0.h("TileZ"));
+      if (!$$1.a(this.dx(), 16.0)) {
+         c.error("Block-attached entity at invalid position: {}", $$1);
+      } else {
+         this.b = $$1;
+      }
+   }
+
+   public abstract void b(@Nullable bue var1);
+
+   @Override
+   protected boolean bK() {
+      return false;
    }
 
    @Override
-   public cvx dK() {
-      return new cvx(cwb.qa);
+   public void a_(double $$0, double $$1, double $$2) {
+      this.b = jh.a($$0, $$1, $$2);
+      this.m();
+      this.as = true;
+   }
+
+   public jh q() {
+      return this.b;
+   }
+
+   @Override
+   public void a(arn $$0, buz $$1) {
+   }
+
+   @Override
+   public void j_() {
    }
 }

@@ -1,24 +1,25 @@
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
 
-public class ecl extends ecr {
-   final axp<dhy> a;
-   public static final MapCodec<ecl> e = RecordCodecBuilder.mapCodec(
-      $$0 -> a($$0).and(axp.a(ly.f).fieldOf("tag").forGetter($$0x -> $$0x.a)).apply($$0, ecl::new)
-   );
+class ecl extends eco {
+   public static final MapCodec<ecl> a = a(ecl::new);
 
-   protected ecl(kk $$0, axp<dhy> $$1) {
+   public ecl(List<ecm> $$0) {
       super($$0);
-      this.a = $$1;
+   }
+
+   public boolean a(dfy $$0, jh $$1) {
+      for (ecm $$2 : this.e) {
+         if ($$2.test($$0, $$1)) {
+            return true;
+         }
+      }
+
+      return false;
    }
 
    @Override
-   protected boolean a(dvd $$0) {
-      return $$0.a(this.a);
-   }
-
-   @Override
-   public ech<?> a() {
-      return ech.b;
+   public ecn<?> a() {
+      return ecn.i;
    }
 }

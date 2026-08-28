@@ -1,184 +1,48 @@
-import java.util.UUID;
-import net.minecraft.server.MinecraftServer;
+import it.unimi.dsi.fastutil.objects.Object2IntMap;
+import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
+import it.unimi.dsi.fastutil.objects.ObjectIterator;
+import it.unimi.dsi.fastutil.objects.Object2IntMap.Entry;
 
-public class etd implements etp {
-   private final etq a;
-   private final etp b;
+public class etd extends esw {
+   public static final String a = "idcounts";
+   private final Object2IntMap<String> b = new Object2IntOpenHashMap();
 
-   public etd(etq $$0, etp $$1) {
-      this.a = $$0;
-      this.b = $$1;
+   public static esw.a<etd> a() {
+      return new esw.a<>(etd::new, etd::b, bat.k);
+   }
+
+   public etd() {
+      this.b.defaultReturnValue(-1);
+   }
+
+   public static etd b(uk $$0, js.a $$1) {
+      etd $$2 = new etd();
+
+      for (String $$3 : $$0.e()) {
+         if ($$0.b($$3, 99)) {
+            $$2.b.put($$3, $$0.h($$3));
+         }
+      }
+
+      return $$2;
    }
 
    @Override
-   public jg a() {
-      return this.b.a();
+   public uk a(uk $$0, js.a $$1) {
+      ObjectIterator var3 = this.b.object2IntEntrySet().iterator();
+
+      while (var3.hasNext()) {
+         Entry<String> $$2 = (Entry<String>)var3.next();
+         $$0.a((String)$$2.getKey(), $$2.getIntValue());
+      }
+
+      return $$0;
    }
 
-   @Override
-   public float b() {
-      return this.b.b();
-   }
-
-   @Override
-   public long c() {
-      return this.b.c();
-   }
-
-   @Override
-   public long d() {
-      return this.b.d();
-   }
-
-   @Override
-   public String e() {
-      return this.a.e();
-   }
-
-   @Override
-   public int f() {
-      return this.b.f();
-   }
-
-   @Override
-   public void a(int $$0) {
-   }
-
-   @Override
-   public boolean g() {
-      return this.b.g();
-   }
-
-   @Override
-   public int h() {
-      return this.b.h();
-   }
-
-   @Override
-   public boolean i() {
-      return this.b.i();
-   }
-
-   @Override
-   public int j() {
-      return this.b.j();
-   }
-
-   @Override
-   public des k() {
-      return this.a.k();
-   }
-
-   @Override
-   public void a(long $$0) {
-   }
-
-   @Override
-   public void b(long $$0) {
-   }
-
-   @Override
-   public void a(jg $$0, float $$1) {
-   }
-
-   @Override
-   public void a(boolean $$0) {
-   }
-
-   @Override
-   public void b(int $$0) {
-   }
-
-   @Override
-   public void b(boolean $$0) {
-   }
-
-   @Override
-   public void c(int $$0) {
-   }
-
-   @Override
-   public void a(des $$0) {
-   }
-
-   @Override
-   public boolean l() {
-      return this.a.l();
-   }
-
-   @Override
-   public boolean m() {
-      return this.a.m();
-   }
-
-   @Override
-   public boolean n() {
-      return this.b.n();
-   }
-
-   @Override
-   public void c(boolean $$0) {
-   }
-
-   @Override
-   public der o() {
-      return this.a.o();
-   }
-
-   @Override
-   public dwu.c p() {
-      return this.b.p();
-   }
-
-   @Override
-   public void a(dwu.c $$0) {
-   }
-
-   @Override
-   public brv q() {
-      return this.a.q();
-   }
-
-   @Override
-   public boolean r() {
-      return this.a.r();
-   }
-
-   @Override
-   public eyu<MinecraftServer> s() {
-      return this.b.s();
-   }
-
-   @Override
-   public int t() {
-      return 0;
-   }
-
-   @Override
-   public void d(int $$0) {
-   }
-
-   @Override
-   public int u() {
-      return 0;
-   }
-
-   @Override
-   public void e(int $$0) {
-   }
-
-   @Override
-   public UUID v() {
-      return null;
-   }
-
-   @Override
-   public void a(UUID $$0) {
-   }
-
-   @Override
-   public void a(p $$0, dex $$1) {
-      $$0.a("Derived", true);
-      this.b.a($$0, $$1);
+   public etc b() {
+      int $$0 = this.b.getInt("map") + 1;
+      this.b.put("map", $$0);
+      this.c();
+      return new etc($$0);
    }
 }

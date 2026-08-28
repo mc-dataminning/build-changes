@@ -1,32 +1,93 @@
+import com.mojang.datafixers.util.Either;
 import com.mojang.serialization.Codec;
-import java.util.stream.LongStream;
+import java.util.function.Function;
 
-public class ebz {
-   private long b;
-   private long c;
-   public static final Codec<ebz> a = Codec.LONG_STREAM
-      .comapFlatMap($$0 -> ad.a($$0, 2).map($$0x -> new ebz($$0x[0], $$0x[1])), $$0 -> LongStream.of($$0.b, $$0.c));
+public interface ebz {
+   Codec<ebz> a = Codec.xor(ebz.b.d, Codec.xor(ebz.a.d, ebz.c.d)).xmap(ebz::a, ebz::a);
+   ebz b = b(0);
+   ebz c = c(0);
 
-   public ebz(ebo.a $$0) {
-      this($$0.b(), $$0.c());
+   static ebz a(int $$0) {
+      return new ebz.b($$0);
    }
 
-   public ebz(long $$0, long $$1) {
-      this.b = $$0;
-      this.c = $$1;
-      if ((this.b | this.c) == 0L) {
-         this.b = -7046029254386353131L;
-         this.c = 7640891576956012809L;
+   static ebz b(int $$0) {
+      return new ebz.a($$0);
+   }
+
+   static ebz c(int $$0) {
+      return new ebz.c($$0);
+   }
+
+   static ebz a() {
+      return b;
+   }
+
+   static ebz b() {
+      return c;
+   }
+
+   private static ebz a(Either<ebz.b, Either<ebz.a, ebz.c>> $$0) {
+      return (ebz)$$0.map(Function.identity(), Either::unwrap);
+   }
+
+   private static Either<ebz.b, Either<ebz.a, ebz.c>> a(ebz $$0) {
+      return $$0 instanceof ebz.b ? Either.left((ebz.b)$$0) : Either.right($$0 instanceof ebz.a ? Either.left((ebz.a)$$0) : Either.right((ebz.c)$$0));
+   }
+
+   int a(ecc var1);
+
+   public static record a(int e) implements ebz {
+      public static final Codec<ebz.a> d = Codec.intRange(dzf.e, dzf.d).fieldOf("above_bottom").xmap(ebz.a::new, ebz.a::c).codec();
+
+      @Override
+      public int a(ecc $$0) {
+         return $$0.a() + this.e;
+      }
+
+      @Override
+      public String toString() {
+         return this.e + " above bottom";
+      }
+
+      public int c() {
+         return this.e;
       }
    }
 
-   public long a() {
-      long $$0 = this.b;
-      long $$1 = this.c;
-      long $$2 = Long.rotateLeft($$0 + $$1, 17) + $$0;
-      $$1 ^= $$0;
-      this.b = Long.rotateLeft($$0, 49) ^ $$1 ^ $$1 << 21;
-      this.c = Long.rotateLeft($$1, 28);
-      return $$2;
+   public static record b(int e) implements ebz {
+      public static final Codec<ebz.b> d = Codec.intRange(dzf.e, dzf.d).fieldOf("absolute").xmap(ebz.b::new, ebz.b::c).codec();
+
+      @Override
+      public int a(ecc $$0) {
+         return this.e;
+      }
+
+      @Override
+      public String toString() {
+         return this.e + " absolute";
+      }
+
+      public int c() {
+         return this.e;
+      }
+   }
+
+   public static record c(int e) implements ebz {
+      public static final Codec<ebz.c> d = Codec.intRange(dzf.e, dzf.d).fieldOf("below_top").xmap(ebz.c::new, ebz.c::c).codec();
+
+      @Override
+      public int a(ecc $$0) {
+         return $$0.b() - 1 + $$0.a() - this.e;
+      }
+
+      @Override
+      public String toString() {
+         return this.e + " below top";
+      }
+
+      public int c() {
+         return this.e;
+      }
    }
 }

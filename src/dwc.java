@@ -1,6 +1,6 @@
-public enum dwc implements baf {
-   a("top"),
-   b("bottom");
+public enum dwc implements bag {
+   a("compare"),
+   b("subtract");
 
    private final String c;
 

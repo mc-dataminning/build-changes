@@ -1,29 +1,25 @@
-public class aih implements zo<agu> {
-   public static final zf<we, aih> a = zo.a(aih::a, aih::new);
-   private final int b;
+public record aih(int b, int c) implements zp<agv> {
+   public static final zg<wf, aih> a = zp.a(aih::a, aih::new);
 
-   public aih(int $$0) {
-      this.b = $$0;
+   private aih(wf $$0) {
+      this($$0.l(), $$0.l());
    }
 
-   private aih(we $$0) {
-      this.b = $$0.l();
-   }
-
-   private void a(we $$0) {
+   private void a(wf $$0) {
       $$0.c(this.b);
+      $$0.c(this.c);
    }
 
    @Override
-   public zq<aih> a() {
-      return ags.bU;
+   public zr<aih> a() {
+      return agt.bi;
    }
 
-   public void a(agu $$0) {
+   public void a(agv $$0) {
       $$0.a(this);
    }
 
-   public int b() {
-      return this.b;
+   public int e() {
+      return this.c;
    }
 }

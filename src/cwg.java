@@ -1,43 +1,59 @@
-import com.mojang.logging.LogUtils;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
-import org.slf4j.Logger;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.function.Consumer;
 
-public class cwg extends cvt {
-   private static final Logger a = LogUtils.getLogger();
-
-   public cwg(cvt.a $$0) {
-      super($$0);
-   }
+public record cwg(cvb<cwh> c, boolean d) implements cze {
+   public static final Codec<cwg> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(cvb.a(lz.L, cwh.c).fieldOf("song").forGetter(cwg::a), Codec.BOOL.optionalFieldOf("show_in_tooltip", true).forGetter(cwg::b))
+            .apply($$0, cwg::new)
+   );
+   public static final zg<wt, cwg> b = zg.a(cvb.a(lz.L, cwh.d), cwg::a, ze.b, cwg::b, cwg::new);
 
    @Override
-   public bry a(dev $$0, coh $$1, brx $$2) {
-      cvx $$3 = $$1.b($$2);
-      List<alh> $$4 = $$3.a(kt.ab, List.of());
-      $$3.a(1, $$1);
-      if ($$4.isEmpty()) {
-         return bry.d;
-      } else {
-         if (!$$0.C) {
-            dan $$5 = $$0.o().aI();
-            List<dal<?>> $$6 = new ArrayList<>($$4.size());
+   public void a(cvx.b $$0, Consumer<xi> $$1, cxt $$2) {
+      js.a $$3 = $$0.a();
+      if (this.d && $$3 != null) {
+         this.c.a($$3).ifPresent($$1x -> {
+            xw $$2x = ((cwh)$$1x.a()).c().f();
+            xl.a($$2x, yf.a.a(n.h));
+            $$1.accept($$2x);
+         });
+      }
+   }
 
-            for (alh $$7 : $$4) {
-               Optional<dal<?>> $$8 = $$5.a($$7);
-               if (!$$8.isPresent()) {
-                  a.error("Invalid recipe: {}", $$7);
-                  return bry.d;
+   public cwg a(boolean $$0) {
+      return new cwg(this.c, $$0);
+   }
+
+   public static bsd a(dfb $$0, jh $$1, cwb $$2, com $$3) {
+      cwg $$4 = $$2.a(ku.ab);
+      if ($$4 == null) {
+         return bsd.f;
+      } else {
+         dvj $$5 = $$0.a_($$1);
+         if ($$5.a(dig.dT) && !$$5.c(dmg.b)) {
+            if (!$$0.C) {
+               cwb $$6 = $$2.b(1, $$3);
+               if ($$0.c_($$1) instanceof dtp $$7) {
+                  $$7.b($$6);
+                  $$0.a(eag.c, $$1, eag.a.a($$3, $$5));
                }
 
-               $$6.add($$8.get());
+               $$3.a(awv.al);
             }
 
-            $$1.a($$6);
-            $$1.b(awu.c.b(this));
+            return bsd.a;
+         } else {
+            return bsd.f;
          }
-
-         return bry.a;
       }
+   }
+
+   public cvb<cwh> a() {
+      return this.c;
+   }
+
+   public boolean b() {
+      return this.d;
    }
 }

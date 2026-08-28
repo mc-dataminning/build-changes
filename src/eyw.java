@@ -1,25 +1,29 @@
-import java.nio.file.Path;
-import java.util.List;
-import java.util.stream.Collectors;
+import net.minecraft.server.MinecraftServer;
 
-public class eyw extends Exception {
-   private final Path a;
-   private final List<eyy> b;
+public class eyw implements eyy<MinecraftServer> {
+   final ali a;
 
-   public eyw(Path $$0, List<eyy> $$1) {
+   public eyw(ali $$0) {
       this.a = $$0;
-      this.b = $$1;
    }
 
-   @Override
-   public String getMessage() {
-      return a(this.a, this.b);
+   public void a(MinecraftServer $$0, eza<MinecraftServer> $$1, long $$2) {
+      alx $$3 = $$0.aE();
+      $$3.a(this.a).ifPresent($$1x -> $$3.a($$1x, $$3.c()));
    }
 
-   public static String a(Path $$0, List<eyy> $$1) {
-      return "Failed to validate '"
-         + $$0
-         + "'. Found forbidden symlinks: "
-         + $$1.stream().map($$0x -> $$0x.a() + "->" + $$0x.b()).collect(Collectors.joining(", "));
+   public static class a extends eyy.a<MinecraftServer, eyw> {
+      public a() {
+         super(ali.b("function"), eyw.class);
+      }
+
+      public void a(uk $$0, eyw $$1) {
+         $$0.a("Name", $$1.a.toString());
+      }
+
+      public eyw a(uk $$0) {
+         ali $$1 = ali.a($$0.l("Name"));
+         return new eyw($$1);
+      }
    }
 }

@@ -1,224 +1,134 @@
-import com.google.common.base.Stopwatch;
 import com.google.common.collect.Lists;
-import com.mojang.authlib.GameProfile;
-import com.mojang.authlib.yggdrasil.ServicesKeySet;
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Lifecycle;
-import java.net.Proxy;
-import java.util.ArrayList;
-import java.util.Collection;
+import java.util.Iterator;
 import java.util.List;
-import java.util.concurrent.TimeUnit;
-import java.util.function.BooleanSupplier;
-import javax.annotation.Nullable;
-import net.minecraft.server.MinecraftServer;
-import org.slf4j.Logger;
+import java.util.function.Supplier;
 
-public class tj extends MinecraftServer {
-   private static final Logger l = LogUtils.getLogger();
-   private static final int m = 20;
-   private static final int n = 14999992;
-   private static final amc o = new amc(null, ServicesKeySet.EMPTY, null, null);
-   private static final cra p = crc.f.a().d(cra.a(crc.d));
-   private final bmv q = new bmv(4);
-   private List<sy> r = new ArrayList<>();
-   private final List<ty> s;
-   private final jg t;
-   private final Stopwatch u = Stopwatch.createUnstarted();
-   private static final der v = ad.a(new der(p), $$0 -> {
-      $$0.a(der.e).a(false, null);
-      $$0.a(der.v).a(false, null);
-      $$0.a(der.o).a(0, null);
-      $$0.a(der.b).a(false, null);
-   });
-   private static final ebx w = new ebx(0L, false, false);
-   @Nullable
-   private tp x;
+public class tj {
+   final tf a;
+   private final List<tc> b = Lists.newArrayList();
+   private long c;
 
-   public static tj a(Thread $$0, etk.c $$1, auk $$2, Collection<ty> $$3, jg $$4) {
-      if ($$3.isEmpty()) {
-         throw new IllegalArgumentException("No test functions were given!");
-      } else {
-         $$2.a();
-         dfr $$5 = new dfr(new dei(new ArrayList<>($$2.c()), List.of()), p);
-         dez $$6 = new dez("Test Level", des.b, false, brv.c, true, v, $$5);
-         amf.d $$7 = new amf.d($$2, $$5, false, true);
-         amf.c $$8 = new amf.c($$7, ew.a.b, 4);
-
-         try {
-            l.debug("Starting resource loading");
-            Stopwatch $$9 = Stopwatch.createStarted();
-            amg $$10 = ad.<amg>c($$2x -> amf.a($$8, $$1xx -> {
-                  kc<dza> $$2xx = new jx<>(ly.bc, Lifecycle.stable()).n();
-                  ebu.b $$3x = $$1xx.c().d(ly.aZ).b(elh.b).a().a().a($$2xx);
-                  return new amf.b<>(new eto($$6, w, $$3x.d(), $$3x.a()), $$3x.b());
-               }, amg::new, ad.g(), $$2x)).get();
-            $$9.stop();
-            l.debug("Finished resource loading after {} ms", $$9.elapsed(TimeUnit.MILLISECONDS));
-            return new tj($$0, $$1, $$2, $$10, $$3, $$4);
-         } catch (Exception var11) {
-            l.warn("Failed to load vanilla datapack, bit oops", var11);
-            System.exit(-1);
-            throw new IllegalStateException();
-         }
-      }
+   tj(tf $$0) {
+      this.a = $$0;
+      this.c = $$0.o();
    }
 
-   private tj(Thread $$0, etk.c $$1, auk $$2, amg $$3, Collection<ty> $$4, jg $$5) {
-      super($$0, $$1, $$2, $$3, Proxy.NO_PROXY, bat.a(), o, ary::b);
-      this.s = Lists.newArrayList($$4);
-      this.t = $$5;
+   public tj a(Runnable $$0) {
+      this.b.add(tc.a($$0));
+      return this;
    }
 
-   @Override
-   public boolean e() {
-      this.a(new avn(this, this.bc(), this.g, 1) {
+   public tj a(long $$0, Runnable $$1) {
+      this.b.add(tc.a($$0, $$1));
+      return this;
+   }
+
+   public tj a(int $$0) {
+      return this.a($$0, () -> {
       });
-      this.t_();
-      arm $$0 = this.J();
-      this.r = Lists.newArrayList(sz.a(this.s, $$0));
-      $$0.a(this.t, 0.0F);
-      int $$1 = 20000000;
-      $$0.a(20000000, 20000000, false, false);
-      l.info("Started game test server");
-      return true;
    }
 
-   @Override
-   public void a(BooleanSupplier $$0) {
-      super.a($$0);
-      arm $$1 = this.J();
-      if (!this.bs()) {
-         this.b($$1);
-      }
+   public tj b(Runnable $$0) {
+      this.b.add(tc.a(() -> this.c($$0)));
+      return this;
+   }
 
-      if ($$1.aa() % 20L == 0L) {
-         l.info(this.x.j());
-      }
-
-      if (this.x.i()) {
-         this.a(false);
-         l.info(this.x.j());
-         tm.a();
-         l.info("========= {} GAME TESTS COMPLETE IN {} ======================", this.x.h(), this.u.stop());
-         if (this.x.d()) {
-            l.info("{} required tests failed :(", this.x.a());
-            this.x.f().forEach($$0x -> l.info("   - {}", $$0x.b()));
+   public tj a(int $$0, Runnable $$1) {
+      this.b.add(tc.a(() -> {
+         if (this.a.o() < this.c + (long)$$0) {
+            throw new sx("Test timed out before sequence completed");
          } else {
-            l.info("All {} required tests passed :)", this.x.h());
+            this.c($$1);
          }
+      }));
+      return this;
+   }
 
-         if (this.x.e()) {
-            l.info("{} optional tests failed", this.x.b());
-            this.x.g().forEach($$0x -> l.info("   - {} with rotation: {}", $$0x.b(), $$0x.t()));
+   public tj b(int $$0, Runnable $$1) {
+      this.b.add(tc.a(() -> {
+         if (this.a.o() < this.c + (long)$$0) {
+            this.c($$1);
+            throw new sx("Test timed out before sequence completed");
          }
-
-         l.info("====================================================");
-      }
+      }));
+      return this;
    }
 
-   @Override
-   public bmy f() {
-      return this.q;
+   public void a() {
+      this.b.add(tc.a(this.a::l));
    }
 
-   @Override
-   public boolean g() {
-      return false;
+   public void a(Supplier<Exception> $$0) {
+      this.b.add(tc.a(() -> this.a.a($$0.get())));
    }
 
-   @Override
-   public void v_() {
-      this.bB();
-   }
-
-   @Override
-   public ac a(ac $$0) {
-      $$0.a("Type", "Game test server");
+   public tj.a b() {
+      tj.a $$0 = new tj.a();
+      this.b.add(tc.a(() -> $$0.a(this.a.o())));
       return $$0;
    }
 
-   @Override
-   public void i() {
-      super.i();
-      l.info("Game test server shutting down");
-      System.exit(this.x.a());
+   public void a(long $$0) {
+      try {
+         this.c($$0);
+      } catch (sx var4) {
+      }
    }
 
-   @Override
-   public void a(o $$0) {
-      super.a($$0);
-      l.error("Game test server crashed\n{}", $$0.a(y.a));
-      System.exit(1);
+   public void b(long $$0) {
+      try {
+         this.c($$0);
+      } catch (sx var4) {
+         this.a.a(var4);
+      }
    }
 
-   private void b(arm $$0) {
-      jg $$1 = new jg($$0.A.a(-14999992, 14999992), -59, $$0.A.a(-14999992, 14999992));
-      th $$2 = th.a.a(this.r, $$0).a((th.c)(new tt($$1, 8, false))).a();
-      Collection<te> $$3 = $$2.a();
-      this.x = new tp($$3);
-      l.info("{} tests are now running at position {}!", this.x.h(), $$1.x());
-      this.u.reset();
-      this.u.start();
-      $$2.b();
+   private void c(Runnable $$0) {
+      try {
+         $$0.run();
+      } catch (sx var3) {
+         this.a.a(var3);
+      }
    }
 
-   private boolean bs() {
-      return this.x != null;
+   private void c(long $$0) {
+      Iterator<tc> $$1 = this.b.iterator();
+
+      while ($$1.hasNext()) {
+         tc $$2 = $$1.next();
+         $$2.b.run();
+         $$1.remove();
+         long $$3 = $$0 - this.c;
+         long $$4 = this.c;
+         this.c = $$0;
+         if ($$2.a != null && $$2.a != $$3) {
+            this.a.a(new sx("Succeeded in invalid tick: expected " + ($$4 + $$2.a) + ", but current tick is " + $$0));
+            break;
+         }
+      }
    }
 
-   @Override
-   public boolean j() {
-      return false;
-   }
+   public class a {
+      private static final long b = -1L;
+      private long c = -1L;
 
-   @Override
-   public int k() {
-      return 0;
-   }
+      void a(long $$0) {
+         if (this.c != -1L) {
+            throw new IllegalStateException("Condition already triggered at " + this.c);
+         } else {
+            this.c = $$0;
+         }
+      }
 
-   @Override
-   public int l() {
-      return 4;
-   }
-
-   @Override
-   public boolean m() {
-      return false;
-   }
-
-   @Override
-   public boolean n() {
-      return false;
-   }
-
-   @Override
-   public int o() {
-      return 0;
-   }
-
-   @Override
-   public boolean p() {
-      return false;
-   }
-
-   @Override
-   public boolean q() {
-      return true;
-   }
-
-   @Override
-   public boolean r() {
-      return false;
-   }
-
-   @Override
-   public boolean L_() {
-      return false;
-   }
-
-   @Override
-   public boolean a(GameProfile $$0) {
-      return false;
+      public void a() {
+         long $$0 = tj.this.a.o();
+         if (this.c != $$0) {
+            if (this.c == -1L) {
+               throw new sx("Condition not triggered (t=" + $$0 + ")");
+            } else {
+               throw new sx("Condition triggered at " + this.c + ", (t=" + $$0 + ")");
+            }
+         }
+      }
    }
 }

@@ -1,54 +1,33 @@
-import com.google.common.annotations.VisibleForTesting;
-import com.google.common.collect.ImmutableList;
-import java.util.Locale;
+import com.mojang.serialization.DataResult;
+import java.util.List;
+import java.util.Optional;
+import java.util.function.Consumer;
+import java.util.function.Predicate;
+import java.util.stream.LongStream;
 
-public final class dxy {
-   private final ImmutableList<dya> a;
-   private final int[] b;
+public interface dxy<T> {
+   T a(int var1, int var2, int var3);
 
-   public dxy(ImmutableList<dya> $$0) {
-      this.a = $$0;
-      int $$1 = $$0.isEmpty() ? 0 : ((dya)$$0.getFirst()).b() + 1;
-      this.b = new int[$$1];
+   void a(Consumer<T> var1);
 
-      for (int $$2 = 0; $$2 < $$0.size(); $$2++) {
-         dya $$3 = (dya)$$0.get($$2);
-         int $$4 = $$3.b();
+   void b(wf var1);
 
-         for (int $$5 = 0; $$5 <= $$4; $$5++) {
-            this.b[$$5] = $$2;
-         }
-      }
+   int c();
+
+   boolean a(Predicate<T> var1);
+
+   void a(dxx.b<T> var1);
+
+   dxx<T> d();
+
+   dxx<T> e();
+
+   dxy.a<T> a(jv<T> var1, dxx.d var2);
+
+   public static record a<T>(List<T> a, Optional<LongStream> b) {
    }
 
-   @VisibleForTesting
-   public ImmutableList<dya> a() {
-      return this.a;
-   }
-
-   public int b() {
-      return this.a.size();
-   }
-
-   public int a(dya $$0) {
-      int $$1 = $$0.b();
-      if ($$1 >= this.b.length) {
-         throw new IllegalArgumentException(String.format(Locale.ROOT, "Requesting a ChunkStatus(%s) outside of dependency range(%s)", $$0, this.a));
-      } else {
-         return this.b[$$1];
-      }
-   }
-
-   public int c() {
-      return Math.max(0, this.a.size() - 1);
-   }
-
-   public dya a(int $$0) {
-      return (dya)this.a.get($$0);
-   }
-
-   @Override
-   public String toString() {
-      return this.a.toString();
+   public interface b<T, C extends dxy<T>> {
+      DataResult<C> read(jv<T> var1, dxx.d var2, dxy.a<T> var3);
    }
 }

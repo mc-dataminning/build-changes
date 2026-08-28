@@ -4,27 +4,32 @@ import com.mojang.datafixers.types.templates.TypeTemplate;
 import java.util.Map;
 import java.util.function.Supplier;
 
-public class blf extends bjg {
+public class blf extends bji {
    public blf(int $$0, Schema $$1) {
       super($$0, $$1);
    }
 
-   protected static void a(Schema $$0, Map<String, Supplier<TypeTemplate>> $$1, String $$2) {
-      $$0.register($$1, $$2, () -> bjh.a($$0));
-   }
-
-   public Map<String, Supplier<TypeTemplate>> registerEntities(Schema $$0) {
-      Map<String, Supplier<TypeTemplate>> $$1 = super.registerEntities($$0);
-      a($$0, $$1, "minecraft:frog");
-      a($$0, $$1, "minecraft:tadpole");
-      return $$1;
-   }
-
-   public Map<String, Supplier<TypeTemplate>> registerBlockEntities(Schema $$0) {
-      Map<String, Supplier<TypeTemplate>> $$1 = super.registerBlockEntities($$0);
-      $$0.register(
-         $$1, "minecraft:sculk_shrieker", () -> DSL.optionalFields("listener", DSL.optionalFields("event", DSL.optionalFields("game_event", bhs.E.in($$0))))
+   public void registerTypes(Schema $$0, Map<String, Supplier<TypeTemplate>> $$1, Map<String, Supplier<TypeTemplate>> $$2) {
+      super.registerTypes($$0, $$1, $$2);
+      $$0.registerType(
+         false,
+         bhu.c,
+         () -> DSL.optionalFields(
+               "entities",
+               DSL.list(bhu.A.in($$0)),
+               "block_entities",
+               DSL.list(DSL.or(bhu.s.in($$0), DSL.remainder())),
+               "block_ticks",
+               DSL.list(DSL.fields("i", bhu.C.in($$0))),
+               "sections",
+               DSL.list(
+                  DSL.optionalFields(
+                     "biomes", DSL.optionalFields("palette", DSL.list(bhu.K.in($$0))), "block_states", DSL.optionalFields("palette", DSL.list(bhu.u.in($$0)))
+                  )
+               ),
+               "structures",
+               DSL.optionalFields("starts", DSL.compoundList(bhu.G.in($$0)))
+            )
       );
-      return $$1;
    }
 }

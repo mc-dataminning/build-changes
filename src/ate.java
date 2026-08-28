@@ -1,80 +1,26 @@
-import com.google.common.collect.Lists;
-import java.io.IOException;
-import java.io.InputStream;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.List;
 import java.util.Map;
-import java.util.Set;
-import javax.annotation.Nullable;
 
-public class ate implements atl {
-   private final atl c;
-   private final List<atl> d;
+public class ate {
+   private static final ate a = new ate(Map.of());
+   private final Map<atz<?>, ?> b;
 
-   public ate(atl $$0, List<atl> $$1) {
-      this.c = $$0;
-      List<atl> $$2 = new ArrayList<>($$1.size() + 1);
-      $$2.addAll(Lists.reverse($$1));
-      $$2.add($$0);
-      this.d = List.copyOf($$2);
+   private ate(Map<atz<?>, ?> $$0) {
+      this.b = $$0;
    }
 
-   @Nullable
-   @Override
-   public aur<InputStream> a(String... $$0) {
-      return this.c.a($$0);
+   public <T> T a(atz<T> $$0) {
+      return (T)this.b.get($$0);
    }
 
-   @Nullable
-   @Override
-   public aur<InputStream> a(atn $$0, alh $$1) {
-      for (atl $$2 : this.d) {
-         aur<InputStream> $$3 = $$2.a($$0, $$1);
-         if ($$3 != null) {
-            return $$3;
-         }
-      }
-
-      return null;
+   public static ate a() {
+      return a;
    }
 
-   @Override
-   public void a(atn $$0, String $$1, String $$2, atl.a $$3) {
-      Map<alh, aur<InputStream>> $$4 = new HashMap<>();
-
-      for (atl $$5 : this.d) {
-         $$5.a($$0, $$1, $$2, $$4::putIfAbsent);
-      }
-
-      $$4.forEach($$3);
+   public static <T> ate a(atz<T> $$0, T $$1) {
+      return new ate(Map.of($$0, $$1));
    }
 
-   @Override
-   public Set<String> a(atn $$0) {
-      Set<String> $$1 = new HashSet<>();
-
-      for (atl $$2 : this.d) {
-         $$1.addAll($$2.a($$0));
-      }
-
-      return $$1;
-   }
-
-   @Nullable
-   @Override
-   public <T> T a(aty<T> $$0) throws IOException {
-      return this.c.a($$0);
-   }
-
-   @Override
-   public atk a() {
-      return this.c.a();
-   }
-
-   @Override
-   public void close() {
-      this.d.forEach(atl::close);
+   public static <T1, T2> ate a(atz<T1> $$0, T1 $$1, atz<T2> $$2, T2 $$3) {
+      return new ate(Map.of($$0, $$1, $$2, (T1)$$3));
    }
 }

@@ -1,69 +1,50 @@
-import it.unimi.dsi.fastutil.objects.ObjectArrayList;
-import java.util.List;
-import java.util.ListIterator;
-import javax.annotation.Nullable;
+public class gle implements gks<dvf> {
+   private final gjk a;
 
-public class gle {
-   private static final int a = 2;
-   private int b = 2;
-   private final List<glj.b.a> c = new ObjectArrayList();
-
-   public synchronized void a(glj.b.a $$0) {
-      this.c.add($$0);
+   public gle(gkt.a $$0) {
+      this.a = $$0.b();
    }
 
-   @Nullable
-   public synchronized glj.b.a a(ezh $$0) {
-      int $$1 = -1;
-      int $$2 = -1;
-      double $$3 = Double.MAX_VALUE;
-      double $$4 = Double.MAX_VALUE;
-      ListIterator<glj.b.a> $$5 = this.c.listIterator();
-
-      while ($$5.hasNext()) {
-         int $$6 = $$5.nextIndex();
-         glj.b.a $$7 = $$5.next();
-         if ($$7.a.get()) {
-            $$5.remove();
-         } else {
-            double $$8 = $$7.d().b($$0);
-            if (!$$7.c() && $$8 < $$3) {
-               $$3 = $$8;
-               $$1 = $$6;
+   public void a(dvf $$0, float $$1, feb $$2, gih $$3, int $$4, int $$5) {
+      dfb $$6 = $$0.i();
+      if ($$6 != null) {
+         jh $$7 = $$0.aB_().a($$0.f().g());
+         dvj $$8 = $$0.j();
+         if (!$$8.l()) {
+            gjm.a();
+            $$2.a();
+            $$2.a($$0.b($$1), $$0.c($$1), $$0.d($$1));
+            if ($$8.a(dig.bz) && $$0.a($$1) <= 4.0F) {
+               $$8 = $$8.b(dvd.d, Boolean.valueOf($$0.a($$1) <= 0.5F));
+               this.a($$7, $$8, $$2, $$3, $$6, false, $$5);
+            } else if ($$0.d() && !$$0.b()) {
+               dwl $$9 = $$8.a(dig.br) ? dwl.b : dwl.a;
+               dvj $$10 = dig.bz.m().b(dvd.c, $$9).b(dvd.a, $$8.c(dvc.a));
+               $$10 = $$10.b(dvd.d, Boolean.valueOf($$0.a($$1) >= 0.5F));
+               this.a($$7, $$10, $$2, $$3, $$6, false, $$5);
+               jh $$11 = $$7.a($$0.f());
+               $$2.b();
+               $$2.a();
+               $$8 = $$8.b(dvc.c, Boolean.valueOf(true));
+               this.a($$11, $$8, $$2, $$3, $$6, true, $$5);
+            } else {
+               this.a($$7, $$8, $$2, $$3, $$6, false, $$5);
             }
 
-            if ($$7.c() && $$8 < $$4) {
-               $$4 = $$8;
-               $$2 = $$6;
-            }
+            $$2.b();
+            gjm.b();
          }
       }
-
-      boolean $$9 = $$2 >= 0;
-      boolean $$10 = $$1 >= 0;
-      if (!$$9 || $$10 && (this.b <= 0 || !($$4 < $$3))) {
-         this.b = 2;
-         return this.a($$1);
-      } else {
-         this.b--;
-         return this.a($$2);
-      }
    }
 
-   public int a() {
-      return this.c.size();
+   private void a(jh $$0, dvj $$1, feb $$2, gih $$3, dfb $$4, boolean $$5, int $$6) {
+      gir $$7 = ghz.b($$1);
+      fef $$8 = $$3.getBuffer($$7);
+      this.a.b().a($$4, this.a.a($$1), $$1, $$0, $$2, $$8, $$5, azs.a(), $$1.b($$0), $$6);
    }
 
-   @Nullable
-   private glj.b.a a(int $$0) {
-      return $$0 >= 0 ? this.c.remove($$0) : null;
-   }
-
-   public synchronized void b() {
-      for (glj.b.a $$0 : this.c) {
-         $$0.a();
-      }
-
-      this.c.clear();
+   @Override
+   public int aU_() {
+      return 68;
    }
 }

@@ -1,53 +1,42 @@
-import com.mojang.authlib.GameProfile;
-import com.mojang.authlib.properties.PropertyMap;
+import com.google.common.collect.Lists;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import io.netty.buffer.ByteBuf;
-import java.util.Optional;
-import java.util.UUID;
-import java.util.concurrent.CompletableFuture;
+import java.util.List;
+import java.util.function.Consumer;
 
-public record cyu(Optional<String> c, Optional<UUID> d, PropertyMap e, GameProfile f) {
-   private static final Codec<cyu> g = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               ays.y.optionalFieldOf("name").forGetter(cyu::c),
-               kj.a.optionalFieldOf("id").forGetter(cyu::d),
-               ays.x.optionalFieldOf("properties", new PropertyMap()).forGetter(cyu::e)
-            )
-            .apply($$0, cyu::new)
-   );
-   public static final Codec<cyu> a = Codec.withAlternative(g, ays.y, $$0 -> new cyu(Optional.of($$0), Optional.empty(), new PropertyMap()));
-   public static final zf<ByteBuf, cyu> b = zf.a(zd.b(16).a(zd::a), cyu::c, kj.g.a(zd::a), cyu::d, zd.v, cyu::e, cyu::new);
+public record cyu(List<xi> e, List<xi> f) implements cze {
+   public static final cyu a = new cyu(List.of());
+   public static final int b = 256;
+   private static final yf g = yf.a.a(n.f).b(true);
+   public static final Codec<cyu> c = xk.g.sizeLimitedListOf(256).xmap(cyu::new, cyu::a);
+   public static final zg<wt, cyu> d = xk.b.a(ze.c(256)).a(cyu::new, cyu::a);
 
-   public cyu(Optional<String> $$0, Optional<UUID> $$1, PropertyMap $$2) {
-      this($$0, $$1, $$2, a($$0, $$1, $$2));
+   public cyu(List<xi> $$0) {
+      this($$0, Lists.transform($$0, $$0x -> xl.a($$0x.f(), g)));
    }
 
-   public cyu(GameProfile $$0) {
-      this(Optional.of($$0.getName()), Optional.of($$0.getId()), $$0.getProperties(), $$0);
-   }
-
-   public CompletableFuture<cyu> a() {
-      if (this.b()) {
-         return CompletableFuture.completedFuture(this);
+   public cyu(List<xi> e, List<xi> f) {
+      if (e.size() > 256) {
+         throw new IllegalArgumentException("Got " + e.size() + " lines, but maximum is 256");
       } else {
-         return this.d.isPresent() ? dtu.a(this.d.get()).thenApply($$0 -> {
-            GameProfile $$1 = $$0.orElseGet(() -> new GameProfile(this.d.get(), this.c.orElse("")));
-            return new cyu($$1);
-         }) : dtu.a(this.c.orElseThrow()).thenApply($$0 -> {
-            GameProfile $$1 = $$0.orElseGet(() -> new GameProfile(ad.e, this.c.get()));
-            return new cyu($$1);
-         });
+         this.e = e;
+         this.f = f;
       }
    }
 
-   private static GameProfile a(Optional<String> $$0, Optional<UUID> $$1, PropertyMap $$2) {
-      GameProfile $$3 = new GameProfile($$1.orElse(ad.e), $$0.orElse(""));
-      $$3.getProperties().putAll($$2);
-      return $$3;
+   public cyu a(xi $$0) {
+      return new cyu(ae.a(this.e, $$0));
    }
 
-   public boolean b() {
-      return !this.e.isEmpty() ? true : this.d.isPresent() == this.c.isPresent();
+   @Override
+   public void a(cvx.b $$0, Consumer<xi> $$1, cxt $$2) {
+      this.f.forEach($$1);
+   }
+
+   public List<xi> a() {
+      return this.e;
+   }
+
+   public List<xi> b() {
+      return this.f;
    }
 }

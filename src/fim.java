@@ -1,33 +1,67 @@
-import com.mojang.serialization.Codec;
+import com.mojang.logging.LogUtils;
+import org.slf4j.Logger;
 
-public enum fim implements azm, baf {
-   a(0, "false", "options.off"),
-   b(1, "fast", "options.clouds.fast"),
-   c(2, "true", "options.clouds.fancy");
+public class fim extends fig {
+   private static final Logger b = LogUtils.getLogger();
+   private static final xi c = xi.c("mco.backup.restoring");
+   private final fex d;
+   private final long e;
+   private final fgq f;
 
-   public static final Codec<fim> d = baf.a(fim::values);
-   private final int e;
-   private final String f;
-   private final String g;
-
-   private fim(final int $$0, final String $$1, final String $$2) {
-      this.e = $$0;
-      this.f = $$1;
-      this.g = $$2;
+   public fim(fex $$0, long $$1, fgq $$2) {
+      this.d = $$0;
+      this.e = $$1;
+      this.f = $$2;
    }
 
    @Override
-   public String c() {
-      return this.f;
+   public void run() {
+      fer $$0 = fer.a();
+      int $$1 = 0;
+
+      while ($$1 < 25) {
+         try {
+            if (this.d()) {
+               return;
+            }
+
+            $$0.b(this.e, this.d.a);
+            a(1L);
+            if (this.d()) {
+               return;
+            }
+
+            a(this.f.g());
+            return;
+         } catch (fgd var4) {
+            if (this.d()) {
+               return;
+            }
+
+            a((long)var4.c);
+            $$1++;
+         } catch (fgc var5) {
+            if (this.d()) {
+               return;
+            }
+
+            b.error("Couldn't restore backup", var5);
+            a(new fgu(var5, this.f));
+            return;
+         } catch (Exception var6) {
+            if (this.d()) {
+               return;
+            }
+
+            b.error("Couldn't restore backup", var6);
+            this.a(var6);
+            return;
+         }
+      }
    }
 
    @Override
-   public int b() {
-      return this.e;
-   }
-
-   @Override
-   public String a() {
-      return this.g;
+   public xi a() {
+      return c;
    }
 }

@@ -1,78 +1,43 @@
-import it.unimi.dsi.fastutil.objects.Object2IntLinkedOpenHashMap;
-import it.unimi.dsi.fastutil.objects.Object2IntMaps;
-import it.unimi.dsi.fastutil.objects.ObjectIterator;
-import it.unimi.dsi.fastutil.objects.Object2IntMap.Entry;
-import java.util.Queue;
+import com.mojang.authlib.GameProfileRepository;
+import com.mojang.authlib.minecraft.MinecraftSessionService;
+import com.mojang.authlib.yggdrasil.ServicesKeySet;
+import com.mojang.authlib.yggdrasil.ServicesKeyType;
+import com.mojang.authlib.yggdrasil.YggdrasilAuthenticationService;
+import java.io.File;
+import javax.annotation.Nullable;
 
-public class amd {
-   private static final int a = 8;
-   private final Queue<amd.a> b = new axw<>();
-   private final Object2IntLinkedOpenHashMap<amd.b> c = new Object2IntLinkedOpenHashMap();
+public record amd(MinecraftSessionService a, ServicesKeySet b, GameProfileRepository c, avk d) {
+   private static final String e = "usercache.json";
 
-   private static long b() {
-      return System.currentTimeMillis();
+   public static amd a(YggdrasilAuthenticationService $$0, File $$1) {
+      MinecraftSessionService $$2 = $$0.createMinecraftSessionService();
+      GameProfileRepository $$3 = $$0.createProfileRepository();
+      avk $$4 = new avk($$3, new File($$1, "usercache.json"));
+      return new amd($$2, $$0.getServicesKeySet(), $$3, $$4);
    }
 
-   public synchronized void a(String $$0, Throwable $$1) {
-      long $$2 = b();
-      String $$3 = $$1.getMessage();
-      this.b.add(new amd.a($$2, $$0, (Class<? extends Throwable>)$$1.getClass(), $$3));
-
-      while (this.b.size() > 8) {
-         this.b.remove();
-      }
-
-      amd.b $$4 = new amd.b($$0, (Class<? extends Throwable>)$$1.getClass());
-      int $$5 = this.c.getInt($$4);
-      this.c.putAndMoveToFirst($$4, $$5 + 1);
+   @Nullable
+   public azx a() {
+      return azx.a(this.b, ServicesKeyType.PROFILE_KEY);
    }
 
-   public synchronized String a() {
-      long $$0 = b();
-      StringBuilder $$1 = new StringBuilder();
-      if (!this.b.isEmpty()) {
-         $$1.append("\n\t\tLatest entries:\n");
-
-         for (amd.a $$2 : this.b) {
-            $$1.append("\t\t\t")
-               .append($$2.b)
-               .append(":")
-               .append($$2.c)
-               .append(": ")
-               .append($$2.d)
-               .append(" (")
-               .append($$0 - $$2.a)
-               .append("ms ago)")
-               .append("\n");
-         }
-      }
-
-      if (!this.c.isEmpty()) {
-         if ($$1.isEmpty()) {
-            $$1.append("\n");
-         }
-
-         $$1.append("\t\tEntry counts:\n");
-         ObjectIterator var6 = Object2IntMaps.fastIterable(this.c).iterator();
-
-         while (var6.hasNext()) {
-            Entry<amd.b> $$3 = (Entry<amd.b>)var6.next();
-            $$1.append("\t\t\t")
-               .append(((amd.b)$$3.getKey()).a)
-               .append(":")
-               .append(((amd.b)$$3.getKey()).b)
-               .append(" x ")
-               .append($$3.getIntValue())
-               .append("\n");
-         }
-      }
-
-      return $$1.isEmpty() ? "~~NONE~~" : $$1.toString();
+   public boolean b() {
+      return !this.b.keys(ServicesKeyType.PROFILE_KEY).isEmpty();
    }
 
-   static record a(long a, String b, Class<? extends Throwable> c, String d) {
+   public MinecraftSessionService c() {
+      return this.a;
    }
 
-   static record b(String a, Class<? extends Throwable> b) {
+   public ServicesKeySet d() {
+      return this.b;
+   }
+
+   public GameProfileRepository e() {
+      return this.c;
+   }
+
+   public avk f() {
+      return this.d;
    }
 }

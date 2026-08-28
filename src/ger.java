@@ -1,69 +1,26 @@
-public class ger extends gge {
-   private final double a;
-   private final double b;
-   private final double F;
-   private final boolean G;
-   private final gfe.a H;
+public class ger extends ggp {
+   private final erj b;
+   protected boolean a;
 
-   ger(gbx $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6) {
-      this($$0, $$1, $$2, $$3, $$4, $$5, $$6, false, gfe.a.a);
-   }
-
-   ger(gbx $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, boolean $$7, gfe.a $$8) {
+   ger(gci $$0, double $$1, double $$2, double $$3, erj $$4) {
       super($$0, $$1, $$2, $$3);
-      this.G = $$7;
-      this.H = $$8;
-      this.e($$8.b());
-      this.j = $$4;
-      this.k = $$5;
-      this.l = $$6;
-      this.a = $$1;
-      this.b = $$2;
-      this.F = $$3;
-      this.d = $$1 + $$4;
-      this.e = $$2 + $$5;
-      this.f = $$3 + $$6;
-      this.g = this.d;
-      this.h = this.e;
-      this.i = this.f;
-      this.D = 0.1F * (this.r.i() * 0.5F + 0.2F);
-      float $$9 = this.r.i() * 0.6F + 0.4F;
-      this.v = 0.9F * $$9;
-      this.w = 0.9F * $$9;
-      this.x = $$9;
-      this.n = false;
-      this.t = (int)(Math.random() * 10.0) + 30;
+      this.b(0.01F, 0.01F);
+      this.u = 0.06F;
+      this.b = $$4;
+   }
+
+   protected erj g() {
+      return this.b;
    }
 
    @Override
-   public gfi b() {
-      return this.H.a() ? gfi.b : gfi.c;
-   }
-
-   @Override
-   public void a(double $$0, double $$1, double $$2) {
-      this.a(this.n().d($$0, $$1, $$2));
-      this.l();
+   public gft b() {
+      return gft.b;
    }
 
    @Override
    public int a(float $$0) {
-      if (this.G) {
-         return 240;
-      } else {
-         int $$1 = super.a($$0);
-         float $$2 = (float)this.s / (float)this.t;
-         $$2 *= $$2;
-         $$2 *= $$2;
-         int $$3 = $$1 & 0xFF;
-         int $$4 = $$1 >> 16 & 0xFF;
-         $$4 += (int)($$2 * 15.0F * 16.0F);
-         if ($$4 > 240) {
-            $$4 = 240;
-         }
-
-         return $$3 | $$4 << 16;
-      }
+      return this.a ? 240 : super.a($$0);
    }
 
    @Override
@@ -71,66 +28,260 @@ public class ger extends gge {
       this.d = this.g;
       this.e = this.h;
       this.f = this.i;
-      if (this.s++ >= this.t) {
+      this.h();
+      if (!this.o) {
+         this.k = this.k - (double)this.u;
+         this.a(this.j, this.k, this.l);
+         this.i();
+         if (!this.o) {
+            this.j *= 0.98F;
+            this.k *= 0.98F;
+            this.l *= 0.98F;
+            if (this.b != erl.a) {
+               jh $$0 = jh.a(this.g, this.h, this.i);
+               erk $$1 = this.c.b_($$0);
+               if ($$1.a() == this.b && this.h < (double)((float)$$0.v() + $$1.a(this.c, $$0))) {
+                  this.k();
+               }
+            }
+         }
+      }
+   }
+
+   protected void h() {
+      if (this.t-- <= 0) {
          this.k();
-      } else {
-         float $$0 = (float)this.s / (float)this.t;
-         $$0 = 1.0F - $$0;
-         float $$1 = 1.0F - $$0;
-         $$1 *= $$1;
-         $$1 *= $$1;
-         this.g = this.a + this.j * (double)$$0;
-         this.h = this.b + this.k * (double)$$0 - (double)($$1 * 1.2F);
-         this.i = this.F + this.l * (double)$$0;
       }
    }
 
-   @Override
-   public void a(fdx $$0, fij $$1, float $$2) {
-      this.e(this.H.a(this.s, this.t, $$2));
-      super.a($$0, $$1, $$2);
+   protected void i() {
    }
 
-   public static class a implements gfh<lu> {
-      private final gfz a;
+   public static ggp a(lv $$0, gci $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+      ger $$8 = new ger.b($$1, $$2, $$3, $$4, erl.c, lr.m);
+      $$8.a(0.2F, 0.3F, 1.0F);
+      return $$8;
+   }
 
-      public a(gfz $$0) {
-         this.a = $$0;
+   public static ggp b(lv $$0, gci $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+      ger $$8 = new ger.e($$1, $$2, $$3, $$4, erl.c, lr.am);
+      $$8.a(0.2F, 0.3F, 1.0F);
+      return $$8;
+   }
+
+   public static ggp c(lv $$0, gci $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+      return new ger.a($$1, $$2, $$3, $$4, erl.e, lr.j);
+   }
+
+   public static ggp d(lv $$0, gci $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+      ger $$8 = new ger.e($$1, $$2, $$3, $$4, erl.e, lr.k);
+      $$8.a(1.0F, 0.2857143F, 0.083333336F);
+      return $$8;
+   }
+
+   public static ggp e(lv $$0, gci $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+      ger $$8 = new ger.c($$1, $$2, $$3, $$4, erl.e);
+      $$8.a(1.0F, 0.2857143F, 0.083333336F);
+      return $$8;
+   }
+
+   public static ggp f(lv $$0, gci $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+      ger.b $$8 = new ger.b($$1, $$2, $$3, $$4, erl.a, lr.aw);
+      $$8.u *= 0.01F;
+      $$8.t = 100;
+      $$8.a(0.622F, 0.508F, 0.082F);
+      return $$8;
+   }
+
+   public static ggp g(lv $$0, gci $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+      ger $$8 = new ger.g($$1, $$2, $$3, $$4, erl.a, lr.ax);
+      $$8.u = 0.01F;
+      $$8.a(0.582F, 0.448F, 0.082F);
+      return $$8;
+   }
+
+   public static ggp h(lv $$0, gci $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+      ger $$8 = new ger.c($$1, $$2, $$3, $$4, erl.a);
+      $$8.t = (int)(128.0 / (Math.random() * 0.8 + 0.2));
+      $$8.a(0.522F, 0.408F, 0.082F);
+      return $$8;
+   }
+
+   public static ggp i(lv $$0, gci $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+      ger $$8 = new ger.b($$1, $$2, $$3, $$4, erl.c, lr.aO);
+      $$8.a(0.2F, 0.3F, 1.0F);
+      return $$8;
+   }
+
+   public static ggp j(lv $$0, gci $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+      ger $$8 = new ger.d($$1, $$2, $$3, $$4, erl.c, lr.am);
+      $$8.a(0.2F, 0.3F, 1.0F);
+      return $$8;
+   }
+
+   public static ggp k(lv $$0, gci $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+      return new ger.a($$1, $$2, $$3, $$4, erl.e, lr.aM);
+   }
+
+   public static ggp l(lv $$0, gci $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+      ger $$8 = new ger.d($$1, $$2, $$3, $$4, erl.e, lr.k);
+      $$8.a(1.0F, 0.2857143F, 0.083333336F);
+      return $$8;
+   }
+
+   public static ggp m(lv $$0, gci $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+      ger $$8 = new ger.f($$1, $$2, $$3, $$4, erl.a);
+      $$8.t = (int)(16.0 / (Math.random() * 0.8 + 0.2));
+      $$8.u = 0.007F;
+      $$8.a(0.92F, 0.782F, 0.72F);
+      return $$8;
+   }
+
+   public static ggp n(lv $$0, gci $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+      int $$8 = (int)(64.0F / azk.b($$1.E_(), 0.1F, 0.9F));
+      ger $$9 = new ger.f($$1, $$2, $$3, $$4, erl.a, $$8);
+      $$9.u = 0.005F;
+      $$9.a(0.32F, 0.5F, 0.22F);
+      return $$9;
+   }
+
+   public static ggp o(lv $$0, gci $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+      ger.b $$8 = new ger.b($$1, $$2, $$3, $$4, erl.a, lr.aF);
+      $$8.a = true;
+      $$8.u *= 0.01F;
+      $$8.t = 100;
+      $$8.a(0.51171875F, 0.03125F, 0.890625F);
+      return $$8;
+   }
+
+   public static ggp p(lv $$0, gci $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+      ger $$8 = new ger.e($$1, $$2, $$3, $$4, erl.a, lr.aG);
+      $$8.a = true;
+      $$8.u = 0.01F;
+      $$8.a(0.51171875F, 0.03125F, 0.890625F);
+      return $$8;
+   }
+
+   public static ggp q(lv $$0, gci $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+      ger $$8 = new ger.c($$1, $$2, $$3, $$4, erl.a);
+      $$8.a = true;
+      $$8.t = (int)(28.0 / (Math.random() * 0.8 + 0.2));
+      $$8.a(0.51171875F, 0.03125F, 0.890625F);
+      return $$8;
+   }
+
+   static class a extends ger.b {
+      a(gci $$0, double $$1, double $$2, double $$3, erj $$4, lp $$5) {
+         super($$0, $$1, $$2, $$3, $$4, $$5);
       }
 
-      public gfe a(lu $$0, gbx $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         ger $$8 = new ger($$1, $$2, $$3, $$4, $$5, $$6, $$7);
-         $$8.a(this.a);
-         return $$8;
+      @Override
+      protected void h() {
+         this.v = 1.0F;
+         this.w = 16.0F / (float)(40 - this.t + 16);
+         this.x = 4.0F / (float)(40 - this.t + 8);
+         super.h();
       }
    }
 
-   public static class b implements gfh<lu> {
-      private final gfz a;
+   static class b extends ger {
+      private final lp b;
 
-      public b(gfz $$0) {
-         this.a = $$0;
+      b(gci $$0, double $$1, double $$2, double $$3, erj $$4, lp $$5) {
+         super($$0, $$1, $$2, $$3, $$4);
+         this.b = $$5;
+         this.u *= 0.02F;
+         this.t = 40;
       }
 
-      public gfe a(lu $$0, gbx $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         ger $$8 = new ger($$1, $$2, $$3, $$4, $$5, $$6, $$7);
-         $$8.a(this.a);
-         return $$8;
+      @Override
+      protected void h() {
+         if (this.t-- <= 0) {
+            this.k();
+            this.c.a(this.b, this.g, this.h, this.i, this.j, this.k, this.l);
+         }
+      }
+
+      @Override
+      protected void i() {
+         this.j *= 0.02;
+         this.k *= 0.02;
+         this.l *= 0.02;
       }
    }
 
-   public static class c implements gfh<lu> {
-      private final gfz a;
+   static class c extends ger {
+      c(gci $$0, double $$1, double $$2, double $$3, erj $$4) {
+         super($$0, $$1, $$2, $$3, $$4);
+         this.t = (int)(16.0 / (Math.random() * 0.8 + 0.2));
+      }
+   }
 
-      public c(gfz $$0) {
-         this.a = $$0;
+   static class d extends ger.e {
+      d(gci $$0, double $$1, double $$2, double $$3, erj $$4, lp $$5) {
+         super($$0, $$1, $$2, $$3, $$4, $$5);
       }
 
-      public gfe a(lu $$0, gbx $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         ger $$8 = new ger($$1, $$2, $$3, $$4, $$5, $$6, $$7, true, new gfe.a(0.0F, 0.6F, 0.25F, 1.0F));
-         $$8.d(1.5F);
-         $$8.a(this.a);
-         return $$8;
+      @Override
+      protected void i() {
+         if (this.m) {
+            this.k();
+            this.c.a(this.b, this.g, this.h, this.i, 0.0, 0.0, 0.0);
+            awk $$0 = this.g() == erl.e ? awl.hy : awl.hz;
+            float $$1 = azk.b(this.r, 0.3F, 1.0F);
+            this.c.a(this.g, this.h, this.i, $$0, awm.e, $$1, 1.0F, false);
+         }
+      }
+   }
+
+   static class e extends ger.f {
+      protected final lp b;
+
+      e(gci $$0, double $$1, double $$2, double $$3, erj $$4, lp $$5) {
+         super($$0, $$1, $$2, $$3, $$4);
+         this.b = $$5;
+      }
+
+      @Override
+      protected void i() {
+         if (this.m) {
+            this.k();
+            this.c.a(this.b, this.g, this.h, this.i, 0.0, 0.0, 0.0);
+         }
+      }
+   }
+
+   static class f extends ger {
+      f(gci $$0, double $$1, double $$2, double $$3, erj $$4) {
+         this($$0, $$1, $$2, $$3, $$4, (int)(64.0 / (Math.random() * 0.8 + 0.2)));
+      }
+
+      f(gci $$0, double $$1, double $$2, double $$3, erj $$4, int $$5) {
+         super($$0, $$1, $$2, $$3, $$4);
+         this.t = $$5;
+      }
+
+      @Override
+      protected void i() {
+         if (this.m) {
+            this.k();
+         }
+      }
+   }
+
+   static class g extends ger.e {
+      g(gci $$0, double $$1, double $$2, double $$3, erj $$4, lp $$5) {
+         super($$0, $$1, $$2, $$3, $$4, $$5);
+      }
+
+      @Override
+      protected void i() {
+         if (this.m) {
+            this.k();
+            this.c.a(this.b, this.g, this.h, this.i, 0.0, 0.0, 0.0);
+            float $$0 = azk.b(this.r, 0.3F, 1.0F);
+            this.c.a(this.g, this.h, this.i, awl.bU, awm.e, $$0, 1.0F, false);
+         }
       }
    }
 }

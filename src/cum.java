@@ -1,274 +1,112 @@
-import java.util.Collection;
-import java.util.Set;
-import java.util.function.Supplier;
-import javax.annotation.Nullable;
+public class cum extends cvx {
+   public static final int a = 10;
+   private static final int b = 200;
 
-public class cum {
-   static final alh a = a("items");
-   private final xh b;
-   alh c = a;
-   boolean d = true;
-   boolean e = true;
-   boolean f = false;
-   private final cum.f g;
-   private final int h;
-   private final cum.h i;
-   @Nullable
-   private cvx j;
-   private Collection<cvx> k = cvy.a();
-   private Set<cvx> l = cvy.a();
-   private final Supplier<cvx> m;
-   private final cum.b n;
-
-   cum(cum.f $$0, int $$1, cum.h $$2, xh $$3, Supplier<cvx> $$4, cum.b $$5) {
-      this.g = $$0;
-      this.h = $$1;
-      this.b = $$3;
-      this.m = $$4;
-      this.n = $$5;
-      this.i = $$2;
+   public cum(cvx.a $$0) {
+      super($$0);
    }
 
-   public static alh a(String $$0) {
-      return alh.b("textures/gui/container/creative_inventory/tab_" + $$0 + ".png");
-   }
-
-   public static cum.a a(cum.f $$0, int $$1) {
-      return new cum.a($$0, $$1);
-   }
-
-   public xh a() {
-      return this.b;
-   }
-
-   public cvx b() {
-      if (this.j == null) {
-         this.j = this.m.get();
+   @Override
+   public bsd a(czu $$0) {
+      com $$1 = $$0.o();
+      if ($$1 != null && this.a($$1).d() == ezl.a.b) {
+         $$1.c($$0.p());
       }
 
-      return this.j;
+      return bsd.c;
    }
 
-   public alh c() {
-      return this.c;
+   @Override
+   public cwd b(cwb $$0) {
+      return cwd.j;
    }
 
-   public boolean d() {
-      return this.e;
+   @Override
+   public int a(cwb $$0, bva $$1) {
+      return 200;
    }
 
-   public boolean e() {
-      return this.d;
-   }
+   @Override
+   public void a(dfb $$0, bva $$1, cwb $$2, int $$3) {
+      if ($$3 >= 0 && $$1 instanceof com $$4) {
+         ezl $$6 = this.a($$4);
+         if ($$6 instanceof ezj $$7 && $$6.d() == ezl.a.b) {
+            int $$9 = this.a($$2, $$1) - $$3 + 1;
+            boolean $$10 = $$9 % 10 == 5;
+            if ($$10) {
+               jh $$11 = $$7.b();
+               dvj $$12 = $$0.a_($$11);
+               buu $$13 = $$1.fC() == bsc.a ? $$4.fA() : $$4.fA().e();
+               if ($$12.D() && $$12.o() != dok.a) {
+                  this.a($$0, $$7, $$12, $$1.g(0.0F), $$13);
+               }
 
-   public int f() {
-      return this.h;
-   }
+               awk $$15;
+               if ($$12.b() instanceof dij $$14) {
+                  $$15 = $$14.c();
+               } else {
+                  $$15 = awl.cS;
+               }
 
-   public cum.f g() {
-      return this.g;
-   }
-
-   public boolean h() {
-      return !this.k.isEmpty();
-   }
-
-   public boolean i() {
-      return this.i != cum.h.a || this.h();
-   }
-
-   public boolean j() {
-      return this.f;
-   }
-
-   public cum.h k() {
-      return this.i;
-   }
-
-   public void a(cum.d $$0) {
-      cum.c $$1 = new cum.c(this, $$0.a);
-      alg<cum> $$2 = lx.al.d(this).orElseThrow(() -> new IllegalStateException("Unregistered creative tab: " + this));
-      this.n.accept($$0, $$1);
-      this.k = $$1.a;
-      this.l = $$1.b;
-   }
-
-   public Collection<cvx> l() {
-      return this.k;
-   }
-
-   public Collection<cvx> m() {
-      return this.l;
-   }
-
-   public boolean a(cvx $$0) {
-      return this.l.contains($$0);
-   }
-
-   public static class a {
-      private static final cum.b a = ($$0, $$1) -> {
-      };
-      private final cum.f b;
-      private final int c;
-      private xh d = xh.i();
-      private Supplier<cvx> e = () -> cvx.k;
-      private cum.b f = a;
-      private boolean g = true;
-      private boolean h = true;
-      private boolean i = false;
-      private cum.h j = cum.h.a;
-      private alh k = cum.a;
-
-      public a(cum.f $$0, int $$1) {
-         this.b = $$0;
-         this.c = $$1;
-      }
-
-      public cum.a a(xh $$0) {
-         this.d = $$0;
-         return this;
-      }
-
-      public cum.a a(Supplier<cvx> $$0) {
-         this.e = $$0;
-         return this;
-      }
-
-      public cum.a a(cum.b $$0) {
-         this.f = $$0;
-         return this;
-      }
-
-      public cum.a a() {
-         this.i = true;
-         return this;
-      }
-
-      public cum.a b() {
-         this.h = false;
-         return this;
-      }
-
-      public cum.a c() {
-         this.g = false;
-         return this;
-      }
-
-      protected cum.a a(cum.h $$0) {
-         this.j = $$0;
-         return this;
-      }
-
-      public cum.a a(alh $$0) {
-         this.k = $$0;
-         return this;
-      }
-
-      public cum d() {
-         if ((this.j == cum.h.c || this.j == cum.h.b) && this.f != a) {
-            throw new IllegalStateException("Special tabs can't have display items");
-         } else {
-            cum $$0 = new cum(this.b, this.c, this.j, this.d, this.e, this.f);
-            $$0.f = this.i;
-            $$0.e = this.h;
-            $$0.d = this.g;
-            $$0.c = this.k;
-            return $$0;
-         }
-      }
-   }
-
-   @FunctionalInterface
-   public interface b {
-      void accept(cum.d var1, cum.e var2);
-   }
-
-   static class c implements cum.e {
-      public final Collection<cvx> a = cvy.a();
-      public final Set<cvx> b = cvy.a();
-      private final cum c;
-      private final cra d;
-
-      public c(cum $$0, cra $$1) {
-         this.c = $$0;
-         this.d = $$1;
-      }
-
-      @Override
-      public void a(cvx $$0, cum.g $$1) {
-         if ($$0.L() != 1) {
-            throw new IllegalArgumentException("Stack size must be exactly 1");
-         } else {
-            boolean $$2 = this.a.contains($$0) && $$1 != cum.g.c;
-            if ($$2) {
-               throw new IllegalStateException(
-                  "Accidentally adding the same item stack twice " + $$0.J().getString() + " to a Creative Mode Tab: " + this.c.a().getString()
-               );
-            } else {
-               if ($$0.h().a(this.d)) {
-                  switch ($$1) {
-                     case a:
-                        this.a.add($$0);
-                        this.b.add($$0);
-                        break;
-                     case b:
-                        this.a.add($$0);
-                        break;
-                     case c:
-                        this.b.add($$0);
+               $$0.a($$4, $$11, $$15, awm.e);
+               if ($$0 instanceof arn $$17 && $$0.c_($$11) instanceof dsq $$18) {
+                  boolean $$19 = $$18.a($$0.aa(), $$17, $$4, $$7.c(), $$2);
+                  if ($$19) {
+                     bum $$20 = $$2.equals($$4.a(bum.b)) ? bum.b : bum.a;
+                     $$2.a(1, $$4, $$20);
                   }
                }
             }
+
+            return;
          }
+
+         $$1.fG();
+      } else {
+         $$1.fG();
       }
    }
 
-   public static record d(cra a, boolean b, jr.a c) {
+   private ezl a(com $$0) {
+      return cpi.a($$0, buj.h, $$0.gK());
+   }
 
-      public boolean a(cra $$0, boolean $$1, jr.a $$2) {
-         return !this.a.equals($$0) || this.b != $$1 || this.c != $$2;
+   private void a(dfb $$0, ezj $$1, dvj $$2, ezn $$3, buu $$4) {
+      double $$5 = 3.0;
+      int $$6 = $$4 == buu.b ? 1 : -1;
+      int $$7 = $$0.E_().b(7, 12);
+      lj $$8 = new lj(lr.b, $$2);
+      jm $$9 = $$1.c();
+      cum.a $$10 = cum.a.a($$3, $$9);
+      ezn $$11 = $$1.g();
+
+      for (int $$12 = 0; $$12 < $$7; $$12++) {
+         $$0.a(
+            $$8,
+            $$11.d - (double)($$9 == jm.e ? 1.0E-6F : 0.0F),
+            $$11.e,
+            $$11.f - (double)($$9 == jm.c ? 1.0E-6F : 0.0F),
+            $$10.a() * (double)$$6 * 3.0 * $$0.E_().j(),
+            0.0,
+            $$10.c() * (double)$$6 * 3.0 * $$0.E_().j()
+         );
       }
    }
 
-   public interface e {
-      void a(cvx var1, cum.g var2);
+   static record a(double a, double b, double c) {
+      private static final double d = 1.0;
+      private static final double e = 0.1;
 
-      default void a(cvx $$0) {
-         this.a($$0, cum.g.a);
+      public static cum.a a(ezn $$0, jm $$1) {
+         double $$2 = 0.0;
+
+         return switch ($$1) {
+            case a, b -> new cum.a($$0.c(), 0.0, -$$0.a());
+            case c -> new cum.a(1.0, 0.0, -0.1);
+            case d -> new cum.a(-1.0, 0.0, 0.1);
+            case e -> new cum.a(-0.1, 0.0, -1.0);
+            case f -> new cum.a(0.1, 0.0, 1.0);
+         };
       }
-
-      default void a(deu $$0, cum.g $$1) {
-         this.a(new cvx($$0), $$1);
-      }
-
-      default void a(deu $$0) {
-         this.a(new cvx($$0), cum.g.a);
-      }
-
-      default void a(Collection<cvx> $$0, cum.g $$1) {
-         $$0.forEach($$1x -> this.a($$1x, $$1));
-      }
-
-      default void a(Collection<cvx> $$0) {
-         this.a($$0, cum.g.a);
-      }
-   }
-
-   public static enum f {
-      a,
-      b;
-   }
-
-   protected static enum g {
-      a,
-      b,
-      c;
-   }
-
-   public static enum h {
-      a,
-      b,
-      c,
-      d;
    }
 }

@@ -1,20 +1,28 @@
-import java.util.UUID;
+import java.util.Locale;
 
-public interface hat {
-   void a(UUID var1, hat.b var2);
+public record hat(ali b, String c) {
+   public static final String a = "inventory";
 
-   void a(UUID var1, hat.a var2);
-
-   public static enum a {
-      a,
-      b,
-      c,
-      d,
-      e;
+   public hat(ali b, String c) {
+      c = a(c);
+      this.b = b;
+      this.c = c;
    }
 
-   public static enum b {
-      a,
-      b;
+   public static hat a(ali $$0) {
+      return new hat($$0, "inventory");
+   }
+
+   private static String a(String $$0) {
+      return $$0.toLowerCase(Locale.ROOT);
+   }
+
+   public String a() {
+      return this.c;
+   }
+
+   @Override
+   public String toString() {
+      return this.b + "#" + this.c;
    }
 }

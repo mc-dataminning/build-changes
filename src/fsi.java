@@ -1,50 +1,96 @@
-public abstract class fsi<T extends csn> extends frh<T> implements crx {
-   private final alh G;
+public class fsi {
+   private static final ali a = ali.b("alt");
+   private static final yf b = yf.a.a(a);
+   private static final fsi c = new fsi();
+   private final azs d = azs.a();
+   private final String[] e = new String[]{
+      "the",
+      "elder",
+      "scrolls",
+      "klaatu",
+      "berata",
+      "niktu",
+      "xyzzy",
+      "bless",
+      "curse",
+      "light",
+      "darkness",
+      "fire",
+      "air",
+      "earth",
+      "water",
+      "hot",
+      "dry",
+      "cold",
+      "wet",
+      "ignite",
+      "snuff",
+      "embiggen",
+      "twist",
+      "shorten",
+      "stretch",
+      "fiddle",
+      "destroy",
+      "imbue",
+      "galvanize",
+      "enchant",
+      "free",
+      "limited",
+      "range",
+      "of",
+      "towards",
+      "inside",
+      "sphere",
+      "cube",
+      "self",
+      "other",
+      "ball",
+      "mental",
+      "physical",
+      "grow",
+      "shrink",
+      "demon",
+      "elemental",
+      "spirit",
+      "animal",
+      "creature",
+      "beast",
+      "humanoid",
+      "undead",
+      "fresh",
+      "stale",
+      "phnglui",
+      "mglwnafh",
+      "cthulhu",
+      "rlyeh",
+      "wgahnagl",
+      "fhtagn",
+      "baguette"
+   };
 
-   public fsi(T $$0, cog $$1, xh $$2, alh $$3) {
-      super($$0, $$1, $$2);
-      this.G = $$3;
+   private fsi() {
    }
 
-   protected void F() {
+   public static fsi a() {
+      return c;
    }
 
-   @Override
-   protected void aS_() {
-      super.aS_();
-      this.F();
-      this.z.a(this);
+   public xn a(fks $$0, int $$1) {
+      StringBuilder $$2 = new StringBuilder();
+      int $$3 = this.d.a(2) + 3;
+
+      for (int $$4 = 0; $$4 < $$3; $$4++) {
+         if ($$4 != 0) {
+            $$2.append(" ");
+         }
+
+         $$2.append(ae.a(this.e, this.d));
+      }
+
+      return $$0.b().a(xi.b($$2.toString()).c(b), $$1, yf.a);
    }
 
-   @Override
-   public void j() {
-      super.j();
-      this.z.b(this);
-   }
-
-   @Override
-   public void a(fkm $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      this.d($$0, $$1, $$2, $$3);
-      this.a($$0, $$1, $$2);
-   }
-
-   protected void d(fkm $$0, int $$1, int $$2, float $$3) {
-   }
-
-   @Override
-   protected void a(fkm $$0, float $$1, int $$2, int $$3) {
-      $$0.a(gig::B, this.G, this.C, this.D, 0.0F, 0.0F, this.s, this.u, 256, 256);
-      this.c($$0, this.C, this.D);
-   }
-
-   protected abstract void c(fkm var1, int var2, int var3);
-
-   @Override
-   public void a(crj $$0, int $$1, int $$2) {
-   }
-
-   @Override
-   public void a(crj $$0, int $$1, cvx $$2) {
+   public void a(long $$0) {
+      this.d.b($$0);
    }
 }

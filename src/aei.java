@@ -1,21 +1,18 @@
-public record aei(int b, xh c) implements zo<acd> {
-   public static final zf<ws, aei> a = zf.a(zd.h, aei::b, xj.d, aei::e, aei::new);
+import io.netty.buffer.ByteBuf;
 
-   @Override
-   public zq<aei> a() {
-      return ags.ae;
+public class aei implements zp<ace> {
+   public static final aei a = new aei();
+   public static final zg<ByteBuf, aei> b = zg.a(a);
+
+   private aei() {
    }
 
-   public void a(acd $$0) {
+   @Override
+   public zr<aei> a() {
+      return agt.ad;
+   }
+
+   public void a(ace $$0) {
       $$0.a(this);
-   }
-
-   @Override
-   public boolean c() {
-      return true;
-   }
-
-   public xh e() {
-      return this.c;
    }
 }

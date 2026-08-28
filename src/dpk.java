@@ -1,60 +1,30 @@
 import com.mojang.serialization.MapCodec;
 
-public class dpk extends dhy {
-   public static final MapCodec<dpk> a = b(dpk::new);
-   protected static final fab b = dhy.a(0.0, 0.0, 0.0, 16.0, 14.0, 16.0);
-   private static final int c = 20;
+public class dpk extends djy {
+   public static final MapCodec<dpk> b = b(dpk::new);
+   private static final xi c = xi.c("container.upgrade");
 
    @Override
    public MapCodec<dpk> a() {
-      return a;
+      return b;
    }
 
-   public dpk(dvc.d $$0) {
+   protected dpk(dvi.d $$0) {
       super($$0);
    }
 
    @Override
-   protected fab b(dvd $$0, dea $$1, jg $$2, ezm $$3) {
-      return b;
+   protected bsf b(dvj $$0, dfb $$1, jh $$2) {
+      return new bsl(($$2x, $$3, $$4) -> new cto($$2x, $$3, csb.a($$1, $$2)), c);
    }
 
    @Override
-   protected fab b_(dvd $$0, dea $$1, jg $$2) {
-      return ezy.b();
-   }
-
-   @Override
-   protected fab c(dvd $$0, dea $$1, jg $$2, ezm $$3) {
-      return ezy.b();
-   }
-
-   @Override
-   protected void a(dvd $$0, arm $$1, jg $$2, azr $$3) {
-      die.b($$1, $$2.d(), $$0);
-   }
-
-   @Override
-   protected dvd a(dvd $$0, jl $$1, dvd $$2, dew $$3, jg $$4, jg $$5) {
-      if ($$1 == jl.b && $$2.a(dia.G)) {
-         $$3.a($$4, this, 20);
+   protected bsd a(dvj $$0, dfb $$1, jh $$2, com $$3, ezj $$4) {
+      if (!$$1.C) {
+         $$3.a($$0.c($$1, $$2));
+         $$3.a(awv.aF);
       }
 
-      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
-   }
-
-   @Override
-   protected void b(dvd $$0, dev $$1, jg $$2, dvd $$3, boolean $$4) {
-      $$1.a($$2, this, 20);
-   }
-
-   @Override
-   protected boolean a(dvd $$0, ert $$1) {
-      return false;
-   }
-
-   @Override
-   protected float c(dvd $$0, dea $$1, jg $$2) {
-      return 0.2F;
+      return bsd.a;
    }
 }

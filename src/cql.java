@@ -1,74 +1,151 @@
-public class cql extends cqf {
-   private float c;
-   private float d;
+import javax.annotation.Nullable;
 
-   public cql(bug<?> $$0, dev $$1) {
+public abstract class cql extends cqk implements cqo {
+   private jz<cwb> c = jz.a(36, cwb.k);
+   @Nullable
+   private alh<euh> d;
+   private long e;
+
+   protected cql(bul<?> $$0, dfb $$1) {
       super($$0, $$1);
    }
 
-   public cql(dev $$0, double $$1, double $$2, double $$3) {
-      super(bug.ar, $$0, $$1, $$2, $$3);
+   protected cql(bul<?> $$0, double $$1, double $$2, double $$3, dfb $$4) {
+      super($$0, $$4, $$1, $$2, $$3);
    }
 
    @Override
-   public bry a(coh $$0, brx $$1) {
-      if (!$$0.ga() && !this.cb() && (this.dX().C || $$0.n(this))) {
-         this.d = this.c;
-         if (!this.dX().C) {
-            return (bry)($$0.n(this) ? bry.c : bry.e);
-         } else {
-            return bry.a;
-         }
+   public void a(bsu $$0) {
+      super.a($$0);
+      this.a($$0, this.dX(), this);
+   }
+
+   @Override
+   public cwb a(int $$0) {
+      return this.f_($$0);
+   }
+
+   @Override
+   public cwb a(int $$0, int $$1) {
+      return this.b($$0, $$1);
+   }
+
+   @Override
+   public cwb b(int $$0) {
+      return this.e_($$0);
+   }
+
+   @Override
+   public void a(int $$0, cwb $$1) {
+      this.c($$0, $$1);
+   }
+
+   @Override
+   public bvs a_(int $$0) {
+      return this.g_($$0);
+   }
+
+   @Override
+   public void e() {
+   }
+
+   @Override
+   public boolean a(com $$0) {
+      return this.g($$0);
+   }
+
+   @Override
+   public void a(bue.c $$0) {
+      if (!this.dX().C && $$0.a()) {
+         brz.a(this.dX(), this, this);
+      }
+
+      super.a($$0);
+   }
+
+   @Override
+   protected void b(uk $$0) {
+      super.b($$0);
+      this.a($$0, this.dZ());
+   }
+
+   @Override
+   protected void a(uk $$0) {
+      super.a($$0);
+      this.b($$0, this.dZ());
+   }
+
+   @Override
+   public bsd a(com $$0, bsc $$1) {
+      return this.c_($$0);
+   }
+
+   @Override
+   protected ezn a(ezn $$0) {
+      float $$1 = 0.98F;
+      if (this.d == null) {
+         int $$2 = 15 - cro.b(this);
+         $$1 += (float)$$2 * 0.001F;
+      }
+
+      if (this.bk()) {
+         $$1 *= 0.95F;
+      }
+
+      return $$0.d((double)$$1, 0.0, (double)$$1);
+   }
+
+   @Override
+   public void a() {
+      this.f();
+   }
+
+   public void a(alh<euh> $$0, long $$1) {
+      this.d = $$0;
+      this.e = $$1;
+   }
+
+   @Nullable
+   @Override
+   public cro createMenu(int $$0, col $$1, com $$2) {
+      if (this.d != null && $$2.R_()) {
+         return null;
       } else {
-         return bry.e;
+         this.f($$1.k);
+         return this.a($$0, $$1);
       }
    }
 
+   protected abstract cro a(int var1, col var2);
+
+   @Nullable
    @Override
-   protected cvt al_() {
-      return cwb.nM;
+   public alh<euh> E() {
+      return this.d;
    }
 
    @Override
-   public void a(int $$0, int $$1, int $$2, boolean $$3) {
-      if ($$3) {
-         if (this.cb()) {
-            this.bQ();
-         }
-
-         if (this.R() == 0) {
-            this.m(-this.S());
-            this.d(10);
-            this.b(50.0F);
-            this.bE();
-         }
-      }
+   public void a(@Nullable alh<euh> $$0) {
+      this.d = $$0;
    }
 
    @Override
-   public cqf.a y() {
-      return cqf.a.a;
+   public long F() {
+      return this.e;
    }
 
    @Override
-   public void l() {
-      double $$0 = (double)this.dN();
-      ezh $$1 = this.dv();
-      super.l();
-      double $$2 = ((double)this.dN() - $$0) % 360.0;
-      if (this.dX().C && $$1.f(this.dv()) > 0.01) {
-         this.c += (float)$$2;
-         this.c %= 360.0F;
-      }
+   public void a(long $$0) {
+      this.e = $$0;
    }
 
    @Override
-   protected void a(btz $$0, btz.a $$1) {
-      super.a($$0, $$1);
-      if (this.dX().C && $$0 instanceof coh $$2 && $$2.gP() && b(this.dX())) {
-         float $$3 = (float)azj.e(0.5, (double)this.d, (double)this.c);
-         $$2.v($$2.dN() - ($$3 - this.d));
-         this.d = $$3;
-      }
+   public jz<cwb> G() {
+      return this.c;
+   }
+
+   @Override
+   public void I() {
+      this.c = jz.a(this.b(), cwb.k);
    }
 }

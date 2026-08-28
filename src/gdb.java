@@ -1,101 +1,200 @@
-import com.mojang.authlib.minecraft.report.AbuseReport;
-import com.mojang.authlib.minecraft.report.AbuseReportLimits;
-import com.mojang.datafixers.util.Either;
+import com.google.common.collect.Queues;
+import com.mojang.authlib.GameProfile;
 import java.time.Instant;
+import java.util.Deque;
 import java.util.UUID;
+import java.util.function.BooleanSupplier;
 import javax.annotation.Nullable;
+import org.apache.commons.lang3.StringUtils;
 
-public abstract class gdb {
-   protected final UUID a;
-   protected final Instant b;
-   protected final UUID c;
-   protected String d = "";
-   @Nullable
-   protected gdd e;
-   protected boolean f;
+public class gdb {
+   private static final xi a = xi.c("chat.validation_error").a(n.m, n.u);
+   private final fji b;
+   private final Deque<gdb.a> c = Queues.newArrayDeque();
+   private long d;
+   private long e;
 
-   public gdb(UUID $$0, Instant $$1, UUID $$2) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
+   public gdb(fji $$0) {
+      this.b = $$0;
    }
 
-   public boolean a(UUID $$0) {
-      return $$0.equals(this.c);
+   public void a() {
+      if (this.d != 0L) {
+         if (ae.c() >= this.e + this.d) {
+            gdb.a $$0 = this.c.poll();
+
+            while ($$0 != null && !$$0.a()) {
+               $$0 = this.c.poll();
+            }
+         }
+      }
    }
 
-   public abstract gdb b();
-
-   public abstract fqs a(fqs var1, gdf var2);
-
-   public abstract static class a<R extends gdb> {
-      protected final R a;
-      protected final AbuseReportLimits b;
-
-      protected a(R $$0, AbuseReportLimits $$1) {
-         this.a = $$0;
-         this.b = $$1;
+   public void a(double $$0) {
+      long $$1 = (long)($$0 * 1000.0);
+      if ($$1 == 0L && this.d > 0L) {
+         this.c.forEach(gdb.a::a);
+         this.c.clear();
       }
 
-      public R e() {
+      this.d = $$1;
+   }
+
+   public void b() {
+      this.c.remove().a();
+   }
+
+   public long c() {
+      return (long)this.c.size();
+   }
+
+   public void d() {
+      this.c.forEach(gdb.a::a);
+      this.c.clear();
+   }
+
+   public boolean a(xu $$0) {
+      return this.c.removeIf($$1 -> $$0.equals($$1.b()));
+   }
+
+   private boolean e() {
+      return this.d > 0L && ae.c() < this.e + this.d;
+   }
+
+   private void a(@Nullable xu $$0, BooleanSupplier $$1) {
+      if (this.e()) {
+         this.c.add(new gdb.a($$0, $$1));
+      } else {
+         $$1.getAsBoolean();
+      }
+   }
+
+   public void a(xy $$0, GameProfile $$1, xe.a $$2) {
+      boolean $$3 = this.b.n.ai().c();
+      xy $$4 = $$3 ? $$0.a() : $$0;
+      xi $$5 = $$2.a($$4.d());
+      Instant $$6 = Instant.now();
+      this.a($$0.l(), () -> {
+         boolean $$6x = this.a($$2, $$0, $$5, $$1, $$3, $$6);
+         gcj $$7 = this.b.L();
+         if ($$7 != null) {
+            $$7.a($$0, $$6x);
+         }
+
+         return $$6x;
+      });
+   }
+
+   public void a(UUID $$0, xe.a $$1) {
+      this.a(null, () -> {
+         if (this.b.a($$0)) {
+            return false;
+         } else {
+            xi $$2 = $$1.a(a);
+            this.b.m.d().a($$2, null, fjc.d());
+            this.e = ae.c();
+            return true;
+         }
+      });
+   }
+
+   public void a(xi $$0, xe.a $$1) {
+      Instant $$2 = Instant.now();
+      this.a(null, () -> {
+         xi $$3 = $$1.a($$0);
+         this.b.m.d().a($$3);
+         this.a($$1, $$0);
+         this.a($$3, $$2);
+         this.e = ae.c();
+         return true;
+      });
+   }
+
+   private boolean a(xe.a $$0, xy $$1, xi $$2, GameProfile $$3, boolean $$4, Instant $$5) {
+      gdd $$6 = this.a($$1, $$2, $$5);
+      if ($$4 && $$6.a()) {
+         return false;
+      } else if (!this.b.a($$1.g()) && !$$1.j()) {
+         fjc $$7 = $$6.a($$1);
+         xu $$8 = $$1.l();
+         xm $$9 = $$1.o();
+         if ($$9.a()) {
+            this.b.m.d().a($$2, $$8, $$7);
+            this.a($$0, $$1.d());
+         } else {
+            xi $$10 = $$9.b($$1.c());
+            if ($$10 != null) {
+               this.b.m.d().a($$0.a($$10), $$8, $$7);
+               this.a($$0, $$10);
+            }
+         }
+
+         this.a($$1, $$0, $$3, $$6);
+         this.e = ae.c();
+         return true;
+      } else {
+         return false;
+      }
+   }
+
+   private void a(xe.a $$0, xi $$1) {
+      this.b.aZ().a($$0.b($$1));
+   }
+
+   private gdd a(xy $$0, xi $$1, Instant $$2) {
+      return this.a($$0.g()) ? gdd.a : gdd.a($$0, $$1, $$2);
+   }
+
+   private void a(xy $$0, xe.a $$1, GameProfile $$2, gdd $$3) {
+      gdc $$4 = this.b.bb().b();
+      $$4.a(gdf.a($$2, $$0, $$3));
+   }
+
+   private void a(xi $$0, Instant $$1) {
+      gdc $$2 = this.b.bb().b();
+      $$2.a(gdf.a($$0, $$1));
+   }
+
+   public void a(xi $$0, boolean $$1) {
+      if (!this.b.n.ag().c() || !this.b.a(this.a($$0))) {
+         if ($$1) {
+            this.b.m.a($$0, false);
+         } else {
+            this.b.m.d().a($$0);
+            this.a($$0, Instant.now());
+         }
+
+         this.b.aZ().b($$0);
+      }
+   }
+
+   private UUID a(xi $$0) {
+      String $$1 = baf.a($$0);
+      String $$2 = StringUtils.substringBetween($$1, "<", ">");
+      return $$2 == null ? ae.e : this.b.aN().a($$2);
+   }
+
+   private boolean a(UUID $$0) {
+      if (this.b.T() && this.b.t != null) {
+         UUID $$1 = this.b.t.gj().getId();
+         return $$1.equals($$0);
+      } else {
+         return false;
+      }
+   }
+
+   static record a(@Nullable xu a, BooleanSupplier b) {
+      public boolean a() {
+         return this.b.getAsBoolean();
+      }
+
+      @Nullable
+      public xu b() {
          return this.a;
       }
 
-      public UUID f() {
-         return this.a.c;
+      public BooleanSupplier c() {
+         return this.b;
       }
-
-      public String g() {
-         return this.a.d;
-      }
-
-      public boolean h() {
-         return this.e().f;
-      }
-
-      public void a(String $$0) {
-         this.a.d = $$0;
-      }
-
-      @Nullable
-      public gdd i() {
-         return this.a.e;
-      }
-
-      public void a(gdd $$0) {
-         this.a.e = $$0;
-      }
-
-      public void a(boolean $$0) {
-         this.a.f = $$0;
-      }
-
-      public abstract boolean b();
-
-      @Nullable
-      public gdb.b c() {
-         return !this.e().f ? gdb.b.e : null;
-      }
-
-      public abstract Either<gdb.c, gdb.b> a(gdf var1);
-   }
-
-   public static record b(xh f) {
-      public static final gdb.b a = new gdb.b(xh.c("gui.abuseReport.send.no_reason"));
-      public static final gdb.b b = new gdb.b(xh.c("gui.chatReport.send.no_reported_messages"));
-      public static final gdb.b c = new gdb.b(xh.c("gui.chatReport.send.too_many_messages"));
-      public static final gdb.b d = new gdb.b(xh.c("gui.abuseReport.send.comment_too_long"));
-      public static final gdb.b e = new gdb.b(xh.c("gui.abuseReport.send.not_attested"));
-
-      public fmk a() {
-         return fmk.a(this.f);
-      }
-
-      public xh b() {
-         return this.f;
-      }
-   }
-
-   public static record c(UUID a, gde b, AbuseReport c) {
    }
 }

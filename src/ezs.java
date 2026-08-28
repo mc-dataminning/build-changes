@@ -1,32 +1,30 @@
-import it.unimi.dsi.fastutil.doubles.DoubleList;
+import java.util.Objects;
 
-public class ezs implements ezt {
-   private final DoubleList a;
-
-   public ezs(DoubleList $$0) {
-      this.a = $$0;
+public interface ezs {
+   static ezs a() {
+      return ezx.a;
    }
 
-   @Override
-   public boolean a(ezt.a $$0) {
-      int $$1 = this.a.size() - 1;
+   static ezs a(bue $$0) {
+      Objects.requireNonNull($$0);
 
-      for (int $$2 = 0; $$2 < $$1; $$2++) {
-         if (!$$0.merge($$2, $$2, $$2)) {
-            return false;
-         }
-      }
-
-      return true;
+      return (ezs)(switch ($$0) {
+         case cqk $$1 -> cqk.b($$1.dX()) ? new fab($$1, false) : new ezx($$0, false);
+         default -> new ezx($$0, false);
+      });
    }
 
-   @Override
-   public int size() {
-      return this.a.size();
+   static ezs a(bue $$0, boolean $$1) {
+      return new ezx($$0, $$1);
    }
 
-   @Override
-   public DoubleList a() {
-      return this.a;
-   }
+   boolean b();
+
+   boolean a(fah var1, jh var2, boolean var3);
+
+   boolean a(cvx var1);
+
+   boolean a(erk var1, erk var2);
+
+   fah a(dvj var1, dek var2, jh var3);
 }

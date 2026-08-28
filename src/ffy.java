@@ -1,40 +1,56 @@
-public class ffy {
-   private final fhm a;
-   private boolean b;
-   private String c;
+import com.google.common.collect.Lists;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
+import com.mojang.logging.LogUtils;
+import java.util.Collections;
+import java.util.Iterator;
+import java.util.List;
+import org.slf4j.Logger;
 
-   public ffy(fhm $$0) {
-      this.a = $$0;
-      fhm.a $$1 = $$0.a();
-      this.b = $$1.b;
-      this.c = $$1.a;
+public class ffy extends ffv {
+   private static final Logger e = LogUtils.getLogger();
+   public List<ffx> a;
+   public int b;
+   public int c;
+   public int d;
+
+   public ffy() {
+   }
+
+   public ffy(int $$0) {
+      this.a = Collections.emptyList();
+      this.b = 0;
+      this.c = $$0;
+      this.d = -1;
    }
 
    public boolean a() {
-      return this.b;
+      return this.b * this.c >= this.d && this.b > 0 && this.d > 0 && this.c > 0;
    }
 
-   public String b() {
-      return this.c;
-   }
+   public static ffy a(String $$0) {
+      ffy $$1 = new ffy();
+      $$1.a = Lists.newArrayList();
 
-   public void a(fey $$0) {
-      fhm.a $$1 = this.b($$0);
-      this.b = $$1.b;
-      this.c = $$1.a;
-   }
+      try {
+         JsonParser $$2 = new JsonParser();
+         JsonObject $$3 = $$2.parse($$0).getAsJsonObject();
+         if ($$3.get("templates").isJsonArray()) {
+            Iterator<JsonElement> $$4 = $$3.get("templates").getAsJsonArray().iterator();
 
-   private fhm.a b(fey $$0) {
-      fhm.a $$1 = new fhm.a();
-      $$1.a = $$0.a;
-      fhm.a $$2 = this.a.a();
-      boolean $$3 = $$1.a == null || $$1.a.equals($$2.a);
-      if ($$3) {
-         return $$2;
-      } else {
-         $$1.b = true;
-         this.a.a($$1);
-         return $$1;
+            while ($$4.hasNext()) {
+               $$1.a.add(ffx.a($$4.next().getAsJsonObject()));
+            }
+         }
+
+         $$1.b = fhs.a("page", $$3, 0);
+         $$1.c = fhs.a("size", $$3, 0);
+         $$1.d = fhs.a("total", $$3, 0);
+      } catch (Exception var5) {
+         e.error("Could not parse WorldTemplatePaginatedList: {}", var5.getMessage());
       }
+
+      return $$1;
    }
 }

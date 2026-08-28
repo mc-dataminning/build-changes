@@ -1,16 +1,48 @@
+import java.util.EnumSet;
 import javax.annotation.Nullable;
 
-public class cdf extends cdg {
-   public cdf(bvd $$0, double $$1) {
-      super($$0, $$1);
+public class cdf extends cby {
+   private final cld a;
+   @Nullable
+   private bva b;
+
+   public cdf(cld $$0) {
+      this.a = $$0;
+      this.a(EnumSet.of(cby.a.a));
    }
 
-   @Nullable
    @Override
-   protected ezh h() {
-      ezh $$0 = this.b.g(0.0F);
-      int $$1 = 8;
-      ezh $$2 = cfs.a(this.b, 8, 7, $$0.d, $$0.f, (float) (Math.PI / 2), 3, 1);
-      return $$2 != null ? $$2 : cfo.a(this.b, 8, 4, -2, $$0.d, $$0.f, (float) (Math.PI / 2));
+   public boolean b() {
+      bva $$0 = this.a.m();
+      return this.a.y() > 0 || $$0 != null && this.a.g((bue)$$0) < 9.0;
+   }
+
+   @Override
+   public void d() {
+      this.a.P().o();
+      this.b = this.a.m();
+   }
+
+   @Override
+   public void e() {
+      this.b = null;
+   }
+
+   @Override
+   public boolean V_() {
+      return true;
+   }
+
+   @Override
+   public void a() {
+      if (this.b == null) {
+         this.a.b(-1);
+      } else if (this.a.g((bue)this.b) > 49.0) {
+         this.a.b(-1);
+      } else if (!this.a.Q().a(this.b)) {
+         this.a.b(-1);
+      } else {
+         this.a.b(1);
+      }
    }
 }

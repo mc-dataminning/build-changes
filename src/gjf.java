@@ -1,55 +1,132 @@
-import com.google.gson.JsonDeserializationContext;
-import com.google.gson.JsonDeserializer;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParseException;
-import java.lang.reflect.Type;
 import javax.annotation.Nullable;
 
-public record gjf(@Nullable jl b, int c, String d, gjh e) {
-   public static final int a = -1;
+public class gjf {
+   protected final gid a;
+   protected final dfb b;
+   protected int c;
+   protected int d;
+   protected int e;
+   private int g;
+   private kj h;
+   public glu.b[] f;
 
-   @Nullable
-   public jl a() {
-      return this.b;
+   public gjf(glu $$0, dfb $$1, int $$2, gid $$3) {
+      this.a = $$3;
+      this.b = $$1;
+      this.a($$2);
+      this.a($$0);
+      this.h = kj.a(this.g + 1, 0, this.g + 1);
+   }
+
+   protected void a(glu $$0) {
+      if (!fji.Q().bx()) {
+         throw new IllegalStateException("createSections called from wrong thread: " + Thread.currentThread().getName());
+      } else {
+         int $$1 = this.d * this.c * this.e;
+         this.f = new glu.b[$$1];
+
+         for (int $$2 = 0; $$2 < this.d; $$2++) {
+            for (int $$3 = 0; $$3 < this.c; $$3++) {
+               for (int $$4 = 0; $$4 < this.e; $$4++) {
+                  int $$5 = this.a($$2, $$3, $$4);
+                  this.f[$$5] = $$0.new b($$5, kj.b($$2, $$3 + this.b.an(), $$4));
+               }
+            }
+         }
+      }
+   }
+
+   public void a() {
+      for (glu.b $$0 : this.f) {
+         $$0.e();
+      }
+   }
+
+   private int a(int $$0, int $$1, int $$2) {
+      return ($$2 * this.c + $$1) * this.d + $$0;
+   }
+
+   protected void a(int $$0) {
+      int $$1 = $$0 * 2 + 1;
+      this.d = $$1;
+      this.c = this.b.am();
+      this.e = $$1;
+      this.g = $$0;
    }
 
    public int b() {
-      return this.c;
+      return this.g;
    }
 
-   public String c() {
-      return this.d;
+   public dfd c() {
+      return this.b;
    }
 
-   public gjh d() {
-      return this.e;
+   public void a(kj $$0) {
+      for (int $$1 = 0; $$1 < this.d; $$1++) {
+         int $$2 = $$0.a() - this.g;
+         int $$3 = $$2 + Math.floorMod($$1 - $$2, this.d);
+
+         for (int $$4 = 0; $$4 < this.e; $$4++) {
+            int $$5 = $$0.c() - this.g;
+            int $$6 = $$5 + Math.floorMod($$4 - $$5, this.e);
+
+            for (int $$7 = 0; $$7 < this.c; $$7++) {
+               int $$8 = this.b.an() + $$7;
+               glu.b $$9 = this.f[this.a($$1, $$7, $$4)];
+               long $$10 = $$9.g();
+               if ($$10 != kj.b($$3, $$8, $$6)) {
+                  $$9.a(kj.b($$3, $$8, $$6));
+               }
+            }
+         }
+      }
+
+      this.h = $$0;
+      this.a.x().a();
    }
 
-   protected static class a implements JsonDeserializer<gjf> {
-      private static final int a = -1;
+   public kj d() {
+      return this.h;
+   }
 
-      public gjf a(JsonElement $$0, Type $$1, JsonDeserializationContext $$2) throws JsonParseException {
-         JsonObject $$3 = $$0.getAsJsonObject();
-         jl $$4 = this.c($$3);
-         int $$5 = this.a($$3);
-         String $$6 = this.b($$3);
-         gjh $$7 = (gjh)$$2.deserialize($$3, gjh.class);
-         return new gjf($$4, $$5, $$6, $$7);
+   public void a(int $$0, int $$1, int $$2, boolean $$3) {
+      glu.b $$4 = this.b($$0, $$1, $$2);
+      if ($$4 != null) {
+         $$4.a($$3);
       }
+   }
 
-      protected int a(JsonObject $$0) {
-         return ayz.a($$0, "tintindex", -1);
+   @Nullable
+   protected glu.b a(jh $$0) {
+      return this.a(kj.c($$0));
+   }
+
+   @Nullable
+   protected glu.b a(long $$0) {
+      int $$1 = kj.b($$0);
+      int $$2 = kj.c($$0);
+      int $$3 = kj.d($$0);
+      return this.b($$1, $$2, $$3);
+   }
+
+   @Nullable
+   private glu.b b(int $$0, int $$1, int $$2) {
+      if (!this.c($$0, $$1, $$2)) {
+         return null;
+      } else {
+         int $$3 = $$1 - this.b.an();
+         int $$4 = Math.floorMod($$0, this.d);
+         int $$5 = Math.floorMod($$2, this.e);
+         return this.f[this.a($$4, $$3, $$5)];
       }
+   }
 
-      private String b(JsonObject $$0) {
-         return ayz.i($$0, "texture");
-      }
-
-      @Nullable
-      private jl c(JsonObject $$0) {
-         String $$1 = ayz.a($$0, "cullface", "");
-         return jl.a($$1);
+   private boolean c(int $$0, int $$1, int $$2) {
+      if ($$1 >= this.b.an() && $$1 <= this.b.ao()) {
+         return $$0 < this.h.a() - this.g || $$0 > this.h.a() + this.g ? false : $$2 >= this.h.c() - this.g && $$2 <= this.h.c() + this.g;
+      } else {
+         return false;
       }
    }
 }

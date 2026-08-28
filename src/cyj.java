@@ -1,92 +1,26 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import io.netty.buffer.ByteBuf;
 import java.util.List;
-import java.util.Locale;
-import java.util.function.Consumer;
 
-public record cyj(int d, boolean e) implements cyy {
-   private static final Codec<cyj> f = RecordCodecBuilder.create(
-      $$0 -> $$0.group(Codec.INT.fieldOf("rgb").forGetter(cyj::a), Codec.BOOL.optionalFieldOf("show_in_tooltip", true).forGetter(cyj::b)).apply($$0, cyj::new)
-   );
-   public static final Codec<cyj> a = Codec.withAlternative(f, Codec.INT, $$0 -> new cyj($$0, true));
-   public static final zf<ByteBuf, cyj> b = zf.a(zd.g, cyj::a, zd.b, cyj::b, cyj::new);
-   public static final int c = -6265536;
+public class cyj {
+   public static final cyh a = a().a();
+   public static final cyh b = b().a();
+   public static final cyh c = b().a(2.0F).a(awl.mC).a(new czp(btl.s)).a();
+   public static final cyh d = b().b(awl.sq).a();
+   public static final cyh e = a().a(0.8F).a();
+   public static final cyh f = a().a(new czl(new btj(btl.q, 600, 0), 0.3F)).a();
+   public static final cyh g = a().a(new czl(List.of(new btj(btl.j, 400, 1), new btj(btl.k, 6000, 0), new btj(btl.l, 6000, 0), new btj(btl.v, 2400, 3)))).a();
+   public static final cyh h = a().a(new czl(List.of(new btj(btl.j, 100, 1), new btj(btl.v, 2400, 0)))).a();
+   public static final cyh i = a().a(new czl(new btj(btl.s, 100, 0), 0.6F)).a();
+   public static final cyh j = a().a(new czl(List.of(new btj(btl.s, 1200, 1), new btj(btl.q, 300, 2), new btj(btl.i, 300, 0)))).a();
+   public static final cyh k = a().a(new czl(new btj(btl.q, 600, 0), 0.8F)).a();
+   public static final cyh l = a().a(new czl(new btj(btl.s, 100, 0))).a();
+   public static final cyh m = b().a(czm.a).a();
+   public static final cyh n = a().a(new czq()).a();
 
-   public static int a(cvx $$0, int $$1) {
-      cyj $$2 = $$0.a(kt.I);
-      return $$2 != null ? axu.f($$2.a()) : $$1;
+   public static cyh.a a() {
+      return cyh.b().a(1.6F).a(cwd.b).a(awl.ke).a(true);
    }
 
-   public static cvx a(cvx $$0, List<cuv> $$1) {
-      if (!$$0.a(axi.bM)) {
-         return cvx.k;
-      } else {
-         cvx $$2 = $$0.c(1);
-         int $$3 = 0;
-         int $$4 = 0;
-         int $$5 = 0;
-         int $$6 = 0;
-         int $$7 = 0;
-         cyj $$8 = $$2.a(kt.I);
-         if ($$8 != null) {
-            int $$9 = axu.b($$8.a());
-            int $$10 = axu.c($$8.a());
-            int $$11 = axu.d($$8.a());
-            $$6 += Math.max($$9, Math.max($$10, $$11));
-            $$3 += $$9;
-            $$4 += $$10;
-            $$5 += $$11;
-            $$7++;
-         }
-
-         for (cuv $$12 : $$1) {
-            int $$13 = $$12.c().d();
-            int $$14 = axu.b($$13);
-            int $$15 = axu.c($$13);
-            int $$16 = axu.d($$13);
-            $$6 += Math.max($$14, Math.max($$15, $$16));
-            $$3 += $$14;
-            $$4 += $$15;
-            $$5 += $$16;
-            $$7++;
-         }
-
-         int $$17 = $$3 / $$7;
-         int $$18 = $$4 / $$7;
-         int $$19 = $$5 / $$7;
-         float $$20 = (float)$$6 / (float)$$7;
-         float $$21 = (float)Math.max($$17, Math.max($$18, $$19));
-         $$17 = (int)((float)$$17 * $$20 / $$21);
-         $$18 = (int)((float)$$18 * $$20 / $$21);
-         $$19 = (int)((float)$$19 * $$20 / $$21);
-         int $$22 = axu.a(0, $$17, $$18, $$19);
-         boolean $$23 = $$8 == null || $$8.b();
-         $$2.b(kt.I, new cyj($$22, $$23));
-         return $$2;
-      }
-   }
-
-   @Override
-   public void a(cvt.b $$0, Consumer<xh> $$1, cxp $$2) {
-      if (this.e) {
-         if ($$2.a()) {
-            $$1.accept(xh.a("item.color", String.format(Locale.ROOT, "#%06X", this.d)).a(n.h));
-         } else {
-            $$1.accept(xh.c("item.dyed").a(n.h, n.u));
-         }
-      }
-   }
-
-   public cyj a(boolean $$0) {
-      return new cyj(this.d, $$0);
-   }
-
-   public int a() {
-      return this.d;
-   }
-
-   public boolean b() {
-      return this.e;
+   public static cyh.a b() {
+      return cyh.b().a(1.6F).a(cwd.c).a(awl.kd).a(false);
    }
 }

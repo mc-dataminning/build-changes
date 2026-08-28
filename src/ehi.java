@@ -1,43 +1,16 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.stream.Stream;
 
-public class ehi implements egj {
-   public static final Codec<ehi> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               axp.b(ly.f).fieldOf("replaceable").forGetter($$0x -> $$0x.b),
-               eik.a.fieldOf("ground_state").forGetter($$0x -> $$0x.c),
-               ekv.b.fieldOf("vegetation_feature").forGetter($$0x -> $$0x.d),
-               ekl.c.fieldOf("surface").forGetter($$0x -> $$0x.e),
-               brd.b(1, 128).fieldOf("depth").forGetter($$0x -> $$0x.f),
-               Codec.floatRange(0.0F, 1.0F).fieldOf("extra_bottom_block_chance").forGetter($$0x -> $$0x.g),
-               Codec.intRange(1, 256).fieldOf("vertical_range").forGetter($$0x -> $$0x.h),
-               Codec.floatRange(0.0F, 1.0F).fieldOf("vegetation_chance").forGetter($$0x -> $$0x.i),
-               brd.c.fieldOf("xz_radius").forGetter($$0x -> $$0x.j),
-               Codec.floatRange(0.0F, 1.0F).fieldOf("extra_edge_column_chance").forGetter($$0x -> $$0x.k)
-            )
-            .apply($$0, ehi::new)
-   );
-   public final axp<dhy> b;
-   public final eik c;
-   public final jp<ekv> d;
-   public final ekl e;
-   public final brd f;
-   public final float g;
-   public final int h;
-   public final float i;
-   public final brd j;
-   public final float k;
+public class ehi implements egp {
+   public static final Codec<ehi> a = ayt.b(elb.c).fieldOf("features").xmap(ehi::new, $$0 -> $$0.b).codec();
+   public final ju<elb> b;
 
-   public ehi(axp<dhy> $$0, eik $$1, jp<ekv> $$2, ekl $$3, brd $$4, float $$5, int $$6, float $$7, brd $$8, float $$9) {
+   public ehi(ju<elb> $$0) {
       this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
-      this.e = $$3;
-      this.f = $$4;
-      this.g = $$5;
-      this.h = $$6;
-      this.i = $$7;
-      this.j = $$8;
-      this.k = $$9;
+   }
+
+   @Override
+   public Stream<edx<?, ?>> e() {
+      return this.b.a().flatMap($$0 -> $$0.a().a());
    }
 }

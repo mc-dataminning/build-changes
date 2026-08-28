@@ -1,47 +1,60 @@
-import java.util.List;
-import java.util.Locale;
+import com.mojang.serialization.Codec;
+import java.time.Instant;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
-public enum gdd {
-   a("i_want_to_report_them"),
-   b("hate_speech"),
-   c("harassment_or_bullying"),
-   d("self_harm_or_suicide"),
-   e("imminent_harm"),
-   f("defamation_impersonation_false_information"),
-   g("alcohol_tobacco_drugs"),
-   h("child_sexual_exploitation_or_abuse"),
-   i("terrorism_or_violent_extremism"),
-   j("non_consensual_intimate_imagery"),
-   k("sexually_inappropriate");
+public enum gdd implements bag {
+   a("secure"),
+   b("modified"),
+   c("not_secure");
 
-   private final String l;
-   private final xh m;
-   private final xh n;
+   public static final Codec<gdd> d = bag.a(gdd::values);
+   private final String e;
 
    private gdd(final String $$0) {
-      this.l = $$0.toUpperCase(Locale.ROOT);
-      String $$1 = "gui.abuseReport.reason." + $$0;
-      this.m = xh.c($$1);
-      this.n = xh.c($$1 + ".description");
+      this.e = $$0;
    }
 
-   public String a() {
-      return this.l;
+   public static gdd a(xy $$0, xi $$1, Instant $$2) {
+      if (!$$0.i() || $$0.b($$2)) {
+         return c;
+      } else {
+         return a($$0, $$1) ? b : a;
+      }
    }
 
-   public xh b() {
-      return this.m;
+   private static boolean a(xy $$0, xi $$1) {
+      if (!$$1.getString().contains($$0.c())) {
+         return true;
+      } else {
+         xi $$2 = $$0.n();
+         return $$2 == null ? false : a($$2);
+      }
    }
 
-   public xh c() {
-      return this.n;
+   private static boolean a(xi $$0) {
+      return $$0.<Boolean>a(($$0x, $$1) -> a($$0x) ? Optional.of(true) : Optional.empty(), yf.a).orElse(false);
    }
 
-   public static List<gdd> a(gde $$0) {
-      return switch ($$0) {
-         case a -> List.of(k);
-         case b -> List.of(e, f);
-         default -> List.of();
+   private static boolean a(yf $$0) {
+      return !$$0.k().equals(yf.b);
+   }
+
+   public boolean a() {
+      return this == c;
+   }
+
+   @Nullable
+   public fjc a(xy $$0) {
+      return switch (this) {
+         case b -> fjc.a($$0.c());
+         case c -> fjc.c();
+         default -> null;
       };
+   }
+
+   @Override
+   public String c() {
+      return this.e;
    }
 }

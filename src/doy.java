@@ -1,143 +1,117 @@
 import com.mojang.serialization.MapCodec;
-import java.util.Arrays;
-import java.util.UUID;
 import javax.annotation.Nullable;
 
-public abstract class doy extends dhk implements doz {
-   public static final dvu f = dvt.C;
-   protected static final float g = 4.0F;
-   protected static final fab h = dhy.a(4.0, 0.0, 4.0, 12.0, 16.0, 12.0);
-   private final dwq a;
+public class doy extends dhq implements dpf {
+   public static final MapCodec<doy> a = b(doy::new);
+   public static final dwa b = dvz.F;
+   public static final dwa c = dvz.C;
+   public static final dwa d = dvz.G;
+   protected static final fah e = die.a(0.0, 0.0, 0.0, 16.0, 8.0, 16.0);
+   public static final double f = e.c(jm.a.b);
 
-   protected doy(dwq $$0, dvc.d $$1) {
-      super($$1);
-      this.a = $$0;
+   @Override
+   public MapCodec<doy> a() {
+      return a;
+   }
+
+   public doy(dvi.d $$0) {
+      super($$0);
+      this.l(this.F.b().b(b, Boolean.valueOf(false)).b(c, Boolean.valueOf(false)).b(d, Boolean.valueOf(false)));
    }
 
    @Override
-   protected abstract MapCodec<? extends doy> a();
+   protected void a(dvk.a<die, dvj> $$0) {
+      $$0.a(b);
+      $$0.a(c);
+      $$0.a(d);
+   }
 
    @Override
-   protected dvd a(dvd $$0, jl $$1, dvd $$2, dew $$3, jg $$4, jg $$5) {
-      if ($$0.c(f)) {
-         $$3.a($$4, erf.c, erf.c.a($$3));
+   public void a(dfb $$0, jh $$1, dvj $$2, bue $$3) {
+      if ($$0 instanceof arn $$4) {
+         aro $$5 = dtw.a($$3);
+         if ($$5 != null) {
+            $$4.a($$1, dso.L).ifPresent($$2x -> $$2x.a($$4, $$5));
+         }
+      }
+
+      super.a($$0, $$1, $$2, $$3);
+   }
+
+   @Override
+   protected void a(dvj $$0, dfb $$1, jh $$2, dvj $$3, boolean $$4) {
+      if ($$1 instanceof arn $$5 && $$0.c(b) && !$$0.a($$3.b())) {
+         $$5.a($$2, dso.L).ifPresent($$1x -> $$1x.a($$5));
+      }
+
+      super.a($$0, $$1, $$2, $$3, $$4);
+   }
+
+   @Override
+   protected void a(dvj $$0, arn $$1, jh $$2, azs $$3) {
+      if ($$0.c(b)) {
+         $$1.a($$2, $$0.b(b, Boolean.valueOf(false)), 3);
+         $$1.a($$2, dso.L).ifPresent($$1x -> $$1x.a($$1));
+      }
+   }
+
+   @Override
+   protected dok a_(dvj $$0) {
+      return dok.c;
+   }
+
+   @Override
+   protected fah b(dvj $$0, deg $$1, jh $$2, ezs $$3) {
+      return e;
+   }
+
+   @Override
+   protected fah d_(dvj $$0) {
+      return e;
+   }
+
+   @Override
+   protected boolean g_(dvj $$0) {
+      return true;
+   }
+
+   @Nullable
+   @Override
+   public dsm a(jh $$0, dvj $$1) {
+      return new dtw($$0, $$1);
+   }
+
+   @Override
+   protected dvj a(dvj $$0, jm $$1, dvj $$2, dfc $$3, jh $$4, jh $$5) {
+      if ($$0.c(c)) {
+         $$3.a($$4, erl.c, erl.c.a($$3));
       }
 
       return super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
+   @Nullable
    @Override
-   protected fab a(dvd $$0, dea $$1, jg $$2, ezm $$3) {
-      return h;
+   public dvj a(czs $$0) {
+      return this.m().b(c, Boolean.valueOf($$0.q().b_($$0.a()).a() == erl.c));
    }
 
    @Override
-   public boolean a(dvd $$0) {
-      return true;
+   protected erk b_(dvj $$0) {
+      return $$0.c(c) ? erl.c.a(false) : super.b_($$0);
    }
 
    @Override
-   public dsg a(jg $$0, dvd $$1) {
-      return new dts($$0, $$1);
-   }
-
-   @Override
-   protected bry a(cvx $$0, dvd $$1, dev $$2, jg $$3, coh $$4, brx $$5, ezd $$6) {
-      if ($$2.c_($$3) instanceof dts $$7) {
-         cxb $$10 = $$0.h() instanceof cxb $$9 ? $$9 : null;
-         boolean $$11 = $$10 != null && $$4.gw();
-         if (!$$2.C) {
-            if ($$11 && !$$7.v() && !this.a($$4, $$7)) {
-               boolean $$12 = $$7.a($$4);
-               if ($$10.a($$7.a($$12), $$4) && $$10.a($$2, $$7, $$12, $$4)) {
-                  $$7.a($$4, $$2, $$3, $$12);
-                  $$4.b(awu.c.b($$0.h()));
-                  $$2.a(eaa.c, $$7.aC_(), eaa.a.a($$4, $$7.m()));
-                  $$0.a(1, $$4);
-                  return bry.a;
-               } else {
-                  return bry.f;
-               }
-            } else {
-               return bry.f;
-            }
-         } else {
-            return !$$11 && !$$7.v() ? bry.c : bry.a;
-         }
-      } else {
-         return bry.e;
+   protected void a(dvj $$0, arn $$1, jh $$2, cwb $$3, boolean $$4) {
+      super.a($$0, $$1, $$2, $$3, $$4);
+      if ($$4) {
+         this.a($$1, $$2, $$3, brf.a(5));
       }
-   }
-
-   @Override
-   protected bry a(dvd $$0, dev $$1, jg $$2, coh $$3, ezd $$4) {
-      if ($$1.c_($$2) instanceof dts $$5) {
-         if ($$1.C) {
-            ad.b(new IllegalStateException("Expected to only call this on server"));
-         }
-
-         boolean $$7 = $$5.a($$3);
-         boolean $$8 = $$5.a($$3, $$1, $$2, $$7);
-         if ($$5.v()) {
-            $$1.a(null, $$5.aC_(), $$5.d(), awl.e);
-            return bry.b;
-         } else if ($$8) {
-            return bry.b;
-         } else if (!this.a($$3, $$5) && $$3.gw() && this.b($$3, $$5, $$7)) {
-            this.a($$3, $$5, $$7);
-            return bry.b;
-         } else {
-            return bry.e;
-         }
-      } else {
-         return bry.e;
-      }
-   }
-
-   private boolean b(coh $$0, dts $$1, boolean $$2) {
-      dtt $$3 = $$1.a($$2);
-      return Arrays.stream($$3.b($$0.ab())).allMatch($$0x -> $$0x.equals(xg.a) || $$0x.b() instanceof yo);
-   }
-
-   public abstract float h(dvd var1);
-
-   public ezh o(dvd $$0) {
-      return new ezh(0.5, 0.5, 0.5);
-   }
-
-   @Override
-   protected ere b_(dvd $$0) {
-      return $$0.c(f) ? erf.c.a(false) : super.b_($$0);
-   }
-
-   public dwq d() {
-      return this.a;
-   }
-
-   public static dwq a(dhy $$0) {
-      dwq $$1;
-      if ($$0 instanceof doy) {
-         $$1 = ((doy)$$0).d();
-      } else {
-         $$1 = dwq.b;
-      }
-
-      return $$1;
-   }
-
-   public void a(coh $$0, dts $$1, boolean $$2) {
-      $$1.a($$0.cH());
-      $$0.a($$1, $$2);
-   }
-
-   private boolean a(coh $$0, dts $$1) {
-      UUID $$2 = $$1.u();
-      return $$2 != null && !$$2.equals($$0.cH());
    }
 
    @Nullable
    @Override
-   public <T extends dsg> dsh<T> a(dev $$0, dvd $$1, dsi<T> $$2) {
-      return a($$2, dsi.h, dts::a);
+   public <T extends dsm> dsn<T> a(dfb $$0, dvj $$1, dso<T> $$2) {
+      return !$$0.C ? dhq.a($$2, dso.L, ($$0x, $$1x, $$2x, $$3) -> eap.c.a($$0x, $$3.gw(), $$3.gx())) : null;
    }
 }

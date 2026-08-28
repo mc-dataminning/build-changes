@@ -1,126 +1,132 @@
-import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableList.Builder;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.Set;
+import java.util.function.Predicate;
 
-public class evc extends evj {
-   public static final axp<elr> a = axl.l;
-   public static final jp<est> b = esu.i;
-   public static final byte c = 2;
-   public static final int d = 50;
-   public static final boolean e = true;
-   public static final MapCodec<evc> f = RecordCodecBuilder.mapCodec(
+public class evc extends evp {
+   public static final MapCodec<evc> a = RecordCodecBuilder.mapCodec(
       $$0 -> a($$0)
             .and(
                $$0.group(
-                  axp.a(ly.aS).optionalFieldOf("destination", a).forGetter($$0x -> $$0x.h),
-                  est.b.optionalFieldOf("decoration", b).forGetter($$0x -> $$0x.i),
-                  Codec.BYTE.optionalFieldOf("zoom", (byte)2).forGetter($$0x -> $$0x.j),
-                  Codec.INT.optionalFieldOf("search_radius", 50).forGetter($$0x -> $$0x.k),
-                  Codec.BOOL.optionalFieldOf("skip_existing_chunks", true).forGetter($$0x -> $$0x.l)
+                  evc.b.b.fieldOf("source").forGetter($$0x -> $$0x.b),
+                  kt.a.listOf().optionalFieldOf("include").forGetter($$0x -> $$0x.c),
+                  kt.a.listOf().optionalFieldOf("exclude").forGetter($$0x -> $$0x.d)
                )
             )
             .apply($$0, evc::new)
    );
-   private final axp<elr> h;
-   private final jp<est> i;
-   private final byte j;
-   private final int k;
-   private final boolean l;
+   private final evc.b b;
+   private final Optional<List<kt<?>>> c;
+   private final Optional<List<kt<?>>> d;
+   private final Predicate<kt<?>> e;
 
-   evc(List<exh> $$0, axp<elr> $$1, jp<est> $$2, byte $$3, int $$4, boolean $$5) {
+   evc(List<exn> $$0, evc.b $$1, Optional<List<kt<?>>> $$2, Optional<List<kt<?>>> $$3) {
       super($$0);
-      this.h = $$1;
-      this.i = $$2;
-      this.j = $$3;
-      this.k = $$4;
-      this.l = $$5;
+      this.b = $$1;
+      this.c = $$2.map(List::copyOf);
+      this.d = $$3.map(List::copyOf);
+      List<Predicate<kt<?>>> $$4 = new ArrayList<>(2);
+      $$3.ifPresent($$1x -> $$4.add($$1xx -> !$$1x.contains($$1xx)));
+      $$2.ifPresent($$1x -> $$4.add($$1x::contains));
+      this.e = ae.a($$4);
    }
 
    @Override
-   public evl<evc> b() {
-      return evm.q;
+   public evr<evc> b() {
+      return evs.J;
    }
 
    @Override
-   public Set<ewp<?>> a() {
-      return ImmutableSet.of(ews.f);
+   public Set<ewv<?>> a() {
+      return this.b.a();
    }
 
    @Override
-   public cvx a(cvx $$0, etw $$1) {
-      if (!$$0.a(cwb.ul)) {
-         return $$0;
-      } else {
-         ezh $$2 = $$1.c(ews.f);
-         if ($$2 != null) {
-            arm $$3 = $$1.d();
-            jg $$4 = $$3.a(this.h, jg.a((jz)$$2), this.k, this.l);
-            if ($$4 != null) {
-               cvx $$5 = cwk.a($$3, $$4.u(), $$4.w(), this.j, true, true);
-               cwk.a($$3, $$5);
-               esy.a($$5, $$4, "+", this.i);
-               return $$5;
-            }
+   public cwb a(cwb $$0, euc $$1) {
+      kq $$2 = this.b.a($$1);
+      $$0.b($$2.a(this.e));
+      return $$0;
+   }
+
+   public static evc.a a(evc.b $$0) {
+      return new evc.a($$0);
+   }
+
+   public static class a extends evp.a<evc.a> {
+      private final evc.b a;
+      private Optional<Builder<kt<?>>> b = Optional.empty();
+      private Optional<Builder<kt<?>>> c = Optional.empty();
+
+      a(evc.b $$0) {
+         this.a = $$0;
+      }
+
+      public evc.a a(kt<?> $$0) {
+         if (this.b.isEmpty()) {
+            this.b = Optional.of(ImmutableList.builder());
          }
 
-         return $$0;
+         this.b.get().add($$0);
+         return this;
       }
-   }
 
-   public static evc.a c() {
-      return new evc.a();
-   }
+      public evc.a b(kt<?> $$0) {
+         if (this.c.isEmpty()) {
+            this.c = Optional.of(ImmutableList.builder());
+         }
 
-   public static class a extends evj.a<evc.a> {
-      private axp<elr> a;
-      private jp<est> b;
-      private byte c;
-      private int d;
-      private boolean e;
-
-      public a() {
-         this.a = evc.a;
-         this.b = evc.b;
-         this.c = 2;
-         this.d = 50;
-         this.e = true;
+         this.c.get().add($$0);
+         return this;
       }
 
       protected evc.a a() {
          return this;
       }
 
-      public evc.a a(axp<elr> $$0) {
-         this.a = $$0;
-         return this;
+      @Override
+      public evq b() {
+         return new evc(this.g(), this.a, this.b.map(Builder::build), this.c.map(Builder::build));
       }
+   }
 
-      public evc.a a(jp<est> $$0) {
-         this.b = $$0;
-         return this;
-      }
+   public static enum b implements bag {
+      a("block_entity");
 
-      public evc.a a(byte $$0) {
+      public static final Codec<evc.b> b = bag.b(evc.b::values);
+      private final String c;
+
+      private b(final String $$0) {
          this.c = $$0;
-         return this;
       }
 
-      public evc.a a(int $$0) {
-         this.d = $$0;
-         return this;
+      public kq a(euc $$0) {
+         switch (this) {
+            case a:
+               dsm $$1 = $$0.c(ewy.h);
+               return $$1 != null ? $$1.r() : kq.a;
+            default:
+               throw new MatchException(null, null);
+         }
       }
 
-      public evc.a a(boolean $$0) {
-         this.e = $$0;
-         return this;
+      public Set<ewv<?>> a() {
+         switch (this) {
+            case a:
+               return Set.of(ewy.h);
+            default:
+               throw new MatchException(null, null);
+         }
       }
 
       @Override
-      public evk b() {
-         return new evc(this.g(), this.a, this.b, this.c, this.d, this.e);
+      public String c() {
+         return this.c;
       }
    }
 }

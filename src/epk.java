@@ -1,26 +1,14 @@
-import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class epk extends epn {
-   public static final MapCodec<epk> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(lx.e.q().fieldOf("block").forGetter($$0x -> $$0x.b), Codec.FLOAT.fieldOf("probability").forGetter($$0x -> $$0x.d)).apply($$0, epk::new)
-   );
-   private final dhy b;
-   private final float d;
+public class epk extends epw {
+   public static final MapCodec<epk> a = MapCodec.unit(() -> epk.b);
+   public static final epk b = new epk();
 
-   public epk(dhy $$0, float $$1) {
-      this.b = $$0;
-      this.d = $$1;
+   private epk() {
    }
 
    @Override
-   public boolean a(dvd $$0, azr $$1) {
-      return $$0.a(this.b) && $$1.i() < this.d;
-   }
-
-   @Override
-   protected epo<?> a() {
-      return epo.e;
+   protected epy<?> a() {
+      return epy.j;
    }
 }

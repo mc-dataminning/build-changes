@@ -1,41 +1,103 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.ImmutableMap.Builder;
-import java.util.ArrayList;
-import java.util.List;
+import com.mojang.logging.LogUtils;
+import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
 import java.util.Map;
+import java.util.Optional;
+import java.util.Map.Entry;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
 public class gcd {
-   private final auk a = aun.c();
-   private final Map<aug, String> b;
+   private static final Logger a = LogUtils.getLogger();
+   private final fji b;
+   private final hds c;
+   private final am d = new am();
+   private final Map<ah, aj> e = new Object2ObjectOpenHashMap();
+   @Nullable
+   private gcd.a f;
+   @Nullable
+   private ah g;
 
-   public gcd() {
-      this.a.a();
-      Builder<aug, String> $$0 = ImmutableMap.builder();
-      this.a.d().forEach($$1 -> {
-         atk $$2 = $$1.a();
-         $$2.d().ifPresent($$2x -> $$0.put($$2x, $$2.a()));
-      });
-      this.b = $$0.build();
+   public gcd(fji $$0, hds $$1) {
+      this.b = $$0;
+      this.c = $$1;
    }
 
-   public List<aug> a(List<aug> $$0) {
-      List<aug> $$1 = new ArrayList<>($$0.size());
-      List<String> $$2 = new ArrayList<>($$0.size());
-
-      for (aug $$3 : $$0) {
-         String $$4 = this.b.get($$3);
-         if ($$4 != null) {
-            $$2.add($$4);
-            $$1.add($$3);
-         }
+   public void a(agm $$0) {
+      if ($$0.g()) {
+         this.d.a();
+         this.e.clear();
       }
 
-      this.a.b($$2);
-      return $$1;
+      this.d.a($$0.e());
+      this.d.a($$0.b());
+
+      for (Entry<ali, aj> $$1 : $$0.f().entrySet()) {
+         ai $$2 = this.d.a($$1.getKey());
+         if ($$2 != null) {
+            aj $$3 = $$1.getValue();
+            $$3.a($$2.a().f());
+            this.e.put($$2.b(), $$3);
+            if (this.f != null) {
+               this.f.a($$2, $$3);
+            }
+
+            if (!$$0.g() && $$3.a()) {
+               if (this.b.s != null) {
+                  this.c.a(this.b.s, $$2.b());
+               }
+
+               Optional<at> $$4 = $$2.a().c();
+               if ($$4.isPresent() && $$4.get().h()) {
+                  this.b.aA().a(new fno($$2.b()));
+               }
+            }
+         } else {
+            a.warn("Server informed client about progress for unknown advancement {}", $$1.getKey());
+         }
+      }
    }
 
-   public aup a() {
-      List<atl> $$0 = this.a.h();
-      return new aus(atn.b, $$0);
+   public am a() {
+      return this.d;
+   }
+
+   public void a(@Nullable ah $$0, boolean $$1) {
+      gcj $$2 = this.b.L();
+      if ($$2 != null && $$0 != null && $$1) {
+         $$2.b(aig.a($$0));
+      }
+
+      if (this.g != $$0) {
+         this.g = $$0;
+         if (this.f != null) {
+            this.f.a($$0);
+         }
+      }
+   }
+
+   public void a(@Nullable gcd.a $$0) {
+      this.f = $$0;
+      this.d.a($$0);
+      if ($$0 != null) {
+         this.e.forEach(($$1, $$2) -> {
+            ai $$3 = this.d.a($$1);
+            if ($$3 != null) {
+               $$0.a($$3, $$2);
+            }
+         });
+         $$0.a(this.g);
+      }
+   }
+
+   @Nullable
+   public ah a(ali $$0) {
+      ai $$1 = this.d.a($$0);
+      return $$1 != null ? $$1.b() : null;
+   }
+
+   public interface a extends am.a {
+      void a(ai var1, aj var2);
+
+      void a(@Nullable ah var1);
    }
 }

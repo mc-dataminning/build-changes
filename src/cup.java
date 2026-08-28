@@ -1,83 +1,65 @@
-import java.util.Collection;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
-public class cup extends cvt {
-   public cup(cvt.a $$0) {
+public class cup extends cvx {
+   private static final xi a = xi.c("item.minecraft.lodestone_compass");
+
+   public cup(cvx.a $$0) {
       super($$0);
    }
 
-   @Override
-   public boolean a(dvd $$0, dev $$1, jg $$2, coh $$3) {
-      if (!$$1.C) {
-         this.a($$3, $$0, $$1, $$2, false, $$3.b(brx.a));
-      }
-
-      return false;
+   @Nullable
+   public static jp a(dfb $$0) {
+      return $$0.D_().j() ? jp.a($$0.ag(), $$0.W()) : null;
    }
 
    @Override
-   public bry a(czo $$0) {
-      coh $$1 = $$0.o();
-      dev $$2 = $$0.q();
-      if (!$$2.C && $$1 != null) {
-         jg $$3 = $$0.a();
-         if (!this.a($$1, $$2.a_($$3), $$2, $$3, true, $$0.n())) {
-            return bry.d;
-         }
-      }
-
-      return bry.a;
+   public boolean c_(cwb $$0) {
+      return $$0.b(ku.ad) || super.c_($$0);
    }
 
-   private boolean a(coh $$0, dvd $$1, dew $$2, jg $$3, boolean $$4, cvx $$5) {
-      if (!$$0.gH()) {
-         return false;
-      } else {
-         jp<dhy> $$6 = $$1.c();
-         dve<dhy, dvd> $$7 = $$6.a().l();
-         Collection<dwg<?>> $$8 = $$7.d();
-         if ($$8.isEmpty()) {
-            a($$0, xh.a(this.k + ".empty", $$6.g()));
-            return false;
-         } else {
-            cyi $$9 = $$5.a(kt.U);
-            if ($$9 == null) {
-               return false;
-            } else {
-               dwg<?> $$10 = $$9.a().get($$6);
-               if ($$4) {
-                  if ($$10 == null) {
-                     $$10 = $$8.iterator().next();
-                  }
-
-                  dvd $$11 = a($$1, $$10, $$0.ga());
-                  $$2.a($$3, $$11, 18);
-                  a($$0, xh.a(this.k + ".update", $$10.f(), a($$11, $$10)));
-               } else {
-                  $$10 = a($$8, $$10, $$0.ga());
-                  $$5.b(kt.U, $$9.a($$6, $$10));
-                  a($$0, xh.a(this.k + ".select", $$10.f(), a($$1, $$10)));
-               }
-
-               return true;
+   @Override
+   public void a(cwb $$0, dfb $$1, bue $$2, int $$3, boolean $$4) {
+      if ($$1 instanceof arn $$5) {
+         cyv $$6 = $$0.a(ku.ad);
+         if ($$6 != null) {
+            cyv $$7 = $$6.a($$5);
+            if ($$7 != $$6) {
+               $$0.b(ku.ad, $$7);
             }
          }
       }
    }
 
-   private static <T extends Comparable<T>> dvd a(dvd $$0, dwg<T> $$1, boolean $$2) {
-      return $$0.b($$1, a($$1.a(), $$0.c($$1), $$2));
+   @Override
+   public bsd a(czu $$0) {
+      jh $$1 = $$0.a();
+      dfb $$2 = $$0.q();
+      if (!$$2.a_($$1).a(dig.pq)) {
+         return super.a($$0);
+      } else {
+         $$2.a(null, $$1, awl.om, awm.h, 1.0F, 1.0F);
+         com $$3 = $$0.o();
+         cwb $$4 = $$0.n();
+         boolean $$5 = !$$3.fX() && $$4.L() == 1;
+         cyv $$6 = new cyv(Optional.of(jp.a($$2.ag(), $$1)), true);
+         if ($$5) {
+            $$4.b(ku.ad, $$6);
+         } else {
+            cwb $$7 = $$4.a(cwf.qT, 1);
+            $$4.a(1, $$3);
+            $$7.b(ku.ad, $$6);
+            if (!$$3.gk().f($$7)) {
+               $$3.a($$7, false);
+            }
+         }
+
+         return bsd.a;
+      }
    }
 
-   private static <T> T a(Iterable<T> $$0, @Nullable T $$1, boolean $$2) {
-      return $$2 ? ad.b($$0, $$1) : ad.a($$0, $$1);
-   }
-
-   private static void a(coh $$0, xh $$1) {
-      ((arn)$$0).b($$1, true);
-   }
-
-   private static <T extends Comparable<T>> String a(dvd $$0, dwg<T> $$1) {
-      return $$1.a($$0.c($$1));
+   @Override
+   public xi a(cwb $$0) {
+      return $$0.b(ku.ad) ? a : super.a($$0);
    }
 }

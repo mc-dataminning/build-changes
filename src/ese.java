@@ -1,192 +1,122 @@
-import java.util.Optional;
-import java.util.function.Predicate;
+import com.google.common.collect.Maps;
+import it.unimi.dsi.fastutil.longs.Long2ObjectMap;
+import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
+import java.util.Map;
 import javax.annotation.Nullable;
 
-public class ese {
-   private static final int c = 2;
-   public static final int a = 21;
-   private static final int d = 3;
-   public static final int b = 21;
-   private static final dvc.f e = ($$0, $$1, $$2) -> $$0.a(dia.co);
-   private static final float f = 4.0F;
-   private static final double g = 1.0;
-   private final dew h;
-   private final jl.a i;
-   private final jl j;
-   private int k;
-   @Nullable
-   private jg l;
-   private int m;
-   private final int n;
+public class ese extends erx {
+   private final boolean k;
+   private final Long2ObjectMap<esb> l = new Long2ObjectOpenHashMap();
 
-   public static Optional<ese> a(dew $$0, jg $$1, jl.a $$2) {
-      return a($$0, $$1, $$0x -> $$0x.a() && $$0x.k == 0, $$2);
+   public ese(boolean $$0) {
+      this.k = $$0;
    }
 
-   public static Optional<ese> a(dew $$0, jg $$1, Predicate<ese> $$2, jl.a $$3) {
-      Optional<ese> $$4 = Optional.of(new ese($$0, $$1, $$3)).filter($$2);
-      if ($$4.isPresent()) {
-         return $$4;
-      } else {
-         jl.a $$5 = $$3 == jl.a.a ? jl.a.c : jl.a.a;
-         return Optional.of(new ese($$0, $$1, $$5)).filter($$2);
-      }
+   @Override
+   public void a(dfo $$0, bvc $$1) {
+      super.a($$0, $$1);
+      this.l.clear();
    }
 
-   public ese(dew $$0, jg $$1, jl.a $$2) {
-      this.h = $$0;
-      this.i = $$2;
-      this.j = $$2 == jl.a.a ? jl.e : jl.d;
-      this.l = this.a($$1);
-      if (this.l == null) {
-         this.l = $$1;
-         this.n = 1;
-         this.m = 1;
-      } else {
-         this.n = this.d();
-         if (this.n > 0) {
-            this.m = this.e();
-         }
-      }
-   }
-
-   @Nullable
-   private jg a(jg $$0) {
-      int $$1 = Math.max(this.h.I_(), $$0.v() - 21);
-
-      while ($$0.v() > $$1 && a(this.h.a_($$0.e()))) {
-         $$0 = $$0.e();
-      }
-
-      jl $$2 = this.j.g();
-      int $$3 = this.a($$0, $$2) - 1;
-      return $$3 < 0 ? null : $$0.a($$2, $$3);
-   }
-
-   private int d() {
-      int $$0 = this.a(this.l, this.j);
-      return $$0 >= 2 && $$0 <= 21 ? $$0 : 0;
-   }
-
-   private int a(jg $$0, jl $$1) {
-      jg.a $$2 = new jg.a();
-
-      for (int $$3 = 0; $$3 <= 21; $$3++) {
-         $$2.g($$0).c($$1, $$3);
-         dvd $$4 = this.h.a_($$2);
-         if (!a($$4)) {
-            if (e.test($$4, this.h, $$2)) {
-               return $$3;
-            }
-            break;
-         }
-
-         dvd $$5 = this.h.a_($$2.c(jl.a));
-         if (!e.test($$5, this.h, $$2)) {
-            break;
-         }
-      }
-
-      return 0;
-   }
-
-   private int e() {
-      jg.a $$0 = new jg.a();
-      int $$1 = this.a($$0);
-      return $$1 >= 3 && $$1 <= 21 && this.a($$0, $$1) ? $$1 : 0;
-   }
-
-   private boolean a(jg.a $$0, int $$1) {
-      for (int $$2 = 0; $$2 < this.n; $$2++) {
-         jg.a $$3 = $$0.g(this.l).c(jl.b, $$1).c(this.j, $$2);
-         if (!e.test(this.h.a_($$3), this.h, $$3)) {
-            return false;
-         }
-      }
-
-      return true;
-   }
-
-   private int a(jg.a $$0) {
-      for (int $$1 = 0; $$1 < 21; $$1++) {
-         $$0.g(this.l).c(jl.b, $$1).c(this.j, -1);
-         if (!e.test(this.h.a_($$0), this.h, $$0)) {
-            return $$1;
-         }
-
-         $$0.g(this.l).c(jl.b, $$1).c(this.j, this.n);
-         if (!e.test(this.h.a_($$0), this.h, $$0)) {
-            return $$1;
-         }
-
-         for (int $$2 = 0; $$2 < this.n; $$2++) {
-            $$0.g(this.l).c(jl.b, $$1).c(this.j, $$2);
-            dvd $$3 = this.h.a_($$0);
-            if (!a($$3)) {
-               return $$1;
-            }
-
-            if ($$3.a(dia.ed)) {
-               this.k++;
-            }
-         }
-      }
-
-      return 21;
-   }
-
-   private static boolean a(dvd $$0) {
-      return $$0.l() || $$0.a(awz.aL) || $$0.a(dia.ed);
-   }
-
-   public boolean a() {
-      return this.l != null && this.n >= 2 && this.n <= 21 && this.m >= 3 && this.m <= 21;
-   }
-
+   @Override
    public void b() {
-      dvd $$0 = dia.ed.m().b(dnb.b, this.i);
-      jg.c(this.l, this.l.a(jl.b, this.m - 1).a(this.j, this.n - 1)).forEach($$1 -> this.h.a($$1, $$0, 18));
+      super.b();
+      this.l.clear();
    }
 
-   public boolean c() {
-      return this.a() && this.k == this.n * this.m;
+   @Override
+   public erw a() {
+      return this.c(azk.a(this.b.cS().a), azk.a(this.b.cS().b + 0.5), azk.a(this.b.cS().c));
    }
 
-   public static ezh a(l.a $$0, jl.a $$1, ezh $$2, buc $$3) {
-      double $$4 = (double)$$0.b - (double)$$3.a();
-      double $$5 = (double)$$0.c - (double)$$3.b();
-      jg $$6 = $$0.a;
-      double $$8;
-      if ($$4 > 0.0) {
-         double $$7 = (double)$$6.a($$1) + (double)$$3.a() / 2.0;
-         $$8 = azj.a(azj.c($$2.a($$1) - $$7, 0.0, $$4), 0.0, 1.0);
-      } else {
-         $$8 = 0.5;
-      }
-
-      double $$11;
-      if ($$5 > 0.0) {
-         jl.a $$10 = jl.a.b;
-         $$11 = azj.a(azj.c($$2.a($$10) - (double)$$6.a($$10), 0.0, $$5), 0.0, 1.0);
-      } else {
-         $$11 = 0.0;
-      }
-
-      jl.a $$13 = $$1 == jl.a.a ? jl.a.c : jl.a.a;
-      double $$14 = $$2.a($$13) - ((double)$$6.a($$13) + 0.5);
-      return new ezh($$8, $$11, $$14);
+   @Override
+   public esf a(double $$0, double $$1, double $$2) {
+      return this.b($$0, $$1, $$2);
    }
 
-   public static ezh a(ezh $$0, arm $$1, btz $$2, buc $$3) {
-      if (!($$3.a() > 4.0F) && !($$3.b() > 4.0F)) {
-         double $$4 = (double)$$3.b() / 2.0;
-         ezh $$5 = $$0.b(0.0, $$4, 0.0);
-         fab $$6 = ezy.a(ezc.a($$5, (double)$$3.a(), 0.0, (double)$$3.a()).b(0.0, 1.0, 0.0).g(1.0E-6));
-         Optional<ezh> $$7 = $$1.a($$2, $$6, $$5, (double)$$3.a(), (double)$$3.b(), (double)$$3.a());
-         Optional<ezh> $$8 = $$7.map($$1x -> $$1x.a(0.0, $$4, 0.0));
-         return $$8.orElse($$0);
-      } else {
-         return $$0;
+   @Override
+   public int a(erw[] $$0, erw $$1) {
+      int $$2 = 0;
+      Map<jm, erw> $$3 = Maps.newEnumMap(jm.class);
+
+      for (jm $$4 : jm.values()) {
+         erw $$5 = this.a($$1.a + $$4.j(), $$1.b + $$4.k(), $$1.c + $$4.l());
+         $$3.put($$4, $$5);
+         if (this.a($$5)) {
+            $$0[$$2++] = $$5;
+         }
       }
+
+      for (jm $$6 : jm.c.a) {
+         jm $$7 = $$6.h();
+         if (b($$3.get($$6)) && b($$3.get($$7))) {
+            erw $$8 = this.a($$1.a + $$6.j() + $$7.j(), $$1.b, $$1.c + $$6.l() + $$7.l());
+            if (this.a($$8)) {
+               $$0[$$2++] = $$8;
+            }
+         }
+      }
+
+      return $$2;
+   }
+
+   protected boolean a(@Nullable erw $$0) {
+      return $$0 != null && !$$0.i;
+   }
+
+   private static boolean b(@Nullable erw $$0) {
+      return $$0 != null && $$0.k >= 0.0F;
+   }
+
+   @Nullable
+   protected erw a(int $$0, int $$1, int $$2) {
+      erw $$3 = null;
+      esb $$4 = this.b($$0, $$1, $$2);
+      if (this.k && $$4 == esb.u || $$4 == esb.j) {
+         float $$5 = this.b.a($$4);
+         if ($$5 >= 0.0F) {
+            $$3 = this.c($$0, $$1, $$2);
+            $$3.l = $$4;
+            $$3.k = Math.max($$3.k, $$5);
+            if (this.a.a().b_(new jh($$0, $$1, $$2)).c()) {
+               $$3.k += 8.0F;
+            }
+         }
+      }
+
+      return $$3;
+   }
+
+   protected esb b(int $$0, int $$1, int $$2) {
+      return (esb)this.l.computeIfAbsent(jh.a($$0, $$1, $$2), $$3 -> this.a(this.a, $$0, $$1, $$2));
+   }
+
+   @Override
+   public esb a(esd $$0, int $$1, int $$2, int $$3) {
+      return this.a($$0, $$1, $$2, $$3, this.b);
+   }
+
+   @Override
+   public esb a(esd $$0, int $$1, int $$2, int $$3, bvc $$4) {
+      jh.a $$5 = new jh.a();
+
+      for (int $$6 = $$1; $$6 < $$1 + this.d; $$6++) {
+         for (int $$7 = $$2; $$7 < $$2 + this.e; $$7++) {
+            for (int $$8 = $$3; $$8 < $$3 + this.f; $$8++) {
+               dvj $$9 = $$0.a($$5.d($$6, $$7, $$8));
+               erk $$10 = $$9.y();
+               if ($$10.c() && $$9.a(erz.b) && $$9.l()) {
+                  return esb.u;
+               }
+
+               if (!$$10.a(axg.a)) {
+                  return esb.a;
+               }
+            }
+         }
+      }
+
+      dvj $$11 = $$0.a($$5);
+      return $$11.a(erz.b) ? esb.j : esb.a;
    }
 }

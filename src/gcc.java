@@ -1,28 +1,25 @@
-import java.util.EnumMap;
-
 public class gcc {
-   public static final int a = 5000;
-   private final gby b;
-   private final flh c;
-   private final EnumMap<bmw, Long> d;
-
-   public gcc(gby $$0, flh $$1) {
-      this.c = $$1;
-      this.b = $$0;
-      this.d = new EnumMap<>(bmw.class);
-   }
+   private static final int a = 49;
+   private static final int b = 3;
+   private double c = 2000000.0;
+   private int d = 1;
+   private volatile long e = ae.d();
 
    public void a() {
-      if (this.c.g()) {
-         this.a(bmw.a);
+      this.e = ae.d();
+   }
+
+   public void a(int $$0) {
+      if ($$0 > 0) {
+         double $$1 = (double)(ae.d() - this.e);
+         double $$2 = $$1 / (double)$$0;
+         double $$3 = azk.a($$2, this.c / 3.0, this.c * 3.0);
+         this.c = (this.c * (double)this.d + $$3) / (double)(this.d + 1);
+         this.d = Math.min(49, this.d + 1);
       }
    }
 
-   private void a(bmw $$0) {
-      long $$1 = ad.c();
-      if ($$1 > this.d.getOrDefault($$0, Long.valueOf(0L)) + 5000L) {
-         this.b.b(new ahn($$0));
-         this.d.put($$0, $$1);
-      }
+   public float b() {
+      return (float)(7000000.0 / this.c);
    }
 }

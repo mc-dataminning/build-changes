@@ -1,33 +1,46 @@
 import com.mojang.datafixers.kinds.App;
 import java.util.function.Function;
-import java.util.function.Predicate;
+import org.apache.commons.lang3.mutable.MutableLong;
 
 public class bzr {
-   private static final int a = 16;
+   public static bwu<bvi> a(int $$0, float $$1) {
+      MutableLong $$2 = new MutableLong(0L);
+      return cag.a(
+         (Function<cag.b<bvi>, ? extends App<cag.c<bvi>, caj<bvi>>>)($$3 -> $$3.group($$3.c(cee.o), $$3.c(cee.m), $$3.a(cee.n))
+               .apply(
+                  $$3,
+                  ($$3x, $$4, $$5) -> ($$5x, $$6, $$7) -> {
+                        if ($$5x.b_($$6.dx()).a(axg.a)) {
+                           return false;
+                        } else if ($$7 < $$2.getValue()) {
+                           $$2.setValue($$7 + 40L);
+                           return true;
+                        } else {
+                           ezs $$8 = ezs.a($$6);
+                           jh $$9 = $$6.dx();
+                           jh.a $$10 = new jh.a();
 
-   public static bwp<buv> a(Predicate<jp<cgc>> $$0, cdz<jo> $$1) {
-      return cab.a((Function<cab.b<buv>, ? extends App<cab.c<buv>, cae<buv>>>)($$2 -> $$2.group($$2.b($$1)).apply($$2, $$2x -> ($$3, $$4, $$5) -> {
-               jo $$6 = $$2.b($$2x);
-               jg $$7 = $$6.b();
-               if ($$3.ag() == $$6.a() && $$7.a($$4.dv(), 16.0)) {
-                  arm $$8 = $$3.o().a($$6.a());
-                  if ($$8 == null || !$$8.y().a($$7, $$0)) {
-                     $$2x.b();
-                  } else if (a($$8, $$7, $$4)) {
-                     $$2x.b();
-                     $$3.y().b($$7);
-                     agr.c($$3, $$7);
-                  }
+                           label45:
+                           for (jh $$11 : jh.a($$9, $$0, $$0, $$0)) {
+                              if (($$11.u() != $$9.u() || $$11.w() != $$9.w())
+                                 && $$5x.a_($$11).b($$5x, $$11, $$8).c()
+                                 && !$$5x.a_($$10.a($$11, jm.a)).b($$5x, $$11, $$8).c()) {
+                                 for (jm $$12 : jm.c.a) {
+                                    $$10.a($$11, $$12);
+                                    if ($$5x.a_($$10).l() && $$5x.a_($$10.c(jm.a)).a(dig.G)) {
+                                       $$5.a(new bww($$11));
+                                       $$4.a(new ceh(new bww($$11), $$1, 0));
+                                       break label45;
+                                    }
+                                 }
+                              }
+                           }
 
-                  return true;
-               } else {
-                  return false;
-               }
-            })));
-   }
-
-   private static boolean a(arm $$0, jg $$1, buv $$2) {
-      dvd $$3 = $$0.a_($$1);
-      return $$3.a(awz.S) && $$3.c(dhr.c) && !$$2.fT();
+                           $$2.setValue($$7 + 40L);
+                           return true;
+                        }
+                     }
+               ))
+      );
    }
 }

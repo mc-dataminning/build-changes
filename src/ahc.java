@@ -1,27 +1,26 @@
 import java.time.Instant;
-import javax.annotation.Nullable;
 
-public record ahc(String b, Instant c, long d, @Nullable xt e, xo.b f) implements zo<agu> {
-   public static final zf<we, ahc> a = zo.a(ahc::a, ahc::new);
+public record ahc(String b, Instant c, long d, fd e, xp.b f) implements zp<agv> {
+   public static final zg<wf, ahc> a = zp.a(ahc::a, ahc::new);
 
-   private ahc(we $$0) {
-      this($$0.d(256), $$0.t(), $$0.readLong(), $$0.c(xt::a), new xo.b($$0));
+   private ahc(wf $$0) {
+      this($$0.p(), $$0.t(), $$0.readLong(), new fd($$0), new xp.b($$0));
    }
 
-   private void a(we $$0) {
-      $$0.a(this.b, 256);
+   private void a(wf $$0) {
+      $$0.a(this.b);
       $$0.a(this.c);
       $$0.b(this.d);
-      $$0.a(this.e, xt::a);
+      this.e.a($$0);
       this.f.a($$0);
    }
 
    @Override
-   public zq<ahc> a() {
-      return ags.bn;
+   public zr<ahc> a() {
+      return agt.bm;
    }
 
-   public void a(agu $$0) {
+   public void a(agv $$0) {
       $$0.a(this);
    }
 
@@ -33,12 +32,11 @@ public record ahc(String b, Instant c, long d, @Nullable xt e, xo.b f) implement
       return this.d;
    }
 
-   @Nullable
-   public xt g() {
+   public fd g() {
       return this.e;
    }
 
-   public xo.b h() {
+   public xp.b h() {
       return this.f;
    }
 }

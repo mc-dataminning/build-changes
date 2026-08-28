@@ -1,8 +1,3 @@
-import javax.annotation.ParametersAreNonnullByDefault;
-
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@fbj
-@fbi
-interface fda {
+public interface fda {
+   fcz createMonitor(long var1);
 }

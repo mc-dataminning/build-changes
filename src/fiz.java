@@ -1,509 +1,104 @@
-import com.google.common.base.MoreObjects;
-import com.mojang.blaze3d.platform.TextureUtil;
-import java.nio.file.Path;
-import java.text.MessageFormat;
-import java.util.Locale;
-import javax.annotation.Nullable;
+import com.mojang.logging.LogUtils;
+import com.mojang.text2speech.Narrator;
+import org.lwjgl.util.tinyfd.TinyFileDialogs;
+import org.slf4j.Logger;
 
 public class fiz {
-   public static final int a = 10000;
-   private final fja b;
-   private final fch c = new fch();
-   private long d = -1L;
-   private long e = -1L;
-   private long f = -1L;
-   private boolean g;
+   public static final xi a = xh.a;
+   private static final Logger b = LogUtils.getLogger();
+   private final fji c;
+   private final Narrator d = Narrator.getNarrator();
 
-   public fiz(fja $$0) {
-      this.b = $$0;
+   public fiz(fji $$0) {
+      this.c = $$0;
    }
 
-   private boolean a(int $$0) {
-      switch ($$0) {
-         case 69:
-            this.b.C = !this.b.C;
-            this.c("SectionPath: {0}", this.b.C ? "shown" : "hidden");
-            return true;
-         case 70:
-            boolean $$2 = ghl.a();
-            this.c("Fog: {0}", $$2 ? "enabled" : "disabled");
-            return true;
-         case 71:
-         case 72:
-         case 73:
-         case 74:
-         case 75:
-         case 77:
-         case 78:
-         case 80:
-         case 81:
-         case 82:
-         case 83:
-         case 84:
-         default:
-            return false;
-         case 76:
-            this.b.E = !this.b.E;
-            this.c("SmartCull: {0}", this.b.E ? "enabled" : "disabled");
-            return true;
-         case 79:
-            boolean $$1 = this.b.l.c();
-            this.c("Frustum culling Octree: {0}", $$1 ? "enabled" : "disabled");
-            return true;
-         case 85:
-            if (fqs.t()) {
-               this.b.f.m();
-               this.c("Killed frustum");
-            } else {
-               this.b.f.l();
-               this.c("Captured frustum");
-            }
-
-            return true;
-         case 86:
-            this.b.D = !this.b.D;
-            this.c("SectionVisibility: {0}", this.b.D ? "enabled" : "disabled");
-            return true;
-         case 87:
-            this.b.B = !this.b.B;
-            this.c("WireFrame: {0}", this.b.B ? "enabled" : "disabled");
-            return true;
+   public void a(xi $$0) {
+      if (this.d().c()) {
+         String $$1 = $$0.getString();
+         this.b($$1);
+         this.d.say($$1, false);
       }
    }
 
-   private void a(n $$0, xh $$1) {
-      this.b.m.d().a(xh.i().b(xh.c("debug.prefix").a($$0, n.r)).b(xg.v).b($$1));
-   }
-
-   private void a(xh $$0) {
-      this.a(n.o, $$0);
-   }
-
-   private void a(String $$0, Object... $$1) {
-      this.a(xh.b($$0, $$1));
-   }
-
-   private void b(String $$0, Object... $$1) {
-      this.a(n.m, xh.b($$0, $$1));
-   }
-
-   private void c(String $$0, Object... $$1) {
-      this.a(xh.b(MessageFormat.format($$0, $$1)));
-   }
-
-   private boolean b(int $$0) {
-      if (this.d > 0L && this.d < ad.c() - 100L) {
-         return true;
-      } else {
-         switch ($$0) {
-            case 49:
-               this.b.aR().k();
-               return true;
-            case 50:
-               this.b.aR().j();
-               return true;
-            case 51:
-               this.b.aR().i();
-               return true;
-            case 65:
-               this.b.f.e();
-               this.a("debug.reload_chunks.message");
-               return true;
-            case 66:
-               boolean $$1 = !this.b.aq().a();
-               this.b.aq().b($$1);
-               this.a($$1 ? "debug.show_hitboxes.on" : "debug.show_hitboxes.off");
-               return true;
-            case 67:
-               if (this.b.t.gA()) {
-                  return false;
-               } else {
-                  gby $$7 = this.b.t.cw;
-                  if ($$7 == null) {
-                     return false;
-                  }
-
-                  this.a("debug.copy_location.message");
-                  this.a(
-                     String.format(
-                        Locale.ROOT,
-                        "/execute in %s run tp @s %.2f %.2f %.2f %.2f %.2f",
-                        this.b.t.dX().ag().a(),
-                        this.b.t.dC(),
-                        this.b.t.dE(),
-                        this.b.t.dI(),
-                        this.b.t.dN(),
-                        this.b.t.dP()
-                     )
-                  );
-                  return true;
-               }
-            case 68:
-               if (this.b.m != null) {
-                  this.b.m.d().a(false);
-               }
-
-               return true;
-            case 71:
-               boolean $$2 = this.b.l.b();
-               this.a($$2 ? "debug.chunk_boundaries.on" : "debug.chunk_boundaries.off");
-               return true;
-            case 72:
-               this.b.n.m = !this.b.n.m;
-               this.a(this.b.n.m ? "debug.advanced_tooltips.on" : "debug.advanced_tooltips.off");
-               this.b.n.ay();
-               return true;
-            case 73:
-               if (!this.b.t.gA()) {
-                  this.a(this.b.t.l(2), !fqs.t());
-               }
-
-               return true;
-            case 76:
-               if (this.b.b(this::a)) {
-                  this.a("debug.profiling.start", 10);
-               }
-
-               return true;
-            case 78:
-               if (!this.b.t.l(2)) {
-                  this.a("debug.creative_spectator.error");
-               } else if (!this.b.t.R_()) {
-                  this.b.t.cw.d("gamemode spectator");
-               } else {
-                  this.b.t.cw.d("gamemode " + ((des)MoreObjects.firstNonNull(this.b.r.i(), des.b)).b());
-               }
-
-               return true;
-            case 80:
-               this.b.n.n = !this.b.n.n;
-               this.b.n.ay();
-               this.a(this.b.n.n ? "debug.pause_focus.on" : "debug.pause_focus.off");
-               return true;
-            case 81:
-               this.a("debug.help.message");
-               fla $$3 = this.b.m.d();
-               $$3.a(xh.c("debug.reload_chunks.help"));
-               $$3.a(xh.c("debug.show_hitboxes.help"));
-               $$3.a(xh.c("debug.copy_location.help"));
-               $$3.a(xh.c("debug.clear_chat.help"));
-               $$3.a(xh.c("debug.chunk_boundaries.help"));
-               $$3.a(xh.c("debug.advanced_tooltips.help"));
-               $$3.a(xh.c("debug.inspect.help"));
-               $$3.a(xh.c("debug.profiling.help"));
-               $$3.a(xh.c("debug.creative_spectator.help"));
-               $$3.a(xh.c("debug.pause_focus.help"));
-               $$3.a(xh.c("debug.help.help"));
-               $$3.a(xh.c("debug.dump_dynamic_textures.help"));
-               $$3.a(xh.c("debug.reload_resourcepacks.help"));
-               $$3.a(xh.c("debug.pause.help"));
-               $$3.a(xh.c("debug.gamemodes.help"));
-               return true;
-            case 83:
-               Path $$4 = this.b.q.toPath().toAbsolutePath();
-               Path $$5 = TextureUtil.getDebugTexturePath($$4);
-               this.b.aa().a($$5);
-               xh $$6 = xh.b($$4.relativize($$5).toString()).a(n.t).a($$1x -> $$1x.a(new xf(xf.a.b, $$5.toFile().toString())));
-               this.a("debug.dump_dynamic_textures", $$6);
-               return true;
-            case 84:
-               this.a("debug.reload_resourcepacks.message");
-               this.b.l();
-               return true;
-            case 293:
-               if (!this.b.t.l(2)) {
-                  this.a("debug.gamemodes.error");
-               } else {
-                  this.b.a(new fre());
-               }
-
-               return true;
-            default:
-               return false;
-         }
+   public void b(xi $$0) {
+      String $$1 = $$0.getString();
+      if (this.d().d() && !$$1.isEmpty()) {
+         this.b($$1);
+         this.d.say($$1, false);
       }
    }
 
-   private void a(boolean $$0, boolean $$1) {
-      ezf $$2 = this.b.w;
-      if ($$2 != null) {
-         switch ($$2.d()) {
-            case b:
-               jg $$3 = ((ezd)$$2).b();
-               dev $$4 = this.b.t.dX();
-               dvd $$5 = $$4.a_($$3);
-               if ($$0) {
-                  if ($$1) {
-                     this.b.t.cw.s().a($$3, $$2x -> {
-                        this.a($$5, $$3, $$2x);
-                        this.a("debug.inspect.server.block");
-                     });
-                  } else {
-                     dsg $$6 = $$4.c_($$3);
-                     uj $$7 = $$6 != null ? $$6.d($$4.H_()) : null;
-                     this.a($$5, $$3, $$7);
-                     this.a("debug.inspect.client.block");
-                  }
-               } else {
-                  this.a($$5, $$3, null);
-                  this.a("debug.inspect.client.block");
-               }
-               break;
-            case c:
-               btz $$8 = ((eze)$$2).a();
-               alh $$9 = lx.f.b($$8.aq());
-               if ($$0) {
-                  if ($$1) {
-                     this.b.t.cw.s().a($$8.ar(), $$2x -> {
-                        this.a($$9, $$8.dv(), $$2x);
-                        this.a("debug.inspect.server.entity");
-                     });
-                  } else {
-                     uj $$10 = $$8.f(new uj());
-                     this.a($$9, $$8.dv(), $$10);
-                     this.a("debug.inspect.client.entity");
-                  }
-               } else {
-                  this.a($$9, $$8.dv(), null);
-                  this.a("debug.inspect.client.entity");
-               }
-         }
-      }
-   }
-
-   private void a(dvd $$0, jg $$1, @Nullable uj $$2) {
-      StringBuilder $$3 = new StringBuilder(gp.a($$0));
-      if ($$2 != null) {
-         $$3.append($$2);
-      }
-
-      String $$4 = String.format(Locale.ROOT, "/setblock %d %d %d %s", $$1.u(), $$1.v(), $$1.w(), $$3);
-      this.a($$4);
-   }
-
-   private void a(alh $$0, ezh $$1, @Nullable uj $$2) {
-      String $$4;
-      if ($$2 != null) {
-         $$2.r("UUID");
-         $$2.r("Pos");
-         $$2.r("Dimension");
-         String $$3 = uy.c((vg)$$2).getString();
-         $$4 = String.format(Locale.ROOT, "/summon %s %.2f %.2f %.2f %s", $$0, $$1.d, $$1.e, $$1.f, $$3);
-      } else {
-         $$4 = String.format(Locale.ROOT, "/summon %s %.2f %.2f %.2f", $$0, $$1.d, $$1.e, $$1.f);
-      }
-
-      this.a($$4);
-   }
-
-   public void a(long $$0, int $$1, int $$2, int $$3, int $$4) {
-      if ($$0 == this.b.aP().i()) {
-         this.b.aQ().b();
-         boolean $$5 = fco.a(fja.Q().aP().i(), 292);
-         if (this.d > 0L) {
-            if (!fco.a(fja.Q().aP().i(), 67) || !$$5) {
-               this.d = -1L;
-            }
-         } else if (fco.a(fja.Q().aP().i(), 67) && $$5) {
-            this.g = true;
-            this.d = ad.c();
-            this.e = ad.c();
-            this.f = 0L;
-         }
-
-         fqs $$6 = this.b.z;
-         if ($$6 != null) {
-            switch ($$1) {
-               case 258:
-                  this.b.a(fix.d);
-               case 259:
-               case 260:
-               case 261:
-               default:
-                  break;
-               case 262:
-               case 263:
-               case 264:
-               case 265:
-                  this.b.a(fix.c);
-            }
-         }
-
-         if ($$3 == 1 && (!(this.b.z instanceof fuc) || ((fuc)$$6).u <= ad.c() - 20L)) {
-            if (this.b.n.P.a($$1, $$2)) {
-               this.b.aP().h();
-               this.b.n.ac().a(this.b.aP().j());
-               return;
-            }
-
-            if (this.b.n.M.a($$1, $$2)) {
-               if (fqs.s()) {
-               }
-
-               fjj.a(this.b.q, this.b.h(), $$0x -> this.b.execute(() -> this.b.m.d().a($$0x)));
-               return;
-            }
-         }
-
-         if ($$3 != 0) {
-            boolean $$7 = $$6 == null || !($$6.aM_() instanceof fli) || !((fli)$$6.aM_()).c();
-            if ($$7) {
-               if (fqs.s() && $$1 == 66 && this.b.ba().a() && this.b.n.v().c()) {
-                  boolean $$8 = this.b.n.au().c() == fjc.a;
-                  this.b.n.au().a(fjc.a(this.b.n.au().c().a() + 1));
-                  this.b.n.ay();
-                  if ($$6 != null) {
-                     $$6.e($$8);
-                  }
-               }
-
-               ggs var16 = this.b.t;
-            }
-         }
-
-         if ($$6 != null) {
-            boolean[] $$9 = new boolean[]{false};
-            fqs.a(() -> {
-               if ($$3 == 1 || $$3 == 2) {
-                  $$6.y();
-                  $$9[0] = $$6.a($$1, $$2, $$4);
-               } else if ($$3 == 0) {
-                  $$9[0] = $$6.c($$1, $$2, $$4);
-               }
-            }, "keyPressed event handler", $$6.getClass().getCanonicalName());
-            if ($$9[0]) {
-               return;
-            }
-         }
-
-         fco.a $$10;
-         boolean $$11;
-         boolean var10000;
-         label180: {
-            $$10 = fco.a($$1, $$2);
-            $$11 = this.b.z == null;
-            label141:
-            if (!$$11) {
-               if (this.b.z instanceof fqn $$12 && !$$12.m()) {
-                  break label141;
-               }
-
-               var10000 = false;
-               break label180;
-            }
-
-            var10000 = true;
-         }
-
-         boolean $$13 = var10000;
-         if ($$3 == 0) {
-            fiy.a($$10, false);
-            if ($$13 && $$1 == 292) {
-               if (this.g) {
-                  this.g = false;
-               } else {
-                  this.b.aR().h();
-               }
-            }
-         } else {
-            boolean $$14 = false;
-            if ($$13) {
-               if ($$1 == 293 && this.b.j != null) {
-                  this.b.j.c();
-               }
-
-               if ($$1 == 256) {
-                  this.b.b($$5);
-                  $$14 |= $$5;
-               }
-
-               $$14 |= $$5 && this.b($$1);
-               this.g |= $$14;
-               if ($$1 == 290) {
-                  this.b.n.X = !this.b.n.X;
-               }
-
-               if (this.b.aR().e() && !$$5 && $$1 >= 48 && $$1 <= 57) {
-                  this.b.aR().o().b($$1 - 48);
-               }
-            }
-
-            if ($$11) {
-               if ($$14) {
-                  fiy.a($$10, false);
-               } else {
-                  fiy.a($$10, true);
-                  fiy.a($$10);
-               }
-            }
-         }
-      }
-   }
-
-   private void a(long $$0, int $$1, int $$2) {
-      if ($$0 == this.b.aP().i()) {
-         fmw $$3 = this.b.z;
-         if ($$3 != null && this.b.aN() == null) {
-            if (Character.charCount($$1) == 1) {
-               fqs.a(() -> $$3.a((char)$$1, $$2), "charTyped event handler", $$3.getClass().getCanonicalName());
-            } else {
-               for (char $$4 : Character.toChars($$1)) {
-                  fqs.a(() -> $$3.a($$4, $$2), "charTyped event handler", $$3.getClass().getCanonicalName());
-               }
-            }
-         }
-      }
-   }
-
-   public void a(long $$0) {
-      fco.a(
-         $$0,
-         ($$0x, $$1, $$2, $$3, $$4) -> this.b.execute(() -> this.a($$0x, $$1, $$2, $$3, $$4)),
-         ($$0x, $$1, $$2) -> this.b.execute(() -> this.a($$0x, $$1, $$2))
-      );
-   }
-
-   public String a() {
-      return this.c.a(this.b.aP().i(), ($$0, $$1) -> {
-         if ($$0 != 65545) {
-            this.b.aP().a($$0, $$1);
-         }
-      });
+   public void c(xi $$0) {
+      this.a($$0.getString());
    }
 
    public void a(String $$0) {
-      if (!$$0.isEmpty()) {
-         this.c.a(this.b.aP().i(), $$0);
+      if (this.d().d() && !$$0.isEmpty()) {
+         this.b($$0);
+         if (this.d.active()) {
+            this.d.clear();
+            this.d.say($$0, true);
+         }
       }
    }
 
+   private fjk d() {
+      return this.c.n.au().c();
+   }
+
+   private void b(String $$0) {
+      if (ab.aV) {
+         b.debug("Narrating: {}", $$0.replaceAll("\n", "\\\\n"));
+      }
+   }
+
+   public void a(fjk $$0) {
+      this.b();
+      this.d.say(xi.c("options.narrator").f(" : ").b($$0.b()).getString(), true);
+      fns $$1 = fji.Q().aA();
+      if (this.d.active()) {
+         if ($$0 == fjk.a) {
+            fnq.b($$1, fnq.a.a, xi.c("narrator.toast.disabled"), null);
+         } else {
+            fnq.b($$1, fnq.a.a, xi.c("narrator.toast.enabled"), $$0.b());
+         }
+      } else {
+         fnq.b($$1, fnq.a.a, xi.c("narrator.toast.disabled"), xi.c("options.narrator.notavailable"));
+      }
+   }
+
+   public boolean a() {
+      return this.d.active();
+   }
+
    public void b() {
-      if (this.d > 0L) {
-         long $$0 = ad.c();
-         long $$1 = 10000L - ($$0 - this.d);
-         long $$2 = $$0 - this.e;
-         if ($$1 < 0L) {
-            if (fqs.s()) {
-               fbg.a();
-            }
+      if (this.d() != fjk.a && this.d.active()) {
+         this.d.clear();
+      }
+   }
 
-            String $$3 = "Manually triggered debug crash";
-            o $$4 = new o("Manually triggered debug crash", new Throwable("Manually triggered debug crash"));
-            p $$5 = $$4.a("Manual crash details");
-            azk.a($$5);
-            throw new z($$4);
-         }
+   public void c() {
+      this.d.destroy();
+   }
 
-         if ($$2 >= 1000L) {
-            if (this.f == 0L) {
-               this.a("debug.crash.message");
-            } else {
-               this.b("debug.crash.warning", azj.f((float)$$1 / 1000.0F));
-            }
+   public void a(boolean $$0) {
+      if ($$0
+         && !this.a()
+         && !TinyFileDialogs.tinyfd_messageBox(
+            "Minecraft",
+            "Failed to initialize text-to-speech library. Do you want to continue?\nIf this problem persists, please report it at bugs.mojang.com",
+            "yesno",
+            "error",
+            true
+         )) {
+         throw new fiz.a("Narrator library is not active");
+      }
+   }
 
-            this.e = $$0;
-            this.f++;
-         }
+   public static class a extends fwz {
+      public a(String $$0) {
+         super($$0);
       }
    }
 }

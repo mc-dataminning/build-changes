@@ -1,60 +1,37 @@
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
+
 public class bsh {
-   public static final float a = 1.0F;
-   protected float b = 20.0F;
-   protected long c = bak.a / 20L;
-   protected int d = 0;
-   protected boolean e = true;
-   protected boolean f = false;
+   public static final Codec<bsh> a = RecordCodecBuilder.create($$0 -> $$0.group(ecg.b.fieldOf("source").forGetter($$0x -> $$0x.b)).apply($$0, bsh::new));
+   private final ecg b;
 
-   public void a(float $$0) {
-      this.b = Math.max($$0, 1.0F);
-      this.c = (long)((double)bak.a / (double)this.b);
+   public bsh(ecg $$0) {
+      this.b = $$0;
    }
 
-   public float f() {
-      return this.b;
+   public bsh(long $$0, ali $$1) {
+      this(a($$0, Optional.of($$1)));
    }
 
-   public float g() {
-      return (float)this.c / (float)bak.b;
+   public bsh(long $$0, Optional<ali> $$1) {
+      this(a($$0, $$1));
    }
 
-   public long h() {
-      return this.c;
-   }
-
-   public boolean i() {
-      return this.e;
-   }
-
-   public boolean j() {
-      return this.d > 0;
-   }
-
-   public void c(int $$0) {
-      this.d = $$0;
-   }
-
-   public int k() {
-      return this.d;
-   }
-
-   public void a(boolean $$0) {
-      this.f = $$0;
-   }
-
-   public boolean l() {
-      return this.f;
-   }
-
-   public void m() {
-      this.e = !this.f || this.d > 0;
-      if (this.d > 0) {
-         this.d--;
+   private static ecg a(long $$0, Optional<ali> $$1) {
+      ebu.a $$2 = ebu.b($$0);
+      if ($$1.isPresent()) {
+         $$2 = $$2.a(a($$1.get()));
       }
+
+      return new ecg($$2.a());
    }
 
-   public boolean a(btz $$0) {
-      return !this.i() && !($$0 instanceof coh) && $$0.df() <= 0;
+   public static ebu.a a(ali $$0) {
+      return ebu.a($$0.toString());
+   }
+
+   public azs a() {
+      return this.b;
    }
 }

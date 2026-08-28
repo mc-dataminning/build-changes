@@ -1,82 +1,164 @@
 import com.mojang.serialization.MapCodec;
+import javax.annotation.Nullable;
 
-public class dly extends dju {
-   public static final MapCodec<dly> i = b(dly::new);
+public class dly extends dhq {
+   public static final MapCodec<dly> a = b(dly::new);
+   public static final dwd b = dvz.Q;
+   public static final dwa c = dvz.f;
+   private static final fah d = die.a(0.0, 10.0, 0.0, 16.0, 16.0, 16.0);
+   private static final fah e = die.a(4.0, 4.0, 4.0, 12.0, 10.0, 12.0);
+   private static final fah f = fae.a(e, d);
+   private static final fah g = a(2.0, 11.0, 2.0, 14.0, 16.0, 14.0);
+   private static final fah h = fae.a(f, g, ezr.e);
+   private static final fah i = fae.a(h, die.a(6.0, 0.0, 6.0, 10.0, 4.0, 10.0));
+   private static final fah j = fae.a(h, die.a(12.0, 4.0, 6.0, 16.0, 8.0, 10.0));
+   private static final fah k = fae.a(h, die.a(6.0, 4.0, 0.0, 10.0, 8.0, 4.0));
+   private static final fah l = fae.a(h, die.a(6.0, 4.0, 12.0, 10.0, 8.0, 16.0));
+   private static final fah m = fae.a(h, die.a(0.0, 4.0, 6.0, 4.0, 8.0, 10.0));
+   private static final fah n = g;
+   private static final fah o = fae.a(g, die.a(12.0, 8.0, 6.0, 16.0, 10.0, 10.0));
+   private static final fah G = fae.a(g, die.a(6.0, 8.0, 0.0, 10.0, 10.0, 4.0));
+   private static final fah H = fae.a(g, die.a(6.0, 8.0, 12.0, 10.0, 10.0, 16.0));
+   private static final fah I = fae.a(g, die.a(0.0, 8.0, 6.0, 4.0, 10.0, 10.0));
 
    @Override
-   public MapCodec<? extends dly> a() {
-      return i;
+   public MapCodec<dly> a() {
+      return a;
    }
 
-   protected dly(dvc.d $$0) {
-      super(1.0F, 1.0F, 16.0F, 16.0F, 16.0F, $$0);
-      this.l(
-         this.F
-            .b()
-            .b(a, Boolean.valueOf(false))
-            .b(b, Boolean.valueOf(false))
-            .b(c, Boolean.valueOf(false))
-            .b(d, Boolean.valueOf(false))
-            .b(e, Boolean.valueOf(false))
-      );
-   }
-
-   @Override
-   public dvd a(czm $$0) {
-      dea $$1 = $$0.q();
-      jg $$2 = $$0.a();
-      ere $$3 = $$0.q().b_($$0.a());
-      jg $$4 = $$2.f();
-      jg $$5 = $$2.g();
-      jg $$6 = $$2.h();
-      jg $$7 = $$2.i();
-      dvd $$8 = $$1.a_($$4);
-      dvd $$9 = $$1.a_($$5);
-      dvd $$10 = $$1.a_($$6);
-      dvd $$11 = $$1.a_($$7);
-      return this.m()
-         .b(a, Boolean.valueOf(this.a($$8, $$8.c($$1, $$4, jl.d))))
-         .b(c, Boolean.valueOf(this.a($$9, $$9.c($$1, $$5, jl.c))))
-         .b(d, Boolean.valueOf(this.a($$10, $$10.c($$1, $$6, jl.f))))
-         .b(b, Boolean.valueOf(this.a($$11, $$11.c($$1, $$7, jl.e))))
-         .b(e, Boolean.valueOf($$3.a() == erf.c));
+   public dly(dvi.d $$0) {
+      super($$0);
+      this.l(this.F.b().b(b, jm.a).b(c, Boolean.valueOf(true)));
    }
 
    @Override
-   protected dvd a(dvd $$0, jl $$1, dvd $$2, dew $$3, jg $$4, jg $$5) {
-      if ($$0.c(e)) {
-         $$3.a($$4, erf.c, erf.c.a($$3));
+   protected fah a(dvj $$0, deg $$1, jh $$2, ezs $$3) {
+      switch ((jm)$$0.c(b)) {
+         case a:
+            return i;
+         case c:
+            return k;
+         case d:
+            return l;
+         case e:
+            return m;
+         case f:
+            return j;
+         default:
+            return h;
+      }
+   }
+
+   @Override
+   protected fah a(dvj $$0, deg $$1, jh $$2) {
+      switch ((jm)$$0.c(b)) {
+         case a:
+            return n;
+         case c:
+            return G;
+         case d:
+            return H;
+         case e:
+            return I;
+         case f:
+            return o;
+         default:
+            return g;
+      }
+   }
+
+   @Override
+   public dvj a(czs $$0) {
+      jm $$1 = $$0.k().g();
+      return this.m().b(b, $$1.o() == jm.a.b ? jm.a : $$1).b(c, Boolean.valueOf(true));
+   }
+
+   @Override
+   public dsm a(jh $$0, dvj $$1) {
+      return new dtn($$0, $$1);
+   }
+
+   @Nullable
+   @Override
+   public <T extends dsm> dsn<T> a(dfb $$0, dvj $$1, dso<T> $$2) {
+      return $$0.C ? null : a($$2, dso.r, dtn::a);
+   }
+
+   @Override
+   protected void b(dvj $$0, dfb $$1, jh $$2, dvj $$3, boolean $$4) {
+      if (!$$3.a($$0.b())) {
+         this.a($$1, $$2, $$0);
+      }
+   }
+
+   @Override
+   protected bsd a(dvj $$0, dfb $$1, jh $$2, com $$3, ezj $$4) {
+      if (!$$1.C && $$1.c_($$2) instanceof dtn $$5) {
+         $$3.a($$5);
+         $$3.a(awv.ad);
       }
 
-      return $$1.o().d() ? $$0.b(f.get($$1), Boolean.valueOf(this.a($$2, $$2.c($$3, $$5, $$1.g())))) : super.a($$0, $$1, $$2, $$3, $$4, $$5);
+      return bsd.a;
    }
 
    @Override
-   protected fab c(dvd $$0, dea $$1, jg $$2, ezm $$3) {
-      return ezy.a();
+   protected void a(dvj $$0, dfb $$1, jh $$2, die $$3, @Nullable ess $$4, boolean $$5) {
+      this.a($$1, $$2, $$0);
    }
 
-   @Override
-   protected boolean b(dvd $$0, dvd $$1, jl $$2) {
-      if ($$1.a(this)) {
-         if (!$$2.o().d()) {
-            return true;
-         }
-
-         if ($$0.c(f.get($$2)) && $$1.c(f.get($$2.g()))) {
-            return true;
-         }
+   private void a(dfb $$0, jh $$1, dvj $$2) {
+      boolean $$3 = !$$0.C($$1);
+      if ($$3 != $$2.c(c)) {
+         $$0.a($$1, $$2.b(c, Boolean.valueOf($$3)), 2);
       }
-
-      return super.b($$0, $$1, $$2);
-   }
-
-   public final boolean a(dvd $$0, boolean $$1) {
-      return !k($$0) && $$1 || $$0.b() instanceof dly || $$0.a(awz.M);
    }
 
    @Override
-   protected void a(dve.a<dhy, dvd> $$0) {
-      $$0.a(a, b, d, c, e);
+   protected void a(dvj $$0, dfb $$1, jh $$2, dvj $$3, boolean $$4) {
+      brz.a($$0, $$3, $$1, $$2);
+      super.a($$0, $$1, $$2, $$3, $$4);
+   }
+
+   @Override
+   protected dok a_(dvj $$0) {
+      return dok.c;
+   }
+
+   @Override
+   protected boolean c_(dvj $$0) {
+      return true;
+   }
+
+   @Override
+   protected int a(dvj $$0, dfb $$1, jh $$2) {
+      return cro.a($$1.c_($$2));
+   }
+
+   @Override
+   protected dvj a(dvj $$0, dor $$1) {
+      return $$0.b(b, $$1.a($$0.c(b)));
+   }
+
+   @Override
+   protected dvj a(dvj $$0, dna $$1) {
+      return $$0.a($$1.a($$0.c(b)));
+   }
+
+   @Override
+   protected void a(dvk.a<die, dvj> $$0) {
+      $$0.a(b, c);
+   }
+
+   @Override
+   protected void a(dvj $$0, dfb $$1, jh $$2, bue $$3) {
+      dsm $$4 = $$1.c_($$2);
+      if ($$4 instanceof dtn) {
+         dtn.a($$1, $$2, $$0, $$3, (dtn)$$4);
+      }
+   }
+
+   @Override
+   protected boolean a(dvj $$0, erz $$1) {
+      return false;
    }
 }

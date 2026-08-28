@@ -1,11 +1,11 @@
 import com.mojang.serialization.Codec;
 
-public enum bst implements baf {
-   a("default"),
-   b("fall_variants"),
-   c("intentional_game_design");
+public enum bst implements bag {
+   a("never"),
+   b("when_caused_by_living_non_player"),
+   c("always");
 
-   public static final Codec<bst> d = baf.a(bst::values);
+   public static final Codec<bst> d = bag.a(bst::values);
    private final String e;
 
    private bst(final String $$0) {

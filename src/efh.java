@@ -1,107 +1,55 @@
 import com.mojang.serialization.Codec;
-import java.util.function.Predicate;
+import java.util.Optional;
 
-public class efh extends eef<egz> {
-   public efh(Codec<egz> $$0) {
+public class efh extends eel<egy> {
+   public efh(Codec<egy> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(eeh<egz> $$0) {
-      dfs $$1 = $$0.b();
-      jg $$2 = $$0.e();
-      if (!$$1.a_($$2).l()) {
+   public boolean a(een<egy> $$0) {
+      dfc $$1 = $$0.b();
+      jh $$2 = $$0.e();
+      azs $$3 = $$0.d();
+      egy $$4 = $$0.f();
+      Optional<jm> $$5 = a($$1, $$2, $$3);
+      if ($$5.isEmpty()) {
          return false;
       } else {
-         azr $$3 = $$0.d();
-         jg $$4 = $$0.e();
-         egz $$5 = $$0.f();
-         jg.a $$6 = $$4.k();
-         if (a($$1, $$0.c(), $$5, $$3, $$6, $$4)) {
-            a($$1, $$5, $$3, $$4, $$6);
-         }
-
+         jh $$6 = $$2.a($$5.get().g());
+         a($$1, $$3, $$6, $$4);
+         int $$7 = $$3.i() < $$4.b && eeg.c($$1.a_($$2.a($$5.get()))) ? 2 : 1;
+         eeg.a($$1, $$2, $$5.get(), $$7, false);
          return true;
       }
    }
 
-   private static boolean a(dfs $$0, egz $$1, jg $$2) {
-      jg.a $$3 = $$2.k();
-
-      for (int $$4 = 1; $$4 <= $$1.c; $$4++) {
-         $$3.c(jl.b);
-         dvd $$5 = $$0.a_($$3);
-         if (!a($$5, $$4, $$1.n)) {
-            return false;
-         }
-      }
-
-      return true;
-   }
-
-   private static boolean a(dvd $$0, int $$1, int $$2) {
-      if ($$0.l()) {
-         return true;
+   private static Optional<jm> a(dfc $$0, jh $$1, azs $$2) {
+      boolean $$3 = eeg.b($$0.a_($$1.d()));
+      boolean $$4 = eeg.b($$0.a_($$1.e()));
+      if ($$3 && $$4) {
+         return Optional.of($$2.h() ? jm.a : jm.b);
+      } else if ($$3) {
+         return Optional.of(jm.a);
       } else {
-         int $$3 = $$1 + 1;
-         return $$3 <= $$2 && $$0.y().a(axf.a);
+         return $$4 ? Optional.of(jm.b) : Optional.empty();
       }
    }
 
-   private static boolean a(dfs $$0, dxa $$1, egz $$2, azr $$3, jg.a $$4, jg $$5) {
-      for (int $$6 = 0; $$6 < $$2.h; $$6++) {
-         $$4.c(jl.b);
-         if ($$2.o.test($$0, $$4) && a($$0, $$2, $$4)) {
-            jg $$7 = $$4.e();
-            if ($$0.b_($$7).a(axf.b) || !$$0.a_($$7).e()) {
-               return false;
-            }
+   private static void a(dfc $$0, azs $$1, jh $$2, egy $$3) {
+      eeg.c($$0, $$2);
 
-            if ($$2.b.a().a($$0, $$1, $$3, $$4)) {
-               a($$5, $$5.v() + $$6, $$0, $$2, $$3);
-               return true;
-            }
-         }
-      }
-
-      return false;
-   }
-
-   private static void a(jg $$0, int $$1, dfs $$2, egz $$3, azr $$4) {
-      int $$5 = $$0.u();
-      int $$6 = $$0.w();
-      jg.a $$7 = $$0.k();
-
-      for (int $$8 = $$0.v(); $$8 < $$1; $$8++) {
-         a($$2, $$3, $$4, $$5, $$6, $$7.d($$5, $$8, $$6));
-      }
-   }
-
-   private static void a(dfs $$0, egz $$1, azr $$2, int $$3, int $$4, jg.a $$5) {
-      int $$6 = $$1.d;
-      Predicate<dvd> $$7 = $$1x -> $$1x.a($$1.e);
-
-      for (int $$8 = 0; $$8 < $$1.g; $$8++) {
-         $$5.a($$5, $$2.a($$6) - $$2.a($$6), 0, $$2.a($$6) - $$2.a($$6));
-         if ($$7.test($$0.a_($$5))) {
-            $$0.a($$5, $$1.f.a($$2, $$5), 2);
-         }
-
-         $$5.p($$3);
-         $$5.r($$4);
-      }
-   }
-
-   private static void a(dfs $$0, egz $$1, azr $$2, jg $$3, jg.a $$4) {
-      int $$5 = $$1.i;
-      int $$6 = $$1.j;
-
-      for (int $$7 = 0; $$7 < $$1.l; $$7++) {
-         $$4.a($$3, $$2.a($$5) - $$2.a($$5), $$2.a($$6) - $$2.a($$6), $$2.a($$5) - $$2.a($$5));
-         if ($$0.u($$4)) {
-            dvd $$8 = $$1.k.a($$2, $$4);
-            if ($$8.a($$0, $$4) && $$0.a_($$4.d()).c($$0, $$4, jl.a)) {
-               $$0.a($$4, $$8, 2);
+      for (jm $$4 : jm.c.a) {
+         if (!($$1.i() > $$3.c)) {
+            jh $$5 = $$2.a($$4);
+            eeg.c($$0, $$5);
+            if (!($$1.i() > $$3.d)) {
+               jh $$6 = $$5.a(jm.b($$1));
+               eeg.c($$0, $$6);
+               if (!($$1.i() > $$3.e)) {
+                  jh $$7 = $$6.a(jm.b($$1));
+                  eeg.c($$0, $$7);
+               }
             }
          }
       }

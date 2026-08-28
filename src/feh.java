@@ -1,210 +1,158 @@
-import com.google.gson.JsonElement;
-import com.google.gson.JsonParser;
-import com.mojang.logging.LogUtils;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
-import java.time.Duration;
-import java.util.Optional;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.TimeUnit;
-import java.util.concurrent.atomic.AtomicBoolean;
-import java.util.function.Consumer;
+import com.mojang.blaze3d.platform.GlStateManager;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Stream;
 import javax.annotation.Nullable;
-import org.apache.http.HttpResponse;
-import org.apache.http.NameValuePair;
-import org.apache.http.client.config.RequestConfig;
-import org.apache.http.client.methods.HttpPost;
-import org.apache.http.entity.InputStreamEntity;
-import org.apache.http.impl.client.CloseableHttpClient;
-import org.apache.http.impl.client.HttpClientBuilder;
-import org.apache.http.util.Args;
-import org.apache.http.util.EntityUtils;
-import org.slf4j.Logger;
 
-public class feh {
-   private static final Logger a = LogUtils.getLogger();
-   private static final int b = 5;
-   private static final String c = "/upload";
-   private final File d;
-   private final long e;
-   private final int f;
-   private final ffm g;
-   private final String h;
-   private final String i;
-   private final String j;
-   private final String k;
-   private final fen l;
-   private final AtomicBoolean m = new AtomicBoolean(false);
-   @Nullable
-   private CompletableFuture<fhe> n;
-   private final RequestConfig o = RequestConfig.custom()
-      .setSocketTimeout((int)TimeUnit.MINUTES.toMillis(10L))
-      .setConnectTimeout((int)TimeUnit.SECONDS.toMillis(15L))
-      .build();
+public record feh(int i, int j, feh.a k, feh.b l, int m) {
+   public static final int a = 32;
+   private static final feh[] n = new feh[32];
+   private static final List<feh> o = new ArrayList<>(32);
+   public static final feh b = a(0, 0, feh.a.a, feh.b.a, 3);
+   public static final feh c = a(1, 0, feh.a.b, feh.b.c, 4);
+   public static final feh d = a(2, 0, feh.a.a, feh.b.d, 2);
+   public static final feh e = d;
+   public static final feh f = a(3, 1, feh.a.e, feh.b.d, 2);
+   public static final feh g = a(4, 2, feh.a.e, feh.b.d, 2);
+   public static final feh h = a(5, 0, feh.a.c, feh.b.b, 3);
 
-   public feh(File $$0, long $$1, int $$2, ffm $$3, fjn $$4, String $$5, String $$6, fen $$7) {
-      this.d = $$0;
-      this.e = $$1;
-      this.f = $$2;
-      this.g = $$3;
-      this.h = $$4.a();
-      this.i = $$4.c();
-      this.j = $$5;
-      this.k = $$6;
-      this.l = $$7;
-   }
-
-   public void a(Consumer<fhe> $$0) {
-      if (this.n == null) {
-         this.n = CompletableFuture.supplyAsync(() -> this.a(0));
-         this.n.thenAccept($$0);
-      }
-   }
-
-   public void a() {
-      this.m.set(true);
-      if (this.n != null) {
-         this.n.cancel(false);
-         this.n = null;
-      }
-   }
-
-   private fhe a(int $$0) {
-      fhe.a $$1 = new fhe.a();
-      if (this.m.get()) {
-         return $$1.a();
+   public feh(int i, int j, feh.a k, feh.b l, int m) {
+      if (i < 0 || i >= n.length) {
+         throw new IllegalArgumentException("Element ID must be in range [0; " + n.length + ")");
+      } else if (!this.a(j, l)) {
+         throw new IllegalStateException("Multiple vertex elements of the same type other than UVs are not supported");
       } else {
-         this.l.b = this.d.length();
-         HttpPost $$2 = new HttpPost(this.g.b().resolve("/upload/" + this.e + "/" + this.f));
-         CloseableHttpClient $$3 = HttpClientBuilder.create().setDefaultRequestConfig(this.o).build();
+         this.i = i;
+         this.j = j;
+         this.k = k;
+         this.l = l;
+         this.m = m;
+      }
+   }
 
-         fhe var8;
-         try {
-            this.a($$2);
-            HttpResponse $$4 = $$3.execute($$2);
-            long $$5 = this.a($$4);
-            if (!this.a($$5, $$0)) {
-               this.a($$4, $$1);
-               return $$1.a();
-            }
+   public static feh a(int $$0, int $$1, feh.a $$2, feh.b $$3, int $$4) {
+      feh $$5 = new feh($$0, $$1, $$2, $$3, $$4);
+      if (n[$$0] != null) {
+         throw new IllegalArgumentException("Duplicate element registration for: " + $$0);
+      } else {
+         n[$$0] = $$5;
+         o.add($$5);
+         return $$5;
+      }
+   }
 
-            var8 = this.b($$5, $$0);
-         } catch (Exception var12) {
-            if (!this.m.get()) {
-               a.error("Caught exception while uploading: ", var12);
-            }
+   private boolean a(int $$0, feh.b $$1) {
+      return $$0 == 0 || $$1 == feh.b.d;
+   }
 
-            return $$1.a();
-         } finally {
-            this.a($$2, $$3);
+   @Override
+   public String toString() {
+      return this.m + "," + this.l + "," + this.k + " (" + this.i + ")";
+   }
+
+   public int a() {
+      return 1 << this.i;
+   }
+
+   public int b() {
+      return this.k.a() * this.m;
+   }
+
+   public void a(int $$0, long $$1, int $$2) {
+      this.l.g.setupBufferState(this.m, this.k.b(), $$2, $$1, $$0);
+   }
+
+   @Nullable
+   public static feh a(int $$0) {
+      return n[$$0];
+   }
+
+   public static Stream<feh> b(int $$0) {
+      return o.stream().filter($$1 -> $$1 != null && ($$0 & $$1.a()) != 0);
+   }
+
+   public int c() {
+      return this.i;
+   }
+
+   public int d() {
+      return this.j;
+   }
+
+   public feh.a e() {
+      return this.k;
+   }
+
+   public feh.b f() {
+      return this.l;
+   }
+
+   public int g() {
+      return this.m;
+   }
+
+   public static enum a {
+      a(4, "Float", 5126),
+      b(1, "Unsigned Byte", 5121),
+      c(1, "Byte", 5120),
+      d(2, "Unsigned Short", 5123),
+      e(2, "Short", 5122),
+      f(4, "Unsigned Int", 5125),
+      g(4, "Int", 5124);
+
+      private final int h;
+      private final String i;
+      private final int j;
+
+      private a(final int $$0, final String $$1, final int $$2) {
+         this.h = $$0;
+         this.i = $$1;
+         this.j = $$2;
+      }
+
+      public int a() {
+         return this.h;
+      }
+
+      public int b() {
+         return this.j;
+      }
+
+      @Override
+      public String toString() {
+         return this.i;
+      }
+   }
+
+   public static enum b {
+      a("Position", ($$0, $$1, $$2, $$3, $$4) -> GlStateManager._vertexAttribPointer($$4, $$0, $$1, false, $$2, $$3)),
+      b("Normal", ($$0, $$1, $$2, $$3, $$4) -> GlStateManager._vertexAttribPointer($$4, $$0, $$1, true, $$2, $$3)),
+      c("Vertex Color", ($$0, $$1, $$2, $$3, $$4) -> GlStateManager._vertexAttribPointer($$4, $$0, $$1, true, $$2, $$3)),
+      d("UV", ($$0, $$1, $$2, $$3, $$4) -> {
+         if ($$1 == 5126) {
+            GlStateManager._vertexAttribPointer($$4, $$0, $$1, false, $$2, $$3);
+         } else {
+            GlStateManager._vertexAttribIPointer($$4, $$0, $$1, $$2, $$3);
          }
+      }),
+      e("Generic", ($$0, $$1, $$2, $$3, $$4) -> GlStateManager._vertexAttribPointer($$4, $$0, $$1, false, $$2, $$3));
 
-         return var8;
-      }
-   }
+      private final String f;
+      final feh.b.a g;
 
-   private void a(HttpPost $$0, @Nullable CloseableHttpClient $$1) {
-      $$0.releaseConnection();
-      if ($$1 != null) {
-         try {
-            $$1.close();
-         } catch (IOException var4) {
-            a.error("Failed to close Realms upload client");
-         }
-      }
-   }
-
-   private void a(HttpPost $$0) throws FileNotFoundException {
-      $$0.setHeader("Cookie", "sid=" + this.h + ";token=" + this.g.a() + ";user=" + this.i + ";version=" + this.j + ";worldVersion=" + this.k);
-      feh.a $$1 = new feh.a(new FileInputStream(this.d), this.d.length(), this.l);
-      $$1.setContentType("application/octet-stream");
-      $$0.setEntity($$1);
-   }
-
-   private void a(HttpResponse $$0, fhe.a $$1) throws IOException {
-      int $$2 = $$0.getStatusLine().getStatusCode();
-      if ($$2 == 401) {
-         a.debug("Realms server returned 401: {}", $$0.getFirstHeader("WWW-Authenticate"));
+      private b(final String $$0, final feh.b.a $$1) {
+         this.f = $$0;
+         this.g = $$1;
       }
 
-      $$1.a($$2);
-      if ($$0.getEntity() != null) {
-         String $$3 = EntityUtils.toString($$0.getEntity(), "UTF-8");
-         if ($$3 != null) {
-            try {
-               JsonParser $$4 = new JsonParser();
-               JsonElement $$5 = $$4.parse($$3).getAsJsonObject().get("errorMsg");
-               Optional<String> $$6 = Optional.ofNullable($$5).map(JsonElement::getAsString);
-               $$1.a($$6.orElse(null));
-            } catch (Exception var8) {
-            }
-         }
-      }
-   }
-
-   private boolean a(long $$0, int $$1) {
-      return $$0 > 0L && $$1 + 1 < 5;
-   }
-
-   private fhe b(long $$0, int $$1) throws InterruptedException {
-      Thread.sleep(Duration.ofSeconds($$0).toMillis());
-      return this.a($$1 + 1);
-   }
-
-   private long a(HttpResponse $$0) {
-      return Optional.ofNullable($$0.getFirstHeader("Retry-After")).<String>map(NameValuePair::getValue).map(Long::valueOf).orElse(0L);
-   }
-
-   public boolean b() {
-      return this.n.isDone() || this.n.isCancelled();
-   }
-
-   static class a extends InputStreamEntity {
-      private final long a;
-      private final InputStream b;
-      private final fen c;
-
-      public a(InputStream $$0, long $$1, fen $$2) {
-         super($$0);
-         this.b = $$0;
-         this.a = $$1;
-         this.c = $$2;
+      @Override
+      public String toString() {
+         return this.f;
       }
 
-      public void writeTo(OutputStream $$0) throws IOException {
-         Args.notNull($$0, "Output stream");
-         InputStream $$1 = this.b;
-
-         try {
-            byte[] $$2 = new byte[4096];
-            int $$3;
-            if (this.a < 0L) {
-               while (($$3 = $$1.read($$2)) != -1) {
-                  $$0.write($$2, 0, $$3);
-                  this.c.a += (long)$$3;
-               }
-            } else {
-               long $$4 = this.a;
-
-               while ($$4 > 0L) {
-                  $$3 = $$1.read($$2, 0, (int)Math.min(4096L, $$4));
-                  if ($$3 == -1) {
-                     break;
-                  }
-
-                  $$0.write($$2, 0, $$3);
-                  this.c.a += (long)$$3;
-                  $$4 -= (long)$$3;
-                  $$0.flush();
-               }
-            }
-         } finally {
-            $$1.close();
-         }
+      @FunctionalInterface
+      interface a {
+         void setupBufferState(int var1, int var2, int var3, long var4, int var6);
       }
    }
 }

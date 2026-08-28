@@ -1,27 +1,27 @@
-public class gnr extends gmt<cla, gwr, fxu> {
-   private static final alh a = alh.b("textures/entity/zombie/drowned.png");
+public class gnr extends gnf<cii, gud, fxw> {
+   private static final ali a = ali.b("textures/entity/camel/camel.png");
 
-   public gnr(gnz.a $$0) {
-      super($$0, new fxu($$0.a(gba.ai)), new fxu($$0.a(gba.am)), new fxu($$0.a(gba.aj)), new fxu($$0.a(gba.ak)), new fxu($$0.a(gba.an)), new fxu($$0.a(gba.ao)));
-      this.a(new gru(this, $$0.f()));
+   public gnr(gok.a $$0) {
+      super($$0, new fxw($$0.a(gbl.H)), new fxw($$0.a(gbl.I)), 0.7F);
    }
 
-   public gwr a() {
-      return new gwr();
-   }
-
-   @Override
-   public alh a(gwr $$0) {
+   public ali a(gud $$0) {
       return a;
    }
 
-   protected void a(gwr $$0, fdt $$1, float $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      float $$4 = $$0.B;
-      if ($$4 > 0.0F) {
-         float $$5 = -10.0F - $$0.V;
-         float $$6 = azj.h($$4, 0.0F, $$5);
-         $$1.a(a.b.rotationDegrees($$6), 0.0F, $$0.r / 2.0F / $$3, 0.0F);
-      }
+   public gud a() {
+      return new gud();
+   }
+
+   public void a(cii $$0, gud $$1, float $$2) {
+      super.a($$0, $$1, $$2);
+      $$1.a = $$0.i();
+      $$1.b = $$0.cb();
+      $$1.c = Math.max((float)$$0.c() - $$2, 0.0F);
+      $$1.d.a($$0.ce);
+      $$1.e.a($$0.cf);
+      $$1.f.a($$0.cg);
+      $$1.g.a($$0.ch);
+      $$1.h.a($$0.ci);
    }
 }

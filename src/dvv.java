@@ -1,7 +1,7 @@
-public enum dvv implements baf {
-   a("single"),
-   b("left"),
-   c("right");
+public enum dvv implements bag {
+   a("none"),
+   b("small"),
+   c("large");
 
    private final String d;
 
@@ -10,15 +10,12 @@ public enum dvv implements baf {
    }
 
    @Override
-   public String c() {
+   public String toString() {
       return this.d;
    }
 
-   public dvv a() {
-      return switch (this) {
-         case a -> a;
-         case b -> c;
-         case c -> b;
-      };
+   @Override
+   public String c() {
+      return this.d;
    }
 }

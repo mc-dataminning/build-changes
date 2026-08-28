@@ -1,21 +1,22 @@
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-@Deprecated
-public class ecq extends ecr {
-   public static final MapCodec<ecq> a = RecordCodecBuilder.mapCodec($$0 -> a($$0).apply($$0, ecq::new));
+public class ecq implements ecm {
+   public static final MapCodec<ecq> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(kl.v(16).optionalFieldOf("offset", jh.c).forGetter($$0x -> $$0x.e)).apply($$0, ecq::new)
+   );
+   private final kl e;
 
-   public ecq(kk $$0) {
-      super($$0);
+   public ecq(kl $$0) {
+      this.e = $$0;
+   }
+
+   public boolean a(dfy $$0, jh $$1) {
+      return !$$0.s($$1.a(this.e));
    }
 
    @Override
-   protected boolean a(dvd $$0) {
-      return $$0.e();
-   }
-
-   @Override
-   public ech<?> a() {
-      return ech.e;
+   public ecn<?> a() {
+      return ecn.h;
    }
 }

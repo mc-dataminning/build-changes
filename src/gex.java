@@ -1,27 +1,43 @@
-public class gex extends gfc {
-   gex(gbx $$0, double $$1, double $$2, double $$3) {
-      super($$0, $$1, $$2, $$3, 0.0, 0.0, 0.0);
-      this.t = 8;
+public class gex extends ggp {
+   private final ggk a;
+
+   protected gex(gci $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, ggk $$7) {
+      super($$0, $$1, $$2, $$3);
+      this.u = -0.1F;
+      this.B = 0.9F;
+      this.a = $$7;
+      this.j = $$4 + (Math.random() * 2.0 - 1.0) * 0.05F;
+      this.k = $$5 + (Math.random() * 2.0 - 1.0) * 0.05F;
+      this.l = $$6 + (Math.random() * 2.0 - 1.0) * 0.05F;
+      float $$8 = this.r.i() * 0.3F + 0.7F;
+      this.v = $$8;
+      this.w = $$8;
+      this.x = $$8;
+      this.D = 0.1F * (this.r.i() * this.r.i() * 6.0F + 1.0F);
+      this.t = (int)(16.0 / ((double)this.r.i() * 0.8 + 0.2)) + 2;
+      this.b($$7);
+   }
+
+   @Override
+   public gft b() {
+      return gft.b;
    }
 
    @Override
    public void a() {
-      for (int $$0 = 0; $$0 < 6; $$0++) {
-         double $$1 = this.g + (this.r.j() - this.r.j()) * 4.0;
-         double $$2 = this.h + (this.r.j() - this.r.j()) * 4.0;
-         double $$3 = this.i + (this.r.j() - this.r.j()) * 4.0;
-         this.c.a(lq.w, $$1, $$2, $$3, (double)((float)this.s / (float)this.t), 0.0, 0.0);
-      }
-
-      this.s++;
-      if (this.s == this.t) {
-         this.k();
-      }
+      super.a();
+      this.b(this.a);
    }
 
-   public static class a implements gfh<lu> {
-      public gfe a(lu $$0, gbx $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new gex($$1, $$2, $$3, $$4);
+   public static class a implements gfs<lv> {
+      private final ggk a;
+
+      public a(ggk $$0) {
+         this.a = $$0;
+      }
+
+      public gfp a(lv $$0, gci $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new gex($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
       }
    }
 }

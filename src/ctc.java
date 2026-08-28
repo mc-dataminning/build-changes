@@ -1,87 +1,73 @@
-public class ctc extends ctg {
-   private final csb a;
-   private final coh b;
-   private int g;
+import javax.annotation.Nullable;
 
-   public ctc(coh $$0, csb $$1, brr $$2, int $$3, int $$4, int $$5) {
-      super($$2, $$3, $$4, $$5);
+public class ctc extends bsk {
+   @Nullable
+   private dti b;
+
+   public ctc() {
+      super(27);
+   }
+
+   public void a(dti $$0) {
       this.b = $$0;
-      this.a = $$1;
+   }
+
+   public boolean b(dti $$0) {
+      return this.b == $$0;
    }
 
    @Override
-   public boolean a(cvx $$0) {
-      return false;
-   }
-
-   @Override
-   public cvx a(int $$0) {
-      if (this.h()) {
-         this.g = this.g + Math.min($$0, this.g().L());
+   public void a(uq $$0, js.a $$1) {
+      for (int $$2 = 0; $$2 < this.b(); $$2++) {
+         this.a($$2, cwb.k);
       }
 
-      return super.a($$0);
-   }
-
-   @Override
-   protected void a(cvx $$0, int $$1) {
-      this.g += $$1;
-      this.b_($$0);
-   }
-
-   @Override
-   protected void b(int $$0) {
-      this.g += $$0;
-   }
-
-   @Override
-   protected void b_(cvx $$0) {
-      if (this.g > 0) {
-         $$0.a(this.b.dX(), this.b, this.g);
-      }
-
-      if (this.c instanceof cta $$1) {
-         $$1.a(this.b, this.a.h());
-      }
-
-      this.g = 0;
-   }
-
-   @Override
-   public void a(coh $$0, cvx $$1) {
-      this.b_($$1);
-      czy.a $$2 = this.a.aE_();
-      czy $$3 = $$2.a();
-      int $$4 = $$2.b();
-      int $$5 = $$2.c();
-      jy<cvx> $$6 = $$0.dX().r().c(dap.a, $$3, $$0.dX());
-
-      for (int $$7 = 0; $$7 < $$3.g(); $$7++) {
-         for (int $$8 = 0; $$8 < $$3.f(); $$8++) {
-            int $$9 = $$8 + $$4 + ($$7 + $$5) * this.a.aA_();
-            cvx $$10 = this.a.a($$9);
-            cvx $$11 = $$6.get($$8 + $$7 * $$3.f());
-            if (!$$10.f()) {
-               this.a.a($$9, 1);
-               $$10 = this.a.a($$9);
-            }
-
-            if (!$$11.f()) {
-               if ($$10.f()) {
-                  this.a.a($$9, $$11);
-               } else if (cvx.c($$10, $$11)) {
-                  $$11.g($$10.L());
-                  this.a.a($$9, $$11);
-               } else if (!this.b.gk().f($$11)) {
-                  this.b.a($$11, false);
-               }
-            }
+      for (int $$3 = 0; $$3 < $$0.size(); $$3++) {
+         uk $$4 = $$0.a($$3);
+         int $$5 = $$4.f("Slot") & 255;
+         if ($$5 >= 0 && $$5 < this.b()) {
+            this.a($$5, cwb.a($$1, (vh)$$4).orElse(cwb.k));
          }
       }
    }
 
    @Override
-   public boolean f() {
-      return true;
+   public uq a(js.a $$0) {
+      uq $$1 = new uq();
+
+      for (int $$2 = 0; $$2 < this.b(); $$2++) {
+         cwb $$3 = this.a($$2);
+         if (!$$3.f()) {
+            uk $$4 = new uk();
+            $$4.a("Slot", (byte)$$2);
+            $$1.add($$3.b($$0, $$4));
+         }
+      }
+
+      return $$1;
+   }
+
+   @Override
+   public boolean a(com $$0) {
+      return this.b != null && !this.b.c($$0) ? false : super.a($$0);
+   }
+
+   @Override
+   public void d_(com $$0) {
+      if (this.b != null) {
+         this.b.a($$0);
+      }
+
+      super.d_($$0);
+   }
+
+   @Override
+   public void c(com $$0) {
+      if (this.b != null) {
+         this.b.b($$0);
+      }
+
+      super.c($$0);
+      this.b = null;
    }
 }

@@ -1,60 +1,33 @@
-import javax.annotation.Nullable;
+import com.mojang.logging.LogUtils;
+import java.io.IOException;
+import java.nio.channels.FileChannel;
+import java.util.concurrent.Executor;
+import org.apache.commons.io.IOUtils;
+import org.slf4j.Logger;
 
-public class hdl {
-   private boolean a;
-   @Nullable
-   private hdf.b b;
-   @Nullable
-   private String c;
-   @Nullable
-   private final String d;
+public class hdl implements AutoCloseable {
+   private static final Logger a = LogUtils.getLogger();
+   private final bnf<hdk> b;
+   private final bqt c;
 
-   public hdl(@Nullable String $$0) {
-      this.d = $$0;
+   public hdl(FileChannel $$0, Executor $$1) {
+      this.b = new bnf<>(hdk.a, $$0);
+      this.c = new bqt($$1, "telemetry-event-log");
    }
 
-   public void a(hdg.a $$0) {
-      if (this.c != null) {
-         $$0.a(hdf.j, !this.c.equals("vanilla"));
-      }
-
-      $$0.a(hdf.k, this.a());
-   }
-
-   private hdf.c a() {
-      gcl $$0 = fja.Q().S();
-      if ($$0 != null && $$0.e()) {
-         return hdf.c.a;
-      } else {
-         return fja.Q().U() ? hdf.c.b : hdf.c.c;
-      }
-   }
-
-   public boolean a(hdc $$0) {
-      if (!this.a && this.b != null && this.c != null) {
-         this.a = true;
-         $$0.send(hdd.b, $$0x -> {
-            $$0x.a(hdf.n, this.b);
-            if (this.d != null) {
-               $$0x.a(hdf.o, this.d);
+   public hdm a() {
+      return $$0 -> this.c.a_(() -> {
+            try {
+               this.b.a($$0);
+            } catch (IOException var3) {
+               a.error("Failed to write telemetry event to log", var3);
             }
          });
-         return true;
-      } else {
-         return false;
-      }
    }
 
-   public void a(des $$0, boolean $$1) {
-      this.b = switch ($$0) {
-         case a -> $$1 ? hdf.b.e : hdf.b.a;
-         case b -> hdf.b.b;
-         case c -> hdf.b.c;
-         case d -> hdf.b.d;
-      };
-   }
-
-   public void a(String $$0) {
-      this.c = $$0;
+   @Override
+   public void close() {
+      this.c.a_(() -> IOUtils.closeQuietly(this.b));
+      this.c.close();
    }
 }

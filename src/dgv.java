@@ -1,24 +1,32 @@
 import com.mojang.serialization.MapCodec;
 
-public class dgv extends dhy {
-   public static final MapCodec<dgv> a = b(dgv::new);
+public abstract class dgv extends dhq {
+   private final cuy a;
 
-   @Override
-   public MapCodec<dgv> a() {
-      return a;
-   }
-
-   public dgv(dvc.d $$0) {
-      super($$0);
+   protected dgv(cuy $$0, dvi.d $$1) {
+      super($$1);
+      this.a = $$0;
    }
 
    @Override
-   protected doe a_(dvd $$0) {
-      return doe.a;
+   protected abstract MapCodec<? extends dgv> a();
+
+   @Override
+   public boolean a(dvj $$0) {
+      return true;
    }
 
    @Override
-   protected fab a(dvd $$0, dea $$1, jg $$2, ezm $$3) {
-      return ezy.a();
+   public dsm a(jh $$0, dvj $$1) {
+      return new dsb($$0, $$1, this.a);
+   }
+
+   @Override
+   public cwb a(dfe $$0, jh $$1, dvj $$2) {
+      return $$0.c_($$1) instanceof dsb $$3 ? $$3.c() : super.a($$0, $$1, $$2);
+   }
+
+   public cuy b() {
+      return this.a;
    }
 }

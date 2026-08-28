@@ -1,31 +1,45 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
 
-public interface czh {
-   Codec<czh> d = lx.ay.q().dispatch(czh::a, czh.a::a);
-   zf<ws, czh> e = zd.a(ly.aE).b(czh::a, czh.a::b);
+public record czh(cwb c) {
+   public static final Codec<czh> a = cwb.b.xmap(czh::new, czh::a);
+   public static final zg<wt, czh> b = zg.a(cwb.i, czh::a, czh::new);
 
-   czh.a<? extends czh> a();
+   public cwb a(bva $$0, cwb $$1, int $$2) {
+      boolean $$3 = $$0.fX();
+      cwb $$4 = this.c.v();
+      if ($$3) {
+         return $$1;
+      } else if ($$1.L() >= $$2) {
+         return $$1;
+      } else if ($$1.f()) {
+         return $$4;
+      } else {
+         if (!$$0.dX().y_() && $$0 instanceof com $$5 && !$$5.gk().f($$4)) {
+            $$5.a($$4, false);
+         }
 
-   boolean a(dev var1, cvx var2, buv var3);
-
-   public static record a<T extends czh>(MapCodec<T> f, zf<ws, T> g) {
-      public static final czh.a<czf> a = a("apply_effects", czf.a, czf.b);
-      public static final czh.a<czj> b = a("remove_effects", czj.a, czj.b);
-      public static final czh.a<czg> c = a("clear_all_effects", czg.b, czg.c);
-      public static final czh.a<czk> d = a("teleport_randomly", czk.a, czk.b);
-      public static final czh.a<czi> e = a("play_sound", czi.a, czi.b);
-
-      private static <T extends czh> czh.a<T> a(String $$0, MapCodec<T> $$1, zf<ws, T> $$2) {
-         return kc.a(lx.ay, $$0, new czh.a<>($$1, $$2));
+         return $$1;
       }
+   }
 
-      public MapCodec<T> a() {
-         return this.f;
+   @Override
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else if ($$0 != null && this.getClass() == $$0.getClass()) {
+         czh $$1 = (czh)$$0;
+         return cwb.a(this.c, $$1.c);
+      } else {
+         return false;
       }
+   }
 
-      public zf<ws, T> b() {
-         return this.g;
-      }
+   @Override
+   public int hashCode() {
+      return cwb.a(this.c);
+   }
+
+   public cwb a() {
+      return this.c;
    }
 }

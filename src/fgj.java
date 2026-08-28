@@ -1,27 +1,59 @@
-import it.unimi.dsi.fastutil.booleans.BooleanConsumer;
+import java.util.List;
 
-public class fgj extends hee {
-   protected BooleanConsumer a;
-   private final xh b;
-   private final xh c;
+public abstract class fgj {
+   public final int a;
+   public final int b;
+   public final int c;
+   public final int d;
 
-   public fgj(BooleanConsumer $$0, xh $$1, xh $$2) {
-      super(fir.a);
+   public fgj(int $$0, int $$1, int $$2, int $$3) {
       this.a = $$0;
       this.b = $$1;
       this.c = $$2;
+      this.d = $$3;
    }
 
-   @Override
-   public void aS_() {
-      this.c(fkz.a(xg.f, $$0 -> this.a.accept(true)).a(this.n / 2 - 105, g(9), 100, 20).a());
-      this.c(fkz.a(xg.g, $$0 -> this.a.accept(false)).a(this.n / 2 + 5, g(9), 100, 20).a());
+   public void a(fku $$0, int $$1, int $$2, int $$3, int $$4) {
+      int $$5 = $$1 + this.c;
+      int $$6 = $$2 + this.d;
+      boolean $$7 = $$3 >= $$5 && $$3 <= $$5 + this.a && $$4 >= $$6 && $$4 <= $$6 + this.b;
+      this.a($$0, $$5, $$6, $$7);
    }
 
-   @Override
-   public void a(fkm $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      $$0.a(this.p, this.b, this.n / 2, g(3), -1);
-      $$0.a(this.p, this.c, this.n / 2, g(5), -1);
+   protected abstract void a(fku var1, int var2, int var3, boolean var4);
+
+   public int a() {
+      return this.c + this.a;
+   }
+
+   public int b() {
+      return this.d + this.b;
+   }
+
+   public abstract void a(int var1);
+
+   public static void a(fku $$0, List<fgj> $$1, heo<?> $$2, int $$3, int $$4, int $$5, int $$6) {
+      for (fgj $$7 : $$1) {
+         if ($$2.b() > $$7.a()) {
+            $$7.a($$0, $$3, $$4, $$5, $$6);
+         }
+      }
+   }
+
+   public static void a(heo<?> $$0, fmd.a<?> $$1, List<fgj> $$2, int $$3, double $$4, double $$5) {
+      int $$6 = $$0.aI_().indexOf($$1);
+      if ($$6 > -1) {
+         $$0.b($$6);
+         int $$7 = $$0.s();
+         int $$8 = $$0.g($$6);
+         int $$9 = (int)($$4 - (double)$$7);
+         int $$10 = (int)($$5 - (double)$$8);
+
+         for (fgj $$11 : $$2) {
+            if ($$9 >= $$11.c && $$9 <= $$11.a() && $$10 >= $$11.d && $$10 <= $$11.b()) {
+               $$11.a($$6);
+            }
+         }
+      }
    }
 }

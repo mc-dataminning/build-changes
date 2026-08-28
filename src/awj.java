@@ -1,51 +1,18 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import io.netty.buffer.ByteBuf;
-import java.util.Optional;
-
 public class awj {
-   public static final Codec<awj> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(alh.a.fieldOf("sound_id").forGetter(awj::a), Codec.FLOAT.lenientOptionalFieldOf("range").forGetter(awj::b)).apply($$0, awj::a)
-   );
-   public static final Codec<jp<awj>> b = ald.a(ly.al, a);
-   public static final zf<ByteBuf, awj> c = zf.a(alh.b, awj::a, zd.j.a(zd::a), awj::b, awj::a);
-   public static final zf<ws, jp<awj>> d = zd.a(ly.al, c);
-   private static final float e = 16.0F;
-   private final alh f;
-   private final float g;
-   private final boolean h;
+   private static final int h = 20;
+   private static final int i = 600;
+   private static final int j = 12000;
+   private static final int k = 24000;
+   private static final int l = 6000;
+   public static final awi a = new awi(awl.qb, 20, 600, true);
+   public static final awi b = new awi(awl.pD, 12000, 24000, false);
+   public static final awi c = new awi(awl.pE, 0, 0, true);
+   public static final awi d = new awi(awl.pY, 0, 0, true);
+   public static final awi e = new awi(awl.pZ, 6000, 24000, true);
+   public static final awi f = a(awl.qA);
+   public static final awi g = a(awl.qa);
 
-   private static awj a(alh $$0, Optional<Float> $$1) {
-      return $$1.<awj>map($$1x -> a($$0, $$1x.floatValue())).orElseGet(() -> a($$0));
-   }
-
-   public static awj a(alh $$0) {
-      return new awj($$0, 16.0F, false);
-   }
-
-   public static awj a(alh $$0, float $$1) {
-      return new awj($$0, $$1, true);
-   }
-
-   private awj(alh $$0, float $$1, boolean $$2) {
-      this.f = $$0;
-      this.g = $$1;
-      this.h = $$2;
-   }
-
-   public alh a() {
-      return this.f;
-   }
-
-   public float a(float $$0) {
-      if (this.h) {
-         return this.g;
-      } else {
-         return $$0 > 1.0F ? 16.0F * $$0 : 16.0F;
-      }
-   }
-
-   private Optional<Float> b() {
-      return this.h ? Optional.of(this.g) : Optional.empty();
+   public static awi a(jq<awk> $$0) {
+      return new awi($$0, 12000, 24000, false);
    }
 }

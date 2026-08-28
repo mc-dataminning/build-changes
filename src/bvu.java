@@ -1,6 +1,9 @@
 import javax.annotation.Nullable;
 
 public interface bvu {
-   @Nullable
-   btz s();
+   boolean isSpawnPositionOk(dfe var1, jh var2, @Nullable bul<?> var3);
+
+   default jh a(dfe $$0, jh $$1) {
+      return $$1;
+   }
 }

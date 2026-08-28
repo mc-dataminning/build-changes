@@ -1,80 +1,27 @@
-import com.mojang.blaze3d.systems.RenderSystem;
-import javax.annotation.Nullable;
+public class gfi extends gfn {
+   gfi(gci $$0, double $$1, double $$2, double $$3) {
+      super($$0, $$1, $$2, $$3, 0.0, 0.0, 0.0);
+      this.t = 8;
+   }
 
-public interface gfi {
-   gfi a = new gfi() {
-      @Override
-      public fdo a(fdv $$0, gxt $$1) {
-         RenderSystem.enableBlend();
-         RenderSystem.defaultBlendFunc();
-         RenderSystem.depthMask(true);
-         RenderSystem.setShader(ghg.c);
-         RenderSystem.setShaderTexture(0, gxr.d);
-         return $$0.a(fdy.c.h, fdr.d);
-      }
-
-      @Override
-      public String toString() {
-         return "TERRAIN_SHEET";
-      }
-   };
-   gfi b = new gfi() {
-      @Override
-      public fdo a(fdv $$0, gxt $$1) {
-         RenderSystem.disableBlend();
-         RenderSystem.depthMask(true);
-         RenderSystem.setShader(ghg.c);
-         RenderSystem.setShaderTexture(0, gxr.e);
-         return $$0.a(fdy.c.h, fdr.d);
+   @Override
+   public void a() {
+      for (int $$0 = 0; $$0 < 6; $$0++) {
+         double $$1 = this.g + (this.r.j() - this.r.j()) * 4.0;
+         double $$2 = this.h + (this.r.j() - this.r.j()) * 4.0;
+         double $$3 = this.i + (this.r.j() - this.r.j()) * 4.0;
+         this.c.a(lr.w, $$1, $$2, $$3, (double)((float)this.s / (float)this.t), 0.0, 0.0);
       }
 
-      @Override
-      public String toString() {
-         return "PARTICLE_SHEET_OPAQUE";
+      this.s++;
+      if (this.s == this.t) {
+         this.k();
       }
-   };
-   gfi c = new gfi() {
-      @Override
-      public fdo a(fdv $$0, gxt $$1) {
-         RenderSystem.depthMask(true);
-         RenderSystem.setShader(ghg.c);
-         RenderSystem.setShaderTexture(0, gxr.e);
-         RenderSystem.enableBlend();
-         RenderSystem.defaultBlendFunc();
-         return $$0.a(fdy.c.h, fdr.d);
-      }
+   }
 
-      @Override
-      public String toString() {
-         return "PARTICLE_SHEET_TRANSLUCENT";
+   public static class a implements gfs<lv> {
+      public gfp a(lv $$0, gci $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new gfi($$1, $$2, $$3, $$4);
       }
-   };
-   gfi d = new gfi() {
-      @Override
-      public fdo a(fdv $$0, gxt $$1) {
-         RenderSystem.depthMask(true);
-         RenderSystem.disableBlend();
-         return $$0.a(fdy.c.h, fdr.d);
-      }
-
-      @Override
-      public String toString() {
-         return "CUSTOM";
-      }
-   };
-   gfi e = new gfi() {
-      @Nullable
-      @Override
-      public fdo a(fdv $$0, gxt $$1) {
-         return null;
-      }
-
-      @Override
-      public String toString() {
-         return "NO_RENDER";
-      }
-   };
-
-   @Nullable
-   fdo a(fdv var1, gxt var2);
+   }
 }

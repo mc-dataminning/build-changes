@@ -1,73 +1,55 @@
-import javax.annotation.Nullable;
+public class csx<T extends cro> implements crc {
+   public static final csx<crx> a = a("generic_9x1", crx::a);
+   public static final csx<crx> b = a("generic_9x2", crx::b);
+   public static final csx<crx> c = a("generic_9x3", crx::c);
+   public static final csx<crx> d = a("generic_9x4", crx::d);
+   public static final csx<crx> e = a("generic_9x5", crx::e);
+   public static final csx<crx> f = a("generic_9x6", crx::f);
+   public static final csx<csj> g = a("generic_3x3", csj::new);
+   public static final csx<cse> h = a("crafter_3x3", cse::new);
+   public static final csx<crr> i = a("anvil", crr::new);
+   public static final csx<crt> j = a("beacon", crt::new);
+   public static final csx<cru> k = a("blast_furnace", cru::new);
+   public static final csx<crv> l = a("brewing_stand", crv::new);
+   public static final csx<csh> m = a("crafting", csh::new);
+   public static final csx<csk> n = a("enchantment", csk::new);
+   public static final csx<csm> o = a("furnace", csm::new);
+   public static final csx<cso> p = a("grindstone", cso::new);
+   public static final csx<csp> q = a("hopper", csp::new);
+   public static final csx<csu> r = a("lectern", ($$0, $$1) -> new csu($$0));
+   public static final csx<csv> s = a("loom", csv::new);
+   public static final csx<csz> t = a("merchant", csz::new);
+   public static final csx<cti> u = a("shulker_box", cti::new);
+   public static final csx<cto> v = a("smithing", cto::new);
+   public static final csx<ctp> w = a("smoker", ctp::new);
+   public static final csx<crw> x = a("cartography_table", crw::new);
+   public static final csx<ctr> y = a("stonecutter", ctr::new);
+   private final crf z;
+   private final csx.a<T> A;
 
-public class csx extends bsf {
-   @Nullable
-   private dtc b;
-
-   public csx() {
-      super(27);
+   private static <T extends cro> csx<T> a(String $$0, csx.a<T> $$1) {
+      return kd.a(ly.p, $$0, new csx<>($$1, crh.h));
    }
 
-   public void a(dtc $$0) {
-      this.b = $$0;
+   private static <T extends cro> csx<T> a(String $$0, csx.a<T> $$1, crd... $$2) {
+      return kd.a(ly.p, $$0, new csx<>($$1, crh.f.a($$2)));
    }
 
-   public boolean b(dtc $$0) {
-      return this.b == $$0;
+   private csx(csx.a<T> $$0, crf $$1) {
+      this.A = $$0;
+      this.z = $$1;
    }
 
-   @Override
-   public void a(up $$0, jr.a $$1) {
-      for (int $$2 = 0; $$2 < this.b(); $$2++) {
-         this.a($$2, cvx.k);
-      }
-
-      for (int $$3 = 0; $$3 < $$0.size(); $$3++) {
-         uj $$4 = $$0.a($$3);
-         int $$5 = $$4.f("Slot") & 255;
-         if ($$5 >= 0 && $$5 < this.b()) {
-            this.a($$5, cvx.a($$1, (vg)$$4).orElse(cvx.k));
-         }
-      }
-   }
-
-   @Override
-   public up a(jr.a $$0) {
-      up $$1 = new up();
-
-      for (int $$2 = 0; $$2 < this.b(); $$2++) {
-         cvx $$3 = this.a($$2);
-         if (!$$3.f()) {
-            uj $$4 = new uj();
-            $$4.a("Slot", (byte)$$2);
-            $$1.add($$3.b($$0, $$4));
-         }
-      }
-
-      return $$1;
+   public T a(int $$0, col $$1) {
+      return this.A.create($$0, $$1);
    }
 
    @Override
-   public boolean a(coh $$0) {
-      return this.b != null && !this.b.c($$0) ? false : super.a($$0);
+   public crf i() {
+      return this.z;
    }
 
-   @Override
-   public void d_(coh $$0) {
-      if (this.b != null) {
-         this.b.a($$0);
-      }
-
-      super.d_($$0);
-   }
-
-   @Override
-   public void c(coh $$0) {
-      if (this.b != null) {
-         this.b.b($$0);
-      }
-
-      super.c($$0);
-      this.b = null;
+   interface a<T extends cro> {
+      T create(int var1, col var2);
    }
 }

@@ -1,18 +1,20 @@
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
 
-public record cl(dl c) implements cu {
-   public static final Codec<cl> a = dl.a.xmap(cl::new, cl::a);
+public record cl(Optional<be<cwb, cu>> c) implements dz<cyt> {
+   public static final Codec<cl> a = RecordCodecBuilder.create($$0 -> $$0.group(be.a(cu.a).optionalFieldOf("items").forGetter(cl::b)).apply($$0, cl::new));
 
    @Override
-   public boolean a(cvx $$0) {
-      return this.c.a($$0);
+   public kt<cyt> a() {
+      return ku.al;
    }
 
-   public static cl a(dl $$0) {
-      return new cl($$0);
+   public boolean a(cwb $$0, cyt $$1) {
+      return !this.c.isPresent() || this.c.get().a($$1.d());
    }
 
-   public dl a() {
+   public Optional<be<cwb, cu>> b() {
       return this.c;
    }
 }

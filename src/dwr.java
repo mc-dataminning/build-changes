@@ -1,8 +1,21 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+public enum dwr implements bag {
+   a("top"),
+   b("bottom"),
+   c("double");
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface dwr {
+   private final String d;
+
+   private dwr(final String $$0) {
+      this.d = $$0;
+   }
+
+   @Override
+   public String toString() {
+      return this.d;
+   }
+
+   @Override
+   public String c() {
+      return this.d;
+   }
 }

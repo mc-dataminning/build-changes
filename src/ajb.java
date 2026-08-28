@@ -1,8 +1,8 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+public interface ajb extends agw {
+   @Override
+   default wd b() {
+      return wd.a;
+   }
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface ajb {
+   void a(aiy var1);
 }

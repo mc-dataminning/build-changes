@@ -1,13 +1,10 @@
-import java.util.concurrent.CompletableFuture;
+public enum ard {
+   a,
+   b,
+   c,
+   d;
 
-public interface ard {
-   are d(long var1);
-
-   void a(are var1);
-
-   CompletableFuture<dwz> a(are var1, dyd var2, bad<are> var3);
-
-   aqp a(dya var1, deb var2);
-
-   void g();
+   public boolean a(ard $$0) {
+      return this.ordinal() >= $$0.ordinal();
+   }
 }

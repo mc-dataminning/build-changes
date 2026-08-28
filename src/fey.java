@@ -1,23 +1,33 @@
-import com.google.gson.JsonObject;
+import com.google.common.collect.Lists;
+import com.google.gson.JsonElement;
 import com.google.gson.JsonParser;
 import com.mojang.logging.LogUtils;
+import java.util.Iterator;
+import java.util.List;
 import org.slf4j.Logger;
 
-public class fey extends ffn {
+public class fey extends ffv {
    private static final Logger b = LogUtils.getLogger();
-   public String a;
+   public List<fex> a;
 
    public static fey a(String $$0) {
-      fey $$1 = new fey();
+      JsonParser $$1 = new JsonParser();
+      fey $$2 = new fey();
+      $$2.a = Lists.newArrayList();
 
       try {
-         JsonParser $$2 = new JsonParser();
-         JsonObject $$3 = $$2.parse($$0).getAsJsonObject();
-         $$1.a = fhk.b("newsLink", $$3, null);
-      } catch (Exception var4) {
-         b.error("Could not parse RealmsNews: {}", var4.getMessage());
+         JsonElement $$3 = $$1.parse($$0).getAsJsonObject().get("backups");
+         if ($$3.isJsonArray()) {
+            Iterator<JsonElement> $$4 = $$3.getAsJsonArray().iterator();
+
+            while ($$4.hasNext()) {
+               $$2.a.add(fex.a($$4.next()));
+            }
+         }
+      } catch (Exception var5) {
+         b.error("Could not parse BackupList: {}", var5.getMessage());
       }
 
-      return $$1;
+      return $$2;
    }
 }

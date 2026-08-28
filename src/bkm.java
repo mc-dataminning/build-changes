@@ -4,25 +4,23 @@ import com.mojang.datafixers.types.templates.TypeTemplate;
 import java.util.Map;
 import java.util.function.Supplier;
 
-public class bkm extends bjg {
+public class bkm extends bji {
    public bkm(int $$0, Schema $$1) {
       super($$0, $$1);
    }
 
-   protected static void a(Schema $$0, Map<String, Supplier<TypeTemplate>> $$1, String $$2) {
-      $$0.register($$1, $$2, () -> bjh.a($$0));
-   }
-
    public Map<String, Supplier<TypeTemplate>> registerEntities(Schema $$0) {
       Map<String, Supplier<TypeTemplate>> $$1 = super.registerEntities($$0);
-      a($$0, $$1, "minecraft:bee");
-      a($$0, $$1, "minecraft:bee_stinger");
-      return $$1;
-   }
-
-   public Map<String, Supplier<TypeTemplate>> registerBlockEntities(Schema $$0) {
-      Map<String, Supplier<TypeTemplate>> $$1 = super.registerBlockEntities($$0);
-      $$0.register($$1, "minecraft:beehive", () -> DSL.optionalFields("Bees", DSL.list(DSL.optionalFields("EntityData", bhs.A.in($$0)))));
+      $$0.register(
+         $$1,
+         "minecraft:wandering_trader",
+         $$1x -> DSL.optionalFields("Inventory", DSL.list(bhu.t.in($$0)), "Offers", DSL.optionalFields("Recipes", DSL.list(bhu.x.in($$0))), bjj.a($$0))
+      );
+      $$0.register(
+         $$1,
+         "minecraft:trader_llama",
+         $$1x -> DSL.optionalFields("Items", DSL.list(bhu.t.in($$0)), "SaddleItem", bhu.t.in($$0), "DecorItem", bhu.t.in($$0), bjj.a($$0))
+      );
       return $$1;
    }
 }

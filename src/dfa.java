@@ -1,2 +1,3 @@
-public interface dfa extends dfb, dfd {
+public interface dfa {
+   cvx j();
 }

@@ -1,65 +1,43 @@
-import java.io.IOException;
-import java.nio.file.FileStore;
-import java.nio.file.attribute.BasicFileAttributeView;
-import java.nio.file.attribute.FileAttributeView;
-import java.nio.file.attribute.FileStoreAttributeView;
+import java.nio.file.attribute.BasicFileAttributes;
+import java.nio.file.attribute.FileTime;
 import javax.annotation.Nullable;
 
-class ats extends FileStore {
-   private final String a;
+abstract class ats implements BasicFileAttributes {
+   private static final FileTime a = FileTime.fromMillis(0L);
 
-   public ats(String $$0) {
-      this.a = $$0;
+   @Override
+   public FileTime lastModifiedTime() {
+      return a;
    }
 
    @Override
-   public String name() {
-      return this.a;
+   public FileTime lastAccessTime() {
+      return a;
    }
 
    @Override
-   public String type() {
-      return "index";
+   public FileTime creationTime() {
+      return a;
    }
 
    @Override
-   public boolean isReadOnly() {
-      return true;
+   public boolean isSymbolicLink() {
+      return false;
    }
 
    @Override
-   public long getTotalSpace() {
+   public boolean isOther() {
+      return false;
+   }
+
+   @Override
+   public long size() {
       return 0L;
-   }
-
-   @Override
-   public long getUsableSpace() {
-      return 0L;
-   }
-
-   @Override
-   public long getUnallocatedSpace() {
-      return 0L;
-   }
-
-   @Override
-   public boolean supportsFileAttributeView(Class<? extends FileAttributeView> $$0) {
-      return $$0 == BasicFileAttributeView.class;
-   }
-
-   @Override
-   public boolean supportsFileAttributeView(String $$0) {
-      return "basic".equals($$0);
    }
 
    @Nullable
    @Override
-   public <V extends FileStoreAttributeView> V getFileStoreAttributeView(Class<V> $$0) {
+   public Object fileKey() {
       return null;
-   }
-
-   @Override
-   public Object getAttribute(String $$0) throws IOException {
-      throw new UnsupportedOperationException();
    }
 }

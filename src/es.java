@@ -1,34 +1,25 @@
-@FunctionalInterface
-public interface es {
-   es a = new es() {
-      @Override
-      public void onResult(boolean $$0, int $$1) {
-      }
+import java.util.Optional;
+import java.util.stream.Stream;
 
-      @Override
-      public String toString() {
-         return "<empty>";
-      }
-   };
+public interface es extends js.a {
+   static es a(final js.a $$0, final crf $$1) {
+      return new es() {
+         @Override
+         public Stream<alh<? extends kd<?>>> b() {
+            return $$0.b();
+         }
 
-   void onResult(boolean var1, int var2);
+         @Override
+         public <T> Optional<js.b<T>> a(alh<? extends kd<? extends T>> $$0x) {
+            return $$0.a($$0).map($$1xx -> $$1xx.a($$1));
+         }
 
-   default void onSuccess(int $$0) {
-      this.onResult(true, $$0);
+         @Override
+         public crf a() {
+            return $$1;
+         }
+      };
    }
 
-   default void onFailure() {
-      this.onResult(false, 0);
-   }
-
-   static es chain(es $$0, es $$1) {
-      if ($$0 == a) {
-         return $$1;
-      } else {
-         return $$1 == a ? $$0 : ($$2, $$3) -> {
-            $$0.onResult($$2, $$3);
-            $$1.onResult($$2, $$3);
-         };
-      }
-   }
+   crf a();
 }

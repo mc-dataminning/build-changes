@@ -1,37 +1,12 @@
-public class afh implements zo<acd> {
-   public static final zf<we, afh> a = zo.a(afh::a, afh::new);
-   private final jg b;
-   private final float c;
-
-   public afh(jg $$0, float $$1) {
-      this.b = $$0;
-      this.c = $$1;
-   }
-
-   private afh(we $$0) {
-      this.b = $$0.e();
-      this.c = $$0.readFloat();
-   }
-
-   private void a(we $$0) {
-      $$0.a(this.b);
-      $$0.a(this.c);
-   }
+public record afh(cwb b) implements zp<ace> {
+   public static final zg<wt, afh> a = zg.a(cwb.h, afh::b, afh::new);
 
    @Override
-   public zq<afh> a() {
-      return ags.aA;
+   public zr<afh> a() {
+      return agt.ck;
    }
 
-   public void a(acd $$0) {
+   public void a(ace $$0) {
       $$0.a(this);
-   }
-
-   public jg b() {
-      return this.b;
-   }
-
-   public float e() {
-      return this.c;
    }
 }

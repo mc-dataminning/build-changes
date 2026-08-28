@@ -1,38 +1,40 @@
-import java.util.Arrays;
-import java.util.Map;
-import java.util.stream.Collectors;
+import java.util.Set;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.Executor;
 
-public class gzh {
-   public static final gzi a = new gzi();
-   public static final String b = "villager";
-   private final gzh.a c;
+public abstract class gzh implements auu, AutoCloseable {
+   private final gyc a;
+   private final ali b;
+   private final Set<atz<?>> c;
 
-   public gzh(gzh.a $$0) {
-      this.c = $$0;
+   public gzh(gye $$0, ali $$1, ali $$2) {
+      this($$0, $$1, $$2, gxy.a);
    }
 
-   public gzh.a a() {
-      return this.c;
+   public gzh(gye $$0, ali $$1, ali $$2, Set<atz<?>> $$3) {
+      this.b = $$2;
+      this.a = new gyc($$1);
+      $$0.a(this.a.h(), this.a);
+      this.c = $$3;
    }
 
-   public static enum a {
-      a("none"),
-      b("partial"),
-      c("full");
+   protected gyd a(ali $$0) {
+      return this.a.a($$0);
+   }
 
-      private static final Map<String, gzh.a> d = Arrays.stream(values()).collect(Collectors.toMap(gzh.a::a, $$0 -> (gzh.a)$$0));
-      private final String e;
+   @Override
+   public final CompletableFuture<Void> a(auu.a $$0, avb $$1, Executor $$2, Executor $$3) {
+      return gxy.a(this.a).a($$1, this.b, 0, $$2, this.c).thenCompose(gxy.a::a).thenCompose($$0::a).thenAcceptAsync(this::a, $$3);
+   }
 
-      private a(final String $$0) {
-         this.e = $$0;
+   private void a(gxy.a $$0) {
+      try (bos $$1 = bom.a().d("upload")) {
+         this.a.a($$0);
       }
+   }
 
-      public String a() {
-         return this.e;
-      }
-
-      public static gzh.a a(String $$0) {
-         return d.getOrDefault($$0, a);
-      }
+   @Override
+   public void close() {
+      this.a.g();
    }
 }

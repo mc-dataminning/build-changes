@@ -1,31 +1,26 @@
-public record aba(int c, ers d, float e) implements aar {
-   public static final zf<we, aba> a = aar.a(aba::a, aba::new);
-   public static final aar.b<aba> b = aar.a("debug/path");
+public record aba(long c, jh d) implements aas {
+   public static final zg<wf, aba> a = aas.a(aba::a, aba::new);
+   public static final aas.b<aba> b = aas.a("debug/neighbors_update");
 
-   private aba(we $$0) {
-      this($$0.readInt(), ers.b($$0), $$0.readFloat());
+   private aba(wf $$0) {
+      this($$0.m(), $$0.e());
    }
 
-   private void a(we $$0) {
-      $$0.q(this.c);
-      this.d.a($$0);
-      $$0.a(this.e);
+   private void a(wf $$0) {
+      $$0.a(this.c);
+      $$0.a(this.d);
    }
 
    @Override
-   public aar.b<aba> a() {
+   public aas.b<aba> a() {
       return b;
    }
 
-   public int b() {
+   public long b() {
       return this.c;
    }
 
-   public ers c() {
+   public jh c() {
       return this.d;
-   }
-
-   public float d() {
-      return this.e;
    }
 }

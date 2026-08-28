@@ -9,7 +9,7 @@ import net.minecraft.obfuscate.DontObfuscate;
 @Name("minecraft.PacketSent")
 @Label("Network Packet Sent")
 @DontObfuscate
-public class PacketSentEvent extends bow {
+public class PacketSentEvent extends bpb {
    public static final String NAME = "minecraft.PacketSent";
    public static final EventType TYPE = EventType.getEventType(PacketSentEvent.class);
 

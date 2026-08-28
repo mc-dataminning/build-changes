@@ -1,15 +1,5 @@
-import org.lwjgl.glfw.GLFW;
-import org.lwjgl.system.MemoryUtil;
+import java.util.List;
 
-public class fbg {
-   public static void a() {
-      MemoryUtil.memSet(0L, 0, 1L);
-   }
-
-   public static double b() {
-      return GLFW.glfwGetTime();
-   }
-
-   private fbg() {
-   }
+public interface fbg<T> {
+   List<fbe<T>> a(long var1);
 }

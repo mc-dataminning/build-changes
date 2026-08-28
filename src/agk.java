@@ -1,24 +1,29 @@
-public record agk(int b) implements zo<acd> {
-   public static final zf<we, agk> a = zo.a(agk::a, agk::new);
+public record agk(float b, boolean c) implements zp<ace> {
+   public static final zg<wf, agk> a = zp.a(agk::a, agk::new);
 
-   private agk(we $$0) {
-      this($$0.l());
+   private agk(wf $$0) {
+      this($$0.readFloat(), $$0.readBoolean());
    }
 
-   public static agk a(bsh $$0) {
-      return new agk($$0.k());
+   public static agk a(bsm $$0) {
+      return new agk($$0.f(), $$0.l());
    }
 
-   private void a(we $$0) {
-      $$0.c(this.b);
+   private void a(wf $$0) {
+      $$0.a(this.b);
+      $$0.a(this.c);
    }
 
    @Override
-   public zq<agk> a() {
-      return ags.cj;
+   public zr<agk> a() {
+      return agt.ci;
    }
 
-   public void a(acd $$0) {
+   public void a(ace $$0) {
       $$0.a(this);
+   }
+
+   public boolean e() {
+      return this.c;
    }
 }

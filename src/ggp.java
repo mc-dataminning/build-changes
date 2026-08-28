@@ -1,80 +1,45 @@
-import com.mojang.authlib.GameProfile;
-import javax.annotation.Nullable;
+public abstract class ggp extends ggc {
+   protected gyd E;
 
-public abstract class ggp extends coh {
-   @Nullable
-   private gci i;
-   protected ezh b = ezh.c;
-   public float c;
-   public float d;
-   public float e;
-   public final gbx f;
-   public float g;
-   public float h;
+   protected ggp(gci $$0, double $$1, double $$2, double $$3) {
+      super($$0, $$1, $$2, $$3);
+   }
 
-   public ggp(gbx $$0, GameProfile $$1) {
-      super($$0, $$0.W(), $$0.X(), $$1);
-      this.f = $$0;
+   protected ggp(gci $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6) {
+      super($$0, $$1, $$2, $$3, $$4, $$5, $$6);
+   }
+
+   protected void a(gyd $$0) {
+      this.E = $$0;
    }
 
    @Override
-   public boolean R_() {
-      gci $$0 = this.a();
-      return $$0 != null && $$0.e() == des.d;
+   protected float c() {
+      return this.E.c();
    }
 
    @Override
-   public boolean f() {
-      gci $$0 = this.a();
-      return $$0 != null && $$0.e() == des.b;
-   }
-
-   @Nullable
-   protected gci a() {
-      if (this.i == null) {
-         this.i = fja.Q().L().a(this.cH());
-      }
-
-      return this.i;
+   protected float d() {
+      return this.E.d();
    }
 
    @Override
-   public void l() {
-      this.g = this.h;
-      this.b = this.dA();
-      super.l();
+   protected float e() {
+      return this.E.g();
    }
 
-   public ezh I(float $$0) {
-      return this.b.a(this.dA(), (double)$$0);
+   @Override
+   protected float f() {
+      return this.E.h();
    }
 
-   public gyt b() {
-      gci $$0 = this.a();
-      return $$0 == null ? gyk.a(this.cH()) : $$0.g();
+   public void a(ggk $$0) {
+      this.a($$0.a(this.r));
    }
 
-   public float a(boolean $$0, float $$1) {
-      float $$2 = 1.0F;
-      if (this.gl().b) {
-         $$2 *= 1.1F;
+   public void b(ggk $$0) {
+      if (!this.o) {
+         this.a($$0.a(this.s, this.t));
       }
-
-      float $$3 = this.gl().b();
-      if ($$3 != 0.0F) {
-         float $$4 = (float)this.h(bwd.v) / $$3;
-         $$2 *= ($$4 + 1.0F) / 2.0F;
-      }
-
-      if (this.fB()) {
-         if (this.fD().a(cwb.ow)) {
-            float $$5 = Math.min((float)this.fF() / 20.0F, 1.0F);
-            $$2 *= 1.0F - azj.l($$5) * 0.15F;
-         } else if ($$0 && this.gI()) {
-            return 0.1F;
-         }
-      }
-
-      return azj.h($$1, 1.0F, $$2);
    }
 }

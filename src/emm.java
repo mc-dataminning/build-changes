@@ -1,72 +1,78 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.Lists;
+import com.mojang.logging.LogUtils;
+import java.util.List;
+import java.util.Locale;
+import java.util.Map;
+import org.slf4j.Logger;
 
-public class emm extends emo {
-   public static final MapCodec<emm> a = RecordCodecBuilder.mapCodec(
-         $$0 -> a($$0)
-               .and(
-                  $$0.group(
-                     Codec.intRange(0, 4096).fieldOf("spacing").forGetter(emm::a),
-                     Codec.intRange(0, 4096).fieldOf("separation").forGetter(emm::b),
-                     emn.c.optionalFieldOf("spread_type", emn.a).forGetter(emm::c)
-                  )
-               )
-               .apply($$0, emm::new)
-      )
-      .validate(emm::a);
-   private final int c;
-   private final int d;
-   private final emn e;
+public record emm(List<emb> a) {
+   private static final Logger b = LogUtils.getLogger();
+   private static final ali c = ali.b("jigsaw");
+   private static final Map<ali, ali> d = ImmutableMap.builder()
+      .put(ali.b("nvi"), c)
+      .put(ali.b("pcp"), c)
+      .put(ali.b("bastionremnant"), c)
+      .put(ali.b("runtime"), c)
+      .build();
 
-   private static DataResult<emm> a(emm $$0) {
-      return $$0.c <= $$0.d ? DataResult.error(() -> "Spacing has to be larger than separation") : DataResult.success($$0);
+   public emm(final List<emb> a) {
+      this.a = List.copyOf(a);
    }
 
-   public emm(kk $$0, emo.c $$1, float $$2, int $$3, Optional<emo.a> $$4, int $$5, int $$6, emn $$7) {
-      super($$0, $$1, $$2, $$3, $$4);
-      this.c = $$5;
-      this.d = $$6;
-      this.e = $$7;
+   public boolean a() {
+      return this.a.isEmpty();
    }
 
-   public emm(int $$0, int $$1, emn $$2, int $$3) {
-      this(kk.g, emo.c.a, 1.0F, $$3, Optional.empty(), $$0, $$1, $$2);
+   public boolean a(jh $$0) {
+      for (emb $$1 : this.a) {
+         if ($$1.f().b($$0)) {
+            return true;
+         }
+      }
+
+      return false;
    }
 
-   public int a() {
-      return this.c;
+   public vh a(emn $$0) {
+      uq $$1 = new uq();
+
+      for (emb $$2 : this.a) {
+         $$1.add($$2.a($$0));
+      }
+
+      return $$1;
    }
 
-   public int b() {
-      return this.d;
+   public static emm a(uq $$0, emn $$1) {
+      List<emb> $$2 = Lists.newArrayList();
+
+      for (int $$3 = 0; $$3 < $$0.size(); $$3++) {
+         uk $$4 = $$0.a($$3);
+         String $$5 = $$4.l("id").toLowerCase(Locale.ROOT);
+         ali $$6 = ali.a($$5);
+         ali $$7 = d.getOrDefault($$6, $$6);
+         emo $$8 = ly.Q.a($$7);
+         if ($$8 == null) {
+            b.error("Unknown structure piece id: {}", $$7);
+         } else {
+            try {
+               emb $$9 = $$8.load($$1, $$4);
+               $$2.add($$9);
+            } catch (Exception var10) {
+               b.error("Exception loading structure piece with id {}", $$7, var10);
+            }
+         }
+      }
+
+      return new emm($$2);
    }
 
-   public emn c() {
-      return this.e;
+   public elp b() {
+      return emb.a(this.a.stream());
    }
 
-   public deb a(long $$0, int $$1, int $$2) {
-      int $$3 = Math.floorDiv($$1, this.c);
-      int $$4 = Math.floorDiv($$2, this.c);
-      eby $$5 = new eby(new eba(0L));
-      $$5.a($$0, $$3, $$4, this.i());
-      int $$6 = this.c - this.d;
-      int $$7 = this.e.a($$5, $$6);
-      int $$8 = this.e.a($$5, $$6);
-      return new deb($$3 * this.c + $$7, $$4 * this.c + $$8);
-   }
-
-   @Override
-   protected boolean a(dxb $$0, int $$1, int $$2) {
-      deb $$3 = this.a($$0.d(), $$1, $$2);
-      return $$3.e == $$1 && $$3.f == $$2;
-   }
-
-   @Override
-   public emp<?> e() {
-      return emp.a;
+   public List<emb> c() {
+      return this.a;
    }
 }

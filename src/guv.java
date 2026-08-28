@@ -1,5 +1,3 @@
-public class guv extends gva {
-   public float a;
-   public int b;
-   public btw.a c = btw.a.a;
+public class guv extends gun {
+   public ezn a = ezn.c;
 }

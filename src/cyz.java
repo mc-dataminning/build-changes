@@ -1,27 +1,26 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import io.netty.buffer.ByteBuf;
+import java.util.List;
 import java.util.function.Consumer;
 
-public record cyz(boolean c) implements cyy {
-   public static final Codec<cyz> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(Codec.BOOL.optionalFieldOf("show_in_tooltip", true).forGetter(cyz::a)).apply($$0, cyz::new)
-   );
-   public static final zf<ByteBuf, cyz> b = zd.b.a(cyz::new, cyz::a);
-   private static final xh d = xh.c("item.unbreakable").a(n.j);
+public record cyz(int f) implements cyi, cze {
+   public static final int a = 120000;
+   public static final int b = 0;
+   public static final int c = 4;
+   public static final Codec<cyz> d = ayt.a(0, 4).xmap(cyz::new, cyz::a);
+   public static final zg<wt, cyz> e = zg.a(ze.h, cyz::a, cyz::new);
 
    @Override
-   public void a(cvt.b $$0, Consumer<xh> $$1, cxp $$2) {
-      if (this.c) {
-         $$1.accept(d);
-      }
+   public void a(dfb $$0, bva $$1, cwb $$2, cyh $$3) {
+      $$1.a(new btj(btl.E, 120000, this.f, false, false, true));
    }
 
-   public cyz a(boolean $$0) {
-      return new cyz($$0);
+   @Override
+   public void a(cvx.b $$0, Consumer<xi> $$1, cxt $$2) {
+      List<btj> $$3 = List.of(new btj(btl.E, 120000, this.f, false, false, true));
+      cya.a($$3, $$1, 1.0F, $$0.b());
    }
 
-   public boolean a() {
-      return this.c;
+   public int a() {
+      return this.f;
    }
 }

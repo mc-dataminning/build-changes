@@ -1,60 +1,44 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.function.Consumer;
+import java.util.Map;
 
-public record cyw(List<cyw.a> e) implements cye, cyy {
-   public static final cyw a = new cyw(List.of());
-   public static final int b = 160;
-   public static final Codec<cyw> c = cyw.a.a.listOf().xmap(cyw::new, cyw::a);
-   public static final zf<ws, cyw> d = cyw.a.b.a(zd.a()).a(cyw::new, cyw::a);
+public record cyw(Map<String, cyw.a> c) {
+   public static final cyw a = new cyw(Map.of());
+   public static final Codec<cyw> b = Codec.unboundedMap(Codec.STRING, cyw.a.a).xmap(cyw::new, cyw::a);
 
-   public cyw a(cyw.a $$0) {
-      return new cyw(ad.a(this.e, $$0));
+   public cyw a(String $$0, cyw.a $$1) {
+      return new cyw(ae.a(this.c, $$0, $$1));
    }
 
-   @Override
-   public void a(dev $$0, buv $$1, cvx $$2, cyd $$3) {
-      for (cyw.a $$4 : this.e) {
-         $$1.a($$4.a());
-      }
+   public Map<String, cyw.a> a() {
+      return this.c;
    }
 
-   @Override
-   public void a(cvt.b $$0, Consumer<xh> $$1, cxp $$2) {
-      if ($$2.b()) {
-         List<bte> $$3 = new ArrayList<>();
-
-         for (cyw.a $$4 : this.e) {
-            $$3.add($$4.a());
-         }
-
-         cxw.a($$3, $$1, 1.0F, $$0.b());
-      }
-   }
-
-   public List<cyw.a> a() {
-      return this.e;
-   }
-
-   public static record a(jp<btc> c, int d) {
+   public static record a(jq<esz> b, double c, double d, float e) {
       public static final Codec<cyw.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(btc.a.fieldOf("id").forGetter(cyw.a::b), Codec.INT.lenientOptionalFieldOf("duration", 160).forGetter(cyw.a::c))
+         $$0 -> $$0.group(
+                  esz.b.fieldOf("type").forGetter(cyw.a::a),
+                  Codec.DOUBLE.fieldOf("x").forGetter(cyw.a::b),
+                  Codec.DOUBLE.fieldOf("z").forGetter(cyw.a::c),
+                  Codec.FLOAT.fieldOf("rotation").forGetter(cyw.a::d)
+               )
                .apply($$0, cyw.a::new)
       );
-      public static final zf<ws, cyw.a> b = zf.a(btc.b, cyw.a::b, zd.h, cyw.a::c, cyw.a::new);
 
-      public bte a() {
-         return new bte(this.c, this.d);
+      public jq<esz> a() {
+         return this.b;
       }
 
-      public jp<btc> b() {
+      public double b() {
          return this.c;
       }
 
-      public int c() {
+      public double c() {
          return this.d;
+      }
+
+      public float d() {
+         return this.e;
       }
    }
 }

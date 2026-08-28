@@ -7,6 +7,7 @@ import com.google.gson.GsonBuilder;
 import com.mojang.authlib.properties.PropertyMap;
 import com.mojang.authlib.properties.PropertyMap.Serializer;
 import com.mojang.blaze3d.systems.RenderSystem;
+import com.mojang.jtracy.TracyClient;
 import com.mojang.logging.LogUtils;
 import com.mojang.util.UndashedUuid;
 import java.io.File;
@@ -40,173 +41,181 @@ public class Main {
       $$1.accepts("fullscreen");
       $$1.accepts("checkGlErrors");
       OptionSpec<Void> $$2 = $$1.accepts("jfrProfile");
-      OptionSpec<String> $$3 = $$1.accepts("quickPlayPath").withRequiredArg();
-      OptionSpec<String> $$4 = $$1.accepts("quickPlaySingleplayer").withRequiredArg();
-      OptionSpec<String> $$5 = $$1.accepts("quickPlayMultiplayer").withRequiredArg();
-      OptionSpec<String> $$6 = $$1.accepts("quickPlayRealms").withRequiredArg();
-      OptionSpec<File> $$7 = $$1.accepts("gameDir").withRequiredArg().ofType(File.class).defaultsTo(new File("."), new File[0]);
-      OptionSpec<File> $$8 = $$1.accepts("assetsDir").withRequiredArg().ofType(File.class);
-      OptionSpec<File> $$9 = $$1.accepts("resourcePackDir").withRequiredArg().ofType(File.class);
-      OptionSpec<String> $$10 = $$1.accepts("proxyHost").withRequiredArg();
-      OptionSpec<Integer> $$11 = $$1.accepts("proxyPort").withRequiredArg().defaultsTo("8080", new String[0]).ofType(Integer.class);
-      OptionSpec<String> $$12 = $$1.accepts("proxyUser").withRequiredArg();
-      OptionSpec<String> $$13 = $$1.accepts("proxyPass").withRequiredArg();
-      OptionSpec<String> $$14 = $$1.accepts("username").withRequiredArg().defaultsTo("Player" + System.currentTimeMillis() % 1000L, new String[0]);
-      OptionSpec<String> $$15 = $$1.accepts("uuid").withRequiredArg();
-      OptionSpec<String> $$16 = $$1.accepts("xuid").withOptionalArg().defaultsTo("", new String[0]);
-      OptionSpec<String> $$17 = $$1.accepts("clientId").withOptionalArg().defaultsTo("", new String[0]);
-      OptionSpec<String> $$18 = $$1.accepts("accessToken").withRequiredArg().required();
-      OptionSpec<String> $$19 = $$1.accepts("version").withRequiredArg().required();
-      OptionSpec<Integer> $$20 = $$1.accepts("width").withRequiredArg().ofType(Integer.class).defaultsTo(854, new Integer[0]);
-      OptionSpec<Integer> $$21 = $$1.accepts("height").withRequiredArg().ofType(Integer.class).defaultsTo(480, new Integer[0]);
-      OptionSpec<Integer> $$22 = $$1.accepts("fullscreenWidth").withRequiredArg().ofType(Integer.class);
-      OptionSpec<Integer> $$23 = $$1.accepts("fullscreenHeight").withRequiredArg().ofType(Integer.class);
-      OptionSpec<String> $$24 = $$1.accepts("userProperties").withRequiredArg().defaultsTo("{}", new String[0]);
-      OptionSpec<String> $$25 = $$1.accepts("profileProperties").withRequiredArg().defaultsTo("{}", new String[0]);
-      OptionSpec<String> $$26 = $$1.accepts("assetIndex").withRequiredArg();
-      OptionSpec<String> $$27 = $$1.accepts("userType").withRequiredArg().defaultsTo("legacy", new String[0]);
-      OptionSpec<String> $$28 = $$1.accepts("versionType").withRequiredArg().defaultsTo("release", new String[0]);
-      OptionSpec<String> $$29 = $$1.nonOptions();
-      OptionSet $$30 = $$1.parse($$0);
-      File $$31 = a($$30, $$7);
-      String $$32 = a($$30, $$19);
-      String $$33 = "Pre-bootstrap";
+      OptionSpec<Void> $$3 = $$1.accepts("tracy");
+      OptionSpec<Void> $$4 = $$1.accepts("tracyNoImages");
+      OptionSpec<String> $$5 = $$1.accepts("quickPlayPath").withRequiredArg();
+      OptionSpec<String> $$6 = $$1.accepts("quickPlaySingleplayer").withRequiredArg();
+      OptionSpec<String> $$7 = $$1.accepts("quickPlayMultiplayer").withRequiredArg();
+      OptionSpec<String> $$8 = $$1.accepts("quickPlayRealms").withRequiredArg();
+      OptionSpec<File> $$9 = $$1.accepts("gameDir").withRequiredArg().ofType(File.class).defaultsTo(new File("."), new File[0]);
+      OptionSpec<File> $$10 = $$1.accepts("assetsDir").withRequiredArg().ofType(File.class);
+      OptionSpec<File> $$11 = $$1.accepts("resourcePackDir").withRequiredArg().ofType(File.class);
+      OptionSpec<String> $$12 = $$1.accepts("proxyHost").withRequiredArg();
+      OptionSpec<Integer> $$13 = $$1.accepts("proxyPort").withRequiredArg().defaultsTo("8080", new String[0]).ofType(Integer.class);
+      OptionSpec<String> $$14 = $$1.accepts("proxyUser").withRequiredArg();
+      OptionSpec<String> $$15 = $$1.accepts("proxyPass").withRequiredArg();
+      OptionSpec<String> $$16 = $$1.accepts("username").withRequiredArg().defaultsTo("Player" + System.currentTimeMillis() % 1000L, new String[0]);
+      OptionSpec<String> $$17 = $$1.accepts("uuid").withRequiredArg();
+      OptionSpec<String> $$18 = $$1.accepts("xuid").withOptionalArg().defaultsTo("", new String[0]);
+      OptionSpec<String> $$19 = $$1.accepts("clientId").withOptionalArg().defaultsTo("", new String[0]);
+      OptionSpec<String> $$20 = $$1.accepts("accessToken").withRequiredArg().required();
+      OptionSpec<String> $$21 = $$1.accepts("version").withRequiredArg().required();
+      OptionSpec<Integer> $$22 = $$1.accepts("width").withRequiredArg().ofType(Integer.class).defaultsTo(854, new Integer[0]);
+      OptionSpec<Integer> $$23 = $$1.accepts("height").withRequiredArg().ofType(Integer.class).defaultsTo(480, new Integer[0]);
+      OptionSpec<Integer> $$24 = $$1.accepts("fullscreenWidth").withRequiredArg().ofType(Integer.class);
+      OptionSpec<Integer> $$25 = $$1.accepts("fullscreenHeight").withRequiredArg().ofType(Integer.class);
+      OptionSpec<String> $$26 = $$1.accepts("userProperties").withRequiredArg().defaultsTo("{}", new String[0]);
+      OptionSpec<String> $$27 = $$1.accepts("profileProperties").withRequiredArg().defaultsTo("{}", new String[0]);
+      OptionSpec<String> $$28 = $$1.accepts("assetIndex").withRequiredArg();
+      OptionSpec<String> $$29 = $$1.accepts("userType").withRequiredArg().defaultsTo("legacy", new String[0]);
+      OptionSpec<String> $$30 = $$1.accepts("versionType").withRequiredArg().defaultsTo("release", new String[0]);
+      OptionSpec<String> $$31 = $$1.nonOptions();
+      OptionSet $$32 = $$1.parse($$0);
+      File $$33 = a($$32, $$9);
+      String $$34 = a($$32, $$21);
+      String $$35 = "Pre-bootstrap";
 
-      Logger $$37;
-      fwn $$68;
+      Logger $$39;
+      fwy $$71;
       try {
-         if ($$30.has($$2)) {
-            boq.f.a(boo.a);
+         if ($$32.has($$2)) {
+            bov.f.a(bot.a);
          }
 
-         Stopwatch $$34 = Stopwatch.createStarted(Ticker.systemTicker());
-         Stopwatch $$35 = Stopwatch.createStarted(Ticker.systemTicker());
-         hdj.a.a(hdf.z, $$34);
-         hdj.a.a(hdf.A, $$35);
+         if ($$32.has($$3)) {
+            fbq.a();
+         }
+
+         Stopwatch $$36 = Stopwatch.createStarted(Ticker.systemTicker());
+         Stopwatch $$37 = Stopwatch.createStarted(Ticker.systemTicker());
+         hdu.a.a(hdq.z, $$36);
+         hdu.a.a(hdq.A, $$37);
          ab.a();
-         CompletableFuture<?> $$36 = bat.a(bas.t);
+         TracyClient.reportAppInfo("Minecraft Java Edition " + ab.b().c());
+         CompletableFuture<?> $$38 = bau.a(bat.t);
          o.g();
-         $$37 = LogUtils.getLogger();
-         $$33 = "Bootstrap";
-         alj.a();
-         hdj.a.a(alj.b.get());
-         alj.c();
-         $$33 = "Argument parsing";
-         List<String> $$38 = $$30.valuesOf($$29);
-         if (!$$38.isEmpty()) {
-            $$37.info("Completely ignored arguments: {}", $$38);
+         $$39 = LogUtils.getLogger();
+         $$35 = "Bootstrap";
+         alk.a();
+         hdu.a.a(alk.b.get());
+         alk.c();
+         $$35 = "Argument parsing";
+         List<String> $$40 = $$32.valuesOf($$31);
+         if (!$$40.isEmpty()) {
+            $$39.info("Completely ignored arguments: {}", $$40);
          }
 
-         String $$39 = (String)$$27.value($$30);
-         fjn.a $$40 = fjn.a.a($$39);
-         if ($$40 == null) {
-            $$37.warn("Unrecognized user type: {}", $$39);
+         String $$41 = (String)$$29.value($$32);
+         fjv.a $$42 = fjv.a.a($$41);
+         if ($$42 == null) {
+            $$39.warn("Unrecognized user type: {}", $$41);
          }
 
-         String $$41 = a($$30, $$10);
-         Proxy $$42 = Proxy.NO_PROXY;
-         if ($$41 != null) {
+         String $$43 = a($$32, $$12);
+         Proxy $$44 = Proxy.NO_PROXY;
+         if ($$43 != null) {
             try {
-               $$42 = new Proxy(Type.SOCKS, new InetSocketAddress($$41, a($$30, $$11)));
-            } catch (Exception var78) {
+               $$44 = new Proxy(Type.SOCKS, new InetSocketAddress($$43, a($$32, $$13)));
+            } catch (Exception var81) {
             }
          }
 
-         final String $$43 = a($$30, $$12);
-         final String $$44 = a($$30, $$13);
-         if (!$$42.equals(Proxy.NO_PROXY) && c($$43) && c($$44)) {
+         final String $$45 = a($$32, $$14);
+         final String $$46 = a($$32, $$15);
+         if (!$$44.equals(Proxy.NO_PROXY) && c($$45) && c($$46)) {
             Authenticator.setDefault(new Authenticator() {
                @Override
                protected PasswordAuthentication getPasswordAuthentication() {
-                  return new PasswordAuthentication($$43, $$44.toCharArray());
+                  return new PasswordAuthentication($$45, $$46.toCharArray());
                }
             });
          }
 
-         int $$45 = a($$30, $$20);
-         int $$46 = a($$30, $$21);
-         OptionalInt $$47 = a(a($$30, $$22));
-         OptionalInt $$48 = a(a($$30, $$23));
-         boolean $$49 = $$30.has("fullscreen");
-         boolean $$50 = $$30.has("demo");
-         boolean $$51 = $$30.has("disableMultiplayer");
-         boolean $$52 = $$30.has("disableChat");
-         Gson $$53 = new GsonBuilder().registerTypeAdapter(PropertyMap.class, new Serializer()).create();
-         PropertyMap $$54 = ayz.a($$53, a($$30, $$24), PropertyMap.class);
-         PropertyMap $$55 = ayz.a($$53, a($$30, $$25), PropertyMap.class);
-         String $$56 = a($$30, $$28);
-         File $$57 = $$30.has($$8) ? a($$30, $$8) : new File($$31, "assets/");
-         File $$58 = $$30.has($$9) ? a($$30, $$9) : new File($$31, "resourcepacks/");
-         UUID $$59 = a($$15, $$30, $$37) ? UndashedUuid.fromStringLenient((String)$$15.value($$30)) : kj.a((String)$$14.value($$30));
-         String $$60 = $$30.has($$26) ? (String)$$26.value($$30) : null;
-         String $$61 = (String)$$30.valueOf($$16);
-         String $$62 = (String)$$30.valueOf($$17);
-         String $$63 = a($$30, $$3);
-         String $$64 = a(a($$30, $$4));
-         String $$65 = a(a($$30, $$5));
-         String $$66 = a(a($$30, $$6));
-         fjn $$67 = new fjn((String)$$14.value($$30), $$59, (String)$$18.value($$30), b($$61), b($$62), $$40);
-         $$68 = new fwn(
-            new fwn.d($$67, $$54, $$55, $$42),
-            new fcj($$45, $$46, $$47, $$48, $$49),
-            new fwn.a($$31, $$58, $$57, $$60),
-            new fwn.b($$50, $$32, $$56, $$51, $$52),
-            new fwn.c($$63, $$64, $$65, $$66)
+         int $$47 = a($$32, $$22);
+         int $$48 = a($$32, $$23);
+         OptionalInt $$49 = a(a($$32, $$24));
+         OptionalInt $$50 = a(a($$32, $$25));
+         boolean $$51 = $$32.has("fullscreen");
+         boolean $$52 = $$32.has("demo");
+         boolean $$53 = $$32.has("disableMultiplayer");
+         boolean $$54 = $$32.has("disableChat");
+         boolean $$55 = !$$32.has($$4);
+         Gson $$56 = new GsonBuilder().registerTypeAdapter(PropertyMap.class, new Serializer()).create();
+         PropertyMap $$57 = aza.a($$56, a($$32, $$26), PropertyMap.class);
+         PropertyMap $$58 = aza.a($$56, a($$32, $$27), PropertyMap.class);
+         String $$59 = a($$32, $$30);
+         File $$60 = $$32.has($$10) ? a($$32, $$10) : new File($$33, "assets/");
+         File $$61 = $$32.has($$11) ? a($$32, $$11) : new File($$33, "resourcepacks/");
+         UUID $$62 = a($$17, $$32, $$39) ? UndashedUuid.fromStringLenient((String)$$17.value($$32)) : kk.a((String)$$16.value($$32));
+         String $$63 = $$32.has($$28) ? (String)$$28.value($$32) : null;
+         String $$64 = (String)$$32.valueOf($$18);
+         String $$65 = (String)$$32.valueOf($$19);
+         String $$66 = a($$32, $$5);
+         String $$67 = a(a($$32, $$6));
+         String $$68 = a(a($$32, $$7));
+         String $$69 = a(a($$32, $$8));
+         fjv $$70 = new fjv((String)$$16.value($$32), $$62, (String)$$20.value($$32), b($$64), b($$65), $$42);
+         $$71 = new fwy(
+            new fwy.d($$70, $$57, $$58, $$44),
+            new fcr($$47, $$48, $$49, $$50, $$51),
+            new fwy.a($$33, $$61, $$60, $$63),
+            new fwy.b($$52, $$34, $$59, $$53, $$54, $$55),
+            new fwy.c($$66, $$67, $$68, $$69)
          );
-         ad.o();
-         $$36.join();
-      } catch (Throwable var79) {
-         o $$70 = o.a(var79, $$33);
-         p $$71 = $$70.a("Initialization");
-         azk.a($$71);
-         fja.a(null, null, $$32, null, $$70);
-         fja.a(null, $$31, $$70);
+         ae.o();
+         $$38.join();
+      } catch (Throwable var82) {
+         o $$73 = o.a(var82, $$35);
+         p $$74 = $$73.a("Initialization");
+         azl.a($$74);
+         fji.a(null, null, $$34, null, $$73);
+         fji.a(null, $$33, $$73);
          return;
       }
 
-      Thread $$74 = new Thread("Client Shutdown Thread") {
+      Thread $$77 = new Thread("Client Shutdown Thread") {
          @Override
          public void run() {
-            fja $$0 = fja.Q();
+            fji $$0 = fji.Q();
             if ($$0 != null) {
-               hcd $$1 = $$0.V();
+               hco $$1 = $$0.V();
                if ($$1 != null) {
                   $$1.a(true);
                }
             }
          }
       };
-      $$74.setUncaughtExceptionHandler(new r($$37));
-      Runtime.getRuntime().addShutdownHook($$74);
-      fja $$75 = null;
+      $$77.setUncaughtExceptionHandler(new r($$39));
+      Runtime.getRuntime().addShutdownHook($$77);
+      fji $$78 = null;
 
       try {
          Thread.currentThread().setName("Render thread");
          RenderSystem.initRenderThread();
          RenderSystem.beginInitialization();
-         $$75 = new fja($$68);
+         $$78 = new fji($$71);
          RenderSystem.finishInitialization();
-      } catch (fwo var76) {
-         ad.j();
-         $$37.warn("Failed to create window: ", var76);
+      } catch (fwz var79) {
+         ae.j();
+         $$39.warn("Failed to create window: ", var79);
          return;
-      } catch (Throwable var77) {
-         o $$78 = o.a(var77, "Initializing game");
-         p $$79 = $$78.a("Initialization");
-         azk.a($$79);
-         fja.a($$75, null, $$68.d.b, null, $$78);
-         fja.a($$75, $$68.c.a, $$78);
+      } catch (Throwable var80) {
+         o $$81 = o.a(var80, "Initializing game");
+         p $$82 = $$81.a("Initialization");
+         azl.a($$82);
+         fji.a($$78, null, $$71.d.b, null, $$81);
+         fji.a($$78, $$71.c.a, $$81);
          return;
       }
 
-      fja $$80 = $$75;
-      $$75.f();
-      fdp.a();
+      fji $$83 = $$78;
+      $$78.f();
+      fdx.a();
 
       try {
-         $$80.q();
+         $$83.q();
       } finally {
-         $$75.n();
+         $$78.n();
       }
    }
 

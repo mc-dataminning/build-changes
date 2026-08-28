@@ -1,117 +1,118 @@
-import java.util.Optional;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import it.unimi.dsi.fastutil.objects.Reference2ObjectArrayMap;
+import java.util.stream.Stream;
 import javax.annotation.Nullable;
 
-public abstract class erk extends erc {
-   @Override
-   public erd d() {
-      return erf.b;
+public final class erk extends dvl<erj, erk> {
+   public static final Codec<erk> a = a(ly.c.q(), erj::g).stable();
+   public static final int f = 9;
+   public static final int g = 8;
+
+   public erk(erj $$0, Reference2ObjectArrayMap<dwm<?>, Comparable<?>> $$1, MapCodec<erk> $$2) {
+      super($$0, $$1, $$2);
    }
 
-   @Override
-   public erd e() {
-      return erf.c;
+   public erj a() {
+      return this.d;
    }
 
-   @Override
-   public cvt a() {
-      return cwb.qA;
+   public boolean b() {
+      return this.a().c(this);
    }
 
-   @Override
-   public void a(dev $$0, jg $$1, ere $$2, azr $$3) {
-      if (!$$2.b() && !$$2.c(a)) {
-         if ($$3.a(64) == 0) {
-            $$0.a((double)$$1.u() + 0.5, (double)$$1.v() + 0.5, (double)$$1.w() + 0.5, awk.Cg, awl.e, $$3.i() * 0.25F + 0.75F, $$3.i() + 0.5F, false);
+   public boolean a(erj $$0) {
+      return this.d == $$0 && this.d.c(this);
+   }
+
+   public boolean c() {
+      return this.a().b();
+   }
+
+   public float a(deg $$0, jh $$1) {
+      return this.a().a(this, $$0, $$1);
+   }
+
+   public float d() {
+      return this.a().a(this);
+   }
+
+   public int e() {
+      return this.a().d(this);
+   }
+
+   public boolean b(deg $$0, jh $$1) {
+      for (int $$2 = -1; $$2 <= 1; $$2++) {
+         for (int $$3 = -1; $$3 <= 1; $$3++) {
+            jh $$4 = $$1.b($$2, 0, $$3);
+            erk $$5 = $$0.b_($$4);
+            if (!$$5.a().a(this.a()) && !$$0.a_($$4).s()) {
+               return true;
+            }
          }
-      } else if ($$3.a(10) == 0) {
-         $$0.a(lq.al, (double)$$1.u() + $$3.j(), (double)$$1.v() + $$3.j(), (double)$$1.w() + $$3.j(), 0.0, 0.0, 0.0);
       }
+
+      return false;
+   }
+
+   public void a(dfb $$0, jh $$1, dvj $$2) {
+      this.a().b($$0, $$1, $$2, this);
+   }
+
+   public void a(dfb $$0, jh $$1, azs $$2) {
+      this.a().a($$0, $$1, this, $$2);
+   }
+
+   public boolean f() {
+      return this.a().i();
+   }
+
+   public void b(dfb $$0, jh $$1, azs $$2) {
+      this.a().b($$0, $$1, this, $$2);
+   }
+
+   public ezn c(deg $$0, jh $$1) {
+      return this.a().a($$0, $$1, this);
+   }
+
+   public dvj g() {
+      return this.a().b(this);
    }
 
    @Nullable
-   @Override
-   public lo h() {
-      return lq.l;
+   public lp h() {
+      return this.a().h();
    }
 
-   @Override
-   protected boolean a(dev $$0) {
-      return $$0.ac().b(der.U);
+   public boolean a(axq<erj> $$0) {
+      return this.a().k().a($$0);
    }
 
-   @Override
-   protected void a(dew $$0, jg $$1, dvd $$2) {
-      dsg $$3 = $$2.x() ? $$0.c_($$1) : null;
-      dhy.a($$2, $$0, $$1, $$3);
+   public boolean a(ju<erj> $$0) {
+      return $$0.a(this.a().k());
    }
 
-   @Override
-   public int b(dey $$0) {
-      return 4;
+   public boolean b(erj $$0) {
+      return this.a() == $$0;
    }
 
-   @Override
-   public dvd b(ere $$0) {
-      return dia.G.m().b(dmn.b, Integer.valueOf(e($$0)));
+   public float i() {
+      return this.a().c();
    }
 
-   @Override
-   public boolean a(erd $$0) {
-      return $$0 == erf.c || $$0 == erf.b;
+   public boolean a(deg $$0, jh $$1, erj $$2, jm $$3) {
+      return this.a().a(this, $$0, $$1, $$2, $$3);
    }
 
-   @Override
-   public int c(dey $$0) {
-      return 1;
+   public fah d(deg $$0, jh $$1) {
+      return this.a().b(this, $$0, $$1);
    }
 
-   @Override
-   public int a(dey $$0) {
-      return 5;
+   public jq<erj> j() {
+      return this.d.k();
    }
 
-   @Override
-   public boolean a(ere $$0, dea $$1, jg $$2, erd $$3, jl $$4) {
-      return $$4 == jl.a && !$$3.a(axf.a);
-   }
-
-   @Override
-   protected float c() {
-      return 100.0F;
-   }
-
-   @Override
-   public Optional<awj> j() {
-      return Optional.of(awk.di);
-   }
-
-   public static class a extends erk {
-      @Override
-      protected void a(dve.a<erd, ere> $$0) {
-         super.a($$0);
-         $$0.a(b);
-      }
-
-      @Override
-      public int d(ere $$0) {
-         return $$0.c(b);
-      }
-
-      @Override
-      public boolean c(ere $$0) {
-         return false;
-      }
-   }
-
-   public static class b extends erk {
-      @Override
-      public int d(ere $$0) {
-         return 8;
-      }
-
-      @Override
-      public boolean c(ere $$0) {
-         return true;
-      }
+   public Stream<axq<erj>> k() {
+      return this.d.k().c();
    }
 }

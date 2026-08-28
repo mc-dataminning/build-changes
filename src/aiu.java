@@ -1,51 +1,53 @@
-import org.jetbrains.annotations.VisibleForTesting;
+public class aiu implements zp<agv> {
+   public static final zg<wf, aiu> a = zp.a(aiu::a, aiu::new);
+   private final bsc b;
+   private final int c;
+   private final float d;
+   private final float e;
 
-public class aiu {
-   private static final double a = 4096.0;
-   private ezh b = ezh.c;
-
-   @VisibleForTesting
-   static long a(double $$0) {
-      return Math.round($$0 * 4096.0);
-   }
-
-   @VisibleForTesting
-   static double a(long $$0) {
-      return (double)$$0 / 4096.0;
-   }
-
-   public ezh a(long $$0, long $$1, long $$2) {
-      if ($$0 == 0L && $$1 == 0L && $$2 == 0L) {
-         return this.b;
-      } else {
-         double $$3 = $$0 == 0L ? this.b.d : a(a(this.b.d) + $$0);
-         double $$4 = $$1 == 0L ? this.b.e : a(a(this.b.e) + $$1);
-         double $$5 = $$2 == 0L ? this.b.f : a(a(this.b.f) + $$2);
-         return new ezh($$3, $$4, $$5);
-      }
-   }
-
-   public long a(ezh $$0) {
-      return a($$0.d) - a(this.b.d);
-   }
-
-   public long b(ezh $$0) {
-      return a($$0.e) - a(this.b.e);
-   }
-
-   public long c(ezh $$0) {
-      return a($$0.f) - a(this.b.f);
-   }
-
-   public ezh d(ezh $$0) {
-      return $$0.d(this.b);
-   }
-
-   public void e(ezh $$0) {
+   public aiu(bsc $$0, int $$1, float $$2, float $$3) {
       this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
+      this.e = $$3;
    }
 
-   public ezh a() {
+   private aiu(wf $$0) {
+      this.b = $$0.b(bsc.class);
+      this.c = $$0.l();
+      this.d = $$0.readFloat();
+      this.e = $$0.readFloat();
+   }
+
+   private void a(wf $$0) {
+      $$0.a(this.b);
+      $$0.c(this.c);
+      $$0.a(this.d);
+      $$0.a(this.e);
+   }
+
+   @Override
+   public zr<aiu> a() {
+      return agt.cg;
+   }
+
+   public void a(agv $$0) {
+      $$0.a(this);
+   }
+
+   public bsc b() {
       return this.b;
+   }
+
+   public int e() {
+      return this.c;
+   }
+
+   public float f() {
+      return this.d;
+   }
+
+   public float g() {
+      return this.e;
    }
 }

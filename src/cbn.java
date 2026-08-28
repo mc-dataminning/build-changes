@@ -1,17 +1,25 @@
 import java.util.EnumSet;
 
-public class cbn extends cbt {
-   private final bux a;
+public class cbn extends cby {
+   private final bvc a;
+   private final dfb b;
 
-   public cbn(bux $$0) {
+   public cbn(bvc $$0, dfb $$1) {
       this.a = $$0;
-      this.a(EnumSet.of(cbt.a.c));
-      $$0.P().a(true);
+      this.b = $$1;
+      this.a(EnumSet.of(cby.a.c));
    }
 
    @Override
    public boolean b() {
-      return this.a.bk() && this.a.b(axf.a) > this.a.dr() || this.a.by();
+      boolean $$0 = this.a.ax || this.a.aw;
+      if ($$0 && this.a.ar().a(axe.h)) {
+         jh $$1 = this.a.dx().d();
+         dvj $$2 = this.b.a_($$1);
+         return $$2.a(dig.qP) || $$2.g(this.b, $$1) == fae.a();
+      } else {
+         return false;
+      }
    }
 
    @Override
@@ -21,8 +29,6 @@ public class cbn extends cbt {
 
    @Override
    public void a() {
-      if (this.a.ea().i() < 0.8F) {
-         this.a.O().a();
-      }
+      this.a.O().a();
    }
 }

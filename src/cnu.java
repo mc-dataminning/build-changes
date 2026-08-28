@@ -1,62 +1,75 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
 
-public class cnu {
-   public static final int a = 1;
-   public static final int b = 5;
-   private static final int[] e = new int[]{0, 10, 70, 150, 250};
-   public static final Codec<cnu> c = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               lx.w.q().fieldOf("type").orElseGet(() -> cny.c).forGetter($$0x -> $$0x.f),
-               lx.x.q().fieldOf("profession").orElseGet(() -> cnw.b).forGetter($$0x -> $$0x.g),
-               Codec.INT.fieldOf("level").orElse(1).forGetter($$0x -> $$0x.h)
-            )
-            .apply($$0, cnu::new)
-   );
-   public static final zf<ws, cnu> d = zf.a(zd.a(ly.aw), $$0 -> $$0.f, zd.a(ly.av), $$0 -> $$0.g, zd.h, $$0 -> $$0.h, cnu::new);
-   private final cny f;
-   private final cnw g;
-   private final int h;
+public class cnu implements den {
+   private static final int a = 1200;
+   private int b;
 
-   public cnu(cny $$0, cnw $$1, int $$2) {
-      this.f = $$0;
-      this.g = $$1;
-      this.h = Math.max(1, $$2);
+   @Override
+   public int a(arn $$0, boolean $$1, boolean $$2) {
+      if ($$2 && $$0.ac().b(dex.e)) {
+         this.b--;
+         if (this.b > 0) {
+            return 0;
+         } else {
+            this.b = 1200;
+            com $$3 = $$0.j();
+            if ($$3 == null) {
+               return 0;
+            } else {
+               azs $$4 = $$0.A;
+               int $$5 = (8 + $$4.a(24)) * ($$4.h() ? -1 : 1);
+               int $$6 = (8 + $$4.a(24)) * ($$4.h() ? -1 : 1);
+               jh $$7 = $$3.dx().b($$5, 0, $$6);
+               int $$8 = 10;
+               if (!$$0.b($$7.u() - 10, $$7.w() - 10, $$7.u() + 10, $$7.w() + 10)) {
+                  return 0;
+               } else {
+                  if (bvw.a(bul.p, $$0, $$7)) {
+                     if ($$0.a($$7, 2)) {
+                        return this.a($$0, $$7);
+                     }
+
+                     if ($$0.a().a($$7, axm.n).b()) {
+                        return this.b($$0, $$7);
+                     }
+                  }
+
+                  return 0;
+               }
+            }
+         }
+      } else {
+         return 0;
+      }
    }
 
-   public cny a() {
-      return this.f;
+   private int a(arn $$0, jh $$1) {
+      int $$2 = 48;
+      if ($$0.y().a($$0x -> $$0x.a(cgi.n), $$1, 48, cge.b.b) > 4L) {
+         List<cgu> $$3 = $$0.a(cgu.class, new ezi($$1).c(48.0, 8.0, 48.0));
+         if ($$3.size() < 5) {
+            return this.a($$1, $$0);
+         }
+      }
+
+      return 0;
    }
 
-   public cnw b() {
-      return this.g;
+   private int b(arn $$0, jh $$1) {
+      int $$2 = 16;
+      List<cgu> $$3 = $$0.a(cgu.class, new ezi($$1).c(16.0, 8.0, 16.0));
+      return $$3.size() < 1 ? this.a($$1, $$0) : 0;
    }
 
-   public int c() {
-      return this.h;
-   }
-
-   public cnu a(cny $$0) {
-      return new cnu($$0, this.g, this.h);
-   }
-
-   public cnu a(cnw $$0) {
-      return new cnu(this.f, $$0, this.h);
-   }
-
-   public cnu a(int $$0) {
-      return new cnu(this.f, this.g, $$0);
-   }
-
-   public static int b(int $$0) {
-      return d($$0) ? e[$$0 - 1] : 0;
-   }
-
-   public static int c(int $$0) {
-      return d($$0) ? e[$$0] : 0;
-   }
-
-   public static boolean d(int $$0) {
-      return $$0 >= 1 && $$0 < 5;
+   private int a(jh $$0, arn $$1) {
+      cgu $$2 = bul.p.a($$1, buk.a);
+      if ($$2 == null) {
+         return 0;
+      } else {
+         $$2.a($$1, $$1.d_($$0), buk.a, null);
+         $$2.a($$0, 0.0F, 0.0F);
+         $$1.a_($$2);
+         return 1;
+      }
    }
 }

@@ -1,7 +1,3 @@
-public interface fbb<T> {
-   void a(faz<T> var1);
-
-   boolean a(jg var1, T var2);
-
-   int a();
+public interface fbb<T> extends fbh<T> {
+   boolean b(jh var1, T var2);
 }

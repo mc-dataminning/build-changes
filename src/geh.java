@@ -1,43 +1,59 @@
-import org.joml.Vector3f;
+public class geh extends ggp {
+   private final ggk a;
 
-public class geh extends gej<lk> {
-   private final Vector3f a;
-   private final Vector3f b;
-
-   protected geh(gbx $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, lk $$7, gfz $$8) {
-      super($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8);
-      float $$9 = this.r.i() * 0.4F + 0.6F;
-      this.a = this.a($$7.b(), $$9);
-      this.b = this.a($$7.c(), $$9);
-   }
-
-   private Vector3f a(Vector3f $$0, float $$1) {
-      return new Vector3f(this.a($$0.x(), $$1), this.a($$0.y(), $$1), this.a($$0.z(), $$1));
-   }
-
-   private void f(float $$0) {
-      float $$1 = ((float)this.s + $$0) / ((float)this.t + 1.0F);
-      Vector3f $$2 = new Vector3f(this.a).lerp(this.b, $$1);
-      this.v = $$2.x();
-      this.w = $$2.y();
-      this.x = $$2.z();
+   protected geh(
+      gci $$0,
+      double $$1,
+      double $$2,
+      double $$3,
+      float $$4,
+      float $$5,
+      float $$6,
+      double $$7,
+      double $$8,
+      double $$9,
+      float $$10,
+      ggk $$11,
+      float $$12,
+      int $$13,
+      float $$14,
+      boolean $$15
+   ) {
+      super($$0, $$1, $$2, $$3, 0.0, 0.0, 0.0);
+      this.B = 0.96F;
+      this.u = $$14;
+      this.C = true;
+      this.a = $$11;
+      this.j *= (double)$$4;
+      this.k *= (double)$$5;
+      this.l *= (double)$$6;
+      this.j += $$7;
+      this.k += $$8;
+      this.l += $$9;
+      float $$16 = $$0.A.i() * $$12;
+      this.v = $$16;
+      this.w = $$16;
+      this.x = $$16;
+      this.D *= 0.75F * $$10;
+      this.t = (int)((double)$$13 / ((double)$$0.A.i() * 0.8 + 0.2) * (double)$$10);
+      this.t = Math.max(this.t, 1);
+      this.b($$11);
+      this.n = $$15;
    }
 
    @Override
-   public void a(fdx $$0, fij $$1, float $$2) {
-      this.f($$2);
-      super.a($$0, $$1, $$2);
+   public gft b() {
+      return gft.b;
    }
 
-   public static class a implements gfh<lk> {
-      private final gfz a;
+   @Override
+   public float b(float $$0) {
+      return this.D * azk.a(((float)this.s + $$0) / (float)this.t * 32.0F, 0.0F, 1.0F);
+   }
 
-      public a(gfz $$0) {
-         this.a = $$0;
-      }
-
-      public gfe a(lk $$0, gbx $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new geh($$1, $$2, $$3, $$4, $$5, $$6, $$7, $$0, this.a);
-      }
+   @Override
+   public void a() {
+      super.a();
+      this.b(this.a);
    }
 }

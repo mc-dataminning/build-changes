@@ -1,37 +1,80 @@
 import com.mojang.serialization.Codec;
-import io.netty.buffer.ByteBuf;
-import javax.annotation.Nullable;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public record dl(uj c) {
-   public static final Codec<dl> a = vh.j.xmap(dl::new, dl::a);
-   public static final zf<ByteBuf, dl> b = zd.p.a(dl::new, dl::a);
+public record dl(dj.c b, dj.c c, dj.c d, dj.c e, dj.c f, dj.c g, dj.c h) {
+   public static final Codec<dl> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               dj.c.d.optionalFieldOf("x", dj.c.c).forGetter(dl::a),
+               dj.c.d.optionalFieldOf("y", dj.c.c).forGetter(dl::b),
+               dj.c.d.optionalFieldOf("z", dj.c.c).forGetter(dl::c),
+               dj.c.d.optionalFieldOf("speed", dj.c.c).forGetter(dl::d),
+               dj.c.d.optionalFieldOf("horizontal_speed", dj.c.c).forGetter(dl::e),
+               dj.c.d.optionalFieldOf("vertical_speed", dj.c.c).forGetter(dl::f),
+               dj.c.d.optionalFieldOf("fall_distance", dj.c.c).forGetter(dl::g)
+            )
+            .apply($$0, dl::new)
+   );
 
-   public boolean a(cvx $$0) {
-      cyg $$1 = $$0.a(kt.b, cyg.a);
-      return $$1.b(this.c);
+   public static dl a(dj.c $$0) {
+      return new dl(dj.c.c, dj.c.c, dj.c.c, $$0, dj.c.c, dj.c.c, dj.c.c);
    }
 
-   public boolean a(btz $$0) {
-      return this.a(b($$0));
+   public static dl b(dj.c $$0) {
+      return new dl(dj.c.c, dj.c.c, dj.c.c, dj.c.c, $$0, dj.c.c, dj.c.c);
    }
 
-   public boolean a(@Nullable vg $$0) {
-      return $$0 != null && uy.a(this.c, $$0, true);
+   public static dl c(dj.c $$0) {
+      return new dl(dj.c.c, dj.c.c, dj.c.c, dj.c.c, dj.c.c, $$0, dj.c.c);
    }
 
-   public static uj b(btz $$0) {
-      uj $$1 = $$0.f(new uj());
-      if ($$0 instanceof coh) {
-         cvx $$2 = ((coh)$$0).gk().f();
-         if (!$$2.f()) {
-            $$1.a("SelectedItem", $$2.a($$0.dZ()));
+   public static dl d(dj.c $$0) {
+      return new dl(dj.c.c, dj.c.c, dj.c.c, dj.c.c, dj.c.c, dj.c.c, $$0);
+   }
+
+   public boolean a(double $$0, double $$1, double $$2, double $$3) {
+      if (this.b.d($$0) && this.c.d($$1) && this.d.d($$2)) {
+         double $$4 = azk.f($$0, $$1, $$2);
+         if (!this.e.e($$4)) {
+            return false;
+         } else {
+            double $$5 = azk.e($$0, $$2);
+            if (!this.f.e($$5)) {
+               return false;
+            } else {
+               double $$6 = Math.abs($$1);
+               return !this.g.d($$6) ? false : this.h.d($$3);
+            }
          }
+      } else {
+         return false;
       }
-
-      return $$1;
    }
 
-   public uj a() {
+   public dj.c a() {
+      return this.b;
+   }
+
+   public dj.c b() {
       return this.c;
+   }
+
+   public dj.c c() {
+      return this.d;
+   }
+
+   public dj.c d() {
+      return this.e;
+   }
+
+   public dj.c e() {
+      return this.f;
+   }
+
+   public dj.c f() {
+      return this.g;
+   }
+
+   public dj.c g() {
+      return this.h;
    }
 }

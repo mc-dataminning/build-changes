@@ -1,26 +1,21 @@
-public record abd(jg c, int d) implements aar {
-   public static final zf<we, abd> a = aar.a(abd::a, abd::new);
-   public static final aar.b<abd> b = aar.a("debug/poi_ticket_count");
+public record abd(jh c) implements aas {
+   public static final zg<wf, abd> a = aas.a(abd::a, abd::new);
+   public static final aas.b<abd> b = aas.a("debug/poi_removed");
 
-   private abd(we $$0) {
-      this($$0.e(), $$0.readInt());
+   private abd(wf $$0) {
+      this($$0.e());
    }
 
-   private void a(we $$0) {
+   private void a(wf $$0) {
       $$0.a(this.c);
-      $$0.q(this.d);
    }
 
    @Override
-   public aar.b<abd> a() {
+   public aas.b<abd> a() {
       return b;
    }
 
-   public jg b() {
+   public jh b() {
       return this.c;
-   }
-
-   public int c() {
-      return this.d;
    }
 }

@@ -1,74 +1,42 @@
-import com.google.common.hash.Hashing;
-import javax.annotation.Nullable;
+public class fqc extends fra {
+   private static final int a = 8;
+   private static final int b = 210;
+   private static final xi c = xi.c("credits_and_attribution.screen.title");
+   private static final xi d = xi.c("credits_and_attribution.button.credits");
+   private static final xi s = xi.c("credits_and_attribution.button.attribution");
+   private static final xi u = xi.c("credits_and_attribution.button.licenses");
+   private final fra v;
+   private final fow w = new fow(this);
 
-public class fqc implements AutoCloseable {
-   private static final alh a = alh.b("textures/misc/unknown_server.png");
-   private static final int b = 64;
-   private static final int c = 64;
-   private final gxt d;
-   private final alh e;
-   @Nullable
-   private gxf f;
-   private boolean g;
-
-   private fqc(gxt $$0, alh $$1) {
-      this.d = $$0;
-      this.e = $$1;
-   }
-
-   public static fqc a(gxt $$0, String $$1) {
-      return new fqc($$0, alh.b("worlds/" + ad.a($$1, alh::b) + "/" + Hashing.sha1().hashUnencodedChars($$1) + "/icon"));
-   }
-
-   public static fqc b(gxt $$0, String $$1) {
-      return new fqc($$0, alh.b("servers/" + Hashing.sha1().hashUnencodedChars($$1) + "/icon"));
-   }
-
-   public void a(fct $$0) {
-      if ($$0.a() == 64 && $$0.b() == 64) {
-         try {
-            this.c();
-            if (this.f == null) {
-               this.f = new gxf($$0);
-            } else {
-               this.f.a($$0);
-               this.f.e();
-            }
-
-            this.d.a(this.e, this.f);
-         } catch (Throwable var3) {
-            $$0.close();
-            this.a();
-            throw var3;
-         }
-      } else {
-         $$0.close();
-         throw new IllegalArgumentException("Icon must be 64x64, but was " + $$0.a() + "x" + $$0.b());
-      }
-   }
-
-   public void a() {
-      this.c();
-      if (this.f != null) {
-         this.d.b(this.e);
-         this.f.close();
-         this.f = null;
-      }
-   }
-
-   public alh b() {
-      return this.f != null ? this.e : a;
+   public fqc(fra $$0) {
+      super(c);
+      this.v = $$0;
    }
 
    @Override
-   public void close() {
-      this.a();
-      this.g = true;
+   protected void aR_() {
+      this.w.a(c, this.p);
+      fpa $$0 = this.w.c(fpa.d()).a(8);
+      $$0.c().b();
+      $$0.a(flh.a(d, $$0x -> this.m()).a(210).a());
+      $$0.a(flh.a(s, fpx.b(this, ayg.d)).a(210).a());
+      $$0.a(flh.a(u, fpx.b(this, ayg.e)).a(210).a());
+      this.w.b(flh.a(xh.d, $$0x -> this.d()).a(200).a());
+      this.w.a();
+      this.w.a(this::c);
    }
 
-   private void c() {
-      if (this.g) {
-         throw new IllegalStateException("Icon already closed");
-      }
+   @Override
+   protected void c() {
+      this.w.a();
+   }
+
+   private void m() {
+      this.m.a(new frd(false, () -> this.m.a(this)));
+   }
+
+   @Override
+   public void d() {
+      this.m.a(this.v);
    }
 }

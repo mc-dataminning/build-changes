@@ -1,20 +1,11 @@
-public record aai(aqy b) implements zo<aah> {
-   public static final zf<we, aai> a = zo.a(aai::a, aai::new);
+public interface aai extends acb {
+   void a(aal var1);
 
-   private aai(we $$0) {
-      this(new aqy($$0));
-   }
+   void a(aam var1);
 
-   private void a(we $$0) {
-      this.b.a($$0);
-   }
+   void a(aak var1);
 
-   @Override
-   public zq<aai> a() {
-      return aag.l;
-   }
+   void a(aan var1);
 
-   public void a(aah $$0) {
-      $$0.a(this);
-   }
+   void a(aaj var1);
 }

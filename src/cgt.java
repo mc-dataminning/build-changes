@@ -1,78 +1,90 @@
-import javax.annotation.Nullable;
+import java.util.Optional;
 
-public class cgt extends cgm {
-   private static final buc bY = bug.w.n().a(0.5F).b(0.665F);
+public interface cgt {
+   boolean t();
 
-   public cgt(bug<? extends cgt> $$0, dev $$1) {
-      super($$0, $$1);
+   void x(boolean var1);
+
+   void k(cwb var1);
+
+   void h(uk var1);
+
+   cwb X_();
+
+   awk y();
+
+   @Deprecated
+   static void a(bvc $$0, cwb $$1) {
+      $$1.b(ku.g, $$0.ao());
+      cyk.a(ku.X, $$1, $$1x -> {
+         if ($$0.gh()) {
+            $$1x.a("NoAI", $$0.gh());
+         }
+
+         if ($$0.bc()) {
+            $$1x.a("Silent", $$0.bc());
+         }
+
+         if ($$0.bd()) {
+            $$1x.a("NoGravity", $$0.bd());
+         }
+
+         if ($$0.co()) {
+            $$1x.a("Glowing", $$0.co());
+         }
+
+         if ($$0.cD()) {
+            $$1x.a("Invulnerable", $$0.cD());
+         }
+
+         $$1x.a("Health", $$0.eG());
+      });
    }
 
-   @Override
-   protected void D() {
-      this.bS.a(0, new cbn(this));
-      this.bS.a(1, new ccm(this, 2.0));
-      this.bS.a(2, new cbf(this, 1.0));
-      this.bS.a(3, new cdb(this, 1.25, $$0 -> $$0.a(axi.ab), false));
-      this.bS.a(4, new cbs(this, 1.25));
-      this.bS.a(5, new cdg(this, 1.0));
-      this.bS.a(6, new ccb(this, coh.class, 6.0F));
-      this.bS.a(7, new cco(this));
-   }
+   @Deprecated
+   static void a(bvc $$0, uk $$1) {
+      if ($$1.e("NoAI")) {
+         $$0.u($$1.q("NoAI"));
+      }
 
-   @Override
-   public boolean l(cvx $$0) {
-      return $$0.a(axi.ab);
-   }
+      if ($$1.e("Silent")) {
+         $$0.e($$1.q("Silent"));
+      }
 
-   public static bwc.a q() {
-      return cgm.gA().a(bwd.s, 10.0).a(bwd.v, 0.2F);
-   }
+      if ($$1.e("NoGravity")) {
+         $$0.f($$1.q("NoGravity"));
+      }
 
-   @Override
-   protected awj w() {
-      return awk.gc;
-   }
+      if ($$1.e("Glowing")) {
+         $$0.j($$1.q("Glowing"));
+      }
 
-   @Override
-   protected awj d(bsp $$0) {
-      return awk.ge;
-   }
+      if ($$1.e("Invulnerable")) {
+         $$0.n($$1.q("Invulnerable"));
+      }
 
-   @Override
-   protected awj o_() {
-      return awk.gd;
-   }
-
-   @Override
-   protected void b(jg $$0, dvd $$1) {
-      this.a(awk.gg, 0.15F, 1.0F);
-   }
-
-   @Override
-   protected float fi() {
-      return 0.4F;
-   }
-
-   @Override
-   public bry b(coh $$0, brx $$1) {
-      cvx $$2 = $$0.b($$1);
-      if ($$2.a(cwb.qz) && !this.p_()) {
-         $$0.a(awk.gf, 1.0F, 1.0F);
-         cvx $$3 = cwa.a($$2, $$0, cwb.qF.o());
-         $$0.a($$1, $$3);
-         return bry.a;
-      } else {
-         return super.b($$0, $$1);
+      if ($$1.b("Health", 99)) {
+         $$0.x($$1.j("Health"));
       }
    }
 
-   @Nullable
-   public cgt b(arm $$0, btq $$1) {
-      return bug.w.a($$0, buf.e);
-   }
+   static <T extends bva & cgt> Optional<bsd> a(com $$0, bsc $$1, T $$2) {
+      cwb $$3 = $$0.b($$1);
+      if ($$3.h() == cwf.qA && $$2.bM()) {
+         $$2.a($$2.y(), 1.0F, 1.0F);
+         cwb $$4 = $$2.X_();
+         $$2.k($$4);
+         cwb $$5 = cwe.a($$3, $$0, $$4, false);
+         $$0.a($$1, $$5);
+         dfb $$6 = $$2.dX();
+         if (!$$6.C) {
+            ao.k.a((aro)$$0, $$4);
+         }
 
-   @Override
-   public buc e(bvh $$0) {
-      return this.p_() ? bY : super.e($$0);
+         $$2.av();
+         return Optional.of(bsd.a);
+      } else {
+         return Optional.empty();
+      }
    }
 }

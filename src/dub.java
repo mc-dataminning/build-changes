@@ -1,16 +1,20 @@
-public class dub extends dsn {
-   public dub(jg $$0, dvd $$1) {
-      super(dsi.c, $$0, $$1);
+public class dub extends dsa {
+   public dub(jh $$0, dvj $$1) {
+      super(dso.B, $$0, $$1, dav.d);
    }
 
    @Override
-   protected void a(dev $$0, jg $$1, dvd $$2, int $$3, int $$4) {
-      super.a($$0, $$1, $$2, $$3, $$4);
-      if ($$3 != $$4) {
-         esm $$5 = esi.a($$0, $$2.c(dqm.c).g(), jl.b);
-         dhy $$6 = $$2.b();
-         $$0.a($$1, $$6, $$5);
-         $$0.a($$1.e(), $$6, $$5);
-      }
+   protected xi j() {
+      return xi.c("container.smoker");
+   }
+
+   @Override
+   protected int a(dtj $$0, cwb $$1) {
+      return super.a($$0, $$1) / 2;
+   }
+
+   @Override
+   protected cro a(int $$0, col $$1) {
+      return new ctp($$0, $$1, this, this.n);
    }
 }

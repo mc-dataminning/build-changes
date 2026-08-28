@@ -1,49 +1,85 @@
-import com.google.common.collect.Maps;
-import com.mojang.logging.LogUtils;
-import java.util.Map;
-import org.joml.Matrix4f;
-import org.joml.Quaternionf;
-import org.slf4j.Logger;
+import io.netty.buffer.ByteBuf;
+import java.util.Iterator;
 
-public class jf {
-   private static final Logger c = LogUtils.getLogger();
-   public static final Map<jl, j> a = ad.a(Maps.newEnumMap(jl.class), $$0 -> {
-      $$0.put(jl.d, j.a());
-      $$0.put(jl.f, new j(null, new Quaternionf().rotateY((float) (Math.PI / 2)), null, null));
-      $$0.put(jl.e, new j(null, new Quaternionf().rotateY((float) (-Math.PI / 2)), null, null));
-      $$0.put(jl.c, new j(null, new Quaternionf().rotateY((float) Math.PI), null, null));
-      $$0.put(jl.b, new j(null, new Quaternionf().rotateX((float) (-Math.PI / 2)), null, null));
-      $$0.put(jl.a, new j(null, new Quaternionf().rotateX((float) (Math.PI / 2)), null, null));
-   });
-   public static final Map<jl, j> b = ad.a(Maps.newEnumMap(jl.class), $$0 -> {
-      for (jl $$1 : jl.values()) {
-         $$0.put($$1, a.get($$1).b());
+public record jf(jh b, jh c) implements Iterable<jh> {
+   public static final zg<ByteBuf, jf> a = new zg<ByteBuf, jf>() {
+      public jf a(ByteBuf $$0) {
+         return new jf(wf.b($$0), wf.b($$0));
       }
-   });
 
-   public static j a(j $$0) {
-      Matrix4f $$1 = new Matrix4f().translation(0.5F, 0.5F, 0.5F);
-      $$1.mul($$0.c());
-      $$1.translate(-0.5F, -0.5F, -0.5F);
-      return new j($$1);
+      public void a(ByteBuf $$0, jf $$1) {
+         wf.a($$0, $$1.f());
+         wf.a($$0, $$1.g());
+      }
+   };
+
+   public jf(final jh b, final jh c) {
+      this.b = jh.a(b, c);
+      this.c = jh.b(b, c);
    }
 
-   public static j b(j $$0) {
-      Matrix4f $$1 = new Matrix4f().translation(-0.5F, -0.5F, -0.5F);
-      $$1.mul($$0.c());
-      $$1.translate(0.5F, 0.5F, 0.5F);
-      return new j($$1);
+   public static jf a(jh $$0) {
+      return new jf($$0, $$0);
    }
 
-   public static j a(j $$0, jl $$1) {
-      jl $$2 = jl.a($$0.c(), $$1);
-      j $$3 = $$0.b();
-      if ($$3 == null) {
-         c.debug("Failed to invert transformation {}", $$0);
-         return j.a();
+   public static jf a(jh $$0, jh $$1) {
+      return new jf($$0, $$1);
+   }
+
+   public jf b(jh $$0) {
+      return new jf(jh.a(this.b, $$0), jh.b(this.c, $$0));
+   }
+
+   public boolean a() {
+      return this.b.equals(this.c);
+   }
+
+   public boolean c(jh $$0) {
+      return $$0.u() >= this.b.u() && $$0.v() >= this.b.v() && $$0.w() >= this.b.w() && $$0.u() <= this.c.u() && $$0.v() <= this.c.v() && $$0.w() <= this.c.w();
+   }
+
+   public ezi b() {
+      return ezi.a(this.b, this.c);
+   }
+
+   @Override
+   public Iterator<jh> iterator() {
+      return jh.c(this.b, this.c).iterator();
+   }
+
+   public int c() {
+      return this.c.u() - this.b.u() + 1;
+   }
+
+   public int d() {
+      return this.c.v() - this.b.v() + 1;
+   }
+
+   public int e() {
+      return this.c.w() - this.b.w() + 1;
+   }
+
+   public jf a(jm $$0, int $$1) {
+      if ($$1 == 0) {
+         return this;
       } else {
-         j $$4 = b.get($$1).a($$3).a(a.get($$2));
-         return a($$4);
+         return $$0.f() == jm.b.a ? a(this.b, jh.b(this.b, this.c.a($$0, $$1))) : a(jh.a(this.b.a($$0, $$1), this.c), this.c);
       }
+   }
+
+   public jf b(jm $$0, int $$1) {
+      return $$1 == 0 ? this : new jf(this.b.a($$0, $$1), this.c.a($$0, $$1));
+   }
+
+   public jf a(kl $$0) {
+      return new jf(this.b.a($$0), this.c.a($$0));
+   }
+
+   public jh f() {
+      return this.b;
+   }
+
+   public jh g() {
+      return this.c;
    }
 }

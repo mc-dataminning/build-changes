@@ -1,94 +1,56 @@
+import com.google.common.collect.Sets;
 import java.util.EnumSet;
-import javax.annotation.Nullable;
+import java.util.List;
+import java.util.Set;
 
-public class ccs extends cbt {
-   private final bux a;
-   private final clq b;
-   @Nullable
-   private buv c;
-   private int d = -1;
-   private final double e;
-   private int f;
-   private final int g;
-   private final int h;
-   private final float i;
-   private final float j;
+public class ccs<T extends cqb> extends cby {
+   private static final int a = 20;
+   private static final float b = 1.0F;
+   private final T c;
+   private int d;
 
-   public ccs(clq $$0, double $$1, int $$2, float $$3) {
-      this($$0, $$1, $$2, $$2, $$3);
-   }
-
-   public ccs(clq $$0, double $$1, int $$2, int $$3, float $$4) {
-      if (!($$0 instanceof buv)) {
-         throw new IllegalArgumentException("ArrowAttackGoal requires Mob implements RangedAttackMob");
-      } else {
-         this.b = $$0;
-         this.a = (bux)$$0;
-         this.e = $$1;
-         this.g = $$2;
-         this.h = $$3;
-         this.i = $$4;
-         this.j = $$4 * $$4;
-         this.a(EnumSet.of(cbt.a.a, cbt.a.b));
-      }
+   public ccs(T $$0) {
+      this.c = $$0;
+      this.a(EnumSet.of(cby.a.a));
    }
 
    @Override
    public boolean b() {
-      buv $$0 = this.a.m();
-      if ($$0 != null && $$0.bM()) {
-         this.c = $$0;
-         return true;
-      } else {
-         return false;
-      }
+      return this.c.m() == null && !this.c.cZ() && this.c.gL() && !this.c.gI().a() && !((arn)this.c.dX()).c(this.c.dx());
    }
 
    @Override
    public boolean c() {
-      return this.b() || this.c.bM() && !this.a.P().m();
-   }
-
-   @Override
-   public void e() {
-      this.c = null;
-      this.f = 0;
-      this.d = -1;
-   }
-
-   @Override
-   public boolean V_() {
-      return true;
+      return this.c.gL() && !this.c.gI().a() && this.c.dX() instanceof arn && !((arn)this.c.dX()).c(this.c.dx());
    }
 
    @Override
    public void a() {
-      double $$0 = this.a.i(this.c.dC(), this.c.dE(), this.c.dI());
-      boolean $$1 = this.a.Q().a(this.c);
-      if ($$1) {
-         this.f++;
-      } else {
-         this.f = 0;
-      }
-
-      if (!($$0 > (double)this.j) && this.f >= 5) {
-         this.a.P().o();
-      } else {
-         this.a.P().a(this.c, this.e);
-      }
-
-      this.a.K().a(this.c, 30.0F, 30.0F);
-      if (--this.d == 0) {
-         if (!$$1) {
-            return;
+      if (this.c.gL()) {
+         cqa $$0 = this.c.gI();
+         if (this.c.ag > this.d) {
+            this.d = this.c.ag + 20;
+            this.a($$0);
          }
 
-         float $$2 = (float)Math.sqrt($$0) / this.i;
-         float $$3 = azj.a($$2, 0.1F, 1.0F);
-         this.b.a(this.c, $$3);
-         this.d = azj.d($$2 * (float)(this.h - this.g) + (float)this.g);
-      } else if (this.d < 0) {
-         this.d = azj.a(azj.d(Math.sqrt($$0) / (double)this.i, (double)this.g, (double)this.h));
+         if (!this.c.gq()) {
+            ezn $$1 = cfv.a(this.c, 15, 4, ezn.c($$0.s()), (float) (Math.PI / 2));
+            if ($$1 != null) {
+               this.c.P().a($$1.d, $$1.e, $$1.f, 1.0);
+            }
+         }
+      }
+   }
+
+   private void a(cqa $$0) {
+      if ($$0.u()) {
+         Set<cqb> $$1 = Sets.newHashSet();
+         List<cqb> $$2 = this.c.dX().a(cqb.class, this.c.cS().g(16.0), $$1x -> !$$1x.gL() && cqc.a($$1x, $$0));
+         $$1.addAll($$2);
+
+         for (cqb $$3 : $$1) {
+            $$0.a($$0.k(), $$3, null, true);
+         }
       }
    }
 }

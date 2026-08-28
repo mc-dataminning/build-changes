@@ -1,44 +1,19 @@
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
+import java.util.function.Function;
 
-public record dcl(kk d, Optional<ecg> e, eik f, Optional<jp<eaa>> g) implements dcd {
-   public static final MapCodec<dcl> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(
-               kk.f.optionalFieldOf("offset", kk.g).forGetter(dcl::b),
-               ecg.b.optionalFieldOf("predicate").forGetter(dcl::c),
-               eik.a.fieldOf("block_state").forGetter(dcl::d),
-               eaa.aj.optionalFieldOf("trigger_game_event").forGetter(dcl::e)
-            )
-            .apply($$0, dcl::new)
-   );
+public interface dcl {
+   Codec<dcl> b = ly.aw.q().dispatch(dcl::a, Function.identity());
 
-   @Override
-   public void a(arm $$0, int $$1, dbl $$2, btz $$3, ezh $$4) {
-      jg $$5 = jg.a((jz)$$4).a(this.d);
-      if (this.e.map($$2x -> $$2x.test($$0, $$5)).orElse(true) && $$0.b($$5, this.f.a($$3.ea(), $$5))) {
-         this.g.ifPresent($$3x -> $$0.a($$3, $$3x, $$5));
-      }
+   static MapCodec<? extends dcl> a(kd<MapCodec<? extends dcl>> $$0) {
+      kd.a($$0, "add", dcc.a);
+      kd.a($$0, "all_of", dcd.c.a);
+      kd.a($$0, "multiply", dco.a);
+      kd.a($$0, "remove_binomial", dcq.a);
+      return kd.a($$0, "set", dcv.a);
    }
 
-   @Override
-   public MapCodec<dcl> a() {
-      return a;
-   }
+   float a(int var1, azs var2, float var3);
 
-   public kk b() {
-      return this.d;
-   }
-
-   public Optional<ecg> c() {
-      return this.e;
-   }
-
-   public eik d() {
-      return this.f;
-   }
-
-   public Optional<jp<eaa>> e() {
-      return this.g;
-   }
+   MapCodec<? extends dcl> a();
 }

@@ -1,26 +1,42 @@
-public class ggr extends ggq {
-   private final fje d;
+public class ggr extends gfn {
+   private final bue a;
+   private int b;
+   private final int D;
+   private final lp E;
 
-   public ggr(fje $$0) {
-      this.d = $$0;
+   public ggr(gci $$0, bue $$1, lp $$2) {
+      this($$0, $$1, $$2, 3);
    }
 
-   private static float a(boolean $$0, boolean $$1) {
-      if ($$0 == $$1) {
-         return 0.0F;
-      } else {
-         return $$0 ? 1.0F : -1.0F;
-      }
+   public ggr(gci $$0, bue $$1, lp $$2, int $$3) {
+      this($$0, $$1, $$2, $$3, $$1.dA());
+   }
+
+   private ggr(gci $$0, bue $$1, lp $$2, int $$3, ezn $$4) {
+      super($$0, $$1.dC(), $$1.e(0.5), $$1.dI(), $$4.d, $$4.e, $$4.f);
+      this.a = $$1;
+      this.D = $$3;
+      this.E = $$2;
+      this.a();
    }
 
    @Override
-   public void a(boolean $$0, float $$1) {
-      this.a = new cof(this.d.v.e(), this.d.x.e(), this.d.w.e(), this.d.y.e(), this.d.z.e(), this.d.A.e(), this.d.B.e());
-      this.c = a(this.a.a(), this.a.b());
-      this.b = a(this.a.c(), this.a.d());
-      if ($$0) {
-         this.b *= $$1;
-         this.c *= $$1;
+   public void a() {
+      for (int $$0 = 0; $$0 < 16; $$0++) {
+         double $$1 = (double)(this.r.i() * 2.0F - 1.0F);
+         double $$2 = (double)(this.r.i() * 2.0F - 1.0F);
+         double $$3 = (double)(this.r.i() * 2.0F - 1.0F);
+         if (!($$1 * $$1 + $$2 * $$2 + $$3 * $$3 > 1.0)) {
+            double $$4 = this.a.c($$1 / 4.0);
+            double $$5 = this.a.e(0.5 + $$2 / 4.0);
+            double $$6 = this.a.f($$3 / 4.0);
+            this.c.a(this.E, false, $$4, $$5, $$6, $$1, $$2 + 0.2, $$3);
+         }
+      }
+
+      this.b++;
+      if (this.b >= this.D) {
+         this.k();
       }
    }
 }

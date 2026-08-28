@@ -1,64 +1,82 @@
-import it.unimi.dsi.fastutil.ints.IntSet;
-import java.util.UUID;
+import java.util.List;
 
-public class fuy extends fux<gcy.a> {
-   private static final xh C = xh.c("gui.chatReport.title");
-   private static final xh D = xh.c("gui.chatReport.select_chat");
-   private flr E;
-   private fkz F;
-   private fkz G;
+public class fuy extends fmn {
+   private static final fmu c = new fmu(ali.b("recipe_book/tab"), ali.b("recipe_book/tab_selected"));
+   private final fjp d;
+   private static final float e = 15.0F;
+   private float f;
 
-   private fuy(fqs $$0, gdf $$1, gcy.a $$2) {
-      super(C, $$0, $$1, $$2);
+   public fuy(fjp $$0) {
+      super(0, 0, 35, 27, false);
+      this.d = $$0;
+      this.a(c);
    }
 
-   public fuy(fqs $$0, gdf $$1, UUID $$2) {
-      this($$0, $$1, new gcy.a($$2, $$1.a().b()));
-   }
+   public void a(fit $$0, boolean $$1) {
+      fva.a $$2 = $$1 ? fva.a.b : fva.a.a;
 
-   public fuy(fqs $$0, gdf $$1, gcy $$2) {
-      this($$0, $$1, new gcy.a($$2, $$1.a().b()));
-   }
-
-   @Override
-   protected void D() {
-      this.F = this.z.a(fkz.a(D, $$0 -> this.m.a(new fva(this, this.y, this.A, $$0x -> {
-            this.A = $$0x;
-            this.F();
-         }))).a(280).a());
-      this.G = fkz.a(c, $$0 -> this.m.a(new fvd(this, this.A.i(), gde.a, $$0x -> {
-            this.A.a($$0x);
-            this.F();
-         }))).a(280).a();
-      this.z.a(foj.a(this.p, this.G, b));
-      this.E = this.a(280, 9 * 8, $$0 -> {
-         this.A.a($$0);
-         this.F();
-      });
-      this.z.a(foj.a(this.p, this.E, d, $$0 -> $$0.e(12)));
+      for (fva $$4 : $$0.a(this.d)) {
+         for (dar<?> $$5 : $$4.a($$2)) {
+            if ($$0.d($$5)) {
+               this.f = 15.0F;
+               return;
+            }
+         }
+      }
    }
 
    @Override
-   protected void F() {
-      IntSet $$0 = this.A.a();
-      if ($$0.isEmpty()) {
-         this.F.b(D);
-      } else {
-         this.F.b(xh.a("gui.chatReport.selected_chat", $$0.size()));
+   public void b(fku $$0, int $$1, int $$2, float $$3) {
+      if (this.a != null) {
+         if (this.f > 0.0F) {
+            float $$4 = 1.0F + 0.1F * (float)Math.sin((double)(this.f / 15.0F * (float) Math.PI));
+            $$0.c().a();
+            $$0.c().a((float)(this.D() + 8), (float)(this.E() + 12), 0.0F);
+            $$0.c().b(1.0F, $$4, 1.0F);
+            $$0.c().a((float)(-(this.D() + 8)), (float)(-(this.E() + 12)), 0.0F);
+         }
+
+         ali $$5 = this.a.a(true, this.b);
+         int $$6 = this.D();
+         if (this.b) {
+            $$6 -= 2;
+         }
+
+         $$0.a(gir::B, $$5, $$6, this.E(), this.g, this.h);
+         this.a($$0);
+         if (this.f > 0.0F) {
+            $$0.c().b();
+            this.f -= $$3;
+         }
+      }
+   }
+
+   private void a(fku $$0) {
+      List<cwb> $$1 = this.d.a();
+      int $$2 = this.b ? -2 : 0;
+      if ($$1.size() == 1) {
+         $$0.b($$1.get(0), this.D() + 9 + $$2, this.E() + 5);
+      } else if ($$1.size() == 2) {
+         $$0.b($$1.get(0), this.D() + 3 + $$2, this.E() + 5);
+         $$0.b($$1.get(1), this.D() + 14 + $$2, this.E() + 5);
+      }
+   }
+
+   public fjp b() {
+      return this.d;
+   }
+
+   public boolean a(fit $$0) {
+      List<fva> $$1 = $$0.a(this.d);
+      this.k = false;
+
+      for (fva $$2 : $$1) {
+         if ($$2.b() && $$2.d()) {
+            this.k = true;
+            break;
+         }
       }
 
-      gdd $$1 = this.A.i();
-      if ($$1 != null) {
-         this.G.b($$1.b());
-      } else {
-         this.G.b(c);
-      }
-
-      super.F();
-   }
-
-   @Override
-   public boolean b(double $$0, double $$1, int $$2) {
-      return super.b($$0, $$1, $$2) ? true : this.E.b($$0, $$1, $$2);
+      return this.k;
    }
 }

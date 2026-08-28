@@ -1,82 +1,181 @@
-public class frr extends frg {
-   private final dsq u;
-   private flg<dsq.a> v;
-   private flg<Boolean> w;
-   private flg<Boolean> x;
-   private dsq.a y = dsq.a.c;
-   private boolean z;
-   private boolean A;
+import java.util.stream.IntStream;
+import javax.annotation.Nullable;
+import org.joml.Vector3f;
 
-   public frr(dsq $$0) {
-      this.u = $$0;
+public abstract class frr extends fra {
+   protected final dty a;
+   private dtz c;
+   private final String[] d;
+   private final boolean s;
+   protected final dww b;
+   private int u;
+   private int v;
+   @Nullable
+   private foc w;
+
+   public frr(dty $$0, boolean $$1, boolean $$2) {
+      this($$0, $$1, $$2, xi.c("sign.edit"));
+   }
+
+   public frr(dty $$0, boolean $$1, boolean $$2, xi $$3) {
+      super($$3);
+      this.a = $$0;
+      this.c = $$0.a($$1);
+      this.s = $$1;
+      this.b = dpe.a($$0.m().b());
+      this.d = IntStream.range(0, 4).mapToObj($$1x -> this.c.a($$1x, $$2)).map(xi::getString).toArray(String[]::new);
    }
 
    @Override
-   ddv m() {
-      return this.u.b();
+   protected void aR_() {
+      this.c(flh.a(xh.d, $$0 -> this.E()).a(this.n / 2 - 100, this.o / 4 + 144, 200, 20).a());
+      this.w = new foc(() -> this.d[this.v], this::a, foc.a(this.m), foc.c(this.m), $$0 -> this.m.h.b($$0) <= this.a.c());
    }
 
    @Override
-   int D() {
-      return 135;
+   public void e() {
+      this.u++;
+      if (!this.D()) {
+         this.E();
+      }
+   }
+
+   private boolean D() {
+      return this.m != null && this.m.t != null && !this.a.n() && !this.a.b(this.m.t.cH());
    }
 
    @Override
-   protected void aS_() {
-      super.aS_();
-      this.v = this.c(flg.<dsq.a>a($$0 -> {
-         return switch ($$0) {
-            case a -> xh.c("advMode.mode.sequence");
-            case b -> xh.c("advMode.mode.auto");
-            case c -> xh.c("advMode.mode.redstone");
-         };
-      }).a(dsq.a.values()).a().a(this.y).a(this.n / 2 - 50 - 100 - 4, 165, 100, 20, xh.c("advMode.mode"), ($$0, $$1) -> this.y = $$1));
-      this.w = this.c(
-         flg.a(xh.c("advMode.mode.conditional"), xh.c("advMode.mode.unconditional"))
-            .a()
-            .a(this.z)
-            .a(this.n / 2 - 50, 165, 100, 20, xh.c("advMode.type"), ($$0, $$1) -> this.z = $$1)
-      );
-      this.x = this.c(
-         flg.a(xh.c("advMode.mode.autoexec.bat"), xh.c("advMode.mode.redstoneTriggered"))
-            .a()
-            .a(this.A)
-            .a(this.n / 2 + 50 + 4, 165, 100, 20, xh.c("advMode.triggering"), ($$0, $$1) -> this.A = $$1)
-      );
-      this.f(false);
-   }
-
-   private void f(boolean $$0) {
-      this.c.j = $$0;
-      this.s.j = $$0;
-      this.v.j = $$0;
-      this.w.j = $$0;
-      this.x.j = $$0;
-   }
-
-   public void F() {
-      ddv $$0 = this.u.b();
-      this.a.a($$0.m());
-      boolean $$1 = $$0.p();
-      this.y = this.u.t();
-      this.z = this.u.u();
-      this.A = this.u.d();
-      this.s.a($$1);
-      this.v.a(this.y);
-      this.w.a(this.z);
-      this.x.a(this.A);
-      this.c($$1);
-      this.f(true);
+   public boolean a(int $$0, int $$1, int $$2) {
+      if ($$0 == 265) {
+         this.v = this.v - 1 & 3;
+         this.w.f();
+         return true;
+      } else if ($$0 == 264 || $$0 == 257 || $$0 == 335) {
+         this.v = this.v + 1 & 3;
+         this.w.f();
+         return true;
+      } else {
+         return this.w.a($$0) ? true : super.a($$0, $$1, $$2);
+      }
    }
 
    @Override
-   public void a(fja $$0, int $$1, int $$2) {
-      super.a($$0, $$1, $$2);
-      this.f(true);
+   public boolean a(char $$0, int $$1) {
+      this.w.a($$0);
+      return true;
    }
 
    @Override
-   protected void a(ddv $$0) {
-      this.m.L().b(new aik(jg.a((jz)$$0.g()), this.a.a(), this.y, $$0.p(), this.z, this.A));
+   public void a(fku $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      $$0.d();
+      fcx.c();
+      $$0.a(this.p, this.l, this.n / 2, 40, 16777215);
+      this.d($$0);
+      $$0.d();
+      fcx.d();
+   }
+
+   @Override
+   public void b(fku $$0, int $$1, int $$2, float $$3) {
+      this.b($$0);
+   }
+
+   @Override
+   public void d() {
+      this.E();
+   }
+
+   @Override
+   public void j() {
+      gcj $$0 = this.m.L();
+      if ($$0 != null) {
+         $$0.b(new aiq(this.a.aB_(), this.s, this.d[0], this.d[1], this.d[2], this.d[3]));
+      }
+   }
+
+   @Override
+   public boolean k() {
+      return false;
+   }
+
+   protected abstract void c(fku var1);
+
+   protected abstract Vector3f m();
+
+   protected void a(fku $$0, dvj $$1) {
+      $$0.c().a((float)this.n / 2.0F, 90.0F, 50.0F);
+   }
+
+   private void d(fku $$0) {
+      $$0.c().a();
+      this.a($$0, this.a.m());
+      $$0.c().a();
+      this.c($$0);
+      $$0.c().b();
+      this.e($$0);
+      $$0.c().b();
+   }
+
+   private void e(fku $$0) {
+      $$0.c().a(0.0F, 0.0F, 4.0F);
+      Vector3f $$1 = this.m();
+      $$0.c().b($$1.x(), $$1.y(), $$1.z());
+      int $$2 = this.c.a() ? this.c.b().g() : glg.a(this.c);
+      boolean $$3 = this.u / 6 % 2 == 0;
+      int $$4 = this.w.g();
+      int $$5 = this.w.h();
+      int $$6 = 4 * this.a.b() / 2;
+      int $$7 = this.v * this.a.b() - $$6;
+
+      for (int $$8 = 0; $$8 < this.d.length; $$8++) {
+         String $$9 = this.d[$$8];
+         if ($$9 != null) {
+            if (this.p.a()) {
+               $$9 = this.p.a($$9);
+            }
+
+            int $$10 = -this.p.b($$9) / 2;
+            $$0.a(this.p, $$9, $$10, $$8 * this.a.b() - $$6, $$2, false);
+            if ($$8 == this.v && $$4 >= 0 && $$3) {
+               int $$11 = this.p.b($$9.substring(0, Math.max(Math.min($$4, $$9.length()), 0)));
+               int $$12 = $$11 - this.p.b($$9) / 2;
+               if ($$4 >= $$9.length()) {
+                  $$0.a(this.p, "_", $$12, $$7, $$2, false);
+               }
+            }
+         }
+      }
+
+      for (int $$13 = 0; $$13 < this.d.length; $$13++) {
+         String $$14 = this.d[$$13];
+         if ($$14 != null && $$13 == this.v && $$4 >= 0) {
+            int $$15 = this.p.b($$14.substring(0, Math.max(Math.min($$4, $$14.length()), 0)));
+            int $$16 = $$15 - this.p.b($$14) / 2;
+            if ($$3 && $$4 < $$14.length()) {
+               $$0.a($$16, $$7 - 1, $$16 + 1, $$7 + this.a.b(), axv.f($$2));
+            }
+
+            if ($$5 != $$4) {
+               int $$17 = Math.min($$4, $$5);
+               int $$18 = Math.max($$4, $$5);
+               int $$19 = this.p.b($$14.substring(0, $$17)) - this.p.b($$14) / 2;
+               int $$20 = this.p.b($$14.substring(0, $$18)) - this.p.b($$14) / 2;
+               int $$21 = Math.min($$19, $$20);
+               int $$22 = Math.max($$19, $$20);
+               $$0.a(gir.I(), $$21, $$7, $$22, $$7 + this.a.b(), -16776961);
+            }
+         }
+      }
+   }
+
+   private void a(String $$0) {
+      this.d[this.v] = $$0;
+      this.c = this.c.a(this.v, xi.b($$0));
+      this.a.a(this.c, this.s);
+   }
+
+   private void E() {
+      this.m.a(null);
    }
 }

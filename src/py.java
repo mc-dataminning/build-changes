@@ -1,13 +1,12 @@
 import java.util.concurrent.CompletableFuture;
 
-public class py extends qb<erd> {
-   public py(mg $$0, CompletableFuture<jr.a> $$1) {
-      super($$0, ly.D, $$1, $$0x -> $$0x.k().h());
+public class py extends qh<ejy> {
+   public py(mh $$0, CompletableFuture<js.a> $$1) {
+      super($$0, lz.aO, $$1);
    }
 
    @Override
-   protected void a(jr.a $$0) {
-      this.a(axf.a).a(erf.c, erf.b);
-      this.a(axf.b).a(erf.e, erf.d);
+   protected void a(js.a $$0) {
+      this.b(axf.a).a(ejz.a).a(ejz.b).a(ejz.c).a(ejz.d).a(ejz.e).a(ejz.f).a(ejz.g).a(ejz.h).a(ejz.i);
    }
 }

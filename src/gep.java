@@ -1,65 +1,82 @@
-public class gep extends gfm {
-   gep(gbx $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6) {
-      super($$0, $$1, $$2, $$3, $$4, $$5, $$6);
-   }
-
-   @Override
-   public gfi b() {
-      return gfi.b;
-   }
-
-   @Override
-   public void a(double $$0, double $$1, double $$2) {
-      this.a(this.n().d($$0, $$1, $$2));
-      this.l();
+public class gep extends ggp {
+   gep(gci $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6) {
+      super($$0, $$1, $$2, $$3, 0.0, 0.0, 0.0);
+      this.B = 0.7F;
+      this.u = 0.5F;
+      this.j *= 0.1F;
+      this.k *= 0.1F;
+      this.l *= 0.1F;
+      this.j += $$4 * 0.4;
+      this.k += $$5 * 0.4;
+      this.l += $$6 * 0.4;
+      float $$7 = (float)(Math.random() * 0.3F + 0.6F);
+      this.v = $$7;
+      this.w = $$7;
+      this.x = $$7;
+      this.D *= 0.75F;
+      this.t = Math.max((int)(6.0 / (Math.random() * 0.8 + 0.6)), 1);
+      this.n = false;
+      this.a();
    }
 
    @Override
    public float b(float $$0) {
-      float $$1 = ((float)this.s + $$0) / (float)this.t;
-      return this.D * (1.0F - $$1 * $$1 * 0.5F);
+      return this.D * azk.a(((float)this.s + $$0) / (float)this.t * 32.0F, 0.0F, 1.0F);
    }
 
    @Override
-   public int a(float $$0) {
-      float $$1 = ((float)this.s + $$0) / (float)this.t;
-      $$1 = azj.a($$1, 0.0F, 1.0F);
-      int $$2 = super.a($$0);
-      int $$3 = $$2 & 0xFF;
-      int $$4 = $$2 >> 16 & 0xFF;
-      $$3 += (int)($$1 * 15.0F * 16.0F);
-      if ($$3 > 240) {
-         $$3 = 240;
-      }
-
-      return $$3 | $$4 << 16;
+   public void a() {
+      super.a();
+      this.w *= 0.96F;
+      this.x *= 0.9F;
    }
 
-   public static class a implements gfh<lu> {
-      private final gfz a;
+   @Override
+   public gft b() {
+      return gft.b;
+   }
 
-      public a(gfz $$0) {
+   public static class a implements gfs<lv> {
+      private final ggk a;
+
+      public a(ggk $$0) {
          this.a = $$0;
       }
 
-      public gfe a(lu $$0, gbx $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         gep $$8 = new gep($$1, $$2, $$3, $$4, $$5, $$6, $$7);
+      public gfp a(lv $$0, gci $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         gep $$8 = new gep($$1, $$2, $$3, $$4, $$5, $$6 + 1.0, $$7);
+         $$8.a(20);
          $$8.a(this.a);
          return $$8;
       }
    }
 
-   public static class b implements gfh<lu> {
-      private final gfz a;
+   public static class b implements gfs<lv> {
+      private final ggk a;
 
-      public b(gfz $$0) {
+      public b(ggk $$0) {
          this.a = $$0;
       }
 
-      public gfe a(lu $$0, gbx $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+      public gfp a(lv $$0, gci $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         gep $$8 = new gep($$1, $$2, $$3, $$4, $$5, $$6, $$7);
+         $$8.v *= 0.3F;
+         $$8.w *= 0.8F;
+         $$8.a(this.a);
+         return $$8;
+      }
+   }
+
+   public static class c implements gfs<lv> {
+      private final ggk a;
+
+      public c(ggk $$0) {
+         this.a = $$0;
+      }
+
+      public gfp a(lv $$0, gci $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
          gep $$8 = new gep($$1, $$2, $$3, $$4, $$5, $$6, $$7);
          $$8.a(this.a);
-         $$8.d(0.5F);
          return $$8;
       }
    }

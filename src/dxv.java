@@ -1,18 +1,24 @@
-import it.unimi.dsi.fastutil.longs.LongSet;
-import java.util.Map;
-import javax.annotation.Nullable;
+import java.util.List;
+import java.util.function.Predicate;
 
-public interface dxv {
-   @Nullable
-   elz a(elr var1);
+public interface dxv<T> {
+   int a(T var1);
 
-   void a(elr var1, elz var2);
+   boolean a(Predicate<T> var1);
 
-   LongSet b(elr var1);
+   T a(int var1);
 
-   void a(elr var1, long var2);
+   void a(wf var1);
 
-   Map<elr, LongSet> h();
+   void b(wf var1);
 
-   void b(Map<elr, LongSet> var1);
+   int a();
+
+   int b();
+
+   dxv<T> a(dxw<T> var1);
+
+   public interface a {
+      <A> dxv<A> create(int var1, jv<A> var2, dxw<A> var3, List<A> var4);
+   }
 }

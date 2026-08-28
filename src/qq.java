@@ -2,59 +2,136 @@ import com.google.common.collect.ImmutableList;
 import com.mojang.datafixers.util.Pair;
 
 public class qq {
-   public static void a(qx<enb> $$0) {
-      jq<epr> $$1 = $$0.a(ly.aT);
-      jp<epr> $$2 = $$1.b(rf.y);
-      jp<epr> $$3 = $$1.b(rf.w);
-      jp<epr> $$4 = $$1.b(rf.z);
-      jp<epr> $$5 = $$1.b(rf.x);
-      jq<enb> $$6 = $$0.a(ly.aV);
-      jp<enb> $$7 = $$6.b(re.a);
-      re.a(
+   public static void a(qy<enh> $$0) {
+      jr<elb> $$1 = $$0.a(lz.aR);
+      jq<elb> $$2 = $$1.b(sj.s);
+      jr<epx> $$3 = $$0.a(lz.aT);
+      jq<epx> $$4 = $$3.b(rg.H);
+      jq<epx> $$5 = $$3.b(rg.I);
+      jr<enh> $$6 = $$0.a(lz.aV);
+      jq<enh> $$7 = $$6.b(rf.a);
+      rf.a(
          $$0,
-         "bastion/bridge/starting_pieces",
-         new enb(
+         "ancient_city/structures",
+         new enh(
             $$7,
             ImmutableList.of(
-               Pair.of(emz.b("bastion/bridge/starting_pieces/entrance", $$2), 1), Pair.of(emz.b("bastion/bridge/starting_pieces/entrance_face", $$3), 1)
+               Pair.of(enf.h(), 7),
+               Pair.of(enf.b("ancient_city/structures/barracks", $$4), 4),
+               Pair.of(enf.b("ancient_city/structures/chamber_1", $$4), 4),
+               Pair.of(enf.b("ancient_city/structures/chamber_2", $$4), 4),
+               Pair.of(enf.b("ancient_city/structures/chamber_3", $$4), 4),
+               Pair.of(enf.b("ancient_city/structures/sauna_1", $$4), 4),
+               Pair.of(enf.b("ancient_city/structures/small_statue", $$4), 4),
+               Pair.of(enf.b("ancient_city/structures/large_ruin_1", $$4), 1),
+               Pair.of(enf.b("ancient_city/structures/tall_ruin_1", $$4), 1),
+               Pair.of(enf.b("ancient_city/structures/tall_ruin_2", $$4), 1),
+               Pair.of(enf.b("ancient_city/structures/tall_ruin_3", $$4), 2),
+               Pair.of(enf.b("ancient_city/structures/tall_ruin_4", $$4), 2),
+               new Pair[]{
+                  Pair.of(
+                     enf.b(
+                        ImmutableList.of(
+                           enf.b("ancient_city/structures/camp_1", $$4),
+                           enf.b("ancient_city/structures/camp_2", $$4),
+                           enf.b("ancient_city/structures/camp_3", $$4)
+                        )
+                     ),
+                     1
+                  ),
+                  Pair.of(enf.b("ancient_city/structures/medium_ruin_1", $$4), 1),
+                  Pair.of(enf.b("ancient_city/structures/medium_ruin_2", $$4), 1),
+                  Pair.of(enf.b("ancient_city/structures/small_ruin_1", $$4), 1),
+                  Pair.of(enf.b("ancient_city/structures/small_ruin_2", $$4), 1),
+                  Pair.of(enf.b("ancient_city/structures/large_pillar_1", $$4), 1),
+                  Pair.of(enf.b("ancient_city/structures/medium_pillar_1", $$4), 1),
+                  Pair.of(enf.b(ImmutableList.of(enf.b("ancient_city/structures/ice_box_1"))), 1)
+               }
             ),
-            enb.a.b
+            enh.a.b
          )
       );
-      re.a($$0, "bastion/bridge/bridge_pieces", new enb($$7, ImmutableList.of(Pair.of(emz.b("bastion/bridge/bridge_pieces/bridge", $$4), 1)), enb.a.b));
-      re.a(
+      rf.a($$0, "ancient_city/sculk", new enh($$7, ImmutableList.of(Pair.of(enf.a($$2), 6), Pair.of(enf.h(), 1)), enh.a.b));
+      rf.a(
          $$0,
-         "bastion/bridge/legs",
-         new enb($$7, ImmutableList.of(Pair.of(emz.b("bastion/bridge/legs/leg_0", $$3), 1), Pair.of(emz.b("bastion/bridge/legs/leg_1", $$3), 1)), enb.a.b)
-      );
-      re.a(
-         $$0,
-         "bastion/bridge/walls",
-         new enb(
-            $$7,
-            ImmutableList.of(Pair.of(emz.b("bastion/bridge/walls/wall_base_0", $$5), 1), Pair.of(emz.b("bastion/bridge/walls/wall_base_1", $$5), 1)),
-            enb.a.b
-         )
-      );
-      re.a(
-         $$0,
-         "bastion/bridge/ramparts",
-         new enb(
-            $$7,
-            ImmutableList.of(Pair.of(emz.b("bastion/bridge/ramparts/rampart_0", $$5), 1), Pair.of(emz.b("bastion/bridge/ramparts/rampart_1", $$5), 1)),
-            enb.a.b
-         )
-      );
-      re.a($$0, "bastion/bridge/rampart_plates", new enb($$7, ImmutableList.of(Pair.of(emz.b("bastion/bridge/rampart_plates/plate_0", $$5), 1)), enb.a.b));
-      re.a(
-         $$0,
-         "bastion/bridge/connectors",
-         new enb(
+         "ancient_city/walls",
+         new enh(
             $$7,
             ImmutableList.of(
-               Pair.of(emz.b("bastion/bridge/connectors/back_bridge_top", $$3), 1), Pair.of(emz.b("bastion/bridge/connectors/back_bridge_bottom", $$3), 1)
+               Pair.of(enf.b("ancient_city/walls/intact_corner_wall_1", $$5), 1),
+               Pair.of(enf.b("ancient_city/walls/intact_intersection_wall_1", $$5), 1),
+               Pair.of(enf.b("ancient_city/walls/intact_lshape_wall_1", $$5), 1),
+               Pair.of(enf.b("ancient_city/walls/intact_horizontal_wall_1", $$5), 1),
+               Pair.of(enf.b("ancient_city/walls/intact_horizontal_wall_2", $$5), 1),
+               Pair.of(enf.b("ancient_city/walls/intact_horizontal_wall_stairs_1", $$5), 1),
+               Pair.of(enf.b("ancient_city/walls/intact_horizontal_wall_stairs_2", $$5), 1),
+               Pair.of(enf.b("ancient_city/walls/intact_horizontal_wall_stairs_3", $$5), 1),
+               Pair.of(enf.b("ancient_city/walls/intact_horizontal_wall_stairs_4", $$5), 4),
+               Pair.of(enf.b("ancient_city/walls/intact_horizontal_wall_passage_1", $$5), 3),
+               Pair.of(enf.b("ancient_city/walls/ruined_corner_wall_1", $$5), 1),
+               Pair.of(enf.b("ancient_city/walls/ruined_corner_wall_2", $$5), 1),
+               new Pair[]{
+                  Pair.of(enf.b("ancient_city/walls/ruined_horizontal_wall_stairs_1", $$5), 2),
+                  Pair.of(enf.b("ancient_city/walls/ruined_horizontal_wall_stairs_2", $$5), 2),
+                  Pair.of(enf.b("ancient_city/walls/ruined_horizontal_wall_stairs_3", $$5), 3),
+                  Pair.of(enf.b("ancient_city/walls/ruined_horizontal_wall_stairs_4", $$5), 3)
+               }
             ),
-            enb.a.b
+            enh.a.b
+         )
+      );
+      rf.a(
+         $$0,
+         "ancient_city/walls/no_corners",
+         new enh(
+            $$7,
+            ImmutableList.of(
+               Pair.of(enf.b("ancient_city/walls/intact_horizontal_wall_1", $$5), 1),
+               Pair.of(enf.b("ancient_city/walls/intact_horizontal_wall_2", $$5), 1),
+               Pair.of(enf.b("ancient_city/walls/intact_horizontal_wall_stairs_1", $$5), 1),
+               Pair.of(enf.b("ancient_city/walls/intact_horizontal_wall_stairs_2", $$5), 1),
+               Pair.of(enf.b("ancient_city/walls/intact_horizontal_wall_stairs_3", $$5), 1),
+               Pair.of(enf.b("ancient_city/walls/intact_horizontal_wall_stairs_4", $$5), 1),
+               Pair.of(enf.b("ancient_city/walls/intact_horizontal_wall_stairs_5", $$5), 1),
+               Pair.of(enf.b("ancient_city/walls/intact_horizontal_wall_bridge", $$5), 1)
+            ),
+            enh.a.b
+         )
+      );
+      rf.a(
+         $$0,
+         "ancient_city/city_center/walls",
+         new enh(
+            $$7,
+            ImmutableList.of(
+               Pair.of(enf.b("ancient_city/city_center/walls/bottom_1", $$4), 1),
+               Pair.of(enf.b("ancient_city/city_center/walls/bottom_2", $$4), 1),
+               Pair.of(enf.b("ancient_city/city_center/walls/bottom_left_corner", $$4), 1),
+               Pair.of(enf.b("ancient_city/city_center/walls/bottom_right_corner_1", $$4), 1),
+               Pair.of(enf.b("ancient_city/city_center/walls/bottom_right_corner_2", $$4), 1),
+               Pair.of(enf.b("ancient_city/city_center/walls/left", $$4), 1),
+               Pair.of(enf.b("ancient_city/city_center/walls/right", $$4), 1),
+               Pair.of(enf.b("ancient_city/city_center/walls/top", $$4), 1),
+               Pair.of(enf.b("ancient_city/city_center/walls/top_right_corner", $$4), 1),
+               Pair.of(enf.b("ancient_city/city_center/walls/top_left_corner", $$4), 1)
+            ),
+            enh.a.b
+         )
+      );
+      rf.a(
+         $$0,
+         "ancient_city/city/entrance",
+         new enh(
+            $$7,
+            ImmutableList.of(
+               Pair.of(enf.b("ancient_city/city/entrance/entrance_connector", $$4), 1),
+               Pair.of(enf.b("ancient_city/city/entrance/entrance_path_1", $$4), 1),
+               Pair.of(enf.b("ancient_city/city/entrance/entrance_path_2", $$4), 1),
+               Pair.of(enf.b("ancient_city/city/entrance/entrance_path_3", $$4), 1),
+               Pair.of(enf.b("ancient_city/city/entrance/entrance_path_4", $$4), 1),
+               Pair.of(enf.b("ancient_city/city/entrance/entrance_path_5", $$4), 1)
+            ),
+            enh.a.b
          )
       );
    }

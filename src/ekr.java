@@ -1,31 +1,30 @@
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.stream.Stream;
+import com.mojang.serialization.Codec;
 
-public class ekr extends eky {
-   public static final MapCodec<ekr> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(eaz.a.g.fieldOf("heightmap").forGetter($$0x -> $$0x.c)).apply($$0, ekr::new)
-   );
-   private final eaz.a c;
+public enum ekr implements bag {
+   a(jm.b, 1, "ceiling"),
+   b(jm.a, -1, "floor");
 
-   private ekr(eaz.a $$0) {
-      this.c = $$0;
+   public static final Codec<ekr> c = bag.a(ekr::values);
+   private final jm d;
+   private final int e;
+   private final String f;
+
+   private ekr(final jm $$0, final int $$1, final String $$2) {
+      this.d = $$0;
+      this.e = $$1;
+      this.f = $$2;
    }
 
-   public static ekr a(eaz.a $$0) {
-      return new ekr($$0);
+   public jm a() {
+      return this.d;
+   }
+
+   public int b() {
+      return this.e;
    }
 
    @Override
-   public Stream<jg> a_(ekw $$0, azr $$1, jg $$2) {
-      int $$3 = $$2.u();
-      int $$4 = $$2.w();
-      int $$5 = $$0.a(this.c, $$3, $$4);
-      return $$5 > $$0.c() ? Stream.of(new jg($$3, $$5, $$4)) : Stream.of();
-   }
-
-   @Override
-   public ekz<?> b() {
-      return ekz.k;
+   public String c() {
+      return this.f;
    }
 }

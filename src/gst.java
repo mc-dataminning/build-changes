@@ -1,17 +1,26 @@
-public class gst extends gsm<gvn, fze> {
-   public static final alh a = alh.b("textures/entity/trident_riptide.png");
-   private final gab b;
+public class gst extends gsx<gvt, fzh> {
+   private final gpi a;
 
-   public gst(gpv<gvn, fze> $$0, gax $$1) {
+   public gst(gqg<gvt, fzh> $$0, gpi $$1) {
       super($$0);
-      this.b = new gab($$1.a(gba.bR));
+      this.a = $$1;
    }
 
-   public void a(fdt $$0, ghw $$1, int $$2, gvn $$3, float $$4, float $$5) {
-      if ($$3.ag) {
-         fdx $$6 = $$1.getBuffer(this.b.a(a));
-         this.b.a($$3);
-         this.b.a($$0, $$6, $$2, gxj.d);
+   public void a(feb $$0, gih $$1, int $$2, gvt $$3, float $$4, float $$5) {
+      haf $$6 = $$3.b();
+      if ($$6 != null && $$3.g && !$$3.f) {
+         float $$7 = -0.6F;
+         float $$8 = 1.4F;
+         if ($$3.e) {
+            $$7 -= 0.2F * azk.a($$3.p * 0.6F) + 0.2F;
+            $$8 -= 0.09F * azk.a($$3.p * 0.6F);
+         }
+
+         $$0.a();
+         $$0.a(0.1F, $$8, $$7);
+         cwb $$9 = $$3.aW_();
+         this.a.a($$9, cvz.h, false, $$0, $$1, $$2, gxu.d, $$6);
+         $$0.b();
       }
    }
 }

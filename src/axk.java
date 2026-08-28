@@ -1,12 +1,10 @@
 public class axk {
-   public static final axp<cgc> a = a("acquirable_job_site");
-   public static final axp<cgc> b = a("village");
-   public static final axp<cgc> c = a("bee_home");
+   public static final axq<ckr> a = a("placeable");
 
    private axk() {
    }
 
-   private static axp<cgc> a(String $$0) {
-      return axp.a(ly.aa, alh.b($$0));
+   private static axq<ckr> a(String $$0) {
+      return axq.a(lz.X, ali.b($$0));
    }
 }

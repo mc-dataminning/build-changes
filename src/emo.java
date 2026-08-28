@@ -1,151 +1,92 @@
-import com.mojang.datafixers.Products.P5;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import com.mojang.serialization.codecs.RecordCodecBuilder.Instance;
-import com.mojang.serialization.codecs.RecordCodecBuilder.Mu;
-import java.util.Optional;
+import java.util.Locale;
 
-public abstract class emo {
-   public static final Codec<emo> b = lx.P.q().dispatch(emo::e, emp::codec);
-   private static final int a = 10387320;
-   private final kk c;
-   private final emo.c d;
-   private final float e;
-   private final int f;
-   private final Optional<emo.a> g;
+public interface emo {
+   emo a = a(eob.a::new, "MSCorridor");
+   emo b = a(eob.b::new, "MSCrossing");
+   emo c = a(eob.d::new, "MSRoom");
+   emo d = a(eob.e::new, "MSStairs");
+   emo e = a(eod.a::new, "NeBCr");
+   emo f = a(eod.b::new, "NeBEF");
+   emo g = a(eod.c::new, "NeBS");
+   emo h = a(eod.d::new, "NeCCS");
+   emo i = a(eod.e::new, "NeCTB");
+   emo j = a(eod.f::new, "NeCE");
+   emo k = a(eod.g::new, "NeSCSC");
+   emo l = a(eod.h::new, "NeSCLT");
+   emo m = a(eod.i::new, "NeSC");
+   emo n = a(eod.j::new, "NeSCRT");
+   emo o = a(eod.k::new, "NeCSR");
+   emo p = a(eod.l::new, "NeMT");
+   emo q = a(eod.o::new, "NeRC");
+   emo r = a(eod.p::new, "NeSR");
+   emo s = a(eod.q::new, "NeStart");
+   emo t = a(eop.a::new, "SHCC");
+   emo u = a(eop.b::new, "SHFC");
+   emo v = a(eop.c::new, "SH5C");
+   emo w = a(eop.d::new, "SHLT");
+   emo x = a(eop.e::new, "SHLi");
+   emo y = a(eop.g::new, "SHPR");
+   emo z = a(eop.h::new, "SHPH");
+   emo A = a(eop.i::new, "SHRT");
+   emo B = a(eop.j::new, "SHRC");
+   emo C = a(eop.l::new, "SHSD");
+   emo D = a(eop.m::new, "SHStart");
+   emo E = a(eop.n::new, "SHS");
+   emo F = a(eop.o::new, "SHSSD");
+   emo G = a(enz::new, "TeJP");
+   emo H = a(eoj.a::a, "ORP");
+   emo I = a(enw.a::new, "Iglu");
+   emo J = a(eol::new, "RUPO");
+   emo K = a(eor::new, "TeSH");
+   emo L = a(ens::new, "TeDP");
+   emo M = a(eoh.h::new, "OMB");
+   emo N = a(eoh.j::new, "OMCR");
+   emo O = a(eoh.k::new, "OMDXR");
+   emo P = a(eoh.l::new, "OMDXYR");
+   emo Q = a(eoh.m::new, "OMDYR");
+   emo R = a(eoh.n::new, "OMDYZR");
+   emo S = a(eoh.o::new, "OMDZR");
+   emo T = a(eoh.p::new, "OMEntry");
+   emo U = a(eoh.q::new, "OMPenthouse");
+   emo V = a(eoh.s::new, "OMSimple");
+   emo W = a(eoh.t::new, "OMSimpleT");
+   emo X = a(eoh.u::new, "OMWR");
+   emo Y = a(enu.a::new, "ECP");
+   emo Z = a(eot.i::new, "WMP");
+   emo aa = a(enq.a::new, "BTP");
+   emo ab = a(eon.a::new, "Shipwreck");
+   emo ac = a(eof.a::new, "NeFos");
+   emo ad = a(elt::new, "jigsaw");
 
-   protected static <S extends emo> P5<Mu<S>, kk, emo.c, Float, Integer, Optional<emo.a>> a(Instance<S> $$0) {
-      return $$0.group(
-         kk.v(16).optionalFieldOf("locate_offset", kk.g).forGetter(emo::f),
-         emo.c.e.optionalFieldOf("frequency_reduction_method", emo.c.a).forGetter(emo::g),
-         Codec.floatRange(0.0F, 1.0F).optionalFieldOf("frequency", 1.0F).forGetter(emo::h),
-         ays.l.fieldOf("salt").forGetter(emo::i),
-         emo.a.a.optionalFieldOf("exclusion_zone").forGetter(emo::j)
-      );
+   emb load(emn var1, uk var2);
+
+   private static emo a(emo $$0, String $$1) {
+      return kd.a(ly.Q, $$1.toLowerCase(Locale.ROOT), $$0);
    }
 
-   protected emo(kk $$0, emo.c $$1, float $$2, int $$3, Optional<emo.a> $$4) {
-      this.c = $$0;
-      this.d = $$1;
-      this.e = $$2;
-      this.f = $$3;
-      this.g = $$4;
+   private static emo a(emo.a $$0, String $$1) {
+      return a((emo)$$0, $$1);
    }
 
-   protected kk f() {
-      return this.c;
+   private static emo a(emo.b $$0, String $$1) {
+      return a((emo)$$0, $$1);
    }
 
-   protected emo.c g() {
-      return this.d;
-   }
-
-   protected float h() {
-      return this.e;
-   }
-
-   protected int i() {
-      return this.f;
-   }
-
-   protected Optional<emo.a> j() {
-      return this.g;
-   }
-
-   public boolean b(dxb $$0, int $$1, int $$2) {
-      return this.a($$0, $$1, $$2) && this.a($$1, $$2, $$0.d()) && this.c($$0, $$1, $$2);
-   }
-
-   public boolean a(int $$0, int $$1, long $$2) {
-      return !(this.e < 1.0F) || this.d.a($$2, this.f, $$0, $$1, this.e);
-   }
-
-   public boolean c(dxb $$0, int $$1, int $$2) {
-      return !this.g.isPresent() || !this.g.get().a($$0, $$1, $$2);
-   }
-
-   protected abstract boolean a(dxb var1, int var2, int var3);
-
-   public jg a(deb $$0) {
-      return new jg($$0.d(), 0, $$0.e()).a(this.f());
-   }
-
-   public abstract emp<?> e();
-
-   private static boolean a(long $$0, int $$1, int $$2, int $$3, float $$4) {
-      eby $$5 = new eby(new eba(0L));
-      $$5.a($$0, $$1, $$2, $$3);
-      return $$5.i() < $$4;
-   }
-
-   private static boolean b(long $$0, int $$1, int $$2, int $$3, float $$4) {
-      eby $$5 = new eby(new eba(0L));
-      $$5.c($$0, $$2, $$3);
-      return $$5.j() < (double)$$4;
-   }
-
-   private static boolean c(long $$0, int $$1, int $$2, int $$3, float $$4) {
-      eby $$5 = new eby(new eba(0L));
-      $$5.a($$0, $$2, $$3, 10387320);
-      return $$5.i() < $$4;
-   }
-
-   private static boolean d(long $$0, int $$1, int $$2, int $$3, float $$4) {
-      int $$5 = $$2 >> 4;
-      int $$6 = $$3 >> 4;
-      eby $$7 = new eby(new eba(0L));
-      $$7.b((long)($$5 ^ $$6 << 4) ^ $$0);
-      $$7.f();
-      return $$7.a((int)(1.0F / $$4)) == 0;
-   }
-
-   @Deprecated
-   public static record a(jp<elx> b, int c) {
-      public static final Codec<emo.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(ald.a(ly.aU, elx.a, false).fieldOf("other_set").forGetter(emo.a::a), Codec.intRange(1, 16).fieldOf("chunk_count").forGetter(emo.a::b))
-               .apply($$0, emo.a::new)
-      );
-
-      boolean a(dxb $$0, int $$1, int $$2) {
-         return $$0.a(this.b, $$1, $$2, this.c);
-      }
-
-      public jp<elx> a() {
-         return this.b;
-      }
-
-      public int b() {
-         return this.c;
-      }
-   }
-
-   @FunctionalInterface
-   public interface b {
-      boolean shouldGenerate(long var1, int var3, int var4, int var5, float var6);
-   }
-
-   public static enum c implements baf {
-      a("default", emo::a),
-      b("legacy_type_1", emo::d),
-      c("legacy_type_2", emo::c),
-      d("legacy_type_3", emo::b);
-
-      public static final Codec<emo.c> e = baf.a(emo.c::values);
-      private final String f;
-      private final emo.b g;
-
-      private c(final String $$0, final emo.b $$1) {
-         this.f = $$0;
-         this.g = $$1;
-      }
-
-      public boolean a(long $$0, int $$1, int $$2, int $$3, float $$4) {
-         return this.g.shouldGenerate($$0, $$1, $$2, $$3, $$4);
-      }
+   public interface a extends emo {
+      emb load(uk var1);
 
       @Override
-      public String c() {
-         return this.f;
+      default emb load(emn $$0, uk $$1) {
+         return this.load($$1);
+      }
+   }
+
+   public interface b extends emo {
+      emb load(eqa var1, uk var2);
+
+      @Override
+      default emb load(emn $$0, uk $$1) {
+         return this.load($$0.c(), $$1);
       }
    }
 }

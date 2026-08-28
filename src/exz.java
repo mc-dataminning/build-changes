@@ -1,53 +1,93 @@
-import com.google.common.collect.Sets;
+import com.google.common.collect.ImmutableSet;
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Set;
+import javax.annotation.Nullable;
 
-public record exz(eyd b, eyd c) implements eyd {
-   public static final MapCodec<exz> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(eye.a.fieldOf("n").forGetter(exz::c), eye.a.fieldOf("p").forGetter(exz::d)).apply($$0, exz::new)
-   );
-
-   @Override
-   public eyc b() {
-      return eye.d;
-   }
-
-   @Override
-   public int a(etw $$0) {
-      int $$1 = this.b.a($$0);
-      float $$2 = this.c.b($$0);
-      azr $$3 = $$0.b();
-      int $$4 = 0;
-
-      for (int $$5 = 0; $$5 < $$1; $$5++) {
-         if ($$3.i() < $$2) {
-            $$4++;
-         }
+public class exz implements eyb {
+   private static final String d = "block_entity";
+   private static final exz.a e = new exz.a() {
+      @Override
+      public vh a(euc $$0) {
+         dsm $$1 = $$0.c(ewy.h);
+         return $$1 != null ? $$1.b($$1.i().H_()) : null;
       }
 
-      return $$4;
+      @Override
+      public String a() {
+         return "block_entity";
+      }
+
+      @Override
+      public Set<ewv<?>> b() {
+         return ImmutableSet.of(ewy.h);
+      }
+   };
+   public static final exz a = new exz(e);
+   private static final Codec<exz.a> f = Codec.STRING.xmap($$0 -> {
+      if ($$0.equals("block_entity")) {
+         return e;
+      } else {
+         euc.b $$1 = euc.b.a($$0);
+         return b($$1);
+      }
+   }, exz.a::a);
+   public static final MapCodec<exz> b = RecordCodecBuilder.mapCodec($$0 -> $$0.group(f.fieldOf("target").forGetter($$0x -> $$0x.g)).apply($$0, exz::new));
+   public static final Codec<exz> c = f.xmap(exz::new, $$0 -> $$0.g);
+   private final exz.a g;
+
+   private static exz.a b(final euc.b $$0) {
+      return new exz.a() {
+         @Nullable
+         @Override
+         public vh a(euc $$0x) {
+            bue $$1 = $$0.c($$0.a());
+            return $$1 != null ? dm.b($$1) : null;
+         }
+
+         @Override
+         public String a() {
+            return $$0.name();
+         }
+
+         @Override
+         public Set<ewv<?>> b() {
+            return ImmutableSet.of($$0.a());
+         }
+      };
+   }
+
+   private exz(exz.a $$0) {
+      this.g = $$0;
    }
 
    @Override
-   public float b(etw $$0) {
-      return (float)this.a($$0);
+   public eya a() {
+      return eyc.c;
    }
 
-   public static exz a(int $$0, float $$1) {
-      return new exz(eya.a((float)$$0), eya.a($$1));
+   @Nullable
+   @Override
+   public vh a(euc $$0) {
+      return this.g.a($$0);
    }
 
    @Override
-   public Set<ewp<?>> a() {
-      return Sets.union(this.b.a(), this.c.a());
+   public Set<ewv<?>> b() {
+      return this.g.b();
    }
 
-   public eyd c() {
-      return this.b;
+   public static eyb a(euc.b $$0) {
+      return new exz(b($$0));
    }
 
-   public eyd d() {
-      return this.c;
+   interface a {
+      @Nullable
+      vh a(euc var1);
+
+      String a();
+
+      Set<ewv<?>> b();
    }
 }

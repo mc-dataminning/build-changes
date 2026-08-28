@@ -1,97 +1,89 @@
+import com.mojang.serialization.Codec;
+import it.unimi.dsi.fastutil.ints.IntArrayList;
+import it.unimi.dsi.fastutil.ints.IntList;
+import it.unimi.dsi.fastutil.ints.IntLists;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.function.Function;
+import java.util.stream.Stream;
+import javax.annotation.Nullable;
 
-public class ctn implements csb {
-   private final jy<cvx> b;
-   private final int c;
-   private final int d;
-   private final crj e;
+public class ctn {
+   private static final List<ctm> b = ae.a(new ArrayList<>(), $$0 -> {
+      a($$0, "contents", 0);
+      a($$0, "container.", 0, 54);
+      a($$0, "hotbar.", 0, 9);
+      a($$0, "inventory.", 9, 27);
+      a($$0, "enderchest.", 200, 27);
+      a($$0, "villager.", 300, 8);
+      a($$0, "horse.", 500, 15);
+      int $$1 = bum.a.a(98);
+      int $$2 = bum.b.a(98);
+      a($$0, "weapon", $$1);
+      a($$0, "weapon.mainhand", $$1);
+      a($$0, "weapon.offhand", $$2);
+      a($$0, "weapon.*", $$1, $$2);
+      $$1 = bum.f.a(100);
+      $$2 = bum.e.a(100);
+      int $$5 = bum.d.a(100);
+      int $$6 = bum.c.a(100);
+      int $$7 = bum.g.a(105);
+      a($$0, "armor.head", $$1);
+      a($$0, "armor.chest", $$2);
+      a($$0, "armor.legs", $$5);
+      a($$0, "armor.feet", $$6);
+      a($$0, "armor.body", $$7);
+      a($$0, "armor.*", $$1, $$2, $$5, $$6, $$7);
+      a($$0, "horse.saddle", 400);
+      a($$0, "horse.chest", 499);
+      a($$0, "player.cursor", 499);
+      a($$0, "player.crafting.", 500, 4);
+   });
+   public static final Codec<ctm> a = bag.b(() -> b.toArray(new ctm[0]));
+   private static final Function<String, ctm> c = bag.a(b.toArray(new ctm[0]), $$0 -> $$0);
 
-   public ctn(crj $$0, int $$1, int $$2) {
-      this($$0, $$1, $$2, jy.a($$1 * $$2, cvx.k));
+   private static ctm a(String $$0, int $$1) {
+      return ctm.a($$0, IntLists.singleton($$1));
    }
 
-   private ctn(crj $$0, int $$1, int $$2, jy<cvx> $$3) {
-      this.b = $$3;
-      this.e = $$0;
-      this.c = $$1;
-      this.d = $$2;
+   private static ctm a(String $$0, IntList $$1) {
+      return ctm.a($$0, IntLists.unmodifiable($$1));
    }
 
-   @Override
-   public int b() {
-      return this.b.size();
+   private static ctm a(String $$0, int... $$1) {
+      return ctm.a($$0, IntList.of($$1));
    }
 
-   @Override
-   public boolean c() {
-      for (cvx $$0 : this.b) {
-         if (!$$0.f()) {
-            return false;
-         }
+   private static void a(List<ctm> $$0, String $$1, int $$2) {
+      $$0.add(a($$1, $$2));
+   }
+
+   private static void a(List<ctm> $$0, String $$1, int $$2, int $$3) {
+      IntList $$4 = new IntArrayList($$3);
+
+      for (int $$5 = 0; $$5 < $$3; $$5++) {
+         int $$6 = $$2 + $$5;
+         $$0.add(a($$1 + $$5, $$6));
+         $$4.add($$6);
       }
 
-      return true;
+      $$0.add(a($$1 + "*", $$4));
    }
 
-   @Override
-   public cvx a(int $$0) {
-      return $$0 >= this.b() ? cvx.k : this.b.get($$0);
+   private static void a(List<ctm> $$0, String $$1, int... $$2) {
+      $$0.add(a($$1, $$2));
    }
 
-   @Override
-   public cvx b(int $$0) {
-      return brs.a(this.b, $$0);
+   @Nullable
+   public static ctm a(String $$0) {
+      return c.apply($$0);
    }
 
-   @Override
-   public cvx a(int $$0, int $$1) {
-      cvx $$2 = brs.a(this.b, $$0, $$1);
-      if (!$$2.f()) {
-         this.e.a(this);
-      }
-
-      return $$2;
+   public static Stream<String> a() {
+      return b.stream().map(bag::c);
    }
 
-   @Override
-   public void a(int $$0, cvx $$1) {
-      this.b.set($$0, $$1);
-      this.e.a(this);
-   }
-
-   @Override
-   public void e() {
-   }
-
-   @Override
-   public boolean a(coh $$0) {
-      return true;
-   }
-
-   @Override
-   public void a() {
-      this.b.clear();
-   }
-
-   @Override
-   public int g() {
-      return this.d;
-   }
-
-   @Override
-   public int aA_() {
-      return this.c;
-   }
-
-   @Override
-   public List<cvx> h() {
-      return List.copyOf(this.b);
-   }
-
-   @Override
-   public void fillStackedContents(com $$0) {
-      for (cvx $$1 : this.b) {
-         $$0.a($$1);
-      }
+   public static Stream<String> b() {
+      return b.stream().filter($$0 -> $$0.b() == 1).map(bag::c);
    }
 }

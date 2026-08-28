@@ -1,22 +1,22 @@
-public class gne extends gms<ckw, gtq> {
-   private static final alh a = alh.b("textures/entity/skeleton/bogged.png");
-   private static final alh b = alh.b("textures/entity/skeleton/bogged_overlay.png");
+public abstract class gne<T extends cmk, S extends gxc, M extends gbc<S>> extends gpb<T, S, M> {
+   private static final ali a = ali.b("textures/entity/zombie/zombie.png");
 
-   public gne(gnz.a $$0) {
-      super($$0, gba.x, gba.y, new fxi($$0.a(gba.w)));
-      this.a(new gsp<>(this, $$0.f(), gba.z, b));
+   protected gne(gok.a $$0, M $$1, M $$2, M $$3, M $$4, M $$5, M $$6) {
+      super($$0, $$1, $$2, 0.5F);
+      this.a(new gsn<>(this, $$3, $$4, $$5, $$6, $$0.h()));
    }
 
-   public alh a(gtq $$0) {
+   public ali a(S $$0) {
       return a;
    }
 
-   public gtq a() {
-      return new gtq();
+   public void a(T $$0, S $$1, float $$2) {
+      super.a($$0, $$1, $$2);
+      $$1.a = $$0.gj();
+      $$1.b = $$0.gy();
    }
 
-   public void a(ckw $$0, gtq $$1, float $$2) {
-      super.a($$0, $$1, $$2);
-      $$1.a = $$0.gz();
+   protected boolean b(S $$0) {
+      return super.a($$0) || $$0.b;
    }
 }

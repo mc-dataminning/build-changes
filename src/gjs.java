@@ -1,51 +1,90 @@
-import com.google.common.base.Splitter;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Objects;
-import java.util.Map.Entry;
-import java.util.function.Predicate;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
+import java.lang.reflect.Type;
 import javax.annotation.Nullable;
 
 public class gjs {
-   private static final Splitter a = Splitter.on(',');
-   private static final Splitter b = Splitter.on('=').limit(2);
+   public float[] a;
+   public final int b;
 
-   public static <O, S extends dvf<O, S>> Predicate<dvf<O, S>> a(dve<O, S> $$0, String $$1) {
-      Map<dwg<?>, Comparable<?>> $$2 = new HashMap<>();
+   public gjs(@Nullable float[] $$0, int $$1) {
+      this.a = $$0;
+      this.b = $$1;
+   }
 
-      for (String $$3 : a.split($$1)) {
-         Iterator<String> $$4 = b.split($$3).iterator();
-         if ($$4.hasNext()) {
-            String $$5 = $$4.next();
-            dwg<?> $$6 = $$0.a($$5);
-            if ($$6 != null && $$4.hasNext()) {
-               String $$7 = $$4.next();
-               Comparable<?> $$8 = a((dwg<Comparable<?>>)$$6, $$7);
-               if ($$8 == null) {
-                  throw new RuntimeException("Unknown value: '" + $$7 + "' for blockstate property: '" + $$5 + "' " + $$6.a());
-               }
+   public float a(int $$0) {
+      if (this.a == null) {
+         throw new NullPointerException("uvs");
+      } else {
+         int $$1 = this.d($$0);
+         return this.a[$$1 != 0 && $$1 != 1 ? 2 : 0];
+      }
+   }
 
-               $$2.put($$6, $$8);
-            } else if (!$$5.isEmpty()) {
-               throw new RuntimeException("Unknown blockstate property: '" + $$5 + "'");
-            }
+   public float b(int $$0) {
+      if (this.a == null) {
+         throw new NullPointerException("uvs");
+      } else {
+         int $$1 = this.d($$0);
+         return this.a[$$1 != 0 && $$1 != 3 ? 3 : 1];
+      }
+   }
+
+   private int d(int $$0) {
+      return ($$0 + this.b / 90) % 4;
+   }
+
+   public int c(int $$0) {
+      return ($$0 + 4 - this.b / 90) % 4;
+   }
+
+   public void a(float[] $$0) {
+      if (this.a == null) {
+         this.a = $$0;
+      }
+   }
+
+   protected static class a implements JsonDeserializer<gjs> {
+      private static final int a = 0;
+
+      public gjs a(JsonElement $$0, Type $$1, JsonDeserializationContext $$2) throws JsonParseException {
+         JsonObject $$3 = $$0.getAsJsonObject();
+         float[] $$4 = this.b($$3);
+         int $$5 = this.a($$3);
+         return new gjs($$4, $$5);
+      }
+
+      protected int a(JsonObject $$0) {
+         int $$1 = aza.a($$0, "rotation", 0);
+         if ($$1 >= 0 && $$1 % 90 == 0 && $$1 / 90 <= 3) {
+            return $$1;
+         } else {
+            throw new JsonParseException("Invalid rotation " + $$1 + " found, only 0/90/180/270 allowed");
          }
       }
 
-      return $$1x -> {
-         for (Entry<dwg<?>, Comparable<?>> $$2x : $$2.entrySet()) {
-            if (!Objects.equals($$1x.c($$2x.getKey()), $$2x.getValue())) {
-               return false;
+      @Nullable
+      private float[] b(JsonObject $$0) {
+         if (!$$0.has("uv")) {
+            return null;
+         } else {
+            JsonArray $$1 = aza.v($$0, "uv");
+            if ($$1.size() != 4) {
+               throw new JsonParseException("Expected 4 uv values, found: " + $$1.size());
+            } else {
+               float[] $$2 = new float[4];
+
+               for (int $$3 = 0; $$3 < $$2.length; $$3++) {
+                  $$2[$$3] = aza.e($$1.get($$3), "uv[" + $$3 + "]");
+               }
+
+               return $$2;
             }
          }
-
-         return true;
-      };
-   }
-
-   @Nullable
-   private static <T extends Comparable<T>> T a(dwg<T> $$0, String $$1) {
-      return $$0.b($$1).orElse(null);
+      }
    }
 }

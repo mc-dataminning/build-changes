@@ -1,19 +1,89 @@
-import javax.annotation.Nullable;
+import com.mojang.serialization.MapCodec;
+import java.util.function.BiFunction;
 
-public interface dnq {
-   default int a(arm $$0, btz $$1) {
-      return 0;
+public class dnq extends din implements dih {
+   public static final MapCodec<dnq> a = b(dnq::new);
+   public static final int b = 1;
+   public static final int c = 4;
+   public static final dwd d = dvz.R;
+   public static final dwj e = dvz.S;
+   private static final BiFunction<jm, Integer, fah> f = ae.a(
+      ($$0, $$1) -> {
+         fah[] $$2 = new fah[]{
+            die.a(8.0, 0.0, 8.0, 16.0, 3.0, 16.0),
+            die.a(8.0, 0.0, 0.0, 16.0, 3.0, 8.0),
+            die.a(0.0, 0.0, 0.0, 8.0, 3.0, 8.0),
+            die.a(0.0, 0.0, 8.0, 8.0, 3.0, 16.0)
+         };
+         fah $$3 = fae.a();
+
+         for (int $$4 = 0; $$4 < $$1; $$4++) {
+            int $$5 = Math.floorMod($$4 - $$0.e(), 4);
+            $$3 = fae.a($$3, $$2[$$5]);
+         }
+
+         return $$3.b();
+      }
+   );
+
+   @Override
+   public MapCodec<dnq> a() {
+      return a;
    }
 
-   @Nullable
-   esc a(arm var1, btz var2, jg var3);
-
-   default dnq.a b() {
-      return dnq.a.b;
+   protected dnq(dvi.d $$0) {
+      super($$0);
+      this.l(this.F.b().b(d, jm.c).b(e, Integer.valueOf(1)));
    }
 
-   public static enum a {
-      a,
-      b;
+   @Override
+   public dvj a(dvj $$0, dor $$1) {
+      return $$0.b(d, $$1.a($$0.c(d)));
+   }
+
+   @Override
+   public dvj a(dvj $$0, dna $$1) {
+      return $$0.a($$1.a($$0.c(d)));
+   }
+
+   @Override
+   public boolean a(dvj $$0, czs $$1) {
+      return !$$1.h() && $$1.n().a(this.j()) && $$0.c(e) < 4 ? true : super.a($$0, $$1);
+   }
+
+   @Override
+   public fah a(dvj $$0, deg $$1, jh $$2, ezs $$3) {
+      return f.apply($$0.c(d), $$0.c(e));
+   }
+
+   @Override
+   public dvj a(czs $$0) {
+      dvj $$1 = $$0.q().a_($$0.a());
+      return $$1.a(this) ? $$1.b(e, Integer.valueOf(Math.min(4, $$1.c(e) + 1))) : this.m().b(d, $$0.g().g());
+   }
+
+   @Override
+   protected void a(dvk.a<die, dvj> $$0) {
+      $$0.a(d, e);
+   }
+
+   @Override
+   public boolean b(dfe $$0, jh $$1, dvj $$2) {
+      return true;
+   }
+
+   @Override
+   public boolean a(dfb $$0, azs $$1, jh $$2, dvj $$3) {
+      return true;
+   }
+
+   @Override
+   public void a(arn $$0, azs $$1, jh $$2, dvj $$3) {
+      int $$4 = $$3.c(e);
+      if ($$4 < 4) {
+         $$0.a($$2, $$3.b(e, Integer.valueOf($$4 + 1)), 2);
+      } else {
+         a($$0, $$2, new cwb(this));
+      }
    }
 }

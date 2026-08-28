@@ -1,114 +1,127 @@
-import com.mojang.datafixers.DataFixer;
-import com.mojang.serialization.MapCodec;
-import java.io.IOException;
-import java.nio.file.Path;
-import java.util.Optional;
+import com.google.common.collect.ImmutableList;
+import java.util.Arrays;
 import java.util.concurrent.CompletableFuture;
-import java.util.function.Supplier;
 import javax.annotation.Nullable;
 
-public class dyj implements AutoCloseable {
-   public static final int d = 1493;
-   private final dyl a;
-   protected final DataFixer e;
-   @Nullable
-   private volatile elm b;
+public record dyj(dyg a, dye b, dye c, int d, dyh e) {
 
-   public dyj(dys $$0, Path $$1, DataFixer $$2, boolean $$3) {
-      this.e = $$2;
-      this.a = new dyl($$0, $$1, $$3);
+   public int a(dyg $$0) {
+      return $$0 == this.a ? 0 : this.c.a($$0);
    }
 
-   public boolean b(deb $$0, int $$1) {
-      return this.a.a($$0, $$1);
-   }
-
-   public uj a(alg<dev> $$0, Supplier<ete> $$1, uj $$2, Optional<alg<MapCodec<? extends dxa>>> $$3) {
-      int $$4 = a($$2);
-      if ($$4 == ab.b().d().c()) {
-         return $$2;
+   public CompletableFuture<dxf> a(dyl $$0, bae<arf> $$1, dxf $$2) {
+      if ($$2.j().d(this.a)) {
+         boy $$3 = bov.f.a($$2.f(), $$0.a().ag(), this.a.f());
+         return this.e.doWork($$0, this, $$1, $$2).thenApply($$1x -> this.a($$1x, $$3));
       } else {
-         try {
-            if ($$4 < 1493) {
-               $$2 = bas.c.a(this.e, $$2, $$4, 1493);
-               if ($$2.p("Level").q("hasLegacyStructureData")) {
-                  elm $$5 = this.a($$0, $$1);
-                  $$2 = $$5.a($$2);
+         return this.e.doWork($$0, this, $$1, $$2);
+      }
+   }
+
+   private dxf a(dxf $$0, @Nullable boy $$1) {
+      if ($$0 instanceof dxz $$2 && $$2.j().d(this.a)) {
+         $$2.a(this.a);
+      }
+
+      if ($$1 != null) {
+         $$1.finish();
+      }
+
+      return $$0;
+   }
+
+   public static class a {
+      private final dyg a;
+      @Nullable
+      private final dyj b;
+      private dyg[] c;
+      private int d = -1;
+      private dyh e = dyi::a;
+
+      protected a(dyg $$0) {
+         if ($$0.c() != $$0) {
+            throw new IllegalArgumentException("Not starting with the first status: " + $$0);
+         } else {
+            this.a = $$0;
+            this.b = null;
+            this.c = new dyg[0];
+         }
+      }
+
+      protected a(dyg $$0, dyj $$1) {
+         if ($$1.a.b() != $$0.b() - 1) {
+            throw new IllegalArgumentException("Out of order status: " + $$0);
+         } else {
+            this.a = $$0;
+            this.b = $$1;
+            this.c = new dyg[]{$$1.a};
+         }
+      }
+
+      public dyj.a a(dyg $$0, int $$1) {
+         if ($$0.a(this.a)) {
+            throw new IllegalArgumentException("Status " + $$0 + " can not be required by " + this.a);
+         } else {
+            dyg[] $$2 = this.c;
+            int $$3 = $$1 + 1;
+            if ($$3 > $$2.length) {
+               this.c = new dyg[$$3];
+               Arrays.fill(this.c, $$0);
+            }
+
+            for (int $$4 = 0; $$4 < Math.min($$3, $$2.length); $$4++) {
+               this.c[$$4] = dyg.a($$2[$$4], $$0);
+            }
+
+            return this;
+         }
+      }
+
+      public dyj.a a(int $$0) {
+         this.d = $$0;
+         return this;
+      }
+
+      public dyj.a a(dyh $$0) {
+         this.e = $$0;
+         return this;
+      }
+
+      public dyj a() {
+         return new dyj(this.a, new dye(ImmutableList.copyOf(this.c)), new dye(ImmutableList.copyOf(this.b())), this.d, this.e);
+      }
+
+      private dyg[] b() {
+         if (this.b == null) {
+            return this.c;
+         } else {
+            int $$0 = this.a(this.b.a);
+            dye $$1 = this.b.c;
+            dyg[] $$2 = new dyg[Math.max($$0 + $$1.b(), this.c.length)];
+
+            for (int $$3 = 0; $$3 < $$2.length; $$3++) {
+               int $$4 = $$3 - $$0;
+               if ($$4 < 0 || $$4 >= $$1.b()) {
+                  $$2[$$3] = this.c[$$3];
+               } else if ($$3 >= this.c.length) {
+                  $$2[$$3] = $$1.a($$4);
+               } else {
+                  $$2[$$3] = dyg.a(this.c[$$3], $$1.a($$4));
                }
             }
 
-            a($$2, $$0, $$3);
-            $$2 = bas.c.a(this.e, $$2, Math.max(1493, $$4));
-            b($$2);
-            uy.e($$2);
             return $$2;
-         } catch (Exception var9) {
-            o $$7 = o.a(var9, "Updated chunk");
-            p $$8 = $$7.a("Updated chunk details");
-            $$8.a("Data version", $$4);
-            throw new z($$7);
          }
       }
-   }
 
-   private elm a(alg<dev> $$0, Supplier<ete> $$1) {
-      elm $$2 = this.b;
-      if ($$2 == null) {
-         synchronized (this) {
-            $$2 = this.b;
-            if ($$2 == null) {
-               this.b = $$2 = elm.a($$0, $$1.get());
+      private int a(dyg $$0) {
+         for (int $$1 = this.c.length - 1; $$1 >= 0; $$1--) {
+            if (this.c[$$1].a($$0)) {
+               return $$1;
             }
          }
+
+         return 0;
       }
-
-      return $$2;
-   }
-
-   public static void a(uj $$0, alg<dev> $$1, Optional<alg<MapCodec<? extends dxa>>> $$2) {
-      uj $$3 = new uj();
-      $$3.a("dimension", $$1.a().toString());
-      $$2.ifPresent($$1x -> $$3.a("generator", $$1x.a().toString()));
-      $$0.a("__context", $$3);
-   }
-
-   private static void b(uj $$0) {
-      $$0.r("__context");
-   }
-
-   public static int a(uj $$0) {
-      return uy.b($$0, -1);
-   }
-
-   public CompletableFuture<Optional<uj>> d(deb $$0) {
-      return this.a.a($$0);
-   }
-
-   public CompletableFuture<Void> a(deb $$0, Supplier<uj> $$1) {
-      this.e($$0);
-      return this.a.a($$0, $$1);
-   }
-
-   protected void e(deb $$0) {
-      if (this.b != null) {
-         this.b.a($$0.a());
-      }
-   }
-
-   public void o() {
-      this.a.a(true).join();
-   }
-
-   @Override
-   public void close() throws IOException {
-      this.a.close();
-   }
-
-   public dyi p() {
-      return this.a;
-   }
-
-   protected dys q() {
-      return this.a.a();
    }
 }

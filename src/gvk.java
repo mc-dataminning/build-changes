@@ -1,4 +1,3 @@
-public class gvk extends gva {
-   public float a;
-   public int b;
+public class gvk extends gun {
+   public long a;
 }

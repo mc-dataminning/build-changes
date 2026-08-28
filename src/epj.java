@@ -1,22 +1,18 @@
-import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
+import com.mojang.serialization.Codec;
 
-public class epj extends epq {
-   public final axp<dhy> a;
-   public static final MapCodec<epj> b = axp.b(ly.f).xmap(epj::new, $$0 -> $$0.a).fieldOf("value");
+public enum epj implements bag {
+   a("ignore_waterlogging"),
+   b("apply_waterlogging");
 
-   public epj(axp<dhy> $$0) {
-      this.a = $$0;
-   }
+   public static Codec<epj> c = bag.b(epj::values);
+   private final String d;
 
-   @Nullable
-   @Override
-   public ept.c a(dey $$0, jg $$1, jg $$2, ept.c $$3, ept.c $$4, epp $$5) {
-      return eef.a(this.a).test($$0.a_($$4.a())) ? $$4 : null;
+   private epj(final String $$0) {
+      this.d = $$0;
    }
 
    @Override
-   protected eps<?> a() {
-      return eps.n;
+   public String c() {
+      return this.d;
    }
 }

@@ -1,84 +1,44 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.ImmutableMap.Builder;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
-import java.util.Map;
-import java.util.Set;
+import java.util.Optional;
 
-public class evx extends evj {
+public class evx extends evp {
    public static final MapCodec<evx> a = RecordCodecBuilder.mapCodec(
       $$0 -> a($$0)
             .and(
                $$0.group(
-                  Codec.unboundedMap(dbm.c, eye.a).optionalFieldOf("enchantments", Map.of()).forGetter($$0x -> $$0x.b),
-                  Codec.BOOL.fieldOf("add").orElse(false).forGetter($$0x -> $$0x.c)
+                  asf.a(Codec.string(0, 32)).optionalFieldOf("title").forGetter($$0x -> $$0x.c),
+                  Codec.STRING.optionalFieldOf("author").forGetter($$0x -> $$0x.b),
+                  ayt.a(0, 3).optionalFieldOf("generation").forGetter($$0x -> $$0x.d)
                )
             )
             .apply($$0, evx::new)
    );
-   private final Map<jp<dbm>, eyd> b;
-   private final boolean c;
+   private final Optional<String> b;
+   private final Optional<asf<String>> c;
+   private final Optional<Integer> d;
 
-   evx(List<exh> $$0, Map<jp<dbm>, eyd> $$1, boolean $$2) {
+   public evx(List<exn> $$0, Optional<asf<String>> $$1, Optional<String> $$2, Optional<Integer> $$3) {
       super($$0);
-      this.b = Map.copyOf($$1);
-      this.c = $$2;
+      this.b = $$2;
+      this.c = $$1;
+      this.d = $$3;
    }
 
    @Override
-   public evl<evx> b() {
-      return evm.i;
-   }
-
-   @Override
-   public Set<ewp<?>> a() {
-      return this.b.values().stream().flatMap($$0 -> $$0.a().stream()).collect(ImmutableSet.toImmutableSet());
-   }
-
-   @Override
-   public cvx a(cvx $$0, etw $$1) {
-      if ($$0.a(cwb.qQ)) {
-         $$0 = $$0.a((deu)cwb.uy);
-         $$0.b(kt.H, $$0.c(kt.l));
-      }
-
-      dbo.a($$0, $$1x -> {
-         if (this.c) {
-            this.b.forEach(($$2, $$3) -> $$1x.a((jp<dbm>)$$2, azj.a($$1x.a((jp<dbm>)$$2) + $$3.a($$1), 0, 255)));
-         } else {
-            this.b.forEach(($$2, $$3) -> $$1x.a((jp<dbm>)$$2, azj.a($$3.a($$1), 0, 255)));
-         }
-      });
+   protected cwb a(cwb $$0, euc $$1) {
+      $$0.a(ku.T, czj.a, this::a);
       return $$0;
    }
 
-   public static class a extends evj.a<evx.a> {
-      private final Builder<jp<dbm>, eyd> a = ImmutableMap.builder();
-      private final boolean b;
+   private czj a(czj $$0) {
+      return new czj(this.c.orElseGet($$0::d), this.b.orElseGet($$0::e), this.d.orElseGet($$0::f), $$0.a(), $$0.g());
+   }
 
-      public a() {
-         this(false);
-      }
-
-      public a(boolean $$0) {
-         this.b = $$0;
-      }
-
-      protected evx.a a() {
-         return this;
-      }
-
-      public evx.a a(jp<dbm> $$0, eyd $$1) {
-         this.a.put($$0, $$1);
-         return this;
-      }
-
-      @Override
-      public evk b() {
-         return new evx(this.g(), this.a.build(), this.b);
-      }
+   @Override
+   public evr<evx> b() {
+      return evs.M;
    }
 }

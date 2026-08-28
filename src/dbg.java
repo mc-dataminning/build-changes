@@ -1,14 +1,15 @@
-public class dbg extends day {
-   public dbg(String $$0, daf $$1, cvx $$2) {
-      super(dap.f, dao.s, $$0, $$1, $$2);
-   }
-
-   public boolean a(daz $$0, dev $$1) {
-      return this.a.a($$0.c());
+public class dbg extends czw {
+   public dbg(String $$0, dac $$1, dal $$2, cwb $$3, float $$4, int $$5) {
+      super(dav.b, $$0, $$1, $$2, $$3, $$4, $$5);
    }
 
    @Override
-   public cvx g() {
-      return new cvx(dia.oc);
+   public cwb g() {
+      return new cwb(dig.cD);
+   }
+
+   @Override
+   public dau<?> aq_() {
+      return dau.o;
    }
 }

@@ -1,26 +1,40 @@
-import java.util.Optional;
+import javax.annotation.Nullable;
 
-public record adi(ezh b, Optional<ezh> c, lo d, jp<awj> e) implements zo<acd> {
-   public static final zf<ws, adi> a = zf.a(ezh.b, adi::b, ezh.b.a(zd::a), adi::e, lq.bg, adi::f, awj.d, adi::g, adi::new);
+public class adi implements zp<ace> {
+   public static final zg<wf, adi> a = zp.a(adi::a, adi::new);
+   private final int b;
+   private final byte c;
 
-   @Override
-   public zq<adi> a() {
-      return ags.E;
+   public adi(bue $$0, byte $$1) {
+      this.b = $$0.as();
+      this.c = $$1;
    }
 
-   public void a(acd $$0) {
+   private adi(wf $$0) {
+      this.b = $$0.readInt();
+      this.c = $$0.readByte();
+   }
+
+   private void a(wf $$0) {
+      $$0.q(this.b);
+      $$0.l(this.c);
+   }
+
+   @Override
+   public zr<adi> a() {
+      return agt.D;
+   }
+
+   public void a(ace $$0) {
       $$0.a(this);
    }
 
-   public Optional<ezh> e() {
+   @Nullable
+   public bue a(dfb $$0) {
+      return $$0.a(this.b);
+   }
+
+   public byte b() {
       return this.c;
-   }
-
-   public lo f() {
-      return this.d;
-   }
-
-   public jp<awj> g() {
-      return this.e;
    }
 }

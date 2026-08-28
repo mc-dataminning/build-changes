@@ -1,84 +1,29 @@
-public class aik implements zo<agu> {
-   public static final zf<we, aik> a = zo.a(aik::a, aik::new);
-   private static final int b = 1;
-   private static final int c = 2;
-   private static final int d = 4;
-   private final jg e;
-   private final String f;
-   private final boolean g;
-   private final boolean h;
-   private final boolean i;
-   private final dsq.a j;
+public class aik implements zp<agv> {
+   public static final zg<wf, aik> a = zp.a(aik::a, aik::new);
+   private final int b;
 
-   public aik(jg $$0, String $$1, dsq.a $$2, boolean $$3, boolean $$4, boolean $$5) {
-      this.e = $$0;
-      this.f = $$1;
-      this.g = $$3;
-      this.h = $$4;
-      this.i = $$5;
-      this.j = $$2;
+   public aik(int $$0) {
+      this.b = $$0;
    }
 
-   private aik(we $$0) {
-      this.e = $$0.e();
-      this.f = $$0.p();
-      this.j = $$0.b(dsq.a.class);
-      int $$1 = $$0.readByte();
-      this.g = ($$1 & 1) != 0;
-      this.h = ($$1 & 2) != 0;
-      this.i = ($$1 & 4) != 0;
+   private aik(wf $$0) {
+      this.b = $$0.readShort();
    }
 
-   private void a(we $$0) {
-      $$0.a(this.e);
-      $$0.a(this.f);
-      $$0.a(this.j);
-      int $$1 = 0;
-      if (this.g) {
-         $$1 |= 1;
-      }
-
-      if (this.h) {
-         $$1 |= 2;
-      }
-
-      if (this.i) {
-         $$1 |= 4;
-      }
-
-      $$0.l($$1);
+   private void a(wf $$0) {
+      $$0.m(this.b);
    }
 
    @Override
-   public zq<aik> a() {
-      return ags.bX;
+   public zr<aik> a() {
+      return agt.bW;
    }
 
-   public void a(agu $$0) {
+   public void a(agv $$0) {
       $$0.a(this);
    }
 
-   public jg b() {
-      return this.e;
-   }
-
-   public String e() {
-      return this.f;
-   }
-
-   public boolean f() {
-      return this.g;
-   }
-
-   public boolean g() {
-      return this.h;
-   }
-
-   public boolean h() {
-      return this.i;
-   }
-
-   public dsq.a i() {
-      return this.j;
+   public int b() {
+      return this.b;
    }
 }

@@ -1,31 +1,46 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
 
-public record dd(di.d b) {
-   public static final Codec<dd> a = RecordCodecBuilder.create($$0 -> $$0.group(di.d.d.optionalFieldOf("light", di.d.c).forGetter(dd::a)).apply($$0, dd::new));
-
-   public boolean a(arm $$0, jg $$1) {
-      return !$$0.p($$1) ? false : this.b.d($$0.A($$1));
+public class dd extends dy<dd.a> {
+   @Override
+   public Codec<dd.a> a() {
+      return dd.a.a;
    }
 
-   public di.d a() {
-      return this.b;
+   public void a(aro $$0, ezn $$1, int $$2) {
+      this.a($$0, $$3 -> $$3.a($$0, $$1, $$2));
    }
 
-   public static class a {
-      private di.d a = di.d.c;
+   public static record a(Optional<bh> b, Optional<bn> c, dj.d d) implements dy.a {
+      public static final Codec<dd.a> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(
+                  bw.b.optionalFieldOf("player").forGetter(dd.a::a),
+                  bn.a.optionalFieldOf("distance").forGetter(dd.a::b),
+                  dj.d.d.optionalFieldOf("duration", dj.d.c).forGetter(dd.a::c)
+               )
+               .apply($$0, dd.a::new)
+      );
 
-      public static dd.a a() {
-         return new dd.a();
+      public static ap<dd.a> a(bn $$0) {
+         return ao.v.a(new dd.a(Optional.empty(), Optional.of($$0), dj.d.c));
       }
 
-      public dd.a a(di.d $$0) {
-         this.a = $$0;
-         return this;
+      public boolean a(aro $$0, ezn $$1, int $$2) {
+         return this.c.isPresent() && !this.c.get().a($$1.d, $$1.e, $$1.f, $$0.dC(), $$0.dE(), $$0.dI()) ? false : this.d.d($$2);
       }
 
-      public dd b() {
-         return new dd(this.a);
+      @Override
+      public Optional<bh> a() {
+         return this.b;
+      }
+
+      public Optional<bn> b() {
+         return this.c;
+      }
+
+      public dj.d c() {
+         return this.d;
       }
    }
 }

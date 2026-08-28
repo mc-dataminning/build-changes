@@ -1,28 +1,22 @@
-public class grg extends goq<cmg, gws, gas<gws>> {
-   private static final alh a = alh.b("textures/entity/zombie_villager/zombie_villager.png");
+public class grg extends gpd<cmg, gve> {
+   private static final ali a = ali.b("textures/entity/illager/vindicator.png");
 
-   public grg(gnz.a $$0) {
-      super($$0, new gas<>($$0.a(gba.dv)), new gas<>($$0.a(gba.dy)), 0.5F, gqu.a);
-      this.a(new gsc<>(this, new gas($$0.a(gba.dw)), new gas($$0.a(gba.dx)), new gas($$0.a(gba.dz)), new gas($$0.a(gba.dA)), $$0.h()));
-      this.a(new gsw<>(this, $$0.e(), "zombie_villager"));
+   public grg(gok.a $$0) {
+      super($$0, new fyy<>($$0.a(gbl.cU)), 0.5F);
+      this.a(new gsq<gve, fyy<gve>>(this, $$0.b()) {
+         public void a(feb $$0, gih $$1, int $$2, gve $$3, float $$4, float $$5) {
+            if ($$3.c) {
+               super.a($$0, $$1, $$2, $$3, $$4, $$5);
+            }
+         }
+      });
    }
 
-   public alh a(gws $$0) {
+   public ali a(gve $$0) {
       return a;
    }
 
-   public gws c() {
-      return new gws();
-   }
-
-   public void a(cmg $$0, gws $$1, float $$2) {
-      super.a($$0, $$1, $$2);
-      $$1.b = $$0.gE();
-      $$1.c = $$0.gF();
-      $$1.a = $$0.gk();
-   }
-
-   protected boolean b(gws $$0) {
-      return super.a($$0) || $$0.b;
+   public gve c() {
+      return new gve();
    }
 }

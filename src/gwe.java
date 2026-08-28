@@ -1,5 +1,3 @@
-public class gwe extends guc {
-   public float a;
-   public float b;
-   public boolean c;
+public class gwe extends gvl {
+   public chm.a a = chm.a.b;
 }

@@ -1,3 +1,4 @@
-public class gug extends guc {
-   public int a;
+public class gug extends gvl {
+   public float a;
+   public boolean b;
 }

@@ -1,62 +1,54 @@
-public class ggl extends gge {
-   protected ggl(gbx $$0, double $$1, double $$2, double $$3) {
-      super($$0, $$1, $$2, $$3, 0.0, 0.0, 0.0);
-      this.j *= 0.3F;
-      this.k = Math.random() * 0.2F + 0.1F;
-      this.l *= 0.3F;
-      this.b(0.01F, 0.01F);
-      this.u = 0.06F;
-      this.t = (int)(8.0 / (Math.random() * 0.8 + 0.2));
-   }
-
-   @Override
-   public gfi b() {
-      return gfi.b;
+public class ggl extends ggb {
+   ggl(gci $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, int $$7, ggk $$8) {
+      super($$0, $$1, $$2, $$3, $$8, 0.0F);
+      this.B = 0.92F;
+      this.D = 0.5F;
+      this.e(1.0F);
+      this.a((float)axv.b($$7), (float)axv.c($$7), (float)axv.d($$7));
+      this.t = (int)((double)(this.D * 12.0F) / (Math.random() * 0.8F + 0.2F));
+      this.b($$8);
+      this.n = false;
+      this.j = $$4;
+      this.k = $$5;
+      this.l = $$6;
    }
 
    @Override
    public void a() {
-      this.d = this.g;
-      this.e = this.h;
-      this.f = this.i;
-      if (this.t-- <= 0) {
-         this.k();
-      } else {
-         this.k = this.k - (double)this.u;
-         this.a(this.j, this.k, this.l);
-         this.j *= 0.98F;
-         this.k *= 0.98F;
-         this.l *= 0.98F;
-         if (this.m) {
-            if (Math.random() < 0.5) {
-               this.k();
-            }
-
-            this.j *= 0.7F;
-            this.l *= 0.7F;
+      super.a();
+      if (!this.o) {
+         this.b(this.a);
+         if (this.s > this.t / 2) {
+            this.e(1.0F - ((float)this.s - (float)(this.t / 2)) / (float)this.t);
          }
 
-         jg $$0 = jg.a(this.g, this.h, this.i);
-         double $$1 = Math.max(
-            this.c.a_($$0).g(this.c, $$0).b(jl.a.b, this.g - (double)$$0.u(), this.i - (double)$$0.w()), (double)this.c.b_($$0).a(this.c, $$0)
-         );
-         if ($$1 > 0.0 && this.h < (double)$$0.v() + $$1) {
-            this.k();
+         if (this.c.a_(jh.a(this.g, this.h, this.i)).l()) {
+            this.k -= 0.0074F;
          }
       }
    }
 
-   public static class a implements gfh<lu> {
-      private final gfz a;
+   public static class a implements gfs<lv> {
+      private final ggk a;
 
-      public a(gfz $$0) {
+      public a(ggk $$0) {
          this.a = $$0;
       }
 
-      public gfe a(lu $$0, gbx $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         ggl $$8 = new ggl($$1, $$2, $$3, $$4);
-         $$8.a(this.a);
-         return $$8;
+      public gfp a(lv $$0, gci $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new ggl($$1, $$2, $$3, $$4, $$5, $$6, $$7, axv.a(255, 204, 31, 102), this.a);
+      }
+   }
+
+   public static class b implements gfs<lv> {
+      private final ggk a;
+
+      public b(ggk $$0) {
+         this.a = $$0;
+      }
+
+      public gfp a(lv $$0, gci $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new ggl($$1, $$2, $$3, $$4, $$5, $$6, $$7, axv.a(255, 255, 255, 255), this.a);
       }
    }
 }

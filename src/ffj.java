@@ -1,20 +1,27 @@
 import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
+import com.mojang.logging.LogUtils;
+import org.slf4j.Logger;
 
-public class ffj extends ffn {
+public class ffj extends ffv {
+   private static final Logger d = LogUtils.getLogger();
    public String a;
-   public long b;
-   public long c;
+   public String b;
+   public String c;
 
-   public static ffj a(JsonObject $$0) {
-      ffj $$1 = new ffj();
+   public static ffj a(String $$0) {
+      JsonParser $$1 = new JsonParser();
+      ffj $$2 = new ffj();
 
       try {
-         $$1.a = fhk.b("profileUuid", $$0, null);
-         $$1.b = fhk.a("joinTime", $$0, Long.MIN_VALUE);
-         $$1.c = fhk.a("leaveTime", $$0, Long.MIN_VALUE);
-      } catch (Exception var3) {
+         JsonObject $$3 = $$1.parse($$0).getAsJsonObject();
+         $$2.a = fhs.b("address", $$3, null);
+         $$2.b = fhs.b("resourcePackUrl", $$3, null);
+         $$2.c = fhs.b("resourcePackHash", $$3, null);
+      } catch (Exception var4) {
+         d.error("Could not parse RealmsServerAddress: {}", var4.getMessage());
       }
 
-      return $$1;
+      return $$2;
    }
 }

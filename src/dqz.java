@@ -1,73 +1,75 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Maps;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Map;
+import javax.annotation.Nullable;
 
-public class dqz extends dgu {
-   public static final MapCodec<dqz> c = RecordCodecBuilder.mapCodec($$0 -> $$0.group(dpa.a.b.fieldOf("kind").forGetter(dgu::b), t()).apply($$0, dqz::new));
-   public static final dvx d = dlt.aF;
-   private static final Map<jl, fab> b = Maps.newEnumMap(
-      ImmutableMap.of(
-         jl.c,
-         dhy.a(4.0, 4.0, 8.0, 12.0, 12.0, 16.0),
-         jl.d,
-         dhy.a(4.0, 4.0, 0.0, 12.0, 12.0, 8.0),
-         jl.f,
-         dhy.a(0.0, 4.0, 4.0, 8.0, 12.0, 12.0),
-         jl.e,
-         dhy.a(8.0, 4.0, 4.0, 16.0, 12.0, 12.0)
-      )
-   );
+public class dqz extends dhq {
+   public static final MapCodec<dqz> a = b(dqz::new);
+   public static final dwm<duw> b = dvz.bz;
+   public static final dwd c = dlz.aF;
+   public static final dwa d = dvz.bA;
 
    @Override
-   public MapCodec<? extends dqz> a() {
-      return c;
+   public MapCodec<dqz> a() {
+      return a;
    }
 
-   protected dqz(dpa.a $$0, dvc.d $$1) {
-      super($$0, $$1);
-      this.l(this.m().b(d, jl.c));
+   public dqz(dvi.d $$0) {
+      super($$0);
+      this.l(this.F.b().b(c, jm.c).b(b, duw.a).b(d, Boolean.valueOf(false)));
    }
 
    @Override
-   protected fab a(dvd $$0, dea $$1, jg $$2, ezm $$3) {
-      return b.get($$0.c(d));
-   }
-
-   @Override
-   public dvd a(czm $$0) {
-      dvd $$1 = super.a($$0);
-      dea $$2 = $$0.q();
-      jg $$3 = $$0.a();
-      jl[] $$4 = $$0.f();
-
-      for (jl $$5 : $$4) {
-         if ($$5.o().d()) {
-            jl $$6 = $$5.g();
-            $$1 = $$1.b(d, $$6);
-            if (!$$2.a_($$3.a($$5)).a($$0)) {
-               return $$1;
+   public bsd a(cwb $$0, dvj $$1, dfb $$2, jh $$3, com $$4, bsc $$5, ezj $$6) {
+      if (!$$0.f() && $$1.c(b) == duw.b) {
+         if ($$2 instanceof arn $$7) {
+            if (!($$7.c_($$3) instanceof dur $$8)) {
+               return bsd.f;
             }
+
+            dur.b.a($$7, $$3, $$1, $$8.f(), $$8.b(), $$8.c(), $$4, $$0);
          }
+
+         return bsd.b;
+      } else {
+         return bsd.f;
       }
+   }
 
-      return null;
+   @Nullable
+   @Override
+   public dsm a(jh $$0, dvj $$1) {
+      return new dur($$0, $$1);
    }
 
    @Override
-   protected dvd a(dvd $$0, dol $$1) {
-      return $$0.b(d, $$1.a($$0.c(d)));
+   protected void a(dvk.a<die, dvj> $$0) {
+      $$0.a(c, b, d);
+   }
+
+   @Nullable
+   @Override
+   public <T extends dsm> dsn<T> a(dfb $$0, dvj $$1, dso<T> $$2) {
+      return $$0 instanceof arn $$3
+         ? a($$2, dso.R, ($$1x, $$2x, $$3x, $$4) -> dur.b.a($$3, $$2x, $$3x, $$4.f(), $$4.b(), $$4.c()))
+         : a($$2, dso.R, ($$0x, $$1x, $$2x, $$3x) -> dur.a.a($$0x, $$1x, $$2x, $$3x.d(), $$3x.c()));
    }
 
    @Override
-   protected dvd a(dvd $$0, dmu $$1) {
-      return $$0.a($$1.a($$0.c(d)));
+   public dvj a(czs $$0) {
+      return this.m().b(c, $$0.g().g());
    }
 
    @Override
-   protected void a(dve.a<dhy, dvd> $$0) {
-      super.a($$0);
-      $$0.a(d);
+   public dvj a(dvj $$0, dor $$1) {
+      return $$0.b(c, $$1.a($$0.c(c)));
+   }
+
+   @Override
+   public dvj a(dvj $$0, dna $$1) {
+      return $$0.a($$1.a($$0.c(c)));
+   }
+
+   @Override
+   public dok a_(dvj $$0) {
+      return dok.c;
    }
 }

@@ -1,56 +1,55 @@
-import com.google.common.collect.Sets;
 import java.util.EnumSet;
-import java.util.List;
-import java.util.Set;
+import javax.annotation.Nullable;
 
-public class ccn<T extends cpw> extends cbt {
-   private static final int a = 20;
-   private static final float b = 1.0F;
-   private final T c;
-   private int d;
+public class ccn extends cby {
+   private final bvi a;
+   @Nullable
+   private bva b;
+   private double c;
+   private double d;
+   private double e;
+   private final double f;
+   private final float g;
 
-   public ccn(T $$0) {
-      this.c = $$0;
-      this.a(EnumSet.of(cbt.a.a));
+   public ccn(bvi $$0, double $$1, float $$2) {
+      this.a = $$0;
+      this.f = $$1;
+      this.g = $$2;
+      this.a(EnumSet.of(cby.a.a));
    }
 
    @Override
    public boolean b() {
-      return this.c.m() == null && !this.c.cZ() && this.c.gM() && !this.c.gJ().a() && !((arm)this.c.dX()).c(this.c.dx());
+      this.b = this.a.m();
+      if (this.b == null) {
+         return false;
+      } else if (this.b.g(this.a) > (double)(this.g * this.g)) {
+         return false;
+      } else {
+         ezn $$0 = cfv.a(this.a, 16, 7, this.b.dv(), (float) (Math.PI / 2));
+         if ($$0 == null) {
+            return false;
+         } else {
+            this.c = $$0.d;
+            this.d = $$0.e;
+            this.e = $$0.f;
+            return true;
+         }
+      }
    }
 
    @Override
    public boolean c() {
-      return this.c.gM() && !this.c.gJ().a() && this.c.dX() instanceof arm && !((arm)this.c.dX()).c(this.c.dx());
+      return !this.a.P().m() && this.b.bM() && this.b.g(this.a) < (double)(this.g * this.g);
    }
 
    @Override
-   public void a() {
-      if (this.c.gM()) {
-         cpv $$0 = this.c.gJ();
-         if (this.c.ag > this.d) {
-            this.d = this.c.ag + 20;
-            this.a($$0);
-         }
-
-         if (!this.c.gr()) {
-            ezh $$1 = cfq.a(this.c, 15, 4, ezh.c($$0.s()), (float) (Math.PI / 2));
-            if ($$1 != null) {
-               this.c.P().a($$1.d, $$1.e, $$1.f, 1.0);
-            }
-         }
-      }
+   public void e() {
+      this.b = null;
    }
 
-   private void a(cpv $$0) {
-      if ($$0.u()) {
-         Set<cpw> $$1 = Sets.newHashSet();
-         List<cpw> $$2 = this.c.dX().a(cpw.class, this.c.cS().g(16.0), $$1x -> !$$1x.gM() && cpx.a($$1x, $$0));
-         $$1.addAll($$2);
-
-         for (cpw $$3 : $$1) {
-            $$0.a($$0.k(), $$3, null, true);
-         }
-      }
+   @Override
+   public void d() {
+      this.a.P().a(this.c, this.d, this.e, this.f);
    }
 }

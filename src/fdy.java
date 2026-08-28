@@ -1,211 +1,157 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.ImmutableMap.Builder;
-import com.mojang.blaze3d.platform.GlStateManager;
-import com.mojang.blaze3d.systems.RenderSystem;
-import it.unimi.dsi.fastutil.ints.IntArrayList;
-import it.unimi.dsi.fastutil.ints.IntList;
-import java.util.Arrays;
-import java.util.List;
+import com.mojang.jtracy.MemoryPool;
+import com.mojang.jtracy.TracyClient;
+import com.mojang.logging.LogUtils;
+import java.nio.ByteBuffer;
 import javax.annotation.Nullable;
+import org.lwjgl.system.MemoryUtil;
+import org.lwjgl.system.MemoryUtil.MemoryAllocator;
+import org.slf4j.Logger;
 
-public class fdy {
-   public static final int a = -1;
-   private final List<fdz> b;
-   private final List<String> c;
-   private final int d;
-   private final int e;
-   private final int[] f = new int[32];
+public class fdy implements AutoCloseable {
+   private static final MemoryPool a = TracyClient.createMemoryPool("ByteBufferBuilder");
+   private static final Logger b = LogUtils.getLogger();
+   private static final MemoryAllocator c = MemoryUtil.getAllocator(false);
+   private static final int d = 2097152;
+   private static final int e = -1;
+   long f;
+   private int g;
+   private int h;
+   private int i;
+   private int j;
+   private int k;
+
+   public fdy(int $$0) {
+      this.g = $$0;
+      this.f = c.malloc((long)$$0);
+      a.malloc(this.f, $$0);
+      if (this.f == 0L) {
+         throw new OutOfMemoryError("Failed to allocate " + $$0 + " bytes");
+      }
+   }
+
+   public long a(int $$0) {
+      int $$1 = this.h;
+      int $$2 = $$1 + $$0;
+      this.b($$2);
+      this.h = $$2;
+      return this.f + (long)$$1;
+   }
+
+   private void b(int $$0) {
+      if ($$0 > this.g) {
+         int $$1 = Math.min(this.g, 2097152);
+         int $$2 = Math.max(this.g + $$1, $$0);
+         this.c($$2);
+      }
+   }
+
+   private void c(int $$0) {
+      a.free(this.f);
+      this.f = c.realloc(this.f, (long)$$0);
+      a.malloc(this.f, $$0);
+      b.debug("Needed to grow BufferBuilder buffer: Old size {} bytes, new size {} bytes.", this.g, $$0);
+      if (this.f == 0L) {
+         throw new OutOfMemoryError("Failed to resize buffer from " + this.g + " bytes to " + $$0 + " bytes");
+      } else {
+         this.g = $$0;
+      }
+   }
+
    @Nullable
-   private fdw g;
-
-   fdy(List<fdz> $$0, List<String> $$1, IntList $$2, int $$3) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$3;
-      this.e = $$0.stream().mapToInt(fdz::a).reduce(0, ($$0x, $$1x) -> $$0x | $$1x);
-
-      for (int $$4 = 0; $$4 < this.f.length; $$4++) {
-         fdz $$5 = fdz.a($$4);
-         int $$6 = $$5 != null ? $$0.indexOf($$5) : -1;
-         this.f[$$4] = $$6 != -1 ? $$2.getInt($$6) : -1;
+   public fdy.a a() {
+      this.f();
+      int $$0 = this.i;
+      int $$1 = this.h - $$0;
+      if ($$1 == 0) {
+         return null;
+      } else {
+         this.i = this.h;
+         this.j++;
+         return new fdy.a($$0, $$1, this.k);
       }
    }
 
-   public static fdy.a a() {
-      return new fdy.a();
+   public void b() {
+      if (this.j > 0) {
+         b.warn("Clearing BufferBuilder with unused batches");
+      }
+
+      this.c();
    }
 
-   public void a(int $$0) {
-      int $$1 = 0;
-
-      for (String $$2 : this.d()) {
-         GlStateManager._glBindAttribLocation($$0, $$1, $$2);
-         $$1++;
+   public void c() {
+      this.f();
+      if (this.j > 0) {
+         this.e();
+         this.j = 0;
       }
+   }
+
+   boolean d(int $$0) {
+      return $$0 == this.k;
+   }
+
+   void d() {
+      if (--this.j <= 0) {
+         this.e();
+      }
+   }
+
+   private void e() {
+      int $$0 = this.h - this.i;
+      if ($$0 > 0) {
+         MemoryUtil.memCopy(this.f + (long)this.i, this.f, (long)$$0);
+      }
+
+      this.h = $$0;
+      this.i = 0;
+      this.k++;
    }
 
    @Override
-   public String toString() {
-      return "VertexFormat" + this.c;
-   }
-
-   public int b() {
-      return this.d;
-   }
-
-   public List<fdz> c() {
-      return this.b;
-   }
-
-   public List<String> d() {
-      return this.c;
-   }
-
-   public int[] e() {
-      return this.f;
-   }
-
-   public int a(fdz $$0) {
-      return this.f[$$0.c()];
-   }
-
-   public boolean b(fdz $$0) {
-      return (this.e & $$0.a()) != 0;
-   }
-
-   public int f() {
-      return this.e;
-   }
-
-   public String c(fdz $$0) {
-      int $$1 = this.b.indexOf($$0);
-      if ($$1 == -1) {
-         throw new IllegalArgumentException($$0 + " is not contained in format");
-      } else {
-         return this.c.get($$1);
+   public void close() {
+      if (this.f != 0L) {
+         a.free(this.f);
+         c.free(this.f);
+         this.f = 0L;
+         this.k = -1;
       }
    }
 
-   @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else {
-         if ($$0 instanceof fdy $$1 && this.e == $$1.e && this.d == $$1.d && this.c.equals($$1.c) && Arrays.equals(this.f, $$1.f)) {
-            return true;
+   private void f() {
+      if (this.f == 0L) {
+         throw new IllegalStateException("Buffer has been freed");
+      }
+   }
+
+   public class a implements AutoCloseable {
+      private final int b;
+      private final int c;
+      private final int d;
+      private boolean e;
+
+      a(final int $$1, final int $$2, final int $$3) {
+         this.b = $$1;
+         this.c = $$2;
+         this.d = $$3;
+      }
+
+      public ByteBuffer a() {
+         if (!fdy.this.d(this.d)) {
+            throw new IllegalStateException("Buffer is no longer valid");
+         } else {
+            return MemoryUtil.memByteBuffer(fdy.this.f + (long)this.b, this.c);
          }
-
-         return false;
-      }
-   }
-
-   @Override
-   public int hashCode() {
-      return this.e * 31 + Arrays.hashCode(this.f);
-   }
-
-   public void g() {
-      RenderSystem.assertOnRenderThread();
-      int $$0 = this.b();
-
-      for (int $$1 = 0; $$1 < this.b.size(); $$1++) {
-         GlStateManager._enableVertexAttribArray($$1);
-         fdz $$2 = this.b.get($$1);
-         $$2.a($$1, (long)this.a($$2), $$0);
-      }
-   }
-
-   public void h() {
-      RenderSystem.assertOnRenderThread();
-
-      for (int $$0 = 0; $$0 < this.b.size(); $$0++) {
-         GlStateManager._disableVertexAttribArray($$0);
-      }
-   }
-
-   public fdw i() {
-      fdw $$0 = this.g;
-      if ($$0 == null) {
-         this.g = $$0 = new fdw(fdw.a.b);
       }
 
-      return $$0;
-   }
-
-   public static class a {
-      private final Builder<String, fdz> a = ImmutableMap.builder();
-      private final IntList b = new IntArrayList();
-      private int c;
-
-      a() {
-      }
-
-      public fdy.a a(String $$0, fdz $$1) {
-         this.a.put($$0, $$1);
-         this.b.add(this.c);
-         this.c = this.c + $$1.b();
-         return this;
-      }
-
-      public fdy.a a(int $$0) {
-         this.c += $$0;
-         return this;
-      }
-
-      public fdy a() {
-         ImmutableMap<String, fdz> $$0 = this.a.buildOrThrow();
-         ImmutableList<fdz> $$1 = $$0.values().asList();
-         ImmutableList<String> $$2 = $$0.keySet().asList();
-         return new fdy($$1, $$2, this.b, this.c);
-      }
-   }
-
-   public static enum b {
-      a(5123, 2),
-      b(5125, 4);
-
-      public final int c;
-      public final int d;
-
-      private b(final int $$0, final int $$1) {
-         this.c = $$0;
-         this.d = $$1;
-      }
-
-      public static fdy.b a(int $$0) {
-         return ($$0 & -65536) != 0 ? b : a;
-      }
-   }
-
-   public static enum c {
-      a(4, 2, 2, false),
-      b(5, 2, 1, true),
-      c(1, 2, 2, false),
-      d(3, 2, 1, true),
-      e(4, 3, 3, false),
-      f(5, 3, 1, true),
-      g(6, 3, 1, true),
-      h(4, 4, 4, false);
-
-      public final int i;
-      public final int j;
-      public final int k;
-      public final boolean l;
-
-      private c(final int $$0, final int $$1, final int $$2, final boolean $$3) {
-         this.i = $$0;
-         this.j = $$1;
-         this.k = $$2;
-         this.l = $$3;
-      }
-
-      public int a(int $$0) {
-         return switch (this) {
-            case a, h -> $$0 / 4 * 6;
-            case b, c, d, e, f, g -> $$0;
-            default -> 0;
-         };
+      @Override
+      public void close() {
+         if (!this.e) {
+            this.e = true;
+            if (fdy.this.d(this.d)) {
+               fdy.this.d();
+            }
+         }
       }
    }
 }

@@ -1,30 +1,15 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Collection;
+import java.util.Locale;
 
-public class gyb implements gxw {
-   public static final MapCodec<gyb> b = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(Codec.STRING.fieldOf("source").forGetter($$0x -> $$0x.c), Codec.STRING.fieldOf("prefix").forGetter($$0x -> $$0x.d)).apply($$0, gyb::new)
-   );
-   private final String c;
-   private final String d;
+public class gyb extends RuntimeException {
+   private final Collection<gya.a> a;
 
-   public gyb(String $$0, String $$1) {
-      this.c = $$0;
-      this.d = $$1;
+   public gyb(gya.a $$0, Collection<gya.a> $$1) {
+      super(String.format(Locale.ROOT, "Unable to fit: %s - size: %dx%d - Maybe try a lower resolution resourcepack?", $$0.c(), $$0.a(), $$0.b()));
+      this.a = $$1;
    }
 
-   @Override
-   public void a(ava $$0, gxw.a $$1) {
-      ala $$2 = new ala("textures/" + this.c, ".png");
-      $$2.a($$0).forEach(($$2x, $$3) -> {
-         alh $$4 = $$2.b($$2x).f(this.d);
-         $$1.a($$4, $$3);
-      });
-   }
-
-   @Override
-   public gxy a() {
-      return gxz.b;
+   public Collection<gya.a> a() {
+      return this.a;
    }
 }

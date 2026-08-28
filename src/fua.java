@@ -1,21 +1,23 @@
-public class fua extends ftv {
-   private static final xh a = xh.c("controls.title");
+import java.util.Arrays;
+import java.util.stream.Stream;
 
-   private static fjd<?>[] a(fje $$0) {
-      return new fjd[]{$$0.ae(), $$0.af(), $$0.I(), $$0.K()};
+public class fua extends fud {
+   private static final xi a = xi.c("options.mouse_settings.title");
+
+   private static fjl<?>[] a(fjm $$0) {
+      return new fjl[]{$$0.d(), $$0.T(), $$0.G(), $$0.U(), $$0.ab()};
    }
 
-   public fua(fqs $$0, fje $$1) {
+   public fua(fra $$0, fjm $$1) {
       super($$0, $$1, a);
    }
 
    @Override
    protected void m() {
-      this.d
-         .a(
-            fkz.a(xh.c("options.mouse_settings"), $$0 -> this.m.a(new fts(this, this.c))).a(),
-            fkz.a(xh.c("controls.keybinds"), $$0 -> this.m.a(new fuc(this, this.c))).a()
-         );
-      this.d.a(a(this.c));
+      if (fcw.a()) {
+         this.d.a(Stream.concat(Arrays.stream(a(this.c)), Stream.of(this.c.H())).toArray(fjl[]::new));
+      } else {
+         this.d.a(a(this.c));
+      }
    }
 }

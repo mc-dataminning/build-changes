@@ -1,13 +1,32 @@
-public class ig<T extends ex<T>> implements hu<T> {
-   private static final ig<? extends ex<?>> a = (ig<? extends ex<?>>)(new ig<>());
+import com.mojang.brigadier.context.CommandContext;
+import com.mojang.brigadier.context.ContextChain;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
 
-   public static <T extends ex<T>> hu<T> a() {
-      return (hu<T>)a;
+public class ig<T extends ey<T>> implements ia<T> {
+   private final String a;
+   private final hr b;
+   private final CommandContext<T> c;
+
+   public ig(String $$0, hr $$1, CommandContext<T> $$2) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
    }
 
-   @Override
-   public void execute(hv<T> $$0, hx $$1) {
-      $$1.a();
-      $$1.b();
+   public void a(T $$0, hw<T> $$1, hy $$2) {
+      $$1.c().a(() -> "execute " + this.a);
+
+      try {
+         $$1.e();
+         int $$3 = ContextChain.runExecutable(this.c, $$0, ey.b_(), this.b.a());
+         hz $$4 = $$1.b();
+         if ($$4 != null) {
+            $$4.a($$2.c(), this.a, $$3);
+         }
+      } catch (CommandSyntaxException var9) {
+         $$0.a(var9, this.b.a(), $$1.b());
+      } finally {
+         $$1.c().c();
+      }
    }
 }

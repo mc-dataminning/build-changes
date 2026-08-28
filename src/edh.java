@@ -1,73 +1,32 @@
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public abstract class edh extends eef<egl> {
-   public edh(Codec<egl> $$0) {
-      super($$0);
+public class edh extends ede {
+   public static final Codec<edh> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               ede.d.forGetter($$0x -> $$0x),
+               brg.c.fieldOf("horizontal_radius_multiplier").forGetter($$0x -> $$0x.b),
+               brg.c.fieldOf("vertical_radius_multiplier").forGetter($$0x -> $$0x.c),
+               brg.a(-1.0F, 1.0F).fieldOf("floor_level").forGetter($$0x -> $$0x.j)
+            )
+            .apply($$0, edh::new)
+   );
+   public final brg b;
+   public final brg c;
+   final brg j;
+
+   public edh(float $$0, eke $$1, brg $$2, ebz $$3, edf $$4, ju<die> $$5, brg $$6, brg $$7, brg $$8) {
+      super($$0, $$1, $$2, $$3, $$4, $$5);
+      this.b = $$6;
+      this.c = $$7;
+      this.j = $$8;
    }
 
-   protected void a(dew $$0, azr $$1, jg $$2, egl $$3, int $$4, jg.a $$5) {
-      for (int $$6 = 0; $$6 < $$4; $$6++) {
-         $$5.g($$2).c(jl.b, $$6);
-         if (!$$0.a_($$5).s()) {
-            this.a($$0, $$5, $$3.c.a($$1, $$2));
-         }
-      }
+   public edh(float $$0, eke $$1, brg $$2, ebz $$3, ju<die> $$4, brg $$5, brg $$6, brg $$7) {
+      this($$0, $$1, $$2, $$3, edf.a, $$4, $$5, $$6, $$7);
    }
 
-   protected int a(azr $$0) {
-      int $$1 = $$0.a(3) + 4;
-      if ($$0.a(12) == 0) {
-         $$1 *= 2;
-      }
-
-      return $$1;
+   public edh(ede $$0, brg $$1, brg $$2, brg $$3) {
+      this($$0.l, $$0.e, $$0.f, $$0.g, $$0.h, $$0.i, $$1, $$2, $$3);
    }
-
-   protected boolean a(dew $$0, jg $$1, int $$2, jg.a $$3, egl $$4) {
-      int $$5 = $$1.v();
-      if ($$5 >= $$0.I_() + 1 && $$5 + $$2 + 1 <= $$0.an()) {
-         dvd $$6 = $$0.a_($$1.e());
-         if (!b($$6) && !$$6.a(awz.bb)) {
-            return false;
-         } else {
-            for (int $$7 = 0; $$7 <= $$2; $$7++) {
-               int $$8 = this.a(-1, -1, $$4.d, $$7);
-
-               for (int $$9 = -$$8; $$9 <= $$8; $$9++) {
-                  for (int $$10 = -$$8; $$10 <= $$8; $$10++) {
-                     dvd $$11 = $$0.a_($$3.a($$1, $$9, $$7, $$10));
-                     if (!$$11.l() && !$$11.a(awz.P)) {
-                        return false;
-                     }
-                  }
-               }
-            }
-
-            return true;
-         }
-      } else {
-         return false;
-      }
-   }
-
-   @Override
-   public boolean a(eeh<egl> $$0) {
-      dfs $$1 = $$0.b();
-      jg $$2 = $$0.e();
-      azr $$3 = $$0.d();
-      egl $$4 = $$0.f();
-      int $$5 = this.a($$3);
-      jg.a $$6 = new jg.a();
-      if (!this.a($$1, $$2, $$5, $$6, $$4)) {
-         return false;
-      } else {
-         this.a($$1, $$3, $$2, $$5, $$6, $$4);
-         this.a($$1, $$3, $$2, $$4, $$5, $$6);
-         return true;
-      }
-   }
-
-   protected abstract int a(int var1, int var2, int var3, int var4);
-
-   protected abstract void a(dew var1, azr var2, jg var3, int var4, jg.a var5, egl var6);
 }

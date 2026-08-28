@@ -1,85 +1,29 @@
-public class adn implements zo<acd> {
-   public static final zf<we, adn> a = zo.a(adn::a, adn::new);
-   private final double b;
-   private final double c;
-   private final double d;
-   private final double e;
-   private final long f;
-   private final int g;
-   private final int h;
-   private final int i;
+public record adn(int b, float c) implements zp<ace> {
+   public static final zg<wf, adn> a = zp.a(adn::a, adn::new);
 
-   private adn(we $$0) {
-      this.b = $$0.readDouble();
-      this.c = $$0.readDouble();
-      this.d = $$0.readDouble();
-      this.e = $$0.readDouble();
-      this.f = $$0.m();
-      this.g = $$0.l();
-      this.h = $$0.l();
-      this.i = $$0.l();
+   public adn(bva $$0) {
+      this($$0.as(), $$0.eN());
    }
 
-   public adn(dwu $$0) {
-      this.b = $$0.a();
-      this.c = $$0.b();
-      this.d = $$0.i();
-      this.e = $$0.k();
-      this.f = $$0.j();
-      this.g = $$0.m();
-      this.h = $$0.r();
-      this.i = $$0.q();
+   private adn(wf $$0) {
+      this($$0.l(), $$0.readFloat());
    }
 
-   private void a(we $$0) {
-      $$0.a(this.b);
+   private void a(wf $$0) {
+      $$0.c(this.b);
       $$0.a(this.c);
-      $$0.a(this.d);
-      $$0.a(this.e);
-      $$0.a(this.f);
-      $$0.c(this.g);
-      $$0.c(this.h);
-      $$0.c(this.i);
    }
 
    @Override
-   public zq<adn> a() {
-      return ags.J;
+   public zr<adn> a() {
+      return agt.I;
    }
 
-   public void a(acd $$0) {
+   public void a(ace $$0) {
       $$0.a(this);
    }
 
-   public double b() {
-      return this.b;
-   }
-
-   public double e() {
+   public float e() {
       return this.c;
-   }
-
-   public double f() {
-      return this.e;
-   }
-
-   public double g() {
-      return this.d;
-   }
-
-   public long h() {
-      return this.f;
-   }
-
-   public int i() {
-      return this.g;
-   }
-
-   public int j() {
-      return this.i;
-   }
-
-   public int k() {
-      return this.h;
    }
 }

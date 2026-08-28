@@ -1,8 +1,17 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+public class caz implements cax {
+   private final bvc b;
+   protected boolean a;
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface caz {
+   public caz(bvc $$0) {
+      this.b = $$0;
+   }
+
+   public void a() {
+      this.a = true;
+   }
+
+   public void b() {
+      this.b.t(this.a);
+      this.a = false;
+   }
 }

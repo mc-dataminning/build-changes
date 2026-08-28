@@ -1,45 +1,12 @@
-import java.util.List;
-import javax.annotation.Nullable;
+import com.mojang.serialization.Codec;
+import java.util.Map;
 
-public abstract class gzy implements gzu {
-   protected final gzu a;
+public record gzy(Map<String, gzl> d) {
+   public static final Codec<String> a = Codec.string(1, 16);
+   public static final Codec<gzy> b = Codec.unboundedMap(a, gzl.a).xmap(gzy::new, gzy::a);
+   public static final aua<gzy> c = aua.a("language", b);
 
-   public gzy(gzu $$0) {
-      this.a = $$0;
-   }
-
-   @Override
-   public List<gjd> a(@Nullable dvd $$0, @Nullable jl $$1, azr $$2) {
-      return this.a.a($$0, $$1, $$2);
-   }
-
-   @Override
-   public boolean a() {
-      return this.a.a();
-   }
-
-   @Override
-   public boolean b() {
-      return this.a.b();
-   }
-
-   @Override
-   public boolean c() {
-      return this.a.c();
-   }
-
-   @Override
-   public boolean d() {
-      return this.a.d();
-   }
-
-   @Override
-   public gxs e() {
-      return this.a.e();
-   }
-
-   @Override
-   public gjo f() {
-      return this.a.f();
+   public Map<String, gzl> a() {
+      return this.d;
    }
 }

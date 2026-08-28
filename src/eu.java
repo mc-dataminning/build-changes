@@ -1,34 +1,27 @@
+import java.util.Map;
+import javax.annotation.Nullable;
+
 public interface eu {
    eu a = new eu() {
+      @Nullable
       @Override
-      public void a(xh $$0) {
-      }
-
-      @Override
-      public boolean l_() {
-         return false;
-      }
-
-      @Override
-      public boolean w_() {
-         return false;
-      }
-
-      @Override
-      public boolean L_() {
-         return false;
+      public xy a(String $$0) {
+         return null;
       }
    };
 
-   void a(xh var1);
+   @Nullable
+   xy a(String var1);
 
-   boolean l_();
+   public static record a(Map<String, xy> b) implements eu {
+      @Nullable
+      @Override
+      public xy a(String $$0) {
+         return this.b.get($$0);
+      }
 
-   boolean w_();
-
-   boolean L_();
-
-   default boolean m_() {
-      return false;
+      public Map<String, xy> a() {
+         return this.b;
+      }
    }
 }

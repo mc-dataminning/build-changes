@@ -1,6 +1,7 @@
-public class gwo extends gva {
-   public float[] a = new float[2];
-   public float[] b = new float[2];
-   public float c;
-   public boolean d;
+import javax.annotation.Nullable;
+
+public class gwo extends gun {
+   @Nullable
+   public haf a;
+   public cwb b = cwb.k;
 }

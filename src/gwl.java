@@ -1,9 +1,5 @@
-public class gwl extends gva implements gwk {
-   public boolean a;
-   public cnu b = new cnu(cny.c, cnw.b, 1);
-
-   @Override
-   public cnu a() {
-      return this.b;
-   }
+public class gwl extends gvl {
+   public float a;
+   public float b;
+   public float c;
 }

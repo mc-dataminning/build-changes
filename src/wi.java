@@ -1,4 +1,4 @@
-import io.netty.channel.ChannelOutboundHandlerAdapter;
+import io.netty.channel.ChannelInboundHandlerAdapter;
 
-public class wi extends ChannelOutboundHandlerAdapter {
+public class wi extends ChannelInboundHandlerAdapter {
 }

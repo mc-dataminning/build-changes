@@ -1,78 +1,88 @@
 import com.mojang.serialization.MapCodec;
-import java.util.List;
-import java.util.Optional;
+import javax.annotation.Nullable;
 
-public class dli extends dpp implements dib {
+public class dli extends dmb {
    public static final MapCodec<dli> a = b(dli::new);
+   public static final int b = 3;
+   public static final dwj c = dvz.as;
+   private static final int f = 4;
+   private static final int g = 2;
 
    @Override
    public MapCodec<dli> a() {
       return a;
    }
 
-   public dli(dvc.d $$0) {
+   public dli(dvi.d $$0) {
       super($$0);
+      this.l(this.F.b().b(c, Integer.valueOf(0)));
    }
 
    @Override
-   public boolean b(dey $$0, jg $$1, dvd $$2) {
-      return $$0.a_($$1.d()).l();
+   public void b(dvj $$0, dfb $$1, jh $$2, dvj $$3, boolean $$4) {
+      $$1.a($$2, this, azk.a($$1.E_(), 60, 120));
    }
 
    @Override
-   public boolean a(dev $$0, azr $$1, jg $$2, dvd $$3) {
-      return true;
+   protected void a(dvj $$0, arn $$1, jh $$2, azs $$3) {
+      if (($$3.a(3) == 0 || this.a($$1, $$2, 4)) && $$1.A($$2) > 11 - $$0.c(c) - $$0.g() && this.f($$0, $$1, $$2)) {
+         jh.a $$4 = new jh.a();
+
+         for (jm $$5 : jm.values()) {
+            $$4.a($$2, $$5);
+            dvj $$6 = $$1.a_($$4);
+            if ($$6.a(this) && !this.f($$6, $$1, $$4)) {
+               $$1.a($$4, this, azk.a($$3, 20, 40));
+            }
+         }
+      } else {
+         $$1.a($$2, this, azk.a($$3, 20, 40));
+      }
    }
 
-   @Override
-   public void a(arm $$0, azr $$1, jg $$2, dvd $$3) {
-      jg $$4 = $$2.d();
-      dvd $$5 = dia.bt.m();
-      Optional<jp.c<ekv>> $$6 = $$0.H_().e(ly.aR).a(sp.n);
-
-      label51:
-      for (int $$7 = 0; $$7 < 128; $$7++) {
-         jg $$8 = $$4;
-
-         for (int $$9 = 0; $$9 < $$7 / 16; $$9++) {
-            $$8 = $$8.b($$1.a(3) - 1, ($$1.a(3) - 1) * $$1.a(3) / 2, $$1.a(3) - 1);
-            if (!$$0.a_($$8.e()).a(this) || $$0.a_($$8).m($$0, $$8)) {
-               continue label51;
-            }
-         }
-
-         dvd $$10 = $$0.a_($$8);
-         if ($$10.a($$5.b()) && $$1.a(10) == 0) {
-            dib $$11 = (dib)$$5.b();
-            if ($$11.b($$0, $$8, $$10)) {
-               $$11.a($$0, $$1, $$8, $$10);
-            }
-         }
-
-         if ($$10.l()) {
-            jp<ekv> $$13;
-            if ($$1.a(8) == 0) {
-               List<edr<?, ?>> $$12 = $$0.t($$8).a().d().b();
-               if ($$12.isEmpty()) {
-                  continue;
-               }
-
-               $$13 = ((egw)$$12.get(0).c()).d();
-            } else {
-               if (!$$6.isPresent()) {
-                  continue;
-               }
-
-               $$13 = $$6.get();
-            }
-
-            $$13.a().a($$0, $$0.l().g(), $$1, $$8);
-         }
+   private boolean f(dvj $$0, dfb $$1, jh $$2) {
+      int $$3 = $$0.c(c);
+      if ($$3 < 3) {
+         $$1.a($$2, $$0.b(c, Integer.valueOf($$3 + 1)), 2);
+         return false;
+      } else {
+         this.e($$0, $$1, $$2);
+         return true;
       }
    }
 
    @Override
-   public dib.a as_() {
-      return dib.a.a;
+   protected void a(dvj $$0, dfb $$1, jh $$2, die $$3, @Nullable ess $$4, boolean $$5) {
+      if ($$3.m().a(this) && this.a($$1, $$2, 2)) {
+         this.e($$0, $$1, $$2);
+      }
+
+      super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   }
+
+   private boolean a(deg $$0, jh $$1, int $$2) {
+      int $$3 = 0;
+      jh.a $$4 = new jh.a();
+
+      for (jm $$5 : jm.values()) {
+         $$4.a($$1, $$5);
+         if ($$0.a_($$4).a(this)) {
+            if (++$$3 >= $$2) {
+               return false;
+            }
+         }
+      }
+
+      return true;
+   }
+
+   @Override
+   protected void a(dvk.a<die, dvj> $$0) {
+      $$0.a(c);
+   }
+
+   @Override
+   public cwb a(dfe $$0, jh $$1, dvj $$2) {
+      return cwb.k;
    }
 }

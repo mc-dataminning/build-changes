@@ -1,66 +1,54 @@
-import com.mojang.datafixers.DataFixer;
+import com.google.common.base.Charsets;
 import com.mojang.logging.LogUtils;
-import com.mojang.serialization.DataResult;
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.IOException;
+import java.nio.file.Files;
 import java.nio.file.Path;
+import java.util.Collection;
 import org.slf4j.Logger;
 
 public class fiv {
-   private static final Logger b = LogUtils.getLogger();
-   public static final int a = 9;
-   private final Path c;
-   private final DataFixer d;
-   private final ggu[] e = new ggu[9];
-   private boolean f;
+   private static final Logger a = LogUtils.getLogger();
+   private static final int b = 50;
+   private static final String c = "command_history.txt";
+   private final Path d;
+   private final axx<String> e = new axx<>(50);
 
-   public fiv(Path $$0, DataFixer $$1) {
-      this.c = $$0.resolve("hotbar.nbt");
-      this.d = $$1;
+   public fiv(Path $$0) {
+      this.d = $$0.resolve("command_history.txt");
+      if (Files.exists(this.d)) {
+         try (BufferedReader $$1 = Files.newBufferedReader(this.d, Charsets.UTF_8)) {
+            this.e.addAll($$1.lines().toList());
+         } catch (Exception var7) {
+            a.error("Failed to read {}, command history will be missing", "command_history.txt", var7);
+         }
+      }
+   }
 
-      for (int $$2 = 0; $$2 < 9; $$2++) {
-         this.e[$$2] = new ggu();
+   public void a(String $$0) {
+      if (!$$0.equals(this.e.peekLast())) {
+         if (this.e.size() >= 50) {
+            this.e.removeFirst();
+         }
+
+         this.e.addLast($$0);
+         this.b();
       }
    }
 
    private void b() {
-      try {
-         uj $$0 = uw.a(this.c);
-         if ($$0 == null) {
-            return;
+      try (BufferedWriter $$0 = Files.newBufferedWriter(this.d, Charsets.UTF_8)) {
+         for (String $$1 : this.e) {
+            $$0.write($$1);
+            $$0.newLine();
          }
-
-         int $$1 = uy.b($$0, 1343);
-         $$0 = bas.d.a(this.d, $$0, $$1);
-
-         for (int $$2 = 0; $$2 < 9; $$2++) {
-            this.e[$$2] = ggu.a.parse(ux.a, $$0.c(String.valueOf($$2))).resultOrPartial($$0x -> b.warn("Failed to parse hotbar: {}", $$0x)).orElseGet(ggu::new);
-         }
-      } catch (Exception var4) {
-         b.error("Failed to load creative mode options", var4);
+      } catch (IOException var6) {
+         a.error("Failed to write {}, command history will be missing", "command_history.txt", var6);
       }
    }
 
-   public void a() {
-      try {
-         uj $$0 = uy.e(new uj());
-
-         for (int $$1 = 0; $$1 < 9; $$1++) {
-            ggu $$2 = this.a($$1);
-            DataResult<vg> $$3 = ggu.a.encodeStart(ux.a, $$2);
-            $$0.a(String.valueOf($$1), (vg)$$3.getOrThrow());
-         }
-
-         uw.b($$0, this.c);
-      } catch (Exception var5) {
-         b.error("Failed to save creative mode options", var5);
-      }
-   }
-
-   public ggu a(int $$0) {
-      if (!this.f) {
-         this.b();
-         this.f = true;
-      }
-
-      return this.e[$$0];
+   public Collection<String> a() {
+      return this.e;
    }
 }

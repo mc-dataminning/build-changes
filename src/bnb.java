@@ -1,8 +1,11 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+public interface bnb {
+   int c();
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface bnb {
+   int d();
+
+   long a(int var1);
+
+   long a(int var1, int var2);
+
+   void e();
 }

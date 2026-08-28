@@ -1,20 +1,13 @@
-public class grq<S extends gva, M extends fxz<S>> extends gsm<S, M> {
-   private final gox a;
-
-   public grq(gpv<S, M> $$0, gox $$1) {
-      super($$0);
-      this.a = $$1;
+public class grq extends gne<cmk, gxc, gbc<gxc>> {
+   public grq(gok.a $$0) {
+      this($$0, gbl.dm, gbl.ds, gbl.dq, gbl.dr, gbl.dt, gbl.du);
    }
 
-   public void a(fdt $$0, ghw $$1, int $$2, S $$3, float $$4, float $$5) {
-      gzu $$6 = $$3.b();
-      if ($$6 != null) {
-         $$0.a();
-         $$0.a(0.0F, 0.4F, -0.4F);
-         $$0.a(a.b.rotationDegrees(180.0F));
-         cvx $$7 = $$3.aX_();
-         this.a.a($$7, cvv.h, false, $$0, $$1, $$2, gxj.d, $$6);
-         $$0.b();
-      }
+   public gxc c() {
+      return new gxc();
+   }
+
+   public grq(gok.a $$0, gbk $$1, gbk $$2, gbk $$3, gbk $$4, gbk $$5, gbk $$6) {
+      super($$0, new gbc<>($$0.a($$1)), new gbc<>($$0.a($$2)), new gbc<>($$0.a($$3)), new gbc<>($$0.a($$4)), new gbc<>($$0.a($$5)), new gbc<>($$0.a($$6)));
    }
 }

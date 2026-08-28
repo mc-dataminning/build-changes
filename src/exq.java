@@ -1,36 +1,47 @@
-import com.google.common.collect.Sets;
+import com.google.common.collect.ImmutableSet;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
 import java.util.Set;
 
-public record exq(eyd b, etv c) implements exh {
+public record exq(Optional<bw> b, euc.b c) implements exn {
    public static final MapCodec<exq> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(eye.a.fieldOf("value").forGetter(exq::c), etv.a.fieldOf("range").forGetter(exq::d)).apply($$0, exq::new)
+      $$0 -> $$0.group(bw.a.optionalFieldOf("predicate").forGetter(exq::c), euc.b.e.fieldOf("entity").forGetter(exq::d)).apply($$0, exq::new)
    );
 
    @Override
-   public exi b() {
-      return exj.r;
+   public exo b() {
+      return exp.f;
    }
 
    @Override
-   public Set<ewp<?>> a() {
-      return Sets.union(this.b.a(), this.c.a());
+   public Set<ewv<?>> a() {
+      return ImmutableSet.of(ewy.f, this.c.a());
    }
 
-   public boolean a(etw $$0) {
-      return this.c.b($$0, this.b.a($$0));
+   public boolean a(euc $$0) {
+      bue $$1 = $$0.c(this.c.a());
+      ezn $$2 = $$0.c(ewy.f);
+      return this.b.isEmpty() || this.b.get().a($$0.d(), $$2, $$1);
    }
 
-   public static exh.a a(eyd $$0, etv $$1) {
-      return () -> new exq($$0, $$1);
+   public static exn.a a(euc.b $$0) {
+      return a($$0, bw.a.a());
    }
 
-   public eyd c() {
+   public static exn.a a(euc.b $$0, bw.a $$1) {
+      return () -> new exq(Optional.of($$1.b()), $$0);
+   }
+
+   public static exn.a a(euc.b $$0, bw $$1) {
+      return () -> new exq(Optional.of($$1), $$0);
+   }
+
+   public Optional<bw> c() {
       return this.b;
    }
 
-   public etv d() {
+   public euc.b d() {
       return this.c;
    }
 }

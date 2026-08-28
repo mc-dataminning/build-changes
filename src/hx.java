@@ -1,30 +1,37 @@
-public record hx(int a, es b, hx.a c) {
-   public void a(int $$0) {
-      this.b.onSuccess($$0);
-   }
+import javax.annotation.Nullable;
 
-   public void a() {
-      this.b.onFailure();
-   }
+public interface hx<T> {
+   void a(hv<T> var1);
 
-   public void b() {
-      this.c.discard();
-   }
+   void a(@Nullable hz var1);
 
-   public int c() {
-      return this.a;
-   }
+   @Nullable
+   hz a();
 
-   public es d() {
-      return this.b;
-   }
+   hy b();
 
-   public hx.a e() {
-      return this.c;
-   }
+   static <T extends ey<T>> hx<T> a(final hw<T> $$0, final hy $$1) {
+      return new hx<T>() {
+         @Override
+         public void a(hv<T> $$0x) {
+            $$0.a(new hs<>($$1, $$0));
+         }
 
-   @FunctionalInterface
-   public interface a {
-      void discard();
+         @Override
+         public void a(@Nullable hz $$0x) {
+            $$0.a($$0);
+         }
+
+         @Nullable
+         @Override
+         public hz a() {
+            return $$0.b();
+         }
+
+         @Override
+         public hy b() {
+            return $$1;
+         }
+      };
    }
 }

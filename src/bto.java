@@ -1,17 +1,25 @@
-class bto extends btc {
-   protected bto(btd $$0, int $$1) {
-      super($$0, $$1);
-   }
-
-   @Override
-   public boolean a(buv $$0, int $$1) {
-      $$0.a($$0.dY().r(), 1.0F);
-      return true;
+class bto extends bth {
+   protected bto(bti $$0, int $$1, lp $$2) {
+      super($$0, $$1, $$2);
    }
 
    @Override
    public boolean a(int $$0, int $$1) {
-      int $$2 = 40 >> $$1;
-      return $$2 > 0 ? $$0 % $$2 == 0 : true;
+      return $$0 == 1;
+   }
+
+   @Override
+   public boolean a(bva $$0, int $$1) {
+      if ($$0 instanceof aro $$2 && !$$0.R_()) {
+         arn $$3 = $$2.B();
+         jh $$4 = $$2.ah();
+         if ($$4 != null) {
+            $$3.z().a($$2, $$4);
+            $$2.ag();
+            return false;
+         }
+      }
+
+      return true;
    }
 }

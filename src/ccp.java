@@ -1,47 +1,49 @@
-public class ccp extends cbt {
-   private final ciq a;
-   private int b;
+import java.util.EnumSet;
 
-   public ccp(ciq $$0) {
-      this.a = $$0;
-      this.a($$0);
+public class ccp extends cby {
+   private static final cfr b = cfr.b().a(6.0);
+   public static final int a = 400;
+   private final chd c;
+   private cny d;
+   private int e;
+
+   public ccp(chd $$0) {
+      this.c = $$0;
+      this.a(EnumSet.of(cby.a.a, cby.a.b));
    }
 
    @Override
-   public void d() {
-      this.a.hc();
-      this.h();
-   }
-
-   private void h() {
-      awj $$0 = this.a.hb();
-      if ($$0 != null) {
-         this.a.a($$0);
+   public boolean b() {
+      if (!this.c.dX().S()) {
+         return false;
+      } else if (this.c.ea().a(8000) != 0) {
+         return false;
+      } else {
+         this.d = this.c.dX().a(cny.class, b, this.c, this.c.dC(), this.c.dE(), this.c.dI(), this.c.cS().c(6.0, 2.0, 6.0));
+         return this.d != null;
       }
    }
 
    @Override
    public boolean c() {
-      return false;
+      return this.e > 0;
    }
 
    @Override
-   public boolean b() {
-      this.b++;
-      if (this.b > 0 && this.a.ea().a(1000) < this.b) {
-         this.a(this.a);
-         return !this.a.fk() && this.a.ea().a(10) == 0;
-      } else {
-         return false;
-      }
-   }
-
-   private void a(ciq $$0) {
-      this.b = -$$0.hg();
+   public void d() {
+      this.e = this.a(400);
+      this.c.x(true);
    }
 
    @Override
-   public boolean V_() {
-      return true;
+   public void e() {
+      this.c.x(false);
+      this.d = null;
+   }
+
+   @Override
+   public void a() {
+      this.c.K().a(this.d, 30.0F, 30.0F);
+      this.e--;
    }
 }

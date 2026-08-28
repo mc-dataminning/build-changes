@@ -1,44 +1,26 @@
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.stream.Stream;
 
-public class ekp extends eky {
-   public static final MapCodec<ekp> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(jg.a.listOf().fieldOf("positions").forGetter($$0x -> $$0x.c)).apply($$0, ekp::new)
-   );
-   private final List<jg> c;
+public class ekp extends eld {
+   private static final ekp c = new ekp();
+   public static MapCodec<ekp> a = MapCodec.unit(() -> c);
 
-   public static ekp a(jg... $$0) {
-      return new ekp(List.of($$0));
+   private ekp() {
    }
 
-   private ekp(List<jg> $$0) {
-      this.c = $$0;
+   public static ekp a() {
+      return c;
    }
 
    @Override
-   public Stream<jg> a_(ekw $$0, azr $$1, jg $$2) {
-      int $$3 = ki.a($$2.u());
-      int $$4 = ki.a($$2.w());
-      boolean $$5 = false;
-
-      for (jg $$6 : this.c) {
-         if (a($$3, $$4, $$6)) {
-            $$5 = true;
-            break;
-         }
-      }
-
-      return !$$5 ? Stream.empty() : this.c.stream().filter($$2x -> a($$3, $$4, $$2x));
-   }
-
-   private static boolean a(int $$0, int $$1, jg $$2) {
-      return $$0 == ki.a($$2.u()) && $$1 == ki.a($$2.w());
+   protected boolean a(elc $$0, azs $$1, jh $$2) {
+      elb $$3 = $$0.e()
+         .orElseThrow(() -> new IllegalStateException("Tried to biome check an unregistered feature, or a feature that should not restrict the biome"));
+      jq<dgc> $$4 = $$0.d().t($$2);
+      return $$0.f().a($$4).a($$3);
    }
 
    @Override
-   public ekz<?> b() {
-      return ekz.o;
+   public elf<?> b() {
+      return elf.e;
    }
 }

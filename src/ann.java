@@ -1,85 +1,46 @@
-import com.google.common.collect.Lists;
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
 import com.mojang.brigadier.builder.RequiredArgumentBuilder;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import com.mojang.brigadier.exceptions.Dynamic2CommandExceptionType;
 import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
-import java.util.Collections;
+import com.mojang.datafixers.util.Either;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
+import java.util.function.Consumer;
 import java.util.function.Predicate;
-import javax.annotation.Nullable;
+import java.util.function.Supplier;
+import org.apache.commons.lang3.mutable.MutableInt;
 
 public class ann {
-   private static final Dynamic2CommandExceptionType a = new Dynamic2CommandExceptionType(($$0, $$1) -> xh.b("commands.fill.toobig", $$0, $$1));
-   static final gm b = new gm(dia.a.m(), Collections.emptySet(), null);
-   private static final SimpleCommandExceptionType c = new SimpleCommandExceptionType(xh.c("commands.fill.failed"));
+   public static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(xi.c("argument.pos.unloaded"));
+   private static final Dynamic2CommandExceptionType b = new Dynamic2CommandExceptionType(($$0, $$1) -> xi.b("commands.fillbiome.toobig", $$0, $$1));
 
-   public static void a(CommandDispatcher<ev> $$0, er $$1) {
+   public static void a(CommandDispatcher<ew> $$0, es $$1) {
       $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)ew.a("fill").requires($$0x -> $$0x.c(2)))
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)ex.a("fillbiome").requires($$0x -> $$0x.c(2)))
             .then(
-               ew.a("from", gr.a())
+               ex.a("from", gs.a())
                   .then(
-                     ew.a("to", gr.a())
+                     ex.a("to", gs.a())
                         .then(
-                           ((RequiredArgumentBuilder)((RequiredArgumentBuilder)((RequiredArgumentBuilder)((RequiredArgumentBuilder)((RequiredArgumentBuilder)ew.a(
-                                                "block", go.a($$1)
-                                             )
-                                             .executes(
-                                                $$0x -> a((ev)$$0x.getSource(), elj.a(gr.a($$0x, "from"), gr.a($$0x, "to")), go.a($$0x, "block"), ann.a.a, null)
-                                             ))
-                                          .then(
-                                             ((LiteralArgumentBuilder)ew.a("replace")
-                                                   .executes(
-                                                      $$0x -> a(
-                                                            (ev)$$0x.getSource(),
-                                                            elj.a(gr.a($$0x, "from"), gr.a($$0x, "to")),
-                                                            go.a($$0x, "block"),
-                                                            ann.a.a,
-                                                            null
-                                                         )
-                                                   ))
-                                                .then(
-                                                   ew.a("filter", gn.a($$1))
-                                                      .executes(
-                                                         $$0x -> a(
-                                                               (ev)$$0x.getSource(),
-                                                               elj.a(gr.a($$0x, "from"), gr.a($$0x, "to")),
-                                                               go.a($$0x, "block"),
-                                                               ann.a.a,
-                                                               gn.a($$0x, "filter")
-                                                            )
-                                                      )
-                                                )
-                                          ))
-                                       .then(
-                                          ew.a("keep")
-                                             .executes(
-                                                $$0x -> a(
-                                                      (ev)$$0x.getSource(),
-                                                      elj.a(gr.a($$0x, "from"), gr.a($$0x, "to")),
-                                                      go.a($$0x, "block"),
-                                                      ann.a.a,
-                                                      $$0xx -> $$0xx.c().u($$0xx.d())
-                                                   )
-                                             )
-                                       ))
-                                    .then(
-                                       ew.a("outline")
-                                          .executes(
-                                             $$0x -> a((ev)$$0x.getSource(), elj.a(gr.a($$0x, "from"), gr.a($$0x, "to")), go.a($$0x, "block"), ann.a.b, null)
-                                          )
-                                    ))
-                                 .then(
-                                    ew.a("hollow")
-                                       .executes(
-                                          $$0x -> a((ev)$$0x.getSource(), elj.a(gr.a($$0x, "from"), gr.a($$0x, "to")), go.a($$0x, "block"), ann.a.c, null)
-                                       )
-                                 ))
+                           ((RequiredArgumentBuilder)ex.a("biome", fv.a($$1, lz.aG))
+                                 .executes($$0x -> a((ew)$$0x.getSource(), gs.a($$0x, "from"), gs.a($$0x, "to"), fv.a($$0x, "biome", lz.aG), $$0xx -> true)))
                               .then(
-                                 ew.a("destroy")
-                                    .executes($$0x -> a((ev)$$0x.getSource(), elj.a(gr.a($$0x, "from"), gr.a($$0x, "to")), go.a($$0x, "block"), ann.a.d, null))
+                                 ex.a("replace")
+                                    .then(
+                                       ex.a("filter", fz.a($$1, lz.aG))
+                                          .executes(
+                                             $$0x -> a(
+                                                   (ew)$$0x.getSource(),
+                                                   gs.a($$0x, "from"),
+                                                   gs.a($$0x, "to"),
+                                                   fv.a($$0x, "biome", lz.aG),
+                                                   fz.a($$0x, "filter", lz.aG)::test
+                                                )
+                                          )
+                                    )
                               )
                         )
                   )
@@ -87,76 +48,76 @@ public class ann {
       );
    }
 
-   private static int a(ev $$0, elj $$1, gm $$2, ann.a $$3, @Nullable Predicate<dvh> $$4) throws CommandSyntaxException {
-      int $$5 = $$1.d() * $$1.e() * $$1.f();
-      int $$6 = $$0.e().ac().c(der.z);
-      if ($$5 > $$6) {
-         throw a.create($$6, $$5);
-      } else {
-         List<jg> $$7 = Lists.newArrayList();
-         arm $$8 = $$0.e();
-         int $$9 = 0;
+   private static int a(int $$0) {
+      return kb.c(kb.a($$0));
+   }
 
-         for (jg $$10 : jg.b($$1.h(), $$1.i(), $$1.j(), $$1.k(), $$1.l(), $$1.m())) {
-            if ($$4 == null || $$4.test(new dvh($$8, $$10, true))) {
-               gm $$11 = $$3.e.filter($$1, $$10, $$2, $$8);
-               if ($$11 != null) {
-                  dsg $$12 = $$8.c_($$10);
-                  brp.a_($$12);
-                  if ($$11.a($$8, $$10, 2)) {
-                     $$7.add($$10.j());
-                     $$9++;
-                  }
+   private static jh a(jh $$0) {
+      return new jh(a($$0.u()), a($$0.v()), a($$0.w()));
+   }
+
+   private static dgf a(MutableInt $$0, dxf $$1, elp $$2, jq<dgc> $$3, Predicate<jq<dgc>> $$4) {
+      return ($$5, $$6, $$7, $$8) -> {
+         int $$9 = kb.c($$5);
+         int $$10 = kb.c($$6);
+         int $$11 = kb.c($$7);
+         jq<dgc> $$12 = $$1.getNoiseBiome($$5, $$6, $$7);
+         if ($$2.d($$9, $$10, $$11) && $$4.test($$12)) {
+            $$0.increment();
+            return $$3;
+         } else {
+            return $$12;
+         }
+      };
+   }
+
+   public static Either<Integer, CommandSyntaxException> a(arn $$0, jh $$1, jh $$2, jq<dgc> $$3) {
+      return a($$0, $$1, $$2, $$3, $$0x -> true, $$0x -> {
+      });
+   }
+
+   public static Either<Integer, CommandSyntaxException> a(arn $$0, jh $$1, jh $$2, jq<dgc> $$3, Predicate<jq<dgc>> $$4, Consumer<Supplier<xi>> $$5) {
+      jh $$6 = a($$1);
+      jh $$7 = a($$2);
+      elp $$8 = elp.a($$6, $$7);
+      int $$9 = $$8.d() * $$8.e() * $$8.f();
+      int $$10 = $$0.ac().c(dex.z);
+      if ($$9 > $$10) {
+         return Either.right(b.create($$10, $$9));
+      } else {
+         List<dxf> $$11 = new ArrayList<>();
+
+         for (int $$12 = kj.a($$8.j()); $$12 <= kj.a($$8.m()); $$12++) {
+            for (int $$13 = kj.a($$8.h()); $$13 <= kj.a($$8.k()); $$13++) {
+               dxf $$14 = $$0.a($$13, $$12, dyg.n, false);
+               if ($$14 == null) {
+                  return Either.right(a.create());
                }
+
+               $$11.add($$14);
             }
          }
 
-         for (jg $$13 : $$7) {
-            dhy $$14 = $$8.a_($$13).b();
-            $$8.b($$13, $$14);
+         MutableInt $$15 = new MutableInt(0);
+
+         for (dxf $$16 : $$11) {
+            $$16.a(a($$15, $$16, $$8, $$3, $$4), $$0.l().i().b());
+            $$16.a(true);
          }
 
-         if ($$9 == 0) {
-            throw c.create();
-         } else {
-            int $$15 = $$9;
-            $$0.a(() -> xh.a("commands.fill.success", $$15), true);
-            return $$9;
-         }
+         $$0.l().a.a($$11);
+         $$5.accept(() -> xi.a("commands.fillbiome.success.count", $$15.getValue(), $$8.h(), $$8.i(), $$8.j(), $$8.k(), $$8.l(), $$8.m()));
+         return Either.left($$15.getValue());
       }
    }
 
-   static enum a {
-      a(($$0, $$1, $$2, $$3) -> $$2),
-      b(
-         ($$0, $$1, $$2, $$3) -> $$1.u() != $$0.h()
-                  && $$1.u() != $$0.k()
-                  && $$1.v() != $$0.i()
-                  && $$1.v() != $$0.l()
-                  && $$1.w() != $$0.j()
-                  && $$1.w() != $$0.m()
-               ? null
-               : $$2
-      ),
-      c(
-         ($$0, $$1, $$2, $$3) -> $$1.u() != $$0.h()
-                  && $$1.u() != $$0.k()
-                  && $$1.v() != $$0.i()
-                  && $$1.v() != $$0.l()
-                  && $$1.w() != $$0.j()
-                  && $$1.w() != $$0.m()
-               ? ann.b
-               : $$2
-      ),
-      d(($$0, $$1, $$2, $$3) -> {
-         $$3.b($$1, true);
-         return $$2;
-      });
-
-      public final aoy.a e;
-
-      private a(final aoy.a $$0) {
-         this.e = $$0;
+   private static int a(ew $$0, jh $$1, jh $$2, jq.c<dgc> $$3, Predicate<jq<dgc>> $$4) throws CommandSyntaxException {
+      Either<Integer, CommandSyntaxException> $$5 = a($$0.e(), $$1, $$2, $$3, $$4, $$1x -> $$0.a($$1x, true));
+      Optional<CommandSyntaxException> $$6 = $$5.right();
+      if ($$6.isPresent()) {
+         throw (CommandSyntaxException)$$6.get();
+      } else {
+         return (Integer)$$5.left().get();
       }
    }
 }

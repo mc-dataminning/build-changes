@@ -1,4 +1,7 @@
-public class gwr extends gus {
-   public boolean a;
-   public boolean b;
+import javax.annotation.Nullable;
+
+public class gwr extends gun {
+   public float a;
+   @Nullable
+   public dvj b;
 }

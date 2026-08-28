@@ -1,76 +1,77 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableList.Builder;
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.Optional;
-import org.slf4j.Logger;
+import com.mojang.serialization.MapCodec;
+import javax.annotation.Nullable;
 
-public record drx(List<drx.b> d) {
-   static final Logger e = LogUtils.getLogger();
-   public static final drx a = new drx(List.of());
-   public static final Codec<drx> b = drx.b.a.listOf().xmap(drx::new, drx::b);
-   public static final zf<ws, drx> c = drx.b.b.a(zd.a()).a(drx::new, drx::b);
+public class drx extends dpg {
+   public static final MapCodec<drx> b = b(drx::new);
+   @Nullable
+   private static dvo h;
+   @Nullable
+   private static dvo i;
 
-   public drx a() {
-      return new drx(List.copyOf(this.d.subList(0, this.d.size() - 1)));
+   @Override
+   public MapCodec<drx> a() {
+      return b;
    }
 
-   public List<drx.b> b() {
-      return this.d;
+   protected drx(dvi.d $$0) {
+      super(dpg.b.d, $$0);
    }
 
-   public static class a {
-      private final Builder<drx.b> a = ImmutableList.builder();
+   @Override
+   public void a(dfb $$0, jh $$1, dvj $$2, @Nullable bva $$3, cwb $$4) {
+      a($$0, $$1);
+   }
 
-      @Deprecated
-      public drx.a a(jq<drw> $$0, alg<drw> $$1, cuu $$2) {
-         Optional<jp.c<drw>> $$3 = $$0.a($$1);
-         if ($$3.isEmpty()) {
-            drx.e.warn("Unable to find banner pattern with id: '{}'", $$1.a());
-            return this;
-         } else {
-            return this.a($$3.get(), $$2);
+   public static void a(dfb $$0, jh $$1) {
+      if ($$0.c_($$1) instanceof dua $$2) {
+         a($$0, $$1, $$2);
+      }
+   }
+
+   public static void a(dfb $$0, jh $$1, dua $$2) {
+      if (!$$0.C) {
+         dvj $$3 = $$2.m();
+         boolean $$4 = $$3.a(dig.gG) || $$3.a(dig.gH);
+         if ($$4 && $$1.v() >= $$0.I_() && $$0.ak() != bsa.a) {
+            dvo.b $$5 = q().a($$0, $$1);
+            if ($$5 != null) {
+               cki $$6 = bul.bp.a($$0, buk.k);
+               if ($$6 != null) {
+                  diy.a($$0, $$5);
+                  jh $$7 = $$5.a(1, 2, 0).d();
+                  $$6.b((double)$$7.u() + 0.5, (double)$$7.v() + 0.55, (double)$$7.w() + 0.5, $$5.b().o() == jm.a.a ? 0.0F : 90.0F, 0.0F);
+                  $$6.aX = $$5.b().o() == jm.a.a ? 0.0F : 90.0F;
+                  $$6.q();
+
+                  for (aro $$8 : $$0.a(aro.class, $$6.cS().g(50.0))) {
+                     ao.o.a($$8, $$6);
+                  }
+
+                  $$0.b($$6);
+                  diy.b($$0, $$5);
+               }
+            }
          }
       }
-
-      public drx.a a(jp<drw> $$0, cuu $$1) {
-         return this.a(new drx.b($$0, $$1));
-      }
-
-      public drx.a a(drx.b $$0) {
-         this.a.add($$0);
-         return this;
-      }
-
-      public drx.a a(drx $$0) {
-         this.a.addAll($$0.d);
-         return this;
-      }
-
-      public drx a() {
-         return new drx(this.a.build());
-      }
    }
 
-   public static record b(jp<drw> c, cuu d) {
-      public static final Codec<drx.b> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(drw.c.fieldOf("pattern").forGetter(drx.b::b), cuu.q.fieldOf("color").forGetter(drx.b::c)).apply($$0, drx.b::new)
-      );
-      public static final zf<ws, drx.b> b = zf.a(drw.d, drx.b::b, cuu.r, drx.b::c, drx.b::new);
+   public static boolean b(dfb $$0, jh $$1, cwb $$2) {
+      return $$2.a(cwf.uo) && $$1.v() >= $$0.I_() + 2 && $$0.ak() != bsa.a && !$$0.C ? r().a($$0, $$1) != null : false;
+   }
 
-      public xv a() {
-         String $$0 = this.c.a().b();
-         return xh.c($$0 + "." + this.d.b());
+   private static dvo q() {
+      if (h == null) {
+         h = dvp.a().a("^^^", "###", "~#~").a('#', $$0 -> $$0.a().a(axa.aG)).a('^', dvn.a(dvs.a(dig.gG).or(dvs.a(dig.gH)))).a('~', $$0 -> $$0.a().l()).b();
       }
 
-      public jp<drw> b() {
-         return this.c;
+      return h;
+   }
+
+   private static dvo r() {
+      if (i == null) {
+         i = dvp.a().a("   ", "###", "~#~").a('#', $$0 -> $$0.a().a(axa.aG)).a('~', $$0 -> $$0.a().l()).b();
       }
 
-      public cuu c() {
-         return this.d;
-      }
+      return i;
    }
 }

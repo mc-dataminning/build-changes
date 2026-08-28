@@ -1,30 +1,81 @@
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableList.Builder;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Collection;
 import java.util.List;
-import java.util.function.Consumer;
+import java.util.function.Function;
 
-public class euj extends euo {
-   public static final MapCodec<euj> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(lx.g.r().fieldOf("name").forGetter($$0x -> $$0x.j)).and(b($$0)).apply($$0, euj::new)
-   );
-   private final jp<cvt> j;
+public class euj extends eul {
+   public static final MapCodec<euj> a = a(euj::new);
 
-   private euj(jp<cvt> $$0, int $$1, int $$2, List<exh> $$3, List<evk> $$4) {
-      super($$1, $$2, $$3, $$4);
-      this.j = $$0;
+   euj(List<eus> $$0, List<exn> $$1) {
+      super($$0, $$1);
    }
 
    @Override
-   public eun a() {
-      return euk.c;
+   public eut a() {
+      return euq.g;
    }
 
    @Override
-   public void a(Consumer<cvx> $$0, etw $$1) {
-      $$0.accept(new cvx(this.j));
+   protected euk a(List<? extends euk> $$0) {
+      return switch ($$0.size()) {
+         case 0 -> b;
+         case 1 -> (euk)$$0.get(0);
+         case 2 -> $$0.get(0).or($$0.get(1));
+         default -> ($$1, $$2) -> {
+         for (euk $$3 : $$0) {
+            if ($$3.expand($$1, $$2)) {
+               return true;
+            }
+         }
+
+         return false;
+      };
+      };
    }
 
-   public static euo.a<?> a(deu $$0) {
-      return a(($$1, $$2, $$3, $$4) -> new euj($$0.j().f(), $$1, $$2, $$3, $$4));
+   @Override
+   public void a(eui $$0) {
+      super.a($$0);
+
+      for (int $$1 = 0; $$1 < this.d.size() - 1; $$1++) {
+         if (this.d.get($$1).e.isEmpty()) {
+            $$0.b("Unreachable entry!");
+         }
+      }
+   }
+
+   public static euj.a a(eus.a<?>... $$0) {
+      return new euj.a($$0);
+   }
+
+   public static <E> euj.a a(Collection<E> $$0, Function<E, eus.a<?>> $$1) {
+      return new euj.a($$0.stream().map($$1::apply).toArray(eus.a[]::new));
+   }
+
+   public static class a extends eus.a<euj.a> {
+      private final Builder<eus> a = ImmutableList.builder();
+
+      public a(eus.a<?>... $$0) {
+         for (eus.a<?> $$1 : $$0) {
+            this.a.add($$1.b());
+         }
+      }
+
+      protected euj.a a() {
+         return this;
+      }
+
+      @Override
+      public euj.a a(eus.a<?> $$0) {
+         this.a.add($$0.b());
+         return this;
+      }
+
+      @Override
+      public eus b() {
+         return new euj(this.a.build(), this.f());
+      }
    }
 }

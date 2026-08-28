@@ -1,39 +1,24 @@
 import com.mojang.serialization.MapCodec;
 
-public class dqm extends djb {
-   public static final MapCodec<dqm> n = b(dqm::new);
+public class dqm extends dqq {
+   public static final MapCodec<dqm> a = b(dqm::new);
 
    @Override
    public MapCodec<dqm> a() {
-      return n;
+      return a;
    }
 
-   public dqm(dvc.d $$0) {
-      super(() -> dsi.c, $$0);
-   }
-
-   @Override
-   public dsg a(jg $$0, dvd $$1) {
-      return new dub($$0, $$1);
+   public dqm(dvi.d $$0) {
+      super($$0);
    }
 
    @Override
-   protected awr<alh> c() {
-      return awu.i.b(awu.ai);
+   protected boolean e_(dvj $$0) {
+      return false;
    }
 
    @Override
-   protected boolean f_(dvd $$0) {
-      return true;
-   }
-
-   @Override
-   protected int a(dvd $$0, dea $$1, jg $$2, jl $$3) {
-      return azj.a(dsn.a($$1, $$2), 0, 15);
-   }
-
-   @Override
-   protected int b(dvd $$0, dea $$1, jg $$2, jl $$3) {
-      return $$3 == jl.b ? $$0.a($$1, $$2, $$3) : 0;
+   protected int i_(dvj $$0) {
+      return 15;
    }
 }

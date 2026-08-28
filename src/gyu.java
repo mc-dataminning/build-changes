@@ -1,140 +1,75 @@
-import com.google.common.cache.CacheBuilder;
-import com.google.common.cache.CacheLoader;
-import com.google.common.cache.LoadingCache;
-import com.google.common.hash.Hashing;
-import com.mojang.authlib.GameProfile;
-import com.mojang.authlib.SignatureState;
-import com.mojang.authlib.minecraft.MinecraftProfileTexture;
-import com.mojang.authlib.minecraft.MinecraftProfileTextures;
-import com.mojang.authlib.minecraft.MinecraftSessionService;
-import com.mojang.authlib.minecraft.MinecraftProfileTexture.Type;
-import com.mojang.authlib.properties.Property;
-import com.mojang.logging.LogUtils;
-import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
+import java.nio.file.FileSystems;
+import java.nio.file.Files;
 import java.nio.file.Path;
-import java.time.Duration;
 import java.util.Map;
-import java.util.UUID;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.Executor;
-import java.util.function.Supplier;
+import java.util.Optional;
+import java.util.function.BiConsumer;
+import java.util.function.Function;
 import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
-public class gyu {
-   static final Logger a = LogUtils.getLogger();
-   private final MinecraftSessionService b;
-   private final LoadingCache<gyu.a, CompletableFuture<gyt>> c;
-   private final gyu.b d;
-   private final gyu.b e;
-   private final gyu.b f;
+public class gyu extends auf {
+   private static final aub d = new aub(xi.c("resourcePack.vanilla.description"), ab.b().a(ato.a), Optional.empty());
+   private static final ate e = ate.a(aub.b, d);
+   public static final String c = "high_contrast";
+   private static final Map<String, xi> f = Map.of(
+      "programmer_art", xi.c("resourcePack.programmer_art.name"), "high_contrast", xi.c("resourcePack.high_contrast.name")
+   );
+   private static final atl g = new atl("vanilla", xi.c("resourcePack.vanilla.name"), aum.c, Optional.of(b));
+   private static final atn h = new atn(true, aui.b.b, false);
+   private static final atn i = new atn(false, aui.b.a, false);
+   private static final ali j = ali.b("resourcepacks");
+   @Nullable
+   private final Path k;
 
-   public gyu(gxt $$0, Path $$1, final MinecraftSessionService $$2, final Executor $$3) {
-      this.b = $$2;
-      this.d = new gyu.b($$0, $$1, Type.SKIN);
-      this.e = new gyu.b($$0, $$1, Type.CAPE);
-      this.f = new gyu.b($$0, $$1, Type.ELYTRA);
-      this.c = CacheBuilder.newBuilder().expireAfterAccess(Duration.ofSeconds(15L)).build(new CacheLoader<gyu.a, CompletableFuture<gyt>>() {
-         public CompletableFuture<gyt> a(gyu.a $$0) {
-            return CompletableFuture.<MinecraftProfileTextures>supplyAsync(() -> {
-               Property $$2xx = $$0.b();
-               if ($$2xx == null) {
-                  return MinecraftProfileTextures.EMPTY;
-               } else {
-                  MinecraftProfileTextures $$3xx = $$2.unpackTextures($$2xx);
-                  if ($$3xx.signatureState() == SignatureState.INVALID) {
-                     gyu.a.warn("Profile contained invalid signature for textures property (profile id: {})", $$0.a());
-                  }
+   public gyu(Path $$0, ezd $$1) {
+      super(ato.a, b($$0), j, $$1);
+      this.k = this.a($$0);
+   }
 
-                  return $$3xx;
-               }
-            }, ad.g()).thenComposeAsync($$1 -> gyu.this.a($$0.a(), $$1), $$3);
+   private static atl a(String $$0, xi $$1) {
+      return new atl($$0, $$1, aum.c, Optional.of(auh.a($$0)));
+   }
+
+   @Nullable
+   private Path a(Path $$0) {
+      if (ab.aV && $$0.getFileSystem() == FileSystems.getDefault()) {
+         Path $$1 = $$0.getParent().resolve("resourcepacks");
+         if (Files.isDirectory($$1)) {
+            return $$1;
          }
-      });
-   }
-
-   public Supplier<gyt> a(GameProfile $$0) {
-      CompletableFuture<gyt> $$1 = this.c($$0);
-      gyt $$2 = gyk.a($$0);
-      return () -> $$1.getNow($$2);
-   }
-
-   public gyt b(GameProfile $$0) {
-      gyt $$1 = this.c($$0).getNow(null);
-      return $$1 != null ? $$1 : gyk.a($$0);
-   }
-
-   public CompletableFuture<gyt> c(GameProfile $$0) {
-      Property $$1 = this.b.getPackedTextures($$0);
-      return (CompletableFuture<gyt>)this.c.getUnchecked(new gyu.a($$0.getId(), $$1));
-   }
-
-   CompletableFuture<gyt> a(UUID $$0, MinecraftProfileTextures $$1) {
-      MinecraftProfileTexture $$2 = $$1.skin();
-      CompletableFuture<alh> $$3;
-      gyt.a $$4;
-      if ($$2 != null) {
-         $$3 = this.d.a($$2);
-         $$4 = gyt.a.a($$2.getMetadata("model"));
-      } else {
-         gyt $$5 = gyk.a($$0);
-         $$3 = CompletableFuture.completedFuture($$5.a());
-         $$4 = $$5.e();
       }
 
-      String $$8 = x.a($$2, MinecraftProfileTexture::getUrl);
-      MinecraftProfileTexture $$9 = $$1.cape();
-      CompletableFuture<alh> $$10 = $$9 != null ? this.e.a($$9) : CompletableFuture.completedFuture(null);
-      MinecraftProfileTexture $$11 = $$1.elytra();
-      CompletableFuture<alh> $$12 = $$11 != null ? this.f.a($$11) : CompletableFuture.completedFuture(null);
-      return CompletableFuture.allOf($$3, $$10, $$12)
-         .thenApply($$6x -> new gyt($$3.join(), $$8, $$10.join(), $$12.join(), $$4, $$1.signatureState() == SignatureState.SIGNED));
+      return null;
    }
 
-   static record a(UUID a, @Nullable Property b) {
+   private static atq b(Path $$0) {
+      atr $$1 = new atr().a(e).a("minecraft", "realms");
+      return $$1.b().a().a(ato.a, $$0).a(g);
    }
 
-   static class b {
-      private final gxt a;
-      private final Path b;
-      private final Type c;
-      private final Map<String, CompletableFuture<alh>> d = new Object2ObjectOpenHashMap();
+   @Override
+   protected xi a(String $$0) {
+      xi $$1 = f.get($$0);
+      return (xi)($$1 != null ? $$1 : xi.b($$0));
+   }
 
-      b(gxt $$0, Path $$1, Type $$2) {
-         this.a = $$0;
-         this.b = $$1;
-         this.c = $$2;
-      }
+   @Nullable
+   @Override
+   protected aui a(atm $$0) {
+      return aui.a(g, b($$0), ato.a, h);
+   }
 
-      public CompletableFuture<alh> a(MinecraftProfileTexture $$0) {
-         String $$1 = $$0.getHash();
-         CompletableFuture<alh> $$2 = this.d.get($$1);
-         if ($$2 == null) {
-            $$2 = this.b($$0);
-            this.d.put($$1, $$2);
-         }
+   @Nullable
+   @Override
+   protected aui a(String $$0, aui.c $$1, xi $$2) {
+      return aui.a(a($$0, $$2), $$1, ato.a, i);
+   }
 
-         return $$2;
-      }
-
-      private CompletableFuture<alh> b(MinecraftProfileTexture $$0) {
-         String $$1 = Hashing.sha1().hashUnencodedChars($$0.getHash()).toString();
-         alh $$2 = this.a($$1);
-         Path $$3 = this.b.resolve($$1.length() > 2 ? $$1.substring(0, 2) : "xx").resolve($$1);
-         CompletableFuture<alh> $$4 = new CompletableFuture<>();
-         gxg $$5 = new gxg($$3.toFile(), $$0.getUrl(), gyk.a(), this.c == Type.SKIN, () -> $$4.complete($$2));
-         this.a.a($$2, $$5);
-         return $$4;
-      }
-
-      private alh a(String $$0) {
-         String $$1 = switch (this.c) {
-            case SKIN -> "skins";
-            case CAPE -> "capes";
-            case ELYTRA -> "elytra";
-            default -> throw new MatchException(null, null);
-         };
-         return alh.b($$1 + "/" + $$0);
+   @Override
+   protected void a(BiConsumer<String, Function<String, aui>> $$0) {
+      super.a($$0);
+      if (this.k != null) {
+         this.a(this.k, $$0);
       }
    }
 }

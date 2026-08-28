@@ -1,124 +1,150 @@
-import it.unimi.dsi.fastutil.ints.IntArrayList;
-import it.unimi.dsi.fastutil.ints.IntList;
-import java.util.Map;
+import java.util.ArrayList;
+import java.util.List;
 
-public class dae extends daa {
-   private static final Map<cvt, cyk.a> a = Map.of(
-      cwb.tY,
-      cyk.a.b,
-      cwb.pu,
-      cyk.a.e,
-      cwb.sj,
-      cyk.a.c,
-      cwb.un,
-      cyk.a.d,
-      cwb.uo,
-      cyk.a.d,
-      cwb.ur,
-      cyk.a.d,
-      cwb.up,
-      cyk.a.d,
-      cwb.us,
-      cyk.a.d,
-      cwb.uq,
-      cyk.a.d,
-      cwb.ut,
-      cyk.a.d
-   );
-   private static final daf b = daf.a(cwb.oA);
-   private static final daf c = daf.a(cwb.qZ);
-   private static final daf d = daf.a(cwb.pv);
+public class dae implements das {
+   public static final dae a = new dae(0, 0, List.of());
+   private final int b;
+   private final int c;
+   private final List<cwb> d;
+   private final cos e = new cos();
+   private final int f;
 
-   public dae(czx $$0) {
-      super($$0);
-   }
+   private dae(int $$0, int $$1, List<cwb> $$2) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
+      int $$3 = 0;
 
-   public boolean a(czy $$0, dev $$1) {
-      boolean $$2 = false;
-      boolean $$3 = false;
-      boolean $$4 = false;
-      boolean $$5 = false;
-      boolean $$6 = false;
-
-      for (int $$7 = 0; $$7 < $$0.a(); $$7++) {
-         cvx $$8 = $$0.a($$7);
-         if (!$$8.f()) {
-            if (a.containsKey($$8.h())) {
-               if ($$4) {
-                  return false;
-               }
-
-               $$4 = true;
-            } else if (c.a($$8)) {
-               if ($$6) {
-                  return false;
-               }
-
-               $$6 = true;
-            } else if (b.a($$8)) {
-               if ($$5) {
-                  return false;
-               }
-
-               $$5 = true;
-            } else if (d.a($$8)) {
-               if ($$2) {
-                  return false;
-               }
-
-               $$2 = true;
-            } else {
-               if (!($$8.h() instanceof cuv)) {
-                  return false;
-               }
-
-               $$3 = true;
-            }
+      for (cwb $$4 : $$2) {
+         if (!$$4.f()) {
+            $$3++;
+            this.e.a($$4, 1);
          }
       }
 
-      return $$2 && $$3;
+      this.f = $$3;
    }
 
-   public cvx a(czy $$0, jr.a $$1) {
-      cyk.a $$2 = cyk.a.a;
-      boolean $$3 = false;
-      boolean $$4 = false;
-      IntList $$5 = new IntArrayList();
+   public static dae a(int $$0, int $$1, List<cwb> $$2) {
+      return b($$0, $$1, $$2).a();
+   }
 
-      for (int $$6 = 0; $$6 < $$0.a(); $$6++) {
-         cvx $$7 = $$0.a($$6);
-         if (!$$7.f()) {
-            cyk.a $$8 = a.get($$7.h());
-            if ($$8 != null) {
-               $$2 = $$8;
-            } else if (c.a($$7)) {
-               $$3 = true;
-            } else if (b.a($$7)) {
-               $$4 = true;
-            } else if ($$7.h() instanceof cuv) {
-               $$5.add(((cuv)$$7.h()).c().f());
+   public static dae.a b(int $$0, int $$1, List<cwb> $$2) {
+      if ($$0 != 0 && $$1 != 0) {
+         int $$3 = $$0 - 1;
+         int $$4 = 0;
+         int $$5 = $$1 - 1;
+         int $$6 = 0;
+
+         for (int $$7 = 0; $$7 < $$1; $$7++) {
+            boolean $$8 = true;
+
+            for (int $$9 = 0; $$9 < $$0; $$9++) {
+               cwb $$10 = $$2.get($$9 + $$7 * $$0);
+               if (!$$10.f()) {
+                  $$3 = Math.min($$3, $$9);
+                  $$4 = Math.max($$4, $$9);
+                  $$8 = false;
+               }
+            }
+
+            if (!$$8) {
+               $$5 = Math.min($$5, $$7);
+               $$6 = Math.max($$6, $$7);
             }
          }
+
+         int $$11 = $$4 - $$3 + 1;
+         int $$12 = $$6 - $$5 + 1;
+         if ($$11 <= 0 || $$12 <= 0) {
+            return dae.a.a;
+         } else if ($$11 == $$0 && $$12 == $$1) {
+            return new dae.a(new dae($$0, $$1, $$2), $$3, $$5);
+         } else {
+            List<cwb> $$13 = new ArrayList<>($$11 * $$12);
+
+            for (int $$14 = 0; $$14 < $$12; $$14++) {
+               for (int $$15 = 0; $$15 < $$11; $$15++) {
+                  int $$16 = $$15 + $$3 + ($$14 + $$5) * $$0;
+                  $$13.add($$2.get($$16));
+               }
+            }
+
+            return new dae.a(new dae($$11, $$12, $$13), $$3, $$5);
+         }
+      } else {
+         return dae.a.a;
+      }
+   }
+
+   @Override
+   public cwb a(int $$0) {
+      return this.d.get($$0);
+   }
+
+   public cwb a(int $$0, int $$1) {
+      return this.d.get($$0 + $$1 * this.b);
+   }
+
+   @Override
+   public int a() {
+      return this.d.size();
+   }
+
+   @Override
+   public boolean b() {
+      return this.f == 0;
+   }
+
+   public cos c() {
+      return this.e;
+   }
+
+   public List<cwb> d() {
+      return this.d;
+   }
+
+   public int e() {
+      return this.f;
+   }
+
+   public int f() {
+      return this.b;
+   }
+
+   public int g() {
+      return this.c;
+   }
+
+   @Override
+   public boolean equals(Object $$0) {
+      if ($$0 == this) {
+         return true;
+      } else {
+         return !($$0 instanceof dae $$1) ? false : this.b == $$1.b && this.c == $$1.c && this.f == $$1.f && cwb.a(this.d, $$1.d);
+      }
+   }
+
+   @Override
+   public int hashCode() {
+      int $$0 = cwb.a(this.d);
+      $$0 = 31 * $$0 + this.b;
+      return 31 * $$0 + this.c;
+   }
+
+   public static record a(dae b, int c, int d) {
+      public static final dae.a a = new dae.a(dae.a, 0, 0);
+
+      public dae a() {
+         return this.b;
       }
 
-      cvx $$9 = new cvx(cwb.ux);
-      $$9.b(kt.ad, new cyk($$2, $$5, IntList.of(), $$4, $$3));
-      return $$9;
-   }
+      public int b() {
+         return this.c;
+      }
 
-   @Override
-   public boolean a(int $$0, int $$1) {
-      return $$0 * $$1 >= 2;
-   }
-
-   @Override
-   public cvx a(jr.a $$0) {
-      return new cvx(cwb.ux);
-   }
-
-   @Override
-   public dao<?> ar_() {
-      return dao.h;
+      public int c() {
+         return this.d;
+      }
    }
 }

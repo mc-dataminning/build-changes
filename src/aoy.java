@@ -1,65 +1,60 @@
 import com.mojang.brigadier.CommandDispatcher;
+import com.mojang.brigadier.arguments.StringArgumentType;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
 import com.mojang.brigadier.builder.RequiredArgumentBuilder;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
-import java.util.function.Predicate;
-import javax.annotation.Nullable;
+import java.nio.charset.StandardCharsets;
+import java.util.Optional;
+import java.util.UUID;
 
 public class aoy {
-   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(xh.c("commands.setblock.failed"));
-
-   public static void a(CommandDispatcher<ev> $$0, er $$1) {
+   public static void a(CommandDispatcher<ew> $$0) {
       $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)ew.a("setblock").requires($$0x -> $$0x.c(2)))
-            .then(
-               ew.a("pos", gr.a())
-                  .then(
-                     ((RequiredArgumentBuilder)((RequiredArgumentBuilder)((RequiredArgumentBuilder)ew.a("block", go.a($$1))
-                                 .executes($$0x -> a((ev)$$0x.getSource(), gr.a($$0x, "pos"), go.a($$0x, "block"), aoy.b.a, null)))
-                              .then(ew.a("destroy").executes($$0x -> a((ev)$$0x.getSource(), gr.a($$0x, "pos"), go.a($$0x, "block"), aoy.b.b, null))))
-                           .then(
-                              ew.a("keep")
-                                 .executes($$0x -> a((ev)$$0x.getSource(), gr.a($$0x, "pos"), go.a($$0x, "block"), aoy.b.a, $$0xx -> $$0xx.c().u($$0xx.d())))
-                           ))
-                        .then(ew.a("replace").executes($$0x -> a((ev)$$0x.getSource(), gr.a($$0x, "pos"), go.a($$0x, "block"), aoy.b.a, null)))
-                  )
-            )
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)ex.a("serverpack").requires($$0x -> $$0x.c(2)))
+               .then(
+                  ex.a("push")
+                     .then(
+                        ((RequiredArgumentBuilder)ex.a("url", StringArgumentType.string())
+                              .then(
+                                 ((RequiredArgumentBuilder)ex.a("uuid", gm.a())
+                                       .then(
+                                          ex.a("hash", StringArgumentType.word())
+                                             .executes(
+                                                $$0x -> a(
+                                                      (ew)$$0x.getSource(),
+                                                      StringArgumentType.getString($$0x, "url"),
+                                                      Optional.of(gm.a($$0x, "uuid")),
+                                                      Optional.of(StringArgumentType.getString($$0x, "hash"))
+                                                   )
+                                             )
+                                       ))
+                                    .executes(
+                                       $$0x -> a(
+                                             (ew)$$0x.getSource(), StringArgumentType.getString($$0x, "url"), Optional.of(gm.a($$0x, "uuid")), Optional.empty()
+                                          )
+                                    )
+                              ))
+                           .executes($$0x -> a((ew)$$0x.getSource(), StringArgumentType.getString($$0x, "url"), Optional.empty(), Optional.empty()))
+                     )
+               ))
+            .then(ex.a("pop").then(ex.a("uuid", gm.a()).executes($$0x -> a((ew)$$0x.getSource(), gm.a($$0x, "uuid")))))
       );
    }
 
-   private static int a(ev $$0, jg $$1, gm $$2, aoy.b $$3, @Nullable Predicate<dvh> $$4) throws CommandSyntaxException {
-      arm $$5 = $$0.e();
-      if ($$4 != null && !$$4.test(new dvh($$5, $$1, true))) {
-         throw a.create();
-      } else {
-         boolean $$6;
-         if ($$3 == aoy.b.b) {
-            $$5.b($$1, true);
-            $$6 = !$$2.a().l() || !$$5.a_($$1).l();
-         } else {
-            dsg $$7 = $$5.c_($$1);
-            brp.a_($$7);
-            $$6 = true;
-         }
-
-         if ($$6 && !$$2.a($$5, $$1, 2)) {
-            throw a.create();
-         } else {
-            $$5.b($$1, $$2.a().b());
-            $$0.a(() -> xh.a("commands.setblock.success", $$1.u(), $$1.v(), $$1.w()), true);
-            return 1;
-         }
-      }
+   private static void a(ew $$0, zp<?> $$1) {
+      $$0.l().ah().e().forEach($$1x -> $$1x.a($$1));
    }
 
-   public interface a {
-      @Nullable
-      gm filter(elj var1, jg var2, gm var3, arm var4);
+   private static int a(ew $$0, String $$1, Optional<UUID> $$2, Optional<String> $$3) {
+      UUID $$4 = $$2.orElseGet(() -> UUID.nameUUIDFromBytes($$1.getBytes(StandardCharsets.UTF_8)));
+      String $$5 = $$3.orElse("");
+      aac $$6 = new aac($$4, $$1, $$5, false, null);
+      a($$0, $$6);
+      return 0;
    }
 
-   public static enum b {
-      a,
-      b;
+   private static int a(ew $$0, UUID $$1) {
+      aab $$2 = new aab(Optional.of($$1));
+      a($$0, $$2);
+      return 0;
    }
 }

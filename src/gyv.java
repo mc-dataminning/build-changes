@@ -1,56 +1,45 @@
-import com.google.common.collect.Lists;
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.util.Calendar;
-import java.util.Collections;
-import java.util.Date;
-import java.util.List;
-import java.util.Locale;
-import java.util.stream.Collectors;
-import javax.annotation.Nullable;
+import com.mojang.authlib.GameProfile;
+import java.util.UUID;
 
-public class gyv extends avf<List<String>> {
-   private static final alh a = alh.b("texts/splashes.txt");
-   private static final azr b = azr.a();
-   private final List<String> c = Lists.newArrayList();
-   private final fjn d;
+public class gyv {
+   private static final gze[] a = new gze[]{
+      a("textures/entity/player/slim/alex.png", gze.a.a),
+      a("textures/entity/player/slim/ari.png", gze.a.a),
+      a("textures/entity/player/slim/efe.png", gze.a.a),
+      a("textures/entity/player/slim/kai.png", gze.a.a),
+      a("textures/entity/player/slim/makena.png", gze.a.a),
+      a("textures/entity/player/slim/noor.png", gze.a.a),
+      a("textures/entity/player/slim/steve.png", gze.a.a),
+      a("textures/entity/player/slim/sunny.png", gze.a.a),
+      a("textures/entity/player/slim/zuri.png", gze.a.a),
+      a("textures/entity/player/wide/alex.png", gze.a.b),
+      a("textures/entity/player/wide/ari.png", gze.a.b),
+      a("textures/entity/player/wide/efe.png", gze.a.b),
+      a("textures/entity/player/wide/kai.png", gze.a.b),
+      a("textures/entity/player/wide/makena.png", gze.a.b),
+      a("textures/entity/player/wide/noor.png", gze.a.b),
+      a("textures/entity/player/wide/steve.png", gze.a.b),
+      a("textures/entity/player/wide/sunny.png", gze.a.b),
+      a("textures/entity/player/wide/zuri.png", gze.a.b)
+   };
 
-   public gyv(fjn $$0) {
-      this.d = $$0;
+   public static ali a() {
+      return b().a();
    }
 
-   protected List<String> a(ava $$0, bok $$1) {
-      try {
-         List var4;
-         try (BufferedReader $$2 = fja.Q().ac().openAsReader(a)) {
-            var4 = $$2.lines().map(String::trim).filter($$0x -> $$0x.hashCode() != 125780783).collect(Collectors.toList());
-         }
-
-         return var4;
-      } catch (IOException var8) {
-         return Collections.emptyList();
-      }
+   public static gze b() {
+      return a[6];
    }
 
-   protected void a(List<String> $$0, ava $$1, bok $$2) {
-      this.c.clear();
-      this.c.addAll($$0);
+   public static gze a(UUID $$0) {
+      return a[Math.floorMod($$0.hashCode(), a.length)];
    }
 
-   @Nullable
-   public fmd a() {
-      Calendar $$0 = Calendar.getInstance();
-      $$0.setTime(new Date());
-      if ($$0.get(2) + 1 == 12 && $$0.get(5) == 24) {
-         return fmd.a;
-      } else if ($$0.get(2) + 1 == 1 && $$0.get(5) == 1) {
-         return fmd.b;
-      } else if ($$0.get(2) + 1 == 10 && $$0.get(5) == 31) {
-         return fmd.c;
-      } else if (this.c.isEmpty()) {
-         return null;
-      } else {
-         return this.d != null && b.a(this.c.size()) == 42 ? new fmd(this.d.c().toUpperCase(Locale.ROOT) + " IS YOU") : new fmd(this.c.get(b.a(this.c.size())));
-      }
+   public static gze a(GameProfile $$0) {
+      return a($$0.getId());
+   }
+
+   private static gze a(String $$0, gze.a $$1) {
+      return new gze(ali.b($$0), null, null, null, $$1, true);
    }
 }

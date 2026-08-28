@@ -1,78 +1,71 @@
-import com.google.common.collect.Maps;
-import com.google.common.collect.Sets;
-import com.mojang.authlib.GameProfile;
-import com.mojang.authlib.minecraft.UserApiService;
-import java.util.Map;
-import java.util.Set;
-import java.util.UUID;
-import java.util.concurrent.CompletableFuture;
+import java.util.function.Predicate;
+import javax.annotation.Nullable;
 
 public class fvh {
-   private final fja a;
-   private final Set<UUID> b = Sets.newHashSet();
-   private final UserApiService c;
-   private final Map<String, UUID> d = Maps.newHashMap();
-   private boolean e;
-   private CompletableFuture<?> f = CompletableFuture.completedFuture(null);
+   private final gdc a;
+   private final gdk b;
+   private final Predicate<gdf.a> c;
+   @Nullable
+   private yd d = null;
+   private int e;
+   private int f;
+   @Nullable
+   private xy g;
 
-   public fvh(fja $$0, UserApiService $$1) {
-      this.a = $$0;
+   public fvh(gdq $$0, Predicate<gdf.a> $$1) {
+      this.a = $$0.b();
+      this.b = new gdk($$0.a().b().leadingContextMessageCount());
       this.c = $$1;
+      this.e = this.a.b();
    }
 
-   public void a(UUID $$0) {
-      this.b.add($$0);
+   public void a(int $$0, fvh.a $$1) {
+      int $$2 = 0;
+
+      while ($$2 < $$0) {
+         gde $$3 = this.a.b(this.e);
+         if ($$3 == null) {
+            break;
+         }
+
+         int $$4 = this.e--;
+         if ($$3 instanceof gdf.a $$5 && !$$5.g().equals(this.g)) {
+            if (this.a($$1, $$5)) {
+               if (this.f > 0) {
+                  $$1.a(xi.a("gui.chatSelection.fold", this.f));
+                  this.f = 0;
+               }
+
+               $$1.a($$4, $$5);
+               $$2++;
+            } else {
+               this.f++;
+            }
+
+            this.g = $$5.g();
+         }
+      }
    }
 
-   public void b(UUID $$0) {
-      this.b.remove($$0);
-   }
+   private boolean a(fvh.a $$0, gdf.a $$1) {
+      xy $$2 = $$1.g();
+      boolean $$3 = this.b.b($$2);
+      if (this.c.test($$1)) {
+         this.b.a($$2);
+         if (this.d != null && !this.d.a($$2.k())) {
+            $$0.a(xi.a("gui.chatSelection.join", $$1.f().getName()).a(n.o));
+         }
 
-   public boolean c(UUID $$0) {
-      return this.d($$0) || this.e($$0);
-   }
-
-   public boolean d(UUID $$0) {
-      return this.b.contains($$0);
-   }
-
-   public void a() {
-      this.e = true;
-      this.f = this.f.thenRunAsync(this.c::refreshBlockList, ad.h());
-   }
-
-   public void b() {
-      this.e = false;
-   }
-
-   public boolean e(UUID $$0) {
-      if (!this.e) {
-         return false;
+         this.d = $$2.k();
+         return true;
       } else {
-         this.f.join();
-         return this.c.isBlockedPlayer($$0);
+         return $$3;
       }
    }
 
-   public Set<UUID> c() {
-      return this.b;
-   }
+   public interface a {
+      void a(int var1, gdf.a var2);
 
-   public UUID a(String $$0) {
-      return this.d.getOrDefault($$0, ad.e);
-   }
-
-   public void a(gci $$0) {
-      GameProfile $$1 = $$0.a();
-      this.d.put($$1.getName(), $$1.getId());
-      if (this.a.z instanceof fvj $$2) {
-         $$2.a($$0);
-      }
-   }
-
-   public void f(UUID $$0) {
-      if (this.a.z instanceof fvj $$1) {
-         $$1.a($$0);
-      }
+      void a(xi var1);
    }
 }

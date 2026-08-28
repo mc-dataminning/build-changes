@@ -1,23 +1,50 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
 
-public class dft {
-   public static final Codec<dft> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(awj.b.fieldOf("sound").forGetter($$0x -> $$0x.b), Codec.DOUBLE.fieldOf("tick_chance").forGetter($$0x -> $$0x.c)).apply($$0, dft::new)
-   );
-   private final jp<awj> b;
-   private final double c;
+public class dft extends deu {
+   private final boolean a;
+   private final boolean b;
+   private final Optional<Float> c;
+   private final Optional<ju<die>> d;
 
-   public dft(jp<awj> $$0, double $$1) {
-      this.b = $$0;
-      this.c = $$1;
+   public dft(boolean $$0, boolean $$1, Optional<Float> $$2, Optional<ju<die>> $$3) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+      this.d = $$3;
    }
 
-   public jp<awj> a() {
+   @Override
+   public Optional<Float> a(det $$0, deg $$1, jh $$2, dvj $$3, erk $$4) {
+      if (this.d.isPresent()) {
+         return $$3.a(this.d.get()) ? Optional.of(3600000.0F) : Optional.empty();
+      } else {
+         return super.a($$0, $$1, $$2, $$3, $$4);
+      }
+   }
+
+   @Override
+   public boolean a(det $$0, deg $$1, jh $$2, dvj $$3, float $$4) {
+      return this.a;
+   }
+
+   @Override
+   public boolean a(det $$0, bue $$1) {
       return this.b;
    }
 
-   public double b() {
-      return this.c;
+   @Override
+   public float a(bue $$0) {
+      boolean var10000;
+      label17: {
+         if ($$0 instanceof com $$1 && $$1.gl().b) {
+            var10000 = true;
+            break label17;
+         }
+
+         var10000 = false;
+      }
+
+      boolean $$2 = var10000;
+      return $$2 ? 0.0F : this.c.orElseGet(() -> super.a($$0));
    }
 }

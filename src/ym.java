@@ -1,10 +1,70 @@
-import java.util.function.Function;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
 import java.util.function.Supplier;
+import javax.annotation.Nullable;
 
-public class ym {
-   static Function<String, Supplier<xh>> a = $$0 -> () -> xh.b($$0);
+public class ym implements xj {
+   public static final MapCodec<ym> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(Codec.STRING.fieldOf("keybind").forGetter($$0x -> $$0x.c)).apply($$0, ym::new)
+   );
+   public static final xj.a<ym> b = new xj.a<>(a, "keybind");
+   private final String c;
+   @Nullable
+   private Supplier<xi> d;
 
-   public static void a(Function<String, Supplier<xh>> $$0) {
-      a = $$0;
+   public ym(String $$0) {
+      this.c = $$0;
+   }
+
+   private xi c() {
+      if (this.d == null) {
+         this.d = yn.a.apply(this.c);
+      }
+
+      return this.d.get();
+   }
+
+   @Override
+   public <T> Optional<T> a(xn.a<T> $$0) {
+      return this.c().a($$0);
+   }
+
+   @Override
+   public <T> Optional<T> a(xn.b<T> $$0, yf $$1) {
+      return this.c().a($$0, $$1);
+   }
+
+   @Override
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else {
+         if ($$0 instanceof ym $$1 && this.c.equals($$1.c)) {
+            return true;
+         }
+
+         return false;
+      }
+   }
+
+   @Override
+   public int hashCode() {
+      return this.c.hashCode();
+   }
+
+   @Override
+   public String toString() {
+      return "keybind{" + this.c + "}";
+   }
+
+   public String b() {
+      return this.c;
+   }
+
+   @Override
+   public xj.a<?> a() {
+      return b;
    }
 }

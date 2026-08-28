@@ -1,21 +1,36 @@
+import com.mojang.datafixers.DSL;
+import com.mojang.datafixers.DataFix;
+import com.mojang.datafixers.TypeRewriteRule;
 import com.mojang.datafixers.schemas.Schema;
 import com.mojang.serialization.Dynamic;
+import java.util.List;
 import java.util.Optional;
 
-public class bgg extends bfm {
+public class bgg extends DataFix {
+   private static final String a = "WorldGenSettings";
+   private static final List<String> b = List.of(
+      "RandomSeed", "generatorName", "generatorOptions", "generatorVersion", "legacy_custom_options", "MapFeatures", "BonusChest"
+   );
+
    public bgg(Schema $$0) {
-      super($$0, "LodestoneCompassComponentFix", "minecraft:lodestone_target", "minecraft:lodestone_tracker");
+      super($$0, false);
    }
 
-   @Override
-   protected <T> Dynamic<T> a(Dynamic<T> $$0) {
-      Optional<Dynamic<T>> $$1 = $$0.get("pos").result();
-      Optional<Dynamic<T>> $$2 = $$0.get("dimension").result();
-      $$0 = $$0.remove("pos").remove("dimension");
-      if ($$1.isPresent() && $$2.isPresent()) {
-         $$0 = $$0.set("target", $$0.emptyMap().set("pos", $$1.get()).set("dimension", $$2.get()));
-      }
+   protected TypeRewriteRule makeRule() {
+      return this.fixTypeEverywhereTyped(
+         "LevelLegacyWorldGenSettingsFix", this.getInputSchema().getType(bhu.a), $$0 -> $$0.update(DSL.remainderFinder(), $$0x -> {
+               Dynamic<?> $$1 = $$0x.get("WorldGenSettings").orElseEmptyMap();
 
-      return $$0;
+               for (String $$2 : b) {
+                  Optional<? extends Dynamic<?>> $$3 = $$0x.get($$2).result();
+                  if ($$3.isPresent()) {
+                     $$0x = $$0x.remove($$2);
+                     $$1 = $$1.set($$2, $$3.get());
+                  }
+               }
+
+               return $$0x.set("WorldGenSettings", $$1);
+            })
+      );
    }
 }

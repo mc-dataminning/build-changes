@@ -1,20 +1,26 @@
-public record adj(deb b) implements zo<acd> {
-   public static final zf<we, adj> a = zo.a(adj::a, adj::new);
+import java.util.Optional;
 
-   private adj(we $$0) {
-      this($$0.f());
-   }
-
-   private void a(we $$0) {
-      $$0.a(this.b);
-   }
+public record adj(ezn b, Optional<ezn> c, lp d, jq<awk> e) implements zp<ace> {
+   public static final zg<wt, adj> a = zg.a(ezn.b, adj::b, ezn.b.a(ze::a), adj::e, lr.bg, adj::f, awk.d, adj::g, adj::new);
 
    @Override
-   public zq<adj> a() {
-      return ags.F;
+   public zr<adj> a() {
+      return agt.E;
    }
 
-   public void a(acd $$0) {
+   public void a(ace $$0) {
       $$0.a(this);
+   }
+
+   public Optional<ezn> e() {
+      return this.c;
+   }
+
+   public lp f() {
+      return this.d;
+   }
+
+   public jq<awk> g() {
+      return this.e;
    }
 }

@@ -1,8 +1,13 @@
 import javax.annotation.Nullable;
 
-public class gvh extends guc {
-   public jl a = jl.c;
+public class gvh extends guh {
    @Nullable
-   public ckm b;
-   public int[] c = new int[0];
+   public buc.g.a a;
+   @Nullable
+   public haf f;
+
+   @Override
+   public boolean a() {
+      return this.a != null && this.f != null;
+   }
 }

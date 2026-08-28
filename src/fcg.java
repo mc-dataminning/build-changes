@@ -1,22 +1,13 @@
-import java.io.File;
-import java.time.Duration;
+public interface fcg {
+   <T> fdn<T> a(String var1, fdm<T> var2);
 
-public class fcg {
-   private static final Duration a = Duration.ofSeconds(15L);
+   <T> void a(fdn<T> var1);
 
-   public static void a(File $$0, long $$1) {
-      Thread $$2 = new Thread(() -> {
-         try {
-            Thread.sleep(a);
-         } catch (InterruptedException var4) {
-            return;
-         }
+   <T> fdn<T> b(fdn<T> var1);
 
-         o $$3 = aqh.a("Client shutdown", $$1);
-         fja.a($$0, $$3);
-      });
-      $$2.setDaemon(true);
-      $$2.setName("Client shutdown watchdog");
-      $$2.start();
-   }
+   void a(fcg var1);
+
+   void a();
+
+   void a(Runnable var1);
 }

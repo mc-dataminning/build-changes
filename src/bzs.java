@@ -1,33 +1,53 @@
 import com.mojang.datafixers.kinds.App;
-import java.util.Optional;
 import java.util.function.Function;
+import org.apache.commons.lang3.mutable.MutableLong;
 
 public class bzs {
-   private static final int a = 10;
-   private static final int b = 7;
+   public static bwu<bvi> a(int $$0, float $$1) {
+      MutableLong $$2 = new MutableLong(0L);
+      return cag.a(
+         (Function<cag.b<bvi>, ? extends App<cag.c<bvi>, caj<bvi>>>)($$3 -> $$3.group($$3.c(cee.o), $$3.c(cee.m), $$3.a(cee.n))
+               .apply($$3, ($$3x, $$4, $$5) -> ($$5x, $$6, $$7) -> {
+                     if ($$5x.b_($$6.dx()).a(axg.a)) {
+                        return false;
+                     } else if ($$7 < $$2.getValue()) {
+                        $$2.setValue($$7 + 20L + 2L);
+                        return true;
+                     } else {
+                        jh $$8 = null;
+                        jh $$9 = null;
+                        jh $$10 = $$6.dx();
 
-   public static bxz<bvd> a(float $$0) {
-      return a($$0, 10, 7);
-   }
+                        for (jh $$12 : jh.a($$10, $$0, $$0, $$0)) {
+                           if ($$12.u() != $$10.u() || $$12.w() != $$10.w()) {
+                              dvj $$13 = $$6.dX().a_($$12.d());
+                              dvj $$14 = $$6.dX().a_($$12);
+                              if ($$14.a(dig.G)) {
+                                 if ($$13.l()) {
+                                    $$8 = $$12.j();
+                                    break;
+                                 }
 
-   public static bxz<bvd> a(float $$0, int $$1, int $$2) {
-      return cab.a((Function<cab.b<bvd>, ? extends App<cab.c<bvd>, cae<bvd>>>)($$3 -> $$3.group($$3.c(cdz.m)).apply($$3, $$3x -> ($$4, $$5, $$6) -> {
-               jg $$7 = $$5.dx();
-               ezh $$8;
-               if ($$4.c($$7)) {
-                  $$8 = cft.a($$5, $$1, $$2);
-               } else {
-                  ki $$9 = ki.a($$7);
-                  ki $$10 = bwq.a($$4, $$9, 2);
-                  if ($$10 != $$9) {
-                     $$8 = cfq.a($$5, $$1, $$2, ezh.c($$10.k()), (float) (Math.PI / 2));
-                  } else {
-                     $$8 = cft.a($$5, $$1, $$2);
-                  }
-               }
+                                 if ($$9 == null && !$$12.a($$6.dv(), 1.5)) {
+                                    $$9 = $$12.j();
+                                 }
+                              }
+                           }
+                        }
 
-               $$3x.a(Optional.ofNullable($$8).map($$1xxxx -> new cec($$1xxxx, $$0, 0)));
-               return true;
-            })));
+                        if ($$8 == null) {
+                           $$8 = $$9;
+                        }
+
+                        if ($$8 != null) {
+                           $$5.a(new bww($$8));
+                           $$4.a(new ceh(new bww($$8), $$1, 0));
+                        }
+
+                        $$2.setValue($$7 + 40L);
+                        return true;
+                     }
+                  }))
+      );
    }
 }

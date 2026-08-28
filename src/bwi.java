@@ -1,84 +1,42 @@
-import com.google.common.collect.ImmutableMap;
-import java.util.Optional;
+public class bwi {
+   public static final jq<bwd> a = a("armor", new bwk("attribute.name.armor", 0.0, 0.0, 30.0).a(true));
+   public static final jq<bwd> b = a("armor_toughness", new bwk("attribute.name.armor_toughness", 0.0, 0.0, 20.0).a(true));
+   public static final jq<bwd> c = a("attack_damage", new bwk("attribute.name.attack_damage", 2.0, 0.0, 2048.0));
+   public static final jq<bwd> d = a("attack_knockback", new bwk("attribute.name.attack_knockback", 0.0, 0.0, 5.0));
+   public static final jq<bwd> e = a("attack_speed", new bwk("attribute.name.attack_speed", 4.0, 0.0, 1024.0).a(true));
+   public static final jq<bwd> f = a("block_break_speed", new bwk("attribute.name.block_break_speed", 1.0, 0.0, 1024.0).a(true));
+   public static final jq<bwd> g = a("block_interaction_range", new bwk("attribute.name.block_interaction_range", 4.5, 0.0, 64.0).a(true));
+   public static final jq<bwd> h = a("burning_time", new bwk("attribute.name.burning_time", 1.0, 0.0, 1024.0).a(true).a(bwd.a.c));
+   public static final jq<bwd> i = a("explosion_knockback_resistance", new bwk("attribute.name.explosion_knockback_resistance", 0.0, 0.0, 1.0).a(true));
+   public static final jq<bwd> j = a("entity_interaction_range", new bwk("attribute.name.entity_interaction_range", 3.0, 0.0, 64.0).a(true));
+   public static final jq<bwd> k = a("fall_damage_multiplier", new bwk("attribute.name.fall_damage_multiplier", 1.0, 0.0, 100.0).a(true).a(bwd.a.c));
+   public static final jq<bwd> l = a("flying_speed", new bwk("attribute.name.flying_speed", 0.4, 0.0, 1024.0).a(true));
+   public static final jq<bwd> m = a("follow_range", new bwk("attribute.name.follow_range", 32.0, 0.0, 2048.0));
+   public static final jq<bwd> n = a("gravity", new bwk("attribute.name.gravity", 0.08, -1.0, 1.0).a(true).a(bwd.a.b));
+   public static final jq<bwd> o = a("jump_strength", new bwk("attribute.name.jump_strength", 0.42F, 0.0, 32.0).a(true));
+   public static final jq<bwd> p = a("knockback_resistance", new bwk("attribute.name.knockback_resistance", 0.0, 0.0, 1.0));
+   public static final jq<bwd> q = a("luck", new bwk("attribute.name.luck", 0.0, -1024.0, 1024.0).a(true));
+   public static final jq<bwd> r = a("max_absorption", new bwk("attribute.name.max_absorption", 0.0, 0.0, 2048.0).a(true));
+   public static final jq<bwd> s = a("max_health", new bwk("attribute.name.max_health", 20.0, 1.0, 1024.0).a(true));
+   public static final jq<bwd> t = a("mining_efficiency", new bwk("attribute.name.mining_efficiency", 0.0, 0.0, 1024.0).a(true));
+   public static final jq<bwd> u = a("movement_efficiency", new bwk("attribute.name.movement_efficiency", 0.0, 0.0, 1.0).a(true));
+   public static final jq<bwd> v = a("movement_speed", new bwk("attribute.name.movement_speed", 0.7, 0.0, 1024.0).a(true));
+   public static final jq<bwd> w = a("oxygen_bonus", new bwk("attribute.name.oxygen_bonus", 0.0, 0.0, 1024.0).a(true));
+   public static final jq<bwd> x = a("safe_fall_distance", new bwk("attribute.name.safe_fall_distance", 3.0, -1024.0, 1024.0).a(true));
+   public static final jq<bwd> y = a("scale", new bwk("attribute.name.scale", 1.0, 0.0625, 16.0).a(true).a(bwd.a.b));
+   public static final jq<bwd> z = a("sneaking_speed", new bwk("attribute.name.sneaking_speed", 0.3, 0.0, 1.0).a(true));
+   public static final jq<bwd> A = a("spawn_reinforcements", new bwk("attribute.name.spawn_reinforcements", 0.0, 0.0, 1.0));
+   public static final jq<bwd> B = a("step_height", new bwk("attribute.name.step_height", 0.6, 0.0, 10.0).a(true));
+   public static final jq<bwd> C = a("submerged_mining_speed", new bwk("attribute.name.submerged_mining_speed", 0.2, 0.0, 20.0).a(true));
+   public static final jq<bwd> D = a("sweeping_damage_ratio", new bwk("attribute.name.sweeping_damage_ratio", 0.0, 0.0, 1.0).a(true));
+   public static final jq<bwd> E = a("tempt_range", new bwk("attribute.name.tempt_range", 10.0, 0.0, 2048.0));
+   public static final jq<bwd> F = a("water_movement_efficiency", new bwk("attribute.name.water_movement_efficiency", 0.0, 0.0, 1.0).a(true));
 
-public class bwi extends bwo<cgm> {
-   private static final int c = 3;
-   private static final int d = 60;
-   private static final int e = 110;
-   private final bug<? extends cgm> f;
-   private final float g;
-   private final int h;
-   private static final int i = 2;
-   private long j;
-
-   public bwi(bug<? extends cgm> $$0) {
-      this($$0, 1.0F, 2);
+   private static jq<bwd> a(String $$0, bwd $$1) {
+      return kd.b(ly.s, ali.b($$0), $$1);
    }
 
-   public bwi(bug<? extends cgm> $$0, float $$1, int $$2) {
-      super(ImmutableMap.of(cdz.h, cea.a, cdz.r, cea.b, cdz.m, cea.c, cdz.n, cea.c, cdz.Z, cea.b), 110);
-      this.f = $$0;
-      this.g = $$1;
-      this.h = $$2;
-   }
-
-   protected boolean a(arm $$0, cgm $$1) {
-      return $$1.gF() && this.c($$1).isPresent();
-   }
-
-   protected void a(arm $$0, cgm $$1, long $$2) {
-      cgm $$3 = this.c($$1).get();
-      $$1.ed().a(cdz.r, $$3);
-      $$3.ed().a(cdz.r, $$1);
-      bwq.a($$1, (buv)$$3, this.g, this.h);
-      int $$4 = 60 + $$1.ea().a(50);
-      this.j = $$2 + (long)$$4;
-   }
-
-   protected boolean b(arm $$0, cgm $$1, long $$2) {
-      if (!this.b($$1)) {
-         return false;
-      } else {
-         cgm $$3 = this.a($$1);
-         return $$3.bM() && $$1.a($$3) && bwq.a($$1.ed(), $$3) && $$2 <= this.j && !$$1.gs() && !$$3.gs();
-      }
-   }
-
-   protected void c(arm $$0, cgm $$1, long $$2) {
-      cgm $$3 = this.a($$1);
-      bwq.a($$1, (buv)$$3, this.g, this.h);
-      if ($$1.a($$3, 3.0)) {
-         if ($$2 >= this.j) {
-            $$1.a($$0, $$3);
-            $$1.ed().b(cdz.r);
-            $$3.ed().b(cdz.r);
-         }
-      }
-   }
-
-   protected void d(arm $$0, cgm $$1, long $$2) {
-      $$1.ed().b(cdz.r);
-      $$1.ed().b(cdz.m);
-      $$1.ed().b(cdz.n);
-      this.j = 0L;
-   }
-
-   private cgm a(cgm $$0) {
-      return (cgm)$$0.ed().c(cdz.r).get();
-   }
-
-   private boolean b(cgm $$0) {
-      bvx<?> $$1 = $$0.ed();
-      return $$1.a(cdz.r) && $$1.c(cdz.r).get().aq() == this.f;
-   }
-
-   private Optional<? extends cgm> c(cgm $$0) {
-      return $$0.ed().c(cdz.h).get().a($$1 -> {
-         if ($$1.aq() == this.f && $$1 instanceof cgm $$2 && $$0.a($$2) && !$$2.gs()) {
-            return true;
-         }
-
-         return false;
-      }).map(cgm.class::cast);
+   public static jq<bwd> a(kd<bwd> $$0) {
+      return s;
    }
 }

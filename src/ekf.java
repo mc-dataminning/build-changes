@@ -1,16 +1,16 @@
-import javax.annotation.Nullable;
+import com.mojang.serialization.MapCodec;
 
-public record ekf(ebd.c[] a) implements ebd.c {
-   @Nullable
-   @Override
-   public dvd calculate(eas.b $$0) {
-      for (ebd.c $$1 : this.a) {
-         dvd $$2 = $$1.calculate($$0);
-         if ($$2 != null) {
-            return $$2;
-         }
-      }
+public interface ekf<P extends eke> {
+   ekf<ekd> a = a("constant", ekd.b);
+   ekf<ekh> b = a("uniform", ekh.a);
+   ekf<ekc> c = a("biased_to_bottom", ekc.a);
+   ekf<eki> d = a("very_biased_to_bottom", eki.a);
+   ekf<ekg> e = a("trapezoid", ekg.a);
+   ekf<ekj> f = a("weighted_list", ekj.a);
 
-      return null;
+   MapCodec<P> codec();
+
+   private static <P extends eke> ekf<P> a(String $$0, MapCodec<P> $$1) {
+      return kd.a(ly.L, $$0, () -> $$1);
    }
 }

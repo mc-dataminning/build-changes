@@ -1,45 +1,63 @@
 import com.mojang.serialization.MapCodec;
+import javax.annotation.Nullable;
 
-public class dha extends dih implements dib {
-   public static final MapCodec<dha> a = b(dha::new);
-   private static final fab b = ezy.a(dhy.a(0.0, 8.0, 0.0, 16.0, 16.0, 16.0), dhy.a(6.0, 0.0, 6.0, 10.0, 8.0, 10.0));
+public abstract class dha extends dhq {
+   public static final dwa a = dvz.w;
+   private final dpg.a b;
 
-   @Override
-   public MapCodec<dha> a() {
-      return a;
-   }
-
-   protected dha(dvc.d $$0) {
-      super($$0);
-   }
-
-   @Override
-   protected fab a(dvd $$0, dea $$1, jg $$2, ezm $$3) {
-      return b;
+   public dha(dpg.a $$0, dvi.d $$1) {
+      super($$1);
+      this.b = $$0;
+      this.l(this.F.b().b(a, Boolean.valueOf(false)));
    }
 
    @Override
-   protected boolean b(dvd $$0, dea $$1, jg $$2) {
-      return $$0.a(dia.dR) || super.b($$0, $$1, $$2);
+   protected abstract MapCodec<? extends dha> a();
+
+   @Override
+   public dsm a(jh $$0, dvj $$1) {
+      return new dua($$0, $$1);
+   }
+
+   @Nullable
+   @Override
+   public <T extends dsm> dsn<T> a(dfb $$0, dvj $$1, dso<T> $$2) {
+      if ($$0.C) {
+         boolean $$3 = $$1.a(dig.gO) || $$1.a(dig.gP) || $$1.a(dig.gQ) || $$1.a(dig.gR);
+         if ($$3) {
+            return a($$2, dso.p, dua::a);
+         }
+      }
+
+      return null;
+   }
+
+   public dpg.a b() {
+      return this.b;
    }
 
    @Override
-   public boolean b(dey $$0, jg $$1, dvd $$2) {
-      return $$0.b_($$1.d()).c();
-   }
-
-   @Override
-   public boolean a(dev $$0, azr $$1, jg $$2, dvd $$3) {
-      return (double)$$0.A.i() < 0.45;
-   }
-
-   @Override
-   public void a(arm $$0, azr $$1, jg $$2, dvd $$3) {
-      dus.e.a($$0, $$0.l().g(), $$2, $$3, $$1);
-   }
-
-   @Override
-   protected boolean a(dvd $$0, ert $$1) {
+   protected boolean a(dvj $$0, erz $$1) {
       return false;
+   }
+
+   @Override
+   protected void a(dvk.a<die, dvj> $$0) {
+      $$0.a(a);
+   }
+
+   @Override
+   public dvj a(czs $$0) {
+      return this.m().b(a, Boolean.valueOf($$0.q().C($$0.a())));
+   }
+
+   @Override
+   protected void a(dvj $$0, dfb $$1, jh $$2, die $$3, @Nullable ess $$4, boolean $$5) {
+      if (!$$1.C) {
+         boolean $$6 = $$1.C($$2);
+         if ($$6 != $$0.c(a)) {
+            $$1.a($$2, $$0.b(a, Boolean.valueOf($$6)), 2);
+         }
+      }
    }
 }

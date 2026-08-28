@@ -14,14 +14,14 @@ public final class j {
    private final Matrix4f c;
    public static final Codec<j> a = RecordCodecBuilder.create(
       $$0 -> $$0.group(
-               ays.c.fieldOf("translation").forGetter($$0x -> $$0x.e),
-               ays.g.fieldOf("left_rotation").forGetter($$0x -> $$0x.f),
-               ays.c.fieldOf("scale").forGetter($$0x -> $$0x.g),
-               ays.g.fieldOf("right_rotation").forGetter($$0x -> $$0x.h)
+               ayt.c.fieldOf("translation").forGetter($$0x -> $$0x.e),
+               ayt.g.fieldOf("left_rotation").forGetter($$0x -> $$0x.f),
+               ayt.c.fieldOf("scale").forGetter($$0x -> $$0x.g),
+               ayt.g.fieldOf("right_rotation").forGetter($$0x -> $$0x.h)
             )
             .apply($$0, j::new)
    );
-   public static final Codec<j> b = Codec.withAlternative(a, ays.h.xmap(j::new, j::c));
+   public static final Codec<j> b = Codec.withAlternative(a, ayt.h.xmap(j::new, j::c));
    private boolean d;
    @Nullable
    private Vector3f e;
@@ -31,7 +31,7 @@ public final class j {
    private Vector3f g;
    @Nullable
    private Quaternionf h;
-   private static final j i = ad.a(() -> {
+   private static final j i = ae.a(() -> {
       j $$0 = new j(new Matrix4f());
       $$0.e = new Vector3f();
       $$0.f = new Quaternionf();

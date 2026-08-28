@@ -1,54 +1,38 @@
-import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
-import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
+import com.google.common.collect.Sets;
+import java.util.Arrays;
+import java.util.Set;
 
-public enum jn implements baf {
-   a("down_east", jl.a, jl.f),
-   b("down_north", jl.a, jl.c),
-   c("down_south", jl.a, jl.d),
-   d("down_west", jl.a, jl.e),
-   e("up_east", jl.b, jl.f),
-   f("up_north", jl.b, jl.c),
-   g("up_south", jl.b, jl.d),
-   h("up_west", jl.b, jl.e),
-   i("west_up", jl.e, jl.b),
-   j("east_up", jl.f, jl.b),
-   k("north_up", jl.c, jl.b),
-   l("south_up", jl.d, jl.b);
+public enum jn {
+   a(jm.c),
+   b(jm.c, jm.f),
+   c(jm.f),
+   d(jm.d, jm.f),
+   e(jm.d),
+   f(jm.d, jm.e),
+   g(jm.e),
+   h(jm.c, jm.e);
 
-   private static final Int2ObjectMap<jn> m = ad.a(new Int2ObjectOpenHashMap(values().length), $$0 -> {
-      for (jn $$1 : values()) {
-         $$0.put(b($$1.p, $$1.o), $$1);
+   private final Set<jm> i;
+   private final kl j;
+
+   private jn(final jm... $$0) {
+      this.i = Sets.immutableEnumSet(Arrays.asList($$0));
+      this.j = new kl(0, 0, 0);
+
+      for (jm $$1 : $$0) {
+         this.j.u(this.j.u() + $$1.j()).t(this.j.v() + $$1.k()).s(this.j.w() + $$1.l());
       }
-   });
-   private final String n;
-   private final jl o;
-   private final jl p;
-
-   private static int b(jl $$0, jl $$1) {
-      return $$1.ordinal() << 3 | $$0.ordinal();
    }
 
-   private jn(final String $$0, final jl $$1, final jl $$2) {
-      this.n = $$0;
-      this.p = $$1;
-      this.o = $$2;
+   public Set<jm> a() {
+      return this.i;
    }
 
-   @Override
-   public String c() {
-      return this.n;
+   public int b() {
+      return this.j.u();
    }
 
-   public static jn a(jl $$0, jl $$1) {
-      int $$2 = b($$0, $$1);
-      return (jn)m.get($$2);
-   }
-
-   public jl a() {
-      return this.p;
-   }
-
-   public jl b() {
-      return this.o;
+   public int c() {
+      return this.j.w();
    }
 }

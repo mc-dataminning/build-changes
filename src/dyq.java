@@ -1,110 +1,122 @@
-import it.unimi.dsi.fastutil.longs.Long2ObjectLinkedOpenHashMap;
-import it.unimi.dsi.fastutil.objects.ObjectIterator;
-import java.io.DataInput;
-import java.io.DataInputStream;
-import java.io.DataOutput;
-import java.io.DataOutputStream;
+import com.google.common.collect.ImmutableList;
+import com.mojang.logging.LogUtils;
+import it.unimi.dsi.fastutil.longs.LongOpenHashSet;
+import it.unimi.dsi.fastutil.longs.LongSet;
 import java.io.IOException;
-import java.nio.file.Path;
-import javax.annotation.Nullable;
+import java.util.List;
+import java.util.Objects;
+import java.util.Optional;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.Executor;
+import org.slf4j.Logger;
 
-public final class dyq implements AutoCloseable {
-   public static final String a = ".mca";
-   private static final int b = 256;
-   private final Long2ObjectLinkedOpenHashMap<dyp> c = new Long2ObjectLinkedOpenHashMap();
-   private final dys d;
-   private final Path e;
-   private final boolean f;
+public class dyq implements dzq<bue> {
+   private static final Logger a = LogUtils.getLogger();
+   private static final String b = "Entities";
+   private static final String c = "Position";
+   private final arn d;
+   private final dzb e;
+   private final LongSet f = new LongOpenHashSet();
+   private final bqt g;
 
-   dyq(dys $$0, Path $$1, boolean $$2) {
-      this.e = $$1;
-      this.f = $$2;
-      this.d = $$0;
+   public dyq(dzb $$0, arn $$1, Executor $$2) {
+      this.e = $$0;
+      this.d = $$1;
+      this.g = new bqt($$2, "entity-deserializer");
    }
 
-   private dyp b(deb $$0) throws IOException {
-      long $$1 = deb.c($$0.h(), $$0.i());
-      dyp $$2 = (dyp)this.c.getAndMoveToFirst($$1);
-      if ($$2 != null) {
-         return $$2;
+   @Override
+   public CompletableFuture<dzl<bue>> a(deh $$0) {
+      if (this.f.contains($$0.a())) {
+         return CompletableFuture.completedFuture(b($$0));
       } else {
-         if (this.c.size() >= 256) {
-            ((dyp)this.c.removeLast()).close();
-         }
+         CompletableFuture<Optional<uk>> $$1 = this.e.a($$0);
+         this.b($$1, $$0);
+         return $$1.thenApplyAsync($$1x -> {
+            if ($$1x.isEmpty()) {
+               this.f.add($$0.a());
+               return b($$0);
+            } else {
+               try {
+                  deh $$2 = a((uk)$$1x.get());
+                  if (!Objects.equals($$0, $$2)) {
+                     a.error("Chunk file at {} is in the wrong location. (Expected {}, got {})", new Object[]{$$0, $$0, $$2});
+                     this.d.o().a($$2, $$0, this.e.a());
+                  }
+               } catch (Exception var6) {
+                  a.warn("Failed to parse chunk {} position info", $$0, var6);
+                  this.d.o().a(var6, this.e.a(), $$0);
+               }
 
-         v.c(this.e);
-         Path $$3 = this.e.resolve("r." + $$0.h() + "." + $$0.i() + ".mca");
-         dyp $$4 = new dyp(this.d, $$3, this.e, this.f);
-         this.c.putAndMoveToFirst($$1, $$4);
-         return $$4;
+               uk $$4 = this.e.a((uk)$$1x.get(), -1);
+               uq $$5 = $$4.c("Entities", 10);
+               List<bue> $$6 = bul.a($$5, this.d, buk.r).collect(ImmutableList.toImmutableList());
+               return new dzl<>($$0, $$6);
+            }
+         }, this.g::a_);
       }
    }
 
-   @Nullable
-   public uj a(deb $$0) throws IOException {
-      dyp $$1 = this.b($$0);
-
-      uj var4;
-      try (DataInputStream $$2 = $$1.a($$0)) {
-         if ($$2 == null) {
-            return null;
-         }
-
-         var4 = uw.a($$2);
-      }
-
-      return var4;
+   private static deh a(uk $$0) {
+      int[] $$1 = $$0.n("Position");
+      return new deh($$1[0], $$1[1]);
    }
 
-   public void a(deb $$0, vd $$1) throws IOException {
-      dyp $$2 = this.b($$0);
-
-      try (DataInputStream $$3 = $$2.a($$0)) {
-         if ($$3 != null) {
-            uw.a((DataInput)$$3, $$1, us.a());
-         }
-      }
+   private static void a(uk $$0, deh $$1) {
+      $$0.a("Position", new uo(new int[]{$$1.g, $$1.h}));
    }
 
-   protected void a(deb $$0, @Nullable uj $$1) throws IOException {
-      dyp $$2 = this.b($$0);
-      if ($$1 == null) {
-         $$2.d($$0);
+   private static dzl<bue> b(deh $$0) {
+      return new dzl<>($$0, ImmutableList.of());
+   }
+
+   @Override
+   public void a(dzl<bue> $$0) {
+      deh $$1 = $$0.a();
+      if ($$0.c()) {
+         if (this.f.add($$1.a())) {
+            this.a(this.e.a($$1, null), $$1);
+         }
       } else {
-         try (DataOutputStream $$3 = $$2.c($$0)) {
-            uw.a($$1, (DataOutput)$$3);
-         }
+         uq $$2 = new uq();
+         $$0.b().forEach($$1x -> {
+            uk $$2x = new uk();
+            if ($$1x.e($$2x)) {
+               $$2.add($$2x);
+            }
+         });
+         uk $$3 = uz.e(new uk());
+         $$3.a("Entities", $$2);
+         a($$3, $$1);
+         this.a(this.e.a($$1, $$3), $$1);
+         this.f.remove($$1.a());
       }
+   }
+
+   private void a(CompletableFuture<?> $$0, deh $$1) {
+      $$0.exceptionally($$1x -> {
+         a.error("Failed to store entity chunk {}", $$1, $$1x);
+         this.d.o().b($$1x, this.e.a(), $$1);
+         return null;
+      });
+   }
+
+   private void b(CompletableFuture<?> $$0, deh $$1) {
+      $$0.exceptionally($$1x -> {
+         a.error("Failed to load entity chunk {}", $$1, $$1x);
+         this.d.o().a($$1x, this.e.a(), $$1);
+         return null;
+      });
+   }
+
+   @Override
+   public void a(boolean $$0) {
+      this.e.a($$0).join();
+      this.g.a();
    }
 
    @Override
    public void close() throws IOException {
-      ayr<IOException> $$0 = new ayr<>();
-      ObjectIterator var2 = this.c.values().iterator();
-
-      while (var2.hasNext()) {
-         dyp $$1 = (dyp)var2.next();
-
-         try {
-            $$1.close();
-         } catch (IOException var5) {
-            $$0.a(var5);
-         }
-      }
-
-      $$0.a();
-   }
-
-   public void a() throws IOException {
-      ObjectIterator var1 = this.c.values().iterator();
-
-      while (var1.hasNext()) {
-         dyp $$0 = (dyp)var1.next();
-         $$0.b();
-      }
-   }
-
-   public dys b() {
-      return this.d;
+      this.e.close();
    }
 }

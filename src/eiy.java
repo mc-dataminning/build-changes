@@ -1,48 +1,49 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import java.util.Collections;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
-import java.util.Optional;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
-public class eiy extends ejb {
-   public static final MapCodec<eiy> a = Codec.floatRange(0.0F, 1.0F).fieldOf("probability").xmap(eiy::new, $$0 -> $$0.d);
-   private static final jl b = jl.d;
-   private static final jl[] c = jl.c.a.a().filter($$0 -> $$0 != b.g()).toArray(jl[]::new);
-   private final float d;
+public record eiy(eiq b, List<eiy.a> c) {
+   public static final Codec<eiy> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(eiq.a.fieldOf("fallback").forGetter(eiy::a), eiy.a.a.listOf().fieldOf("rules").forGetter(eiy::b)).apply($$0, eiy::new)
+   );
 
-   public eiy(float $$0) {
-      this.d = $$0;
+   public static eiy a(eiq $$0) {
+      return new eiy($$0, List.of());
    }
 
-   @Override
-   protected ejc<?> a() {
-      return ejc.d;
+   public static eiy a(die $$0) {
+      return a(eiq.a($$0));
    }
 
-   @Override
-   public void a(ejb.a $$0) {
-      azr $$1 = $$0.b();
-      if (!($$1.i() >= this.d)) {
-         List<jg> $$2 = $$0.d();
-         List<jg> $$3 = $$0.c();
-         int $$4 = !$$2.isEmpty() ? Math.max($$2.get(0).v() - 1, $$3.get(0).v() + 1) : Math.min($$3.get(0).v() + 1 + $$1.a(3), $$3.get($$3.size() - 1).v());
-         List<jg> $$5 = $$3.stream().filter($$1x -> $$1x.v() == $$4).flatMap($$0x -> Stream.of(c).map($$0x::a)).collect(Collectors.toList());
-         if (!$$5.isEmpty()) {
-            Collections.shuffle($$5);
-            Optional<jg> $$6 = $$5.stream().filter($$1x -> $$0.a($$1x) && $$0.a($$1x.a(b))).findFirst();
-            if (!$$6.isEmpty()) {
-               $$0.a($$6.get(), dia.pe.m().b(dhs.b, b));
-               $$0.a().a($$6.get(), dsi.H).ifPresent($$1x -> {
-                  int $$2x = 2 + $$1.a(2);
-
-                  for (int $$3x = 0; $$3x < $$2x; $$3x++) {
-                     $$1x.a(dsd.c.a($$1.a(599)));
-                  }
-               });
-            }
+   public dvj a(dfy $$0, azs $$1, jh $$2) {
+      for (eiy.a $$3 : this.c) {
+         if ($$3.a().test($$0, $$2)) {
+            return $$3.b().a($$1, $$2);
          }
+      }
+
+      return this.b.a($$1, $$2);
+   }
+
+   public eiq a() {
+      return this.b;
+   }
+
+   public List<eiy.a> b() {
+      return this.c;
+   }
+
+   public static record a(ecm b, eiq c) {
+      public static final Codec<eiy.a> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(ecm.b.fieldOf("if_true").forGetter(eiy.a::a), eiq.a.fieldOf("then").forGetter(eiy.a::b)).apply($$0, eiy.a::new)
+      );
+
+      public ecm a() {
+         return this.b;
+      }
+
+      public eiq b() {
+         return this.c;
       }
    }
 }

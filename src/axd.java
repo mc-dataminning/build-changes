@@ -1,40 +1,42 @@
 public interface axd {
-   axp<bug<?>> a = a("skeletons");
-   axp<bug<?>> b = a("zombies");
-   axp<bug<?>> c = a("raiders");
-   axp<bug<?>> d = a("undead");
-   axp<bug<?>> e = a("beehive_inhabitors");
-   axp<bug<?>> f = a("arrows");
-   axp<bug<?>> g = a("impact_projectiles");
-   axp<bug<?>> h = a("powder_snow_walkable_mobs");
-   axp<bug<?>> i = a("axolotl_always_hostiles");
-   axp<bug<?>> j = a("axolotl_hunt_targets");
-   axp<bug<?>> k = a("freeze_immune_entity_types");
-   axp<bug<?>> l = a("freeze_hurts_extra_types");
-   axp<bug<?>> m = a("can_breathe_under_water");
-   axp<bug<?>> n = a("frog_food");
-   axp<bug<?>> o = a("fall_damage_immune");
-   axp<bug<?>> p = a("dismounts_underwater");
-   axp<bug<?>> q = a("non_controlling_rider");
-   axp<bug<?>> r = a("deflects_projectiles");
-   axp<bug<?>> s = a("can_turn_in_boats");
-   axp<bug<?>> t = a("illager");
-   axp<bug<?>> u = a("aquatic");
-   axp<bug<?>> v = a("arthropod");
-   axp<bug<?>> w = a("ignores_poison_and_regen");
-   axp<bug<?>> x = a("inverted_healing_and_harm");
-   axp<bug<?>> y = a("wither_friends");
-   axp<bug<?>> z = a("illager_friends");
-   axp<bug<?>> A = a("not_scary_for_pufferfish");
-   axp<bug<?>> B = a("sensitive_to_impaling");
-   axp<bug<?>> C = a("sensitive_to_bane_of_arthropods");
-   axp<bug<?>> D = a("sensitive_to_smite");
-   axp<bug<?>> E = a("no_anger_from_wind_charge");
-   axp<bug<?>> F = a("immune_to_oozing");
-   axp<bug<?>> G = a("immune_to_infested");
-   axp<bug<?>> H = a("redirectable_projectile");
+   axq<dbs> a = a("tooltip_order");
+   axq<dbs> b = a("exclusive_set/armor");
+   axq<dbs> c = a("exclusive_set/boots");
+   axq<dbs> d = a("exclusive_set/bow");
+   axq<dbs> e = a("exclusive_set/crossbow");
+   axq<dbs> f = a("exclusive_set/damage");
+   axq<dbs> g = a("exclusive_set/mining");
+   axq<dbs> h = a("exclusive_set/riptide");
+   axq<dbs> i = a("tradeable");
+   axq<dbs> j = a("double_trade_price");
+   axq<dbs> k = a("in_enchanting_table");
+   axq<dbs> l = a("on_mob_spawn_equipment");
+   axq<dbs> m = a("on_traded_equipment");
+   axq<dbs> n = a("on_random_loot");
+   axq<dbs> o = a("curse");
+   axq<dbs> p = a("smelts_loot");
+   axq<dbs> q = a("prevents_bee_spawns_when_mining");
+   axq<dbs> r = a("prevents_decorated_pot_shattering");
+   axq<dbs> s = a("prevents_ice_melting");
+   axq<dbs> t = a("prevents_infested_spawns");
+   axq<dbs> u = a("treasure");
+   axq<dbs> v = a("non_treasure");
+   axq<dbs> w = a("trades/desert_common");
+   axq<dbs> x = a("trades/jungle_common");
+   axq<dbs> y = a("trades/plains_common");
+   axq<dbs> z = a("trades/savanna_common");
+   axq<dbs> A = a("trades/snow_common");
+   axq<dbs> B = a("trades/swamp_common");
+   axq<dbs> C = a("trades/taiga_common");
+   axq<dbs> D = a("trades/desert_special");
+   axq<dbs> E = a("trades/jungle_special");
+   axq<dbs> F = a("trades/plains_special");
+   axq<dbs> G = a("trades/savanna_special");
+   axq<dbs> H = a("trades/snow_special");
+   axq<dbs> I = a("trades/swamp_special");
+   axq<dbs> J = a("trades/taiga_special");
 
-   private static axp<bug<?>> a(String $$0) {
-      return axp.a(ly.z, alh.b($$0));
+   private static axq<dbs> a(String $$0) {
+      return axq.a(lz.aM, ali.b($$0));
    }
 }

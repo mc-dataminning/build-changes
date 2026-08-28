@@ -1,11 +1,7 @@
-public interface fdf<T> {
-   fdf<?> a = () -> {
-      throw new IllegalStateException("Cannot dereference handle with no underlying resource");
-   };
+public interface fdf {
+   void a(boolean var1);
 
-   static <T> fdf<T> a() {
-      return (fdf<T>)a;
-   }
+   void a();
 
-   T get();
+   void b();
 }

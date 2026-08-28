@@ -1,44 +1,46 @@
 import com.mojang.serialization.Codec;
 
-public class eet extends eef<egq> {
-   public eet(Codec<egq> $$0) {
+public class eet extends edn {
+   public eet(Codec<egr> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(eeh<egq> $$0) {
-      int $$1 = 0;
-      dfs $$2 = $$0.b();
-      jg $$3 = $$0.e();
-      azr $$4 = $$0.d();
-      int $$5 = $$2.a(eaz.a.d, $$3.u(), $$3.w());
-      jg $$6 = new jg($$3.u(), $$5, $$3.w());
-      if ($$2.a_($$6).a(dia.G)) {
-         dvd $$7 = dia.mc.m();
-         dvd $$8 = dia.md.m();
-         int $$9 = 1 + $$4.a(10);
+   protected void a(dfc $$0, azs $$1, jh $$2, int $$3, jh.a $$4, egr $$5) {
+      int $$6 = $$5.d;
 
-         for (int $$10 = 0; $$10 <= $$9; $$10++) {
-            if ($$2.a_($$6).a(dia.G) && $$2.a_($$6.d()).a(dia.G) && $$8.a($$2, $$6)) {
-               if ($$10 == $$9) {
-                  $$2.a($$6, $$7.b(dmb.e, Integer.valueOf($$4.a(4) + 20)), 2);
-                  $$1++;
-               } else {
-                  $$2.a($$6, $$8, 2);
+      for (int $$7 = -$$6; $$7 <= $$6; $$7++) {
+         for (int $$8 = -$$6; $$8 <= $$6; $$8++) {
+            boolean $$9 = $$7 == -$$6;
+            boolean $$10 = $$7 == $$6;
+            boolean $$11 = $$8 == -$$6;
+            boolean $$12 = $$8 == $$6;
+            boolean $$13 = $$9 || $$10;
+            boolean $$14 = $$11 || $$12;
+            if (!$$13 || !$$14) {
+               $$4.a($$2, $$7, $$3, $$8);
+               if (!$$0.a_($$4).s()) {
+                  boolean $$15 = $$9 || $$14 && $$7 == 1 - $$6;
+                  boolean $$16 = $$10 || $$14 && $$7 == $$6 - 1;
+                  boolean $$17 = $$11 || $$13 && $$8 == 1 - $$6;
+                  boolean $$18 = $$12 || $$13 && $$8 == $$6 - 1;
+                  dvj $$19 = $$5.b.a($$1, $$2);
+                  if ($$19.b(dma.e) && $$19.b(dma.c) && $$19.b(dma.b) && $$19.b(dma.d)) {
+                     $$19 = $$19.b(dma.e, Boolean.valueOf($$15))
+                        .b(dma.c, Boolean.valueOf($$16))
+                        .b(dma.b, Boolean.valueOf($$17))
+                        .b(dma.d, Boolean.valueOf($$18));
+                  }
+
+                  this.a($$0, $$4, $$19);
                }
-            } else if ($$10 > 0) {
-               jg $$11 = $$6.e();
-               if ($$7.a($$2, $$11) && !$$2.a_($$11.e()).a(dia.mc)) {
-                  $$2.a($$11, $$7.b(dmb.e, Integer.valueOf($$4.a(4) + 20)), 2);
-                  $$1++;
-               }
-               break;
             }
-
-            $$6 = $$6.d();
          }
       }
+   }
 
-      return $$1 > 0;
+   @Override
+   protected int a(int $$0, int $$1, int $$2, int $$3) {
+      return $$3 <= 3 ? 0 : $$2;
    }
 }

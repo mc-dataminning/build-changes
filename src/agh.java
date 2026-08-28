@@ -1,33 +1,32 @@
-public class agh implements zo<acd> {
-   public static final zf<we, agh> a = zo.a(agh::a, agh::new);
-   private final int b;
-   private final int c;
-   private final int d;
+import javax.annotation.Nullable;
 
-   public agh(int $$0, int $$1, int $$2) {
+public class agh implements zp<ace> {
+   public static final zg<wf, agh> a = zp.a(agh::a, agh::new);
+   private final int b;
+   @Nullable
+   private final uk c;
+
+   public agh(int $$0, @Nullable uk $$1) {
       this.b = $$0;
       this.c = $$1;
-      this.d = $$2;
    }
 
-   private agh(we $$0) {
+   private agh(wf $$0) {
       this.b = $$0.l();
-      this.c = $$0.l();
-      this.d = $$0.l();
+      this.c = $$0.o();
    }
 
-   private void a(we $$0) {
+   private void a(wf $$0) {
       $$0.c(this.b);
-      $$0.c(this.c);
-      $$0.c(this.d);
+      $$0.a((vh)this.c);
    }
 
    @Override
-   public zq<agh> a() {
-      return ags.aZ;
+   public zr<agh> a() {
+      return agt.aY;
    }
 
-   public void a(acd $$0) {
+   public void a(ace $$0) {
       $$0.a(this);
    }
 
@@ -35,11 +34,13 @@ public class agh implements zo<acd> {
       return this.b;
    }
 
-   public int e() {
+   @Nullable
+   public uk e() {
       return this.c;
    }
 
-   public int f() {
-      return this.d;
+   @Override
+   public boolean c() {
+      return true;
    }
 }

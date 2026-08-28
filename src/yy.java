@@ -1,7 +1,5 @@
-import com.mojang.serialization.MapCodec;
+public interface yy {
+   xw a(int var1);
 
-public interface yy<T extends yx> {
-   MapCodec<T> a();
-
-   zf<ws, T> b();
+   yz<? extends yy> a();
 }

@@ -1,56 +1,57 @@
 import com.mojang.serialization.MapCodec;
 import javax.annotation.Nullable;
 
-public abstract class dlk extends dhy {
-   protected final jl a;
-   protected final boolean b;
-   protected final fab d;
+public class dlk extends dgz {
+   public static final MapCodec<dlk> c = b(dlk::new);
 
-   protected dlk(dvc.d $$0, jl $$1, fab $$2, boolean $$3) {
+   @Override
+   public MapCodec<dlk> a() {
+      return c;
+   }
+
+   protected dlk(dvi.d $$0) {
       super($$0);
-      this.a = $$1;
-      this.d = $$2;
-      this.b = $$3;
    }
 
    @Override
-   protected abstract MapCodec<? extends dlk> a();
+   public dsm a(jh $$0, dvj $$1) {
+      return new dtk($$0, $$1);
+   }
 
    @Nullable
    @Override
-   public dvd a(czm $$0) {
-      dvd $$1 = $$0.q().a_($$0.a().a(this.a));
-      return !$$1.a(this.c()) && !$$1.a(this.b()) ? this.a($$0.q()) : this.b().m();
-   }
-
-   public dvd a(dew $$0) {
-      return this.m();
+   public <T extends dsm> dsn<T> a(dfb $$0, dvj $$1, dso<T> $$2) {
+      return a($$0, $$2, dso.a);
    }
 
    @Override
-   protected boolean a(dvd $$0, dey $$1, jg $$2) {
-      jg $$3 = $$2.a(this.a.g());
-      dvd $$4 = $$1.a_($$3);
-      return !this.o($$4) ? false : $$4.a(this.c()) || $$4.a(this.b()) || $$4.c($$1, $$3, this.a);
-   }
-
-   @Override
-   protected void a(dvd $$0, arm $$1, jg $$2, azr $$3) {
-      if (!$$0.a($$1, $$2)) {
-         $$1.b($$2, true);
+   protected void a(dfb $$0, jh $$1, com $$2) {
+      dsm $$3 = $$0.c_($$1);
+      if ($$3 instanceof dtk) {
+         $$2.a((bsf)$$3);
+         $$2.a(awv.am);
       }
    }
 
-   protected boolean o(dvd $$0) {
-      return true;
-   }
-
    @Override
-   protected fab a(dvd $$0, dea $$1, jg $$2, ezm $$3) {
-      return this.d;
+   public void a(dvj $$0, dfb $$1, jh $$2, azs $$3) {
+      if ($$0.c(b)) {
+         double $$4 = (double)$$2.u() + 0.5;
+         double $$5 = (double)$$2.v();
+         double $$6 = (double)$$2.w() + 0.5;
+         if ($$3.j() < 0.1) {
+            $$1.a($$4, $$5, $$6, awl.jZ, awm.e, 1.0F, 1.0F, false);
+         }
+
+         jm $$7 = $$0.c(a);
+         jm.a $$8 = $$7.o();
+         double $$9 = 0.52;
+         double $$10 = $$3.j() * 0.6 - 0.3;
+         double $$11 = $$8 == jm.a.a ? (double)$$7.j() * 0.52 : $$10;
+         double $$12 = $$3.j() * 6.0 / 16.0;
+         double $$13 = $$8 == jm.a.c ? (double)$$7.l() * 0.52 : $$10;
+         $$1.a(lr.ae, $$4 + $$11, $$5 + $$12, $$6 + $$13, 0.0, 0.0, 0.0);
+         $$1.a(lr.F, $$4 + $$11, $$5 + $$12, $$6 + $$13, 0.0, 0.0, 0.0);
+      }
    }
-
-   protected abstract dlm c();
-
-   protected abstract dhy b();
 }

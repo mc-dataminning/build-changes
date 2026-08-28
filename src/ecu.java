@@ -1,25 +1,22 @@
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class ecu implements ecg {
+class ecu implements ecm {
    public static final MapCodec<ecu> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(kk.v(16).optionalFieldOf("offset", kk.g).forGetter($$0x -> $$0x.e), dvd.a.fieldOf("state").forGetter($$0x -> $$0x.f))
-            .apply($$0, ecu::new)
+      $$0 -> $$0.group(ecm.b.fieldOf("predicate").forGetter($$0x -> $$0x.e)).apply($$0, ecu::new)
    );
-   private final kk e;
-   private final dvd f;
+   private final ecm e;
 
-   protected ecu(kk $$0, dvd $$1) {
+   public ecu(ecm $$0) {
       this.e = $$0;
-      this.f = $$1;
    }
 
-   public boolean a(dfs $$0, jg $$1) {
-      return this.f.a($$0, $$1.a(this.e));
+   public boolean a(dfy $$0, jh $$1) {
+      return !this.e.test($$0, $$1);
    }
 
    @Override
-   public ech<?> a() {
-      return ech.g;
+   public ecn<?> a() {
+      return ecn.k;
    }
 }

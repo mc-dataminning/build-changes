@@ -1,11 +1,12 @@
-public class gng extends gmu<cid, gts, fxl> {
-   private static final alh a = alh.b("textures/entity/camel/camel.png");
+public class gng extends gpq<chx, gts, fxe> {
+   private static final ali a = ali.b("textures/entity/allay/allay.png");
 
-   public gng(gnz.a $$0) {
-      super($$0, new fxl($$0.a(gba.H)), new fxl($$0.a(gba.I)), 0.7F);
+   public gng(gok.a $$0) {
+      super($$0, new fxe($$0.a(gbl.a)), 0.4F);
+      this.a(new gsq<>(this, $$0.b()));
    }
 
-   public alh a(gts $$0) {
+   public ali a(gts $$0) {
       return a;
    }
 
@@ -13,15 +14,15 @@ public class gng extends gmu<cid, gts, fxl> {
       return new gts();
    }
 
-   public void a(cid $$0, gts $$1, float $$2) {
+   public void a(chx $$0, gts $$1, float $$2) {
       super.a($$0, $$1, $$2);
-      $$1.a = $$0.i();
-      $$1.b = $$0.cb();
-      $$1.c = Math.max((float)$$0.c() - $$2, 0.0F);
-      $$1.d.a($$0.ce);
-      $$1.e.a($$0.cf);
-      $$1.f.a($$0.cg);
-      $$1.g.a($$0.ch);
-      $$1.h.a($$0.ci);
+      $$1.a = $$0.gu();
+      $$1.b = $$0.gv();
+      $$1.c = $$0.K($$2);
+      $$1.d = $$0.J($$2);
+   }
+
+   protected int a(chx $$0, jh $$1) {
+      return 15;
    }
 }

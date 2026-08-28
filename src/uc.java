@@ -1,8 +1,8 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+public interface uc {
+   void a(tf var1);
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface uc {
+   void b(tf var1);
+
+   default void a() {
+   }
 }

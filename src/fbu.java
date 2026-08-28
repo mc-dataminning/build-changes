@@ -1,47 +1,32 @@
-import com.mojang.datafixers.util.Either;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
-import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
-import it.unimi.dsi.fastutil.ints.IntSet;
-import it.unimi.dsi.fastutil.ints.IntSets;
-import java.util.Map;
-import javax.annotation.Nullable;
+import org.lwjgl.openal.AL10;
 
-public class fbu implements fbs {
-   private final Int2ObjectMap<fbr.a> b;
+public class fbu {
+   private float a = 1.0F;
+   private fbv b = fbv.a;
 
-   public fbu(Map<Integer, Float> $$0) {
-      this.b = new Int2ObjectOpenHashMap($$0.size());
-      $$0.forEach(($$0x, $$1) -> this.b.put($$0x, (fbr.a)() -> $$1));
+   public void a(fbv $$0) {
+      this.b = $$0;
+      ezn $$1 = $$0.b();
+      ezn $$2 = $$0.c();
+      ezn $$3 = $$0.d();
+      AL10.alListener3f(4100, (float)$$1.d, (float)$$1.e, (float)$$1.f);
+      AL10.alListenerfv(4111, new float[]{(float)$$2.d, (float)$$2.e, (float)$$2.f, (float)$$3.a(), (float)$$3.b(), (float)$$3.c()});
    }
 
-   @Nullable
-   @Override
-   public fbr a(int $$0) {
-      return (fbr)this.b.get($$0);
+   public void a(float $$0) {
+      AL10.alListenerf(4106, $$0);
+      this.a = $$0;
    }
 
-   @Override
-   public IntSet a() {
-      return IntSets.unmodifiable(this.b.keySet());
+   public float a() {
+      return this.a;
    }
 
-   public static record a(Map<Integer, Float> c) implements foc {
-      public static final MapCodec<fbu.a> a = RecordCodecBuilder.mapCodec(
-         $$0 -> $$0.group(Codec.unboundedMap(ays.B, Codec.FLOAT).fieldOf("advances").forGetter(fbu.a::c)).apply($$0, fbu.a::new)
-      );
+   public void b() {
+      this.a(fbv.a);
+   }
 
-      @Override
-      public fod a() {
-         return fod.c;
-      }
-
-      @Override
-      public Either<foc.b, foc.c> b() {
-         foc.b $$0 = $$0x -> new fbu(this.c);
-         return Either.left($$0);
-      }
+   public fbv c() {
+      return this.b;
    }
 }

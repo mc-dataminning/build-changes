@@ -1,5 +1,7 @@
-public record ajs(alh a) implements ajq {
+public record ajs() implements ajq {
+   public static final ajs a = new ajs();
+
    @Override
-   public void a(we $$0) {
+   public void a(wf $$0) {
    }
 }

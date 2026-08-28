@@ -1,88 +1,68 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Maps;
 import com.mojang.serialization.MapCodec;
-import java.util.Map;
 
-public abstract class dnl extends dhy {
-   private static final jl[] a = jl.values();
-   public static final dvu b = dvt.L;
-   public static final dvu c = dvt.M;
-   public static final dvu d = dvt.N;
-   public static final dvu e = dvt.O;
-   public static final dvu f = dvt.J;
-   public static final dvu g = dvt.K;
-   public static final Map<jl, dvu> h = ImmutableMap.copyOf(ad.a(Maps.newEnumMap(jl.class), $$0 -> {
-      $$0.put(jl.c, b);
-      $$0.put(jl.f, c);
-      $$0.put(jl.d, d);
-      $$0.put(jl.e, e);
-      $$0.put(jl.b, f);
-      $$0.put(jl.a, g);
-   }));
-   protected final fab[] i;
+public class dnl extends die implements dih {
+   public static final MapCodec<dnl> a = b(dnl::new);
 
-   protected dnl(float $$0, dvc.d $$1) {
-      super($$1);
-      this.i = this.a($$0);
+   @Override
+   public MapCodec<dnl> a() {
+      return a;
+   }
+
+   public dnl(dvi.d $$0) {
+      super($$0);
    }
 
    @Override
-   protected abstract MapCodec<? extends dnl> a();
-
-   private fab[] a(float $$0) {
-      float $$1 = 0.5F - $$0;
-      float $$2 = 0.5F + $$0;
-      fab $$3 = dhy.a((double)($$1 * 16.0F), (double)($$1 * 16.0F), (double)($$1 * 16.0F), (double)($$2 * 16.0F), (double)($$2 * 16.0F), (double)($$2 * 16.0F));
-      fab[] $$4 = new fab[a.length];
-
-      for (int $$5 = 0; $$5 < a.length; $$5++) {
-         jl $$6 = a[$$5];
-         $$4[$$5] = ezy.a(
-            0.5 + Math.min((double)(-$$0), (double)$$6.j() * 0.5),
-            0.5 + Math.min((double)(-$$0), (double)$$6.k() * 0.5),
-            0.5 + Math.min((double)(-$$0), (double)$$6.l() * 0.5),
-            0.5 + Math.max((double)$$0, (double)$$6.j() * 0.5),
-            0.5 + Math.max((double)$$0, (double)$$6.k() * 0.5),
-            0.5 + Math.max((double)$$0, (double)$$6.l() * 0.5)
-         );
-      }
-
-      fab[] $$7 = new fab[64];
-
-      for (int $$8 = 0; $$8 < 64; $$8++) {
-         fab $$9 = $$3;
-
-         for (int $$10 = 0; $$10 < a.length; $$10++) {
-            if (($$8 & 1 << $$10) != 0) {
-               $$9 = ezy.a($$9, $$4[$$10]);
+   public boolean b(dfe $$0, jh $$1, dvj $$2) {
+      if (!$$0.a_($$1.d()).f()) {
+         return false;
+      } else {
+         for (jh $$3 : jh.c($$1.b(-1, -1, -1), $$1.b(1, 1, 1))) {
+            if ($$0.a_($$3).a(axa.aM)) {
+               return true;
             }
          }
 
-         $$7[$$8] = $$9;
+         return false;
       }
-
-      return $$7;
    }
 
    @Override
-   protected boolean e_(dvd $$0) {
-      return false;
+   public boolean a(dfb $$0, azs $$1, jh $$2, dvj $$3) {
+      return true;
    }
 
    @Override
-   protected fab a(dvd $$0, dea $$1, jg $$2, ezm $$3) {
-      return this.i[this.o($$0)];
-   }
+   public void a(arn $$0, azs $$1, jh $$2, dvj $$3) {
+      boolean $$4 = false;
+      boolean $$5 = false;
 
-   protected int o(dvd $$0) {
-      int $$1 = 0;
+      for (jh $$6 : jh.c($$2.b(-1, -1, -1), $$2.b(1, 1, 1))) {
+         dvj $$7 = $$0.a_($$6);
+         if ($$7.a(dig.on)) {
+            $$5 = true;
+         }
 
-      for (int $$2 = 0; $$2 < a.length; $$2++) {
-         if ($$0.c(h.get(a[$$2]))) {
-            $$1 |= 1 << $$2;
+         if ($$7.a(dig.ow)) {
+            $$4 = true;
+         }
+
+         if ($$5 && $$4) {
+            break;
          }
       }
 
-      return $$1;
+      if ($$5 && $$4) {
+         $$0.a($$2, $$1.h() ? dig.on.m() : dig.ow.m(), 3);
+      } else if ($$5) {
+         $$0.a($$2, dig.on.m(), 3);
+      } else if ($$4) {
+         $$0.a($$2, dig.ow.m(), 3);
+      }
+   }
+
+   @Override
+   public dih.a ar_() {
+      return dih.a.a;
    }
 }

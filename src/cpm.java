@@ -1,34 +1,51 @@
-public class cpm extends cpi {
-   public cpm(bug<? extends cpm> $$0, dev $$1) {
+import javax.annotation.Nullable;
+
+public class cpm extends cou {
+   private int f = 200;
+
+   public cpm(bul<? extends cpm> $$0, dfb $$1) {
       super($$0, $$1);
    }
 
-   public cpm(dev $$0, buv $$1, cvx $$2) {
-      super(bug.L, $$1, $$0, $$2);
+   public cpm(dfb $$0, bva $$1, cwb $$2, @Nullable cwb $$3) {
+      super(bul.aV, $$1, $$0, $$2, $$3);
    }
 
-   public cpm(dev $$0, double $$1, double $$2, double $$3, cvx $$4) {
-      super(bug.L, $$1, $$2, $$3, $$0, $$4);
-   }
-
-   @Override
-   protected cvt o() {
-      return cwb.tX;
+   public cpm(dfb $$0, double $$1, double $$2, double $$3, cwb $$4, @Nullable cwb $$5) {
+      super(bul.aV, $$1, $$2, $$3, $$0, $$4, $$5);
    }
 
    @Override
-   protected double be() {
-      return 0.07;
-   }
-
-   @Override
-   protected void a(ezf $$0) {
-      super.a($$0);
-      if (this.dX() instanceof arm) {
-         this.dX().c(2002, this.dx(), cxw.c(cxx.a));
-         int $$1 = 3 + this.dX().A.a(5) + this.dX().A.a(5);
-         bul.a((arm)this.dX(), this.dv(), $$1);
-         this.au();
+   public void l() {
+      super.l();
+      if (this.dX().C && !this.b) {
+         this.dX().a(lr.R, this.dC(), this.dE(), this.dI(), 0.0, 0.0, 0.0);
       }
+   }
+
+   @Override
+   protected void a(bva $$0) {
+      super.a($$0);
+      btj $$1 = new btj(btl.x, this.f, 0);
+      $$0.b($$1, this.E());
+   }
+
+   @Override
+   public void a(uk $$0) {
+      super.a($$0);
+      if ($$0.e("Duration")) {
+         this.f = $$0.h("Duration");
+      }
+   }
+
+   @Override
+   public void b(uk $$0) {
+      super.b($$0);
+      $$0.a("Duration", this.f);
+   }
+
+   @Override
+   protected cwb v() {
+      return new cwb(cwf.vr);
    }
 }

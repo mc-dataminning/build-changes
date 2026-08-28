@@ -1,112 +1,179 @@
-public class cuh extends cvt {
-   public static final int a = 10;
-   private static final int b = 200;
+import java.util.List;
+import java.util.Map;
+import javax.annotation.Nullable;
+import net.minecraft.server.MinecraftServer;
 
-   public cuh(cvt.a $$0) {
-      super($$0);
+public class cuh extends cvx {
+   @Deprecated
+   private final die a;
+
+   public cuh(die $$0, cvx.a $$1) {
+      super($$1);
+      this.a = $$0;
    }
 
    @Override
-   public bry a(czo $$0) {
-      coh $$1 = $$0.o();
-      if ($$1 != null && this.a($$1).d() == ezf.a.b) {
-         $$1.c($$0.p());
-      }
-
-      return bry.c;
+   public bsd a(czu $$0) {
+      bsd $$1 = this.a(new czs($$0));
+      return !$$1.a() && $$0.n().b(ku.x) ? super.a($$0.q(), $$0.o(), $$0.p()) : $$1;
    }
 
-   @Override
-   public cvz a(cvx $$0) {
-      return cvz.j;
-   }
-
-   @Override
-   public int a(cvx $$0, buv $$1) {
-      return 200;
-   }
-
-   @Override
-   public void a(dev $$0, buv $$1, cvx $$2, int $$3) {
-      if ($$3 >= 0 && $$1 instanceof coh $$4) {
-         ezf $$6 = this.a($$4);
-         if ($$6 instanceof ezd $$7 && $$6.d() == ezf.a.b) {
-            int $$9 = this.a($$2, $$1) - $$3 + 1;
-            boolean $$10 = $$9 % 10 == 5;
-            if ($$10) {
-               jg $$11 = $$7.b();
-               dvd $$12 = $$0.a_($$11);
-               bup $$13 = $$1.fC() == brx.a ? $$4.fA() : $$4.fA().e();
-               if ($$12.D() && $$12.o() != doe.a) {
-                  this.a($$0, $$7, $$12, $$1.g(0.0F), $$13);
-               }
-
-               awj $$15;
-               if ($$12.b() instanceof did $$14) {
-                  $$15 = $$14.c();
-               } else {
-                  $$15 = awk.cS;
-               }
-
-               $$0.a($$4, $$11, $$15, awl.e);
-               if (!$$0.y_() && $$0.c_($$11) instanceof dsk $$17) {
-                  boolean $$18 = $$17.a($$0.aa(), $$4, $$7.c());
-                  if ($$18) {
-                     buh $$19 = $$2.equals($$4.a(buh.b)) ? buh.b : buh.a;
-                     $$2.a(1, $$1, $$19);
+   public bsd a(czs $$0) {
+      if (!this.d().a($$0.q().J())) {
+         return bsd.d;
+      } else if (!$$0.b()) {
+         return bsd.d;
+      } else {
+         czs $$1 = this.b($$0);
+         if ($$1 == null) {
+            return bsd.d;
+         } else {
+            dvj $$2 = this.c($$1);
+            if ($$2 == null) {
+               return bsd.d;
+            } else if (!this.a($$1, $$2)) {
+               return bsd.d;
+            } else {
+               jh $$3 = $$1.a();
+               dfb $$4 = $$1.q();
+               com $$5 = $$1.o();
+               cwb $$6 = $$1.n();
+               dvj $$7 = $$4.a_($$3);
+               if ($$7.a($$2.b())) {
+                  $$7 = this.a($$3, $$4, $$6, $$7);
+                  this.a($$3, $$4, $$5, $$6, $$7);
+                  a($$4, $$3, $$6);
+                  $$7.b().a($$4, $$3, $$7, $$5, $$6);
+                  if ($$5 instanceof aro) {
+                     ao.z.a((aro)$$5, $$3, $$6);
                   }
                }
-            }
 
-            return;
+               dpr $$8 = $$7.A();
+               $$4.a($$5, $$3, this.a($$7), awm.e, ($$8.a() + 1.0F) / 2.0F, $$8.b() * 0.8F);
+               $$4.a(eag.i, $$3, eag.a.a($$5, $$7));
+               $$6.a(1, $$5);
+               return bsd.a;
+            }
+         }
+      }
+   }
+
+   protected awk a(dvj $$0) {
+      return $$0.A().e();
+   }
+
+   @Nullable
+   public czs b(czs $$0) {
+      return $$0;
+   }
+
+   private static void a(dfb $$0, jh $$1, cwb $$2) {
+      dsm $$3 = $$0.c_($$1);
+      if ($$3 != null) {
+         $$3.a($$2);
+         $$3.e();
+      }
+   }
+
+   protected boolean a(jh $$0, dfb $$1, @Nullable com $$2, cwb $$3, dvj $$4) {
+      return a($$1, $$2, $$0, $$3);
+   }
+
+   @Nullable
+   protected dvj c(czs $$0) {
+      dvj $$1 = this.d().a($$0);
+      return $$1 != null && this.b($$0, $$1) ? $$1 : null;
+   }
+
+   private dvj a(jh $$0, dfb $$1, cwb $$2, dvj $$3) {
+      cyd $$4 = $$2.a(ku.am, cyd.a);
+      if ($$4.a()) {
+         return $$3;
+      } else {
+         dvj $$5 = $$4.a($$3);
+         if ($$5 != $$3) {
+            $$1.a($$0, $$5, 2);
          }
 
-         $$1.fG();
+         return $$5;
+      }
+   }
+
+   protected boolean b(czs $$0, dvj $$1) {
+      com $$2 = $$0.o();
+      ezs $$3 = $$2 == null ? ezs.a() : ezs.a($$2);
+      return (!this.c() || $$1.a((dfe)$$0.q(), $$0.a())) && $$0.q().a($$1, $$0.a(), $$3);
+   }
+
+   protected boolean c() {
+      return true;
+   }
+
+   protected boolean a(czs $$0, dvj $$1) {
+      return $$0.q().a($$0.a(), $$1, 11);
+   }
+
+   public static boolean a(dfb $$0, @Nullable com $$1, jh $$2, cwb $$3) {
+      MinecraftServer $$4 = $$0.o();
+      if ($$4 == null) {
+         return false;
       } else {
-         $$1.fG();
+         cyk $$5 = $$3.a(ku.Y, cyk.a);
+         if (!$$5.b()) {
+            dsm $$6 = $$0.c_($$2);
+            if ($$6 != null) {
+               if ($$0.C || !$$6.p() || $$1 != null && $$1.gH()) {
+                  return $$5.a($$6, $$0.H_());
+               }
+
+               return false;
+            }
+         }
+
+         return false;
       }
    }
 
-   private ezf a(coh $$0) {
-      return cpd.a($$0, bue.h, $$0.gK());
+   @Override
+   public void a(cwb $$0, cvx.b $$1, List<xi> $$2, cxt $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      this.d().a($$0, $$1, $$2, $$3);
    }
 
-   private void a(dev $$0, ezd $$1, dvd $$2, ezh $$3, bup $$4) {
-      double $$5 = 3.0;
-      int $$6 = $$4 == bup.b ? 1 : -1;
-      int $$7 = $$0.E_().b(7, 12);
-      li $$8 = new li(lq.b, $$2);
-      jl $$9 = $$1.c();
-      cuh.a $$10 = cuh.a.a($$3, $$9);
-      ezh $$11 = $$1.g();
+   public die d() {
+      return this.a;
+   }
 
-      for (int $$12 = 0; $$12 < $$7; $$12++) {
-         $$0.a(
-            $$8,
-            $$11.d - (double)($$9 == jl.e ? 1.0E-6F : 0.0F),
-            $$11.e,
-            $$11.f - (double)($$9 == jl.c ? 1.0E-6F : 0.0F),
-            $$10.a() * (double)$$6 * 3.0 * $$0.E_().j(),
-            0.0,
-            $$10.c() * (double)$$6 * 3.0 * $$0.E_().j()
-         );
+   public void a(Map<die, cvx> $$0, cvx $$1) {
+      $$0.put(this.d(), $$1);
+   }
+
+   @Override
+   public boolean e() {
+      return !(this.d() instanceof dpd);
+   }
+
+   @Override
+   public void a(ckv $$0) {
+      cyt $$1 = $$0.m().b(ku.al, cyt.a);
+      if ($$1 != null) {
+         cwe.a($$0, $$1.e());
       }
    }
 
-   static record a(double a, double b, double c) {
-      private static final double d = 1.0;
-      private static final double e = 0.1;
-
-      public static cuh.a a(ezh $$0, jl $$1) {
-         double $$2 = 0.0;
-
-         return switch ($$1) {
-            case a, b -> new cuh.a($$0.c(), 0.0, -$$0.a());
-            case c -> new cuh.a(1.0, 0.0, -0.1);
-            case d -> new cuh.a(-1.0, 0.0, 0.1);
-            case e -> new cuh.a(-0.1, 0.0, -1.0);
-            case f -> new cuh.a(0.1, 0.0, 1.0);
-         };
+   public static void a(cwb $$0, dso<?> $$1, uk $$2) {
+      $$2.r("id");
+      if ($$2.g()) {
+         $$0.c(ku.Y);
+      } else {
+         dsm.a($$2, $$1);
+         $$0.b(ku.Y, cyk.a($$2));
       }
+   }
+
+   @Override
+   public crf i() {
+      return this.d().i();
    }
 }

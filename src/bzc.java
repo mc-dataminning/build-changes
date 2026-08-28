@@ -1,28 +1,98 @@
-import com.mojang.datafixers.kinds.App;
-import java.util.Optional;
-import java.util.function.Function;
-import java.util.function.Predicate;
+import com.google.common.collect.Iterators;
+import com.google.common.collect.Lists;
+import com.mojang.datafixers.util.Pair;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.Dynamic;
+import com.mojang.serialization.DynamicOps;
+import java.util.Comparator;
+import java.util.Iterator;
+import java.util.List;
+import java.util.stream.Stream;
 
-public class bzc {
-   public static bwp<buv> a(Function<buv, Optional<byc>> $$0, Predicate<buv> $$1, int $$2, int $$3, float $$4) {
-      return cab.a(
-         (Function<cab.b<buv>, ? extends App<cab.c<buv>, cae<buv>>>)($$5 -> $$5.group($$5.a(cdz.n), $$5.a(cdz.m))
-               .apply($$5, ($$5x, $$6) -> ($$7, $$8, $$9) -> {
-                     Optional<byc> $$10 = $$0.apply($$8);
-                     if (!$$10.isEmpty() && $$1.test($$8)) {
-                        byc $$11 = $$10.get();
-                        if ($$8.dv().a((jz)$$11.a(), (double)$$3)) {
-                           return false;
-                        } else {
-                           byc $$12 = $$10.get();
-                           $$5x.a($$12);
-                           $$6.a(new cec($$12, $$4, $$2));
-                           return true;
-                        }
-                     } else {
-                        return false;
-                     }
-                  }))
-      );
+public class bzc<U> implements Iterable<U> {
+   protected final List<bzc.a<U>> a;
+   private final azs b = azs.a();
+
+   public bzc() {
+      this.a = Lists.newArrayList();
+   }
+
+   private bzc(List<bzc.a<U>> $$0) {
+      this.a = Lists.newArrayList($$0);
+   }
+
+   public static <U> Codec<bzc<U>> a(Codec<U> $$0) {
+      return bzc.a.a($$0).listOf().xmap(bzc::new, $$0x -> $$0x.a);
+   }
+
+   public bzc<U> a(U $$0, int $$1) {
+      this.a.add(new bzc.a<>($$0, $$1));
+      return this;
+   }
+
+   public bzc<U> a() {
+      this.a.forEach($$0 -> $$0.a(this.b.i()));
+      this.a.sort(Comparator.comparingDouble(bzc.a::c));
+      return this;
+   }
+
+   public Stream<U> b() {
+      return this.a.stream().map(bzc.a::a);
+   }
+
+   @Override
+   public Iterator<U> iterator() {
+      return Iterators.transform(this.a.iterator(), bzc.a::a);
+   }
+
+   @Override
+   public String toString() {
+      return "ShufflingList[" + this.a + "]";
+   }
+
+   public static class a<T> {
+      final T a;
+      final int b;
+      private double c;
+
+      a(T $$0, int $$1) {
+         this.b = $$1;
+         this.a = $$0;
+      }
+
+      private double c() {
+         return this.c;
+      }
+
+      void a(float $$0) {
+         this.c = -Math.pow((double)$$0, (double)(1.0F / (float)this.b));
+      }
+
+      public T a() {
+         return this.a;
+      }
+
+      public int b() {
+         return this.b;
+      }
+
+      @Override
+      public String toString() {
+         return this.b + ":" + this.a;
+      }
+
+      public static <E> Codec<bzc.a<E>> a(final Codec<E> $$0) {
+         return new Codec<bzc.a<E>>() {
+            public <T> DataResult<Pair<bzc.a<E>, T>> decode(DynamicOps<T> $$0x, T $$1) {
+               Dynamic<T> $$2 = new Dynamic($$0, $$1);
+               return $$2.get("data").flatMap($$0::parse).map($$1x -> new bzc.a<>($$1x, $$2.get("weight").asInt(1))).map($$1x -> Pair.of($$1x, $$0.empty()));
+            }
+
+            public <T> DataResult<T> a(bzc.a<E> $$0x, DynamicOps<T> $$1, T $$2) {
+               return $$1.mapBuilder().add("weight", $$1.createInt($$0.b)).add("data", $$0.encodeStart($$1, $$0.a)).build($$2);
+            }
+         };
+      }
    }
 }

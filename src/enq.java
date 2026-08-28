@@ -1,80 +1,53 @@
-import com.google.common.collect.ImmutableMap;
-import java.util.Map;
-
 public class enq {
-   public static final int a = 90;
-   static final alh b = alh.b("igloo/top");
-   private static final alh c = alh.b("igloo/middle");
-   private static final alh d = alh.b("igloo/bottom");
-   static final Map<alh, jg> e = ImmutableMap.of(b, new jg(3, 5, 5), c, new jg(1, 3, 1), d, new jg(3, 6, 7));
-   static final Map<alh, jg> f = ImmutableMap.of(b, jg.c, c, new jg(2, -3, 4), d, new jg(0, -3, -2));
-
-   public static void a(epu $$0, jg $$1, dol $$2, elw $$3, azr $$4) {
-      if ($$4.j() < 0.5) {
-         int $$5 = $$4.a(8) + 4;
-         $$3.a(new enq.a($$0, d, $$1, $$2, $$5 * 3));
-
-         for (int $$6 = 0; $$6 < $$5 - 1; $$6++) {
-            $$3.a(new enq.a($$0, c, $$1, $$2, $$6 * 3));
-         }
-      }
-
-      $$3.a(new enq.a($$0, b, $$1, $$2, 0));
-   }
-
    public static class a extends emb {
-      public a(epu $$0, alh $$1, jg $$2, dol $$3, int $$4) {
-         super(emi.I, 0, $$0, $$1, $$1.toString(), a($$3, $$1), a($$1, $$2, $$4));
+      public a(jh $$0) {
+         super(emo.aa, 0, new elp($$0));
       }
 
-      public a(epu $$0, uj $$1) {
-         super(emi.I, $$1, $$0, $$1x -> a(dol.valueOf($$1.l("Rot")), $$1x));
-      }
-
-      private static epp a(dol $$0, alh $$1) {
-         return new epp().a($$0).a(dmu.a).a(enq.e.get($$1)).a(eou.b).a(epd.a);
-      }
-
-      private static jg a(alh $$0, jg $$1, int $$2) {
-         return $$1.a(enq.f.get($$0)).c($$2);
+      public a(uk $$0) {
+         super(emo.aa, $$0);
       }
 
       @Override
-      protected void a(emh $$0, uj $$1) {
-         super.a($$0, $$1);
-         $$1.a("Rot", this.c.d().name());
+      protected void a(emn $$0, uk $$1) {
       }
 
       @Override
-      protected void a(String $$0, jg $$1, dfl $$2, azr $$3, elj $$4) {
-         if ("chest".equals($$0)) {
-            $$2.a($$1, dia.a.m(), 3);
-            dsg $$5 = $$2.c_($$1.e());
-            if ($$5 instanceof dsn) {
-               ((dsn)$$5).a(ets.B, $$3.g());
+      public void a(dfy $$0, dfw $$1, dxg $$2, azs $$3, elp $$4, deh $$5, jh $$6) {
+         int $$7 = $$0.a(ebf.a.c, this.f.h(), this.f.j());
+         jh.a $$8 = new jh.a(this.f.h(), $$7, this.f.j());
+
+         while ($$8.v() > $$0.I_()) {
+            dvj $$9 = $$0.a_($$8);
+            dvj $$10 = $$0.a_($$8.e());
+            if ($$10 == dig.aV.m() || $$10 == dig.b.m() || $$10 == dig.g.m() || $$10 == dig.c.m() || $$10 == dig.e.m()) {
+               dvj $$11 = !$$9.l() && !this.b($$9) ? $$9 : dig.I.m();
+
+               for (jm $$12 : jm.values()) {
+                  jh $$13 = $$8.a($$12);
+                  dvj $$14 = $$0.a_($$13);
+                  if ($$14.l() || this.b($$14)) {
+                     jh $$15 = $$13.e();
+                     dvj $$16 = $$0.a_($$15);
+                     if (($$16.l() || this.b($$16)) && $$12 != jm.b) {
+                        $$0.a($$13, $$10, 3);
+                     } else {
+                        $$0.a($$13, $$11, 3);
+                     }
+                  }
+               }
+
+               this.f = new elp($$8);
+               this.a($$0, $$4, $$3, $$8, ety.F, null);
+               return;
             }
+
+            $$8.e(0, -1, 0);
          }
       }
 
-      @Override
-      public void a(dfs $$0, dfq $$1, dxa $$2, azr $$3, elj $$4, deb $$5, jg $$6) {
-         alh $$7 = alh.a(this.a);
-         epp $$8 = a(this.c.d(), $$7);
-         jg $$9 = enq.f.get($$7);
-         jg $$10 = this.d.a((kk)ept.a($$8, new jg(3 - $$9.u(), 0, -$$9.w())));
-         int $$11 = $$0.a(eaz.a.a, $$10.u(), $$10.w());
-         jg $$12 = this.d;
-         this.d = this.d.b(0, $$11 - 90 - 1, 0);
-         super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6);
-         if ($$7.equals(enq.b)) {
-            jg $$13 = this.d.a((kk)ept.a($$8, new jg(3, 0, 5)));
-            dvd $$14 = $$0.a_($$13.e());
-            if (!$$14.l() && !$$14.a(dia.cO)) {
-               $$0.a($$13, dia.dP.m(), 3);
-            }
-         }
-
-         this.d = $$12;
+      private boolean b(dvj $$0) {
+         return $$0 == dig.G.m() || $$0 == dig.H.m();
       }
    }
 }

@@ -1,316 +1,262 @@
-import com.mojang.datafixers.util.Pair;
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Dynamic;
-import com.mojang.serialization.Lifecycle;
-import it.unimi.dsi.fastutil.booleans.BooleanConsumer;
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.util.UUID;
-import java.util.concurrent.CompletableFuture;
-import java.util.function.Function;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.Lists;
+import com.google.common.collect.Maps;
+import com.google.common.collect.Sets;
+import com.google.common.collect.ImmutableList.Builder;
+import java.util.Comparator;
+import java.util.List;
+import java.util.Map;
+import java.util.Optional;
+import java.util.Set;
+import java.util.Map.Entry;
+import java.util.function.Consumer;
 import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
-public class fvz {
-   private static final Logger a = LogUtils.getLogger();
-   private static final UUID b = UUID.fromString("640a6a92-b6cb-48a0-b391-831586500359");
-   private final fja c;
-   private final etk d;
+public class fvz extends fra {
+   private static final xi a = xi.c("editGamerule.title");
+   private static final int b = 8;
+   final fow c = new fow(this);
+   private final Consumer<Optional<dex>> d;
+   private final Set<fvz.f> s = Sets.newHashSet();
+   private final dex u;
+   @Nullable
+   private fvz.g v;
+   @Nullable
+   private flh w;
 
-   public fvz(fja $$0, etk $$1) {
-      this.c = $$0;
+   public fvz(dex $$0, Consumer<Optional<dex>> $$1) {
+      super(a);
+      this.u = $$0;
       this.d = $$1;
    }
 
-   public void a(String $$0, dez $$1, ebx $$2, Function<jr.a, ebu> $$3, fqs $$4) {
-      this.c.d(new fqd(xh.c("selectWorld.data_read")));
-      etk.c $$5 = this.a($$0);
-      if ($$5 != null) {
-         auk $$6 = aun.a($$5);
-         dfr $$7 = $$1.g();
-
-         try {
-            amf.d $$8 = new amf.d($$6, $$7, false, false);
-            amg $$9 = this.a($$8, $$3x -> {
-               ebu.b $$4x = $$3.apply($$3x.c()).a($$3x.d().e(ly.bc));
-               return new amf.b<>(new eto($$1, $$2, $$4x.d(), $$4x.a()), $$4x.b());
-            }, amg::new);
-            this.c.a($$5, $$6, $$9, true);
-         } catch (Exception var11) {
-            a.warn("Failed to load datapacks, can't proceed with server load", var11);
-            $$5.c();
-            this.c.a($$4);
-         }
-      }
-   }
-
-   @Nullable
-   private etk.c a(String $$0) {
-      try {
-         return this.d.d($$0);
-      } catch (IOException var3) {
-         a.warn("Failed to read level {} data", $$0, var3);
-         fni.a(this.c, $$0);
-         this.c.a(null);
-         return null;
-      } catch (eyw var4) {
-         a.warn("{}", var4.getMessage());
-         this.c.a(fqk.a(() -> this.c.a(null)));
-         return null;
-      }
-   }
-
-   public void a(etk.c $$0, als $$1, jw<alq> $$2, etq $$3) {
-      auk $$4 = aun.a($$0);
-      aup $$5 = (aup)new amf.d($$4, $$3.D(), false, false).a().getSecond();
-      this.c.a($$0, $$4, new amg($$5, $$1, $$2, $$3), true);
-   }
-
-   public amg a(Dynamic<?> $$0, boolean $$1, auk $$2) throws Exception {
-      amf.d $$3 = etk.a($$0, $$2, $$1);
-      return this.a($$3, $$1x -> {
-         kc<dza> $$2x = $$1x.d().e(ly.bc);
-         eth $$3x = etk.a($$0, $$1x.b(), $$2x, $$1x.c());
-         return new amf.b<>($$3x.a(), $$3x.b().b());
-      }, amg::new);
-   }
-
-   public Pair<dez, fvx> a(etk.c $$0) throws Exception {
-      auk $$1 = aun.a($$0);
-      Dynamic<?> $$2 = $$0.h();
-      amf.d $$3 = etk.a($$2, $$1, false);
-
-      record a(dez a, ebx b, kc<dza> c) {
-      }
-
-      return this.a($$3, $$1x -> {
-         kc<dza> $$2x = new jx<>(ly.bc, Lifecycle.stable()).n();
-         eth $$3x = etk.a($$2, $$1x.b(), $$2x, $$1x.c());
-         return new amf.b<>(new a($$3x.a().J(), $$3x.a().y(), $$3x.b().c()), $$1x.d());
-      }, ($$0x, $$1x, $$2x, $$3x) -> {
-         $$0x.close();
-         return Pair.of($$3x.a, new fvx($$3x.b, new ebu($$3x.c), $$2x, $$1x, $$3x.a.g()));
+   @Override
+   protected void aR_() {
+      this.c.a(a, this.p);
+      this.v = this.c.c(new fvz.g(this.u));
+      fpa $$0 = this.c.b(fpa.e().a(8));
+      this.w = $$0.a(flh.a(xh.d, $$0x -> this.d.accept(Optional.of(this.u))).a());
+      $$0.a(flh.a(xh.e, $$0x -> this.d()).a());
+      this.c.a($$1 -> {
+         flf var10000 = this.c($$1);
       });
+      this.c();
    }
 
-   private <D, R> R a(amf.d $$0, amf.f<D> $$1, amf.e<D, R> $$2) throws Exception {
-      amf.c $$3 = new amf.c($$0, ew.a.c, 2);
-      CompletableFuture<R> $$4 = amf.a($$3, $$1, $$2, ad.g(), this.c);
-      this.c.b($$4::isDone);
-      return $$4.get();
-   }
-
-   private void a(etk.c $$0, boolean $$1, Runnable $$2, Runnable $$3) {
-      xh $$4;
-      xh $$5;
-      if ($$1) {
-         $$4 = xh.c("selectWorld.backupQuestion.customized");
-         $$5 = xh.c("selectWorld.backupWarning.customized");
-      } else {
-         $$4 = xh.c("selectWorld.backupQuestion.experimental");
-         $$5 = xh.c("selectWorld.backupWarning.experimental");
-      }
-
-      this.c.a(new fpm($$3, ($$2x, $$3x) -> {
-         if ($$2x) {
-            fvr.a($$0);
-         }
-
-         $$2.run();
-      }, $$4, $$5, false));
-   }
-
-   public static void a(fja $$0, fvp $$1, Lifecycle $$2, Runnable $$3, boolean $$4) {
-      BooleanConsumer $$5 = $$3x -> {
-         if ($$3x) {
-            $$3.run();
-         } else {
-            $$0.a($$1);
-         }
-      };
-      if ($$4 || $$2 == Lifecycle.stable()) {
-         $$3.run();
-      } else if ($$2 == Lifecycle.experimental()) {
-         $$0.a(new fpq($$5, xh.c("selectWorld.warning.experimental.title"), xh.c("selectWorld.warning.experimental.question")));
-      } else {
-         $$0.a(new fpq($$5, xh.c("selectWorld.warning.deprecated.title"), xh.c("selectWorld.warning.deprecated.question")));
+   @Override
+   protected void c() {
+      this.c.a();
+      if (this.v != null) {
+         this.v.a(this.n, this.c);
       }
    }
 
-   public void a(String $$0, Runnable $$1) {
-      this.c.d(new fqd(xh.c("selectWorld.data_read")));
-      etk.c $$2 = this.a($$0);
-      if ($$2 != null) {
-         this.a($$2, $$1);
+   @Override
+   public void d() {
+      this.d.accept(Optional.empty());
+   }
+
+   private void m() {
+      if (this.w != null) {
+         this.w.j = this.s.isEmpty();
       }
    }
 
-   private void a(etk.c $$0, Runnable $$1) {
-      this.c.d(new fqd(xh.c("selectWorld.data_read")));
-
-      Dynamic<?> $$2;
-      etl $$3;
-      try {
-         $$2 = $$0.h();
-         $$3 = $$0.a($$2);
-      } catch (uu | va | IOException var10) {
-         this.c.a(new fqr(this.c, $$2x -> {
-            if ($$2x) {
-               this.a($$0, $$1);
-            } else {
-               $$0.c();
-               $$1.run();
-            }
-         }, $$0));
-         return;
-      } catch (OutOfMemoryError var11) {
-         azh.b();
-         System.gc();
-         String $$6 = "Ran out of memory trying to read level data of world folder \"" + $$0.f() + "\"";
-         a.error(LogUtils.FATAL_MARKER, $$6);
-         OutOfMemoryError $$7 = new OutOfMemoryError("Ran out of memory reading level data");
-         $$7.initCause(var11);
-         o $$8 = o.a($$7, $$6);
-         p $$9 = $$8.a("World details");
-         $$9.a("World folder", $$0.f());
-         throw new z($$8);
-      }
-
-      this.a($$0, $$3, $$2, $$1);
+   void a(fvz.f $$0) {
+      this.s.add($$0);
+      this.m();
    }
 
-   private void a(etk.c $$0, etl $$1, Dynamic<?> $$2, Runnable $$3) {
-      if (!$$1.r()) {
-         $$0.c();
-         this.c.a(new fpl($$3, xh.c("selectWorld.incompatible.title").b(-65536), xh.a("selectWorld.incompatible.description", $$1.k())));
-      } else {
-         etl.a $$4 = $$1.o();
-         if ($$4.a()) {
-            String $$5 = "selectWorld.backupQuestion." + $$4.c();
-            String $$6 = "selectWorld.backupWarning." + $$4.c();
-            xv $$7 = xh.c($$5);
-            if ($$4.b()) {
-               $$7.b(-2142128);
+   void b(fvz.f $$0) {
+      this.s.remove($$0);
+      this.m();
+   }
+
+   public class a extends fvz.d {
+      private final flo<Boolean> c;
+
+      public a(final xi $$1, final List<ayw> $$2, final String $$3, final dex.a $$4) {
+         super($$2, $$1);
+         this.c = flo.b($$4.a()).a().a($$1x -> $$1x.c().f("\n").f($$3)).a(10, 5, 44, 20, $$1, ($$1x, $$2x) -> $$4.a($$2x, null));
+         this.a.add(this.c);
+      }
+
+      @Override
+      public void a(fku $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
+         this.a($$0, $$2, $$3);
+         this.c.m($$3 + $$4 - 45);
+         this.c.n($$2);
+         this.c.a($$0, $$6, $$7, $$9);
+      }
+   }
+
+   public class b extends fvz.f {
+      final xi b;
+
+      public b(final xi $$1) {
+         super(null);
+         this.b = $$1;
+      }
+
+      @Override
+      public void a(fku $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
+         $$0.a(fvz.this.m.h, this.b, $$3 + $$4 / 2, $$2 + 5, -1);
+      }
+
+      @Override
+      public List<? extends fne> aI_() {
+         return ImmutableList.of();
+      }
+
+      @Override
+      public List<? extends fpd> b() {
+         return ImmutableList.of(new fpd() {
+            @Override
+            public fpd.a u() {
+               return fpd.a.b;
             }
 
-            xh $$8 = xh.a($$6, $$1.k(), ab.b().c());
-            this.c.a(new fpm(() -> {
-               $$0.c();
-               $$3.run();
-            }, ($$3x, $$4x) -> {
-               if ($$3x) {
-                  fvr.a($$0);
-               }
-
-               this.a($$0, $$2, false, $$3);
-            }, $$7, $$8, false));
-         } else {
-            this.a($$0, $$2, false, $$3);
-         }
-      }
-   }
-
-   private void a(etk.c $$0, Dynamic<?> $$1, boolean $$2, Runnable $$3) {
-      this.c.d(new fqd(xh.c("selectWorld.resource_load")));
-      auk $$4 = aun.a($$0);
-
-      amg $$5;
-      try {
-         $$5 = this.a($$1, $$2, $$4);
-
-         for (dza $$6 : $$5.c().a().e(ly.bc)) {
-            $$6.b().a();
-         }
-      } catch (Exception var9) {
-         a.warn("Failed to load level data or datapacks, can't proceed with server load", var9);
-         if (!$$2) {
-            this.c.a(new fpv(() -> {
-               $$0.c();
-               $$3.run();
-            }, () -> this.a($$0, $$1, true, $$3)));
-         } else {
-            $$0.c();
-            this.c.a(new fpl($$3, xh.c("datapackFailure.safeMode.failed.title"), xh.c("datapackFailure.safeMode.failed.description"), xg.k, true));
-         }
-
-         return;
-      }
-
-      this.a($$0, $$5, $$4, $$3);
-   }
-
-   private void a(etk.c $$0, amg $$1, auk $$2, Runnable $$3) {
-      etq $$4 = $$1.d();
-      boolean $$5 = $$4.y().e();
-      boolean $$6 = $$4.B() != Lifecycle.stable();
-      if (!$$5 && !$$6) {
-         this.b($$0, $$1, $$2, $$3);
-      } else {
-         this.a($$0, $$5, () -> this.b($$0, $$1, $$2, $$3), () -> {
-            $$1.close();
-            $$0.c();
-            $$3.run();
+            @Override
+            public void b(fpf $$0) {
+               $$0.a(fpe.a, b.this.b);
+            }
          });
       }
    }
 
-   private void b(etk.c $$0, amg $$1, auk $$2, Runnable $$3) {
-      har $$4 = this.c.af();
-      this.a($$4, $$0).thenApply($$0x -> true).exceptionallyComposeAsync($$0x -> {
-         a.warn("Failed to load pack: ", $$0x);
-         return this.a();
-      }, this.c).thenAcceptAsync($$5 -> {
-         if ($$5) {
-            this.a($$0, $$1, $$4, $$2, $$3);
-         } else {
-            $$4.e();
-            $$1.close();
-            $$0.c();
-            $$3.run();
+   @FunctionalInterface
+   interface c<T extends dex.g<T>> {
+      fvz.f create(xi var1, List<ayw> var2, String var3, T var4);
+   }
+
+   public abstract class d extends fvz.f {
+      private final List<ayw> c;
+      protected final List<flf> a = Lists.newArrayList();
+
+      public d(@Nullable final List<ayw> $$1, final xi $$2) {
+         super($$1);
+         this.c = fvz.this.m.h.c($$2, 175);
+      }
+
+      @Override
+      public List<? extends fne> aI_() {
+         return this.a;
+      }
+
+      @Override
+      public List<? extends fpd> b() {
+         return this.a;
+      }
+
+      protected void a(fku $$0, int $$1, int $$2) {
+         if (this.c.size() == 1) {
+            $$0.a(fvz.this.m.h, this.c.get(0), $$2, $$1 + 5, -1, false);
+         } else if (this.c.size() >= 2) {
+            $$0.a(fvz.this.m.h, this.c.get(0), $$2, $$1, -1, false);
+            $$0.a(fvz.this.m.h, this.c.get(1), $$2, $$1 + 10, -1, false);
          }
-      }, this.c).exceptionally($$0x -> {
-         this.c.a(o.a($$0x, "Load world"));
-         return null;
-      });
+      }
    }
 
-   private void a(etk.c $$0, amg $$1, har $$2, auk $$3, Runnable $$4) {
-      if ($$0.b()) {
-         this.c.a(new fpq($$5 -> {
-            if ($$5) {
-               this.a($$0, $$1, $$3);
+   public class e extends fvz.d {
+      private final flq d;
+
+      public e(final xi $$1, final List<ayw> $$2, final String $$3, final dex.d $$4) {
+         super($$2, $$1);
+         this.d = new flq(fvz.this.m.h, 10, 5, 44, 20, $$1.f().f("\n").f($$3).f("\n"));
+         this.d.a(Integer.toString($$4.a()));
+         this.d.b($$1x -> {
+            if ($$4.b($$1x)) {
+               this.d.g(14737632);
+               fvz.this.b(this);
             } else {
-               $$2.e();
-               $$1.close();
-               $$0.c();
-               $$4.run();
+               this.d.g(-65536);
+               fvz.this.a(this);
             }
-         }, xh.c("selectWorld.warning.lowDiskSpace.title").a(n.m), xh.c("selectWorld.warning.lowDiskSpace.description"), xg.j, xg.k));
-      } else {
-         this.a($$0, $$1, $$3);
+         });
+         this.a.add(this.d);
+      }
+
+      @Override
+      public void a(fku $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
+         this.a($$0, $$2, $$3);
+         this.d.m($$3 + $$4 - 45);
+         this.d.n($$2);
+         this.d.a($$0, $$6, $$7, $$9);
       }
    }
 
-   private void a(etk.c $$0, amg $$1, auk $$2) {
-      this.c.a($$0, $$2, $$1, false);
-   }
+   public abstract static class f extends fln.a<fvz.f> {
+      @Nullable
+      final List<ayw> a;
 
-   private CompletableFuture<Void> a(har $$0, etk.c $$1) {
-      Path $$2 = $$1.a(eti.k);
-      if (Files.exists($$2) && !Files.isDirectory($$2)) {
-         $$0.f();
-         CompletableFuture<Void> $$3 = $$0.b(b);
-         $$0.a(b, $$2);
-         return $$3;
-      } else {
-         return CompletableFuture.completedFuture(null);
+      public f(@Nullable List<ayw> $$0) {
+         this.a = $$0;
       }
    }
 
-   private CompletableFuture<Boolean> a() {
-      CompletableFuture<Boolean> $$0 = new CompletableFuture<>();
-      this.c.a(new fpq($$0::complete, xh.c("multiplayer.texturePrompt.failure.line1"), xh.c("multiplayer.texturePrompt.failure.line2"), xg.i, xg.e));
-      return $$0;
+   public class g extends fln<fvz.f> {
+      private static final int m = 24;
+
+      public g(final dex $$1) {
+         super(fji.Q(), fvz.this.n, fvz.this.c.d(), fvz.this.c.c(), 24);
+         final Map<dex.b, Map<dex.e<?>, fvz.f>> $$2 = Maps.newHashMap();
+         $$1.a(new dex.c() {
+            @Override
+            public void b(dex.e<dex.a> $$0, dex.f<dex.a> $$1x) {
+               this.a($$0, ($$0x, $$1xxx, $$2xx, $$3) -> fvz.this.new a($$0x, $$1xxx, $$2xx, $$3));
+            }
+
+            @Override
+            public void c(dex.e<dex.d> $$0, dex.f<dex.d> $$1x) {
+               this.a($$0, ($$0x, $$1xxx, $$2xx, $$3) -> fvz.this.new e($$0x, $$1xxx, $$2xx, $$3));
+            }
+
+            private <T extends dex.g<T>> void a(dex.e<T> $$0, fvz.c<T> $$1x) {
+               xi $$2 = xi.c($$0.b());
+               xi $$3 = xi.b($$0.a()).a(n.o);
+               T $$4 = $$1.a($$0);
+               String $$5 = $$4.b();
+               xi $$6 = xi.a("editGamerule.default", xi.b($$5)).a(n.h);
+               String $$7 = $$0.b() + ".description";
+               List<ayw> $$10;
+               String $$11;
+               if (gzk.a($$7)) {
+                  Builder<ayw> $$8 = ImmutableList.builder().add($$3.g());
+                  xi $$9 = xi.c($$7);
+                  fvz.this.p.c($$9, 150).forEach($$8::add);
+                  $$10 = $$8.add($$6.g()).build();
+                  $$11 = $$9.getString() + "\n" + $$6.getString();
+               } else {
+                  $$10 = ImmutableList.of($$3.g(), $$6.g());
+                  $$11 = $$6.getString();
+               }
+
+               $$2.computeIfAbsent($$0.c(), $$0x -> Maps.newHashMap()).put($$0, $$1.create($$2, $$10, $$11, $$4));
+            }
+         });
+         $$2.entrySet()
+            .stream()
+            .sorted(Entry.comparingByKey())
+            .forEach(
+               $$0x -> {
+                  this.b(fvz.this.new b(xi.c(((dex.b)$$0x.getKey()).a()).a(n.r, n.o)));
+                  ((Map)$$0x.getValue())
+                     .entrySet()
+                     .stream()
+                     .sorted(Entry.comparingByKey(Comparator.comparing(dex.e::a)))
+                     .forEach($$0xx -> this.b((fvz.f)$$0xx.getValue()));
+               }
+            );
+      }
+
+      @Override
+      public void b(fku $$0, int $$1, int $$2, float $$3) {
+         super.b($$0, $$1, $$2, $$3);
+         fvz.f $$4 = this.v();
+         if ($$4 != null && $$4.a != null) {
+            fvz.this.b($$4.a);
+         }
+      }
    }
 }

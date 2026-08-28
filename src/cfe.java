@@ -1,37 +1,27 @@
-import it.unimi.dsi.fastutil.ints.IntOpenHashSet;
-import it.unimi.dsi.fastutil.ints.IntSet;
+import com.google.common.collect.ImmutableSet;
+import java.util.Optional;
+import java.util.Set;
 
-public class cfe {
-   private final bux a;
-   private final IntSet b = new IntOpenHashSet();
-   private final IntSet c = new IntOpenHashSet();
+public abstract class cfe extends cfk<bva> {
+   protected abstract boolean a(bva var1, bva var2);
 
-   public cfe(bux $$0) {
-      this.a = $$0;
+   protected abstract cee<bva> b();
+
+   @Override
+   public Set<cee<?>> a() {
+      return ImmutableSet.of(this.b());
    }
 
-   public void a() {
-      this.b.clear();
-      this.c.clear();
+   @Override
+   protected void a(arn $$0, bva $$1) {
+      $$1.ed().a(this.b(), this.b($$1));
    }
 
-   public boolean a(btz $$0) {
-      int $$1 = $$0.ar();
-      if (this.b.contains($$1)) {
-         return true;
-      } else if (this.c.contains($$1)) {
-         return false;
-      } else {
-         this.a.dX().ah().a("hasLineOfSight");
-         boolean $$2 = this.a.G($$0);
-         this.a.dX().ah().c();
-         if ($$2) {
-            this.b.add($$1);
-         } else {
-            this.c.add($$1);
-         }
+   private Optional<bva> b(bva $$0) {
+      return this.a($$0).flatMap($$1 -> $$1.a($$1x -> this.a($$0, $$1x)));
+   }
 
-         return $$2;
-      }
+   protected Optional<ceg> a(bva $$0) {
+      return $$0.ed().c(cee.h);
    }
 }

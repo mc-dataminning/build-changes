@@ -1,70 +1,41 @@
-import com.mojang.logging.LogUtils;
-import org.slf4j.Logger;
+import com.mojang.authlib.yggdrasil.ProfileResult;
+import java.util.Date;
+import java.util.UUID;
 
-public class fhw extends fhy {
-   private static final Logger b = LogUtils.getLogger();
-   private static final xh c = xh.c("mco.download.preparing");
-   private final long d;
-   private final int e;
-   private final fqs f;
-   private final String g;
+public class fhw {
+   private static final xi a = xi.c("mco.util.time.now");
+   private static final int b = 60;
+   private static final int c = 3600;
+   private static final int d = 86400;
 
-   public fhw(long $$0, int $$1, String $$2, fqs $$3) {
-      this.d = $$0;
-      this.e = $$1;
-      this.f = $$3;
-      this.g = $$2;
-   }
-
-   @Override
-   public void run() {
-      fej $$0 = fej.a();
-      int $$1 = 0;
-
-      while ($$1 < 25) {
-         try {
-            if (this.d()) {
-               return;
-            }
-
-            ffo $$2 = $$0.b(this.d, this.e);
-            a(1L);
-            if (this.d()) {
-               return;
-            }
-
-            a(new fgl(this.f, $$2, this.g, $$0x -> {
-            }));
-            return;
-         } catch (ffv var4) {
-            if (this.d()) {
-               return;
-            }
-
-            a((long)var4.c);
-            $$1++;
-         } catch (ffu var5) {
-            if (this.d()) {
-               return;
-            }
-
-            b.error("Couldn't download world data", var5);
-            a(new fgm(var5, this.f));
-            return;
-         } catch (Exception var6) {
-            if (this.d()) {
-               return;
-            }
-
-            b.error("Couldn't download world data", var6);
-            this.a(var6);
-            return;
+   public static xi a(long $$0) {
+      if ($$0 < 0L) {
+         return a;
+      } else {
+         long $$1 = $$0 / 1000L;
+         if ($$1 < 60L) {
+            return xi.a("mco.time.secondsAgo", $$1);
+         } else if ($$1 < 3600L) {
+            long $$2 = $$1 / 60L;
+            return xi.a("mco.time.minutesAgo", $$2);
+         } else if ($$1 < 86400L) {
+            long $$3 = $$1 / 3600L;
+            return xi.a("mco.time.hoursAgo", $$3);
+         } else {
+            long $$4 = $$1 / 86400L;
+            return xi.a("mco.time.daysAgo", $$4);
          }
       }
    }
 
-   @Override
-   public xh a() {
-      return c;
+   public static xi a(Date $$0) {
+      return a(System.currentTimeMillis() - $$0.getTime());
+   }
+
+   public static void a(fku $$0, int $$1, int $$2, int $$3, UUID $$4) {
+      fji $$5 = fji.Q();
+      ProfileResult $$6 = $$5.am().fetchProfile($$4, false);
+      gze $$7 = $$6 != null ? $$5.an().b($$6.profile()) : gyv.a($$4);
+      fmg.a($$0, $$7, $$1, $$2, $$3);
    }
 }

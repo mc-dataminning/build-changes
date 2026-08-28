@@ -1,27 +1,133 @@
-import com.google.common.math.Quantiles;
-import com.google.common.math.Quantiles.ScaleAndIndexes;
-import it.unimi.dsi.fastutil.ints.Int2DoubleRBTreeMap;
-import it.unimi.dsi.fastutil.ints.Int2DoubleSortedMap;
-import it.unimi.dsi.fastutil.ints.Int2DoubleSortedMaps;
-import java.util.Comparator;
+import com.mojang.jtracy.Plot;
+import com.mojang.jtracy.TracyClient;
+import com.mojang.jtracy.Zone;
+import com.mojang.logging.LogUtils;
+import java.lang.StackWalker.Option;
+import java.lang.StackWalker.StackFrame;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
+import java.util.Optional;
+import java.util.Set;
+import java.util.function.Supplier;
+import org.slf4j.Logger;
 
-public class bor {
-   public static final ScaleAndIndexes a = Quantiles.scale(100).indexes(new int[]{50, 75, 90, 99});
+public class bor implements bon {
+   private static final Logger a = LogUtils.getLogger();
+   private static final StackWalker c = StackWalker.getInstance(Set.of(Option.RETAIN_CLASS_REFERENCE), 5);
+   private final List<Zone> d = new ArrayList<>();
+   private final Map<String, bor.a> e = new HashMap<>();
+   private final String f = Thread.currentThread().getName();
 
-   private bor() {
+   @Override
+   public void a() {
    }
 
-   public static Map<Integer, Double> a(long[] $$0) {
-      return $$0.length == 0 ? Map.of() : a(a.compute($$0));
+   @Override
+   public void b() {
+      for (bor.a $$0 : this.e.values()) {
+         $$0.a(0);
+      }
    }
 
-   public static Map<Integer, Double> a(double[] $$0) {
-      return $$0.length == 0 ? Map.of() : a(a.compute($$0));
+   @Override
+   public void a(String $$0) {
+      String $$1 = "";
+      String $$2 = "";
+      int $$3 = 0;
+      if (ab.aV) {
+         Optional<StackFrame> $$4 = c.walk(
+            $$0x -> $$0x.filter($$0xx -> $$0xx.getDeclaringClass() != bor.class && $$0xx.getDeclaringClass() != bon.a.class).findFirst()
+         );
+         if ($$4.isPresent()) {
+            StackFrame $$5 = $$4.get();
+            $$1 = $$5.getMethodName();
+            $$2 = $$5.getFileName();
+            $$3 = $$5.getLineNumber();
+         }
+      }
+
+      Zone $$6 = TracyClient.beginZone($$0, $$1, $$2, $$3);
+      this.d.add($$6);
    }
 
-   private static Map<Integer, Double> a(Map<Integer, Double> $$0) {
-      Int2DoubleSortedMap $$1 = ad.a(new Int2DoubleRBTreeMap(Comparator.reverseOrder()), $$1x -> $$1x.putAll($$0));
-      return Int2DoubleSortedMaps.unmodifiable($$1);
+   @Override
+   public void a(Supplier<String> $$0) {
+      this.a($$0.get());
+   }
+
+   @Override
+   public void c() {
+      if (this.d.isEmpty()) {
+         a.error("Tried to pop one too many times! Mismatched push() and pop()?");
+      } else {
+         Zone $$0 = this.d.removeLast();
+         $$0.close();
+      }
+   }
+
+   @Override
+   public void b(String $$0) {
+      this.c();
+      this.a($$0);
+   }
+
+   @Override
+   public void b(Supplier<String> $$0) {
+      this.c();
+      this.a($$0.get());
+   }
+
+   @Override
+   public void a(bpv $$0) {
+   }
+
+   @Override
+   public void a(String $$0, int $$1) {
+      this.e.computeIfAbsent($$0, $$1x -> new bor.a(this.f + " " + $$0)).b($$1);
+   }
+
+   @Override
+   public void a(Supplier<String> $$0, int $$1) {
+      this.a($$0.get(), $$1);
+   }
+
+   private Zone d() {
+      return this.d.getLast();
+   }
+
+   @Override
+   public void e(String $$0) {
+      this.d().addText($$0);
+   }
+
+   @Override
+   public void a(long $$0) {
+      this.d().addValue($$0);
+   }
+
+   @Override
+   public void a(int $$0) {
+      this.d().setColor($$0);
+   }
+
+   static final class a {
+      private final Plot a;
+      private int b;
+
+      a(String $$0) {
+         this.a = TracyClient.createPlot($$0);
+         this.b = 0;
+      }
+
+      void a(int $$0) {
+         this.b = $$0;
+         this.a.setValue((double)$$0);
+      }
+
+      void b(int $$0) {
+         this.a(this.b + $$0);
+      }
    }
 }

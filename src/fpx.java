@@ -1,51 +1,109 @@
-public class fpx extends fqs {
-   private static final alh a = alh.b("textures/gui/demo_background.png");
-   private static final int b = 256;
-   private static final int c = 256;
-   private fls d = fls.a;
-   private fls s = fls.a;
+import it.unimi.dsi.fastutil.booleans.BooleanConsumer;
+import java.net.URI;
 
-   public fpx() {
-      super(xh.c("demo.help.title"));
+public class fpx extends fpy {
+   private static final xi d = xi.c("chat.copy");
+   private static final xi s = xi.c("chat.link.warning");
+   private final String u;
+   private final boolean v;
+
+   public fpx(BooleanConsumer $$0, String $$1, boolean $$2) {
+      this($$0, c($$2), xi.b($$1), $$1, $$2 ? xh.e : xh.g, $$2);
+   }
+
+   public fpx(BooleanConsumer $$0, xi $$1, String $$2, boolean $$3) {
+      this($$0, $$1, a($$3, $$2), $$2, $$3 ? xh.e : xh.g, $$3);
+   }
+
+   public fpx(BooleanConsumer $$0, xi $$1, URI $$2, boolean $$3) {
+      this($$0, $$1, $$2.toString(), $$3);
+   }
+
+   public fpx(BooleanConsumer $$0, xi $$1, xi $$2, URI $$3, xi $$4, boolean $$5) {
+      this($$0, $$1, $$2, $$3.toString(), $$4, true);
+   }
+
+   public fpx(BooleanConsumer $$0, xi $$1, xi $$2, String $$3, xi $$4, boolean $$5) {
+      super($$0, $$1, $$2);
+      this.a = (xi)($$5 ? xi.c("chat.link.open") : xh.f);
+      this.b = $$4;
+      this.v = !$$5;
+      this.u = $$3;
+   }
+
+   protected static xw a(boolean $$0, String $$1) {
+      return c($$0).b(xh.v).b(xi.b($$1));
+   }
+
+   protected static xw c(boolean $$0) {
+      return xi.c($$0 ? "chat.link.confirmTrusted" : "chat.link.confirm");
    }
 
    @Override
-   protected void aS_() {
-      int $$0 = -16;
-      this.c(fkz.a(xh.c("demo.help.buy"), $$0x -> {
-         $$0x.j = false;
-         ad.m().a(ayf.f);
-      }).a(this.n / 2 - 116, this.o / 2 + 62 + -16, 114, 20).a());
-      this.c(fkz.a(xh.c("demo.help.later"), $$0x -> {
-         this.m.a(null);
-         this.m.o.i();
-      }).a(this.n / 2 + 2, this.o / 2 + 62 + -16, 114, 20).a());
-      fje $$1 = this.m.n;
-      this.d = fls.a(
-         this.p,
-         xh.a("demo.help.movementShort", $$1.v.k(), $$1.w.k(), $$1.x.k(), $$1.y.k()),
-         xh.c("demo.help.movementMouse"),
-         xh.a("demo.help.jump", $$1.z.k()),
-         xh.a("demo.help.inventory", $$1.C.k())
-      );
-      this.s = fls.a(this.p, xh.c("demo.help.fullWrapped"), 218);
+   protected void a(int $$0) {
+      this.c(flh.a(this.a, $$0x -> this.c.accept(true)).a(this.n / 2 - 50 - 105, $$0, 100, 20).a());
+      this.c(flh.a(d, $$0x -> {
+         this.l();
+         this.c.accept(false);
+      }).a(this.n / 2 - 50, $$0, 100, 20).a());
+      this.c(flh.a(this.b, $$0x -> this.c.accept(false)).a(this.n / 2 - 50 + 105, $$0, 100, 20).a());
+   }
+
+   public void l() {
+      this.m.p.a(this.u);
    }
 
    @Override
-   public void b(fkm $$0, int $$1, int $$2, float $$3) {
-      super.b($$0, $$1, $$2, $$3);
-      int $$4 = (this.n - 248) / 2;
-      int $$5 = (this.o - 166) / 2;
-      $$0.a(gig::B, a, $$4, $$5, 0.0F, 0.0F, 248, 166, 256, 256);
-   }
-
-   @Override
-   public void a(fkm $$0, int $$1, int $$2, float $$3) {
+   public void a(fku $$0, int $$1, int $$2, float $$3) {
       super.a($$0, $$1, $$2, $$3);
-      int $$4 = (this.n - 248) / 2 + 10;
-      int $$5 = (this.o - 166) / 2 + 8;
-      $$0.a(this.p, this.l, $$4, $$5, 2039583, false);
-      $$5 = this.d.c($$0, $$4, $$5 + 12, 12, 5197647);
-      this.s.c($$0, $$4, $$5 + 20, 9, 2039583);
+      if (this.v) {
+         $$0.a(this.p, s, this.n / 2, 110, 16764108);
+      }
+   }
+
+   public static void a(fra $$0, String $$1, boolean $$2) {
+      fji $$3 = fji.Q();
+      $$3.a(new fpx($$3x -> {
+         if ($$3x) {
+            ae.m().a($$1);
+         }
+
+         $$3.a($$0);
+      }, $$1, $$2));
+   }
+
+   public static void a(fra $$0, URI $$1, boolean $$2) {
+      fji $$3 = fji.Q();
+      $$3.a(new fpx($$3x -> {
+         if ($$3x) {
+            ae.m().a($$1);
+         }
+
+         $$3.a($$0);
+      }, $$1.toString(), $$2));
+   }
+
+   public static void a(fra $$0, URI $$1) {
+      a($$0, $$1, true);
+   }
+
+   public static void a(fra $$0, String $$1) {
+      a($$0, $$1, true);
+   }
+
+   public static flh.c b(fra $$0, String $$1, boolean $$2) {
+      return $$3 -> a($$0, $$1, $$2);
+   }
+
+   public static flh.c b(fra $$0, URI $$1, boolean $$2) {
+      return $$3 -> a($$0, $$1, $$2);
+   }
+
+   public static flh.c b(fra $$0, String $$1) {
+      return b($$0, $$1, true);
+   }
+
+   public static flh.c b(fra $$0, URI $$1) {
+      return b($$0, $$1, true);
    }
 }

@@ -1,20 +1,26 @@
-import java.util.ArrayList;
-import java.util.List;
 import javax.annotation.Nullable;
 
-public class gxb {
+public class gxb extends gvl {
+   private static final ali j = ali.b("textures/entity/wolf/wolf.png");
+   public boolean a;
+   public boolean b;
+   public float c = (float) (Math.PI / 5);
+   public float d;
+   public float e;
+   public float f = 1.0F;
+   public ali g = j;
    @Nullable
-   public alh a;
-   public final List<gxb.a> b = new ArrayList<>();
+   public cuy h;
+   public cwb i = cwb.k;
 
-   public static class a {
-      @Nullable
-      public gxs a;
-      public byte b;
-      public byte c;
-      public byte d;
-      public boolean e;
-      @Nullable
-      public xh f;
+   public float a(float $$0) {
+      float $$1 = (this.e + $$0) / 1.8F;
+      if ($$1 < 0.0F) {
+         $$1 = 0.0F;
+      } else if ($$1 > 1.0F) {
+         $$1 = 1.0F;
+      }
+
+      return azk.a($$1 * (float) Math.PI) * azk.a($$1 * (float) Math.PI * 11.0F) * 0.15F * (float) Math.PI;
    }
 }

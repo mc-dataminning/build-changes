@@ -1,36 +1,19 @@
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import io.netty.buffer.ByteBuf;
-import java.util.Optional;
+import java.util.UUID;
+import java.util.function.Consumer;
+import javax.annotation.Nullable;
 
-public class dzw implements eae {
-   public static final MapCodec<dzw> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(jg.a.fieldOf("pos").forGetter($$0x -> $$0x.e)).apply($$0, dzw::new));
-   public static final zf<ByteBuf, dzw> b = zf.a(jg.b, $$0 -> $$0.e, dzw::new);
-   private final jg e;
+public interface dzw<T extends dzn> {
+   @Nullable
+   T a(int var1);
 
-   public dzw(jg $$0) {
-      this.e = $$0;
-   }
+   @Nullable
+   T a(UUID var1);
 
-   @Override
-   public Optional<ezh> a(dev $$0) {
-      return Optional.of(ezh.b(this.e));
-   }
+   Iterable<T> a();
 
-   @Override
-   public eaf<dzw> a() {
-      return eaf.a;
-   }
+   <U extends T> void a(dzu<T, U> var1, axw<U> var2);
 
-   public static class a implements eaf<dzw> {
-      @Override
-      public MapCodec<dzw> a() {
-         return dzw.a;
-      }
+   void a(ezi var1, Consumer<T> var2);
 
-      @Override
-      public zf<ByteBuf, dzw> b() {
-         return dzw.b;
-      }
-   }
+   <U extends T> void a(dzu<T, U> var1, ezi var2, axw<U> var3);
 }

@@ -1,37 +1,19 @@
-public abstract class bxz<E extends buv> implements bwp<E>, cae<E> {
-   private bwo.a a;
+import com.google.common.collect.ImmutableMap;
 
-   public bxz() {
-      this.a = bwo.a.a;
+public class bxz extends bwt<bvc> {
+   public bxz(int $$0, int $$1) {
+      super(ImmutableMap.of(cee.n, cef.a), $$0, $$1);
    }
 
-   @Override
-   public final bwo.a a() {
-      return this.a;
+   protected boolean a(arn $$0, bvc $$1, long $$2) {
+      return $$1.ed().c(cee.n).filter($$1x -> $$1x.a($$1)).isPresent();
    }
 
-   @Override
-   public final boolean e(arm $$0, E $$1, long $$2) {
-      if (this.trigger($$0, $$1, $$2)) {
-         this.a = bwo.a.b;
-         return true;
-      } else {
-         return false;
-      }
+   protected void b(arn $$0, bvc $$1, long $$2) {
+      $$1.ed().b(cee.n);
    }
 
-   @Override
-   public final void f(arm $$0, E $$1, long $$2) {
-      this.g($$0, $$1, $$2);
-   }
-
-   @Override
-   public final void g(arm $$0, E $$1, long $$2) {
-      this.a = bwo.a.a;
-   }
-
-   @Override
-   public String b() {
-      return this.getClass().getSimpleName();
+   protected void c(arn $$0, bvc $$1, long $$2) {
+      $$1.ed().c(cee.n).ifPresent($$1x -> $$1.K().a($$1x.a()));
    }
 }

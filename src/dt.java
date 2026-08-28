@@ -1,80 +1,30 @@
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Optional;
+import javax.annotation.Nullable;
 
-public class dt extends dx<dt.a> {
+public record dt(boolean d, boolean e) implements bx {
+   public static final MapCodec<dt> b = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(Codec.BOOL.optionalFieldOf("has_raid", false).forGetter(dt::b), Codec.BOOL.optionalFieldOf("is_captain", false).forGetter(dt::c))
+            .apply($$0, dt::new)
+   );
+   public static final dt c = new dt(false, true);
+
    @Override
-   public Codec<dt.a> a() {
-      return dt.a.a;
+   public MapCodec<dt> a() {
+      return by.e;
    }
 
-   public void a(arn $$0, alh $$1, List<cvx> $$2) {
-      this.a($$0, $$2x -> $$2x.b($$1, $$2));
+   @Override
+   public boolean a(bue $$0, arn $$1, @Nullable ezn $$2) {
+      return !($$0 instanceof cqb $$3) ? false : $$3.gK() == this.d && $$3.gJ() == this.e;
    }
 
-   public static record a(Optional<bg> b, alh c, List<ct> d) implements dx.a {
-      public static final Codec<dt.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(
-                  bv.b.optionalFieldOf("player").forGetter(dt.a::a),
-                  alh.a.fieldOf("recipe_id").forGetter(dt.a::b),
-                  ct.a.listOf().optionalFieldOf("ingredients", List.of()).forGetter(dt.a::c)
-               )
-               .apply($$0, dt.a::new)
-      );
+   public boolean b() {
+      return this.d;
+   }
 
-      public static ao<dt.a> a(alh $$0, List<ct.a> $$1) {
-         return an.ac.a(new dt.a(Optional.empty(), $$0, $$1.stream().map(ct.a::b).toList()));
-      }
-
-      public static ao<dt.a> a(alh $$0) {
-         return an.ac.a(new dt.a(Optional.empty(), $$0, List.of()));
-      }
-
-      public static ao<dt.a> b(alh $$0) {
-         return an.ad.a(new dt.a(Optional.empty(), $$0, List.of()));
-      }
-
-      boolean b(alh $$0, List<cvx> $$1) {
-         if (!$$0.equals(this.c)) {
-            return false;
-         } else {
-            List<cvx> $$2 = new ArrayList<>($$1);
-
-            for (ct $$3 : this.d) {
-               boolean $$4 = false;
-               Iterator<cvx> $$5 = $$2.iterator();
-
-               while ($$5.hasNext()) {
-                  if ($$3.a($$5.next())) {
-                     $$5.remove();
-                     $$4 = true;
-                     break;
-                  }
-               }
-
-               if (!$$4) {
-                  return false;
-               }
-            }
-
-            return true;
-         }
-      }
-
-      @Override
-      public Optional<bg> a() {
-         return this.b;
-      }
-
-      public alh b() {
-         return this.c;
-      }
-
-      public List<ct> c() {
-         return this.d;
-      }
+   public boolean c() {
+      return this.e;
    }
 }

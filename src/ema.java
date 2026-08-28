@@ -1,26 +1,57 @@
-import com.mojang.serialization.MapCodec;
+import it.unimi.dsi.fastutil.longs.LongOpenHashSet;
+import it.unimi.dsi.fastutil.longs.LongSet;
 
-public interface ema<S extends elr> {
-   ema<enl> a = a("buried_treasure", enl.d);
-   ema<enn> b = a("desert_pyramid", enn.d);
-   ema<enp> c = a("end_city", enp.d);
-   ema<eny> d = a("fortress", eny.e);
-   ema<enr> e = a("igloo", enr.d);
-   ema<ens> f = a("jigsaw", ens.i);
-   ema<enu> g = a("jungle_temple", enu.d);
-   ema<enw> h = a("mineshaft", enw.d);
-   ema<eoa> i = a("nether_fossil", eoa.d);
-   ema<eoc> j = a("ocean_monument", eoc.d);
-   ema<eoe> k = a("ocean_ruin", eoe.d);
-   ema<eog> l = a("ruined_portal", eog.d);
-   ema<eoi> m = a("shipwreck", eoi.d);
-   ema<eok> n = a("stronghold", eok.d);
-   ema<eom> o = a("swamp_hut", eom.d);
-   ema<eoo> p = a("woodland_mansion", eoo.d);
+public class ema extends esw {
+   private static final String a = "Remaining";
+   private static final String b = "All";
+   private final LongSet c;
+   private final LongSet d;
 
-   MapCodec<S> codec();
+   public static esw.a<ema> a() {
+      return new esw.a<>(ema::new, ema::b, bat.o);
+   }
 
-   private static <S extends elr> ema<S> a(String $$0, MapCodec<S> $$1) {
-      return kc.a(lx.R, $$0, () -> $$1);
+   private ema(LongSet $$0, LongSet $$1) {
+      this.c = $$0;
+      this.d = $$1;
+   }
+
+   public ema() {
+      this(new LongOpenHashSet(), new LongOpenHashSet());
+   }
+
+   public static ema b(uk $$0, js.a $$1) {
+      return new ema(new LongOpenHashSet($$0.o("All")), new LongOpenHashSet($$0.o("Remaining")));
+   }
+
+   @Override
+   public uk a(uk $$0, js.a $$1) {
+      $$0.a("All", this.c.toLongArray());
+      $$0.a("Remaining", this.d.toLongArray());
+      return $$0;
+   }
+
+   public void a(long $$0) {
+      this.c.add($$0);
+      this.d.add($$0);
+      this.c();
+   }
+
+   public boolean b(long $$0) {
+      return this.c.contains($$0);
+   }
+
+   public boolean c(long $$0) {
+      return this.d.contains($$0);
+   }
+
+   public void d(long $$0) {
+      if (this.d.remove($$0)) {
+         this.c();
+      }
+   }
+
+   public LongSet b() {
+      return this.c;
    }
 }

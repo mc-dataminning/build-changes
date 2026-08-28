@@ -1,75 +1,218 @@
-import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.Maps;
-import java.util.Map;
-import java.util.Set;
-import javax.annotation.Nullable;
-
 public class fkc {
-   private static final int a = -1;
-   private final jv<fkb> b = new jv<>(32);
-   private final Map<dhy, Set<dwg<?>>> c = Maps.newHashMap();
-
-   public static fkc a() {
-      fkc $$0 = new fkc();
-      $$0.a(($$0x, $$1, $$2, $$3) -> $$1 != null && $$2 != null ? ghc.a($$1, $$0x.c(dkg.b) == dvz.a ? $$2.e() : $$2) : det.a(), dia.iI, dia.iH);
-      $$0.a(dkg.b, dia.iI, dia.iH);
-      $$0.a(($$0x, $$1, $$2, $$3) -> $$1 != null && $$2 != null ? ghc.a($$1, $$2) : det.a(), dia.i, dia.bu, dia.bt, dia.gb);
-      $$0.a(($$0x, $$1, $$2, $$3) -> {
-         if ($$3 != 0) {
-            return $$1 != null && $$2 != null ? ghc.a($$1, $$2) : det.a();
-         } else {
-            return -1;
-         }
-      }, dia.sB);
-      $$0.a(($$0x, $$1, $$2, $$3) -> dep.a(), dia.aF);
-      $$0.a(($$0x, $$1, $$2, $$3) -> dep.b(), dia.aG);
-      $$0.a(($$0x, $$1, $$2, $$3) -> $$1 != null && $$2 != null ? ghc.b($$1, $$2) : dep.c(), dia.aE, dia.aH, dia.aI, dia.aK, dia.ff, dia.aL);
-      $$0.a(($$0x, $$1, $$2, $$3) -> $$1 != null && $$2 != null ? ghc.c($$1, $$2) : -1, dia.G, dia.nd, dia.fu);
-      $$0.a(($$0x, $$1, $$2, $$3) -> doa.b($$0x.c(doa.f)), dia.cw);
-      $$0.a(doa.f, dia.cw);
-      $$0.a(($$0x, $$1, $$2, $$3) -> $$1 != null && $$2 != null ? ghc.a($$1, $$2) : -1, dia.dS);
-      $$0.a(($$0x, $$1, $$2, $$3) -> -2046180, dia.fc, dia.fb);
-      $$0.a(($$0x, $$1, $$2, $$3) -> {
-         int $$4 = $$0x.c(dpu.c);
-         return axu.a($$4 * 32, 255 - $$4 * 8, $$4 * 4);
-      }, dia.fe, dia.fd);
-      $$0.a(dpu.c, dia.fe, dia.fd);
-      $$0.a(($$0x, $$1, $$2, $$3) -> $$1 != null && $$2 != null ? -14647248 : -9321636, dia.fm);
-      return $$0;
-   }
-
-   public int a(dvd $$0, dev $$1, jg $$2) {
-      fkb $$3 = this.b.a(lx.e.a($$0.b()));
-      if ($$3 != null) {
-         return $$3.getColor($$0, null, null, 0);
-      } else {
-         eri $$4 = $$0.a((dea)$$1, $$2);
-         return $$4 != null ? $$4.ak : -1;
-      }
-   }
-
-   public int a(dvd $$0, @Nullable ddx $$1, @Nullable jg $$2, int $$3) {
-      fkb $$4 = this.b.a(lx.e.a($$0.b()));
-      return $$4 == null ? -1 : $$4.getColor($$0, $$1, $$2, $$3);
-   }
-
-   public void a(fkb $$0, dhy... $$1) {
-      for (dhy $$2 : $$1) {
-         this.b.a($$0, lx.e.a($$2));
-      }
-   }
-
-   private void a(Set<dwg<?>> $$0, dhy... $$1) {
-      for (dhy $$2 : $$1) {
-         this.c.put($$2, $$0);
-      }
-   }
-
-   private void a(dwg<?> $$0, dhy... $$1) {
-      this.a(ImmutableSet.of($$0), $$1);
-   }
-
-   public Set<dwg<?>> a(dhy $$0) {
-      return this.c.getOrDefault($$0, ImmutableSet.of());
-   }
+   public static final fjx a = fjx.a.a(1.125F)
+      .a(
+         "head",
+         new fjw(
+            fjw.d.b,
+            new fjy(0.0F, fjz.b(0.0F, 0.0F, 0.0F), fjw.b.a),
+            new fjy(0.25F, fjz.b(-12.5F, 0.0F, 0.0F), fjw.b.a),
+            new fjy(0.75F, fjz.b(-12.5F, 0.0F, 0.0F), fjw.b.a),
+            new fjy(0.9167F, fjz.b(5.0F, 0.0F, 0.0F), fjw.b.a),
+            new fjy(1.125F, fjz.b(0.0F, 0.0F, 0.0F), fjw.b.a)
+         )
+      )
+      .a(
+         "head",
+         new fjw(
+            fjw.d.a,
+            new fjy(0.0F, fjz.a(0.0F, 0.0F, 0.0F), fjw.b.a),
+            new fjy(0.25F, fjz.a(0.0F, -2.0F, 0.0F), fjw.b.a),
+            new fjy(0.7917F, fjz.a(0.0F, -1.0F, 2.0F), fjw.b.a),
+            new fjy(0.9583F, fjz.a(0.0F, -1.0F, 0.0F), fjw.b.a),
+            new fjy(1.125F, fjz.a(0.0F, 0.0F, 0.0F), fjw.b.a)
+         )
+      )
+      .a("wind_bottom", new fjw(fjw.d.b, new fjy(0.0F, fjz.b(0.0F, 0.0F, 0.0F), fjw.b.a)))
+      .a(
+         "wind_mid",
+         new fjw(
+            fjw.d.b,
+            new fjy(0.0F, fjz.b(0.0F, 0.0F, 0.0F), fjw.b.a),
+            new fjy(0.25F, fjz.b(12.5F, 0.0F, 0.0F), fjw.b.a),
+            new fjy(0.75F, fjz.b(12.5F, 0.0F, 0.0F), fjw.b.a),
+            new fjy(0.9167F, fjz.b(-10.0F, 0.0F, 0.0F), fjw.b.a),
+            new fjy(1.125F, fjz.b(0.0F, 0.0F, 0.0F), fjw.b.a)
+         )
+      )
+      .a(
+         "wind_mid",
+         new fjw(
+            fjw.d.a,
+            new fjy(0.0F, fjz.a(0.0F, 0.0F, 0.0F), fjw.b.a),
+            new fjy(0.25F, fjz.a(0.0F, 0.0F, 5.0F), fjw.b.a),
+            new fjy(0.75F, fjz.a(0.0F, 0.0F, 6.0F), fjw.b.a),
+            new fjy(0.9167F, fjz.a(0.0F, 0.0F, -2.0F), fjw.b.a),
+            new fjy(1.125F, fjz.a(0.0F, 0.0F, 0.0F), fjw.b.a)
+         )
+      )
+      .a(
+         "wind_top",
+         new fjw(
+            fjw.d.b,
+            new fjy(0.0F, fjz.b(0.0F, 0.0F, 0.0F), fjw.b.a),
+            new fjy(0.25F, fjz.b(15.0F, 0.0F, 0.0F), fjw.b.a),
+            new fjy(0.75F, fjz.b(15.0F, 0.0F, 0.0F), fjw.b.a),
+            new fjy(0.9167F, fjz.b(-10.0F, 0.0F, 0.0F), fjw.b.a),
+            new fjy(1.125F, fjz.b(0.0F, 0.0F, 0.0F), fjw.b.a)
+         )
+      )
+      .a(
+         "wind_top",
+         new fjw(
+            fjw.d.a,
+            new fjy(0.0F, fjz.a(0.0F, 0.0F, 0.0F), fjw.b.a),
+            new fjy(0.25F, fjz.a(0.0F, 0.0F, 3.0F), fjw.b.a),
+            new fjy(0.8333F, fjz.a(0.0F, 0.0F, 4.0F), fjw.b.a),
+            new fjy(0.9583F, fjz.a(0.0F, 0.0F, -2.0F), fjw.b.a),
+            new fjy(1.125F, fjz.a(0.0F, 0.0F, 0.0F), fjw.b.a)
+         )
+      )
+      .a(
+         "body",
+         new fjw(
+            fjw.d.b,
+            new fjy(0.0F, fjz.b(0.0F, 0.0F, 0.0F), fjw.b.a),
+            new fjy(0.25F, fjz.b(12.5F, 0.0F, 0.0F), fjw.b.a),
+            new fjy(0.75F, fjz.b(12.5F, 0.0F, 0.0F), fjw.b.a),
+            new fjy(0.9167F, fjz.b(-2.5F, 0.0F, 0.0F), fjw.b.a),
+            new fjy(1.125F, fjz.b(0.0F, 0.0F, 0.0F), fjw.b.a)
+         )
+      )
+      .a(
+         "body",
+         new fjw(
+            fjw.d.a,
+            new fjy(0.0F, fjz.a(0.0F, 0.0F, 0.0F), fjw.b.a),
+            new fjy(0.25F, fjz.a(0.0F, 3.0F, 5.0F), fjw.b.a),
+            new fjy(0.8333F, fjz.a(0.0F, 3.0F, 6.0F), fjw.b.a),
+            new fjy(0.9583F, fjz.a(0.0F, 3.0F, -1.0F), fjw.b.a),
+            new fjy(1.125F, fjz.a(0.0F, 0.0F, 0.0F), fjw.b.a)
+         )
+      )
+      .a("rods", new fjw(fjw.d.b, new fjy(0.0F, fjz.b(0.0F, 0.0F, 0.0F), fjw.b.a), new fjy(1.0F, fjz.b(0.0F, 360.0F, 0.0F), fjw.b.a)))
+      .b();
+   public static final fjx b = fjx.a.a(0.5F)
+      .a(
+         "body",
+         new fjw(
+            fjw.d.a,
+            new fjy(0.0F, fjz.a(0.0F, -10.0F, 0.0F), fjw.b.a),
+            new fjy(0.125F, fjz.a(0.0F, 11.0F, 0.0F), fjw.b.a),
+            new fjy(0.5F, fjz.a(0.0F, 0.0F, 0.0F), fjw.b.a)
+         )
+      )
+      .a(
+         "head",
+         new fjw(
+            fjw.d.b,
+            new fjy(0.0F, fjz.b(22.5F, 0.0F, 0.0F), fjw.b.a),
+            new fjy(0.2083F, fjz.b(-19.25F, 0.0F, 0.0F), fjw.b.a),
+            new fjy(0.5F, fjz.b(0.0F, 0.0F, 0.0F), fjw.b.a)
+         )
+      )
+      .a(
+         "wind_body",
+         new fjw(
+            fjw.d.c,
+            new fjy(0.0F, fjz.a(1.0, 1.0, 1.0), fjw.b.a),
+            new fjy(0.125F, fjz.a(1.0, 1.3F, 1.0), fjw.b.a),
+            new fjy(0.5F, fjz.a(1.0, 1.0, 1.0), fjw.b.a)
+         )
+      )
+      .a("wind_bottom", new fjw(fjw.d.b, new fjy(0.0F, fjz.b(0.0F, 90.0F, 0.0F), fjw.b.a), new fjy(0.5F, fjz.b(0.0F, 360.0F, 0.0F), fjw.b.a)))
+      .a(
+         "wind_bottom",
+         new fjw(
+            fjw.d.c,
+            new fjy(0.0F, fjz.a(1.0, 1.0, 1.0), fjw.b.a),
+            new fjy(0.125F, fjz.a(1.0, 1.1F, 1.0), fjw.b.a),
+            new fjy(0.5F, fjz.a(1.0, 1.0, 1.0), fjw.b.a)
+         )
+      )
+      .a("wind_mid", new fjw(fjw.d.b, new fjy(0.0F, fjz.b(0.0F, 0.0F, 0.0F), fjw.b.a), new fjy(0.5F, fjz.b(0.0F, 180.0F, 0.0F), fjw.b.a)))
+      .a(
+         "wind_mid",
+         new fjw(
+            fjw.d.a,
+            new fjy(0.0F, fjz.a(0.0F, -6.0F, 0.0F), fjw.b.a),
+            new fjy(0.125F, fjz.a(0.0F, 2.0F, 0.0F), fjw.b.a),
+            new fjy(0.5F, fjz.a(0.0F, 0.0F, 0.0F), fjw.b.a)
+         )
+      )
+      .a("wind_top", new fjw(fjw.d.b, new fjy(0.0F, fjz.b(0.0F, 0.0F, 0.0F), fjw.b.a), new fjy(0.5F, fjz.b(0.0F, 90.0F, 0.0F), fjw.b.a)))
+      .a(
+         "wind_top",
+         new fjw(
+            fjw.d.a,
+            new fjy(0.0F, fjz.a(0.0F, -5.0F, 0.0F), fjw.b.a),
+            new fjy(0.125F, fjz.a(0.0F, 2.0F, 0.0F), fjw.b.a),
+            new fjy(0.5F, fjz.a(0.0F, 0.0F, 0.0F), fjw.b.a)
+         )
+      )
+      .a("rods", new fjw(fjw.d.b, new fjy(0.0F, fjz.b(0.0F, 0.0F, 0.0F), fjw.b.a), new fjy(0.5F, fjz.b(0.0F, 360.0F, 0.0F), fjw.b.a)))
+      .b();
+   public static final fjx c = fjx.a.a(2.0F)
+      .a(
+         "body",
+         new fjw(
+            fjw.d.a,
+            new fjy(0.0F, fjz.a(0.0F, 0.0F, 0.0F), fjw.b.a),
+            new fjy(0.5F, fjz.a(0.0F, -10.0F, 0.0F), fjw.b.a),
+            new fjy(0.625F, fjz.a(0.0F, -10.0F, 0.0F), fjw.b.a)
+         )
+      )
+      .a(
+         "head",
+         new fjw(
+            fjw.d.b,
+            new fjy(0.0F, fjz.b(0.0F, 0.0F, 0.0F), fjw.b.a),
+            new fjy(0.5F, fjz.b(22.5F, 0.0F, 0.0F), fjw.b.a),
+            new fjy(0.625F, fjz.b(22.5F, 0.0F, 0.0F), fjw.b.a)
+         )
+      )
+      .a(
+         "wind_body",
+         new fjw(
+            fjw.d.c, new fjy(0.0F, fjz.a(1.0, 1.0, 1.0), fjw.b.a), new fjy(0.5F, fjz.a(1.0, 1.0, 1.0), fjw.b.a), new fjy(0.625F, fjz.a(1.0, 1.0, 1.0), fjw.b.a)
+         )
+      )
+      .a("wind_bottom", new fjw(fjw.d.b, new fjy(0.0F, fjz.b(0.0F, 0.0F, 0.0F), fjw.b.a), new fjy(0.625F, fjz.b(0.0F, 90.0F, 0.0F), fjw.b.a)))
+      .a(
+         "wind_bottom",
+         new fjw(
+            fjw.d.c, new fjy(0.0F, fjz.a(1.0, 1.0, 1.0), fjw.b.a), new fjy(0.5F, fjz.a(1.0, 1.0, 1.0), fjw.b.a), new fjy(0.625F, fjz.a(1.0, 1.0, 1.0), fjw.b.a)
+         )
+      )
+      .a("wind_mid", new fjw(fjw.d.b, new fjy(0.0F, fjz.b(0.0F, 0.0F, 0.0F), fjw.b.a), new fjy(0.625F, fjz.b(0.0F, 0.0F, 0.0F), fjw.b.a)))
+      .a(
+         "wind_mid",
+         new fjw(
+            fjw.d.a,
+            new fjy(0.0F, fjz.a(0.0F, 0.0F, 0.0F), fjw.b.a),
+            new fjy(0.5F, fjz.a(0.0F, -6.0F, 0.0F), fjw.b.a),
+            new fjy(0.625F, fjz.a(0.0F, -6.0F, 0.0F), fjw.b.a)
+         )
+      )
+      .a("wind_top", new fjw(fjw.d.b, new fjy(0.0F, fjz.b(0.0F, 0.0F, 0.0F), fjw.b.a), new fjy(0.625F, fjz.b(0.0F, 0.0F, 0.0F), fjw.b.a)))
+      .a(
+         "wind_top",
+         new fjw(
+            fjw.d.a,
+            new fjy(0.0F, fjz.a(0.0F, 0.0F, 0.0F), fjw.b.a),
+            new fjy(0.5F, fjz.a(0.0F, -5.0F, 0.0F), fjw.b.a),
+            new fjy(0.625F, fjz.a(0.0F, -5.0F, 0.0F), fjw.b.a)
+         )
+      )
+      .a("rods", new fjw(fjw.d.b, new fjy(0.0F, fjz.b(0.0F, 0.0F, 0.0F), fjw.b.a), new fjy(0.625F, fjz.b(0.0F, 360.0F, 0.0F), fjw.b.a)))
+      .b();
+   public static final fjx d = fjx.a.a(0.2F)
+      .a("body", new fjw(fjw.d.a, new fjy(0.0F, fjz.a(0.0F, 0.0F, 0.0F), fjw.b.a), new fjy(0.2F, fjz.a(0.0F, 0.0F, -6.0F), fjw.b.a)))
+      .a("wind_mid", new fjw(fjw.d.a, new fjy(0.0F, fjz.a(0.0F, 0.0F, 0.0F), fjw.b.a), new fjy(0.2F, fjz.a(0.0F, 0.0F, -3.0F), fjw.b.a)))
+      .a("wind_top", new fjw(fjw.d.a, new fjy(0.0F, fjz.a(0.0F, 0.0F, 0.0F), fjw.b.a), new fjy(0.2F, fjz.a(0.0F, 0.0F, -2.0F), fjw.b.a)))
+      .b();
+   public static final fjx e = fjx.a.a(0.1F)
+      .a("body", new fjw(fjw.d.a, new fjy(0.0F, fjz.a(0.0F, 0.0F, -6.0F), fjw.b.a), new fjy(0.1F, fjz.a(0.0F, 0.0F, 0.0F), fjw.b.a)))
+      .a("wind_mid", new fjw(fjw.d.a, new fjy(0.0F, fjz.a(0.0F, 0.0F, -3.0F), fjw.b.a), new fjy(0.1F, fjz.a(0.0F, 0.0F, 0.0F), fjw.b.a)))
+      .a("wind_top", new fjw(fjw.d.a, new fjy(0.0F, fjz.a(0.0F, 0.0F, -2.0F), fjw.b.a), new fjy(0.1F, fjz.a(0.0F, 0.0F, 0.0F), fjw.b.a)))
+      .b();
 }

@@ -1,23 +1,50 @@
-import java.util.Arrays;
-import java.util.stream.Stream;
+public class fts extends fra {
+   private static final int a = 600;
+   private final wc b;
+   private flh c;
+   private int d;
+   private final fpa s = fpa.d();
 
-public class fts extends ftv {
-   private static final xh a = xh.c("options.mouse_settings.title");
-
-   private static fjd<?>[] a(fje $$0) {
-      return new fjd[]{$$0.d(), $$0.T(), $$0.G(), $$0.U(), $$0.ab()};
-   }
-
-   public fts(fqs $$0, fje $$1) {
-      super($$0, $$1, a);
+   public fts(xi $$0, wc $$1) {
+      super($$0);
+      this.b = $$1;
    }
 
    @Override
-   protected void m() {
-      if (fco.a()) {
-         this.d.a(Stream.concat(Arrays.stream(a(this.c)), Stream.of(this.c.H())).toArray(fjd[]::new));
+   public boolean aH_() {
+      return false;
+   }
+
+   @Override
+   protected void aR_() {
+      this.s.c().b().a(10);
+      this.s.a(new fmo(this.l, this.p));
+      this.c = this.s.a(flh.a(xh.p, $$0 -> this.b.a(fpz.a)).a());
+      this.c.j = false;
+      this.s.a();
+      this.s.a($$1 -> {
+         flf var10000 = this.c($$1);
+      });
+      this.c();
+   }
+
+   @Override
+   protected void c() {
+      fou.a(this.s, this.H());
+   }
+
+   @Override
+   public void e() {
+      super.e();
+      this.d++;
+      if (this.d == 600) {
+         this.c.j = true;
+      }
+
+      if (this.b.i()) {
+         this.b.b();
       } else {
-         this.d.a(a(this.c));
+         this.b.n();
       }
    }
 }

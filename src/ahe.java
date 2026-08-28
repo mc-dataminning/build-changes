@@ -1,20 +1,20 @@
-public record ahe(float b) implements zo<agu> {
-   public static final zf<we, ahe> a = zo.a(ahe::a, ahe::new);
+public record ahe(xz.a b) implements zp<agv> {
+   public static final zg<wf, ahe> a = zp.a(ahe::a, ahe::new);
 
-   private ahe(we $$0) {
-      this($$0.readFloat());
+   private ahe(wf $$0) {
+      this(xz.a.a($$0));
    }
 
-   private void a(we $$0) {
-      $$0.a(this.b);
+   private void a(wf $$0) {
+      xz.a.a($$0, this.b);
    }
 
    @Override
-   public zq<ahe> a() {
-      return ags.bp;
+   public zr<ahe> a() {
+      return agt.bo;
    }
 
-   public void a(agu $$0) {
+   public void a(agv $$0) {
       $$0.a(this);
    }
 }

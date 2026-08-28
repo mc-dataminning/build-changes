@@ -1,22 +1,25 @@
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
 
-public class eck implements ecg {
-   public static final MapCodec<eck> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(kk.v(16).optionalFieldOf("offset", jg.c).forGetter($$0x -> $$0x.e)).apply($$0, eck::new)
-   );
-   private final kk e;
+class eck extends eco {
+   public static final MapCodec<eck> a = a(eck::new);
 
-   public eck(kk $$0) {
-      this.e = $$0;
+   public eck(List<ecm> $$0) {
+      super($$0);
    }
 
-   public boolean a(dfs $$0, jg $$1) {
-      return !$$0.s($$1.a(this.e));
+   public boolean a(dfy $$0, jh $$1) {
+      for (ecm $$2 : this.e) {
+         if (!$$2.test($$0, $$1)) {
+            return false;
+         }
+      }
+
+      return true;
    }
 
    @Override
-   public ech<?> a() {
-      return ech.h;
+   public ecn<?> a() {
+      return ecn.j;
    }
 }

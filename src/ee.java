@@ -1,44 +1,180 @@
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableList.Builder;
+import com.mojang.datafixers.util.Either;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import io.netty.buffer.ByteBuf;
+import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
-public class ee extends dx<ee.a> {
-   @Override
-   public Codec<ee.a> a() {
-      return ee.a.a;
-   }
-
-   public void a(arn $$0, btz $$1) {
-      etw $$2 = bv.b($$0, $$1);
-      this.a($$0, $$1x -> $$1x.a($$2));
-   }
-
-   public static record a(Optional<bg> b, Optional<bg> c) implements dx.a {
-      public static final Codec<ee.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(bv.b.optionalFieldOf("player").forGetter(ee.a::a), bv.b.optionalFieldOf("entity").forGetter(ee.a::b)).apply($$0, ee.a::new)
+public record ee(List<ee.c> c) {
+   private static final Codec<List<ee.c>> d = Codec.unboundedMap(Codec.STRING, ee.e.c)
+      .xmap(
+         $$0 -> $$0.entrySet().stream().map($$0x -> new ee.c((String)$$0x.getKey(), (ee.e)$$0x.getValue())).toList(),
+         $$0 -> $$0.stream().collect(Collectors.toMap(ee.c::a, ee.c::b))
       );
+   public static final Codec<ee> a = d.xmap(ee::new, ee::a);
+   public static final zg<ByteBuf, ee> b = ee.c.a.a(ze.a()).a(ee::new, ee::a);
 
-      public static ao<ee.a> a(bv.a $$0) {
-         return an.o.a(new ee.a(Optional.empty(), Optional.of(bv.a($$0))));
+   public <S extends dvl<?, S>> boolean a(dvk<?, S> $$0, S $$1) {
+      for (ee.c $$2 : this.c) {
+         if (!$$2.a($$0, $$1)) {
+            return false;
+         }
       }
 
-      public boolean a(etw $$0) {
-         return this.c.isEmpty() || this.c.get().a($$0);
+      return true;
+   }
+
+   public boolean a(dvj $$0) {
+      return this.a($$0.b().l(), $$0);
+   }
+
+   public boolean a(erk $$0) {
+      return this.a($$0.a().f(), $$0);
+   }
+
+   public Optional<String> a(dvk<?, ?> $$0) {
+      for (ee.c $$1 : this.c) {
+         Optional<String> $$2 = $$1.a($$0);
+         if ($$2.isPresent()) {
+            return $$2;
+         }
       }
+
+      return Optional.empty();
+   }
+
+   public List<ee.c> a() {
+      return this.c;
+   }
+
+   public static class a {
+      private final Builder<ee.c> a = ImmutableList.builder();
+
+      private a() {
+      }
+
+      public static ee.a a() {
+         return new ee.a();
+      }
+
+      public ee.a a(dwm<?> $$0, String $$1) {
+         this.a.add(new ee.c($$0.f(), new ee.b($$1)));
+         return this;
+      }
+
+      public ee.a a(dwm<Integer> $$0, int $$1) {
+         return this.a($$0, Integer.toString($$1));
+      }
+
+      public ee.a a(dwm<Boolean> $$0, boolean $$1) {
+         return this.a($$0, Boolean.toString($$1));
+      }
+
+      public <T extends Comparable<T> & bag> ee.a a(dwm<T> $$0, T $$1) {
+         return this.a($$0, $$1.c());
+      }
+
+      public Optional<ee> b() {
+         return Optional.of(new ee(this.a.build()));
+      }
+   }
+
+   static record b(String e) implements ee.e {
+      public static final Codec<ee.b> a = Codec.STRING.xmap(ee.b::new, ee.b::a);
+      public static final zg<ByteBuf, ee.b> b = ze.m.a(ee.b::new, ee.b::a);
 
       @Override
-      public void a(bh $$0) {
-         dx.a.super.a($$0);
-         $$0.a(this.c, ".entity");
+      public <T extends Comparable<T>> boolean a(dvl<?, ?> $$0, dwm<T> $$1) {
+         T $$2 = $$0.c($$1);
+         Optional<T> $$3 = $$1.b(this.e);
+         return $$3.isPresent() && $$2.compareTo($$3.get()) == 0;
       }
 
-      @Override
-      public Optional<bg> a() {
+      public String a() {
+         return this.e;
+      }
+   }
+
+   static record c(String b, ee.e c) {
+      public static final zg<ByteBuf, ee.c> a = zg.a(ze.m, ee.c::a, ee.e.d, ee.c::b, ee.c::new);
+
+      public <S extends dvl<?, S>> boolean a(dvk<?, S> $$0, S $$1) {
+         dwm<?> $$2 = $$0.a(this.b);
+         return $$2 != null && this.c.a($$1, $$2);
+      }
+
+      public Optional<String> a(dvk<?, ?> $$0) {
+         dwm<?> $$1 = $$0.a(this.b);
+         return $$1 != null ? Optional.empty() : Optional.of(this.b);
+      }
+
+      public String a() {
          return this.b;
       }
 
-      public Optional<bg> b() {
+      public ee.e b() {
          return this.c;
       }
+   }
+
+   static record d(Optional<String> e, Optional<String> f) implements ee.e {
+      public static final Codec<ee.d> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(Codec.STRING.optionalFieldOf("min").forGetter(ee.d::a), Codec.STRING.optionalFieldOf("max").forGetter(ee.d::b)).apply($$0, ee.d::new)
+      );
+      public static final zg<ByteBuf, ee.d> b = zg.a(ze.a(ze.m), ee.d::a, ze.a(ze.m), ee.d::b, ee.d::new);
+
+      @Override
+      public <T extends Comparable<T>> boolean a(dvl<?, ?> $$0, dwm<T> $$1) {
+         T $$2 = $$0.c($$1);
+         if (this.e.isPresent()) {
+            Optional<T> $$3 = $$1.b(this.e.get());
+            if ($$3.isEmpty() || $$2.compareTo($$3.get()) < 0) {
+               return false;
+            }
+         }
+
+         if (this.f.isPresent()) {
+            Optional<T> $$4 = $$1.b(this.f.get());
+            if ($$4.isEmpty() || $$2.compareTo($$4.get()) > 0) {
+               return false;
+            }
+         }
+
+         return true;
+      }
+
+      public Optional<String> a() {
+         return this.e;
+      }
+
+      public Optional<String> b() {
+         return this.f;
+      }
+   }
+
+   interface e {
+      Codec<ee.e> c = Codec.either(ee.b.a, ee.d.a).xmap(Either::unwrap, $$0 -> {
+         if ($$0 instanceof ee.b $$1) {
+            return Either.left($$1);
+         } else if ($$0 instanceof ee.d $$2) {
+            return Either.right($$2);
+         } else {
+            throw new UnsupportedOperationException();
+         }
+      });
+      zg<ByteBuf, ee.e> d = ze.a(ee.b.b, ee.d.b).a(Either::unwrap, $$0 -> {
+         if ($$0 instanceof ee.b $$1) {
+            return Either.left($$1);
+         } else if ($$0 instanceof ee.d $$2) {
+            return Either.right($$2);
+         } else {
+            throw new UnsupportedOperationException();
+         }
+      });
+
+      <T extends Comparable<T>> boolean a(dvl<?, ?> var1, dwm<T> var2);
    }
 }

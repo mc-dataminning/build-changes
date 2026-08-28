@@ -1,6 +1,16 @@
-public interface vy extends wn {
-   @Override
-   default zp a() {
-      return zp.b;
+import io.netty.buffer.ByteBuf;
+import io.netty.channel.ChannelHandlerContext;
+import io.netty.handler.codec.MessageToByteEncoder;
+import javax.crypto.Cipher;
+
+public class vy extends MessageToByteEncoder<ByteBuf> {
+   private final vw a;
+
+   public vy(Cipher $$0) {
+      this.a = new vw($$0);
+   }
+
+   protected void a(ChannelHandlerContext $$0, ByteBuf $$1, ByteBuf $$2) throws Exception {
+      this.a.a($$1, $$2);
    }
 }

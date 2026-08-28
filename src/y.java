@@ -119,7 +119,7 @@ public record y(String f, List<String> g) {
 
    public String a() {
       try {
-         return this.g.get((int)(ad.d() % (long)this.g.size()));
+         return this.g.get((int)(ae.d() % (long)this.g.size()));
       } catch (Throwable var2) {
          return "Witty comment unavailable :(";
       }

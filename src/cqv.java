@@ -1,94 +1,125 @@
-public abstract class cqv extends btz {
-   protected static final akk<Integer> f = ako.a(cqv.class, akm.b);
-   protected static final akk<Integer> g = ako.a(cqv.class, akm.b);
-   protected static final akk<Float> h = ako.a(cqv.class, akm.d);
+public class cqv extends cql implements dtm {
+   private boolean c = true;
+   private boolean d = false;
 
-   public cqv(bug<?> $$0, dev $$1) {
+   public cqv(bul<? extends cqv> $$0, dfb $$1) {
       super($$0, $$1);
    }
 
-   @Override
-   public boolean a(bsp $$0, float $$1) {
-      if (this.dX().C || this.dS()) {
-         return true;
-      } else if (this.b($$0)) {
-         return false;
-      } else {
-         this.m(-this.S());
-         this.d(10);
-         this.bE();
-         this.b(this.Q() + $$1 * 10.0F);
-         this.a(eaa.o, $$0.d());
-         boolean $$2 = $$0.d() instanceof coh && ((coh)$$0.d()).gl().d;
-         if (($$2 || !(this.Q() > 40.0F)) && !this.d($$0)) {
-            if ($$2) {
-               this.au();
-            }
-         } else {
-            this.a($$0);
-         }
+   public cqv(dfb $$0, double $$1, double $$2, double $$3) {
+      super(bul.aa, $$1, $$2, $$3, $$0);
+   }
 
-         return true;
+   @Override
+   public cqk.a y() {
+      return cqk.a.f;
+   }
+
+   @Override
+   public dvj A() {
+      return dig.hc.m();
+   }
+
+   @Override
+   public int C() {
+      return 1;
+   }
+
+   @Override
+   public int b() {
+      return 5;
+   }
+
+   @Override
+   public void a(int $$0, int $$1, int $$2, boolean $$3) {
+      boolean $$4 = !$$3;
+      if ($$4 != this.J()) {
+         this.s($$4);
       }
    }
 
-   boolean d(bsp $$0) {
+   public boolean J() {
+      return this.c;
+   }
+
+   public void s(boolean $$0) {
+      this.c = $$0;
+   }
+
+   @Override
+   public double K() {
+      return this.dC();
+   }
+
+   @Override
+   public double L() {
+      return this.dE() + 0.5;
+   }
+
+   @Override
+   public double M() {
+      return this.dI();
+   }
+
+   @Override
+   public boolean O() {
       return false;
    }
 
    @Override
-   public boolean a(den $$0) {
-      return $$0.b() instanceof bux && !this.dX().ac().b(der.c);
+   public void l() {
+      this.d = false;
+      super.l();
+      this.T();
    }
 
-   public void b(cvt $$0) {
-      this.at();
-      if (this.dX().ac().b(der.i)) {
-         cvx $$1 = new cvx($$0);
-         $$1.b(kt.g, this.an());
-         this.b($$1);
+   @Override
+   protected double a(jh $$0, dwn $$1, double $$2) {
+      double $$3 = super.a($$0, $$1, $$2);
+      this.T();
+      return $$3;
+   }
+
+   private void T() {
+      if (!this.dX().C && this.bM() && this.J() && !this.d && this.P()) {
+         this.d = true;
+         this.e();
+      }
+   }
+
+   public boolean P() {
+      if (dtn.a(this.dX(), this)) {
+         return true;
+      } else {
+         for (ckv $$1 : this.dX().a(ckv.class, this.cS().c(0.25, 0.0, 0.25), buj.a)) {
+            if (dtn.a(this, $$1)) {
+               return true;
+            }
+         }
+
+         return false;
       }
    }
 
    @Override
-   protected void a(ako.a $$0) {
-      $$0.a(f, 0);
-      $$0.a(g, 1);
-      $$0.a(h, 0.0F);
-   }
-
-   public void d(int $$0) {
-      this.am.a(f, $$0);
-   }
-
-   public void m(int $$0) {
-      this.am.a(g, $$0);
-   }
-
-   public void b(float $$0) {
-      this.am.a(h, $$0);
-   }
-
-   public float Q() {
-      return this.am.a(h);
-   }
-
-   public int R() {
-      return this.am.a(f);
-   }
-
-   public int S() {
-      return this.am.a(g);
-   }
-
-   protected void a(bsp $$0) {
-      this.b(this.al_());
+   protected cvx al_() {
+      return cwf.nQ;
    }
 
    @Override
-   public int bY() {
-      return 10;
+   protected void b(uk $$0) {
+      super.b($$0);
+      $$0.a("Enabled", this.c);
    }
 
-   abstract cvt al_();
+   @Override
+   protected void a(uk $$0) {
+      super.a($$0);
+      this.c = $$0.e("Enabled") ? $$0.q("Enabled") : true;
+   }
+
+   @Override
+   public cro a(int $$0, col $$1) {
+      return new csp($$0, $$1, this);
+   }
 }

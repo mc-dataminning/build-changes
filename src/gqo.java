@@ -1,42 +1,29 @@
-public class gqo extends gmr<cqs, gve> {
-   private final giz b;
+public class gqo extends gnf<cji, gwk, gaj> {
+   private static final ali a = ali.b("textures/entity/sniffer/sniffer.png");
 
-   public gqo(gnz.a $$0) {
-      super($$0, gba.cI);
-      this.b = $$0.d();
+   public gqo(gok.a $$0) {
+      super($$0, new gaj($$0.a(gbl.cu)), new gaj($$0.a(gbl.cv)), 1.1F);
    }
 
-   protected void a(gve $$0, dvd $$1, fdt $$2, ghw $$3, int $$4) {
-      float $$5 = $$0.C;
-      if ($$5 > -1.0F && $$5 < 10.0F) {
-         float $$6 = 1.0F - $$5 / 10.0F;
-         $$6 = azj.a($$6, 0.0F, 1.0F);
-         $$6 *= $$6;
-         $$6 *= $$6;
-         float $$7 = 1.0F + $$6 * 0.3F;
-         $$2.b($$7, $$7, $$7);
-      }
-
-      a(this.b, $$1, $$2, $$3, $$4, $$5 > -1.0F && (int)$$5 / 5 % 2 == 0);
+   public ali a(gwk $$0) {
+      return a;
    }
 
-   public static void a(giz $$0, dvd $$1, fdt $$2, ghw $$3, int $$4, boolean $$5) {
-      int $$6;
-      if ($$5) {
-         $$6 = gxj.a(gxj.a(1.0F), 10);
-      } else {
-         $$6 = gxj.d;
-      }
-
-      $$0.a($$1, $$2, $$3, $$4, $$6);
+   public gwk c() {
+      return new gwk();
    }
 
-   public gve a() {
-      return new gve();
-   }
-
-   public void a(cqs $$0, gve $$1, float $$2) {
+   public void a(cji $$0, gwk $$1, float $$2) {
       super.a($$0, $$1, $$2);
-      $$1.C = $$0.F() > -1 ? (float)$$0.F() - $$2 + 1.0F : -1.0F;
+      $$1.a = $$0.t();
+      $$1.b.a($$0.cc);
+      $$1.c.a($$0.ca);
+      $$1.d.a($$0.cd);
+      $$1.e.a($$0.bY);
+      $$1.f.a($$0.bZ);
+   }
+
+   protected ezi a(cji $$0) {
+      return super.a($$0).g(0.6F);
    }
 }

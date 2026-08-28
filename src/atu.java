@@ -1,194 +1,393 @@
+import com.google.common.base.Joiner;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableList.Builder;
+import java.io.File;
 import java.io.IOException;
 import java.net.URI;
-import java.nio.channels.SeekableByteChannel;
-import java.nio.file.AccessDeniedException;
-import java.nio.file.AccessMode;
-import java.nio.file.CopyOption;
-import java.nio.file.DirectoryIteratorException;
-import java.nio.file.DirectoryStream;
-import java.nio.file.FileStore;
-import java.nio.file.FileSystem;
-import java.nio.file.Files;
+import java.net.URISyntaxException;
 import java.nio.file.LinkOption;
 import java.nio.file.NoSuchFileException;
-import java.nio.file.NotDirectoryException;
-import java.nio.file.OpenOption;
 import java.nio.file.Path;
 import java.nio.file.ProviderMismatchException;
 import java.nio.file.ReadOnlyFileSystemException;
-import java.nio.file.StandardOpenOption;
-import java.nio.file.DirectoryStream.Filter;
+import java.nio.file.WatchKey;
+import java.nio.file.WatchService;
+import java.nio.file.WatchEvent.Kind;
+import java.nio.file.WatchEvent.Modifier;
 import java.nio.file.attribute.BasicFileAttributeView;
 import java.nio.file.attribute.BasicFileAttributes;
-import java.nio.file.attribute.FileAttribute;
-import java.nio.file.attribute.FileAttributeView;
-import java.nio.file.spi.FileSystemProvider;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Set;
+import java.nio.file.attribute.FileTime;
+import java.util.Comparator;
+import java.util.List;
+import java.util.Objects;
 import javax.annotation.Nullable;
 
-class atu extends FileSystemProvider {
-   public static final String a = "x-mc-link";
-
-   @Override
-   public String getScheme() {
-      return "x-mc-link";
-   }
-
-   @Override
-   public FileSystem newFileSystem(URI $$0, Map<String, ?> $$1) {
-      throw new UnsupportedOperationException();
-   }
-
-   @Override
-   public FileSystem getFileSystem(URI $$0) {
-      throw new UnsupportedOperationException();
-   }
-
-   @Override
-   public Path getPath(URI $$0) {
-      throw new UnsupportedOperationException();
-   }
-
-   @Override
-   public SeekableByteChannel newByteChannel(Path $$0, Set<? extends OpenOption> $$1, FileAttribute<?>... $$2) throws IOException {
-      if (!$$1.contains(StandardOpenOption.CREATE_NEW)
-         && !$$1.contains(StandardOpenOption.CREATE)
-         && !$$1.contains(StandardOpenOption.APPEND)
-         && !$$1.contains(StandardOpenOption.WRITE)) {
-         Path $$3 = a($$0).f().h();
-         if ($$3 == null) {
-            throw new NoSuchFileException($$0.toString());
-         } else {
-            return Files.newByteChannel($$3, $$1, $$2);
-         }
-      } else {
-         throw new UnsupportedOperationException();
+class atu implements Path {
+   private static final BasicFileAttributes a = new ats() {
+      @Override
+      public boolean isRegularFile() {
+         return false;
       }
-   }
 
-   @Override
-   public DirectoryStream<Path> newDirectoryStream(Path $$0, final Filter<? super Path> $$1) throws IOException {
-      final atw.a $$2 = a($$0).f().i();
-      if ($$2 == null) {
-         throw new NotDirectoryException($$0.toString());
-      } else {
-         return new DirectoryStream<Path>() {
-            @Override
-            public Iterator<Path> iterator() {
-               return $$2.a().values().stream().filter($$1xx -> {
-                  try {
-                     return $$1.accept($$1xx);
-                  } catch (IOException var3) {
-                     throw new DirectoryIteratorException(var3);
-                  }
-               }).map($$0 -> (Path)$$0).iterator();
-            }
-
-            @Override
-            public void close() {
-            }
-         };
+      @Override
+      public boolean isDirectory() {
+         return true;
       }
+   };
+   private static final BasicFileAttributes b = new ats() {
+      @Override
+      public boolean isRegularFile() {
+         return true;
+      }
+
+      @Override
+      public boolean isDirectory() {
+         return false;
+      }
+   };
+   private static final Comparator<atu> c = Comparator.comparing(atu::n);
+   private final String d;
+   private final atw e;
+   @Nullable
+   private final atu f;
+   @Nullable
+   private List<String> g;
+   @Nullable
+   private String h;
+   private final atx i;
+
+   public atu(atw $$0, String $$1, @Nullable atu $$2, atx $$3) {
+      this.e = $$0;
+      this.d = $$1;
+      this.f = $$2;
+      this.i = $$3;
+   }
+
+   private atu a(@Nullable atu $$0, String $$1) {
+      return new atu(this.e, $$1, $$0, atx.b);
+   }
+
+   public atw a() {
+      return this.e;
    }
 
    @Override
-   public void createDirectory(Path $$0, FileAttribute<?>... $$1) {
-      throw new ReadOnlyFileSystemException();
+   public boolean isAbsolute() {
+      return this.i != atx.b;
    }
 
    @Override
-   public void delete(Path $$0) {
-      throw new ReadOnlyFileSystemException();
-   }
-
-   @Override
-   public void copy(Path $$0, Path $$1, CopyOption... $$2) {
-      throw new ReadOnlyFileSystemException();
-   }
-
-   @Override
-   public void move(Path $$0, Path $$1, CopyOption... $$2) {
-      throw new ReadOnlyFileSystemException();
-   }
-
-   @Override
-   public boolean isSameFile(Path $$0, Path $$1) {
-      return $$0 instanceof att && $$1 instanceof att && $$0.equals($$1);
-   }
-
-   @Override
-   public boolean isHidden(Path $$0) {
-      return false;
-   }
-
-   @Override
-   public FileStore getFileStore(Path $$0) {
-      return a($$0).a().a();
-   }
-
-   @Override
-   public void checkAccess(Path $$0, AccessMode... $$1) throws IOException {
-      if ($$1.length == 0 && !a($$0).g()) {
-         throw new NoSuchFileException($$0.toString());
+   public File toFile() {
+      if (this.i instanceof atx.b $$0) {
+         return $$0.a().toFile();
       } else {
-         AccessMode[] var3 = $$1;
-         int var4 = $$1.length;
-         int var5 = 0;
-
-         while (var5 < var4) {
-            AccessMode $$2 = var3[var5];
-            switch ($$2) {
-               case READ:
-                  if (!a($$0).g()) {
-                     throw new NoSuchFileException($$0.toString());
-                  }
-               default:
-                  var5++;
-                  break;
-               case EXECUTE:
-               case WRITE:
-                  throw new AccessDeniedException($$2.toString());
-            }
-         }
+         throw new UnsupportedOperationException("Path " + this.n() + " does not represent file");
       }
    }
 
    @Nullable
-   @Override
-   public <V extends FileAttributeView> V getFileAttributeView(Path $$0, Class<V> $$1, LinkOption... $$2) {
-      att $$3 = a($$0);
-      return (V)($$1 == BasicFileAttributeView.class ? $$3.j() : null);
+   public atu b() {
+      return this.isAbsolute() ? this.e.b() : null;
+   }
+
+   public atu c() {
+      return this.a(null, this.d);
+   }
+
+   @Nullable
+   public atu d() {
+      return this.f;
    }
 
    @Override
-   public <A extends BasicFileAttributes> A readAttributes(Path $$0, Class<A> $$1, LinkOption... $$2) throws IOException {
-      att $$3 = a($$0).f();
-      if ($$1 == BasicFileAttributes.class) {
-         return (A)$$3.k();
+   public int getNameCount() {
+      return this.l().size();
+   }
+
+   private List<String> l() {
+      if (this.d.isEmpty()) {
+         return List.of();
       } else {
-         throw new UnsupportedOperationException("Attributes of type " + $$1.getName() + " not supported");
+         if (this.g == null) {
+            Builder<String> $$0 = ImmutableList.builder();
+            if (this.f != null) {
+               $$0.addAll(this.f.l());
+            }
+
+            $$0.add(this.d);
+            this.g = $$0.build();
+         }
+
+         return this.g;
+      }
+   }
+
+   public atu a(int $$0) {
+      List<String> $$1 = this.l();
+      if ($$0 >= 0 && $$0 < $$1.size()) {
+         return this.a(null, $$1.get($$0));
+      } else {
+         throw new IllegalArgumentException("Invalid index: " + $$0);
+      }
+   }
+
+   public atu a(int $$0, int $$1) {
+      List<String> $$2 = this.l();
+      if ($$0 >= 0 && $$1 <= $$2.size() && $$0 < $$1) {
+         atu $$3 = null;
+
+         for (int $$4 = $$0; $$4 < $$1; $$4++) {
+            $$3 = this.a($$3, $$2.get($$4));
+         }
+
+         return $$3;
+      } else {
+         throw new IllegalArgumentException();
       }
    }
 
    @Override
-   public Map<String, Object> readAttributes(Path $$0, String $$1, LinkOption... $$2) {
+   public boolean startsWith(Path $$0) {
+      if ($$0.isAbsolute() != this.isAbsolute()) {
+         return false;
+      } else if ($$0 instanceof atu $$1) {
+         if ($$1.e != this.e) {
+            return false;
+         } else {
+            List<String> $$2 = this.l();
+            List<String> $$3 = $$1.l();
+            int $$4 = $$3.size();
+            if ($$4 > $$2.size()) {
+               return false;
+            } else {
+               for (int $$5 = 0; $$5 < $$4; $$5++) {
+                  if (!$$3.get($$5).equals($$2.get($$5))) {
+                     return false;
+                  }
+               }
+
+               return true;
+            }
+         }
+      } else {
+         return false;
+      }
+   }
+
+   @Override
+   public boolean endsWith(Path $$0) {
+      if ($$0.isAbsolute() && !this.isAbsolute()) {
+         return false;
+      } else if ($$0 instanceof atu $$1) {
+         if ($$1.e != this.e) {
+            return false;
+         } else {
+            List<String> $$2 = this.l();
+            List<String> $$3 = $$1.l();
+            int $$4 = $$3.size();
+            int $$5 = $$2.size() - $$4;
+            if ($$5 < 0) {
+               return false;
+            } else {
+               for (int $$6 = $$4 - 1; $$6 >= 0; $$6--) {
+                  if (!$$3.get($$6).equals($$2.get($$5 + $$6))) {
+                     return false;
+                  }
+               }
+
+               return true;
+            }
+         }
+      } else {
+         return false;
+      }
+   }
+
+   public atu e() {
+      return this;
+   }
+
+   public atu a(Path $$0) {
+      atu $$1 = this.c($$0);
+      return $$0.isAbsolute() ? $$1 : this.a($$1.l());
+   }
+
+   private atu a(List<String> $$0) {
+      atu $$1 = this;
+
+      for (String $$2 : $$0) {
+         $$1 = $$1.a($$2);
+      }
+
+      return $$1;
+   }
+
+   atu a(String $$0) {
+      if (a(this.i)) {
+         return new atu(this.e, $$0, this, this.i);
+      } else if (this.i instanceof atx.a $$1) {
+         atu $$2 = $$1.a().get($$0);
+         return $$2 != null ? $$2 : new atu(this.e, $$0, this, atx.a);
+      } else if (this.i instanceof atx.b) {
+         return new atu(this.e, $$0, this, atx.a);
+      } else {
+         throw new AssertionError("All content types should be already handled");
+      }
+   }
+
+   private static boolean a(atx $$0) {
+      return $$0 == atx.a || $$0 == atx.b;
+   }
+
+   public atu b(Path $$0) {
+      atu $$1 = this.c($$0);
+      if (this.isAbsolute() != $$1.isAbsolute()) {
+         throw new IllegalArgumentException("absolute mismatch");
+      } else {
+         List<String> $$2 = this.l();
+         List<String> $$3 = $$1.l();
+         if ($$2.size() >= $$3.size()) {
+            throw new IllegalArgumentException();
+         } else {
+            for (int $$4 = 0; $$4 < $$2.size(); $$4++) {
+               if (!$$2.get($$4).equals($$3.get($$4))) {
+                  throw new IllegalArgumentException();
+               }
+            }
+
+            return $$1.a($$2.size(), $$3.size());
+         }
+      }
+   }
+
+   @Override
+   public URI toUri() {
+      try {
+         return new URI("x-mc-link", this.e.a().name(), this.n(), null);
+      } catch (URISyntaxException var2) {
+         throw new AssertionError("Failed to create URI", var2);
+      }
+   }
+
+   public atu f() {
+      return this.isAbsolute() ? this : this.e.b().a(this);
+   }
+
+   public atu a(LinkOption... $$0) {
+      return this.f();
+   }
+
+   @Override
+   public WatchKey register(WatchService $$0, Kind<?>[] $$1, Modifier... $$2) {
       throw new UnsupportedOperationException();
    }
 
    @Override
-   public void setAttribute(Path $$0, String $$1, Object $$2, LinkOption... $$3) {
-      throw new ReadOnlyFileSystemException();
+   public int compareTo(Path $$0) {
+      atu $$1 = this.c($$0);
+      return c.compare(this, $$1);
    }
 
-   private static att a(@Nullable Path $$0) {
+   @Override
+   public boolean equals(Object $$0) {
+      if ($$0 == this) {
+         return true;
+      } else if ($$0 instanceof atu $$1) {
+         if (this.e != $$1.e) {
+            return false;
+         } else {
+            boolean $$2 = this.m();
+            if ($$2 != $$1.m()) {
+               return false;
+            } else {
+               return $$2 ? this.i == $$1.i : Objects.equals(this.f, $$1.f) && Objects.equals(this.d, $$1.d);
+            }
+         }
+      } else {
+         return false;
+      }
+   }
+
+   private boolean m() {
+      return !a(this.i);
+   }
+
+   @Override
+   public int hashCode() {
+      return this.m() ? this.i.hashCode() : this.d.hashCode();
+   }
+
+   @Override
+   public String toString() {
+      return this.n();
+   }
+
+   private String n() {
+      if (this.h == null) {
+         StringBuilder $$0 = new StringBuilder();
+         if (this.isAbsolute()) {
+            $$0.append("/");
+         }
+
+         Joiner.on("/").appendTo($$0, this.l());
+         this.h = $$0.toString();
+      }
+
+      return this.h;
+   }
+
+   private atu c(@Nullable Path $$0) {
       if ($$0 == null) {
          throw new NullPointerException();
-      } else if ($$0 instanceof att) {
-         return (att)$$0;
       } else {
+         if ($$0 instanceof atu $$1 && $$1.e == this.e) {
+            return $$1;
+         }
+
          throw new ProviderMismatchException();
+      }
+   }
+
+   public boolean g() {
+      return this.m();
+   }
+
+   @Nullable
+   public Path h() {
+      return this.i instanceof atx.b $$0 ? $$0.a() : null;
+   }
+
+   @Nullable
+   public atx.a i() {
+      return this.i instanceof atx.a $$0 ? $$0 : null;
+   }
+
+   public BasicFileAttributeView j() {
+      return new BasicFileAttributeView() {
+         @Override
+         public String name() {
+            return "basic";
+         }
+
+         @Override
+         public BasicFileAttributes readAttributes() throws IOException {
+            return atu.this.k();
+         }
+
+         @Override
+         public void setTimes(FileTime $$0, FileTime $$1, FileTime $$2) {
+            throw new ReadOnlyFileSystemException();
+         }
+      };
+   }
+
+   public BasicFileAttributes k() throws IOException {
+      if (this.i instanceof atx.a) {
+         return a;
+      } else if (this.i instanceof atx.b) {
+         return b;
+      } else {
+         throw new NoSuchFileException(this.n());
       }
    }
 }

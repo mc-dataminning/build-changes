@@ -1,278 +1,64 @@
-import com.mojang.blaze3d.platform.GlStateManager;
-import com.mojang.blaze3d.systems.RenderSystem;
-import it.unimi.dsi.fastutil.ints.IntArrayList;
-import it.unimi.dsi.fastutil.ints.IntList;
-import it.unimi.dsi.fastutil.objects.Object2IntArrayMap;
-import it.unimi.dsi.fastutil.objects.Object2IntMap;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableList.Builder;
+import com.mojang.logging.LogUtils;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.Dynamic;
+import com.mojang.serialization.DynamicOps;
+import java.util.Collections;
 import java.util.List;
-import java.util.Map;
-import javax.annotation.Nullable;
-import org.jetbrains.annotations.VisibleForTesting;
-import org.joml.Matrix4f;
+import java.util.Optional;
+import org.slf4j.Logger;
 
-public class ghf implements AutoCloseable {
-   private static final fdh p = new fdh();
-   private static final int q = -1;
-   private final List<gip.a> r = new ArrayList<>();
-   private final Object2IntMap<String> s = new Object2IntArrayMap();
-   private final IntList t = new IntArrayList();
-   private final List<fdk> u = new ArrayList<>();
-   private final Map<String, fdk> v = new HashMap<>();
-   private final int w;
-   @Nullable
-   public fdk a;
-   @Nullable
-   public fdk b;
-   @Nullable
-   public fdk c;
-   @Nullable
-   public fdk d;
-   @Nullable
-   public fdk e;
-   @Nullable
-   public fdk f;
-   @Nullable
-   public fdk g;
-   @Nullable
-   public fdk h;
-   @Nullable
-   public fdk i;
-   @Nullable
-   public fdk j;
-   @Nullable
-   public fdk k;
-   @Nullable
-   public fdk l;
-   @Nullable
-   public fdk m;
-   @Nullable
-   public fdk n;
-   @Nullable
-   public fdk o;
+public class ghf {
+   private static final Logger b = LogUtils.getLogger();
+   private static final int c = col.g();
+   public static final Codec<ghf> a = Codec.PASSTHROUGH.listOf().validate($$0 -> ae.a($$0, c)).xmap(ghf::new, $$0 -> $$0.f);
+   private static final DynamicOps<vh> d = uy.a;
+   private static final Dynamic<?> e = new Dynamic(d, (vh)cwb.f.encodeStart(d, cwb.k).getOrThrow());
+   private List<Dynamic<?>> f;
 
-   private ghf(int $$0) {
-      this.w = $$0;
-      this.s.defaultReturnValue(-1);
+   private ghf(List<Dynamic<?>> $$0) {
+      this.f = $$0;
    }
 
-   public static ghf a(fdi $$0, fdi $$1, fdy $$2) throws gin.b {
-      int $$3 = GlStateManager.glCreateProgram();
-      if ($$3 <= 0) {
-         throw new gin.b("Could not create shader program (returned program ID " + $$3 + ")");
-      } else {
-         $$2.a($$3);
-         GlStateManager.glAttachShader($$3, $$0.b());
-         GlStateManager.glAttachShader($$3, $$1.b());
-         GlStateManager.glLinkProgram($$3);
-         int $$4 = GlStateManager.glGetProgrami($$3, 35714);
-         if ($$4 == 0) {
-            String $$5 = GlStateManager.glGetProgramInfoLog($$3, 32768);
-            throw new gin.b("Error encountered when linking program containing VS " + $$0.a() + " and FS " + $$1.a() + ". Log output: " + $$5);
-         } else {
-            return new ghf($$3);
-         }
+   public ghf() {
+      this(Collections.nCopies(c, e));
+   }
+
+   public List<cwb> a(js.a $$0) {
+      return this.f
+         .stream()
+         .map($$1 -> cwb.f.parse(alg.a($$1, $$0)).resultOrPartial($$0xx -> b.warn("Could not parse hotbar item: {}", $$0xx)).orElse(cwb.k))
+         .toList();
+   }
+
+   public void a(col $$0, ke $$1) {
+      alg<vh> $$2 = $$1.a(d);
+      Builder<Dynamic<?>> $$3 = ImmutableList.builderWithExpectedSize(c);
+
+      for (int $$4 = 0; $$4 < c; $$4++) {
+         cwb $$5 = $$0.a($$4);
+         Optional<Dynamic<?>> $$6 = cwb.f
+            .encodeStart($$2, $$5)
+            .resultOrPartial($$0x -> b.warn("Could not encode hotbar item: {}", $$0x))
+            .map($$0x -> new Dynamic(d, $$0x));
+         $$3.add($$6.orElse(e));
       }
+
+      this.f = $$3.build();
    }
 
-   public void a(List<gip.b> $$0, List<gip.a> $$1) {
-      RenderSystem.assertOnRenderThread();
-
-      for (gip.b $$2 : $$0) {
-         String $$3 = $$2.a();
-         int $$4 = fdk.a(this.w, $$3);
-         if ($$4 != -1) {
-            fdk $$5 = this.a($$2);
-            $$5.b($$4);
-            this.u.add($$5);
-            this.v.put($$3, $$5);
+   public boolean a() {
+      for (Dynamic<?> $$0 : this.f) {
+         if (!a($$0)) {
+            return false;
          }
       }
 
-      for (gip.a $$6 : $$1) {
-         int $$7 = fdk.a(this.w, $$6.a());
-         if ($$7 != -1) {
-            this.r.add($$6);
-            this.t.add($$7);
-         }
-      }
-
-      this.a = this.a("ModelViewMat");
-      this.b = this.a("ProjMat");
-      this.c = this.a("TextureMat");
-      this.d = this.a("ScreenSize");
-      this.e = this.a("ColorModulator");
-      this.f = this.a("Light0_Direction");
-      this.g = this.a("Light1_Direction");
-      this.h = this.a("GlintAlpha");
-      this.i = this.a("FogStart");
-      this.j = this.a("FogEnd");
-      this.k = this.a("FogColor");
-      this.l = this.a("FogShape");
-      this.m = this.a("LineWidth");
-      this.n = this.a("GameTime");
-      this.o = this.a("ModelOffset");
+      return true;
    }
 
-   @Override
-   public void close() {
-      this.u.forEach(fdk::close);
-      GlStateManager.glDeleteProgram(this.w);
-   }
-
-   public void a() {
-      RenderSystem.assertOnRenderThread();
-      GlStateManager._glUseProgram(0);
-      int $$0 = GlStateManager._getActiveTexture();
-
-      for (int $$1 = 0; $$1 < this.t.size(); $$1++) {
-         gip.a $$2 = this.r.get($$1);
-         if (!this.s.containsKey($$2.a())) {
-            GlStateManager._activeTexture(33984 + $$1);
-            GlStateManager._bindTexture(0);
-         }
-      }
-
-      GlStateManager._activeTexture($$0);
-   }
-
-   public void b() {
-      RenderSystem.assertOnRenderThread();
-      GlStateManager._glUseProgram(this.w);
-      int $$0 = GlStateManager._getActiveTexture();
-
-      for (int $$1 = 0; $$1 < this.t.size(); $$1++) {
-         String $$2 = this.r.get($$1).a();
-         int $$3 = this.s.getInt($$2);
-         if ($$3 != -1) {
-            int $$4 = this.t.getInt($$1);
-            fdk.b($$4, $$1);
-            RenderSystem.activeTexture(33984 + $$1);
-            RenderSystem.bindTexture($$3);
-         }
-      }
-
-      GlStateManager._activeTexture($$0);
-
-      for (fdk $$5 : this.u) {
-         $$5.b();
-      }
-   }
-
-   @Nullable
-   public fdk a(String $$0) {
-      RenderSystem.assertOnRenderThread();
-      return this.v.get($$0);
-   }
-
-   public fdh b(String $$0) {
-      fdk $$1 = this.a($$0);
-      return (fdh)($$1 == null ? p : $$1);
-   }
-
-   public void a(String $$0, int $$1) {
-      this.s.put($$0, $$1);
-   }
-
-   private fdk a(gip.b $$0) {
-      String $$1 = $$0.a();
-      int $$2 = fdk.a($$0.b());
-      int $$3 = $$0.c();
-      float[] $$4 = new float[Math.max($$3, 16)];
-      int $$5 = 0;
-
-      for (float $$6 : $$0.d()) {
-         $$4[$$5++] = $$6;
-      }
-
-      if ($$3 > 1 && $$0.d().size() == 1) {
-         while ($$5 < $$3) {
-            $$4[$$5] = $$4[0];
-            $$5++;
-         }
-      }
-
-      int $$7 = $$3 > 1 && $$3 <= 4 && $$2 < 8 ? $$3 - 1 : 0;
-      fdk $$8 = new fdk($$1, $$2 + $$7, $$3);
-      if ($$2 <= 3) {
-         $$8.a((int)$$4[0], (int)$$4[1], (int)$$4[2], (int)$$4[3]);
-      } else if ($$2 <= 7) {
-         $$8.b($$4[0], $$4[1], $$4[2], $$4[3]);
-      } else {
-         $$8.a(Arrays.copyOfRange($$4, 0, $$3));
-      }
-
-      return $$8;
-   }
-
-   public void a(fdy.c $$0, Matrix4f $$1, Matrix4f $$2, fcw $$3) {
-      for (int $$4 = 0; $$4 < 12; $$4++) {
-         int $$5 = RenderSystem.getShaderTexture($$4);
-         this.a("Sampler" + $$4, $$5);
-      }
-
-      if (this.a != null) {
-         this.a.a($$1);
-      }
-
-      if (this.b != null) {
-         this.b.a($$2);
-      }
-
-      if (this.e != null) {
-         this.e.a(RenderSystem.getShaderColor());
-      }
-
-      if (this.h != null) {
-         this.h.a(RenderSystem.getShaderGlintAlpha());
-      }
-
-      ghk $$6 = RenderSystem.getShaderFog();
-      if (this.i != null) {
-         this.i.a($$6.a());
-      }
-
-      if (this.j != null) {
-         this.j.a($$6.b());
-      }
-
-      if (this.k != null) {
-         this.k.a($$6.d(), $$6.e(), $$6.f(), $$6.g());
-      }
-
-      if (this.l != null) {
-         this.l.a($$6.c().a());
-      }
-
-      if (this.c != null) {
-         this.c.a(RenderSystem.getTextureMatrix());
-      }
-
-      if (this.n != null) {
-         this.n.a(RenderSystem.getShaderGameTime());
-      }
-
-      if (this.d != null) {
-         this.d.a((float)$$3.l(), (float)$$3.m());
-      }
-
-      if (this.m != null && ($$0 == fdy.c.a || $$0 == fdy.c.b)) {
-         this.m.a(RenderSystem.getShaderLineWidth());
-      }
-
-      RenderSystem.setupShaderLights(this);
-   }
-
-   @VisibleForTesting
-   public void a(fdk $$0) {
-      this.u.add($$0);
-      this.v.put($$0.a(), $$0);
-   }
-
-   @VisibleForTesting
-   public int c() {
-      return this.w;
+   private static boolean a(Dynamic<?> $$0) {
+      return e.equals($$0);
    }
 }

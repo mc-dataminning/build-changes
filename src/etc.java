@@ -1,30 +1,15 @@
-public class etc {
-   private final int b;
-   private final String c;
-   public static String a = "main";
+import com.mojang.serialization.Codec;
+import io.netty.buffer.ByteBuf;
 
-   public etc(int $$0) {
-      this($$0, a);
+public record etc(int c) {
+   public static final Codec<etc> a = Codec.INT.xmap(etc::new, etc::b);
+   public static final zg<ByteBuf, etc> b = ze.h.a(etc::new, etc::b);
+
+   public String a() {
+      return "map_" + this.c;
    }
 
-   public etc(int $$0, String $$1) {
-      this.b = $$0;
-      this.c = $$1;
-   }
-
-   public boolean a() {
-      return !this.c.equals(a);
-   }
-
-   public String b() {
+   public int b() {
       return this.c;
-   }
-
-   public int c() {
-      return this.b;
-   }
-
-   public boolean a(etc $$0) {
-      return this.b().equals($$0.b());
    }
 }

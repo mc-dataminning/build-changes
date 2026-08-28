@@ -1,25 +1,373 @@
+import com.google.common.collect.Maps;
+import java.util.Map;
+
 public class ghz {
-   public static final alh a = alh.b("textures/gui/title/background/panorama_overlay.png");
-   private final fja b;
-   private final ghh c;
-   private float d;
+   private static final Map<die, gir> a = ae.a(Maps.newHashMap(), $$0 -> {
+      gir $$1 = gir.s();
+      $$0.put(dig.fI, $$1);
+      gir $$2 = gir.d();
+      $$0.put(dig.i, $$2);
+      $$0.put(dig.eW, $$2);
+      $$0.put(dig.eY, $$2);
+      $$0.put(dig.fH, $$2);
+      $$0.put(dig.hc, $$2);
+      $$0.put(dig.eX, $$2);
+      $$0.put(dig.aH, $$2);
+      $$0.put(dig.aE, $$2);
+      $$0.put(dig.aF, $$2);
+      $$0.put(dig.aI, $$2);
+      $$0.put(dig.aJ, $$2);
+      $$0.put(dig.aG, $$2);
+      $$0.put(dig.aK, $$2);
+      $$0.put(dig.aM, $$2);
+      $$0.put(dig.aN, $$2);
+      $$0.put(dig.ac, $$2);
+      $$0.put(dig.aL, $$2);
+      gir $$3 = gir.e();
+      $$0.put(dig.x, $$3);
+      $$0.put(dig.y, $$3);
+      $$0.put(dig.z, $$3);
+      $$0.put(dig.A, $$3);
+      $$0.put(dig.B, $$3);
+      $$0.put(dig.C, $$3);
+      $$0.put(dig.D, $$3);
+      $$0.put(dig.aQ, $$3);
+      $$0.put(dig.aZ, $$3);
+      $$0.put(dig.ba, $$3);
+      $$0.put(dig.bb, $$3);
+      $$0.put(dig.bc, $$3);
+      $$0.put(dig.bd, $$3);
+      $$0.put(dig.be, $$3);
+      $$0.put(dig.bf, $$3);
+      $$0.put(dig.bg, $$3);
+      $$0.put(dig.bh, $$3);
+      $$0.put(dig.bi, $$3);
+      $$0.put(dig.bj, $$3);
+      $$0.put(dig.bk, $$3);
+      $$0.put(dig.bl, $$3);
+      $$0.put(dig.bm, $$3);
+      $$0.put(dig.bn, $$3);
+      $$0.put(dig.bo, $$3);
+      $$0.put(dig.bp, $$3);
+      $$0.put(dig.bq, $$3);
+      $$0.put(dig.bs, $$3);
+      $$0.put(dig.bt, $$3);
+      $$0.put(dig.bu, $$3);
+      $$0.put(dig.bv, $$3);
+      $$0.put(dig.bw, $$3);
+      $$0.put(dig.bx, $$3);
+      $$0.put(dig.bR, $$3);
+      $$0.put(dig.bT, $$3);
+      $$0.put(dig.bU, $$3);
+      $$0.put(dig.bV, $$3);
+      $$0.put(dig.bW, $$3);
+      $$0.put(dig.bX, $$3);
+      $$0.put(dig.bY, $$3);
+      $$0.put(dig.bZ, $$3);
+      $$0.put(dig.ca, $$3);
+      $$0.put(dig.cb, $$3);
+      $$0.put(dig.cc, $$3);
+      $$0.put(dig.cd, $$3);
+      $$0.put(dig.ce, $$3);
+      $$0.put(dig.cf, $$3);
+      $$0.put(dig.cg, $$3);
+      $$0.put(dig.cp, $$3);
+      $$0.put(dig.cq, $$3);
+      $$0.put(dig.ea, $$3);
+      $$0.put(dig.eb, $$3);
+      $$0.put(dig.cr, $$3);
+      $$0.put(dig.cs, $$3);
+      $$0.put(dig.ct, $$3);
+      $$0.put(dig.tr, $$3);
+      $$0.put(dig.ts, $$3);
+      $$0.put(dig.cw, $$3);
+      $$0.put(dig.cB, $$3);
+      $$0.put(dig.cN, $$3);
+      $$0.put(dig.cO, $$3);
+      $$0.put(dig.cP, $$3);
+      $$0.put(dig.dy, $$3);
+      $$0.put(dig.dK, $$3);
+      $$0.put(dig.dL, $$3);
+      $$0.put(dig.dQ, $$3);
+      $$0.put(dig.dS, $$3);
+      $$0.put(dig.eh, $$3);
+      $$0.put(dig.ey, $$3);
+      $$0.put(dig.ez, $$3);
+      $$0.put(dig.eA, $$3);
+      $$0.put(dig.eB, $$3);
+      $$0.put(dig.eC, $$3);
+      $$0.put(dig.eD, $$3);
+      $$0.put(dig.eE, $$3);
+      $$0.put(dig.oM, $$3);
+      $$0.put(dig.oN, $$3);
+      $$0.put(dig.eF, $$3);
+      $$0.put(dig.eG, $$3);
+      $$0.put(dig.rU, $$3);
+      $$0.put(dig.rV, $$3);
+      $$0.put(dig.rX, $$3);
+      $$0.put(dig.rW, $$3);
+      $$0.put(dig.rY, $$3);
+      $$0.put(dig.rZ, $$3);
+      $$0.put(dig.sb, $$3);
+      $$0.put(dig.sa, $$3);
+      $$0.put(dig.fb, $$3);
+      $$0.put(dig.fc, $$3);
+      $$0.put(dig.fd, $$3);
+      $$0.put(dig.fe, $$3);
+      $$0.put(dig.ff, $$3);
+      $$0.put(dig.fg, $$3);
+      $$0.put(dig.fm, $$3);
+      $$0.put(dig.fq, $$3);
+      $$0.put(dig.fs, $$3);
+      $$0.put(dig.fC, $$3);
+      $$0.put(dig.fO, $$3);
+      $$0.put(dig.fR, $$3);
+      $$0.put(dig.fT, $$3);
+      $$0.put(dig.fU, $$3);
+      $$0.put(dig.fV, $$3);
+      $$0.put(dig.fW, $$3);
+      $$0.put(dig.fX, $$3);
+      $$0.put(dig.fY, $$3);
+      $$0.put(dig.fZ, $$3);
+      $$0.put(dig.ga, $$3);
+      $$0.put(dig.gb, $$3);
+      $$0.put(dig.gc, $$3);
+      $$0.put(dig.gd, $$3);
+      $$0.put(dig.ge, $$3);
+      $$0.put(dig.gf, $$3);
+      $$0.put(dig.gg, $$3);
+      $$0.put(dig.gh, $$3);
+      $$0.put(dig.gi, $$3);
+      $$0.put(dig.gj, $$3);
+      $$0.put(dig.gk, $$3);
+      $$0.put(dig.gl, $$3);
+      $$0.put(dig.gm, $$3);
+      $$0.put(dig.gn, $$3);
+      $$0.put(dig.go, $$3);
+      $$0.put(dig.gp, $$3);
+      $$0.put(dig.gq, $$3);
+      $$0.put(dig.gr, $$3);
+      $$0.put(dig.gs, $$3);
+      $$0.put(dig.ti, $$3);
+      $$0.put(dig.tj, $$3);
+      $$0.put(dig.fS, $$3);
+      $$0.put(dig.gt, $$3);
+      $$0.put(dig.gu, $$3);
+      $$0.put(dig.gY, $$3);
+      $$0.put(dig.hh, $$3);
+      $$0.put(dig.hY, $$3);
+      $$0.put(dig.iD, $$3);
+      $$0.put(dig.iE, $$3);
+      $$0.put(dig.iF, $$3);
+      $$0.put(dig.iG, $$3);
+      $$0.put(dig.iH, $$3);
+      $$0.put(dig.iI, $$3);
+      $$0.put(dig.kl, $$3);
+      $$0.put(dig.km, $$3);
+      $$0.put(dig.kn, $$3);
+      $$0.put(dig.ko, $$3);
+      $$0.put(dig.kp, $$3);
+      $$0.put(dig.kq, $$3);
+      $$0.put(dig.kr, $$3);
+      $$0.put(dig.ks, $$3);
+      $$0.put(dig.rM, $$3);
+      $$0.put(dig.rN, $$3);
+      $$0.put(dig.rP, $$3);
+      $$0.put(dig.rO, $$3);
+      $$0.put(dig.rQ, $$3);
+      $$0.put(dig.rR, $$3);
+      $$0.put(dig.rT, $$3);
+      $$0.put(dig.rS, $$3);
+      $$0.put(dig.kt, $$3);
+      $$0.put(dig.ku, $$3);
+      $$0.put(dig.kv, $$3);
+      $$0.put(dig.bS, $$3);
+      $$0.put(dig.kA, $$3);
+      $$0.put(dig.kC, $$3);
+      $$0.put(dig.kB, $$3);
+      $$0.put(dig.kD, $$3);
+      $$0.put(dig.mc, $$3);
+      $$0.put(dig.md, $$3);
+      $$0.put(dig.mf, $$3);
+      $$0.put(dig.mr, $$3);
+      $$0.put(dig.ms, $$3);
+      $$0.put(dig.mt, $$3);
+      $$0.put(dig.mu, $$3);
+      $$0.put(dig.mv, $$3);
+      $$0.put(dig.mw, $$3);
+      $$0.put(dig.mx, $$3);
+      $$0.put(dig.my, $$3);
+      $$0.put(dig.mz, $$3);
+      $$0.put(dig.mA, $$3);
+      $$0.put(dig.mB, $$3);
+      $$0.put(dig.mC, $$3);
+      $$0.put(dig.mD, $$3);
+      $$0.put(dig.mE, $$3);
+      $$0.put(dig.mF, $$3);
+      $$0.put(dig.mG, $$3);
+      $$0.put(dig.mH, $$3);
+      $$0.put(dig.mI, $$3);
+      $$0.put(dig.mJ, $$3);
+      $$0.put(dig.mK, $$3);
+      $$0.put(dig.mL, $$3);
+      $$0.put(dig.mM, $$3);
+      $$0.put(dig.mN, $$3);
+      $$0.put(dig.mO, $$3);
+      $$0.put(dig.mP, $$3);
+      $$0.put(dig.mQ, $$3);
+      $$0.put(dig.mR, $$3);
+      $$0.put(dig.mS, $$3);
+      $$0.put(dig.mT, $$3);
+      $$0.put(dig.mU, $$3);
+      $$0.put(dig.mV, $$3);
+      $$0.put(dig.mX, $$3);
+      $$0.put(dig.mY, $$3);
+      $$0.put(dig.mZ, $$3);
+      $$0.put(dig.na, $$3);
+      $$0.put(dig.nS, $$3);
+      $$0.put(dig.oc, $$3);
+      $$0.put(dig.oe, $$3);
+      $$0.put(dig.of, $$3);
+      $$0.put(dig.og, $$3);
+      $$0.put(dig.oh, $$3);
+      $$0.put(dig.oi, $$3);
+      $$0.put(dig.oz, $$3);
+      $$0.put(dig.oA, $$3);
+      $$0.put(dig.oB, $$3);
+      $$0.put(dig.oC, $$3);
+      $$0.put(dig.or, $$3);
+      $$0.put(dig.ox, $$3);
+      $$0.put(dig.oo, $$3);
+      $$0.put(dig.oD, $$3);
+      $$0.put(dig.oq, $$3);
+      $$0.put(dig.pm, $$3);
+      $$0.put(dig.pn, $$3);
+      $$0.put(dig.po, $$3);
+      $$0.put(dig.pp, $$3);
+      $$0.put(dig.oU, $$3);
+      $$0.put(dig.oV, $$3);
+      $$0.put(dig.st, $$3);
+      $$0.put(dig.qy, $$3);
+      $$0.put(dig.qx, $$3);
+      $$0.put(dig.qw, $$3);
+      $$0.put(dig.qv, $$3);
+      $$0.put(dig.ss, $$3);
+      $$0.put(dig.sv, $$3);
+      $$0.put(dig.sw, $$3);
+      $$0.put(dig.sx, $$3);
+      $$0.put(dig.sz, $$3);
+      $$0.put(dig.sy, $$3);
+      $$0.put(dig.sB, $$3);
+      $$0.put(dig.sD, $$3);
+      $$0.put(dig.sE, $$3);
+      $$0.put(dig.sF, $$3);
+      $$0.put(dig.sG, $$3);
+      $$0.put(dig.qQ, $$3);
+      $$0.put(dig.qR, $$3);
+      $$0.put(dig.qT, $$3);
+      $$0.put(dig.qV, $$3);
+      $$0.put(dig.E, $$3);
+      $$0.put(dig.tn, $$3);
+      $$0.put(dig.sc, $$3);
+      $$0.put(dig.sd, $$3);
+      $$0.put(dig.se, $$3);
+      $$0.put(dig.sf, $$3);
+      $$0.put(dig.sg, $$3);
+      $$0.put(dig.sh, $$3);
+      $$0.put(dig.si, $$3);
+      $$0.put(dig.sj, $$3);
+      gir $$4 = gir.f();
+      $$0.put(dig.dO, $$4);
+      $$0.put(dig.ed, $$4);
+      $$0.put(dig.ei, $$4);
+      $$0.put(dig.ej, $$4);
+      $$0.put(dig.ek, $$4);
+      $$0.put(dig.el, $$4);
+      $$0.put(dig.em, $$4);
+      $$0.put(dig.en, $$4);
+      $$0.put(dig.eo, $$4);
+      $$0.put(dig.ep, $$4);
+      $$0.put(dig.eq, $$4);
+      $$0.put(dig.er, $$4);
+      $$0.put(dig.es, $$4);
+      $$0.put(dig.et, $$4);
+      $$0.put(dig.eu, $$4);
+      $$0.put(dig.ev, $$4);
+      $$0.put(dig.ew, $$4);
+      $$0.put(dig.ex, $$4);
+      $$0.put(dig.hz, $$4);
+      $$0.put(dig.hA, $$4);
+      $$0.put(dig.hB, $$4);
+      $$0.put(dig.hC, $$4);
+      $$0.put(dig.hD, $$4);
+      $$0.put(dig.hE, $$4);
+      $$0.put(dig.hF, $$4);
+      $$0.put(dig.hG, $$4);
+      $$0.put(dig.hH, $$4);
+      $$0.put(dig.hI, $$4);
+      $$0.put(dig.hJ, $$4);
+      $$0.put(dig.hK, $$4);
+      $$0.put(dig.hL, $$4);
+      $$0.put(dig.hM, $$4);
+      $$0.put(dig.hN, $$4);
+      $$0.put(dig.hO, $$4);
+      $$0.put(dig.hV, $$4);
+      $$0.put(dig.pg, $$4);
+      $$0.put(dig.kI, $$4);
+      $$0.put(dig.nd, $$4);
+      $$0.put(dig.qO, $$4);
+   });
+   private static final Map<erj, gir> b = ae.a(Maps.newHashMap(), $$0 -> {
+      gir $$1 = gir.f();
+      $$0.put(erl.b, $$1);
+      $$0.put(erl.c, $$1);
+   });
+   private static boolean c;
 
-   public ghz(ghh $$0) {
-      this.c = $$0;
-      this.b = fja.Q();
+   public static gir a(dvj $$0) {
+      die $$1 = $$0.b();
+      if ($$1 instanceof dmn) {
+         return c ? gir.d() : gir.c();
+      } else {
+         gir $$2 = a.get($$1);
+         return $$2 != null ? $$2 : gir.c();
+      }
    }
 
-   public void a(fkm $$0, int $$1, int $$2, float $$3, float $$4) {
-      float $$5 = this.b.av().b();
-      float $$6 = (float)((double)$$5 * this.b.n.t().c());
-      this.d = a(this.d + $$6 * 0.1F, 360.0F);
-      $$0.d();
-      this.c.a(this.b, 10.0F, -this.d, $$3);
-      $$0.d();
-      $$0.a(gig::B, a, 0, 0, 0.0F, 0.0F, $$1, $$2, 16, 128, 16, 128, axu.a($$3));
+   public static gir b(dvj $$0) {
+      die $$1 = $$0.b();
+      if ($$1 instanceof dmn) {
+         return c ? gir.d() : gir.c();
+      } else {
+         gir $$2 = a.get($$1);
+         if ($$2 != null) {
+            return $$2 == gir.f() ? gir.g() : $$2;
+         } else {
+            return gir.c();
+         }
+      }
    }
 
-   private static float a(float $$0, float $$1) {
-      return $$0 > $$1 ? $$0 - $$1 : $$0;
+   public static gir c(dvj $$0) {
+      gir $$1 = a($$0);
+      return $$1 == gir.f() ? gjc.j() : gjc.i();
+   }
+
+   public static gir a(cwb $$0) {
+      if ($$0.h() instanceof cuh $$2) {
+         die $$3 = $$2.d();
+         return c($$3.m());
+      } else {
+         return gjc.j();
+      }
+   }
+
+   public static gir a(erk $$0) {
+      gir $$1 = b.get($$0.a());
+      return $$1 != null ? $$1 : gir.c();
+   }
+
+   public static void a(boolean $$0) {
+      c = $$0;
    }
 }

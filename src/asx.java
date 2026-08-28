@@ -1,22 +1,15 @@
-import java.util.Optional;
 import java.util.function.Consumer;
-import net.minecraft.server.MinecraftServer;
 
-public class asx implements asd {
-   public static final asd.a a = new asd.a("server_resource_pack");
-   private final MinecraftServer.b b;
+public class asx implements ase {
+   public static final ase.a a = new ase.a("join_world");
 
-   public asx(MinecraftServer.b $$0) {
-      this.b = $$0;
+   @Override
+   public void a(Consumer<zp<?>> $$0) {
+      $$0.accept(abn.a);
    }
 
    @Override
-   public void a(Consumer<zo<?>> $$0) {
-      $$0.accept(new aab(this.b.a(), this.b.b(), this.b.c(), this.b.d(), Optional.ofNullable(this.b.e())));
-   }
-
-   @Override
-   public asd.a a() {
+   public ase.a a() {
       return a;
    }
 }

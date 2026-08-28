@@ -1,46 +1,33 @@
-import com.mojang.authlib.GameProfile;
+import com.google.common.collect.Iterables;
+import com.google.common.collect.Lists;
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import com.mojang.brigadier.builder.RequiredArgumentBuilder;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
 import java.util.Collection;
-import javax.annotation.Nullable;
 
 public class amt {
-   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(xh.c("commands.ban.failed"));
-
-   public static void a(CommandDispatcher<ev> $$0) {
+   public static void a(CommandDispatcher<ew> $$0) {
       $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)ew.a("ban").requires($$0x -> $$0x.c(3)))
-            .then(
-               ((RequiredArgumentBuilder)ew.a("targets", fk.a()).executes($$0x -> a((ev)$$0x.getSource(), fk.a($$0x, "targets"), null)))
-                  .then(ew.a("reason", fm.a()).executes($$0x -> a((ev)$$0x.getSource(), fk.a($$0x, "targets"), fm.a($$0x, "reason"))))
-            )
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)ex.a("banlist").requires($$0x -> $$0x.c(3)))
+                  .executes($$0x -> {
+                     avo $$1 = ((ew)$$0x.getSource()).l().ag();
+                     return a((ew)$$0x.getSource(), Lists.newArrayList(Iterables.concat($$1.f().d(), $$1.g().d())));
+                  }))
+               .then(ex.a("ips").executes($$0x -> a((ew)$$0x.getSource(), ((ew)$$0x.getSource()).l().ag().g().d()))))
+            .then(ex.a("players").executes($$0x -> a((ew)$$0x.getSource(), ((ew)$$0x.getSource()).l().ag().f().d())))
       );
    }
 
-   private static int a(ev $$0, Collection<GameProfile> $$1, @Nullable xh $$2) throws CommandSyntaxException {
-      avt $$3 = $$0.l().ag().f();
-      int $$4 = 0;
+   private static int a(ew $$0, Collection<? extends avj<?>> $$1) {
+      if ($$1.isEmpty()) {
+         $$0.a(() -> xi.c("commands.banlist.none"), false);
+      } else {
+         $$0.a(() -> xi.a("commands.banlist.list", $$1.size()), false);
 
-      for (GameProfile $$5 : $$1) {
-         if (!$$3.a($$5)) {
-            avu $$6 = new avu($$5, null, $$0.c(), null, $$2 == null ? null : $$2.getString());
-            $$3.a($$6);
-            $$4++;
-            $$0.a(() -> xh.a("commands.ban.success", xh.b($$5.getName()), $$6.d()), true);
-            arn $$7 = $$0.l().ag().a($$5.getId());
-            if ($$7 != null) {
-               $$7.d.a(xh.c("multiplayer.disconnect.banned"));
-            }
+         for (avj<?> $$2 : $$1) {
+            $$0.a(() -> xi.a("commands.banlist.entry", $$2.e(), $$2.b(), $$2.d()), false);
          }
       }
 
-      if ($$4 == 0) {
-         throw a.create();
-      } else {
-         return $$4;
-      }
+      return $$1.size();
    }
 }

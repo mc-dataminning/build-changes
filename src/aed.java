@@ -1,37 +1,37 @@
-public class aed implements zo<acd> {
-   public static final zf<we, aed> a = zo.a(aed::a, aed::new);
-   private final int b;
-   private final alh c;
+public class aed implements zp<ace> {
+   public static final zg<wf, aed> a = zp.a(aed::a, aed::new);
+   private final jh b;
+   private final boolean c;
 
-   public aed(int $$0, dal<?> $$1) {
+   public aed(jh $$0, boolean $$1) {
       this.b = $$0;
-      this.c = $$1.a();
+      this.c = $$1;
    }
 
-   private aed(we $$0) {
-      this.b = $$0.x();
-      this.c = $$0.q();
+   private aed(wf $$0) {
+      this.b = $$0.e();
+      this.c = $$0.readBoolean();
    }
 
-   private void a(we $$0) {
-      $$0.f(this.b);
+   private void a(wf $$0) {
+      $$0.a(this.b);
       $$0.a(this.c);
    }
 
    @Override
-   public zq<aed> a() {
-      return ags.Z;
+   public zr<aed> a() {
+      return agt.Y;
    }
 
-   public void a(acd $$0) {
+   public void a(ace $$0) {
       $$0.a(this);
    }
 
-   public alh b() {
-      return this.c;
+   public jh b() {
+      return this.b;
    }
 
-   public int e() {
-      return this.b;
+   public boolean e() {
+      return this.c;
    }
 }

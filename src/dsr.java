@@ -1,27 +1,34 @@
-public class dsr extends dsg {
-   private int a;
+import javax.annotation.Nullable;
 
-   public dsr(jg $$0, dvd $$1) {
-      super(dsi.s, $$0, $$1);
+public class dsr extends dtv {
+   public dsr(jh $$0, dvj $$1) {
+      super(dso.J, $$0, $$1);
    }
 
    @Override
-   protected void b(uj $$0, jr.a $$1) {
-      super.b($$0, $$1);
-      $$0.a("OutputSignal", this.a);
+   public eap.d b() {
+      return new dsr.a(this.aB_());
    }
 
-   @Override
-   protected void a(uj $$0, jr.a $$1) {
-      super.a($$0, $$1);
-      this.a = $$0.h("OutputSignal");
-   }
+   protected class a extends dtv.a {
+      public a(final jh $$1) {
+         super($$1);
+      }
 
-   public int b() {
-      return this.a;
-   }
+      @Override
+      public int a() {
+         return 16;
+      }
 
-   public void a(int $$0) {
-      this.a = $$0;
+      @Override
+      public boolean a(arn $$0, jh $$1, jq<eag> $$2, @Nullable eag.a $$3) {
+         int $$4 = this.a($$0, this.c, dsr.this.m());
+         return $$4 != 0 && eap.a_($$2) != $$4 ? false : super.a($$0, $$1, $$2, $$3);
+      }
+
+      private int a(dfb $$0, jh $$1, dvj $$2) {
+         jm $$3 = $$2.c(dir.b).g();
+         return $$0.c($$1.a($$3), $$3);
+      }
    }
 }

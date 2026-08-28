@@ -1,9 +1,13 @@
-import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
 
-public abstract class epn {
-   public static final Codec<epn> c = lx.m.q().dispatch("predicate_type", epn::a, epo::codec);
+public interface epn<P extends epm> {
+   epn<epl> a = a("always_true", epl.a);
+   epn<epi> b = a("linear_pos", epi.a);
+   epn<eox> c = a("axis_aligned_linear_pos", eox.a);
 
-   public abstract boolean a(dvd var1, azr var2);
+   MapCodec<P> codec();
 
-   protected abstract epo<?> a();
+   static <P extends epm> epn<P> a(String $$0, MapCodec<P> $$1) {
+      return kd.a(ly.o, $$0, () -> $$1);
+   }
 }

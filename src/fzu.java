@@ -1,52 +1,43 @@
-public class fzu<S extends gvx> extends fym<S> {
-   public fzu(gbb $$0) {
+public class fzu<T extends gvl> extends fyk<T> {
+   protected final gbm b;
+   protected final gbm c;
+   protected final gbm d;
+   protected final gbm e;
+   protected final gbm f;
+   protected final gbm g;
+
+   protected fzu(gbm $$0) {
       super($$0);
+      this.b = $$0.b("head");
+      this.c = $$0.b("body");
+      this.d = $$0.b("right_hind_leg");
+      this.e = $$0.b("left_hind_leg");
+      this.f = $$0.b("right_front_leg");
+      this.g = $$0.b("left_front_leg");
    }
 
-   public static gbh c() {
-      gbj $$0 = fym.a(gbf.a, 0.0F);
-      gbl $$1 = $$0.a();
-      a($$1);
-      return gbh.a($$0, 64, 32);
+   public static gbu a(int $$0, gbq $$1) {
+      gbu $$2 = new gbu();
+      gbw $$3 = $$2.a();
+      $$3.a("head", gbr.c().a(0, 0).a(-4.0F, -4.0F, -8.0F, 8.0F, 8.0F, 8.0F, $$1), gbo.a(0.0F, (float)(18 - $$0), -6.0F));
+      $$3.a("body", gbr.c().a(28, 8).a(-5.0F, -10.0F, -7.0F, 10.0F, 16.0F, 8.0F, $$1), gbo.a(0.0F, (float)(17 - $$0), 2.0F, (float) (Math.PI / 2), 0.0F, 0.0F));
+      gbr $$4 = gbr.c().a(0, 16).a(-2.0F, 0.0F, -2.0F, 4.0F, (float)$$0, 4.0F, $$1);
+      $$3.a("right_hind_leg", $$4, gbo.a(-3.0F, (float)(24 - $$0), 7.0F));
+      $$3.a("left_hind_leg", $$4, gbo.a(3.0F, (float)(24 - $$0), 7.0F));
+      $$3.a("right_front_leg", $$4, gbo.a(-3.0F, (float)(24 - $$0), -5.0F));
+      $$3.a("left_front_leg", $$4, gbo.a(3.0F, (float)(24 - $$0), -5.0F));
+      return $$2;
    }
 
-   protected static void a(gbl $$0) {
-      $$0.a("right_arm", gbg.c().a(40, 16).a(-1.0F, -2.0F, -1.0F, 2.0F, 12.0F, 2.0F), gbd.a(-5.0F, 2.0F, 0.0F));
-      $$0.a("left_arm", gbg.c().a(40, 16).a().a(-1.0F, -2.0F, -1.0F, 2.0F, 12.0F, 2.0F), gbd.a(5.0F, 2.0F, 0.0F));
-      $$0.a("right_leg", gbg.c().a(0, 16).a(-1.0F, 0.0F, -1.0F, 2.0F, 12.0F, 2.0F), gbd.a(-2.0F, 12.0F, 0.0F));
-      $$0.a("left_leg", gbg.c().a(0, 16).a().a(-1.0F, 0.0F, -1.0F, 2.0F, 12.0F, 2.0F), gbd.a(2.0F, 12.0F, 0.0F));
-   }
-
-   protected fym.a a(S $$0, bup $$1) {
-      return $$0.aX_().a(cwb.ow) && $$0.b && $$0.ap == $$1 ? fym.a.d : fym.a.a;
-   }
-
-   public void a(S $$0) {
+   public void a(T $$0) {
       super.a($$0);
-      cvx $$1 = $$0.aX_();
-      if ($$0.b && !$$1.a(cwb.ow)) {
-         float $$2 = $$0.C;
-         float $$3 = azj.a($$2 * (float) Math.PI);
-         float $$4 = azj.a((1.0F - (1.0F - $$2) * (1.0F - $$2)) * (float) Math.PI);
-         this.r.g = 0.0F;
-         this.s.g = 0.0F;
-         this.r.f = -(0.1F - $$3 * 0.6F);
-         this.s.f = 0.1F - $$3 * 0.6F;
-         this.r.e = (float) (-Math.PI / 2);
-         this.s.e = (float) (-Math.PI / 2);
-         this.r.e -= $$3 * 1.2F - $$4 * 0.4F;
-         this.s.e -= $$3 * 1.2F - $$4 * 0.4F;
-         fwu.a(this.r, this.s, $$0.p);
-      }
-   }
-
-   @Override
-   public void a(bup $$0, fdt $$1) {
-      this.e().a($$1);
-      float $$2 = $$0 == bup.b ? 1.0F : -1.0F;
-      gbb $$3 = this.a($$0);
-      $$3.b += $$2;
-      $$3.a($$1);
-      $$3.b -= $$2;
+      this.b.e = $$0.V * (float) (Math.PI / 180.0);
+      this.b.f = $$0.U * (float) (Math.PI / 180.0);
+      float $$1 = $$0.X;
+      float $$2 = $$0.Y;
+      this.d.e = azk.b($$1 * 0.6662F) * 1.4F * $$2;
+      this.e.e = azk.b($$1 * 0.6662F + (float) Math.PI) * 1.4F * $$2;
+      this.f.e = azk.b($$1 * 0.6662F + (float) Math.PI) * 1.4F * $$2;
+      this.g.e = azk.b($$1 * 0.6662F) * 1.4F * $$2;
    }
 }

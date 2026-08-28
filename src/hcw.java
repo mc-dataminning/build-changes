@@ -1,7 +1,6 @@
-public interface hcw<T> {
-   int e();
+import java.io.IOException;
+import java.nio.ByteBuffer;
 
-   T b(azr var1);
-
-   void a(hcr var1);
+public interface hcw extends hct {
+   ByteBuffer b() throws IOException;
 }

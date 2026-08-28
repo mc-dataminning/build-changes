@@ -1,20 +1,30 @@
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
 
-public class drs extends dqz {
-   public static final MapCodec<drs> b = b(drs::new);
+public class drs extends dls {
+   public static final MapCodec<drs> c = b(drs::new);
+   protected static final fah g = die.a(4.0, 9.0, 4.0, 12.0, 16.0, 12.0);
 
    @Override
    public MapCodec<drs> a() {
-      return b;
+      return c;
    }
 
-   protected drs(dvc.d $$0) {
-      super(dpa.b.d, $$0);
+   public drs(dvi.d $$0) {
+      super($$0, jm.a, g, false, 0.1);
    }
 
    @Override
-   public void a(dev $$0, jg $$1, dvd $$2, @Nullable buv $$3, cvx $$4) {
-      drr.a($$0, $$1);
+   protected int a(azs $$0) {
+      return dnj.a($$0);
+   }
+
+   @Override
+   protected die b() {
+      return dig.oA;
+   }
+
+   @Override
+   protected boolean h(dvj $$0) {
+      return dnj.a($$0);
    }
 }

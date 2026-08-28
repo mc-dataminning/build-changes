@@ -1,42 +1,42 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
-public class epc extends epg {
+public class epc extends epw {
    public static final MapCodec<epc> a = RecordCodecBuilder.mapCodec(
       $$0 -> $$0.group(
-               Codec.FLOAT.fieldOf("min_chance").orElse(0.0F).forGetter($$0x -> $$0x.b),
-               Codec.FLOAT.fieldOf("max_chance").orElse(0.0F).forGetter($$0x -> $$0x.d),
-               Codec.INT.fieldOf("min_dist").orElse(0).forGetter($$0x -> $$0x.e),
-               Codec.INT.fieldOf("max_dist").orElse(0).forGetter($$0x -> $$0x.f)
+               kf.a(lz.f).optionalFieldOf("rottable_blocks").forGetter($$0x -> $$0x.b),
+               Codec.floatRange(0.0F, 1.0F).fieldOf("integrity").forGetter($$0x -> $$0x.c)
             )
             .apply($$0, epc::new)
    );
-   private final float b;
-   private final float d;
-   private final int e;
-   private final int f;
+   private final Optional<ju<die>> b;
+   private final float c;
 
-   public epc(float $$0, float $$1, int $$2, int $$3) {
-      if ($$2 >= $$3) {
-         throw new IllegalArgumentException("Invalid range: [" + $$2 + "," + $$3 + "]");
-      } else {
-         this.b = $$0;
-         this.d = $$1;
-         this.e = $$2;
-         this.f = $$3;
-      }
+   public epc(ju<die> $$0, float $$1) {
+      this(Optional.of($$0), $$1);
+   }
+
+   public epc(float $$0) {
+      this(Optional.empty(), $$0);
+   }
+
+   private epc(Optional<ju<die>> $$0, float $$1) {
+      this.c = $$1;
+      this.b = $$0;
+   }
+
+   @Nullable
+   @Override
+   public epz.c a(dfe $$0, jh $$1, jh $$2, epz.c $$3, epz.c $$4, epv $$5) {
+      azs $$6 = $$5.b($$4.a());
+      return (!this.b.isPresent() || $$3.b().a(this.b.get())) && !($$6.i() <= this.c) ? null : $$4;
    }
 
    @Override
-   public boolean a(jg $$0, jg $$1, jg $$2, azr $$3) {
-      int $$4 = $$1.k($$2);
-      float $$5 = $$3.i();
-      return $$5 <= azj.b(this.b, this.d, azj.f((float)$$4, (float)this.e, (float)this.f));
-   }
-
-   @Override
-   protected eph<?> a() {
-      return eph.b;
+   protected epy<?> a() {
+      return epy.f;
    }
 }

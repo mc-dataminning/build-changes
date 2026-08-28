@@ -1,55 +1,61 @@
-public class cod {
-   public boolean a;
-   public boolean b;
-   public boolean c;
-   public boolean d;
-   public boolean e = true;
-   private float f = 0.05F;
-   private float g = 0.1F;
+import com.google.common.collect.Maps;
+import java.util.Map;
 
-   public void a(uj $$0) {
-      uj $$1 = new uj();
-      $$1.a("invulnerable", this.a);
-      $$1.a("flying", this.b);
-      $$1.a("mayfly", this.c);
-      $$1.a("instabuild", this.d);
-      $$1.a("mayBuild", this.e);
-      $$1.a("flySpeed", this.f);
-      $$1.a("walkSpeed", this.g);
-      $$0.a("abilities", $$1);
+public final class cod {
+   public static final cod a = a("desert");
+   public static final cod b = a("jungle");
+   public static final cod c = a("plains");
+   public static final cod d = a("savanna");
+   public static final cod e = a("snow");
+   public static final cod f = a("swamp");
+   public static final cod g = a("taiga");
+   private final String h;
+   private static final Map<alh<dgc>, cod> i = ae.a(Maps.newHashMap(), $$0 -> {
+      $$0.put(dgj.A, a);
+      $$0.put(dgj.f, a);
+      $$0.put(dgj.B, a);
+      $$0.put(dgj.C, a);
+      $$0.put(dgj.z, b);
+      $$0.put(dgj.x, b);
+      $$0.put(dgj.y, b);
+      $$0.put(dgj.s, d);
+      $$0.put(dgj.r, d);
+      $$0.put(dgj.w, d);
+      $$0.put(dgj.X, e);
+      $$0.put(dgj.W, e);
+      $$0.put(dgj.L, e);
+      $$0.put(dgj.e, e);
+      $$0.put(dgj.N, e);
+      $$0.put(dgj.q, e);
+      $$0.put(dgj.d, e);
+      $$0.put(dgj.F, e);
+      $$0.put(dgj.G, e);
+      $$0.put(dgj.H, e);
+      $$0.put(dgj.I, e);
+      $$0.put(dgj.g, f);
+      $$0.put(dgj.h, f);
+      $$0.put(dgj.o, g);
+      $$0.put(dgj.n, g);
+      $$0.put(dgj.u, g);
+      $$0.put(dgj.t, g);
+      $$0.put(dgj.p, g);
+      $$0.put(dgj.v, g);
+   });
+
+   private cod(String $$0) {
+      this.h = $$0;
    }
 
-   public void b(uj $$0) {
-      if ($$0.b("abilities", 10)) {
-         uj $$1 = $$0.p("abilities");
-         this.a = $$1.q("invulnerable");
-         this.b = $$1.q("flying");
-         this.c = $$1.q("mayfly");
-         this.d = $$1.q("instabuild");
-         if ($$1.b("flySpeed", 99)) {
-            this.f = $$1.j("flySpeed");
-            this.g = $$1.j("walkSpeed");
-         }
-
-         if ($$1.b("mayBuild", 1)) {
-            this.e = $$1.q("mayBuild");
-         }
-      }
+   @Override
+   public String toString() {
+      return this.h;
    }
 
-   public float a() {
-      return this.f;
+   private static cod a(String $$0) {
+      return kd.a(ly.w, ali.b($$0), new cod($$0));
    }
 
-   public void a(float $$0) {
-      this.f = $$0;
-   }
-
-   public float b() {
-      return this.g;
-   }
-
-   public void b(float $$0) {
-      this.g = $$0;
+   public static cod a(jq<dgc> $$0) {
+      return $$0.e().map(i::get).orElse(c);
    }
 }

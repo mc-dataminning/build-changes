@@ -1,74 +1,34 @@
-public class dau extends daa {
-   public dau(czx $$0) {
-      super($$0);
-   }
+import com.mojang.serialization.MapCodec;
 
-   public boolean a(czy $$0, dev $$1) {
-      cvx $$2 = cvx.k;
-      cvx $$3 = cvx.k;
+public interface dau<T extends dap<?>> {
+   dau<dax> a = a("crafting_shaped", new dax.a());
+   dau<daz> b = a("crafting_shapeless", new daz.a());
+   dau<czx> c = a("crafting_special_armordye", new dbd<>(czx::new));
+   dau<daa> d = a("crafting_special_bookcloning", new dbd<>(daa::new));
+   dau<dam> e = a("crafting_special_mapcloning", new dbd<>(dam::new));
+   dau<dan> f = a("crafting_special_mapextending", new dbd<>(dan::new));
+   dau<dai> g = a("crafting_special_firework_rocket", new dbd<>(dai::new));
+   dau<dak> h = a("crafting_special_firework_star", new dbd<>(dak::new));
+   dau<daj> i = a("crafting_special_firework_star_fade", new dbd<>(daj::new));
+   dau<dbn> j = a("crafting_special_tippedarrow", new dbd<>(dbn::new));
+   dau<czy> k = a("crafting_special_bannerduplicate", new dbd<>(czy::new));
+   dau<dba> l = a("crafting_special_shielddecoration", new dbd<>(dba::new));
+   dau<dbb> m = a("crafting_special_shulkerboxcoloring", new dbd<>(dbb::new));
+   dau<daw> n = a("crafting_special_repairitem", new dbd<>(daw::new));
+   dau<dbg> o = a("smelting", new dbc<>(dbg::new, 200));
+   dau<czz> p = a("blasting", new dbc<>(czz::new, 100));
+   dau<dbl> q = a("smoking", new dbc<>(dbl::new, 100));
+   dau<dab> r = a("campfire_cooking", new dbc<>(dab::new, 100));
+   dau<dbm> s = a("stonecutting", new dbe.b<>(dbm::new));
+   dau<dbj> t = a("smithing_transform", new dbj.a());
+   dau<dbk> u = a("smithing_trim", new dbk.a());
+   dau<dah> v = a("crafting_decorated_pot", new dbd<>(dah::new));
 
-      for (int $$4 = 0; $$4 < $$0.a(); $$4++) {
-         cvx $$5 = $$0.a($$4);
-         if (!$$5.f()) {
-            if ($$5.h() instanceof ctz) {
-               if (!$$3.f()) {
-                  return false;
-               }
+   MapCodec<T> a();
 
-               $$3 = $$5;
-            } else {
-               if (!$$5.a(cwb.vu)) {
-                  return false;
-               }
+   zg<wt, T> b();
 
-               if (!$$2.f()) {
-                  return false;
-               }
-
-               drx $$6 = $$5.a(kt.ah, drx.a);
-               if (!$$6.b().isEmpty()) {
-                  return false;
-               }
-
-               $$2 = $$5;
-            }
-         }
-      }
-
-      return !$$2.f() && !$$3.f();
-   }
-
-   public cvx a(czy $$0, jr.a $$1) {
-      cvx $$2 = cvx.k;
-      cvx $$3 = cvx.k;
-
-      for (int $$4 = 0; $$4 < $$0.a(); $$4++) {
-         cvx $$5 = $$0.a($$4);
-         if (!$$5.f()) {
-            if ($$5.h() instanceof ctz) {
-               $$2 = $$5;
-            } else if ($$5.a(cwb.vu)) {
-               $$3 = $$5.v();
-            }
-         }
-      }
-
-      if ($$3.f()) {
-         return $$3;
-      } else {
-         $$3.b(kt.ah, $$2.a(kt.ah));
-         $$3.b(kt.ai, ((ctz)$$2.h()).b());
-         return $$3;
-      }
-   }
-
-   @Override
-   public boolean a(int $$0, int $$1) {
-      return $$0 * $$1 >= 2;
-   }
-
-   @Override
-   public dao<?> ar_() {
-      return dao.l;
+   static <S extends dau<T>, T extends dap<?>> S a(String $$0, S $$1) {
+      return kd.a(ly.r, $$0, $$1);
    }
 }

@@ -1,29 +1,29 @@
-public class aie implements zo<agu> {
-   public static final zf<we, aie> a = zo.a(aie::a, aie::new);
-   private final String b;
+public class aie implements zp<agv> {
+   public static final zg<wf, aie> a = zp.a(aie::a, aie::new);
+   private final ali b;
 
-   public aie(String $$0) {
-      this.b = $$0;
+   public aie(dar<?> $$0) {
+      this.b = $$0.a();
    }
 
-   private aie(we $$0) {
-      this.b = $$0.p();
+   private aie(wf $$0) {
+      this.b = $$0.q();
    }
 
-   private void a(we $$0) {
+   private void a(wf $$0) {
       $$0.a(this.b);
    }
 
    @Override
-   public zq<aie> a() {
-      return ags.bS;
+   public zr<aie> a() {
+      return agt.bR;
    }
 
-   public void a(agu $$0) {
+   public void a(agv $$0) {
       $$0.a(this);
    }
 
-   public String b() {
+   public ali b() {
       return this.b;
    }
 }

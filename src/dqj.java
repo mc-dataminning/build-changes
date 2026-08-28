@@ -1,61 +1,40 @@
 import com.mojang.serialization.MapCodec;
 
-public class dqj extends djt {
+public class dqj extends din implements dih {
    public static final MapCodec<dqj> a = b(dqj::new);
-   public static final int b = 2;
-   public static final dwd c = dvt.aq;
-   private static final float g = 3.0F;
-   private static final fab[] h = new fab[]{dhy.a(5.0, 0.0, 5.0, 11.0, 6.0, 11.0), dhy.a(5.0, 0.0, 5.0, 11.0, 10.0, 11.0)};
-   private static final int i = 1;
+   protected static final float b = 6.0F;
+   protected static final fah c = die.a(2.0, 0.0, 2.0, 14.0, 13.0, 14.0);
 
    @Override
    public MapCodec<dqj> a() {
       return a;
    }
 
-   public dqj(dvc.d $$0) {
+   protected dqj(dvi.d $$0) {
       super($$0);
    }
 
    @Override
-   protected void a(dve.a<dhy, dvd> $$0) {
-      $$0.a(c);
-   }
-
-   @Override
-   public fab a(dvd $$0, dea $$1, jg $$2, ezm $$3) {
-      return h[this.h($$0)];
-   }
-
-   @Override
-   protected dwd b() {
+   protected fah a(dvj $$0, deg $$1, jh $$2, ezs $$3) {
       return c;
    }
 
    @Override
-   public int c() {
-      return 2;
+   public boolean b(dfe $$0, jh $$1, dvj $$2) {
+      return o($$2).m().a($$0, $$1) && $$0.u($$1.d());
    }
 
    @Override
-   protected deu d() {
-      return cwb.vk;
+   public boolean a(dfb $$0, azs $$1, jh $$2, dvj $$3) {
+      return true;
    }
 
    @Override
-   public dvd b(int $$0) {
-      return $$0 == 2 ? dia.bS.m() : super.b($$0);
+   public void a(arn $$0, azs $$1, jh $$2, dvj $$3) {
+      dkm.a($$0, o($$3).m(), $$2, 2);
    }
 
-   @Override
-   public void b(dvd $$0, arm $$1, jg $$2, azr $$3) {
-      if ($$3.a(3) != 0) {
-         super.b($$0, $$1, $$2, $$3);
-      }
-   }
-
-   @Override
-   protected int a(dev $$0) {
-      return 1;
+   private static dkm o(dvj $$0) {
+      return (dkm)($$0.a(dig.bu) ? dig.iI : dig.iH);
    }
 }

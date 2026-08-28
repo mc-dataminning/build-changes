@@ -1,7 +1,4 @@
-import javax.annotation.Nullable;
-
-public class gwg extends guc {
+public class gwg extends gun {
    public float a;
-   @Nullable
-   public dvd b;
+   public float b;
 }

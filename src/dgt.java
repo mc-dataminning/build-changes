@@ -1,84 +1,59 @@
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.stream.Stream;
 
-public abstract class dgt extends dhk {
-   public static final dvx a = dlt.aF;
-   public static final dvu b = dvt.r;
+public class dgt extends dgg {
+   public static final MapCodec<dgt> b = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(alg.d(dgj.ah), alg.d(dgj.ai), alg.d(dgj.aj), alg.d(dgj.ak), alg.d(dgj.al)).apply($$0, $$0.stable(dgt::new))
+   );
+   private final jq<dgc> c;
+   private final jq<dgc> d;
+   private final jq<dgc> e;
+   private final jq<dgc> f;
+   private final jq<dgc> g;
 
-   protected dgt(dvc.d $$0) {
-      super($$0);
-      this.l(this.F.b().b(a, jl.c).b(b, Boolean.valueOf(false)));
+   public static dgt a(jr<dgc> $$0) {
+      return new dgt($$0.b(dgj.ah), $$0.b(dgj.ai), $$0.b(dgj.aj), $$0.b(dgj.ak), $$0.b(dgj.al));
+   }
+
+   private dgt(jq<dgc> $$0, jq<dgc> $$1, jq<dgc> $$2, jq<dgc> $$3, jq<dgc> $$4) {
+      this.c = $$0;
+      this.d = $$1;
+      this.e = $$2;
+      this.f = $$3;
+      this.g = $$4;
    }
 
    @Override
-   protected abstract MapCodec<? extends dgt> a();
-
-   @Override
-   protected bry a(dvd $$0, dev $$1, jg $$2, coh $$3, ezd $$4) {
-      if (!$$1.C) {
-         this.a($$1, $$2, $$3);
-      }
-
-      return bry.a;
-   }
-
-   protected abstract void a(dev var1, jg var2, coh var3);
-
-   @Override
-   public dvd a(czm $$0) {
-      return this.m().b(a, $$0.g().g());
+   protected Stream<jq<dgc>> b() {
+      return Stream.of(this.c, this.d, this.e, this.f, this.g);
    }
 
    @Override
-   protected void a(dvd $$0, dev $$1, jg $$2, dvd $$3, boolean $$4) {
-      if (!$$0.a($$3.b())) {
-         dsg $$5 = $$1.c_($$2);
-         if ($$5 instanceof dru) {
-            if ($$1 instanceof arm) {
-               bru.a($$1, $$2, (dru)$$5);
-               ((dru)$$5).a((arm)$$1, ezh.b($$2));
-            }
+   protected MapCodec<? extends dgg> a() {
+      return b;
+   }
 
-            super.a($$0, $$1, $$2, $$3, $$4);
-            $$1.c($$2, this);
+   @Override
+   public jq<dgc> getNoiseBiome(int $$0, int $$1, int $$2, dgl.f $$3) {
+      int $$4 = kb.c($$0);
+      int $$5 = kb.c($$1);
+      int $$6 = kb.c($$2);
+      int $$7 = kj.a($$4);
+      int $$8 = kj.a($$6);
+      if ((long)$$7 * (long)$$7 + (long)$$8 * (long)$$8 <= 4096L) {
+         return this.c;
+      } else {
+         int $$9 = (kj.a($$4) * 2 + 1) * 8;
+         int $$10 = (kj.a($$6) * 2 + 1) * 8;
+         double $$11 = $$3.e().a(new eay.e($$9, $$5, $$10));
+         if ($$11 > 0.25) {
+            return this.d;
+         } else if ($$11 >= -0.0625) {
+            return this.e;
          } else {
-            super.a($$0, $$1, $$2, $$3, $$4);
+            return $$11 < -0.21875 ? this.f : this.g;
          }
       }
-   }
-
-   @Override
-   protected boolean c_(dvd $$0) {
-      return true;
-   }
-
-   @Override
-   protected int a(dvd $$0, dev $$1, jg $$2) {
-      return crj.a($$1.c_($$2));
-   }
-
-   @Override
-   protected doe a_(dvd $$0) {
-      return doe.c;
-   }
-
-   @Override
-   protected dvd a(dvd $$0, dol $$1) {
-      return $$0.b(a, $$1.a($$0.c(a)));
-   }
-
-   @Override
-   protected dvd a(dvd $$0, dmu $$1) {
-      return $$0.a($$1.a($$0.c(a)));
-   }
-
-   @Override
-   protected void a(dve.a<dhy, dvd> $$0) {
-      $$0.a(a, b);
-   }
-
-   @Nullable
-   protected static <T extends dsg> dsh<T> a(dev $$0, dsi<T> $$1, dsi<? extends dru> $$2) {
-      return $$0.C ? null : a($$1, $$2, dru::a);
    }
 }

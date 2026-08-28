@@ -1,101 +1,46 @@
-import javax.annotation.Nullable;
+import java.util.List;
+import java.util.function.BiConsumer;
+import java.util.function.Consumer;
 
-public record fph(fpg a, int b, int c) {
-   private static final fph d = new fph(0, 0, 0, 0);
+public class fph<T> {
+   private final T b;
+   private final BiConsumer<Consumer<String>, T> c;
+   public static final fph<?> a = new fph<>(bap.a, ($$0, $$1) -> {
+   });
 
-   public fph(int $$0, int $$1, int $$2, int $$3) {
-      this(new fpg($$0, $$1), $$2, $$3);
+   private fph(T $$0, BiConsumer<Consumer<String>, T> $$1) {
+      this.b = $$0;
+      this.c = $$1;
    }
 
-   public static fph a() {
-      return d;
+   public static fph<?> a(String $$0) {
+      return new fph<>($$0, Consumer::accept);
    }
 
-   public static fph a(fpe $$0, int $$1, int $$2, int $$3, int $$4) {
-      return switch ($$0) {
-         case a -> new fph($$1, $$2, $$3, $$4);
-         case b -> new fph($$2, $$1, $$4, $$3);
-      };
+   public static fph<?> a(xi $$0) {
+      return new fph<>($$0, ($$0x, $$1) -> $$0x.accept($$1.getString()));
    }
 
-   public fph a(fpf $$0) {
-      return new fph(this.a.a($$0), this.b, this.c);
+   public static fph<?> a(List<xi> $$0) {
+      return new fph<>($$0, ($$1, $$2) -> $$0.stream().map(xi::getString).forEach($$1));
    }
 
-   public int a(fpe $$0) {
-      return switch ($$0) {
-         case a -> this.b;
-         case b -> this.c;
-      };
+   public void a(Consumer<String> $$0) {
+      this.c.accept($$0, this.b);
    }
 
-   public int b(fpf $$0) {
-      fpe $$1 = $$0.a();
-      return $$0.c() ? this.a.a($$1) + this.a($$1) - 1 : this.a.a($$1);
+   @Override
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else {
+         return !($$0 instanceof fph<?> $$1) ? false : $$1.c == this.c && $$1.b.equals(this.b);
+      }
    }
 
-   public fph c(fpf $$0) {
-      int $$1 = this.b($$0);
-      fpe $$2 = $$0.a().a();
-      int $$3 = this.b($$2.c());
-      int $$4 = this.a($$2);
-      return a($$0.a(), $$1, $$3, 1, $$4).a($$0);
-   }
-
-   public boolean a(fph $$0) {
-      return this.a($$0, fpe.a) && this.a($$0, fpe.b);
-   }
-
-   public boolean a(fph $$0, fpe $$1) {
-      int $$2 = this.b($$1.c());
-      int $$3 = $$0.b($$1.c());
-      int $$4 = this.b($$1.b());
-      int $$5 = $$0.b($$1.b());
-      return Math.max($$2, $$3) <= Math.min($$4, $$5);
-   }
-
-   public int b(fpe $$0) {
-      return (this.b($$0.b()) + this.b($$0.c())) / 2;
-   }
-
-   @Nullable
-   public fph b(fph $$0) {
-      int $$1 = Math.max(this.d(), $$0.d());
-      int $$2 = Math.max(this.b(), $$0.b());
-      int $$3 = Math.min(this.e(), $$0.e());
-      int $$4 = Math.min(this.c(), $$0.c());
-      return $$1 < $$3 && $$2 < $$4 ? new fph($$1, $$2, $$3 - $$1, $$4 - $$2) : null;
-   }
-
-   public int b() {
-      return this.a.b();
-   }
-
-   public int c() {
-      return this.a.b() + this.c;
-   }
-
-   public int d() {
-      return this.a.a();
-   }
-
-   public int e() {
-      return this.a.a() + this.b;
-   }
-
-   public boolean a(int $$0, int $$1) {
-      return $$0 >= this.d() && $$0 < this.e() && $$1 >= this.b() && $$1 < this.c();
-   }
-
-   public fpg f() {
-      return this.a;
-   }
-
-   public int g() {
-      return this.b;
-   }
-
-   public int h() {
-      return this.c;
+   @Override
+   public int hashCode() {
+      int $$0 = this.b.hashCode();
+      return 31 * $$0 + this.c.hashCode();
    }
 }

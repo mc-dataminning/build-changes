@@ -1,47 +1,35 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
 import java.util.Optional;
 
-public class bi extends dx<bi.a> {
-   @Override
-   public Codec<bi.a> a() {
-      return bi.a.a;
+public class bi {
+   private final azq a;
+   private final jr.a b;
+
+   public bi(azq $$0, jr.a $$1) {
+      this.a = $$0;
+      this.b = $$1;
    }
 
-   public void a(arn $$0, cmf $$1, cnt $$2) {
-      etw $$3 = bv.b($$0, $$1);
-      etw $$4 = bv.b($$0, $$2);
-      this.a($$0, $$2x -> $$2x.a($$3, $$4));
+   public void a(Optional<bh> $$0, String $$1) {
+      $$0.ifPresent($$1x -> this.a($$1x, $$1));
    }
 
-   public static record a(Optional<bg> b, Optional<bg> c, Optional<bg> d) implements dx.a {
-      public static final Codec<bi.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(
-                  bv.b.optionalFieldOf("player").forGetter(bi.a::a),
-                  bv.b.optionalFieldOf("zombie").forGetter(bi.a::c),
-                  bv.b.optionalFieldOf("villager").forGetter(bi.a::d)
-               )
-               .apply($$0, bi.a::new)
-      );
+   public void a(List<bh> $$0, String $$1) {
+      this.a($$0, ewx.n, $$1);
+   }
 
-      public static ao<bi.a> b() {
-         return an.s.a(new bi.a(Optional.empty(), Optional.empty(), Optional.empty()));
-      }
+   public void a(bh $$0, String $$1) {
+      this.a($$0, ewx.n, $$1);
+   }
 
-      public boolean a(etw $$0, etw $$1) {
-         return this.c.isPresent() && !this.c.get().a($$0) ? false : !this.d.isPresent() || this.d.get().a($$1);
-      }
+   public void a(bh $$0, eww $$1, String $$2) {
+      $$0.a(new eui(this.a.a($$2), $$1, this.b));
+   }
 
-      @Override
-      public void a(bh $$0) {
-         dx.a.super.a($$0);
-         $$0.a(this.c, ".zombie");
-         $$0.a(this.d, ".villager");
-      }
-
-      @Override
-      public Optional<bg> a() {
-         return this.b;
+   public void a(List<bh> $$0, eww $$1, String $$2) {
+      for (int $$3 = 0; $$3 < $$0.size(); $$3++) {
+         bh $$4 = $$0.get($$3);
+         $$4.a(new eui(this.a.a($$2 + "[" + $$3 + "]"), $$1, this.b));
       }
    }
 }

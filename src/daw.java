@@ -1,58 +1,75 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import com.mojang.datafixers.util.Pair;
+import javax.annotation.Nullable;
 
-public class daw<T extends czq> implements dao<T> {
-   private final czq.a<T> w;
-   private final MapCodec<T> x;
-   private final zf<ws, T> y;
+public class daw extends dag {
+   public daw(dad $$0) {
+      super($$0);
+   }
 
-   public daw(czq.a<T> $$0, int $$1) {
-      this.w = $$0;
-      this.x = RecordCodecBuilder.mapCodec(
-         $$2 -> $$2.group(
-                  Codec.STRING.optionalFieldOf("group", "").forGetter($$0xx -> $$0xx.c),
-                  czw.d.fieldOf("category").orElse(czw.c).forGetter($$0xx -> $$0xx.b),
-                  daf.d.fieldOf("ingredient").forGetter($$0xx -> $$0xx.d),
-                  cvx.e.fieldOf("result").forGetter($$0xx -> $$0xx.e),
-                  Codec.FLOAT.fieldOf("experience").orElse(0.0F).forGetter($$0xx -> $$0xx.f),
-                  Codec.INT.fieldOf("cookingtime").orElse($$1).forGetter($$0xx -> $$0xx.g)
-               )
-               .apply($$2, $$0::create)
-      );
-      this.y = zf.a(this::a, this::a);
+   @Nullable
+   private Pair<cwb, cwb> a(dae $$0) {
+      cwb $$1 = null;
+      cwb $$2 = null;
+
+      for (int $$3 = 0; $$3 < $$0.a(); $$3++) {
+         cwb $$4 = $$0.a($$3);
+         if (!$$4.f()) {
+            if ($$1 == null) {
+               $$1 = $$4;
+            } else {
+               if ($$2 != null) {
+                  return null;
+               }
+
+               $$2 = $$4;
+            }
+         }
+      }
+
+      return $$1 != null && $$2 != null && a($$1, $$2) ? Pair.of($$1, $$2) : null;
+   }
+
+   private static boolean a(cwb $$0, cwb $$1) {
+      return $$1.a($$0.h()) && $$0.L() == 1 && $$1.L() == 1 && $$0.b(ku.d) && $$1.b(ku.d) && $$0.b(ku.e) && $$1.b(ku.e);
+   }
+
+   public boolean a(dae $$0, dfb $$1) {
+      return this.a($$0) != null;
+   }
+
+   public cwb a(dae $$0, js.a $$1) {
+      Pair<cwb, cwb> $$2 = this.a($$0);
+      if ($$2 == null) {
+         return cwb.k;
+      } else {
+         cwb $$3 = (cwb)$$2.getFirst();
+         cwb $$4 = (cwb)$$2.getSecond();
+         int $$5 = Math.max($$3.p(), $$4.p());
+         int $$6 = $$3.p() - $$3.o();
+         int $$7 = $$4.p() - $$4.o();
+         int $$8 = $$6 + $$7 + $$5 * 5 / 100;
+         cwb $$9 = new cwb($$3.h());
+         $$9.b(ku.d, $$5);
+         $$9.b(Math.max($$5 - $$8, 0));
+         dby $$10 = dbu.b($$3);
+         dby $$11 = dbu.b($$4);
+         dbu.a($$9, $$3x -> $$1.d(lz.aM).c().filter($$0xx -> $$0xx.a(axd.o)).forEach($$3xx -> {
+               int $$4x = Math.max($$10.a($$3xx), $$11.a($$3xx));
+               if ($$4x > 0) {
+                  $$3x.b($$3xx, $$4x);
+               }
+            }));
+         return $$9;
+      }
    }
 
    @Override
-   public MapCodec<T> a() {
-      return this.x;
+   public boolean a(int $$0, int $$1) {
+      return $$0 * $$1 >= 2;
    }
 
    @Override
-   public zf<ws, T> b() {
-      return this.y;
-   }
-
-   private T a(ws $$0) {
-      String $$1 = $$0.p();
-      czw $$2 = $$0.b(czw.class);
-      daf $$3 = daf.a.decode($$0);
-      cvx $$4 = cvx.i.decode($$0);
-      float $$5 = $$0.readFloat();
-      int $$6 = $$0.l();
-      return this.w.create($$1, $$2, $$3, $$4, $$5, $$6);
-   }
-
-   private void a(ws $$0, T $$1) {
-      $$0.a($$1.c);
-      $$0.a($$1.f());
-      daf.a.encode($$0, $$1.d);
-      cvx.i.encode($$0, $$1.e);
-      $$0.a($$1.f);
-      $$0.c($$1.g);
-   }
-
-   public czq a(String $$0, czw $$1, daf $$2, cvx $$3, float $$4, int $$5) {
-      return this.w.create($$0, $$1, $$2, $$3, $$4, $$5);
+   public dau<?> aq_() {
+      return dau.n;
    }
 }

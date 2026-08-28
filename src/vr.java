@@ -1,89 +1,36 @@
-public interface vr extends vd {
-   vr a = new vr() {
-   };
+import java.util.HashMap;
+import java.util.Map;
 
-   @Override
-   default vd.b a() {
-      return vd.b.a;
+public record vr(int a, Map<String, vj<?>> b, Map<String, vr> c) {
+   private vr(int $$0) {
+      this($$0, new HashMap<>(), new HashMap<>());
    }
 
-   @Override
-   default vd.b a(String $$0) {
-      return vd.b.a;
+   public static vr a() {
+      return new vr(1);
    }
 
-   @Override
-   default vd.b a(byte $$0) {
-      return vd.b.a;
+   public void a(vq $$0) {
+      if (this.a <= $$0.a().size()) {
+         this.c.computeIfAbsent($$0.a().get(this.a - 1), $$0x -> new vr(this.a + 1)).a($$0);
+      } else {
+         this.b.put($$0.c(), $$0.b());
+      }
    }
 
-   @Override
-   default vd.b a(short $$0) {
-      return vd.b.a;
+   public boolean a(vj<?> $$0, String $$1) {
+      return $$0.equals(this.c().get($$1));
    }
 
-   @Override
-   default vd.b a(int $$0) {
-      return vd.b.a;
+   public int b() {
+      return this.a;
    }
 
-   @Override
-   default vd.b a(long $$0) {
-      return vd.b.a;
+   public Map<String, vj<?>> c() {
+      return this.b;
    }
 
-   @Override
-   default vd.b a(float $$0) {
-      return vd.b.a;
-   }
-
-   @Override
-   default vd.b a(double $$0) {
-      return vd.b.a;
-   }
-
-   @Override
-   default vd.b a(byte[] $$0) {
-      return vd.b.a;
-   }
-
-   @Override
-   default vd.b a(int[] $$0) {
-      return vd.b.a;
-   }
-
-   @Override
-   default vd.b a(long[] $$0) {
-      return vd.b.a;
-   }
-
-   @Override
-   default vd.b a(vi<?> $$0, int $$1) {
-      return vd.b.a;
-   }
-
-   @Override
-   default vd.a b(vi<?> $$0, int $$1) {
-      return vd.a.b;
-   }
-
-   @Override
-   default vd.a a(vi<?> $$0) {
-      return vd.a.b;
-   }
-
-   @Override
-   default vd.a a(vi<?> $$0, String $$1) {
-      return vd.a.b;
-   }
-
-   @Override
-   default vd.b b() {
-      return vd.b.a;
-   }
-
-   @Override
-   default vd.b b(vi<?> $$0) {
-      return vd.b.a;
+   public Map<String, vr> d() {
+      return this.c;
    }
 }

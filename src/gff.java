@@ -1,27 +1,43 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.Streams;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonObject;
-import java.util.List;
+public class gff extends gfn {
+   private final double a;
+   private final int b;
 
-public class gff {
-   private final List<alh> a;
-
-   private gff(List<alh> $$0) {
-      this.a = $$0;
+   gff(gci $$0, double $$1, double $$2, double $$3, double $$4, int $$5, int $$6) {
+      super($$0, $$1, $$2, $$3, 0.0, 0.0, 0.0);
+      this.a = $$4;
+      this.t = $$5;
+      this.b = $$6;
    }
 
-   public List<alh> a() {
-      return this.a;
+   @Override
+   public void a() {
+      if (this.s % (this.b + 1) == 0) {
+         for (int $$0 = 0; $$0 < 3; $$0++) {
+            double $$1 = this.g + (this.r.j() - this.r.j()) * this.a;
+            double $$2 = this.h + (this.r.j() - this.r.j()) * this.a;
+            double $$3 = this.i + (this.r.j() - this.r.j()) * this.a;
+            this.c.a(lr.x, $$1, $$2, $$3, (double)((float)this.s / (float)this.t), 0.0, 0.0);
+         }
+      }
+
+      if (this.s++ == this.t) {
+         this.k();
+      }
    }
 
-   public static gff a(JsonObject $$0) {
-      JsonArray $$1 = ayz.a($$0, "textures", null);
-      if ($$1 == null) {
-         return new gff(List.of());
-      } else {
-         List<alh> $$2 = Streams.stream($$1).map($$0x -> ayz.a($$0x, "texture")).map(alh::a).collect(ImmutableList.toImmutableList());
-         return new gff($$2);
+   public static class a implements gfs<lv> {
+      private final double a;
+      private final int b;
+      private final int c;
+
+      public a(double $$0, int $$1, int $$2) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
+      }
+
+      public gfp a(lv $$0, gci $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new gff($$1, $$2, $$3, $$4, this.a, this.b, this.c);
       }
    }
 }

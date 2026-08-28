@@ -1,37 +1,39 @@
-public class gfo extends gge {
-   private final gfz a;
-
-   gfo(gbx $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, gfz $$7) {
-      super($$0, $$1, $$2, $$3, $$4, $$5, $$6);
-      this.B = 0.96F;
-      this.a = $$7;
-      this.d(1.0F);
-      this.n = false;
-      this.b($$7);
+public class gfo extends ggp {
+   gfo(gci $$0, double $$1, double $$2, double $$3, double $$4) {
+      super($$0, $$1, $$2, $$3, 0.0, 0.0, 0.0);
+      this.B = 0.66F;
+      this.C = true;
+      this.j *= 0.01F;
+      this.k *= 0.01F;
+      this.l *= 0.01F;
+      this.k += 0.2;
+      this.v = Math.max(0.0F, azk.a(((float)$$4 + 0.0F) * (float) (Math.PI * 2)) * 0.65F + 0.35F);
+      this.w = Math.max(0.0F, azk.a(((float)$$4 + 0.33333334F) * (float) (Math.PI * 2)) * 0.65F + 0.35F);
+      this.x = Math.max(0.0F, azk.a(((float)$$4 + 0.6666667F) * (float) (Math.PI * 2)) * 0.65F + 0.35F);
+      this.D *= 1.5F;
+      this.t = 6;
    }
 
    @Override
-   public int a(float $$0) {
-      return 240;
+   public gft b() {
+      return gft.b;
    }
 
    @Override
-   public gfi b() {
-      return gfi.c;
+   public float b(float $$0) {
+      return this.D * azk.a(((float)this.s + $$0) / (float)this.t * 32.0F, 0.0F, 1.0F);
    }
 
-   @Override
-   public void a() {
-      super.a();
-      this.b(this.a);
-   }
+   public static class a implements gfs<lv> {
+      private final ggk a;
 
-   public static record a(gfz a) implements gfh<lu> {
-      public gfe a(lu $$0, gbx $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         gfo $$8 = new gfo($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
-         $$8.e(1.0F);
-         $$8.b($$5, $$6, $$7);
-         $$8.a($$1.A.a(4) + 6);
+      public a(ggk $$0) {
+         this.a = $$0;
+      }
+
+      public gfp a(lv $$0, gci $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         gfo $$8 = new gfo($$1, $$2, $$3, $$4, $$5);
+         $$8.a(this.a);
          return $$8;
       }
    }

@@ -1,23 +1,15 @@
-public class gks implements gkh<dtk> {
-   private final fxj a;
+public interface gks<T extends dsm> {
+   void a(T var1, float var2, feb var3, gih var4, int var5, int var6);
 
-   public gks(gki.a $$0) {
-      this.a = new fxj($$0.a(gba.A));
+   default boolean a(T $$0) {
+      return false;
    }
 
-   public void a(dtk $$0, float $$1, fdt $$2, ghw $$3, int $$4, int $$5) {
-      dvd $$6 = $$0.m();
-      if ($$6.c(dmi.d)) {
-         $$2.a();
-         $$2.a(0.5F, 1.0625F, 0.5F);
-         float $$7 = $$6.c(dmi.b).h().p();
-         $$2.a(a.d.rotationDegrees(-$$7));
-         $$2.a(a.f.rotationDegrees(67.5F));
-         $$2.a(0.0F, -0.125F, 0.0F);
-         this.a.a(0.0F, 0.1F, 0.9F, 1.2F);
-         fdx $$8 = gkq.a.a($$3, gig::c);
-         this.a.a($$2, $$8, $$4, $$5);
-         $$2.b();
-      }
+   default int aU_() {
+      return 64;
+   }
+
+   default boolean a(T $$0, ezn $$1) {
+      return ezn.b($$0.aB_()).a((ka)$$1, (double)this.aU_());
    }
 }

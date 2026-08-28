@@ -1,43 +1,50 @@
-public class fxu extends gar<gwr> {
-   public fxu(gbb $$0) {
-      super($$0);
+public class fxu extends fzf {
+   private static final String a = "left_pages";
+   private static final String b = "right_pages";
+   private static final String c = "flip_page1";
+   private static final String d = "flip_page2";
+   private final gbm e;
+   private final gbm f;
+   private final gbm g;
+   private final gbm h;
+   private final gbm i;
+   private final gbm j;
+
+   public fxu(gbm $$0) {
+      super($$0, gir::c);
+      this.e = $$0.b("left_lid");
+      this.f = $$0.b("right_lid");
+      this.g = $$0.b("left_pages");
+      this.h = $$0.b("right_pages");
+      this.i = $$0.b("flip_page1");
+      this.j = $$0.b("flip_page2");
    }
 
-   public static gbh a(gbf $$0) {
-      gbj $$1 = fym.a($$0, 0.0F);
-      gbl $$2 = $$1.a();
-      $$2.a("left_arm", gbg.c().a(32, 48).a(-1.0F, -2.0F, -2.0F, 4.0F, 12.0F, 4.0F, $$0), gbd.a(5.0F, 2.0F, 0.0F));
-      $$2.a("left_leg", gbg.c().a(16, 48).a(-2.0F, 0.0F, -2.0F, 4.0F, 12.0F, 4.0F, $$0), gbd.a(1.9F, 12.0F, 0.0F));
-      return gbh.a($$1, 64, 64);
+   public static gbs a() {
+      gbu $$0 = new gbu();
+      gbw $$1 = $$0.a();
+      $$1.a("left_lid", gbr.c().a(0, 0).a(-6.0F, -5.0F, -0.005F, 6.0F, 10.0F, 0.005F), gbo.a(0.0F, 0.0F, -1.0F));
+      $$1.a("right_lid", gbr.c().a(16, 0).a(0.0F, -5.0F, -0.005F, 6.0F, 10.0F, 0.005F), gbo.a(0.0F, 0.0F, 1.0F));
+      $$1.a("seam", gbr.c().a(12, 0).a(-1.0F, -5.0F, 0.0F, 2.0F, 10.0F, 0.005F), gbo.b(0.0F, (float) (Math.PI / 2), 0.0F));
+      $$1.a("left_pages", gbr.c().a(0, 10).a(0.0F, -4.0F, -0.99F, 5.0F, 8.0F, 1.0F), gbo.a);
+      $$1.a("right_pages", gbr.c().a(12, 10).a(0.0F, -4.0F, -0.01F, 5.0F, 8.0F, 1.0F), gbo.a);
+      gbr $$2 = gbr.c().a(24, 10).a(0.0F, -4.0F, 0.0F, 5.0F, 8.0F, 0.005F);
+      $$1.a("flip_page1", $$2, gbo.a);
+      $$1.a("flip_page2", $$2, gbo.a);
+      return gbs.a($$0, 64, 32);
    }
 
-   protected fym.a a(gwr $$0, bup $$1) {
-      cvx $$2 = $$1 == bup.b ? $$0.ar : $$0.at;
-      return $$2.a(cwb.vU) && $$0.a && $$0.ap == $$1 ? fym.a.e : fym.a.a;
-   }
-
-   @Override
-   public void a(gwr $$0) {
-      super.a($$0);
-      if (this.a($$0, bup.a) == fym.a.e) {
-         this.s.e = this.s.e * 0.5F - (float) Math.PI;
-         this.s.f = 0.0F;
-      }
-
-      if (this.a($$0, bup.b) == fym.a.e) {
-         this.r.e = this.r.e * 0.5F - (float) Math.PI;
-         this.r.f = 0.0F;
-      }
-
-      float $$1 = $$0.B;
-      if ($$1 > 0.0F) {
-         this.r.e = azj.j($$1, this.r.e, (float) (-Math.PI * 4.0 / 5.0)) + $$1 * 0.35F * azj.a(0.1F * $$0.p);
-         this.s.e = azj.j($$1, this.s.e, (float) (-Math.PI * 4.0 / 5.0)) - $$1 * 0.35F * azj.a(0.1F * $$0.p);
-         this.r.g = azj.j($$1, this.r.g, -0.15F);
-         this.s.g = azj.j($$1, this.s.g, 0.15F);
-         this.u.e = this.u.e - $$1 * 0.55F * azj.a(0.1F * $$0.p);
-         this.t.e = this.t.e + $$1 * 0.55F * azj.a(0.1F * $$0.p);
-         this.o.e = 0.0F;
-      }
+   public void a(float $$0, float $$1, float $$2, float $$3) {
+      float $$4 = (azk.a($$0 * 0.02F) * 0.1F + 1.25F) * $$3;
+      this.e.f = (float) Math.PI + $$4;
+      this.f.f = -$$4;
+      this.g.f = $$4;
+      this.h.f = -$$4;
+      this.i.f = $$4 - $$4 * 2.0F * $$1;
+      this.j.f = $$4 - $$4 * 2.0F * $$2;
+      this.g.b = azk.a($$4);
+      this.h.b = azk.a($$4);
+      this.i.b = azk.a($$4);
+      this.j.b = azk.a($$4);
    }
 }

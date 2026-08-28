@@ -1,46 +1,61 @@
-import it.unimi.dsi.fastutil.doubles.DoubleArrayList;
-import it.unimi.dsi.fastutil.doubles.DoubleList;
-import java.util.Arrays;
+public class ezj extends ezl {
+   private final jm b;
+   private final jh c;
+   private final boolean d;
+   private final boolean e;
+   private final boolean f;
 
-public class ezj extends fab {
-   private final DoubleList b;
-   private final DoubleList c;
-   private final DoubleList d;
-
-   protected ezj(ezq $$0, double[] $$1, double[] $$2, double[] $$3) {
-      this(
-         $$0,
-         DoubleArrayList.wrap(Arrays.copyOf($$1, $$0.b() + 1)),
-         DoubleArrayList.wrap(Arrays.copyOf($$2, $$0.c() + 1)),
-         DoubleArrayList.wrap(Arrays.copyOf($$3, $$0.d() + 1))
-      );
+   public static ezj a(ezn $$0, jm $$1, jh $$2) {
+      return new ezj(true, $$0, $$1, $$2, false, false);
    }
 
-   ezj(ezq $$0, DoubleList $$1, DoubleList $$2, DoubleList $$3) {
-      super($$0);
-      int $$4 = $$0.b() + 1;
-      int $$5 = $$0.c() + 1;
-      int $$6 = $$0.d() + 1;
-      if ($$4 == $$1.size() && $$5 == $$2.size() && $$6 == $$3.size()) {
-         this.b = $$1;
-         this.c = $$2;
-         this.d = $$3;
-      } else {
-         throw (IllegalArgumentException)ad.b(new IllegalArgumentException("Lengths of point arrays must be consistent with the size of the VoxelShape."));
-      }
+   public ezj(ezn $$0, jm $$1, jh $$2, boolean $$3) {
+      this(false, $$0, $$1, $$2, $$3, false);
+   }
+
+   public ezj(ezn $$0, jm $$1, jh $$2, boolean $$3, boolean $$4) {
+      this(false, $$0, $$1, $$2, $$3, $$4);
+   }
+
+   private ezj(boolean $$0, ezn $$1, jm $$2, jh $$3, boolean $$4, boolean $$5) {
+      super($$1);
+      this.d = $$0;
+      this.b = $$2;
+      this.c = $$3;
+      this.e = $$4;
+      this.f = $$5;
+   }
+
+   public ezj a(jm $$0) {
+      return new ezj(this.d, this.a, $$0, this.c, this.e, this.f);
+   }
+
+   public ezj a(jh $$0) {
+      return new ezj(this.d, this.a, this.b, $$0, this.e, this.f);
+   }
+
+   public ezj a() {
+      return new ezj(this.d, this.a, this.b, this.c, this.e, true);
+   }
+
+   public jh b() {
+      return this.c;
+   }
+
+   public jm c() {
+      return this.b;
    }
 
    @Override
-   public DoubleList a(jl.a $$0) {
-      switch ($$0) {
-         case a:
-            return this.b;
-         case b:
-            return this.c;
-         case c:
-            return this.d;
-         default:
-            throw new IllegalArgumentException();
-      }
+   public ezl.a d() {
+      return this.d ? ezl.a.a : ezl.a.b;
+   }
+
+   public boolean e() {
+      return this.e;
+   }
+
+   public boolean f() {
+      return this.f;
    }
 }

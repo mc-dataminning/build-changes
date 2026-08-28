@@ -1,29 +1,33 @@
 import com.mojang.datafixers.DSL;
 import com.mojang.datafixers.Typed;
 import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.Type;
-import com.mojang.datafixers.util.Pair;
 import com.mojang.serialization.Dynamic;
 
-public class bdv extends bed {
-   public bdv(Schema $$0) {
-      super("EntityMinecartIdentifiersFix", $$0, true);
+public class bdv extends bgp {
+   public bdv(Schema $$0, boolean $$1) {
+      super($$0, $$1, "EntityItemFrameDirectionFix", bhu.B, "minecraft:item_frame");
+   }
+
+   public Dynamic<?> a(Dynamic<?> $$0) {
+      return $$0.set("Facing", $$0.createByte(a($$0.get("Facing").asByte((byte)0))));
    }
 
    @Override
-   protected Pair<String, Typed<?>> a(String $$0, Typed<?> $$1) {
-      if (!$$0.equals("Minecart")) {
-         return Pair.of($$0, $$1);
-      } else {
-         int $$2 = ((Dynamic)$$1.getOrCreate(DSL.remainderFinder())).get("Type").asInt(0);
+   protected Typed<?> a(Typed<?> $$0) {
+      return $$0.update(DSL.remainderFinder(), this::a);
+   }
 
-         String $$3 = switch ($$2) {
-            case 1 -> "MinecartChest";
-            case 2 -> "MinecartFurnace";
-            default -> "MinecartRideable";
-         };
-         Type<?> $$4 = (Type<?>)this.getOutputSchema().findChoiceType(bhs.B).types().get($$3);
-         return Pair.of($$3, ad.a($$1, $$4, $$0x -> $$0x.remove("Type")));
+   private static byte a(byte $$0) {
+      switch ($$0) {
+         case 0:
+            return 3;
+         case 1:
+            return 4;
+         case 2:
+         default:
+            return 2;
+         case 3:
+            return 5;
       }
    }
 }

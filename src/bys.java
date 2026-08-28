@@ -1,48 +1,34 @@
 import com.mojang.datafixers.kinds.App;
 import java.util.Optional;
 import java.util.function.Function;
+import java.util.function.Predicate;
 
 public class bys {
-   public static bwp<bvd> a(cdz<jg> $$0, float $$1, int $$2, boolean $$3) {
-      return a($$0, $$1, $$2, $$3, ezh::c);
+   public static bwu<bva> a(bvd $$0, float $$1) {
+      return a($$1x -> $$0.equals($$1x.ar().f()), $$1);
    }
 
-   public static bxz<bvd> b(cdz<? extends btz> $$0, float $$1, int $$2, boolean $$3) {
-      return a($$0, $$1, $$2, $$3, btz::dv);
+   public static bye<bva> a(bul<?> $$0, float $$1) {
+      return a($$1x -> $$0.equals($$1x.ar()), $$1);
    }
 
-   private static <T> bxz<bvd> a(cdz<T> $$0, float $$1, int $$2, boolean $$3, Function<T, ezh> $$4) {
-      return cab.a(
-         (Function<cab.b<bvd>, ? extends App<cab.c<bvd>, cae<bvd>>>)($$5 -> $$5.group($$5.a(cdz.m), $$5.b($$0)).apply($$5, ($$5x, $$6) -> ($$7, $$8, $$9) -> {
-                  Optional<cec> $$10 = $$5.a($$5x);
-                  if ($$10.isPresent() && !$$3) {
-                     return false;
-                  } else {
-                     ezh $$11 = $$8.dv();
-                     ezh $$12 = $$4.apply($$5.b($$6));
-                     if (!$$11.a((jz)$$12, (double)$$2)) {
+   public static bye<bva> a(float $$0) {
+      return a($$0x -> true, $$0);
+   }
+
+   public static bye<bva> a(Predicate<bva> $$0, float $$1) {
+      float $$2 = $$1 * $$1;
+      return cag.a(
+         (Function<cag.b<bva>, ? extends App<cag.c<bva>, caj<bva>>>)($$2x -> $$2x.group($$2x.c(cee.n), $$2x.b(cee.h))
+               .apply($$2x, ($$3, $$4) -> ($$5, $$6, $$7) -> {
+                     Optional<bva> $$8 = $$2x.<ceg>b($$4).a($$0.and($$2xxxx -> $$2xxxx.g((bue)$$6) <= (double)$$2 && !$$6.y($$2xxxx)));
+                     if ($$8.isEmpty()) {
                         return false;
                      } else {
-                        if ($$10.isPresent() && $$10.get().b() == $$1) {
-                           ezh $$13 = $$10.get().a().a().d($$11);
-                           ezh $$14 = $$12.d($$11);
-                           if ($$13.b($$14) < 0.0) {
-                              return false;
-                           }
-                        }
-
-                        for (int $$15 = 0; $$15 < 10; $$15++) {
-                           ezh $$16 = cft.b($$8, 16, 7, $$12);
-                           if ($$16 != null) {
-                              $$5x.a(new cec($$16, $$1, 0));
-                              break;
-                           }
-                        }
-
+                        $$3.a(new bxe($$8.get(), true));
                         return true;
                      }
-                  }
-               }))
+                  }))
       );
    }
 }

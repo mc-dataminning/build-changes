@@ -1,43 +1,71 @@
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class djq extends dhj {
-   public static final MapCodec<djq> e = RecordCodecBuilder.mapCodec($$0 -> $$0.group(djn.a.forGetter($$0x -> $$0x.f), t()).apply($$0, djq::new));
-   private final dhy f;
+public class djq extends dkz {
+   public static final MapCodec<djq> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(ly.e.q().fieldOf("concrete").forGetter($$0x -> $$0x.b), t()).apply($$0, djq::new)
+   );
+   private final die b;
 
    @Override
    public MapCodec<djq> a() {
-      return e;
+      return a;
    }
 
-   protected djq(dhy $$0, dvc.d $$1) {
+   public djq(die $$0, dvi.d $$1) {
       super($$1);
-      this.f = $$0;
+      this.b = $$0;
    }
 
    @Override
-   protected void b(dvd $$0, dev $$1, jg $$2, dvd $$3, boolean $$4) {
-      this.a($$0, (dew)$$1, $$2);
-   }
-
-   @Override
-   protected void a(dvd $$0, arm $$1, jg $$2, azr $$3) {
-      if (!d($$0, $$1, $$2)) {
-         $$1.a($$2, this.f.m().b(d, Boolean.valueOf(false)).b(c, $$0.c(c)), 2);
+   public void a(dfb $$0, jh $$1, dvj $$2, dvj $$3, cku $$4) {
+      if (a($$0, $$1, $$3)) {
+         $$0.a($$1, this.b.m(), 3);
       }
    }
 
    @Override
-   protected dvd a(dvd $$0, jl $$1, dvd $$2, dew $$3, jg $$4, jg $$5) {
-      if ($$1.g() == $$0.c(c) && !$$0.a($$3, $$4)) {
-         return dia.a.m();
-      } else {
-         if ($$0.c(d)) {
-            $$3.a($$4, erf.c, erf.c.a($$3));
+   public dvj a(czs $$0) {
+      deg $$1 = $$0.q();
+      jh $$2 = $$0.a();
+      dvj $$3 = $$1.a_($$2);
+      return a($$1, $$2, $$3) ? this.b.m() : super.a($$0);
+   }
+
+   private static boolean a(deg $$0, jh $$1, dvj $$2) {
+      return o($$2) || a($$0, $$1);
+   }
+
+   private static boolean a(deg $$0, jh $$1) {
+      boolean $$2 = false;
+      jh.a $$3 = $$1.k();
+
+      for (jm $$4 : jm.values()) {
+         dvj $$5 = $$0.a_($$3);
+         if ($$4 != jm.a || o($$5)) {
+            $$3.a($$1, $$4);
+            $$5 = $$0.a_($$3);
+            if (o($$5) && !$$5.c($$0, $$1, $$4.g())) {
+               $$2 = true;
+               break;
+            }
          }
-
-         this.a($$0, $$3, $$4);
-         return super.a($$0, $$1, $$2, $$3, $$4, $$5);
       }
+
+      return $$2;
+   }
+
+   private static boolean o(dvj $$0) {
+      return $$0.y().a(axg.a);
+   }
+
+   @Override
+   protected dvj a(dvj $$0, jm $$1, dvj $$2, dfc $$3, jh $$4, jh $$5) {
+      return a($$3, $$4) ? this.b.m() : super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   }
+
+   @Override
+   public int b(dvj $$0, deg $$1, jh $$2) {
+      return $$0.a($$1, $$2).ak;
    }
 }

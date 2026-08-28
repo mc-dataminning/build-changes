@@ -1,52 +1,34 @@
-import java.util.Collection;
-import javax.annotation.Nullable;
+import com.mojang.serialization.MapCodec;
 
-public interface doo {
-   doo w_ = new doo() {
-      @Override
-      public boolean a(dew $$0, jg $$1, dvd $$2, @Nullable Collection<jl> $$3, boolean $$4) {
-         if ($$3 == null) {
-            return ((dou)dia.qT).q().a($$0.a_($$1), $$0, $$1, $$4) > 0L;
-         } else if (!$$3.isEmpty()) {
-            return !$$2.l() && !$$2.y().b(erf.c) ? false : dou.a($$0, $$1, $$2, $$3);
-         } else {
-            return doo.super.a($$0, $$1, $$2, $$3, $$4);
-         }
-      }
+public class doo extends die implements dih {
+   public static final MapCodec<doo> a = b(doo::new);
 
-      @Override
-      public int a(dot.a $$0, dew $$1, jg $$2, azr $$3, dot $$4, boolean $$5) {
-         return $$0.c() > 0 ? $$0.b() : 0;
-      }
-
-      @Override
-      public int j_(int $$0) {
-         return Math.max($$0 - 1, 0);
-      }
-   };
-
-   default byte b() {
-      return 1;
+   @Override
+   public MapCodec<doo> a() {
+      return a;
    }
 
-   default void a(dew $$0, dvd $$1, jg $$2, azr $$3) {
+   public doo(dvi.d $$0) {
+      super($$0);
    }
 
-   default boolean a(dew $$0, jg $$1, azr $$2) {
-      return false;
+   @Override
+   public boolean b(dfe $$0, jh $$1, dvj $$2) {
+      return $$0.a_($$1.e()).l();
    }
 
-   default boolean a(dew $$0, jg $$1, dvd $$2, @Nullable Collection<jl> $$3, boolean $$4) {
-      return ((dmx)dia.qT).c().a($$2, $$0, $$1, $$4) > 0L;
-   }
-
-   default boolean d() {
+   @Override
+   public boolean a(dfb $$0, azs $$1, jh $$2, dvj $$3) {
       return true;
    }
 
-   default int j_(int $$0) {
-      return 1;
+   @Override
+   public void a(arn $$0, azs $$1, jh $$2, dvj $$3) {
+      $$0.b($$2.e(), dig.sG.m());
    }
 
-   int a(dot.a var1, dew var2, jg var3, azr var4, dot var5, boolean var6);
+   @Override
+   public jh a(jh $$0) {
+      return $$0.e();
+   }
 }

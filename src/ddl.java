@@ -1,45 +1,127 @@
+import com.google.common.collect.ImmutableMap;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.EnumMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Optional;
+import java.util.Map.Entry;
+import java.util.function.UnaryOperator;
 
-public class ddl {
-   public static final alg<ddk> a = a("quartz");
-   public static final alg<ddk> b = a("iron");
-   public static final alg<ddk> c = a("netherite");
-   public static final alg<ddk> d = a("redstone");
-   public static final alg<ddk> e = a("copper");
-   public static final alg<ddk> f = a("gold");
-   public static final alg<ddk> g = a("emerald");
-   public static final alg<ddk> h = a("diamond");
-   public static final alg<ddk> i = a("lapis");
-   public static final alg<ddk> j = a("amethyst");
+public record ddl(Map<ddl.d, List<ddl.c>> b) {
+   private static final Codec<List<ddl.c>> c = ayt.a(ddl.c.a.listOf());
+   public static final Codec<ddl> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(ayt.c(Codec.unboundedMap(ddl.d.g, c)).fieldOf("layers").forGetter(ddl::b)).apply($$0, ddl::new)
+   );
 
-   public static void a(qx<ddk> $$0) {
-      a($$0, a, cwb.oD, ye.a.a(14931140), 0.1F);
-      a($$0, b, cwb.oG, ye.a.a(15527148), 0.2F, Map.of(ddg.c, "iron_darker"));
-      a($$0, c, cwb.oL, ye.a.a(6445145), 0.3F, Map.of(ddg.g, "netherite_darker"));
-      a($$0, d, cwb.lH, ye.a.a(9901575), 0.4F);
-      a($$0, e, cwb.oI, ye.a.a(11823181), 0.5F);
-      a($$0, f, cwb.oK, ye.a.a(14594349), 0.6F, Map.of(ddg.d, "gold_darker"));
-      a($$0, g, cwb.oB, ye.a.a(1155126), 0.7F);
-      a($$0, h, cwb.oA, ye.a.a(7269586), 0.8F, Map.of(ddg.e, "diamond_darker"));
-      a($$0, i, cwb.oC, ye.a.a(4288151), 0.9F);
-      a($$0, j, cwb.oE, ye.a.a(10116294), 1.0F);
+   public static ddl.a a() {
+      return new ddl.a();
    }
 
-   public static Optional<jp.c<ddk>> a(jr.a $$0, cvx $$1) {
-      return $$0.d(ly.aX).c().filter($$1x -> $$1.a(((ddk)$$1x.a()).b())).findFirst();
+   public List<ddl.c> a(ddl.d $$0) {
+      return this.b.getOrDefault($$0, List.of());
    }
 
-   private static void a(qx<ddk> $$0, alg<ddk> $$1, cvt $$2, ye $$3, float $$4) {
-      a($$0, $$1, $$2, $$3, $$4, Map.of());
+   public static class a {
+      private final Map<ddl.d, List<ddl.c>> a = new EnumMap<>(ddl.d.class);
+
+      a() {
+      }
+
+      public ddl.a a(ali $$0) {
+         return this.a($$0, false);
+      }
+
+      public ddl.a a(ali $$0, boolean $$1) {
+         this.a(ddl.d.b, ddl.c.a($$0, $$1));
+         this.b($$0, $$1);
+         return this;
+      }
+
+      public ddl.a b(ali $$0, boolean $$1) {
+         return this.a(ddl.d.a, ddl.c.a($$0, $$1));
+      }
+
+      public ddl.a a(ddl.d $$0, ddl.c... $$1) {
+         Collections.addAll(this.a.computeIfAbsent($$0, $$0x -> new ArrayList<>()), $$1);
+         return this;
+      }
+
+      public ddl a() {
+         return new ddl(this.a.entrySet().stream().collect(ImmutableMap.toImmutableMap(Entry::getKey, $$0 -> List.copyOf((Collection)$$0.getValue()))));
+      }
    }
 
-   private static void a(qx<ddk> $$0, alg<ddk> $$1, cvt $$2, ye $$3, float $$4, Map<alh, String> $$5) {
-      ddk $$6 = ddk.a($$1.a().a(), $$2, $$4, xh.c(ad.a("trim_material", $$1.a())).c($$3), $$5);
-      $$0.a($$1, $$6);
+   public static record b(Optional<Integer> b) {
+      public static final Codec<ddl.b> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(ayt.i.optionalFieldOf("color_when_undyed").forGetter(ddl.b::a)).apply($$0, ddl.b::new)
+      );
+
+      public Optional<Integer> a() {
+         return this.b;
+      }
    }
 
-   private static alg<ddk> a(String $$0) {
-      return alg.a(ly.aX, alh.b($$0));
+   public static record c(ali b, Optional<ddl.b> c, boolean d) {
+      public static final Codec<ddl.c> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(
+                  ali.a.fieldOf("texture").forGetter(ddl.c::a),
+                  ddl.b.a.optionalFieldOf("dyeable").forGetter(ddl.c::b),
+                  Codec.BOOL.optionalFieldOf("use_player_texture", false).forGetter(ddl.c::c)
+               )
+               .apply($$0, ddl.c::new)
+      );
+
+      public c(ali $$0) {
+         this($$0, Optional.empty(), false);
+      }
+
+      public static ddl.c a(ali $$0, boolean $$1) {
+         return new ddl.c($$0, $$1 ? Optional.of(new ddl.b(Optional.of(-6265536))) : Optional.empty(), false);
+      }
+
+      public static ddl.c b(ali $$0, boolean $$1) {
+         return new ddl.c($$0, $$1 ? Optional.of(new ddl.b(Optional.empty())) : Optional.empty(), false);
+      }
+
+      public ali a(ddl.d $$0) {
+         return this.b.a((UnaryOperator<String>)($$1 -> "textures/entity/equipment/" + $$0.c() + "/" + $$1 + ".png"));
+      }
+
+      public ali a() {
+         return this.b;
+      }
+
+      public Optional<ddl.b> b() {
+         return this.c;
+      }
+
+      public boolean c() {
+         return this.d;
+      }
+   }
+
+   public static enum d implements bag {
+      a("humanoid"),
+      b("humanoid_leggings"),
+      c("wings"),
+      d("wolf_body"),
+      e("horse_body"),
+      f("llama_body");
+
+      public static final Codec<ddl.d> g = bag.a(ddl.d::values);
+      private final String h;
+
+      private d(final String $$0) {
+         this.h = $$0;
+      }
+
+      @Override
+      public String c() {
+         return this.h;
+      }
    }
 }

@@ -1,44 +1,42 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.ImmutableMap.Builder;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.Lifecycle;
+import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Map;
-import java.util.Optional;
+import java.util.stream.Stream;
 
-public class elg {
-   public static final Codec<elg> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(Codec.unboundedMap(alg.a(ly.bc), dza.a).fieldOf("dimensions").forGetter($$0x -> $$0x.c)).apply($$0, elg::new)
-      )
-      .validate(elg::a);
-   public static final Codec<jp<elg>> b = ald.a(ly.aZ, a);
-   private final Map<alg<dza>, dza> c;
+public class elg extends ele {
+   public static final MapCodec<elg> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(bri.b(-16, 16).fieldOf("xz_spread").forGetter($$0x -> $$0x.c), bri.b(-16, 16).fieldOf("y_spread").forGetter($$0x -> $$0x.d))
+            .apply($$0, elg::new)
+   );
+   private final bri c;
+   private final bri d;
 
-   public elg(Map<alg<dza>, dza> $$0) {
+   public static elg a(bri $$0, bri $$1) {
+      return new elg($$0, $$1);
+   }
+
+   public static elg a(bri $$0) {
+      return new elg(brf.a(0), $$0);
+   }
+
+   public static elg b(bri $$0) {
+      return new elg($$0, brf.a(0));
+   }
+
+   private elg(bri $$0, bri $$1) {
       this.c = $$0;
+      this.d = $$1;
    }
 
-   private ImmutableMap<alg<dza>, dza> c() {
-      Builder<alg<dza>, dza> $$0 = ImmutableMap.builder();
-      ebu.a(this.c.keySet().stream()).forEach($$1 -> {
-         dza $$2 = this.c.get($$1);
-         if ($$2 != null) {
-            $$0.put($$1, $$2);
-         }
-      });
-      return $$0.build();
+   @Override
+   public Stream<jh> a_(elc $$0, azs $$1, jh $$2) {
+      int $$3 = $$2.u() + this.c.a($$1);
+      int $$4 = $$2.v() + this.d.a($$1);
+      int $$5 = $$2.w() + this.c.a($$1);
+      return Stream.of(new jh($$3, $$4, $$5));
    }
 
-   public ebu a() {
-      return new ebu(this.c());
-   }
-
-   public Optional<dza> b() {
-      return Optional.ofNullable(this.c.get(dza.b));
-   }
-
-   private static DataResult<elg> a(elg $$0) {
-      return $$0.b().isEmpty() ? DataResult.error(() -> "Missing overworld dimension") : DataResult.success($$0, Lifecycle.stable());
+   @Override
+   public elf<?> b() {
+      return elf.n;
    }
 }

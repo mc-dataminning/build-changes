@@ -1,125 +1,194 @@
-public enum btv {
-   a(true) {
-      @Override
-      void a(bux $$0, bux $$1, btu $$2) {
-         btz $$3 = $$0.db();
-         if ($$3 != null) {
-            $$3.af();
-            $$3.K = 0;
-            $$3.n($$1);
-         }
+import com.google.common.annotations.VisibleForTesting;
+import javax.annotation.Nullable;
 
-         if ($$2.b()) {
-            for (buh $$4 : buh.i) {
-               cvx $$5 = $$0.a($$4);
-               if (!$$5.f()) {
-                  $$1.a($$4, $$5.g());
-                  $$1.a($$4, $$0.h($$4));
-               }
-            }
-         }
+public abstract class btv extends bvi {
+   private static final akl<Boolean> bY = akp.a(btv.class, akn.k);
+   public static final int b = -24000;
+   private static final int bZ = 40;
+   protected int c;
+   protected int d;
+   protected int e;
 
-         $$1.fa().a($$0.fa());
-         $$1.aa = $$0.aa;
-         $$1.b(7, $$0.fL());
-         float $$6 = $$0.eG() / $$0.eV();
-         $$1.x($$1.eV() * $$6);
-         $$1.ba = $$0.ba;
-         $$1.aK = $$0.aK;
-         $$1.aU = $$0.aU;
-         $$1.w($$0);
-         $$1.h($$0.dA());
-         $$1.d($$0.aJ());
-         $$0.fR().ifPresent($$1::g);
-         btz $$7 = $$0.C();
-         if ($$7 != null) {
-            $$1.b($$7, true);
-         }
+   protected btv(bul<? extends btv> $$0, dfb $$1) {
+      super($$0, $$1);
+   }
 
-         this.b($$0, $$1, $$2);
+   @Override
+   public bvt a(dfr $$0, bsb $$1, buk $$2, @Nullable bvt $$3) {
+      if ($$3 == null) {
+         $$3 = new btv.a(true);
       }
-   },
-   b(false) {
-      @Override
-      void a(bux $$0, bux $$1, btu $$2) {
-         btz $$3 = $$0.db();
-         if ($$3 != null) {
-            $$3.af();
-         }
 
-         btz $$4 = $$0.C();
-         if ($$4 != null) {
-            $$0.a(true, true);
-         }
-
-         this.b($$0, $$1, $$2);
+      btv.a $$4 = (btv.a)$$3;
+      if ($$4.c() && $$4.a() > 0 && $$0.E_().i() <= $$4.d()) {
+         this.c_(-24000);
       }
-   };
 
-   private final boolean c;
+      $$4.b();
+      return super.a($$0, $$1, $$2, $$3);
+   }
 
-   btv(final boolean $$0) {
+   @Nullable
+   public abstract btv a(arn var1, btv var2);
+
+   @Override
+   protected void a(akp.a $$0) {
+      super.a($$0);
+      $$0.a(bY, false);
+   }
+
+   public boolean ac_() {
+      return false;
+   }
+
+   public int g() {
+      if (this.dX().C) {
+         return this.am.a(bY) ? -1 : 1;
+      } else {
+         return this.c;
+      }
+   }
+
+   public void a(int $$0, boolean $$1) {
+      int $$2 = this.g();
+      $$2 += $$0 * 20;
+      if ($$2 > 0) {
+         $$2 = 0;
+      }
+
+      int $$4 = $$2 - $$2;
+      this.c_($$2);
+      if ($$1) {
+         this.d += $$4;
+         if (this.e == 0) {
+            this.e = 40;
+         }
+      }
+
+      if (this.g() == 0) {
+         this.c_(this.d);
+      }
+   }
+
+   public void b_(int $$0) {
+      this.a($$0, false);
+   }
+
+   public void c_(int $$0) {
+      int $$1 = this.g();
       this.c = $$0;
+      if ($$1 < 0 && $$0 >= 0 || $$1 >= 0 && $$0 < 0) {
+         this.am.a(bY, $$0 < 0);
+         this.k();
+      }
    }
 
-   public boolean a() {
-      return this.c;
+   @Override
+   public void b(uk $$0) {
+      super.b($$0);
+      $$0.a("Age", this.g());
+      $$0.a("ForcedAge", this.d);
    }
 
-   abstract void a(bux var1, bux var2, btu var3);
+   @Override
+   public void a(uk $$0) {
+      super.a($$0);
+      this.c_($$0.h("Age"));
+      this.d = $$0.h("ForcedAge");
+   }
 
-   void b(bux $$0, bux $$1, btu $$2) {
-      $$1.E($$0.fy());
-
-      for (bte $$3 : $$0.eD()) {
-         $$1.a($$3);
+   @Override
+   public void a(akl<?> $$0) {
+      if (bY.equals($$0)) {
+         this.j_();
       }
 
-      if ($$0.p_()) {
-         $$1.a(true);
-      }
+      super.a($$0);
+   }
 
-      if ($$0 instanceof btq $$4 && $$1 instanceof btq $$5) {
-         $$5.c_($$4.g());
-         $$5.d = $$4.d;
-         $$5.e = $$4.e;
-      }
+   @Override
+   public void n_() {
+      super.n_();
+      if (this.dX().C) {
+         if (this.e > 0) {
+            if (this.e % 4 == 0) {
+               this.dX().a(lr.O, this.d(1.0), this.dF() + 0.5, this.g(1.0), 0.0, 0.0, 0.0);
+            }
 
-      bvx<?> $$6 = $$0.ed();
-      bvx<?> $$7 = $$1.ed();
-      if ($$6.a(cdz.ab, cea.c) && $$6.a(cdz.ab)) {
-         $$7.a(cdz.ab, $$6.c(cdz.ab));
-      }
-
-      if ($$2.c()) {
-         $$1.a_($$0.fP());
-      }
-
-      $$1.v($$0.gj());
-      $$1.u($$0.gi());
-      if ($$0.gc()) {
-         $$1.gb();
-      }
-
-      $$1.a($$0.ec());
-      $$1.a($$0.eK());
-      if ($$0.am()) {
-         $$1.b($$0.an());
-         $$1.p($$0.cM());
-      }
-
-      $$1.c($$0.bZ());
-      $$1.n($$0.cD());
-      $$1.f($$0.bd());
-      $$1.f($$0.aD());
-      $$1.e($$0.bc());
-      $$0.as().forEach($$1::a);
-      if ($$2.d() != null) {
-         fam $$8 = $$1.dX().O();
-         $$8.a($$1.cI(), $$2.d());
-         if ($$0.cs() != null && $$0.cs() == $$2.d()) {
-            $$8.b($$0.cI(), $$0.cs());
+            this.e--;
          }
+      } else if (this.bM()) {
+         int $$0 = this.g();
+         if ($$0 < 0) {
+            this.c_(++$$0);
+         } else if ($$0 > 0) {
+            this.c_(--$$0);
+         }
+      }
+   }
+
+   protected void k() {
+      if (!this.p_() && this.ca() && this.dl() instanceof cqm $$0 && !$$0.c(this)) {
+         this.af();
+      }
+   }
+
+   @Override
+   public boolean p_() {
+      return this.g() < 0;
+   }
+
+   @Override
+   public void a(boolean $$0) {
+      this.c_($$0 ? -24000 : 0);
+   }
+
+   public static int d_(int $$0) {
+      return (int)((float)($$0 / 20) * 0.1F);
+   }
+
+   @VisibleForTesting
+   public int o() {
+      return this.d;
+   }
+
+   @VisibleForTesting
+   public int p() {
+      return this.e;
+   }
+
+   public static class a implements bvt {
+      private int a;
+      private final boolean b;
+      private final float c;
+
+      public a(boolean $$0, float $$1) {
+         this.b = $$0;
+         this.c = $$1;
+      }
+
+      public a(boolean $$0) {
+         this($$0, 0.05F);
+      }
+
+      public a(float $$0) {
+         this(true, $$0);
+      }
+
+      public int a() {
+         return this.a;
+      }
+
+      public void b() {
+         this.a++;
+      }
+
+      public boolean c() {
+         return this.b;
+      }
+
+      public float d() {
+         return this.c;
       }
    }
 }

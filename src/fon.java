@@ -1,130 +1,108 @@
-import java.util.function.Consumer;
+import com.mojang.blaze3d.platform.TextureUtil;
+import com.mojang.datafixers.util.Either;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.io.IOException;
+import java.io.InputStream;
+import java.nio.ByteBuffer;
+import java.util.List;
+import org.lwjgl.PointerBuffer;
+import org.lwjgl.system.MemoryStack;
+import org.lwjgl.system.MemoryUtil;
+import org.lwjgl.util.freetype.FT_Face;
+import org.lwjgl.util.freetype.FreeType;
 
-public class fon implements foo {
-   public static final int a = 33;
-   private static final int b = 30;
-   private final fol c = new fol();
-   private final fol d = new fol();
-   private final fol e = new fol();
-   private final fqs f;
-   private int g;
-   private int h;
+public record fon(ali c, float d, float e, fon.a f, String g) implements fok {
+   private static final Codec<String> h = Codec.withAlternative(Codec.STRING, Codec.STRING.listOf(), $$0 -> String.join("", $$0));
+   public static final MapCodec<fon> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(
+               ali.a.fieldOf("file").forGetter(fon::c),
+               Codec.FLOAT.optionalFieldOf("size", 11.0F).forGetter(fon::d),
+               Codec.FLOAT.optionalFieldOf("oversample", 1.0F).forGetter(fon::e),
+               fon.a.b.optionalFieldOf("shift", fon.a.a).forGetter(fon::f),
+               h.optionalFieldOf("skip", "").forGetter(fon::g)
+            )
+            .apply($$0, fon::new)
+   );
 
-   public fon(fqs $$0) {
-      this($$0, 33);
-   }
-
-   public fon(fqs $$0, int $$1) {
-      this($$0, $$1, $$1);
-   }
-
-   public fon(fqs $$0, int $$1, int $$2) {
-      this.f = $$0;
-      this.g = $$1;
-      this.h = $$2;
-      this.c.c().a(0.5F, 0.5F);
-      this.d.c().a(0.5F, 0.5F);
+   @Override
+   public fol a() {
+      return fol.b;
    }
 
    @Override
-   public void m(int $$0) {
+   public Either<fok.b, fok.c> b() {
+      return Either.left(this::a);
    }
 
-   @Override
-   public void n(int $$0) {
+   private fca a(avb $$0) throws IOException {
+      FT_Face $$1 = null;
+      ByteBuffer $$2 = null;
+
+      try {
+         fcd var20;
+         try (InputStream $$3 = $$0.open(this.c.f("font/"))) {
+            $$2 = TextureUtil.readResource($$3);
+            $$2.flip();
+            synchronized (foj.a) {
+               MemoryStack $$4 = MemoryStack.stackPush();
+
+               try {
+                  PointerBuffer $$5 = $$4.mallocPointer(1);
+                  foj.a(FreeType.FT_New_Memory_Face(foj.a(), $$2, 0L, $$5), "Initializing font face");
+                  $$1 = FT_Face.create($$5.get());
+               } catch (Throwable var14) {
+                  if ($$4 != null) {
+                     try {
+                        $$4.close();
+                     } catch (Throwable var12) {
+                        var14.addSuppressed(var12);
+                     }
+                  }
+
+                  throw var14;
+               }
+
+               if ($$4 != null) {
+                  $$4.close();
+               }
+
+               String $$6 = FreeType.FT_Get_Font_Format($$1);
+               if (!"TrueType".equals($$6)) {
+                  throw new IOException("Font is not in TTF format, was " + $$6);
+               }
+
+               foj.a(FreeType.FT_Select_Charmap($$1, FreeType.FT_ENCODING_UNICODE), "Find unicode charmap");
+               var20 = new fcd($$2, $$1, this.d, this.e, this.f.c, this.f.d, this.g);
+            }
+         }
+
+         return var20;
+      } catch (Exception var17) {
+         synchronized (foj.a) {
+            if ($$1 != null) {
+               FreeType.FT_Done_Face($$1);
+            }
+         }
+
+         MemoryUtil.memFree($$2);
+         throw var17;
+      }
    }
 
-   @Override
-   public int D() {
-      return 0;
-   }
+   public static record a(float c, float d) {
+      public static final fon.a a = new fon.a(0.0F, 0.0F);
+      public static final Codec<fon.a> b = Codec.floatRange(-512.0F, 512.0F)
+         .listOf()
+         .comapFlatMap($$0 -> ae.a($$0, 2).map($$0x -> new fon.a((Float)$$0x.get(0), (Float)$$0x.get(1))), $$0 -> List.of($$0.c, $$0.d));
 
-   @Override
-   public int E() {
-      return 0;
-   }
+      public float a() {
+         return this.c;
+      }
 
-   @Override
-   public int y() {
-      return this.f.n;
-   }
-
-   @Override
-   public int w() {
-      return this.f.o;
-   }
-
-   public int b() {
-      return this.h;
-   }
-
-   public void a(int $$0) {
-      this.h = $$0;
-   }
-
-   public void b(int $$0) {
-      this.g = $$0;
-   }
-
-   public int c() {
-      return this.g;
-   }
-
-   public int d() {
-      return this.f.o - this.c() - this.b();
-   }
-
-   @Override
-   public void b(Consumer<fop> $$0) {
-      this.c.b($$0);
-      this.e.b($$0);
-      this.d.b($$0);
-   }
-
-   @Override
-   public void a() {
-      int $$0 = this.c();
-      int $$1 = this.b();
-      this.c.b(this.f.n);
-      this.c.a($$0);
-      this.c.c(0, 0);
-      this.c.a();
-      this.d.b(this.f.n);
-      this.d.a($$1);
-      this.d.a();
-      this.d.n(this.f.o - $$1);
-      this.e.b(this.f.n);
-      this.e.a();
-      int $$2 = $$0 + 30;
-      int $$3 = this.f.o - $$1 - this.e.w();
-      this.e.c(0, Math.min($$2, $$3));
-   }
-
-   public <T extends fop> T a(T $$0) {
-      return this.c.a($$0);
-   }
-
-   public <T extends fop> T a(T $$0, Consumer<foq> $$1) {
-      return this.c.a($$0, $$1);
-   }
-
-   public void a(xh $$0, fkk $$1) {
-      this.c.a(new fmg($$0, $$1));
-   }
-
-   public <T extends fop> T b(T $$0) {
-      return this.d.a($$0);
-   }
-
-   public <T extends fop> T b(T $$0, Consumer<foq> $$1) {
-      return this.d.a($$0, $$1);
-   }
-
-   public <T extends fop> T c(T $$0) {
-      return this.e.a($$0);
-   }
-
-   public <T extends fop> T c(T $$0, Consumer<foq> $$1) {
-      return this.e.a($$0, $$1);
+      public float b() {
+         return this.d;
+      }
    }
 }

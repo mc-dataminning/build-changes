@@ -1,420 +1,297 @@
-import com.google.common.collect.Lists;
-import com.google.common.collect.Queues;
-import com.mojang.logging.LogUtils;
-import it.unimi.dsi.fastutil.longs.Long2ObjectMap;
-import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
-import it.unimi.dsi.fastutil.longs.LongIterator;
-import it.unimi.dsi.fastutil.longs.LongOpenHashSet;
-import it.unimi.dsi.fastutil.longs.LongSet;
-import java.util.ArrayList;
-import java.util.Comparator;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.Sets;
+import com.google.common.collect.ImmutableList.Builder;
+import java.util.HashMap;
 import java.util.List;
-import java.util.Queue;
-import java.util.concurrent.BlockingQueue;
-import java.util.concurrent.Future;
-import java.util.concurrent.LinkedBlockingQueue;
-import java.util.concurrent.atomic.AtomicBoolean;
-import java.util.concurrent.atomic.AtomicReference;
-import java.util.function.Consumer;
+import java.util.Map;
+import java.util.Objects;
+import java.util.Set;
+import java.util.Map.Entry;
+import java.util.function.UnaryOperator;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import org.joml.Matrix4f;
 
 public class gil {
-   private static final Logger a = LogUtils.getLogger();
-   private static final jl[] b = jl.values();
-   private static final int c = 60;
-   private static final double d = Math.ceil(Math.sqrt(3.0) * 16.0);
-   private boolean e = true;
-   @Nullable
-   private Future<?> f;
-   @Nullable
-   private giu g;
-   private final AtomicReference<gil.b> h = new AtomicReference<>();
-   private final AtomicReference<gil.a> i = new AtomicReference<>();
-   private final AtomicBoolean j = new AtomicBoolean(false);
+   public static final ali a = ali.b("main");
+   private final List<gin> b;
+   private final Map<ali, gim.d> c;
+   private final Set<ali> d;
 
-   public void a(@Nullable giu $$0) {
-      if (this.f != null) {
-         try {
-            this.f.get();
-            this.f = null;
-         } catch (Exception var3) {
-            a.warn("Full update failed", var3);
-         }
-      }
+   private gil(List<gin> $$0, Map<ali, gim.d> $$1, Set<ali> $$2) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
+   }
 
-      this.g = $$0;
-      if ($$0 != null) {
-         this.h.set(new gil.b($$0));
-         this.a();
+   public static gil a(gim $$0, gye $$1, giy $$2, Set<ali> $$3) throws giy.b {
+      Stream<ali> $$4 = $$0.b().stream().flatMap($$0x -> $$0x.b().stream()).flatMap($$0x -> $$0x.b().stream());
+      Set<ali> $$5 = $$4.filter($$1x -> !$$0.a().containsKey($$1x)).collect(Collectors.toSet());
+      Set<ali> $$6 = Sets.difference($$5, $$3);
+      if (!$$6.isEmpty()) {
+         throw new giy.b("Referenced external targets are not available in this context: " + $$6);
       } else {
-         this.h.set(null);
-      }
-   }
+         Builder<gin> $$7 = ImmutableList.builder();
 
-   public void a() {
-      this.e = true;
-   }
-
-   public void a(gln $$0, List<glj.b> $$1, List<glj.b> $$2) {
-      this.h.get().a().b.a(($$2x, $$3, $$4, $$5) -> {
-         glj.b $$6 = $$2x.a();
-         if ($$6 != null) {
-            $$1.add($$6);
-            if ($$5) {
-               $$2.add($$6);
-            }
-         }
-      }, $$0, 32);
-   }
-
-   public boolean b() {
-      return this.j.compareAndSet(true, false);
-   }
-
-   public void a(deb $$0) {
-      gil.a $$1 = this.i.get();
-      if ($$1 != null) {
-         this.a($$1, $$0);
-      }
-
-      gil.a $$2 = this.h.get().b;
-      if ($$2 != $$1) {
-         this.a($$2, $$0);
-      }
-   }
-
-   public void a(glj.b $$0) {
-      gil.a $$1 = this.i.get();
-      if ($$1 != null) {
-         $$1.b.add($$0);
-      }
-
-      gil.a $$2 = this.h.get().b;
-      if ($$2 != $$1) {
-         $$2.b.add($$0);
-      }
-   }
-
-   public void a(boolean $$0, fij $$1, gln $$2, List<glj.b> $$3, LongOpenHashSet $$4) {
-      ezh $$5 = $$1.b();
-      if (this.e && (this.f == null || this.f.isDone())) {
-         this.a($$0, $$1, $$5, $$4);
-      }
-
-      this.a($$0, $$2, $$3, $$5, $$4);
-   }
-
-   private void a(boolean $$0, fij $$1, ezh $$2, LongOpenHashSet $$3) {
-      this.e = false;
-      LongOpenHashSet $$4 = $$3.clone();
-      this.f = ad.g().submit(() -> {
-         gil.b $$4x = new gil.b(this.g);
-         this.i.set($$4x.b);
-         Queue<gil.d> $$5 = Queues.newArrayDeque();
-         this.a($$1, $$5);
-         $$5.forEach($$1xx -> $$4x.a.a.a($$1xx.a, $$1xx));
-         this.a($$4x.a, $$2, $$5, $$0, $$0xx -> {
-         }, $$4);
-         this.h.set($$4x);
-         this.i.set(null);
-         this.j.set(true);
-      });
-   }
-
-   private void a(boolean $$0, gln $$1, List<glj.b> $$2, ezh $$3, LongOpenHashSet $$4) {
-      gil.b $$5 = this.h.get();
-      this.a($$5);
-      if (!$$5.b.b.isEmpty()) {
-         Queue<gil.d> $$6 = Queues.newArrayDeque();
-
-         while (!$$5.b.b.isEmpty()) {
-            glj.b $$7 = $$5.b.b.poll();
-            gil.d $$8 = $$5.a.a.a($$7);
-            if ($$8 != null && $$8.a == $$7) {
-               $$6.add($$8);
-            }
+         for (gim.e $$8 : $$0.b()) {
+            $$7.add(a($$1, $$2, $$8));
          }
 
-         gln $$9 = ghs.a($$1);
-         Consumer<glj.b> $$10 = $$1x -> {
-            if ($$9.a($$1x.b())) {
-               this.j.set(true);
+         return new gil($$7.build(), $$0.a(), $$5);
+      }
+   }
+
+   // $VF: Inserted dummy exception handlers to handle obfuscated exceptions
+   private static gin a(gye $$0, giy $$1, gim.e $$2) throws giy.b {
+      ali $$3 = $$2.a();
+      ghq $$4 = $$1.b(new giz($$3, fdz.e, gix.a));
+
+      for (gim.h $$5 : $$2.d()) {
+         String $$6 = $$5.a();
+         if ($$4.a($$6) == null) {
+            throw new giy.b("Uniform '" + $$6 + "' does not exist for " + $$3);
+         }
+      }
+
+      String $$7 = $$3.toString();
+      gin $$8 = new gin($$7, $$4, $$2.c(), $$2.d());
+
+      for (gim.c $$9 : $$2.b()) {
+         Objects.requireNonNull($$9);
+         Throwable var45;
+         switch ($$9) {
+            case gim.g var11:
+               gim.g var53 = var11;
+
+               try {
+                  var54 = var53.a();
+               } catch (Throwable var31) {
+                  var45 = var31;
+                  boolean var66 = false;
+                  break;
+               }
+
+               String var36 = var54;
+               gim.g var55 = var11;
+
+               try {
+                  var56 = var55.c();
+               } catch (Throwable var30) {
+                  var45 = var30;
+                  boolean var67 = false;
+                  break;
+               }
+
+               ali var37 = var56;
+               gim.g var57 = var11;
+
+               try {
+                  var58 = var57.d();
+               } catch (Throwable var29) {
+                  var45 = var29;
+                  boolean var68 = false;
+                  break;
+               }
+
+               int var38 = var58;
+               gim.g var59 = var11;
+
+               try {
+                  var60 = var59.e();
+               } catch (Throwable var28) {
+                  var45 = var28;
+                  boolean var69 = false;
+                  break;
+               }
+
+               int var39 = var60;
+               gim.g var61 = var11;
+
+               try {
+                  var62 = var61.f();
+               } catch (Throwable var27) {
+                  var45 = var27;
+                  boolean var70 = false;
+                  break;
+               }
+
+               boolean var40 = var62;
+               gxo $$15x = $$0.a(var37.a((UnaryOperator<String>)($$0x -> "textures/effect/" + $$0x + ".png")));
+               $$15x.a(var40, false);
+               $$8.a(new gin.c(var36, $$15x, var38, var39));
+               continue;
+            case gim.f $$15:
+               gim.f var10000 = $$15;
+
+               try {
+                  var46 = var10000.a();
+               } catch (Throwable var26) {
+                  var45 = var26;
+                  boolean var10001 = false;
+                  break;
+               }
+
+               String var22 = var46;
+               gim.f var47 = $$15;
+
+               try {
+                  var48 = var47.c();
+               } catch (Throwable var25) {
+                  var45 = var25;
+                  boolean var63 = false;
+                  break;
+               }
+
+               ali var42 = var48;
+               gim.f var49 = $$15;
+
+               try {
+                  var50 = var49.d();
+               } catch (Throwable var24) {
+                  var45 = var24;
+                  boolean var64 = false;
+                  break;
+               }
+
+               boolean var43 = var50;
+               gim.f var51 = $$15;
+
+               try {
+                  var52 = var51.e();
+               } catch (Throwable var23) {
+                  var45 = var23;
+                  boolean var65 = false;
+                  break;
+               }
+
+               boolean var44 = var52;
+               $$8.a(new gin.b(var22, var42, var43, var44));
+               continue;
+            default:
+               throw new MatchException(null, null);
+         }
+
+         Throwable var35 = var45;
+         throw new MatchException(var35.toString(), var35);
+      }
+
+      return $$8;
+   }
+
+   // $VF: Inserted dummy exception handlers to handle obfuscated exceptions
+   public void a(fcf $$0, int $$1, int $$2, gil.a $$3) {
+      Matrix4f $$4 = new Matrix4f().setOrtho(0.0F, (float)$$1, 0.0F, (float)$$2, 0.1F, 1000.0F);
+      Map<ali, fdn<fcl>> $$5 = new HashMap<>(this.c.size() + this.d.size());
+
+      for (ali $$6 : this.d) {
+         $$5.put($$6, $$3.b($$6));
+      }
+
+      for (Entry<ali, gim.d> $$7 : this.c.entrySet()) {
+         ali $$8 = $$7.getKey();
+         gim.d var35;
+         Objects.requireNonNull(var35);
+         Object var11 = var35;
+
+         var35 = $$7.getValue();
+         fdl $$11 = switch (var11) {
+            case gim.a var13 -> {
+               gim.a var29 = var13;
+
+               int var26;
+               label56: {
+                  label76: {
+                     try {
+                        var31 = var29.a();
+                     } catch (Throwable var18) {
+                        var30 = var18;
+                        boolean var10001 = false;
+                        break label76;
+                     }
+
+                     var26 = var31;
+                     gim.a var32 = var13;
+
+                     try {
+                        var33 = var32.b();
+                        break label56;
+                     } catch (Throwable var17) {
+                        var30 = var17;
+                        boolean var34 = false;
+                     }
+                  }
+
+                  Throwable var20 = var30;
+                  throw new MatchException(var20.toString(), var20);
+               }
+
+               int var27 = var33;
+               yield new fdl(var26, var27, true);
+            }
+            case gim.b var16 -> new fdl($$1, $$2, true);
+            default -> throw new MatchException(null, null);
+         };
+         $$5.put($$8, $$0.a($$8.toString(), $$11));
+      }
+
+      for (gin $$12 : this.b) {
+         $$12.a($$0, $$5, $$4);
+      }
+
+      for (ali $$13 : this.d) {
+         $$3.a($$13, $$5.get($$13));
+      }
+   }
+
+   @Deprecated
+   public void a(fcl $$0, fdk $$1) {
+      fcf $$2 = new fcf();
+      gil.a $$3 = gil.a.b(a, $$2.a("main", $$0));
+      this.a($$2, $$0.c, $$0.d, $$3);
+      $$2.a($$1);
+   }
+
+   public void a(String $$0, float $$1) {
+      for (gin $$2 : this.b) {
+         $$2.a().b($$0).a($$1);
+      }
+   }
+
+   public interface a {
+      static gil.a b(final ali $$0, final fdn<fcl> $$1) {
+         return new gil.a() {
+            private fdn<fcl> c = $$1;
+
+            @Override
+            public void a(ali $$0x, fdn<fcl> $$1x) {
+               if ($$0.equals($$0)) {
+                  this.c = $$1;
+               } else {
+                  throw new IllegalArgumentException("No target with id " + $$0);
+               }
+            }
+
+            @Nullable
+            @Override
+            public fdn<fcl> a(ali $$0x) {
+               return $$0.equals($$0) ? this.c : null;
             }
          };
-         this.a($$5.a, $$3, $$6, $$0, $$10, $$4);
-      }
-   }
-
-   private void a(gil.b $$0) {
-      LongIterator $$1 = $$0.b.a.iterator();
-
-      while ($$1.hasNext()) {
-         long $$2 = $$1.nextLong();
-         List<glj.b> $$3 = (List<glj.b>)$$0.a.c.get($$2);
-         if ($$3 != null && $$3.get(0).a()) {
-            $$0.b.b.addAll($$3);
-            $$0.a.c.remove($$2);
-         }
       }
 
-      $$0.b.a.clear();
-   }
-
-   private void a(gil.a $$0, deb $$1) {
-      $$0.a.add(deb.c($$1.e - 1, $$1.f));
-      $$0.a.add(deb.c($$1.e, $$1.f - 1));
-      $$0.a.add(deb.c($$1.e + 1, $$1.f));
-      $$0.a.add(deb.c($$1.e, $$1.f + 1));
-   }
-
-   private void a(fij $$0, Queue<gil.d> $$1) {
-      jg $$2 = $$0.c();
-      long $$3 = ki.c($$2);
-      int $$4 = ki.c($$3);
-      glj.b $$5 = this.g.a($$3);
-      if ($$5 == null) {
-         dex $$6 = this.g.c();
-         boolean $$7 = $$4 < $$6.ap();
-         int $$8 = $$7 ? $$6.ap() : $$6.aq();
-         int $$9 = this.g.b();
-         List<gil.d> $$10 = Lists.newArrayList();
-         int $$11 = ki.b($$3);
-         int $$12 = ki.d($$3);
-
-         for (int $$13 = -$$9; $$13 <= $$9; $$13++) {
-            for (int $$14 = -$$9; $$14 <= $$9; $$14++) {
-               glj.b $$15 = this.g.a(ki.b($$13 + $$11, $$8, $$14 + $$12));
-               if ($$15 != null && this.a($$3, $$15.g())) {
-                  jl $$16 = $$7 ? jl.b : jl.a;
-                  gil.d $$17 = new gil.d($$15, $$16, 0);
-                  $$17.a($$17.d, $$16);
-                  if ($$13 > 0) {
-                     $$17.a($$17.d, jl.f);
-                  } else if ($$13 < 0) {
-                     $$17.a($$17.d, jl.e);
-                  }
-
-                  if ($$14 > 0) {
-                     $$17.a($$17.d, jl.d);
-                  } else if ($$14 < 0) {
-                     $$17.a($$17.d, jl.c);
-                  }
-
-                  $$10.add($$17);
-               }
-            }
-         }
-
-         $$10.sort(Comparator.comparingDouble($$1x -> $$2.j($$1x.a.f().b(8, 8, 8))));
-         $$1.addAll($$10);
-      } else {
-         $$1.add(new gil.d($$5, null, 0));
-      }
-   }
-
-   private void a(gil.c $$0, ezh $$1, Queue<gil.d> $$2, boolean $$3, Consumer<glj.b> $$4, LongOpenHashSet $$5) {
-      int $$6 = 16;
-      jg $$7 = new jg(azj.a($$1.d / 16.0) * 16, azj.a($$1.e / 16.0) * 16, azj.a($$1.f / 16.0) * 16);
-      long $$8 = ki.c($$7);
-      jg $$9 = $$7.b(8, 8, 8);
-
-      while (!$$2.isEmpty()) {
-         gil.d $$10 = $$2.poll();
-         glj.b $$11 = $$10.a;
-         if (!$$5.contains($$10.a.g())) {
-            if ($$0.b.a($$10.a)) {
-               $$4.accept($$10.a);
-            }
-         } else {
-            $$10.a.c.compareAndSet(glj.a.a, glj.a.b);
-         }
-
-         boolean $$12 = Math.abs($$11.f().u() - $$7.u()) > 60 || Math.abs($$11.f().v() - $$7.v()) > 60 || Math.abs($$11.f().w() - $$7.w()) > 60;
-
-         for (jl $$13 : b) {
-            glj.b $$14 = this.a($$8, $$11, $$13);
-            if ($$14 != null && (!$$3 || !$$10.a($$13.g()))) {
-               if ($$3 && $$10.a()) {
-                  glj.a $$15 = $$11.d();
-                  boolean $$16 = false;
-
-                  for (int $$17 = 0; $$17 < b.length; $$17++) {
-                     if ($$10.a($$17) && $$15.a(b[$$17].g(), $$13)) {
-                        $$16 = true;
-                        break;
-                     }
-                  }
-
-                  if (!$$16) {
-                     continue;
-                  }
-               }
-
-               if ($$3 && $$12) {
-                  jg $$18 = $$14.f();
-                  jg $$19 = $$18.b(
-                     ($$13.o() == jl.a.a ? $$9.u() <= $$18.u() : $$9.u() >= $$18.u()) ? 0 : 16,
-                     ($$13.o() == jl.a.b ? $$9.v() <= $$18.v() : $$9.v() >= $$18.v()) ? 0 : 16,
-                     ($$13.o() == jl.a.c ? $$9.w() <= $$18.w() : $$9.w() >= $$18.w()) ? 0 : 16
-                  );
-                  ezh $$20 = new ezh((double)$$19.u(), (double)$$19.v(), (double)$$19.w());
-                  ezh $$21 = $$1.d($$20).d().c(d);
-                  boolean $$22 = true;
-
-                  while ($$1.d($$20).h() > 3600.0) {
-                     $$20 = $$20.e($$21);
-                     dex $$23 = this.g.c();
-                     if ($$20.e > (double)$$23.an() || $$20.e < (double)$$23.I_()) {
-                        break;
-                     }
-
-                     glj.b $$24 = this.g.a(jg.a($$20.d, $$20.e, $$20.f));
-                     if ($$24 == null || $$0.a.a($$24) == null) {
-                        $$22 = false;
-                        break;
-                     }
-                  }
-
-                  if (!$$22) {
-                     continue;
-                  }
-               }
-
-               gil.d $$25 = $$0.a.a($$14);
-               if ($$25 != null) {
-                  $$25.b($$13);
-               } else {
-                  gil.d $$26 = new gil.d($$14, $$13, $$10.b + 1);
-                  $$26.a($$10.d, $$13);
-                  if ($$14.a()) {
-                     $$2.add($$26);
-                     $$0.a.a($$14, $$26);
-                  } else if (this.a($$8, $$14.g())) {
-                     $$0.a.a($$14, $$26);
-                     ((List)$$0.c.computeIfAbsent(deb.a($$14.f()), $$0x -> new ArrayList())).add($$14);
-                  }
-               }
-            }
-         }
-      }
-   }
-
-   private boolean a(long $$0, long $$1) {
-      return aqx.a(ki.b($$0), ki.d($$0), this.g.b(), ki.b($$1), ki.d($$1));
-   }
-
-   @Nullable
-   private glj.b a(long $$0, glj.b $$1, jl $$2) {
-      long $$3 = $$1.a($$2);
-      if (!this.a($$0, $$3)) {
-         return null;
-      } else {
-         return azj.a(ki.c($$0) - ki.c($$3)) > this.g.b() ? null : this.g.a($$3);
-      }
-   }
-
-   @Nullable
-   @bap
-   public gil.d b(glj.b $$0) {
-      return this.h.get().a.a.a($$0);
-   }
-
-   public ghx c() {
-      return this.h.get().a.b;
-   }
-
-   static record a(LongSet a, BlockingQueue<glj.b> b) {
-
-      a() {
-         this(new LongOpenHashSet(), new LinkedBlockingQueue<>());
-      }
-   }
-
-   static record b(gil.c a, gil.a b) {
-
-      b(giu $$0) {
-         this(new gil.c($$0), new gil.a());
-      }
-   }
-
-   static class c {
-      public final gil.e a;
-      public final ghx b;
-      public final Long2ObjectMap<List<glj.b>> c;
-
-      public c(giu $$0) {
-         this.a = new gil.e($$0.f.length);
-         this.b = new ghx($$0.d(), $$0.b(), $$0.c, $$0.b.I_());
-         this.c = new Long2ObjectOpenHashMap();
-      }
-   }
-
-   @bap
-   public static class d {
-      @bap
-      protected final glj.b a;
-      private byte c;
-      byte d;
-      @bap
-      public final int b;
-
-      d(glj.b $$0, @Nullable jl $$1, int $$2) {
-         this.a = $$0;
-         if ($$1 != null) {
-            this.b($$1);
-         }
-
-         this.b = $$2;
-      }
-
-      void a(byte $$0, jl $$1) {
-         this.d = (byte)(this.d | $$0 | 1 << $$1.ordinal());
-      }
-
-      boolean a(jl $$0) {
-         return (this.d & 1 << $$0.ordinal()) > 0;
-      }
-
-      void b(jl $$0) {
-         this.c = (byte)(this.c | this.c | 1 << $$0.ordinal());
-      }
-
-      @bap
-      public boolean a(int $$0) {
-         return (this.c & 1 << $$0) > 0;
-      }
-
-      boolean a() {
-         return this.c != 0;
-      }
-
-      @Override
-      public int hashCode() {
-         return Long.hashCode(this.a.g());
-      }
-
-      @Override
-      public boolean equals(Object $$0) {
-         return !($$0 instanceof gil.d $$1) ? false : this.a.g() == $$1.a.g();
-      }
-   }
-
-   static class e {
-      private final gil.d[] a;
-
-      e(int $$0) {
-         this.a = new gil.d[$$0];
-      }
-
-      public void a(glj.b $$0, gil.d $$1) {
-         this.a[$$0.b] = $$1;
-      }
+      void a(ali var1, fdn<fcl> var2);
 
       @Nullable
-      public gil.d a(glj.b $$0) {
-         int $$1 = $$0.b;
-         return $$1 >= 0 && $$1 < this.a.length ? this.a[$$1] : null;
+      fdn<fcl> a(ali var1);
+
+      default fdn<fcl> b(ali $$0) {
+         fdn<fcl> $$1 = this.a($$0);
+         if ($$1 == null) {
+            throw new IllegalArgumentException("Missing target with id " + $$0);
+         } else {
+            return $$1;
+         }
       }
    }
 }

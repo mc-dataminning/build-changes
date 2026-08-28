@@ -1,27 +1,27 @@
 import com.mojang.serialization.Codec;
 
-public class eei extends eef<egn> {
-   public eei(Codec<egn> $$0) {
+public class eei extends eel<egw> {
+   public eei(Codec<egw> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(eeh<egn> $$0) {
-      jg $$1 = $$0.e();
-      egn $$2 = $$0.f();
-      dfs $$3 = $$0.b();
-      jg.a $$4 = new jg.a();
+   public boolean a(een<egw> $$0) {
+      dfy $$1 = $$0.b();
+      azs $$2 = $$0.d();
+      jh $$3 = $$0.e();
+      float $$4 = (float)$$2.a(3) + 4.0F;
 
-      for (int $$5 = 0; $$5 < 16; $$5++) {
-         for (int $$6 = 0; $$6 < 16; $$6++) {
-            int $$7 = $$1.u() + $$5;
-            int $$8 = $$1.w() + $$6;
-            int $$9 = $$3.I_() + $$2.b;
-            $$4.d($$7, $$9, $$8);
-            if ($$3.a_($$4).l()) {
-               $$3.a($$4, $$2.c, 2);
+      for (int $$5 = 0; $$4 > 0.5F; $$5--) {
+         for (int $$6 = azk.d(-$$4); $$6 <= azk.f($$4); $$6++) {
+            for (int $$7 = azk.d(-$$4); $$7 <= azk.f($$4); $$7++) {
+               if ((float)($$6 * $$6 + $$7 * $$7) <= ($$4 + 1.0F) * ($$4 + 1.0F)) {
+                  this.a($$1, $$3.b($$6, $$5, $$7), dig.fz.m());
+               }
             }
          }
+
+         $$4 -= (float)$$2.a(2) + 0.5F;
       }
 
       return true;

@@ -1,62 +1,125 @@
-public class fgm extends hee {
-   private final fqs a;
-   private final fgm.a b;
-   private fls c = fls.a;
+import java.util.Locale;
 
-   public fgm(ffu $$0, fqs $$1) {
-      super(fir.a);
-      this.a = $$1;
-      this.b = a($$0);
-   }
+public class fgm extends hep {
+   private static final xi a = xi.c("mco.backup.info.title");
+   private static final xi b = xi.c("mco.backup.unknown");
+   private final fra c;
+   final fex B;
+   final fow C = new fow(this);
+   private fgm.a D;
 
-   public fgm(xh $$0, fqs $$1) {
-      super(fir.a);
-      this.a = $$1;
-      this.b = a($$0);
-   }
-
-   public fgm(xh $$0, xh $$1, fqs $$2) {
-      super(fir.a);
-      this.a = $$2;
-      this.b = a($$0, $$1);
-   }
-
-   private static fgm.a a(ffu $$0) {
-      fel $$1 = $$0.a;
-      return a(xh.a("mco.errorMessage.realmsService.realmsError", $$1.a()), $$1.b());
-   }
-
-   private static fgm.a a(xh $$0) {
-      return a(xh.c("mco.errorMessage.generic"), $$0);
-   }
-
-   private static fgm.a a(xh $$0, xh $$1) {
-      return new fgm.a($$0, $$1);
+   public fgm(fra $$0, fex $$1) {
+      super(a);
+      this.c = $$0;
+      this.B = $$1;
    }
 
    @Override
-   public void aS_() {
-      this.c(fkz.a(xg.h, $$0 -> this.d()).a(this.n / 2 - 100, this.o - 52, 200, 20).a());
-      this.c = fls.a(this.p, this.b.b, this.n * 3 / 4);
+   public void aR_() {
+      this.C.a(a, this.p);
+      this.D = this.C.c(new fgm.a(this.m));
+      this.C.b(flh.a(xh.k, $$0 -> this.d()).a());
+      this.c();
+      this.C.a($$1 -> {
+         flf var10000 = this.c($$1);
+      });
+   }
+
+   @Override
+   protected void c() {
+      this.D.b(this.n, this.C.d());
+      this.C.a();
    }
 
    @Override
    public void d() {
-      this.m.a(this.a);
+      this.m.a(this.c);
    }
 
-   @Override
-   public xh i() {
-      return xh.i().b(this.b.a).f(": ").b(this.b.b);
+   xi a(String $$0, String $$1) {
+      String $$2 = $$0.toLowerCase(Locale.ROOT);
+      if ($$2.contains("game") && $$2.contains("mode")) {
+         return this.b($$1);
+      } else {
+         return (xi)($$2.contains("game") && $$2.contains("difficulty") ? this.a($$1) : xi.b($$1));
+      }
    }
 
-   @Override
-   public void a(fkm $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      $$0.a(this.p, this.b.a, this.n / 2, 80, -1);
-      this.c.a($$0, this.n / 2, 100, 9, -2142128);
+   private xi a(String $$0) {
+      try {
+         return fhi.a.get(Integer.parseInt($$0)).b();
+      } catch (Exception var3) {
+         return b;
+      }
    }
 
-   static record a(xh a, xh b) {
+   private xi b(String $$0) {
+      try {
+         return fhi.b.get(Integer.parseInt($$0)).e();
+      } catch (Exception var3) {
+         return b;
+      }
+   }
+
+   class a extends fmd<fgm.b> {
+      public a(final fji $$0) {
+         super($$0, fgm.this.n, fgm.this.C.d(), fgm.this.C.c(), 36);
+         if (fgm.this.B.e != null) {
+            fgm.this.B.e.forEach(($$0x, $$1) -> this.b(fgm.this.new b($$0x, $$1)));
+         }
+      }
+   }
+
+   class b extends fmd.a<fgm.b> {
+      private static final xi b = xi.c("mco.backup.entry.templateName");
+      private static final xi c = xi.c("mco.backup.entry.gameDifficulty");
+      private static final xi d = xi.c("mco.backup.entry.name");
+      private static final xi e = xi.c("mco.backup.entry.gameServerVersion");
+      private static final xi f = xi.c("mco.backup.entry.uploaded");
+      private static final xi g = xi.c("mco.backup.entry.enabledPack");
+      private static final xi h = xi.c("mco.backup.entry.description");
+      private static final xi i = xi.c("mco.backup.entry.gameMode");
+      private static final xi j = xi.c("mco.backup.entry.seed");
+      private static final xi k = xi.c("mco.backup.entry.worldType");
+      private static final xi l = xi.c("mco.backup.entry.undefined");
+      private final String m;
+      private final String n;
+
+      public b(final String $$0, final String $$1) {
+         this.m = $$0;
+         this.n = $$1;
+      }
+
+      @Override
+      public void a(fku $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
+         $$0.b(fgm.this.p, this.a(this.m), $$3, $$2, -6250336);
+         $$0.b(fgm.this.p, fgm.this.a(this.m, this.n), $$3, $$2 + 12, -1);
+      }
+
+      private xi a(String $$0) {
+         return switch ($$0) {
+            case "template_name" -> b;
+            case "game_difficulty" -> c;
+            case "name" -> d;
+            case "game_server_version" -> e;
+            case "uploaded" -> f;
+            case "enabled_packs" -> g;
+            case "description" -> h;
+            case "game_mode" -> i;
+            case "seed" -> j;
+            case "world_type" -> k;
+            default -> l;
+         };
+      }
+
+      @Override
+      public boolean a(double $$0, double $$1, int $$2) {
+         return true;
+      }
+
+      @Override
+      public xi a() {
+         return xi.a("narrator.select", this.m + " " + this.n);
+      }
    }
 }

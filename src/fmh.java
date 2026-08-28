@@ -1,166 +1,82 @@
-import com.google.common.collect.Lists;
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.Iterator;
-import java.util.List;
+import java.util.function.Supplier;
 import javax.annotation.Nullable;
 
-public class fmh implements hct {
-   private static final long a = 3000L;
-   private final fja b;
-   private final List<fmh.b> c = Lists.newArrayList();
-   private boolean d;
-   private final List<fmh.b> e = new ArrayList<>();
+public class fmh extends flf {
+   private static final float a = 0.0625F;
+   private static final float b = 2.125F;
+   private static final float c = 100.0F;
+   private static final float d = 2.5F;
+   private static final float e = -5.0F;
+   private static final float f = 30.0F;
+   private static final float m = 50.0F;
+   private final fmh.a n;
+   private final Supplier<gze> o;
+   private float p = -5.0F;
+   private float q = 30.0F;
 
-   public fmh(fja $$0) {
-      this.b = $$0;
-   }
-
-   public void a(fkm $$0) {
-      hcu $$1 = this.b.ak();
-      if (!this.d && this.b.n.Y().c()) {
-         $$1.a(this);
-         this.d = true;
-      } else if (this.d && !this.b.n.Y().c()) {
-         $$1.b(this);
-         this.d = false;
-      }
-
-      if (this.d) {
-         fbn $$2 = $$1.b();
-         ezh $$3 = $$2.b();
-         ezh $$4 = $$2.c();
-         ezh $$5 = $$2.a();
-         this.e.clear();
-
-         for (fmh.b $$6 : this.c) {
-            if ($$6.c($$3)) {
-               this.e.add($$6);
-            }
-         }
-
-         if (!this.e.isEmpty()) {
-            int $$7 = 0;
-            int $$8 = 0;
-            double $$9 = this.b.n.C().c();
-            Iterator<fmh.b> $$10 = this.e.iterator();
-
-            while ($$10.hasNext()) {
-               fmh.b $$11 = $$10.next();
-               $$11.a(3000.0 * $$9);
-               if (!$$11.b()) {
-                  $$10.remove();
-               } else {
-                  $$8 = Math.max($$8, this.b.h.a($$11.a()));
-               }
-            }
-
-            $$8 += this.b.h.b("<") + this.b.h.b(" ") + this.b.h.b(">") + this.b.h.b(" ");
-
-            for (fmh.b $$12 : this.e) {
-               int $$13 = 255;
-               xh $$14 = $$12.a();
-               fmh.a $$15 = $$12.a($$3);
-               if ($$15 != null) {
-                  ezh $$16 = $$15.a.d($$3).d();
-                  double $$17 = $$5.b($$16);
-                  double $$18 = $$4.b($$16);
-                  boolean $$19 = $$18 > 0.5;
-                  int $$20 = $$8 / 2;
-                  int $$21 = 9;
-                  int $$22 = $$21 / 2;
-                  float $$23 = 1.0F;
-                  int $$24 = this.b.h.a($$14);
-                  int $$25 = azj.d(azj.b(255.0F, 75.0F, (float)(ad.c() - $$15.b) / (float)(3000.0 * $$9)));
-                  $$0.c().a();
-                  $$0.c().a((float)$$0.a() - (float)$$20 * 1.0F - 2.0F, (float)($$0.b() - 35) - (float)($$7 * ($$21 + 1)) * 1.0F, 0.0F);
-                  $$0.c().b(1.0F, 1.0F, 1.0F);
-                  $$0.a(-$$20 - 1, -$$22 - 1, $$20 + 1, $$22 + 1, this.b.n.b(0.8F));
-                  int $$26 = axu.a(255, $$25, $$25, $$25);
-                  if (!$$19) {
-                     if ($$17 > 0.0) {
-                        $$0.b(this.b.h, ">", $$20 - this.b.h.b(">"), -$$22, $$26);
-                     } else if ($$17 < 0.0) {
-                        $$0.b(this.b.h, "<", -$$20, -$$22, $$26);
-                     }
-                  }
-
-                  $$0.b(this.b.h, $$14, -$$24 / 2, -$$22, $$26);
-                  $$0.c().b();
-                  $$7++;
-               }
-            }
-         }
-      }
+   public fmh(int $$0, int $$1, gbi $$2, Supplier<gze> $$3) {
+      super(0, 0, $$0, $$1, xh.a);
+      this.n = fmh.a.a($$2);
+      this.o = $$3;
    }
 
    @Override
-   public void a(hbp $$0, hcv $$1, float $$2) {
-      if ($$1.a() != null) {
-         xh $$3 = $$1.a();
-         if (!this.c.isEmpty()) {
-            for (fmh.b $$4 : this.c) {
-               if ($$4.a().equals($$3)) {
-                  $$4.b(new ezh($$0.h(), $$0.i(), $$0.j()));
-                  return;
-               }
-            }
-         }
-
-         this.c.add(new fmh.b($$3, $$2, new ezh($$0.h(), $$0.i(), $$0.j())));
-      }
+   protected void b(fku $$0, int $$1, int $$2, float $$3) {
+      $$0.c().a();
+      $$0.c().a((float)this.D() + (float)this.y() / 2.0F, (float)(this.E() + this.w()), 100.0F);
+      float $$4 = (float)this.w() / 2.125F;
+      $$0.c().b($$4, $$4, $$4);
+      $$0.c().a(0.0F, -0.0625F, 0.0F);
+      $$0.c().a(a.b.rotationDegrees(this.p), 0.0F, -1.0625F, 0.0F);
+      $$0.c().a(a.d.rotationDegrees(this.q));
+      $$0.d();
+      fcx.a(a.b.rotationDegrees(this.p));
+      this.n.a($$0, this.o.get());
+      $$0.d();
+      fcx.d();
+      $$0.c().b();
    }
 
-   static record a(ezh a, long b) {
+   @Override
+   protected void b(double $$0, double $$1, double $$2, double $$3) {
+      this.p = azk.a(this.p - (float)$$3 * 2.5F, -50.0F, 50.0F);
+      this.q += (float)$$2 * 2.5F;
    }
 
-   static class b {
-      private final xh a;
-      private final float b;
-      private final List<fmh.a> c = new ArrayList<>();
+   @Override
+   public void a(hdf $$0) {
+   }
 
-      public b(xh $$0, float $$1, ezh $$2) {
-         this.a = $$0;
-         this.b = $$1;
-         this.c.add(new fmh.a($$2, ad.c()));
+   @Override
+   protected void a(fpf $$0) {
+   }
+
+   @Override
+   public boolean C() {
+      return false;
+   }
+
+   @Nullable
+   @Override
+   public fkr a(fpl $$0) {
+      return null;
+   }
+
+   static record a(fzp a, fzp b) {
+      public static fmh.a a(gbi $$0) {
+         fzp $$1 = new fzp($$0.a(gbl.bI), false);
+         fzp $$2 = new fzp($$0.a(gbl.bO), true);
+         return new fmh.a($$1, $$2);
       }
 
-      public xh a() {
-         return this.a;
-      }
-
-      @Nullable
-      public fmh.a a(ezh $$0) {
-         if (this.c.isEmpty()) {
-            return null;
-         } else {
-            return this.c.size() == 1 ? this.c.getFirst() : this.c.stream().min(Comparator.comparingDouble($$1 -> $$1.a().f($$0))).orElse(null);
-         }
-      }
-
-      public void b(ezh $$0) {
-         this.c.removeIf($$1 -> $$0.equals($$1.a()));
-         this.c.add(new fmh.a($$0, ad.c()));
-      }
-
-      public boolean c(ezh $$0) {
-         if (Float.isInfinite(this.b)) {
-            return true;
-         } else if (this.c.isEmpty()) {
-            return false;
-         } else {
-            fmh.a $$1 = this.a($$0);
-            return $$1 == null ? false : $$0.a((jz)$$1.a, (double)this.b);
-         }
-      }
-
-      public void a(double $$0) {
-         long $$1 = ad.c();
-         this.c.removeIf($$2 -> (double)($$1 - $$2.b()) > $$0);
-      }
-
-      public boolean b() {
-         return !this.c.isEmpty();
+      public void a(fku $$0, gze $$1) {
+         $$0.c().a();
+         $$0.c().b(1.0F, 1.0F, -1.0F);
+         $$0.c().a(0.0F, -1.501F, 0.0F);
+         fzp $$2 = $$1.e() == gze.a.a ? this.b : this.a;
+         gir $$3 = $$2.a($$1.a());
+         $$0.a($$3x -> $$2.a($$0.c(), $$3x.getBuffer($$3), 15728880, gxu.d));
+         $$0.c().b();
       }
    }
 }

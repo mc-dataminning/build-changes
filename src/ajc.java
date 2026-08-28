@@ -1,16 +1,8 @@
-public interface ajc extends abx {
-   @Override
-   default wc b() {
-      return wc.d;
-   }
+import javax.annotation.ParametersAreNonnullByDefault;
 
-   void a(ajf var1);
-
-   void a(aje var1);
-
-   void a(ajh var1);
-
-   void a(ajg var1);
-
-   void a(ajd var1);
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface ajc {
 }

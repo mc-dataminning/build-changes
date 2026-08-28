@@ -1,13 +1,13 @@
-import java.time.Instant;
+public interface bqd {
+   void a();
 
-public final class bqd {
-   public final Instant a;
-   public final int b;
-   public final boj c;
+   void b();
 
-   public bqd(Instant $$0, int $$1, boj $$2) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-   }
+   void c();
+
+   boolean e();
+
+   bon f();
+
+   void d();
 }

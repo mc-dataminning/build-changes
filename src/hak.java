@@ -1,61 +1,18 @@
-import it.unimi.dsi.fastutil.objects.Reference2ObjectOpenHashMap;
-import java.util.ArrayList;
-import java.util.BitSet;
-import java.util.Collections;
-import java.util.List;
 import java.util.Map;
-import java.util.function.Predicate;
-import javax.annotation.Nullable;
 
-public class hak extends gzy {
-   private final List<hak.a> b;
-   private final Map<dvd, BitSet> c = new Reference2ObjectOpenHashMap();
+public class hak extends avf<ddl> {
+   public static final ddl a = new ddl(Map.of());
+   private Map<ali, ddl> b = Map.of();
 
-   private static gzu a(List<hak.a> $$0) {
-      if ($$0.isEmpty()) {
-         throw new IllegalArgumentException("Model must have at least one selector");
-      } else {
-         return $$0.getFirst().b();
-      }
+   public hak() {
+      super(ddl.a, "models/equipment");
    }
 
-   public hak(List<hak.a> $$0) {
-      super(a($$0));
-      this.b = $$0;
+   protected void a(Map<ali, ddl> $$0, avb $$1, bon $$2) {
+      this.b = Map.copyOf($$0);
    }
 
-   @Override
-   public List<gjd> a(@Nullable dvd $$0, @Nullable jl $$1, azr $$2) {
-      if ($$0 == null) {
-         return Collections.emptyList();
-      } else {
-         BitSet $$3 = this.c.get($$0);
-         if ($$3 == null) {
-            $$3 = new BitSet();
-
-            for (int $$4 = 0; $$4 < this.b.size(); $$4++) {
-               if (this.b.get($$4).a.test($$0)) {
-                  $$3.set($$4);
-               }
-            }
-
-            this.c.put($$0, $$3);
-         }
-
-         List<gjd> $$5 = new ArrayList<>();
-         long $$6 = $$2.g();
-
-         for (int $$7 = 0; $$7 < $$3.length(); $$7++) {
-            if ($$3.get($$7)) {
-               $$2.b($$6);
-               $$5.addAll(this.b.get($$7).b.a($$0, $$1, $$2));
-            }
-         }
-
-         return $$5;
-      }
-   }
-
-   public static record a(Predicate<dvd> a, gzu b) {
+   public ddl a(ali $$0) {
+      return this.b.getOrDefault($$0, a);
    }
 }

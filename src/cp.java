@@ -1,52 +1,63 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
-import java.util.function.Predicate;
+import java.util.List;
+import java.util.function.Function;
 
-public record cp(cp.a c) implements dy<cyk> {
-   public static final Codec<cp> a = cp.a.a.xmap(cp::new, cp::b);
+public abstract class cp implements dz<dby> {
+   private final List<br> a;
 
-   @Override
-   public ks<cyk> a() {
-      return kt.ad;
+   protected cp(List<br> $$0) {
+      this.a = $$0;
    }
 
-   public boolean a(cvx $$0, cyk $$1) {
-      return this.c.a($$1);
+   public static <T extends cp> Codec<T> a(Function<List<br>, T> $$0) {
+      return br.a.listOf().xmap($$0, cp::b);
    }
 
-   public cp.a b() {
-      return this.c;
+   protected List<br> b() {
+      return this.a;
    }
 
-   public static record a(Optional<cyk.a> b, Optional<Boolean> c, Optional<Boolean> d) implements Predicate<cyk> {
-      public static final Codec<cp.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(
-                  cyk.a.g.optionalFieldOf("shape").forGetter(cp.a::a),
-                  Codec.BOOL.optionalFieldOf("has_twinkle").forGetter(cp.a::b),
-                  Codec.BOOL.optionalFieldOf("has_trail").forGetter(cp.a::c)
-               )
-               .apply($$0, cp.a::new)
-      );
-
-      public boolean a(cyk $$0) {
-         if (this.b.isPresent() && this.b.get() != $$0.a()) {
+   public boolean a(cwb $$0, dby $$1) {
+      for (br $$2 : this.a) {
+         if (!$$2.a($$1)) {
             return false;
-         } else {
-            return this.c.isPresent() && this.c.get() != $$0.e() ? false : !this.d.isPresent() || this.d.get() == $$0.d();
          }
       }
 
-      public Optional<cyk.a> a() {
-         return this.b;
+      return true;
+   }
+
+   public static cp.a a(List<br> $$0) {
+      return new cp.a($$0);
+   }
+
+   public static cp.b b(List<br> $$0) {
+      return new cp.b($$0);
+   }
+
+   public static class a extends cp {
+      public static final Codec<cp.a> a = a(cp.a::new);
+
+      protected a(List<br> $$0) {
+         super($$0);
       }
 
-      public Optional<Boolean> b() {
-         return this.c;
+      @Override
+      public kt<dby> a() {
+         return ku.l;
+      }
+   }
+
+   public static class b extends cp {
+      public static final Codec<cp.b> a = a(cp.b::new);
+
+      protected b(List<br> $$0) {
+         super($$0);
       }
 
-      public Optional<Boolean> c() {
-         return this.d;
+      @Override
+      public kt<dby> a() {
+         return ku.I;
       }
    }
 }

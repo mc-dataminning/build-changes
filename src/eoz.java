@@ -1,45 +1,93 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 import javax.annotation.Nullable;
 
-public class eoz extends epq {
-   public static final MapCodec<eoz> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(eaz.a.g.fieldOf("heightmap").orElse(eaz.a.a).forGetter($$0x -> $$0x.b), Codec.INT.fieldOf("offset").orElse(0).forGetter($$0x -> $$0x.c))
-            .apply($$0, eoz::new)
-   );
-   private final eaz.a b;
-   private final int c;
+public class eoz extends epw {
+   public static final MapCodec<eoz> a = Codec.FLOAT.fieldOf("mossiness").xmap(eoz::new, $$0 -> $$0.f);
+   private static final float b = 0.5F;
+   private static final float c = 0.5F;
+   private static final float d = 0.15F;
+   private static final dvj[] e = new dvj[]{dig.jD.m(), dig.jK.m()};
+   private final float f;
 
-   public eoz(eaz.a $$0, int $$1) {
-      this.b = $$0;
-      this.c = $$1;
+   public eoz(float $$0) {
+      this.f = $$0;
    }
 
    @Nullable
    @Override
-   public ept.c a(dey $$0, jg $$1, jg $$2, ept.c $$3, ept.c $$4, epp $$5) {
-      eaz.a $$6;
-      if ($$0 instanceof arm) {
-         if (this.b == eaz.a.a) {
-            $$6 = eaz.a.b;
-         } else if (this.b == eaz.a.c) {
-            $$6 = eaz.a.d;
-         } else {
-            $$6 = this.b;
-         }
-      } else {
-         $$6 = this.b;
+   public epz.c a(dfe $$0, jh $$1, jh $$2, epz.c $$3, epz.c $$4, epv $$5) {
+      azs $$6 = $$5.b($$4.a());
+      dvj $$7 = $$4.b();
+      jh $$8 = $$4.a();
+      dvj $$9 = null;
+      if ($$7.a(dig.eH) || $$7.a(dig.b) || $$7.a(dig.eK)) {
+         $$9 = this.a($$6);
+      } else if ($$7.a(axa.K)) {
+         $$9 = this.a($$6, $$4.b());
+      } else if ($$7.a(axa.L)) {
+         $$9 = this.b($$6);
+      } else if ($$7.a(axa.M)) {
+         $$9 = this.c($$6);
+      } else if ($$7.a(dig.co)) {
+         $$9 = this.d($$6);
       }
 
-      jg $$10 = $$4.a();
-      int $$11 = $$0.a($$6, $$10.u(), $$10.w()) + this.c;
-      int $$12 = $$3.a().v();
-      return new ept.c(new jg($$10.u(), $$11 + $$12, $$10.w()), $$4.b(), $$4.c());
+      return $$9 != null ? new epz.c($$8, $$9, $$4.c()) : $$4;
+   }
+
+   @Nullable
+   private dvj a(azs $$0) {
+      if ($$0.i() >= 0.5F) {
+         return null;
+      } else {
+         dvj[] $$1 = new dvj[]{dig.eJ.m(), a($$0, dig.fj)};
+         dvj[] $$2 = new dvj[]{dig.eI.m(), a($$0, dig.ng)};
+         return this.a($$0, $$1, $$2);
+      }
+   }
+
+   @Nullable
+   private dvj a(azs $$0, dvj $$1) {
+      jm $$2 = $$1.c(dpy.b);
+      dwi $$3 = $$1.c(dpy.c);
+      if ($$0.i() >= 0.5F) {
+         return null;
+      } else {
+         dvj[] $$4 = new dvj[]{dig.ng.m().b(dpy.b, $$2).b(dpy.c, $$3), dig.nu.m()};
+         return this.a($$0, e, $$4);
+      }
+   }
+
+   @Nullable
+   private dvj b(azs $$0) {
+      return $$0.i() < this.f ? dig.nu.m() : null;
+   }
+
+   @Nullable
+   private dvj c(azs $$0) {
+      return $$0.i() < this.f ? dig.nI.m() : null;
+   }
+
+   @Nullable
+   private dvj d(azs $$0) {
+      return $$0.i() < 0.15F ? dig.pk.m() : null;
+   }
+
+   private static dvj a(azs $$0, die $$1) {
+      return $$1.m().b(dpy.b, jm.c.a.a($$0)).b(dpy.c, ae.a(dwi.values(), $$0));
+   }
+
+   private dvj a(azs $$0, dvj[] $$1, dvj[] $$2) {
+      return $$0.i() < this.f ? a($$0, $$2) : a($$0, $$1);
+   }
+
+   private static dvj a(azs $$0, dvj[] $$1) {
+      return $$1[$$0.a($$1.length)];
    }
 
    @Override
-   protected eps<?> a() {
-      return eps.g;
+   protected epy<?> a() {
+      return epy.k;
    }
 }

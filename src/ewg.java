@@ -1,39 +1,36 @@
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
-import java.util.Set;
+import java.util.Optional;
 
-public class ewg extends evj {
-   static final MapCodec<ewg> a = RecordCodecBuilder.mapCodec($$0 -> a($$0).and(eye.a.fieldOf("amplifier").forGetter($$0x -> $$0x.b)).apply($$0, ewg::new));
-   private final eyd b;
+public class ewg extends evp {
+   public static final MapCodec<ewg> a = RecordCodecBuilder.mapCodec(
+      $$0 -> a($$0).and(axq.b(lz.I).fieldOf("options").forGetter($$0x -> $$0x.b)).apply($$0, ewg::new)
+   );
+   private final axq<cvu> b;
 
-   private ewg(List<exh> $$0, eyd $$1) {
+   private ewg(List<exn> $$0, axq<cvu> $$1) {
       super($$0);
       this.b = $$1;
    }
 
    @Override
-   public Set<ewp<?>> a() {
-      return this.b.a();
+   public evr<ewg> b() {
+      return evs.G;
    }
 
    @Override
-   public evl<ewg> b() {
-      return evm.Q;
-   }
+   public cwb a(cwb $$0, euc $$1) {
+      kd<cvu> $$2 = $$1.d().H_().e(lz.I);
+      Optional<jq<cvu>> $$3 = $$2.a(this.b, $$1.b());
+      if ($$3.isPresent()) {
+         $$0.b(ku.Z, $$3.get());
+      }
 
-   @Override
-   public cvx a(cvx $$0, etw $$1) {
-      int $$2 = azj.a(this.b.a($$1), 0, 4);
-      $$0.b(kt.Z, new cyt($$2));
       return $$0;
    }
 
-   public eyd c() {
-      return this.b;
-   }
-
-   public static evj.a<?> a(eyd $$0) {
+   public static evp.a<?> a(axq<cvu> $$0) {
       return a($$1 -> new ewg($$1, $$0));
    }
 }

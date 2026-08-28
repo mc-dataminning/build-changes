@@ -1,84 +1,102 @@
-import java.util.EnumSet;
-import java.util.function.Predicate;
-import javax.annotation.Nullable;
+import java.util.Optional;
 
-public class cba<T extends buv> extends cbt {
-   protected final bvd a;
-   private final double i;
-   private final double j;
-   @Nullable
-   protected T b;
-   protected final float c;
-   @Nullable
-   protected ers d;
-   protected final ceh e;
-   protected final Class<T> f;
-   protected final Predicate<buv> g;
-   protected final Predicate<buv> h;
-   private final cfm k;
+public class cba implements cax {
+   protected final bvc a;
+   protected float b;
+   protected float c;
+   protected int d;
+   protected double e;
+   protected double f;
+   protected double g;
 
-   public cba(bvd $$0, Class<T> $$1, float $$2, double $$3, double $$4) {
-      this($$0, $$1, $$0x -> true, $$2, $$3, $$4, bue.e::test);
+   public cba(bvc $$0) {
+      this.a = $$0;
    }
 
-   public cba(bvd $$0, Class<T> $$1, Predicate<buv> $$2, float $$3, double $$4, double $$5, Predicate<buv> $$6) {
-      this.a = $$0;
+   public void a(ezn $$0) {
+      this.a($$0.d, $$0.e, $$0.f);
+   }
+
+   public void a(bue $$0) {
+      this.a($$0.dC(), b($$0), $$0.dI());
+   }
+
+   public void a(bue $$0, float $$1, float $$2) {
+      this.a($$0.dC(), b($$0), $$0.dI(), $$1, $$2);
+   }
+
+   public void a(double $$0, double $$1, double $$2) {
+      this.a($$0, $$1, $$2, (float)this.a.ah(), (float)this.a.ad());
+   }
+
+   public void a(double $$0, double $$1, double $$2, float $$3, float $$4) {
+      this.e = $$0;
       this.f = $$1;
       this.g = $$2;
-      this.c = $$3;
-      this.i = $$4;
-      this.j = $$5;
-      this.h = $$6;
-      this.e = $$0.P();
-      this.a(EnumSet.of(cbt.a.a));
-      this.k = cfm.a().a((double)$$3).a($$6.and($$2));
+      this.b = $$3;
+      this.c = $$4;
+      this.d = 2;
    }
 
-   public cba(bvd $$0, Class<T> $$1, float $$2, double $$3, double $$4, Predicate<buv> $$5) {
-      this($$0, $$1, $$0x -> true, $$2, $$3, $$4, $$5);
-   }
-
-   @Override
-   public boolean b() {
-      this.b = this.a
-         .dX()
-         .a(this.a.dX().a(this.f, this.a.cS().c((double)this.c, 3.0, (double)this.c), $$0x -> true), this.k, this.a, this.a.dC(), this.a.dE(), this.a.dI());
-      if (this.b == null) {
-         return false;
-      } else {
-         ezh $$0 = cfq.a(this.a, 16, 7, this.b.dv());
-         if ($$0 == null) {
-            return false;
-         } else if (this.b.i($$0.d, $$0.e, $$0.f) < this.b.g(this.a)) {
-            return false;
-         } else {
-            this.d = this.e.a($$0.d, $$0.e, $$0.f, 0);
-            return this.d != null;
-         }
-      }
-   }
-
-   @Override
-   public boolean c() {
-      return !this.e.m();
-   }
-
-   @Override
-   public void d() {
-      this.e.a(this.d, this.i);
-   }
-
-   @Override
-   public void e() {
-      this.b = null;
-   }
-
-   @Override
    public void a() {
-      if (this.a.g((btz)this.b) < 49.0) {
-         this.a.P().a(this.j);
-      } else {
-         this.a.P().a(this.i);
+      if (this.c()) {
+         this.a.w(0.0F);
       }
+
+      if (this.d > 0) {
+         this.d--;
+         this.i().ifPresent($$0 -> this.a.aZ = this.a(this.a.aZ, $$0, this.b));
+         this.h().ifPresent($$0 -> this.a.w(this.a(this.a.dP(), $$0, this.c)));
+      } else {
+         this.a.aZ = this.a(this.a.aZ, this.a.aX, 10.0F);
+      }
+
+      this.b();
+   }
+
+   protected void b() {
+      if (!this.a.P().m()) {
+         this.a.aZ = azk.c(this.a.aZ, this.a.aX, (float)this.a.ae());
+      }
+   }
+
+   protected boolean c() {
+      return true;
+   }
+
+   public boolean d() {
+      return this.d > 0;
+   }
+
+   public double e() {
+      return this.e;
+   }
+
+   public double f() {
+      return this.f;
+   }
+
+   public double g() {
+      return this.g;
+   }
+
+   protected Optional<Float> h() {
+      double $$0 = this.e - this.a.dC();
+      double $$1 = this.f - this.a.dG();
+      double $$2 = this.g - this.a.dI();
+      double $$3 = Math.sqrt($$0 * $$0 + $$2 * $$2);
+      return !(Math.abs($$1) > 1.0E-5F) && !(Math.abs($$3) > 1.0E-5F) ? Optional.empty() : Optional.of((float)(-(azk.d($$1, $$3) * 180.0F / (float)Math.PI)));
+   }
+
+   protected Optional<Float> i() {
+      double $$0 = this.e - this.a.dC();
+      double $$1 = this.g - this.a.dI();
+      return !(Math.abs($$1) > 1.0E-5F) && !(Math.abs($$0) > 1.0E-5F)
+         ? Optional.empty()
+         : Optional.of((float)(azk.d($$1, $$0) * 180.0F / (float)Math.PI) - 90.0F);
+   }
+
+   private static double b(bue $$0) {
+      return $$0 instanceof bva ? $$0.dG() : ($$0.cS().b + $$0.cS().e) / 2.0;
    }
 }

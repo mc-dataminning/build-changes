@@ -1,32 +1,41 @@
-import com.mojang.datafixers.kinds.App;
+import com.google.common.collect.ImmutableMap;
 import java.util.Optional;
-import java.util.function.Function;
-import java.util.function.Predicate;
 
-public class bxl {
-   public static <T extends buv> bwp<buv> a(bug<? extends T> $$0, int $$1, cdz<T> $$2, float $$3, int $$4) {
-      return a($$0, $$1, $$0x -> true, $$0x -> true, $$2, $$3, $$4);
+public class bxl extends bwt<cny> {
+   private static final int d = 1200;
+   final float c;
+
+   public bxl(float $$0) {
+      super(ImmutableMap.of(cee.d, cef.a), 1200);
+      this.c = $$0;
    }
 
-   public static <E extends buv, T extends buv> bwp<E> a(bug<? extends T> $$0, int $$1, Predicate<E> $$2, Predicate<T> $$3, cdz<T> $$4, float $$5, int $$6) {
-      int $$7 = $$1 * $$1;
-      Predicate<buv> $$8 = $$2x -> $$0.equals($$2x.aq()) && $$3.test((T)$$2x);
-      return cab.a(
-         (Function<cab.b<E>, ? extends App<cab.c<E>, cae<E>>>)($$6x -> $$6x.group($$6x.a($$4), $$6x.a(cdz.n), $$6x.c(cdz.m), $$6x.b(cdz.h))
-               .apply($$6x, ($$6xx, $$7x, $$8x, $$9) -> ($$10, $$11, $$12) -> {
-                     ceb $$13 = $$6x.b($$9);
-                     if ($$2.test((E)$$11) && $$13.d($$8)) {
-                        Optional<buv> $$14 = $$13.a($$3xxxx -> $$3xxxx.g((btz)$$11) <= (double)$$7 && $$8.test($$3xxxx));
-                        $$14.ifPresent($$5xxxx -> {
-                           $$6xx.a($$5xxxx);
-                           $$7x.a(new bwz($$5xxxx, true));
-                           $$8x.a(new cec(new bwz($$5xxxx, false), $$5, $$6));
-                        });
-                        return true;
-                     } else {
-                        return false;
-                     }
-                  }))
-      );
+   protected boolean a(arn $$0, cny $$1) {
+      return $$1.ed().g().map($$0x -> $$0x == cqe.b || $$0x == cqe.c || $$0x == cqe.d).orElse(true);
+   }
+
+   protected boolean a(arn $$0, cny $$1, long $$2) {
+      return $$1.ed().a(cee.d);
+   }
+
+   protected void b(arn $$0, cny $$1, long $$2) {
+      bwv.a($$1, $$1.ed().c(cee.d).get().b(), this.c, 1);
+   }
+
+   protected void c(arn $$0, cny $$1, long $$2) {
+      Optional<jp> $$3 = $$1.ed().c(cee.d);
+      $$3.ifPresent($$1x -> {
+         jh $$2x = $$1x.b();
+         arn $$3x = $$0.o().a($$1x.a());
+         if ($$3x != null) {
+            cge $$4 = $$3x.y();
+            if ($$4.a($$2x, $$0xx -> true)) {
+               $$4.b($$2x);
+            }
+
+            ags.c($$0, $$2x);
+         }
+      });
+      $$1.ed().b(cee.d);
    }
 }

@@ -1,37 +1,38 @@
-public class aen implements zo<acd> {
-   public static final zf<we, aen> a = zo.a(aen::a, aen::new);
-   private final int b;
-   private final double c;
+import java.util.Set;
 
-   public aen(int $$0, double $$1) {
-      this.b = $$0;
-      this.c = $$1;
-   }
+public record aen(int b, ezn c, ezn d, float e, float f, Set<bvo> g) implements zp<ace> {
+   public static final zg<wf, aen> a = zg.a(ze.h, aen::b, ezn.b, aen::e, ezn.b, aen::f, ze.j, aen::g, ze.j, aen::h, bvo.m, aen::i, aen::new);
 
-   private aen(we $$0) {
-      this.b = $$0.l();
-      this.c = $$0.readDouble();
-   }
-
-   private void a(we $$0) {
-      $$0.c(this.b);
-      $$0.a(this.c);
+   public static aen a(int $$0, bvn $$1, Set<bvo> $$2) {
+      return new aen($$0, $$1.a(), $$1.b(), $$1.c(), $$1.d(), $$2);
    }
 
    @Override
-   public zq<aen> a() {
-      return ags.bf;
+   public zr<aen> a() {
+      return agt.ai;
    }
 
-   public void a(acd $$0) {
+   public void a(ace $$0) {
       $$0.a(this);
    }
 
-   public int b() {
-      return this.b;
+   public ezn e() {
+      return this.c;
    }
 
-   public double e() {
-      return this.c;
+   public ezn f() {
+      return this.d;
+   }
+
+   public float g() {
+      return this.e;
+   }
+
+   public float h() {
+      return this.f;
+   }
+
+   public Set<bvo> i() {
+      return this.g;
    }
 }

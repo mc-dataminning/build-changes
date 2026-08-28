@@ -1,45 +1,6 @@
-import java.util.ArrayList;
-import java.util.List;
+public interface bnn {
+   bnn a = () -> {
+   };
 
-public interface bnn<S> {
-   void a(int var1, bns<S> var2, Object var3);
-
-   default void a(int $$0, Object $$1) {
-      this.a($$0, bns.b(), $$1);
-   }
-
-   void a(int var1);
-
-   public static class a<S> implements bnn<S> {
-      private final List<bno<S>> a = new ArrayList<>();
-      private int b = -1;
-
-      private void b(int $$0) {
-         if ($$0 > this.b) {
-            this.b = $$0;
-            this.a.clear();
-         }
-      }
-
-      @Override
-      public void a(int $$0) {
-         this.b($$0);
-      }
-
-      @Override
-      public void a(int $$0, bns<S> $$1, Object $$2) {
-         this.b($$0);
-         if ($$0 == this.b) {
-            this.a.add(new bno<>($$0, $$1, $$2));
-         }
-      }
-
-      public List<bno<S>> a() {
-         return this.a;
-      }
-
-      public int b() {
-         return this.b;
-      }
-   }
+   void cut();
 }

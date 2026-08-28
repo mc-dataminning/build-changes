@@ -1,43 +1,47 @@
-public class fzj<T extends gva> extends fxz<T> {
-   protected final gbb b;
-   protected final gbb c;
-   protected final gbb d;
-   protected final gbb e;
-   protected final gbb f;
-   protected final gbb g;
+public class fzj extends fyk<gvv> {
+   private static final String a = "tail_base";
+   private static final String b = "tail_tip";
+   private final gbm c;
+   private final gbm d;
+   private final gbm e;
+   private final gbm f;
+   private final gbm g;
+   private final gbm i;
 
-   protected fzj(gbb $$0) {
+   public fzj(gbm $$0) {
       super($$0);
-      this.b = $$0.b("head");
-      this.c = $$0.b("body");
-      this.d = $$0.b("right_hind_leg");
-      this.e = $$0.b("left_hind_leg");
-      this.f = $$0.b("right_front_leg");
-      this.g = $$0.b("left_front_leg");
+      gbm $$1 = $$0.b("body");
+      this.g = $$1.b("tail_base");
+      this.i = this.g.b("tail_tip");
+      this.c = $$1.b("left_wing_base");
+      this.d = this.c.b("left_wing_tip");
+      this.e = $$1.b("right_wing_base");
+      this.f = this.e.b("right_wing_tip");
    }
 
-   public static gbj a(int $$0, gbf $$1) {
-      gbj $$2 = new gbj();
-      gbl $$3 = $$2.a();
-      $$3.a("head", gbg.c().a(0, 0).a(-4.0F, -4.0F, -8.0F, 8.0F, 8.0F, 8.0F, $$1), gbd.a(0.0F, (float)(18 - $$0), -6.0F));
-      $$3.a("body", gbg.c().a(28, 8).a(-5.0F, -10.0F, -7.0F, 10.0F, 16.0F, 8.0F, $$1), gbd.a(0.0F, (float)(17 - $$0), 2.0F, (float) (Math.PI / 2), 0.0F, 0.0F));
-      gbg $$4 = gbg.c().a(0, 16).a(-2.0F, 0.0F, -2.0F, 4.0F, (float)$$0, 4.0F, $$1);
-      $$3.a("right_hind_leg", $$4, gbd.a(-3.0F, (float)(24 - $$0), 7.0F));
-      $$3.a("left_hind_leg", $$4, gbd.a(3.0F, (float)(24 - $$0), 7.0F));
-      $$3.a("right_front_leg", $$4, gbd.a(-3.0F, (float)(24 - $$0), -5.0F));
-      $$3.a("left_front_leg", $$4, gbd.a(3.0F, (float)(24 - $$0), -5.0F));
-      return $$2;
+   public static gbs a() {
+      gbu $$0 = new gbu();
+      gbw $$1 = $$0.a();
+      gbw $$2 = $$1.a("body", gbr.c().a(0, 8).a(-3.0F, -2.0F, -8.0F, 5.0F, 3.0F, 9.0F), gbo.b(-0.1F, 0.0F, 0.0F));
+      gbw $$3 = $$2.a("tail_base", gbr.c().a(3, 20).a(-2.0F, 0.0F, 0.0F, 3.0F, 2.0F, 6.0F), gbo.a(0.0F, -2.0F, 1.0F));
+      $$3.a("tail_tip", gbr.c().a(4, 29).a(-1.0F, 0.0F, 0.0F, 1.0F, 1.0F, 6.0F), gbo.a(0.0F, 0.5F, 6.0F));
+      gbw $$4 = $$2.a("left_wing_base", gbr.c().a(23, 12).a(0.0F, 0.0F, 0.0F, 6.0F, 2.0F, 9.0F), gbo.a(2.0F, -2.0F, -8.0F, 0.0F, 0.0F, 0.1F));
+      $$4.a("left_wing_tip", gbr.c().a(16, 24).a(0.0F, 0.0F, 0.0F, 13.0F, 1.0F, 9.0F), gbo.a(6.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.1F));
+      gbw $$5 = $$2.a("right_wing_base", gbr.c().a(23, 12).a().a(-6.0F, 0.0F, 0.0F, 6.0F, 2.0F, 9.0F), gbo.a(-3.0F, -2.0F, -8.0F, 0.0F, 0.0F, -0.1F));
+      $$5.a("right_wing_tip", gbr.c().a(16, 24).a().a(-13.0F, 0.0F, 0.0F, 13.0F, 1.0F, 9.0F), gbo.a(-6.0F, 0.0F, 0.0F, 0.0F, 0.0F, -0.1F));
+      $$2.a("head", gbr.c().a(0, 0).a(-4.0F, -2.0F, -5.0F, 7.0F, 3.0F, 5.0F), gbo.a(0.0F, 1.0F, -7.0F, 0.2F, 0.0F, 0.0F));
+      return gbs.a($$0, 64, 64);
    }
 
-   public void a(T $$0) {
+   public void a(gvv $$0) {
       super.a($$0);
-      this.b.e = $$0.V * (float) (Math.PI / 180.0);
-      this.b.f = $$0.U * (float) (Math.PI / 180.0);
-      float $$1 = $$0.X;
-      float $$2 = $$0.Y;
-      this.d.e = azj.b($$1 * 0.6662F) * 1.4F * $$2;
-      this.e.e = azj.b($$1 * 0.6662F + (float) Math.PI) * 1.4F * $$2;
-      this.f.e = azj.b($$1 * 0.6662F + (float) Math.PI) * 1.4F * $$2;
-      this.g.e = azj.b($$1 * 0.6662F) * 1.4F * $$2;
+      float $$1 = $$0.a * 7.448451F * (float) (Math.PI / 180.0);
+      float $$2 = 16.0F;
+      this.c.g = azk.b($$1) * 16.0F * (float) (Math.PI / 180.0);
+      this.d.g = azk.b($$1) * 16.0F * (float) (Math.PI / 180.0);
+      this.e.g = -this.c.g;
+      this.f.g = -this.d.g;
+      this.g.e = -(5.0F + azk.b($$1 * 2.0F) * 5.0F) * (float) (Math.PI / 180.0);
+      this.i.e = -(5.0F + azk.b($$1 * 2.0F) * 5.0F) * (float) (Math.PI / 180.0);
    }
 }

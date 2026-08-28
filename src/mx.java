@@ -2,45 +2,42 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import java.nio.file.Path;
 import java.util.concurrent.CompletableFuture;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
-public class mx implements me {
-   private final mg d;
+public class mx implements mf {
+   private final mh d;
 
-   public mx(mg $$0) {
+   public mx(mh $$0) {
       this.d = $$0;
    }
 
    @Override
-   public CompletableFuture<?> a(mc $$0) {
-      JsonObject $$1 = new JsonObject();
-      lx.az.c().forEach($$1x -> $$1.add($$1x.h().a().toString(), a((kc)$$1x.a())));
-      Path $$2 = this.d.a(mg.b.c).resolve("registries.json");
-      return me.a($$0, $$1, $$2);
+   public CompletableFuture<?> a(md $$0) {
+      Path $$1 = this.d.a(mh.b.c).resolve("packets.json");
+      return mf.a($$0, this.b(), $$1);
    }
 
-   private static <T> JsonElement a(kc<T> $$0) {
-      JsonObject $$1 = new JsonObject();
-      if ($$0 instanceof jk) {
-         alh $$2 = ((jk)$$0).b();
-         $$1.addProperty("default", $$2.toString());
-      }
-
-      int $$3 = lx.az.a($$0);
-      $$1.addProperty("protocol_id", $$3);
-      JsonObject $$4 = new JsonObject();
-      $$0.c().forEach($$2 -> {
-         T $$3x = $$2.a();
-         int $$4x = $$0.a($$3x);
-         JsonObject $$5 = new JsonObject();
-         $$5.addProperty("protocol_id", $$4x);
-         $$4.add($$2.h().a().toString(), $$5);
+   private JsonElement b() {
+      JsonObject $$0 = new JsonObject();
+      Stream.of(aja.a, akj.c, akj.a, ajk.c, ajk.a, abt.c, abt.a, agu.b, agu.a).collect(Collectors.groupingBy(wq.a::a)).forEach(($$1, $$2) -> {
+         JsonObject $$3 = new JsonObject();
+         $$0.add($$1.a(), $$3);
+         $$2.forEach($$1x -> {
+            JsonObject $$2x = new JsonObject();
+            $$3.add($$1x.b().b(), $$2x);
+            $$1x.a(($$1xx, $$2xx) -> {
+               JsonObject $$3x = new JsonObject();
+               $$3x.addProperty("protocol_id", $$2xx);
+               $$2x.add($$1xx.b().toString(), $$3x);
+            });
+         });
       });
-      $$1.add("entries", $$4);
-      return $$1;
+      return $$0;
    }
 
    @Override
-   public final String a() {
-      return "Registry Dump";
+   public String a() {
+      return "Packet Report";
    }
 }

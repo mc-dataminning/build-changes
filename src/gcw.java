@@ -1,85 +1,169 @@
-import com.mojang.authlib.exceptions.MinecraftClientException;
-import com.mojang.authlib.exceptions.MinecraftClientHttpException;
-import com.mojang.authlib.minecraft.UserApiService;
-import com.mojang.authlib.minecraft.report.AbuseReport;
-import com.mojang.authlib.minecraft.report.AbuseReportLimits;
-import com.mojang.authlib.yggdrasil.request.AbuseReportRequest;
-import com.mojang.datafixers.util.Unit;
-import java.util.UUID;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.CompletionException;
+import com.mojang.logging.LogUtils;
+import java.io.IOException;
+import java.util.Base64;
+import java.util.Collections;
+import java.util.List;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public interface gcw {
-   static gcw a(gdc $$0, UserApiService $$1) {
-      return new gcw.b($$0, $$1);
+public class gcw {
+   private static final Logger j = LogUtils.getLogger();
+   private static final int k = 1024;
+   public String a;
+   public String b;
+   public xi c;
+   public xi d;
+   @Nullable
+   public akf.b e;
+   public long f;
+   public int g = ab.b().e();
+   public xi h = xi.b(ab.b().c());
+   public List<xi> i = Collections.emptyList();
+   private gcw.a l = gcw.a.c;
+   @Nullable
+   private byte[] m;
+   private gcw.c n;
+   private gcw.b o = gcw.b.a;
+
+   public gcw(String $$0, String $$1, gcw.c $$2) {
+      this.a = $$0;
+      this.b = $$1;
+      this.n = $$2;
    }
 
-   CompletableFuture<Unit> a(UUID var1, gde var2, AbuseReport var3);
-
-   boolean a();
-
-   default AbuseReportLimits b() {
-      return AbuseReportLimits.DEFAULTS;
-   }
-
-   public static class a extends yh {
-      public a(xh $$0, Throwable $$1) {
-         super($$0, $$1);
+   public uk a() {
+      uk $$0 = new uk();
+      $$0.a("name", this.a);
+      $$0.a("ip", this.b);
+      if (this.m != null) {
+         $$0.a("icon", Base64.getEncoder().encodeToString(this.m));
       }
+
+      if (this.l == gcw.a.a) {
+         $$0.a("acceptTextures", true);
+      } else if (this.l == gcw.a.b) {
+         $$0.a("acceptTextures", false);
+      }
+
+      return $$0;
    }
 
-   public static record b(gdc a, UserApiService b) implements gcw {
-      private static final xh c = xh.c("gui.abuseReport.send.service_unavailable");
-      private static final xh d = xh.c("gui.abuseReport.send.http_error");
-      private static final xh e = xh.c("gui.abuseReport.send.json_error");
+   public gcw.a b() {
+      return this.l;
+   }
 
-      @Override
-      public CompletableFuture<Unit> a(UUID $$0, gde $$1, AbuseReport $$2) {
-         return CompletableFuture.supplyAsync(() -> {
-            AbuseReportRequest $$3 = new AbuseReportRequest(1, $$0, $$2, this.a.b(), this.a.c(), this.a.d(), $$1.a());
+   public void a(gcw.a $$0) {
+      this.l = $$0;
+   }
 
-            try {
-               this.b.reportAbuse($$3);
-               return Unit.INSTANCE;
-            } catch (MinecraftClientHttpException var7) {
-               xh $$5 = this.a(var7);
-               throw new CompletionException(new gcw.a($$5, var7));
-            } catch (MinecraftClientException var8) {
-               xh $$7 = this.a(var8);
-               throw new CompletionException(new gcw.a($$7, var8));
+   public static gcw a(uk $$0) {
+      gcw $$1 = new gcw($$0.l("name"), $$0.l("ip"), gcw.c.c);
+      if ($$0.b("icon", 8)) {
+         try {
+            byte[] $$2 = Base64.getDecoder().decode($$0.l("icon"));
+            $$1.a(b($$2));
+         } catch (IllegalArgumentException var3) {
+            j.warn("Malformed base64 server icon", var3);
+         }
+      }
+
+      if ($$0.b("acceptTextures", 99)) {
+         if ($$0.q("acceptTextures")) {
+            $$1.a(gcw.a.a);
+         } else {
+            $$1.a(gcw.a.b);
+         }
+      } else {
+         $$1.a(gcw.a.c);
+      }
+
+      return $$1;
+   }
+
+   @Nullable
+   public byte[] c() {
+      return this.m;
+   }
+
+   public void a(@Nullable byte[] $$0) {
+      this.m = $$0;
+   }
+
+   public boolean d() {
+      return this.n == gcw.c.a;
+   }
+
+   public boolean e() {
+      return this.n == gcw.c.b;
+   }
+
+   public gcw.c f() {
+      return this.n;
+   }
+
+   public void a(gcw $$0) {
+      this.b = $$0.b;
+      this.a = $$0.a;
+      this.m = $$0.m;
+   }
+
+   public void b(gcw $$0) {
+      this.a($$0);
+      this.a($$0.b());
+      this.n = $$0.n;
+   }
+
+   public gcw.b g() {
+      return this.o;
+   }
+
+   public void a(gcw.b $$0) {
+      this.o = $$0;
+   }
+
+   @Nullable
+   public static byte[] b(@Nullable byte[] $$0) {
+      if ($$0 != null) {
+         try {
+            azp $$1 = azp.a($$0);
+            if ($$1.a() <= 1024 && $$1.b() <= 1024) {
+               return $$0;
             }
-         }, ad.h());
+         } catch (IOException var2) {
+            j.warn("Failed to decode server icon", var2);
+         }
       }
 
-      @Override
-      public boolean a() {
-         return this.b.canSendReports();
+      return null;
+   }
+
+   public static enum a {
+      a("enabled"),
+      b("disabled"),
+      c("prompt");
+
+      private final xi d;
+
+      private a(final String $$0) {
+         this.d = xi.c("addServer.resourcePack." + $$0);
       }
 
-      private xh a(MinecraftClientHttpException $$0) {
-         return xh.a("gui.abuseReport.send.error_message", $$0.getMessage());
+      public xi a() {
+         return this.d;
       }
+   }
 
-      private xh a(MinecraftClientException $$0) {
-         return switch ($$0.getType()) {
-            case SERVICE_UNAVAILABLE -> c;
-            case HTTP_ERROR -> d;
-            case JSON_ERROR -> e;
-            default -> throw new MatchException(null, null);
-         };
-      }
+   public static enum b {
+      a,
+      b,
+      c,
+      d,
+      e;
+   }
 
-      @Override
-      public AbuseReportLimits b() {
-         return this.b.getAbuseReportLimits();
-      }
-
-      public gdc c() {
-         return this.a;
-      }
-
-      public UserApiService d() {
-         return this.b;
-      }
+   public static enum c {
+      a,
+      b,
+      c;
    }
 }

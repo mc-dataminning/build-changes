@@ -1,42 +1,34 @@
-import java.util.Optional;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.stream.Stream;
 
-public class ekw extends ebw {
-   private final dfs a;
-   private final dxa b;
-   private final Optional<ekv> c;
+public class ekw extends ele {
+   public static final MapCodec<ekw> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(eke.c.fieldOf("height").forGetter($$0x -> $$0x.c)).apply($$0, ekw::new));
+   private final eke c;
 
-   public ekw(dfs $$0, dxa $$1, Optional<ekv> $$2) {
-      super($$1, $$0);
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
+   private ekw(eke $$0) {
+      this.c = $$0;
    }
 
-   public int a(eaz.a $$0, int $$1, int $$2) {
-      return this.a.a($$0, $$1, $$2);
+   public static ekw a(eke $$0) {
+      return new ekw($$0);
    }
 
-   public dwy a(deb $$0) {
-      return ((dxt)this.a.a($$0.e, $$0.f)).C();
+   public static ekw a(ebz $$0, ebz $$1) {
+      return a(ekh.a($$0, $$1));
    }
 
-   public dvd a(jg $$0) {
-      return this.a.a_($$0);
+   public static ekw b(ebz $$0, ebz $$1) {
+      return a(ekg.a($$0, $$1));
    }
 
-   public int c() {
-      return this.a.I_();
+   @Override
+   public Stream<jh> a_(elc $$0, azs $$1, jh $$2) {
+      return Stream.of($$2.h(this.c.a($$1, $$0)));
    }
 
-   public dfs d() {
-      return this.a;
-   }
-
-   public Optional<ekv> e() {
-      return this.c;
-   }
-
-   public dxa f() {
-      return this.b;
+   @Override
+   public elf<?> b() {
+      return elf.l;
    }
 }

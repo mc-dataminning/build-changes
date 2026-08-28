@@ -1,98 +1,95 @@
 import com.google.common.collect.ImmutableMap;
 import java.util.Map;
+import java.util.function.Supplier;
+import javax.annotation.Nullable;
 
-public class gkr extends gkv {
-   private static final String a = "plank";
-   private static final String b = "vChains";
-   private static final String c = "normalChains";
-   private static final String d = "chainL1";
-   private static final String e = "chainL2";
-   private static final String f = "chainR1";
-   private static final String g = "chainR2";
-   private static final String h = "board";
-   private static final float i = 1.0F;
-   private static final float j = 0.9F;
-   private static final ezh k = new ezh(0.0, -0.32F, 0.073F);
-   private final Map<dwq, gkr.a> l;
+public class gkr implements avc {
+   private Map<dso<?>, gks<?>> d = ImmutableMap.of();
+   private final fks e;
+   private final gbi f;
+   public dfb a;
+   public fir b;
+   public ezl c;
+   private final Supplier<gjk> g;
+   private final Supplier<gpi> h;
+   private final Supplier<goi> i;
 
-   public gkr(gki.a $$0) {
-      super($$0);
-      this.l = dwq.a().collect(ImmutableMap.toImmutableMap($$0x -> $$0x, $$1 -> new gkr.a($$0.a(gba.c($$1)))));
+   public gkr(fks $$0, gbi $$1, Supplier<gjk> $$2, Supplier<gpi> $$3, Supplier<goi> $$4) {
+      this.h = $$3;
+      this.i = $$4;
+      this.e = $$0;
+      this.f = $$1;
+      this.g = $$2;
    }
 
-   @Override
-   public float b() {
-      return 1.0F;
+   @Nullable
+   public <E extends dsm> gks<E> a(E $$0) {
+      return (gks<E>)this.d.get($$0.q());
    }
 
-   @Override
-   public float c() {
-      return 0.9F;
-   }
-
-   @Override
-   public void a(dts $$0, float $$1, fdt $$2, ghw $$3, int $$4, int $$5) {
-      dvd $$6 = $$0.m();
-      doy $$7 = (doy)$$6.b();
-      dwq $$8 = doy.a($$7);
-      gkr.a $$9 = this.l.get($$8);
-      $$9.a($$6);
-      this.a($$0, $$2, $$3, $$4, $$5, $$6, $$7, $$8, $$9);
-   }
-
-   @Override
-   void a(fdt $$0, float $$1, dvd $$2) {
-      $$0.a(0.5, 0.9375, 0.5);
-      $$0.a(a.d.rotationDegrees($$1));
-      $$0.a(0.0F, -0.3125F, 0.0F);
-   }
-
-   @Override
-   hab a(dwq $$0) {
-      return gir.b($$0);
-   }
-
-   @Override
-   ezh d() {
-      return k;
-   }
-
-   public static gbh e() {
-      gbj $$0 = new gbj();
-      gbl $$1 = $$0.a();
-      $$1.a("board", gbg.c().a(0, 12).a(-7.0F, 0.0F, -1.0F, 14.0F, 10.0F, 2.0F), gbd.a);
-      $$1.a("plank", gbg.c().a(0, 0).a(-8.0F, -6.0F, -2.0F, 16.0F, 2.0F, 4.0F), gbd.a);
-      gbl $$2 = $$1.a("normalChains", gbg.c(), gbd.a);
-      $$2.a("chainL1", gbg.c().a(0, 6).a(-1.5F, 0.0F, 0.0F, 3.0F, 6.0F, 0.0F), gbd.a(-5.0F, -6.0F, 0.0F, 0.0F, (float) (-Math.PI / 4), 0.0F));
-      $$2.a("chainL2", gbg.c().a(6, 6).a(-1.5F, 0.0F, 0.0F, 3.0F, 6.0F, 0.0F), gbd.a(-5.0F, -6.0F, 0.0F, 0.0F, (float) (Math.PI / 4), 0.0F));
-      $$2.a("chainR1", gbg.c().a(0, 6).a(-1.5F, 0.0F, 0.0F, 3.0F, 6.0F, 0.0F), gbd.a(5.0F, -6.0F, 0.0F, 0.0F, (float) (-Math.PI / 4), 0.0F));
-      $$2.a("chainR2", gbg.c().a(6, 6).a(-1.5F, 0.0F, 0.0F, 3.0F, 6.0F, 0.0F), gbd.a(5.0F, -6.0F, 0.0F, 0.0F, (float) (Math.PI / 4), 0.0F));
-      $$1.a("vChains", gbg.c().a(14, 6).a(-6.0F, -6.0F, 0.0F, 12.0F, 6.0F, 0.0F), gbd.a);
-      return gbh.a($$0, 64, 32);
-   }
-
-   public static final class a extends fyu {
-      public final gbb a;
-      public final gbb b;
-      public final gbb c;
-
-      public a(gbb $$0) {
-         super($$0, gig::f);
-         this.a = $$0.b("plank");
-         this.c = $$0.b("normalChains");
-         this.b = $$0.b("vChains");
+   public void a(dfb $$0, fir $$1, ezl $$2) {
+      if (this.a != $$0) {
+         this.a($$0);
       }
 
-      public void a(dvd $$0) {
-         boolean $$1 = !($$0.b() instanceof dix);
-         this.a.k = $$1;
-         this.b.k = false;
-         this.c.k = true;
-         if (!$$1) {
-            boolean $$2 = $$0.c(dvt.a);
-            this.c.k = !$$2;
-            this.b.k = $$2;
+      this.b = $$1;
+      this.c = $$2;
+   }
+
+   public <E extends dsm> void a(E $$0, float $$1, feb $$2, gih $$3) {
+      gks<E> $$4 = this.a($$0);
+      if ($$4 != null) {
+         if ($$0.l() && $$0.q().a($$0.m())) {
+            if ($$4.a($$0, this.b.b())) {
+               a($$0, () -> a($$4, $$0, $$1, $$2, $$3));
+            }
          }
       }
+   }
+
+   private static <T extends dsm> void a(gks<T> $$0, T $$1, float $$2, feb $$3, gih $$4) {
+      dfb $$5 = $$1.i();
+      int $$6;
+      if ($$5 != null) {
+         $$6 = gid.a($$5, $$1.aB_());
+      } else {
+         $$6 = 15728880;
+      }
+
+      $$0.a($$1, $$2, $$3, $$4, $$6, gxu.d);
+   }
+
+   public <E extends dsm> boolean a(E $$0, feb $$1, gih $$2, int $$3, int $$4) {
+      gks<E> $$5 = this.a($$0);
+      if ($$5 == null) {
+         return true;
+      } else {
+         a($$0, () -> $$5.a($$0, 0.0F, $$1, $$2, $$3, $$4));
+         return false;
+      }
+   }
+
+   private static void a(dsm $$0, Runnable $$1) {
+      try {
+         $$1.run();
+      } catch (Throwable var5) {
+         o $$3 = o.a(var5, "Rendering Block Entity");
+         p $$4 = $$3.a("Block Entity Details");
+         $$0.a($$4);
+         throw new z($$3);
+      }
+   }
+
+   public void a(@Nullable dfb $$0) {
+      this.a = $$0;
+      if ($$0 == null) {
+         this.b = null;
+      }
+   }
+
+   @Override
+   public void a(avb $$0) {
+      gkt.a $$1 = new gkt.a(this, this.g.get(), this.h.get(), this.i.get(), this.f, this.e);
+      this.d = gku.a($$1);
    }
 }

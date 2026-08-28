@@ -1,32 +1,24 @@
-public class fti extends ftm {
-   private static final xh b = xh.c("multiplayerWarning.header").a(n.r);
-   private static final xh c = xh.c("multiplayerWarning.message");
-   private static final xh d = xh.c("multiplayerWarning.check");
-   private static final xh s = b.f().f("\n").b(c);
-   private final fqs u;
+import org.joml.Matrix4f;
 
-   public fti(fqs $$0) {
-      super(b, c, d, s);
-      this.u = $$0;
+public class fti implements ftj {
+   private final ayw a;
+
+   public fti(ayw $$0) {
+      this.a = $$0;
    }
 
    @Override
-   protected foo m() {
-      fos $$0 = fos.e().a(8);
-      $$0.a(fkz.a(xg.i, $$0x -> {
-         if (this.a.a()) {
-            this.m.n.u = true;
-            this.m.n.ay();
-         }
-
-         this.m.a(new fth(this.u));
-      }).a());
-      $$0.a(fkz.a(xg.k, $$0x -> this.d()).a());
-      return $$0;
+   public int b(fks $$0) {
+      return $$0.a(this.a);
    }
 
    @Override
-   public void d() {
-      this.m.a(this.u);
+   public int a(fks $$0) {
+      return 10;
+   }
+
+   @Override
+   public void a(fks $$0, int $$1, int $$2, Matrix4f $$3, gih.a $$4) {
+      $$0.a(this.a, (float)$$1, (float)$$2, -1, true, $$3, $$4, fks.a.a, 0, 15728880);
    }
 }

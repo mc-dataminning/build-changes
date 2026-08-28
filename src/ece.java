@@ -1,25 +1,84 @@
-import com.mojang.serialization.MapCodec;
-import java.util.List;
+import java.util.function.LongFunction;
 
-class ece extends eci {
-   public static final MapCodec<ece> a = a(ece::new);
+public class ece extends ebg {
+   private final azs d;
+   private int e;
 
-   public ece(List<ecg> $$0) {
-      super($$0);
+   public ece(azs $$0) {
+      super(0L);
+      this.d = $$0;
    }
 
-   public boolean a(dfs $$0, jg $$1) {
-      for (ecg $$2 : this.e) {
-         if (!$$2.test($$0, $$1)) {
-            return false;
-         }
-      }
-
-      return true;
+   public int l() {
+      return this.e;
    }
 
    @Override
-   public ech<?> a() {
-      return ech.j;
+   public azs d() {
+      return this.d.d();
+   }
+
+   @Override
+   public ebs e() {
+      return this.d.e();
+   }
+
+   @Override
+   public int c(int $$0) {
+      this.e++;
+      return this.d instanceof ebg $$1 ? $$1.c($$0) : (int)(this.d.g() >>> 64 - $$0);
+   }
+
+   @Override
+   public synchronized void b(long $$0) {
+      if (this.d != null) {
+         this.d.b($$0);
+      }
+   }
+
+   public long a(long $$0, int $$1, int $$2) {
+      this.b($$0);
+      long $$3 = this.g() | 1L;
+      long $$4 = this.g() | 1L;
+      long $$5 = (long)$$1 * $$3 + (long)$$2 * $$4 ^ $$0;
+      this.b($$5);
+      return $$5;
+   }
+
+   public void b(long $$0, int $$1, int $$2) {
+      long $$3 = $$0 + (long)$$1 + (long)(10000 * $$2);
+      this.b($$3);
+   }
+
+   public void c(long $$0, int $$1, int $$2) {
+      this.b($$0);
+      long $$3 = this.g();
+      long $$4 = this.g();
+      long $$5 = (long)$$1 * $$3 ^ (long)$$2 * $$4 ^ $$0;
+      this.b($$5);
+   }
+
+   public void a(long $$0, int $$1, int $$2, int $$3) {
+      long $$4 = (long)$$1 * 341873128712L + (long)$$2 * 132897987541L + $$0 + (long)$$3;
+      this.b($$4);
+   }
+
+   public static azs a(int $$0, int $$1, long $$2, long $$3) {
+      return azs.a($$2 + (long)($$0 * $$0 * 4987142) + (long)($$0 * 5947611) + (long)($$1 * $$1) * 4392871L + (long)($$1 * 389711) ^ $$3);
+   }
+
+   public static enum a {
+      a(ebg::new),
+      b(ecg::new);
+
+      private final LongFunction<azs> c;
+
+      private a(final LongFunction<azs> $$0) {
+         this.c = $$0;
+      }
+
+      public azs a(long $$0) {
+         return this.c.apply($$0);
+      }
    }
 }

@@ -1,77 +1,74 @@
-import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
-import javax.annotation.Nullable;
+import it.unimi.dsi.fastutil.ints.IntRBTreeSet;
+import it.unimi.dsi.fastutil.ints.IntSortedSet;
+import java.util.List;
 
-public abstract class eqp<M extends eqp<M>> {
-   private static final int b = 2;
-   private final long[] c = new long[2];
-   private final dxe[] d = new dxe[2];
-   private boolean e;
-   protected final Long2ObjectOpenHashMap<dxe> a;
+public class eqp {
+   private final eqq[] a;
+   private final double b;
+   private final double c;
 
-   protected eqp(Long2ObjectOpenHashMap<dxe> $$0) {
-      this.a = $$0;
-      this.c();
-      this.e = true;
+   public eqp(azs $$0, List<Integer> $$1) {
+      this($$0, new IntRBTreeSet($$1));
    }
 
-   public abstract M b();
-
-   public dxe a(long $$0) {
-      dxe $$1 = ((dxe)this.a.get($$0)).b();
-      this.a.put($$0, $$1);
-      this.c();
-      return $$1;
-   }
-
-   public boolean b(long $$0) {
-      return this.a.containsKey($$0);
-   }
-
-   @Nullable
-   public dxe c(long $$0) {
-      if (this.e) {
-         for (int $$1 = 0; $$1 < 2; $$1++) {
-            if ($$0 == this.c[$$1]) {
-               return this.d[$$1];
-            }
-         }
-      }
-
-      dxe $$2 = (dxe)this.a.get($$0);
-      if ($$2 == null) {
-         return null;
+   private eqp(azs $$0, IntSortedSet $$1) {
+      if ($$1.isEmpty()) {
+         throw new IllegalArgumentException("Need some octaves!");
       } else {
-         if (this.e) {
-            for (int $$3 = 1; $$3 > 0; $$3--) {
-               this.c[$$3] = this.c[$$3 - 1];
-               this.d[$$3] = this.d[$$3 - 1];
+         int $$2 = -$$1.firstInt();
+         int $$3 = $$1.lastInt();
+         int $$4 = $$2 + $$3 + 1;
+         if ($$4 < 1) {
+            throw new IllegalArgumentException("Total number of octaves needs to be >= 1");
+         } else {
+            eqq $$5 = new eqq($$0);
+            int $$6 = $$3;
+            this.a = new eqq[$$4];
+            if ($$3 >= 0 && $$3 < $$4 && $$1.contains(0)) {
+               this.a[$$3] = $$5;
             }
 
-            this.c[0] = $$0;
-            this.d[0] = $$2;
+            for (int $$7 = $$3 + 1; $$7 < $$4; $$7++) {
+               if ($$7 >= 0 && $$1.contains($$6 - $$7)) {
+                  this.a[$$7] = new eqq($$0);
+               } else {
+                  $$0.b(262);
+               }
+            }
+
+            if ($$3 > 0) {
+               long $$8 = (long)($$5.a($$5.b, $$5.c, $$5.d) * 9.223372E18F);
+               azs $$9 = new ece(new ebg($$8));
+
+               for (int $$10 = $$6 - 1; $$10 >= 0; $$10--) {
+                  if ($$10 < $$4 && $$1.contains($$6 - $$10)) {
+                     this.a[$$10] = new eqq($$9);
+                  } else {
+                     $$9.b(262);
+                  }
+               }
+            }
+
+            this.c = Math.pow(2.0, (double)$$3);
+            this.b = 1.0 / (Math.pow(2.0, (double)$$4) - 1.0);
+         }
+      }
+   }
+
+   public double a(double $$0, double $$1, boolean $$2) {
+      double $$3 = 0.0;
+      double $$4 = this.c;
+      double $$5 = this.b;
+
+      for (eqq $$6 : this.a) {
+         if ($$6 != null) {
+            $$3 += $$6.a($$0 * $$4 + ($$2 ? $$6.b : 0.0), $$1 * $$4 + ($$2 ? $$6.c : 0.0)) * $$5;
          }
 
-         return $$2;
+         $$4 /= 2.0;
+         $$5 *= 2.0;
       }
-   }
 
-   @Nullable
-   public dxe d(long $$0) {
-      return (dxe)this.a.remove($$0);
-   }
-
-   public void a(long $$0, dxe $$1) {
-      this.a.put($$0, $$1);
-   }
-
-   public void c() {
-      for (int $$0 = 0; $$0 < 2; $$0++) {
-         this.c[$$0] = Long.MAX_VALUE;
-         this.d[$$0] = null;
-      }
-   }
-
-   public void d() {
-      this.e = false;
+      return $$3;
    }
 }

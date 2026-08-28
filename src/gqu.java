@@ -1,36 +1,39 @@
-public class gqu extends gpf<cnt, gwl, gal> {
-   private static final alh b = alh.b("textures/entity/villager/villager.png");
-   public static final grr.a a = new grr.a(-0.1171875F, -0.07421875F, 1.0F);
+public class gqu extends gpq<cme, gwm, gao> {
+   private static final ali a = ali.b("textures/entity/strider/strider.png");
+   private static final ali b = ali.b("textures/entity/strider/strider_cold.png");
+   private static final float k = 0.5F;
 
-   public gqu(gnz.a $$0) {
-      super($$0, new gal($$0.a(gba.cT)), 0.5F);
-      this.a(new grr<>(this, $$0.f(), a, $$0.b()));
-      this.a(new gsw<>(this, $$0.e(), "villager"));
-      this.a(new grq<>(this, $$0.b()));
+   public gqu(gok.a $$0) {
+      super($$0, new gao($$0.a(gbl.cF)), 0.5F);
+      this.a(new gsy<>(this, new gao($$0.a(gbl.cG)), ali.b("textures/entity/strider/strider_saddle.png")));
    }
 
-   protected void a(gwl $$0, fdt $$1) {
-      super.a($$0, $$1);
-      float $$2 = $$0.ab;
-      $$1.b($$2, $$2, $$2);
+   public ali a(gwm $$0) {
+      return $$0.b ? b : a;
    }
 
-   public alh a(gwl $$0) {
-      return b;
-   }
-
-   protected float b(gwl $$0) {
+   protected float b(gwm $$0) {
       float $$1 = super.g($$0);
       return $$0.ae ? $$1 * 0.5F : $$1;
    }
 
-   public gwl c() {
-      return new gwl();
+   public gwm c() {
+      return new gwm();
    }
 
-   public void a(cnt $$0, gwl $$1, float $$2) {
+   public void a(cme $$0, gwm $$1, float $$2) {
       super.a($$0, $$1, $$2);
-      $$1.a = $$0.q() > 0;
-      $$1.b = $$0.gF();
+      $$1.a = $$0.i();
+      $$1.b = $$0.q();
+      $$1.c = $$0.cb();
+   }
+
+   protected void a(gwm $$0, feb $$1) {
+      float $$2 = $$0.ab;
+      $$1.b($$2, $$2, $$2);
+   }
+
+   protected boolean c(gwm $$0) {
+      return super.a($$0) || $$0.b;
    }
 }

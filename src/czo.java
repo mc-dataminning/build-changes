@@ -1,71 +1,22 @@
-import javax.annotation.Nullable;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class czo {
-   @Nullable
-   private final coh a;
-   private final brx b;
-   private final ezd c;
-   private final dev d;
-   private final cvx e;
+public record czo(jq<awk> c) implements czn {
+   public static final MapCodec<czo> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(awk.b.fieldOf("sound").forGetter(czo::b)).apply($$0, czo::new));
+   public static final zg<wt, czo> b = zg.a(awk.d, czo::b, czo::new);
 
-   public czo(coh $$0, brx $$1, ezd $$2) {
-      this($$0.dX(), $$0, $$1, $$0.b($$1), $$2);
+   @Override
+   public czn.a<czo> a() {
+      return czn.a.e;
    }
 
-   protected czo(dev $$0, @Nullable coh $$1, brx $$2, cvx $$3, ezd $$4) {
-      this.a = $$1;
-      this.b = $$2;
-      this.c = $$4;
-      this.e = $$3;
-      this.d = $$0;
+   @Override
+   public boolean a(dfb $$0, cwb $$1, bva $$2) {
+      $$0.a(null, $$2.dx(), this.c.a(), $$2.dn(), 1.0F, 1.0F);
+      return true;
    }
 
-   protected final ezd j() {
+   public jq<awk> b() {
       return this.c;
-   }
-
-   public jg a() {
-      return this.c.b();
-   }
-
-   public jl k() {
-      return this.c.c();
-   }
-
-   public ezh l() {
-      return this.c.g();
-   }
-
-   public boolean m() {
-      return this.c.e();
-   }
-
-   public cvx n() {
-      return this.e;
-   }
-
-   @Nullable
-   public coh o() {
-      return this.a;
-   }
-
-   public brx p() {
-      return this.b;
-   }
-
-   public dev q() {
-      return this.d;
-   }
-
-   public jl g() {
-      return this.a == null ? jl.c : this.a.cP();
-   }
-
-   public boolean h() {
-      return this.a != null && this.a.ga();
-   }
-
-   public float i() {
-      return this.a == null ? 0.0F : this.a.dN();
    }
 }

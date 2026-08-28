@@ -1,76 +1,81 @@
-import java.util.Arrays;
-import java.util.Collection;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.Lifecycle;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
 public class xg {
-   public static final xh a = xh.i();
-   public static final xh b = xh.c("options.on");
-   public static final xh c = xh.c("options.off");
-   public static final xh d = xh.c("gui.done");
-   public static final xh e = xh.c("gui.cancel");
-   public static final xh f = xh.c("gui.yes");
-   public static final xh g = xh.c("gui.no");
-   public static final xh h = xh.c("gui.ok");
-   public static final xh i = xh.c("gui.proceed");
-   public static final xh j = xh.c("gui.continue");
-   public static final xh k = xh.c("gui.back");
-   public static final xh l = xh.c("gui.toTitle");
-   public static final xh m = xh.c("gui.acknowledge");
-   public static final xh n = xh.c("chat.link.open");
-   public static final xh o = xh.c("gui.copy_link_to_clipboard");
-   public static final xh p = xh.c("menu.disconnect");
-   public static final xh q = xh.c("connect.failed.transfer");
-   public static final xh r = xh.c("connect.failed");
-   public static final xh s = xh.b("\n");
-   public static final xh t = xh.b(". ");
-   public static final xh u = xh.b("...");
-   public static final xh v = a();
+   public static final Codec<xg> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(xg.a.h.forGetter($$0x -> $$0x.b), Codec.STRING.fieldOf("value").forGetter($$0x -> $$0x.c)).apply($$0, xg::new)
+   );
+   private final xg.a b;
+   private final String c;
 
-   public static xv a() {
-      return xh.b(" ");
+   public xg(xg.a $$0, String $$1) {
+      this.b = $$0;
+      this.c = $$1;
    }
 
-   public static xv a(long $$0) {
-      return xh.a("gui.days", $$0);
+   public xg.a a() {
+      return this.b;
    }
 
-   public static xv b(long $$0) {
-      return xh.a("gui.hours", $$0);
+   public String b() {
+      return this.c;
    }
 
-   public static xv c(long $$0) {
-      return xh.a("gui.minutes", $$0);
+   @Override
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else if ($$0 != null && this.getClass() == $$0.getClass()) {
+         xg $$1 = (xg)$$0;
+         return this.b == $$1.b && this.c.equals($$1.c);
+      } else {
+         return false;
+      }
    }
 
-   public static xh a(boolean $$0) {
-      return $$0 ? b : c;
+   @Override
+   public String toString() {
+      return "ClickEvent{action=" + this.b + ", value='" + this.c + "'}";
    }
 
-   public static xv a(xh $$0, boolean $$1) {
-      return xh.a($$1 ? "options.on.composed" : "options.off.composed", $$0);
+   @Override
+   public int hashCode() {
+      int $$0 = this.b.hashCode();
+      return 31 * $$0 + this.c.hashCode();
    }
 
-   public static xv a(xh $$0, xh $$1) {
-      return xh.a("options.generic_value", $$0, $$1);
-   }
+   public static enum a implements bag {
+      a("open_url", true),
+      b("open_file", false),
+      c("run_command", true),
+      d("suggest_command", true),
+      e("change_page", true),
+      f("copy_to_clipboard", true);
 
-   public static xv a(xh... $$0) {
-      xv $$1 = xh.i();
+      public static final MapCodec<xg.a> g = bag.a(xg.a::values).fieldOf("action");
+      public static final MapCodec<xg.a> h = g.validate(xg.a::a);
+      private final boolean i;
+      private final String j;
 
-      for (int $$2 = 0; $$2 < $$0.length; $$2++) {
-         $$1.b($$0[$$2]);
-         if ($$2 != $$0.length - 1) {
-            $$1.b(t);
-         }
+      private a(final String $$0, final boolean $$1) {
+         this.j = $$0;
+         this.i = $$1;
       }
 
-      return $$1;
-   }
+      public boolean a() {
+         return this.i;
+      }
 
-   public static xh b(xh... $$0) {
-      return a(Arrays.asList($$0));
-   }
+      @Override
+      public String c() {
+         return this.j;
+      }
 
-   public static xh a(Collection<? extends xh> $$0) {
-      return xk.a($$0, s);
+      public static DataResult<xg.a> a(xg.a $$0) {
+         return !$$0.a() ? DataResult.error(() -> "Action not allowed: " + $$0) : DataResult.success($$0, Lifecycle.stable());
+      }
    }
 }

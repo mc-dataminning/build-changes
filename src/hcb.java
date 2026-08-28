@@ -1,8 +1,5 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+public interface hcb extends hca {
+   boolean m();
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface hcb {
+   void q();
 }

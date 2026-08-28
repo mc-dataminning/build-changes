@@ -1,28 +1,30 @@
 public class eti {
-   public static final eti a = new eti("advancements");
-   public static final eti b = new eti("stats");
-   public static final eti c = new eti("playerdata");
-   public static final eti d = new eti("players");
-   public static final eti e = new eti("level.dat");
-   public static final eti f = new eti("level.dat_old");
-   public static final eti g = new eti("icon.png");
-   public static final eti h = new eti("session.lock");
-   public static final eti i = new eti("generated");
-   public static final eti j = new eti("datapacks");
-   public static final eti k = new eti("resources.zip");
-   public static final eti l = new eti(".");
-   private final String m;
+   private final int b;
+   private final String c;
+   public static String a = "main";
 
-   private eti(String $$0) {
-      this.m = $$0;
+   public eti(int $$0) {
+      this($$0, a);
    }
 
-   public String a() {
-      return this.m;
+   public eti(int $$0, String $$1) {
+      this.b = $$0;
+      this.c = $$1;
    }
 
-   @Override
-   public String toString() {
-      return "/" + this.m;
+   public boolean a() {
+      return !this.c.equals(a);
+   }
+
+   public String b() {
+      return this.c;
+   }
+
+   public int c() {
+      return this.b;
+   }
+
+   public boolean a(eti $$0) {
+      return this.b().equals($$0.b());
    }
 }

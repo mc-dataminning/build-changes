@@ -1,57 +1,46 @@
-import java.util.BitSet;
-import java.util.Set;
+import org.joml.Matrix4f;
 
-public class gll {
-   private static final int a = jl.values().length;
-   private final BitSet b = new BitSet(a * a);
+public class gll<T extends duf> implements gks<T> {
+   public static final ali a = ali.b("textures/environment/end_sky.png");
+   public static final ali b = ali.b("textures/entity/end_portal.png");
 
-   public void a(Set<jl> $$0) {
-      for (jl $$1 : $$0) {
-         for (jl $$2 : $$0) {
-            this.a($$1, $$2, true);
-         }
+   public gll(gkt.a $$0) {
+   }
+
+   public void a(T $$0, float $$1, feb $$2, gih $$3, int $$4, int $$5) {
+      Matrix4f $$6 = $$2.c().a();
+      this.a($$0, $$6, $$3.getBuffer(this.d()));
+   }
+
+   private void a(T $$0, Matrix4f $$1, fef $$2) {
+      float $$3 = this.c();
+      float $$4 = this.b();
+      this.a($$0, $$1, $$2, 0.0F, 1.0F, 0.0F, 1.0F, 1.0F, 1.0F, 1.0F, 1.0F, jm.d);
+      this.a($$0, $$1, $$2, 0.0F, 1.0F, 1.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, jm.c);
+      this.a($$0, $$1, $$2, 1.0F, 1.0F, 1.0F, 0.0F, 0.0F, 1.0F, 1.0F, 0.0F, jm.f);
+      this.a($$0, $$1, $$2, 0.0F, 0.0F, 0.0F, 1.0F, 0.0F, 1.0F, 1.0F, 0.0F, jm.e);
+      this.a($$0, $$1, $$2, 0.0F, 1.0F, $$3, $$3, 0.0F, 0.0F, 1.0F, 1.0F, jm.a);
+      this.a($$0, $$1, $$2, 0.0F, 1.0F, $$4, $$4, 1.0F, 1.0F, 0.0F, 0.0F, jm.b);
+   }
+
+   private void a(T $$0, Matrix4f $$1, fef $$2, float $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9, float $$10, jm $$11) {
+      if ($$0.a($$11)) {
+         $$2.a($$1, $$3, $$5, $$7);
+         $$2.a($$1, $$4, $$5, $$8);
+         $$2.a($$1, $$4, $$6, $$9);
+         $$2.a($$1, $$3, $$6, $$10);
       }
    }
 
-   public void a(jl $$0, jl $$1, boolean $$2) {
-      this.b.set($$0.ordinal() + $$1.ordinal() * a, $$2);
-      this.b.set($$1.ordinal() + $$0.ordinal() * a, $$2);
+   protected float b() {
+      return 0.75F;
    }
 
-   public void a(boolean $$0) {
-      this.b.set(0, this.b.size(), $$0);
+   protected float c() {
+      return 0.375F;
    }
 
-   public boolean a(jl $$0, jl $$1) {
-      return this.b.get($$0.ordinal() + $$1.ordinal() * a);
-   }
-
-   @Override
-   public String toString() {
-      StringBuilder $$0 = new StringBuilder();
-      $$0.append(' ');
-
-      for (jl $$1 : jl.values()) {
-         $$0.append(' ').append($$1.toString().toUpperCase().charAt(0));
-      }
-
-      $$0.append('\n');
-
-      for (jl $$2 : jl.values()) {
-         $$0.append($$2.toString().toUpperCase().charAt(0));
-
-         for (jl $$3 : jl.values()) {
-            if ($$2 == $$3) {
-               $$0.append("  ");
-            } else {
-               boolean $$4 = this.a($$2, $$3);
-               $$0.append(' ').append((char)($$4 ? 'Y' : 'n'));
-            }
-         }
-
-         $$0.append('\n');
-      }
-
-      return $$0.toString();
+   protected gir d() {
+      return gir.t();
    }
 }

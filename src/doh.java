@@ -1,44 +1,49 @@
 import com.mojang.serialization.MapCodec;
+import javax.annotation.Nullable;
 
-public abstract class doh extends dkb {
-   protected static final float f = 6.0F;
-   protected static final float g = 10.0F;
-   protected static final fab h = dhy.a(6.0, 0.0, 6.0, 10.0, 16.0, 10.0);
-   protected static final fab i = dhy.a(6.0, 6.0, 0.0, 10.0, 10.0, 16.0);
-   protected static final fab j = dhy.a(0.0, 6.0, 6.0, 16.0, 10.0, 10.0);
+public class doh extends die {
+   public static final MapCodec<doh> a = b(doh::new);
+   public static final dwa b = doi.d;
 
-   protected doh(dvc.d $$0) {
+   @Override
+   public MapCodec<doh> a() {
+      return a;
+   }
+
+   public doh(dvi.d $$0) {
       super($$0);
+      this.l(this.m().b(b, Boolean.valueOf(false)));
+   }
+
+   @Nullable
+   @Override
+   public dvj a(czs $$0) {
+      return this.m().b(b, Boolean.valueOf($$0.q().C($$0.a())));
    }
 
    @Override
-   protected abstract MapCodec<? extends doh> a();
-
-   @Override
-   protected fab a(dvd $$0, dea $$1, jg $$2, ezm $$3) {
-      switch ($$0.c(a).o()) {
-         case a:
-         default:
-            return j;
-         case c:
-            return i;
-         case b:
-            return h;
+   protected void a(dvj $$0, dfb $$1, jh $$2, die $$3, @Nullable ess $$4, boolean $$5) {
+      if (!$$1.C) {
+         boolean $$6 = $$0.c(b);
+         if ($$6 != $$1.C($$2)) {
+            if ($$6) {
+               $$1.a($$2, this, 4);
+            } else {
+               $$1.a($$2, $$0.a(b), 2);
+            }
+         }
       }
    }
 
    @Override
-   protected dvd a(dvd $$0, dol $$1) {
-      return $$0.b(a, $$1.a($$0.c(a)));
+   protected void a(dvj $$0, arn $$1, jh $$2, azs $$3) {
+      if ($$0.c(b) && !$$1.C($$2)) {
+         $$1.a($$2, $$0.a(b), 2);
+      }
    }
 
    @Override
-   protected dvd a(dvd $$0, dmu $$1) {
-      return $$0.b(a, $$1.b($$0.c(a)));
-   }
-
-   @Override
-   protected boolean a(dvd $$0, ert $$1) {
-      return false;
+   protected void a(dvk.a<die, dvj> $$0) {
+      $$0.a(b);
    }
 }

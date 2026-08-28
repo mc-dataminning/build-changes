@@ -1,41 +1,32 @@
 import com.mojang.datafixers.kinds.App;
-import java.util.Optional;
 import java.util.function.Function;
+import org.apache.commons.lang3.mutable.MutableInt;
 
 public class byu {
-   public static bxz<cnt> a(cdz<jo> $$0, float $$1, int $$2, int $$3, int $$4) {
-      return cab.a(
-         (Function<cab.b<cnt>, ? extends App<cab.c<cnt>, cae<cnt>>>)($$5 -> $$5.group($$5.a(cdz.E), $$5.c(cdz.m), $$5.b($$0))
-               .apply($$5, ($$6, $$7, $$8) -> ($$9, $$10, $$11) -> {
-                     jo $$12 = $$5.b($$8);
-                     Optional<Long> $$13 = $$5.a($$6);
-                     if ($$12.a() == $$9.ag() && (!$$13.isPresent() || $$9.aa() - $$13.get() <= (long)$$4)) {
-                        if ($$12.b().k($$10.dx()) > $$3) {
-                           ezh $$14 = null;
-                           int $$15 = 0;
-                           int $$16 = 1000;
+   private static final int a = 300;
 
-                           while ($$14 == null || jg.a((jz)$$14).k($$10.dx()) > $$3) {
-                              $$14 = cfq.a($$10, 15, 7, ezh.c($$12.b()), (float) (Math.PI / 2));
-                              if (++$$15 == 1000) {
-                                 $$10.a($$0);
-                                 $$8.b();
-                                 $$6.a($$11);
-                                 return true;
-                              }
-                           }
-
-                           $$7.a(new cec($$14, $$1, $$2));
-                        } else if ($$12.b().k($$10.dx()) > $$2) {
-                           $$7.a(new cec($$12.b(), $$1, $$2));
+   public static bwu<bva> a(int $$0, int $$1) {
+      int $$2 = $$0 * 20;
+      MutableInt $$3 = new MutableInt(0);
+      return cag.a(
+         (Function<cag.b<bva>, ? extends App<cag.c<bva>, caj<bva>>>)($$3x -> $$3x.group($$3x.b(cee.C), $$3x.b(cee.D))
+               .apply($$3x, ($$4, $$5) -> ($$6, $$7, $$8) -> {
+                     long $$9 = $$3x.<Long>b($$5);
+                     boolean $$10 = $$9 + 300L <= $$8;
+                     if ($$3.getValue() <= $$2 && !$$10) {
+                        jh $$11 = $$3x.<jp>b($$4).b();
+                        if ($$11.a($$7.dx(), (double)$$1)) {
+                           $$3.increment();
                         }
-                     } else {
-                        $$10.a($$0);
-                        $$8.b();
-                        $$6.a($$11);
-                     }
 
-                     return true;
+                        return true;
+                     } else {
+                        $$5.b();
+                        $$4.b();
+                        $$7.ed().a($$6.ab(), $$6.aa());
+                        $$3.setValue(0);
+                        return true;
+                     }
                   }))
       );
    }

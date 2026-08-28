@@ -1,97 +1,115 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.Lists;
+import com.google.common.collect.Maps;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
+import java.util.Arrays;
 import java.util.List;
+import java.util.Map;
 import java.util.function.Supplier;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
-public class oa implements ny {
-   private final dhy a;
-   private final List<oa.b> b = Lists.newArrayList();
+public interface oa extends Supplier<JsonElement> {
+   void a(dvk<?, ?> var1);
 
-   private oa(dhy $$0) {
-      this.a = $$0;
+   static oa.c a() {
+      return new oa.c();
    }
 
-   @Override
-   public dhy a() {
-      return this.a;
+   static oa a(oa... $$0) {
+      return new oa.a(oa.b.a, Arrays.asList($$0));
    }
 
-   public static oa a(dhy $$0) {
-      return new oa($$0);
+   static oa b(oa... $$0) {
+      return new oa.a(oa.b.b, Arrays.asList($$0));
    }
 
-   public oa a(List<oe> $$0) {
-      this.b.add(new oa.b($$0));
-      return this;
-   }
+   public static class a implements oa {
+      private final oa.b a;
+      private final List<oa> b;
 
-   public oa a(oe $$0) {
-      return this.a(ImmutableList.of($$0));
-   }
-
-   public oa a(nz $$0, List<oe> $$1) {
-      this.b.add(new oa.a($$0, $$1));
-      return this;
-   }
-
-   public oa a(nz $$0, oe... $$1) {
-      return this.a($$0, ImmutableList.copyOf($$1));
-   }
-
-   public oa a(nz $$0, oe $$1) {
-      return this.a($$0, ImmutableList.of($$1));
-   }
-
-   public JsonElement b() {
-      dve<dhy, dvd> $$0 = this.a.l();
-      this.b.forEach($$1x -> $$1x.a($$0));
-      JsonArray $$1 = new JsonArray();
-      this.b.stream().map(oa.b::a).forEach($$1::add);
-      JsonObject $$2 = new JsonObject();
-      $$2.add("multipart", $$1);
-      return $$2;
-   }
-
-   static class a extends oa.b {
-      private final nz a;
-
-      a(nz $$0, List<oe> $$1) {
-         super($$1);
+      a(oa.b $$0, List<oa> $$1) {
          this.a = $$0;
+         this.b = $$1;
       }
 
       @Override
-      public void a(dve<?, ?> $$0) {
-         this.a.a($$0);
+      public void a(dvk<?, ?> $$0) {
+         this.b.forEach($$1 -> $$1.a($$0));
       }
 
-      @Override
-      public void a(JsonObject $$0) {
-         $$0.add("when", this.a.get());
+      public JsonElement b() {
+         JsonArray $$0 = new JsonArray();
+         this.b.stream().map(Supplier::get).forEach($$0::add);
+         JsonObject $$1 = new JsonObject();
+         $$1.add(this.a.c, $$0);
+         return $$1;
       }
    }
 
-   static class b implements Supplier<JsonElement> {
-      private final List<oe> a;
+   public static enum b {
+      a("AND"),
+      b("OR");
 
-      b(List<oe> $$0) {
-         this.a = $$0;
+      final String c;
+
+      private b(final String $$0) {
+         this.c = $$0;
+      }
+   }
+
+   public static class c implements oa {
+      private final Map<dwm<?>, String> a = Maps.newHashMap();
+
+      private static <T extends Comparable<T>> String a(dwm<T> $$0, Stream<T> $$1) {
+         return $$1.<CharSequence>map($$0::b).collect(Collectors.joining("|"));
       }
 
-      public void a(dve<?, ?> $$0) {
+      private static <T extends Comparable<T>> String c(dwm<T> $$0, T $$1, T[] $$2) {
+         return a($$0, Stream.concat(Stream.of($$1), Stream.of($$2)));
       }
 
-      public void a(JsonObject $$0) {
+      private <T extends Comparable<T>> void a(dwm<T> $$0, String $$1) {
+         String $$2 = this.a.put($$0, $$1);
+         if ($$2 != null) {
+            throw new IllegalStateException("Tried to replace " + $$0 + " value from " + $$2 + " to " + $$1);
+         }
       }
 
-      public JsonElement a() {
+      public final <T extends Comparable<T>> oa.c a(dwm<T> $$0, T $$1) {
+         this.a($$0, $$0.b($$1));
+         return this;
+      }
+
+      @SafeVarargs
+      public final <T extends Comparable<T>> oa.c a(dwm<T> $$0, T $$1, T... $$2) {
+         this.a($$0, c($$0, $$1, $$2));
+         return this;
+      }
+
+      public final <T extends Comparable<T>> oa.c b(dwm<T> $$0, T $$1) {
+         this.a($$0, "!" + $$0.b($$1));
+         return this;
+      }
+
+      @SafeVarargs
+      public final <T extends Comparable<T>> oa.c b(dwm<T> $$0, T $$1, T... $$2) {
+         this.a($$0, "!" + c($$0, $$1, $$2));
+         return this;
+      }
+
+      public JsonElement b() {
          JsonObject $$0 = new JsonObject();
-         this.a($$0);
-         $$0.add("apply", oe.a(this.a));
+         this.a.forEach(($$1, $$2) -> $$0.addProperty($$1.f(), $$2));
          return $$0;
+      }
+
+      @Override
+      public void a(dvk<?, ?> $$0) {
+         List<dwm<?>> $$1 = this.a.keySet().stream().filter($$1x -> $$0.a($$1x.f()) != $$1x).collect(Collectors.toList());
+         if (!$$1.isEmpty()) {
+            throw new IllegalStateException("Properties " + $$1 + " are missing from " + $$0);
+         }
       }
    }
 }

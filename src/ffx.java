@@ -1,35 +1,46 @@
-import java.time.Duration;
-import java.util.List;
-import java.util.concurrent.TimeUnit;
+import com.google.gson.JsonObject;
+import com.mojang.logging.LogUtils;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class ffx {
-   public final fhg a = new fhg(ad.h(), TimeUnit.MILLISECONDS, ad.c);
-   private final List<fhg.e<?>> i;
-   public final fhg.e<List<fez>> b;
-   public final fhg.e<ffx.a> c;
-   public final fhg.e<Integer> d;
-   public final fhg.e<Boolean> e;
-   public final fhg.e<fey> f;
-   public final fhg.e<ffd> g;
-   public final ffy h = new ffy(new fhm());
+public class ffx extends ffv {
+   private static final Logger j = LogUtils.getLogger();
+   public String a = "";
+   public String b = "";
+   public String c = "";
+   public String d = "";
+   public String e = "";
+   @Nullable
+   public String f;
+   public String g = "";
+   public String h = "";
+   public ffx.a i = ffx.a.a;
 
-   public ffx(fej $$0) {
-      this.c = this.a.a("server list", () -> {
-         ffc $$1 = $$0.b();
-         return fee.b() ? new ffx.a($$1.a, $$0.c()) : new ffx.a($$1.a, List.of());
-      }, Duration.ofSeconds(60L), fhh.a);
-      this.d = this.a.a("pending invite count", $$0::h, Duration.ofSeconds(10L), fhh.a(360));
-      this.e = this.a.a("trial availablity", $$0::l, Duration.ofSeconds(60L), fhh.a(60));
-      this.f = this.a.a("unread news", $$0::k, Duration.ofMinutes(5L), fhh.a);
-      this.b = this.a.a("notifications", $$0::d, Duration.ofMinutes(5L), fhh.a);
-      this.g = this.a.a("online players", $$0::e, Duration.ofSeconds(10L), fhh.a);
-      this.i = List.of(this.b, this.c, this.d, this.e, this.f, this.g);
+   public static ffx a(JsonObject $$0) {
+      ffx $$1 = new ffx();
+
+      try {
+         $$1.a = fhs.b("id", $$0, "");
+         $$1.b = fhs.b("name", $$0, "");
+         $$1.c = fhs.b("version", $$0, "");
+         $$1.d = fhs.b("author", $$0, "");
+         $$1.e = fhs.b("link", $$0, "");
+         $$1.f = fhs.b("image", $$0, null);
+         $$1.g = fhs.b("trailer", $$0, "");
+         $$1.h = fhs.b("recommendedPlayers", $$0, "");
+         $$1.i = ffx.a.valueOf(fhs.b("type", $$0, ffx.a.a.name()));
+      } catch (Exception var3) {
+         j.error("Could not parse WorldTemplate: {}", var3.getMessage());
+      }
+
+      return $$1;
    }
 
-   public List<fhg.e<?>> a() {
-      return this.i;
-   }
-
-   public static record a(List<ffa> a, List<ffa> b) {
+   public static enum a {
+      a,
+      b,
+      c,
+      d,
+      e;
    }
 }

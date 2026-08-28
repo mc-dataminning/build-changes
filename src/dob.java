@@ -1,49 +1,43 @@
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dob extends dhy {
-   public static final MapCodec<dob> a = b(dob::new);
-   public static final dvu b = doc.d;
+public class dob extends dhs {
+   public static final MapCodec<dob> e = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(dvy.a.fieldOf("block_set_type").forGetter($$0x -> $$0x.d), t()).apply($$0, dob::new)
+   );
+   public static final dwa f = dvz.w;
 
    @Override
    public MapCodec<dob> a() {
-      return a;
+      return e;
    }
 
-   public dob(dvc.d $$0) {
-      super($$0);
-      this.l(this.m().b(b, Boolean.valueOf(false)));
-   }
-
-   @Nullable
-   @Override
-   public dvd a(czm $$0) {
-      return this.m().b(b, Boolean.valueOf($$0.q().C($$0.a())));
+   protected dob(dvy $$0, dvi.d $$1) {
+      super($$1, $$0);
+      this.l(this.F.b().b(f, Boolean.valueOf(false)));
    }
 
    @Override
-   protected void a(dvd $$0, dev $$1, jg $$2, dhy $$3, @Nullable esm $$4, boolean $$5) {
-      if (!$$1.C) {
-         boolean $$6 = $$0.c(b);
-         if ($$6 != $$1.C($$2)) {
-            if ($$6) {
-               $$1.a($$2, this, 4);
-            } else {
-               $$1.a($$2, $$0.a(b), 2);
-            }
-         }
-      }
+   protected int h(dvj $$0) {
+      return $$0.c(f) ? 15 : 0;
    }
 
    @Override
-   protected void a(dvd $$0, arm $$1, jg $$2, azr $$3) {
-      if ($$0.c(b) && !$$1.C($$2)) {
-         $$1.a($$2, $$0.a(b), 2);
-      }
+   protected dvj a(dvj $$0, int $$1) {
+      return $$0.b(f, Boolean.valueOf($$1 > 0));
    }
 
    @Override
-   protected void a(dve.a<dhy, dvd> $$0) {
-      $$0.a(b);
+   protected int b(dfb $$0, jh $$1) {
+      Class<? extends bue> $$2 = switch (this.d.f()) {
+         case a -> bue.class;
+         case b -> bva.class;
+      };
+      return a($$0, c.a($$1), $$2) > 0 ? 15 : 0;
+   }
+
+   @Override
+   protected void a(dvk.a<die, dvj> $$0) {
+      $$0.a(f);
    }
 }

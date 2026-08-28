@@ -1,75 +1,80 @@
-import com.mojang.datafixers.util.Pair;
+import java.lang.ref.WeakReference;
+import java.util.Arrays;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
-public class daq extends daa {
-   public daq(czx $$0) {
-      super($$0);
+public class daq {
+   private final daq.a[] a;
+   private WeakReference<dat> b = new WeakReference<>(null);
+
+   public daq(int $$0) {
+      this.a = new daq.a[$$0];
    }
 
-   @Nullable
-   private Pair<cvx, cvx> a(czy $$0) {
-      cvx $$1 = null;
-      cvx $$2 = null;
+   public Optional<dar<daf>> a(dfb $$0, dae $$1) {
+      if ($$1.b()) {
+         return Optional.empty();
+      } else {
+         this.a($$0);
 
-      for (int $$3 = 0; $$3 < $$0.a(); $$3++) {
-         cvx $$4 = $$0.a($$3);
-         if (!$$4.f()) {
-            if ($$1 == null) {
-               $$1 = $$4;
-            } else {
-               if ($$2 != null) {
-                  return null;
-               }
-
-               $$2 = $$4;
+         for (int $$2 = 0; $$2 < this.a.length; $$2++) {
+            daq.a $$3 = this.a[$$2];
+            if ($$3 != null && $$3.a($$1)) {
+               this.a($$2);
+               return Optional.ofNullable($$3.d());
             }
          }
+
+         return this.a($$1, $$0);
+      }
+   }
+
+   private void a(dfb $$0) {
+      dat $$1 = $$0.r();
+      if ($$1 != this.b.get()) {
+         this.b = new WeakReference<>($$1);
+         Arrays.fill(this.a, null);
+      }
+   }
+
+   private Optional<dar<daf>> a(dae $$0, dfb $$1) {
+      Optional<dar<daf>> $$2 = $$1.r().a(dav.a, $$0, $$1);
+      this.a($$0, $$2.orElse(null));
+      return $$2;
+   }
+
+   private void a(int $$0) {
+      if ($$0 > 0) {
+         daq.a $$1 = this.a[$$0];
+         System.arraycopy(this.a, 0, this.a, 1, $$0);
+         this.a[0] = $$1;
+      }
+   }
+
+   private void a(dae $$0, @Nullable dar<daf> $$1) {
+      jz<cwb> $$2 = jz.a($$0.a(), cwb.k);
+
+      for (int $$3 = 0; $$3 < $$0.a(); $$3++) {
+         $$2.set($$3, $$0.a($$3).c(1));
       }
 
-      return $$1 != null && $$2 != null && a($$1, $$2) ? Pair.of($$1, $$2) : null;
+      System.arraycopy(this.a, 0, this.a, 1, this.a.length - 1);
+      this.a[0] = new daq.a($$2, $$0.f(), $$0.g(), $$1);
    }
 
-   private static boolean a(cvx $$0, cvx $$1) {
-      return $$1.a($$0.h()) && $$0.L() == 1 && $$1.L() == 1 && $$0.b(kt.d) && $$1.b(kt.d) && $$0.b(kt.e) && $$1.b(kt.e);
-   }
-
-   public boolean a(czy $$0, dev $$1) {
-      return this.a($$0) != null;
-   }
-
-   public cvx a(czy $$0, jr.a $$1) {
-      Pair<cvx, cvx> $$2 = this.a($$0);
-      if ($$2 == null) {
-         return cvx.k;
-      } else {
-         cvx $$3 = (cvx)$$2.getFirst();
-         cvx $$4 = (cvx)$$2.getSecond();
-         int $$5 = Math.max($$3.p(), $$4.p());
-         int $$6 = $$3.p() - $$3.o();
-         int $$7 = $$4.p() - $$4.o();
-         int $$8 = $$6 + $$7 + $$5 * 5 / 100;
-         cvx $$9 = new cvx($$3.h());
-         $$9.b(kt.d, $$5);
-         $$9.b(Math.max($$5 - $$8, 0));
-         dbs $$10 = dbo.b($$3);
-         dbs $$11 = dbo.b($$4);
-         dbo.a($$9, $$3x -> $$1.d(ly.aM).c().filter($$0xx -> $$0xx.a(axc.o)).forEach($$3xx -> {
-               int $$4x = Math.max($$10.a($$3xx), $$11.a($$3xx));
-               if ($$4x > 0) {
-                  $$3x.b($$3xx, $$4x);
+   static record a(jz<cwb> a, int b, int c, @Nullable dar<daf> d) {
+      public boolean a(dae $$0) {
+         if (this.b == $$0.f() && this.c == $$0.g()) {
+            for (int $$1 = 0; $$1 < this.a.size(); $$1++) {
+               if (!cwb.c(this.a.get($$1), $$0.a($$1))) {
+                  return false;
                }
-            }));
-         return $$9;
+            }
+
+            return true;
+         } else {
+            return false;
+         }
       }
-   }
-
-   @Override
-   public boolean a(int $$0, int $$1) {
-      return $$0 * $$1 >= 2;
-   }
-
-   @Override
-   public dao<?> ar_() {
-      return dao.n;
    }
 }

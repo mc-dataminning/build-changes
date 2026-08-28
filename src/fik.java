@@ -1,26 +1,13 @@
-public enum fik {
-   a(true, false),
-   b(false, false),
-   c(false, true);
+public class fik extends fil {
+   private final ffx b;
 
-   private static final fik[] d = values();
-   private final boolean e;
-   private final boolean f;
-
-   private fik(final boolean $$0, final boolean $$1) {
-      this.e = $$0;
-      this.f = $$1;
+   public fik(ffx $$0, long $$1, xi $$2, Runnable $$3) {
+      super($$1, $$2, $$3);
+      this.b = $$0;
    }
 
-   public boolean a() {
-      return this.e;
-   }
-
-   public boolean b() {
-      return this.f;
-   }
-
-   public fik c() {
-      return d[(this.ordinal() + 1) % d.length];
+   @Override
+   protected void a(fer $$0, long $$1) throws fgc {
+      $$0.d($$1, this.b.a);
    }
 }

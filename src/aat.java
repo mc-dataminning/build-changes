@@ -1,26 +1,23 @@
-public record aat(alg<eaa> c, ezh d) implements aar {
-   public static final zf<we, aat> a = aar.a(aat::a, aat::new);
-   public static final aar.b<aat> b = aar.a("debug/game_event");
-
-   private aat(we $$0) {
-      this($$0.a(ly.G), $$0.k());
-   }
-
-   private void a(we $$0) {
-      $$0.b(this.c);
-      $$0.a(this.d);
+public record aat(ali a) implements aas {
+   public static <T extends wf> zg<T, aat> a(ali $$0, int $$1) {
+      return aas.a(($$0x, $$1x) -> {
+      }, $$2 -> {
+         int $$3 = $$2.readableBytes();
+         if ($$3 >= 0 && $$3 <= $$1) {
+            $$2.k($$3);
+            return new aat($$0);
+         } else {
+            throw new IllegalArgumentException("Payload may not be larger than " + $$1 + " bytes");
+         }
+      });
    }
 
    @Override
-   public aar.b<aat> a() {
-      return b;
+   public aas.b<aat> a() {
+      return new aas.b<>(this.a);
    }
 
-   public alg<eaa> b() {
-      return this.c;
-   }
-
-   public ezh c() {
-      return this.d;
+   public ali b() {
+      return this.a;
    }
 }

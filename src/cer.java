@@ -1,41 +1,19 @@
 import com.google.common.collect.ImmutableSet;
-import java.util.List;
 import java.util.Optional;
 import java.util.Set;
 
-public class cer extends cff<buv> {
-   private static final int a = 200;
-   private static final int b = 599;
-
-   public cer() {
-      this(200);
-   }
-
-   public cer(int $$0) {
-      super($$0);
-   }
-
+public class cer extends cfk<btv> {
    @Override
-   protected void a(arm $$0, buv $$1) {
-      a($$1);
+   public Set<cee<?>> a() {
+      return ImmutableSet.of(cee.K, cee.h);
    }
 
-   @Override
-   public Set<cdz<?>> a() {
-      return ImmutableSet.of(cdz.g);
+   protected void a(arn $$0, btv $$1) {
+      $$1.ed().c(cee.h).ifPresent($$1x -> this.a($$1, $$1x));
    }
 
-   public static void a(buv $$0) {
-      Optional<List<buv>> $$1 = $$0.ed().c(cdz.g);
-      if (!$$1.isEmpty()) {
-         boolean $$2 = $$1.get().stream().anyMatch($$0x -> $$0x.aq().equals(bug.af));
-         if ($$2) {
-            b($$0);
-         }
-      }
-   }
-
-   public static void b(buv $$0) {
-      $$0.ed().a(cdz.F, true, 599L);
+   private void a(btv $$0, ceg $$1) {
+      Optional<btv> $$2 = $$1.a($$1x -> $$1x.ar() == $$0.ar() && !$$1x.p_()).map(btv.class::cast);
+      $$0.ed().a(cee.K, $$2);
    }
 }

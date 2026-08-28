@@ -1,33 +1,14 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-
-public record cvq(jp<awj> e, float f, float g, xh h) {
-   public static final Codec<cvq> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               awj.b.fieldOf("sound_event").forGetter(cvq::a),
-               ays.o.fieldOf("use_duration").forGetter(cvq::b),
-               ays.o.fieldOf("range").forGetter(cvq::c),
-               xj.a.fieldOf("description").forGetter(cvq::d)
-            )
-            .apply($$0, cvq::new)
-   );
-   public static final zf<ws, cvq> b = zf.a(awj.d, cvq::a, zd.j, cvq::b, zd.j, cvq::c, xj.b, cvq::d, cvq::new);
-   public static final Codec<jp<cvq>> c = ald.a(ly.I, a);
-   public static final zf<ws, jp<cvq>> d = zd.a(ly.I, b);
-
-   public jp<awj> a() {
-      return this.e;
+public class cvq extends cxg {
+   public cvq(die $$0, die $$1, cvx.a $$2) {
+      super($$2, $$0, $$1, jm.b);
    }
 
-   public float b() {
-      return this.f;
-   }
+   @Override
+   protected boolean a(dfe $$0, dvj $$1, jh $$2) {
+      if ($$1.b() instanceof drd $$3 && !$$3.b($$1, $$0, $$2)) {
+         return false;
+      }
 
-   public float c() {
-      return this.g;
-   }
-
-   public xh d() {
-      return this.h;
+      return super.a($$0, $$1, $$2);
    }
 }

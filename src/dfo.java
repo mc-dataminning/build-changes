@@ -1,76 +1,108 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
+import com.google.common.base.Suppliers;
+import java.util.List;
+import java.util.function.Supplier;
+import javax.annotation.Nullable;
 
-public record dfo(uj d, Optional<dfo.a> e, Optional<buj> f) {
-   public static final String a = "entity";
-   public static final Codec<dfo> b = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               uj.a.fieldOf("entity").forGetter($$0x -> $$0x.d),
-               dfo.a.a.optionalFieldOf("custom_spawn_rules").forGetter($$0x -> $$0x.e),
-               buj.b.optionalFieldOf("equipment").forGetter($$0x -> $$0x.f)
-            )
-            .apply($$0, dfo::new)
-   );
-   public static final Codec<bqg<dfo>> c = bqg.a(b);
+public class dfo implements dek {
+   protected final int a;
+   protected final int b;
+   protected final dxf[][] c;
+   protected boolean d;
+   protected final dfb e;
+   private final Supplier<jq<dgc>> f;
 
-   public dfo() {
-      this(new uj(), Optional.empty(), Optional.empty());
-   }
+   public dfo(dfb $$0, jh $$1, jh $$2) {
+      this.e = $$0;
+      this.f = Suppliers.memoize(() -> $$0.H_().e(lz.aG).b(dgj.b));
+      this.a = kj.a($$1.u());
+      this.b = kj.a($$1.w());
+      int $$3 = kj.a($$2.u());
+      int $$4 = kj.a($$2.w());
+      this.c = new dxf[$$3 - this.a + 1][$$4 - this.b + 1];
+      dxj $$5 = $$0.P();
+      this.d = true;
 
-   public dfo(uj d, Optional<dfo.a> e, Optional<buj> f) {
-      if (d.e("id")) {
-         alh $$3 = alh.c(d.l("id"));
-         if ($$3 != null) {
-            d.a("id", $$3.toString());
-         } else {
-            d.r("id");
+      for (int $$6 = this.a; $$6 <= $$3; $$6++) {
+         for (int $$7 = this.b; $$7 <= $$4; $$7++) {
+            this.c[$$6 - this.a][$$7 - this.b] = $$5.a($$6, $$7);
          }
       }
 
-      this.d = d;
-      this.e = e;
-      this.f = f;
+      for (int $$8 = kj.a($$1.u()); $$8 <= kj.a($$2.u()); $$8++) {
+         for (int $$9 = kj.a($$1.w()); $$9 <= kj.a($$2.w()); $$9++) {
+            dxf $$10 = this.c[$$8 - this.a][$$9 - this.b];
+            if ($$10 != null && !$$10.a($$1.v(), $$2.v())) {
+               this.d = false;
+               return;
+            }
+         }
+      }
    }
 
-   public uj a() {
-      return this.d;
+   private dxf d(jh $$0) {
+      return this.a(kj.a($$0.u()), kj.a($$0.w()));
    }
 
-   public Optional<dfo.a> b() {
-      return this.e;
+   private dxf a(int $$0, int $$1) {
+      int $$2 = $$0 - this.a;
+      int $$3 = $$1 - this.b;
+      if ($$2 >= 0 && $$2 < this.c.length && $$3 >= 0 && $$3 < this.c[$$2].length) {
+         dxf $$4 = this.c[$$2][$$3];
+         return (dxf)($$4 != null ? $$4 : new dxl(this.e, new deh($$0, $$1), this.f.get()));
+      } else {
+         return new dxl(this.e, new deh($$0, $$1), this.f.get());
+      }
    }
 
-   public Optional<buj> c() {
-      return this.f;
+   @Override
+   public dxa C_() {
+      return this.e.C_();
    }
 
-   public static record a(azb<Integer> b, azb<Integer> c) {
-      private static final azb<Integer> d = new azb<>(0, 15);
-      public static final Codec<dfo.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(a("block_light_limit").forGetter($$0x -> $$0x.b), a("sky_light_limit").forGetter($$0x -> $$0x.c)).apply($$0, dfo.a::new)
-      );
+   @Override
+   public deg c(int $$0, int $$1) {
+      return this.a($$0, $$1);
+   }
 
-      private static DataResult<azb<Integer>> a(azb<Integer> $$0) {
-         return !d.a($$0) ? DataResult.error(() -> "Light values must be withing range " + d) : DataResult.success($$0);
-      }
+   @Override
+   public List<fah> c(@Nullable bue $$0, ezi $$1) {
+      return List.of();
+   }
 
-      private static MapCodec<azb<Integer>> a(String $$0) {
-         return azb.a.lenientOptionalFieldOf($$0, d).validate(dfo.a::a);
-      }
+   @Nullable
+   @Override
+   public dsm c_(jh $$0) {
+      dxf $$1 = this.d($$0);
+      return $$1.c_($$0);
+   }
 
-      public boolean a(jg $$0, arm $$1) {
-         return this.b.a($$1.a(dfe.b, $$0)) && this.c.a($$1.a(dfe.a, $$0));
+   @Override
+   public dvj a_(jh $$0) {
+      if (this.s($$0)) {
+         return dig.a.m();
+      } else {
+         dxf $$1 = this.d($$0);
+         return $$1.a_($$0);
       }
+   }
 
-      public azb<Integer> a() {
-         return this.b;
+   @Override
+   public erk b_(jh $$0) {
+      if (this.s($$0)) {
+         return erl.a.g();
+      } else {
+         dxf $$1 = this.d($$0);
+         return $$1.b_($$0);
       }
+   }
 
-      public azb<Integer> b() {
-         return this.c;
-      }
+   @Override
+   public int I_() {
+      return this.e.I_();
+   }
+
+   @Override
+   public int J_() {
+      return this.e.J_();
    }
 }

@@ -1,25 +1,59 @@
-import javax.annotation.Nullable;
-
 public interface dfd {
-   boolean a(jg var1, dvd var2, int var3, int var4);
+   int J_();
 
-   default boolean a(jg $$0, dvd $$1, int $$2) {
-      return this.a($$0, $$1, $$2, 512);
+   int I_();
+
+   default int al() {
+      return this.I_() + this.J_() - 1;
    }
 
-   boolean a(jg var1, boolean var2);
-
-   default boolean b(jg $$0, boolean $$1) {
-      return this.a($$0, $$1, null);
+   default int am() {
+      return this.ao() - this.an() + 1;
    }
 
-   default boolean a(jg $$0, boolean $$1, @Nullable btz $$2) {
-      return this.a($$0, $$1, $$2, 512);
+   default int an() {
+      return kj.a(this.I_());
    }
 
-   boolean a(jg var1, boolean var2, @Nullable btz var3, int var4);
+   default int ao() {
+      return kj.a(this.al());
+   }
 
-   default boolean b(btz $$0) {
-      return false;
+   default boolean d(int $$0) {
+      return $$0 >= this.I_() && $$0 <= this.al();
+   }
+
+   default boolean s(jh $$0) {
+      return this.e($$0.v());
+   }
+
+   default boolean e(int $$0) {
+      return $$0 < this.I_() || $$0 > this.al();
+   }
+
+   default int f(int $$0) {
+      return this.g(kj.a($$0));
+   }
+
+   default int g(int $$0) {
+      return $$0 - this.an();
+   }
+
+   default int h(int $$0) {
+      return $$0 + this.an();
+   }
+
+   static dfd e(final int $$0, final int $$1) {
+      return new dfd() {
+         @Override
+         public int J_() {
+            return $$1;
+         }
+
+         @Override
+         public int I_() {
+            return $$0;
+         }
+      };
    }
 }

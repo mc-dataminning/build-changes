@@ -1,33 +1,16 @@
-import java.util.List;
-
-public record adc(adc.a b, List<String> c) implements zo<acd> {
-   public static final zf<we, adc> a = zo.a(adc::a, adc::new);
-
-   private adc(we $$0) {
-      this($$0.b(adc.a.class), $$0.a(we::p));
-   }
-
-   private void a(we $$0) {
-      $$0.a(this.b);
-      $$0.a(this.c, we::a);
-   }
+public record adc(ali b, int c) implements zp<ace> {
+   public static final zg<wt, adc> a = zg.a(ali.b, adc::b, ze.h, adc::e, adc::new);
 
    @Override
-   public zq<adc> a() {
-      return ags.y;
+   public zr<adc> a() {
+      return agt.x;
    }
 
-   public void a(acd $$0) {
+   public void a(ace $$0) {
       $$0.a(this);
    }
 
-   public List<String> e() {
+   public int e() {
       return this.c;
-   }
-
-   public static enum a {
-      a,
-      b,
-      c;
    }
 }

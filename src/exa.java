@@ -1,33 +1,42 @@
-import com.google.common.collect.ImmutableSet;
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
-import java.util.Set;
+import java.util.List;
 
-public record exa(Optional<bk> b) implements exh {
-   public static final MapCodec<exa> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(bk.a.optionalFieldOf("predicate").forGetter(exa::c)).apply($$0, exa::new));
+public class exa extends exd {
+   public static final MapCodec<exa> a = a(exa::new);
+   public static final Codec<exa> b = b(exa::new);
 
-   @Override
-   public exi b() {
-      return exj.m;
+   exa(List<exn> $$0) {
+      super($$0, ae.a($$0));
+   }
+
+   public static exa a(List<exn> $$0) {
+      return new exa(List.copyOf($$0));
    }
 
    @Override
-   public Set<ewp<?>> a() {
-      return ImmutableSet.of(ews.f, ews.c);
+   public exo b() {
+      return exp.c;
    }
 
-   public boolean a(etw $$0) {
-      bsp $$1 = $$0.c(ews.c);
-      ezh $$2 = $$0.c(ews.f);
-      return $$2 != null && $$1 != null ? this.b.isEmpty() || this.b.get().a($$0.d(), $$2, $$1) : false;
+   public static exa.a a(exn.a... $$0) {
+      return new exa.a($$0);
    }
 
-   public static exh.a a(bk.a $$0) {
-      return () -> new exa(Optional.of($$0.b()));
-   }
+   public static class a extends exd.a {
+      public a(exn.a... $$0) {
+         super($$0);
+      }
 
-   public Optional<bk> c() {
-      return this.b;
+      @Override
+      public exa.a and(exn.a $$0) {
+         this.a($$0);
+         return this;
+      }
+
+      @Override
+      protected exn a(List<exn> $$0) {
+         return new exa($$0);
+      }
    }
 }

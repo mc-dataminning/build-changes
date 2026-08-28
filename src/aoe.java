@@ -1,37 +1,40 @@
-import com.google.common.net.InetAddresses;
+import com.mojang.authlib.GameProfile;
 import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.arguments.StringArgumentType;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
+import java.util.Collection;
 
 public class aoe {
-   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(xh.c("commands.pardonip.invalid"));
-   private static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(xh.c("commands.pardonip.failed"));
+   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(xi.c("commands.pardon.failed"));
 
-   public static void a(CommandDispatcher<ev> $$0) {
+   public static void a(CommandDispatcher<ew> $$0) {
       $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)ew.a("pardon-ip").requires($$0x -> $$0x.c(3)))
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)ex.a("pardon").requires($$0x -> $$0x.c(3)))
             .then(
-               ew.a("target", StringArgumentType.word())
-                  .suggests(($$0x, $$1) -> fa.a(((ev)$$0x.getSource()).l().ag().g().a(), $$1))
-                  .executes($$0x -> a((ev)$$0x.getSource(), StringArgumentType.getString($$0x, "target")))
+               ex.a("targets", fl.a())
+                  .suggests(($$0x, $$1) -> fb.a(((ew)$$0x.getSource()).l().ag().f().a(), $$1))
+                  .executes($$0x -> a((ew)$$0x.getSource(), fl.a($$0x, "targets")))
             )
       );
    }
 
-   private static int a(ev $$0, String $$1) throws CommandSyntaxException {
-      if (!InetAddresses.isInetAddress($$1)) {
+   private static int a(ew $$0, Collection<GameProfile> $$1) throws CommandSyntaxException {
+      avu $$2 = $$0.l().ag().f();
+      int $$3 = 0;
+
+      for (GameProfile $$4 : $$1) {
+         if ($$2.a($$4)) {
+            $$2.c($$4);
+            $$3++;
+            $$0.a(() -> xi.a("commands.pardon.success", xi.b($$4.getName())), true);
+         }
+      }
+
+      if ($$3 == 0) {
          throw a.create();
       } else {
-         avk $$2 = $$0.l().ag().g();
-         if (!$$2.a($$1)) {
-            throw b.create();
-         } else {
-            $$2.c($$1);
-            $$0.a(() -> xh.a("commands.pardonip.success", $$1), true);
-            return 1;
-         }
+         return $$3;
       }
    }
 }

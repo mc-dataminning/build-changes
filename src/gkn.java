@@ -1,64 +1,86 @@
-import java.util.Calendar;
+public class gkn implements gks<dsb> {
+   private static final int b = 20;
+   private static final int c = 40;
+   private static final int d = 16;
+   public static final String a = "flag";
+   private static final String e = "pole";
+   private static final String f = "bar";
+   private final gbm g;
+   private final gbm h;
+   private final gbm i;
 
-public class gkn<T extends dsg & dtl> implements gkh<T> {
-   private final fxn a;
-   private final fxn b;
-   private final fxn c;
-   private boolean d;
-
-   public gkn(gki.a $$0) {
-      Calendar $$1 = Calendar.getInstance();
-      if ($$1.get(2) + 1 == 12 && $$1.get(5) >= 24 && $$1.get(5) <= 26) {
-         this.d = true;
-      }
-
-      this.a = new fxn($$0.a(gba.K));
-      this.b = new fxn($$0.a(gba.af));
-      this.c = new fxn($$0.a(gba.ag));
+   public gkn(gkt.a $$0) {
+      gbm $$1 = $$0.a(gbl.m);
+      this.g = $$1.b("flag");
+      this.h = $$1.b("pole");
+      this.i = $$1.b("bar");
    }
 
-   @Override
-   public void a(T $$0, float $$1, fdt $$2, ghw $$3, int $$4, int $$5) {
-      dev $$6 = $$0.i();
-      boolean $$7 = $$6 != null;
-      dvd $$8 = $$7 ? $$0.m() : dia.cv.m().b(djb.c, jl.d);
-      dvv $$9 = $$8.b(djb.d) ? $$8.c(djb.d) : dvv.a;
-      if ($$8.b() instanceof dgs<?> $$11) {
-         boolean $$12 = $$9 != dvv.a;
-         $$2.a();
-         float $$13 = $$8.c(djb.c).p();
+   public static gbs a() {
+      gbu $$0 = new gbu();
+      gbw $$1 = $$0.a();
+      $$1.a("flag", gbr.c().a(0, 0).a(-10.0F, 0.0F, -2.0F, 20.0F, 40.0F, 1.0F), gbo.a(0.0F, -32.0F, 0.0F));
+      $$1.a("pole", gbr.c().a(44, 0).a(-1.0F, -30.0F, -1.0F, 2.0F, 42.0F, 2.0F), gbo.a);
+      $$1.a("bar", gbr.c().a(0, 42).a(-10.0F, -32.0F, -1.0F, 20.0F, 2.0F, 2.0F), gbo.a);
+      return gbs.a($$0, 64, 64);
+   }
+
+   public void a(dsb $$0, float $$1, feb $$2, gih $$3, int $$4, int $$5) {
+      float $$6 = 0.6666667F;
+      boolean $$7 = $$0.i() == null;
+      $$2.a();
+      long $$8;
+      if ($$7) {
+         $$8 = 0L;
          $$2.a(0.5F, 0.5F, 0.5F);
-         $$2.a(a.d.rotationDegrees(-$$13));
-         $$2.a(-0.5F, -0.5F, -0.5F);
-         dkf.c<? extends dsn> $$14;
-         if ($$7) {
-            $$14 = $$11.a($$8, $$6, $$0.aC_(), true);
+         this.h.k = true;
+      } else {
+         $$8 = $$0.i().aa();
+         dvj $$10 = $$0.m();
+         if ($$10.b() instanceof dhj) {
+            $$2.a(0.5F, 0.5F, 0.5F);
+            float $$11 = -dwp.b($$10.c(dhj.b));
+            $$2.a(a.d.rotationDegrees($$11));
+            this.h.k = true;
          } else {
-            $$14 = dkf.b::b;
+            $$2.a(0.5F, -0.16666667F, 0.5F);
+            float $$12 = -$$10.c(drb.b).p();
+            $$2.a(a.d.rotationDegrees($$12));
+            $$2.a(0.0F, -0.3125F, -0.4375F);
+            this.h.k = false;
          }
+      }
 
-         float $$16 = $$14.apply(djb.a($$0)).get($$1);
-         $$16 = 1.0F - $$16;
-         $$16 = 1.0F - $$16 * $$16 * $$16;
-         int $$17 = $$14.apply(new gkk<>()).applyAsInt($$4);
-         hab $$18 = gir.a($$0, $$9, this.d);
-         fdx $$19 = $$18.a($$3, gig::e);
-         if ($$12) {
-            if ($$9 == dvv.b) {
-               this.a($$2, $$19, this.b, $$16, $$17, $$5);
-            } else {
-               this.a($$2, $$19, this.c, $$16, $$17, $$5);
-            }
-         } else {
-            this.a($$2, $$19, this.a, $$16, $$17, $$5);
-         }
+      $$2.a();
+      $$2.b(0.6666667F, -0.6666667F, -0.6666667F);
+      fef $$13 = hap.f.a($$3, gir::c);
+      this.h.a($$2, $$13, $$4, $$5);
+      this.i.a($$2, $$13, $$4, $$5);
+      jh $$14 = $$0.aB_();
+      float $$15 = ((float)Math.floorMod((long)($$14.u() * 7 + $$14.v() * 9 + $$14.w() * 13) + $$8, 100L) + $$1) / 100.0F;
+      this.g.e = (-0.0125F + 0.01F * azk.b((float) (Math.PI * 2) * $$15)) * (float) Math.PI;
+      a($$2, $$3, $$4, $$5, this.g, hap.f, true, $$0.f(), $$0.b());
+      $$2.b();
+      $$2.b();
+   }
 
-         $$2.b();
+   public static void a(feb $$0, gih $$1, int $$2, int $$3, gbm $$4, ham $$5, boolean $$6, cuy $$7, dsd $$8) {
+      a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8, false, true);
+   }
+
+   public static void a(feb $$0, gih $$1, int $$2, int $$3, gbm $$4, ham $$5, boolean $$6, cuy $$7, dsd $$8, boolean $$9, boolean $$10) {
+      $$4.a($$0, $$5.a($$1, gir::c, $$10, $$9), $$2, $$3);
+      a($$0, $$1, $$2, $$3, $$4, $$6 ? gjc.m : gjc.n, $$7);
+
+      for (int $$11 = 0; $$11 < 16 && $$11 < $$8.b().size(); $$11++) {
+         dsd.b $$12 = $$8.b().get($$11);
+         ham $$13 = $$6 ? gjc.a($$12.b()) : gjc.b($$12.b());
+         a($$0, $$1, $$2, $$3, $$4, $$13, $$12.c());
       }
    }
 
-   private void a(fdt $$0, fdx $$1, fxn $$2, float $$3, int $$4, int $$5) {
-      $$2.a($$3);
-      $$2.a($$0, $$1, $$4, $$5);
+   private static void a(feb $$0, gih $$1, int $$2, int $$3, gbm $$4, ham $$5, cuy $$6) {
+      int $$7 = $$6.d();
+      $$4.a($$0, $$5.a($$1, gir::m), $$2, $$3, $$7);
    }
 }

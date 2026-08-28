@@ -1,86 +1,75 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Predicate;
 
 public interface bc<T, P extends Predicate<T>> extends Predicate<Iterable<T>> {
-   List<bc.a<T, P>> a();
+   List<P> a();
 
    static <T, P extends Predicate<T>> Codec<bc<T, P>> a(Codec<P> $$0) {
-      return bc.a.a($$0).listOf().xmap(bc::a, bc::a);
+      return $$0.listOf().xmap(bc::a, bc::a);
    }
 
    @SafeVarargs
-   static <T, P extends Predicate<T>> bc<T, P> a(bc.a<T, P>... $$0) {
+   static <T, P extends Predicate<T>> bc<T, P> a(P... $$0) {
       return a(List.of($$0));
    }
 
-   static <T, P extends Predicate<T>> bc<T, P> a(List<bc.a<T, P>> $$0) {
+   static <T, P extends Predicate<T>> bc<T, P> a(List<P> $$0) {
       return (bc<T, P>)(switch ($$0.size()) {
-         case 0 -> new bc.d();
-         case 1 -> new bc.c($$0.getFirst());
-         default -> new bc.b($$0);
+         case 0 -> new bc.c();
+         case 1 -> new bc.b($$0.getFirst());
+         default -> new bc.a($$0);
       });
    }
 
-   public static record a<T, P extends Predicate<T>>(P a, di.d b) {
-      public static <T, P extends Predicate<T>> Codec<bc.a<T, P>> a(Codec<P> $$0) {
-         return RecordCodecBuilder.create(
-            $$1 -> $$1.group($$0.fieldOf("test").forGetter(bc.a::a), di.d.d.fieldOf("count").forGetter(bc.a::b)).apply($$1, bc.a::new)
-         );
-      }
-
+   public static record a<T, P extends Predicate<T>>(List<P> a) implements bc<T, P> {
       public boolean a(Iterable<T> $$0) {
-         int $$1 = 0;
+         List<Predicate<T>> $$1 = new ArrayList<>(this.a);
 
          for (T $$2 : $$0) {
-            if (this.a.test($$2)) {
-               $$1++;
+            $$1.removeIf($$1x -> $$1x.test($$2));
+            if ($$1.isEmpty()) {
+               return true;
             }
          }
 
-         return this.b.d($$1);
-      }
-   }
-
-   public static record b<T, P extends Predicate<T>>(List<bc.a<T, P>> a) implements bc<T, P> {
-      public boolean a(Iterable<T> $$0) {
-         for (bc.a<T, P> $$1 : this.a) {
-            if (!$$1.a($$0)) {
-               return false;
-            }
-         }
-
-         return true;
+         return false;
       }
 
-      public List<bc.a<T, P>> b() {
+      public List<P> b() {
          return this.a;
       }
    }
 
-   public static record c<T, P extends Predicate<T>>(bc.a<T, P> a) implements bc<T, P> {
+   public static record b<T, P extends Predicate<T>>(P a) implements bc<T, P> {
       public boolean a(Iterable<T> $$0) {
-         return this.a.a($$0);
+         for (T $$1 : $$0) {
+            if (this.a.test($$1)) {
+               return true;
+            }
+         }
+
+         return false;
       }
 
       @Override
-      public List<bc.a<T, P>> a() {
+      public List<P> a() {
          return List.of(this.a);
       }
 
-      public bc.a<T, P> b() {
+      public P b() {
          return this.a;
       }
    }
 
-   public static class d<T, P extends Predicate<T>> implements bc<T, P> {
+   public static class c<T, P extends Predicate<T>> implements bc<T, P> {
       public boolean a(Iterable<T> $$0) {
          return true;
       }
 
       @Override
-      public List<bc.a<T, P>> a() {
+      public List<P> a() {
          return List.of();
       }
    }

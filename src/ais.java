@@ -1,45 +1,33 @@
-public class ais implements zo<agu> {
-   public static final zf<we, ais> a = zo.a(ais::a, ais::new);
-   private final ezd b;
-   private final brx c;
-   private final int d;
+import java.util.UUID;
+import javax.annotation.Nullable;
 
-   public ais(brx $$0, ezd $$1, int $$2) {
-      this.c = $$0;
-      this.b = $$1;
-      this.d = $$2;
+public class ais implements zp<agv> {
+   public static final zg<wf, ais> a = zp.a(ais::a, ais::new);
+   private final UUID b;
+
+   public ais(UUID $$0) {
+      this.b = $$0;
    }
 
-   private ais(we $$0) {
-      this.c = $$0.b(brx.class);
-      this.b = $$0.v();
-      this.d = $$0.l();
+   private ais(wf $$0) {
+      this.b = $$0.n();
    }
 
-   private void a(we $$0) {
-      $$0.a(this.c);
+   private void a(wf $$0) {
       $$0.a(this.b);
-      $$0.c(this.d);
    }
 
    @Override
-   public zq<ais> a() {
-      return ags.cf;
+   public zr<ais> a() {
+      return agt.ce;
    }
 
-   public void a(agu $$0) {
+   public void a(agv $$0) {
       $$0.a(this);
    }
 
-   public brx b() {
-      return this.c;
-   }
-
-   public ezd e() {
-      return this.b;
-   }
-
-   public int f() {
-      return this.d;
+   @Nullable
+   public bue a(arn $$0) {
+      return $$0.a(this.b);
    }
 }

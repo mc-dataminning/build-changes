@@ -1,75 +1,28 @@
-import java.util.Map;
+public class grr extends gpb<cml, gxd, gbd<gxd>> {
+   private static final ali a = ali.b("textures/entity/zombie_villager/zombie_villager.png");
 
-public class grr<S extends gva, M extends fxz<S> & fyi> extends gsm<S, M> {
-   private static final float a = 0.625F;
-   private static final float b = 1.1875F;
-   private final grr.a c;
-   private final Map<dpa.a, fzw> d;
-   private final gox e;
-
-   public grr(gpv<S, M> $$0, gax $$1, gox $$2) {
-      this($$0, $$1, grr.a.a, $$2);
+   public grr(gok.a $$0) {
+      super($$0, new gbd<>($$0.a(gbl.dv)), new gbd<>($$0.a(gbl.dy)), 0.5F, grf.a);
+      this.a(new gsn<>(this, new gbd($$0.a(gbl.dw)), new gbd($$0.a(gbl.dx)), new gbd($$0.a(gbl.dz)), new gbd($$0.a(gbl.dA)), $$0.h()));
+      this.a(new gth<>(this, $$0.e(), "zombie_villager"));
    }
 
-   public grr(gpv<S, M> $$0, gax $$1, grr.a $$2, gox $$3) {
-      super($$0);
-      this.c = $$2;
-      this.d = gkw.a($$1);
-      this.e = $$3;
+   public ali a(gxd $$0) {
+      return a;
    }
 
-   public void a(fdt $$0, ghw $$1, int $$2, S $$3, float $$4, float $$5) {
-      cvx $$6 = $$3.ao;
-      gzu $$7 = $$3.an;
-      if (!$$6.f() && $$7 != null) {
-         label17: {
-            cvt $$8 = $$6.h();
-            $$0.a();
-            $$0.b(this.c.c(), 1.0F, this.c.c());
-            M $$9 = this.d();
-            $$9.e().a($$0);
-            $$9.b().a($$0);
-            if ($$8 instanceof cuc $$10 && $$10.d() instanceof dgu $$11) {
-               $$0.a(0.0F, this.c.b(), 0.0F);
-               $$0.b(1.1875F, -1.1875F, -1.1875F);
-               cyu $$12 = $$6.a(kt.af);
-               $$0.a(-0.5, 0.0, -0.5);
-               dpa.a $$13 = $$11.b();
-               fzw $$14 = this.d.get($$13);
-               gig $$15 = gkw.a($$13, $$12);
-               gkw.a(null, 180.0F, $$3.Z, $$0, $$1, $$2, $$14, $$15);
-               break label17;
-            }
-
-            if (!gsc.a($$6, buh.f)) {
-               a($$0, this.c);
-               this.e.a($$6, cvv.f, false, $$0, $$1, $$2, gxj.d, $$7);
-            }
-         }
-
-         $$0.b();
-      }
+   public gxd c() {
+      return new gxd();
    }
 
-   public static void a(fdt $$0, grr.a $$1) {
-      $$0.a(0.0F, -0.25F + $$1.a(), 0.0F);
-      $$0.a(a.d.rotationDegrees(180.0F));
-      $$0.b(0.625F, -0.625F, -0.625F);
+   public void a(cml $$0, gxd $$1, float $$2) {
+      super.a($$0, $$1, $$2);
+      $$1.b = $$0.gD();
+      $$1.c = $$0.gE();
+      $$1.a = $$0.gj();
    }
 
-   public static record a(float b, float c, float d) {
-      public static final grr.a a = new grr.a(0.0F, 0.0F, 1.0F);
-
-      public float a() {
-         return this.b;
-      }
-
-      public float b() {
-         return this.c;
-      }
-
-      public float c() {
-         return this.d;
-      }
+   protected boolean b(gxd $$0) {
+      return super.a($$0) || $$0.b;
    }
 }

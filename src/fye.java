@@ -1,39 +1,37 @@
-public class fye extends fxz<gun> {
-   private final gbb[] a = new gbb[9];
+public class fye extends fxb<guj> {
+   private final gbm e = this.c.b("left_chest");
+   private final gbm f = this.c.b("right_chest");
 
-   public fye(gbb $$0) {
+   public fye(gbm $$0) {
       super($$0);
-
-      for (int $$1 = 0; $$1 < this.a.length; $$1++) {
-         this.a[$$1] = $$0.b(a($$1));
-      }
    }
 
-   private static String a(int $$0) {
-      return "tentacle" + $$0;
+   public static gbs a() {
+      gbu $$0 = fxb.a(gbq.a);
+      a($$0.a());
+      return gbs.a($$0, 64, 64);
    }
 
-   public static gbh a() {
-      gbj $$0 = new gbj();
-      gbl $$1 = $$0.a();
-      $$1.a("body", gbg.c().a(0, 0).a(-8.0F, -8.0F, -8.0F, 16.0F, 16.0F, 16.0F), gbd.a(0.0F, 17.6F, 0.0F));
-      azr $$2 = azr.a(1660L);
-
-      for (int $$3 = 0; $$3 < 9; $$3++) {
-         float $$4 = (((float)($$3 % 3) - (float)($$3 / 3 % 2) * 0.5F + 0.25F) / 2.0F * 2.0F - 1.0F) * 5.0F;
-         float $$5 = ((float)($$3 / 3) / 2.0F * 2.0F - 1.0F) * 5.0F;
-         int $$6 = $$2.a(7) + 8;
-         $$1.a(a($$3), gbg.c().a(0, 0).a(-1.0F, 0.0F, -1.0F, 2.0F, (float)$$6, 2.0F), gbd.a($$4, 24.6F, $$5));
-      }
-
-      return gbh.a($$0, 64, 32).a(gbk.scaling(4.5F));
+   public static gbs b() {
+      gbu $$0 = fxb.c(gbq.a);
+      a($$0.a());
+      return gbs.a(fxb.b.apply($$0), 64, 64);
    }
 
-   public void a(gun $$0) {
+   private static void a(gbw $$0) {
+      gbw $$1 = $$0.b("body");
+      gbr $$2 = gbr.c().a(26, 21).a(-4.0F, 0.0F, -2.0F, 8.0F, 8.0F, 3.0F);
+      $$1.a("left_chest", $$2, gbo.a(6.0F, -8.0F, 0.0F, 0.0F, (float) (-Math.PI / 2), 0.0F));
+      $$1.a("right_chest", $$2, gbo.a(-6.0F, -8.0F, 0.0F, 0.0F, (float) (Math.PI / 2), 0.0F));
+      gbw $$3 = $$0.b("head_parts").b("head");
+      gbr $$4 = gbr.c().a(0, 12).a(-1.0F, -7.0F, 0.0F, 2.0F, 7.0F, 1.0F);
+      $$3.a("left_ear", $$4, gbo.a(1.25F, -10.0F, 4.0F, (float) (Math.PI / 12), 0.0F, (float) (Math.PI / 12)));
+      $$3.a("right_ear", $$4, gbo.a(-1.25F, -10.0F, 4.0F, (float) (Math.PI / 12), 0.0F, (float) (-Math.PI / 12)));
+   }
+
+   public void a(guj $$0) {
       super.a($$0);
-
-      for (int $$1 = 0; $$1 < this.a.length; $$1++) {
-         this.a[$$1].e = 0.2F * azj.a($$0.p * 0.3F + (float)$$1) + 0.4F;
-      }
+      this.e.k = $$0.a;
+      this.f.k = $$0.a;
    }
 }

@@ -1,29 +1,60 @@
-public class aeg implements zo<acd> {
-   public static final zf<we, aeg> a = zo.a(aeg::a, aeg::new);
-   private final int b;
+import java.util.UUID;
+import javax.annotation.Nullable;
 
-   public aeg(bsm $$0) {
-      this($$0.b());
+public record aeg(UUID b, int c, @Nullable xu d, yb.a e, @Nullable xi f, xm g, xe.a h) implements zp<ace> {
+   public static final zg<wt, aeg> a = zp.a(aeg::a, aeg::new);
+
+   private aeg(wt $$0) {
+      this($$0.n(), $$0.l(), $$0.c(xu::a), new yb.a($$0), wf.a($$0, xk.d), xm.a($$0), xe.a.a.decode($$0));
    }
 
-   public aeg(int $$0) {
-      this.b = $$0;
-   }
-
-   private aeg(we $$0) {
-      this.b = $$0.l();
-   }
-
-   private void a(we $$0) {
-      $$0.c(this.b);
+   private void a(wt $$0) {
+      $$0.a(this.b);
+      $$0.c(this.c);
+      $$0.a(this.d, xu::a);
+      this.e.a($$0);
+      wf.a($$0, this.f, xk.d);
+      xm.a($$0, this.g);
+      xe.a.a.encode($$0, this.h);
    }
 
    @Override
-   public zq<aeg> a() {
-      return ags.ac;
+   public zr<aeg> a() {
+      return agt.ab;
    }
 
-   public void a(acd $$0) {
+   public void a(ace $$0) {
       $$0.a(this);
+   }
+
+   @Override
+   public boolean c() {
+      return true;
+   }
+
+   public int e() {
+      return this.c;
+   }
+
+   @Nullable
+   public xu f() {
+      return this.d;
+   }
+
+   public yb.a g() {
+      return this.e;
+   }
+
+   @Nullable
+   public xi h() {
+      return this.f;
+   }
+
+   public xm i() {
+      return this.g;
+   }
+
+   public xe.a j() {
+      return this.h;
    }
 }

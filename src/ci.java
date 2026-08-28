@@ -1,66 +1,138 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import it.unimi.dsi.fastutil.objects.ObjectArrayList;
+import java.util.List;
+import java.util.Map;
 import java.util.Optional;
-import java.util.function.Predicate;
+import java.util.stream.Stream;
 
-public record ci(Optional<bd<cym.b, ci.a>> c) implements dy<cym> {
-   public static final Codec<ci> a = RecordCodecBuilder.create($$0 -> $$0.group(bd.a(ci.a.a).optionalFieldOf("modifiers").forGetter(ci::b)).apply($$0, ci::new));
-
+public class ci extends dy<ci.a> {
    @Override
-   public ks<cym> a() {
-      return kt.o;
+   public Codec<ci.a> a() {
+      return ci.a.a;
    }
 
-   public boolean a(cvx $$0, cym $$1) {
-      return !this.c.isPresent() || this.c.get().a($$1.b());
+   public void a(aro $$0, col $$1, cwb $$2) {
+      int $$3 = 0;
+      int $$4 = 0;
+      int $$5 = 0;
+
+      for (int $$6 = 0; $$6 < $$1.b(); $$6++) {
+         cwb $$7 = $$1.a($$6);
+         if ($$7.f()) {
+            $$4++;
+         } else {
+            $$5++;
+            if ($$7.L() >= $$7.k()) {
+               $$3++;
+            }
+         }
+      }
+
+      this.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
-   public Optional<bd<cym.b, ci.a>> b() {
-      return this.c;
+   private void a(aro $$0, col $$1, cwb $$2, int $$3, int $$4, int $$5) {
+      this.a($$0, $$5x -> $$5x.a($$1, $$2, $$3, $$4, $$5));
    }
 
-   public static record a(Optional<jt<bvy>> b, Optional<alh> c, di.c d, Optional<bwb.a> e, Optional<bui> f) implements Predicate<cym.b> {
+   public static record a(Optional<bh> b, ci.a.a c, List<cu> d) implements dy.a {
       public static final Codec<ci.a> a = RecordCodecBuilder.create(
          $$0 -> $$0.group(
-                  ke.a(ly.c).optionalFieldOf("attribute").forGetter(ci.a::a),
-                  alh.a.optionalFieldOf("id").forGetter(ci.a::b),
-                  di.c.d.optionalFieldOf("amount", di.c.c).forGetter(ci.a::c),
-                  bwb.a.f.optionalFieldOf("operation").forGetter(ci.a::d),
-                  bui.l.optionalFieldOf("slot").forGetter(ci.a::e)
+                  bw.b.optionalFieldOf("player").forGetter(ci.a::a),
+                  ci.a.a.a.optionalFieldOf("slots", ci.a.a.b).forGetter(ci.a::b),
+                  cu.a.listOf().optionalFieldOf("items", List.of()).forGetter(ci.a::c)
                )
                .apply($$0, ci.a::new)
       );
 
-      public boolean a(cym.b $$0) {
-         if (this.b.isPresent() && !this.b.get().a($$0.a())) {
+      public static ap<ci.a> a(cu.a... $$0) {
+         return a(Stream.of($$0).map(cu.a::b).toArray(cu[]::new));
+      }
+
+      public static ap<ci.a> a(cu... $$0) {
+         return ao.f.a(new ci.a(Optional.empty(), ci.a.a.b, List.of($$0)));
+      }
+
+      public static ap<ci.a> a(dfa... $$0) {
+         cu[] $$1 = new cu[$$0.length];
+
+         for (int $$2 = 0; $$2 < $$0.length; $$2++) {
+            $$1[$$2] = new cu(Optional.of(ju.a($$0[$$2].j().f())), dj.d.c, ks.c, Map.of());
+         }
+
+         return a($$1);
+      }
+
+      public boolean a(col $$0, cwb $$1, int $$2, int $$3, int $$4) {
+         if (!this.c.a($$2, $$3, $$4)) {
             return false;
-         } else if (this.c.isPresent() && !this.c.get().equals($$0.b().b())) {
-            return false;
-         } else if (!this.d.d($$0.b().c())) {
-            return false;
+         } else if (this.d.isEmpty()) {
+            return true;
+         } else if (this.d.size() != 1) {
+            List<cu> $$5 = new ObjectArrayList(this.d);
+            int $$6 = $$0.b();
+
+            for (int $$7 = 0; $$7 < $$6; $$7++) {
+               if ($$5.isEmpty()) {
+                  return true;
+               }
+
+               cwb $$8 = $$0.a($$7);
+               if (!$$8.f()) {
+                  $$5.removeIf($$1x -> $$1x.a($$8));
+               }
+            }
+
+            return $$5.isEmpty();
          } else {
-            return this.e.isPresent() && this.e.get() != $$0.b().d() ? false : !this.f.isPresent() || this.f.get() == $$0.c();
+            return !$$1.f() && this.d.get(0).a($$1);
          }
       }
 
-      public Optional<jt<bvy>> a() {
+      @Override
+      public Optional<bh> a() {
          return this.b;
       }
 
-      public Optional<alh> b() {
+      public ci.a.a b() {
          return this.c;
       }
 
-      public di.c c() {
+      public List<cu> c() {
          return this.d;
       }
 
-      public Optional<bwb.a> d() {
-         return this.e;
-      }
+      public static record a(dj.d c, dj.d d, dj.d e) {
+         public static final Codec<ci.a.a> a = RecordCodecBuilder.create(
+            $$0 -> $$0.group(
+                     dj.d.d.optionalFieldOf("occupied", dj.d.c).forGetter(ci.a.a::a),
+                     dj.d.d.optionalFieldOf("full", dj.d.c).forGetter(ci.a.a::b),
+                     dj.d.d.optionalFieldOf("empty", dj.d.c).forGetter(ci.a.a::c)
+                  )
+                  .apply($$0, ci.a.a::new)
+         );
+         public static final ci.a.a b = new ci.a.a(dj.d.c, dj.d.c, dj.d.c);
 
-      public Optional<bui> e() {
-         return this.f;
+         public boolean a(int $$0, int $$1, int $$2) {
+            if (!this.d.d($$0)) {
+               return false;
+            } else {
+               return !this.e.d($$1) ? false : this.c.d($$2);
+            }
+         }
+
+         public dj.d a() {
+            return this.c;
+         }
+
+         public dj.d b() {
+            return this.d;
+         }
+
+         public dj.d c() {
+            return this.e;
+         }
       }
    }
 }

@@ -1,54 +1,57 @@
 import com.mojang.serialization.Codec;
+import java.util.List;
+import java.util.stream.Stream;
 
-public class edy extends eef<egg> {
-   public edy(Codec<egg> $$0) {
+public class edy extends edz {
+   public edy(Codec<egw> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(eeh<egg> $$0) {
-      egg $$1 = $$0.f();
-      jg $$2 = $$0.e();
-      dfs $$3 = $$0.b();
-      azr $$4 = $$0.d();
-      boolean $$5 = false;
-      int $$6 = $$2.v();
-      int $$7 = $$6 + $$1.d();
-      int $$8 = $$6 - $$1.d() - 1;
-      int $$9 = $$1.c().a($$4);
-      jg.a $$10 = new jg.a();
+   protected boolean a(dfc $$0, azs $$1, jh $$2, dvj $$3) {
+      if (!this.b($$0, $$1, $$2, $$3)) {
+         return false;
+      } else {
+         jm $$4 = jm.c.a.a($$1);
+         int $$5 = $$1.a(2) + 2;
+         List<jm> $$6 = ae.a(Stream.of($$4, $$4.h(), $$4.i()), $$1);
 
-      for (jg $$11 : jg.c($$2.b(-$$9, 0, -$$9), $$2.b($$9, 0, $$9))) {
-         int $$12 = $$11.u() - $$2.u();
-         int $$13 = $$11.w() - $$2.w();
-         if ($$12 * $$12 + $$13 * $$13 <= $$9 * $$9) {
-            $$5 |= this.a($$1, $$3, $$4, $$7, $$8, $$10.g($$11));
-         }
-      }
-
-      return $$5;
-   }
-
-   protected boolean a(egg $$0, dfs $$1, azr $$2, int $$3, int $$4, jg.a $$5) {
-      boolean $$6 = false;
-      boolean $$7 = false;
-
-      for (int $$8 = $$3; $$8 > $$4; $$8--) {
-         $$5.q($$8);
-         if ($$0.b().test($$1, $$5)) {
-            dvd $$9 = $$0.a().a($$1, $$2, $$5);
-            $$1.a($$5, $$9, 2);
-            if (!$$7) {
-               this.a($$1, $$5);
+         for (jm $$8 : $$6.subList(0, $$5)) {
+            jh.a $$9 = $$2.k();
+            int $$10 = $$1.a(2) + 1;
+            $$9.c($$8);
+            int $$12;
+            jm $$11;
+            if ($$8 == $$4) {
+               $$11 = $$4;
+               $$12 = $$1.a(3) + 2;
+            } else {
+               $$9.c(jm.b);
+               jm[] $$13 = new jm[]{$$8, jm.b};
+               $$11 = ae.a($$13, $$1);
+               $$12 = $$1.a(3) + 3;
             }
 
-            $$6 = true;
-            $$7 = true;
-         } else {
-            $$7 = false;
-         }
-      }
+            for (int $$16 = 0; $$16 < $$10 && this.b($$0, $$1, $$9, $$3); $$16++) {
+               $$9.c($$11);
+            }
 
-      return $$6;
+            $$9.c($$11.g());
+            $$9.c(jm.b);
+
+            for (int $$17 = 0; $$17 < $$12; $$17++) {
+               $$9.c($$4);
+               if (!this.b($$0, $$1, $$9, $$3)) {
+                  break;
+               }
+
+               if ($$1.i() < 0.25F) {
+                  $$9.c(jm.b);
+               }
+            }
+         }
+
+         return true;
+      }
    }
 }

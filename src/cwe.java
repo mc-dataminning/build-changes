@@ -1,85 +1,39 @@
-import javax.annotation.Nullable;
-
 public class cwe {
-   public static final int a = 20;
-   private long b;
-   @Nullable
-   private jp<cwd> c;
-   private final jg d;
-   private final cwe.a e;
-
-   public cwe(cwe.a $$0, jg $$1) {
-      this.e = $$0;
-      this.d = $$1;
+   public static bsd a(dfb $$0, com $$1, bsc $$2) {
+      $$1.c($$2);
+      return bsd.c;
    }
 
-   public boolean a() {
-      return this.c != null;
-   }
+   public static cwb a(cwb $$0, com $$1, cwb $$2, boolean $$3) {
+      boolean $$4 = $$1.fX();
+      if ($$3 && $$4) {
+         if (!$$1.gk().i($$2)) {
+            $$1.gk().f($$2);
+         }
 
-   @Nullable
-   public cwd b() {
-      return this.c == null ? null : this.c.a();
-   }
-
-   public long c() {
-      return this.b;
-   }
-
-   public void a(jp<cwd> $$0, long $$1) {
-      if (!$$0.a().a($$1)) {
-         this.c = $$0;
-         this.b = $$1;
-      }
-   }
-
-   public void a(dew $$0, jp<cwd> $$1) {
-      this.c = $$1;
-      this.b = 0L;
-      int $$2 = $$0.H_().e(ly.L).a(this.c.a());
-      $$0.a(null, 1010, this.d, $$2);
-      this.e.notifyChange();
-   }
-
-   public void a(dew $$0, @Nullable dvd $$1) {
-      if (this.c != null) {
-         this.c = null;
-         this.b = 0L;
-         $$0.a(eaa.F, this.d, eaa.a.a($$1));
-         $$0.c(1011, this.d, 0);
-         this.e.notifyChange();
-      }
-   }
-
-   public void b(dew $$0, @Nullable dvd $$1) {
-      if (this.c != null) {
-         if (this.c.a().a(this.b)) {
-            this.a($$0, $$1);
+         return $$0;
+      } else {
+         $$0.a(1, $$1);
+         if ($$0.f()) {
+            return $$2;
          } else {
-            if (this.d()) {
-               $$0.a(eaa.E, this.d, eaa.a.a($$1));
-               a($$0, this.d);
+            if (!$$1.gk().f($$2)) {
+               $$1.a($$2, false);
             }
 
-            this.b++;
+            return $$0;
          }
       }
    }
 
-   private boolean d() {
-      return this.b % 20L == 0L;
+   public static cwb a(cwb $$0, com $$1, cwb $$2) {
+      return a($$0, $$1, $$2, true);
    }
 
-   private static void a(dew $$0, jg $$1) {
-      if ($$0 instanceof arm $$2) {
-         ezh $$3 = ezh.c($$1).b(0.0, 1.2F, 0.0);
-         float $$4 = (float)$$0.E_().a(4) / 24.0F;
-         $$2.a(lq.aa, $$3.a(), $$3.b(), $$3.c(), 0, (double)$$4, 0.0, 0.0, 1.0);
+   public static void a(ckv $$0, Iterable<cwb> $$1) {
+      dfb $$2 = $$0.dX();
+      if (!$$2.C) {
+         $$1.forEach($$2x -> $$2.b(new ckv($$2, $$0.dC(), $$0.dE(), $$0.dI(), $$2x)));
       }
-   }
-
-   @FunctionalInterface
-   public interface a {
-      void notifyChange();
    }
 }

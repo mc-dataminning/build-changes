@@ -1,41 +1,47 @@
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
+import com.mojang.brigadier.builder.RequiredArgumentBuilder;
 import com.mojang.brigadier.context.CommandContext;
+import java.util.Collection;
+import java.util.Collections;
 
 public class anr {
-   public static void a(CommandDispatcher<ev> $$0) {
-      final LiteralArgumentBuilder<ev> $$1 = (LiteralArgumentBuilder<ev>)ew.a("gamerule").requires($$0x -> $$0x.c(2));
-      new der(crc.f.a())
-         .a(
-            new der.c() {
-               @Override
-               public <T extends der.g<T>> void a(der.e<T> $$0, der.f<T> $$1x) {
-                  LiteralArgumentBuilder<ev> $$2 = ew.a($$0.a());
-                  if (!$$1.b().b()) {
-                     $$2.requires($$1xxx -> $$1.b().a($$1xxx.w()));
-                  }
+   public static final int a = 2;
 
-                  $$1.then(
-                     ((LiteralArgumentBuilder)$$2.executes($$1xxx -> anr.a((ev)$$1xxx.getSource(), $$0)))
-                        .then($$1.a("value").executes($$1xxx -> anr.a($$1xxx, $$0)))
-                  );
-               }
-            }
-         );
-      $$0.register($$1);
+   public static void a(CommandDispatcher<ew> $$0) {
+      $$0.register(
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)ex.a("gamemode").requires($$0x -> $$0x.c(2)))
+            .then(
+               ((RequiredArgumentBuilder)ex.a("gamemode", fk.a())
+                     .executes($$0x -> a($$0x, Collections.singleton(((ew)$$0x.getSource()).h()), fk.a($$0x, "gamemode"))))
+                  .then(ex.a("target", fj.d()).executes($$0x -> a($$0x, fj.f($$0x, "target"), fk.a($$0x, "gamemode"))))
+            )
+      );
    }
 
-   static <T extends der.g<T>> int a(CommandContext<ev> $$0, der.e<T> $$1) {
-      ev $$2 = (ev)$$0.getSource();
-      T $$3 = $$2.l().aL().a($$1);
-      $$3.b($$0, "value");
-      $$2.a(() -> xh.a("commands.gamerule.set", $$1.a(), $$3.toString()), true);
-      return $$3.c();
+   private static void a(ew $$0, aro $$1, dey $$2) {
+      xi $$3 = xi.c("gameMode." + $$2.b());
+      if ($$0.f() == $$1) {
+         $$0.a(() -> xi.a("commands.gamemode.success.self", $$3), true);
+      } else {
+         if ($$0.e().ac().b(dex.p)) {
+            $$1.a(xi.a("gameMode.changed", $$3));
+         }
+
+         $$0.a(() -> xi.a("commands.gamemode.success.other", $$1.S_(), $$3), true);
+      }
    }
 
-   static <T extends der.g<T>> int a(ev $$0, der.e<T> $$1) {
-      T $$2 = $$0.l().aL().a($$1);
-      $$0.a(() -> xh.a("commands.gamerule.query", $$1.a(), $$2.toString()), false);
-      return $$2.c();
+   private static int a(CommandContext<ew> $$0, Collection<aro> $$1, dey $$2) {
+      int $$3 = 0;
+
+      for (aro $$4 : $$1) {
+         if ($$4.a($$2)) {
+            a((ew)$$0.getSource(), $$4, $$2);
+            $$3++;
+         }
+      }
+
+      return $$3;
    }
 }

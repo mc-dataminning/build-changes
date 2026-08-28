@@ -1,132 +1,83 @@
-import it.unimi.dsi.fastutil.objects.ObjectOpenCustomHashSet;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Optional;
-import java.util.PriorityQueue;
-import java.util.Queue;
-import java.util.Set;
-import java.util.function.BiConsumer;
-import java.util.function.Function;
-import java.util.function.Predicate;
-import java.util.stream.Stream;
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Map;
+import java.util.stream.Collectors;
 import javax.annotation.Nullable;
 
-public class fau<T> implements fba<T>, fbc<T> {
-   private final Queue<faz<T>> a = new PriorityQueue<>(faz.a);
-   @Nullable
-   private List<fay<T>> b;
-   private final Set<faz<?>> c = new ObjectOpenCustomHashSet(faz.c);
-   @Nullable
-   private BiConsumer<fau<T>, faz<T>> d;
-
-   public fau() {
+public abstract class fau {
+   public boolean a(@Nullable fau $$0) {
+      return $$0 == null ? false : this == $$0;
    }
 
-   public fau(List<fay<T>> $$0) {
-      this.b = $$0;
+   public abstract String b();
 
-      for (fay<T> $$1 : $$0) {
-         this.c.add(faz.a($$1.a(), $$1.b()));
+   public abstract xw d(xi var1);
+
+   public abstract boolean i();
+
+   public abstract boolean h();
+
+   public abstract fau.b j();
+
+   public abstract n n();
+
+   public abstract Collection<String> g();
+
+   public abstract fau.b k();
+
+   public abstract fau.a l();
+
+   public static enum a {
+      a("always", 0),
+      b("never", 1),
+      c("pushOtherTeams", 2),
+      d("pushOwnTeam", 3);
+
+      private static final Map<String, fau.a> g = Arrays.stream(values()).collect(Collectors.toMap($$0 -> $$0.e, $$0 -> (fau.a)$$0));
+      public final String e;
+      public final int f;
+
+      @Nullable
+      public static fau.a a(String $$0) {
+         return g.get($$0);
+      }
+
+      private a(final String $$0, final int $$1) {
+         this.e = $$0;
+         this.f = $$1;
+      }
+
+      public xi a() {
+         return xi.c("team.collision." + this.e);
       }
    }
 
-   public void a(@Nullable BiConsumer<fau<T>, faz<T>> $$0) {
-      this.d = $$0;
-   }
+   public static enum b {
+      a("always", 0),
+      b("never", 1),
+      c("hideForOtherTeams", 2),
+      d("hideForOwnTeam", 3);
 
-   @Nullable
-   public faz<T> b() {
-      return this.a.peek();
-   }
+      private static final Map<String, fau.b> g = Arrays.stream(values()).collect(Collectors.toMap($$0 -> $$0.e, $$0 -> (fau.b)$$0));
+      public final String e;
+      public final int f;
 
-   @Nullable
-   public faz<T> c() {
-      faz<T> $$0 = this.a.poll();
-      if ($$0 != null) {
-         this.c.remove($$0);
+      public static String[] a() {
+         return g.keySet().toArray(new String[0]);
       }
 
-      return $$0;
-   }
-
-   @Override
-   public void a(faz<T> $$0) {
-      if (this.c.add($$0)) {
-         this.b($$0);
-      }
-   }
-
-   private void b(faz<T> $$0) {
-      this.a.add($$0);
-      if (this.d != null) {
-         this.d.accept(this, $$0);
-      }
-   }
-
-   @Override
-   public boolean a(jg $$0, T $$1) {
-      return this.c.contains(faz.a($$1, $$0));
-   }
-
-   public void a(Predicate<faz<T>> $$0) {
-      Iterator<faz<T>> $$1 = this.a.iterator();
-
-      while ($$1.hasNext()) {
-         faz<T> $$2 = $$1.next();
-         if ($$0.test($$2)) {
-            $$1.remove();
-            this.c.remove($$2);
-         }
-      }
-   }
-
-   public Stream<faz<T>> d() {
-      return this.a.stream();
-   }
-
-   @Override
-   public int a() {
-      return this.a.size() + (this.b != null ? this.b.size() : 0);
-   }
-
-   @Override
-   public List<fay<T>> a(long $$0) {
-      List<fay<T>> $$1 = new ArrayList<>(this.a.size());
-      if (this.b != null) {
-         $$1.addAll(this.b);
+      @Nullable
+      public static fau.b a(String $$0) {
+         return g.get($$0);
       }
 
-      for (faz<T> $$2 : this.a) {
-         $$1.add($$2.a($$0));
+      private b(final String $$0, final int $$1) {
+         this.e = $$0;
+         this.f = $$1;
       }
 
-      return $$1;
-   }
-
-   public up a(long $$0, Function<T, String> $$1) {
-      up $$2 = new up();
-
-      for (fay<T> $$4 : this.a($$0)) {
-         $$2.add($$4.a($$1));
+      public xi b() {
+         return xi.c("team.visibility." + this.e);
       }
-
-      return $$2;
-   }
-
-   public void b(long $$0) {
-      if (this.b != null) {
-         int $$1 = -this.b.size();
-
-         for (fay<T> $$2 : this.b) {
-            this.b($$2.a($$0, (long)($$1++)));
-         }
-      }
-
-      this.b = null;
-   }
-
-   public static <T> fau<T> a(up $$0, Function<String, Optional<T>> $$1, deb $$2) {
-      return new fau<>(fay.a($$0, $$1, $$2));
    }
 }

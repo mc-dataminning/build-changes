@@ -1,37 +1,30 @@
-public class ahp implements zo<agu> {
-   public static final zf<we, ahp> a = zo.a(ahp::a, ahp::new);
-   private final int b;
-   private final int c;
+import java.util.List;
+import java.util.Optional;
 
-   public ahp(int $$0, int $$1) {
-      this.b = $$0;
-      this.c = $$1;
-   }
+public record ahp(int b, List<String> c, Optional<String> d) implements zp<agv> {
+   public static final zg<wf, ahp> a = zg.a(ze.h, ahp::b, ze.b(1024).a(ze.c(100)), ahp::e, ze.b(32).a(ze::a), ahp::f, ahp::new);
 
-   private ahp(we $$0) {
-      this.b = $$0.l();
-      this.c = $$0.l();
-   }
-
-   private void a(we $$0) {
-      $$0.c(this.b);
-      $$0.c(this.c);
+   public ahp(int b, List<String> c, Optional<String> d) {
+      c = List.copyOf(c);
+      this.b = b;
+      this.c = c;
+      this.d = d;
    }
 
    @Override
-   public zq<ahp> a() {
-      return ags.bA;
+   public zr<ahp> a() {
+      return agt.bz;
    }
 
-   public void a(agu $$0) {
+   public void a(agv $$0) {
       $$0.a(this);
    }
 
-   public int b() {
-      return this.b;
+   public List<String> e() {
+      return this.c;
    }
 
-   public int e() {
-      return this.c;
+   public Optional<String> f() {
+      return this.d;
    }
 }

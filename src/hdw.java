@@ -1,98 +1,60 @@
 import javax.annotation.Nullable;
 
 public class hdw {
-   private final fja a;
+   private boolean a;
    @Nullable
-   private hdx b;
+   private hdq.b b;
+   @Nullable
+   private String c;
+   @Nullable
+   private final String d;
 
-   public hdw(fja $$0, fje $$1) {
-      this.a = $$0;
+   public hdw(@Nullable String $$0) {
+      this.d = $$0;
    }
 
-   public void a(ggq $$0) {
-      if (this.b != null) {
-         this.b.a($$0);
+   public void a(hdr.a $$0) {
+      if (this.c != null) {
+         $$0.a(hdq.j, !this.c.equals("vanilla"));
+      }
+
+      $$0.a(hdq.k, this.a());
+   }
+
+   private hdq.c a() {
+      gcw $$0 = fji.Q().S();
+      if ($$0 != null && $$0.e()) {
+         return hdq.c.a;
+      } else {
+         return fji.Q().U() ? hdq.c.b : hdq.c.c;
       }
    }
 
-   public void a(double $$0, double $$1) {
-      if (this.b != null) {
-         this.b.a($$0, $$1);
+   public boolean a(hdn $$0) {
+      if (!this.a && this.b != null && this.c != null) {
+         this.a = true;
+         $$0.send(hdo.b, $$0x -> {
+            $$0x.a(hdq.n, this.b);
+            if (this.d != null) {
+               $$0x.a(hdq.o, this.d);
+            }
+         });
+         return true;
+      } else {
+         return false;
       }
    }
 
-   public void a(@Nullable gbx $$0, @Nullable ezf $$1) {
-      if (this.b != null && $$1 != null && $$0 != null) {
-         this.b.a($$0, $$1);
-      }
+   public void a(dey $$0, boolean $$1) {
+      this.b = switch ($$0) {
+         case a -> $$1 ? hdq.b.e : hdq.b.a;
+         case b -> hdq.b.b;
+         case c -> hdq.b.c;
+         case d -> hdq.b.d;
+      };
    }
 
-   public void a(gbx $$0, jg $$1, dvd $$2, float $$3) {
-      if (this.b != null) {
-         this.b.a($$0, $$1, $$2, $$3);
-      }
-   }
-
-   public void a() {
-      if (this.b != null) {
-         this.b.c();
-      }
-   }
-
-   public void a(cvx $$0) {
-      if (this.b != null) {
-         this.b.a($$0);
-      }
-   }
-
-   public void b() {
-      if (this.b != null) {
-         this.b.b();
-         this.b = null;
-      }
-   }
-
-   public void c() {
-      if (this.b != null) {
-         this.b();
-      }
-
-      this.b = this.a.n.r.a(this);
-   }
-
-   public void d() {
-      if (this.b != null) {
-         if (this.a.s != null) {
-            this.b.a();
-         } else {
-            this.b();
-         }
-      } else if (this.a.s != null) {
-         this.c();
-      }
-   }
-
-   public void a(hdy $$0) {
-      this.a.n.r = $$0;
-      this.a.n.ay();
-      if (this.b != null) {
-         this.b.b();
-         this.b = $$0.a(this);
-      }
-   }
-
-   public fja e() {
-      return this.a;
-   }
-
-   public boolean f() {
-      return this.a.r == null ? false : this.a.r.j() == des.a;
-   }
-
-   public static xh a(String $$0) {
-      return xh.d("key." + $$0).a(n.r);
-   }
-
-   public void a(cvx $$0, cvx $$1, crt $$2) {
+   public void a(String $$0) {
+      this.c = $$0;
    }
 }

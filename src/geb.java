@@ -1,45 +1,30 @@
-public class geb extends gge {
-   private final gfz a;
+import com.google.common.annotations.VisibleForTesting;
+import java.util.Optional;
 
-   geb(gbx $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, gfz $$7) {
-      super($$0, $$1, $$2, $$3);
-      this.a = $$7;
-      this.t = 4;
-      this.u = 0.008F;
-      this.j = $$4;
-      this.k = $$5;
-      this.l = $$6;
-      this.b($$7);
+public class geb {
+   public static final geb a = new geb(gea.b, gec.createDnsSrvRedirectHandler(), gdx.a());
+   private final gea b;
+   private final gec c;
+   private final gdx d;
+
+   @VisibleForTesting
+   geb(gea $$0, gec $$1, gdx $$2) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
    }
 
-   @Override
-   public void a() {
-      this.d = this.g;
-      this.e = this.h;
-      this.f = this.i;
-      if (this.s++ >= this.t) {
-         this.k();
+   public Optional<gdy> a(gdz $$0) {
+      Optional<gdy> $$1 = this.b.resolve($$0);
+      if ((!$$1.isPresent() || this.d.a($$1.get())) && this.d.a($$0)) {
+         Optional<gdz> $$2 = this.c.lookupRedirect($$0);
+         if ($$2.isPresent()) {
+            $$1 = this.b.resolve($$2.get()).filter(this.d::a);
+         }
+
+         return $$1;
       } else {
-         this.k = this.k - (double)this.u;
-         this.a(this.j, this.k, this.l);
-         this.b(this.a);
-      }
-   }
-
-   @Override
-   public gfi b() {
-      return gfi.b;
-   }
-
-   public static class a implements gfh<lu> {
-      private final gfz a;
-
-      public a(gfz $$0) {
-         this.a = $$0;
-      }
-
-      public gfe a(lu $$0, gbx $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new geb($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
+         return Optional.empty();
       }
    }
 }

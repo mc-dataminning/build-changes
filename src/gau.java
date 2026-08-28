@@ -1,38 +1,93 @@
-public class gau extends fzw {
-   private final gbb a;
-   private final gbb b;
+public class gau extends fyk<gwu> implements fxh {
+   private final gbm a = this.v.b("body");
+   private final gbm b = this.a.b("right_arm");
+   private final gbm c = this.a.b("left_arm");
+   private final gbm d = this.a.b("right_wing");
+   private final gbm e = this.a.b("left_wing");
+   private final gbm f = this.v.b("head");
 
-   public gau(gbb $$0) {
-      super($$0);
-      this.a = $$0.b("head");
-      this.b = this.a.b("jaw");
+   public gau(gbm $$0) {
+      super($$0.b("root"), gir::i);
    }
 
-   public static gbh a() {
-      gbj $$0 = new gbj();
-      gbl $$1 = $$0.a();
-      float $$2 = -16.0F;
-      gbl $$3 = $$1.a(
-         "head",
-         gbg.c()
-            .a("upper_lip", -6.0F, -1.0F, -24.0F, 12, 5, 16, 176, 44)
-            .a("upper_head", -8.0F, -8.0F, -10.0F, 16, 16, 16, 112, 30)
-            .a(true)
-            .a("scale", -5.0F, -12.0F, -4.0F, 2, 4, 6, 0, 0)
-            .a("nostril", -5.0F, -3.0F, -22.0F, 2, 2, 4, 112, 0)
-            .a(false)
-            .a("scale", 3.0F, -12.0F, -4.0F, 2, 4, 6, 0, 0)
-            .a("nostril", 3.0F, -3.0F, -22.0F, 2, 2, 4, 112, 0),
-         gbd.a(0.0F, -7.986666F, 0.0F).b(0.75F)
+   public static gbs a() {
+      gbu $$0 = new gbu();
+      gbw $$1 = $$0.a();
+      gbw $$2 = $$1.a("root", gbr.c(), gbo.a(0.0F, -2.5F, 0.0F));
+      $$2.a("head", gbr.c().a(0, 0).a(-2.5F, -5.0F, -2.5F, 5.0F, 5.0F, 5.0F, new gbq(0.0F)), gbo.a(0.0F, 20.0F, 0.0F));
+      gbw $$3 = $$2.a(
+         "body",
+         gbr.c().a(0, 10).a(-1.5F, 0.0F, -1.0F, 3.0F, 4.0F, 2.0F, new gbq(0.0F)).a(0, 16).a(-1.5F, 1.0F, -1.0F, 3.0F, 5.0F, 2.0F, new gbq(-0.2F)),
+         gbo.a(0.0F, 20.0F, 0.0F)
       );
-      $$3.a("jaw", gbg.c().a(176, 65).a("jaw", -6.0F, 0.0F, -16.0F, 12.0F, 4.0F, 16.0F), gbd.a(0.0F, 4.0F, -8.0F));
-      return gbh.a($$0, 256, 256);
+      $$3.a("right_arm", gbr.c().a(23, 0).a(-1.25F, -0.5F, -1.0F, 2.0F, 4.0F, 2.0F, new gbq(-0.1F)), gbo.a(-1.75F, 0.25F, 0.0F));
+      $$3.a("left_arm", gbr.c().a(23, 6).a(-0.75F, -0.5F, -1.0F, 2.0F, 4.0F, 2.0F, new gbq(-0.1F)), gbo.a(1.75F, 0.25F, 0.0F));
+      $$3.a("left_wing", gbr.c().a(16, 14).a().a(0.0F, 0.0F, 0.0F, 0.0F, 5.0F, 8.0F, new gbq(0.0F)).a(false), gbo.a(0.5F, 1.0F, 1.0F));
+      $$3.a("right_wing", gbr.c().a(16, 14).a(0.0F, 0.0F, 0.0F, 0.0F, 5.0F, 8.0F, new gbq(0.0F)), gbo.a(-0.5F, 1.0F, 1.0F));
+      return gbs.a($$0, 32, 32);
+   }
+
+   public void a(gwu $$0) {
+      super.a($$0);
+      this.f.f = $$0.U * (float) (Math.PI / 180.0);
+      this.f.e = $$0.V * (float) (Math.PI / 180.0);
+      float $$1 = azk.b($$0.p * 5.5F * (float) (Math.PI / 180.0)) * 0.1F;
+      this.b.g = (float) (Math.PI / 5) + $$1;
+      this.c.g = -((float) (Math.PI / 5) + $$1);
+      if ($$0.a) {
+         this.a.e = 0.0F;
+         this.a(!$$0.ar.f(), !$$0.at.f(), $$1);
+      } else {
+         this.a.e = (float) (Math.PI / 20);
+      }
+
+      this.e.f = 1.0995574F + azk.b($$0.p * 45.836624F * (float) (Math.PI / 180.0)) * (float) (Math.PI / 180.0) * 16.2F;
+      this.d.f = -this.e.f;
+      this.e.e = 0.47123888F;
+      this.e.g = -0.47123888F;
+      this.d.e = 0.47123888F;
+      this.d.g = 0.47123888F;
+   }
+
+   private void a(boolean $$0, boolean $$1, float $$2) {
+      if (!$$0 && !$$1) {
+         this.b.e = -1.2217305F;
+         this.b.f = (float) (Math.PI / 12);
+         this.b.g = -0.47123888F - $$2;
+         this.c.e = -1.2217305F;
+         this.c.f = (float) (-Math.PI / 12);
+         this.c.g = 0.47123888F + $$2;
+      } else {
+         if ($$0) {
+            this.b.e = (float) (Math.PI * 7.0 / 6.0);
+            this.b.f = (float) (Math.PI / 12);
+            this.b.g = -0.47123888F - $$2;
+         }
+
+         if ($$1) {
+            this.c.e = (float) (Math.PI * 7.0 / 6.0);
+            this.c.f = (float) (-Math.PI / 12);
+            this.c.g = 0.47123888F + $$2;
+         }
+      }
    }
 
    @Override
-   public void a(float $$0, float $$1, float $$2) {
-      this.b.e = (float)(Math.sin((double)($$0 * (float) Math.PI * 0.2F)) + 1.0) * 0.2F;
-      this.a.f = $$1 * (float) (Math.PI / 180.0);
-      this.a.e = $$2 * (float) (Math.PI / 180.0);
+   public void a(buu $$0, feb $$1) {
+      boolean $$2 = $$0 == buu.b;
+      gbm $$3 = $$2 ? this.b : this.c;
+      this.v.a($$1);
+      this.a.a($$1);
+      $$3.a($$1);
+      $$1.b(0.55F, 0.55F, 0.55F);
+      this.a($$1, $$2);
+   }
+
+   private void a(feb $$0, boolean $$1) {
+      if ($$1) {
+         $$0.a(0.046875, -0.15625, 0.078125);
+      } else {
+         $$0.a(-0.046875, -0.15625, 0.078125);
+      }
    }
 }

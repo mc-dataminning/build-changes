@@ -1,33 +1,15 @@
 import io.netty.buffer.ByteBuf;
+import java.util.List;
 
-public record aad(alh c, byte[] d) implements zo<zu> {
-   public static final zf<we, aad> a = zo.a(aad::a, aad::new);
-   private static final int e = 5120;
-   public static final zf<ByteBuf, byte[]> b = zd.a(5120);
-
-   private aad(we $$0) {
-      this($$0.q(), b.decode($$0));
-   }
-
-   private void a(we $$0) {
-      $$0.a(this.c);
-      b.encode($$0, this.d);
-   }
+public record aad(List<ama.c> b) implements zp<zv> {
+   public static final zg<ByteBuf, aad> a = zg.a(ama.c, aad::b, aad::new);
 
    @Override
-   public zq<aad> a() {
-      return aag.i;
+   public zr<aad> a() {
+      return aah.h;
    }
 
-   public void a(zu $$0) {
+   public void a(zv $$0) {
       $$0.a(this);
-   }
-
-   public alh b() {
-      return this.c;
-   }
-
-   public byte[] e() {
-      return this.d;
    }
 }

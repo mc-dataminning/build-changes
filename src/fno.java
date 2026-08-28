@@ -1,110 +1,66 @@
-import it.unimi.dsi.fastutil.ints.IntOpenHashSet;
-import it.unimi.dsi.fastutil.ints.IntSet;
-import java.util.Arrays;
-import java.util.function.IntFunction;
-import javax.annotation.Nullable;
+import java.util.List;
 
-public class fno<T> {
-   private static final int a = 8;
-   private static final int b = 256;
-   private static final int c = 255;
-   private static final int d = 4351;
-   private static final int e = 4352;
-   private final T[] f;
-   private final T[][] g;
-   private final IntFunction<T[]> h;
+public class fno implements fnr {
+   private static final ali e = ali.b("toast/advancement");
+   public static final int a = 5000;
+   private final ah f;
+   private boolean g;
+   private fnr.a h = fnr.a.b;
 
-   public fno(IntFunction<T[]> $$0, IntFunction<T[][]> $$1) {
-      this.f = (T[])((Object[])$$0.apply(256));
-      this.g = (T[][])((Object[][])$$1.apply(4352));
-      Arrays.fill(this.g, this.f);
-      this.h = $$0;
+   public fno(ah $$0) {
+      this.f = $$0;
    }
 
-   public void a() {
-      Arrays.fill(this.g, this.f);
+   @Override
+   public fnr.a a() {
+      return this.h;
    }
 
-   @Nullable
-   public T a(int $$0) {
-      int $$1 = $$0 >> 8;
-      int $$2 = $$0 & 0xFF;
-      return this.g[$$1][$$2];
-   }
-
-   @Nullable
-   public T a(int $$0, T $$1) {
-      int $$2 = $$0 >> 8;
-      int $$3 = $$0 & 0xFF;
-      T[] $$4 = this.g[$$2];
-      if ($$4 == this.f) {
-         $$4 = (T[])((Object[])this.h.apply(256));
-         this.g[$$2] = $$4;
-         $$4[$$3] = $$1;
-         return null;
+   @Override
+   public void a(fns $$0, long $$1) {
+      at $$2 = this.f.b().c().orElse(null);
+      if ($$2 == null) {
+         this.h = fnr.a.b;
       } else {
-         T $$5 = $$4[$$3];
-         $$4[$$3] = $$1;
-         return $$5;
-      }
-   }
-
-   public T a(int $$0, IntFunction<T> $$1) {
-      int $$2 = $$0 >> 8;
-      int $$3 = $$0 & 0xFF;
-      T[] $$4 = this.g[$$2];
-      T $$5 = $$4[$$3];
-      if ($$5 != null) {
-         return $$5;
-      } else {
-         if ($$4 == this.f) {
-            $$4 = (T[])((Object[])this.h.apply(256));
-            this.g[$$2] = $$4;
+         if (!this.g && $$1 > 0L) {
+            this.g = true;
+            if ($$2.e() == an.b) {
+               $$0.c().ak().a(hbv.a(awl.AB, 1.0F, 1.0F));
+            }
          }
 
-         T $$6 = $$1.apply($$0);
-         $$4[$$3] = $$6;
-         return $$6;
+         this.h = (double)$$1 >= 5000.0 * $$0.d() ? fnr.a.b : fnr.a.a;
       }
    }
 
-   @Nullable
-   public T b(int $$0) {
-      int $$1 = $$0 >> 8;
-      int $$2 = $$0 & 0xFF;
-      T[] $$3 = this.g[$$1];
-      if ($$3 == this.f) {
-         return null;
-      } else {
-         T $$4 = $$3[$$2];
-         $$3[$$2] = null;
-         return $$4;
-      }
-   }
+   @Override
+   public void a(fku $$0, fks $$1, long $$2) {
+      at $$3 = this.f.b().c().orElse(null);
+      $$0.a(gir::B, e, 0, 0, this.b(), this.c());
+      if ($$3 != null) {
+         List<ayw> $$4 = $$1.c($$3.a(), 125);
+         int $$5 = $$3.e() == an.b ? -30465 : -256;
+         if ($$4.size() == 1) {
+            $$0.a($$1, $$3.e().b(), 30, 7, $$5, false);
+            $$0.a($$1, $$4.get(0), 30, 18, -1, false);
+         } else {
+            int $$6 = 1500;
+            float $$7 = 300.0F;
+            if ($$2 < 1500L) {
+               int $$8 = azk.d(azk.a((float)(1500L - $$2) / 300.0F, 0.0F, 1.0F) * 255.0F) << 24 | 67108864;
+               $$0.a($$1, $$3.e().b(), 30, 11, $$5 | $$8, false);
+            } else {
+               int $$9 = azk.d(azk.a((float)($$2 - 1500L) / 300.0F, 0.0F, 1.0F) * 252.0F) << 24 | 67108864;
+               int $$10 = this.c() / 2 - $$4.size() * 9 / 2;
 
-   public void a(fno.a<T> $$0) {
-      for (int $$1 = 0; $$1 < this.g.length; $$1++) {
-         T[] $$2 = this.g[$$1];
-         if ($$2 != this.f) {
-            for (int $$3 = 0; $$3 < $$2.length; $$3++) {
-               T $$4 = $$2[$$3];
-               if ($$4 != null) {
-                  int $$5 = $$1 << 8 | $$3;
-                  $$0.accept($$5, $$4);
+               for (ayw $$11 : $$4) {
+                  $$0.a($$1, $$11, 30, $$10, 16777215 | $$9, false);
+                  $$10 += 9;
                }
             }
          }
+
+         $$0.b($$3.c(), 8, 8);
       }
-   }
-
-   public IntSet b() {
-      IntOpenHashSet $$0 = new IntOpenHashSet();
-      this.a(($$1, $$2) -> $$0.add($$1));
-      return $$0;
-   }
-
-   @FunctionalInterface
-   public interface a<T> {
-      void accept(int var1, T var2);
    }
 }

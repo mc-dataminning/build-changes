@@ -1,27 +1,52 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Optional;
+import java.util.function.Predicate;
 
-public record cq(Optional<bd<cyk, cp.a>> c, di.d d) implements dy<cyl> {
-   public static final Codec<cq> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(bd.a(cp.a.a).optionalFieldOf("explosions").forGetter(cq::b), di.d.d.optionalFieldOf("flight_duration", di.d.c).forGetter(cq::c))
-            .apply($$0, cq::new)
-   );
+public record cq(cq.a c) implements dz<cyq> {
+   public static final Codec<cq> a = cq.a.a.xmap(cq::new, cq::b);
 
    @Override
-   public ks<cyl> a() {
-      return kt.ae;
+   public kt<cyq> a() {
+      return ku.ae;
    }
 
-   public boolean a(cvx $$0, cyl $$1) {
-      return this.c.isPresent() && !this.c.get().a($$1.b()) ? false : this.d.d($$1.a());
+   public boolean a(cwb $$0, cyq $$1) {
+      return this.c.a($$1);
    }
 
-   public Optional<bd<cyk, cp.a>> b() {
+   public cq.a b() {
       return this.c;
    }
 
-   public di.d c() {
-      return this.d;
+   public static record a(Optional<cyq.a> b, Optional<Boolean> c, Optional<Boolean> d) implements Predicate<cyq> {
+      public static final Codec<cq.a> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(
+                  cyq.a.g.optionalFieldOf("shape").forGetter(cq.a::a),
+                  Codec.BOOL.optionalFieldOf("has_twinkle").forGetter(cq.a::b),
+                  Codec.BOOL.optionalFieldOf("has_trail").forGetter(cq.a::c)
+               )
+               .apply($$0, cq.a::new)
+      );
+
+      public boolean a(cyq $$0) {
+         if (this.b.isPresent() && this.b.get() != $$0.a()) {
+            return false;
+         } else {
+            return this.c.isPresent() && this.c.get() != $$0.e() ? false : !this.d.isPresent() || this.d.get() == $$0.d();
+         }
+      }
+
+      public Optional<cyq.a> a() {
+         return this.b;
+      }
+
+      public Optional<Boolean> b() {
+         return this.c;
+      }
+
+      public Optional<Boolean> c() {
+         return this.d;
+      }
    }
 }

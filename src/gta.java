@@ -1,27 +1,14 @@
-public class gta extends grw<gwo, gap> {
-   private static final alh a = alh.b("textures/entity/wither/wither_armor.png");
-   private final gap b;
+public class gta<S extends gwi, M extends fyk<S>> extends gsx<S, M> {
+   private final gaf<S> a;
+   private final ali b;
 
-   public gta(gpv<gwo, gap> $$0, gax $$1) {
+   public gta(gqg<S, M> $$0, gbi $$1, gbk $$2, ali $$3) {
       super($$0);
-      this.b = new gap($$1.a(gba.da));
+      this.b = $$3;
+      this.a = new gaf<>($$1.a($$2));
    }
 
-   protected boolean a(gwo $$0) {
-      return $$0.d;
-   }
-
-   @Override
-   protected float a(float $$0) {
-      return azj.b($$0 * 0.02F) * 3.0F;
-   }
-
-   @Override
-   protected alh a() {
-      return a;
-   }
-
-   protected gap b() {
-      return this.b;
+   public void a(feb $$0, gih $$1, int $$2, S $$3, float $$4, float $$5) {
+      a(this.a, this.b, $$0, $$1, $$2, $$3, -1);
    }
 }

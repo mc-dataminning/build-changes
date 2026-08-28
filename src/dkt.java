@@ -1,54 +1,82 @@
+import com.google.common.base.Predicates;
 import com.mojang.serialization.MapCodec;
 
-public abstract class dkt extends dhy implements dks {
-   public dkt(dvc.d $$0) {
+public class dkt extends die {
+   public static final MapCodec<dkt> a = b(dkt::new);
+   public static final dwd b = dlz.aF;
+   public static final dwa c = dvz.h;
+   protected static final fah d = die.a(0.0, 0.0, 0.0, 16.0, 13.0, 16.0);
+   protected static final fah e = die.a(4.0, 13.0, 4.0, 12.0, 16.0, 12.0);
+   protected static final fah f = fae.a(d, e);
+   private static dvo g;
+
+   @Override
+   public MapCodec<dkt> a() {
+      return a;
+   }
+
+   public dkt(dvi.d $$0) {
       super($$0);
+      this.l(this.F.b().b(b, jm.c).b(c, Boolean.valueOf(false)));
    }
 
    @Override
-   protected abstract MapCodec<? extends dkt> a();
-
-   @Override
-   protected void b(dvd $$0, dev $$1, jg $$2, dvd $$3, boolean $$4) {
-      $$1.a($$2, this, this.b());
+   protected boolean g_(dvj $$0) {
+      return true;
    }
 
    @Override
-   protected dvd a(dvd $$0, jl $$1, dvd $$2, dew $$3, jg $$4, jg $$5) {
-      $$3.a($$4, this, this.b());
-      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   protected fah a(dvj $$0, deg $$1, jh $$2, ezs $$3) {
+      return $$0.c(c) ? f : d;
    }
 
    @Override
-   protected void a(dvd $$0, arm $$1, jg $$2, azr $$3) {
-      if (n($$1.a_($$2.e())) && $$2.v() >= $$1.I_()) {
-         ckp $$4 = ckp.a($$1, $$2, $$0);
-         this.a($$4);
+   public dvj a(czs $$0) {
+      return this.m().b(b, $$0.g().g()).b(c, Boolean.valueOf(false));
+   }
+
+   @Override
+   protected boolean c_(dvj $$0) {
+      return true;
+   }
+
+   @Override
+   protected int a(dvj $$0, dfb $$1, jh $$2) {
+      return $$0.c(c) ? 15 : 0;
+   }
+
+   @Override
+   protected dvj a(dvj $$0, dor $$1) {
+      return $$0.b(b, $$1.a($$0.c(b)));
+   }
+
+   @Override
+   protected dvj a(dvj $$0, dna $$1) {
+      return $$0.a($$1.a($$0.c(b)));
+   }
+
+   @Override
+   protected void a(dvk.a<die, dvj> $$0) {
+      $$0.a(b, c);
+   }
+
+   public static dvo b() {
+      if (g == null) {
+         g = dvp.a()
+            .a("?vvv?", ">???<", ">???<", ">???<", "?^^^?")
+            .a('?', dvn.a(dvs.a))
+            .a('^', dvn.a(dvs.a(dig.fy).a(c, Predicates.equalTo(true)).a(b, Predicates.equalTo(jm.d))))
+            .a('>', dvn.a(dvs.a(dig.fy).a(c, Predicates.equalTo(true)).a(b, Predicates.equalTo(jm.e))))
+            .a('v', dvn.a(dvs.a(dig.fy).a(c, Predicates.equalTo(true)).a(b, Predicates.equalTo(jm.c))))
+            .a('<', dvn.a(dvs.a(dig.fy).a(c, Predicates.equalTo(true)).a(b, Predicates.equalTo(jm.f))))
+            .b();
       }
-   }
 
-   protected void a(ckp $$0) {
-   }
-
-   protected int b() {
-      return 2;
-   }
-
-   public static boolean n(dvd $$0) {
-      return $$0.l() || $$0.a(awz.aL) || $$0.n() || $$0.v();
+      return g;
    }
 
    @Override
-   public void a(dvd $$0, dev $$1, jg $$2, azr $$3) {
-      if ($$3.a(16) == 0) {
-         jg $$4 = $$2.e();
-         if (n($$1.a_($$4))) {
-            azn.a($$1, $$2, $$3, new li(lq.C, $$0));
-         }
-      }
-   }
-
-   public int b(dvd $$0, dea $$1, jg $$2) {
-      return -16777216;
+   protected boolean a(dvj $$0, erz $$1) {
+      return false;
    }
 }

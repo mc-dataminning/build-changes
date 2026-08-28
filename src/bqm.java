@@ -1,130 +1,52 @@
-import com.google.common.collect.ImmutableList;
 import com.mojang.logging.LogUtils;
-import java.util.List;
-import java.util.concurrent.Executor;
-import java.util.concurrent.RejectedExecutionException;
-import java.util.concurrent.atomic.AtomicReference;
+import com.mojang.serialization.Codec;
 import org.slf4j.Logger;
 
-public abstract class bqm<T extends Runnable> implements bpu, bqt<T>, Runnable {
-   private static final Logger a = LogUtils.getLogger();
-   private final AtomicReference<bqm.a> b = new AtomicReference<>(bqm.a.a);
-   private final bqs<T> c;
-   private final Executor d;
-   private final String e;
+public class bqm {
+   public static final Codec<bqm> a = Codec.INT.xmap(bqm::a, bqm::a);
+   private static final bqm b = new bqm(1);
+   private static final Logger c = LogUtils.getLogger();
+   private final int d;
 
-   public bqm(bqs<T> $$0, Executor $$1, String $$2) {
-      this.d = $$1;
-      this.c = $$0;
-      this.e = $$2;
-      bps.a.a(this);
+   private bqm(int $$0) {
+      this.d = $$0;
    }
 
-   private boolean e() {
-      return !this.k() && !this.c.b();
-   }
-
-   @Override
-   public void close() {
-      this.b.set(bqm.a.c);
-   }
-
-   private boolean f() {
-      if (!this.j()) {
-         return false;
+   public static bqm a(int $$0) {
+      if ($$0 == 1) {
+         return b;
       } else {
-         Runnable $$0 = this.c.a();
-         if ($$0 == null) {
-            return false;
-         } else {
-            ad.a(this.e, $$0).run();
-            return true;
+         b($$0);
+         return new bqm($$0);
+      }
+   }
+
+   public int a() {
+      return this.d;
+   }
+
+   private static void b(int $$0) {
+      if ($$0 < 0) {
+         throw (IllegalArgumentException)ae.b(new IllegalArgumentException("Weight should be >= 0"));
+      } else {
+         if ($$0 == 0 && ab.aV) {
+            c.warn("Found 0 weight, make sure this is intentional!");
          }
       }
-   }
-
-   @Override
-   public void run() {
-      try {
-         this.f();
-      } finally {
-         this.i();
-         this.g();
-      }
-   }
-
-   public void a() {
-      try {
-         while (this.f()) {
-         }
-      } finally {
-         this.i();
-         this.g();
-      }
-   }
-
-   @Override
-   public void a_(T $$0) {
-      this.c.a($$0);
-      this.g();
-   }
-
-   private void g() {
-      if (this.e() && this.h()) {
-         try {
-            this.d.execute(this);
-         } catch (RejectedExecutionException var4) {
-            try {
-               this.d.execute(this);
-            } catch (RejectedExecutionException var3) {
-               a.error("Could not schedule ConsecutiveExecutor", var3);
-            }
-         }
-      }
-   }
-
-   public int b() {
-      return this.c.c();
-   }
-
-   public boolean c() {
-      return this.j() && !this.c.b();
    }
 
    @Override
    public String toString() {
-      return this.e + " " + this.b.get() + " " + this.c.b();
+      return Integer.toString(this.d);
    }
 
    @Override
-   public String x_() {
-      return this.e;
+   public int hashCode() {
+      return Integer.hashCode(this.d);
    }
 
    @Override
-   public List<bpr> bx() {
-      return ImmutableList.of(bpr.a(this.e + "-queue-size", bpq.c, this::b));
-   }
-
-   private boolean h() {
-      return this.b.compareAndSet(bqm.a.a, bqm.a.b);
-   }
-
-   private void i() {
-      this.b.compareAndSet(bqm.a.b, bqm.a.a);
-   }
-
-   private boolean j() {
-      return this.b.get() == bqm.a.b;
-   }
-
-   private boolean k() {
-      return this.b.get() == bqm.a.c;
-   }
-
-   static enum a {
-      a,
-      b,
-      c;
+   public boolean equals(Object $$0) {
+      return this == $$0 ? true : $$0 instanceof bqm && this.d == ((bqm)$$0).d;
    }
 }

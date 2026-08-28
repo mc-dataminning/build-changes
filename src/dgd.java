@@ -1,70 +1,103 @@
-public abstract class dgd {
-   public static final alg<dfw> a = a("the_void");
-   public static final alg<dfw> b = a("plains");
-   public static final alg<dfw> c = a("sunflower_plains");
-   public static final alg<dfw> d = a("snowy_plains");
-   public static final alg<dfw> e = a("ice_spikes");
-   public static final alg<dfw> f = a("desert");
-   public static final alg<dfw> g = a("swamp");
-   public static final alg<dfw> h = a("mangrove_swamp");
-   public static final alg<dfw> i = a("forest");
-   public static final alg<dfw> j = a("flower_forest");
-   public static final alg<dfw> k = a("birch_forest");
-   public static final alg<dfw> l = a("dark_forest");
-   public static final alg<dfw> m = a("old_growth_birch_forest");
-   public static final alg<dfw> n = a("old_growth_pine_taiga");
-   public static final alg<dfw> o = a("old_growth_spruce_taiga");
-   public static final alg<dfw> p = a("taiga");
-   public static final alg<dfw> q = a("snowy_taiga");
-   public static final alg<dfw> r = a("savanna");
-   public static final alg<dfw> s = a("savanna_plateau");
-   public static final alg<dfw> t = a("windswept_hills");
-   public static final alg<dfw> u = a("windswept_gravelly_hills");
-   public static final alg<dfw> v = a("windswept_forest");
-   public static final alg<dfw> w = a("windswept_savanna");
-   public static final alg<dfw> x = a("jungle");
-   public static final alg<dfw> y = a("sparse_jungle");
-   public static final alg<dfw> z = a("bamboo_jungle");
-   public static final alg<dfw> A = a("badlands");
-   public static final alg<dfw> B = a("eroded_badlands");
-   public static final alg<dfw> C = a("wooded_badlands");
-   public static final alg<dfw> D = a("meadow");
-   public static final alg<dfw> E = a("cherry_grove");
-   public static final alg<dfw> F = a("grove");
-   public static final alg<dfw> G = a("snowy_slopes");
-   public static final alg<dfw> H = a("frozen_peaks");
-   public static final alg<dfw> I = a("jagged_peaks");
-   public static final alg<dfw> J = a("stony_peaks");
-   public static final alg<dfw> K = a("river");
-   public static final alg<dfw> L = a("frozen_river");
-   public static final alg<dfw> M = a("beach");
-   public static final alg<dfw> N = a("snowy_beach");
-   public static final alg<dfw> O = a("stony_shore");
-   public static final alg<dfw> P = a("warm_ocean");
-   public static final alg<dfw> Q = a("lukewarm_ocean");
-   public static final alg<dfw> R = a("deep_lukewarm_ocean");
-   public static final alg<dfw> S = a("ocean");
-   public static final alg<dfw> T = a("deep_ocean");
-   public static final alg<dfw> U = a("cold_ocean");
-   public static final alg<dfw> V = a("deep_cold_ocean");
-   public static final alg<dfw> W = a("frozen_ocean");
-   public static final alg<dfw> X = a("deep_frozen_ocean");
-   public static final alg<dfw> Y = a("mushroom_fields");
-   public static final alg<dfw> Z = a("dripstone_caves");
-   public static final alg<dfw> aa = a("lush_caves");
-   public static final alg<dfw> ab = a("deep_dark");
-   public static final alg<dfw> ac = a("nether_wastes");
-   public static final alg<dfw> ad = a("warped_forest");
-   public static final alg<dfw> ae = a("crimson_forest");
-   public static final alg<dfw> af = a("soul_sand_valley");
-   public static final alg<dfw> ag = a("basalt_deltas");
-   public static final alg<dfw> ah = a("the_end");
-   public static final alg<dfw> ai = a("end_highlands");
-   public static final alg<dfw> aj = a("end_midlands");
-   public static final alg<dfw> ak = a("small_end_islands");
-   public static final alg<dfw> al = a("end_barrens");
+import com.google.common.base.Suppliers;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.Lists;
+import com.mojang.logging.LogUtils;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Set;
+import java.util.function.Supplier;
+import java.util.stream.Collectors;
+import org.slf4j.Logger;
 
-   private static alg<dfw> a(String $$0) {
-      return alg.a(ly.aG, alh.b($$0));
+public class dgd {
+   private static final Logger c = LogUtils.getLogger();
+   public static final dgd a = new dgd(ju.a(), List.of());
+   public static final MapCodec<dgd> b = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(
+               edj.c.promotePartial(ae.a("Carver: ", c::error)).fieldOf("carvers").forGetter($$0x -> $$0x.d),
+               elb.d.promotePartial(ae.a("Features: ", c::error)).fieldOf("features").forGetter($$0x -> $$0x.e)
+            )
+            .apply($$0, dgd::new)
+   );
+   private final ju<edj<?>> d;
+   private final List<ju<elb>> e;
+   private final Supplier<List<edx<?, ?>>> f;
+   private final Supplier<Set<elb>> g;
+
+   dgd(ju<edj<?>> $$0, List<ju<elb>> $$1) {
+      this.d = $$0;
+      this.e = $$1;
+      this.f = Suppliers.memoize(
+         () -> $$1.stream().flatMap(ju::a).map(jq::a).flatMap(elb::a).filter($$0xx -> $$0xx.b() == eel.g).collect(ImmutableList.toImmutableList())
+      );
+      this.g = Suppliers.memoize(() -> $$1.stream().flatMap(ju::a).map(jq::a).collect(Collectors.toSet()));
+   }
+
+   public Iterable<jq<edj<?>>> a() {
+      return this.d;
+   }
+
+   public List<edx<?, ?>> b() {
+      return this.f.get();
+   }
+
+   public List<ju<elb>> c() {
+      return this.e;
+   }
+
+   public boolean a(elb $$0) {
+      return this.g.get().contains($$0);
+   }
+
+   public static class a extends dgd.b {
+      private final jr<elb> a;
+      private final jr<edj<?>> b;
+
+      public a(jr<elb> $$0, jr<edj<?>> $$1) {
+         this.a = $$0;
+         this.b = $$1;
+      }
+
+      public dgd.a a(ebb.a $$0, alh<elb> $$1) {
+         this.a($$0.ordinal(), this.a.b($$1));
+         return this;
+      }
+
+      public dgd.a a(alh<edj<?>> $$0) {
+         this.a(this.b.b($$0));
+         return this;
+      }
+   }
+
+   public static class b {
+      private final List<jq<edj<?>>> a = new ArrayList<>();
+      private final List<List<jq<elb>>> b = new ArrayList<>();
+
+      public dgd.b a(ebb.a $$0, jq<elb> $$1) {
+         return this.a($$0.ordinal(), $$1);
+      }
+
+      public dgd.b a(int $$0, jq<elb> $$1) {
+         this.a($$0);
+         this.b.get($$0).add($$1);
+         return this;
+      }
+
+      public dgd.b a(jq<edj<?>> $$0) {
+         this.a.add($$0);
+         return this;
+      }
+
+      private void a(int $$0) {
+         while (this.b.size() <= $$0) {
+            this.b.add(Lists.newArrayList());
+         }
+      }
+
+      public dgd a() {
+         return new dgd(ju.a(this.a), this.b.stream().map(ju::a).collect(ImmutableList.toImmutableList()));
+      }
    }
 }

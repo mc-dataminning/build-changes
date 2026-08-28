@@ -1,23 +1,26 @@
-import java.util.List;
+public record abe(jh c, int d) implements aas {
+   public static final zg<wf, abe> a = aas.a(abe::a, abe::new);
+   public static final aas.b<abe> b = aas.a("debug/poi_ticket_count");
 
-public record abe(List<jg> c) implements aar {
-   public static final zf<we, abe> a = aar.a(abe::a, abe::new);
-   public static final aar.b<abe> b = aar.a("debug/raids");
-
-   private abe(we $$0) {
-      this($$0.a(jg.b));
+   private abe(wf $$0) {
+      this($$0.e(), $$0.readInt());
    }
 
-   private void a(we $$0) {
-      $$0.a(this.c, jg.b);
+   private void a(wf $$0) {
+      $$0.a(this.c);
+      $$0.q(this.d);
    }
 
    @Override
-   public aar.b<abe> a() {
+   public aas.b<abe> a() {
       return b;
    }
 
-   public List<jg> b() {
+   public jh b() {
       return this.c;
+   }
+
+   public int c() {
+      return this.d;
    }
 }

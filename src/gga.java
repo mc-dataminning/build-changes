@@ -1,54 +1,68 @@
-public class gga extends gfq {
-   gga(gbx $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, int $$7, gfz $$8) {
-      super($$0, $$1, $$2, $$3, $$8, 0.0F);
-      this.B = 0.92F;
-      this.D = 0.5F;
-      this.e(1.0F);
-      this.a((float)axu.b($$7), (float)axu.c($$7), (float)axu.d($$7));
-      this.t = (int)((double)(this.D * 12.0F) / (Math.random() * 0.8F + 0.2F));
-      this.b($$8);
-      this.n = false;
-      this.j = $$4;
-      this.k = $$5;
-      this.l = $$6;
+import org.joml.Quaternionf;
+
+public class gga extends ggp {
+   private static final float a = 1.0472F;
+   private int b;
+
+   gga(gci $$0, double $$1, double $$2, double $$3, int $$4) {
+      super($$0, $$1, $$2, $$3, 0.0, 0.0, 0.0);
+      this.D = 0.85F;
+      this.b = $$4;
+      this.t = 30;
+      this.u = 0.0F;
+      this.j = 0.0;
+      this.k = 0.1;
+      this.l = 0.0;
+   }
+
+   @Override
+   public float b(float $$0) {
+      return this.D * azk.a(((float)this.s + $$0) / (float)this.t * 0.75F, 0.0F, 1.0F);
+   }
+
+   @Override
+   public void a(fef $$0, fir $$1, float $$2) {
+      if (this.b <= 0) {
+         this.y = 1.0F - azk.a(((float)this.s + $$2) / (float)this.t, 0.0F, 1.0F);
+         Quaternionf $$3 = new Quaternionf();
+         $$3.rotationX(-1.0472F);
+         this.a($$0, $$1, $$3, $$2);
+         $$3.rotationYXZ((float) -Math.PI, 1.0472F, 0.0F);
+         this.a($$0, $$1, $$3, $$2);
+      }
+   }
+
+   @Override
+   public int a(float $$0) {
+      return 240;
+   }
+
+   @Override
+   public gft b() {
+      return gft.c;
    }
 
    @Override
    public void a() {
-      super.a();
-      if (!this.o) {
-         this.b(this.a);
-         if (this.s > this.t / 2) {
-            this.e(1.0F - ((float)this.s - (float)(this.t / 2)) / (float)this.t);
-         }
-
-         if (this.c.a_(jg.a(this.g, this.h, this.i)).l()) {
-            this.k -= 0.0074F;
-         }
+      if (this.b > 0) {
+         this.b--;
+      } else {
+         super.a();
       }
    }
 
-   public static class a implements gfh<lu> {
-      private final gfz a;
+   public static class a implements gfs<lu> {
+      private final ggk a;
 
-      public a(gfz $$0) {
+      public a(ggk $$0) {
          this.a = $$0;
       }
 
-      public gfe a(lu $$0, gbx $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new gga($$1, $$2, $$3, $$4, $$5, $$6, $$7, axu.a(255, 204, 31, 102), this.a);
-      }
-   }
-
-   public static class b implements gfh<lu> {
-      private final gfz a;
-
-      public b(gfz $$0) {
-         this.a = $$0;
-      }
-
-      public gfe a(lu $$0, gbx $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new gga($$1, $$2, $$3, $$4, $$5, $$6, $$7, axu.a(255, 255, 255, 255), this.a);
+      public gfp a(lu $$0, gci $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         gga $$8 = new gga($$1, $$2, $$3, $$4, $$0.b());
+         $$8.a(this.a);
+         $$8.e(1.0F);
+         return $$8;
       }
    }
 }

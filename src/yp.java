@@ -1,81 +1,53 @@
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.datafixers.util.Either;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
 import java.util.Optional;
-import javax.annotation.Nullable;
-import net.minecraft.server.MinecraftServer;
 
-public record yp(Either<hm, String> d, String e) implements xi {
-   public static final MapCodec<yp> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(Codec.either(hm.a, Codec.STRING).fieldOf("name").forGetter(yp::b), Codec.STRING.fieldOf("objective").forGetter(yp::c))
-            .apply($$0, yp::new)
-   );
-   public static final MapCodec<yp> b = a.fieldOf("score");
-   public static final xi.a<yp> c = new xi.a<>(b, "score");
-
-   @Override
-   public xi.a<?> a() {
-      return c;
-   }
-
-   private fal a(ev $$0) throws CommandSyntaxException {
-      Optional<hm> $$1 = this.d.left();
-      if ($$1.isPresent()) {
-         List<? extends btz> $$2 = $$1.get().b().b($$0);
-         if (!$$2.isEmpty()) {
-            if ($$2.size() != 1) {
-               throw fi.a.create();
-            } else {
-               return $$2.getFirst();
-            }
-         } else {
-            return fal.c($$1.get().a());
-         }
-      } else {
-         return fal.c((String)this.d.right().orElseThrow());
-      }
-   }
-
-   private xv a(fal $$0, ev $$1) {
-      MinecraftServer $$2 = $$1.l();
-      if ($$2 != null) {
-         fam $$3 = $$2.aJ();
-         fae $$4 = $$3.a(this.e);
-         if ($$4 != null) {
-            fai $$5 = $$3.d($$0, $$4);
-            if ($$5 != null) {
-               return $$5.a($$4.a(za.b));
-            }
-         }
+public interface yp extends xj {
+   MapCodec<yp> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(Codec.STRING.fieldOf("text").forGetter(yp::b)).apply($$0, yp::a));
+   xj.a<yp> b = new xj.a<>(a, "text");
+   yp c = new yp() {
+      @Override
+      public String toString() {
+         return "empty";
       }
 
-      return xh.i();
-   }
-
-   @Override
-   public xv a(@Nullable ev $$0, @Nullable btz $$1, int $$2) throws CommandSyntaxException {
-      if ($$0 == null) {
-         return xh.i();
-      } else {
-         fal $$3 = this.a($$0);
-         fal $$4 = (fal)($$1 != null && $$3.equals(fal.cz) ? $$1 : $$3);
-         return this.a($$4, $$0);
+      @Override
+      public String b() {
+         return "";
       }
+   };
+
+   static yp a(String $$0) {
+      return (yp)($$0.isEmpty() ? c : new yp.a($$0));
    }
+
+   String b();
 
    @Override
-   public String toString() {
-      return "score{name='" + this.d + "', objective='" + this.e + "'}";
+   default xj.a<?> a() {
+      return b;
    }
 
-   public Either<hm, String> b() {
-      return this.d;
-   }
+   public static record a(String d) implements yp {
+      @Override
+      public <T> Optional<T> a(xn.a<T> $$0) {
+         return $$0.accept(this.d);
+      }
 
-   public String c() {
-      return this.e;
+      @Override
+      public <T> Optional<T> a(xn.b<T> $$0, yf $$1) {
+         return $$0.accept($$1, this.d);
+      }
+
+      @Override
+      public String toString() {
+         return "literal{" + this.d + "}";
+      }
+
+      @Override
+      public String b() {
+         return this.d;
+      }
    }
 }

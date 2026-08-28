@@ -1,57 +1,76 @@
-import java.util.Collection;
+import javax.annotation.Nullable;
 
-public abstract class hed<E extends flv.a<E>> extends flv<E> {
-   protected hed(int $$0, int $$1, int $$2, int $$3) {
-      super(fja.Q(), $$0, $$1, $$2, $$3);
+public class hed implements hei {
+   private static final int a = 6000;
+   private static final xi b = xi.c("tutorial.find_tree.title");
+   private static final xi c = xi.c("tutorial.find_tree.description");
+   private final heh d;
+   @Nullable
+   private fnt e;
+   private int f;
+
+   public hed(heh $$0) {
+      this.d = $$0;
    }
 
-   public void p(int $$0) {
-      if ($$0 == -1) {
-         this.a(null);
-      } else if (super.l() != 0) {
-         this.a(this.d($$0));
+   @Override
+   public void a() {
+      this.f++;
+      if (!this.d.f()) {
+         this.d.a(hej.f);
+      } else {
+         if (this.f == 1) {
+            ghd $$0 = this.d.e().t;
+            if ($$0 != null && (b($$0) || a($$0))) {
+               this.d.a(hej.e);
+               return;
+            }
+         }
+
+         if (this.f >= 6000 && this.e == null) {
+            this.e = new fnt(fnt.a.c, b, c, false);
+            this.d.e().aA().a(this.e);
+         }
       }
    }
 
-   public void b(int $$0) {
-      this.p($$0);
+   @Override
+   public void b() {
+      if (this.e != null) {
+         this.e.d();
+         this.e = null;
+      }
    }
 
    @Override
-   public int a() {
-      return 0;
+   public void a(gci $$0, ezl $$1) {
+      if ($$1.d() == ezl.a.b) {
+         dvj $$2 = $$0.a_(((ezj)$$1).b());
+         if ($$2.a(axa.ak)) {
+            this.d.a(hej.c);
+         }
+      }
    }
 
    @Override
-   public int b() {
-      return (int)((double)this.g * 0.6);
+   public void a(cwb $$0) {
+      if ($$0.a(axj.aQ)) {
+         this.d.a(hej.e);
+      }
    }
 
-   @Override
-   public void a(Collection<E> $$0) {
-      super.a($$0);
+   private static boolean b(ghd $$0) {
+      return $$0.gk().a_($$0x -> $$0x.a(axj.aQ));
    }
 
-   @Override
-   public int l() {
-      return super.l();
-   }
+   public static boolean a(ghd $$0) {
+      for (jq<die> $$1 : ly.e.c(axa.ak)) {
+         die $$2 = $$1.a();
+         if ($$0.i().a(awv.a.b($$2)) > 0) {
+            return true;
+         }
+      }
 
-   @Override
-   public int g(int $$0) {
-      return super.g($$0);
-   }
-
-   @Override
-   public int s() {
-      return super.s();
-   }
-
-   public int a(E $$0) {
-      return super.b($$0);
-   }
-
-   public void J() {
-      this.k();
+      return false;
    }
 }

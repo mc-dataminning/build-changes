@@ -1,192 +1,159 @@
-import com.mojang.datafixers.util.Pair;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.DynamicOps;
-import com.mojang.serialization.MapLike;
-import com.mojang.serialization.RecordBuilder;
-import com.mojang.serialization.RecordBuilder.AbstractUniversalBuilder;
-import java.nio.ByteBuffer;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableList.Builder;
+import com.mojang.logging.LogUtils;
+import com.sun.jna.Memory;
+import com.sun.jna.Native;
+import com.sun.jna.Platform;
+import com.sun.jna.Pointer;
+import com.sun.jna.platform.win32.Kernel32;
+import com.sun.jna.platform.win32.Kernel32Util;
+import com.sun.jna.platform.win32.Version;
+import com.sun.jna.platform.win32.Win32Exception;
+import com.sun.jna.platform.win32.Tlhelp32.MODULEENTRY32W;
+import com.sun.jna.ptr.IntByReference;
+import com.sun.jna.ptr.PointerByReference;
+import java.nio.charset.StandardCharsets;
+import java.util.Comparator;
 import java.util.List;
-import java.util.Map;
-import java.util.function.BiConsumer;
-import java.util.function.Consumer;
-import java.util.stream.IntStream;
-import java.util.stream.LongStream;
-import java.util.stream.Stream;
+import java.util.Locale;
+import java.util.Optional;
+import java.util.OptionalInt;
+import java.util.stream.Collectors;
+import org.slf4j.Logger;
 
-public class azl implements DynamicOps<bao> {
-   public static final azl a = new azl();
+public class azl {
+   private static final Logger a = LogUtils.getLogger();
+   private static final int b = 65535;
+   private static final int c = 1033;
+   private static final int d = -65536;
+   private static final int e = 78643200;
 
-   private azl() {
+   public static List<azl.a> a() {
+      if (!Platform.isWindows()) {
+         return ImmutableList.of();
+      } else {
+         int $$0 = Kernel32.INSTANCE.GetCurrentProcessId();
+         Builder<azl.a> $$1 = ImmutableList.builder();
+
+         for (MODULEENTRY32W $$3 : Kernel32Util.getModules($$0)) {
+            String $$4 = $$3.szModule();
+            Optional<azl.b> $$5 = a($$3.szExePath());
+            $$1.add(new azl.a($$4, $$5));
+         }
+
+         return $$1.build();
+      }
    }
 
-   public <U> U a(DynamicOps<U> $$0, bao $$1) {
-      return (U)$$0.empty();
+   private static Optional<azl.b> a(String $$0) {
+      try {
+         IntByReference $$1 = new IntByReference();
+         int $$2 = Version.INSTANCE.GetFileVersionInfoSize($$0, $$1);
+         if ($$2 == 0) {
+            int $$3 = Native.getLastError();
+            if ($$3 != 1813 && $$3 != 1812) {
+               throw new Win32Exception($$3);
+            } else {
+               return Optional.empty();
+            }
+         } else {
+            Pointer $$4 = new Memory((long)$$2);
+            if (!Version.INSTANCE.GetFileVersionInfo($$0, 0, $$2, $$4)) {
+               throw new Win32Exception(Native.getLastError());
+            } else {
+               IntByReference $$5 = new IntByReference();
+               Pointer $$6 = a($$4, "\\VarFileInfo\\Translation", $$5);
+               int[] $$7 = $$6.getIntArray(0L, $$5.getValue() / 4);
+               OptionalInt $$8 = a($$7);
+               if ($$8.isEmpty()) {
+                  return Optional.empty();
+               } else {
+                  int $$9 = $$8.getAsInt();
+                  int $$10 = $$9 & 65535;
+                  int $$11 = ($$9 & -65536) >> 16;
+                  String $$12 = b($$4, a("FileDescription", $$10, $$11), $$5);
+                  String $$13 = b($$4, a("CompanyName", $$10, $$11), $$5);
+                  String $$14 = b($$4, a("FileVersion", $$10, $$11), $$5);
+                  return Optional.of(new azl.b($$12, $$14, $$13));
+               }
+            }
+         }
+      } catch (Exception var14) {
+         a.info("Failed to find module info for {}", $$0, var14);
+         return Optional.empty();
+      }
    }
 
-   public bao a() {
-      return bao.a;
+   private static String a(String $$0, int $$1, int $$2) {
+      return String.format(Locale.ROOT, "\\StringFileInfo\\%04x%04x\\%s", $$1, $$2, $$0);
    }
 
-   public bao b() {
-      return bao.a;
-   }
+   private static OptionalInt a(int[] $$0) {
+      OptionalInt $$1 = OptionalInt.empty();
 
-   public bao c() {
-      return bao.a;
-   }
+      for (int $$2 : $$0) {
+         if (($$2 & -65536) == 78643200 && ($$2 & 65535) == 1033) {
+            return OptionalInt.of($$2);
+         }
 
-   public bao a(Number $$0) {
-      return bao.a;
-   }
-
-   public bao a(byte $$0) {
-      return bao.a;
-   }
-
-   public bao a(short $$0) {
-      return bao.a;
-   }
-
-   public bao a(int $$0) {
-      return bao.a;
-   }
-
-   public bao a(long $$0) {
-      return bao.a;
-   }
-
-   public bao a(float $$0) {
-      return bao.a;
-   }
-
-   public bao a(double $$0) {
-      return bao.a;
-   }
-
-   public bao a(boolean $$0) {
-      return bao.a;
-   }
-
-   public bao a(String $$0) {
-      return bao.a;
-   }
-
-   public DataResult<Number> a(bao $$0) {
-      return DataResult.error(() -> "Not a number");
-   }
-
-   public DataResult<Boolean> b(bao $$0) {
-      return DataResult.error(() -> "Not a boolean");
-   }
-
-   public DataResult<String> c(bao $$0) {
-      return DataResult.error(() -> "Not a string");
-   }
-
-   public DataResult<bao> a(bao $$0, bao $$1) {
-      return DataResult.success(bao.a);
-   }
-
-   public DataResult<bao> a(bao $$0, List<bao> $$1) {
-      return DataResult.success(bao.a);
-   }
-
-   public DataResult<bao> a(bao $$0, bao $$1, bao $$2) {
-      return DataResult.success(bao.a);
-   }
-
-   public DataResult<bao> a(bao $$0, Map<bao, bao> $$1) {
-      return DataResult.success(bao.a);
-   }
-
-   public DataResult<bao> a(bao $$0, MapLike<bao> $$1) {
-      return DataResult.success(bao.a);
-   }
-
-   public DataResult<Stream<Pair<bao, bao>>> d(bao $$0) {
-      return DataResult.error(() -> "Not a map");
-   }
-
-   public DataResult<Consumer<BiConsumer<bao, bao>>> e(bao $$0) {
-      return DataResult.error(() -> "Not a map");
-   }
-
-   public DataResult<MapLike<bao>> f(bao $$0) {
-      return DataResult.error(() -> "Not a map");
-   }
-
-   public DataResult<Stream<bao>> g(bao $$0) {
-      return DataResult.error(() -> "Not a list");
-   }
-
-   public DataResult<Consumer<Consumer<bao>>> h(bao $$0) {
-      return DataResult.error(() -> "Not a list");
-   }
-
-   public DataResult<ByteBuffer> i(bao $$0) {
-      return DataResult.error(() -> "Not a byte list");
-   }
-
-   public DataResult<IntStream> j(bao $$0) {
-      return DataResult.error(() -> "Not an int list");
-   }
-
-   public DataResult<LongStream> k(bao $$0) {
-      return DataResult.error(() -> "Not a long list");
-   }
-
-   public bao a(Stream<Pair<bao, bao>> $$0) {
-      return bao.a;
-   }
-
-   public bao a(Map<bao, bao> $$0) {
-      return bao.a;
-   }
-
-   public bao b(Stream<bao> $$0) {
-      return bao.a;
-   }
-
-   public bao a(ByteBuffer $$0) {
-      return bao.a;
-   }
-
-   public bao a(IntStream $$0) {
-      return bao.a;
-   }
-
-   public bao a(LongStream $$0) {
-      return bao.a;
-   }
-
-   public bao a(bao $$0, String $$1) {
-      return $$0;
-   }
-
-   public RecordBuilder<bao> mapBuilder() {
-      return new azl.a(this);
-   }
-
-   @Override
-   public String toString() {
-      return "Null";
-   }
-
-   static final class a extends AbstractUniversalBuilder<bao, bao> {
-      public a(DynamicOps<bao> $$0) {
-         super($$0);
+         $$1 = OptionalInt.of($$2);
       }
 
-      protected bao a() {
-         return bao.a;
+      return $$1;
+   }
+
+   private static Pointer a(Pointer $$0, String $$1, IntByReference $$2) {
+      PointerByReference $$3 = new PointerByReference();
+      if (!Version.INSTANCE.VerQueryValue($$0, $$1, $$3, $$2)) {
+         throw new UnsupportedOperationException("Can't get version value " + $$1);
+      } else {
+         return $$3.getValue();
+      }
+   }
+
+   private static String b(Pointer $$0, String $$1, IntByReference $$2) {
+      try {
+         Pointer $$3 = a($$0, $$1, $$2);
+         byte[] $$4 = $$3.getByteArray(0L, ($$2.getValue() - 1) * 2);
+         return new String($$4, StandardCharsets.UTF_16LE);
+      } catch (Exception var5) {
+         return "";
+      }
+   }
+
+   public static void a(p $$0) {
+      $$0.a("Modules", () -> a().stream().sorted(Comparator.comparing($$0x -> $$0x.a)).map($$0x -> "\n\t\t" + $$0x).collect(Collectors.joining()));
+   }
+
+   public static class a {
+      public final String a;
+      public final Optional<azl.b> b;
+
+      public a(String $$0, Optional<azl.b> $$1) {
+         this.a = $$0;
+         this.b = $$1;
       }
 
-      protected bao a(bao $$0, bao $$1, bao $$2) {
-         return $$2;
+      @Override
+      public String toString() {
+         return this.b.<String>map($$0 -> this.a + ":" + $$0).orElse(this.a);
+      }
+   }
+
+   public static class b {
+      public final String a;
+      public final String b;
+      public final String c;
+
+      public b(String $$0, String $$1, String $$2) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
       }
 
-      protected DataResult<bao> a(bao $$0, bao $$1) {
-         return DataResult.success($$1);
+      @Override
+      public String toString() {
+         return this.a + ":" + this.b + ":" + this.c;
       }
    }
 }

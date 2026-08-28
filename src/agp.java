@@ -1,32 +1,24 @@
-import java.util.Optional;
-import javax.annotation.Nullable;
+import java.util.Collection;
+import java.util.List;
 
-public record agp(jp<dyz> a, alg<dev> b, long c, des d, @Nullable des e, boolean f, boolean g, Optional<jo> h, int i, int j) {
-   public agp(ws $$0) {
-      this(
-         dyz.i.decode($$0),
-         $$0.a(ly.bb),
-         $$0.readLong(),
-         des.a($$0.readByte()),
-         des.b($$0.readByte()),
-         $$0.readBoolean(),
-         $$0.readBoolean(),
-         $$0.b(we::h),
-         $$0.l(),
-         $$0.l()
-      );
+public class agp implements zp<ace> {
+   public static final zg<wt, agp> a = zg.a(dar.a.a(ze.a()), $$0 -> $$0.b, agp::new);
+   private final List<dar<?>> b;
+
+   public agp(Collection<dar<?>> $$0) {
+      this.b = List.copyOf($$0);
    }
 
-   public void a(ws $$0) {
-      dyz.i.encode($$0, this.a);
-      $$0.b(this.b);
-      $$0.b(this.c);
-      $$0.l(this.d.a());
-      $$0.l(des.a(this.e));
-      $$0.a(this.f);
-      $$0.a(this.g);
-      $$0.a(this.h, we::a);
-      $$0.c(this.i);
-      $$0.c(this.j);
+   @Override
+   public zr<agp> a() {
+      return agt.be;
+   }
+
+   public void a(ace $$0) {
+      $$0.a(this);
+   }
+
+   public List<dar<?>> b() {
+      return this.b;
    }
 }

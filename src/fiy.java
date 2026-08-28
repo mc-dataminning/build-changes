@@ -1,166 +1,120 @@
-import com.google.common.collect.Maps;
-import com.google.common.collect.Sets;
-import java.util.Map;
-import java.util.Set;
-import java.util.function.Supplier;
+import it.unimi.dsi.fastutil.floats.FloatUnaryOperator;
 
-public class fiy implements Comparable<fiy> {
-   private static final Map<String, fiy> h = Maps.newHashMap();
-   private static final Map<fco.a, fiy> i = Maps.newHashMap();
-   private static final Set<String> j = Sets.newHashSet();
-   public static final String a = "key.categories.movement";
-   public static final String b = "key.categories.misc";
-   public static final String c = "key.categories.multiplayer";
-   public static final String d = "key.categories.gameplay";
-   public static final String e = "key.categories.inventory";
-   public static final String f = "key.categories.ui";
-   public static final String g = "key.categories.creative";
-   private static final Map<String, Integer> k = ad.a(Maps.newHashMap(), $$0 -> {
-      $$0.put("key.categories.movement", 1);
-      $$0.put("key.categories.gameplay", 2);
-      $$0.put("key.categories.inventory", 3);
-      $$0.put("key.categories.creative", 4);
-      $$0.put("key.categories.multiplayer", 5);
-      $$0.put("key.categories.ui", 6);
-      $$0.put("key.categories.misc", 7);
-   });
-   private final String l;
-   private final fco.a m;
-   private final String n;
-   private fco.a o;
-   private boolean p;
-   private int q;
+public interface fiy {
+   fiy a = new fiy.a(0.0F);
+   fiy b = new fiy.a(1.0F);
 
-   public static void a(fco.a $$0) {
-      fiy $$1 = i.get($$0);
-      if ($$1 != null) {
-         $$1.q++;
+   float a();
+
+   float a(boolean var1);
+
+   float b();
+
+   public static class a implements fiy {
+      private final float c;
+
+      a(float $$0) {
+         this.c = $$0;
+      }
+
+      @Override
+      public float a() {
+         return this.c;
+      }
+
+      @Override
+      public float a(boolean $$0) {
+         return this.c;
+      }
+
+      @Override
+      public float b() {
+         return this.c;
       }
    }
 
-   public static void a(fco.a $$0, boolean $$1) {
-      fiy $$2 = i.get($$0);
-      if ($$2 != null) {
-         $$2.a($$1);
-      }
-   }
+   public static class b implements fiy {
+      private float c;
+      private float d;
+      private float e;
+      private float f;
+      private long g;
+      private long h;
+      private final float i;
+      private final FloatUnaryOperator j;
+      private boolean k;
+      private boolean l;
 
-   public static void a() {
-      for (fiy $$0 : h.values()) {
-         if ($$0.o.a() == fco.b.a && $$0.o.b() != fco.bv.b()) {
-            $$0.a(fco.a(fja.Q().aP().i(), $$0.o.b()));
+      public b(float $$0, long $$1, FloatUnaryOperator $$2) {
+         this.i = 1000.0F / $$0;
+         this.h = this.g = $$1;
+         this.j = $$2;
+      }
+
+      public int a(long $$0, boolean $$1) {
+         this.b($$0);
+         return $$1 ? this.a($$0) : 0;
+      }
+
+      private int a(long $$0) {
+         this.c = (float)($$0 - this.g) / this.j.apply(this.i);
+         this.g = $$0;
+         this.d = this.d + this.c;
+         int $$1 = (int)this.d;
+         this.d -= (float)$$1;
+         return $$1;
+      }
+
+      private void b(long $$0) {
+         this.e = (float)($$0 - this.h) / this.i;
+         this.h = $$0;
+      }
+
+      public void b(boolean $$0) {
+         if ($$0) {
+            this.c();
+         } else {
+            this.d();
          }
       }
-   }
 
-   public static void b() {
-      for (fiy $$0 : h.values()) {
-         $$0.n();
+      private void c() {
+         if (!this.k) {
+            this.f = this.d;
+         }
+
+         this.k = true;
       }
-   }
 
-   public static void c() {
-      for (fiy $$0 : h.values()) {
-         if ($$0 instanceof fjm $$1) {
-            $$1.n();
+      private void d() {
+         if (this.k) {
+            this.d = this.f;
+         }
+
+         this.k = false;
+      }
+
+      public void c(boolean $$0) {
+         this.l = $$0;
+      }
+
+      @Override
+      public float a() {
+         return this.c;
+      }
+
+      @Override
+      public float a(boolean $$0) {
+         if (!$$0 && this.l) {
+            return 1.0F;
+         } else {
+            return this.k ? this.f : this.d;
          }
       }
-   }
 
-   public static void d() {
-      i.clear();
-
-      for (fiy $$0 : h.values()) {
-         i.put($$0.o, $$0);
+      @Override
+      public float b() {
+         return this.e > 7.0F ? 0.5F : this.e;
       }
-   }
-
-   public fiy(String $$0, int $$1, String $$2) {
-      this($$0, fco.b.a, $$1, $$2);
-   }
-
-   public fiy(String $$0, fco.b $$1, int $$2, String $$3) {
-      this.l = $$0;
-      this.o = $$1.a($$2);
-      this.m = this.o;
-      this.n = $$3;
-      h.put($$0, this);
-      i.put(this.o, this);
-      j.add($$3);
-   }
-
-   public boolean e() {
-      return this.p;
-   }
-
-   public String f() {
-      return this.n;
-   }
-
-   public boolean g() {
-      if (this.q == 0) {
-         return false;
-      } else {
-         this.q--;
-         return true;
-      }
-   }
-
-   private void n() {
-      this.q = 0;
-      this.a(false);
-   }
-
-   public String h() {
-      return this.l;
-   }
-
-   public fco.a i() {
-      return this.m;
-   }
-
-   public void b(fco.a $$0) {
-      this.o = $$0;
-   }
-
-   public int a(fiy $$0) {
-      return this.n.equals($$0.n) ? gyz.a(this.l).compareTo(gyz.a($$0.l)) : k.get(this.n).compareTo(k.get($$0.n));
-   }
-
-   public static Supplier<xh> a(String $$0) {
-      fiy $$1 = h.get($$0);
-      return $$1 == null ? () -> xh.c($$0) : $$1::k;
-   }
-
-   public boolean b(fiy $$0) {
-      return this.o.equals($$0.o);
-   }
-
-   public boolean j() {
-      return this.o.equals(fco.bv);
-   }
-
-   public boolean a(int $$0, int $$1) {
-      return $$0 == fco.bv.b() ? this.o.a() == fco.b.b && this.o.b() == $$1 : this.o.a() == fco.b.a && this.o.b() == $$0;
-   }
-
-   public boolean a(int $$0) {
-      return this.o.a() == fco.b.c && this.o.b() == $$0;
-   }
-
-   public xh k() {
-      return this.o.d();
-   }
-
-   public boolean l() {
-      return this.o.equals(this.m);
-   }
-
-   public String m() {
-      return this.o.c();
-   }
-
-   public void a(boolean $$0) {
-      this.p = $$0;
    }
 }

@@ -1,196 +1,154 @@
-import com.google.common.annotations.VisibleForTesting;
-import io.netty.buffer.ByteBuf;
-import java.util.EnumMap;
+import com.mojang.logging.LogUtils;
+import java.util.ArrayDeque;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
-import java.util.Objects;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class esm {
-   public static final zf<ByteBuf, esm> a = zd.a(esm::a, esm::i);
-   private static final esm[] b = ad.a(() -> {
-      esm[] $$0 = new esm[48];
-      a(new esm(jl.b, jl.c, esm.a.a), $$0);
-      return $$0;
-   });
-   private final jl c;
-   private final jl d;
-   private final jl e;
-   private final esm.a f;
-   private final int g;
-   private final List<jl> h;
-   private final List<jl> i;
-   private final List<jl> j;
-   private final Map<jl, esm> k = new EnumMap<>(jl.class);
-   private final Map<jl, esm> l = new EnumMap<>(jl.class);
-   private final Map<esm.a, esm> m = new EnumMap<>(esm.a.class);
+public class esm implements esr {
+   private static final Logger b = LogUtils.getLogger();
+   private final dfb c;
+   private final int d;
+   private final ArrayDeque<esm.c> e = new ArrayDeque<>();
+   private final List<esm.c> f = new ArrayList<>();
+   private int g = 0;
 
-   private esm(jl $$0, jl $$1, esm.a $$2) {
+   public esm(dfb $$0, int $$1) {
       this.c = $$0;
       this.d = $$1;
-      this.f = $$2;
-      this.g = b($$0, $$1, $$2);
-      kk $$3 = $$1.q().d($$0.q());
-      jl $$4 = jl.a($$3, null);
-      Objects.requireNonNull($$4);
-      if (this.f == esm.a.b) {
-         this.e = $$4;
-      } else {
-         this.e = $$4.g();
-      }
-
-      this.h = List.of(this.d.g(), this.d, this.e, this.e.g(), this.c.g(), this.c);
-      this.i = this.h.stream().filter($$0x -> $$0x.o() != this.c.o()).toList();
-      this.j = this.h.stream().filter($$0x -> $$0x.o() == this.c.o()).toList();
-   }
-
-   public static esm a(jl $$0, jl $$1, esm.a $$2) {
-      return b[b($$0, $$1, $$2)];
-   }
-
-   public esm a(jl $$0) {
-      return this.l.get($$0);
-   }
-
-   public esm b(jl $$0) {
-      return this.k.get($$0);
-   }
-
-   public esm c(jl $$0) {
-      return $$0.o() == this.c.o() ? this : this.k.get($$0);
-   }
-
-   public esm d(jl $$0) {
-      esm $$1 = this.b($$0);
-      return this.d == $$1.e ? $$1.a() : $$1;
-   }
-
-   public esm a(esm.a $$0) {
-      return this.m.get($$0);
-   }
-
-   public esm a() {
-      return this.a(this.f.a());
-   }
-
-   public jl b() {
-      return this.d;
-   }
-
-   public jl c() {
-      return this.c;
-   }
-
-   public jl d() {
-      return this.e;
-   }
-
-   public esm.a e() {
-      return this.f;
-   }
-
-   public List<jl> f() {
-      return this.h;
-   }
-
-   public List<jl> g() {
-      return this.i;
-   }
-
-   public List<jl> h() {
-      return this.j;
    }
 
    @Override
-   public String toString() {
-      return "[up=" + this.c + ",front=" + this.d + ",sideBias=" + this.f + "]";
+   public void a(jm $$0, dvj $$1, jh $$2, jh $$3, int $$4, int $$5) {
+      this.a($$2, new esm.d($$0, $$1, $$2.j(), $$3.j(), $$4, $$5));
    }
 
-   public int i() {
-      return this.g;
+   @Override
+   public void a(jh $$0, die $$1, @Nullable ess $$2) {
+      this.a($$0, new esm.e($$0, $$1, $$2));
    }
 
-   public static esm a(int $$0) {
-      return b[$$0];
+   @Override
+   public void a(dvj $$0, jh $$1, die $$2, @Nullable ess $$3, boolean $$4) {
+      this.a($$1, new esm.a($$0, $$1.j(), $$2, $$3, $$4));
    }
 
-   public static esm a(azr $$0) {
-      return ad.a(b, $$0);
+   @Override
+   public void a(jh $$0, die $$1, @Nullable jm $$2, @Nullable ess $$3) {
+      this.a($$0, new esm.b($$0.j(), $$1, $$3, $$2));
    }
 
-   private static esm a(esm $$0, esm[] $$1) {
-      if ($$1[$$0.i()] != null) {
-         return $$1[$$0.i()];
-      } else {
-         $$1[$$0.i()] = $$0;
-
-         for (esm.a $$2 : esm.a.values()) {
-            $$0.m.put($$2, a(new esm($$0.c, $$0.d, $$2), $$1));
-         }
-
-         for (jl $$3 : jl.values()) {
-            jl $$4 = $$0.c;
-            if ($$3 == $$0.c) {
-               $$4 = $$0.d.g();
-            }
-
-            if ($$3 == $$0.c.g()) {
-               $$4 = $$0.d;
-            }
-
-            $$0.k.put($$3, a(new esm($$4, $$3, $$0.f), $$1));
-         }
-
-         for (jl $$5 : jl.values()) {
-            jl $$6 = $$0.d;
-            if ($$5 == $$0.d) {
-               $$6 = $$0.c.g();
-            }
-
-            if ($$5 == $$0.d.g()) {
-               $$6 = $$0.c;
-            }
-
-            $$0.l.put($$5, a(new esm($$5, $$6, $$0.f), $$1));
-         }
-
-         return $$0;
-      }
-   }
-
-   @VisibleForTesting
-   protected static int b(jl $$0, jl $$1, esm.a $$2) {
-      if ($$0.o() == $$1.o()) {
-         throw new IllegalStateException("Up-vector and front-vector can not be on the same axis");
-      } else {
-         int $$3;
-         if ($$0.o() == jl.a.b) {
-            $$3 = $$1.o() == jl.a.a ? 1 : 0;
+   private void a(jh $$0, esm.c $$1) {
+      boolean $$2 = this.g > 0;
+      boolean $$3 = this.d >= 0 && this.g >= this.d;
+      this.g++;
+      if (!$$3) {
+         if ($$2) {
+            this.f.add($$1);
          } else {
-            $$3 = $$1.o() == jl.a.b ? 1 : 0;
+            this.e.push($$1);
          }
+      } else if (this.g - 1 == this.d) {
+         b.error("Too many chained neighbor updates. Skipping the rest. First skipped position: " + $$0.x());
+      }
 
-         int $$5 = $$3 << 1 | $$1.f().ordinal();
-         return (($$0.ordinal() << 2) + $$5 << 1) + $$2.ordinal();
+      if (!$$2) {
+         this.a();
       }
    }
 
-   public static enum a {
-      a("left"),
-      b("right");
+   private void a() {
+      try {
+         while (!this.e.isEmpty() || !this.f.isEmpty()) {
+            for (int $$0 = this.f.size() - 1; $$0 >= 0; $$0--) {
+               this.e.push(this.f.get($$0));
+            }
 
-      private final String c;
+            this.f.clear();
+            esm.c $$1 = this.e.peek();
 
-      private a(final String $$0) {
-         this.c = $$0;
+            while (this.f.isEmpty()) {
+               if (!$$1.a(this.c)) {
+                  this.e.pop();
+                  break;
+               }
+            }
+         }
+      } finally {
+         this.e.clear();
+         this.f.clear();
+         this.g = 0;
       }
+   }
 
-      public esm.a a() {
-         return this == a ? b : a;
+   static record a(dvj a, jh b, die c, @Nullable ess d, boolean e) implements esm.c {
+      @Override
+      public boolean a(dfb $$0) {
+         esr.a($$0, this.a, this.b, this.c, this.d, this.e);
+         return false;
+      }
+   }
+
+   static final class b implements esm.c {
+      private final jh a;
+      private final die b;
+      @Nullable
+      private ess c;
+      @Nullable
+      private final jm d;
+      private int e = 0;
+
+      b(jh $$0, die $$1, @Nullable ess $$2, @Nullable jm $$3) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
+         this.d = $$3;
+         if (esr.a[this.e] == $$3) {
+            this.e++;
+         }
       }
 
       @Override
-      public String toString() {
-         return this.c;
+      public boolean a(dfb $$0) {
+         jm $$1 = esr.a[this.e++];
+         jh $$2 = this.a.a($$1);
+         dvj $$3 = $$0.a_($$2);
+         ess $$4 = null;
+         if ($$0.J().b(crh.d)) {
+            if (this.c == null) {
+               this.c = eso.a($$0, this.d == null ? null : this.d.g(), null);
+            }
+
+            $$4 = this.c.b($$1);
+         }
+
+         esr.a($$0, $$3, $$2, this.b, $$4, false);
+         if (this.e < esr.a.length && esr.a[this.e] == this.d) {
+            this.e++;
+         }
+
+         return this.e < esr.a.length;
+      }
+   }
+
+   interface c {
+      boolean a(dfb var1);
+   }
+
+   static record d(jm a, dvj b, jh c, jh d, int e, int f) implements esm.c {
+      @Override
+      public boolean a(dfb $$0) {
+         esr.a($$0, this.a, this.c, this.d, this.b, this.e, this.f);
+         return false;
+      }
+   }
+
+   static record e(jh a, die b, @Nullable ess c) implements esm.c {
+      @Override
+      public boolean a(dfb $$0) {
+         dvj $$1 = $$0.a_(this.a);
+         esr.a($$0, $$1, this.a, this.b, this.c, false);
+         return false;
       }
    }
 }

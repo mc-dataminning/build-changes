@@ -1,95 +1,77 @@
-public abstract class cbk extends cbt {
-   protected bux d;
-   protected jg e = jg.c;
-   protected boolean f;
-   private boolean a;
-   private float b;
-   private float c;
+import java.util.EnumSet;
+import java.util.List;
+import javax.annotation.Nullable;
 
-   public cbk(bux $$0) {
-      this.d = $$0;
-      if (!cfr.a($$0)) {
-         throw new IllegalArgumentException("Unsupported mob type for DoorInteractGoal");
-      }
+public class cbk extends cby {
+   private static final cfr d = cfr.b().a(8.0).d();
+   protected final cgr a;
+   private final Class<? extends cgr> e;
+   protected final dfb b;
+   @Nullable
+   protected cgr c;
+   private int f;
+   private final double g;
+
+   public cbk(cgr $$0, double $$1) {
+      this($$0, $$1, (Class<? extends cgr>)$$0.getClass());
    }
 
-   protected boolean h() {
-      if (!this.f) {
-         return false;
-      } else {
-         dvd $$0 = this.d.dX().a_(this.e);
-         if (!($$0.b() instanceof dke)) {
-            this.f = false;
-            return false;
-         } else {
-            return $$0.c(dke.c);
-         }
-      }
-   }
-
-   protected void a(boolean $$0) {
-      if (this.f) {
-         dvd $$1 = this.d.dX().a_(this.e);
-         if ($$1.b() instanceof dke) {
-            ((dke)$$1.b()).a(this.d, this.d.dX(), $$1, this.e, $$0);
-         }
-      }
+   public cbk(cgr $$0, double $$1, Class<? extends cgr> $$2) {
+      this.a = $$0;
+      this.b = $$0.dX();
+      this.e = $$2;
+      this.g = $$1;
+      this.a(EnumSet.of(cby.a.a, cby.a.b));
    }
 
    @Override
    public boolean b() {
-      if (!cfr.a(this.d)) {
-         return false;
-      } else if (!this.d.Q) {
+      if (!this.a.gE()) {
          return false;
       } else {
-         ceg $$0 = (ceg)this.d.P();
-         ers $$1 = $$0.k();
-         if ($$1 != null && !$$1.c() && $$0.f()) {
-            for (int $$2 = 0; $$2 < Math.min($$1.f() + 2, $$1.e()); $$2++) {
-               erq $$3 = $$1.a($$2);
-               this.e = new jg($$3.a, $$3.b + 1, $$3.c);
-               if (!(this.d.i((double)this.e.u(), this.d.dE(), (double)this.e.w()) > 2.25)) {
-                  this.f = dke.a(this.d.dX(), this.e);
-                  if (this.f) {
-                     return true;
-                  }
-               }
-            }
-
-            this.e = this.d.dx().d();
-            this.f = dke.a(this.d.dX(), this.e);
-            return this.f;
-         } else {
-            return false;
-         }
+         this.c = this.h();
+         return this.c != null;
       }
    }
 
    @Override
    public boolean c() {
-      return !this.a;
+      return this.c.bM() && this.c.gE() && this.f < 60 && !this.c.gr();
    }
 
    @Override
-   public void d() {
-      this.a = false;
-      this.b = (float)((double)this.e.u() + 0.5 - this.d.dC());
-      this.c = (float)((double)this.e.w() + 0.5 - this.d.dI());
-   }
-
-   @Override
-   public boolean V_() {
-      return true;
+   public void e() {
+      this.c = null;
+      this.f = 0;
    }
 
    @Override
    public void a() {
-      float $$0 = (float)((double)this.e.u() + 0.5 - this.d.dC());
-      float $$1 = (float)((double)this.e.w() + 0.5 - this.d.dI());
-      float $$2 = this.b * $$0 + this.c * $$1;
-      if ($$2 < 0.0F) {
-         this.a = true;
+      this.a.K().a(this.c, 10.0F, (float)this.a.ad());
+      this.a.P().a(this.c, this.g);
+      this.f++;
+      if (this.f >= this.a(60) && this.a.g(this.c) < 9.0) {
+         this.g();
       }
+   }
+
+   @Nullable
+   private cgr h() {
+      List<? extends cgr> $$0 = this.b.a(this.e, d, this.a, this.a.cS().g(8.0));
+      double $$1 = Double.MAX_VALUE;
+      cgr $$2 = null;
+
+      for (cgr $$3 : $$0) {
+         if (this.a.a($$3) && !$$3.gr() && this.a.g($$3) < $$1) {
+            $$2 = $$3;
+            $$1 = this.a.g($$3);
+         }
+      }
+
+      return $$2;
+   }
+
+   protected void g() {
+      this.a.a((arn)this.b, this.c);
    }
 }

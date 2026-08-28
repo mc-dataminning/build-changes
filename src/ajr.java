@@ -1,7 +1,5 @@
-public record ajr() implements ajp {
-   public static final ajr a = new ajr();
+public interface ajr {
+   ali a();
 
-   @Override
-   public void a(we $$0) {
-   }
+   void a(wf var1);
 }

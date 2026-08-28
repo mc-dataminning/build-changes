@@ -1,15 +1,15 @@
 import com.mojang.brigadier.context.CommandContext;
 
-public class gj extends gf<dol> {
+public class gj extends gg<dna> {
    private gj() {
-      super(dol.e, dol::values);
+      super(dna.d, dna::values);
    }
 
-   public static gj a() {
+   public static gg<dna> a() {
       return new gj();
    }
 
-   public static dol a(CommandContext<ev> $$0, String $$1) {
-      return (dol)$$0.getArgument($$1, dol.class);
+   public static dna a(CommandContext<ew> $$0, String $$1) {
+      return (dna)$$0.getArgument($$1, dna.class);
    }
 }

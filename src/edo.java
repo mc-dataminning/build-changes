@@ -1,58 +1,59 @@
 import com.mojang.serialization.Codec;
 
-public class edo extends eef<egq> {
-   public edo(Codec<egq> $$0) {
+public class edo extends eel<egz> {
+   private static final dvj a = dig.mZ.m().b(dhi.h, Integer.valueOf(1)).b(dhi.i, dvv.a).b(dhi.j, Integer.valueOf(0));
+   private static final dvj b = a.b(dhi.i, dvv.c).b(dhi.j, Integer.valueOf(1));
+   private static final dvj c = a.b(dhi.i, dvv.c);
+   private static final dvj d = a.b(dhi.i, dvv.b);
+
+   public edo(Codec<egz> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(eeh<egq> $$0) {
-      jg $$1 = $$0.e();
-      dfs $$2 = $$0.b();
-      azr $$3 = $$0.d();
-      if ($$1.v() > $$2.N() - 1) {
-         return false;
-      } else if (!$$2.a_($$1).a(dia.G) && !$$2.a_($$1.e()).a(dia.G)) {
-         return false;
-      } else {
-         boolean $$4 = false;
+   public boolean a(een<egz> $$0) {
+      int $$1 = 0;
+      jh $$2 = $$0.e();
+      dfy $$3 = $$0.b();
+      azs $$4 = $$0.d();
+      egz $$5 = $$0.f();
+      jh.a $$6 = $$2.k();
+      jh.a $$7 = $$2.k();
+      if ($$3.u($$6)) {
+         if (dig.mZ.m().a($$3, $$6)) {
+            int $$8 = $$4.a(12) + 5;
+            if ($$4.i() < $$5.l) {
+               int $$9 = $$4.a(4) + 1;
 
-         for (jl $$5 : jl.values()) {
-            if ($$5 != jl.a && $$2.a_($$1.a($$5)).a(dia.iC)) {
-               $$4 = true;
-               break;
-            }
-         }
-
-         if (!$$4) {
-            return false;
-         } else {
-            $$2.a($$1, dia.mW.m(), 2);
-
-            for (int $$6 = 0; $$6 < 200; $$6++) {
-               int $$7 = $$3.a(5) - $$3.a(6);
-               int $$8 = 3;
-               if ($$7 < 2) {
-                  $$8 += $$7 / 2;
-               }
-
-               if ($$8 >= 1) {
-                  jg $$9 = $$1.b($$3.a($$8) - $$3.a($$8), $$7, $$3.a($$8) - $$3.a($$8));
-                  dvd $$10 = $$2.a_($$9);
-                  if ($$10.l() || $$10.a(dia.G) || $$10.a(dia.iC) || $$10.a(dia.dO)) {
-                     for (jl $$11 : jl.values()) {
-                        dvd $$12 = $$2.a_($$9.a($$11));
-                        if ($$12.a(dia.mW)) {
-                           $$2.a($$9, dia.mW.m(), 2);
-                           break;
+               for (int $$10 = $$2.u() - $$9; $$10 <= $$2.u() + $$9; $$10++) {
+                  for (int $$11 = $$2.w() - $$9; $$11 <= $$2.w() + $$9; $$11++) {
+                     int $$12 = $$10 - $$2.u();
+                     int $$13 = $$11 - $$2.w();
+                     if ($$12 * $$12 + $$13 * $$13 <= $$9 * $$9) {
+                        $$7.d($$10, $$3.a(ebf.a.b, $$10, $$11) - 1, $$11);
+                        if (b($$3.a_($$7))) {
+                           $$3.a($$7, dig.l.m(), 2);
                         }
                      }
                   }
                }
             }
 
-            return true;
+            for (int $$14 = 0; $$14 < $$8 && $$3.u($$6); $$14++) {
+               $$3.a($$6, a, 2);
+               $$6.c(jm.b, 1);
+            }
+
+            if ($$6.v() - $$2.v() >= 3) {
+               $$3.a($$6, b, 2);
+               $$3.a($$6.c(jm.a, 1), c, 2);
+               $$3.a($$6.c(jm.a, 1), d, 2);
+            }
          }
+
+         $$1++;
       }
+
+      return $$1 > 0;
    }
 }

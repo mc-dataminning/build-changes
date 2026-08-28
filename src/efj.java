@@ -1,60 +1,28 @@
 import com.mojang.serialization.Codec;
 
-public class efj extends eef<eha> {
-   public efj(Codec<eha> $$0) {
+public class efj extends eel<ehc> {
+   public efj(Codec<ehc> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(eeh<eha> $$0) {
-      dfs $$1 = $$0.b();
-      jg $$2 = $$0.e();
-      if (!this.a($$1, $$2)) {
-         return false;
-      } else {
-         eha $$3 = $$0.f();
-         azr $$4 = $$0.d();
-         dot $$5 = dot.b();
-         int $$6 = $$3.f() + $$3.d();
+   public boolean a(een<ehc> $$0) {
+      ehc $$1 = $$0.f();
+      azs $$2 = $$0.d();
+      jh $$3 = $$0.e();
+      dfy $$4 = $$0.b();
+      int $$5 = 0;
+      jh.a $$6 = new jh.a();
+      int $$7 = $$1.b() + 1;
+      int $$8 = $$1.c() + 1;
 
-         for (int $$7 = 0; $$7 < $$6; $$7++) {
-            for (int $$8 = 0; $$8 < $$3.a(); $$8++) {
-               $$5.a($$2, $$3.b());
-            }
-
-            boolean $$9 = $$7 < $$3.f();
-
-            for (int $$10 = 0; $$10 < $$3.c(); $$10++) {
-               $$5.a($$1, $$2, $$4, $$9);
-            }
-
-            $$5.j();
+      for (int $$9 = 0; $$9 < $$1.a(); $$9++) {
+         $$6.a($$3, $$2.a($$7) - $$2.a($$7), $$2.a($$8) - $$2.a($$8), $$2.a($$7) - $$2.a($$7));
+         if ($$1.d().a().a($$4, $$0.c(), $$2, $$6)) {
+            $$5++;
          }
-
-         jg $$11 = $$2.e();
-         if ($$4.i() <= $$3.h() && $$1.a_($$11).m($$1, $$11)) {
-            $$1.a($$2, dia.qU.m(), 3);
-         }
-
-         int $$12 = $$3.g().a($$4);
-
-         for (int $$13 = 0; $$13 < $$12; $$13++) {
-            jg $$14 = $$2.b($$4.a(5) - 2, 0, $$4.a(5) - 2);
-            if ($$1.a_($$14).l() && $$1.a_($$14.e()).c($$1, $$14.e(), jl.b)) {
-               $$1.a($$14, dia.qV.m().b(dos.d, Boolean.valueOf(true)), 3);
-            }
-         }
-
-         return true;
       }
-   }
 
-   private boolean a(dew $$0, jg $$1) {
-      dvd $$2 = $$0.a_($$1);
-      if ($$2.b() instanceof doo) {
-         return true;
-      } else {
-         return !$$2.l() && (!$$2.a(dia.G) || !$$2.y().b()) ? false : jl.a().map($$1::a).anyMatch($$1x -> $$0.a_($$1x).m($$0, $$1x));
-      }
+      return $$5 > 0;
    }
 }

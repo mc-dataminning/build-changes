@@ -1,21 +1,20 @@
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class drt extends dip {
-   public static final MapCodec<drt> c = RecordCodecBuilder.mapCodec($$0 -> $$0.group(cuu.q.fieldOf("color").forGetter(drt::b), t()).apply($$0, drt::new));
-   private final cuu d;
+public class drt extends dlr {
+   public static final MapCodec<drt> c = b(drt::new);
+   public static final fah e = die.a(1.0, 0.0, 1.0, 15.0, 16.0, 15.0);
 
    @Override
    public MapCodec<drt> a() {
       return c;
    }
 
-   protected drt(cuu $$0, dvc.d $$1) {
-      super($$1);
-      this.d = $$0;
+   public drt(dvi.d $$0) {
+      super($$0, jm.a, e, false);
    }
 
-   public cuu b() {
-      return this.d;
+   @Override
+   protected dls c() {
+      return (dls)dig.oz;
    }
 }

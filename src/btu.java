@@ -1,12 +1,8 @@
-import javax.annotation.Nullable;
+import javax.annotation.ParametersAreNonnullByDefault;
 
-public record btu(btv a, boolean b, boolean c, @Nullable fah d) {
-   public static btu a(bux $$0, boolean $$1, boolean $$2) {
-      return new btu(btv.a, $$1, $$2, $$0.cs());
-   }
-
-   @FunctionalInterface
-   public interface a<T extends bux> {
-      void finalizeConversion(T var1);
-   }
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface btu {
 }

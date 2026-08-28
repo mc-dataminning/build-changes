@@ -1,34 +1,36 @@
-import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Set;
+import java.util.List;
 
-public record exb(boolean b) implements exh {
-   public static final MapCodec<exb> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(Codec.BOOL.fieldOf("active").forGetter(exb::e)).apply($$0, exb::new));
+public class exb extends exd {
+   public static final MapCodec<exb> a = a(exb::new);
 
-   public boolean a(etw $$0) {
-      return $$0.b(ews.l) == this.b;
+   exb(List<exn> $$0) {
+      super($$0, ae.b($$0));
    }
 
    @Override
-   public exi b() {
-      return exj.s;
+   public exo b() {
+      return exp.b;
    }
 
-   @Override
-   public Set<ewp<?>> a() {
-      return Set.of(ews.l);
+   public static exb.a a(exn.a... $$0) {
+      return new exb.a($$0);
    }
 
-   public static exh.a c() {
-      return () -> new exb(true);
-   }
+   public static class a extends exd.a {
+      public a(exn.a... $$0) {
+         super($$0);
+      }
 
-   public static exh.a d() {
-      return () -> new exb(false);
-   }
+      @Override
+      public exb.a or(exn.a $$0) {
+         this.a($$0);
+         return this;
+      }
 
-   public boolean e() {
-      return this.b;
+      @Override
+      protected exn a(List<exn> $$0) {
+         return new exb($$0);
+      }
    }
 }

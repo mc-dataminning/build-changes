@@ -1,41 +1,31 @@
-import javax.annotation.Nullable;
+public class fqd extends fra {
+   private fma a;
+   private final Runnable b;
+   private final Runnable c;
 
-public class fqd extends fqs {
-   @Nullable
-   private flk a;
-
-   public fqd(xh $$0) {
-      super($$0);
+   public fqd(Runnable $$0, Runnable $$1) {
+      super(xi.c("datapackFailure.title"));
+      this.a = fma.a;
+      this.b = $$0;
+      this.c = $$1;
    }
 
    @Override
-   protected void aS_() {
-      this.a = this.c(new flk(this.n, this.l, this.p, 12));
-      this.c();
+   protected void aR_() {
+      super.aR_();
+      this.a = fma.a(this.p, this.n(), this.n - 50);
+      this.c(flh.a(xi.c("datapackFailure.safeMode"), $$0 -> this.c.run()).a(this.n / 2 - 155, this.o / 6 + 96, 150, 20).a());
+      this.c(flh.a(xh.k, $$0 -> this.b.run()).a(this.n / 2 - 155 + 160, this.o / 6 + 96, 150, 20).a());
    }
 
    @Override
-   protected void c() {
-      if (this.a != null) {
-         this.a.b(this.n);
-         this.a.c(this.n / 2 - this.a.y() / 2, this.o / 2 - 9 / 2);
-      }
+   public void a(fku $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      this.a.a($$0, this.n / 2, 70);
    }
 
    @Override
-   public boolean aI_() {
+   public boolean aH_() {
       return false;
-   }
-
-   @Override
-   protected boolean aR_() {
-      return false;
-   }
-
-   @Override
-   public void b(fkm $$0, int $$1, int $$2, float $$3) {
-      this.a($$0, $$3);
-      this.r();
-      this.a($$0);
    }
 }

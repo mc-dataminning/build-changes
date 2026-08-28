@@ -1,48 +1,248 @@
-import java.util.List;
-import java.util.Optional;
+import com.google.common.collect.ImmutableList;
+import com.mojang.datafixers.util.Pair;
 
-public interface ri {
-   static void a(qx<elx> $$0) {
-      jq<elr> $$1 = $$0.a(ly.aS);
-      jq<dfw> $$2 = $$0.a(ly.aG);
-      jp.c<elx> $$3 = $$0.a(
-         elk.a,
-         new elx(
-            List.of(elx.a($$1.b(ell.t)), elx.a($$1.b(ell.u)), elx.a($$1.b(ell.v)), elx.a($$1.b(ell.w)), elx.a($$1.b(ell.x))), new emm(34, 8, emn.a, 10387312)
-         )
-      );
-      $$0.a(elk.b, new elx($$1.b(ell.f), new emm(32, 8, emn.a, 14357617)));
-      $$0.a(elk.c, new elx($$1.b(ell.g), new emm(32, 8, emn.a, 14357618)));
-      $$0.a(elk.d, new elx($$1.b(ell.e), new emm(32, 8, emn.a, 14357619)));
-      $$0.a(elk.e, new elx($$1.b(ell.j), new emm(32, 8, emn.a, 14357620)));
-      $$0.a(elk.f, new elx($$1.b(ell.a), new emm(kk.g, emo.c.b, 0.2F, 165745296, Optional.of(new emo.a($$3, 10)), 32, 8, emn.a)));
-      $$0.a(elk.q, new elx($$1.b(ell.F), new emm(24, 8, emn.a, 20083232)));
-      $$0.a(elk.g, new elx($$1.b(ell.l), new emm(32, 5, emn.b, 10387313)));
-      $$0.a(elk.h, new elx($$1.b(ell.d), new emm(80, 20, emn.b, 10387319)));
-      $$0.a(elk.i, new elx($$1.b(ell.r), new emm(new kk(9, 0, 9), emo.c.c, 0.01F, 0, Optional.empty(), 1, 0, emn.a)));
-      $$0.a(elk.j, new elx(List.of(elx.a($$1.b(ell.b)), elx.a($$1.b(ell.c))), new emm(kk.g, emo.c.d, 0.004F, 0, Optional.empty(), 1, 0, emn.a)));
+public class ri {
+   public static final alh<enh> a = rf.a("village/snowy/town_centers");
+   private static final alh<enh> b = rf.a("village/snowy/terminators");
+
+   public static void a(qy<enh> $$0) {
+      jr<elb> $$1 = $$0.a(lz.aR);
+      jq<elb> $$2 = $$1.b(sr.h);
+      jq<elb> $$3 = $$1.b(sr.c);
+      jq<elb> $$4 = $$1.b(sr.d);
+      jr<epx> $$5 = $$0.a(lz.aT);
+      jq<epx> $$6 = $$5.b(rg.k);
+      jq<epx> $$7 = $$5.b(rg.n);
+      jq<epx> $$8 = $$5.b(rg.c);
+      jr<enh> $$9 = $$0.a(lz.aV);
+      jq<enh> $$10 = $$9.b(rf.a);
+      jq<enh> $$11 = $$9.b(b);
       $$0.a(
-         elk.k,
-         new elx(
-            List.of(
-               elx.a($$1.b(ell.y)),
-               elx.a($$1.b(ell.z)),
-               elx.a($$1.b(ell.A)),
-               elx.a($$1.b(ell.B)),
-               elx.a($$1.b(ell.C)),
-               elx.a($$1.b(ell.D)),
-               elx.a($$1.b(ell.E))
+         a,
+         new enh(
+            $$10,
+            ImmutableList.of(
+               Pair.of(enf.a("village/snowy/town_centers/snowy_meeting_point_1"), 100),
+               Pair.of(enf.a("village/snowy/town_centers/snowy_meeting_point_2"), 50),
+               Pair.of(enf.a("village/snowy/town_centers/snowy_meeting_point_3"), 150),
+               Pair.of(enf.a("village/snowy/zombie/town_centers/snowy_meeting_point_1"), 2),
+               Pair.of(enf.a("village/snowy/zombie/town_centers/snowy_meeting_point_2"), 1),
+               Pair.of(enf.a("village/snowy/zombie/town_centers/snowy_meeting_point_3"), 3)
             ),
-            new emm(40, 15, emn.a, 34222645)
+            enh.a.b
          )
       );
-      $$0.a(elk.l, new elx(List.of(elx.a($$1.b(ell.h)), elx.a($$1.b(ell.i))), new emm(24, 4, emn.a, 165745295)));
-      $$0.a(elk.m, new elx(List.of(elx.a($$1.b(ell.m)), elx.a($$1.b(ell.n))), new emm(20, 8, emn.a, 14357621)));
-      $$0.a(elk.n, new elx(List.of(elx.a($$1.b(ell.o), 2), elx.a($$1.b(ell.s), 3)), new emm(27, 4, emn.a, 30084232)));
-      $$0.a(elk.o, new elx($$1.b(ell.p), new emm(2, 1, emn.a, 14357921)));
-      $$0.a(elk.p, new elx($$1.b(ell.q), new emm(20, 11, emn.b, 10387313)));
-      $$0.a(elk.r, new elx($$1.b(ell.k), new eml(32, 3, 128, $$2.b(awy.o))));
-      $$0.a(elk.s, new elx($$1.b(ell.G), new emm(34, 8, emn.a, 83469867)));
-      $$0.a(elk.t, new elx($$1.b(ell.H), new emm(34, 12, emn.a, 94251327)));
+      rf.a(
+         $$0,
+         "village/snowy/streets",
+         new enh(
+            $$11,
+            ImmutableList.of(
+               Pair.of(enf.a("village/snowy/streets/corner_01", $$6), 2),
+               Pair.of(enf.a("village/snowy/streets/corner_02", $$6), 2),
+               Pair.of(enf.a("village/snowy/streets/corner_03", $$6), 2),
+               Pair.of(enf.a("village/snowy/streets/square_01", $$6), 2),
+               Pair.of(enf.a("village/snowy/streets/straight_01", $$6), 4),
+               Pair.of(enf.a("village/snowy/streets/straight_02", $$6), 4),
+               Pair.of(enf.a("village/snowy/streets/straight_03", $$6), 4),
+               Pair.of(enf.a("village/snowy/streets/straight_04", $$6), 7),
+               Pair.of(enf.a("village/snowy/streets/straight_06", $$6), 4),
+               Pair.of(enf.a("village/snowy/streets/straight_08", $$6), 4),
+               Pair.of(enf.a("village/snowy/streets/crossroad_02", $$6), 1),
+               Pair.of(enf.a("village/snowy/streets/crossroad_03", $$6), 2),
+               new Pair[]{
+                  Pair.of(enf.a("village/snowy/streets/crossroad_04", $$6), 2),
+                  Pair.of(enf.a("village/snowy/streets/crossroad_05", $$6), 2),
+                  Pair.of(enf.a("village/snowy/streets/crossroad_06", $$6), 2),
+                  Pair.of(enf.a("village/snowy/streets/turn_01", $$6), 3)
+               }
+            ),
+            enh.a.a
+         )
+      );
+      rf.a(
+         $$0,
+         "village/snowy/zombie/streets",
+         new enh(
+            $$11,
+            ImmutableList.of(
+               Pair.of(enf.a("village/snowy/zombie/streets/corner_01", $$6), 2),
+               Pair.of(enf.a("village/snowy/zombie/streets/corner_02", $$6), 2),
+               Pair.of(enf.a("village/snowy/zombie/streets/corner_03", $$6), 2),
+               Pair.of(enf.a("village/snowy/zombie/streets/square_01", $$6), 2),
+               Pair.of(enf.a("village/snowy/zombie/streets/straight_01", $$6), 4),
+               Pair.of(enf.a("village/snowy/zombie/streets/straight_02", $$6), 4),
+               Pair.of(enf.a("village/snowy/zombie/streets/straight_03", $$6), 4),
+               Pair.of(enf.a("village/snowy/zombie/streets/straight_04", $$6), 7),
+               Pair.of(enf.a("village/snowy/zombie/streets/straight_06", $$6), 4),
+               Pair.of(enf.a("village/snowy/zombie/streets/straight_08", $$6), 4),
+               Pair.of(enf.a("village/snowy/zombie/streets/crossroad_02", $$6), 1),
+               Pair.of(enf.a("village/snowy/zombie/streets/crossroad_03", $$6), 2),
+               new Pair[]{
+                  Pair.of(enf.a("village/snowy/zombie/streets/crossroad_04", $$6), 2),
+                  Pair.of(enf.a("village/snowy/zombie/streets/crossroad_05", $$6), 2),
+                  Pair.of(enf.a("village/snowy/zombie/streets/crossroad_06", $$6), 2),
+                  Pair.of(enf.a("village/snowy/zombie/streets/turn_01", $$6), 3)
+               }
+            ),
+            enh.a.a
+         )
+      );
+      rf.a(
+         $$0,
+         "village/snowy/houses",
+         new enh(
+            $$11,
+            ImmutableList.of(
+               Pair.of(enf.a("village/snowy/houses/snowy_small_house_1"), 2),
+               Pair.of(enf.a("village/snowy/houses/snowy_small_house_2"), 2),
+               Pair.of(enf.a("village/snowy/houses/snowy_small_house_3"), 2),
+               Pair.of(enf.a("village/snowy/houses/snowy_small_house_4"), 3),
+               Pair.of(enf.a("village/snowy/houses/snowy_small_house_5"), 2),
+               Pair.of(enf.a("village/snowy/houses/snowy_small_house_6"), 2),
+               Pair.of(enf.a("village/snowy/houses/snowy_small_house_7"), 2),
+               Pair.of(enf.a("village/snowy/houses/snowy_small_house_8"), 2),
+               Pair.of(enf.a("village/snowy/houses/snowy_medium_house_1"), 2),
+               Pair.of(enf.a("village/snowy/houses/snowy_medium_house_2"), 2),
+               Pair.of(enf.a("village/snowy/houses/snowy_medium_house_3"), 2),
+               Pair.of(enf.a("village/snowy/houses/snowy_butchers_shop_1"), 2),
+               new Pair[]{
+                  Pair.of(enf.a("village/snowy/houses/snowy_butchers_shop_2"), 2),
+                  Pair.of(enf.a("village/snowy/houses/snowy_tool_smith_1"), 2),
+                  Pair.of(enf.a("village/snowy/houses/snowy_fletcher_house_1"), 2),
+                  Pair.of(enf.a("village/snowy/houses/snowy_shepherds_house_1"), 3),
+                  Pair.of(enf.a("village/snowy/houses/snowy_armorer_house_1"), 1),
+                  Pair.of(enf.a("village/snowy/houses/snowy_armorer_house_2"), 1),
+                  Pair.of(enf.a("village/snowy/houses/snowy_fisher_cottage"), 2),
+                  Pair.of(enf.a("village/snowy/houses/snowy_tannery_1"), 2),
+                  Pair.of(enf.a("village/snowy/houses/snowy_cartographer_house_1"), 2),
+                  Pair.of(enf.a("village/snowy/houses/snowy_library_1"), 2),
+                  Pair.of(enf.a("village/snowy/houses/snowy_masons_house_1"), 2),
+                  Pair.of(enf.a("village/snowy/houses/snowy_masons_house_2"), 2),
+                  Pair.of(enf.a("village/snowy/houses/snowy_weapon_smith_1"), 2),
+                  Pair.of(enf.a("village/snowy/houses/snowy_temple_1"), 2),
+                  Pair.of(enf.a("village/snowy/houses/snowy_farm_1", $$7), 3),
+                  Pair.of(enf.a("village/snowy/houses/snowy_farm_2", $$7), 3),
+                  Pair.of(enf.a("village/snowy/houses/snowy_animal_pen_1"), 2),
+                  Pair.of(enf.a("village/snowy/houses/snowy_animal_pen_2"), 2),
+                  Pair.of(enf.h(), 6)
+               }
+            ),
+            enh.a.b
+         )
+      );
+      rf.a(
+         $$0,
+         "village/snowy/zombie/houses",
+         new enh(
+            $$11,
+            ImmutableList.of(
+               Pair.of(enf.a("village/snowy/zombie/houses/snowy_small_house_1", $$8), 2),
+               Pair.of(enf.a("village/snowy/zombie/houses/snowy_small_house_2", $$8), 2),
+               Pair.of(enf.a("village/snowy/zombie/houses/snowy_small_house_3", $$8), 2),
+               Pair.of(enf.a("village/snowy/zombie/houses/snowy_small_house_4", $$8), 2),
+               Pair.of(enf.a("village/snowy/zombie/houses/snowy_small_house_5", $$8), 2),
+               Pair.of(enf.a("village/snowy/zombie/houses/snowy_small_house_6", $$8), 2),
+               Pair.of(enf.a("village/snowy/zombie/houses/snowy_small_house_7", $$8), 2),
+               Pair.of(enf.a("village/snowy/zombie/houses/snowy_small_house_8", $$8), 2),
+               Pair.of(enf.a("village/snowy/zombie/houses/snowy_medium_house_1", $$8), 2),
+               Pair.of(enf.a("village/snowy/zombie/houses/snowy_medium_house_2", $$8), 2),
+               Pair.of(enf.a("village/snowy/zombie/houses/snowy_medium_house_3", $$8), 1),
+               Pair.of(enf.a("village/snowy/houses/snowy_butchers_shop_1", $$8), 2),
+               new Pair[]{
+                  Pair.of(enf.a("village/snowy/houses/snowy_butchers_shop_2", $$8), 2),
+                  Pair.of(enf.a("village/snowy/houses/snowy_tool_smith_1", $$8), 2),
+                  Pair.of(enf.a("village/snowy/houses/snowy_fletcher_house_1", $$8), 2),
+                  Pair.of(enf.a("village/snowy/houses/snowy_shepherds_house_1", $$8), 2),
+                  Pair.of(enf.a("village/snowy/houses/snowy_armorer_house_1", $$8), 1),
+                  Pair.of(enf.a("village/snowy/houses/snowy_armorer_house_2", $$8), 1),
+                  Pair.of(enf.a("village/snowy/houses/snowy_fisher_cottage", $$8), 2),
+                  Pair.of(enf.a("village/snowy/houses/snowy_tannery_1", $$8), 2),
+                  Pair.of(enf.a("village/snowy/houses/snowy_cartographer_house_1", $$8), 2),
+                  Pair.of(enf.a("village/snowy/houses/snowy_library_1", $$8), 2),
+                  Pair.of(enf.a("village/snowy/houses/snowy_masons_house_1", $$8), 2),
+                  Pair.of(enf.a("village/snowy/houses/snowy_masons_house_2", $$8), 2),
+                  Pair.of(enf.a("village/snowy/houses/snowy_weapon_smith_1", $$8), 2),
+                  Pair.of(enf.a("village/snowy/houses/snowy_temple_1", $$8), 2),
+                  Pair.of(enf.a("village/snowy/houses/snowy_farm_1", $$8), 3),
+                  Pair.of(enf.a("village/snowy/houses/snowy_farm_2", $$8), 3),
+                  Pair.of(enf.a("village/snowy/houses/snowy_animal_pen_1", $$8), 2),
+                  Pair.of(enf.a("village/snowy/houses/snowy_animal_pen_2", $$8), 2),
+                  Pair.of(enf.h(), 6)
+               }
+            ),
+            enh.a.b
+         )
+      );
+      $$0.a(
+         b,
+         new enh(
+            $$10,
+            ImmutableList.of(
+               Pair.of(enf.a("village/plains/terminators/terminator_01", $$6), 1),
+               Pair.of(enf.a("village/plains/terminators/terminator_02", $$6), 1),
+               Pair.of(enf.a("village/plains/terminators/terminator_03", $$6), 1),
+               Pair.of(enf.a("village/plains/terminators/terminator_04", $$6), 1)
+            ),
+            enh.a.a
+         )
+      );
+      rf.a($$0, "village/snowy/trees", new enh($$10, ImmutableList.of(Pair.of(enf.a($$2), 1)), enh.a.b));
+      rf.a(
+         $$0,
+         "village/snowy/decor",
+         new enh(
+            $$10,
+            ImmutableList.of(
+               Pair.of(enf.a("village/snowy/snowy_lamp_post_01"), 4),
+               Pair.of(enf.a("village/snowy/snowy_lamp_post_02"), 4),
+               Pair.of(enf.a("village/snowy/snowy_lamp_post_03"), 1),
+               Pair.of(enf.a($$2), 4),
+               Pair.of(enf.a($$3), 4),
+               Pair.of(enf.a($$4), 1),
+               Pair.of(enf.h(), 9)
+            ),
+            enh.a.b
+         )
+      );
+      rf.a(
+         $$0,
+         "village/snowy/zombie/decor",
+         new enh(
+            $$10,
+            ImmutableList.of(
+               Pair.of(enf.a("village/snowy/snowy_lamp_post_01", $$8), 1),
+               Pair.of(enf.a("village/snowy/snowy_lamp_post_02", $$8), 1),
+               Pair.of(enf.a("village/snowy/snowy_lamp_post_03", $$8), 1),
+               Pair.of(enf.a($$2), 4),
+               Pair.of(enf.a($$3), 4),
+               Pair.of(enf.a($$4), 4),
+               Pair.of(enf.h(), 7)
+            ),
+            enh.a.b
+         )
+      );
+      rf.a(
+         $$0,
+         "village/snowy/villagers",
+         new enh(
+            $$10,
+            ImmutableList.of(
+               Pair.of(enf.a("village/snowy/villagers/nitwit"), 1),
+               Pair.of(enf.a("village/snowy/villagers/baby"), 1),
+               Pair.of(enf.a("village/snowy/villagers/unemployed"), 10)
+            ),
+            enh.a.b
+         )
+      );
+      rf.a(
+         $$0,
+         "village/snowy/zombie/villagers",
+         new enh(
+            $$10,
+            ImmutableList.of(Pair.of(enf.a("village/snowy/zombie/villagers/nitwit"), 1), Pair.of(enf.a("village/snowy/zombie/villagers/unemployed"), 10)),
+            enh.a.b
+         )
+      );
    }
 }

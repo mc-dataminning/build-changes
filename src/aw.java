@@ -1,95 +1,55 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Arrays;
-import java.util.Collection;
 import java.util.Optional;
-import javax.annotation.Nullable;
 
-public record aw(Optional<jt<dhy>> c, Optional<ed> d, Optional<dl> e) {
-   public static final Codec<aw> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               ke.a(ly.f).optionalFieldOf("blocks").forGetter(aw::b),
-               ed.a.optionalFieldOf("state").forGetter(aw::c),
-               dl.a.optionalFieldOf("nbt").forGetter(aw::d)
-            )
-            .apply($$0, aw::new)
-   );
-   public static final zf<ws, aw> b = zf.a(zd.a(zd.c(ly.f)), aw::b, zd.a(ed.b), aw::c, zd.a(dl.b), aw::d, aw::new);
-
-   public boolean a(arm $$0, jg $$1) {
-      if (!$$0.p($$1)) {
-         return false;
-      } else {
-         return !this.a($$0.a_($$1)) ? false : !this.e.isPresent() || a($$0, $$0.c_($$1), this.e.get());
-      }
+public class aw extends dy<aw.a> {
+   @Override
+   public Codec<aw.a> a() {
+      return aw.a.a;
    }
 
-   public boolean a(dvh $$0) {
-      return !this.a($$0.a()) ? false : !this.e.isPresent() || a($$0.c(), $$0.b(), this.e.get());
+   public void a(aro $$0, dvj $$1, cwb $$2, int $$3) {
+      this.a($$0, $$3x -> $$3x.a($$1, $$2, $$3));
    }
 
-   private boolean a(dvd $$0) {
-      return this.c.isPresent() && !$$0.a(this.c.get()) ? false : !this.d.isPresent() || this.d.get().a($$0);
-   }
+   public static record a(Optional<bh> b, Optional<jq<die>> c, Optional<cu> d, dj.d e) implements dy.a {
+      public static final Codec<aw.a> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(
+                  bw.b.optionalFieldOf("player").forGetter(aw.a::a),
+                  ly.e.r().optionalFieldOf("block").forGetter(aw.a::b),
+                  cu.a.optionalFieldOf("item").forGetter(aw.a::c),
+                  dj.d.d.optionalFieldOf("num_bees_inside", dj.d.c).forGetter(aw.a::d)
+               )
+               .apply($$0, aw.a::new)
+      );
 
-   private static boolean a(dey $$0, @Nullable dsg $$1, dl $$2) {
-      return $$1 != null && $$2.a($$1.b($$0.H_()));
-   }
-
-   public boolean a() {
-      return this.e.isPresent();
-   }
-
-   public Optional<jt<dhy>> b() {
-      return this.c;
-   }
-
-   public Optional<ed> c() {
-      return this.d;
-   }
-
-   public Optional<dl> d() {
-      return this.e;
-   }
-
-   public static class a {
-      private Optional<jt<dhy>> a = Optional.empty();
-      private Optional<ed> b = Optional.empty();
-      private Optional<dl> c = Optional.empty();
-
-      private a() {
+      public static ap<aw.a> a(die $$0, cu.a $$1, dj.d $$2) {
+         return ao.L.a(new aw.a(Optional.empty(), Optional.of($$0.p()), Optional.of($$1.b()), $$2));
       }
 
-      public static aw.a a() {
-         return new aw.a();
+      public boolean a(dvj $$0, cwb $$1, int $$2) {
+         if (this.c.isPresent() && !$$0.a(this.c.get())) {
+            return false;
+         } else {
+            return this.d.isPresent() && !this.d.get().a($$1) ? false : this.e.d($$2);
+         }
       }
 
-      public aw.a a(jq<dhy> $$0, dhy... $$1) {
-         return this.a($$0, Arrays.asList($$1));
+      @Override
+      public Optional<bh> a() {
+         return this.b;
       }
 
-      public aw.a a(jq<dhy> $$0, Collection<dhy> $$1) {
-         this.a = Optional.of(jt.a(dhy::p, $$1));
-         return this;
+      public Optional<jq<die>> b() {
+         return this.c;
       }
 
-      public aw.a a(jq<dhy> $$0, axp<dhy> $$1) {
-         this.a = Optional.of($$0.b($$1));
-         return this;
+      public Optional<cu> c() {
+         return this.d;
       }
 
-      public aw.a a(uj $$0) {
-         this.c = Optional.of(new dl($$0));
-         return this;
-      }
-
-      public aw.a a(ed.a $$0) {
-         this.b = $$0.b();
-         return this;
-      }
-
-      public aw b() {
-         return new aw(this.a, this.b, this.c);
+      public dj.d d() {
+         return this.e;
       }
    }
 }

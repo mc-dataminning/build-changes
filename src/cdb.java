@@ -1,103 +1,24 @@
-import java.util.EnumSet;
-import java.util.function.Predicate;
-import javax.annotation.Nullable;
+public class cdb extends cby {
+   private final bvi a;
 
-public class cdb extends cbt {
-   private static final cfm c = cfm.b().d();
-   private final cfm d;
-   protected final bvd a;
-   private final double e;
-   private double f;
-   private double g;
-   private double h;
-   private double i;
-   private double j;
-   @Nullable
-   protected coh b;
-   private int k;
-   private boolean l;
-   private final Predicate<cvx> m;
-   private final boolean n;
-
-   public cdb(bvd $$0, double $$1, Predicate<cvx> $$2, boolean $$3) {
+   public cdb(bvi $$0) {
       this.a = $$0;
-      this.e = $$1;
-      this.m = $$2;
-      this.n = $$3;
-      this.a(EnumSet.of(cbt.a.a, cbt.a.b));
-      this.d = c.c().a(this::a);
    }
 
    @Override
    public boolean b() {
-      if (this.k > 0) {
-         this.k--;
-         return false;
-      } else {
-         this.b = this.a.dX().a(this.d.a(this.a.h(bwd.E)), this.a);
-         return this.b != null;
-      }
-   }
-
-   private boolean a(buv $$0) {
-      return this.m.test($$0.fb()) || this.m.test($$0.fc());
-   }
-
-   @Override
-   public boolean c() {
-      if (this.h()) {
-         if (this.a.g(this.b) < 36.0) {
-            if (this.b.i(this.f, this.g, this.h) > 0.010000000000000002) {
-               return false;
-            }
-
-            if (Math.abs((double)this.b.dP() - this.i) > 5.0 || Math.abs((double)this.b.dN() - this.j) > 5.0) {
-               return false;
-            }
-         } else {
-            this.f = this.b.dC();
-            this.g = this.b.dE();
-            this.h = this.b.dI();
-         }
-
-         this.i = (double)this.b.dP();
-         this.j = (double)this.b.dN();
-      }
-
-      return this.b();
-   }
-
-   protected boolean h() {
-      return this.n;
+      return this.a.dX().S() && this.a.a(bum.f).f() && cfw.a(this.a);
    }
 
    @Override
    public void d() {
-      this.f = this.b.dC();
-      this.g = this.b.dE();
-      this.h = this.b.dI();
-      this.l = true;
+      ((cel)this.a.P()).d(true);
    }
 
    @Override
    public void e() {
-      this.b = null;
-      this.a.P().o();
-      this.k = b(100);
-      this.l = false;
-   }
-
-   @Override
-   public void a() {
-      this.a.K().a(this.b, (float)(this.a.ae() + 20), (float)this.a.ad());
-      if (this.a.g(this.b) < 6.25) {
-         this.a.P().o();
-      } else {
-         this.a.P().a(this.b, this.e);
+      if (cfw.a(this.a)) {
+         ((cel)this.a.P()).d(false);
       }
-   }
-
-   public boolean i() {
-      return this.l;
    }
 }

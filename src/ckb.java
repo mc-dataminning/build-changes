@@ -1,8 +1,61 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+public class ckb extends cjr {
+   private static final int b = 100;
+   private static final int c = 10;
+   private static final int d = 20;
+   private static final int e = 150;
+   private static final cfr f = cfr.a().a(150.0);
+   private final cfr g;
+   private int h;
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface ckb {
+   public ckb(cjo $$0) {
+      super($$0);
+      this.g = cfr.a().a(20.0).a($$1 -> Math.abs($$1.dE() - $$0.dE()) <= 10.0);
+   }
+
+   @Override
+   public void c() {
+      this.h++;
+      bva $$0 = this.a.dX().a(this.g, this.a, this.a.dC(), this.a.dE(), this.a.dI());
+      if ($$0 != null) {
+         if (this.h > 25) {
+            this.a.gr().a(cke.h);
+         } else {
+            ezn $$1 = new ezn($$0.dC() - this.a.dC(), 0.0, $$0.dI() - this.a.dI()).d();
+            ezn $$2 = new ezn((double)azk.a(this.a.dN() * (float) (Math.PI / 180.0)), 0.0, (double)(-azk.b(this.a.dN() * (float) (Math.PI / 180.0)))).d();
+            float $$3 = (float)$$2.b($$1);
+            float $$4 = (float)(Math.acos((double)$$3) * 180.0F / (float)Math.PI) + 0.5F;
+            if ($$4 < 0.0F || $$4 > 10.0F) {
+               double $$5 = $$0.dC() - this.a.d.dC();
+               double $$6 = $$0.dI() - this.a.d.dI();
+               double $$7 = azk.a(azk.d(180.0 - azk.d($$5, $$6) * 180.0F / (float)Math.PI - (double)this.a.dN()), -100.0, 100.0);
+               this.a.ca *= 0.8F;
+               float $$8 = (float)Math.sqrt($$5 * $$5 + $$6 * $$6) + 1.0F;
+               float $$9 = $$8;
+               if ($$8 > 40.0F) {
+                  $$8 = 40.0F;
+               }
+
+               this.a.ca += (float)$$7 * (0.7F / $$8 / $$9);
+               this.a.v(this.a.dN() + this.a.ca);
+            }
+         }
+      } else if (this.h >= 100) {
+         $$0 = this.a.dX().a(f, this.a, this.a.dC(), this.a.dE(), this.a.dI());
+         this.a.gr().a(cke.e);
+         if ($$0 != null) {
+            this.a.gr().a(cke.i);
+            this.a.gr().b(cke.i).a(new ezn($$0.dC(), $$0.dE(), $$0.dI()));
+         }
+      }
+   }
+
+   @Override
+   public void d() {
+      this.h = 0;
+   }
+
+   @Override
+   public cke<ckb> i() {
+      return cke.g;
+   }
 }

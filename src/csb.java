@@ -1,17 +1,34 @@
-import java.util.List;
+import java.util.Optional;
+import java.util.function.BiConsumer;
+import java.util.function.BiFunction;
 
-public interface csb extends brr, ctl {
-   int aA_();
+public interface csb {
+   csb a = new csb() {
+      @Override
+      public <T> Optional<T> a(BiFunction<dfb, jh, T> $$0) {
+         return Optional.empty();
+      }
+   };
 
-   int g();
-
-   List<cvx> h();
-
-   default czy aD_() {
-      return this.aE_().a();
+   static csb a(final dfb $$0, final jh $$1) {
+      return new csb() {
+         @Override
+         public <T> Optional<T> a(BiFunction<dfb, jh, T> $$0x) {
+            return Optional.of($$0.apply($$0, $$1));
+         }
+      };
    }
 
-   default czy.a aE_() {
-      return czy.b(this.aA_(), this.g(), this.h());
+   <T> Optional<T> a(BiFunction<dfb, jh, T> var1);
+
+   default <T> T a(BiFunction<dfb, jh, T> $$0, T $$1) {
+      return this.a($$0).orElse($$1);
+   }
+
+   default void a(BiConsumer<dfb, jh> $$0) {
+      this.a(($$1, $$2) -> {
+         $$0.accept($$1, $$2);
+         return Optional.empty();
+      });
    }
 }

@@ -1,30 +1,23 @@
 import com.mojang.serialization.Codec;
 
-public class efm extends eef<ehb> {
-   public efm(Codec<ehb> $$0) {
+public class efm extends eel<ehd> {
+   public efm(Codec<ehd> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(eeh<ehb> $$0) {
-      ehb $$1 = $$0.f();
-      dfs $$2 = $$0.b();
-      jg $$3 = $$0.e();
-      dvd $$4 = $$1.a().a($$0.d(), $$3);
-      if ($$4.a($$2, $$3)) {
-         if ($$4.b() instanceof dkg) {
-            if (!$$2.u($$3.d())) {
-               return false;
-            }
+   public boolean a(een<ehd> $$0) {
+      dfy $$1 = $$0.b();
+      jh $$2 = $$0.e();
+      ehd $$3 = $$0.f();
 
-            dkg.a($$2, $$4, $$3, 2);
-         } else {
-            $$2.a($$3, $$4, 2);
+      for (egx.a $$4 : $$3.b) {
+         if ($$4.b.a($$1.a_($$2), $$0.d())) {
+            $$1.a($$2, $$4.c, 2);
+            break;
          }
-
-         return true;
-      } else {
-         return false;
       }
+
+      return true;
    }
 }

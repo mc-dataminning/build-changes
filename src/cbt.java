@@ -1,57 +1,86 @@
-import java.util.EnumSet;
+import java.util.List;
+import javax.annotation.Nullable;
 
-public abstract class cbt {
-   private final EnumSet<cbt.a> a = EnumSet.noneOf(cbt.a.class);
+public class cbt extends cby {
+   private int a;
+   private final bvi b;
+   @Nullable
+   private com c;
+   private cbh d;
 
-   public abstract boolean b();
-
-   public boolean c() {
-      return this.b();
+   public cbt(bvi $$0) {
+      this.b = $$0;
    }
 
+   @Override
+   public boolean b() {
+      List<cqm> $$0 = this.b.dX().a(cqm.class, this.b.cS().g(5.0));
+      boolean $$1 = false;
+
+      for (cqm $$2 : $$0) {
+         bue $$3 = $$2.cY();
+         if ($$3 instanceof com && (azk.e(((com)$$3).bo) > 0.0F || azk.e(((com)$$3).bq) > 0.0F)) {
+            $$1 = true;
+            break;
+         }
+      }
+
+      return this.c != null && (azk.e(this.c.bo) > 0.0F || azk.e(this.c.bq) > 0.0F) || $$1;
+   }
+
+   @Override
    public boolean U_() {
       return true;
    }
 
-   public void d() {
-   }
-
-   public void e() {
-   }
-
-   public boolean V_() {
-      return false;
-   }
-
-   public void a() {
-   }
-
-   public void a(EnumSet<cbt.a> $$0) {
-      this.a.clear();
-      this.a.addAll($$0);
+   @Override
+   public boolean c() {
+      return this.c != null && this.c.ca() && (azk.e(this.c.bo) > 0.0F || azk.e(this.c.bq) > 0.0F);
    }
 
    @Override
-   public String toString() {
-      return this.getClass().getSimpleName();
+   public void d() {
+      for (cqm $$1 : this.b.dX().a(cqm.class, this.b.cS().g(5.0))) {
+         if ($$1.cY() instanceof com $$2) {
+            this.c = $$2;
+            break;
+         }
+      }
+
+      this.a = 0;
+      this.d = cbh.a;
    }
 
-   public EnumSet<cbt.a> j() {
-      return this.a;
+   @Override
+   public void e() {
+      this.c = null;
    }
 
-   protected int a(int $$0) {
-      return this.V_() ? $$0 : b($$0);
-   }
-
-   protected static int b(int $$0) {
-      return azj.e($$0, 2);
-   }
-
-   public static enum a {
-      a,
-      b,
-      c,
-      d;
+   @Override
+   public void a() {
+      boolean $$0 = azk.e(this.c.bo) > 0.0F || azk.e(this.c.bq) > 0.0F;
+      float $$1 = this.d == cbh.b ? ($$0 ? 0.01F : 0.0F) : 0.015F;
+      this.b.a($$1, new ezn((double)this.b.bo, (double)this.b.bp, (double)this.b.bq));
+      this.b.a(bve.a, this.b.dA());
+      if (--this.a <= 0) {
+         this.a = this.a(10);
+         if (this.d == cbh.a) {
+            jh $$2 = this.c.dx().a(this.c.cP().g());
+            $$2 = $$2.b(0, -1, 0);
+            this.b.P().a((double)$$2.u(), (double)$$2.v(), (double)$$2.w(), 1.0);
+            if (this.b.f(this.c) < 4.0F) {
+               this.a = 0;
+               this.d = cbh.b;
+            }
+         } else if (this.d == cbh.b) {
+            jm $$3 = this.c.cQ();
+            jh $$4 = this.c.dx().a($$3, 10);
+            this.b.P().a((double)$$4.u(), (double)($$4.v() - 1), (double)$$4.w(), 1.0);
+            if (this.b.f(this.c) > 12.0F) {
+               this.a = 0;
+               this.d = cbh.a;
+            }
+         }
+      }
    }
 }

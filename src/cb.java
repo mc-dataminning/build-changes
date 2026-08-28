@@ -1,34 +1,37 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Optional;
-import javax.annotation.Nullable;
 
-public record cb(Optional<Boolean> d) implements bw {
-   public static final cb b = new cb(Optional.empty());
-   public static final MapCodec<cb> c = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(Codec.BOOL.optionalFieldOf("in_open_water").forGetter(cb::b)).apply($$0, cb::new)
-   );
-
-   public static cb a(boolean $$0) {
-      return new cb(Optional.of($$0));
+public class cb extends dy<cb.a> {
+   @Override
+   public Codec<cb.a> a() {
+      return cb.a.a;
    }
 
-   @Override
-   public MapCodec<cb> a() {
-      return bx.b;
+   public void a(aro $$0, cwb $$1) {
+      this.a($$0, $$1x -> $$1x.a($$1));
    }
 
-   @Override
-   public boolean a(btz $$0, arm $$1, @Nullable ezh $$2) {
-      if (this.d.isEmpty()) {
-         return true;
-      } else {
-         return $$0 instanceof cox $$3 ? this.d.get() == $$3.m() : false;
+   public static record a(Optional<bh> b, Optional<cu> c) implements dy.a {
+      public static final Codec<cb.a> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(bw.b.optionalFieldOf("player").forGetter(cb.a::a), cu.a.optionalFieldOf("item").forGetter(cb.a::b)).apply($$0, cb.a::new)
+      );
+
+      public static ap<cb.a> a(cu.a $$0) {
+         return ao.k.a(new cb.a(Optional.empty(), Optional.of($$0.b())));
       }
-   }
 
-   public Optional<Boolean> b() {
-      return this.d;
+      public boolean a(cwb $$0) {
+         return !this.c.isPresent() || this.c.get().a($$0);
+      }
+
+      @Override
+      public Optional<bh> a() {
+         return this.b;
+      }
+
+      public Optional<cu> b() {
+         return this.c;
+      }
    }
 }

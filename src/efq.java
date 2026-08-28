@@ -1,75 +1,30 @@
 import com.mojang.serialization.Codec;
 
-public class efq extends eef<ehe> {
-   public efq(Codec<ehe> $$0) {
+public class efq extends eel<egk> {
+   public efq(Codec<egk> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(eeh<ehe> $$0) {
-      ehe $$1 = $$0.f();
-      dfs $$2 = $$0.b();
-      jg $$3 = $$0.e();
-      if (!$$2.a_($$3.d()).a($$1.f)) {
-         return false;
-      } else if ($$1.c && !$$2.a_($$3.e()).a($$1.f)) {
-         return false;
-      } else {
-         dvd $$4 = $$2.a_($$3);
-         if (!$$4.l() && !$$4.a($$1.f)) {
-            return false;
-         } else {
-            int $$5 = 0;
-            int $$6 = 0;
-            if ($$2.a_($$3.h()).a($$1.f)) {
-               $$6++;
-            }
+   public boolean a(een<egk> $$0) {
+      int $$1 = 0;
+      azs $$2 = $$0.d();
+      dfy $$3 = $$0.b();
+      jh $$4 = $$0.e();
+      int $$5 = $$0.f().a().a($$2);
 
-            if ($$2.a_($$3.i()).a($$1.f)) {
-               $$6++;
-            }
-
-            if ($$2.a_($$3.f()).a($$1.f)) {
-               $$6++;
-            }
-
-            if ($$2.a_($$3.g()).a($$1.f)) {
-               $$6++;
-            }
-
-            if ($$2.a_($$3.e()).a($$1.f)) {
-               $$6++;
-            }
-
-            int $$7 = 0;
-            if ($$2.u($$3.h())) {
-               $$7++;
-            }
-
-            if ($$2.u($$3.i())) {
-               $$7++;
-            }
-
-            if ($$2.u($$3.f())) {
-               $$7++;
-            }
-
-            if ($$2.u($$3.g())) {
-               $$7++;
-            }
-
-            if ($$2.u($$3.e())) {
-               $$7++;
-            }
-
-            if ($$6 == $$1.d && $$7 == $$1.e) {
-               $$2.a($$3, $$1.b.g(), 2);
-               $$2.a($$3, $$1.b.a(), 0);
-               $$5++;
-            }
-
-            return $$5 > 0;
+      for (int $$6 = 0; $$6 < $$5; $$6++) {
+         int $$7 = $$2.a(8) - $$2.a(8);
+         int $$8 = $$2.a(8) - $$2.a(8);
+         int $$9 = $$3.a(ebf.a.d, $$4.u() + $$7, $$4.w() + $$8);
+         jh $$10 = new jh($$4.u() + $$7, $$9, $$4.w() + $$8);
+         dvj $$11 = dig.mV.m().b(dpb.c, Integer.valueOf($$2.a(4) + 1));
+         if ($$3.a_($$10).a(dig.G) && $$11.a($$3, $$10)) {
+            $$3.a($$10, $$11, 2);
+            $$1++;
          }
       }
+
+      return $$1 > 0;
    }
 }

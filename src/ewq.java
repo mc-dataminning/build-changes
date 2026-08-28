@@ -1,74 +1,38 @@
-import com.google.common.base.Joiner;
-import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.Sets;
-import java.util.Set;
+import com.google.common.annotations.VisibleForTesting;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.JavaOps;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
 
-public class ewq {
-   private final Set<ewp<?>> a;
-   private final Set<ewp<?>> b;
+public class ewq extends evp {
+   public static final Codec<xi> a = xk.a.validate($$0 -> czj.g.encodeStart(JavaOps.INSTANCE, $$0).map($$1 -> $$0));
+   public static final MapCodec<ewq> b = RecordCodecBuilder.mapCodec(
+      $$0 -> a($$0).and($$0.group(czj.a(a).fieldOf("pages").forGetter($$0x -> $$0x.c), evo.a.forGetter($$0x -> $$0x.d))).apply($$0, ewq::new)
+   );
+   private final List<asf<xi>> c;
+   private final evo d;
 
-   ewq(Set<ewp<?>> $$0, Set<ewp<?>> $$1) {
-      this.a = ImmutableSet.copyOf($$0);
-      this.b = ImmutableSet.copyOf(Sets.union($$0, $$1));
-   }
-
-   public boolean a(ewp<?> $$0) {
-      return this.b.contains($$0);
-   }
-
-   public Set<ewp<?>> a() {
-      return this.a;
-   }
-
-   public Set<ewp<?>> b() {
-      return this.b;
+   protected ewq(List<exn> $$0, List<asf<xi>> $$1, evo $$2) {
+      super($$0);
+      this.c = $$1;
+      this.d = $$2;
    }
 
    @Override
-   public String toString() {
-      return "[" + Joiner.on(", ").join(this.b.stream().map($$0 -> (this.a.contains($$0) ? "!" : "") + $$0.a()).iterator()) + "]";
+   protected cwb a(cwb $$0, euc $$1) {
+      $$0.a(ku.T, czj.a, this::a);
+      return $$0;
    }
 
-   public void a(euc $$0, etx $$1) {
-      this.a($$0.c(), $$1);
+   @VisibleForTesting
+   public czj a(czj $$0) {
+      List<asf<xi>> $$1 = this.d.a($$0.a(), this.c);
+      return $$0.b($$1);
    }
 
-   public void a(azp $$0, etx $$1) {
-      Set<ewp<?>> $$2 = $$1.a();
-      Set<ewp<?>> $$3 = Sets.difference($$2, this.b);
-      if (!$$3.isEmpty()) {
-         $$0.b("Parameters " + $$3 + " are not provided in this context");
-      }
-   }
-
-   public static ewq.a c() {
-      return new ewq.a();
-   }
-
-   public static class a {
-      private final Set<ewp<?>> a = Sets.newIdentityHashSet();
-      private final Set<ewp<?>> b = Sets.newIdentityHashSet();
-
-      public ewq.a a(ewp<?> $$0) {
-         if (this.b.contains($$0)) {
-            throw new IllegalArgumentException("Parameter " + $$0.a() + " is already optional");
-         } else {
-            this.a.add($$0);
-            return this;
-         }
-      }
-
-      public ewq.a b(ewp<?> $$0) {
-         if (this.a.contains($$0)) {
-            throw new IllegalArgumentException("Parameter " + $$0.a() + " is already required");
-         } else {
-            this.b.add($$0);
-            return this;
-         }
-      }
-
-      public ewq a() {
-         return new ewq(this.a, this.b);
-      }
+   @Override
+   public evr<ewq> b() {
+      return evs.N;
    }
 }

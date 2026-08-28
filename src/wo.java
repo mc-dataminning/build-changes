@@ -1,38 +1,31 @@
-import java.util.function.Supplier;
-import javax.annotation.Nullable;
-
 public interface wo {
-   static wo a(final Runnable $$0) {
-      return new wo() {
-         @Override
-         public void a() {
-            $$0.run();
-         }
+   zq a();
 
-         @Nullable
-         @Override
-         public zo<?> b() {
-            $$0.run();
-            return null;
-         }
-      };
+   wd b();
+
+   void a(we var1);
+
+   default void a(zp $$0, Exception $$1) throws z {
+      throw zs.a($$1, $$0, this);
    }
 
-   static wo a(final Supplier<zo<?>> $$0) {
-      return new wo() {
-         @Nullable
-         @Override
-         public zo<?> b() {
-            return $$0.get();
-         }
-      };
+   default we a(xi $$0, Throwable $$1) {
+      return new we($$0);
    }
 
-   default void a() {
+   boolean c();
+
+   default boolean a(zp<?> $$0) {
+      return this.c();
    }
 
-   @Nullable
-   default zo<?> b() {
-      return null;
+   default void a(o $$0) {
+      p $$1 = $$0.a("Connection");
+      $$1.a("Protocol", () -> this.b().a());
+      $$1.a("Flow", () -> this.a().toString());
+      this.a($$0, $$1);
+   }
+
+   default void a(o $$0, p $$1) {
    }
 }

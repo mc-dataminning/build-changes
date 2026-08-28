@@ -1,42 +1,16 @@
-import java.util.EnumSet;
-import java.util.List;
 import javax.annotation.Nullable;
 
-public class cdk extends cdt {
-   private final cgy a;
+public class cdk extends cdl {
+   public cdk(bvi $$0, double $$1) {
+      super($$0, $$1);
+   }
+
    @Nullable
-   private buv b;
-   private final cfm c = cfm.a().a(64.0);
-
-   public cdk(cgy $$0) {
-      super($$0, false, true);
-      this.a = $$0;
-      this.a(EnumSet.of(cbt.a.d));
-   }
-
    @Override
-   public boolean b() {
-      ezc $$0 = this.a.cS().c(10.0, 8.0, 10.0);
-      List<? extends buv> $$1 = this.a.dX().a(cnt.class, this.c, this.a, $$0);
-      List<coh> $$2 = this.a.dX().a(this.c, this.a, $$0);
-
-      for (buv $$3 : $$1) {
-         cnt $$4 = (cnt)$$3;
-
-         for (coh $$5 : $$2) {
-            int $$6 = $$4.f($$5);
-            if ($$6 <= -100) {
-               this.b = $$5;
-            }
-         }
-      }
-
-      return this.b == null ? false : !(this.b instanceof coh) || !this.b.R_() && !((coh)this.b).f();
-   }
-
-   @Override
-   public void d() {
-      this.a.h(this.b);
-      super.d();
+   protected ezn h() {
+      ezn $$0 = this.b.g(0.0F);
+      int $$1 = 8;
+      ezn $$2 = cfx.a(this.b, 8, 7, $$0.d, $$0.f, (float) (Math.PI / 2), 3, 1);
+      return $$2 != null ? $$2 : cft.a(this.b, 8, 4, -2, $$0.d, $$0.f, (float) (Math.PI / 2));
    }
 }

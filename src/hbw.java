@@ -1,35 +1,31 @@
-import com.google.common.collect.AbstractIterator;
-import com.google.common.collect.Iterators;
-import com.google.common.collect.PeekingIterator;
-import java.util.Comparator;
-import java.util.Iterator;
+public class hbw extends hbj {
+   private static final float n = 1.0F;
+   private static final float o = 1.0F;
+   private final cji p;
 
-public class hbw<T> extends AbstractIterator<T> {
-   private final PeekingIterator<T> a;
-   private final PeekingIterator<T> b;
-   private final Comparator<T> c;
-
-   public hbw(Iterator<T> $$0, Iterator<T> $$1, Comparator<T> $$2) {
-      this.a = Iterators.peekingIterator($$0);
-      this.b = Iterators.peekingIterator($$1);
-      this.c = $$2;
+   public hbw(cji $$0) {
+      super(awl.yy, awm.g, hca.t());
+      this.p = $$0;
+      this.k = hca.a.b;
+      this.i = false;
+      this.j = 0;
    }
 
-   protected T computeNext() {
-      while (this.a.hasNext() && this.b.hasNext()) {
-         int $$0 = this.c.compare((T)this.a.peek(), (T)this.b.peek());
-         if ($$0 == 0) {
-            this.b.next();
-            return (T)this.a.next();
-         }
+   @Override
+   public boolean s() {
+      return !this.p.bc();
+   }
 
-         if ($$0 < 0) {
-            this.a.next();
-         } else {
-            this.b.next();
-         }
+   @Override
+   public void q() {
+      if (!this.p.dS() && this.p.m() == null && this.p.gv()) {
+         this.f = (double)((float)this.p.dC());
+         this.g = (double)((float)this.p.dE());
+         this.h = (double)((float)this.p.dI());
+         this.d = 1.0F;
+         this.e = 1.0F;
+      } else {
+         this.n();
       }
-
-      return (T)this.endOfData();
    }
 }

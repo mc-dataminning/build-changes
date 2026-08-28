@@ -1,16 +1,45 @@
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 
-public interface bre<P extends brd> {
-   bre<bra> a = a("constant", bra.b);
-   bre<brj> b = a("uniform", brj.a);
-   bre<bqv> c = a("biased_to_bottom", bqv.a);
-   bre<bqw> d = a("clamped", bqw.a);
-   bre<brk> e = a("weighted_list", brk.a);
-   bre<bqy> f = a("clamped_normal", bqy.a);
+public class bre extends brg {
+   public static final bre a = new bre(0.0F);
+   public static final MapCodec<bre> b = Codec.FLOAT.fieldOf("value").xmap(bre::a, bre::d);
+   private final float d;
 
-   MapCodec<P> codec();
+   public static bre a(float $$0) {
+      return $$0 == 0.0F ? a : new bre($$0);
+   }
 
-   static <P extends brd> bre<P> a(String $$0, MapCodec<P> $$1) {
-      return kc.a(lx.K, $$0, () -> $$1);
+   private bre(float $$0) {
+      this.d = $$0;
+   }
+
+   public float d() {
+      return this.d;
+   }
+
+   @Override
+   public float a(azs $$0) {
+      return this.d;
+   }
+
+   @Override
+   public float a() {
+      return this.d;
+   }
+
+   @Override
+   public float b() {
+      return this.d;
+   }
+
+   @Override
+   public brh<?> c() {
+      return brh.a;
+   }
+
+   @Override
+   public String toString() {
+      return Float.toString(this.d);
    }
 }

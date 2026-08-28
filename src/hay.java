@@ -1,17 +1,11 @@
-public abstract class hay extends hax implements hbq {
-   private boolean n;
+import java.util.function.Function;
 
-   protected hay(awj $$0, awl $$1, azr $$2) {
-      super($$0, $$1, $$2);
-   }
+public interface hay {
+   void a(hay.a var1);
 
-   @Override
-   public boolean m() {
-      return this.n;
-   }
+   haf a(hao var1, Function<ham, gyd> var2, hau var3);
 
-   protected final void n() {
-      this.n = true;
-      this.i = false;
+   public interface a {
+      hay a(ali var1);
    }
 }

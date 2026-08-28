@@ -1,28 +1,23 @@
 import javax.annotation.Nullable;
 
-public record aer(String b, @Nullable String c) implements zo<acd> {
-   public static final zf<we, aer> a = zo.a(aer::a, aer::new);
-
-   private aer(we $$0) {
-      this($$0.p(), $$0.c(we::p));
-   }
-
-   private void a(we $$0) {
-      $$0.a(this.b);
-      $$0.a(this.c, we::a);
-   }
+public record aer(int b, jq<bth> c) implements zp<ace> {
+   public static final zg<wt, aer> a = zg.a(ze.h, aer::b, bth.b, aer::e, aer::new);
 
    @Override
-   public zq<aer> a() {
-      return ags.ch;
+   public zr<aer> a() {
+      return agt.al;
    }
 
-   public void a(acd $$0) {
+   public void a(ace $$0) {
       $$0.a(this);
    }
 
    @Nullable
-   public String e() {
+   public bue a(dfb $$0) {
+      return $$0.a(this.b);
+   }
+
+   public jq<bth> e() {
       return this.c;
    }
 }

@@ -1,29 +1,45 @@
-public class afp implements zo<acd> {
-   public static final zf<we, afp> a = zo.a(afp::a, afp::new);
-   private final int b;
+public class afp implements zp<ace> {
+   public static final zg<wf, afp> a = zp.a(afp::a, afp::new);
+   private final float b;
+   private final int c;
+   private final float d;
 
-   public afp(int $$0) {
+   public afp(float $$0, int $$1, float $$2) {
       this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
    }
 
-   private afp(we $$0) {
-      this.b = $$0.readByte();
+   private afp(wf $$0) {
+      this.b = $$0.readFloat();
+      this.c = $$0.l();
+      this.d = $$0.readFloat();
    }
 
-   private void a(we $$0) {
-      $$0.l(this.b);
+   private void a(wf $$0) {
+      $$0.a(this.b);
+      $$0.c(this.c);
+      $$0.a(this.d);
    }
 
    @Override
-   public zq<afp> a() {
-      return ags.aI;
+   public zr<afp> a() {
+      return agt.aH;
    }
 
-   public void a(acd $$0) {
+   public void a(ace $$0) {
       $$0.a(this);
    }
 
-   public int b() {
+   public float b() {
       return this.b;
+   }
+
+   public int e() {
+      return this.c;
+   }
+
+   public float f() {
+      return this.d;
    }
 }
