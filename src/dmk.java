@@ -1,33 +1,36 @@
 import com.mojang.serialization.MapCodec;
 
-public class dmk extends dem {
-   public static final MapCodec<dmk> c = b(dmk::new);
+public class dmk extends dfa {
+   public static final MapCodec<dmk> b = b(dmk::new);
+   public static final dsu c = dst.z;
 
    @Override
-   public MapCodec<dmk> a() {
-      return c;
+   protected MapCodec<? extends dmk> a() {
+      return b;
    }
 
-   public dmk(dsb.d $$0) {
-      super($$0, 2.0F);
-   }
-
-   @Override
-   protected dsc a(dsc $$0, je $$1, dsc $$2, dbz $$3, iz $$4, iz $$5) {
-      return this.a($$0, $$3, $$4) ? this.o() : dfb.a.o();
+   protected dmk(dsc.d $$0) {
+      super($$0);
+      this.k(this.E.b().a(c, Boolean.valueOf(false)));
    }
 
    @Override
-   protected boolean a(dsc $$0, dcb $$1, iz $$2) {
-      return m($$1.a_($$2.d()));
-   }
-
-   public static boolean m(dsc $$0) {
-      return $$0.a(awp.aT);
+   protected dsd a(dsd $$0, je $$1, dsd $$2, dca $$3, iz $$4, iz $$5) {
+      return $$1 == je.b ? $$0.a(c, Boolean.valueOf(m($$2))) : super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
    @Override
-   protected boolean f(dsc $$0) {
-      return true;
+   public dsd a(cyb $$0) {
+      dsd $$1 = $$0.q().a_($$0.a().c());
+      return this.o().a(c, Boolean.valueOf(m($$1)));
+   }
+
+   private static boolean m(dsd $$0) {
+      return $$0.a(awp.bz);
+   }
+
+   @Override
+   protected void a(dse.a<dfa, dsd> $$0) {
+      $$0.a(c);
    }
 }

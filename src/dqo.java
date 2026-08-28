@@ -1,117 +1,97 @@
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Dynamic;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import com.google.common.annotations.VisibleForTesting;
 
-public class dqo extends dph implements dwx.b<dxe.b>, dxe {
-   private static final Logger b = LogUtils.getLogger();
-   private dxe.a c;
-   private final dxe.b d;
-   private final dxe.d e = this.b();
-   private int h;
+public class dqo extends dpi implements dwy.b<dqo.a> {
+   private final dqo.a a;
 
-   protected dqo(dpj<?> $$0, iz $$1, dsc $$2) {
-      super($$0, $$1, $$2);
-      this.c = new dxe.a();
-      this.d = new dxe.b(this);
+   public dqo(iz $$0, dsd $$1) {
+      super(dpk.K, $$0, $$1);
+      this.a = new dqo.a($$1, new dws($$0));
    }
 
-   public dqo(iz $$0, dsc $$1) {
-      this(dpj.I, $$0, $$1);
-   }
-
-   public dxe.d b() {
-      return new dqo.a(this.ay_());
+   public static void a(dbz $$0, iz $$1, dsd $$2, dqo $$3) {
+      $$3.a.d().a($$0, $$1, $$0.E_(), true);
    }
 
    @Override
    protected void a(us $$0, jk.a $$1) {
       super.a($$0, $$1);
-      this.h = $$0.h("last_vibration_frequency");
-      if ($$0.b("listener", 10)) {
-         dxe.a.a.parse(new Dynamic(vg.a, $$0.p("listener"))).resultOrPartial(b::error).ifPresent($$0x -> this.c = $$0x);
-      }
+      this.a.b.a($$0);
    }
 
    @Override
    protected void b(us $$0, jk.a $$1) {
+      this.a.b.b($$0);
       super.b($$0, $$1);
-      $$0.a("last_vibration_frequency", this.h);
-      dxe.a.a.encodeStart(vg.a, this.c).resultOrPartial(b::error).ifPresent($$1x -> $$0.a("listener", $$1x));
    }
 
-   @Override
-   public dxe.a gs() {
-      return this.c;
+   public dqo.a b() {
+      return this.a;
    }
 
-   @Override
-   public dxe.d gt() {
-      return this.e;
-   }
+   public static class a implements dwy {
+      public static final int a = 8;
+      final dlv b;
+      private final dsd c;
+      private final dxa d;
 
-   public int d() {
-      return this.h;
-   }
-
-   public void a(int $$0) {
-      this.h = $$0;
-   }
-
-   public dxe.b f() {
-      return this.d;
-   }
-
-   protected class a implements dxe.d {
-      public static final int b = 8;
-      protected final iz c;
-      private final dwz a;
-
-      public a(final iz $$1) {
-         this.c = $$1;
-         this.a = new dwr($$1);
+      public a(dsd $$0, dxa $$1) {
+         this.c = $$0;
+         this.d = $$1;
+         this.b = dlv.a();
       }
 
       @Override
-      public int a() {
+      public dxa a() {
+         return this.d;
+      }
+
+      @Override
+      public int b() {
          return 8;
       }
 
       @Override
-      public dwz b() {
-         return this.a;
+      public dwy.a c() {
+         return dwy.a.b;
       }
 
       @Override
-      public boolean d() {
-         return true;
-      }
+      public boolean a(arf $$0, ji<dww> $$1, dww.a $$2, evs $$3) {
+         if ($$1.a(dww.p) && $$2.a() instanceof btq $$4) {
+            if (!$$4.eI()) {
+               int $$5 = $$4.ej();
+               if ($$4.eh() && $$5 > 0) {
+                  this.b.a(iz.a($$3.a(je.b, 0.5)), $$5);
+                  this.a($$0, $$4);
+               }
 
-      @Override
-      public boolean a(arf $$0, iz $$1, ji<dwv> $$2, @Nullable dwv.a $$3) {
-         return !$$1.equals(this.c) || !$$2.a(dwv.f) && !$$2.a(dwv.i) ? dls.n(dqo.this.n()) : false;
-      }
-
-      @Override
-      public void a(arf $$0, iz $$1, ji<dwv> $$2, @Nullable bsu $$3, @Nullable bsu $$4, float $$5) {
-         dsc $$6 = dqo.this.n();
-         if (dls.n($$6)) {
-            dqo.this.a(dxe.a_($$2));
-            int $$7 = dxe.a_($$5, this.a());
-            if ($$6.b() instanceof dls $$8) {
-               $$8.a($$3, $$0, this.c, $$6, $$7, dqo.this.d());
+               $$4.eH();
+               this.d.a($$0).ifPresent($$1x -> this.a($$0, iz.a($$1x), this.c, $$0.E_()));
             }
+
+            return true;
+         } else {
+            return false;
          }
       }
 
-      @Override
-      public void e() {
-         dqo.this.e();
+      @VisibleForTesting
+      public dlv d() {
+         return this.b;
       }
 
-      @Override
-      public boolean f() {
-         return true;
+      private void a(arf $$0, iz $$1, dsd $$2, azh $$3) {
+         $$0.a($$1, $$2.a(dls.b, Boolean.valueOf(true)), 3);
+         $$0.a($$1, $$2.b(), 8);
+         $$0.a(li.I, (double)$$1.u() + 0.5, (double)$$1.v() + 1.15, (double)$$1.w() + 0.5, 2, 0.2, 0.0, 0.2, 0.0);
+         $$0.a(null, $$1, awa.vX, awb.e, 2.0F, 0.6F + $$3.i() * 0.4F);
+      }
+
+      private void a(dbz $$0, btq $$1) {
+         if ($$1.em() instanceof arg $$3) {
+            bro $$4 = $$1.eC() == null ? $$0.aj().a((cmy)$$3) : $$1.eC();
+            am.Z.a($$3, $$1, $$4);
+         }
       }
    }
 }

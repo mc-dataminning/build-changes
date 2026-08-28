@@ -1,34 +1,37 @@
 import com.google.common.collect.ImmutableMap;
+import java.util.Optional;
 
-public class bvp extends bvi<cgz> {
-   private static final int c = 60;
-   private static final int d = 100;
-   private int e;
+public class bvp extends bvj<btq> {
+   private final ccu<Integer> c;
 
-   public bvp() {
-      super(ImmutableMap.of(cct.m, ccu.b), 100);
+   public bvp(ccu<Integer> $$0) {
+      super(ImmutableMap.of($$0, ccv.a));
+      this.c = $$0;
    }
 
-   protected boolean a(arf $$0, cgz $$1) {
-      return $$1.ar() == bub.a;
+   private Optional<Integer> b(btq $$0) {
+      return $$0.dS().c(this.c);
    }
 
-   protected boolean a(arf $$0, cgz $$1, long $$2) {
-      return this.e < 60;
+   @Override
+   protected boolean a(long $$0) {
+      return false;
    }
 
-   protected void b(arf $$0, cgz $$1, long $$2) {
-      if (!$$1.bi()) {
-         $$1.b(bub.i);
-         this.e = 0;
-      }
+   @Override
+   protected boolean a(arf $$0, btq $$1, long $$2) {
+      Optional<Integer> $$3 = this.b($$1);
+      return $$3.isPresent() && $$3.get() > 0;
    }
 
-   protected void c(arf $$0, cgz $$1, long $$2) {
-      $$1.b(bub.a);
+   @Override
+   protected void c(arf $$0, btq $$1, long $$2) {
+      Optional<Integer> $$3 = this.b($$1);
+      $$1.dS().a(this.c, $$3.get() - 1);
    }
 
-   protected void d(arf $$0, cgz $$1, long $$2) {
-      this.e++;
+   @Override
+   protected void b(arf $$0, btq $$1, long $$2) {
+      $$1.dS().b(this.c);
    }
 }

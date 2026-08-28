@@ -1,39 +1,40 @@
-import java.util.List;
+import java.util.EnumSet;
 
-public class ccm<T extends btr & btv> extends can {
-   private static final int a = 10;
-   private final T b;
-   private final boolean c;
-   private int d;
+public class ccm extends cco {
+   private final bun a;
+   private btq b;
+   private int c;
 
-   public ccm(T $$0, boolean $$1) {
-      this.b = $$0;
-      this.c = $$1;
+   public ccm(bun $$0) {
+      super($$0, false);
+      this.a = $$0;
+      this.a(EnumSet.of(cao.a.d));
    }
 
    @Override
    public boolean a() {
-      return this.b.dP().ab().b(dbu.O) && this.h();
-   }
-
-   private boolean h() {
-      return this.b.em() != null && this.b.em().ak() == bta.by && this.b.en() > this.d;
+      if (this.a.s() && !this.a.gq()) {
+         btq $$0 = this.a.P_();
+         if ($$0 == null) {
+            return false;
+         } else {
+            this.b = $$0.eo();
+            int $$1 = $$0.ep();
+            return $$1 != this.c && this.a(this.b, ceh.a) && this.a.a(this.b, $$0);
+         }
+      } else {
+         return false;
+      }
    }
 
    @Override
    public void c() {
-      this.d = this.b.en();
-      this.b.aa_();
-      if (this.c) {
-         this.i().stream().filter($$0 -> $$0 != this.b).map($$0 -> (btv)$$0).forEach(btv::aa_);
+      this.e.h(this.b);
+      btq $$0 = this.a.P_();
+      if ($$0 != null) {
+         this.c = $$0.ep();
       }
 
       super.c();
-   }
-
-   private List<? extends btr> i() {
-      double $$0 = this.b.g(bux.k);
-      evm $$1 = evm.a(this.b.dn()).c($$0, 10.0, $$0);
-      return this.b.dP().a((Class<? extends btr>)this.b.getClass(), $$1, bsz.f);
    }
 }

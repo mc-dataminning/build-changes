@@ -1,15 +1,12 @@
-public interface dcf extends dcb {
-   long ak();
+import java.util.Optional;
+import java.util.function.Predicate;
 
-   default float aq() {
-      return dvu.i[this.D_().b(this.ak())];
-   }
+public interface dcf {
+   boolean a(iz var1, Predicate<dsd> var2);
 
-   default float f(float $$0) {
-      return this.D_().a(this.ak());
-   }
+   boolean b(iz var1, Predicate<enw> var2);
 
-   default int ar() {
-      return this.D_().b(this.ak());
-   }
+   <T extends dpi> Optional<T> a(iz var1, dpk<T> var2);
+
+   iz a(dxv.a var1, iz var2);
 }

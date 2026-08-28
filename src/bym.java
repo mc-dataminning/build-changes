@@ -1,33 +1,33 @@
 import com.mojang.datafixers.kinds.App;
-import java.util.Optional;
 import java.util.function.Function;
+import java.util.function.Predicate;
 
 public class bym {
-   private static final int a = 10;
-   private static final int b = 7;
+   private static final int a = 16;
 
-   public static bwt<bty> a(float $$0) {
-      return a($$0, 10, 7);
+   public static bvk<btq> a(Predicate<ji<cex>> $$0, ccu<jh> $$1) {
+      return byw.a((Function<byw.b<btq>, ? extends App<byw.c<btq>, byz<btq>>>)($$2 -> $$2.group($$2.b($$1)).apply($$2, $$2x -> ($$3, $$4, $$5) -> {
+               jh $$6 = $$2.b($$2x);
+               iz $$7 = $$6.b();
+               if ($$3.af() == $$6.a() && $$7.a($$4.dn(), 16.0)) {
+                  arf $$8 = $$3.o().a($$6.a());
+                  if ($$8 == null || !$$8.y().a($$7, $$0)) {
+                     $$2x.b();
+                  } else if (a($$8, $$7, $$4)) {
+                     $$2x.b();
+                     $$3.y().b($$7);
+                     agt.c($$3, $$7);
+                  }
+
+                  return true;
+               } else {
+                  return false;
+               }
+            })));
    }
 
-   public static bwt<bty> a(float $$0, int $$1, int $$2) {
-      return byv.a((Function<byv.b<bty>, ? extends App<byv.c<bty>, byy<bty>>>)($$3 -> $$3.group($$3.c(cct.m)).apply($$3, $$3x -> ($$4, $$5, $$6) -> {
-               iz $$7 = $$5.dp();
-               evr $$8;
-               if ($$4.c($$7)) {
-                  $$8 = cen.a($$5, $$1, $$2);
-               } else {
-                  kb $$9 = kb.a($$7);
-                  kb $$10 = bvk.a($$4, $$9, 2);
-                  if ($$10 != $$9) {
-                     $$8 = cek.a($$5, $$1, $$2, evr.c($$10.q()), (float) (Math.PI / 2));
-                  } else {
-                     $$8 = cen.a($$5, $$1, $$2);
-                  }
-               }
-
-               $$3x.a(Optional.ofNullable($$8).map($$1xxxx -> new ccw($$1xxxx, $$0, 0)));
-               return true;
-            })));
+   private static boolean a(arf $$0, iz $$1, btq $$2) {
+      dsd $$3 = $$0.a_($$1);
+      return $$3.a(awp.R) && $$3.c(det.c) && !$$2.fL();
    }
 }

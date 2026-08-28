@@ -1,140 +1,125 @@
 import com.mojang.serialization.MapCodec;
+import javax.annotation.Nullable;
 
-public abstract class deo extends dez implements dma {
-   protected static final ewk a = dez.a(0.0, 0.0, 0.0, 16.0, 2.0, 16.0);
-   protected static final ewk b = dez.a(0.0, 0.0, 0.0, 16.0, 8.0, 16.0);
-   public static final dst c = dss.C;
-   private final boolean d;
+public abstract class deo extends dfa {
+   protected static final ewl a = dfa.a(1.0, 0.0, 1.0, 15.0, 0.5, 15.0);
+   protected static final ewl b = dfa.a(1.0, 0.0, 1.0, 15.0, 1.0, 15.0);
+   protected static final evn c = new evn(0.0625, 0.0, 0.0625, 0.9375, 0.25, 0.9375);
+   protected final dss d;
 
-   public static boolean a(dby $$0, iz $$1) {
-      return g($$0.a_($$1));
-   }
-
-   public static boolean g(dsc $$0) {
-      return $$0.a(awp.N) && $$0.b() instanceof deo;
-   }
-
-   protected deo(boolean $$0, dsb.d $$1) {
-      super($$1);
-      this.d = $$0;
+   protected deo(dsc.d $$0, dss $$1) {
+      super($$0.a($$1.g()));
+      this.d = $$1;
    }
 
    @Override
    protected abstract MapCodec<? extends deo> a();
 
-   public boolean b() {
-      return this.d;
+   @Override
+   protected ewl a(dsd $$0, dbf $$1, iz $$2, evx $$3) {
+      return this.g($$0) > 0 ? a : b;
+   }
+
+   protected int b() {
+      return 20;
    }
 
    @Override
-   protected ewk a(dsc $$0, dbe $$1, iz $$2, evw $$3) {
-      dtg $$4 = $$0.a(this) ? $$0.c(this.c()) : null;
-      return $$4 != null && $$4.b() ? b : a;
+   public boolean a(dsd $$0) {
+      return true;
    }
 
    @Override
-   protected boolean a(dsc $$0, dcb $$1, iz $$2) {
-      return c($$1, $$2.d());
+   protected dsd a(dsd $$0, je $$1, dsd $$2, dca $$3, iz $$4, iz $$5) {
+      return $$1 == je.a && !$$0.a($$3, $$4) ? dfc.a.o() : super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
    @Override
-   protected void b(dsc $$0, dby $$1, iz $$2, dsc $$3, boolean $$4) {
-      if (!$$3.a($$0.b())) {
-         this.a($$0, $$1, $$2, $$4);
+   protected boolean a(dsd $$0, dcc $$1, iz $$2) {
+      iz $$3 = $$2.d();
+      return c($$1, $$3) || a($$1, $$3, je.b);
+   }
+
+   @Override
+   protected void a(dsd $$0, arf $$1, iz $$2, azh $$3) {
+      int $$4 = this.g($$0);
+      if ($$4 > 0) {
+         this.a(null, $$1, $$2, $$0, $$4);
       }
    }
 
-   protected dsc a(dsc $$0, dby $$1, iz $$2, boolean $$3) {
-      $$0 = this.a($$1, $$2, $$0, true);
-      if (this.d) {
-         $$1.a($$0, $$2, this, $$2, $$3);
-      }
-
-      return $$0;
-   }
-
    @Override
-   protected void a(dsc $$0, dby $$1, iz $$2, dez $$3, iz $$4, boolean $$5) {
-      if (!$$1.B && $$1.a_($$2).a(this)) {
-         dtg $$6 = $$0.c(this.c());
-         if (a($$2, $$1, $$6)) {
-            c($$0, $$1, $$2);
-            $$1.a($$2, $$5);
-         } else {
-            this.a($$0, $$1, $$2, $$3);
+   protected void a(dsd $$0, dbz $$1, iz $$2, bsv $$3) {
+      if (!$$1.B) {
+         int $$4 = this.g($$0);
+         if ($$4 == 0) {
+            this.a($$3, $$1, $$2, $$0, $$4);
          }
       }
    }
 
-   private static boolean a(iz $$0, dby $$1, dtg $$2) {
-      if (!c($$1, $$0.d())) {
-         return true;
-      } else {
-         switch ($$2) {
-            case c:
-               return !c($$1, $$0.h());
-            case d:
-               return !c($$1, $$0.g());
-            case e:
-               return !c($$1, $$0.e());
-            case f:
-               return !c($$1, $$0.f());
-            default:
-               return false;
-         }
+   private void a(@Nullable bsv $$0, dbz $$1, iz $$2, dsd $$3, int $$4) {
+      int $$5 = this.b($$1, $$2);
+      boolean $$6 = $$4 > 0;
+      boolean $$7 = $$5 > 0;
+      if ($$4 != $$5) {
+         dsd $$8 = this.a($$3, $$5);
+         $$1.a($$2, $$8, 2);
+         this.a($$1, $$2);
+         $$1.b($$2, $$3, $$8);
       }
-   }
 
-   protected void a(dsc $$0, dby $$1, iz $$2, dez $$3) {
-   }
+      if (!$$7 && $$6) {
+         $$1.a(null, $$2, this.d.l(), awb.e);
+         $$1.a($$0, dww.e, $$2);
+      } else if ($$7 && !$$6) {
+         $$1.a(null, $$2, this.d.m(), awb.e);
+         $$1.a($$0, dww.a, $$2);
+      }
 
-   protected dsc a(dby $$0, iz $$1, dsc $$2, boolean $$3) {
-      if ($$0.B) {
-         return $$2;
-      } else {
-         dtg $$4 = $$2.c(this.c());
-         return new dkz($$0, $$1, $$2).a($$0.C($$1), $$3, $$4).c();
+      if ($$7) {
+         $$1.a(new iz($$2), this, this.b());
       }
    }
 
    @Override
-   protected void a(dsc $$0, dby $$1, iz $$2, dsc $$3, boolean $$4) {
-      if (!$$4) {
+   protected void a(dsd $$0, dbz $$1, iz $$2, dsd $$3, boolean $$4) {
+      if (!$$4 && !$$0.a($$3.b())) {
+         if (this.g($$0) > 0) {
+            this.a($$1, $$2);
+         }
+
          super.a($$0, $$1, $$2, $$3, $$4);
-         if ($$0.c(this.c()).b()) {
-            $$1.a($$2.c(), this);
-         }
-
-         if (this.d) {
-            $$1.a($$2, this);
-            $$1.a($$2.d(), this);
-         }
       }
    }
 
-   @Override
-   public dsc a(cya $$0) {
-      env $$1 = $$0.q().b_($$0.a());
-      boolean $$2 = $$1.a() == enw.c;
-      dsc $$3 = super.o();
-      je $$4 = $$0.g();
-      boolean $$5 = $$4 == je.f || $$4 == je.e;
-      return $$3.a(this.c(), $$5 ? dtg.b : dtg.a).a(c, Boolean.valueOf($$2));
-   }
-
-   public abstract dtf<dtg> c();
-
-   @Override
-   protected dsc a(dsc $$0, je $$1, dsc $$2, dbz $$3, iz $$4, iz $$5) {
-      if ($$0.c(c)) {
-         $$3.a($$4, enw.c, enw.c.a($$3));
-      }
-
-      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   protected void a(dbz $$0, iz $$1) {
+      $$0.a($$1, this);
+      $$0.a($$1.d(), this);
    }
 
    @Override
-   protected env b_(dsc $$0) {
-      return $$0.c(c) ? enw.c.a(false) : super.b_($$0);
+   protected int a(dsd $$0, dbf $$1, iz $$2, je $$3) {
+      return this.g($$0);
    }
+
+   @Override
+   protected int b(dsd $$0, dbf $$1, iz $$2, je $$3) {
+      return $$3 == je.b ? this.g($$0) : 0;
+   }
+
+   @Override
+   protected boolean e_(dsd $$0) {
+      return true;
+   }
+
+   protected static int a(dbz $$0, evn $$1, Class<? extends bsv> $$2) {
+      return $$0.a($$2, $$1, bta.f.and($$0x -> !$$0x.r_())).size();
+   }
+
+   protected abstract int b(dbz var1, iz var2);
+
+   protected abstract int g(dsd var1);
+
+   protected abstract dsd a(dsd var1, int var2);
 }

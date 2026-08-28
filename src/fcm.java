@@ -1,224 +1,245 @@
-import com.google.common.collect.Lists;
 import com.mojang.logging.LogUtils;
+import java.text.DateFormat;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Date;
 import java.util.List;
-import java.util.Map.Entry;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
 import javax.annotation.Nullable;
 import org.slf4j.Logger;
 
-public class fcm extends gvg {
-   private static final alf a = new alf("widget/slot_frame");
-   private static final Logger b = LogUtils.getLogger();
-   private static final int c = 80;
-   private final fnd B;
+public class fcm extends gvh {
+   static final Logger a = LogUtils.getLogger();
+   private static final xp b = xp.c("mco.configure.world.backup");
+   static final xp c = xp.c("mco.backup.button.restore");
+   static final xp B = xp.c("mco.backup.changes.tooltip");
+   private static final xp C = xp.c("mco.backup.nobackups");
+   private static final String D = "uploaded";
+   private static final int E = 8;
+   final fcp F;
+   List<fav> G = Collections.emptyList();
    @Nullable
-   private fbf C;
-   private final long D;
-   private final xp[] E = new xp[]{xp.c("mco.brokenworld.message.line1"), xp.c("mco.brokenworld.message.line2")};
-   private int F;
-   private final List<Integer> G = Lists.newArrayList();
-   private int H;
+   fcm.a H;
+   final fks I = new fks(this);
+   private final int J;
+   @Nullable
+   fhf K;
+   final fbg L;
+   boolean M = false;
 
-   public fcm(fnd $$0, long $$1, boolean $$2) {
-      super($$2 ? xp.c("mco.brokenworld.minigame.title") : xp.c("mco.brokenworld.title"));
-      this.B = $$0;
-      this.D = $$1;
+   public fcm(fcp $$0, fbg $$1, int $$2) {
+      super(b);
+      this.F = $$0;
+      this.L = $$1;
+      this.J = $$2;
    }
 
    @Override
    public void aM_() {
-      this.F = this.n / 2 - 150;
-      this.c(fhe.a(xo.k, $$0 -> this.d()).a((this.n - 150) / 2, g(13) - 5, 150, 20).a());
-      if (this.C == null) {
-         this.a(this.D);
-      } else {
-         this.E();
+      this.I.a(b, this.p);
+      this.H = this.I.c(new fcm.a());
+      fkw $$0 = this.I.b(fkw.e().a(8));
+      this.K = $$0.a(fhf.a(xp.c("mco.backup.button.download"), $$0x -> this.F()).a());
+      this.K.j = false;
+      $$0.a(fhf.a(xo.k, $$0x -> this.d()).a());
+      this.I.a($$1 -> {
+         fhd var10000 = this.c($$1);
+      });
+      this.c();
+      this.E();
+   }
+
+   @Override
+   public void a(fgs $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      if (this.M && this.H != null) {
+         $$0.a(this.p, C, this.n / 2 - this.p.a(C) / 2, this.H.D() + this.H.v() / 2 - 9 / 2, -1, false);
       }
    }
 
    @Override
-   public xp i() {
-      return xs.a(Stream.concat(Stream.of(this.l), Stream.of(this.E)).collect(Collectors.toList()), xo.v);
+   protected void c() {
+      this.I.a();
+      if (this.H != null) {
+         this.H.a(this.n, this.I);
+      }
    }
 
    private void E() {
-      for (Entry<Integer, fbm> $$0 : this.C.i.entrySet()) {
-         int $$1 = $$0.getKey();
-         boolean $$2 = $$1 != this.C.n || this.C.m == fbf.d.b;
-         fhe $$3;
-         if ($$2) {
-            $$3 = fhe.a(xp.c("mco.brokenworld.play"), $$1x -> this.m.a(new fcv(this.B, new fen(this.C.a, $$1, this::b)))).a(this.a($$1), g(8), 80, 20).a();
-            $$3.j = !this.C.i.get($$1).n;
-         } else {
-            $$3 = fhe.a(xp.c("mco.brokenworld.download"), $$1x -> {
-               xp $$2x = xp.c("mco.configure.world.restore.download.question.line1");
-               xp $$3x = xp.c("mco.configure.world.restore.download.question.line2");
-               this.m.a(new fcu($$1xx -> {
-                  if ($$1xx) {
-                     this.b($$1);
-                  } else {
-                     this.m.a(this);
-                  }
-               }, fcu.a.b, $$2x, $$3x, true));
-            }).a(this.a($$1), g(8), 80, 20).a();
-         }
+      (new Thread("Realms-fetch-backups") {
+         @Override
+         public void run() {
+            fap $$0 = fap.a();
 
-         if (this.G.contains($$1)) {
-            $$3.j = false;
-            $$3.b(xp.c("mco.brokenworld.downloaded"));
-         }
-
-         this.c($$3);
-      }
-   }
-
-   @Override
-   public void e() {
-      this.H++;
-   }
-
-   @Override
-   public void a(fgr $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      $$0.a(this.p, this.l, this.n / 2, 17, -1);
-
-      for (int $$4 = 0; $$4 < this.E.length; $$4++) {
-         $$0.a(this.p, this.E[$$4], this.n / 2, g(-1) + 3 + $$4 * 12, -6250336);
-      }
-
-      if (this.C != null) {
-         for (Entry<Integer, fbm> $$5 : this.C.i.entrySet()) {
-            if ($$5.getValue().m != null && $$5.getValue().l != -1L) {
-               this.a(
-                  $$0,
-                  this.a($$5.getKey()),
-                  g(1) + 5,
-                  $$1,
-                  $$2,
-                  this.C.n == $$5.getKey() && !this.F(),
-                  $$5.getValue().a($$5.getKey()),
-                  $$5.getKey(),
-                  $$5.getValue().l,
-                  $$5.getValue().m,
-                  $$5.getValue().n
-               );
-            } else {
-               this.a(
-                  $$0,
-                  this.a($$5.getKey()),
-                  g(1) + 5,
-                  $$1,
-                  $$2,
-                  this.C.n == $$5.getKey() && !this.F(),
-                  $$5.getValue().a($$5.getKey()),
-                  $$5.getKey(),
-                  -1L,
-                  null,
-                  $$5.getValue().n
-               );
-            }
-         }
-      }
-   }
-
-   private int a(int $$0) {
-      return this.F + ($$0 - 1) * 110;
-   }
-
-   private void a(long $$0) {
-      new Thread(() -> {
-         fao $$1 = fao.a();
-
-         try {
-            this.C = $$1.a($$0);
-            this.E();
-         } catch (fcb var5) {
-            b.error("Couldn't get own world", var5);
-            this.m.a(new fcs(var5, this.B));
-         }
-      }).start();
-   }
-
-   public void b() {
-      new Thread(() -> {
-         fao $$0 = fao.a();
-         if (this.C.e == fbf.c.a) {
-            this.m.execute(() -> this.m.a(new fcv(this, new feg(this.C, this, true, this.m))));
-         } else {
             try {
-               fbf $$1 = $$0.a(this.D);
-               this.m.execute(() -> faj.a($$1, this));
-            } catch (fcb var3) {
-               b.error("Couldn't get own world", var3);
-               this.m.execute(() -> this.m.a(this.B));
+               List<fav> $$1 = $$0.e(fcm.this.L.a).a;
+               fcm.this.m.execute(() -> {
+                  fcm.this.G = $$1;
+                  fcm.this.M = fcm.this.G.isEmpty();
+                  if (!fcm.this.M && fcm.this.K != null) {
+                     fcm.this.K.j = true;
+                  }
+
+                  if (fcm.this.H != null) {
+                     fcm.this.H.aD_().clear();
+
+                     for (fav $$1x : fcm.this.G) {
+                        fcm.this.H.a($$1x);
+                     }
+                  }
+               });
+            } catch (fcc var3) {
+               fcm.a.error("Couldn't request backups", var3);
             }
          }
       }).start();
-   }
-
-   private void b(int $$0) {
-      fao $$1 = fao.a();
-
-      try {
-         fbv $$2 = $$1.b(this.C.a, $$0);
-         fcr $$3 = new fcr(this, $$2, this.C.a($$0), $$1x -> {
-            if ($$1x) {
-               this.G.add($$0);
-               this.p();
-               this.E();
-            } else {
-               this.m.a(this);
-            }
-         });
-         this.m.a($$3);
-      } catch (fcb var5) {
-         b.error("Couldn't download world data", var5);
-         this.m.a(new fcs(var5, this));
-      }
    }
 
    @Override
    public void d() {
-      this.m.a(this.B);
+      this.m.a(this.F);
    }
 
-   private boolean F() {
-      return this.C != null && this.C.m == fbf.d.b;
+   private void F() {
+      xp $$0 = xp.c("mco.configure.world.restore.download.question.line1");
+      xp $$1 = xp.c("mco.configure.world.restore.download.question.line2");
+      this.m.a(new fcv($$0x -> {
+         if ($$0x) {
+            this.m.a(new fcw(this.F.f(), new fee(this.L.a, this.J, this.L.c + " (" + this.L.i.get(this.L.n).a(this.L.n) + ")", this)));
+         } else {
+            this.m.a(this);
+         }
+      }, fcv.a.b, $$0, $$1, true));
    }
 
-   private void a(fgr $$0, int $$1, int $$2, int $$3, int $$4, boolean $$5, String $$6, int $$7, long $$8, @Nullable String $$9, boolean $$10) {
-      alf $$11;
-      if ($$10) {
-         $$11 = fch.a;
-      } else if ($$9 != null && $$8 != -1L) {
-         $$11 = fdu.a(String.valueOf($$8), $$9);
-      } else if ($$7 == 1) {
-         $$11 = fch.b;
-      } else if ($$7 == 2) {
-         $$11 = fch.c;
-      } else if ($$7 == 3) {
-         $$11 = fch.d;
-      } else {
-         $$11 = fdu.a(String.valueOf(this.C.p), this.C.q);
+   class a extends fhl<fcm.b> {
+      private static final int m = 36;
+
+      public a() {
+         super(ffg.Q(), fcm.this.n, fcm.this.I.d(), fcm.this.I.c(), 36);
       }
 
-      if (!$$5) {
-         $$0.a(0.56F, 0.56F, 0.56F, 1.0F);
-      } else if ($$5) {
-         float $$17 = 0.9F + 0.1F * ayz.b((float)this.H * 0.2F);
-         $$0.a($$17, $$17, $$17, 1.0F);
+      public void a(fav $$0) {
+         this.b(fcm.this.new b($$0));
       }
 
-      $$0.a($$11, $$1 + 3, $$2 + 3, 0.0F, 0.0F, 74, 74, 74, 74);
-      if ($$5) {
-         $$0.a(1.0F, 1.0F, 1.0F, 1.0F);
-      } else {
-         $$0.a(0.56F, 0.56F, 0.56F, 1.0F);
+      @Override
+      public int a() {
+         return this.l() * 36 + this.f;
       }
 
-      $$0.a(a, $$1, $$2, 80, 80);
-      $$0.a(this.p, $$6, $$1 + 40, $$2 + 66, -1);
-      $$0.a(1.0F, 1.0F, 1.0F, 1.0F);
+      @Override
+      public int b() {
+         return 300;
+      }
+   }
+
+   class b extends fhl.a<fcm.b> {
+      private static final int b = 2;
+      private final fav c;
+      @Nullable
+      private fhf d;
+      @Nullable
+      private fhf e;
+      private final List<fhd> f = new ArrayList<>();
+
+      public b(final fav $$0) {
+         this.c = $$0;
+         this.a($$0);
+         if (!$$0.e.isEmpty()) {
+            this.e = fhf.a(fcm.B, $$0x -> fcm.this.m.a(new fcl(fcm.this, this.c)))
+               .a(8 + fcm.this.p.a(fcm.B))
+               .a($$0x -> xo.a(xp.a("mco.backup.narration", this.c()), (xp)$$0x.get()))
+               .a();
+            this.f.add(this.e);
+         }
+
+         if (!fcm.this.L.j) {
+            this.d = fhf.a(fcm.c, $$0x -> this.d()).a(8 + fcm.this.p.a(fcm.B)).a($$0x -> xo.a(xp.a("mco.backup.narration", this.c()), (xp)$$0x.get())).a();
+            this.f.add(this.d);
+         }
+      }
+
+      private void a(fav $$0) {
+         int $$1 = fcm.this.G.indexOf($$0);
+         if ($$1 != fcm.this.G.size() - 1) {
+            fav $$2 = fcm.this.G.get($$1 + 1);
+
+            for (String $$3 : $$0.d.keySet()) {
+               if (!$$3.contains("uploaded") && $$2.d.containsKey($$3)) {
+                  if (!$$0.d.get($$3).equals($$2.d.get($$3))) {
+                     this.a($$3);
+                  }
+               } else {
+                  this.a($$3);
+               }
+            }
+         }
+      }
+
+      private void a(String $$0) {
+         if ($$0.contains("uploaded")) {
+            String $$1 = DateFormat.getDateTimeInstance(3, 3).format(this.c.b);
+            this.c.e.put($$0, $$1);
+            this.c.a(true);
+         } else {
+            this.c.e.put($$0, this.c.d.get($$0));
+         }
+      }
+
+      private String c() {
+         return DateFormat.getDateTimeInstance(3, 3).format(this.c.b);
+      }
+
+      private void d() {
+         xp $$0 = fdw.a(this.c.b);
+         xp $$1 = xp.a("mco.configure.world.restore.question.line1", this.c(), $$0);
+         xp $$2 = xp.c("mco.configure.world.restore.question.line2");
+         fcm.this.m.a(new fcv($$0x -> {
+            if ($$0x) {
+               fcm.this.m.a(new fcw(fcm.this.F.f(), new fem(this.c, fcm.this.L.a, fcm.this.F)));
+            } else {
+               fcm.this.m.a(fcm.this);
+            }
+         }, fcv.a.a, $$1, $$2, true));
+      }
+
+      @Override
+      public List<? extends fjb> aD_() {
+         return this.f;
+      }
+
+      @Override
+      public List<? extends fkz> b() {
+         return this.f;
+      }
+
+      @Override
+      public void a(fgs $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
+         int $$10 = $$2 + $$5 / 2;
+         int $$11 = $$10 - 9 - 2;
+         int $$12 = $$10 + 2;
+         int $$13 = this.c.a() ? -8388737 : -1;
+         $$0.a(fcm.this.p, xp.a("mco.backup.entry", fdw.a(this.c.b)), $$3, $$11, $$13, false);
+         $$0.a(fcm.this.p, this.a(this.c.b), $$3, $$12, 5000268, false);
+         int $$14 = 0;
+         int $$15 = $$2 + $$5 / 2 - 10;
+         if (this.d != null) {
+            $$14 += this.d.x() + 8;
+            this.d.m($$3 + $$4 - $$14);
+            this.d.n($$15);
+            this.d.a($$0, $$6, $$7, $$9);
+         }
+
+         if (this.e != null) {
+            $$14 += this.e.x() + 8;
+            this.e.m($$3 + $$4 - $$14);
+            this.e.n($$15);
+            this.e.a($$0, $$6, $$7, $$9);
+         }
+      }
+
+      private String a(Date $$0) {
+         return DateFormat.getDateTimeInstance(3, 3).format($$0);
+      }
    }
 }

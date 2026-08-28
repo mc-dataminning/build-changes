@@ -1,25 +1,24 @@
 import org.joml.Matrix4f;
 
-public interface fpv {
-   static fpv a(ayl $$0) {
-      return new fpu($$0);
+public class fpv implements fpw {
+   private final ayl a;
+
+   public fpv(ayl $$0) {
+      this.a = $$0;
    }
 
-   static fpv a(crz $$0) {
-      if ($$0 instanceof cry $$1) {
-         return new fpt($$1.a());
-      } else {
-         throw new IllegalArgumentException("Unknown TooltipComponent");
-      }
+   @Override
+   public int a(fgq $$0) {
+      return $$0.a(this.a);
    }
 
-   int a();
-
-   int a(fgp var1);
-
-   default void a(fgp $$0, int $$1, int $$2, Matrix4f $$3, gdo.a $$4) {
+   @Override
+   public int a() {
+      return 10;
    }
 
-   default void a(fgp $$0, int $$1, int $$2, fgr $$3) {
+   @Override
+   public void a(fgq $$0, int $$1, int $$2, Matrix4f $$3, gdp.a $$4) {
+      $$0.a(this.a, (float)$$1, (float)$$2, -1, true, $$3, $$4, fgq.a.a, 0, 15728880);
    }
 }

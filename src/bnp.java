@@ -1,27 +1,91 @@
-import com.google.common.math.Quantiles;
-import com.google.common.math.Quantiles.ScaleAndIndexes;
-import it.unimi.dsi.fastutil.ints.Int2DoubleRBTreeMap;
-import it.unimi.dsi.fastutil.ints.Int2DoubleSortedMap;
-import it.unimi.dsi.fastutil.ints.Int2DoubleSortedMaps;
-import java.util.Comparator;
-import java.util.Map;
+import com.mojang.logging.LogUtils;
+import java.net.SocketAddress;
+import java.nio.file.Path;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class bnp {
-   public static final ScaleAndIndexes a = Quantiles.scale(100).indexes(new int[]{50, 75, 90, 99});
+public interface bnp {
+   bnp f = (bnp)(Runtime.class.getModule().getLayer().findModule("jdk.jfr").isPresent() ? bno.a() : new bnp.a());
 
-   private bnp() {
-   }
+   boolean a(bnn var1);
 
-   public static Map<Integer, Double> a(long[] $$0) {
-      return $$0.length == 0 ? Map.of() : a(a.compute($$0));
-   }
+   Path b();
 
-   public static Map<Integer, Double> a(double[] $$0) {
-      return $$0.length == 0 ? Map.of() : a(a.compute($$0));
-   }
+   boolean c();
 
-   private static Map<Integer, Double> a(Map<Integer, Double> $$0) {
-      Int2DoubleSortedMap $$1 = ac.a(new Int2DoubleRBTreeMap(Comparator.reverseOrder()), $$1x -> $$1x.putAll($$0));
-      return Int2DoubleSortedMaps.unmodifiable($$1);
+   boolean d();
+
+   void a(float var1);
+
+   void a(wl var1, zy<?> var2, SocketAddress var3, int var4);
+
+   void b(wl var1, zy<?> var2, SocketAddress var3, int var4);
+
+   void a(dvp var1, dbg var2, dvo var3, int var4);
+
+   void b(dvp var1, dbg var2, dvo var3, int var4);
+
+   @Nullable
+   bns e();
+
+   @Nullable
+   bns a(dbg var1, ale<dbz> var2, String var3);
+
+   public static class a implements bnp {
+      private static final Logger b = LogUtils.getLogger();
+      static final bns a = () -> {
+      };
+
+      @Override
+      public boolean a(bnn $$0) {
+         b.warn("Attempted to start Flight Recorder, but it's not supported on this JVM");
+         return false;
+      }
+
+      @Override
+      public Path b() {
+         throw new IllegalStateException("Attempted to stop Flight Recorder, but it's not supported on this JVM");
+      }
+
+      @Override
+      public boolean c() {
+         return false;
+      }
+
+      @Override
+      public boolean d() {
+         return false;
+      }
+
+      @Override
+      public void a(wl $$0, zy<?> $$1, SocketAddress $$2, int $$3) {
+      }
+
+      @Override
+      public void b(wl $$0, zy<?> $$1, SocketAddress $$2, int $$3) {
+      }
+
+      @Override
+      public void a(dvp $$0, dbg $$1, dvo $$2, int $$3) {
+      }
+
+      @Override
+      public void b(dvp $$0, dbg $$1, dvo $$2, int $$3) {
+      }
+
+      @Override
+      public void a(float $$0) {
+      }
+
+      @Override
+      public bns e() {
+         return a;
+      }
+
+      @Nullable
+      @Override
+      public bns a(dbg $$0, ale<dbz> $$1, String $$2) {
+         return null;
+      }
    }
 }

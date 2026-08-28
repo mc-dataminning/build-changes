@@ -1,55 +1,48 @@
 public class cpa extends cou {
-   public cpa(bta<? extends cpa> $$0, dby $$1) {
+   public cpa(btb<?> $$0, dbz $$1) {
       super($$0, $$1);
    }
 
-   public cpa(dby $$0, double $$1, double $$2, double $$3) {
-      super(bta.s, $$1, $$2, $$3, $$0);
+   public cpa(dbz $$0, double $$1, double $$2, double $$3) {
+      super(btb.ar, $$0, $$1, $$2, $$3);
    }
 
    @Override
-   protected cuk ag_() {
-      return cus.nN;
-   }
-
-   @Override
-   public int b() {
-      return 27;
-   }
-
-   @Override
-   public cot.a v() {
-      return cot.a.b;
-   }
-
-   @Override
-   public dsc x() {
-      return dfb.cv.o().a(dgc.c, je.c);
-   }
-
-   @Override
-   public int z() {
-      return 8;
-   }
-
-   @Override
-   public cpu a(int $$0, cmw $$1) {
-      return cqb.a($$0, $$1, this);
-   }
-
-   @Override
-   public void c(cmx $$0) {
-      this.dP().a(dwv.j, this.dn(), dwv.a.a($$0));
-   }
-
-   @Override
-   public bqu a(cmx $$0, bqt $$1) {
-      bqu $$2 = this.c_($$0);
-      if ($$2.a()) {
-         this.a(dwv.k, $$0);
-         clo.a($$0, true);
+   public bqv a(cmy $$0, bqu $$1) {
+      if ($$0.fR()) {
+         return bqv.e;
+      } else if (this.bS()) {
+         return bqv.e;
+      } else if (!this.dP().B) {
+         return $$0.n(this) ? bqv.c : bqv.e;
+      } else {
+         return bqv.a;
       }
+   }
 
-      return $$2;
+   @Override
+   protected cul ag_() {
+      return cut.nM;
+   }
+
+   @Override
+   public void a(int $$0, int $$1, int $$2, boolean $$3) {
+      if ($$3) {
+         if (this.bS()) {
+            this.bH();
+         }
+
+         if (this.O() == 0) {
+            this.n(-this.P());
+            this.d(10);
+            this.b(50.0F);
+            this.bv();
+         }
+      }
+   }
+
+   @Override
+   public cou.a v() {
+      return cou.a.a;
    }
 }

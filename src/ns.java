@@ -11,13 +11,13 @@ public class ns {
    public static final alf a = new alf("trim_type");
    private static final List<ns.a> b = List.of(
       new ns.a("quartz", 0.1F, Map.of()),
-      new ns.a("iron", 0.2F, Map.of(csg.c, "iron_darker")),
-      new ns.a("netherite", 0.3F, Map.of(csg.g, "netherite_darker")),
+      new ns.a("iron", 0.2F, Map.of(csh.c, "iron_darker")),
+      new ns.a("netherite", 0.3F, Map.of(csh.g, "netherite_darker")),
       new ns.a("redstone", 0.4F, Map.of()),
       new ns.a("copper", 0.5F, Map.of()),
-      new ns.a("gold", 0.6F, Map.of(csg.d, "gold_darker")),
+      new ns.a("gold", 0.6F, Map.of(csh.d, "gold_darker")),
       new ns.a("emerald", 0.7F, Map.of()),
-      new ns.a("diamond", 0.8F, Map.of(csg.e, "diamond_darker")),
+      new ns.a("diamond", 0.8F, Map.of(csh.e, "diamond_darker")),
       new ns.a("lapis", 0.9F, Map.of()),
       new ns.a("amethyst", 1.0F, Map.of())
    );
@@ -27,23 +27,23 @@ public class ns {
       this.c = $$0;
    }
 
-   private void a(cuk $$0, og $$1) {
+   private void a(cul $$0, og $$1) {
       $$1.a(of.a($$0), oi.b($$0), this.c);
    }
 
-   private void a(cuk $$0, String $$1, og $$2) {
+   private void a(cul $$0, String $$1, og $$2) {
       $$2.a(of.a($$0, $$1), oi.k(oi.a($$0, $$1)), this.c);
    }
 
-   private void a(cuk $$0, cuk $$1, og $$2) {
+   private void a(cul $$0, cul $$1, og $$2) {
       $$2.a(of.a($$0), oi.b($$1), this.c);
    }
 
-   private void a(cuk $$0) {
+   private void a(cul $$0) {
       this.a(of.a($$0), oi.c($$0), oi.a($$0, "_overlay"));
    }
 
-   private void b(cuk $$0) {
+   private void b(cul $$0) {
       for (int $$1 = 0; $$1 < 32; $$1++) {
          if ($$1 != 16) {
             this.a($$0, String.format(Locale.ROOT, "_%02d", $$1), oh.bx);
@@ -51,7 +51,7 @@ public class ns {
       }
    }
 
-   private void c(cuk $$0) {
+   private void c(cul $$0) {
       for (int $$1 = 1; $$1 < 64; $$1++) {
          this.a($$0, String.format(Locale.ROOT, "_%02d", $$1), oh.bx);
       }
@@ -69,7 +69,7 @@ public class ns {
       return $$0.e("_" + $$1 + "_trim");
    }
 
-   private JsonObject a(alf $$0, Map<oj, alf> $$1, ji<csf> $$2) {
+   private JsonObject a(alf $$0, Map<oj, alf> $$1, ji<csg> $$2) {
       JsonObject $$3 = oh.bB.a($$0, $$1);
       JsonArray $$4 = new JsonArray();
 
@@ -86,12 +86,12 @@ public class ns {
       return $$3;
    }
 
-   private void a(cse $$0) {
+   private void a(csf $$0) {
       if ($$0.f().d()) {
          alf $$1 = of.a($$0);
          alf $$2 = oi.c($$0);
          alf $$3 = oi.a($$0, "_overlay");
-         if ($$0.h().a(csg.a)) {
+         if ($$0.h().a(csh.a)) {
             oh.bB.a($$1, oi.c($$2, $$3), this.c, ($$1x, $$2x) -> this.a($$1x, $$2x, $$0.h()));
          } else {
             oh.bx.a($$1, oi.k($$2), this.c, ($$1x, $$2x) -> this.a($$1x, $$2x, $$0.h()));
@@ -102,7 +102,7 @@ public class ns {
             alf $$6 = this.a($$1, $$5);
             String $$7 = $$0.f().b() + "_trim_" + $$5;
             alf $$8 = new alf($$7).d("trims/items/");
-            if ($$0.h().a(csg.a)) {
+            if ($$0.h().a(csh.a)) {
                this.a($$6, $$2, $$3, $$8);
             } else {
                this.a($$6, $$2, $$8);
@@ -112,301 +112,301 @@ public class ns {
    }
 
    public void a() {
-      this.a(cus.oc, oh.bx);
-      this.a(cus.oe, oh.bx);
-      this.a(cus.od, oh.bx);
-      this.a(cus.of, oh.bx);
-      this.a(cus.oC, oh.bx);
-      this.a(cus.ot, oh.bx);
-      this.a(cus.oq, oh.bx);
-      this.a(cus.uF, oh.bx);
-      this.a(cus.ov, oh.bx);
-      this.a(cus.uh, oh.bx);
-      this.a(cus.dR, oh.bz);
-      this.a(cus.sa, oh.bx);
-      this.a(cus.vk, oh.bx);
-      this.a(cus.vm, oh.bx);
-      this.a(cus.nY, oh.bx);
-      this.a(cus.nZ, oh.bx);
-      this.a(cus.rx, oh.bx);
-      this.a(cus.so, oh.bx);
-      this.a(cus.sg, oh.bz);
-      this.a(cus.rt, oh.bx);
-      this.a(cus.ry, oh.bx);
-      this.a(cus.qP, oh.bx);
-      this.a(cus.pq, oh.bx);
-      this.a(cus.px, oh.bx);
-      this.a(cus.qL, oh.bx);
-      this.a(cus.yD, oh.bx);
-      this.a(cus.ru, oh.bx);
-      this.a(cus.qy, oh.bx);
-      this.a(cus.nR, oh.bA);
-      this.a(cus.nS, oh.bA);
-      this.a(cus.ox, oh.bx);
-      this.a(cus.nN, oh.bx);
-      this.a(cus.sc, oh.bx);
-      this.a(cus.vg, oh.bx);
-      this.a(cus.qM, oh.bx);
-      this.c(cus.qW);
-      this.a(cus.ow, oh.bx);
-      this.a(cus.qH, oh.bx);
-      this.a(cus.uM, oh.bx);
-      this.b(cus.qS);
-      this.b(cus.qT);
-      this.a(cus.sb, oh.bx);
-      this.a(cus.sd, oh.bx);
-      this.a(cus.rd, oh.bx);
-      this.a(cus.uO, oh.bx);
-      this.a(cus.pY, oh.bx);
-      this.a(cus.uB, oh.bx);
-      this.a(cus.re, oh.bx);
-      this.a(cus.rS, oh.bx);
-      this.a(cus.oF, oh.bx);
-      this.a(cus.oG, oh.bx);
-      this.a(cus.vX, oh.bx);
-      this.a(cus.rr, oh.bx);
-      this.a(cus.og, oh.bx);
-      this.a(cus.oh, oh.bx);
-      this.a(cus.oy, oh.bx);
-      this.a(cus.pi, oh.bz);
-      this.a(cus.pj, oh.bz);
-      this.a(cus.uI, oh.bx);
-      this.a(cus.ph, oh.bz);
-      this.a(cus.pg, oh.bz);
-      this.a(cus.pf, oh.bz);
-      this.a(cus.vn, oh.bx);
-      this.a(cus.rX, oh.bx);
-      this.a(cus.qR, oh.bx);
-      this.a(cus.oz, oh.bx);
-      this.a(cus.uw, oh.bx);
-      this.a(cus.ss, oh.bx);
-      this.a(cus.sf, oh.bx);
-      this.a(cus.vf, oh.bx);
-      this.a(cus.tW, oh.bx);
-      this.a(cus.sn, oh.bx);
-      this.a(cus.uu, oh.bx);
-      this.a(cus.tX, oh.bx);
-      this.a(cus.pW, oh.bx);
-      this.a(cus.os, oh.bx);
-      this.a(cus.wc, oh.bx);
-      this.a(cus.vW, oh.bx);
-      this.a(cus.nO, oh.bx);
-      this.a(cus.sh, oh.bx);
-      this.a(cus.sl, oh.bx);
-      this.a(cus.st, oh.bx);
-      this.a(cus.wa, oh.bx);
-      this.a(cus.ws, oh.bx);
-      this.a(cus.qY, oh.bx);
-      this.a(cus.rg, oh.bx);
-      this.a(cus.ud, oh.bx);
-      this.a(cus.oH, oh.bx);
-      this.a(cus.qa, oh.bx);
-      this.a(cus.oY, oh.bz);
-      this.a(cus.uk, oh.bx);
-      this.a(cus.oZ, oh.bz);
-      this.a(cus.uH, oh.bx);
-      this.a(cus.oX, oh.bz);
-      this.a(cus.oW, oh.bz);
-      this.a(cus.oV, oh.bz);
-      this.a(cus.oI, oh.bx);
-      this.a(cus.si, oh.bx);
-      this.a(cus.rp, oh.bx);
-      this.a(cus.rv, oh.bx);
-      this.a(cus.pu, oh.bx);
-      this.a(cus.wd, oh.bx);
-      this.a(cus.vS, oh.bx);
-      this.a(cus.ww, oh.bx);
-      this.a(cus.wz, oh.bx);
-      this.a(cus.nQ, oh.bx);
-      this.a(cus.rf, oh.bx);
-      this.a(cus.oD, oh.bx);
-      this.a(cus.pd, oh.bz);
-      this.a(cus.pe, oh.bz);
-      this.a(cus.uG, oh.bx);
-      this.a(cus.oE, oh.bx);
-      this.a(cus.vv, oh.bx);
-      this.a(cus.pc, oh.bz);
-      this.a(cus.pb, oh.bz);
-      this.a(cus.pa, oh.bz);
-      this.a(cus.uc, oh.bx);
-      this.a(cus.oa, oh.bx);
-      this.a(cus.ob, oh.bx);
-      this.a(cus.vw, oh.bx);
-      this.a(cus.oA, oh.bx);
-      this.a(cus.qA, oh.bx);
-      this.a(cus.qD, oh.bx);
-      this.a(cus.uJ, oh.bx);
-      this.a(cus.rl, oh.bx);
-      this.a(cus.rq, oh.bx);
-      this.a(cus.rn, oh.bx);
-      this.a(cus.rk, oh.bx);
-      this.a(cus.sp, oh.bx);
-      this.a(cus.oi, oh.bx);
-      this.a(cus.oj, oh.bx);
-      this.a(cus.ok, oh.bx);
-      this.a(cus.ol, oh.bx);
-      this.a(cus.uj, oh.bx);
-      this.a(cus.rW, oh.bx);
-      this.a(cus.qE, oh.bx);
-      this.a(cus.nM, oh.bx);
-      this.a(cus.vZ, oh.bx);
-      this.a(cus.pr, oh.bx);
-      this.a(cus.vO, oh.bx);
-      this.a(cus.vI, oh.by);
-      this.a(cus.vy, oh.by);
-      this.a(cus.vA, oh.by);
-      this.a(cus.vz, oh.by);
-      this.a(cus.vB, oh.by);
-      this.a(cus.vC, oh.by);
-      this.a(cus.vD, oh.by);
-      this.a(cus.vE, oh.by);
-      this.a(cus.vN, oh.by);
-      this.a(cus.vF, oh.by);
-      this.a(cus.vG, oh.by);
-      this.a(cus.vJ, oh.by);
-      this.a(cus.vH, oh.by);
-      this.a(cus.vK, oh.by);
-      this.a(cus.vL, oh.by);
-      this.a(cus.vM, oh.by);
-      this.a(cus.uN, oh.bx);
-      this.a(cus.uL, oh.bx);
-      this.a(cus.vR, oh.bx);
-      this.a(cus.pn, oh.bz);
-      this.a(cus.po, oh.bz);
-      this.a(cus.oJ, oh.bx);
-      this.a(cus.pm, oh.bz);
-      this.a(cus.oK, oh.bx);
-      this.a(cus.pl, oh.bz);
-      this.a(cus.pk, oh.bz);
-      this.a(cus.ux, oh.bx);
-      this.a(cus.us, oh.bx);
-      this.a(cus.nU, oh.bx);
-      this.a(cus.nV, oh.bx);
-      this.a(cus.rj, oh.bx);
-      this.a(cus.pZ, oh.bx);
-      this.a(cus.qO, oh.bx);
-      this.a(cus.vQ, oh.bx);
-      this.a(cus.wb, oh.bx);
-      this.a(cus.ro, oh.bx);
-      this.a(cus.ui, oh.bx);
-      this.a(cus.vh, oh.bx);
-      this.a(cus.pX, oh.bx);
-      this.a(cus.qB, oh.bx);
-      this.a(cus.uz, oh.bx);
-      this.a(cus.uy, oh.bx);
-      this.a(cus.rc, oh.bx);
-      this.a(cus.qF, oh.bx);
-      this.a(cus.ut, oh.bx);
-      this.a(cus.rs, oh.bx);
-      this.a(cus.oB, oh.bx);
-      this.a(cus.uA, oh.bx);
-      this.a(cus.uD, oh.bx);
-      this.a(cus.uE, oh.bx);
-      this.a(cus.uC, oh.bx);
-      this.a(cus.rw, oh.bx);
-      this.a(cus.se, oh.bx);
-      this.a(cus.nL, oh.bx);
-      this.a(cus.ra, oh.bx);
-      this.a(cus.qG, oh.bx);
-      this.a(cus.op, oh.bx);
-      this.a(cus.rV, oh.bx);
-      this.a(cus.vu, oh.bx);
-      this.a(cus.vY, oh.bx);
-      this.a(cus.qQ, oh.bx);
-      this.a(cus.qC, oh.bx);
-      this.a(cus.xq, oh.bx);
-      this.a(cus.vp, oh.bx);
-      this.a(cus.sm, oh.bx);
-      this.a(cus.nW, oh.bx);
-      this.a(cus.nX, oh.bx);
-      this.a(cus.qX, oh.bx);
-      this.a(cus.pp, oh.bz);
-      this.a(cus.oT, oh.bz);
-      this.a(cus.oU, oh.bz);
-      this.a(cus.oS, oh.bz);
-      this.a(cus.oR, oh.bz);
-      this.a(cus.oQ, oh.bz);
-      this.a(cus.rA, oh.bx);
-      this.a(cus.vU, oh.bx);
-      this.a(cus.nP, oh.bx);
-      this.a(cus.vt, oh.bx);
-      this.a(cus.vP, oh.bx);
-      this.a(cus.rb, oh.bx);
-      this.a(cus.qI, oh.bx);
-      this.a(cus.qJ, oh.bx);
-      this.a(cus.qK, oh.bx);
-      this.a(cus.qz, oh.bx);
-      this.a(cus.pw, oh.bx);
-      this.a(cus.ri, oh.bx);
-      this.a(cus.tY, oh.bx);
-      this.a(cus.ub, oh.bO);
-      this.a(cus.or);
-      this.a(cus.oO, oh.bz);
-      this.a(cus.oP, oh.bz);
-      this.a(cus.oN, oh.bz);
-      this.a(cus.oM, oh.bz);
-      this.a(cus.oL, oh.bz);
-      this.a(cus.tZ, oh.bx);
-      this.a(cus.ua, oh.bx);
-      this.a(cus.rm, oh.bx);
-      this.a(cus.xs, oh.bx);
-      this.a(cus.xt, oh.bx);
-      this.a(cus.xu, oh.bx);
-      this.a(cus.xv, oh.bx);
-      this.a(cus.xw, oh.bx);
-      this.a(cus.xx, oh.bx);
-      this.a(cus.xy, oh.bx);
-      this.a(cus.xz, oh.bx);
-      this.a(cus.xA, oh.bx);
-      this.a(cus.xB, oh.bx);
-      this.a(cus.xC, oh.bx);
-      this.a(cus.xD, oh.bx);
-      this.a(cus.xE, oh.bx);
-      this.a(cus.xF, oh.bx);
-      this.a(cus.xG, oh.bx);
-      this.a(cus.xH, oh.bx);
-      this.a(cus.xI, oh.bx);
-      this.a(cus.xJ, oh.bx);
-      this.a(cus.xK, oh.bx);
-      this.a(cus.vx, cus.pp, oh.bz);
-      this.a(cus.qb, cus.qa, oh.bx);
+      this.a(cut.oc, oh.bx);
+      this.a(cut.oe, oh.bx);
+      this.a(cut.od, oh.bx);
+      this.a(cut.of, oh.bx);
+      this.a(cut.oC, oh.bx);
+      this.a(cut.ot, oh.bx);
+      this.a(cut.oq, oh.bx);
+      this.a(cut.uF, oh.bx);
+      this.a(cut.ov, oh.bx);
+      this.a(cut.uh, oh.bx);
+      this.a(cut.dR, oh.bz);
+      this.a(cut.sa, oh.bx);
+      this.a(cut.vk, oh.bx);
+      this.a(cut.vm, oh.bx);
+      this.a(cut.nY, oh.bx);
+      this.a(cut.nZ, oh.bx);
+      this.a(cut.rx, oh.bx);
+      this.a(cut.so, oh.bx);
+      this.a(cut.sg, oh.bz);
+      this.a(cut.rt, oh.bx);
+      this.a(cut.ry, oh.bx);
+      this.a(cut.qP, oh.bx);
+      this.a(cut.pq, oh.bx);
+      this.a(cut.px, oh.bx);
+      this.a(cut.qL, oh.bx);
+      this.a(cut.yD, oh.bx);
+      this.a(cut.ru, oh.bx);
+      this.a(cut.qy, oh.bx);
+      this.a(cut.nR, oh.bA);
+      this.a(cut.nS, oh.bA);
+      this.a(cut.ox, oh.bx);
+      this.a(cut.nN, oh.bx);
+      this.a(cut.sc, oh.bx);
+      this.a(cut.vg, oh.bx);
+      this.a(cut.qM, oh.bx);
+      this.c(cut.qW);
+      this.a(cut.ow, oh.bx);
+      this.a(cut.qH, oh.bx);
+      this.a(cut.uM, oh.bx);
+      this.b(cut.qS);
+      this.b(cut.qT);
+      this.a(cut.sb, oh.bx);
+      this.a(cut.sd, oh.bx);
+      this.a(cut.rd, oh.bx);
+      this.a(cut.uO, oh.bx);
+      this.a(cut.pY, oh.bx);
+      this.a(cut.uB, oh.bx);
+      this.a(cut.re, oh.bx);
+      this.a(cut.rS, oh.bx);
+      this.a(cut.oF, oh.bx);
+      this.a(cut.oG, oh.bx);
+      this.a(cut.vX, oh.bx);
+      this.a(cut.rr, oh.bx);
+      this.a(cut.og, oh.bx);
+      this.a(cut.oh, oh.bx);
+      this.a(cut.oy, oh.bx);
+      this.a(cut.pi, oh.bz);
+      this.a(cut.pj, oh.bz);
+      this.a(cut.uI, oh.bx);
+      this.a(cut.ph, oh.bz);
+      this.a(cut.pg, oh.bz);
+      this.a(cut.pf, oh.bz);
+      this.a(cut.vn, oh.bx);
+      this.a(cut.rX, oh.bx);
+      this.a(cut.qR, oh.bx);
+      this.a(cut.oz, oh.bx);
+      this.a(cut.uw, oh.bx);
+      this.a(cut.ss, oh.bx);
+      this.a(cut.sf, oh.bx);
+      this.a(cut.vf, oh.bx);
+      this.a(cut.tW, oh.bx);
+      this.a(cut.sn, oh.bx);
+      this.a(cut.uu, oh.bx);
+      this.a(cut.tX, oh.bx);
+      this.a(cut.pW, oh.bx);
+      this.a(cut.os, oh.bx);
+      this.a(cut.wc, oh.bx);
+      this.a(cut.vW, oh.bx);
+      this.a(cut.nO, oh.bx);
+      this.a(cut.sh, oh.bx);
+      this.a(cut.sl, oh.bx);
+      this.a(cut.st, oh.bx);
+      this.a(cut.wa, oh.bx);
+      this.a(cut.ws, oh.bx);
+      this.a(cut.qY, oh.bx);
+      this.a(cut.rg, oh.bx);
+      this.a(cut.ud, oh.bx);
+      this.a(cut.oH, oh.bx);
+      this.a(cut.qa, oh.bx);
+      this.a(cut.oY, oh.bz);
+      this.a(cut.uk, oh.bx);
+      this.a(cut.oZ, oh.bz);
+      this.a(cut.uH, oh.bx);
+      this.a(cut.oX, oh.bz);
+      this.a(cut.oW, oh.bz);
+      this.a(cut.oV, oh.bz);
+      this.a(cut.oI, oh.bx);
+      this.a(cut.si, oh.bx);
+      this.a(cut.rp, oh.bx);
+      this.a(cut.rv, oh.bx);
+      this.a(cut.pu, oh.bx);
+      this.a(cut.wd, oh.bx);
+      this.a(cut.vS, oh.bx);
+      this.a(cut.ww, oh.bx);
+      this.a(cut.wz, oh.bx);
+      this.a(cut.nQ, oh.bx);
+      this.a(cut.rf, oh.bx);
+      this.a(cut.oD, oh.bx);
+      this.a(cut.pd, oh.bz);
+      this.a(cut.pe, oh.bz);
+      this.a(cut.uG, oh.bx);
+      this.a(cut.oE, oh.bx);
+      this.a(cut.vv, oh.bx);
+      this.a(cut.pc, oh.bz);
+      this.a(cut.pb, oh.bz);
+      this.a(cut.pa, oh.bz);
+      this.a(cut.uc, oh.bx);
+      this.a(cut.oa, oh.bx);
+      this.a(cut.ob, oh.bx);
+      this.a(cut.vw, oh.bx);
+      this.a(cut.oA, oh.bx);
+      this.a(cut.qA, oh.bx);
+      this.a(cut.qD, oh.bx);
+      this.a(cut.uJ, oh.bx);
+      this.a(cut.rl, oh.bx);
+      this.a(cut.rq, oh.bx);
+      this.a(cut.rn, oh.bx);
+      this.a(cut.rk, oh.bx);
+      this.a(cut.sp, oh.bx);
+      this.a(cut.oi, oh.bx);
+      this.a(cut.oj, oh.bx);
+      this.a(cut.ok, oh.bx);
+      this.a(cut.ol, oh.bx);
+      this.a(cut.uj, oh.bx);
+      this.a(cut.rW, oh.bx);
+      this.a(cut.qE, oh.bx);
+      this.a(cut.nM, oh.bx);
+      this.a(cut.vZ, oh.bx);
+      this.a(cut.pr, oh.bx);
+      this.a(cut.vO, oh.bx);
+      this.a(cut.vI, oh.by);
+      this.a(cut.vy, oh.by);
+      this.a(cut.vA, oh.by);
+      this.a(cut.vz, oh.by);
+      this.a(cut.vB, oh.by);
+      this.a(cut.vC, oh.by);
+      this.a(cut.vD, oh.by);
+      this.a(cut.vE, oh.by);
+      this.a(cut.vN, oh.by);
+      this.a(cut.vF, oh.by);
+      this.a(cut.vG, oh.by);
+      this.a(cut.vJ, oh.by);
+      this.a(cut.vH, oh.by);
+      this.a(cut.vK, oh.by);
+      this.a(cut.vL, oh.by);
+      this.a(cut.vM, oh.by);
+      this.a(cut.uN, oh.bx);
+      this.a(cut.uL, oh.bx);
+      this.a(cut.vR, oh.bx);
+      this.a(cut.pn, oh.bz);
+      this.a(cut.po, oh.bz);
+      this.a(cut.oJ, oh.bx);
+      this.a(cut.pm, oh.bz);
+      this.a(cut.oK, oh.bx);
+      this.a(cut.pl, oh.bz);
+      this.a(cut.pk, oh.bz);
+      this.a(cut.ux, oh.bx);
+      this.a(cut.us, oh.bx);
+      this.a(cut.nU, oh.bx);
+      this.a(cut.nV, oh.bx);
+      this.a(cut.rj, oh.bx);
+      this.a(cut.pZ, oh.bx);
+      this.a(cut.qO, oh.bx);
+      this.a(cut.vQ, oh.bx);
+      this.a(cut.wb, oh.bx);
+      this.a(cut.ro, oh.bx);
+      this.a(cut.ui, oh.bx);
+      this.a(cut.vh, oh.bx);
+      this.a(cut.pX, oh.bx);
+      this.a(cut.qB, oh.bx);
+      this.a(cut.uz, oh.bx);
+      this.a(cut.uy, oh.bx);
+      this.a(cut.rc, oh.bx);
+      this.a(cut.qF, oh.bx);
+      this.a(cut.ut, oh.bx);
+      this.a(cut.rs, oh.bx);
+      this.a(cut.oB, oh.bx);
+      this.a(cut.uA, oh.bx);
+      this.a(cut.uD, oh.bx);
+      this.a(cut.uE, oh.bx);
+      this.a(cut.uC, oh.bx);
+      this.a(cut.rw, oh.bx);
+      this.a(cut.se, oh.bx);
+      this.a(cut.nL, oh.bx);
+      this.a(cut.ra, oh.bx);
+      this.a(cut.qG, oh.bx);
+      this.a(cut.op, oh.bx);
+      this.a(cut.rV, oh.bx);
+      this.a(cut.vu, oh.bx);
+      this.a(cut.vY, oh.bx);
+      this.a(cut.qQ, oh.bx);
+      this.a(cut.qC, oh.bx);
+      this.a(cut.xq, oh.bx);
+      this.a(cut.vp, oh.bx);
+      this.a(cut.sm, oh.bx);
+      this.a(cut.nW, oh.bx);
+      this.a(cut.nX, oh.bx);
+      this.a(cut.qX, oh.bx);
+      this.a(cut.pp, oh.bz);
+      this.a(cut.oT, oh.bz);
+      this.a(cut.oU, oh.bz);
+      this.a(cut.oS, oh.bz);
+      this.a(cut.oR, oh.bz);
+      this.a(cut.oQ, oh.bz);
+      this.a(cut.rA, oh.bx);
+      this.a(cut.vU, oh.bx);
+      this.a(cut.nP, oh.bx);
+      this.a(cut.vt, oh.bx);
+      this.a(cut.vP, oh.bx);
+      this.a(cut.rb, oh.bx);
+      this.a(cut.qI, oh.bx);
+      this.a(cut.qJ, oh.bx);
+      this.a(cut.qK, oh.bx);
+      this.a(cut.qz, oh.bx);
+      this.a(cut.pw, oh.bx);
+      this.a(cut.ri, oh.bx);
+      this.a(cut.tY, oh.bx);
+      this.a(cut.ub, oh.bO);
+      this.a(cut.or);
+      this.a(cut.oO, oh.bz);
+      this.a(cut.oP, oh.bz);
+      this.a(cut.oN, oh.bz);
+      this.a(cut.oM, oh.bz);
+      this.a(cut.oL, oh.bz);
+      this.a(cut.tZ, oh.bx);
+      this.a(cut.ua, oh.bx);
+      this.a(cut.rm, oh.bx);
+      this.a(cut.xs, oh.bx);
+      this.a(cut.xt, oh.bx);
+      this.a(cut.xu, oh.bx);
+      this.a(cut.xv, oh.bx);
+      this.a(cut.xw, oh.bx);
+      this.a(cut.xx, oh.bx);
+      this.a(cut.xy, oh.bx);
+      this.a(cut.xz, oh.bx);
+      this.a(cut.xA, oh.bx);
+      this.a(cut.xB, oh.bx);
+      this.a(cut.xC, oh.bx);
+      this.a(cut.xD, oh.bx);
+      this.a(cut.xE, oh.bx);
+      this.a(cut.xF, oh.bx);
+      this.a(cut.xG, oh.bx);
+      this.a(cut.xH, oh.bx);
+      this.a(cut.xI, oh.bx);
+      this.a(cut.xJ, oh.bx);
+      this.a(cut.xK, oh.bx);
+      this.a(cut.vx, cut.pp, oh.bz);
+      this.a(cut.qb, cut.qa, oh.bx);
 
-      for (cuk $$0 : lp.h) {
-         if ($$0 instanceof cse $$1) {
+      for (cul $$0 : lp.h) {
+         if ($$0 instanceof csf $$1) {
             this.a($$1);
          }
       }
 
-      this.a(cus.xL, oh.bx);
-      this.a(cus.xM, oh.bx);
-      this.a(cus.xN, oh.bx);
-      this.a(cus.xO, oh.bx);
-      this.a(cus.xP, oh.bx);
-      this.a(cus.xQ, oh.bx);
-      this.a(cus.xR, oh.bx);
-      this.a(cus.xS, oh.bx);
-      this.a(cus.xT, oh.bx);
-      this.a(cus.xU, oh.bx);
-      this.a(cus.xV, oh.bx);
-      this.a(cus.xW, oh.bx);
-      this.a(cus.xX, oh.bx);
-      this.a(cus.xY, oh.bx);
-      this.a(cus.xZ, oh.bx);
-      this.a(cus.ya, oh.bx);
-      this.a(cus.yb, oh.bx);
-      this.a(cus.yc, oh.bx);
-      this.a(cus.yd, oh.bx);
-      this.a(cus.ye, oh.bx);
-      this.a(cus.yf, oh.bx);
-      this.a(cus.yg, oh.bx);
-      this.a(cus.yh, oh.bx);
-      this.a(cus.yz, oh.bx);
-      this.a(cus.yA, oh.bx);
-      this.a(cus.yC, oh.bx);
+      this.a(cut.xL, oh.bx);
+      this.a(cut.xM, oh.bx);
+      this.a(cut.xN, oh.bx);
+      this.a(cut.xO, oh.bx);
+      this.a(cut.xP, oh.bx);
+      this.a(cut.xQ, oh.bx);
+      this.a(cut.xR, oh.bx);
+      this.a(cut.xS, oh.bx);
+      this.a(cut.xT, oh.bx);
+      this.a(cut.xU, oh.bx);
+      this.a(cut.xV, oh.bx);
+      this.a(cut.xW, oh.bx);
+      this.a(cut.xX, oh.bx);
+      this.a(cut.xY, oh.bx);
+      this.a(cut.xZ, oh.bx);
+      this.a(cut.ya, oh.bx);
+      this.a(cut.yb, oh.bx);
+      this.a(cut.yc, oh.bx);
+      this.a(cut.yd, oh.bx);
+      this.a(cut.ye, oh.bx);
+      this.a(cut.yf, oh.bx);
+      this.a(cut.yg, oh.bx);
+      this.a(cut.yh, oh.bx);
+      this.a(cut.yz, oh.bx);
+      this.a(cut.yA, oh.bx);
+      this.a(cut.yC, oh.bx);
    }
 
-   static record a(String a, float b, Map<ji<csf>, String> c) {
-      public String a(ji<csf> $$0) {
+   static record a(String a, float b, Map<ji<csg>, String> c) {
+      public String a(ji<csg> $$0) {
          return this.c.getOrDefault($$0, this.a);
       }
    }

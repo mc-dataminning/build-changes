@@ -16,11 +16,11 @@ public class ana {
    }
 
    private static int a(ep $$0, iz $$1) throws CommandSyntaxException {
-      if (!($$0.f() instanceof btr $$3)) {
+      if (!($$0.f() instanceof bts $$3)) {
          throw a.create();
       } else {
-         cdb $$4 = new cda($$3, $$0.e());
-         eoj $$5 = $$4.a($$1, 0);
+         cdc $$4 = new cdb($$3, $$0.e());
+         eok $$5 = $$4.a($$1, 0);
          agt.a($$0.e(), $$3, $$5, $$4.q());
          if ($$5 == null) {
             throw b.create();

@@ -1,7 +1,7 @@
 import java.util.Date;
 
 public interface ad {
-   epo d();
+   epp d();
 
    String b();
 

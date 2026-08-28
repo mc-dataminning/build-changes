@@ -1,15 +1,18 @@
-public class gia extends gkd<cjm, ftf<cjm>> {
-   private static final alf a = new alf("textures/entity/blaze.png");
+public class gia extends gke<cfh, ftf<cfh>> {
+   private static final alf a = new alf("textures/entity/bee/bee_angry.png");
+   private static final alf i = new alf("textures/entity/bee/bee_angry_nectar.png");
+   private static final alf j = new alf("textures/entity/bee/bee.png");
+   private static final alf k = new alf("textures/entity/bee/bee_nectar.png");
 
-   public gia(gix.a $$0) {
-      super($$0, new ftf<>($$0.a(fwz.m)), 0.5F);
+   public gia(giy.a $$0) {
+      super($$0, new ftf<>($$0.a(fxa.k)), 0.4F);
    }
 
-   protected int a(cjm $$0, iz $$1) {
-      return 15;
-   }
-
-   public alf a(cjm $$0) {
-      return a;
+   public alf a(cfh $$0) {
+      if ($$0.Z_()) {
+         return $$0.gA() ? i : a;
+      } else {
+         return $$0.gA() ? k : j;
+      }
    }
 }

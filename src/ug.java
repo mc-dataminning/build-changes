@@ -198,7 +198,7 @@ public class ug {
    }
 
    private static int a(to $$0) {
-      $$0.f().a_(null, $$0.d()).stream().forEach($$0x -> $$0x.a(bsu.c.b));
+      $$0.f().a_(null, $$0.d()).stream().forEach($$0x -> $$0x.a(bsv.c.b));
       $$0.e().c($$0.f());
       ue.a($$0.d(), $$0.f());
       a($$0.f(), "Reset succeded for: " + $$0.b(), n.k);
@@ -214,7 +214,7 @@ public class ug {
    }
 
    private static Optional<to> a(iz $$0, arf $$1, ub $$2) {
-      dqw $$3 = (dqw)$$1.c_($$0);
+      dqx $$3 = (dqx)$$1.c_($$0);
       if ($$3 == null) {
          a($$1, "Structure block entity could not be found", n.m);
          return Optional.empty();
@@ -237,11 +237,11 @@ public class ug {
       if ($$2 <= 48 && $$3 <= 48 && $$4 <= 48) {
          arf $$5 = $$0.e();
          iz $$6 = a($$0).d();
-         ue.a($$1.toLowerCase(), $$6, new kd($$2, $$3, $$4), dlm.a, $$5);
+         ue.a($$1.toLowerCase(), $$6, new kd($$2, $$3, $$4), dln.a, $$5);
          iz $$7 = $$6.c();
          iz $$8 = $$7.b($$2 - 1, 0, $$4 - 1);
-         iz.d($$7, $$8).forEach($$1x -> $$5.b($$1x, dfb.F.o()));
-         ue.a($$6, new iz(1, 0, -1), dlm.a, $$5);
+         iz.d($$7, $$8).forEach($$1x -> $$5.b($$1x, dfc.F.o()));
+         ue.a($$6, new iz(1, 0, -1), dln.a, $$5);
          return 0;
       } else {
          throw new IllegalArgumentException("The structure must be less than 48 blocks big in each axis");
@@ -249,7 +249,7 @@ public class ug {
    }
 
    private static int a(ep $$0, String $$1) throws CommandSyntaxException {
-      evn $$2 = (evn)$$0.h().a(10.0, 1.0F, false);
+      evo $$2 = (evo)$$0.h().a(10.0, 1.0F, false);
       iz $$3 = $$2.a();
       arf $$4 = $$0.e();
       Optional<iz> $$5 = ue.a($$3, 15, $$4);
@@ -261,7 +261,7 @@ public class ug {
          $$0.b(xp.b("Can't find a structure block that contains the targeted pos " + $$3));
          return 0;
       } else {
-         dqw $$6 = (dqw)$$4.c_($$5.get());
+         dqx $$6 = (dqx)$$4.c_($$5.get());
          if ($$6 == null) {
             a($$4, "Structure block entity could not be found", n.m);
             return 0;
@@ -298,7 +298,7 @@ public class ug {
       return 1;
    }
 
-   static int a(ep $$0, dqw $$1) {
+   static int a(ep $$0, dqx $$1) {
       String $$2 = $$1.c();
       if (!$$1.b(true)) {
          c($$0, "Failed to save structure " + $$2);
@@ -340,7 +340,7 @@ public class ug {
 
    static iz a(ep $$0) {
       iz $$1 = iz.a($$0.d());
-      int $$2 = $$0.e().a(dxu.a.b, $$1).v();
+      int $$2 = $$0.e().a(dxv.a.b, $$1).v();
       return new iz($$1.u(), $$2 + 1, $$1.w() + 3);
    }
 
@@ -402,11 +402,11 @@ public class ug {
          arf $$1 = $$0.e();
          tr.a($$1);
          this.a(this.a.findStructureBlockPos(), $$1x -> {
-            dqw $$2 = (dqw)$$1.c_($$1x);
+            dqx $$2 = (dqx)$$1.c_($$1x);
             if ($$2 == null) {
                return 0;
             } else {
-               eic $$3 = ue.b($$2);
+               eid $$3 = ue.b($$2);
                ue.a($$3, $$1);
                return 1;
             }
@@ -419,7 +419,7 @@ public class ug {
          ep $$1 = this.a.a();
          arf $$2 = $$1.e();
          this.a(this.a.findStructureBlockPos(), $$3 -> {
-            dqw $$4 = (dqw)$$2.c_($$3);
+            dqx $$4 = (dqx)$$2.c_($$3);
             if ($$4 == null) {
                ug.a($$2, "Structure block entity could not be found", n.m);
                $$0.setFalse();
@@ -481,7 +481,7 @@ public class ug {
             .findStructureBlockPos()
             .forEach(
                $$2x -> {
-                  dqw $$3 = (dqw)this.a.a().e().c_($$2x);
+                  dqx $$3 = (dqx)this.a.a().e().c_($$2x);
                   if ($$3 != null) {
                      je $$4 = $$3.l().a(je.c);
                      iz $$5 = $$3.ay_().a($$4, 2);

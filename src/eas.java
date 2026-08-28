@@ -1,47 +1,99 @@
 import com.mojang.serialization.Codec;
+import java.util.List;
 
-public class eas extends eay<ecz> {
-   public eas(Codec<ecz> $$0) {
+public class eas extends eaz<edk> {
+   private static final dsm a = dsm.a(dfc.I);
+   private final dsd b = dfc.I.o();
+   private final dsd c = dfc.jF.o();
+   private final dsd d = dfc.aV.o();
+   private final dsd an = dfc.G.o();
+
+   public eas(Codec<edk> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(eba<ecz> $$0) {
-      ecz $$1 = $$0.f();
+   public boolean a(ebb<edk> $$0) {
+      dcu $$1 = $$0.b();
       iz $$2 = $$0.e();
-      dct $$3 = $$0.b();
-      azh $$4 = $$0.d();
-      boolean $$5 = false;
-      int $$6 = $$2.v();
-      int $$7 = $$6 + $$1.d();
-      int $$8 = $$6 - $$1.d() - 1;
-      int $$9 = $$1.c().a($$4);
-      iz.a $$10 = new iz.a();
+      $$2 = $$2.c();
 
-      for (iz $$11 : iz.c($$2.b(-$$9, 0, -$$9), $$2.b($$9, 0, $$9))) {
-         int $$12 = $$11.u() - $$2.u();
-         int $$13 = $$11.w() - $$2.w();
-         if ($$12 * $$12 + $$13 * $$13 <= $$9 * $$9) {
-            $$5 |= this.a($$1, $$3, $$4, $$7, $$8, $$10.g($$11));
-         }
+      while ($$1.u($$2) && $$2.v() > $$1.I_() + 2) {
+         $$2 = $$2.d();
       }
 
-      return $$5;
+      if (!a.a($$1.a_($$2))) {
+         return false;
+      } else {
+         for (int $$3 = -2; $$3 <= 2; $$3++) {
+            for (int $$4 = -2; $$4 <= 2; $$4++) {
+               if ($$1.u($$2.b($$3, -1, $$4)) && $$1.u($$2.b($$3, -2, $$4))) {
+                  return false;
+               }
+            }
+         }
+
+         for (int $$5 = -2; $$5 <= 0; $$5++) {
+            for (int $$6 = -2; $$6 <= 2; $$6++) {
+               for (int $$7 = -2; $$7 <= 2; $$7++) {
+                  $$1.a($$2.b($$6, $$5, $$7), this.d, 2);
+               }
+            }
+         }
+
+         $$1.a($$2, this.an, 2);
+
+         for (je $$8 : je.c.a) {
+            $$1.a($$2.a($$8), this.an, 2);
+         }
+
+         iz $$9 = $$2.d();
+         $$1.a($$9, this.b, 2);
+
+         for (je $$10 : je.c.a) {
+            $$1.a($$9.a($$10), this.b, 2);
+         }
+
+         for (int $$11 = -2; $$11 <= 2; $$11++) {
+            for (int $$12 = -2; $$12 <= 2; $$12++) {
+               if ($$11 == -2 || $$11 == 2 || $$12 == -2 || $$12 == 2) {
+                  $$1.a($$2.b($$11, 1, $$12), this.d, 2);
+               }
+            }
+         }
+
+         $$1.a($$2.b(2, 1, 0), this.c, 2);
+         $$1.a($$2.b(-2, 1, 0), this.c, 2);
+         $$1.a($$2.b(0, 1, 2), this.c, 2);
+         $$1.a($$2.b(0, 1, -2), this.c, 2);
+
+         for (int $$13 = -1; $$13 <= 1; $$13++) {
+            for (int $$14 = -1; $$14 <= 1; $$14++) {
+               if ($$13 == 0 && $$14 == 0) {
+                  $$1.a($$2.b($$13, 4, $$14), this.d, 2);
+               } else {
+                  $$1.a($$2.b($$13, 4, $$14), this.c, 2);
+               }
+            }
+         }
+
+         for (int $$15 = 1; $$15 <= 3; $$15++) {
+            $$1.a($$2.b(-1, $$15, -1), this.d, 2);
+            $$1.a($$2.b(-1, $$15, 1), this.d, 2);
+            $$1.a($$2.b(1, $$15, -1), this.d, 2);
+            $$1.a($$2.b(1, $$15, 1), this.d, 2);
+         }
+
+         List<iz> $$17 = List.of($$2, $$2.h(), $$2.f(), $$2.g(), $$2.e());
+         azh $$18 = $$0.d();
+         b($$1, ac.a($$17, $$18).c(1));
+         b($$1, ac.a($$17, $$18).c(2));
+         return true;
+      }
    }
 
-   protected boolean a(ecz $$0, dct $$1, azh $$2, int $$3, int $$4, iz.a $$5) {
-      boolean $$6 = false;
-
-      for (int $$7 = $$3; $$7 > $$4; $$7--) {
-         $$5.q($$7);
-         if ($$0.b().test($$1, $$5)) {
-            dsc $$8 = $$0.a().a($$1, $$2, $$5);
-            $$1.a($$5, $$8, 2);
-            this.a($$1, $$5);
-            $$6 = true;
-         }
-      }
-
-      return $$6;
+   private static void b(dcu $$0, iz $$1) {
+      $$0.a($$1, dfc.J.o(), 3);
+      $$0.a($$1, dpk.N).ifPresent($$1x -> $$1x.a(eqf.bd, $$1.a()));
    }
 }

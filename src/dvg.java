@@ -1,100 +1,106 @@
-import com.google.common.collect.ImmutableList;
-import com.mojang.logging.LogUtils;
-import it.unimi.dsi.fastutil.longs.LongOpenHashSet;
-import it.unimi.dsi.fastutil.longs.LongSet;
+import com.mojang.datafixers.DataFixer;
+import com.mojang.serialization.MapCodec;
 import java.io.IOException;
-import java.util.List;
-import java.util.Objects;
+import java.nio.file.Path;
+import java.util.Optional;
 import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.Executor;
-import org.slf4j.Logger;
+import java.util.function.Supplier;
+import javax.annotation.Nullable;
 
-public class dvg implements dwf<bsu> {
-   private static final Logger a = LogUtils.getLogger();
-   private static final String b = "Entities";
-   private static final String c = "Position";
-   private final arf d;
-   private final dvq e;
-   private final LongSet f = new LongOpenHashSet();
-   private final bpn<Runnable> g;
+public class dvg implements AutoCloseable {
+   public static final int d = 1493;
+   private final dvi a;
+   protected final DataFixer e;
+   @Nullable
+   private volatile eig b;
 
-   public dvg(dvq $$0, arf $$1, Executor $$2) {
-      this.e = $$0;
-      this.d = $$1;
-      this.g = bpn.a($$2, "entity-deserializer");
+   public dvg(dvp $$0, Path $$1, DataFixer $$2, boolean $$3) {
+      this.e = $$2;
+      this.a = new dvi($$0, $$1, $$3);
    }
 
-   @Override
-   public CompletableFuture<dwa<bsu>> a(dbf $$0) {
-      return this.f.contains($$0.a()) ? CompletableFuture.completedFuture(b($$0)) : this.e.a($$0).thenApplyAsync($$1 -> {
-         if ($$1.isEmpty()) {
-            this.f.add($$0.a());
-            return b($$0);
-         } else {
-            try {
-               dbf $$2 = a($$1.get());
-               if (!Objects.equals($$0, $$2)) {
-                  a.error("Chunk file at {} is in the wrong location. (Expected {}, got {})", new Object[]{$$0, $$0, $$2});
-               }
-            } catch (Exception var6) {
-               a.warn("Failed to parse chunk {} position info", $$0, var6);
+   public boolean b(dbg $$0, int $$1) {
+      return this.a.a($$0, $$1);
+   }
+
+   public us a(ale<dbz> $$0, Supplier<epr> $$1, us $$2, Optional<ale<MapCodec<? extends dua>>> $$3) {
+      int $$4 = a($$2);
+
+      try {
+         if ($$4 < 1493) {
+            $$2 = bag.c.a(this.e, $$2, $$4, 1493);
+            if ($$2.p("Level").q("hasLegacyStructureData")) {
+               eig $$5 = this.a($$0, $$1);
+               $$2 = $$5.a($$2);
             }
-
-            us $$4 = this.e.a($$1.get(), -1);
-            uy $$5 = $$4.c("Entities", 10);
-            List<bsu> $$6 = bta.a($$5, this.d).collect(ImmutableList.toImmutableList());
-            return new dwa<>($$0, $$6);
          }
-      }, this.g::a);
-   }
 
-   private static dbf a(us $$0) {
-      int[] $$1 = $$0.n("Position");
-      return new dbf($$1[0], $$1[1]);
-   }
-
-   private static void a(us $$0, dbf $$1) {
-      $$0.a("Position", new uw(new int[]{$$1.e, $$1.f}));
-   }
-
-   private static dwa<bsu> b(dbf $$0) {
-      return new dwa<>($$0, ImmutableList.of());
-   }
-
-   @Override
-   public void a(dwa<bsu> $$0) {
-      dbf $$1 = $$0.a();
-      if ($$0.c()) {
-         if (this.f.add($$1.a())) {
-            this.e.a($$1, null);
+         a($$2, $$0, $$3);
+         $$2 = bag.c.a(this.e, $$2, Math.max(1493, $$4));
+         if ($$4 < aa.b().d().c()) {
+            vh.e($$2);
          }
-      } else {
-         uy $$2 = new uy();
-         $$0.b().forEach($$1x -> {
-            us $$2x = new us();
-            if ($$1x.e($$2x)) {
-               $$2.add($$2x);
-            }
-         });
-         us $$3 = vh.e(new us());
-         $$3.a("Entities", $$2);
-         a($$3, $$1);
-         this.e.a($$1, $$3).exceptionally($$1x -> {
-            a.error("Failed to store chunk {}", $$1, $$1x);
-            return null;
-         });
-         this.f.remove($$1.a());
+
+         $$2.r("__context");
+         return $$2;
+      } catch (Exception var9) {
+         o $$7 = o.a(var9, "Updated chunk");
+         p $$8 = $$7.a("Updated chunk details");
+         $$8.a("Data version", $$4);
+         throw new y($$7);
       }
    }
 
-   @Override
-   public void a(boolean $$0) {
-      this.e.a($$0).join();
-      this.g.a();
+   private eig a(ale<dbz> $$0, Supplier<epr> $$1) {
+      eig $$2 = this.b;
+      if ($$2 == null) {
+         synchronized (this) {
+            $$2 = this.b;
+            if ($$2 == null) {
+               this.b = $$2 = eig.a($$0, $$1.get());
+            }
+         }
+      }
+
+      return $$2;
+   }
+
+   public static void a(us $$0, ale<dbz> $$1, Optional<ale<MapCodec<? extends dua>>> $$2) {
+      us $$3 = new us();
+      $$3.a("dimension", $$1.a().toString());
+      $$2.ifPresent($$1x -> $$3.a("generator", $$1x.a().toString()));
+      $$0.a("__context", $$3);
+   }
+
+   public static int a(us $$0) {
+      return vh.b($$0, -1);
+   }
+
+   public CompletableFuture<Optional<us>> e(dbg $$0) {
+      return this.a.a($$0);
+   }
+
+   public CompletableFuture<Void> a(dbg $$0, us $$1) {
+      this.f($$0);
+      return this.a.a($$0, $$1);
+   }
+
+   protected void f(dbg $$0) {
+      if (this.b != null) {
+         this.b.a($$0.a());
+      }
+   }
+
+   public void o() {
+      this.a.a(true).join();
    }
 
    @Override
    public void close() throws IOException {
-      this.e.close();
+      this.a.close();
+   }
+
+   public dve p() {
+      return this.a;
    }
 }

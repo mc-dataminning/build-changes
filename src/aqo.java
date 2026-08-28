@@ -48,7 +48,7 @@ import javax.annotation.Nullable;
 import org.apache.commons.lang3.mutable.MutableBoolean;
 import org.slf4j.Logger;
 
-public class aqo extends dvf implements aqm.c {
+public class aqo extends dvg implements aqm.c {
    private static final byte f = -1;
    private static final byte g = 0;
    private static final byte h = 1;
@@ -65,19 +65,19 @@ public class aqo extends dvf implements aqm.c {
    private final LongSet p = new LongOpenHashSet();
    final arf q;
    private final ari r;
-   private final bpk<Runnable> s;
-   private dtz t;
-   private final dyi u;
-   private final dua v;
-   private final Supplier<epq> w;
-   private final cet x;
+   private final bpl<Runnable> s;
+   private dua t;
+   private final dyj u;
+   private final dub v;
+   private final Supplier<epr> w;
+   private final ceu x;
    final LongSet y = new LongOpenHashSet();
    private boolean z;
    private final aqr A;
-   private final bpm<aqr.a<Runnable>> B;
-   private final bpm<aqr.a<Runnable>> C;
+   private final bpn<aqr.a<Runnable>> B;
+   private final bpn<aqr.a<Runnable>> C;
    private final aro D;
-   private final dwb E;
+   private final dwc E;
    private final aqo.a F;
    private final AtomicInteger G = new AtomicInteger();
    private final String H;
@@ -87,76 +87,76 @@ public class aqo extends dvf implements aqm.c {
    private final Long2LongMap L = new Long2LongOpenHashMap();
    private final Queue<Runnable> M = Queues.newConcurrentLinkedQueue();
    private int N;
-   private dvb O;
+   private dvc O;
 
    public aqo(
       arf $$0,
-      epw.c $$1,
+      epx.c $$1,
       DataFixer $$2,
-      eml $$3,
+      emm $$3,
       Executor $$4,
-      bpk<Runnable> $$5,
-      dul $$6,
-      dtz $$7,
+      bpl<Runnable> $$5,
+      dum $$6,
+      dua $$7,
       aro $$8,
-      dwb $$9,
-      Supplier<epq> $$10,
+      dwc $$9,
+      Supplier<epr> $$10,
       int $$11,
       boolean $$12
    ) {
-      super(new dvo($$1.f(), $$0.af(), "chunk"), $$1.a($$0.af()).resolve("region"), $$2, $$12);
+      super(new dvp($$1.f(), $$0.af(), "chunk"), $$1.a($$0.af()).resolve("region"), $$2, $$12);
       Path $$13 = $$1.a($$0.af());
       this.H = $$13.getFileName().toString();
       this.q = $$0;
       this.t = $$7;
       jw $$14 = $$0.H_();
       long $$15 = $$0.C();
-      if ($$7 instanceof dxx $$16) {
-         this.u = dyi.a($$16.h().a(), $$14.b(lq.aH), $$15);
+      if ($$7 instanceof dxy $$16) {
+         this.u = dyj.a($$16.h().a(), $$14.b(lq.aH), $$15);
       } else {
-         this.u = dyi.a(dxz.e(), $$14.b(lq.aH), $$15);
+         this.u = dyj.a(dya.e(), $$14.b(lq.aH), $$15);
       }
 
       this.v = $$7.a($$14.b(lq.aL), this.u, $$15);
       this.s = $$5;
-      bpn<Runnable> $$17 = bpn.a($$4, "worldgen");
-      bpm<Runnable> $$18 = bpm.a("main", $$5::i);
+      bpo<Runnable> $$17 = bpo.a($$4, "worldgen");
+      bpn<Runnable> $$18 = bpn.a("main", $$5::i);
       this.D = $$8;
       this.E = $$9;
-      bpn<Runnable> $$19 = bpn.a($$4, "light");
+      bpo<Runnable> $$19 = bpo.a($$4, "light");
       this.A = new aqr(ImmutableList.of($$17, $$18, $$19), $$4, Integer.MAX_VALUE);
       this.B = this.A.a($$17, false);
       this.C = this.A.a($$18, false);
       this.r = new ari($$6, this, this.q.D_().g(), $$19, this.A.a($$19, false));
       this.F = new aqo.a($$4, $$5);
       this.w = $$10;
-      this.x = new cet(new dvo($$1.f(), $$0.af(), "poi"), $$13.resolve("poi"), $$2, $$12, $$14, $$0);
+      this.x = new ceu(new dvp($$1.f(), $$0.af(), "poi"), $$13.resolve("poi"), $$2, $$12, $$14, $$0);
       this.a($$11);
-      this.O = new dvb($$0, $$7, $$3, this.r);
+      this.O = new dvc($$0, $$7, $$3, this.r);
    }
 
-   protected dtz a() {
+   protected dua a() {
       return this.t;
    }
 
-   protected dua b() {
+   protected dub b() {
       return this.v;
    }
 
-   protected dyi c() {
+   protected dyj c() {
       return this.u;
    }
 
    public void d() {
-      DataResult<JsonElement> $$0 = dtz.a.encodeStart(JsonOps.INSTANCE, this.t);
-      DataResult<dtz> $$1 = $$0.flatMap($$0x -> dtz.a.parse(JsonOps.INSTANCE, $$0x));
+      DataResult<JsonElement> $$0 = dua.a.encodeStart(JsonOps.INSTANCE, this.t);
+      DataResult<dua> $$1 = $$0.flatMap($$0x -> dua.a.parse(JsonOps.INSTANCE, $$0x));
       $$1.ifSuccess($$0x -> {
          this.t = $$0x;
-         this.O = new dvb(this.O.a(), $$0x, this.O.c(), this.O.d());
+         this.O = new dvc(this.O.a(), $$0x, this.O.c(), this.O.d());
       });
    }
 
-   private static double a(dbf $$0, bsu $$1) {
+   private static double a(dbg $$0, bsv $$1) {
       double $$2 = (double)kb.a($$0.e, 8);
       double $$3 = (double)kb.a($$0.f, 8);
       double $$4 = $$2 - $$1.du();
@@ -165,7 +165,7 @@ public class aqo extends dvf implements aqm.c {
    }
 
    boolean a(arg $$0, int $$1, int $$2) {
-      return $$0.W().a($$1, $$2) && !$$0.c.g.a(dbf.c($$1, $$2));
+      return $$0.W().a($$1, $$2) && !$$0.c.g.a(dbg.c($$1, $$2));
    }
 
    private boolean b(arg $$0, int $$1, int $$2) {
@@ -205,14 +205,14 @@ public class aqo extends dvf implements aqm.c {
       };
    }
 
-   public String a(dbf $$0) {
+   public String a(dbg $$0) {
       aqm $$1 = this.b($$0.a());
       if ($$1 == null) {
          return "null";
       } else {
          String $$2 = $$1.l() + "\n";
-         dux $$3 = $$1.g();
-         dty $$4 = $$1.h();
+         duy $$3 = $$1.g();
+         dtz $$4 = $$1.h();
          if ($$3 != null) {
             $$2 = $$2 + "St: §" + $$3.c() + $$3 + "§r\n";
          }
@@ -227,48 +227,48 @@ public class aqo extends dvf implements aqm.c {
       }
    }
 
-   private CompletableFuture<aqp<List<dty>>> a(aqm $$0, int $$1, IntFunction<dux> $$2) {
+   private CompletableFuture<aqp<List<dtz>>> a(aqm $$0, int $$1, IntFunction<duy> $$2) {
       if ($$1 == 0) {
-         dux $$3 = $$2.apply(0);
+         duy $$3 = $$2.apply(0);
          return $$0.a($$3, this).thenApply($$0x -> $$0x.a(List::of));
       } else {
-         List<CompletableFuture<aqp<dty>>> $$4 = new ArrayList<>();
+         List<CompletableFuture<aqp<dtz>>> $$4 = new ArrayList<>();
          List<aqm> $$5 = new ArrayList<>();
-         dbf $$6 = $$0.k();
+         dbg $$6 = $$0.k();
          int $$7 = $$6.e;
          int $$8 = $$6.f;
 
          for (int $$9 = -$$1; $$9 <= $$1; $$9++) {
             for (int $$10 = -$$1; $$10 <= $$1; $$10++) {
                int $$11 = Math.max(Math.abs($$10), Math.abs($$9));
-               dbf $$12 = new dbf($$7 + $$10, $$8 + $$9);
+               dbg $$12 = new dbg($$7 + $$10, $$8 + $$9);
                long $$13 = $$12.a();
                aqm $$14 = this.a($$13);
                if ($$14 == null) {
                   return CompletableFuture.completedFuture(aqp.a(() -> "Unloaded " + $$12));
                }
 
-               dux $$15 = $$2.apply($$11);
-               CompletableFuture<aqp<dty>> $$16 = $$14.a($$15, this);
+               duy $$15 = $$2.apply($$11);
+               CompletableFuture<aqp<dtz>> $$16 = $$14.a($$15, this);
                $$5.add($$14);
                $$4.add($$16);
             }
          }
 
-         CompletableFuture<List<aqp<dty>>> $$17 = ac.d($$4);
-         CompletableFuture<aqp<List<dty>>> $$18 = $$17.thenApply($$3 -> {
-            List<dty> $$4x = Lists.newArrayList();
+         CompletableFuture<List<aqp<dtz>>> $$17 = ac.d($$4);
+         CompletableFuture<aqp<List<dtz>>> $$18 = $$17.thenApply($$3 -> {
+            List<dtz> $$4x = Lists.newArrayList();
             int $$5x = 0;
 
-            for (aqp<dty> $$6x : $$3) {
+            for (aqp<dtz> $$6x : $$3) {
                if ($$6x == null) {
                   throw this.a(new IllegalStateException("At least one of the chunk futures were null"), "n/a");
                }
 
-               dty $$7x = $$6x.b(null);
+               dtz $$7x = $$6x.b(null);
                if ($$7x == null) {
                   int $$8x = $$5x;
-                  return aqp.a(() -> "Unloaded " + new dbf($$7 + $$8x % ($$1 * 2 + 1), $$8 + $$8x / ($$1 * 2 + 1)) + " " + $$6x.b());
+                  return aqp.a(() -> "Unloaded " + new dbg($$7 + $$8x % ($$1 * 2 + 1), $$8 + $$8x / ($$1 * 2 + 1)) + " " + $$6x.b());
                }
 
                $$4x.add($$7x);
@@ -289,8 +289,8 @@ public class aqo extends dvf implements aqm.c {
    public y a(IllegalStateException $$0, String $$1) {
       StringBuilder $$2 = new StringBuilder();
       Consumer<aqm> $$3 = $$1x -> $$1x.p().forEach($$2x -> {
-            dux $$3x = (dux)$$2x.getFirst();
-            CompletableFuture<aqp<dty>> $$4x = (CompletableFuture<aqp<dty>>)$$2x.getSecond();
+            duy $$3x = (duy)$$2x.getFirst();
+            CompletableFuture<aqp<dtz>> $$4x = (CompletableFuture<aqp<dtz>>)$$2x.getSecond();
             if ($$4x != null && $$4x.isDone() && $$4x.join() == null) {
                $$2.append($$1x.k()).append(" - status: ").append($$3x).append(" future: ").append($$4x).append(System.lineSeparator());
             }
@@ -306,8 +306,8 @@ public class aqo extends dvf implements aqm.c {
       return new y($$4);
    }
 
-   public CompletableFuture<aqp<dui>> a(aqm $$0) {
-      return this.a($$0, 2, $$0x -> dux.n).thenApplyAsync($$0x -> $$0x.a($$0xx -> (dui)$$0xx.get($$0xx.size() / 2)), this.s);
+   public CompletableFuture<aqp<duj>> a(aqm $$0) {
+      return this.a($$0, 2, $$0x -> duy.n).thenApplyAsync($$0x -> $$0x.a($$0xx -> (duj)$$0xx.get($$0xx.size() / 2)), this.s);
    }
 
    @Nullable
@@ -332,7 +332,7 @@ public class aqo extends dvf implements aqm.c {
             if ($$2 != null) {
                $$2.a($$1);
             } else {
-               $$2 = new aqm(new dbf($$0), $$1, this.q, this.r, this.A, this);
+               $$2 = new aqm(new dbg($$0), $$1, this.q, this.r, this.A, this);
             }
 
             this.m.put($$0, $$2);
@@ -361,14 +361,14 @@ public class aqo extends dvf implements aqm.c {
          do {
             $$2.setFalse();
             $$1.stream().map($$0x -> {
-               CompletableFuture<dty> $$1x;
+               CompletableFuture<dtz> $$1x;
                do {
                   $$1x = $$0x.i();
                   this.s.c($$1x::isDone);
                } while ($$1x != $$0x.i());
 
                return $$1x.join();
-            }).filter($$0x -> $$0x instanceof duh || $$0x instanceof dui).filter(this::a).forEach($$1x -> $$2.setTrue());
+            }).filter($$0x -> $$0x instanceof dui || $$0x instanceof duj).filter(this::a).forEach($$1x -> $$2.setTrue());
          } while ($$2.isTrue());
 
          this.b(() -> true);
@@ -379,7 +379,7 @@ public class aqo extends dvf implements aqm.c {
    }
 
    protected void a(BooleanSupplier $$0) {
-      bni $$1 = this.q.ag();
+      bnj $$1 = this.q.ag();
       $$1.a("poi");
       this.x.a($$0);
       $$1.b("chunk_unload");
@@ -427,19 +427,19 @@ public class aqo extends dvf implements aqm.c {
    }
 
    private void a(long $$0, aqm $$1) {
-      CompletableFuture<dty> $$2 = $$1.i();
+      CompletableFuture<dtz> $$2 = $$1.i();
       $$2.thenAcceptAsync($$3 -> {
-         CompletableFuture<dty> $$4 = $$1.i();
+         CompletableFuture<dtz> $$4 = $$1.i();
          if ($$4 != $$2) {
             this.a($$0, $$1);
          } else {
             if (this.o.remove($$0, $$1) && $$3 != null) {
-               if ($$3 instanceof dui) {
-                  ((dui)$$3).c(false);
+               if ($$3 instanceof duj) {
+                  ((duj)$$3).c(false);
                }
 
                this.a($$3);
-               if (this.p.remove($$0) && $$3 instanceof dui $$5) {
+               if (this.p.remove($$0) && $$3 instanceof duj $$5) {
                   this.q.a($$5);
                }
 
@@ -466,19 +466,19 @@ public class aqo extends dvf implements aqm.c {
       }
    }
 
-   public CompletableFuture<aqp<dty>> a(aqm $$0, dux $$1) {
-      dbf $$2 = $$0.k();
-      if ($$1 == dux.c) {
+   public CompletableFuture<aqp<dtz>> a(aqm $$0, duy $$1) {
+      dbg $$2 = $$0.k();
+      if ($$1 == duy.c) {
          return this.g($$2).thenApply(aqp::a);
       } else {
-         if ($$1 == dux.l) {
-            this.F.a(ark.e, $$2, aqn.a(dux.l), $$2);
+         if ($$1 == duy.l) {
+            this.F.a(ark.e, $$2, aqn.a(duy.l), $$2);
          }
 
          if (!$$1.f()) {
-            dty $$3 = $$0.a($$1.d(), this).getNow(aqm.a).b(null);
+            dtz $$3 = $$0.a($$1.d(), this).getNow(aqm.a).b(null);
             if ($$3 != null && $$3.j().b($$1)) {
-               CompletableFuture<dty> $$4 = $$1.a(this.O, $$1x -> this.a($$0, $$1x), $$3);
+               CompletableFuture<dtz> $$4 = $$1.a(this.O, $$1x -> this.a($$0, $$1x), $$3);
                this.D.a($$2, $$1);
                return $$4.thenApply(aqp::a);
             }
@@ -488,7 +488,7 @@ public class aqo extends dvf implements aqm.c {
       }
    }
 
-   private CompletableFuture<dty> g(dbf $$0) {
+   private CompletableFuture<dtz> g(dbg $$0) {
       return this.k($$0).thenApply($$1 -> $$1.filter($$1x -> {
             boolean $$2 = b($$1x);
             if (!$$2) {
@@ -499,7 +499,7 @@ public class aqo extends dvf implements aqm.c {
          })).thenApplyAsync($$1 -> {
          this.q.ag().d("chunkLoad");
          if ($$1.isPresent()) {
-            dty $$2 = dve.a(this.q, this.x, $$0, $$1.get());
+            dtz $$2 = dvf.a(this.q, this.x, $$0, $$1.get());
             this.a($$0, $$2.j().g());
             return $$2;
          } else {
@@ -512,12 +512,15 @@ public class aqo extends dvf implements aqm.c {
       return $$0.b("Status", 8);
    }
 
-   private dty a(Throwable $$0, dbf $$1) {
+   private dtz a(Throwable $$0, dbg $$1) {
       Throwable $$3 = $$0 instanceof CompletionException $$2 ? $$2.getCause() : $$0;
       Throwable $$5 = $$3 instanceof y $$4 ? $$4.getCause() : $$3;
       boolean $$6 = $$5 instanceof Error;
       boolean $$7 = $$5 instanceof IOException || $$5 instanceof vd;
-      if (!$$6 && $$7) {
+      if (!$$6) {
+         if (!$$7) {
+         }
+
          i.error("Couldn't load chunk {}", $$1, $$5);
          this.q.o().a($$1);
          return this.h($$1);
@@ -530,33 +533,33 @@ public class aqo extends dvf implements aqm.c {
       }
    }
 
-   private dty h(dbf $$0) {
+   private dtz h(dbg $$0) {
       this.i($$0);
-      return new dus($$0, duv.a, this.q, this.q.H_().d(lq.az), null);
+      return new dut($$0, duw.a, this.q, this.q.H_().d(lq.az), null);
    }
 
-   private void i(dbf $$0) {
+   private void i(dbg $$0) {
       this.K.put($$0.a(), (byte)-1);
    }
 
-   private byte a(dbf $$0, duz $$1) {
-      return this.K.put($$0.a(), (byte)($$1 == duz.a ? -1 : 1));
+   private byte a(dbg $$0, dva $$1) {
+      return this.K.put($$0.a(), (byte)($$1 == dva.a ? -1 : 1));
    }
 
-   private CompletableFuture<aqp<dty>> b(aqm $$0, dux $$1) {
-      dbf $$2 = $$0.k();
-      CompletableFuture<aqp<List<dty>>> $$3 = this.a($$0, $$1.e(), $$1x -> this.a($$1, $$1x));
+   private CompletableFuture<aqp<dtz>> b(aqm $$0, duy $$1) {
+      dbg $$2 = $$0.k();
+      CompletableFuture<aqp<List<dtz>>> $$3 = this.a($$0, $$1.e(), $$1x -> this.a($$1, $$1x));
       this.q.ag().c(() -> "chunkGenerate " + $$1);
       Executor $$4 = $$1x -> this.B.a(aqr.a($$0, $$1x));
       return $$3.thenComposeAsync($$4x -> {
-         List<dty> $$5 = (List<dty>)$$4x.b(null);
+         List<dtz> $$5 = (List<dtz>)$$4x.b(null);
          if ($$5 == null) {
             this.b($$2);
             return CompletableFuture.completedFuture(aqp.a($$4x::b));
          } else {
             try {
-               dty $$6 = $$5.get($$5.size() / 2);
-               CompletableFuture<dty> $$7;
+               dtz $$6 = $$5.get($$5.size() / 2);
+               CompletableFuture<dtz> $$7;
                if ($$6.j().b($$1)) {
                   $$7 = $$1.a(this.O, $$1xx -> this.a($$0, $$1xx), $$6);
                } else {
@@ -571,7 +574,7 @@ public class aqo extends dvf implements aqm.c {
                p $$11 = $$10.a("Chunk to be generated");
                $$11.a("Status being generated", () -> lp.n.b($$1).toString());
                $$11.a("Location", String.format(Locale.ROOT, "%d,%d", $$2.e, $$2.f));
-               $$11.a("Position hash", dbf.c($$2.e, $$2.f));
+               $$11.a("Position hash", dbg.c($$2.e, $$2.f));
                $$11.a("Generator", this.t);
                this.s.execute(() -> {
                   throw new y($$10);
@@ -582,16 +585,16 @@ public class aqo extends dvf implements aqm.c {
       }, $$4);
    }
 
-   protected void b(dbf $$0) {
-      this.s.i(ac.a((Runnable)(() -> this.F.b(ark.e, $$0, aqn.a(dux.l), $$0)), (Supplier<String>)(() -> "release light ticket " + $$0)));
+   protected void b(dbg $$0) {
+      this.s.i(ac.a((Runnable)(() -> this.F.b(ark.e, $$0, aqn.a(duy.l), $$0)), (Supplier<String>)(() -> "release light ticket " + $$0)));
    }
 
-   private dux a(dux $$0, int $$1) {
-      dux $$2;
+   private duy a(duy $$0, int $$1) {
+      duy $$2;
       if ($$1 == 0) {
          $$2 = $$0.d();
       } else {
-         $$2 = dux.a(dux.a($$0) + $$1);
+         $$2 = duy.a(duy.a($$0) + $$1);
       }
 
       return $$2;
@@ -599,20 +602,20 @@ public class aqo extends dvf implements aqm.c {
 
    private static void a(arf $$0, List<us> $$1) {
       if (!$$1.isEmpty()) {
-         $$0.b(bta.a($$1, $$0));
+         $$0.b(btb.a($$1, $$0));
       }
    }
 
-   private CompletableFuture<dty> a(aqm $$0, dty $$1) {
+   private CompletableFuture<dtz> a(aqm $$0, dtz $$1) {
       return CompletableFuture.supplyAsync(() -> {
-         dbf $$2 = $$0.k();
-         dus $$3 = (dus)$$1;
-         dui $$4;
-         if ($$3 instanceof duh) {
-            $$4 = ((duh)$$3).C();
+         dbg $$2 = $$0.k();
+         dut $$3 = (dut)$$1;
+         duj $$4;
+         if ($$3 instanceof dui) {
+            $$4 = ((dui)$$3).C();
          } else {
-            $$4 = new dui(this.q, $$3, $$1xx -> a(this.q, $$3.E()));
-            $$0.a(new duh($$4, false));
+            $$4 = new duj(this.q, $$3, $$1xx -> a(this.q, $$3.E()));
+            $$0.a(new dui($$4, false));
          }
 
          $$4.b(() -> aqn.b($$0.l()));
@@ -627,10 +630,10 @@ public class aqo extends dvf implements aqm.c {
       }, $$1x -> this.C.a(aqr.a($$1x, $$0.k().a(), $$0::l)));
    }
 
-   public CompletableFuture<aqp<dui>> b(aqm $$0) {
-      CompletableFuture<aqp<List<dty>>> $$1 = this.a($$0, 1, $$0x -> dux.n);
-      CompletableFuture<aqp<dui>> $$2 = $$1.<aqp<dui>>thenApplyAsync(
-            $$0x -> $$0x.a($$0xx -> (dui)$$0xx.get($$0xx.size() / 2)), $$1x -> this.C.a(aqr.a($$0, $$1x))
+   public CompletableFuture<aqp<duj>> b(aqm $$0) {
+      CompletableFuture<aqp<List<dtz>>> $$1 = this.a($$0, 1, $$0x -> duy.n);
+      CompletableFuture<aqp<duj>> $$2 = $$1.<aqp<duj>>thenApplyAsync(
+            $$0x -> $$0x.a($$0xx -> (duj)$$0xx.get($$0xx.size() / 2)), $$1x -> this.C.a(aqr.a($$0, $$1x))
          )
          .thenApplyAsync($$1x -> $$1x.a($$1xx -> {
                $$1xx.H();
@@ -649,8 +652,8 @@ public class aqo extends dvf implements aqm.c {
       return $$2;
    }
 
-   private void a(dui $$0) {
-      dbf $$1 = $$0.f();
+   private void a(duj $$0) {
+      dbg $$1 = $$0.f();
 
       for (arg $$2 : this.I.a()) {
          if ($$2.W().a($$1)) {
@@ -659,8 +662,8 @@ public class aqo extends dvf implements aqm.c {
       }
    }
 
-   public CompletableFuture<aqp<dui>> c(aqm $$0) {
-      return this.a($$0, 1, dux::a).thenApplyAsync($$0x -> $$0x.a($$0xx -> (dui)$$0xx.get($$0xx.size() / 2)), $$1 -> this.C.a(aqr.a($$0, $$1)));
+   public CompletableFuture<aqp<duj>> c(aqm $$0) {
+      return this.a($$0, 1, duy::a).thenApplyAsync($$0x -> $$0x.a($$0xx -> (duj)$$0xx.get($$0xx.size() / 2)), $$1 -> this.C.a(aqr.a($$0, $$1)));
    }
 
    public int h() {
@@ -671,8 +674,8 @@ public class aqo extends dvf implements aqm.c {
       if (!$$0.n()) {
          return false;
       } else {
-         dty $$1 = $$0.i().getNow(null);
-         if (!($$1 instanceof duh) && !($$1 instanceof dui)) {
+         dtz $$1 = $$0.i().getNow(null);
+         if (!($$1 instanceof dui) && !($$1 instanceof duj)) {
             return false;
          } else {
             long $$2 = $$1.f().a();
@@ -693,28 +696,28 @@ public class aqo extends dvf implements aqm.c {
       }
    }
 
-   private boolean a(dty $$0) {
+   private boolean a(dtz $$0) {
       this.x.a($$0.f());
       if (!$$0.i()) {
          return false;
       } else {
          $$0.a(false);
-         dbf $$1 = $$0.f();
+         dbg $$1 = $$0.f();
 
          try {
-            dux $$2 = $$0.j();
-            if ($$2.g() != duz.b) {
+            duy $$2 = $$0.j();
+            if ($$2.g() != dva.b) {
                if (this.j($$1)) {
                   return false;
                }
 
-               if ($$2 == dux.c && $$0.g().values().stream().noneMatch(eis::b)) {
+               if ($$2 == duy.c && $$0.g().values().stream().noneMatch(eit::b)) {
                   return false;
                }
             }
 
             this.q.ag().d("chunkSave");
-            us $$3 = dve.a(this.q, $$0);
+            us $$3 = dvf.a(this.q, $$0);
             this.a($$1, $$3).exceptionallyAsync($$1x -> {
                this.q.o().b($$1);
                return null;
@@ -729,7 +732,7 @@ public class aqo extends dvf implements aqm.c {
       }
    }
 
-   private boolean j(dbf $$0) {
+   private boolean j(dbg $$0) {
       byte $$1 = this.K.get($$0.a());
       if ($$1 != 0) {
          return $$1 == 1;
@@ -747,7 +750,7 @@ public class aqo extends dvf implements aqm.c {
             return false;
          }
 
-         duz $$5 = dve.a($$2);
+         dva $$5 = dvf.a($$2);
          return this.a($$0, $$5) == 1;
       }
    }
@@ -768,23 +771,23 @@ public class aqo extends dvf implements aqm.c {
       return ayz.a($$0.E(), 2, this.N);
    }
 
-   private void a(arg $$0, dbf $$1) {
-      dui $$2 = this.d($$1.a());
+   private void a(arg $$0, dbg $$1) {
+      duj $$2 = this.d($$1.a());
       if ($$2 != null) {
          a($$0, $$2);
       }
    }
 
-   private static void a(arg $$0, dui $$1) {
+   private static void a(arg $$0, duj $$1) {
       $$0.c.g.a($$1);
    }
 
-   private static void b(arg $$0, dbf $$1) {
+   private static void b(arg $$0, dbg $$1) {
       $$0.c.g.a($$0, $$1);
    }
 
    @Nullable
-   public dui d(long $$0) {
+   public duj d(long $$0) {
       aqm $$1 = this.b($$0);
       return $$1 == null ? null : $$1.f();
    }
@@ -826,17 +829,17 @@ public class aqo extends dvf implements aqm.c {
       while (var4.hasNext()) {
          Entry<aqm> $$3 = (Entry<aqm>)var4.next();
          long $$4 = $$3.getLongKey();
-         dbf $$5 = new dbf($$4);
+         dbg $$5 = new dbg($$4);
          aqm $$6 = (aqm)$$3.getValue();
-         Optional<dty> $$7 = Optional.ofNullable($$6.h());
-         Optional<dui> $$8 = $$7.flatMap($$0x -> $$0x instanceof dui ? Optional.of((dui)$$0x) : Optional.empty());
+         Optional<dtz> $$7 = Optional.ofNullable($$6.h());
+         Optional<duj> $$8 = $$7.flatMap($$0x -> $$0x instanceof duj ? Optional.of((duj)$$0x) : Optional.empty());
          $$1.a(
             $$5.e,
             $$5.f,
             $$6.l(),
             $$7.isPresent(),
-            $$7.map(dty::j).orElse(null),
-            $$8.map(dui::D).orElse(null),
+            $$7.map(dtz::j).orElse(null),
+            $$8.map(duj::D).orElse(null),
             a($$6.c()),
             a($$6.a()),
             a($$6.b()),
@@ -851,9 +854,9 @@ public class aqo extends dvf implements aqm.c {
       }
    }
 
-   private static String a(CompletableFuture<aqp<dui>> $$0) {
+   private static String a(CompletableFuture<aqp<duj>> $$0) {
       try {
-         aqp<dui> $$1 = $$0.getNow(null);
+         aqp<duj> $$1 = $$0.getNow(null);
          if ($$1 != null) {
             return $$1.a() ? "done" : "unloaded";
          } else {
@@ -866,7 +869,7 @@ public class aqo extends dvf implements aqm.c {
       }
    }
 
-   private CompletableFuture<Optional<us>> k(dbf $$0) {
+   private CompletableFuture<Optional<us>> k(dbg $$0) {
       return this.e($$0).thenApplyAsync($$0x -> $$0x.map(this::c), ac.g());
    }
 
@@ -874,7 +877,7 @@ public class aqo extends dvf implements aqm.c {
       return this.a(this.q.af(), this.w, $$0, this.t.c());
    }
 
-   boolean c(dbf $$0) {
+   boolean c(dbg $$0) {
       if (!this.F.f($$0.a())) {
          return false;
       } else {
@@ -888,7 +891,7 @@ public class aqo extends dvf implements aqm.c {
       }
    }
 
-   public List<arg> d(dbf $$0) {
+   public List<arg> d(dbg $$0) {
       long $$1 = $$0.a();
       if (!this.F.f($$1)) {
          return List.of();
@@ -905,7 +908,7 @@ public class aqo extends dvf implements aqm.c {
       }
    }
 
-   private boolean c(arg $$0, dbf $$1) {
+   private boolean c(arg $$0, dbg $$1) {
       if ($$0.N_()) {
          return false;
       } else {
@@ -915,7 +918,7 @@ public class aqo extends dvf implements aqm.c {
    }
 
    private boolean c(arg $$0) {
-      return $$0.N_() && !this.q.ab().b(dbu.r);
+      return $$0.N_() && !this.q.ab().b(dbv.r);
    }
 
    void a(arg $$0, boolean $$1) {
@@ -986,7 +989,7 @@ public class aqo extends dvf implements aqm.c {
    }
 
    private void e(arg $$0) {
-      dbf $$1 = $$0.dr();
+      dbg $$1 = $$0.dr();
       int $$2 = this.b($$0);
       if ($$0.W() instanceof aqt.a $$3 && $$3.a().equals($$1) && $$3.b() == $$2) {
          return;
@@ -1008,7 +1011,7 @@ public class aqo extends dvf implements aqm.c {
    }
 
    @Override
-   public List<arg> a(dbf $$0, boolean $$1) {
+   public List<arg> a(dbg $$0, boolean $$1) {
       Set<arg> $$2 = this.I.a();
       Builder<arg> $$3 = ImmutableList.builder();
 
@@ -1021,9 +1024,9 @@ public class aqo extends dvf implements aqm.c {
       return $$3.build();
    }
 
-   protected void a(bsu $$0) {
-      if (!($$0 instanceof chz)) {
-         bta<?> $$1 = $$0.ak();
+   protected void a(bsv $$0) {
+      if (!($$0 instanceof cia)) {
+         btb<?> $$1 = $$0.ak();
          int $$2 = $$1.o() * 16;
          if ($$2 != 0) {
             int $$3 = $$1.p();
@@ -1049,7 +1052,7 @@ public class aqo extends dvf implements aqm.c {
       }
    }
 
-   protected void b(bsu $$0) {
+   protected void b(bsv $$0) {
       if ($$0 instanceof arg $$1) {
          this.a($$1, false);
          ObjectIterator var3 = this.J.values().iterator();
@@ -1082,7 +1085,7 @@ public class aqo extends dvf implements aqm.c {
          boolean $$6 = !Objects.equals($$4, $$5);
          if ($$6) {
             $$3.a($$2);
-            bsu $$7 = $$3.c;
+            bsv $$7 = $$3.c;
             if ($$7 instanceof arg) {
                $$1.add((arg)$$7);
             }
@@ -1105,27 +1108,27 @@ public class aqo extends dvf implements aqm.c {
       }
    }
 
-   public void a(bsu $$0, zw<?> $$1) {
+   public void a(bsv $$0, zw<?> $$1) {
       aqo.b $$2 = (aqo.b)this.J.get($$0.al());
       if ($$2 != null) {
          $$2.a($$1);
       }
    }
 
-   protected void b(bsu $$0, zw<?> $$1) {
+   protected void b(bsv $$0, zw<?> $$1) {
       aqo.b $$2 = (aqo.b)this.J.get($$0.al());
       if ($$2 != null) {
          $$2.b($$1);
       }
    }
 
-   public void a(List<dty> $$0) {
-      Map<arg, List<dui>> $$1 = new HashMap<>();
+   public void a(List<dtz> $$0) {
+      Map<arg, List<duj>> $$1 = new HashMap<>();
 
-      for (dty $$2 : $$0) {
-         dbf $$3 = $$2.f();
-         dui $$5;
-         if ($$2 instanceof dui $$4) {
+      for (dtz $$2 : $$0) {
+         dbg $$3 = $$2.f();
+         duj $$5;
+         if ($$2 instanceof duj $$4) {
             $$5 = $$4;
          } else {
             $$5 = this.q.d($$3.e, $$3.f);
@@ -1139,7 +1142,7 @@ public class aqo extends dvf implements aqm.c {
       $$1.forEach(($$0x, $$1x) -> $$0x.c.b(acy.a($$1x)));
    }
 
-   protected cet m() {
+   protected ceu m() {
       return this.x;
    }
 
@@ -1147,13 +1150,13 @@ public class aqo extends dvf implements aqm.c {
       return this.H;
    }
 
-   void a(dbf $$0, aqy $$1) {
+   void a(dbg $$0, aqy $$1) {
       this.E.onChunkStatusChange($$0, $$1);
    }
 
-   public void a(dbf $$0, int $$1) {
+   public void a(dbg $$0, int $$1) {
       int $$2 = $$1 + 1;
-      dbf.a($$0, $$2).forEach($$0x -> {
+      dbg.a($$0, $$2).forEach($$0x -> {
          aqm $$1x = this.b($$0x.a());
          if ($$1x != null) {
             $$1x.a(this.r.a($$0x.e, $$0x.f));
@@ -1186,12 +1189,12 @@ public class aqo extends dvf implements aqm.c {
 
    class b {
       final are b;
-      final bsu c;
+      final bsv c;
       private final int d;
       kb e;
       private final Set<asi> f = Sets.newIdentityHashSet();
 
-      public b(final bsu $$0, final int $$1, final int $$2, final boolean $$3) {
+      public b(final bsv $$0, final int $$1, final int $$2, final boolean $$3) {
          this.b = new are(aqo.this.q, $$0, $$2, $$3, this::a);
          this.c = $$0;
          this.d = $$1;
@@ -1235,7 +1238,7 @@ public class aqo extends dvf implements aqm.c {
 
       public void b(arg $$0) {
          if ($$0 != this.c) {
-            evr $$1 = $$0.dn().d(this.c.dn());
+            evs $$1 = $$0.dn().d(this.c.dn());
             int $$2 = aqo.this.b($$0);
             double $$3 = (double)Math.min(this.b(), $$2 * 16);
             double $$4 = $$1.c * $$1.c + $$1.e * $$1.e;
@@ -1258,7 +1261,7 @@ public class aqo extends dvf implements aqm.c {
       private int b() {
          int $$0 = this.d;
 
-         for (bsu $$1 : this.c.cW()) {
+         for (bsv $$1 : this.c.cW()) {
             int $$2 = $$1.ak().o() * 16;
             if ($$2 > $$0) {
                $$0 = $$2;

@@ -1,49 +1,54 @@
 import java.util.List;
 
-public class cvp extends cuk implements ctr {
-   public static final int a = 5;
-   public static final float b = 3.0F;
-
-   public cvp(cuk.a $$0) {
+public class cvp extends cul {
+   public cvp(cul.a $$0) {
       super($$0);
-      dhe.a(this, cse.a);
+   }
+
+   public static cxv h() {
+      return new cxv(List.of(cxv.a.a(List.of(dfc.bs), 15.0F), cxv.a.b(awp.O, 15.0F), cxv.a.b(awp.a, 5.0F), cxv.a.b(List.of(dfc.ff, dfc.fg), 2.0F)), 1.0F, 1);
    }
 
    @Override
-   public String i(cup $$0) {
-      cti $$1 = $$0.a(km.Y);
-      return $$1 != null ? this.a() + "." + $$1.b() : super.i($$0);
+   public boolean a(cuq $$0, dbz $$1, dsd $$2, iz $$3, btq $$4) {
+      if (!$$1.B && !$$2.a(awp.aK)) {
+         $$0.a(1, $$4, btc.a);
+      }
+
+      return $$2.a(awp.O)
+         || $$2.a(dfc.bs)
+         || $$2.a(dfc.bt)
+         || $$2.a(dfc.bu)
+         || $$2.a(dfc.bv)
+         || $$2.a(dfc.sG)
+         || $$2.a(dfc.ff)
+         || $$2.a(dfc.fI)
+         || $$2.a(awp.a);
    }
 
    @Override
-   public void a(cup $$0, cuk.b $$1, List<xp> $$2, cwi $$3) {
-      csk.a($$0, $$2);
-   }
+   public bqv a(cyd $$0) {
+      dbz $$1 = $$0.q();
+      iz $$2 = $$0.a();
+      dsd $$3 = $$1.a_($$2);
+      if ($$3.b() instanceof dip $$5 && !$$5.o($$3)) {
+         cmy $$6 = $$0.o();
+         cuq $$7 = $$0.n();
+         if ($$6 instanceof arg) {
+            am.N.a((arg)$$6, $$2, $$7);
+         }
 
-   @Override
-   public cwk c(cup $$0) {
-      return cwk.d;
-   }
+         $$1.a($$6, $$2, awa.lp, awb.e, 1.0F, 1.0F);
+         dsd $$8 = $$5.n($$3);
+         $$1.b($$2, $$8);
+         $$1.a(dww.c, $$2, dww.a.a($$0.o(), $$8));
+         if ($$6 != null) {
+            $$7.a(1, $$6, btq.d($$0.p()));
+         }
 
-   @Override
-   public int b(cup $$0) {
-      return 72000;
-   }
+         return bqv.a($$1.B);
+      }
 
-   @Override
-   public bqv<cup> a(dby $$0, cmx $$1, bqt $$2) {
-      cup $$3 = $$1.b($$2);
-      $$1.c($$2);
-      return bqv.b($$3);
-   }
-
-   @Override
-   public boolean a(cup $$0, cup $$1) {
-      return $$1.a(awy.b) || super.a($$0, $$1);
-   }
-
-   @Override
-   public btb m() {
-      return btb.b;
+      return super.a($$0);
    }
 }

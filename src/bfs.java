@@ -66,7 +66,7 @@ public class bfs extends DataFix {
             )
          )
       );
-      CompoundListType<String, ?> $$2 = DSL.compoundList(bii.a(), a("generator", $$1));
+      CompoundListType<String, ?> $$2 = DSL.compoundList(bij.a(), a("generator", $$1));
       Type<?> $$3 = DSL.and($$2, DSL.remainderType());
       Type<?> $$4 = $$0.getType(bgx.M);
       FieldFinder<?> $$5 = new FieldFinder("dimensions", $$3);
@@ -96,6 +96,6 @@ public class bfs extends DataFix {
 
    private <T> Dynamic<T> a(Dynamic<T> $$0) {
       long $$1 = $$0.get("seed").asLong(0L);
-      return new Dynamic($$0.getOps(), bic.a($$0, $$1, bic.a($$0, $$1), false));
+      return new Dynamic($$0.getOps(), bid.a($$0, $$1, bid.a($$0, $$1), false));
    }
 }

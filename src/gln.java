@@ -1,18 +1,15 @@
-public class gln extends giw<cji> {
-   private final gei a;
+public class gln extends gkd<cpg> {
+   private final gej f;
 
-   public gln(gix.a $$0) {
-      super($$0);
-      this.d = 0.5F;
-      this.a = $$0.c();
+   public gln(giy.a $$0) {
+      super($$0, fxa.bG);
+      this.f = $$0.c();
    }
 
-   public void a(cji $$0, float $$1, float $$2, ezy $$3, gdo $$4, int $$5) {
-      $$3.a();
-      $$3.a(0.0F, 0.5F, 0.0F);
-      int $$6 = $$0.u();
-      if ((float)$$6 - $$2 + 1.0F < 10.0F) {
-         float $$7 = 1.0F - ((float)$$6 - $$2 + 1.0F) / 10.0F;
+   protected void a(cpg $$0, float $$1, dsd $$2, ezz $$3, gdp $$4, int $$5) {
+      int $$6 = $$0.C();
+      if ($$6 > -1 && (float)$$6 - $$1 + 1.0F < 10.0F) {
+         float $$7 = 1.0F - ((float)$$6 - $$1 + 1.0F) / 10.0F;
          $$7 = ayz.a($$7, 0.0F, 1.0F);
          $$7 *= $$7;
          $$7 *= $$7;
@@ -20,15 +17,17 @@ public class gln extends giw<cji> {
          $$3.b($$8, $$8, $$8);
       }
 
-      $$3.a(a.d.rotationDegrees(-90.0F));
-      $$3.a(-0.5F, -0.5F, 0.5F);
-      $$3.a(a.d.rotationDegrees(90.0F));
-      glm.a(this.a, $$0.v(), $$3, $$4, $$5, $$6 / 5 % 2 == 0);
-      $$3.b();
-      super.a($$0, $$1, $$2, $$3, $$4, $$5);
+      a(this.f, $$2, $$3, $$4, $$5, $$6 > -1 && $$6 / 5 % 2 == 0);
    }
 
-   public alf a(cji $$0) {
-      return goy.e;
+   public static void a(gej $$0, dsd $$1, ezz $$2, gdp $$3, int $$4, boolean $$5) {
+      int $$6;
+      if ($$5) {
+         $$6 = gor.a(gor.a(1.0F), 10);
+      } else {
+         $$6 = gor.d;
+      }
+
+      $$0.a($$1, $$2, $$3, $$4, $$6);
    }
 }

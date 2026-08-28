@@ -27,7 +27,7 @@ public abstract class bfb extends DataFix {
    }
 
    public static UnaryOperator<Typed<?>> a(Type<?> $$0, Predicate<String> $$1, UnaryOperator<Dynamic<?>> $$2) {
-      OpticFinder<Pair<String, String>> $$3 = DSL.fieldFinder("id", DSL.named(bgx.D.typeName(), bii.a()));
+      OpticFinder<Pair<String, String>> $$3 = DSL.fieldFinder("id", DSL.named(bgx.D.typeName(), bij.a()));
       OpticFinder<?> $$4 = $$0.findField("tag");
       return $$4x -> {
          Optional<Pair<String, String>> $$5 = $$4x.getOptional($$3);

@@ -1,19 +1,25 @@
-public class dkf {
-   private static final double b = 0.826;
-   public static final double a = 0.1;
+import com.mojang.serialization.MapCodec;
 
-   public static boolean a(dsc $$0) {
-      return $$0.i();
+public class dkf extends dfj {
+   public static final MapCodec<dkf> a = b(dkf::new);
+   protected static final ewl b = dfa.a(2.0, 0.0, 2.0, 14.0, 3.0, 14.0);
+
+   @Override
+   public MapCodec<dkf> a() {
+      return a;
    }
 
-   public static int a(azh $$0) {
-      double $$1 = 1.0;
+   public dkf(dsc.d $$0) {
+      super($$0);
+   }
 
-      int $$2;
-      for ($$2 = 0; $$0.j() < $$1; $$2++) {
-         $$1 *= 0.826;
-      }
+   @Override
+   protected ewl a(dsd $$0, dbf $$1, iz $$2, evx $$3) {
+      return b;
+   }
 
-      return $$2;
+   @Override
+   protected boolean b(dsd $$0, dbf $$1, iz $$2) {
+      return $$0.a(awp.aL) || $$0.a(dfc.dX) || super.b($$0, $$1, $$2);
    }
 }

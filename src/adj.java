@@ -1,8 +1,8 @@
-public record adj(long[] b, blv c) implements zw<aci> {
+public record adj(long[] b, blw c) implements zw<aci> {
    public static final zn<wm, adj> a = zw.a(adj::a, adj::new);
 
    private adj(wm $$0) {
-      this($$0.d(), $$0.b(blv.class));
+      this($$0.d(), $$0.b(blw.class));
    }
 
    private void a(wm $$0) {
@@ -19,7 +19,7 @@ public record adj(long[] b, blv c) implements zw<aci> {
       $$0.a(this);
    }
 
-   public blv e() {
+   public blw e() {
       return this.c;
    }
 }

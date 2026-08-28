@@ -7,7 +7,7 @@ public class nc {
       return new mt(
          $$0,
          Set.of(),
-         List.of(new mt.a(my::new, etd.r), new mt.a(mz::new, etd.c), new mt.a(na::new, etd.g), new mt.a(nd::new, etd.s), new mt.a(nb::new, etd.h)),
+         List.of(new mt.a(my::new, ete.r), new mt.a(mz::new, ete.c), new mt.a(na::new, ete.g), new mt.a(nd::new, ete.s), new mt.a(nb::new, ete.h)),
          $$1
       );
    }

@@ -403,7 +403,7 @@ public class bfc extends DataFix {
 
    public TypeRewriteRule makeRule() {
       Type<?> $$0 = this.getInputSchema().getType(bgx.t);
-      OpticFinder<Pair<String, String>> $$1 = DSL.fieldFinder("id", DSL.named(bgx.D.typeName(), bii.a()));
+      OpticFinder<Pair<String, String>> $$1 = DSL.fieldFinder("id", DSL.named(bgx.D.typeName(), bij.a()));
       OpticFinder<?> $$2 = $$0.findField("tag");
       return this.fixTypeEverywhereTyped("ItemInstanceTheFlatteningFix", $$0, $$2x -> {
          Optional<Pair<String, String>> $$3 = $$2x.getOptional($$1);

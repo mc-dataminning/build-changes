@@ -1,15 +1,15 @@
 public class ait implements zw<agw> {
    public static final zn<wm, ait> a = zw.a(ait::a, ait::new);
-   private final bqt b;
+   private final bqu b;
    private final int c;
 
-   public ait(bqt $$0, int $$1) {
+   public ait(bqu $$0, int $$1) {
       this.b = $$0;
       this.c = $$1;
    }
 
    private ait(wm $$0) {
-      this.b = $$0.b(bqt.class);
+      this.b = $$0.b(bqu.class);
       this.c = $$0.l();
    }
 
@@ -27,7 +27,7 @@ public class ait implements zw<agw> {
       $$0.a(this);
    }
 
-   public bqt b() {
+   public bqu b() {
       return this.b;
    }
 

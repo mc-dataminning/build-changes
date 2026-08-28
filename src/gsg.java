@@ -1,49 +1,34 @@
-public class gsg extends grw {
+public class gsg extends grx {
    private static final float n = 0.0F;
-   private static final float o = 0.7F;
-   private static final float p = 0.0F;
-   private static final float q = 1.0F;
-   private static final float r = 0.0025F;
-   private final cot s;
-   private float t = 0.0F;
+   private static final float o = 1.0F;
+   private static final float p = 0.7F;
+   private static final float q = 0.5F;
+   private final cka r;
 
-   public gsg(cot $$0) {
-      super(awa.oN, awb.g, gsn.t());
-      this.s = $$0;
+   public gsg(cka $$0) {
+      super(awa.ls, awb.f, gso.t());
+      this.r = $$0;
+      this.k = gso.a.a;
       this.i = true;
       this.j = 0;
-      this.d = 0.0F;
-      this.f = (double)((float)$$0.du());
-      this.g = (double)((float)$$0.dw());
-      this.h = (double)((float)$$0.dA());
    }
 
    @Override
    public boolean s() {
-      return !this.s.aW();
-   }
-
-   @Override
-   public boolean r() {
-      return true;
+      return !this.r.aW();
    }
 
    @Override
    public void q() {
-      if (this.s.dK()) {
-         this.n();
+      if (!this.r.dK() && this.r.p() == null) {
+         this.f = (double)((float)this.r.du());
+         this.g = (double)((float)this.r.dw());
+         this.h = (double)((float)this.r.dA());
+         float $$0 = this.r.I(0.0F);
+         this.d = 0.0F + 1.0F * $$0 * $$0;
+         this.e = 0.7F + 0.5F * $$0;
       } else {
-         this.f = (double)((float)this.s.du());
-         this.g = (double)((float)this.s.dw());
-         this.h = (double)((float)this.s.dA());
-         float $$0 = (float)this.s.ds().h();
-         if ($$0 >= 0.01F && this.s.dP().s().i()) {
-            this.t = ayz.a(this.t + 0.0025F, 0.0F, 1.0F);
-            this.d = ayz.i(ayz.a($$0, 0.0F, 0.5F), 0.0F, 0.7F);
-         } else {
-            this.t = 0.0F;
-            this.d = 0.0F;
-         }
+         this.n();
       }
    }
 }

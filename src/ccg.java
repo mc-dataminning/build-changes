@@ -1,64 +1,102 @@
 import java.util.EnumSet;
-import java.util.function.Predicate;
+import java.util.Iterator;
+import java.util.List;
 import javax.annotation.Nullable;
 
-public class ccg<T extends btp> extends ccn {
-   private static final int i = 10;
-   protected final Class<T> a;
-   protected final int b;
+public class ccg extends cco {
+   private static final ceh a = ceh.a().d().e();
+   private static final int b = 10;
+   private boolean c;
+   private int d;
+   private final Class<?>[] i;
    @Nullable
-   protected btp c;
-   protected ceg d;
+   private Class<?>[] j;
 
-   public ccg(btr $$0, Class<T> $$1, boolean $$2) {
-      this($$0, $$1, 10, $$2, false, null);
-   }
-
-   public ccg(btr $$0, Class<T> $$1, boolean $$2, Predicate<btp> $$3) {
-      this($$0, $$1, 10, $$2, false, $$3);
-   }
-
-   public ccg(btr $$0, Class<T> $$1, boolean $$2, boolean $$3) {
-      this($$0, $$1, 10, $$2, $$3, null);
-   }
-
-   public ccg(btr $$0, Class<T> $$1, int $$2, boolean $$3, boolean $$4, @Nullable Predicate<btp> $$5) {
-      super($$0, $$3, $$4);
-      this.a = $$1;
-      this.b = b($$2);
-      this.a(EnumSet.of(can.a.d));
-      this.d = ceg.a().a(this.l()).a($$5);
+   public ccg(btz $$0, Class<?>... $$1) {
+      super($$0, true);
+      this.i = $$1;
+      this.a(EnumSet.of(cao.a.d));
    }
 
    @Override
    public boolean a() {
-      if (this.b > 0 && this.e.el().a(this.b) != 0) {
+      int $$0 = this.e.en();
+      btq $$1 = this.e.em();
+      if ($$0 != this.d && $$1 != null) {
+         if ($$1.ak() == btb.by && this.e.dP().ab().b(dbv.O)) {
+            return false;
+         } else {
+            for (Class<?> $$2 : this.i) {
+               if ($$2.isAssignableFrom($$1.getClass())) {
+                  return false;
+               }
+            }
+
+            return this.a($$1, a);
+         }
+      } else {
          return false;
-      } else {
-         this.h();
-         return this.c != null;
       }
    }
 
-   protected evm a(double $$0) {
-      return this.e.cK().c($$0, 4.0, $$0);
-   }
-
-   protected void h() {
-      if (this.a != cmx.class && this.a != arg.class) {
-         this.c = this.e.dP().a(this.e.dP().a(this.a, this.a(this.l()), $$0 -> true), this.d, this.e, this.e.du(), this.e.dy(), this.e.dA());
-      } else {
-         this.c = this.e.dP().a(this.d, this.e, this.e.du(), this.e.dy(), this.e.dA());
-      }
+   public ccg a(Class<?>... $$0) {
+      this.c = true;
+      this.j = $$0;
+      return this;
    }
 
    @Override
    public void c() {
-      this.e.h(this.c);
+      this.e.h(this.e.em());
+      this.g = this.e.p();
+      this.d = this.e.en();
+      this.h = 300;
+      if (this.c) {
+         this.h();
+      }
+
       super.c();
    }
 
-   public void a(@Nullable btp $$0) {
-      this.c = $$0;
+   protected void h() {
+      double $$0 = this.l();
+      evn $$1 = evn.a(this.e.dn()).c($$0, 10.0, $$0);
+      List<? extends bts> $$2 = this.e.dP().a((Class<? extends bts>)this.e.getClass(), $$1, bta.f);
+      Iterator var5 = $$2.iterator();
+
+      while (true) {
+         bts $$3;
+         while (true) {
+            if (!var5.hasNext()) {
+               return;
+            }
+
+            $$3 = (bts)var5.next();
+            if (this.e != $$3 && $$3.p() == null && (!(this.e instanceof bun) || ((bun)this.e).P_() == ((bun)$$3).P_()) && !$$3.s(this.e.em())) {
+               if (this.j == null) {
+                  break;
+               }
+
+               boolean $$4 = false;
+
+               for (Class<?> $$5 : this.j) {
+                  if ($$3.getClass() == $$5) {
+                     $$4 = true;
+                     break;
+                  }
+               }
+
+               if (!$$4) {
+                  break;
+               }
+            }
+         }
+
+         this.a($$3, this.e.em());
+      }
+   }
+
+   protected void a(bts $$0, btq $$1) {
+      $$0.h($$1);
    }
 }

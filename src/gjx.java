@@ -1,103 +1,23 @@
-import org.joml.Matrix4f;
+public class gjx extends gix<cjc> {
+   private static final alf a = new alf("textures/entity/lead_knot.png");
+   private final fus<cjc> f;
 
-public class gjx extends giw<bto> {
-   public gjx(gix.a $$0) {
+   public gjx(giy.a $$0) {
       super($$0);
+      this.f = new fus<>($$0.a(fxa.aw));
    }
 
-   public void a(bto $$0, float $$1, float $$2, ezy $$3, gdo $$4, int $$5) {
-      float[] $$6 = new float[8];
-      float[] $$7 = new float[8];
-      float $$8 = 0.0F;
-      float $$9 = 0.0F;
-      azh $$10 = azh.a($$0.b);
-
-      for (int $$11 = 7; $$11 >= 0; $$11--) {
-         $$6[$$11] = $$8;
-         $$7[$$11] = $$9;
-         $$8 += (float)($$10.a(11) - 5);
-         $$9 += (float)($$10.a(11) - 5);
-      }
-
-      fac $$12 = $$4.getBuffer(gdw.s());
-      Matrix4f $$13 = $$3.c().a();
-
-      for (int $$14 = 0; $$14 < 4; $$14++) {
-         azh $$15 = azh.a($$0.b);
-
-         for (int $$16 = 0; $$16 < 3; $$16++) {
-            int $$17 = 7;
-            int $$18 = 0;
-            if ($$16 > 0) {
-               $$17 = 7 - $$16;
-            }
-
-            if ($$16 > 0) {
-               $$18 = $$17 - 2;
-            }
-
-            float $$19 = $$6[$$17] - $$8;
-            float $$20 = $$7[$$17] - $$9;
-
-            for (int $$21 = $$17; $$21 >= $$18; $$21--) {
-               float $$22 = $$19;
-               float $$23 = $$20;
-               if ($$16 == 0) {
-                  $$19 += (float)($$15.a(11) - 5);
-                  $$20 += (float)($$15.a(11) - 5);
-               } else {
-                  $$19 += (float)($$15.a(31) - 15);
-                  $$20 += (float)($$15.a(31) - 15);
-               }
-
-               float $$24 = 0.5F;
-               float $$25 = 0.45F;
-               float $$26 = 0.45F;
-               float $$27 = 0.5F;
-               float $$28 = 0.1F + (float)$$14 * 0.2F;
-               if ($$16 == 0) {
-                  $$28 *= (float)$$21 * 0.1F + 1.0F;
-               }
-
-               float $$29 = 0.1F + (float)$$14 * 0.2F;
-               if ($$16 == 0) {
-                  $$29 *= ((float)$$21 - 1.0F) * 0.1F + 1.0F;
-               }
-
-               a($$13, $$12, $$19, $$20, $$21, $$22, $$23, 0.45F, 0.45F, 0.5F, $$28, $$29, false, false, true, false);
-               a($$13, $$12, $$19, $$20, $$21, $$22, $$23, 0.45F, 0.45F, 0.5F, $$28, $$29, true, false, true, true);
-               a($$13, $$12, $$19, $$20, $$21, $$22, $$23, 0.45F, 0.45F, 0.5F, $$28, $$29, true, true, false, true);
-               a($$13, $$12, $$19, $$20, $$21, $$22, $$23, 0.45F, 0.45F, 0.5F, $$28, $$29, false, true, false, false);
-            }
-         }
-      }
+   public void a(cjc $$0, float $$1, float $$2, ezz $$3, gdp $$4, int $$5) {
+      $$3.a();
+      $$3.b(-1.0F, -1.0F, 1.0F);
+      this.f.a($$0, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F);
+      fad $$6 = $$4.getBuffer(this.f.a(a));
+      this.f.a($$3, $$6, $$5, gor.d, 1.0F, 1.0F, 1.0F, 1.0F);
+      $$3.b();
+      super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
-   private static void a(
-      Matrix4f $$0,
-      fac $$1,
-      float $$2,
-      float $$3,
-      int $$4,
-      float $$5,
-      float $$6,
-      float $$7,
-      float $$8,
-      float $$9,
-      float $$10,
-      float $$11,
-      boolean $$12,
-      boolean $$13,
-      boolean $$14,
-      boolean $$15
-   ) {
-      $$1.a($$0, $$2 + ($$12 ? $$11 : -$$11), (float)($$4 * 16), $$3 + ($$13 ? $$11 : -$$11)).a($$7, $$8, $$9, 0.3F).e();
-      $$1.a($$0, $$5 + ($$12 ? $$10 : -$$10), (float)(($$4 + 1) * 16), $$6 + ($$13 ? $$10 : -$$10)).a($$7, $$8, $$9, 0.3F).e();
-      $$1.a($$0, $$5 + ($$14 ? $$10 : -$$10), (float)(($$4 + 1) * 16), $$6 + ($$15 ? $$10 : -$$10)).a($$7, $$8, $$9, 0.3F).e();
-      $$1.a($$0, $$2 + ($$14 ? $$11 : -$$11), (float)($$4 * 16), $$3 + ($$15 ? $$11 : -$$11)).a($$7, $$8, $$9, 0.3F).e();
-   }
-
-   public alf a(bto $$0) {
-      return goy.e;
+   public alf a(cjc $$0) {
+      return a;
    }
 }

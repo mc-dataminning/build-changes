@@ -8,11 +8,11 @@ public class au extends dr<au.a> {
       return au.a.a;
    }
 
-   public void a(arg $$0, dsc $$1, cup $$2, int $$3) {
+   public void a(arg $$0, dsd $$1, cuq $$2, int $$3) {
       this.a($$0, $$3x -> $$3x.a($$1, $$2, $$3));
    }
 
-   public static record a(Optional<bf> b, Optional<ji<dez>> c, Optional<cp> d, de.d e) implements dr.a {
+   public static record a(Optional<bf> b, Optional<ji<dfa>> c, Optional<cp> d, de.d e) implements dr.a {
       public static final Codec<au.a> a = RecordCodecBuilder.create(
          $$0 -> $$0.group(
                   bu.b.optionalFieldOf("player").forGetter(au.a::a),
@@ -23,11 +23,11 @@ public class au extends dr<au.a> {
                .apply($$0, au.a::new)
       );
 
-      public static an<au.a> a(dez $$0, cp.a $$1, de.d $$2) {
+      public static an<au.a> a(dfa $$0, cp.a $$1, de.d $$2) {
          return am.L.a(new au.a(Optional.empty(), Optional.of($$0.s()), Optional.of($$1.b()), $$2));
       }
 
-      public boolean a(dsc $$0, cup $$1, int $$2) {
+      public boolean a(dsd $$0, cuq $$1, int $$2) {
          if (this.c.isPresent() && !$$0.a(this.c.get())) {
             return false;
          } else {
@@ -40,7 +40,7 @@ public class au extends dr<au.a> {
          return this.b;
       }
 
-      public Optional<ji<dez>> b() {
+      public Optional<ji<dfa>> b() {
          return this.c;
       }
 

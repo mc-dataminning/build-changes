@@ -1,46 +1,30 @@
-import java.io.IOException;
-import java.io.InputStream;
-import java.util.concurrent.atomic.AtomicInteger;
-import java.util.concurrent.atomic.AtomicReference;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class gpj {
-   private final alf a;
-   private final aun b;
-   private final AtomicReference<eyz> c = new AtomicReference<>();
-   private final AtomicInteger d;
+public class gpj implements gpe {
+   public static final MapCodec<gpj> b = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(Codec.STRING.fieldOf("source").forGetter($$0x -> $$0x.c), Codec.STRING.fieldOf("prefix").forGetter($$0x -> $$0x.d)).apply($$0, gpj::new)
+   );
+   private final String c;
+   private final String d;
 
-   public gpj(alf $$0, aun $$1, int $$2) {
-      this.a = $$0;
-      this.b = $$1;
-      this.d = new AtomicInteger($$2);
+   public gpj(String $$0, String $$1) {
+      this.c = $$0;
+      this.d = $$1;
    }
 
-   public eyz a() throws IOException {
-      eyz $$0 = this.c.get();
-      if ($$0 == null) {
-         synchronized (this) {
-            $$0 = this.c.get();
-            if ($$0 == null) {
-               try (InputStream $$1 = this.b.d()) {
-                  $$0 = eyz.a($$1);
-                  this.c.set($$0);
-               } catch (IOException var9) {
-                  throw new IOException("Failed to load image " + this.a, var9);
-               }
-            }
-         }
-      }
-
-      return $$0;
+   @Override
+   public void a(aup $$0, gpe.a $$1) {
+      aky $$2 = new aky("textures/" + this.c, ".png");
+      $$2.a($$0).forEach(($$2x, $$3) -> {
+         alf $$4 = $$2.b($$2x).d(this.d);
+         $$1.a($$4, $$3);
+      });
    }
 
-   public void b() {
-      int $$0 = this.d.decrementAndGet();
-      if ($$0 <= 0) {
-         eyz $$1 = this.c.getAndSet(null);
-         if ($$1 != null) {
-            $$1.close();
-         }
-      }
+   @Override
+   public gpg a() {
+      return gph.b;
    }
 }

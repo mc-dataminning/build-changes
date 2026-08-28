@@ -153,7 +153,7 @@ public class bft extends DataFix {
    }
 
    private TypeRewriteRule d() {
-      OpticFinder<Pair<String, String>> $$0 = DSL.fieldFinder("id", DSL.named(bgx.D.typeName(), bii.a()));
+      OpticFinder<Pair<String, String>> $$0 = DSL.fieldFinder("id", DSL.named(bgx.D.typeName(), bij.a()));
       Type<?> $$1 = this.getInputSchema().getType(bgx.t);
       OpticFinder<?> $$2 = $$1.findField("tag");
       return this.fixTypeEverywhereTyped("ItemStackMobEffectIdFix", $$1, $$2x -> {

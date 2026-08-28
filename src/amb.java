@@ -11,13 +11,13 @@ public class amb {
 
    public static <D, R> CompletableFuture<R> a(amb.c $$0, amb.f<D> $$1, amb.e<D, R> $$2, Executor $$3, Executor $$4) {
       try {
-         Pair<dcs, auf> $$5 = $$0.a.a();
+         Pair<dct, auf> $$5 = $$0.a.a();
          auf $$6 = (auf)$$5.getSecond();
          jp<alo> $$7 = alo.a();
          jp<alo> $$8 = b($$6, $$7, alo.b, ala.a);
          jw.b $$9 = $$8.b(alo.c);
          jw.b $$10 = ala.a($$6, $$9, ala.b);
-         dcs $$11 = (dcs)$$5.getFirst();
+         dct $$11 = (dct)$$5.getFirst();
          amb.b<D> $$12 = $$1.get(new amb.a($$6, $$11, $$9, $$10));
          jp<alo> $$13 = $$8.a(alo.c, $$12.b);
          return alq.a($$6, $$13, $$11.b(), $$0.b(), $$0.c(), $$3, $$4).whenComplete(($$1x, $$2x) -> {
@@ -43,7 +43,7 @@ public class amb {
       return $$1.a($$2, $$4);
    }
 
-   public static record a(aup a, dcs b, jw.b c, jw.b d) {
+   public static record a(aup a, dct b, jw.b c, jw.b d) {
    }
 
    public static record b<D>(D a, jw.b b) {
@@ -52,9 +52,9 @@ public class amb {
    public static record c(amb.d a, eq.a b, int c) {
    }
 
-   public static record d(aua a, dcs b, boolean c, boolean d) {
-      public Pair<dcs, auf> a() {
-         dcs $$0 = MinecraftServer.a(this.a, this.b, this.d, this.c);
+   public static record d(aua a, dct b, boolean c, boolean d) {
+      public Pair<dct, auf> a() {
+         dct $$0 = MinecraftServer.a(this.a, this.b, this.d, this.c);
          List<atb> $$1 = this.a.g();
          auf $$2 = new aui(atd.b, $$1);
          return Pair.of($$0, $$2);
@@ -64,7 +64,7 @@ public class amb {
          return this.a;
       }
 
-      public dcs c() {
+      public dct c() {
          return this.b;
       }
 

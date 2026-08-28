@@ -1,108 +1,97 @@
-public class dpa extends dqm {
-   private jr<cup> d = jr.a(27, cup.l);
-   private final dpu e = new dpu() {
-      @Override
-      protected void a(dby $$0, iz $$1, dsc $$2) {
-         dpa.this.a($$2, awa.bz);
-         dpa.this.a($$2, true);
-      }
+public class dpa {
+   public static final ale<doy> a = a("base");
+   public static final ale<doy> b = a("square_bottom_left");
+   public static final ale<doy> c = a("square_bottom_right");
+   public static final ale<doy> d = a("square_top_left");
+   public static final ale<doy> e = a("square_top_right");
+   public static final ale<doy> f = a("stripe_bottom");
+   public static final ale<doy> g = a("stripe_top");
+   public static final ale<doy> h = a("stripe_left");
+   public static final ale<doy> i = a("stripe_right");
+   public static final ale<doy> j = a("stripe_center");
+   public static final ale<doy> k = a("stripe_middle");
+   public static final ale<doy> l = a("stripe_downright");
+   public static final ale<doy> m = a("stripe_downleft");
+   public static final ale<doy> n = a("small_stripes");
+   public static final ale<doy> o = a("cross");
+   public static final ale<doy> p = a("straight_cross");
+   public static final ale<doy> q = a("triangle_bottom");
+   public static final ale<doy> r = a("triangle_top");
+   public static final ale<doy> s = a("triangles_bottom");
+   public static final ale<doy> t = a("triangles_top");
+   public static final ale<doy> u = a("diagonal_left");
+   public static final ale<doy> v = a("diagonal_up_right");
+   public static final ale<doy> w = a("diagonal_up_left");
+   public static final ale<doy> x = a("diagonal_right");
+   public static final ale<doy> y = a("circle");
+   public static final ale<doy> z = a("rhombus");
+   public static final ale<doy> A = a("half_vertical");
+   public static final ale<doy> B = a("half_horizontal");
+   public static final ale<doy> C = a("half_vertical_right");
+   public static final ale<doy> D = a("half_horizontal_bottom");
+   public static final ale<doy> E = a("border");
+   public static final ale<doy> F = a("curly_border");
+   public static final ale<doy> G = a("gradient");
+   public static final ale<doy> H = a("gradient_up");
+   public static final ale<doy> I = a("bricks");
+   public static final ale<doy> J = a("globe");
+   public static final ale<doy> K = a("creeper");
+   public static final ale<doy> L = a("skull");
+   public static final ale<doy> M = a("flower");
+   public static final ale<doy> N = a("mojang");
+   public static final ale<doy> O = a("piglin");
+   public static final ale<doy> P = a("flow");
+   public static final ale<doy> Q = a("guster");
 
-      @Override
-      protected void b(dby $$0, iz $$1, dsc $$2) {
-         dpa.this.a($$2, awa.by);
-         dpa.this.a($$2, false);
-      }
-
-      @Override
-      protected void a(dby $$0, iz $$1, dsc $$2, int $$3, int $$4) {
-      }
-
-      @Override
-      protected boolean a(cmx $$0) {
-         if ($$0.cb instanceof cqb) {
-            bqn $$1 = ((cqb)$$0.cb).l();
-            return $$1 == dpa.this;
-         } else {
-            return false;
-         }
-      }
-   };
-
-   public dpa(iz $$0, dsc $$1) {
-      super(dpj.A, $$0, $$1);
+   private static ale<doy> a(String $$0) {
+      return ale.a(lq.d, new alf($$0));
    }
 
-   @Override
-   protected void b(us $$0, jk.a $$1) {
-      super.b($$0, $$1);
-      if (!this.b_($$0)) {
-         bqo.a($$0, this.d, $$1);
-      }
+   public static void a(rc<doy> $$0) {
+      a($$0, a);
+      a($$0, b);
+      a($$0, c);
+      a($$0, d);
+      a($$0, e);
+      a($$0, f);
+      a($$0, g);
+      a($$0, h);
+      a($$0, i);
+      a($$0, j);
+      a($$0, k);
+      a($$0, l);
+      a($$0, m);
+      a($$0, n);
+      a($$0, o);
+      a($$0, p);
+      a($$0, q);
+      a($$0, r);
+      a($$0, s);
+      a($$0, t);
+      a($$0, u);
+      a($$0, v);
+      a($$0, w);
+      a($$0, x);
+      a($$0, y);
+      a($$0, z);
+      a($$0, A);
+      a($$0, B);
+      a($$0, C);
+      a($$0, D);
+      a($$0, E);
+      a($$0, F);
+      a($$0, G);
+      a($$0, H);
+      a($$0, I);
+      a($$0, J);
+      a($$0, K);
+      a($$0, L);
+      a($$0, M);
+      a($$0, N);
+      a($$0, O);
    }
 
-   @Override
-   protected void a(us $$0, jk.a $$1) {
-      super.a($$0, $$1);
-      this.d = jr.a(this.b(), cup.l);
-      if (!this.a_($$0)) {
-         bqo.b($$0, this.d, $$1);
-      }
-   }
-
-   @Override
-   public int b() {
-      return 27;
-   }
-
-   @Override
-   protected jr<cup> j() {
-      return this.d;
-   }
-
-   @Override
-   protected void a(jr<cup> $$0) {
-      this.d = $$0;
-   }
-
-   @Override
-   protected xp k() {
-      return xp.c("container.barrel");
-   }
-
-   @Override
-   protected cpu a(int $$0, cmw $$1) {
-      return cqb.a($$0, $$1, this);
-   }
-
-   @Override
-   public void d_(cmx $$0) {
-      if (!this.p && !$$0.N_()) {
-         this.e.a($$0, this.i(), this.ay_(), this.n());
-      }
-   }
-
-   @Override
-   public void c(cmx $$0) {
-      if (!this.p && !$$0.N_()) {
-         this.e.b($$0, this.i(), this.ay_(), this.n());
-      }
-   }
-
-   public void l() {
-      if (!this.p) {
-         this.e.c(this.i(), this.ay_(), this.n());
-      }
-   }
-
-   void a(dsc $$0, boolean $$1) {
-      this.n.a(this.ay_(), $$0.a(def.c, Boolean.valueOf($$1)), 3);
-   }
-
-   void a(dsc $$0, avz $$1) {
-      kd $$2 = $$0.c(def.b).q();
-      double $$3 = (double)this.o.u() + 0.5 + (double)$$2.u() / 2.0;
-      double $$4 = (double)this.o.v() + 0.5 + (double)$$2.v() / 2.0;
-      double $$5 = (double)this.o.w() + 0.5 + (double)$$2.w() / 2.0;
-      this.n.a(null, $$3, $$4, $$5, $$1, awb.e, 0.5F, this.n.z.i() * 0.1F + 0.9F);
+   public static void a(rc<doy> $$0, ale<doy> $$1) {
+      $$0.a($$1, new doy($$1.a(), "block.minecraft.banner." + $$1.a().e()));
    }
 }

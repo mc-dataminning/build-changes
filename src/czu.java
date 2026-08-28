@@ -1,10 +1,10 @@
-public class czu extends daa {
-   public czu(daa.b $$0) {
+public class czu extends dab {
+   public czu(dab.b $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(daa $$0) {
-      return super.a($$0) && $$0 != dad.I;
+   public boolean a(dab $$0) {
+      return $$0 instanceof dai ? false : super.a($$0);
    }
 }

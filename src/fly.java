@@ -1,178 +1,108 @@
-import java.util.List;
+import com.ibm.icu.text.Collator;
+import java.util.Comparator;
+import java.util.Locale;
+import java.util.Objects;
 import java.util.function.Consumer;
 import javax.annotation.Nullable;
 
-public class fly extends fnd {
-   static final alf b = new alf("container/slot");
-   private static final int c = 18;
-   private static final int d = 20;
-   private static final int r = 1;
-   private static final int s = 1;
-   private static final int u = 2;
-   private static final int v = 2;
-   protected final frs a;
-   private final Consumer<egn> w;
-   egn x;
-   private xp y;
-   private xp z;
-   private fly.a A;
-   private fhe B;
+public class fly extends fne {
+   private static final xp a = xp.c("createWorld.customize.buffet.biome").b(-8355712);
+   private static final int b = 8;
+   private final fks c = new fks(this);
+   private final fne d;
+   private final Consumer<ji<dcy>> r;
+   final jv<dcy> s;
+   private fly.a u;
+   ji<dcy> v;
+   private fhf w;
 
-   public fly(frs $$0, Consumer<egn> $$1, egn $$2) {
-      super(xp.c("createWorld.customize.flat.title"));
-      this.a = $$0;
-      this.w = $$1;
-      this.x = $$2;
-   }
-
-   public egn l() {
-      return this.x;
-   }
-
-   public void a(egn $$0) {
-      this.x = $$0;
-   }
-
-   @Override
-   protected void aM_() {
-      this.y = xp.c("createWorld.customize.flat.tile");
-      this.z = xp.c("createWorld.customize.flat.height");
-      this.A = this.c(new fly.a());
-      this.B = this.c(fhe.a(xp.c("createWorld.customize.flat.removeLayer"), $$0 -> {
-         if (this.E()) {
-            List<egk> $$1 = this.x.e();
-            int $$2 = this.A.aD_().indexOf(this.A.h());
-            int $$3 = $$1.size() - $$2 - 1;
-            $$1.remove($$3);
-            this.A.a($$1.isEmpty() ? null : this.A.aD_().get(Math.min($$2, $$1.size() - 1)));
-            this.x.g();
-            this.A.c();
-            this.m();
-         }
-      }).a(this.n / 2 - 155, this.o - 52, 150, 20).a());
-      this.c(fhe.a(xp.c("createWorld.customize.presets"), $$0 -> {
-         this.m.a(new fmz(this));
-         this.x.g();
-         this.m();
-      }).a(this.n / 2 + 5, this.o - 52, 150, 20).a());
-      this.c(fhe.a(xo.d, $$0 -> {
-         this.w.accept(this.x);
-         this.m.a(this.a);
-         this.x.g();
-      }).a(this.n / 2 - 155, this.o - 28, 150, 20).a());
-      this.c(fhe.a(xo.e, $$0 -> {
-         this.m.a(this.a);
-         this.x.g();
-      }).a(this.n / 2 + 5, this.o - 28, 150, 20).a());
-      this.x.g();
-      this.m();
-   }
-
-   void m() {
-      this.B.j = this.E();
-   }
-
-   private boolean E() {
-      return this.A.h() != null;
+   public fly(fne $$0, fsb $$1, Consumer<ji<dcy>> $$2) {
+      super(xp.c("createWorld.customize.buffet.title"));
+      this.d = $$0;
+      this.r = $$2;
+      this.s = $$1.a().d(lq.az);
+      ji<dcy> $$3 = this.s.b(ddf.b).or(() -> this.s.h().findAny()).orElseThrow();
+      this.v = $$1.d().a().d().c().stream().findFirst().orElse($$3);
    }
 
    @Override
    public void d() {
-      this.m.a(this.a);
+      this.m.a(this.d);
    }
 
    @Override
-   public void a(fgr $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      $$0.a(this.p, this.l, this.n / 2, 8, 16777215);
-      int $$4 = this.n / 2 - 92 - 16;
-      $$0.b(this.p, this.y, $$4, 32, 16777215);
-      $$0.b(this.p, this.z, $$4 + 2 + 213 - this.p.a(this.z), 32, 16777215);
+   protected void aM_() {
+      fkw $$0 = this.c.a(fkw.d().a(8));
+      $$0.c().b();
+      $$0.a(new fim(this.n(), this.p));
+      $$0.a(new fim(a, this.p));
+      this.u = this.c.c(new fly.a());
+      fkw $$1 = this.c.b(fkw.e().a(8));
+      this.w = $$1.a(fhf.a(xo.d, $$0x -> {
+         this.r.accept(this.v);
+         this.d();
+      }).a());
+      $$1.a(fhf.a(xo.e, $$0x -> this.d()).a());
+      this.u.a(this.u.aD_().stream().filter($$0x -> Objects.equals($$0x.b, this.v)).findFirst().orElse(null));
+      this.c.a(this::c);
+      this.c();
    }
 
-   class a extends fia<fly.a.a> {
-      public a() {
-         super(fly.this.m, fly.this.n, fly.this.o - 103, 43, 24);
+   @Override
+   protected void c() {
+      this.c.a();
+      this.u.a(this.n, this.c);
+   }
 
-         for (int $$0 = 0; $$0 < fly.this.x.e().size(); $$0++) {
-            this.b(new fly.a.a());
-         }
+   void m() {
+      this.w.j = this.u.h() != null;
+   }
+
+   class a extends fib<fly.a.a> {
+      a() {
+         super(fly.this.m, fly.this.n, fly.this.o - 77, 40, 16);
+         Collator $$0 = Collator.getInstance(Locale.getDefault());
+         fly.this.s.h().map($$0x -> new fly.a.a($$0x)).sorted(Comparator.comparing($$0x -> $$0x.c.getString(), $$0)).forEach($$1 -> this.b($$1));
       }
 
       public void a(@Nullable fly.a.a $$0) {
          super.a($$0);
+         if ($$0 != null) {
+            fly.this.v = $$0.b;
+         }
+
          fly.this.m();
       }
 
-      public void c() {
-         int $$0 = this.aD_().indexOf(this.h());
-         this.k();
+      class a extends fib.a<fly.a.a> {
+         final ji.c<dcy> b;
+         final xp c;
 
-         for (int $$1 = 0; $$1 < fly.this.x.e().size(); $$1++) {
-            this.b(new fly.a.a());
-         }
-
-         List<fly.a.a> $$2 = this.aD_();
-         if ($$0 >= 0 && $$0 < $$2.size()) {
-            this.a($$2.get($$0));
-         }
-      }
-
-      class a extends fia.a<fly.a.a> {
-         @Override
-         public void a(fgr $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
-            egk $$10 = fly.this.x.e().get(fly.this.x.e().size() - $$1 - 1);
-            dsc $$11 = $$10.b();
-            cup $$12 = this.a($$11);
-            this.a($$0, $$3, $$2, $$12);
-            $$0.a(fly.this.p, $$12.x(), $$3 + 18 + 5, $$2 + 3, 16777215, false);
-            xp $$13;
-            if ($$1 == 0) {
-               $$13 = xp.a("createWorld.customize.flat.layer.top", $$10.a());
-            } else if ($$1 == fly.this.x.e().size() - 1) {
-               $$13 = xp.a("createWorld.customize.flat.layer.bottom", $$10.a());
+         public a(final ji.c<dcy> $$0) {
+            this.b = $$0;
+            alf $$1 = $$0.h().a();
+            String $$2 = $$1.f("biome");
+            if (un.a().b($$2)) {
+               this.c = xp.c($$2);
             } else {
-               $$13 = xp.a("createWorld.customize.flat.layer", $$10.a());
+               this.c = xp.b($$1.toString());
             }
-
-            $$0.a(fly.this.p, $$13, $$3 + 2 + 213 - fly.this.p.a($$13), $$2 + 3, 16777215, false);
-         }
-
-         private cup a(dsc $$0) {
-            cuk $$1 = $$0.b().r();
-            if ($$1 == cus.a) {
-               if ($$0.a(dfb.G)) {
-                  $$1 = cus.qz;
-               } else if ($$0.a(dfb.H)) {
-                  $$1 = cus.qA;
-               }
-            }
-
-            return new cup($$1);
          }
 
          @Override
          public xp a() {
-            egk $$0 = fly.this.x.e().get(fly.this.x.e().size() - a.this.aD_().indexOf(this) - 1);
-            cup $$1 = this.a($$0.b());
-            return (xp)(!$$1.e() ? xp.a("narrator.select", $$1.x()) : xo.a);
+            return xp.a("narrator.select", this.c);
+         }
+
+         @Override
+         public void a(fgs $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
+            $$0.b(fly.this.p, this.c, $$3 + 5, $$2 + 2, 16777215);
          }
 
          @Override
          public boolean a(double $$0, double $$1, int $$2) {
             a.this.a(this);
             return super.a($$0, $$1, $$2);
-         }
-
-         private void a(fgr $$0, int $$1, int $$2, cup $$3) {
-            this.a($$0, $$1 + 1, $$2 + 1);
-            if (!$$3.e()) {
-               $$0.b($$3, $$1 + 2, $$2 + 2);
-            }
-         }
-
-         private void a(fgr $$0, int $$1, int $$2) {
-            $$0.a(fly.b, $$1, $$2, 0, 18, 18);
          }
       }
    }

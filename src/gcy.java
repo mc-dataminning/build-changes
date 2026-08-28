@@ -1,125 +1,72 @@
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.JsonOps;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.time.Instant;
-import java.util.List;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
-
 public class gcy {
-   private static final gcy a = new gcy("") {
-      @Override
-      public void a(fff $$0) {
+   public static final xp a = xp.c("quickplay.error.title");
+   private static final xp b = xp.c("quickplay.error.invalid_identifier");
+   private static final xp c = xp.c("quickplay.error.realm_connect");
+   private static final xp d = xp.c("quickplay.error.realm_permission");
+   private static final xp e = xp.c("gui.toTitle");
+   private static final xp f = xp.c("gui.toWorld");
+   private static final xp g = xp.c("gui.toRealms");
+
+   public static void a(ffg $$0, fsr.c $$1, fap $$2) {
+      String $$3 = $$1.c();
+      String $$4 = $$1.d();
+      String $$5 = $$1.e();
+      if (!azv.h($$3)) {
+         a($$0, $$3);
+      } else if (!azv.h($$4)) {
+         b($$0, $$4);
+      } else if (!azv.h($$5)) {
+         a($$0, $$2, $$5);
       }
-
-      @Override
-      public void a(gcy.c $$0, String $$1, String $$2) {
-      }
-   };
-   private static final Logger b = LogUtils.getLogger();
-   private static final Gson c = new GsonBuilder().create();
-   private final Path d;
-   @Nullable
-   private gcy.b e;
-
-   gcy(String $$0) {
-      this.d = fff.Q().p.toPath().resolve($$0);
    }
 
-   public static gcy a(@Nullable String $$0) {
-      return $$0 == null ? a : new gcy($$0);
-   }
-
-   public void a(gcy.c $$0, String $$1, String $$2) {
-      this.e = new gcy.b($$0, $$1, $$2);
-   }
-
-   public void a(fff $$0) {
-      if ($$0.q != null && this.e != null) {
-         ac.h().execute(() -> {
-            try {
-               Files.deleteIfExists(this.d);
-            } catch (IOException var3) {
-               b.error("Failed to delete quickplay log file {}", this.d, var3);
-            }
-
-            gcy.a $$2 = new gcy.a(this.e, Instant.now(), $$0.q.j());
-            Codec.list(gcy.a.a).encodeStart(JsonOps.INSTANCE, List.of($$2)).resultOrPartial(ac.a("Quick Play: ", b::error)).ifPresent($$0xx -> {
-               try {
-                  Files.createDirectories(this.d.getParent());
-                  Files.writeString(this.d, c.toJson($$0xx));
-               } catch (IOException var3x) {
-                  b.error("Failed to write to quickplay log file {}", this.d, var3x);
-               }
-            });
-         });
+   private static void a(ffg $$0, String $$1) {
+      if (!$$0.m().b($$1)) {
+         fne $$2 = new frz(new fnj());
+         $$0.a(new fmf($$2, a, b, f));
       } else {
-         b.error("Failed to log session for quickplay. Missing world data or gamemode");
+         $$0.x().a($$1, () -> $$0.a(new fnj()));
       }
    }
 
-   static record a(gcy.b b, Instant c, dbv d) {
-      public static final Codec<gcy.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(gcy.b.a.forGetter(gcy.a::a), ayh.o.fieldOf("lastPlayedTime").forGetter(gcy.a::b), dbv.f.fieldOf("gamemode").forGetter(gcy.a::c))
-               .apply($$0, gcy.a::new)
-      );
-
-      public gcy.b a() {
-         return this.b;
+   private static void b(ffg $$0, String $$1) {
+      fyl $$2 = new fyl($$0);
+      $$2.a();
+      fyk $$3 = $$2.a($$1);
+      if ($$3 == null) {
+         $$3 = new fyk(gqg.a("selectServer.defaultName"), $$1, fyk.c.c);
+         $$2.a($$3, true);
+         $$2.b();
       }
 
-      public Instant b() {
-         return this.c;
-      }
-
-      public dbv c() {
-         return this.d;
-      }
+      fzn $$4 = fzn.a($$1);
+      flx.a(new fqc(new fnj()), $$0, $$4, $$3, true, null);
    }
 
-   static record b(gcy.c b, String c, String d) {
-      public static final MapCodec<gcy.b> a = RecordCodecBuilder.mapCodec(
-         $$0 -> $$0.group(
-                  gcy.c.d.fieldOf("type").forGetter(gcy.b::a), ayh.q.fieldOf("id").forGetter(gcy.b::b), Codec.STRING.fieldOf("name").forGetter(gcy.b::c)
-               )
-               .apply($$0, gcy.b::new)
-      );
-
-      public gcy.c a() {
-         return this.b;
+   private static void a(ffg $$0, fap $$1, String $$2) {
+      long $$3;
+      fbi $$4;
+      try {
+         $$3 = Long.parseLong($$2);
+         $$4 = $$1.b();
+      } catch (NumberFormatException var9) {
+         fne $$6 = new fak(new fnj());
+         $$0.a(new fmf($$6, a, b, g));
+         return;
+      } catch (fcc var10) {
+         fne $$8 = new fnj();
+         $$0.a(new fmf($$8, a, c, e));
+         return;
       }
 
-      public String b() {
-         return this.c;
-      }
-
-      public String c() {
-         return this.d;
-      }
-   }
-
-   public static enum c implements azu {
-      a("singleplayer"),
-      b("multiplayer"),
-      c("realms");
-
-      static final Codec<gcy.c> d = azu.a(gcy.c::values);
-      private final String e;
-
-      private c(final String $$0) {
-         this.e = $$0;
-      }
-
-      @Override
-      public String c() {
-         return this.e;
+      fbg $$11 = $$4.a.stream().filter($$1x -> $$1x.a == $$3).findFirst().orElse(null);
+      if ($$11 == null) {
+         fne $$12 = new fak(new fnj());
+         $$0.a(new fmf($$12, a, d, g));
+      } else {
+         fnj $$13 = new fnj();
+         fef $$14 = new fef($$13, $$11);
+         $$0.a(new fcw($$13, $$14));
       }
    }
 }

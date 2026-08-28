@@ -1,70 +1,69 @@
 import com.mojang.logging.LogUtils;
+import javax.annotation.Nullable;
 import org.slf4j.Logger;
 
-public class fed extends fef {
+public class fed extends feg {
    private static final Logger b = LogUtils.getLogger();
-   private static final xp c = xp.c("mco.download.preparing");
+   private static final xp c = xp.c("mco.snapshot.creating");
    private final long d;
-   private final int e;
-   private final fnd f;
+   private final fdz e;
+   private final String f;
    private final String g;
+   private final fak h;
+   @Nullable
+   private fei i;
+   @Nullable
+   private fej j;
 
-   public fed(long $$0, int $$1, String $$2, fnd $$3) {
-      this.d = $$0;
-      this.e = $$1;
+   public fed(fak $$0, long $$1, fdz $$2, String $$3, String $$4) {
+      this.d = $$1;
+      this.e = $$2;
       this.f = $$3;
-      this.g = $$2;
+      this.g = $$4;
+      this.h = $$0;
    }
 
    @Override
    public void run() {
-      fao $$0 = fao.a();
-      int $$1 = 0;
+      fap $$0 = fap.a();
 
-      while ($$1 < 25) {
-         try {
-            if (this.d()) {
-               return;
-            }
-
-            fbv $$2 = $$0.b(this.d, this.e);
-            a(1L);
-            if (this.d()) {
-               return;
-            }
-
-            a(new fcr(this.f, $$2, this.g, $$0x -> {
-            }));
-            return;
-         } catch (fcc var4) {
-            if (this.d()) {
-               return;
-            }
-
-            a((long)var4.c);
-            $$1++;
-         } catch (fcb var5) {
-            if (this.d()) {
-               return;
-            }
-
-            b.error("Couldn't download world data", var5);
-            a(new fcs(var5, this.f));
-            return;
-         } catch (Exception var6) {
-            if (this.d()) {
-               return;
-            }
-
-            b.error("Couldn't download world data", var6);
-            this.a(var6);
+      try {
+         fbg $$1 = $$0.a(Long.valueOf(this.d));
+         this.i = new fei($$1.a, this.f, this.g);
+         this.j = new fej(this.e, $$1.a, fde.a, () -> ffg.Q().execute(() -> fak.a($$1, this.h, true)));
+         if (this.d()) {
             return;
          }
+
+         this.i.run();
+         if (this.d()) {
+            return;
+         }
+
+         this.j.run();
+      } catch (fcc var3) {
+         b.error("Couldn't create snapshot world", var3);
+         this.a(var3);
+      } catch (Exception var4) {
+         b.error("Couldn't create snapshot world", var4);
+         this.a(var4);
       }
    }
 
    @Override
    public xp a() {
       return c;
+   }
+
+   @Override
+   public void b() {
+      super.b();
+      if (this.i != null) {
+         this.i.b();
+      }
+
+      if (this.j != null) {
+         this.j.b();
+      }
    }
 }

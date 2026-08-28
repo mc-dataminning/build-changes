@@ -10,11 +10,11 @@ public class anb {
       );
    }
 
-   private static int a(ep $$0, dbv $$1) {
+   private static int a(ep $$0, dbw $$1) {
       int $$2 = 0;
       MinecraftServer $$3 = $$0.l();
       $$3.a($$1);
-      dbv $$4 = $$3.bf();
+      dbw $$4 = $$3.bf();
       if ($$4 != null) {
          for (arg $$5 : $$3.ah().t()) {
             if ($$5.a($$4)) {

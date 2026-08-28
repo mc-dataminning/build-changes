@@ -1,49 +1,34 @@
-import com.google.common.collect.ImmutableMap;
-import it.unimi.dsi.fastutil.ints.IntList;
-import java.util.List;
-import javax.annotation.Nullable;
+public class bvm implements bwx {
+   private final iz a;
+   private final evs b;
 
-public class bvm extends bvi<cmk> {
-   @Nullable
-   private coi c;
-
-   public bvm(int $$0, int $$1) {
-      super(ImmutableMap.of(), $$0, $$1);
+   public bvm(iz $$0) {
+      this.a = $$0.i();
+      this.b = evs.b($$0);
    }
 
-   protected boolean a(arf $$0, cmk $$1) {
-      iz $$2 = $$1.dp();
-      this.c = $$0.d($$2);
-      return this.c != null && this.c.e() && bwr.a($$0, $$1, $$2);
+   public bvm(evs $$0) {
+      this.a = iz.a($$0);
+      this.b = $$0;
    }
 
-   protected boolean a(arf $$0, cmk $$1, long $$2) {
-      return this.c != null && !this.c.d();
+   @Override
+   public evs a() {
+      return this.b;
    }
 
-   protected void b(arf $$0, cmk $$1, long $$2) {
-      this.c = null;
-      $$1.dS().a($$0.aa(), $$0.Z());
+   @Override
+   public iz b() {
+      return this.a;
    }
 
-   protected void c(arf $$0, cmk $$1, long $$2) {
-      azh $$3 = $$1.el();
-      if ($$3.a(100) == 0) {
-         $$1.gv();
-      }
-
-      if ($$3.a(200) == 0 && bwr.a($$0, $$1, $$1.dp())) {
-         cti $$4 = ac.a(cti.values(), $$3);
-         int $$5 = $$3.a(3);
-         cup $$6 = this.a($$4, $$5);
-         cnk $$7 = new cnk($$1.dP(), $$1, $$1.du(), $$1.dy(), $$1.dA(), $$6);
-         $$1.dP().b($$7);
-      }
+   @Override
+   public boolean a(btq $$0) {
+      return true;
    }
 
-   private cup a(cti $$0, int $$1) {
-      cup $$2 = new cup(cus.uu);
-      $$2.b(km.U, new cxj((byte)$$1, List.of(new cxi(cxi.a.e, IntList.of($$0.f()), IntList.of(), false, false))));
-      return $$2;
+   @Override
+   public String toString() {
+      return "BlockPosTracker{blockPos=" + this.a + ", centerPosition=" + this.b + "}";
    }
 }

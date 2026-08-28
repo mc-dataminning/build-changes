@@ -9,7 +9,7 @@ public class avg {
    }
 
    public boolean a(int $$0, List<arg> $$1) {
-      int $$2 = (int)$$1.stream().filter(cmx::gf).count();
+      int $$2 = (int)$$1.stream().filter(cmy::gf).count();
       return $$2 >= this.b($$0);
    }
 

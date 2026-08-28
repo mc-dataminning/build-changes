@@ -1,150 +1,111 @@
-import com.google.common.collect.Iterables;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableList.Builder;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.ArrayList;
+import java.text.DecimalFormat;
+import java.text.DecimalFormatSymbols;
 import java.util.List;
-import java.util.OptionalInt;
-import java.util.stream.Stream;
+import java.util.Locale;
+import java.util.function.BiConsumer;
 
-public final class cxl {
-   private static final int d = -1;
-   private static final int e = 256;
-   public static final cxl a = new cxl(jr.a());
-   public static final Codec<cxl> b = cxl.a.a.sizeLimitedListOf(256).xmap(cxl::b, cxl::f);
-   public static final zn<xa, cxl> c = cup.h.a(zl.c(256)).a(cxl::new, $$0 -> $$0.f);
-   private final jr<cup> f;
-   private final int g;
+public record cxl(List<cxl.b> e, boolean f) {
+   public static final cxl a = new cxl(List.of(), true);
+   private static final Codec<cxl> g = RecordCodecBuilder.create(
+      $$0 -> $$0.group(cxl.b.a.listOf().fieldOf("modifiers").forGetter(cxl::b), Codec.BOOL.optionalFieldOf("show_in_tooltip", true).forGetter(cxl::c))
+            .apply($$0, cxl::new)
+   );
+   public static final Codec<cxl> b = Codec.withAlternative(g, cxl.b.a.listOf(), $$0 -> new cxl($$0, true));
+   public static final zn<xa, cxl> c = zn.a(cxl.b.b.a(zl.a()), cxl::b, zl.b, cxl::c, cxl::new);
+   public static final DecimalFormat d = ac.a(new DecimalFormat("#.##"), $$0 -> $$0.setDecimalFormatSymbols(DecimalFormatSymbols.getInstance(Locale.ROOT)));
 
-   private cxl(jr<cup> $$0) {
-      if ($$0.size() > 256) {
-         throw new IllegalArgumentException("Got " + $$0.size() + " items, but maximum is 256");
-      } else {
-         this.f = $$0;
-         this.g = cup.a($$0);
-      }
+   public cxl a(boolean $$0) {
+      return new cxl(this.e, $$0);
    }
 
-   private cxl(int $$0) {
-      this(jr.a($$0, cup.l));
+   public static cxl.a a() {
+      return new cxl.a();
    }
 
-   private cxl(List<cup> $$0) {
-      this($$0.size());
+   public cxl a(ji<but> $$0, buw $$1, btd $$2) {
+      Builder<cxl.b> $$3 = ImmutableList.builderWithExpectedSize(this.e.size() + 1);
 
-      for (int $$1 = 0; $$1 < $$0.size(); $$1++) {
-         this.f.set($$1, $$0.get($$1));
-      }
-   }
-
-   private static cxl b(List<cxl.a> $$0) {
-      OptionalInt $$1 = $$0.stream().mapToInt(cxl.a::a).max();
-      if ($$1.isEmpty()) {
-         return a;
-      } else {
-         cxl $$2 = new cxl($$1.getAsInt() + 1);
-
-         for (cxl.a $$3 : $$0) {
-            $$2.f.set($$3.a(), $$3.b());
-         }
-
-         return $$2;
-      }
-   }
-
-   public static cxl a(List<cup> $$0) {
-      int $$1 = c($$0);
-      if ($$1 == -1) {
-         return a;
-      } else {
-         cxl $$2 = new cxl($$1 + 1);
-
-         for (int $$3 = 0; $$3 <= $$1; $$3++) {
-            $$2.f.set($$3, $$0.get($$3).s());
-         }
-
-         return $$2;
-      }
-   }
-
-   private static int c(List<cup> $$0) {
-      for (int $$1 = $$0.size() - 1; $$1 >= 0; $$1--) {
-         if (!$$0.get($$1).e()) {
-            return $$1;
+      for (cxl.b $$4 : this.e) {
+         if (!$$4.d.b().equals($$1.b())) {
+            $$3.add($$4);
          }
       }
 
-      return -1;
+      $$3.add(new cxl.b($$0, $$1, $$2));
+      return new cxl($$3.build(), this.f);
    }
 
-   private List<cxl.a> f() {
-      List<cxl.a> $$0 = new ArrayList<>();
+   public void a(btc $$0, BiConsumer<ji<but>, buw> $$1) {
+      for (cxl.b $$2 : this.e) {
+         if ($$2.e.b($$0)) {
+            $$1.accept($$2.c, $$2.d);
+         }
+      }
+   }
 
-      for (int $$1 = 0; $$1 < this.f.size(); $$1++) {
-         cup $$2 = this.f.get($$1);
-         if (!$$2.e()) {
-            $$0.add(new cxl.a($$1, $$2));
+   public double a(double $$0, btc $$1) {
+      double $$2 = $$0;
+
+      for (cxl.b $$3 : this.e) {
+         if ($$3.e.b($$1)) {
+            double $$4 = $$3.d.d();
+
+            $$2 += switch ($$3.d.e()) {
+               case a -> $$4;
+               case b -> $$4 * $$0;
+               case c -> $$4 * $$2;
+            };
          }
       }
 
-      return $$0;
+      return $$2;
    }
 
-   public void a(jr<cup> $$0) {
-      for (int $$1 = 0; $$1 < $$0.size(); $$1++) {
-         cup $$2 = $$1 < this.f.size() ? this.f.get($$1) : cup.l;
-         $$0.set($$1, $$2.s());
+   public List<cxl.b> b() {
+      return this.e;
+   }
+
+   public boolean c() {
+      return this.f;
+   }
+
+   public static class a {
+      private final Builder<cxl.b> a = ImmutableList.builder();
+
+      a() {
+      }
+
+      public cxl.a a(ji<but> $$0, buw $$1, btd $$2) {
+         this.a.add(new cxl.b($$0, $$1, $$2));
+         return this;
+      }
+
+      public cxl a() {
+         return new cxl(this.a.build(), true);
       }
    }
 
-   public cup a() {
-      return this.f.isEmpty() ? cup.l : this.f.get(0).s();
-   }
-
-   public Stream<cup> b() {
-      return this.f.stream().map(cup::s);
-   }
-
-   public Stream<cup> c() {
-      return this.f.stream().filter($$0 -> !$$0.e()).map(cup::s);
-   }
-
-   public Iterable<cup> d() {
-      return Iterables.filter(this.f, $$0 -> !$$0.e());
-   }
-
-   public Iterable<cup> e() {
-      return Iterables.transform(this.d(), cup::s);
-   }
-
-   @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else {
-         if ($$0 instanceof cxl $$1 && cup.a(this.f, $$1.f)) {
-            return true;
-         }
-
-         return false;
-      }
-   }
-
-   @Override
-   public int hashCode() {
-      return this.g;
-   }
-
-   static record a(int b, cup c) {
-      public static final Codec<cxl.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(Codec.intRange(0, 255).fieldOf("slot").forGetter(cxl.a::a), cup.b.fieldOf("item").forGetter(cxl.a::b)).apply($$0, cxl.a::new)
+   public static record b(ji<but> c, buw d, btd e) {
+      public static final Codec<cxl.b> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(lp.u.r().fieldOf("type").forGetter(cxl.b::a), buw.a.forGetter(cxl.b::b), btd.l.optionalFieldOf("slot", btd.a).forGetter(cxl.b::c))
+               .apply($$0, cxl.b::new)
       );
+      public static final zn<xa, cxl.b> b = zn.a(zl.b(lq.c), cxl.b::a, buw.c, cxl.b::b, btd.m, cxl.b::c, cxl.b::new);
 
-      public int a() {
-         return this.b;
+      public ji<but> a() {
+         return this.c;
       }
 
-      public cup b() {
-         return this.c;
+      public buw b() {
+         return this.d;
+      }
+
+      public btd c() {
+         return this.e;
       }
    }
 }

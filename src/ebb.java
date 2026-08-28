@@ -1,29 +1,43 @@
-import com.mojang.serialization.Codec;
+import java.util.Optional;
 
-public class ebb extends eay<edg> {
-   public ebb(Codec<edg> $$0) {
-      super($$0);
+public class ebb<FC extends edd> {
+   private final Optional<eam<?, ?>> a;
+   private final dcu b;
+   private final dua c;
+   private final azh d;
+   private final iz e;
+   private final FC f;
+
+   public ebb(Optional<eam<?, ?>> $$0, dcu $$1, dua $$2, azh $$3, iz $$4, FC $$5) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+      this.d = $$3;
+      this.e = $$4;
+      this.f = $$5;
    }
 
-   @Override
-   public boolean a(eba<edg> $$0) {
-      iz $$1 = $$0.e();
-      edg $$2 = $$0.f();
-      dct $$3 = $$0.b();
-      iz.a $$4 = new iz.a();
+   public Optional<eam<?, ?>> a() {
+      return this.a;
+   }
 
-      for (int $$5 = 0; $$5 < 16; $$5++) {
-         for (int $$6 = 0; $$6 < 16; $$6++) {
-            int $$7 = $$1.u() + $$5;
-            int $$8 = $$1.w() + $$6;
-            int $$9 = $$3.I_() + $$2.b;
-            $$4.d($$7, $$9, $$8);
-            if ($$3.a_($$4).i()) {
-               $$3.a($$4, $$2.c, 2);
-            }
-         }
-      }
+   public dcu b() {
+      return this.b;
+   }
 
-      return true;
+   public dua c() {
+      return this.c;
+   }
+
+   public azh d() {
+      return this.d;
+   }
+
+   public iz e() {
+      return this.e;
+   }
+
+   public FC f() {
+      return this.f;
    }
 }

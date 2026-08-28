@@ -1,68 +1,85 @@
 import com.mojang.serialization.MapCodec;
 import javax.annotation.Nullable;
 
-public abstract class ddv extends del implements ctr {
-   public static final dst a = dss.w;
-   private final dmb.a b;
+public abstract class ddv extends dem {
+   public static final dsx a = diw.aE;
+   public static final dsu b = dst.r;
 
-   public ddv(dmb.a $$0, dsb.d $$1) {
-      super($$1);
-      this.b = $$0;
-      this.k(this.E.b().a(a, Boolean.valueOf(false)));
+   protected ddv(dsc.d $$0) {
+      super($$0);
+      this.k(this.E.b().a(a, je.c).a(b, Boolean.valueOf(false)));
    }
 
    @Override
    protected abstract MapCodec<? extends ddv> a();
 
    @Override
-   public dph a(iz $$0, dsc $$1) {
-      return new dqt($$0, $$1);
+   protected bqv a(dsd $$0, dbz $$1, iz $$2, cmy $$3, evo $$4) {
+      if ($$1.B) {
+         return bqv.a;
+      } else {
+         this.a($$1, $$2, $$3);
+         return bqv.c;
+      }
+   }
+
+   protected abstract void a(dbz var1, iz var2, cmy var3);
+
+   @Override
+   public dsd a(cyb $$0) {
+      return this.o().a(a, $$0.g().g());
+   }
+
+   @Override
+   protected void a(dsd $$0, dbz $$1, iz $$2, dsd $$3, boolean $$4) {
+      if (!$$0.a($$3.b())) {
+         dpi $$5 = $$1.c_($$2);
+         if ($$5 instanceof dow) {
+            if ($$1 instanceof arf) {
+               bqr.a($$1, $$2, (dow)$$5);
+               ((dow)$$5).a((arf)$$1, evs.b($$2));
+            }
+
+            super.a($$0, $$1, $$2, $$3, $$4);
+            $$1.c($$2, this);
+         } else {
+            super.a($$0, $$1, $$2, $$3, $$4);
+         }
+      }
+   }
+
+   @Override
+   protected boolean c_(dsd $$0) {
+      return true;
+   }
+
+   @Override
+   protected int a(dsd $$0, dbz $$1, iz $$2) {
+      return cpv.a($$1.c_($$2));
+   }
+
+   @Override
+   protected dlg a_(dsd $$0) {
+      return dlg.c;
+   }
+
+   @Override
+   protected dsd a(dsd $$0, dln $$1) {
+      return $$0.a(a, $$1.a($$0.c(a)));
+   }
+
+   @Override
+   protected dsd a(dsd $$0, djx $$1) {
+      return $$0.a($$1.a($$0.c(a)));
+   }
+
+   @Override
+   protected void a(dse.a<dfa, dsd> $$0) {
+      $$0.a(a, b);
    }
 
    @Nullable
-   @Override
-   public <T extends dph> dpi<T> a(dby $$0, dsc $$1, dpj<T> $$2) {
-      if ($$0.B) {
-         boolean $$3 = $$1.a(dfb.gO) || $$1.a(dfb.gP) || $$1.a(dfb.gQ) || $$1.a(dfb.gR);
-         if ($$3) {
-            return a($$2, dpj.p, dqt::a);
-         }
-      }
-
-      return null;
-   }
-
-   public dmb.a b() {
-      return this.b;
-   }
-
-   @Override
-   protected boolean a(dsc $$0, eok $$1) {
-      return false;
-   }
-
-   @Override
-   public btb m() {
-      return btb.f;
-   }
-
-   @Override
-   protected void a(dsd.a<dez, dsc> $$0) {
-      $$0.a(a);
-   }
-
-   @Override
-   public dsc a(cya $$0) {
-      return this.o().a(a, Boolean.valueOf($$0.q().C($$0.a())));
-   }
-
-   @Override
-   protected void a(dsc $$0, dby $$1, iz $$2, dez $$3, iz $$4, boolean $$5) {
-      if (!$$1.B) {
-         boolean $$6 = $$1.C($$2);
-         if ($$6 != $$0.c(a)) {
-            $$1.a($$2, $$0.a(a, Boolean.valueOf($$6)), 2);
-         }
-      }
+   protected static <T extends dpi> dpj<T> a(dbz $$0, dpk<T> $$1, dpk<? extends dow> $$2) {
+      return $$0.B ? null : a($$1, $$2, dow::a);
    }
 }

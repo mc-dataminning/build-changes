@@ -1,43 +1,41 @@
 import com.mojang.serialization.MapCodec;
 
-public class djs extends dez {
+public class djs extends diw {
    public static final MapCodec<djs> a = b(djs::new);
-   private static final int b = 20;
+   private static final xp b = xp.c("container.loom");
 
    @Override
    public MapCodec<djs> a() {
       return a;
    }
 
-   public djs(dsb.d $$0) {
+   protected djs(dsc.d $$0) {
       super($$0);
    }
 
    @Override
-   public void a(dby $$0, iz $$1, dsc $$2, bsu $$3) {
-      if (!$$3.bW() && $$3 instanceof btp && !dab.j((btp)$$3)) {
-         $$3.a($$0.aj().e(), 1.0F);
+   protected bqv a(dsd $$0, dbz $$1, iz $$2, cmy $$3, evo $$4) {
+      if ($$1.B) {
+         return bqv.a;
+      } else {
+         $$3.a($$0.b($$1, $$2));
+         $$3.a(awk.ax);
+         return bqv.c;
       }
-
-      super.a($$0, $$1, $$2, $$3);
    }
 
    @Override
-   protected void a(dsc $$0, arf $$1, iz $$2, azh $$3) {
-      dff.b($$1, $$2.c(), $$0);
+   protected bqz b(dsd $$0, dbz $$1, iz $$2) {
+      return new brf(($$2x, $$3, $$4) -> new cra($$2x, $$3, cqg.a($$1, $$2)), b);
    }
 
    @Override
-   protected dsc a(dsc $$0, je $$1, dsc $$2, dbz $$3, iz $$4, iz $$5) {
-      if ($$1 == je.b && $$2.a(dfb.G)) {
-         $$3.a($$4, this, 20);
-      }
-
-      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   public dsd a(cyb $$0) {
+      return this.o().a(aE, $$0.g().g());
    }
 
    @Override
-   protected void b(dsc $$0, dby $$1, iz $$2, dsc $$3, boolean $$4) {
-      $$1.a($$2, this, 20);
+   protected void a(dse.a<dfa, dsd> $$0) {
+      $$0.a(aE);
    }
 }

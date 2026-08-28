@@ -58,14 +58,14 @@ public class aor {
       } else {
          long $$4 = $$0.e().Z() + (long)$$2;
          alf $$5 = (alf)$$1.getFirst();
-         eve<MinecraftServer> $$6 = $$0.l().bb().I().s();
+         evf<MinecraftServer> $$6 = $$0.l().bb().I().s();
          ((Either)$$1.getSecond()).ifLeft($$6x -> {
             String $$7 = $$5.toString();
             if ($$3) {
                $$6.a($$7);
             }
 
-            $$6.a($$7, $$4, new eva($$5));
+            $$6.a($$7, $$4, new evb($$5));
             $$0.a(() -> xp.a("commands.schedule.created.function", xp.a($$5), $$2, $$4), true);
          }).ifRight($$6x -> {
             String $$7 = "#" + $$5;
@@ -73,7 +73,7 @@ public class aor {
                $$6.a($$7);
             }
 
-            $$6.a($$7, $$4, new evb($$5));
+            $$6.a($$7, $$4, new evc($$5));
             $$0.a(() -> xp.a("commands.schedule.created.tag", xp.a($$5), $$2, $$4), true);
          });
          return Math.floorMod($$4, Integer.MAX_VALUE);

@@ -1,23 +1,15 @@
-public class dqe extends dqr {
-   private static final int a = 60;
-   private static final int b = 9;
-
-   public dqe(iz $$0, dsc $$1) {
-      super(dpj.i, $$0, $$1);
+public class dqe extends dow {
+   public dqe(iz $$0, dsd $$1) {
+      super(dpk.a, $$0, $$1, czb.b);
    }
 
    @Override
-   public int b() {
-      return 9;
+   protected xp k() {
+      return xp.c("container.furnace");
    }
 
    @Override
-   public int c() {
-      return 60;
-   }
-
-   @Override
-   public avz d() {
-      return awa.BW;
+   protected cpv a(int $$0, cmx $$1) {
+      return new cqr($$0, $$1, this, this.m);
    }
 }

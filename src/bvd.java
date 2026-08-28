@@ -1,79 +1,84 @@
-import java.util.Map;
+import com.google.common.collect.ImmutableMap;
 import java.util.Optional;
-import java.util.function.Predicate;
-import javax.annotation.Nullable;
 
-public class bvd<E extends bty> extends bvi<E> {
-   private static final int c = 100;
-   private static final int d = 120;
-   private static final int e = 5;
-   private static final int f = 4;
-   private static final Predicate<bty> g = $$0 -> $$0.em() != null || $$0.dE() || $$0.bQ();
-   private final float h;
-   private final Predicate<E> i;
+public class bvd extends bvj<cfg> {
+   private static final int c = 3;
+   private static final int d = 60;
+   private static final int e = 110;
+   private final btb<? extends cfg> f;
+   private final float g;
+   private final int h;
+   private static final int i = 2;
+   private long j;
 
-   public bvd(float $$0) {
-      this($$0, g::test);
+   public bvd(btb<? extends cfg> $$0) {
+      this($$0, 1.0F, 2);
    }
 
-   public bvd(float $$0, Predicate<E> $$1) {
-      super(Map.of(cct.Z, ccu.c, cct.x, ccu.c), 100, 120);
-      this.h = $$0;
-      this.i = $$1;
+   public bvd(btb<? extends cfg> $$0, float $$1, int $$2) {
+      super(ImmutableMap.of(ccu.h, ccv.a, ccu.r, ccv.b, ccu.m, ccv.c, ccu.n, ccv.c, ccu.Z, ccv.b), 110);
+      this.f = $$0;
+      this.g = $$1;
+      this.h = $$2;
    }
 
-   protected boolean a(arf $$0, E $$1) {
-      return this.i.test($$1) && ($$1.dS().a(cct.x) || $$1.dS().a(cct.Z));
+   protected boolean a(arf $$0, cfg $$1) {
+      return $$1.gu() && this.c($$1).isPresent();
    }
 
-   protected boolean a(arf $$0, E $$1, long $$2) {
-      return true;
+   protected void a(arf $$0, cfg $$1, long $$2) {
+      cfg $$3 = this.c($$1).get();
+      $$1.dS().a(ccu.r, $$3);
+      $$3.dS().a(ccu.r, $$1);
+      bvl.a($$1, (btq)$$3, this.g, this.h);
+      int $$4 = 60 + $$1.el().a(50);
+      this.j = $$2 + (long)$$4;
    }
 
-   protected void b(arf $$0, E $$1, long $$2) {
-      $$1.dS().a(cct.Z, true);
-      $$1.dS().b(cct.m);
-   }
-
-   protected void c(arf $$0, E $$1, long $$2) {
-      bur<?> $$3 = $$1.dS();
-      $$3.b(cct.Z);
-   }
-
-   protected void d(arf $$0, E $$1, long $$2) {
-      if ($$1.K().l()) {
-         evr $$3 = this.a($$1, $$0);
-         if ($$3 != null) {
-            $$1.dS().a(cct.m, new ccw($$3, this.h, 0));
-         }
-      }
-   }
-
-   @Nullable
-   private evr a(E $$0, arf $$1) {
-      if ($$0.bQ()) {
-         Optional<evr> $$2 = this.a((dbe)$$1, $$0).map(evr::c);
-         if ($$2.isPresent()) {
-            return $$2.get();
-         }
-      }
-
-      return cen.a($$0, 5, 4);
-   }
-
-   private Optional<iz> a(dbe $$0, bsu $$1) {
-      iz $$2 = $$1.dp();
-      if (!$$0.a_($$2).k($$0, $$2).c()) {
-         return Optional.empty();
+   protected boolean b(arf $$0, cfg $$1, long $$2) {
+      if (!this.b($$1)) {
+         return false;
       } else {
-         Predicate<iz> $$3;
-         if (ayz.f($$1.dj()) == 2) {
-            $$3 = $$1x -> iz.a($$1x).allMatch($$1xx -> $$0.b_($$1xx).a(awv.a));
-         } else {
-            $$3 = $$1x -> $$0.b_($$1x).a(awv.a);
+         cfg $$3 = this.a($$1);
+         return $$3.bD() && $$1.a($$3) && bvl.a($$1.dS(), $$3) && $$2 <= this.j && !$$1.gn() && !$$3.gn();
+      }
+   }
+
+   protected void c(arf $$0, cfg $$1, long $$2) {
+      cfg $$3 = this.a($$1);
+      bvl.a($$1, (btq)$$3, this.g, this.h);
+      if ($$1.a($$3, 3.0)) {
+         if ($$2 >= this.j) {
+            $$1.a($$0, $$3);
+            $$1.dS().b(ccu.r);
+            $$3.dS().b(ccu.r);
+         }
+      }
+   }
+
+   protected void d(arf $$0, cfg $$1, long $$2) {
+      $$1.dS().b(ccu.r);
+      $$1.dS().b(ccu.m);
+      $$1.dS().b(ccu.n);
+      this.j = 0L;
+   }
+
+   private cfg a(cfg $$0) {
+      return (cfg)$$0.dS().c(ccu.r).get();
+   }
+
+   private boolean b(cfg $$0) {
+      bus<?> $$1 = $$0.dS();
+      return $$1.a(ccu.r) && $$1.c(ccu.r).get().ak() == this.f;
+   }
+
+   private Optional<? extends cfg> c(cfg $$0) {
+      return $$0.dS().c(ccu.h).get().a($$1 -> {
+         if ($$1.ak() == this.f && $$1 instanceof cfg $$2 && $$0.a($$2) && !$$2.gn()) {
+            return true;
          }
 
-         return iz.a($$2, 5, 1, $$3);
-      }
+         return false;
+      }).map(cfg.class::cast);
    }
 }

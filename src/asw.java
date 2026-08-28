@@ -24,13 +24,13 @@ public class asw implements AutoCloseable {
    private static final Logger a = LogUtils.getLogger();
    private static final int b = 20;
    private final Path c;
-   private final bmb<asw.e> d;
-   private final bpn<Runnable> e = bpn.a(ac.i(), "download-queue");
+   private final bmc<asw.e> d;
+   private final bpo<Runnable> e = bpo.a(ac.i(), "download-queue");
 
    public asw(Path $$0) throws IOException {
       this.c = $$0;
       v.c($$0);
-      this.d = bmb.a(asw.e.a, $$0.resolve("log.json"));
+      this.d = bmc.a(asw.e.a, $$0.resolve("log.json"));
       asv.a($$0, 20);
    }
 

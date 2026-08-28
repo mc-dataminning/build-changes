@@ -11,8 +11,8 @@ public class aph {
    public static void a(CommandDispatcher<ep> $$0) {
       LiteralCommandNode<ep> $$1 = $$0.register((LiteralArgumentBuilder)eq.a("teammsg").then(eq.a("message", fg.a()).executes($$0x -> {
          ep $$1x = (ep)$$0x.getSource();
-         bsu $$2 = $$1x.g();
-         ewq $$3 = $$2.cj();
+         bsv $$2 = $$1x.g();
+         ewr $$3 = $$2.cj();
          if ($$3 == null) {
             throw b.create();
          } else {
@@ -27,7 +27,7 @@ public class aph {
       $$0.register((LiteralArgumentBuilder)eq.a("tm").redirect($$1));
    }
 
-   private static void a(ep $$0, bsu $$1, ewq $$2, List<arg> $$3, yf $$4) {
+   private static void a(ep $$0, bsv $$1, ewr $$2, List<arg> $$3, yf $$4) {
       xp $$5 = $$2.d().c(a);
       xl.a $$6 = xl.a(xl.g, $$0).c($$5);
       xl.a $$7 = xl.a(xl.h, $$0).c($$5);

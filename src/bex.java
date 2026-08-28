@@ -32,7 +32,7 @@ public class bex extends DataFix {
 
    public final TypeRewriteRule makeRule() {
       Type<?> $$0 = this.getInputSchema().getType(bgx.t);
-      OpticFinder<Pair<String, String>> $$1 = DSL.fieldFinder("id", DSL.named(bgx.D.typeName(), bii.a()));
+      OpticFinder<Pair<String, String>> $$1 = DSL.fieldFinder("id", DSL.named(bgx.D.typeName(), bij.a()));
       OpticFinder<?> $$2 = $$0.findField("components");
       return this.fixTypeEverywhereTyped(
          "ItemStack custom_name to item_name component fix",

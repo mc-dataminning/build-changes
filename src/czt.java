@@ -1,10 +1,8 @@
-public class czt extends daa {
-   public czt(daa.b $$0) {
-      super($$0);
-   }
+import javax.annotation.ParametersAreNonnullByDefault;
 
-   @Override
-   public boolean a(daa $$0) {
-      return $$0 instanceof dah ? false : super.a($$0);
-   }
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface czt {
 }

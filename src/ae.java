@@ -128,12 +128,12 @@ public record ae(Optional<alf> c, Optional<ar> d, aj e, Map<String, an<?>> f, ai
          return this;
       }
 
-      public ae.a a(cup $$0, xp $$1, xp $$2, @Nullable alf $$3, al $$4, boolean $$5, boolean $$6, boolean $$7) {
+      public ae.a a(cuq $$0, xp $$1, xp $$2, @Nullable alf $$3, al $$4, boolean $$5, boolean $$6, boolean $$7) {
          return this.a(new ar($$0, $$1, $$2, Optional.ofNullable($$3), $$4, $$5, $$6, $$7));
       }
 
-      public ae.a a(dbx $$0, xp $$1, xp $$2, @Nullable alf $$3, al $$4, boolean $$5, boolean $$6, boolean $$7) {
-         return this.a(new ar(new cup($$0.r()), $$1, $$2, Optional.ofNullable($$3), $$4, $$5, $$6, $$7));
+      public ae.a a(dby $$0, xp $$1, xp $$2, @Nullable alf $$3, al $$4, boolean $$5, boolean $$6, boolean $$7) {
+         return this.a(new ar(new cuq($$0.r()), $$1, $$2, Optional.ofNullable($$3), $$4, $$5, $$6, $$7));
       }
 
       public ae.a a(ar $$0) {

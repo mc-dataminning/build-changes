@@ -1,4 +1,4 @@
-// 1.20.5 Pre-Release 4	2026-08-28T02:08:12.6648153	vanilla/Advancements
+// 1.20.5 Release Candidate 1	2026-08-28T02:10:24.7099695	vanilla/Advancements
 d42494ee70fb41f5814b3c08a477ab2ac5fe9a5a data\minecraft\advancements\husbandry\breed_an_animal.json
 e7749bff1fb78f813b06761b1744ffedc7d4ed3e data\minecraft\advancements\adventure\salvage_sherd.json
 d07f5f7faf2d59753e6e03355e0143951c5363a6 data\minecraft\advancements\husbandry\plant_any_sniffer_seed.json
@@ -23,8 +23,8 @@ eb8b00790713d1cdd828fb646735597014d68f78 data\minecraft\advancements\husbandry\f
 cd1581a02fa2ec6598de8bb3232ce48af5d13028 data\minecraft\advancements\adventure\read_power_of_chiseled_bookshelf.json
 9fa291cd2297861e481ce0305145d1080832fe19 data\minecraft\advancements\husbandry\obtain_netherite_hoe.json
 58439fc75615e5797c91e32e26fe48035da42829 data\minecraft\advancements\story\enchant_item.json
-af29abce11dc88c44912c78e1fc1bce6fd87151a data\minecraft\advancements\adventure\root.json
 851057d836e1f1f66776beda178388a5a95b2fd1 data\minecraft\advancements\husbandry\repair_wolf_armor.json
+af29abce11dc88c44912c78e1fc1bce6fd87151a data\minecraft\advancements\adventure\root.json
 cbeee743c79bd8f876cf1eee987d82685816d9ff data\minecraft\advancements\nether\summon_wither.json
 9134d33488a31e83fb60723de4bf6771e48cb49a data\minecraft\advancements\adventure\two_birds_one_arrow.json
 f16c317053d7a95b66e9be51ecb96263ccf04c2d data\minecraft\advancements\adventure\sniper_duel.json

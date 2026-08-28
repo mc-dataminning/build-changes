@@ -1,16 +1,9 @@
-import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.Codec;
 
-public interface emf<P extends eme> {
-   emf<eli> a = a("always_true", eli.a);
-   emf<eln> b = a("block_match", eln.a);
-   emf<elp> c = a("blockstate_match", elp.a);
-   emf<emm> d = a("tag_match", emm.a);
-   emf<emb> e = a("random_block_match", emb.a);
-   emf<emc> f = a("random_blockstate_match", emc.a);
+public abstract class emf {
+   public static final Codec<emf> c = lp.o.q().dispatch("predicate_type", emf::a, emg::codec);
 
-   MapCodec<P> codec();
+   public abstract boolean a(dsd var1, azh var2);
 
-   static <P extends eme> emf<P> a(String $$0, MapCodec<P> $$1) {
-      return jv.a(lp.o, $$0, () -> $$1);
-   }
+   protected abstract emg<?> a();
 }

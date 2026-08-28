@@ -1,15 +1,15 @@
 import com.mojang.brigadier.context.CommandContext;
 
-public class gd extends fz<dlm> {
+public class gd extends fz<dln> {
    private gd() {
-      super(dlm.e, dlm::values);
+      super(dln.e, dln::values);
    }
 
    public static gd a() {
       return new gd();
    }
 
-   public static dlm a(CommandContext<ep> $$0, String $$1) {
-      return (dlm)$$0.getArgument($$1, dlm.class);
+   public static dln a(CommandContext<ep> $$0, String $$1) {
+      return (dln)$$0.getArgument($$1, dln.class);
    }
 }

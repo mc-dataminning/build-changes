@@ -11,7 +11,7 @@ public class aei implements zw<aci> {
    private final float j;
    private final float k;
 
-   public aei(cmu $$0) {
+   public aei(cmv $$0) {
       this.f = $$0.a;
       this.g = $$0.b;
       this.h = $$0.c;

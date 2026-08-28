@@ -35,8 +35,8 @@ public class Main {
    public static void main(String[] $$0) {
       Stopwatch $$1 = Stopwatch.createStarted(Ticker.systemTicker());
       Stopwatch $$2 = Stopwatch.createStarted(Ticker.systemTicker());
-      guk.a.a(gug.z, $$1);
-      guk.a.a(gug.A, $$2);
+      gul.a.a(guh.z, $$1);
+      gul.a.a(guh.A, $$2);
       aa.a();
       aa.d();
       OptionParser $$3 = new OptionParser();
@@ -71,7 +71,7 @@ public class Main {
       OptionSpec<String> $$26 = $$3.accepts("userProperties").withRequiredArg().defaultsTo("{}", new String[0]);
       OptionSpec<String> $$27 = $$3.accepts("profileProperties").withRequiredArg().defaultsTo("{}", new String[0]);
       OptionSpec<String> $$28 = $$3.accepts("assetIndex").withRequiredArg();
-      OptionSpec<String> $$29 = $$3.accepts("userType").withRequiredArg().defaultsTo(fft.a.a.a(), new String[0]);
+      OptionSpec<String> $$29 = $$3.accepts("userType").withRequiredArg().defaultsTo(ffu.a.a.a(), new String[0]);
       OptionSpec<String> $$30 = $$3.accepts("versionType").withRequiredArg().defaultsTo("release", new String[0]);
       OptionSpec<String> $$31 = $$3.nonOptions();
       OptionSet $$32 = $$3.parse($$0);
@@ -125,45 +125,45 @@ public class Main {
       String $$60 = a(a($$32, $$7));
       String $$61 = a(a($$32, $$8));
       if ($$32.has($$4)) {
-         bno.f.a(bnm.a);
+         bnp.f.a(bnn.a);
       }
 
       o.h();
 
       try {
          alh.a();
-         guk.a.a(alh.b.get());
+         gul.a.a(alh.b.get());
          alh.c();
       } catch (Throwable var84) {
          o $$63 = o.a(var84, "Bootstrap");
          p $$64 = $$63.a("Initialization");
          aza.a($$64);
-         fff.a(null, null, $$46, null, $$63);
-         fff.a(null, $$51, $$63);
+         ffg.a(null, null, $$46, null, $$63);
+         ffg.a(null, $$51, $$63);
          return;
       }
 
       String $$65 = (String)$$29.value($$32);
-      fft.a $$66 = fft.a.a($$65);
+      ffu.a $$66 = ffu.a.a($$65);
       if ($$66 == null) {
          a.warn("Unrecognized user type: {}", $$65);
       }
 
-      fft $$67 = new fft((String)$$16.value($$32), $$54, (String)$$20.value($$32), b($$56), b($$57), $$66);
-      fsq $$68 = new fsq(
-         new fsq.d($$67, $$48, $$49, $$35),
-         new eyp($$38, $$39, $$40, $$41, $$42),
-         new fsq.a($$51, $$53, $$52, $$55),
-         new fsq.b($$43, $$46, $$50, $$44, $$45),
-         new fsq.c($$58, $$59, $$60, $$61)
+      ffu $$67 = new ffu((String)$$16.value($$32), $$54, (String)$$20.value($$32), b($$56), b($$57), $$66);
+      fsr $$68 = new fsr(
+         new fsr.d($$67, $$48, $$49, $$35),
+         new eyq($$38, $$39, $$40, $$41, $$42),
+         new fsr.a($$51, $$53, $$52, $$55),
+         new fsr.b($$43, $$46, $$50, $$44, $$45),
+         new fsr.c($$58, $$59, $$60, $$61)
       );
       ac.m();
       Thread $$69 = new Thread("Client Shutdown Thread") {
          @Override
          public void run() {
-            fff $$0 = fff.Q();
+            ffg $$0 = ffg.Q();
             if ($$0 != null) {
-               gte $$1 = $$0.V();
+               gtf $$1 = $$0.V();
                if ($$1 != null) {
                   $$1.a(true);
                }
@@ -172,15 +172,15 @@ public class Main {
       };
       $$69.setUncaughtExceptionHandler(new r(a));
       Runtime.getRuntime().addShutdownHook($$69);
-      final fff $$70 = null;
+      final ffg $$70 = null;
 
       try {
          Thread.currentThread().setName("Render thread");
          RenderSystem.initRenderThread();
          RenderSystem.beginInitialization();
-         $$70 = new fff($$68);
+         $$70 = new ffg($$68);
          RenderSystem.finishInitialization();
-      } catch (fsr var82) {
+      } catch (fss var82) {
          ac.j();
          a.warn("Failed to create window: ", var82);
          return;
@@ -188,12 +188,12 @@ public class Main {
          o $$73 = o.a(var83, "Initializing game");
          p $$74 = $$73.a("Initialization");
          aza.a($$74);
-         fff.a($$70, null, $$68.d.b, null, $$73);
-         fff.a($$70, $$68.c.a, $$73);
+         ffg.a($$70, null, $$68.d.b, null, $$73);
+         ffg.a($$70, $$68.c.a, $$73);
          return;
       }
 
-      fff $$75 = $$70;
+      ffg $$75 = $$70;
       Thread $$76;
       if ($$70.aN()) {
          $$76 = new Thread("Game thread") {
@@ -222,7 +222,7 @@ public class Main {
          }
       }
 
-      ezu.a();
+      ezv.a();
 
       try {
          $$75.q();

@@ -41,15 +41,15 @@ public class fp<T> implements ArgumentType<ale<T>> {
       return a($$0, $$2).b($$4).orElseThrow(() -> $$3.create($$4.a()));
    }
 
-   public static ji.c<eal<?, ?>> a(CommandContext<ep> $$0, String $$1) throws CommandSyntaxException {
+   public static ji.c<eam<?, ?>> a(CommandContext<ep> $$0, String $$1) throws CommandSyntaxException {
       return b($$0, $$1, lq.aC, b);
    }
 
-   public static ji.c<eik> b(CommandContext<ep> $$0, String $$1) throws CommandSyntaxException {
+   public static ji.c<eil> b(CommandContext<ep> $$0, String $$1) throws CommandSyntaxException {
       return b($$0, $$1, lq.aJ, c);
    }
 
-   public static ji.c<ejt> c(CommandContext<ep> $$0, String $$1) throws CommandSyntaxException {
+   public static ji.c<eju> c(CommandContext<ep> $$0, String $$1) throws CommandSyntaxException {
       return b($$0, $$1, lq.aM, d);
    }
 

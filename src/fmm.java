@@ -1,114 +1,64 @@
-public class fmm extends fmv {
-   private static final xp a = xp.c("options.languageAccuracyWarning").a(n.h);
-   private static final int r = 53;
-   private fmm.a s;
-   final gqh u;
+public class fmm extends flu {
+   private fhf c;
 
-   public fmm(fnd $$0, ffj $$1, gqh $$2) {
-      super($$0, $$1, xp.c("options.language.title"));
-      this.u = $$2;
+   public fmm() {
+      super("");
    }
 
    @Override
    protected void aM_() {
-      this.s = this.c(new fmm.a(this.m));
-      this.d.a(53);
       super.aM_();
+      this.c = fhf.a(xp.c("multiplayer.stopSleeping"), $$0 -> this.E()).a(this.n / 2 - 100, this.o - 40, 200, 20).a();
+      this.c(this.c);
    }
 
    @Override
-   protected void c() {
-      super.c();
-      this.s.a(this.n, this.d);
+   public void a(fgs $$0, int $$1, int $$2, float $$3) {
+      if (!this.m.J().a(this.m.T())) {
+         this.c.a($$0, $$1, $$2, $$3);
+      } else {
+         super.a($$0, $$1, $$2, $$3);
+      }
    }
 
    @Override
-   protected void h() {
-      fkv $$0 = this.d.b(fkv.d()).a(8);
-      $$0.c().b();
-      $$0.a(new fil(a, this.p));
-      fkv $$1 = $$0.a(fkv.e().a(8));
-      $$1.a(fhe.a(xp.c("options.font"), $$0x -> this.m.a(new fmi(this, this.c))).a());
-      $$1.a(fhe.a(xo.d, $$0x -> this.E()).a());
+   public void d() {
+      this.E();
    }
 
-   void E() {
-      fmm.a.a $$0 = this.s.h();
-      if ($$0 != null && !$$0.b.equals(this.u.a())) {
-         this.u.a($$0.b);
-         this.c.ac = $$0.b;
-         this.m.l();
-      }
-
-      this.m.a(this.b);
+   @Override
+   public boolean a(char $$0, int $$1) {
+      return !this.m.J().a(this.m.T()) ? true : super.a($$0, $$1);
    }
 
-   class a extends fia<fmm.a.a> {
-      public a(final fff $$0) {
-         super($$0, fmm.this.n, fmm.this.o - 33 - 53, 33, 18);
-         String $$1 = fmm.this.u.a();
-         fmm.this.u.b().forEach(($$1x, $$2) -> {
-            fmm.a.a $$3 = new fmm.a.a($$1x, $$2);
-            this.b($$3);
-            if ($$1.equals($$1x)) {
-               this.a($$3);
-            }
-         });
-         if (this.h() != null) {
-            this.e(this.h());
-         }
+   @Override
+   public boolean a(int $$0, int $$1, int $$2) {
+      if ($$0 == 256) {
+         this.E();
       }
 
-      @Override
-      public int b() {
-         return super.b() + 50;
+      if (!this.m.J().a(this.m.T())) {
+         return true;
+      } else if ($$0 != 257 && $$0 != 335) {
+         return super.a($$0, $$1, $$2);
+      } else {
+         this.b(this.b.a(), true);
+         this.b.a("");
+         this.m.l.d().d();
+         return true;
       }
+   }
 
-      public class a extends fia.a<fmm.a.a> {
-         final String b;
-         private final xp c;
-         private long d;
+   private void E() {
+      fxx $$0 = this.m.s.cz;
+      $$0.b(new aib(this.m.s, aib.a.c));
+   }
 
-         public a(final String $$1, final gqg $$2) {
-            this.b = $$1;
-            this.c = $$2.a();
-         }
-
-         @Override
-         public void a(fgr $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
-            $$0.a(fmm.this.p, this.c, a.this.g / 2, $$2 + 1, -1);
-         }
-
-         @Override
-         public boolean a(int $$0, int $$1, int $$2) {
-            if (flf.a($$0)) {
-               this.b();
-               fmm.this.E();
-               return true;
-            } else {
-               return super.a($$0, $$1, $$2);
-            }
-         }
-
-         @Override
-         public boolean a(double $$0, double $$1, int $$2) {
-            this.b();
-            if (ac.c() - this.d < 250L) {
-               fmm.this.E();
-            }
-
-            this.d = ac.c();
-            return super.a($$0, $$1, $$2);
-         }
-
-         private void b() {
-            a.this.a(this);
-         }
-
-         @Override
-         public xp a() {
-            return xp.a("narrator.select", this.c);
-         }
+   public void m() {
+      if (this.b.a().isEmpty()) {
+         this.m.a(null);
+      } else {
+         this.m.a(new flu(this.b.a()));
       }
    }
 }

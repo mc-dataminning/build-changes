@@ -3,7 +3,7 @@ import com.mojang.datafixers.util.Pair;
 import com.mojang.serialization.Dynamic;
 import java.util.Objects;
 
-public class bdr extends bhh {
+public class bdr extends bhi {
    public bdr(Schema $$0, boolean $$1) {
       super("EntitySkeletonSplitFix", $$0, $$1);
    }

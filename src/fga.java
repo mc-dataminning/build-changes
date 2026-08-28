@@ -1,200 +1,113 @@
 public class fga {
-   public static final ffv a = ffv.a.a(1.125F)
-      .a(
-         "head",
-         new ffu(
-            ffu.d.b,
-            new ffw(0.0F, ffx.b(0.0F, 0.0F, 0.0F), ffu.b.a),
-            new ffw(0.25F, ffx.b(-12.5F, 0.0F, 0.0F), ffu.b.a),
-            new ffw(0.75F, ffx.b(-12.5F, 0.0F, 0.0F), ffu.b.a),
-            new ffw(0.9167F, ffx.b(5.0F, 0.0F, 0.0F), ffu.b.a),
-            new ffw(1.125F, ffx.b(0.0F, 0.0F, 0.0F), ffu.b.a)
-         )
-      )
-      .a(
-         "head",
-         new ffu(
-            ffu.d.a,
-            new ffw(0.0F, ffx.a(0.0F, 0.0F, 0.0F), ffu.b.a),
-            new ffw(0.25F, ffx.a(0.0F, -2.0F, 0.0F), ffu.b.a),
-            new ffw(0.7917F, ffx.a(0.0F, -1.0F, 2.0F), ffu.b.a),
-            new ffw(0.9583F, ffx.a(0.0F, -1.0F, 0.0F), ffu.b.a),
-            new ffw(1.125F, ffx.a(0.0F, 0.0F, 0.0F), ffu.b.a)
-         )
-      )
-      .a("wind_bottom", new ffu(ffu.d.b, new ffw(0.0F, ffx.b(0.0F, 0.0F, 0.0F), ffu.b.a)))
-      .a(
-         "wind_mid",
-         new ffu(
-            ffu.d.b,
-            new ffw(0.0F, ffx.b(0.0F, 0.0F, 0.0F), ffu.b.a),
-            new ffw(0.25F, ffx.b(12.5F, 0.0F, 0.0F), ffu.b.a),
-            new ffw(0.75F, ffx.b(12.5F, 0.0F, 0.0F), ffu.b.a),
-            new ffw(0.9167F, ffx.b(-10.0F, 0.0F, 0.0F), ffu.b.a),
-            new ffw(1.125F, ffx.b(0.0F, 0.0F, 0.0F), ffu.b.a)
-         )
-      )
-      .a(
-         "wind_mid",
-         new ffu(
-            ffu.d.a,
-            new ffw(0.0F, ffx.a(0.0F, 0.0F, 0.0F), ffu.b.a),
-            new ffw(0.25F, ffx.a(0.0F, 0.0F, 5.0F), ffu.b.a),
-            new ffw(0.75F, ffx.a(0.0F, 0.0F, 6.0F), ffu.b.a),
-            new ffw(0.9167F, ffx.a(0.0F, 0.0F, -2.0F), ffu.b.a),
-            new ffw(1.125F, ffx.a(0.0F, 0.0F, 0.0F), ffu.b.a)
-         )
-      )
-      .a(
-         "wind_top",
-         new ffu(
-            ffu.d.b,
-            new ffw(0.0F, ffx.b(0.0F, 0.0F, 0.0F), ffu.b.a),
-            new ffw(0.25F, ffx.b(15.0F, 0.0F, 0.0F), ffu.b.a),
-            new ffw(0.75F, ffx.b(15.0F, 0.0F, 0.0F), ffu.b.a),
-            new ffw(0.9167F, ffx.b(-10.0F, 0.0F, 0.0F), ffu.b.a),
-            new ffw(1.125F, ffx.b(0.0F, 0.0F, 0.0F), ffu.b.a)
-         )
-      )
-      .a(
-         "wind_top",
-         new ffu(
-            ffu.d.a,
-            new ffw(0.0F, ffx.a(0.0F, 0.0F, 0.0F), ffu.b.a),
-            new ffw(0.25F, ffx.a(0.0F, 0.0F, 3.0F), ffu.b.a),
-            new ffw(0.8333F, ffx.a(0.0F, 0.0F, 4.0F), ffu.b.a),
-            new ffw(0.9583F, ffx.a(0.0F, 0.0F, -2.0F), ffu.b.a),
-            new ffw(1.125F, ffx.a(0.0F, 0.0F, 0.0F), ffu.b.a)
-         )
-      )
-      .a(
-         "body",
-         new ffu(
-            ffu.d.b,
-            new ffw(0.0F, ffx.b(0.0F, 0.0F, 0.0F), ffu.b.a),
-            new ffw(0.25F, ffx.b(12.5F, 0.0F, 0.0F), ffu.b.a),
-            new ffw(0.75F, ffx.b(12.5F, 0.0F, 0.0F), ffu.b.a),
-            new ffw(0.9167F, ffx.b(-2.5F, 0.0F, 0.0F), ffu.b.a),
-            new ffw(1.125F, ffx.b(0.0F, 0.0F, 0.0F), ffu.b.a)
-         )
-      )
-      .a(
-         "body",
-         new ffu(
-            ffu.d.a,
-            new ffw(0.0F, ffx.a(0.0F, 0.0F, 0.0F), ffu.b.a),
-            new ffw(0.25F, ffx.a(0.0F, 3.0F, 5.0F), ffu.b.a),
-            new ffw(0.8333F, ffx.a(0.0F, 3.0F, 6.0F), ffu.b.a),
-            new ffw(0.9583F, ffx.a(0.0F, 3.0F, -1.0F), ffu.b.a),
-            new ffw(1.125F, ffx.a(0.0F, 0.0F, 0.0F), ffu.b.a)
-         )
-      )
-      .a("rods", new ffu(ffu.d.b, new ffw(0.0F, ffx.b(0.0F, 0.0F, 0.0F), ffu.b.a), new ffw(1.0F, ffx.b(0.0F, 360.0F, 0.0F), ffu.b.a)))
+   public static final ffw a = ffw.a.a(0.5F)
+      .a()
+      .a("head", new ffv(ffv.d.b, new ffx(0.0F, ffy.b(180.0F, 0.0F, 0.0F), ffv.b.a)))
+      .a("head", new ffv(ffv.d.a, new ffx(0.0F, ffy.a(0.0F, 0.5F, 0.0F), ffv.b.a)))
+      .a("body", new ffv(ffv.d.b, new ffx(0.0F, ffy.b(180.0F, 0.0F, 0.0F), ffv.b.a)))
+      .a("body", new ffv(ffv.d.a, new ffx(0.0F, ffy.a(0.0F, 0.5F, 0.0F), ffv.b.a)))
+      .a("feet", new ffv(ffv.d.b, new ffx(0.0F, ffy.b(0.0F, 0.0F, 0.0F), ffv.b.a)))
+      .a("right_wing", new ffv(ffv.d.b, new ffx(0.0F, ffy.b(0.0F, -10.0F, 0.0F), ffv.b.a)))
+      .a("right_wing", new ffv(ffv.d.a, new ffx(0.0F, ffy.a(0.0F, 0.0F, 1.0F), ffv.b.a)))
+      .a("right_wing_tip", new ffv(ffv.d.b, new ffx(0.0F, ffy.b(0.0F, -120.0F, 0.0F), ffv.b.a)))
+      .a("left_wing", new ffv(ffv.d.b, new ffx(0.0F, ffy.b(0.0F, 10.0F, 0.0F), ffv.b.a)))
+      .a("left_wing", new ffv(ffv.d.a, new ffx(0.0F, ffy.a(0.0F, 0.0F, 1.0F), ffv.b.a)))
+      .a("left_wing_tip", new ffv(ffv.d.b, new ffx(0.0F, ffy.b(0.0F, 120.0F, 0.0F), ffv.b.a)))
       .b();
-   public static final ffv b = ffv.a.a(1.125F)
+   public static final ffw b = ffw.a.a(0.5F)
+      .a()
       .a(
-         "body",
-         new ffu(
-            ffu.d.a,
-            new ffw(0.0F, ffx.a(0.0F, 0.0F, 0.0F), ffu.b.a),
-            new ffw(0.5F, ffx.a(0.0F, -10.0F, 0.0F), ffu.b.a),
-            new ffw(0.625F, ffx.a(0.0F, -10.0F, 0.0F), ffu.b.a),
-            new ffw(0.75F, ffx.a(0.0F, 11.0F, 0.0F), ffu.b.a),
-            new ffw(1.125F, ffx.a(0.0F, 0.0F, 0.0F), ffu.b.a)
+         "head",
+         new ffv(
+            ffv.d.b,
+            new ffx(0.0F, ffy.b(0.0F, 0.0F, 0.0F), ffv.b.a),
+            new ffx(0.125F, ffy.b(20.0F, 0.0F, 0.0F), ffv.b.a),
+            new ffx(0.5F, ffy.b(0.0F, 0.0F, 0.0F), ffv.b.a)
          )
       )
       .a(
          "head",
-         new ffu(
-            ffu.d.b,
-            new ffw(0.0F, ffx.b(0.0F, 0.0F, 0.0F), ffu.b.a),
-            new ffw(0.5F, ffx.b(22.5F, 0.0F, 0.0F), ffu.b.a),
-            new ffw(0.625F, ffx.b(22.5F, 0.0F, 0.0F), ffu.b.a),
-            new ffw(0.8333F, ffx.b(-19.25F, 0.0F, 0.0F), ffu.b.a),
-            new ffw(1.125F, ffx.b(0.0F, 0.0F, 0.0F), ffu.b.a)
+         new ffv(
+            ffv.d.a,
+            new ffx(0.0F, ffy.a(0.0F, 0.0F, 0.0F), ffv.b.a),
+            new ffx(0.125F, ffy.a(0.0F, 2.0F, 0.0F), ffv.b.a),
+            new ffx(0.25F, ffy.a(0.0F, 1.0F, 0.0F), ffv.b.a),
+            new ffx(0.375F, ffy.a(0.0F, 0.0F, 0.0F), ffv.b.a),
+            new ffx(0.4583F, ffy.a(0.0F, -1.0F, 0.0F), ffv.b.a),
+            new ffx(0.5F, ffy.a(0.0F, 0.0F, 0.0F), ffv.b.a)
          )
       )
       .a(
-         "wind_body",
-         new ffu(
-            ffu.d.c,
-            new ffw(0.0F, ffx.a(1.0, 1.0, 1.0), ffu.b.a),
-            new ffw(0.5F, ffx.a(1.0, 1.0, 1.0), ffu.b.a),
-            new ffw(0.625F, ffx.a(1.0, 1.0, 1.0), ffu.b.a),
-            new ffw(0.75F, ffx.a(1.0, 1.3F, 1.0), ffu.b.a),
-            new ffw(1.125F, ffx.a(1.0, 1.0, 1.0), ffu.b.a)
+         "body",
+         new ffv(
+            ffv.d.b,
+            new ffx(0.0F, ffy.b(40.0F, 0.0F, 0.0F), ffv.b.a),
+            new ffx(0.25F, ffy.b(52.5F, 0.0F, 0.0F), ffv.b.a),
+            new ffx(0.5F, ffy.b(40.0F, 0.0F, 0.0F), ffv.b.a)
          )
       )
       .a(
-         "wind_bottom",
-         new ffu(
-            ffu.d.b,
-            new ffw(0.0F, ffx.b(0.0F, 0.0F, 0.0F), ffu.b.a),
-            new ffw(0.625F, ffx.b(0.0F, 90.0F, 0.0F), ffu.b.a),
-            new ffw(1.125F, ffx.b(0.0F, 360.0F, 0.0F), ffu.b.a)
+         "body",
+         new ffv(
+            ffv.d.a,
+            new ffx(0.0F, ffy.a(0.0F, 0.0F, 0.0F), ffv.b.a),
+            new ffx(0.125F, ffy.a(0.0F, 2.0F, 0.0F), ffv.b.a),
+            new ffx(0.25F, ffy.a(0.0F, 1.0F, 0.0F), ffv.b.a),
+            new ffx(0.375F, ffy.a(0.0F, 0.0F, 0.0F), ffv.b.a),
+            new ffx(0.4583F, ffy.a(0.0F, -1.0F, 0.0F), ffv.b.a),
+            new ffx(0.5F, ffy.a(0.0F, 0.0F, 0.0F), ffv.b.a)
          )
       )
       .a(
-         "wind_bottom",
-         new ffu(
-            ffu.d.c,
-            new ffw(0.0F, ffx.a(1.0, 1.0, 1.0), ffu.b.a),
-            new ffw(0.5F, ffx.a(1.0, 1.0, 1.0), ffu.b.a),
-            new ffw(0.625F, ffx.a(1.0, 1.0, 1.0), ffu.b.a),
-            new ffw(0.75F, ffx.a(1.0, 1.1F, 1.0), ffu.b.a),
-            new ffw(1.125F, ffx.a(1.0, 1.0, 1.0), ffu.b.a)
+         "feet",
+         new ffv(
+            ffv.d.b,
+            new ffx(0.0F, ffy.b(10.0F, 0.0F, 0.0F), ffv.b.a),
+            new ffx(0.125F, ffy.b(-21.25F, 0.0F, 0.0F), ffv.b.a),
+            new ffx(0.25F, ffy.b(-12.5F, 0.0F, 0.0F), ffv.b.a),
+            new ffx(0.5F, ffy.b(10.0F, 0.0F, 0.0F), ffv.b.a)
          )
       )
       .a(
-         "wind_mid",
-         new ffu(
-            ffu.d.b,
-            new ffw(0.0F, ffx.b(0.0F, 0.0F, 0.0F), ffu.b.a),
-            new ffw(0.625F, ffx.b(0.0F, 0.0F, 0.0F), ffu.b.a),
-            new ffw(1.125F, ffx.b(0.0F, 180.0F, 0.0F), ffu.b.a)
+         "right_wing",
+         new ffv(
+            ffv.d.b,
+            new ffx(0.0F, ffy.b(0.0F, 85.0F, 0.0F), ffv.b.a),
+            new ffx(0.125F, ffy.b(0.0F, -55.0F, 0.0F), ffv.b.a),
+            new ffx(0.25F, ffy.b(0.0F, 50.0F, 0.0F), ffv.b.a),
+            new ffx(0.375F, ffy.b(0.0F, 70.0F, 0.0F), ffv.b.a),
+            new ffx(0.5F, ffy.b(0.0F, 85.0F, 0.0F), ffv.b.a)
          )
       )
       .a(
-         "wind_mid",
-         new ffu(
-            ffu.d.a,
-            new ffw(0.0F, ffx.a(0.0F, 0.0F, 0.0F), ffu.b.a),
-            new ffw(0.5F, ffx.a(0.0F, -6.0F, 0.0F), ffu.b.a),
-            new ffw(0.625F, ffx.a(0.0F, -6.0F, 0.0F), ffu.b.a),
-            new ffw(0.75F, ffx.a(0.0F, 2.0F, 0.0F), ffu.b.a),
-            new ffw(1.125F, ffx.a(0.0F, 0.0F, 0.0F), ffu.b.a)
+         "right_wing_tip",
+         new ffv(
+            ffv.d.b,
+            new ffx(0.0F, ffy.b(0.0F, 10.5F, 0.0F), ffv.b.a),
+            new ffx(0.0417F, ffy.b(0.0F, 65.5F, 0.0F), ffv.b.a),
+            new ffx(0.2083F, ffy.b(0.0F, -135.0F, 0.0F), ffv.b.a),
+            new ffx(0.5F, ffy.b(0.0F, 10.5F, 0.0F), ffv.b.a)
          )
       )
       .a(
-         "wind_top",
-         new ffu(
-            ffu.d.b,
-            new ffw(0.0F, ffx.b(0.0F, 0.0F, 0.0F), ffu.b.a),
-            new ffw(0.625F, ffx.b(0.0F, 0.0F, 0.0F), ffu.b.a),
-            new ffw(1.125F, ffx.b(0.0F, 90.0F, 0.0F), ffu.b.a)
+         "left_wing",
+         new ffv(
+            ffv.d.b,
+            new ffx(0.0F, ffy.b(0.0F, -85.0F, 0.0F), ffv.b.a),
+            new ffx(0.125F, ffy.b(0.0F, 55.0F, 0.0F), ffv.b.a),
+            new ffx(0.25F, ffy.b(0.0F, -50.0F, 0.0F), ffv.b.a),
+            new ffx(0.375F, ffy.b(0.0F, -70.0F, 0.0F), ffv.b.a),
+            new ffx(0.5F, ffy.b(0.0F, -85.0F, 0.0F), ffv.b.a)
          )
       )
       .a(
-         "wind_top",
-         new ffu(
-            ffu.d.a,
-            new ffw(0.0F, ffx.a(0.0F, 0.0F, 0.0F), ffu.b.a),
-            new ffw(0.5F, ffx.a(0.0F, -5.0F, 0.0F), ffu.b.a),
-            new ffw(0.625F, ffx.a(0.0F, -5.0F, 0.0F), ffu.b.a),
-            new ffw(0.75F, ffx.a(0.0F, 2.0F, 0.0F), ffu.b.a),
-            new ffw(1.125F, ffx.a(0.0F, 0.0F, 0.0F), ffu.b.a)
+         "left_wing_tip",
+         new ffv(
+            ffv.d.b,
+            new ffx(0.0F, ffy.b(0.0F, -10.5F, 0.0F), ffv.b.a),
+            new ffx(0.0417F, ffy.b(0.0F, -65.5F, 0.0F), ffv.b.a),
+            new ffx(0.2083F, ffy.b(0.0F, 135.0F, 0.0F), ffv.b.a),
+            new ffx(0.5F, ffy.b(0.0F, -10.5F, 0.0F), ffv.b.a)
          )
       )
-      .a("rods", new ffu(ffu.d.b, new ffw(0.0F, ffx.b(0.0F, 0.0F, 0.0F), ffu.b.a), new ffw(0.8333F, ffx.b(0.0F, 360.0F, 0.0F), ffu.b.a)))
-      .b();
-   public static final ffv c = ffv.a.a(0.2F)
-      .a("body", new ffu(ffu.d.a, new ffw(0.0F, ffx.a(0.0F, 0.0F, 0.0F), ffu.b.a), new ffw(0.2F, ffx.a(0.0F, 0.0F, -6.0F), ffu.b.a)))
-      .a("wind_mid", new ffu(ffu.d.a, new ffw(0.0F, ffx.a(0.0F, 0.0F, 0.0F), ffu.b.a), new ffw(0.2F, ffx.a(0.0F, 0.0F, -3.0F), ffu.b.a)))
-      .a("wind_top", new ffu(ffu.d.a, new ffw(0.0F, ffx.a(0.0F, 0.0F, 0.0F), ffu.b.a), new ffw(0.2F, ffx.a(0.0F, 0.0F, -2.0F), ffu.b.a)))
-      .b();
-   public static final ffv d = ffv.a.a(0.1F)
-      .a("body", new ffu(ffu.d.a, new ffw(0.0F, ffx.a(0.0F, 0.0F, -6.0F), ffu.b.a), new ffw(0.1F, ffx.a(0.0F, 0.0F, 0.0F), ffu.b.a)))
-      .a("wind_mid", new ffu(ffu.d.a, new ffw(0.0F, ffx.a(0.0F, 0.0F, -3.0F), ffu.b.a), new ffw(0.1F, ffx.a(0.0F, 0.0F, 0.0F), ffu.b.a)))
-      .a("wind_top", new ffu(ffu.d.a, new ffw(0.0F, ffx.a(0.0F, 0.0F, -2.0F), ffu.b.a), new ffw(0.1F, ffx.a(0.0F, 0.0F, 0.0F), ffu.b.a)))
       .b();
 }

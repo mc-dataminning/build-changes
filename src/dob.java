@@ -3,33 +3,31 @@ import com.google.common.collect.Maps;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Map;
-import javax.annotation.Nullable;
 
-public class dob extends dnj {
-   public static final MapCodec<dob> f = RecordCodecBuilder.mapCodec($$0 -> $$0.group(c.forGetter($$0x -> $$0x.e), u()).apply($$0, dob::new));
-   public static final dsw g = div.aE;
-   protected static final float h = 2.5F;
-   private static final Map<je, ewk> i = Maps.newEnumMap(
+public class dob extends ddw {
+   public static final MapCodec<dob> c = RecordCodecBuilder.mapCodec($$0 -> $$0.group(dmc.a.b.fieldOf("kind").forGetter(ddw::b), u()).apply($$0, dob::new));
+   public static final dsx d = diw.aE;
+   private static final Map<je, ewl> b = Maps.newEnumMap(
       ImmutableMap.of(
          je.c,
-         dez.a(5.5, 3.0, 11.0, 10.5, 13.0, 16.0),
+         dfa.a(4.0, 4.0, 8.0, 12.0, 12.0, 16.0),
          je.d,
-         dez.a(5.5, 3.0, 0.0, 10.5, 13.0, 5.0),
-         je.e,
-         dez.a(11.0, 3.0, 5.5, 16.0, 13.0, 10.5),
+         dfa.a(4.0, 4.0, 0.0, 12.0, 12.0, 8.0),
          je.f,
-         dez.a(0.0, 3.0, 5.5, 5.0, 13.0, 10.5)
+         dfa.a(0.0, 4.0, 4.0, 8.0, 12.0, 12.0),
+         je.e,
+         dfa.a(8.0, 4.0, 4.0, 16.0, 12.0, 12.0)
       )
    );
 
    @Override
-   public MapCodec<dob> a() {
-      return f;
+   public MapCodec<? extends dob> a() {
+      return c;
    }
 
-   protected dob(lm $$0, dsb.d $$1) {
+   protected dob(dmc.a $$0, dsc.d $$1) {
       super($$0, $$1);
-      this.k(this.E.b().a(g, je.c));
+      this.k(this.o().a(d, je.c));
    }
 
    @Override
@@ -38,38 +36,22 @@ public class dob extends dnj {
    }
 
    @Override
-   protected ewk a(dsc $$0, dbe $$1, iz $$2, evw $$3) {
-      return m($$0);
-   }
-
-   public static ewk m(dsc $$0) {
-      return i.get($$0.c(g));
+   protected ewl a(dsd $$0, dbf $$1, iz $$2, evx $$3) {
+      return b.get($$0.c(d));
    }
 
    @Override
-   protected boolean a(dsc $$0, dcb $$1, iz $$2) {
-      return b($$1, $$2, $$0.c(g));
-   }
-
-   public static boolean b(dcb $$0, iz $$1, je $$2) {
-      iz $$3 = $$1.a($$2.g());
-      dsc $$4 = $$0.a_($$3);
-      return $$4.d($$0, $$3, $$2);
-   }
-
-   @Nullable
-   @Override
-   public dsc a(cya $$0) {
-      dsc $$1 = this.o();
-      dcb $$2 = $$0.q();
+   public dsd a(cyb $$0) {
+      dsd $$1 = super.a($$0);
+      dbf $$2 = $$0.q();
       iz $$3 = $$0.a();
       je[] $$4 = $$0.f();
 
       for (je $$5 : $$4) {
          if ($$5.o().d()) {
             je $$6 = $$5.g();
-            $$1 = $$1.a(g, $$6);
-            if ($$1.a($$2, $$3)) {
+            $$1 = $$1.a(d, $$6);
+            if (!$$2.a_($$3.a($$5)).a($$0)) {
                return $$1;
             }
          }
@@ -79,35 +61,18 @@ public class dob extends dnj {
    }
 
    @Override
-   protected dsc a(dsc $$0, je $$1, dsc $$2, dbz $$3, iz $$4, iz $$5) {
-      return $$1.g() == $$0.c(g) && !$$0.a($$3, $$4) ? dfb.a.o() : $$0;
+   protected dsd a(dsd $$0, dln $$1) {
+      return $$0.a(d, $$1.a($$0.c(d)));
    }
 
    @Override
-   public void a(dsc $$0, dby $$1, iz $$2, azh $$3) {
-      je $$4 = $$0.c(g);
-      double $$5 = (double)$$2.u() + 0.5;
-      double $$6 = (double)$$2.v() + 0.7;
-      double $$7 = (double)$$2.w() + 0.5;
-      double $$8 = 0.22;
-      double $$9 = 0.27;
-      je $$10 = $$4.g();
-      $$1.a(li.ae, $$5 + 0.27 * (double)$$10.j(), $$6 + 0.22, $$7 + 0.27 * (double)$$10.l(), 0.0, 0.0, 0.0);
-      $$1.a(this.e, $$5 + 0.27 * (double)$$10.j(), $$6 + 0.22, $$7 + 0.27 * (double)$$10.l(), 0.0, 0.0, 0.0);
+   protected dsd a(dsd $$0, djx $$1) {
+      return $$0.a($$1.a($$0.c(d)));
    }
 
    @Override
-   protected dsc a(dsc $$0, dlm $$1) {
-      return $$0.a(g, $$1.a($$0.c(g)));
-   }
-
-   @Override
-   protected dsc a(dsc $$0, djw $$1) {
-      return $$0.a($$1.a($$0.c(g)));
-   }
-
-   @Override
-   protected void a(dsd.a<dez, dsc> $$0) {
-      $$0.a(g);
+   protected void a(dse.a<dfa, dsd> $$0) {
+      super.a($$0);
+      $$0.a(d);
    }
 }

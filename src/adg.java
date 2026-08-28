@@ -1,4 +1,4 @@
-public record adg(cuk b, int c) implements zw<aci> {
+public record adg(cul b, int c) implements zw<aci> {
    public static final zn<xa, adg> a = zn.a(zl.a(lq.G), adg::b, zl.g, adg::e, adg::new);
 
    @Override

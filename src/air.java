@@ -27,7 +27,7 @@ public class air implements zw<agw> {
    }
 
    @Nullable
-   public bsu a(arf $$0) {
+   public bsv a(arf $$0) {
       return $$0.a(this.b);
    }
 }

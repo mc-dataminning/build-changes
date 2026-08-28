@@ -1,5 +1,15 @@
-public class fca extends RuntimeException {
-   public fca(String $$0, Exception $$1) {
-      super($$0, $$1);
+import java.lang.Thread.UncaughtExceptionHandler;
+import org.slf4j.Logger;
+
+public class fca implements UncaughtExceptionHandler {
+   private final Logger a;
+
+   public fca(Logger $$0) {
+      this.a = $$0;
+   }
+
+   @Override
+   public void uncaughtException(Thread $$0, Throwable $$1) {
+      this.a.error("Caught previously unhandled exception", $$1);
    }
 }

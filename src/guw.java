@@ -1,38 +1,110 @@
-public class guw implements guz {
-   private static final int a = 600;
-   private static final xp b = xp.c("tutorial.open_inventory.title");
-   private static final xp c = xp.a("tutorial.open_inventory.description", guy.a("inventory"));
-   private final guy d;
-   private fjp e;
-   private int f;
+public class guw implements gva {
+   private static final int a = 40;
+   private static final int b = 40;
+   private static final int c = 100;
+   private static final int d = 20;
+   private static final int e = -1;
+   private static final xp f = xp.a("tutorial.move.title", guz.a("forward"), guz.a("left"), guz.a("back"), guz.a("right"));
+   private static final xp g = xp.a("tutorial.move.description", guz.a("jump"));
+   private static final xp h = xp.c("tutorial.look.title");
+   private static final xp i = xp.c("tutorial.look.description");
+   private final guz j;
+   private fjq k;
+   private fjq l;
+   private int m;
+   private int n;
+   private int o;
+   private boolean p;
+   private boolean q;
+   private int r = -1;
+   private int s = -1;
 
-   public guw(guy $$0) {
-      this.d = $$0;
+   public guw(guz $$0) {
+      this.j = $$0;
    }
 
    @Override
    public void a() {
-      this.f++;
-      if (!this.d.f()) {
-         this.d.a(gva.f);
-      } else {
-         if (this.f >= 600 && this.e == null) {
-            this.e = new fjp(fjp.a.d, b, c, false);
-            this.d.e().ax().a(this.e);
+      this.m++;
+      if (this.p) {
+         this.n++;
+         this.p = false;
+      }
+
+      if (this.q) {
+         this.o++;
+         this.q = false;
+      }
+
+      if (this.r == -1 && this.n > 40) {
+         if (this.k != null) {
+            this.k.c();
+            this.k = null;
+         }
+
+         this.r = this.m;
+      }
+
+      if (this.s == -1 && this.o > 40) {
+         if (this.l != null) {
+            this.l.c();
+            this.l = null;
+         }
+
+         this.s = this.m;
+      }
+
+      if (this.r != -1 && this.s != -1) {
+         if (this.j.f()) {
+            this.j.a(gvb.b);
+         } else {
+            this.j.a(gvb.f);
+         }
+      }
+
+      if (this.k != null) {
+         this.k.a((float)this.n / 40.0F);
+      }
+
+      if (this.l != null) {
+         this.l.a((float)this.o / 40.0F);
+      }
+
+      if (this.m >= 100) {
+         if (this.r == -1 && this.k == null) {
+            this.k = new fjq(fjq.a.a, f, g, true);
+            this.j.e().ax().a(this.k);
+         } else if (this.r != -1 && this.m - this.r >= 20 && this.s == -1 && this.l == null) {
+            this.l = new fjq(fjq.a.b, h, i, true);
+            this.j.e().ax().a(this.l);
          }
       }
    }
 
    @Override
    public void b() {
-      if (this.e != null) {
-         this.e.c();
-         this.e = null;
+      if (this.k != null) {
+         this.k.c();
+         this.k = null;
+      }
+
+      if (this.l != null) {
+         this.l.c();
+         this.l = null;
       }
    }
 
    @Override
-   public void c() {
-      this.d.a(gva.e);
+   public void a(gcp $$0) {
+      if ($$0.c || $$0.d || $$0.e || $$0.f || $$0.g) {
+         this.p = true;
+      }
+   }
+
+   @Override
+   public void a(double $$0, double $$1) {
+      if (Math.abs($$0) > 0.01 || Math.abs($$1) > 0.01) {
+         this.q = true;
+      }
    }
 }

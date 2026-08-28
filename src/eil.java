@@ -1,179 +1,197 @@
-import com.mojang.datafixers.DataFixer;
-import com.mojang.logging.LogUtils;
-import it.unimi.dsi.fastutil.longs.Long2BooleanMap;
-import it.unimi.dsi.fastutil.longs.Long2BooleanOpenHashMap;
-import it.unimi.dsi.fastutil.longs.Long2ObjectMap;
-import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
-import it.unimi.dsi.fastutil.objects.Object2IntMap;
-import it.unimi.dsi.fastutil.objects.Object2IntMaps;
-import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
-import java.util.HashMap;
+import com.mojang.datafixers.util.Either;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import com.mojang.serialization.codecs.RecordCodecBuilder.Instance;
 import java.util.Map;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import java.util.Optional;
+import java.util.function.Consumer;
+import java.util.function.Function;
+import java.util.function.Predicate;
 
-public class eil {
-   private static final Logger a = LogUtils.getLogger();
-   private static final int b = -1;
-   private final dvd c;
-   private final jw d;
-   private final eml e;
-   private final ale<dby> f;
-   private final dtz g;
-   private final dyi h;
-   private final dca i;
-   private final ddb j;
-   private final long k;
-   private final DataFixer l;
-   private final Long2ObjectMap<Object2IntMap<eik>> m = new Long2ObjectOpenHashMap();
-   private final Map<eik, Long2BooleanMap> n = new HashMap<>();
+public abstract class eil {
+   public static final Codec<eil> a = lp.T.q().dispatch(eil::e, eiu::codec);
+   public static final Codec<ji<eil>> b = alb.a(lq.aJ, a);
+   protected final eil.c c;
 
-   public eil(dvd $$0, jw $$1, eml $$2, ale<dby> $$3, dtz $$4, dyi $$5, dca $$6, ddb $$7, long $$8, DataFixer $$9) {
+   public static <S extends eil> RecordCodecBuilder<S, eil.c> a(Instance<S> $$0) {
+      return eil.c.a.forGetter($$0x -> $$0x.c);
+   }
+
+   public static <S extends eil> MapCodec<S> a(Function<eil.c, S> $$0) {
+      return RecordCodecBuilder.mapCodec($$1 -> $$1.group(a($$1)).apply($$1, $$0));
+   }
+
+   protected eil(eil.c $$0) {
       this.c = $$0;
-      this.d = $$1;
-      this.e = $$2;
-      this.f = $$3;
-      this.g = $$4;
-      this.h = $$5;
-      this.i = $$6;
-      this.j = $$7;
-      this.k = $$8;
-      this.l = $$9;
    }
 
-   public eim a(dbf $$0, eik $$1, ejh $$2, boolean $$3) {
-      long $$4 = $$0.a();
-      Object2IntMap<eik> $$5 = (Object2IntMap<eik>)this.m.get($$4);
-      if ($$5 != null) {
-         return this.a($$5, $$1, $$3);
-      } else {
-         eim $$6 = this.a($$0, $$1, $$3, $$4);
-         if ($$6 != null) {
-            return $$6;
-         } else if (!$$2.a($$0.e, $$0.f, this.k)) {
-            return eim.b;
-         } else {
-            boolean $$7 = this.n.computeIfAbsent($$1, $$0x -> new Long2BooleanOpenHashMap()).computeIfAbsent($$4, $$2x -> this.b($$0, $$1));
-            return !$$7 ? eim.b : eim.c;
+   public jm<dcy> a() {
+      return this.c.b;
+   }
+
+   public Map<btt, eis> b() {
+      return this.c.c;
+   }
+
+   public dxr.b c() {
+      return this.c.d;
+   }
+
+   public eiw d() {
+      return this.c.e;
+   }
+
+   public eid a(eid $$0) {
+      return this.d() != eiw.a ? $$0.a(12) : $$0;
+   }
+
+   public eit a(jw $$0, dua $$1, ddc $$2, dyj $$3, emm $$4, long $$5, dbg $$6, int $$7, dcb $$8, Predicate<ji<dcy>> $$9) {
+      eil.a $$10 = new eil.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$8, $$9);
+      Optional<eil.b> $$11 = this.b($$10);
+      if ($$11.isPresent()) {
+         ejd $$12 = $$11.get().a();
+         eit $$13 = new eit(this, $$6, $$7, $$12.a());
+         if ($$13.b()) {
+            return $$13;
          }
       }
+
+      return eit.b;
    }
 
-   private boolean b(dbf $$0, eik $$1) {
-      return $$1.b(new eik.a(this.d, this.g, this.j, this.h, this.e, this.k, $$0, this.i, $$1.a()::a)).isPresent();
+   protected static Optional<eil.b> a(eil.a $$0, dxv.a $$1, Consumer<ejd> $$2) {
+      dbg $$3 = $$0.h();
+      int $$4 = $$3.b();
+      int $$5 = $$3.c();
+      int $$6 = $$0.b().c($$4, $$5, $$1, $$0.i(), $$0.d());
+      return Optional.of(new eil.b(new iz($$4, $$6, $$5), $$2));
    }
 
-   @Nullable
-   private eim a(dbf $$0, eik $$1, boolean $$2, long $$3) {
-      vw $$4 = new vw(new vy(ux.a, "DataVersion"), new vy("Level", "Structures", us.b, "Starts"), new vy("structures", us.b, "starts"));
+   private static boolean a(eil.b $$0, eil.a $$1) {
+      iz $$2 = $$0.b();
+      return $$1.j.test($$1.b.d().getNoiseBiome(jt.a($$2.u()), jt.a($$2.v()), jt.a($$2.w()), $$1.d.b()));
+   }
 
-      try {
-         this.c.a($$0, $$4).join();
-      } catch (Exception var13) {
-         a.warn("Failed to read chunk {}", $$0, var13);
-         return eim.c;
+   public void a(dcu $$0, dcs $$1, dua $$2, azh $$3, eid $$4, dbg $$5, eja $$6) {
+   }
+
+   private static int[] c(eil.a $$0, int $$1, int $$2, int $$3, int $$4) {
+      dua $$5 = $$0.b();
+      dcb $$6 = $$0.i();
+      dyj $$7 = $$0.d();
+      return new int[]{
+         $$5.c($$1, $$3, dxv.a.a, $$6, $$7),
+         $$5.c($$1, $$3 + $$4, dxv.a.a, $$6, $$7),
+         $$5.c($$1 + $$2, $$3, dxv.a.a, $$6, $$7),
+         $$5.c($$1 + $$2, $$3 + $$4, dxv.a.a, $$6, $$7)
+      };
+   }
+
+   public static int a(eil.a $$0, int $$1, int $$2, int $$3, int $$4) {
+      int[] $$5 = c($$0, $$1, $$2, $$3, $$4);
+      return ($$5[0] + $$5[1] + $$5[2] + $$5[3]) / 4;
+   }
+
+   protected static int a(eil.a $$0, int $$1, int $$2) {
+      dbg $$3 = $$0.h();
+      int $$4 = $$3.d();
+      int $$5 = $$3.e();
+      return b($$0, $$4, $$5, $$1, $$2);
+   }
+
+   protected static int b(eil.a $$0, int $$1, int $$2, int $$3, int $$4) {
+      int[] $$5 = c($$0, $$1, $$3, $$2, $$4);
+      return Math.min(Math.min($$5[0], $$5[1]), Math.min($$5[2], $$5[3]));
+   }
+
+   @Deprecated
+   protected iz a(eil.a $$0, dln $$1) {
+      int $$2 = 5;
+      int $$3 = 5;
+      if ($$1 == dln.b) {
+         $$2 = -5;
+      } else if ($$1 == dln.c) {
+         $$2 = -5;
+         $$3 = -5;
+      } else if ($$1 == dln.d) {
+         $$3 = -5;
       }
 
-      if (!($$4.d() instanceof us $$7)) {
-         return null;
-      } else {
-         int $$8 = dvf.a($$7);
-         if ($$8 <= 1493) {
-            return eim.c;
-         } else {
-            dvf.a($$7, this.f, this.g.c());
+      dbg $$4 = $$0.h();
+      int $$5 = $$4.a(7);
+      int $$6 = $$4.b(7);
+      return new iz($$5, b($$0, $$5, $$6, $$2, $$3), $$6);
+   }
 
-            us $$9;
-            try {
-               $$9 = bag.c.a(this.l, $$7, $$8);
-            } catch (Exception var12) {
-               a.warn("Failed to partially datafix chunk {}", $$0, var12);
-               return eim.c;
-            }
+   protected abstract Optional<eil.b> a(eil.a var1);
 
-            Object2IntMap<eik> $$12 = this.a($$9);
-            if ($$12 == null) {
-               return null;
-            } else {
-               this.a($$3, $$12);
-               return this.a($$12, $$1, $$2);
-            }
-         }
+   public Optional<eil.b> b(eil.a $$0) {
+      return this.a($$0).filter($$1 -> a($$1, $$0));
+   }
+
+   public abstract eiu<?> e();
+
+   public static record a(jw a, dua b, ddc c, dyj d, emm e, dyu f, long g, dbg h, dcb i, Predicate<ji<dcy>> j) {
+
+      public a(jw $$0, dua $$1, ddc $$2, dyj $$3, emm $$4, long $$5, dbg $$6, dcb $$7, Predicate<ji<dcy>> $$8) {
+         this($$0, $$1, $$2, $$3, $$4, a($$5, $$6), $$5, $$6, $$7, $$8);
       }
-   }
 
-   @Nullable
-   private Object2IntMap<eik> a(us $$0) {
-      if (!$$0.b("structures", 10)) {
-         return null;
-      } else {
-         us $$1 = $$0.p("structures");
-         if (!$$1.b("starts", 10)) {
-            return null;
-         } else {
-            us $$2 = $$1.p("starts");
-            if ($$2.g()) {
-               return Object2IntMaps.emptyMap();
-            } else {
-               Object2IntMap<eik> $$3 = new Object2IntOpenHashMap();
-               jv<eik> $$4 = this.d.d(lq.aJ);
-
-               for (String $$5 : $$2.e()) {
-                  alf $$6 = alf.a($$5);
-                  if ($$6 != null) {
-                     eik $$7 = $$4.a($$6);
-                     if ($$7 != null) {
-                        us $$8 = $$2.p($$5);
-                        if (!$$8.g()) {
-                           String $$9 = $$8.l("id");
-                           if (!"INVALID".equals($$9)) {
-                              int $$10 = $$8.h("references");
-                              $$3.put($$7, $$10);
-                           }
-                        }
-                     }
-                  }
-               }
-
-               return $$3;
-            }
-         }
-      }
-   }
-
-   private static Object2IntMap<eik> a(Object2IntMap<eik> $$0) {
-      return $$0.isEmpty() ? Object2IntMaps.emptyMap() : $$0;
-   }
-
-   private eim a(Object2IntMap<eik> $$0, eik $$1, boolean $$2) {
-      int $$3 = $$0.getOrDefault($$1, -1);
-      return $$3 == -1 || $$2 && $$3 != 0 ? eim.b : eim.a;
-   }
-
-   public void a(dbf $$0, Map<eik, eis> $$1) {
-      long $$2 = $$0.a();
-      Object2IntMap<eik> $$3 = new Object2IntOpenHashMap();
-      $$1.forEach(($$1x, $$2x) -> {
-         if ($$2x.b()) {
-            $$3.put($$1x, $$2x.f());
-         }
-      });
-      this.a($$2, $$3);
-   }
-
-   private void a(long $$0, Object2IntMap<eik> $$1) {
-      this.m.put($$0, a($$1));
-      this.n.values().forEach($$1x -> $$1x.remove($$0));
-   }
-
-   public void a(dbf $$0, eik $$1) {
-      this.m.compute($$0.a(), ($$1x, $$2) -> {
-         if ($$2 == null || $$2.isEmpty()) {
-            $$2 = new Object2IntOpenHashMap();
-         }
-
-         $$2.computeInt($$1, ($$0xx, $$1xx) -> $$1xx == null ? 1 : $$1xx + 1);
+      private static dyu a(long $$0, dbg $$1) {
+         dyu $$2 = new dyu(new dxw(0L));
+         $$2.c($$0, $$1.e, $$1.f);
          return $$2;
-      });
+      }
+   }
+
+   public static record b(iz a, Either<Consumer<ejd>, ejd> b) {
+      public b(iz $$0, Consumer<ejd> $$1) {
+         this($$0, Either.left($$1));
+      }
+
+      public ejd a() {
+         return (ejd)this.b.map($$0 -> {
+            ejd $$1 = new ejd();
+            $$0.accept($$1);
+            return $$1;
+         }, $$0 -> $$0);
+      }
+
+      public iz b() {
+         return this.a;
+      }
+
+      public Either<Consumer<ejd>, ejd> c() {
+         return this.b;
+      }
+   }
+
+   public static record c(jm<dcy> b, Map<btt, eis> c, dxr.b d, eiw e) {
+      public static final MapCodec<eil.c> a = RecordCodecBuilder.mapCodec(
+         $$0 -> $$0.group(
+                  jx.a(lq.az).fieldOf("biomes").forGetter(eil.c::a),
+                  Codec.simpleMap(btt.i, eis.a, azu.a(btt.values())).fieldOf("spawn_overrides").forGetter(eil.c::b),
+                  dxr.b.l.fieldOf("step").forGetter(eil.c::c),
+                  eiw.f.optionalFieldOf("terrain_adaptation", eiw.a).forGetter(eil.c::d)
+               )
+               .apply($$0, eil.c::new)
+      );
+
+      public jm<dcy> a() {
+         return this.b;
+      }
+
+      public Map<btt, eis> b() {
+         return this.c;
+      }
+
+      public dxr.b c() {
+         return this.d;
+      }
+
+      public eiw d() {
+         return this.e;
+      }
    }
 }

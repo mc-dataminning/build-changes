@@ -38,7 +38,7 @@ public class aof {
       );
    }
 
-   private static int a(ep $$0, int $$1, boolean $$2, @Nullable dbv $$3) throws CommandSyntaxException {
+   private static int a(ep $$0, int $$1, boolean $$2, @Nullable dbw $$3) throws CommandSyntaxException {
       if ($$0.l().r()) {
          throw b.create($$0.l().R());
       } else if (!$$0.l().a($$3, $$2, $$1)) {

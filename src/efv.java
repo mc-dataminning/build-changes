@@ -1,23 +1,66 @@
-import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.Codec;
+import it.unimi.dsi.fastutil.objects.ObjectArrayList;
+import java.util.Comparator;
+import java.util.Set;
+import java.util.function.BiConsumer;
 
-public class efv<P extends efu> {
-   public static final efv<efw> a = a("trunk_vine", efw.a);
-   public static final efv<eft> b = a("leave_vine", eft.a);
-   public static final efv<efs> c = a("cocoa", efs.a);
-   public static final efv<efr> d = a("beehive", efr.a);
-   public static final efv<efp> e = a("alter_ground", efp.a);
-   public static final efv<efq> f = a("attached_to_leaves", efq.a);
-   private final MapCodec<P> g;
+public abstract class efv {
+   public static final Codec<efv> h = lp.Z.q().dispatch(efv::a, efw::a);
 
-   private static <P extends efu> efv<P> a(String $$0, MapCodec<P> $$1) {
-      return jv.a(lp.Z, $$0, new efv<>($$1));
-   }
+   protected abstract efw<?> a();
 
-   private efv(MapCodec<P> $$0) {
-      this.g = $$0;
-   }
+   public abstract void a(efv.a var1);
 
-   public MapCodec<P> a() {
-      return this.g;
+   public static final class a {
+      private final dcf a;
+      private final BiConsumer<iz, dsd> b;
+      private final azh c;
+      private final ObjectArrayList<iz> d;
+      private final ObjectArrayList<iz> e;
+      private final ObjectArrayList<iz> f;
+
+      public a(dcf $$0, BiConsumer<iz, dsd> $$1, azh $$2, Set<iz> $$3, Set<iz> $$4, Set<iz> $$5) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
+         this.f = new ObjectArrayList($$5);
+         this.d = new ObjectArrayList($$3);
+         this.e = new ObjectArrayList($$4);
+         this.d.sort(Comparator.comparingInt(kd::v));
+         this.e.sort(Comparator.comparingInt(kd::v));
+         this.f.sort(Comparator.comparingInt(kd::v));
+      }
+
+      public void a(iz $$0, dsu $$1) {
+         this.a($$0, dfc.ff.o().a($$1, Boolean.valueOf(true)));
+      }
+
+      public void a(iz $$0, dsd $$1) {
+         this.b.accept($$0, $$1);
+      }
+
+      public boolean a(iz $$0) {
+         return this.a.a($$0, dsc.a::i);
+      }
+
+      public dcf a() {
+         return this.a;
+      }
+
+      public azh b() {
+         return this.c;
+      }
+
+      public ObjectArrayList<iz> c() {
+         return this.d;
+      }
+
+      public ObjectArrayList<iz> d() {
+         return this.e;
+      }
+
+      public ObjectArrayList<iz> e() {
+         return this.f;
+      }
    }
 }

@@ -1,57 +1,22 @@
-import java.util.Collection;
+public class gvf implements fii {
+   private final xp a;
+   private final int b;
+   private final int c;
+   private final int d;
 
-public abstract class gvf<E extends fia.a<E>> extends fia<E> {
-   protected gvf(int $$0, int $$1, int $$2, int $$3) {
-      super(fff.Q(), $$0, $$1, $$2, $$3);
-   }
-
-   public void p(int $$0) {
-      if ($$0 == -1) {
-         this.a(null);
-      } else if (super.l() != 0) {
-         this.a(this.d($$0));
-      }
-   }
-
-   public void b(int $$0) {
-      this.p($$0);
+   public gvf(xp $$0, int $$1, int $$2, int $$3) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+      this.d = $$3;
    }
 
    @Override
-   public int a() {
-      return 0;
+   public void a(fgs $$0, int $$1, int $$2, float $$3) {
+      $$0.a(ffg.Q().h, this.a, this.b, this.c, this.d);
    }
 
-   @Override
-   public int b() {
-      return (int)((double)this.g * 0.6);
-   }
-
-   @Override
-   public void a(Collection<E> $$0) {
-      super.a($$0);
-   }
-
-   @Override
-   public int l() {
-      return super.l();
-   }
-
-   @Override
-   public int g(int $$0) {
-      return super.g($$0);
-   }
-
-   @Override
-   public int r() {
-      return super.r();
-   }
-
-   public int a(E $$0) {
-      return super.b($$0);
-   }
-
-   public void I() {
-      this.k();
+   public xp a() {
+      return this.a;
    }
 }

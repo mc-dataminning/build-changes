@@ -1,80 +1,52 @@
-import it.unimi.dsi.fastutil.booleans.BooleanConsumer;
+public class fmf extends fne {
+   private static final xp a = xp.c("gui.toMenu");
+   private static final xp b = xp.c("gui.toTitle");
+   private final fne c;
+   private final xp d;
+   private final xp r;
+   private final fkw s = fkw.d();
 
-public class fmf extends fnd {
-   private static final xp a = xp.c("addServer.enterName");
-   private static final xp b = xp.c("addServer.enterIp");
-   private fhe c;
-   private final BooleanConsumer d;
-   private final fyj r;
-   private fhn s;
-   private fhn u;
-   private final fnd v;
+   public fmf(fne $$0, xp $$1, xp $$2) {
+      this($$0, $$1, $$2, a);
+   }
 
-   public fmf(fnd $$0, BooleanConsumer $$1, fyj $$2) {
-      super(xp.c("addServer.title"));
-      this.v = $$0;
-      this.d = $$1;
-      this.r = $$2;
+   public fmf(fne $$0, xp $$1, xp $$2, xp $$3) {
+      super($$1);
+      this.c = $$0;
+      this.d = $$2;
+      this.r = $$3;
    }
 
    @Override
    protected void aM_() {
-      this.u = new fhn(this.p, this.n / 2 - 100, 66, 200, 20, xp.c("addServer.enterName"));
-      this.u.a(this.r.a);
-      this.u.b($$0 -> this.E());
-      this.d(this.u);
-      this.s = new fhn(this.p, this.n / 2 - 100, 106, 200, 20, xp.c("addServer.enterIp"));
-      this.s.f(128);
-      this.s.a(this.r.b);
-      this.s.b($$0 -> this.E());
-      this.d(this.s);
-      this.c(
-         fhl.a(fyj.a::a)
-            .a(fyj.a.values())
-            .a(this.r.b())
-            .a(this.n / 2 - 100, this.o / 4 + 72, 200, 20, xp.c("addServer.resourcePack"), ($$0, $$1) -> this.r.a($$1))
-      );
-      this.c = this.c(fhe.a(xp.c("addServer.add"), $$0 -> this.m()).a(this.n / 2 - 100, this.o / 4 + 96 + 18, 200, 20).a());
-      this.c(fhe.a(xo.e, $$0 -> this.d.accept(false)).a(this.n / 2 - 100, this.o / 4 + 120 + 18, 200, 20).a());
-      this.E();
+      this.s.c().b().a(10);
+      this.s.a(new fim(this.l, this.p));
+      this.s.a(new fhz(this.d, this.p).d(this.n - 50).b(true));
+      fhf $$0;
+      if (this.m.F()) {
+         $$0 = fhf.a(this.r, $$0x -> this.m.a(this.c)).a();
+      } else {
+         $$0 = fhf.a(b, $$0x -> this.m.a(new fnj())).a();
+      }
+
+      this.s.a($$0);
+      this.s.a();
+      this.s.a(this::c);
+      this.c();
    }
 
    @Override
-   protected void aB_() {
-      this.b(this.u);
+   protected void c() {
+      fkq.a(this.s, this.G());
    }
 
    @Override
-   public void a(fff $$0, int $$1, int $$2) {
-      String $$3 = this.s.a();
-      String $$4 = this.u.a();
-      this.b($$0, $$1, $$2);
-      this.s.a($$3);
-      this.u.a($$4);
-   }
-
-   private void m() {
-      this.r.a = this.u.a();
-      this.r.b = this.s.a();
-      this.d.accept(true);
+   public xp i() {
+      return xo.a(this.l, this.d);
    }
 
    @Override
-   public void d() {
-      this.m.a(this.v);
-   }
-
-   private void E() {
-      this.c.j = fzm.b(this.s.a()) && !this.u.a().isEmpty();
-   }
-
-   @Override
-   public void a(fgr $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      $$0.a(this.p, this.l, this.n / 2, 17, 16777215);
-      $$0.b(this.p, a, this.n / 2 - 100 + 1, 53, 10526880);
-      $$0.b(this.p, b, this.n / 2 - 100 + 1, 94, 10526880);
-      this.u.a($$0, $$1, $$2, $$3);
-      this.s.a($$0, $$1, $$2, $$3);
+   public boolean aC_() {
+      return false;
    }
 }

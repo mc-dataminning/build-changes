@@ -1,6 +1,11 @@
-public enum blz {
-   a,
-   b,
-   c,
-   d;
+public interface blz {
+   int c();
+
+   int d();
+
+   long a(int var1);
+
+   long a(int var1, int var2);
+
+   void e();
 }

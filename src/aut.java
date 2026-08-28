@@ -19,7 +19,7 @@ public abstract class aut extends auu<Map<alf, JsonElement>> {
       this.c = $$1;
    }
 
-   protected Map<alf, JsonElement> a(aup $$0, bni $$1) {
+   protected Map<alf, JsonElement> a(aup $$0, bnj $$1) {
       Map<alf, JsonElement> $$2 = new HashMap<>();
       a($$0, this.c, this.b, $$2);
       return $$2;

@@ -1,26 +1,14 @@
-public class gno<T extends btp> extends gnj<T, fvy<T>> {
-   private final fua<T> a;
+public class gno<T extends bts & cki, M extends fub<T>> extends gnk<T, M> {
+   private final fvw<T> a;
+   private final alf b;
 
-   public gno(gkt<T, fvy<T>> $$0, fww $$1) {
+   public gno(gku<T, M> $$0, fwx $$1, fwz $$2, alf $$3) {
       super($$0);
-      this.a = new fvy<>($$1.a(fwz.bt));
+      this.b = $$3;
+      this.a = new fvw<>($$1.a($$2));
    }
 
-   public void a(ezy $$0, gdo $$1, int $$2, T $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-      fff $$10 = fff.Q();
-      boolean $$11 = $$10.b($$3) && $$3.ch();
-      if (!$$3.ch() || $$11) {
-         fac $$12;
-         if ($$11) {
-            $$12 = $$1.getBuffer(gdw.r(this.a($$3)));
-         } else {
-            $$12 = $$1.getBuffer(gdw.i(this.a($$3)));
-         }
-
-         this.c().a(this.a);
-         this.a.a($$3, $$4, $$5, $$6);
-         this.a.a($$3, $$4, $$5, $$7, $$8, $$9);
-         this.a.a($$0, $$12, $$2, gjy.c($$3, 0.0F), 1.0F, 1.0F, 1.0F, 1.0F);
-      }
+   public void a(ezz $$0, gdp $$1, int $$2, T $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
+      a(this.c(), this.a, this.b, $$0, $$1, $$2, $$3, $$4, $$5, $$7, $$8, $$9, $$6, 1.0F, 1.0F, 1.0F);
    }
 }

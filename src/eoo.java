@@ -1,37 +1,40 @@
-import javax.annotation.Nullable;
+import it.unimi.dsi.fastutil.HashCommon;
+import org.jetbrains.annotations.Nullable;
 
 public class eoo {
-   private final dbi a;
+   private static final int a = 4096;
+   private static final int b = 4095;
+   private final long[] c = new long[4096];
+   private final eon[] d = new eon[4096];
+
+   public eon a(dbf $$0, iz $$1) {
+      long $$2 = $$1.a();
+      int $$3 = a($$2);
+      eon $$4 = this.a($$3, $$2);
+      return $$4 != null ? $$4 : this.a($$0, $$1, $$3, $$2);
+   }
+
    @Nullable
-   private final eon b;
-   private final iz c;
-   private final iz.a d = new iz.a();
+   private eon a(int $$0, long $$1) {
+      return this.c[$$0] == $$1 ? this.d[$$0] : null;
+   }
 
-   public eoo(dbi $$0, btr $$1) {
-      this.a = $$0;
-      if ($$1.dP() instanceof arf $$2) {
-         this.b = $$2.H();
-      } else {
-         this.b = null;
+   private eon a(dbf $$0, iz $$1, int $$2, long $$3) {
+      eon $$4 = eos.b($$0, $$1);
+      this.c[$$2] = $$3;
+      this.d[$$2] = $$4;
+      return $$4;
+   }
+
+   public void a(iz $$0) {
+      long $$1 = $$0.a();
+      int $$2 = a($$1);
+      if (this.c[$$2] == $$1) {
+         this.d[$$2] = null;
       }
-
-      this.c = $$1.dp();
    }
 
-   public eom a(int $$0, int $$1, int $$2) {
-      iz $$3 = this.d.d($$0, $$1, $$2);
-      return this.b == null ? eor.b(this.a, $$3) : this.b.a(this.a, $$3);
-   }
-
-   public dsc a(iz $$0) {
-      return this.a.a_($$0);
-   }
-
-   public dbi a() {
-      return this.a;
-   }
-
-   public iz b() {
-      return this.c;
+   private static int a(long $$0) {
+      return (int)HashCommon.mix($$0) & 4095;
    }
 }

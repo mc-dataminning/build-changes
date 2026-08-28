@@ -1,9 +1,4 @@
-public interface eun extends eqj {
-   float b(eqi var1);
+import com.mojang.serialization.MapCodec;
 
-   default int a(eqi $$0) {
-      return Math.round(this.b($$0));
-   }
-
-   eum b();
+public record eun(MapCodec<? extends euo> a) {
 }

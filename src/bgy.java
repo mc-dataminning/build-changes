@@ -28,7 +28,7 @@ public class bgy extends DataFix {
    }
 
    private <T> Dynamic<T> a(Dynamic<T> $$0) {
-      Optional<Dynamic<T>> $$1 = $$0.asString().result().map(bii::a).map(this.b).map($$0::createString);
+      Optional<Dynamic<T>> $$1 = $$0.asString().result().map(bij::a).map(this.b).map($$0::createString);
       return (Dynamic<T>)DataFixUtils.orElse($$1, $$0);
    }
 }

@@ -1,52 +1,52 @@
-import com.mojang.logging.LogUtils;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableList.Builder;
 import com.mojang.serialization.Codec;
-import org.slf4j.Logger;
+import java.util.List;
+import java.util.Optional;
 
-public class bpf {
-   public static final Codec<bpf> a = Codec.INT.xmap(bpf::a, bpf::a);
-   private static final bpf b = new bpf(1);
-   private static final Logger c = LogUtils.getLogger();
-   private final int d;
-
-   private bpf(int $$0) {
-      this.d = $$0;
+public class bpf<E> extends bpj<bph.b<E>> {
+   public static <E> Codec<bpf<E>> a(Codec<E> $$0) {
+      return bph.b.a($$0).listOf().xmap(bpf::new, bpj::e);
    }
 
-   public static bpf a(int $$0) {
-      if ($$0 == 1) {
-         return b;
-      } else {
-         b($$0);
-         return new bpf($$0);
+   public static <E> Codec<bpf<E>> b(Codec<E> $$0) {
+      return ayh.a(bph.b.a($$0).listOf()).xmap(bpf::new, bpj::e);
+   }
+
+   bpf(List<? extends bph.b<E>> $$0) {
+      super($$0);
+   }
+
+   public static <E> bpf.a<E> a() {
+      return new bpf.a<>();
+   }
+
+   public static <E> bpf<E> b() {
+      return new bpf<>(List.of());
+   }
+
+   public static <E> bpf<E> a(E $$0) {
+      return new bpf<>(List.of(bph.a($$0, 1)));
+   }
+
+   public Optional<E> a(azh $$0) {
+      return this.b($$0).map(bph.b::b);
+   }
+
+   public static class a<E> {
+      private final Builder<bph.b<E>> a = ImmutableList.builder();
+
+      public bpf.a<E> a(E $$0) {
+         return this.a($$0, 1);
       }
-   }
 
-   public int a() {
-      return this.d;
-   }
-
-   private static void b(int $$0) {
-      if ($$0 < 0) {
-         throw (IllegalArgumentException)ac.b(new IllegalArgumentException("Weight should be >= 0"));
-      } else {
-         if ($$0 == 0 && aa.aX) {
-            c.warn("Found 0 weight, make sure this is intentional!");
-         }
+      public bpf.a<E> a(E $$0, int $$1) {
+         this.a.add(bph.a($$0, $$1));
+         return this;
       }
-   }
 
-   @Override
-   public String toString() {
-      return Integer.toString(this.d);
-   }
-
-   @Override
-   public int hashCode() {
-      return Integer.hashCode(this.d);
-   }
-
-   @Override
-   public boolean equals(Object $$0) {
-      return this == $$0 ? true : $$0 instanceof bpf && this.d == ((bpf)$$0).d;
+      public bpf<E> a() {
+         return new bpf<>(this.a.build());
+      }
    }
 }

@@ -1,12 +1,12 @@
 public class axa {
-   public static final axf<cew> a = a("acquirable_job_site");
-   public static final axf<cew> b = a("village");
-   public static final axf<cew> c = a("bee_home");
+   public static final axf<cex> a = a("acquirable_job_site");
+   public static final axf<cex> b = a("village");
+   public static final axf<cex> c = a("bee_home");
 
    private axa() {
    }
 
-   private static axf<cew> a(String $$0) {
+   private static axf<cex> a(String $$0) {
       return axf.a(lq.V, new alf($$0));
    }
 }

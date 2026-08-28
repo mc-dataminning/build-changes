@@ -20,7 +20,7 @@ public class bco extends DataFix {
    protected TypeRewriteRule makeRule() {
       Schema $$0 = this.getInputSchema();
       Type<?> $$1 = this.getInputSchema().getType(bgx.t);
-      OpticFinder<Pair<String, String>> $$2 = DSL.fieldFinder("id", DSL.named(bgx.D.typeName(), bii.a()));
+      OpticFinder<Pair<String, String>> $$2 = DSL.fieldFinder("id", DSL.named(bgx.D.typeName(), bij.a()));
       OpticFinder<?> $$3 = $$1.findField("tag");
       return TypeRewriteRule.seq(
          this.fixTypeEverywhereTyped("EffectDurationEntity", $$0.getType(bgx.B), $$0x -> $$0x.update(DSL.remainderFinder(), this::c)),

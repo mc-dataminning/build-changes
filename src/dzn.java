@@ -1,18 +1,21 @@
-import com.mojang.serialization.MapCodec;
+import com.mojang.datafixers.Products.P1;
+import com.mojang.serialization.codecs.RecordCodecBuilder.Instance;
+import com.mojang.serialization.codecs.RecordCodecBuilder.Mu;
 
-class dzn implements dzb {
-   public static dzn a = new dzn();
-   public static final MapCodec<dzn> e = MapCodec.unit(() -> a);
+public abstract class dzn implements dzc {
+   protected final kd f;
 
-   private dzn() {
+   protected static <P extends dzn> P1<Mu<P>, kd> a(Instance<P> $$0) {
+      return $$0.group(kd.v(16).optionalFieldOf("offset", kd.g).forGetter($$0x -> $$0x.f));
    }
 
-   public boolean a(dct $$0, iz $$1) {
-      return true;
+   protected dzn(kd $$0) {
+      this.f = $$0;
    }
 
-   @Override
-   public dzc<?> a() {
-      return dzc.l;
+   public final boolean a(dcu $$0, iz $$1) {
+      return this.a($$0.a_($$1.a(this.f)));
    }
+
+   protected abstract boolean a(dsd var1);
 }

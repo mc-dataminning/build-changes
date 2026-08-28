@@ -16,7 +16,7 @@ public class aoy {
 
    private static int a(ep $$0, iz $$1, float $$2) {
       arf $$3 = $$0.e();
-      if ($$3.af() != dby.h) {
+      if ($$3.af() != dbz.h) {
          $$0.b(xp.c("commands.setworldspawn.failure.not_overworld"));
          return 0;
       } else {

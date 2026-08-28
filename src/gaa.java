@@ -1,18 +1,15 @@
-public class gaa extends gcc {
-   gaa(fxv $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, boolean $$7) {
-      super($$0, $$1, $$2, $$3);
-      this.d(3.0F);
-      this.b(0.25F, 0.25F);
-      if ($$7) {
-         this.t = this.r.a(50) + 280;
-      } else {
-         this.t = this.r.a(50) + 80;
-      }
+public class gaa extends gcd {
+   private final gby a;
 
-      this.u = 3.0E-6F;
+   gaa(fxw $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, gby $$7) {
+      super($$0, $$1, $$2, $$3);
+      this.a = $$7;
+      this.t = 4;
+      this.u = 0.008F;
       this.j = $$4;
-      this.k = $$5 + (double)(this.r.i() / 500.0F);
+      this.k = $$5;
       this.l = $$6;
+      this.b($$7);
    }
 
    @Override
@@ -20,51 +17,29 @@ public class gaa extends gcc {
       this.d = this.g;
       this.e = this.h;
       this.f = this.i;
-      if (this.s++ < this.t && !(this.y <= 0.0F)) {
-         this.j = this.j + (double)(this.r.i() / 5000.0F * (float)(this.r.h() ? 1 : -1));
-         this.l = this.l + (double)(this.r.i() / 5000.0F * (float)(this.r.h() ? 1 : -1));
+      if (this.s++ >= this.t) {
+         this.k();
+      } else {
          this.k = this.k - (double)this.u;
          this.a(this.j, this.k, this.l);
-         if (this.s >= this.t - 60 && this.y > 0.01F) {
-            this.y -= 0.015F;
-         }
-      } else {
-         this.k();
+         this.b(this.a);
       }
    }
 
    @Override
-   public gbg b() {
-      return gbg.c;
+   public gbh b() {
+      return gbh.b;
    }
 
-   public static class a implements gbf<lm> {
-      private final gbx a;
+   public static class a implements gbg<lm> {
+      private final gby a;
 
-      public a(gbx $$0) {
+      public a(gby $$0) {
          this.a = $$0;
       }
 
-      public gbc a(lm $$0, fxv $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         gaa $$8 = new gaa($$1, $$2, $$3, $$4, $$5, $$6, $$7, false);
-         $$8.e(0.9F);
-         $$8.a(this.a);
-         return $$8;
-      }
-   }
-
-   public static class b implements gbf<lm> {
-      private final gbx a;
-
-      public b(gbx $$0) {
-         this.a = $$0;
-      }
-
-      public gbc a(lm $$0, fxv $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         gaa $$8 = new gaa($$1, $$2, $$3, $$4, $$5, $$6, $$7, true);
-         $$8.e(0.95F);
-         $$8.a(this.a);
-         return $$8;
+      public gbd a(lm $$0, fxw $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new gaa($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
       }
    }
 }

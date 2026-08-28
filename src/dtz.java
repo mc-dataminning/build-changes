@@ -1,480 +1,429 @@
-import com.google.common.base.Suppliers;
-import com.mojang.datafixers.util.Pair;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import it.unimi.dsi.fastutil.ints.IntArraySet;
-import it.unimi.dsi.fastutil.ints.IntSet;
+import com.google.common.collect.Maps;
+import com.google.common.collect.Sets;
+import com.mojang.logging.LogUtils;
+import it.unimi.dsi.fastutil.longs.LongOpenHashSet;
 import it.unimi.dsi.fastutil.longs.LongSet;
-import it.unimi.dsi.fastutil.objects.Object2ObjectArrayMap;
-import it.unimi.dsi.fastutil.objects.ObjectArraySet;
-import java.util.ArrayList;
-import java.util.Arrays;
+import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
+import it.unimi.dsi.fastutil.shorts.ShortArrayList;
+import it.unimi.dsi.fastutil.shorts.ShortList;
+import java.util.Collection;
 import java.util.Collections;
-import java.util.List;
+import java.util.EnumSet;
 import java.util.Map;
-import java.util.Optional;
 import java.util.Set;
 import java.util.Map.Entry;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.Executor;
+import java.util.function.BiConsumer;
 import java.util.function.Function;
 import java.util.function.Predicate;
 import java.util.function.Supplier;
-import java.util.stream.Collectors;
 import javax.annotation.Nullable;
-import org.apache.commons.lang3.mutable.MutableBoolean;
+import org.slf4j.Logger;
 
-public abstract class dtz {
-   public static final Codec<dtz> a = lp.ac.q().dispatchStable(dtz::b, Function.identity());
-   protected final ddb b;
-   private final Supplier<List<ddh.b>> c;
-   private final Function<ji<dcx>, dcy> d;
-
-   public dtz(ddb $$0) {
-      this($$0, $$0x -> ((dcx)$$0x.a()).d());
-   }
-
-   public dtz(ddb $$0, Function<ji<dcx>, dcy> $$1) {
-      this.b = $$0;
-      this.d = $$1;
-      this.c = Suppliers.memoize(() -> ddh.a(List.copyOf($$0.c()), $$1xx -> $$1.apply($$1xx).b(), true));
-   }
-
-   public void a() {
-      this.c.get();
-   }
-
-   protected abstract MapCodec<? extends dtz> b();
-
-   public dua a(jk<eiq> $$0, dyi $$1, long $$2) {
-      return dua.a($$1, $$2, this.b, $$0);
-   }
-
-   public Optional<ale<MapCodec<? extends dtz>>> c() {
-      return lp.ac.d(this.b());
-   }
-
-   public CompletableFuture<dty> a(Executor $$0, dyi $$1, dyw $$2, dcr $$3, dty $$4) {
-      return CompletableFuture.supplyAsync(ac.a("init_biomes", () -> {
-         $$4.a(this.b, $$1.b());
-         return $$4;
-      }), ac.g());
-   }
-
-   public abstract void a(arm var1, long var2, dyi var4, dcz var5, dcr var6, dty var7, dxq.a var8);
-
+public abstract class dtz implements dbf, dda.a, dul, duv {
+   public static final int a = -1;
+   private static final Logger n = LogUtils.getLogger();
+   private static final LongSet o = new LongOpenHashSet();
+   protected final ShortList[] b;
+   protected volatile boolean c;
+   private volatile boolean p;
+   protected final dbg d;
+   private long q;
    @Nullable
-   public Pair<iz, ji<eik>> a(arf $$0, jm<eik> $$1, iz $$2, int $$3, boolean $$4) {
-      dua $$5 = $$0.l().h();
-      Map<ejh, Set<ji<eik>>> $$6 = new Object2ObjectArrayMap();
+   @Deprecated
+   private dcz r;
+   @Nullable
+   protected dxz e;
+   protected final duw f;
+   @Nullable
+   protected dyy g;
+   protected final Map<dxv.a, dxv> h = Maps.newEnumMap(dxv.a.class);
+   protected eng i;
+   private final Map<eil, eit> s = Maps.newHashMap();
+   private final Map<eil, LongSet> t = Maps.newHashMap();
+   protected final Map<iz, us> j = Maps.newHashMap();
+   protected final Map<iz, dpi> k = new Object2ObjectOpenHashMap();
+   protected final dcb l;
+   protected final duk[] m;
 
-      for (ji<eik> $$7 : $$1) {
-         for (ejh $$8 : $$5.a($$7)) {
-            $$6.computeIfAbsent($$8, $$0x -> new ObjectArraySet()).add($$7);
+   public dtz(dbg $$0, duw $$1, dcb $$2, jv<dcy> $$3, long $$4, @Nullable duk[] $$5, @Nullable dyy $$6) {
+      this.d = $$0;
+      this.f = $$1;
+      this.l = $$2;
+      this.m = new duk[$$2.an()];
+      this.q = $$4;
+      this.b = new ShortList[$$2.an()];
+      this.g = $$6;
+      this.i = new eng($$2);
+      if ($$5 != null) {
+         if (this.m.length == $$5.length) {
+            System.arraycopy($$5, 0, this.m, 0, this.m.length);
+         } else {
+            n.warn("Could not set level chunk sections, array length is {} instead of {}", $$5.length, this.m.length);
          }
       }
 
-      if ($$6.isEmpty()) {
-         return null;
+      a($$3, this.m);
+   }
+
+   private static void a(jv<dcy> $$0, duk[] $$1) {
+      for (int $$2 = 0; $$2 < $$1.length; $$2++) {
+         if ($$1[$$2] == null) {
+            $$1[$$2] = new duk($$0);
+         }
+      }
+   }
+
+   public dwz a(int $$0) {
+      return dwz.a;
+   }
+
+   @Nullable
+   public abstract dsd a(iz var1, dsd var2, boolean var3);
+
+   public abstract void a(dpi var1);
+
+   public abstract void a(bsv var1);
+
+   public int a() {
+      duk[] $$0 = this.d();
+
+      for (int $$1 = $$0.length - 1; $$1 >= 0; $$1--) {
+         duk $$2 = $$0[$$1];
+         if (!$$2.c()) {
+            return $$1;
+         }
+      }
+
+      return -1;
+   }
+
+   @Deprecated(
+      forRemoval = true
+   )
+   public int b() {
+      int $$0 = this.a();
+      return $$0 == -1 ? this.I_() : kb.c(this.g($$0));
+   }
+
+   public Set<iz> c() {
+      Set<iz> $$0 = Sets.newHashSet(this.j.keySet());
+      $$0.addAll(this.k.keySet());
+      return $$0;
+   }
+
+   public duk[] d() {
+      return this.m;
+   }
+
+   public duk b(int $$0) {
+      return this.d()[$$0];
+   }
+
+   public Collection<Entry<dxv.a, dxv>> e() {
+      return Collections.unmodifiableSet(this.h.entrySet());
+   }
+
+   public void a(dxv.a $$0, long[] $$1) {
+      this.a($$0).a(this, $$0, $$1);
+   }
+
+   public dxv a(dxv.a $$0) {
+      return this.h.computeIfAbsent($$0, $$0x -> new dxv(this, $$0x));
+   }
+
+   public boolean b(dxv.a $$0) {
+      return this.h.get($$0) != null;
+   }
+
+   public int a(dxv.a $$0, int $$1, int $$2) {
+      dxv $$3 = this.h.get($$0);
+      if ($$3 == null) {
+         if (aa.aX && this instanceof duj) {
+            n.error("Unprimed heightmap: " + $$0 + " " + $$1 + " " + $$2);
+         }
+
+         dxv.a(this, EnumSet.of($$0));
+         $$3 = this.h.get($$0);
+      }
+
+      return $$3.a($$1 & 15, $$2 & 15) - 1;
+   }
+
+   public dbg f() {
+      return this.d;
+   }
+
+   @Nullable
+   @Override
+   public eit a(eil $$0) {
+      return this.s.get($$0);
+   }
+
+   @Override
+   public void a(eil $$0, eit $$1) {
+      this.s.put($$0, $$1);
+      this.c = true;
+   }
+
+   public Map<eil, eit> g() {
+      return Collections.unmodifiableMap(this.s);
+   }
+
+   public void a(Map<eil, eit> $$0) {
+      this.s.clear();
+      this.s.putAll($$0);
+      this.c = true;
+   }
+
+   @Override
+   public LongSet b(eil $$0) {
+      return this.t.getOrDefault($$0, o);
+   }
+
+   @Override
+   public void a(eil $$0, long $$1) {
+      this.t.computeIfAbsent($$0, $$0x -> new LongOpenHashSet()).add($$1);
+      this.c = true;
+   }
+
+   @Override
+   public Map<eil, LongSet> h() {
+      return Collections.unmodifiableMap(this.t);
+   }
+
+   @Override
+   public void b(Map<eil, LongSet> $$0) {
+      this.t.clear();
+      this.t.putAll($$0);
+      this.c = true;
+   }
+
+   public boolean a(int $$0, int $$1) {
+      if ($$0 < this.I_()) {
+         $$0 = this.I_();
+      }
+
+      if ($$1 >= this.am()) {
+         $$1 = this.am() - 1;
+      }
+
+      for (int $$2 = $$0; $$2 <= $$1; $$2 += 16) {
+         if (!this.b(this.e($$2)).c()) {
+            return false;
+         }
+      }
+
+      return true;
+   }
+
+   public void a(boolean $$0) {
+      this.c = $$0;
+   }
+
+   public boolean i() {
+      return this.c;
+   }
+
+   public abstract duy j();
+
+   public duy k() {
+      duy $$0 = this.j();
+      dxj $$1 = this.x();
+      if ($$1 != null) {
+         duy $$2 = $$1.a();
+         return $$2.b($$0) ? $$2 : $$0;
       } else {
-         Pair<iz, ji<eik>> $$9 = null;
-         double $$10 = Double.MAX_VALUE;
-         dcr $$11 = $$0.a();
-         List<Entry<ejh, Set<ji<eik>>>> $$12 = new ArrayList<>($$6.size());
-
-         for (Entry<ejh, Set<ji<eik>>> $$13 : $$6.entrySet()) {
-            ejh $$14 = $$13.getKey();
-            if ($$14 instanceof eje) {
-               eje $$15 = (eje)$$14;
-               Pair<iz, ji<eik>> $$16 = this.a($$13.getValue(), $$0, $$11, $$2, $$4, $$15);
-               if ($$16 != null) {
-                  iz $$17 = (iz)$$16.getFirst();
-                  double $$18 = $$2.j($$17);
-                  if ($$18 < $$10) {
-                     $$10 = $$18;
-                     $$9 = $$16;
-                  }
-               }
-            } else if ($$14 instanceof ejf) {
-               $$12.add($$13);
-            }
-         }
-
-         if (!$$12.isEmpty()) {
-            int $$19 = kb.a($$2.u());
-            int $$20 = kb.a($$2.w());
-
-            for (int $$21 = 0; $$21 <= $$3; $$21++) {
-               boolean $$22 = false;
-
-               for (Entry<ejh, Set<ji<eik>>> $$23 : $$12) {
-                  ejf $$24 = (ejf)$$23.getKey();
-                  Pair<iz, ji<eik>> $$25 = a($$23.getValue(), $$0, $$11, $$19, $$20, $$21, $$4, $$5.d(), $$24);
-                  if ($$25 != null) {
-                     $$22 = true;
-                     double $$26 = $$2.j((kd)$$25.getFirst());
-                     if ($$26 < $$10) {
-                        $$10 = $$26;
-                        $$9 = $$25;
-                     }
-                  }
-               }
-
-               if ($$22) {
-                  return $$9;
-               }
-            }
-         }
-
-         return $$9;
+         return $$0;
       }
    }
 
-   @Nullable
-   private Pair<iz, ji<eik>> a(Set<ji<eik>> $$0, arf $$1, dcr $$2, iz $$3, boolean $$4, eje $$5) {
-      List<dbf> $$6 = $$1.l().h().a($$5);
-      if ($$6 == null) {
-         throw new IllegalStateException("Somehow tried to find structures for a placement that doesn't exist");
-      } else {
-         Pair<iz, ji<eik>> $$7 = null;
-         double $$8 = Double.MAX_VALUE;
-         iz.a $$9 = new iz.a();
+   public abstract void d(iz var1);
 
-         for (dbf $$10 : $$6) {
-            $$9.d(kb.a($$10.e, 8), 32, kb.a($$10.f, 8));
-            double $$11 = $$9.j($$3);
-            boolean $$12 = $$7 == null || $$11 < $$8;
-            if ($$12) {
-               Pair<iz, ji<eik>> $$13 = a($$0, $$1, $$2, $$4, $$5, $$10);
-               if ($$13 != null) {
-                  $$7 = $$13;
-                  $$8 = $$11;
-               }
-            }
-         }
-
-         return $$7;
-      }
+   public void e(iz $$0) {
+      n.warn("Trying to mark a block for PostProcessing @ {}, but this operation is not supported.", $$0);
    }
 
-   @Nullable
-   private static Pair<iz, ji<eik>> a(Set<ji<eik>> $$0, dcb $$1, dcr $$2, int $$3, int $$4, int $$5, boolean $$6, long $$7, ejf $$8) {
-      int $$9 = $$8.a();
-
-      for (int $$10 = -$$5; $$10 <= $$5; $$10++) {
-         boolean $$11 = $$10 == -$$5 || $$10 == $$5;
-
-         for (int $$12 = -$$5; $$12 <= $$5; $$12++) {
-            boolean $$13 = $$12 == -$$5 || $$12 == $$5;
-            if ($$11 || $$13) {
-               int $$14 = $$3 + $$9 * $$10;
-               int $$15 = $$4 + $$9 * $$12;
-               dbf $$16 = $$8.a($$7, $$14, $$15);
-               Pair<iz, ji<eik>> $$17 = a($$0, $$1, $$2, $$6, $$8, $$16);
-               if ($$17 != null) {
-                  return $$17;
-               }
-            }
-         }
-      }
-
-      return null;
-   }
-
-   @Nullable
-   private static Pair<iz, ji<eik>> a(Set<ji<eik>> $$0, dcb $$1, dcr $$2, boolean $$3, ejh $$4, dbf $$5) {
-      for (ji<eik> $$6 : $$0) {
-         eim $$7 = $$2.a($$5, $$6.a(), $$4, $$3);
-         if ($$7 != eim.b) {
-            if (!$$3 && $$7 == eim.a) {
-               return Pair.of($$4.a($$5), $$6);
-            }
-
-            dty $$8 = $$1.a($$5.e, $$5.f, dux.d);
-            eis $$9 = $$2.a(kb.a($$8), $$6.a(), $$8);
-            if ($$9 != null && $$9.b() && (!$$3 || a($$2, $$9))) {
-               return Pair.of($$4.a($$9.c()), $$6);
-            }
-         }
-      }
-
-      return null;
-   }
-
-   private static boolean a(dcr $$0, eis $$1) {
-      if ($$1.d()) {
-         $$0.a($$1);
-         return true;
-      } else {
-         return false;
-      }
-   }
-
-   public void a(dct $$0, dty $$1, dcr $$2) {
-      dbf $$3 = $$1.f();
-      if (!aa.a($$3)) {
-         kb $$4 = kb.a($$3, $$0.ao());
-         iz $$5 = $$4.j();
-         jv<eik> $$6 = $$0.H_().d(lq.aJ);
-         Map<Integer, List<eik>> $$7 = $$6.s().collect(Collectors.groupingBy($$0x -> $$0x.c().ordinal()));
-         List<ddh.b> $$8 = this.c.get();
-         dyt $$9 = new dyt(new dyv(dyj.a()));
-         long $$10 = $$9.a($$0.C(), $$5.u(), $$5.w());
-         Set<ji<dcx>> $$11 = new ObjectArraySet();
-         dbf.a($$4.r(), 1).forEach($$2x -> {
-            dty $$3x = $$0.a($$2x.e, $$2x.f);
-
-            for (duj $$4x : $$3x.d()) {
-               $$4x.i().a($$11::add);
-            }
-         });
-         $$11.retainAll(this.b.c());
-         int $$12 = $$8.size();
-
-         try {
-            jv<eho> $$13 = $$0.H_().d(lq.aI);
-            int $$14 = Math.max(dxq.b.values().length, $$12);
-
-            for (int $$15 = 0; $$15 < $$14; $$15++) {
-               int $$16 = 0;
-               if ($$2.a()) {
-                  for (eik $$18 : $$7.getOrDefault($$15, Collections.emptyList())) {
-                     $$9.b($$10, $$16, $$15);
-                     Supplier<String> $$19 = () -> $$6.d($$18).map(Object::toString).orElseGet($$18::toString);
-
-                     try {
-                        $$0.a($$19);
-                        $$2.a($$4, $$18).forEach($$5x -> $$5x.a($$0, $$2, this, $$9, a($$1), $$3));
-                     } catch (Exception var29) {
-                        o $$21 = o.a(var29, "Feature placement");
-                        $$21.a("Feature").a("Description", $$19::get);
-                        throw new y($$21);
-                     }
-
-                     $$16++;
-                  }
-               }
-
-               if ($$15 < $$12) {
-                  IntSet $$22 = new IntArraySet();
-
-                  for (ji<dcx> $$23 : $$11) {
-                     List<jm<eho>> $$24 = this.d.apply($$23).b();
-                     if ($$15 < $$24.size()) {
-                        jm<eho> $$25 = $$24.get($$15);
-                        ddh.b $$26 = $$8.get($$15);
-                        $$25.a().map(ji::a).forEach($$2x -> $$22.add($$26.b().applyAsInt($$2x)));
-                     }
-                  }
-
-                  int $$27 = $$22.size();
-                  int[] $$28 = $$22.toIntArray();
-                  Arrays.sort($$28);
-                  ddh.b $$29 = $$8.get($$15);
-
-                  for (int $$30 = 0; $$30 < $$27; $$30++) {
-                     int $$31 = $$28[$$30];
-                     eho $$32 = $$29.a().get($$31);
-                     Supplier<String> $$33 = () -> $$13.d($$32).map(Object::toString).orElseGet($$32::toString);
-                     $$9.b($$10, $$31, $$15);
-
-                     try {
-                        $$0.a($$33);
-                        $$32.b($$0, this, $$9, $$5);
-                     } catch (Exception var30) {
-                        o $$35 = o.a(var30, "Feature placement");
-                        $$35.a("Feature").a("Description", $$33::get);
-                        throw new y($$35);
-                     }
-                  }
-               }
-            }
-
-            $$0.a(null);
-         } catch (Exception var31) {
-            o $$37 = o.a(var31, "Biome decoration");
-            $$37.a("Generation").a("CenterX", $$3.e).a("CenterZ", $$3.f).a("Decoration Seed", $$10);
-            throw new y($$37);
-         }
-      }
-   }
-
-   private static eic a(dty $$0) {
-      dbf $$1 = $$0.f();
-      int $$2 = $$1.d();
-      int $$3 = $$1.e();
-      dca $$4 = $$0.z();
-      int $$5 = $$4.I_() + 1;
-      int $$6 = $$4.am() - 1;
-      return new eic($$2, $$5, $$3, $$2 + 15, $$6, $$3 + 15);
-   }
-
-   public abstract void a(arm var1, dcr var2, dyi var3, dty var4);
-
-   public abstract void a(arm var1);
-
-   public int a(dca $$0) {
-      return 64;
-   }
-
-   public ddb d() {
+   public ShortList[] n() {
       return this.b;
    }
 
-   public abstract int e();
-
-   public bpi<ddj.c> a(ji<dcx> $$0, dcr $$1, bts $$2, iz $$3) {
-      Map<eik, LongSet> $$4 = $$1.b($$3);
-
-      for (Entry<eik, LongSet> $$5 : $$4.entrySet()) {
-         eik $$6 = $$5.getKey();
-         eir $$7 = $$6.b().get($$2);
-         if ($$7 != null) {
-            MutableBoolean $$8 = new MutableBoolean(false);
-            Predicate<eis> $$9 = $$7.a() == eir.a.a ? $$2x -> $$1.a($$3, $$2x) : $$1x -> $$1x.a().b($$3);
-            $$1.a($$6, $$5.getValue(), $$2x -> {
-               if ($$8.isFalse() && $$9.test($$2x)) {
-                  $$8.setTrue();
-               }
-            });
-            if ($$8.isTrue()) {
-               return $$7.b();
-            }
-         }
-      }
-
-      return $$0.a().b().a($$2);
+   public void a(short $$0, int $$1) {
+      a(this.n(), $$1).add($$0);
    }
 
-   public void a(jw $$0, dua $$1, dcr $$2, dty $$3, eml $$4) {
-      dbf $$5 = $$3.f();
-      kb $$6 = kb.a($$3);
-      dyi $$7 = $$1.c();
-      $$1.a().forEach($$8 -> {
-         ejh $$9 = $$8.a().b();
-         List<eiq.a> $$10 = $$8.a().a();
+   public void a(us $$0) {
+      this.j.put(dpi.b($$0), $$0);
+   }
 
-         for (eiq.a $$11 : $$10) {
-            eis $$12 = $$2.a($$6, $$11.a().a(), $$3);
-            if ($$12 != null && $$12.b()) {
-               return;
-            }
-         }
+   @Nullable
+   public us f(iz $$0) {
+      return this.j.get($$0);
+   }
 
-         if ($$9.b($$1, $$5.e, $$5.f)) {
-            if ($$10.size() == 1) {
-               this.a($$10.get(0), $$2, $$0, $$7, $$4, $$1.d(), $$3, $$5, $$6);
-            } else {
-               ArrayList<eiq.a> $$13 = new ArrayList<>($$10.size());
-               $$13.addAll($$10);
-               dyt $$14 = new dyt(new dxv(0L));
-               $$14.c($$1.d(), $$5.e, $$5.f);
-               int $$15 = 0;
+   @Nullable
+   public abstract us a(iz var1, jk.a var2);
 
-               for (eiq.a $$16 : $$13) {
-                  $$15 += $$16.b();
-               }
+   @Override
+   public final void a(BiConsumer<iz, dsd> $$0) {
+      this.a($$0x -> $$0x.h() != 0, $$0);
+   }
 
-               while (!$$13.isEmpty()) {
-                  int $$17 = $$14.a($$15);
-                  int $$18 = 0;
+   public void a(Predicate<dsd> $$0, BiConsumer<iz, dsd> $$1) {
+      iz.a $$2 = new iz.a();
 
-                  for (eiq.a $$19 : $$13) {
-                     $$17 -= $$19.b();
-                     if ($$17 < 0) {
-                        break;
+      for (int $$3 = this.ao(); $$3 < this.ap(); $$3++) {
+         duk $$4 = this.b(this.f($$3));
+         if ($$4.a($$0)) {
+            iz $$5 = kb.a(this.d, $$3).j();
+
+            for (int $$6 = 0; $$6 < 16; $$6++) {
+               for (int $$7 = 0; $$7 < 16; $$7++) {
+                  for (int $$8 = 0; $$8 < 16; $$8++) {
+                     dsd $$9 = $$4.a($$8, $$6, $$7);
+                     if ($$0.test($$9)) {
+                        $$1.accept($$2.a($$5, $$8, $$6, $$7), $$9);
                      }
-
-                     $$18++;
                   }
-
-                  eiq.a $$20 = $$13.get($$18);
-                  if (this.a($$20, $$2, $$0, $$7, $$4, $$1.d(), $$3, $$5, $$6)) {
-                     return;
-                  }
-
-                  $$13.remove($$18);
-                  $$15 -= $$20.b();
-               }
-            }
-         }
-      });
-   }
-
-   private boolean a(eiq.a $$0, dcr $$1, jw $$2, dyi $$3, eml $$4, long $$5, dty $$6, dbf $$7, kb $$8) {
-      eik $$9 = $$0.a().a();
-      int $$10 = a($$1, $$6, $$8, $$9);
-      jm<dcx> $$11 = $$9.a();
-      Predicate<ji<dcx>> $$12 = $$11::a;
-      eis $$13 = $$9.a($$2, this, this.b, $$3, $$4, $$5, $$7, $$10, $$6, $$12);
-      if ($$13.b()) {
-         $$1.a($$8, $$9, $$13, $$6);
-         return true;
-      } else {
-         return false;
-      }
-   }
-
-   private static int a(dcr $$0, dty $$1, kb $$2, eik $$3) {
-      eis $$4 = $$0.a($$2, $$3, $$1);
-      return $$4 != null ? $$4.f() : 0;
-   }
-
-   public void a(dct $$0, dcr $$1, dty $$2) {
-      int $$3 = 8;
-      dbf $$4 = $$2.f();
-      int $$5 = $$4.e;
-      int $$6 = $$4.f;
-      int $$7 = $$4.d();
-      int $$8 = $$4.e();
-      kb $$9 = kb.a($$2);
-
-      for (int $$10 = $$5 - 8; $$10 <= $$5 + 8; $$10++) {
-         for (int $$11 = $$6 - 8; $$11 <= $$6 + 8; $$11++) {
-            long $$12 = dbf.c($$10, $$11);
-
-            for (eis $$13 : $$0.a($$10, $$11).g().values()) {
-               try {
-                  if ($$13.b() && $$13.a().a($$7, $$8, $$7 + 15, $$8 + 15)) {
-                     $$1.a($$9, $$13.h(), $$12, $$2);
-                     agt.a($$0, $$13);
-                  }
-               } catch (Exception var21) {
-                  o $$15 = o.a(var21, "Generating structure reference");
-                  p $$16 = $$15.a("Structure");
-                  Optional<? extends jv<eik>> $$17 = $$0.H_().c(lq.aJ);
-                  $$16.a("Id", () -> $$17.<String>map($$1xx -> $$1xx.b($$13.h()).toString()).orElse("UNKNOWN"));
-                  $$16.a("Name", () -> lp.T.b($$13.h().e()).toString());
-                  $$16.a("Class", () -> $$13.h().getClass().getCanonicalName());
-                  throw new y($$15);
                }
             }
          }
       }
    }
 
-   public abstract CompletableFuture<dty> a(Executor var1, dyw var2, dyi var3, dcr var4, dty var5);
+   public abstract exm<dfa> o();
 
-   public abstract int f();
+   public abstract exm<env> p();
 
-   public abstract int g();
+   public abstract dtz.a q();
 
-   public abstract int a(int var1, int var2, dxu.a var3, dca var4, dyi var5);
-
-   public abstract dck a(int var1, int var2, dca var3, dyi var4);
-
-   public int b(int $$0, int $$1, dxu.a $$2, dca $$3, dyi $$4) {
-      return this.a($$0, $$1, $$2, $$3, $$4);
+   public duw r() {
+      return this.f;
    }
 
-   public int c(int $$0, int $$1, dxu.a $$2, dca $$3, dyi $$4) {
-      return this.a($$0, $$1, $$2, $$3, $$4) - 1;
+   public boolean s() {
+      return this.g != null;
    }
 
-   public abstract void a(List<String> var1, dyi var2, iz var3);
+   @Nullable
+   public dyy t() {
+      return this.g;
+   }
+
+   public void a(dyy $$0) {
+      this.g = $$0;
+   }
+
+   public long u() {
+      return this.q;
+   }
+
+   public void a(long $$0) {
+      this.q += $$0;
+   }
+
+   public void b(long $$0) {
+      this.q = $$0;
+   }
+
+   public static ShortList a(ShortList[] $$0, int $$1) {
+      if ($$0[$$1] == null) {
+         $$0[$$1] = new ShortArrayList();
+      }
+
+      return $$0[$$1];
+   }
+
+   public boolean v() {
+      return this.p;
+   }
+
+   public void b(boolean $$0) {
+      this.p = $$0;
+      this.a(true);
+   }
+
+   @Override
+   public int I_() {
+      return this.l.I_();
+   }
+
+   @Override
+   public int J_() {
+      return this.l.J_();
+   }
+
+   public dxz a(Function<dtz, dxz> $$0) {
+      if (this.e == null) {
+         this.e = $$0.apply(this);
+      }
+
+      return this.e;
+   }
 
    @Deprecated
-   public dcy a(ji<dcx> $$0) {
-      return this.d.apply($$0);
+   public dcz a(Supplier<dcz> $$0) {
+      if (this.r == null) {
+         this.r = $$0.get();
+      }
+
+      return this.r;
+   }
+
+   @Override
+   public ji<dcy> getNoiseBiome(int $$0, int $$1, int $$2) {
+      try {
+         int $$3 = jt.a(this.I_());
+         int $$4 = $$3 + jt.a(this.J_()) - 1;
+         int $$5 = ayz.a($$1, $$3, $$4);
+         int $$6 = this.e(jt.c($$5));
+         return this.m[$$6].c($$0 & 3, $$5 & 3, $$2 & 3);
+      } catch (Throwable var8) {
+         o $$8 = o.a(var8, "Getting biome");
+         p $$9 = $$8.a("Biome being got");
+         $$9.a("Location", () -> p.a(this, $$0, $$1, $$2));
+         throw new y($$8);
+      }
+   }
+
+   public void a(ddb $$0, ddh.f $$1) {
+      dbg $$2 = this.f();
+      int $$3 = jt.a($$2.d());
+      int $$4 = jt.a($$2.e());
+      dcb $$5 = this.z();
+
+      for (int $$6 = $$5.ao(); $$6 < $$5.ap(); $$6++) {
+         duk $$7 = this.b(this.f($$6));
+         int $$8 = jt.d($$6);
+         $$7.a($$0, $$1, $$3, $$8, $$4);
+      }
+   }
+
+   public boolean w() {
+      return !this.h().isEmpty();
+   }
+
+   @Nullable
+   public dxj x() {
+      return null;
+   }
+
+   public boolean y() {
+      return this.x() != null;
+   }
+
+   public dcb z() {
+      return this;
+   }
+
+   public void A() {
+      this.i.a(this);
+   }
+
+   @Override
+   public eng B() {
+      return this.i;
+   }
+
+   public static record a(exk<dfa> a, exk<env> b) {
    }
 }

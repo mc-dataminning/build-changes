@@ -1,162 +1,133 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 import javax.annotation.Nullable;
 
-public class cjc extends ciz implements bup<ji<cjd>> {
-   private static final akk<ji<cjd>> g = ako.a(cjc.class, akm.A);
-   private static final ale<cjd> h = cje.a;
-   public static final MapCodec<ji<cjd>> e = lp.l.r().fieldOf("variant");
-   public static final Codec<ji<cjd>> f = e.codec();
+public class cjc extends cja {
+   public static final double e = 0.375;
 
-   private static ji<cjd> s() {
-      return lp.l.g(h);
-   }
-
-   public cjc(bta<? extends cjc> $$0, dby $$1) {
+   public cjc(btb<? extends cjc> $$0, dbz $$1) {
       super($$0, $$1);
    }
 
-   @Override
-   protected void a(ako.a $$0) {
-      $$0.a(g, s());
+   public cjc(dbz $$0, iz $$1) {
+      super(btb.al, $$0, $$1);
+      this.a_((double)$$1.u(), (double)$$1.v(), (double)$$1.w());
    }
 
    @Override
-   public void a(akk<?> $$0) {
-      if (g.equals($$0)) {
-         this.y();
-      }
-   }
-
-   public void b(ji<cjd> $$0) {
-      this.ao.a(g, $$0);
-   }
-
-   public ji<cjd> p() {
-      return this.ao.a(g);
-   }
-
-   public static Optional<cjc> a(dby $$0, iz $$1, je $$2) {
-      cjc $$3 = new cjc($$0, $$1);
-      List<ji<cjd>> $$4 = new ArrayList<>();
-      lp.l.c(awz.a).forEach($$4::add);
-      if ($$4.isEmpty()) {
-         return Optional.empty();
-      } else {
-         $$3.a($$2);
-         $$4.removeIf($$1x -> {
-            $$3.b($$1x);
-            return !$$3.z();
-         });
-         if ($$4.isEmpty()) {
-            return Optional.empty();
-         } else {
-            int $$5 = $$4.stream().mapToInt(cjc::c).max().orElse(0);
-            $$4.removeIf($$1x -> c($$1x) < $$5);
-            Optional<ji<cjd>> $$6 = ac.b($$4, $$3.ah);
-            if ($$6.isEmpty()) {
-               return Optional.empty();
-            } else {
-               $$3.b($$6.get());
-               $$3.a($$2);
-               return Optional.of($$3);
-            }
-         }
-      }
-   }
-
-   private static int c(ji<cjd> $$0) {
-      return $$0.a().a() * $$0.a().b();
-   }
-
-   private cjc(dby $$0, iz $$1) {
-      super(bta.av, $$0, $$1);
-   }
-
-   public cjc(dby $$0, iz $$1, je $$2, ji<cjd> $$3) {
-      this($$0, $$1);
-      this.b($$3);
-      this.a($$2);
+   protected void y() {
+      this.p((double)this.c.u() + 0.5, (double)this.c.v() + 0.375, (double)this.c.w() + 0.5);
+      double $$0 = (double)this.ak().l() / 2.0;
+      double $$1 = (double)this.ak().m();
+      this.a(new evn(this.du() - $$0, this.dw(), this.dA() - $$0, this.du() + $$0, this.dw() + $$1, this.dA() + $$0));
    }
 
    @Override
-   public void b(us $$0) {
-      a($$0, this.p());
-      $$0.a("facing", (byte)this.d.e());
-      super.b($$0);
-   }
-
-   @Override
-   public void a(us $$0) {
-      ji<cjd> $$1 = f.parse(vg.a, $$0).result().orElseGet(cjc::s);
-      this.b($$1);
-      this.d = je.b($$0.f("facing"));
-      super.a($$0);
-      this.a(this.d);
-   }
-
-   public static void a(us $$0, ji<cjd> $$1) {
-      f.encodeStart(vg.a, $$1).ifSuccess($$1x -> $$0.a((us)$$1x));
+   public void a(je $$0) {
    }
 
    @Override
    public int A() {
-      return this.p().a().a();
+      return 9;
    }
 
    @Override
    public int B() {
-      return this.p().a().b();
+      return 9;
    }
 
    @Override
-   public void b(@Nullable bsu $$0) {
-      if (this.dP().ab().b(dbu.i)) {
-         this.a(awa.sp, 1.0F, 1.0F);
-         if ($$0 instanceof cmx $$1 && $$1.fP()) {
-            return;
+   public boolean a(double $$0) {
+      return $$0 < 1024.0;
+   }
+
+   @Override
+   public void b(@Nullable bsv $$0) {
+      this.a(awa.nS, 1.0F, 1.0F);
+   }
+
+   @Override
+   public void b(us $$0) {
+   }
+
+   @Override
+   public void a(us $$0) {
+   }
+
+   @Override
+   public bqv a(cmy $$0, bqu $$1) {
+      if (this.dP().B) {
+         return bqv.a;
+      } else {
+         boolean $$2 = false;
+         double $$3 = 7.0;
+         List<bts> $$4 = this.dP().a(bts.class, new evn(this.du() - 7.0, this.dw() - 7.0, this.dA() - 7.0, this.du() + 7.0, this.dw() + 7.0, this.dA() + 7.0));
+
+         for (bts $$5 : $$4) {
+            if ($$5.gf() == $$0) {
+               $$5.b(this, true);
+               $$2 = true;
+            }
          }
 
-         this.a(cus.pZ);
+         boolean $$6 = false;
+         if (!$$2) {
+            this.ao();
+            if ($$0.gd().d) {
+               for (bts $$7 : $$4) {
+                  if ($$7.gd() && $$7.gf() == this) {
+                     $$7.a(true, false);
+                     $$6 = true;
+                  }
+               }
+            }
+         }
+
+         if ($$2 || $$6) {
+            this.a(dww.b, $$0);
+         }
+
+         return bqv.c;
       }
    }
 
    @Override
+   public boolean z() {
+      return this.dP().a_(this.c).a(awp.S);
+   }
+
+   public static cjc b(dbz $$0, iz $$1) {
+      int $$2 = $$1.u();
+      int $$3 = $$1.v();
+      int $$4 = $$1.w();
+
+      for (cjc $$6 : $$0.a(cjc.class, new evn((double)$$2 - 1.0, (double)$$3 - 1.0, (double)$$4 - 1.0, (double)$$2 + 1.0, (double)$$3 + 1.0, (double)$$4 + 1.0))) {
+         if ($$6.D().equals($$1)) {
+            return $$6;
+         }
+      }
+
+      cjc $$7 = new cjc($$0, $$1);
+      $$0.b($$7);
+      return $$7;
+   }
+
+   @Override
    public void C() {
-      this.a(awa.sq, 1.0F, 1.0F);
-   }
-
-   @Override
-   public void b(double $$0, double $$1, double $$2, float $$3, float $$4) {
-      this.a_($$0, $$1, $$2);
-   }
-
-   @Override
-   public void a(double $$0, double $$1, double $$2, float $$3, float $$4, int $$5) {
-      this.a_($$0, $$1, $$2);
-   }
-
-   @Override
-   public evr do() {
-      return evr.a(this.c);
+      this.a(awa.nT, 1.0F, 1.0F);
    }
 
    @Override
    public zw<aci> dl() {
-      return new acj(this, this.d.d(), this.D());
+      return new acj(this, 0, this.D());
    }
 
    @Override
-   public void a(acj $$0) {
-      super.a($$0);
-      this.a(je.a($$0.p()));
+   public evs q(float $$0) {
+      return this.l($$0).b(0.0, 0.2, 0.0);
    }
 
    @Override
-   public cup dC() {
-      return new cup(cus.pZ);
+   public cuq dC() {
+      return new cuq(cut.uK);
    }
 }

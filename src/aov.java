@@ -28,9 +28,9 @@ public class aov {
       );
    }
 
-   private static int a(ep $$0, iz $$1, gg $$2, aov.b $$3, @Nullable Predicate<dsg> $$4) throws CommandSyntaxException {
+   private static int a(ep $$0, iz $$1, gg $$2, aov.b $$3, @Nullable Predicate<dsh> $$4) throws CommandSyntaxException {
       arf $$5 = $$0.e();
-      if ($$4 != null && !$$4.test(new dsg($$5, $$1, true))) {
+      if ($$4 != null && !$$4.test(new dsh($$5, $$1, true))) {
          throw a.create();
       } else {
          boolean $$6;
@@ -38,8 +38,8 @@ public class aov {
             $$5.b($$1, true);
             $$6 = !$$2.a().i() || !$$5.a_($$1).i();
          } else {
-            dph $$7 = $$5.c_($$1);
-            bql.a_($$7);
+            dpi $$7 = $$5.c_($$1);
+            bqm.a_($$7);
             $$6 = true;
          }
 
@@ -55,7 +55,7 @@ public class aov {
 
    public interface a {
       @Nullable
-      gg filter(eic var1, iz var2, gg var3, arf var4);
+      gg filter(eid var1, iz var2, gg var3, arf var4);
    }
 
    public static enum b {

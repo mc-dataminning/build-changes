@@ -12,8 +12,8 @@ public class ant {
       );
    }
 
-   private static int a(ep $$0, Collection<? extends bsu> $$1) {
-      for (bsu $$2 : $$1) {
+   private static int a(ep $$0, Collection<? extends bsv> $$1) {
+      for (bsv $$2 : $$1) {
          $$2.an();
       }
 

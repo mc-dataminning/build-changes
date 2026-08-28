@@ -1,299 +1,63 @@
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Map.Entry;
+import java.util.Map;
+import javax.annotation.Nullable;
 
-public class btf extends bsu {
-   private static final int b = 6000;
-   private static final int c = 20;
-   private static final int d = 8;
-   private static final int e = 40;
-   private static final double f = 0.5;
-   private int g;
-   private int h = 5;
-   private int i;
-   private int j = 1;
-   private cmx k;
+public interface btf {
+   void a(btc var1, cuq var2);
 
-   public btf(dby $$0, double $$1, double $$2, double $$3, int $$4) {
-      this(bta.M, $$0);
-      this.a_($$1, $$2, $$3);
-      this.r((float)(this.ah.j() * 360.0));
-      this.o((this.ah.j() * 0.2F - 0.1F) * 2.0, this.ah.j() * 0.2 * 2.0, (this.ah.j() * 0.2F - 0.1F) * 2.0);
-      this.i = $$4;
+   cuq a(btc var1);
+
+   void a(btc var1, float var2);
+
+   default void a(bte $$0, eqm $$1) {
+      this.a($$0.a(), $$1, $$0.b());
    }
 
-   public btf(bta<? extends btf> $$0, dby $$1) {
-      super($$0, $$1);
+   default void a(ale<eqo> $$0, eqm $$1, Map<btc, Float> $$2) {
+      this.a($$0, $$1, 0L, $$2);
    }
 
-   @Override
-   protected bsu.b bb() {
-      return bsu.b.a;
-   }
+   default void a(ale<eqo> $$0, eqm $$1, long $$2, Map<btc, Float> $$3) {
+      if (!$$0.equals(eqf.a)) {
+         eqo $$4 = $$1.a().o().be().b($$0);
+         if ($$4 != eqo.a) {
+            List<cuq> $$5 = $$4.a($$1, $$2);
+            List<btc> $$6 = new ArrayList<>();
 
-   @Override
-   protected void a(ako.a $$0) {
-   }
+            for (cuq $$7 : $$5) {
+               btc $$8 = this.a($$7, $$6);
+               if ($$8 != null) {
+                  cuq $$9 = $$8.f() ? $$7.c(1) : $$7;
+                  this.a($$8, $$9);
+                  Float $$10 = $$3.get($$8);
+                  if ($$10 != null) {
+                     this.a($$8, $$10);
+                  }
 
-   @Override
-   protected double aY() {
-      return 0.03;
-   }
-
-   @Override
-   public void l() {
-      super.l();
-      this.L = this.du();
-      this.M = this.dw();
-      this.N = this.dA();
-      if (this.a(awv.a)) {
-         this.v();
-      } else {
-         this.ba();
-      }
-
-      if (this.dP().b_(this.dp()).a(awv.b)) {
-         this.o((double)((this.ah.i() - this.ah.i()) * 0.2F), 0.2F, (double)((this.ah.i() - this.ah.i()) * 0.2F));
-      }
-
-      if (!this.dP().b(this.cK())) {
-         this.m(this.du(), (this.cK().b + this.cK().e) / 2.0, this.dA());
-      }
-
-      if (this.ai % 20 == 1) {
-         this.u();
-      }
-
-      if (this.k != null && (this.k.N_() || this.k.eB())) {
-         this.k = null;
-      }
-
-      if (this.k != null) {
-         evr $$0 = new evr(this.k.du() - this.du(), this.k.dw() + (double)this.k.cL() / 2.0 - this.dw(), this.k.dA() - this.dA());
-         double $$1 = $$0.g();
-         if ($$1 < 64.0) {
-            double $$2 = 1.0 - Math.sqrt($$1) / 8.0;
-            this.h(this.ds().e($$0.d().a($$2 * $$2 * 0.1)));
-         }
-      }
-
-      this.a(btu.a, this.ds());
-      float $$3 = 0.98F;
-      if (this.aE()) {
-         $$3 = this.dP().a_(this.aK()).b().h() * 0.98F;
-      }
-
-      this.h(this.ds().d((double)$$3, 0.98, (double)$$3));
-      if (this.aE()) {
-         this.h(this.ds().d(1.0, -0.9, 1.0));
-      }
-
-      this.g++;
-      if (this.g >= 6000) {
-         this.ao();
-      }
-   }
-
-   @Override
-   protected iz aK() {
-      return this.d(0.999999F);
-   }
-
-   private void u() {
-      if (this.k == null || this.k.g(this) > 64.0) {
-         this.k = this.dP().a(this, 8.0);
-      }
-
-      if (this.dP() instanceof arf) {
-         for (btf $$1 : this.dP().a(dwj.a(btf.class), this.cK().g(0.5), this::a)) {
-            this.b($$1);
-         }
-      }
-   }
-
-   public static void a(arf $$0, evr $$1, int $$2) {
-      while ($$2 > 0) {
-         int $$3 = b($$2);
-         $$2 -= $$3;
-         if (!b($$0, $$1, $$3)) {
-            $$0.b(new btf($$0, $$1.a(), $$1.b(), $$1.c(), $$3));
-         }
-      }
-   }
-
-   private static boolean b(arf $$0, evr $$1, int $$2) {
-      evm $$3 = evm.a($$1, 1.0, 1.0, 1.0);
-      int $$4 = $$0.E_().a(40);
-      List<btf> $$5 = $$0.a(dwj.a(btf.class), $$3, $$2x -> a($$2x, $$4, $$2));
-      if (!$$5.isEmpty()) {
-         btf $$6 = $$5.get(0);
-         $$6.j++;
-         $$6.g = 0;
-         return true;
-      } else {
-         return false;
-      }
-   }
-
-   private boolean a(btf $$0) {
-      return $$0 != this && a($$0, this.al(), this.i);
-   }
-
-   private static boolean a(btf $$0, int $$1, int $$2) {
-      return !$$0.dK() && ($$0.al() - $$1) % 40 == 0 && $$0.i == $$2;
-   }
-
-   private void b(btf $$0) {
-      this.j = this.j + $$0.j;
-      this.g = Math.min(this.g, $$0.g);
-      $$0.ao();
-   }
-
-   private void v() {
-      evr $$0 = this.ds();
-      this.o($$0.c * 0.99F, Math.min($$0.d + 5.0E-4F, 0.06F), $$0.e * 0.99F);
-   }
-
-   @Override
-   protected void bn() {
-   }
-
-   @Override
-   public boolean a(brn $$0, float $$1) {
-      if (this.b($$0)) {
-         return false;
-      } else if (this.dP().B) {
-         return true;
-      } else {
-         this.bv();
-         this.h = (int)((float)this.h - $$1);
-         if (this.h <= 0) {
-            this.ao();
-         }
-
-         return true;
-      }
-   }
-
-   @Override
-   public void b(us $$0) {
-      $$0.a("Health", (short)this.h);
-      $$0.a("Age", (short)this.g);
-      $$0.a("Value", (short)this.i);
-      $$0.a("Count", this.j);
-   }
-
-   @Override
-   public void a(us $$0) {
-      this.h = $$0.g("Health");
-      this.g = $$0.g("Age");
-      this.i = $$0.g("Value");
-      this.j = Math.max($$0.h("Count"), 1);
-   }
-
-   @Override
-   public void b_(cmx $$0) {
-      if (!this.dP().B) {
-         if ($$0.cg == 0) {
-            $$0.cg = 2;
-            $$0.a(this, 1);
-            int $$1 = this.a($$0, this.i);
-            if ($$1 > 0) {
-               $$0.d($$1);
-            }
-
-            this.j--;
-            if (this.j == 0) {
-               this.ao();
+                  $$6.add($$8);
+               }
             }
          }
       }
    }
 
-   private int a(cmx $$0, int $$1) {
-      Entry<btb, cup> $$2 = dab.a(dad.O, $$0, cup::m);
-      if ($$2 != null) {
-         cup $$3 = $$2.getValue();
-         int $$4 = Math.min(this.d($$1), $$3.n());
-         $$3.b($$3.n() - $$4);
-         int $$5 = $$1 - this.c($$4);
-         return $$5 > 0 ? this.a($$0, $$5) : 0;
+   @Nullable
+   default btc a(cuq $$0, List<btc> $$1) {
+      if ($$0.e()) {
+         return null;
       } else {
-         return $$1;
+         cts $$2 = cts.c_($$0);
+         if ($$2 != null) {
+            btc $$3 = $$2.m();
+            if (!$$1.contains($$3)) {
+               return $$3;
+            }
+         } else if (!$$1.contains(btc.a)) {
+            return btc.a;
+         }
+
+         return null;
       }
-   }
-
-   private int c(int $$0) {
-      return $$0 / 2;
-   }
-
-   private int d(int $$0) {
-      return $$0 * 2;
-   }
-
-   public int p() {
-      return this.i;
-   }
-
-   public int s() {
-      if (this.i >= 2477) {
-         return 10;
-      } else if (this.i >= 1237) {
-         return 9;
-      } else if (this.i >= 617) {
-         return 8;
-      } else if (this.i >= 307) {
-         return 7;
-      } else if (this.i >= 149) {
-         return 6;
-      } else if (this.i >= 73) {
-         return 5;
-      } else if (this.i >= 37) {
-         return 4;
-      } else if (this.i >= 17) {
-         return 3;
-      } else if (this.i >= 7) {
-         return 2;
-      } else {
-         return this.i >= 3 ? 1 : 0;
-      }
-   }
-
-   public static int b(int $$0) {
-      if ($$0 >= 2477) {
-         return 2477;
-      } else if ($$0 >= 1237) {
-         return 1237;
-      } else if ($$0 >= 617) {
-         return 617;
-      } else if ($$0 >= 307) {
-         return 307;
-      } else if ($$0 >= 149) {
-         return 149;
-      } else if ($$0 >= 73) {
-         return 73;
-      } else if ($$0 >= 37) {
-         return 37;
-      } else if ($$0 >= 17) {
-         return 17;
-      } else if ($$0 >= 7) {
-         return 7;
-      } else {
-         return $$0 >= 3 ? 3 : 1;
-      }
-   }
-
-   @Override
-   public boolean ct() {
-      return false;
-   }
-
-   @Override
-   public zw<aci> dl() {
-      return new ack(this);
-   }
-
-   @Override
-   public awb de() {
-      return awb.i;
    }
 }

@@ -16,7 +16,7 @@ public class amr {
    private static final String d = "0.0.0.0";
    private static final int e = 10000;
    private static final int f = 100;
-   public static BiMap<String, ale<dby>> a = ImmutableBiMap.of("o", dby.h, "n", dby.i, "e", dby.j);
+   public static BiMap<String, ale<dbz>> a = ImmutableBiMap.of("o", dbz.h, "n", dbz.i, "e", dbz.j);
    @Nullable
    private static amj g;
    @Nullable

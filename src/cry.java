@@ -1,2 +1,8 @@
-public record cry(cxc a) implements crz {
+import javax.annotation.ParametersAreNonnullByDefault;
+
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface cry {
 }

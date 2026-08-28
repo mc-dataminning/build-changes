@@ -12,7 +12,7 @@ public interface xq {
       return Optional.empty();
    }
 
-   default yd a(@Nullable ep $$0, @Nullable bsu $$1, int $$2) throws CommandSyntaxException {
+   default yd a(@Nullable ep $$0, @Nullable bsv $$1, int $$2) throws CommandSyntaxException {
       return yd.a(this);
    }
 

@@ -1,7 +1,7 @@
 import com.mojang.datafixers.schemas.Schema;
 import java.util.Objects;
 
-public class bdu extends bhi {
+public class bdu extends bhj {
    public bdu(Schema $$0, boolean $$1) {
       super("EntityTippedArrowFix", $$0, $$1);
    }

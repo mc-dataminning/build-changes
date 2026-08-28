@@ -1,59 +1,45 @@
-public interface exc extends bqn {
-   cup f();
-
-   default cup c(int $$0) {
-      return this.f().a($$0);
-   }
-
-   void b(cup var1);
-
-   default cup h() {
-      return this.c(this.ah_());
-   }
-
-   @Override
-   default int b() {
-      return 1;
-   }
-
-   @Override
-   default boolean c() {
-      return this.f().e();
-   }
-
-   @Override
-   default void a() {
-      this.h();
-   }
-
-   @Override
-   default cup b(int $$0) {
-      return this.a($$0, this.ah_());
-   }
-
-   @Override
-   default cup a(int $$0) {
-      return $$0 == 0 ? this.f() : cup.l;
-   }
-
-   @Override
-   default cup a(int $$0, int $$1) {
-      return $$0 != 0 ? cup.l : this.c($$1);
-   }
-
-   @Override
-   default void a(int $$0, cup $$1) {
-      if ($$0 == 0) {
-         this.b($$1);
+public class exc {
+   private static final exm<Object> a = new exm<Object>() {
+      @Override
+      public void a(exj<Object> $$0) {
       }
-   }
-
-   public interface a extends exc {
-      dph v();
 
       @Override
-      default boolean a(cmx $$0) {
-         return bqn.a(this.v(), $$0);
+      public boolean a(iz $$0, Object $$1) {
+         return false;
       }
+
+      @Override
+      public int a() {
+         return 0;
+      }
+   };
+   private static final exf<Object> b = new exf<Object>() {
+      @Override
+      public void a(exj<Object> $$0) {
+      }
+
+      @Override
+      public boolean a(iz $$0, Object $$1) {
+         return false;
+      }
+
+      @Override
+      public boolean b(iz $$0, Object $$1) {
+         return false;
+      }
+
+      @Override
+      public int a() {
+         return 0;
+      }
+   };
+
+   public static <T> exm<T> a() {
+      return (exm<T>)a;
+   }
+
+   public static <T> exf<T> b() {
+      return (exf<T>)b;
    }
 }

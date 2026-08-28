@@ -1,176 +1,72 @@
 import com.google.common.collect.ImmutableList;
-import com.google.common.collect.Lists;
+import com.google.common.collect.UnmodifiableIterator;
 import java.util.List;
-import java.util.Optional;
 
-public class fnk extends fmv {
-   private static final xp a = xp.c("options.videoTitle");
-   private static final xp r = xp.c("options.graphics.fabulous").a(n.u);
-   private static final xp s = xp.a("options.graphics.warning.message", r, r);
-   private static final xp u = xp.c("options.graphics.warning.title").a(n.m);
-   private static final xp v = xp.c("options.graphics.warning.accept");
-   private static final xp w = xp.c("options.graphics.warning.cancel");
-   private fib x;
-   private final gdi y;
-   private final int z;
+public class fnk extends fne {
+   private static final int a = 20;
+   private static final int b = 5;
+   private static final int c = 20;
+   private final xp d;
+   private final xu r;
+   private final ImmutableList<fnk.a> s;
+   private fhy u = fhy.a;
+   private int v;
+   private int w;
 
-   private static ffi<?>[] a(ffj $$0) {
-      return new ffi[]{
-         $$0.j(),
-         $$0.e(),
-         $$0.l(),
-         $$0.f(),
-         $$0.k(),
-         $$0.h(),
-         $$0.N(),
-         $$0.ab(),
-         $$0.aq(),
-         $$0.D(),
-         $$0.ap(),
-         $$0.i(),
-         $$0.aa(),
-         $$0.ar(),
-         $$0.C(),
-         $$0.O(),
-         $$0.aj(),
-         $$0.g(),
-         $$0.ak(),
-         $$0.af(),
-         $$0.am(),
-         $$0.an(),
-         $$0.p()
-      };
+   protected fnk(xp $$0, List<xp> $$1, ImmutableList<fnk.a> $$2) {
+      super($$0);
+      this.r = xu.a($$1);
+      this.d = xo.a($$0, xs.a($$1, xo.a));
+      this.s = $$2;
    }
 
-   public fnk(fnd $$0, ffj $$1) {
-      super($$0, $$1, a);
-      this.y = $$0.m.ai();
-      this.y.i();
-      if ($$1.j().c() == fey.c) {
-         this.y.e();
+   @Override
+   public xp i() {
+      return this.d;
+   }
+
+   @Override
+   public void aM_() {
+      UnmodifiableIterator $$1 = this.s.iterator();
+
+      while ($$1.hasNext()) {
+         fnk.a $$0 = (fnk.a)$$1.next();
+         this.w = Math.max(this.w, 20 + this.p.a($$0.a) + 20);
       }
 
-      this.z = $$1.C().c();
-   }
+      int $$1x = 5 + this.w + 5;
+      int $$2 = $$1x * this.s.size();
+      this.u = fhy.a(this.p, this.r, $$2);
+      int $$3 = this.u.a() * 9;
+      this.v = (int)((double)this.o / 2.0 - (double)$$3 / 2.0);
+      int $$4 = this.v + $$3 + 9 * 2;
+      int $$5 = (int)((double)this.n / 2.0 - (double)$$2 / 2.0);
 
-   @Override
-   protected void aM_() {
-      this.x = this.c(new fib(this.m, this.n, this.o, this));
-      int $$0 = -1;
-      ezc $$1 = this.m.aO();
-      eyx $$2 = $$1.t();
-      int $$3;
-      if ($$2 == null) {
-         $$3 = -1;
-      } else {
-         Optional<ezb> $$4 = $$1.f();
-         $$3 = $$4.<Integer>map($$2::a).orElse(-1);
-      }
-
-      ffi<Integer> $$6 = new ffi<>("options.fullscreen.resolution", ffi.a(), ($$1x, $$2x) -> {
-         if ($$2 == null) {
-            return xp.c("options.fullscreen.unavailable");
-         } else if ($$2x == -1) {
-            return ffj.a($$1x, xp.c("options.fullscreen.current"));
-         } else {
-            ezb $$3x = $$2.a($$2x);
-            return ffj.a($$1x, xp.a("options.fullscreen.entry", $$3x.a(), $$3x.b(), $$3x.f(), $$3x.c() + $$3x.d() + $$3x.e()));
-         }
-      }, new ffi.f(-1, $$2 != null ? $$2.e() - 1 : -1), $$3, $$2x -> {
-         if ($$2 != null) {
-            $$1.a($$2x == -1 ? Optional.empty() : Optional.of($$2.a($$2x)));
-         }
-      });
-      this.x.a($$6);
-      this.x.a(this.c.E());
-      this.x.a(a(this.c));
-      super.aM_();
-   }
-
-   @Override
-   public void d() {
-      this.m.aO().g();
-      super.d();
-   }
-
-   @Override
-   protected void c() {
-      super.c();
-      this.x.a(this.n, this.d);
-   }
-
-   @Override
-   public void j() {
-      if (this.c.C().c() != this.z) {
-         this.m.b(this.c.C().c());
-         this.m.R();
-      }
-
-      super.j();
-   }
-
-   @Override
-   public boolean a(double $$0, double $$1, int $$2) {
-      if (super.a($$0, $$1, $$2)) {
-         if (this.y.g()) {
-            List<xp> $$3 = Lists.newArrayList(new xp[]{s, xo.s});
-            String $$4 = this.y.j();
-            if ($$4 != null) {
-               $$3.add(xo.s);
-               $$3.add(xp.a("options.graphics.warning.renderer", $$4).a(n.h));
-            }
-
-            String $$5 = this.y.l();
-            if ($$5 != null) {
-               $$3.add(xo.s);
-               $$3.add(xp.a("options.graphics.warning.vendor", $$5).a(n.h));
-            }
-
-            String $$6 = this.y.k();
-            if ($$6 != null) {
-               $$3.add(xo.s);
-               $$3.add(xp.a("options.graphics.warning.version", $$6).a(n.h));
-            }
-
-            this.m.a(new fnj(u, $$3, ImmutableList.of(new fnj.a(v, $$0x -> {
-               this.c.j().a(fey.c);
-               fff.Q().f.f();
-               this.y.e();
-               this.m.a(this);
-            }), new fnj.a(w, $$0x -> {
-               this.y.f();
-               this.m.a(this);
-            }))));
-         }
-
-         return true;
-      } else {
-         return false;
+      for (UnmodifiableIterator var6 = this.s.iterator(); var6.hasNext(); $$5 += $$1x) {
+         fnk.a $$6 = (fnk.a)var6.next();
+         this.c(fhf.a($$6.a, $$6.b).a($$5, $$4, this.w, 20).a());
       }
    }
 
    @Override
-   public boolean a(double $$0, double $$1, double $$2, double $$3) {
-      if (fnd.s()) {
-         ffi<Integer> $$4 = this.c.aq();
-         if ($$4.e() instanceof ffi.c $$5) {
-            int $$6 = $$4.c();
-            int $$7 = $$6 == 0 ? $$5.b() + 1 : $$6;
-            int $$8 = $$7 + (int)Math.signum($$3);
-            if ($$8 != 0 && $$8 <= $$5.b() && $$8 >= $$5.d()) {
-               fhl<Integer> $$9 = (fhl<Integer>)this.x.b($$4);
-               if ($$9 != null) {
-                  $$4.a($$8);
-                  $$9.a($$8);
-                  this.x.a(0.0);
-                  return true;
-               }
-            }
-         }
+   public void a(fgs $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      $$0.a(this.p, this.l, this.n / 2, this.v - 9 * 2, -1);
+      this.u.a($$0, this.n / 2, this.v);
+   }
 
-         return false;
-      } else {
-         return super.a($$0, $$1, $$2, $$3);
+   @Override
+   public boolean aC_() {
+      return false;
+   }
+
+   public static final class a {
+      final xp a;
+      final fhf.c b;
+
+      public a(xp $$0, fhf.c $$1) {
+         this.a = $$0;
+         this.b = $$1;
       }
    }
 }

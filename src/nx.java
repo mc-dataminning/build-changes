@@ -12,12 +12,12 @@ import java.util.TreeMap;
 import java.util.stream.Stream;
 
 public class nx implements nu {
-   private final dez a;
+   private final dfa a;
    private final List<oa> b;
-   private final Set<dtf<?>> c = Sets.newHashSet();
+   private final Set<dtg<?>> c = Sets.newHashSet();
    private final List<ny> d = Lists.newArrayList();
 
-   private nx(dez $$0, List<oa> $$1) {
+   private nx(dfa $$0, List<oa> $$1) {
       this.a = $$0;
       this.b = $$1;
    }
@@ -60,19 +60,19 @@ public class nx implements nu {
    }
 
    @Override
-   public dez a() {
+   public dfa a() {
       return this.a;
    }
 
-   public static nx a(dez $$0) {
+   public static nx a(dfa $$0) {
       return new nx($$0, ImmutableList.of(oa.a()));
    }
 
-   public static nx a(dez $$0, oa $$1) {
+   public static nx a(dfa $$0, oa $$1) {
       return new nx($$0, ImmutableList.of($$1));
    }
 
-   public static nx a(dez $$0, oa... $$1) {
+   public static nx a(dfa $$0, oa... $$1) {
       return new nx($$0, ImmutableList.copyOf($$1));
    }
 }

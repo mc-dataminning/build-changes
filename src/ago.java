@@ -9,11 +9,11 @@ public class ago implements zw<aci> {
    private final int b;
    private final List<ago.a> c;
 
-   public ago(int $$0, Collection<but> $$1) {
+   public ago(int $$0, Collection<buu> $$1) {
       this.b = $$0;
       this.c = Lists.newArrayList();
 
-      for (but $$2 : $$1) {
+      for (buu $$2 : $$1) {
          this.c.add(new ago.a($$2.a(), $$2.b(), $$2.c()));
       }
    }
@@ -40,13 +40,13 @@ public class ago implements zw<aci> {
       return this.c;
    }
 
-   public static record a(ji<bus> c, double d, Collection<buv> e) {
-      public static final zn<ByteBuf, buv> a = zn.a(
-         kc.g, buv::b, zl.j, buv::d, buv.a.e, buv::e, ($$0, $$1, $$2) -> new buv($$0, "Unknown synced attribute modifier", $$1, $$2)
+   public static record a(ji<but> c, double d, Collection<buw> e) {
+      public static final zn<ByteBuf, buw> a = zn.a(
+         kc.g, buw::b, zl.j, buw::d, buw.a.e, buw::e, ($$0, $$1, $$2) -> new buw($$0, "Unknown synced attribute modifier", $$1, $$2)
       );
       public static final zn<xa, ago.a> b = zn.a(zl.b(lq.c), ago.a::a, zl.j, ago.a::b, a.a(zl.a(ArrayList::new)), ago.a::c, ago.a::new);
 
-      public ji<bus> a() {
+      public ji<but> a() {
          return this.c;
       }
 
@@ -54,7 +54,7 @@ public class ago implements zw<aci> {
          return this.d;
       }
 
-      public Collection<buv> c() {
+      public Collection<buw> c() {
          return this.e;
       }
    }

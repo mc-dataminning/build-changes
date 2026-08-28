@@ -1,22 +1,63 @@
-import java.util.Arrays;
-import java.util.function.Function;
+import com.mojang.logging.LogUtils;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
+import org.slf4j.Logger;
 
-public interface err<T extends err<T>> {
-   T b(erv.a var1);
+public class err extends erv {
+   private static final Logger b = LogUtils.getLogger();
+   public static final MapCodec<err> a = RecordCodecBuilder.mapCodec(
+      $$0 -> a($$0).and(ale.a(lq.aV).fieldOf("name").forGetter($$0x -> $$0x.c)).apply($$0, err::new)
+   );
+   private final ale<erw> c;
 
-   default <E> T a(Iterable<E> $$0, Function<E, erv.a> $$1) {
-      T $$2 = this.c();
+   private err(List<ett> $$0, ale<erw> $$1) {
+      super($$0);
+      this.c = $$1;
+   }
 
-      for (E $$3 : $$0) {
-         $$2 = $$2.b($$1.apply($$3));
+   @Override
+   public erx<err> b() {
+      return ery.H;
+   }
+
+   @Override
+   public void a(eqp $$0) {
+      if ($$0.a(this.c)) {
+         $$0.b("Function " + this.c.a() + " is recursively called");
+      } else {
+         super.a($$0);
+         $$0.a()
+            .a(lq.aV, this.c)
+            .ifPresentOrElse($$1 -> $$1.a().a($$0.a(".{" + this.c.a() + "}", this.c)), () -> $$0.b("Unknown function table called " + this.c.a()));
       }
-
-      return $$2;
    }
 
-   default <E> T a(E[] $$0, Function<E, erv.a> $$1) {
-      return this.a(Arrays.asList($$0), $$1);
+   @Override
+   protected cuq a(cuq $$0, eqj $$1) {
+      erw $$2 = $$1.a().a(lq.aV, this.c).map(ji::a).orElse(null);
+      if ($$2 == null) {
+         b.warn("Unknown function: {}", this.c.a());
+         return $$0;
+      } else {
+         eqj.c<?> $$3 = eqj.a($$2);
+         if ($$1.b($$3)) {
+            cuq var5;
+            try {
+               var5 = $$2.apply($$0, $$1);
+            } finally {
+               $$1.c($$3);
+            }
+
+            return var5;
+         } else {
+            b.warn("Detected infinite loop in loot tables");
+            return $$0;
+         }
+      }
    }
 
-   T c();
+   public static erv.a<?> a(ale<erw> $$0) {
+      return a($$1 -> new err($$1, $$0));
+   }
 }

@@ -22,12 +22,12 @@ public class alp {
    public static CompletableFuture<jp<alo>> a(jp<alo> $$0, aup $$1, Executor $$2) {
       jw.b $$3 = $$0.b(alo.d);
       ald<JsonElement> $$4 = new alp.a($$3).a(JsonOps.INSTANCE);
-      List<CompletableFuture<ke<?>>> $$5 = eqk.a().map($$3x -> a($$3x, $$4, $$1, $$2)).toList();
+      List<CompletableFuture<ke<?>>> $$5 = eql.a().map($$3x -> a($$3x, $$4, $$1, $$2)).toList();
       CompletableFuture<List<ke<?>>> $$6 = ac.d($$5);
       return $$6.thenApplyAsync($$1x -> a($$0, $$1x), $$2);
    }
 
-   private static <T> CompletableFuture<ke<?>> a(eqk<T> $$0, ald<JsonElement> $$1, aup $$2, Executor $$3) {
+   private static <T> CompletableFuture<ke<?>> a(eql<T> $$0, ald<JsonElement> $$1, aup $$2, Executor $$3) {
       return CompletableFuture.supplyAsync(() -> {
          ke<T> $$3x = new jq<>($$0.b(), Lifecycle.experimental());
          Map<alf, JsonElement> $$4 = new HashMap<>();
@@ -41,19 +41,19 @@ public class alp {
       jp<alo> $$2 = b($$0, $$1);
       azf.a $$3 = new azf.a();
       jw.b $$4 = $$2.a();
-      eqo $$5 = new eqo($$3, etd.q, $$4.b());
-      eqk.a().forEach($$2x -> a($$5, $$2x, $$4));
+      eqp $$5 = new eqp($$3, ete.q, $$4.b());
+      eql.a().forEach($$2x -> a($$5, $$2x, $$4));
       $$3.a().forEach(($$0x, $$1x) -> a.warn("Found loot table element validation problem in {}: {}", $$0x, $$1x));
       return $$2;
    }
 
    private static jp<alo> b(jp<alo> $$0, List<ke<?>> $$1) {
       jw $$2 = new jw.c($$1);
-      ((ke)$$2.<eqn>d(lq.aU)).a(eqe.a, eqn.a, c);
+      ((ke)$$2.<eqo>d(lq.aU)).a(eqf.a, eqo.a, c);
       return $$0.a(alo.d, $$2.d());
    }
 
-   private static <T> void a(eqo $$0, eqk<T> $$1, jw $$2) {
+   private static <T> void a(eqp $$0, eql<T> $$1, jw $$2) {
       jv<T> $$3 = $$2.d($$1.b());
       $$3.h().forEach($$2x -> $$1.a($$0, $$2x.h(), (T)$$2x.a()));
    }
@@ -95,8 +95,8 @@ public class alp {
          return this.a.c($$0).stream().flatMap($$0x -> $$0x.h().map($$0xx -> $$0xx.h().a())).toList();
       }
 
-      public eqn b(ale<eqn> $$0) {
-         return this.a.a(lq.aU).flatMap($$1 -> $$1.a($$0)).map(ji::a).orElse(eqn.a);
+      public eqo b(ale<eqo> $$0) {
+         return this.a.a(lq.aU).flatMap($$1 -> $$1.a($$0)).map(ji::a).orElse(eqo.a);
       }
    }
 }

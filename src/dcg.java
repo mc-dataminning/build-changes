@@ -1,25 +1,15 @@
-import javax.annotation.Nullable;
+public interface dcg extends dcc {
+   long ak();
 
-public interface dcg {
-   boolean a(iz var1, dsc var2, int var3, int var4);
-
-   default boolean a(iz $$0, dsc $$1, int $$2) {
-      return this.a($$0, $$1, $$2, 512);
+   default float aq() {
+      return dvv.i[this.D_().b(this.ak())];
    }
 
-   boolean a(iz var1, boolean var2);
-
-   default boolean b(iz $$0, boolean $$1) {
-      return this.a($$0, $$1, null);
+   default float f(float $$0) {
+      return this.D_().a(this.ak());
    }
 
-   default boolean a(iz $$0, boolean $$1, @Nullable bsu $$2) {
-      return this.a($$0, $$1, $$2, 512);
-   }
-
-   boolean a(iz var1, boolean var2, @Nullable bsu var3, int var4);
-
-   default boolean b(bsu $$0) {
-      return false;
+   default int ar() {
+      return this.D_().b(this.ak());
    }
 }

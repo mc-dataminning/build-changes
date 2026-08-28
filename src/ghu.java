@@ -1,11 +1,16 @@
-public class ghu extends gkd<cgo, fsy> {
-   private static final alf a = new alf("textures/entity/armadillo.png");
+public class ghu extends gke<cgm, fsx> {
+   private static final alf a = new alf("textures/entity/allay/allay.png");
 
-   public ghu(gix.a $$0) {
-      super($$0, new fsy($$0.a(fwz.b)), 0.4F);
+   public ghu(giy.a $$0) {
+      super($$0, new fsx($$0.a(fxa.a)), 0.4F);
+      this.a(new gnd<>(this, $$0.d()));
    }
 
-   public alf a(cgo $$0) {
+   public alf a(cgm $$0) {
       return a;
+   }
+
+   protected int a(cgm $$0, iz $$1) {
+      return 15;
    }
 }

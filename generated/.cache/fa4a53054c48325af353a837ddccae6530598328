@@ -1,4 +1,4 @@
-// 1.20.5 Pre-Release 4	2026-08-28T02:08:12.6848817	vanilla/Tags for minecraft:item
+// 1.20.5 Release Candidate 1	2026-08-28T02:10:24.7340118	vanilla/Tags for minecraft:item
 71180030d3ebe73ed7aa07473fb200e0aa359909 data\minecraft\tags\items\candles.json
 a91a14b0d844c2e8beb882a51072178e0667620c data\minecraft\tags\items\jungle_logs.json
 3e070569b31d1100ac334efd44a58e52df25df1a data\minecraft\tags\items\flowers.json
@@ -104,8 +104,8 @@ ec2899376b25012fc2e4564e53e9079392925e8f data\minecraft\tags\items\enchantable\e
 4d7b608c91d55324829c11f1861e797a47f33cb1 data\minecraft\tags\items\doors.json
 1414de47b2bc0b959544ff1a82317739d339fe79 data\minecraft\tags\items\slabs.json
 f8fefc25b1df4fbf75b2f1db5237ce04d2d50cc1 data\minecraft\tags\items\chicken_food.json
-91c876271eaad016f609198a3c95f649ddc3344a data\minecraft\tags\items\hoes.json
 8a43b6a8e479edbb422584cf21be637710ab1e49 data\minecraft\tags\items\swords.json
+91c876271eaad016f609198a3c95f649ddc3344a data\minecraft\tags\items\hoes.json
 1c87ccc74dfac728b91e56665ae8157fe7811dd1 data\minecraft\tags\items\trim_templates.json
 4161727d1e5d26faf957fabebe6b6c8cc6e884f2 data\minecraft\tags\items\leaves.json
 6f62a3e03de3843da6fc2f7b46bfdd5d1f4fd02d data\minecraft\tags\items\compasses.json

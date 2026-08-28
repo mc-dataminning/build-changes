@@ -1,19 +1,46 @@
-public class ggi implements gfo<drb> {
-   private final giv a;
+import org.joml.Matrix4f;
 
-   public ggi(gfp.a $$0) {
-      this.a = $$0.c();
+public class ggi<T extends dqz> implements gfp<T> {
+   public static final alf a = new alf("textures/environment/end_sky.png");
+   public static final alf b = new alf("textures/entity/end_portal.png");
+
+   public ggi(gfq.a $$0) {
    }
 
-   public void a(drb $$0, float $$1, ezy $$2, gdo $$3, int $$4, int $$5) {
-      dby $$6 = $$0.i();
-      if ($$6 != null) {
-         drf $$7 = $$0.c();
-         drh $$8 = $$7.f();
-         bsu $$9 = $$8.a($$7, $$6, $$7.i());
-         if ($$9 != null) {
-            gge.a($$1, $$2, $$3, $$4, $$9, this.a, $$8.d(), $$8.c());
-         }
+   public void a(T $$0, float $$1, ezz $$2, gdp $$3, int $$4, int $$5) {
+      Matrix4f $$6 = $$2.c().a();
+      this.a($$0, $$6, $$3.getBuffer(this.d()));
+   }
+
+   private void a(T $$0, Matrix4f $$1, fad $$2) {
+      float $$3 = this.c();
+      float $$4 = this.b();
+      this.a($$0, $$1, $$2, 0.0F, 1.0F, 0.0F, 1.0F, 1.0F, 1.0F, 1.0F, 1.0F, je.d);
+      this.a($$0, $$1, $$2, 0.0F, 1.0F, 1.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, je.c);
+      this.a($$0, $$1, $$2, 1.0F, 1.0F, 1.0F, 0.0F, 0.0F, 1.0F, 1.0F, 0.0F, je.f);
+      this.a($$0, $$1, $$2, 0.0F, 0.0F, 0.0F, 1.0F, 0.0F, 1.0F, 1.0F, 0.0F, je.e);
+      this.a($$0, $$1, $$2, 0.0F, 1.0F, $$3, $$3, 0.0F, 0.0F, 1.0F, 1.0F, je.a);
+      this.a($$0, $$1, $$2, 0.0F, 1.0F, $$4, $$4, 1.0F, 1.0F, 0.0F, 0.0F, je.b);
+   }
+
+   private void a(T $$0, Matrix4f $$1, fad $$2, float $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9, float $$10, je $$11) {
+      if ($$0.a($$11)) {
+         $$2.a($$1, $$3, $$5, $$7).e();
+         $$2.a($$1, $$4, $$5, $$8).e();
+         $$2.a($$1, $$4, $$6, $$9).e();
+         $$2.a($$1, $$3, $$6, $$10).e();
       }
+   }
+
+   protected float b() {
+      return 0.75F;
+   }
+
+   protected float c() {
+      return 0.375F;
+   }
+
+   protected gdx d() {
+      return gdx.u();
    }
 }

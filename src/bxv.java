@@ -1,29 +1,34 @@
 import com.mojang.datafixers.kinds.App;
-import java.util.function.BiPredicate;
+import java.util.Optional;
 import java.util.function.Function;
+import java.util.function.Predicate;
 
 public class bxv {
-   public static bvj<btp> a(int $$0, BiPredicate<btp, btp> $$1) {
-      return byv.a(
-         (Function<byv.b<btp>, ? extends App<byv.c<btp>, byy<btp>>>)($$2 -> $$2.group($$2.b(cct.o), $$2.a(cct.ab), $$2.c(cct.ai), $$2.a(cct.aj))
-               .apply($$2, ($$3, $$4, $$5, $$6) -> ($$7, $$8, $$9) -> {
-                     btp $$10 = $$2.b($$3);
-                     if (!$$10.eB()) {
+   public static <E extends bts> bvk<E> a(Function<E, Optional<? extends btq>> $$0) {
+      return a($$0x -> true, $$0);
+   }
+
+   public static <E extends bts> bvk<E> a(Predicate<E> $$0, Function<E, Optional<? extends btq>> $$1) {
+      return byw.a(
+         (Function<byw.b<E>, ? extends App<byw.c<E>, byz<E>>>)($$2 -> $$2.group($$2.c(ccu.o), $$2.a(ccu.E)).apply($$2, ($$2x, $$3) -> ($$4, $$5, $$6) -> {
+                  if (!$$0.test((E)$$5)) {
+                     return false;
+                  } else {
+                     Optional<? extends btq> $$7 = $$1.apply((E)$$5);
+                     if ($$7.isEmpty()) {
                         return false;
                      } else {
-                        if ($$1.test($$8, $$10)) {
-                           $$6.a(true, (long)$$0);
-                        }
-
-                        $$5.a($$10.dp(), (long)$$0);
-                        if ($$10.ak() != bta.by || $$7.ab().b(dbu.N)) {
+                        btq $$8 = $$7.get();
+                        if (!$$5.c($$8)) {
+                           return false;
+                        } else {
+                           $$2x.a($$8);
                            $$3.b();
-                           $$4.b();
+                           return true;
                         }
-
-                        return true;
                      }
-                  }))
+                  }
+               }))
       );
    }
 }

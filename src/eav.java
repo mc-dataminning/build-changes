@@ -1,42 +1,111 @@
-import com.mojang.serialization.Codec;
+import java.util.function.Consumer;
 
-public class eav extends eay<edb> {
-   public eav(Codec<edb> $$0) {
-      super($$0);
+public class eav {
+   protected static double a(double $$0, double $$1, double $$2, double $$3) {
+      if ($$0 < $$3) {
+         $$0 = $$3;
+      }
+
+      double $$4 = 0.384;
+      double $$5 = $$0 / $$1 * 0.384;
+      double $$6 = 0.75 * Math.pow($$5, 1.3333333333333333);
+      double $$7 = Math.pow($$5, 0.6666666666666666);
+      double $$8 = 0.3333333333333333 * Math.log($$5);
+      double $$9 = $$2 * ($$6 - $$7 - $$8);
+      $$9 = Math.max($$9, 0.0);
+      return $$9 / 0.384 * $$1;
    }
 
-   @Override
-   public boolean a(eba<edb> $$0) {
-      iz $$1 = $$0.e();
-      dct $$2 = $$0.b();
-      edb $$3 = $$0.f();
+   protected static boolean a(dcu $$0, iz $$1, int $$2) {
+      if (b($$0, $$1)) {
+         return false;
+      } else {
+         float $$3 = 6.0F;
+         float $$4 = 6.0F / (float)$$2;
 
-      for (iz $$4 : iz.c($$1.b(-1, -2, -1), $$1.b(1, 2, 1))) {
-         boolean $$5 = $$4.u() == $$1.u();
-         boolean $$6 = $$4.v() == $$1.v();
-         boolean $$7 = $$4.w() == $$1.w();
-         boolean $$8 = Math.abs($$4.v() - $$1.v()) == 2;
-         if ($$5 && $$6 && $$7) {
-            iz $$9 = $$4.i();
-            this.a($$2, $$9, dfb.kF.o());
-            $$3.b().ifPresent($$3x -> {
-               dph $$4x = $$2.c_($$9);
-               if ($$4x instanceof dqx $$5x) {
-                  $$5x.a($$3x, $$3.c());
-                  $$4x.e();
-               }
-            });
-         } else if ($$6) {
-            this.a($$2, $$4, dfb.a.o());
-         } else if ($$8 && $$5 && $$7) {
-            this.a($$2, $$4, dfb.F.o());
-         } else if (($$5 || $$7) && !$$8) {
-            this.a($$2, $$4, dfb.F.o());
-         } else {
-            this.a($$2, $$4, dfb.a.o());
+         for (float $$5 = 0.0F; $$5 < (float) (Math.PI * 2); $$5 += $$4) {
+            int $$6 = (int)(ayz.b($$5) * (float)$$2);
+            int $$7 = (int)(ayz.a($$5) * (float)$$2);
+            if (b($$0, $$1.b($$6, 0, $$7))) {
+               return false;
+            }
+         }
+
+         return true;
+      }
+   }
+
+   protected static boolean a(dca $$0, iz $$1) {
+      return $$0.a($$1, eav::c);
+   }
+
+   protected static boolean b(dca $$0, iz $$1) {
+      return $$0.a($$1, eav::e);
+   }
+
+   protected static void a(je $$0, int $$1, boolean $$2, Consumer<dsd> $$3) {
+      if ($$1 >= 3) {
+         $$3.accept(a($$0, dta.e));
+
+         for (int $$4 = 0; $$4 < $$1 - 3; $$4++) {
+            $$3.accept(a($$0, dta.d));
          }
       }
 
-      return true;
+      if ($$1 >= 2) {
+         $$3.accept(a($$0, dta.c));
+      }
+
+      if ($$1 >= 1) {
+         $$3.accept(a($$0, $$2 ? dta.a : dta.b));
+      }
+   }
+
+   protected static void a(dca $$0, iz $$1, je $$2, int $$3, boolean $$4) {
+      if (b($$0.a_($$1.a($$2.g())))) {
+         iz.a $$5 = $$1.j();
+         a($$2, $$3, $$4, $$3x -> {
+            if ($$3x.a(dfc.st)) {
+               $$3x = $$3x.a(dks.d, Boolean.valueOf($$0.z($$5)));
+            }
+
+            $$0.a($$5, $$3x, 2);
+            $$5.c($$2);
+         });
+      }
+   }
+
+   protected static boolean c(dca $$0, iz $$1) {
+      dsd $$2 = $$0.a_($$1);
+      if ($$2.a(awp.bs)) {
+         $$0.a($$1, dfc.su.o(), 2);
+         return true;
+      } else {
+         return false;
+      }
+   }
+
+   private static dsd a(je $$0, dta $$1) {
+      return dfc.st.o().a(dks.b, $$0).a(dks.c, $$1);
+   }
+
+   public static boolean a(dsd $$0) {
+      return b($$0) || $$0.a(dfc.H);
+   }
+
+   public static boolean b(dsd $$0) {
+      return $$0.a(dfc.su) || $$0.a(awp.bs);
+   }
+
+   public static boolean c(dsd $$0) {
+      return $$0.i() || $$0.a(dfc.G);
+   }
+
+   public static boolean d(dsd $$0) {
+      return !$$0.i() && !$$0.a(dfc.G);
+   }
+
+   public static boolean e(dsd $$0) {
+      return $$0.i() || $$0.a(dfc.G) || $$0.a(dfc.H);
    }
 }

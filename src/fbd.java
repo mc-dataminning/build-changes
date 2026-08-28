@@ -1,23 +1,13 @@
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
-import com.mojang.logging.LogUtils;
-import org.slf4j.Logger;
+import com.google.gson.annotations.SerializedName;
 
-public class fbd extends fbu {
-   private static final Logger b = LogUtils.getLogger();
+public class fbd extends fbv implements fbp {
+   @SerializedName("name")
    public String a;
+   @SerializedName("description")
+   public String b;
 
-   public static fbd a(String $$0) {
-      fbd $$1 = new fbd();
-
-      try {
-         JsonParser $$2 = new JsonParser();
-         JsonObject $$3 = $$2.parse($$0).getAsJsonObject();
-         $$1.a = fdr.b("newsLink", $$3, null);
-      } catch (Exception var4) {
-         b.error("Could not parse RealmsNews: {}", var4.getMessage());
-      }
-
-      return $$1;
+   public fbd(String $$0, String $$1) {
+      this.a = $$0;
+      this.b = $$1;
    }
 }

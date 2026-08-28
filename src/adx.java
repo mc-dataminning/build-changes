@@ -7,7 +7,7 @@ public class adx implements zw<aci> {
    private final int c;
    private final ady d;
 
-   public adx(dbf $$0, enk $$1, @Nullable BitSet $$2, @Nullable BitSet $$3) {
+   public adx(dbg $$0, enl $$1, @Nullable BitSet $$2, @Nullable BitSet $$3) {
       this.b = $$0.e;
       this.c = $$0.f;
       this.d = new ady($$0, $$1, $$2, $$3);

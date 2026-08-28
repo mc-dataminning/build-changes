@@ -1,17 +1,20 @@
 public interface evw {
-   static evw a() {
-      return ewb.a;
-   }
+   evw a = ($$0, $$1) -> false;
+   evw b = ($$0, $$1) -> !$$0 && !$$1;
+   evw c = ($$0, $$1) -> $$1 && !$$0;
+   evw d = ($$0, $$1) -> !$$0;
+   evw e = ($$0, $$1) -> $$0 && !$$1;
+   evw f = ($$0, $$1) -> !$$1;
+   evw g = ($$0, $$1) -> $$0 != $$1;
+   evw h = ($$0, $$1) -> !$$0 || !$$1;
+   evw i = ($$0, $$1) -> $$0 && $$1;
+   evw j = ($$0, $$1) -> $$0 == $$1;
+   evw k = ($$0, $$1) -> $$1;
+   evw l = ($$0, $$1) -> !$$0 || $$1;
+   evw m = ($$0, $$1) -> $$0;
+   evw n = ($$0, $$1) -> $$0 || !$$1;
+   evw o = ($$0, $$1) -> $$0 || $$1;
+   evw p = ($$0, $$1) -> true;
 
-   static evw a(bsu $$0) {
-      return new ewb($$0);
-   }
-
-   boolean b();
-
-   boolean a(ewk var1, iz var2, boolean var3);
-
-   boolean a(cuk var1);
-
-   boolean a(env var1, env var2);
+   boolean apply(boolean var1, boolean var2);
 }

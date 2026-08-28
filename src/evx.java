@@ -1,21 +1,17 @@
-import it.unimi.dsi.fastutil.doubles.AbstractDoubleList;
-
-public class evx extends AbstractDoubleList {
-   private final int a;
-
-   evx(int $$0) {
-      if ($$0 <= 0) {
-         throw new IllegalArgumentException("Need at least 1 part");
-      } else {
-         this.a = $$0;
-      }
+public interface evx {
+   static evx a() {
+      return ewc.a;
    }
 
-   public double getDouble(int $$0) {
-      return (double)$$0 / (double)this.a;
+   static evx a(bsv $$0) {
+      return new ewc($$0);
    }
 
-   public int size() {
-      return this.a + 1;
-   }
+   boolean b();
+
+   boolean a(ewl var1, iz var2, boolean var3);
+
+   boolean a(cul var1);
+
+   boolean a(enw var1, enw var2);
 }

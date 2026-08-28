@@ -1,17 +1,8 @@
-public interface fky extends fio, flb {
-   fky.a t();
+import javax.annotation.ParametersAreNonnullByDefault;
 
-   default boolean B() {
-      return true;
-   }
-
-   public static enum a {
-      a,
-      b,
-      c;
-
-      public boolean a() {
-         return this == c;
-      }
-   }
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface fky {
 }

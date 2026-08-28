@@ -1,22 +1,19 @@
-public class cwf extends cuk {
-   private final cwe a;
+import java.util.List;
 
-   public cwf(cwe $$0, cuk.a $$1) {
-      super($$1.b($$0.a()));
-      this.a = $$0;
-   }
+public interface cwf {
+   int a();
 
-   public cwe h() {
-      return this.a;
-   }
+   float b();
 
-   @Override
-   public int g() {
-      return this.a.e();
-   }
+   float c();
 
-   @Override
-   public boolean a(cup $$0, cup $$1) {
-      return this.a.f().a($$1) || super.a($$0, $$1);
+   axf<dfa> d();
+
+   int e();
+
+   cyt f();
+
+   default cxv a(axf<dfa> $$0) {
+      return new cxv(List.of(cxv.a.a(this.d()), cxv.a.a($$0, this.b())), 1.0F, 1);
    }
 }

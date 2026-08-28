@@ -1,15 +1,10 @@
-public class dap extends daa {
-   public dap(daa.b $$0) {
+public class dap extends dab {
+   protected dap(dab.b $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a() {
-      return true;
-   }
-
-   @Override
-   public boolean b() {
-      return true;
+   public boolean a(dab $$0) {
+      return super.a($$0) && $$0 != dae.x;
    }
 }

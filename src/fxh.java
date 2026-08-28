@@ -1,9 +1,17 @@
 public class fxh {
-   final int a;
-   final int b;
+   private final fxj a;
+   private final fxi b;
 
-   public fxh(int $$0, int $$1) {
+   private fxh(fxj $$0, fxi $$1) {
       this.a = $$0;
       this.b = $$1;
+   }
+
+   public fxb a() {
+      return this.a.a().a(this.b.a, this.b.b);
+   }
+
+   public static fxh a(fxj $$0, int $$1, int $$2) {
+      return new fxh($$0, new fxi($$1, $$2));
    }
 }

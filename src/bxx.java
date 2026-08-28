@@ -1,42 +1,28 @@
 import com.mojang.datafixers.kinds.App;
 import java.util.Optional;
-import java.util.function.BiConsumer;
 import java.util.function.Function;
 import java.util.function.Predicate;
 
 public class bxx {
-   private static final int a = 200;
-
-   public static <E extends btr> bvj<E> a(BiConsumer<E, btp> $$0) {
-      return a($$0x -> false, $$0, true);
-   }
-
-   public static <E extends btr> bvj<E> a(Predicate<btp> $$0) {
-      return a($$0, ($$0x, $$1) -> {
-      }, true);
-   }
-
-   public static <E extends btr> bvj<E> a() {
-      return a($$0 -> false, ($$0, $$1) -> {
-      }, true);
-   }
-
-   public static <E extends btr> bvj<E> a(Predicate<btp> $$0, BiConsumer<E, btp> $$1, boolean $$2) {
-      return byv.a(
-         (Function<byv.b<E>, ? extends App<byv.c<E>, byy<E>>>)($$3 -> $$3.group($$3.b(cct.o), $$3.a(cct.E)).apply($$3, ($$4, $$5) -> ($$6, $$7, $$8) -> {
-                  btp $$9 = $$3.b($$4);
-                  if ($$7.c($$9) && (!$$2 || !a($$7, $$3.a($$5))) && $$9.bD() && $$9.dP() == $$7.dP() && !$$0.test($$9)) {
-                     return true;
-                  } else {
-                     $$1.accept((E)$$7, $$9);
-                     $$4.b();
-                     return true;
-                  }
-               }))
+   public static bvk<btq> a(Function<btq, Optional<bwx>> $$0, Predicate<btq> $$1, int $$2, int $$3, float $$4) {
+      return byw.a(
+         (Function<byw.b<btq>, ? extends App<byw.c<btq>, byz<btq>>>)($$5 -> $$5.group($$5.a(ccu.n), $$5.a(ccu.m))
+               .apply($$5, ($$5x, $$6) -> ($$7, $$8, $$9) -> {
+                     Optional<bwx> $$10 = $$0.apply($$8);
+                     if (!$$10.isEmpty() && $$1.test($$8)) {
+                        bwx $$11 = $$10.get();
+                        if ($$8.dn().a((js)$$11.a(), (double)$$3)) {
+                           return false;
+                        } else {
+                           bwx $$12 = $$10.get();
+                           $$5x.a($$12);
+                           $$6.a(new ccx($$12, $$4, $$2));
+                           return true;
+                        }
+                     } else {
+                        return false;
+                     }
+                  }))
       );
-   }
-
-   private static boolean a(btp $$0, Optional<Long> $$1) {
-      return $$1.isPresent() && $$0.dP().Z() - $$1.get() > 200L;
    }
 }

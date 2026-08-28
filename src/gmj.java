@@ -1,46 +1,19 @@
-public class gmj extends gnj<gcn, fvf<gcn>> {
-   public gmj(gkt<gcn, fvf<gcn>> $$0) {
+public class gmj extends gnk<cla, ftk<cla>> {
+   private static final alf a = new alf("textures/entity/breeze/breeze_wind.png");
+   private static final ftk<cla> b = new ftk<>(ftk.a(128, 128).a());
+
+   public gmj(gku<cla, ftk<cla>> $$0) {
       super($$0);
    }
 
-   public void a(ezy $$0, gdo $$1, int $$2, gcn $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-      if (!$$3.ch() && $$3.a(cmy.a)) {
-         gpz $$10 = $$3.b();
-         if ($$10.c() != null) {
-            cup $$11 = $$3.a(btb.e);
-            if (!$$11.a(cus.nT)) {
-               $$0.a();
-               $$0.a(0.0F, 0.0F, 0.125F);
-               double $$12 = ayz.d((double)$$6, $$3.ch, $$3.ck) - ayz.d((double)$$6, $$3.L, $$3.du());
-               double $$13 = ayz.d((double)$$6, $$3.ci, $$3.cl) - ayz.d((double)$$6, $$3.M, $$3.dw());
-               double $$14 = ayz.d((double)$$6, $$3.cj, $$3.cm) - ayz.d((double)$$6, $$3.N, $$3.dA());
-               float $$15 = ayz.j($$6, $$3.aZ, $$3.aY);
-               double $$16 = (double)ayz.a($$15 * (float) (Math.PI / 180.0));
-               double $$17 = (double)(-ayz.b($$15 * (float) (Math.PI / 180.0)));
-               float $$18 = (float)$$13 * 10.0F;
-               $$18 = ayz.a($$18, -6.0F, 32.0F);
-               float $$19 = (float)($$12 * $$16 + $$14 * $$17) * 100.0F;
-               $$19 = ayz.a($$19, 0.0F, 150.0F);
-               float $$20 = (float)($$12 * $$17 - $$14 * $$16) * 100.0F;
-               $$20 = ayz.a($$20, -20.0F, 20.0F);
-               if ($$19 < 0.0F) {
-                  $$19 = 0.0F;
-               }
+   public void a(ezz $$0, gdp $$1, int $$2, cla $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
+      float $$10 = (float)$$3.ai + $$6;
+      fad $$11 = $$1.getBuffer(gdx.a(a, this.a($$10) % 1.0F, 0.0F));
+      b.a($$3, $$4, $$5, $$7, $$8, $$9);
+      gie.a(b, b.e()).a($$0, $$11, $$2, gor.d, 1.0F, 1.0F, 1.0F, 1.0F);
+   }
 
-               float $$21 = ayz.i($$6, $$3.ce, $$3.cf);
-               $$18 += ayz.a(ayz.i($$6, $$3.Y, $$3.Z) * 6.0F) * 32.0F * $$21;
-               if ($$3.ca()) {
-                  $$18 += 25.0F;
-               }
-
-               $$0.a(a.b.rotationDegrees(6.0F + $$19 / 2.0F + $$18));
-               $$0.a(a.f.rotationDegrees($$20 / 2.0F));
-               $$0.a(a.d.rotationDegrees(180.0F - $$20 / 2.0F));
-               fac $$22 = $$1.getBuffer(gdw.c($$10.c()));
-               this.c().b($$0, $$22, $$2, goq.d);
-               $$0.b();
-            }
-         }
-      }
+   private float a(float $$0) {
+      return $$0 * 0.02F;
    }
 }

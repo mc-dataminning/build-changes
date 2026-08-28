@@ -1,59 +1,13 @@
-import com.mojang.logging.LogUtils;
-import org.slf4j.Logger;
+public class fek extends fel {
+   private final fbx b;
 
-public abstract class fek extends fef {
-   private static final Logger b = LogUtils.getLogger();
-   private final long c;
-   private final xp d;
-   private final Runnable e;
-
-   public fek(long $$0, xp $$1, Runnable $$2) {
-      this.c = $$0;
-      this.d = $$1;
-      this.e = $$2;
-   }
-
-   protected abstract void a(fao var1, long var2) throws fcb;
-
-   @Override
-   public void run() {
-      fao $$0 = fao.a();
-      int $$1 = 0;
-
-      while ($$1 < 25) {
-         try {
-            if (this.d()) {
-               return;
-            }
-
-            this.a($$0, this.c);
-            if (this.d()) {
-               return;
-            }
-
-            this.e.run();
-            return;
-         } catch (fcc var4) {
-            if (this.d()) {
-               return;
-            }
-
-            a((long)var4.c);
-            $$1++;
-         } catch (Exception var5) {
-            if (this.d()) {
-               return;
-            }
-
-            b.error("Couldn't reset world");
-            this.a(var5);
-            return;
-         }
-      }
+   public fek(fbx $$0, long $$1, xp $$2, Runnable $$3) {
+      super($$1, $$2, $$3);
+      this.b = $$0;
    }
 
    @Override
-   public xp a() {
-      return this.d;
+   protected void a(fap $$0, long $$1) throws fcc {
+      $$0.d($$1, this.b.a);
    }
 }

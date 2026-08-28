@@ -1,22 +1,10 @@
-public class cro implements cqe {
-   private final int[] a;
-
-   public cro(int $$0) {
-      this.a = new int[$$0];
+public class cro extends crq {
+   public cro(bqo $$0, int $$1, int $$2, int $$3) {
+      super($$0, $$1, $$2, $$3);
    }
 
    @Override
-   public int a(int $$0) {
-      return this.a[$$0];
-   }
-
-   @Override
-   public void a(int $$0, int $$1) {
-      this.a[$$0] = $$1;
-   }
-
-   @Override
-   public int a() {
-      return this.a.length;
+   public boolean a(cuq $$0) {
+      return $$0.g().am_();
    }
 }

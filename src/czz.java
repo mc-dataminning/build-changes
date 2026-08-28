@@ -1,9 +1,9 @@
-public class czz extends daa {
-   protected czz(daa.b $$0) {
-      super($$0);
+public class czz extends dab {
+   public czz() {
+      super(dab.a(awy.bR, 10, 5, dab.a(1, 11), dab.a(21, 11), 1, cpm.a(cpo.c), btc.a));
    }
 
-   public static boolean a(cup $$0, int $$1, azh $$2) {
-      return $$0.g() instanceof cse && $$2.i() < 0.6F ? false : $$2.a($$1 + 1) > 0;
+   public static float a(int $$0, float $$1) {
+      return $$1 * (float)$$0;
    }
 }

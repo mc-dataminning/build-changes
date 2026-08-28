@@ -1,68 +1,30 @@
+import java.util.Collections;
+import java.util.List;
 import javax.annotation.Nullable;
 
-public class crk implements bqn, crj {
-   private final jr<cup> b = jr.a(1, cup.l);
+public interface crk {
+   void a(@Nullable cyy<?> var1);
+
    @Nullable
-   private cyx<?> c;
+   cyy<?> d();
 
-   @Override
-   public int b() {
-      return 1;
-   }
-
-   @Override
-   public boolean c() {
-      for (cup $$0 : this.b) {
-         if (!$$0.e()) {
-            return false;
+   default void a(cmy $$0, List<cuq> $$1) {
+      cyy<?> $$2 = this.d();
+      if ($$2 != null) {
+         $$0.a($$2, $$1);
+         if (!$$2.b().an_()) {
+            $$0.a(Collections.singleton($$2));
+            this.a(null);
          }
       }
-
-      return true;
    }
 
-   @Override
-   public cup a(int $$0) {
-      return this.b.get(0);
-   }
-
-   @Override
-   public cup a(int $$0, int $$1) {
-      return bqo.a(this.b, 0);
-   }
-
-   @Override
-   public cup b(int $$0) {
-      return bqo.a(this.b, 0);
-   }
-
-   @Override
-   public void a(int $$0, cup $$1) {
-      this.b.set(0, $$1);
-   }
-
-   @Override
-   public void e() {
-   }
-
-   @Override
-   public boolean a(cmx $$0) {
-      return true;
-   }
-
-   @Override
-   public void a() {
-      this.b.clear();
-   }
-
-   @Override
-   public void a(@Nullable cyx<?> $$0) {
-      this.c = $$0;
-   }
-
-   @Nullable
-   @Override
-   public cyx<?> d() {
-      return this.c;
+   default boolean a(dbz $$0, arg $$1, cyy<?> $$2) {
+      if (!$$2.b().an_() && $$0.ab().b(dbv.w) && !$$1.I().b($$2)) {
+         return false;
+      } else {
+         this.a($$2);
+         return true;
+      }
    }
 }

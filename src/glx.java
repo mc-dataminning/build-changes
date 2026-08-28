@@ -1,22 +1,25 @@
-public class glx extends gkd<ckt, fwp<ckt>> {
-   private static final alf a = new alf("textures/entity/witch.png");
+public class glx extends gix<cog> {
+   private static final alf a = new alf("textures/entity/projectiles/wind_charge.png");
+   private final fwp f;
 
-   public glx(gix.a $$0) {
-      super($$0, new fwp<>($$0.a(fwz.bU)), 0.5F);
-      this.a(new gnw<>(this, $$0.d()));
+   public glx(giy.a $$0) {
+      super($$0);
+      this.f = new fwp($$0.a(fxa.bT));
    }
 
-   public void a(ckt $$0, float $$1, float $$2, ezy $$3, gdo $$4, int $$5) {
-      this.f.b(!$$0.eX().e());
+   public void a(cog $$0, float $$1, float $$2, ezz $$3, gdp $$4, int $$5) {
+      float $$6 = (float)$$0.ai + $$2;
+      fad $$7 = $$4.getBuffer(gdx.a(a, this.a($$6) % 1.0F, 0.0F));
+      this.f.a($$0, 0.0F, 0.0F, $$6, 0.0F, 0.0F);
+      this.f.a($$3, $$7, $$5, gor.d, 1.0F, 1.0F, 1.0F, 1.0F);
       super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
-   public alf a(ckt $$0) {
-      return a;
+   protected float a(float $$0) {
+      return $$0 * 0.03F;
    }
 
-   protected void a(ckt $$0, ezy $$1, float $$2) {
-      float $$3 = 0.9375F;
-      $$1.b(0.9375F, 0.9375F, 0.9375F);
+   public alf a(cog $$0) {
+      return a;
    }
 }

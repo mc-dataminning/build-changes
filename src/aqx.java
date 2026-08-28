@@ -40,15 +40,15 @@ public abstract class aqx {
    private final aqx.c i = new aqx.c(32);
    final Set<aqm> j = Sets.newHashSet();
    final aqr k;
-   final bpm<aqr.a<Runnable>> l;
-   final bpm<aqr.b> m;
+   final bpn<aqr.a<Runnable>> l;
+   final bpn<aqr.b> m;
    final LongSet n = new LongOpenHashSet();
    final Executor o;
    private long p;
    private int q = 10;
 
    protected aqx(Executor $$0, Executor $$1) {
-      bpm<Runnable> $$2 = bpm.a("player ticket throttler", $$1::execute);
+      bpn<Runnable> $$2 = bpn.a("player ticket throttler", $$1::execute);
       aqr $$3 = new aqr(ImmutableList.of($$2), $$0, 4);
       this.k = $$3;
       this.l = $$3.a($$2, true);
@@ -121,7 +121,7 @@ public abstract class aqx {
                      throw new IllegalStateException();
                   }
 
-                  CompletableFuture<aqp<dui>> $$6 = $$5.b();
+                  CompletableFuture<aqp<duj>> $$6 = $$5.b();
                   $$6.thenAccept($$1x -> this.o.execute(() -> this.m.a(aqr.a(() -> {
                         }, $$4, false))));
                }
@@ -156,23 +156,23 @@ public abstract class aqx {
       this.f.b($$0, a($$2), false);
    }
 
-   public <T> void a(ark<T> $$0, dbf $$1, int $$2, T $$3) {
+   public <T> void a(ark<T> $$0, dbg $$1, int $$2, T $$3) {
       this.a($$1.a(), new arj<>($$0, $$2, $$3));
    }
 
-   public <T> void b(ark<T> $$0, dbf $$1, int $$2, T $$3) {
+   public <T> void b(ark<T> $$0, dbg $$1, int $$2, T $$3) {
       arj<T> $$4 = new arj<>($$0, $$2, $$3);
       this.b($$1.a(), $$4);
    }
 
-   public <T> void c(ark<T> $$0, dbf $$1, int $$2, T $$3) {
+   public <T> void c(ark<T> $$0, dbg $$1, int $$2, T $$3) {
       arj<T> $$4 = new arj<>($$0, aqn.a(aqy.b) - $$2, $$3);
       long $$5 = $$1.a();
       this.a($$5, $$4);
       this.h.a($$5, $$4);
    }
 
-   public <T> void d(ark<T> $$0, dbf $$1, int $$2, T $$3) {
+   public <T> void d(ark<T> $$0, dbg $$1, int $$2, T $$3) {
       arj<T> $$4 = new arj<>($$0, aqn.a(aqy.b) - $$2, $$3);
       long $$5 = $$1.a();
       this.b($$5, $$4);
@@ -183,8 +183,8 @@ public abstract class aqx {
       return (azr<arj<?>>)this.e.computeIfAbsent($$0, $$0x -> azr.a(4));
    }
 
-   protected void a(dbf $$0, boolean $$1) {
-      arj<dbf> $$2 = new arj<>(ark.d, aqo.c, $$0);
+   protected void a(dbg $$0, boolean $$1) {
+      arj<dbg> $$2 = new arj<>(ark.d, aqo.c, $$0);
       long $$3 = $$0.a();
       if ($$1) {
          this.a($$3, $$2);
@@ -196,7 +196,7 @@ public abstract class aqx {
    }
 
    public void a(kb $$0, arg $$1) {
-      dbf $$2 = $$0.r();
+      dbg $$2 = $$0.r();
       long $$3 = $$2.a();
       ((ObjectSet)this.d.computeIfAbsent($$3, $$0x -> new ObjectOpenHashSet())).add($$1);
       this.g.b($$3, 0, true);
@@ -205,7 +205,7 @@ public abstract class aqx {
    }
 
    public void b(kb $$0, arg $$1) {
-      dbf $$2 = $$0.r();
+      dbg $$2 = $$0.r();
       long $$3 = $$2.a();
       ObjectSet<arg> $$4 = (ObjectSet<arg>)this.d.get($$3);
       $$4.remove($$1);
@@ -265,7 +265,7 @@ public abstract class aqx {
 
          while (var3.hasNext()) {
             Entry<azr<arj<?>>> $$2 = (Entry<azr<arj<?>>>)var3.next();
-            dbf $$3 = new dbf($$2.getLongKey());
+            dbg $$3 = new dbg($$2.getLongKey());
 
             for (arj<?> $$4 : (azr)$$2.getValue()) {
                $$1.write(($$3.e + "\t" + $$3.f + "\t" + $$4.a() + "\t" + $$4.b() + "\t\n").getBytes(StandardCharsets.UTF_8));
@@ -409,7 +409,7 @@ public abstract class aqx {
 
             while (var3.hasNext()) {
                it.unimi.dsi.fastutil.longs.Long2ByteMap.Entry $$2 = (it.unimi.dsi.fastutil.longs.Long2ByteMap.Entry)var3.next();
-               dbf $$3 = new dbf($$2.getLongKey());
+               dbg $$3 = new dbg($$2.getLongKey());
                String $$4 = Byte.toString($$2.getByteValue());
                $$1.write(($$3.e + "\t" + $$3.f + "\t" + $$4 + "\n").getBytes(StandardCharsets.UTF_8));
             }
@@ -450,7 +450,7 @@ public abstract class aqx {
 
       private void a(long $$0, int $$1, boolean $$2, boolean $$3) {
          if ($$2 != $$3) {
-            arj<?> $$4 = new arj<>(ark.c, aqx.b, new dbf($$0));
+            arj<?> $$4 = new arj<>(ark.c, aqx.b, new dbg($$0));
             if ($$3) {
                aqx.this.l.a(aqr.a(() -> aqx.this.o.execute(() -> {
                      if (this.c(this.c($$0))) {
@@ -478,7 +478,7 @@ public abstract class aqx {
                int $$2 = this.h.get($$1);
                int $$3 = this.c($$1);
                if ($$2 != $$3) {
-                  aqx.this.k.onLevelChange(new dbf($$1), () -> this.h.get($$1), $$3, $$1x -> {
+                  aqx.this.k.onLevelChange(new dbg($$1), () -> this.h.get($$1), $$3, $$1x -> {
                      if ($$1x >= this.h.defaultReturnValue()) {
                         this.h.remove($$1);
                      } else {

@@ -26,7 +26,7 @@ public class axh implements auj {
    }
 
    @Override
-   public CompletableFuture<Void> a(auj.a $$0, aup $$1, bni $$2, bni $$3, Executor $$4, Executor $$5) {
+   public CompletableFuture<Void> a(auj.a $$0, aup $$1, bnj $$2, bnj $$3, Executor $$4, Executor $$5) {
       List<? extends CompletableFuture<? extends axh.a<?>>> $$6 = this.b.c().map($$2x -> this.a($$1, $$4, $$2x)).toList();
       return CompletableFuture.allOf($$6.toArray(CompletableFuture[]::new))
          .thenCompose($$0::a)

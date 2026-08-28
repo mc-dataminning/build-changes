@@ -1,39 +1,31 @@
-import javax.annotation.Nullable;
+import java.util.UUID;
 
-public class fht extends fhc {
-   private final fgp a;
+public class fht extends bql {
+   private static final long j = 100L;
+   protected float h;
+   protected long i;
 
-   public fht(fgp $$0, xp $$1) {
-      super(0, 0, $$0.a($$1), 9 * 3, $$1);
-      this.a = $$0;
+   public fht(UUID $$0, xp $$1, float $$2, bql.a $$3, bql.b $$4, boolean $$5, boolean $$6, boolean $$7) {
+      super($$0, $$1, $$3, $$4);
+      this.h = $$2;
+      this.b = $$2;
+      this.i = ac.c();
+      this.a($$5);
+      this.b($$6);
+      this.c($$7);
    }
 
    @Override
-   protected void b(fgr $$0, int $$1, int $$2, float $$3) {
-      int $$4 = this.C() + this.x() / 2;
-      int $$5 = this.D() + this.v() / 2;
-      xp $$6 = this.y();
-      $$0.a(this.a, $$6, $$4 - this.a.a($$6) / 2, $$5 - 9, -1, false);
-      String $$7 = fmo.a(ac.c());
-      $$0.a(this.a, $$7, $$4 - this.a.b($$7) / 2, $$5 + 9, -8355712, false);
+   public void a(float $$0) {
+      this.b = this.j();
+      this.h = $$0;
+      this.i = ac.c();
    }
 
    @Override
-   protected void a(fla $$0) {
-   }
-
-   @Override
-   public void a(gtv $$0) {
-   }
-
-   @Override
-   public boolean B() {
-      return false;
-   }
-
-   @Nullable
-   @Override
-   public fgo a(flg $$0) {
-      return null;
+   public float j() {
+      long $$0 = ac.c() - this.i;
+      float $$1 = ayz.a((float)$$0 / 100.0F, 0.0F, 1.0F);
+      return ayz.i($$1, this.b, this.h);
    }
 }

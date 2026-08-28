@@ -9,29 +9,29 @@ import javax.annotation.Nullable;
 import net.minecraft.server.MinecraftServer;
 import org.slf4j.Logger;
 
-public class arm implements dct {
+public class arm implements dcu {
    private static final Logger a = LogUtils.getLogger();
-   private final List<dty> b;
-   private final dty c;
+   private final List<dtz> b;
+   private final dtz c;
    private final int d;
    private final arf e;
    private final long f;
-   private final eps g;
+   private final ept g;
    private final azh h;
-   private final dvu i;
-   private final exn<dez> j = new exn<>($$0x -> this.y($$0x).o());
-   private final exn<enu> k = new exn<>($$0x -> this.y($$0x).p());
-   private final dcz l;
-   private final dbf m;
-   private final dbf n;
-   private final dux o;
+   private final dvv i;
+   private final exo<dfa> j = new exo<>($$0x -> this.y($$0x).o());
+   private final exo<env> k = new exo<>($$0x -> this.y($$0x).p());
+   private final dda l;
+   private final dbg m;
+   private final dbg n;
+   private final duy o;
    private final int p;
    @Nullable
    private Supplier<String> q;
    private final AtomicLong r = new AtomicLong();
    private static final alf s = new alf("worldgen_region_random");
 
-   public arm(arf $$0, List<dty> $$1, dux $$2, int $$3) {
+   public arm(arf $$0, List<dtz> $$1, duy $$2, int $$3) {
       this.o = $$2;
       this.p = $$3;
       int $$4 = ayz.a(Math.sqrt((double)$$1.size()));
@@ -46,17 +46,17 @@ public class arm implements dct {
          this.g = $$0.A_();
          this.h = $$0.l().i().a(s).a(this.c.f().l());
          this.i = $$0.D_();
-         this.l = new dcz(this, dcz.a(this.f));
+         this.l = new dda(this, dda.a(this.f));
          this.m = $$1.get(0).f();
          this.n = $$1.get($$1.size() - 1).f();
       }
    }
 
-   public boolean a(dbf $$0, int $$1) {
+   public boolean a(dbg $$0, int $$1) {
       return this.e.l().a.b($$0, $$1);
    }
 
-   public dbf a() {
+   public dbg a() {
       return this.c.f();
    }
 
@@ -66,14 +66,14 @@ public class arm implements dct {
    }
 
    @Override
-   public dty a(int $$0, int $$1) {
-      return this.a($$0, $$1, dux.c);
+   public dtz a(int $$0, int $$1) {
+      return this.a($$0, $$1, duy.c);
    }
 
    @Nullable
    @Override
-   public dty a(int $$0, int $$1, dux $$2, boolean $$3) {
-      dty $$6;
+   public dtz a(int $$0, int $$1, duy $$2, boolean $$3) {
+      dtz $$6;
       if (this.b($$0, $$1)) {
          int $$4 = $$0 - this.m.e;
          int $$5 = $$1 - this.m.f;
@@ -103,18 +103,18 @@ public class arm implements dct {
    }
 
    @Override
-   public dsc a_(iz $$0) {
+   public dsd a_(iz $$0) {
       return this.a(kb.a($$0.u()), kb.a($$0.w())).a_($$0);
    }
 
    @Override
-   public env b_(iz $$0) {
+   public enw b_(iz $$0) {
       return this.y($$0).b_($$0);
    }
 
    @Nullable
    @Override
-   public cmx a(double $$0, double $$1, double $$2, double $$3, Predicate<bsu> $$4) {
+   public cmy a(double $$0, double $$1, double $$2, double $$3, Predicate<bsv> $$4) {
       return null;
    }
 
@@ -124,12 +124,12 @@ public class arm implements dct {
    }
 
    @Override
-   public dcz F_() {
+   public dda F_() {
       return this.l;
    }
 
    @Override
-   public ji<dcx> a(int $$0, int $$1, int $$2) {
+   public ji<dcy> a(int $$0, int $$1, int $$2) {
       return this.e.a($$0, $$1, $$2);
    }
 
@@ -139,44 +139,44 @@ public class arm implements dct {
    }
 
    @Override
-   public enk y_() {
+   public enl y_() {
       return this.e.y_();
    }
 
    @Override
-   public boolean a(iz $$0, boolean $$1, @Nullable bsu $$2, int $$3) {
-      dsc $$4 = this.a_($$0);
+   public boolean a(iz $$0, boolean $$1, @Nullable bsv $$2, int $$3) {
+      dsd $$4 = this.a_($$0);
       if ($$4.i()) {
          return false;
       } else {
          if ($$1) {
-            dph $$5 = $$4.t() ? this.c_($$0) : null;
-            dez.a($$4, (dby)this.e, $$0, $$5, $$2, cup.l);
+            dpi $$5 = $$4.t() ? this.c_($$0) : null;
+            dfa.a($$4, (dbz)this.e, $$0, $$5, $$2, cuq.l);
          }
 
-         return this.a($$0, dfb.a.o(), 3, $$3);
+         return this.a($$0, dfc.a.o(), 3, $$3);
       }
    }
 
    @Nullable
    @Override
-   public dph c_(iz $$0) {
-      dty $$1 = this.y($$0);
-      dph $$2 = $$1.c_($$0);
+   public dpi c_(iz $$0) {
+      dtz $$1 = this.y($$0);
+      dpi $$2 = $$1.c_($$0);
       if ($$2 != null) {
          return $$2;
       } else {
          us $$3 = $$1.f($$0);
-         dsc $$4 = $$1.a_($$0);
+         dsd $$4 = $$1.a_($$0);
          if ($$3 != null) {
             if ("DUMMY".equals($$3.l("id"))) {
                if (!$$4.t()) {
                   return null;
                }
 
-               $$2 = ((dhr)$$4.b()).a($$0, $$4);
+               $$2 = ((dhs)$$4.b()).a($$0, $$4);
             } else {
-               $$2 = dph.a($$0, $$4, $$3, this.e.H_());
+               $$2 = dpi.a($$0, $$4, $$3, this.e.H_());
             }
 
             if ($$2 != null) {
@@ -197,12 +197,12 @@ public class arm implements dct {
    public boolean f_(iz $$0) {
       int $$1 = kb.a($$0.u());
       int $$2 = kb.a($$0.w());
-      dbf $$3 = this.a();
+      dbg $$3 = this.a();
       int $$4 = Math.abs($$3.e - $$1);
       int $$5 = Math.abs($$3.f - $$2);
       if ($$4 <= this.p && $$5 <= this.p) {
          if (this.c.y()) {
-            dca $$6 = this.c.z();
+            dcb $$6 = this.c.z();
             if ($$0.v() < $$6.I_() || $$0.v() >= $$6.am()) {
                return false;
             }
@@ -226,19 +226,19 @@ public class arm implements dct {
    }
 
    @Override
-   public boolean a(iz $$0, dsc $$1, int $$2, int $$3) {
+   public boolean a(iz $$0, dsd $$1, int $$2, int $$3) {
       if (!this.f_($$0)) {
          return false;
       } else {
-         dty $$4 = this.y($$0);
-         dsc $$5 = $$4.a($$0, $$1, false);
+         dtz $$4 = this.y($$0);
+         dsd $$5 = $$4.a($$0, $$1, false);
          if ($$5 != null) {
             this.e.a($$0, $$5, $$1);
          }
 
          if ($$1.t()) {
-            if ($$4.j().g() == duz.b) {
-               dph $$6 = ((dhr)$$1.b()).a($$0, $$1);
+            if ($$4.j().g() == dva.b) {
+               dpi $$6 = ((dhs)$$1.b()).a($$0, $$1);
                if ($$6 != null) {
                   $$4.a($$6);
                } else {
@@ -269,7 +269,7 @@ public class arm implements dct {
    }
 
    @Override
-   public boolean b(bsu $$0) {
+   public boolean b(bsv $$0) {
       int $$1 = kb.a($$0.dt());
       int $$2 = kb.a($$0.dz());
       this.a($$1, $$2).a($$0);
@@ -278,11 +278,11 @@ public class arm implements dct {
 
    @Override
    public boolean a(iz $$0, boolean $$1) {
-      return this.a($$0, dfb.a.o(), 3);
+      return this.a($$0, dfc.a.o(), 3);
    }
 
    @Override
-   public dtt C_() {
+   public dtu C_() {
       return this.e.C_();
    }
 
@@ -303,21 +303,21 @@ public class arm implements dct {
    }
 
    @Override
-   public cpl J() {
+   public cpm J() {
       return this.e.J();
    }
 
    @Override
-   public eps A_() {
+   public ept A_() {
       return this.g;
    }
 
    @Override
-   public bqs d_(iz $$0) {
+   public bqt d_(iz $$0) {
       if (!this.b(kb.a($$0.u()), kb.a($$0.w()))) {
          throw new RuntimeException("We are asking a region for a chunk out of bound");
       } else {
-         return new bqs(this.e.al(), this.e.aa(), 0L, this.e.aq());
+         return new bqt(this.e.al(), this.e.aa(), 0L, this.e.aq());
       }
    }
 
@@ -328,7 +328,7 @@ public class arm implements dct {
    }
 
    @Override
-   public duc N() {
+   public dud N() {
       return this.e.l();
    }
 
@@ -338,12 +338,12 @@ public class arm implements dct {
    }
 
    @Override
-   public exe<dez> P() {
+   public exf<dfa> P() {
       return this.j;
    }
 
    @Override
-   public exe<enu> O() {
+   public exf<env> O() {
       return this.k;
    }
 
@@ -358,12 +358,12 @@ public class arm implements dct {
    }
 
    @Override
-   public int a(dxu.a $$0, int $$1, int $$2) {
+   public int a(dxv.a $$0, int $$1, int $$2) {
       return this.a(kb.a($$1), kb.a($$2)).a($$0, $$1 & 15, $$2 & 15) + 1;
    }
 
    @Override
-   public void a(@Nullable cmx $$0, iz $$1, avz $$2, awb $$3, float $$4, float $$5) {
+   public void a(@Nullable cmy $$0, iz $$1, avz $$2, awb $$3, float $$4, float $$5) {
    }
 
    @Override
@@ -371,40 +371,40 @@ public class arm implements dct {
    }
 
    @Override
-   public void a(@Nullable cmx $$0, int $$1, iz $$2, int $$3) {
+   public void a(@Nullable cmy $$0, int $$1, iz $$2, int $$3) {
    }
 
    @Override
-   public void a(ji<dwv> $$0, evr $$1, dwv.a $$2) {
+   public void a(ji<dww> $$0, evs $$1, dww.a $$2) {
    }
 
    @Override
-   public dvu D_() {
+   public dvv D_() {
       return this.i;
    }
 
    @Override
-   public boolean a(iz $$0, Predicate<dsc> $$1) {
+   public boolean a(iz $$0, Predicate<dsd> $$1) {
       return $$1.test(this.a_($$0));
    }
 
    @Override
-   public boolean b(iz $$0, Predicate<env> $$1) {
+   public boolean b(iz $$0, Predicate<enw> $$1) {
       return $$1.test(this.b_($$0));
    }
 
    @Override
-   public <T extends bsu> List<T> a(dwj<bsu, T> $$0, evm $$1, Predicate<? super T> $$2) {
+   public <T extends bsv> List<T> a(dwk<bsv, T> $$0, evn $$1, Predicate<? super T> $$2) {
       return Collections.emptyList();
    }
 
    @Override
-   public List<bsu> a(@Nullable bsu $$0, evm $$1, @Nullable Predicate<? super bsu> $$2) {
+   public List<bsv> a(@Nullable bsv $$0, evn $$1, @Nullable Predicate<? super bsv> $$2) {
       return Collections.emptyList();
    }
 
    @Override
-   public List<cmx> x() {
+   public List<cmy> x() {
       return Collections.emptyList();
    }
 

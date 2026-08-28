@@ -1,35 +1,33 @@
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dog extends dhf implements doe {
-   public static final MapCodec<dog> l = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(dsr.a.fieldOf("block_set_type").forGetter(dhf::b), doe.a.e.fieldOf("weathering_state").forGetter(dog::m), u()).apply($$0, dog::new)
+public class dog extends dgo implements dof {
+   public static final MapCodec<dog> d = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(dof.a.e.fieldOf("weathering_state").forGetter(dog::m), u()).apply($$0, dog::new)
    );
-   private final doe.a m;
+   private final dof.a e;
 
    @Override
-   public MapCodec<dog> a() {
-      return l;
+   protected MapCodec<dog> a() {
+      return d;
    }
 
-   protected dog(dsr $$0, doe.a $$1, dsb.d $$2) {
-      super($$0, $$2);
-      this.m = $$1;
-   }
-
-   @Override
-   protected void b(dsc $$0, arf $$1, iz $$2, azh $$3) {
-      if ($$0.c(dhf.f) == dsy.b) {
-         this.a_($$0, $$1, $$2, $$3);
-      }
+   public dog(dof.a $$0, dsc.d $$1) {
+      super($$1);
+      this.e = $$0;
    }
 
    @Override
-   protected boolean d_(dsc $$0) {
-      return doe.c($$0.b()).isPresent();
+   protected void b(dsd $$0, arf $$1, iz $$2, azh $$3) {
+      this.a_($$0, $$1, $$2, $$3);
    }
 
-   public doe.a m() {
-      return this.m;
+   @Override
+   protected boolean d_(dsd $$0) {
+      return dof.c($$0.b()).isPresent();
+   }
+
+   public dof.a m() {
+      return this.e;
    }
 }

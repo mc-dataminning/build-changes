@@ -1,18 +1,12 @@
-public class gjp extends gmd {
-   private static final alf a = new alf("textures/entity/zombie/husk.png");
-
-   public gjp(gix.a $$0) {
-      super($$0, fwz.ar, fwz.as, fwz.at);
+public abstract class gjp<T extends bts, M extends fuo<T>> extends gke<T, M> {
+   public gjp(giy.a $$0, M $$1, float $$2) {
+      this($$0, $$1, $$2, 1.0F, 1.0F, 1.0F);
    }
 
-   protected void a(ckw $$0, ezy $$1, float $$2) {
-      float $$3 = 1.0625F;
-      $$1.b(1.0625F, 1.0625F, 1.0625F);
-      super.a($$0, $$1, $$2);
-   }
-
-   @Override
-   public alf a(ckw $$0) {
-      return a;
+   public gjp(giy.a $$0, M $$1, float $$2, float $$3, float $$4, float $$5) {
+      super($$0, $$1, $$2);
+      this.a(new gmp<>(this, $$0.f(), $$3, $$4, $$5, $$0.d()));
+      this.a(new gmt<>(this, $$0.f()));
+      this.a(new gnd<>(this, $$0.d()));
    }
 }

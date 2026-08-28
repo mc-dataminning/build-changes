@@ -1,82 +1,56 @@
-import com.google.common.base.Predicates;
 import com.mojang.serialization.MapCodec;
 
-public class dho extends dez {
+public class dho extends dem {
    public static final MapCodec<dho> a = b(dho::new);
-   public static final dsw b = div.aE;
-   public static final dst c = dss.h;
-   protected static final ewk d = dez.a(0.0, 0.0, 0.0, 16.0, 13.0, 16.0);
-   protected static final ewk e = dez.a(4.0, 13.0, 4.0, 12.0, 16.0, 12.0);
-   protected static final ewk f = ewh.a(d, e);
-   private static dsh g;
+   protected static final ewl b = dfa.a(0.0, 6.0, 0.0, 16.0, 12.0, 16.0);
 
    @Override
    public MapCodec<dho> a() {
       return a;
    }
 
-   public dho(dsb.d $$0) {
+   protected dho(dsc.d $$0) {
       super($$0);
-      this.k(this.E.b().a(b, je.c).a(c, Boolean.valueOf(false)));
    }
 
    @Override
-   protected boolean f_(dsc $$0) {
-      return true;
+   public dpi a(iz $$0, dsd $$1) {
+      return new dqz($$0, $$1);
    }
 
    @Override
-   protected ewk a(dsc $$0, dbe $$1, iz $$2, evw $$3) {
-      return $$0.c(c) ? f : d;
+   protected ewl a(dsd $$0, dbf $$1, iz $$2, evx $$3) {
+      return b;
    }
 
    @Override
-   public dsc a(cya $$0) {
-      return this.o().a(b, $$0.g().g()).a(c, Boolean.valueOf(false));
-   }
+   protected void a(dsd $$0, dbz $$1, iz $$2, bsv $$3) {
+      if ($$1 instanceof arf && $$3.cw() && ewi.c(ewi.a($$3.cK().d((double)(-$$2.u()), (double)(-$$2.v()), (double)(-$$2.w()))), $$0.j($$1, $$2), evw.i)) {
+         ale<dbz> $$4 = $$1.af() == dbz.j ? dbz.h : dbz.j;
+         arf $$5 = ((arf)$$1).o().a($$4);
+         if ($$5 == null) {
+            return;
+         }
 
-   @Override
-   protected boolean c_(dsc $$0) {
-      return true;
-   }
-
-   @Override
-   protected int a(dsc $$0, dby $$1, iz $$2) {
-      return $$0.c(c) ? 15 : 0;
-   }
-
-   @Override
-   protected dsc a(dsc $$0, dlm $$1) {
-      return $$0.a(b, $$1.a($$0.c(b)));
-   }
-
-   @Override
-   protected dsc a(dsc $$0, djw $$1) {
-      return $$0.a($$1.a($$0.c(b)));
-   }
-
-   @Override
-   protected void a(dsd.a<dez, dsc> $$0) {
-      $$0.a(b, c);
-   }
-
-   public static dsh b() {
-      if (g == null) {
-         g = dsi.a()
-            .a("?vvv?", ">???<", ">???<", ">???<", "?^^^?")
-            .a('?', dsg.a(dsl.a))
-            .a('^', dsg.a(dsl.a(dfb.fy).a(c, Predicates.equalTo(true)).a(b, Predicates.equalTo(je.d))))
-            .a('>', dsg.a(dsl.a(dfb.fy).a(c, Predicates.equalTo(true)).a(b, Predicates.equalTo(je.e))))
-            .a('v', dsg.a(dsl.a(dfb.fy).a(c, Predicates.equalTo(true)).a(b, Predicates.equalTo(je.c))))
-            .a('<', dsg.a(dsl.a(dfb.fy).a(c, Predicates.equalTo(true)).a(b, Predicates.equalTo(je.f))))
-            .b();
+         $$3.b($$5);
       }
-
-      return g;
    }
 
    @Override
-   protected boolean a(dsc $$0, eok $$1) {
+   public void a(dsd $$0, dbz $$1, iz $$2, azh $$3) {
+      double $$4 = (double)$$2.u() + $$3.j();
+      double $$5 = (double)$$2.v() + 0.8;
+      double $$6 = (double)$$2.w() + $$3.j();
+      $$1.a(li.ae, $$4, $$5, $$6, 0.0, 0.0, 0.0);
+   }
+
+   @Override
+   public cuq a(dcc $$0, iz $$1, dsd $$2) {
+      return cuq.l;
+   }
+
+   @Override
+   protected boolean a(dsd $$0, env $$1) {
       return false;
    }
 }

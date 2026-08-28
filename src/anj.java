@@ -12,7 +12,7 @@ import javax.annotation.Nullable;
 
 public class anj {
    private static final Dynamic2CommandExceptionType a = new Dynamic2CommandExceptionType(($$0, $$1) -> xp.b("commands.fill.toobig", $$0, $$1));
-   static final gg b = new gg(dfb.a.o(), Collections.emptySet(), null);
+   static final gg b = new gg(dfc.a.o(), Collections.emptySet(), null);
    private static final SimpleCommandExceptionType c = new SimpleCommandExceptionType(xp.c("commands.fill.failed"));
 
    public static void a(CommandDispatcher<ep> $$0, el $$1) {
@@ -27,14 +27,14 @@ public class anj {
                                                 "block", gi.a($$1)
                                              )
                                              .executes(
-                                                $$0x -> a((ep)$$0x.getSource(), eic.a(gl.a($$0x, "from"), gl.a($$0x, "to")), gi.a($$0x, "block"), anj.a.a, null)
+                                                $$0x -> a((ep)$$0x.getSource(), eid.a(gl.a($$0x, "from"), gl.a($$0x, "to")), gi.a($$0x, "block"), anj.a.a, null)
                                              ))
                                           .then(
                                              ((LiteralArgumentBuilder)eq.a("replace")
                                                    .executes(
                                                       $$0x -> a(
                                                             (ep)$$0x.getSource(),
-                                                            eic.a(gl.a($$0x, "from"), gl.a($$0x, "to")),
+                                                            eid.a(gl.a($$0x, "from"), gl.a($$0x, "to")),
                                                             gi.a($$0x, "block"),
                                                             anj.a.a,
                                                             null
@@ -45,7 +45,7 @@ public class anj {
                                                       .executes(
                                                          $$0x -> a(
                                                                (ep)$$0x.getSource(),
-                                                               eic.a(gl.a($$0x, "from"), gl.a($$0x, "to")),
+                                                               eid.a(gl.a($$0x, "from"), gl.a($$0x, "to")),
                                                                gi.a($$0x, "block"),
                                                                anj.a.a,
                                                                gh.a($$0x, "filter")
@@ -58,7 +58,7 @@ public class anj {
                                              .executes(
                                                 $$0x -> a(
                                                       (ep)$$0x.getSource(),
-                                                      eic.a(gl.a($$0x, "from"), gl.a($$0x, "to")),
+                                                      eid.a(gl.a($$0x, "from"), gl.a($$0x, "to")),
                                                       gi.a($$0x, "block"),
                                                       anj.a.a,
                                                       $$0xx -> $$0xx.c().u($$0xx.d())
@@ -68,18 +68,18 @@ public class anj {
                                     .then(
                                        eq.a("outline")
                                           .executes(
-                                             $$0x -> a((ep)$$0x.getSource(), eic.a(gl.a($$0x, "from"), gl.a($$0x, "to")), gi.a($$0x, "block"), anj.a.b, null)
+                                             $$0x -> a((ep)$$0x.getSource(), eid.a(gl.a($$0x, "from"), gl.a($$0x, "to")), gi.a($$0x, "block"), anj.a.b, null)
                                           )
                                     ))
                                  .then(
                                     eq.a("hollow")
                                        .executes(
-                                          $$0x -> a((ep)$$0x.getSource(), eic.a(gl.a($$0x, "from"), gl.a($$0x, "to")), gi.a($$0x, "block"), anj.a.c, null)
+                                          $$0x -> a((ep)$$0x.getSource(), eid.a(gl.a($$0x, "from"), gl.a($$0x, "to")), gi.a($$0x, "block"), anj.a.c, null)
                                        )
                                  ))
                               .then(
                                  eq.a("destroy")
-                                    .executes($$0x -> a((ep)$$0x.getSource(), eic.a(gl.a($$0x, "from"), gl.a($$0x, "to")), gi.a($$0x, "block"), anj.a.d, null))
+                                    .executes($$0x -> a((ep)$$0x.getSource(), eid.a(gl.a($$0x, "from"), gl.a($$0x, "to")), gi.a($$0x, "block"), anj.a.d, null))
                               )
                         )
                   )
@@ -87,9 +87,9 @@ public class anj {
       );
    }
 
-   private static int a(ep $$0, eic $$1, gg $$2, anj.a $$3, @Nullable Predicate<dsg> $$4) throws CommandSyntaxException {
+   private static int a(ep $$0, eid $$1, gg $$2, anj.a $$3, @Nullable Predicate<dsh> $$4) throws CommandSyntaxException {
       int $$5 = $$1.d() * $$1.e() * $$1.f();
-      int $$6 = $$0.e().ab().c(dbu.z);
+      int $$6 = $$0.e().ab().c(dbv.z);
       if ($$5 > $$6) {
          throw a.create($$6, $$5);
       } else {
@@ -98,11 +98,11 @@ public class anj {
          int $$9 = 0;
 
          for (iz $$10 : iz.b($$1.h(), $$1.i(), $$1.j(), $$1.k(), $$1.l(), $$1.m())) {
-            if ($$4 == null || $$4.test(new dsg($$8, $$10, true))) {
+            if ($$4 == null || $$4.test(new dsh($$8, $$10, true))) {
                gg $$11 = $$3.e.filter($$1, $$10, $$2, $$8);
                if ($$11 != null) {
-                  dph $$12 = $$8.c_($$10);
-                  bql.a_($$12);
+                  dpi $$12 = $$8.c_($$10);
+                  bqm.a_($$12);
                   if ($$11.a($$8, $$10, 2)) {
                      $$7.add($$10.i());
                      $$9++;
@@ -112,7 +112,7 @@ public class anj {
          }
 
          for (iz $$13 : $$7) {
-            dez $$14 = $$8.a_($$13).b();
+            dfa $$14 = $$8.a_($$13).b();
             $$8.b($$13, $$14);
          }
 

@@ -1,26 +1,52 @@
-import java.util.function.Function;
+public class fua<T extends bsv> extends fuk<T> {
+   private static final int a = 4;
+   private static final int[][] b = new int[][]{{4, 3, 2}, {6, 4, 5}, {3, 3, 1}, {1, 2, 1}};
+   private static final int[][] f = new int[][]{{0, 0}, {0, 5}, {0, 14}, {0, 18}};
+   private final fxb g;
+   private final fxb[] h;
 
-public abstract class fua<T extends bsu> extends fuw {
-   public float c;
-   public boolean d;
-   public boolean e = true;
+   public fua(fxb $$0) {
+      this.g = $$0;
+      this.h = new fxb[4];
 
-   protected fua() {
-      this(gdw::e);
+      for (int $$1 = 0; $$1 < 4; $$1++) {
+         this.h[$$1] = $$0.b(a($$1));
+      }
    }
 
-   protected fua(Function<alf, gdw> $$0) {
-      super($$0);
+   private static String a(int $$0) {
+      return "segment" + $$0;
    }
 
-   public abstract void a(T var1, float var2, float var3, float var4, float var5, float var6);
+   public static fxh b() {
+      fxj $$0 = new fxj();
+      fxk $$1 = $$0.a();
+      float $$2 = -3.5F;
 
-   public void a(T $$0, float $$1, float $$2, float $$3) {
+      for (int $$3 = 0; $$3 < 4; $$3++) {
+         $$1.a(
+            a($$3),
+            fxg.c().a(f[$$3][0], f[$$3][1]).a((float)b[$$3][0] * -0.5F, 0.0F, (float)b[$$3][2] * -0.5F, (float)b[$$3][0], (float)b[$$3][1], (float)b[$$3][2]),
+            fxd.a(0.0F, (float)(24 - b[$$3][1]), $$2)
+         );
+         if ($$3 < 3) {
+            $$2 += (float)(b[$$3][2] + b[$$3 + 1][2]) * 0.5F;
+         }
+      }
+
+      return fxh.a($$0, 64, 32);
    }
 
-   public void a(fua<T> $$0) {
-      $$0.c = this.c;
-      $$0.d = this.d;
-      $$0.e = this.e;
+   @Override
+   public fxb a() {
+      return this.g;
+   }
+
+   @Override
+   public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
+      for (int $$6 = 0; $$6 < this.h.length; $$6++) {
+         this.h[$$6].f = ayz.b($$3 * 0.9F + (float)$$6 * 0.15F * (float) Math.PI) * (float) Math.PI * 0.01F * (float)(1 + Math.abs($$6 - 2));
+         this.h[$$6].b = ayz.a($$3 * 0.9F + (float)$$6 * 0.15F * (float) Math.PI) * (float) Math.PI * 0.1F * (float)Math.abs($$6 - 2);
+      }
    }
 }

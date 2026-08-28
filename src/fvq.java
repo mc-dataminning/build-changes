@@ -1,16 +1,21 @@
-public class fvq<T extends cgb> extends fvk<T> {
+public class fvq<T extends cgc> extends fvl<T> {
    private float j;
 
-   public fvq(fxa $$0) {
+   public fvq(fxb $$0) {
       super($$0, false, 8.0F, 4.0F, 2.0F, 2.0F, 24);
    }
 
-   public static fxg c() {
-      fxi $$0 = fvk.a(12, fxe.a);
-      fxj $$1 = $$0.a();
-      $$1.a("head", fxf.c().a(0, 0).a(-3.0F, -4.0F, -6.0F, 6.0F, 6.0F, 8.0F), fxc.a(0.0F, 6.0F, -8.0F));
-      $$1.a("body", fxf.c().a(28, 8).a(-4.0F, -10.0F, -7.0F, 8.0F, 16.0F, 6.0F), fxc.a(0.0F, 5.0F, 2.0F, (float) (Math.PI / 2), 0.0F, 0.0F));
-      return fxg.a($$0, 64, 32);
+   public static fxh c() {
+      fxj $$0 = new fxj();
+      fxk $$1 = $$0.a();
+      $$1.a("head", fxg.c().a(0, 0).a(-3.0F, -4.0F, -4.0F, 6.0F, 6.0F, 6.0F, new fxf(0.6F)), fxd.a(0.0F, 6.0F, -8.0F));
+      $$1.a("body", fxg.c().a(28, 8).a(-4.0F, -10.0F, -7.0F, 8.0F, 16.0F, 6.0F, new fxf(1.75F)), fxd.a(0.0F, 5.0F, 2.0F, (float) (Math.PI / 2), 0.0F, 0.0F));
+      fxg $$2 = fxg.c().a(0, 16).a(-2.0F, 0.0F, -2.0F, 4.0F, 6.0F, 4.0F, new fxf(0.5F));
+      $$1.a("right_hind_leg", $$2, fxd.a(-3.0F, 12.0F, 7.0F));
+      $$1.a("left_hind_leg", $$2, fxd.a(3.0F, 12.0F, 7.0F));
+      $$1.a("right_front_leg", $$2, fxd.a(-3.0F, 12.0F, -5.0F));
+      $$1.a("left_front_leg", $$2, fxd.a(3.0F, 12.0F, -5.0F));
+      return fxh.a($$0, 64, 32);
    }
 
    public void a(T $$0, float $$1, float $$2, float $$3) {

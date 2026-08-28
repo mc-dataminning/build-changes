@@ -1,15 +1,15 @@
-public class czp extends czj {
-   public czp(String $$0, cys $$1, cup $$2) {
-      super(cza.f, cyz.t, $$0, $$1, $$2);
+public class czp extends cyf {
+   public czp(String $$0, cyl $$1, cyt $$2, cuq $$3, float $$4, int $$5) {
+      super(czb.d, $$0, $$1, $$2, $$3, $$4, $$5);
    }
 
    @Override
-   public boolean a(bqn $$0, dby $$1) {
-      return this.a.a($$0.a(0));
+   public cuq g() {
+      return new cuq(dfc.nV);
    }
 
    @Override
-   public cup g() {
-      return new cup(dfb.oc);
+   public cza<?> ao_() {
+      return cza.r;
    }
 }

@@ -99,7 +99,7 @@ public class ayp {
       return $$0.has($$1) ? a($$0.get($$1), $$1) : $$2;
    }
 
-   public static ji<cuk> b(JsonElement $$0, String $$1) {
+   public static ji<cul> b(JsonElement $$0, String $$1) {
       if ($$0.isJsonPrimitive()) {
          String $$2 = $$0.getAsString();
          return lp.h.c(new alf($$2)).orElseThrow(() -> new JsonSyntaxException("Expected " + $$1 + " to be an item, was unknown string '" + $$2 + "'"));
@@ -108,7 +108,7 @@ public class ayp {
       }
    }
 
-   public static ji<cuk> j(JsonObject $$0, String $$1) {
+   public static ji<cul> j(JsonObject $$0, String $$1) {
       if ($$0.has($$1)) {
          return b($$0.get($$1), $$1);
       } else {
@@ -118,7 +118,7 @@ public class ayp {
 
    @Nullable
    @Contract("_,_,!null->!null;_,_,null->_")
-   public static ji<cuk> a(JsonObject $$0, String $$1, @Nullable ji<cuk> $$2) {
+   public static ji<cul> a(JsonObject $$0, String $$1, @Nullable ji<cul> $$2) {
       return $$0.has($$1) ? b($$0.get($$1), $$1) : $$2;
    }
 

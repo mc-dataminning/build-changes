@@ -1,193 +1,118 @@
-import java.util.Optional;
-import java.util.UUID;
+import com.google.common.collect.Maps;
+import java.util.Map;
 import javax.annotation.Nullable;
 
-public abstract class bum extends cff implements btx {
-   protected static final akk<Byte> bY = ako.a(bum.class, akm.a);
-   protected static final akk<Optional<UUID>> bZ = ako.a(bum.class, akm.r);
-   private boolean cb;
+public class bum {
+   private static final Map<btb<?>, bum.a> a = Maps.newHashMap();
 
-   protected bum(bta<? extends bum> $$0, dby $$1) {
-      super($$0, $$1);
-   }
-
-   @Override
-   protected void a(ako.a $$0) {
-      super.a($$0);
-      $$0.a(bY, (byte)0);
-      $$0.a(bZ, Optional.empty());
-   }
-
-   @Override
-   public void b(us $$0) {
-      super.b($$0);
-      if (this.W_() != null) {
-         $$0.a("Owner", this.W_());
-      }
-
-      $$0.a("Sitting", this.cb);
-   }
-
-   @Override
-   public void a(us $$0) {
-      super.a($$0);
-      UUID $$1;
-      if ($$0.b("Owner")) {
-         $$1 = $$0.a("Owner");
-      } else {
-         String $$2 = $$0.l("Owner");
-         $$1 = avc.a(this.cO(), $$2);
-      }
-
-      if ($$1 != null) {
-         try {
-            this.b($$1);
-            this.b(true, false);
-         } catch (Throwable var4) {
-            this.b(false, true);
-         }
-      }
-
-      this.cb = $$0.q("Sitting");
-      this.x(this.cb);
-   }
-
-   @Override
-   public boolean a(cmx $$0) {
-      return !this.gd();
-   }
-
-   protected void w(boolean $$0) {
-      lg $$1 = li.Q;
-      if (!$$0) {
-         $$1 = li.ae;
-      }
-
-      for (int $$2 = 0; $$2 < 7; $$2++) {
-         double $$3 = this.ah.k() * 0.02;
-         double $$4 = this.ah.k() * 0.02;
-         double $$5 = this.ah.k() * 0.02;
-         this.dP().a($$1, this.d(1.0), this.dx() + 0.5, this.g(1.0), $$3, $$4, $$5);
+   private static <T extends bts> void a(btb<T> $$0, buk $$1, dxv.a $$2, bum.b<T> $$3) {
+      bum.a $$4 = a.put($$0, new bum.a($$2, $$1, $$3));
+      if ($$4 != null) {
+         throw new IllegalStateException("Duplicate registration for type " + lp.g.b($$0));
       }
    }
 
-   @Override
-   public void b(byte $$0) {
-      if ($$0 == 7) {
-         this.w(true);
-      } else if ($$0 == 6) {
-         this.w(false);
-      } else {
-         super.b($$0);
-      }
+   public static buk a(btb<?> $$0) {
+      bum.a $$1 = a.get($$0);
+      return $$1 == null ? bul.a : $$1.b;
    }
 
-   public boolean s() {
-      return (this.ao.a(bY) & 4) != 0;
+   public static boolean a(btb<?> $$0, dcc $$1, iz $$2) {
+      return a($$0).isSpawnPositionOk($$1, $$2, $$0);
    }
 
-   public void b(boolean $$0, boolean $$1) {
-      byte $$2 = this.ao.a(bY);
-      if ($$0) {
-         this.ao.a(bY, (byte)($$2 | 4));
-      } else {
-         this.ao.a(bY, (byte)($$2 & -5));
-      }
-
-      if ($$1) {
-         this.u();
-      }
+   public static dxv.a b(@Nullable btb<?> $$0) {
+      bum.a $$1 = a.get($$0);
+      return $$1 == null ? dxv.a.f : $$1.a;
    }
 
-   protected void u() {
+   public static <T extends bsv> boolean a(btb<T> $$0, dco $$1, btu $$2, iz $$3, azh $$4) {
+      bum.a $$5 = a.get($$0);
+      return $$5 == null || $$5.c.test($$0, $$1, $$2, $$3, $$4);
    }
 
-   public boolean y() {
-      return (this.ao.a(bY) & 1) != 0;
+   static {
+      a(btb.f, bul.b, dxv.a.f, cgs::a);
+      a(btb.u, bul.b, dxv.a.f, cgi::c);
+      a(btb.y, bul.b, dxv.a.f, cgi::c);
+      a(btb.B, bul.b, dxv.a.f, cjs::a);
+      a(btb.Y, bul.b, dxv.a.f, cka::b);
+      a(btb.aF, bul.b, dxv.a.f, cgi::c);
+      a(btb.aI, bul.b, dxv.a.f, cgi::c);
+      a(btb.aX, bul.b, dxv.a.f, cgi::c);
+      a(btb.bg, bul.b, dxv.a.f, cgg::b);
+      a(btb.c, bul.d, dxv.a.f, cgp::c);
+      a(btb.g, bul.d, dxv.a.f, cfb::b);
+      a(btb.i, bul.d, dxv.a.f, cke::c);
+      a(btb.l, bul.d, dxv.a.f, cke::b);
+      a(btb.q, bul.d, dxv.a.f, cke::b);
+      a(btb.t, bul.d, dxv.a.f, cfg::b);
+      a(btb.w, bul.d, dxv.a.f, cfg::b);
+      a(btb.x, bul.d, dxv.a.f, cke::b);
+      a(btb.z, bul.d, dxv.a.f, cfg::b);
+      a(btb.H, bul.d, dxv.a.f, cke::b);
+      a(btb.I, bul.d, dxv.a.f, cjv::b);
+      a(btb.F, bul.d, dxv.a.f, bts::a);
+      a(btb.R, bul.d, dxv.a.f, cha::c);
+      a(btb.T, bul.d, dxv.a.f, cjy::b);
+      a(btb.U, bul.d, dxv.a.f, cke::b);
+      a(btb.W, bul.b, dxv.a.f, bti::a);
+      a(btb.X, bul.d, dxv.a.f, chg::c);
+      a(btb.ab, bul.d, dxv.a.f, cfg::b);
+      a(btb.ac, bul.d, dxv.a.f, ckb::a);
+      a(btb.af, bul.d, dxv.a.f, bts::a);
+      a(btb.an, bul.d, dxv.a.f, cfg::b);
+      a(btb.ap, bul.d, dxv.a.f, ckd::b);
+      a(btb.as, bul.d, dxv.a.f, cft::c);
+      a(btb.at, bul.d, dxv.a.f, cfg::b);
+      a(btb.au, bul.d, dxv.a.e, cfu::c);
+      a(btb.ax, bul.d, dxv.a.e, cfw::c);
+      a(btb.az, bul.d, dxv.a.f, cfg::b);
+      a(btb.Z, bul.d, dxv.a.f, cli::c);
+      a(btb.aA, bul.d, dxv.a.f, clo::b);
+      a(btb.aC, bul.d, dxv.a.f, ckf::b);
+      a(btb.aD, bul.d, dxv.a.f, cfy::c);
+      a(btb.aG, bul.d, dxv.a.f, cga::c);
+      a(btb.aJ, bul.d, dxv.a.f, cfg::b);
+      a(btb.aM, bul.d, dxv.a.f, ckl::b);
+      a(btb.aN, bul.d, dxv.a.f, cke::b);
+      a(btb.aO, bul.d, dxv.a.f, chq::c);
+      a(btb.aP, bul.d, dxv.a.f, ckn::c);
+      a(btb.aS, bul.d, dxv.a.f, bts::a);
+      a(btb.aW, bul.d, dxv.a.f, cke::b);
+      a(btb.aY, bul.d, dxv.a.f, ckq::a);
+      a(btb.aZ, bul.c, dxv.a.f, ckr::c);
+      a(btb.bh, bul.d, dxv.a.f, cgh::c);
+      a(btb.bj, bul.d, dxv.a.f, bts::a);
+      a(btb.bo, bul.d, dxv.a.f, cke::b);
+      a(btb.bp, bul.d, dxv.a.f, cke::b);
+      a(btb.bq, bul.d, dxv.a.f, cke::b);
+      a(btb.bs, bul.d, dxv.a.f, cgj::c);
+      a(btb.bu, bul.d, dxv.a.f, cke::b);
+      a(btb.bv, bul.d, dxv.a.f, chu::c);
+      a(btb.bx, bul.d, dxv.a.f, ckz::b);
+      a(btb.bw, bul.d, dxv.a.f, cke::b);
+      a(btb.p, bul.d, dxv.a.f, cfg::b);
+      a(btb.D, bul.b, dxv.a.f, cka::b);
+      a(btb.J, bul.a, dxv.a.f, cke::b);
+      a(btb.Q, bul.a, dxv.a.f, cfq::c);
+      a(btb.ad, bul.a, dxv.a.f, cke::b);
+      a(btb.aw, bul.a, dxv.a.f, cfg::b);
+      a(btb.ay, bul.a, dxv.a.f, bts::a);
+      a(btb.aH, bul.d, dxv.a.f, cke::b);
+      a(btb.aK, bul.a, dxv.a.f, bts::a);
+      a(btb.be, bul.a, dxv.a.f, cfg::b);
+      a(btb.bi, bul.a, dxv.a.f, cke::b);
+      a(btb.bk, bul.a, dxv.a.f, cke::b);
+      a(btb.bl, bul.d, dxv.a.f, bts::a);
+      a(btb.bm, bul.a, dxv.a.f, bts::a);
    }
 
-   public void x(boolean $$0) {
-      byte $$1 = this.ao.a(bY);
-      if ($$0) {
-         this.ao.a(bY, (byte)($$1 | 1));
-      } else {
-         this.ao.a(bY, (byte)($$1 & -2));
-      }
+   static record a(dxv.a a, buk b, bum.b<?> c) {
    }
 
-   @Nullable
-   @Override
-   public UUID W_() {
-      return this.ao.a(bZ).orElse(null);
-   }
-
-   public void b(@Nullable UUID $$0) {
-      this.ao.a(bZ, Optional.ofNullable($$0));
-   }
-
-   public void f(cmx $$0) {
-      this.b(true, true);
-      this.b($$0.cz());
-      if ($$0 instanceof arg $$1) {
-         am.y.a($$1, this);
-      }
-   }
-
-   @Override
-   public boolean c(btp $$0) {
-      return this.j($$0) ? false : super.c($$0);
-   }
-
-   public boolean j(btp $$0) {
-      return $$0 == this.P_();
-   }
-
-   public boolean a(btp $$0, btp $$1) {
-      return true;
-   }
-
-   @Override
-   public ewq cj() {
-      if (this.s()) {
-         btp $$0 = this.P_();
-         if ($$0 != null) {
-            return $$0.cj();
-         }
-      }
-
-      return super.cj();
-   }
-
-   @Override
-   public boolean s(bsu $$0) {
-      if (this.s()) {
-         btp $$1 = this.P_();
-         if ($$0 == $$1) {
-            return true;
-         }
-
-         if ($$1 != null) {
-            return $$1.s($$0);
-         }
-      }
-
-      return super.s($$0);
-   }
-
-   @Override
-   public void a(brn $$0) {
-      if (!this.dP().B && this.dP().ab().b(dbu.n) && this.P_() instanceof arg) {
-         this.P_().a(this.eP().a());
-      }
-
-      super.a($$0);
-   }
-
-   public boolean gq() {
-      return this.cb;
-   }
-
-   public void y(boolean $$0) {
-      this.cb = $$0;
+   @FunctionalInterface
+   public interface b<T extends bsv> {
+      boolean test(btb<T> var1, dco var2, btu var3, iz var4, azh var5);
    }
 }

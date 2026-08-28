@@ -1,9 +1,17 @@
-public class gpw extends gqc {
-   public gpw(gpa $$0) {
-      super($$0, new alf("textures/atlas/map_decorations.png"), new alf("map_decorations"));
-   }
+import java.io.IOException;
+import java.io.InputStream;
 
-   public goz a(epe $$0) {
-      return this.a($$0.a());
+public class gpw {
+   @Deprecated
+   public static int[] a(aup $$0, alf $$1) throws IOException {
+      int[] var4;
+      try (
+         InputStream $$2 = $$0.open($$1);
+         eza $$3 = eza.a($$2);
+      ) {
+         var4 = $$3.e();
+      }
+
+      return var4;
    }
 }

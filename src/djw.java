@@ -1,57 +1,49 @@
-import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import javax.annotation.Nullable;
 
-public enum djw implements azu {
-   a("none", h.a),
-   b("left_right", h.B),
-   c("front_back", h.z);
+public class djw extends dfa implements dmb {
+   public static final MapCodec<djw> a = b(djw::new);
+   public static final dsu b = dst.C;
 
-   public static final Codec<djw> d = azu.a(djw::values);
-   private final String e;
-   private final xp f;
-   private final h g;
-
-   private djw(final String $$0, final h $$1) {
-      this.e = $$0;
-      this.f = xp.c("mirror." + $$0);
-      this.g = $$1;
+   @Override
+   public MapCodec<djw> a() {
+      return a;
    }
 
-   public int a(int $$0, int $$1) {
-      int $$2 = $$1 / 2;
-      int $$3 = $$0 > $$2 ? $$0 - $$1 : $$0;
-      switch (this) {
-         case b:
-            return ($$2 - $$3 + $$1) % $$1;
-         case c:
-            return ($$1 - $$3) % $$1;
-         default:
-            return $$0;
-      }
-   }
-
-   public dlm a(je $$0) {
-      je.a $$1 = $$0.o();
-      return (this != b || $$1 != je.a.c) && (this != c || $$1 != je.a.a) ? dlm.a : dlm.c;
-   }
-
-   public je b(je $$0) {
-      if (this == c && $$0.o() == je.a.a) {
-         return $$0.g();
-      } else {
-         return this == b && $$0.o() == je.a.c ? $$0.g() : $$0;
-      }
-   }
-
-   public h a() {
-      return this.g;
-   }
-
-   public xp b() {
-      return this.f;
+   protected djw(dsc.d $$0) {
+      super($$0);
+      this.k(this.E.b().a(b, Boolean.valueOf(false)));
    }
 
    @Override
-   public String c() {
-      return this.e;
+   protected boolean a(dsd $$0, dsd $$1, je $$2) {
+      return $$1.a(dfc.ac) && $$2.o() == je.a.b;
+   }
+
+   @Nullable
+   @Override
+   public dsd a(cyb $$0) {
+      enw $$1 = $$0.q().b_($$0.a());
+      boolean $$2 = $$1.a() == enx.c;
+      return super.a($$0).a(b, Boolean.valueOf($$2));
+   }
+
+   @Override
+   protected dsd a(dsd $$0, je $$1, dsd $$2, dca $$3, iz $$4, iz $$5) {
+      if ($$0.c(b)) {
+         $$3.a($$4, enx.c, enx.c.a($$3));
+      }
+
+      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   }
+
+   @Override
+   protected enw b_(dsd $$0) {
+      return $$0.c(b) ? enx.c.a(false) : super.b_($$0);
+   }
+
+   @Override
+   protected void a(dse.a<dfa, dsd> $$0) {
+      $$0.a(b);
    }
 }

@@ -4,13 +4,13 @@ public class aio implements zw<agw> {
    private static final int c = 2;
    private static final int d = 4;
    private final iz e;
-   private final dqw.a f;
-   private final dtm g;
+   private final dqx.a f;
+   private final dtn g;
    private final String h;
    private final iz i;
    private final kd j;
-   private final djw k;
-   private final dlm l;
+   private final djx k;
+   private final dln l;
    private final String m;
    private final boolean n;
    private final boolean o;
@@ -19,7 +19,7 @@ public class aio implements zw<agw> {
    private final long r;
 
    public aio(
-      iz $$0, dqw.a $$1, dtm $$2, String $$3, iz $$4, kd $$5, djw $$6, dlm $$7, String $$8, boolean $$9, boolean $$10, boolean $$11, float $$12, long $$13
+      iz $$0, dqx.a $$1, dtn $$2, String $$3, iz $$4, kd $$5, djx $$6, dln $$7, String $$8, boolean $$9, boolean $$10, boolean $$11, float $$12, long $$13
    ) {
       this.e = $$0;
       this.f = $$1;
@@ -39,15 +39,15 @@ public class aio implements zw<agw> {
 
    private aio(wm $$0) {
       this.e = $$0.e();
-      this.f = $$0.b(dqw.a.class);
-      this.g = $$0.b(dtm.class);
+      this.f = $$0.b(dqx.a.class);
+      this.g = $$0.b(dtn.class);
       this.h = $$0.p();
       int $$1 = 48;
       this.i = new iz(ayz.a($$0.readByte(), -48, 48), ayz.a($$0.readByte(), -48, 48), ayz.a($$0.readByte(), -48, 48));
       int $$2 = 48;
       this.j = new kd(ayz.a($$0.readByte(), 0, 48), ayz.a($$0.readByte(), 0, 48), ayz.a($$0.readByte(), 0, 48));
-      this.k = $$0.b(djw.class);
-      this.l = $$0.b(dlm.class);
+      this.k = $$0.b(djx.class);
+      this.l = $$0.b(dln.class);
       this.m = $$0.d(128);
       this.q = ayz.a($$0.readFloat(), 0.0F, 1.0F);
       this.r = $$0.m();
@@ -102,11 +102,11 @@ public class aio implements zw<agw> {
       return this.e;
    }
 
-   public dqw.a e() {
+   public dqx.a e() {
       return this.f;
    }
 
-   public dtm f() {
+   public dtn f() {
       return this.g;
    }
 
@@ -122,11 +122,11 @@ public class aio implements zw<agw> {
       return this.j;
    }
 
-   public djw j() {
+   public djx j() {
       return this.k;
    }
 
-   public dlm k() {
+   public dln k() {
       return this.l;
    }
 

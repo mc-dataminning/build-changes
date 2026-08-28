@@ -1,59 +1,96 @@
 import com.mojang.serialization.MapCodec;
 import javax.annotation.Nullable;
 
-public class djd extends dio implements djq {
-   public static final MapCodec<djd> c = b(djd::new);
-   protected static final ewk g = dez.a(0.0, 0.0, 0.0, 16.0, 9.0, 16.0);
-   private static final double h = 0.14;
+public class djd extends dem {
+   public static final MapCodec<djd> a = b(djd::new);
+   public static final dsu b = dst.n;
 
    @Override
    public MapCodec<djd> a() {
-      return c;
+      return a;
    }
 
-   protected djd(dsb.d $$0) {
-      super($$0, je.b, g, true, 0.14);
-   }
-
-   @Override
-   protected boolean g(dsc $$0) {
-      return $$0.a(dfb.G);
+   protected djd(dsc.d $$0) {
+      super($$0);
+      this.k(this.E.b().a(b, Boolean.valueOf(false)));
    }
 
    @Override
-   protected dez b() {
-      return dfb.md;
+   public void a(dbz $$0, iz $$1, dsd $$2, @Nullable btq $$3, cuq $$4) {
+      super.a($$0, $$1, $$2, $$3, $$4);
+      cxf $$5 = $$4.a(km.O, cxf.a);
+      if ($$5.a("RecordItem")) {
+         $$0.a($$1, $$2.a(b, Boolean.valueOf(true)), 2);
+      }
    }
 
    @Override
-   protected boolean m(dsc $$0) {
-      return !$$0.a(dfb.kJ);
+   protected bqv a(dsd $$0, dbz $$1, iz $$2, cmy $$3, evo $$4) {
+      if ($$0.c(b) && $$1.c_($$2) instanceof dqj $$5) {
+         $$5.l();
+         return bqv.a($$1.B);
+      } else {
+         return bqv.e;
+      }
    }
 
    @Override
-   public boolean a(@Nullable cmx $$0, dbe $$1, iz $$2, dsc $$3, enu $$4) {
-      return false;
+   protected void a(dsd $$0, dbz $$1, iz $$2, dsd $$3, boolean $$4) {
+      if (!$$0.a($$3.b())) {
+         if ($$1.c_($$2) instanceof dqj $$5) {
+            $$5.l();
+         }
+
+         super.a($$0, $$1, $$2, $$3, $$4);
+      }
    }
 
    @Override
-   public boolean a(dbz $$0, iz $$1, dsc $$2, env $$3) {
-      return false;
+   public dpi a(iz $$0, dsd $$1) {
+      return new dqj($$0, $$1);
    }
 
    @Override
-   protected int a(azh $$0) {
-      return 1;
+   public boolean e_(dsd $$0) {
+      return true;
+   }
+
+   @Override
+   public int a(dsd $$0, dbf $$1, iz $$2, je $$3) {
+      if ($$1.c_($$2) instanceof dqj $$4 && $$4.j()) {
+         return 15;
+      }
+
+      return 0;
+   }
+
+   @Override
+   protected boolean c_(dsd $$0) {
+      return true;
+   }
+
+   @Override
+   protected int a(dsd $$0, dbz $$1, iz $$2) {
+      if ($$1.c_($$2) instanceof dqj $$3 && $$3.f().g() instanceof cvl $$4) {
+         return $$4.h();
+      }
+
+      return 0;
+   }
+
+   @Override
+   protected dlg a_(dsd $$0) {
+      return dlg.c;
+   }
+
+   @Override
+   protected void a(dse.a<dfa, dsd> $$0) {
+      $$0.a(b);
    }
 
    @Nullable
    @Override
-   public dsc a(cya $$0) {
-      env $$1 = $$0.q().b_($$0.a());
-      return $$1.a(awv.a) && $$1.e() == 8 ? super.a($$0) : null;
-   }
-
-   @Override
-   protected env b_(dsc $$0) {
-      return enw.c.a(false);
+   public <T extends dpi> dpj<T> a(dbz $$0, dsd $$1, dpk<T> $$2) {
+      return $$1.c(b) ? a($$2, dpk.e, dqj::a) : null;
    }
 }

@@ -1,37 +1,21 @@
-public class gah<T extends lj> extends gcc {
-   private final gbx a;
-
-   protected gah(fxv $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, T $$7, gbx $$8) {
-      super($$0, $$1, $$2, $$3, $$4, $$5, $$6);
-      this.B = 0.96F;
-      this.C = true;
-      this.a = $$8;
-      this.j *= 0.1F;
-      this.k *= 0.1F;
-      this.l *= 0.1F;
-      this.D = this.D * 0.75F * $$7.d();
-      int $$9 = (int)(8.0 / (this.r.j() * 0.8 + 0.2));
-      this.t = (int)Math.max((float)$$9 * $$7.d(), 1.0F);
-      this.b($$8);
+public class gah extends gai<ld> {
+   protected gah(fxw $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, ld $$7, gby $$8) {
+      super($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8);
+      float $$9 = this.r.i() * 0.4F + 0.6F;
+      this.v = this.a($$7.b().x(), $$9);
+      this.w = this.a($$7.b().y(), $$9);
+      this.x = this.a($$7.b().z(), $$9);
    }
 
-   protected float a(float $$0, float $$1) {
-      return (this.r.i() * 0.2F + 0.8F) * $$0 * $$1;
-   }
+   public static class a implements gbg<ld> {
+      private final gby a;
 
-   @Override
-   public gbg b() {
-      return gbg.b;
-   }
+      public a(gby $$0) {
+         this.a = $$0;
+      }
 
-   @Override
-   public float b(float $$0) {
-      return this.D * ayz.a(((float)this.s + $$0) / (float)this.t * 32.0F, 0.0F, 1.0F);
-   }
-
-   @Override
-   public void a() {
-      super.a();
-      this.b(this.a);
+      public gbd a(ld $$0, fxw $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new gah($$1, $$2, $$3, $$4, $$5, $$6, $$7, $$0, this.a);
+      }
    }
 }

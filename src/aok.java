@@ -37,8 +37,8 @@ public class aok {
       arf $$3 = $$0.e();
       ard $$4 = $$3.l();
       $$4.a.d();
-      evr $$5 = $$0.d();
-      dbf $$6 = new dbf(iz.a($$5));
+      evs $$5 = $$0.d();
+      dbg $$6 = new dbg(iz.a($$5));
       int $$7 = $$6.f - $$1;
       int $$8 = $$6.f + $$1;
       int $$9 = $$6.e - $$1;
@@ -46,43 +46,43 @@ public class aok {
 
       for (int $$11 = $$7; $$11 <= $$8; $$11++) {
          for (int $$12 = $$9; $$12 <= $$10; $$12++) {
-            dbf $$13 = new dbf($$12, $$11);
-            dui $$14 = $$4.a($$12, $$11, false);
+            dbg $$13 = new dbg($$12, $$11);
+            duj $$14 = $$4.a($$12, $$11, false);
             if ($$14 != null && (!$$2 || !$$14.s())) {
                for (iz $$15 : iz.b($$13.d(), $$3.I_(), $$13.e(), $$13.f(), $$3.am() - 1, $$13.g())) {
-                  $$3.a($$15, dfb.a.o(), 16);
+                  $$3.a($$15, dfc.a.o(), 16);
                }
             }
          }
       }
 
-      bpn<Runnable> $$16 = bpn.a(ac.g(), "worldgen-resetchunks");
+      bpo<Runnable> $$16 = bpo.a(ac.g(), "worldgen-resetchunks");
       long $$17 = System.currentTimeMillis();
       int $$18 = ($$1 * 2 + 1) * ($$1 * 2 + 1);
-      UnmodifiableIterator var34 = ImmutableList.of(dux.f, dux.g, dux.h, dux.i, dux.j, dux.k).iterator();
+      UnmodifiableIterator var34 = ImmutableList.of(duy.f, duy.g, duy.h, duy.i, duy.j, duy.k).iterator();
 
       while (var34.hasNext()) {
-         dux $$19 = (dux)var34.next();
+         duy $$19 = (duy)var34.next();
          long $$20 = System.currentTimeMillis();
          CompletableFuture<Unit> $$21 = CompletableFuture.supplyAsync(() -> Unit.INSTANCE, $$16::a);
-         dvb $$22 = new dvb($$3, $$4.g(), $$3.q(), $$4.a());
+         dvc $$22 = new dvc($$3, $$4.g(), $$3.q(), $$4.a());
 
          for (int $$23 = $$6.f - $$1; $$23 <= $$6.f + $$1; $$23++) {
             for (int $$24 = $$6.e - $$1; $$24 <= $$6.e + $$1; $$24++) {
-               dbf $$25 = new dbf($$24, $$23);
-               dui $$26 = $$4.a($$24, $$23, false);
+               dbg $$25 = new dbg($$24, $$23);
+               duj $$26 = $$4.a($$24, $$23, false);
                if ($$26 != null && (!$$2 || !$$26.s())) {
-                  List<dty> $$27 = Lists.newArrayList();
+                  List<dtz> $$27 = Lists.newArrayList();
                   int $$28 = Math.max(1, $$19.e());
 
                   for (int $$29 = $$25.f - $$28; $$29 <= $$25.f + $$28; $$29++) {
                      for (int $$30 = $$25.e - $$28; $$30 <= $$25.e + $$28; $$30++) {
-                        dty $$31 = $$4.a($$30, $$29, $$19.d(), true);
-                        dty $$32;
-                        if ($$31 instanceof duh) {
-                           $$32 = new duh(((duh)$$31).C(), true);
-                        } else if ($$31 instanceof dui) {
-                           $$32 = new duh((dui)$$31, true);
+                        dtz $$31 = $$4.a($$30, $$29, $$19.d(), true);
+                        dtz $$32;
+                        if ($$31 instanceof dui) {
+                           $$32 = new dui(((dui)$$31).C(), true);
+                        } else if ($$31 instanceof duj) {
+                           $$32 = new dui((duj)$$31, true);
                         } else {
                            $$32 = $$31;
                         }
@@ -94,8 +94,8 @@ public class aok {
                   $$21 = $$21.thenComposeAsync($$4x -> $$19.a($$22, $$16::a, $$0xx -> {
                         throw new UnsupportedOperationException("Not creating full chunks here");
                      }, $$27).thenApply($$1xx -> {
-                        if ($$19 == dux.g) {
-                           dxu.a($$1xx, dux.b);
+                        if ($$19 == duy.g) {
+                           dxv.a($$1xx, duy.b);
                         }
 
                         return Unit.INSTANCE;
@@ -112,8 +112,8 @@ public class aok {
 
       for (int $$36 = $$6.f - $$1; $$36 <= $$6.f + $$1; $$36++) {
          for (int $$37 = $$6.e - $$1; $$37 <= $$6.e + $$1; $$37++) {
-            dbf $$38 = new dbf($$37, $$36);
-            dui $$39 = $$4.a($$37, $$36, false);
+            dbg $$38 = new dbg($$37, $$36);
+            duj $$39 = $$4.a($$37, $$36, false);
             if ($$39 != null && (!$$2 || !$$39.s())) {
                for (iz $$40 : iz.b($$38.d(), $$3.I_(), $$38.e(), $$38.f(), $$3.am() - 1, $$38.g())) {
                   $$4.a($$40);

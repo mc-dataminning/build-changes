@@ -1,70 +1,92 @@
-import com.google.common.collect.Lists;
-import java.util.List;
-import javax.annotation.Nullable;
+import java.util.Locale;
 
-public class ejc implements eip {
-   private final List<eio> a = Lists.newArrayList();
+public interface ejc {
+   ejc a = a(eko.a::new, "MSCorridor");
+   ejc b = a(eko.b::new, "MSCrossing");
+   ejc c = a(eko.d::new, "MSRoom");
+   ejc d = a(eko.e::new, "MSStairs");
+   ejc e = a(ekq.a::new, "NeBCr");
+   ejc f = a(ekq.b::new, "NeBEF");
+   ejc g = a(ekq.c::new, "NeBS");
+   ejc h = a(ekq.d::new, "NeCCS");
+   ejc i = a(ekq.e::new, "NeCTB");
+   ejc j = a(ekq.f::new, "NeCE");
+   ejc k = a(ekq.g::new, "NeSCSC");
+   ejc l = a(ekq.h::new, "NeSCLT");
+   ejc m = a(ekq.i::new, "NeSC");
+   ejc n = a(ekq.j::new, "NeSCRT");
+   ejc o = a(ekq.k::new, "NeCSR");
+   ejc p = a(ekq.l::new, "NeMT");
+   ejc q = a(ekq.o::new, "NeRC");
+   ejc r = a(ekq.p::new, "NeSR");
+   ejc s = a(ekq.q::new, "NeStart");
+   ejc t = a(elc.a::new, "SHCC");
+   ejc u = a(elc.b::new, "SHFC");
+   ejc v = a(elc.c::new, "SH5C");
+   ejc w = a(elc.d::new, "SHLT");
+   ejc x = a(elc.e::new, "SHLi");
+   ejc y = a(elc.g::new, "SHPR");
+   ejc z = a(elc.h::new, "SHPH");
+   ejc A = a(elc.i::new, "SHRT");
+   ejc B = a(elc.j::new, "SHRC");
+   ejc C = a(elc.l::new, "SHSD");
+   ejc D = a(elc.m::new, "SHStart");
+   ejc E = a(elc.n::new, "SHS");
+   ejc F = a(elc.o::new, "SHSSD");
+   ejc G = a(ekm::new, "TeJP");
+   ejc H = a(ekw.a::a, "ORP");
+   ejc I = a(ekj.a::new, "Iglu");
+   ejc J = a(eky::new, "RUPO");
+   ejc K = a(ele::new, "TeSH");
+   ejc L = a(ekf::new, "TeDP");
+   ejc M = a(eku.h::new, "OMB");
+   ejc N = a(eku.j::new, "OMCR");
+   ejc O = a(eku.k::new, "OMDXR");
+   ejc P = a(eku.l::new, "OMDXYR");
+   ejc Q = a(eku.m::new, "OMDYR");
+   ejc R = a(eku.n::new, "OMDYZR");
+   ejc S = a(eku.o::new, "OMDZR");
+   ejc T = a(eku.p::new, "OMEntry");
+   ejc U = a(eku.q::new, "OMPenthouse");
+   ejc V = a(eku.s::new, "OMSimple");
+   ejc W = a(eku.t::new, "OMSimpleT");
+   ejc X = a(eku.u::new, "OMWR");
+   ejc Y = a(ekh.a::new, "ECP");
+   ejc Z = a(elg.i::new, "WMP");
+   ejc aa = a(ekd.a::new, "BTP");
+   ejc ab = a(ela.a::new, "Shipwreck");
+   ejc ac = a(eks.a::new, "NeFos");
+   ejc ad = a(eih::new, "jigsaw");
 
-   @Override
-   public void a(eio $$0) {
-      this.a.add($$0);
+   eip load(ejb var1, us var2);
+
+   private static ejc a(ejc $$0, String $$1) {
+      return jv.a(lp.S, $$1.toLowerCase(Locale.ROOT), $$0);
    }
 
-   @Nullable
-   @Override
-   public eio a(eic $$0) {
-      return eio.a(this.a, $$0);
+   private static ejc a(ejc.a $$0, String $$1) {
+      return a((ejc)$$0, $$1);
    }
 
-   @Deprecated
-   public void a(int $$0) {
-      for (eio $$1 : this.a) {
-         $$1.a(0, $$0, 0);
+   private static ejc a(ejc.b $$0, String $$1) {
+      return a((ejc)$$0, $$1);
+   }
+
+   public interface a extends ejc {
+      eip load(us var1);
+
+      @Override
+      default eip load(ejb $$0, us $$1) {
+         return this.load($$1);
       }
    }
 
-   @Deprecated
-   public int a(int $$0, int $$1, azh $$2, int $$3) {
-      int $$4 = $$0 - $$3;
-      eic $$5 = this.d();
-      int $$6 = $$5.e() + $$1 + 1;
-      if ($$6 < $$4) {
-         $$6 += $$2.a($$4 - $$6);
+   public interface b extends ejc {
+      eip load(emm var1, us var2);
+
+      @Override
+      default eip load(ejb $$0, us $$1) {
+         return this.load($$0.c(), $$1);
       }
-
-      int $$7 = $$6 - $$5.l();
-      this.a($$7);
-      return $$7;
-   }
-
-   /** @deprecated */
-   public void a(azh $$0, int $$1, int $$2) {
-      eic $$3 = this.d();
-      int $$4 = $$2 - $$1 + 1 - $$3.e();
-      int $$5;
-      if ($$4 > 1) {
-         $$5 = $$1 + $$0.a($$4);
-      } else {
-         $$5 = $$1;
-      }
-
-      int $$7 = $$5 - $$3.i();
-      this.a($$7);
-   }
-
-   public eiz a() {
-      return new eiz(this.a);
-   }
-
-   public void b() {
-      this.a.clear();
-   }
-
-   public boolean c() {
-      return this.a.isEmpty();
-   }
-
-   public eic d() {
-      return eio.a(this.a.stream());
    }
 }

@@ -1,8 +1,17 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+class bsn extends bsb {
+   protected bsn(bsc $$0, int $$1) {
+      super($$0, $$1);
+   }
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface bsn {
+   @Override
+   public boolean a(btq $$0, int $$1) {
+      $$0.a($$0.dQ().p(), 1.0F);
+      return true;
+   }
+
+   @Override
+   public boolean a(int $$0, int $$1) {
+      int $$2 = 40 >> $$1;
+      return $$2 > 0 ? $$0 % $$2 == 0 : true;
+   }
 }

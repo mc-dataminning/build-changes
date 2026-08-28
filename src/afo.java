@@ -5,7 +5,7 @@ public class afo implements zw<aci> {
    private final int b;
    private final int c;
 
-   public afo(bsu $$0, @Nullable bsu $$1) {
+   public afo(bsv $$0, @Nullable bsv $$1) {
       this.b = $$0.al();
       this.c = $$1 != null ? $$1.al() : 0;
    }

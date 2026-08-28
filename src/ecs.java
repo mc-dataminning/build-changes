@@ -1,20 +1,96 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class ecs {
-   public static final Codec<ecs> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(eho.b.fieldOf("feature").forGetter($$0x -> $$0x.b), Codec.floatRange(0.0F, 1.0F).fieldOf("chance").forGetter($$0x -> $$0x.c))
-            .apply($$0, ecs::new)
-   );
-   public final ji<eho> b;
-   public final float c;
+public class ecs extends eaz<edk> {
+   private static final je[] a = je.values();
 
-   public ecs(ji<eho> $$0, float $$1) {
-      this.b = $$0;
-      this.c = $$1;
+   public ecs(Codec<edk> $$0) {
+      super($$0);
    }
 
-   public boolean a(dct $$0, dtz $$1, azh $$2, iz $$3) {
-      return this.b.a().a($$0, $$1, $$2, $$3);
+   @Override
+   public boolean a(ebb<edk> $$0) {
+      dcu $$1 = $$0.b();
+      iz $$2 = $$0.e();
+      azh $$3 = $$0.d();
+      if (!$$1.u($$2)) {
+         return false;
+      } else {
+         dsd $$4 = $$1.a_($$2.c());
+         if (!$$4.a(dfc.dV) && !$$4.a(dfc.kK)) {
+            return false;
+         } else {
+            this.a($$1, $$3, $$2);
+            this.b($$1, $$3, $$2);
+            return true;
+         }
+      }
+   }
+
+   private void a(dca $$0, azh $$1, iz $$2) {
+      $$0.a($$2, dfc.kK.o(), 2);
+      iz.a $$3 = new iz.a();
+      iz.a $$4 = new iz.a();
+
+      for (int $$5 = 0; $$5 < 200; $$5++) {
+         $$3.a($$2, $$1.a(6) - $$1.a(6), $$1.a(2) - $$1.a(5), $$1.a(6) - $$1.a(6));
+         if ($$0.u($$3)) {
+            int $$6 = 0;
+
+            for (je $$7 : a) {
+               dsd $$8 = $$0.a_($$4.a($$3, $$7));
+               if ($$8.a(dfc.dV) || $$8.a(dfc.kK)) {
+                  $$6++;
+               }
+
+               if ($$6 > 1) {
+                  break;
+               }
+            }
+
+            if ($$6 == 1) {
+               $$0.a($$3, dfc.kK.o(), 2);
+            }
+         }
+      }
+   }
+
+   private void b(dca $$0, azh $$1, iz $$2) {
+      iz.a $$3 = new iz.a();
+
+      for (int $$4 = 0; $$4 < 100; $$4++) {
+         $$3.a($$2, $$1.a(8) - $$1.a(8), $$1.a(2) - $$1.a(7), $$1.a(8) - $$1.a(8));
+         if ($$0.u($$3)) {
+            dsd $$5 = $$0.a_($$3.c());
+            if ($$5.a(dfc.dV) || $$5.a(dfc.kK)) {
+               int $$6 = ayz.a($$1, 1, 8);
+               if ($$1.a(6) == 0) {
+                  $$6 *= 2;
+               }
+
+               if ($$1.a(5) == 0) {
+                  $$6 = 1;
+               }
+
+               int $$7 = 17;
+               int $$8 = 25;
+               a($$0, $$1, $$3, $$6, 17, 25);
+            }
+         }
+      }
+   }
+
+   public static void a(dca $$0, azh $$1, iz.a $$2, int $$3, int $$4, int $$5) {
+      for (int $$6 = 0; $$6 <= $$3; $$6++) {
+         if ($$0.u($$2)) {
+            if ($$6 == $$3 || !$$0.u($$2.d())) {
+               $$0.a($$2, dfc.oz.o().a(dip.e, Integer.valueOf(ayz.a($$1, $$4, $$5))), 2);
+               break;
+            }
+
+            $$0.a($$2, dfc.oA.o(), 2);
+         }
+
+         $$2.c(je.a);
+      }
    }
 }

@@ -1,15 +1,58 @@
-public enum dts {
-   a(4259712),
-   b(16724016),
-   c(2138367);
+public interface dts {
+   void a(dtu var1, double var2);
 
-   private final int d;
+   void a(dtu var1, double var2, double var4, long var6);
 
-   private dts(final int $$0) {
-      this.d = $$0;
-   }
+   void a(dtu var1, double var2, double var4);
 
-   public int a() {
-      return this.d;
+   void a(dtu var1, int var2);
+
+   void b(dtu var1, int var2);
+
+   void b(dtu var1, double var2);
+
+   void c(dtu var1, double var2);
+
+   public static class a implements dts {
+      private final dtu a;
+
+      public a(dtu $$0) {
+         this.a = $$0;
+      }
+
+      @Override
+      public void a(dtu $$0, double $$1) {
+         this.a.a($$1);
+      }
+
+      @Override
+      public void a(dtu $$0, double $$1, double $$2, long $$3) {
+         this.a.a($$1, $$2, $$3);
+      }
+
+      @Override
+      public void a(dtu $$0, double $$1, double $$2) {
+         this.a.c($$1, $$2);
+      }
+
+      @Override
+      public void a(dtu $$0, int $$1) {
+         this.a.b($$1);
+      }
+
+      @Override
+      public void b(dtu $$0, int $$1) {
+         this.a.c($$1);
+      }
+
+      @Override
+      public void b(dtu $$0, double $$1) {
+         this.a.c($$1);
+      }
+
+      @Override
+      public void c(dtu $$0, double $$1) {
+         this.a.b($$1);
+      }
    }
 }

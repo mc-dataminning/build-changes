@@ -11,11 +11,11 @@ public class awf extends awd {
    public static final String c = "recipeBook";
    private static final Logger d = LogUtils.getLogger();
 
-   public int a(Collection<cyx<?>> $$0, arg $$1) {
+   public int a(Collection<cyy<?>> $$0, arg $$1) {
       List<alf> $$2 = Lists.newArrayList();
       int $$3 = 0;
 
-      for (cyx<?> $$4 : $$0) {
+      for (cyy<?> $$4 : $$0) {
          alf $$5 = $$4.a();
          if (!this.a.contains($$5) && !$$4.b().an_()) {
             this.a($$5);
@@ -33,11 +33,11 @@ public class awf extends awd {
       return $$3;
    }
 
-   public int b(Collection<cyx<?>> $$0, arg $$1) {
+   public int b(Collection<cyy<?>> $$0, arg $$1) {
       List<alf> $$2 = Lists.newArrayList();
       int $$3 = 0;
 
-      for (cyx<?> $$4 : $$0) {
+      for (cyy<?> $$4 : $$0) {
          alf $$5 = $$4.a();
          if (this.a.contains($$5)) {
             this.c($$5);
@@ -74,7 +74,7 @@ public class awf extends awd {
       return $$0;
    }
 
-   public void a(us $$0, cyy $$1) {
+   public void a(us $$0, cyz $$1) {
       this.a(awe.a($$0));
       uy $$2 = $$0.c("recipes", 8);
       this.a($$2, this::a, $$1);
@@ -82,13 +82,13 @@ public class awf extends awd {
       this.a($$3, this::f, $$1);
    }
 
-   private void a(uy $$0, Consumer<cyx<?>> $$1, cyy $$2) {
+   private void a(uy $$0, Consumer<cyy<?>> $$1, cyz $$2) {
       for (int $$3 = 0; $$3 < $$0.size(); $$3++) {
          String $$4 = $$0.j($$3);
 
          try {
             alf $$5 = new alf($$4);
-            Optional<cyx<?>> $$6 = $$2.a($$5);
+            Optional<cyy<?>> $$6 = $$2.a($$5);
             if ($$6.isEmpty()) {
                d.error("Tried to load unrecognized recipe: {} removed now.", $$5);
             } else {

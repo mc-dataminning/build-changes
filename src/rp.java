@@ -2,201 +2,201 @@ import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableList.Builder;
 
 public class rp {
-   private static final dyl.o a = a(dfb.a);
-   private static final dyl.o b = a(dfb.F);
-   private static final dyl.o c = a(dfb.hj);
-   private static final dyl.o d = a(dfb.hk);
-   private static final dyl.o e = a(dfb.iA);
-   private static final dyl.o f = a(dfb.K);
-   private static final dyl.o g = a(dfb.jp);
-   private static final dyl.o h = a(dfb.b);
-   private static final dyl.o i = a(dfb.sJ);
-   private static final dyl.o j = a(dfb.j);
-   private static final dyl.o k = a(dfb.l);
-   private static final dyl.o l = a(dfb.k);
-   private static final dyl.o m = a(dfb.fl);
-   private static final dyl.o n = a(dfb.i);
-   private static final dyl.o o = a(dfb.qN);
-   private static final dyl.o p = a(dfb.L);
-   private static final dyl.o q = a(dfb.I);
-   private static final dyl.o r = a(dfb.aV);
-   private static final dyl.o s = a(dfb.iC);
-   private static final dyl.o t = a(dfb.dP);
-   private static final dyl.o u = a(dfb.sI);
-   private static final dyl.o v = a(dfb.qP);
-   private static final dyl.o w = a(dfb.dO);
-   private static final dyl.o x = a(dfb.G);
-   private static final dyl.o y = a(dfb.H);
-   private static final dyl.o z = a(dfb.dV);
-   private static final dyl.o A = a(dfb.dW);
-   private static final dyl.o B = a(dfb.dX);
-   private static final dyl.o C = a(dfb.dY);
-   private static final dyl.o D = a(dfb.pr);
-   private static final dyl.o E = a(dfb.op);
-   private static final dyl.o F = a(dfb.on);
-   private static final dyl.o G = a(dfb.kK);
-   private static final dyl.o H = a(dfb.ow);
-   private static final dyl.o I = a(dfb.fz);
+   private static final dym.o a = a(dfc.a);
+   private static final dym.o b = a(dfc.F);
+   private static final dym.o c = a(dfc.hj);
+   private static final dym.o d = a(dfc.hk);
+   private static final dym.o e = a(dfc.iA);
+   private static final dym.o f = a(dfc.K);
+   private static final dym.o g = a(dfc.jp);
+   private static final dym.o h = a(dfc.b);
+   private static final dym.o i = a(dfc.sJ);
+   private static final dym.o j = a(dfc.j);
+   private static final dym.o k = a(dfc.l);
+   private static final dym.o l = a(dfc.k);
+   private static final dym.o m = a(dfc.fl);
+   private static final dym.o n = a(dfc.i);
+   private static final dym.o o = a(dfc.qN);
+   private static final dym.o p = a(dfc.L);
+   private static final dym.o q = a(dfc.I);
+   private static final dym.o r = a(dfc.aV);
+   private static final dym.o s = a(dfc.iC);
+   private static final dym.o t = a(dfc.dP);
+   private static final dym.o u = a(dfc.sI);
+   private static final dym.o v = a(dfc.qP);
+   private static final dym.o w = a(dfc.dO);
+   private static final dym.o x = a(dfc.G);
+   private static final dym.o y = a(dfc.H);
+   private static final dym.o z = a(dfc.dV);
+   private static final dym.o A = a(dfc.dW);
+   private static final dym.o B = a(dfc.dX);
+   private static final dym.o C = a(dfc.dY);
+   private static final dym.o D = a(dfc.pr);
+   private static final dym.o E = a(dfc.op);
+   private static final dym.o F = a(dfc.on);
+   private static final dym.o G = a(dfc.kK);
+   private static final dym.o H = a(dfc.ow);
+   private static final dym.o I = a(dfc.fz);
 
-   private static dyl.o a(dez $$0) {
-      return dyl.a($$0.o());
+   private static dym.o a(dfa $$0) {
+      return dym.a($$0.o());
    }
 
-   public static dyl.o a() {
+   public static dym.o a() {
       return a(true, false, true);
    }
 
-   public static dyl.o a(boolean $$0, boolean $$1, boolean $$2) {
-      dyl.f $$3 = dyl.a(dyo.a(97), 2);
-      dyl.f $$4 = dyl.a(dyo.a(256), 0);
-      dyl.f $$5 = dyl.b(dyo.a(63), -1);
-      dyl.f $$6 = dyl.b(dyo.a(74), 1);
-      dyl.f $$7 = dyl.a(dyo.a(60), 0);
-      dyl.f $$8 = dyl.a(dyo.a(62), 0);
-      dyl.f $$9 = dyl.a(dyo.a(63), 0);
-      dyl.f $$10 = dyl.a(-1, 0);
-      dyl.f $$11 = dyl.a(0, 0);
-      dyl.f $$12 = dyl.b(-6, -1);
-      dyl.f $$13 = dyl.b();
-      dyl.f $$14 = dyl.a(dde.W, dde.X);
-      dyl.f $$15 = dyl.a();
-      dyl.o $$16 = dyl.a(dyl.a($$11, n), j);
-      dyl.o $$17 = dyl.a(dyl.a(dyl.e, r), q);
-      dyl.o $$18 = dyl.a(dyl.a(dyl.e, h), p);
-      dyl.f $$19 = dyl.a(dde.P, dde.M, dde.N);
-      dyl.f $$20 = dyl.a(dde.f);
-      dyl.o $$21 = dyl.a(
-         dyl.a(dyl.a(dde.J), dyl.a(dyl.a(dyl.a(dyd.X, -0.0125, 0.0125), o), h)),
-         dyl.a(dyl.a(dde.O), dyl.a(dyl.a(dyl.a(dyd.Y, -0.05, 0.05), $$18), h)),
-         dyl.a(dyl.a(dde.t), dyl.a(a(1.0), h)),
-         dyl.a($$19, $$17),
-         dyl.a($$20, $$17),
-         dyl.a(dyl.a(dde.Z), h)
+   public static dym.o a(boolean $$0, boolean $$1, boolean $$2) {
+      dym.f $$3 = dym.a(dyp.a(97), 2);
+      dym.f $$4 = dym.a(dyp.a(256), 0);
+      dym.f $$5 = dym.b(dyp.a(63), -1);
+      dym.f $$6 = dym.b(dyp.a(74), 1);
+      dym.f $$7 = dym.a(dyp.a(60), 0);
+      dym.f $$8 = dym.a(dyp.a(62), 0);
+      dym.f $$9 = dym.a(dyp.a(63), 0);
+      dym.f $$10 = dym.a(-1, 0);
+      dym.f $$11 = dym.a(0, 0);
+      dym.f $$12 = dym.b(-6, -1);
+      dym.f $$13 = dym.b();
+      dym.f $$14 = dym.a(ddf.W, ddf.X);
+      dym.f $$15 = dym.a();
+      dym.o $$16 = dym.a(dym.a($$11, n), j);
+      dym.o $$17 = dym.a(dym.a(dym.e, r), q);
+      dym.o $$18 = dym.a(dym.a(dym.e, h), p);
+      dym.f $$19 = dym.a(ddf.P, ddf.M, ddf.N);
+      dym.f $$20 = dym.a(ddf.f);
+      dym.o $$21 = dym.a(
+         dym.a(dym.a(ddf.J), dym.a(dym.a(dym.a(dye.X, -0.0125, 0.0125), o), h)),
+         dym.a(dym.a(ddf.O), dym.a(dym.a(dym.a(dye.Y, -0.05, 0.05), $$18), h)),
+         dym.a(dym.a(ddf.t), dym.a(a(1.0), h)),
+         dym.a($$19, $$17),
+         dym.a($$20, $$17),
+         dym.a(dym.a(ddf.Z), h)
       );
-      dyl.o $$22 = dyl.a(dyl.a(dyd.Z, 0.45, 0.58), dyl.a($$11, v));
-      dyl.o $$23 = dyl.a(dyl.a(dyd.Z, 0.35, 0.6), dyl.a($$11, v));
-      dyl.o $$24 = dyl.a(
-         dyl.a(dyl.a(dde.H), dyl.a(dyl.a($$15, s), dyl.a(dyl.a(dyd.aa, -0.5, 0.2), s), dyl.a(dyl.a(dyd.ab, -0.0625, 0.025), w), dyl.a($$11, t))),
-         dyl.a(dyl.a(dde.G), dyl.a(dyl.a($$15, h), $$22, dyl.a($$11, t))),
-         dyl.a(dyl.a(dde.I), h),
-         dyl.a(dyl.a(dde.F), dyl.a($$22, j)),
+      dym.o $$22 = dym.a(dym.a(dye.Z, 0.45, 0.58), dym.a($$11, v));
+      dym.o $$23 = dym.a(dym.a(dye.Z, 0.35, 0.6), dym.a($$11, v));
+      dym.o $$24 = dym.a(
+         dym.a(dym.a(ddf.H), dym.a(dym.a($$15, s), dym.a(dym.a(dye.aa, -0.5, 0.2), s), dym.a(dym.a(dye.ab, -0.0625, 0.025), w), dym.a($$11, t))),
+         dym.a(dym.a(ddf.G), dym.a(dym.a($$15, h), $$22, dym.a($$11, t))),
+         dym.a(dym.a(ddf.I), h),
+         dym.a(dym.a(ddf.F), dym.a($$22, j)),
          $$21,
-         dyl.a(dyl.a(dde.w), dyl.a(a(1.75), h)),
-         dyl.a(dyl.a(dde.u), dyl.a(dyl.a(a(2.0), $$18), dyl.a(a(1.0), h), dyl.a(a(-1.0), j), $$18)),
-         dyl.a(dyl.a(dde.h), u),
+         dym.a(dym.a(ddf.w), dym.a(a(1.75), h)),
+         dym.a(dym.a(ddf.u), dym.a(dym.a(a(2.0), $$18), dym.a(a(1.0), h), dym.a(a(-1.0), j), $$18)),
+         dym.a(dym.a(ddf.h), u),
          j
       );
-      dyl.o $$25 = dyl.a(
-         dyl.a(dyl.a(dde.H), dyl.a(dyl.a($$15, s), dyl.a(dyl.a(dyd.aa, 0.0, 0.2), s), dyl.a(dyl.a(dyd.ab, 0.0, 0.025), w), dyl.a($$11, t))),
-         dyl.a(dyl.a(dde.G), dyl.a(dyl.a($$15, h), $$23, dyl.a($$11, t))),
-         dyl.a(dyl.a(dde.I), dyl.a(dyl.a($$15, h), dyl.a($$11, t))),
-         dyl.a(dyl.a(dde.F), dyl.a($$23, dyl.a($$11, t))),
+      dym.o $$25 = dym.a(
+         dym.a(dym.a(ddf.H), dym.a(dym.a($$15, s), dym.a(dym.a(dye.aa, 0.0, 0.2), s), dym.a(dym.a(dye.ab, 0.0, 0.025), w), dym.a($$11, t))),
+         dym.a(dym.a(ddf.G), dym.a(dym.a($$15, h), $$23, dym.a($$11, t))),
+         dym.a(dym.a(ddf.I), dym.a(dym.a($$15, h), dym.a($$11, t))),
+         dym.a(dym.a(ddf.F), dym.a($$23, dym.a($$11, t))),
          $$21,
-         dyl.a(dyl.a(dde.w), dyl.a(dyl.a(a(1.75), h), dyl.a(a(-0.5), l))),
-         dyl.a(dyl.a(dde.u), dyl.a(dyl.a(a(2.0), $$18), dyl.a(a(1.0), h), dyl.a(a(-1.0), $$16), $$18)),
-         dyl.a(dyl.a(dde.n, dde.o), dyl.a(dyl.a(a(1.75), l), dyl.a(a(-0.95), k))),
-         dyl.a(dyl.a(dde.e), dyl.a($$11, t)),
-         dyl.a(dyl.a(dde.h), u),
-         dyl.a(dyl.a(dde.Y), m),
+         dym.a(dym.a(ddf.w), dym.a(dym.a(a(1.75), h), dym.a(a(-0.5), l))),
+         dym.a(dym.a(ddf.u), dym.a(dym.a(a(2.0), $$18), dym.a(a(1.0), h), dym.a(a(-1.0), $$16), $$18)),
+         dym.a(dym.a(ddf.n, ddf.o), dym.a(dym.a(a(1.75), l), dym.a(a(-0.95), k))),
+         dym.a(dym.a(ddf.e), dym.a($$11, t)),
+         dym.a(dym.a(ddf.h), u),
+         dym.a(dym.a(ddf.Y), m),
          $$16
       );
-      dyl.f $$26 = dyl.a(dyd.N, -0.909, -0.5454);
-      dyl.f $$27 = dyl.a(dyd.N, -0.1818, 0.1818);
-      dyl.f $$28 = dyl.a(dyd.N, 0.5454, 0.909);
-      dyl.o $$29 = dyl.a(
-         dyl.a(
-            dyl.a,
-            dyl.a(
-               dyl.a(dyl.a(dde.C), dyl.a($$3, dyl.a(dyl.a($$26, l), dyl.a($$27, l), dyl.a($$28, l), $$16))),
-               dyl.a(dyl.a(dde.g), dyl.a($$8, dyl.a(dyl.a($$9), dyl.a(dyl.a(dyd.W, 0.0), x)))),
-               dyl.a(dyl.a(dde.h), dyl.a($$7, dyl.a(dyl.a($$9), dyl.a(dyl.a(dyd.W, 0.0), x))))
+      dym.f $$26 = dym.a(dye.N, -0.909, -0.5454);
+      dym.f $$27 = dym.a(dye.N, -0.1818, 0.1818);
+      dym.f $$28 = dym.a(dye.N, 0.5454, 0.909);
+      dym.o $$29 = dym.a(
+         dym.a(
+            dym.a,
+            dym.a(
+               dym.a(dym.a(ddf.C), dym.a($$3, dym.a(dym.a($$26, l), dym.a($$27, l), dym.a($$28, l), $$16))),
+               dym.a(dym.a(ddf.g), dym.a($$8, dym.a(dym.a($$9), dym.a(dym.a(dye.W, 0.0), x)))),
+               dym.a(dym.a(ddf.h), dym.a($$7, dym.a(dym.a($$9), dym.a(dym.a(dye.W, 0.0), x))))
             )
          ),
-         dyl.a(
-            dyl.a(dde.A, dde.B, dde.C),
-            dyl.a(
-               dyl.a(
-                  dyl.a,
-                  dyl.a(
-                     dyl.a($$4, d),
-                     dyl.a($$6, dyl.a(dyl.a($$26, e), dyl.a($$27, e), dyl.a($$28, e), dyl.e())),
-                     dyl.a($$10, dyl.a(dyl.a(dyl.e, g), f)),
-                     dyl.a(dyl.a($$13), d),
-                     dyl.a($$12, c),
+         dym.a(
+            dym.a(ddf.A, ddf.B, ddf.C),
+            dym.a(
+               dym.a(
+                  dym.a,
+                  dym.a(
+                     dym.a($$4, d),
+                     dym.a($$6, dym.a(dym.a($$26, e), dym.a($$27, e), dym.a($$28, e), dym.e())),
+                     dym.a($$10, dym.a(dym.a(dym.e, g), f)),
+                     dym.a(dym.a($$13), d),
+                     dym.a($$12, c),
                      $$18
                   )
                ),
-               dyl.a($$5, dyl.a(dyl.a($$9, dyl.a(dyl.a($$6), d)), dyl.e())),
-               dyl.a(dyl.b, dyl.a($$12, c))
+               dym.a($$5, dym.a(dym.a($$9, dym.a(dym.a($$6), d)), dym.e())),
+               dym.a(dym.b, dym.a($$12, c))
             )
          ),
-         dyl.a(dyl.a, dyl.a($$10, dyl.a(dyl.a($$14, dyl.a($$13, dyl.a(dyl.a($$11, a), dyl.a(dyl.d(), w), x))), $$25))),
-         dyl.a($$12, dyl.a(dyl.a(dyl.a, dyl.a($$14, dyl.a($$13, x))), dyl.a(dyl.b, $$24), dyl.a($$19, dyl.a(dyl.c, r)), dyl.a($$20, dyl.a(dyl.d, r)))),
-         dyl.a(dyl.a, dyl.a(dyl.a(dyl.a(dde.H, dde.I), h), dyl.a(dyl.a(dde.P, dde.Q, dde.R), $$17), $$18))
+         dym.a(dym.a, dym.a($$10, dym.a(dym.a($$14, dym.a($$13, dym.a(dym.a($$11, a), dym.a(dym.d(), w), x))), $$25))),
+         dym.a($$12, dym.a(dym.a(dym.a, dym.a($$14, dym.a($$13, x))), dym.a(dym.b, $$24), dym.a($$19, dym.a(dym.c, r)), dym.a($$20, dym.a(dym.d, r)))),
+         dym.a(dym.a, dym.a(dym.a(dym.a(ddf.H, ddf.I), h), dym.a(dym.a(ddf.P, ddf.Q, ddf.R), $$17), $$18))
       );
-      Builder<dyl.o> $$30 = ImmutableList.builder();
+      Builder<dym.o> $$30 = ImmutableList.builder();
       if ($$1) {
-         $$30.add(dyl.a(dyl.a(dyl.a("bedrock_roof", dyo.c(5), dyo.b())), b));
+         $$30.add(dym.a(dym.a(dym.a("bedrock_roof", dyp.c(5), dyp.b())), b));
       }
 
       if ($$2) {
-         $$30.add(dyl.a(dyl.a("bedrock_floor", dyo.a(), dyo.b(5)), b));
+         $$30.add(dym.a(dym.a("bedrock_floor", dyp.a(), dyp.b(5)), b));
       }
 
-      dyl.o $$31 = dyl.a(dyl.c(), $$29);
+      dym.o $$31 = dym.a(dym.c(), $$29);
       $$30.add($$0 ? $$31 : $$29);
-      $$30.add(dyl.a(dyl.a("deepslate", dyo.a(0), dyo.a(8)), i));
-      return dyl.a((dyl.o[])$$30.build().toArray(dyl.o[]::new));
+      $$30.add(dym.a(dym.a("deepslate", dyp.a(0), dyp.a(8)), i));
+      return dym.a((dym.o[])$$30.build().toArray(dym.o[]::new));
    }
 
-   public static dyl.o b() {
-      dyl.f $$0 = dyl.a(dyo.a(31), 0);
-      dyl.f $$1 = dyl.a(dyo.a(32), 0);
-      dyl.f $$2 = dyl.b(dyo.a(30), 0);
-      dyl.f $$3 = dyl.a(dyl.b(dyo.a(35), 0));
-      dyl.f $$4 = dyl.a(dyo.c(5), 0);
-      dyl.f $$5 = dyl.b();
-      dyl.f $$6 = dyl.a(dyd.ac, -0.012);
-      dyl.f $$7 = dyl.a(dyd.ad, -0.012);
-      dyl.f $$8 = dyl.a(dyd.ae, -0.012);
-      dyl.f $$9 = dyl.a(dyd.af, 0.54);
-      dyl.f $$10 = dyl.a(dyd.ag, 1.17);
-      dyl.f $$11 = dyl.a(dyd.ah, 0.0);
-      dyl.o $$12 = dyl.a($$8, dyl.a($$2, dyl.a($$3, p)));
-      return dyl.a(
-         dyl.a(dyl.a("bedrock_floor", dyo.a(), dyo.b(5)), b),
-         dyl.a(dyl.a(dyl.a("bedrock_roof", dyo.c(5), dyo.b())), b),
-         dyl.a($$4, z),
-         dyl.a(dyl.a(dde.ag), dyl.a(dyl.a(dyl.f, C), dyl.a(dyl.b, dyl.a($$12, dyl.a($$11, C), D)))),
-         dyl.a(dyl.a(dde.af), dyl.a(dyl.a(dyl.f, dyl.a(dyl.a($$11, A), B)), dyl.a(dyl.b, dyl.a($$12, dyl.a($$11, A), B)))),
-         dyl.a(
-            dyl.a,
-            dyl.a(
-               dyl.a(dyl.a($$1), dyl.a($$5, y)),
-               dyl.a(dyl.a(dde.ad), dyl.a(dyl.a($$9), dyl.a($$0, dyl.a(dyl.a($$10, E), F)))),
-               dyl.a(dyl.a(dde.ae), dyl.a(dyl.a($$9), dyl.a($$0, dyl.a(dyl.a($$10, G), H))))
+   public static dym.o b() {
+      dym.f $$0 = dym.a(dyp.a(31), 0);
+      dym.f $$1 = dym.a(dyp.a(32), 0);
+      dym.f $$2 = dym.b(dyp.a(30), 0);
+      dym.f $$3 = dym.a(dym.b(dyp.a(35), 0));
+      dym.f $$4 = dym.a(dyp.c(5), 0);
+      dym.f $$5 = dym.b();
+      dym.f $$6 = dym.a(dye.ac, -0.012);
+      dym.f $$7 = dym.a(dye.ad, -0.012);
+      dym.f $$8 = dym.a(dye.ae, -0.012);
+      dym.f $$9 = dym.a(dye.af, 0.54);
+      dym.f $$10 = dym.a(dye.ag, 1.17);
+      dym.f $$11 = dym.a(dye.ah, 0.0);
+      dym.o $$12 = dym.a($$8, dym.a($$2, dym.a($$3, p)));
+      return dym.a(
+         dym.a(dym.a("bedrock_floor", dyp.a(), dyp.b(5)), b),
+         dym.a(dym.a(dym.a("bedrock_roof", dyp.c(5), dyp.b())), b),
+         dym.a($$4, z),
+         dym.a(dym.a(ddf.ag), dym.a(dym.a(dym.f, C), dym.a(dym.b, dym.a($$12, dym.a($$11, C), D)))),
+         dym.a(dym.a(ddf.af), dym.a(dym.a(dym.f, dym.a(dym.a($$11, A), B)), dym.a(dym.b, dym.a($$12, dym.a($$11, A), B)))),
+         dym.a(
+            dym.a,
+            dym.a(
+               dym.a(dym.a($$1), dym.a($$5, y)),
+               dym.a(dym.a(ddf.ad), dym.a(dym.a($$9), dym.a($$0, dym.a(dym.a($$10, E), F)))),
+               dym.a(dym.a(ddf.ae), dym.a(dym.a($$9), dym.a($$0, dym.a(dym.a($$10, G), H))))
             )
          ),
-         dyl.a(
-            dyl.a(dde.ac),
-            dyl.a(
-               dyl.a(dyl.b, dyl.a($$6, dyl.a(dyl.a(dyl.a($$5), dyl.a($$2, dyl.a($$3, A))), z))),
-               dyl.a(dyl.a, dyl.a($$0, dyl.a($$3, dyl.a($$7, dyl.a(dyl.a($$1, p), dyl.a(dyl.a($$5), p))))))
+         dym.a(
+            dym.a(ddf.ac),
+            dym.a(
+               dym.a(dym.b, dym.a($$6, dym.a(dym.a(dym.a($$5), dym.a($$2, dym.a($$3, A))), z))),
+               dym.a(dym.a, dym.a($$0, dym.a($$3, dym.a($$7, dym.a(dym.a($$1, p), dym.a(dym.a($$5), p))))))
             )
          ),
          z
       );
    }
 
-   public static dyl.o c() {
+   public static dym.o c() {
       return I;
    }
 
-   public static dyl.o d() {
+   public static dym.o d() {
       return a;
    }
 
-   private static dyl.f a(double $$0) {
-      return dyl.a(dyd.N, $$0 / 8.25, Double.MAX_VALUE);
+   private static dym.f a(double $$0) {
+      return dym.a(dye.N, $$0 / 8.25, Double.MAX_VALUE);
    }
 }

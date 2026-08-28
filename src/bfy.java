@@ -71,7 +71,7 @@ public class bfy extends DataFix {
             $$0x -> $$0x.update(
                   DSL.remainderFinder(),
                   $$0xx -> $$0xx.update(
-                        "id", $$0xxx -> Objects.equals(bii.a($$0xxx.asString("")), "minecraft:new_village") ? $$0xxx.createString("minecraft:village") : $$0xxx
+                        "id", $$0xxx -> Objects.equals(bij.a($$0xxx.asString("")), "minecraft:new_village") ? $$0xxx.createString("minecraft:village") : $$0xxx
                      )
                )
          )

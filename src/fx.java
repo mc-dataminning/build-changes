@@ -24,7 +24,7 @@ public class fx implements ArgumentType<Integer> {
 
    public Integer a(StringReader $$0) throws CommandSyntaxException {
       String $$1 = et.a($$0, $$0x -> $$0x != ' ');
-      crq $$2 = crr.a($$1);
+      crr $$2 = crs.a($$1);
       if ($$2 == null) {
          throw b.createWithContext($$0, $$1);
       } else if ($$2.b() != 1) {
@@ -35,7 +35,7 @@ public class fx implements ArgumentType<Integer> {
    }
 
    public <S> CompletableFuture<Suggestions> listSuggestions(CommandContext<S> $$0, SuggestionsBuilder $$1) {
-      return eu.b(crr.b(), $$1);
+      return eu.b(crs.b(), $$1);
    }
 
    public Collection<String> getExamples() {

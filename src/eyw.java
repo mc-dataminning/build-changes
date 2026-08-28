@@ -1,29 +1,51 @@
-import java.nio.ByteBuffer;
-import org.lwjgl.system.MemoryUtil;
-import org.lwjgl.system.MemoryUtil.MemoryAllocator;
+import ca.weblite.objc.Client;
+import ca.weblite.objc.NSObject;
+import com.sun.jna.Pointer;
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.Base64;
+import java.util.Optional;
+import org.lwjgl.glfw.GLFWNativeCocoa;
 
 public class eyw {
-   private static final MemoryAllocator a = MemoryUtil.getAllocator(false);
+   private static final int a = 8;
+   private static final int b = 16384;
 
-   public static ByteBuffer a(int $$0) {
-      long $$1 = a.malloc((long)$$0);
-      if ($$1 == 0L) {
-         throw new OutOfMemoryError("Failed to allocate " + $$0 + " bytes");
-      } else {
-         return MemoryUtil.memByteBuffer($$1, $$0);
-      }
+   public static void a(long $$0) {
+      c($$0).filter(eyw::a).ifPresent(eyw::c);
    }
 
-   public static ByteBuffer a(ByteBuffer $$0, int $$1) {
-      long $$2 = a.realloc(MemoryUtil.memAddress0($$0), (long)$$1);
-      if ($$2 == 0L) {
-         throw new OutOfMemoryError("Failed to resize buffer from " + $$0.capacity() + " bytes to " + $$1 + " bytes");
-      } else {
-         return MemoryUtil.memByteBuffer($$2, $$1);
-      }
+   public static void b(long $$0) {
+      c($$0).ifPresent($$0x -> {
+         long $$1 = b($$0x);
+         $$0x.send("setStyleMask:", new Object[]{$$1 & -9L});
+      });
    }
 
-   public static void a(ByteBuffer $$0) {
-      a.free(MemoryUtil.memAddress0($$0));
+   private static Optional<NSObject> c(long $$0) {
+      long $$1 = GLFWNativeCocoa.glfwGetCocoaWindow($$0);
+      return $$1 != 0L ? Optional.of(new NSObject(new Pointer($$1))) : Optional.empty();
+   }
+
+   private static boolean a(NSObject $$0) {
+      return (b($$0) & 16384L) != 0L;
+   }
+
+   private static long b(NSObject $$0) {
+      return (Long)$$0.sendRaw("styleMask", new Object[0]);
+   }
+
+   private static void c(NSObject $$0) {
+      $$0.send("toggleFullScreen:", new Object[]{Pointer.NULL});
+   }
+
+   public static void a(auh<InputStream> $$0) throws IOException {
+      try (InputStream $$1 = $$0.get()) {
+         String $$2 = Base64.getEncoder().encodeToString($$1.readAllBytes());
+         Client $$3 = Client.getInstance();
+         Object $$4 = $$3.sendProxy("NSData", "alloc", new Object[0]).send("initWithBase64Encoding:", new Object[]{$$2});
+         Object $$5 = $$3.sendProxy("NSImage", "alloc", new Object[0]).send("initWithData:", new Object[]{$$4});
+         $$3.sendProxy("NSApplication", "sharedApplication", new Object[0]).send("setApplicationIconImage:", new Object[]{$$5});
+      }
    }
 }

@@ -1,114 +1,93 @@
-import java.util.function.Predicate;
-
-public abstract class ckd extends bty implements cjv {
-   protected ckd(bta<? extends ckd> $$0, dby $$1) {
+public class ckd extends ckn {
+   public ckd(btb<? extends ckd> $$0, dbz $$1) {
       super($$0, $$1);
-      this.bN = 5;
+   }
+
+   public static bux.a s() {
+      return cke.gw().a(buy.r, 0.2F);
+   }
+
+   public static boolean b(btb<ckd> $$0, dca $$1, btu $$2, iz $$3, azh $$4) {
+      return $$1.al() != bqs.a;
    }
 
    @Override
-   public awb de() {
-      return awb.f;
+   public void a(int $$0, boolean $$1) {
+      super.a($$0, $$1);
+      this.f(buy.a).a((double)($$0 * 3));
    }
 
    @Override
-   public void n_() {
-      this.eV();
-      this.gv();
-      super.n_();
+   public float bt() {
+      return 1.0F;
    }
 
-   protected void gv() {
-      float $$0 = this.bt();
-      if ($$0 > 0.5F) {
-         this.bf += 2;
+   @Override
+   protected lg u() {
+      return li.F;
+   }
+
+   @Override
+   public boolean bQ() {
+      return false;
+   }
+
+   @Override
+   protected int y() {
+      return super.y() * 4;
+   }
+
+   @Override
+   protected void gm() {
+      this.e *= 0.9F;
+   }
+
+   @Override
+   protected void fj() {
+      evs $$0 = this.ds();
+      float $$1 = (float)this.gr() * 0.1F;
+      this.o($$0.c, (double)(this.fh() + $$1), $$0.e);
+      this.av = true;
+   }
+
+   @Override
+   protected void c(axf<env> $$0) {
+      if ($$0 == awv.b) {
+         evs $$1 = this.ds();
+         this.o($$1.c, (double)(0.22F + (float)this.gr() * 0.05F), $$1.e);
+         this.av = true;
+      } else {
+         super.c($$0);
       }
    }
 
    @Override
-   protected boolean X() {
-      return true;
+   protected boolean gn() {
+      return this.db();
    }
 
    @Override
-   protected avz aP() {
-      return awa.mY;
+   protected float go() {
+      return super.go() + 2.0F;
    }
 
    @Override
-   protected avz aQ() {
-      return awa.mX;
-   }
-
-   @Override
-   protected avz d(brn $$0) {
-      return awa.mV;
+   protected avz d(bro $$0) {
+      return this.gs() ? awa.ot : awa.os;
    }
 
    @Override
    protected avz o_() {
-      return awa.mU;
+      return this.gs() ? awa.oh : awa.or;
    }
 
    @Override
-   public btp.a eL() {
-      return new btp.a(awa.mW, awa.mT);
+   protected avz gp() {
+      return this.gs() ? awa.ow : awa.ov;
    }
 
    @Override
-   public float a(iz $$0, dcb $$1) {
-      return -$$1.w($$0);
-   }
-
-   public static boolean a(dcn $$0, iz $$1, azh $$2) {
-      if ($$0.a(dch.a, $$1) > $$2.a(32)) {
-         return false;
-      } else {
-         dvu $$3 = $$0.D_();
-         int $$4 = $$3.e();
-         if ($$4 < 15 && $$0.a(dch.b, $$1) > $$4) {
-            return false;
-         } else {
-            int $$5 = $$0.E().ac() ? $$0.c($$1, 10) : $$0.A($$1);
-            return $$5 <= $$3.d().a($$2);
-         }
-      }
-   }
-
-   public static boolean b(bta<? extends ckd> $$0, dcn $$1, btt $$2, iz $$3, azh $$4) {
-      return $$1.al() != bqr.a && (btt.b($$2) || a($$1, $$3, $$4)) && a($$0, $$1, $$2, $$3, $$4);
-   }
-
-   public static boolean c(bta<? extends ckd> $$0, dbz $$1, btt $$2, iz $$3, azh $$4) {
-      return $$1.al() != bqr.a && a($$0, $$1, $$2, $$3, $$4);
-   }
-
-   public static buw.a gw() {
-      return btr.A().a(bux.c);
-   }
-
-   @Override
-   public boolean eh() {
-      return true;
-   }
-
-   @Override
-   protected boolean ei() {
-      return true;
-   }
-
-   public boolean f(cmx $$0) {
-      return true;
-   }
-
-   @Override
-   public cup g(cup $$0) {
-      if ($$0.g() instanceof cvi) {
-         Predicate<cup> $$1 = ((cvi)$$0.g()).d();
-         cup $$2 = cvi.a(this, $$1);
-         return $$2.e() ? new cup(cus.ov) : $$2;
-      } else {
-         return cup.l;
-      }
+   protected avz gq() {
+      return awa.ou;
    }
 }

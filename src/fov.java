@@ -1,96 +1,108 @@
-public class fov {
-   private static final alf a = new alf("minecraft", "alt");
-   private static final ym b = ym.a.a(a);
-   private static final fov c = new fov();
-   private final azh d = azh.a();
-   private final String[] e = new String[]{
-      "the",
-      "elder",
-      "scrolls",
-      "klaatu",
-      "berata",
-      "niktu",
-      "xyzzy",
-      "bless",
-      "curse",
-      "light",
-      "darkness",
-      "fire",
-      "air",
-      "earth",
-      "water",
-      "hot",
-      "dry",
-      "cold",
-      "wet",
-      "ignite",
-      "snuff",
-      "embiggen",
-      "twist",
-      "shorten",
-      "stretch",
-      "fiddle",
-      "destroy",
-      "imbue",
-      "galvanize",
-      "enchant",
-      "free",
-      "limited",
-      "range",
-      "of",
-      "towards",
-      "inside",
-      "sphere",
-      "cube",
-      "self",
-      "other",
-      "ball",
-      "mental",
-      "physical",
-      "grow",
-      "shrink",
-      "demon",
-      "elemental",
-      "spirit",
-      "animal",
-      "creature",
-      "beast",
-      "humanoid",
-      "undead",
-      "fresh",
-      "stale",
-      "phnglui",
-      "mglwnafh",
-      "cthulhu",
-      "rlyeh",
-      "wgahnagl",
-      "fhtagn",
-      "baguette"
-   };
+import com.google.common.collect.Ordering;
+import java.util.Collection;
+import java.util.List;
+import java.util.Optional;
 
-   private fov() {
+public abstract class fov<T extends cpv> extends foc<T> {
+   private static final alf D = new alf("container/inventory/effect_background_large");
+   private static final alf E = new alf("container/inventory/effect_background_small");
+
+   public fov(T $$0, cmx $$1, xp $$2) {
+      super($$0, $$1, $$2);
    }
 
-   public static fov a() {
-      return c;
+   @Override
+   public void a(fgs $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      this.c($$0, $$1, $$2);
    }
 
-   public xu a(fgp $$0, int $$1) {
-      StringBuilder $$2 = new StringBuilder();
-      int $$3 = this.d.a(2) + 3;
+   public boolean K() {
+      int $$0 = this.z + this.c + 2;
+      int $$1 = this.n - $$0;
+      return $$1 >= 32;
+   }
 
-      for (int $$4 = 0; $$4 < $$3; $$4++) {
-         if ($$4 != 0) {
-            $$2.append(" ");
+   private void c(fgs $$0, int $$1, int $$2) {
+      int $$3 = this.z + this.c + 2;
+      int $$4 = this.n - $$3;
+      Collection<bsd> $$5 = this.m.s.ex();
+      if (!$$5.isEmpty() && $$4 >= 32) {
+         boolean $$6 = $$4 >= 120;
+         int $$7 = 33;
+         if ($$5.size() > 5) {
+            $$7 = 132 / ($$5.size() - 1);
          }
 
-         $$2.append(ac.a(this.e, this.d));
-      }
+         Iterable<bsd> $$8 = Ordering.natural().sortedCopy($$5);
+         this.a($$0, $$3, $$7, $$8, $$6);
+         this.b($$0, $$3, $$7, $$8, $$6);
+         if ($$6) {
+            this.a($$0, $$3, $$7, $$8);
+         } else if ($$1 >= $$3 && $$1 <= $$3 + 33) {
+            int $$9 = this.A;
+            bsd $$10 = null;
 
-      return $$0.b().a(xp.b($$2.toString()).c(b), $$1, ym.a);
+            for (bsd $$11 : $$8) {
+               if ($$2 >= $$9 && $$2 <= $$9 + $$7) {
+                  $$10 = $$11;
+               }
+
+               $$9 += $$7;
+            }
+
+            if ($$10 != null) {
+               List<xp> $$12 = List.of(this.a($$10), bse.a($$10, 1.0F, this.m.r.s().f()));
+               $$0.a(this.p, $$12, Optional.empty(), $$1, $$2);
+            }
+         }
+      }
    }
 
-   public void a(long $$0) {
-      this.d.b($$0);
+   private void a(fgs $$0, int $$1, int $$2, Iterable<bsd> $$3, boolean $$4) {
+      int $$5 = this.A;
+
+      for (bsd $$6 : $$3) {
+         if ($$4) {
+            $$0.a(D, $$1, $$5, 120, 32);
+         } else {
+            $$0.a(E, $$1, $$5, 32, 32);
+         }
+
+         $$5 += $$2;
+      }
+   }
+
+   private void b(fgs $$0, int $$1, int $$2, Iterable<bsd> $$3, boolean $$4) {
+      gpy $$5 = this.m.aF();
+      int $$6 = this.A;
+
+      for (bsd $$7 : $$3) {
+         ji<bsb> $$8 = $$7.c();
+         gpa $$9 = $$5.a($$8);
+         $$0.a($$1 + ($$4 ? 6 : 7), $$6 + 7, 0, 18, 18, $$9);
+         $$6 += $$2;
+      }
+   }
+
+   private void a(fgs $$0, int $$1, int $$2, Iterable<bsd> $$3) {
+      int $$4 = this.A;
+
+      for (bsd $$5 : $$3) {
+         xp $$6 = this.a($$5);
+         $$0.b(this.p, $$6, $$1 + 10 + 18, $$4 + 6, 16777215);
+         xp $$7 = bse.a($$5, 1.0F, this.m.r.s().f());
+         $$0.b(this.p, $$7, $$1 + 10 + 18, $$4 + 6 + 10, 8355711);
+         $$4 += $$2;
+      }
+   }
+
+   private xp a(bsd $$0) {
+      yd $$1 = $$0.c().a().e().f();
+      if ($$0.e() >= 1 && $$0.e() <= 9) {
+         $$1.b(xo.v).b(xp.c("enchantment.level." + ($$0.e() + 1)));
+      }
+
+      return $$1;
    }
 }

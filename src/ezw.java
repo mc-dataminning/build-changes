@@ -1,30 +1,104 @@
-import com.google.common.collect.ImmutableMap;
+public interface ezw extends fad {
+   faf j();
 
-public class ezw {
-   public static final fae a = new fae(0, fae.a.a, fae.b.a, 3);
-   public static final fae b = new fae(0, fae.a.b, fae.b.c, 4);
-   public static final fae c = new fae(0, fae.a.a, fae.b.d, 2);
-   public static final fae d = new fae(1, fae.a.e, fae.b.d, 2);
-   public static final fae e = new fae(2, fae.a.e, fae.b.d, 2);
-   public static final fae f = new fae(0, fae.a.c, fae.b.b, 3);
-   public static final fae g = new fae(0, fae.a.c, fae.b.e, 1);
-   public static final fae h = c;
-   public static final fad i = new fad(ImmutableMap.builder().put("Position", a).put("UV", h).put("Color", b).build());
-   public static final fad j = new fad(
-      ImmutableMap.builder().put("Position", a).put("Color", b).put("UV0", c).put("UV2", e).put("Normal", f).put("Padding", g).build()
-   );
-   public static final fad k = new fad(
-      ImmutableMap.builder().put("Position", a).put("Color", b).put("UV0", c).put("UV1", d).put("UV2", e).put("Normal", f).put("Padding", g).build()
-   );
-   public static final fad l = new fad(ImmutableMap.builder().put("Position", a).put("UV0", c).put("Color", b).put("UV2", e).build());
-   public static final fad m = new fad(ImmutableMap.builder().put("Position", a).build());
-   public static final fad n = new fad(ImmutableMap.builder().put("Position", a).put("Color", b).build());
-   public static final fad o = new fad(ImmutableMap.builder().put("Position", a).put("Color", b).put("Normal", f).put("Padding", g).build());
-   public static final fad p = new fad(ImmutableMap.builder().put("Position", a).put("Color", b).put("UV2", e).build());
-   public static final fad q = new fad(ImmutableMap.builder().put("Position", a).put("UV0", c).build());
-   public static final fad r = new fad(ImmutableMap.builder().put("Position", a).put("Color", b).put("UV0", c).build());
-   public static final fad s = new fad(ImmutableMap.builder().put("Position", a).put("UV0", c).put("Color", b).build());
-   public static final fad t = new fad(ImmutableMap.builder().put("Position", a).put("Color", b).put("UV0", c).put("UV2", e).build());
-   public static final fad u = new fad(ImmutableMap.builder().put("Position", a).put("UV0", c).put("UV2", e).put("Color", b).build());
-   public static final fad v = new fad(ImmutableMap.builder().put("Position", a).put("UV0", c).put("Color", b).put("Normal", f).put("Padding", g).build());
+   void f();
+
+   void a(int var1, byte var2);
+
+   void a(int var1, short var2);
+
+   void a(int var1, float var2);
+
+   @Override
+   default fad a(double $$0, double $$1, double $$2) {
+      if (this.j().b() != faf.b.a) {
+         return this;
+      } else if (this.j().a() == faf.a.a && this.j().c() == 3) {
+         this.a(0, (float)$$0);
+         this.a(4, (float)$$1);
+         this.a(8, (float)$$2);
+         this.f();
+         return this;
+      } else {
+         throw new IllegalStateException();
+      }
+   }
+
+   @Override
+   default fad a(int $$0, int $$1, int $$2, int $$3) {
+      faf $$4 = this.j();
+      if ($$4.b() != faf.b.c) {
+         return this;
+      } else if ($$4.a() == faf.a.b && $$4.c() == 4) {
+         this.a(0, (byte)$$0);
+         this.a(1, (byte)$$1);
+         this.a(2, (byte)$$2);
+         this.a(3, (byte)$$3);
+         this.f();
+         return this;
+      } else {
+         throw new IllegalStateException();
+      }
+   }
+
+   @Override
+   default fad a(float $$0, float $$1) {
+      faf $$2 = this.j();
+      if ($$2.b() == faf.b.d && $$2.d() == 0) {
+         if ($$2.a() == faf.a.a && $$2.c() == 2) {
+            this.a(0, $$0);
+            this.a(4, $$1);
+            this.f();
+            return this;
+         } else {
+            throw new IllegalStateException();
+         }
+      } else {
+         return this;
+      }
+   }
+
+   @Override
+   default fad a(int $$0, int $$1) {
+      return this.a((short)$$0, (short)$$1, 1);
+   }
+
+   @Override
+   default fad b(int $$0, int $$1) {
+      return this.a((short)$$0, (short)$$1, 2);
+   }
+
+   default fad a(short $$0, short $$1, int $$2) {
+      faf $$3 = this.j();
+      if ($$3.b() != faf.b.d || $$3.d() != $$2) {
+         return this;
+      } else if ($$3.a() == faf.a.e && $$3.c() == 2) {
+         this.a(0, $$0);
+         this.a(2, $$1);
+         this.f();
+         return this;
+      } else {
+         throw new IllegalStateException();
+      }
+   }
+
+   @Override
+   default fad a(float $$0, float $$1, float $$2) {
+      faf $$3 = this.j();
+      if ($$3.b() != faf.b.b) {
+         return this;
+      } else if ($$3.a() == faf.a.c && $$3.c() == 3) {
+         this.a(0, a($$0));
+         this.a(1, a($$1));
+         this.a(2, a($$2));
+         this.f();
+         return this;
+      } else {
+         throw new IllegalStateException();
+      }
+   }
+
+   static byte a(float $$0) {
+      return (byte)((int)(ayz.a($$0, -1.0F, 1.0F) * 127.0F) & 0xFF);
+   }
 }

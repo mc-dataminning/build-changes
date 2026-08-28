@@ -3,23 +3,28 @@ import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
 import java.util.function.Consumer;
 
-public class eqt extends era {
-   public static final MapCodec<eqt> a = RecordCodecBuilder.mapCodec($$0 -> b($$0).apply($$0, eqt::new));
+public class eqt extends erb {
+   public static final MapCodec<eqt> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(alf.a.fieldOf("name").forGetter($$0x -> $$0x.j)).and(b($$0)).apply($$0, eqt::new)
+   );
+   private final alf j;
 
-   private eqt(int $$0, int $$1, List<ets> $$2, List<erv> $$3) {
-      super($$0, $$1, $$2, $$3);
+   private eqt(alf $$0, int $$1, int $$2, List<ett> $$3, List<erw> $$4) {
+      super($$1, $$2, $$3, $$4);
+      this.j = $$0;
    }
 
    @Override
-   public eqz a() {
-      return eqw.b;
+   public era a() {
+      return eqx.e;
    }
 
    @Override
-   public void a(Consumer<cup> $$0, eqi $$1) {
+   public void a(Consumer<cuq> $$0, eqj $$1) {
+      $$1.a(this.j, $$0);
    }
 
-   public static era.a<?> b() {
-      return a(eqt::new);
+   public static erb.a<?> a(alf $$0) {
+      return a(($$1, $$2, $$3, $$4) -> new eqt($$0, $$1, $$2, $$3, $$4));
    }
 }

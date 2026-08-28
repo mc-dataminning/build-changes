@@ -1,90 +1,70 @@
-public class cyg extends cyn {
-   public cyg(cyl $$0) {
+import com.google.common.collect.Lists;
+import java.util.List;
+
+public class cyg extends cyo {
+   public cyg(cym $$0) {
       super($$0);
    }
 
-   public boolean a(cqk $$0, dby $$1) {
-      cti $$2 = null;
-      cup $$3 = null;
-      cup $$4 = null;
+   public boolean a(cql $$0, dbz $$1) {
+      cuq $$2 = cuq.l;
+      List<cuq> $$3 = Lists.newArrayList();
 
-      for (int $$5 = 0; $$5 < $$0.b(); $$5++) {
-         cup $$6 = $$0.a($$5);
-         if (!$$6.e()) {
-            cuk $$7 = $$6.g();
-            if (!($$7 instanceof csk)) {
-               return false;
-            }
-
-            csk $$8 = (csk)$$7;
-            if ($$2 == null) {
-               $$2 = $$8.b();
-            } else if ($$2 != $$8.b()) {
-               return false;
-            }
-
-            int $$9 = $$6.a(km.X, doy.a).b().size();
-            if ($$9 > 6) {
-               return false;
-            }
-
-            if ($$9 > 0) {
-               if ($$3 != null) {
+      for (int $$4 = 0; $$4 < $$0.b(); $$4++) {
+         cuq $$5 = $$0.a($$4);
+         if (!$$5.e()) {
+            if ($$5.a(awy.by)) {
+               if (!$$2.e()) {
                   return false;
                }
 
-               $$3 = $$6;
+               $$2 = $$5;
             } else {
-               if ($$4 != null) {
+               if (!($$5.g() instanceof ctk)) {
                   return false;
                }
 
-               $$4 = $$6;
+               $$3.add($$5);
             }
          }
       }
 
-      return $$3 != null && $$4 != null;
+      return !$$2.e() && !$$3.isEmpty();
    }
 
-   public cup a(cqk $$0, jk.a $$1) {
-      for (int $$2 = 0; $$2 < $$0.b(); $$2++) {
-         cup $$3 = $$0.a($$2);
-         if (!$$3.e()) {
-            int $$4 = $$3.a(km.X, doy.a).b().size();
-            if ($$4 > 0 && $$4 <= 6) {
-               return $$3.c(1);
+   public cuq a(cql $$0, jk.a $$1) {
+      List<ctk> $$2 = Lists.newArrayList();
+      cuq $$3 = cuq.l;
+
+      for (int $$4 = 0; $$4 < $$0.b(); $$4++) {
+         cuq $$5 = $$0.a($$4);
+         if (!$$5.e()) {
+            if ($$5.a(awy.by)) {
+               if (!$$3.e()) {
+                  return cuq.l;
+               }
+
+               $$3 = $$5.s();
+            } else {
+               if (!($$5.g() instanceof ctk $$6)) {
+                  return cuq.l;
+               }
+
+               $$2.add($$6);
             }
          }
       }
 
-      return cup.l;
-   }
-
-   public jr<cup> a(cqk $$0) {
-      jr<cup> $$1 = jr.a($$0.b(), cup.l);
-
-      for (int $$2 = 0; $$2 < $$1.size(); $$2++) {
-         cup $$3 = $$0.a($$2);
-         if (!$$3.e()) {
-            if ($$3.g().v()) {
-               $$1.set($$2, new cup($$3.g().u()));
-            } else if (!$$3.a(km.X, doy.a).b().isEmpty()) {
-               $$1.set($$2, $$3.c(1));
-            }
-         }
-      }
-
-      return $$1;
-   }
-
-   @Override
-   public cyz<?> ao_() {
-      return cyz.k;
+      return !$$3.e() && !$$2.isEmpty() ? cxi.a($$3, $$2) : cuq.l;
    }
 
    @Override
    public boolean a(int $$0, int $$1) {
       return $$0 * $$1 >= 2;
+   }
+
+   @Override
+   public cza<?> ao_() {
+      return cza.c;
    }
 }

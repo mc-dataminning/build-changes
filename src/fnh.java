@@ -1,34 +1,35 @@
-import java.util.Arrays;
+import java.util.ArrayList;
+import java.util.List;
+import javax.annotation.Nullable;
 
-public class fnh extends fmv {
-   private static final xp a = xp.c("options.sounds.title");
-   private fib r;
+public class fnh extends fmw {
+   private static final xp a = xp.c("options.skinCustomisation.title");
+   @Nullable
+   private fic r;
 
-   private static ffi<?>[] a(ffj $$0) {
-      return new ffi[]{$$0.W(), $$0.X()};
-   }
-
-   public fnh(fnd $$0, ffj $$1) {
+   public fnh(fne $$0, ffk $$1) {
       super($$0, $$1, a);
    }
 
    @Override
    protected void aM_() {
-      this.r = this.c(new fib(this.m, this.n, this.o, this));
-      this.r.a(this.c.b(awb.a));
-      this.r.a(this.E());
-      this.r.a(this.c.at());
-      this.r.a(a(this.c));
+      this.r = this.c(new fic(this.m, this.n, this.o, this));
+      List<fhd> $$0 = new ArrayList<>();
+
+      for (cmz $$1 : cmz.values()) {
+         $$0.add(fhm.b(this.c.a($$1)).a($$1.d(), ($$1x, $$2) -> this.c.a($$1, $$2)));
+      }
+
+      $$0.add(this.c.v().a(this.c));
+      this.r.a($$0);
       super.aM_();
    }
 
    @Override
    protected void c() {
       super.c();
-      this.r.a(this.n, this.d);
-   }
-
-   private ffi<?>[] E() {
-      return Arrays.stream(awb.values()).filter($$0 -> $$0 != awb.a).map($$0 -> this.c.b($$0)).toArray(ffi[]::new);
+      if (this.r != null) {
+         this.r.a(this.n, this.d);
+      }
    }
 }

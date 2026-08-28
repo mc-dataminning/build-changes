@@ -1,57 +1,58 @@
-import com.google.common.collect.Maps;
+import com.google.gson.annotations.SerializedName;
 import com.mojang.logging.LogUtils;
-import java.io.IOException;
-import java.nio.ByteBuffer;
-import java.util.Base64;
-import java.util.Map;
-import javax.annotation.Nullable;
-import org.lwjgl.system.MemoryUtil;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.NoSuchFileException;
+import java.nio.file.Path;
 import org.slf4j.Logger;
 
 public class fdu {
-   private static final Map<String, fdu.a> a = Maps.newHashMap();
-   private static final Logger b = LogUtils.getLogger();
-   private static final alf c = new alf("textures/gui/presets/isles.png");
+   private static final String a = "realms_persistence.json";
+   private static final fax b = new fax();
+   private static final Logger c = LogUtils.getLogger();
 
-   public static alf a(String $$0, @Nullable String $$1) {
-      return $$1 == null ? c : b($$0, $$1);
+   public fdu.a a() {
+      return b();
    }
 
-   private static alf b(String $$0, String $$1) {
-      fdu.a $$2 = a.get($$0);
-      if ($$2 != null && $$2.a().equals($$1)) {
-         return $$2.b;
-      } else {
-         eyz $$3 = a($$1);
-         if ($$3 == null) {
-            alf $$4 = gop.b();
-            a.put($$0, new fdu.a($$1, $$4));
-            return $$4;
-         } else {
-            alf $$5 = new alf("realms", "dynamic/" + $$0);
-            fff.Q().aa().a($$5, new gom($$3));
-            a.put($$0, new fdu.a($$1, $$5));
-            return $$5;
-         }
-      }
+   public void a(fdu.a $$0) {
+      b($$0);
    }
 
-   @Nullable
-   private static eyz a(String $$0) {
-      byte[] $$1 = Base64.getDecoder().decode($$0);
-      ByteBuffer $$2 = MemoryUtil.memAlloc($$1.length);
+   public static fdu.a b() {
+      Path $$0 = c();
 
       try {
-         return eyz.a($$2.put($$1).flip());
-      } catch (IOException var7) {
-         b.warn("Failed to load world image: {}", $$0, var7);
-      } finally {
-         MemoryUtil.memFree($$2);
+         String $$1 = Files.readString($$0, StandardCharsets.UTF_8);
+         fdu.a $$2 = b.a($$1, fdu.a.class);
+         if ($$2 != null) {
+            return $$2;
+         }
+      } catch (NoSuchFileException var3) {
+      } catch (Exception var4) {
+         c.warn("Failed to read Realms storage {}", $$0, var4);
       }
 
-      return null;
+      return new fdu.a();
    }
 
-   public static record a(String a, alf b) {
+   public static void b(fdu.a $$0) {
+      Path $$1 = c();
+
+      try {
+         Files.writeString($$1, b.a($$0), StandardCharsets.UTF_8);
+      } catch (Exception var3) {
+      }
+   }
+
+   private static Path c() {
+      return ffg.Q().p.toPath().resolve("realms_persistence.json");
+   }
+
+   public static class a implements fbp {
+      @SerializedName("newsLink")
+      public String a;
+      @SerializedName("hasUnreadNews")
+      public boolean b;
    }
 }

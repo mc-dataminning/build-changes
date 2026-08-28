@@ -1,11 +1,18 @@
-import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
 import javax.annotation.Nullable;
 
-public interface ems {
-   Codec<ems> c = lp.p.q().dispatch(ems::a, emt::codec);
+public class ems implements emt {
+   public static final ems a = new ems();
+   public static final MapCodec<ems> b = MapCodec.unit(a);
 
    @Nullable
-   us a(azh var1, @Nullable us var2);
+   @Override
+   public us a(azh $$0, @Nullable us $$1) {
+      return $$1;
+   }
 
-   emt<?> a();
+   @Override
+   public emu<?> a() {
+      return emu.b;
+   }
 }

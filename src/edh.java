@@ -1,62 +1,16 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import it.unimi.dsi.fastutil.objects.ObjectArrayList;
-import java.util.List;
 
-public class edh implements edc {
+public class edh implements edd {
    public static final Codec<edh> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               lp.e.q().fieldOf("block").flatXmap(edh::a, DataResult::success).orElse((djz)dfb.fg).forGetter($$0x -> $$0x.b),
-               Codec.intRange(1, 64).fieldOf("search_range").orElse(10).forGetter($$0x -> $$0x.c),
-               Codec.BOOL.fieldOf("can_place_on_floor").orElse(false).forGetter($$0x -> $$0x.d),
-               Codec.BOOL.fieldOf("can_place_on_ceiling").orElse(false).forGetter($$0x -> $$0x.e),
-               Codec.BOOL.fieldOf("can_place_on_wall").orElse(false).forGetter($$0x -> $$0x.f),
-               Codec.floatRange(0.0F, 1.0F).fieldOf("chance_of_spreading").orElse(0.5F).forGetter($$0x -> $$0x.g),
-               jx.a(lq.f).fieldOf("can_be_placed_on").forGetter($$0x -> $$0x.h)
-            )
+      $$0 -> $$0.group(Codec.intRange(0, dvv.c).fieldOf("height").forGetter($$0x -> $$0x.b), dsd.b.fieldOf("state").forGetter($$0x -> $$0x.c))
             .apply($$0, edh::new)
    );
-   public final djz b;
-   public final int c;
-   public final boolean d;
-   public final boolean e;
-   public final boolean f;
-   public final float g;
-   public final jm<dez> h;
-   private final ObjectArrayList<je> i;
+   public final int b;
+   public final dsd c;
 
-   private static DataResult<djz> a(dez $$0) {
-      return $$0 instanceof djz $$1 ? DataResult.success($$1) : DataResult.error(() -> "Growth block should be a multiface block");
-   }
-
-   public edh(djz $$0, int $$1, boolean $$2, boolean $$3, boolean $$4, float $$5, jm<dez> $$6) {
+   public edh(int $$0, dsd $$1) {
       this.b = $$0;
       this.c = $$1;
-      this.d = $$2;
-      this.e = $$3;
-      this.f = $$4;
-      this.g = $$5;
-      this.h = $$6;
-      this.i = new ObjectArrayList(6);
-      if ($$3) {
-         this.i.add(je.b);
-      }
-
-      if ($$2) {
-         this.i.add(je.a);
-      }
-
-      if ($$4) {
-         je.c.a.forEach(this.i::add);
-      }
-   }
-
-   public List<je> a(azh $$0, je $$1) {
-      return ac.a(this.i.stream().filter($$1x -> $$1x != $$1), $$0);
-   }
-
-   public List<je> a(azh $$0) {
-      return ac.a(this.i, $$0);
    }
 }

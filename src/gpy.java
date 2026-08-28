@@ -1,15 +1,16 @@
-public class gpy extends gqc {
-   private static final alf a = new alf("back");
-
-   public gpy(gpa $$0) {
-      super($$0, new alf("textures/atlas/paintings.png"), new alf("paintings"));
+public class gpy extends gqd {
+   public gpy(gpb $$0) {
+      super($$0, new alf("textures/atlas/mob_effects.png"), new alf("mob_effects"));
    }
 
-   public goz a(cjd $$0) {
-      return this.a(lp.l.b($$0));
-   }
+   public gpa a(ji<bsb> $$0) {
+      if ($$0 == bsf.E) {
+         fxw $$1 = ffg.Q().r;
+         if ($$1 != null && $$1.J().b(cpo.c)) {
+            return this.a(new alf("bad_omen_121"));
+         }
+      }
 
-   public goz a() {
-      return this.a(a);
+      return this.a($$0.e().map(ale::a).orElseGet(goq::b));
    }
 }

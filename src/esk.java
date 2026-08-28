@@ -1,52 +1,88 @@
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.ImmutableMap.Builder;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import it.unimi.dsi.fastutil.ints.IntList;
+import it.unimi.dsi.fastutil.objects.Object2IntMap;
+import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
 import java.util.List;
-import java.util.Optional;
+import java.util.Map;
+import java.util.Set;
 
-public class esk extends eru {
+public class esk extends erv {
    public static final MapCodec<esk> a = RecordCodecBuilder.mapCodec(
       $$0 -> a($$0)
             .and(
                $$0.group(
-                  cxi.a.g.optionalFieldOf("shape").forGetter($$0x -> $$0x.c),
-                  cxi.b.optionalFieldOf("colors").forGetter($$0x -> $$0x.d),
-                  cxi.b.optionalFieldOf("fade_colors").forGetter($$0x -> $$0x.e),
-                  Codec.BOOL.optionalFieldOf("trail").forGetter($$0x -> $$0x.f),
-                  Codec.BOOL.optionalFieldOf("twinkle").forGetter($$0x -> $$0x.h)
+                  Codec.unboundedMap(lp.f.r(), eup.a).optionalFieldOf("enchantments", Map.of()).forGetter($$0x -> $$0x.b),
+                  Codec.BOOL.fieldOf("add").orElse(false).forGetter($$0x -> $$0x.c)
                )
             )
             .apply($$0, esk::new)
    );
-   public static final cxi b = new cxi(cxi.a.a, IntList.of(), IntList.of(), false, false);
-   final Optional<cxi.a> c;
-   final Optional<IntList> d;
-   final Optional<IntList> e;
-   final Optional<Boolean> f;
-   final Optional<Boolean> h;
+   private final Map<ji<dab>, euo> b;
+   private final boolean c;
 
-   public esk(List<ets> $$0, Optional<cxi.a> $$1, Optional<IntList> $$2, Optional<IntList> $$3, Optional<Boolean> $$4, Optional<Boolean> $$5) {
+   esk(List<ett> $$0, Map<ji<dab>, euo> $$1, boolean $$2) {
       super($$0);
-      this.c = $$1;
-      this.d = $$2;
-      this.e = $$3;
-      this.f = $$4;
-      this.h = $$5;
+      this.b = Map.copyOf($$1);
+      this.c = $$2;
    }
 
    @Override
-   protected cup a(cup $$0, eqi $$1) {
-      $$0.a(km.T, b, this::a);
+   public erx<esk> b() {
+      return ery.i;
+   }
+
+   @Override
+   public Set<etc<?>> a() {
+      return this.b.values().stream().flatMap($$0 -> $$0.a().stream()).collect(ImmutableSet.toImmutableSet());
+   }
+
+   @Override
+   public cuq a(cuq $$0, eqj $$1) {
+      Object2IntMap<dab> $$2 = new Object2IntOpenHashMap();
+      this.b.forEach(($$2x, $$3) -> $$2.put((dab)$$2x.a(), ayz.a($$3.a($$1), 0, 255)));
+      if ($$0.a(cut.qP)) {
+         $$0 = $$0.a(cut.uw, $$0.I());
+         $$0.b(km.y, $$0.c(km.k));
+      }
+
+      dac.a($$0, $$1x -> {
+         if (this.c) {
+            $$2.forEach(($$1xx, $$2x) -> $$1x.a($$1xx, $$1x.a($$1xx) + $$2x));
+         } else {
+            $$2.forEach($$1x::a);
+         }
+      });
       return $$0;
    }
 
-   private cxi a(cxi $$0) {
-      return new cxi(this.c.orElseGet($$0::a), this.d.orElseGet($$0::b), this.e.orElseGet($$0::c), this.f.orElseGet($$0::d), this.h.orElseGet($$0::e));
-   }
+   public static class a extends erv.a<esk.a> {
+      private final Builder<ji<dab>, euo> a = ImmutableMap.builder();
+      private final boolean b;
 
-   @Override
-   public erw<esk> b() {
-      return erx.L;
+      public a() {
+         this(false);
+      }
+
+      public a(boolean $$0) {
+         this.b = $$0;
+      }
+
+      protected esk.a a() {
+         return this;
+      }
+
+      public esk.a a(dab $$0, euo $$1) {
+         this.a.put($$0.m(), $$1);
+         return this;
+      }
+
+      @Override
+      public erw b() {
+         return new esk(this.g(), this.a.build(), this.b);
+      }
    }
 }

@@ -1,4 +1,4 @@
-public record ado(dbf b) implements zw<aci> {
+public record ado(dbg b) implements zw<aci> {
    public static final zn<wm, ado> a = zw.a(ado::a, ado::new);
 
    private ado(wm $$0) {

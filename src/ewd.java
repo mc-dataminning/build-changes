@@ -1,13 +1,32 @@
 import it.unimi.dsi.fastutil.doubles.DoubleList;
 
-interface ewd {
-   DoubleList a();
+public class ewd implements ewe {
+   private final DoubleList a;
 
-   boolean a(ewd.a var1);
+   public ewd(DoubleList $$0) {
+      this.a = $$0;
+   }
 
-   int size();
+   @Override
+   public boolean a(ewe.a $$0) {
+      int $$1 = this.a.size() - 1;
 
-   public interface a {
-      boolean merge(int var1, int var2, int var3);
+      for (int $$2 = 0; $$2 < $$1; $$2++) {
+         if (!$$0.merge($$2, $$2, $$2)) {
+            return false;
+         }
+      }
+
+      return true;
+   }
+
+   @Override
+   public int size() {
+      return this.a.size();
+   }
+
+   @Override
+   public DoubleList a() {
+      return this.a;
    }
 }

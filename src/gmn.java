@@ -1,17 +1,24 @@
-public class gmn<T extends btp, M extends fua<T>> extends gnj<T, M> {
-   private final gdk a;
+public class gmn extends gmv<cjq, ftv<cjq>> {
+   private static final alf a = new alf("textures/entity/creeper/creeper_armor.png");
+   private final ftv<cjq> b;
 
-   public gmn(gkt<T, M> $$0, gdk $$1) {
+   public gmn(gku<cjq, ftv<cjq>> $$0, fwx $$1) {
       super($$0);
-      this.a = $$1;
+      this.b = new ftv<>($$1.a(fxa.I));
    }
 
-   public void a(ezy $$0, gdo $$1, int $$2, T $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-      $$0.a();
-      $$0.a(0.0F, 0.4F, -0.4F);
-      $$0.a(a.b.rotationDegrees(180.0F));
-      cup $$10 = $$3.a(btb.a);
-      this.a.a($$3, $$10, cum.h, false, $$0, $$1, $$2);
-      $$0.b();
+   @Override
+   protected float a(float $$0) {
+      return $$0 * 0.01F;
+   }
+
+   @Override
+   protected alf a() {
+      return a;
+   }
+
+   @Override
+   protected fub<cjq> b() {
+      return this.b;
    }
 }

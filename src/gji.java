@@ -1,19 +1,19 @@
-public class gji extends gkd<cjy, fun<cjy>> {
-   private static final alf a = new alf("textures/entity/zombie/zombie.png");
-   private final float i;
+public class gji extends gke<cjy, fuf<cjy>> {
+   private static final alf a = new alf("textures/entity/ghast/ghast.png");
+   private static final alf i = new alf("textures/entity/ghast/ghast_shooting.png");
 
-   public gji(gix.a $$0, float $$1) {
-      super($$0, new fuf($$0.a(fwz.ah)), 0.5F * $$1);
-      this.i = $$1;
-      this.a(new gnc<>(this, $$0.d()));
-      this.a(new gmz<>(this, new fuf($$0.a(fwz.ai)), new fuf($$0.a(fwz.aj)), $$0.g()));
-   }
-
-   protected void a(cjy $$0, ezy $$1, float $$2) {
-      $$1.b(this.i, this.i, this.i);
+   public gji(giy.a $$0) {
+      super($$0, new fuf<>($$0.a(fxa.ag)), 1.5F);
    }
 
    public alf a(cjy $$0) {
-      return a;
+      return $$0.s() ? i : a;
+   }
+
+   protected void a(cjy $$0, ezz $$1, float $$2) {
+      float $$3 = 1.0F;
+      float $$4 = 4.5F;
+      float $$5 = 4.5F;
+      $$1.b(4.5F, 4.5F, 4.5F);
    }
 }

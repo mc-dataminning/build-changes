@@ -1,9 +1,11 @@
-public class gmd extends ghs<ckw, fws<ckw>> {
-   public gmd(gix.a $$0) {
-      this($$0, fwz.cf, fwz.ci, fwz.cj);
+public class gmd extends gke<ckw, ful<ckw>> {
+   private static final alf a = new alf("textures/entity/hoglin/zoglin.png");
+
+   public gmd(giy.a $$0) {
+      super($$0, new ful<>($$0.a(fxa.ce)), 0.7F);
    }
 
-   public gmd(gix.a $$0, fwy $$1, fwy $$2, fwy $$3) {
-      super($$0, new fws<>($$0.a($$1)), new fws<>($$0.a($$2)), new fws<>($$0.a($$3)));
+   public alf a(ckw $$0) {
+      return a;
    }
 }

@@ -1,27 +1,30 @@
-public class ctm extends csz {
-   public ctm(cuk.a $$0) {
+public class ctm extends cul implements cts {
+   public ctm(cul.a $$0) {
       super($$0);
+      dhf.a(this, csf.a);
+   }
+
+   public static boolean j(cuq $$0) {
+      return $$0.n() < $$0.o() - 1;
    }
 
    @Override
-   public bqv<cup> a(dby $$0, cmx $$1, bqt $$2) {
-      cup $$3 = $$1.b($$2);
-      if ($$0.B) {
-         return bqv.a($$3);
-      } else {
-         $$3.a(1, $$1);
-         $$1.b(awk.c.b(this));
-         $$1.dP().a(null, $$1, awa.Ar, $$1.de(), 1.0F, 1.0F);
-         cup $$4 = cux.a($$0, $$1.dt(), $$1.dz(), (byte)0, true, false);
-         if ($$3.e()) {
-            return bqv.b($$4);
-         } else {
-            if (!$$1.gc().f($$4.s())) {
-               $$1.a($$4, false);
-            }
+   public boolean a(cuq $$0, cuq $$1) {
+      return $$1.a(cut.vQ);
+   }
 
-            return bqv.b($$3);
-         }
-      }
+   @Override
+   public bqw<cuq> a(dbz $$0, cmy $$1, bqu $$2) {
+      return this.a(this, $$0, $$1, $$2);
+   }
+
+   @Override
+   public ji<avz> n() {
+      return awa.ar;
+   }
+
+   @Override
+   public btc m() {
+      return btc.e;
    }
 }

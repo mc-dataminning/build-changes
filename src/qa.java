@@ -1,6 +1,6 @@
 import java.util.concurrent.CompletableFuture;
 
-public class qa extends qd<cjd> {
+public class qa extends qd<cje> {
    public qa(ly $$0, CompletableFuture<jk.a> $$1) {
       super($$0, lq.S, $$1);
    }
@@ -9,32 +9,32 @@ public class qa extends qd<cjd> {
    protected void a(jk.a $$0) {
       this.b(awz.a)
          .a(
-            cje.a,
-            cje.b,
-            cje.c,
-            cje.d,
-            cje.e,
-            cje.f,
-            cje.g,
-            cje.h,
-            cje.i,
-            cje.j,
-            cje.k,
-            cje.l,
-            cje.m,
-            cje.n,
-            cje.o,
-            cje.p,
-            cje.q,
-            cje.r,
-            cje.s,
-            cje.t,
-            cje.u,
-            cje.v,
-            cje.w,
-            cje.x,
-            cje.y,
-            cje.z
+            cjf.a,
+            cjf.b,
+            cjf.c,
+            cjf.d,
+            cjf.e,
+            cjf.f,
+            cjf.g,
+            cjf.h,
+            cjf.i,
+            cjf.j,
+            cjf.k,
+            cjf.l,
+            cjf.m,
+            cjf.n,
+            cjf.o,
+            cjf.p,
+            cjf.q,
+            cjf.r,
+            cjf.s,
+            cjf.t,
+            cjf.u,
+            cjf.v,
+            cjf.w,
+            cjf.x,
+            cjf.y,
+            cjf.z
          );
    }
 }

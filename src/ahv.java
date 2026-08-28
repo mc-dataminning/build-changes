@@ -6,7 +6,7 @@ public class ahv implements zw<agw> {
    private final float e;
    private final float f;
 
-   public ahv(bsu $$0) {
+   public ahv(bsv $$0) {
       this.b = $$0.du();
       this.c = $$0.dw();
       this.d = $$0.dA();

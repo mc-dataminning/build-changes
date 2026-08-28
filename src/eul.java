@@ -1,36 +1,53 @@
-import com.mojang.serialization.Codec;
+import com.google.common.collect.Sets;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Set;
 
-public record eul(float c) implements eun {
-   public static final MapCodec<eul> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(Codec.FLOAT.fieldOf("value").forGetter(eul::c)).apply($$0, eul::new));
-   public static final Codec<eul> b = Codec.FLOAT.xmap(eul::new, eul::c);
+public record eul(euo b, euo c) implements euo {
+   public static final MapCodec<eul> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(eup.a.fieldOf("n").forGetter(eul::c), eup.a.fieldOf("p").forGetter(eul::d)).apply($$0, eul::new)
+   );
 
    @Override
-   public eum b() {
-      return euo.b;
+   public eun b() {
+      return eup.d;
    }
 
    @Override
-   public float b(eqi $$0) {
-      return this.c;
-   }
+   public int a(eqj $$0) {
+      int $$1 = this.b.a($$0);
+      float $$2 = this.c.b($$0);
+      azh $$3 = $$0.b();
+      int $$4 = 0;
 
-   public static eul a(float $$0) {
-      return new eul($$0);
-   }
-
-   @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else {
-         return $$0 != null && this.getClass() == $$0.getClass() ? Float.compare(((eul)$$0).c, this.c) == 0 : false;
+      for (int $$5 = 0; $$5 < $$1; $$5++) {
+         if ($$3.i() < $$2) {
+            $$4++;
+         }
       }
+
+      return $$4;
    }
 
    @Override
-   public int hashCode() {
-      return this.c != 0.0F ? Float.floatToIntBits(this.c) : 0;
+   public float b(eqj $$0) {
+      return (float)this.a($$0);
+   }
+
+   public static eul a(int $$0, float $$1) {
+      return new eul(eum.a((float)$$0), eum.a($$1));
+   }
+
+   @Override
+   public Set<etc<?>> a() {
+      return Sets.union(this.b.a(), this.c.a());
+   }
+
+   public euo c() {
+      return this.b;
+   }
+
+   public euo d() {
+      return this.c;
    }
 }

@@ -102,7 +102,7 @@ public class bew extends DataFix {
       $$0.a("BlockStateTag").result().ifPresent($$1x -> $$0.a("minecraft:block_state", b($$1x)));
       $$0.a("EntityTag", "minecraft:entity_data");
       $$0.a("BlockEntityTag", false, $$1x -> {
-         String $$2x = bii.a($$1x.get("id").asString(""));
+         String $$2x = bij.a($$1x.get("id").asString(""));
          $$1x = a($$0, $$1x, $$2x);
          Dynamic<?> $$3 = $$1x.remove("id");
          return $$3.equals($$1x.emptyMap()) ? $$3 : $$1x;
@@ -656,7 +656,7 @@ public class bew extends DataFix {
       Dynamic<?> e;
 
       private a(String $$0, int $$1, Dynamic<?> $$2) {
-         this.a = bii.a($$0);
+         this.a = bij.a($$0);
          this.b = $$1;
          this.c = $$2.emptyMap();
          this.e = $$2.get("tag").orElseEmptyMap();

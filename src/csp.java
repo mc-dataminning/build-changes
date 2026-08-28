@@ -1,127 +1,67 @@
-import javax.annotation.Nullable;
+import java.util.List;
+import java.util.function.Predicate;
 
-public class csp extends cuk {
-   public static final int a = 3;
-   public static final int b = 1;
-   public static final int c = 3;
+public class csp extends cul {
+   private static final Predicate<bsv> a = bta.f.and(bsv::bz);
+   private final cow.b b;
+   private final boolean c;
 
-   public csp(cuk.a $$0) {
-      super($$0);
+   public csp(boolean $$0, cow.b $$1, cul.a $$2) {
+      super($$2);
+      this.c = $$0;
+      this.b = $$1;
    }
 
    @Override
-   public bqu a(cyc $$0) {
-      dby $$1 = $$0.q();
-      iz $$2 = $$0.a();
-      iz $$3 = $$2.a($$0.k());
-      if (a($$0.n(), $$1, $$2)) {
-         if (!$$1.B) {
-            $$0.o().a(dwv.C);
-            $$1.c(1505, $$2, 15);
-         }
-
-         return bqu.a($$1.B);
+   public bqw<cuq> a(dbz $$0, cmy $$1, bqu $$2) {
+      cuq $$3 = $$1.b($$2);
+      evq $$4 = a($$0, $$1, dbi.b.c);
+      if ($$4.c() == evq.a.a) {
+         return bqw.c($$3);
       } else {
-         dsc $$4 = $$1.a_($$2);
-         boolean $$5 = $$4.d($$1, $$2, $$0.k());
-         if ($$5 && a($$0.n(), $$1, $$3, $$0.k())) {
-            if (!$$1.B) {
-               $$0.o().a(dwv.C);
-               $$1.c(1505, $$3, 15);
-            }
+         evs $$5 = $$1.f(1.0F);
+         double $$6 = 5.0;
+         List<bsv> $$7 = $$0.a($$1, $$1.cK().b($$5.a(5.0)).g(1.0), a);
+         if (!$$7.isEmpty()) {
+            evs $$8 = $$1.bx();
 
-            return bqu.a($$1.B);
+            for (bsv $$9 : $$7) {
+               evn $$10 = $$9.cK().g((double)$$9.bK());
+               if ($$10.d($$8)) {
+                  return bqw.c($$3);
+               }
+            }
+         }
+
+         if ($$4.c() == evq.a.b) {
+            cow $$11 = this.a($$0, $$4, $$3, $$1);
+            $$11.a(this.b);
+            $$11.r($$1.dF());
+            if (!$$0.a($$11, $$11.cK())) {
+               return bqw.d($$3);
+            } else {
+               if (!$$0.B) {
+                  $$0.b($$11);
+                  $$0.a($$1, dww.t, $$4.e());
+                  $$3.a(1, $$1);
+               }
+
+               $$1.b(awk.c.b(this));
+               return bqw.a($$3, $$0.x_());
+            }
          } else {
-            return bqu.e;
+            return bqw.c($$3);
          }
       }
    }
 
-   public static boolean a(cup $$0, dby $$1, iz $$2) {
-      dsc $$3 = $$1.a_($$2);
-      if ($$3.b() instanceof dfc $$4 && $$4.b($$1, $$2, $$3)) {
-         if ($$1 instanceof arf) {
-            if ($$4.a($$1, $$1.z, $$2, $$3)) {
-               $$4.a((arf)$$1, $$1.z, $$2, $$3);
-            }
-
-            $$0.h(1);
-         }
-
-         return true;
+   private cow a(dbz $$0, evq $$1, cuq $$2, cmy $$3) {
+      evs $$4 = $$1.e();
+      cow $$5 = (cow)(this.c ? new cox($$0, $$4.c, $$4.d, $$4.e) : new cow($$0, $$4.c, $$4.d, $$4.e));
+      if ($$0 instanceof arf $$6) {
+         btb.<cow>a($$6, $$2, $$3).accept($$5);
       }
 
-      return false;
-   }
-
-   public static boolean a(cup $$0, dby $$1, iz $$2, @Nullable je $$3) {
-      if ($$1.a_($$2).a(dfb.G) && $$1.b_($$2).e() == 8) {
-         if (!($$1 instanceof arf)) {
-            return true;
-         } else {
-            azh $$4 = $$1.E_();
-
-            label78:
-            for (int $$5 = 0; $$5 < 128; $$5++) {
-               iz $$6 = $$2;
-               dsc $$7 = dfb.bw.o();
-
-               for (int $$8 = 0; $$8 < $$5 / 16; $$8++) {
-                  $$6 = $$6.b($$4.a(3) - 1, ($$4.a(3) - 1) * $$4.a(3) / 2, $$4.a(3) - 1);
-                  if ($$1.a_($$6).r($$1, $$6)) {
-                     continue label78;
-                  }
-               }
-
-               ji<dcx> $$9 = $$1.t($$6);
-               if ($$9.a(awo.ac)) {
-                  if ($$5 == 0 && $$3 != null && $$3.o().d()) {
-                     $$7 = lp.e.a(awp.ar, $$1.z).map($$0x -> ((dez)$$0x.a()).o()).orElse($$7);
-                     if ($$7.b(dek.c)) {
-                        $$7 = $$7.a(dek.c, $$3);
-                     }
-                  } else if ($$4.a(4) == 0) {
-                     $$7 = lp.e.a(awp.ap, $$1.z).map($$0x -> ((dez)$$0x.a()).o()).orElse($$7);
-                  }
-               }
-
-               if ($$7.a(awp.ar, $$0x -> $$0x.b(dek.c))) {
-                  for (int $$10 = 0; !$$7.a((dcb)$$1, $$6) && $$10 < 4; $$10++) {
-                     $$7 = $$7.a(dek.c, je.c.a.a($$4));
-                  }
-               }
-
-               if ($$7.a((dcb)$$1, $$6)) {
-                  dsc $$11 = $$1.a_($$6);
-                  if ($$11.a(dfb.G) && $$1.b_($$6).e() == 8) {
-                     $$1.a($$6, $$7, 3);
-                  } else if ($$11.a(dfb.bw) && $$4.a(10) == 0) {
-                     ((dfc)dfb.bw).a((arf)$$1, $$4, $$6, $$11);
-                  }
-               }
-            }
-
-            $$0.h(1);
-            return true;
-         }
-      } else {
-         return false;
-      }
-   }
-
-   public static void a(dbz $$0, iz $$1, int $$2) {
-      dsc $$3 = $$0.a_($$1);
-      if ($$3.b() instanceof dfc $$4) {
-         iz $$5 = $$4.a($$1);
-         switch ($$4.ap_()) {
-            case a:
-               azd.a($$0, $$5, $$2 * 3, 3.0, 1.0, false, li.O);
-               break;
-            case b:
-               azd.a($$0, $$5, $$2, li.O);
-         }
-      } else if ($$3.a(dfb.G)) {
-         azd.a($$0, $$1, $$2 * 3, 3.0, 1.0, false, li.O);
-      }
+      return $$5;
    }
 }

@@ -7,11 +7,11 @@ public class aft implements zw<aci> {
    public static final int d = 2;
    private final String e;
    private final xp f;
-   private final ewy.a g;
+   private final ewz.a g;
    private final Optional<zf> h;
    private final int i;
 
-   public aft(ewn $$0, int $$1) {
+   public aft(ewo $$0, int $$1) {
       this.e = $$0.b();
       this.f = $$0.d();
       this.g = $$0.h();
@@ -24,11 +24,11 @@ public class aft implements zw<aci> {
       this.i = $$0.readByte();
       if (this.i != 0 && this.i != 2) {
          this.f = xo.a;
-         this.g = ewy.a.a;
+         this.g = ewz.a.a;
          this.h = Optional.empty();
       } else {
          this.f = xr.d.decode($$0);
-         this.g = $$0.b(ewy.a.class);
+         this.g = $$0.b(ewz.a.class);
          this.h = zh.d.decode($$0);
       }
    }
@@ -64,7 +64,7 @@ public class aft implements zw<aci> {
       return this.i;
    }
 
-   public ewy.a g() {
+   public ewz.a g() {
       return this.g;
    }
 

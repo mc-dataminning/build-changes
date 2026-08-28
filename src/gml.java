@@ -1,16 +1,24 @@
-public class gml extends gnj<cfi, ftl<cfi>> {
-   private static final alf a = new alf("textures/entity/cat/cat_collar.png");
-   private final ftl<cfi> b;
+public class gml extends gnk<cju, ftz<cju>> {
+   private final gej a;
 
-   public gml(gkt<cfi, ftl<cfi>> $$0, fww $$1) {
+   public gml(gku<cju, ftz<cju>> $$0, gej $$1) {
       super($$0);
-      this.b = new ftl<>($$1.a(fwz.u));
+      this.a = $$1;
    }
 
-   public void a(ezy $$0, gdo $$1, int $$2, cfi $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-      if ($$3.s()) {
-         float[] $$10 = $$3.gz().d();
-         a(this.c(), this.b, a, $$0, $$1, $$2, $$3, $$4, $$5, $$7, $$8, $$9, $$6, $$10[0], $$10[1], $$10[2]);
+   public void a(ezz $$0, gdp $$1, int $$2, cju $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
+      dsd $$10 = $$3.gq();
+      if ($$10 != null) {
+         $$0.a();
+         $$0.a(0.0F, 0.6875F, -0.75F);
+         $$0.a(a.b.rotationDegrees(20.0F));
+         $$0.a(a.d.rotationDegrees(45.0F));
+         $$0.a(0.25F, 0.1875F, 0.25F);
+         float $$11 = 0.5F;
+         $$0.b(-0.5F, -0.5F, 0.5F);
+         $$0.a(a.d.rotationDegrees(90.0F));
+         this.a.a($$10, $$0, $$1, $$2, gor.d);
+         $$0.b();
       }
    }
 }

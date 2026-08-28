@@ -42,9 +42,9 @@ public class ank {
    }
 
    private static int a(ep $$0, aqv $$1) throws CommandSyntaxException {
-      dbf $$2 = $$1.a();
+      dbg $$2 = $$1.a();
       arf $$3 = $$0.e();
-      ale<dby> $$4 = $$3.af();
+      ale<dbz> $$4 = $$3.af();
       boolean $$5 = $$3.w().contains($$2.a());
       if ($$5) {
          $$0.a(() -> xp.a("commands.forceload.query.success", xp.a($$2), xp.a($$4.a())), false);
@@ -56,11 +56,11 @@ public class ank {
 
    private static int a(ep $$0) {
       arf $$1 = $$0.e();
-      ale<dby> $$2 = $$1.af();
+      ale<dbz> $$2 = $$1.af();
       LongSet $$3 = $$1.w();
       int $$4 = $$3.size();
       if ($$4 > 0) {
-         String $$5 = Joiner.on(", ").join($$3.stream().sorted().map(dbf::new).map(dbf::toString).iterator());
+         String $$5 = Joiner.on(", ").join($$3.stream().sorted().map(dbg::new).map(dbg::toString).iterator());
          if ($$4 == 1) {
             $$0.a(() -> xp.a("commands.forceload.list.single", xp.a($$2.a()), $$5), false);
          } else {
@@ -75,9 +75,9 @@ public class ank {
 
    private static int b(ep $$0) {
       arf $$1 = $$0.e();
-      ale<dby> $$2 = $$1.af();
+      ale<dbz> $$2 = $$1.af();
       LongSet $$3 = $$1.w();
-      $$3.forEach($$1x -> $$1.a(dbf.a($$1x), dbf.b($$1x), false));
+      $$3.forEach($$1x -> $$1.a(dbg.a($$1x), dbg.b($$1x), false));
       $$0.a(() -> xp.a("commands.forceload.removed.all", xp.a($$2.a())), true);
       return 0;
    }
@@ -97,8 +97,8 @@ public class ank {
             throw b.create(256, $$12);
          } else {
             arf $$13 = $$0.e();
-            ale<dby> $$14 = $$13.af();
-            dbf $$15 = null;
+            ale<dbz> $$14 = $$13.af();
+            dbg $$15 = null;
             int $$16 = 0;
 
             for (int $$17 = $$8; $$17 <= $$10; $$17++) {
@@ -107,13 +107,13 @@ public class ank {
                   if ($$19) {
                      $$16++;
                      if ($$15 == null) {
-                        $$15 = new dbf($$17, $$18);
+                        $$15 = new dbg($$17, $$18);
                      }
                   }
                }
             }
 
-            dbf $$20 = $$15;
+            dbg $$20 = $$15;
             int $$21 = $$16;
             if ($$21 == 0) {
                throw ($$3 ? d : e).create();
@@ -121,8 +121,8 @@ public class ank {
                if ($$21 == 1) {
                   $$0.a(() -> xp.a("commands.forceload." + ($$3 ? "added" : "removed") + ".single", xp.a($$20), xp.a($$14.a())), true);
                } else {
-                  dbf $$22 = new dbf($$8, $$9);
-                  dbf $$23 = new dbf($$10, $$11);
+                  dbg $$22 = new dbg($$8, $$9);
+                  dbg $$23 = new dbg($$10, $$11);
                   $$0.a(() -> xp.a("commands.forceload." + ($$3 ? "added" : "removed") + ".multiple", $$21, xp.a($$14.a()), xp.a($$22), xp.a($$23)), true);
                }
 

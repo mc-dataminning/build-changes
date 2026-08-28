@@ -1,70 +1,98 @@
-public class fsx {
-   public static void a(fxa $$0, fxa $$1, fxa $$2, boolean $$3) {
-      fxa $$4 = $$3 ? $$0 : $$1;
-      fxa $$5 = $$3 ? $$1 : $$0;
-      $$4.f = ($$3 ? -0.3F : 0.3F) + $$2.f;
-      $$5.f = ($$3 ? 0.6F : -0.6F) + $$2.f;
-      $$4.e = (float) (-Math.PI / 2) + $$2.e + 0.1F;
-      $$5.e = -1.5F + $$2.e;
+public class fsx extends fuk<cgm> implements fta {
+   private final fxb a;
+   private final fxb b;
+   private final fxb f;
+   private final fxb g;
+   private final fxb h;
+   private final fxb i;
+   private final fxb j;
+   private static final float k = (float) (Math.PI / 4);
+   private static final float l = -1.134464F;
+   private static final float m = (float) (-Math.PI / 3);
+
+   public fsx(fxb $$0) {
+      super(gdx::i);
+      this.a = $$0.b("root");
+      this.b = this.a.b("head");
+      this.f = this.a.b("body");
+      this.g = this.f.b("right_arm");
+      this.h = this.f.b("left_arm");
+      this.i = this.f.b("right_wing");
+      this.j = this.f.b("left_wing");
    }
 
-   public static void a(fxa $$0, fxa $$1, btp $$2, boolean $$3) {
-      fxa $$4 = $$3 ? $$0 : $$1;
-      fxa $$5 = $$3 ? $$1 : $$0;
-      $$4.f = $$3 ? -0.8F : 0.8F;
-      $$4.e = -0.97079635F;
-      $$5.e = $$4.e;
-      float $$6 = (float)ctc.l($$2.fx());
-      float $$7 = ayz.a((float)$$2.fz(), 0.0F, $$6);
-      float $$8 = $$7 / $$6;
-      $$5.f = ayz.i($$8, 0.4F, 0.85F) * (float)($$3 ? 1 : -1);
-      $$5.e = ayz.i($$8, $$5.e, (float) (-Math.PI / 2));
+   @Override
+   public fxb a() {
+      return this.a;
    }
 
-   public static <T extends btr> void a(fxa $$0, fxa $$1, T $$2, float $$3, float $$4) {
-      float $$5 = ayz.a($$3 * (float) Math.PI);
-      float $$6 = ayz.a((1.0F - (1.0F - $$3) * (1.0F - $$3)) * (float) Math.PI);
-      $$0.g = 0.0F;
-      $$1.g = 0.0F;
-      $$0.f = (float) (Math.PI / 20);
-      $$1.f = (float) (-Math.PI / 20);
-      if ($$2.fu() == btj.b) {
-         $$0.e = -1.8849558F + ayz.b($$4 * 0.09F) * 0.15F;
-         $$1.e = -0.0F + ayz.b($$4 * 0.19F) * 0.5F;
-         $$0.e += $$5 * 2.2F - $$6 * 0.4F;
-         $$1.e += $$5 * 1.2F - $$6 * 0.4F;
+   public static fxh b() {
+      fxj $$0 = new fxj();
+      fxk $$1 = $$0.a();
+      fxk $$2 = $$1.a("root", fxg.c(), fxd.a(0.0F, 23.5F, 0.0F));
+      $$2.a("head", fxg.c().a(0, 0).a(-2.5F, -5.0F, -2.5F, 5.0F, 5.0F, 5.0F, new fxf(0.0F)), fxd.a(0.0F, -3.99F, 0.0F));
+      fxk $$3 = $$2.a(
+         "body",
+         fxg.c().a(0, 10).a(-1.5F, 0.0F, -1.0F, 3.0F, 4.0F, 2.0F, new fxf(0.0F)).a(0, 16).a(-1.5F, 0.0F, -1.0F, 3.0F, 5.0F, 2.0F, new fxf(-0.2F)),
+         fxd.a(0.0F, -4.0F, 0.0F)
+      );
+      $$3.a("right_arm", fxg.c().a(23, 0).a(-0.75F, -0.5F, -1.0F, 1.0F, 4.0F, 2.0F, new fxf(-0.01F)), fxd.a(-1.75F, 0.5F, 0.0F));
+      $$3.a("left_arm", fxg.c().a(23, 6).a(-0.25F, -0.5F, -1.0F, 1.0F, 4.0F, 2.0F, new fxf(-0.01F)), fxd.a(1.75F, 0.5F, 0.0F));
+      $$3.a("right_wing", fxg.c().a(16, 14).a(0.0F, 1.0F, 0.0F, 0.0F, 5.0F, 8.0F, new fxf(0.0F)), fxd.a(-0.5F, 0.0F, 0.6F));
+      $$3.a("left_wing", fxg.c().a(16, 14).a(0.0F, 1.0F, 0.0F, 0.0F, 5.0F, 8.0F, new fxf(0.0F)), fxd.a(0.5F, 0.0F, 0.6F));
+      return fxh.a($$0, 32, 32);
+   }
+
+   public void a(cgm $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
+      this.a().e().forEach(fxb::c);
+      float $$6 = $$3 * 20.0F * (float) (Math.PI / 180.0) + $$1;
+      float $$7 = ayz.b($$6) * (float) Math.PI * 0.15F + $$2;
+      float $$8 = $$3 - (float)$$0.ai;
+      float $$9 = $$3 * 9.0F * (float) (Math.PI / 180.0);
+      float $$10 = Math.min($$2 / 0.3F, 1.0F);
+      float $$11 = 1.0F - $$10;
+      float $$12 = $$0.G($$8);
+      if ($$0.gq()) {
+         float $$13 = $$3 * 8.0F * (float) (Math.PI / 180.0) + $$2;
+         float $$14 = ayz.b($$13) * 16.0F * (float) (Math.PI / 180.0);
+         float $$15 = $$0.H($$8);
+         float $$16 = ayz.b($$13) * 14.0F * (float) (Math.PI / 180.0);
+         float $$17 = ayz.b($$13) * 30.0F * (float) (Math.PI / 180.0);
+         this.a.f = $$0.gr() ? (float) (Math.PI * 4) * $$15 : this.a.f;
+         this.a.g = $$14 * (1.0F - $$15);
+         this.b.f = $$17 * (1.0F - $$15);
+         this.b.g = $$16 * (1.0F - $$15);
       } else {
-         $$0.e = -0.0F + ayz.b($$4 * 0.19F) * 0.5F;
-         $$1.e = -1.8849558F + ayz.b($$4 * 0.09F) * 0.15F;
-         $$0.e += $$5 * 1.2F - $$6 * 0.4F;
-         $$1.e += $$5 * 2.2F - $$6 * 0.4F;
+         this.b.e = $$5 * (float) (Math.PI / 180.0);
+         this.b.f = $$4 * (float) (Math.PI / 180.0);
       }
 
-      a($$0, $$1, $$4);
+      this.i.e = 0.43633232F * (1.0F - $$10);
+      this.i.f = (float) (-Math.PI / 4) + $$7;
+      this.j.e = 0.43633232F * (1.0F - $$10);
+      this.j.f = (float) (Math.PI / 4) - $$7;
+      this.f.e = $$10 * (float) (Math.PI / 4);
+      float $$18 = $$12 * ayz.i($$10, (float) (-Math.PI / 3), -1.134464F);
+      this.a.c = this.a.c + (float)Math.cos((double)$$9) * 0.25F * $$11;
+      this.g.e = $$18;
+      this.h.e = $$18;
+      float $$19 = $$11 * (1.0F - $$12);
+      float $$20 = 0.43633232F - ayz.b($$9 + (float) (Math.PI * 3.0 / 2.0)) * (float) Math.PI * 0.075F * $$19;
+      this.h.g = -$$20;
+      this.g.g = $$20;
+      this.g.f = 0.27925268F * $$12;
+      this.h.f = -0.27925268F * $$12;
    }
 
-   public static void a(fxa $$0, float $$1, float $$2) {
-      $$0.g = $$0.g + $$2 * (ayz.b($$1 * 0.09F) * 0.05F + 0.05F);
-      $$0.e = $$0.e + $$2 * ayz.a($$1 * 0.067F) * 0.05F;
-   }
-
-   public static void a(fxa $$0, fxa $$1, float $$2) {
-      a($$0, $$2, 1.0F);
-      a($$1, $$2, -1.0F);
-   }
-
-   public static void a(fxa $$0, fxa $$1, boolean $$2, float $$3, float $$4) {
-      float $$5 = ayz.a($$3 * (float) Math.PI);
-      float $$6 = ayz.a((1.0F - (1.0F - $$3) * (1.0F - $$3)) * (float) Math.PI);
-      $$1.g = 0.0F;
-      $$0.g = 0.0F;
-      $$1.f = -(0.1F - $$5 * 0.6F);
-      $$0.f = 0.1F - $$5 * 0.6F;
-      float $$7 = (float) -Math.PI / ($$2 ? 1.5F : 2.25F);
-      $$1.e = $$7;
-      $$0.e = $$7;
-      $$1.e += $$5 * 1.2F - $$6 * 0.4F;
-      $$0.e += $$5 * 1.2F - $$6 * 0.4F;
-      a($$1, $$0, $$4);
+   @Override
+   public void a(btk $$0, ezz $$1) {
+      float $$2 = 1.0F;
+      float $$3 = 3.0F;
+      this.a.a($$1);
+      this.f.a($$1);
+      $$1.a(0.0F, 0.0625F, 0.1875F);
+      $$1.a(a.b.rotation(this.g.e));
+      $$1.b(0.7F, 0.7F, 0.7F);
+      $$1.a(0.0625F, 0.0F, 0.0F);
    }
 }

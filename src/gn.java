@@ -1,7 +1,7 @@
 public interface gn {
-   evr a(ep var1);
+   evs a(ep var1);
 
-   evq b(ep var1);
+   evr b(ep var1);
 
    default iz c(ep $$0) {
       return iz.a(this.a($$0));

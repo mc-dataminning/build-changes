@@ -1,57 +1,35 @@
-import javax.annotation.Nullable;
+import com.mojang.serialization.Codec;
+import java.util.function.IntFunction;
 
-public class cht extends chj {
-   private static final bsx bY = bta.bv.n().a(bsw.a().a(bsv.a, 0.0F, bta.bv.m() - 0.03125F, 0.0F)).a(0.5F);
+public enum cht implements azu {
+   a(0, "white"),
+   b(1, "creamy"),
+   c(2, "chestnut"),
+   d(3, "brown"),
+   e(4, "black"),
+   f(5, "gray"),
+   g(6, "dark_brown");
 
-   public cht(bta<? extends cht> $$0, dby $$1) {
-      super($$0, $$1);
+   public static final Codec<cht> h = azu.a(cht::values);
+   private static final IntFunction<cht> i = axp.a(cht::a, values(), axp.a.b);
+   private final int j;
+   private final String k;
+
+   private cht(final int $$0, final String $$1) {
+      this.j = $$0;
+      this.k = $$1;
    }
 
-   public static buw.a s() {
-      return gP().a(bux.q, 15.0).a(bux.r, 0.2F);
+   public int a() {
+      return this.j;
    }
 
-   public static boolean c(bta<? extends cff> $$0, dbz $$1, btt $$2, iz $$3, azh $$4) {
-      return !btt.a($$2) ? cff.b($$0, $$1, $$2, $$3, $$4) : btt.b($$2) || a($$1, $$3);
-   }
-
-   @Override
-   protected void a(azh $$0) {
-      this.f(bux.m).a(a($$0::j));
-   }
-
-   @Override
-   protected avz v() {
-      return awa.Dw;
-   }
-
-   @Override
-   protected avz o_() {
-      return awa.Dx;
-   }
-
-   @Override
-   protected avz d(brn $$0) {
-      return awa.Dy;
-   }
-
-   @Nullable
-   @Override
-   public bso a(arf $$0, bso $$1) {
-      return bta.bv.a((dby)$$0);
+   public static cht a(int $$0) {
+      return i.apply($$0);
    }
 
    @Override
-   public bqu b(cmx $$0, bqt $$1) {
-      return !this.gF() ? bqu.e : super.b($$0, $$1);
-   }
-
-   @Override
-   protected void gG() {
-   }
-
-   @Override
-   public bsx e(bub $$0) {
-      return this.p_() ? bY : super.e($$0);
+   public String c() {
+      return this.k;
    }
 }

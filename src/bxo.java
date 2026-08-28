@@ -3,36 +3,23 @@ import java.util.Optional;
 import java.util.function.Function;
 
 public class bxo {
-   public static bwt<cmk> a(cct<jh> $$0, float $$1, int $$2, int $$3, int $$4) {
-      return byv.a(
-         (Function<byv.b<cmk>, ? extends App<byv.c<cmk>, byy<cmk>>>)($$5 -> $$5.group($$5.a(cct.E), $$5.c(cct.m), $$5.b($$0))
-               .apply($$5, ($$6, $$7, $$8) -> ($$9, $$10, $$11) -> {
-                     jh $$12 = $$5.b($$8);
-                     Optional<Long> $$13 = $$5.a($$6);
-                     if ($$12.a() == $$9.af() && (!$$13.isPresent() || $$9.Z() - $$13.get() <= (long)$$4)) {
-                        if ($$12.b().k($$10.dp()) > $$3) {
-                           evr $$14 = null;
-                           int $$15 = 0;
-                           int $$16 = 1000;
+   private static final int a = 1;
 
-                           while ($$14 == null || iz.a($$14).k($$10.dp()) > $$3) {
-                              $$14 = cek.a($$10, 15, 7, evr.c($$12.b()), (float) (Math.PI / 2));
-                              if (++$$15 == 1000) {
-                                 $$10.a($$0);
-                                 $$8.b();
-                                 $$6.a($$11);
-                                 return true;
-                              }
-                           }
+   public static bvk<bts> a(float $$0) {
+      return a($$1 -> $$0);
+   }
 
-                           $$7.a(new ccw($$14, $$1, $$2));
-                        } else if ($$12.b().k($$10.dp()) > $$2) {
-                           $$7.a(new ccw($$12.b(), $$1, $$2));
-                        }
+   public static bvk<bts> a(Function<btq, Float> $$0) {
+      return byw.a(
+         (Function<byw.b<bts>, ? extends App<byw.c<bts>, byz<bts>>>)($$1 -> $$1.group($$1.a(ccu.m), $$1.a(ccu.n), $$1.b(ccu.o), $$1.a(ccu.h))
+               .apply($$1, ($$2, $$3, $$4, $$5) -> ($$6, $$7, $$8) -> {
+                     btq $$9 = $$1.b($$4);
+                     Optional<ccw> $$10 = $$1.a($$5);
+                     if ($$10.isPresent() && $$10.get().a($$9) && bvl.a($$7, $$9, 1)) {
+                        $$2.b();
                      } else {
-                        $$10.a($$0);
-                        $$8.b();
-                        $$6.a($$11);
+                        $$3.a(new bvu($$9, true));
+                        $$2.a(new ccx(new bvu($$9, false), $$0.apply($$7), 0));
                      }
 
                      return true;

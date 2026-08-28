@@ -24,7 +24,7 @@ public class mo implements lw {
          $$2.b(lq.G).b().forEach($$2x -> {
             JsonObject $$3x = new JsonObject();
             JsonArray $$4x = new JsonArray();
-            ((cuk)$$2x.a()).p().forEach($$2xx -> $$4x.add(a($$2xx, $$4)));
+            ((cul)$$2x.a()).p().forEach($$2xx -> $$4x.add(a($$2xx, $$4)));
             $$3x.add("components", $$4x);
             $$3.add($$2x.g(), $$3x);
          });

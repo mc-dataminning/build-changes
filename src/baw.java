@@ -14,7 +14,7 @@ public class baw extends DataFix {
    }
 
    public TypeRewriteRule makeRule() {
-      OpticFinder<Pair<String, String>> $$0 = DSL.fieldFinder("id", DSL.named(bgx.D.typeName(), bii.a()));
+      OpticFinder<Pair<String, String>> $$0 = DSL.fieldFinder("id", DSL.named(bgx.D.typeName(), bij.a()));
       return this.fixTypeEverywhereTyped("BedItemColorFix", this.getInputSchema().getType(bgx.t), $$1 -> {
          Optional<Pair<String, String>> $$2 = $$1.getOptional($$0);
          if ($$2.isPresent() && Objects.equals($$2.get().getSecond(), "minecraft:bed")) {

@@ -5,17 +5,17 @@ import javax.annotation.Nullable;
 
 public class ou implements oo {
    private final op b;
-   private final cyk c;
-   private final cuk d;
-   private final cys e;
+   private final cyl c;
+   private final cul d;
+   private final cyt e;
    private final float f;
    private final int g;
    private final Map<String, an<?>> h = new LinkedHashMap<>();
    @Nullable
    private String i;
-   private final cye.a<?> j;
+   private final cyf.a<?> j;
 
-   private ou(op $$0, cyk $$1, dbx $$2, cys $$3, float $$4, int $$5, cye.a<?> $$6) {
+   private ou(op $$0, cyl $$1, dby $$2, cyt $$3, float $$4, int $$5, cyf.a<?> $$6) {
       this.b = $$0;
       this.c = $$1;
       this.d = $$2.r();
@@ -25,24 +25,24 @@ public class ou implements oo {
       this.j = $$6;
    }
 
-   public static <T extends cye> ou a(cys $$0, op $$1, dbx $$2, float $$3, int $$4, cyz<T> $$5, cye.a<T> $$6) {
+   public static <T extends cyf> ou a(cyt $$0, op $$1, dby $$2, float $$3, int $$4, cza<T> $$5, cyf.a<T> $$6) {
       return new ou($$1, a($$5, $$2), $$2, $$0, $$3, $$4, $$6);
    }
 
-   public static ou a(cys $$0, op $$1, dbx $$2, float $$3, int $$4) {
-      return new ou($$1, cyk.a, $$2, $$0, $$3, $$4, cyj::new);
+   public static ou a(cyt $$0, op $$1, dby $$2, float $$3, int $$4) {
+      return new ou($$1, cyl.a, $$2, $$0, $$3, $$4, cyk::new);
    }
 
-   public static ou b(cys $$0, op $$1, dbx $$2, float $$3, int $$4) {
-      return new ou($$1, c($$2), $$2, $$0, $$3, $$4, cyh::new);
+   public static ou b(cyt $$0, op $$1, dby $$2, float $$3, int $$4) {
+      return new ou($$1, c($$2), $$2, $$0, $$3, $$4, cyi::new);
    }
 
-   public static ou c(cys $$0, op $$1, dbx $$2, float $$3, int $$4) {
-      return new ou($$1, b($$2), $$2, $$0, $$3, $$4, czk::new);
+   public static ou c(cyt $$0, op $$1, dby $$2, float $$3, int $$4) {
+      return new ou($$1, b($$2), $$2, $$0, $$3, $$4, czl::new);
    }
 
-   public static ou d(cys $$0, op $$1, dbx $$2, float $$3, int $$4) {
-      return new ou($$1, cyk.a, $$2, $$0, $$3, $$4, czo::new);
+   public static ou d(cyt $$0, op $$1, dby $$2, float $$3, int $$4) {
+      return new ou($$1, cyl.a, $$2, $$0, $$3, $$4, czp::new);
    }
 
    public ou b(String $$0, an<?> $$1) {
@@ -56,7 +56,7 @@ public class ou implements oo {
    }
 
    @Override
-   public cuk a() {
+   public cul a() {
       return this.d;
    }
 
@@ -65,31 +65,31 @@ public class ou implements oo {
       this.a($$1);
       ae.a $$2 = $$0.a().a("has_the_recipe", dp.a($$1)).a(aj.a.a($$1)).a(ai.a.b);
       this.h.forEach($$2::a);
-      cye $$3 = this.j.create(Objects.requireNonNullElse(this.i, ""), this.c, this.e, new cup(this.d), this.f, this.g);
+      cyf $$3 = this.j.create(Objects.requireNonNullElse(this.i, ""), this.c, this.e, new cuq(this.d), this.f, this.g);
       $$0.a($$1, $$3, $$2.b($$1.d("recipes/" + this.b.a() + "/")));
    }
 
-   private static cyk b(dbx $$0) {
+   private static cyl b(dby $$0) {
       if ($$0.r().p().b(km.v)) {
-         return cyk.a;
+         return cyl.a;
       } else {
-         return $$0.r() instanceof csn ? cyk.b : cyk.c;
+         return $$0.r() instanceof cso ? cyl.b : cyl.c;
       }
    }
 
-   private static cyk c(dbx $$0) {
-      return $$0.r() instanceof csn ? cyk.b : cyk.c;
+   private static cyl c(dby $$0) {
+      return $$0.r() instanceof cso ? cyl.b : cyl.c;
    }
 
-   private static cyk a(cyz<? extends cye> $$0, dbx $$1) {
-      if ($$0 == cyz.p) {
+   private static cyl a(cza<? extends cyf> $$0, dby $$1) {
+      if ($$0 == cza.p) {
          return b($$1);
-      } else if ($$0 == cyz.q) {
+      } else if ($$0 == cza.q) {
          return c($$1);
-      } else if ($$0 != cyz.r && $$0 != cyz.s) {
+      } else if ($$0 != cza.r && $$0 != cza.s) {
          throw new IllegalStateException("Unknown cooking recipe type");
       } else {
-         return cyk.a;
+         return cyl.a;
       }
    }
 

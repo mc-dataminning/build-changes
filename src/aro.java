@@ -1,9 +1,9 @@
 import javax.annotation.Nullable;
 
 public interface aro {
-   void a(dbf var1);
+   void a(dbg var1);
 
-   void a(dbf var1, @Nullable dux var2);
+   void a(dbg var1, @Nullable duy var2);
 
    void a();
 

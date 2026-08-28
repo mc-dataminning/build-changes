@@ -1,99 +1,160 @@
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import com.google.common.annotations.VisibleForTesting;
 import java.util.Optional;
+import javax.annotation.Nullable;
 
-public class dkb extends dfi implements dfc {
-   public static final MapCodec<dkb> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(ale.a(lq.aC).fieldOf("feature").forGetter($$0x -> $$0x.d), u()).apply($$0, dkb::new)
-   );
-   protected static final float b = 3.0F;
-   protected static final ewk c = dez.a(5.0, 0.0, 5.0, 11.0, 6.0, 11.0);
-   private final ale<eal<?, ?>> d;
+public class dkb {
+   public static final dkb.e[] a = new dkb.e[]{dkb.e.a, dkb.e.b, dkb.e.c};
+   private final dkb.b b;
 
-   @Override
-   public MapCodec<dkb> a() {
-      return a;
+   public dkb(dka $$0) {
+      this(new dkb.a($$0));
    }
 
-   public dkb(ale<eal<?, ?>> $$0, dsb.d $$1) {
-      super($$1);
-      this.d = $$0;
+   public dkb(dkb.b $$0) {
+      this.b = $$0;
    }
 
-   @Override
-   protected ewk a(dsc $$0, dbe $$1, iz $$2, evw $$3) {
-      return c;
+   public boolean a(dsd $$0, dbf $$1, iz $$2, je $$3) {
+      return je.a().anyMatch($$4 -> this.a($$0, $$1, $$2, $$3, $$4, this.b::a).isPresent());
    }
 
-   @Override
-   protected void b(dsc $$0, arf $$1, iz $$2, azh $$3) {
-      if ($$3.a(25) == 0) {
-         int $$4 = 5;
-         int $$5 = 4;
+   public Optional<dkb.c> a(dsd $$0, dca $$1, iz $$2, azh $$3) {
+      return je.a($$3)
+         .stream()
+         .filter($$1x -> this.b.b($$0, $$1x))
+         .map($$4 -> this.a($$0, $$1, $$2, $$4, $$3, false))
+         .filter(Optional::isPresent)
+         .findFirst()
+         .orElse(Optional.empty());
+   }
 
-         for (iz $$6 : iz.c($$2.b(-4, -1, -4), $$2.b(4, 1, 4))) {
-            if ($$1.a_($$6).a(this)) {
-               if (--$$4 <= 0) {
-                  return;
-               }
+   public long a(dsd $$0, dca $$1, iz $$2, boolean $$3) {
+      return je.a().filter($$1x -> this.b.b($$0, $$1x)).map($$4 -> this.a($$0, $$1, $$2, $$4, $$3)).reduce(0L, Long::sum);
+   }
+
+   public Optional<dkb.c> a(dsd $$0, dca $$1, iz $$2, je $$3, azh $$4, boolean $$5) {
+      return je.a($$4).stream().map($$5x -> this.a($$0, $$1, $$2, $$3, $$5x, $$5)).filter(Optional::isPresent).findFirst().orElse(Optional.empty());
+   }
+
+   private long a(dsd $$0, dca $$1, iz $$2, je $$3, boolean $$4) {
+      return je.a().map($$5 -> this.a($$0, $$1, $$2, $$3, $$5, $$4)).filter(Optional::isPresent).count();
+   }
+
+   @VisibleForTesting
+   public Optional<dkb.c> a(dsd $$0, dca $$1, iz $$2, je $$3, je $$4, boolean $$5) {
+      return this.a($$0, $$1, $$2, $$3, $$4, this.b::a).flatMap($$2x -> this.a($$1, $$2x, $$5));
+   }
+
+   public Optional<dkb.c> a(dsd $$0, dbf $$1, iz $$2, je $$3, je $$4, dkb.d $$5) {
+      if ($$4.o() == $$3.o()) {
+         return Optional.empty();
+      } else if (this.b.a($$0) || this.b.a($$0, $$3) && !this.b.a($$0, $$4)) {
+         for (dkb.e $$6 : this.b.a()) {
+            dkb.c $$7 = $$6.a($$2, $$4, $$3);
+            if ($$5.test($$1, $$2, $$7)) {
+               return Optional.of($$7);
             }
          }
 
-         iz $$7 = $$2.b($$3.a(3) - 1, $$3.a(2) - $$3.a(2), $$3.a(3) - 1);
-
-         for (int $$8 = 0; $$8 < 4; $$8++) {
-            if ($$1.u($$7) && $$0.a($$1, $$7)) {
-               $$2 = $$7;
-            }
-
-            $$7 = $$2.b($$3.a(3) - 1, $$3.a(2) - $$3.a(2), $$3.a(3) - 1);
-         }
-
-         if ($$1.u($$7) && $$0.a($$1, $$7)) {
-            $$1.a($$7, $$0, 2);
-         }
+         return Optional.empty();
+      } else {
+         return Optional.empty();
       }
    }
 
-   @Override
-   protected boolean b(dsc $$0, dbe $$1, iz $$2) {
-      return $$0.i($$1, $$2);
+   public Optional<dkb.c> a(dca $$0, dkb.c $$1, boolean $$2) {
+      dsd $$3 = $$0.a_($$1.a());
+      return this.b.a($$0, $$1, $$3, $$2) ? Optional.of($$1) : Optional.empty();
    }
 
-   @Override
-   protected boolean a(dsc $$0, dcb $$1, iz $$2) {
-      iz $$3 = $$2.d();
-      dsc $$4 = $$1.a_($$3);
-      return $$4.a(awp.ba) ? true : $$1.b($$2, 0) < 13 && this.b($$4, $$1, $$3);
+   public static class a implements dkb.b {
+      protected dka a;
+
+      public a(dka $$0) {
+         this.a = $$0;
+      }
+
+      @Nullable
+      @Override
+      public dsd a(dsd $$0, dbf $$1, iz $$2, je $$3) {
+         return this.a.c($$0, $$1, $$2, $$3);
+      }
+
+      protected boolean a(dbf $$0, iz $$1, iz $$2, je $$3, dsd $$4) {
+         return $$4.i() || $$4.a(this.a) || $$4.a(dfc.G) && $$4.u().b();
+      }
+
+      @Override
+      public boolean a(dbf $$0, iz $$1, dkb.c $$2) {
+         dsd $$3 = $$0.a_($$2.a());
+         return this.a($$0, $$1, $$2.a(), $$2.b(), $$3) && this.a.a($$0, $$3, $$2.a(), $$2.b());
+      }
    }
 
-   public boolean a(arf $$0, iz $$1, dsc $$2, azh $$3) {
-      Optional<? extends ji<eal<?, ?>>> $$4 = $$0.H_().d(lq.aC).b(this.d);
-      if ($$4.isEmpty()) {
+   public interface b {
+      @Nullable
+      dsd a(dsd var1, dbf var2, iz var3, je var4);
+
+      boolean a(dbf var1, iz var2, dkb.c var3);
+
+      default dkb.e[] a() {
+         return dkb.a;
+      }
+
+      default boolean a(dsd $$0, je $$1) {
+         return dka.a($$0, $$1);
+      }
+
+      default boolean a(dsd $$0) {
          return false;
-      } else {
-         $$0.a($$1, false);
-         if ($$4.get().a().a($$0, $$0.l().g(), $$3, $$1)) {
-            return true;
+      }
+
+      default boolean b(dsd $$0, je $$1) {
+         return this.a($$0) || this.a($$0, $$1);
+      }
+
+      default boolean a(dca $$0, dkb.c $$1, dsd $$2, boolean $$3) {
+         dsd $$4 = this.a($$2, $$0, $$1.a(), $$1.b());
+         if ($$4 != null) {
+            if ($$3) {
+               $$0.y($$1.a()).e($$1.a());
+            }
+
+            return $$0.a($$1.a(), $$4, 2);
          } else {
-            $$0.a($$1, $$2, 3);
             return false;
          }
       }
    }
 
-   @Override
-   public boolean b(dcb $$0, iz $$1, dsc $$2) {
-      return true;
+   public static record c(iz a, je b) {
    }
 
-   @Override
-   public boolean a(dby $$0, azh $$1, iz $$2, dsc $$3) {
-      return (double)$$1.i() < 0.4;
+   @FunctionalInterface
+   public interface d {
+      boolean test(dbf var1, iz var2, dkb.c var3);
    }
 
-   @Override
-   public void a(arf $$0, azh $$1, iz $$2, dsc $$3) {
-      this.a($$0, $$2, $$3, $$1);
+   public static enum e {
+      a {
+         @Override
+         public dkb.c a(iz $$0, je $$1, je $$2) {
+            return new dkb.c($$0, $$1);
+         }
+      },
+      b {
+         @Override
+         public dkb.c a(iz $$0, je $$1, je $$2) {
+            return new dkb.c($$0.a($$1), $$2);
+         }
+      },
+      c {
+         @Override
+         public dkb.c a(iz $$0, je $$1, je $$2) {
+            return new dkb.c($$0.a($$1).a($$2), $$1.g());
+         }
+      };
+
+      public abstract dkb.c a(iz var1, je var2, je var3);
    }
 }

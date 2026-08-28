@@ -1,32 +1,27 @@
-public interface cwi {
-   cwi.a a = new cwi.a(false, false);
-   cwi.a b = new cwi.a(true, false);
+import java.util.List;
 
-   boolean a();
+public class cwi extends csj {
+   public cwi(cul.a $$0) {
+      super($$0);
+   }
 
-   boolean b();
+   @Override
+   public cuq w() {
+      cuq $$0 = super.w();
+      $$0.b(km.G, new cwr(cws.C));
+      return $$0;
+   }
 
-   public static record a(boolean c, boolean d) implements cwi {
-      @Override
-      public boolean a() {
-         return this.c;
+   @Override
+   public void a(cuq $$0, cul.b $$1, List<xp> $$2, cwj $$3) {
+      cwr $$4 = $$0.a(km.G);
+      if ($$4 != null) {
+         $$4.a($$2::add, 0.125F, $$1.b());
       }
+   }
 
-      @Override
-      public boolean b() {
-         return this.d;
-      }
-
-      public cwi.a c() {
-         return new cwi.a(this.c, true);
-      }
-
-      public boolean d() {
-         return this.c;
-      }
-
-      public boolean e() {
-         return this.d;
-      }
+   @Override
+   public String i(cuq $$0) {
+      return cwp.a($$0.a(km.G, cwr.a).e(), this.a() + ".effect.");
    }
 }

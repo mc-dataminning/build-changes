@@ -1,33 +1,12 @@
-public class gni<T extends cmx, M extends fua<T> & fsz & fui> extends gnc<T, M> {
-   private final gdk a;
-   private static final float b = (float) (-Math.PI / 6);
-   private static final float c = (float) (Math.PI / 2);
+public class gni<T extends ckg> extends gmw<T, fvc<T>> {
+   private static final gdx a = gdx.p(new alf("textures/entity/phantom_eyes.png"));
 
-   public gni(gkt<T, M> $$0, gdk $$1) {
-      super($$0, $$1);
-      this.a = $$1;
+   public gni(gku<T, fvc<T>> $$0) {
+      super($$0);
    }
 
    @Override
-   protected void a(btp $$0, cup $$1, cum $$2, btj $$3, ezy $$4, gdo $$5, int $$6) {
-      if ($$1.a(cus.qX) && $$0.fx() == $$1 && $$0.aL == 0) {
-         this.a($$0, $$1, $$3, $$4, $$5, $$6);
-      } else {
-         super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6);
-      }
-   }
-
-   private void a(btp $$0, cup $$1, btj $$2, ezy $$3, gdo $$4, int $$5) {
-      $$3.a();
-      fxa $$6 = this.c().d();
-      float $$7 = $$6.e;
-      $$6.e = ayz.a($$6.e, (float) (-Math.PI / 6), (float) (Math.PI / 2));
-      $$6.a($$3);
-      $$6.e = $$7;
-      gmo.a($$3, false);
-      boolean $$8 = $$2 == btj.a;
-      $$3.a(($$8 ? -2.5F : 2.5F) / 16.0F, -0.0625F, 0.0F);
-      this.a.a($$0, $$1, cum.f, false, $$3, $$4, $$5);
-      $$3.b();
+   public gdx a() {
+      return a;
    }
 }

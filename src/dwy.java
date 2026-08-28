@@ -1,34 +1,20 @@
 public interface dwy {
-   dwy a = new dwy() {
-      @Override
-      public boolean a() {
-         return true;
-      }
+   dxa a();
 
-      @Override
-      public void a(dwx $$0) {
-      }
+   int b();
 
-      @Override
-      public void b(dwx $$0) {
-      }
+   boolean a(arf var1, ji<dww> var2, dww.a var3, evs var4);
 
-      @Override
-      public boolean a(ji<dwv> $$0, evr $$1, dwv.a $$2, dwy.a $$3) {
-         return false;
-      }
-   };
+   default dwy.a c() {
+      return dwy.a.a;
+   }
 
-   boolean a();
+   public static enum a {
+      a,
+      b;
+   }
 
-   void a(dwx var1);
-
-   void b(dwx var1);
-
-   boolean a(ji<dwv> var1, evr var2, dwv.a var3, dwy.a var4);
-
-   @FunctionalInterface
-   public interface a {
-      void visit(dwx var1, evr var2);
+   public interface b<T extends dwy> {
+      T c();
    }
 }

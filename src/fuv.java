@@ -1,23 +1,29 @@
-public class fuv<T extends bsu> extends fuj<T> {
-   private final fxa a;
+public class fuv<T extends bsv> extends fuk<T> {
+   private static final String a = "main";
+   private final fxb b;
 
-   public fuv(fxa $$0) {
-      this.a = $$0;
+   public fuv(fxb $$0) {
+      this.b = $$0;
    }
 
-   public static fxg b() {
-      fxi $$0 = new fxi();
-      fxj $$1 = $$0.a();
-      int $$2 = 20;
-      int $$3 = 8;
-      int $$4 = 16;
-      int $$5 = 4;
-      $$1.a("bottom", fxf.c().a(0, 10).a(-10.0F, -8.0F, -1.0F, 20.0F, 16.0F, 2.0F), fxc.a(0.0F, 4.0F, 0.0F, (float) (Math.PI / 2), 0.0F, 0.0F));
-      $$1.a("front", fxf.c().a(0, 0).a(-8.0F, -9.0F, -1.0F, 16.0F, 8.0F, 2.0F), fxc.a(-9.0F, 4.0F, 0.0F, 0.0F, (float) (Math.PI * 3.0 / 2.0), 0.0F));
-      $$1.a("back", fxf.c().a(0, 0).a(-8.0F, -9.0F, -1.0F, 16.0F, 8.0F, 2.0F), fxc.a(9.0F, 4.0F, 0.0F, 0.0F, (float) (Math.PI / 2), 0.0F));
-      $$1.a("left", fxf.c().a(0, 0).a(-8.0F, -9.0F, -1.0F, 16.0F, 8.0F, 2.0F), fxc.a(0.0F, 4.0F, -7.0F, 0.0F, (float) Math.PI, 0.0F));
-      $$1.a("right", fxf.c().a(0, 0).a(-8.0F, -9.0F, -1.0F, 16.0F, 8.0F, 2.0F), fxc.a(0.0F, 4.0F, 7.0F));
-      return fxg.a($$0, 64, 32);
+   public static fxh b() {
+      fxj $$0 = new fxj();
+      fxk $$1 = $$0.a();
+      int $$2 = 2;
+      $$1.a(
+         "main",
+         fxg.c()
+            .a(0, 0)
+            .a(-4.0F, 0.0F, 0.0F, 2.0F, 2.0F, 2.0F)
+            .a(0.0F, -4.0F, 0.0F, 2.0F, 2.0F, 2.0F)
+            .a(0.0F, 0.0F, -4.0F, 2.0F, 2.0F, 2.0F)
+            .a(0.0F, 0.0F, 0.0F, 2.0F, 2.0F, 2.0F)
+            .a(2.0F, 0.0F, 0.0F, 2.0F, 2.0F, 2.0F)
+            .a(0.0F, 2.0F, 0.0F, 2.0F, 2.0F, 2.0F)
+            .a(0.0F, 0.0F, 2.0F, 2.0F, 2.0F, 2.0F),
+         fxd.a
+      );
+      return fxh.a($$0, 64, 32);
    }
 
    @Override
@@ -25,7 +31,7 @@ public class fuv<T extends bsu> extends fuj<T> {
    }
 
    @Override
-   public fxa a() {
-      return this.a;
+   public fxb a() {
+      return this.b;
    }
 }

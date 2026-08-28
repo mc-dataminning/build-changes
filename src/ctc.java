@@ -1,243 +1,1745 @@
-import com.google.common.collect.Lists;
+import com.mojang.datafixers.util.Pair;
+import java.util.Comparator;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.Set;
+import java.util.function.Consumer;
 import java.util.function.Predicate;
+import java.util.stream.IntStream;
+import java.util.stream.Stream;
 import javax.annotation.Nullable;
-import org.joml.Quaternionf;
-import org.joml.Vector3f;
 
-public class ctc extends cvi {
-   private static final int k = 25;
-   public static final int a = 8;
-   private boolean l = false;
-   private boolean m = false;
-   private static final float n = 0.2F;
-   private static final float o = 0.5F;
-   private static final float p = 3.15F;
-   private static final float q = 1.6F;
-   public static final float b = 1.6F;
+public class ctc {
+   private static final ale<ctb> a = a("building_blocks");
+   private static final ale<ctb> b = a("colored_blocks");
+   private static final ale<ctb> c = a("natural_blocks");
+   private static final ale<ctb> d = a("functional_blocks");
+   private static final ale<ctb> e = a("redstone_blocks");
+   private static final ale<ctb> f = a("hotbar");
+   private static final ale<ctb> g = a("search");
+   private static final ale<ctb> h = a("tools_and_utilities");
+   private static final ale<ctb> i = a("combat");
+   private static final ale<ctb> j = a("food_and_drinks");
+   private static final ale<ctb> k = a("ingredients");
+   private static final ale<ctb> l = a("spawn_eggs");
+   private static final ale<ctb> m = a("op_blocks");
+   private static final ale<ctb> n = a("inventory");
+   private static final Comparator<ji<cje>> o = Comparator.comparing(ji::a, Comparator.<cje>comparingInt($$0 -> $$0.b() * $$0.a()).thenComparing(cje::a));
+   @Nullable
+   private static ctb.d p;
 
-   public ctc(cuk.a $$0) {
-      super($$0);
+   private static ale<ctb> a(String $$0) {
+      return ale.a(lq.q, new alf($$0));
    }
 
-   @Override
-   public Predicate<cup> d() {
-      return j;
-   }
+   public static ctb a(jv<ctb> $$0) {
+      jv.a($$0, a, ctb.a(ctb.f.a, 0).a(xp.c("itemGroup.buildingBlocks")).a(() -> new cuq(dfc.cj)).a(($$0x, $$1) -> {
+         $$1.a(cut.bC);
+         $$1.a(cut.ck);
+         $$1.a(cut.bP);
+         $$1.a(cut.bZ);
+         $$1.a(cut.K);
+         $$1.a(cut.gt);
+         $$1.a(cut.dS);
+         $$1.a(cut.eZ);
+         $$1.a(cut.nw);
+         $$1.a(cut.mJ);
+         $$1.a(cut.nd);
+         $$1.a(cut.mx);
+         $$1.a(cut.mi);
+         $$1.a(cut.bD);
+         $$1.a(cut.cl);
+         $$1.a(cut.bQ);
+         $$1.a(cut.ca);
+         $$1.a(cut.L);
+         $$1.a(cut.gu);
+         $$1.a(cut.dT);
+         $$1.a(cut.fa);
+         $$1.a(cut.nx);
+         $$1.a(cut.mK);
+         $$1.a(cut.ne);
+         $$1.a(cut.my);
+         $$1.a(cut.mj);
+         $$1.a(cut.bE);
+         $$1.a(cut.cm);
+         $$1.a(cut.bR);
+         $$1.a(cut.cb);
+         $$1.a(cut.M);
+         $$1.a(cut.gv);
+         $$1.a(cut.dU);
+         $$1.a(cut.fb);
+         $$1.a(cut.ny);
+         $$1.a(cut.mL);
+         $$1.a(cut.nf);
+         $$1.a(cut.mz);
+         $$1.a(cut.mk);
+         $$1.a(cut.bF);
+         $$1.a(cut.cn);
+         $$1.a(cut.bS);
+         $$1.a(cut.cc);
+         $$1.a(cut.N);
+         $$1.a(cut.gw);
+         $$1.a(cut.dV);
+         $$1.a(cut.fc);
+         $$1.a(cut.nz);
+         $$1.a(cut.mM);
+         $$1.a(cut.ng);
+         $$1.a(cut.mA);
+         $$1.a(cut.ml);
+         $$1.a(cut.bG);
+         $$1.a(cut.co);
+         $$1.a(cut.bT);
+         $$1.a(cut.cd);
+         $$1.a(cut.O);
+         $$1.a(cut.gx);
+         $$1.a(cut.dW);
+         $$1.a(cut.fd);
+         $$1.a(cut.nA);
+         $$1.a(cut.mN);
+         $$1.a(cut.nh);
+         $$1.a(cut.mB);
+         $$1.a(cut.mm);
+         $$1.a(cut.bI);
+         $$1.a(cut.cq);
+         $$1.a(cut.bV);
+         $$1.a(cut.cf);
+         $$1.a(cut.Q);
+         $$1.a(cut.gz);
+         $$1.a(cut.dY);
+         $$1.a(cut.ff);
+         $$1.a(cut.nC);
+         $$1.a(cut.mP);
+         $$1.a(cut.nj);
+         $$1.a(cut.mD);
+         $$1.a(cut.mo);
+         $$1.a(cut.bJ);
+         $$1.a(cut.cr);
+         $$1.a(cut.bW);
+         $$1.a(cut.cg);
+         $$1.a(cut.R);
+         $$1.a(cut.gA);
+         $$1.a(cut.dZ);
+         $$1.a(cut.fg);
+         $$1.a(cut.nD);
+         $$1.a(cut.mQ);
+         $$1.a(cut.nk);
+         $$1.a(cut.mE);
+         $$1.a(cut.mp);
+         $$1.a(cut.bH);
+         $$1.a(cut.cp);
+         $$1.a(cut.bU);
+         $$1.a(cut.ce);
+         $$1.a(cut.P);
+         $$1.a(cut.gy);
+         $$1.a(cut.dX);
+         $$1.a(cut.fe);
+         $$1.a(cut.nB);
+         $$1.a(cut.mO);
+         $$1.a(cut.ni);
+         $$1.a(cut.mC);
+         $$1.a(cut.mn);
+         $$1.a(cut.bO);
+         $$1.a(cut.cj);
+         $$1.a(cut.S);
+         $$1.a(cut.V);
+         $$1.a(cut.gB);
+         $$1.a(cut.gC);
+         $$1.a(cut.ea);
+         $$1.a(cut.eb);
+         $$1.a(cut.fh);
+         $$1.a(cut.nE);
+         $$1.a(cut.mR);
+         $$1.a(cut.nl);
+         $$1.a(cut.mF);
+         $$1.a(cut.mq);
+         $$1.a(cut.bM);
+         $$1.a(cut.cs);
+         $$1.a(cut.bX);
+         $$1.a(cut.ch);
+         $$1.a(cut.T);
+         $$1.a(cut.gD);
+         $$1.a(cut.ec);
+         $$1.a(cut.fi);
+         $$1.a(cut.nF);
+         $$1.a(cut.mS);
+         $$1.a(cut.nm);
+         $$1.a(cut.mG);
+         $$1.a(cut.mr);
+         $$1.a(cut.bN);
+         $$1.a(cut.ct);
+         $$1.a(cut.bY);
+         $$1.a(cut.ci);
+         $$1.a(cut.U);
+         $$1.a(cut.gE);
+         $$1.a(cut.ed);
+         $$1.a(cut.fj);
+         $$1.a(cut.nG);
+         $$1.a(cut.mT);
+         $$1.a(cut.nn);
+         $$1.a(cut.mH);
+         $$1.a(cut.ms);
+         $$1.a(cut.b);
+         $$1.a(cut.ld);
+         $$1.a(cut.ee);
+         $$1.a(cut.mt);
+         $$1.a(cut.mg);
+         $$1.a(cut.J);
+         $$1.a(cut.eS);
+         $$1.a(cut.ej);
+         $$1.a(cut.gH);
+         $$1.a(cut.eD);
+         $$1.a(cut.lb);
+         $$1.a(cut.lt);
+         $$1.a(cut.gI);
+         $$1.a(cut.ey);
+         $$1.a(cut.ef);
+         $$1.a(cut.fC);
+         $$1.a(cut.fE);
+         $$1.a(cut.fY);
+         $$1.a(cut.el);
+         $$1.a(cut.gO);
+         $$1.a(cut.fF);
+         $$1.a(cut.fD);
+         $$1.a(cut.kZ);
+         $$1.a(cut.lr);
+         $$1.a(cut.gM);
+         $$1.a(cut.c);
+         $$1.a(cut.lg);
+         $$1.a(cut.lx);
+         $$1.a(cut.gN);
+         $$1.a(cut.d);
+         $$1.a(cut.kX);
+         $$1.a(cut.lp);
+         $$1.a(cut.e);
+         $$1.a(cut.lk);
+         $$1.a(cut.lB);
+         $$1.a(cut.gV);
+         $$1.a(cut.f);
+         $$1.a(cut.la);
+         $$1.a(cut.ls);
+         $$1.a(cut.g);
+         $$1.a(cut.lh);
+         $$1.a(cut.ly);
+         $$1.a(cut.gR);
+         $$1.a(cut.h);
+         $$1.a(cut.lj);
+         $$1.a(cut.lA);
+         $$1.a(cut.i);
+         $$1.a(cut.j);
+         $$1.a(cut.ll);
+         $$1.a(cut.lC);
+         $$1.a(cut.gZ);
+         $$1.a(cut.fM);
+         $$1.a(cut.k);
+         $$1.a(cut.lm);
+         $$1.a(cut.lD);
+         $$1.a(cut.ha);
+         $$1.a(cut.fI);
+         $$1.a(cut.fJ);
+         $$1.a(cut.ln);
+         $$1.a(cut.lE);
+         $$1.a(cut.hb);
+         $$1.a(cut.fK);
+         $$1.a(cut.fL);
+         $$1.a(cut.lo);
+         $$1.a(cut.lF);
+         $$1.a(cut.hc);
+         $$1.a(cut.fN);
+         $$1.a(cut.m);
+         $$1.a(cut.o);
+         $$1.a(cut.n);
+         $$1.a(cut.p);
+         $$1.a(cut.q);
+         $$1.a(cut.r);
+         $$1.a(cut.t);
+         $$1.a(cut.s);
+         $$1.a(cut.u);
+         $$1.a(cut.v);
+         $$1.a(cut.x);
+         $$1.a(cut.w);
+         $$1.a(cut.y);
+         $$1.a(cut.z);
+         $$1.a(cut.ez);
+         $$1.a(cut.fX);
+         $$1.a(cut.ek);
+         $$1.a(cut.gJ);
+         $$1.a(cut.fG);
+         $$1.a(cut.fH);
+         $$1.a(cut.fZ);
+         $$1.a(cut.em);
+         $$1.a(cut.gP);
+         $$1.a(cut.cJ);
+         $$1.a(cut.gq);
+         $$1.a(cut.eg);
+         $$1.a(cut.gT);
+         $$1.a(cut.cK);
+         $$1.a(cut.ex);
+         $$1.a(cut.le);
+         $$1.a(cut.lv);
+         $$1.a(cut.cL);
+         $$1.a(cut.eh);
+         $$1.a(cut.iQ);
+         $$1.a(cut.iT);
+         $$1.a(cut.ep);
+         $$1.a(cut.gL);
+         $$1.a(cut.iR);
+         $$1.a(cut.ew);
+         $$1.a(cut.kY);
+         $$1.a(cut.lq);
+         $$1.a(cut.iS);
+         $$1.a(cut.eq);
+         $$1.a(cut.iP);
+         $$1.a(cut.iJ);
+         $$1.a(cut.iM);
+         $$1.a(cut.es);
+         $$1.a(cut.gK);
+         $$1.a(cut.iK);
+         $$1.a(cut.iN);
+         $$1.a(cut.et);
+         $$1.a(cut.iL);
+         $$1.a(cut.iO);
+         $$1.a(cut.eu);
+         $$1.a(cut.fn);
+         $$1.a(cut.gc);
+         $$1.a(cut.gd);
+         $$1.a(cut.gg);
+         $$1.a(cut.en);
+         $$1.a(cut.gQ);
+         $$1.a(cut.gf);
+         $$1.a(cut.ge);
+         $$1.a(cut.iZ);
+         $$1.a(cut.li);
+         $$1.a(cut.lz);
+         $$1.a(cut.gS);
+         $$1.a(cut.fq);
+         $$1.a(cut.fs);
+         $$1.a(cut.fr);
+         $$1.a(cut.wD);
+         $$1.a(cut.wG);
+         $$1.a(cut.wF);
+         $$1.a(cut.wE);
+         $$1.a(cut.gW);
+         $$1.a(cut.wK);
+         $$1.a(cut.wH);
+         $$1.a(cut.wJ);
+         $$1.a(cut.wI);
+         $$1.a(cut.gX);
+         $$1.a(cut.mu);
+         $$1.a(cut.mh);
+         $$1.a(cut.wL);
+         $$1.a(cut.wO);
+         $$1.a(cut.wN);
+         $$1.a(cut.wM);
+         $$1.a(cut.gY);
+         $$1.a(cut.gn);
+         $$1.a(cut.go);
+         $$1.a(cut.lc);
+         $$1.a(cut.lu);
+         $$1.a(cut.gU);
+         $$1.a(cut.eJ);
+         $$1.a(cut.eK);
+         $$1.a(cut.eL);
+         $$1.a(cut.er);
+         $$1.a(cut.aD);
+         $$1.a(cut.aK);
+         $$1.a(cut.fR);
+         $$1.a(cut.mI);
+         $$1.a(cut.nc);
+         $$1.a(cut.mw);
+         $$1.a(cut.fS);
+         $$1.a(cut.aM);
+         $$1.a(cut.mv);
+         $$1.a(cut.lJ);
+         $$1.a(cut.gs);
+         $$1.a(cut.cI);
+         $$1.a(cut.aN);
+         $$1.a(cut.aO);
+         $$1.a(cut.hh);
+         $$1.a(cut.hk);
+         $$1.a(cut.eo);
+         $$1.a(cut.hg);
+         $$1.a(cut.hi);
+         $$1.a(cut.hj);
+         $$1.a(cut.ev);
+         $$1.a(cut.lf);
+         $$1.a(cut.lw);
+         $$1.a(cut.aI);
+         $$1.a(cut.aL);
+         $$1.a(cut.aS);
+         $$1.a(cut.yi);
+         $$1.a(cut.aW);
+         $$1.a(cut.ba);
+         $$1.a(cut.be);
+         $$1.a(cut.mU);
+         $$1.a(cut.no);
+         $$1.a(cut.yq);
+         $$1.a(cut.aP);
+         $$1.a(cut.aT);
+         $$1.a(cut.yj);
+         $$1.a(cut.aX);
+         $$1.a(cut.bb);
+         $$1.a(cut.bf);
+         $$1.a(cut.mV);
+         $$1.a(cut.np);
+         $$1.a(cut.yr);
+         $$1.a(cut.aQ);
+         $$1.a(cut.aU);
+         $$1.a(cut.yk);
+         $$1.a(cut.aY);
+         $$1.a(cut.bc);
+         $$1.a(cut.bg);
+         $$1.a(cut.mW);
+         $$1.a(cut.nq);
+         $$1.a(cut.ys);
+         $$1.a(cut.aR);
+         $$1.a(cut.aV);
+         $$1.a(cut.yl);
+         $$1.a(cut.aZ);
+         $$1.a(cut.bd);
+         $$1.a(cut.bh);
+         $$1.a(cut.mX);
+         $$1.a(cut.nr);
+         $$1.a(cut.yt);
+         $$1.a(cut.bi);
+         $$1.a(cut.bm);
+         $$1.a(cut.ym);
+         $$1.a(cut.bq);
+         $$1.a(cut.bu);
+         $$1.a(cut.by);
+         $$1.a(cut.mY);
+         $$1.a(cut.ns);
+         $$1.a(cut.yu);
+         $$1.a(cut.bj);
+         $$1.a(cut.bn);
+         $$1.a(cut.yn);
+         $$1.a(cut.br);
+         $$1.a(cut.bv);
+         $$1.a(cut.bz);
+         $$1.a(cut.mZ);
+         $$1.a(cut.nt);
+         $$1.a(cut.yv);
+         $$1.a(cut.bk);
+         $$1.a(cut.bo);
+         $$1.a(cut.yo);
+         $$1.a(cut.bs);
+         $$1.a(cut.bw);
+         $$1.a(cut.bA);
+         $$1.a(cut.na);
+         $$1.a(cut.nu);
+         $$1.a(cut.yw);
+         $$1.a(cut.bl);
+         $$1.a(cut.bp);
+         $$1.a(cut.yp);
+         $$1.a(cut.bt);
+         $$1.a(cut.bx);
+         $$1.a(cut.bB);
+         $$1.a(cut.nb);
+         $$1.a(cut.nv);
+         $$1.a(cut.yx);
+      }).d());
+      jv.a($$0, b, ctb.a(ctb.f.a, 1).a(xp.c("itemGroup.coloredBlocks")).a(() -> new cuq(dfc.bJ)).a(($$0x, $$1) -> {
+         $$1.a(cut.cU);
+         $$1.a(cut.dc);
+         $$1.a(cut.db);
+         $$1.a(cut.dj);
+         $$1.a(cut.dg);
+         $$1.a(cut.di);
+         $$1.a(cut.cV);
+         $$1.a(cut.cY);
+         $$1.a(cut.cZ);
+         $$1.a(cut.dh);
+         $$1.a(cut.dd);
+         $$1.a(cut.cX);
+         $$1.a(cut.df);
+         $$1.a(cut.de);
+         $$1.a(cut.cW);
+         $$1.a(cut.da);
+         $$1.a(cut.hE);
+         $$1.a(cut.hM);
+         $$1.a(cut.hL);
+         $$1.a(cut.hT);
+         $$1.a(cut.hQ);
+         $$1.a(cut.hS);
+         $$1.a(cut.hF);
+         $$1.a(cut.hI);
+         $$1.a(cut.hJ);
+         $$1.a(cut.hR);
+         $$1.a(cut.hN);
+         $$1.a(cut.hH);
+         $$1.a(cut.hP);
+         $$1.a(cut.hO);
+         $$1.a(cut.hG);
+         $$1.a(cut.hK);
+         $$1.a(cut.hU);
+         $$1.a(cut.hl);
+         $$1.a(cut.ht);
+         $$1.a(cut.hs);
+         $$1.a(cut.hA);
+         $$1.a(cut.hx);
+         $$1.a(cut.hz);
+         $$1.a(cut.hm);
+         $$1.a(cut.hp);
+         $$1.a(cut.hq);
+         $$1.a(cut.hy);
+         $$1.a(cut.hu);
+         $$1.a(cut.ho);
+         $$1.a(cut.hw);
+         $$1.a(cut.hv);
+         $$1.a(cut.hn);
+         $$1.a(cut.hr);
+         $$1.a(cut.jJ);
+         $$1.a(cut.jR);
+         $$1.a(cut.jQ);
+         $$1.a(cut.jY);
+         $$1.a(cut.jV);
+         $$1.a(cut.jX);
+         $$1.a(cut.jK);
+         $$1.a(cut.jN);
+         $$1.a(cut.jO);
+         $$1.a(cut.jW);
+         $$1.a(cut.jS);
+         $$1.a(cut.jM);
+         $$1.a(cut.jU);
+         $$1.a(cut.jT);
+         $$1.a(cut.jL);
+         $$1.a(cut.jP);
+         $$1.a(cut.jZ);
+         $$1.a(cut.kh);
+         $$1.a(cut.kg);
+         $$1.a(cut.ko);
+         $$1.a(cut.kl);
+         $$1.a(cut.kn);
+         $$1.a(cut.ka);
+         $$1.a(cut.kd);
+         $$1.a(cut.ke);
+         $$1.a(cut.km);
+         $$1.a(cut.ki);
+         $$1.a(cut.kc);
+         $$1.a(cut.kk);
+         $$1.a(cut.kj);
+         $$1.a(cut.kb);
+         $$1.a(cut.kf);
+         $$1.a(cut.jt);
+         $$1.a(cut.jB);
+         $$1.a(cut.jA);
+         $$1.a(cut.jI);
+         $$1.a(cut.jF);
+         $$1.a(cut.jH);
+         $$1.a(cut.ju);
+         $$1.a(cut.jx);
+         $$1.a(cut.jy);
+         $$1.a(cut.jG);
+         $$1.a(cut.jC);
+         $$1.a(cut.jw);
+         $$1.a(cut.jE);
+         $$1.a(cut.jD);
+         $$1.a(cut.jv);
+         $$1.a(cut.jz);
+         $$1.a(cut.cG);
+         $$1.a(cut.cH);
+         $$1.a(cut.id);
+         $$1.a(cut.il);
+         $$1.a(cut.ik);
+         $$1.a(cut.is);
+         $$1.a(cut.ip);
+         $$1.a(cut.ir);
+         $$1.a(cut.ie);
+         $$1.a(cut.ih);
+         $$1.a(cut.ii);
+         $$1.a(cut.iq);
+         $$1.a(cut.im);
+         $$1.a(cut.ig);
+         $$1.a(cut.io);
+         $$1.a(cut.in);
+         $$1.a(cut.if);
+         $$1.a(cut.ij);
+         $$1.a(cut.fT);
+         $$1.a(cut.it);
+         $$1.a(cut.iB);
+         $$1.a(cut.iA);
+         $$1.a(cut.iI);
+         $$1.a(cut.iF);
+         $$1.a(cut.iH);
+         $$1.a(cut.iu);
+         $$1.a(cut.ix);
+         $$1.a(cut.iy);
+         $$1.a(cut.iG);
+         $$1.a(cut.iC);
+         $$1.a(cut.iw);
+         $$1.a(cut.iE);
+         $$1.a(cut.iD);
+         $$1.a(cut.iv);
+         $$1.a(cut.iz);
+         $$1.a(cut.jc);
+         $$1.a(cut.jd);
+         $$1.a(cut.jl);
+         $$1.a(cut.jk);
+         $$1.a(cut.js);
+         $$1.a(cut.jp);
+         $$1.a(cut.jr);
+         $$1.a(cut.je);
+         $$1.a(cut.jh);
+         $$1.a(cut.ji);
+         $$1.a(cut.jq);
+         $$1.a(cut.jm);
+         $$1.a(cut.jg);
+         $$1.a(cut.jo);
+         $$1.a(cut.jn);
+         $$1.a(cut.jf);
+         $$1.a(cut.jj);
+         $$1.a(cut.rC);
+         $$1.a(cut.rK);
+         $$1.a(cut.rJ);
+         $$1.a(cut.rR);
+         $$1.a(cut.rO);
+         $$1.a(cut.rQ);
+         $$1.a(cut.rD);
+         $$1.a(cut.rG);
+         $$1.a(cut.rH);
+         $$1.a(cut.rP);
+         $$1.a(cut.rL);
+         $$1.a(cut.rF);
+         $$1.a(cut.rN);
+         $$1.a(cut.rM);
+         $$1.a(cut.rE);
+         $$1.a(cut.rI);
+         $$1.a(cut.wQ);
+         $$1.a(cut.wR);
+         $$1.a(cut.wZ);
+         $$1.a(cut.wY);
+         $$1.a(cut.xg);
+         $$1.a(cut.xd);
+         $$1.a(cut.xf);
+         $$1.a(cut.wS);
+         $$1.a(cut.wV);
+         $$1.a(cut.wW);
+         $$1.a(cut.xe);
+         $$1.a(cut.xa);
+         $$1.a(cut.wU);
+         $$1.a(cut.xc);
+         $$1.a(cut.xb);
+         $$1.a(cut.wT);
+         $$1.a(cut.wX);
+         $$1.a(cut.uP);
+         $$1.a(cut.uX);
+         $$1.a(cut.uW);
+         $$1.a(cut.ve);
+         $$1.a(cut.vb);
+         $$1.a(cut.vd);
+         $$1.a(cut.uQ);
+         $$1.a(cut.uT);
+         $$1.a(cut.uU);
+         $$1.a(cut.vc);
+         $$1.a(cut.uY);
+         $$1.a(cut.uS);
+         $$1.a(cut.va);
+         $$1.a(cut.uZ);
+         $$1.a(cut.uR);
+         $$1.a(cut.uV);
+      }).d());
+      jv.a($$0, c, ctb.a(ctb.f.a, 2).a(xp.c("itemGroup.natural")).a(() -> new cuq(dfc.i)).a(($$0x, $$1) -> {
+         $$1.a(cut.B);
+         $$1.a(cut.E);
+         $$1.a(cut.ga);
+         $$1.a(cut.hW);
+         $$1.a(cut.C);
+         $$1.a(cut.D);
+         $$1.a(cut.F);
+         $$1.a(cut.eP);
+         $$1.a(cut.G);
+         $$1.a(cut.eX);
+         $$1.a(cut.aj);
+         $$1.a(cut.af);
+         $$1.a(cut.cJ);
+         $$1.a(cut.ai);
+         $$1.a(cut.iQ);
+         $$1.a(cut.eU);
+         $$1.a(cut.hV);
+         $$1.a(cut.kV);
+         $$1.a(cut.eV);
+         $$1.a(cut.eT);
+         $$1.a(cut.dN);
+         $$1.a(cut.dL);
+         $$1.a(cut.b);
+         $$1.a(cut.i);
+         $$1.a(cut.c);
+         $$1.a(cut.e);
+         $$1.a(cut.g);
+         $$1.a(cut.l);
+         $$1.a(cut.m);
+         $$1.a(cut.A);
+         $$1.a(cut.xl);
+         $$1.a(cut.iJ);
+         $$1.a(cut.iW);
+         $$1.a(cut.eE);
+         $$1.a(cut.wC);
+         $$1.a(cut.fn);
+         $$1.a(cut.H);
+         $$1.a(cut.I);
+         $$1.a(cut.fo);
+         $$1.a(cut.fp);
+         $$1.a(cut.ja);
+         $$1.a(cut.wD);
+         $$1.a(cut.fq);
+         $$1.a(cut.fs);
+         $$1.a(cut.gn);
+         $$1.a(cut.ak);
+         $$1.a(cut.al);
+         $$1.a(cut.am);
+         $$1.a(cut.an);
+         $$1.a(cut.ao);
+         $$1.a(cut.ap);
+         $$1.a(cut.aq);
+         $$1.a(cut.ar);
+         $$1.a(cut.as);
+         $$1.a(cut.at);
+         $$1.a(cut.au);
+         $$1.a(cut.av);
+         $$1.a(cut.aw);
+         $$1.a(cut.ax);
+         $$1.a(cut.ay);
+         $$1.a(cut.az);
+         $$1.a(cut.aA);
+         $$1.a(cut.aB);
+         $$1.a(cut.aC);
+         $$1.a(cut.aE);
+         $$1.a(cut.aF);
+         $$1.a(cut.aG);
+         $$1.a(cut.fu);
+         $$1.a(cut.aI);
+         $$1.a(cut.aJ);
+         $$1.a(cut.xh);
+         $$1.a(cut.xi);
+         $$1.a(cut.xj);
+         $$1.a(cut.xk);
+         $$1.a(cut.bC);
+         $$1.a(cut.bD);
+         $$1.a(cut.bE);
+         $$1.a(cut.bF);
+         $$1.a(cut.bG);
+         $$1.a(cut.bI);
+         $$1.a(cut.bJ);
+         $$1.a(cut.bK);
+         $$1.a(cut.bL);
+         $$1.a(cut.bH);
+         $$1.a(cut.fQ);
+         $$1.a(cut.bM);
+         $$1.a(cut.bN);
+         $$1.a(cut.cu);
+         $$1.a(cut.cv);
+         $$1.a(cut.cw);
+         $$1.a(cut.cx);
+         $$1.a(cut.cy);
+         $$1.a(cut.cA);
+         $$1.a(cut.cB);
+         $$1.a(cut.cz);
+         $$1.a(cut.cC);
+         $$1.a(cut.cD);
+         $$1.a(cut.fO);
+         $$1.a(cut.fP);
+         $$1.a(cut.iX);
+         $$1.a(cut.iY);
+         $$1.a(cut.wv);
+         $$1.a(cut.W);
+         $$1.a(cut.X);
+         $$1.a(cut.Y);
+         $$1.a(cut.Z);
+         $$1.a(cut.aa);
+         $$1.a(cut.ac);
+         $$1.a(cut.ad);
+         $$1.a(cut.ab);
+         $$1.a(cut.cP);
+         $$1.a(cut.cQ);
+         $$1.a(cut.dA);
+         $$1.a(cut.dB);
+         $$1.a(cut.dC);
+         $$1.a(cut.dD);
+         $$1.a(cut.cN);
+         $$1.a(cut.cO);
+         $$1.a(cut.cR);
+         $$1.a(cut.dk);
+         $$1.a(cut.dl);
+         $$1.a(cut.dm);
+         $$1.a(cut.dn);
+         $$1.a(cut.do);
+         $$1.a(cut.dp);
+         $$1.a(cut.dq);
+         $$1.a(cut.dr);
+         $$1.a(cut.ds);
+         $$1.a(cut.dt);
+         $$1.a(cut.du);
+         $$1.a(cut.dv);
+         $$1.a(cut.dx);
+         $$1.a(cut.dw);
+         $$1.a(cut.dM);
+         $$1.a(cut.dz);
+         $$1.a(cut.dR);
+         $$1.a(cut.dJ);
+         $$1.a(cut.eW);
+         $$1.a(cut.dE);
+         $$1.a(cut.dF);
+         $$1.a(cut.dG);
+         $$1.a(cut.dH);
+         $$1.a(cut.dI);
+         $$1.a(cut.fV);
+         $$1.a(cut.ib);
+         $$1.a(cut.ic);
+         $$1.a(cut.hX);
+         $$1.a(cut.hY);
+         $$1.a(cut.hZ);
+         $$1.a(cut.ia);
+         $$1.a(cut.dy);
+         $$1.a(cut.dP);
+         $$1.a(cut.dQ);
+         $$1.a(cut.eH);
+         $$1.a(cut.eI);
+         $$1.a(cut.fW);
+         $$1.a(cut.dO);
+         $$1.a(cut.xp);
+         $$1.a(cut.kp);
+         $$1.a(cut.kq);
+         $$1.a(cut.pv);
+         $$1.a(cut.rh);
+         $$1.a(cut.rY);
+         $$1.a(cut.rZ);
+         $$1.a(cut.vl);
+         $$1.a(cut.vi);
+         $$1.a(cut.vj);
+         $$1.a(cut.ws);
+         $$1.a(cut.wr);
+         $$1.a(cut.sj);
+         $$1.a(cut.gb);
+         $$1.a(cut.cS);
+         $$1.a(cut.cT);
+         $$1.a(cut.dK);
+         $$1.a(cut.qN);
+         $$1.a(cut.kw);
+         $$1.a(cut.kx);
+         $$1.a(cut.ky);
+         $$1.a(cut.kz);
+         $$1.a(cut.kA);
+         $$1.a(cut.kr);
+         $$1.a(cut.ks);
+         $$1.a(cut.kt);
+         $$1.a(cut.ku);
+         $$1.a(cut.kv);
+         $$1.a(cut.kB);
+         $$1.a(cut.kC);
+         $$1.a(cut.kD);
+         $$1.a(cut.kE);
+         $$1.a(cut.kF);
+         $$1.a(cut.kK);
+         $$1.a(cut.kG);
+         $$1.a(cut.kH);
+         $$1.a(cut.kI);
+         $$1.a(cut.kJ);
+         $$1.a(cut.kL);
+         $$1.a(cut.kM);
+         $$1.a(cut.kN);
+         $$1.a(cut.kO);
+         $$1.a(cut.kP);
+         $$1.a(cut.kQ);
+         $$1.a(cut.kR);
+         $$1.a(cut.kS);
+         $$1.a(cut.kT);
+         $$1.a(cut.kU);
+         $$1.a(cut.cE);
+         $$1.a(cut.cF);
+         $$1.a(cut.fU);
+         $$1.a(cut.fk);
+         $$1.a(cut.fl);
+         $$1.a(cut.fm);
+         $$1.a(cut.hD);
+         $$1.a(cut.wx);
+         $$1.a(cut.wA);
+         $$1.a(cut.lO);
+         $$1.a(cut.lP);
+         $$1.a(cut.xm);
+         $$1.a(cut.xn);
+         $$1.a(cut.xo);
+         $$1.a(cut.gh);
+         $$1.a(cut.gi);
+         $$1.a(cut.gj);
+         $$1.a(cut.gk);
+         $$1.a(cut.lZ);
+         $$1.a(cut.cM);
+         $$1.a(cut.ae);
+      }).d());
+      jv.a($$0, d, ctb.a(ctb.f.a, 3).a(xp.c("itemGroup.functional")).a(() -> new cuq(cut.qc)).a(($$0x, $$1) -> {
+         $$1.a(cut.eF);
+         $$1.a(cut.ft);
+         $$1.a(cut.lI);
+         $$1.a(cut.wp);
+         $$1.a(cut.wq);
+         $$1.a(cut.fS);
+         $$1.a(cut.eG);
+         $$1.a(cut.iP);
+         $$1.a(cut.me);
+         $$1.a(cut.yq);
+         $$1.a(cut.yr);
+         $$1.a(cut.ys);
+         $$1.a(cut.yt);
+         $$1.a(cut.yu);
+         $$1.a(cut.yv);
+         $$1.a(cut.yw);
+         $$1.a(cut.yx);
+         $$1.a(cut.fu);
+         $$1.a(cut.wv);
+         $$1.a(cut.xm);
+         $$1.a(cut.xn);
+         $$1.a(cut.xo);
+         $$1.a(cut.wC);
+         $$1.a(cut.fW);
+         $$1.a(cut.iW);
+         $$1.a(cut.eO);
+         $$1.a(cut.wn);
+         $$1.a(cut.wj);
+         $$1.a(cut.wk);
+         $$1.a(cut.wm);
+         $$1.a(cut.wl);
+         $$1.a(cut.vV);
+         $$1.a(cut.eQ);
+         $$1.a(cut.wh);
+         $$1.a(cut.wi);
+         $$1.a(cut.wt);
+         $$1.a(cut.wu);
+         $$1.a(cut.hd);
+         $$1.a(cut.he);
+         $$1.a(cut.hf);
+         $$1.a(cut.wf);
+         $$1.a(cut.mf);
+         $$1.a(cut.eY);
+         $$1.a(cut.gl);
+         $$1.a(cut.vf);
+         $$1.a(cut.sq);
+         $$1.a(cut.sr);
+         $$1.a(cut.wo);
+         $$1.a(cut.gG);
+         $$1.a(cut.kW);
+         $$1.a(cut.wB);
+         $$1.a(cut.eR);
+         $$1.a(cut.lG);
+         $$1.a(cut.wx);
+         $$1.a(cut.wy);
+         $$1.a(cut.ag);
+         $$1.a(cut.ah);
+         $$1.a(cut.lX);
+         $$1.a(cut.ue);
+         $$1.a(cut.eC);
+         $$1.a(cut.uF);
+         $$1.a(cut.uc);
+         $$1.a(cut.ud);
+         $$1.a(cut.pZ);
+         $$0x.c().a(lq.S).ifPresent($$1x -> a($$1, $$1x, $$0xxx -> $$0xxx.a(awz.a), ctb.g.a));
+         $$1.a(cut.eA);
+         $$1.a(cut.eB);
+         $$1.a(cut.lU);
+         $$1.a(cut.cH);
+         $$1.a(cut.qc);
+         $$1.a(cut.qn);
+         $$1.a(cut.qd);
+         $$1.a(cut.qo);
+         $$1.a(cut.qe);
+         $$1.a(cut.qp);
+         $$1.a(cut.qf);
+         $$1.a(cut.qq);
+         $$1.a(cut.qg);
+         $$1.a(cut.qr);
+         $$1.a(cut.qi);
+         $$1.a(cut.qt);
+         $$1.a(cut.qj);
+         $$1.a(cut.qu);
+         $$1.a(cut.qh);
+         $$1.a(cut.qs);
+         $$1.a(cut.qk);
+         $$1.a(cut.qv);
+         $$1.a(cut.ql);
+         $$1.a(cut.qw);
+         $$1.a(cut.qm);
+         $$1.a(cut.qx);
+         $$1.a(cut.eN);
+         $$1.a(cut.wg);
+         $$1.a(cut.gr);
+         $$1.a(cut.jc);
+         $$1.a(cut.jd);
+         $$1.a(cut.jl);
+         $$1.a(cut.jk);
+         $$1.a(cut.js);
+         $$1.a(cut.jp);
+         $$1.a(cut.jr);
+         $$1.a(cut.je);
+         $$1.a(cut.jh);
+         $$1.a(cut.ji);
+         $$1.a(cut.jq);
+         $$1.a(cut.jm);
+         $$1.a(cut.jg);
+         $$1.a(cut.jo);
+         $$1.a(cut.jn);
+         $$1.a(cut.jf);
+         $$1.a(cut.jj);
+         $$1.a(cut.wP);
+         $$1.a(cut.rC);
+         $$1.a(cut.rK);
+         $$1.a(cut.rJ);
+         $$1.a(cut.rR);
+         $$1.a(cut.rO);
+         $$1.a(cut.rQ);
+         $$1.a(cut.rD);
+         $$1.a(cut.rG);
+         $$1.a(cut.rH);
+         $$1.a(cut.rP);
+         $$1.a(cut.rL);
+         $$1.a(cut.rF);
+         $$1.a(cut.rN);
+         $$1.a(cut.rM);
+         $$1.a(cut.rE);
+         $$1.a(cut.rI);
+         $$1.a(cut.wQ);
+         $$1.a(cut.wR);
+         $$1.a(cut.wZ);
+         $$1.a(cut.wY);
+         $$1.a(cut.xg);
+         $$1.a(cut.xd);
+         $$1.a(cut.xf);
+         $$1.a(cut.wS);
+         $$1.a(cut.wV);
+         $$1.a(cut.wW);
+         $$1.a(cut.xe);
+         $$1.a(cut.xa);
+         $$1.a(cut.wU);
+         $$1.a(cut.xc);
+         $$1.a(cut.xb);
+         $$1.a(cut.wT);
+         $$1.a(cut.wX);
+         $$1.a(cut.uP);
+         $$1.a(cut.uX);
+         $$1.a(cut.uW);
+         $$1.a(cut.ve);
+         $$1.a(cut.vb);
+         $$1.a(cut.vd);
+         $$1.a(cut.uQ);
+         $$1.a(cut.uT);
+         $$1.a(cut.uU);
+         $$1.a(cut.vc);
+         $$1.a(cut.uY);
+         $$1.a(cut.uS);
+         $$1.a(cut.va);
+         $$1.a(cut.uZ);
+         $$1.a(cut.uR);
+         $$1.a(cut.uV);
+         $$1.a(coj.a($$0x.c().b(lq.d)));
+         $$1.a(cut.ul);
+         $$1.a(cut.um);
+         $$1.a(cut.un);
+         $$1.a(cut.uo);
+         $$1.a(cut.up);
+         $$1.a(cut.ur);
+         $$1.a(cut.uq);
+         $$1.a(cut.gp);
+         $$1.a(cut.gm);
+         $$1.a(cut.ss);
+         $$1.a(cut.yB);
+         $$1.a(cut.fv);
+         $$1.a(cut.fw);
+         $$1.a(cut.fx);
+         $$1.a(cut.fy);
+         $$1.a(cut.fz);
+         $$1.a(cut.fA);
+         $$1.a(cut.fB);
+      }).d());
+      jv.a($$0, e, ctb.a(ctb.f.a, 4).a(xp.c("itemGroup.redstone")).a(() -> new cuq(cut.lH)).a(($$0x, $$1) -> {
+         $$1.a(cut.lH);
+         $$1.a(cut.lI);
+         $$1.a(cut.lJ);
+         $$1.a(cut.lK);
+         $$1.a(cut.lL);
+         $$1.a(cut.lV);
+         $$1.a(cut.yu);
+         $$1.a(cut.yv);
+         $$1.a(cut.yw);
+         $$1.a(cut.yx);
+         $$1.a(cut.lW);
+         $$1.a(cut.mi);
+         $$1.a(cut.mg);
+         $$1.a(cut.mx);
+         $$1.a(cut.mt);
+         $$1.a(cut.mv);
+         $$1.a(cut.mw);
+         $$1.a(cut.lZ);
+         $$1.a(cut.ma);
+         $$1.a(cut.gk);
+         $$1.a(cut.aI);
+         $$1.a(cut.cU);
+         $$1.a(cut.mb);
+         $$1.a(cut.ps);
+         $$1.a(cut.lU);
+         $$1.a(cut.lY);
+         $$1.a(cut.lX);
+         $$1.a(cut.lM);
+         $$1.a(cut.lN);
+         $$1.a(cut.lO);
+         $$1.a(cut.lP);
+         $$1.a(cut.lS);
+         $$1.a(cut.lT);
+         $$1.a(cut.rT);
+         $$1.a(cut.lR);
+         $$1.a(cut.eN);
+         $$1.a(cut.wg);
+         $$1.a(cut.eB);
+         $$1.a(cut.eQ);
+         $$1.a(cut.mc);
+         $$1.a(cut.eY);
+         $$1.a(cut.eC);
+         $$1.a(cut.lQ);
+         $$1.a(cut.mf);
+         $$1.a(cut.wf);
+         $$1.a(cut.sr);
+         $$1.a(cut.nJ);
+         $$1.a(cut.nH);
+         $$1.a(cut.nI);
+         $$1.a(cut.nK);
+         $$1.a(cut.nM);
+         $$1.a(cut.nQ);
+         $$1.a(cut.nN);
+         $$1.a(cut.nO);
+         $$1.a(cut.nP);
+         $$1.a(cut.nV);
+         $$1.a(cut.ol);
+         $$1.a(cut.mJ);
+         $$1.a(cut.mI);
+         $$1.a(cut.nw);
+         $$1.a(cut.nd);
+         $$1.a(cut.nc);
+         $$1.a(cut.md);
+         $$1.a(cut.me);
+         $$1.a(cut.wo);
+         $$1.a(cut.dP);
+         $$1.a(cut.uF);
+         $$1.a(cut.as);
+      }).d());
+      jv.a($$0, f, ctb.a(ctb.f.a, 5).a(xp.c("itemGroup.hotbar")).a(() -> new cuq(dfc.cl)).a().a(ctb.h.c).d());
+      jv.a($$0, g, ctb.a(ctb.f.a, 6).a(xp.c("itemGroup.search")).a(() -> new cuq(cut.qS)).a(($$1, $$2) -> {
+         Set<cuq> $$3 = cur.a();
 
-   @Override
-   public Predicate<cup> b() {
-      return c;
-   }
-
-   @Override
-   public bqv<cup> a(dby $$0, cmx $$1, bqt $$2) {
-      cup $$3 = $$1.b($$2);
-      cxd $$4 = $$3.a(km.E);
-      if ($$4 != null && !$$4.b()) {
-         this.a($$0, $$1, $$2, $$3, a($$4), 1.0F, null);
-         return bqv.b($$3);
-      } else if (!$$1.g($$3).e()) {
-         this.l = false;
-         this.m = false;
-         $$1.c($$2);
-         return bqv.b($$3);
-      } else {
-         return bqv.d($$3);
-      }
-   }
-
-   private static float a(cxd $$0) {
-      return $$0.a(cus.uu) ? 1.6F : 3.15F;
-   }
-
-   @Override
-   public void a(cup $$0, dby $$1, btp $$2, int $$3) {
-      int $$4 = this.b($$0) - $$3;
-      float $$5 = a($$4, $$0);
-      if ($$5 >= 1.0F && !j($$0) && a($$2, $$0)) {
-         $$1.a(null, $$2.du(), $$2.dw(), $$2.dA(), awa.go, $$2.de(), 1.0F, 1.0F / ($$1.E_().i() * 0.5F + 1.0F) + 0.2F);
-      }
-   }
-
-   private static boolean a(btp $$0, cup $$1) {
-      List<cup> $$2 = a($$1, $$0.g($$1), $$0);
-      if (!$$2.isEmpty()) {
-         $$1.b(km.E, cxd.a($$2));
-         return true;
-      } else {
-         return false;
-      }
-   }
-
-   public static boolean j(cup $$0) {
-      cxd $$1 = $$0.a(km.E, cxd.a);
-      return !$$1.b();
-   }
-
-   @Override
-   protected void a(btp $$0, cnp $$1, int $$2, float $$3, float $$4, float $$5, @Nullable btp $$6) {
-      Vector3f $$11;
-      if ($$6 != null) {
-         double $$7 = $$6.du() - $$0.du();
-         double $$8 = $$6.dA() - $$0.dA();
-         double $$9 = Math.sqrt($$7 * $$7 + $$8 * $$8);
-         double $$10 = $$6.e(0.3333333333333333) - $$1.dw() + $$9 * 0.2F;
-         $$11 = a($$0, new evr($$7, $$10, $$8), $$5);
-      } else {
-         evr $$12 = $$0.i(1.0F);
-         Quaternionf $$13 = new Quaternionf().setAngleAxis((double)($$5 * (float) (Math.PI / 180.0)), $$12.c, $$12.d, $$12.e);
-         evr $$14 = $$0.f(1.0F);
-         $$11 = $$14.j().rotate($$13);
-      }
-
-      $$1.c((double)$$11.x(), (double)$$11.y(), (double)$$11.z(), $$3, $$4);
-      float $$16 = a($$0.el(), $$2);
-      $$0.dP().a(null, $$0.du(), $$0.dw(), $$0.dA(), awa.gu, $$0.de(), 1.0F, $$16);
-   }
-
-   private static Vector3f a(btp $$0, evr $$1, float $$2) {
-      Vector3f $$3 = $$1.j().normalize();
-      Vector3f $$4 = new Vector3f($$3).cross(new Vector3f(0.0F, 1.0F, 0.0F));
-      if ((double)$$4.lengthSquared() <= 1.0E-7) {
-         evr $$5 = $$0.i(1.0F);
-         $$4 = new Vector3f($$3).cross($$5.j());
-      }
-
-      Vector3f $$6 = new Vector3f($$3).rotateAxis((float) (Math.PI / 2), $$4.x, $$4.y, $$4.z);
-      return new Vector3f($$3).rotateAxis($$2 * (float) (Math.PI / 180.0), $$6.x, $$6.y, $$6.z);
-   }
-
-   @Override
-   protected cnp a(dby $$0, btp $$1, cup $$2, cup $$3, boolean $$4) {
-      if ($$3.a(cus.uu)) {
-         return new cnk($$0, $$3, $$1, $$1.du(), $$1.dy() - 0.15F, $$1.dA(), true);
-      } else {
-         cnp $$5 = super.a($$0, $$1, $$2, $$3, $$4);
-         if ($$5 instanceof cnd $$6) {
-            $$6.q(true);
-            $$6.b(awa.gn);
-         }
-
-         return $$5;
-      }
-   }
-
-   @Override
-   protected int k(cup $$0) {
-      return $$0.a(cus.uu) ? 3 : 1;
-   }
-
-   public void a(dby $$0, btp $$1, bqt $$2, cup $$3, float $$4, float $$5, @Nullable btp $$6) {
-      if (!$$0.x_()) {
-         cxd $$7 = $$3.b(km.E, cxd.a);
-         if ($$7 != null && !$$7.b()) {
-            this.a($$0, $$1, $$2, $$3, $$7.a(), $$4, $$5, $$1 instanceof cmx, $$6);
-            if ($$1 instanceof arg $$8) {
-               am.G.a($$8, $$3);
-               $$8.b(awk.c.b($$3.g()));
+         for (ctb $$4 : $$0) {
+            if ($$4.k() != ctb.h.d) {
+               $$3.addAll($$4.m());
             }
          }
-      }
-   }
 
-   private static float a(azh $$0, int $$1) {
-      return $$1 == 0 ? 1.0F : a(($$1 & 1) == 1, $$0);
-   }
-
-   private static float a(boolean $$0, azh $$1) {
-      float $$2 = $$0 ? 0.63F : 0.43F;
-      return 1.0F / ($$1.i() * 0.5F + 1.8F) + $$2;
-   }
-
-   @Override
-   public void a(dby $$0, btp $$1, cup $$2, int $$3) {
-      if (!$$0.B) {
-         int $$4 = dab.a(dad.J, $$2);
-         avz $$5 = this.a($$4);
-         avz $$6 = $$4 == 0 ? awa.gp : null;
-         float $$7 = (float)($$2.u() - $$3) / (float)l($$2);
-         if ($$7 < 0.2F) {
-            this.l = false;
-            this.m = false;
+         $$2.a($$3);
+      }).a("item_search.png").a().a(ctb.h.d).d());
+      jv.a($$0, h, ctb.a(ctb.f.b, 0).a(xp.c("itemGroup.tools")).a(() -> new cuq(cut.ph)).a(($$0x, $$1) -> {
+         $$1.a(cut.oM);
+         $$1.a(cut.oN);
+         $$1.a(cut.oO);
+         $$1.a(cut.oP);
+         $$1.a(cut.oR);
+         $$1.a(cut.oS);
+         $$1.a(cut.oT);
+         $$1.a(cut.oU);
+         $$1.a(cut.pb);
+         $$1.a(cut.pc);
+         $$1.a(cut.pd);
+         $$1.a(cut.pe);
+         $$1.a(cut.oW);
+         $$1.a(cut.oX);
+         $$1.a(cut.oY);
+         $$1.a(cut.oZ);
+         $$1.a(cut.pg);
+         $$1.a(cut.ph);
+         $$1.a(cut.pi);
+         $$1.a(cut.pj);
+         $$1.a(cut.pl);
+         $$1.a(cut.pm);
+         $$1.a(cut.pn);
+         $$1.a(cut.po);
+         $$1.a(cut.qy);
+         $$1.a(cut.qz);
+         $$1.a(cut.qH);
+         $$1.a(cut.qG);
+         $$1.a(cut.qI);
+         $$1.a(cut.qF);
+         $$1.a(cut.qJ);
+         $$1.a(cut.qK);
+         $$1.a(cut.qA);
+         $$1.a(cut.qB);
+         $$1.a(cut.qE);
+         $$1.a(cut.qV);
+         $$1.a(cut.os);
+         $$1.a(cut.tX);
+         $$1.a(cut.ry);
+         $$1.a(cut.rV);
+         $$1.a(cut.xr);
+         $$1.a(cut.uL);
+         $$1.a(cut.uK);
+         if ($$0x.a().b(cpo.b)) {
+            $$1.a(cut.qU);
          }
 
-         if ($$7 >= 0.2F && !this.l) {
-            this.l = true;
-            $$0.a(null, $$1.du(), $$1.dw(), $$1.dA(), $$5, awb.h, 0.5F, 1.0F);
-         }
-
-         if ($$7 >= 0.5F && $$6 != null && !this.m) {
-            this.m = true;
-            $$0.a(null, $$1.du(), $$1.dw(), $$1.dA(), $$6, awb.h, 0.5F, 1.0F);
-         }
-      }
-   }
-
-   @Override
-   public int b(cup $$0) {
-      return l($$0) + 3;
-   }
-
-   public static int l(cup $$0) {
-      int $$1 = dab.a(dad.J, $$0);
-      return $$1 == 0 ? 25 : 25 - 5 * $$1;
-   }
-
-   @Override
-   public cwk c(cup $$0) {
-      return cwk.g;
-   }
-
-   private avz a(int $$0) {
-      switch ($$0) {
-         case 1:
-            return awa.gr;
-         case 2:
-            return awa.gs;
-         case 3:
-            return awa.gt;
-         default:
-            return awa.gq;
-      }
-   }
-
-   private static float a(int $$0, cup $$1) {
-      float $$2 = (float)$$0 / (float)l($$1);
-      if ($$2 > 1.0F) {
-         $$2 = 1.0F;
-      }
-
-      return $$2;
-   }
-
-   @Override
-   public void a(cup $$0, cuk.b $$1, List<xp> $$2, cwi $$3) {
-      cxd $$4 = $$0.a(km.E);
-      if ($$4 != null && !$$4.b()) {
-         cup $$5 = $$4.a().get(0);
-         $$2.add(xp.c("item.minecraft.crossbow.projectile").b(xo.v).b($$5.G()));
-         if ($$3.a() && $$5.a(cus.uu)) {
-            List<xp> $$6 = Lists.newArrayList();
-            cus.uu.a($$5, $$1, $$6, $$3);
-            if (!$$6.isEmpty()) {
-               for (int $$7 = 0; $$7 < $$6.size(); $$7++) {
-                  $$6.set($$7, xp.b("  ").b($$6.get($$7)).a(n.h));
+         $$1.a(cut.qS);
+         $$1.a(cut.qT);
+         $$1.a(cut.qW);
+         $$1.a(cut.qX);
+         $$1.a(cut.uj);
+         $$1.a(cut.tZ);
+         $$1.a(cut.tY);
+         $$1.a(cut.sf);
+         $$1.a(cut.ss);
+         $$1.a(cut.nT);
+         c($$1, ctb.g.a);
+         $$1.a(cut.nL);
+         $$1.a(cut.nR);
+         $$1.a(cut.nS);
+         $$1.a(cut.nU);
+         $$1.a(cut.nV);
+         $$1.a(cut.nW);
+         $$1.a(cut.nX);
+         $$1.a(cut.nY);
+         $$1.a(cut.nZ);
+         $$1.a(cut.oa);
+         $$1.a(cut.ob);
+         $$1.a(cut.oc);
+         $$1.a(cut.od);
+         $$1.a(cut.og);
+         $$1.a(cut.oh);
+         $$1.a(cut.oi);
+         $$1.a(cut.oj);
+         $$1.a(cut.oe);
+         $$1.a(cut.of);
+         $$1.a(cut.ok);
+         $$1.a(cut.ol);
+         $$1.a(cut.nJ);
+         $$1.a(cut.nH);
+         $$1.a(cut.nI);
+         $$1.a(cut.nK);
+         $$1.a(cut.nM);
+         $$1.a(cut.nQ);
+         $$1.a(cut.nN);
+         $$1.a(cut.nO);
+         $$1.a(cut.nP);
+         $$0x.c().a(lq.E).ifPresent($$1x -> a($$1, $$1x, cut.we, awx.c, ctb.g.a));
+         $$1.a(cut.vy);
+         $$1.a(cut.vz);
+         $$1.a(cut.vA);
+         $$1.a(cut.vB);
+         $$1.a(cut.vC);
+         $$1.a(cut.vD);
+         $$1.a(cut.vE);
+         $$1.a(cut.vF);
+         $$1.a(cut.vG);
+         $$1.a(cut.vH);
+         $$1.a(cut.vI);
+         $$1.a(cut.vJ);
+         $$1.a(cut.vK);
+         $$1.a(cut.vL);
+         $$1.a(cut.vM);
+         $$1.a(cut.vN);
+      }).d());
+      jv.a($$0, i, ctb.a(ctb.f.b, 1).a(xp.c("itemGroup.combat")).a(() -> new cuq(cut.pk)).a(($$0x, $$1) -> {
+         $$1.a(cut.oL);
+         $$1.a(cut.oQ);
+         $$1.a(cut.pa);
+         $$1.a(cut.oV);
+         $$1.a(cut.pf);
+         $$1.a(cut.pk);
+         $$1.a(cut.oO);
+         $$1.a(cut.oT);
+         $$1.a(cut.pd);
+         $$1.a(cut.oY);
+         $$1.a(cut.pi);
+         $$1.a(cut.pn);
+         $$1.a(cut.vP);
+         $$1.a(cut.ub);
+         $$1.a(cut.vs);
+         $$1.a(cut.py);
+         $$1.a(cut.pz);
+         $$1.a(cut.pA);
+         $$1.a(cut.pB);
+         $$1.a(cut.pC);
+         $$1.a(cut.pD);
+         $$1.a(cut.pE);
+         $$1.a(cut.pF);
+         $$1.a(cut.pG);
+         $$1.a(cut.pH);
+         $$1.a(cut.pI);
+         $$1.a(cut.pJ);
+         $$1.a(cut.pO);
+         $$1.a(cut.pP);
+         $$1.a(cut.pQ);
+         $$1.a(cut.pR);
+         $$1.a(cut.pK);
+         $$1.a(cut.pL);
+         $$1.a(cut.pM);
+         $$1.a(cut.pN);
+         $$1.a(cut.pS);
+         $$1.a(cut.pT);
+         $$1.a(cut.pU);
+         $$1.a(cut.pV);
+         $$1.a(cut.oo);
+         $$1.a(cut.uJ);
+         $$1.a(cut.uG);
+         $$1.a(cut.uH);
+         $$1.a(cut.uI);
+         $$1.a(cut.or);
+         $$1.a(cut.vt);
+         $$1.a(cut.md);
+         $$1.a(cut.vf);
+         $$1.a(cut.qC);
+         $$1.a(cut.qR);
+         $$1.a(cut.tY);
+         $$1.a(cut.ou);
+         $$1.a(cut.vT);
+         c($$1, ctb.g.a);
+         $$1.a(cut.ov);
+         $$1.a(cut.vp);
+         $$0x.c().a(lq.Y).ifPresent($$2 -> a($$1, $$2, cut.vq, ctb.g.a, $$0x.a()));
+      }).d());
+      jv.a($$0, j, ctb.a(ctb.f.b, 2).a(xp.c("itemGroup.foodAndDrink")).a(() -> new cuq(cut.qa)).a(($$0x, $$1) -> {
+         $$1.a(cut.ot);
+         $$1.a(cut.qa);
+         $$1.a(cut.qb);
+         $$1.a(cut.rW);
+         $$1.a(cut.wr);
+         $$1.a(cut.ws);
+         $$1.a(cut.vg);
+         $$1.a(cut.uf);
+         $$1.a(cut.uk);
+         $$1.a(cut.ug);
+         $$1.a(cut.uh);
+         $$1.a(cut.ui);
+         $$1.a(cut.vk);
+         $$1.a(cut.rX);
+         $$1.a(cut.sa);
+         $$1.a(cut.sb);
+         $$1.a(cut.pX);
+         $$1.a(cut.pY);
+         $$1.a(cut.uN);
+         $$1.a(cut.uO);
+         $$1.a(cut.sc);
+         $$1.a(cut.sd);
+         $$1.a(cut.uA);
+         $$1.a(cut.uB);
+         $$1.a(cut.qZ);
+         $$1.a(cut.rd);
+         $$1.a(cut.ra);
+         $$1.a(cut.re);
+         $$1.a(cut.rb);
+         $$1.a(cut.rc);
+         $$1.a(cut.px);
+         $$1.a(cut.rS);
+         $$1.a(cut.rB);
+         $$1.a(cut.ut);
+         $$1.a(cut.se);
+         $$1.a(cut.sm);
+         $$1.a(cut.pr);
+         $$1.a(cut.vm);
+         $$1.a(cut.uC);
+         a($$1, ctb.g.a);
+         $$1.a(cut.qE);
+         $$1.a(cut.wz);
+         b($$1, ctb.g.a);
+         $$0x.c().a(lq.Y).ifPresent($$2 -> {
+            a($$1, $$2, cut.sk, ctb.g.a, $$0x.a());
+            a($$1, $$2, cut.vo, ctb.g.a, $$0x.a());
+            a($$1, $$2, cut.vr, ctb.g.a, $$0x.a());
+         });
+      }).d());
+      jv.a(
+         $$0,
+         k,
+         ctb.a(ctb.f.b, 3)
+            .a(xp.c("itemGroup.ingredients"))
+            .a(() -> new cuq(cut.oE))
+            .a(
+               ($$0x, $$1) -> {
+                  $$1.a(cut.ow);
+                  $$1.a(cut.ox);
+                  $$1.a(cut.oD);
+                  $$1.a(cut.oF);
+                  $$1.a(cut.oH);
+                  $$1.a(cut.oz);
+                  $$1.a(cut.oA);
+                  $$1.a(cut.oy);
+                  $$1.a(cut.aC);
+                  $$1.a(cut.oB);
+                  $$1.a(cut.oC);
+                  $$1.a(cut.vv);
+                  $$1.a(cut.si);
+                  $$1.a(cut.oE);
+                  $$1.a(cut.oG);
+                  $$1.a(cut.oI);
+                  $$1.a(cut.oK);
+                  $$1.a(cut.oJ);
+                  $$1.a(cut.pp);
+                  $$1.a(cut.pW);
+                  $$1.a(cut.pw);
+                  $$1.a(cut.rz);
+                  $$1.a(cut.ry);
+                  $$1.a(cut.ps);
+                  $$1.a(cut.pt);
+                  $$1.a(cut.qC);
+                  $$1.a(cut.qR);
+                  $$1.a(cut.qD);
+                  $$1.a(cut.uE);
+                  $$1.a(cut.ww);
+                  $$1.a(cut.rf);
+                  $$1.a(cut.rg);
+                  $$1.a(cut.op);
+                  $$1.a(cut.oq);
+                  $$1.a(cut.qQ);
+                  $$1.a(cut.qM);
+                  $$1.a(cut.uy);
+                  $$1.a(cut.uz);
+                  $$1.a(cut.vR);
+                  $$1.a(cut.vS);
+                  $$1.a(cut.tX);
+                  $$1.a(cut.sg);
+                  $$1.a(cut.yD);
+                  $$1.a(cut.aH);
+                  $$1.a(cut.us);
+                  $$1.a(cut.sf);
+                  $$1.a(cut.ss);
+                  $$1.a(cut.vu);
+                  $$1.a(cut.vh);
+                  $$1.a(cut.xq);
+                  $$1.a(cut.vO);
+                  $$1.a(cut.ri);
+                  $$1.a(cut.rq);
+                  $$1.a(cut.rp);
+                  $$1.a(cut.rx);
+                  $$1.a(cut.ru);
+                  $$1.a(cut.rw);
+                  $$1.a(cut.rj);
+                  $$1.a(cut.rm);
+                  $$1.a(cut.rn);
+                  $$1.a(cut.rv);
+                  $$1.a(cut.rr);
+                  $$1.a(cut.rl);
+                  $$1.a(cut.rt);
+                  $$1.a(cut.rs);
+                  $$1.a(cut.rk);
+                  $$1.a(cut.ro);
+                  $$1.a(cut.pq);
+                  $$1.a(cut.qL);
+                  $$1.a(cut.ux);
+                  $$1.a(cut.qO);
+                  $$1.a(cut.qP);
+                  $$1.a(cut.uv);
+                  $$1.a(cut.sl);
+                  $$1.a(cut.sj);
+                  $$1.a(cut.lH);
+                  $$1.a(cut.qY);
+                  $$1.a(cut.pu);
+                  $$1.a(cut.vn);
+                  $$1.a(cut.sn);
+                  $$1.a(cut.so);
+                  $$1.a(cut.rA);
+                  $$1.a(cut.uD);
+                  $$1.a(cut.st);
+                  $$1.a(cut.sm);
+                  $$1.a(cut.rc);
+                  $$1.a(cut.sp);
+                  $$1.a(cut.uk);
+                  $$1.a(cut.sh);
+                  $$1.a(cut.oo);
+                  $$1.a(cut.vQ);
+                  $$1.a(cut.vW);
+                  $$1.a(cut.vX);
+                  $$1.a(cut.vY);
+                  $$1.a(cut.vZ);
+                  $$1.a(cut.wa);
+                  $$1.a(cut.wb);
+                  $$1.a(cut.wc);
+                  $$1.a(cut.wd);
+                  $$1.a(cut.xL);
+                  $$1.a(cut.xM);
+                  $$1.a(cut.xN);
+                  $$1.a(cut.xO);
+                  $$1.a(cut.xP);
+                  $$1.a(cut.xQ);
+                  $$1.a(cut.xR);
+                  $$1.a(cut.xT);
+                  $$1.a(cut.xS);
+                  $$1.a(cut.xU);
+                  $$1.a(cut.xV);
+                  $$1.a(cut.xW);
+                  $$1.a(cut.xX);
+                  $$1.a(cut.xY);
+                  $$1.a(cut.xZ);
+                  $$1.a(cut.ya);
+                  $$1.a(cut.yb);
+                  $$1.a(cut.yc);
+                  $$1.a(cut.yd);
+                  $$1.a(cut.ye);
+                  $$1.a(cut.yf);
+                  $$1.a(cut.yg);
+                  $$1.a(cut.yh);
+                  $$1.a(cut.xs);
+                  $$1.a(cut.xt);
+                  $$1.a(cut.xz);
+                  $$1.a(cut.xw);
+                  $$1.a(cut.xv);
+                  $$1.a(cut.xu);
+                  $$1.a(cut.xE);
+                  $$1.a(cut.xH);
+                  $$1.a(cut.xF);
+                  $$1.a(cut.xI);
+                  $$1.a(cut.xx);
+                  $$1.a(cut.xG);
+                  $$1.a(cut.xA);
+                  $$1.a(cut.xB);
+                  $$1.a(cut.xC);
+                  $$1.a(cut.xy);
+                  $$1.a(cut.xD);
+                  $$1.a(cut.xJ);
+                  $$1.a(cut.xK);
+                  $$1.a(cut.tW);
+                  $$1.a(cut.yz);
+                  $$1.a(cut.yA);
+                  Set<axf<cul>> $$2 = Set.of(
+                     awy.bz,
+                     awy.bA,
+                     awy.bB,
+                     awy.bC,
+                     awy.bD,
+                     awy.bE,
+                     awy.bG,
+                     awy.bR,
+                     awy.bF,
+                     awy.bH,
+                     awy.bI,
+                     awy.bJ,
+                     awy.bK,
+                     awy.bL,
+                     awy.bM,
+                     awy.bN,
+                     awy.bO,
+                     awy.bP,
+                     awy.bQ
+                  );
+                  $$0x.c().a(lq.u).ifPresent($$3 -> {
+                     a($$1, $$3, $$2, ctb.g.b, $$0x.a());
+                     b($$1, $$3, $$2, ctb.g.c, $$0x.a());
+                  });
                }
+            )
+            .d()
+      );
+      jv.a($$0, l, ctb.a(ctb.f.b, 4).a(xp.c("itemGroup.spawnEggs")).a(() -> new cuq(cut.tj)).a(($$0x, $$1) -> {
+         $$1.a(cut.eM);
+         $$1.a(cut.yy);
+         $$1.a(cut.sv);
+         $$1.a(cut.su);
+         $$1.a(cut.sw);
+         $$1.a(cut.sx);
+         $$1.a(cut.sy);
+         $$1.a(cut.sz);
+         $$1.a(cut.sA);
+         $$1.a(cut.sB);
+         $$1.a(cut.sD);
+         $$1.a(cut.sC);
+         $$1.a(cut.sE);
+         $$1.a(cut.sF);
+         $$1.a(cut.sG);
+         $$1.a(cut.sH);
+         $$1.a(cut.sI);
+         $$1.a(cut.sJ);
+         $$1.a(cut.sK);
+         $$1.a(cut.sL);
+         $$1.a(cut.sM);
+         $$1.a(cut.sO);
+         $$1.a(cut.sP);
+         $$1.a(cut.sQ);
+         $$1.a(cut.sR);
+         $$1.a(cut.sS);
+         $$1.a(cut.sT);
+         $$1.a(cut.sU);
+         $$1.a(cut.sV);
+         $$1.a(cut.sW);
+         $$1.a(cut.sX);
+         $$1.a(cut.sY);
+         $$1.a(cut.sZ);
+         $$1.a(cut.ta);
+         $$1.a(cut.tb);
+         $$1.a(cut.tc);
+         $$1.a(cut.td);
+         $$1.a(cut.te);
+         $$1.a(cut.tf);
+         $$1.a(cut.tg);
+         $$1.a(cut.th);
+         $$1.a(cut.ti);
+         $$1.a(cut.tj);
+         $$1.a(cut.tk);
+         $$1.a(cut.tl);
+         $$1.a(cut.tm);
+         $$1.a(cut.tn);
+         $$1.a(cut.to);
+         $$1.a(cut.tp);
+         $$1.a(cut.tq);
+         $$1.a(cut.tr);
+         $$1.a(cut.ts);
+         $$1.a(cut.tt);
+         $$1.a(cut.tu);
+         $$1.a(cut.tv);
+         $$1.a(cut.tw);
+         $$1.a(cut.tx);
+         $$1.a(cut.ty);
+         $$1.a(cut.tz);
+         $$1.a(cut.tA);
+         $$1.a(cut.tB);
+         $$1.a(cut.tC);
+         $$1.a(cut.tD);
+         $$1.a(cut.tE);
+         $$1.a(cut.tF);
+         $$1.a(cut.tG);
+         $$1.a(cut.tH);
+         $$1.a(cut.tI);
+         $$1.a(cut.tJ);
+         $$1.a(cut.tK);
+         $$1.a(cut.tL);
+         $$1.a(cut.tM);
+         $$1.a(cut.tN);
+         $$1.a(cut.tP);
+         $$1.a(cut.tQ);
+         $$1.a(cut.tR);
+         $$1.a(cut.tS);
+         $$1.a(cut.tT);
+         $$1.a(cut.tU);
+         $$1.a(cut.tV);
+      }).d());
+      jv.a($$0, m, ctb.a(ctb.f.b, 5).a(xp.c("itemGroup.op")).a(() -> new cuq(cut.gF)).a().a(($$0x, $$1) -> {
+         if ($$0x.b()) {
+            $$1.a(cut.gF);
+            $$1.a(cut.iV);
+            $$1.a(cut.iU);
+            $$1.a(cut.uM);
+            $$1.a(cut.on);
+            $$1.a(cut.om);
+            $$1.a(cut.jb);
+            $$1.a(cut.hB);
+            $$1.a(cut.vx);
 
-               $$2.addAll($$6);
+            for (int $$2 = 15; $$2 >= 0; $$2--) {
+               $$1.a(djo.a(new cuq(cut.hC), $$2));
             }
+
+            $$0x.c().a(lq.S).ifPresent($$1x -> a($$1, $$1x, $$0xxx -> !$$0xxx.a(awz.a), ctb.g.a));
+         }
+      }).d());
+      return jv.a($$0, n, ctb.a(ctb.f.b, 6).a(xp.c("itemGroup.inventory")).a(() -> new cuq(dfc.cv)).a("inventory.png").b().a().a(ctb.h.b).c().d());
+   }
+
+   public static void a() {
+      Map<Pair<ctb.f, Integer>, String> $$0 = new HashMap<>();
+
+      for (ale<ctb> $$1 : lp.ao.f()) {
+         ctb $$2 = lp.ao.f($$1);
+         String $$3 = $$2.a().getString();
+         String $$4 = $$0.put(Pair.of($$2.g(), $$2.f()), $$3);
+         if ($$4 != null) {
+            throw new IllegalArgumentException("Duplicate position: " + $$3 + " vs. " + $$4);
          }
       }
    }
 
-   @Override
-   public boolean m(cup $$0) {
-      return $$0.a(this);
+   public static ctb b() {
+      return lp.ao.f(a);
    }
 
-   @Override
-   public int c() {
-      return 8;
+   private static void a(ctb.e $$0, jk<cwp> $$1, cul $$2, ctb.g $$3, cpm $$4) {
+      $$1.b().filter($$1x -> ((cwp)$$1x.a()).a($$4)).map($$1x -> cwr.a($$2, $$1x)).forEach($$2x -> $$0.a($$2x, $$3));
+   }
+
+   private static void a(ctb.e $$0, jk<dab> $$1, Set<axf<cul>> $$2, ctb.g $$3, cpm $$4) {
+      $$1.b()
+         .map(ji::a)
+         .filter($$1x -> $$1x.a($$4))
+         .filter($$1x -> $$2.contains($$1x.c()))
+         .map($$0x -> cto.a(new dad($$0x, $$0x.g())))
+         .forEach($$2x -> $$0.a($$2x, $$3));
+   }
+
+   private static void b(ctb.e $$0, jk<dab> $$1, Set<axf<cul>> $$2, ctb.g $$3, cpm $$4) {
+      $$1.b()
+         .map(ji::a)
+         .filter($$1x -> $$1x.a($$4))
+         .filter($$1x -> $$2.contains($$1x.c()))
+         .flatMap($$0x -> IntStream.rangeClosed($$0x.f(), $$0x.g()).mapToObj($$1x -> cto.a(new dad($$0x, $$1x))))
+         .forEach($$2x -> $$0.a($$2x, $$3));
+   }
+
+   private static void a(ctb.e $$0, jk<cui> $$1, cul $$2, axf<cui> $$3, ctb.g $$4) {
+      $$1.a($$3).ifPresent($$3x -> $$3x.a().map($$1xx -> cuj.a($$2, $$1xx)).forEach($$2xx -> $$0.a($$2xx, $$4)));
+   }
+
+   private static void a(ctb.e $$0, ctb.g $$1) {
+      List<dnc> $$2 = dnc.c();
+      Set<cuq> $$3 = cur.a();
+
+      for (dnc $$4 : $$2) {
+         cuq $$5 = new cuq(cut.vU);
+         $$5.b(km.H, $$4.b());
+         $$3.add($$5);
+      }
+
+      $$0.a($$3, $$1);
+   }
+
+   private static void b(ctb.e $$0, ctb.g $$1) {
+      for (int $$2 = 0; $$2 <= 4; $$2++) {
+         cuq $$3 = new cuq(cut.yC);
+         $$3.b(km.Q, Integer.valueOf($$2));
+         $$0.a($$3, $$1);
+      }
+   }
+
+   private static void c(ctb.e $$0, ctb.g $$1) {
+      for (byte $$2 : ctv.a) {
+         cuq $$3 = new cuq(cut.uu);
+         $$3.b(km.U, new cxk($$2, List.of()));
+         $$0.a($$3, $$1);
+      }
+   }
+
+   private static void a(ctb.e $$0, jk.b<cje> $$1, Predicate<ji<cje>> $$2, ctb.g $$3) {
+      $$1.b().filter($$2).sorted(o).forEach($$2x -> {
+         cxf $$3x = ((cxf)cxf.a.a(cjd.e, $$2x).getOrThrow()).a((Consumer<us>)($$0xx -> $$0xx.a("id", "minecraft:painting")));
+         cuq $$4 = new cuq(cut.pZ);
+         $$4.b(km.M, $$3x);
+         $$0.a($$4, $$3);
+      });
+   }
+
+   public static List<ctb> c() {
+      return f().filter(ctb::i).toList();
+   }
+
+   public static List<ctb> d() {
+      return f().toList();
+   }
+
+   private static Stream<ctb> f() {
+      return lp.ao.s();
+   }
+
+   public static ctb e() {
+      return lp.ao.f(g);
+   }
+
+   private static void a(ctb.d $$0) {
+      f().filter($$0x -> $$0x.k() == ctb.h.a).forEach($$1 -> $$1.a($$0));
+      f().filter($$0x -> $$0x.k() != ctb.h.a).forEach($$1 -> $$1.a($$0));
+   }
+
+   public static boolean a(cpm $$0, boolean $$1, jk.a $$2) {
+      if (p != null && !p.a($$0, $$1, $$2)) {
+         return false;
+      } else {
+         p = new ctb.d($$0, $$1, $$2);
+         a(p);
+         return true;
+      }
    }
 }

@@ -1,25 +1,56 @@
+import com.mojang.logging.LogUtils;
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
+import java.util.Set;
+import org.slf4j.Logger;
 
-public class esp extends eru {
+public class esp extends erv {
+   private static final Logger b = LogUtils.getLogger();
    public static final MapCodec<esp> a = RecordCodecBuilder.mapCodec(
-      $$0 -> a($$0).and(alc.a(lq.G).fieldOf("item").forGetter($$0x -> $$0x.b)).apply($$0, esp::new)
+      $$0 -> a($$0)
+            .and($$0.group(eup.a.fieldOf("damage").forGetter($$0x -> $$0x.c), Codec.BOOL.fieldOf("add").orElse(false).forGetter($$0x -> $$0x.d)))
+            .apply($$0, esp::new)
    );
-   private final ji<cuk> b;
+   private final euo c;
+   private final boolean d;
 
-   private esp(List<ets> $$0, ji<cuk> $$1) {
+   private esp(List<ett> $$0, euo $$1, boolean $$2) {
       super($$0);
-      this.b = $$1;
+      this.c = $$1;
+      this.d = $$2;
    }
 
    @Override
-   public erw<esp> b() {
-      return erx.f;
+   public erx<esp> b() {
+      return ery.n;
    }
 
    @Override
-   public cup a(cup $$0, eqi $$1) {
-      return $$0.a(this.b.a(), $$0.I());
+   public Set<etc<?>> a() {
+      return this.c.a();
+   }
+
+   @Override
+   public cuq a(cuq $$0, eqj $$1) {
+      if ($$0.l()) {
+         int $$2 = $$0.o();
+         float $$3 = this.d ? 1.0F - (float)$$0.n() / (float)$$2 : 0.0F;
+         float $$4 = 1.0F - ayz.a(this.c.b($$1) + $$3, 0.0F, 1.0F);
+         $$0.b(ayz.d($$4 * (float)$$2));
+      } else {
+         b.warn("Couldn't set damage of loot item {}", $$0);
+      }
+
+      return $$0;
+   }
+
+   public static erv.a<?> a(euo $$0) {
+      return a($$1 -> new esp($$1, $$0, false));
+   }
+
+   public static erv.a<?> a(euo $$0, boolean $$1) {
+      return a($$2 -> new esp($$2, $$0, $$1));
    }
 }

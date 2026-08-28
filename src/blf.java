@@ -1,16 +1,39 @@
 import com.mojang.datafixers.DSL;
 import com.mojang.datafixers.schemas.Schema;
 import com.mojang.datafixers.types.templates.TypeTemplate;
+import com.mojang.datafixers.util.Pair;
 import java.util.Map;
 import java.util.function.Supplier;
 
-public class blf extends bii {
+public class blf extends bij {
    public blf(int $$0, Schema $$1) {
       super($$0, $$1);
    }
 
    public void registerTypes(Schema $$0, Map<String, Supplier<TypeTemplate>> $$1, Map<String, Supplier<TypeTemplate>> $$2) {
       super.registerTypes($$0, $$1, $$2);
-      $$0.registerType(true, bgx.y, () -> DSL.optionalFields("item", bgx.t.in($$0), "block_state", bgx.u.in($$0)));
+      $$0.registerType(
+         true,
+         bgx.w,
+         () -> DSL.optionalFields(
+               new Pair[]{
+                  Pair.of("minecraft:bees", DSL.list(DSL.optionalFields("entity_data", bgx.A.in($$0)))),
+                  Pair.of("minecraft:block_entity_data", bgx.s.in($$0)),
+                  Pair.of("minecraft:bundle_contents", DSL.list(bgx.t.in($$0))),
+                  Pair.of(
+                     "minecraft:can_break",
+                     DSL.optionalFields("predicates", DSL.list(DSL.optionalFields("blocks", DSL.or(bgx.C.in($$0), DSL.list(bgx.C.in($$0))))))
+                  ),
+                  Pair.of(
+                     "minecraft:can_place_on",
+                     DSL.optionalFields("predicates", DSL.list(DSL.optionalFields("blocks", DSL.or(bgx.C.in($$0), DSL.list(bgx.C.in($$0))))))
+                  ),
+                  Pair.of("minecraft:charged_projectiles", DSL.list(bgx.t.in($$0))),
+                  Pair.of("minecraft:container", DSL.list(DSL.optionalFields("item", bgx.t.in($$0)))),
+                  Pair.of("minecraft:entity_data", bgx.A.in($$0)),
+                  Pair.of("minecraft:pot_decorations", DSL.list(bgx.D.in($$0)))
+               }
+            )
+      );
    }
 }

@@ -5,11 +5,11 @@ public class afp implements zw<aci> {
    private final int d;
    private final int e;
 
-   public afp(bsu $$0) {
+   public afp(bsv $$0) {
       this($$0.al(), $$0.ds());
    }
 
-   public afp(int $$0, evr $$1) {
+   public afp(int $$0, evs $$1) {
       this.b = $$0;
       double $$2 = 3.9;
       double $$3 = ayz.a($$1.c, -3.9, 3.9);

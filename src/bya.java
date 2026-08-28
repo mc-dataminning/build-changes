@@ -1,20 +1,26 @@
 import com.mojang.datafixers.kinds.App;
+import java.util.Optional;
 import java.util.function.Function;
 import org.apache.commons.lang3.mutable.MutableLong;
 
 public class bya {
-   public static bvj<bty> a(cct<jh> $$0, float $$1, int $$2, int $$3) {
-      MutableLong $$4 = new MutableLong(0L);
-      return byv.a(
-         (Function<byv.b<bty>, ? extends App<byv.c<bty>, byy<bty>>>)($$5 -> $$5.group($$5.a(cct.m), $$5.b($$0)).apply($$5, ($$5x, $$6) -> ($$7, $$8, $$9) -> {
-                  jh $$10 = $$5.b($$6);
-                  if ($$7.af() != $$10.a() || !$$10.b().a($$8.dn(), (double)$$3)) {
+   private static final int a = 180;
+   private static final int b = 8;
+   private static final int c = 6;
+
+   public static bwu<btz> a(ccu<jh> $$0, float $$1, int $$2) {
+      MutableLong $$3 = new MutableLong(0L);
+      return byw.a(
+         (Function<byw.b<btz>, ? extends App<byw.c<btz>, byz<btz>>>)($$4 -> $$4.group($$4.a(ccu.m), $$4.b($$0)).apply($$4, ($$4x, $$5) -> ($$6, $$7, $$8) -> {
+                  jh $$9 = $$4.b($$5);
+                  if ($$6.af() != $$9.a() || !$$9.b().a($$7.dn(), (double)$$2)) {
                      return false;
-                  } else if ($$9 <= $$4.getValue()) {
+                  } else if ($$8 <= $$3.getValue()) {
                      return true;
                   } else {
-                     $$5x.a(new ccw($$10.b(), $$1, $$2));
-                     $$4.setValue($$9 + 80L);
+                     Optional<evs> $$10 = Optional.ofNullable(ceo.a($$7, 8, 6));
+                     $$4x.a($$10.map($$1xxxx -> new ccx($$1xxxx, $$1, 1)));
+                     $$3.setValue($$8 + 180L);
                      return true;
                   }
                }))

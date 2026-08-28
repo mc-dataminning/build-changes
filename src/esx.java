@@ -1,42 +1,38 @@
-import com.mojang.logging.LogUtils;
+import com.google.common.annotations.VisibleForTesting;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.JavaOps;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
-import java.util.Optional;
-import org.slf4j.Logger;
 
-public class esx extends eru {
-   private static final Logger b = LogUtils.getLogger();
-   public static final MapCodec<esx> a = RecordCodecBuilder.mapCodec($$0 -> a($$0).apply($$0, esx::new));
+public class esx extends erv {
+   public static final Codec<xp> a = xr.a.validate($$0 -> cxz.g.encodeStart(JavaOps.INSTANCE, $$0).map($$1 -> $$0));
+   public static final MapCodec<esx> b = RecordCodecBuilder.mapCodec(
+      $$0 -> a($$0).and($$0.group(cxz.a(a).fieldOf("pages").forGetter($$0x -> $$0x.c), eru.a.forGetter($$0x -> $$0x.d))).apply($$0, esx::new)
+   );
+   private final List<arw<xp>> c;
+   private final eru d;
 
-   private esx(List<ets> $$0) {
+   protected esx(List<ett> $$0, List<arw<xp>> $$1, eru $$2) {
       super($$0);
+      this.c = $$1;
+      this.d = $$2;
    }
 
    @Override
-   public erw<esx> b() {
-      return erx.l;
+   protected cuq a(cuq $$0, eqj $$1) {
+      $$0.a(km.J, cxz.a, this::a);
+      return $$0;
+   }
+
+   @VisibleForTesting
+   public cxz a(cxz $$0) {
+      List<arw<xp>> $$1 = this.d.a($$0.a(), this.c);
+      return $$0.b($$1);
    }
 
    @Override
-   public cup a(cup $$0, eqi $$1) {
-      if ($$0.e()) {
-         return $$0;
-      } else {
-         Optional<cyx<czk>> $$2 = $$1.d().r().a(cza.b, new brd($$0), $$1.d());
-         if ($$2.isPresent()) {
-            cup $$3 = $$2.get().b().a($$1.d().H_());
-            if (!$$3.e()) {
-               return $$3.c($$0.I());
-            }
-         }
-
-         b.warn("Couldn't smelt {} because there is no smelting recipe", $$0);
-         return $$0;
-      }
-   }
-
-   public static eru.a<?> c() {
-      return a(esx::new);
+   public erx<esx> b() {
+      return ery.N;
    }
 }

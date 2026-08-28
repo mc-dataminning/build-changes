@@ -15,8 +15,8 @@ public class auk extends auv<auk.a> {
       super($$2, $$3, $$0, $$1, ($$1x, $$2x, $$3x, $$4x, $$5) -> {
          AtomicLong $$6 = new AtomicLong();
          AtomicLong $$7 = new AtomicLong();
-         bnb $$8 = new bnb(ac.c, () -> 0, false);
-         bnb $$9 = new bnb(ac.c, () -> 0, false);
+         bnc $$8 = new bnc(ac.c, () -> 0, false);
+         bnc $$9 = new bnc(ac.c, () -> 0, false);
          CompletableFuture<Void> $$10 = $$3x.a($$1x, $$2x, $$8, $$9, $$2xx -> $$4x.execute(() -> {
                long $$2xxx = ac.d();
                $$2xx.run();
@@ -41,8 +41,8 @@ public class auk extends auv<auk.a> {
       c.info("Resource reload finished after {} ms", this.d.elapsed(TimeUnit.MILLISECONDS));
 
       for (auk.a $$2 : $$0) {
-         bnh $$3 = $$2.b;
-         bnh $$4 = $$2.c;
+         bni $$3 = $$2.b;
+         bni $$4 = $$2.c;
          long $$5 = TimeUnit.NANOSECONDS.toMillis($$2.d.get());
          long $$6 = TimeUnit.NANOSECONDS.toMillis($$2.e.get());
          long $$7 = $$5 + $$6;
@@ -57,12 +57,12 @@ public class auk extends auv<auk.a> {
 
    public static class a {
       final String a;
-      final bnh b;
-      final bnh c;
+      final bni b;
+      final bni c;
       final AtomicLong d;
       final AtomicLong e;
 
-      a(String $$0, bnh $$1, bnh $$2, AtomicLong $$3, AtomicLong $$4) {
+      a(String $$0, bni $$1, bni $$2, AtomicLong $$3, AtomicLong $$4) {
          this.a = $$0;
          this.b = $$1;
          this.c = $$2;

@@ -87,7 +87,7 @@ public class beu extends DataFix {
    public TypeRewriteRule makeRule() {
       Schema $$0 = this.getInputSchema();
       Type<?> $$1 = $$0.getType(bgx.t);
-      OpticFinder<Pair<String, String>> $$2 = DSL.fieldFinder("id", DSL.named(bgx.D.typeName(), bii.a()));
+      OpticFinder<Pair<String, String>> $$2 = DSL.fieldFinder("id", DSL.named(bgx.D.typeName(), bij.a()));
       OpticFinder<String> $$3 = DSL.fieldFinder("id", DSL.string());
       OpticFinder<?> $$4 = $$1.findField("tag");
       OpticFinder<?> $$5 = $$4.type().findField("EntityTag");

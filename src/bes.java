@@ -16,7 +16,7 @@ public abstract class bes extends DataFix {
    }
 
    public TypeRewriteRule makeRule() {
-      Type<Pair<String, String>> $$0 = DSL.named(bgx.D.typeName(), bii.a());
+      Type<Pair<String, String>> $$0 = DSL.named(bgx.D.typeName(), bij.a());
       if (!Objects.equals(this.getInputSchema().getType(bgx.D), $$0)) {
          throw new IllegalStateException("item name type is not what was expected.");
       } else {

@@ -24,15 +24,15 @@ public class afv implements zw<aci> {
       this.k = ImmutableList.copyOf($$3);
    }
 
-   public static afv a(ewq $$0, boolean $$1) {
+   public static afv a(ewr $$0, boolean $$1) {
       return new afv($$0.b(), $$1 ? 0 : 2, Optional.of(new afv.b($$0)), (Collection<String>)($$1 ? $$0.g() : ImmutableList.of()));
    }
 
-   public static afv a(ewq $$0) {
+   public static afv a(ewr $$0) {
       return new afv($$0.b(), 1, Optional.empty(), ImmutableList.of());
    }
 
-   public static afv a(ewq $$0, String $$1, afv.a $$2) {
+   public static afv a(ewr $$0, String $$1, afv.a $$2) {
       return new afv($$0.b(), $$2 == afv.a.a ? 3 : 4, Optional.empty(), ImmutableList.of($$1));
    }
 
@@ -125,7 +125,7 @@ public class afv implements zw<aci> {
       private final n f;
       private final int g;
 
-      public b(ewq $$0) {
+      public b(ewr $$0) {
          this.a = $$0.c();
          this.g = $$0.m();
          this.d = $$0.j().e;

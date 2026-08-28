@@ -1,24 +1,26 @@
-public class gsh extends grw {
+public class gsh extends grx {
    private static final float n = 0.0F;
-   private static final float o = 0.75F;
-   private final cmx p;
-   private final cot q;
-   private final boolean r;
+   private static final float o = 0.7F;
+   private static final float p = 0.0F;
+   private static final float q = 1.0F;
+   private static final float r = 0.0025F;
+   private final cou s;
+   private float t = 0.0F;
 
-   public gsh(cmx $$0, cot $$1, boolean $$2) {
-      super($$2 ? awa.oL : awa.oM, awb.g, gsn.t());
-      this.p = $$0;
-      this.q = $$1;
-      this.r = $$2;
-      this.k = gsn.a.a;
+   public gsh(cou $$0) {
+      super(awa.oN, awb.g, gso.t());
+      this.s = $$0;
       this.i = true;
       this.j = 0;
       this.d = 0.0F;
+      this.f = (double)((float)$$0.du());
+      this.g = (double)((float)$$0.dw());
+      this.h = (double)((float)$$0.dA());
    }
 
    @Override
    public boolean s() {
-      return !this.q.aW();
+      return !this.s.aW();
    }
 
    @Override
@@ -28,15 +30,18 @@ public class gsh extends grw {
 
    @Override
    public void q() {
-      if (this.q.dK() || !this.p.bR() || this.p.dc() != this.q) {
+      if (this.s.dK()) {
          this.n();
-      } else if (this.r != this.p.bj()) {
-         this.d = 0.0F;
       } else {
-         float $$0 = (float)this.q.ds().h();
-         if ($$0 >= 0.01F) {
-            this.d = ayz.b(0.0F, 0.75F, $$0);
+         this.f = (double)((float)this.s.du());
+         this.g = (double)((float)this.s.dw());
+         this.h = (double)((float)this.s.dA());
+         float $$0 = (float)this.s.ds().h();
+         if ($$0 >= 0.01F && this.s.dP().s().i()) {
+            this.t = ayz.a(this.t + 0.0025F, 0.0F, 1.0F);
+            this.d = ayz.i(ayz.a($$0, 0.0F, 0.5F), 0.0F, 0.7F);
          } else {
+            this.t = 0.0F;
             this.d = 0.0F;
          }
       }

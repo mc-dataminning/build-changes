@@ -1,85 +1,90 @@
-import com.google.common.collect.Lists;
-import com.google.gson.JsonArray;
 import com.google.gson.JsonDeserializationContext;
 import com.google.gson.JsonDeserializer;
 import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
 import com.google.gson.JsonParseException;
 import java.lang.reflect.Type;
-import java.util.Collection;
-import java.util.List;
-import java.util.function.Function;
-import java.util.stream.Collectors;
-import javax.annotation.Nullable;
 
-public class gey implements grl {
-   private final List<gez> a;
+public class gey {
+   public static final gey a = new gey();
+   public final gex b;
+   public final gex c;
+   public final gex d;
+   public final gex e;
+   public final gex f;
+   public final gex g;
+   public final gex h;
+   public final gex i;
 
-   public gey(List<gez> $$0) {
-      this.a = $$0;
+   private gey() {
+      this(gex.a, gex.a, gex.a, gex.a, gex.a, gex.a, gex.a, gex.a);
    }
 
-   public List<gez> a() {
-      return this.a;
+   public gey(gey $$0) {
+      this.b = $$0.b;
+      this.c = $$0.c;
+      this.d = $$0.d;
+      this.e = $$0.e;
+      this.f = $$0.f;
+      this.g = $$0.g;
+      this.h = $$0.h;
+      this.i = $$0.i;
    }
 
-   @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else {
-         return $$0 instanceof gey $$1 ? this.a.equals($$1.a) : false;
-      }
+   public gey(gex $$0, gex $$1, gex $$2, gex $$3, gex $$4, gex $$5, gex $$6, gex $$7) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
+      this.e = $$3;
+      this.f = $$4;
+      this.g = $$5;
+      this.h = $$6;
+      this.i = $$7;
    }
 
-   @Override
-   public int hashCode() {
-      return this.a.hashCode();
+   public gex a(cun $$0) {
+      return switch ($$0) {
+         case b -> this.b;
+         case c -> this.c;
+         case d -> this.d;
+         case e -> this.e;
+         case f -> this.f;
+         case g -> this.g;
+         case h -> this.h;
+         case i -> this.i;
+         default -> gex.a;
+      };
    }
 
-   @Override
-   public Collection<alf> f() {
-      return this.a().stream().map(gez::a).collect(Collectors.toSet());
+   public boolean b(cun $$0) {
+      return this.a($$0) != gex.a;
    }
 
-   @Override
-   public void a(Function<alf, grl> $$0) {
-      this.a().stream().map(gez::a).distinct().forEach($$1 -> $$0.apply($$1).a($$0));
-   }
-
-   @Nullable
-   @Override
-   public gra a(gre $$0, Function<grd, goz> $$1, gri $$2, alf $$3) {
-      if (this.a().isEmpty()) {
-         return null;
-      } else {
-         grm.a $$4 = new grm.a();
-
-         for (gez $$5 : this.a()) {
-            gra $$6 = $$0.a($$5.a(), $$5);
-            $$4.a($$6, $$5.d());
-         }
-
-         return $$4.a();
-      }
-   }
-
-   public static class a implements JsonDeserializer<gey> {
+   protected static class a implements JsonDeserializer<gey> {
       public gey a(JsonElement $$0, Type $$1, JsonDeserializationContext $$2) throws JsonParseException {
-         List<gez> $$3 = Lists.newArrayList();
-         if ($$0.isJsonArray()) {
-            JsonArray $$4 = $$0.getAsJsonArray();
-            if ($$4.size() == 0) {
-               throw new JsonParseException("Empty variant array");
-            }
-
-            for (JsonElement $$5 : $$4) {
-               $$3.add((gez)$$2.deserialize($$5, gez.class));
-            }
-         } else {
-            $$3.add((gez)$$2.deserialize($$0, gez.class));
+         JsonObject $$3 = $$0.getAsJsonObject();
+         gex $$4 = this.a($$2, $$3, cun.c);
+         gex $$5 = this.a($$2, $$3, cun.b);
+         if ($$5 == gex.a) {
+            $$5 = $$4;
          }
 
-         return new gey($$3);
+         gex $$6 = this.a($$2, $$3, cun.e);
+         gex $$7 = this.a($$2, $$3, cun.d);
+         if ($$7 == gex.a) {
+            $$7 = $$6;
+         }
+
+         gex $$8 = this.a($$2, $$3, cun.f);
+         gex $$9 = this.a($$2, $$3, cun.g);
+         gex $$10 = this.a($$2, $$3, cun.h);
+         gex $$11 = this.a($$2, $$3, cun.i);
+         return new gey($$5, $$4, $$7, $$6, $$8, $$9, $$10, $$11);
+      }
+
+      private gex a(JsonDeserializationContext $$0, JsonObject $$1, cun $$2) {
+         String $$3 = $$2.c();
+         return $$1.has($$3) ? (gex)$$0.deserialize($$1.get($$3), gex.class) : gex.a;
       }
    }
 }

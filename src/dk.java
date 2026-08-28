@@ -18,12 +18,12 @@ import java.util.function.Predicate;
 import java.util.function.Supplier;
 import javax.annotation.Nullable;
 
-public record dk(de.d d, Optional<dbv> e, List<dk.e<?>> f, Object2BooleanMap<alf> g, Map<alf, dk.c> h, Optional<bu> i) implements bv {
+public record dk(de.d d, Optional<dbw> e, List<dk.e<?>> f, Object2BooleanMap<alf> g, Map<alf, dk.c> h, Optional<bu> i) implements bv {
    public static final int b = 100;
    public static final MapCodec<dk> c = RecordCodecBuilder.mapCodec(
       $$0 -> $$0.group(
                de.d.d.optionalFieldOf("level", de.d.c).forGetter(dk::b),
-               dbv.f.optionalFieldOf("gamemode").forGetter(dk::c),
+               dbw.f.optionalFieldOf("gamemode").forGetter(dk::c),
                dk.e.a.listOf().optionalFieldOf("stats", List.of()).forGetter(dk::d),
                ayh.d(alf.a).optionalFieldOf("recipes", Object2BooleanMaps.emptyMap()).forGetter(dk::e),
                Codec.unboundedMap(alf.a, dk.c.b).optionalFieldOf("advancements", Map.of()).forGetter(dk::f),
@@ -33,7 +33,7 @@ public record dk(de.d d, Optional<dbv> e, List<dk.e<?>> f, Object2BooleanMap<alf
    );
 
    @Override
-   public boolean a(bsu $$0, arf $$1, @Nullable evr $$2) {
+   public boolean a(bsv $$0, arf $$1, @Nullable evs $$2) {
       if (!($$0 instanceof arg $$3)) {
          return false;
       } else if (!this.d.d($$3.co)) {
@@ -72,15 +72,15 @@ public record dk(de.d d, Optional<dbv> e, List<dk.e<?>> f, Object2BooleanMap<alf
          }
 
          if (this.i.isPresent()) {
-            evr $$13 = $$3.bx();
-            evr $$14 = $$3.f(1.0F);
-            evr $$15 = $$13.b($$14.c * 100.0, $$14.d * 100.0, $$14.e * 100.0);
-            evo $$16 = cnr.a($$3.dP(), $$3, $$13, $$15, new evm($$13, $$15).g(1.0), $$0x -> !$$0x.N_(), 0.0F);
-            if ($$16 == null || $$16.c() != evp.a.c) {
+            evs $$13 = $$3.bx();
+            evs $$14 = $$3.f(1.0F);
+            evs $$15 = $$13.b($$14.c * 100.0, $$14.d * 100.0, $$14.e * 100.0);
+            evp $$16 = cns.a($$3.dP(), $$3, $$13, $$15, new evn($$13, $$15).g(1.0), $$0x -> !$$0x.N_(), 0.0F);
+            if ($$16 == null || $$16.c() != evq.a.c) {
                return false;
             }
 
-            bsu $$17 = $$16.a();
+            bsv $$17 = $$16.a();
             if (!this.i.get().a($$3, $$17) || !$$3.E($$17)) {
                return false;
             }
@@ -99,7 +99,7 @@ public record dk(de.d d, Optional<dbv> e, List<dk.e<?>> f, Object2BooleanMap<alf
       return this.d;
    }
 
-   public Optional<dbv> c() {
+   public Optional<dbw> c() {
       return this.e;
    }
 
@@ -167,7 +167,7 @@ public record dk(de.d d, Optional<dbv> e, List<dk.e<?>> f, Object2BooleanMap<alf
 
    public static class d {
       private de.d a = de.d.c;
-      private Optional<dbv> b = Optional.empty();
+      private Optional<dbw> b = Optional.empty();
       private final Builder<dk.e<?>> c = ImmutableList.builder();
       private final Object2BooleanMap<alf> d = new Object2BooleanOpenHashMap();
       private final Map<alf, dk.c> e = Maps.newHashMap();
@@ -192,7 +192,7 @@ public record dk(de.d d, Optional<dbv> e, List<dk.e<?>> f, Object2BooleanMap<alf
          return this;
       }
 
-      public dk.d a(dbv $$0) {
+      public dk.d a(dbw $$0) {
          this.b = Optional.of($$0);
          return this;
       }

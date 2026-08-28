@@ -1,47 +1,85 @@
-import javax.annotation.Nullable;
+import com.mojang.authlib.exceptions.MinecraftClientException;
+import com.mojang.authlib.exceptions.MinecraftClientHttpException;
+import com.mojang.authlib.minecraft.UserApiService;
+import com.mojang.authlib.minecraft.report.AbuseReport;
+import com.mojang.authlib.minecraft.report.AbuseReportLimits;
+import com.mojang.authlib.yggdrasil.request.AbuseReportRequest;
+import com.mojang.datafixers.util.Unit;
+import java.util.UUID;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.CompletionException;
 
-public enum fyv {
-   a("generic_violation"),
-   b("false_reporting"),
-   c("hate_speech"),
-   d("hate_terrorism_notorious_figure"),
-   e("harassment_or_bullying"),
-   f("defamation_impersonation_false_information"),
-   g("drugs"),
-   h("fraud"),
-   i("spam_or_advertising"),
-   j("nudity_or_pornography"),
-   k("sexually_inappropriate"),
-   l("extreme_violence_or_gore"),
-   m("imminent_harm_to_person_or_property");
-
-   private final xp n;
-
-   private fyv(final String $$0) {
-      this.n = xp.c("gui.banned.reason." + $$0);
+public interface fyv {
+   static fyv a(fzb $$0, UserApiService $$1) {
+      return new fyv.b($$0, $$1);
    }
 
-   public xp a() {
-      return this.n;
+   CompletableFuture<Unit> a(UUID var1, fzd var2, AbuseReport var3);
+
+   boolean a();
+
+   default AbuseReportLimits b() {
+      return AbuseReportLimits.DEFAULTS;
    }
 
-   @Nullable
-   public static fyv a(int $$0) {
-      return switch ($$0) {
-         case 2 -> b;
-         default -> null;
-         case 5 -> c;
-         case 16, 25 -> d;
-         case 17, 19, 23, 31 -> a;
-         case 21 -> e;
-         case 27 -> f;
-         case 28 -> g;
-         case 29 -> h;
-         case 30 -> i;
-         case 32 -> j;
-         case 33 -> k;
-         case 34 -> l;
-         case 53 -> m;
-      };
+   public static class a extends yp {
+      public a(xp $$0, Throwable $$1) {
+         super($$0, $$1);
+      }
+   }
+
+   public static record b(fzb a, UserApiService b) implements fyv {
+      private static final xp c = xp.c("gui.abuseReport.send.service_unavailable");
+      private static final xp d = xp.c("gui.abuseReport.send.http_error");
+      private static final xp e = xp.c("gui.abuseReport.send.json_error");
+
+      @Override
+      public CompletableFuture<Unit> a(UUID $$0, fzd $$1, AbuseReport $$2) {
+         return CompletableFuture.supplyAsync(() -> {
+            AbuseReportRequest $$3 = new AbuseReportRequest(1, $$0, $$2, this.a.b(), this.a.c(), this.a.d(), $$1.a());
+
+            try {
+               this.b.reportAbuse($$3);
+               return Unit.INSTANCE;
+            } catch (MinecraftClientHttpException var7) {
+               xp $$5 = this.a(var7);
+               throw new CompletionException(new fyv.a($$5, var7));
+            } catch (MinecraftClientException var8) {
+               xp $$7 = this.a(var8);
+               throw new CompletionException(new fyv.a($$7, var8));
+            }
+         }, ac.h());
+      }
+
+      @Override
+      public boolean a() {
+         return this.b.canSendReports();
+      }
+
+      private xp a(MinecraftClientHttpException $$0) {
+         return xp.a("gui.abuseReport.send.error_message", $$0.getMessage());
+      }
+
+      private xp a(MinecraftClientException $$0) {
+         return switch ($$0.getType()) {
+            case SERVICE_UNAVAILABLE -> c;
+            case HTTP_ERROR -> d;
+            case JSON_ERROR -> e;
+            default -> throw new MatchException(null, null);
+         };
+      }
+
+      @Override
+      public AbuseReportLimits b() {
+         return this.b.getAbuseReportLimits();
+      }
+
+      public fzb c() {
+         return this.a;
+      }
+
+      public UserApiService d() {
+         return this.b;
+      }
    }
 }

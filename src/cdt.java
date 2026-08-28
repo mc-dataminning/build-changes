@@ -1,27 +1,29 @@
 import com.google.common.collect.ImmutableSet;
-import java.util.Optional;
+import java.util.Comparator;
+import java.util.List;
 import java.util.Set;
 
-public abstract class cdt extends cdz<btp> {
-   protected abstract boolean a(btp var1, btp var2);
+public class cdt<T extends btq> extends cea<T> {
+   @Override
+   protected void a(arf $$0, T $$1) {
+      evn $$2 = $$1.cK().c((double)this.b(), (double)this.c(), (double)this.b());
+      List<btq> $$3 = $$0.a(btq.class, $$2, $$1x -> $$1x != $$1 && $$1x.bD());
+      $$3.sort(Comparator.comparingDouble($$1::g));
+      bus<?> $$4 = $$1.dS();
+      $$4.a(ccu.g, $$3);
+      $$4.a(ccu.h, new ccw($$1, $$3));
+   }
 
-   protected abstract cct<btp> b();
+   protected int b() {
+      return 16;
+   }
+
+   protected int c() {
+      return 16;
+   }
 
    @Override
-   public Set<cct<?>> a() {
-      return ImmutableSet.of(this.b());
-   }
-
-   @Override
-   protected void a(arf $$0, btp $$1) {
-      $$1.dS().a(this.b(), this.b($$1));
-   }
-
-   private Optional<btp> b(btp $$0) {
-      return this.a($$0).flatMap($$1 -> $$1.a($$1x -> this.a($$0, $$1x)));
-   }
-
-   protected Optional<ccv> a(btp $$0) {
-      return $$0.dS().c(cct.h);
+   public Set<ccu<?>> a() {
+      return ImmutableSet.of(ccu.g, ccu.h);
    }
 }

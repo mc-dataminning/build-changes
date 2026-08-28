@@ -339,8 +339,8 @@ public class beo extends DataFix {
    }
 
    public TypeRewriteRule makeRule() {
-      Type<Either<Integer, Pair<String, String>>> $$0 = DSL.or(DSL.intType(), DSL.named(bgx.D.typeName(), bii.a()));
-      Type<Pair<String, String>> $$1 = DSL.named(bgx.D.typeName(), bii.a());
+      Type<Either<Integer, Pair<String, String>>> $$0 = DSL.or(DSL.intType(), DSL.named(bgx.D.typeName(), bij.a()));
+      Type<Pair<String, String>> $$1 = DSL.named(bgx.D.typeName(), bij.a());
       OpticFinder<Either<Integer, Pair<String, String>>> $$2 = DSL.fieldFinder("id", $$0);
       return this.fixTypeEverywhereTyped(
          "ItemIdFix",

@@ -1,22 +1,42 @@
 import com.mojang.datafixers.kinds.App;
 import java.util.Optional;
+import java.util.function.BiConsumer;
 import java.util.function.Function;
+import java.util.function.Predicate;
 
 public class bxy {
-   public static bvj<btp> a() {
-      return byv.a(
-         (Function<byv.b<btp>, ? extends App<byv.c<btp>, byy<btp>>>)($$0 -> $$0.group($$0.b(cct.ab))
-               .apply(
-                  $$0,
-                  $$1 -> ($$2, $$3, $$4) -> {
-                        Optional.ofNullable($$2.a($$0.b($$1)))
-                           .map($$0xxx -> $$0xxx instanceof btp $$1xx ? $$1xx : null)
-                           .filter(btp::eB)
-                           .filter($$1xx -> $$1xx.ak() != bta.by || $$2.ab().b(dbu.N))
-                           .ifPresent($$1xx -> $$1.b());
-                        return true;
-                     }
-               ))
+   private static final int a = 200;
+
+   public static <E extends bts> bvk<E> a(BiConsumer<E, btq> $$0) {
+      return a($$0x -> false, $$0, true);
+   }
+
+   public static <E extends bts> bvk<E> a(Predicate<btq> $$0) {
+      return a($$0, ($$0x, $$1) -> {
+      }, true);
+   }
+
+   public static <E extends bts> bvk<E> a() {
+      return a($$0 -> false, ($$0, $$1) -> {
+      }, true);
+   }
+
+   public static <E extends bts> bvk<E> a(Predicate<btq> $$0, BiConsumer<E, btq> $$1, boolean $$2) {
+      return byw.a(
+         (Function<byw.b<E>, ? extends App<byw.c<E>, byz<E>>>)($$3 -> $$3.group($$3.b(ccu.o), $$3.a(ccu.E)).apply($$3, ($$4, $$5) -> ($$6, $$7, $$8) -> {
+                  btq $$9 = $$3.b($$4);
+                  if ($$7.c($$9) && (!$$2 || !a($$7, $$3.a($$5))) && $$9.bD() && $$9.dP() == $$7.dP() && !$$0.test($$9)) {
+                     return true;
+                  } else {
+                     $$1.accept((E)$$7, $$9);
+                     $$4.b();
+                     return true;
+                  }
+               }))
       );
+   }
+
+   private static boolean a(btq $$0, Optional<Long> $$1) {
+      return $$1.isPresent() && $$0.dP().Z() - $$1.get() > 200L;
    }
 }

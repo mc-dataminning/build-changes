@@ -1,40 +1,31 @@
+import com.google.common.collect.Lists;
+import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
-import com.mojang.logging.LogUtils;
-import org.slf4j.Logger;
+import java.util.List;
 
-public class fbs extends fbu {
-   private static final Logger d = LogUtils.getLogger();
+public class fbs extends fbv {
    public long a;
-   public int b;
-   public fbs.a c = fbs.a.a;
+   public List<fbr> b = Lists.newArrayList();
 
    public static fbs a(String $$0) {
       fbs $$1 = new fbs();
+      JsonParser $$2 = new JsonParser();
 
       try {
-         JsonParser $$2 = new JsonParser();
-         JsonObject $$3 = $$2.parse($$0).getAsJsonObject();
-         $$1.a = fdr.a("startDate", $$3, 0L);
-         $$1.b = fdr.a("daysLeft", $$3, 0);
-         $$1.c = b(fdr.b("subscriptionType", $$3, fbs.a.a.name()));
-      } catch (Exception var4) {
-         d.error("Could not parse Subscription: {}", var4.getMessage());
+         JsonElement $$3 = $$2.parse($$0);
+         JsonObject $$4 = $$3.getAsJsonObject();
+         $$1.a = fds.a("periodInMillis", $$4, -1L);
+         JsonElement $$5 = $$4.get("playerActivityDto");
+         if ($$5 != null && $$5.isJsonArray()) {
+            for (JsonElement $$7 : $$5.getAsJsonArray()) {
+               fbr $$8 = fbr.a($$7.getAsJsonObject());
+               $$1.b.add($$8);
+            }
+         }
+      } catch (Exception var10) {
       }
 
       return $$1;
-   }
-
-   private static fbs.a b(String $$0) {
-      try {
-         return fbs.a.valueOf($$0);
-      } catch (Exception var2) {
-         return fbs.a.a;
-      }
-   }
-
-   public static enum a {
-      a,
-      b;
    }
 }

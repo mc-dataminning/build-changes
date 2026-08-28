@@ -1,30 +1,41 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public record ecz(efl b, dzb c, bpz d, int e) implements edc {
+public class ecz implements edd {
    public static final Codec<ecz> a = RecordCodecBuilder.create(
       $$0 -> $$0.group(
-               efl.a.fieldOf("state_provider").forGetter(ecz::a),
-               dzb.b.fieldOf("target").forGetter(ecz::b),
-               bpz.b(0, 8).fieldOf("radius").forGetter(ecz::c),
-               Codec.intRange(0, 4).fieldOf("half_height").forGetter(ecz::d)
+               dsd.b.fieldOf("contents").forGetter($$0x -> $$0x.b),
+               dsd.b.fieldOf("rim").forGetter($$0x -> $$0x.c),
+               bqa.b(0, 16).fieldOf("size").forGetter($$0x -> $$0x.d),
+               bqa.b(0, 16).fieldOf("rim_size").forGetter($$0x -> $$0x.e)
             )
             .apply($$0, ecz::new)
    );
+   private final dsd b;
+   private final dsd c;
+   private final bqa d;
+   private final bqa e;
 
-   public efl a() {
+   public ecz(dsd $$0, dsd $$1, bqa $$2, bqa $$3) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
+      this.e = $$3;
+   }
+
+   public dsd a() {
       return this.b;
    }
 
-   public dzb b() {
+   public dsd b() {
       return this.c;
    }
 
-   public bpz c() {
+   public bqa c() {
       return this.d;
    }
 
-   public int d() {
+   public bqa d() {
       return this.e;
    }
 }

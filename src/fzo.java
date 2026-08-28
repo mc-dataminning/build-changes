@@ -1,30 +1,22 @@
-import com.google.common.annotations.VisibleForTesting;
+import com.mojang.logging.LogUtils;
+import java.net.InetAddress;
+import java.net.InetSocketAddress;
+import java.net.UnknownHostException;
 import java.util.Optional;
+import org.slf4j.Logger;
 
-public class fzo {
-   public static final fzo a = new fzo(fzn.b, fzp.createDnsSrvRedirectHandler(), fzk.a());
-   private final fzn b;
-   private final fzp c;
-   private final fzk d;
-
-   @VisibleForTesting
-   fzo(fzn $$0, fzp $$1, fzk $$2) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
-   }
-
-   public Optional<fzl> a(fzm $$0) {
-      Optional<fzl> $$1 = this.b.resolve($$0);
-      if ((!$$1.isPresent() || this.d.a($$1.get())) && this.d.a($$0)) {
-         Optional<fzm> $$2 = this.c.lookupRedirect($$0);
-         if ($$2.isPresent()) {
-            $$1 = this.b.resolve($$2.get()).filter(this.d::a);
-         }
-
-         return $$1;
-      } else {
+@FunctionalInterface
+public interface fzo {
+   Logger a = LogUtils.getLogger();
+   fzo b = $$0 -> {
+      try {
+         InetAddress $$1 = InetAddress.getByName($$0.a());
+         return Optional.of(fzm.a(new InetSocketAddress($$1, $$0.b())));
+      } catch (UnknownHostException var2) {
+         a.debug("Couldn't resolve server {} address", $$0.a(), var2);
          return Optional.empty();
       }
-   }
+   };
+
+   Optional<fzm> resolve(fzn var1);
 }

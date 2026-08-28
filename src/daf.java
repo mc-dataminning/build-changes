@@ -1,161 +1,37 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
-import it.unimi.dsi.fastutil.objects.ObjectIterator;
-import it.unimi.dsi.fastutil.objects.Object2IntMap.Entry;
-import java.util.Collections;
-import java.util.Optional;
-import java.util.Set;
-import java.util.function.Consumer;
-import java.util.function.Function;
-import java.util.function.Predicate;
-import javax.annotation.Nullable;
-
-public class daf implements cxv {
-   public static final daf a = new daf(new Object2IntOpenHashMap(), true);
-   public static final int b = 255;
-   private static final Codec<Integer> e = Codec.intRange(0, 255);
-   private static final Codec<Object2IntOpenHashMap<ji<daa>>> f = Codec.unboundedMap(lp.f.r(), e).xmap(Object2IntOpenHashMap::new, Function.identity());
-   private static final Codec<daf> g = RecordCodecBuilder.create(
-      $$0 -> $$0.group(f.fieldOf("levels").forGetter($$0x -> $$0x.h), Codec.BOOL.optionalFieldOf("show_in_tooltip", true).forGetter($$0x -> $$0x.i))
-            .apply($$0, daf::new)
-   );
-   public static final Codec<daf> c = Codec.withAlternative(g, f, $$0 -> new daf($$0, true));
-   public static final zn<xa, daf> d = zn.a(zl.a(Object2IntOpenHashMap::new, zl.b(lq.u), zl.g), $$0 -> $$0.h, zl.b, $$0 -> $$0.i, daf::new);
-   final Object2IntOpenHashMap<ji<daa>> h;
-   final boolean i;
-
-   daf(Object2IntOpenHashMap<ji<daa>> $$0, boolean $$1) {
-      this.h = $$0;
-      this.i = $$1;
-      ObjectIterator var3 = $$0.object2IntEntrySet().iterator();
-
-      while (var3.hasNext()) {
-         Entry<ji<daa>> $$2 = (Entry<ji<daa>>)var3.next();
-         int $$3 = $$2.getIntValue();
-         if ($$3 < 0 || $$3 > 255) {
-            throw new IllegalArgumentException("Enchantment " + $$2.getKey() + " has invalid level " + $$3);
-         }
-      }
-   }
-
-   public int a(daa $$0) {
-      return this.h.getInt($$0.m());
+public class daf extends dab {
+   public daf(dab.b $$0) {
+      super($$0);
    }
 
    @Override
-   public void a(cuk.b $$0, Consumer<xp> $$1, cwi $$2) {
-      if (this.i) {
-         jk.a $$3 = $$0.a();
-         jm<daa> $$4 = a($$3, lq.u, aws.a);
+   public boolean a() {
+      return true;
+   }
 
-         for (ji<daa> $$5 : $$4) {
-            int $$6 = this.h.getInt($$5);
-            if ($$6 > 0) {
-               $$1.accept($$5.a().e($$6));
-            }
-         }
+   public static void a(btq $$0, dbz $$1, iz $$2, int $$3) {
+      if ($$0.aE()) {
+         dsd $$4 = dfc.kI.o();
+         int $$5 = Math.min(16, 2 + $$3);
+         iz.a $$6 = new iz.a();
 
-         ObjectIterator var9 = this.h.object2IntEntrySet().iterator();
-
-         while (var9.hasNext()) {
-            Entry<ji<daa>> $$7 = (Entry<ji<daa>>)var9.next();
-            ji<daa> $$8 = (ji<daa>)$$7.getKey();
-            if (!$$4.a($$8)) {
-               $$1.accept($$8.a().e($$7.getIntValue()));
+         for (iz $$7 : iz.c($$2.b(-$$5, -1, -$$5), $$2.b($$5, -1, $$5))) {
+            if ($$7.a($$0.dn(), (double)$$5)) {
+               $$6.d($$7.u(), $$7.v() + 1, $$7.w());
+               dsd $$8 = $$1.a_($$6);
+               if ($$8.i()) {
+                  dsd $$9 = $$1.a_($$7);
+                  if ($$9 == dif.b() && $$4.a((dcc)$$1, $$7) && $$1.a($$4, $$7, evx.a())) {
+                     $$1.b($$7, $$4);
+                     $$1.a($$7, dfc.kI, ayz.a($$0.el(), 60, 120));
+                  }
+               }
             }
          }
       }
    }
 
-   private static <T> jm<T> a(@Nullable jk.a $$0, ale<jv<T>> $$1, axf<T> $$2) {
-      if ($$0 != null) {
-         Optional<jm.c<T>> $$3 = $$0.b($$1).a($$2);
-         if ($$3.isPresent()) {
-            return $$3.get();
-         }
-      }
-
-      return jm.a();
-   }
-
-   public daf a(boolean $$0) {
-      return new daf(this.h, $$0);
-   }
-
-   public Set<ji<daa>> a() {
-      return Collections.unmodifiableSet(this.h.keySet());
-   }
-
-   public Set<Entry<ji<daa>>> b() {
-      return Collections.unmodifiableSet(this.h.object2IntEntrySet());
-   }
-
-   public int c() {
-      return this.h.size();
-   }
-
-   public boolean d() {
-      return this.h.isEmpty();
-   }
-
    @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else {
-         return !($$0 instanceof daf $$1) ? false : this.i == $$1.i && this.h.equals($$1.h);
-      }
-   }
-
-   @Override
-   public int hashCode() {
-      int $$0 = this.h.hashCode();
-      return 31 * $$0 + (this.i ? 1 : 0);
-   }
-
-   @Override
-   public String toString() {
-      return "ItemEnchantments{enchantments=" + this.h + ", showInTooltip=" + this.i + "}";
-   }
-
-   public static class a {
-      private final Object2IntOpenHashMap<ji<daa>> a = new Object2IntOpenHashMap();
-      private final boolean b;
-
-      public a(daf $$0) {
-         this.a.putAll($$0.h);
-         this.b = $$0.i;
-      }
-
-      public void a(daa $$0, int $$1) {
-         if ($$1 <= 0) {
-            this.a.removeInt($$0.m());
-         } else {
-            this.a.put($$0.m(), Math.min($$1, 255));
-         }
-      }
-
-      public void b(daa $$0, int $$1) {
-         if ($$1 > 0) {
-            this.a.merge($$0.m(), Math.min($$1, 255), Integer::max);
-         }
-      }
-
-      public void a(Predicate<ji<daa>> $$0) {
-         this.a.keySet().removeIf($$0);
-      }
-
-      public int a(daa $$0) {
-         return this.a.getOrDefault($$0.m(), 0);
-      }
-
-      public Set<ji<daa>> a() {
-         return this.a.keySet();
-      }
-
-      public daf b() {
-         return new daf(this.a, this.b);
-      }
+   public boolean a(dab $$0) {
+      return super.a($$0) && $$0 != dae.i;
    }
 }

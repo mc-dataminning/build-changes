@@ -1,5 +1,5 @@
-public class dal extends daa {
-   public dal(daa.b $$0) {
+public class dal extends dab {
+   public dal(dab.b $$0) {
       super($$0);
    }
 

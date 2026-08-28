@@ -1,18 +1,24 @@
-public class glt extends gjq<cks> {
-   private static final alf a = new alf("textures/entity/illager/vindicator.png");
+public class glt extends gke<cml, fwm<cml>> {
+   private static final alf a = new alf("textures/entity/villager/villager.png");
 
-   public glt(gix.a $$0) {
-      super($$0, new fuo<>($$0.a(fwz.bQ)), 0.5F);
-      this.a(new gnc<cks, fuo<cks>>(this, $$0.d()) {
-         public void a(ezy $$0, gdo $$1, int $$2, cks $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-            if ($$3.gi()) {
-               super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8, $$9);
-            }
-         }
-      });
+   public glt(giy.a $$0) {
+      super($$0, new fwm<>($$0.a(fxa.bP)), 0.5F);
+      this.a(new gmp<>(this, $$0.f(), $$0.d()));
+      this.a(new gnv<>(this, $$0.e(), "villager"));
+      this.a(new gmo<>(this, $$0.d()));
    }
 
-   public alf a(cks $$0) {
+   public alf a(cml $$0) {
       return a;
+   }
+
+   protected void a(cml $$0, ezz $$1, float $$2) {
+      float $$3 = 0.9375F * $$0.ed();
+      $$1.b($$3, $$3, $$3);
+   }
+
+   protected float b(cml $$0) {
+      float $$1 = super.b($$0);
+      return $$0.p_() ? $$1 * 0.5F : $$1;
    }
 }

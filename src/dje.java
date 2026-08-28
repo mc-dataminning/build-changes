@@ -1,40 +1,59 @@
 import com.mojang.serialization.MapCodec;
 import javax.annotation.Nullable;
 
-public class dje extends din implements djq {
+public class dje extends dip implements djr {
    public static final MapCodec<dje> c = b(dje::new);
+   protected static final ewl g = dfa.a(0.0, 0.0, 0.0, 16.0, 9.0, 16.0);
+   private static final double h = 0.14;
 
    @Override
    public MapCodec<dje> a() {
       return c;
    }
 
-   protected dje(dsb.d $$0) {
-      super($$0, je.b, ewh.b(), true);
+   protected dje(dsc.d $$0) {
+      super($$0, je.b, g, true, 0.14);
    }
 
    @Override
-   protected dio c() {
-      return (dio)dfb.mc;
+   protected boolean g(dsd $$0) {
+      return $$0.a(dfc.G);
    }
 
    @Override
-   protected env b_(dsc $$0) {
-      return enw.c.a(false);
+   protected dfa b() {
+      return dfc.md;
    }
 
    @Override
-   protected boolean m(dsc $$0) {
-      return this.c().m($$0);
+   protected boolean m(dsd $$0) {
+      return !$$0.a(dfc.kJ);
    }
 
    @Override
-   public boolean a(@Nullable cmx $$0, dbe $$1, iz $$2, dsc $$3, enu $$4) {
+   public boolean a(@Nullable cmy $$0, dbf $$1, iz $$2, dsd $$3, env $$4) {
       return false;
    }
 
    @Override
-   public boolean a(dbz $$0, iz $$1, dsc $$2, env $$3) {
+   public boolean a(dca $$0, iz $$1, dsd $$2, enw $$3) {
       return false;
+   }
+
+   @Override
+   protected int a(azh $$0) {
+      return 1;
+   }
+
+   @Nullable
+   @Override
+   public dsd a(cyb $$0) {
+      enw $$1 = $$0.q().b_($$0.a());
+      return $$1.a(awv.a) && $$1.e() == 8 ? super.a($$0) : null;
+   }
+
+   @Override
+   protected enw b_(dsd $$0) {
+      return enx.c.a(false);
    }
 }

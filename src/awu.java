@@ -1,10 +1,10 @@
 public class awu {
-   public static final axf<egl> a = a("visible");
+   public static final axf<egm> a = a("visible");
 
    private awu() {
    }
 
-   private static axf<egl> a(String $$0) {
+   private static axf<egm> a(String $$0) {
       return axf.a(lq.aF, new alf($$0));
    }
 }

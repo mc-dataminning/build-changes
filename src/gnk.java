@@ -1,21 +1,48 @@
-public class gnk<T extends bsu & buf, M extends fua<T>> extends gnj<T, M> {
-   private final alf a;
-   private final M b;
+public abstract class gnk<T extends bsv, M extends fub<T>> {
+   private final gku<T, M> a;
 
-   public gnk(gkt<T, M> $$0, M $$1, alf $$2) {
-      super($$0);
-      this.b = $$1;
-      this.a = $$2;
+   public gnk(gku<T, M> $$0) {
+      this.a = $$0;
    }
 
-   @Override
-   public void a(ezy $$0, gdo $$1, int $$2, T $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-      if ($$3.i()) {
-         this.c().a(this.b);
-         this.b.a($$3, $$4, $$5, $$6);
-         this.b.a($$3, $$4, $$5, $$7, $$8, $$9);
-         fac $$10 = $$1.getBuffer(gdw.e(this.a));
-         this.b.a($$0, $$10, $$2, goq.d, 1.0F, 1.0F, 1.0F, 1.0F);
+   protected static <T extends btq> void a(
+      fub<T> $$0,
+      fub<T> $$1,
+      alf $$2,
+      ezz $$3,
+      gdp $$4,
+      int $$5,
+      T $$6,
+      float $$7,
+      float $$8,
+      float $$9,
+      float $$10,
+      float $$11,
+      float $$12,
+      float $$13,
+      float $$14,
+      float $$15
+   ) {
+      if (!$$6.ch()) {
+         $$0.a($$1);
+         $$1.a($$6, $$7, $$8, $$12);
+         $$1.a($$6, $$7, $$8, $$9, $$10, $$11);
+         a($$1, $$2, $$3, $$4, $$5, $$6, $$13, $$14, $$15);
       }
    }
+
+   protected static <T extends btq> void a(fub<T> $$0, alf $$1, ezz $$2, gdp $$3, int $$4, T $$5, float $$6, float $$7, float $$8) {
+      fad $$9 = $$3.getBuffer(gdx.e($$1));
+      $$0.a($$2, $$9, $$4, gjz.c($$5, 0.0F), $$6, $$7, $$8, 1.0F);
+   }
+
+   public M c() {
+      return this.a.a();
+   }
+
+   protected alf a(T $$0) {
+      return this.a.a($$0);
+   }
+
+   public abstract void a(ezz var1, gdp var2, int var3, T var4, float var5, float var6, float var7, float var8, float var9, float var10);
 }

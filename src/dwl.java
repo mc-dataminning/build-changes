@@ -1,19 +1,15 @@
-import java.util.UUID;
-import java.util.function.Consumer;
-import javax.annotation.Nullable;
+public interface dwl<T> {
+   void g(T var1);
 
-public interface dwl<T extends dwc> {
-   @Nullable
-   T a(int var1);
+   void f(T var1);
 
-   @Nullable
-   T a(UUID var1);
+   void e(T var1);
 
-   Iterable<T> a();
+   void d(T var1);
 
-   <U extends T> void a(dwj<T, U> var1, axl<U> var2);
+   void c(T var1);
 
-   void a(evm var1, Consumer<T> var2);
+   void b(T var1);
 
-   <U extends T> void a(dwj<T, U> var1, evm var2, axl<U> var3);
+   void a(T var1);
 }

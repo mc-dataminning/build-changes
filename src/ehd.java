@@ -1,27 +1,26 @@
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class ehd extends ehq {
-   public static final MapCodec<ehd> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(dzb.b.fieldOf("predicate").forGetter($$0x -> $$0x.c)).apply($$0, ehd::new)
-   );
-   private final dzb c;
+public class ehd extends ehr {
+   private static final ehd c = new ehd();
+   public static MapCodec<ehd> a = MapCodec.unit(() -> c);
 
-   private ehd(dzb $$0) {
-      this.c = $$0;
+   private ehd() {
    }
 
-   public static ehd a(dzb $$0) {
-      return new ehd($$0);
+   public static ehd a() {
+      return c;
    }
 
    @Override
-   protected boolean a(ehp $$0, azh $$1, iz $$2) {
-      return this.c.test($$0.d(), $$2);
+   protected boolean a(ehq $$0, azh $$1, iz $$2) {
+      ehp $$3 = $$0.e()
+         .orElseThrow(() -> new IllegalStateException("Tried to biome check an unregistered feature, or a feature that should not restrict the biome"));
+      ji<dcy> $$4 = $$0.d().t($$2);
+      return $$0.f().a($$4).a($$3);
    }
 
    @Override
-   public ehs<?> b() {
-      return ehs.a;
+   public eht<?> b() {
+      return eht.e;
    }
 }

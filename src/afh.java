@@ -4,7 +4,7 @@ public class afh implements zw<aci> {
    public static final zn<wm, afh> a = zw.a(afh::a, afh::new);
    private final int b;
 
-   public afh(bsu $$0) {
+   public afh(bsv $$0) {
       this.b = $$0.al();
    }
 
@@ -26,7 +26,7 @@ public class afh implements zw<aci> {
    }
 
    @Nullable
-   public bsu a(dby $$0) {
+   public bsv a(dbz $$0) {
       return $$0.a(this.b);
    }
 }

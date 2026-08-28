@@ -49,7 +49,7 @@ public enum je implements azu {
       this.q = $$6;
    }
 
-   public static je[] a(bsu $$0) {
+   public static je[] a(bsv $$0) {
       float $$1 = $$0.g(1.0F) * (float) (Math.PI / 180.0);
       float $$2 = -$$0.h(1.0F) * (float) (Math.PI / 180.0);
       float $$3 = ayz.a($$1);
@@ -121,7 +121,7 @@ public enum je implements azu {
       return this.p;
    }
 
-   public static je a(bsu $$0, je.a $$1) {
+   public static je a(bsv $$0, je.a $$1) {
       return switch ($$1) {
          case a -> f.a($$0.h(1.0F)) ? f : e;
          case b -> $$0.g(1.0F) < 0.0F ? b : a;
@@ -314,7 +314,7 @@ public enum je implements azu {
       return $$3;
    }
 
-   public static je a(evr $$0) {
+   public static je a(evs $$0) {
       return a($$0.c, $$0.d, $$0.e);
    }
 

@@ -1,49 +1,36 @@
-import com.google.common.collect.ImmutableSet;
-import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
 
-public record eti(ji<daa> b, List<Float> c) implements ets {
-   public static final MapCodec<eti> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(lp.f.r().fieldOf("enchantment").forGetter(eti::c), ayh.a(Codec.FLOAT.listOf()).fieldOf("chances").forGetter(eti::d))
-            .apply($$0, eti::new)
-   );
+public class eti extends etk {
+   public static final MapCodec<eti> a = a(eti::new);
 
-   @Override
-   public ett b() {
-      return etu.m;
+   eti(List<ett> $$0) {
+      super($$0, ac.b($$0));
    }
 
    @Override
-   public Set<etb<?>> a() {
-      return ImmutableSet.of(ete.i);
+   public etu b() {
+      return etv.d;
    }
 
-   public boolean a(eqi $$0) {
-      cup $$1 = $$0.c(ete.i);
-      int $$2 = $$1 != null ? dab.a(this.b.a(), $$1) : 0;
-      float $$3 = this.c.get(Math.min($$2, this.c.size() - 1));
-      return $$0.b().i() < $$3;
+   public static eti.a a(ett.a... $$0) {
+      return new eti.a($$0);
    }
 
-   public static ets.a a(daa $$0, float... $$1) {
-      List<Float> $$2 = new ArrayList<>($$1.length);
-
-      for (float $$3 : $$1) {
-         $$2.add($$3);
+   public static class a extends etk.a {
+      public a(ett.a... $$0) {
+         super($$0);
       }
 
-      return () -> new eti($$0.m(), $$2);
-   }
+      @Override
+      public eti.a or(ett.a $$0) {
+         this.a($$0);
+         return this;
+      }
 
-   public ji<daa> c() {
-      return this.b;
-   }
-
-   public List<Float> d() {
-      return this.c;
+      @Override
+      protected ett a(List<ett> $$0) {
+         return new eti($$0);
+      }
    }
 }

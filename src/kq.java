@@ -1,5 +1,5 @@
-public record kq(arf a, iz b, dsc c, dpz d) {
-   public evr a() {
+public record kq(arf a, iz b, dsd c, dqa d) {
+   public evs a() {
       return this.b.b();
    }
 
@@ -11,11 +11,11 @@ public record kq(arf a, iz b, dsc c, dpz d) {
       return this.b;
    }
 
-   public dsc d() {
+   public dsd d() {
       return this.c;
    }
 
-   public dpz e() {
+   public dqa e() {
       return this.d;
    }
 }

@@ -1,91 +1,101 @@
 import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import io.netty.buffer.ByteBuf;
+import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
+import it.unimi.dsi.fastutil.objects.ObjectOpenHashSet;
+import java.util.Collection;
+import java.util.Map;
+import java.util.Set;
 import java.util.UUID;
-import java.util.function.IntFunction;
+import java.util.stream.Collectors;
 import javax.annotation.Nullable;
 import org.slf4j.Logger;
 
-public record buv(UUID d, String e, double f, buv.a g) {
-   private static final Logger h = LogUtils.getLogger();
-   public static final MapCodec<buv> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(
-               kc.a.fieldOf("uuid").forGetter(buv::b),
-               Codec.STRING.fieldOf("name").forGetter($$0x -> $$0x.e),
-               Codec.DOUBLE.fieldOf("amount").forGetter(buv::d),
-               buv.a.f.fieldOf("operation").forGetter(buv::e)
-            )
-            .apply($$0, buv::new)
-   );
-   public static final Codec<buv> b = a.codec();
-   public static final zn<ByteBuf, buv> c = zn.a(kc.g, buv::b, zl.l, $$0 -> $$0.e, zl.j, buv::d, buv.a.e, buv::e, buv::new);
+public class buv {
+   private static final Logger a = LogUtils.getLogger();
+   private final Map<ji<but>, buu> b = new Object2ObjectOpenHashMap();
+   private final Set<buu> c = new ObjectOpenHashSet();
+   private final bux d;
 
-   public buv(String $$0, double $$1, buv.a $$2) {
-      this(ayz.a(azh.c()), $$0, $$1, $$2);
+   public buv(bux $$0) {
+      this.d = $$0;
    }
 
-   public us a() {
-      us $$0 = new us();
-      $$0.a("Name", this.e);
-      $$0.a("Amount", this.f);
-      $$0.a("Operation", this.g.a());
-      $$0.a("UUID", this.d);
-      return $$0;
+   private void a(buu $$0) {
+      if ($$0.a().a().b()) {
+         this.c.add($$0);
+      }
+   }
+
+   public Set<buu> a() {
+      return this.c;
+   }
+
+   public Collection<buu> b() {
+      return this.b.values().stream().filter($$0 -> $$0.a().a().b()).collect(Collectors.toList());
    }
 
    @Nullable
-   public static buv a(us $$0) {
-      try {
-         UUID $$1 = $$0.a("UUID");
-         buv.a $$2 = buv.a.d.apply($$0.h("Operation"));
-         return new buv($$1, $$0.l("Name"), $$0.k("Amount"), $$2);
-      } catch (Exception var3) {
-         h.warn("Unable to create attribute: {}", var3.getMessage());
-         return null;
-      }
+   public buu a(ji<but> $$0) {
+      return this.b.computeIfAbsent($$0, $$0x -> this.d.a(this::a, $$0x));
    }
 
-   public UUID b() {
-      return this.d;
+   public boolean b(ji<but> $$0) {
+      return this.b.get($$0) != null || this.d.c($$0);
    }
 
-   public String c() {
-      return this.e;
+   public boolean a(ji<but> $$0, UUID $$1) {
+      buu $$2 = this.b.get($$0);
+      return $$2 != null ? $$2.a($$1) != null : this.d.b($$0, $$1);
    }
 
-   public double d() {
-      return this.f;
+   public double c(ji<but> $$0) {
+      buu $$1 = this.b.get($$0);
+      return $$1 != null ? $$1.f() : this.d.a($$0);
    }
 
-   public buv.a e() {
-      return this.g;
+   public double d(ji<but> $$0) {
+      buu $$1 = this.b.get($$0);
+      return $$1 != null ? $$1.b() : this.d.b($$0);
    }
 
-   public static enum a implements azu {
-      a("add_value", 0),
-      b("add_multiplied_base", 1),
-      c("add_multiplied_total", 2);
+   public double b(ji<but> $$0, UUID $$1) {
+      buu $$2 = this.b.get($$0);
+      return $$2 != null ? $$2.a($$1).d() : this.d.a($$0, $$1);
+   }
 
-      public static final IntFunction<buv.a> d = axp.a(buv.a::a, values(), axp.a.a);
-      public static final zn<ByteBuf, buv.a> e = zl.a(d, buv.a::a);
-      public static final Codec<buv.a> f = azu.a(buv.a::values);
-      private final String g;
-      private final int h;
+   public void a(buv $$0) {
+      $$0.b.values().forEach($$0x -> {
+         buu $$1 = this.a($$0x.a());
+         if ($$1 != null) {
+            $$1.a($$0x);
+         }
+      });
+   }
 
-      private a(final String $$0, final int $$1) {
-         this.g = $$0;
-         this.h = $$1;
-      }
+   public uy c() {
+      uy $$0 = new uy();
 
-      public int a() {
-         return this.h;
+      for (buu $$1 : this.b.values()) {
+         $$0.add($$1.g());
       }
 
-      @Override
-      public String c() {
-         return this.g;
+      return $$0;
+   }
+
+   public void a(uy $$0) {
+      for (int $$1 = 0; $$1 < $$0.size(); $$1++) {
+         us $$2 = $$0.a($$1);
+         String $$3 = $$2.l("Name");
+         alf $$4 = alf.a($$3);
+         if ($$4 != null) {
+            ac.a(lp.u.c($$4), $$1x -> {
+               buu $$2x = this.a($$1x);
+               if ($$2x != null) {
+                  $$2x.a($$2);
+               }
+            }, () -> a.warn("Ignoring unknown attribute '{}'", $$4));
+         } else {
+            a.warn("Ignoring malformed attribute '{}'", $$3);
+         }
       }
    }
 }

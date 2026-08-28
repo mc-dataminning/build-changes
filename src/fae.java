@@ -1,55 +1,55 @@
-import com.mojang.blaze3d.platform.GlStateManager;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.UnmodifiableIterator;
+import com.mojang.blaze3d.systems.RenderSystem;
+import it.unimi.dsi.fastutil.ints.IntArrayList;
+import it.unimi.dsi.fastutil.ints.IntList;
+import java.util.List;
+import java.util.stream.Collectors;
+import javax.annotation.Nullable;
 
 public class fae {
-   private final fae.a a;
-   private final fae.b b;
-   private final int c;
+   private final ImmutableList<faf> a;
+   private final ImmutableMap<String, faf> b;
+   private final IntList c = new IntArrayList();
    private final int d;
-   private final int e;
+   @Nullable
+   private fac e;
 
-   public fae(int $$0, fae.a $$1, fae.b $$2, int $$3) {
-      if (this.a($$0, $$2)) {
-         this.b = $$2;
-         this.a = $$1;
-         this.c = $$0;
-         this.d = $$3;
-         this.e = $$1.a() * this.d;
-      } else {
-         throw new IllegalStateException("Multiple vertex elements of the same type other than UVs are not supported");
+   public fae(ImmutableMap<String, faf> $$0) {
+      this.b = $$0;
+      this.a = $$0.values().asList();
+      int $$1 = 0;
+      UnmodifiableIterator var3 = $$0.values().iterator();
+
+      while (var3.hasNext()) {
+         faf $$2 = (faf)var3.next();
+         this.c.add($$1);
+         $$1 += $$2.e();
       }
-   }
 
-   private boolean a(int $$0, fae.b $$1) {
-      return $$0 == 0 || $$1 == fae.b.d;
-   }
-
-   public final fae.a a() {
-      return this.a;
-   }
-
-   public final fae.b b() {
-      return this.b;
-   }
-
-   public final int c() {
-      return this.d;
-   }
-
-   public final int d() {
-      return this.c;
+      this.d = $$1;
    }
 
    @Override
    public String toString() {
-      return this.d + "," + this.b.a() + "," + this.a.b();
+      return "format: " + this.b.size() + " elements: " + this.b.entrySet().stream().map(Object::toString).collect(Collectors.joining(" "));
    }
 
-   public final int e() {
-      return this.e;
+   public int a() {
+      return this.b() / 4;
    }
 
-   public final boolean f() {
-      return this.b == fae.b.a;
+   public int b() {
+      return this.d;
+   }
+
+   public ImmutableList<faf> c() {
+      return this.a;
+   }
+
+   public ImmutableList<String> d() {
+      return this.b.keySet().asList();
    }
 
    @Override
@@ -58,13 +58,7 @@ public class fae {
          return true;
       } else if ($$0 != null && this.getClass() == $$0.getClass()) {
          fae $$1 = (fae)$$0;
-         if (this.d != $$1.d) {
-            return false;
-         } else if (this.c != $$1.c) {
-            return false;
-         } else {
-            return this.a != $$1.a ? false : this.b == $$1.b;
-         }
+         return this.d != $$1.d ? false : this.b.equals($$1.b);
       } else {
          return false;
       }
@@ -72,111 +66,97 @@ public class fae {
 
    @Override
    public int hashCode() {
-      int $$0 = this.a.hashCode();
-      $$0 = 31 * $$0 + this.b.hashCode();
-      $$0 = 31 * $$0 + this.c;
-      return 31 * $$0 + this.d;
+      return this.b.hashCode();
    }
 
-   public void a(int $$0, long $$1, int $$2) {
-      this.b.a(this.d, this.a.c(), $$2, $$1, this.c, $$0);
+   public void e() {
+      if (!RenderSystem.isOnRenderThread()) {
+         RenderSystem.recordRenderCall(this::h);
+      } else {
+         this.h();
+      }
    }
 
-   public void a(int $$0) {
-      this.b.a(this.c, $$0);
+   private void h() {
+      int $$0 = this.b();
+      List<faf> $$1 = this.c();
+
+      for (int $$2 = 0; $$2 < $$1.size(); $$2++) {
+         $$1.get($$2).a($$2, (long)this.c.getInt($$2), $$0);
+      }
+   }
+
+   public void f() {
+      if (!RenderSystem.isOnRenderThread()) {
+         RenderSystem.recordRenderCall(this::i);
+      } else {
+         this.i();
+      }
+   }
+
+   private void i() {
+      ImmutableList<faf> $$0 = this.c();
+
+      for (int $$1 = 0; $$1 < $$0.size(); $$1++) {
+         faf $$2 = (faf)$$0.get($$1);
+         $$2.a($$1);
+      }
+   }
+
+   public fac g() {
+      fac $$0 = this.e;
+      if ($$0 == null) {
+         this.e = $$0 = new fac(fac.a.b);
+      }
+
+      return $$0;
    }
 
    public static enum a {
-      a(4, "Float", 5126),
-      b(1, "Unsigned Byte", 5121),
-      c(1, "Byte", 5120),
-      d(2, "Unsigned Short", 5123),
-      e(2, "Short", 5122),
-      f(4, "Unsigned Int", 5125),
-      g(4, "Int", 5124);
+      a(5123, 2),
+      b(5125, 4);
 
-      private final int h;
-      private final String i;
-      private final int j;
+      public final int c;
+      public final int d;
 
-      private a(final int $$0, final String $$1, final int $$2) {
-         this.h = $$0;
-         this.i = $$1;
-         this.j = $$2;
+      private a(final int $$0, final int $$1) {
+         this.c = $$0;
+         this.d = $$1;
       }
 
-      public int a() {
-         return this.h;
-      }
-
-      public String b() {
-         return this.i;
-      }
-
-      public int c() {
-         return this.j;
+      public static fae.a a(int $$0) {
+         return ($$0 & -65536) != 0 ? b : a;
       }
    }
 
    public static enum b {
-      a("Position", ($$0, $$1, $$2, $$3, $$4, $$5) -> {
-         GlStateManager._enableVertexAttribArray($$5);
-         GlStateManager._vertexAttribPointer($$5, $$0, $$1, false, $$2, $$3);
-      }, ($$0, $$1) -> GlStateManager._disableVertexAttribArray($$1)),
-      b("Normal", ($$0, $$1, $$2, $$3, $$4, $$5) -> {
-         GlStateManager._enableVertexAttribArray($$5);
-         GlStateManager._vertexAttribPointer($$5, $$0, $$1, true, $$2, $$3);
-      }, ($$0, $$1) -> GlStateManager._disableVertexAttribArray($$1)),
-      c("Vertex Color", ($$0, $$1, $$2, $$3, $$4, $$5) -> {
-         GlStateManager._enableVertexAttribArray($$5);
-         GlStateManager._vertexAttribPointer($$5, $$0, $$1, true, $$2, $$3);
-      }, ($$0, $$1) -> GlStateManager._disableVertexAttribArray($$1)),
-      d("UV", ($$0, $$1, $$2, $$3, $$4, $$5) -> {
-         GlStateManager._enableVertexAttribArray($$5);
-         if ($$1 == 5126) {
-            GlStateManager._vertexAttribPointer($$5, $$0, $$1, false, $$2, $$3);
-         } else {
-            GlStateManager._vertexAttribIPointer($$5, $$0, $$1, $$2, $$3);
-         }
-      }, ($$0, $$1) -> GlStateManager._disableVertexAttribArray($$1)),
-      e("Padding", ($$0, $$1, $$2, $$3, $$4, $$5) -> {
-      }, ($$0, $$1) -> {
-      }),
-      f("Generic", ($$0, $$1, $$2, $$3, $$4, $$5) -> {
-         GlStateManager._enableVertexAttribArray($$5);
-         GlStateManager._vertexAttribPointer($$5, $$0, $$1, false, $$2, $$3);
-      }, ($$0, $$1) -> GlStateManager._disableVertexAttribArray($$1));
+      a(4, 2, 2, false),
+      b(5, 2, 1, true),
+      c(1, 2, 2, false),
+      d(3, 2, 1, true),
+      e(4, 3, 3, false),
+      f(5, 3, 1, true),
+      g(6, 3, 1, true),
+      h(4, 4, 4, false);
 
-      private final String g;
-      private final fae.b.b h;
-      private final fae.b.a i;
+      public final int i;
+      public final int j;
+      public final int k;
+      public final boolean l;
 
-      private b(final String $$0, final fae.b.b $$1, final fae.b.a $$2) {
-         this.g = $$0;
-         this.h = $$1;
-         this.i = $$2;
+      private b(final int $$0, final int $$1, final int $$2, final boolean $$3) {
+         this.i = $$0;
+         this.j = $$1;
+         this.k = $$2;
+         this.l = $$3;
       }
 
-      void a(int $$0, int $$1, int $$2, long $$3, int $$4, int $$5) {
-         this.h.setupBufferState($$0, $$1, $$2, $$3, $$4, $$5);
-      }
-
-      public void a(int $$0, int $$1) {
-         this.i.clearBufferState($$0, $$1);
-      }
-
-      public String a() {
-         return this.g;
-      }
-
-      @FunctionalInterface
-      interface a {
-         void clearBufferState(int var1, int var2);
-      }
-
-      @FunctionalInterface
-      interface b {
-         void setupBufferState(int var1, int var2, int var3, long var4, int var6, int var7);
+      public int a(int $$0) {
+         return switch (this) {
+            case a, h -> $$0 / 4 * 6;
+            case b, c, d, e, f, g -> $$0;
+            default -> 0;
+         };
       }
    }
 }

@@ -1,15 +1,5 @@
-import java.util.Set;
+public interface fqx {
+   void I();
 
-public class fqx extends fqm {
-   private static final xp i = xp.c("gui.recipebook.toggleRecipes.smeltable");
-
-   @Override
-   protected xp c() {
-      return i;
-   }
-
-   @Override
-   protected Set<cuk> b() {
-      return dov.g().keySet();
-   }
+   fqr J();
 }

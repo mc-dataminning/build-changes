@@ -1,54 +1,37 @@
-import java.util.Optional;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class cwx {
-   public static final ale<cww> a = a("sentry");
-   public static final ale<cww> b = a("dune");
-   public static final ale<cww> c = a("coast");
-   public static final ale<cww> d = a("wild");
-   public static final ale<cww> e = a("ward");
-   public static final ale<cww> f = a("eye");
-   public static final ale<cww> g = a("vex");
-   public static final ale<cww> h = a("tide");
-   public static final ale<cww> i = a("snout");
-   public static final ale<cww> j = a("rib");
-   public static final ale<cww> k = a("spire");
-   public static final ale<cww> l = a("wayfinder");
-   public static final ale<cww> m = a("shaper");
-   public static final ale<cww> n = a("silence");
-   public static final ale<cww> o = a("raiser");
-   public static final ale<cww> p = a("host");
-   public static final ale<cww> q = a("flow");
-   public static final ale<cww> r = a("bolt");
+public record cwx(alf e, ji<cul> f, xp g, boolean h) {
+   public static final Codec<cwx> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               alf.a.fieldOf("asset_id").forGetter(cwx::a),
+               alc.a(lq.G).fieldOf("template_item").forGetter(cwx::b),
+               xr.a.fieldOf("description").forGetter(cwx::c),
+               Codec.BOOL.fieldOf("decal").orElse(false).forGetter(cwx::d)
+            )
+            .apply($$0, cwx::new)
+   );
+   public static final zn<xa, cwx> b = zn.a(alf.b, cwx::a, zl.b(lq.G), cwx::b, xr.b, cwx::c, zl.b, cwx::d, cwx::new);
+   public static final Codec<ji<cwx>> c = alb.a(lq.aP, a);
+   public static final zn<xa, ji<cwx>> d = zl.a(lq.aP, b);
 
-   public static void a(rc<cww> $$0) {
-      a($$0, cus.xt, a);
-      a($$0, cus.xu, b);
-      a($$0, cus.xv, c);
-      a($$0, cus.xw, d);
-      a($$0, cus.xx, e);
-      a($$0, cus.xy, f);
-      a($$0, cus.xz, g);
-      a($$0, cus.xA, h);
-      a($$0, cus.xB, i);
-      a($$0, cus.xC, j);
-      a($$0, cus.xD, k);
-      a($$0, cus.xE, l);
-      a($$0, cus.xF, m);
-      a($$0, cus.xG, n);
-      a($$0, cus.xH, o);
-      a($$0, cus.xI, p);
+   public xp a(ji<cwv> $$0) {
+      return this.g.f().c($$0.a().e().a());
    }
 
-   public static Optional<ji.c<cww>> a(jk.a $$0, cup $$1) {
-      return $$0.b(lq.aP).b().filter($$1x -> $$1.a(((cww)$$1x.a()).b())).findFirst();
+   public alf a() {
+      return this.e;
    }
 
-   public static void a(rc<cww> $$0, cuk $$1, ale<cww> $$2) {
-      cww $$3 = new cww($$2.a(), lp.h.e($$1), xp.c(ac.a("trim_pattern", $$2.a())), false);
-      $$0.a($$2, $$3);
+   public ji<cul> b() {
+      return this.f;
    }
 
-   private static ale<cww> a(String $$0) {
-      return ale.a(lq.aP, new alf($$0));
+   public xp c() {
+      return this.g;
+   }
+
+   public boolean d() {
+      return this.h;
    }
 }

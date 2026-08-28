@@ -1,53 +1,73 @@
 import com.mojang.serialization.MapCodec;
 
-public class dmp extends dez {
+public class dmp extends dfa {
    public static final MapCodec<dmp> a = b(dmp::new);
-   private static final ewk b = dez.a(2.0, 13.0, 2.0, 14.0, 16.0, 14.0);
-   private static final int c = 14;
-   private static final int d = 10;
-   private static final int e = 10;
+   public static final int b = 6;
+   public static final int c = 64;
+   private static final je[] d = je.values();
 
    @Override
    public MapCodec<dmp> a() {
       return a;
    }
 
-   public dmp(dsb.d $$0) {
+   protected dmp(dsc.d $$0) {
       super($$0);
    }
 
    @Override
-   protected boolean a(dsc $$0, dcb $$1, iz $$2) {
-      return dez.a($$1, $$2.c(), je.a) && !$$1.z($$2);
-   }
-
-   @Override
-   protected dsc a(dsc $$0, je $$1, dsc $$2, dbz $$3, iz $$4, iz $$5) {
-      return $$1 == je.b && !this.a($$0, $$3, $$4) ? dfb.a.o() : super.a($$0, $$1, $$2, $$3, $$4, $$5);
-   }
-
-   @Override
-   public void a(dsc $$0, dby $$1, iz $$2, azh $$3) {
-      int $$4 = $$2.u();
-      int $$5 = $$2.v();
-      int $$6 = $$2.w();
-      double $$7 = (double)$$4 + $$3.j();
-      double $$8 = (double)$$5 + 0.7;
-      double $$9 = (double)$$6 + $$3.j();
-      $$1.a(li.az, $$7, $$8, $$9, 0.0, 0.0, 0.0);
-      iz.a $$10 = new iz.a();
-
-      for (int $$11 = 0; $$11 < 14; $$11++) {
-         $$10.d($$4 + ayz.a($$3, -10, 10), $$5 - $$3.a(10), $$6 + ayz.a($$3, -10, 10));
-         dsc $$12 = $$1.a_($$10);
-         if (!$$12.r($$1, $$10)) {
-            $$1.a(li.aD, (double)$$10.u() + $$3.j(), (double)$$10.v() + $$3.j(), (double)$$10.w() + $$3.j(), 0.0, 0.0, 0.0);
-         }
+   protected void b(dsd $$0, dbz $$1, iz $$2, dsd $$3, boolean $$4) {
+      if (!$$3.a($$0.b())) {
+         this.a($$1, $$2);
       }
    }
 
    @Override
-   protected ewk a(dsc $$0, dbe $$1, iz $$2, evw $$3) {
-      return b;
+   protected void a(dsd $$0, dbz $$1, iz $$2, dfa $$3, iz $$4, boolean $$5) {
+      this.a($$1, $$2);
+      super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   }
+
+   protected void a(dbz $$0, iz $$1) {
+      if (this.b($$0, $$1)) {
+         $$0.a($$1, dfc.aP.o(), 2);
+         $$0.a(null, $$1, awa.yT, awb.e, 1.0F, 1.0F);
+      }
+   }
+
+   private boolean b(dbz $$0, iz $$1) {
+      return iz.a($$1, 6, 65, ($$0x, $$1x) -> {
+         for (je $$2 : d) {
+            $$1x.accept($$0x.a($$2));
+         }
+      }, $$2 -> {
+         if ($$2.equals($$1)) {
+            return true;
+         } else {
+            dsd $$3 = $$0.a_($$2);
+            enw $$4 = $$0.b_($$2);
+            if (!$$4.a(awv.a)) {
+               return false;
+            } else {
+               if ($$3.b() instanceof dfh $$6 && !$$6.a(null, $$0, $$2, $$3).e()) {
+                  return true;
+               }
+
+               if ($$3.b() instanceof djq) {
+                  $$0.a($$2, dfc.a.o(), 3);
+               } else {
+                  if (!$$3.a(dfc.mc) && !$$3.a(dfc.md) && !$$3.a(dfc.bw) && !$$3.a(dfc.bx)) {
+                     return false;
+                  }
+
+                  dpi $$7 = $$3.t() ? $$0.c_($$2) : null;
+                  a($$3, $$0, $$2, $$7);
+                  $$0.a($$2, dfc.a.o(), 3);
+               }
+
+               return true;
+            }
+         }
+      }) > 1;
    }
 }

@@ -1,44 +1,67 @@
 import java.util.EnumSet;
 
-public class cbs extends can {
-   private final bum a;
+public class cbs extends cao {
+   private final chk a;
+   private final double b;
+   private double c;
+   private double d;
+   private double e;
 
-   public cbs(bum $$0) {
+   public cbs(chk $$0, double $$1) {
       this.a = $$0;
-      this.a(EnumSet.of(can.a.c, can.a.a));
-   }
-
-   @Override
-   public boolean b() {
-      return this.a.gq();
+      this.b = $$1;
+      this.a(EnumSet.of(cao.a.a));
    }
 
    @Override
    public boolean a() {
-      if (!this.a.s()) {
-         return false;
-      } else if (this.a.bh()) {
-         return false;
-      } else if (!this.a.aE()) {
-         return false;
-      } else {
-         btp $$0 = this.a.P_();
+      if (!this.a.gF() && this.a.bS()) {
+         evs $$0 = cel.a(this.a, 5, 4);
          if ($$0 == null) {
-            return true;
+            return false;
          } else {
-            return this.a.g((bsu)$$0) < 144.0 && $$0.em() != null ? false : this.a.gq();
+            this.c = $$0.c;
+            this.d = $$0.d;
+            this.e = $$0.e;
+            return true;
          }
+      } else {
+         return false;
       }
    }
 
    @Override
    public void c() {
-      this.a.K().n();
-      this.a.x(true);
+      this.a.K().a(this.c, this.d, this.e, this.b);
    }
 
    @Override
-   public void d() {
-      this.a.x(false);
+   public boolean b() {
+      return !this.a.gF() && !this.a.K().l() && this.a.bS();
+   }
+
+   @Override
+   public void e() {
+      if (!this.a.gF() && this.a.el().a(this.a(50)) == 0) {
+         bsv $$0 = this.a.cT();
+         if ($$0 == null) {
+            return;
+         }
+
+         if ($$0 instanceof cmy $$1) {
+            int $$2 = this.a.gL();
+            int $$3 = this.a.gQ();
+            if ($$3 > 0 && this.a.el().a($$3) < $$2) {
+               this.a.h($$1);
+               return;
+            }
+
+            this.a.w(5);
+         }
+
+         this.a.bH();
+         this.a.gV();
+         this.a.dP().a(this.a, (byte)6);
+      }
    }
 }

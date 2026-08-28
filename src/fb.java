@@ -47,7 +47,7 @@ public class fb implements ArgumentType<fb.a> {
 
    public static enum a {
       a("feet", ($$0, $$1) -> $$0),
-      b("eyes", ($$0, $$1) -> new evr($$0.c, $$0.d + (double)$$1.cL(), $$0.e));
+      b("eyes", ($$0, $$1) -> new evs($$0.c, $$0.d + (double)$$1.cL(), $$0.e));
 
       static final Map<String, fb.a> c = ac.a(Maps.newHashMap(), $$0 -> {
          for (fb.a $$1 : values()) {
@@ -55,9 +55,9 @@ public class fb implements ArgumentType<fb.a> {
          }
       });
       private final String d;
-      private final BiFunction<evr, bsu, evr> e;
+      private final BiFunction<evs, bsv, evs> e;
 
-      private a(final String $$0, final BiFunction<evr, bsu, evr> $$1) {
+      private a(final String $$0, final BiFunction<evs, bsv, evs> $$1) {
          this.d = $$0;
          this.e = $$1;
       }
@@ -67,12 +67,12 @@ public class fb implements ArgumentType<fb.a> {
          return c.get($$0);
       }
 
-      public evr a(bsu $$0) {
+      public evs a(bsv $$0) {
          return this.e.apply($$0.dn(), $$0);
       }
 
-      public evr a(ep $$0) {
-         bsu $$1 = $$0.f();
+      public evs a(ep $$0) {
+         bsv $$1 = $$0.f();
          return $$1 == null ? $$0.d() : this.e.apply($$0.d(), $$1);
       }
    }

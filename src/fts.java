@@ -1,4 +1,4 @@
-public abstract class fts<E extends bsu> extends fuj<E> {
+public abstract class fts<E extends bsv> extends fsw<E> {
    private float a = 1.0F;
    private float b = 1.0F;
    private float f = 1.0F;
@@ -10,7 +10,7 @@ public abstract class fts<E extends bsu> extends fuj<E> {
    }
 
    @Override
-   public void a(ezy $$0, fac $$1, int $$2, int $$3, float $$4, float $$5, float $$6, float $$7) {
+   public void a(ezz $$0, fad $$1, int $$2, int $$3, float $$4, float $$5, float $$6, float $$7) {
       super.a($$0, $$1, $$2, $$3, this.a * $$4, this.b * $$5, this.f * $$6, $$7);
    }
 }

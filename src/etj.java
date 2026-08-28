@@ -1,60 +1,49 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableList.Builder;
+import com.google.common.collect.ImmutableSet;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.function.Function;
-import java.util.function.Predicate;
+import java.util.Set;
 
-public abstract class etj implements ets {
-   protected final List<ets> c;
-   private final Predicate<eqi> a;
+public record etj(ji<dab> b, List<Float> c) implements ett {
+   public static final MapCodec<etj> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(lp.f.r().fieldOf("enchantment").forGetter(etj::c), ayh.a(Codec.FLOAT.listOf()).fieldOf("chances").forGetter(etj::d))
+            .apply($$0, etj::new)
+   );
 
-   protected etj(List<ets> $$0, Predicate<eqi> $$1) {
-      this.c = $$0;
-      this.a = $$1;
-   }
-
-   protected static <T extends etj> MapCodec<T> a(Function<List<ets>, T> $$0) {
-      return RecordCodecBuilder.mapCodec($$1 -> $$1.group(etu.a.listOf().fieldOf("terms").forGetter($$0xx -> $$0xx.c)).apply($$1, $$0));
-   }
-
-   protected static <T extends etj> Codec<T> b(Function<List<ets>, T> $$0) {
-      return etu.a.listOf().xmap($$0, $$0x -> $$0x.c);
-   }
-
-   public final boolean a(eqi $$0) {
-      return this.a.test($$0);
+   @Override
+   public etu b() {
+      return etv.m;
    }
 
    @Override
-   public void a(eqo $$0) {
-      ets.super.a($$0);
-
-      for (int $$1 = 0; $$1 < this.c.size(); $$1++) {
-         this.c.get($$1).a($$0.a(".term[" + $$1 + "]"));
-      }
+   public Set<etc<?>> a() {
+      return ImmutableSet.of(etf.i);
    }
 
-   public abstract static class a implements ets.a {
-      private final Builder<ets> a = ImmutableList.builder();
+   public boolean a(eqj $$0) {
+      cuq $$1 = $$0.c(etf.i);
+      int $$2 = $$1 != null ? dac.a(this.b.a(), $$1) : 0;
+      float $$3 = this.c.get(Math.min($$2, this.c.size() - 1));
+      return $$0.b().i() < $$3;
+   }
 
-      protected a(ets.a... $$0) {
-         for (ets.a $$1 : $$0) {
-            this.a.add($$1.build());
-         }
+   public static ett.a a(dab $$0, float... $$1) {
+      List<Float> $$2 = new ArrayList<>($$1.length);
+
+      for (float $$3 : $$1) {
+         $$2.add($$3);
       }
 
-      public void a(ets.a $$0) {
-         this.a.add($$0.build());
-      }
+      return () -> new etj($$0.m(), $$2);
+   }
 
-      @Override
-      public ets build() {
-         return this.a(this.a.build());
-      }
+   public ji<dab> c() {
+      return this.b;
+   }
 
-      protected abstract ets a(List<ets> var1);
+   public List<Float> d() {
+      return this.c;
    }
 }

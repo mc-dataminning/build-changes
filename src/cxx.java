@@ -1,36 +1,27 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import io.netty.buffer.ByteBuf;
-import java.util.List;
-import java.util.stream.Stream;
+import java.util.function.Consumer;
 
-public record cxx(List<arw<String>> g) implements cxb<String, cxx> {
-   public static final cxx a = new cxx(List.of());
-   public static final int b = 1024;
-   public static final int c = 100;
-   private static final Codec<arw<String>> h = arw.a(Codec.string(0, 1024));
-   public static final Codec<List<arw<String>>> d = h.sizeLimitedListOf(100);
-   public static final Codec<cxx> e = RecordCodecBuilder.create($$0 -> $$0.group(d.optionalFieldOf("pages", List.of()).forGetter(cxx::a)).apply($$0, cxx::new));
-   public static final zn<ByteBuf, cxx> f = arw.a(zl.b(1024)).a(zl.c(100)).a(cxx::new, cxx::a);
+public record cxx(boolean c) implements cxw {
+   public static final Codec<cxx> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(Codec.BOOL.optionalFieldOf("show_in_tooltip", true).forGetter(cxx::a)).apply($$0, cxx::new)
+   );
+   public static final zn<ByteBuf, cxx> b = zl.b.a(cxx::new, cxx::a);
+   private static final xp d = xp.c("item.unbreakable").a(n.j);
 
-   public cxx(List<arw<String>> g) {
-      if (g.size() > 100) {
-         throw new IllegalArgumentException("Got " + g.size() + " pages, but maximum is 100");
-      } else {
-         this.g = g;
+   @Override
+   public void a(cul.b $$0, Consumer<xp> $$1, cwj $$2) {
+      if (this.c) {
+         $$1.accept(d);
       }
    }
 
-   public Stream<String> a(boolean $$0) {
-      return this.g.stream().map($$1 -> $$1.a($$0));
-   }
-
-   public cxx b(List<arw<String>> $$0) {
+   public cxx a(boolean $$0) {
       return new cxx($$0);
    }
 
-   @Override
-   public List<arw<String>> a() {
-      return this.g;
+   public boolean a() {
+      return this.c;
    }
 }

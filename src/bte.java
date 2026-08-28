@@ -1,63 +1,43 @@
-import java.util.ArrayList;
+import com.google.common.collect.Maps;
+import com.mojang.datafixers.util.Either;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
-import javax.annotation.Nullable;
+import java.util.function.Function;
 
-public interface bte {
-   void a(btb var1, cup var2);
+public record bte(ale<eqo> c, Map<btc, Float> d) {
+   public static final Codec<Map<btc, Float>> a = Codec.either(Codec.FLOAT, Codec.unboundedMap(btc.h, Codec.FLOAT))
+      .xmap($$0 -> (Map)$$0.map(bte::a, Function.identity()), $$0 -> {
+         boolean $$1 = $$0.values().stream().distinct().count() == 1L;
+         boolean $$2 = $$0.keySet().containsAll(Arrays.asList(btc.values()));
+         return $$1 && $$2 ? Either.left($$0.values().stream().findFirst().orElse(0.0F)) : Either.right($$0);
+      });
+   public static final Codec<bte> b = RecordCodecBuilder.create(
+      $$0 -> $$0.group(ale.a(lq.aU).fieldOf("loot_table").forGetter(bte::a), a.optionalFieldOf("slot_drop_chances", Map.of()).forGetter(bte::b))
+            .apply($$0, bte::new)
+   );
 
-   cup a(btb var1);
-
-   void a(btb var1, float var2);
-
-   default void a(btd $$0, eql $$1) {
-      this.a($$0.a(), $$1, $$0.b());
+   private static Map<btc, Float> a(float $$0) {
+      return a(List.of(btc.values()), $$0);
    }
 
-   default void a(ale<eqn> $$0, eql $$1, Map<btb, Float> $$2) {
-      this.a($$0, $$1, 0L, $$2);
-   }
+   private static Map<btc, Float> a(List<btc> $$0, float $$1) {
+      Map<btc, Float> $$2 = Maps.newHashMap();
 
-   default void a(ale<eqn> $$0, eql $$1, long $$2, Map<btb, Float> $$3) {
-      if (!$$0.equals(eqe.a)) {
-         eqn $$4 = $$1.a().o().be().b($$0);
-         if ($$4 != eqn.a) {
-            List<cup> $$5 = $$4.a($$1, $$2);
-            List<btb> $$6 = new ArrayList<>();
-
-            for (cup $$7 : $$5) {
-               btb $$8 = this.a($$7, $$6);
-               if ($$8 != null) {
-                  cup $$9 = $$8.f() ? $$7.c(1) : $$7;
-                  this.a($$8, $$9);
-                  Float $$10 = $$3.get($$8);
-                  if ($$10 != null) {
-                     this.a($$8, $$10);
-                  }
-
-                  $$6.add($$8);
-               }
-            }
-         }
+      for (btc $$3 : $$0) {
+         $$2.put($$3, $$1);
       }
+
+      return $$2;
    }
 
-   @Nullable
-   default btb a(cup $$0, List<btb> $$1) {
-      if ($$0.e()) {
-         return null;
-      } else {
-         ctr $$2 = ctr.c_($$0);
-         if ($$2 != null) {
-            btb $$3 = $$2.m();
-            if (!$$1.contains($$3)) {
-               return $$3;
-            }
-         } else if (!$$1.contains(btb.a)) {
-            return btb.a;
-         }
+   public ale<eqo> a() {
+      return this.c;
+   }
 
-         return null;
-      }
+   public Map<btc, Float> b() {
+      return this.d;
    }
 }

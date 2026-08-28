@@ -2,14 +2,20 @@ import com.mojang.datafixers.kinds.App;
 import java.util.function.Function;
 
 public class bvh {
-   public static bvj<btp> a(cct<?> $$0, int $$1) {
-      return byv.a(
-         (Function<byv.b<btp>, ? extends App<byv.c<btp>, byy<btp>>>)($$2 -> $$2.group($$2.a(cct.o), $$2.c(cct.ax), $$2.b($$0))
-               .apply($$2, $$2.a(() -> "[BecomePassive if " + $$0 + " present]", ($$1xx, $$2x, $$3) -> ($$3x, $$4, $$5) -> {
-                     $$2x.a(true, (long)$$1);
-                     $$1xx.b();
-                     return true;
-                  })))
+   public static bwu<bts> a(int $$0, float $$1) {
+      return byw.a(
+         (Function<byw.b<bts>, ? extends App<byw.c<bts>, byz<bts>>>)($$2 -> $$2.group($$2.c(ccu.m), $$2.a(ccu.n), $$2.b(ccu.o), $$2.b(ccu.h))
+               .apply($$2, ($$3, $$4, $$5, $$6) -> ($$6x, $$7, $$8) -> {
+                     btq $$9 = $$2.b($$5);
+                     if ($$9.a($$7, (double)$$0) && $$2.<ccw>b($$6).a($$9)) {
+                        $$4.a(new bvu($$9, true));
+                        $$7.H().a(-$$1, 0.0F);
+                        $$7.r(ayz.c($$7.dF(), $$7.ba, 0.0F));
+                        return true;
+                     } else {
+                        return false;
+                     }
+                  }))
       );
    }
 }

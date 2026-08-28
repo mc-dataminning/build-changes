@@ -1,81 +1,56 @@
-import java.lang.ref.WeakReference;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Optional;
-import javax.annotation.Nullable;
+import com.mojang.serialization.Codec;
 
-public class cyw {
-   private final cyw.a[] a;
-   private WeakReference<cyy> b = new WeakReference<>(null);
+public interface cyw<C extends bqo> {
+   Codec<cyw<?>> h = lp.t.q().dispatch(cyw::ao_, cza::a);
+   zn<xa, cyw<?>> i = zl.a(lq.Z).b(cyw::ao_, cza::b);
 
-   public cyw(int $$0) {
-      this.a = new cyw.a[$$0];
-   }
+   boolean a(C var1, dbz var2);
 
-   public Optional<cyx<cym>> a(dby $$0, cqk $$1) {
-      if ($$1.c()) {
-         return Optional.empty();
-      } else {
-         this.a($$0);
+   cuq a(C var1, jk.a var2);
 
-         for (int $$2 = 0; $$2 < this.a.length; $$2++) {
-            cyw.a $$3 = this.a[$$2];
-            if ($$3 != null && $$3.a($$1.h())) {
-               this.a($$2);
-               return Optional.ofNullable($$3.b());
-            }
-         }
+   boolean a(int var1, int var2);
 
-         return this.a($$1, $$0);
-      }
-   }
+   cuq a(jk.a var1);
 
-   private void a(dby $$0) {
-      cyy $$1 = $$0.r();
-      if ($$1 != this.b.get()) {
-         this.b = new WeakReference<>($$1);
-         Arrays.fill(this.a, null);
-      }
-   }
+   default jr<cuq> a(C $$0) {
+      jr<cuq> $$1 = jr.a($$0.b(), cuq.l);
 
-   private Optional<cyx<cym>> a(cqk $$0, dby $$1) {
-      Optional<cyx<cym>> $$2 = $$1.r().a(cza.a, $$0, $$1);
-      this.a($$0.h(), $$2.orElse(null));
-      return $$2;
-   }
-
-   private void a(int $$0) {
-      if ($$0 > 0) {
-         cyw.a $$1 = this.a[$$0];
-         System.arraycopy(this.a, 0, this.a, 1, $$0);
-         this.a[0] = $$1;
-      }
-   }
-
-   private void a(List<cup> $$0, @Nullable cyx<cym> $$1) {
-      jr<cup> $$2 = jr.a($$0.size(), cup.l);
-
-      for (int $$3 = 0; $$3 < $$0.size(); $$3++) {
-         $$2.set($$3, $$0.get($$3).c(1));
-      }
-
-      System.arraycopy(this.a, 0, this.a, 1, this.a.length - 1);
-      this.a[0] = new cyw.a($$2, $$1);
-   }
-
-   static record a(jr<cup> a, @Nullable cyx<cym> b) {
-      public boolean a(List<cup> $$0) {
-         if (this.a.size() != $$0.size()) {
-            return false;
-         } else {
-            for (int $$1 = 0; $$1 < this.a.size(); $$1++) {
-               if (!cup.c(this.a.get($$1), $$0.get($$1))) {
-                  return false;
-               }
-            }
-
-            return true;
+      for (int $$2 = 0; $$2 < $$1.size(); $$2++) {
+         cul $$3 = $$0.a($$2).g();
+         if ($$3.v()) {
+            $$1.set($$2, new cuq($$3.u()));
          }
       }
+
+      return $$1;
+   }
+
+   default jr<cyt> a() {
+      return jr.a();
+   }
+
+   default boolean an_() {
+      return false;
+   }
+
+   default boolean h() {
+      return true;
+   }
+
+   default String c() {
+      return "";
+   }
+
+   default cuq g() {
+      return new cuq(dfc.cA);
+   }
+
+   cza<?> ao_();
+
+   czb<?> e();
+
+   default boolean i() {
+      jr<cyt> $$0 = this.a();
+      return $$0.isEmpty() || $$0.stream().anyMatch($$0x -> $$0x.a().length == 0);
    }
 }

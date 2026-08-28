@@ -1,57 +1,55 @@
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
 
-public class dig extends ddu {
-   public static final MapCodec<dig> c = b(dig::new);
+public class dig extends dfj implements dfd {
+   public static final MapCodec<dig> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(ale.a(lq.aC).fieldOf("feature").forGetter($$0x -> $$0x.e), lp.e.q().fieldOf("grows_on").forGetter($$0x -> $$0x.d), u())
+            .apply($$0, dig::new)
+   );
+   protected static final ewl b = dfa.a(4.0, 0.0, 4.0, 12.0, 9.0, 12.0);
+   private static final double c = 0.4;
+   private final dfa d;
+   private final ale<eam<?, ?>> e;
 
    @Override
    public MapCodec<dig> a() {
-      return c;
+      return a;
    }
 
-   protected dig(dsb.d $$0) {
-      super($$0);
-   }
-
-   @Override
-   public dph a(iz $$0, dsc $$1) {
-      return new dqd($$0, $$1);
-   }
-
-   @Nullable
-   @Override
-   public <T extends dph> dpi<T> a(dby $$0, dsc $$1, dpj<T> $$2) {
-      return a($$0, $$2, dpj.a);
+   protected dig(ale<eam<?, ?>> $$0, dfa $$1, dsc.d $$2) {
+      super($$2);
+      this.e = $$0;
+      this.d = $$1;
    }
 
    @Override
-   protected void a(dby $$0, iz $$1, cmx $$2) {
-      dph $$3 = $$0.c_($$1);
-      if ($$3 instanceof dqd) {
-         $$2.a((bqy)$$3);
-         $$2.a(awk.am);
-      }
+   protected ewl a(dsd $$0, dbf $$1, iz $$2, evx $$3) {
+      return b;
    }
 
    @Override
-   public void a(dsc $$0, dby $$1, iz $$2, azh $$3) {
-      if ($$0.c(b)) {
-         double $$4 = (double)$$2.u() + 0.5;
-         double $$5 = (double)$$2.v();
-         double $$6 = (double)$$2.w() + 0.5;
-         if ($$3.j() < 0.1) {
-            $$1.a($$4, $$5, $$6, awa.jY, awb.e, 1.0F, 1.0F, false);
-         }
+   protected boolean b(dsd $$0, dbf $$1, iz $$2) {
+      return $$0.a(awp.aL) || $$0.a(dfc.fl) || $$0.a(dfc.dX) || super.b($$0, $$1, $$2);
+   }
 
-         je $$7 = $$0.c(a);
-         je.a $$8 = $$7.o();
-         double $$9 = 0.52;
-         double $$10 = $$3.j() * 0.6 - 0.3;
-         double $$11 = $$8 == je.a.a ? (double)$$7.j() * 0.52 : $$10;
-         double $$12 = $$3.j() * 6.0 / 16.0;
-         double $$13 = $$8 == je.a.c ? (double)$$7.l() * 0.52 : $$10;
-         $$1.a(li.ae, $$4 + $$11, $$5 + $$12, $$6 + $$13, 0.0, 0.0, 0.0);
-         $$1.a(li.F, $$4 + $$11, $$5 + $$12, $$6 + $$13, 0.0, 0.0, 0.0);
-      }
+   private Optional<? extends ji<eam<?, ?>>> a(dcc $$0) {
+      return $$0.H_().d(lq.aC).b(this.e);
+   }
+
+   @Override
+   public boolean b(dcc $$0, iz $$1, dsd $$2) {
+      dsd $$3 = $$0.a_($$1.d());
+      return $$3.a(this.d);
+   }
+
+   @Override
+   public boolean a(dbz $$0, azh $$1, iz $$2, dsd $$3) {
+      return (double)$$1.i() < 0.4;
+   }
+
+   @Override
+   public void a(arf $$0, azh $$1, iz $$2, dsd $$3) {
+      this.a($$0).ifPresent($$3x -> ((eam)$$3x.a()).a($$0, $$0.l().g(), $$1, $$2));
    }
 }

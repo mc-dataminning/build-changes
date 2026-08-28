@@ -1,67 +1,13 @@
-import java.util.function.Consumer;
-import org.joml.Quaternionf;
-import org.joml.Vector3f;
+public class gbn extends gcd {
+   private final gby a;
 
-public class gbn extends gcc {
-   private static final Vector3f a = new Vector3f(0.5F, 0.5F, 0.5F).normalize();
-   private static final Vector3f b = new Vector3f(-1.0F, -1.0F, 0.0F);
-   private static final float F = 1.0472F;
-   private int G;
-
-   gbn(fxv $$0, double $$1, double $$2, double $$3, int $$4) {
-      super($$0, $$1, $$2, $$3, 0.0, 0.0, 0.0);
-      this.D = 0.85F;
-      this.G = $$4;
-      this.t = 30;
-      this.u = 0.0F;
-      this.j = 0.0;
-      this.k = 0.1;
-      this.l = 0.0;
-   }
-
-   @Override
-   public float b(float $$0) {
-      return this.D * ayz.a(((float)this.s + $$0) / (float)this.t * 0.75F, 0.0F, 1.0F);
-   }
-
-   @Override
-   public void a(fac $$0, feq $$1, float $$2) {
-      if (this.G <= 0) {
-         this.y = 1.0F - ayz.a(((float)this.s + $$2) / (float)this.t, 0.0F, 1.0F);
-         this.a($$0, $$1, $$2, $$0x -> $$0x.mul(new Quaternionf().rotationX(-1.0472F)));
-         this.a($$0, $$1, $$2, $$0x -> $$0x.mul(new Quaternionf().rotationYXZ((float) -Math.PI, 1.0472F, 0.0F)));
-      }
-   }
-
-   private void a(fac $$0, feq $$1, float $$2, Consumer<Quaternionf> $$3) {
-      evr $$4 = $$1.b();
-      float $$5 = (float)(ayz.d((double)$$2, this.d, this.g) - $$4.a());
-      float $$6 = (float)(ayz.d((double)$$2, this.e, this.h) - $$4.b());
-      float $$7 = (float)(ayz.d((double)$$2, this.f, this.i) - $$4.c());
-      Quaternionf $$8 = new Quaternionf().setAngleAxis(0.0F, a.x(), a.y(), a.z());
-      $$3.accept($$8);
-      $$8.transform(b);
-      Vector3f[] $$9 = new Vector3f[]{
-         new Vector3f(-1.0F, -1.0F, 0.0F), new Vector3f(-1.0F, 1.0F, 0.0F), new Vector3f(1.0F, 1.0F, 0.0F), new Vector3f(1.0F, -1.0F, 0.0F)
-      };
-      float $$10 = this.b($$2);
-
-      for (int $$11 = 0; $$11 < 4; $$11++) {
-         Vector3f $$12 = $$9[$$11];
-         $$12.rotate($$8);
-         $$12.mul($$10);
-         $$12.add($$5, $$6, $$7);
-      }
-
-      int $$13 = this.a($$2);
-      this.a($$0, $$9[0], this.d(), this.f(), $$13);
-      this.a($$0, $$9[1], this.d(), this.e(), $$13);
-      this.a($$0, $$9[2], this.c(), this.e(), $$13);
-      this.a($$0, $$9[3], this.c(), this.f(), $$13);
-   }
-
-   private void a(fac $$0, Vector3f $$1, float $$2, float $$3, int $$4) {
-      $$0.a((double)$$1.x(), (double)$$1.y(), (double)$$1.z()).a($$2, $$3).a(this.v, this.w, this.x, this.y).b($$4).e();
+   gbn(fxw $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, gby $$7) {
+      super($$0, $$1, $$2, $$3, $$4, $$5, $$6);
+      this.B = 0.96F;
+      this.a = $$7;
+      this.d(1.0F);
+      this.n = false;
+      this.b($$7);
    }
 
    @Override
@@ -70,30 +16,22 @@ public class gbn extends gcc {
    }
 
    @Override
-   public gbg b() {
-      return gbg.c;
+   public gbh b() {
+      return gbh.c;
    }
 
    @Override
    public void a() {
-      if (this.G > 0) {
-         this.G--;
-      } else {
-         super.a();
-      }
+      super.a();
+      this.b(this.a);
    }
 
-   public static class a implements gbf<ll> {
-      private final gbx a;
-
-      public a(gbx $$0) {
-         this.a = $$0;
-      }
-
-      public gbc a(ll $$0, fxv $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         gbn $$8 = new gbn($$1, $$2, $$3, $$4, $$0.b());
-         $$8.a(this.a);
+   public static record a(gby a) implements gbg<lm> {
+      public gbd a(lm $$0, fxw $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         gbn $$8 = new gbn($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
          $$8.e(1.0F);
+         $$8.b($$5, $$6, $$7);
+         $$8.a($$1.z.a(4) + 6);
          return $$8;
       }
    }

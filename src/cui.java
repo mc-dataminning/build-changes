@@ -1,77 +1,26 @@
-import java.util.Iterator;
-import java.util.List;
-import java.util.Optional;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class cui extends cuk {
-   private final axf<cuh> a;
+public record cui(ji<avz> e, int f, float g) {
+   public static final Codec<cui> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               avz.b.fieldOf("sound_event").forGetter(cui::a), ayh.l.fieldOf("use_duration").forGetter(cui::b), ayh.m.fieldOf("range").forGetter(cui::c)
+            )
+            .apply($$0, cui::new)
+   );
+   public static final zn<xa, cui> b = zn.a(avz.d, cui::a, zl.g, cui::b, zl.i, cui::c, cui::new);
+   public static final Codec<ji<cui>> c = alb.a(lq.E, a);
+   public static final zn<xa, ji<cui>> d = zl.a(lq.E, b);
 
-   public cui(cuk.a $$0, axf<cuh> $$1) {
-      super($$0);
-      this.a = $$1;
+   public ji<avz> a() {
+      return this.e;
    }
 
-   @Override
-   public void a(cup $$0, cuk.b $$1, List<xp> $$2, cwi $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      Optional<ale<cuh>> $$4 = this.j($$0).flatMap(ji::e);
-      if ($$4.isPresent()) {
-         yd $$5 = xp.c(ac.a("instrument", $$4.get().a()));
-         $$2.add($$5.a(n.h));
-      }
+   public int b() {
+      return this.f;
    }
 
-   public static cup a(cuk $$0, ji<cuh> $$1) {
-      cup $$2 = new cup($$0);
-      $$2.b(km.P, $$1);
-      return $$2;
-   }
-
-   public static void a(cup $$0, axf<cuh> $$1, azh $$2) {
-      Optional<ji<cuh>> $$3 = lp.am.a($$1, $$2);
-      $$3.ifPresent($$1x -> $$0.b(km.P, $$1x));
-   }
-
-   @Override
-   public bqv<cup> a(dby $$0, cmx $$1, bqt $$2) {
-      cup $$3 = $$1.b($$2);
-      Optional<? extends ji<cuh>> $$4 = this.j($$3);
-      if ($$4.isPresent()) {
-         cuh $$5 = $$4.get().a();
-         $$1.c($$2);
-         a($$0, $$1, $$5);
-         $$1.gx().a(this, $$5.b());
-         $$1.b(awk.c.b(this));
-         return bqv.b($$3);
-      } else {
-         return bqv.d($$3);
-      }
-   }
-
-   @Override
-   public int b(cup $$0) {
-      Optional<ji<cuh>> $$1 = this.j($$0);
-      return $$1.<Integer>map($$0x -> ((cuh)$$0x.a()).b()).orElse(0);
-   }
-
-   private Optional<ji<cuh>> j(cup $$0) {
-      ji<cuh> $$1 = $$0.a(km.P);
-      if ($$1 != null) {
-         return Optional.of($$1);
-      } else {
-         Iterator<ji<cuh>> $$2 = lp.am.c(this.a).iterator();
-         return $$2.hasNext() ? Optional.of($$2.next()) : Optional.empty();
-      }
-   }
-
-   @Override
-   public cwk c(cup $$0) {
-      return cwk.i;
-   }
-
-   private static void a(dby $$0, cmx $$1, cuh $$2) {
-      avz $$3 = $$2.a().a();
-      float $$4 = $$2.c() / 16.0F;
-      $$0.a($$1, $$1, $$3, awb.c, $$4, 1.0F);
-      $$0.a(dwv.B, $$1.dn(), dwv.a.a($$1));
+   public float c() {
+      return this.g;
    }
 }

@@ -1,59 +1,75 @@
-import com.mojang.serialization.Codec;
+import com.google.common.collect.ImmutableList;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
+import java.util.stream.Stream;
+import java.util.stream.Stream.Builder;
 
-public class esg extends eru {
+public class esg extends erv {
    public static final MapCodec<esg> a = RecordCodecBuilder.mapCodec(
       $$0 -> a($$0)
-            .and(
-               $$0.group(
-                  ale.a(lq.aU).fieldOf("name").forGetter($$0x -> $$0x.b),
-                  Codec.LONG.optionalFieldOf("seed", 0L).forGetter($$0x -> $$0x.c),
-                  lp.k.r().fieldOf("type").forGetter($$0x -> $$0x.d)
-               )
-            )
+            .and($$0.group(eqh.e.fieldOf("component").forGetter($$0x -> $$0x.b), eqx.a.listOf().fieldOf("entries").forGetter($$0x -> $$0x.c)))
             .apply($$0, esg::new)
    );
-   private final ale<eqn> b;
-   private final long c;
-   private final ji<dpj<?>> d;
+   private final eqg<?> b;
+   private final List<eqz> c;
 
-   private esg(List<ets> $$0, ale<eqn> $$1, long $$2, ji<dpj<?>> $$3) {
+   esg(List<ett> $$0, eqg<?> $$1, List<eqz> $$2) {
       super($$0);
       this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
+      this.c = List.copyOf($$2);
    }
 
    @Override
-   public erw<esg> b() {
-      return erx.y;
+   public erx<esg> b() {
+      return ery.t;
    }
 
    @Override
-   public cup a(cup $$0, eqi $$1) {
+   public cuq a(cuq $$0, eqj $$1) {
       if ($$0.e()) {
          return $$0;
       } else {
-         $$0.b(km.ae, new cxs(this.b, this.c));
+         Builder<cuq> $$2 = Stream.builder();
+         this.c.forEach($$2x -> $$2x.expand($$1, $$2xx -> $$2xx.a(eqo.a($$1.d(), $$2::add), $$1)));
+         this.b.a($$0, $$2.build());
          return $$0;
       }
    }
 
    @Override
-   public void a(eqo $$0) {
+   public void a(eqp $$0) {
       super.a($$0);
-      if ($$0.a().a(lq.aU, this.b).isEmpty()) {
-         $$0.b("Missing loot table used for container: " + this.b.a());
+
+      for (int $$1 = 0; $$1 < this.c.size(); $$1++) {
+         this.c.get($$1).a($$0.a(".entry[" + $$1 + "]"));
       }
    }
 
-   public static eru.a<?> a(dpj<?> $$0, ale<eqn> $$1) {
-      return a($$2 -> new esg($$2, $$1, 0L, $$0.a()));
+   public static esg.a a(eqg<?> $$0) {
+      return new esg.a($$0);
    }
 
-   public static eru.a<?> a(dpj<?> $$0, ale<eqn> $$1, long $$2) {
-      return a($$3 -> new esg($$3, $$1, $$2, $$0.a()));
+   public static class a extends erv.a<esg.a> {
+      private final com.google.common.collect.ImmutableList.Builder<eqz> a = ImmutableList.builder();
+      private final eqg<?> b;
+
+      public a(eqg<?> $$0) {
+         this.b = $$0;
+      }
+
+      protected esg.a a() {
+         return this;
+      }
+
+      public esg.a a(eqz.a<?> $$0) {
+         this.a.add($$0.b());
+         return this;
+      }
+
+      @Override
+      public erw b() {
+         return new esg(this.g(), this.b, this.a.build());
+      }
    }
 }

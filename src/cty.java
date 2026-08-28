@@ -1,32 +1,40 @@
-public class cty<T extends bsu & btm> extends cuk {
-   private final bta<T> a;
-   private final int b;
-
-   public cty(cuk.a $$0, bta<T> $$1, int $$2) {
+public class cty extends cul {
+   public cty(cul.a $$0) {
       super($$0);
-      this.a = $$1;
-      this.b = $$2;
    }
 
    @Override
-   public bqv<cup> a(dby $$0, cmx $$1, bqt $$2) {
-      cup $$3 = $$1.b($$2);
-      if ($$0.B) {
-         return bqv.c($$3);
-      } else {
-         bsu $$4 = $$1.dd();
-         if ($$1.bR() && $$4 instanceof btm $$5 && $$4.ak() == this.a && $$5.a()) {
-            $$3.a(this.b, $$1, btp.d($$2));
-            if ($$3.e()) {
-               cup $$6 = $$3.b(cus.qV, 1);
-               return bqv.a($$6);
+   public bqv a(cyd $$0) {
+      cmy $$1 = $$0.o();
+      dbz $$2 = $$0.q();
+      iz $$3 = $$0.a();
+      dsd $$4 = $$2.a_($$3);
+      if (!dfo.h($$4) && !dfp.g($$4) && !dfq.g($$4)) {
+         iz $$5 = $$3.a($$0.k());
+         if (den.a($$2, $$5, $$0.g())) {
+            $$2.a($$1, $$5, awa.iZ, awb.e, 1.0F, $$2.E_().i() * 0.4F + 0.8F);
+            dsd $$6 = den.a($$2, $$5);
+            $$2.a($$5, $$6, 11);
+            $$2.a($$1, dww.i, $$3);
+            cuq $$7 = $$0.n();
+            if ($$1 instanceof arg) {
+               am.z.a((arg)$$1, $$5, $$7);
+               $$7.a(1, $$1, btq.d($$0.p()));
             }
 
-            return bqv.a($$3);
+            return bqv.a($$2.x_());
+         } else {
+            return bqv.f;
+         }
+      } else {
+         $$2.a($$1, $$3, awa.iZ, awb.e, 1.0F, $$2.E_().i() * 0.4F + 0.8F);
+         $$2.a($$3, $$4.a(dst.r, Boolean.valueOf(true)), 11);
+         $$2.a($$1, dww.c, $$3);
+         if ($$1 != null) {
+            $$0.n().a(1, $$1, btq.d($$0.p()));
          }
 
-         $$1.b(awk.c.b(this));
-         return bqv.c($$3);
+         return bqv.a($$2.x_());
       }
    }
 }

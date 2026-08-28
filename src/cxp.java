@@ -1,12 +1,44 @@
 import com.mojang.serialization.Codec;
-import io.netty.buffer.ByteBuf;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Map;
 
-public record cxp(int d) {
-   public static final Codec<cxp> a = Codec.INT.xmap(cxp::new, cxp::a);
-   public static final zn<ByteBuf, cxp> b = zl.f.a(cxp::new, cxp::a);
-   public static final cxp c = new cxp(4603950);
+public record cxp(Map<String, cxp.a> c) {
+   public static final cxp a = new cxp(Map.of());
+   public static final Codec<cxp> b = Codec.unboundedMap(Codec.STRING, cxp.a.a).xmap(cxp::new, cxp::a);
 
-   public int a() {
-      return this.d;
+   public cxp a(String $$0, cxp.a $$1) {
+      return new cxp(ac.a(this.c, $$0, $$1));
+   }
+
+   public Map<String, cxp.a> a() {
+      return this.c;
+   }
+
+   public static record a(ji<epg> b, double c, double d, float e) {
+      public static final Codec<cxp.a> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(
+                  epg.b.fieldOf("type").forGetter(cxp.a::a),
+                  Codec.DOUBLE.fieldOf("x").forGetter(cxp.a::b),
+                  Codec.DOUBLE.fieldOf("z").forGetter(cxp.a::c),
+                  Codec.FLOAT.fieldOf("rotation").forGetter(cxp.a::d)
+               )
+               .apply($$0, cxp.a::new)
+      );
+
+      public ji<epg> a() {
+         return this.b;
+      }
+
+      public double b() {
+         return this.c;
+      }
+
+      public double c() {
+         return this.d;
+      }
+
+      public float d() {
+         return this.e;
+      }
    }
 }

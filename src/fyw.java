@@ -1,120 +1,47 @@
-import com.google.common.collect.Lists;
-import com.mojang.authlib.minecraft.report.AbuseReport;
-import com.mojang.authlib.minecraft.report.AbuseReportLimits;
-import com.mojang.authlib.minecraft.report.ReportChatMessage;
-import com.mojang.authlib.minecraft.report.ReportEvidence;
-import com.mojang.authlib.minecraft.report.ReportedEntity;
-import com.mojang.datafixers.util.Either;
-import it.unimi.dsi.fastutil.ints.IntOpenHashSet;
-import it.unimi.dsi.fastutil.ints.IntSet;
-import java.nio.ByteBuffer;
-import java.time.Instant;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
-import java.util.UUID;
 import javax.annotation.Nullable;
-import org.apache.commons.lang3.StringUtils;
 
-public class fyw extends fyz {
-   final IntSet f = new IntOpenHashSet();
+public enum fyw {
+   a("generic_violation"),
+   b("false_reporting"),
+   c("hate_speech"),
+   d("hate_terrorism_notorious_figure"),
+   e("harassment_or_bullying"),
+   f("defamation_impersonation_false_information"),
+   g("drugs"),
+   h("fraud"),
+   i("spam_or_advertising"),
+   j("nudity_or_pornography"),
+   k("sexually_inappropriate"),
+   l("extreme_violence_or_gore"),
+   m("imminent_harm_to_person_or_property");
 
-   fyw(UUID $$0, Instant $$1, UUID $$2) {
-      super($$0, $$1, $$2);
+   private final xp n;
+
+   private fyw(final String $$0) {
+      this.n = xp.c("gui.banned.reason." + $$0);
    }
 
-   public void a(int $$0, AbuseReportLimits $$1) {
-      if (this.f.contains($$0)) {
-         this.f.remove($$0);
-      } else if (this.f.size() < $$1.maxReportedMessageCount()) {
-         this.f.add($$0);
-      }
+   public xp a() {
+      return this.n;
    }
 
-   public fyw a() {
-      fyw $$0 = new fyw(this.a, this.b, this.c);
-      $$0.f.addAll(this.f);
-      $$0.d = this.d;
-      $$0.e = this.e;
-      return $$0;
-   }
-
-   @Override
-   public fnd a(fnd $$0, fzd $$1) {
-      return new frb($$0, $$1, this);
-   }
-
-   public static class a extends fyz.a<fyw> {
-      public a(fyw $$0, AbuseReportLimits $$1) {
-         super($$0, $$1);
-      }
-
-      public a(UUID $$0, AbuseReportLimits $$1) {
-         super(new fyw(UUID.randomUUID(), Instant.now(), $$0), $$1);
-      }
-
-      public IntSet a() {
-         return this.a.f;
-      }
-
-      public void a(int $$0) {
-         this.a.a($$0, this.b);
-      }
-
-      public boolean b(int $$0) {
-         return this.a.f.contains($$0);
-      }
-
-      @Override
-      public boolean b() {
-         return StringUtils.isNotEmpty(this.g()) || !this.a().isEmpty() || this.h() != null;
-      }
-
-      @Nullable
-      @Override
-      public fyz.b c() {
-         if (this.a.f.isEmpty()) {
-            return fyz.b.b;
-         } else if (this.a.f.size() > this.b.maxReportedMessageCount()) {
-            return fyz.b.c;
-         } else if (this.a.e == null) {
-            return fyz.b.a;
-         } else {
-            return this.a.d.length() > this.b.maxOpinionCommentsLength() ? fyz.b.d : null;
-         }
-      }
-
-      @Override
-      public Either<fyz.c, fyz.b> a(fzd $$0) {
-         fyz.b $$1 = this.c();
-         if ($$1 != null) {
-            return Either.right($$1);
-         } else {
-            String $$2 = Objects.requireNonNull(this.a.e).a();
-            ReportEvidence $$3 = this.b($$0);
-            ReportedEntity $$4 = new ReportedEntity(this.a.c);
-            AbuseReport $$5 = AbuseReport.chat(this.a.d, $$2, $$3, $$4, this.a.b);
-            return Either.left(new fyz.c(this.a.a, fzc.a, $$5));
-         }
-      }
-
-      private ReportEvidence b(fzd $$0) {
-         List<ReportChatMessage> $$1 = new ArrayList<>();
-         fyx $$2 = new fyx(this.b.leadingContextMessageCount());
-         $$2.a($$0.b(), this.a.f, ($$1x, $$2x) -> $$1.add(this.a($$2x, this.b($$1x))));
-         return new ReportEvidence(Lists.reverse($$1));
-      }
-
-      private ReportChatMessage a(fys.a $$0, boolean $$1) {
-         yk $$2 = $$0.g().k();
-         yi $$3 = $$0.g().m();
-         List<ByteBuffer> $$4 = $$3.d().a().stream().map(yb::a).toList();
-         ByteBuffer $$5 = x.a($$0.g().l(), yb::a);
-         return new ReportChatMessage($$2.b(), $$2.c(), $$2.d(), $$3.b(), $$3.c(), $$4, $$3.a(), $$5, $$1);
-      }
-
-      public fyw.a d() {
-         return new fyw.a(this.a.a(), this.b);
-      }
+   @Nullable
+   public static fyw a(int $$0) {
+      return switch ($$0) {
+         case 2 -> b;
+         default -> null;
+         case 5 -> c;
+         case 16, 25 -> d;
+         case 17, 19, 23, 31 -> a;
+         case 21 -> e;
+         case 27 -> f;
+         case 28 -> g;
+         case 29 -> h;
+         case 30 -> i;
+         case 32 -> j;
+         case 33 -> k;
+         case 34 -> l;
+         case 53 -> m;
+      };
    }
 }

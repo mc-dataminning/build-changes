@@ -1,29 +1,12 @@
-import java.util.function.Function;
-
-public abstract class fsu<E extends bsu> extends fuj<E> {
-   private final float a;
-   private final float b;
-
-   public fsu(float $$0, float $$1) {
-      this($$0, $$1, gdw::e);
+public abstract class fsu<T extends cke> extends fuo<T> {
+   protected fsu(fxb $$0) {
+      super($$0);
    }
 
-   public fsu(float $$0, float $$1, Function<alf, gdw> $$2) {
-      super($$2);
-      this.b = $$1;
-      this.a = $$0;
+   public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
+      super.a($$0, $$1, $$2, $$3, $$4, $$5);
+      fsy.a(this.o, this.n, this.a($$0), this.c, $$3);
    }
 
-   @Override
-   public void a(ezy $$0, fac $$1, int $$2, int $$3, float $$4, float $$5, float $$6, float $$7) {
-      if (this.e) {
-         $$0.a();
-         $$0.b(this.a, this.a, this.a);
-         $$0.a(0.0F, this.b / 16.0F, 0.0F);
-         this.a().a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
-         $$0.b();
-      } else {
-         this.a().a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
-      }
-   }
+   public abstract boolean a(T var1);
 }

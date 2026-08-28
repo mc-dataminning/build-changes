@@ -1,45 +1,33 @@
-import java.nio.file.Path;
-import java.util.Collections;
-import java.util.List;
+import java.util.function.IntSupplier;
+import java.util.function.LongSupplier;
 
-public class bnd implements bnh {
-   public static final bnd a = new bnd();
+public class bnd {
+   private final LongSupplier a;
+   private final IntSupplier b;
+   private bnh c = bng.a;
 
-   private bnd() {
+   public bnd(LongSupplier $$0, IntSupplier $$1) {
+      this.a = $$0;
+      this.b = $$1;
    }
 
-   @Override
-   public List<bnk> a(String $$0) {
-      return Collections.emptyList();
+   public boolean a() {
+      return this.c != bng.a;
    }
 
-   @Override
-   public boolean a(Path $$0) {
-      return false;
+   public void b() {
+      this.c = bng.a;
    }
 
-   @Override
-   public long a() {
-      return 0L;
+   public void c() {
+      this.c = new bnc(this.a, this.b, true);
    }
 
-   @Override
-   public int b() {
-      return 0;
+   public bnj d() {
+      return this.c;
    }
 
-   @Override
-   public long c() {
-      return 0L;
-   }
-
-   @Override
-   public int d() {
-      return 0;
-   }
-
-   @Override
-   public String e() {
-      return "";
+   public bni e() {
+      return this.c.d();
    }
 }

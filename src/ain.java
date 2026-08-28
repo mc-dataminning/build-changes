@@ -5,11 +5,11 @@ public class ain implements zw<agw> {
    private final alf d;
    private final alf e;
    private final String f;
-   private final dqh.a g;
+   private final dqi.a g;
    private final int h;
    private final int i;
 
-   public ain(iz $$0, alf $$1, alf $$2, alf $$3, String $$4, dqh.a $$5, int $$6, int $$7) {
+   public ain(iz $$0, alf $$1, alf $$2, alf $$3, String $$4, dqi.a $$5, int $$6, int $$7) {
       this.b = $$0;
       this.c = $$1;
       this.d = $$2;
@@ -26,7 +26,7 @@ public class ain implements zw<agw> {
       this.d = $$0.q();
       this.e = $$0.q();
       this.f = $$0.p();
-      this.g = dqh.a.a($$0.p()).orElse(dqh.a.b);
+      this.g = dqi.a.a($$0.p()).orElse(dqi.a.b);
       this.h = $$0.l();
       this.i = $$0.l();
    }
@@ -71,7 +71,7 @@ public class ain implements zw<agw> {
       return this.f;
    }
 
-   public dqh.a i() {
+   public dqi.a i() {
       return this.g;
    }
 

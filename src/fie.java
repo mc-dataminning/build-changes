@@ -1,84 +1,39 @@
-import java.util.function.Supplier;
-import javax.annotation.Nullable;
+import com.mojang.blaze3d.systems.RenderSystem;
 
-public class fie extends fhc {
-   private static final float a = 0.0625F;
-   private static final float b = 2.125F;
-   private static final float c = 100.0F;
-   private static final float d = 2.5F;
-   private static final float e = -5.0F;
-   private static final float f = 30.0F;
-   private static final float m = 50.0F;
-   private final fie.a n;
-   private final Supplier<gpz> o;
-   private float p = -5.0F;
-   private float q = 30.0F;
+public class fie {
+   public static final int a = 8;
+   public static final int b = 8;
+   public static final int c = 8;
+   public static final int d = 8;
+   public static final int e = 40;
+   public static final int f = 8;
+   public static final int g = 8;
+   public static final int h = 8;
+   public static final int i = 64;
+   public static final int j = 64;
 
-   public fie(int $$0, int $$1, fww $$2, Supplier<gpz> $$3) {
-      super(0, 0, $$0, $$1, xo.a);
-      this.n = fie.a.a($$2);
-      this.o = $$3;
+   public static void a(fgs $$0, gqa $$1, int $$2, int $$3, int $$4) {
+      a($$0, $$1.a(), $$2, $$3, $$4);
    }
 
-   @Override
-   protected void b(fgr $$0, int $$1, int $$2, float $$3) {
-      $$0.c().a();
-      $$0.c().a((float)this.C() + (float)this.x() / 2.0F, (float)(this.D() + this.v()), 100.0F);
-      float $$4 = (float)this.v() / 2.125F;
-      $$0.c().b($$4, $$4, $$4);
-      $$0.c().a(0.0F, -0.0625F, 0.0F);
-      $$0.c().a(a.b.rotationDegrees(this.p), 0.0F, -1.0625F, 0.0F);
-      $$0.c().a(a.d.rotationDegrees(this.q));
-      $$0.e();
-      eyu.a(a.b.rotationDegrees(this.p));
-      this.n.a($$0, this.o.get());
-      $$0.e();
-      eyu.d();
-      $$0.c().b();
+   public static void a(fgs $$0, alf $$1, int $$2, int $$3, int $$4) {
+      a($$0, $$1, $$2, $$3, $$4, true, false);
    }
 
-   @Override
-   protected void b(double $$0, double $$1, double $$2, double $$3) {
-      this.p = ayz.a(this.p - (float)$$3 * 2.5F, -50.0F, 50.0F);
-      this.q += (float)$$2 * 2.5F;
-   }
-
-   @Override
-   public void a(gtv $$0) {
-   }
-
-   @Override
-   protected void a(fla $$0) {
-   }
-
-   @Override
-   public boolean B() {
-      return false;
-   }
-
-   @Nullable
-   @Override
-   public fgo a(flg $$0) {
-      return null;
-   }
-
-   static record a(fvf<?> a, fvf<?> b) {
-      public static fie.a a(fww $$0) {
-         fvf<?> $$1 = new fvf($$0.a(fwz.aS), false);
-         fvf<?> $$2 = new fvf($$0.a(fwz.aW), true);
-         $$1.e = false;
-         $$2.e = false;
-         return new fie.a($$1, $$2);
+   public static void a(fgs $$0, alf $$1, int $$2, int $$3, int $$4, boolean $$5, boolean $$6) {
+      int $$7 = 8 + ($$6 ? 8 : 0);
+      int $$8 = 8 * ($$6 ? -1 : 1);
+      $$0.a($$1, $$2, $$3, $$4, $$4, 8.0F, (float)$$7, 8, $$8, 64, 64);
+      if ($$5) {
+         a($$0, $$1, $$2, $$3, $$4, $$6);
       }
+   }
 
-      public void a(fgr $$0, gpz $$1) {
-         $$0.c().a();
-         $$0.c().b(1.0F, 1.0F, -1.0F);
-         $$0.c().a(0.0F, -1.5F, 0.0F);
-         fvf<?> $$2 = $$1.e() == gpz.a.a ? this.b : this.a;
-         gdw $$3 = $$2.a($$1.a());
-         $$2.a($$0.c(), $$0.d().getBuffer($$3), 15728880, goq.d, 1.0F, 1.0F, 1.0F, 1.0F);
-         $$0.c().b();
-      }
+   private static void a(fgs $$0, alf $$1, int $$2, int $$3, int $$4, boolean $$5) {
+      int $$6 = 8 + ($$5 ? 8 : 0);
+      int $$7 = 8 * ($$5 ? -1 : 1);
+      RenderSystem.enableBlend();
+      $$0.a($$1, $$2, $$3, $$4, $$4, 40.0F, (float)$$6, 8, $$7, 64, 64);
+      RenderSystem.disableBlend();
    }
 }

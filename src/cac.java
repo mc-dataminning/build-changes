@@ -1,34 +1,45 @@
-import java.util.EnumSet;
+public class cac extends cbb {
+   private final cfj g;
 
-public class cac extends can {
-   private final btr a;
-   private final dby b;
-
-   public cac(btr $$0, dby $$1) {
-      this.a = $$0;
-      this.b = $$1;
-      this.a(EnumSet.of(can.a.c));
+   public cac(cfj $$0, double $$1) {
+      super($$0, $$1, 8);
+      this.g = $$0;
    }
 
    @Override
    public boolean a() {
-      boolean $$0 = this.a.aC || this.a.aB;
-      if ($$0 && this.a.ak().a(awt.h)) {
-         iz $$1 = this.a.dp().c();
-         dsc $$2 = this.b.a_($$1);
-         return $$2.a(dfb.qP) || $$2.k(this.b, $$1) == ewh.a();
-      } else {
-         return false;
-      }
+      return this.g.s() && !this.g.gq() && super.a();
    }
 
    @Override
-   public boolean R_() {
-      return true;
+   public void c() {
+      super.c();
+      this.g.x(false);
+   }
+
+   @Override
+   public void d() {
+      super.d();
+      this.g.x(false);
    }
 
    @Override
    public void e() {
-      this.a.I().a();
+      super.e();
+      this.g.x(this.m());
+   }
+
+   @Override
+   protected boolean a(dcc $$0, iz $$1) {
+      if (!$$0.u($$1.c())) {
+         return false;
+      } else {
+         dsd $$2 = $$0.a_($$1);
+         if ($$2.a(dfc.cv)) {
+            return dpp.a($$0, $$1) < 1;
+         } else {
+            return $$2.a(dfc.cD) && $$2.c(dih.b) ? true : $$2.a(awp.R, $$0x -> $$0x.d(det.b).map($$0xx -> $$0xx != dsq.a).orElse(true));
+         }
+      }
    }
 }

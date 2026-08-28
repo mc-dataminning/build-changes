@@ -1,9 +1,9 @@
-import com.google.common.collect.ImmutableList;
-
 public class fxi {
-   private final fxj a = new fxj(ImmutableList.of(), fxc.a);
+   final int a;
+   final int b;
 
-   public fxj a() {
-      return this.a;
+   public fxi(int $$0, int $$1) {
+      this.a = $$0;
+      this.b = $$1;
    }
 }

@@ -49,7 +49,7 @@ public class amx {
       if (!$$1.bi()) {
          throw b.create();
       } else {
-         bnh $$2 = $$1.bk();
+         bni $$2 = $$1.bk();
          double $$3 = (double)$$2.g() / (double)azz.a;
          double $$4 = (double)$$2.f() / $$3;
          $$0.a(() -> xp.a("commands.debug.stopped", String.format(Locale.ROOT, "%.2f", $$3), $$2.f(), String.format(Locale.ROOT, "%.2f", $$4)), true);

@@ -1,22 +1,15 @@
-public interface czl extends cyv<bqn> {
-   @Override
-   default cza<?> e() {
-      return cza.g;
+public class czl extends cyf {
+   public czl(String $$0, cyl $$1, cyt $$2, cuq $$3, float $$4, int $$5) {
+      super(czb.b, $$0, $$1, $$2, $$3, $$4, $$5);
    }
 
    @Override
-   default boolean a(int $$0, int $$1) {
-      return $$0 >= 3 && $$1 >= 1;
+   public cuq g() {
+      return new cuq(dfc.cD);
    }
 
    @Override
-   default cup g() {
-      return new cup(dfb.ob);
+   public cza<?> ao_() {
+      return cza.p;
    }
-
-   boolean a(cup var1);
-
-   boolean b(cup var1);
-
-   boolean c(cup var1);
 }

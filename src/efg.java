@@ -1,30 +1,51 @@
-import com.mojang.datafixers.Products.P3;
+import com.google.common.collect.Lists;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder.Instance;
-import com.mojang.serialization.codecs.RecordCodecBuilder.Mu;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
 
-public abstract class efg extends efd {
-   protected final long c;
-   protected final emy.a d;
-   protected final float e;
-   protected final emy f;
+public class efg extends efi {
+   public static final MapCodec<efg> b = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(
+               ayr.a(Codec.INT, 1, 64).fieldOf("variety").forGetter($$0x -> $$0x.i),
+               emz.a.a.fieldOf("slow_noise").forGetter($$0x -> $$0x.j),
+               ayh.m.fieldOf("slow_scale").forGetter($$0x -> $$0x.k)
+            )
+            .and(b($$0))
+            .apply($$0, efg::new)
+   );
+   private final ayr<Integer> i;
+   private final emz.a j;
+   private final float k;
+   private final emz l;
 
-   protected static <P extends efg> P3<Mu<P>, Long, emy.a, Float> a(Instance<P> $$0) {
-      return $$0.group(
-         Codec.LONG.fieldOf("seed").forGetter($$0x -> $$0x.c),
-         emy.a.a.fieldOf("noise").forGetter($$0x -> $$0x.d),
-         ayh.m.fieldOf("scale").forGetter($$0x -> $$0x.e)
-      );
+   public efg(ayr<Integer> $$0, emz.a $$1, float $$2, long $$3, emz.a $$4, float $$5, List<dsd> $$6) {
+      super($$3, $$4, $$5, $$6);
+      this.i = $$0;
+      this.j = $$1;
+      this.k = $$2;
+      this.l = emz.b(new dyu(new dxw($$3)), $$1);
    }
 
-   protected efg(long $$0, emy.a $$1, float $$2) {
-      this.c = $$0;
-      this.d = $$1;
-      this.e = $$2;
-      this.f = emy.b(new dyt(new dxv($$0)), $$1);
+   @Override
+   protected eff<?> a() {
+      return eff.e;
    }
 
-   protected double a(iz $$0, double $$1) {
-      return this.f.a((double)$$0.u() * $$1, (double)$$0.v() * $$1, (double)$$0.w() * $$1);
+   @Override
+   public dsd a(azh $$0, iz $$1) {
+      double $$2 = this.a($$1);
+      int $$3 = (int)ayz.a($$2, -1.0, 1.0, (double)this.i.a().intValue(), (double)(this.i.b() + 1));
+      List<dsd> $$4 = Lists.newArrayListWithCapacity($$3);
+
+      for (int $$5 = 0; $$5 < $$3; $$5++) {
+         $$4.add(this.a(this.h, this.a($$1.b($$5 * 54545, 0, $$5 * 34234))));
+      }
+
+      return this.a($$4, $$1, (double)this.e);
+   }
+
+   protected double a(iz $$0) {
+      return this.l.a((double)((float)$$0.u() * this.k), (double)((float)$$0.v() * this.k), (double)((float)$$0.w() * this.k));
    }
 }

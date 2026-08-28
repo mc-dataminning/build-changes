@@ -1,38 +1,22 @@
-import java.util.ArrayList;
-import java.util.List;
-import java.util.function.BooleanSupplier;
+import java.util.Set;
 
-public class fgt {
-   public static final float a = 200.0F;
-   private final List<fgt.a> b = new ArrayList<>();
+public class fgt extends gqd {
+   private static final Set<ato<?>> a = Set.of(gql.a, gqr.c);
 
-   public fgt a(fgt.a $$0) {
-      this.b.add($$0);
-      return this;
+   public fgt(gpb $$0) {
+      super($$0, new alf("textures/atlas/gui.png"), new alf("gui"), a);
    }
 
-   public fgt a(fgt $$0, BooleanSupplier $$1) {
-      return this.a(($$2, $$3) -> {
-         if ($$1.getAsBoolean()) {
-            $$0.b($$2, $$3);
-         }
-      });
+   @Override
+   public gpa a(alf $$0) {
+      return super.a($$0);
    }
 
-   public void a(fgr $$0, float $$1) {
-      $$0.c().a();
-      this.b($$0, $$1);
-      $$0.c().b();
+   public gqs a(gpa $$0) {
+      return this.b($$0).a();
    }
 
-   private void b(fgr $$0, float $$1) {
-      for (fgt.a $$2 : this.b) {
-         $$2.render($$0, $$1);
-         $$0.c().a(0.0F, 0.0F, 200.0F);
-      }
-   }
-
-   public interface a {
-      void render(fgr var1, float var2);
+   private gqr b(gpa $$0) {
+      return $$0.e().f().a(gqr.c).orElse(gqr.a);
    }
 }

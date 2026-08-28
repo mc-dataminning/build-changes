@@ -1,70 +1,72 @@
-import com.google.common.collect.Lists;
-import java.util.List;
+public abstract class cyf implements cyw<bqo> {
+   protected final czb<?> a;
+   protected final cyl b;
+   protected final String c;
+   protected final cyt d;
+   protected final cuq e;
+   protected final float f;
+   protected final int g;
 
-public class cyf extends cyn {
-   public cyf(cyl $$0) {
-      super($$0);
+   public cyf(czb<?> $$0, String $$1, cyl $$2, cyt $$3, cuq $$4, float $$5, int $$6) {
+      this.a = $$0;
+      this.b = $$2;
+      this.c = $$1;
+      this.d = $$3;
+      this.e = $$4;
+      this.f = $$5;
+      this.g = $$6;
    }
 
-   public boolean a(cqk $$0, dby $$1) {
-      cup $$2 = cup.l;
-      List<cup> $$3 = Lists.newArrayList();
-
-      for (int $$4 = 0; $$4 < $$0.b(); $$4++) {
-         cup $$5 = $$0.a($$4);
-         if (!$$5.e()) {
-            if ($$5.a(awy.by)) {
-               if (!$$2.e()) {
-                  return false;
-               }
-
-               $$2 = $$5;
-            } else {
-               if (!($$5.g() instanceof ctj)) {
-                  return false;
-               }
-
-               $$3.add($$5);
-            }
-         }
-      }
-
-      return !$$2.e() && !$$3.isEmpty();
+   @Override
+   public boolean a(bqo $$0, dbz $$1) {
+      return this.d.a($$0.a(0));
    }
 
-   public cup a(cqk $$0, jk.a $$1) {
-      List<ctj> $$2 = Lists.newArrayList();
-      cup $$3 = cup.l;
-
-      for (int $$4 = 0; $$4 < $$0.b(); $$4++) {
-         cup $$5 = $$0.a($$4);
-         if (!$$5.e()) {
-            if ($$5.a(awy.by)) {
-               if (!$$3.e()) {
-                  return cup.l;
-               }
-
-               $$3 = $$5.s();
-            } else {
-               if (!($$5.g() instanceof ctj $$6)) {
-                  return cup.l;
-               }
-
-               $$2.add($$6);
-            }
-         }
-      }
-
-      return !$$3.e() && !$$2.isEmpty() ? cxh.a($$3, $$2) : cup.l;
+   @Override
+   public cuq a(bqo $$0, jk.a $$1) {
+      return this.e.s();
    }
 
    @Override
    public boolean a(int $$0, int $$1) {
-      return $$0 * $$1 >= 2;
+      return true;
    }
 
    @Override
-   public cyz<?> ao_() {
-      return cyz.c;
+   public jr<cyt> a() {
+      jr<cyt> $$0 = jr.a();
+      $$0.add(this.d);
+      return $$0;
+   }
+
+   public float b() {
+      return this.f;
+   }
+
+   @Override
+   public cuq a(jk.a $$0) {
+      return this.e;
+   }
+
+   @Override
+   public String c() {
+      return this.c;
+   }
+
+   public int d() {
+      return this.g;
+   }
+
+   @Override
+   public czb<?> e() {
+      return this.a;
+   }
+
+   public cyl f() {
+      return this.b;
+   }
+
+   public interface a<T extends cyf> {
+      T create(String var1, cyl var2, cyt var3, cuq var4, float var5, int var6);
    }
 }

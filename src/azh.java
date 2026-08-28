@@ -5,25 +5,25 @@ public interface azh {
    double a = 2.297;
 
    static azh a() {
-      return a(dyj.a());
+      return a(dyk.a());
    }
 
    @Deprecated
    static azh b() {
-      return new dyn(dyj.a());
+      return new dyo(dyk.a());
    }
 
    static azh a(long $$0) {
-      return new dxv($$0);
+      return new dxw($$0);
    }
 
    static azh c() {
-      return new dyk(ThreadLocalRandom.current().nextLong());
+      return new dyl(ThreadLocalRandom.current().nextLong());
    }
 
    azh d();
 
-   dyh e();
+   dyi e();
 
    void b(long var1);
 

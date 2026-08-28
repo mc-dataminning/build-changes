@@ -1,47 +1,28 @@
-import javax.annotation.Nullable;
-
-public class cvv extends csn implements ctg {
-   private final avz a;
-
-   public cvv(dez $$0, avz $$1, cuk.a $$2) {
-      super($$0, $$2);
-      this.a = $$1;
+public class cvv extends cul implements cvi {
+   public cvv(cul.a $$0) {
+      super($$0);
    }
 
    @Override
-   public bqu a(cyc $$0) {
-      bqu $$1 = super.a($$0);
-      cmx $$2 = $$0.o();
-      if ($$1.a() && $$2 != null && !$$2.f()) {
-         bqt $$3 = $$0.p();
-         $$2.a($$3, cus.qy.w());
+   public bqw<cuq> a(dbz $$0, cmy $$1, bqu $$2) {
+      cuq $$3 = $$1.b($$2);
+      $$0.a(null, $$1.du(), $$1.dw(), $$1.dA(), awa.yx, awb.g, 0.5F, 0.4F / ($$0.E_().i() * 0.4F + 0.8F));
+      if (!$$0.B) {
+         cnv $$4 = new cnv($$0, $$1);
+         $$4.a($$3);
+         $$4.a($$1, $$1.dH(), $$1.dF(), 0.0F, 1.5F, 1.0F);
+         $$0.b($$4);
       }
 
-      return $$1;
+      $$1.b(awk.c.b(this));
+      $$3.a(1, $$1);
+      return bqw.a($$3, $$0.x_());
    }
 
    @Override
-   public String a() {
-      return this.t();
-   }
-
-   @Override
-   protected avz a(dsc $$0) {
-      return this.a;
-   }
-
-   @Override
-   public boolean a(@Nullable cmx $$0, dby $$1, iz $$2, @Nullable evn $$3) {
-      if ($$1.k($$2) && $$1.u($$2)) {
-         if (!$$1.B) {
-            $$1.a($$2, this.d().o(), 3);
-         }
-
-         $$1.a($$0, dwv.z, $$2);
-         $$1.a($$0, $$2, this.a, awb.e, 1.0F, 1.0F);
-         return true;
-      } else {
-         return false;
-      }
+   public cnq a(dbz $$0, js $$1, cuq $$2, je $$3) {
+      cnv $$4 = new cnv($$0, $$1.a(), $$1.b(), $$1.c());
+      $$4.a($$2);
+      return $$4;
    }
 }

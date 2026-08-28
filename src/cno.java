@@ -1,77 +1,49 @@
-public class cno extends cnp {
-   public cno(bta<? extends cno> $$0, dby $$1) {
+public class cno extends cnk {
+   private int g = 1;
+
+   public cno(btb<? extends cno> $$0, dbz $$1) {
       super($$0, $$1);
    }
 
-   public cno(dby $$0, chm $$1) {
-      this(bta.ao, $$0);
-      this.c($$1);
-      this.a_(
-         $$1.du() - (double)($$1.dj() + 1.0F) * 0.5 * (double)ayz.a($$1.aY * (float) (Math.PI / 180.0)),
-         $$1.dy() - 0.1F,
-         $$1.dA() + (double)($$1.dj() + 1.0F) * 0.5 * (double)ayz.b($$1.aY * (float) (Math.PI / 180.0))
-      );
+   public cno(dbz $$0, btq $$1, double $$2, double $$3, double $$4, int $$5) {
+      super(btb.ak, $$1, $$2, $$3, $$4, $$0);
+      this.g = $$5;
    }
 
    @Override
-   protected double aY() {
-      return 0.06;
-   }
-
-   @Override
-   public void l() {
-      super.l();
-      evr $$0 = this.ds();
-      evp $$1 = cnr.a(this, this::b);
-      this.b($$1);
-      double $$2 = this.du() + $$0.c;
-      double $$3 = this.dw() + $$0.d;
-      double $$4 = this.dA() + $$0.e;
-      this.J();
-      float $$5 = 0.99F;
-      if (this.dP().a(this.cK()).noneMatch(dsb.a::i)) {
-         this.ao();
-      } else if (this.bh()) {
-         this.ao();
-      } else {
-         this.h($$0.a(0.99F));
-         this.ba();
-         this.a_($$2, $$3, $$4);
-      }
-   }
-
-   @Override
-   protected void a(evo $$0) {
-      super.a($$0);
-      if (this.s() instanceof btp $$1) {
-         $$0.a().a(this.dQ().b(this, $$1), 1.0F);
-      }
-   }
-
-   @Override
-   protected void a(evn $$0) {
+   protected void a(evq $$0) {
       super.a($$0);
       if (!this.dP().B) {
+         boolean $$1 = this.dP().ab().b(dbv.c);
+         this.dP().a(this, this.du(), this.dw(), this.dA(), (float)this.g, $$1, dbz.a.c);
          this.ao();
       }
    }
 
    @Override
-   protected void a(ako.a $$0) {
+   protected void a(evp $$0) {
+      super.a($$0);
+      if (!this.dP().B) {
+         bsv $$1 = $$0.a();
+         bsv $$2 = this.s();
+         $$1.a(this.dQ().a((cnk)this, $$2), 6.0F);
+         if ($$2 instanceof btq) {
+            this.a((btq)$$2, $$1);
+         }
+      }
    }
 
    @Override
-   public void a(acj $$0) {
+   public void b(us $$0) {
+      super.b($$0);
+      $$0.a("ExplosionPower", (byte)this.g);
+   }
+
+   @Override
+   public void a(us $$0) {
       super.a($$0);
-      double $$1 = $$0.j();
-      double $$2 = $$0.k();
-      double $$3 = $$0.l();
-
-      for (int $$4 = 0; $$4 < 7; $$4++) {
-         double $$5 = 0.4 + 0.1 * (double)$$4;
-         this.dP().a(li.ah, this.du(), this.dw(), this.dA(), $$1 * $$5, $$2, $$3 * $$5);
+      if ($$0.b("ExplosionPower", 99)) {
+         this.g = $$0.f("ExplosionPower");
       }
-
-      this.o($$1, $$2, $$3);
    }
 }

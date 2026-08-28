@@ -1,34 +1,32 @@
-import java.net.InetSocketAddress;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.Streams;
+import com.mojang.blocklist.BlockListSupplier;
+import java.util.Objects;
+import java.util.ServiceLoader;
+import java.util.function.Predicate;
 
 public interface fzl {
-   String a();
+   boolean a(fzm var1);
 
-   String b();
+   boolean a(fzn var1);
 
-   int c();
-
-   InetSocketAddress d();
-
-   static fzl a(final InetSocketAddress $$0) {
+   static fzl a() {
+      final ImmutableList<Predicate<String>> $$0 = Streams.stream(ServiceLoader.load(BlockListSupplier.class))
+         .<Predicate>map(BlockListSupplier::createBlockList)
+         .filter(Objects::nonNull)
+         .collect(ImmutableList.toImmutableList());
       return new fzl() {
          @Override
-         public String a() {
-            return $$0.getAddress().getHostName();
+         public boolean a(fzm $$0x) {
+            String $$1 = $$0.a();
+            String $$2 = $$0.b();
+            return $$0.stream().noneMatch($$2x -> $$2x.test($$1) || $$2x.test($$2));
          }
 
          @Override
-         public String b() {
-            return $$0.getAddress().getHostAddress();
-         }
-
-         @Override
-         public int c() {
-            return $$0.getPort();
-         }
-
-         @Override
-         public InetSocketAddress d() {
-            return $$0;
+         public boolean a(fzn $$0x) {
+            String $$1 = $$0.a();
+            return $$0.stream().noneMatch($$1x -> $$1x.test($$1));
          }
       };
    }

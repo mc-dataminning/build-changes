@@ -4,7 +4,7 @@ public class ahy implements zw<agw> {
    private final alf c;
    private final boolean d;
 
-   public ahy(int $$0, cyx<?> $$1, boolean $$2) {
+   public ahy(int $$0, cyy<?> $$1, boolean $$2) {
       this.b = $$0;
       this.c = $$1.a();
       this.d = $$2;

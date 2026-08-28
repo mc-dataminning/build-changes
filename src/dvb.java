@@ -1,2 +1,6 @@
-public record dvb(arf a, dtz b, eml c, ari d) {
+import java.util.concurrent.CompletableFuture;
+
+@FunctionalInterface
+public interface dvb {
+   CompletableFuture<dtz> apply(dtz var1);
 }

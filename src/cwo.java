@@ -1,55 +1,54 @@
 import java.util.List;
-import java.util.Optional;
 import javax.annotation.Nullable;
 
-public class cwo implements cpi {
-   @Nullable
-   private final String a;
-   private final List<bsc> b;
-   private cpl c = cpn.g;
-
-   public cwo(bsc... $$0) {
-      this(null, $$0);
-   }
-
-   public cwo(@Nullable String $$0, bsc... $$1) {
-      this.a = $$0;
-      this.b = List.of($$1);
-   }
-
-   public cwo a(cpj... $$0) {
-      this.c = cpn.e.a($$0);
-      return this;
+public class cwo extends cul {
+   public cwo(cul.a $$0) {
+      super($$0);
    }
 
    @Override
-   public cpl i() {
-      return this.c;
-   }
-
-   public static String a(Optional<ji<cwo>> $$0, String $$1) {
-      if ($$0.isPresent()) {
-         String $$2 = $$0.get().a().a;
-         if ($$2 != null) {
-            return $$1 + $$2;
+   public xp o(cuq $$0) {
+      cxz $$1 = $$0.a(km.J);
+      if ($$1 != null) {
+         String $$2 = $$1.d().a();
+         if (!azv.h($$2)) {
+            return xp.b($$2);
          }
       }
 
-      String $$3 = $$0.flatMap(ji::e).map($$0x -> $$0x.a().a()).orElse("empty");
-      return $$1 + $$3;
+      return super.o($$0);
    }
 
-   public List<bsc> a() {
-      return this.b;
-   }
-
-   public boolean b() {
-      if (!this.b.isEmpty()) {
-         for (bsc $$0 : this.b) {
-            if ($$0.c().a().a()) {
-               return true;
-            }
+   @Override
+   public void a(cuq $$0, cul.b $$1, List<xp> $$2, cwj $$3) {
+      cxz $$4 = $$0.a(km.J);
+      if ($$4 != null) {
+         if (!azv.h($$4.e())) {
+            $$2.add(xp.a("book.byAuthor", $$4.e()).a(n.h));
          }
+
+         $$2.add(xp.c("book.generation." + $$4.f()).a(n.h));
+      }
+   }
+
+   @Override
+   public bqw<cuq> a(dbz $$0, cmy $$1, bqu $$2) {
+      cuq $$3 = $$1.b($$2);
+      $$1.a($$3, $$2);
+      $$1.b(awk.c.b(this));
+      return bqw.a($$3, $$0.x_());
+   }
+
+   public static boolean a(cuq $$0, ep $$1, @Nullable cmy $$2) {
+      cxz $$3 = $$0.a(km.J);
+      if ($$3 != null && !$$3.g()) {
+         cxz $$4 = $$3.a($$1, $$2);
+         if ($$4 != null) {
+            $$0.b(km.J, $$4);
+            return true;
+         }
+
+         $$0.b(km.J, $$3.c());
       }
 
       return false;

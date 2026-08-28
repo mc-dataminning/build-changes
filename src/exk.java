@@ -1,7 +1,5 @@
+import java.util.function.Function;
+
 public interface exk<T> {
-   void a(exi<T> var1);
-
-   boolean a(iz var1, T var2);
-
-   int a();
+   vp b(long var1, Function<T, String> var3);
 }

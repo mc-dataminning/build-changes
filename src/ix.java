@@ -38,8 +38,8 @@ public record ix(iz b, iz c) implements Iterable<iz> {
       return $$0.u() >= this.b.u() && $$0.v() >= this.b.v() && $$0.w() >= this.b.w() && $$0.u() <= this.c.u() && $$0.v() <= this.c.v() && $$0.w() <= this.c.w();
    }
 
-   public evm b() {
-      return evm.a(this.b, this.c);
+   public evn b() {
+      return evn.a(this.b, this.c);
    }
 
    @Override

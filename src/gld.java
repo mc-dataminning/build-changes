@@ -1,11 +1,12 @@
-public class gld extends ghw<cnv> {
-   public static final alf a = new alf("textures/entity/projectiles/spectral_arrow.png");
+public class gld extends gke<cge, fwb<cge>> {
+   private static final alf a = new alf("textures/entity/snow_golem.png");
 
-   public gld(gix.a $$0) {
-      super($$0);
+   public gld(giy.a $$0) {
+      super($$0, new fwb<>($$0.a(fxa.bv)), 0.5F);
+      this.a(new gnq(this, $$0.c(), $$0.b()));
    }
 
-   public alf a(cnv $$0) {
+   public alf a(cge $$0) {
       return a;
    }
 }

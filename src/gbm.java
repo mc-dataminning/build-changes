@@ -1,11 +1,11 @@
-public class gbm extends gcc {
-   private final gbx a;
+public class gbm extends gcd {
+   private final gby a;
 
-   gbm(fxv $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, gbx $$7) {
+   gbm(fxw $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, gby $$7) {
       super($$0, $$1, $$2, $$3, $$4, $$5, $$6);
       this.B = 0.96F;
       this.a = $$7;
-      this.d(1.0F);
+      this.d(1.5F);
       this.n = false;
       this.b($$7);
    }
@@ -16,8 +16,8 @@ public class gbm extends gcc {
    }
 
    @Override
-   public gbg b() {
-      return gbg.c;
+   public gbh b() {
+      return gbh.c;
    }
 
    @Override
@@ -26,12 +26,14 @@ public class gbm extends gcc {
       this.b(this.a);
    }
 
-   public static record a(gbx a) implements gbf<lm> {
-      public gbc a(lm $$0, fxv $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+   public static record a(gby a) implements gbg<lk> {
+      public gbd a(lk $$0, fxw $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
          gbm $$8 = new gbm($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
          $$8.e(1.0F);
          $$8.b($$5, $$6, $$7);
-         $$8.a($$1.z.a(4) + 6);
+         $$8.A = $$0.b();
+         $$8.z = $$0.b();
+         $$8.a($$1.z.a(12) + 8);
          return $$8;
       }
    }

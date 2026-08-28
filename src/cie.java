@@ -1,20 +1,57 @@
-public abstract class cie extends cid {
-   public cie(cib $$0) {
-      super($$0);
+import javax.annotation.Nullable;
+
+public abstract class cie implements cim {
+   protected final cic a;
+
+   public cie(cic $$0) {
+      this.a = $$0;
    }
 
    @Override
    public boolean a() {
-      return true;
+      return false;
    }
 
    @Override
-   public float a(brn $$0, float $$1) {
-      if (!($$0.c() instanceof cnd) && !($$0.c() instanceof coh)) {
-         return super.a($$0, $$1);
-      } else {
-         $$0.c().g(1);
-         return 0.0F;
-      }
+   public void b() {
+   }
+
+   @Override
+   public void c() {
+   }
+
+   @Override
+   public void a(cib $$0, iz $$1, bro $$2, @Nullable cmy $$3) {
+   }
+
+   @Override
+   public void d() {
+   }
+
+   @Override
+   public void e() {
+   }
+
+   @Override
+   public float f() {
+      return 0.6F;
+   }
+
+   @Nullable
+   @Override
+   public evs g() {
+      return null;
+   }
+
+   @Override
+   public float a(bro $$0, float $$1) {
+      return $$1;
+   }
+
+   @Override
+   public float h() {
+      float $$0 = (float)this.a.ds().h() + 1.0F;
+      float $$1 = Math.min($$0, 40.0F);
+      return 0.7F / $$1 / $$0;
    }
 }

@@ -1,17 +1,16 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Maps;
-import java.util.Map;
+public class glq extends gke<cgh, fwj<cgh>> {
+   private static final alf a = new alf("textures/entity/turtle/big_sea_turtle.png");
 
-public class glq extends ghr<chj, ful<chj>> {
-   private static final Map<bta<?>, alf> a = Maps.newHashMap(
-      ImmutableMap.of(bta.bv, new alf("textures/entity/horse/horse_zombie.png"), bta.aO, new alf("textures/entity/horse/horse_skeleton.png"))
-   );
-
-   public glq(gix.a $$0, fwy $$1) {
-      super($$0, new ful<>($$0.a($$1)), 1.0F);
+   public glq(giy.a $$0) {
+      super($$0, new fwj<>($$0.a(fxa.bN)), 0.7F);
    }
 
-   public alf a(chj $$0) {
-      return a.get($$0.ak());
+   protected float a(cgh $$0) {
+      float $$1 = super.b($$0);
+      return $$0.p_() ? $$1 * 0.83F : $$1;
+   }
+
+   public alf b(cgh $$0) {
+      return a;
    }
 }

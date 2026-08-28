@@ -73,8 +73,8 @@ public class bfa extends DataFix {
 
    public TypeRewriteRule makeRule() {
       Type<?> $$0 = this.getInputSchema().getType(bgx.t);
-      OpticFinder<Pair<String, String>> $$1 = DSL.fieldFinder("id", DSL.named(bgx.D.typeName(), bii.a()));
-      OpticFinder<String> $$2 = DSL.fieldFinder("id", bii.a());
+      OpticFinder<Pair<String, String>> $$1 = DSL.fieldFinder("id", DSL.named(bgx.D.typeName(), bij.a()));
+      OpticFinder<String> $$2 = DSL.fieldFinder("id", bij.a());
       OpticFinder<?> $$3 = $$0.findField("tag");
       OpticFinder<?> $$4 = $$3.type().findField("EntityTag");
       return this.fixTypeEverywhereTyped("ItemInstanceSpawnEggFix" + this.getOutputSchema().getVersionKey(), $$0, $$4x -> {

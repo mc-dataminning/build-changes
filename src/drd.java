@@ -1,8 +1,6 @@
-import javax.annotation.ParametersAreNonnullByDefault;
-
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface drd {
+public interface drd {
+   static void a(rc<doy> $$0) {
+      dpa.a($$0, dpa.P);
+      dpa.a($$0, dpa.Q);
+   }
 }

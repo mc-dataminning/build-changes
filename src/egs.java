@@ -1,16 +1,13 @@
-import com.mojang.serialization.MapCodec;
+import com.mojang.datafixers.util.Either;
+import com.mojang.serialization.Codec;
 
-public interface egs<P extends egr> {
-   egs<egq> a = a("constant", egq.b);
-   egs<egu> b = a("uniform", egu.a);
-   egs<egp> c = a("biased_to_bottom", egp.a);
-   egs<egv> d = a("very_biased_to_bottom", egv.a);
-   egs<egt> e = a("trapezoid", egt.a);
-   egs<egw> f = a("weighted_list", egw.a);
+public abstract class egs {
+   private static final Codec<Either<dyp, egs>> a = Codec.either(dyp.a, lp.N.q().dispatch(egs::a, egt::codec));
+   public static final Codec<egs> c = a.xmap(
+      $$0 -> (egs)$$0.map(egr::a, $$0x -> $$0x), $$0 -> $$0.a() == egt.a ? Either.left(((egr)$$0).b()) : Either.right($$0)
+   );
 
-   MapCodec<P> codec();
+   public abstract int a(azh var1, dys var2);
 
-   private static <P extends egr> egs<P> a(String $$0, MapCodec<P> $$1) {
-      return jv.a(lp.N, $$0, () -> $$1);
-   }
+   public abstract egt<?> a();
 }

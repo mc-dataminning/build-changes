@@ -1,86 +1,86 @@
-import java.util.Set;
-import java.util.function.Predicate;
+public class bqn implements bqo {
+   private final bqo b;
+   private final bqo c;
 
-public interface bqn extends bql {
-   float o_ = 4.0F;
-
-   int b();
-
-   boolean c();
-
-   cup a(int var1);
-
-   cup a(int var1, int var2);
-
-   cup b(int var1);
-
-   void a(int var1, cup var2);
-
-   default int ah_() {
-      return 99;
+   public bqn(bqo $$0, bqo $$1) {
+      this.b = $$0;
+      this.c = $$1;
    }
 
-   default int e_(cup $$0) {
-      return Math.min(this.ah_(), $$0.j());
+   @Override
+   public int b() {
+      return this.b.b() + this.c.b();
    }
 
-   void e();
-
-   boolean a(cmx var1);
-
-   default void d_(cmx $$0) {
+   @Override
+   public boolean c() {
+      return this.b.c() && this.c.c();
    }
 
-   default void c(cmx $$0) {
+   public boolean a(bqo $$0) {
+      return this.b == $$0 || this.c == $$0;
    }
 
-   default boolean b(int $$0, cup $$1) {
-      return true;
+   @Override
+   public cuq a(int $$0) {
+      return $$0 >= this.b.b() ? this.c.a($$0 - this.b.b()) : this.b.a($$0);
    }
 
-   default boolean a(bqn $$0, int $$1, cup $$2) {
-      return true;
+   @Override
+   public cuq a(int $$0, int $$1) {
+      return $$0 >= this.b.b() ? this.c.a($$0 - this.b.b(), $$1) : this.b.a($$0, $$1);
    }
 
-   default int a_(cuk $$0) {
-      int $$1 = 0;
-
-      for (int $$2 = 0; $$2 < this.b(); $$2++) {
-         cup $$3 = this.a($$2);
-         if ($$3.g().equals($$0)) {
-            $$1 += $$3.I();
-         }
-      }
-
-      return $$1;
+   @Override
+   public cuq b(int $$0) {
+      return $$0 >= this.b.b() ? this.c.b($$0 - this.b.b()) : this.b.b($$0);
    }
 
-   default boolean a(Set<cuk> $$0) {
-      return this.a_($$1 -> !$$1.e() && $$0.contains($$1.g()));
-   }
-
-   default boolean a_(Predicate<cup> $$0) {
-      for (int $$1 = 0; $$1 < this.b(); $$1++) {
-         cup $$2 = this.a($$1);
-         if ($$0.test($$2)) {
-            return true;
-         }
-      }
-
-      return false;
-   }
-
-   static boolean a(dph $$0, cmx $$1) {
-      return a($$0, $$1, 4.0F);
-   }
-
-   static boolean a(dph $$0, cmx $$1, float $$2) {
-      dby $$3 = $$0.i();
-      iz $$4 = $$0.ay_();
-      if ($$3 == null) {
-         return false;
+   @Override
+   public void a(int $$0, cuq $$1) {
+      if ($$0 >= this.b.b()) {
+         this.c.a($$0 - this.b.b(), $$1);
       } else {
-         return $$3.c_($$4) != $$0 ? false : $$1.a($$4, (double)$$2);
+         this.b.a($$0, $$1);
       }
+   }
+
+   @Override
+   public int ah_() {
+      return this.b.ah_();
+   }
+
+   @Override
+   public void e() {
+      this.b.e();
+      this.c.e();
+   }
+
+   @Override
+   public boolean a(cmy $$0) {
+      return this.b.a($$0) && this.c.a($$0);
+   }
+
+   @Override
+   public void d_(cmy $$0) {
+      this.b.d_($$0);
+      this.c.d_($$0);
+   }
+
+   @Override
+   public void c(cmy $$0) {
+      this.b.c($$0);
+      this.c.c($$0);
+   }
+
+   @Override
+   public boolean b(int $$0, cuq $$1) {
+      return $$0 >= this.b.b() ? this.c.b($$0 - this.b.b(), $$1) : this.b.b($$0, $$1);
+   }
+
+   @Override
+   public void a() {
+      this.b.a();
+      this.c.a();
    }
 }

@@ -1,48 +1,26 @@
 import com.mojang.serialization.MapCodec;
 
-public class dll extends dez {
-   public static final MapCodec<dll> h = b(dll::new);
-   public static final dta<je.a> i = dss.I;
+public class dll extends dfj {
+   public static final MapCodec<dll> a = b(dll::new);
+   protected static final float b = 6.0F;
+   protected static final ewl c = dfa.a(2.0, 0.0, 2.0, 14.0, 13.0, 14.0);
 
    @Override
-   public MapCodec<? extends dll> a() {
-      return h;
+   public MapCodec<dll> a() {
+      return a;
    }
 
-   public dll(dsb.d $$0) {
+   protected dll(dsc.d $$0) {
       super($$0);
-      this.k(this.o().a(i, je.a.b));
    }
 
    @Override
-   protected dsc a(dsc $$0, dlm $$1) {
-      return b($$0, $$1);
-   }
-
-   public static dsc b(dsc $$0, dlm $$1) {
-      switch ($$1) {
-         case d:
-         case b:
-            switch ((je.a)$$0.c(i)) {
-               case a:
-                  return $$0.a(i, je.a.c);
-               case c:
-                  return $$0.a(i, je.a.a);
-               default:
-                  return $$0;
-            }
-         default:
-            return $$0;
-      }
+   protected ewl a(dsd $$0, dbf $$1, iz $$2, evx $$3) {
+      return c;
    }
 
    @Override
-   protected void a(dsd.a<dez, dsc> $$0) {
-      $$0.a(i);
-   }
-
-   @Override
-   public dsc a(cya $$0) {
-      return this.o().a(i, $$0.k().o());
+   protected boolean b(dsd $$0, dbf $$1, iz $$2) {
+      return $$0.a(awp.aL) || $$0.a(dfc.dX) || super.b($$0, $$1, $$2);
    }
 }

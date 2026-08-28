@@ -1,79 +1,117 @@
-public class gbh extends gcc {
-   private final gbx a;
+import com.mojang.blaze3d.systems.RenderSystem;
 
-   gbh(fxv $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, gbx $$7) {
-      super($$0, $$1, $$2, $$3, 0.0, 0.0, 0.0);
-      this.B = 0.96F;
-      this.a = $$7;
-      float $$8 = 2.5F;
-      this.j *= 0.1F;
-      this.k *= 0.1F;
-      this.l *= 0.1F;
-      this.j += $$4;
-      this.k += $$5;
-      this.l += $$6;
-      float $$9 = 1.0F - (float)(Math.random() * 0.3F);
-      this.v = $$9;
-      this.w = $$9;
-      this.x = $$9;
-      this.D *= 1.875F;
-      int $$10 = (int)(8.0 / (Math.random() * 0.8 + 0.3));
-      this.t = (int)Math.max((float)$$10 * 2.5F, 1.0F);
-      this.n = false;
-      this.b($$7);
-   }
-
-   @Override
-   public gbg b() {
-      return gbg.c;
-   }
-
-   @Override
-   public float b(float $$0) {
-      return this.D * ayz.a(((float)this.s + $$0) / (float)this.t * 32.0F, 0.0F, 1.0F);
-   }
-
-   @Override
-   public void a() {
-      super.a();
-      if (!this.o) {
-         this.b(this.a);
-         cmx $$0 = this.c.a(this.g, this.h, this.i, 2.0, false);
-         if ($$0 != null) {
-            double $$1 = $$0.dw();
-            if (this.h > $$1) {
-               this.h = this.h + ($$1 - this.h) * 0.2;
-               this.k = this.k + ($$0.ds().d - this.k) * 0.2;
-               this.c(this.g, this.h, this.i);
-            }
-         }
-      }
-   }
-
-   public static class a implements gbf<lm> {
-      private final gbx a;
-
-      public a(gbx $$0) {
-         this.a = $$0;
+public interface gbh {
+   gbh a = new gbh() {
+      @Override
+      public void a(ezu $$0, gpb $$1) {
+         RenderSystem.enableBlend();
+         RenderSystem.defaultBlendFunc();
+         RenderSystem.depthMask(true);
+         RenderSystem.setShaderTexture(0, goz.e);
+         $$0.a(fae.b.h, ezx.l);
       }
 
-      public gbc a(lm $$0, fxv $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new gbh($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
-      }
-   }
-
-   public static class b implements gbf<lm> {
-      private final gbx a;
-
-      public b(gbx $$0) {
-         this.a = $$0;
+      @Override
+      public void a(fab $$0) {
+         $$0.c();
       }
 
-      public gbc a(lm $$0, fxv $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         gbc $$8 = new gbh($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
-         $$8.a(200.0F, 50.0F, 120.0F);
-         $$8.e(0.4F);
-         return $$8;
+      @Override
+      public String toString() {
+         return "TERRAIN_SHEET";
       }
-   }
+   };
+   gbh b = new gbh() {
+      @Override
+      public void a(ezu $$0, gpb $$1) {
+         RenderSystem.disableBlend();
+         RenderSystem.depthMask(true);
+         RenderSystem.setShader(gdi::t);
+         RenderSystem.setShaderTexture(0, goz.f);
+         $$0.a(fae.b.h, ezx.l);
+      }
+
+      @Override
+      public void a(fab $$0) {
+         $$0.c();
+      }
+
+      @Override
+      public String toString() {
+         return "PARTICLE_SHEET_OPAQUE";
+      }
+   };
+   gbh c = new gbh() {
+      @Override
+      public void a(ezu $$0, gpb $$1) {
+         RenderSystem.depthMask(true);
+         RenderSystem.setShaderTexture(0, goz.f);
+         RenderSystem.enableBlend();
+         RenderSystem.defaultBlendFunc();
+         $$0.a(fae.b.h, ezx.l);
+      }
+
+      @Override
+      public void a(fab $$0) {
+         $$0.c();
+      }
+
+      @Override
+      public String toString() {
+         return "PARTICLE_SHEET_TRANSLUCENT";
+      }
+   };
+   gbh d = new gbh() {
+      @Override
+      public void a(ezu $$0, gpb $$1) {
+         RenderSystem.disableBlend();
+         RenderSystem.depthMask(true);
+         RenderSystem.setShaderTexture(0, goz.f);
+         $$0.a(fae.b.h, ezx.l);
+      }
+
+      @Override
+      public void a(fab $$0) {
+         $$0.c();
+      }
+
+      @Override
+      public String toString() {
+         return "PARTICLE_SHEET_LIT";
+      }
+   };
+   gbh e = new gbh() {
+      @Override
+      public void a(ezu $$0, gpb $$1) {
+         RenderSystem.depthMask(true);
+         RenderSystem.disableBlend();
+      }
+
+      @Override
+      public void a(fab $$0) {
+      }
+
+      @Override
+      public String toString() {
+         return "CUSTOM";
+      }
+   };
+   gbh f = new gbh() {
+      @Override
+      public void a(ezu $$0, gpb $$1) {
+      }
+
+      @Override
+      public void a(fab $$0) {
+      }
+
+      @Override
+      public String toString() {
+         return "NO_RENDER";
+      }
+   };
+
+   void a(ezu var1, gpb var2);
+
+   void a(fab var1);
 }

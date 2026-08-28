@@ -3,8 +3,8 @@ import javax.annotation.Nullable;
 
 public class ars implements aro {
    private final arq a;
-   private final Long2ObjectOpenHashMap<dux> b = new Long2ObjectOpenHashMap();
-   private dbf c = new dbf(0, 0);
+   private final Long2ObjectOpenHashMap<duy> b = new Long2ObjectOpenHashMap();
+   private dbg c = new dbg(0, 0);
    private final int d;
    private final int e;
    private final int f;
@@ -24,7 +24,7 @@ public class ars implements aro {
    public static ars c(int $$0) {
       arq $$1 = arq.c($$0);
       int $$2 = aro.a($$0);
-      int $$3 = $$0 + dux.b();
+      int $$3 = $$0 + duy.b();
       int $$4 = aro.a($$3);
       return new ars($$1, $$2, $$3, $$4);
    }
@@ -34,7 +34,7 @@ public class ars implements aro {
    }
 
    @Override
-   public void a(dbf $$0) {
+   public void a(dbg $$0) {
       if (this.g) {
          this.a.a($$0);
          this.c = $$0;
@@ -42,7 +42,7 @@ public class ars implements aro {
    }
 
    @Override
-   public void a(dbf $$0, @Nullable dux $$1) {
+   public void a(dbg $$0, @Nullable duy $$1) {
       if (this.g) {
          this.a.a($$0, $$1);
          if ($$1 == null) {
@@ -79,7 +79,7 @@ public class ars implements aro {
    }
 
    @Nullable
-   public dux a(int $$0, int $$1) {
-      return (dux)this.b.get(dbf.c($$0 + this.c.e - this.e, $$1 + this.c.f - this.e));
+   public duy a(int $$0, int $$1) {
+      return (duy)this.b.get(dbg.c($$0 + this.c.e - this.e, $$1 + this.c.f - this.e));
    }
 }

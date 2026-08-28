@@ -1,58 +1,21 @@
-import java.util.function.Function;
-import java.util.function.UnaryOperator;
-import javax.annotation.Nullable;
+import java.util.List;
 
-public class csd extends cse {
-   private final alf j;
-   @Nullable
-   private final alf k;
-   private final csd.a l;
+public class csd extends cul {
+   private final dfa a;
 
-   public csd(ji<csf> $$0, csd.a $$1, boolean $$2, cuk.a $$3) {
-      super($$0, cse.a.e, $$3);
-      this.l = $$1;
-      alf $$4 = $$1.c.apply($$0.e().orElseThrow().a());
-      this.j = $$4.e(".png");
-      if ($$2) {
-         this.k = $$4.e("_overlay.png");
-      } else {
-         this.k = null;
-      }
-   }
-
-   public alf b() {
-      return this.j;
-   }
-
-   @Nullable
-   public alf c() {
-      return this.k;
-   }
-
-   public csd.a d() {
-      return this.l;
+   public csd(dfa $$0, cul.a $$1) {
+      super($$1);
+      this.a = $$0;
    }
 
    @Override
-   public avz e() {
-      return this.l.d;
+   public String a() {
+      return this.a.g();
    }
 
    @Override
-   public boolean a(cup $$0) {
-      return false;
-   }
-
-   public static enum a {
-      a($$0 -> $$0.a((UnaryOperator<String>)($$0x -> "textures/entity/horse/armor/horse_armor_" + $$0x)), awa.nB),
-      b($$0 -> $$0.c("textures/entity/wolf/wolf_armor"), awa.CE);
-
-      final Function<alf, alf> c;
-      final avz d;
-
-      private a(final Function<alf, alf> $$0, final avz $$1) {
-         this.c = $$0;
-         this.d = $$1;
-      }
+   public void a(cuq $$0, cul.b $$1, List<xp> $$2, cwj $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      this.a.a($$0, $$1, $$2, $$3);
    }
 }

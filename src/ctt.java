@@ -1,59 +1,33 @@
-public class ctt extends cuk implements cvh {
-   public ctt(cuk.a $$0) {
+public class ctt extends cul implements cvi {
+   public ctt(cul.a $$0) {
       super($$0);
    }
 
    @Override
-   public bqu a(cyc $$0) {
-      dby $$1 = $$0.q();
-      iz $$2 = $$0.a();
-      dsc $$3 = $$1.a_($$2);
-      boolean $$4 = false;
-      if (!dfn.h($$3) && !dfo.g($$3) && !dfp.g($$3)) {
-         $$2 = $$2.a($$0.k());
-         if (dem.a($$1, $$2, $$0.g())) {
-            this.a($$1, $$2);
-            $$1.b($$2, dem.a($$1, $$2));
-            $$1.a($$0.o(), dwv.i, $$2);
-            $$4 = true;
-         }
-      } else {
-         this.a($$1, $$2);
-         $$1.b($$2, $$3.a(dss.r, Boolean.valueOf(true)));
-         $$1.a($$0.o(), dwv.c, $$2);
-         $$4 = true;
+   public bqw<cuq> a(dbz $$0, cmy $$1, bqu $$2) {
+      cuq $$3 = $$1.b($$2);
+      $$0.a(null, $$1.du(), $$1.dw(), $$1.dA(), awa.iG, awb.g, 0.5F, 0.4F / ($$0.E_().i() * 0.4F + 0.8F));
+      if (!$$0.B) {
+         cob $$4 = new cob($$0, $$1);
+         $$4.a($$3);
+         $$4.a($$1, $$1.dH(), $$1.dF(), -20.0F, 0.7F, 1.0F);
+         $$0.b($$4);
       }
 
-      if ($$4) {
-         $$0.n().h(1);
-         return bqu.a($$1.B);
-      } else {
-         return bqu.f;
-      }
-   }
-
-   private void a(dby $$0, iz $$1) {
-      azh $$2 = $$0.E_();
-      $$0.a(null, $$1, awa.iK, awb.e, 1.0F, ($$2.i() - $$2.i()) * 0.2F + 1.0F);
+      $$1.b(awk.c.b(this));
+      $$3.a(1, $$1);
+      return bqw.a($$3, $$0.x_());
    }
 
    @Override
-   public cnp a(dby $$0, js $$1, cup $$2, je $$3) {
-      azh $$4 = $$0.E_();
-      double $$5 = $$4.a((double)$$3.j(), 0.11485000000000001);
-      double $$6 = $$4.a((double)$$3.k(), 0.11485000000000001);
-      double $$7 = $$4.a((double)$$3.l(), 0.11485000000000001);
-      cnt $$8 = new cnt($$0, $$1.a(), $$1.b(), $$1.c(), $$5, $$6, $$7);
-      $$8.a($$2);
-      return $$8;
+   public cnq a(dbz $$0, js $$1, cuq $$2, je $$3) {
+      cob $$4 = new cob($$0, $$1.a(), $$1.b(), $$1.c());
+      $$4.a($$2);
+      return $$4;
    }
 
    @Override
-   public void a(cnp $$0, double $$1, double $$2, double $$3, float $$4, float $$5) {
-   }
-
-   @Override
-   public cvh.a c() {
-      return cvh.a.a().a(($$0, $$1) -> dhe.a($$0, 1.0, evr.b)).a(6.6666665F).b(1.0F).a(1018).a();
+   public cvi.a c() {
+      return cvi.a.a().a(cvi.a.a.c() * 0.5F).b(cvi.a.a.d() * 1.25F).a();
    }
 }

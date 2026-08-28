@@ -1,85 +1,35 @@
-import com.google.common.net.HostAndPort;
-import com.mojang.logging.LogUtils;
-import java.net.IDN;
-import org.slf4j.Logger;
+import java.net.InetSocketAddress;
 
-public final class fzm {
-   private static final Logger a = LogUtils.getLogger();
-   private final HostAndPort b;
-   private static final fzm c = new fzm(HostAndPort.fromParts("server.invalid", 25565));
+public interface fzm {
+   String a();
 
-   public fzm(String $$0, int $$1) {
-      this(HostAndPort.fromParts($$0, $$1));
-   }
+   String b();
 
-   private fzm(HostAndPort $$0) {
-      this.b = $$0;
-   }
+   int c();
 
-   public String a() {
-      try {
-         return IDN.toASCII(this.b.getHost());
-      } catch (IllegalArgumentException var2) {
-         return "";
-      }
-   }
+   InetSocketAddress d();
 
-   public int b() {
-      return this.b.getPort();
-   }
-
-   public static fzm a(String $$0) {
-      if ($$0 == null) {
-         return c;
-      } else {
-         try {
-            HostAndPort $$1 = HostAndPort.fromString($$0).withDefaultPort(25565);
-            return $$1.getHost().isEmpty() ? c : new fzm($$1);
-         } catch (IllegalArgumentException var2) {
-            a.info("Failed to parse URL {}", $$0, var2);
-            return c;
+   static fzm a(final InetSocketAddress $$0) {
+      return new fzm() {
+         @Override
+         public String a() {
+            return $$0.getAddress().getHostName();
          }
-      }
-   }
 
-   public static boolean b(String $$0) {
-      try {
-         HostAndPort $$1 = HostAndPort.fromString($$0);
-         String $$2 = $$1.getHost();
-         if (!$$2.isEmpty()) {
-            IDN.toASCII($$2);
-            return true;
+         @Override
+         public String b() {
+            return $$0.getAddress().getHostAddress();
          }
-      } catch (IllegalArgumentException var3) {
-      }
 
-      return false;
-   }
+         @Override
+         public int c() {
+            return $$0.getPort();
+         }
 
-   static int c(String $$0) {
-      try {
-         return Integer.parseInt($$0.trim());
-      } catch (Exception var2) {
-         return 25565;
-      }
-   }
-
-   @Override
-   public String toString() {
-      return this.b.toString();
-   }
-
-   @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else {
-         return $$0 instanceof fzm ? this.b.equals(((fzm)$$0).b) : false;
-      }
-   }
-
-   @Override
-   public int hashCode() {
-      return this.b.hashCode();
+         @Override
+         public InetSocketAddress d() {
+            return $$0;
+         }
+      };
    }
 }

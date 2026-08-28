@@ -1,71 +1,62 @@
-import javax.annotation.Nullable;
+public class cyc extends cyb {
+   private final je b;
 
-public class cyc {
-   @Nullable
-   private final cmx a;
-   private final bqt b;
-   private final evn c;
-   private final dby d;
-   private final cup e;
-
-   public cyc(cmx $$0, bqt $$1, evn $$2) {
-      this($$0.dP(), $$0, $$1, $$0.b($$1), $$2);
-   }
-
-   protected cyc(dby $$0, @Nullable cmx $$1, bqt $$2, cup $$3, evn $$4) {
-      this.a = $$1;
+   public cyc(dbz $$0, iz $$1, je $$2, cuq $$3, je $$4) {
+      super($$0, null, bqu.a, $$3, new evo(evs.c($$1), $$4, $$1, false));
       this.b = $$2;
-      this.c = $$4;
-      this.e = $$3;
-      this.d = $$0;
    }
 
-   protected final evn j() {
-      return this.c;
-   }
-
+   @Override
    public iz a() {
-      return this.c.a();
+      return this.j().a();
    }
 
-   public je k() {
-      return this.c.b();
+   @Override
+   public boolean b() {
+      return this.q().a_(this.j().a()).a(this);
    }
 
-   public evr l() {
-      return this.c.e();
+   @Override
+   public boolean c() {
+      return this.b();
    }
 
-   public boolean m() {
-      return this.c.d();
+   @Override
+   public je d() {
+      return je.a;
    }
 
-   public cup n() {
-      return this.e;
+   @Override
+   public je[] f() {
+      switch (this.b) {
+         case a:
+         default:
+            return new je[]{je.a, je.c, je.f, je.d, je.e, je.b};
+         case b:
+            return new je[]{je.a, je.b, je.c, je.f, je.d, je.e};
+         case c:
+            return new je[]{je.a, je.c, je.f, je.e, je.b, je.d};
+         case d:
+            return new je[]{je.a, je.d, je.f, je.e, je.b, je.c};
+         case e:
+            return new je[]{je.a, je.e, je.d, je.b, je.c, je.f};
+         case f:
+            return new je[]{je.a, je.f, je.d, je.b, je.c, je.e};
+      }
    }
 
-   @Nullable
-   public cmx o() {
-      return this.a;
-   }
-
-   public bqt p() {
-      return this.b;
-   }
-
-   public dby q() {
-      return this.d;
-   }
-
+   @Override
    public je g() {
-      return this.a == null ? je.c : this.a.cH();
+      return this.b.o() == je.a.b ? je.c : this.b;
    }
 
+   @Override
    public boolean h() {
-      return this.a != null && this.a.fR();
+      return false;
    }
 
+   @Override
    public float i() {
-      return this.a == null ? 0.0F : this.a.dF();
+      return (float)(this.b.e() * 90);
    }
 }

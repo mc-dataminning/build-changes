@@ -1,15 +1,10 @@
-public class czv extends daa {
-   public czv(daa.b $$0) {
+public class czv extends dab {
+   public czv(dab.b $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a() {
-      return true;
-   }
-
-   @Override
-   public boolean b() {
-      return true;
+   public boolean a(dab $$0) {
+      return super.a($$0) && $$0 != dae.I;
    }
 }

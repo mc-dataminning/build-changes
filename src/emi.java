@@ -1,18 +1,15 @@
 import java.util.List;
+import javax.annotation.Nullable;
 
-public class emi {
-   private final List<emh> a;
-
-   public emi(List<emh> $$0) {
-      this.a = $$0;
+public abstract class emi {
+   @Nullable
+   public eml.c a(dcc $$0, iz $$1, iz $$2, eml.c $$3, eml.c $$4, emh $$5) {
+      return $$4;
    }
 
-   public List<emh> a() {
-      return this.a;
-   }
+   protected abstract emk<?> a();
 
-   @Override
-   public String toString() {
-      return "ProcessorList[" + this.a + "]";
+   public List<eml.c> a(dco $$0, iz $$1, iz $$2, List<eml.c> $$3, List<eml.c> $$4, emh $$5) {
+      return $$4;
    }
 }

@@ -1,221 +1,174 @@
+import com.google.common.annotations.VisibleForTesting;
 import javax.annotation.Nullable;
 
-public class dqj extends dph implements bql, bqy {
-   public static final int a = 0;
-   public static final int b = 1;
-   public static final int c = 0;
-   public static final int d = 1;
-   private final bqn e = new bqn() {
-      @Override
-      public int b() {
-         return 1;
-      }
+public class dqj extends dpi implements bqm, exd.a {
+   private static final int b = 20;
+   private cuq c = cuq.l;
+   private int d;
+   private long e;
+   private long f;
+   private boolean g;
 
-      @Override
-      public boolean c() {
-         return dqj.this.g.e();
-      }
-
-      @Override
-      public cup a(int $$0) {
-         return $$0 == 0 ? dqj.this.g : cup.l;
-      }
-
-      @Override
-      public cup a(int $$0, int $$1) {
-         if ($$0 == 0) {
-            cup $$2 = dqj.this.g.a($$1);
-            if (dqj.this.g.e()) {
-               dqj.this.k();
-            }
-
-            return $$2;
-         } else {
-            return cup.l;
-         }
-      }
-
-      @Override
-      public cup b(int $$0) {
-         if ($$0 == 0) {
-            cup $$1 = dqj.this.g;
-            dqj.this.g = cup.l;
-            dqj.this.k();
-            return $$1;
-         } else {
-            return cup.l;
-         }
-      }
-
-      @Override
-      public void a(int $$0, cup $$1) {
-      }
-
-      @Override
-      public int ah_() {
-         return 1;
-      }
-
-      @Override
-      public void e() {
-         dqj.this.e();
-      }
-
-      @Override
-      public boolean a(cmx $$0) {
-         return bqn.a(dqj.this, $$0) && dqj.this.c();
-      }
-
-      @Override
-      public boolean b(int $$0, cup $$1) {
-         return false;
-      }
-
-      @Override
-      public void a() {
-      }
-   };
-   private final cqe f = new cqe() {
-      @Override
-      public int a(int $$0) {
-         return $$0 == 0 ? dqj.this.h : 0;
-      }
-
-      @Override
-      public void a(int $$0, int $$1) {
-         if ($$0 == 0) {
-            dqj.this.a($$1);
-         }
-      }
-
-      @Override
-      public int a() {
-         return 1;
-      }
-   };
-   cup g = cup.l;
-   int h;
-   private int i;
-
-   public dqj(iz $$0, dsc $$1) {
-      super(dpj.D, $$0, $$1);
-   }
-
-   public cup b() {
-      return this.g;
-   }
-
-   public boolean c() {
-      return this.g.a(cus.tZ) || this.g.a(cus.ua);
-   }
-
-   public void b(cup $$0) {
-      this.a($$0, null);
-   }
-
-   void k() {
-      this.h = 0;
-      this.i = 0;
-      djk.a(null, this.i(), this.ay_(), this.n(), false);
-   }
-
-   public void a(cup $$0, @Nullable cmx $$1) {
-      this.g = this.b($$0, $$1);
-      this.h = 0;
-      this.i = c(this.g);
-      this.e();
-   }
-
-   void a(int $$0) {
-      int $$1 = ayz.a($$0, 0, this.i - 1);
-      if ($$1 != this.h) {
-         this.h = $$1;
-         this.e();
-         djk.a(this.i(), this.ay_(), this.n());
-      }
-   }
-
-   public int f() {
-      return this.h;
-   }
-
-   public int j() {
-      float $$0 = this.i > 1 ? (float)this.f() / ((float)this.i - 1.0F) : 1.0F;
-      return ayz.d($$0 * 14.0F) + (this.c() ? 1 : 0);
-   }
-
-   private cup b(cup $$0, @Nullable cmx $$1) {
-      if (this.n instanceof arf && $$0.a(cus.ua)) {
-         cwn.a($$0, this.a($$1), $$1);
-      }
-
-      return $$0;
-   }
-
-   private ep a(@Nullable cmx $$0) {
-      String $$1;
-      xp $$2;
-      if ($$0 == null) {
-         $$1 = "Lectern";
-         $$2 = xp.b("Lectern");
-      } else {
-         $$1 = $$0.af().getString();
-         $$2 = $$0.O_();
-      }
-
-      evr $$5 = evr.b(this.o);
-      return new ep(eo.a, $$5, evq.a, (arf)this.n, 2, $$1, $$2, this.n.o(), $$0);
-   }
-
-   @Override
-   public boolean q() {
-      return true;
+   public dqj(iz $$0, dsd $$1) {
+      super(dpk.e, $$0, $$1);
    }
 
    @Override
    protected void a(us $$0, jk.a $$1) {
       super.a($$0, $$1);
-      if ($$0.b("Book", 10)) {
-         this.g = this.b(cup.a($$1, (vp)$$0.p("Book")).orElse(cup.l), null);
+      if ($$0.b("RecordItem", 10)) {
+         this.c = cuq.a($$1, (vp)$$0.p("RecordItem")).orElse(cuq.l);
       } else {
-         this.g = cup.l;
+         this.c = cuq.l;
       }
 
-      this.i = c(this.g);
-      this.h = ayz.a($$0.h("Page"), 0, this.i - 1);
+      this.g = $$0.q("IsPlaying");
+      this.f = $$0.i("RecordStartTick");
+      this.e = $$0.i("TickCount");
    }
 
    @Override
    protected void b(us $$0, jk.a $$1) {
       super.b($$0, $$1);
-      if (!this.b().e()) {
-         $$0.a("Book", this.b().a($$1));
-         $$0.a("Page", this.h);
+      if (!this.f().e()) {
+         $$0.a("RecordItem", this.f().a($$1));
+      }
+
+      $$0.a("IsPlaying", this.g);
+      $$0.a("RecordStartTick", this.f);
+      $$0.a("TickCount", this.e);
+   }
+
+   public boolean j() {
+      return !this.f().e() && this.g;
+   }
+
+   private void a(@Nullable bsv $$0, boolean $$1) {
+      if (this.n.a_(this.ay_()) == this.n()) {
+         this.n.a(this.ay_(), this.n().a(djd.b, Boolean.valueOf($$1)), 2);
+         this.n.a(dww.c, this.ay_(), dww.a.a($$0, this.n()));
+      }
+   }
+
+   @VisibleForTesting
+   public void k() {
+      this.f = this.e;
+      this.g = true;
+      this.n.a(this.ay_(), this.n().b());
+      this.n.a(null, 1010, this.ay_(), cul.a(this.f().g()));
+      this.e();
+   }
+
+   private void u() {
+      this.g = false;
+      this.n.a(dww.F, this.ay_(), dww.a.a(this.n()));
+      this.n.a(this.ay_(), this.n().b());
+      this.n.c(1011, this.ay_(), 0);
+      this.e();
+   }
+
+   private void b(dbz $$0, iz $$1, dsd $$2) {
+      this.d++;
+      if (this.j() && this.f().g() instanceof cvl $$3) {
+         if (this.a($$3)) {
+            this.u();
+         } else if (this.w()) {
+            this.d = 0;
+            $$0.a(dww.E, $$1, dww.a.a($$2));
+            this.a($$0, $$1);
+         }
+      }
+
+      this.e++;
+   }
+
+   private boolean a(cvl $$0) {
+      return this.e >= this.f + (long)$$0.m() + 20L;
+   }
+
+   private boolean w() {
+      return this.d >= 20;
+   }
+
+   @Override
+   public cuq f() {
+      return this.c;
+   }
+
+   @Override
+   public cuq c(int $$0) {
+      cuq $$1 = this.c;
+      this.c = cuq.l;
+      if (!$$1.e()) {
+         this.a(null, false);
+         this.u();
+      }
+
+      return $$1;
+   }
+
+   @Override
+   public void b(cuq $$0) {
+      if ($$0.a(awy.aR) && this.n != null) {
+         this.c = $$0;
+         this.a(null, true);
+         this.k();
+      } else if ($$0.e()) {
+         this.c(1);
       }
    }
 
    @Override
-   public void a() {
-      this.b(cup.l);
+   public int ah_() {
+      return 1;
    }
 
    @Override
-   public cpu createMenu(int $$0, cmw $$1, cmx $$2) {
-      return new cqy($$0, this.e, this.f);
+   public dpi v() {
+      return this;
    }
 
    @Override
-   public xp O_() {
-      return xp.c("container.lectern");
+   public boolean b(int $$0, cuq $$1) {
+      return $$1.a(awy.aR) && this.a($$0).e();
    }
 
-   private static int c(cup $$0) {
-      cxy $$1 = $$0.a(km.J);
-      if ($$1 != null) {
-         return $$1.a().size();
-      } else {
-         cxx $$2 = $$0.a(km.I);
-         return $$2 != null ? $$2.a().size() : 0;
+   @Override
+   public boolean a(bqo $$0, int $$1, cuq $$2) {
+      return $$0.a_(cuq::e);
+   }
+
+   private void a(dbz $$0, iz $$1) {
+      if ($$0 instanceof arf $$2) {
+         evs $$3 = evs.c($$1).b(0.0, 1.2F, 0.0);
+         float $$4 = (float)$$0.E_().a(4) / 24.0F;
+         $$2.a(li.aa, $$3.a(), $$3.b(), $$3.c(), 0, (double)$$4, 0.0, 0.0, 1.0);
       }
+   }
+
+   public void l() {
+      if (this.n != null && !this.n.B) {
+         iz $$0 = this.ay_();
+         cuq $$1 = this.f();
+         if (!$$1.e()) {
+            this.h();
+            evs $$2 = evs.a($$0, 0.5, 1.01, 0.5).a(this.n.z, 0.7F);
+            cuq $$3 = $$1.s();
+            cji $$4 = new cji(this.n, $$2.a(), $$2.b(), $$2.c(), $$3);
+            $$4.v();
+            this.n.b($$4);
+         }
+      }
+   }
+
+   public static void a(dbz $$0, iz $$1, dsd $$2, dqj $$3) {
+      $$3.b($$0, $$1, $$2);
+   }
+
+   @VisibleForTesting
+   public void c(cuq $$0) {
+      this.c = $$0;
+      this.n.a(this.ay_(), this.n().b());
+      this.e();
    }
 }

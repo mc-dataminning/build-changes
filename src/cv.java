@@ -3,7 +3,7 @@ import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Optional;
 import java.util.function.Predicate;
 
-public record cv(Optional<bc<arw<xp>, cv.a>> c, Optional<String> d, Optional<String> e, de.d f, Optional<Boolean> g) implements ds<cxy> {
+public record cv(Optional<bc<arw<xp>, cv.a>> c, Optional<String> d, Optional<String> e, de.d f, Optional<Boolean> g) implements ds<cxz> {
    public static final Codec<cv> a = RecordCodecBuilder.create(
       $$0 -> $$0.group(
                bc.a(cv.a.a).optionalFieldOf("pages").forGetter(cv::b),
@@ -16,11 +16,11 @@ public record cv(Optional<bc<arw<xp>, cv.a>> c, Optional<String> d, Optional<Str
    );
 
    @Override
-   public kl<cxy> a() {
+   public kl<cxz> a() {
       return km.J;
    }
 
-   public boolean a(cup $$0, cxy $$1) {
+   public boolean a(cuq $$0, cxz $$1) {
       if (this.d.isPresent() && !this.d.get().equals($$1.e())) {
          return false;
       } else if (this.e.isPresent() && !this.e.get().equals($$1.d().a())) {

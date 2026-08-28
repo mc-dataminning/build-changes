@@ -21,8 +21,8 @@ public class app {
       );
    }
 
-   private static int a(ep $$0, Collection<? extends cmx> $$1, int $$2) {
-      for (cmx $$3 : $$1) {
+   private static int a(ep $$0, Collection<? extends cmy> $$1, int $$2) {
+      for (cmy $$3 : $$1) {
          $$3.aa().ifPresent($$1x -> $$1x.a($$2));
       }
 
@@ -35,9 +35,9 @@ public class app {
       return $$1.size();
    }
 
-   private static int a(ep $$0, Collection<? extends cmx> $$1) {
-      for (cmx $$2 : $$1) {
-         $$2.aa().ifPresent(cmd::b);
+   private static int a(ep $$0, Collection<? extends cmy> $$1) {
+      for (cmy $$2 : $$1) {
+         $$2.aa().ifPresent(cme::b);
       }
 
       if ($$1.size() == 1) {

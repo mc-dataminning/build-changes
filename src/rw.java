@@ -1,6 +1,6 @@
 public interface rw {
-   static void a(rc<eiq> $$0) {
-      jj<eik> $$1 = $$0.a(lq.aJ);
-      $$0.a(eid.t, new eiq($$1.b(eie.H), new ejf(34, 12, ejg.a, 94251327)));
+   static void a(rc<eir> $$0) {
+      jj<eil> $$1 = $$0.a(lq.aJ);
+      $$0.a(eie.t, new eir($$1.b(eif.H), new ejg(34, 12, ejh.a, 94251327)));
    }
 }

@@ -17,14 +17,14 @@ public class apx implements apu {
             return $$0.then(eq.a("storage").then($$1.apply(eq.a($$0, fq.a()).suggests(apx.b))));
          }
       };
-   private final epn c;
+   private final epo c;
    private final alf d;
 
-   static epn a(CommandContext<ep> $$0) {
+   static epo a(CommandContext<ep> $$0) {
       return ((ep)$$0.getSource()).l().aL();
    }
 
-   apx(epn $$0, alf $$1) {
+   apx(epo $$0, alf $$1) {
       this.c = $$0;
       this.d = $$1;
    }

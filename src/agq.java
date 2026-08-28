@@ -2,10 +2,10 @@ import java.util.Collection;
 import java.util.List;
 
 public class agq implements zw<aci> {
-   public static final zn<xa, agq> a = zn.a(cyx.a.a(zl.a()), $$0 -> $$0.b, agq::new);
-   private final List<cyx<?>> b;
+   public static final zn<xa, agq> a = zn.a(cyy.a.a(zl.a()), $$0 -> $$0.b, agq::new);
+   private final List<cyy<?>> b;
 
-   public agq(Collection<cyx<?>> $$0) {
+   public agq(Collection<cyy<?>> $$0) {
       this.b = List.copyOf($$0);
    }
 
@@ -18,7 +18,7 @@ public class agq implements zw<aci> {
       $$0.a(this);
    }
 
-   public List<cyx<?>> b() {
+   public List<cyy<?>> b() {
       return this.b;
    }
 }

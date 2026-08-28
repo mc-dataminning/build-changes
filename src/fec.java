@@ -1,69 +1,34 @@
-import com.mojang.logging.LogUtils;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+public class fec extends feg {
+   private static final xp b = xp.c("mco.connect.connecting");
+   private final gve c;
+   private final fbg d;
+   private final fbh e;
 
-public class fec extends fef {
-   private static final Logger b = LogUtils.getLogger();
-   private static final xp c = xp.c("mco.snapshot.creating");
-   private final long d;
-   private final fdy e;
-   private final String f;
-   private final String g;
-   private final faj h;
-   @Nullable
-   private feh i;
-   @Nullable
-   private fei j;
-
-   public fec(faj $$0, long $$1, fdy $$2, String $$3, String $$4) {
+   public fec(fne $$0, fbg $$1, fbh $$2) {
       this.d = $$1;
       this.e = $$2;
-      this.f = $$3;
-      this.g = $$4;
-      this.h = $$0;
+      this.c = new gve($$0);
    }
 
    @Override
    public void run() {
-      fao $$0 = fao.a();
-
-      try {
-         fbf $$1 = $$0.a(Long.valueOf(this.d));
-         this.i = new feh($$1.a, this.f, this.g);
-         this.j = new fei(this.e, $$1.a, fdd.a, () -> fff.Q().execute(() -> faj.a($$1, this.h, true)));
-         if (this.d()) {
-            return;
-         }
-
-         this.i.run();
-         if (this.d()) {
-            return;
-         }
-
-         this.j.run();
-      } catch (fcb var3) {
-         b.error("Couldn't create snapshot world", var3);
-         this.a(var3);
-      } catch (Exception var4) {
-         b.error("Couldn't create snapshot world", var4);
-         this.a(var4);
-      }
-   }
-
-   @Override
-   public xp a() {
-      return c;
+      this.c.a(this.d, fzn.a(this.e.a));
    }
 
    @Override
    public void b() {
       super.b();
-      if (this.i != null) {
-         this.i.b();
-      }
+      this.c.a();
+      ffg.Q().ae().i();
+   }
 
-      if (this.j != null) {
-         this.j.b();
-      }
+   @Override
+   public void c() {
+      this.c.b();
+   }
+
+   @Override
+   public xp a() {
+      return b;
    }
 }

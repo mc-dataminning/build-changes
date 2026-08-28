@@ -1,82 +1,94 @@
-public class fol extends foa {
-   private final dpr s;
-   private fhl<dpr.a> u;
-   private fhl<Boolean> v;
-   private fhl<Boolean> w;
-   private dpr.a x = dpr.a.c;
-   private boolean y;
-   private boolean z;
+import javax.annotation.Nullable;
 
-   public fol(dpr $$0) {
-      this.s = $$0;
+public class fol extends foc<cqb> {
+   private static final alf D = new alf("container/cartography_table/error");
+   private static final alf E = new alf("container/cartography_table/scaled_map");
+   private static final alf F = new alf("container/cartography_table/duplicated_map");
+   private static final alf G = new alf("container/cartography_table/map");
+   private static final alf H = new alf("container/cartography_table/locked");
+   private static final alf I = new alf("textures/gui/container/cartography_table.png");
+
+   public fol(cqb $$0, cmx $$1, xp $$2) {
+      super($$0, $$1, $$2);
+      this.s -= 2;
    }
 
    @Override
-   daz m() {
-      return this.s.b();
+   public void a(fgs $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      this.a($$0, $$1, $$2);
    }
 
    @Override
-   int E() {
-      return 135;
+   protected void a(fgs $$0, float $$1, int $$2, int $$3) {
+      int $$4 = this.z;
+      int $$5 = this.A;
+      $$0.a(I, $$4, $$5, 0, 0, this.c, this.d);
+      cuq $$6 = this.w.b(1).g();
+      boolean $$7 = $$6.a(cut.uj);
+      boolean $$8 = $$6.a(cut.qO);
+      boolean $$9 = $$6.a(cut.fT);
+      cuq $$10 = this.w.b(0).g();
+      epj $$11 = $$10.a(km.B);
+      boolean $$12 = false;
+      epl $$13;
+      if ($$11 != null) {
+         $$13 = cuy.a($$11, this.m.r);
+         if ($$13 != null) {
+            if ($$13.h) {
+               $$12 = true;
+               if ($$8 || $$9) {
+                  $$0.a(D, $$4 + 35, $$5 + 31, 28, 21);
+               }
+            }
+
+            if ($$8 && $$13.f >= 4) {
+               $$12 = true;
+               $$0.a(D, $$4 + 35, $$5 + 31, 28, 21);
+            }
+         }
+      } else {
+         $$13 = null;
+      }
+
+      this.a($$0, $$11, $$13, $$7, $$8, $$9, $$12);
    }
 
-   @Override
-   protected void aM_() {
-      super.aM_();
-      this.u = this.c(fhl.<dpr.a>a($$0 -> {
-         return switch ($$0) {
-            case a -> xp.c("advMode.mode.sequence");
-            case b -> xp.c("advMode.mode.auto");
-            case c -> xp.c("advMode.mode.redstone");
-         };
-      }).a(dpr.a.values()).a().a(this.x).a(this.n / 2 - 50 - 100 - 4, 165, 100, 20, xp.c("advMode.mode"), ($$0, $$1) -> this.x = $$1));
-      this.v = this.c(
-         fhl.a(xp.c("advMode.mode.conditional"), xp.c("advMode.mode.unconditional"))
-            .a()
-            .a(this.y)
-            .a(this.n / 2 - 50, 165, 100, 20, xp.c("advMode.type"), ($$0, $$1) -> this.y = $$1)
-      );
-      this.w = this.c(
-         fhl.a(xp.c("advMode.mode.autoexec.bat"), xp.c("advMode.mode.redstoneTriggered"))
-            .a()
-            .a(this.z)
-            .a(this.n / 2 + 50 + 4, 165, 100, 20, xp.c("advMode.triggering"), ($$0, $$1) -> this.z = $$1)
-      );
-      this.e(false);
+   private void a(fgs $$0, @Nullable epj $$1, @Nullable epl $$2, boolean $$3, boolean $$4, boolean $$5, boolean $$6) {
+      int $$7 = this.z;
+      int $$8 = this.A;
+      if ($$4 && !$$6) {
+         $$0.a(E, $$7 + 67, $$8 + 13, 66, 66);
+         this.a($$0, $$1, $$2, $$7 + 85, $$8 + 31, 0.226F);
+      } else if ($$3) {
+         $$0.a(F, $$7 + 67 + 16, $$8 + 13, 50, 66);
+         this.a($$0, $$1, $$2, $$7 + 86, $$8 + 16, 0.34F);
+         $$0.c().a();
+         $$0.c().a(0.0F, 0.0F, 1.0F);
+         $$0.a(F, $$7 + 67, $$8 + 13 + 16, 50, 66);
+         this.a($$0, $$1, $$2, $$7 + 70, $$8 + 32, 0.34F);
+         $$0.c().b();
+      } else if ($$5) {
+         $$0.a(G, $$7 + 67, $$8 + 13, 66, 66);
+         this.a($$0, $$1, $$2, $$7 + 71, $$8 + 17, 0.45F);
+         $$0.c().a();
+         $$0.c().a(0.0F, 0.0F, 1.0F);
+         $$0.a(H, $$7 + 118, $$8 + 60, 10, 14);
+         $$0.c().b();
+      } else {
+         $$0.a(G, $$7 + 67, $$8 + 13, 66, 66);
+         this.a($$0, $$1, $$2, $$7 + 71, $$8 + 17, 0.45F);
+      }
    }
 
-   private void e(boolean $$0) {
-      this.c.j = $$0;
-      this.r.j = $$0;
-      this.u.j = $$0;
-      this.v.j = $$0;
-      this.w.j = $$0;
-   }
-
-   public void I() {
-      daz $$0 = this.s.b();
-      this.a.a($$0.m());
-      boolean $$1 = $$0.p();
-      this.x = this.s.l();
-      this.y = this.s.u();
-      this.z = this.s.d();
-      this.r.a($$1);
-      this.u.a(this.x);
-      this.v.a(this.y);
-      this.w.a(this.z);
-      this.c($$1);
-      this.e(true);
-   }
-
-   @Override
-   public void a(fff $$0, int $$1, int $$2) {
-      super.a($$0, $$1, $$2);
-      this.e(true);
-   }
-
-   @Override
-   protected void a(daz $$0) {
-      this.m.L().b(new aik(iz.a($$0.g()), this.a.a(), this.x, $$0.p(), this.y, this.z));
+   private void a(fgs $$0, @Nullable epj $$1, @Nullable epl $$2, int $$3, int $$4, float $$5) {
+      if ($$1 != null && $$2 != null) {
+         $$0.c().a();
+         $$0.c().a((float)$$3, (float)$$4, 1.0F);
+         $$0.c().b($$5, $$5, 1.0F);
+         this.m.j.i().a($$0.c(), $$0.d(), $$1, $$2, true, 15728880);
+         $$0.e();
+         $$0.c().b();
+      }
    }
 }

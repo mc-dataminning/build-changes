@@ -1,16 +1,22 @@
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.function.Function;
 
-abstract class dzd implements dzb {
-   protected final List<dzb> e;
+public interface dzd<P extends dzc> {
+   dzd<dzi> a = a("matching_blocks", dzi.a);
+   dzd<dzh> b = a("matching_block_tag", dzh.e);
+   dzd<dzj> c = a("matching_fluids", dzj.a);
+   dzd<dzf> d = a("has_sturdy_face", dzf.a);
+   dzd<dzm> e = a("solid", dzm.a);
+   dzd<dzl> f = a("replaceable", dzl.a);
+   dzd<dzp> g = a("would_survive", dzp.a);
+   dzd<dzg> h = a("inside_world_bounds", dzg.a);
+   dzd<dzb> i = a("any_of", dzb.a);
+   dzd<dza> j = a("all_of", dza.a);
+   dzd<dzk> k = a("not", dzk.a);
+   dzd<dzo> l = a("true", dzo.e);
 
-   protected dzd(List<dzb> $$0) {
-      this.e = $$0;
-   }
+   MapCodec<P> codec();
 
-   public static <T extends dzd> MapCodec<T> a(Function<List<dzb>, T> $$0) {
-      return RecordCodecBuilder.mapCodec($$1 -> $$1.group(dzb.b.listOf().fieldOf("predicates").forGetter($$0xx -> $$0xx.e)).apply($$1, $$0));
+   private static <P extends dzc> dzd<P> a(String $$0, MapCodec<P> $$1) {
+      return jv.a(lp.O, $$0, () -> $$1);
    }
 }

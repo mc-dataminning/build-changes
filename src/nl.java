@@ -5,17 +5,17 @@ public class nl {
    public static mt a(ly $$0, CompletableFuture<jk.a> $$1) {
       return new mt(
          $$0,
-         eqe.a(),
+         eqf.a(),
          List.of(
-            new mt.a(nj::new, etd.f),
-            new mt.a(ng::new, etd.c),
-            new mt.a(nh::new, etd.g),
-            new mt.a(ni::new, etd.h),
-            new mt.a(nf::new, etd.r),
-            new mt.a(nm::new, etd.k),
-            new mt.a(nk::new, etd.j),
-            new mt.a(ne::new, etd.i),
-            new mt.a(nn::new, etd.s)
+            new mt.a(nj::new, ete.f),
+            new mt.a(ng::new, ete.c),
+            new mt.a(nh::new, ete.g),
+            new mt.a(ni::new, ete.h),
+            new mt.a(nf::new, ete.r),
+            new mt.a(nm::new, ete.k),
+            new mt.a(nk::new, ete.j),
+            new mt.a(ne::new, ete.i),
+            new mt.a(nn::new, ete.s)
          ),
          $$1
       );

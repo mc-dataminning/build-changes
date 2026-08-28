@@ -37,20 +37,20 @@ public class apf {
       );
    }
 
-   private static Collection<String> a(Collection<? extends bsu> $$0) {
+   private static Collection<String> a(Collection<? extends bsv> $$0) {
       Set<String> $$1 = Sets.newHashSet();
 
-      for (bsu $$2 : $$0) {
+      for (bsv $$2 : $$0) {
          $$1.addAll($$2.am());
       }
 
       return $$1;
    }
 
-   private static int a(ep $$0, Collection<? extends bsu> $$1, String $$2) throws CommandSyntaxException {
+   private static int a(ep $$0, Collection<? extends bsv> $$1, String $$2) throws CommandSyntaxException {
       int $$3 = 0;
 
-      for (bsu $$4 : $$1) {
+      for (bsv $$4 : $$1) {
          if ($$4.a($$2)) {
             $$3++;
          }
@@ -69,10 +69,10 @@ public class apf {
       }
    }
 
-   private static int b(ep $$0, Collection<? extends bsu> $$1, String $$2) throws CommandSyntaxException {
+   private static int b(ep $$0, Collection<? extends bsv> $$1, String $$2) throws CommandSyntaxException {
       int $$3 = 0;
 
-      for (bsu $$4 : $$1) {
+      for (bsv $$4 : $$1) {
          if ($$4.b($$2)) {
             $$3++;
          }
@@ -91,15 +91,15 @@ public class apf {
       }
    }
 
-   private static int a(ep $$0, Collection<? extends bsu> $$1) {
+   private static int a(ep $$0, Collection<? extends bsv> $$1) {
       Set<String> $$2 = Sets.newHashSet();
 
-      for (bsu $$3 : $$1) {
+      for (bsv $$3 : $$1) {
          $$2.addAll($$3.am());
       }
 
       if ($$1.size() == 1) {
-         bsu $$4 = $$1.iterator().next();
+         bsv $$4 = $$1.iterator().next();
          if ($$2.isEmpty()) {
             $$0.a(() -> xp.a("commands.tag.list.single.empty", $$4.O_()), false);
          } else {

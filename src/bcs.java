@@ -287,7 +287,7 @@ public class bcs extends DataFix {
       Function<Typed<?>, Typed<?>> $$2 = $$0x -> this.a($$0x, "DisplayTile", "DisplayData", "DisplayState");
       Function<Typed<?>, Typed<?>> $$3 = $$0x -> this.a($$0x, "inTile", "inData", "inBlockState");
       Type<Pair<Either<Pair<String, Either<Integer, String>>, Unit>, Dynamic<?>>> $$4 = DSL.and(
-         DSL.optional(DSL.field("inTile", DSL.named(bgx.C.typeName(), DSL.or(DSL.intType(), bii.a())))), DSL.remainderType()
+         DSL.optional(DSL.field("inTile", DSL.named(bgx.C.typeName(), DSL.or(DSL.intType(), bij.a())))), DSL.remainderType()
       );
       Function<Typed<?>, Typed<?>> $$5 = $$1x -> $$1x.update($$4.finder(), DSL.remainderType(), Pair::getSecond);
       return this.fixTypeEverywhereTyped("EntityBlockStateFix", $$0.getType(bgx.B), $$1.getType(bgx.B), $$3x -> {
@@ -315,7 +315,7 @@ public class bcs extends DataFix {
 
    private Typed<?> a(Typed<?> $$0) {
       Type<Either<Pair<String, Either<Integer, String>>, Unit>> $$1 = DSL.optional(
-         DSL.field("Block", DSL.named(bgx.C.typeName(), DSL.or(DSL.intType(), bii.a())))
+         DSL.field("Block", DSL.named(bgx.C.typeName(), DSL.or(DSL.intType(), bij.a())))
       );
       Type<Either<Pair<String, Dynamic<?>>, Unit>> $$2 = DSL.optional(DSL.field("BlockState", DSL.named(bgx.u.typeName(), DSL.remainderType())));
       Dynamic<?> $$3 = (Dynamic<?>)$$0.get(DSL.remainderFinder());
@@ -330,7 +330,7 @@ public class bcs extends DataFix {
    }
 
    private Typed<?> a(Typed<?> $$0, String $$1, String $$2, String $$3) {
-      Type<Pair<String, Either<Integer, String>>> $$4 = DSL.field($$1, DSL.named(bgx.C.typeName(), DSL.or(DSL.intType(), bii.a())));
+      Type<Pair<String, Either<Integer, String>>> $$4 = DSL.field($$1, DSL.named(bgx.C.typeName(), DSL.or(DSL.intType(), bij.a())));
       Type<Pair<String, Dynamic<?>>> $$5 = DSL.field($$3, DSL.named(bgx.u.typeName(), DSL.remainderType()));
       Dynamic<?> $$6 = (Dynamic<?>)$$0.getOrCreate(DSL.remainderFinder());
       return $$0.update($$4.finder(), $$5, $$2x -> {

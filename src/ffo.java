@@ -1,99 +1,51 @@
 import com.google.common.collect.ImmutableList;
-import com.mojang.logging.LogUtils;
-import java.io.PrintWriter;
-import java.io.StringWriter;
+import com.google.common.collect.ImmutableMap;
 import java.util.List;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import java.util.Map;
 
-public class ffo {
-   private static final Logger a = LogUtils.getLogger();
-   @Nullable
-   private ffo.c b;
-   private int c;
+public enum ffo {
+   a(new cuq(cut.qS)),
+   b(new cuq(dfc.cj)),
+   c(new cuq(cut.lH)),
+   d(new cuq(cut.pd), new cuq(cut.oV)),
+   e(new cuq(cut.qA), new cuq(cut.ot)),
+   f(new cuq(cut.qS)),
+   g(new cuq(cut.pX)),
+   h(new cuq(dfc.b)),
+   i(new cuq(cut.qA), new cuq(cut.oz)),
+   j(new cuq(cut.qS)),
+   k(new cuq(dfc.dI)),
+   l(new cuq(cut.pb), new cuq(cut.pQ)),
+   m(new cuq(cut.qS)),
+   n(new cuq(cut.pX)),
+   o(new cuq(cut.fF)),
+   p(new cuq(cut.pT)),
+   q(new cuq(cut.pX)),
+   r(new cuq(cut.hB));
 
-   public void a(ffo.b $$0, List<atb> $$1) {
-      this.c++;
-      if (this.b != null && !this.b.d) {
-         a.warn("Reload already ongoing, replacing");
-      }
+   public static final List<ffo> s = ImmutableList.of(m, n);
+   public static final List<ffo> t = ImmutableList.of(j, k, l);
+   public static final List<ffo> u = ImmutableList.of(f, g, h, i);
+   public static final List<ffo> v = ImmutableList.of(a, d, b, e, c);
+   public static final Map<ffo, List<ffo>> w = ImmutableMap.of(
+      a, ImmutableList.of(d, b, e, c), f, ImmutableList.of(g, h, i), j, ImmutableList.of(k, l), m, ImmutableList.of(n)
+   );
+   private final List<cuq> x;
 
-      this.b = new ffo.c($$0, $$1.stream().map(atb::b).collect(ImmutableList.toImmutableList()));
+   private ffo(final cuq... $$0) {
+      this.x = ImmutableList.copyOf($$0);
    }
 
-   public void a(Throwable $$0) {
-      if (this.b == null) {
-         a.warn("Trying to signal reload recovery, but nothing was started");
-         this.b = new ffo.c(ffo.b.c, ImmutableList.of());
-      }
-
-      this.b.c = new ffo.a($$0);
+   public static List<ffo> a(crj $$0) {
+      return switch ($$0) {
+         case a -> v;
+         case b -> u;
+         case c -> t;
+         case d -> s;
+      };
    }
 
-   public void a() {
-      if (this.b == null) {
-         a.warn("Trying to finish reload, but nothing was started");
-      } else {
-         this.b.d = true;
-      }
-   }
-
-   public void a(o $$0) {
-      p $$1 = $$0.a("Last reload");
-      $$1.a("Reload number", this.c);
-      if (this.b != null) {
-         this.b.a($$1);
-      }
-   }
-
-   static class a {
-      private final Throwable a;
-
-      a(Throwable $$0) {
-         this.a = $$0;
-      }
-
-      public void a(p $$0) {
-         $$0.a("Recovery", "Yes");
-         $$0.a("Recovery reason", () -> {
-            StringWriter $$0x = new StringWriter();
-            this.a.printStackTrace(new PrintWriter($$0x));
-            return $$0x.toString();
-         });
-      }
-   }
-
-   public static enum b {
-      a("initial"),
-      b("manual"),
-      c("unknown");
-
-      final String d;
-
-      private b(final String $$0) {
-         this.d = $$0;
-      }
-   }
-
-   static class c {
-      private final ffo.b a;
-      private final List<String> b;
-      @Nullable
-      ffo.a c;
-      boolean d;
-
-      c(ffo.b $$0, List<String> $$1) {
-         this.a = $$0;
-         this.b = $$1;
-      }
-
-      public void a(p $$0) {
-         $$0.a("Reload reason", this.a.d);
-         $$0.a("Finished", this.d ? "Yes" : "No");
-         $$0.a("Packs", () -> String.join(", ", this.b));
-         if (this.c != null) {
-            this.c.a($$0);
-         }
-      }
+   public List<cuq> a() {
+      return this.x;
    }
 }

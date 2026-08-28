@@ -1,207 +1,43 @@
 import com.mojang.serialization.MapCodec;
-import java.util.Optional;
-import javax.annotation.Nullable;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
 public class dgs extends del {
-   public static final MapCodec<dgs> a = b(dgs::new);
-   public static final dst b = dss.bx;
-   public static final dst c = dss.A;
-   private static final dta<jg> d = dss.T;
-   private static final int e = 6;
-   private static final int f = 4;
-   private static final cyw g = new cyw(10);
-   private static final int h = 17;
+   public static final MapCodec<dgs> e = RecordCodecBuilder.mapCodec($$0 -> $$0.group(dgp.a.forGetter($$0x -> $$0x.f), u()).apply($$0, dgs::new));
+   private final dfa f;
 
-   public dgs(dsb.d $$0) {
-      super($$0);
-      this.k(this.E.b().a(d, jg.k).a(c, Boolean.valueOf(false)).a(b, Boolean.valueOf(false)));
+   @Override
+   public MapCodec<dgs> a() {
+      return e;
+   }
+
+   protected dgs(dfa $$0, dsc.d $$1) {
+      super($$1);
+      this.f = $$0;
    }
 
    @Override
-   protected MapCodec<dgs> a() {
-      return a;
+   protected void b(dsd $$0, dbz $$1, iz $$2, dsd $$3, boolean $$4) {
+      this.a($$0, (dca)$$1, $$2);
    }
 
    @Override
-   protected boolean c_(dsc $$0) {
-      return true;
-   }
-
-   @Override
-   protected int a(dsc $$0, dby $$1, iz $$2) {
-      return $$1.c_($$2) instanceof dpv $$4 ? $$4.u() : 0;
-   }
-
-   @Override
-   protected void a(dsc $$0, dby $$1, iz $$2, dez $$3, iz $$4, boolean $$5) {
-      boolean $$6 = $$1.C($$2);
-      boolean $$7 = $$0.c(c);
-      dph $$8 = $$1.c_($$2);
-      if ($$6 && !$$7) {
-         $$1.a($$2, this, 4);
-         $$1.a($$2, $$0.a(c, Boolean.valueOf(true)), 2);
-         this.a($$8, true);
-      } else if (!$$6 && $$7) {
-         $$1.a($$2, $$0.a(c, Boolean.valueOf(false)).a(b, Boolean.valueOf(false)), 2);
-         this.a($$8, false);
+   protected void a(dsd $$0, arf $$1, iz $$2, azh $$3) {
+      if (!e($$0, $$1, $$2)) {
+         $$1.a($$2, this.f.o().a(d, Boolean.valueOf(false)).a(c, $$0.c(c)), 2);
       }
    }
 
    @Override
-   protected void a(dsc $$0, arf $$1, iz $$2, azh $$3) {
-      this.a($$0, $$1, $$2);
-   }
-
-   @Nullable
-   @Override
-   public <T extends dph> dpi<T> a(dby $$0, dsc $$1, dpj<T> $$2) {
-      return $$0.B ? null : a($$2, dpj.P, dpv::a);
-   }
-
-   private void a(@Nullable dph $$0, boolean $$1) {
-      if ($$0 instanceof dpv $$2) {
-         $$2.a($$1);
-      }
-   }
-
-   @Override
-   public dph a(iz $$0, dsc $$1) {
-      dpv $$2 = new dpv($$0, $$1);
-      $$2.a($$1.b(c) && $$1.c(c));
-      return $$2;
-   }
-
-   @Override
-   public dsc a(cya $$0) {
-      je $$1 = $$0.d().g();
-
-      je $$2 = switch ($$1) {
-         case a -> $$0.g().g();
-         case b -> $$0.g();
-         case c, d, e, f -> je.b;
-      };
-      return this.o().a(d, jg.a($$1, $$2)).a(c, Boolean.valueOf($$0.q().C($$0.a())));
-   }
-
-   @Override
-   public void a(dby $$0, iz $$1, dsc $$2, btp $$3, cup $$4) {
-      if ($$2.c(c)) {
-         $$0.a($$1, this, 4);
-      }
-   }
-
-   @Override
-   protected void a(dsc $$0, dby $$1, iz $$2, dsc $$3, boolean $$4) {
-      bqq.a($$0, $$3, $$1, $$2);
-      super.a($$0, $$1, $$2, $$3, $$4);
-   }
-
-   @Override
-   protected bqu a(dsc $$0, dby $$1, iz $$2, cmx $$3, evn $$4) {
-      if ($$1.B) {
-         return bqu.a;
+   protected dsd a(dsd $$0, je $$1, dsd $$2, dca $$3, iz $$4, iz $$5) {
+      if ($$1.g() == $$0.c(c) && !$$0.a($$3, $$4)) {
+         return dfc.a.o();
       } else {
-         dph $$5 = $$1.c_($$2);
-         if ($$5 instanceof dpv) {
-            $$3.a((dpv)$$5);
+         if ($$0.c(d)) {
+            $$3.a($$4, enx.c, enx.c.a($$3));
          }
 
-         return bqu.c;
+         this.a($$0, $$3, $$4);
+         return super.a($$0, $$1, $$2, $$3, $$4, $$5);
       }
-   }
-
-   protected void a(dsc $$0, arf $$1, iz $$2) {
-      if ($$1.c_($$2) instanceof dpv $$3) {
-         Optional<cyx<cym>> $$5 = a($$1, $$3);
-         if ($$5.isEmpty()) {
-            $$1.c(1050, $$2, 0);
-         } else {
-            cyx<cym> $$6 = $$5.get();
-            cup $$7 = $$6.b().a($$3, $$1.H_());
-            if ($$7.e()) {
-               $$1.c(1050, $$2, 0);
-            } else {
-               $$3.d(6);
-               $$1.a($$2, $$0.a(b, Boolean.valueOf(true)), 2);
-               $$7.a($$1);
-               this.a($$1, $$2, $$3, $$7, $$0, $$6);
-
-               for (cup $$8 : $$6.b().a($$3)) {
-                  if (!$$8.e()) {
-                     this.a($$1, $$2, $$3, $$8, $$0, $$6);
-                  }
-               }
-
-               $$3.j().forEach($$0x -> {
-                  if (!$$0x.e()) {
-                     $$0x.h(1);
-                  }
-               });
-               $$3.e();
-            }
-         }
-      }
-   }
-
-   public static Optional<cyx<cym>> a(dby $$0, cqk $$1) {
-      return g.a($$0, $$1);
-   }
-
-   private void a(arf $$0, iz $$1, dpv $$2, cup $$3, dsc $$4, cyx<cym> $$5) {
-      je $$6 = $$4.c(d).a();
-      bqn $$7 = dqg.a($$0, $$1.a($$6));
-      cup $$8 = $$3.s();
-      if ($$7 != null && ($$7 instanceof dpv || $$3.I() > $$7.e_($$3))) {
-         while (!$$8.e()) {
-            cup $$9 = $$8.c(1);
-            cup $$10 = dqg.a($$2, $$7, $$9, $$6.g());
-            if (!$$10.e()) {
-               break;
-            }
-
-            $$8.h(1);
-         }
-      } else if ($$7 != null) {
-         while (!$$8.e()) {
-            int $$11 = $$8.I();
-            $$8 = dqg.a($$2, $$7, $$8, $$6.g());
-            if ($$11 == $$8.I()) {
-               break;
-            }
-         }
-      }
-
-      if (!$$8.e()) {
-         evr $$12 = evr.b($$1);
-         evr $$13 = $$12.a($$6, 0.7);
-         ks.a($$0, $$8, 6, $$6, $$13);
-
-         for (arg $$14 : $$0.a(arg.class, evm.a($$12, 17.0, 17.0, 17.0))) {
-            am.ad.a($$14, $$5.a(), $$2.j());
-         }
-
-         $$0.c(1049, $$1, 0);
-         $$0.c(2010, $$1, $$6.d());
-      }
-   }
-
-   @Override
-   protected dlf a_(dsc $$0) {
-      return dlf.c;
-   }
-
-   @Override
-   protected dsc a(dsc $$0, dlm $$1) {
-      return $$0.a(d, $$1.a().a($$0.c(d)));
-   }
-
-   @Override
-   protected dsc a(dsc $$0, djw $$1) {
-      return $$0.a(d, $$1.a().a($$0.c(d)));
-   }
-
-   @Override
-   protected void a(dsd.a<dez, dsc> $$0) {
-      $$0.a(d, c, b);
    }
 }

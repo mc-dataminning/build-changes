@@ -1,77 +1,54 @@
-import com.mojang.datafixers.DataFixer;
-import com.mojang.logging.LogUtils;
-import java.io.File;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.StandardCopyOption;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
-import java.util.Optional;
-import org.slf4j.Logger;
+import com.mojang.serialization.Dynamic;
+import com.mojang.serialization.OptionalDynamic;
 
 public class epz {
-   private static final Logger b = LogUtils.getLogger();
-   private final File c;
-   protected final DataFixer a;
-   private static final DateTimeFormatter d = epr.a();
+   private final int a;
+   private final long b;
+   private final String c;
+   private final epp d;
+   private final boolean e;
 
-   public epz(epw.c $$0, DataFixer $$1) {
-      this.a = $$1;
-      this.c = $$0.a(epu.c).toFile();
-      this.c.mkdirs();
+   private epz(int $$0, long $$1, String $$2, int $$3, String $$4, boolean $$5) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+      this.d = new epp($$3, $$4);
+      this.e = $$5;
    }
 
-   public void a(cmx $$0) {
-      try {
-         us $$1 = $$0.f(new us());
-         Path $$2 = this.c.toPath();
-         Path $$3 = Files.createTempFile($$2, $$0.cA() + "-", ".dat");
-         vf.a($$1, $$3);
-         Path $$4 = $$2.resolve($$0.cA() + ".dat");
-         Path $$5 = $$2.resolve($$0.cA() + ".dat_old");
-         ac.a($$4, $$3, $$5);
-      } catch (Exception var7) {
-         b.warn("Failed to save player data for {}", $$0.af().getString());
-      }
+   public static epz a(Dynamic<?> $$0) {
+      int $$1 = $$0.get("version").asInt(0);
+      long $$2 = $$0.get("LastPlayed").asLong(0L);
+      OptionalDynamic<?> $$3 = $$0.get("Version");
+      return $$3.result().isPresent()
+         ? new epz(
+            $$1,
+            $$2,
+            $$3.get("Name").asString(aa.b().c()),
+            $$3.get("Id").asInt(aa.b().d().c()),
+            $$3.get("Series").asString(epp.a),
+            $$3.get("Snapshot").asBoolean(!aa.b().g())
+         )
+         : new epz($$1, $$2, "", 0, epp.a, false);
    }
 
-   private void a(cmx $$0, String $$1) {
-      Path $$2 = this.c.toPath();
-      Path $$3 = $$2.resolve($$0.cA() + $$1);
-      Path $$4 = $$2.resolve($$0.cA() + "_corrupted_" + LocalDateTime.now().format(d) + $$1);
-      if (Files.isRegularFile($$3)) {
-         try {
-            Files.copy($$3, $$4, StandardCopyOption.REPLACE_EXISTING, StandardCopyOption.COPY_ATTRIBUTES);
-         } catch (Exception var7) {
-            b.warn("Failed to copy the player.dat file for {}", $$0.af().getString(), var7);
-         }
-      }
+   public int a() {
+      return this.a;
    }
 
-   private Optional<us> b(cmx $$0, String $$1) {
-      File $$2 = new File(this.c, $$0.cA() + $$1);
-      if ($$2.exists() && $$2.isFile()) {
-         try {
-            return Optional.of(vf.a($$2.toPath(), vb.a()));
-         } catch (Exception var5) {
-            b.warn("Failed to load player data for {}", $$0.af().getString());
-         }
-      }
-
-      return Optional.empty();
+   public long b() {
+      return this.b;
    }
 
-   public Optional<us> b(cmx $$0) {
-      Optional<us> $$1 = this.b($$0, ".dat");
-      if ($$1.isEmpty()) {
-         this.a($$0, ".dat");
-      }
+   public String c() {
+      return this.c;
+   }
 
-      return $$1.or(() -> this.b($$0, ".dat_old")).map($$1x -> {
-         int $$2 = vh.b($$1x, -1);
-         $$1x = bag.b.a(this.a, $$1x, $$2);
-         $$0.g($$1x);
-         return $$1x;
-      });
+   public epp d() {
+      return this.d;
+   }
+
+   public boolean e() {
+      return this.e;
    }
 }

@@ -1,56 +1,39 @@
-public class fil extends fhb {
-   private float a = 0.5F;
+import com.mojang.blaze3d.systems.RenderSystem;
+import javax.annotation.Nullable;
 
-   public fil(xp $$0, fgp $$1) {
-      this(0, 0, $$1.a($$0.g()), 9, $$0, $$1);
+public class fil extends fhd {
+   @Nullable
+   protected fis a;
+   protected boolean b;
+
+   public fil(int $$0, int $$1, int $$2, int $$3, boolean $$4) {
+      super($$0, $$1, $$2, $$3, xo.a);
+      this.b = $$4;
    }
 
-   public fil(int $$0, int $$1, xp $$2, fgp $$3) {
-      this(0, 0, $$0, $$1, $$2, $$3);
-   }
-
-   public fil(int $$0, int $$1, int $$2, int $$3, xp $$4, fgp $$5) {
-      super($$0, $$1, $$2, $$3, $$4, $$5);
-      this.j = false;
-   }
-
-   public fil b(int $$0) {
-      super.a($$0);
-      return this;
-   }
-
-   private fil b(float $$0) {
+   public void a(fis $$0) {
       this.a = $$0;
-      return this;
    }
 
-   public fil c() {
-      return this.b(0.0F);
+   public void b(boolean $$0) {
+      this.b = $$0;
    }
 
-   public fil e() {
-      return this.b(0.5F);
-   }
-
-   public fil f() {
-      return this.b(1.0F);
+   public boolean a() {
+      return this.b;
    }
 
    @Override
-   public void b(fgr $$0, int $$1, int $$2, float $$3) {
-      xp $$4 = this.y();
-      fgp $$5 = this.a();
-      int $$6 = this.x();
-      int $$7 = $$5.a($$4);
-      int $$8 = this.C() + Math.round(this.a * (float)($$6 - $$7));
-      int $$9 = this.D() + (this.v() - 9) / 2;
-      ayl $$10 = $$7 > $$6 ? this.a($$4, $$6) : $$4.g();
-      $$0.b($$5, $$10, $$8, $$9, this.b());
+   public void a(flb $$0) {
+      this.c($$0);
    }
 
-   private ayl a(xp $$0, int $$1) {
-      fgp $$2 = this.a();
-      xu $$3 = $$2.a($$0, $$1 - $$2.a(xo.u));
-      return un.a().a(xu.a($$3, xo.u));
+   @Override
+   public void b(fgs $$0, int $$1, int $$2, float $$3) {
+      if (this.a != null) {
+         RenderSystem.disableDepthTest();
+         $$0.a(this.a.a(this.b, this.A()), this.C(), this.D(), this.g, this.h);
+         RenderSystem.enableDepthTest();
+      }
    }
 }

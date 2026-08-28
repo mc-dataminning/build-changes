@@ -1,129 +1,57 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Lists;
-import com.google.common.collect.Maps;
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
+import com.google.common.collect.Sets;
+import com.mojang.datafixers.util.Pair;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.Map;
-import java.util.Map.Entry;
+import java.util.Set;
+import java.util.function.Predicate;
 import java.util.stream.Stream;
 import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
-public class ddj {
-   private static final Logger d = LogUtils.getLogger();
-   private static final float e = 0.1F;
-   public static final bpi<ddj.c> a = bpi.c();
-   public static final ddj b = new ddj.a().a();
-   public static final MapCodec<ddj> c = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(
-               Codec.floatRange(0.0F, 0.9999999F).optionalFieldOf("creature_spawn_probability", 0.1F).forGetter($$0x -> $$0x.f),
-               Codec.simpleMap(bts.i, bpi.c(ddj.c.a).promotePartial(ac.a("Spawn data: ", d::error)), azu.a(bts.values()))
-                  .fieldOf("spawners")
-                  .forGetter($$0x -> $$0x.g),
-               Codec.simpleMap(lp.g.q(), ddj.b.a, lp.g).fieldOf("spawn_costs").forGetter($$0x -> $$0x.h)
-            )
-            .apply($$0, ddj::new)
-   );
-   private final float f;
-   private final Map<bts, bpi<ddj.c>> g;
-   private final Map<bta<?>, ddj.b> h;
+public class ddj extends ddc implements dda.a {
+   public static final MapCodec<ddj> b = dcy.c.fieldOf("biome").xmap(ddj::new, $$0 -> $$0.c).stable();
+   private final ji<dcy> c;
 
-   ddj(float $$0, Map<bts, bpi<ddj.c>> $$1, Map<bta<?>, ddj.b> $$2) {
-      this.f = $$0;
-      this.g = ImmutableMap.copyOf($$1);
-      this.h = ImmutableMap.copyOf($$2);
+   public ddj(ji<dcy> $$0) {
+      this.c = $$0;
    }
 
-   public bpi<ddj.c> a(bts $$0) {
-      return this.g.getOrDefault($$0, a);
+   @Override
+   protected Stream<ji<dcy>> b() {
+      return Stream.of(this.c);
+   }
+
+   @Override
+   protected MapCodec<? extends ddc> a() {
+      return b;
+   }
+
+   @Override
+   public ji<dcy> getNoiseBiome(int $$0, int $$1, int $$2, ddh.f $$3) {
+      return this.c;
+   }
+
+   @Override
+   public ji<dcy> getNoiseBiome(int $$0, int $$1, int $$2) {
+      return this.c;
    }
 
    @Nullable
-   public ddj.b a(bta<?> $$0) {
-      return this.h.get($$0);
-   }
-
-   public float a() {
-      return this.f;
-   }
-
-   public static class a {
-      private final Map<bts, List<ddj.c>> a = Stream.of(bts.values()).collect(ImmutableMap.toImmutableMap($$0 -> $$0, $$0 -> Lists.newArrayList()));
-      private final Map<bta<?>, ddj.b> b = Maps.newLinkedHashMap();
-      private float c = 0.1F;
-
-      public ddj.a a(bts $$0, ddj.c $$1) {
-         this.a.get($$0).add($$1);
-         return this;
-      }
-
-      public ddj.a a(bta<?> $$0, double $$1, double $$2) {
-         this.b.put($$0, new ddj.b($$2, $$1));
-         return this;
-      }
-
-      public ddj.a a(float $$0) {
-         this.c = $$0;
-         return this;
-      }
-
-      public ddj a() {
-         return new ddj(
-            this.c,
-            this.a.entrySet().stream().collect(ImmutableMap.toImmutableMap(Entry::getKey, $$0 -> bpi.a((List)$$0.getValue()))),
-            ImmutableMap.copyOf(this.b)
-         );
+   @Override
+   public Pair<iz, ji<dcy>> a(int $$0, int $$1, int $$2, int $$3, int $$4, Predicate<ji<dcy>> $$5, azh $$6, boolean $$7, ddh.f $$8) {
+      if ($$5.test(this.c)) {
+         return $$7 ? Pair.of(new iz($$0, $$1, $$2), this.c) : Pair.of(new iz($$0 - $$3 + $$6.a($$3 * 2 + 1), $$1, $$2 - $$3 + $$6.a($$3 * 2 + 1)), this.c);
+      } else {
+         return null;
       }
    }
 
-   public static record b(double b, double c) {
-      public static final Codec<ddj.b> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(Codec.DOUBLE.fieldOf("energy_budget").forGetter($$0x -> $$0x.b), Codec.DOUBLE.fieldOf("charge").forGetter($$0x -> $$0x.c))
-               .apply($$0, ddj.b::new)
-      );
-
-      public double a() {
-         return this.b;
-      }
-
-      public double b() {
-         return this.c;
-      }
+   @Nullable
+   @Override
+   public Pair<iz, ji<dcy>> a(iz $$0, int $$1, int $$2, int $$3, Predicate<ji<dcy>> $$4, ddh.f $$5, dcc $$6) {
+      return $$4.test(this.c) ? Pair.of($$0, this.c) : null;
    }
 
-   public static class c extends bpg.a {
-      public static final Codec<ddj.c> a = RecordCodecBuilder.create(
-            $$0 -> $$0.group(
-                     lp.g.q().fieldOf("type").forGetter($$0x -> $$0x.b),
-                     bpf.a.fieldOf("weight").forGetter(bpg.a::a),
-                     ayh.l.fieldOf("minCount").forGetter($$0x -> $$0x.c),
-                     ayh.l.fieldOf("maxCount").forGetter($$0x -> $$0x.d)
-                  )
-                  .apply($$0, ddj.c::new)
-         )
-         .validate($$0 -> $$0.c > $$0.d ? DataResult.error(() -> "minCount needs to be smaller or equal to maxCount") : DataResult.success($$0));
-      public final bta<?> b;
-      public final int c;
-      public final int d;
-
-      public c(bta<?> $$0, int $$1, int $$2, int $$3) {
-         this($$0, bpf.a($$1), $$2, $$3);
-      }
-
-      public c(bta<?> $$0, bpf $$1, int $$2, int $$3) {
-         super($$1);
-         this.b = $$0.f() == bts.h ? bta.az : $$0;
-         this.c = $$2;
-         this.d = $$3;
-      }
-
-      @Override
-      public String toString() {
-         return bta.a(this.b) + "*(" + this.c + "-" + this.d + "):" + this.a();
-      }
+   @Override
+   public Set<ji<dcy>> a(int $$0, int $$1, int $$2, int $$3, ddh.f $$4) {
+      return Sets.newHashSet(Set.of(this.c));
    }
 }

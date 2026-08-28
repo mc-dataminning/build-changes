@@ -1,51 +1,75 @@
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
+import java.util.Map;
 
-public class dix extends dip {
-   public static final MapCodec<dix> e = b(dix::new);
+public class dix extends dfa {
+   public static final MapCodec<dix> a = b(dix::new);
+   public static final dsu b = dko.b;
+   public static final dsu c = dko.c;
+   public static final dsu d = dko.d;
+   public static final dsu e = dko.e;
+   public static final dsu f = dko.f;
+   public static final dsu g = dko.g;
+   private static final Map<je, dsu> h = dko.h;
 
    @Override
-   public MapCodec<? extends dix> a() {
-      return e;
+   public MapCodec<dix> a() {
+      return a;
    }
 
-   public dix(dsb.d $$0) {
+   public dix(dsc.d $$0) {
       super($$0);
-   }
-
-   public static dsc b() {
-      return dfb.G.o();
-   }
-
-   @Override
-   public void a(dby $$0, cmx $$1, iz $$2, dsc $$3, @Nullable dph $$4, cup $$5) {
-      super.a($$0, $$1, $$2, $$3, $$4, $$5);
-      if (dab.a(dad.v, $$5) == 0) {
-         if ($$0.D_().i()) {
-            $$0.a($$2, false);
-            return;
-         }
-
-         dsc $$6 = $$0.a_($$2.d());
-         if ($$6.d() || $$6.k()) {
-            $$0.b($$2, b());
-         }
-      }
+      this.k(
+         this.E
+            .b()
+            .a(b, Boolean.valueOf(true))
+            .a(c, Boolean.valueOf(true))
+            .a(d, Boolean.valueOf(true))
+            .a(e, Boolean.valueOf(true))
+            .a(f, Boolean.valueOf(true))
+            .a(g, Boolean.valueOf(true))
+      );
    }
 
    @Override
-   protected void b(dsc $$0, arf $$1, iz $$2, azh $$3) {
-      if ($$1.a(dch.b, $$2) > 11 - $$0.b($$1, $$2)) {
-         this.d($$0, $$1, $$2);
-      }
+   public dsd a(cyb $$0) {
+      dbf $$1 = $$0.q();
+      iz $$2 = $$0.a();
+      return this.o()
+         .a(g, Boolean.valueOf(!$$1.a_($$2.d()).a(this)))
+         .a(f, Boolean.valueOf(!$$1.a_($$2.c()).a(this)))
+         .a(b, Boolean.valueOf(!$$1.a_($$2.e()).a(this)))
+         .a(c, Boolean.valueOf(!$$1.a_($$2.h()).a(this)))
+         .a(d, Boolean.valueOf(!$$1.a_($$2.f()).a(this)))
+         .a(e, Boolean.valueOf(!$$1.a_($$2.g()).a(this)));
    }
 
-   protected void d(dsc $$0, dby $$1, iz $$2) {
-      if ($$1.D_().i()) {
-         $$1.a($$2, false);
-      } else {
-         $$1.b($$2, b());
-         $$1.a($$2, b().b(), $$2);
-      }
+   @Override
+   protected dsd a(dsd $$0, je $$1, dsd $$2, dca $$3, iz $$4, iz $$5) {
+      return $$2.a(this) ? $$0.a(h.get($$1), Boolean.valueOf(false)) : super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   }
+
+   @Override
+   protected dsd a(dsd $$0, dln $$1) {
+      return $$0.a(h.get($$1.a(je.c)), $$0.c(b))
+         .a(h.get($$1.a(je.d)), $$0.c(d))
+         .a(h.get($$1.a(je.f)), $$0.c(c))
+         .a(h.get($$1.a(je.e)), $$0.c(e))
+         .a(h.get($$1.a(je.b)), $$0.c(f))
+         .a(h.get($$1.a(je.a)), $$0.c(g));
+   }
+
+   @Override
+   protected dsd a(dsd $$0, djx $$1) {
+      return $$0.a(h.get($$1.b(je.c)), $$0.c(b))
+         .a(h.get($$1.b(je.d)), $$0.c(d))
+         .a(h.get($$1.b(je.f)), $$0.c(c))
+         .a(h.get($$1.b(je.e)), $$0.c(e))
+         .a(h.get($$1.b(je.b)), $$0.c(f))
+         .a(h.get($$1.b(je.a)), $$0.c(g));
+   }
+
+   @Override
+   protected void a(dse.a<dfa, dsd> $$0) {
+      $$0.a(f, g, b, c, d, e);
    }
 }

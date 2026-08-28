@@ -1,49 +1,21 @@
-import java.util.Collection;
-import java.util.Comparator;
+import com.google.common.base.MoreObjects;
 import java.util.List;
 
-public class fsm implements fsi, fsj {
-   private static final alf a = new alf("spectator/teleport_to_player");
-   private static final Comparator<fyg> b = Comparator.comparing($$0 -> $$0.a().getId());
-   private static final xp c = xp.c("spectatorMenu.teleport");
-   private static final xp d = xp.c("spectatorMenu.teleport.prompt");
-   private final List<fsj> e;
+public class fsm {
+   public static final int a = -1;
+   private final List<fsk> b;
+   private final int c;
 
-   public fsm() {
-      this(fff.Q().L().l());
+   public fsm(List<fsk> $$0, int $$1) {
+      this.b = $$0;
+      this.c = $$1;
    }
 
-   public fsm(Collection<fyg> $$0) {
-      this.e = $$0.stream().filter($$0x -> $$0x.e() != dbv.d).sorted(b).map($$0x -> new fsf($$0x.a())).toList();
+   public fsk a(int $$0) {
+      return $$0 >= 0 && $$0 < this.b.size() ? (fsk)MoreObjects.firstNonNull(this.b.get($$0), fsi.a) : fsi.a;
    }
 
-   @Override
-   public List<fsj> a() {
-      return this.e;
-   }
-
-   @Override
-   public xp b() {
-      return d;
-   }
-
-   @Override
-   public void a(fsh $$0) {
-      $$0.a(this);
-   }
-
-   @Override
-   public xp aN_() {
-      return c;
-   }
-
-   @Override
-   public void a(fgr $$0, float $$1, int $$2) {
-      $$0.a(a, 0, 0, 16, 16);
-   }
-
-   @Override
-   public boolean aO_() {
-      return !this.e.isEmpty();
+   public int a() {
+      return this.c;
    }
 }

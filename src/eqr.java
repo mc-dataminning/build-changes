@@ -1,45 +1,20 @@
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
+import java.util.Objects;
 import java.util.function.Consumer;
 
-public abstract class eqr extends eqy {
-   protected final List<eqy> d;
-   private final eqq a;
+@FunctionalInterface
+interface eqr {
+   eqr b = ($$0, $$1) -> false;
+   eqr c = ($$0, $$1) -> true;
 
-   protected eqr(List<eqy> $$0, List<ets> $$1) {
-      super($$1);
-      this.d = $$0;
-      this.a = this.a($$0);
+   boolean expand(eqj var1, Consumer<eqy> var2);
+
+   default eqr and(eqr $$0) {
+      Objects.requireNonNull($$0);
+      return ($$1, $$2) -> this.expand($$1, $$2) && $$0.expand($$1, $$2);
    }
 
-   @Override
-   public void a(eqo $$0) {
-      super.a($$0);
-      if (this.d.isEmpty()) {
-         $$0.b("Empty children list");
-      }
-
-      for (int $$1 = 0; $$1 < this.d.size(); $$1++) {
-         this.d.get($$1).a($$0.a(".entry[" + $$1 + "]"));
-      }
-   }
-
-   protected abstract eqq a(List<? extends eqq> var1);
-
-   @Override
-   public final boolean expand(eqi $$0, Consumer<eqx> $$1) {
-      return !this.a($$0) ? false : this.a.expand($$0, $$1);
-   }
-
-   public static <T extends eqr> MapCodec<T> a(eqr.a<T> $$0) {
-      return RecordCodecBuilder.mapCodec(
-         $$1 -> $$1.group(eqw.a.listOf().optionalFieldOf("children", List.of()).forGetter($$0xx -> $$0xx.d)).and(a($$1).t1()).apply($$1, $$0::create)
-      );
-   }
-
-   @FunctionalInterface
-   public interface a<T extends eqr> {
-      T create(List<eqy> var1, List<ets> var2);
+   default eqr or(eqr $$0) {
+      Objects.requireNonNull($$0);
+      return ($$1, $$2) -> this.expand($$1, $$2) || $$0.expand($$1, $$2);
    }
 }

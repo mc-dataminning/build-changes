@@ -1,62 +1,77 @@
-public class cyb extends cya {
-   private final je b;
+import javax.annotation.Nullable;
 
-   public cyb(dby $$0, iz $$1, je $$2, cup $$3, je $$4) {
-      super($$0, null, bqt.a, $$3, new evn(evr.c($$1), $$4, $$1, false));
-      this.b = $$2;
+public class cyb extends cyd {
+   private final iz b;
+   protected boolean a = true;
+
+   public cyb(cmy $$0, bqu $$1, cuq $$2, evo $$3) {
+      this($$0.dP(), $$0, $$1, $$2, $$3);
+   }
+
+   public cyb(cyd $$0) {
+      this($$0.q(), $$0.o(), $$0.p(), $$0.n(), $$0.j());
+   }
+
+   protected cyb(dbz $$0, @Nullable cmy $$1, bqu $$2, cuq $$3, evo $$4) {
+      super($$0, $$1, $$2, $$3, $$4);
+      this.b = $$4.a().a($$4.b());
+      this.a = $$0.a_($$4.a()).a(this);
+   }
+
+   public static cyb a(cyb $$0, iz $$1, je $$2) {
+      return new cyb(
+         $$0.q(),
+         $$0.o(),
+         $$0.p(),
+         $$0.n(),
+         new evo(
+            new evs((double)$$1.u() + 0.5 + (double)$$2.j() * 0.5, (double)$$1.v() + 0.5 + (double)$$2.k() * 0.5, (double)$$1.w() + 0.5 + (double)$$2.l() * 0.5),
+            $$2,
+            $$1,
+            false
+         )
+      );
    }
 
    @Override
    public iz a() {
-      return this.j().a();
+      return this.a ? super.a() : this.b;
    }
 
-   @Override
    public boolean b() {
-      return this.q().a_(this.j().a()).a(this);
+      return this.a || this.q().a_(this.a()).a(this);
    }
 
-   @Override
    public boolean c() {
-      return this.b();
+      return this.a;
    }
 
-   @Override
    public je d() {
-      return je.a;
+      return je.a(this.o())[0];
    }
 
-   @Override
+   public je e() {
+      return je.a(this.o(), je.a.b);
+   }
+
    public je[] f() {
-      switch (this.b) {
-         case a:
-         default:
-            return new je[]{je.a, je.c, je.f, je.d, je.e, je.b};
-         case b:
-            return new je[]{je.a, je.b, je.c, je.f, je.d, je.e};
-         case c:
-            return new je[]{je.a, je.c, je.f, je.e, je.b, je.d};
-         case d:
-            return new je[]{je.a, je.d, je.f, je.e, je.b, je.c};
-         case e:
-            return new je[]{je.a, je.e, je.d, je.b, je.c, je.f};
-         case f:
-            return new je[]{je.a, je.f, je.d, je.b, je.c, je.e};
+      je[] $$0 = je.a(this.o());
+      if (this.a) {
+         return $$0;
+      } else {
+         je $$1 = this.k();
+         int $$2 = 0;
+
+         while ($$2 < $$0.length && $$0[$$2] != $$1.g()) {
+            $$2++;
+         }
+
+         if ($$2 > 0) {
+            System.arraycopy($$0, 0, $$0, 1, $$2);
+            $$0[0] = $$1.g();
+         }
+
+         return $$0;
       }
-   }
-
-   @Override
-   public je g() {
-      return this.b.o() == je.a.b ? je.c : this.b;
-   }
-
-   @Override
-   public boolean h() {
-      return false;
-   }
-
-   @Override
-   public float i() {
-      return (float)(this.b.e() * 90);
    }
 }

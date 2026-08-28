@@ -1,13 +1,9 @@
-import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.Codec;
 
-public interface ely<P extends elx> {
-   ely<elw> a = a("always_true", elw.a);
-   ely<elu> b = a("linear_pos", elu.a);
-   ely<elj> c = a("axis_aligned_linear_pos", elj.a);
+public abstract class ely {
+   public static final Codec<ely> c = lp.q.q().dispatch("predicate_type", ely::a, elz::codec);
 
-   MapCodec<P> codec();
+   public abstract boolean a(iz var1, iz var2, iz var3, azh var4);
 
-   static <P extends elx> ely<P> a(String $$0, MapCodec<P> $$1) {
-      return jv.a(lp.q, $$0, () -> $$1);
-   }
+   protected abstract elz<?> a();
 }

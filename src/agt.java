@@ -20,7 +20,7 @@ public class agt {
       a($$0, (aax)(new abc()));
    }
 
-   public static void a(arf $$0, dbf $$1) {
+   public static void a(arf $$0, dbg $$1) {
    }
 
    public static void a(arf $$0, iz $$1) {
@@ -38,51 +38,51 @@ public class agt {
    private static void d(arf $$0, iz $$1) {
    }
 
-   public static void a(dby $$0, btr $$1, @Nullable eoj $$2, float $$3) {
+   public static void a(dbz $$0, bts $$1, @Nullable eok $$2, float $$3) {
    }
 
-   public static void a(dby $$0, iz $$1) {
+   public static void a(dbz $$0, iz $$1) {
    }
 
-   public static void a(dct $$0, eis $$1) {
+   public static void a(dcu $$0, eit $$1) {
    }
 
-   public static void a(dby $$0, btr $$1, cao $$2) {
+   public static void a(dbz $$0, bts $$1, cap $$2) {
    }
 
-   public static void a(arf $$0, Collection<coi> $$1) {
+   public static void a(arf $$0, Collection<coj> $$1) {
    }
 
-   public static void a(btp $$0) {
+   public static void a(btq $$0) {
    }
 
-   public static void a(cfg $$0) {
+   public static void a(cfh $$0) {
    }
 
-   public static void a(ckz $$0) {
+   public static void a(cla $$0) {
    }
 
-   public static void a(dby $$0, ji<dwv> $$1, evr $$2) {
+   public static void a(dbz $$0, ji<dww> $$1, evs $$2) {
    }
 
-   public static void a(dby $$0, dwx $$1) {
+   public static void a(dbz $$0, dwy $$1) {
    }
 
-   public static void a(dby $$0, iz $$1, dsc $$2, dpe $$3) {
+   public static void a(dbz $$0, iz $$1, dsd $$2, dpf $$3) {
    }
 
-   private static List<String> a(btp $$0, long $$1) {
-      Map<cct<?>, Optional<? extends ccs<?>>> $$2 = $$0.dS().b();
+   private static List<String> a(btq $$0, long $$1) {
+      Map<ccu<?>, Optional<? extends cct<?>>> $$2 = $$0.dS().b();
       List<String> $$3 = Lists.newArrayList();
 
-      for (Entry<cct<?>, Optional<? extends ccs<?>>> $$4 : $$2.entrySet()) {
-         cct<?> $$5 = $$4.getKey();
-         Optional<? extends ccs<?>> $$6 = $$4.getValue();
+      for (Entry<ccu<?>, Optional<? extends cct<?>>> $$4 : $$2.entrySet()) {
+         ccu<?> $$5 = $$4.getKey();
+         Optional<? extends cct<?>> $$6 = $$4.getValue();
          String $$10;
          if ($$6.isPresent()) {
-            ccs<?> $$7 = (ccs<?>)$$6.get();
+            cct<?> $$7 = (cct<?>)$$6.get();
             Object $$8 = $$7.c();
-            if ($$5 == cct.D) {
+            if ($$5 == ccu.D) {
                long $$9 = $$1 - (Long)$$8;
                $$10 = $$9 + " ticks ago";
             } else if ($$7.e()) {
@@ -106,21 +106,21 @@ public class agt {
          return "-";
       } else if ($$1 instanceof UUID) {
          return a($$0, $$0.a((UUID)$$1));
-      } else if ($$1 instanceof btp) {
-         bsu $$2 = (bsu)$$1;
+      } else if ($$1 instanceof btq) {
+         bsv $$2 = (bsv)$$1;
          return ags.a($$2);
-      } else if ($$1 instanceof bqz) {
-         return ((bqz)$$1).af().getString();
-      } else if ($$1 instanceof ccw) {
-         return a($$0, ((ccw)$$1).a());
-      } else if ($$1 instanceof bvt) {
-         return a($$0, ((bvt)$$1).c());
+      } else if ($$1 instanceof bra) {
+         return ((bra)$$1).af().getString();
+      } else if ($$1 instanceof ccx) {
+         return a($$0, ((ccx)$$1).a());
+      } else if ($$1 instanceof bvu) {
+         return a($$0, ((bvu)$$1).c());
       } else if ($$1 instanceof jh) {
          return a($$0, ((jh)$$1).b());
-      } else if ($$1 instanceof bvl) {
-         return a($$0, ((bvl)$$1).b());
-      } else if ($$1 instanceof brn) {
-         bsu $$3 = ((brn)$$1).d();
+      } else if ($$1 instanceof bvm) {
+         return a($$0, ((bvm)$$1).b());
+      } else if ($$1 instanceof bro) {
+         bsv $$3 = ((bro)$$1).d();
          return $$3 == null ? $$1.toString() : a($$0, $$3);
       } else if (!($$1 instanceof Collection)) {
          return $$1.toString();

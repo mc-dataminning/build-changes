@@ -1,25 +1,16 @@
-import java.util.Arrays;
+import com.mojang.serialization.MapCodec;
 
-public class bqb implements bqc {
-   private final bqc[] a;
+public interface bqb<P extends bqa> {
+   bqb<bpx> a = a("constant", bpx.b);
+   bqb<bqg> b = a("uniform", bqg.a);
+   bqb<bps> c = a("biased_to_bottom", bps.a);
+   bqb<bpt> d = a("clamped", bpt.a);
+   bqb<bqh> e = a("weighted_list", bqh.a);
+   bqb<bpv> f = a("clamped_normal", bpv.a);
 
-   public bqb(bqc... $$0) {
-      this.a = $$0;
-   }
+   MapCodec<P> codec();
 
-   @Override
-   public float a(azh $$0) {
-      float $$1 = 1.0F;
-
-      for (bqc $$2 : this.a) {
-         $$1 *= $$2.a($$0);
-      }
-
-      return $$1;
-   }
-
-   @Override
-   public String toString() {
-      return "MultipliedFloats" + Arrays.toString((Object[])this.a);
+   static <P extends bqa> bqb<P> a(String $$0, MapCodec<P> $$1) {
+      return jv.a(lp.M, $$0, () -> $$1);
    }
 }

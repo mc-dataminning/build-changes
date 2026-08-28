@@ -1,25 +1,20 @@
-public class glw extends giw<cof> {
-   private static final alf a = new alf("textures/entity/projectiles/wind_charge.png");
-   private final fwo f;
+public class glw extends gke<cmc, fwn<cmc>> {
+   private static final alf a = new alf("textures/entity/warden/warden.png");
+   private static final alf i = new alf("textures/entity/warden/warden_bioluminescent_layer.png");
+   private static final alf j = new alf("textures/entity/warden/warden_heart.png");
+   private static final alf k = new alf("textures/entity/warden/warden_pulsating_spots_1.png");
+   private static final alf l = new alf("textures/entity/warden/warden_pulsating_spots_2.png");
 
-   public glw(gix.a $$0) {
-      super($$0);
-      this.f = new fwo($$0.a(fwz.bT));
+   public glw(giy.a $$0) {
+      super($$0, new fwn<>($$0.a(fxa.bR)), 0.9F);
+      this.a(new gnw<>(this, i, ($$0x, $$1, $$2) -> 1.0F, fwn::e));
+      this.a(new gnw<>(this, k, ($$0x, $$1, $$2) -> Math.max(0.0F, ayz.b($$2 * 0.045F) * 0.25F), fwn::f));
+      this.a(new gnw<>(this, l, ($$0x, $$1, $$2) -> Math.max(0.0F, ayz.b($$2 * 0.045F + (float) Math.PI) * 0.25F), fwn::f));
+      this.a(new gnw<>(this, a, ($$0x, $$1, $$2) -> $$0x.G($$1), fwn::c));
+      this.a(new gnw<>(this, j, ($$0x, $$1, $$2) -> $$0x.H($$1), fwn::d));
    }
 
-   public void a(cof $$0, float $$1, float $$2, ezy $$3, gdo $$4, int $$5) {
-      float $$6 = (float)$$0.ai + $$2;
-      fac $$7 = $$4.getBuffer(gdw.a(a, this.a($$6) % 1.0F, 0.0F));
-      this.f.a($$0, 0.0F, 0.0F, $$6, 0.0F, 0.0F);
-      this.f.a($$3, $$7, $$5, goq.d, 1.0F, 1.0F, 1.0F, 1.0F);
-      super.a($$0, $$1, $$2, $$3, $$4, $$5);
-   }
-
-   protected float a(float $$0) {
-      return $$0 * 0.03F;
-   }
-
-   public alf a(cof $$0) {
+   public alf a(cmc $$0) {
       return a;
    }
 }

@@ -42,7 +42,7 @@ public class gl implements ArgumentType<gn> {
 
    public static iz c(CommandContext<ep> $$0, String $$1) throws CommandSyntaxException {
       iz $$2 = b($$0, $$1);
-      if (!dby.l($$2)) {
+      if (!dbz.l($$2)) {
          throw c.create();
       } else {
          return $$2;

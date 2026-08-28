@@ -1,6 +1,6 @@
 import com.mojang.serialization.MapCodec;
 
-public class dkq extends doa {
+public class dkq extends dmc {
    public static final MapCodec<dkq> b = b(dkq::new);
 
    @Override
@@ -8,7 +8,7 @@ public class dkq extends doa {
       return b;
    }
 
-   protected dkq(dsb.d $$0) {
-      super(dmb.b.e, $$0);
+   protected dkq(dsc.d $$0) {
+      super(dmc.b.e, $$0);
    }
 }

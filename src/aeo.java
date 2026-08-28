@@ -89,7 +89,7 @@ public class aeo implements zw<aci> {
          zl.t.encode($$0, $$2.getProperties());
       }),
       b(($$0, $$1) -> $$0.g = $$1.c(yg.a::a), ($$0, $$1) -> $$0.a($$1.g, yg.a::a)),
-      c(($$0, $$1) -> $$0.e = dbv.a($$1.l()), ($$0, $$1) -> $$0.c($$1.e().a())),
+      c(($$0, $$1) -> $$0.e = dbw.a($$1.l()), ($$0, $$1) -> $$0.c($$1.e().a())),
       d(($$0, $$1) -> $$0.c = $$1.readBoolean(), ($$0, $$1) -> $$0.a($$1.c())),
       e(($$0, $$1) -> $$0.d = $$1.l(), ($$0, $$1) -> $$0.c($$1.d())),
       f(($$0, $$1) -> $$0.f = wm.a($$1, xr.d), ($$0, $$1) -> wm.a($$0, $$1.f(), xr.d));
@@ -111,7 +111,7 @@ public class aeo implements zw<aci> {
       }
    }
 
-   public static record b(UUID a, @Nullable GameProfile b, boolean c, int d, dbv e, @Nullable xp f, @Nullable yg.a g) {
+   public static record b(UUID a, @Nullable GameProfile b, boolean c, int d, dbw e, @Nullable xp f, @Nullable yg.a g) {
 
       b(arg $$0) {
          this($$0.cz(), $$0.gb(), true, $$0.c.k(), $$0.e.b(), $$0.N(), x.a($$0.ab(), yg::a));
@@ -124,14 +124,14 @@ public class aeo implements zw<aci> {
       GameProfile b;
       boolean c;
       int d;
-      dbv e;
+      dbw e;
       @Nullable
       xp f;
       @Nullable
       yg.a g;
 
       c(UUID $$0) {
-         this.e = dbv.e;
+         this.e = dbw.e;
          this.a = $$0;
       }
 

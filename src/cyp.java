@@ -1,76 +1,49 @@
-import java.util.ArrayList;
-import java.util.List;
-
-public class cyp extends cyn {
-   private static final cys a = cys.a(cus.qO);
-   private static final cys b = cys.a(cus.pu);
-   private static final cys c = cys.a(cus.uv);
-
-   public cyp(cyl $$0) {
+public class cyp extends cyo {
+   public cyp(cym $$0) {
       super($$0);
    }
 
-   public boolean a(cqk $$0, dby $$1) {
-      boolean $$2 = false;
-      int $$3 = 0;
-
-      for (int $$4 = 0; $$4 < $$0.b(); $$4++) {
-         cup $$5 = $$0.a($$4);
-         if (!$$5.e()) {
-            if (a.a($$5)) {
-               if ($$2) {
-                  return false;
-               }
-
-               $$2 = true;
-            } else if (b.a($$5)) {
-               if (++$$3 > 3) {
-                  return false;
-               }
-            } else if (!c.a($$5)) {
-               return false;
+   public boolean a(cql $$0, dbz $$1) {
+      if (!this.a($$0.f(), $$0.g())) {
+         return false;
+      } else {
+         for (int $$2 = 0; $$2 < $$0.b(); $$2++) {
+            cuq $$3 = $$0.a($$2);
+            switch ($$2) {
+               case 1:
+               case 3:
+               case 5:
+               case 7:
+                  if (!$$3.a(awy.bq)) {
+                     return false;
+                  }
+                  break;
+               case 2:
+               case 4:
+               case 6:
+               default:
+                  if (!$$3.a(cut.a)) {
+                     return false;
+                  }
             }
          }
-      }
 
-      return $$2 && $$3 >= 1;
+         return true;
+      }
    }
 
-   public cup a(cqk $$0, jk.a $$1) {
-      List<cxi> $$2 = new ArrayList<>();
-      int $$3 = 0;
-
-      for (int $$4 = 0; $$4 < $$0.b(); $$4++) {
-         cup $$5 = $$0.a($$4);
-         if (!$$5.e()) {
-            if (b.a($$5)) {
-               $$3++;
-            } else if (c.a($$5)) {
-               cxi $$6 = $$5.a(km.T);
-               if ($$6 != null) {
-                  $$2.add($$6);
-               }
-            }
-         }
-      }
-
-      cup $$7 = new cup(cus.uu, 3);
-      $$7.b(km.U, new cxj($$3, $$2));
-      return $$7;
+   public cuq a(cql $$0, jk.a $$1) {
+      dqm $$2 = new dqm($$0.a(1).g(), $$0.a(3).g(), $$0.a(5).g(), $$0.a(7).g());
+      return dpy.a($$2);
    }
 
    @Override
    public boolean a(int $$0, int $$1) {
-      return $$0 * $$1 >= 2;
+      return $$0 == 3 && $$1 == 3;
    }
 
    @Override
-   public cup a(jk.a $$0) {
-      return new cup(cus.uu);
-   }
-
-   @Override
-   public cyz<?> ao_() {
-      return cyz.g;
+   public cza<?> ao_() {
+      return cza.w;
    }
 }

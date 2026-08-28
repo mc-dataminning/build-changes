@@ -3,12 +3,12 @@ import javax.annotation.Nullable;
 
 public class arr implements aro {
    private final aro a;
-   private final bpn<Runnable> b;
+   private final bpo<Runnable> b;
    private boolean c;
 
    private arr(aro $$0, Executor $$1) {
       this.a = $$0;
-      this.b = bpn.a($$1, "progressListener");
+      this.b = bpo.a($$1, "progressListener");
    }
 
    public static arr a(aro $$0, Executor $$1) {
@@ -18,12 +18,12 @@ public class arr implements aro {
    }
 
    @Override
-   public void a(dbf $$0) {
+   public void a(dbg $$0) {
       this.b.a(() -> this.a.a($$0));
    }
 
    @Override
-   public void a(dbf $$0, @Nullable dux $$1) {
+   public void a(dbg $$0, @Nullable duy $$1) {
       if (this.c) {
          this.b.a(() -> this.a.a($$0, $$1));
       }

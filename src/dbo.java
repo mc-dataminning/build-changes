@@ -1,19 +1,31 @@
-import java.util.Optional;
+import javax.annotation.Nullable;
 
-public class dbo extends dbr {
-   private final bsu a;
+public enum dbo implements dbf {
+   a;
 
-   public dbo(bsu $$0) {
-      this.a = $$0;
+   @Nullable
+   @Override
+   public dpi c_(iz $$0) {
+      return null;
    }
 
    @Override
-   public Optional<Float> a(dbq $$0, dbe $$1, iz $$2, dsc $$3, env $$4) {
-      return super.a($$0, $$1, $$2, $$3, $$4).map($$5 -> this.a.a($$0, $$1, $$2, $$3, $$4, $$5));
+   public dsd a_(iz $$0) {
+      return dfc.a.o();
    }
 
    @Override
-   public boolean a(dbq $$0, dbe $$1, iz $$2, dsc $$3, float $$4) {
-      return this.a.a($$0, $$1, $$2, $$3, $$4);
+   public enw b_(iz $$0) {
+      return enx.a.g();
+   }
+
+   @Override
+   public int I_() {
+      return 0;
+   }
+
+   @Override
+   public int J_() {
+      return 0;
    }
 }

@@ -1,13 +1,34 @@
-import com.mojang.datafixers.util.Either;
-import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
 
-public abstract class egr {
-   private static final Codec<Either<dyo, egr>> a = Codec.either(dyo.a, lp.N.q().dispatch(egr::a, egs::codec));
-   public static final Codec<egr> c = a.xmap(
-      $$0 -> (egr)$$0.map(egq::a, $$0x -> $$0x), $$0 -> $$0.a() == egs.a ? Either.left(((egq)$$0).b()) : Either.right($$0)
-   );
+public class egr extends egs {
+   public static final egr a = new egr(dyp.a(0));
+   public static final MapCodec<egr> b = dyp.a.fieldOf("value").xmap(egr::new, egr::b);
+   private final dyp d;
 
-   public abstract int a(azh var1, dyr var2);
+   public static egr a(dyp $$0) {
+      return new egr($$0);
+   }
 
-   public abstract egs<?> a();
+   private egr(dyp $$0) {
+      this.d = $$0;
+   }
+
+   public dyp b() {
+      return this.d;
+   }
+
+   @Override
+   public int a(azh $$0, dys $$1) {
+      return this.d.a($$1);
+   }
+
+   @Override
+   public egt<?> a() {
+      return egt.a;
+   }
+
+   @Override
+   public String toString() {
+      return this.d.toString();
+   }
 }

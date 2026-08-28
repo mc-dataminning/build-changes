@@ -1,60 +1,10 @@
-public class daj extends daa {
-   public final daj.a b;
-
-   public daj(daa.b $$0, daj.a $$1) {
+public class daj extends dab {
+   public daj(dab.b $$0) {
       super($$0);
-      this.b = $$1;
    }
 
    @Override
-   public int a(int $$0, brn $$1) {
-      if ($$1.a(awr.e)) {
-         return 0;
-      } else if (this.b == daj.a.a) {
-         return $$0;
-      } else if (this.b == daj.a.b && $$1.a(awr.j)) {
-         return $$0 * 2;
-      } else if (this.b == daj.a.c && $$1.a(awr.n)) {
-         return $$0 * 3;
-      } else if (this.b == daj.a.d && $$1.a(awr.m)) {
-         return $$0 * 2;
-      } else {
-         return this.b == daj.a.e && $$1.a(awr.k) ? $$0 * 2 : 0;
-      }
-   }
-
-   @Override
-   public boolean a(daa $$0) {
-      if ($$0 instanceof daj $$1) {
-         return this.b == $$1.b ? false : this.b == daj.a.c || $$1.b == daj.a.c;
-      } else {
-         return super.a($$0);
-      }
-   }
-
-   public static int a(btp $$0, int $$1) {
-      int $$2 = dab.a(dad.b, $$0);
-      if ($$2 > 0) {
-         $$1 -= ayz.d((float)$$1 * (float)$$2 * 0.15F);
-      }
-
-      return $$1;
-   }
-
-   public static double a(btp $$0, double $$1) {
-      int $$2 = dab.a(dad.d, $$0);
-      if ($$2 > 0) {
-         $$1 *= ayz.a(1.0 - (double)$$2 * 0.15, 0.0, 1.0);
-      }
-
-      return $$1;
-   }
-
-   public static enum a {
-      a,
-      b,
-      c,
-      d,
-      e;
+   public boolean a(dab $$0) {
+      return super.a($$0) && $$0 != dae.K;
    }
 }

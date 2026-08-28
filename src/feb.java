@@ -1,34 +1,53 @@
-public class feb extends fef {
-   private static final xp b = xp.c("mco.connect.connecting");
-   private final gvd c;
-   private final fbf d;
-   private final fbg e;
+import com.mojang.logging.LogUtils;
+import org.slf4j.Logger;
 
-   public feb(fnd $$0, fbf $$1, fbg $$2) {
-      this.d = $$1;
-      this.e = $$2;
-      this.c = new gvd($$0);
+public class feb extends feg {
+   private static final Logger b = LogUtils.getLogger();
+   private static final xp c = xp.c("mco.configure.world.closing");
+   private final fbg d;
+   private final fcp e;
+
+   public feb(fbg $$0, fcp $$1) {
+      this.d = $$0;
+      this.e = $$1;
    }
 
    @Override
    public void run() {
-      this.c.a(this.d, fzm.a(this.e.a));
-   }
+      fap $$0 = fap.a();
 
-   @Override
-   public void b() {
-      super.b();
-      this.c.a();
-      fff.Q().ae().i();
-   }
+      for (int $$1 = 0; $$1 < 25; $$1++) {
+         if (this.d()) {
+            return;
+         }
 
-   @Override
-   public void c() {
-      this.c.b();
+         try {
+            boolean $$2 = $$0.g(this.d.a);
+            if ($$2) {
+               this.e.b();
+               this.d.e = fbg.c.a;
+               a(this.e);
+               break;
+            }
+         } catch (fcd var4) {
+            if (this.d()) {
+               return;
+            }
+
+            a((long)var4.c);
+         } catch (Exception var5) {
+            if (this.d()) {
+               return;
+            }
+
+            b.error("Failed to close server", var5);
+            this.a(var5);
+         }
+      }
    }
 
    @Override
    public xp a() {
-      return b;
+      return c;
    }
 }

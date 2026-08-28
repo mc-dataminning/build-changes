@@ -1,103 +1,114 @@
-import it.unimi.dsi.fastutil.objects.Object2IntMap;
-import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
+public class fmn extends fmw {
+   private static final xp a = xp.c("options.languageAccuracyWarning").a(n.h);
+   private static final int r = 53;
+   private fmn.a s;
+   final gqi u;
 
-public class fmn extends fnd {
-   private static final long a = 2000L;
-   private final ars b;
-   private long c = -1L;
-   private boolean d;
-   private static final Object2IntMap<dux> r = ac.a(new Object2IntOpenHashMap(), $$0 -> {
-      $$0.defaultReturnValue(0);
-      $$0.put(dux.c, 5526612);
-      $$0.put(dux.d, 10066329);
-      $$0.put(dux.e, 6250897);
-      $$0.put(dux.f, 8434258);
-      $$0.put(dux.g, 13750737);
-      $$0.put(dux.h, 7497737);
-      $$0.put(dux.i, 3159410);
-      $$0.put(dux.j, 2213376);
-      $$0.put(dux.k, 13421772);
-      $$0.put(dux.l, 16769184);
-      $$0.put(dux.m, 15884384);
-      $$0.put(dux.n, 16777215);
-   });
-
-   public fmn(ars $$0) {
-      super(fex.a);
-      this.b = $$0;
+   public fmn(fne $$0, ffk $$1, gqi $$2) {
+      super($$0, $$1, xp.c("options.language.title"));
+      this.u = $$2;
    }
 
    @Override
-   public boolean aC_() {
-      return false;
+   protected void aM_() {
+      this.s = this.c(new fmn.a(this.m));
+      this.d.a(53);
+      super.aM_();
    }
 
    @Override
-   protected boolean aL_() {
-      return false;
+   protected void c() {
+      super.c();
+      this.s.a(this.n, this.d);
    }
 
    @Override
-   public void j() {
-      this.d = true;
-      this.d(true);
+   protected void h() {
+      fkw $$0 = this.d.b(fkw.d()).a(8);
+      $$0.c().b();
+      $$0.a(new fim(a, this.p));
+      fkw $$1 = $$0.a(fkw.e().a(8));
+      $$1.a(fhf.a(xp.c("options.font"), $$0x -> this.m.a(new fmj(this, this.c))).a());
+      $$1.a(fhf.a(xo.d, $$0x -> this.E()).a());
    }
 
-   @Override
-   protected void b(fla $$0) {
-      if (this.d) {
-         $$0.a(fkz.a, xp.c("narrator.loading.done"));
-      } else {
-         $$0.a(fkz.a, this.m());
-      }
-   }
-
-   private xp m() {
-      return xp.a("loading.progress", ayz.a(this.b.f(), 0, 100));
-   }
-
-   @Override
-   public void a(fgr $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      long $$4 = ac.c();
-      if ($$4 - this.c > 2000L) {
-         this.c = $$4;
-         this.d(true);
+   void E() {
+      fmn.a.a $$0 = this.s.h();
+      if ($$0 != null && !$$0.b.equals(this.u.a())) {
+         this.u.a($$0.b);
+         this.c.ac = $$0.b;
+         this.m.l();
       }
 
-      int $$5 = this.n / 2;
-      int $$6 = this.o / 2;
-      a($$0, this.b, $$5, $$6, 2, 0);
-      int $$7 = this.b.e() + 9 + 2;
-      $$0.a(this.p, this.m(), $$5, $$6 - $$7, 16777215);
+      this.m.a(this.b);
    }
 
-   public static void a(fgr $$0, ars $$1, int $$2, int $$3, int $$4, int $$5) {
-      int $$6 = $$4 + $$5;
-      int $$7 = $$1.d();
-      int $$8 = $$7 * $$6 - $$5;
-      int $$9 = $$1.e();
-      int $$10 = $$9 * $$6 - $$5;
-      int $$11 = $$2 - $$10 / 2;
-      int $$12 = $$3 - $$10 / 2;
-      int $$13 = $$8 / 2 + 1;
-      int $$14 = -16772609;
-      $$0.a(() -> {
-         if ($$5 != 0) {
-            $$0.a($$2 - $$13, $$3 - $$13, $$2 - $$13 + 1, $$3 + $$13, -16772609);
-            $$0.a($$2 + $$13 - 1, $$3 - $$13, $$2 + $$13, $$3 + $$13, -16772609);
-            $$0.a($$2 - $$13, $$3 - $$13, $$2 + $$13, $$3 - $$13 + 1, -16772609);
-            $$0.a($$2 - $$13, $$3 + $$13 - 1, $$2 + $$13, $$3 + $$13, -16772609);
+   class a extends fib<fmn.a.a> {
+      public a(final ffg $$0) {
+         super($$0, fmn.this.n, fmn.this.o - 33 - 53, 33, 18);
+         String $$1 = fmn.this.u.a();
+         fmn.this.u.b().forEach(($$1x, $$2) -> {
+            fmn.a.a $$3 = new fmn.a.a($$1x, $$2);
+            this.b($$3);
+            if ($$1.equals($$1x)) {
+               this.a($$3);
+            }
+         });
+         if (this.h() != null) {
+            this.e(this.h());
+         }
+      }
+
+      @Override
+      public int b() {
+         return super.b() + 50;
+      }
+
+      public class a extends fib.a<fmn.a.a> {
+         final String b;
+         private final xp c;
+         private long d;
+
+         public a(final String $$1, final gqh $$2) {
+            this.b = $$1;
+            this.c = $$2.a();
          }
 
-         for (int $$11x = 0; $$11x < $$9; $$11x++) {
-            for (int $$12x = 0; $$12x < $$9; $$12x++) {
-               dux $$13x = $$1.a($$11x, $$12x);
-               int $$14x = $$11 + $$11x * $$6;
-               int $$15 = $$12 + $$12x * $$6;
-               $$0.a($$14x, $$15, $$14x + $$4, $$15 + $$4, r.getInt($$13x) | 0xFF000000);
+         @Override
+         public void a(fgs $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
+            $$0.a(fmn.this.p, this.c, a.this.g / 2, $$2 + 1, -1);
+         }
+
+         @Override
+         public boolean a(int $$0, int $$1, int $$2) {
+            if (flg.a($$0)) {
+               this.b();
+               fmn.this.E();
+               return true;
+            } else {
+               return super.a($$0, $$1, $$2);
             }
          }
-      });
+
+         @Override
+         public boolean a(double $$0, double $$1, int $$2) {
+            this.b();
+            if (ac.c() - this.d < 250L) {
+               fmn.this.E();
+            }
+
+            this.d = ac.c();
+            return super.a($$0, $$1, $$2);
+         }
+
+         private void b() {
+            a.this.a(this);
+         }
+
+         @Override
+         public xp a() {
+            return xp.a("narrator.select", this.c);
+         }
+      }
    }
 }

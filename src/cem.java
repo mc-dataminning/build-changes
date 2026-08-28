@@ -1,22 +1,33 @@
-import javax.annotation.Nullable;
-
 public class cem {
-   @Nullable
-   public static evr a(bty $$0, int $$1, int $$2, double $$3, double $$4, float $$5, int $$6, int $$7) {
-      boolean $$8 = cel.a($$0, $$1);
-      return ceo.a($$0, () -> {
-         iz $$9 = ceo.a($$0.el(), $$1, $$2, 0, $$3, $$4, (double)$$5);
-         if ($$9 == null) {
-            return null;
-         } else {
-            iz $$10 = cen.a($$0, $$1, $$8, $$9);
-            if ($$10 == null) {
-               return null;
-            } else {
-               $$10 = ceo.a($$10, $$0.el().a($$6 - $$7 + 1) + $$7, $$0.dP().am(), $$1xx -> cel.c($$0, $$1xx));
-               return !cel.a($$0, $$10) && !cel.b($$0, $$10) ? $$10 : null;
-            }
-         }
-      });
+   public static boolean a(bts $$0) {
+      return $$0.K() instanceof cdb;
+   }
+
+   public static boolean a(btz $$0, int $$1) {
+      return $$0.gb() && $$0.fY().a($$0.dn(), (double)($$0.fZ() + (float)$$1) + 1.0);
+   }
+
+   public static boolean a(iz $$0, btz $$1) {
+      return $$0.v() < $$1.dP().I_() || $$0.v() > $$1.dP().am();
+   }
+
+   public static boolean a(boolean $$0, btz $$1, iz $$2) {
+      return $$0 && !$$1.a($$2);
+   }
+
+   public static boolean a(cdc $$0, iz $$1) {
+      return !$$0.a($$1);
+   }
+
+   public static boolean a(btz $$0, iz $$1) {
+      return $$0.dP().b_($$1).a(awv.a);
+   }
+
+   public static boolean b(btz $$0, iz $$1) {
+      return $$0.a(eos.b($$0, $$1)) != 0.0F;
+   }
+
+   public static boolean c(btz $$0, iz $$1) {
+      return $$0.dP().a_($$1).e();
    }
 }

@@ -1,9 +1,11 @@
-public class cpj {
-   final cpm a;
-   final long b;
+import java.util.Set;
 
-   cpj(cpm $$0, int $$1) {
-      this.a = $$0;
-      this.b = 1L << $$1;
+public interface cpj {
+   Set<ale<? extends jv<? extends cpj>>> bA = Set.of(lq.G, lq.f, lq.v, lq.Q, lq.u, lq.Y, lq.R);
+
+   cpm i();
+
+   default boolean a(cpm $$0) {
+      return this.i().a($$0);
    }
 }

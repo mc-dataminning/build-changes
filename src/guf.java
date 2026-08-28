@@ -1,59 +1,130 @@
-import com.mojang.logging.LogUtils;
-import java.io.IOException;
-import java.nio.channels.FileChannel;
-import java.nio.file.Path;
-import java.time.LocalDate;
-import java.util.Optional;
-import java.util.concurrent.CompletableFuture;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import com.mojang.authlib.minecraft.TelemetryEvent;
+import com.mojang.authlib.minecraft.TelemetrySession;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.MapCodec;
+import it.unimi.dsi.fastutil.objects.Object2ObjectLinkedOpenHashMap;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+import java.util.stream.Stream;
 
-public class guf implements AutoCloseable {
-   private static final Logger a = LogUtils.getLogger();
-   private static final String b = ".json";
-   private static final int c = 7;
-   private final bma d;
-   @Nullable
-   private CompletableFuture<Optional<gub>> e;
+public class guf {
+   static final Map<String, guf> h = new Object2ObjectLinkedOpenHashMap();
+   public static final Codec<guf> a = Codec.STRING.comapFlatMap($$0 -> {
+      guf $$1 = h.get($$0);
+      return $$1 != null ? DataResult.success($$1) : DataResult.error(() -> "No TelemetryEventType with key: '" + $$0 + "'");
+   }, guf::a);
+   private static final List<guh<?>> i = List.of(guh.a, guh.b, guh.c, guh.d, guh.e, guh.f, guh.g, guh.h, guh.m, guh.l);
+   private static final List<guh<?>> j = Stream.concat(i.stream(), Stream.of(guh.i, guh.j, guh.k)).toList();
+   public static final guf b = a("world_loaded", "WorldLoaded").a(j).a(guh.n).a(guh.o).b();
+   public static final guf c = a("performance_metrics", "PerformanceMetrics").a(j).a(guh.r).a(guh.s).a(guh.t).a(guh.u).a(guh.v).a(guh.w).a().b();
+   public static final guf d = a("world_load_times", "WorldLoadTimes").a(j).a(guh.x).a(guh.y).a().b();
+   public static final guf e = a("world_unloaded", "WorldUnloaded").a(j).a(guh.p).a(guh.q).b();
+   public static final guf f = a("advancement_made", "AdvancementMade").a(j).a(guh.D).a(guh.E).a().b();
+   public static final guf g = a("game_load_times", "GameLoadTimes").a(i).a(guh.z).a(guh.A).a(guh.B).a(guh.C).a().b();
+   private final String k;
+   private final String l;
+   private final List<guh<?>> m;
+   private final boolean n;
+   private final MapCodec<gub> o;
 
-   private guf(bma $$0) {
-      this.d = $$0;
+   guf(String $$0, String $$1, List<guh<?>> $$2, boolean $$3) {
+      this.k = $$0;
+      this.l = $$1;
+      this.m = $$2;
+      this.n = $$3;
+      this.o = gui.a($$2).xmap($$0x -> new gub(this, $$0x), gub::b);
    }
 
-   public static CompletableFuture<Optional<guf>> a(Path $$0) {
-      return CompletableFuture.supplyAsync(() -> {
-         try {
-            bma $$1 = bma.a($$0, ".json");
-            $$1.a().a(LocalDate.now(), 7).a();
-            return Optional.of(new guf($$1));
-         } catch (Exception var2) {
-            a.error("Failed to create telemetry log manager", var2);
-            return Optional.empty();
-         }
-      }, ac.g());
+   public static guf.a a(String $$0, String $$1) {
+      return new guf.a($$0, $$1);
    }
 
-   public CompletableFuture<Optional<guc>> a() {
-      if (this.e == null) {
-         this.e = CompletableFuture.supplyAsync(() -> {
-            try {
-               bma.e $$0 = this.d.a(LocalDate.now());
-               FileChannel $$1 = $$0.e();
-               return Optional.of(new gub($$1, ac.g()));
-            } catch (IOException var3) {
-               a.error("Failed to open channel for telemetry event log", var3);
-               return Optional.empty();
-            }
-         }, ac.g());
+   public String a() {
+      return this.k;
+   }
+
+   public List<guh<?>> b() {
+      return this.m;
+   }
+
+   public MapCodec<gub> c() {
+      return this.o;
+   }
+
+   public boolean d() {
+      return this.n;
+   }
+
+   public TelemetryEvent a(TelemetrySession $$0, gui $$1) {
+      TelemetryEvent $$2 = $$0.createNewEvent(this.l);
+
+      for (guh<?> $$3 : this.m) {
+         $$3.a($$1, $$2);
       }
 
-      return this.e.thenApply($$0 -> $$0.map(gub::a));
+      return $$2;
+   }
+
+   public <T> boolean a(guh<T> $$0) {
+      return this.m.contains($$0);
    }
 
    @Override
-   public void close() {
-      if (this.e != null) {
-         this.e.thenAccept($$0 -> $$0.ifPresent(gub::close));
+   public String toString() {
+      return "TelemetryEventType[" + this.k + "]";
+   }
+
+   public yd e() {
+      return this.a("title");
+   }
+
+   public yd f() {
+      return this.a("description");
+   }
+
+   private yd a(String $$0) {
+      return xp.c("telemetry.event." + this.k + "." + $$0);
+   }
+
+   public static List<guf> g() {
+      return List.copyOf(h.values());
+   }
+
+   public static class a {
+      private final String a;
+      private final String b;
+      private final List<guh<?>> c = new ArrayList<>();
+      private boolean d;
+
+      a(String $$0, String $$1) {
+         this.a = $$0;
+         this.b = $$1;
+      }
+
+      public guf.a a(List<guh<?>> $$0) {
+         this.c.addAll($$0);
+         return this;
+      }
+
+      public <T> guf.a a(guh<T> $$0) {
+         this.c.add($$0);
+         return this;
+      }
+
+      public guf.a a() {
+         this.d = true;
+         return this;
+      }
+
+      public guf b() {
+         guf $$0 = new guf(this.a, this.b, List.copyOf(this.c), this.d);
+         if (guf.h.putIfAbsent(this.a, $$0) != null) {
+            throw new IllegalStateException("Duplicate TelemetryEventType with key: '" + this.a + "'");
+         } else {
+            return $$0;
+         }
       }
    }
 }

@@ -1,18 +1,28 @@
-import java.util.function.Function;
+public class fus<T extends bsv> extends fuk<T> {
+   private static final String a = "knot";
+   private final fxb b;
+   private final fxb f;
 
-public abstract class fus<E extends bsu> extends fua<E> {
-   public fus() {
-      this(gdw::e);
+   public fus(fxb $$0) {
+      this.b = $$0;
+      this.f = $$0.b("knot");
    }
 
-   public fus(Function<alf, gdw> $$0) {
-      super($$0);
+   public static fxh b() {
+      fxj $$0 = new fxj();
+      fxk $$1 = $$0.a();
+      $$1.a("knot", fxg.c().a(0, 0).a(-3.0F, -8.0F, -3.0F, 6.0F, 8.0F, 6.0F), fxd.a);
+      return fxh.a($$0, 32, 32);
    }
 
    @Override
-   public void a(ezy $$0, fac $$1, int $$2, int $$3, float $$4, float $$5, float $$6, float $$7) {
-      this.d().forEach($$8 -> $$8.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7));
+   public fxb a() {
+      return this.b;
    }
 
-   public abstract Iterable<fxa> d();
+   @Override
+   public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
+      this.f.f = $$4 * (float) (Math.PI / 180.0);
+      this.f.e = $$5 * (float) (Math.PI / 180.0);
+   }
 }

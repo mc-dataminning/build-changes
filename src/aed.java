@@ -6,7 +6,7 @@ public class aed implements zw<aci> {
    private final float e;
    private final float f;
 
-   public aed(bsu $$0) {
+   public aed(bsv $$0) {
       this.b = $$0.du();
       this.c = $$0.dw();
       this.d = $$0.dA();

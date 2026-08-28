@@ -41,24 +41,24 @@ public class fo<T> implements ArgumentType<ji.c<T>> {
       }
    }
 
-   public static ji.c<bus> a(CommandContext<ep> $$0, String $$1) throws CommandSyntaxException {
+   public static ji.c<but> a(CommandContext<ep> $$0, String $$1) throws CommandSyntaxException {
       return a($$0, $$1, lq.c);
    }
 
-   public static ji.c<eal<?, ?>> b(CommandContext<ep> $$0, String $$1) throws CommandSyntaxException {
+   public static ji.c<eam<?, ?>> b(CommandContext<ep> $$0, String $$1) throws CommandSyntaxException {
       return a($$0, $$1, lq.aC);
    }
 
-   public static ji.c<eik> c(CommandContext<ep> $$0, String $$1) throws CommandSyntaxException {
+   public static ji.c<eil> c(CommandContext<ep> $$0, String $$1) throws CommandSyntaxException {
       return a($$0, $$1, lq.aJ);
    }
 
-   public static ji.c<bta<?>> d(CommandContext<ep> $$0, String $$1) throws CommandSyntaxException {
+   public static ji.c<btb<?>> d(CommandContext<ep> $$0, String $$1) throws CommandSyntaxException {
       return a($$0, $$1, lq.v);
    }
 
-   public static ji.c<bta<?>> e(CommandContext<ep> $$0, String $$1) throws CommandSyntaxException {
-      ji.c<bta<?>> $$2 = a($$0, $$1, lq.v);
+   public static ji.c<btb<?>> e(CommandContext<ep> $$0, String $$1) throws CommandSyntaxException {
+      ji.c<btb<?>> $$2 = a($$0, $$1, lq.v);
       if (!$$2.a().c()) {
          throw d.create($$2.h().a().toString());
       } else {
@@ -66,11 +66,11 @@ public class fo<T> implements ArgumentType<ji.c<T>> {
       }
    }
 
-   public static ji.c<bsa> f(CommandContext<ep> $$0, String $$1) throws CommandSyntaxException {
+   public static ji.c<bsb> f(CommandContext<ep> $$0, String $$1) throws CommandSyntaxException {
       return a($$0, $$1, lq.R);
    }
 
-   public static ji.c<daa> g(CommandContext<ep> $$0, String $$1) throws CommandSyntaxException {
+   public static ji.c<dab> g(CommandContext<ep> $$0, String $$1) throws CommandSyntaxException {
       return a($$0, $$1, lq.u);
    }
 

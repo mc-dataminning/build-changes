@@ -1,102 +1,81 @@
-import com.mojang.datafixers.DataFixer;
-import com.mojang.logging.LogUtils;
-import it.unimi.dsi.fastutil.booleans.BooleanConsumer;
-import it.unimi.dsi.fastutil.objects.Reference2IntOpenHashMap;
-import java.util.function.ToIntFunction;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import com.google.common.collect.Lists;
+import it.unimi.dsi.fastutil.objects.Object2BooleanLinkedOpenHashMap;
+import it.unimi.dsi.fastutil.objects.Object2BooleanMap;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.function.Consumer;
 
-public class frw extends fnd {
-   private static final Logger a = LogUtils.getLogger();
-   private static final ToIntFunction<ale<dby>> b = ac.a(new Reference2IntOpenHashMap(), $$0 -> {
-      $$0.put(dby.h, -13408734);
-      $$0.put(dby.i, -10075085);
-      $$0.put(dby.j, -8943531);
-      $$0.defaultReturnValue(-2236963);
-   });
-   private final BooleanConsumer c;
-   private final bqi d;
+public class frw extends fne {
+   private static final xp a = xp.c("selectWorld.experiments");
+   private static final xp b = xp.c("selectWorld.experiments.info").a(n.m);
+   private static final int c = 310;
+   private final fks d = new fks(this);
+   private final fne r;
+   private final aua s;
+   private final Consumer<aua> u;
+   private final Object2BooleanMap<atx> v = new Object2BooleanLinkedOpenHashMap();
 
-   @Nullable
-   public static frw a(fff $$0, BooleanConsumer $$1, DataFixer $$2, epw.c $$3, boolean $$4) {
-      try {
-         fsc $$5 = $$0.x();
-         aua $$6 = aud.a($$3);
+   public frw(fne $$0, aua $$1, Consumer<aua> $$2) {
+      super(a);
+      this.r = $$0;
+      this.s = $$1;
+      this.u = $$2;
 
-         frw var10;
-         try (amc $$7 = $$5.a($$3.h(), false, $$6)) {
-            eqc $$8 = $$7.d();
-            jw.b $$9 = $$7.c().a();
-            $$3.a($$9, $$8);
-            var10 = new frw($$1, $$2, $$3, $$8.J(), $$4, $$9);
+      for (atx $$3 : $$1.c()) {
+         if ($$3.l() == aub.d) {
+            this.v.put($$3, $$1.f().contains($$3));
          }
-
-         return var10;
-      } catch (Exception var13) {
-         a.warn("Failed to load datapacks, can't optimize world", var13);
-         return null;
       }
-   }
-
-   private frw(BooleanConsumer $$0, DataFixer $$1, epw.c $$2, dcc $$3, boolean $$4, jw $$5) {
-      super(xp.a("optimizeWorld.title", $$3.a()));
-      this.c = $$0;
-      this.d = new bqi($$2, $$1, $$5, $$4, false);
    }
 
    @Override
    protected void aM_() {
-      super.aM_();
-      this.c(fhe.a(xo.e, $$0 -> {
-         this.d.a();
-         this.c.accept(false);
-      }).a(this.n / 2 - 100, this.o / 4 + 150, 200, 20).a());
+      this.d.a(a, this.p);
+      fkw $$0 = this.d.c(fkw.d());
+      $$0.a(new fhz(b, this.p).d(310), $$0x -> $$0x.e(15));
+      fsa.a $$1 = fsa.a(310).a(2, true).b(4);
+      this.v.forEach(($$1x, $$2x) -> $$1.a(a($$1x), () -> this.v.getBoolean($$1x), $$1xx -> this.v.put($$1x, $$1xx)).a($$1x.c()));
+      $$1.a($$0::a);
+      fkw $$2 = this.d.b(fkw.e().a(8));
+      $$2.a(fhf.a(xo.d, $$0x -> this.m()).a());
+      $$2.a(fhf.a(xo.e, $$0x -> this.d()).a());
+      this.d.a($$1x -> {
+         fhd var10000 = this.c($$1x);
+      });
+      this.c();
+   }
+
+   private static xp a(atx $$0) {
+      String $$1 = "dataPack." + $$0.g() + ".name";
+      return (xp)(gqg.a($$1) ? xp.c($$1) : $$0.b());
    }
 
    @Override
-   public void e() {
-      if (this.d.b()) {
-         this.c.accept(true);
-      }
-   }
-
-   @Override
-   public void d() {
-      this.c.accept(false);
-   }
-
-   @Override
-   public void j() {
+   protected void c() {
       this.d.a();
    }
 
    @Override
-   public void a(fgr $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      $$0.a(this.p, this.l, this.n / 2, 20, 16777215);
-      int $$4 = this.n / 2 - 150;
-      int $$5 = this.n / 2 + 150;
-      int $$6 = this.o / 4 + 100;
-      int $$7 = $$6 + 10;
-      $$0.a(this.p, this.d.h(), this.n / 2, $$6 - 9 - 2, 10526880);
-      if (this.d.e() > 0) {
-         $$0.a($$4 - 1, $$6 - 1, $$5 + 1, $$7 + 1, -16777216);
-         $$0.b(this.p, xp.a("optimizeWorld.info.converted", this.d.f()), $$4, 40, 10526880);
-         $$0.b(this.p, xp.a("optimizeWorld.info.skipped", this.d.g()), $$4, 40 + 9 + 3, 10526880);
-         $$0.b(this.p, xp.a("optimizeWorld.info.total", this.d.e()), $$4, 40 + (9 + 3) * 2, 10526880);
-         int $$8 = 0;
+   public xp i() {
+      return xo.a(super.i(), b);
+   }
 
-         for (ale<dby> $$9 : this.d.c()) {
-            int $$10 = ayz.d(this.d.a($$9) * (float)($$5 - $$4));
-            $$0.a($$4 + $$8, $$6, $$4 + $$8 + $$10, $$7, b.applyAsInt($$9));
-            $$8 += $$10;
+   @Override
+   public void d() {
+      this.m.a(this.r);
+   }
+
+   private void m() {
+      List<atx> $$0 = new ArrayList<>(this.s.f());
+      List<atx> $$1 = new ArrayList<>();
+      this.v.forEach(($$2, $$3) -> {
+         $$0.remove($$2);
+         if ($$3) {
+            $$1.add($$2);
          }
-
-         int $$11 = this.d.f() + this.d.g();
-         xp $$12 = xp.a("optimizeWorld.progress.counter", $$11, this.d.e());
-         xp $$13 = xp.a("optimizeWorld.progress.percentage", ayz.d(this.d.d() * 100.0F));
-         $$0.a(this.p, $$12, this.n / 2, $$6 + 2 * 9 + 2, 10526880);
-         $$0.a(this.p, $$13, this.n / 2, $$6 + ($$7 - $$6) / 2 - 9 / 2, 10526880);
-      }
+      });
+      $$0.addAll(Lists.reverse($$1));
+      this.s.b($$0.stream().map(atx::g).toList());
+      this.u.accept(this.s);
    }
 }

@@ -1,31 +1,22 @@
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dms extends dja implements deq {
-   public static final MapCodec<dms> j = RecordCodecBuilder.mapCodec($$0 -> $$0.group(cti.q.fieldOf("color").forGetter(dms::b), u()).apply($$0, dms::new));
-   private final cti k;
+public class dms extends dnm implements der {
+   public static final MapCodec<dms> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(ctj.q.fieldOf("color").forGetter(dms::b), u()).apply($$0, dms::new));
+   private final ctj c;
 
    @Override
    public MapCodec<dms> a() {
-      return j;
+      return a;
    }
 
-   public dms(cti $$0, dsb.d $$1) {
+   public dms(ctj $$0, dsc.d $$1) {
       super($$1);
-      this.k = $$0;
-      this.k(
-         this.E
-            .b()
-            .a(a, Boolean.valueOf(false))
-            .a(b, Boolean.valueOf(false))
-            .a(c, Boolean.valueOf(false))
-            .a(d, Boolean.valueOf(false))
-            .a(e, Boolean.valueOf(false))
-      );
+      this.c = $$0;
    }
 
    @Override
-   public cti b() {
-      return this.k;
+   public ctj b() {
+      return this.c;
    }
 }

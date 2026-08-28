@@ -1,10 +1,8 @@
-public abstract class cez extends btr {
-   protected cez(bta<? extends cez> $$0, dby $$1) {
-      super($$0, $$1);
-   }
+import javax.annotation.ParametersAreNonnullByDefault;
 
-   @Override
-   public boolean a(cmx $$0) {
-      return false;
-   }
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface cez {
 }

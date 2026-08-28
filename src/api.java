@@ -106,9 +106,9 @@ public class api {
       $$0.register((LiteralArgumentBuilder)((LiteralArgumentBuilder)eq.a("tp").requires($$0x -> $$0x.c(2))).redirect($$1));
    }
 
-   private static int a(ep $$0, Collection<? extends bsu> $$1, bsu $$2) throws CommandSyntaxException {
-      for (bsu $$3 : $$1) {
-         a($$0, $$3, (arf)$$2.dP(), $$2.du(), $$2.dw(), $$2.dA(), EnumSet.noneOf(bud.class), $$2.dF(), $$2.dH(), null);
+   private static int a(ep $$0, Collection<? extends bsv> $$1, bsv $$2) throws CommandSyntaxException {
+      for (bsv $$3 : $$1) {
+         a($$0, $$3, (arf)$$2.dP(), $$2.du(), $$2.dw(), $$2.dA(), EnumSet.noneOf(bue.class), $$2.dF(), $$2.dH(), null);
       }
 
       if ($$1.size() == 1) {
@@ -120,36 +120,36 @@ public class api {
       return $$1.size();
    }
 
-   private static int a(ep $$0, Collection<? extends bsu> $$1, arf $$2, gn $$3, @Nullable gn $$4, @Nullable api.a $$5) throws CommandSyntaxException {
-      evr $$6 = $$3.a($$0);
-      evq $$7 = $$4 == null ? null : $$4.b($$0);
-      Set<bud> $$8 = EnumSet.noneOf(bud.class);
+   private static int a(ep $$0, Collection<? extends bsv> $$1, arf $$2, gn $$3, @Nullable gn $$4, @Nullable api.a $$5) throws CommandSyntaxException {
+      evs $$6 = $$3.a($$0);
+      evr $$7 = $$4 == null ? null : $$4.b($$0);
+      Set<bue> $$8 = EnumSet.noneOf(bue.class);
       if ($$3.a()) {
-         $$8.add(bud.a);
+         $$8.add(bue.a);
       }
 
       if ($$3.b()) {
-         $$8.add(bud.b);
+         $$8.add(bue.b);
       }
 
       if ($$3.c()) {
-         $$8.add(bud.c);
+         $$8.add(bue.c);
       }
 
       if ($$4 == null) {
-         $$8.add(bud.e);
-         $$8.add(bud.d);
+         $$8.add(bue.e);
+         $$8.add(bue.d);
       } else {
          if ($$4.a()) {
-            $$8.add(bud.e);
+            $$8.add(bue.e);
          }
 
          if ($$4.b()) {
-            $$8.add(bud.d);
+            $$8.add(bue.d);
          }
       }
 
-      for (bsu $$9 : $$1) {
+      for (bsv $$9 : $$1) {
          if ($$4 == null) {
             a($$0, $$9, $$2, $$6.c, $$6.d, $$6.e, $$8, $$9.dF(), $$9.dH(), $$5);
          } else {
@@ -170,9 +170,9 @@ public class api {
       return String.format(Locale.ROOT, "%f", $$0);
    }
 
-   private static void a(ep $$0, bsu $$1, arf $$2, double $$3, double $$4, double $$5, Set<bud> $$6, float $$7, float $$8, @Nullable api.a $$9) throws CommandSyntaxException {
+   private static void a(ep $$0, bsv $$1, arf $$2, double $$3, double $$4, double $$5, Set<bue> $$6, float $$7, float $$8, @Nullable api.a $$9) throws CommandSyntaxException {
       iz $$10 = iz.a($$3, $$4, $$5);
-      if (!dby.l($$10)) {
+      if (!dbz.l($$10)) {
          throw a.create();
       } else {
          float $$11 = ayz.g($$7);
@@ -182,12 +182,12 @@ public class api {
                $$9.perform($$0, $$1);
             }
 
-            if (!($$1 instanceof btp $$13) || !$$13.fE()) {
+            if (!($$1 instanceof btq $$13) || !$$13.fE()) {
                $$1.h($$1.ds().d(1.0, 0.0, 1.0));
                $$1.d(true);
             }
 
-            if ($$1 instanceof bty $$14) {
+            if ($$1 instanceof btz $$14) {
                $$14.K().n();
             }
          }
@@ -196,12 +196,12 @@ public class api {
 
    @FunctionalInterface
    interface a {
-      void perform(ep var1, bsu var2);
+      void perform(ep var1, bsv var2);
    }
 
-   static record b(bsu a, fb.a b) implements api.a {
+   static record b(bsv a, fb.a b) implements api.a {
       @Override
-      public void perform(ep $$0, bsu $$1) {
+      public void perform(ep $$0, bsv $$1) {
          if ($$1 instanceof arg $$2) {
             $$2.a($$0.m(), this.a, this.b);
          } else {
@@ -210,9 +210,9 @@ public class api {
       }
    }
 
-   static record c(evr a) implements api.a {
+   static record c(evs a) implements api.a {
       @Override
-      public void perform(ep $$0, bsu $$1) {
+      public void perform(ep $$0, bsv $$1) {
          $$1.a($$0.m(), this.a);
       }
    }

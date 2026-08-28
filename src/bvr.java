@@ -1,28 +1,81 @@
-import com.mojang.datafixers.kinds.App;
-import java.util.function.BiPredicate;
-import java.util.function.Function;
+import com.google.common.collect.ImmutableMap;
 
-public class bvr {
-   public static <E extends btp> bvj<E> a(int $$0, BiPredicate<E, bsu> $$1) {
-      return byv.a((Function<byv.b<E>, ? extends App<byv.c<E>, byy<E>>>)($$2 -> $$2.group($$2.a(cct.s)).apply($$2, $$3 -> ($$4, $$5, $$6) -> {
-               bsu $$7 = $$5.dc();
-               bsu $$8 = $$2.<bsu>a($$3).orElse(null);
-               if ($$7 == null && $$8 == null) {
-                  return false;
-               } else {
-                  bsu $$9 = $$7 == null ? $$8 : $$7;
-                  if (a($$5, $$9, $$0) && !$$1.test((E)$$5, $$9)) {
-                     return false;
-                  } else {
-                     $$5.ac();
-                     $$3.b();
-                     return true;
-                  }
-               }
-            })));
+public class bvr<E extends bts & cjr, T extends btq> extends bvj<E> {
+   private static final int c = 1200;
+   private int d;
+   private bvr.a e = bvr.a.a;
+
+   public bvr() {
+      super(ImmutableMap.of(ccu.n, ccv.c, ccu.o, ccv.a), 1200);
    }
 
-   private static boolean a(btp $$0, bsu $$1, int $$2) {
-      return $$1.bD() && $$1.a($$0, (double)$$2) && $$1.dP() == $$0.dP();
+   protected boolean a(arf $$0, E $$1) {
+      btq $$2 = b($$1);
+      return $$1.b(cut.vT) && bvl.b($$1, $$2) && bvl.a($$1, $$2, 0);
+   }
+
+   protected boolean a(arf $$0, E $$1, long $$2) {
+      return $$1.dS().a(ccu.o) && this.a($$0, $$1);
+   }
+
+   protected void b(arf $$0, E $$1, long $$2) {
+      btq $$3 = b($$1);
+      this.b($$1, $$3);
+      this.a($$1, $$3);
+   }
+
+   protected void c(arf $$0, E $$1, long $$2) {
+      if ($$1.fv()) {
+         $$1.fB();
+      }
+
+      if ($$1.b(cut.vT)) {
+         $$1.b(false);
+         $$1.fx().b(km.E, cxe.a);
+      }
+   }
+
+   private void a(E $$0, btq $$1) {
+      if (this.e == bvr.a.a) {
+         $$0.c(cns.a($$0, cut.vT));
+         this.e = bvr.a.b;
+         $$0.b(true);
+      } else if (this.e == bvr.a.b) {
+         if (!$$0.fv()) {
+            this.e = bvr.a.a;
+         }
+
+         int $$2 = $$0.fz();
+         cuq $$3 = $$0.fx();
+         if ($$2 >= ctd.l($$3)) {
+            $$0.fA();
+            this.e = bvr.a.c;
+            this.d = 20 + $$0.el().a(20);
+            $$0.b(false);
+         }
+      } else if (this.e == bvr.a.c) {
+         this.d--;
+         if (this.d == 0) {
+            this.e = bvr.a.d;
+         }
+      } else if (this.e == bvr.a.d) {
+         $$0.a($$1, 1.0F);
+         this.e = bvr.a.a;
+      }
+   }
+
+   private void b(bts $$0, btq $$1) {
+      $$0.dS().a(ccu.n, new bvu($$1, true));
+   }
+
+   private static btq b(btq $$0) {
+      return $$0.dS().c(ccu.o).get();
+   }
+
+   static enum a {
+      a,
+      b,
+      c,
+      d;
    }
 }

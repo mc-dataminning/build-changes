@@ -14,7 +14,7 @@ public class bdb extends bfv {
 
    @Override
    protected Typed<?> a(Typed<?> $$0) {
-      OpticFinder<Pair<String, String>> $$1 = DSL.fieldFinder("id", DSL.named(bgx.D.typeName(), bii.a()));
+      OpticFinder<Pair<String, String>> $$1 = DSL.fieldFinder("id", DSL.named(bgx.D.typeName(), bij.a()));
       Type<?> $$2 = this.getInputSchema().getTypeRaw(bgx.t);
       OpticFinder<?> $$3 = DSL.fieldFinder("SaddleItem", $$2);
       Optional<? extends Typed<?>> $$4 = $$0.getOptionalTyped($$3);

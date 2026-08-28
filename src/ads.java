@@ -20,7 +20,7 @@ public class ads implements zw<aci> {
       this.i = $$0.l();
    }
 
-   public ads(dtt $$0) {
+   public ads(dtu $$0) {
       this.b = $$0.a();
       this.c = $$0.b();
       this.d = $$0.i();

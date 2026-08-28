@@ -27,7 +27,7 @@ public class amu {
                                              (ep)$$0x.getSource(),
                                              fc.a($$0x, "target"),
                                              FloatArgumentType.getFloat($$0x, "amount"),
-                                             new brn(fo.a($$0x, "damageType", lq.s))
+                                             new bro(fo.a($$0x, "damageType", lq.s))
                                           )
                                     ))
                                  .then(
@@ -39,7 +39,7 @@ public class amu {
                                                       (ep)$$0x.getSource(),
                                                       fc.a($$0x, "target"),
                                                       FloatArgumentType.getFloat($$0x, "amount"),
-                                                      new brn(fo.a($$0x, "damageType", lq.s), gs.a($$0x, "location"))
+                                                      new bro(fo.a($$0x, "damageType", lq.s), gs.a($$0x, "location"))
                                                    )
                                              )
                                        )
@@ -53,7 +53,7 @@ public class amu {
                                                       (ep)$$0x.getSource(),
                                                       fc.a($$0x, "target"),
                                                       FloatArgumentType.getFloat($$0x, "amount"),
-                                                      new brn(fo.a($$0x, "damageType", lq.s), fc.a($$0x, "entity"))
+                                                      new bro(fo.a($$0x, "damageType", lq.s), fc.a($$0x, "entity"))
                                                    )
                                              ))
                                           .then(
@@ -65,7 +65,7 @@ public class amu {
                                                                (ep)$$0x.getSource(),
                                                                fc.a($$0x, "target"),
                                                                FloatArgumentType.getFloat($$0x, "amount"),
-                                                               new brn(fo.a($$0x, "damageType", lq.s), fc.a($$0x, "entity"), fc.a($$0x, "cause"))
+                                                               new bro(fo.a($$0x, "damageType", lq.s), fc.a($$0x, "entity"), fc.a($$0x, "cause"))
                                                             )
                                                       )
                                                 )
@@ -78,7 +78,7 @@ public class amu {
       );
    }
 
-   private static int a(ep $$0, bsu $$1, float $$2, brn $$3) throws CommandSyntaxException {
+   private static int a(ep $$0, bsv $$1, float $$2, bro $$3) throws CommandSyntaxException {
       if ($$1.a($$3, $$2)) {
          $$0.a(() -> xp.a("commands.damage.success", $$2, $$1.O_()), true);
          return 1;

@@ -23,11 +23,11 @@ import org.lwjgl.glfw.GLFW;
 import org.lwjgl.glfw.GLFWErrorCallbackI;
 import org.slf4j.Logger;
 
-@exq
+@exr
 public class RenderSystem {
    static final Logger LOGGER = LogUtils.getLogger();
-   private static final ConcurrentLinkedQueue<eyi> recordingQueue = Queues.newConcurrentLinkedQueue();
-   private static final faa RENDER_THREAD_TESSELATOR = new faa(1536);
+   private static final ConcurrentLinkedQueue<eyj> recordingQueue = Queues.newConcurrentLinkedQueue();
+   private static final fab RENDER_THREAD_TESSELATOR = new fab(1536);
    private static final int MINIMUM_ATLAS_TEXTURE_SIZE = 1024;
    private static boolean isReplayingQueue;
    @Nullable
@@ -56,8 +56,8 @@ public class RenderSystem {
    });
    private static Matrix4f projectionMatrix = new Matrix4f();
    private static Matrix4f savedProjectionMatrix = new Matrix4f();
-   private static fag vertexSorting = fag.a;
-   private static fag savedVertexSorting = fag.a;
+   private static fah vertexSorting = fah.a;
+   private static fah savedVertexSorting = fah.a;
    private static final Matrix4fStack modelViewStack = new Matrix4fStack(16);
    private static Matrix4f modelViewMatrix = new Matrix4f();
    private static Matrix4f textureMatrix = new Matrix4f();
@@ -67,13 +67,13 @@ public class RenderSystem {
    private static float shaderFogStart;
    private static float shaderFogEnd = 1.0F;
    private static final float[] shaderFogColor = new float[]{0.0F, 0.0F, 0.0F, 0.0F};
-   private static ezl shaderFogShape = ezl.a;
+   private static ezm shaderFogShape = ezm.a;
    private static final Vector3f[] shaderLightDirections = new Vector3f[2];
    private static float shaderGameTime;
    private static float shaderLineWidth = 1.0F;
    private static String apiDescription = "Unknown";
    @Nullable
-   private static gec shader;
+   private static ged shader;
    private static final AtomicLong pollEventsWaitStart = new AtomicLong();
    private static final AtomicBoolean pollingEvents = new AtomicBoolean(false);
 
@@ -144,7 +144,7 @@ public class RenderSystem {
       return true;
    }
 
-   public static void recordRenderCall(eyi $$0) {
+   public static void recordRenderCall(eyj $$0) {
       recordingQueue.add($$0);
    }
 
@@ -162,7 +162,7 @@ public class RenderSystem {
    public static void flipFrame(long $$0) {
       pollEvents();
       replayQueue();
-      faa.b().d().g();
+      fab.b().d().g();
       GLFW.glfwSwapBuffers($$0);
       pollEvents();
    }
@@ -171,7 +171,7 @@ public class RenderSystem {
       isReplayingQueue = true;
 
       while (!recordingQueue.isEmpty()) {
-         eyi $$0 = recordingQueue.poll();
+         eyj $$0 = recordingQueue.poll();
          $$0.execute();
       }
 
@@ -436,16 +436,16 @@ public class RenderSystem {
       return shaderFogColor;
    }
 
-   public static void setShaderFogShape(ezl $$0) {
+   public static void setShaderFogShape(ezm $$0) {
       assertOnRenderThread();
       _setShaderFogShape($$0);
    }
 
-   private static void _setShaderFogShape(ezl $$0) {
+   private static void _setShaderFogShape(ezm $$0) {
       shaderFogShape = $$0;
    }
 
-   public static ezl getShaderFogShape() {
+   public static ezm getShaderFogShape() {
       assertOnRenderThread();
       return shaderFogShape;
    }
@@ -460,7 +460,7 @@ public class RenderSystem {
       shaderLightDirections[1] = $$1;
    }
 
-   public static void setupShaderLights(gec $$0) {
+   public static void setupShaderLights(ged $$0) {
       assertOnRenderThread();
       if ($$0.g != null) {
          $$0.g.a(shaderLightDirections[0]);
@@ -732,7 +732,7 @@ public class RenderSystem {
       }
    }
 
-   public static faa renderThreadTesselator() {
+   public static fab renderThreadTesselator() {
       assertOnRenderThread();
       return RENDER_THREAD_TESSELATOR;
    }
@@ -745,19 +745,19 @@ public class RenderSystem {
 
    @Deprecated
    public static void runAsFancy(Runnable $$0) {
-      boolean $$1 = fff.O();
+      boolean $$1 = ffg.O();
       if (!$$1) {
          $$0.run();
       } else {
-         ffi<fey> $$2 = fff.Q().m.j();
-         fey $$3 = $$2.c();
-         $$2.a(fey.b);
+         ffj<fez> $$2 = ffg.Q().m.j();
+         fez $$3 = $$2.c();
+         $$2.a(fez.b);
          $$0.run();
          $$2.a($$3);
       }
    }
 
-   public static void setShader(Supplier<gec> $$0) {
+   public static void setShader(Supplier<ged> $$0) {
       if (!isOnRenderThread()) {
          recordRenderCall(() -> shader = $$0.get());
       } else {
@@ -766,7 +766,7 @@ public class RenderSystem {
    }
 
    @Nullable
-   public static gec getShader() {
+   public static ged getShader() {
       assertOnRenderThread();
       return shader;
    }
@@ -781,8 +781,8 @@ public class RenderSystem {
 
    public static void _setShaderTexture(int $$0, alf $$1) {
       if ($$0 >= 0 && $$0 < shaderTextures.length) {
-         gpa $$2 = fff.Q().aa();
-         gok $$3 = $$2.b($$1);
+         gpb $$2 = ffg.Q().aa();
+         gol $$3 = $$2.b($$1);
          shaderTextures[$$0] = $$3.a();
       }
    }
@@ -806,7 +806,7 @@ public class RenderSystem {
       return $$0 >= 0 && $$0 < shaderTextures.length ? shaderTextures[$$0] : 0;
    }
 
-   public static void setProjectionMatrix(Matrix4f $$0, fag $$1) {
+   public static void setProjectionMatrix(Matrix4f $$0, fah $$1) {
       Matrix4f $$2 = new Matrix4f($$0);
       if (!isOnRenderThread()) {
          recordRenderCall(() -> {
@@ -890,7 +890,7 @@ public class RenderSystem {
       return textureMatrix;
    }
 
-   public static RenderSystem.a getSequentialBuffer(fad.b $$0) {
+   public static RenderSystem.a getSequentialBuffer(fae.b $$0) {
       assertOnRenderThread();
 
       return switch ($$0) {
@@ -914,7 +914,7 @@ public class RenderSystem {
       return shaderGameTime;
    }
 
-   public static fag getVertexSorting() {
+   public static fah getVertexSorting() {
       assertOnRenderThread();
       return vertexSorting;
    }
@@ -924,7 +924,7 @@ public class RenderSystem {
       private final int b;
       private final RenderSystem.a.a c;
       private int d;
-      private fad.a e = fad.a.a;
+      private fae.a e = fae.a.a;
       private int f;
 
       a(int $$0, int $$1, RenderSystem.a.a $$2) {
@@ -952,7 +952,7 @@ public class RenderSystem {
             RenderSystem.LOGGER.debug("Growing IndexBuffer: Old limit {}, new limit {}.", this.f, $$0);
             int $$1 = $$0 / this.b;
             int $$2 = $$1 * this.a;
-            fad.a $$3 = fad.a.a($$2);
+            fae.a $$3 = fae.a.a($$2);
             int $$4 = ayz.d($$0 * $$3.d, 4);
             GlStateManager._glBufferData(34963, (long)$$4, 35048);
             ByteBuffer $$5 = GlStateManager._glMapBuffer(34963, 35001);
@@ -982,7 +982,7 @@ public class RenderSystem {
          }
       }
 
-      public fad.a a() {
+      public fae.a a() {
          return this.e;
       }
 

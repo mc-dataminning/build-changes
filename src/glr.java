@@ -1,17 +1,17 @@
-public class glr extends gkd<ckr, fwj> {
-   private static final alf a = new alf("textures/entity/illager/vex.png");
-   private static final alf i = new alf("textures/entity/illager/vex_charging.png");
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.Maps;
+import java.util.Map;
 
-   public glr(gix.a $$0) {
-      super($$0, new fwj($$0.a(fwz.bO)), 0.3F);
-      this.a(new gnc<>(this, $$0.d()));
+public class glr extends ghs<chk, fum<chk>> {
+   private static final Map<btb<?>, alf> a = Maps.newHashMap(
+      ImmutableMap.of(btb.bv, new alf("textures/entity/horse/horse_zombie.png"), btb.aO, new alf("textures/entity/horse/horse_skeleton.png"))
+   );
+
+   public glr(giy.a $$0, fwz $$1) {
+      super($$0, new fum<>($$0.a($$1)), 1.0F);
    }
 
-   protected int a(ckr $$0, iz $$1) {
-      return 15;
-   }
-
-   public alf a(ckr $$0) {
-      return $$0.gr() ? i : a;
+   public alf a(chk $$0) {
+      return a.get($$0.ak());
    }
 }

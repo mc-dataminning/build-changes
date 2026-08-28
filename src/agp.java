@@ -5,12 +5,12 @@ public class agp implements zw<aci> {
    private static final int d = 4;
    private static final int e = 8;
    private final int f;
-   private final ji<bsa> g;
+   private final ji<bsb> g;
    private final int h;
    private final int i;
    private final byte j;
 
-   public agp(int $$0, bsc $$1, boolean $$2) {
+   public agp(int $$0, bsd $$1, boolean $$2) {
       this.f = $$0;
       this.g = $$1.c();
       this.h = $$1.e();
@@ -64,7 +64,7 @@ public class agp implements zw<aci> {
       return this.f;
    }
 
-   public ji<bsa> e() {
+   public ji<bsb> e() {
       return this.g;
    }
 

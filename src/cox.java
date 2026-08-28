@@ -1,147 +1,192 @@
 import javax.annotation.Nullable;
-import net.minecraft.server.MinecraftServer;
 
-public interface cox extends bqn, bqy {
-   evr dn();
-
-   evm cK();
-
+public class cox extends cow implements btj, coy {
+   private static final int i = 27;
+   private jr<cuq> j = jr.a(27, cuq.l);
    @Nullable
-   ale<eqn> B();
+   private ale<eqo> k;
+   private long l;
 
-   void a(@Nullable ale<eqn> var1);
+   public cox(btb<? extends cow> $$0, dbz $$1) {
+      super($$0, $$1);
+   }
 
-   long C();
-
-   void a(long var1);
-
-   jr<cup> D();
-
-   void E();
-
-   dby dP();
-
-   boolean dK();
+   public cox(dbz $$0, double $$1, double $$2, double $$3) {
+      super(btb.r, $$0);
+      this.a_($$1, $$2, $$3);
+      this.L = $$1;
+      this.M = $$2;
+      this.N = $$3;
+   }
 
    @Override
-   default boolean c() {
-      return this.g();
+   protected float w() {
+      return 0.15F;
    }
 
-   default void a(us $$0, jk.a $$1) {
-      if (this.B() != null) {
-         $$0.a("LootTable", this.B().a().toString());
-         if (this.C() != 0L) {
-            $$0.a("LootTableSeed", this.C());
-         }
+   @Override
+   protected int y() {
+      return 1;
+   }
+
+   @Override
+   protected void b(us $$0) {
+      super.b($$0);
+      this.a($$0, this.dR());
+   }
+
+   @Override
+   protected void a(us $$0) {
+      super.a($$0);
+      this.b($$0, this.dR());
+   }
+
+   @Override
+   public void a(bro $$0) {
+      this.b(this.ag_());
+      this.a($$0, this.dP(), this);
+   }
+
+   @Override
+   public void a(bsv.c $$0) {
+      if (!this.dP().B && $$0.a()) {
+         bqr.a(this.dP(), this, this);
+      }
+
+      super.a($$0);
+   }
+
+   @Override
+   public bqv a(cmy $$0, bqu $$1) {
+      if (this.r($$0) && !$$0.fR()) {
+         return super.a($$0, $$1);
       } else {
-         bqo.a($$0, this.D(), $$1);
-      }
-   }
-
-   default void b(us $$0, jk.a $$1) {
-      this.E();
-      if ($$0.b("LootTable", 8)) {
-         this.a(ale.a(lq.aU, new alf($$0.l("LootTable"))));
-         this.a($$0.i("LootTableSeed"));
-      } else {
-         bqo.b($$0, this.D(), $$1);
-      }
-   }
-
-   default void a(brn $$0, dby $$1, bsu $$2) {
-      if ($$1.ab().b(dbu.i)) {
-         bqq.a($$1, $$2, this);
-         if (!$$1.B) {
-            bsu $$3 = $$0.c();
-            if ($$3 != null && $$3.ak() == bta.by) {
-               clo.a((cmx)$$3, true);
-            }
+         bqv $$2 = this.c_($$0);
+         if ($$2.a()) {
+            this.a(dww.k, $$0);
+            clp.a($$0, true);
          }
+
+         return $$2;
       }
    }
 
-   default bqu c_(cmx $$0) {
+   @Override
+   public void b(cmy $$0) {
       $$0.a(this);
-      return !$$0.dP().B ? bqu.c : bqu.a;
-   }
-
-   default void f(@Nullable cmx $$0) {
-      MinecraftServer $$1 = this.dP().o();
-      if (this.B() != null && $$1 != null) {
-         eqn $$2 = $$1.be().b(this.B());
-         if ($$0 != null) {
-            am.Q.a((arg)$$0, this.B());
-         }
-
-         this.a(null);
-         eql.a $$3 = new eql.a((arf)this.dP()).a(ete.f, this.dn());
-         if ($$0 != null) {
-            $$3.a($$0.gy()).a(ete.a, $$0);
-         }
-
-         $$2.a(this, $$3.a(etd.c), this.C());
+      if (!$$0.dP().B) {
+         this.a(dww.k, $$0);
+         clp.a($$0, true);
       }
    }
 
-   default void f() {
-      this.f(null);
-      this.D().clear();
+   @Override
+   public cul ag_() {
+      return switch (this.x()) {
+         case b -> cut.nX;
+         case c -> cut.nZ;
+         case d -> cut.ob;
+         case e -> cut.od;
+         case f -> cut.of;
+         case g -> cut.oh;
+         case h -> cut.oj;
+         case i -> cut.ol;
+         default -> cut.nV;
+      };
    }
 
-   default boolean g() {
-      for (cup $$0 : this.D()) {
-         if (!$$0.e()) {
-            return false;
-         }
-      }
-
-      return true;
+   @Override
+   public void a() {
+      this.f();
    }
 
-   default cup e_(int $$0) {
-      this.f(null);
-      cup $$1 = this.D().get($$0);
-      if ($$1.e()) {
-         return cup.l;
+   @Override
+   public int b() {
+      return 27;
+   }
+
+   @Override
+   public cuq a(int $$0) {
+      return this.f_($$0);
+   }
+
+   @Override
+   public cuq a(int $$0, int $$1) {
+      return this.b($$0, $$1);
+   }
+
+   @Override
+   public cuq b(int $$0) {
+      return this.e_($$0);
+   }
+
+   @Override
+   public void a(int $$0, cuq $$1) {
+      this.c($$0, $$1);
+   }
+
+   @Override
+   public bui a_(int $$0) {
+      return this.g_($$0);
+   }
+
+   @Override
+   public void e() {
+   }
+
+   @Override
+   public boolean a(cmy $$0) {
+      return this.g($$0);
+   }
+
+   @Nullable
+   @Override
+   public cpv createMenu(int $$0, cmx $$1, cmy $$2) {
+      if (this.k != null && $$2.N_()) {
+         return null;
       } else {
-         this.D().set($$0, cup.l);
-         return $$1;
+         this.e($$1.l);
+         return cqc.a($$0, $$1, this);
       }
    }
 
-   default cup f_(int $$0) {
-      this.f(null);
-      return this.D().get($$0);
+   public void e(@Nullable cmy $$0) {
+      this.f($$0);
    }
 
-   default cup b(int $$0, int $$1) {
-      this.f(null);
-      return bqo.a(this.D(), $$0, $$1);
+   @Nullable
+   @Override
+   public ale<eqo> B() {
+      return this.k;
    }
 
-   default void c(int $$0, cup $$1) {
-      this.f(null);
-      this.D().set($$0, $$1);
-      $$1.f(this.e_($$1));
+   @Override
+   public void a(@Nullable ale<eqo> $$0) {
+      this.k = $$0;
    }
 
-   default buh g_(final int $$0) {
-      return $$0 >= 0 && $$0 < this.b() ? new buh() {
-         @Override
-         public cup a() {
-            return cox.this.f_($$0);
-         }
-
-         @Override
-         public boolean a(cup $$0x) {
-            cox.this.c($$0, $$0);
-            return true;
-         }
-      } : buh.a;
+   @Override
+   public long C() {
+      return this.l;
    }
 
-   default boolean g(cmx $$0) {
-      return !this.dK() && $$0.a(this.cK(), 4.0);
+   @Override
+   public void a(long $$0) {
+      this.l = $$0;
+   }
+
+   @Override
+   public jr<cuq> D() {
+      return this.j;
+   }
+
+   @Override
+   public void E() {
+      this.j = jr.a(this.b(), cuq.l);
+   }
+
+   @Override
+   public void c(cmy $$0) {
+      this.dP().a(dww.j, this.dn(), dww.a.a($$0));
    }
 }

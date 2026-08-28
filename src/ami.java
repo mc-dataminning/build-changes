@@ -110,7 +110,7 @@ public class ami {
    }
 
    private Optional<ami.a> b(Scanner $$0) {
-      ale<dby> $$1 = (ale<dby>)amr.a.get($$0.next());
+      ale<dbz> $$1 = (ale<dbz>)amr.a.get($$0.next());
       if ($$1 == null) {
          return Optional.empty();
       } else {
@@ -119,7 +119,7 @@ public class ami {
          float $$4 = $$0.nextFloat();
          float $$5 = $$0.nextFloat();
          float $$6 = $$0.nextFloat();
-         return Optional.of(new ami.a($$1, new evr((double)$$2, (double)$$3, (double)$$4), new evq($$6, $$5)));
+         return Optional.of(new ami.a($$1, new evs((double)$$2, (double)$$3, (double)$$4), new evr($$6, $$5)));
       }
    }
 
@@ -129,13 +129,13 @@ public class ami {
          if (!$$1.isEmpty()) {
             arg $$2 = $$1.get(0);
             arf $$3 = this.e.I();
-            ep $$4 = new ep($$2, evr.a($$3.V()), evq.a, $$3, 4, "", xo.a, this.e, $$2);
+            ep $$4 = new ep($$2, evs.a($$3.V()), evr.a, $$3, 4, "", xo.a, this.e, $$2);
             eq $$5 = this.e.aH();
             $$5.a($$4, $$0);
          }
       });
    }
 
-   static record a(ale<dby> a, evr b, evq c) {
+   static record a(ale<dbz> a, evs b, evr c) {
    }
 }

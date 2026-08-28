@@ -1,43 +1,93 @@
-import com.mojang.blaze3d.systems.RenderSystem;
-import javax.annotation.Nullable;
+import org.joml.Matrix3f;
+import org.joml.Matrix4f;
+import org.joml.Vector3f;
+import org.joml.Vector4f;
 
-public class faa {
-   private static final int a = 786432;
-   private final ezt b;
-   @Nullable
-   private static faa c;
+public class faa extends ezy {
+   private final fad f;
+   private final Matrix4f g;
+   private final Matrix3f h;
+   private final float i;
+   private float j;
+   private float k;
+   private float l;
+   private int m;
+   private int n;
+   private int o;
+   private float p;
+   private float q;
+   private float r;
 
-   public static void a() {
-      RenderSystem.assertOnGameThreadOrInit();
-      if (c != null) {
-         throw new IllegalStateException("Tesselator has already been initialized");
-      } else {
-         c = new faa();
-      }
+   public faa(fad $$0, ezz.a $$1, float $$2) {
+      this.f = $$0;
+      this.g = new Matrix4f($$1.a()).invert();
+      this.h = new Matrix3f($$1.b()).invert();
+      this.i = $$2;
+      this.a();
    }
 
-   public static faa b() {
-      RenderSystem.assertOnGameThreadOrInit();
-      if (c == null) {
-         throw new IllegalStateException("Tesselator has not been initialized");
-      } else {
-         return c;
-      }
+   private void a() {
+      this.j = 0.0F;
+      this.k = 0.0F;
+      this.l = 0.0F;
+      this.m = 0;
+      this.n = 10;
+      this.o = 15728880;
+      this.p = 0.0F;
+      this.q = 1.0F;
+      this.r = 0.0F;
    }
 
-   public faa(int $$0) {
-      this.b = new ezt($$0);
+   @Override
+   public void e() {
+      Vector3f $$0 = this.h.transform(new Vector3f(this.p, this.q, this.r));
+      je $$1 = je.a($$0.x(), $$0.y(), $$0.z());
+      Vector4f $$2 = this.g.transform(new Vector4f(this.j, this.k, this.l, 1.0F));
+      $$2.rotateY((float) Math.PI);
+      $$2.rotateX((float) (-Math.PI / 2));
+      $$2.rotate($$1.b());
+      float $$3 = -$$2.x() * this.i;
+      float $$4 = -$$2.y() * this.i;
+      this.f.a((double)this.j, (double)this.k, (double)this.l).a(1.0F, 1.0F, 1.0F, 1.0F).a($$3, $$4).a(this.m, this.n).b(this.o).a(this.p, this.q, this.r).e();
+      this.a();
    }
 
-   public faa() {
-      this(786432);
+   @Override
+   public fad a(double $$0, double $$1, double $$2) {
+      this.j = (float)$$0;
+      this.k = (float)$$1;
+      this.l = (float)$$2;
+      return this;
    }
 
-   public void c() {
-      ezu.a(this.b.d());
+   @Override
+   public fad a(int $$0, int $$1, int $$2, int $$3) {
+      return this;
    }
 
-   public ezt d() {
-      return this.b;
+   @Override
+   public fad a(float $$0, float $$1) {
+      return this;
+   }
+
+   @Override
+   public fad a(int $$0, int $$1) {
+      this.m = $$0;
+      this.n = $$1;
+      return this;
+   }
+
+   @Override
+   public fad b(int $$0, int $$1) {
+      this.o = $$0 | $$1 << 16;
+      return this;
+   }
+
+   @Override
+   public fad a(float $$0, float $$1, float $$2) {
+      this.p = $$0;
+      this.q = $$1;
+      this.r = $$2;
+      return this;
    }
 }

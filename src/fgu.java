@@ -1,147 +1,38 @@
-import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
-import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
-import it.unimi.dsi.fastutil.objects.ObjectIterator;
-import org.joml.Matrix4f;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.function.BooleanSupplier;
 
-public class fgu implements AutoCloseable {
-   private static final int a = 128;
-   private static final int b = 128;
-   final gpa c;
-   final gpw d;
-   private final Int2ObjectMap<fgu.a> e = new Int2ObjectOpenHashMap();
+public class fgu {
+   public static final float a = 200.0F;
+   private final List<fgu.a> b = new ArrayList<>();
 
-   public fgu(gpa $$0, gpw $$1) {
-      this.c = $$0;
-      this.d = $$1;
+   public fgu a(fgu.a $$0) {
+      this.b.add($$0);
+      return this;
    }
 
-   public void a(epi $$0, epk $$1) {
-      this.b($$0, $$1).a();
-   }
-
-   public void a(ezy $$0, gdo $$1, epi $$2, epk $$3, boolean $$4, int $$5) {
-      this.b($$2, $$3).a($$0, $$1, $$4, $$5);
-   }
-
-   private fgu.a b(epi $$0, epk $$1) {
-      return (fgu.a)this.e.compute($$0.b(), ($$1x, $$2) -> {
-         if ($$2 == null) {
-            return new fgu.a($$1x, $$1);
-         } else {
-            $$2.a($$1);
-            return $$2;
+   public fgu a(fgu $$0, BooleanSupplier $$1) {
+      return this.a(($$2, $$3) -> {
+         if ($$1.getAsBoolean()) {
+            $$0.b($$2, $$3);
          }
       });
    }
 
-   public void a() {
-      ObjectIterator var1 = this.e.values().iterator();
-
-      while (var1.hasNext()) {
-         fgu.a $$0 = (fgu.a)var1.next();
-         $$0.close();
-      }
-
-      this.e.clear();
+   public void a(fgs $$0, float $$1) {
+      $$0.c().a();
+      this.b($$0, $$1);
+      $$0.c().b();
    }
 
-   @Override
-   public void close() {
-      this.a();
+   private void b(fgs $$0, float $$1) {
+      for (fgu.a $$2 : this.b) {
+         $$2.render($$0, $$1);
+         $$0.c().a(0.0F, 0.0F, 200.0F);
+      }
    }
 
-   class a implements AutoCloseable {
-      private epk b;
-      private final gom c;
-      private final gdw d;
-      private boolean e = true;
-
-      a(final int $$0, final epk $$1) {
-         this.b = $$1;
-         this.c = new gom(128, 128, true);
-         alf $$2 = fgu.this.c.a("map/" + $$0, this.c);
-         this.d = gdw.t($$2);
-      }
-
-      void a(epk $$0) {
-         boolean $$1 = this.b != $$0;
-         this.b = $$0;
-         this.e |= $$1;
-      }
-
-      public void a() {
-         this.e = true;
-      }
-
-      private void b() {
-         for (int $$0 = 0; $$0 < 128; $$0++) {
-            for (int $$1 = 0; $$1 < 128; $$1++) {
-               int $$2 = $$1 + $$0 * 128;
-               this.c.e().a($$1, $$0, enz.b(this.b.g[$$2]));
-            }
-         }
-
-         this.c.d();
-      }
-
-      void a(ezy $$0, gdo $$1, boolean $$2, int $$3) {
-         if (this.e) {
-            this.b();
-            this.e = false;
-         }
-
-         int $$4 = 0;
-         int $$5 = 0;
-         float $$6 = 0.0F;
-         Matrix4f $$7 = $$0.c().a();
-         fac $$8 = $$1.getBuffer(this.d);
-         $$8.a($$7, 0.0F, 128.0F, -0.01F).a(255, 255, 255, 255).a(0.0F, 1.0F).b($$3).e();
-         $$8.a($$7, 128.0F, 128.0F, -0.01F).a(255, 255, 255, 255).a(1.0F, 1.0F).b($$3).e();
-         $$8.a($$7, 128.0F, 0.0F, -0.01F).a(255, 255, 255, 255).a(1.0F, 0.0F).b($$3).e();
-         $$8.a($$7, 0.0F, 0.0F, -0.01F).a(255, 255, 255, 255).a(0.0F, 0.0F).b($$3).e();
-         int $$9 = 0;
-
-         for (epe $$10 : this.b.h()) {
-            if (!$$2 || $$10.b()) {
-               $$0.a();
-               $$0.a(0.0F + (float)$$10.d() / 2.0F + 64.0F, 0.0F + (float)$$10.e() / 2.0F + 64.0F, -0.02F);
-               $$0.a(a.f.rotationDegrees((float)($$10.f() * 360) / 16.0F));
-               $$0.b(4.0F, 4.0F, 3.0F);
-               $$0.a(-0.125F, 0.125F, 0.0F);
-               Matrix4f $$11 = $$0.c().a();
-               float $$12 = -0.001F;
-               goz $$13 = fgu.this.d.a($$10);
-               float $$14 = $$13.c();
-               float $$15 = $$13.g();
-               float $$16 = $$13.d();
-               float $$17 = $$13.h();
-               fac $$18 = $$1.getBuffer(gdw.t($$13.i()));
-               $$18.a($$11, -1.0F, 1.0F, (float)$$9 * -0.001F).a(255, 255, 255, 255).a($$14, $$15).b($$3).e();
-               $$18.a($$11, 1.0F, 1.0F, (float)$$9 * -0.001F).a(255, 255, 255, 255).a($$16, $$15).b($$3).e();
-               $$18.a($$11, 1.0F, -1.0F, (float)$$9 * -0.001F).a(255, 255, 255, 255).a($$16, $$17).b($$3).e();
-               $$18.a($$11, -1.0F, -1.0F, (float)$$9 * -0.001F).a(255, 255, 255, 255).a($$14, $$17).b($$3).e();
-               $$0.b();
-               if ($$10.g().isPresent()) {
-                  fgp $$19 = fff.Q().h;
-                  xp $$20 = $$10.g().get();
-                  float $$21 = (float)$$19.a($$20);
-                  float $$22 = ayz.a(25.0F / $$21, 0.0F, 6.0F / 9.0F);
-                  $$0.a();
-                  $$0.a(0.0F + (float)$$10.d() / 2.0F + 64.0F - $$21 * $$22 / 2.0F, 0.0F + (float)$$10.e() / 2.0F + 64.0F + 4.0F, -0.025F);
-                  $$0.b($$22, $$22, 1.0F);
-                  $$0.a(0.0F, 0.0F, -0.1F);
-                  $$19.a($$20, 0.0F, 0.0F, -1, false, $$0.c().a(), $$1, fgp.a.a, Integer.MIN_VALUE, $$3);
-                  $$0.b();
-               }
-
-               $$9++;
-            }
-         }
-      }
-
-      @Override
-      public void close() {
-         this.c.close();
-      }
+   public interface a {
+      void render(fgs var1, float var2);
    }
 }

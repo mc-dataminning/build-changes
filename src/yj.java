@@ -27,7 +27,7 @@ public class yj {
       };
    }
 
-   public yj.b a(final cna $$0) {
+   public yj.b a(final cnb $$0) {
       final azm $$1 = $$0.a();
       return new yj.b() {
          @Override

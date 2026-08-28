@@ -13,7 +13,7 @@ public class bcq extends DataFix {
       Type<?> $$0 = this.getInputSchema().getType(bgx.x);
       return this.writeFixAndRead("EmptyItemInVillagerTradeFix", $$0, $$0, $$0x -> {
          Dynamic<?> $$1 = $$0x.get("buyB").orElseEmptyMap();
-         String $$2 = $$1.get("id").asString("");
+         String $$2 = bij.a($$1.get("id").asString("minecraft:air"));
          int $$3 = $$1.get("count").asInt(0);
          return !$$2.equals("minecraft:air") && $$3 != 0 ? $$0x : $$0x.remove("buyB");
       });

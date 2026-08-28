@@ -2,25 +2,20 @@ import com.mojang.datafixers.kinds.App;
 import java.util.function.Function;
 
 public class bxe {
-   private static final float b = 0.95F;
-   public static final int a = 3;
-
-   public static bvj<btp> a() {
-      return byv.a((Function<byv.b<btp>, ? extends App<byv.c<btp>, byy<btp>>>)($$0 -> $$0.group($$0.b(cct.e)).apply($$0, $$1 -> ($$2, $$3, $$4) -> {
-               if ($$2.z.i() <= 0.95F) {
-                  return false;
-               } else {
-                  iz $$5 = $$0.<jh>b($$1).b();
-                  if ($$5.a($$3.dp(), 3.0)) {
-                     dsc $$6 = $$2.a_($$5);
-                     if ($$6.a(dfb.od)) {
-                        dev $$7 = (dev)$$6.b();
-                        $$7.a($$3, $$2, $$5, null);
-                     }
-                  }
-
-                  return true;
+   public static bvk<btq> a() {
+      return byw.a((Function<byw.b<btq>, ? extends App<byw.c<btq>, byz<btq>>>)($$0 -> $$0.a((byz<btq>)(($$0x, $$1, $$2) -> {
+            if ($$0x.z.a(20) != 0) {
+               return false;
+            } else {
+               bus<?> $$3 = $$1.dS();
+               coj $$4 = $$0x.d($$1.dp());
+               if ($$4 == null || $$4.d() || $$4.f()) {
+                  $$3.b(coo.b);
+                  $$3.a($$0x.aa(), $$0x.Z());
                }
-            })));
+
+               return true;
+            }
+         }))));
    }
 }

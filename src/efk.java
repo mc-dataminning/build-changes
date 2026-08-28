@@ -1,21 +1,63 @@
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Collection;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
-public class efk extends efd {
-   public static final MapCodec<efk> b = dsc.b.fieldOf("state").xmap(dsb.a::b, dez::o).xmap(efk::new, $$0 -> $$0.c);
-   private final dez c;
+public class efk extends efe {
+   public static final MapCodec<efk> b = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(
+               efe.a.fieldOf("source").forGetter($$0x -> $$0x.c),
+               Codec.STRING.fieldOf("property").forGetter($$0x -> $$0x.d),
+               bqa.c.fieldOf("values").forGetter($$0x -> $$0x.f)
+            )
+            .apply($$0, efk::new)
+   );
+   private final efe c;
+   private final String d;
+   @Nullable
+   private dtd e;
+   private final bqa f;
 
-   public efk(dez $$0) {
+   public efk(efe $$0, dtd $$1, bqa $$2) {
       this.c = $$0;
+      this.e = $$1;
+      this.d = $$1.f();
+      this.f = $$2;
+      Collection<Integer> $$3 = $$1.a();
+
+      for (int $$4 = $$2.a(); $$4 <= $$2.b(); $$4++) {
+         if (!$$3.contains($$4)) {
+            throw new IllegalArgumentException("Property value out of range: " + $$1.f() + ": " + $$4);
+         }
+      }
+   }
+
+   public efk(efe $$0, String $$1, bqa $$2) {
+      this.c = $$0;
+      this.d = $$1;
+      this.f = $$2;
    }
 
    @Override
-   protected efe<?> a() {
-      return efe.f;
+   protected eff<?> a() {
+      return eff.g;
    }
 
    @Override
-   public dsc a(azh $$0, iz $$1) {
-      je.a $$2 = je.a.a($$0);
-      return this.c.o().a(dll.i, $$2);
+   public dsd a(azh $$0, iz $$1) {
+      dsd $$2 = this.c.a($$0, $$1);
+      if (this.e == null || !$$2.b(this.e)) {
+         this.e = a($$2, this.d);
+      }
+
+      return $$2.a(this.e, Integer.valueOf(this.f.a($$0)));
+   }
+
+   private static dtd a(dsd $$0, String $$1) {
+      Collection<dtg<?>> $$2 = $$0.B();
+      Optional<dtd> $$3 = $$2.stream().filter($$1x -> $$1x.f().equals($$1)).filter($$0x -> $$0x instanceof dtd).map($$0x -> (dtd)$$0x).findAny();
+      return $$3.orElseThrow(() -> new IllegalArgumentException("Illegal property: " + $$1));
    }
 }

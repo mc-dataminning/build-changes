@@ -19,7 +19,7 @@ public class wt<T extends wv> extends ByteToMessageDecoder implements wy {
       if ($$3 != 0) {
          zw<? super T> $$4 = this.b.c().decode($$1);
          zy<? extends zw<? super T>> $$5 = $$4.a();
-         bno.f.a(this.b.a(), $$5, $$0.channel().remoteAddress(), $$3);
+         bnp.f.a(this.b.a(), $$5, $$0.channel().remoteAddress(), $$3);
          if ($$1.readableBytes() > 0) {
             throw new IOException(
                "Packet "

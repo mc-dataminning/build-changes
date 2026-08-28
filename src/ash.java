@@ -129,7 +129,7 @@ public class ash implements ajk, xd {
 
    private void d(GameProfile $$0) {
       this.h = ash.a.g;
-      this.g.a(new aje($$0));
+      this.g.a(new aje($$0, true));
    }
 
    @Override

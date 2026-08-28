@@ -1,8 +1,16 @@
-import javax.annotation.Nullable;
+import java.util.List;
 
-public interface ctg {
-   default void a(@Nullable cmx $$0, dby $$1, cup $$2, iz $$3) {
+public class ctg extends cul {
+   public ctg(cul.a $$0) {
+      super($$0);
    }
 
-   boolean a(@Nullable cmx var1, dby var2, iz var3, @Nullable evn var4);
+   @Override
+   public void a(cuq $$0, cul.b $$1, List<xp> $$2, cwj $$3) {
+      $$2.add(this.c().a(n.h));
+   }
+
+   public yd c() {
+      return xp.c(this.a() + ".desc");
+   }
 }

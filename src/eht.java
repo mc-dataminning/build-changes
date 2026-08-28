@@ -1,42 +1,25 @@
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.stream.Stream;
 
-public class eht extends ehr {
-   public static final MapCodec<eht> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(bpz.b(-16, 16).fieldOf("xz_spread").forGetter($$0x -> $$0x.c), bpz.b(-16, 16).fieldOf("y_spread").forGetter($$0x -> $$0x.d))
-            .apply($$0, eht::new)
-   );
-   private final bpz c;
-   private final bpz d;
+public interface eht<P extends ehs> {
+   eht<ehe> a = a("block_predicate_filter", ehe.a);
+   eht<ehv> b = a("rarity_filter", ehv.a);
+   eht<ehx> c = a("surface_relative_threshold_filter", ehx.a);
+   eht<ehy> d = a("surface_water_depth_filter", ehy.a);
+   eht<ehd> e = a("biome", ehd.a);
+   eht<ehi> f = a("count", ehi.a);
+   eht<ehn> g = a("noise_based_count", ehn.a);
+   eht<eho> h = a("noise_threshold_count", eho.a);
+   eht<ehh> i = a("count_on_every_layer", ehh.a);
+   eht<ehj> j = a("environment_scan", ehj.a);
+   eht<ehl> k = a("heightmap", ehl.a);
+   eht<ehk> l = a("height_range", ehk.a);
+   eht<ehm> m = a("in_square", ehm.a);
+   eht<ehu> n = a("random_offset", ehu.a);
+   eht<ehf> o = a("carving_mask", ehf.a);
 
-   public static eht a(bpz $$0, bpz $$1) {
-      return new eht($$0, $$1);
-   }
+   MapCodec<P> codec();
 
-   public static eht a(bpz $$0) {
-      return new eht(bpw.a(0), $$0);
-   }
-
-   public static eht b(bpz $$0) {
-      return new eht($$0, bpw.a(0));
-   }
-
-   private eht(bpz $$0, bpz $$1) {
-      this.c = $$0;
-      this.d = $$1;
-   }
-
-   @Override
-   public Stream<iz> a_(ehp $$0, azh $$1, iz $$2) {
-      int $$3 = $$2.u() + this.c.a($$1);
-      int $$4 = $$2.v() + this.d.a($$1);
-      int $$5 = $$2.w() + this.c.a($$1);
-      return Stream.of(new iz($$3, $$4, $$5));
-   }
-
-   @Override
-   public ehs<?> b() {
-      return ehs.n;
+   private static <P extends ehs> eht<P> a(String $$0, MapCodec<P> $$1) {
+      return jv.a(lp.U, $$0, () -> $$1);
    }
 }

@@ -1,23 +1,20 @@
 import net.minecraft.server.MinecraftServer;
 
-public class evb implements evc<MinecraftServer> {
+public class evb implements evd<MinecraftServer> {
    final alf a;
 
    public evb(alf $$0) {
       this.a = $$0;
    }
 
-   public void a(MinecraftServer $$0, eve<MinecraftServer> $$1, long $$2) {
+   public void a(MinecraftServer $$0, evf<MinecraftServer> $$1, long $$2) {
       alu $$3 = $$0.aF();
-
-      for (ib<ep> $$5 : $$3.b(this.a)) {
-         $$3.a($$5, $$3.c());
-      }
+      $$3.a(this.a).ifPresent($$1x -> $$3.a($$1x, $$3.c()));
    }
 
-   public static class a extends evc.a<MinecraftServer, evb> {
+   public static class a extends evd.a<MinecraftServer, evb> {
       public a() {
-         super(new alf("function_tag"), evb.class);
+         super(new alf("function"), evb.class);
       }
 
       public void a(us $$0, evb $$1) {

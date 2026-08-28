@@ -1,35 +1,70 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.stream.Stream;
+public abstract class ddf {
+   public static final ale<dcy> a = a("the_void");
+   public static final ale<dcy> b = a("plains");
+   public static final ale<dcy> c = a("sunflower_plains");
+   public static final ale<dcy> d = a("snowy_plains");
+   public static final ale<dcy> e = a("ice_spikes");
+   public static final ale<dcy> f = a("desert");
+   public static final ale<dcy> g = a("swamp");
+   public static final ale<dcy> h = a("mangrove_swamp");
+   public static final ale<dcy> i = a("forest");
+   public static final ale<dcy> j = a("flower_forest");
+   public static final ale<dcy> k = a("birch_forest");
+   public static final ale<dcy> l = a("dark_forest");
+   public static final ale<dcy> m = a("old_growth_birch_forest");
+   public static final ale<dcy> n = a("old_growth_pine_taiga");
+   public static final ale<dcy> o = a("old_growth_spruce_taiga");
+   public static final ale<dcy> p = a("taiga");
+   public static final ale<dcy> q = a("snowy_taiga");
+   public static final ale<dcy> r = a("savanna");
+   public static final ale<dcy> s = a("savanna_plateau");
+   public static final ale<dcy> t = a("windswept_hills");
+   public static final ale<dcy> u = a("windswept_gravelly_hills");
+   public static final ale<dcy> v = a("windswept_forest");
+   public static final ale<dcy> w = a("windswept_savanna");
+   public static final ale<dcy> x = a("jungle");
+   public static final ale<dcy> y = a("sparse_jungle");
+   public static final ale<dcy> z = a("bamboo_jungle");
+   public static final ale<dcy> A = a("badlands");
+   public static final ale<dcy> B = a("eroded_badlands");
+   public static final ale<dcy> C = a("wooded_badlands");
+   public static final ale<dcy> D = a("meadow");
+   public static final ale<dcy> E = a("cherry_grove");
+   public static final ale<dcy> F = a("grove");
+   public static final ale<dcy> G = a("snowy_slopes");
+   public static final ale<dcy> H = a("frozen_peaks");
+   public static final ale<dcy> I = a("jagged_peaks");
+   public static final ale<dcy> J = a("stony_peaks");
+   public static final ale<dcy> K = a("river");
+   public static final ale<dcy> L = a("frozen_river");
+   public static final ale<dcy> M = a("beach");
+   public static final ale<dcy> N = a("snowy_beach");
+   public static final ale<dcy> O = a("stony_shore");
+   public static final ale<dcy> P = a("warm_ocean");
+   public static final ale<dcy> Q = a("lukewarm_ocean");
+   public static final ale<dcy> R = a("deep_lukewarm_ocean");
+   public static final ale<dcy> S = a("ocean");
+   public static final ale<dcy> T = a("deep_ocean");
+   public static final ale<dcy> U = a("cold_ocean");
+   public static final ale<dcy> V = a("deep_cold_ocean");
+   public static final ale<dcy> W = a("frozen_ocean");
+   public static final ale<dcy> X = a("deep_frozen_ocean");
+   public static final ale<dcy> Y = a("mushroom_fields");
+   public static final ale<dcy> Z = a("dripstone_caves");
+   public static final ale<dcy> aa = a("lush_caves");
+   public static final ale<dcy> ab = a("deep_dark");
+   public static final ale<dcy> ac = a("nether_wastes");
+   public static final ale<dcy> ad = a("warped_forest");
+   public static final ale<dcy> ae = a("crimson_forest");
+   public static final ale<dcy> af = a("soul_sand_valley");
+   public static final ale<dcy> ag = a("basalt_deltas");
+   public static final ale<dcy> ah = a("the_end");
+   public static final ale<dcy> ai = a("end_highlands");
+   public static final ale<dcy> aj = a("end_midlands");
+   public static final ale<dcy> ak = a("small_end_islands");
+   public static final ale<dcy> al = a("end_barrens");
 
-public class ddf extends ddb {
-   public static final MapCodec<ddf> b = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(dcx.d.fieldOf("biomes").forGetter($$0x -> $$0x.c), Codec.intRange(0, 62).fieldOf("scale").orElse(2).forGetter($$0x -> $$0x.e))
-            .apply($$0, ddf::new)
-   );
-   private final jm<dcx> c;
-   private final int d;
-   private final int e;
-
-   public ddf(jm<dcx> $$0, int $$1) {
-      this.c = $$0;
-      this.d = $$1 + 2;
-      this.e = $$1;
-   }
-
-   @Override
-   protected Stream<ji<dcx>> b() {
-      return this.c.a();
-   }
-
-   @Override
-   protected MapCodec<? extends ddb> a() {
-      return b;
-   }
-
-   @Override
-   public ji<dcx> getNoiseBiome(int $$0, int $$1, int $$2, ddg.f $$3) {
-      return this.c.a(Math.floorMod(($$0 >> this.d) + ($$2 >> this.d), this.c.b()));
+   private static ale<dcy> a(String $$0) {
+      return ale.a(lq.az, new alf($$0));
    }
 }

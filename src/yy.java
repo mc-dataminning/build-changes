@@ -58,10 +58,10 @@ public class yy implements xq {
    }
 
    @Override
-   public yd a(@Nullable ep $$0, @Nullable bsu $$1, int $$2) throws CommandSyntaxException {
+   public yd a(@Nullable ep $$0, @Nullable bsv $$1, int $$2) throws CommandSyntaxException {
       if ($$0 != null && this.f != null) {
          Optional<? extends xp> $$3 = xs.a($$0, this.c, $$1, $$2);
-         return xs.a(this.f.b($$0), $$3, bsu::O_);
+         return xs.a(this.f.b($$0), $$3, bsv::O_);
       } else {
          return xp.i();
       }

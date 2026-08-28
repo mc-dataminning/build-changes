@@ -1,7 +1,13 @@
 import java.util.EnumSet;
 
-public abstract class car extends can {
-   public car() {
-      this.a(EnumSet.of(can.a.a, can.a.c));
+public class car extends caw {
+   public car(bts $$0, Class<? extends btq> $$1, float $$2) {
+      super($$0, $$1, $$2);
+      this.a(EnumSet.of(cao.a.b, cao.a.a));
+   }
+
+   public car(bts $$0, Class<? extends btq> $$1, float $$2, float $$3) {
+      super($$0, $$1, $$2, $$3);
+      this.a(EnumSet.of(cao.a.b, cao.a.a));
    }
 }

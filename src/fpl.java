@@ -1,21 +1,33 @@
-public class fpl extends fob<crm> {
-   private static final alf D = new alf("textures/gui/container/shulker_box.png");
+public class fpl extends fhf {
+   private static final alf a = new alf("widget/page_forward_highlighted");
+   private static final alf b = new alf("widget/page_forward");
+   private static final alf c = new alf("widget/page_backward_highlighted");
+   private static final alf d = new alf("widget/page_backward");
+   private final boolean u;
+   private final boolean v;
 
-   public fpl(crm $$0, cmw $$1, xp $$2) {
-      super($$0, $$1, $$2);
-      this.d++;
+   public fpl(int $$0, int $$1, boolean $$2, fhf.c $$3, boolean $$4) {
+      super($$0, $$1, 23, 13, xo.a, $$3, q);
+      this.u = $$2;
+      this.v = $$4;
    }
 
    @Override
-   public void a(fgr $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      this.a($$0, $$1, $$2);
+   public void b(fgs $$0, int $$1, int $$2, float $$3) {
+      alf $$4;
+      if (this.u) {
+         $$4 = this.A() ? a : b;
+      } else {
+         $$4 = this.A() ? c : d;
+      }
+
+      $$0.a($$4, this.C(), this.D(), 23, 13);
    }
 
    @Override
-   protected void a(fgr $$0, float $$1, int $$2, int $$3) {
-      int $$4 = (this.n - this.c) / 2;
-      int $$5 = (this.o - this.d) / 2;
-      $$0.a(D, $$4, $$5, 0, 0, this.c, this.d);
+   public void a(gtw $$0) {
+      if (this.v) {
+         $$0.a(gsj.a(awa.cy, 1.0F));
+      }
    }
 }

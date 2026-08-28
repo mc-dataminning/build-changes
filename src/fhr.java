@@ -1,66 +1,22 @@
-import javax.annotation.Nullable;
+public class fhr extends fhf {
+   protected final fis a;
 
-public abstract class fhr extends fhc {
-   fhr(int $$0, int $$1, int $$2, int $$3) {
-      super($$0, $$1, $$2, $$3, xo.a);
+   public fhr(int $$0, int $$1, int $$2, int $$3, fis $$4, fhf.c $$5) {
+      this($$0, $$1, $$2, $$3, $$4, $$5, xo.a);
    }
 
-   public static fhr a(int $$0, int $$1, alf $$2, int $$3, int $$4) {
-      return new fhr.b(0, 0, $$0, $$1, $$2, $$3, $$4);
+   public fhr(int $$0, int $$1, int $$2, int $$3, fis $$4, fhf.c $$5, xp $$6) {
+      super($$0, $$1, $$2, $$3, $$6, $$5, q);
+      this.a = $$4;
    }
 
-   public static fhr a(int $$0, int $$1, alf $$2) {
-      return new fhr.a(0, 0, $$0, $$1, $$2);
-   }
-
-   @Override
-   protected void a(fla $$0) {
+   public fhr(int $$0, int $$1, fis $$2, fhf.c $$3, xp $$4) {
+      this(0, 0, $$0, $$1, $$2, $$3, $$4);
    }
 
    @Override
-   public void a(gtv $$0) {
-   }
-
-   @Override
-   public boolean B() {
-      return false;
-   }
-
-   @Nullable
-   @Override
-   public fgo a(flg $$0) {
-      return null;
-   }
-
-   static class a extends fhr {
-      private final alf a;
-
-      public a(int $$0, int $$1, int $$2, int $$3, alf $$4) {
-         super($$0, $$1, $$2, $$3);
-         this.a = $$4;
-      }
-
-      @Override
-      public void b(fgr $$0, int $$1, int $$2, float $$3) {
-         $$0.a(this.a, this.C(), this.D(), this.x(), this.v());
-      }
-   }
-
-   static class b extends fhr {
-      private final alf a;
-      private final int b;
-      private final int c;
-
-      public b(int $$0, int $$1, int $$2, int $$3, alf $$4, int $$5, int $$6) {
-         super($$0, $$1, $$2, $$3);
-         this.a = $$4;
-         this.b = $$5;
-         this.c = $$6;
-      }
-
-      @Override
-      protected void b(fgr $$0, int $$1, int $$2, float $$3) {
-         $$0.a(this.a, this.C(), this.D(), this.x(), this.v(), 0.0F, 0.0F, this.x(), this.v(), this.b, this.c);
-      }
+   public void b(fgs $$0, int $$1, int $$2, float $$3) {
+      alf $$4 = this.a.a(this.B(), this.A());
+      $$0.a($$4, this.C(), this.D(), this.g, this.h);
    }
 }

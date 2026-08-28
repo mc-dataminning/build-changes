@@ -28,13 +28,13 @@ public class bba extends DataFix {
       boolean $$2 = "minecraft:overworld".equals($$1.get("dimension").asString().result().orElse(""));
       Optional<? extends Dynamic<?>> $$3 = $$0.get("Status").result();
       if ($$2 && $$3.isPresent()) {
-         String $$4 = bii.a($$3.get().asString("empty"));
+         String $$4 = bij.a($$3.get().asString("empty"));
          Optional<? extends Dynamic<?>> $$5 = $$0.get("below_zero_retrogen").result();
          if (!b.contains($$4)) {
             $$0 = a($$0, 384, -64);
          } else if ($$5.isPresent()) {
             Dynamic<?> $$6 = (Dynamic<?>)$$5.get();
-            String $$7 = bii.a($$6.get("target_status").asString("empty"));
+            String $$7 = bij.a($$6.get("target_status").asString("empty"));
             if (!b.contains($$7)) {
                $$0 = a($$0, 256, 0);
             }

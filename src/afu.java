@@ -5,9 +5,9 @@ public class afu implements zw<aci> {
    private final int b;
    private final int[] c;
 
-   public afu(bsu $$0) {
+   public afu(bsv $$0) {
       this.b = $$0.al();
-      List<bsu> $$1 = $$0.cS();
+      List<bsv> $$1 = $$0.cS();
       this.c = new int[$$1.size()];
 
       for (int $$2 = 0; $$2 < $$1.size(); $$2++) {

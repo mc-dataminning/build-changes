@@ -1,32 +1,43 @@
 import com.google.common.collect.ImmutableSet;
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
 import java.util.Set;
 
-public record etz(Optional<cp> b) implements ets {
-   public static final MapCodec<etz> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(cp.a.optionalFieldOf("predicate").forGetter(etz::c)).apply($$0, etz::new));
+public record etz(float b, float c) implements ett {
+   public static final MapCodec<etz> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(Codec.FLOAT.fieldOf("chance").forGetter(etz::c), Codec.FLOAT.fieldOf("looting_multiplier").forGetter(etz::d)).apply($$0, etz::new)
+   );
 
    @Override
-   public ett b() {
-      return etu.l;
+   public etu b() {
+      return etv.g;
    }
 
    @Override
-   public Set<etb<?>> a() {
-      return ImmutableSet.of(ete.i);
+   public Set<etc<?>> a() {
+      return ImmutableSet.of(etf.d);
    }
 
-   public boolean a(eqi $$0) {
-      cup $$1 = $$0.c(ete.i);
-      return $$1 != null && (this.b.isEmpty() || this.b.get().a($$1));
+   public boolean a(eqj $$0) {
+      bsv $$1 = $$0.c(etf.d);
+      int $$2 = 0;
+      if ($$1 instanceof btq) {
+         $$2 = dac.h((btq)$$1);
+      }
+
+      return $$0.b().i() < this.b + (float)$$2 * this.c;
    }
 
-   public static ets.a a(cp.a $$0) {
-      return () -> new etz(Optional.of($$0.b()));
+   public static ett.a a(float $$0, float $$1) {
+      return () -> new etz($$0, $$1);
    }
 
-   public Optional<cp> c() {
+   public float c() {
       return this.b;
+   }
+
+   public float d() {
+      return this.c;
    }
 }

@@ -1,45 +1,23 @@
 import com.mojang.serialization.MapCodec;
 
-public class efw extends efu {
-   public static final MapCodec<efw> a = MapCodec.unit(() -> efw.b);
-   public static final efw b = new efw();
+public class efw<P extends efv> {
+   public static final efw<efx> a = a("trunk_vine", efx.a);
+   public static final efw<efu> b = a("leave_vine", efu.a);
+   public static final efw<eft> c = a("cocoa", eft.a);
+   public static final efw<efs> d = a("beehive", efs.a);
+   public static final efw<efq> e = a("alter_ground", efq.a);
+   public static final efw<efr> f = a("attached_to_leaves", efr.a);
+   private final MapCodec<P> g;
 
-   @Override
-   protected efv<?> a() {
-      return efv.a;
+   private static <P extends efv> efw<P> a(String $$0, MapCodec<P> $$1) {
+      return jv.a(lp.Z, $$0, new efw<>($$1));
    }
 
-   @Override
-   public void a(efu.a $$0) {
-      azh $$1 = $$0.b();
-      $$0.c().forEach($$2 -> {
-         if ($$1.a(3) > 0) {
-            iz $$3 = $$2.g();
-            if ($$0.a($$3)) {
-               $$0.a($$3, dnv.d);
-            }
-         }
+   private efw(MapCodec<P> $$0) {
+      this.g = $$0;
+   }
 
-         if ($$1.a(3) > 0) {
-            iz $$4 = $$2.h();
-            if ($$0.a($$4)) {
-               $$0.a($$4, dnv.f);
-            }
-         }
-
-         if ($$1.a(3) > 0) {
-            iz $$5 = $$2.e();
-            if ($$0.a($$5)) {
-               $$0.a($$5, dnv.e);
-            }
-         }
-
-         if ($$1.a(3) > 0) {
-            iz $$6 = $$2.f();
-            if ($$0.a($$6)) {
-               $$0.a($$6, dnv.c);
-            }
-         }
-      });
+   public MapCodec<P> a() {
+      return this.g;
    }
 }

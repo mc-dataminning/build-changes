@@ -1,70 +1,245 @@
-public abstract class dde {
-   public static final ale<dcx> a = a("the_void");
-   public static final ale<dcx> b = a("plains");
-   public static final ale<dcx> c = a("sunflower_plains");
-   public static final ale<dcx> d = a("snowy_plains");
-   public static final ale<dcx> e = a("ice_spikes");
-   public static final ale<dcx> f = a("desert");
-   public static final ale<dcx> g = a("swamp");
-   public static final ale<dcx> h = a("mangrove_swamp");
-   public static final ale<dcx> i = a("forest");
-   public static final ale<dcx> j = a("flower_forest");
-   public static final ale<dcx> k = a("birch_forest");
-   public static final ale<dcx> l = a("dark_forest");
-   public static final ale<dcx> m = a("old_growth_birch_forest");
-   public static final ale<dcx> n = a("old_growth_pine_taiga");
-   public static final ale<dcx> o = a("old_growth_spruce_taiga");
-   public static final ale<dcx> p = a("taiga");
-   public static final ale<dcx> q = a("snowy_taiga");
-   public static final ale<dcx> r = a("savanna");
-   public static final ale<dcx> s = a("savanna_plateau");
-   public static final ale<dcx> t = a("windswept_hills");
-   public static final ale<dcx> u = a("windswept_gravelly_hills");
-   public static final ale<dcx> v = a("windswept_forest");
-   public static final ale<dcx> w = a("windswept_savanna");
-   public static final ale<dcx> x = a("jungle");
-   public static final ale<dcx> y = a("sparse_jungle");
-   public static final ale<dcx> z = a("bamboo_jungle");
-   public static final ale<dcx> A = a("badlands");
-   public static final ale<dcx> B = a("eroded_badlands");
-   public static final ale<dcx> C = a("wooded_badlands");
-   public static final ale<dcx> D = a("meadow");
-   public static final ale<dcx> E = a("cherry_grove");
-   public static final ale<dcx> F = a("grove");
-   public static final ale<dcx> G = a("snowy_slopes");
-   public static final ale<dcx> H = a("frozen_peaks");
-   public static final ale<dcx> I = a("jagged_peaks");
-   public static final ale<dcx> J = a("stony_peaks");
-   public static final ale<dcx> K = a("river");
-   public static final ale<dcx> L = a("frozen_river");
-   public static final ale<dcx> M = a("beach");
-   public static final ale<dcx> N = a("snowy_beach");
-   public static final ale<dcx> O = a("stony_shore");
-   public static final ale<dcx> P = a("warm_ocean");
-   public static final ale<dcx> Q = a("lukewarm_ocean");
-   public static final ale<dcx> R = a("deep_lukewarm_ocean");
-   public static final ale<dcx> S = a("ocean");
-   public static final ale<dcx> T = a("deep_ocean");
-   public static final ale<dcx> U = a("cold_ocean");
-   public static final ale<dcx> V = a("deep_cold_ocean");
-   public static final ale<dcx> W = a("frozen_ocean");
-   public static final ale<dcx> X = a("deep_frozen_ocean");
-   public static final ale<dcx> Y = a("mushroom_fields");
-   public static final ale<dcx> Z = a("dripstone_caves");
-   public static final ale<dcx> aa = a("lush_caves");
-   public static final ale<dcx> ab = a("deep_dark");
-   public static final ale<dcx> ac = a("nether_wastes");
-   public static final ale<dcx> ad = a("warped_forest");
-   public static final ale<dcx> ae = a("crimson_forest");
-   public static final ale<dcx> af = a("soul_sand_valley");
-   public static final ale<dcx> ag = a("basalt_deltas");
-   public static final ale<dcx> ah = a("the_end");
-   public static final ale<dcx> ai = a("end_highlands");
-   public static final ale<dcx> aj = a("end_midlands");
-   public static final ale<dcx> ak = a("small_end_islands");
-   public static final ale<dcx> al = a("end_barrens");
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
+import java.util.OptionalInt;
+import javax.annotation.Nullable;
 
-   private static ale<dcx> a(String $$0) {
-      return ale.a(lq.az, new alf($$0));
+public class dde {
+   public static final Codec<dde> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               Codec.INT.fieldOf("fog_color").forGetter($$0x -> $$0x.b),
+               Codec.INT.fieldOf("water_color").forGetter($$0x -> $$0x.c),
+               Codec.INT.fieldOf("water_fog_color").forGetter($$0x -> $$0x.d),
+               Codec.INT.fieldOf("sky_color").forGetter($$0x -> $$0x.e),
+               Codec.INT.optionalFieldOf("foliage_color").forGetter($$0x -> $$0x.f),
+               Codec.INT.optionalFieldOf("grass_color").forGetter($$0x -> $$0x.g),
+               dde.b.d.optionalFieldOf("grass_color_modifier", dde.b.a).forGetter($$0x -> $$0x.h),
+               dcx.a.optionalFieldOf("particle").forGetter($$0x -> $$0x.i),
+               avz.b.optionalFieldOf("ambient_sound").forGetter($$0x -> $$0x.j),
+               dcw.a.optionalFieldOf("mood_sound").forGetter($$0x -> $$0x.k),
+               dcv.a.optionalFieldOf("additions_sound").forGetter($$0x -> $$0x.l),
+               avx.a.optionalFieldOf("music").forGetter($$0x -> $$0x.m)
+            )
+            .apply($$0, dde::new)
+   );
+   private final int b;
+   private final int c;
+   private final int d;
+   private final int e;
+   private final Optional<Integer> f;
+   private final Optional<Integer> g;
+   private final dde.b h;
+   private final Optional<dcx> i;
+   private final Optional<ji<avz>> j;
+   private final Optional<dcw> k;
+   private final Optional<dcv> l;
+   private final Optional<avx> m;
+
+   dde(
+      int $$0,
+      int $$1,
+      int $$2,
+      int $$3,
+      Optional<Integer> $$4,
+      Optional<Integer> $$5,
+      dde.b $$6,
+      Optional<dcx> $$7,
+      Optional<ji<avz>> $$8,
+      Optional<dcw> $$9,
+      Optional<dcv> $$10,
+      Optional<avx> $$11
+   ) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
+      this.e = $$3;
+      this.f = $$4;
+      this.g = $$5;
+      this.h = $$6;
+      this.i = $$7;
+      this.j = $$8;
+      this.k = $$9;
+      this.l = $$10;
+      this.m = $$11;
+   }
+
+   public int a() {
+      return this.b;
+   }
+
+   public int b() {
+      return this.c;
+   }
+
+   public int c() {
+      return this.d;
+   }
+
+   public int d() {
+      return this.e;
+   }
+
+   public Optional<Integer> e() {
+      return this.f;
+   }
+
+   public Optional<Integer> f() {
+      return this.g;
+   }
+
+   public dde.b g() {
+      return this.h;
+   }
+
+   public Optional<dcx> h() {
+      return this.i;
+   }
+
+   public Optional<ji<avz>> i() {
+      return this.j;
+   }
+
+   public Optional<dcw> j() {
+      return this.k;
+   }
+
+   public Optional<dcv> k() {
+      return this.l;
+   }
+
+   public Optional<avx> l() {
+      return this.m;
+   }
+
+   public static class a {
+      private OptionalInt a = OptionalInt.empty();
+      private OptionalInt b = OptionalInt.empty();
+      private OptionalInt c = OptionalInt.empty();
+      private OptionalInt d = OptionalInt.empty();
+      private Optional<Integer> e = Optional.empty();
+      private Optional<Integer> f = Optional.empty();
+      private dde.b g = dde.b.a;
+      private Optional<dcx> h = Optional.empty();
+      private Optional<ji<avz>> i = Optional.empty();
+      private Optional<dcw> j = Optional.empty();
+      private Optional<dcv> k = Optional.empty();
+      private Optional<avx> l = Optional.empty();
+
+      public dde.a a(int $$0) {
+         this.a = OptionalInt.of($$0);
+         return this;
+      }
+
+      public dde.a b(int $$0) {
+         this.b = OptionalInt.of($$0);
+         return this;
+      }
+
+      public dde.a c(int $$0) {
+         this.c = OptionalInt.of($$0);
+         return this;
+      }
+
+      public dde.a d(int $$0) {
+         this.d = OptionalInt.of($$0);
+         return this;
+      }
+
+      public dde.a e(int $$0) {
+         this.e = Optional.of($$0);
+         return this;
+      }
+
+      public dde.a f(int $$0) {
+         this.f = Optional.of($$0);
+         return this;
+      }
+
+      public dde.a a(dde.b $$0) {
+         this.g = $$0;
+         return this;
+      }
+
+      public dde.a a(dcx $$0) {
+         this.h = Optional.of($$0);
+         return this;
+      }
+
+      public dde.a a(ji<avz> $$0) {
+         this.i = Optional.of($$0);
+         return this;
+      }
+
+      public dde.a a(dcw $$0) {
+         this.j = Optional.of($$0);
+         return this;
+      }
+
+      public dde.a a(dcv $$0) {
+         this.k = Optional.of($$0);
+         return this;
+      }
+
+      public dde.a a(@Nullable avx $$0) {
+         this.l = Optional.ofNullable($$0);
+         return this;
+      }
+
+      public dde a() {
+         return new dde(
+            this.a.orElseThrow(() -> new IllegalStateException("Missing 'fog' color.")),
+            this.b.orElseThrow(() -> new IllegalStateException("Missing 'water' color.")),
+            this.c.orElseThrow(() -> new IllegalStateException("Missing 'water fog' color.")),
+            this.d.orElseThrow(() -> new IllegalStateException("Missing 'sky' color.")),
+            this.e,
+            this.f,
+            this.g,
+            this.h,
+            this.i,
+            this.j,
+            this.k,
+            this.l
+         );
+      }
+   }
+
+   public static enum b implements azu {
+      a("none") {
+         @Override
+         public int a(double $$0, double $$1, int $$2) {
+            return $$2;
+         }
+      },
+      b("dark_forest") {
+         @Override
+         public int a(double $$0, double $$1, int $$2) {
+            return ($$2 & 16711422) + 2634762 >> 1;
+         }
+      },
+      c("swamp") {
+         @Override
+         public int a(double $$0, double $$1, int $$2) {
+            double $$3 = dcy.e.a($$0 * 0.0225, $$1 * 0.0225, false);
+            return $$3 < -0.1 ? 5011004 : 6975545;
+         }
+      };
+
+      private final String e;
+      public static final Codec<dde.b> d = azu.a(dde.b::values);
+
+      public abstract int a(double var1, double var3, int var5);
+
+      b(final String $$0) {
+         this.e = $$0;
+      }
+
+      public String a() {
+         return this.e;
+      }
+
+      @Override
+      public String c() {
+         return this.e;
+      }
    }
 }

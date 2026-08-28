@@ -8,8 +8,8 @@ public class pg {
       .a(lq.aL, rw::a)
       .a(lq.aK, rv::a)
       .a(lq.s, qj::a)
-      .a(lq.d, drc::a)
-      .a(lq.aP, cwy::a);
+      .a(lq.d, drd::a)
+      .a(lq.aP, cwz::a);
 
    public static CompletableFuture<jy.g> a(CompletableFuture<jk.a> $$0) {
       return pf.a($$0, a);

@@ -17,7 +17,7 @@ public record dx(List<dx.c> c) {
    public static final Codec<dx> a = d.xmap(dx::new, dx::a);
    public static final zn<ByteBuf, dx> b = dx.c.a.a(zl.a()).a(dx::new, dx::a);
 
-   public <S extends dse<?, S>> boolean a(dsd<?, S> $$0, S $$1) {
+   public <S extends dsf<?, S>> boolean a(dse<?, S> $$0, S $$1) {
       for (dx.c $$2 : this.c) {
          if (!$$2.a($$0, $$1)) {
             return false;
@@ -27,15 +27,15 @@ public record dx(List<dx.c> c) {
       return true;
    }
 
-   public boolean a(dsc $$0) {
+   public boolean a(dsd $$0) {
       return this.a($$0.b().l(), $$0);
    }
 
-   public boolean a(env $$0) {
+   public boolean a(enw $$0) {
       return this.a($$0.a().f(), $$0);
    }
 
-   public Optional<String> a(dsd<?, ?> $$0) {
+   public Optional<String> a(dse<?, ?> $$0) {
       for (dx.c $$1 : this.c) {
          Optional<String> $$2 = $$1.a($$0);
          if ($$2.isPresent()) {
@@ -60,20 +60,20 @@ public record dx(List<dx.c> c) {
          return new dx.a();
       }
 
-      public dx.a a(dtf<?> $$0, String $$1) {
+      public dx.a a(dtg<?> $$0, String $$1) {
          this.a.add(new dx.c($$0.f(), new dx.b($$1)));
          return this;
       }
 
-      public dx.a a(dtf<Integer> $$0, int $$1) {
+      public dx.a a(dtg<Integer> $$0, int $$1) {
          return this.a($$0, Integer.toString($$1));
       }
 
-      public dx.a a(dtf<Boolean> $$0, boolean $$1) {
+      public dx.a a(dtg<Boolean> $$0, boolean $$1) {
          return this.a($$0, Boolean.toString($$1));
       }
 
-      public <T extends Comparable<T> & azu> dx.a a(dtf<T> $$0, T $$1) {
+      public <T extends Comparable<T> & azu> dx.a a(dtg<T> $$0, T $$1) {
          return this.a($$0, $$1.c());
       }
 
@@ -87,7 +87,7 @@ public record dx(List<dx.c> c) {
       public static final zn<ByteBuf, dx.b> b = zl.l.a(dx.b::new, dx.b::a);
 
       @Override
-      public <T extends Comparable<T>> boolean a(dse<?, ?> $$0, dtf<T> $$1) {
+      public <T extends Comparable<T>> boolean a(dsf<?, ?> $$0, dtg<T> $$1) {
          T $$2 = $$0.c($$1);
          Optional<T> $$3 = $$1.b(this.e);
          return $$3.isPresent() && $$2.compareTo($$3.get()) == 0;
@@ -101,13 +101,13 @@ public record dx(List<dx.c> c) {
    static record c(String b, dx.e c) {
       public static final zn<ByteBuf, dx.c> a = zn.a(zl.l, dx.c::a, dx.e.d, dx.c::b, dx.c::new);
 
-      public <S extends dse<?, S>> boolean a(dsd<?, S> $$0, S $$1) {
-         dtf<?> $$2 = $$0.a(this.b);
+      public <S extends dsf<?, S>> boolean a(dse<?, S> $$0, S $$1) {
+         dtg<?> $$2 = $$0.a(this.b);
          return $$2 != null && this.c.a($$1, $$2);
       }
 
-      public Optional<String> a(dsd<?, ?> $$0) {
-         dtf<?> $$1 = $$0.a(this.b);
+      public Optional<String> a(dse<?, ?> $$0) {
+         dtg<?> $$1 = $$0.a(this.b);
          return $$1 != null ? Optional.empty() : Optional.of(this.b);
       }
 
@@ -127,7 +127,7 @@ public record dx(List<dx.c> c) {
       public static final zn<ByteBuf, dx.d> b = zn.a(zl.a(zl.l), dx.d::a, zl.a(zl.l), dx.d::b, dx.d::new);
 
       @Override
-      public <T extends Comparable<T>> boolean a(dse<?, ?> $$0, dtf<T> $$1) {
+      public <T extends Comparable<T>> boolean a(dsf<?, ?> $$0, dtg<T> $$1) {
          T $$2 = $$0.c($$1);
          if (this.e.isPresent()) {
             Optional<T> $$3 = $$1.b(this.e.get());
@@ -175,6 +175,6 @@ public record dx(List<dx.c> c) {
          }
       });
 
-      <T extends Comparable<T>> boolean a(dse<?, ?> var1, dtf<T> var2);
+      <T extends Comparable<T>> boolean a(dsf<?, ?> var1, dtg<T> var2);
    }
 }

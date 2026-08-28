@@ -1,29 +1,20 @@
 import com.mojang.serialization.Codec;
-import java.util.stream.Stream;
 
-public record eal<FC extends edc, F extends eay<FC>>(F d, FC e) {
-   public static final Codec<eal<?, ?>> a = lp.Q.q().dispatch($$0 -> $$0.d, eay::a);
-   public static final Codec<ji<eal<?, ?>>> b = alb.a(lq.aC, a);
-   public static final Codec<jm<eal<?, ?>>> c = jx.a(lq.aC, a);
-
-   public boolean a(dct $$0, dtz $$1, azh $$2, iz $$3) {
-      return this.d.a(this.e, $$0, $$1, $$2, $$3);
-   }
-
-   public Stream<eal<?, ?>> a() {
-      return Stream.concat(Stream.of(this), this.e.e());
+public class eal extends eaz<edk> {
+   public eal(Codec<edk> $$0) {
+      super($$0);
    }
 
    @Override
-   public String toString() {
-      return "Configured: " + this.d + ": " + this.e;
-   }
-
-   public F b() {
-      return this.d;
-   }
-
-   public FC c() {
-      return this.e;
+   public boolean a(ebb<edk> $$0) {
+      dcu $$1 = $$0.b();
+      iz $$2 = $$0.e();
+      azh $$3 = $$0.d();
+      if ($$1.u($$2) && $$1.a_($$2.d()).a(dfc.fz)) {
+         dgf.a($$1, $$2, $$3, 8);
+         return true;
+      } else {
+         return false;
+      }
    }
 }

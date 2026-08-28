@@ -1,16 +1,13 @@
-public abstract class ghs<T extends ckw, M extends fws<T>> extends gjo<T, M> {
-   private static final alf a = new alf("textures/entity/zombie/zombie.png");
+public abstract class ghs<T extends chk, M extends fum<T>> extends gke<T, M> {
+   private final float a;
 
-   protected ghs(gix.a $$0, M $$1, M $$2, M $$3) {
-      super($$0, $$1, 0.5F);
-      this.a(new gmz<>(this, $$2, $$3, $$0.g()));
+   public ghs(giy.a $$0, M $$1, float $$2) {
+      super($$0, $$1, 0.75F);
+      this.a = $$2;
    }
 
-   public alf a(ckw $$0) {
-      return a;
-   }
-
-   protected boolean b(T $$0) {
-      return super.a($$0) || $$0.gx();
+   protected void a(T $$0, ezz $$1, float $$2) {
+      $$1.b(this.a, this.a, this.a);
+      super.a($$0, $$1, $$2);
    }
 }

@@ -26,9 +26,9 @@ public record aat(aat.a c) implements aax {
       return this.c;
    }
 
-   public static record a(UUID a, int b, evr c, @Nullable eoj d, @Nullable iz e, @Nullable iz f, int g, Set<String> h, List<iz> i) {
+   public static record a(UUID a, int b, evs c, @Nullable eok d, @Nullable iz e, @Nullable iz f, int g, Set<String> h, List<iz> i) {
       public a(wm $$0) {
-         this($$0.n(), $$0.readInt(), $$0.k(), $$0.c(eoj::b), $$0.c(iz.b), $$0.c(iz.b), $$0.readInt(), $$0.a(HashSet::new, wm::p), $$0.a(iz.b));
+         this($$0.n(), $$0.readInt(), $$0.k(), $$0.c(eok::b), $$0.c(iz.b), $$0.c(iz.b), $$0.readInt(), $$0.a(HashSet::new, wm::p), $$0.a(iz.b));
       }
 
       public void a(wm $$0) {
@@ -64,12 +64,12 @@ public record aat(aat.a c) implements aax {
          return this.b;
       }
 
-      public evr d() {
+      public evs d() {
          return this.c;
       }
 
       @Nullable
-      public eoj e() {
+      public eok e() {
          return this.d;
       }
 

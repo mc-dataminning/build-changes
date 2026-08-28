@@ -1,99 +1,80 @@
-public class fty<T extends btp> extends fun<T> {
-   public boolean a;
-   public boolean b;
+import com.google.common.collect.ImmutableList;
 
-   public fty(fxa $$0) {
-      super($$0);
+public class fty<T extends btq> extends fsw<T> {
+   private final fxb a;
+   private final fxb b;
+
+   public fty(fxb $$0) {
+      this.b = $$0.b("left_wing");
+      this.a = $$0.b("right_wing");
    }
 
-   public static fxg c() {
-      float $$0 = -14.0F;
-      fxi $$1 = fun.a(fxe.a, -14.0F);
-      fxj $$2 = $$1.a();
-      fxc $$3 = fxc.a(0.0F, -13.0F, 0.0F);
-      $$2.a("hat", fxf.c().a(0, 16).a(-4.0F, -8.0F, -4.0F, 8.0F, 8.0F, 8.0F, new fxe(-0.5F)), $$3);
-      $$2.a("head", fxf.c().a(0, 0).a(-4.0F, -8.0F, -4.0F, 8.0F, 8.0F, 8.0F), $$3);
-      $$2.a("body", fxf.c().a(32, 16).a(-4.0F, 0.0F, -2.0F, 8.0F, 12.0F, 4.0F), fxc.a(0.0F, -14.0F, 0.0F));
-      $$2.a("right_arm", fxf.c().a(56, 0).a(-1.0F, -2.0F, -1.0F, 2.0F, 30.0F, 2.0F), fxc.a(-5.0F, -12.0F, 0.0F));
-      $$2.a("left_arm", fxf.c().a(56, 0).a().a(-1.0F, -2.0F, -1.0F, 2.0F, 30.0F, 2.0F), fxc.a(5.0F, -12.0F, 0.0F));
-      $$2.a("right_leg", fxf.c().a(56, 0).a(-1.0F, 0.0F, -1.0F, 2.0F, 30.0F, 2.0F), fxc.a(-2.0F, -5.0F, 0.0F));
-      $$2.a("left_leg", fxf.c().a(56, 0).a().a(-1.0F, 0.0F, -1.0F, 2.0F, 30.0F, 2.0F), fxc.a(2.0F, -5.0F, 0.0F));
-      return fxg.a($$1, 64, 32);
+   public static fxh c() {
+      fxj $$0 = new fxj();
+      fxk $$1 = $$0.a();
+      fxf $$2 = new fxf(1.0F);
+      $$1.a(
+         "left_wing",
+         fxg.c().a(22, 0).a(-10.0F, 0.0F, 0.0F, 10.0F, 20.0F, 2.0F, $$2),
+         fxd.a(5.0F, 0.0F, 0.0F, (float) (Math.PI / 12), 0.0F, (float) (-Math.PI / 12))
+      );
+      $$1.a(
+         "right_wing",
+         fxg.c().a(22, 0).a().a(0.0F, 0.0F, 0.0F, 10.0F, 20.0F, 2.0F, $$2),
+         fxd.a(-5.0F, 0.0F, 0.0F, (float) (Math.PI / 12), 0.0F, (float) (Math.PI / 12))
+      );
+      return fxh.a($$0, 64, 32);
    }
 
    @Override
+   protected Iterable<fxb> a() {
+      return ImmutableList.of();
+   }
+
+   @Override
+   protected Iterable<fxb> b() {
+      return ImmutableList.of(this.b, this.a);
+   }
+
    public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
-      super.a($$0, $$1, $$2, $$3, $$4, $$5);
-      this.k.k = true;
-      int $$6 = -14;
-      this.m.e = 0.0F;
-      this.m.c = -14.0F;
-      this.m.d = -0.0F;
-      this.p.e -= 0.0F;
-      this.q.e -= 0.0F;
-      this.n.e *= 0.5F;
-      this.o.e *= 0.5F;
-      this.p.e *= 0.5F;
-      this.q.e *= 0.5F;
-      float $$7 = 0.4F;
-      if (this.n.e > 0.4F) {
-         this.n.e = 0.4F;
+      float $$6 = (float) (Math.PI / 12);
+      float $$7 = (float) (-Math.PI / 12);
+      float $$8 = 0.0F;
+      float $$9 = 0.0F;
+      if ($$0.fE()) {
+         float $$10 = 1.0F;
+         evs $$11 = $$0.ds();
+         if ($$11.d < 0.0) {
+            evs $$12 = $$11.d();
+            $$10 = 1.0F - (float)Math.pow(-$$12.d, 1.5);
+         }
+
+         $$6 = $$10 * (float) (Math.PI / 9) + (1.0F - $$10) * $$6;
+         $$7 = $$10 * (float) (-Math.PI / 2) + (1.0F - $$10) * $$7;
+      } else if ($$0.ca()) {
+         $$6 = (float) (Math.PI * 2.0 / 9.0);
+         $$7 = (float) (-Math.PI / 4);
+         $$8 = 3.0F;
+         $$9 = 0.08726646F;
       }
 
-      if (this.o.e > 0.4F) {
-         this.o.e = 0.4F;
+      this.b.c = $$8;
+      if ($$0 instanceof gco $$13) {
+         $$13.c = $$13.c + ($$6 - $$13.c) * 0.1F;
+         $$13.d = $$13.d + ($$9 - $$13.d) * 0.1F;
+         $$13.e = $$13.e + ($$7 - $$13.e) * 0.1F;
+         this.b.e = $$13.c;
+         this.b.f = $$13.d;
+         this.b.g = $$13.e;
+      } else {
+         this.b.e = $$6;
+         this.b.g = $$7;
+         this.b.f = $$9;
       }
 
-      if (this.n.e < -0.4F) {
-         this.n.e = -0.4F;
-      }
-
-      if (this.o.e < -0.4F) {
-         this.o.e = -0.4F;
-      }
-
-      if (this.p.e > 0.4F) {
-         this.p.e = 0.4F;
-      }
-
-      if (this.q.e > 0.4F) {
-         this.q.e = 0.4F;
-      }
-
-      if (this.p.e < -0.4F) {
-         this.p.e = -0.4F;
-      }
-
-      if (this.q.e < -0.4F) {
-         this.q.e = -0.4F;
-      }
-
-      if (this.a) {
-         this.n.e = -0.5F;
-         this.o.e = -0.5F;
-         this.n.g = 0.05F;
-         this.o.g = -0.05F;
-      }
-
-      this.p.d = 0.0F;
-      this.q.d = 0.0F;
-      this.p.c = -5.0F;
-      this.q.c = -5.0F;
-      this.k.d = -0.0F;
-      this.k.c = -13.0F;
-      this.l.b = this.k.b;
-      this.l.c = this.k.c;
-      this.l.d = this.k.d;
-      this.l.e = this.k.e;
-      this.l.f = this.k.f;
-      this.l.g = this.k.g;
-      if (this.b) {
-         float $$8 = 1.0F;
-         this.k.c -= 5.0F;
-      }
-
-      int $$9 = -14;
-      this.n.a(-5.0F, -12.0F, 0.0F);
-      this.o.a(5.0F, -12.0F, 0.0F);
+      this.a.f = -this.b.f;
+      this.a.c = this.b.c;
+      this.a.e = this.b.e;
+      this.a.g = -this.b.g;
    }
 }

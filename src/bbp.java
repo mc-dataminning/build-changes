@@ -20,7 +20,7 @@ public abstract class bbp extends DataFix {
 
    public TypeRewriteRule makeRule() {
       Type<?> $$0 = this.getInputSchema().getType(bgx.C);
-      Type<Pair<String, String>> $$1 = DSL.named(bgx.C.typeName(), bii.a());
+      Type<Pair<String, String>> $$1 = DSL.named(bgx.C.typeName(), bij.a());
       if (!Objects.equals($$0, $$1)) {
          throw new IllegalStateException("block type is not what was expected.");
       } else {

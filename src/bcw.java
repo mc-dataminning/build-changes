@@ -13,7 +13,7 @@ public class bcw extends DataFix {
    }
 
    public TypeRewriteRule makeRule() {
-      OpticFinder<String> $$0 = DSL.fieldFinder("id", bii.a());
+      OpticFinder<String> $$0 = DSL.fieldFinder("id", bij.a());
       return this.fixTypeEverywhereTyped(
          "EntityCustomNameToComponentFix", this.getInputSchema().getType(bgx.B), $$1 -> $$1.update(DSL.remainderFinder(), $$2 -> {
                Optional<String> $$3 = $$1.getOptional($$0);

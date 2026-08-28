@@ -14,10 +14,10 @@ public class adn implements zw<aci> {
    private final float i;
    private final lg j;
    private final lg k;
-   private final dbq.a l;
+   private final dbr.a l;
    private final ji<avz> m;
 
-   public adn(double $$0, double $$1, double $$2, float $$3, List<iz> $$4, @Nullable evr $$5, dbq.a $$6, lg $$7, lg $$8, ji<avz> $$9) {
+   public adn(double $$0, double $$1, double $$2, float $$3, List<iz> $$4, @Nullable evs $$5, dbr.a $$6, lg $$7, lg $$8, ji<avz> $$9) {
       this.b = $$0;
       this.c = $$1;
       this.d = $$2;
@@ -56,7 +56,7 @@ public class adn implements zw<aci> {
       this.g = $$0.readFloat();
       this.h = $$0.readFloat();
       this.i = $$0.readFloat();
-      this.l = $$0.b(dbq.a.class);
+      this.l = $$0.b(dbr.a.class);
       this.j = li.bg.decode($$0);
       this.k = li.bg.decode($$0);
       this.m = avz.d.decode($$0);
@@ -128,7 +128,7 @@ public class adn implements zw<aci> {
       return this.f;
    }
 
-   public dbq.a l() {
+   public dbr.a l() {
       return this.l;
    }
 

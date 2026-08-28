@@ -1,124 +1,118 @@
 import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableSet;
-import com.mojang.datafixers.util.Pair;
-import java.util.Optional;
+import com.mojang.serialization.Dynamic;
+import javax.annotation.Nullable;
 
-public class clr {
-   private static final int a = 600;
-   private static final int b = 20;
-   private static final double c = 0.0125;
-   private static final int d = 8;
-   private static final int e = 8;
-   private static final double f = 12.0;
-   private static final float g = 0.6F;
-   private static final int h = 2;
-   private static final int i = 100;
-   private static final int j = 5;
+public class clr extends cln {
+   private static final int bZ = 50;
+   private static final float ca = 0.35F;
+   private static final int cb = 7;
+   protected static final ImmutableList<ceb<? extends cea<? super clr>>> e = ImmutableList.of(ceb.c, ceb.d, ceb.b, ceb.f, ceb.m);
+   protected static final ImmutableList<ccu<?>> bY = ImmutableList.of(
+      ccu.n, ccu.v, ccu.g, ccu.h, ccu.k, ccu.l, ccu.ao, ccu.an, ccu.x, ccu.y, ccu.m, ccu.E, new ccu[]{ccu.o, ccu.p, ccu.q, ccu.t, ccu.ab, ccu.M, ccu.b}
+   );
 
-   protected static bur<?> a(clq $$0, bur<clq> $$1) {
-      b($$0, $$1);
-      c($$0, $$1);
-      d($$0, $$1);
-      $$1.a(ImmutableSet.of(com.a));
-      $$1.b(com.b);
-      $$1.f();
-      return $$1;
+   public clr(btb<? extends clr> $$0, dbz $$1) {
+      super($$0, $$1);
+      this.bN = 20;
    }
 
-   protected static void a(clq $$0) {
-      jh $$1 = jh.a($$0.dP().af(), $$0.dp());
-      $$0.dS().a(cct.b, $$1);
+   public static bux.a y() {
+      return cke.gw().a(buy.q, 50.0).a(buy.r, 0.35F).a(buy.c, 7.0);
    }
 
-   private static void b(clq $$0, bur<clq> $$1) {
-      $$1.a(com.a, 0, ImmutableList.of(new bwo(45, 90), new bws(), bwg.a(), bxy.a()));
+   @Nullable
+   @Override
+   public buj a(dco $$0, bqt $$1, btu $$2, @Nullable buj $$3) {
+      cls.a(this);
+      this.a($$0.E_(), $$1);
+      return super.a($$0, $$1, $$2, $$3);
    }
 
-   private static void c(clq $$0, bur<clq> $$1) {
-      $$1.a(com.b, 10, ImmutableList.of(bxu.a(clr::a), a(), b(), bxk.a(bta.by, 4)));
+   @Override
+   protected void a(azh $$0, bqt $$1) {
+      this.a(btc.a, new cuq(cut.oY));
    }
 
-   private static void d(clq $$0, bur<clq> $$1) {
-      $$1.a(com.k, 10, ImmutableList.of(bxx.a($$1x -> !a((clm)$$0, $$1x)), bxn.a(1.0F), bwp.a(20)), cct.o);
+   @Override
+   protected bus.b<clr> dT() {
+      return bus.a(bY, e);
    }
 
-   private static bxf<clq> a() {
-      return new bxf<>(
-         ImmutableList.of(
-            Pair.of(bxh.a(bta.by, 8.0F), 1),
-            Pair.of(bxh.a(bta.aA, 8.0F), 1),
-            Pair.of(bxh.a(bta.aB, 8.0F), 1),
-            Pair.of(bxh.a(8.0F), 1),
-            Pair.of(new bvs(30, 60), 1)
-         )
-      );
+   @Override
+   protected bus<?> a(Dynamic<?> $$0) {
+      return cls.a(this, this.dT().a($$0));
    }
 
-   private static bxf<clq> b() {
-      return new bxf<>(
-         ImmutableList.of(
-            Pair.of(bxa.a(0.6F), 2),
-            Pair.of(bwf.a(bta.aA, 8, cct.q, 0.6F, 2), 2),
-            Pair.of(bwf.a(bta.aB, 8, cct.q, 0.6F, 2), 2),
-            Pair.of(bya.a(cct.b, 0.6F, 2, 100), 2),
-            Pair.of(bxz.a(cct.b, 0.6F, 5), 2),
-            Pair.of(new bvs(30, 60), 1)
-         )
-      );
+   @Override
+   public bus<clr> dS() {
+      return (bus<clr>)super.dS();
    }
 
-   protected static void b(clq $$0) {
-      bur<clq> $$1 = $$0.dS();
-      com $$2 = $$1.g().orElse(null);
-      $$1.a(ImmutableList.of(com.k, com.b));
-      com $$3 = $$1.g().orElse(null);
-      if ($$2 != $$3) {
-         d($$0);
-      }
-
-      $$0.v($$1.a(cct.o));
+   @Override
+   public boolean s() {
+      return false;
    }
 
-   private static boolean a(clm $$0, btp $$1) {
-      return a($$0).filter($$1x -> $$1x == $$1).isPresent();
+   @Override
+   public boolean k(cuq $$0) {
+      return $$0.a(cut.oY) ? super.k($$0) : false;
    }
 
-   private static Optional<? extends btp> a(clm $$0) {
-      Optional<btp> $$1 = bvk.a($$0, cct.ab);
-      if ($$1.isPresent() && cdz.d($$0, $$1.get())) {
-         return $$1;
+   @Override
+   protected void Z() {
+      this.dP().ag().a("piglinBruteBrain");
+      this.dS().a((arf)this.dP(), this);
+      this.dP().ag().c();
+      cls.b(this);
+      cls.c(this);
+      super.Z();
+   }
+
+   @Override
+   public clq gs() {
+      return this.gi() && this.gt() ? clq.a : clq.f;
+   }
+
+   @Override
+   public boolean a(bro $$0, float $$1) {
+      boolean $$2 = super.a($$0, $$1);
+      if (this.dP().B) {
+         return false;
       } else {
-         Optional<? extends btp> $$2 = a($$0, cct.l);
-         return $$2.isPresent() ? $$2 : $$0.dS().c(cct.M);
-      }
-   }
-
-   private static Optional<? extends btp> a(clm $$0, cct<? extends btp> $$1) {
-      return $$0.dS().c($$1).filter($$1x -> $$1x.a($$0, 12.0));
-   }
-
-   protected static void a(clq $$0, btp $$1) {
-      if (!($$1 instanceof clm)) {
-         clo.a($$0, $$1);
-      }
-   }
-
-   protected static void b(clq $$0, btp $$1) {
-      $$0.dS().b(cct.E);
-      $$0.dS().a(cct.ab, $$1.cz(), 600L);
-   }
-
-   protected static void c(clq $$0) {
-      if ((double)$$0.dP().z.i() < 0.0125) {
-         d($$0);
-      }
-   }
-
-   private static void d(clq $$0) {
-      $$0.dS().g().ifPresent($$1 -> {
-         if ($$1 == com.k) {
-            $$0.gx();
+         if ($$2 && $$0.d() instanceof btq) {
+            cls.a(this, (btq)$$0.d());
          }
-      });
+
+         return $$2;
+      }
+   }
+
+   @Override
+   protected avz v() {
+      return awa.tM;
+   }
+
+   @Override
+   protected avz d(bro $$0) {
+      return awa.tP;
+   }
+
+   @Override
+   protected avz o_() {
+      return awa.tO;
+   }
+
+   @Override
+   protected void b(iz $$0, dsd $$1) {
+      this.a(awa.tQ, 0.15F, 1.0F);
+   }
+
+   protected void gx() {
+      this.b(awa.tN);
+   }
+
+   @Override
+   protected void gu() {
+      this.b(awa.tR);
    }
 }

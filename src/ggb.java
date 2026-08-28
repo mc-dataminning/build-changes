@@ -1,39 +1,50 @@
-public class ggb implements gfo<dqq> {
-   private final fvt<?> a;
+public class ggb implements gfp<drz> {
+   private final gej a;
 
-   public ggb(gfp.a $$0) {
-      this.a = new fvt($$0.a(fwz.bk));
+   public ggb(gfq.a $$0) {
+      this.a = $$0.b();
    }
 
-   public void a(dqq $$0, float $$1, ezy $$2, gdo $$3, int $$4, int $$5) {
-      je $$6 = je.b;
-      if ($$0.m()) {
-         dsc $$7 = $$0.i().a_($$0.ay_());
-         if ($$7.b() instanceof dly) {
-            $$6 = $$7.c(dly.b);
+   public void a(drz $$0, float $$1, ezz $$2, gdp $$3, int $$4, int $$5) {
+      dbz $$6 = $$0.i();
+      if ($$6 != null) {
+         iz $$7 = $$0.ay_().a($$0.f().g());
+         dsd $$8 = $$0.j();
+         if (!$$8.i()) {
+            gel.a();
+            $$2.a();
+            $$2.a($$0.b($$1), $$0.c($$1), $$0.d($$1));
+            if ($$8.a(dfc.bz) && $$0.a($$1) <= 4.0F) {
+               $$8 = $$8.a(drx.d, Boolean.valueOf($$0.a($$1) <= 0.5F));
+               this.a($$7, $$8, $$2, $$3, $$6, false, $$5);
+            } else if ($$0.d() && !$$0.b()) {
+               dtf $$9 = $$8.a(dfc.br) ? dtf.b : dtf.a;
+               dsd $$10 = dfc.bz.o().a(drx.c, $$9).a(drx.a, $$8.c(drw.a));
+               $$10 = $$10.a(drx.d, Boolean.valueOf($$0.a($$1) >= 0.5F));
+               this.a($$7, $$10, $$2, $$3, $$6, false, $$5);
+               iz $$11 = $$7.a($$0.f());
+               $$2.b();
+               $$2.a();
+               $$8 = $$8.a(drw.c, Boolean.valueOf(true));
+               this.a($$11, $$8, $$2, $$3, $$6, true, $$5);
+            } else {
+               this.a($$7, $$8, $$2, $$3, $$6, false, $$5);
+            }
+
+            $$2.b();
+            gel.b();
          }
       }
+   }
 
-      cti $$8 = $$0.u();
-      grd $$9;
-      if ($$8 == null) {
-         $$9 = ged.i;
-      } else {
-         $$9 = ged.j.get($$8.a());
-      }
+   private void a(iz $$0, dsd $$1, ezz $$2, gdp $$3, dbz $$4, boolean $$5, int $$6) {
+      gdx $$7 = gdk.b($$1);
+      fad $$8 = $$3.getBuffer($$7);
+      this.a.b().a($$4, this.a.a($$1), $$1, $$0, $$2, $$8, $$5, azh.a(), $$1.a($$0), $$6);
+   }
 
-      $$2.a();
-      $$2.a(0.5F, 0.5F, 0.5F);
-      float $$11 = 0.9995F;
-      $$2.b(0.9995F, 0.9995F, 0.9995F);
-      $$2.a($$6.b());
-      $$2.b(1.0F, -1.0F, -1.0F);
-      $$2.a(0.0F, -1.0F, 0.0F);
-      fxa $$12 = this.a.b();
-      $$12.a(0.0F, 24.0F - $$0.a($$1) * 0.5F * 16.0F, 0.0F);
-      $$12.f = 270.0F * $$0.a($$1) * (float) (Math.PI / 180.0);
-      fac $$13 = $$9.a($$3, gdw::e);
-      this.a.a($$2, $$13, $$4, $$5, 1.0F, 1.0F, 1.0F, 1.0F);
-      $$2.b();
+   @Override
+   public int aP_() {
+      return 68;
    }
 }

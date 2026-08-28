@@ -9,11 +9,11 @@ public class ct extends dr<ct.a> {
       return ct.a.a;
    }
 
-   public void a(arg $$0, iz $$1, cup $$2) {
+   public void a(arg $$0, iz $$1, cuq $$2) {
       arf $$3 = $$0.z();
-      dsc $$4 = $$3.a_($$1);
-      eql $$5 = new eql.a($$3).a(ete.f, $$1.b()).a(ete.a, $$0).a(ete.g, $$4).a(ete.i, $$2).a(etd.o);
-      eqi $$6 = new eqi.a($$5).a(Optional.empty());
+      dsd $$4 = $$3.a_($$1);
+      eqm $$5 = new eqm.a($$3).a(etf.f, $$1.b()).a(etf.a, $$0).a(etf.g, $$4).a(etf.i, $$2).a(ete.o);
+      eqj $$6 = new eqj.a($$5).a(Optional.empty());
       this.a($$0, $$1x -> $$1x.a($$6));
    }
 
@@ -22,18 +22,18 @@ public class ct extends dr<ct.a> {
          $$0 -> $$0.group(bu.b.optionalFieldOf("player").forGetter(ct.a::a), bf.a.optionalFieldOf("location").forGetter(ct.a::b)).apply($$0, ct.a::new)
       );
 
-      public static an<ct.a> a(dez $$0) {
-         bf $$1 = bf.a(etr.a($$0).build());
+      public static an<ct.a> a(dfa $$0) {
+         bf $$1 = bf.a(ets.a($$0).build());
          return am.z.a(new ct.a(Optional.empty(), Optional.of($$1)));
       }
 
-      public static an<ct.a> a(ets.a... $$0) {
-         bf $$1 = bf.a(Arrays.stream($$0).map(ets.a::build).toArray(ets[]::new));
+      public static an<ct.a> a(ett.a... $$0) {
+         bf $$1 = bf.a(Arrays.stream($$0).map(ett.a::build).toArray(ett[]::new));
          return am.z.a(new ct.a(Optional.empty(), Optional.of($$1)));
       }
 
       private static ct.a c(dc.a $$0, cp.a $$1) {
-         bf $$2 = bf.a(etq.a($$0).build(), etz.a($$1).build());
+         bf $$2 = bf.a(etr.a($$0).build(), eua.a($$1).build());
          return new ct.a(Optional.empty(), Optional.of($$2));
       }
 
@@ -45,14 +45,14 @@ public class ct extends dr<ct.a> {
          return am.aa.a(c($$0, $$1));
       }
 
-      public boolean a(eqi $$0) {
+      public boolean a(eqj $$0) {
          return this.c.isEmpty() || this.c.get().a($$0);
       }
 
       @Override
       public void a(bg $$0) {
          dr.a.super.a($$0);
-         this.c.ifPresent($$1 -> $$0.a($$1, etd.o, ".location"));
+         this.c.ifPresent($$1 -> $$0.a($$1, ete.o, ".location"));
       }
 
       @Override

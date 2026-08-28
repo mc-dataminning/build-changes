@@ -1,68 +1,71 @@
-public final class dye {
-   private static final float a = 0.4F;
-   private static final int b = 20;
-   private static final double c = 0.2;
-   private static final float d = 0.7F;
-   private static final float e = 0.1F;
-   private static final float f = 0.3F;
-   private static final float g = 0.6F;
-   private static final float h = 0.02F;
-   private static final float i = -0.3F;
+public class dye {
+   public static final ale<emz.a> a = a("temperature");
+   public static final ale<emz.a> b = a("vegetation");
+   public static final ale<emz.a> c = a("continentalness");
+   public static final ale<emz.a> d = a("erosion");
+   public static final ale<emz.a> e = a("temperature_large");
+   public static final ale<emz.a> f = a("vegetation_large");
+   public static final ale<emz.a> g = a("continentalness_large");
+   public static final ale<emz.a> h = a("erosion_large");
+   public static final ale<emz.a> i = a("ridge");
+   public static final ale<emz.a> j = a("offset");
+   public static final ale<emz.a> k = a("aquifer_barrier");
+   public static final ale<emz.a> l = a("aquifer_fluid_level_floodedness");
+   public static final ale<emz.a> m = a("aquifer_lava");
+   public static final ale<emz.a> n = a("aquifer_fluid_level_spread");
+   public static final ale<emz.a> o = a("pillar");
+   public static final ale<emz.a> p = a("pillar_rareness");
+   public static final ale<emz.a> q = a("pillar_thickness");
+   public static final ale<emz.a> r = a("spaghetti_2d");
+   public static final ale<emz.a> s = a("spaghetti_2d_elevation");
+   public static final ale<emz.a> t = a("spaghetti_2d_modulator");
+   public static final ale<emz.a> u = a("spaghetti_2d_thickness");
+   public static final ale<emz.a> v = a("spaghetti_3d_1");
+   public static final ale<emz.a> w = a("spaghetti_3d_2");
+   public static final ale<emz.a> x = a("spaghetti_3d_rarity");
+   public static final ale<emz.a> y = a("spaghetti_3d_thickness");
+   public static final ale<emz.a> z = a("spaghetti_roughness");
+   public static final ale<emz.a> A = a("spaghetti_roughness_modulator");
+   public static final ale<emz.a> B = a("cave_entrance");
+   public static final ale<emz.a> C = a("cave_layer");
+   public static final ale<emz.a> D = a("cave_cheese");
+   public static final ale<emz.a> E = a("ore_veininess");
+   public static final ale<emz.a> F = a("ore_vein_a");
+   public static final ale<emz.a> G = a("ore_vein_b");
+   public static final ale<emz.a> H = a("ore_gap");
+   public static final ale<emz.a> I = a("noodle");
+   public static final ale<emz.a> J = a("noodle_thickness");
+   public static final ale<emz.a> K = a("noodle_ridge_a");
+   public static final ale<emz.a> L = a("noodle_ridge_b");
+   public static final ale<emz.a> M = a("jagged");
+   public static final ale<emz.a> N = a("surface");
+   public static final ale<emz.a> O = a("surface_secondary");
+   public static final ale<emz.a> P = a("clay_bands_offset");
+   public static final ale<emz.a> Q = a("badlands_pillar");
+   public static final ale<emz.a> R = a("badlands_pillar_roof");
+   public static final ale<emz.a> S = a("badlands_surface");
+   public static final ale<emz.a> T = a("iceberg_pillar");
+   public static final ale<emz.a> U = a("iceberg_pillar_roof");
+   public static final ale<emz.a> V = a("iceberg_surface");
+   public static final ale<emz.a> W = a("surface_swamp");
+   public static final ale<emz.a> X = a("calcite");
+   public static final ale<emz.a> Y = a("gravel");
+   public static final ale<emz.a> Z = a("powder_snow");
+   public static final ale<emz.a> aa = a("packed_ice");
+   public static final ale<emz.a> ab = a("ice");
+   public static final ale<emz.a> ac = a("soul_sand_layer");
+   public static final ale<emz.a> ad = a("gravel_layer");
+   public static final ale<emz.a> ae = a("patch");
+   public static final ale<emz.a> af = a("netherrack");
+   public static final ale<emz.a> ag = a("nether_wart");
+   public static final ale<emz.a> ah = a("nether_state_selector");
 
-   private dye() {
+   private static ale<emz.a> a(String $$0) {
+      return ale.a(lq.aH, new alf($$0));
    }
 
-   protected static dxy.c a(dxn $$0, dxn $$1, dxn $$2, dyh $$3) {
-      dsc $$4 = null;
-      return $$5 -> {
-         double $$6 = $$0.a($$5);
-         int $$7 = $$5.b();
-         dye.a $$8 = $$6 > 0.0 ? dye.a.a : dye.a.b;
-         double $$9 = Math.abs($$6);
-         int $$10 = $$8.d - $$7;
-         int $$11 = $$7 - $$8.c;
-         if ($$11 >= 0 && $$10 >= 0) {
-            int $$12 = Math.min($$10, $$11);
-            double $$13 = ayz.a((double)$$12, 0.0, 20.0, -0.2, 0.0);
-            if ($$9 + $$13 < 0.4F) {
-               return $$4;
-            } else {
-               azh $$14 = $$3.a($$5.a(), $$7, $$5.c());
-               if ($$14.i() > 0.7F) {
-                  return $$4;
-               } else if ($$1.a($$5) >= 0.0) {
-                  return $$4;
-               } else {
-                  double $$15 = ayz.a($$9, 0.4F, 0.6F, 0.1F, 0.3F);
-                  if ((double)$$14.i() < $$15 && $$2.a($$5) > -0.3F) {
-                     return $$14.i() < 0.02F ? $$8.f : $$8.e;
-                  } else {
-                     return $$8.g;
-                  }
-               }
-            }
-         } else {
-            return $$4;
-         }
-      };
-   }
-
-   protected static enum a {
-      a(dfb.ra.o(), dfb.tg.o(), dfb.c.o(), 0, 50),
-      b(dfb.Q.o(), dfb.tf.o(), dfb.qz.o(), -60, -8);
-
-      final dsc e;
-      final dsc f;
-      final dsc g;
-      protected final int c;
-      protected final int d;
-
-      private a(final dsc $$0, final dsc $$1, final dsc $$2, final int $$3, final int $$4) {
-         this.e = $$0;
-         this.f = $$1;
-         this.g = $$2;
-         this.c = $$3;
-         this.d = $$4;
-      }
+   public static emz a(jj<emz.a> $$0, dyi $$1, ale<emz.a> $$2) {
+      ji<emz.a> $$3 = $$0.b($$2);
+      return emz.b($$1.a($$3.e().orElseThrow().a()), $$3.a());
    }
 }

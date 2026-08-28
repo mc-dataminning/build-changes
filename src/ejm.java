@@ -1,102 +1,61 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.ImmutableMap.Builder;
-import com.mojang.serialization.Dynamic;
-import com.mojang.serialization.DynamicOps;
+import com.google.common.collect.Lists;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
 
-public class ejm {
-   private final int a;
-   private final int b;
-   private final int c;
-   private final int d;
-   private final ejt.a e;
+public class ejm extends ejs {
+   public static final MapCodec<ejm> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(ehp.b.fieldOf("feature").forGetter($$0x -> $$0x.b), d()).apply($$0, ejm::new)
+   );
+   private final ji<ehp> b;
+   private final us c;
 
-   public ejm(int $$0, int $$1, int $$2, int $$3, ejt.a $$4) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
-      this.e = $$4;
+   protected ejm(ji<ehp> $$0, eju.a $$1) {
+      super($$1);
+      this.b = $$0;
+      this.c = this.b();
    }
 
-   public int a() {
-      return this.a;
-   }
-
-   public int b() {
-      return this.b;
-   }
-
-   public int c() {
-      return this.c;
-   }
-
-   public int d() {
-      return this.d;
-   }
-
-   public ejt.a e() {
-      return this.e;
-   }
-
-   public <T> Dynamic<T> a(DynamicOps<T> $$0) {
-      Builder<T, T> $$1 = ImmutableMap.builder();
-      $$1.put($$0.createString("source_x"), $$0.createInt(this.a))
-         .put($$0.createString("source_ground_y"), $$0.createInt(this.b))
-         .put($$0.createString("source_z"), $$0.createInt(this.c))
-         .put($$0.createString("delta_y"), $$0.createInt(this.d))
-         .put($$0.createString("dest_proj"), $$0.createString(this.e.a()));
-      return new Dynamic($$0, $$0.createMap($$1.build()));
-   }
-
-   public static <T> ejm a(Dynamic<T> $$0) {
-      return new ejm(
-         $$0.get("source_x").asInt(0),
-         $$0.get("source_ground_y").asInt(0),
-         $$0.get("source_z").asInt(0),
-         $$0.get("delta_y").asInt(0),
-         ejt.a.a($$0.get("dest_proj").asString(""))
-      );
+   private us b() {
+      us $$0 = new us();
+      $$0.a("name", "minecraft:bottom");
+      $$0.a("final_state", "minecraft:air");
+      $$0.a("pool", "minecraft:empty");
+      $$0.a("target", "minecraft:empty");
+      $$0.a("joint", dqi.a.a.c());
+      return $$0;
    }
 
    @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else if ($$0 != null && this.getClass() == $$0.getClass()) {
-         ejm $$1 = (ejm)$$0;
-         if (this.a != $$1.a) {
-            return false;
-         } else if (this.c != $$1.c) {
-            return false;
-         } else {
-            return this.d != $$1.d ? false : this.e == $$1.e;
-         }
-      } else {
-         return false;
-      }
+   public kd a(emm $$0, dln $$1) {
+      return kd.g;
    }
 
    @Override
-   public int hashCode() {
-      int $$0 = this.a;
-      $$0 = 31 * $$0 + this.b;
-      $$0 = 31 * $$0 + this.c;
-      $$0 = 31 * $$0 + this.d;
-      return 31 * $$0 + this.e.hashCode();
+   public List<eml.c> a(emm $$0, iz $$1, dln $$2, azh $$3) {
+      List<eml.c> $$4 = Lists.newArrayList();
+      $$4.add(new eml.c($$1, dfc.pb.o().a(djc.b, jg.a(je.a, je.d)), this.c));
+      return $$4;
+   }
+
+   @Override
+   public eid a(emm $$0, iz $$1, dln $$2) {
+      kd $$3 = this.a($$0, $$2);
+      return new eid($$1.u(), $$1.v(), $$1.w(), $$1.u() + $$3.u(), $$1.v() + $$3.v(), $$1.w() + $$3.w());
+   }
+
+   @Override
+   public boolean a(emm $$0, dcu $$1, dcs $$2, dua $$3, iz $$4, iz $$5, dln $$6, eid $$7, azh $$8, boolean $$9) {
+      return this.b.a().a($$1, $$3, $$8, $$4);
+   }
+
+   @Override
+   public ejt<?> a() {
+      return ejt.c;
    }
 
    @Override
    public String toString() {
-      return "JigsawJunction{sourceX="
-         + this.a
-         + ", sourceGroundY="
-         + this.b
-         + ", sourceZ="
-         + this.c
-         + ", deltaY="
-         + this.d
-         + ", destProjection="
-         + this.e
-         + "}";
+      return "Feature[" + this.b + "]";
    }
 }

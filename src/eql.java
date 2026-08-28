@@ -1,136 +1,57 @@
-import com.google.common.collect.Maps;
-import com.google.common.collect.Sets;
-import java.util.Map;
-import java.util.NoSuchElementException;
-import java.util.Set;
-import java.util.function.Consumer;
-import javax.annotation.Nullable;
+import com.mojang.logging.LogUtils;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.DynamicOps;
+import java.util.Optional;
+import java.util.stream.Stream;
+import org.slf4j.Logger;
 
-public class eql {
-   private final arf a;
-   private final Map<etb<?>, Object> b;
-   private final Map<alf, eql.b> c;
-   private final float d;
+public record eql<T>(ale<jv<T>> d, Codec<T> e, String f, eql.a<T> g) {
+   private static final Logger h = LogUtils.getLogger();
+   public static final eql<ett> a = new eql<>(lq.aW, etv.a, "predicates", f());
+   public static final eql<erw> b = new eql<>(lq.aV, ery.c, "item_modifiers", f());
+   public static final eql<eqo> c = new eql<>(lq.aU, eqo.d, "loot_tables", g());
 
-   public eql(arf $$0, Map<etb<?>, Object> $$1, Map<alf, eql.b> $$2, float $$3) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
+   public void a(eqp $$0, ale<T> $$1, T $$2) {
+      this.g.run($$0, $$1, $$2);
    }
 
-   public arf a() {
-      return this.a;
+   public <V> Optional<T> a(alf $$0, DynamicOps<V> $$1, V $$2) {
+      DataResult<T> $$3 = this.e.parse($$1, $$2);
+      $$3.error().ifPresent($$1x -> h.error("Couldn't parse element {}:{} - {}", new Object[]{this.f, $$0, $$1x.message()}));
+      return $$3.result();
    }
 
-   public boolean a(etb<?> $$0) {
-      return this.b.containsKey($$0);
+   public static Stream<eql<?>> a() {
+      return Stream.of(a, b, c);
    }
 
-   public <T> T b(etb<T> $$0) {
-      T $$1 = (T)this.b.get($$0);
-      if ($$1 == null) {
-         throw new NoSuchElementException($$0.a().toString());
-      } else {
-         return $$1;
-      }
+   private static <T extends eqk> eql.a<T> f() {
+      return ($$0, $$1, $$2) -> $$2.a($$0.a("{" + $$1.b() + "/" + $$1.a() + "}", $$1));
    }
 
-   @Nullable
-   public <T> T c(etb<T> $$0) {
-      return (T)this.b.get($$0);
+   private static eql.a<eqo> g() {
+      return ($$0, $$1, $$2) -> $$2.a($$0.a($$2.a()).a("{" + $$1.b() + "/" + $$1.a() + "}", $$1));
    }
 
-   @Nullable
-   public <T> T d(etb<T> $$0) {
-      return (T)this.b.get($$0);
-   }
-
-   public void a(alf $$0, Consumer<cup> $$1) {
-      eql.b $$2 = this.c.get($$0);
-      if ($$2 != null) {
-         $$2.add($$1);
-      }
-   }
-
-   public float b() {
+   public ale<jv<T>> b() {
       return this.d;
    }
 
-   public static class a {
-      private final arf a;
-      private final Map<etb<?>, Object> b = Maps.newIdentityHashMap();
-      private final Map<alf, eql.b> c = Maps.newHashMap();
-      private float d;
+   public Codec<T> c() {
+      return this.e;
+   }
 
-      public a(arf $$0) {
-         this.a = $$0;
-      }
+   public String d() {
+      return this.f;
+   }
 
-      public arf a() {
-         return this.a;
-      }
-
-      public <T> eql.a a(etb<T> $$0, T $$1) {
-         this.b.put($$0, $$1);
-         return this;
-      }
-
-      public <T> eql.a b(etb<T> $$0, @Nullable T $$1) {
-         if ($$1 == null) {
-            this.b.remove($$0);
-         } else {
-            this.b.put($$0, $$1);
-         }
-
-         return this;
-      }
-
-      public <T> T a(etb<T> $$0) {
-         T $$1 = (T)this.b.get($$0);
-         if ($$1 == null) {
-            throw new NoSuchElementException($$0.a().toString());
-         } else {
-            return $$1;
-         }
-      }
-
-      @Nullable
-      public <T> T b(etb<T> $$0) {
-         return (T)this.b.get($$0);
-      }
-
-      public eql.a a(alf $$0, eql.b $$1) {
-         eql.b $$2 = this.c.put($$0, $$1);
-         if ($$2 != null) {
-            throw new IllegalStateException("Duplicated dynamic drop '" + this.c + "'");
-         } else {
-            return this;
-         }
-      }
-
-      public eql.a a(float $$0) {
-         this.d = $$0;
-         return this;
-      }
-
-      public eql a(etc $$0) {
-         Set<etb<?>> $$1 = Sets.difference(this.b.keySet(), $$0.b());
-         if (!$$1.isEmpty()) {
-            throw new IllegalArgumentException("Parameters not allowed in this parameter set: " + $$1);
-         } else {
-            Set<etb<?>> $$2 = Sets.difference($$0.a(), this.b.keySet());
-            if (!$$2.isEmpty()) {
-               throw new IllegalArgumentException("Missing required parameters: " + $$2);
-            } else {
-               return new eql(this.a, this.b, this.c, this.d);
-            }
-         }
-      }
+   public eql.a<T> e() {
+      return this.g;
    }
 
    @FunctionalInterface
-   public interface b {
-      void add(Consumer<cup> var1);
+   public interface a<T> {
+      void run(eqp var1, ale<T> var2, T var3);
    }
 }

@@ -1,10 +1,10 @@
-public class dao extends daa {
-   protected dao(daa.b $$0) {
+public class dao extends dab {
+   public dao(dab.b $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(daa $$0) {
-      return super.a($$0) && $$0 != dad.x;
+   public boolean a(dab $$0) {
+      return super.a($$0) && $$0 != dae.E && $$0 != dae.H;
    }
 }

@@ -1,7 +1,32 @@
-public record exw(evr b, evr c, evr d) {
-   public static final exw a = new exw(evr.b, new evr(0.0, 0.0, -1.0), new evr(0.0, 1.0, 0.0));
+import org.lwjgl.openal.AL10;
 
-   public evr a() {
-      return this.c.c(this.d);
+public class exw {
+   private float a = 1.0F;
+   private exx b = exx.a;
+
+   public void a(exx $$0) {
+      this.b = $$0;
+      evs $$1 = $$0.b();
+      evs $$2 = $$0.c();
+      evs $$3 = $$0.d();
+      AL10.alListener3f(4100, (float)$$1.c, (float)$$1.d, (float)$$1.e);
+      AL10.alListenerfv(4111, new float[]{(float)$$2.c, (float)$$2.d, (float)$$2.e, (float)$$3.a(), (float)$$3.b(), (float)$$3.c()});
+   }
+
+   public void a(float $$0) {
+      AL10.alListenerf(4106, $$0);
+      this.a = $$0;
+   }
+
+   public float a() {
+      return this.a;
+   }
+
+   public void b() {
+      this.a(exx.a);
+   }
+
+   public exx c() {
+      return this.b;
    }
 }

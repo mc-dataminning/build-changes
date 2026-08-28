@@ -1,345 +1,165 @@
-import com.google.common.collect.Lists;
-import java.util.List;
-import javax.annotation.Nullable;
+import com.mojang.serialization.MapCodec;
 
-public class dkz {
-   private final dby a;
-   private final iz b;
-   private final deo c;
-   private dsc d;
-   private final boolean e;
-   private final List<iz> f = Lists.newArrayList();
+public class dkz extends dep {
+   public static final MapCodec<dkz> d = b(dkz::new);
+   public static final dtb<dth> e = dst.ag;
 
-   public dkz(dby $$0, iz $$1, dsc $$2) {
-      this.a = $$0;
-      this.b = $$1;
-      this.d = $$2;
-      this.c = (deo)$$2.b();
-      dtg $$3 = $$2.c(this.c.c());
-      this.e = this.c.b();
-      this.a($$3);
+   @Override
+   public MapCodec<dkz> a() {
+      return d;
    }
 
-   public List<iz> a() {
-      return this.f;
+   protected dkz(dsc.d $$0) {
+      super(false, $$0);
+      this.k(this.E.b().a(e, dth.a).a(c, Boolean.valueOf(false)));
    }
 
-   private void a(dtg $$0) {
-      this.f.clear();
-      switch ($$0) {
-         case a:
-            this.f.add(this.b.e());
-            this.f.add(this.b.f());
-            break;
+   @Override
+   protected void a(dsd $$0, dbz $$1, iz $$2, dfa $$3) {
+      if ($$3.o().m() && new dla($$1, $$2, $$0).b() == 3) {
+         this.a($$1, $$2, $$0, false);
+      }
+   }
+
+   @Override
+   public dtg<dth> c() {
+      return e;
+   }
+
+   @Override
+   protected dsd a(dsd $$0, dln $$1) {
+      dth $$2 = $$0.c(e);
+
+      return $$0.a(e, switch ($$1) {
+         case c -> {
+            switch ($$2) {
+               case a:
+                  yield dth.a;
+               case b:
+                  yield dth.b;
+               case c:
+                  yield dth.d;
+               case d:
+                  yield dth.c;
+               case e:
+                  yield dth.f;
+               case f:
+                  yield dth.e;
+               case g:
+                  yield dth.i;
+               case h:
+                  yield dth.j;
+               case i:
+                  yield dth.g;
+               case j:
+                  yield dth.h;
+               default:
+                  throw new MatchException(null, null);
+            }
+         }
+         case d -> {
+            switch ($$2) {
+               case a:
+                  yield dth.b;
+               case b:
+                  yield dth.a;
+               case c:
+                  yield dth.e;
+               case d:
+                  yield dth.f;
+               case e:
+                  yield dth.d;
+               case f:
+                  yield dth.c;
+               case g:
+                  yield dth.j;
+               case h:
+                  yield dth.g;
+               case i:
+                  yield dth.h;
+               case j:
+                  yield dth.i;
+               default:
+                  throw new MatchException(null, null);
+            }
+         }
+         case b -> {
+            switch ($$2) {
+               case a:
+                  yield dth.b;
+               case b:
+                  yield dth.a;
+               case c:
+                  yield dth.f;
+               case d:
+                  yield dth.e;
+               case e:
+                  yield dth.c;
+               case f:
+                  yield dth.d;
+               case g:
+                  yield dth.h;
+               case h:
+                  yield dth.i;
+               case i:
+                  yield dth.j;
+               case j:
+                  yield dth.g;
+               default:
+                  throw new MatchException(null, null);
+            }
+         }
+         default -> $$2;
+      });
+   }
+
+   @Override
+   protected dsd a(dsd $$0, djx $$1) {
+      dth $$2 = $$0.c(e);
+      switch ($$1) {
          case b:
-            this.f.add(this.b.g());
-            this.f.add(this.b.h());
-            break;
+            switch ($$2) {
+               case e:
+                  return $$0.a(e, dth.f);
+               case f:
+                  return $$0.a(e, dth.e);
+               case g:
+                  return $$0.a(e, dth.j);
+               case h:
+                  return $$0.a(e, dth.i);
+               case i:
+                  return $$0.a(e, dth.h);
+               case j:
+                  return $$0.a(e, dth.g);
+               default:
+                  return super.a($$0, $$1);
+            }
          case c:
-            this.f.add(this.b.g());
-            this.f.add(this.b.h().c());
-            break;
-         case d:
-            this.f.add(this.b.g().c());
-            this.f.add(this.b.h());
-            break;
-         case e:
-            this.f.add(this.b.e().c());
-            this.f.add(this.b.f());
-            break;
-         case f:
-            this.f.add(this.b.e());
-            this.f.add(this.b.f().c());
-            break;
-         case g:
-            this.f.add(this.b.h());
-            this.f.add(this.b.f());
-            break;
-         case h:
-            this.f.add(this.b.g());
-            this.f.add(this.b.f());
-            break;
-         case i:
-            this.f.add(this.b.g());
-            this.f.add(this.b.e());
-            break;
-         case j:
-            this.f.add(this.b.h());
-            this.f.add(this.b.e());
-      }
-   }
-
-   private void d() {
-      for (int $$0 = 0; $$0 < this.f.size(); $$0++) {
-         dkz $$1 = this.b(this.f.get($$0));
-         if ($$1 != null && $$1.a(this)) {
-            this.f.set($$0, $$1.b);
-         } else {
-            this.f.remove($$0--);
-         }
-      }
-   }
-
-   private boolean a(iz $$0) {
-      return deo.a(this.a, $$0) || deo.a(this.a, $$0.c()) || deo.a(this.a, $$0.d());
-   }
-
-   @Nullable
-   private dkz b(iz $$0) {
-      dsc $$2 = this.a.a_($$0);
-      if (deo.g($$2)) {
-         return new dkz(this.a, $$0, $$2);
-      } else {
-         iz $$1 = $$0.c();
-         $$2 = this.a.a_($$1);
-         if (deo.g($$2)) {
-            return new dkz(this.a, $$1, $$2);
-         } else {
-            $$1 = $$0.d();
-            $$2 = this.a.a_($$1);
-            return deo.g($$2) ? new dkz(this.a, $$1, $$2) : null;
-         }
-      }
-   }
-
-   private boolean a(dkz $$0) {
-      return this.c($$0.b);
-   }
-
-   private boolean c(iz $$0) {
-      for (int $$1 = 0; $$1 < this.f.size(); $$1++) {
-         iz $$2 = this.f.get($$1);
-         if ($$2.u() == $$0.u() && $$2.w() == $$0.w()) {
-            return true;
-         }
-      }
-
-      return false;
-   }
-
-   protected int b() {
-      int $$0 = 0;
-
-      for (je $$1 : je.c.a) {
-         if (this.a(this.b.a($$1))) {
-            $$0++;
-         }
-      }
-
-      return $$0;
-   }
-
-   private boolean b(dkz $$0) {
-      return this.a($$0) || this.f.size() != 2;
-   }
-
-   private void c(dkz $$0) {
-      this.f.add($$0.b);
-      iz $$1 = this.b.e();
-      iz $$2 = this.b.f();
-      iz $$3 = this.b.g();
-      iz $$4 = this.b.h();
-      boolean $$5 = this.c($$1);
-      boolean $$6 = this.c($$2);
-      boolean $$7 = this.c($$3);
-      boolean $$8 = this.c($$4);
-      dtg $$9 = null;
-      if ($$5 || $$6) {
-         $$9 = dtg.a;
-      }
-
-      if ($$7 || $$8) {
-         $$9 = dtg.b;
-      }
-
-      if (!this.e) {
-         if ($$6 && $$8 && !$$5 && !$$7) {
-            $$9 = dtg.g;
-         }
-
-         if ($$6 && $$7 && !$$5 && !$$8) {
-            $$9 = dtg.h;
-         }
-
-         if ($$5 && $$7 && !$$6 && !$$8) {
-            $$9 = dtg.i;
-         }
-
-         if ($$5 && $$8 && !$$6 && !$$7) {
-            $$9 = dtg.j;
-         }
-      }
-
-      if ($$9 == dtg.a) {
-         if (deo.a(this.a, $$1.c())) {
-            $$9 = dtg.e;
-         }
-
-         if (deo.a(this.a, $$2.c())) {
-            $$9 = dtg.f;
-         }
-      }
-
-      if ($$9 == dtg.b) {
-         if (deo.a(this.a, $$4.c())) {
-            $$9 = dtg.c;
-         }
-
-         if (deo.a(this.a, $$3.c())) {
-            $$9 = dtg.d;
-         }
-      }
-
-      if ($$9 == null) {
-         $$9 = dtg.a;
-      }
-
-      this.d = this.d.a(this.c.c(), $$9);
-      this.a.a(this.b, this.d, 3);
-   }
-
-   private boolean d(iz $$0) {
-      dkz $$1 = this.b($$0);
-      if ($$1 == null) {
-         return false;
-      } else {
-         $$1.d();
-         return $$1.b(this);
-      }
-   }
-
-   public dkz a(boolean $$0, boolean $$1, dtg $$2) {
-      iz $$3 = this.b.e();
-      iz $$4 = this.b.f();
-      iz $$5 = this.b.g();
-      iz $$6 = this.b.h();
-      boolean $$7 = this.d($$3);
-      boolean $$8 = this.d($$4);
-      boolean $$9 = this.d($$5);
-      boolean $$10 = this.d($$6);
-      dtg $$11 = null;
-      boolean $$12 = $$7 || $$8;
-      boolean $$13 = $$9 || $$10;
-      if ($$12 && !$$13) {
-         $$11 = dtg.a;
-      }
-
-      if ($$13 && !$$12) {
-         $$11 = dtg.b;
-      }
-
-      boolean $$14 = $$8 && $$10;
-      boolean $$15 = $$8 && $$9;
-      boolean $$16 = $$7 && $$10;
-      boolean $$17 = $$7 && $$9;
-      if (!this.e) {
-         if ($$14 && !$$7 && !$$9) {
-            $$11 = dtg.g;
-         }
-
-         if ($$15 && !$$7 && !$$10) {
-            $$11 = dtg.h;
-         }
-
-         if ($$17 && !$$8 && !$$10) {
-            $$11 = dtg.i;
-         }
-
-         if ($$16 && !$$8 && !$$9) {
-            $$11 = dtg.j;
-         }
-      }
-
-      if ($$11 == null) {
-         if ($$12 && $$13) {
-            $$11 = $$2;
-         } else if ($$12) {
-            $$11 = dtg.a;
-         } else if ($$13) {
-            $$11 = dtg.b;
-         }
-
-         if (!this.e) {
-            if ($$0) {
-               if ($$14) {
-                  $$11 = dtg.g;
-               }
-
-               if ($$15) {
-                  $$11 = dtg.h;
-               }
-
-               if ($$16) {
-                  $$11 = dtg.j;
-               }
-
-               if ($$17) {
-                  $$11 = dtg.i;
-               }
-            } else {
-               if ($$17) {
-                  $$11 = dtg.i;
-               }
-
-               if ($$16) {
-                  $$11 = dtg.j;
-               }
-
-               if ($$15) {
-                  $$11 = dtg.h;
-               }
-
-               if ($$14) {
-                  $$11 = dtg.g;
-               }
+            switch ($$2) {
+               case c:
+                  return $$0.a(e, dth.d);
+               case d:
+                  return $$0.a(e, dth.c);
+               case e:
+               case f:
+               default:
+                  break;
+               case g:
+                  return $$0.a(e, dth.h);
+               case h:
+                  return $$0.a(e, dth.g);
+               case i:
+                  return $$0.a(e, dth.j);
+               case j:
+                  return $$0.a(e, dth.i);
             }
-         }
       }
 
-      if ($$11 == dtg.a) {
-         if (deo.a(this.a, $$3.c())) {
-            $$11 = dtg.e;
-         }
-
-         if (deo.a(this.a, $$4.c())) {
-            $$11 = dtg.f;
-         }
-      }
-
-      if ($$11 == dtg.b) {
-         if (deo.a(this.a, $$6.c())) {
-            $$11 = dtg.c;
-         }
-
-         if (deo.a(this.a, $$5.c())) {
-            $$11 = dtg.d;
-         }
-      }
-
-      if ($$11 == null) {
-         $$11 = $$2;
-      }
-
-      this.a($$11);
-      this.d = this.d.a(this.c.c(), $$11);
-      if ($$1 || this.a.a_(this.b) != this.d) {
-         this.a.a(this.b, this.d, 3);
-
-         for (int $$18 = 0; $$18 < this.f.size(); $$18++) {
-            dkz $$19 = this.b(this.f.get($$18));
-            if ($$19 != null) {
-               $$19.d();
-               if ($$19.b(this)) {
-                  $$19.c(this);
-               }
-            }
-         }
-      }
-
-      return this;
+      return super.a($$0, $$1);
    }
 
-   public dsc c() {
-      return this.d;
+   @Override
+   protected void a(dse.a<dfa, dsd> $$0) {
+      $$0.a(e, c);
    }
 }

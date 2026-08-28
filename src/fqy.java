@@ -1,7 +1,7 @@
 import java.util.Set;
 
-public class fqy extends fqm {
-   private static final xp i = xp.c("gui.recipebook.toggleRecipes.smokable");
+public class fqy extends fqn {
+   private static final xp i = xp.c("gui.recipebook.toggleRecipes.smeltable");
 
    @Override
    protected xp c() {
@@ -9,7 +9,7 @@ public class fqy extends fqm {
    }
 
    @Override
-   protected Set<cuk> b() {
-      return dov.g().keySet();
+   protected Set<cul> b() {
+      return dow.g().keySet();
    }
 }

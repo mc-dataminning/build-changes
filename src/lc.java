@@ -3,7 +3,7 @@ import com.mojang.serialization.codecs.RecordCodecBuilder;
 import org.joml.Vector3f;
 
 public class lc extends lj {
-   public static final Vector3f a = evr.a(3790560).j();
+   public static final Vector3f a = evs.a(3790560).j();
    public static final lc b = new lc(a, ld.a, 1.0F);
    public static final MapCodec<lc> c = RecordCodecBuilder.mapCodec(
       $$0 -> $$0.group(

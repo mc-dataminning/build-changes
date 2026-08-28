@@ -1,26 +1,15 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-
-public record cuh(ji<avz> e, int f, float g) {
-   public static final Codec<cuh> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               avz.b.fieldOf("sound_event").forGetter(cuh::a), ayh.l.fieldOf("use_duration").forGetter(cuh::b), ayh.m.fieldOf("range").forGetter(cuh::c)
-            )
-            .apply($$0, cuh::new)
-   );
-   public static final zn<xa, cuh> b = zn.a(avz.d, cuh::a, zl.g, cuh::b, zl.i, cuh::c, cuh::new);
-   public static final Codec<ji<cuh>> c = alb.a(lq.E, a);
-   public static final zn<xa, ji<cuh>> d = zl.a(lq.E, b);
-
-   public ji<avz> a() {
-      return this.e;
+public class cuh extends cul implements cvs {
+   public cuh(cul.a $$0) {
+      super($$0);
    }
 
-   public int b() {
-      return this.f;
-   }
-
-   public float c() {
-      return this.g;
+   @Override
+   public boolean a(dbz $$0, dqs $$1, boolean $$2, cmy $$3) {
+      if ($$1.a($$0x -> $$0x.a(false), $$2)) {
+         $$0.a(null, $$1.ay_(), awa.nl, awb.e, 1.0F, 1.0F);
+         return true;
+      } else {
+         return false;
+      }
    }
 }

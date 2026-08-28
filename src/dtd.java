@@ -1,62 +1,71 @@
-public enum dtd implements azu {
-   a("harp", awa.rV, dtd.a.a),
-   b("basedrum", awa.rP, dtd.a.a),
-   c("snare", awa.rY, dtd.a.a),
-   d("hat", awa.rW, dtd.a.a),
-   e("bass", awa.rQ, dtd.a.a),
-   f("flute", awa.rT, dtd.a.a),
-   g("bell", awa.rR, dtd.a.a),
-   h("guitar", awa.rU, dtd.a.a),
-   i("chime", awa.rS, dtd.a.a),
-   j("xylophone", awa.rZ, dtd.a.a),
-   k("iron_xylophone", awa.sa, dtd.a.a),
-   l("cow_bell", awa.sb, dtd.a.a),
-   m("didgeridoo", awa.sc, dtd.a.a),
-   n("bit", awa.sd, dtd.a.a),
-   o("banjo", awa.se, dtd.a.a),
-   p("pling", awa.rX, dtd.a.a),
-   q("zombie", awa.sf, dtd.a.b),
-   r("skeleton", awa.sg, dtd.a.b),
-   s("creeper", awa.sh, dtd.a.b),
-   t("dragon", awa.si, dtd.a.b),
-   u("wither_skeleton", awa.sj, dtd.a.b),
-   v("piglin", awa.sk, dtd.a.b),
-   w("custom_head", awa.Ao, dtd.a.c);
+import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.Sets;
+import java.util.Collection;
+import java.util.Optional;
+import java.util.Set;
 
-   private final String x;
-   private final ji<avz> y;
-   private final dtd.a z;
+public class dtd extends dtg<Integer> {
+   private final ImmutableSet<Integer> a;
+   private final int b;
+   private final int c;
 
-   private dtd(final String $$0, final ji<avz> $$1, final dtd.a $$2) {
-      this.x = $$0;
-      this.y = $$1;
-      this.z = $$2;
+   protected dtd(String $$0, int $$1, int $$2) {
+      super($$0, Integer.class);
+      if ($$1 < 0) {
+         throw new IllegalArgumentException("Min value of " + $$0 + " must be 0 or greater");
+      } else if ($$2 <= $$1) {
+         throw new IllegalArgumentException("Max value of " + $$0 + " must be greater than min (" + $$1 + ")");
+      } else {
+         this.b = $$1;
+         this.c = $$2;
+         Set<Integer> $$3 = Sets.newHashSet();
+
+         for (int $$4 = $$1; $$4 <= $$2; $$4++) {
+            $$3.add($$4);
+         }
+
+         this.a = ImmutableSet.copyOf($$3);
+      }
    }
 
    @Override
-   public String c() {
-      return this.x;
+   public Collection<Integer> a() {
+      return this.a;
    }
 
-   public ji<avz> a() {
-      return this.y;
+   @Override
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else {
+         if ($$0 instanceof dtd $$1 && super.equals($$0)) {
+            return this.a.equals($$1.a);
+         }
+
+         return false;
+      }
    }
 
-   public boolean b() {
-      return this.z == dtd.a.a;
+   @Override
+   public int b() {
+      return 31 * super.b() + this.a.hashCode();
    }
 
-   public boolean d() {
-      return this.z == dtd.a.c;
+   public static dtd a(String $$0, int $$1, int $$2) {
+      return new dtd($$0, $$1, $$2);
    }
 
-   public boolean e() {
-      return this.z != dtd.a.a;
+   @Override
+   public Optional<Integer> b(String $$0) {
+      try {
+         Integer $$1 = Integer.valueOf($$0);
+         return $$1 >= this.b && $$1 <= this.c ? Optional.of($$1) : Optional.empty();
+      } catch (NumberFormatException var3) {
+         return Optional.empty();
+      }
    }
 
-   static enum a {
-      a,
-      b,
-      c;
+   public String a(Integer $$0) {
+      return $$0.toString();
    }
 }

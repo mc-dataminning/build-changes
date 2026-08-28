@@ -1,111 +1,143 @@
-import java.util.function.Consumer;
+public interface fkv {
+   fkv a(int var1);
 
-public class fkv implements fks {
-   private final fkq a;
-   private final fkv.a b;
-   private int c = 0;
+   fkv a(int var1, int var2);
 
-   private fkv(fkv.a $$0) {
-      this(0, 0, $$0);
+   fkv a(int var1, int var2, int var3, int var4);
+
+   fkv b(int var1);
+
+   fkv c(int var1);
+
+   fkv d(int var1);
+
+   fkv e(int var1);
+
+   fkv f(int var1);
+
+   fkv g(int var1);
+
+   fkv a(float var1, float var2);
+
+   fkv a(float var1);
+
+   fkv b(float var1);
+
+   default fkv a() {
+      return this.a(0.0F);
    }
 
-   public fkv(int $$0, int $$1, fkv.a $$2) {
-      this.a = new fkq($$0, $$1);
-      this.b = $$2;
+   default fkv b() {
+      return this.a(0.5F);
    }
 
-   public fkv a(int $$0) {
-      this.b.a(this.a, $$0);
-      return this;
+   default fkv c() {
+      return this.a(1.0F);
    }
 
-   public fku b() {
-      return this.a.b();
+   default fkv d() {
+      return this.b(0.0F);
    }
 
-   public fku c() {
-      return this.a.c();
+   default fkv e() {
+      return this.b(0.5F);
    }
 
-   public <T extends fkt> T a(T $$0, fku $$1) {
-      return this.b.a(this.a, $$0, this.c++, $$1);
+   default fkv f() {
+      return this.b(1.0F);
    }
 
-   public <T extends fkt> T a(T $$0) {
-      return this.a($$0, this.b());
+   fkv g();
+
+   fkv.a h();
+
+   static fkv i() {
+      return new fkv.a();
    }
 
-   public <T extends fkt> T a(T $$0, Consumer<fku> $$1) {
-      return this.b.a(this.a, $$0, this.c++, ac.a(this.b(), $$1));
-   }
+   public static class a implements fkv {
+      public int a;
+      public int b;
+      public int c;
+      public int d;
+      public float e;
+      public float f;
 
-   @Override
-   public void b(Consumer<fkt> $$0) {
-      this.a.b($$0);
-   }
-
-   @Override
-   public void a() {
-      this.a.a();
-   }
-
-   @Override
-   public int x() {
-      return this.a.x();
-   }
-
-   @Override
-   public int v() {
-      return this.a.v();
-   }
-
-   @Override
-   public void m(int $$0) {
-      this.a.m($$0);
-   }
-
-   @Override
-   public void n(int $$0) {
-      this.a.n($$0);
-   }
-
-   @Override
-   public int C() {
-      return this.a.C();
-   }
-
-   @Override
-   public int D() {
-      return this.a.D();
-   }
-
-   public static fkv d() {
-      return new fkv(fkv.a.b);
-   }
-
-   public static fkv e() {
-      return new fkv(fkv.a.a);
-   }
-
-   public static enum a {
-      a,
-      b;
-
-      void a(fkq $$0, int $$1) {
-         switch (this) {
-            case a:
-               $$0.a($$1);
-               break;
-            case b:
-               $$0.b($$1);
-         }
+      public a() {
       }
 
-      public <T extends fkt> T a(fkq $$0, T $$1, int $$2, fku $$3) {
-         return (T)(switch (this) {
-            case a -> (fkt)$$0.a($$1, 0, $$2, $$3);
-            case b -> (fkt)$$0.a($$1, $$2, 0, $$3);
-         });
+      public a(fkv.a $$0) {
+         this.a = $$0.a;
+         this.b = $$0.b;
+         this.c = $$0.c;
+         this.d = $$0.d;
+         this.e = $$0.e;
+         this.f = $$0.f;
+      }
+
+      public fkv.a h(int $$0) {
+         return this.b($$0, $$0);
+      }
+
+      public fkv.a b(int $$0, int $$1) {
+         return this.m($$0).n($$1);
+      }
+
+      public fkv.a b(int $$0, int $$1, int $$2, int $$3) {
+         return this.i($$0).k($$2).j($$1).l($$3);
+      }
+
+      public fkv.a i(int $$0) {
+         this.a = $$0;
+         return this;
+      }
+
+      public fkv.a j(int $$0) {
+         this.b = $$0;
+         return this;
+      }
+
+      public fkv.a k(int $$0) {
+         this.c = $$0;
+         return this;
+      }
+
+      public fkv.a l(int $$0) {
+         this.d = $$0;
+         return this;
+      }
+
+      public fkv.a m(int $$0) {
+         return this.i($$0).k($$0);
+      }
+
+      public fkv.a n(int $$0) {
+         return this.j($$0).l($$0);
+      }
+
+      public fkv.a b(float $$0, float $$1) {
+         this.e = $$0;
+         this.f = $$1;
+         return this;
+      }
+
+      public fkv.a c(float $$0) {
+         this.e = $$0;
+         return this;
+      }
+
+      public fkv.a d(float $$0) {
+         this.f = $$0;
+         return this;
+      }
+
+      public fkv.a j() {
+         return new fkv.a(this);
+      }
+
+      @Override
+      public fkv.a h() {
+         return this;
       }
    }
 }

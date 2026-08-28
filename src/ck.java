@@ -8,7 +8,7 @@ public class ck extends dr<ck.a> {
       return ck.a.a;
    }
 
-   public void a(arg $$0, cup $$1, int $$2) {
+   public void a(arg $$0, cuq $$1, int $$2) {
       this.a($$0, $$2x -> $$2x.a($$1, $$2));
    }
 
@@ -31,7 +31,7 @@ public class ck extends dr<ck.a> {
          return am.u.a(new ck.a($$0, $$1, $$2, de.d.c));
       }
 
-      public boolean a(cup $$0, int $$1) {
+      public boolean a(cuq $$0, int $$1) {
          if (this.c.isPresent() && !this.c.get().a($$0)) {
             return false;
          } else {
