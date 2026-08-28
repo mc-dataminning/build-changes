@@ -1,31 +1,33 @@
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dtt extends dpy implements dll {
-   public static final MapCodec<dtt> h = RecordCodecBuilder.mapCodec($$0 -> $$0.group(cxq.q.fieldOf("color").forGetter(dtt::b), t()).apply($$0, dtt::new));
-   private final cxq i;
+public class dtt extends dln {
+   public static final MapCodec<dtt> b = b(dtt::new);
 
    @Override
    public MapCodec<dtt> a() {
-      return h;
+      return b;
    }
 
-   public dtt(cxq $$0, dzn.d $$1) {
-      super($$1);
-      this.i = $$0;
-      this.l(
-         this.B
-            .b()
-            .b(a, Boolean.valueOf(false))
-            .b(b, Boolean.valueOf(false))
-            .b(c, Boolean.valueOf(false))
-            .b(d, Boolean.valueOf(false))
-            .b(e, Boolean.valueOf(false))
-      );
+   public dtt(dzy.d $$0) {
+      super($$0, 2.0F);
    }
 
    @Override
-   public cxq b() {
-      return this.i;
+   protected dzz a(dzz $$0, diy $$1, djk $$2, iu $$3, ja $$4, iu $$5, dzz $$6, azv $$7) {
+      return this.a($$0, $$1, $$3) ? this.m() : dmc.a.m();
+   }
+
+   @Override
+   protected boolean a(dzz $$0, diy $$1, iu $$2) {
+      return o($$1.a_($$2.e()));
+   }
+
+   public static boolean o(dzz $$0) {
+      return $$0.a(axc.aV);
+   }
+
+   @Override
+   protected boolean g(dzz $$0) {
+      return true;
    }
 }

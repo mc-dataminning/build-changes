@@ -1,176 +1,97 @@
-import java.io.DataInput;
-import java.io.DataOutput;
+import com.google.common.collect.ImmutableList;
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
+import com.mojang.logging.LogUtils;
 import java.io.IOException;
-import java.util.Arrays;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.nio.charset.StandardCharsets;
+import java.util.HashMap;
 import java.util.List;
-import org.apache.commons.lang3.ArrayUtils;
+import java.util.Map;
+import java.util.Optional;
+import java.util.Map.Entry;
+import java.util.function.BiConsumer;
+import java.util.regex.Pattern;
+import org.slf4j.Logger;
 
-public class tu extends tw<tv> {
-   private static final int b = 24;
-   public static final uw<tu> a = new uw.b<tu>() {
-      public tu a(DataInput $$0, ug $$1) throws IOException {
-         return new tu(d($$0, $$1));
-      }
+public abstract class tu {
+   private static final Logger b = LogUtils.getLogger();
+   private static final Gson c = new Gson();
+   private static final Pattern d = Pattern.compile("%(\\d+\\$)?[\\d.]*[df]");
+   public static final String a = "en_us";
+   private static volatile tu e = c();
 
-      @Override
-      public ur.b a(DataInput $$0, ur $$1, ug $$2) throws IOException {
-         return $$1.a(d($$0, $$2));
-      }
+   private static tu c() {
+      tt $$0 = tt.a();
+      Map<String, String> $$1 = new HashMap<>();
+      BiConsumer<String, String> $$2 = $$1::put;
+      a($$2, "/assets/minecraft/lang/en_us.json");
+      $$0.a($$1);
+      final Map<String, String> $$3 = Map.copyOf($$1);
+      return new tu() {
+         @Override
+         public String a(String $$0, String $$1) {
+            return $$3.getOrDefault($$0, $$1);
+         }
 
-      private static byte[] d(DataInput $$0, ug $$1) throws IOException {
-         $$1.b(24L);
-         int $$2 = $$0.readInt();
-         $$1.a(1L, (long)$$2);
-         byte[] $$3 = new byte[$$2];
-         $$0.readFully($$3);
-         return $$3;
-      }
+         @Override
+         public boolean b(String $$0) {
+            return $$3.containsKey($$0);
+         }
 
-      @Override
-      public void b(DataInput $$0, ug $$1) throws IOException {
-         $$0.skipBytes($$0.readInt() * 1);
-      }
+         @Override
+         public boolean b() {
+            return false;
+         }
 
-      @Override
-      public String a() {
-         return "BYTE[]";
-      }
-
-      @Override
-      public String b() {
-         return "TAG_Byte_Array";
-      }
-   };
-   private byte[] c;
-
-   public tu(byte[] $$0) {
-      this.c = $$0;
+         @Override
+         public ayy a(xd $$0) {
+            return $$1 -> $$0.a(($$1x, $$2) -> baj.c($$2, $$1x, $$1) ? Optional.empty() : xd.a, xv.a).isPresent();
+         }
+      };
    }
 
-   public tu(List<Byte> $$0) {
-      this(a($$0));
-   }
-
-   private static byte[] a(List<Byte> $$0) {
-      byte[] $$1 = new byte[$$0.size()];
-
-      for (int $$2 = 0; $$2 < $$0.size(); $$2++) {
-         Byte $$3 = $$0.get($$2);
-         $$1[$$2] = $$3 == null ? 0 : $$3;
-      }
-
-      return $$1;
-   }
-
-   @Override
-   public void a(DataOutput $$0) throws IOException {
-      $$0.writeInt(this.c.length);
-      $$0.write(this.c);
-   }
-
-   @Override
-   public int a() {
-      return 24 + 1 * this.c.length;
-   }
-
-   @Override
-   public byte b() {
-      return 7;
-   }
-
-   @Override
-   public uw<tu> c() {
-      return a;
-   }
-
-   @Override
-   public String toString() {
-      return this.p_();
-   }
-
-   @Override
-   public uu d() {
-      byte[] $$0 = new byte[this.c.length];
-      System.arraycopy(this.c, 0, $$0, 0, this.c.length);
-      return new tu($$0);
-   }
-
-   @Override
-   public boolean equals(Object $$0) {
-      return this == $$0 ? true : $$0 instanceof tu && Arrays.equals(this.c, ((tu)$$0).c);
-   }
-
-   @Override
-   public int hashCode() {
-      return Arrays.hashCode(this.c);
-   }
-
-   @Override
-   public void a(uy $$0) {
-      $$0.a(this);
-   }
-
-   public byte[] e() {
-      return this.c;
-   }
-
-   @Override
-   public int size() {
-      return this.c.length;
-   }
-
-   public tv a(int $$0) {
-      return tv.a(this.c[$$0]);
-   }
-
-   public tv a(int $$0, tv $$1) {
-      byte $$2 = this.c[$$0];
-      this.c[$$0] = $$1.i();
-      return tv.a($$2);
-   }
-
-   public void b(int $$0, tv $$1) {
-      this.c = ArrayUtils.add(this.c, $$0, $$1.i());
-   }
-
-   @Override
-   public boolean a(int $$0, uu $$1) {
-      if ($$1 instanceof un) {
-         this.c[$$0] = ((un)$$1).i();
-         return true;
-      } else {
-         return false;
+   private static void a(BiConsumer<String, String> $$0, String $$1) {
+      try (InputStream $$2 = tu.class.getResourceAsStream($$1)) {
+         a($$2, $$0);
+      } catch (JsonParseException | IOException var7) {
+         b.error("Couldn't read strings from {}", $$1, var7);
       }
    }
 
-   @Override
-   public boolean b(int $$0, uu $$1) {
-      if ($$1 instanceof un) {
-         this.c = ArrayUtils.add(this.c, $$0, ((un)$$1).i());
-         return true;
-      } else {
-         return false;
+   public static void a(InputStream $$0, BiConsumer<String, String> $$1) {
+      JsonObject $$2 = (JsonObject)c.fromJson(new InputStreamReader($$0, StandardCharsets.UTF_8), JsonObject.class);
+
+      for (Entry<String, JsonElement> $$3 : $$2.entrySet()) {
+         String $$4 = d.matcher(azc.a($$3.getValue(), $$3.getKey())).replaceAll("%$1s");
+         $$1.accept($$3.getKey(), $$4);
       }
    }
 
-   public tv b(int $$0) {
-      byte $$1 = this.c[$$0];
-      this.c = ArrayUtils.remove(this.c, $$0);
-      return tv.a($$1);
+   public static tu a() {
+      return e;
    }
 
-   @Override
-   public byte f() {
-      return 1;
+   public static void a(tu $$0) {
+      e = $$0;
    }
 
-   @Override
-   public void clear() {
-      this.c = new byte[0];
+   public String a(String $$0) {
+      return this.a($$0, $$0);
    }
 
-   @Override
-   public ur.b a(ur $$0) {
-      return $$0.a(this.c);
+   public abstract String a(String var1, String var2);
+
+   public abstract boolean b(String var1);
+
+   public abstract boolean b();
+
+   public abstract ayy a(xd var1);
+
+   public List<ayy> a(List<xd> $$0) {
+      return $$0.stream().map(this::a).collect(ImmutableList.toImmutableList());
    }
 }

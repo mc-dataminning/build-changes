@@ -1,38 +1,145 @@
-public class ewq extends ewh {
-   private float m = Float.MAX_VALUE;
-   private ewh n;
-   private boolean o;
+import java.util.Arrays;
 
-   public ewq(ewh $$0) {
-      super($$0.a, $$0.b, $$0.c);
-   }
+public class ewq {
+   private ews[] a = new ews[128];
+   private int b;
 
-   public ewq(int $$0, int $$1, int $$2) {
-      super($$0, $$1, $$2);
-   }
+   public ews a(ews $$0) {
+      if ($$0.d >= 0) {
+         throw new IllegalStateException("OW KNOWS!");
+      } else {
+         if (this.b == this.a.length) {
+            ews[] $$1 = new ews[this.b << 1];
+            System.arraycopy(this.a, 0, $$1, 0, this.b);
+            this.a = $$1;
+         }
 
-   public void a(float $$0, ewh $$1) {
-      if ($$0 < this.m) {
-         this.m = $$0;
-         this.n = $$1;
+         this.a[this.b] = $$0;
+         $$0.d = this.b;
+         this.a(this.b++);
+         return $$0;
       }
    }
 
-   public ewh d() {
-      return this.n;
+   public void a() {
+      this.b = 0;
    }
 
-   public void e() {
-      this.o = true;
+   public ews b() {
+      return this.a[0];
    }
 
-   public boolean f() {
-      return this.o;
+   public ews c() {
+      ews $$0 = this.a[0];
+      this.a[0] = this.a[--this.b];
+      this.a[this.b] = null;
+      if (this.b > 0) {
+         this.b(0);
+      }
+
+      $$0.d = -1;
+      return $$0;
    }
 
-   public static ewq c(vs $$0) {
-      ewq $$1 = new ewq($$0.readInt(), $$0.readInt(), $$0.readInt());
-      a($$0, $$1);
-      return $$1;
+   public void b(ews $$0) {
+      this.a[$$0.d] = this.a[--this.b];
+      this.a[this.b] = null;
+      if (this.b > $$0.d) {
+         if (this.a[$$0.d].g < $$0.g) {
+            this.a($$0.d);
+         } else {
+            this.b($$0.d);
+         }
+      }
+
+      $$0.d = -1;
+   }
+
+   public void a(ews $$0, float $$1) {
+      float $$2 = $$0.g;
+      $$0.g = $$1;
+      if ($$1 < $$2) {
+         this.a($$0.d);
+      } else {
+         this.b($$0.d);
+      }
+   }
+
+   public int d() {
+      return this.b;
+   }
+
+   private void a(int $$0) {
+      ews $$1 = this.a[$$0];
+      float $$2 = $$1.g;
+
+      while ($$0 > 0) {
+         int $$3 = $$0 - 1 >> 1;
+         ews $$4 = this.a[$$3];
+         if (!($$2 < $$4.g)) {
+            break;
+         }
+
+         this.a[$$0] = $$4;
+         $$4.d = $$0;
+         $$0 = $$3;
+      }
+
+      this.a[$$0] = $$1;
+      $$1.d = $$0;
+   }
+
+   private void b(int $$0) {
+      ews $$1 = this.a[$$0];
+      float $$2 = $$1.g;
+
+      while (true) {
+         int $$3 = 1 + ($$0 << 1);
+         int $$4 = $$3 + 1;
+         if ($$3 >= this.b) {
+            break;
+         }
+
+         ews $$5 = this.a[$$3];
+         float $$6 = $$5.g;
+         ews $$7;
+         float $$8;
+         if ($$4 >= this.b) {
+            $$7 = null;
+            $$8 = Float.POSITIVE_INFINITY;
+         } else {
+            $$7 = this.a[$$4];
+            $$8 = $$7.g;
+         }
+
+         if ($$6 < $$8) {
+            if (!($$6 < $$2)) {
+               break;
+            }
+
+            this.a[$$0] = $$5;
+            $$5.d = $$0;
+            $$0 = $$3;
+         } else {
+            if (!($$8 < $$2)) {
+               break;
+            }
+
+            this.a[$$0] = $$7;
+            $$7.d = $$0;
+            $$0 = $$4;
+         }
+      }
+
+      this.a[$$0] = $$1;
+      $$1.d = $$0;
+   }
+
+   public boolean e() {
+      return this.b == 0;
+   }
+
+   public ews[] f() {
+      return Arrays.copyOf(this.a, this.b);
    }
 }

@@ -1,4 +1,8 @@
-@FunctionalInterface
-public interface gbo {
-   int currentIndex();
+import javax.annotation.ParametersAreNonnullByDefault;
+
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface gbo {
 }

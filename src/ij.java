@@ -8,16 +8,16 @@ import java.util.Map;
 import java.util.concurrent.CompletableFuture;
 
 public class ij {
-   private static final Map<ale, SuggestionProvider<en>> d = Maps.newHashMap();
-   private static final ale e = ale.b("ask_server");
+   private static final Map<alg, SuggestionProvider<en>> d = Maps.newHashMap();
+   private static final alg e = alg.b("ask_server");
    public static final SuggestionProvider<en> a = a(e, ($$0, $$1) -> ((en)$$0.getSource()).a($$0));
-   public static final SuggestionProvider<ei> b = a(ale.b("available_sounds"), ($$0, $$1) -> en.a(((en)$$0.getSource()).s(), $$1));
+   public static final SuggestionProvider<ei> b = a(alg.b("available_sounds"), ($$0, $$1) -> en.a(((en)$$0.getSource()).s(), $$1));
    public static final SuggestionProvider<ei> c = a(
-      ale.b("summonable_entities"),
-      ($$0, $$1) -> en.a(mf.f.s().filter($$1x -> $$1x.a(((en)$$0.getSource()).v()) && $$1x.c()), $$1, bwj::a, $$0x -> ww.c(af.a("entity", bwj.a($$0x))))
+      alg.b("summonable_entities"),
+      ($$0, $$1) -> en.a(mf.f.s().filter($$1x -> $$1x.a(((en)$$0.getSource()).v()) && $$1x.c()), $$1, bwm::a, $$0x -> wy.c(af.a("entity", bwm.a($$0x))))
    );
 
-   public static <S extends en> SuggestionProvider<S> a(ale $$0, SuggestionProvider<en> $$1) {
+   public static <S extends en> SuggestionProvider<S> a(alg $$0, SuggestionProvider<en> $$1) {
       if (d.containsKey($$0)) {
          throw new IllegalArgumentException("A command suggestion provider is already registered with the name " + $$0);
       } else {
@@ -26,11 +26,11 @@ public class ij {
       }
    }
 
-   public static SuggestionProvider<en> a(ale $$0) {
+   public static SuggestionProvider<en> a(alg $$0) {
       return d.getOrDefault($$0, a);
    }
 
-   public static ale a(SuggestionProvider<en> $$0) {
+   public static alg a(SuggestionProvider<en> $$0) {
       return $$0 instanceof ij.a ? ((ij.a)$$0).b : e;
    }
 
@@ -40,9 +40,9 @@ public class ij {
 
    protected static class a implements SuggestionProvider<en> {
       private final SuggestionProvider<en> a;
-      final ale b;
+      final alg b;
 
-      public a(ale $$0, SuggestionProvider<en> $$1) {
+      public a(alg $$0, SuggestionProvider<en> $$1) {
          this.a = $$1;
          this.b = $$0;
       }

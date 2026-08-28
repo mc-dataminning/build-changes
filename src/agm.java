@@ -1,203 +1,151 @@
+import com.google.common.collect.Lists;
+import com.mojang.logging.LogUtils;
+import java.util.Collection;
+import java.util.List;
+import java.util.Map;
+import java.util.Optional;
+import java.util.UUID;
+import java.util.Map.Entry;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
+
 public class agm {
-   public static final we.a<agn, wh> a = zi.a(
-      vq.b,
-      $$0 -> $$0.a(agl.bk, agp.a)
-            .a(agl.bl, agq.a)
-            .a(agl.bm, aib.a)
-            .a(agl.bn, agr.a)
-            .a(agl.bo, ags.a)
-            .a(agl.bp, agt.a)
-            .a(agl.bq, agu.a)
-            .a(agl.br, agv.a)
-            .a(agl.bs, agw.a)
-            .a(agl.bt, agx.a)
-            .a(agl.bu, agy.a)
-            .a(agl.bv, agz.b)
-            .a(zv.l, zx.a)
-            .a(agl.bw, aha.a)
-            .a(agl.bx, ahb.b)
-            .a(agl.by, ahc.a)
-            .a(agl.bz, ahd.a)
-            .a(agl.bA, ahe.a)
-            .a(agl.bB, ahf.a)
-            .a(abo.b, abq.a)
-            .a(zv.m, zy.a)
-            .a(agl.bC, ahg.a)
-            .a(agl.bD, ahh.a)
-            .a(agl.bE, ahi.a)
-            .a(agl.bF, ahj.a)
-            .a(agl.bG, ahk.a)
-            .a(zv.n, zz.a)
-            .a(agl.bH, ahl.a)
-            .a(agl.bI, ahm.a.j)
-            .a(agl.bJ, ahm.b.j)
-            .a(agl.bK, ahm.c.j)
-            .a(agl.bL, ahm.d.j)
-            .a(agl.bM, ahn.a)
-            .a(agl.bN, aho.a)
-            .a(agl.bO, ahp.a)
-            .a(agl.bP, ahq.a)
-            .a(ajv.b, ajx.a)
-            .a(agl.bQ, ahr.a)
-            .a(agl.bR, ahs.a)
-            .a(agl.bS, aht.a)
-            .a(agl.bT, ahu.a)
-            .a(agl.bU, ahv.a)
-            .a(agl.bV, ahw.a)
-            .a(zv.o, aaa.a)
-            .a(agl.bW, ahx.a)
-            .a(agl.bX, ahy.a)
-            .a(agl.bY, ahz.a)
-            .a(zv.p, aab.a)
-            .a(agl.bZ, aia.a)
-            .a(agl.ca, aic.a)
-            .a(agl.cb, aid.a)
-            .a(agl.cc, aie.a)
-            .a(agl.cd, aif.a)
-            .a(agl.ce, aig.a)
-            .a(agl.cf, aih.a)
-            .a(agl.cg, aii.a)
-            .a(agl.ch, aij.a)
-            .a(agl.ci, aik.a)
-            .a(agl.ck, ail.a)
-            .a(agl.cl, aim.a)
-            .a(agl.cm, ain.a)
-            .a(agl.cj, aio.a)
-            .a(agl.cn, aip.a)
-            .a(agl.co, aiq.a)
-   );
-   public static final we.a<abs, wh> b = zi.b(
-      vq.b,
-      $$0 -> $$0.a(agl.a, acd::new, new acc())
-            .a(agl.c, abt.a)
-            .a(agl.d, abu.a)
-            .a(agl.e, abv.a)
-            .a(agl.f, abw.a)
-            .a(agl.g, abx.a)
-            .a(agl.h, aby.a)
-            .a(agl.i, abz.a)
-            .a(agl.j, aca.a)
-            .a(agl.k, acb.a)
-            .a(agl.l, ace.a)
-            .a(agl.m, acf.a)
-            .a(agl.n, acg.b)
-            .a(agl.o, ach.a)
-            .a(agl.p, aci.a)
-            .a(agl.q, acj.a)
-            .a(agl.r, ack.a)
-            .a(agl.s, acl.a)
-            .a(agl.t, acm.a)
-            .a(agl.u, acn.a)
-            .a(agl.v, aco.a)
-            .a(abo.a, abn.a)
-            .a(agl.w, acp.a)
-            .a(agl.x, acq.a)
-            .a(zv.a, zk.a)
-            .a(agl.y, acr.a)
-            .a(agl.z, acs.a)
-            .a(agl.A, act.a)
-            .a(zv.c, zm.a)
-            .a(agl.B, acu.a)
-            .a(agl.C, acv.a)
-            .a(agl.D, acw.a)
-            .a(agl.E, acx.a)
-            .a(agl.F, acy.a)
-            .a(agl.G, acz.a)
-            .a(agl.H, ada.a)
-            .a(agl.I, adb.a)
-            .a(agl.J, adc.a)
-            .a(zv.d, zn.a)
-            .a(agl.K, ade.a)
-            .a(agl.L, adf.a)
-            .a(agl.M, adg.a)
-            .a(agl.N, adh.a)
-            .a(agl.O, adj.a)
-            .a(agl.P, adk.a)
-            .a(agl.Q, adl.a)
-            .a(agl.R, adm.a.j)
-            .a(agl.S, adm.b.j)
-            .a(agl.T, adn.a)
-            .a(agl.U, adm.c.j)
-            .a(agl.V, ado.a)
-            .a(agl.W, adp.a)
-            .a(agl.X, adq.a)
-            .a(agl.Y, adr.a)
-            .a(zv.e, zo.a)
-            .a(ajv.a, aju.a)
-            .a(agl.Z, ads.a)
-            .a(agl.aa, adt.a)
-            .a(agl.ab, adu.a)
-            .a(agl.ac, adv.a)
-            .a(agl.ad, adw.b)
-            .a(agl.ae, adx.a)
-            .a(agl.af, ady.a)
-            .a(agl.ag, adz.a)
-            .a(agl.ah, aea.a)
-            .a(agl.ai, aeb.a)
-            .a(agl.aj, aec.a)
-            .a(agl.ak, aee.a)
-            .a(agl.al, aef.a)
-            .a(agl.am, aeg.a)
-            .a(agl.an, aeh.a)
-            .a(agl.ao, aei.a)
-            .a(agl.cp, aej.a)
-            .a(zv.f, zp.a)
-            .a(zv.g, zq.b)
-            .a(agl.ap, aek.a)
-            .a(agl.aq, ael.a)
-            .a(agl.ar, aem.a)
-            .a(agl.as, aen.a)
-            .a(agl.at, aeo.a)
-            .a(agl.au, aep.a)
-            .a(agl.av, aeq.a)
-            .a(agl.aw, aer.a)
-            .a(agl.ax, aes.a)
-            .a(agl.ay, aet.a)
-            .a(agl.az, aeu.a)
-            .a(agl.aA, aev.a)
-            .a(agl.aB, aew.a)
-            .a(agl.aC, aex.a)
-            .a(agl.cs, aey.a)
-            .a(agl.aD, aez.a)
-            .a(agl.aE, afa.a)
-            .a(agl.aF, afb.a)
-            .a(agl.aG, afc.a)
-            .a(agl.aH, afd.a)
-            .a(agl.aI, afe.a)
-            .a(agl.aJ, aff.a)
-            .a(agl.aK, afg.a)
-            .a(agl.aL, afh.a)
-            .a(agl.aM, afi.a)
-            .a(agl.aN, afj.a)
-            .a(agl.ct, afk.a)
-            .a(agl.aO, afl.a)
-            .a(agl.aP, afm.a)
-            .a(agl.aQ, afn.a)
-            .a(agl.aR, afo.a)
-            .a(agl.aS, afp.a)
-            .a(agl.aT, afq.a)
-            .a(agl.aU, afr.a)
-            .a(agl.aV, afs.a)
-            .a(agl.aW, aft.a)
-            .a(agl.aX, afu.b)
-            .a(agl.aY, afv.a)
-            .a(zv.i, zs.a)
-            .a(agl.aZ, afw.a)
-            .a(agl.ba, afx.a)
-            .a(agl.bb, afy.a)
-            .a(agl.bc, afz.a)
-            .a(agl.bd, aga.a)
-            .a(agl.be, agb.a)
-            .a(agl.cq, agc.a)
-            .a(agl.cr, agd.a)
-            .a(zv.j, zt.a)
-            .a(agl.bf, age.a)
-            .a(agl.bg, agf.a)
-            .a(agl.bh, agg.a)
-            .a(agl.bi, agh.a)
-            .a(zv.k, zu.a)
-            .a(agl.bj, aed.a)
-            .a(zv.b, zl.a)
-            .a(zv.h, zr.a)
-   );
+   private static final Logger a = LogUtils.getLogger();
+
+   public static void a(arq $$0, iu $$1, String $$2, int $$3, int $$4) {
+      a($$0, (aai)(new aam($$1, $$3, $$2, $$4)));
+   }
+
+   public static void a(arq $$0) {
+      a($$0, (aai)(new aan()));
+   }
+
+   public static void a(arq $$0, dic $$1) {
+   }
+
+   public static void a(arq $$0, iu $$1) {
+      d($$0, $$1);
+   }
+
+   public static void b(arq $$0, iu $$1) {
+      d($$0, $$1);
+   }
+
+   public static void c(arq $$0, iu $$1) {
+      d($$0, $$1);
+   }
+
+   private static void d(arq $$0, iu $$1) {
+   }
+
+   public static void a(div $$0, bxe $$1, @Nullable ewu $$2, float $$3) {
+   }
+
+   public static void a(div $$0, iu $$1) {
+   }
+
+   public static void a(div $$0, aaw $$1) {
+      if ($$0 instanceof arq $$2) {
+         a($$2, (aai)$$1);
+      }
+   }
+
+   public static void a(dju $$0, erb $$1) {
+   }
+
+   public static void a(div $$0, bxe $$1, cdz $$2) {
+   }
+
+   public static void a(arq $$0, Collection<csn> $$1) {
+   }
+
+   public static void a(bxc $$0) {
+   }
+
+   public static void a(cit $$0) {
+   }
+
+   public static void a(cow $$0) {
+   }
+
+   public static void a(div $$0, je<eez> $$1, fei $$2) {
+   }
+
+   public static void a(div $$0, efb $$1) {
+   }
+
+   public static void a(div $$0, iu $$1, dzz $$2, dwu $$3) {
+   }
+
+   private static List<String> a(bxc $$0, long $$1) {
+      Map<cge<?>, Optional<? extends cgd<?>>> $$2 = $$0.eb().b();
+      List<String> $$3 = Lists.newArrayList();
+
+      for (Entry<cge<?>, Optional<? extends cgd<?>>> $$4 : $$2.entrySet()) {
+         cge<?> $$5 = $$4.getKey();
+         Optional<? extends cgd<?>> $$6 = $$4.getValue();
+         String $$10;
+         if ($$6.isPresent()) {
+            cgd<?> $$7 = (cgd<?>)$$6.get();
+            Object $$8 = $$7.c();
+            if ($$5 == cge.E) {
+               long $$9 = $$1 - (Long)$$8;
+               $$10 = $$9 + " ticks ago";
+            } else if ($$7.e()) {
+               $$10 = a((arq)$$0.dV(), $$8) + " (ttl: " + $$7.b() + ")";
+            } else {
+               $$10 = a((arq)$$0.dV(), $$8);
+            }
+         } else {
+            $$10 = "-";
+         }
+
+         $$3.add(mf.z.b($$5).a() + ": " + $$10);
+      }
+
+      $$3.sort(String::compareTo);
+      return $$3;
+   }
+
+   private static String a(arq $$0, @Nullable Object $$1) {
+      if ($$1 == null) {
+         return "-";
+      } else if ($$1 instanceof UUID) {
+         return a($$0, $$0.b((UUID)$$1));
+      } else if ($$1 instanceof bxc) {
+         bwd $$2 = (bwd)$$1;
+         return agl.a($$2);
+      } else if ($$1 instanceof bue) {
+         return ((bue)$$1).al().getString();
+      } else if ($$1 instanceof cgh) {
+         return a($$0, ((cgh)$$1).a());
+      } else if ($$1 instanceof bze) {
+         return a($$0, ((bze)$$1).c());
+      } else if ($$1 instanceof jd) {
+         return a($$0, ((jd)$$1).b());
+      } else if ($$1 instanceof byw) {
+         return a($$0, ((byw)$$1).b());
+      } else if ($$1 instanceof bus) {
+         bwd $$3 = ((bus)$$1).d();
+         return $$3 == null ? $$1.toString() : a($$0, $$3);
+      } else if (!($$1 instanceof Collection)) {
+         return $$1.toString();
+      } else {
+         List<String> $$4 = Lists.newArrayList();
+
+         for (Object $$5 : (Iterable)$$1) {
+            $$4.add(a($$0, $$5));
+         }
+
+         return $$4.toString();
+      }
+   }
+
+   private static void a(arq $$0, aai $$1) {
+      zf<?> $$2 = new zm($$1);
+
+      for (arr $$3 : $$0.z()) {
+         $$3.f.b($$2);
+      }
+   }
 }

@@ -1,9 +1,55 @@
-import java.util.function.Predicate;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
+import java.lang.reflect.Type;
+import javax.annotation.Nullable;
 
-@FunctionalInterface
-public interface grb {
-   grb b = $$0 -> $$0x -> true;
-   grb c = $$0 -> $$0x -> false;
+public record grb(@Nullable ja b, int c, String d, grd e) {
+   public static final int a = -1;
 
-   Predicate<dzo> getPredicate(dzp<dlu, dzo> var1);
+   @Nullable
+   public ja a() {
+      return this.b;
+   }
+
+   public int b() {
+      return this.c;
+   }
+
+   public String c() {
+      return this.d;
+   }
+
+   public grd d() {
+      return this.e;
+   }
+
+   protected static class a implements JsonDeserializer<grb> {
+      private static final int a = -1;
+
+      public grb a(JsonElement $$0, Type $$1, JsonDeserializationContext $$2) throws JsonParseException {
+         JsonObject $$3 = $$0.getAsJsonObject();
+         ja $$4 = this.c($$3);
+         int $$5 = this.a($$3);
+         String $$6 = this.b($$3);
+         grd $$7 = (grd)$$2.deserialize($$3, grd.class);
+         return new grb($$4, $$5, $$6, $$7);
+      }
+
+      protected int a(JsonObject $$0) {
+         return azc.a($$0, "tintindex", -1);
+      }
+
+      private String b(JsonObject $$0) {
+         return azc.i($$0, "texture");
+      }
+
+      @Nullable
+      private ja c(JsonObject $$0) {
+         String $$1 = azc.a($$0, "cullface", "");
+         return ja.a($$1);
+      }
+   }
 }

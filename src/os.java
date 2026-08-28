@@ -19,12 +19,12 @@ public class os implements mm {
    public CompletableFuture<?> a(mk $$0) {
       return this.e.thenCompose($$1 -> {
          DynamicOps<JsonElement> $$2 = $$1.a(JsonOps.INSTANCE);
-         return CompletableFuture.allOf(akz.a.stream().flatMap($$3 -> this.a($$0, $$1, $$2, (akz.d<?>)$$3).stream()).toArray(CompletableFuture[]::new));
+         return CompletableFuture.allOf(alb.a.stream().flatMap($$3 -> this.a($$0, $$1, $$2, (alb.d<?>)$$3).stream()).toArray(CompletableFuture[]::new));
       });
    }
 
-   private <T> Optional<CompletableFuture<?>> a(mk $$0, jg.a $$1, DynamicOps<JsonElement> $$2, akz.d<T> $$3) {
-      ald<? extends jr<T>> $$4 = $$3.a();
+   private <T> Optional<CompletableFuture<?>> a(mk $$0, jg.a $$1, DynamicOps<JsonElement> $$2, alb.d<T> $$3) {
+      alf<? extends jr<T>> $$4 = $$3.a();
       return $$1.a($$4).map($$4x -> {
          mo.a $$5 = this.d.a($$4);
          return CompletableFuture.allOf($$4x.c().map($$4xx -> a($$5.a($$4xx.h().a()), $$0, $$2, $$3.b(), $$4xx.a())).toArray(CompletableFuture[]::new));

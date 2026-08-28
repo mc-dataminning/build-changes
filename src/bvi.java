@@ -1,22 +1,47 @@
-public class bvi extends bvc {
-   public static final int c = 25;
+import java.util.List;
+import javax.annotation.Nullable;
 
-   protected bvi(bvd $$0, int $$1) {
-      super($$0, $$1);
+public final class bvi {
+   public static wy a(bvh $$0, float $$1, float $$2) {
+      if ($$0.b()) {
+         return wy.c("effect.duration.infinite");
+      } else {
+         int $$3 = azm.d((float)$$0.d() * $$1);
+         return wy.b(bal.a($$3, $$2));
+      }
    }
 
-   @Override
-   public boolean a(aro $$0, bwz $$1, int $$2) {
-      if ($$1.eF() > 1.0F) {
-         $$1.a($$0, $$1.dW().q(), 1.0F);
+   public static boolean a(bxc $$0) {
+      return $$0.b(bvj.c) || $$0.b(bvj.C);
+   }
+
+   public static int b(bxc $$0) {
+      int $$1 = 0;
+      int $$2 = 0;
+      if ($$0.b(bvj.c)) {
+         $$1 = $$0.c(bvj.c).e();
       }
 
-      return true;
+      if ($$0.b(bvj.C)) {
+         $$2 = $$0.c(bvj.C).e();
+      }
+
+      return Math.max($$1, $$2);
    }
 
-   @Override
-   public boolean a(int $$0, int $$1) {
-      int $$2 = 25 >> $$1;
-      return $$2 > 0 ? $$0 % $$2 == 0 : true;
+   public static boolean c(bxc $$0) {
+      return $$0.b(bvj.m) || $$0.b(bvj.C);
+   }
+
+   public static List<arr> a(arq $$0, @Nullable bwd $$1, fei $$2, double $$3, bvh $$4, int $$5) {
+      je<bvf> $$6 = $$4.c();
+      List<arr> $$7 = $$0.a(
+         $$6x -> $$6x.h.d()
+               && ($$1 == null || !$$1.s($$6x))
+               && $$2.a((jo)$$6x.dt(), $$3)
+               && (!$$6x.b($$6) || $$6x.c($$6).e() < $$4.e() || $$6x.c($$6).a($$5 - 1))
+      );
+      $$7.forEach($$2x -> $$2x.b(new bvh($$4), $$1));
+      return $$7;
    }
 }

@@ -1,84 +1,71 @@
-import com.mojang.datafixers.util.Either;
-import com.mojang.datafixers.util.Pair;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.Lifecycle;
-import com.mojang.serialization.MapCodec;
-import java.util.List;
-import java.util.Optional;
-import java.util.stream.Stream;
+public abstract class dkf {
+   public static final alf<djy> a = a("the_void");
+   public static final alf<djy> b = a("plains");
+   public static final alf<djy> c = a("sunflower_plains");
+   public static final alf<djy> d = a("snowy_plains");
+   public static final alf<djy> e = a("ice_spikes");
+   public static final alf<djy> f = a("desert");
+   public static final alf<djy> g = a("swamp");
+   public static final alf<djy> h = a("mangrove_swamp");
+   public static final alf<djy> i = a("forest");
+   public static final alf<djy> j = a("flower_forest");
+   public static final alf<djy> k = a("birch_forest");
+   public static final alf<djy> l = a("dark_forest");
+   public static final alf<djy> m = a("pale_garden");
+   public static final alf<djy> n = a("old_growth_birch_forest");
+   public static final alf<djy> o = a("old_growth_pine_taiga");
+   public static final alf<djy> p = a("old_growth_spruce_taiga");
+   public static final alf<djy> q = a("taiga");
+   public static final alf<djy> r = a("snowy_taiga");
+   public static final alf<djy> s = a("savanna");
+   public static final alf<djy> t = a("savanna_plateau");
+   public static final alf<djy> u = a("windswept_hills");
+   public static final alf<djy> v = a("windswept_gravelly_hills");
+   public static final alf<djy> w = a("windswept_forest");
+   public static final alf<djy> x = a("windswept_savanna");
+   public static final alf<djy> y = a("jungle");
+   public static final alf<djy> z = a("sparse_jungle");
+   public static final alf<djy> A = a("bamboo_jungle");
+   public static final alf<djy> B = a("badlands");
+   public static final alf<djy> C = a("eroded_badlands");
+   public static final alf<djy> D = a("wooded_badlands");
+   public static final alf<djy> E = a("meadow");
+   public static final alf<djy> F = a("cherry_grove");
+   public static final alf<djy> G = a("grove");
+   public static final alf<djy> H = a("snowy_slopes");
+   public static final alf<djy> I = a("frozen_peaks");
+   public static final alf<djy> J = a("jagged_peaks");
+   public static final alf<djy> K = a("stony_peaks");
+   public static final alf<djy> L = a("river");
+   public static final alf<djy> M = a("frozen_river");
+   public static final alf<djy> N = a("beach");
+   public static final alf<djy> O = a("snowy_beach");
+   public static final alf<djy> P = a("stony_shore");
+   public static final alf<djy> Q = a("warm_ocean");
+   public static final alf<djy> R = a("lukewarm_ocean");
+   public static final alf<djy> S = a("deep_lukewarm_ocean");
+   public static final alf<djy> T = a("ocean");
+   public static final alf<djy> U = a("deep_ocean");
+   public static final alf<djy> V = a("cold_ocean");
+   public static final alf<djy> W = a("deep_cold_ocean");
+   public static final alf<djy> X = a("frozen_ocean");
+   public static final alf<djy> Y = a("deep_frozen_ocean");
+   public static final alf<djy> Z = a("mushroom_fields");
+   public static final alf<djy> aa = a("dripstone_caves");
+   public static final alf<djy> ab = a("lush_caves");
+   public static final alf<djy> ac = a("deep_dark");
+   public static final alf<djy> ad = a("nether_wastes");
+   public static final alf<djy> ae = a("warped_forest");
+   public static final alf<djy> af = a("crimson_forest");
+   public static final alf<djy> ag = a("soul_sand_valley");
+   public static final alf<djy> ah = a("basalt_deltas");
+   public static final alf<djy> ai = a("the_end");
+   public static final alf<djy> aj = a("end_highlands");
+   public static final alf<djy> ak = a("end_midlands");
+   public static final alf<djy> al = a("small_end_islands");
+   public static final alf<djy> am = a("end_barrens");
 
-public class dkf extends djw {
-   private static final MapCodec<je<djs>> d = djs.c.fieldOf("biome");
-   public static final MapCodec<dkb.c<je<djs>>> b = dkb.c.a(d).fieldOf("biomes");
-   private static final MapCodec<je<dkg>> e = dkg.b.fieldOf("preset").withLifecycle(Lifecycle.stable());
-   public static final MapCodec<dkf> c = Codec.mapEither(b, e).xmap(dkf::new, $$0 -> $$0.f);
-   private final Either<dkb.c<je<djs>>, je<dkg>> f;
-
-   private dkf(Either<dkb.c<je<djs>>, je<dkg>> $$0) {
-      this.f = $$0;
-   }
-
-   public static dkf a(dkb.c<je<djs>> $$0) {
-      return new dkf(Either.left($$0));
-   }
-
-   public static dkf a(je<dkg> $$0) {
-      return new dkf(Either.right($$0));
-   }
-
-   private dkb.c<je<djs>> d() {
-      return (dkb.c<je<djs>>)this.f.map($$0 -> $$0, $$0 -> ((dkg)$$0.a()).a());
-   }
-
-   @Override
-   protected Stream<je<djs>> b() {
-      return this.d().a().stream().map(Pair::getSecond);
-   }
-
-   @Override
-   protected MapCodec<? extends djw> a() {
-      return c;
-   }
-
-   public boolean a(ald<dkg> $$0) {
-      Optional<je<dkg>> $$1 = this.f.right();
-      return $$1.isPresent() && $$1.get().a($$0);
-   }
-
-   @Override
-   public je<djs> getNoiseBiome(int $$0, int $$1, int $$2, dkb.f $$3) {
-      return this.a($$3.a($$0, $$1, $$2));
-   }
-
-   @bat
-   public je<djs> a(dkb.h $$0) {
-      return this.d().a($$0);
-   }
-
-   @Override
-   public void a(List<String> $$0, iu $$1, dkb.f $$2) {
-      int $$3 = jp.a($$1.u());
-      int $$4 = jp.a($$1.v());
-      int $$5 = jp.a($$1.w());
-      dkb.h $$6 = $$2.a($$3, $$4, $$5);
-      float $$7 = dkb.a($$6.d());
-      float $$8 = dkb.a($$6.e());
-      float $$9 = dkb.a($$6.b());
-      float $$10 = dkb.a($$6.c());
-      float $$11 = dkb.a($$6.g());
-      double $$12 = (double)efu.a($$11);
-      dki $$13 = new dki();
-      $$0.add(
-         "Biome builder PV: "
-            + dki.a($$12)
-            + " C: "
-            + $$13.b((double)$$7)
-            + " E: "
-            + $$13.c((double)$$8)
-            + " T: "
-            + $$13.d((double)$$9)
-            + " H: "
-            + $$13.e((double)$$10)
-      );
+   private static alf<djy> a(String $$0) {
+      return alf.a(mg.aG, alg.b($$0));
    }
 }

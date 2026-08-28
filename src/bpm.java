@@ -1,2 +1,6 @@
-public record bpm<S>(int a, bpq<S> b, Object c) {
+public interface bpm {
+   bpm a = () -> {
+   };
+
+   void cut();
 }

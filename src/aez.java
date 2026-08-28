@@ -1,37 +1,29 @@
-public class aez implements zd<abs> {
-   public static final yu<vs, aez> a = zd.a(aez::a, aez::new);
-   private final iu b;
-   private final float c;
+public class aez implements zf<abu> {
+   public static final yw<vu, aez> a = zf.a(aez::a, aez::new);
+   private final int b;
 
-   public aez(iu $$0, float $$1) {
+   public aez(int $$0) {
       this.b = $$0;
-      this.c = $$1;
    }
 
-   private aez(vs $$0) {
-      this.b = $$0.e();
-      this.c = $$0.readFloat();
+   private aez(vu $$0) {
+      this.b = $$0.l();
    }
 
-   private void a(vs $$0) {
-      $$0.a(this.b);
-      $$0.a(this.c);
+   private void a(vu $$0) {
+      $$0.c(this.b);
    }
 
    @Override
-   public zf<aez> a() {
-      return agl.aD;
+   public zh<aez> a() {
+      return agn.aC;
    }
 
-   public void a(abs $$0) {
+   public void a(abu $$0) {
       $$0.a(this);
    }
 
-   public iu b() {
+   public int b() {
       return this.b;
-   }
-
-   public float e() {
-      return this.c;
    }
 }

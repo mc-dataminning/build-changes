@@ -1,16 +1,40 @@
-import javax.annotation.Nullable;
+import java.util.EnumSet;
 
-public class cfh extends cfi {
-   public cfh(bxh $$0, double $$1) {
-      super($$0, $$1);
+public class cfh extends cdy {
+   private final cqf a;
+
+   public cfh(cqf $$0) {
+      this.a = $$0;
+      this.a(EnumSet.of(cdy.a.c, cdy.a.a));
    }
 
-   @Nullable
    @Override
-   protected fdw h() {
-      fdw $$0 = this.b.h(0.0F);
-      int $$1 = 8;
-      fdw $$2 = chu.a(this.b, 8, 7, $$0.d, $$0.f, (float) (Math.PI / 2), 3, 1);
-      return $$2 != null ? $$2 : chq.a(this.b, 8, 4, -2, $$0.d, $$0.f, (float) (Math.PI / 2));
+   public boolean b() {
+      if (!this.a.bK()) {
+         return false;
+      } else if (this.a.bj()) {
+         return false;
+      } else if (!this.a.aJ()) {
+         return false;
+      } else if (this.a.T) {
+         return false;
+      } else {
+         cqy $$0 = this.a.x();
+         if ($$0 == null) {
+            return false;
+         } else {
+            return this.a.g($$0) > 16.0 ? false : $$0.bQ != null;
+         }
+      }
+   }
+
+   @Override
+   public void d() {
+      this.a.O().m();
+   }
+
+   @Override
+   public void e() {
+      this.a.a(null);
    }
 }

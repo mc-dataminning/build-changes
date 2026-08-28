@@ -1,35 +1,80 @@
-import com.mojang.serialization.MapCodec;
+import java.lang.ref.WeakReference;
+import java.util.Arrays;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
-public interface ddt<T extends ddj<?>> {
-   ddt<ddx> a = a("crafting_shaped", new ddx.a());
-   ddt<ddz> b = a("crafting_shapeless", new ddz.a());
-   ddt<dcq> c = a("crafting_special_armordye", new dcz.a<>(dcq::new));
-   ddt<dct> d = a("crafting_special_bookcloning", new dcz.a<>(dct::new));
-   ddt<ddg> e = a("crafting_special_mapcloning", new dcz.a<>(ddg::new));
-   ddt<ddh> f = a("crafting_special_mapextending", new dcz.a<>(ddh::new));
-   ddt<ddc> g = a("crafting_special_firework_rocket", new dcz.a<>(ddc::new));
-   ddt<dde> h = a("crafting_special_firework_star", new dcz.a<>(dde::new));
-   ddt<ddd> i = a("crafting_special_firework_star_fade", new dcz.a<>(ddd::new));
-   ddt<dek> j = a("crafting_special_tippedarrow", new dcz.a<>(dek::new));
-   ddt<dcr> k = a("crafting_special_bannerduplicate", new dcz.a<>(dcr::new));
-   ddt<dea> l = a("crafting_special_shielddecoration", new dcz.a<>(dea::new));
-   ddt<del> m = a("crafting_transmute", new del.a());
-   ddt<ddv> n = a("crafting_special_repairitem", new dcz.a<>(ddv::new));
-   ddt<ded> o = a("smelting", new dcp.b<>(ded::new, 200));
-   ddt<dcs> p = a("blasting", new dcp.b<>(dcs::new, 100));
-   ddt<dei> q = a("smoking", new dcp.b<>(dei::new, 100));
-   ddt<dcu> r = a("campfire_cooking", new dcp.b<>(dcu::new, 100));
-   ddt<dej> s = a("stonecutting", new deb.b<>(dej::new));
-   ddt<deg> t = a("smithing_transform", new deg.a());
-   ddt<deh> u = a("smithing_trim", new deh.a());
-   ddt<dda> v = a("crafting_decorated_pot", new dcz.a<>(dda::new));
+public class ddt {
+   private final ddt.a[] a;
+   private WeakReference<ddw> b = new WeakReference<>(null);
 
-   MapCodec<T> a();
+   public ddt(int $$0) {
+      this.a = new ddt.a[$$0];
+   }
 
-   @Deprecated
-   yu<wh, T> b();
+   public Optional<ddu<dde>> a(arq $$0, ddd $$1) {
+      if ($$1.b()) {
+         return Optional.empty();
+      } else {
+         this.a($$0);
 
-   static <S extends ddt<T>, T extends ddj<?>> S a(String $$0, S $$1) {
-      return jr.a(mf.r, $$0, $$1);
+         for (int $$2 = 0; $$2 < this.a.length; $$2++) {
+            ddt.a $$3 = this.a[$$2];
+            if ($$3 != null && $$3.a($$1)) {
+               this.a($$2);
+               return Optional.ofNullable($$3.d());
+            }
+         }
+
+         return this.a($$1, $$0);
+      }
+   }
+
+   private void a(arq $$0) {
+      ddw $$1 = $$0.t();
+      if ($$1 != this.b.get()) {
+         this.b = new WeakReference<>($$1);
+         Arrays.fill(this.a, null);
+      }
+   }
+
+   private Optional<ddu<dde>> a(ddd $$0, arq $$1) {
+      Optional<ddu<dde>> $$2 = $$1.t().a(dea.a, $$0, $$1);
+      this.a($$0, $$2.orElse(null));
+      return $$2;
+   }
+
+   private void a(int $$0) {
+      if ($$0 > 0) {
+         ddt.a $$1 = this.a[$$0];
+         System.arraycopy(this.a, 0, this.a, 1, $$0);
+         this.a[0] = $$1;
+      }
+   }
+
+   private void a(ddd $$0, @Nullable ddu<dde> $$1) {
+      jn<cyy> $$2 = jn.a($$0.a(), cyy.k);
+
+      for (int $$3 = 0; $$3 < $$0.a(); $$3++) {
+         $$2.set($$3, $$0.a($$3).c(1));
+      }
+
+      System.arraycopy(this.a, 0, this.a, 1, this.a.length - 1);
+      this.a[0] = new ddt.a($$2, $$0.f(), $$0.g(), $$1);
+   }
+
+   static record a(jn<cyy> a, int b, int c, @Nullable ddu<dde> d) {
+      public boolean a(ddd $$0) {
+         if (this.b == $$0.f() && this.c == $$0.g()) {
+            for (int $$1 = 0; $$1 < this.a.size(); $$1++) {
+               if (!cyy.c(this.a.get($$1), $$0.a($$1))) {
+                  return false;
+               }
+            }
+
+            return true;
+         } else {
+            return false;
+         }
+      }
    }
 }

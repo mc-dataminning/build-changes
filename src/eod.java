@@ -1,29 +1,71 @@
-import com.google.common.collect.ImmutableList;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
+import com.mojang.serialization.Codec;
+import it.unimi.dsi.fastutil.objects.ObjectArrayList;
+import java.util.Comparator;
+import java.util.Set;
 import java.util.function.BiConsumer;
+import java.util.function.Predicate;
 
-public class eod extends eoe {
-   public static final MapCodec<eod> a = RecordCodecBuilder.mapCodec($$0 -> a($$0).apply($$0, eod::new));
+public abstract class eod {
+   public static final Codec<eod> h = mf.X.q().dispatch(eod::a, eoe::a);
 
-   public eod(int $$0, int $$1, int $$2) {
-      super($$0, $$1, $$2);
-   }
+   protected abstract eoe<?> a();
 
-   @Override
-   protected eof<?> a() {
-      return eof.a;
-   }
+   public abstract void a(eod.a var1);
 
-   @Override
-   public List<emj.a> a(div $$0, BiConsumer<iu, dzo> $$1, azt $$2, int $$3, iu $$4, elt $$5) {
-      a($$0, $$1, $$2, $$4.e(), $$5);
+   public static final class a {
+      private final djb a;
+      private final BiConsumer<iu, dzz> b;
+      private final azv c;
+      private final ObjectArrayList<iu> d;
+      private final ObjectArrayList<iu> e;
+      private final ObjectArrayList<iu> f;
 
-      for (int $$6 = 0; $$6 < $$3; $$6++) {
-         this.b($$0, $$1, $$2, $$4.b($$6), $$5);
+      public a(djb $$0, BiConsumer<iu, dzz> $$1, azv $$2, Set<iu> $$3, Set<iu> $$4, Set<iu> $$5) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
+         this.f = new ObjectArrayList($$5);
+         this.d = new ObjectArrayList($$3);
+         this.e = new ObjectArrayList($$4);
+         this.d.sort(Comparator.comparingInt(jz::v));
+         this.e.sort(Comparator.comparingInt(jz::v));
+         this.f.sort(Comparator.comparingInt(jz::v));
       }
 
-      return ImmutableList.of(new emj.a($$4.b($$3), 0, false));
+      public void a(iu $$0, eaq $$1) {
+         this.a($$0, dmc.fu.m().b($$1, Boolean.valueOf(true)));
+      }
+
+      public void a(iu $$0, dzz $$1) {
+         this.b.accept($$0, $$1);
+      }
+
+      public boolean a(iu $$0) {
+         return this.a.a($$0, dzy.a::l);
+      }
+
+      public boolean a(iu $$0, Predicate<dzz> $$1) {
+         return this.a.a($$0, $$1);
+      }
+
+      public djb a() {
+         return this.a;
+      }
+
+      public azv b() {
+         return this.c;
+      }
+
+      public ObjectArrayList<iu> c() {
+         return this.d;
+      }
+
+      public ObjectArrayList<iu> d() {
+         return this.e;
+      }
+
+      public ObjectArrayList<iu> e() {
+         return this.f;
+      }
    }
 }

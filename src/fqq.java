@@ -1,62 +1,97 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.Streams;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.Lists;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
-import java.util.Map;
-import java.util.Optional;
-import java.util.Set;
-import java.util.function.BiConsumer;
-import java.util.function.Function;
-import java.util.stream.Stream;
+import java.util.List;
+import java.util.function.Supplier;
 
-public class fqq {
-   private final Optional<ale> a;
-   private final Set<fqt> b;
-   private final Optional<String> c;
+public class fqq implements fqo {
+   private final dma a;
+   private final List<fqq.b> b = Lists.newArrayList();
 
-   public fqq(Optional<ale> $$0, Optional<String> $$1, fqt... $$2) {
+   private fqq(dma $$0) {
       this.a = $$0;
-      this.c = $$1;
-      this.b = ImmutableSet.copyOf($$2);
    }
 
-   public ale a(dlu $$0) {
-      return fqp.a($$0, this.c.orElse(""));
+   @Override
+   public dma a() {
+      return this.a;
    }
 
-   public ale a(dlu $$0, fqs $$1, BiConsumer<ale, fqo> $$2) {
-      return this.a(fqp.a($$0, this.c.orElse("")), $$1, $$2);
+   public static fqq a(dma $$0) {
+      return new fqq($$0);
    }
 
-   public ale a(dlu $$0, String $$1, fqs $$2, BiConsumer<ale, fqo> $$3) {
-      return this.a(fqp.a($$0, $$1 + this.c.orElse("")), $$2, $$3);
+   public fqq a(List<fqu> $$0) {
+      this.b.add(new fqq.b($$0));
+      return this;
    }
 
-   public ale b(dlu $$0, String $$1, fqs $$2, BiConsumer<ale, fqo> $$3) {
-      return this.a(fqp.a($$0, $$1), $$2, $$3);
+   public fqq a(fqu $$0) {
+      return this.a(ImmutableList.of($$0));
    }
 
-   public ale a(cyo $$0, fqs $$1, BiConsumer<ale, fqo> $$2) {
-      return this.a(fqp.a($$0, this.c.orElse("")), $$1, $$2);
+   public fqq a(fqp $$0, List<fqu> $$1) {
+      this.b.add(new fqq.a($$0, $$1));
+      return this;
    }
 
-   public ale a(ale $$0, fqs $$1, BiConsumer<ale, fqo> $$2) {
-      Map<fqt, ale> $$3 = this.a($$1);
-      $$2.accept($$0, () -> {
-         JsonObject $$1x = new JsonObject();
-         this.a.ifPresent($$1xx -> $$1x.addProperty("parent", $$1xx.toString()));
-         if (!$$3.isEmpty()) {
-            JsonObject $$2x = new JsonObject();
-            $$3.forEach(($$1xx, $$2xx) -> $$2x.addProperty($$1xx.a(), $$2xx.toString()));
-            $$1x.add("textures", $$2x);
-         }
-
-         return $$1x;
-      });
-      return $$0;
+   public fqq a(fqp $$0, fqu... $$1) {
+      return this.a($$0, ImmutableList.copyOf($$1));
    }
 
-   private Map<fqt, ale> a(fqs $$0) {
-      return Streams.concat(new Stream[]{this.b.stream(), $$0.a()}).collect(ImmutableMap.toImmutableMap(Function.identity(), $$0::a));
+   public fqq a(fqp $$0, fqu $$1) {
+      return this.a($$0, ImmutableList.of($$1));
+   }
+
+   public JsonElement b() {
+      eaa<dma, dzz> $$0 = this.a.l();
+      this.b.forEach($$1x -> $$1x.a($$0));
+      JsonArray $$1 = new JsonArray();
+      this.b.stream().map(fqq.b::a).forEach($$1::add);
+      JsonObject $$2 = new JsonObject();
+      $$2.add("multipart", $$1);
+      return $$2;
+   }
+
+   static class a extends fqq.b {
+      private final fqp a;
+
+      a(fqp $$0, List<fqu> $$1) {
+         super($$1);
+         this.a = $$0;
+      }
+
+      @Override
+      public void a(eaa<?, ?> $$0) {
+         this.a.a($$0);
+      }
+
+      @Override
+      public void a(JsonObject $$0) {
+         $$0.add("when", this.a.get());
+      }
+   }
+
+   static class b implements Supplier<JsonElement> {
+      private final List<fqu> a;
+
+      b(List<fqu> $$0) {
+         this.a = $$0;
+      }
+
+      public void a(eaa<?, ?> $$0) {
+      }
+
+      public void a(JsonObject $$0) {
+      }
+
+      public JsonElement a() {
+         JsonObject $$0 = new JsonObject();
+         this.a($$0);
+         $$0.add("apply", fqu.a(this.a));
+         return $$0;
+      }
    }
 }

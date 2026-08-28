@@ -1,12 +1,13 @@
 import javax.annotation.Nullable;
 
-public class heg extends hef implements hdy {
+public class heg extends hbz {
    @Nullable
-   public cqf c;
+   public bwa.k.e a;
+   @Nullable
+   public bwa.k.b f;
 
-   @Nullable
    @Override
-   public cqf a() {
-      return this.c;
+   public boolean a() {
+      return this.a != null;
    }
 }

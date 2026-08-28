@@ -1,31 +1,26 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public interface dcg {
-   Codec<dcg> d = mf.aw.q().dispatch(dcg::a, dcg.a::a);
-   yu<wh, dcg> e = ys.a(mg.n).b(dcg::a, dcg.a::b);
+public record dcg(int d, float e) {
+   public static final float a = 5.0F;
+   public static final Codec<dcg> b = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               ayu.l.optionalFieldOf("item_damage_per_attack", 1).forGetter(dcg::a),
+               ayu.n.optionalFieldOf("disable_blocking_for_seconds", 0.0F).forGetter(dcg::b)
+            )
+            .apply($$0, dcg::new)
+   );
+   public static final yw<wj, dcg> c = yw.a(yu.h, dcg::a, yu.l, dcg::b, dcg::new);
 
-   dcg.a<? extends dcg> a();
+   public dcg(int $$0) {
+      this($$0, 0.0F);
+   }
 
-   boolean a(dip var1, cys var2, bwz var3);
+   public int a() {
+      return this.d;
+   }
 
-   public static record a<T extends dcg>(MapCodec<T> f, yu<wh, T> g) {
-      public static final dcg.a<dce> a = a("apply_effects", dce.a, dce.b);
-      public static final dcg.a<dci> b = a("remove_effects", dci.a, dci.b);
-      public static final dcg.a<dcf> c = a("clear_all_effects", dcf.b, dcf.c);
-      public static final dcg.a<dcj> d = a("teleport_randomly", dcj.a, dcj.b);
-      public static final dcg.a<dch> e = a("play_sound", dch.a, dch.b);
-
-      private static <T extends dcg> dcg.a<T> a(String $$0, MapCodec<T> $$1, yu<wh, T> $$2) {
-         return jr.a(mf.aw, $$0, new dcg.a<>($$1, $$2));
-      }
-
-      public MapCodec<T> a() {
-         return this.f;
-      }
-
-      public yu<wh, T> b() {
-         return this.g;
-      }
+   public float b() {
+      return this.e;
    }
 }

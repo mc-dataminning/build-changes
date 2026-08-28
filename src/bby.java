@@ -1,53 +1,60 @@
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.Type;
-import com.mojang.serialization.Dynamic;
-import com.mojang.serialization.OptionalDynamic;
+import com.google.common.collect.ImmutableMap;
 import java.util.Map;
-import java.util.Optional;
-import java.util.Set;
 
-public class bby extends DataFix {
-   private final String a;
-   private static final Set<String> b = Set.of("minecraft:empty", "minecraft:structure_starts", "minecraft:structure_references", "minecraft:biomes");
-
-   public bby(Schema $$0) {
-      super($$0, false);
-      this.a = "Blending Data Fix v" + $$0.getVersionKey();
-   }
-
-   protected TypeRewriteRule makeRule() {
-      Type<?> $$0 = this.getOutputSchema().getType(bit.c);
-      return this.fixTypeEverywhereTyped(this.a, $$0, $$0x -> $$0x.update(DSL.remainderFinder(), $$0xx -> a($$0xx, $$0xx.get("__context"))));
-   }
-
-   private static Dynamic<?> a(Dynamic<?> $$0, OptionalDynamic<?> $$1) {
-      $$0 = $$0.remove("blending_data");
-      boolean $$2 = "minecraft:overworld".equals($$1.get("dimension").asString().result().orElse(""));
-      Optional<? extends Dynamic<?>> $$3 = $$0.get("Status").result();
-      if ($$2 && $$3.isPresent()) {
-         String $$4 = bko.a($$3.get().asString("empty"));
-         Optional<? extends Dynamic<?>> $$5 = $$0.get("below_zero_retrogen").result();
-         if (!b.contains($$4)) {
-            $$0 = a($$0, 384, -64);
-         } else if ($$5.isPresent()) {
-            Dynamic<?> $$6 = (Dynamic<?>)$$5.get();
-            String $$7 = bko.a($$6.get("target_status").asString("empty"));
-            if (!b.contains($$7)) {
-               $$0 = a($$0, 256, 0);
-            }
-         }
-      }
-
-      return $$0;
-   }
-
-   private static Dynamic<?> a(Dynamic<?> $$0, int $$1, int $$2) {
-      return $$0.set(
-         "blending_data",
-         $$0.createMap(Map.of($$0.createString("min_section"), $$0.createInt(jx.a($$2)), $$0.createString("max_section"), $$0.createInt(jx.a($$2 + $$1))))
-      );
-   }
+public class bby {
+   public static final Map<String, String> a = ImmutableMap.builder()
+      .put("minecraft:extreme_hills", "minecraft:mountains")
+      .put("minecraft:swampland", "minecraft:swamp")
+      .put("minecraft:hell", "minecraft:nether_wastes")
+      .put("minecraft:sky", "minecraft:the_end")
+      .put("minecraft:ice_flats", "minecraft:snowy_tundra")
+      .put("minecraft:ice_mountains", "minecraft:snowy_mountains")
+      .put("minecraft:mushroom_island", "minecraft:mushroom_fields")
+      .put("minecraft:mushroom_island_shore", "minecraft:mushroom_field_shore")
+      .put("minecraft:beaches", "minecraft:beach")
+      .put("minecraft:forest_hills", "minecraft:wooded_hills")
+      .put("minecraft:smaller_extreme_hills", "minecraft:mountain_edge")
+      .put("minecraft:stone_beach", "minecraft:stone_shore")
+      .put("minecraft:cold_beach", "minecraft:snowy_beach")
+      .put("minecraft:roofed_forest", "minecraft:dark_forest")
+      .put("minecraft:taiga_cold", "minecraft:snowy_taiga")
+      .put("minecraft:taiga_cold_hills", "minecraft:snowy_taiga_hills")
+      .put("minecraft:redwood_taiga", "minecraft:giant_tree_taiga")
+      .put("minecraft:redwood_taiga_hills", "minecraft:giant_tree_taiga_hills")
+      .put("minecraft:extreme_hills_with_trees", "minecraft:wooded_mountains")
+      .put("minecraft:savanna_rock", "minecraft:savanna_plateau")
+      .put("minecraft:mesa", "minecraft:badlands")
+      .put("minecraft:mesa_rock", "minecraft:wooded_badlands_plateau")
+      .put("minecraft:mesa_clear_rock", "minecraft:badlands_plateau")
+      .put("minecraft:sky_island_low", "minecraft:small_end_islands")
+      .put("minecraft:sky_island_medium", "minecraft:end_midlands")
+      .put("minecraft:sky_island_high", "minecraft:end_highlands")
+      .put("minecraft:sky_island_barren", "minecraft:end_barrens")
+      .put("minecraft:void", "minecraft:the_void")
+      .put("minecraft:mutated_plains", "minecraft:sunflower_plains")
+      .put("minecraft:mutated_desert", "minecraft:desert_lakes")
+      .put("minecraft:mutated_extreme_hills", "minecraft:gravelly_mountains")
+      .put("minecraft:mutated_forest", "minecraft:flower_forest")
+      .put("minecraft:mutated_taiga", "minecraft:taiga_mountains")
+      .put("minecraft:mutated_swampland", "minecraft:swamp_hills")
+      .put("minecraft:mutated_ice_flats", "minecraft:ice_spikes")
+      .put("minecraft:mutated_jungle", "minecraft:modified_jungle")
+      .put("minecraft:mutated_jungle_edge", "minecraft:modified_jungle_edge")
+      .put("minecraft:mutated_birch_forest", "minecraft:tall_birch_forest")
+      .put("minecraft:mutated_birch_forest_hills", "minecraft:tall_birch_hills")
+      .put("minecraft:mutated_roofed_forest", "minecraft:dark_forest_hills")
+      .put("minecraft:mutated_taiga_cold", "minecraft:snowy_taiga_mountains")
+      .put("minecraft:mutated_redwood_taiga", "minecraft:giant_spruce_taiga")
+      .put("minecraft:mutated_redwood_taiga_hills", "minecraft:giant_spruce_taiga_hills")
+      .put("minecraft:mutated_extreme_hills_with_trees", "minecraft:modified_gravelly_mountains")
+      .put("minecraft:mutated_savanna", "minecraft:shattered_savanna")
+      .put("minecraft:mutated_savanna_rock", "minecraft:shattered_savanna_plateau")
+      .put("minecraft:mutated_mesa", "minecraft:eroded_badlands")
+      .put("minecraft:mutated_mesa_rock", "minecraft:modified_wooded_badlands_plateau")
+      .put("minecraft:mutated_mesa_clear_rock", "minecraft:modified_badlands_plateau")
+      .put("minecraft:warm_deep_ocean", "minecraft:deep_warm_ocean")
+      .put("minecraft:lukewarm_deep_ocean", "minecraft:deep_lukewarm_ocean")
+      .put("minecraft:cold_deep_ocean", "minecraft:deep_cold_ocean")
+      .put("minecraft:frozen_deep_ocean", "minecraft:deep_frozen_ocean")
+      .build();
 }

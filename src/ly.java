@@ -9,7 +9,7 @@ public abstract class ly implements lv {
    private final float a;
 
    public ly(float $$0) {
-      this.a = azk.a($$0, 0.01F, 4.0F);
+      this.a = azm.a($$0, 0.01F, 4.0F);
    }
 
    public float d() {

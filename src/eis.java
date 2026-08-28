@@ -1,71 +1,52 @@
-public class eis extends eit<ele> {
-   public static final int a = 4;
-   public static final int b = 4;
-   public static final int c = 1;
-   public static final float d = 0.5F;
-   private static final iu ao = iu.c;
-   private final boolean ap;
+import com.mojang.serialization.Codec;
+import java.util.Optional;
 
-   public static iu a(iu $$0) {
-      return ao.a((jz)$$0);
-   }
-
-   public eis(boolean $$0) {
-      super(ele.a);
-      this.ap = $$0;
+public abstract class eis extends eje<elp> {
+   public eis(Codec<elp> $$0) {
+      super($$0);
    }
 
    @Override
-   public boolean a(eiv<ele> $$0) {
-      iu $$1 = $$0.e();
-      djo $$2 = $$0.b();
-
-      for (iu $$3 : iu.c(new iu($$1.u() - 4, $$1.v() - 1, $$1.w() - 4), new iu($$1.u() + 4, $$1.v() + 32, $$1.w() + 4))) {
-         boolean $$4 = $$3.a($$1, 2.5);
-         if ($$4 || $$3.a($$1, 3.5)) {
-            if ($$3.v() < $$1.v()) {
-               if ($$4) {
-                  this.a($$2, $$3, dlw.I.m());
-               } else if ($$3.v() < $$1.v()) {
-                  if (this.ap) {
-                     this.a($$2, $$3, dlw.fU);
-                  } else {
-                     this.a($$2, $$3, dlw.fU.m());
-                  }
-               }
-            } else if ($$3.v() > $$1.v()) {
-               if (this.ap) {
-                  this.a($$2, $$3, dlw.a);
-               } else {
-                  this.a($$2, $$3, dlw.a.m());
-               }
-            } else if (!$$4) {
-               this.a($$2, $$3, dlw.I.m());
-            } else if (this.ap) {
-               this.a($$2, new iu($$3), dlw.fS);
-            } else {
-               this.a($$2, new iu($$3), dlw.a.m());
-            }
-         }
-      }
-
-      for (int $$5 = 0; $$5 < 4; $$5++) {
-         this.a($$2, $$1.b($$5), dlw.I.m());
-      }
-
-      iu $$6 = $$1.b(2);
-
-      for (ja $$7 : ja.c.a) {
-         this.a($$2, $$6.a($$7), dlw.cx.m().b(dvg.e, $$7));
-      }
-
-      return true;
+   public boolean a(ejg<elp> $$0) {
+      azv $$1 = $$0.d();
+      dju $$2 = $$0.b();
+      iu $$3 = $$0.e();
+      Optional<dma> $$4 = mf.e.a(axc.at, $$1).map(je::a);
+      return $$4.isEmpty() ? false : this.a($$2, $$1, $$3, $$4.get().m());
    }
 
-   private void a(djo $$0, iu $$1, dlu $$2) {
-      if (!$$0.a_($$1).a($$2)) {
-         $$0.a($$1, true, null);
-         this.a($$0, $$1, $$2.m());
+   protected abstract boolean a(diw var1, azv var2, iu var3, dzz var4);
+
+   protected boolean b(diw $$0, azv $$1, iu $$2, dzz $$3) {
+      iu $$4 = $$2.d();
+      dzz $$5 = $$0.a_($$2);
+      if (($$5.a(dmc.J) || $$5.a(axc.aw)) && $$0.a_($$4).a(dmc.J)) {
+         $$0.a($$2, $$3, 3);
+         if ($$1.i() < 0.25F) {
+            mf.e.a(axc.aw, $$1).map(je::a).ifPresent($$2x -> $$0.a($$4, $$2x.m(), 2));
+         } else if ($$1.i() < 0.05F) {
+            $$0.a($$4, dmc.ny.m().b(dte.c, Integer.valueOf($$1.a(4) + 1)), 2);
+         }
+
+         for (ja $$6 : ja.c.a) {
+            if ($$1.i() < 0.2F) {
+               iu $$7 = $$2.a($$6);
+               if ($$0.a_($$7).a(dmc.J)) {
+                  mf.e.a(axc.au, $$1).map(je::a).ifPresent($$3x -> {
+                     dzz $$4x = $$3x.m();
+                     if ($$4x.b(dll.d)) {
+                        $$4x = $$4x.b(dll.d, $$6);
+                     }
+
+                     $$0.a($$7, $$4x, 2);
+                  });
+               }
+            }
+         }
+
+         return true;
+      } else {
+         return false;
       }
    }
 }

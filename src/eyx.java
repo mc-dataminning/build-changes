@@ -1,30 +1,69 @@
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.function.Consumer;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import java.util.Map;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
-public class eyx extends ezf {
-   public static final MapCodec<eyx> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(ale.a.fieldOf("name").forGetter($$0x -> $$0x.j)).and(b($$0)).apply($$0, eyx::new)
-   );
-   private final ale j;
+public interface eyx {
+   eyw<dbq> a = new eyw<dbq>() {
+      @Override
+      public ki<dbq> a() {
+         return kj.ap;
+      }
 
-   private eyx(ale $$0, int $$1, int $$2, List<fbw> $$3, List<fab> $$4) {
-      super($$1, $$2, $$3, $$4);
-      this.j = $$0;
-   }
+      public Stream<cyy> a(dbq $$0) {
+         return $$0.b();
+      }
 
-   @Override
-   public eze a() {
-      return ezb.e;
-   }
+      public dbq c() {
+         return dbq.a;
+      }
 
-   @Override
-   public void a(Consumer<cys> $$0, eyn $$1) {
-      $$1.a(this.j, $$0);
-   }
+      public dbq a(dbq $$0, Stream<cyy> $$1) {
+         return dbq.a($$1.toList());
+      }
+   };
+   eyw<dbb> b = new eyw<dbb>() {
+      @Override
+      public ki<dbb> a() {
+         return kj.Q;
+      }
 
-   public static ezf.a<?> a(ale $$0) {
-      return a(($$1, $$2, $$3, $$4) -> new eyx($$0, $$1, $$2, $$3, $$4));
-   }
+      public dbb c() {
+         return dbb.a;
+      }
+
+      public Stream<cyy> a(dbb $$0) {
+         return $$0.b();
+      }
+
+      public dbb a(dbb $$0, Stream<cyy> $$1) {
+         dbb.a $$2 = new dbb.a($$0).a();
+         $$1.forEach($$2::a);
+         return $$2.d();
+      }
+   };
+   eyw<dbc> c = new eyw<dbc>() {
+      @Override
+      public ki<dbc> a() {
+         return kj.P;
+      }
+
+      public dbc c() {
+         return dbc.a;
+      }
+
+      public Stream<cyy> a(dbc $$0) {
+         return $$0.a().stream();
+      }
+
+      public dbc a(dbc $$0, Stream<cyy> $$1) {
+         return dbc.a($$1.toList());
+      }
+   };
+   Map<ki<?>, eyw<?>> d = Stream.of(a, b, c).collect(Collectors.toMap(eyw::a, $$0 -> (eyw<?>)$$0));
+   Codec<eyw<?>> e = mf.am.q().comapFlatMap($$0 -> {
+      eyw<?> $$1 = d.get($$0);
+      return $$1 != null ? DataResult.success($$1) : DataResult.error(() -> "No items in component");
+   }, eyw::a);
 }

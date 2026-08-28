@@ -1,44 +1,30 @@
-import com.mojang.authlib.yggdrasil.ProfileResult;
-import java.util.List;
+public class fzr extends fyi {
+   private final dhw u;
 
-public class fzr implements fzu {
-   private static final int a = 10;
-   private static final int b = 2;
-   private final List<ProfileResult> c;
-
-   public fzr(fzr.a $$0) {
-      this.c = $$0.a();
+   public fzr(dhw $$0) {
+      this.u = $$0;
    }
 
    @Override
-   public int a(fra $$0) {
-      return this.c.size() * 12 + 2;
+   public dhw m() {
+      return this.u;
    }
 
    @Override
-   public int b(fra $$0) {
-      int $$1 = 0;
+   int E() {
+      return 150;
+   }
 
-      for (ProfileResult $$2 : this.c) {
-         int $$3 = $$0.b($$2.profile().getName());
-         if ($$3 > $$1) {
-            $$1 = $$3;
-         }
+   @Override
+   protected void aN_() {
+      super.aN_();
+      this.a.a(this.m().m());
+   }
+
+   @Override
+   protected void a(dhw $$0) {
+      if ($$0 instanceof ctu.a $$1) {
+         this.m.L().b(new aii($$1.h().ar(), this.a.a(), $$0.p()));
       }
-
-      return $$1 + 10 + 6;
-   }
-
-   @Override
-   public void a(fra $$0, int $$1, int $$2, int $$3, int $$4, frc $$5) {
-      for (int $$6 = 0; $$6 < this.c.size(); $$6++) {
-         ProfileResult $$7 = this.c.get($$6);
-         int $$8 = $$2 + 2 + $$6 * 12;
-         fsp.a($$5, fof.Q().an().b($$7.profile()), $$1 + 2, $$8, 10);
-         $$5.b($$0, $$7.profile().getName(), $$1 + 10 + 4, $$8 + 2, -1);
-      }
-   }
-
-   public static record a(List<ProfileResult> a) implements cwr {
    }
 }

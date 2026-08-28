@@ -1,23 +1,17 @@
-import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class eou extends eop {
-   public static final MapCodec<eou> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(bsj.b(eop.c).fieldOf("distribution").forGetter($$0x -> $$0x.b)).apply($$0, eou::new)
+public record eou(je<cyu> c, eow d) {
+   public static final Codec<eou> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(cyu.e.fieldOf("display").forGetter($$0x -> $$0x.c), eow.a.fieldOf("settings").forGetter($$0x -> $$0x.d)).apply($$0, eou::new)
    );
-   private final bsj<eop> b;
+   public static final Codec<je<eou>> b = alc.a(mg.aR, a);
 
-   public eou(bsj<eop> $$0) {
-      this.b = $$0;
+   public je<cyu> a() {
+      return this.c;
    }
 
-   @Override
-   public int a(azt $$0, egk $$1) {
-      return this.b.b($$0).a($$0, $$1);
-   }
-
-   @Override
-   public eoq<?> a() {
-      return eoq.f;
+   public eow b() {
+      return this.d;
    }
 }

@@ -1,16 +1,45 @@
-public record acp(ale b, int c) implements zd<abs> {
-   public static final yu<wh, acp> a = yu.a(ale.b, acp::b, ys.h, acp::e, acp::new);
+public class acp implements zf<abu> {
+   public static final yw<vu, acp> a = zf.a(acp::a, acp::new);
+   private final int b;
+   private final int c;
+   private final int d;
 
-   @Override
-   public zf<acp> a() {
-      return agl.w;
+   public acp(int $$0, int $$1, int $$2) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
    }
 
-   public void a(abs $$0) {
+   private acp(vu $$0) {
+      this.b = $$0.x();
+      this.c = $$0.readShort();
+      this.d = $$0.readShort();
+   }
+
+   private void a(vu $$0) {
+      $$0.f(this.b);
+      $$0.m(this.c);
+      $$0.m(this.d);
+   }
+
+   @Override
+   public zh<acp> a() {
+      return agn.u;
+   }
+
+   public void a(abu $$0) {
       $$0.a(this);
+   }
+
+   public int b() {
+      return this.b;
    }
 
    public int e() {
       return this.c;
+   }
+
+   public int f() {
+      return this.d;
    }
 }

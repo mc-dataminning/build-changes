@@ -1,23 +1,18 @@
-import java.util.HashSet;
-import java.util.Set;
+import io.netty.buffer.ByteBuf;
 
-public record abf(Set<ale> b) implements zd<aba> {
-   public static final yu<vs, abf> a = zd.a(abf::a, abf::new);
+public class abf implements zf<abc> {
+   public static final abf a = new abf();
+   public static final yw<ByteBuf, abf> b = yw.a(a);
 
-   private abf(vs $$0) {
-      this($$0.a(HashSet::new, vs::q));
-   }
-
-   private void a(vs $$0) {
-      $$0.a(this.b, vs::a);
+   private abf() {
    }
 
    @Override
-   public zf<abf> a() {
-      return abg.c;
+   public zh<abf> a() {
+      return abi.e;
    }
 
-   public void a(aba $$0) {
+   public void a(abc $$0) {
       $$0.a(this);
    }
 }

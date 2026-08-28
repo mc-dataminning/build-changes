@@ -1,40 +1,14 @@
-import javax.annotation.Nullable;
+public enum fis {
+   a(0),
+   b(1);
 
-public class fis {
-   private static final int a = 786432;
-   private final fin b;
-   @Nullable
-   private static fis c;
+   private final int c;
 
-   public static void a() {
-      if (c != null) {
-         throw new IllegalStateException("Tesselator has already been initialized");
-      } else {
-         c = new fis();
-      }
+   private fis(final int $$0) {
+      this.c = $$0;
    }
 
-   public static fis b() {
-      if (c == null) {
-         throw new IllegalStateException("Tesselator has not been initialized");
-      } else {
-         return c;
-      }
-   }
-
-   public fis(int $$0) {
-      this.b = new fin($$0);
-   }
-
-   public fis() {
-      this(786432);
-   }
-
-   public fil a(fiv.c $$0, fiv $$1) {
-      return new fil(this.b, $$0, $$1);
-   }
-
-   public void c() {
-      this.b.b();
+   public int a() {
+      return this.c;
    }
 }

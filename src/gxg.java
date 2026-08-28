@@ -1,26 +1,27 @@
-public class gxg extends gwq<cny, hdf, ggr> {
-   private static final ale a = ale.b("textures/entity/illager/ravager.png");
+import com.google.common.collect.Maps;
+import java.util.Map;
 
-   public gxg(gvk.a $$0) {
-      super($$0, new ggr($$0.a(gif.cF)), 1.1F);
+public class gxg extends gut<cjh, hdk, gfg> {
+   private static final Map<cjh.a, alg> a = af.a(Maps.newHashMap(), $$0 -> {
+      $$0.put(cjh.a.b, alg.b("textures/entity/cow/brown_mooshroom.png"));
+      $$0.put(cjh.a.a, alg.b("textures/entity/cow/red_mooshroom.png"));
+   });
+
+   public gxg(gvz.a $$0) {
+      super($$0, new gfg($$0.a(git.bL)), new gfg($$0.a(git.bM)), 0.7F);
+      this.a(new hai(this, $$0.d()));
    }
 
-   public ale a(hdf $$0) {
-      return a;
+   public alg a(hdk $$0) {
+      return a.get($$0.a);
    }
 
-   public hdf b() {
-      return new hdf();
+   public hdk b() {
+      return new hdk();
    }
 
-   public void a(cny $$0, hdf $$1, float $$2) {
+   public void a(cjh $$0, hdk $$1, float $$2) {
       super.a($$0, $$1, $$2);
-      $$1.a = (float)$$0.q() > 0.0F ? (float)$$0.q() - $$2 : 0.0F;
-      $$1.b = (float)$$0.m() > 0.0F ? (float)$$0.m() - $$2 : 0.0F;
-      if ($$0.gx() > 0) {
-         $$1.c = ((float)(20 - $$0.gx()) + $$2) / 20.0F;
-      } else {
-         $$1.c = 0.0F;
-      }
+      $$1.a = $$0.t();
    }
 }

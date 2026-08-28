@@ -1,120 +1,106 @@
-import com.google.common.base.Suppliers;
 import com.mojang.authlib.GameProfile;
-import java.util.Optional;
-import java.util.concurrent.CompletableFuture;
-import java.util.function.Supplier;
+import com.mojang.logging.LogUtils;
+import java.util.List;
+import java.util.function.Function;
 import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class gjp {
-   private final GameProfile a;
-   private final Supplier<hja> b;
-   private dim c = dim.e;
-   private int d;
+public class gjp extends gjo implements abc, wm {
+   private static final Logger l = LogUtils.getLogger();
+   private final GameProfile m;
+   private cuh n;
+   private final js.b o;
+   private final gkf p = new gkf();
    @Nullable
-   private ww e;
-   private boolean f = true;
+   private gjy q;
    @Nullable
-   private xn g;
-   private xs h;
-   private int i;
+   protected fsd.b k;
 
-   public gjp(GameProfile $$0, boolean $$1) {
-      this.a = $$0;
-      this.h = c($$1);
-      Supplier<Supplier<hja>> $$2 = Suppliers.memoize(() -> a($$0));
-      this.b = () -> $$2.get().get();
+   public gjp(fos $$0, vr $$1, gjw $$2) {
+      super($$0, $$1, $$2);
+      this.m = $$2.a();
+      this.o = $$2.c();
+      this.n = $$2.d();
+      this.k = $$2.i();
    }
 
-   private static Supplier<hja> a(GameProfile $$0) {
-      fof $$1 = fof.Q();
-      hjb $$2 = $$1.an();
-      CompletableFuture<Optional<hja>> $$3 = $$2.c($$0);
-      boolean $$4 = !$$1.b($$0.getId());
-      hja $$5 = hir.a($$0);
-      return () -> {
-         hja $$3x = $$3.getNow(Optional.empty()).orElse($$5);
-         return $$4 && !$$3x.f() ? $$5 : $$3x;
-      };
+   @Override
+   public boolean c() {
+      return this.b.i();
    }
 
-   public GameProfile a() {
-      return this.a;
+   @Override
+   protected void a(aai $$0) {
+      this.b($$0);
    }
 
-   @Nullable
-   public xn b() {
-      return this.g;
+   private void b(aai $$0) {
+      l.warn("Unknown custom packet payload: {}", $$0.a().a());
    }
 
-   public xs c() {
-      return this.h;
+   @Override
+   public void a(abe $$0) {
+      zi.a($$0, this, this.a);
+      this.p.a($$0.b(), $$0.e());
    }
 
-   public boolean d() {
-      return this.g != null;
+   @Override
+   public void a(zw $$0) {
+      zi.a($$0, this, this.a);
+      this.p.a($$0.b());
    }
 
-   protected void a(xn $$0) {
-      this.g = $$0;
-      this.h = $$0.a(cqv.b);
+   @Override
+   public void a(abh $$0) {
+      this.n = cuj.e.a($$0.b());
    }
 
-   protected void a(boolean $$0) {
-      this.g = null;
-      this.h = c($$0);
+   @Override
+   public void a(abg $$0) {
+      zi.a($$0, this, this.a);
+      if (this.q == null) {
+         this.q = new gjy();
+      }
+
+      List<auj> $$1 = this.q.a($$0.b());
+      this.b(new abm($$1));
    }
 
-   private static xs c(boolean $$0) {
-      return $$0 ? xs.c : xs.b;
+   @Override
+   public void a(abf $$0) {
+      this.k = null;
    }
 
-   public dim e() {
-      return this.c;
+   private <T> T a(Function<avg, T> $$0) {
+      if (this.q == null) {
+         return $$0.apply(avg.b);
+      } else {
+         Object var3;
+         try (aus $$1 = this.q.a()) {
+            var3 = $$0.apply($$1);
+         }
+
+         return (T)var3;
+      }
    }
 
-   protected void a(dim $$0) {
-      this.c = $$0;
+   @Override
+   public void a(abd $$0) {
+      zi.a($$0, this, this.a);
+      js.b $$1 = this.a($$0x -> this.p.a($$0x, this.o, this.b.e()));
+      this.b.a(ago.b.a(wj.a($$1)), new gjs(this.a, this.b, new gjw(this.m, this.e, $$1, this.n, this.d, this.c, this.f, this.h, this.k, this.i, this.j)));
+      this.b.a(abl.a);
+      this.b.a(ago.a.a(wj.a($$1)));
    }
 
-   public int f() {
-      return this.d;
+   @Override
+   public void d() {
+      this.e();
    }
 
-   protected void a(int $$0) {
-      this.d = $$0;
-   }
-
-   public hja g() {
-      return this.b.get();
-   }
-
-   @Nullable
-   public few h() {
-      return fof.Q().s.R().e(this.a().getName());
-   }
-
-   public void a(@Nullable ww $$0) {
-      this.e = $$0;
-   }
-
-   @Nullable
-   public ww i() {
-      return this.e;
-   }
-
-   public void b(boolean $$0) {
-      this.f = $$0;
-   }
-
-   public boolean j() {
-      return this.f;
-   }
-
-   public void b(int $$0) {
-      this.i = $$0;
-   }
-
-   public int k() {
-      return this.i;
+   @Override
+   public void a(vt $$0) {
+      super.a($$0);
+      this.a.z();
    }
 }

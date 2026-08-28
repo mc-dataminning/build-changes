@@ -1,67 +1,69 @@
-public record gii(float b, float c, float d, float e, float f, float g, float h, float i, float j) {
-   public static final gii a = a(0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F);
+public class gii extends gfq<hes> {
+   private static final String a = "ribcage";
+   private static final String b = "center_head";
+   private static final String c = "right_head";
+   private static final String d = "left_head";
+   private static final float e = 0.065F;
+   private static final float f = 0.265F;
+   private final giu g;
+   private final giu i;
+   private final giu j;
+   private final giu k;
+   private final giu l;
 
-   public static gii a(float $$0, float $$1, float $$2) {
-      return a($$0, $$1, $$2, 0.0F, 0.0F, 0.0F);
+   public gii(giu $$0) {
+      super($$0);
+      this.k = $$0.b("ribcage");
+      this.l = $$0.b("tail");
+      this.g = $$0.b("center_head");
+      this.i = $$0.b("right_head");
+      this.j = $$0.b("left_head");
    }
 
-   public static gii b(float $$0, float $$1, float $$2) {
-      return a(0.0F, 0.0F, 0.0F, $$0, $$1, $$2);
+   public static gja a(giy $$0) {
+      gjc $$1 = new gjc();
+      gje $$2 = $$1.a();
+      $$2.a("shoulders", giz.c().a(0, 16).a(-10.0F, 3.9F, -0.5F, 20.0F, 3.0F, 3.0F, $$0), giw.a);
+      float $$3 = 0.20420352F;
+      $$2.a(
+         "ribcage",
+         giz.c()
+            .a(0, 22)
+            .a(0.0F, 0.0F, 0.0F, 3.0F, 10.0F, 3.0F, $$0)
+            .a(24, 22)
+            .a(-4.0F, 1.5F, 0.5F, 11.0F, 2.0F, 2.0F, $$0)
+            .a(24, 22)
+            .a(-4.0F, 4.0F, 0.5F, 11.0F, 2.0F, 2.0F, $$0)
+            .a(24, 22)
+            .a(-4.0F, 6.5F, 0.5F, 11.0F, 2.0F, 2.0F, $$0),
+         giw.a(-2.0F, 6.9F, -0.5F, 0.20420352F, 0.0F, 0.0F)
+      );
+      $$2.a(
+         "tail",
+         giz.c().a(12, 22).a(0.0F, 0.0F, 0.0F, 3.0F, 6.0F, 3.0F, $$0),
+         giw.a(-2.0F, 6.9F + azm.b(0.20420352F) * 10.0F, -0.5F + azm.a(0.20420352F) * 10.0F, 0.83252203F, 0.0F, 0.0F)
+      );
+      $$2.a("center_head", giz.c().a(0, 0).a(-4.0F, -4.0F, -4.0F, 8.0F, 8.0F, 8.0F, $$0), giw.a);
+      giz $$4 = giz.c().a(32, 0).a(-4.0F, -4.0F, -4.0F, 6.0F, 6.0F, 6.0F, $$0);
+      $$2.a("right_head", $$4, giw.a(-8.0F, 4.0F, 0.0F));
+      $$2.a("left_head", $$4, giw.a(10.0F, 4.0F, 0.0F));
+      return gja.a($$1, 64, 64);
    }
 
-   public static gii a(float $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
-      return new gii($$0, $$1, $$2, $$3, $$4, $$5, 1.0F, 1.0F, 1.0F);
+   public void a(hes $$0) {
+      super.a($$0);
+      a($$0, this.i, 0);
+      a($$0, this.j, 1);
+      float $$1 = azm.b($$0.u * 0.1F);
+      this.k.e = (0.065F + 0.05F * $$1) * (float) Math.PI;
+      this.l.a(-2.0F, 6.9F + azm.b(this.k.e) * 10.0F, -0.5F + azm.a(this.k.e) * 10.0F);
+      this.l.e = (0.265F + 0.1F * $$1) * (float) Math.PI;
+      this.g.f = $$0.aa * (float) (Math.PI / 180.0);
+      this.g.e = $$0.ab * (float) (Math.PI / 180.0);
    }
 
-   public gii c(float $$0, float $$1, float $$2) {
-      return new gii(this.b + $$0, this.c + $$1, this.d + $$2, this.e, this.f, this.g, this.h, this.i, this.j);
-   }
-
-   public gii a(float $$0) {
-      return new gii(this.b, this.c, this.d, this.e, this.f, this.g, $$0, $$0, $$0);
-   }
-
-   public gii b(float $$0) {
-      return $$0 == 1.0F ? this : this.d($$0, $$0, $$0);
-   }
-
-   public gii d(float $$0, float $$1, float $$2) {
-      return new gii(this.b * $$0, this.c * $$1, this.d * $$2, this.e, this.f, this.g, this.h * $$0, this.i * $$1, this.j * $$2);
-   }
-
-   public float a() {
-      return this.b;
-   }
-
-   public float b() {
-      return this.c;
-   }
-
-   public float c() {
-      return this.d;
-   }
-
-   public float d() {
-      return this.e;
-   }
-
-   public float e() {
-      return this.f;
-   }
-
-   public float f() {
-      return this.g;
-   }
-
-   public float g() {
-      return this.h;
-   }
-
-   public float h() {
-      return this.i;
-   }
-
-   public float i() {
-      return this.j;
+   private static void a(hes $$0, giu $$1, int $$2) {
+      $$1.f = ($$0.b[$$2] - $$0.Z) * (float) (Math.PI / 180.0);
+      $$1.e = $$0.a[$$2] * (float) (Math.PI / 180.0);
    }
 }

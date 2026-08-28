@@ -1,89 +1,47 @@
-import java.util.function.BiConsumer;
-import java.util.function.Consumer;
-import java.util.function.Function;
+import com.google.common.collect.Maps;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import java.util.List;
+import java.util.Map;
+import java.util.function.Supplier;
 
-public class fqu {
-   public static final fqu.a a = a(fqs::a, fqr.c);
-   public static final fqu.a b = a(fqs::a, fqr.d);
-   public static final fqu.a c = a(fqs::a, fqr.e);
-   public static final fqu.a d = a(fqs::n, fqr.j);
-   public static final fqu.a e = a(fqs::n, fqr.k);
-   public static final fqu.a f = a(fqs::t, fqr.n);
-   public static final fqu.a g = a(fqs::o, fqr.m);
-   public static final fqu.a h = a(fqs::E, fqr.p);
-   public static final fqu.a i = a(fqs::D, fqr.q);
-   public static final fqu.a j = a(fqs::i, fqr.ay);
-   public static final fqu.a k = a(fqs::d, fqr.az);
-   public static final fqu.a l = a(fqs::j, fqr.aA);
-   public static final fqu.a m = a(fqs::j, fqr.aB);
-   public static final fqu.a n = a(fqs::j, fqr.aC);
-   public static final fqu.a o = a(fqs::j, fqr.aD);
-   public static final fqu.a p = a(fqs::b, fqr.aE);
-   public static final fqu.a q = a(fqs::b, fqr.aF);
-   public static final fqu.a r = a(fqs::b, fqr.aG);
-   public static final fqu.a s = a(fqs::b, fqr.aH);
-   public static final fqu.a t = a(fqs::l, fqr.aK);
-   public static final fqu.a u = a(fqs::m, fqr.aI);
-   public static final fqu.a v = a(fqs::G, fqr.aZ);
-   public static final fqu.a w = a(fqs::a, fqr.ad);
-   public static final fqu.a x = a(fqs::A, fqr.bk);
-   public static final fqu.a y = a(fqs::A, fqr.bl);
-   public static final fqu.a z = a(fqs::b, fqr.bv);
-   public static final fqu.a A = a(fqs::q, fqr.j);
-   public static final fqu.a B = a(fqs::q, fqr.k);
-   public static final fqu.a C = a(fqs::u, fqr.n);
-   public static final fqu.a D = a(fqs::v, fqr.j);
-   private final fqs E;
-   private final fqq F;
+public class fqu implements Supplier<JsonElement> {
+   private final Map<fqw<?>, fqw<?>.a> a = Maps.newLinkedHashMap();
 
-   private fqu(fqs $$0, fqq $$1) {
-      this.E = $$0;
-      this.F = $$1;
-   }
-
-   public fqq a() {
-      return this.F;
-   }
-
-   public fqs b() {
-      return this.E;
-   }
-
-   public fqu a(Consumer<fqs> $$0) {
-      $$0.accept(this.E);
-      return this;
-   }
-
-   public ale a(dlu $$0, BiConsumer<ale, fqo> $$1) {
-      return this.F.a($$0, this.E, $$1);
-   }
-
-   public ale a(dlu $$0, String $$1, BiConsumer<ale, fqo> $$2) {
-      return this.F.a($$0, $$1, this.E, $$2);
-   }
-
-   private static fqu.a a(Function<dlu, fqs> $$0, fqq $$1) {
-      return $$2 -> new fqu($$0.apply($$2), $$1);
-   }
-
-   public static fqu a(ale $$0) {
-      return new fqu(fqs.b($$0), fqr.c);
-   }
-
-   @FunctionalInterface
-   public interface a {
-      fqu get(dlu var1);
-
-      default ale create(dlu $$0, BiConsumer<ale, fqo> $$1) {
-         return this.get($$0).a($$0, $$1);
+   public <T> fqu a(fqw<T> $$0, T $$1) {
+      fqw<?>.a $$2 = this.a.put($$0, $$0.a($$1));
+      if ($$2 != null) {
+         throw new IllegalStateException("Replacing value of " + $$2 + " with " + $$1);
+      } else {
+         return this;
       }
+   }
 
-      default ale createWithSuffix(dlu $$0, String $$1, BiConsumer<ale, fqo> $$2) {
-         return this.get($$0).a($$0, $$1, $$2);
-      }
+   public static fqu a() {
+      return new fqu();
+   }
 
-      default fqu.a updateTexture(Consumer<fqs> $$0) {
-         return $$1 -> this.get($$1).a($$0);
+   public static fqu a(fqu $$0, fqu $$1) {
+      fqu $$2 = new fqu();
+      $$2.a.putAll($$0.a);
+      $$2.a.putAll($$1.a);
+      return $$2;
+   }
+
+   public JsonElement b() {
+      JsonObject $$0 = new JsonObject();
+      this.a.values().forEach($$1 -> $$1.a($$0));
+      return $$0;
+   }
+
+   public static JsonElement a(List<fqu> $$0) {
+      if ($$0.size() == 1) {
+         return $$0.get(0).b();
+      } else {
+         JsonArray $$1 = new JsonArray();
+         $$0.forEach($$1x -> $$1.add($$1x.b()));
+         return $$1;
       }
    }
 }

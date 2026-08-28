@@ -1,287 +1,84 @@
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableList.Builder;
 import com.mojang.logging.LogUtils;
 import com.mojang.serialization.Codec;
-import java.util.HashSet;
-import java.util.Set;
-import javax.annotation.Nullable;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
+import java.util.Optional;
+import java.util.function.Consumer;
 import org.slf4j.Logger;
 
-public abstract class dwn {
-   private static final Logger d = LogUtils.getLogger();
-   private final dwp<?> e;
-   @Nullable
-   protected dip n;
-   protected final iu o;
-   protected boolean p;
-   private dzo f;
-   private kg g = kg.a;
+public record dwn(List<dwn.b> d) implements dcd {
+   static final Logger e = LogUtils.getLogger();
+   public static final dwn a = new dwn(List.of());
+   public static final Codec<dwn> b = dwn.b.a.listOf().xmap(dwn::new, dwn::b);
+   public static final yw<wj, dwn> c = dwn.b.b.a(yu.a()).a(dwn::new, dwn::b);
 
-   public dwn(dwp<?> $$0, iu $$1, dzo $$2) {
-      this.e = $$0;
-      this.o = $$1.j();
-      this.a($$2);
-      this.f = $$2;
+   public dwn a() {
+      return new dwn(List.copyOf(this.d.subList(0, this.d.size() - 1)));
    }
 
-   private void a(dzo $$0) {
-      if (!this.b($$0)) {
-         throw new IllegalStateException("Invalid block entity " + this.k() + " state at " + this.o + ", got " + $$0);
+   @Override
+   public void a(cyu.b $$0, Consumer<wy> $$1, dan $$2, ke $$3) {
+      for (int $$4 = 0; $$4 < Math.min(this.b().size(), 6); $$4++) {
+         $$1.accept(this.b().get($$4).a().a(n.h));
       }
    }
 
-   public boolean b(dzo $$0) {
-      return this.e.a($$0);
+   public List<dwn.b> b() {
+      return this.d;
    }
 
-   public static iu b(tx $$0) {
-      return new iu($$0.h("x"), $$0.h("y"), $$0.h("z"));
-   }
+   public static class a {
+      private final Builder<dwn.b> a = ImmutableList.builder();
 
-   @Nullable
-   public dip i() {
-      return this.n;
-   }
-
-   public void a(dip $$0) {
-      this.n = $$0;
-   }
-
-   public boolean l() {
-      return this.n != null;
-   }
-
-   protected void a(tx $$0, jg.a $$1) {
-   }
-
-   public final void c(tx $$0, jg.a $$1) {
-      this.a($$0, $$1);
-      dwn.a.a.parse($$1.a(ul.a), $$0).resultOrPartial($$0x -> d.warn("Failed to load components: {}", $$0x)).ifPresent($$0x -> this.g = $$0x);
-   }
-
-   public final void d(tx $$0, jg.a $$1) {
-      this.a($$0, $$1);
-   }
-
-   protected void b(tx $$0, jg.a $$1) {
-   }
-
-   public final tx b(jg.a $$0) {
-      tx $$1 = this.d($$0);
-      this.d($$1);
-      return $$1;
-   }
-
-   public final tx c(jg.a $$0) {
-      tx $$1 = this.d($$0);
-      this.c($$1);
-      return $$1;
-   }
-
-   public final tx d(jg.a $$0) {
-      tx $$1 = new tx();
-      this.b($$1, $$0);
-      dwn.a.a.encodeStart($$0.a(ul.a), this.g).resultOrPartial($$0x -> d.warn("Failed to save components: {}", $$0x)).ifPresent($$1x -> $$1.a((tx)$$1x));
-      return $$1;
-   }
-
-   public final tx e(jg.a $$0) {
-      tx $$1 = new tx();
-      this.b($$1, $$0);
-      return $$1;
-   }
-
-   public final tx f(jg.a $$0) {
-      tx $$1 = this.e($$0);
-      this.d($$1);
-      return $$1;
-   }
-
-   private void c(tx $$0) {
-      ale $$1 = dwp.a(this.p());
-      if ($$1 == null) {
-         throw new RuntimeException(this.getClass() + " is missing a mapping! This is a bug!");
-      } else {
-         $$0.a("id", $$1.toString());
-      }
-   }
-
-   public static void a(tx $$0, dwp<?> $$1) {
-      $$0.a("id", dwp.a($$1).toString());
-   }
-
-   private void d(tx $$0) {
-      this.c($$0);
-      $$0.a("x", this.o.u());
-      $$0.a("y", this.o.v());
-      $$0.a("z", this.o.w());
-   }
-
-   @Nullable
-   public static dwn a(iu $$0, dzo $$1, tx $$2, jg.a $$3) {
-      String $$4 = $$2.l("id");
-      ale $$5 = ale.c($$4);
-      if ($$5 == null) {
-         d.error("Block entity has invalid type: {}", $$4);
-         return null;
-      } else {
-         return mf.j.b($$5).map($$3x -> {
-            try {
-               return $$3x.a($$0, $$1);
-            } catch (Throwable var5x) {
-               d.error("Failed to create block entity {}", $$4, var5x);
-               return null;
-            }
-         }).map($$3x -> {
-            try {
-               $$3x.c($$2, $$3);
-               return $$3x;
-            } catch (Throwable var5x) {
-               d.error("Failed to load data for block entity {}", $$4, var5x);
-               return null;
-            }
-         }).orElseGet(() -> {
-            d.warn("Skipping BlockEntity with id {}", $$4);
-            return null;
-         });
-      }
-   }
-
-   public void e() {
-      if (this.n != null) {
-         a(this.n, this.o, this.f);
-      }
-   }
-
-   protected static void a(dip $$0, iu $$1, dzo $$2) {
-      $$0.q($$1);
-      if (!$$2.l()) {
-         $$0.b($$1, $$2.b());
-      }
-   }
-
-   public iu aw_() {
-      return this.o;
-   }
-
-   public dzo m() {
-      return this.f;
-   }
-
-   @Nullable
-   public zd<abs> at_() {
-      return null;
-   }
-
-   public tx a(jg.a $$0) {
-      return new tx();
-   }
-
-   public boolean n() {
-      return this.p;
-   }
-
-   public void ar_() {
-      this.p = true;
-   }
-
-   public void o() {
-      this.p = false;
-   }
-
-   public void a(iu $$0, dzo $$1) {
-      if (this instanceof btr $$2 && this.n != null) {
-         btu.a(this.n, $$0, $$2);
-      }
-   }
-
-   public boolean a_(int $$0, int $$1) {
-      return false;
-   }
-
-   public void a(p $$0) {
-      $$0.a("Name", this::k);
-      if (this.n != null) {
-         p.a($$0, this.n, this.o, this.m());
-         p.a($$0, this.n, this.o, this.n.a_(this.o));
-      }
-   }
-
-   private String k() {
-      return mf.j.b(this.p()) + " // " + this.getClass().getCanonicalName();
-   }
-
-   public dwp<?> p() {
-      return this.e;
-   }
-
-   @Deprecated
-   public void c(dzo $$0) {
-      this.a($$0);
-      this.f = $$0;
-   }
-
-   protected void a(ke $$0) {
-   }
-
-   public final void a(cys $$0) {
-      this.a($$0.c(), $$0.d());
-   }
-
-   public final void a(kg $$0, kh $$1) {
-      final Set<ki<?>> $$2 = new HashSet<>();
-      $$2.add(kj.aa);
-      $$2.add(kj.aq);
-      final kg $$3 = kk.a($$0, $$1);
-      this.a(new ke() {
-         @Nullable
-         @Override
-         public <T> T a(ki<? extends T> $$0) {
-            $$2.add($$0);
-            return $$3.a($$0);
+      @Deprecated
+      public dwn.a a(jf<dwm> $$0, alf<dwm> $$1, cxw $$2) {
+         Optional<je.c<dwm>> $$3 = $$0.a($$1);
+         if ($$3.isEmpty()) {
+            dwn.e.warn("Unable to find banner pattern with id: '{}'", $$1.a());
+            return this;
+         } else {
+            return this.a($$3.get(), $$2);
          }
+      }
 
-         @Override
-         public <T> T a(ki<? extends T> $$0, T $$1) {
-            $$2.add($$0);
-            return $$3.a($$0, $$1);
-         }
-      });
-      kh $$4 = $$1.a($$2::contains);
-      this.g = $$4.e().a();
+      public dwn.a a(je<dwm> $$0, cxw $$1) {
+         return this.a(new dwn.b($$0, $$1));
+      }
+
+      public dwn.a a(dwn.b $$0) {
+         this.a.add($$0);
+         return this;
+      }
+
+      public dwn.a a(dwn $$0) {
+         this.a.addAll($$0.d);
+         return this;
+      }
+
+      public dwn a() {
+         return new dwn(this.a.build());
+      }
    }
 
-   protected void a(kg.a $$0) {
-   }
+   public static record b(je<dwm> c, cxw d) {
+      public static final Codec<dwn.b> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(dwm.c.fieldOf("pattern").forGetter(dwn.b::b), cxw.q.fieldOf("color").forGetter(dwn.b::c)).apply($$0, dwn.b::new)
+      );
+      public static final yw<wj, dwn.b> b = yw.a(dwm.d, dwn.b::b, cxw.r, dwn.b::c, dwn.b::new);
 
-   @Deprecated
-   public void a(tx $$0) {
-   }
+      public xm a() {
+         String $$0 = this.c.a().b();
+         return wy.c($$0 + "." + this.d.b());
+      }
 
-   public final kg q() {
-      kg.a $$0 = kg.a();
-      $$0.a(this.g);
-      this.a($$0);
-      return $$0.a();
-   }
+      public je<dwm> b() {
+         return this.c;
+      }
 
-   public kg r() {
-      return this.g;
-   }
-
-   public void a(kg $$0) {
-      this.g = $$0;
-   }
-
-   @Nullable
-   public static ww a(@Nullable uu $$0, jg.a $$1) {
-      return $$0 == null
-         ? null
-         : (ww)wy.a.parse($$1.a(ul.a), $$0).resultOrPartial($$0x -> d.warn("Failed to parse custom name, discarding: {}", $$0x)).orElse(null);
-   }
-
-   static class a {
-      public static final Codec<kg> a = kg.b.optionalFieldOf("components", kg.a).codec();
-
-      private a() {
+      public cxw c() {
+         return this.d;
       }
    }
 }

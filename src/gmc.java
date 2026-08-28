@@ -1,53 +1,24 @@
-public class gmc extends gnl {
-   gmc(gjd $$0, double $$1, double $$2, double $$3) {
-      super($$0, $$1, $$2, $$3, 0.0, 0.0, 0.0);
-      this.C = true;
-      this.B = 0.86F;
-      this.j *= 0.01F;
-      this.k *= 0.01F;
-      this.l *= 0.01F;
-      this.k += 0.1;
-      this.D *= 1.5F;
-      this.t = 16;
-      this.n = false;
+import org.joml.Vector3f;
+
+public class gmc extends gmd<ls> {
+   protected gmc(gjr $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, ls $$7, gnv $$8) {
+      super($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8);
+      float $$9 = this.r.i() * 0.4F + 0.6F;
+      Vector3f $$10 = $$7.b();
+      this.v = this.a($$10.x(), $$9);
+      this.w = this.a($$10.y(), $$9);
+      this.x = this.a($$10.z(), $$9);
    }
 
-   @Override
-   public gmp b() {
-      return gmp.b;
-   }
+   public static class a implements gnd<ls> {
+      private final gnv a;
 
-   @Override
-   public float b(float $$0) {
-      return this.D * azk.a(((float)this.s + $$0) / (float)this.t * 32.0F, 0.0F, 1.0F);
-   }
-
-   public static class a implements gmo<mb> {
-      private final gng a;
-
-      public a(gng $$0) {
+      public a(gnv $$0) {
          this.a = $$0;
       }
 
-      public gml a(mb $$0, gjd $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         gmc $$8 = new gmc($$1, $$2, $$3 + 0.5, $$4);
-         $$8.a(this.a);
-         $$8.a(1.0F, 1.0F, 1.0F);
-         return $$8;
-      }
-   }
-
-   public static class b implements gmo<mb> {
-      private final gng a;
-
-      public b(gng $$0) {
-         this.a = $$0;
-      }
-
-      public gml a(mb $$0, gjd $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         gmc $$8 = new gmc($$1, $$2, $$3, $$4);
-         $$8.a(this.a);
-         return $$8;
+      public gna a(ls $$0, gjr $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new gmc($$1, $$2, $$3, $$4, $$5, $$6, $$7, $$0, this.a);
       }
    }
 }

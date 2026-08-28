@@ -1,48 +1,42 @@
+import com.google.common.collect.ImmutableSet;
 import com.mojang.serialization.Codec;
-import it.unimi.dsi.fastutil.ints.IntArrayList;
-import it.unimi.dsi.fastutil.ints.IntListIterator;
-import java.util.stream.IntStream;
+import java.util.function.Function;
+import org.apache.commons.lang3.mutable.MutableBoolean;
 
-public class eid extends eit<ele> {
-   public eid(Codec<ele> $$0) {
+public class eid extends eib {
+   public eid(Codec<eia> $$0) {
       super($$0);
+      this.h = ImmutableSet.of(ewh.e, ewh.c);
    }
 
    @Override
-   public boolean a(eiv<ele> $$0) {
-      azt $$1 = $$0.d();
-      djo $$2 = $$0.b();
-      dhw $$3 = new dhw($$0.e());
-      IntArrayList $$4 = af.a(IntStream.rangeClosed($$3.d(), $$3.f()), $$1);
-      IntArrayList $$5 = af.a(IntStream.rangeClosed($$3.e(), $$3.g()), $$1);
-      iu.a $$6 = new iu.a();
-      IntListIterator var8 = $$4.iterator();
+   protected int a() {
+      return 10;
+   }
 
-      while (var8.hasNext()) {
-         Integer $$7 = (Integer)var8.next();
-         IntListIterator var10 = $$5.iterator();
+   @Override
+   protected float a(azv $$0) {
+      return ($$0.i() * 2.0F + $$0.i()) * 2.0F;
+   }
 
-         while (var10.hasNext()) {
-            Integer $$8 = (Integer)var10.next();
-            $$6.d($$7, 0, $$8);
-            iu $$9 = $$2.a(efn.a.f, $$6);
-            if ($$2.v($$9) || $$2.a_($$9).g($$2, $$9).c()) {
-               $$2.a($$9, dlw.cD.m(), 2);
-               bue.a($$2, $$1, $$9, eyj.a);
-               dzo $$10 = dlw.cw.m();
+   @Override
+   protected double b() {
+      return 5.0;
+   }
 
-               for (ja $$11 : ja.c.a) {
-                  iu $$12 = $$9.a($$11);
-                  if ($$10.a($$2, $$12)) {
-                     $$2.a($$12, $$10, 2);
-                  }
-               }
-
-               return true;
-            }
+   protected boolean a(ehz $$0, eia $$1, ebw $$2, Function<iu, je<djy>> $$3, ebv $$4, iu.a $$5, iu.a $$6, efk $$7, MutableBoolean $$8) {
+      if (this.a($$1, $$2.a_($$5))) {
+         dzz $$9;
+         if ($$5.v() <= $$0.a() + 31) {
+            $$9 = g.g();
+         } else {
+            $$9 = e;
          }
-      }
 
-      return false;
+         $$2.a($$5, $$9);
+         return true;
+      } else {
+         return false;
+      }
    }
 }

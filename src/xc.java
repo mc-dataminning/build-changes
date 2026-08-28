@@ -1,166 +1,160 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.Lifecycle;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
-import java.util.UUID;
+import java.util.BitSet;
+import java.util.function.Supplier;
 import javax.annotation.Nullable;
+import org.apache.commons.lang3.StringUtils;
 
-public interface xc {
-   Codec<xc> a = xc.a.e.dispatch("action", xc::a, $$0 -> $$0.h);
+public class xc {
+   public static final Codec<xc> a = bak.a(xc.a::values).dispatch(xc::c, xc.a::a);
+   public static final xc b = new xc(new BitSet(0), xc.a.b);
+   public static final xc c = new xc(new BitSet(0), xc.a.a);
+   public static final xv d = xv.a.a(n.i).a(new xe.e(wy.c("chat.filtered")));
+   static final MapCodec<xc> e = MapCodec.unit(c);
+   static final MapCodec<xc> f = MapCodec.unit(b);
+   static final MapCodec<xc> g = ayu.w.xmap(xc::new, xc::d).fieldOf("value");
+   private static final char h = '#';
+   private final BitSet i;
+   private final xc.a j;
 
-   xc.a a();
+   private xc(BitSet $$0, xc.a $$1) {
+      this.i = $$0;
+      this.j = $$1;
+   }
 
-   public static enum a implements bai {
-      a("show_text", true, xc.e.b),
-      b("show_item", true, xc.d.b),
-      c("show_entity", true, xc.c.b);
+   private xc(BitSet $$0) {
+      this.i = $$0;
+      this.j = xc.a.c;
+   }
 
-      public static final Codec<xc.a> d = bai.b(xc.a::values);
-      public static final Codec<xc.a> e = d.validate(xc.a::a);
-      private final String f;
-      private final boolean g;
-      final MapCodec<? extends xc> h;
+   public xc(int $$0) {
+      this(new BitSet($$0), xc.a.c);
+   }
 
-      private a(final String $$0, final boolean $$1, final MapCodec<? extends xc> $$2) {
-         this.f = $$0;
-         this.g = $$1;
-         this.h = $$2;
+   private xc.a c() {
+      return this.j;
+   }
+
+   private BitSet d() {
+      return this.i;
+   }
+
+   public static xc a(vu $$0) {
+      xc.a $$1 = $$0.b(xc.a.class);
+
+      return switch ($$1) {
+         case a -> c;
+         case b -> b;
+         case c -> new xc($$0.w(), xc.a.c);
+      };
+   }
+
+   public static void a(vu $$0, xc $$1) {
+      $$0.a($$1.j);
+      if ($$1.j == xc.a.c) {
+         $$0.a($$1.i);
       }
+   }
 
-      public boolean a() {
-         return this.g;
+   public void a(int $$0) {
+      this.i.set($$0);
+   }
+
+   @Nullable
+   public String a(String $$0) {
+      return switch (this.j) {
+         case a -> $$0;
+         case b -> null;
+         case c -> {
+            char[] $$1 = $$0.toCharArray();
+
+            for (int $$2 = 0; $$2 < $$1.length && $$2 < this.i.length(); $$2++) {
+               if (this.i.get($$2)) {
+                  $$1[$$2] = '#';
+               }
+            }
+
+            yield new String($$1);
+         }
+      };
+   }
+
+   @Nullable
+   public wy b(String $$0) {
+      return switch (this.j) {
+         case a -> wy.b($$0);
+         case b -> null;
+         case c -> {
+            xm $$1 = wy.i();
+            int $$2 = 0;
+            boolean $$3 = this.i.get(0);
+
+            while (true) {
+               int $$4 = $$3 ? this.i.nextClearBit($$2) : this.i.nextSetBit($$2);
+               $$4 = $$4 < 0 ? $$0.length() : $$4;
+               if ($$4 == $$2) {
+                  yield $$1;
+               }
+
+               if ($$3) {
+                  $$1.b(wy.b(StringUtils.repeat('#', $$4 - $$2)).c(d));
+               } else {
+                  $$1.f($$0.substring($$2, $$4));
+               }
+
+               $$3 = !$$3;
+               $$2 = $$4;
+            }
+         }
+      };
+   }
+
+   public boolean a() {
+      return this.j == xc.a.a;
+   }
+
+   public boolean b() {
+      return this.j == xc.a.b;
+   }
+
+   @Override
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else if ($$0 != null && this.getClass() == $$0.getClass()) {
+         xc $$1 = (xc)$$0;
+         return this.i.equals($$1.i) && this.j == $$1.j;
+      } else {
+         return false;
+      }
+   }
+
+   @Override
+   public int hashCode() {
+      int $$0 = this.i.hashCode();
+      return 31 * $$0 + this.j.hashCode();
+   }
+
+   static enum a implements bak {
+      a("pass_through", () -> xc.e),
+      b("fully_filtered", () -> xc.f),
+      c("partially_filtered", () -> xc.g);
+
+      private final String d;
+      private final Supplier<MapCodec<xc>> e;
+
+      private a(final String $$0, final Supplier<MapCodec<xc>> $$1) {
+         this.d = $$0;
+         this.e = $$1;
       }
 
       @Override
       public String c() {
-         return this.f;
+         return this.d;
       }
 
-      @Override
-      public String toString() {
-         return "<action " + this.f + ">";
-      }
-
-      private static DataResult<xc.a> a(xc.a $$0) {
-         return !$$0.a() ? DataResult.error(() -> "Action not allowed: " + $$0) : DataResult.success($$0, Lifecycle.stable());
-      }
-   }
-
-   public static class b {
-      public static final MapCodec<xc.b> a = RecordCodecBuilder.mapCodec(
-         $$0 -> $$0.group(
-                  mf.f.q().fieldOf("id").forGetter($$0x -> $$0x.b),
-                  jy.f.fieldOf("uuid").forGetter($$0x -> $$0x.c),
-                  wy.a.optionalFieldOf("name").forGetter($$0x -> $$0x.d)
-               )
-               .apply($$0, xc.b::new)
-      );
-      public final bwj<?> b;
-      public final UUID c;
-      public final Optional<ww> d;
-      @Nullable
-      private List<ww> e;
-
-      public b(bwj<?> $$0, UUID $$1, @Nullable ww $$2) {
-         this($$0, $$1, Optional.ofNullable($$2));
-      }
-
-      public b(bwj<?> $$0, UUID $$1, Optional<ww> $$2) {
-         this.b = $$0;
-         this.c = $$1;
-         this.d = $$2;
-      }
-
-      public List<ww> a() {
-         if (this.e == null) {
-            this.e = new ArrayList<>();
-            this.d.ifPresent(this.e::add);
-            this.e.add(ww.a("gui.entity_tooltip.type", this.b.h()));
-            this.e.add(ww.b(this.c.toString()));
-         }
-
-         return this.e;
-      }
-
-      @Override
-      public boolean equals(Object $$0) {
-         if (this == $$0) {
-            return true;
-         } else if ($$0 != null && this.getClass() == $$0.getClass()) {
-            xc.b $$1 = (xc.b)$$0;
-            return this.b.equals($$1.b) && this.c.equals($$1.c) && this.d.equals($$1.d);
-         } else {
-            return false;
-         }
-      }
-
-      @Override
-      public int hashCode() {
-         int $$0 = this.b.hashCode();
-         $$0 = 31 * $$0 + this.c.hashCode();
-         return 31 * $$0 + this.d.hashCode();
-      }
-   }
-
-   public static record c(xc.b c) implements xc {
-      public static final MapCodec<xc.c> b = RecordCodecBuilder.mapCodec($$0 -> $$0.group(xc.b.a.forGetter(xc.c::b)).apply($$0, xc.c::new));
-
-      @Override
-      public xc.a a() {
-         return xc.a.c;
-      }
-
-      public xc.b b() {
-         return this.c;
-      }
-   }
-
-   public static record d(cys c) implements xc {
-      public static final MapCodec<xc.d> b = cys.a.xmap(xc.d::new, xc.d::b);
-
-      public d(cys c) {
-         c = c.v();
-         this.c = c;
-      }
-
-      @Override
-      public xc.a a() {
-         return xc.a.b;
-      }
-
-      @Override
-      public boolean equals(Object $$0) {
-         if ($$0 instanceof xc.d $$1 && cys.a(this.c, $$1.c)) {
-            return true;
-         }
-
-         return false;
-      }
-
-      @Override
-      public int hashCode() {
-         return cys.b(this.c);
-      }
-
-      public cys b() {
-         return this.c;
-      }
-   }
-
-   public static record e(ww c) implements xc {
-      public static final MapCodec<xc.e> b = RecordCodecBuilder.mapCodec($$0 -> $$0.group(wy.a.fieldOf("value").forGetter(xc.e::b)).apply($$0, xc.e::new));
-
-      @Override
-      public xc.a a() {
-         return xc.a.a;
-      }
-
-      public ww b() {
-         return this.c;
+      private MapCodec<xc> a() {
+         return this.e.get();
       }
    }
 }

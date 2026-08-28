@@ -1,20 +1,50 @@
-import javax.annotation.Nullable;
+public abstract class cng extends cso {
+   protected cng(bwm<? extends cng> $$0, div $$1) {
+      super($$0, $$1);
+   }
 
-public interface cng extends cnx {
-   void b(boolean var1);
+   @Override
+   protected void D() {
+      super.D();
+   }
 
-   @Nullable
-   bwz f();
+   public cng.a j() {
+      return cng.a.a;
+   }
 
-   void a();
+   @Override
+   public boolean c(bxc $$0) {
+      return $$0 instanceof cqf && $$0.n_() ? false : super.c($$0);
+   }
 
-   default void b(bwz $$0, float $$1) {
-      btx $$2 = cro.a($$0, cyw.wZ);
-      cys $$3 = $$0.b($$2);
-      if ($$3.h() instanceof cxl $$4) {
-         $$4.a($$0.dV(), $$0, $$2, $$3, $$1, (float)(14 - $$0.dV().an().a() * 4), this.f());
+   @Override
+   protected boolean t(bwd $$0) {
+      if (super.t($$0)) {
+         return true;
+      } else {
+         return !$$0.aq().a(axf.z) ? false : this.cr() == null && $$0.cr() == null;
+      }
+   }
+
+   public static enum a {
+      a,
+      b,
+      c,
+      d,
+      e,
+      f,
+      g,
+      h;
+   }
+
+   protected class b extends ceq {
+      public b(final cso $$1) {
+         super($$1, false);
       }
 
-      this.a();
+      @Override
+      public boolean b() {
+         return super.b() && cng.this.gE();
+      }
    }
 }

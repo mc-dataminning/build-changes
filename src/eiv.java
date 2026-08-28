@@ -1,43 +1,67 @@
-import java.util.Optional;
+import com.google.common.collect.ImmutableList;
+import com.mojang.serialization.Codec;
 
-public class eiv<FC extends ekx> {
-   private final Optional<eif<?, ?>> a;
-   private final djo b;
-   private final ebm c;
-   private final azt d;
-   private final iu e;
-   private final FC f;
+public class eiv extends eje<ele> {
+   private static final ImmutableList<dma> a = ImmutableList.of(dmc.I, dmc.fJ, dmc.fK, dmc.fL, dmc.fM, dmc.cE, dmc.cB);
+   private static final ja[] b = ja.values();
+   private static final double c = 0.9;
 
-   public eiv(Optional<eif<?, ?>> $$0, djo $$1, ebm $$2, azt $$3, iu $$4, FC $$5) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
-      this.e = $$4;
-      this.f = $$5;
+   public eiv(Codec<ele> $$0) {
+      super($$0);
    }
 
-   public Optional<eif<?, ?>> a() {
-      return this.a;
+   @Override
+   public boolean a(ejg<ele> $$0) {
+      boolean $$1 = false;
+      azv $$2 = $$0.d();
+      dju $$3 = $$0.b();
+      ele $$4 = $$0.f();
+      iu $$5 = $$0.e();
+      boolean $$6 = $$2.j() < 0.9;
+      int $$7 = $$6 ? $$4.d().a($$2) : 0;
+      int $$8 = $$6 ? $$4.d().a($$2) : 0;
+      boolean $$9 = $$6 && $$7 != 0 && $$8 != 0;
+      int $$10 = $$4.c().a($$2);
+      int $$11 = $$4.c().a($$2);
+      int $$12 = Math.max($$10, $$11);
+
+      for (iu $$13 : iu.a($$5, $$10, 0, $$11)) {
+         if ($$13.k($$5) > $$12) {
+            break;
+         }
+
+         if (a($$3, $$13, $$4)) {
+            if ($$9) {
+               $$1 = true;
+               this.a($$3, $$13, $$4.b());
+            }
+
+            iu $$14 = $$13.b($$7, 0, $$8);
+            if (a($$3, $$14, $$4)) {
+               $$1 = true;
+               this.a($$3, $$14, $$4.a());
+            }
+         }
+      }
+
+      return $$1;
    }
 
-   public djo b() {
-      return this.b;
-   }
+   private static boolean a(diw $$0, iu $$1, ele $$2) {
+      dzz $$3 = $$0.a_($$1);
+      if ($$3.a($$2.a().b())) {
+         return false;
+      } else if (a.contains($$3.b())) {
+         return false;
+      } else {
+         for (ja $$4 : b) {
+            boolean $$5 = $$0.a_($$1.a($$4)).l();
+            if ($$5 && $$4 != ja.b || !$$5 && $$4 == ja.b) {
+               return false;
+            }
+         }
 
-   public ebm c() {
-      return this.c;
-   }
-
-   public azt d() {
-      return this.d;
-   }
-
-   public iu e() {
-      return this.e;
-   }
-
-   public FC f() {
-      return this.f;
+         return true;
+      }
    }
 }

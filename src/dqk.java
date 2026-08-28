@@ -1,84 +1,96 @@
-public class dqk {
-   public static final int a = 1000;
-   public static final int b = 1001;
-   public static final int c = 1002;
-   public static final int d = 1004;
-   public static final int e = 1009;
-   public static final int f = 1010;
-   public static final int g = 1011;
-   public static final int h = 1015;
-   public static final int i = 1016;
-   public static final int j = 1017;
-   public static final int k = 1018;
-   public static final int l = 1019;
-   public static final int m = 1020;
-   public static final int n = 1021;
-   public static final int o = 1022;
-   public static final int p = 1023;
-   public static final int q = 1024;
-   public static final int r = 1025;
-   public static final int s = 1026;
-   public static final int t = 1027;
-   public static final int u = 1028;
-   public static final int v = 1029;
-   public static final int w = 1030;
-   public static final int x = 1031;
-   public static final int y = 1032;
-   public static final int z = 1033;
-   public static final int A = 1034;
-   public static final int B = 1035;
-   public static final int C = 1038;
-   public static final int D = 1039;
-   public static final int E = 1040;
-   public static final int F = 1041;
-   public static final int G = 1042;
-   public static final int H = 1043;
-   public static final int I = 1044;
-   public static final int J = 1045;
-   public static final int K = 1046;
-   public static final int L = 1047;
-   public static final int M = 1048;
-   public static final int N = 1049;
-   public static final int O = 1050;
-   public static final int P = 1051;
-   public static final int Q = 1500;
-   public static final int R = 1501;
-   public static final int S = 1502;
-   public static final int T = 1503;
-   public static final int U = 1504;
-   public static final int V = 1505;
-   public static final int W = 2000;
-   public static final int X = 2001;
-   public static final int Y = 2002;
-   public static final int Z = 2003;
-   public static final int aa = 2004;
-   public static final int ab = 2006;
-   public static final int ac = 2007;
-   public static final int ad = 2008;
-   public static final int ae = 2009;
-   public static final int af = 2010;
-   public static final int ag = 2011;
-   public static final int ah = 2012;
-   public static final int ai = 2013;
-   public static final int aj = 3000;
-   public static final int ak = 3001;
-   public static final int al = 3002;
-   public static final int am = 3003;
-   public static final int an = 3004;
-   public static final int ao = 3005;
-   public static final int ap = 3006;
-   public static final int aq = 3007;
-   public static final int ar = 3008;
-   public static final int as = 3009;
-   public static final int at = 3011;
-   public static final int au = 3012;
-   public static final int av = 3013;
-   public static final int aw = 3014;
-   public static final int ax = 3015;
-   public static final int ay = 3016;
-   public static final int az = 3017;
-   public static final int aA = 3018;
-   public static final int aB = 3019;
-   public static final int aC = 3020;
-   public static final int aD = 3021;
+import com.mojang.serialization.MapCodec;
+import java.util.Map;
+import javax.annotation.Nullable;
+
+public class dqk extends dma implements dtj {
+   public static final MapCodec<dqk> a = b(dqk::new);
+   public static final eax<ja> b = dqa.e;
+   public static final eaq c = eap.I;
+   public static final Map<ja, ffc> d = fez.c(dma.c(16.0, 13.0, 16.0));
+
+   @Override
+   public MapCodec<dqk> a() {
+      return a;
+   }
+
+   protected dqk(dzy.d $$0) {
+      super($$0);
+      this.l(this.B.b().b(b, ja.c).b(c, Boolean.valueOf(false)));
+   }
+
+   @Override
+   protected ffc a(dzz $$0, dib $$1, iu $$2, fen $$3) {
+      return d.get($$0.c(b));
+   }
+
+   private boolean a(dib $$0, iu $$1, ja $$2) {
+      dzz $$3 = $$0.a_($$1);
+      return $$3.c($$0, $$1, $$2);
+   }
+
+   @Override
+   protected boolean a(dzz $$0, diy $$1, iu $$2) {
+      ja $$3 = $$0.c(b);
+      return this.a($$1, $$2.a($$3.g()), $$3);
+   }
+
+   @Override
+   protected dzz a(dzz $$0, diy $$1, djk $$2, iu $$3, ja $$4, iu $$5, dzz $$6, azv $$7) {
+      if ($$4.g() == $$0.c(b) && !$$0.a($$1, $$3)) {
+         return dmc.a.m();
+      } else {
+         if ($$0.c(c)) {
+            $$2.a($$3, ewh.c, ewh.c.a($$1));
+         }
+
+         return super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
+      }
+   }
+
+   @Nullable
+   @Override
+   public dzz a(dcr $$0) {
+      if (!$$0.c()) {
+         dzz $$1 = $$0.q().a_($$0.a().a($$0.k().g()));
+         if ($$1.a(this) && $$1.c(b) == $$0.k()) {
+            return null;
+         }
+      }
+
+      dzz $$2 = this.m();
+      diy $$3 = $$0.q();
+      iu $$4 = $$0.a();
+      ewg $$5 = $$0.q().b_($$0.a());
+
+      for (ja $$6 : $$0.f()) {
+         if ($$6.o().d()) {
+            $$2 = $$2.b(b, $$6.g());
+            if ($$2.a($$3, $$4)) {
+               return $$2.b(c, Boolean.valueOf($$5.a() == ewh.c));
+            }
+         }
+      }
+
+      return null;
+   }
+
+   @Override
+   protected dzz a(dzz $$0, dst $$1) {
+      return $$0.b(b, $$1.a($$0.c(b)));
+   }
+
+   @Override
+   protected dzz a(dzz $$0, drc $$1) {
+      return $$0.a($$1.a($$0.c(b)));
+   }
+
+   @Override
+   protected void a(eaa.a<dma, dzz> $$0) {
+      $$0.a(b, c);
+   }
+
+   @Override
+   protected ewg b_(dzz $$0) {
+      return $$0.c(c) ? ewh.c.a(false) : super.b_($$0);
+   }
 }

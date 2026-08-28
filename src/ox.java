@@ -75,10 +75,10 @@ public class ox implements mm {
          Path var7;
          try (
             InputStream $$4 = Files.newInputStream($$1);
-            InputStream $$5 = new ayt($$4);
+            InputStream $$5 = new ayv($$4);
          ) {
             Path $$6 = $$3.resolve($$2 + ".snbt");
-            a($$0, $$6, um.a(uk.a($$5, ug.a())));
+            a($$0, $$6, uo.a(um.a($$5, ui.a())));
             d.info("Converted {} from NBT to SNBT", $$2);
             var7 = $$6;
          }

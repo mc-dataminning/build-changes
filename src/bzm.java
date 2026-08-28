@@ -1,31 +1,28 @@
 import com.mojang.datafixers.kinds.App;
-import java.util.Collections;
-import java.util.List;
 import java.util.function.Function;
 
 public class bzm {
-   public static byr<bxh> a(float $$0) {
-      return ccd.a(
-         (Function<ccd.b<bxh>, ? extends App<ccd.c<bxh>, ccg<bxh>>>)($$1 -> $$1.group($$1.c(cgb.n))
-               .apply(
-                  $$1,
-                  $$1x -> ($$2, $$3, $$4) -> {
-                        if ($$2.h($$3.dv())) {
-                           return false;
-                        } else {
-                           iu $$5 = $$3.dv();
-                           List<iu> $$6 = iu.d($$5.b(-1, -1, -1), $$5.b(1, 1, 1)).map(iu::j).collect(af.b());
-                           Collections.shuffle($$6);
-                           $$6.stream()
-                              .filter($$1xxx -> !$$2.h($$1xxx))
-                              .filter($$2x -> $$2.a($$2x, $$3))
-                              .filter($$2x -> $$2.g($$3))
-                              .findFirst()
-                              .ifPresent($$2x -> $$1x.a(new cge($$2x, $$0, 0)));
-                           return true;
-                        }
+   private static iu a(bxe $$0, iu $$1) {
+      azv $$2 = $$0.dV().A;
+      return $$1.b(a($$2), 0, a($$2));
+   }
+
+   private static int a(azv $$0) {
+      return $$0.a(3) - 1;
+   }
+
+   public static <E extends bxe> cae<E> a(cge<iu> $$0, int $$1, float $$2) {
+      return ccg.a(
+         (Function<ccg.b<E>, ? extends App<ccg.c<E>, ccj<E>>>)($$3 -> $$3.group($$3.b($$0), $$3.c(cge.p), $$3.c(cge.n), $$3.a(cge.o))
+               .apply($$3, ($$3x, $$4, $$5, $$6) -> ($$4x, $$5x, $$6x) -> {
+                     iu $$7 = $$3.b($$3x);
+                     boolean $$8 = $$7.a($$5x.dv(), (double)$$1);
+                     if (!$$8) {
+                        byv.a($$5x, a($$5x, $$7), $$2, $$1);
                      }
-               ))
+
+                     return true;
+                  }))
       );
    }
 }

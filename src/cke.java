@@ -1,109 +1,110 @@
 import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.ImmutableSet;
 import com.mojang.datafixers.util.Pair;
 import java.util.Optional;
+import java.util.UUID;
 import java.util.function.Predicate;
 
 public class cke {
-   private static final btj a = btj.a(5, 16);
-   private static final float b = 0.2F;
-   private static final float c = 0.15F;
-   private static final float d = 0.5F;
-   private static final float e = 0.6F;
-   private static final float f = 0.6F;
+   private static final float a = 1.0F;
+   private static final float b = 2.25F;
+   private static final float c = 1.75F;
+   private static final float d = 2.5F;
+   private static final int e = 4;
+   private static final int f = 16;
+   private static final int g = 6;
+   private static final int h = 30;
+   private static final int i = 60;
+   private static final int j = 600;
+   private static final int k = 32;
+   private static final int l = 20;
 
-   protected static bxz<?> a(bxz<ckd> $$0) {
-      d($$0);
-      e($$0);
-      c($$0);
+   protected static byc<?> a(byc<ckd> $$0) {
       b($$0);
-      $$0.a(ImmutableSet.of(csl.a));
-      $$0.b(csl.b);
+      c($$0);
+      $$0.a(ImmutableSet.of(csr.a));
+      $$0.b(csr.b);
       $$0.f();
       return $$0;
    }
 
-   private static void b(bxz<ckd> $$0) {
-      $$0.a(csl.p, ImmutableList.of(Pair.of(0, new ckf()), Pair.of(1, bzc.a(bys::a, cgb.O))), ImmutableSet.of(Pair.of(cgb.O, cgc.a)), ImmutableSet.of(cgb.O));
+   private static void b(byc<ckd> $$0) {
+      $$0.a(csr.a, 0, ImmutableList.of(new cbn(0.8F), new byo(2.5F), new bzz(45, 90), new cad(), new byz(cge.aP), new byz(cge.aQ)));
    }
 
-   private static void c(bxz<ckd> $$0) {
-      $$0.a(csl.k, 0, ImmutableList.of(cbf.a(ckd::a), cav.a(cke::b), bzx.a(20), bzc.a(bys::a, cgb.p)), cgb.p);
-   }
-
-   private static void d(bxz<ckd> $$0) {
-      $$0.a(csl.a, 0, ImmutableList.of(new bzw(45, 90), new caa(), ckg.a(), new byw(cgb.Q)));
-   }
-
-   private static void e(bxz<ckd> $$0) {
+   private static void c(byc<ckd> $$0) {
       $$0.a(
-         csl.b,
+         csr.b,
          ImmutableList.of(
-            Pair.of(0, caq.a(bwj.bS, 6.0F, btj.a(30, 60))),
-            Pair.of(1, new byk(bwj.h, 0.2F, 2)),
-            Pair.of(2, new can(ImmutableList.of(Pair.of(new bzd(cke::d), 1), Pair.of(byn.a(a, cke::c), 1)))),
-            Pair.of(3, cbc.a(cke::a)),
-            Pair.of(3, cbp.a(6, 0.15F)),
-            Pair.of(
-               4,
-               new bze(
-                  ImmutableMap.of(cgb.n, cgc.b),
-                  ImmutableSet.of(),
-                  bze.a.a,
-                  bze.b.b,
-                  ImmutableList.of(
-                     Pair.of(cai.c(0.5F), 2),
-                     Pair.of(cai.a(0.15F, false), 2),
-                     Pair.of(cax.a(cke::a, cke::d, 3), 3),
-                     Pair.of(ccd.a(bwa::bj), 5),
-                     Pair.of(ccd.a(bwa::aJ), 5)
-                  )
-               )
-            )
-         )
+            Pair.of(0, bzn.a($$0x -> true, 1.75F, true, 32)),
+            Pair.of(1, new bzj(cke::b, 2.25F, 20)),
+            Pair.of(2, cbh.a(cke::b, Predicate.not(cke::c), 4, 16, 2.25F)),
+            Pair.of(3, cat.a(6.0F, btm.a(30, 60))),
+            Pair.of(4, new caq(ImmutableList.of(Pair.of(cal.b(1.0F), 2), Pair.of(cba.a(1.0F, 3), 2), Pair.of(new bzd(30, 60), 1))))
+         ),
+         ImmutableSet.of()
       );
    }
 
-   private static boolean a(bwz $$0) {
-      dip $$1 = $$0.dV();
-      Optional<cae> $$2 = $$0.eb().c(cgb.o);
-      if ($$2.isPresent()) {
-         iu $$3 = $$2.get().b();
-         return $$1.A($$3) == $$0.bj();
-      } else {
-         return false;
+   public static void a(ckd $$0) {
+      $$0.eb().a(ImmutableList.of(csr.b));
+   }
+
+   public static void a(bxc $$0, iu $$1) {
+      byc<?> $$2 = $$0.eb();
+      jd $$3 = jd.a($$0.dV().aj(), $$1);
+      Optional<jd> $$4 = $$2.c(cge.aO);
+      if ($$4.isEmpty()) {
+         $$2.a(cge.aO, $$3);
+         $$2.a(cge.aP, 600);
+      } else if ($$4.get().equals($$3)) {
+         $$2.a(cge.aP, 600);
       }
    }
 
-   public static void a(ckd $$0) {
-      bxz<ckd> $$1 = $$0.eb();
-      csl $$2 = $$1.g().orElse(null);
-      if ($$2 != csl.p) {
-         $$1.a(ImmutableList.of(csl.p, csl.k, csl.b));
-         if ($$2 == csl.k && $$1.g().orElse(null) != csl.k) {
-            $$1.a(cgb.V, true, 2400L);
+   private static Optional<cah> b(bxc $$0) {
+      byc<?> $$1 = $$0.eb();
+      Optional<jd> $$2 = $$1.c(cge.aO);
+      if ($$2.isPresent()) {
+         jd $$3 = $$2.get();
+         if (a($$0, $$1, $$3)) {
+            return Optional.of(new byw($$3.b().d()));
+         }
+
+         $$1.b(cge.aO);
+      }
+
+      return d($$0);
+   }
+
+   private static boolean c(bxc $$0) {
+      byc<?> $$1 = $$0.eb();
+      return $$1.a(cge.M);
+   }
+
+   private static boolean a(bxc $$0, byc<?> $$1, jd $$2) {
+      Optional<Integer> $$3 = $$1.c(cge.aP);
+      div $$4 = $$0.dV();
+      return $$2.a($$4.aj(), $$0.dv(), 1024) && $$4.a_($$2.b()).a(dmc.bf) && $$3.isPresent();
+   }
+
+   private static Optional<cah> d(bxc $$0) {
+      return a($$0).map($$0x -> new bze($$0x, true));
+   }
+
+   public static Optional<arr> a(bxc $$0) {
+      div $$1 = $$0.dV();
+      if (!$$1.w_() && $$1 instanceof arq $$2) {
+         Optional<UUID> $$3 = $$0.eb().c(cge.aN);
+         if ($$3.isPresent()) {
+            if ($$2.b($$3.get()) instanceof arr $$5 && ($$5.h.d() || $$5.h.e()) && $$5.a($$0, 64.0)) {
+               return Optional.of($$5);
+            }
+
+            return Optional.empty();
          }
       }
-   }
 
-   private static float b(bwz $$0) {
-      return $$0.bj() ? 0.6F : 0.15F;
-   }
-
-   private static float c(bwz $$0) {
-      return $$0.bj() ? 0.6F : 0.15F;
-   }
-
-   private static float d(bwz $$0) {
-      return $$0.bj() ? 0.5F : 0.15F;
-   }
-
-   private static Optional<? extends bwz> a(aro $$0, ckd $$1) {
-      return bys.a($$1) ? Optional.empty() : $$1.eb().c(cgb.C);
-   }
-
-   public static Predicate<cys> a() {
-      return $$0 -> $$0.a(axi.aC);
+      return Optional.empty();
    }
 }

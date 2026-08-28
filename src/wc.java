@@ -1,31 +1,46 @@
-public interface wc {
-   ze a();
+import com.mojang.logging.LogUtils;
+import io.netty.buffer.ByteBuf;
+import io.netty.channel.ChannelHandlerContext;
+import io.netty.handler.codec.ByteToMessageDecoder;
+import java.io.IOException;
+import java.util.List;
+import org.slf4j.Logger;
 
-   vq b();
+public class wc<T extends we> extends ByteToMessageDecoder implements wh {
+   private static final Logger a = LogUtils.getLogger();
+   private final wg<T> b;
 
-   void a(vr var1);
-
-   default void a(zd $$0, Exception $$1) throws z {
-      throw zg.a($$1, $$0, this);
+   public wc(wg<T> $$0) {
+      this.b = $$0;
    }
 
-   default vr a(ww $$0, Throwable $$1) {
-      return new vr($$0);
-   }
+   protected void decode(ChannelHandlerContext $$0, ByteBuf $$1, List<Object> $$2) throws Exception {
+      int $$3 = $$1.readableBytes();
+      if ($$3 != 0) {
+         zf<? super T> $$4 = this.b.c().decode($$1);
+         zh<? extends zf<? super T>> $$5 = $$4.a();
+         bqu.f.a(this.b.a(), $$5, $$0.channel().remoteAddress(), $$3);
+         if ($$1.readableBytes() > 0) {
+            throw new IOException(
+               "Packet "
+                  + this.b.a().a()
+                  + "/"
+                  + $$5
+                  + " ("
+                  + $$4.getClass().getSimpleName()
+                  + ") was larger than I expected, found "
+                  + $$1.readableBytes()
+                  + " bytes extra whilst reading packet "
+                  + $$5
+            );
+         } else {
+            $$2.add($$4);
+            if (a.isDebugEnabled()) {
+               a.debug(vr.c, " IN: [{}:{}] {} -> {} bytes", new Object[]{this.b.a().a(), $$5, $$4.getClass().getName(), $$3});
+            }
 
-   boolean c();
-
-   default boolean a(zd<?> $$0) {
-      return this.c();
-   }
-
-   default void a(o $$0) {
-      p $$1 = $$0.a("Connection");
-      $$1.a("Protocol", () -> this.b().a());
-      $$1.a("Flow", () -> this.a().toString());
-      this.a($$0, $$1);
-   }
-
-   default void a(o $$0, p $$1) {
+            wh.a($$0, $$4);
+         }
+      }
    }
 }

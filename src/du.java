@@ -8,8 +8,8 @@ public class du extends dj<du.a> {
       return du.a.a;
    }
 
-   public void a(arp $$0, bwa $$1, fdw $$2, int $$3) {
-      eyn $$4 = bx.b($$0, $$1);
+   public void a(arr $$0, bwd $$1, fei $$2, int $$3) {
+      eyz $$4 = bx.b($$0, $$1);
       this.a($$0, $$3x -> $$3x.a($$4, $$2, $$3));
    }
 
@@ -27,7 +27,7 @@ public class du extends dj<du.a> {
          return ap.M.a(new du.a(Optional.empty(), $$0, $$1));
       }
 
-      public boolean a(eyn $$0, fdw $$1, int $$2) {
+      public boolean a(eyz $$0, fei $$1, int $$2) {
          return !this.c.d($$2) ? false : !this.d.isPresent() || this.d.get().a($$0);
       }
 

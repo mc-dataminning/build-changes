@@ -1,32 +1,40 @@
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
 import com.mojang.serialization.MapCodec;
+import javax.annotation.Nullable;
 
-public class hgw implements hgz {
-   private final gig a;
+public record hgw<T>(ki<T> a) implements hhf<T> {
+   private static final hhf.a<? extends hgw<?>, ?> b = e();
 
-   public hgw(gig $$0) {
-      this.a = $$0;
+   private static <T> hhf.a<hgw<T>, T> e() {
+      Codec<? extends ki<?>> $$0 = mf.am.q().validate($$0x -> $$0x.d() ? DataResult.error(() -> "Component can't be serialized") : DataResult.success($$0x));
+      MapCodec<hfl.d<hgw<T>, T>> $$2 = $$0.dispatchMap(
+         "component", $$0x -> ((hgw)$$0x.a()).a, $$0x -> hhf.a.a($$0x.c()).xmap($$1 -> new hfl.d<>(new hgw($$0x), $$1), hfl.d::b)
+      );
+      return new hhf.a<>($$2);
+   }
+
+   public static <T> hhf.a<hgw<T>, T> c() {
+      return (hhf.a<hgw<T>, T>)b;
+   }
+
+   @Nullable
+   @Override
+   public T b(cyy $$0, @Nullable gjr $$1, @Nullable bxc $$2, int $$3, cyw $$4) {
+      return $$0.a(this.a);
    }
 
    @Override
-   public void a(cyq $$0, fiq $$1, gpd $$2, int $$3, int $$4, boolean $$5) {
-      fiu $$6 = grx.b.a($$2, gpn::d);
-      $$1.a();
-      $$1.a(0.5F, 0.5F, 0.5F);
-      this.a.a($$1, $$6, $$3, $$4);
-      $$1.b();
+   public hhf.a<hgw<T>, T> a() {
+      return c();
    }
 
-   public static record a() implements hhd.a {
-      public static final MapCodec<hgw.a> a = MapCodec.unit(new hgw.a());
+   @Override
+   public Codec<T> b() {
+      return this.a.c();
+   }
 
-      @Override
-      public MapCodec<hgw.a> a() {
-         return a;
-      }
-
-      @Override
-      public hhd<?> a(gic $$0) {
-         return new hgw($$0.a(gif.ah));
-      }
+   public ki<T> d() {
+      return this.a;
    }
 }

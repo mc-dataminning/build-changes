@@ -1,50 +1,23 @@
-public class gek extends gfz {
-   private static final String a = "left_pages";
-   private static final String b = "right_pages";
-   private static final String c = "flip_page1";
-   private static final String d = "flip_page2";
-   private final gig e;
-   private final gig f;
-   private final gig g;
-   private final gig h;
-   private final gig i;
-   private final gig j;
-
-   public gek(gig $$0) {
-      super($$0, gpn::d);
-      this.e = $$0.b("left_lid");
-      this.f = $$0.b("right_lid");
-      this.g = $$0.b("left_pages");
-      this.h = $$0.b("right_pages");
-      this.i = $$0.b("flip_page1");
-      this.j = $$0.b("flip_page2");
+public class gek extends gfq<hbl> {
+   public gek(giu $$0) {
+      super($$0, gqc::f);
    }
 
-   public static gim a() {
-      gio $$0 = new gio();
-      giq $$1 = $$0.a();
-      $$1.a("left_lid", gil.c().a(0, 0).a(-6.0F, -5.0F, -0.005F, 6.0F, 10.0F, 0.005F), gii.a(0.0F, 0.0F, -1.0F));
-      $$1.a("right_lid", gil.c().a(16, 0).a(0.0F, -5.0F, -0.005F, 6.0F, 10.0F, 0.005F), gii.a(0.0F, 0.0F, 1.0F));
-      $$1.a("seam", gil.c().a(12, 0).a(-1.0F, -5.0F, 0.0F, 2.0F, 10.0F, 0.005F), gii.b(0.0F, (float) (Math.PI / 2), 0.0F));
-      $$1.a("left_pages", gil.c().a(0, 10).a(0.0F, -4.0F, -0.99F, 5.0F, 8.0F, 1.0F), gii.a);
-      $$1.a("right_pages", gil.c().a(12, 10).a(0.0F, -4.0F, -0.01F, 5.0F, 8.0F, 1.0F), gii.a);
-      gil $$2 = gil.c().a(24, 10).a(0.0F, -4.0F, 0.0F, 5.0F, 8.0F, 0.005F);
-      $$1.a("flip_page1", $$2, gii.a);
-      $$1.a("flip_page2", $$2, gii.a);
-      return gim.a($$0, 64, 32);
+   public static gja a() {
+      gjc $$0 = new gjc();
+      gje $$1 = $$0.a();
+      $$1.a("back", giz.c().a(0, 0).a(0.0F, -2.5F, -2.5F, 0.0F, 5.0F, 5.0F), giw.a(-11.0F, 0.0F, 0.0F, (float) (Math.PI / 4), 0.0F, 0.0F).a(0.8F));
+      giz $$2 = giz.c().a(0, 0).a(-12.0F, -2.0F, 0.0F, 16.0F, 4.0F, 0.0F, giy.a, 1.0F, 0.8F);
+      $$1.a("cross_1", $$2, giw.b((float) (Math.PI / 4), 0.0F, 0.0F));
+      $$1.a("cross_2", $$2, giw.b((float) (Math.PI * 3.0 / 4.0), 0.0F, 0.0F));
+      return gja.a($$0.a($$0x -> $$0x.b(0.9F)), 32, 32);
    }
 
-   public void a(float $$0, float $$1, float $$2, float $$3) {
-      float $$4 = (azk.a($$0 * 0.02F) * 0.1F + 1.25F) * $$3;
-      this.e.f = (float) Math.PI + $$4;
-      this.f.f = -$$4;
-      this.g.f = $$4;
-      this.h.f = -$$4;
-      this.i.f = $$4 - $$4 * 2.0F * $$1;
-      this.j.f = $$4 - $$4 * 2.0F * $$2;
-      this.g.b = azk.a($$4);
-      this.h.b = azk.a($$4);
-      this.i.b = azk.a($$4);
-      this.j.b = azk.a($$4);
+   public void a(hbl $$0) {
+      super.a($$0);
+      if ($$0.c > 0.0F) {
+         float $$1 = -azm.a($$0.c * 3.0F) * $$0.c;
+         this.v.g += $$1 * (float) (Math.PI / 180.0);
+      }
    }
 }

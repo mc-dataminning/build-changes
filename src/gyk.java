@@ -1,26 +1,34 @@
-public class gyk extends gvj<csd, hbp> {
-   private static final ale a = ale.b("textures/entity/projectiles/wind_charge.png");
-   private final ghs g;
+public class gyk extends gut<com, hef, ghv> {
+   private static final alg a = alg.b("textures/entity/strider/strider.png");
+   private static final alg j = alg.b("textures/entity/strider/strider_cold.png");
+   private static final float k = 0.5F;
 
-   public gyk(gvk.a $$0) {
-      super($$0);
-      this.g = new ghs($$0.a(gif.dK));
+   public gyk(gvz.a $$0) {
+      super($$0, new ghv($$0.a(git.dr)), new ghv($$0.a(git.dt)), 0.5F);
+      this.a(new hap<>(this, $$0.h(), hkv.d.h, $$0x -> $$0x.a, new ghv($$0.a(git.ds)), new ghv($$0.a(git.du))));
    }
 
-   @Override
-   public void a(hbp $$0, fiq $$1, gpd $$2, int $$3) {
-      fiu $$4 = $$2.getBuffer(gpn.a(a, this.a($$0.u) % 1.0F, 0.0F));
-      this.g.a($$0);
-      this.g.a($$1, $$4, $$3, hhp.d);
-      super.a($$0, $$1, $$2, $$3);
+   public alg a(hef $$0) {
+      return $$0.b ? j : a;
    }
 
-   protected float a(float $$0) {
-      return $$0 * 0.03F;
+   protected float b(hef $$0) {
+      float $$1 = super.g($$0);
+      return $$0.aj ? $$1 * 0.5F : $$1;
    }
 
-   @Override
-   public hbp d() {
-      return new hbp();
+   public hef b() {
+      return new hef();
+   }
+
+   public void a(com $$0, hef $$1, float $$2) {
+      super.a($$0, $$1, $$2);
+      $$1.a = $$0.a(bwn.h).v();
+      $$1.b = $$0.q();
+      $$1.c = $$0.ca();
+   }
+
+   protected boolean c(hef $$0) {
+      return super.a($$0) || $$0.b;
    }
 }

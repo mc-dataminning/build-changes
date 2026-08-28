@@ -1,58 +1,24 @@
 import com.mojang.serialization.Codec;
+import java.util.function.Function;
 
-public class eic extends eit<ele> {
-   public eic(Codec<ele> $$0) {
-      super($$0);
+public record eic<WC extends ehx>(eie<WC> d, WC e) {
+   public static final Codec<eic<?>> a = mf.N.q().dispatch($$0 -> $$0.d, eie::c);
+   public static final Codec<je<eic<?>>> b = alc.a(mg.aJ, a);
+   public static final Codec<ji<eic<?>>> c = jt.a(mg.aJ, a);
+
+   public boolean a(azv $$0) {
+      return this.d.a(this.e, $$0);
    }
 
-   @Override
-   public boolean a(eiv<ele> $$0) {
-      iu $$1 = $$0.e();
-      djo $$2 = $$0.b();
-      azt $$3 = $$0.d();
-      if ($$1.v() > $$2.P() - 1) {
-         return false;
-      } else if (!$$2.a_($$1).a(dlw.J) && !$$2.a_($$1.e()).a(dlw.J)) {
-         return false;
-      } else {
-         boolean $$4 = false;
+   public boolean a(ehz $$0, ebw $$1, Function<iu, je<djy>> $$2, azv $$3, efk $$4, dic $$5, ebv $$6) {
+      return ab.a($$1.f()) ? false : this.d.a($$0, this.e, $$1, $$2, $$3, $$4, $$5, $$6);
+   }
 
-         for (ja $$5 : ja.values()) {
-            if ($$5 != ja.a && $$2.a_($$1.a($$5)).a(dlw.ja)) {
-               $$4 = true;
-               break;
-            }
-         }
+   public eie<WC> a() {
+      return this.d;
+   }
 
-         if (!$$4) {
-            return false;
-         } else {
-            $$2.a($$1, dlw.ny.m(), 2);
-
-            for (int $$6 = 0; $$6 < 200; $$6++) {
-               int $$7 = $$3.a(5) - $$3.a(6);
-               int $$8 = 3;
-               if ($$7 < 2) {
-                  $$8 += $$7 / 2;
-               }
-
-               if ($$8 >= 1) {
-                  iu $$9 = $$1.b($$3.a($$8) - $$3.a($$8), $$7, $$3.a($$8) - $$3.a($$8));
-                  dzo $$10 = $$2.a_($$9);
-                  if ($$10.l() || $$10.a(dlw.J) || $$10.a(dlw.ja) || $$10.a(dlw.eb)) {
-                     for (ja $$11 : ja.values()) {
-                        dzo $$12 = $$2.a_($$9.a($$11));
-                        if ($$12.a(dlw.ny)) {
-                           $$2.a($$9, dlw.ny.m(), 2);
-                           break;
-                        }
-                     }
-                  }
-               }
-            }
-
-            return true;
-         }
-      }
+   public WC b() {
+      return this.e;
    }
 }

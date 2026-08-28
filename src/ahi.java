@@ -1,37 +1,20 @@
-public class ahi implements zd<agn> {
-   public static final yu<vs, ahi> a = zd.a(ahi::a, ahi::new);
-   private final int b;
-   private final int c;
+public record ahi(box b) implements zf<agp> {
+   public static final yw<vu, ahi> a = zf.a(ahi::a, ahi::new);
 
-   public ahi(int $$0, int $$1) {
-      this.b = $$0;
-      this.c = $$1;
+   private ahi(vu $$0) {
+      this($$0.b(box.class));
    }
 
-   private ahi(vs $$0) {
-      this.b = $$0.l();
-      this.c = $$0.l();
-   }
-
-   private void a(vs $$0) {
-      $$0.c(this.b);
-      $$0.c(this.c);
+   private void a(vu $$0) {
+      $$0.a(this.b);
    }
 
    @Override
-   public zf<ahi> a() {
-      return agl.bE;
+   public zh<ahi> a() {
+      return agn.bC;
    }
 
-   public void a(agn $$0) {
+   public void a(agp $$0) {
       $$0.a(this);
-   }
-
-   public int b() {
-      return this.b;
-   }
-
-   public int e() {
-      return this.c;
    }
 }

@@ -1,8 +1,6 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+import java.util.function.Consumer;
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface aup {
+@FunctionalInterface
+public interface aup {
+   void loadPacks(Consumer<auk> var1);
 }

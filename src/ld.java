@@ -1,9 +1,9 @@
-public record ld(aro a, iu b, dzo c, dxi d) {
-   public fdw a() {
+public record ld(arq a, iu b, dzz c, dxs d) {
+   public fei a() {
       return this.b.b();
    }
 
-   public aro b() {
+   public arq b() {
       return this.a;
    }
 
@@ -11,11 +11,11 @@ public record ld(aro a, iu b, dzo c, dxi d) {
       return this.b;
    }
 
-   public dzo d() {
+   public dzz d() {
       return this.c;
    }
 
-   public dxi e() {
+   public dxs e() {
       return this.d;
    }
 }

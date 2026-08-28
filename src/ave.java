@@ -1,29 +1,16 @@
-import java.io.BufferedReader;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.io.InputStream;
-import java.util.Map;
-import java.util.Optional;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.Executor;
 
-@FunctionalInterface
-public interface ave {
-   ave b = $$0 -> Optional.empty();
-
-   Optional<auz> getResource(ale var1);
-
-   default auz getResourceOrThrow(ale $$0) throws FileNotFoundException {
-      return this.getResource($$0).orElseThrow(() -> new FileNotFoundException($$0.toString()));
+public interface ave extends auw {
+   @Override
+   default CompletableFuture<Void> a(auw.a $$0, avd $$1, Executor $$2, Executor $$3) {
+      return $$0.a(bau.a).thenRunAsync(() -> {
+         bqm $$1x = bql.a();
+         $$1x.a("listener");
+         this.a($$1);
+         $$1x.c();
+      }, $$3);
    }
 
-   default InputStream open(ale $$0) throws IOException {
-      return this.getResourceOrThrow($$0).d();
-   }
-
-   default BufferedReader openAsReader(ale $$0) throws IOException {
-      return this.getResourceOrThrow($$0).e();
-   }
-
-   static ave fromMap(Map<ale, auz> $$0) {
-      return $$1 -> Optional.ofNullable($$0.get($$1));
-   }
+   void a(avd var1);
 }

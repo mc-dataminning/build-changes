@@ -4,33 +4,37 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Consumer;
 
-public class sc extends sq {
-   public static final MapCodec<sc> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(tj.a.forGetter(sq::n)).apply($$0, sc::new));
+public class sc extends sr {
+   public static final MapCodec<sc> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(tk.a.forGetter(sr::n)).apply($$0, sc::new));
 
-   public sc(tj<je<tk>> $$0) {
+   public sc(tk<je<tl>> $$0) {
       super($$0);
    }
 
    @Override
-   public void a(so $$0) {
-      iu $$1 = this.a($$0, eaz.a);
-      dyh $$2 = $$0.a($$1, dyh.class);
+   public void a(sp $$0) {
+      iu $$1 = this.b($$0);
+      dyr $$2 = $$0.a($$1, dyr.class);
       $$2.j();
       $$0.e(() -> {
-         iu $$1x = this.a($$0, eaz.d);
-         dyh $$2x = $$0.a($$1x, dyh.class);
-         if ($$2x.s()) {
+         List<iu> $$1x = this.a($$0, ebk.d);
+         if ($$1x.isEmpty()) {
+            $$0.b(wy.a("test_block.error.missing", ebk.d.a()));
+         }
+
+         boolean $$2x = $$1x.stream().map($$1xx -> $$0.a($$1xx, dyr.class)).anyMatch(dyr::s);
+         if ($$2x) {
             $$0.e();
          } else {
-            this.a($$0, eaz.c, $$1xx -> $$0.b(ww.b($$1xx.t())));
-            this.a($$0, eaz.b, dyh::j);
+            this.a($$0, ebk.c, $$1xx -> $$0.b(wy.b($$1xx.t())));
+            this.a($$0, ebk.b, dyr::j);
          }
       });
    }
 
-   private void a(so $$0, eaz $$1, Consumer<dyh> $$2) {
-      for (iu $$4 : this.b($$0, $$1)) {
-         dyh $$5 = $$0.a($$4, dyh.class);
+   private void a(sp $$0, ebk $$1, Consumer<dyr> $$2) {
+      for (iu $$4 : this.a($$0, $$1)) {
+         dyr $$5 = $$0.a($$4, dyr.class);
          if ($$5.s()) {
             $$2.accept($$5);
             $$5.f();
@@ -38,24 +42,24 @@ public class sc extends sq {
       }
    }
 
-   private iu a(so $$0, eaz $$1) {
-      List<iu> $$2 = this.b($$0, $$1);
-      if ($$2.isEmpty()) {
-         $$0.b(ww.a("test_block.error.missing", $$1.a()));
+   private iu b(sp $$0) {
+      List<iu> $$1 = this.a($$0, ebk.a);
+      if ($$1.isEmpty()) {
+         $$0.b(wy.a("test_block.error.missing", ebk.a.a()));
       }
 
-      if ($$2.size() != 1) {
-         $$0.b(ww.a("test_block.error.too_many", $$1.a()));
+      if ($$1.size() != 1) {
+         $$0.b(wy.a("test_block.error.too_many", ebk.a.a()));
       }
 
-      return $$2.getFirst();
+      return $$1.getFirst();
    }
 
-   private List<iu> b(so $$0, eaz $$1) {
+   private List<iu> a(sp $$0, ebk $$1) {
       List<iu> $$2 = new ArrayList<>();
       $$0.a($$3 -> {
-         dzo $$4 = $$0.a($$3);
-         if ($$4.a(dlw.pE) && $$4.c(dui.b) == $$1) {
+         dzz $$4 = $$0.a($$3);
+         if ($$4.a(dmc.pF) && $$4.c(dur.b) == $$1) {
             $$2.add($$3.j());
          }
       });
@@ -68,7 +72,7 @@ public class sc extends sq {
    }
 
    @Override
-   protected xk b() {
-      return ww.c("test_instance.type.block_based");
+   protected xm b() {
+      return wy.c("test_instance.type.block_based");
    }
 }

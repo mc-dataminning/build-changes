@@ -1,27 +1,36 @@
-import com.mojang.serialization.Codec;
-import java.util.function.Predicate;
+import com.mojang.serialization.MapCodec;
+import java.util.List;
 
-public interface fbw extends eyo, Predicate<eyn> {
-   Codec<fbw> d = mf.F.q().dispatch("condition", fbw::b, fbx::a);
-   Codec<fbw> e = Codec.lazyInitialized(() -> Codec.withAlternative(d, fbj.b));
-   Codec<je<fbw>> f = ala.a(mg.bq, e);
+public class fbw extends fby {
+   public static final MapCodec<fbw> a = a(fbw::new);
 
-   fbx b();
+   fbw(List<fci> $$0) {
+      super($$0, af.b($$0));
+   }
 
-   @FunctionalInterface
-   public interface a {
-      fbw build();
+   @Override
+   public fcj b() {
+      return fck.b;
+   }
 
-      default fbw.a invert() {
-         return fbt.a(this);
+   public static fbw.a a(fci.a... $$0) {
+      return new fbw.a($$0);
+   }
+
+   public static class a extends fby.a {
+      public a(fci.a... $$0) {
+         super($$0);
       }
 
-      default fbk.a or(fbw.a $$0) {
-         return fbk.a(this, $$0);
+      @Override
+      public fbw.a or(fci.a $$0) {
+         this.a($$0);
+         return this;
       }
 
-      default fbj.a and(fbw.a $$0) {
-         return fbj.a(this, $$0);
+      @Override
+      protected fci a(List<fci> $$0) {
+         return new fbw($$0);
       }
    }
 }

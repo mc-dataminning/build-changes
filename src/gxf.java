@@ -1,22 +1,14 @@
-import java.util.function.UnaryOperator;
+public abstract class gxf<T extends bxe, S extends hdf, M extends gfq<? super S>> extends gxa<T, S, M> {
+   public gxf(gvz.a $$0, M $$1, float $$2) {
+      super($$0, $$1, $$2);
+   }
 
-public class gxf extends gty {
-   private final gfd<hbb> a;
-   private final ale g;
-
-   public gxf(gvk.a $$0, gie $$1) {
-      super($$0);
-      this.g = $$1.a().a((UnaryOperator<String>)($$0x -> "textures/entity/" + $$0x + ".png"));
-      this.a = new ggq($$0.a($$1));
+   protected boolean a(T $$0, double $$1) {
+      return super.a($$0, $$1) && ($$0.cM() || $$0.h_() && $$0 == this.d.c);
    }
 
    @Override
-   protected gfd<hbb> a() {
-      return this.a;
-   }
-
-   @Override
-   protected gpn b() {
-      return this.a.a(this.g);
+   protected float g(S $$0) {
+      return super.g($$0) * $$0.ag;
    }
 }

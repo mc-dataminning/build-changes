@@ -1,67 +1,127 @@
 import java.util.EnumSet;
 
-public class cez extends cdv {
-   private final ckx a;
-   private final double b;
-   private double c;
-   private double d;
-   private double e;
+public class cez<T extends cnz & cod & cnm> extends cdy {
+   public static final btm a = baq.a(1, 2);
+   private final T b;
+   private cez.a c = cez.a.a;
+   private final double d;
+   private final float e;
+   private int f;
+   private int g;
+   private int h;
 
-   public cez(ckx $$0, double $$1) {
-      this.a = $$0;
-      this.b = $$1;
-      this.a(EnumSet.of(cdv.a.a));
+   public cez(T $$0, double $$1, float $$2) {
+      this.b = $$0;
+      this.d = $$1;
+      this.e = $$2 * $$2;
+      this.a(EnumSet.of(cdy.a.a, cdy.a.b));
    }
 
    @Override
    public boolean b() {
-      if (!this.a.gH() && this.a.ca()) {
-         fdw $$0 = chs.a(this.a, 5, 4);
-         if ($$0 == null) {
-            return false;
-         } else {
-            this.c = $$0.d;
-            this.d = $$0.e;
-            this.e = $$0.f;
-            return true;
-         }
-      } else {
-         return false;
-      }
+      return this.i() && this.h();
    }
 
-   @Override
-   public void d() {
-      this.a.O().a(this.c, this.d, this.e, this.b);
+   private boolean h() {
+      return this.b.b(czc.xb);
    }
 
    @Override
    public boolean c() {
-      return !this.a.gH() && !this.a.O().k() && this.a.ca();
+      return this.i() && (this.b() || !this.b.O().k()) && this.h();
+   }
+
+   private boolean i() {
+      return this.b.f() != null && this.b.f().bK();
+   }
+
+   @Override
+   public void e() {
+      super.e();
+      this.b.v(false);
+      this.b.g(null);
+      this.f = 0;
+      if (this.b.fy()) {
+         this.b.fE();
+         this.b.b(false);
+         this.b.fA().b(kj.P, dbc.a);
+      }
+   }
+
+   @Override
+   public boolean Q_() {
+      return true;
    }
 
    @Override
    public void a() {
-      if (!this.a.gH() && this.a.dY().a(this.a(50)) == 0) {
-         bwa $$0 = this.a.cZ();
-         if ($$0 == null) {
-            return;
+      bxc $$0 = this.b.f();
+      if ($$0 != null) {
+         boolean $$1 = this.b.P().a($$0);
+         boolean $$2 = this.f > 0;
+         if ($$1 != $$2) {
+            this.f = 0;
          }
 
-         if ($$0 instanceof cqs $$1) {
-            int $$2 = this.a.gN();
-            int $$3 = this.a.gS();
-            if ($$3 > 0 && this.a.dY().a($$3) < $$2) {
-               this.a.f($$1);
-               return;
+         if ($$1) {
+            this.f++;
+         } else {
+            this.f--;
+         }
+
+         double $$3 = this.b.g((bwd)$$0);
+         boolean $$4 = ($$3 > (double)this.e || this.f < 5) && this.g == 0;
+         if ($$4) {
+            this.h--;
+            if (this.h <= 0) {
+               this.b.O().a($$0, this.k() ? this.d : this.d * 0.5);
+               this.h = a.a(this.b.dY());
+            }
+         } else {
+            this.h = 0;
+            this.b.O().m();
+         }
+
+         this.b.J().a($$0, 30.0F, 30.0F);
+         if (this.c == cez.a.a) {
+            if (!$$4) {
+               this.b.c(cru.a(this.b, czc.xb));
+               this.c = cez.a.b;
+               this.b.b(true);
+            }
+         } else if (this.c == cez.a.b) {
+            if (!this.b.fy()) {
+               this.c = cez.a.a;
             }
 
-            this.a.u(5);
+            int $$5 = this.b.fC();
+            cyy $$6 = this.b.fA();
+            if ($$5 >= cxr.b($$6, this.b)) {
+               this.b.fD();
+               this.c = cez.a.c;
+               this.g = 20 + this.b.dY().a(20);
+               this.b.b(false);
+            }
+         } else if (this.c == cez.a.c) {
+            this.g--;
+            if (this.g == 0) {
+               this.c = cez.a.d;
+            }
+         } else if (this.c == cez.a.d && $$1) {
+            this.b.a($$0, 1.0F);
+            this.c = cez.a.a;
          }
-
-         this.a.bO();
-         this.a.gW();
-         this.a.dV().a(this.a, (byte)6);
       }
+   }
+
+   private boolean k() {
+      return this.c == cez.a.a;
+   }
+
+   static enum a {
+      a,
+      b,
+      c,
+      d;
    }
 }

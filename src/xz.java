@@ -3,46 +3,50 @@ import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
 import java.util.stream.Stream;
 import javax.annotation.Nullable;
 
-public record xz(String d, @Nullable gy e) implements xy {
-   public static final MapCodec<xz> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(Codec.STRING.fieldOf("entity").forGetter(xz::b)).apply($$0, xz::new));
-   public static final xy.a<xz> b = new xy.a<>(a, "entity");
+public record xz(String d, @Nullable gh e) implements ya {
+   public static final MapCodec<xz> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(Codec.STRING.fieldOf("block").forGetter(xz::b)).apply($$0, xz::new));
+   public static final ya.a<xz> b = new ya.a<>(a, "block");
 
    public xz(String $$0) {
       this($$0, a($$0));
    }
 
    @Nullable
-   private static gy a(String $$0) {
+   private static gh a(String $$0) {
       try {
-         gz $$1 = new gz(new StringReader($$0), true);
-         return $$1.t();
+         return gf.a().a(new StringReader($$0));
       } catch (CommandSyntaxException var2) {
          return null;
       }
    }
 
    @Override
-   public Stream<tx> a(ei $$0) throws CommandSyntaxException {
+   public Stream<tz> a(ei $$0) {
       if (this.e != null) {
-         List<? extends bwa> $$1 = this.e.b($$0);
-         return $$1.stream().map(cy::b);
-      } else {
-         return Stream.empty();
+         arq $$1 = $$0.e();
+         iu $$2 = this.e.c($$0);
+         if ($$1.p($$2)) {
+            dwx $$3 = $$1.c_($$2);
+            if ($$3 != null) {
+               return Stream.of($$3.b($$0.u()));
+            }
+         }
       }
+
+      return Stream.empty();
    }
 
    @Override
-   public xy.a<?> a() {
+   public ya.a<?> a() {
       return b;
    }
 
    @Override
    public String toString() {
-      return "entity=" + this.d;
+      return "block=" + this.d;
    }
 
    @Override
@@ -68,7 +72,7 @@ public record xz(String d, @Nullable gy e) implements xy {
    }
 
    @Nullable
-   public gy c() {
+   public gh c() {
       return this.e;
    }
 }

@@ -1,96 +1,35 @@
-import com.google.common.base.Suppliers;
-import com.google.common.collect.BiMap;
-import com.google.common.collect.ImmutableBiMap;
-import com.mojang.serialization.Codec;
-import java.util.Optional;
-import java.util.function.Supplier;
+import com.mojang.serialization.MapCodec;
 
-public interface dvj extends dmw<dvj.a> {
-   Supplier<BiMap<dlu, dlu>> v_ = Suppliers.memoize(
-      () -> ImmutableBiMap.builder()
-            .put(dlw.rA, dlw.rB)
-            .put(dlw.rB, dlw.rC)
-            .put(dlw.rC, dlw.rD)
-            .put(dlw.rJ, dlw.rI)
-            .put(dlw.rI, dlw.rH)
-            .put(dlw.rH, dlw.rG)
-            .put(dlw.rN, dlw.rM)
-            .put(dlw.rM, dlw.rL)
-            .put(dlw.rL, dlw.rK)
-            .put(dlw.rZ, dlw.rY)
-            .put(dlw.rY, dlw.rX)
-            .put(dlw.rX, dlw.rW)
-            .put(dlw.rV, dlw.rU)
-            .put(dlw.rU, dlw.rT)
-            .put(dlw.rT, dlw.rS)
-            .put(dlw.sq, dlw.sr)
-            .put(dlw.sr, dlw.st)
-            .put(dlw.st, dlw.ss)
-            .put(dlw.sy, dlw.sz)
-            .put(dlw.sz, dlw.sB)
-            .put(dlw.sB, dlw.sA)
-            .put(dlw.sG, dlw.sH)
-            .put(dlw.sH, dlw.sI)
-            .put(dlw.sI, dlw.sJ)
-            .put(dlw.sO, dlw.sP)
-            .put(dlw.sP, dlw.sQ)
-            .put(dlw.sQ, dlw.sR)
-            .build()
-   );
-   Supplier<BiMap<dlu, dlu>> w_ = Suppliers.memoize(() -> v_.get().inverse());
-
-   static Optional<dlu> a(dlu $$0) {
-      return Optional.ofNullable((dlu)w_.get().get($$0));
-   }
-
-   static dlu b(dlu $$0) {
-      dlu $$1 = $$0;
-
-      for (dlu $$2 = (dlu)w_.get().get($$0); $$2 != null; $$2 = (dlu)w_.get().get($$2)) {
-         $$1 = $$2;
-      }
-
-      return $$1;
-   }
-
-   static Optional<dzo> b(dzo $$0) {
-      return a($$0.b()).map($$1 -> $$1.m($$0));
-   }
-
-   static Optional<dlu> c(dlu $$0) {
-      return Optional.ofNullable((dlu)v_.get().get($$0));
-   }
-
-   static dzo c(dzo $$0) {
-      return b($$0.b()).m($$0);
+public abstract class dvj extends dma {
+   protected dvj(dzy.d $$0) {
+      super($$0);
    }
 
    @Override
-   default Optional<dzo> k_(dzo $$0) {
-      return c($$0.b()).map($$1 -> $$1.m($$0));
+   protected abstract MapCodec<? extends dvj> a();
+
+   protected boolean b(dzz $$0, dib $$1, iu $$2) {
+      return $$0.a(axc.ah) || $$0.a(dmc.cL);
    }
 
    @Override
-   default float aq_() {
-      return this.c() == dvj.a.a ? 0.75F : 1.0F;
+   protected dzz a(dzz $$0, diy $$1, djk $$2, iu $$3, ja $$4, iu $$5, dzz $$6, azv $$7) {
+      return !$$0.a($$1, $$3) ? dmc.a.m() : super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
    }
 
-   public static enum a implements bai {
-      a("unaffected"),
-      b("exposed"),
-      c("weathered"),
-      d("oxidized");
+   @Override
+   protected boolean a(dzz $$0, diy $$1, iu $$2) {
+      iu $$3 = $$2.e();
+      return this.b($$1.a_($$3), $$1, $$3);
+   }
 
-      public static final Codec<dvj.a> e = bai.a(dvj.a::values);
-      private final String f;
+   @Override
+   protected boolean e_(dzz $$0) {
+      return $$0.y().c();
+   }
 
-      private a(final String $$0) {
-         this.f = $$0;
-      }
-
-      @Override
-      public String c() {
-         return this.f;
-      }
+   @Override
+   protected boolean a(dzz $$0, ewv $$1) {
+      return $$1 == ewv.c && !this.E ? true : super.a($$0, $$1);
    }
 }

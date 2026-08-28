@@ -1,17 +1,22 @@
-public class gxu extends guc<cof, hdk> {
-   private static final ale a = ale.b("textures/entity/skeleton/stray.png");
-   private static final ale j = ale.b("textures/entity/skeleton/stray_overlay.png");
+import java.util.function.UnaryOperator;
 
-   public gxu(gvk.a $$0) {
-      super($$0, gif.dl, gif.dm, gif.dn);
-      this.a(new hab<>(this, $$0.f(), gif.do, j));
+public class gxu extends gun {
+   private final gfq<hbq> a;
+   private final alg g;
+
+   public gxu(gvz.a $$0, gis $$1) {
+      super($$0);
+      this.g = $$1.a().a((UnaryOperator<String>)($$0x -> "textures/entity/" + $$0x + ".png"));
+      this.a = new ghd($$0.a($$1));
    }
 
-   public ale b(hdk $$0) {
-      return a;
+   @Override
+   protected gfq<hbq> a() {
+      return this.a;
    }
 
-   public hdk b() {
-      return new hdk();
+   @Override
+   protected gqc b() {
+      return this.a.a(this.g);
    }
 }

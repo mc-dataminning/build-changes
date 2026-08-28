@@ -1,78 +1,52 @@
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public abstract class ehv extends eit<ekz> {
-   public ehv(Codec<ekz> $$0) {
-      super($$0);
+public class ehv extends ehx {
+   public static final Codec<ehv> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               ehx.d.forGetter($$0x -> $$0x), bte.c.fieldOf("vertical_rotation").forGetter($$0x -> $$0x.b), ehv.a.a.fieldOf("shape").forGetter($$0x -> $$0x.c)
+            )
+            .apply($$0, ehv::new)
+   );
+   public final bte b;
+   public final ehv.a c;
+
+   public ehv(float $$0, epa $$1, bte $$2, egs $$3, ehy $$4, ji<dma> $$5, bte $$6, ehv.a $$7) {
+      super($$0, $$1, $$2, $$3, $$4, $$5);
+      this.b = $$6;
+      this.c = $$7;
    }
 
-   protected void a(diq $$0, azt $$1, iu $$2, ekz $$3, int $$4, iu.a $$5) {
-      for (int $$6 = 0; $$6 < $$4; $$6++) {
-         $$5.g($$2).c(ja.b, $$6);
-         this.a($$0, $$5, $$3.c.a($$1, $$2));
+   public ehv(ehx $$0, bte $$1, ehv.a $$2) {
+      this($$0.l, $$0.e, $$0.f, $$0.g, $$0.h, $$0.i, $$1, $$2);
+   }
+
+   public static class a {
+      public static final Codec<ehv.a> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(
+                  bte.c.fieldOf("distance_factor").forGetter($$0x -> $$0x.b),
+                  bte.c.fieldOf("thickness").forGetter($$0x -> $$0x.c),
+                  ayu.l.fieldOf("width_smoothness").forGetter($$0x -> $$0x.d),
+                  bte.c.fieldOf("horizontal_radius_factor").forGetter($$0x -> $$0x.e),
+                  Codec.FLOAT.fieldOf("vertical_radius_default_factor").forGetter($$0x -> $$0x.f),
+                  Codec.FLOAT.fieldOf("vertical_radius_center_factor").forGetter($$0x -> $$0x.g)
+               )
+               .apply($$0, ehv.a::new)
+      );
+      public final bte b;
+      public final bte c;
+      public final int d;
+      public final bte e;
+      public final float f;
+      public final float g;
+
+      public a(bte $$0, bte $$1, int $$2, bte $$3, float $$4, float $$5) {
+         this.d = $$2;
+         this.e = $$3;
+         this.f = $$4;
+         this.g = $$5;
+         this.b = $$0;
+         this.c = $$1;
       }
    }
-
-   protected void a(diq $$0, iu.a $$1, dzo $$2) {
-      dzo $$3 = $$0.a_($$1);
-      if ($$3.l() || $$3.a(axa.cs)) {
-         this.a($$0, $$1, $$2);
-      }
-   }
-
-   protected int a(azt $$0) {
-      int $$1 = $$0.a(3) + 4;
-      if ($$0.a(12) == 0) {
-         $$1 *= 2;
-      }
-
-      return $$1;
-   }
-
-   protected boolean a(diq $$0, iu $$1, int $$2, iu.a $$3, ekz $$4) {
-      int $$5 = $$1.v();
-      if ($$5 >= $$0.G_() + 1 && $$5 + $$2 + 1 <= $$0.ao()) {
-         dzo $$6 = $$0.a_($$1.e());
-         if (!b($$6) && !$$6.a(axa.bc)) {
-            return false;
-         } else {
-            for (int $$7 = 0; $$7 <= $$2; $$7++) {
-               int $$8 = this.a(-1, -1, $$4.d, $$7);
-
-               for (int $$9 = -$$8; $$9 <= $$8; $$9++) {
-                  for (int $$10 = -$$8; $$10 <= $$8; $$10++) {
-                     dzo $$11 = $$0.a_($$3.a($$1, $$9, $$7, $$10));
-                     if (!$$11.l() && !$$11.a(axa.Q)) {
-                        return false;
-                     }
-                  }
-               }
-            }
-
-            return true;
-         }
-      } else {
-         return false;
-      }
-   }
-
-   @Override
-   public boolean a(eiv<ekz> $$0) {
-      djo $$1 = $$0.b();
-      iu $$2 = $$0.e();
-      azt $$3 = $$0.d();
-      ekz $$4 = $$0.f();
-      int $$5 = this.a($$3);
-      iu.a $$6 = new iu.a();
-      if (!this.a($$1, $$2, $$5, $$6, $$4)) {
-         return false;
-      } else {
-         this.a($$1, $$3, $$2, $$5, $$6, $$4);
-         this.a($$1, $$3, $$2, $$4, $$5, $$6);
-         return true;
-      }
-   }
-
-   protected abstract int a(int var1, int var2, int var3, int var4);
-
-   protected abstract void a(diq var1, azt var2, iu var3, int var4, iu.a var5, ekz var6);
 }

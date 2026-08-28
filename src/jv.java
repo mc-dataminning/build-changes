@@ -9,13 +9,13 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class jv {
-   private static final Set<ald<? extends jr<?>>> a = akz.c.stream().map(akz.d::a).collect(Collectors.toUnmodifiableSet());
+   private static final Set<alf<? extends jr<?>>> a = alb.c.stream().map(alb.d::a).collect(Collectors.toUnmodifiableSet());
 
-   public static void a(DynamicOps<uu> $$0, js $$1, Set<auh> $$2, BiConsumer<ald<? extends jr<?>>, List<jv.a>> $$3) {
-      akz.c.forEach($$4 -> a($$0, (akz.d<?>)$$4, $$1, $$2, $$3));
+   public static void a(DynamicOps<uw> $$0, js $$1, Set<auj> $$2, BiConsumer<alf<? extends jr<?>>, List<jv.a>> $$3) {
+      alb.c.forEach($$4 -> a($$0, (alb.d<?>)$$4, $$1, $$2, $$3));
    }
 
-   private static <T> void a(DynamicOps<uu> $$0, akz.d<T> $$1, js $$2, Set<auh> $$3, BiConsumer<ald<? extends jr<?>>, List<jv.a>> $$4) {
+   private static <T> void a(DynamicOps<uw> $$0, alb.d<T> $$1, js $$2, Set<auj> $$3, BiConsumer<alf<? extends jr<?>>, List<jv.a>> $$4) {
       $$2.a($$1.a())
          .ifPresent(
             $$4x -> {
@@ -24,11 +24,11 @@ public class jv {
                   .forEach(
                      $$5x -> {
                         boolean $$6 = $$4x.d($$5x.h()).flatMap(jq::a).filter($$3::contains).isPresent();
-                        Optional<uu> $$7;
+                        Optional<uw> $$7;
                         if ($$6) {
                            $$7 = Optional.empty();
                         } else {
-                           uu $$8 = (uu)$$1.b()
+                           uw $$8 = (uw)$$1.b()
                               .encodeStart($$0, $$5x.a())
                               .getOrThrow($$1xxx -> new IllegalArgumentException("Failed to serialize " + $$5x.h() + ": " + $$1xxx));
                            $$7 = Optional.of($$8);
@@ -46,28 +46,28 @@ public class jv {
       return $$0.a().filter($$0x -> a($$0x.a()));
    }
 
-   public static Stream<js.d<?>> a(jl<aln> $$0) {
-      return a($$0.c(aln.b));
+   public static Stream<js.d<?>> a(jl<alp> $$0) {
+      return a($$0.c(alp.b));
    }
 
-   public static Stream<js.d<?>> b(jl<aln> $$0) {
-      Stream<js.d<?>> $$1 = $$0.a(aln.a).a();
+   public static Stream<js.d<?>> b(jl<alp> $$0) {
+      Stream<js.d<?>> $$1 = $$0.a(alp.a).a();
       Stream<js.d<?>> $$2 = a($$0);
       return Stream.concat($$2, $$1);
    }
 
-   public static boolean a(ald<? extends jr<?>> $$0) {
+   public static boolean a(alf<? extends jr<?>> $$0) {
       return a.contains($$0);
    }
 
-   public static record a(ale b, Optional<uu> c) {
-      public static final yu<ByteBuf, jv.a> a = yu.a(ale.b, jv.a::a, ys.p.a(ys::a), jv.a::b, jv.a::new);
+   public static record a(alg b, Optional<uw> c) {
+      public static final yw<ByteBuf, jv.a> a = yw.a(alg.b, jv.a::a, yu.p.a(yu::a), jv.a::b, jv.a::new);
 
-      public ale a() {
+      public alg a() {
          return this.b;
       }
 
-      public Optional<uu> b() {
+      public Optional<uw> b() {
          return this.c;
       }
    }

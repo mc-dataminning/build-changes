@@ -1,41 +1,103 @@
+import com.mojang.logging.LogUtils;
+import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
+import java.util.Map;
+import java.util.Optional;
+import java.util.Map.Entry;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
+
 public class gjm {
-   private final goa a;
-   private final gjd b;
-   private final goy c;
-   private gjm.a d = gjm.a.a;
+   private static final Logger a = LogUtils.getLogger();
+   private final fos b;
+   private final hof c;
+   private final an d = new an();
+   private final Map<ai, ak> e = new Object2ObjectOpenHashMap();
+   @Nullable
+   private gjm.a f;
+   @Nullable
+   private ai g;
 
-   public gjm(goa $$0, gjd $$1, goy $$2) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
+   public gjm(fos $$0, hof $$1) {
+      this.b = $$0;
+      this.c = $$1;
    }
 
-   public void a() {
-      switch (this.d) {
-         case b:
-            iu $$0 = this.a.dv();
-            boolean $$1 = this.b.e($$0.v());
-            if ($$1 || this.c.a($$0) || this.a.U_() || !this.a.bK()) {
-               this.d = gjm.a.c;
+   public void a(agg $$0) {
+      if ($$0.g()) {
+         this.d.a();
+         this.e.clear();
+      }
+
+      this.d.a($$0.e());
+      this.d.a($$0.b());
+
+      for (Entry<alg, ak> $$1 : $$0.f().entrySet()) {
+         aj $$2 = this.d.a($$1.getKey());
+         if ($$2 != null) {
+            ak $$3 = $$1.getValue();
+            $$3.a($$2.a().f());
+            this.e.put($$2.b(), $$3);
+            if (this.f != null) {
+               this.f.a($$2, $$3);
             }
-         case a:
-         case c:
+
+            if (!$$0.g() && $$3.a()) {
+               if (this.b.s != null) {
+                  this.c.a(this.b.s, $$2.b());
+               }
+
+               Optional<au> $$4 = $$2.a().c();
+               if ($$0.h() && $$4.isPresent() && $$4.get().h()) {
+                  this.b.aA().a(new fuj($$2.b()));
+               }
+            }
+         } else {
+            a.warn("Server informed client about progress for unknown advancement {}", $$1.getKey());
+         }
       }
    }
 
-   public boolean b() {
-      return this.d == gjm.a.c;
+   public an a() {
+      return this.d;
    }
 
-   public void c() {
-      if (this.d == gjm.a.a) {
-         this.d = gjm.a.b;
+   public void a(@Nullable ai $$0, boolean $$1) {
+      gjs $$2 = this.b.L();
+      if ($$2 != null && $$0 != null && $$1) {
+         $$2.b(aic.a($$0));
+      }
+
+      if (this.g != $$0) {
+         this.g = $$0;
+         if (this.f != null) {
+            this.f.a($$0);
+         }
       }
    }
 
-   static enum a {
-      a,
-      b,
-      c;
+   public void a(@Nullable gjm.a $$0) {
+      this.f = $$0;
+      this.d.a($$0);
+      if ($$0 != null) {
+         this.e.forEach(($$1, $$2) -> {
+            aj $$3 = this.d.a($$1);
+            if ($$3 != null) {
+               $$0.a($$3, $$2);
+            }
+         });
+         $$0.a(this.g);
+      }
+   }
+
+   @Nullable
+   public ai a(alg $$0) {
+      aj $$1 = this.d.a($$0);
+      return $$1 != null ? $$1.b() : null;
+   }
+
+   public interface a extends an.a {
+      void a(aj var1, ak var2);
+
+      void a(@Nullable ai var1);
    }
 }

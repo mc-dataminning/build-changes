@@ -1,68 +1,8 @@
-import java.util.EnumSet;
-import javax.annotation.Nullable;
+import javax.annotation.ParametersAreNonnullByDefault;
 
-public class cfo<T extends bwz> extends cfv {
-   private static final int i = 10;
-   protected final Class<T> a;
-   protected final int b;
-   @Nullable
-   protected bwz c;
-   protected cho d;
-
-   public cfo(bxb $$0, Class<T> $$1, boolean $$2) {
-      this($$0, $$1, 10, $$2, false, null);
-   }
-
-   public cfo(bxb $$0, Class<T> $$1, boolean $$2, cho.a $$3) {
-      this($$0, $$1, 10, $$2, false, $$3);
-   }
-
-   public cfo(bxb $$0, Class<T> $$1, boolean $$2, boolean $$3) {
-      this($$0, $$1, 10, $$2, $$3, null);
-   }
-
-   public cfo(bxb $$0, Class<T> $$1, int $$2, boolean $$3, boolean $$4, @Nullable cho.a $$5) {
-      super($$0, $$3, $$4);
-      this.a = $$1;
-      this.b = b($$2);
-      this.a(EnumSet.of(cdv.a.d));
-      this.d = cho.a().a(this.l()).a($$5);
-   }
-
-   @Override
-   public boolean b() {
-      if (this.b > 0 && this.e.dY().a(this.b) != 0) {
-         return false;
-      } else {
-         this.h();
-         return this.c != null;
-      }
-   }
-
-   protected fdr a(double $$0) {
-      return this.e.cR().c($$0, $$0, $$0);
-   }
-
-   protected void h() {
-      aro $$0 = a(this.e);
-      if (this.a != cqs.class && this.a != arp.class) {
-         this.c = $$0.a(this.e.dV().a(this.a, this.a(this.l()), $$0x -> true), this.i(), this.e, this.e.dA(), this.e.dE(), this.e.dG());
-      } else {
-         this.c = $$0.a(this.i(), this.e, this.e.dA(), this.e.dE(), this.e.dG());
-      }
-   }
-
-   @Override
-   public void d() {
-      this.e.g(this.c);
-      super.d();
-   }
-
-   public void a(@Nullable bwz $$0) {
-      this.c = $$0;
-   }
-
-   private cho i() {
-      return this.d.a(this.l());
-   }
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface cfo {
 }

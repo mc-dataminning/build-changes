@@ -1,52 +1,56 @@
 import com.mojang.serialization.MapCodec;
+import javax.annotation.Nullable;
 
-public class dpq extends dlu implements dtb {
-   public static final MapCodec<dpq> a = b(dpq::new);
-   public static final eaf b = eae.I;
-   private static final feq c = dlu.b(8.0, 0.0, 8.0);
+public abstract class dpq extends dma {
+   protected final ja a;
+   protected final boolean b;
+   protected final ffc d;
 
-   public dpq(dzn.d $$0) {
+   protected dpq(dzy.d $$0, ja $$1, ffc $$2, boolean $$3) {
       super($$0);
-      this.l(this.B.b().b(b, Boolean.valueOf(false)));
+      this.a = $$1;
+      this.d = $$2;
+      this.b = $$3;
    }
 
    @Override
-   public MapCodec<dpq> a() {
-      return a;
+   protected abstract MapCodec<? extends dpq> a();
+
+   @Nullable
+   @Override
+   public dzz a(dcr $$0) {
+      dzz $$1 = $$0.q().a_($$0.a().a(this.a));
+      return !$$1.a(this.c()) && !$$1.a(this.b()) ? this.b($$0.q().A) : this.b().m();
+   }
+
+   public dzz b(azv $$0) {
+      return this.m();
    }
 
    @Override
-   protected void a(dzp.a<dlu, dzo> $$0) {
-      $$0.a(b);
+   protected boolean a(dzz $$0, diy $$1, iu $$2) {
+      iu $$3 = $$2.a(this.a.g());
+      dzz $$4 = $$1.a_($$3);
+      return !this.o($$4) ? false : $$4.a(this.b()) || $$4.c($$1, $$3, this.a);
    }
 
    @Override
-   protected dzo a(dzo $$0, dis $$1, dje $$2, iu $$3, ja $$4, iu $$5, dzo $$6, azt $$7) {
-      if ($$0.c(b)) {
-         $$2.a($$3, evw.c, evw.c.a($$1));
+   protected void a(dzz $$0, arq $$1, iu $$2, azv $$3) {
+      if (!$$0.a($$1, $$2)) {
+         $$1.b($$2, true);
       }
+   }
 
-      return super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
+   protected boolean o(dzz $$0) {
+      return true;
    }
 
    @Override
-   protected evv b_(dzo $$0) {
-      return $$0.c(b) ? evw.c.a(false) : super.b_($$0);
+   protected ffc a(dzz $$0, dib $$1, iu $$2, fen $$3) {
+      return this.d;
    }
 
-   @Override
-   public dzo a(dcl $$0) {
-      evv $$1 = $$0.q().b_($$0.a());
-      return this.m().b(b, Boolean.valueOf($$1.b(evw.c)));
-   }
+   protected abstract dps c();
 
-   @Override
-   protected feq a(dzo $$0, dhv $$1, iu $$2, feb $$3) {
-      return c;
-   }
-
-   @Override
-   protected boolean a(dzo $$0, ewk $$1) {
-      return false;
-   }
+   protected abstract dma b();
 }

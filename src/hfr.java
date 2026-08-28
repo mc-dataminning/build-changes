@@ -1,120 +1,22 @@
-import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import javax.annotation.Nullable;
 
-public class hfr extends hfx {
-   public static final MapCodec<hfr> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(Codec.BOOL.optionalFieldOf("wobble", true).forGetter(hfx::b), hfr.a.e.fieldOf("target").forGetter(hfr::a)).apply($$0, hfr::new)
-   );
-   private final hfx.a b;
-   private final hfx.a c;
-   private final hfr.a d;
-   private final azt e = azt.a();
+public class hfr {
+   private static final ayu.b<alg, MapCodec<? extends hfs>> b = new ayu.b<>();
+   public static final MapCodec<hfs> a = b.a(alg.a).dispatchMap("property", hfs::a, $$0 -> $$0);
 
-   public hfr(boolean $$0, hfr.a $$1) {
-      super($$0);
-      this.b = this.a(0.8F);
-      this.c = this.a(0.8F);
-      this.d = $$1;
-   }
-
-   @Override
-   protected float a(cys $$0, gjd $$1, int $$2, bwa $$3) {
-      jd $$4 = this.d.a($$1, $$0, $$3);
-      long $$5 = $$1.ae();
-      return !a($$3, $$4) ? this.a($$2, $$5) : this.a($$3, $$5, $$4.b());
-   }
-
-   private float a(int $$0, long $$1) {
-      if (this.c.a($$1)) {
-         this.c.a($$1, this.e.i());
-      }
-
-      float $$2 = this.c.a() + (float)a($$0) / 2.1474836E9F;
-      return azk.b($$2, 1.0F);
-   }
-
-   private float a(bwa $$0, long $$1, iu $$2) {
-      float $$3 = (float)a($$0, $$2);
-      float $$4 = a($$0);
-      if ($$0 instanceof cqs $$5 && $$5.gg() && $$5.dV().u().i()) {
-         if (this.b.a($$1)) {
-            this.b.a($$1, 0.5F - ($$4 - 0.25F));
-         }
-
-         float $$6 = $$3 + this.b.a();
-         return azk.b($$6, 1.0F);
-      }
-
-      float $$7 = 0.5F - ($$4 - 0.25F - $$3);
-      return azk.b($$7, 1.0F);
-   }
-
-   private static boolean a(bwa $$0, @Nullable jd $$1) {
-      return $$1 != null && $$1.a() == $$0.dV().aj() && !($$1.b().b($$0.dt()) < 1.0E-5F);
-   }
-
-   private static double a(bwa $$0, iu $$1) {
-      fdw $$2 = fdw.b($$1);
-      return Math.atan2($$2.c() - $$0.dG(), $$2.a() - $$0.dA()) / (float) (Math.PI * 2);
-   }
-
-   private static float a(bwa $$0) {
-      return azk.b($$0.dM() / 360.0F, 1.0F);
-   }
-
-   private static int a(int $$0) {
-      return $$0 * 1327217883;
-   }
-
-   protected hfr.a a() {
-      return this.d;
-   }
-
-   public static enum a implements bai {
-      a("none") {
-         @Nullable
-         @Override
-         public jd a(gjd $$0, cys $$1, bwa $$2) {
-            return null;
-         }
-      },
-      b("lodestone") {
-         @Nullable
-         @Override
-         public jd a(gjd $$0, cys $$1, bwa $$2) {
-            dbm $$3 = $$1.a(kj.ah);
-            return $$3 != null ? $$3.a().orElse(null) : null;
-         }
-      },
-      c("spawn") {
-         @Override
-         public jd a(gjd $$0, cys $$1, bwa $$2) {
-            return jd.a($$0.aj(), $$0.aa());
-         }
-      },
-      d("recovery") {
-         @Nullable
-         @Override
-         public jd a(gjd $$0, cys $$1, bwa $$2) {
-            return $$2 instanceof cqs $$3 ? $$3.gH().orElse(null) : null;
-         }
-      };
-
-      public static final Codec<hfr.a> e = bai.a(hfr.a::values);
-      private final String f;
-
-      a(final String $$0) {
-         this.f = $$0;
-      }
-
-      @Override
-      public String c() {
-         return this.f;
-      }
-
-      @Nullable
-      abstract jd a(gjd var1, cys var2, bwa var3);
+   public static void a() {
+      b.a(alg.b("custom_model_data"), hft.a);
+      b.a(alg.b("using_item"), hgb.a);
+      b.a(alg.b("broken"), hfo.a);
+      b.a(alg.b("damaged"), hfu.a);
+      b.a(alg.b("fishing_rod/cast"), hfw.a);
+      b.a(alg.b("has_component"), hfx.a);
+      b.a(alg.b("bundle/has_selected_item"), hfp.a);
+      b.a(alg.b("selected"), hga.a);
+      b.a(alg.b("carried"), hfy.a);
+      b.a(alg.b("extended_view"), hfv.a);
+      b.a(alg.b("keybind_down"), hfz.a);
+      b.a(alg.b("view_entity"), hgc.a);
+      b.a(alg.b("component"), hfq.a);
    }
 }

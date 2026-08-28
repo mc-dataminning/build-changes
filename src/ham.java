@@ -1,42 +1,34 @@
-import java.util.Map;
+public class ham<S extends hdr, M extends gfq<S> & geh & gga> extends haf<S, M> {
+   private static final float a = (float) (-Math.PI / 6);
+   private static final float b = (float) (Math.PI / 2);
 
-public class ham extends gzy<hee, ghv> {
-   private final ghv a;
-   private final ghv b;
-   private final gzj c;
-   private static final Map<bvw.a, ale> d = Map.of(
-      bvw.a.b,
-      ale.b("textures/entity/wolf/wolf_armor_crackiness_low.png"),
-      bvw.a.c,
-      ale.b("textures/entity/wolf/wolf_armor_crackiness_medium.png"),
-      bvw.a.d,
-      ale.b("textures/entity/wolf/wolf_armor_crackiness_high.png")
-   );
-
-   public ham(gxh<hee, ghv> $$0, gic $$1, gzj $$2) {
+   public ham(gxw<S, M> $$0) {
       super($$0);
-      this.a = new ghv($$1.a(gif.dU));
-      this.b = new ghv($$1.a(gif.dW));
-      this.c = $$2;
    }
 
-   public void a(fiq $$0, gpd $$1, int $$2, hee $$3, float $$4, float $$5) {
-      cys $$6 = $$3.i;
-      dhb $$7 = $$6.a(kj.D);
-      if ($$7 != null && !$$7.d().isEmpty()) {
-         ghv $$8 = $$3.aj ? this.b : this.a;
-         $$8.a($$3);
-         this.c.a(hkf.d.d, $$7.d().get(), $$8, $$6, $$0, $$1, $$2);
-         this.a($$0, $$1, $$2, $$6, $$8);
+   protected void a(S $$0, hfi $$1, bwv $$2, fjc $$3, gps $$4, int $$5) {
+      if (!$$1.c()) {
+         bua $$6 = $$2 == $$0.e ? bua.a : bua.b;
+         if ($$0.R && $$0.M == $$6 && $$0.H < 1.0E-5F && !$$0.aI.c()) {
+            this.a($$0.aI, $$2, $$3, $$4, $$5);
+         } else {
+            super.a($$0, $$1, $$2, $$3, $$4, $$5);
+         }
       }
    }
 
-   private void a(fiq $$0, gpd $$1, int $$2, cys $$3, gfz $$4) {
-      bvw.a $$5 = bvw.b.a($$3);
-      if ($$5 != bvw.a.a) {
-         ale $$6 = d.get($$5);
-         fiu $$7 = $$1.getBuffer(gpn.c($$6));
-         $$4.a($$0, $$7, $$2, hhp.d);
-      }
+   private void a(hfi $$0, bwv $$1, fjc $$2, gps $$3, int $$4) {
+      $$2.a();
+      this.d().e().a($$2);
+      giu $$5 = this.d().b();
+      float $$6 = $$5.e;
+      $$5.e = azm.a($$5.e, (float) (-Math.PI / 6), (float) (Math.PI / 2));
+      $$5.a($$2);
+      $$5.e = $$6;
+      gzs.a($$2, gzs.a.a);
+      boolean $$7 = $$1 == bwv.a;
+      $$2.a(($$7 ? -2.5F : 2.5F) / 16.0F, -0.0625F, 0.0F);
+      $$0.a($$2, $$3, $$4, hif.d);
+      $$2.b();
    }
 }

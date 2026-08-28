@@ -1,62 +1,138 @@
-public enum eap implements bai {
-   a("harp", awl.sG, eap.a.a),
-   b("basedrum", awl.sA, eap.a.a),
-   c("snare", awl.sJ, eap.a.a),
-   d("hat", awl.sH, eap.a.a),
-   e("bass", awl.sB, eap.a.a),
-   f("flute", awl.sE, eap.a.a),
-   g("bell", awl.sC, eap.a.a),
-   h("guitar", awl.sF, eap.a.a),
-   i("chime", awl.sD, eap.a.a),
-   j("xylophone", awl.sK, eap.a.a),
-   k("iron_xylophone", awl.sL, eap.a.a),
-   l("cow_bell", awl.sM, eap.a.a),
-   m("didgeridoo", awl.sN, eap.a.a),
-   n("bit", awl.sO, eap.a.a),
-   o("banjo", awl.sP, eap.a.a),
-   p("pling", awl.sI, eap.a.a),
-   q("zombie", awl.sQ, eap.a.b),
-   r("skeleton", awl.sR, eap.a.b),
-   s("creeper", awl.sS, eap.a.b),
-   t("dragon", awl.sT, eap.a.b),
-   u("wither_skeleton", awl.sU, eap.a.b),
-   v("piglin", awl.sV, eap.a.b),
-   w("custom_head", awl.Bp, eap.a.c);
-
-   private final String x;
-   private final je<awk> y;
-   private final eap.a z;
-
-   private eap(final String $$0, final je<awk> $$1, final eap.a $$2) {
-      this.x = $$0;
-      this.y = $$1;
-      this.z = $$2;
-   }
-
-   @Override
-   public String c() {
-      return this.x;
-   }
-
-   public je<awk> a() {
-      return this.y;
-   }
-
-   public boolean b() {
-      return this.z == eap.a.a;
-   }
-
-   public boolean d() {
-      return this.z == eap.a.c;
-   }
-
-   public boolean e() {
-      return this.z != eap.a.a;
-   }
-
-   static enum a {
-      a,
-      b,
-      c;
-   }
+public class eap {
+   public static final eaq a = eaq.a("attached");
+   public static final eaq b = eaq.a("berries");
+   public static final eaq c = eaq.a("bloom");
+   public static final eaq d = eaq.a("bottom");
+   public static final eaq e = eaq.a("can_summon");
+   public static final eaq f = eaq.a("conditional");
+   public static final eaq g = eaq.a("disarmed");
+   public static final eaq h = eaq.a("drag");
+   public static final eaq i = eaq.a("enabled");
+   public static final eaq j = eaq.a("extended");
+   public static final eaq k = eaq.a("eye");
+   public static final eaq l = eaq.a("falling");
+   public static final eaq m = eaq.a("hanging");
+   public static final eaq n = eaq.a("has_bottle_0");
+   public static final eaq o = eaq.a("has_bottle_1");
+   public static final eaq p = eaq.a("has_bottle_2");
+   public static final eaq q = eaq.a("has_record");
+   public static final eaq r = eaq.a("has_book");
+   public static final eaq s = eaq.a("inverted");
+   public static final eaq t = eaq.a("in_wall");
+   public static final eaq u = eaq.a("lit");
+   public static final eaq v = eaq.a("locked");
+   public static final eaq w = eaq.a("natural");
+   public static final eaq x = eaq.a("occupied");
+   public static final eaq y = eaq.a("open");
+   public static final eaq z = eaq.a("persistent");
+   public static final eaq A = eaq.a("powered");
+   public static final eaq B = eaq.a("short");
+   public static final eaq C = eaq.a("shrieking");
+   public static final eaq D = eaq.a("signal_fire");
+   public static final eaq E = eaq.a("snowy");
+   public static final eaq F = eaq.a("tip");
+   public static final eaq G = eaq.a("triggered");
+   public static final eaq H = eaq.a("unstable");
+   public static final eaq I = eaq.a("waterlogged");
+   public static final eax<ja.a> J = eax.a("axis", ja.a.class, ja.a.a, ja.a.c);
+   public static final eax<ja.a> K = eax.a("axis", ja.a.class);
+   public static final eaq L = eaq.a("up");
+   public static final eaq M = eaq.a("down");
+   public static final eaq N = eaq.a("north");
+   public static final eaq O = eaq.a("east");
+   public static final eaq P = eaq.a("south");
+   public static final eaq Q = eaq.a("west");
+   public static final eax<ja> R = eax.a("facing", ja.class, ja.c, ja.f, ja.d, ja.e, ja.b, ja.a);
+   public static final eax<ja> S = eax.a("facing", ja.class, $$0 -> $$0 != ja.b);
+   public static final eax<ja> T = eax.a("facing", ja.class, ja.c.a);
+   public static final eaz U = eaz.a("flower_amount", 1, 4);
+   public static final eaz V = eaz.a("segment_amount", 1, 4);
+   public static final eax<jc> W = eax.a("orientation", jc.class);
+   public static final eax<eak> X = eax.a("face", eak.class);
+   public static final eax<ean> Y = eax.a("attachment", ean.class);
+   public static final eax<ebm> Z = eax.a("east", ebm.class);
+   public static final eax<ebm> aa = eax.a("north", ebm.class);
+   public static final eax<ebm> ab = eax.a("south", ebm.class);
+   public static final eax<ebm> ac = eax.a("west", ebm.class);
+   public static final eax<ebe> ad = eax.a("east", ebe.class);
+   public static final eax<ebe> ae = eax.a("north", ebe.class);
+   public static final eax<ebe> af = eax.a("south", ebe.class);
+   public static final eax<ebe> ag = eax.a("west", ebe.class);
+   public static final eax<eav> ah = eax.a("half", eav.class);
+   public static final eax<eay> ai = eax.a("half", eay.class);
+   public static final eax<ebd> aj = eax.a("shape", ebd.class);
+   public static final eax<ebd> ak = eax.a("shape", ebd.class, $$0 -> $$0 != ebd.j && $$0 != ebd.i && $$0 != ebd.g && $$0 != ebd.h);
+   public static final int al = 1;
+   public static final int am = 2;
+   public static final int an = 3;
+   public static final int ao = 4;
+   public static final int ap = 5;
+   public static final int aq = 7;
+   public static final int ar = 15;
+   public static final int as = 25;
+   public static final eaz at = eaz.a("age", 0, 1);
+   public static final eaz au = eaz.a("age", 0, 2);
+   public static final eaz av = eaz.a("age", 0, 3);
+   public static final eaz aw = eaz.a("age", 0, 4);
+   public static final eaz ax = eaz.a("age", 0, 5);
+   public static final eaz ay = eaz.a("age", 0, 7);
+   public static final eaz az = eaz.a("age", 0, 15);
+   public static final eaz aA = eaz.a("age", 0, 25);
+   public static final eaz aB = eaz.a("bites", 0, 6);
+   public static final eaz aC = eaz.a("candles", 1, 4);
+   public static final eaz aD = eaz.a("delay", 1, 4);
+   public static final int aE = 7;
+   public static final eaz aF = eaz.a("distance", 1, 7);
+   public static final eaz aG = eaz.a("eggs", 1, 4);
+   public static final eaz aH = eaz.a("hatch", 0, 2);
+   public static final eaz aI = eaz.a("layers", 1, 8);
+   public static final int aJ = 0;
+   public static final int aK = 1;
+   public static final int aL = 3;
+   public static final int aM = 8;
+   public static final eaz aN = eaz.a("level", 1, 3);
+   public static final eaz aO = eaz.a("level", 0, 8);
+   public static final eaz aP = eaz.a("level", 1, 8);
+   public static final eaz aQ = eaz.a("honey_level", 0, 5);
+   public static final int aR = 15;
+   public static final eaz aS = eaz.a("level", 0, 15);
+   public static final eaz aT = eaz.a("moisture", 0, 7);
+   public static final eaz aU = eaz.a("note", 0, 24);
+   public static final eaz aV = eaz.a("pickles", 1, 4);
+   public static final eaz aW = eaz.a("power", 0, 15);
+   public static final eaz aX = eaz.a("stage", 0, 1);
+   public static final int aY = 7;
+   public static final eaz aZ = eaz.a("distance", 0, 7);
+   public static final int ba = 0;
+   public static final int bb = 4;
+   public static final eaz bc = eaz.a("charges", 0, 4);
+   public static final eaz bd = eaz.a("rotation", 0, ebf.a());
+   public static final eax<eam> be = eax.a("part", eam.class);
+   public static final eax<ear> bf = eax.a("type", ear.class);
+   public static final eax<eas> bg = eax.a("mode", eas.class);
+   public static final eax<eau> bh = eax.a("hinge", eau.class);
+   public static final eax<eba> bi = eax.a("instrument", eba.class);
+   public static final eax<ebb> bj = eax.a("type", ebb.class);
+   public static final eax<ebh> bk = eax.a("type", ebh.class);
+   public static final eax<ebi> bl = eax.a("shape", ebi.class);
+   public static final eax<ebj> bm = eax.a("mode", ebj.class);
+   public static final eax<eal> bn = eax.a("leaves", eal.class);
+   public static final eax<ebl> bo = eax.a("tilt", ebl.class);
+   public static final eax<ja> bp = eax.a("vertical_direction", ja.class, ja.b, ja.a);
+   public static final eax<eaw> bq = eax.a("thickness", eaw.class);
+   public static final eax<ebg> br = eax.a("sculk_sensor_phase", ebg.class);
+   public static final eaq bs = eaq.a("slot_0_occupied");
+   public static final eaq bt = eaq.a("slot_1_occupied");
+   public static final eaq bu = eaq.a("slot_2_occupied");
+   public static final eaq bv = eaq.a("slot_3_occupied");
+   public static final eaq bw = eaq.a("slot_4_occupied");
+   public static final eaq bx = eaq.a("slot_5_occupied");
+   public static final eaz by = eaz.a("dusted", 0, 3);
+   public static final eaq bz = eaq.a("cracked");
+   public static final eaq bA = eaq.a("crafting");
+   public static final eax<dze> bB = eax.a("trial_spawner_state", dze.class);
+   public static final eax<dzl> bC = eax.a("vault_state", dzl.class);
+   public static final eax<eat> bD = eax.a("creaking_heart_state", eat.class);
+   public static final eaq bE = eaq.a("ominous");
+   public static final eax<ebk> bF = eax.a("mode", ebk.class);
 }

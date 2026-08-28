@@ -1,65 +1,64 @@
-import javax.annotation.Nullable;
+public abstract class bxk extends bxe {
+   protected static final float bE = 0.0F;
 
-public class bxk {
-   private final drr a;
-   private iu b;
-   private int c;
-   private boolean d;
-
-   public bxk(drr $$0, iu $$1) {
-      this.a = $$0;
-      this.b = $$1;
-      this.d = true;
+   protected bxk(bwm<? extends bxk> $$0, div $$1) {
+      super($$0, $$1);
    }
 
-   public boolean a(aro $$0, bwa $$1, boolean $$2) {
-      if (!this.d) {
-         this.f();
-         return false;
+   public float c(iu $$0) {
+      return this.a($$0, this.dV());
+   }
+
+   public float a(iu $$0, diy $$1) {
+      return 0.0F;
+   }
+
+   @Override
+   public boolean a(diw $$0, bwl $$1) {
+      return this.a(this.dv(), $$0) >= 0.0F;
+   }
+
+   public boolean gm() {
+      return !this.O().k();
+   }
+
+   public boolean gn() {
+      if (this.bs.a(cge.aa)) {
+         return this.bs.c(cge.aa).isPresent();
       } else {
-         this.d = false;
-         return $$2 && this.c++ >= this.a.a($$0, $$1);
+         for (cfm $$0 : this.bC.b()) {
+            if ($$0.h() && $$0.k() instanceof cer) {
+               return true;
+            }
+         }
+
+         return false;
       }
    }
 
-   @Nullable
-   public ewv a(aro $$0, bwa $$1) {
-      return this.a.a($$0, $$1, this.b);
+   protected boolean go() {
+      return true;
    }
 
-   public drr.a a() {
-      return this.a.b();
+   @Override
+   public void a(bwd $$0) {
+      super.a($$0);
+      if (this.go() && !this.gn()) {
+         this.bC.b(cdy.a.a);
+         float $$1 = 2.0F;
+         float $$2 = this.f($$0);
+         fei $$3 = new fei($$0.dA() - this.dA(), $$0.dC() - this.dC(), $$0.dG() - this.dG()).d().c((double)Math.max($$2 - 2.0F, 0.0F));
+         this.O().a(this.dA() + $$3.d, this.dC() + $$3.e, this.dG() + $$3.f, this.gp());
+      }
    }
 
-   private void f() {
-      this.c = Math.max(this.c - 4, 0);
+   @Override
+   public boolean a(bwd $$0, float $$1) {
+      this.a($$0.dv(), 5);
+      return true;
    }
 
-   public boolean b() {
-      return this.c <= 0;
-   }
-
-   public iu c() {
-      return this.b;
-   }
-
-   public void a(iu $$0) {
-      this.b = $$0;
-   }
-
-   public int d() {
-      return this.c;
-   }
-
-   public boolean e() {
-      return this.d;
-   }
-
-   public void a(boolean $$0) {
-      this.d = $$0;
-   }
-
-   public boolean a(drr $$0) {
-      return this.a == $$0;
+   protected double gp() {
+      return 1.0;
    }
 }

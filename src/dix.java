@@ -1,25 +1,59 @@
-import javax.annotation.Nullable;
-
 public interface dix {
-   boolean a(iu var1, dzo var2, int var3, int var4);
+   int H_();
 
-   default boolean a(iu $$0, dzo $$1, int $$2) {
-      return this.a($$0, $$1, $$2, 512);
+   int G_();
+
+   default int ao() {
+      return this.G_() + this.H_() - 1;
    }
 
-   boolean a(iu var1, boolean var2);
-
-   default boolean b(iu $$0, boolean $$1) {
-      return this.a($$0, $$1, null);
+   default int ap() {
+      return this.ar() - this.aq() + 1;
    }
 
-   default boolean a(iu $$0, boolean $$1, @Nullable bwa $$2) {
-      return this.a($$0, $$1, $$2, 512);
+   default int aq() {
+      return jx.a(this.G_());
    }
 
-   boolean a(iu var1, boolean var2, @Nullable bwa var3, int var4);
+   default int ar() {
+      return jx.a(this.ao());
+   }
 
-   default boolean b(bwa $$0) {
-      return false;
+   default boolean d(int $$0) {
+      return $$0 >= this.G_() && $$0 <= this.ao();
+   }
+
+   default boolean t(iu $$0) {
+      return this.e($$0.v());
+   }
+
+   default boolean e(int $$0) {
+      return $$0 < this.G_() || $$0 > this.ao();
+   }
+
+   default int f(int $$0) {
+      return this.g(jx.a($$0));
+   }
+
+   default int g(int $$0) {
+      return $$0 - this.aq();
+   }
+
+   default int h(int $$0) {
+      return $$0 + this.aq();
+   }
+
+   static dix e(final int $$0, final int $$1) {
+      return new dix() {
+         @Override
+         public int H_() {
+            return $$1;
+         }
+
+         @Override
+         public int G_() {
+            return $$0;
+         }
+      };
    }
 }

@@ -1,20 +1,31 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
+import java.util.List;
 
-public interface dep {
-   Codec<dep> d = mf.ax.q().dispatch(dep::a, dep.a::a);
-   yu<wh, dep> e = ys.a(mg.ag).b(dep::a, dep.a::b);
-
-   dev d();
-
-   dev e();
-
-   dep.a<? extends dep> a();
-
-   default boolean a(cub $$0) {
-      return this.d().a($$0) && this.e().a($$0);
+public class dep extends deh {
+   public dep(String $$0, ddl $$1, cyy $$2) {
+      super($$0, $$1, $$2);
    }
 
-   public static record a<T extends dep>(MapCodec<T> a, yu<wh, T> b) {
+   @Override
+   public dea<dep> b() {
+      return dea.f;
+   }
+
+   @Override
+   public ddz<dep> a() {
+      return ddz.s;
+   }
+
+   @Override
+   public List<dev> g() {
+      return List.of(new dff(this.k().c(), this.c(), new dfb.d(czc.xx)));
+   }
+
+   public dfb c() {
+      return new dfb.f(this.l());
+   }
+
+   @Override
+   public dds h() {
+      return ddr.k;
    }
 }

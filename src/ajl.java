@@ -1,23 +1,27 @@
-import io.netty.buffer.ByteBuf;
+import java.util.UUID;
 
-public class ajl implements zd<ajh> {
-   public static final ajl a = new ajl();
-   public static final yu<ByteBuf, ajl> b = yu.a(a);
+public record ajl(String b, UUID c) implements zf<ajj> {
+   public static final yw<vu, ajl> a = zf.a(ajl::a, ajl::new);
 
-   private ajl() {
+   private ajl(vu $$0) {
+      this($$0.d(16), $$0.n());
+   }
+
+   private void a(vu $$0) {
+      $$0.a(this.b, 16);
+      $$0.a(this.c);
    }
 
    @Override
-   public zf<ajl> a() {
-      return ajf.i;
+   public zh<ajl> a() {
+      return ajh.g;
    }
 
-   public void a(ajh $$0) {
+   public void a(ajj $$0) {
       $$0.a(this);
    }
 
-   @Override
-   public boolean d() {
-      return true;
+   public UUID e() {
+      return this.c;
    }
 }

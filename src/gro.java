@@ -1,83 +1,51 @@
-import com.google.common.collect.ImmutableMap;
+import com.google.common.base.Splitter;
+import java.util.HashMap;
+import java.util.Iterator;
 import java.util.Map;
-import java.util.function.Supplier;
+import java.util.Objects;
+import java.util.Map.Entry;
+import java.util.function.Predicate;
 import javax.annotation.Nullable;
 
-public class gro implements avc {
-   private Map<dwp<?>, grp<?>> d = ImmutableMap.of();
-   private final fra e;
-   private final Supplier<gic> f;
-   public dip a;
-   public fnn b;
-   public fdu c;
-   private final gqh g;
-   private final heq h;
-   private final gwi i;
-   private final gvi j;
+public class gro {
+   private static final Splitter a = Splitter.on(',');
+   private static final Splitter b = Splitter.on('=').limit(2);
 
-   public gro(fra $$0, Supplier<gic> $$1, gqh $$2, heq $$3, gwi $$4, gvi $$5) {
-      this.i = $$4;
-      this.h = $$3;
-      this.j = $$5;
-      this.e = $$0;
-      this.f = $$1;
-      this.g = $$2;
-   }
+   public static <O, S extends eab<O, S>> Predicate<eab<O, S>> a(eaa<O, S> $$0, String $$1) {
+      Map<ebc<?>, Comparable<?>> $$2 = new HashMap<>();
 
-   @Nullable
-   public <E extends dwn> grp<E> a(E $$0) {
-      return (grp<E>)this.d.get($$0.p());
-   }
-
-   public void a(dip $$0, fnn $$1, fdu $$2) {
-      if (this.a != $$0) {
-         this.a($$0);
-      }
-
-      this.b = $$1;
-      this.c = $$2;
-   }
-
-   public <E extends dwn> void a(E $$0, float $$1, fiq $$2, gpd $$3) {
-      grp<E> $$4 = this.a($$0);
-      if ($$4 != null) {
-         if ($$0.l() && $$0.p().a($$0.m())) {
-            if ($$4.a($$0, this.b.b())) {
-               try {
-                  a($$4, $$0, $$1, $$2, $$3);
-               } catch (Throwable var9) {
-                  o $$6 = o.a(var9, "Rendering Block Entity");
-                  p $$7 = $$6.a("Block Entity Details");
-                  $$0.a($$7);
-                  throw new z($$6);
+      for (String $$3 : a.split($$1)) {
+         Iterator<String> $$4 = b.split($$3).iterator();
+         if ($$4.hasNext()) {
+            String $$5 = $$4.next();
+            ebc<?> $$6 = $$0.a($$5);
+            if ($$6 != null && $$4.hasNext()) {
+               String $$7 = $$4.next();
+               Comparable<?> $$8 = a((ebc<Comparable<?>>)$$6, $$7);
+               if ($$8 == null) {
+                  throw new RuntimeException("Unknown value: '" + $$7 + "' for blockstate property: '" + $$5 + "' " + $$6.a());
                }
+
+               $$2.put($$6, $$8);
+            } else if (!$$5.isEmpty()) {
+               throw new RuntimeException("Unknown blockstate property: '" + $$5 + "'");
             }
          }
       }
+
+      return $$1x -> {
+         for (Entry<ebc<?>, Comparable<?>> $$2x : $$2.entrySet()) {
+            if (!Objects.equals($$1x.c($$2x.getKey()), $$2x.getValue())) {
+               return false;
+            }
+         }
+
+         return true;
+      };
    }
 
-   private static <T extends dwn> void a(grp<T> $$0, T $$1, float $$2, fiq $$3, gpd $$4) {
-      dip $$5 = $$1.i();
-      int $$6;
-      if ($$5 != null) {
-         $$6 = goy.a($$5, $$1.aw_());
-      } else {
-         $$6 = 15728880;
-      }
-
-      $$0.a($$1, $$2, $$3, $$4, $$6, hhp.d);
-   }
-
-   public void a(@Nullable dip $$0) {
-      this.a = $$0;
-      if ($$0 == null) {
-         this.b = null;
-      }
-   }
-
-   @Override
-   public void a(avb $$0) {
-      grq.a $$1 = new grq.a(this, this.g, this.h, this.i, this.j, this.f.get(), this.e);
-      this.d = grr.a($$1);
+   @Nullable
+   private static <T extends Comparable<T>> T a(ebc<T> $$0, String $$1) {
+      return $$0.b($$1).orElse(null);
    }
 }

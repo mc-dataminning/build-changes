@@ -1,10 +1,52 @@
-import java.io.Closeable;
-import java.io.IOException;
-import java.nio.ByteBuffer;
-import javax.sound.sampled.AudioFormat;
+public class hmp {
+   public static class a extends hlv {
+      private final gop n;
 
-public interface hmp extends Closeable {
-   AudioFormat a();
+      protected a(gop $$0, awm $$1) {
+         super($$1, awo.i, hmm.t());
+         this.n = $$0;
+         this.i = false;
+         this.j = 0;
+         this.d = 1.0F;
+         this.l = true;
+      }
 
-   ByteBuffer a(int var1) throws IOException;
+      @Override
+      public void q() {
+         if (this.n.dQ() || !this.n.bn()) {
+            this.n();
+         }
+      }
+   }
+
+   public static class b extends hlv {
+      public static final int n = 40;
+      private final gop o;
+      private int p;
+
+      public b(gop $$0) {
+         super(awn.z, awo.i, hmm.t());
+         this.o = $$0;
+         this.i = true;
+         this.j = 0;
+         this.d = 1.0F;
+         this.l = true;
+      }
+
+      @Override
+      public void q() {
+         if (!this.o.dQ() && this.p >= 0) {
+            if (this.o.bn()) {
+               this.p++;
+            } else {
+               this.p -= 2;
+            }
+
+            this.p = Math.min(this.p, 40);
+            this.d = Math.max(0.0F, Math.min((float)this.p / 40.0F, 1.0F));
+         } else {
+            this.n();
+         }
+      }
+   }
 }

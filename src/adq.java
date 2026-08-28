@@ -1,33 +1,24 @@
-public class adq implements zd<abs> {
-   public static final yu<wh, adq> a = yu.a(ys.w, adq::b, ys.a(mg.V), adq::e, wy.d, adq::f, adq::new);
-   private final int b;
-   private final cvt<?> c;
-   private final ww d;
+public record adq(fei b, float c, float d) implements zf<abu> {
+   public static final yw<vu, adq> a = yw.a(fei.b, adq::b, yu.l, adq::e, yu.l, adq::f, adq::new);
 
-   public adq(int $$0, cvt<?> $$1, ww $$2) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
+   public static adq a(bwd $$0) {
+      return new adq($$0.dt(), $$0.dL(), $$0.dN());
    }
 
    @Override
-   public zf<adq> a() {
-      return agl.X;
+   public zh<adq> a() {
+      return agn.V;
    }
 
-   public void a(abs $$0) {
+   public void a(abu $$0) {
       $$0.a(this);
    }
 
-   public int b() {
-      return this.b;
-   }
-
-   public cvt<?> e() {
+   public float e() {
       return this.c;
    }
 
-   public ww f() {
+   public float f() {
       return this.d;
    }
 }

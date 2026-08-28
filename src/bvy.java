@@ -1,45 +1,136 @@
-import com.mojang.serialization.Codec;
-import java.util.HashMap;
-import java.util.Map;
+public enum bvy {
+   a(true) {
+      @Override
+      void a(bxe $$0, bxe $$1, bvx $$2) {
+         bwd $$3 = $$0.cZ();
+         $$1.w($$0);
+         $$1.i($$0.dy());
+         if ($$3 != null) {
+            $$3.bP();
+            $$3.J = 0;
 
-public record bvy(Map<bwk, Float> f) {
-   public static final float a = 0.085F;
-   public static final float b = 1.0F;
-   public static final int c = 2;
-   public static final bvy d = new bvy(af.a(bwk.class, $$0 -> 0.085F));
-   public static final Codec<bvy> e = Codec.unboundedMap(bwk.l, ays.n).xmap(bvy::b, bvy::a).xmap(bvy::new, bvy::a);
+            for (bwd $$4 : $$1.cY()) {
+               $$4.bP();
+               $$4.a(bwd.e.b);
+            }
 
-   private static Map<bwk, Float> a(Map<bwk, Float> $$0) {
-      Map<bwk, Float> $$1 = new HashMap<>($$0);
-      $$1.values().removeIf($$0x -> $$0x == 0.085F);
-      return $$1;
-   }
+            $$3.n($$1);
+         }
 
-   private static Map<bwk, Float> b(Map<bwk, Float> $$0) {
-      return af.a(bwk.class, $$1 -> $$0.getOrDefault($$1, 0.085F));
-   }
+         bwd $$5 = $$0.dk();
+         if ($$5 != null) {
+            $$0.bP();
+            $$1.n($$5);
+         }
 
-   public bvy a(bwk $$0) {
-      return this.a($$0, 2.0F);
-   }
+         if ($$2.b()) {
+            for (bwn $$6 : bwn.j) {
+               cyy $$7 = $$0.a($$6);
+               if (!$$7.f()) {
+                  $$1.a($$6, $$7.g());
+                  $$1.a($$6, $$0.fX().b($$6));
+               }
+            }
+         }
 
-   public bvy a(bwk $$0, float $$1) {
-      if ($$1 < 0.0F) {
-         throw new IllegalArgumentException("Tried to set invalid equipment chance " + $$1 + " for " + $$0);
-      } else {
-         return this.b($$0) == $$1 ? this : new bvy(af.a(bwk.class, $$2 -> $$2 == $$0 ? $$1 : this.b($$2)));
+         $$1.Z = $$0.Z;
+         $$1.b(7, $$0.fI());
+         $$1.bb = $$0.bb;
+         $$1.aN = $$0.aN;
+         $$1.aV = $$0.aV;
+         $$1.d($$0.aJ());
+         $$0.fO().ifPresent($$1::g);
+         bwd $$8 = $$0.C();
+         if ($$8 != null) {
+            $$1.a_($$8, true);
+         }
+
+         this.b($$0, $$1, $$2);
       }
+   },
+   b(false) {
+      @Override
+      void a(bxe $$0, bxe $$1, bvx $$2) {
+         bwd $$3 = $$0.cZ();
+         if ($$3 != null) {
+            $$3.bP();
+         }
+
+         bwd $$4 = $$0.C();
+         if ($$4 != null) {
+            $$0.y();
+         }
+
+         this.b($$0, $$1, $$2);
+      }
+   };
+
+   private final boolean c;
+
+   bvy(final boolean $$0) {
+      this.c = $$0;
    }
 
-   public float b(bwk $$0) {
-      return this.f.getOrDefault($$0, 0.085F);
+   public boolean a() {
+      return this.c;
    }
 
-   public boolean c(bwk $$0) {
-      return this.b($$0) > 1.0F;
-   }
+   abstract void a(bxe var1, bxe var2, bvx var3);
 
-   public Map<bwk, Float> a() {
-      return this.f;
+   void b(bxe $$0, bxe $$1, bvx $$2) {
+      $$1.E($$0.fv());
+
+      for (bvh $$3 : $$0.eC()) {
+         $$1.a(new bvh($$3));
+      }
+
+      if ($$0.n_()) {
+         $$1.a(true);
+      }
+
+      if ($$0 instanceof bvt $$4 && $$1 instanceof bvt $$5) {
+         $$5.c_($$4.g());
+         $$5.c = $$4.c;
+         $$5.d = $$4.d;
+      }
+
+      byc<?> $$6 = $$0.eb();
+      byc<?> $$7 = $$1.eb();
+      if ($$6.a(cge.ac, cgf.c) && $$6.a(cge.ac)) {
+         $$7.a(cge.ac, $$6.c(cge.ac));
+      }
+
+      if ($$2.c()) {
+         $$1.a_($$0.fM());
+      }
+
+      $$1.u($$0.gg());
+      $$1.t($$0.gf());
+      if ($$0.fZ()) {
+         $$1.fY();
+      }
+
+      if ($$0.h_()) {
+         $$1.b($$0.an());
+         $$1.o($$0.cL());
+      }
+
+      $$1.c($$0.bY());
+      $$1.m($$0.cC());
+      $$1.f($$0.bc());
+      $$1.f($$0.aC());
+      $$1.e($$0.bb());
+      $$0.as().forEach($$1::a);
+      if ($$2.d() != null) {
+         ffn $$8 = $$1.dV().R();
+         $$8.a($$1.cH(), $$2.d());
+         if ($$0.cr() != null && $$0.cr() == $$2.d()) {
+            $$8.b($$0.cH(), $$0.cr());
+         }
+      }
+
+      if ($$0 instanceof cot $$9 && $$9.gv() && $$1 instanceof cot $$10) {
+         $$10.x(true);
+      }
    }
 }

@@ -1,22 +1,22 @@
-public class guz extends gue<cix, hbk, gew> {
-   private static final ale a = ale.b("textures/entity/dolphin.png");
+public class guz extends gxf<cil, hbn, gep> {
+   private static final alg a = alg.b("textures/entity/bat.png");
 
-   public guz(gvk.a $$0) {
-      super($$0, new gew($$0.a(gif.at)), new gew($$0.a(gif.au)), 0.7F);
-      this.a(new gzf(this));
+   public guz(gvz.a $$0) {
+      super($$0, new gep($$0.a(git.u)), 0.25F);
    }
 
-   public ale a(hbk $$0) {
+   public alg a(hbn $$0) {
       return a;
    }
 
-   public hbk a() {
-      return new hbk();
+   public hbn a() {
+      return new hbn();
    }
 
-   public void a(cix $$0, hbk $$1, float $$2) {
+   public void a(cil $$0, hbn $$1, float $$2) {
       super.a($$0, $$1, $$2);
-      hce.a($$0, $$1, this.h);
-      $$1.a = $$0.dy().j() > 1.0E-7;
+      $$1.a = $$0.m();
+      $$1.b.a($$0.c);
+      $$1.c.a($$0.d);
    }
 }

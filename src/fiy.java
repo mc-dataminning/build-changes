@@ -1,36 +1,49 @@
-import com.google.common.primitives.Floats;
-import it.unimi.dsi.fastutil.ints.IntArrays;
-import org.joml.Vector3f;
+import com.mojang.blaze3d.systems.RenderSystem;
+import javax.annotation.Nullable;
 
-public interface fiy {
-   fiy a = a(0.0F, 0.0F, 0.0F);
-   fiy b = a((fiy.a)($$0 -> -$$0.z()));
+public class fiy {
+   @Nullable
+   private static fjf a;
 
-   static fiy a(float $$0, float $$1, float $$2) {
-      return a(new Vector3f($$0, $$1, $$2));
+   public static void a() {
+      if (a != null) {
+         b();
+         fjf.b();
+      }
    }
 
-   static fiy a(Vector3f $$0) {
-      return a($$0::distanceSquared);
+   public static void b() {
+      a = null;
    }
 
-   static fiy a(fiy.a $$0) {
-      return $$1 -> {
-         float[] $$2 = new float[$$1.length];
-         int[] $$3 = new int[$$1.length];
-
-         for (int $$4 = 0; $$4 < $$1.length; $$3[$$4] = $$4++) {
-            $$2[$$4] = $$0.apply($$1[$$4]);
-         }
-
-         IntArrays.mergeSort($$3, ($$1x, $$2x) -> Floats.compare($$2[$$2x], $$2[$$1x]));
-         return $$3;
-      };
+   public static void a(fjb $$0) {
+      RenderSystem.assertOnRenderThread();
+      fjf $$1 = c($$0);
+      $$1.a(RenderSystem.getModelViewMatrix(), RenderSystem.getProjectionMatrix(), RenderSystem.getShader());
    }
 
-   int[] sort(Vector3f[] var1);
+   public static void b(fjb $$0) {
+      RenderSystem.assertOnRenderThread();
+      fjf $$1 = c($$0);
+      $$1.c();
+   }
 
-   public interface a {
-      float apply(Vector3f var1);
+   private static fjf c(fjb $$0) {
+      fjf $$1 = a($$0.c().a());
+      $$1.a($$0);
+      return $$1;
+   }
+
+   private static fjf a(fjh $$0) {
+      fjf $$1 = $$0.i();
+      a($$1);
+      return $$1;
+   }
+
+   private static void a(fjf $$0) {
+      if ($$0 != a) {
+         $$0.a();
+         a = $$0;
+      }
    }
 }

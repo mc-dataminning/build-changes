@@ -1,296 +1,320 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.Sets;
-import com.google.common.collect.ImmutableList.Builder;
-import java.util.HashMap;
+import com.google.common.collect.Lists;
 import java.util.List;
-import java.util.Map;
-import java.util.Objects;
-import java.util.Set;
-import java.util.Map.Entry;
-import java.util.function.UnaryOperator;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
 import javax.annotation.Nullable;
-import org.joml.Matrix4f;
+import org.joml.Vector3f;
+import org.joml.Vector4f;
 
 public class gph {
-   public static final ale a = ale.b("main");
-   private final List<gpj> b;
-   private final Map<ale, gpi.d> c;
-   private final Set<ale> d;
+   private static final int b = 96;
+   private static final List<gph.e> c = Lists.newArrayList(new gph.e[]{new gph.a(), new gph.b()});
+   public static final float a = 5000.0F;
+   private static int d = -1;
+   private static int e = -1;
+   private static long f = -1L;
+   private static boolean g = true;
 
-   private gph(List<gpj> $$0, Map<ale, gpi.d> $$1, Set<ale> $$2) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
-   }
+   public static Vector4f a(fnz $$0, float $$1, gjr $$2, int $$3, float $$4) {
+      ewi $$5 = $$0.k();
+      bwd $$6 = $$0.g();
+      float $$19;
+      float $$20;
+      float $$21;
+      if ($$5 == ewi.b) {
+         long $$7 = af.c();
+         int $$8 = $$2.u(iu.a((jo)$$0.b())).a().j();
+         if (f < 0L) {
+            d = $$8;
+            e = $$8;
+            f = $$7;
+         }
 
-   public static gph a(gpi $$0, hib $$1, gpu $$2, Set<ale> $$3) throws gpu.b {
-      Stream<ale> $$4 = $$0.b().stream().flatMap(gpi.e::b);
-      Set<ale> $$5 = $$4.filter($$1x -> !$$0.a().containsKey($$1x)).collect(Collectors.toSet());
-      Set<ale> $$6 = Sets.difference($$5, $$3);
-      if (!$$6.isEmpty()) {
-         throw new gpu.b("Referenced external targets are not available in this context: " + $$6);
+         int $$9 = d >> 16 & 0xFF;
+         int $$10 = d >> 8 & 0xFF;
+         int $$11 = d & 0xFF;
+         int $$12 = e >> 16 & 0xFF;
+         int $$13 = e >> 8 & 0xFF;
+         int $$14 = e & 0xFF;
+         float $$15 = azm.a((float)($$7 - f) / 5000.0F, 0.0F, 1.0F);
+         float $$16 = azm.h($$15, (float)$$12, (float)$$9);
+         float $$17 = azm.h($$15, (float)$$13, (float)$$10);
+         float $$18 = azm.h($$15, (float)$$14, (float)$$11);
+         $$19 = $$16 / 255.0F;
+         $$20 = $$17 / 255.0F;
+         $$21 = $$18 / 255.0F;
+         if (d != $$8) {
+            d = $$8;
+            e = azm.d($$16) << 16 | azm.d($$17) << 8 | azm.d($$18);
+            f = $$7;
+         }
+      } else if ($$5 == ewi.a) {
+         $$19 = 0.6F;
+         $$20 = 0.1F;
+         $$21 = 0.0F;
+         f = -1L;
+      } else if ($$5 == ewi.c) {
+         $$19 = 0.623F;
+         $$20 = 0.734F;
+         $$21 = 0.785F;
+         f = -1L;
       } else {
-         Builder<gpj> $$7 = ImmutableList.builder();
-
-         for (gpi.e $$8 : $$0.b()) {
-            $$7.add(a($$1, $$2, $$8));
-         }
-
-         return new gph($$7.build(), $$0.a(), $$5);
-      }
-   }
-
-   // $VF: Inserted dummy exception handlers to handle obfuscated exceptions
-   private static gpj a(hib $$0, gpu $$1, gpi.e $$2) throws gpu.b {
-      gom $$3 = $$1.b($$2.a());
-
-      for (gpi.h $$4 : $$2.f()) {
-         String $$5 = $$4.a();
-         if ($$3.a($$5) == null) {
-            throw new gpu.b("Uniform '" + $$5 + "' does not exist for " + $$2.c());
-         }
-      }
-
-      String $$6 = $$2.c().toString();
-      gpj $$7 = new gpj($$6, $$3, $$2.e(), $$2.f());
-
-      for (gpi.c $$8 : $$2.d()) {
-         Objects.requireNonNull($$8);
-         Throwable var44;
-         switch ($$8) {
-            case gpi.g var10:
-               gpi.g var52 = var10;
-
-               try {
-                  var53 = var52.a();
-               } catch (Throwable var30) {
-                  var44 = var30;
-                  boolean var65 = false;
-                  break;
-               }
-
-               String var35 = var53;
-               gpi.g var54 = var10;
-
-               try {
-                  var55 = var54.c();
-               } catch (Throwable var29) {
-                  var44 = var29;
-                  boolean var66 = false;
-                  break;
-               }
-
-               ale var36 = var55;
-               gpi.g var56 = var10;
-
-               try {
-                  var57 = var56.d();
-               } catch (Throwable var28) {
-                  var44 = var28;
-                  boolean var67 = false;
-                  break;
-               }
-
-               int var37 = var57;
-               gpi.g var58 = var10;
-
-               try {
-                  var59 = var58.e();
-               } catch (Throwable var27) {
-                  var44 = var27;
-                  boolean var68 = false;
-                  break;
-               }
-
-               int var38 = var59;
-               gpi.g var60 = var10;
-
-               try {
-                  var61 = var60.f();
-               } catch (Throwable var26) {
-                  var44 = var26;
-                  boolean var69 = false;
-                  break;
-               }
-
-               boolean var39 = var61;
-               hhk $$14x = $$0.b(var36.a((UnaryOperator<String>)($$0x -> "textures/effect/" + $$0x + ".png")));
-               $$14x.a(var39, false);
-               $$7.a(new gpj.c(var35, $$14x, var37, var38));
-               continue;
-            case gpi.f $$14:
-               gpi.f var10000 = $$14;
-
-               try {
-                  var45 = var10000.a();
-               } catch (Throwable var25) {
-                  var44 = var25;
-                  boolean var10001 = false;
-                  break;
-               }
-
-               String var21 = var45;
-               gpi.f var46 = $$14;
-
-               try {
-                  var47 = var46.c();
-               } catch (Throwable var24) {
-                  var44 = var24;
-                  boolean var62 = false;
-                  break;
-               }
-
-               ale var41 = var47;
-               gpi.f var48 = $$14;
-
-               try {
-                  var49 = var48.d();
-               } catch (Throwable var23) {
-                  var44 = var23;
-                  boolean var63 = false;
-                  break;
-               }
-
-               boolean var42 = var49;
-               gpi.f var50 = $$14;
-
-               try {
-                  var51 = var50.e();
-               } catch (Throwable var22) {
-                  var44 = var22;
-                  boolean var64 = false;
-                  break;
-               }
-
-               boolean var43 = var51;
-               $$7.a(new gpj.b(var21, var41, var42, var43));
-               continue;
-            default:
-               throw new MatchException(null, null);
-         }
-
-         Throwable var34 = var44;
-         throw new MatchException(var34.toString(), var34);
-      }
-
-      return $$7;
-   }
-
-   // $VF: Inserted dummy exception handlers to handle obfuscated exceptions
-   public void a(fgu $$0, int $$1, int $$2, gph.a $$3) {
-      Matrix4f $$4 = new Matrix4f().setOrtho(0.0F, (float)$$1, 0.0F, (float)$$2, 0.1F, 1000.0F);
-      Map<ale, fic<fha>> $$5 = new HashMap<>(this.c.size() + this.d.size());
-
-      for (ale $$6 : this.d) {
-         $$5.put($$6, $$3.b($$6));
-      }
-
-      for (Entry<ale, gpi.d> $$7 : this.c.entrySet()) {
-         ale $$8 = $$7.getKey();
-         gpi.d var35;
-         Objects.requireNonNull(var35);
-         Object var11 = var35;
-
-         var35 = $$7.getValue();
-         fia $$11 = switch (var11) {
-            case gpi.a var13 -> {
-               gpi.a var29 = var13;
-
-               int var26;
-               label56: {
-                  label76: {
-                     try {
-                        var31 = var29.a();
-                     } catch (Throwable var18) {
-                        var30 = var18;
-                        boolean var10001 = false;
-                        break label76;
-                     }
-
-                     var26 = var31;
-                     gpi.a var32 = var13;
-
-                     try {
-                        var33 = var32.b();
-                        break label56;
-                     } catch (Throwable var17) {
-                        var30 = var17;
-                        boolean var34 = false;
-                     }
-                  }
-
-                  Throwable var20 = var30;
-                  throw new MatchException(var20.toString(), var20);
-               }
-
-               int var27 = var33;
-               yield new fia(var26, var27, true, 0);
-            }
-            case gpi.b var16 -> new fia($$1, $$2, true, 0);
-            default -> throw new MatchException(null, null);
-         };
-         $$5.put($$8, $$0.a($$8.toString(), $$11));
-      }
-
-      for (gpj $$12 : this.b) {
-         $$12.a($$0, $$5, $$4);
-      }
-
-      for (ale $$13 : this.d) {
-         $$3.a($$13, $$5.get($$13));
-      }
-   }
-
-   @Deprecated
-   public void a(fha $$0, fhz $$1) {
-      fgu $$2 = new fgu();
-      gph.a $$3 = gph.a.b(a, $$2.a("main", $$0));
-      this.a($$2, $$0.c, $$0.d, $$3);
-      $$2.a($$1);
-   }
-
-   public void a(String $$0, float $$1) {
-      for (gpj $$2 : this.b) {
-         $$2.a().c($$0).a($$1);
-      }
-   }
-
-   public interface a {
-      static gph.a b(final ale $$0, final fic<fha> $$1) {
-         return new gph.a() {
-            private fic<fha> c = $$1;
-
-            @Override
-            public void a(ale $$0x, fic<fha> $$1x) {
-               if ($$0.equals($$0)) {
-                  this.c = $$1;
-               } else {
-                  throw new IllegalArgumentException("No target with id " + $$0);
-               }
+         float $$28 = 0.25F + 0.75F * (float)$$3 / 32.0F;
+         $$28 = 1.0F - (float)Math.pow((double)$$28, 0.25);
+         int $$29 = $$2.a($$0.b(), $$1);
+         float $$30 = axw.j($$29);
+         float $$31 = axw.k($$29);
+         float $$32 = axw.l($$29);
+         float $$33 = azm.a(azm.b($$2.f($$1) * (float) (Math.PI * 2)) * 2.0F + 0.5F, 0.0F, 1.0F);
+         dka $$34 = $$2.D_();
+         fei $$35 = $$0.b().a(2.0, 2.0, 2.0).c(0.25);
+         fei $$36 = aym.a($$35, ($$3x, $$4x, $$5x) -> $$2.c().a(fei.a($$34.a($$3x, $$4x, $$5x).a().e()), $$33));
+         $$19 = (float)$$36.a();
+         $$20 = (float)$$36.b();
+         $$21 = (float)$$36.c();
+         if ($$3 >= 4) {
+            float $$40 = azm.a($$2.a($$1)) > 0.0F ? -1.0F : 1.0F;
+            Vector3f $$41 = new Vector3f($$40, 0.0F, 0.0F);
+            float $$42 = $$0.l().dot($$41);
+            if ($$42 < 0.0F) {
+               $$42 = 0.0F;
             }
 
-            @Nullable
-            @Override
-            public fic<fha> a(ale $$0x) {
-               return $$0.equals($$0) ? this.c : null;
+            if ($$42 > 0.0F && $$2.c().a($$2.f($$1))) {
+               int $$43 = $$2.c().b($$2.f($$1));
+               $$42 *= axw.i($$43);
+               $$19 = $$19 * (1.0F - $$42) + axw.j($$43) * $$42;
+               $$20 = $$20 * (1.0F - $$42) + axw.k($$43) * $$42;
+               $$21 = $$21 * (1.0F - $$42) + axw.l($$43) * $$42;
             }
-         };
+         }
+
+         $$19 += ($$30 - $$19) * $$28;
+         $$20 += ($$31 - $$20) * $$28;
+         $$21 += ($$32 - $$21) * $$28;
+         float $$44 = $$2.d($$1);
+         if ($$44 > 0.0F) {
+            float $$45 = 1.0F - $$44 * 0.5F;
+            float $$46 = 1.0F - $$44 * 0.4F;
+            $$19 *= $$45;
+            $$20 *= $$45;
+            $$21 *= $$46;
+         }
+
+         float $$47 = $$2.b($$1);
+         if ($$47 > 0.0F) {
+            float $$48 = 1.0F - $$47 * 0.5F;
+            $$19 *= $$48;
+            $$20 *= $$48;
+            $$21 *= $$48;
+         }
+
+         f = -1L;
       }
 
-      void a(ale var1, fic<fha> var2);
+      float $$49 = ((float)$$0.b().e - (float)$$2.G_()) * $$2.k().e();
+      gph.e $$50 = a($$6, $$1);
+      if ($$50 != null) {
+         bxc $$51 = (bxc)$$6;
+         $$49 = $$50.a($$51, $$51.c($$50.a()), $$49, $$1);
+      }
 
-      @Nullable
-      fic<fha> a(ale var1);
+      if ($$49 < 1.0F && $$5 != ewi.a && $$5 != ewi.c) {
+         if ($$49 < 0.0F) {
+            $$49 = 0.0F;
+         }
 
-      default fic<fha> b(ale $$0) {
-         fic<fha> $$1 = this.a($$0);
-         if ($$1 == null) {
-            throw new IllegalArgumentException("Missing target with id " + $$0);
+         $$49 *= $$49;
+         $$19 *= $$49;
+         $$20 *= $$49;
+         $$21 *= $$49;
+      }
+
+      if ($$4 > 0.0F) {
+         $$19 = $$19 * (1.0F - $$4) + $$19 * 0.7F * $$4;
+         $$20 = $$20 * (1.0F - $$4) + $$20 * 0.6F * $$4;
+         $$21 = $$21 * (1.0F - $$4) + $$21 * 0.6F * $$4;
+      }
+
+      float $$52;
+      if ($$5 == ewi.b) {
+         if ($$6 instanceof gop) {
+            $$52 = ((gop)$$6).D();
          } else {
-            return $$1;
+            $$52 = 1.0F;
          }
+      } else {
+         label86: {
+            if ($$6 instanceof bxc $$54 && $$54.b(bvj.p) && !$$54.b(bvj.G)) {
+               $$52 = gpi.a($$54, $$1);
+               break label86;
+            }
+
+            $$52 = 0.0F;
+         }
+      }
+
+      if ($$19 != 0.0F && $$20 != 0.0F && $$21 != 0.0F) {
+         float $$57 = Math.min(1.0F / $$19, Math.min(1.0F / $$20, 1.0F / $$21));
+         $$19 = $$19 * (1.0F - $$52) + $$19 * $$57 * $$52;
+         $$20 = $$20 * (1.0F - $$52) + $$20 * $$57 * $$52;
+         $$21 = $$21 * (1.0F - $$52) + $$21 * $$57 * $$52;
+      }
+
+      return new Vector4f($$19, $$20, $$21, 1.0F);
+   }
+
+   public static boolean a() {
+      return g = !g;
+   }
+
+   @Nullable
+   private static gph.e a(bwd $$0, float $$1) {
+      return $$0 instanceof bxc $$2 ? c.stream().filter($$2x -> $$2x.a($$2, $$1)).findFirst().orElse(null) : null;
+   }
+
+   public static gpg a(fnz $$0, gph.d $$1, Vector4f $$2, float $$3, boolean $$4, float $$5) {
+      if (!g) {
+         return gpg.a;
+      } else {
+         ewi $$6 = $$0.k();
+         bwd $$7 = $$0.g();
+         gph.c $$8 = new gph.c($$1);
+         gph.e $$9 = a($$7, $$5);
+         if ($$6 == ewi.a) {
+            if ($$7.U_()) {
+               $$8.b = -8.0F;
+               $$8.c = $$3 * 0.5F;
+            } else if ($$7 instanceof bxc && ((bxc)$$7).b(bvj.l)) {
+               $$8.b = 0.0F;
+               $$8.c = 5.0F;
+            } else {
+               $$8.b = 0.25F;
+               $$8.c = 1.0F;
+            }
+         } else if ($$6 == ewi.c) {
+            if ($$7.U_()) {
+               $$8.b = -8.0F;
+               $$8.c = $$3 * 0.5F;
+            } else {
+               $$8.b = 0.0F;
+               $$8.c = 2.0F;
+            }
+         } else if ($$9 != null) {
+            bxc $$10 = (bxc)$$7;
+            bvh $$11 = $$10.c($$9.a());
+            if ($$11 != null) {
+               $$9.a($$8, $$10, $$11, $$3, $$5);
+            }
+         } else if ($$6 == ewi.b) {
+            $$8.b = -8.0F;
+            $$8.c = 96.0F;
+            if ($$7 instanceof gop $$12) {
+               $$8.c = $$8.c * Math.max(0.25F, $$12.D());
+               je<djy> $$13 = $$12.dV().u($$12.dv());
+               if ($$13.a(axb.aa)) {
+                  $$8.c *= 0.85F;
+               }
+            }
+
+            if ($$8.c > $$3) {
+               $$8.c = $$3;
+               $$8.d = fis.b;
+            }
+         } else if ($$4) {
+            $$8.b = $$3 * 0.05F;
+            $$8.c = Math.min($$3, 192.0F) * 0.5F;
+         } else if ($$1 == gph.d.a) {
+            $$8.b = 0.0F;
+            $$8.c = $$3;
+            $$8.d = fis.b;
+         } else if ($$1 == gph.d.b) {
+            float $$14 = azm.a($$3 / 10.0F, 4.0F, 64.0F);
+            $$8.b = $$3 - $$14;
+            $$8.c = $$3;
+            $$8.d = fis.b;
+         }
+
+         return new gpg($$8.b, $$8.c, $$8.d, $$2.x, $$2.y, $$2.z, $$2.w);
+      }
+   }
+
+   static class a implements gph.e {
+      @Override
+      public je<bvf> a() {
+         return bvj.o;
+      }
+
+      @Override
+      public void a(gph.c $$0, bxc $$1, bvh $$2, float $$3, float $$4) {
+         float $$5 = $$2.b() ? 5.0F : azm.h(Math.min(1.0F, (float)$$2.d() / 20.0F), $$3, 5.0F);
+         if ($$0.a == gph.d.a) {
+            $$0.b = 0.0F;
+            $$0.c = $$5 * 0.8F;
+         } else if ($$0.a == gph.d.b) {
+            $$0.b = $$5 * 0.25F;
+            $$0.c = $$5;
+         }
+      }
+   }
+
+   static class b implements gph.e {
+      @Override
+      public je<bvf> a() {
+         return bvj.G;
+      }
+
+      @Override
+      public void a(gph.c $$0, bxc $$1, bvh $$2, float $$3, float $$4) {
+         float $$5 = azm.h($$2.a($$1, $$4), $$3, 15.0F);
+
+         $$0.b = switch ($$0.a) {
+            case a -> 0.0F;
+            case b -> $$5 * 0.75F;
+         };
+         $$0.c = $$5;
+      }
+
+      @Override
+      public float a(bxc $$0, bvh $$1, float $$2, float $$3) {
+         return 1.0F - $$1.a($$0, $$3);
+      }
+   }
+
+   static class c {
+      public final gph.d a;
+      public float b;
+      public float c;
+      public fis d = fis.a;
+
+      public c(gph.d $$0) {
+         this.a = $$0;
+      }
+   }
+
+   public static enum d {
+      a,
+      b;
+   }
+
+   interface e {
+      je<bvf> a();
+
+      void a(gph.c var1, bxc var2, bvh var3, float var4, float var5);
+
+      default boolean a(bxc $$0, float $$1) {
+         return $$0.b(this.a());
+      }
+
+      default float a(bxc $$0, bvh $$1, float $$2, float $$3) {
+         bvh $$4 = $$0.c(this.a());
+         if ($$4 != null) {
+            if ($$4.a(19)) {
+               $$2 = 1.0F - (float)$$4.d() / 20.0F;
+            } else {
+               $$2 = 0.0F;
+            }
+         }
+
+         return $$2;
       }
    }
 }

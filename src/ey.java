@@ -3,11 +3,11 @@ import com.mojang.serialization.Codec;
 import java.util.Arrays;
 import java.util.Locale;
 
-public class ey extends ft<efn.a> {
-   private static final Codec<efn.a> a = bai.a(ey::b, $$0 -> $$0.toLowerCase(Locale.ROOT));
+public class ey extends ft<efy.a> {
+   private static final Codec<efy.a> a = bak.a(ey::b, $$0 -> $$0.toLowerCase(Locale.ROOT));
 
-   private static efn.a[] b() {
-      return Arrays.stream(efn.a.values()).filter(efn.a::d).toArray(efn.a[]::new);
+   private static efy.a[] b() {
+      return Arrays.stream(efy.a.values()).filter(efy.a::d).toArray(efy.a[]::new);
    }
 
    private ey() {
@@ -18,8 +18,8 @@ public class ey extends ft<efn.a> {
       return new ey();
    }
 
-   public static efn.a a(CommandContext<ei> $$0, String $$1) {
-      return (efn.a)$$0.getArgument($$1, efn.a.class);
+   public static efy.a a(CommandContext<ei> $$0, String $$1) {
+      return (efy.a)$$0.getArgument($$1, efy.a.class);
    }
 
    @Override

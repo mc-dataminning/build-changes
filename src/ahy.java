@@ -1,12 +1,14 @@
-public record ahy(der b) implements zd<agn> {
-   public static final yu<vs, ahy> a = yu.a(der.a, ahy::b, ahy::new);
+import io.netty.buffer.ByteBuf;
+
+public record ahy() implements zf<agp> {
+   public static final yw<ByteBuf, ahy> a = yw.a(new ahy());
 
    @Override
-   public zf<ahy> a() {
-      return agl.bX;
+   public zh<ahy> a() {
+      return agn.bV;
    }
 
-   public void a(agn $$0) {
+   public void a(agp $$0) {
       $$0.a(this);
    }
 }

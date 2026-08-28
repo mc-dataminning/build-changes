@@ -1,91 +1,77 @@
-public class dcr extends dcz {
-   public dcr(dcw $$0) {
-      super($$0);
+import javax.annotation.Nullable;
+
+public class dcr extends dct {
+   private final iu b;
+   protected boolean a = true;
+
+   public dcr(cqy $$0, bua $$1, cyy $$2, fee $$3) {
+      this($$0.dV(), $$0, $$1, $$2, $$3);
    }
 
-   public boolean a(dcx $$0, dip $$1) {
-      if ($$0.e() != 2) {
-         return false;
+   public dcr(dct $$0) {
+      this($$0.q(), $$0.o(), $$0.p(), $$0.n(), $$0.j());
+   }
+
+   protected dcr(div $$0, @Nullable cqy $$1, bua $$2, cyy $$3, fee $$4) {
+      super($$0, $$1, $$2, $$3, $$4);
+      this.b = $$4.b().a($$4.c());
+      this.a = $$0.a_($$4.b()).a(this);
+   }
+
+   public static dcr a(dcr $$0, iu $$1, ja $$2) {
+      return new dcr(
+         $$0.q(),
+         $$0.o(),
+         $$0.p(),
+         $$0.n(),
+         new fee(
+            new fei((double)$$1.u() + 0.5 + (double)$$2.j() * 0.5, (double)$$1.v() + 0.5 + (double)$$2.k() * 0.5, (double)$$1.w() + 0.5 + (double)$$2.l() * 0.5),
+            $$2,
+            $$1,
+            false
+         )
+      );
+   }
+
+   @Override
+   public iu a() {
+      return this.a ? super.a() : this.b;
+   }
+
+   public boolean b() {
+      return this.a || this.q().a_(this.a()).a(this);
+   }
+
+   public boolean c() {
+      return this.a;
+   }
+
+   public ja d() {
+      return ja.a(this.o())[0];
+   }
+
+   public ja e() {
+      return ja.a(this.o(), ja.a.b);
+   }
+
+   public ja[] f() {
+      ja[] $$0 = ja.a(this.o());
+      if (this.a) {
+         return $$0;
       } else {
-         cxq $$2 = null;
-         boolean $$3 = false;
-         boolean $$4 = false;
+         ja $$1 = this.k();
+         int $$2 = 0;
 
-         for (int $$5 = 0; $$5 < $$0.a(); $$5++) {
-            cys $$6 = $$0.a($$5);
-            if (!$$6.f()) {
-               cyo $$7 = $$6.h();
-               if (!($$7 instanceof cwy)) {
-                  return false;
-               }
-
-               cwy $$8 = (cwy)$$7;
-               if ($$2 == null) {
-                  $$2 = $$8.a();
-               } else if ($$2 != $$8.a()) {
-                  return false;
-               }
-
-               int $$10 = $$6.a(kj.am, dwd.a).b().size();
-               if ($$10 > 6) {
-                  return false;
-               }
-
-               if ($$10 > 0) {
-                  if ($$4) {
-                     return false;
-                  }
-
-                  $$4 = true;
-               } else {
-                  if ($$3) {
-                     return false;
-                  }
-
-                  $$3 = true;
-               }
-            }
+         while ($$2 < $$0.length && $$0[$$2] != $$1.g()) {
+            $$2++;
          }
 
-         return $$4 && $$3;
-      }
-   }
-
-   public cys a(dcx $$0, jg.a $$1) {
-      for (int $$2 = 0; $$2 < $$0.a(); $$2++) {
-         cys $$3 = $$0.a($$2);
-         if (!$$3.f()) {
-            int $$4 = $$3.a(kj.am, dwd.a).b().size();
-            if ($$4 > 0 && $$4 <= 6) {
-               return $$3.c(1);
-            }
+         if ($$2 > 0) {
+            System.arraycopy($$0, 0, $$0, 1, $$2);
+            $$0[0] = $$1.g();
          }
+
+         return $$0;
       }
-
-      return cys.k;
-   }
-
-   @Override
-   public jn<cys> a(dcx $$0) {
-      jn<cys> $$1 = jn.a($$0.a(), cys.k);
-
-      for (int $$2 = 0; $$2 < $$1.size(); $$2++) {
-         cys $$3 = $$0.a($$2);
-         if (!$$3.f()) {
-            cys $$4 = $$3.h().i();
-            if (!$$4.f()) {
-               $$1.set($$2, $$4);
-            } else if (!$$3.a(kj.am, dwd.a).b().isEmpty()) {
-               $$1.set($$2, $$3.c(1));
-            }
-         }
-      }
-
-      return $$1;
-   }
-
-   @Override
-   public ddt<dcr> a() {
-      return ddt.k;
    }
 }

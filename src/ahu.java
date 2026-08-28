@@ -1,61 +1,36 @@
-public class ahu implements zd<agn> {
-   public static final yu<vs, ahu> a = zd.a(ahu::a, ahu::new);
-   private final int b;
-   private final ahu.a c;
-   private final int d;
+public class ahu implements zf<agp> {
+   public static final yw<vu, ahu> a = zf.a(ahu::a, ahu::new);
+   private static final int b = 2;
+   private final boolean c;
 
-   public ahu(bwa $$0, ahu.a $$1) {
-      this($$0, $$1, 0);
+   public ahu(cqu $$0) {
+      this.c = $$0.b;
    }
 
-   public ahu(bwa $$0, ahu.a $$1, int $$2) {
-      this.b = $$0.ar();
-      this.c = $$1;
-      this.d = $$2;
+   private ahu(vu $$0) {
+      byte $$1 = $$0.readByte();
+      this.c = ($$1 & 2) != 0;
    }
 
-   private ahu(vs $$0) {
-      this.b = $$0.l();
-      this.c = $$0.b(ahu.a.class);
-      this.d = $$0.l();
-   }
+   private void a(vu $$0) {
+      byte $$1 = 0;
+      if (this.c) {
+         $$1 = (byte)($$1 | 2);
+      }
 
-   private void a(vs $$0) {
-      $$0.c(this.b);
-      $$0.a(this.c);
-      $$0.c(this.d);
+      $$0.l($$1);
    }
 
    @Override
-   public zf<ahu> a() {
-      return agl.bT;
+   public zh<ahu> a() {
+      return agn.bR;
    }
 
-   public void a(agn $$0) {
+   public void a(agp $$0) {
       $$0.a(this);
    }
 
-   public int b() {
-      return this.b;
-   }
-
-   public ahu.a e() {
+   public boolean b() {
       return this.c;
-   }
-
-   public int f() {
-      return this.d;
-   }
-
-   public static enum a {
-      a,
-      b,
-      c,
-      d,
-      e,
-      f,
-      g,
-      h,
-      i;
    }
 }

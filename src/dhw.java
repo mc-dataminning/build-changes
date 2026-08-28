@@ -1,226 +1,193 @@
-import com.mojang.serialization.Codec;
-import io.netty.buffer.ByteBuf;
-import java.util.Spliterators.AbstractSpliterator;
-import java.util.function.Consumer;
-import java.util.stream.IntStream;
-import java.util.stream.Stream;
-import java.util.stream.StreamSupport;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import javax.annotation.Nullable;
+import net.minecraft.server.MinecraftServer;
 
-public class dhw {
-   public static final Codec<dhw> a = Codec.INT_STREAM
-      .comapFlatMap($$0 -> af.a($$0, 2).map($$0x -> new dhw($$0x[0], $$0x[1])), $$0 -> IntStream.of($$0.h, $$0.i))
-      .stable();
-   public static final yu<ByteBuf, dhw> b = new yu<ByteBuf, dhw>() {
-      public dhw a(ByteBuf $$0) {
-         return vs.c($$0);
-      }
-
-      public void a(ByteBuf $$0, dhw $$1) {
-         vs.a($$0, $$1);
-      }
-   };
-   private static final int j = 1056;
-   public static final long c = c(1875066, 1875066);
-   private static final int k = (32 + ecl.a.a(ecm.n).c().b() + 1) * 2;
-   public static final int d = jx.a(iu.f) - k;
-   public static final dhw e = new dhw(0, 0);
-   private static final long l = 32L;
-   private static final long m = 4294967295L;
-   private static final int n = 5;
-   public static final int f = 32;
-   private static final int o = 31;
-   public static final int g = 31;
-   public final int h;
-   public final int i;
-   private static final int p = 1664525;
-   private static final int q = 1013904223;
-   private static final int r = -559038737;
-
-   public dhw(int $$0, int $$1) {
-      this.h = $$0;
-      this.i = $$1;
-   }
-
-   public dhw(iu $$0) {
-      this.h = jx.a($$0.u());
-      this.i = jx.a($$0.w());
-   }
-
-   public dhw(long $$0) {
-      this.h = (int)$$0;
-      this.i = (int)($$0 >> 32);
-   }
-
-   public static dhw a(int $$0, int $$1) {
-      return new dhw($$0 << 5, $$1 << 5);
-   }
-
-   public static dhw b(int $$0, int $$1) {
-      return new dhw(($$0 << 5) + 31, ($$1 << 5) + 31);
-   }
-
-   public long a() {
-      return c(this.h, this.i);
-   }
-
-   public static long c(int $$0, int $$1) {
-      return (long)$$0 & 4294967295L | ((long)$$1 & 4294967295L) << 32;
-   }
-
-   public static long a(iu $$0) {
-      return c(jx.a($$0.u()), jx.a($$0.w()));
-   }
-
-   public static int a(long $$0) {
-      return (int)($$0 & 4294967295L);
-   }
-
-   public static int b(long $$0) {
-      return (int)($$0 >>> 32 & 4294967295L);
-   }
-
-   @Override
-   public int hashCode() {
-      return d(this.h, this.i);
-   }
-
-   public static int d(int $$0, int $$1) {
-      int $$2 = 1664525 * $$0 + 1013904223;
-      int $$3 = 1664525 * ($$1 ^ -559038737) + 1013904223;
-      return $$2 ^ $$3;
-   }
-
-   @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else {
-         return !($$0 instanceof dhw $$1) ? false : this.h == $$1.h && this.i == $$1.i;
-      }
-   }
-
-   public int b() {
-      return this.a(8);
-   }
-
-   public int c() {
-      return this.b(8);
-   }
-
-   public int d() {
-      return jx.c(this.h);
-   }
-
-   public int e() {
-      return jx.c(this.i);
-   }
-
-   public int f() {
-      return this.a(15);
-   }
-
-   public int g() {
-      return this.b(15);
-   }
-
-   public int h() {
-      return this.h >> 5;
-   }
-
-   public int i() {
-      return this.i >> 5;
-   }
-
-   public int j() {
-      return this.h & 31;
-   }
+public abstract class dhw implements eh {
+   private static final SimpleDateFormat b = new SimpleDateFormat("HH:mm:ss");
+   private static final wy c = wy.b("@");
+   private long d = -1L;
+   private boolean e = true;
+   private int f;
+   private boolean g = true;
+   @Nullable
+   private wy h;
+   private String i = "";
+   @Nullable
+   private wy j;
 
    public int k() {
-      return this.i & 31;
+      return this.f;
    }
 
-   public iu a(int $$0, int $$1, int $$2) {
-      return new iu(this.a($$0), $$1, this.b($$2));
+   public void a(int $$0) {
+      this.f = $$0;
    }
 
-   public int a(int $$0) {
-      return jx.a(this.h, $$0);
+   public wy l() {
+      return this.h == null ? wx.a : this.h;
    }
 
-   public int b(int $$0) {
-      return jx.a(this.i, $$0);
+   public tz a(tz $$0, jg.a $$1) {
+      $$0.a("Command", this.i);
+      $$0.a("SuccessCount", this.f);
+      ale<uw> $$2 = $$1.a(un.a);
+      if (this.j != null) {
+         $$0.a("CustomName", xa.a, $$2, this.j);
+      }
+
+      $$0.a("TrackOutput", this.g);
+      if (this.h != null && this.g) {
+         $$0.a("LastOutput", xa.a, $$2, this.h);
+      }
+
+      $$0.a("UpdateLastExecution", this.e);
+      if (this.e && this.d > 0L) {
+         $$0.a("LastExecution", this.d);
+      }
+
+      return $$0;
    }
 
-   public iu c(int $$0) {
-      return new iu(this.b(), $$0, this.c());
+   public void b(tz $$0, jg.a $$1) {
+      this.i = $$0.l("Command");
+      this.f = $$0.h("SuccessCount");
+      this.b(dwx.a($$0.c("CustomName"), $$1));
+      if ($$0.b("TrackOutput", 1)) {
+         this.g = $$0.q("TrackOutput");
+      }
+
+      if ($$0.e("LastOutput") && this.g) {
+         this.h = dwx.a($$0.c("LastOutput"), $$1);
+      } else {
+         this.h = null;
+      }
+
+      if ($$0.e("UpdateLastExecution")) {
+         this.e = $$0.q("UpdateLastExecution");
+      }
+
+      if (this.e && $$0.e("LastExecution")) {
+         this.d = $$0.i("LastExecution");
+      } else {
+         this.d = -1L;
+      }
+   }
+
+   public void a(String $$0) {
+      this.i = $$0;
+      this.f = 0;
+   }
+
+   public String m() {
+      return this.i;
+   }
+
+   public boolean a(div $$0) {
+      if ($$0.C || $$0.ae() == this.d) {
+         return false;
+      } else if ("Searge".equalsIgnoreCase(this.i)) {
+         this.h = wy.b("#itzlipofutzli");
+         this.f = 1;
+         return true;
+      } else {
+         this.f = 0;
+         MinecraftServer $$1 = this.e().p();
+         if ($$1.q() && !bal.b(this.i)) {
+            try {
+               this.h = null;
+               ei $$2 = this.i().a((ef)(($$0x, $$1x) -> {
+                  if ($$0x) {
+                     this.f++;
+                  }
+               }));
+               $$1.aG().a($$2, this.i);
+            } catch (Throwable var6) {
+               o $$4 = o.a(var6, "Executing command block");
+               p $$5 = $$4.a("Command to be executed");
+               $$5.a("Command", this::m);
+               $$5.a("Name", () -> this.n().getString());
+               throw new z($$4);
+            }
+         }
+
+         if (this.e) {
+            this.d = $$0.ae();
+         } else {
+            this.d = -1L;
+         }
+
+         return true;
+      }
+   }
+
+   public wy n() {
+      return this.j != null ? this.j : c;
+   }
+
+   @Nullable
+   public wy o() {
+      return this.j;
+   }
+
+   public void b(@Nullable wy $$0) {
+      this.j = $$0;
    }
 
    @Override
-   public String toString() {
-      return "[" + this.h + ", " + this.i + "]";
+   public void a(wy $$0) {
+      if (this.g) {
+         this.h = wy.b("[" + b.format(new Date()) + "] ").b($$0);
+         this.f();
+      }
    }
 
-   public iu l() {
-      return new iu(this.d(), 0, this.e());
+   public abstract arq e();
+
+   public abstract void f();
+
+   public void c(@Nullable wy $$0) {
+      this.h = $$0;
    }
 
-   public int a(dhw $$0) {
-      return this.e($$0.h, $$0.i);
+   public void a(boolean $$0) {
+      this.g = $$0;
    }
 
-   public int e(int $$0, int $$1) {
-      return Math.max(Math.abs(this.h - $$0), Math.abs(this.i - $$1));
+   public boolean p() {
+      return this.g;
    }
 
-   public int b(dhw $$0) {
-      return this.f($$0.h, $$0.i);
-   }
-
-   public int c(long $$0) {
-      return this.f(a($$0), b($$0));
-   }
-
-   private int f(int $$0, int $$1) {
-      int $$2 = $$0 - this.h;
-      int $$3 = $$1 - this.i;
-      return $$2 * $$2 + $$3 * $$3;
-   }
-
-   public static Stream<dhw> a(dhw $$0, int $$1) {
-      return a(new dhw($$0.h - $$1, $$0.i - $$1), new dhw($$0.h + $$1, $$0.i + $$1));
-   }
-
-   public static Stream<dhw> a(final dhw $$0, final dhw $$1) {
-      int $$2 = Math.abs($$0.h - $$1.h) + 1;
-      int $$3 = Math.abs($$0.i - $$1.i) + 1;
-      final int $$4 = $$0.h < $$1.h ? 1 : -1;
-      final int $$5 = $$0.i < $$1.i ? 1 : -1;
-      return StreamSupport.stream(new AbstractSpliterator<dhw>((long)($$2 * $$3), 64) {
-         @Nullable
-         private dhw e;
-
-         @Override
-         public boolean tryAdvance(Consumer<? super dhw> $$0x) {
-            if (this.e == null) {
-               this.e = $$0;
-            } else {
-               int $$1 = this.e.h;
-               int $$2 = this.e.i;
-               if ($$1 == $$1.h) {
-                  if ($$2 == $$1.i) {
-                     return false;
-                  }
-
-                  this.e = new dhw($$0.h, $$2 + $$5);
-               } else {
-                  this.e = new dhw($$1 + $$4, $$2);
-               }
-            }
-
-            $$0.accept(this.e);
-            return true;
+   public bub a(cqy $$0) {
+      if (!$$0.gF()) {
+         return bub.e;
+      } else {
+         if ($$0.cU().C) {
+            $$0.a(this);
          }
-      }, false);
+
+         return bub.a;
+      }
    }
+
+   public abstract fei g();
+
+   public abstract ei i();
+
+   @Override
+   public boolean t_() {
+      return this.e().O().c(dir.p) && this.g;
+   }
+
+   @Override
+   public boolean u_() {
+      return this.g;
+   }
+
+   @Override
+   public boolean c() {
+      return this.e().O().c(dir.j);
+   }
+
+   public abstract boolean j();
 }

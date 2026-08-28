@@ -1,48 +1,101 @@
-import java.util.ArrayList;
-import java.util.List;
+import com.google.common.collect.ImmutableMap;
 import java.util.Optional;
-import java.util.function.BiPredicate;
-import java.util.function.Function;
+import javax.annotation.Nullable;
 
-public class bzs<E extends bxb> extends bzt<E> {
-   private final axp<dlu> m;
-   private final float n;
-   private final List<bzt.a> o = new ArrayList<>();
-   private boolean p;
+public class bzs extends byt<bxe> {
+   private static final int c = 100;
+   private static final int d = 3;
+   private static final int e = 6;
+   private static final int f = 5;
+   private final float g;
+   @Nullable
+   private iu h;
+   private int i;
+   private int j;
+   private int k;
 
-   public bzs(btj $$0, int $$1, int $$2, float $$3, Function<E, awk> $$4, axp<dlu> $$5, float $$6, BiPredicate<E, iu> $$7) {
-      super($$0, $$1, $$2, $$3, $$4, $$7);
-      this.m = $$5;
-      this.n = $$6;
+   public bzs(float $$0) {
+      super(ImmutableMap.of(cge.x, cgf.a, cge.n, cgf.b));
+      this.g = $$0;
+   }
+
+   protected boolean a(arq $$0, bxe $$1) {
+      return $$1.n_() && this.b($$0, $$1);
+   }
+
+   protected void a(arq $$0, bxe $$1, long $$2) {
+      super.d($$0, $$1, $$2);
+      this.a($$1).ifPresent($$2x -> {
+         this.h = $$2x;
+         this.i = 100;
+         this.j = 3 + $$0.A.a(4);
+         this.k = 0;
+         this.a($$1, $$2x);
+      });
+   }
+
+   protected void b(arq $$0, bxe $$1, long $$2) {
+      super.b($$0, $$1, $$2);
+      this.h = null;
+      this.i = 0;
+      this.j = 0;
+      this.k = 0;
+   }
+
+   protected boolean c(arq $$0, bxe $$1, long $$2) {
+      return $$1.n_() && this.h != null && this.a($$0, this.h) && !this.e($$0, $$1) && !this.f($$0, $$1);
    }
 
    @Override
-   protected void a(aro $$0, E $$1, long $$2) {
-      super.a($$0, $$1, $$2);
-      this.o.clear();
-      this.p = $$1.dY().i() < this.n;
+   protected boolean a(long $$0) {
+      return false;
    }
 
-   @Override
-   protected Optional<bzt.a> a(aro $$0) {
-      if (!this.p) {
-         return super.a($$0);
+   protected void d(arq $$0, bxe $$1, long $$2) {
+      if (!this.c($$0, $$1)) {
+         this.i--;
+      } else if (this.k > 0) {
+         this.k--;
       } else {
-         iu.a $$1 = new iu.a();
-
-         while (!this.h.isEmpty()) {
-            Optional<bzt.a> $$2 = super.a($$0);
-            if ($$2.isPresent()) {
-               bzt.a $$3 = $$2.get();
-               if ($$0.a_($$1.a($$3.a(), ja.a)).a(this.m)) {
-                  return $$2;
-               }
-
-               this.o.add($$3);
-            }
+         if (this.d($$0, $$1)) {
+            $$1.N().a();
+            this.j--;
+            this.k = 5;
          }
-
-         return !this.o.isEmpty() ? Optional.of(this.o.remove(0)) : Optional.empty();
       }
+   }
+
+   private void a(bxe $$0, iu $$1) {
+      $$0.eb().a(cge.n, new cgh($$1, this.g, 0));
+   }
+
+   private boolean b(arq $$0, bxe $$1) {
+      return this.c($$0, $$1) || this.a($$1).isPresent();
+   }
+
+   private boolean c(arq $$0, bxe $$1) {
+      iu $$2 = $$1.dv();
+      iu $$3 = $$2.e();
+      return this.a($$0, $$2) || this.a($$0, $$3);
+   }
+
+   private boolean d(arq $$0, bxe $$1) {
+      return this.a($$0, $$1.dv());
+   }
+
+   private boolean a(arq $$0, iu $$1) {
+      return $$0.a_($$1).a(axc.T);
+   }
+
+   private Optional<iu> a(bxe $$0) {
+      return $$0.eb().c(cge.x);
+   }
+
+   private boolean e(arq $$0, bxe $$1) {
+      return !this.c($$0, $$1) && this.i <= 0;
+   }
+
+   private boolean f(arq $$0, bxe $$1) {
+      return this.c($$0, $$1) && this.j <= 0;
    }
 }

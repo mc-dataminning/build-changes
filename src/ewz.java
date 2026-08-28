@@ -1,26 +1,37 @@
 import javax.annotation.Nullable;
 
 public class ewz {
+   private final dif a;
    @Nullable
-   public static exd a(dip $$0, @Nullable ja $$1, @Nullable ja $$2) {
-      if ($$0.K().b(cud.c)) {
-         exd $$3 = exd.a($$0.A).a(exd.a.a);
-         if ($$2 != null) {
-            $$3 = $$3.a($$2);
-         }
+   private final ewy b;
+   private final iu c;
+   private final iu.a d = new iu.a();
 
-         if ($$1 != null) {
-            $$3 = $$3.b($$1);
-         }
-
-         return $$3;
+   public ewz(dif $$0, bxe $$1) {
+      this.a = $$0;
+      if ($$1.dV() instanceof arq $$2) {
+         this.b = $$2.I();
       } else {
-         return null;
+         this.b = null;
       }
+
+      this.c = $$1.dv();
    }
 
-   @Nullable
-   public static exd a(@Nullable exd $$0, ja $$1) {
-      return $$0 == null ? null : $$0.b($$1);
+   public ewx a(int $$0, int $$1, int $$2) {
+      iu $$3 = this.d.d($$0, $$1, $$2);
+      return this.b == null ? exc.b(this.a, $$3) : this.b.a(this.a, $$3);
+   }
+
+   public dzz a(iu $$0) {
+      return this.a.a_($$0);
+   }
+
+   public dif a() {
+      return this.a;
+   }
+
+   public iu b() {
+      return this.c;
    }
 }

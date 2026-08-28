@@ -11,7 +11,7 @@ import java.util.List;
 
 public class hp<T extends ek<T>> {
    @VisibleForTesting
-   public static final DynamicCommandExceptionType a = new DynamicCommandExceptionType($$0 -> ww.b("command.forkLimit", $$0));
+   public static final DynamicCommandExceptionType a = new DynamicCommandExceptionType($$0 -> wy.b("command.forkLimit", $$0));
    private final String b;
    private final ContextChain<T> c;
 

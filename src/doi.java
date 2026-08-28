@@ -1,94 +1,88 @@
-import com.mojang.serialization.MapCodec;
-import java.util.Set;
-import javax.annotation.Nullable;
+import java.util.function.BiPredicate;
+import java.util.function.Function;
 
-public class doi extends dlg implements drr {
-   public static final MapCodec<doi> a = b(doi::new);
+public class doi {
+   public static <S extends dwx> doi.c<S> a(
+      dwz<S> $$0, Function<dzz, doi.a> $$1, Function<dzz, ja> $$2, ebc<ja> $$3, dzz $$4, diw $$5, iu $$6, BiPredicate<diw, iu> $$7
+   ) {
+      S $$8 = $$0.a($$5, $$6);
+      if ($$8 == null) {
+         return doi.b::b;
+      } else if ($$7.test($$5, $$6)) {
+         return doi.b::b;
+      } else {
+         doi.a $$9 = $$1.apply($$4);
+         boolean $$10 = $$9 == doi.a.a;
+         boolean $$11 = $$9 == doi.a.b;
+         if ($$10) {
+            return new doi.c.b<>($$8);
+         } else {
+            iu $$12 = $$6.a($$2.apply($$4));
+            dzz $$13 = $$5.a_($$12);
+            if ($$13.a($$4.b())) {
+               doi.a $$14 = $$1.apply($$13);
+               if ($$14 != doi.a.a && $$9 != $$14 && $$13.c($$3) == $$4.c($$3)) {
+                  if ($$7.test($$5, $$12)) {
+                     return doi.b::b;
+                  }
 
-   @Override
-   public MapCodec<doi> a() {
-      return a;
-   }
-
-   protected doi(dzn.d $$0) {
-      super($$0);
-   }
-
-   @Override
-   public dwn a(iu $$0, dzo $$1) {
-      return new dyj($$0, $$1);
-   }
-
-   @Nullable
-   @Override
-   public <T extends dwn> dwo<T> a(dip $$0, dzo $$1, dwp<T> $$2) {
-      return a($$2, dwp.w, $$0.C ? dyj::a : dyj::b);
-   }
-
-   @Override
-   public void a(dzo $$0, dip $$1, iu $$2, azt $$3) {
-      dwn $$4 = $$1.c_($$2);
-      if ($$4 instanceof dyj) {
-         int $$5 = ((dyj)$$4).f();
-
-         for (int $$6 = 0; $$6 < $$5; $$6++) {
-            double $$7 = (double)$$2.u() + $$3.j();
-            double $$8 = (double)$$2.v() + $$3.j();
-            double $$9 = (double)$$2.w() + $$3.j();
-            double $$10 = ($$3.j() - 0.5) * 0.5;
-            double $$11 = ($$3.j() - 0.5) * 0.5;
-            double $$12 = ($$3.j() - 0.5) * 0.5;
-            int $$13 = $$3.a(2) * 2 - 1;
-            if ($$3.h()) {
-               $$9 = (double)$$2.w() + 0.5 + 0.25 * (double)$$13;
-               $$12 = (double)($$3.i() * 2.0F * (float)$$13);
-            } else {
-               $$7 = (double)$$2.u() + 0.5 + 0.25 * (double)$$13;
-               $$10 = (double)($$3.i() * 2.0F * (float)$$13);
+                  S $$15 = $$0.a($$5, $$12);
+                  if ($$15 != null) {
+                     S $$16 = $$11 ? $$8 : $$15;
+                     S $$17 = $$11 ? $$15 : $$8;
+                     return new doi.c.a<>($$16, $$17);
+                  }
+               }
             }
 
-            $$1.a(lx.af, $$7, $$8, $$9, $$10, $$11, $$12);
+            return new doi.c.b<>($$8);
          }
       }
    }
 
-   @Override
-   protected cys a(dis $$0, iu $$1, dzo $$2, boolean $$3) {
-      return cys.k;
+   public static enum a {
+      a,
+      b,
+      c;
    }
 
-   @Override
-   protected boolean a(dzo $$0, evu $$1) {
-      return false;
+   public interface b<S, T> {
+      T a(S var1, S var2);
+
+      T a(S var1);
+
+      T b();
    }
 
-   @Override
-   protected void a(dzo $$0, dip $$1, iu $$2, bwa $$3) {
-      if ($$3.n(false) && !$$1.C && $$1.c_($$2) instanceof dyj $$5 && !$$5.c()) {
-         $$3.a(this, $$2);
-         dyj.c($$1, $$2, $$0, $$5);
-      }
-   }
+   public interface c<S> {
+      <T> T apply(doi.b<? super S, T> var1);
 
-   @Nullable
-   @Override
-   public ewv a(aro $$0, bwa $$1, iu $$2) {
-      if ($$0.c_($$2) instanceof dyj $$4) {
-         fdw $$6 = $$4.a($$0, $$2);
-         if ($$6 == null) {
-            return null;
-         } else {
-            return $$1 instanceof crw
-               ? new ewv($$0, $$6, fdw.c, 0.0F, 0.0F, Set.of(), ewv.c)
-               : new ewv($$0, $$6, fdw.c, 0.0F, 0.0F, bxn.a(bxn.l, bxn.k), ewv.c);
+      public static final class a<S> implements doi.c<S> {
+         private final S a;
+         private final S b;
+
+         public a(S $$0, S $$1) {
+            this.a = $$0;
+            this.b = $$1;
          }
-      } else {
-         return null;
-      }
-   }
 
-   @Override
-   protected dsf a_(dzo $$0) {
-      return dsf.a;
+         @Override
+         public <T> T apply(doi.b<? super S, T> $$0) {
+            return $$0.a(this.a, this.b);
+         }
+      }
+
+      public static final class b<S> implements doi.c<S> {
+         private final S a;
+
+         public b(S $$0) {
+            this.a = $$0;
+         }
+
+         @Override
+         public <T> T apply(doi.b<? super S, T> $$0) {
+            return $$0.a(this.a);
+         }
+      }
    }
 }

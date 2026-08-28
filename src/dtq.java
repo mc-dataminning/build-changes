@@ -1,53 +1,79 @@
 import com.mojang.serialization.MapCodec;
 
-public class dtq extends dlu {
+public class dtq extends dma {
    public static final MapCodec<dtq> a = b(dtq::new);
-   private static final feq b = dlu.b(12.0, 13.0, 16.0);
-   private static final int c = 14;
-   private static final int d = 10;
-   private static final int e = 10;
+   public static final int b = 2;
+   public static final eaz c = eap.aH;
+   private static final int d = 24000;
+   private static final int e = 12000;
+   private static final int f = 300;
+   private static final ffc g = dma.a(14.0, 12.0, 0.0, 16.0);
 
    @Override
    public MapCodec<dtq> a() {
       return a;
    }
 
-   public dtq(dzn.d $$0) {
+   public dtq(dzy.d $$0) {
       super($$0);
+      this.l(this.B.b().b(c, Integer.valueOf(0)));
    }
 
    @Override
-   protected boolean a(dzo $$0, dis $$1, iu $$2) {
-      return dlu.a($$1, $$2.d(), ja.a) && !$$1.A($$2);
+   protected void a(eaa.a<dma, dzz> $$0) {
+      $$0.a(c);
    }
 
    @Override
-   protected dzo a(dzo $$0, dis $$1, dje $$2, iu $$3, ja $$4, iu $$5, dzo $$6, azt $$7) {
-      return $$4 == ja.b && !this.a($$0, $$1, $$3) ? dlw.a.m() : super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
+   public ffc a(dzz $$0, dib $$1, iu $$2, fen $$3) {
+      return g;
+   }
+
+   public int o(dzz $$0) {
+      return $$0.c(c);
+   }
+
+   private boolean q(dzz $$0) {
+      return this.o($$0) == 2;
    }
 
    @Override
-   public void a(dzo $$0, dip $$1, iu $$2, azt $$3) {
-      int $$4 = $$2.u();
-      int $$5 = $$2.v();
-      int $$6 = $$2.w();
-      double $$7 = (double)$$4 + $$3.j();
-      double $$8 = (double)$$5 + 0.7;
-      double $$9 = (double)$$6 + $$3.j();
-      $$1.a(lx.aC, $$7, $$8, $$9, 0.0, 0.0, 0.0);
-      iu.a $$10 = new iu.a();
-
-      for (int $$11 = 0; $$11 < 14; $$11++) {
-         $$10.d($$4 + azk.a($$3, -10, 10), $$5 - $$3.a(10), $$6 + azk.a($$3, -10, 10));
-         dzo $$12 = $$1.a_($$10);
-         if (!$$12.m($$1, $$10)) {
-            $$1.a(lx.aG, (double)$$10.u() + $$3.j(), (double)$$10.v() + $$3.j(), (double)$$10.w() + $$3.j(), 0.0, 0.0, 0.0);
+   public void a(dzz $$0, arq $$1, iu $$2, azv $$3) {
+      if (!this.q($$0)) {
+         $$1.a(null, $$2, awn.zz, awo.e, 0.7F, 0.9F + $$3.i() * 0.2F);
+         $$1.a($$2, $$0.b(c, Integer.valueOf(this.o($$0) + 1)), 2);
+      } else {
+         $$1.a(null, $$2, awn.zA, awo.e, 0.7F, 0.9F + $$3.i() * 0.2F);
+         $$1.b($$2, false);
+         clq $$4 = bwm.bj.a($$1, bwl.e);
+         if ($$4 != null) {
+            fei $$5 = $$2.b();
+            $$4.a(true);
+            $$4.b($$5.a(), $$5.b(), $$5.c(), azm.h($$1.A.i() * 360.0F), 0.0F);
+            $$1.b($$4);
          }
       }
    }
 
    @Override
-   protected feq a(dzo $$0, dhv $$1, iu $$2, feb $$3) {
-      return b;
+   public void a(dzz $$0, div $$1, iu $$2, dzz $$3, boolean $$4) {
+      boolean $$5 = a($$1, $$2);
+      if (!$$1.w_() && $$5) {
+         $$1.c(3009, $$2, 0);
+      }
+
+      int $$6 = $$5 ? 12000 : 24000;
+      int $$7 = $$6 / 3;
+      $$1.a(eez.i, $$2, eez.a.a($$0));
+      $$1.a($$2, this, $$7 + $$1.A.a(300));
+   }
+
+   @Override
+   public boolean a(dzz $$0, ewv $$1) {
+      return false;
+   }
+
+   public static boolean a(dib $$0, iu $$1) {
+      return $$0.a_($$1.e()).a(axc.cx);
    }
 }

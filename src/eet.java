@@ -1,14 +1,29 @@
-import com.mojang.serialization.MapCodec;
+public enum eet {
+   a(false, false),
+   b(true, false),
+   c(true, true);
 
-public interface eet<T extends ees> {
-   eet<eek> a = a("block", new eek.a());
-   eet<eem> b = a("entity", new eem.a());
+   private final boolean d;
+   private final boolean e;
 
-   MapCodec<T> a();
+   private eet(final boolean $$0, final boolean $$1) {
+      this.d = $$0;
+      this.e = $$1;
+   }
 
-   yu<? super wh, T> b();
+   public boolean a() {
+      return this.e;
+   }
 
-   static <S extends eet<T>, T extends ees> S a(String $$0, S $$1) {
-      return jr.a(mf.t, $$0, $$1);
+   public boolean b() {
+      return this.d;
+   }
+
+   public static eet a(are $$0) {
+      if ($$0.a(are.d)) {
+         return c;
+      } else {
+         return $$0.a(are.b) ? b : a;
+      }
    }
 }

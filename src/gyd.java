@@ -1,27 +1,36 @@
-public class gyd extends gue<cjs, hdw, ghn> {
-   private static final ale a = ale.b("textures/entity/turtle/big_sea_turtle.png");
+public class gyd extends gxf<coi, heb, ghp> {
+   public static final alg a = alg.b("textures/entity/slime/slime.png");
 
-   public gyd(gvk.a $$0) {
-      super($$0, new ghn($$0.a(gif.dC)), new ghn($$0.a(gif.dD)), 0.7F);
+   public gyd(gvz.a $$0) {
+      super($$0, new ghp($$0.a(git.dc)), 0.25F);
+      this.a(new har(this, $$0.f()));
    }
 
-   protected float a(hdw $$0) {
-      float $$1 = super.g($$0);
-      return $$0.aj ? $$1 * 0.83F : $$1;
+   protected float a(heb $$0) {
+      return (float)$$0.b * 0.25F;
    }
 
-   public hdw b() {
-      return new hdw();
+   protected void a(heb $$0, fjc $$1) {
+      float $$2 = 0.999F;
+      $$1.b(0.999F, 0.999F, 0.999F);
+      $$1.a(0.0F, 0.001F, 0.0F);
+      float $$3 = (float)$$0.b;
+      float $$4 = $$0.a / ($$3 * 0.5F + 1.0F);
+      float $$5 = 1.0F / ($$4 + 1.0F);
+      $$1.b($$5 * $$3, 1.0F / $$5 * $$3, $$5 * $$3);
    }
 
-   public void a(cjs $$0, hdw $$1, float $$2) {
-      super.a($$0, $$1, $$2);
-      $$1.a = !$$0.bj() && $$0.aJ();
-      $$1.b = $$0.t();
-      $$1.c = !$$0.n_() && $$0.q();
-   }
-
-   public ale b(hdw $$0) {
+   public alg b(heb $$0) {
       return a;
+   }
+
+   public heb b() {
+      return new heb();
+   }
+
+   public void a(coi $$0, heb $$1, float $$2) {
+      super.a($$0, $$1, $$2);
+      $$1.a = azm.h($$2, $$0.bF, $$0.bE);
+      $$1.b = $$0.go();
    }
 }

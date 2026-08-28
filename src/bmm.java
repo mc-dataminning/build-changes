@@ -3,14 +3,14 @@ import com.mojang.datafixers.types.templates.TypeTemplate;
 import java.util.Map;
 import java.util.function.Supplier;
 
-public class bmm extends bko {
+public class bmm extends bkr {
    public bmm(int $$0, Schema $$1) {
       super($$0, $$1);
    }
 
    public Map<String, Supplier<TypeTemplate>> registerEntities(Schema $$0) {
       Map<String, Supplier<TypeTemplate>> $$1 = super.registerEntities($$0);
-      this.registerSimple($$1, "minecraft:marker");
+      $$0.registerSimple($$1, "minecraft:axolotl");
       return $$1;
    }
 }

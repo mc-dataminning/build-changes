@@ -1,18 +1,9 @@
-import java.util.List;
+import com.mojang.serialization.Codec;
 
-public class eui {
-   private final List<euh> a;
+public abstract class eui {
+   public static final Codec<eui> c = mf.o.q().dispatch("predicate_type", eui::a, euj::codec);
 
-   public eui(List<euh> $$0) {
-      this.a = $$0;
-   }
+   public abstract boolean a(iu var1, iu var2, iu var3, azv var4);
 
-   public List<euh> a() {
-      return this.a;
-   }
-
-   @Override
-   public String toString() {
-      return "ProcessorList[" + this.a + "]";
-   }
+   protected abstract euj<?> a();
 }

@@ -1,71 +1,107 @@
-import javax.annotation.Nullable;
+import com.google.common.collect.Maps;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
-public class guh extends gwl<cmm, hav, gdw> {
-   public static final ale a = ale.b("textures/entity/armorstand/wood.png");
-   private final gdw j = this.c();
-   private final gdw k;
+public class guh implements gtu.a {
+   private final fos a;
+   private final Map<alf<div>, Map<String, eql>> b = Maps.newIdentityHashMap();
+   private final Map<alf<div>, Map<String, aax.a>> c = Maps.newIdentityHashMap();
+   private static final int d = 500;
 
-   public guh(gvk.a $$0) {
-      super($$0, new gdx($$0.a(gif.f)), 0.0F);
-      this.k = new gdx($$0.a(gif.i));
-      this.a(new gzn<>(this, new gdw($$0.a(gif.g)), new gdw($$0.a(gif.h)), new gdw($$0.a(gif.j)), new gdw($$0.a(gif.k)), $$0.h()));
-      this.a(new gzq<>(this));
-      this.a(new haj<>(this, $$0.f(), $$0.h()));
-      this.a(new gzd<>(this, $$0.f()));
+   public guh(fos $$0) {
+      this.a = $$0;
    }
 
-   public ale a(hav $$0) {
-      return a;
-   }
-
-   public hav a() {
-      return new hav();
-   }
-
-   public void a(cmm $$0, hav $$1, float $$2) {
-      super.a($$0, $$1, $$2);
-      gwb.a($$0, $$1, $$2, this.h);
-      $$1.a = azk.i($$2, $$0.N, $$0.dL());
-      $$1.c = $$0.t();
-      $$1.d = $$0.m();
-      $$1.j = $$0.n();
-      $$1.k = $$0.q();
-      $$1.m = $$0.x();
-      $$1.l = $$0.u();
-      $$1.n = $$0.y();
-      $$1.o = $$0.z();
-      $$1.p = $$0.A();
-      $$1.q = $$0.B();
-      $$1.b = (float)($$0.dV().ae() - $$0.bC) + $$2;
-   }
-
-   public void a(hav $$0, fiq $$1, gpd $$2, int $$3) {
-      this.g = $$0.d ? this.k : this.j;
-      super.a($$0, $$1, $$2, $$3);
-   }
-
-   protected void a(hav $$0, fiq $$1, float $$2, float $$3) {
-      $$1.a(a.d.rotationDegrees(180.0F - $$2));
-      if ($$0.b < 5.0F) {
-         $$1.a(a.d.rotationDegrees(azk.a($$0.b / 1.5F * (float) Math.PI) * 3.0F));
-      }
-   }
-
-   protected boolean a(cmm $$0, double $$1) {
-      return $$0.cL();
-   }
-
-   @Nullable
-   protected gpn a(hav $$0, boolean $$1, boolean $$2, boolean $$3) {
-      if (!$$0.c) {
-         return super.a($$0, $$1, $$2, $$3);
-      } else {
-         ale $$4 = this.a($$0);
-         if ($$2) {
-            return gpn.c($$4, false);
-         } else {
-            return $$1 ? gpn.a($$4, false) : null;
+   @Override
+   public void a(fjc $$0, gps $$1, double $$2, double $$3, double $$4) {
+      fnz $$5 = this.a.j.k();
+      alf<div> $$6 = this.a.s.aj();
+      iu $$7 = iu.a($$5.b().d, 0.0, $$5.b().f);
+      fjg $$8 = $$1.getBuffer(gqc.y());
+      if (this.b.containsKey($$6)) {
+         for (eql $$9 : this.b.get($$6).values()) {
+            if ($$7.a($$9.g(), 500.0)) {
+               gqm.a(
+                  $$0,
+                  $$8,
+                  (double)$$9.h() - $$2,
+                  (double)$$9.i() - $$3,
+                  (double)$$9.j() - $$4,
+                  (double)($$9.k() + 1) - $$2,
+                  (double)($$9.l() + 1) - $$3,
+                  (double)($$9.m() + 1) - $$4,
+                  1.0F,
+                  1.0F,
+                  1.0F,
+                  1.0F,
+                  1.0F,
+                  1.0F,
+                  1.0F
+               );
+            }
          }
       }
+
+      Map<String, aax.a> $$10 = this.c.get($$6);
+      if ($$10 != null) {
+         for (aax.a $$11 : $$10.values()) {
+            eql $$12 = $$11.a();
+            if ($$7.a($$12.g(), 500.0)) {
+               if ($$11.b()) {
+                  gqm.a(
+                     $$0,
+                     $$8,
+                     (double)$$12.h() - $$2,
+                     (double)$$12.i() - $$3,
+                     (double)$$12.j() - $$4,
+                     (double)($$12.k() + 1) - $$2,
+                     (double)($$12.l() + 1) - $$3,
+                     (double)($$12.m() + 1) - $$4,
+                     0.0F,
+                     1.0F,
+                     0.0F,
+                     1.0F,
+                     0.0F,
+                     1.0F,
+                     0.0F
+                  );
+               } else {
+                  gqm.a(
+                     $$0,
+                     $$8,
+                     (double)$$12.h() - $$2,
+                     (double)$$12.i() - $$3,
+                     (double)$$12.j() - $$4,
+                     (double)($$12.k() + 1) - $$2,
+                     (double)($$12.l() + 1) - $$3,
+                     (double)($$12.m() + 1) - $$4,
+                     0.0F,
+                     0.0F,
+                     1.0F,
+                     1.0F,
+                     0.0F,
+                     0.0F,
+                     1.0F
+                  );
+               }
+            }
+         }
+      }
+   }
+
+   public void a(eql $$0, List<aax.a> $$1, alf<div> $$2) {
+      this.b.computeIfAbsent($$2, $$0x -> new HashMap<>()).put($$0.toString(), $$0);
+      Map<String, aax.a> $$3 = this.c.computeIfAbsent($$2, $$0x -> new HashMap<>());
+
+      for (aax.a $$4 : $$1) {
+         $$3.put($$4.a().toString(), $$4);
+      }
+   }
+
+   @Override
+   public void a() {
+      this.b.clear();
+      this.c.clear();
    }
 }

@@ -1,485 +1,108 @@
-import com.google.common.collect.ImmutableList;
 import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import java.util.List;
-import java.util.Objects;
-import java.util.Optional;
-import java.util.function.BooleanSupplier;
-import java.util.function.Consumer;
-import java.util.function.DoubleFunction;
-import java.util.function.Function;
-import java.util.function.IntFunction;
-import java.util.function.IntSupplier;
-import java.util.function.Supplier;
-import java.util.function.ToDoubleFunction;
-import java.util.function.ToIntFunction;
-import java.util.stream.IntStream;
-import javax.annotation.Nullable;
+import com.mojang.text2speech.Narrator;
+import org.lwjgl.util.tinyfd.TinyFileDialogs;
 import org.slf4j.Logger;
 
-public final class foi<T> {
-   private static final Logger c = LogUtils.getLogger();
-   public static final foi.e<Boolean> a = new foi.e<>(ImmutableList.of(Boolean.TRUE, Boolean.FALSE), Codec.BOOL);
-   public static final foi.b<Boolean> b = ($$0, $$1) -> $$1 ? wv.b : wv.c;
-   private final foi.l<T> d;
-   final Function<T, ww> e;
-   private final foi.n<T> f;
-   private final Codec<T> g;
-   private final T h;
-   private final Consumer<T> i;
-   final ww j;
-   T k;
+public class foi {
+   public static final wy a = wx.a;
+   private static final Logger b = LogUtils.getLogger();
+   private final fos c;
+   private final Narrator d = Narrator.getNarrator();
 
-   public static foi<Boolean> a(String $$0, boolean $$1, Consumer<Boolean> $$2) {
-      return a($$0, a(), $$1, $$2);
+   public foi(fos $$0) {
+      this.c = $$0;
    }
 
-   public static foi<Boolean> a(String $$0, boolean $$1) {
-      return a($$0, a(), $$1, $$0x -> {
-      });
+   public void a(wy $$0) {
+      if (this.d().c()) {
+         String $$1 = $$0.getString();
+         this.b($$1);
+         this.a($$1, false);
+      }
    }
 
-   public static foi<Boolean> a(String $$0, foi.l<Boolean> $$1, boolean $$2) {
-      return a($$0, $$1, $$2, $$0x -> {
-      });
+   public void b(wy $$0) {
+      String $$1 = $$0.getString();
+      if (this.d().d() && !$$1.isEmpty()) {
+         this.b($$1);
+         this.a($$1, false);
+      }
    }
 
-   public static foi<Boolean> a(String $$0, foi.l<Boolean> $$1, boolean $$2, Consumer<Boolean> $$3) {
-      return a($$0, $$1, b, $$2, $$3);
+   public void c(wy $$0) {
+      this.a($$0.getString());
    }
 
-   public static foi<Boolean> a(String $$0, foi.l<Boolean> $$1, foi.b<Boolean> $$2, boolean $$3, Consumer<Boolean> $$4) {
-      return new foi<>($$0, $$1, $$2, a, $$3, $$4);
+   public void a(String $$0) {
+      if (this.d().d() && !$$0.isEmpty()) {
+         this.b($$0);
+         if (this.d.active()) {
+            this.d.clear();
+            this.a($$0, true);
+         }
+      }
    }
 
-   public foi(String $$0, foi.l<T> $$1, foi.b<T> $$2, foi.n<T> $$3, T $$4, Consumer<T> $$5) {
-      this($$0, $$1, $$2, $$3, $$3.f(), $$4, $$5);
+   private void a(String $$0, boolean $$1) {
+      this.d.say($$0, $$1, this.c.n.a(awo.j) * this.c.n.a(awo.a));
    }
 
-   public foi(String $$0, foi.l<T> $$1, foi.b<T> $$2, foi.n<T> $$3, Codec<T> $$4, T $$5, Consumer<T> $$6) {
-      this.j = ww.c($$0);
-      this.d = $$1;
-      this.e = $$1x -> $$2.toString(this.j, (T)$$1x);
-      this.f = $$3;
-      this.g = $$4;
-      this.h = $$5;
-      this.i = $$6;
-      this.k = this.h;
+   private fou d() {
+      return this.c.n.av().c();
    }
 
-   public static <T> foi.l<T> a() {
-      return $$0 -> null;
+   private void b(String $$0) {
+      if (ab.aU) {
+         b.debug("Narrating: {}", $$0.replaceAll("\n", "\\\\n"));
+      }
    }
 
-   public static <T> foi.l<T> a(ww $$0) {
-      return $$1 -> ftb.a($$0);
-   }
-
-   public static <T extends azn> foi.b<T> b() {
-      return ($$0, $$1) -> $$1.d();
-   }
-
-   public fro a(foj $$0) {
-      return this.a($$0, 0, 0, 150);
-   }
-
-   public fro a(foj $$0, int $$1, int $$2, int $$3) {
-      return this.a($$0, $$1, $$2, $$3, $$0x -> {
-      });
-   }
-
-   public fro a(foj $$0, int $$1, int $$2, int $$3, Consumer<T> $$4) {
-      return this.f.a(this.d, $$0, $$1, $$2, $$3, $$4).apply(this);
-   }
-
-   public T c() {
-      return this.k;
-   }
-
-   public Codec<T> d() {
-      return this.g;
-   }
-
-   @Override
-   public String toString() {
-      return this.j.getString();
-   }
-
-   public void a(T $$0) {
-      T $$1 = this.f.a($$0).orElseGet(() -> {
-         c.error("Illegal option value " + $$0 + " for " + this.j);
-         return this.h;
-      });
-      if (!fof.Q().r()) {
-         this.k = $$1;
+   public void a(fou $$0) {
+      this.b();
+      this.a(wy.c("options.narrator").f(" : ").b($$0.b()).getString(), true);
+      fun $$1 = fos.Q().aA();
+      if (this.d.active()) {
+         if ($$0 == fou.a) {
+            ful.b($$1, ful.a.a, wy.c("narrator.toast.disabled"), null);
+         } else {
+            ful.b($$1, ful.a.a, wy.c("narrator.toast.enabled"), $$0.b());
+         }
       } else {
-         if (!Objects.equals(this.k, $$1)) {
-            this.k = $$1;
-            this.i.accept(this.k);
-         }
+         ful.b($$1, ful.a.a, wy.c("narrator.toast.disabled"), wy.c("options.narrator.notavailable"));
       }
    }
 
-   public foi.n<T> e() {
-      return this.f;
+   public boolean a() {
+      return this.d.active();
    }
 
-   public static record a<T>(List<T> a, List<T> b, BooleanSupplier c, foi.d.a<T> d, Codec<T> e) implements foi.d<T> {
-      @Override
-      public frx.c<T> a() {
-         return frx.c.a(this.c, this.a, this.b);
-      }
-
-      @Override
-      public Optional<T> a(T $$0) {
-         return (this.c.getAsBoolean() ? this.b : this.a).contains($$0) ? Optional.of($$0) : Optional.empty();
-      }
-
-      public List<T> b() {
-         return this.a;
-      }
-
-      public List<T> c() {
-         return this.b;
-      }
-
-      public BooleanSupplier d() {
-         return this.c;
-      }
-
-      @Override
-      public foi.d.a<T> e() {
-         return this.d;
-      }
-
-      @Override
-      public Codec<T> f() {
-         return this.e;
+   public void b() {
+      if (this.d() != fou.a && this.d.active()) {
+         this.d.clear();
       }
    }
 
-   public interface b<T> {
-      ww toString(ww var1, T var2);
+   public void c() {
+      this.d.destroy();
    }
 
-   public static record c(int a, IntSupplier b, int c) implements foi.g, foi.j<Integer> {
-      public Optional<Integer> a(Integer $$0) {
-         return Optional.of(azk.a($$0, this.d(), this.b()));
-      }
-
-      @Override
-      public int b() {
-         return this.b.getAsInt();
-      }
-
-      @Override
-      public Codec<Integer> f() {
-         return Codec.INT
-            .validate(
-               $$0 -> {
-                  int $$1 = this.c + 1;
-                  return $$0.compareTo(this.a) >= 0 && $$0.compareTo($$1) <= 0
-                     ? DataResult.success($$0)
-                     : DataResult.error(() -> "Value " + $$0 + " outside of range [" + this.a + ":" + $$1 + "]", $$0);
-               }
-            );
-      }
-
-      @Override
-      public boolean c() {
-         return true;
-      }
-
-      @Override
-      public frx.c<Integer> a() {
-         return frx.c.a(IntStream.range(this.a, this.b() + 1).boxed().toList());
-      }
-
-      @Override
-      public int d() {
-         return this.a;
-      }
-
-      public IntSupplier g() {
-         return this.b;
-      }
-
-      public int h() {
-         return this.c;
+   public void a(boolean $$0) {
+      if ($$0
+         && !this.a()
+         && !TinyFileDialogs.tinyfd_messageBox(
+            "Minecraft",
+            "Failed to initialize text-to-speech library. Do you want to continue?\nIf this problem persists, please report it at bugs.mojang.com",
+            "yesno",
+            "error",
+            true
+         )) {
+         throw new foi.a("Narrator library is not active");
       }
    }
 
-   interface d<T> extends foi.n<T> {
-      frx.c<T> a();
-
-      default foi.d.a<T> e() {
-         return foi::a;
+   public static class a extends gdx {
+      public a(String $$0) {
+         super($$0);
       }
-
-      @Override
-      default Function<foi<T>, fro> a(foi.l<T> $$0, foj $$1, int $$2, int $$3, int $$4, Consumer<T> $$5) {
-         return $$6 -> frx.a($$6.e).a(this.a()).a($$0).a($$6.k).a($$2, $$3, $$4, 20, $$6.j, ($$3xx, $$4xx) -> {
-               this.e().set($$6, (T)$$4xx);
-               $$1.az();
-               $$5.accept((T)$$4xx);
-            });
-      }
-
-      public interface a<T> {
-         void set(foi<T> var1, T var2);
-      }
-   }
-
-   public static record e<T>(List<T> a, Codec<T> b) implements foi.d<T> {
-      @Override
-      public Optional<T> a(T $$0) {
-         return this.a.contains($$0) ? Optional.of($$0) : Optional.empty();
-      }
-
-      @Override
-      public frx.c<T> a() {
-         return frx.c.a(this.a);
-      }
-
-      public List<T> b() {
-         return this.a;
-      }
-
-      @Override
-      public Codec<T> f() {
-         return this.b;
-      }
-   }
-
-   public static record f(int a, int b, boolean c) implements foi.g {
-      public f(int $$0, int $$1) {
-         this($$0, $$1, true);
-      }
-
-      public Optional<Integer> a(Integer $$0) {
-         return $$0.compareTo(this.d()) >= 0 && $$0.compareTo(this.b()) <= 0 ? Optional.of($$0) : Optional.empty();
-      }
-
-      @Override
-      public Codec<Integer> f() {
-         return Codec.intRange(this.a, this.b + 1);
-      }
-
-      @Override
-      public int d() {
-         return this.a;
-      }
-
-      @Override
-      public boolean aL_() {
-         return this.c;
-      }
-   }
-
-   interface g extends foi.k<Integer> {
-      int d();
-
-      int b();
-
-      default double b(Integer $$0) {
-         if ($$0 == this.d()) {
-            return 0.0;
-         } else {
-            return $$0 == this.b() ? 1.0 : azk.b((double)$$0.intValue() + 0.5, (double)this.d(), (double)this.b() + 1.0, 0.0, 1.0);
-         }
-      }
-
-      default Integer a(double $$0) {
-         if ($$0 >= 1.0) {
-            $$0 = 0.99999F;
-         }
-
-         return azk.a(azk.b($$0, 0.0, 1.0, (double)this.d(), (double)this.b() + 1.0));
-      }
-
-      default <R> foi.k<R> a(final IntFunction<? extends R> $$0, final ToIntFunction<? super R> $$1) {
-         return new foi.k<R>() {
-            @Override
-            public Optional<R> a(R $$0x) {
-               return g.this.a(Integer.valueOf($$1.applyAsInt($$0))).map($$0::apply);
-            }
-
-            @Override
-            public double b(R $$0x) {
-               return g.this.b($$1.applyAsInt($$0));
-            }
-
-            @Override
-            public R b(double $$0x) {
-               return (R)$$0.apply(g.this.a($$0));
-            }
-
-            @Override
-            public Codec<R> f() {
-               return g.this.f().xmap($$0::apply, $$1::applyAsInt);
-            }
-         };
-      }
-   }
-
-   public static record h<T>(Supplier<List<T>> a, Function<T, Optional<T>> b, Codec<T> c) implements foi.d<T> {
-      @Override
-      public Optional<T> a(T $$0) {
-         return this.b.apply($$0);
-      }
-
-      @Override
-      public frx.c<T> a() {
-         return frx.c.a(this.a.get());
-      }
-
-      public Supplier<List<T>> b() {
-         return this.a;
-      }
-
-      public Function<T, Optional<T>> c() {
-         return this.b;
-      }
-
-      @Override
-      public Codec<T> f() {
-         return this.c;
-      }
-   }
-
-   public static final class i<N> extends fri {
-      private final foi<N> d;
-      private final foi.k<N> e;
-      private final foi.l<N> f;
-      private final Consumer<N> m;
-      @Nullable
-      private Long n;
-      private final boolean o;
-
-      i(foj $$0, int $$1, int $$2, int $$3, int $$4, foi<N> $$5, foi.k<N> $$6, foi.l<N> $$7, Consumer<N> $$8, boolean $$9) {
-         super($$0, $$1, $$2, $$3, $$4, $$6.b($$5.c()));
-         this.d = $$5;
-         this.e = $$6;
-         this.f = $$7;
-         this.m = $$8;
-         this.o = $$9;
-         this.b();
-      }
-
-      @Override
-      protected void b() {
-         this.b(this.d.e.apply(this.e.b(this.c)));
-         this.a(this.f.apply(this.e.b(this.c)));
-      }
-
-      @Override
-      protected void a() {
-         if (this.o) {
-            this.c();
-         } else {
-            this.n = af.c() + 600L;
-         }
-      }
-
-      public void c() {
-         N $$0 = this.e.b(this.c);
-         if (!Objects.equals($$0, this.d.c())) {
-            this.d.a($$0);
-            this.m.accept(this.d.c());
-         }
-      }
-
-      @Override
-      public void b(frc $$0, int $$1, int $$2, float $$3) {
-         super.b($$0, $$1, $$2, $$3);
-         if (this.n != null && af.c() >= this.n) {
-            this.n = null;
-            this.c();
-         }
-      }
-   }
-
-   interface j<T> extends foi.d<T>, foi.k<T> {
-      boolean c();
-
-      @Override
-      default Function<foi<T>, fro> a(foi.l<T> $$0, foj $$1, int $$2, int $$3, int $$4, Consumer<T> $$5) {
-         return this.c() ? foi.d.super.a($$0, $$1, $$2, $$3, $$4, $$5) : foi.k.super.a($$0, $$1, $$2, $$3, $$4, $$5);
-      }
-   }
-
-   interface k<T> extends foi.n<T> {
-      double b(T var1);
-
-      T b(double var1);
-
-      default boolean aL_() {
-         return true;
-      }
-
-      @Override
-      default Function<foi<T>, fro> a(foi.l<T> $$0, foj $$1, int $$2, int $$3, int $$4, Consumer<T> $$5) {
-         return $$6 -> new foi.i<>($$1, $$2, $$3, $$4, 20, $$6, this, $$0, $$5, this.aL_());
-      }
-   }
-
-   @FunctionalInterface
-   public interface l<T> {
-      @Nullable
-      ftb apply(T var1);
-   }
-
-   public static enum m implements foi.k<Double> {
-      a;
-
-      public Optional<Double> a(Double $$0) {
-         return $$0 >= 0.0 && $$0 <= 1.0 ? Optional.of($$0) : Optional.empty();
-      }
-
-      public double b(Double $$0) {
-         return $$0;
-      }
-
-      public Double a(double $$0) {
-         return $$0;
-      }
-
-      public <R> foi.k<R> a(final DoubleFunction<? extends R> $$0, final ToDoubleFunction<? super R> $$1) {
-         return new foi.k<R>() {
-            @Override
-            public Optional<R> a(R $$0x) {
-               return m.this.a(Double.valueOf($$1.applyAsDouble($$0))).map($$0::apply);
-            }
-
-            @Override
-            public double b(R $$0x) {
-               return m.this.b(Double.valueOf($$1.applyAsDouble($$0)));
-            }
-
-            @Override
-            public R b(double $$0x) {
-               return (R)$$0.apply(m.this.a($$0));
-            }
-
-            @Override
-            public Codec<R> f() {
-               return m.this.f().xmap($$0::apply, $$1::applyAsDouble);
-            }
-         };
-      }
-
-      @Override
-      public Codec<Double> f() {
-         return Codec.withAlternative(Codec.doubleRange(0.0, 1.0), Codec.BOOL, $$0 -> $$0 ? 1.0 : 0.0);
-      }
-   }
-
-   interface n<T> {
-      Function<foi<T>, fro> a(foi.l<T> var1, foj var2, int var3, int var4, int var5, Consumer<T> var6);
-
-      Optional<T> a(T var1);
-
-      Codec<T> f();
    }
 }

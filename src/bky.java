@@ -4,7 +4,7 @@ import com.mojang.datafixers.types.templates.TypeTemplate;
 import java.util.Map;
 import java.util.function.Supplier;
 
-public class bky extends bko {
+public class bky extends Schema {
    public bky(int $$0, Schema $$1) {
       super($$0, $$1);
    }
@@ -13,20 +13,18 @@ public class bky extends bko {
       super.registerTypes($$0, $$1, $$2);
       $$0.registerType(
          false,
-         bit.c,
-         () -> DSL.fields(
-               "Level",
-               DSL.optionalFields(
-                  "Entities",
-                  DSL.list(bit.C.in($$0)),
-                  "TileEntities",
-                  DSL.list(DSL.or(bit.s.in($$0), DSL.remainder())),
-                  "TileTicks",
-                  DSL.list(DSL.fields("i", bit.E.in($$0))),
-                  "Sections",
-                  DSL.list(DSL.optionalFields("Palette", DSL.list(bit.u.in($$0))))
-               )
+         biw.b,
+         () -> DSL.optionalFields(
+               "RootVehicle",
+               DSL.optionalFields("Entity", biw.C.in($$0)),
+               "ender_pearls",
+               DSL.list(biw.C.in($$0)),
+               "Inventory",
+               DSL.list(biw.t.in($$0)),
+               "EnderItems",
+               DSL.list(biw.t.in($$0))
             )
       );
+      $$0.registerType(true, biw.C, () -> DSL.optionalFields("Passengers", DSL.list(biw.C.in($$0)), biw.D.in($$0)));
    }
 }

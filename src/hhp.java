@@ -1,61 +1,14 @@
-import com.mojang.blaze3d.systems.RenderSystem;
+import javax.annotation.Nullable;
 
-public class hhp implements AutoCloseable {
-   private static final int e = 16;
-   public static final int a = 0;
-   public static final int b = 3;
-   public static final int c = 10;
-   public static final int d = a(0, 10);
-   private final hhm f = new hhm(16, 16, false);
-
-   public hhp() {
-      fhq $$0 = this.f.e();
-
-      for (int $$1 = 0; $$1 < 16; $$1++) {
-         for (int $$2 = 0; $$2 < 16; $$2++) {
-            if ($$1 < 8) {
-               $$0.a($$2, $$1, -1291911168);
-            } else {
-               int $$3 = (int)((1.0F - (float)$$2 / 15.0F * 0.75F) * 255.0F);
-               $$0.a($$2, $$1, axu.c($$3, -1));
-            }
-         }
-      }
-
-      RenderSystem.activeTexture(33985);
-      this.f.c();
-      this.f.a(false, false);
-      this.f.a(true);
-      $$0.a(0, 0, 0, 0, 0, $$0.a(), $$0.b(), false);
-      RenderSystem.activeTexture(33984);
+public interface hhp extends hht<Void> {
+   @Nullable
+   default Void a(cyy $$0) {
+      return null;
    }
 
-   @Override
-   public void close() {
-      this.f.close();
+   default void a(@Nullable Void $$0, cyw $$1, fjc $$2, gps $$3, int $$4, int $$5, boolean $$6) {
+      this.a($$1, $$2, $$3, $$4, $$5, $$6);
    }
 
-   public void a() {
-      RenderSystem.setupOverlayColor(this.f.a(), 16);
-   }
-
-   public static int a(float $$0) {
-      return (int)($$0 * 15.0F);
-   }
-
-   public static int a(boolean $$0) {
-      return $$0 ? 3 : 10;
-   }
-
-   public static int a(int $$0, int $$1) {
-      return $$0 | $$1 << 16;
-   }
-
-   public static int a(float $$0, boolean $$1) {
-      return a(a($$0), a($$1));
-   }
-
-   public void b() {
-      RenderSystem.teardownOverlayColor();
-   }
+   void a(cyw var1, fjc var2, gps var3, int var4, int var5, boolean var6);
 }

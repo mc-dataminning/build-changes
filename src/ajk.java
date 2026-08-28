@@ -1,46 +1,44 @@
-import java.security.PrivateKey;
-import java.security.PublicKey;
-import java.util.Arrays;
-import javax.crypto.SecretKey;
+import javax.annotation.Nullable;
 
-public class ajk implements zd<ajh> {
-   public static final yu<vs, ajk> a = zd.a(ajk::a, ajk::new);
-   private final byte[] b;
-   private final byte[] c;
+public record ajk(int b, @Nullable ajo c) implements zf<ajj> {
+   public static final yw<vu, ajk> a = zf.a(ajk::c, ajk::a);
+   private static final int d = 1048576;
 
-   public ajk(SecretKey $$0, PublicKey $$1, byte[] $$2) throws ayi {
-      this.b = ayh.a($$1, $$0.getEncoded());
-      this.c = ayh.a($$1, $$2);
+   private static ajk a(vu $$0) {
+      int $$1 = $$0.l();
+      return new ajk($$1, a($$1, $$0));
    }
 
-   private ajk(vs $$0) {
-      this.b = $$0.b();
-      this.c = $$0.b();
+   private static ajo a(int $$0, vu $$1) {
+      return b($$1);
    }
 
-   private void a(vs $$0) {
-      $$0.a(this.b);
-      $$0.a(this.c);
+   private static ajo b(vu $$0) {
+      int $$1 = $$0.readableBytes();
+      if ($$1 >= 0 && $$1 <= 1048576) {
+         $$0.k($$1);
+         return ajq.a;
+      } else {
+         throw new IllegalArgumentException("Payload may not be larger than 1048576 bytes");
+      }
+   }
+
+   private void c(vu $$0) {
+      $$0.c(this.b);
+      $$0.a(this.c, ($$0x, $$1) -> $$1.a($$0x));
    }
 
    @Override
-   public zf<ajk> a() {
-      return ajf.h;
+   public zh<ajk> a() {
+      return ajh.f;
    }
 
-   public void a(ajh $$0) {
+   public void a(ajj $$0) {
       $$0.a(this);
    }
 
-   public SecretKey a(PrivateKey $$0) throws ayi {
-      return ayh.a($$0, this.b);
-   }
-
-   public boolean a(byte[] $$0, PrivateKey $$1) {
-      try {
-         return Arrays.equals($$0, ayh.b($$1, this.c));
-      } catch (ayi var4) {
-         return false;
-      }
+   @Nullable
+   public ajo e() {
+      return this.c;
    }
 }

@@ -1,4 +1,6 @@
-public class hbw extends hbp {
-   public boolean a;
-   public final hes b = new hes();
+import javax.annotation.Nullable;
+
+public class hbw extends hdf {
+   @Nullable
+   public cjb a;
 }

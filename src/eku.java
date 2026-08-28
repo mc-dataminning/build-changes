@@ -1,30 +1,26 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public record eku(eng b, egu c, btd d, int e) implements ekx {
-   public static final Codec<eku> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               eng.a.fieldOf("state_provider").forGetter(eku::a),
-               egu.b.fieldOf("target").forGetter(eku::b),
-               btd.b(0, 8).fieldOf("radius").forGetter(eku::c),
-               Codec.intRange(0, 4).fieldOf("half_height").forGetter(eku::d)
-            )
-            .apply($$0, eku::new)
-   );
-
-   public eng a() {
-      return this.b;
+public class eku extends eje<elp> {
+   public eku(Codec<elp> $$0) {
+      super($$0);
    }
 
-   public egu b() {
-      return this.c;
-   }
+   @Override
+   public boolean a(ejg<elp> $$0) {
+      dju $$1 = $$0.b();
+      iu $$2 = $$0.e();
+      $$0.f();
+      if (!$$1.v($$2)) {
+         return false;
+      } else {
+         for (ja $$3 : ja.values()) {
+            if ($$3 != ja.a && dvk.a($$1, $$2.a($$3), $$3)) {
+               $$1.a($$2, dmc.fu.m().b(dvk.a($$3), Boolean.valueOf(true)), 2);
+               return true;
+            }
+         }
 
-   public btd c() {
-      return this.d;
-   }
-
-   public int d() {
-      return this.e;
+         return false;
+      }
    }
 }

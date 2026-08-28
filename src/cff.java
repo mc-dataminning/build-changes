@@ -1,30 +1,48 @@
-public class cff extends cdv {
-   private final bxh a;
+import java.util.EnumSet;
+import javax.annotation.Nullable;
 
-   public cff(bxh $$0) {
+public class cff extends cdy {
+   private final cnl a;
+   @Nullable
+   private bxc b;
+
+   public cff(cnl $$0) {
       this.a = $$0;
+      this.a(EnumSet.of(cdy.a.a));
    }
 
    @Override
    public boolean b() {
-      return this.a.aJ() && !this.a.dV().b_(this.a.dv()).a(axf.a);
+      bxc $$0 = this.a.f();
+      return this.a.n() > 0 || $$0 != null && this.a.g($$0) < 9.0;
    }
 
    @Override
    public void d() {
-      iu $$0 = null;
+      this.a.O().m();
+      this.b = this.a.f();
+   }
 
-      for (iu $$2 : iu.b(
-         azk.a(this.a.dA() - 2.0), azk.a(this.a.dC() - 2.0), azk.a(this.a.dG() - 2.0), azk.a(this.a.dA() + 2.0), this.a.dB(), azk.a(this.a.dG() + 2.0)
-      )) {
-         if (this.a.dV().b_($$2).a(axf.a)) {
-            $$0 = $$2;
-            break;
-         }
-      }
+   @Override
+   public void e() {
+      this.b = null;
+   }
 
-      if ($$0 != null) {
-         this.a.L().a((double)$$0.u(), (double)$$0.v(), (double)$$0.w(), 1.0);
+   @Override
+   public boolean Q_() {
+      return true;
+   }
+
+   @Override
+   public void a() {
+      if (this.b == null) {
+         this.a.b(-1);
+      } else if (this.a.g(this.b) > 49.0) {
+         this.a.b(-1);
+      } else if (!this.a.P().a(this.b)) {
+         this.a.b(-1);
+      } else {
+         this.a.b(1);
       }
    }
 }

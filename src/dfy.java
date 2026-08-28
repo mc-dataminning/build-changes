@@ -1,19 +1,25 @@
-import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
-import java.util.function.Function;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public interface dfy {
-   Codec<dfy> b = mf.au.q().dispatch(dfy::a, Function.identity());
+public record dfy(dfs d) implements dgc {
+   public static final MapCodec<dfy> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(dfs.b.fieldOf("amount").forGetter($$0x -> $$0x.d)).apply($$0, dfy::new));
 
-   static MapCodec<? extends dfy> a(jr<MapCodec<? extends dfy>> $$0) {
-      jr.a($$0, "add", dfp.a);
-      jr.a($$0, "all_of", dfq.c.a);
-      jr.a($$0, "multiply", dgb.a);
-      jr.a($$0, "remove_binomial", dgd.a);
-      return jr.a($$0, "set", dgi.a);
+   @Override
+   public void a(arq $$0, int $$1, dfk $$2, bwd $$3, fei $$4) {
+      cyy $$5 = $$2.a();
+      if ($$5.c(kj.d) && $$5.c(kj.e)) {
+         arr $$7 = $$2.c() instanceof arr $$6 ? $$6 : null;
+         int $$8 = (int)this.d.a($$1);
+         $$5.a($$8, $$0, $$7, $$2.d());
+      }
    }
 
-   float a(int var1, azt var2, float var3);
+   @Override
+   public MapCodec<dfy> a() {
+      return a;
+   }
 
-   MapCodec<? extends dfy> a();
+   public dfs b() {
+      return this.d;
+   }
 }

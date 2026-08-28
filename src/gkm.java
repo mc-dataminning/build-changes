@@ -1,73 +1,67 @@
-import com.mojang.authlib.minecraft.UserApiService;
-import java.util.Objects;
-import java.util.UUID;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import java.util.ArrayList;
+import java.util.List;
 import javax.annotation.Nullable;
 
-public final class gkm {
-   private static final int a = 1024;
-   private final gkd b;
-   private final gkj c;
-   private final gjy d;
-   @Nullable
-   private gki e;
+public class gkm {
+   private final gko[] a;
+   private int b;
 
-   public gkm(gkd $$0, gkj $$1, gjy $$2) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
-   }
-
-   public static gkm a(gkj $$0, UserApiService $$1) {
-      gjy $$2 = new gjy(1024);
-      gkd $$3 = gkd.a($$0, $$1);
-      return new gkm($$3, $$0, $$2);
-   }
-
-   public void a(fof $$0, fxi $$1, Runnable $$2, boolean $$3) {
-      if (this.e != null) {
-         gki $$4 = this.e.b();
-         $$0.a(
-            new fwg(
-               $$4x -> {
-                  this.a(null);
-                  if ($$4x) {
-                     $$0.a($$4.a($$1, this));
-                  } else {
-                     $$2.run();
-                  }
-               },
-               ww.c($$3 ? "gui.abuseReport.draft.quittotitle.title" : "gui.abuseReport.draft.title"),
-               ww.c($$3 ? "gui.abuseReport.draft.quittotitle.content" : "gui.abuseReport.draft.content"),
-               ww.c("gui.abuseReport.draft.edit"),
-               ww.c("gui.abuseReport.draft.discard")
-            )
+   public static Codec<gkm> a(int $$0) {
+      return Codec.list(gko.a)
+         .comapFlatMap(
+            $$1 -> {
+               int $$2 = $$1.size();
+               return $$2 > $$0
+                  ? DataResult.error(() -> "Expected: a buffer of size less than or equal to " + $$0 + " but: " + $$2 + " is greater than " + $$0)
+                  : DataResult.success(new gkm($$0, $$1));
+            },
+            gkm::c
          );
-      } else {
-         $$2.run();
+   }
+
+   public gkm(int $$0) {
+      this.a = new gko[$$0];
+   }
+
+   private gkm(int $$0, List<gko> $$1) {
+      this.a = $$1.toArray(gko[]::new);
+      this.b = $$1.size();
+   }
+
+   private List<gko> c() {
+      List<gko> $$0 = new ArrayList<>(this.d());
+
+      for (int $$1 = this.a(); $$1 <= this.b(); $$1++) {
+         $$0.add(this.b($$1));
       }
+
+      return $$0;
    }
 
-   public gkd a() {
-      return this.b;
+   public void a(gko $$0) {
+      this.a[this.c(this.b++)] = $$0;
    }
 
-   public gjy b() {
-      return this.d;
+   @Nullable
+   public gko b(int $$0) {
+      return $$0 >= this.a() && $$0 <= this.b() ? this.a[this.c($$0)] : null;
    }
 
-   public boolean a(gkj $$0) {
-      return Objects.equals(this.c, $$0);
+   private int c(int $$0) {
+      return $$0 % this.a.length;
    }
 
-   public void a(@Nullable gki $$0) {
-      this.e = $$0;
+   public int a() {
+      return Math.max(this.b - this.a.length, 0);
    }
 
-   public boolean c() {
-      return this.e != null;
+   public int b() {
+      return this.b - 1;
    }
 
-   public boolean a(UUID $$0) {
-      return this.c() && this.e.a($$0);
+   private int d() {
+      return this.b() - this.a() + 1;
    }
 }

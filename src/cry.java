@@ -1,30 +1,51 @@
 import javax.annotation.Nullable;
 
-public class cry extends crb {
-   public cry(bwj<? extends cry> $$0, dip $$1) {
+public class cry extends crf {
+   private int d = 200;
+
+   public cry(bwm<? extends cry> $$0, div $$1) {
       super($$0, $$1);
    }
 
-   public cry(dip $$0, bwz $$1, cys $$2) {
-      super(bwj.aW, $$0, $$1, $$2);
+   public cry(div $$0, bxc $$1, cyy $$2, @Nullable cyy $$3) {
+      super(bwm.bn, $$1, $$0, $$2, $$3);
    }
 
-   public cry(dip $$0, double $$1, double $$2, double $$3, cys $$4) {
-      super(bwj.aW, $$0, $$1, $$2, $$3, $$4);
+   public cry(div $$0, double $$1, double $$2, double $$3, cyy $$4, @Nullable cyy $$5) {
+      super(bwm.bn, $$1, $$2, $$3, $$0, $$4, $$5);
    }
 
    @Override
-   public void a(aro $$0, cys $$1, @Nullable bwa $$2) {
-      bvs $$3 = new bvs(this.dV(), this.dA(), this.dC(), this.dG());
-      if (this.q() instanceof bwz $$4) {
-         $$3.a($$4);
+   public void h() {
+      super.h();
+      if (this.dV().C && !this.f()) {
+         this.dV().a(lx.T, this.dA(), this.dC(), this.dG(), 0.0, 0.0, 0.0);
       }
+   }
 
-      $$3.a(3.0F);
-      $$3.c(-0.5F);
-      $$3.c(10);
-      $$3.d(-$$3.e() / (float)$$3.i());
-      $$3.c($$1);
-      $$0.b($$3);
+   @Override
+   protected void a(bxc $$0) {
+      super.a($$0);
+      bvh $$1 = new bvh(bvj.x, this.d, 0);
+      $$0.b($$1, this.z());
+   }
+
+   @Override
+   public void a(tz $$0) {
+      super.a($$0);
+      if ($$0.e("Duration")) {
+         this.d = $$0.h("Duration");
+      }
+   }
+
+   @Override
+   public void b(tz $$0) {
+      super.b($$0);
+      $$0.a("Duration", this.d);
+   }
+
+   @Override
+   protected cyy o() {
+      return new cyy(czc.wv);
    }
 }

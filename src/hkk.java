@@ -1,5 +1,8 @@
-import java.util.function.Supplier;
+import javax.annotation.ParametersAreNonnullByDefault;
 
-@FunctionalInterface
-public interface hkk extends Supplier<String> {
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface hkk {
 }

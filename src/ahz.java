@@ -1,29 +1,45 @@
-public class ahz implements zd<agn> {
-   public static final yu<vs, ahz> a = zd.a(ahz::a, ahz::new);
-   private final String b;
+public class ahz implements zf<agp> {
+   public static final yw<vu, ahz> a = zf.a(ahz::a, ahz::new);
+   private final cwg b;
+   private final boolean c;
+   private final boolean d;
 
-   public ahz(String $$0) {
+   public ahz(cwg $$0, boolean $$1, boolean $$2) {
       this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
    }
 
-   private ahz(vs $$0) {
-      this.b = $$0.p();
+   private ahz(vu $$0) {
+      this.b = $$0.b(cwg.class);
+      this.c = $$0.readBoolean();
+      this.d = $$0.readBoolean();
    }
 
-   private void a(vs $$0) {
+   private void a(vu $$0) {
       $$0.a(this.b);
+      $$0.a(this.c);
+      $$0.a(this.d);
    }
 
    @Override
-   public zf<ahz> a() {
-      return agl.bY;
+   public zh<ahz> a() {
+      return agn.bW;
    }
 
-   public void a(agn $$0) {
+   public void a(agp $$0) {
       $$0.a(this);
    }
 
-   public String b() {
+   public cwg b() {
       return this.b;
+   }
+
+   public boolean e() {
+      return this.c;
+   }
+
+   public boolean f() {
+      return this.d;
    }
 }

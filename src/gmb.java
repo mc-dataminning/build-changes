@@ -1,43 +1,43 @@
-public class gmb extends gmj {
-   private final double a;
-   private final int b;
+import org.joml.Vector3f;
 
-   gmb(gjd $$0, double $$1, double $$2, double $$3, double $$4, int $$5, int $$6) {
-      super($$0, $$1, $$2, $$3, 0.0, 0.0, 0.0);
-      this.a = $$4;
-      this.t = $$5;
-      this.b = $$6;
+public class gmb extends gmd<lr> {
+   private final Vector3f a;
+   private final Vector3f b;
+
+   protected gmb(gjr $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, lr $$7, gnv $$8) {
+      super($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8);
+      float $$9 = this.r.i() * 0.4F + 0.6F;
+      this.a = this.a($$7.b(), $$9);
+      this.b = this.a($$7.c(), $$9);
+   }
+
+   private Vector3f a(Vector3f $$0, float $$1) {
+      return new Vector3f(this.a($$0.x(), $$1), this.a($$0.y(), $$1), this.a($$0.z(), $$1));
+   }
+
+   private void f(float $$0) {
+      float $$1 = ((float)this.s + $$0) / ((float)this.t + 1.0F);
+      Vector3f $$2 = new Vector3f(this.a).lerp(this.b, $$1);
+      this.v = $$2.x();
+      this.w = $$2.y();
+      this.x = $$2.z();
    }
 
    @Override
-   public void a() {
-      if (this.s % (this.b + 1) == 0) {
-         for (int $$0 = 0; $$0 < 3; $$0++) {
-            double $$1 = this.g + (this.r.j() - this.r.j()) * this.a;
-            double $$2 = this.h + (this.r.j() - this.r.j()) * this.a;
-            double $$3 = this.i + (this.r.j() - this.r.j()) * this.a;
-            this.c.a(lx.x, $$1, $$2, $$3, (double)((float)this.s / (float)this.t), 0.0, 0.0);
-         }
-      }
-
-      if (this.s++ == this.t) {
-         this.k();
-      }
+   public void a(fjg $$0, fnz $$1, float $$2) {
+      this.f($$2);
+      super.a($$0, $$1, $$2);
    }
 
-   public static class a implements gmo<mb> {
-      private final double a;
-      private final int b;
-      private final int c;
+   public static class a implements gnd<lr> {
+      private final gnv a;
 
-      public a(double $$0, int $$1, int $$2) {
+      public a(gnv $$0) {
          this.a = $$0;
-         this.b = $$1;
-         this.c = $$2;
       }
 
-      public gml a(mb $$0, gjd $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new gmb($$1, $$2, $$3, $$4, this.a, this.b, this.c);
+      public gna a(lr $$0, gjr $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new gmb($$1, $$2, $$3, $$4, $$5, $$6, $$7, $$0, this.a);
       }
    }
 }

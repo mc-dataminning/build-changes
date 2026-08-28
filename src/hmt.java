@@ -1,29 +1,35 @@
-import it.unimi.dsi.fastutil.floats.FloatConsumer;
-import java.io.IOException;
-import java.nio.ByteBuffer;
+import com.google.common.collect.AbstractIterator;
+import com.google.common.collect.Iterators;
+import com.google.common.collect.PeekingIterator;
+import java.util.Comparator;
+import java.util.Iterator;
 
-public interface hmt extends hms {
-   int a = 8192;
+public class hmt<T> extends AbstractIterator<T> {
+   private final PeekingIterator<T> a;
+   private final PeekingIterator<T> b;
+   private final Comparator<T> c;
 
-   boolean a(FloatConsumer var1) throws IOException;
-
-   @Override
-   default ByteBuffer a(int $$0) throws IOException {
-      hmr $$1 = new hmr($$0 + 8192);
-
-      while (this.a($$1) && $$1.b() < $$0) {
-      }
-
-      return $$1.a();
+   public hmt(Iterator<T> $$0, Iterator<T> $$1, Comparator<T> $$2) {
+      this.a = Iterators.peekingIterator($$0);
+      this.b = Iterators.peekingIterator($$1);
+      this.c = $$2;
    }
 
-   @Override
-   default ByteBuffer b() throws IOException {
-      hmr $$0 = new hmr(16384);
+   protected T computeNext() {
+      while (this.a.hasNext() && this.b.hasNext()) {
+         int $$0 = this.c.compare((T)this.a.peek(), (T)this.b.peek());
+         if ($$0 == 0) {
+            this.b.next();
+            return (T)this.a.next();
+         }
 
-      while (this.a($$0)) {
+         if ($$0 < 0) {
+            this.a.next();
+         } else {
+            this.b.next();
+         }
       }
 
-      return $$0.a();
+      return (T)this.endOfData();
    }
 }

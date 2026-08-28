@@ -1,18 +1,57 @@
-import javax.annotation.Nullable;
+public class gmp extends goa {
+   private final gnv a;
 
-public record gmp(String f, @Nullable gpn g) {
-   public static final gmp a = new gmp("TERRAIN_SHEET", gpn.B(hhy.d));
-   public static final gmp b = new gmp("PARTICLE_SHEET_OPAQUE", gpn.A(hhy.e));
-   public static final gmp c = new gmp("PARTICLE_SHEET_TRANSLUCENT", gpn.B(hhy.e));
-   public static final gmp d = new gmp("CUSTOM", null);
-   public static final gmp e = new gmp("NO_RENDER", null);
-
-   public String a() {
-      return this.f;
+   protected gmp(gjr $$0, double $$1, double $$2, double $$3, gnv $$4) {
+      super($$0, $$1, $$2, $$3);
+      this.a = $$4;
+      this.b($$4);
+      this.t = 12 + this.r.a(4);
+      this.D = 1.0F;
+      this.b(1.0F, 1.0F);
    }
 
-   @Nullable
-   public gpn b() {
-      return this.g;
+   @Override
+   public gne b() {
+      return gne.b;
+   }
+
+   @Override
+   public int a(float $$0) {
+      return 15728880;
+   }
+
+   @Override
+   public void a() {
+      if (this.s++ >= this.t) {
+         this.k();
+      } else {
+         this.b(this.a);
+      }
+   }
+
+   public static class a implements gnd<mb> {
+      private final gnv a;
+
+      public a(gnv $$0) {
+         this.a = $$0;
+      }
+
+      public gna a(mb $$0, gjr $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new gmp($$1, $$2, $$3, $$4, this.a);
+      }
+   }
+
+   public static class b implements gnd<mb> {
+      private final gnv a;
+
+      public b(gnv $$0) {
+         this.a = $$0;
+      }
+
+      public gna a(mb $$0, gjr $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         gna $$8 = new gmp($$1, $$2, $$3, $$4, this.a);
+         $$8.d(0.15F);
+         return $$8;
+      }
    }
 }

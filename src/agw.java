@@ -1,20 +1,42 @@
-public record agw(xn.a b) implements zd<agn> {
-   public static final yu<vs, agw> a = zd.a(agw::a, agw::new);
+import java.time.Instant;
 
-   private agw(vs $$0) {
-      this(xn.a.a($$0));
+public record agw(String b, Instant c, long d, ep e, xf.b f) implements zf<agp> {
+   public static final yw<vu, agw> a = zf.a(agw::a, agw::new);
+
+   private agw(vu $$0) {
+      this($$0.p(), $$0.t(), $$0.readLong(), new ep($$0), new xf.b($$0));
    }
 
-   private void a(vs $$0) {
-      xn.a.a($$0, this.b);
+   private void a(vu $$0) {
+      $$0.a(this.b);
+      $$0.a(this.c);
+      $$0.b(this.d);
+      this.e.a($$0);
+      this.f.a($$0);
    }
 
    @Override
-   public zf<agw> a() {
-      return agl.bs;
+   public zh<agw> a() {
+      return agn.bq;
    }
 
-   public void a(agn $$0) {
+   public void a(agp $$0) {
       $$0.a(this);
+   }
+
+   public Instant e() {
+      return this.c;
+   }
+
+   public long f() {
+      return this.d;
+   }
+
+   public ep g() {
+      return this.e;
+   }
+
+   public xf.b h() {
+      return this.f;
    }
 }

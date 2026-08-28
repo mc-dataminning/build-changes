@@ -1,38 +1,61 @@
-import com.google.common.math.IntMath;
-import it.unimi.dsi.fastutil.doubles.DoubleList;
+public class fee extends feg {
+   private final ja b;
+   private final iu c;
+   private final boolean d;
+   private final boolean e;
+   private final boolean f;
 
-public final class fee implements fei {
-   private final fec a;
-   private final int b;
-   private final int c;
+   public static fee a(fei $$0, ja $$1, iu $$2) {
+      return new fee(true, $$0, $$1, $$2, false, false);
+   }
 
-   fee(int $$0, int $$1) {
-      this.a = new fec((int)fen.a($$0, $$1));
-      int $$2 = IntMath.gcd($$0, $$1);
-      this.b = $$0 / $$2;
-      this.c = $$1 / $$2;
+   public fee(fei $$0, ja $$1, iu $$2, boolean $$3) {
+      this(false, $$0, $$1, $$2, $$3, false);
+   }
+
+   public fee(fei $$0, ja $$1, iu $$2, boolean $$3, boolean $$4) {
+      this(false, $$0, $$1, $$2, $$3, $$4);
+   }
+
+   private fee(boolean $$0, fei $$1, ja $$2, iu $$3, boolean $$4, boolean $$5) {
+      super($$1);
+      this.d = $$0;
+      this.b = $$2;
+      this.c = $$3;
+      this.e = $$4;
+      this.f = $$5;
+   }
+
+   public fee a(ja $$0) {
+      return new fee(this.d, this.a, $$0, this.c, this.e, this.f);
+   }
+
+   public fee a(iu $$0) {
+      return new fee(this.d, this.a, this.b, $$0, this.e, this.f);
+   }
+
+   public fee a() {
+      return new fee(this.d, this.a, this.b, this.c, this.e, true);
+   }
+
+   public iu b() {
+      return this.c;
+   }
+
+   public ja c() {
+      return this.b;
    }
 
    @Override
-   public boolean a(fei.a $$0) {
-      int $$1 = this.a.size() - 1;
-
-      for (int $$2 = 0; $$2 < $$1; $$2++) {
-         if (!$$0.merge($$2 / this.c, $$2 / this.b, $$2)) {
-            return false;
-         }
-      }
-
-      return true;
+   public feg.a d() {
+      return this.d ? feg.a.a : feg.a.b;
    }
 
-   @Override
-   public int size() {
-      return this.a.size();
+   public boolean e() {
+      return this.e;
    }
 
-   @Override
-   public DoubleList a() {
-      return this.a;
+   public boolean f() {
+      return this.f;
    }
 }

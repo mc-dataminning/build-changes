@@ -1,53 +1,49 @@
-import com.google.common.collect.Sets;
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Set;
 
-public record fco(fcs b, fcs c) implements fcs {
+public record fco(float b, dfs c, je<dfl> g) implements fci {
    public static final MapCodec<fco> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(fct.a.fieldOf("n").forGetter(fco::c), fct.a.fieldOf("p").forGetter(fco::d)).apply($$0, fco::new)
+      $$0 -> $$0.group(
+               Codec.floatRange(0.0F, 1.0F).fieldOf("unenchanted_chance").forGetter(fco::c),
+               dfs.b.fieldOf("enchanted_chance").forGetter(fco::d),
+               dfl.c.fieldOf("enchantment").forGetter(fco::e)
+            )
+            .apply($$0, fco::new)
    );
 
    @Override
-   public fcr b() {
-      return fct.d;
+   public fcj b() {
+      return fck.e;
    }
 
    @Override
-   public int a(eyn $$0) {
-      int $$1 = this.b.a($$0);
-      float $$2 = this.c.b($$0);
-      azt $$3 = $$0.b();
-      int $$4 = 0;
-
-      for (int $$5 = 0; $$5 < $$1; $$5++) {
-         if ($$3.i() < $$2) {
-            $$4++;
-         }
-      }
-
-      return $$4;
+   public Set<bax<?>> a() {
+      return Set.of(fbt.d);
    }
 
-   @Override
-   public float b(eyn $$0) {
-      return (float)this.a($$0);
+   public boolean a(eyz $$0) {
+      bwd $$1 = $$0.c(fbt.d);
+      int $$3 = $$1 instanceof bxc $$2 ? dfn.a(this.g, $$2) : 0;
+      float $$4 = $$3 > 0 ? this.c.a($$3) : this.b;
+      return $$0.b().i() < $$4;
    }
 
-   public static fco a(int $$0, float $$1) {
-      return new fco(fcp.a((float)$$0), fcp.a($$1));
+   public static fci.a a(jg.a $$0, float $$1, float $$2) {
+      jg.b<dfl> $$3 = $$0.e(mg.aQ);
+      return () -> new fco($$1, new dfs.e($$1 + $$2, $$2), $$3.b(dfq.s));
    }
 
-   @Override
-   public Set<bav<?>> a() {
-      return Sets.union(this.b.a(), this.c.a());
-   }
-
-   public fcs c() {
+   public float c() {
       return this.b;
    }
 
-   public fcs d() {
+   public dfs d() {
       return this.c;
+   }
+
+   public je<dfl> e() {
+      return this.g;
    }
 }

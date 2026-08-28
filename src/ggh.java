@@ -1,36 +1,45 @@
-import org.joml.Quaternionf;
+import java.util.Arrays;
 
-public class ggh<T extends hdb> extends gfr<T> {
-   private static final String a = "cape";
-   private final gig b = this.q.b("cape");
+public class ggh extends gfq<heb> {
+   private static final int a = 8;
+   private final giu[] b = new giu[8];
 
-   public ggh(gig $$0) {
+   public ggh(giu $$0) {
       super($$0);
+      Arrays.setAll(this.b, $$1 -> $$0.b(a($$1)));
    }
 
-   public static gim a() {
-      gio $$0 = gfr.a(gik.a, 0.0F);
-      giq $$1 = $$0.a();
-      giq $$2 = $$1.a("head");
-      $$2.a("hat");
-      giq $$3 = $$1.a("body");
-      $$1.a("left_arm");
-      $$1.a("right_arm");
-      $$1.a("left_leg");
-      $$1.a("right_leg");
-      $$3.a("cape", gil.c().a(0, 0).a(-5.0F, 0.0F, -1.0F, 10.0F, 16.0F, 1.0F, gik.a, 1.0F, 0.5F), gii.a(0.0F, 0.0F, 2.0F, 0.0F, (float) Math.PI, 0.0F));
-      return gim.a($$0, 64, 64);
+   private static String a(int $$0) {
+      return "cube" + $$0;
    }
 
-   public void a(T $$0) {
+   public static gja a() {
+      gjc $$0 = new gjc();
+      gje $$1 = $$0.a();
+
+      for (int $$2 = 0; $$2 < 8; $$2++) {
+         int $$3 = 0;
+         int $$4 = 0;
+         if ($$2 > 0 && $$2 < 4) {
+            $$4 += 9 * $$2;
+         } else if ($$2 > 3) {
+            $$3 = 32;
+            $$4 += 9 * $$2 - 36;
+         }
+
+         $$1.a(a($$2), giz.c().a($$3, $$4).a(-4.0F, (float)(16 + $$2), -4.0F, 8.0F, 1.0F, 8.0F), giw.a);
+      }
+
+      $$1.a("inside_cube", giz.c().a(24, 40).a(-2.0F, 18.0F, -2.0F, 4.0F, 4.0F, 4.0F), giw.a);
+      return gja.a($$0, 64, 64);
+   }
+
+   public void a(heb $$0) {
       super.a($$0);
-      this.b
-         .a(
-            new Quaternionf()
-               .rotateY((float) -Math.PI)
-               .rotateX((6.0F + $$0.c / 2.0F + $$0.b) * (float) (Math.PI / 180.0))
-               .rotateZ($$0.d / 2.0F * (float) (Math.PI / 180.0))
-               .rotateY((180.0F - $$0.d / 2.0F) * (float) (Math.PI / 180.0))
-         );
+      float $$1 = Math.max(0.0F, $$0.a);
+
+      for (int $$2 = 0; $$2 < this.b.length; $$2++) {
+         this.b[$$2].c = (float)(-(4 - $$2)) * $$1 * 1.7F;
+      }
    }
 }

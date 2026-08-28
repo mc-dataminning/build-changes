@@ -1,40 +1,36 @@
-public class gyy extends gzy<hdb, ggj> {
-   private final gfr<hdb> a;
-   private final hke b;
+public class gyy extends gxf<cqb, heq, gie> {
+   private static final alg a = alg.b("textures/entity/warden/warden.png");
+   private static final alg j = alg.b("textures/entity/warden/warden_bioluminescent_layer.png");
+   private static final alg k = alg.b("textures/entity/warden/warden_heart.png");
+   private static final alg l = alg.b("textures/entity/warden/warden_pulsating_spots_1.png");
+   private static final alg m = alg.b("textures/entity/warden/warden_pulsating_spots_2.png");
 
-   public gyy(gxh<hdb, ggj> $$0, gic $$1, hke $$2) {
-      super($$0);
-      this.a = new ggh<>($$1.a(gif.cp));
-      this.b = $$2;
+   public gyy(gvz.a $$0) {
+      super($$0, new gie($$0.a(git.dL)), 0.9F);
+      this.a(new hag<>(this, j, ($$0x, $$1) -> 1.0F, gie::d, gqc::k, false));
+      this.a(new hag<>(this, l, ($$0x, $$1) -> Math.max(0.0F, azm.b($$1 * 0.045F) * 0.25F), gie::e, gqc::k, false));
+      this.a(new hag<>(this, m, ($$0x, $$1) -> Math.max(0.0F, azm.b($$1 * 0.045F + (float) Math.PI) * 0.25F), gie::e, gqc::k, false));
+      this.a(new hag<>(this, a, ($$0x, $$1) -> $$0x.a, gie::b, gqc::k, false));
+      this.a(new hag<>(this, k, ($$0x, $$1) -> $$0x.b, gie::c, gqc::k, false));
    }
 
-   private boolean a(cys $$0, hkf.d $$1) {
-      dhb $$2 = $$0.a(kj.D);
-      if ($$2 != null && !$$2.d().isEmpty()) {
-         hkf $$3 = this.b.a($$2.d().get());
-         return !$$3.a($$1).isEmpty();
-      } else {
-         return false;
-      }
+   public alg a(heq $$0) {
+      return a;
    }
 
-   public void a(fiq $$0, gpd $$1, int $$2, hdb $$3, float $$4, float $$5) {
-      if (!$$3.z && $$3.ay) {
-         hja $$6 = $$3.a;
-         if ($$6.c() != null) {
-            if (!this.a($$3.W, hkf.d.c)) {
-               $$0.a();
-               if (this.a($$3.W, hkf.d.a)) {
-                  $$0.a(0.0F, -0.053125F, 0.06875F);
-               }
+   public heq b() {
+      return new heq();
+   }
 
-               fiu $$7 = $$1.getBuffer(gpn.d($$6.c()));
-               this.d().a(this.a);
-               this.a.a($$3);
-               this.a.a($$0, $$7, $$2, hhp.d);
-               $$0.b();
-            }
-         }
-      }
+   public void a(cqb $$0, heq $$1, float $$2) {
+      super.a($$0, $$1, $$2);
+      $$1.a = $$0.J($$2);
+      $$1.b = $$0.K($$2);
+      $$1.c.a($$0.a);
+      $$1.d.a($$0.b);
+      $$1.e.a($$0.c);
+      $$1.f.a($$0.d);
+      $$1.g.a($$0.bF);
+      $$1.h.a($$0.bG);
    }
 }

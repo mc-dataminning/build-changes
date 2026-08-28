@@ -1,65 +1,66 @@
-import com.mojang.brigadier.StringReader;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.suggestion.Suggestions;
-import com.mojang.brigadier.suggestion.SuggestionsBuilder;
-import java.util.List;
-import java.util.Optional;
-import java.util.concurrent.CompletableFuture;
-import java.util.stream.Collectors;
+import it.unimi.dsi.fastutil.objects.Object2ObjectArrayMap;
+import it.unimi.dsi.fastutil.objects.Object2ObjectMap;
+import java.util.Objects;
+import javax.annotation.Nullable;
 
-public record bps<T>(bpk<StringReader> a, bpi<T> b) {
-   public Optional<T> a(bpn<StringReader> $$0) {
-      return $$0.a(this.b);
+public final class bps {
+   private final Object2ObjectMap<bpl<?>, Object> a = new Object2ObjectArrayMap();
+
+   public <T> void a(bpl<T> $$0, @Nullable T $$1) {
+      this.a.put($$0, $$1);
    }
 
-   public T a(StringReader $$0) throws CommandSyntaxException {
-      bpl.a<StringReader> $$1 = new bpl.a<>();
-      bpw $$2 = new bpw(this.a(), $$1, $$0);
-      Optional<T> $$3 = this.a($$2);
-      if ($$3.isPresent()) {
-         return $$3.get();
+   @Nullable
+   public <T> T a(bpl<T> $$0) {
+      return (T)this.a.get($$0);
+   }
+
+   public <T> T b(bpl<T> $$0) {
+      return Objects.requireNonNull(this.a($$0));
+   }
+
+   public <T> T b(bpl<T> $$0, T $$1) {
+      return Objects.requireNonNullElse(this.a($$0), $$1);
+   }
+
+   @Nullable
+   @SafeVarargs
+   public final <T> T a(bpl<T>... $$0) {
+      for (bpl<T> $$1 : $$0) {
+         T $$2 = this.a($$1);
+         if ($$2 != null) {
+            return $$2;
+         }
+      }
+
+      return null;
+   }
+
+   @SafeVarargs
+   public final <T> T b(bpl<T>... $$0) {
+      return Objects.requireNonNull(this.a($$0));
+   }
+
+   @Override
+   public String toString() {
+      return this.a.toString();
+   }
+
+   public void a(bps $$0) {
+      this.a.putAll($$0.a);
+   }
+
+   @Override
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
       } else {
-         List<Exception> $$4 = $$1.a().stream().<Exception>mapMulti(($$0x, $$1x) -> {
-            if ($$0x.c() instanceof Exception $$3x) {
-               $$1x.accept($$3x);
-            }
-         }).toList();
-
-         for (Exception $$5 : $$4) {
-            if ($$5 instanceof CommandSyntaxException $$6) {
-               throw $$6;
-            }
-         }
-
-         if ($$4.size() == 1 && $$4.get(0) instanceof RuntimeException $$7) {
-            throw $$7;
-         } else {
-            throw new IllegalStateException("Failed to parse: " + $$1.a().stream().map(bpm::toString).collect(Collectors.joining(", ")));
-         }
+         return $$0 instanceof bps $$1 ? this.a.equals($$1.a) : false;
       }
    }
 
-   public CompletableFuture<Suggestions> a(SuggestionsBuilder $$0) {
-      StringReader $$1 = new StringReader($$0.getInput());
-      $$1.setCursor($$0.getStart());
-      bpl.a<StringReader> $$2 = new bpl.a<>();
-      bpw $$3 = new bpw(this.a(), $$2, $$1);
-      this.a($$3);
-      List<bpm<StringReader>> $$4 = $$2.a();
-      if ($$4.isEmpty()) {
-         return $$0.buildFuture();
-      } else {
-         SuggestionsBuilder $$5 = $$0.createOffset($$2.b());
-
-         for (bpm<StringReader> $$6 : $$4) {
-            if ($$6.b() instanceof bpv $$7) {
-               en.a($$7.a(), $$5);
-            } else {
-               en.b($$6.b().possibleValues($$3), $$5);
-            }
-         }
-
-         return $$5.buildFuture();
-      }
+   @Override
+   public int hashCode() {
+      return this.a.hashCode();
    }
 }

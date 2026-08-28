@@ -1,49 +1,97 @@
-import java.util.List;
+import com.google.common.collect.ImmutableMap.Builder;
+import java.util.Map;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
-public class cxd extends cyo {
-   public cxd(cyo.a $$0) {
-      super($$0);
+public class cxd extends cyu {
+   protected static final Map<dma, dma> a = new Builder()
+      .put(dmc.at, dmc.aB)
+      .put(dmc.X, dmc.aq)
+      .put(dmc.az, dmc.aH)
+      .put(dmc.ad, dmc.ao)
+      .put(dmc.u, dmc.aI)
+      .put(dmc.ae, dmc.ap)
+      .put(dmc.ax, dmc.aF)
+      .put(dmc.ab, dmc.am)
+      .put(dmc.ay, dmc.aG)
+      .put(dmc.ac, dmc.an)
+      .put(dmc.av, dmc.aD)
+      .put(dmc.Z, dmc.ak)
+      .put(dmc.aw, dmc.aE)
+      .put(dmc.aa, dmc.al)
+      .put(dmc.au, dmc.aC)
+      .put(dmc.Y, dmc.aj)
+      .put(dmc.oM, dmc.oN)
+      .put(dmc.oO, dmc.oP)
+      .put(dmc.oV, dmc.oW)
+      .put(dmc.oX, dmc.oY)
+      .put(dmc.aA, dmc.aJ)
+      .put(dmc.af, dmc.ar)
+      .put(dmc.ai, dmc.as)
+      .build();
+
+   public cxd(dam $$0, float $$1, float $$2, cyu.a $$3) {
+      super($$3.b($$0, $$1, $$2));
    }
 
    @Override
-   public bty a(dip $$0, cqs $$1, btx $$2) {
-      List<bvs> $$3 = $$0.a(bvs.class, $$1.cR().g(2.0), $$0x -> $$0x != null && $$0x.bK() && $$0x.o() instanceof clq);
-      cys $$4 = $$1.b($$2);
-      if (!$$3.isEmpty()) {
-         bvs $$5 = $$3.get(0);
-         $$5.a($$5.e() - 0.5F);
-         $$0.a(null, $$1.dA(), $$1.dC(), $$1.dG(), awl.cD, awm.g, 1.0F, 1.0F);
-         $$0.a($$1, eeo.y, $$1.dt());
-         if ($$1 instanceof arp $$6) {
-            ap.T.a($$6, $$4, $$5);
-         }
-
-         return bty.a.a(this.a($$4, $$1, new cys(cyw.wr)));
+   public bub a(dct $$0) {
+      div $$1 = $$0.q();
+      iu $$2 = $$0.a();
+      cqy $$3 = $$0.o();
+      if (b($$0)) {
+         return bub.e;
       } else {
-         fds $$7 = a($$0, $$1, dhy.b.b);
-         if ($$7.d() == fdu.a.a) {
-            return bty.e;
+         Optional<dzz> $$4 = this.a($$1, $$2, $$3, $$1.a_($$2));
+         if ($$4.isEmpty()) {
+            return bub.e;
          } else {
-            if ($$7.d() == fdu.a.b) {
-               iu $$8 = $$7.b();
-               if (!$$0.a($$1, $$8)) {
-                  return bty.e;
-               }
-
-               if ($$0.b_($$8).a(axf.a)) {
-                  $$0.a($$1, $$1.dA(), $$1.dC(), $$1.dG(), awl.cC, awm.g, 1.0F, 1.0F);
-                  $$0.a($$1, eeo.y, $$8);
-                  return bty.a.a(this.a($$4, $$1, dao.a(cyw.tm, dap.a)));
-               }
+            cyy $$5 = $$0.n();
+            if ($$3 instanceof arr) {
+               ap.N.a((arr)$$3, $$2, $$5);
             }
 
-            return bty.e;
+            $$1.a($$2, $$4.get(), 11);
+            $$1.a(eez.c, $$2, eez.a.a($$3, $$4.get()));
+            if ($$3 != null) {
+               $$5.a(1, $$3, bxc.d($$0.p()));
+            }
+
+            return bub.a;
          }
       }
    }
 
-   protected cys a(cys $$0, cqs $$1, cys $$2) {
-      $$1.b(awv.c.b(this));
-      return cyv.a($$0, $$1, $$2);
+   private static boolean b(dct $$0) {
+      cqy $$1 = $$0.o();
+      return $$0.p().equals(bua.a) && $$1.fb().c(kj.I) && !$$1.fX();
+   }
+
+   private Optional<dzz> a(div $$0, iu $$1, @Nullable cqy $$2, dzz $$3) {
+      Optional<dzz> $$4 = this.a($$3);
+      if ($$4.isPresent()) {
+         $$0.a($$2, $$1, awn.aH, awo.e, 1.0F, 1.0F);
+         return $$4;
+      } else {
+         Optional<dzz> $$5 = dvt.b($$3);
+         if ($$5.isPresent()) {
+            $$0.a($$2, $$1, awn.aI, awo.e, 1.0F, 1.0F);
+            $$0.a($$2, 3005, $$1, 0);
+            return $$5;
+         } else {
+            Optional<dzz> $$6 = Optional.ofNullable((dma)cyp.b.get().get($$3.b())).map($$1x -> $$1x.m($$3));
+            if ($$6.isPresent()) {
+               $$0.a($$2, $$1, awn.aJ, awo.e, 1.0F, 1.0F);
+               $$0.a($$2, 3004, $$1, 0);
+               return $$6;
+            } else {
+               return Optional.empty();
+            }
+         }
+      }
+   }
+
+   private Optional<dzz> a(dzz $$0) {
+      return Optional.ofNullable(a.get($$0.b())).map($$1 -> $$1.m().b(dss.d, $$0.c(dss.d)));
    }
 }

@@ -1,29 +1,20 @@
-public class aim implements zd<agn> {
-   public static final yu<vs, aim> a = zd.a(aim::a, aim::new);
-   private final btx b;
-
-   public aim(btx $$0) {
-      this.b = $$0;
-   }
-
-   private aim(vs $$0) {
-      this.b = $$0.b(btx.class);
-   }
-
-   private void a(vs $$0) {
-      $$0.a(this.b);
-   }
+public record aim(iu b, ebk c, String d) implements zf<agp> {
+   public static final yw<vu, aim> a = yw.a(iu.b, aim::b, ebk.f, aim::e, yu.o, aim::f, aim::new);
 
    @Override
-   public zf<aim> a() {
-      return agl.cl;
+   public zh<aim> a() {
+      return agn.ci;
    }
 
-   public void a(agn $$0) {
+   public void a(agp $$0) {
       $$0.a(this);
    }
 
-   public btx b() {
-      return this.b;
+   public ebk e() {
+      return this.c;
+   }
+
+   public String f() {
+      return this.d;
    }
 }

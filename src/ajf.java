@@ -1,19 +1,29 @@
-public class ajf {
-   public static final zf<aja> a = a("custom_query");
-   public static final zf<aje> b = a("login_finished");
-   public static final zf<ajb> c = a("hello");
-   public static final zf<ajc> d = a("login_compression");
-   public static final zf<ajd> e = a("login_disconnect");
-   public static final zf<aji> f = b("custom_query_answer");
-   public static final zf<ajj> g = b("hello");
-   public static final zf<ajk> h = b("key");
-   public static final zf<ajl> i = b("login_acknowledged");
+public class ajf implements zf<ajb> {
+   public static final yw<vu, ajf> a = zf.a(ajf::a, ajf::new);
+   private final wy b;
 
-   private static <T extends zd<aiz>> zf<T> a(String $$0) {
-      return new zf<>(ze.b, ale.b($$0));
+   public ajf(wy $$0) {
+      this.b = $$0;
    }
 
-   private static <T extends zd<ajh>> zf<T> b(String $$0) {
-      return new zf<>(ze.a, ale.b($$0));
+   private ajf(vu $$0) {
+      this.b = wy.a.b($$0.d(262144), js.b);
+   }
+
+   private void a(vu $$0) {
+      $$0.a(wy.a.a(this.b, js.b));
+   }
+
+   @Override
+   public zh<ajf> a() {
+      return ajh.e;
+   }
+
+   public void a(ajb $$0) {
+      $$0.a(this);
+   }
+
+   public wy b() {
+      return this.b;
    }
 }

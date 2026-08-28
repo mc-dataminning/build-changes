@@ -1,147 +1,50 @@
-import javax.annotation.Nullable;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public abstract class dwg extends dwn implements btr, bua, bub {
-   private btz d = btz.a;
-   @Nullable
-   private ww e;
+public class dwg extends dpf {
+   public static final MapCodec<dwg> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(b.forGetter(dpf::c), t()).apply($$0, dwg::new));
 
-   protected dwg(dwp<?> $$0, iu $$1, dzo $$2) {
-      super($$0, $$1, $$2);
+   @Override
+   public MapCodec<dwg> a() {
+      return a;
+   }
+
+   public dwg(je<bvf> $$0, float $$1, dzy.d $$2) {
+      this(a($$0, $$1), $$2);
+   }
+
+   public dwg(dca $$0, dzy.d $$1) {
+      super($$0, $$1);
    }
 
    @Override
-   protected void a(tx $$0, jg.a $$1) {
-      super.a($$0, $$1);
-      this.d = btz.b($$0, $$1);
-      if ($$0.e("CustomName")) {
-         this.e = a($$0.c("CustomName"), $$1);
-      }
+   protected boolean b(dzz $$0, dib $$1, iu $$2) {
+      return super.b($$0, $$1, $$2) || $$0.a(dmc.ej) || $$0.a(dmc.ek) || $$0.a(dmc.el);
    }
 
    @Override
-   protected void b(tx $$0, jg.a $$1) {
-      super.b($$0, $$1);
-      this.d.a($$0, $$1);
-      if (this.e != null) {
-         $$0.a("CustomName", (uu)wy.a.encodeStart($$1.a(ul.a), this.e).getOrThrow());
-      }
-   }
+   public void a(dzz $$0, div $$1, iu $$2, azv $$3) {
+      ffc $$4 = this.a($$0, $$1, $$2, fen.a());
+      fei $$5 = $$4.a().f();
+      double $$6 = (double)$$2.u() + $$5.d;
+      double $$7 = (double)$$2.w() + $$5.f;
 
-   @Override
-   public ww al() {
-      return this.e != null ? this.e : this.j();
-   }
-
-   @Override
-   public ww m_() {
-      return this.al();
-   }
-
-   @Nullable
-   @Override
-   public ww an() {
-      return this.e;
-   }
-
-   protected abstract ww j();
-
-   public boolean d(cqs $$0) {
-      return a($$0, this.d, this.m_());
-   }
-
-   public static boolean a(cqs $$0, btz $$1, ww $$2) {
-      if (!$$0.U_() && !$$1.a($$0.fa())) {
-         $$0.a(ww.a("container.isLocked", $$2), true);
-         $$0.a(awl.eR, awm.e, 1.0F, 1.0F);
-         return false;
-      } else {
-         return true;
-      }
-   }
-
-   protected abstract jn<cys> f();
-
-   protected abstract void a(jn<cys> var1);
-
-   @Override
-   public boolean c() {
-      for (cys $$0 : this.f()) {
-         if (!$$0.f()) {
-            return false;
+      for (int $$8 = 0; $$8 < 3; $$8++) {
+         if ($$3.h()) {
+            $$1.a(lx.ah, $$6 + $$3.j() / 5.0, (double)$$2.v() + (0.5 - $$3.j()), $$7 + $$3.j() / 5.0, 0.0, 0.0, 0.0);
          }
       }
-
-      return true;
    }
 
    @Override
-   public cys a(int $$0) {
-      return this.f().get($$0);
-   }
-
-   @Override
-   public cys a(int $$0, int $$1) {
-      cys $$2 = bts.a(this.f(), $$0, $$1);
-      if (!$$2.f()) {
-         this.e();
+   protected void a(dzz $$0, div $$1, iu $$2, bwd $$3) {
+      if ($$1 instanceof arq $$4 && $$1.an() != bty.a && $$3 instanceof bxc $$5 && !$$5.a($$4, $$1.al().r())) {
+         $$5.a(this.b());
       }
-
-      return $$2;
    }
 
    @Override
-   public cys b(int $$0) {
-      return bts.a(this.f(), $$0);
-   }
-
-   @Override
-   public void a(int $$0, cys $$1) {
-      this.f().set($$0, $$1);
-      $$1.f(this.e_($$1));
-      this.e();
-   }
-
-   @Override
-   public boolean a(cqs $$0) {
-      return btr.a(this, $$0);
-   }
-
-   @Override
-   public void a() {
-      this.f().clear();
-   }
-
-   @Nullable
-   @Override
-   public cuk createMenu(int $$0, cqr $$1, cqs $$2) {
-      return this.d($$2) ? this.a($$0, $$1) : null;
-   }
-
-   protected abstract cuk a(int var1, cqr var2);
-
-   @Override
-   protected void a(ke $$0) {
-      super.a($$0);
-      this.e = $$0.a(kj.g);
-      this.d = $$0.a(kj.as, btz.a);
-      $$0.a(kj.ap, dbk.a).a(this.f());
-   }
-
-   @Override
-   protected void a(kg.a $$0) {
-      super.a($$0);
-      $$0.a(kj.g, this.e);
-      if (!this.d.equals(btz.a)) {
-         $$0.a(kj.as, this.d);
-      }
-
-      $$0.a(kj.ap, dbk.a(this.f()));
-   }
-
-   @Override
-   public void a(tx $$0) {
-      $$0.r("CustomName");
-      $$0.r("lock");
-      $$0.r("Items");
+   public bvh b() {
+      return new bvh(bvj.t, 40);
    }
 }

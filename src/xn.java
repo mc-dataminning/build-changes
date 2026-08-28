@@ -1,44 +1,35 @@
-import com.mojang.authlib.GameProfile;
-import java.time.Duration;
-import java.util.UUID;
+public interface xn {
+   wy a();
 
-public record xn(UUID a, cqv b) {
-   public xs a(Duration $$0) {
-      return new xs.a(this.b.a(), () -> this.b.b().a($$0));
+   void a(arr var1, boolean var2, wu.a var3);
+
+   static xn a(xo $$0) {
+      return (xn)($$0.h() ? new xn.a($$0.d()) : new xn.b($$0));
    }
 
-   public xq.b a(UUID $$0) {
-      return new xq($$0, this.a).a(this.b);
+   public static record a(wy a) implements xn {
+      @Override
+      public void a(arr $$0, boolean $$1, wu.a $$2) {
+         $$0.f.a(this.a, $$2);
+      }
    }
 
-   public xn.a a() {
-      return new xn.a(this.a, this.b.b());
-   }
-
-   public boolean b() {
-      return this.b.b().a();
-   }
-
-   public UUID c() {
-      return this.a;
-   }
-
-   public cqv d() {
-      return this.b;
-   }
-
-   public static record a(UUID a, cqv.a b) {
-      public static xn.a a(vs $$0) {
-         return new xn.a($$0.n(), new cqv.a($$0));
+   public static record b(xo a) implements xn {
+      @Override
+      public wy a() {
+         return this.a.d();
       }
 
-      public static void a(vs $$0, xn.a $$1) {
-         $$0.a($$1.a);
-         $$1.b.a($$0);
+      @Override
+      public void a(arr $$0, boolean $$1, wu.a $$2) {
+         xo $$3 = this.a.a($$1);
+         if (!$$3.j()) {
+            $$0.f.a($$3, $$2);
+         }
       }
 
-      public xn a(GameProfile $$0, azz $$1) throws cqv.b {
-         return new xn(this.a, cqv.a($$1, $$0.getId(), this.b));
+      public xo b() {
+         return this.a;
       }
    }
 }

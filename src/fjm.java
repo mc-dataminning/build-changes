@@ -1,80 +1,71 @@
 import com.mojang.logging.LogUtils;
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.util.concurrent.CompletionException;
+import java.util.Objects;
+import java.util.concurrent.CompletableFuture;
 import javax.annotation.Nullable;
 import org.slf4j.Logger;
 
 public class fjm {
    private static final Logger a = LogUtils.getLogger();
+   @Nullable
+   private static CompletableFuture<fjm.a> b;
 
-   public static void a(fof $$0, fxi $$1, fxi $$2, int $$3, fkh $$4, @Nullable fnf $$5) {
-      gcj.a($$0, $$1, ($$6, $$7, $$8, $$9) -> {
-         Path $$10;
-         try {
-            $$10 = a($$7, $$8, $$9);
-         } catch (IOException var13) {
-            a.warn("Failed to create temporary world folder.");
-            $$0.a(new flu(ww.c("mco.create.world.failed"), $$2));
-            return true;
-         }
-
-         fkn $$13 = fkn.a($$8.J(), $$8.J().e(), ab.b().c());
-         fjt $$14 = new fjt($$10, $$13, $$0.X(), $$4.a, $$3, fju.f());
-         $$0.d(new fwb($$14::b, ww.c("mco.create.world.reset.title"), ww.i(), wv.e, false));
-         if ($$5 != null) {
-            $$5.run();
-         }
-
-         $$14.a().handleAsync(($$5xx, $$6x) -> {
-            if ($$6x != null) {
-               if ($$6x instanceof CompletionException $$7x) {
-                  $$6x = $$7x.getCause();
-               }
-
-               if ($$6x instanceof fjn) {
-                  $$0.d($$2);
-               } else {
-                  if ($$6x instanceof fjp $$8x) {
-                     a.warn("Failed to create realms world {}", $$8x.a());
-                  } else {
-                     a.warn("Failed to create realms world {}", $$6x.getMessage());
-                  }
-
-                  $$0.d(new flu(ww.c("mco.create.world.failed"), $$2));
-               }
-            } else {
-               if ($$1 instanceof flq $$9x) {
-                  $$9x.a($$4.a);
-               }
-
-               if ($$5 != null) {
-                  fjb.a($$4, $$1, true);
-               } else {
-                  $$0.d($$1);
-               }
-
-               fjb.g();
-            }
-
-            return null;
-         }, $$0);
-         return true;
-      });
-   }
-
-   private static Path a(jl<aln> $$0, eyf $$1, @Nullable Path $$2) throws IOException {
-      Path $$3 = Files.createTempDirectory("minecraft_realms_world_upload");
-      if ($$2 != null) {
-         Files.move($$2, $$3.resolve("datapacks"));
+   public static CompletableFuture<fjm.a> a() {
+      if (b == null || a(b)) {
+         b = b();
       }
 
-      tx $$4 = $$1.a($$0.a(), null);
-      tx $$5 = new tx();
-      $$5.a("Data", $$4);
-      Path $$6 = Files.createFile($$3.resolve("level.dat"));
-      uk.a($$5, $$6);
-      return $$3;
+      return b;
+   }
+
+   private static boolean a(CompletableFuture<fjm.a> $$0) {
+      fjm.a $$1 = $$0.getNow(null);
+      return $$1 != null && $$1.b() != null;
+   }
+
+   private static CompletableFuture<fjm.a> b() {
+      fpe $$0 = fos.Q().X();
+      return $$0.g() != fpe.a.c ? CompletableFuture.completedFuture(new fjm.a(fjm.b.d)) : CompletableFuture.supplyAsync(() -> {
+         fjs $$0x = fjs.a();
+
+         try {
+            if ($$0x.g() != fjs.a.a) {
+               return new fjm.a(fjm.b.b);
+            } else {
+               return !$$0x.f() ? new fjm.a(fjm.b.c) : new fjm.a(fjm.b.a);
+            }
+         } catch (flo var2) {
+            a.error("Couldn't connect to realms", var2);
+            return var2.a.a() == 401 ? new fjm.a(fjm.b.d) : new fjm.a(var2);
+         }
+      }, af.i());
+   }
+
+   public static record a(fjm.b a, @Nullable flo b) {
+      public a(fjm.b $$0) {
+         this($$0, null);
+      }
+
+      public a(flo $$0) {
+         this(fjm.b.e, $$0);
+      }
+
+      @Nullable
+      public fxu a(fxu $$0) {
+         return (fxu)(switch (this.a) {
+            case a -> null;
+            case b -> new fmb($$0);
+            case c -> new fml($$0);
+            case d -> new fmg(wy.c("mco.error.invalid.session.title"), wy.c("mco.error.invalid.session.message"), $$0);
+            case e -> new fmg(Objects.requireNonNull(this.b), $$0);
+         });
+      }
+   }
+
+   public static enum b {
+      a,
+      b,
+      c,
+      d,
+      e;
    }
 }

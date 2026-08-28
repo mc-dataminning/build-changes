@@ -5,17 +5,17 @@ public class nw {
    public static nj a(mo $$0, CompletableFuture<jg.a> $$1) {
       return new nj(
          $$0,
-         eyj.a(),
+         eyv.a(),
          List.of(
-            new nj.a(nu::new, fbg.f),
-            new nj.a(nr::new, fbg.c),
-            new nj.a(ns::new, fbg.g),
-            new nj.a(nt::new, fbg.h),
-            new nj.a(nq::new, fbg.r),
-            new nj.a(nx::new, fbg.k),
-            new nj.a(nv::new, fbg.j),
-            new nj.a(np::new, fbg.i),
-            new nj.a(ny::new, fbg.s)
+            new nj.a(nu::new, fbs.f),
+            new nj.a(nr::new, fbs.c),
+            new nj.a(ns::new, fbs.g),
+            new nj.a(nt::new, fbs.h),
+            new nj.a(nq::new, fbs.r),
+            new nj.a(nx::new, fbs.k),
+            new nj.a(nv::new, fbs.j),
+            new nj.a(np::new, fbs.i),
+            new nj.a(ny::new, fbs.s)
          ),
          $$1
       );

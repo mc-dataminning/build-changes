@@ -1,9 +1,10 @@
-public class cwl extends cum {
-   public cwl(int $$0, cqr $$1) {
-      super(cvt.w, ddu.d, dds.g, cwa.d, $$0, $$1);
+public class cwl extends cwn {
+   public cwl(btu $$0, int $$1, int $$2, int $$3) {
+      super($$0, $$1, $$2, $$3);
    }
 
-   public cwl(int $$0, cqr $$1, btr $$2, cuw $$3) {
-      super(cvt.w, ddu.d, dds.g, cwa.d, $$0, $$1, $$2, $$3);
+   @Override
+   public boolean a(cyy $$0) {
+      return $$0.h().d();
    }
 }

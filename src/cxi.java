@@ -1,59 +1,127 @@
-import java.util.Optional;
+import javax.annotation.Nullable;
 
-public class cxi extends cyo {
-   private static final ww a = ww.c("item.minecraft.lodestone_compass");
+public class cxi extends cyu {
+   public static final int a = 3;
+   public static final int b = 1;
+   public static final int c = 3;
 
-   public cxi(cyo.a $$0) {
+   public cxi(cyu.a $$0) {
       super($$0);
    }
 
    @Override
-   public boolean c_(cys $$0) {
-      return $$0.c(kj.ah) || super.c_($$0);
-   }
-
-   @Override
-   public void a(cys $$0, dip $$1, bwa $$2, int $$3, boolean $$4) {
-      if ($$1 instanceof aro $$5) {
-         dbm $$6 = $$0.a(kj.ah);
-         if ($$6 != null) {
-            dbm $$7 = $$6.a($$5);
-            if ($$7 != $$6) {
-               $$0.b(kj.ah, $$7);
-            }
+   public bub a(dct $$0) {
+      div $$1 = $$0.q();
+      iu $$2 = $$0.a();
+      iu $$3 = $$2.a($$0.k());
+      if (a($$0.n(), $$1, $$2)) {
+         if (!$$1.C) {
+            $$0.o().a(eez.C);
+            $$1.c(1505, $$2, 15);
          }
-      }
-   }
 
-   @Override
-   public bty a(dcn $$0) {
-      iu $$1 = $$0.a();
-      dip $$2 = $$0.q();
-      if (!$$2.a_($$1).a(dlw.pU)) {
-         return super.a($$0);
+         return bub.a;
       } else {
-         $$2.a(null, $$1, awl.oV, awm.h, 1.0F, 1.0F);
-         cqs $$3 = $$0.o();
-         cys $$4 = $$0.n();
-         boolean $$5 = !$$3.fU() && $$4.M() == 1;
-         dbm $$6 = new dbm(Optional.of(jd.a($$2.aj(), $$1)), true);
-         if ($$5) {
-            $$4.b(kj.ah, $$6);
-         } else {
-            cys $$7 = $$4.a(cyw.rD, 1);
-            $$4.a(1, $$3);
-            $$7.b(kj.ah, $$6);
-            if (!$$3.gi().f($$7)) {
-               $$3.a($$7, false);
+         dzz $$4 = $$1.a_($$2);
+         boolean $$5 = $$4.c($$1, $$2, $$0.k());
+         if ($$5 && a($$0.n(), $$1, $$3, $$0.k())) {
+            if (!$$1.C) {
+               $$0.o().a(eez.C);
+               $$1.c(1505, $$3, 15);
             }
-         }
 
-         return bty.a;
+            return bub.a;
+         } else {
+            return bub.e;
+         }
       }
    }
 
-   @Override
-   public ww a(cys $$0) {
-      return $$0.c(kj.ah) ? a : super.a($$0);
+   public static boolean a(cyy $$0, div $$1, iu $$2) {
+      dzz $$3 = $$1.a_($$2);
+      if ($$3.b() instanceof dmd $$4 && $$4.a($$1, $$2, $$3)) {
+         if ($$1 instanceof arq) {
+            if ($$4.a($$1, $$1.A, $$2, $$3)) {
+               $$4.a((arq)$$1, $$1.A, $$2, $$3);
+            }
+
+            $$0.h(1);
+         }
+
+         return true;
+      }
+
+      return false;
+   }
+
+   public static boolean a(cyy $$0, div $$1, iu $$2, @Nullable ja $$3) {
+      if ($$1.a_($$2).a(dmc.J) && $$1.b_($$2).e() == 8) {
+         if (!($$1 instanceof arq)) {
+            return true;
+         } else {
+            azv $$4 = $$1.C_();
+
+            label80:
+            for (int $$5 = 0; $$5 < 128; $$5++) {
+               iu $$6 = $$2;
+               dzz $$7 = dmc.bE.m();
+
+               for (int $$8 = 0; $$8 < $$5 / 16; $$8++) {
+                  $$6 = $$6.b($$4.a(3) - 1, ($$4.a(3) - 1) * $$4.a(3) / 2, $$4.a(3) - 1);
+                  if ($$1.a_($$6).m($$1, $$6)) {
+                     continue label80;
+                  }
+               }
+
+               je<djy> $$9 = $$1.u($$6);
+               if ($$9.a(axb.ac)) {
+                  if ($$5 == 0 && $$3 != null && $$3.o().d()) {
+                     $$7 = mf.e.a(axc.au, $$1.A).map($$0x -> ((dma)$$0x.a()).m()).orElse($$7);
+                     if ($$7.b(dll.d)) {
+                        $$7 = $$7.b(dll.d, $$3);
+                     }
+                  } else if ($$4.a(4) == 0) {
+                     $$7 = mf.e.a(axc.as, $$1.A).map($$0x -> ((dma)$$0x.a()).m()).orElse($$7);
+                  }
+               }
+
+               if ($$7.a(axc.au, $$0x -> $$0x.b(dll.d))) {
+                  for (int $$10 = 0; !$$7.a((diy)$$1, $$6) && $$10 < 4; $$10++) {
+                     $$7 = $$7.b(dll.d, ja.c.a.a($$4));
+                  }
+               }
+
+               if ($$7.a((diy)$$1, $$6)) {
+                  dzz $$11 = $$1.a_($$6);
+                  if ($$11.a(dmc.J) && $$1.b_($$6).e() == 8) {
+                     $$1.a($$6, $$7, 3);
+                  } else if ($$11.a(dmc.bE) && ((dmd)dmc.bE).a($$1, $$6, $$11) && $$4.a(10) == 0) {
+                     ((dmd)dmc.bE).a((arq)$$1, $$4, $$6, $$11);
+                  }
+               }
+            }
+
+            $$0.h(1);
+            return true;
+         }
+      } else {
+         return false;
+      }
+   }
+
+   public static void a(diw $$0, iu $$1, int $$2) {
+      dzz $$3 = $$0.a_($$1);
+      if ($$3.b() instanceof dmd $$4) {
+         iu $$5 = $$4.a($$1);
+         switch ($$4.am_()) {
+            case a:
+               azq.a($$0, $$5, $$2 * 3, 3.0, 1.0, false, lx.Q);
+               break;
+            case b:
+               azq.a($$0, $$5, $$2, lx.Q);
+         }
+      } else if ($$3.a(dmc.J)) {
+         azq.a($$0, $$1, $$2 * 3, 3.0, 1.0, false, lx.Q);
+      }
    }
 }

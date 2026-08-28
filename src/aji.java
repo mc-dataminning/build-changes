@@ -1,44 +1,6 @@
-import javax.annotation.Nullable;
-
-public record aji(int b, @Nullable ajm c) implements zd<ajh> {
-   public static final yu<vs, aji> a = zd.a(aji::c, aji::a);
-   private static final int d = 1048576;
-
-   private static aji a(vs $$0) {
-      int $$1 = $$0.l();
-      return new aji($$1, a($$1, $$0));
-   }
-
-   private static ajm a(int $$0, vs $$1) {
-      return b($$1);
-   }
-
-   private static ajm b(vs $$0) {
-      int $$1 = $$0.readableBytes();
-      if ($$1 >= 0 && $$1 <= 1048576) {
-         $$0.k($$1);
-         return ajo.a;
-      } else {
-         throw new IllegalArgumentException("Payload may not be larger than 1048576 bytes");
-      }
-   }
-
-   private void c(vs $$0) {
-      $$0.c(this.b);
-      $$0.a(this.c, ($$0x, $$1) -> $$1.a($$0x));
-   }
-
-   @Override
-   public zf<aji> a() {
-      return ajf.f;
-   }
-
-   public void a(ajh $$0) {
-      $$0.a(this);
-   }
-
-   @Nullable
-   public ajm e() {
-      return this.c;
-   }
+public class aji {
+   public static final wg.a<ajj, vu> a = zk.a(vs.d, $$0 -> $$0.a(ajh.g, ajl.a).a(ajh.h, ajm.a).a(ajh.f, ajk.a).a(ajh.i, ajn.b).a(abq.b, abs.a));
+   public static final wg<ajj> b = a.a(vu::new);
+   public static final wg.a<ajb, vu> c = zk.b(vs.d, $$0 -> $$0.a(ajh.e, ajf.a).a(ajh.c, ajd.a).a(ajh.b, ajg.a).a(ajh.d, aje.a).a(ajh.a, ajc.a).a(abq.a, abp.a));
+   public static final wg<ajb> d = c.a(vu::new);
 }

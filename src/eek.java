@@ -1,36 +1,63 @@
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import io.netty.buffer.ByteBuf;
-import java.util.Optional;
+import it.unimi.dsi.fastutil.ints.Int2ObjectLinkedOpenHashMap;
+import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
+import it.unimi.dsi.fastutil.ints.Int2ObjectMaps;
+import it.unimi.dsi.fastutil.ints.Int2ObjectMap.Entry;
+import it.unimi.dsi.fastutil.objects.ObjectIterator;
+import java.util.function.Consumer;
+import javax.annotation.Nullable;
 
-public class eek implements ees {
-   public static final MapCodec<eek> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(iu.a.fieldOf("pos").forGetter($$0x -> $$0x.e)).apply($$0, eek::new));
-   public static final yu<ByteBuf, eek> b = yu.a(iu.b, $$0 -> $$0.e, eek::new);
-   private final iu e;
+public class eek {
+   private Int2ObjectMap<bwd> a = new Int2ObjectLinkedOpenHashMap();
+   private Int2ObjectMap<bwd> b = new Int2ObjectLinkedOpenHashMap();
+   @Nullable
+   private Int2ObjectMap<bwd> c;
 
-   public eek(iu $$0) {
-      this.e = $$0;
-   }
+   private void a() {
+      if (this.c == this.a) {
+         this.b.clear();
+         ObjectIterator $$1 = Int2ObjectMaps.fastIterable(this.a).iterator();
 
-   @Override
-   public Optional<fdw> a(dip $$0) {
-      return Optional.of(fdw.b(this.e));
-   }
+         while ($$1.hasNext()) {
+            Entry<bwd> $$0 = (Entry<bwd>)$$1.next();
+            this.b.put($$0.getIntKey(), (bwd)$$0.getValue());
+         }
 
-   @Override
-   public eet<eek> a() {
-      return eet.a;
-   }
-
-   public static class a implements eet<eek> {
-      @Override
-      public MapCodec<eek> a() {
-         return eek.a;
+         Int2ObjectMap<bwd> $$1x = this.a;
+         this.a = this.b;
+         this.b = $$1x;
       }
+   }
 
-      @Override
-      public yu<ByteBuf, eek> b() {
-         return eek.b;
+   public void a(bwd $$0) {
+      this.a();
+      this.a.put($$0.ar(), $$0);
+   }
+
+   public void b(bwd $$0) {
+      this.a();
+      this.a.remove($$0.ar());
+   }
+
+   public boolean c(bwd $$0) {
+      return this.a.containsKey($$0.ar());
+   }
+
+   public void a(Consumer<bwd> $$0) {
+      if (this.c != null) {
+         throw new UnsupportedOperationException("Only one concurrent iteration supported");
+      } else {
+         this.c = this.a;
+
+         try {
+            ObjectIterator var2 = this.a.values().iterator();
+
+            while (var2.hasNext()) {
+               bwd $$1 = (bwd)var2.next();
+               $$0.accept($$1);
+            }
+         } finally {
+            this.c = null;
+         }
       }
    }
 }

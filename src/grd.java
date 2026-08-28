@@ -2,94 +2,89 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonDeserializationContext;
 import com.google.gson.JsonDeserializer;
 import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
 import com.google.gson.JsonParseException;
-import com.google.gson.JsonSyntaxException;
-import it.unimi.dsi.fastutil.ints.IntArrayList;
-import it.unimi.dsi.fastutil.ints.IntList;
 import java.lang.reflect.Type;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Set;
-import java.util.function.Predicate;
-import java.util.stream.Collectors;
+import javax.annotation.Nullable;
 
-public class grd implements gqx {
-   private final List<grd.d> a;
+public class grd {
+   public float[] a;
+   public final int b;
 
-   grd(List<grd.d> $$0) {
+   public grd(@Nullable float[] $$0, int $$1) {
       this.a = $$0;
+      this.b = $$1;
    }
 
-   @Override
-   public Object a(dzo $$0) {
-      IntList $$1 = new IntArrayList();
-
-      for (int $$2 = 0; $$2 < this.a.size(); $$2++) {
-         if (this.a.get($$2).a.test($$0)) {
-            $$1.add($$2);
-         }
-      }
-
-      record a(grd a, IntList b) {
-         a(IntList b) {
-            this.b = b;
-         }
-      }
-
-      return new a($$1);
-   }
-
-   @Override
-   public void a(hkr.a $$0) {
-      this.a.forEach($$1 -> $$1.b.a($$0));
-   }
-
-   @Override
-   public hjz a(hki $$0) {
-      List<hkq.a> $$1 = new ArrayList<>(this.a.size());
-
-      for (grd.d $$2 : this.a) {
-         hjz $$3 = $$2.b.a($$0);
-         $$1.add(new hkq.a($$2.a, $$3));
-      }
-
-      return new hkq($$1);
-   }
-
-   public static record b(List<grf> a) {
-      public grd a(dzp<dlu, dzo> $$0) {
-         List<grd.d> $$1 = this.a.stream().map($$1x -> new grd.d($$1x.a($$0), $$1x.a())).toList();
-         return new grd($$1);
-      }
-
-      public Set<gqv> a() {
-         return this.a.stream().map(grf::a).collect(Collectors.toSet());
-      }
-
-      public List<grf> b() {
-         return this.a;
+   public float a(int $$0) {
+      if (this.a == null) {
+         throw new NullPointerException("uvs");
+      } else {
+         int $$1 = this.d($$0);
+         return this.a[$$1 != 0 && $$1 != 1 ? 2 : 0];
       }
    }
 
-   public static class c implements JsonDeserializer<grd.b> {
-      public grd.b a(JsonElement $$0, Type $$1, JsonDeserializationContext $$2) throws JsonParseException {
-         return new grd.b(this.a($$2, $$0.getAsJsonArray()));
+   public float b(int $$0) {
+      if (this.a == null) {
+         throw new NullPointerException("uvs");
+      } else {
+         int $$1 = this.d($$0);
+         return this.a[$$1 != 0 && $$1 != 3 ? 3 : 1];
+      }
+   }
+
+   private int d(int $$0) {
+      return ($$0 + this.b / 90) % 4;
+   }
+
+   public int c(int $$0) {
+      return ($$0 + 4 - this.b / 90) % 4;
+   }
+
+   public void a(float[] $$0) {
+      if (this.a == null) {
+         this.a = $$0;
+      }
+   }
+
+   protected static class a implements JsonDeserializer<grd> {
+      private static final int a = 0;
+
+      public grd a(JsonElement $$0, Type $$1, JsonDeserializationContext $$2) throws JsonParseException {
+         JsonObject $$3 = $$0.getAsJsonObject();
+         float[] $$4 = this.b($$3);
+         int $$5 = this.a($$3);
+         return new grd($$4, $$5);
       }
 
-      private List<grf> a(JsonDeserializationContext $$0, JsonArray $$1) {
-         List<grf> $$2 = new ArrayList<>();
-         if ($$1.isEmpty()) {
-            throw new JsonSyntaxException("Empty selector array");
+      protected int a(JsonObject $$0) {
+         int $$1 = azc.a($$0, "rotation", 0);
+         if ($$1 >= 0 && $$1 % 90 == 0 && $$1 / 90 <= 3) {
+            return $$1;
          } else {
-            for (JsonElement $$3 : $$1) {
-               $$2.add((grf)$$0.deserialize($$3, grf.class));
-            }
-
-            return $$2;
+            throw new JsonParseException("Invalid rotation " + $$1 + " found, only 0/90/180/270 allowed");
          }
       }
-   }
 
-   static record d(Predicate<dzo> a, gqv b) {
+      @Nullable
+      private float[] b(JsonObject $$0) {
+         if (!$$0.has("uv")) {
+            return null;
+         } else {
+            JsonArray $$1 = azc.v($$0, "uv");
+            if ($$1.size() != 4) {
+               throw new JsonParseException("Expected 4 uv values, found: " + $$1.size());
+            } else {
+               float[] $$2 = new float[4];
+
+               for (int $$3 = 0; $$3 < $$2.length; $$3++) {
+                  $$2[$$3] = azc.e($$1.get($$3), "uv[" + $$3 + "]");
+               }
+
+               return $$2;
+            }
+         }
+      }
    }
 }

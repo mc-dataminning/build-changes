@@ -1,61 +1,35 @@
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dvv extends dlu {
-   public static final MapCodec<dvv> a = b(dvv::new);
+public class dvv extends doh implements dvt {
+   public static final MapCodec<dvv> g = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(eao.a.fieldOf("block_set_type").forGetter(doh::b), dvt.a.e.fieldOf("weathering_state").forGetter(dvv::q), t()).apply($$0, dvv::new)
+   );
+   private final dvt.a h;
 
    @Override
    public MapCodec<dvv> a() {
-      return a;
+      return g;
    }
 
-   protected dvv(dzn.d $$0) {
-      super($$0);
+   protected dvv(eao $$0, dvt.a $$1, dzy.d $$2) {
+      super($$0, $$2);
+      this.h = $$1;
    }
 
    @Override
-   protected void a(dzo $$0, dip $$1, iu $$2, dzo $$3, boolean $$4) {
-      if ($$1.B_().i()) {
-         $$1.a($$2, dlw.aV.m(), 3);
-         $$1.c(2009, $$2, 0);
-         $$1.a(null, $$2, awl.Dj, awm.e, 1.0F, (1.0F + $$1.C_().i() * 0.2F) * 0.7F);
+   protected void b(dzz $$0, arq $$1, iu $$2, azv $$3) {
+      if ($$0.c(doh.c) == eav.b) {
+         this.a_($$0, $$1, $$2, $$3);
       }
    }
 
    @Override
-   public void a(dzo $$0, dip $$1, iu $$2, azt $$3) {
-      ja $$4 = ja.b($$3);
-      if ($$4 != ja.b) {
-         iu $$5 = $$2.a($$4);
-         dzo $$6 = $$1.a_($$5);
-         if (!$$0.t() || !$$6.c($$1, $$5, $$4.g())) {
-            double $$7 = (double)$$2.u();
-            double $$8 = (double)$$2.v();
-            double $$9 = (double)$$2.w();
-            if ($$4 == ja.a) {
-               $$8 -= 0.05;
-               $$7 += $$3.j();
-               $$9 += $$3.j();
-            } else {
-               $$8 += $$3.j() * 0.8;
-               if ($$4.o() == ja.a.a) {
-                  $$9 += $$3.j();
-                  if ($$4 == ja.f) {
-                     $$7++;
-                  } else {
-                     $$7 += 0.05;
-                  }
-               } else {
-                  $$7 += $$3.j();
-                  if ($$4 == ja.d) {
-                     $$9++;
-                  } else {
-                     $$9 += 0.05;
-                  }
-               }
-            }
+   protected boolean f(dzz $$0) {
+      return dvt.c($$0.b()).isPresent();
+   }
 
-            $$1.a(lx.l, $$7, $$8, $$9, 0.0, 0.0, 0.0);
-         }
-      }
+   public dvt.a q() {
+      return this.h;
    }
 }

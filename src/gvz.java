@@ -1,20 +1,72 @@
-public class gvz extends gtz<cpb> {
-   private static final ale a = ale.b("textures/entity/hoglin/hoglin.png");
+@FunctionalInterface
+public interface gvz<T extends bwd> {
+   gvy<T, ?> create(gvz.a var1);
 
-   public gvz(gvk.a $$0) {
-      super($$0, gif.bg, gif.bh, 0.7F);
-   }
+   public static class a {
+      private final gvx a;
+      private final hfg b;
+      private final gpq c;
+      private final gqw d;
+      private final avd e;
+      private final giq f;
+      private final hku g;
+      private final frm h;
+      private final gzy i;
 
-   public ale a(hcd $$0) {
-      return a;
-   }
+      public a(gvx $$0, hfg $$1, gpq $$2, gqw $$3, avd $$4, giq $$5, hku $$6, frm $$7) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
+         this.d = $$3;
+         this.e = $$4;
+         this.f = $$5;
+         this.g = $$6;
+         this.h = $$7;
+         this.i = new gzy($$6, this.i().c(gqn.g));
+      }
 
-   public void a(cpb $$0, hcd $$1, float $$2) {
-      super.a($$0, $$1, $$2);
-      $$1.b = $$0.gq();
-   }
+      public gvx a() {
+         return this.a;
+      }
 
-   protected boolean b(hcd $$0) {
-      return super.a($$0) || $$0.b;
+      public hfg b() {
+         return this.b;
+      }
+
+      public gpq c() {
+         return this.c;
+      }
+
+      public gqw d() {
+         return this.d;
+      }
+
+      public avd e() {
+         return this.e;
+      }
+
+      public giq f() {
+         return this.f;
+      }
+
+      public hku g() {
+         return this.g;
+      }
+
+      public gzy h() {
+         return this.i;
+      }
+
+      public hld i() {
+         return this.d.a().a();
+      }
+
+      public giu a(gis $$0) {
+         return this.f.a($$0);
+      }
+
+      public frm j() {
+         return this.h;
+      }
    }
 }

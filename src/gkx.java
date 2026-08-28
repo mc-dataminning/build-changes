@@ -1,30 +1,67 @@
-import com.google.common.annotations.VisibleForTesting;
-import java.util.Optional;
+import com.mojang.authlib.yggdrasil.request.AbuseReportRequest.ClientInfo;
+import com.mojang.authlib.yggdrasil.request.AbuseReportRequest.RealmInfo;
+import com.mojang.authlib.yggdrasil.request.AbuseReportRequest.ThirdPartyServerInfo;
+import java.util.Locale;
+import javax.annotation.Nullable;
 
-public class gkx {
-   public static final gkx a = new gkx(gkw.b, gky.createDnsSrvRedirectHandler(), gkt.a());
-   private final gkw b;
-   private final gky c;
-   private final gkt d;
-
-   @VisibleForTesting
-   gkx(gkw $$0, gky $$1, gkt $$2) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
+public record gkx(String a, @Nullable gkx.a b) {
+   public static gkx a() {
+      return a(null);
    }
 
-   public Optional<gku> a(gkv $$0) {
-      Optional<gku> $$1 = this.b.resolve($$0);
-      if ((!$$1.isPresent() || this.d.a($$1.get())) && this.d.a($$0)) {
-         Optional<gkv> $$2 = this.c.lookupRedirect($$0);
-         if ($$2.isPresent()) {
-            $$1 = this.b.resolve($$2.get()).filter(this.d::a);
-         }
+   public static gkx a(String $$0) {
+      return a(new gkx.a.b($$0));
+   }
 
-         return $$1;
-      } else {
-         return Optional.empty();
+   public static gkx a(fkt $$0) {
+      return a(new gkx.a.a($$0));
+   }
+
+   public static gkx a(@Nullable gkx.a $$0) {
+      return new gkx(g(), $$0);
+   }
+
+   public ClientInfo b() {
+      return new ClientInfo(this.a, Locale.getDefault().toLanguageTag());
+   }
+
+   @Nullable
+   public ThirdPartyServerInfo c() {
+      return this.b instanceof gkx.a.b $$0 ? new ThirdPartyServerInfo($$0.a) : null;
+   }
+
+   @Nullable
+   public RealmInfo d() {
+      return this.b instanceof gkx.a.a $$0 ? new RealmInfo(String.valueOf($$0.a()), $$0.b()) : null;
+   }
+
+   private static String g() {
+      StringBuilder $$0 = new StringBuilder();
+      $$0.append("25w05a");
+      if (fos.e().a()) {
+         $$0.append(" (modded)");
+      }
+
+      return $$0.toString();
+   }
+
+   public String e() {
+      return this.a;
+   }
+
+   @Nullable
+   public gkx.a f() {
+      return this.b;
+   }
+
+   public interface a {
+      public static record a(long a, int b) implements gkx.a {
+         public a(fkt $$0) {
+            this($$0.a, $$0.p);
+         }
+      }
+
+      public static record b(String a) implements gkx.a {
       }
    }
 }

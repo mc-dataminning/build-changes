@@ -1,148 +1,59 @@
-import com.mojang.logging.LogUtils;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.UncheckedIOException;
-import java.net.HttpURLConnection;
-import java.net.URI;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.util.concurrent.CompletableFuture;
-import org.slf4j.Logger;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
+import java.util.function.UnaryOperator;
+import javax.annotation.Nullable;
 
-public class hhs {
-   private static final Logger a = LogUtils.getLogger();
-   private static final int b = 64;
-   private static final int c = 64;
-   private static final int d = 32;
+public class hhs implements hht<dby> {
+   private final dtk.a a;
+   private final gho b;
+   @Nullable
+   private final alg c;
+   private final float d;
 
-   public static CompletableFuture<ale> a(ale $$0, Path $$1, String $$2, boolean $$3) {
-      return CompletableFuture.<fhq>supplyAsync(() -> {
-         fhq $$3x;
-         try {
-            $$3x = a($$1, $$2);
-         } catch (IOException var5) {
-            throw new UncheckedIOException(var5);
-         }
-
-         return $$3 ? a($$3x, $$2) : $$3x;
-      }, af.j().a("downloadTexture")).thenCompose($$1x -> a($$0, $$1x));
+   public hhs(dtk.a $$0, gho $$1, @Nullable alg $$2, float $$3) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+      this.d = $$3;
    }
 
-   private static fhq a(Path $$0, String $$1) throws IOException {
-      if (Files.isRegularFile($$0)) {
-         a.debug("Loading HTTP texture from local cache ({})", $$0);
-
-         fhq var17;
-         try (InputStream $$2 = Files.newInputStream($$0)) {
-            var17 = fhq.a($$2);
-         }
-
-         return var17;
-      } else {
-         HttpURLConnection $$3 = null;
-         a.debug("Downloading HTTP texture from {} to {}", $$1, $$0);
-         URI $$4 = URI.create($$1);
-
-         fhq $$7;
-         try {
-            $$3 = (HttpURLConnection)$$4.toURL().openConnection(fof.Q().Z());
-            $$3.setDoInput(true);
-            $$3.setDoOutput(false);
-            $$3.connect();
-            int $$5 = $$3.getResponseCode();
-            if ($$5 / 100 != 2) {
-               throw new IOException("Failed to open " + $$4 + ", HTTP error code: " + $$5);
-            }
-
-            byte[] $$6 = $$3.getInputStream().readAllBytes();
-
-            try {
-               v.c($$0.getParent());
-               Files.write($$0, $$6);
-            } catch (IOException var13) {
-               a.warn("Failed to cache texture {} in {}", $$1, $$0);
-            }
-
-            $$7 = fhq.a($$6);
-         } finally {
-            if ($$3 != null) {
-               $$3.disconnect();
-            }
-         }
-
-         return $$7;
-      }
+   @Nullable
+   public dby a(cyy $$0) {
+      return $$0.a(kj.ak);
    }
 
-   private static CompletableFuture<ale> a(ale $$0, fhq $$1) {
-      fof $$2 = fof.Q();
-      return CompletableFuture.supplyAsync(() -> {
-         $$2.aa().a($$0, new hhm($$1));
-         return $$0;
-      }, $$2);
+   public void a(@Nullable dby $$0, cyw $$1, fjc $$2, gps $$3, int $$4, int $$5, boolean $$6) {
+      gqc $$7 = gsu.a(this.a, $$0, this.c);
+      gsu.a(null, 180.0F, this.d, $$2, $$3, $$4, this.b, $$7);
    }
 
-   private static fhq a(fhq $$0, String $$1) {
-      int $$2 = $$0.b();
-      int $$3 = $$0.a();
-      if ($$3 == 64 && ($$2 == 32 || $$2 == 64)) {
-         boolean $$4 = $$2 == 32;
-         if ($$4) {
-            fhq $$5 = new fhq(64, 64, true);
-            $$5.a($$0);
-            $$0.close();
-            $$0 = $$5;
-            $$5.a(0, 32, 64, 32, 0);
-            $$5.a(4, 16, 16, 32, 4, 4, true, false);
-            $$5.a(8, 16, 16, 32, 4, 4, true, false);
-            $$5.a(0, 20, 24, 32, 4, 12, true, false);
-            $$5.a(4, 20, 16, 32, 4, 12, true, false);
-            $$5.a(8, 20, 8, 32, 4, 12, true, false);
-            $$5.a(12, 20, 16, 32, 4, 12, true, false);
-            $$5.a(44, 16, -8, 32, 4, 4, true, false);
-            $$5.a(48, 16, -8, 32, 4, 4, true, false);
-            $$5.a(40, 20, 0, 32, 4, 12, true, false);
-            $$5.a(44, 20, -8, 32, 4, 12, true, false);
-            $$5.a(48, 20, -16, 32, 4, 12, true, false);
-            $$5.a(52, 20, -8, 32, 4, 12, true, false);
-         }
+   public static record a(dtk.a b, Optional<alg> c, float d) implements hht.a {
+      public static final MapCodec<hhs.a> a = RecordCodecBuilder.mapCodec(
+         $$0 -> $$0.group(
+                  dtk.a.b.fieldOf("kind").forGetter(hhs.a::b),
+                  alg.a.optionalFieldOf("texture").forGetter(hhs.a::c),
+                  Codec.FLOAT.optionalFieldOf("animation", 0.0F).forGetter(hhs.a::d)
+               )
+               .apply($$0, hhs.a::new)
+      );
 
-         b($$0, 0, 0, 32, 16);
-         if ($$4) {
-            a($$0, 32, 0, 64, 32);
-         }
-
-         b($$0, 0, 16, 64, 32);
-         b($$0, 16, 48, 48, 64);
-         return $$0;
-      } else {
-         $$0.close();
-         throw new IllegalStateException("Discarding incorrectly sized (" + $$3 + "x" + $$2 + ") skin texture from " + $$1);
-      }
-   }
-
-   private static void a(fhq $$0, int $$1, int $$2, int $$3, int $$4) {
-      for (int $$5 = $$1; $$5 < $$3; $$5++) {
-         for (int $$6 = $$2; $$6 < $$4; $$6++) {
-            int $$7 = $$0.a($$5, $$6);
-            if (axu.a($$7) < 128) {
-               return;
-            }
-         }
+      public a(dtk.a $$0) {
+         this($$0, Optional.empty(), 0.0F);
       }
 
-      for (int $$8 = $$1; $$8 < $$3; $$8++) {
-         for (int $$9 = $$2; $$9 < $$4; $$9++) {
-            $$0.a($$8, $$9, $$0.a($$8, $$9) & 16777215);
-         }
+      @Override
+      public MapCodec<hhs.a> a() {
+         return a;
       }
-   }
 
-   private static void b(fhq $$0, int $$1, int $$2, int $$3, int $$4) {
-      for (int $$5 = $$1; $$5 < $$3; $$5++) {
-         for (int $$6 = $$2; $$6 < $$4; $$6++) {
-            $$0.a($$5, $$6, axu.f($$0.a($$5, $$6)));
-         }
+      @Nullable
+      @Override
+      public hht<?> a(giq $$0) {
+         gho $$1 = gsu.a($$0, this.b);
+         alg $$2 = this.c.<alg>map($$0x -> $$0x.a((UnaryOperator<String>)($$0xx -> "textures/entity/" + $$0xx + ".png"))).orElse(null);
+         return $$1 != null ? new hhs(this.b, $$1, $$2, this.d) : null;
       }
    }
 }

@@ -1,79 +1,87 @@
-import javax.annotation.Nullable;
-
-public class glt extends gnl {
+public class glt extends goa {
    private final float a;
-   private final gng b;
+   private final float b;
 
-   glt(gjd $$0, double $$1, double $$2, double $$3, float $$4, float $$5, float $$6, gng $$7) {
-      super($$0, $$1, $$2, $$3);
-      this.b = $$7;
-      this.v = $$4;
-      this.w = $$5;
-      this.x = $$6;
-      float $$8 = 0.9F;
-      this.D *= 0.67499995F;
-      int $$9 = (int)(32.0 / (Math.random() * 0.8 + 0.2));
-      this.t = (int)Math.max((float)$$9 * 0.9F, 1.0F);
-      this.b($$7);
-      this.a = ((float)Math.random() - 0.5F) * 0.1F;
-      this.z = (float)Math.random() * (float) (Math.PI * 2);
+   glt(gjr $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, hfi $$7) {
+      this($$0, $$1, $$2, $$3, $$7);
+      this.j *= 0.1F;
+      this.k *= 0.1F;
+      this.l *= 0.1F;
+      this.j += $$4;
+      this.k += $$5;
+      this.l += $$6;
    }
 
    @Override
-   public gmp b() {
-      return gmp.b;
+   public gne b() {
+      return gne.a;
    }
 
-   @Override
-   public float b(float $$0) {
-      return this.D * azk.a(((float)this.s + $$0) / (float)this.t * 32.0F, 0.0F, 1.0F);
-   }
-
-   @Override
-   public void a() {
-      this.d = this.g;
-      this.e = this.h;
-      this.f = this.i;
-      if (this.s++ >= this.t) {
-         this.k();
+   protected glt(gjr $$0, double $$1, double $$2, double $$3, hfi $$4) {
+      super($$0, $$1, $$2, $$3, 0.0, 0.0, 0.0);
+      hip $$5 = $$4.a(this.r);
+      if ($$5 != null) {
+         this.a($$5);
       } else {
-         this.b(this.b);
-         this.A = this.z;
-         this.z = this.z + (float) Math.PI * this.a * 2.0F;
-         if (this.m) {
-            this.A = this.z = 0.0F;
-         }
+         this.a(fos.Q().a(hio.d).apply(hie.c()));
+      }
 
-         this.a(this.j, this.k, this.l);
-         this.k -= 0.003F;
-         this.k = Math.max(this.k, -0.14F);
+      this.u = 1.0F;
+      this.D /= 2.0F;
+      this.a = this.r.i() * 3.0F;
+      this.b = this.r.i() * 3.0F;
+   }
+
+   @Override
+   protected float c() {
+      return this.E.a((this.a + 1.0F) / 4.0F);
+   }
+
+   @Override
+   protected float d() {
+      return this.E.a(this.a / 4.0F);
+   }
+
+   @Override
+   protected float e() {
+      return this.E.c(this.b / 4.0F);
+   }
+
+   @Override
+   protected float f() {
+      return this.E.c((this.b + 1.0F) / 4.0F);
+   }
+
+   public static class a extends glt.b<mb> {
+      public gna a(mb $$0, gjr $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new glt($$1, $$2, $$3, $$4, this.a(new cyy(czc.cT), $$1));
       }
    }
 
-   public static class a implements gmo<lp> {
-      private final gng a;
+   public abstract static class b<T extends lv> implements gnd<T> {
+      private final hfi a = new hfi();
 
-      public a(gng $$0) {
-         this.a = $$0;
+      protected hfi a(cyy $$0, gjr $$1) {
+         fos.Q().bf().a(this.a, $$0, cyw.h, false, $$1, null, 0);
+         return this.a;
       }
+   }
 
-      @Nullable
-      public gml a(lp $$0, gjd $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         dzo $$8 = $$0.b();
-         if (!$$8.l() && $$8.o() == dsf.a) {
-            return null;
-         } else {
-            iu $$9 = iu.a($$2, $$3, $$4);
-            int $$10 = fof.Q().aw().a($$8, $$1, $$9);
-            if ($$8.b() instanceof dor) {
-               $$10 = ((dor)$$8.b()).b($$8, $$1, $$9);
-            }
+   public static class c extends glt.b<lt> {
+      public gna a(lt $$0, gjr $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new glt($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a($$0.b(), $$1));
+      }
+   }
 
-            float $$11 = (float)($$10 >> 16 & 0xFF) / 255.0F;
-            float $$12 = (float)($$10 >> 8 & 0xFF) / 255.0F;
-            float $$13 = (float)($$10 & 0xFF) / 255.0F;
-            return new glt($$1, $$2, $$3, $$4, $$11, $$12, $$13, this.a);
-         }
+   public static class d extends glt.b<mb> {
+      public gna a(mb $$0, gjr $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new glt($$1, $$2, $$3, $$4, this.a(new cyy(czc.rD), $$1));
+      }
+   }
+
+   public static class e extends glt.b<mb> {
+      public gna a(mb $$0, gjr $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new glt($$1, $$2, $$3, $$4, this.a(new cyy(czc.rp), $$1));
       }
    }
 }

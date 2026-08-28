@@ -1,25 +1,31 @@
-import java.nio.file.Path;
-import java.util.List;
-import java.util.stream.Collectors;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Set;
 
-public class fdl extends Exception {
-   private final Path a;
-   private final List<fdn> b;
+public record fdl(String b) implements fdn {
+   public static final MapCodec<fdl> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(Codec.STRING.fieldOf("name").forGetter(fdl::c)).apply($$0, fdl::new));
 
-   public fdl(Path $$0, List<fdn> $$1) {
-      this.a = $$0;
-      this.b = $$1;
+   public static fdn a(String $$0) {
+      return new fdl($$0);
    }
 
    @Override
-   public String getMessage() {
-      return a(this.a, this.b);
+   public fdm a() {
+      return fdo.b;
    }
 
-   public static String a(Path $$0, List<fdn> $$1) {
-      return "Failed to validate '"
-         + $$0
-         + "'. Found forbidden symlinks: "
-         + $$1.stream().map($$0x -> $$0x.a() + "->" + $$0x.b()).collect(Collectors.joining(", "));
+   @Override
+   public ffm a(eyz $$0) {
+      return ffm.c(this.b);
+   }
+
+   @Override
+   public Set<bax<?>> b() {
+      return Set.of();
+   }
+
+   public String c() {
+      return this.b;
    }
 }

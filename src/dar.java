@@ -1,19 +1,13 @@
-import com.mojang.serialization.Codec;
-import io.netty.buffer.ByteBuf;
-import java.util.List;
-import java.util.function.Consumer;
-
-public record dar(List<dwk.c> d) implements dbx {
-   public static final Codec<dar> a = dwk.c.b.xmap(dar::new, dar::a);
-   public static final yu<ByteBuf, dar> b = dwk.c.c.a(ys.a()).a(dar::new, dar::a);
-   public static final dar c = new dar(List.of());
-
-   @Override
-   public void a(cyo.b $$0, Consumer<ww> $$1, dah $$2, ke $$3) {
-      $$1.accept(ww.a("container.beehive.bees", this.d.size(), 3).a(n.h));
+public class dar extends cyu {
+   public dar(cyu.a $$0) {
+      super($$0);
    }
 
-   public List<dwk.c> a() {
-      return this.d;
+   @Override
+   public bub a(div $$0, cqy $$1, bua $$2) {
+      cyy $$3 = $$1.b($$2);
+      $$1.a($$3, $$2);
+      $$1.b(awx.c.b(this));
+      return bub.a;
    }
 }

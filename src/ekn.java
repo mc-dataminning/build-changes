@@ -1,20 +1,39 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class ekn {
-   public static final Codec<ekn> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(epm.b.fieldOf("feature").forGetter($$0x -> $$0x.b), Codec.floatRange(0.0F, 1.0F).fieldOf("chance").forGetter($$0x -> $$0x.c))
-            .apply($$0, ekn::new)
-   );
-   public final je<epm> b;
-   public final float c;
-
-   public ekn(je<epm> $$0, float $$1) {
-      this.b = $$0;
-      this.c = $$1;
+public class ekn extends eje<elp> {
+   public ekn(Codec<elp> $$0) {
+      super($$0);
    }
 
-   public boolean a(djo $$0, ebm $$1, azt $$2, iu $$3) {
-      return this.b.a().a($$0, $$1, $$2, $$3);
+   @Override
+   public boolean a(ejg<elp> $$0) {
+      dju $$1 = $$0.b();
+      iu $$2 = $$0.e();
+      iu.a $$3 = new iu.a();
+      iu.a $$4 = new iu.a();
+
+      for (int $$5 = 0; $$5 < 16; $$5++) {
+         for (int $$6 = 0; $$6 < 16; $$6++) {
+            int $$7 = $$2.u() + $$5;
+            int $$8 = $$2.w() + $$6;
+            int $$9 = $$1.a(efy.a.e, $$7, $$8);
+            $$3.d($$7, $$9, $$8);
+            $$4.g($$3).c(ja.a, 1);
+            djy $$10 = $$1.u($$3).a();
+            if ($$10.a($$1, $$4, false)) {
+               $$1.a($$4, dmc.ec.m(), 2);
+            }
+
+            if ($$10.b($$1, $$3)) {
+               $$1.a($$3, dmc.eb.m(), 2);
+               dzz $$11 = $$1.a_($$4);
+               if ($$11.b(dts.c)) {
+                  $$1.a($$4, $$11.b(dts.c, Boolean.valueOf(true)), 2);
+               }
+            }
+         }
+      }
+
+      return true;
    }
 }

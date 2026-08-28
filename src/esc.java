@@ -1,25 +1,15 @@
 import com.mojang.serialization.MapCodec;
-import java.util.Optional;
 
-public class esc extends eqi {
-   public static final MapCodec<esc> d = a(esc::new);
+public interface esc<P extends esb> {
+   esc<esa> a = a("single_pool_element", esa.b);
+   esc<erz> b = a("list_pool_element", erz.a);
+   esc<erv> c = a("feature_pool_element", erv.a);
+   esc<eru> d = a("empty_pool_element", eru.a);
+   esc<ery> e = a("legacy_single_pool_element", ery.a);
 
-   public esc(eqi.c $$0) {
-      super($$0);
-   }
+   MapCodec<P> codec();
 
-   @Override
-   public Optional<eqi.b> a(eqi.a $$0) {
-      return a($$0, efn.a.c, $$1 -> a($$1, $$0));
-   }
-
-   private static void a(era $$0, eqi.a $$1) {
-      iu $$2 = new iu($$1.h().a(9), 90, $$1.h().b(9));
-      $$0.a(new esb.a($$2));
-   }
-
-   @Override
-   public eqr<?> e() {
-      return eqr.a;
+   static <P extends esb> esc<P> a(String $$0, MapCodec<P> $$1) {
+      return jr.a(mf.ag, $$0, () -> $$1);
    }
 }

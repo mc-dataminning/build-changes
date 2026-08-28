@@ -1,24 +1,32 @@
 import com.mojang.serialization.MapCodec;
 
-public class dkr extends dlu {
-   public static final MapCodec<dkr> a = b(dkr::new);
+public abstract class dkr extends dlm {
+   private final cxw a;
 
-   @Override
-   public MapCodec<dkr> a() {
-      return a;
-   }
-
-   public dkr(dzn.d $$0) {
-      super($$0);
+   protected dkr(cxw $$0, dzy.d $$1) {
+      super($$1);
+      this.a = $$0;
    }
 
    @Override
-   protected dsf a_(dzo $$0) {
-      return dsf.a;
+   protected abstract MapCodec<? extends dkr> a();
+
+   @Override
+   public boolean a(dzz $$0) {
+      return true;
    }
 
    @Override
-   protected feq a(dzo $$0, dhv $$1, iu $$2, feb $$3) {
-      return fen.a();
+   public dwx a(iu $$0, dzz $$1) {
+      return new dwl($$0, $$1, this.a);
+   }
+
+   @Override
+   protected cyy a(diy $$0, iu $$1, dzz $$2, boolean $$3) {
+      return $$0.c_($$1) instanceof dwl $$4 ? $$4.c() : super.a($$0, $$1, $$2, $$3);
+   }
+
+   public cxw b() {
+      return this.a;
    }
 }

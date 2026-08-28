@@ -1,72 +1,44 @@
-@FunctionalInterface
-public interface gvk<T extends bwa> {
-   gvj<T, ?> create(gvk.a var1);
+import com.google.common.collect.Maps;
+import java.util.Map;
 
-   public static class a {
-      private final gvi a;
-      private final heq b;
-      private final gpb c;
-      private final gqh d;
-      private final avb e;
-      private final gic f;
-      private final hke g;
-      private final fra h;
-      private final gzj i;
+public class gvk extends gxf<cja, hbw, gfg> {
+   private final Map<cjb.a, ged<gfg>> a;
 
-      public a(gvi $$0, heq $$1, gpb $$2, gqh $$3, avb $$4, gic $$5, hke $$6, fra $$7) {
-         this.a = $$0;
-         this.b = $$1;
-         this.c = $$2;
-         this.d = $$3;
-         this.e = $$4;
-         this.f = $$5;
-         this.g = $$6;
-         this.h = $$7;
-         this.i = new gzj($$6, this.i().c(gpy.g));
-      }
+   public gvk(gvz.a $$0) {
+      super($$0, new gfg($$0.a(git.al)), 0.7F);
+      this.a = a($$0);
+   }
 
-      public gvi a() {
-         return this.a;
-      }
+   private static Map<cjb.a, ged<gfg>> a(gvz.a $$0) {
+      return Maps.newEnumMap(
+         Map.of(
+            cjb.a.a,
+            new ged<>(new gfg($$0.a(git.al)), new gfg($$0.a(git.am))),
+            cjb.a.c,
+            new ged<>(new gfg($$0.a(git.dM)), new gfg($$0.a(git.dN))),
+            cjb.a.b,
+            new ged<>(new gfg($$0.a(git.ac)), new gfg($$0.a(git.ad)))
+         )
+      );
+   }
 
-      public heq b() {
-         return this.b;
-      }
+   public alg a(hbw $$0) {
+      return $$0.a == null ? hie.c() : $$0.a.b().b().b();
+   }
 
-      public gpb c() {
-         return this.c;
-      }
+   public hbw a() {
+      return new hbw();
+   }
 
-      public gqh d() {
-         return this.d;
-      }
+   public void a(cja $$0, hbw $$1, float $$2) {
+      super.a($$0, $$1, $$2);
+      $$1.a = $$0.t().a();
+   }
 
-      public avb e() {
-         return this.e;
-      }
-
-      public gic f() {
-         return this.f;
-      }
-
-      public hke g() {
-         return this.g;
-      }
-
-      public gzj h() {
-         return this.i;
-      }
-
-      public hkn i() {
-         return this.d.a().a();
-      }
-
-      public gig a(gie $$0) {
-         return this.f.a($$0);
-      }
-
-      public fra j() {
-         return this.h;
+   public void a(hbw $$0, fjc $$1, gps $$2, int $$3) {
+      if ($$0.a != null) {
+         this.g = this.a.get($$0.a.b().a()).a($$0.aj);
+         super.a($$0, $$1, $$2, $$3);
       }
    }
 }

@@ -1,96 +1,69 @@
+import com.google.common.collect.Maps;
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Map;
-import javax.annotation.Nullable;
+import java.util.function.Supplier;
 
-public class dqd extends dlu implements dtb {
-   public static final MapCodec<dqd> a = b(dqd::new);
-   public static final eam<ja> b = dpt.e;
-   public static final eaf c = eae.I;
-   public static final Map<ja, feq> d = fen.c(dlu.c(16.0, 13.0, 16.0));
+public class dqd extends dma {
+   public static final MapCodec<dqd> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(mf.e.q().fieldOf("host").forGetter(dqd::b), t()).apply($$0, dqd::new));
+   private final dma b;
+   private static final Map<dma, dma> c = Maps.newIdentityHashMap();
+   private static final Map<dzz, dzz> d = Maps.newIdentityHashMap();
+   private static final Map<dzz, dzz> e = Maps.newIdentityHashMap();
 
    @Override
-   public MapCodec<dqd> a() {
+   public MapCodec<? extends dqd> a() {
       return a;
    }
 
-   protected dqd(dzn.d $$0) {
-      super($$0);
-      this.l(this.B.b().b(b, ja.c).b(c, Boolean.valueOf(false)));
+   public dqd(dma $$0, dzy.d $$1) {
+      super($$1.e($$0.x() / 2.0F).f(0.75F));
+      this.b = $$0;
+      c.put($$0, this);
    }
 
-   @Override
-   protected feq a(dzo $$0, dhv $$1, iu $$2, feb $$3) {
-      return d.get($$0.c(b));
+   public dma b() {
+      return this.b;
    }
 
-   private boolean a(dhv $$0, iu $$1, ja $$2) {
-      dzo $$3 = $$0.a_($$1);
-      return $$3.c($$0, $$1, $$2);
+   public static boolean o(dzz $$0) {
+      return c.containsKey($$0.b());
    }
 
-   @Override
-   protected boolean a(dzo $$0, dis $$1, iu $$2) {
-      ja $$3 = $$0.c(b);
-      return this.a($$1, $$2.a($$3.g()), $$3);
-   }
-
-   @Override
-   protected dzo a(dzo $$0, dis $$1, dje $$2, iu $$3, ja $$4, iu $$5, dzo $$6, azt $$7) {
-      if ($$4.g() == $$0.c(b) && !$$0.a($$1, $$3)) {
-         return dlw.a.m();
-      } else {
-         if ($$0.c(c)) {
-            $$2.a($$3, evw.c, evw.c.a($$1));
-         }
-
-         return super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
+   private void a(arq $$0, iu $$1) {
+      cog $$2 = bwm.be.a($$0, bwl.k);
+      if ($$2 != null) {
+         $$2.b((double)$$1.u() + 0.5, (double)$$1.v(), (double)$$1.w() + 0.5, 0.0F, 0.0F);
+         $$0.b($$2);
+         $$2.U();
       }
    }
 
-   @Nullable
    @Override
-   public dzo a(dcl $$0) {
-      if (!$$0.c()) {
-         dzo $$1 = $$0.q().a_($$0.a().a($$0.k().g()));
-         if ($$1.a(this) && $$1.c(b) == $$0.k()) {
-            return null;
-         }
+   protected void a(dzz $$0, arq $$1, iu $$2, cyy $$3, boolean $$4) {
+      super.a($$0, $$1, $$2, $$3, $$4);
+      if ($$1.O().c(dir.h) && !dfn.a($$3, axe.t)) {
+         this.a($$1, $$2);
       }
+   }
 
-      dzo $$2 = this.m();
-      dis $$3 = $$0.q();
-      iu $$4 = $$0.a();
-      evv $$5 = $$0.q().b_($$0.a());
+   public static dzz p(dzz $$0) {
+      return a(d, $$0, () -> c.get($$0.b()).m());
+   }
 
-      for (ja $$6 : $$0.f()) {
-         if ($$6.o().d()) {
-            $$2 = $$2.b(b, $$6.g());
-            if ($$2.a($$3, $$4)) {
-               return $$2.b(c, Boolean.valueOf($$5.a() == evw.c));
-            }
+   public dzz q(dzz $$0) {
+      return a(e, $$0, () -> this.b().m());
+   }
+
+   private static dzz a(Map<dzz, dzz> $$0, dzz $$1, Supplier<dzz> $$2) {
+      return $$0.computeIfAbsent($$1, $$1x -> {
+         dzz $$2x = $$2.get();
+
+         for (ebc $$3 : $$1x.F()) {
+            $$2x = $$2x.b($$3) ? $$2x.b($$3, $$1x.c($$3)) : $$2x;
          }
-      }
 
-      return null;
-   }
-
-   @Override
-   protected dzo a(dzo $$0, dsm $$1) {
-      return $$0.b(b, $$1.a($$0.c(b)));
-   }
-
-   @Override
-   protected dzo a(dzo $$0, dqv $$1) {
-      return $$0.a($$1.a($$0.c(b)));
-   }
-
-   @Override
-   protected void a(dzp.a<dlu, dzo> $$0) {
-      $$0.a(b, c);
-   }
-
-   @Override
-   protected evv b_(dzo $$0) {
-      return $$0.c(c) ? evw.c.a(false) : super.b_($$0);
+         return $$2x;
+      });
    }
 }

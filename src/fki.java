@@ -1,30 +1,50 @@
+import com.google.common.collect.Maps;
+import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
 import com.mojang.logging.LogUtils;
-import javax.annotation.Nullable;
+import java.util.Date;
+import java.util.Map;
+import java.util.Map.Entry;
 import org.slf4j.Logger;
 
-public class fki extends fkv {
-   private static final Logger d = LogUtils.getLogger();
-   @Nullable
+public class fki extends flh {
+   private static final Logger f = LogUtils.getLogger();
    public String a;
-   @Nullable
-   public String b;
-   @Nullable
-   public String c;
+   public Date b;
+   public long c;
+   private boolean g;
+   public Map<String, String> d = Maps.newHashMap();
+   public Map<String, String> e = Maps.newHashMap();
 
-   public static fki a(String $$0) {
-      fki $$1 = new fki();
+   public static fki a(JsonElement $$0) {
+      JsonObject $$1 = $$0.getAsJsonObject();
+      fki $$2 = new fki();
 
       try {
-         JsonObject $$2 = JsonParser.parseString($$0).getAsJsonObject();
-         $$1.a = fmr.b("address", $$2, null);
-         $$1.b = fmr.b("resourcePackUrl", $$2, null);
-         $$1.c = fmr.b("resourcePackHash", $$2, null);
-      } catch (Exception var3) {
-         d.error("Could not parse RealmsServerAddress: {}", var3.getMessage());
+         $$2.a = fnd.b("backupId", $$1, "");
+         $$2.b = fnd.b("lastModifiedDate", $$1);
+         $$2.c = fnd.a("size", $$1, 0L);
+         if ($$1.has("metadata")) {
+            JsonObject $$3 = $$1.getAsJsonObject("metadata");
+
+            for (Entry<String, JsonElement> $$5 : $$3.entrySet()) {
+               if (!$$5.getValue().isJsonNull()) {
+                  $$2.d.put($$5.getKey(), $$5.getValue().getAsString());
+               }
+            }
+         }
+      } catch (Exception var7) {
+         f.error("Could not parse Backup: {}", var7.getMessage());
       }
 
-      return $$1;
+      return $$2;
+   }
+
+   public boolean a() {
+      return this.g;
+   }
+
+   public void a(boolean $$0) {
+      this.g = $$0;
    }
 }

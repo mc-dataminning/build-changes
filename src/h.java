@@ -7,7 +7,7 @@ import java.util.stream.Collectors;
 import javax.annotation.Nullable;
 import org.joml.Matrix3f;
 
-public enum h implements bai {
+public enum h implements bak {
    a("identity", i.a, false, false, false),
    b("rot_180_face_xy", i.a, true, true, false),
    c("rot_180_face_xz", i.a, true, false, true),
@@ -157,8 +157,8 @@ public enum h implements bai {
    }
 
    public static h a(int $$0, int $$1) {
-      $$0 = azk.b($$0, 360);
-      $$1 = azk.b($$1, 360);
+      $$0 = azm.b($$0, 360);
+      $$1 = azm.b($$1, 360);
       if ($$0 % 90 == 0 && $$1 % 90 == 0) {
          h $$2 = a;
 

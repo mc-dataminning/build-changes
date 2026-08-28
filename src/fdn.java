@@ -1,4 +1,11 @@
-import java.nio.file.Path;
+import java.util.Set;
+import javax.annotation.Nullable;
 
-public record fdn(Path a, Path b) {
+public interface fdn {
+   @Nullable
+   ffm a(eyz var1);
+
+   fdm a();
+
+   Set<bax<?>> b();
 }

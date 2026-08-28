@@ -1,58 +1,52 @@
 import java.util.List;
+import javax.annotation.Nullable;
 
-public class crd extends cra {
-   public static final float d = 4.0F;
+public class crd {
+   private final crc<je<cyu>> a = new crc<>();
 
-   public crd(bwj<? extends crd> $$0, dip $$1) {
-      super($$0, $$1);
-   }
-
-   public crd(dip $$0, bwz $$1, fdw $$2) {
-      super(bwj.J, $$1, $$2, $$0);
-   }
-
-   @Override
-   protected void a(fdu $$0) {
-      super.a($$0);
-      if ($$0.d() != fdu.a.c || !this.e(((fdt)$$0).a())) {
-         if (!this.dV().C) {
-            List<bwz> $$1 = this.dV().a(bwz.class, this.cR().c(4.0, 2.0, 4.0));
-            bvs $$2 = new bvs(this.dV(), this.dA(), this.dC(), this.dG());
-            bwa $$3 = this.q();
-            if ($$3 instanceof bwz) {
-               $$2.a((bwz)$$3);
-            }
-
-            $$2.a(lx.h);
-            $$2.a(3.0F);
-            $$2.a(600);
-            $$2.d((7.0F - $$2.e()) / (float)$$2.i());
-            $$2.b(0.25F);
-            $$2.a(new bve(bvg.g, 1, 1));
-            if (!$$1.isEmpty()) {
-               for (bwz $$4 : $$1) {
-                  double $$5 = this.g($$4);
-                  if ($$5 < 16.0) {
-                     $$2.a_($$4.dA(), $$4.dC(), $$4.dG());
-                     break;
-                  }
-               }
-            }
-
-            this.dV().c(2006, this.dv(), this.bb() ? -1 : 1);
-            this.dV().b($$2);
-            this.at();
-         }
+   public void a(cyy $$0) {
+      if (cqx.d($$0)) {
+         this.b($$0);
       }
    }
 
-   @Override
-   protected lv j() {
-      return lx.h;
+   public void b(cyy $$0) {
+      this.a($$0, $$0.k());
    }
 
-   @Override
-   protected boolean g() {
-      return false;
+   public void a(cyy $$0, int $$1) {
+      if (!$$0.f()) {
+         int $$2 = Math.min($$1, $$0.M());
+         this.a.a($$0.i(), $$2);
+      }
+   }
+
+   public boolean a(ddp<?> $$0, @Nullable crc.b<je<cyu>> $$1) {
+      return this.a($$0, 1, $$1);
+   }
+
+   public boolean a(ddp<?> $$0, int $$1, @Nullable crc.b<je<cyu>> $$2) {
+      ddo $$3 = $$0.ak_();
+      return $$3.c() ? false : this.a($$3.b(), $$1, $$2);
+   }
+
+   public boolean a(List<? extends crc.a<je<cyu>>> $$0, @Nullable crc.b<je<cyu>> $$1) {
+      return this.a($$0, 1, $$1);
+   }
+
+   private boolean a(List<? extends crc.a<je<cyu>>> $$0, int $$1, @Nullable crc.b<je<cyu>> $$2) {
+      return this.a.a($$0, $$1, $$2);
+   }
+
+   public int b(ddp<?> $$0, @Nullable crc.b<je<cyu>> $$1) {
+      return this.b($$0, Integer.MAX_VALUE, $$1);
+   }
+
+   public int b(ddp<?> $$0, int $$1, @Nullable crc.b<je<cyu>> $$2) {
+      return this.a.b($$0.ak_().b(), $$1, $$2);
+   }
+
+   public void a() {
+      this.a.a();
    }
 }

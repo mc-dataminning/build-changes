@@ -1,25 +1,14 @@
-import java.util.Arrays;
+import com.mojang.serialization.MapCodec;
 
-public class btf implements btg {
-   private final btg[] a;
+public interface btf<P extends bte> {
+   btf<btc> a = a("constant", btc.b);
+   btf<btl> b = a("uniform", btl.a);
+   btf<bta> c = a("clamped_normal", bta.a);
+   btf<btk> d = a("trapezoid", btk.a);
 
-   public btf(btg... $$0) {
-      this.a = $$0;
-   }
+   MapCodec<P> codec();
 
-   @Override
-   public float a(azt $$0) {
-      float $$1 = 1.0F;
-
-      for (btg $$2 : this.a) {
-         $$1 *= $$2.a($$0);
-      }
-
-      return $$1;
-   }
-
-   @Override
-   public String toString() {
-      return "MultipliedFloats" + Arrays.toString((Object[])this.a);
+   static <P extends bte> btf<P> a(String $$0, MapCodec<P> $$1) {
+      return jr.a(mf.J, $$0, () -> $$1);
    }
 }

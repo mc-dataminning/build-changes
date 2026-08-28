@@ -1,31 +1,26 @@
-public record aaq(iu c, String d, int e) implements aag {
-   public static final yu<vs, aaq> a = aag.a(aaq::a, aaq::new);
-   public static final aag.b<aaq> b = aag.a("debug/poi_added");
+public record aaq(long c, iu d) implements aai {
+   public static final yw<vu, aaq> a = aai.a(aaq::a, aaq::new);
+   public static final aai.b<aaq> b = aai.a("debug/neighbors_update");
 
-   private aaq(vs $$0) {
-      this($$0.e(), $$0.p(), $$0.readInt());
+   private aaq(vu $$0) {
+      this($$0.m(), $$0.e());
    }
 
-   private void a(vs $$0) {
+   private void a(vu $$0) {
       $$0.a(this.c);
       $$0.a(this.d);
-      $$0.q(this.e);
    }
 
    @Override
-   public aag.b<aaq> a() {
+   public aai.b<aaq> a() {
       return b;
    }
 
-   public iu b() {
+   public long b() {
       return this.c;
    }
 
-   public String c() {
+   public iu c() {
       return this.d;
-   }
-
-   public int d() {
-      return this.e;
    }
 }

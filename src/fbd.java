@@ -1,36 +1,36 @@
-import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
-import java.util.Map;
-import java.util.Map.Entry;
+import java.util.Optional;
 
-public class fbd extends faa {
+public class fbd extends fam {
    public static final MapCodec<fbd> a = RecordCodecBuilder.mapCodec(
-      $$0 -> a($$0).and(Codec.unboundedMap(ki.a, Codec.BOOL).fieldOf("toggles").forGetter($$0x -> $$0x.b)).apply($$0, fbd::new)
+      $$0 -> a($$0).and(axr.b(mg.aT).fieldOf("options").forGetter($$0x -> $$0x.b)).apply($$0, fbd::new)
    );
-   private final Map<ki<?>, Boolean> b;
+   private final axr<cyr> b;
 
-   private fbd(List<fbw> $$0, Map<ki<?>, Boolean> $$1) {
+   private fbd(List<fci> $$0, axr<cyr> $$1) {
       super($$0);
       this.b = $$1;
    }
 
    @Override
-   protected cys a(cys $$0, eyn $$1) {
-      $$0.a(kj.q, dbw.c, $$0x -> {
-         for (Entry<ki<?>, Boolean> $$1x : this.b.entrySet()) {
-            boolean $$2 = $$1x.getValue();
-            $$0x = $$0x.a($$1x.getKey(), !$$2);
-         }
-
-         return $$0x;
-      });
-      return $$0;
+   public fao<fbd> b() {
+      return fap.G;
    }
 
    @Override
-   public fac<fbd> b() {
-      return fad.P;
+   public cyy a(cyy $$0, eyz $$1) {
+      jr<cyr> $$2 = $$1.d().F_().f(mg.aT);
+      Optional<je<cyr>> $$3 = $$2.a(this.b, $$1.b());
+      if ($$3.isPresent()) {
+         $$0.b(kj.ab, new dbo($$3.get()));
+      }
+
+      return $$0;
+   }
+
+   public static fam.a<?> a(axr<cyr> $$0) {
+      return a($$1 -> new fbd($$1, $$0));
    }
 }

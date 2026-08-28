@@ -1,34 +1,77 @@
 import java.util.EnumSet;
+import java.util.List;
+import javax.annotation.Nullable;
 
-public class cdk extends cdv {
-   private final bxb a;
-   private final dip b;
+public class cdk extends cdy {
+   private static final chr d = chr.b().a(8.0).d();
+   protected final cis a;
+   private final Class<? extends cis> e;
+   protected final arq b;
+   @Nullable
+   protected cis c;
+   private int f;
+   private final double g;
 
-   public cdk(bxb $$0, dip $$1) {
+   public cdk(cis $$0, double $$1) {
+      this($$0, $$1, (Class<? extends cis>)$$0.getClass());
+   }
+
+   public cdk(cis $$0, double $$1, Class<? extends cis> $$2) {
       this.a = $$0;
-      this.b = $$1;
-      this.a(EnumSet.of(cdv.a.c));
+      this.b = a($$0);
+      this.e = $$2;
+      this.g = $$1;
+      this.a(EnumSet.of(cdy.a.a, cdy.a.b));
    }
 
    @Override
    public boolean b() {
-      boolean $$0 = this.a.aw || this.a.av;
-      if ($$0 && this.a.aq().a(axd.h)) {
-         iu $$1 = this.a.dv().d();
-         dzo $$2 = this.b.a_($$1);
-         return $$2.a(dlw.rt) || $$2.g(this.b, $$1) == fen.a();
-      } else {
+      if (!this.a.gA()) {
          return false;
+      } else {
+         this.c = this.h();
+         return this.c != null;
       }
    }
 
    @Override
-   public boolean Q_() {
-      return true;
+   public boolean c() {
+      return this.c.bK() && this.c.gA() && this.f < 60 && !this.c.gn();
+   }
+
+   @Override
+   public void e() {
+      this.c = null;
+      this.f = 0;
    }
 
    @Override
    public void a() {
-      this.a.N().a();
+      this.a.J().a(this.c, 10.0F, (float)this.a.ac());
+      this.a.O().a(this.c, this.g);
+      this.f++;
+      if (this.f >= this.a(60) && this.a.g(this.c) < 9.0) {
+         this.g();
+      }
+   }
+
+   @Nullable
+   private cis h() {
+      List<? extends cis> $$0 = this.b.a(this.e, d, this.a, this.a.cR().g(8.0));
+      double $$1 = Double.MAX_VALUE;
+      cis $$2 = null;
+
+      for (cis $$3 : $$0) {
+         if (this.a.a($$3) && !$$3.gn() && this.a.g($$3) < $$1) {
+            $$2 = $$3;
+            $$1 = this.a.g($$3);
+         }
+      }
+
+      return $$2;
+   }
+
+   protected void g() {
+      this.a.a(this.b, this.c);
    }
 }

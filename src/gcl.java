@@ -1,262 +1,228 @@
 import com.google.common.collect.ImmutableList;
-import com.google.common.collect.Lists;
-import com.google.common.collect.Maps;
-import com.google.common.collect.Sets;
-import com.google.common.collect.ImmutableList.Builder;
-import java.util.Comparator;
+import java.time.Duration;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
-import java.util.Optional;
-import java.util.Set;
-import java.util.Map.Entry;
-import java.util.function.Consumer;
+import java.util.UUID;
+import java.util.function.Supplier;
 import javax.annotation.Nullable;
 
-public class gcl extends fxi {
-   private static final ww a = ww.c("editGamerule.title");
-   private static final int b = 8;
-   final fve c = new fve(this);
-   private final Consumer<Optional<dil>> d;
-   private final Set<gcl.f> s = Sets.newHashSet();
-   private final dil u;
+public class gcl extends fsi.a<gcl> {
+   private static final alg f = alg.b("icon/draft_report");
+   private static final Duration g = Duration.ofMillis(500L);
+   private static final ftp h = new ftp(
+      alg.b("social_interactions/report_button"), alg.b("social_interactions/report_button_disabled"), alg.b("social_interactions/report_button_highlighted")
+   );
+   private static final ftp i = new ftp(alg.b("social_interactions/mute_button"), alg.b("social_interactions/mute_button_highlighted"));
+   private static final ftp j = new ftp(alg.b("social_interactions/unmute_button"), alg.b("social_interactions/unmute_button_highlighted"));
+   private final fos k;
+   private final List<fsa> l;
+   private final UUID m;
+   private final String n;
+   private final Supplier<hjq> o;
+   private boolean p;
+   private boolean q;
+   private final boolean r;
+   private final boolean s;
+   private final boolean u;
    @Nullable
-   private gcl.g v;
+   private fsc v;
    @Nullable
-   private frq w;
+   private fsc w;
+   @Nullable
+   private fsc x;
+   private float y;
+   private static final wy z = wy.c("gui.socialInteractions.status_hidden").a(n.u);
+   private static final wy A = wy.c("gui.socialInteractions.status_blocked").a(n.u);
+   private static final wy B = wy.c("gui.socialInteractions.status_offline").a(n.u);
+   private static final wy C = wy.c("gui.socialInteractions.status_hidden_offline").a(n.u);
+   private static final wy D = wy.c("gui.socialInteractions.status_blocked_offline").a(n.u);
+   private static final wy E = wy.c("gui.socialInteractions.tooltip.report.disabled");
+   private static final wy F = wy.c("gui.socialInteractions.tooltip.hide");
+   private static final wy G = wy.c("gui.socialInteractions.tooltip.show");
+   private static final wy H = wy.c("gui.socialInteractions.tooltip.report");
+   private static final int I = 24;
+   private static final int J = 4;
+   public static final int a = axw.a(190, 0, 0, 0);
+   private static final int K = 20;
+   public static final int b = axw.a(255, 74, 74, 74);
+   public static final int c = axw.a(255, 48, 48, 48);
+   public static final int d = axw.a(255, 255, 255, 255);
+   public static final int e = axw.a(140, 255, 255, 255);
 
-   public gcl(dil $$0, Consumer<Optional<dil>> $$1) {
-      super(a);
-      this.u = $$0;
-      this.d = $$1;
-   }
-
-   @Override
-   protected void aN_() {
-      this.c.a(a, this.p);
-      this.v = this.c.c(new gcl.g(this.u));
-      fvi $$0 = this.c.b(fvi.e().a(8));
-      this.w = $$0.a(frq.a(wv.d, $$0x -> this.d.accept(Optional.of(this.u))).a());
-      $$0.a(frq.a(wv.e, $$0x -> this.aK_()).a());
-      this.c.a($$1 -> {
-         fro var10000 = this.c($$1);
-      });
-      this.c();
-   }
-
-   @Override
-   protected void c() {
-      this.c.a();
-      if (this.v != null) {
-         this.v.a(this.n, this.c);
-      }
-   }
-
-   @Override
-   public void aK_() {
-      this.d.accept(Optional.empty());
-   }
-
-   private void m() {
-      if (this.w != null) {
-         this.w.j = this.s.isEmpty();
-      }
-   }
-
-   void a(gcl.f $$0) {
-      this.s.add($$0);
-      this.m();
-   }
-
-   void b(gcl.f $$0) {
-      this.s.remove($$0);
-      this.m();
-   }
-
-   public class a extends gcl.d {
-      private final frx<Boolean> c;
-
-      public a(final ww $$1, final List<ayw> $$2, final String $$3, final dil.a $$4) {
-         super($$2, $$1);
-         this.c = frx.b($$4.a()).a().a($$1x -> $$1x.c().f("\n").f($$3)).a(10, 5, 44, 20, $$1, ($$1x, $$2x) -> $$4.a($$2x, null));
-         this.a.add(this.c);
-      }
-
-      @Override
-      public void a(frc $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
-         this.a($$0, $$2, $$3);
-         this.c.j($$3 + $$4 - 45);
-         this.c.k($$2);
-         this.c.a($$0, $$6, $$7, $$9);
-      }
-   }
-
-   public class b extends gcl.f {
-      final ww b;
-
-      public b(final ww $$1) {
-         super(null);
-         this.b = $$1;
-      }
-
-      @Override
-      public void a(frc $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
-         $$0.a(gcl.this.m.h, this.b, $$3 + $$4 / 2, $$2 + 5, -1);
-      }
-
-      @Override
-      public List<? extends ftn> aD_() {
-         return ImmutableList.of();
-      }
-
-      @Override
-      public List<? extends fvl> b() {
-         return ImmutableList.of(new fvl() {
+   public gcl(fos $$0, gco $$1, UUID $$2, String $$3, Supplier<hjq> $$4, boolean $$5) {
+      this.k = $$0;
+      this.m = $$2;
+      this.n = $$3;
+      this.o = $$4;
+      gla $$6 = $$0.ba();
+      this.r = $$6.a().a();
+      this.u = $$5;
+      this.s = $$6.a($$2);
+      wy $$7 = wy.a("gui.socialInteractions.narration.hide", $$3);
+      wy $$8 = wy.a("gui.socialInteractions.narration.show", $$3);
+      gcm $$9 = $$0.aN();
+      boolean $$10 = $$0.J().a($$0.T());
+      boolean $$11 = !$$0.t.cG().equals($$2);
+      if ($$11 && $$10 && !$$9.e($$2)) {
+         this.x = new fso(0, 0, 20, 20, h, $$3x -> $$6.a($$0, $$1, () -> $$0.a(new gch($$1, $$6, this)), false), wy.c("gui.socialInteractions.report")) {
             @Override
-            public fvl.a w() {
-               return fvl.a.b;
+            protected xm d() {
+               return gcl.this.a(super.d());
             }
-
+         };
+         this.x.j = this.r;
+         this.x.a(this.m());
+         this.x.a(g);
+         this.v = new fso(0, 0, 20, 20, i, $$3x -> {
+            $$9.a($$2);
+            this.a(true, wy.a("gui.socialInteractions.hidden_in_chat", $$3));
+         }, wy.c("gui.socialInteractions.hide")) {
             @Override
-            public void b(fvn $$0) {
-               $$0.a(fvm.a, b.this.b);
+            protected xm d() {
+               return gcl.this.a(super.d());
             }
-         });
+         };
+         this.v.a(ftn.a(F, $$7));
+         this.v.a(g);
+         this.w = new fso(0, 0, 20, 20, j, $$3x -> {
+            $$9.b($$2);
+            this.a(false, wy.a("gui.socialInteractions.shown_in_chat", $$3));
+         }, wy.c("gui.socialInteractions.show")) {
+            @Override
+            protected xm d() {
+               return gcl.this.a(super.d());
+            }
+         };
+         this.w.a(ftn.a(G, $$8));
+         this.w.a(g);
+         this.l = new ArrayList<>();
+         this.l.add(this.v);
+         this.l.add(this.x);
+         this.e($$9.d(this.m));
+      } else {
+         this.l = ImmutableList.of();
       }
    }
 
-   @FunctionalInterface
-   interface c<T extends dil.g<T>> {
-      gcl.f create(ww var1, List<ayw> var2, String var3, T var4);
+   private ftn m() {
+      return !this.r ? ftn.a(E) : ftn.a(H, wy.a("gui.socialInteractions.narration.report", this.n));
    }
 
-   public abstract class d extends gcl.f {
-      private final List<ayw> c;
-      protected final List<fro> a = Lists.newArrayList();
-
-      public d(@Nullable final List<ayw> $$1, final ww $$2) {
-         super($$1);
-         this.c = gcl.this.m.h.c($$2, 175);
+   @Override
+   public void a(fro $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
+      int $$10 = $$3 + 4;
+      int $$11 = $$2 + ($$5 - 24) / 2;
+      int $$12 = $$10 + 24 + 4;
+      wy $$13 = this.n();
+      int $$14;
+      if ($$13 == wx.a) {
+         $$0.a($$3, $$2, $$3 + $$4, $$2 + $$5, b);
+         $$14 = $$2 + ($$5 - 9) / 2;
+      } else {
+         $$0.a($$3, $$2, $$3 + $$4, $$2 + $$5, c);
+         $$14 = $$2 + ($$5 - (9 + 9)) / 2;
+         $$0.b(this.k.h, $$13, $$12, $$14 + 12, e);
       }
 
-      @Override
-      public List<? extends ftn> aD_() {
-         return this.a;
+      ftb.a($$0, this.o.get(), $$10, $$11, 24);
+      $$0.b(this.k.h, this.n, $$12, $$14, d);
+      if (this.p) {
+         $$0.a($$10, $$11, $$10 + 24, $$11 + 24, a);
       }
 
-      @Override
-      public List<? extends fvl> b() {
-         return this.a;
-      }
-
-      protected void a(frc $$0, int $$1, int $$2) {
-         if (this.c.size() == 1) {
-            $$0.b(gcl.this.m.h, this.c.get(0), $$2, $$1 + 5, -1);
-         } else if (this.c.size() >= 2) {
-            $$0.b(gcl.this.m.h, this.c.get(0), $$2, $$1, -1);
-            $$0.b(gcl.this.m.h, this.c.get(1), $$2, $$1 + 10, -1);
+      if (this.v != null && this.w != null && this.x != null) {
+         float $$16 = this.y;
+         this.v.j($$3 + ($$4 - this.v.A() - 4) - 20 - 4);
+         this.v.k($$2 + ($$5 - this.v.y()) / 2);
+         this.v.a($$0, $$6, $$7, $$9);
+         this.w.j($$3 + ($$4 - this.w.A() - 4) - 20 - 4);
+         this.w.k($$2 + ($$5 - this.w.y()) / 2);
+         this.w.a($$0, $$6, $$7, $$9);
+         this.x.j($$3 + ($$4 - this.w.A() - 4));
+         this.x.k($$2 + ($$5 - this.w.y()) / 2);
+         this.x.a($$0, $$6, $$7, $$9);
+         if ($$16 == this.y) {
+            this.y = 0.0F;
          }
       }
-   }
 
-   public class e extends gcl.d {
-      private final frz d;
-
-      public e(final ww $$1, final List<ayw> $$2, final String $$3, final dil.d $$4) {
-         super($$2, $$1);
-         this.d = new frz(gcl.this.m.h, 10, 5, 44, 20, $$1.f().f("\n").f($$3).f("\n"));
-         this.d.a(Integer.toString($$4.a()));
-         this.d.b($$1x -> {
-            if ($$4.b($$1x)) {
-               this.d.m(14737632);
-               gcl.this.b(this);
-            } else {
-               this.d.m(-65536);
-               gcl.this.a(this);
-            }
-         });
-         this.a.add(this.d);
-      }
-
-      @Override
-      public void a(frc $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
-         this.a($$0, $$2, $$3);
-         this.d.j($$3 + $$4 - 45);
-         this.d.k($$2);
-         this.d.a($$0, $$6, $$7, $$9);
+      if (this.s && this.x != null) {
+         $$0.a(gqc::H, f, this.x.F() + 5, this.x.G() + 1, 15, 15);
       }
    }
 
-   public abstract static class f extends frw.a<gcl.f> {
-      @Nullable
-      final List<ayw> a;
-
-      public f(@Nullable List<ayw> $$0) {
-         this.a = $$0;
-      }
+   @Override
+   public List<? extends ftz> aD_() {
+      return this.l;
    }
 
-   public class g extends frw<gcl.f> {
-      private static final int m = 24;
+   @Override
+   public List<? extends fvx> b() {
+      return this.l;
+   }
 
-      public g(final dil $$1) {
-         super(fof.Q(), gcl.this.n, gcl.this.c.d(), gcl.this.c.c(), 24);
-         final Map<dil.b, Map<dil.e<?>, gcl.f>> $$2 = Maps.newHashMap();
-         $$1.a(new dil.c() {
-            @Override
-            public void b(dil.e<dil.a> $$0, dil.f<dil.a> $$1x) {
-               this.a($$0, ($$0x, $$1xxx, $$2xx, $$3) -> gcl.this.new a($$0x, $$1xxx, $$2xx, $$3));
-            }
+   public String c() {
+      return this.n;
+   }
 
-            @Override
-            public void c(dil.e<dil.d> $$0, dil.f<dil.d> $$1x) {
-               this.a($$0, ($$0x, $$1xxx, $$2xx, $$3) -> gcl.this.new e($$0x, $$1xxx, $$2xx, $$3));
-            }
+   public UUID g() {
+      return this.m;
+   }
 
-            private <T extends dil.g<T>> void a(dil.e<T> $$0, gcl.c<T> $$1x) {
-               ww $$2 = ww.c($$0.b());
-               ww $$3 = ww.b($$0.a()).a(n.o);
-               T $$4 = $$1.b($$0);
-               String $$5 = $$4.b();
-               ww $$6 = ww.a("editGamerule.default", ww.b($$5)).a(n.h);
-               String $$7 = $$0.b() + ".description";
-               List<ayw> $$10;
-               String $$11;
-               if (hjg.a($$7)) {
-                  Builder<ayw> $$8 = ImmutableList.builder().add($$3.g());
-                  ww $$9 = ww.c($$7);
-                  gcl.this.p.c($$9, 150).forEach($$8::add);
-                  $$10 = $$8.add($$6.g()).build();
-                  $$11 = $$9.getString() + "\n" + $$6.getString();
-               } else {
-                  $$10 = ImmutableList.of($$3.g(), $$6.g());
-                  $$11 = $$6.getString();
-               }
+   public Supplier<hjq> h() {
+      return this.o;
+   }
 
-               $$2.computeIfAbsent($$0.c(), $$0x -> Maps.newHashMap()).put($$0, $$1.create($$2, $$10, $$11, $$4));
-            }
-         });
-         $$2.entrySet()
-            .stream()
-            .sorted(Entry.comparingByKey())
-            .forEach(
-               $$0x -> {
-                  this.b(gcl.this.new b(ww.c(((dil.b)$$0x.getKey()).a()).a(n.r, n.o)));
-                  ((Map)$$0x.getValue())
-                     .entrySet()
-                     .stream()
-                     .sorted(Entry.comparingByKey(Comparator.comparing(dil.e::a)))
-                     .forEach($$0xx -> this.b((gcl.f)$$0xx.getValue()));
-               }
-            );
-      }
+   public void c(boolean $$0) {
+      this.p = $$0;
+   }
 
-      @Override
-      public void b(frc $$0, int $$1, int $$2, float $$3) {
-         super.b($$0, $$1, $$2, $$3);
-         gcl.f $$4 = this.x();
-         if ($$4 != null && $$4.a != null) {
-            gcl.this.b($$4.a);
-         }
+   public boolean i() {
+      return this.p;
+   }
+
+   public void d(boolean $$0) {
+      this.q = $$0;
+   }
+
+   public boolean k() {
+      return this.q;
+   }
+
+   public boolean l() {
+      return this.u;
+   }
+
+   private void a(boolean $$0, wy $$1) {
+      this.e($$0);
+      this.k.m.d().a($$1);
+      this.k.aY().c($$1);
+   }
+
+   private void e(boolean $$0) {
+      this.w.k = $$0;
+      this.v.k = !$$0;
+      this.l.set(0, $$0 ? this.w : this.v);
+   }
+
+   xm a(xm $$0) {
+      wy $$1 = this.n();
+      return $$1 == wx.a ? wy.b(this.n).f(", ").b($$0) : wy.b(this.n).f(", ").b($$1).f(", ").b($$0);
+   }
+
+   private wy n() {
+      boolean $$0 = this.k.aN().d(this.m);
+      boolean $$1 = this.k.aN().e(this.m);
+      if ($$1 && this.p) {
+         return D;
+      } else if ($$0 && this.p) {
+         return C;
+      } else if ($$1) {
+         return A;
+      } else if ($$0) {
+         return z;
+      } else {
+         return this.p ? B : wx.a;
       }
    }
 }

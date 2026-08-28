@@ -3,26 +3,20 @@ import java.util.Optional;
 import java.util.function.Function;
 
 public class cav {
-   private static final int a = 1;
-
-   public static byr<bxb> a(float $$0) {
-      return a($$1 -> $$0);
-   }
-
-   public static byr<bxb> a(Function<bwz, Float> $$0) {
-      return ccd.a(
-         (Function<ccd.b<bxb>, ? extends App<ccd.c<bxb>, ccg<bxb>>>)($$1 -> $$1.group($$1.a(cgb.n), $$1.a(cgb.o), $$1.b(cgb.p), $$1.a(cgb.h))
-               .apply($$1, ($$2, $$3, $$4, $$5) -> ($$6, $$7, $$8) -> {
-                     bwz $$9 = $$1.b($$4);
-                     Optional<cgd> $$10 = $$1.a($$5);
-                     if ($$10.isPresent() && $$10.get().a($$9) && bys.a($$7, $$9, 1)) {
-                        $$2.b();
+   public static byu<bxc> a(bwm<?> $$0, int $$1) {
+      int $$2 = $$1 * $$1;
+      return ccg.a(
+         (Function<ccg.b<bxc>, ? extends App<ccg.c<bxc>, ccj<bxc>>>)($$2x -> $$2x.group($$2x.a(cge.o), $$2x.c(cge.r), $$2x.b(cge.h))
+               .apply($$2x, ($$3, $$4, $$5) -> ($$6, $$7, $$8) -> {
+                     Optional<bxc> $$9 = $$2x.<cgg>b($$5).a($$3xx -> $$3xx.g($$7) <= (double)$$2 && $$0.equals($$3xx.aq()));
+                     if ($$9.isEmpty()) {
+                        return false;
                      } else {
-                        $$3.a(new bzb($$9, true));
-                        $$2.a(new cge(new bzb($$9, false), $$0.apply($$7), 0));
+                        bxc $$10 = $$9.get();
+                        $$4.a($$10);
+                        $$3.a(new bze($$10, true));
+                        return true;
                      }
-
-                     return true;
                   }))
       );
    }

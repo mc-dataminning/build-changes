@@ -1,90 +1,72 @@
-public class gih {
-   public static final String a = "left_fin";
-   public static final String b = "right_fin";
-   public static final String c = "top_fin";
-   public static final String d = "bottom_fin";
-   public static final String e = "tail_fin";
-   public static final String f = "left_blue_fin";
-   public static final String g = "right_blue_fin";
-   public static final String h = "left_arm";
-   public static final String i = "right_arm";
-   public static final String j = "left_wing";
-   public static final String k = "right_wing";
-   public static final String l = "left_wing_base";
-   public static final String m = "right_wing_base";
-   public static final String n = "left_wing_tip";
-   public static final String o = "right_wing_tip";
-   public static final String p = "left_ear";
-   public static final String q = "right_ear";
-   public static final String r = "left_leg";
-   public static final String s = "right_leg";
-   public static final String t = "left_hind_leg";
-   public static final String u = "right_hind_leg";
-   public static final String v = "left_mid_leg";
-   public static final String w = "right_mid_leg";
-   public static final String x = "left_front_leg";
-   public static final String y = "right_front_leg";
-   public static final String z = "left_hind_foot";
-   public static final String A = "right_hind_foot";
-   public static final String B = "left_front_foot";
-   public static final String C = "right_front_foot";
-   public static final String D = "feet";
-   public static final String E = "left_hind_leg_tip";
-   public static final String F = "right_hind_leg_tip";
-   public static final String G = "left_front_leg_tip";
-   public static final String H = "right_front_leg_tip";
-   public static final String I = "left_lid";
-   public static final String J = "right_lid";
-   public static final String K = "left_chest";
-   public static final String L = "right_chest";
-   public static final String M = "left_horn";
-   public static final String N = "right_horn";
-   public static final String O = "left_eye";
-   public static final String P = "right_eye";
-   public static final String Q = "jaw";
-   public static final String R = "nose";
-   public static final String S = "arms";
-   public static final String T = "tail";
-   public static final String U = "cube";
-   public static final String V = "beak";
-   public static final String W = "back_fin";
-   public static final String X = "mane";
-   public static final String Y = "neck";
-   public static final String Z = "mouth";
-   public static final String aa = "upper_mouth";
-   public static final String ab = "head";
-   public static final String ac = "hat";
-   public static final String ad = "body";
-   public static final String ae = "upper_body";
-   public static final String af = "hat_rim";
-   public static final String ag = "jacket";
-   public static final String ah = "top_gills";
-   public static final String ai = "left_gills";
-   public static final String aj = "right_gills";
-   public static final String ak = "root";
-   public static final String al = "croaking_body";
-   public static final String am = "tongue";
-   public static final String an = "tongue_r1";
-   public static final String ao = "left_hand";
-   public static final String ap = "right_hand";
-   public static final String aq = "left_foot";
-   public static final String ar = "right_foot";
-   public static final String as = "eyes";
-   public static final String at = "right_tendril";
-   public static final String au = "left_tendril";
-   public static final String av = "right_ribcage";
-   public static final String aw = "left_ribcage";
-   public static final String ax = "wind_body";
-   public static final String ay = "wind_top";
-   public static final String az = "wind_mid";
-   public static final String aA = "wind_bottom";
-   public static final String aB = "rods";
-   public static final String aC = "mushrooms";
-   public static final String aD = "bone";
-   public static final String aE = "left_paddle";
-   public static final String aF = "right_paddle";
-   public static final String aG = "bottom";
-   public static final String aH = "chest_bottom";
-   public static final String aI = "chest_lid";
-   public static final String aJ = "chest_lock";
+public class gih extends gfq<her> implements gga, gic {
+   protected final giu a;
+   private final giu b;
+   private final giu c;
+   private final giu d;
+   private final giu e;
+   private final giu f;
+   private final giu g;
+
+   public gih(giu $$0) {
+      super($$0);
+      this.b = $$0.b("head");
+      this.c = this.b.b("hat");
+      this.d = this.c.b("hat_rim");
+      this.a = this.b.b("nose");
+      this.e = $$0.b("right_leg");
+      this.f = $$0.b("left_leg");
+      this.g = $$0.b("arms");
+   }
+
+   public static gja a() {
+      gjc $$0 = gid.a();
+      gje $$1 = $$0.a();
+      gje $$2 = $$1.a("head", giz.c().a(0, 0).a(-4.0F, -10.0F, -4.0F, 8.0F, 10.0F, 8.0F), giw.a);
+      gje $$3 = $$2.a("hat", giz.c().a(0, 64).a(0.0F, 0.0F, 0.0F, 10.0F, 2.0F, 10.0F), giw.a(-5.0F, -10.03125F, -5.0F));
+      gje $$4 = $$3.a("hat2", giz.c().a(0, 76).a(0.0F, 0.0F, 0.0F, 7.0F, 4.0F, 7.0F), giw.a(1.75F, -4.0F, 2.0F, -0.05235988F, 0.0F, 0.02617994F));
+      gje $$5 = $$4.a("hat3", giz.c().a(0, 87).a(0.0F, 0.0F, 0.0F, 4.0F, 4.0F, 4.0F), giw.a(1.75F, -4.0F, 2.0F, -0.10471976F, 0.0F, 0.05235988F));
+      $$5.a(
+         "hat4", giz.c().a(0, 95).a(0.0F, 0.0F, 0.0F, 1.0F, 2.0F, 1.0F, new giy(0.25F)), giw.a(1.75F, -2.0F, 2.0F, (float) (-Math.PI / 15), 0.0F, 0.10471976F)
+      );
+      gje $$6 = $$2.b("nose");
+      $$6.a("mole", giz.c().a(0, 0).a(0.0F, 3.0F, -6.75F, 1.0F, 1.0F, 1.0F, new giy(-0.25F)), giw.a(0.0F, -2.0F, 0.0F));
+      return gja.a($$0, 64, 128);
+   }
+
+   public void a(her $$0) {
+      super.a($$0);
+      this.b.f = $$0.aa * (float) (Math.PI / 180.0);
+      this.b.e = $$0.ab * (float) (Math.PI / 180.0);
+      this.e.e = azm.b($$0.ad * 0.6662F) * 1.4F * $$0.ae * 0.5F;
+      this.f.e = azm.b($$0.ad * 0.6662F + (float) Math.PI) * 1.4F * $$0.ae * 0.5F;
+      float $$1 = 0.01F * (float)($$0.a % 10);
+      this.a.e = azm.a($$0.u * $$1) * 4.5F * (float) (Math.PI / 180.0);
+      this.a.g = azm.b($$0.u * $$1) * 2.5F * (float) (Math.PI / 180.0);
+      if ($$0.b) {
+         this.a.a(0.0F, 1.0F, -1.5F);
+         this.a.e = -0.9F;
+      }
+   }
+
+   public giu c() {
+      return this.a;
+   }
+
+   @Override
+   public giu b() {
+      return this.b;
+   }
+
+   @Override
+   public void a(boolean $$0) {
+      this.b.k = $$0;
+      this.c.k = $$0;
+      this.d.k = $$0;
+   }
+
+   @Override
+   public void a(fjc $$0) {
+      this.v.a($$0);
+      this.g.a($$0);
+   }
 }

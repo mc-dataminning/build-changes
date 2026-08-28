@@ -1,29 +1,66 @@
-import com.google.common.collect.ImmutableList;
-import java.util.Collections;
-import java.util.List;
+import javax.annotation.Nullable;
 
-public class gte implements gtf.a {
-   private final fof a;
-   private double b = Double.MIN_VALUE;
-   private List<feq> c = Collections.emptyList();
+public class gte implements dhy {
+   public static final int a = 1;
+   public static final int b = 3;
+   private final int e;
+   private final int f;
+   protected final gtd[] c;
+   protected final div d;
 
-   public gte(fof $$0) {
-      this.a = $$0;
+   gte(div $$0, int $$1, int $$2, gtd[] $$3) {
+      this.d = $$0;
+      this.e = $$1;
+      this.f = $$2;
+      this.c = $$3;
    }
 
    @Override
-   public void a(fiq $$0, gpd $$1, double $$2, double $$3, double $$4) {
-      double $$5 = (double)af.d();
-      if ($$5 - this.b > 1.0E8) {
-         this.b = $$5;
-         bwa $$6 = this.a.j.k().g();
-         this.c = ImmutableList.copyOf($$6.dV().d($$6, $$6.cR().g(6.0)));
-      }
+   public dzz a_(iu $$0) {
+      return this.a(jx.a($$0.u()), jx.a($$0.w())).b($$0);
+   }
 
-      fiu $$7 = $$1.getBuffer(gpn.y());
+   @Override
+   public ewg b_(iu $$0) {
+      return this.a(jx.a($$0.u()), jx.a($$0.w())).b($$0).y();
+   }
 
-      for (feq $$8 : this.c) {
-         gtf.a($$0, $$7, $$8, -$$2, -$$3, -$$4, 1.0F, 1.0F, 1.0F, 1.0F, true);
-      }
+   @Override
+   public float a(ja $$0, boolean $$1) {
+      return this.d.a($$0, $$1);
+   }
+
+   @Override
+   public evv x_() {
+      return this.d.x_();
+   }
+
+   @Nullable
+   @Override
+   public dwx c_(iu $$0) {
+      return this.a(jx.a($$0.u()), jx.a($$0.w())).a($$0);
+   }
+
+   private gtd a(int $$0, int $$1) {
+      return this.c[a(this.e, this.f, $$0, $$1)];
+   }
+
+   @Override
+   public int a(iu $$0, dig $$1) {
+      return this.d.a($$0, $$1);
+   }
+
+   @Override
+   public int G_() {
+      return this.d.G_();
+   }
+
+   @Override
+   public int H_() {
+      return this.d.H_();
+   }
+
+   public static int a(int $$0, int $$1, int $$2, int $$3) {
+      return $$2 - $$0 + ($$3 - $$1) * 3;
    }
 }

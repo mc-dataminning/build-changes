@@ -1,3 +1,8 @@
-public interface fgz {
-   void execute();
+import javax.annotation.ParametersAreNonnullByDefault;
+
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@fgk
+@fgj
+interface fgz {
 }

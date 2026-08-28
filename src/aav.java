@@ -1,57 +1,23 @@
 import java.util.List;
 
-public record aav(ald<dip> c, eqa d, List<aav.a> e) implements aag {
-   public static final yu<vs, aav> a = aag.a(aav::a, aav::new);
-   public static final aag.b<aav> b = aag.a("debug/structures");
+public record aav(List<iu> c) implements aai {
+   public static final yw<vu, aav> a = aai.a(aav::a, aav::new);
+   public static final aai.b<aav> b = aai.a("debug/raids");
 
-   private aav(vs $$0) {
-      this($$0.a(mg.bm), b($$0), $$0.a(aav.a::new));
+   private aav(vu $$0) {
+      this($$0.a(iu.b));
    }
 
-   private void a(vs $$0) {
-      $$0.b(this.c);
-      a($$0, this.d);
-      $$0.a(this.e, ($$1, $$2) -> $$2.a($$0));
+   private void a(vu $$0) {
+      $$0.a(this.c, iu.b);
    }
 
    @Override
-   public aag.b<aav> a() {
+   public aai.b<aav> a() {
       return b;
    }
 
-   static eqa b(vs $$0) {
-      return new eqa($$0.readInt(), $$0.readInt(), $$0.readInt(), $$0.readInt(), $$0.readInt(), $$0.readInt());
-   }
-
-   static void a(vs $$0, eqa $$1) {
-      $$0.q($$1.h());
-      $$0.q($$1.i());
-      $$0.q($$1.j());
-      $$0.q($$1.k());
-      $$0.q($$1.l());
-      $$0.q($$1.m());
-   }
-
-   public ald<dip> b() {
+   public List<iu> b() {
       return this.c;
-   }
-
-   public eqa c() {
-      return this.d;
-   }
-
-   public List<aav.a> d() {
-      return this.e;
-   }
-
-   public static record a(eqa a, boolean b) {
-      public a(vs $$0) {
-         this(aav.b($$0), $$0.readBoolean());
-      }
-
-      public void a(vs $$0) {
-         aav.a($$0, this.a);
-         $$0.a(this.b);
-      }
    }
 }

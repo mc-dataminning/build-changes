@@ -1,58 +1,99 @@
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
+import java.util.Set;
 
-public abstract class dop extends dpt {
-   public static final eam<dzz> c = eae.X;
+public class dop extends dlm implements dry {
+   public static final MapCodec<dop> a = b(dop::new);
+   private static final ffc b = dma.b(16.0, 6.0, 12.0);
 
-   protected dop(dzn.d $$0) {
+   @Override
+   public MapCodec<dop> a() {
+      return a;
+   }
+
+   protected dop(dzy.d $$0) {
       super($$0);
    }
 
    @Override
-   protected abstract MapCodec<? extends dop> a();
-
-   @Override
-   protected boolean a(dzo $$0, dis $$1, iu $$2) {
-      return b($$1, $$2, n($$0).g());
+   public dwx a(iu $$0, dzz $$1) {
+      return new dyu($$0, $$1);
    }
 
-   public static boolean b(dis $$0, iu $$1, ja $$2) {
-      iu $$3 = $$1.a($$2);
-      return $$0.a_($$3).c($$0, $$3, $$2.g());
+   @Override
+   protected ffc a(dzz $$0, dib $$1, iu $$2, fen $$3) {
+      return b;
    }
 
-   @Nullable
    @Override
-   public dzo a(dcl $$0) {
-      for (ja $$1 : $$0.f()) {
-         dzo $$2;
-         if ($$1.o() == ja.a.b) {
-            $$2 = this.m().b(c, $$1 == ja.b ? dzz.c : dzz.a).b(e, $$0.g());
+   protected ffc a(dzz $$0, dib $$1, iu $$2, bwd $$3) {
+      return $$0.f($$1, $$2);
+   }
+
+   @Override
+   protected void a(dzz $$0, div $$1, iu $$2, bwd $$3) {
+      if ($$3.n(false)) {
+         if (!$$1.C && $$1.aj() == div.k && $$3 instanceof arr $$4 && !$$4.i) {
+            $$4.n();
+            return;
+         }
+
+         $$3.a(this, $$2);
+      }
+   }
+
+   @Override
+   public exg a(arq $$0, bwd $$1, iu $$2) {
+      alf<div> $$3 = $$0.aj() == div.k ? div.i : div.k;
+      arq $$4 = $$0.p().a($$3);
+      if ($$4 == null) {
+         return null;
+      } else {
+         boolean $$5 = $$3 == div.k;
+         iu $$6 = $$5 ? arq.a : $$4.aa();
+         fei $$7 = $$6.c();
+         float $$8;
+         Set<bxq> $$9;
+         if ($$5) {
+            ejc.a($$4, iu.a((jo)$$7).e(), true);
+            $$8 = ja.e.p();
+            $$9 = bxq.a(bxq.l, Set.of(bxq.e));
+            if ($$1 instanceof arr) {
+               $$7 = $$7.a(0.0, 1.0, 0.0);
+            }
          } else {
-            $$2 = this.m().b(c, dzz.b).b(e, $$1.g());
+            $$8 = 0.0F;
+            $$9 = bxq.a(bxq.l, bxq.k);
+            if ($$1 instanceof arr $$12) {
+               return $$12.a(false, exg.a);
+            }
+
+            $$7 = $$1.a($$4, $$6).c();
          }
 
-         if ($$2.a((dis)$$0.q(), $$0.a())) {
-            return $$2;
-         }
+         return new exg($$4, $$7, fei.c, $$8, 0.0F, $$9, exg.b.then(exg.c));
       }
-
-      return null;
    }
 
    @Override
-   protected dzo a(dzo $$0, dis $$1, dje $$2, iu $$3, ja $$4, iu $$5, dzo $$6, azt $$7) {
-      return n($$0).g() == $$4 && !$$0.a($$1, $$3) ? dlw.a.m() : super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
+   public void a(dzz $$0, div $$1, iu $$2, azv $$3) {
+      double $$4 = (double)$$2.u() + $$3.j();
+      double $$5 = (double)$$2.v() + 0.8;
+      double $$6 = (double)$$2.w() + $$3.j();
+      $$1.a(lx.ah, $$4, $$5, $$6, 0.0, 0.0, 0.0);
    }
 
-   protected static ja n(dzo $$0) {
-      switch ((dzz)$$0.c(c)) {
-         case c:
-            return ja.a;
-         case a:
-            return ja.b;
-         default:
-            return $$0.c(e);
-      }
+   @Override
+   protected cyy a(diy $$0, iu $$1, dzz $$2, boolean $$3) {
+      return cyy.k;
+   }
+
+   @Override
+   protected boolean a(dzz $$0, ewf $$1) {
+      return false;
+   }
+
+   @Override
+   protected dsm a_(dzz $$0) {
+      return dsm.a;
    }
 }

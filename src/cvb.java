@@ -1,19 +1,9 @@
-public class cvb extends cwh {
-   private final cva a;
-
-   public cvb(btr $$0, int $$1, int $$2, int $$3, cva $$4) {
-      super($$0, $$1, $$2, $$3);
-      this.a = $$4;
-   }
-
-   @Override
-   public boolean a(cys $$0) {
-      return !this.a.e(this.d) && super.a($$0);
-   }
-
-   @Override
-   public void d() {
-      super.d();
-      this.a.a(this.c);
-   }
+public enum cvb {
+   a,
+   b,
+   c,
+   d,
+   e,
+   f,
+   g;
 }

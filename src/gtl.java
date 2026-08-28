@@ -1,107 +1,112 @@
-import java.time.Duration;
-import java.time.Instant;
-import javax.annotation.Nullable;
+import org.joml.FrustumIntersection;
 import org.joml.Matrix4f;
 import org.joml.Vector4f;
 
-public class gtl implements gtf.a {
-   private static final Duration a = Duration.ofMillis(500L);
-   private static final int b = 10;
-   private static final Vector4f c = new Vector4f(1.0F, 1.0F, 0.0F, 0.25F);
-   private static final Vector4f d = new Vector4f(0.25F, 0.125F, 0.0F, 0.125F);
-   private final fof e;
-   private final diy f;
-   private Instant g = Instant.now();
-   @Nullable
-   private gtl.a h;
+public class gtl {
+   public static final int a = 4;
+   private final FrustumIntersection b = new FrustumIntersection();
+   private final Matrix4f c = new Matrix4f();
+   private Vector4f d;
+   private double e;
+   private double f;
+   private double g;
 
-   public gtl(fof $$0, diy $$1) {
+   public gtl(Matrix4f $$0, Matrix4f $$1) {
+      this.a($$0, $$1);
+   }
+
+   public gtl(gtl $$0) {
+      this.b.set($$0.c);
+      this.c.set($$0.c);
+      this.e = $$0.e;
+      this.f = $$0.f;
+      this.g = $$0.g;
+      this.d = $$0.d;
+   }
+
+   public gtl a(int $$0) {
+      double $$1 = Math.floor(this.e / (double)$$0) * (double)$$0;
+      double $$2 = Math.floor(this.f / (double)$$0) * (double)$$0;
+      double $$3 = Math.floor(this.g / (double)$$0) * (double)$$0;
+      double $$4 = Math.ceil(this.e / (double)$$0) * (double)$$0;
+      double $$5 = Math.ceil(this.f / (double)$$0) * (double)$$0;
+
+      for (double $$6 = Math.ceil(this.g / (double)$$0) * (double)$$0;
+         this.b
+               .intersectAab(
+                  (float)($$1 - this.e), (float)($$2 - this.f), (float)($$3 - this.g), (float)($$4 - this.e), (float)($$5 - this.f), (float)($$6 - this.g)
+               )
+            != -2;
+         this.g = this.g - (double)(this.d.z() * 4.0F)
+      ) {
+         this.e = this.e - (double)(this.d.x() * 4.0F);
+         this.f = this.f - (double)(this.d.y() * 4.0F);
+      }
+
+      return this;
+   }
+
+   public void a(double $$0, double $$1, double $$2) {
       this.e = $$0;
       this.f = $$1;
+      this.g = $$2;
    }
 
-   @Override
-   public void a(fiq $$0, gpd $$1, double $$2, double $$3, double $$4) {
-      Instant $$5 = Instant.now();
-      if (this.h == null || Duration.between(this.g, $$5).compareTo(a) > 0) {
-         this.g = $$5;
-         this.h = new gtl.a(this.e.s.x_(), jx.a(this.e.t.dv()), 10, this.f);
+   private void a(Matrix4f $$0, Matrix4f $$1) {
+      $$1.mul($$0, this.c);
+      this.b.set(this.c);
+      this.d = this.c.transformTranspose(new Vector4f(0.0F, 0.0F, 1.0F, 0.0F));
+   }
+
+   public boolean a(fed $$0) {
+      int $$1 = this.a($$0.a, $$0.b, $$0.c, $$0.d, $$0.e, $$0.f);
+      return $$1 == -2 || $$1 == -1;
+   }
+
+   public int a(eql $$0) {
+      return this.a((double)$$0.h(), (double)$$0.i(), (double)$$0.j(), (double)($$0.k() + 1), (double)($$0.l() + 1), (double)($$0.m() + 1));
+   }
+
+   private int a(double $$0, double $$1, double $$2, double $$3, double $$4, double $$5) {
+      float $$6 = (float)($$0 - this.e);
+      float $$7 = (float)($$1 - this.f);
+      float $$8 = (float)($$2 - this.g);
+      float $$9 = (float)($$3 - this.e);
+      float $$10 = (float)($$4 - this.f);
+      float $$11 = (float)($$5 - this.g);
+      return this.b.intersectAab($$6, $$7, $$8, $$9, $$10, $$11);
+   }
+
+   public Vector4f[] a() {
+      Vector4f[] $$0 = new Vector4f[]{
+         new Vector4f(-1.0F, -1.0F, -1.0F, 1.0F),
+         new Vector4f(1.0F, -1.0F, -1.0F, 1.0F),
+         new Vector4f(1.0F, 1.0F, -1.0F, 1.0F),
+         new Vector4f(-1.0F, 1.0F, -1.0F, 1.0F),
+         new Vector4f(-1.0F, -1.0F, 1.0F, 1.0F),
+         new Vector4f(1.0F, -1.0F, 1.0F, 1.0F),
+         new Vector4f(1.0F, 1.0F, 1.0F, 1.0F),
+         new Vector4f(-1.0F, 1.0F, 1.0F, 1.0F)
+      };
+      Matrix4f $$1 = this.c.invert(new Matrix4f());
+
+      for (int $$2 = 0; $$2 < 8; $$2++) {
+         $$1.transform($$0[$$2]);
+         $$0[$$2].div($$0[$$2].w());
       }
 
-      a($$0, this.h.a, this.h.c, $$1, $$2, $$3, $$4, c);
-      a($$0, this.h.b, this.h.c, $$1, $$2, $$3, $$4, d);
-      fiu $$6 = $$1.getBuffer(gpn.F());
-      a($$0, this.h.a, this.h.c, $$6, $$2, $$3, $$4, c);
-      a($$0, this.h.b, this.h.c, $$6, $$2, $$3, $$4, d);
+      return $$0;
    }
 
-   private static void a(fiq $$0, fef $$1, jx $$2, fiu $$3, double $$4, double $$5, double $$6, Vector4f $$7) {
-      $$1.a(($$7x, $$8, $$9, $$10) -> {
-         int $$11 = $$8 + $$2.u();
-         int $$12 = $$9 + $$2.v();
-         int $$13 = $$10 + $$2.w();
-         a($$0, $$3, $$7x, $$4, $$5, $$6, $$11, $$12, $$13, $$7);
-      });
+   public double b() {
+      return this.e;
    }
 
-   private static void a(fiq $$0, fef $$1, jx $$2, gpd $$3, double $$4, double $$5, double $$6, Vector4f $$7) {
-      $$1.a(($$7x, $$8, $$9, $$10, $$11, $$12) -> {
-         int $$13 = $$7x + $$2.u();
-         int $$14 = $$8 + $$2.v();
-         int $$15 = $$9 + $$2.w();
-         int $$16 = $$10 + $$2.u();
-         int $$17 = $$11 + $$2.v();
-         int $$18 = $$12 + $$2.w();
-         fiu $$19 = $$3.getBuffer(gpn.a(1.0));
-         a($$0, $$19, $$4, $$5, $$6, $$13, $$14, $$15, $$16, $$17, $$18, $$7);
-      }, true);
+   public double c() {
+      return this.f;
    }
 
-   private static void a(fiq $$0, fiu $$1, ja $$2, double $$3, double $$4, double $$5, int $$6, int $$7, int $$8, Vector4f $$9) {
-      float $$10 = (float)((double)jx.c($$6) - $$3);
-      float $$11 = (float)((double)jx.c($$7) - $$4);
-      float $$12 = (float)((double)jx.c($$8) - $$5);
-      gpx.a($$0, $$1, $$2, $$10, $$11, $$12, $$10 + 16.0F, $$11 + 16.0F, $$12 + 16.0F, $$9.x(), $$9.y(), $$9.z(), $$9.w());
-   }
-
-   private static void a(fiq $$0, fiu $$1, double $$2, double $$3, double $$4, int $$5, int $$6, int $$7, int $$8, int $$9, int $$10, Vector4f $$11) {
-      float $$12 = (float)((double)jx.c($$5) - $$2);
-      float $$13 = (float)((double)jx.c($$6) - $$3);
-      float $$14 = (float)((double)jx.c($$7) - $$4);
-      float $$15 = (float)((double)jx.c($$8) - $$2);
-      float $$16 = (float)((double)jx.c($$9) - $$3);
-      float $$17 = (float)((double)jx.c($$10) - $$4);
-      Matrix4f $$18 = $$0.c().a();
-      $$1.a($$18, $$12, $$13, $$14).a($$11.x(), $$11.y(), $$11.z(), 1.0F);
-      $$1.a($$18, $$15, $$16, $$17).a($$11.x(), $$11.y(), $$11.z(), 1.0F);
-   }
-
-   static final class a {
-      final fef a;
-      final fef b;
-      final jx c;
-
-      a(evk $$0, jx $$1, int $$2, diy $$3) {
-         int $$4 = $$2 * 2 + 1;
-         this.a = new fdz($$4, $$4, $$4);
-         this.b = new fdz($$4, $$4, $$4);
-
-         for (int $$5 = 0; $$5 < $$4; $$5++) {
-            for (int $$6 = 0; $$6 < $$4; $$6++) {
-               for (int $$7 = 0; $$7 < $$4; $$7++) {
-                  jx $$8 = jx.a($$1.a() + $$7 - $$2, $$1.b() + $$6 - $$2, $$1.c() + $$5 - $$2);
-                  evj.b $$9 = $$0.b($$3, $$8);
-                  if ($$9 == evj.b.c) {
-                     this.a.c($$7, $$6, $$5);
-                     this.b.c($$7, $$6, $$5);
-                  } else if ($$9 == evj.b.b) {
-                     this.b.c($$7, $$6, $$5);
-                  }
-               }
-            }
-         }
-
-         this.c = jx.a($$1.a() - $$2, $$1.b() - $$2, $$1.c() - $$2);
-      }
+   public double d() {
+      return this.g;
    }
 }

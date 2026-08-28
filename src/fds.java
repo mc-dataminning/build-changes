@@ -1,61 +1,32 @@
-public class fds extends fdu {
-   private final ja b;
-   private final iu c;
-   private final boolean d;
-   private final boolean e;
-   private final boolean f;
+import net.minecraft.server.MinecraftServer;
 
-   public static fds a(fdw $$0, ja $$1, iu $$2) {
-      return new fds(true, $$0, $$1, $$2, false, false);
+public class fds implements fdt<MinecraftServer> {
+   final alg a;
+
+   public fds(alg $$0) {
+      this.a = $$0;
    }
 
-   public fds(fdw $$0, ja $$1, iu $$2, boolean $$3) {
-      this(false, $$0, $$1, $$2, $$3, false);
+   public void a(MinecraftServer $$0, fdv<MinecraftServer> $$1, long $$2) {
+      alv $$3 = $$0.aE();
+
+      for (hw<ei> $$5 : $$3.b(this.a)) {
+         $$3.a($$5, $$3.c());
+      }
    }
 
-   public fds(fdw $$0, ja $$1, iu $$2, boolean $$3, boolean $$4) {
-      this(false, $$0, $$1, $$2, $$3, $$4);
-   }
+   public static class a extends fdt.a<MinecraftServer, fds> {
+      public a() {
+         super(alg.b("function_tag"), fds.class);
+      }
 
-   private fds(boolean $$0, fdw $$1, ja $$2, iu $$3, boolean $$4, boolean $$5) {
-      super($$1);
-      this.d = $$0;
-      this.b = $$2;
-      this.c = $$3;
-      this.e = $$4;
-      this.f = $$5;
-   }
+      public void a(tz $$0, fds $$1) {
+         $$0.a("Name", $$1.a.toString());
+      }
 
-   public fds a(ja $$0) {
-      return new fds(this.d, this.a, $$0, this.c, this.e, this.f);
-   }
-
-   public fds a(iu $$0) {
-      return new fds(this.d, this.a, this.b, $$0, this.e, this.f);
-   }
-
-   public fds a() {
-      return new fds(this.d, this.a, this.b, this.c, this.e, true);
-   }
-
-   public iu b() {
-      return this.c;
-   }
-
-   public ja c() {
-      return this.b;
-   }
-
-   @Override
-   public fdu.a d() {
-      return this.d ? fdu.a.a : fdu.a.b;
-   }
-
-   public boolean e() {
-      return this.e;
-   }
-
-   public boolean f() {
-      return this.f;
+      public fds a(tz $$0) {
+         alg $$1 = alg.a($$0.l("Name"));
+         return new fds($$1);
+      }
    }
 }

@@ -1,32 +1,15 @@
-public class hly implements hlg {
-   public static final float a = 0.01F;
-   public static final float b = 0.001F;
-   public static final float c = 1.0E-4F;
-   private static final int d = 0;
-   private final goa e;
-   private final hnc f;
-   private int g = 0;
-
-   public hly(goa $$0, hnc $$1) {
-      this.e = $$0;
-      this.f = $$1;
+public class hly extends hlz {
+   public hly(cit $$0) {
+      super($$0, awn.bR, awo.g);
    }
 
    @Override
-   public void a() {
-      this.g--;
-      if (this.g <= 0 && this.e.bn()) {
-         float $$0 = this.e.dV().A.i();
-         if ($$0 < 1.0E-4F) {
-            this.g = 0;
-            this.f.a((hlw)(new hlz.a(this.e, awl.C)));
-         } else if ($$0 < 0.001F) {
-            this.g = 0;
-            this.f.a((hlw)(new hlz.a(this.e, awl.B)));
-         } else if ($$0 < 0.01F) {
-            this.g = 0;
-            this.f.a((hlw)(new hlz.a(this.e, awl.A)));
-         }
-      }
+   protected hlv o() {
+      return new hlx(this.n);
+   }
+
+   @Override
+   protected boolean p() {
+      return this.n.W_();
    }
 }

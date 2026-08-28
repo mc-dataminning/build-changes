@@ -1,6 +1,8 @@
-import com.google.gson.JsonElement;
-import java.util.function.Supplier;
+import com.mojang.serialization.MapCodec;
+import javax.annotation.Nullable;
 
-public interface fqc extends Supplier<JsonElement> {
-   dlu a();
+public interface fqc {
+   int a(cyy var1, @Nullable gjr var2, @Nullable bxc var3);
+
+   MapCodec<? extends fqc> a();
 }

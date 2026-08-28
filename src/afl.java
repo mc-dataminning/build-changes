@@ -1,186 +1,44 @@
-import com.google.common.collect.ImmutableList;
-import java.util.Collection;
-import java.util.Optional;
-import javax.annotation.Nullable;
+import java.util.List;
 
-public class afl implements zd<abs> {
-   public static final yu<wh, afl> a = zd.a(afl::a, afl::new);
-   private static final int b = 0;
-   private static final int c = 1;
-   private static final int d = 2;
-   private static final int e = 3;
-   private static final int f = 4;
-   private static final int g = 40;
-   private static final int h = 40;
-   private final int i;
-   private final String j;
-   private final Collection<String> k;
-   private final Optional<afl.b> l;
+public class afl implements zf<abu> {
+   public static final yw<vu, afl> a = zf.a(afl::a, afl::new);
+   private final int b;
+   private final int[] c;
 
-   private afl(String $$0, int $$1, Optional<afl.b> $$2, Collection<String> $$3) {
-      this.j = $$0;
-      this.i = $$1;
-      this.l = $$2;
-      this.k = ImmutableList.copyOf($$3);
-   }
+   public afl(bwd $$0) {
+      this.b = $$0.ar();
+      List<bwd> $$1 = $$0.cY();
+      this.c = new int[$$1.size()];
 
-   public static afl a(few $$0, boolean $$1) {
-      return new afl($$0.b(), $$1 ? 0 : 2, Optional.of(new afl.b($$0)), (Collection<String>)($$1 ? $$0.g() : ImmutableList.of()));
-   }
-
-   public static afl a(few $$0) {
-      return new afl($$0.b(), 1, Optional.empty(), ImmutableList.of());
-   }
-
-   public static afl a(few $$0, String $$1, afl.a $$2) {
-      return new afl($$0.b(), $$2 == afl.a.a ? 3 : 4, Optional.empty(), ImmutableList.of($$1));
-   }
-
-   private afl(wh $$0) {
-      this.j = $$0.p();
-      this.i = $$0.readByte();
-      if (b(this.i)) {
-         this.l = Optional.of(new afl.b($$0));
-      } else {
-         this.l = Optional.empty();
-      }
-
-      if (a(this.i)) {
-         this.k = $$0.a(vs::p);
-      } else {
-         this.k = ImmutableList.of();
+      for (int $$2 = 0; $$2 < $$1.size(); $$2++) {
+         this.c[$$2] = $$1.get($$2).ar();
       }
    }
 
-   private void a(wh $$0) {
-      $$0.a(this.j);
-      $$0.l(this.i);
-      if (b(this.i)) {
-         this.l.orElseThrow(() -> new IllegalStateException("Parameters not present, but method is" + this.i)).a($$0);
-      }
-
-      if (a(this.i)) {
-         $$0.a(this.k, vs::a);
-      }
+   private afl(vu $$0) {
+      this.b = $$0.l();
+      this.c = $$0.c();
    }
 
-   private static boolean a(int $$0) {
-      return $$0 == 0 || $$0 == 3 || $$0 == 4;
-   }
-
-   private static boolean b(int $$0) {
-      return $$0 == 0 || $$0 == 2;
-   }
-
-   @Nullable
-   public afl.a b() {
-      return switch (this.i) {
-         case 0, 3 -> afl.a.a;
-         default -> null;
-         case 4 -> afl.a.b;
-      };
-   }
-
-   @Nullable
-   public afl.a e() {
-      return switch (this.i) {
-         case 0 -> afl.a.a;
-         case 1 -> afl.a.b;
-         default -> null;
-      };
+   private void a(vu $$0) {
+      $$0.c(this.b);
+      $$0.a(this.c);
    }
 
    @Override
-   public zf<afl> a() {
-      return agl.aO;
+   public zh<afl> a() {
+      return agn.aN;
    }
 
-   public void a(abs $$0) {
+   public void a(abu $$0) {
       $$0.a(this);
    }
 
-   public String f() {
-      return this.j;
+   public int[] b() {
+      return this.c;
    }
 
-   public Collection<String> g() {
-      return this.k;
-   }
-
-   public Optional<afl.b> h() {
-      return this.l;
-   }
-
-   public static enum a {
-      a,
-      b;
-   }
-
-   public static class b {
-      private final ww a;
-      private final ww b;
-      private final ww c;
-      private final String d;
-      private final String e;
-      private final n f;
-      private final int g;
-
-      public b(few $$0) {
-         this.a = $$0.c();
-         this.g = $$0.m();
-         this.d = $$0.j().e;
-         this.e = $$0.l().e;
-         this.f = $$0.n();
-         this.b = $$0.e();
-         this.c = $$0.f();
-      }
-
-      public b(wh $$0) {
-         this.a = wy.d.decode($$0);
-         this.g = $$0.readByte();
-         this.d = $$0.d(40);
-         this.e = $$0.d(40);
-         this.f = $$0.b(n.class);
-         this.b = wy.d.decode($$0);
-         this.c = wy.d.decode($$0);
-      }
-
-      public ww a() {
-         return this.a;
-      }
-
-      public int b() {
-         return this.g;
-      }
-
-      public n c() {
-         return this.f;
-      }
-
-      public String d() {
-         return this.d;
-      }
-
-      public String e() {
-         return this.e;
-      }
-
-      public ww f() {
-         return this.b;
-      }
-
-      public ww g() {
-         return this.c;
-      }
-
-      public void a(wh $$0) {
-         wy.d.encode($$0, this.a);
-         $$0.l(this.g);
-         $$0.a(this.d);
-         $$0.a(this.e);
-         $$0.a(this.f);
-         wy.d.encode($$0, this.b);
-         wy.d.encode($$0, this.c);
-      }
+   public int e() {
+      return this.b;
    }
 }

@@ -1,31 +1,33 @@
-import java.util.Map;
+import io.netty.buffer.ByteBuf;
 
-public class zu implements zd<zj> {
-   public static final yu<vs, zu> a = zd.a(zu::a, zu::new);
-   private final Map<ald<? extends jr<?>>, axr.a> b;
+public record zu(alg c, byte[] d) implements zf<zl> {
+   public static final yw<vu, zu> a = zf.a(zu::a, zu::new);
+   private static final int e = 5120;
+   public static final yw<ByteBuf, byte[]> b = yu.a(5120);
 
-   public zu(Map<ald<? extends jr<?>>, axr.a> $$0) {
-      this.b = $$0;
+   private zu(vu $$0) {
+      this($$0.q(), b.decode($$0));
    }
 
-   private zu(vs $$0) {
-      this.b = $$0.a(vs::r, axr.a::b);
-   }
-
-   private void a(vs $$0) {
-      $$0.a(this.b, vs::b, ($$0x, $$1) -> $$1.a($$0x));
+   private void a(vu $$0) {
+      $$0.a(this.c);
+      b.encode($$0, this.d);
    }
 
    @Override
-   public zf<zu> a() {
-      return zv.k;
+   public zh<zu> a() {
+      return zx.i;
    }
 
-   public void a(zj $$0) {
+   public void a(zl $$0) {
       $$0.a(this);
    }
 
-   public Map<ald<? extends jr<?>>, axr.a> b() {
-      return this.b;
+   public alg b() {
+      return this.c;
+   }
+
+   public byte[] e() {
+      return this.d;
    }
 }

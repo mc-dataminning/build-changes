@@ -5,7 +5,7 @@ public interface hm extends AutoCloseable {
 
    void a(String var1);
 
-   void a(int var1, ale var2, int var3);
+   void a(int var1, alg var2, int var3);
 
    @Override
    void close();

@@ -1,33 +1,60 @@
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Map;
 
-public class dvp extends dtu implements dvj {
-   public static final MapCodec<dvp> g = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(dvj.a.e.fieldOf("weathering_state").forGetter(dmw::c), dzo.a.fieldOf("base_state").forGetter($$0x -> $$0x.f), t()).apply($$0, dvp::new)
-   );
-   private final dvj.a h;
-
-   @Override
-   public MapCodec<dvp> a() {
-      return g;
-   }
-
-   public dvp(dvj.a $$0, dzo $$1, dzn.d $$2) {
-      super($$1, $$2);
-      this.h = $$0;
-   }
+public class dvp extends dkw {
+   public static final MapCodec<dvp> c = RecordCodecBuilder.mapCodec($$0 -> $$0.group(dtk.a.b.fieldOf("kind").forGetter(dkw::b), t()).apply($$0, dvp::new));
+   public static final eax<ja> d = dqa.e;
+   private static final Map<ja, ffc> b = fez.c(dma.c(8.0, 8.0, 16.0));
 
    @Override
-   protected void b(dzo $$0, aro $$1, iu $$2, azt $$3) {
-      this.a_($$0, $$1, $$2, $$3);
+   public MapCodec<? extends dvp> a() {
+      return c;
+   }
+
+   protected dvp(dtk.a $$0, dzy.d $$1) {
+      super($$0, $$1);
+      this.l(this.m().b(d, ja.c));
    }
 
    @Override
-   protected boolean f(dzo $$0) {
-      return dvj.c($$0.b()).isPresent();
+   protected ffc a(dzz $$0, dib $$1, iu $$2, fen $$3) {
+      return b.get($$0.c(d));
    }
 
-   public dvj.a q() {
-      return this.h;
+   @Override
+   public dzz a(dcr $$0) {
+      dzz $$1 = super.a($$0);
+      dib $$2 = $$0.q();
+      iu $$3 = $$0.a();
+      ja[] $$4 = $$0.f();
+
+      for (ja $$5 : $$4) {
+         if ($$5.o().d()) {
+            ja $$6 = $$5.g();
+            $$1 = $$1.b(d, $$6);
+            if (!$$2.a_($$3.a($$5)).a($$0)) {
+               return $$1;
+            }
+         }
+      }
+
+      return null;
+   }
+
+   @Override
+   protected dzz a(dzz $$0, dst $$1) {
+      return $$0.b(d, $$1.a($$0.c(d)));
+   }
+
+   @Override
+   protected dzz a(dzz $$0, drc $$1) {
+      return $$0.a($$1.a($$0.c(d)));
+   }
+
+   @Override
+   protected void a(eaa.a<dma, dzz> $$0) {
+      super.a($$0);
+      $$0.a(d);
    }
 }

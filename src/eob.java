@@ -1,44 +1,76 @@
-import com.google.common.collect.ImmutableList;
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
-import java.util.function.BiConsumer;
+import org.apache.commons.lang3.mutable.Mutable;
+import org.apache.commons.lang3.mutable.MutableObject;
 
-public class eob extends eoe {
-   public static final MapCodec<eob> a = RecordCodecBuilder.mapCodec($$0 -> a($$0).apply($$0, eob::new));
+public class eob extends eod {
+   public static final MapCodec<eob> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(
+               Codec.floatRange(0.0F, 1.0F).fieldOf("leaves_probability").forGetter($$0x -> $$0x.b),
+               Codec.floatRange(0.0F, 1.0F).fieldOf("trunk_probability").forGetter($$0x -> $$0x.c),
+               Codec.floatRange(0.0F, 1.0F).fieldOf("ground_probability").forGetter($$0x -> $$0x.d)
+            )
+            .apply($$0, eob::new)
+   );
+   private final float b;
+   private final float c;
+   private final float d;
 
-   public eob(int $$0, int $$1, int $$2) {
-      super($$0, $$1, $$2);
+   @Override
+   protected eoe<?> a() {
+      return eoe.c;
+   }
+
+   public eob(float $$0, float $$1, float $$2) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
    }
 
    @Override
-   protected eof<?> a() {
-      return eof.c;
-   }
-
-   @Override
-   public List<emj.a> a(div $$0, BiConsumer<iu, dzo> $$1, azt $$2, int $$3, iu $$4, elt $$5) {
-      iu $$6 = $$4.e();
-      a($$0, $$1, $$2, $$6, $$5);
-      a($$0, $$1, $$2, $$6.i(), $$5);
-      a($$0, $$1, $$2, $$6.g(), $$5);
-      a($$0, $$1, $$2, $$6.g().i(), $$5);
-      iu.a $$7 = new iu.a();
-
-      for (int $$8 = 0; $$8 < $$3; $$8++) {
-         this.a($$0, $$1, $$2, $$7, $$5, $$4, 0, $$8, 0);
-         if ($$8 < $$3 - 1) {
-            this.a($$0, $$1, $$2, $$7, $$5, $$4, 1, $$8, 0);
-            this.a($$0, $$1, $$2, $$7, $$5, $$4, 1, $$8, 1);
-            this.a($$0, $$1, $$2, $$7, $$5, $$4, 0, $$8, 1);
+   public void a(eod.a $$0) {
+      azv $$1 = $$0.b();
+      dju $$2 = (dju)$$0.a();
+      List<iu> $$3 = af.a($$0.c(), $$1);
+      if (!$$3.isEmpty()) {
+         Mutable<iu> $$4 = new MutableObject($$3.getFirst());
+         $$3.forEach($$1x -> {
+            if ($$1x.v() < ((iu)$$4.getValue()).v()) {
+               $$4.setValue($$1x);
+            }
+         });
+         iu $$5 = (iu)$$4.getValue();
+         if ($$1.i() < this.d) {
+            $$2.F_().a(mg.aK).flatMap($$0x -> $$0x.a(ro.N)).ifPresent($$3x -> ((eiq)$$3x.a()).a($$2, $$2.a().m().g(), $$1, $$5.d()));
          }
+
+         $$0.c().forEach($$2x -> {
+            if ($$1.i() < this.c) {
+               iu $$3x = $$2x.e();
+               if ($$0.a($$3x)) {
+                  a($$3x, $$0);
+               }
+            }
+         });
+         $$0.d().forEach($$2x -> {
+            if ($$1.i() < this.b) {
+               iu $$3x = $$2x.e();
+               if ($$0.a($$3x)) {
+                  a($$3x, $$0);
+               }
+            }
+         });
+      }
+   }
+
+   private static void a(iu $$0, eod.a $$1) {
+      while ($$1.a($$0.e()) && !((double)$$1.b().i() < 0.5)) {
+         $$1.a($$0, dmc.ud.m().b(dpu.b, Boolean.valueOf(false)));
+         $$0 = $$0.e();
       }
 
-      return ImmutableList.of(new emj.a($$4.b($$3), 0, true));
-   }
-
-   private void a(div $$0, BiConsumer<iu, dzo> $$1, azt $$2, iu.a $$3, elt $$4, iu $$5, int $$6, int $$7, int $$8) {
-      $$3.a($$5, $$6, $$7, $$8);
-      this.a($$0, $$1, $$2, $$3, $$4);
+      $$1.a($$0, dmc.ud.m().b(dpu.b, Boolean.valueOf(true)));
    }
 }

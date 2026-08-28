@@ -1,65 +1,145 @@
-import com.mojang.logging.LogUtils;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
-import org.slf4j.Logger;
+import java.util.Map;
+import java.util.Set;
+import java.util.function.Function;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
-public class ezw extends faa {
-   private static final Logger b = LogUtils.getLogger();
+public class ezw extends fam {
+   private static final Map<alg, ezw.c> b = Stream.of(ezw.a.a, ezw.d.b, ezw.e.b).collect(Collectors.toMap(ezw.c::a, Function.identity()));
+   private static final Codec<ezw.c> c = alg.a.comapFlatMap($$0 -> {
+      ezw.c $$1 = b.get($$0);
+      return $$1 != null ? DataResult.success($$1) : DataResult.error(() -> "No formula type with id: '" + $$0 + "'");
+   }, ezw.c::a);
+   private static final MapCodec<ezw.b> d = ayu.a("formula", "parameters", c, ezw.b::a, ezw.c::b);
    public static final MapCodec<ezw> a = RecordCodecBuilder.mapCodec(
-      $$0 -> a($$0).and(ald.a(mg.bp).fieldOf("name").forGetter($$0x -> $$0x.c)).apply($$0, ezw::new)
+      $$0 -> a($$0).and($$0.group(dfl.c.fieldOf("enchantment").forGetter($$0x -> $$0x.e), d.forGetter($$0x -> $$0x.f))).apply($$0, ezw::new)
    );
-   private final ald<fab> c;
+   private final je<dfl> e;
+   private final ezw.b f;
 
-   private ezw(List<fbw> $$0, ald<fab> $$1) {
+   private ezw(List<fci> $$0, je<dfl> $$1, ezw.b $$2) {
       super($$0);
-      this.c = $$1;
+      this.e = $$1;
+      this.f = $$2;
    }
 
    @Override
-   public fac<ezw> b() {
-      return fad.H;
+   public fao<ezw> b() {
+      return fap.x;
    }
 
    @Override
-   public void a(eyt $$0) {
-      if (!$$0.b()) {
-         $$0.b("Uses reference to " + this.c.a() + ", but references are not allowed");
-      } else if ($$0.a(this.c)) {
-         $$0.b("Function " + this.c.a() + " is recursively called");
-      } else {
-         super.a($$0);
-         $$0.a()
-            .c(this.c)
-            .ifPresentOrElse($$1 -> $$1.a().a($$0.a(".{" + this.c.a() + "}", this.c)), () -> $$0.b("Unknown function table called " + this.c.a()));
+   public Set<bax<?>> a() {
+      return Set.of(fbt.i);
+   }
+
+   @Override
+   public cyy a(cyy $$0, eyz $$1) {
+      cyy $$2 = $$1.c(fbt.i);
+      if ($$2 != null) {
+         int $$3 = dfn.a(this.e, $$2);
+         int $$4 = this.f.a($$1.b(), $$0.M(), $$3);
+         $$0.e($$4);
+      }
+
+      return $$0;
+   }
+
+   public static fam.a<?> a(je<dfl> $$0, float $$1, int $$2) {
+      return a($$3 -> new ezw($$3, $$0, new ezw.a($$2, $$1)));
+   }
+
+   public static fam.a<?> a(je<dfl> $$0) {
+      return a($$1 -> new ezw($$1, $$0, new ezw.d()));
+   }
+
+   public static fam.a<?> b(je<dfl> $$0) {
+      return a($$1 -> new ezw($$1, $$0, new ezw.e(1)));
+   }
+
+   public static fam.a<?> a(je<dfl> $$0, int $$1) {
+      return a($$2 -> new ezw($$2, $$0, new ezw.e($$1)));
+   }
+
+   static record a(int b, float c) implements ezw.b {
+      private static final Codec<ezw.a> d = RecordCodecBuilder.create(
+         $$0 -> $$0.group(Codec.INT.fieldOf("extra").forGetter(ezw.a::b), Codec.FLOAT.fieldOf("probability").forGetter(ezw.a::c)).apply($$0, ezw.a::new)
+      );
+      public static final ezw.c a = new ezw.c(alg.b("binomial_with_bonus_count"), d);
+
+      @Override
+      public int a(azv $$0, int $$1, int $$2) {
+         for (int $$3 = 0; $$3 < $$2 + this.b; $$3++) {
+            if ($$0.i() < this.c) {
+               $$1++;
+            }
+         }
+
+         return $$1;
+      }
+
+      @Override
+      public ezw.c a() {
+         return a;
       }
    }
 
-   @Override
-   protected cys a(cys $$0, eyn $$1) {
-      fab $$2 = $$1.a().c(this.c).map(je::a).orElse(null);
-      if ($$2 == null) {
-         b.warn("Unknown function: {}", this.c.a());
-         return $$0;
-      } else {
-         eyn.c<?> $$3 = eyn.a($$2);
-         if ($$1.b($$3)) {
-            cys var5;
-            try {
-               var5 = $$2.apply($$0, $$1);
-            } finally {
-               $$1.c($$3);
+   interface b {
+      int a(azv var1, int var2, int var3);
+
+      ezw.c a();
+   }
+
+   static record c(alg a, Codec<? extends ezw.b> b) {
+   }
+
+   static record d() implements ezw.b {
+      public static final Codec<ezw.d> a = Codec.unit(ezw.d::new);
+      public static final ezw.c b = new ezw.c(alg.b("ore_drops"), a);
+
+      @Override
+      public int a(azv $$0, int $$1, int $$2) {
+         if ($$2 > 0) {
+            int $$3 = $$0.a($$2 + 2) - 1;
+            if ($$3 < 0) {
+               $$3 = 0;
             }
 
-            return var5;
+            return $$1 * ($$3 + 1);
          } else {
-            b.warn("Detected infinite loop in loot tables");
-            return $$0;
+            return $$1;
          }
+      }
+
+      @Override
+      public ezw.c a() {
+         return b;
       }
    }
 
-   public static faa.a<?> a(ald<fab> $$0) {
-      return a($$1 -> new ezw($$1, $$0));
+   static record e(int c) implements ezw.b {
+      public static final Codec<ezw.e> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(Codec.INT.fieldOf("bonusMultiplier").forGetter(ezw.e::b)).apply($$0, ezw.e::new)
+      );
+      public static final ezw.c b = new ezw.c(alg.b("uniform_bonus_count"), a);
+
+      @Override
+      public int a(azv $$0, int $$1, int $$2) {
+         return $$1 + $$0.a(this.c * $$2 + 1);
+      }
+
+      @Override
+      public ezw.c a() {
+         return b;
+      }
+
+      public int b() {
+         return this.c;
+      }
    }
 }

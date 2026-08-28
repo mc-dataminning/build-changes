@@ -1,19 +1,11 @@
-import com.mojang.serialization.MapCodec;
-
-public class dow extends dno {
-   public static final MapCodec<dow> b = b(dow::new);
-
-   @Override
-   public MapCodec<dow> a() {
-      return b;
+public interface dow {
+   default void a(div $$0, iu $$1, dzz $$2, dzz $$3, cnc $$4) {
    }
 
-   protected dow(dzn.d $$0) {
-      super($$0);
+   default void a(div $$0, iu $$1, cnc $$2) {
    }
 
-   @Override
-   protected bty a(dzo $$0, dip $$1, iu $$2, cqs $$3, fds $$4) {
-      return bty.e;
+   default bus a(bwd $$0) {
+      return $$0.dW().a($$0);
    }
 }

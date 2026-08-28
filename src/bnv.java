@@ -4,19 +4,13 @@ import com.mojang.datafixers.types.templates.TypeTemplate;
 import java.util.Map;
 import java.util.function.Supplier;
 
-public class bnv extends bko {
+public class bnv extends bkr {
    public bnv(int $$0, Schema $$1) {
       super($$0, $$1);
    }
 
-   protected static TypeTemplate a(Schema $$0) {
-      return DSL.optionalFields("inBlockState", bit.u.in($$0), "item", bit.t.in($$0), "weapon", bit.t.in($$0));
-   }
-
-   public Map<String, Supplier<TypeTemplate>> registerEntities(Schema $$0) {
-      Map<String, Supplier<TypeTemplate>> $$1 = super.registerEntities($$0);
-      $$0.register($$1, "minecraft:spectral_arrow", () -> a($$0));
-      $$0.register($$1, "minecraft:arrow", () -> a($$0));
-      return $$1;
+   public void registerTypes(Schema $$0, Map<String, Supplier<TypeTemplate>> $$1, Map<String, Supplier<TypeTemplate>> $$2) {
+      super.registerTypes($$0, $$1, $$2);
+      $$0.registerType(true, biw.y, () -> DSL.optionalFields("item", biw.t.in($$0), "block_state", biw.u.in($$0)));
    }
 }

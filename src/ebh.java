@@ -1,8 +1,21 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+public enum ebh implements bak {
+   a("top"),
+   b("bottom"),
+   c("double");
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface ebh {
+   private final String d;
+
+   private ebh(final String $$0) {
+      this.d = $$0;
+   }
+
+   @Override
+   public String toString() {
+      return this.d;
+   }
+
+   @Override
+   public String c() {
+      return this.d;
+   }
 }

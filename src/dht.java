@@ -1,84 +1,221 @@
-import com.google.common.collect.AbstractIterator;
-import java.util.function.BiFunction;
-import javax.annotation.Nullable;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
 
-public class dht<T> extends AbstractIterator<T> {
-   private final fdr a;
-   private final feb b;
-   private final ix c;
-   private final iu.a d;
-   private final feq e;
-   private final dhz f;
-   private final boolean g;
-   @Nullable
-   private dhv h;
-   private long i;
-   private final BiFunction<iu.a, feq, T> j;
+public class dht {
+   public static final Codec<dht> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               dhr.a.fieldOf("buy").forGetter($$0x -> $$0x.c),
+               dhr.a.lenientOptionalFieldOf("buyB").forGetter($$0x -> $$0x.d),
+               cyy.b.fieldOf("sell").forGetter($$0x -> $$0x.e),
+               Codec.INT.lenientOptionalFieldOf("uses", 0).forGetter($$0x -> $$0x.f),
+               Codec.INT.lenientOptionalFieldOf("maxUses", 4).forGetter($$0x -> $$0x.g),
+               Codec.BOOL.lenientOptionalFieldOf("rewardExp", true).forGetter($$0x -> $$0x.h),
+               Codec.INT.lenientOptionalFieldOf("specialPrice", 0).forGetter($$0x -> $$0x.i),
+               Codec.INT.lenientOptionalFieldOf("demand", 0).forGetter($$0x -> $$0x.j),
+               Codec.FLOAT.lenientOptionalFieldOf("priceMultiplier", 0.0F).forGetter($$0x -> $$0x.k),
+               Codec.INT.lenientOptionalFieldOf("xp", 1).forGetter($$0x -> $$0x.l)
+            )
+            .apply($$0, dht::new)
+   );
+   public static final yw<wj, dht> b = yw.a(dht::a, dht::a);
+   private final dhr c;
+   private final Optional<dhr> d;
+   private final cyy e;
+   private int f;
+   private final int g;
+   private final boolean h;
+   private int i;
+   private int j;
+   private final float k;
+   private final int l;
 
-   public dht(dhz $$0, @Nullable bwa $$1, fdr $$2, boolean $$3, BiFunction<iu.a, feq, T> $$4) {
-      this($$0, $$1 == null ? feb.a() : feb.a($$1), $$2, $$3, $$4);
+   private dht(dhr $$0, Optional<dhr> $$1, cyy $$2, int $$3, int $$4, boolean $$5, int $$6, int $$7, float $$8, int $$9) {
+      this.c = $$0;
+      this.d = $$1;
+      this.e = $$2;
+      this.f = $$3;
+      this.g = $$4;
+      this.h = $$5;
+      this.i = $$6;
+      this.j = $$7;
+      this.k = $$8;
+      this.l = $$9;
    }
 
-   public dht(dhz $$0, feb $$1, fdr $$2, boolean $$3, BiFunction<iu.a, feq, T> $$4) {
-      this.b = $$1;
-      this.d = new iu.a();
-      this.e = fen.a($$2);
-      this.f = $$0;
-      this.a = $$2;
-      this.g = $$3;
-      this.j = $$4;
-      int $$5 = azk.a($$2.a - 1.0E-7) - 1;
-      int $$6 = azk.a($$2.d + 1.0E-7) + 1;
-      int $$7 = azk.a($$2.b - 1.0E-7) - 1;
-      int $$8 = azk.a($$2.e + 1.0E-7) + 1;
-      int $$9 = azk.a($$2.c - 1.0E-7) - 1;
-      int $$10 = azk.a($$2.f + 1.0E-7) + 1;
-      this.c = new ix($$5, $$7, $$9, $$6, $$8, $$10);
+   public dht(dhr $$0, cyy $$1, int $$2, int $$3, float $$4) {
+      this($$0, Optional.empty(), $$1, $$2, $$3, $$4);
    }
 
-   @Nullable
-   private dhv a(int $$0, int $$1) {
-      int $$2 = jx.a($$0);
-      int $$3 = jx.a($$1);
-      long $$4 = dhw.c($$2, $$3);
-      if (this.h != null && this.i == $$4) {
-         return this.h;
+   public dht(dhr $$0, Optional<dhr> $$1, cyy $$2, int $$3, int $$4, float $$5) {
+      this($$0, $$1, $$2, 0, $$3, $$4, $$5);
+   }
+
+   public dht(dhr $$0, Optional<dhr> $$1, cyy $$2, int $$3, int $$4, int $$5, float $$6) {
+      this($$0, $$1, $$2, $$3, $$4, $$5, $$6, 0);
+   }
+
+   public dht(dhr $$0, Optional<dhr> $$1, cyy $$2, int $$3, int $$4, int $$5, float $$6, int $$7) {
+      this($$0, $$1, $$2, $$3, $$4, true, 0, $$7, $$6, $$5);
+   }
+
+   private dht(dht $$0) {
+      this($$0.c, $$0.d, $$0.e.v(), $$0.f, $$0.g, $$0.h, $$0.i, $$0.j, $$0.k, $$0.l);
+   }
+
+   public cyy a() {
+      return this.c.d();
+   }
+
+   public cyy b() {
+      return this.c.d().c(this.a(this.c));
+   }
+
+   private int a(dhr $$0) {
+      int $$1 = $$0.b();
+      int $$2 = Math.max(0, azm.d((float)($$1 * this.j) * this.k));
+      return azm.a($$1 + $$2 + this.i, 1, $$0.d().k());
+   }
+
+   public cyy c() {
+      return this.d.map(dhr::d).orElse(cyy.k);
+   }
+
+   public dhr d() {
+      return this.c;
+   }
+
+   public Optional<dhr> e() {
+      return this.d;
+   }
+
+   public cyy f() {
+      return this.e;
+   }
+
+   public void g() {
+      this.j = this.j + this.f - (this.g - this.f);
+   }
+
+   public cyy h() {
+      return this.e.v();
+   }
+
+   public int i() {
+      return this.f;
+   }
+
+   public void j() {
+      this.f = 0;
+   }
+
+   public int k() {
+      return this.g;
+   }
+
+   public void l() {
+      this.f++;
+   }
+
+   public int m() {
+      return this.j;
+   }
+
+   public void a(int $$0) {
+      this.i += $$0;
+   }
+
+   public void n() {
+      this.i = 0;
+   }
+
+   public int o() {
+      return this.i;
+   }
+
+   public void b(int $$0) {
+      this.i = $$0;
+   }
+
+   public float p() {
+      return this.k;
+   }
+
+   public int q() {
+      return this.l;
+   }
+
+   public boolean r() {
+      return this.f >= this.g;
+   }
+
+   public void s() {
+      this.f = this.g;
+   }
+
+   public boolean t() {
+      return this.f > 0;
+   }
+
+   public boolean u() {
+      return this.h;
+   }
+
+   public boolean a(cyy $$0, cyy $$1) {
+      if (!this.c.a($$0) || $$0.M() < this.a(this.c)) {
+         return false;
       } else {
-         dhv $$5 = this.f.c($$2, $$3);
-         this.h = $$5;
-         this.i = $$4;
-         return $$5;
+         return !this.d.isPresent() ? $$1.f() : this.d.get().a($$1) && $$1.M() >= this.d.get().b();
       }
    }
 
-   protected T computeNext() {
-      while (this.c.a()) {
-         int $$0 = this.c.b();
-         int $$1 = this.c.c();
-         int $$2 = this.c.d();
-         int $$3 = this.c.e();
-         if ($$3 != 3) {
-            dhv $$4 = this.a($$0, $$2);
-            if ($$4 != null) {
-               this.d.d($$0, $$1, $$2);
-               dzo $$5 = $$4.a_(this.d);
-               if ((!this.g || $$5.j($$4, this.d)) && ($$3 != 1 || $$5.i()) && ($$3 != 2 || $$5.a(dlw.bX))) {
-                  feq $$6 = this.b.a($$5, this.f, this.d);
-                  if ($$6 == fen.b()) {
-                     if (this.a.a((double)$$0, (double)$$1, (double)$$2, (double)$$0 + 1.0, (double)$$1 + 1.0, (double)$$2 + 1.0)) {
-                        return this.j.apply(this.d, $$6.a(this.d));
-                     }
-                  } else {
-                     feq $$7 = $$6.a(this.d);
-                     if (!$$7.c() && fen.c($$7, this.e, fea.i)) {
-                        return this.j.apply(this.d, $$7);
-                     }
-                  }
-               }
-            }
+   public boolean b(cyy $$0, cyy $$1) {
+      if (!this.a($$0, $$1)) {
+         return false;
+      } else {
+         $$0.h(this.b().M());
+         if (!this.c().f()) {
+            $$1.h(this.c().M());
          }
+
+         return true;
+      }
+   }
+
+   public dht v() {
+      return new dht(this);
+   }
+
+   private static void a(wj $$0, dht $$1) {
+      dhr.b.encode($$0, $$1.d());
+      cyy.i.encode($$0, $$1.f());
+      dhr.c.encode($$0, $$1.e());
+      $$0.a($$1.r());
+      $$0.q($$1.i());
+      $$0.q($$1.k());
+      $$0.q($$1.q());
+      $$0.q($$1.o());
+      $$0.a($$1.p());
+      $$0.q($$1.m());
+   }
+
+   public static dht a(wj $$0) {
+      dhr $$1 = dhr.b.decode($$0);
+      cyy $$2 = cyy.i.decode($$0);
+      Optional<dhr> $$3 = dhr.c.decode($$0);
+      boolean $$4 = $$0.readBoolean();
+      int $$5 = $$0.readInt();
+      int $$6 = $$0.readInt();
+      int $$7 = $$0.readInt();
+      int $$8 = $$0.readInt();
+      float $$9 = $$0.readFloat();
+      int $$10 = $$0.readInt();
+      dht $$11 = new dht($$1, $$3, $$2, $$5, $$6, $$7, $$9, $$10);
+      if ($$4) {
+         $$11.s();
       }
 
-      return (T)this.endOfData();
+      $$11.b($$8);
+      return $$11;
    }
 }

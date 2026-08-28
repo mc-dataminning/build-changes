@@ -1,46 +1,96 @@
-import com.mojang.datafixers.kinds.App;
-import java.util.function.Function;
-import org.apache.commons.lang3.mutable.MutableLong;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.ImmutableSet;
+import java.util.Set;
+import java.util.stream.Collectors;
 
-public class cbo {
-   public static byr<bxh> a(int $$0, float $$1) {
-      MutableLong $$2 = new MutableLong(0L);
-      return ccd.a(
-         (Function<ccd.b<bxh>, ? extends App<ccd.c<bxh>, ccg<bxh>>>)($$3 -> $$3.group($$3.c(cgb.p), $$3.c(cgb.n), $$3.a(cgb.o))
-               .apply(
-                  $$3,
-                  ($$3x, $$4, $$5) -> ($$5x, $$6, $$7) -> {
-                        if ($$5x.b_($$6.dv()).a(axf.a)) {
-                           return false;
-                        } else if ($$7 < $$2.getValue()) {
-                           $$2.setValue($$7 + 40L);
-                           return true;
-                        } else {
-                           feb $$8 = feb.a($$6);
-                           iu $$9 = $$6.dv();
-                           iu.a $$10 = new iu.a();
+public class cbo extends byt<cqk> {
+   private Set<cyu> c = ImmutableSet.of();
 
-                           label45:
-                           for (iu $$11 : iu.a($$9, $$0, $$0, $$0)) {
-                              if (($$11.u() != $$9.u() || $$11.w() != $$9.w())
-                                 && $$5x.a_($$11).b($$5x, $$11, $$8).c()
-                                 && !$$5x.a_($$10.a($$11, ja.a)).b($$5x, $$11, $$8).c()) {
-                                 for (ja $$12 : ja.c.a) {
-                                    $$10.a($$11, $$12);
-                                    if ($$5x.a_($$10).l() && $$5x.a_($$10.c(ja.a)).a(dlw.J)) {
-                                       $$5.a(new byt($$11));
-                                       $$4.a(new cge(new byt($$11), $$1, 0));
-                                       break label45;
-                                    }
-                                 }
-                              }
-                           }
+   public cbo() {
+      super(ImmutableMap.of(cge.r, cgf.a, cge.h, cgf.a));
+   }
 
-                           $$2.setValue($$7 + 40L);
-                           return true;
-                        }
-                     }
-               ))
-      );
+   protected boolean a(arq $$0, cqk $$1) {
+      return byv.a($$1.eb(), cge.r, bwm.bD);
+   }
+
+   protected boolean a(arq $$0, cqk $$1, long $$2) {
+      return this.a($$0, $$1);
+   }
+
+   protected void b(arq $$0, cqk $$1, long $$2) {
+      cqk $$3 = (cqk)$$1.eb().c(cge.r).get();
+      byv.a($$1, $$3, 0.5F, 2);
+      this.c = a($$1, $$3);
+   }
+
+   protected void c(arq $$0, cqk $$1, long $$2) {
+      cqk $$3 = (cqk)$$1.eb().c(cge.r).get();
+      if (!($$1.g($$3) > 5.0)) {
+         byv.a($$1, $$3, 0.5F, 2);
+         $$1.a($$0, $$3, $$2);
+         boolean $$4 = $$1.gy().b().a(cqn.g);
+         if ($$1.gH() && ($$4 || $$3.gI())) {
+            a($$1, cqk.bI.keySet(), $$3);
+         }
+
+         if ($$4 && $$1.n().a_(czc.qh) > czc.qh.g() / 2) {
+            a($$1, ImmutableSet.of(czc.qh), $$3);
+         }
+
+         if (!this.c.isEmpty() && $$1.n().a(this.c)) {
+            a($$1, this.c, $$3);
+         }
+      }
+   }
+
+   protected void d(arq $$0, cqk $$1, long $$2) {
+      $$1.eb().b(cge.r);
+   }
+
+   private static Set<cyu> a(cqk $$0, cqk $$1) {
+      ImmutableSet<cyu> $$2 = $$1.gy().b().a().d();
+      ImmutableSet<cyu> $$3 = $$0.gy().b().a().d();
+      return $$2.stream().filter($$1x -> !$$3.contains($$1x)).collect(Collectors.toSet());
+   }
+
+   private static void a(cqk $$0, Set<cyu> $$1, bxc $$2) {
+      bui $$3 = $$0.n();
+      cyy $$4 = cyy.k;
+      int $$5 = 0;
+
+      while ($$5 < $$3.b()) {
+         cyy $$6;
+         cyu $$7;
+         int $$8;
+         label28: {
+            $$6 = $$3.a($$5);
+            if (!$$6.f()) {
+               $$7 = $$6.h();
+               if ($$1.contains($$7)) {
+                  if ($$6.M() > $$6.k() / 2) {
+                     $$8 = $$6.M() / 2;
+                     break label28;
+                  }
+
+                  if ($$6.M() > 24) {
+                     $$8 = $$6.M() - 24;
+                     break label28;
+                  }
+               }
+            }
+
+            $$5++;
+            continue;
+         }
+
+         $$6.h($$8);
+         $$4 = new cyy($$7, $$8);
+         break;
+      }
+
+      if (!$$4.f()) {
+         byv.a($$0, $$4, $$2.dt());
+      }
    }
 }

@@ -1,26 +1,30 @@
 import com.mojang.serialization.Codec;
 
-public class ekj extends eit<ele> {
-   public ekj(Codec<ele> $$0) {
+public class ekj extends eje<eld> {
+   public ekj(Codec<eld> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(eiv<ele> $$0) {
-      djo $$1 = $$0.b();
-      iu $$2 = $$0.e();
-      $$0.f();
-      if (!$$1.v($$2)) {
-         return false;
-      } else {
-         for (ja $$3 : ja.values()) {
-            if ($$3 != ja.a && dva.a($$1, $$2.a($$3), $$3)) {
-               $$1.a($$2, dlw.ft.m().b(dva.a($$3), Boolean.valueOf(true)), 2);
-               return true;
-            }
-         }
+   public boolean a(ejg<eld> $$0) {
+      int $$1 = 0;
+      azv $$2 = $$0.d();
+      dju $$3 = $$0.b();
+      iu $$4 = $$0.e();
+      int $$5 = $$0.f().a().a($$2);
 
-         return false;
+      for (int $$6 = 0; $$6 < $$5; $$6++) {
+         int $$7 = $$2.a(8) - $$2.a(8);
+         int $$8 = $$2.a(8) - $$2.a(8);
+         int $$9 = $$3.a(efy.a.d, $$4.u() + $$7, $$4.w() + $$8);
+         iu $$10 = new iu($$4.u() + $$7, $$9, $$4.w() + $$8);
+         dzz $$11 = dmc.ny.m().b(dte.c, Integer.valueOf($$2.a(4) + 1));
+         if ($$3.a_($$10).a(dmc.J) && $$11.a($$3, $$10)) {
+            $$3.a($$10, $$11, 2);
+            $$1++;
+         }
       }
+
+      return $$1 > 0;
    }
 }

@@ -1,34 +1,37 @@
-import com.google.common.collect.Maps;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
+import java.util.function.IntFunction;
 
-public record fou(float a, boolean b, Map<String, List<fot>> c) {
-   public static class a {
-      private final float a;
-      private final Map<String, List<fot>> b = Maps.newHashMap();
-      private boolean c;
+public enum fou {
+   a(0, "options.narrator.off"),
+   b(1, "options.narrator.all"),
+   c(2, "options.narrator.chat"),
+   d(3, "options.narrator.system");
 
-      public static fou.a a(float $$0) {
-         return new fou.a($$0);
-      }
+   private static final IntFunction<fou> e = ayc.a(fou::a, values(), ayc.a.b);
+   private final int f;
+   private final wy g;
 
-      private a(float $$0) {
-         this.a = $$0;
-      }
+   private fou(final int $$0, final String $$1) {
+      this.f = $$0;
+      this.g = wy.c($$1);
+   }
 
-      public fou.a a() {
-         this.c = true;
-         return this;
-      }
+   public int a() {
+      return this.f;
+   }
 
-      public fou.a a(String $$0, fot $$1) {
-         this.b.computeIfAbsent($$0, $$0x -> new ArrayList<>()).add($$1);
-         return this;
-      }
+   public wy b() {
+      return this.g;
+   }
 
-      public fou b() {
-         return new fou(this.a, this.c, this.b);
-      }
+   public static fou a(int $$0) {
+      return e.apply($$0);
+   }
+
+   public boolean c() {
+      return this == b || this == c;
+   }
+
+   public boolean d() {
+      return this == b || this == d;
    }
 }

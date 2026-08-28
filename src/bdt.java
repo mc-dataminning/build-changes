@@ -1,64 +1,56 @@
+import com.google.common.collect.Streams;
 import com.mojang.datafixers.DSL;
 import com.mojang.datafixers.DataFix;
 import com.mojang.datafixers.OpticFinder;
 import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.Typed;
 import com.mojang.datafixers.schemas.Schema;
 import com.mojang.datafixers.types.Type;
-import com.mojang.datafixers.util.Pair;
 import com.mojang.serialization.Dynamic;
+import java.util.List;
 import java.util.Optional;
-import java.util.Set;
+import java.util.stream.Stream;
 
 public class bdt extends DataFix {
-   private static final Set<String> a = Set.of("minecraft:potion", "minecraft:splash_potion", "minecraft:lingering_potion", "minecraft:tipped_arrow");
+   private final String a;
 
-   public bdt(Schema $$0) {
+   public bdt(Schema $$0, String $$1) {
       super($$0, false);
+      this.a = $$1;
    }
 
-   protected TypeRewriteRule makeRule() {
-      Schema $$0 = this.getInputSchema();
-      Type<?> $$1 = this.getInputSchema().getType(bit.t);
-      OpticFinder<Pair<String, String>> $$2 = DSL.fieldFinder("id", DSL.named(bit.F.typeName(), bko.a()));
-      OpticFinder<?> $$3 = $$1.findField("tag");
-      return TypeRewriteRule.seq(
-         this.fixTypeEverywhereTyped("EffectDurationEntity", $$0.getType(bit.D), $$0x -> $$0x.update(DSL.remainderFinder(), this::c)),
-         new TypeRewriteRule[]{
-            this.fixTypeEverywhereTyped("EffectDurationPlayer", $$0.getType(bit.b), $$0x -> $$0x.update(DSL.remainderFinder(), this::c)),
-            this.fixTypeEverywhereTyped("EffectDurationItem", $$1, $$2x -> {
-               if ($$2x.getOptional($$2).filter($$0xx -> a.contains($$0xx.getSecond())).isPresent()) {
-                  Optional<? extends Typed<?>> $$3x = $$2x.getOptionalTyped($$3);
-                  if ($$3x.isPresent()) {
-                     Dynamic<?> $$4 = (Dynamic<?>)$$3x.get().get(DSL.remainderFinder());
-                     Typed<?> $$5 = $$3x.get().set(DSL.remainderFinder(), $$4.update("CustomPotionEffects", this::b));
-                     return $$2x.set($$3, $$5);
-                  }
-               }
+   private <T> Dynamic<T> a(Dynamic<T> $$0) {
+      $$0 = $$0.update("front_text", bdt::b);
+      $$0 = $$0.update("back_text", bdt::b);
 
-               return $$2x;
-            })
-         }
-      );
+      for (String $$1 : bcl.a) {
+         $$0 = $$0.remove($$1);
+      }
+
+      return $$0;
    }
 
-   private Dynamic<?> a(Dynamic<?> $$0) {
-      return $$0.update("FactorCalculationData", $$1 -> {
-         int $$2 = $$1.get("effect_changed_timestamp").asInt(-1);
-         $$1 = $$1.remove("effect_changed_timestamp");
-         int $$3 = $$0.get("Duration").asInt(-1);
-         int $$4 = $$2 - $$3;
-         return $$1.set("ticks_active", $$1.createInt($$4));
-      });
+   private static <T> Dynamic<T> b(Dynamic<T> $$0) {
+      Optional<Stream<Dynamic<T>>> $$1 = $$0.get("filtered_messages").asStreamOpt().result();
+      if ($$1.isEmpty()) {
+         return $$0;
+      } else {
+         Dynamic<T> $$2 = bbe.a($$0.getOps());
+         List<Dynamic<T>> $$3 = $$0.get("messages").asStreamOpt().result().orElse(Stream.of()).toList();
+         List<Dynamic<T>> $$4 = Streams.mapWithIndex($$1.get(), ($$2x, $$3x) -> {
+            Dynamic<T> $$4x = $$3x < (long)$$3.size() ? $$3.get((int)$$3x) : $$2;
+            return $$2x.equals($$2) ? $$4x : $$2x;
+         }).toList();
+         return $$4.equals($$3) ? $$0.remove("filtered_messages") : $$0.set("filtered_messages", $$0.createList($$4.stream()));
+      }
    }
 
-   private Dynamic<?> b(Dynamic<?> $$0) {
-      return $$0.createList($$0.asStream().map(this::a));
-   }
-
-   private Dynamic<?> c(Dynamic<?> $$0) {
-      $$0 = $$0.update("Effects", this::b);
-      $$0 = $$0.update("ActiveEffects", this::b);
-      return $$0.update("CustomPotionEffects", this::b);
+   public TypeRewriteRule makeRule() {
+      Type<?> $$0 = this.getInputSchema().getType(biw.s);
+      Type<?> $$1 = this.getInputSchema().getChoiceType(biw.s, this.a);
+      OpticFinder<?> $$2 = DSL.namedChoice(this.a, $$1);
+      return this.fixTypeEverywhereTyped("DropInvalidSignDataFix for " + this.a, $$0, $$2x -> $$2x.updateTyped($$2, $$1, $$1xx -> {
+            boolean $$2xx = ((Dynamic)$$1xx.get(DSL.remainderFinder())).get("_filtered_correct").asBoolean(false);
+            return $$2xx ? $$1xx.update(DSL.remainderFinder(), $$0xxx -> $$0xxx.remove("_filtered_correct")) : af.a($$1xx, $$1, this::a);
+         }));
    }
 }

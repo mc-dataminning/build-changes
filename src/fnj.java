@@ -1,52 +1,19 @@
-import com.mojang.logging.LogUtils;
-import org.slf4j.Logger;
+import it.unimi.dsi.fastutil.longs.Long2ObjectMap;
+import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
+import javax.annotation.Nullable;
 
-public class fnj extends fnd {
-   private static final Logger b = LogUtils.getLogger();
-   private static final ww c = ww.c("mco.minigame.world.starting.screen.title");
-   private final long d;
-   private final fkx e;
-   private final flq f;
+public class fnj {
+   private static final Long2ObjectMap<String> a = new Long2ObjectOpenHashMap();
 
-   public fnj(long $$0, fkx $$1, flq $$2) {
-      this.d = $$0;
-      this.e = $$1;
-      this.f = $$2;
+   public static String a(long $$0) {
+      return (String)a.get($$0);
    }
 
-   @Override
-   public void run() {
-      fjg $$0 = fjg.a();
-
-      for (int $$1 = 0; $$1 < 25; $$1++) {
-         try {
-            if (this.d()) {
-               return;
-            }
-
-            if ($$0.c(this.d, this.e.a)) {
-               a(this.f);
-               break;
-            }
-         } catch (fld var4) {
-            if (this.d()) {
-               return;
-            }
-
-            a((long)var4.c);
-         } catch (Exception var5) {
-            if (this.d()) {
-               return;
-            }
-
-            b.error("Couldn't start mini game!");
-            this.a(var5);
-         }
-      }
+   public static void b(long $$0) {
+      a.remove($$0);
    }
 
-   @Override
-   public ww a() {
-      return c;
+   public static void a(long $$0, @Nullable String $$1) {
+      a.put($$0, $$1);
    }
 }

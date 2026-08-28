@@ -9,21 +9,21 @@ import java.util.Collection;
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
 
-public class fs implements ArgumentType<cwi> {
+public class fs implements ArgumentType<cwo> {
    private static final Collection<String> a = List.of("container.*", "container.5", "weapon");
-   private static final DynamicCommandExceptionType b = new DynamicCommandExceptionType($$0 -> ww.b("slot.unknown", $$0));
+   private static final DynamicCommandExceptionType b = new DynamicCommandExceptionType($$0 -> wy.b("slot.unknown", $$0));
 
    public static fs a() {
       return new fs();
    }
 
-   public static cwi a(CommandContext<ei> $$0, String $$1) {
-      return (cwi)$$0.getArgument($$1, cwi.class);
+   public static cwo a(CommandContext<ei> $$0, String $$1) {
+      return (cwo)$$0.getArgument($$1, cwo.class);
    }
 
-   public cwi a(StringReader $$0) throws CommandSyntaxException {
+   public cwo a(StringReader $$0) throws CommandSyntaxException {
       String $$1 = em.a($$0, $$0x -> $$0x != ' ');
-      cwi $$2 = cwj.a($$1);
+      cwo $$2 = cwp.a($$1);
       if ($$2 == null) {
          throw b.createWithContext($$0, $$1);
       } else {
@@ -32,7 +32,7 @@ public class fs implements ArgumentType<cwi> {
    }
 
    public <S> CompletableFuture<Suggestions> listSuggestions(CommandContext<S> $$0, SuggestionsBuilder $$1) {
-      return en.b(cwj.a(), $$1);
+      return en.b(cwp.a(), $$1);
    }
 
    public Collection<String> getExamples() {

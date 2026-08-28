@@ -1,35 +1,45 @@
-import it.unimi.dsi.fastutil.objects.Object2BooleanMap;
-import it.unimi.dsi.fastutil.objects.Object2BooleanOpenHashMap;
-import java.util.Set;
+class arh extends aqy {
+   private static final int a = aqt.b + 1;
+   private final ard b;
+   private final djs c;
 
-public final class arh {
-   private final Object2BooleanMap<arp> a = new Object2BooleanOpenHashMap();
-
-   public Set<arp> a() {
-      return this.a.keySet();
+   public arh(ard $$0, djs $$1) {
+      super(a + 1, 16, 256);
+      this.b = $$0;
+      this.c = $$1;
+      $$1.a(this::b);
    }
 
-   public void a(arp $$0, boolean $$1) {
-      this.a.put($$0, $$1);
+   @Override
+   protected int b(long $$0) {
+      return this.c.a($$0, false);
    }
 
-   public void a(arp $$0) {
-      this.a.removeBoolean($$0);
+   @Override
+   protected int c(long $$0) {
+      if (!this.b.a($$0)) {
+         aqs $$1 = this.b.b($$0);
+         if ($$1 != null) {
+            return $$1.j();
+         }
+      }
+
+      return a;
    }
 
-   public void b(arp $$0) {
-      this.a.replace($$0, true);
+   @Override
+   protected void a(long $$0, int $$1) {
+      aqs $$2 = this.b.b($$0);
+      int $$3 = $$2 == null ? a : $$2.j();
+      if ($$3 != $$1) {
+         $$2 = this.b.a($$0, $$1, $$2, $$3);
+         if ($$2 != null) {
+            this.b.b.add($$2);
+         }
+      }
    }
 
-   public void c(arp $$0) {
-      this.a.replace($$0, false);
-   }
-
-   public boolean d(arp $$0) {
-      return this.a.getOrDefault($$0, true);
-   }
-
-   public boolean e(arp $$0) {
-      return this.a.getBoolean($$0);
+   public int a(int $$0) {
+      return this.b($$0);
    }
 }

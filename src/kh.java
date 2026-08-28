@@ -42,15 +42,15 @@ public final class kh {
             if ($$4.isPresent()) {
                $$1.put(new kh.b($$3, false), $$4.get());
             } else {
-               $$1.put(new kh.b($$3, true), bas.a);
+               $$1.put(new kh.b($$3, true), bau.a);
             }
          }
       }
 
       return $$1;
    });
-   public static final yu<wh, kh> c = new yu<wh, kh>() {
-      public kh a(wh $$0) {
+   public static final yw<wj, kh> c = new yw<wj, kh>() {
+      public kh a(wj $$0) {
          int $$1 = $$0.l();
          int $$2 = $$0.l();
          if ($$1 == 0 && $$2 == 0) {
@@ -74,7 +74,7 @@ public final class kh {
          }
       }
 
-      public void a(wh $$0, kh $$1) {
+      public void a(wj $$0, kh $$1) {
          if ($$1.d()) {
             $$0.c(0);
             $$0.c(0);
@@ -118,7 +118,7 @@ public final class kh {
          }
       }
 
-      private static <T> void a(wh $$0, ki<T> $$1, Object $$2) {
+      private static <T> void a(wj $$0, ki<T> $$1, Object $$2) {
          $$1.e().encode($$0, (T)$$2);
       }
    };
@@ -261,7 +261,7 @@ public final class kh {
             $$0 = $$0.substring("!".length());
          }
 
-         ale $$2 = ale.c($$0);
+         alg $$2 = alg.c($$0);
          ki<?> $$3 = mf.am.a($$2);
          if ($$3 == null) {
             return DataResult.error(() -> "No component with type: '" + $$2 + "'");
@@ -270,7 +270,7 @@ public final class kh {
          }
       }, $$0 -> {
          ki<?> $$1 = $$0.b();
-         ale $$2 = mf.am.b($$1);
+         alg $$2 = mf.am.b($$1);
          return $$2 == null ? DataResult.error(() -> "Unregistered component: " + $$1) : DataResult.success($$0.c() ? "!" + $$2 : $$2.toString());
       });
 

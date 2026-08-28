@@ -1,5 +1,23 @@
-public interface ebi {
-   dzo a(int var1);
+public enum ebi implements bak {
+   a("straight"),
+   b("inner_left"),
+   c("inner_right"),
+   d("outer_left"),
+   e("outer_right");
 
-   void a(int var1, dzo var2);
+   private final String f;
+
+   private ebi(final String $$0) {
+      this.f = $$0;
+   }
+
+   @Override
+   public String toString() {
+      return this.f;
+   }
+
+   @Override
+   public String c() {
+      return this.f;
+   }
 }

@@ -1,73 +1,40 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Maps;
-import com.mojang.datafixers.util.Pair;
-import java.util.Map;
-import java.util.function.Consumer;
-import java.util.function.Predicate;
-
-public class cyi extends cyo {
-   protected static final Map<dlu, Pair<Predicate<dcn>, Consumer<dcn>>> a = Maps.newHashMap(
-      ImmutableMap.of(
-         dlw.i,
-         Pair.of(cyi::b, a(dlw.cK.m())),
-         dlw.lg,
-         Pair.of(cyi::b, a(dlw.cK.m())),
-         dlw.j,
-         Pair.of(cyi::b, a(dlw.cK.m())),
-         dlw.k,
-         Pair.of(cyi::b, a(dlw.j.m())),
-         dlw.tn,
-         Pair.of((Predicate<dcn>)$$0 -> true, a(dlw.j.m(), cyw.ec))
-      )
-   );
-
-   public cyi(dag $$0, float $$1, float $$2, cyo.a $$3) {
-      super($$3.c($$0, $$1, $$2));
+public class cyi extends cyu {
+   public cyi(cyu.a $$0) {
+      super($$0);
    }
 
    @Override
-   public bty a(dcn $$0) {
-      dip $$1 = $$0.q();
-      iu $$2 = $$0.a();
-      Pair<Predicate<dcn>, Consumer<dcn>> $$3 = a.get($$1.a_($$2).b());
-      if ($$3 == null) {
-         return bty.e;
-      } else {
-         Predicate<dcn> $$4 = (Predicate<dcn>)$$3.getFirst();
-         Consumer<dcn> $$5 = (Consumer<dcn>)$$3.getSecond();
-         if ($$4.test($$0)) {
-            cqs $$6 = $$0.o();
-            $$1.a($$6, $$2, awl.mL, awm.e, 1.0F, 1.0F);
-            if (!$$1.C) {
-               $$5.accept($$0);
-               if ($$6 != null) {
-                  $$0.n().a(1, $$6, bwz.d($$0.p()));
-               }
+   public bub a(dct $$0) {
+      cqy $$1 = $$0.o();
+      div $$2 = $$0.q();
+      iu $$3 = $$0.a();
+      dzz $$4 = $$2.a_($$3);
+      if (!dmp.i($$4) && !dmq.h($$4) && !dmr.h($$4)) {
+         iu $$5 = $$3.a($$0.k());
+         if (dln.a($$2, $$5, $$0.g())) {
+            $$2.a($$1, $$5, awn.jA, awo.e, 1.0F, $$2.C_().i() * 0.4F + 0.8F);
+            dzz $$6 = dln.a($$2, $$5);
+            $$2.a($$5, $$6, 11);
+            $$2.a($$1, eez.i, $$3);
+            cyy $$7 = $$0.n();
+            if ($$1 instanceof arr) {
+               ap.z.a((arr)$$1, $$5, $$7);
+               $$7.a(1, $$1, bxc.d($$0.p()));
             }
 
-            return bty.a;
+            return bub.a;
          } else {
-            return bty.e;
+            return bub.d;
          }
+      } else {
+         $$2.a($$1, $$3, awn.jA, awo.e, 1.0F, $$2.C_().i() * 0.4F + 0.8F);
+         $$2.a($$3, $$4.b(eap.u, Boolean.valueOf(true)), 11);
+         $$2.a($$1, eez.c, $$3);
+         if ($$1 != null) {
+            $$0.n().a(1, $$1, bxc.d($$0.p()));
+         }
+
+         return bub.a;
       }
-   }
-
-   public static Consumer<dcn> a(dzo $$0) {
-      return $$1 -> {
-         $$1.q().a($$1.a(), $$0, 11);
-         $$1.q().a(eeo.c, $$1.a(), eeo.a.a($$1.o(), $$0));
-      };
-   }
-
-   public static Consumer<dcn> a(dzo $$0, dio $$1) {
-      return $$2 -> {
-         $$2.q().a($$2.a(), $$0, 11);
-         $$2.q().a(eeo.c, $$2.a(), eeo.a.a($$2.o(), $$0));
-         dlu.a($$2.q(), $$2.a(), $$2.k(), new cys($$1));
-      };
-   }
-
-   public static boolean b(dcn $$0) {
-      return $$0.k() != ja.a && $$0.q().a_($$0.a().d()).l();
    }
 }

@@ -1,82 +1,51 @@
-import com.google.common.collect.Maps;
-import com.mojang.logging.LogUtils;
-import java.util.Map;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+public class fwz extends fxu {
+   private static final alg a = alg.b("textures/gui/demo_background.png");
+   private static final int b = 256;
+   private static final int c = 256;
+   private fsv d = fsv.a;
+   private fsv s = fsv.a;
 
-public class fwz {
-   private static final Logger a = LogUtils.getLogger();
-   private static final Map<cvt<?>, fwz.a<?, ?>> b = Maps.newHashMap();
-
-   public static <T extends cuk> void a(cvt<T> $$0, fof $$1, int $$2, ww $$3) {
-      fwz.a<T, ?> $$4 = a($$0);
-      if ($$4 == null) {
-         a.warn("Failed to create screen for menu type: {}", mf.p.b($$0));
-      } else {
-         $$4.a($$3, $$0, $$1, $$2);
-      }
+   public fwz() {
+      super(wy.c("demo.help.title"));
    }
 
-   @Nullable
-   private static <T extends cuk> fwz.a<T, ?> a(cvt<T> $$0) {
-      return (fwz.a<T, ?>)b.get($$0);
+   @Override
+   protected void aN_() {
+      int $$0 = -16;
+      this.c(fsc.a(wy.c("demo.help.buy"), $$0x -> {
+         $$0x.j = false;
+         af.n().a(ayh.f);
+      }).a(this.n / 2 - 116, this.o / 2 + 62 + -16, 114, 20).a());
+      this.c(fsc.a(wy.c("demo.help.later"), $$0x -> {
+         this.m.a(null);
+         this.m.o.i();
+      }).a(this.n / 2 + 2, this.o / 2 + 62 + -16, 114, 20).a());
+      fow $$1 = this.m.n;
+      this.d = fsv.a(
+         this.p,
+         wy.a("demo.help.movementShort", $$1.v.k(), $$1.w.k(), $$1.x.k(), $$1.y.k()),
+         wy.c("demo.help.movementMouse"),
+         wy.a("demo.help.jump", $$1.z.k()),
+         wy.a("demo.help.inventory", $$1.C.k())
+      );
+      this.s = fsv.a(this.p, wy.c("demo.help.fullWrapped"), 218);
    }
 
-   private static <M extends cuk, U extends fxi & fzd<M>> void a(cvt<? extends M> $$0, fwz.a<M, U> $$1) {
-      fwz.a<?, ?> $$2 = b.put($$0, $$1);
-      if ($$2 != null) {
-         throw new IllegalStateException("Duplicate registration for " + mf.p.b($$0));
-      }
+   @Override
+   public void b(fro $$0, int $$1, int $$2, float $$3) {
+      super.b($$0, $$1, $$2, $$3);
+      int $$4 = (this.n - 248) / 2;
+      int $$5 = (this.o - 166) / 2;
+      $$0.a(gqc::H, a, $$4, $$5, 0.0F, 0.0F, 248, 166, 256, 256);
    }
 
-   public static boolean a() {
-      boolean $$0 = false;
-
-      for (cvt<?> $$1 : mf.p) {
-         if (!b.containsKey($$1)) {
-            a.debug("Menu {} has no matching screen", mf.p.b($$1));
-            $$0 = true;
-         }
-      }
-
-      return $$0;
-   }
-
-   static {
-      a(cvt.a, fyj::new);
-      a(cvt.b, fyj::new);
-      a(cvt.c, fyj::new);
-      a(cvt.d, fyj::new);
-      a(cvt.e, fyj::new);
-      a(cvt.f, fyj::new);
-      a(cvt.g, fyp::new);
-      a(cvt.h, fyk::new);
-      a(cvt.i, fyb::new);
-      a(cvt.j, fyc::new);
-      a(cvt.k, fyd::new);
-      a(cvt.l, fyg::new);
-      a(cvt.m, fyl::new);
-      a(cvt.n, fys::new);
-      a(cvt.o, fyt::new);
-      a(cvt.p, fyu::new);
-      a(cvt.q, fyw::new);
-      a(cvt.r, fzb::new);
-      a(cvt.s, fzc::new);
-      a(cvt.t, fze::new);
-      a(cvt.u, fzh::new);
-      a(cvt.v, fzj::new);
-      a(cvt.w, fzk::new);
-      a(cvt.x, fyh::new);
-      a(cvt.y, fzl::new);
-   }
-
-   interface a<T extends cuk, U extends fxi & fzd<T>> {
-      default void a(ww $$0, cvt<T> $$1, fof $$2, int $$3) {
-         U $$4 = this.create($$1.a($$3, $$2.t.gi()), $$2.t.gi(), $$0);
-         $$2.t.bQ = $$4.F();
-         $$2.a($$4);
-      }
-
-      U create(T var1, cqr var2, ww var3);
+   @Override
+   public void a(fro $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      int $$4 = (this.n - 248) / 2 + 10;
+      int $$5 = (this.o - 166) / 2 + 8;
+      $$0.a(this.p, this.l, $$4, $$5, 2039583, false);
+      $$5 = this.d.c($$0, $$4, $$5 + 12, 12, 5197647);
+      this.s.c($$0, $$4, $$5 + 20, 9, 2039583);
    }
 }

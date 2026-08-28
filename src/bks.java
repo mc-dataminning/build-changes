@@ -11,6 +11,17 @@ public class bks extends Schema {
 
    public void registerTypes(Schema $$0, Map<String, Supplier<TypeTemplate>> $$1, Map<String, Supplier<TypeTemplate>> $$2) {
       super.registerTypes($$0, $$1, $$2);
-      $$0.registerType(true, bit.H, () -> DSL.optionalFields("SpawnPotentials", DSL.list(DSL.fields("Entity", bit.C.in($$0))), "SpawnData", bit.C.in($$0)));
+      $$0.registerType(
+         true,
+         biw.A,
+         () -> DSL.and(
+               DSL.optional(DSL.field("ArmorItems", DSL.list(biw.t.in($$0)))),
+               new TypeTemplate[]{
+                  DSL.optional(DSL.field("HandItems", DSL.list(biw.t.in($$0)))),
+                  DSL.optional(DSL.field("body_armor_item", biw.t.in($$0))),
+                  DSL.optional(DSL.field("saddle", biw.t.in($$0)))
+               }
+            )
+      );
    }
 }

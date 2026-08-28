@@ -1,25 +1,12 @@
-public final class djb implements ebi {
-   private final int a;
-   private final dzo[] b;
+import java.util.Optional;
+import java.util.function.Predicate;
 
-   public djb(int $$0, dzo[] $$1) {
-      this.a = $$0;
-      this.b = $$1;
-   }
+public interface djb {
+   boolean a(iu var1, Predicate<dzz> var2);
 
-   @Override
-   public dzo a(int $$0) {
-      int $$1 = $$0 - this.a;
-      return $$1 >= 0 && $$1 < this.b.length ? this.b[$$1] : dlw.a.m();
-   }
+   boolean b(iu var1, Predicate<ewg> var2);
 
-   @Override
-   public void a(int $$0, dzo $$1) {
-      int $$2 = $$0 - this.a;
-      if ($$2 >= 0 && $$2 < this.b.length) {
-         this.b[$$2] = $$1;
-      } else {
-         throw new IllegalArgumentException("Outside of column height: " + $$0);
-      }
-   }
+   <T extends dwx> Optional<T> a(iu var1, dwz<T> var2);
+
+   iu a(efy.a var1, iu var2);
 }

@@ -1,51 +1,38 @@
-import com.google.common.collect.Maps;
-import java.util.Map;
-import java.util.Map.Entry;
-import java.util.function.Predicate;
-import javax.annotation.Nullable;
+public class dzx {
+   private static final int a = 1600;
+   private static final int b = 10000;
+   private static final int c = 3;
+   private static final int d = 8;
 
-public class dzx implements Predicate<dzo> {
-   public static final Predicate<dzo> a = $$0 -> true;
-   private final dzp<dlu, dzo> b;
-   private final Map<ear<?>, Predicate<Object>> c = Maps.newHashMap();
-
-   private dzx(dzp<dlu, dzo> $$0) {
-      this.b = $$0;
-   }
-
-   public static dzx a(dlu $$0) {
-      return new dzx($$0.l());
-   }
-
-   public boolean a(@Nullable dzo $$0) {
-      if ($$0 != null && $$0.b().equals(this.b.c())) {
-         if (this.c.isEmpty()) {
-            return true;
-         } else {
-            for (Entry<ear<?>, Predicate<Object>> $$1 : this.c.entrySet()) {
-               if (!this.a($$0, $$1.getKey(), $$1.getValue())) {
-                  return false;
-               }
-            }
-
-            return true;
+   public static void a(dzz $$0, div $$1, iu $$2, azv $$3) {
+      if ($$0.a(axc.cF) && $$1.h($$2.d())) {
+         if ($$3.a(1600) == 0 && a($$1, $$2)) {
+            $$1.a((double)$$2.u(), (double)$$2.v(), (double)$$2.w(), awn.wz, awo.e, 1.0F, 1.0F, false);
          }
-      } else {
-         return false;
+
+         if ($$3.a(10000) == 0 && a($$1.u($$2)) && a($$1, $$2)) {
+            $$1.a(awn.wA, awo.e, 1.0F, 1.0F);
+         }
       }
    }
 
-   protected <T extends Comparable<T>> boolean a(dzo $$0, ear<T> $$1, Predicate<Object> $$2) {
-      T $$3 = $$0.c($$1);
-      return $$2.test($$3);
+   private static boolean a(je<djy> $$0) {
+      return $$0.a(dkf.f) || $$0.a(axb.f);
    }
 
-   public <V extends Comparable<V>> dzx a(ear<V> $$0, Predicate<Object> $$1) {
-      if (!this.b.d().contains($$0)) {
-         throw new IllegalArgumentException(this.b + " cannot support property " + $$0);
-      } else {
-         this.c.put($$0, $$1);
-         return this;
+   private static boolean a(div $$0, iu $$1) {
+      int $$2 = 0;
+
+      for (ja $$3 : ja.c.a) {
+         iu $$4 = $$1.a($$3, 8);
+         dzz $$5 = $$0.a_($$4.h($$0.b(efy.a.b, $$4) - 1));
+         if ($$5.a(axc.cF)) {
+            if (++$$2 >= 3) {
+               return true;
+            }
+         }
       }
+
+      return false;
    }
 }

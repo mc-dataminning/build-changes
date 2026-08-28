@@ -1,111 +1,108 @@
-import java.util.function.Consumer;
+import com.mojang.blaze3d.platform.TextureUtil;
+import com.mojang.datafixers.util.Either;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.io.IOException;
+import java.io.InputStream;
+import java.nio.ByteBuffer;
+import java.util.List;
+import org.lwjgl.PointerBuffer;
+import org.lwjgl.system.MemoryStack;
+import org.lwjgl.system.MemoryUtil;
+import org.lwjgl.util.freetype.FT_Face;
+import org.lwjgl.util.freetype.FreeType;
 
-public class fvi implements fvf {
-   private final fvd a;
-   private final fvi.a b;
-   private int c = 0;
+public record fvi(alg c, float d, float e, fvi.a f, String g) implements fvf {
+   private static final Codec<String> h = Codec.withAlternative(Codec.STRING, Codec.STRING.listOf(), $$0 -> String.join("", $$0));
+   public static final MapCodec<fvi> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(
+               alg.a.fieldOf("file").forGetter(fvi::c),
+               Codec.FLOAT.optionalFieldOf("size", 11.0F).forGetter(fvi::d),
+               Codec.FLOAT.optionalFieldOf("oversample", 1.0F).forGetter(fvi::e),
+               fvi.a.b.optionalFieldOf("shift", fvi.a.a).forGetter(fvi::f),
+               h.optionalFieldOf("skip", "").forGetter(fvi::g)
+            )
+            .apply($$0, fvi::new)
+   );
 
-   private fvi(fvi.a $$0) {
-      this(0, 0, $$0);
-   }
-
-   public fvi(int $$0, int $$1, fvi.a $$2) {
-      this.a = new fvd($$0, $$1);
-      this.b = $$2;
-   }
-
-   public fvi a(int $$0) {
-      this.b.a(this.a, $$0);
-      return this;
-   }
-
-   public fvh b() {
-      return this.a.b();
-   }
-
-   public fvh c() {
-      return this.a.c();
-   }
-
-   public <T extends fvg> T a(T $$0, fvh $$1) {
-      return this.b.a(this.a, $$0, this.c++, $$1);
-   }
-
-   public <T extends fvg> T a(T $$0) {
-      return this.a($$0, this.b());
-   }
-
-   public <T extends fvg> T a(T $$0, Consumer<fvh> $$1) {
-      return this.b.a(this.a, $$0, this.c++, af.a(this.b(), $$1));
+   @Override
+   public fvg a() {
+      return fvg.b;
    }
 
    @Override
-   public void b(Consumer<fvg> $$0) {
-      this.a.b($$0);
+   public Either<fvf.b, fvf.c> b() {
+      return Either.left(this::a);
    }
 
-   @Override
-   public void a() {
-      this.a.a();
-   }
+   private fhb a(avd $$0) throws IOException {
+      FT_Face $$1 = null;
+      ByteBuffer $$2 = null;
 
-   @Override
-   public int A() {
-      return this.a.A();
-   }
+      try {
+         fhe var20;
+         try (InputStream $$3 = $$0.open(this.c.f("font/"))) {
+            $$2 = TextureUtil.readResource($$3);
+            $$2.flip();
+            synchronized (fve.a) {
+               MemoryStack $$4 = MemoryStack.stackPush();
 
-   @Override
-   public int y() {
-      return this.a.y();
-   }
+               try {
+                  PointerBuffer $$5 = $$4.mallocPointer(1);
+                  fve.a(FreeType.FT_New_Memory_Face(fve.a(), $$2, 0L, $$5), "Initializing font face");
+                  $$1 = FT_Face.create($$5.get());
+               } catch (Throwable var14) {
+                  if ($$4 != null) {
+                     try {
+                        $$4.close();
+                     } catch (Throwable var12) {
+                        var14.addSuppressed(var12);
+                     }
+                  }
 
-   @Override
-   public void j(int $$0) {
-      this.a.j($$0);
-   }
+                  throw var14;
+               }
 
-   @Override
-   public void k(int $$0) {
-      this.a.k($$0);
-   }
+               if ($$4 != null) {
+                  $$4.close();
+               }
 
-   @Override
-   public int F() {
-      return this.a.F();
-   }
+               String $$6 = FreeType.FT_Get_Font_Format($$1);
+               if (!"TrueType".equals($$6)) {
+                  throw new IOException("Font is not in TTF format, was " + $$6);
+               }
 
-   @Override
-   public int G() {
-      return this.a.G();
-   }
-
-   public static fvi d() {
-      return new fvi(fvi.a.b);
-   }
-
-   public static fvi e() {
-      return new fvi(fvi.a.a);
-   }
-
-   public static enum a {
-      a,
-      b;
-
-      void a(fvd $$0, int $$1) {
-         switch (this) {
-            case a:
-               $$0.a($$1);
-               break;
-            case b:
-               $$0.b($$1);
+               fve.a(FreeType.FT_Select_Charmap($$1, FreeType.FT_ENCODING_UNICODE), "Find unicode charmap");
+               var20 = new fhe($$2, $$1, this.d, this.e, this.f.c, this.f.d, this.g);
+            }
          }
+
+         return var20;
+      } catch (Exception var17) {
+         synchronized (fve.a) {
+            if ($$1 != null) {
+               FreeType.FT_Done_Face($$1);
+            }
+         }
+
+         MemoryUtil.memFree($$2);
+         throw var17;
+      }
+   }
+
+   public static record a(float c, float d) {
+      public static final fvi.a a = new fvi.a(0.0F, 0.0F);
+      public static final Codec<fvi.a> b = Codec.floatRange(-512.0F, 512.0F)
+         .listOf()
+         .comapFlatMap($$0 -> af.a($$0, 2).map($$0x -> new fvi.a((Float)$$0x.get(0), (Float)$$0x.get(1))), $$0 -> List.of($$0.c, $$0.d));
+
+      public float a() {
+         return this.c;
       }
 
-      public <T extends fvg> T a(fvd $$0, T $$1, int $$2, fvh $$3) {
-         return (T)(switch (this) {
-            case a -> (fvg)$$0.a($$1, 0, $$2, $$3);
-            case b -> (fvg)$$0.a($$1, $$2, 0, $$3);
-         });
+      public float b() {
+         return this.d;
       }
    }
 }

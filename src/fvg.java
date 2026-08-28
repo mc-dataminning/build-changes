@@ -1,26 +1,28 @@
-import java.util.function.Consumer;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
 
-public interface fvg {
-   void j(int var1);
+public enum fvg implements bak {
+   a("bitmap", fvd.a.a),
+   b("ttf", fvi.a),
+   c("space", fhd.a.a),
+   d("unihex", fvj.b.a),
+   e("reference", fvh.a);
 
-   void k(int var1);
+   public static final Codec<fvg> f = bak.a(fvg::values);
+   private final String g;
+   private final MapCodec<? extends fvf> h;
 
-   int F();
-
-   int G();
-
-   int A();
-
-   int y();
-
-   default fvx J() {
-      return new fvx(this.F(), this.G(), this.A(), this.y());
+   private fvg(final String $$0, final MapCodec<? extends fvf> $$1) {
+      this.g = $$0;
+      this.h = $$1;
    }
 
-   default void c(int $$0, int $$1) {
-      this.j($$0);
-      this.k($$1);
+   @Override
+   public String c() {
+      return this.g;
    }
 
-   void a(Consumer<fro> var1);
+   public MapCodec<? extends fvf> a() {
+      return this.h;
+   }
 }

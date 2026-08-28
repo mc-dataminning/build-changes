@@ -1,25 +1,61 @@
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
+import java.util.Set;
 
-public record fcq(dfm b) implements fcs {
-   public static final MapCodec<fcq> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(dfm.b.fieldOf("amount").forGetter(fcq::c)).apply($$0, fcq::new));
-
-   @Override
-   public float b(eyn $$0) {
-      int $$1 = $$0.b(fbh.k);
-      return this.b.a($$1);
-   }
+public record fcq(Optional<Long> b, eyy c) implements fci {
+   public static final MapCodec<fcq> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(Codec.LONG.optionalFieldOf("period").forGetter(fcq::c), eyy.a.fieldOf("value").forGetter(fcq::d)).apply($$0, fcq::new)
+   );
 
    @Override
-   public fcr b() {
-      return fct.g;
+   public fcj b() {
+      return fck.q;
    }
 
-   public static fcq a(dfm $$0) {
-      return new fcq($$0);
+   @Override
+   public Set<bax<?>> a() {
+      return this.c.a();
    }
 
-   public dfm c() {
+   public boolean a(eyz $$0) {
+      arq $$1 = $$0.d();
+      long $$2 = $$1.af();
+      if (this.b.isPresent()) {
+         $$2 %= this.b.get();
+      }
+
+      return this.c.b($$0, (int)$$2);
+   }
+
+   public static fcq.a a(eyy $$0) {
+      return new fcq.a($$0);
+   }
+
+   public Optional<Long> c() {
       return this.b;
+   }
+
+   public eyy d() {
+      return this.c;
+   }
+
+   public static class a implements fci.a {
+      private Optional<Long> a = Optional.empty();
+      private final eyy b;
+
+      public a(eyy $$0) {
+         this.b = $$0;
+      }
+
+      public fcq.a a(long $$0) {
+         this.a = Optional.of($$0);
+         return this;
+      }
+
+      public fcq a() {
+         return new fcq(this.a, this.b);
+      }
    }
 }

@@ -1,19 +1,17 @@
 import com.mojang.serialization.Codec;
-import java.util.List;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public record csy(List<csu.a<csx, csv>> c) {
-   public static final csy a = new csy(List.of());
-   public static final Codec<csy> b = csu.a.a(csv.b).listOf().xmap(csy::new, csy::a);
-
-   public static csy a(csv $$0, int $$1) {
-      return new csy(csu.a($$0, $$1));
+public record csy<T>(T a, iv b) {
+   public csy(T $$0, alg $$1) {
+      this($$0, new iv($$1));
    }
 
-   public static csy a(int $$0) {
-      return new csy(csu.a($$0));
+   public static <T> MapCodec<csy<T>> a(Codec<T> $$0, T $$1) {
+      return RecordCodecBuilder.mapCodec($$2 -> $$2.group($$0.optionalFieldOf("model", $$1).forGetter(csy::a), iv.b.forGetter(csy::b)).apply($$2, csy::new));
    }
 
-   public List<csu.a<csx, csv>> a() {
-      return this.c;
+   public static <T> yw<wj, csy<T>> a(yw<? super wj, T> $$0) {
+      return yw.a($$0, csy::a, iv.c, csy::b, csy::new);
    }
 }

@@ -3,20 +3,20 @@ import com.mojang.serialization.MapCodec;
 import io.netty.buffer.ByteBuf;
 import java.util.function.UnaryOperator;
 
-public record iv(ale d, ale e) {
-   public static final Codec<iv> a = ale.a.xmap(iv::new, iv::a);
+public record iv(alg d, alg e) {
+   public static final Codec<iv> a = alg.a.xmap(iv::new, iv::a);
    public static final MapCodec<iv> b = a.fieldOf("asset_id");
-   public static final yu<ByteBuf, iv> c = yu.a(ale.b, iv::a, iv::new);
+   public static final yw<ByteBuf, iv> c = yw.a(alg.b, iv::a, iv::new);
 
-   public iv(ale $$0) {
+   public iv(alg $$0) {
       this($$0, $$0.a((UnaryOperator<String>)($$0x -> "textures/" + $$0x + ".png")));
    }
 
-   public ale a() {
+   public alg a() {
       return this.d;
    }
 
-   public ale b() {
+   public alg b() {
       return this.e;
    }
 }

@@ -1,72 +1,32 @@
-import com.mojang.blaze3d.platform.TextureUtil;
-import com.mojang.blaze3d.systems.RenderSystem;
-import com.mojang.logging.LogUtils;
-import java.io.IOException;
-import java.nio.file.Path;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import com.mojang.serialization.MapCodec;
 
-public class hhm extends hhk implements hhl {
-   private static final Logger d = LogUtils.getLogger();
-   @Nullable
-   private fhq e;
+public class hhm implements hhp {
+   private final giu a;
 
-   public hhm(fhq $$0) {
-      this.e = $$0;
-      if (!RenderSystem.isOnRenderThread()) {
-         RenderSystem.recordRenderCall(() -> {
-            TextureUtil.prepareImage(this.a(), this.e.a(), this.e.b());
-            this.d();
-         });
-      } else {
-         TextureUtil.prepareImage(this.a(), this.e.a(), this.e.b());
-         this.d();
-      }
-   }
-
-   public hhm(int $$0, int $$1, boolean $$2) {
-      this.e = new fhq($$0, $$1, $$2);
-      TextureUtil.prepareImage(this.a(), this.e.a(), this.e.b());
+   public hhm(giu $$0) {
+      this.a = $$0;
    }
 
    @Override
-   public void d() {
-      if (this.e != null) {
-         this.c();
-         this.e.a(0, 0, 0, false);
-      } else {
-         d.warn("Trying to upload disposed texture {}", this.a());
-      }
+   public void a(cyw $$0, fjc $$1, gps $$2, int $$3, int $$4, boolean $$5) {
+      fjg $$6 = gsm.b.a($$2, gqc::d);
+      $$1.a();
+      $$1.a(0.5F, 0.5F, 0.5F);
+      this.a.a($$1, $$6, $$3, $$4);
+      $$1.b();
    }
 
-   @Nullable
-   public fhq e() {
-      return this.e;
-   }
+   public static record a() implements hht.a {
+      public static final MapCodec<hhm.a> a = MapCodec.unit(new hhm.a());
 
-   public void a(fhq $$0) {
-      if (this.e != null) {
-         this.e.close();
+      @Override
+      public MapCodec<hhm.a> a() {
+         return a;
       }
 
-      this.e = $$0;
-   }
-
-   @Override
-   public void close() {
-      if (this.e != null) {
-         this.e.close();
-         this.b();
-         this.e = null;
-      }
-   }
-
-   @Override
-   public void a(ale $$0, Path $$1) throws IOException {
-      if (this.e != null) {
-         String $$2 = $$0.c() + ".png";
-         Path $$3 = $$1.resolve($$2);
-         this.e.a($$3);
+      @Override
+      public hht<?> a(giq $$0) {
+         return new hhm($$0.a(git.aj));
       }
    }
 }

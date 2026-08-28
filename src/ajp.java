@@ -1,5 +1,5 @@
-public record ajp(ale a) implements ajn {
-   @Override
-   public void a(vs $$0) {
-   }
+public interface ajp {
+   alg a();
+
+   void a(vu var1);
 }

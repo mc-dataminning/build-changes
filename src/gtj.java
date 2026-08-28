@@ -1,64 +1,57 @@
-import java.util.Map.Entry;
-import org.joml.Vector3f;
+import java.util.BitSet;
+import java.util.Set;
 
-public class gtj implements gtf.a {
-   private final fof a;
-   private static final int b = 2;
-   private static final float c = 0.09375F;
+public class gtj {
+   private static final int a = ja.values().length;
+   private final BitSet b = new BitSet(a * a);
 
-   public gtj(fof $$0) {
-      this.a = $$0;
-   }
-
-   @Override
-   public void a(fiq $$0, gpd $$1, double $$2, double $$3, double $$4) {
-      diq $$5 = this.a.s;
-      fiu $$6 = $$1.getBuffer(gpn.B());
-      iu $$7 = iu.a($$2, 0.0, $$4);
-
-      for (int $$8 = -2; $$8 <= 2; $$8++) {
-         for (int $$9 = -2; $$9 <= 2; $$9++) {
-            ebl $$10 = $$5.z($$7.b($$8 * 16, 0, $$9 * 16));
-
-            for (Entry<efn.a, efn> $$11 : $$10.e()) {
-               efn.a $$12 = $$11.getKey();
-               dhw $$13 = $$10.f();
-               Vector3f $$14 = this.a($$12);
-
-               for (int $$15 = 0; $$15 < 16; $$15++) {
-                  for (int $$16 = 0; $$16 < 16; $$16++) {
-                     int $$17 = jx.a($$13.h, $$15);
-                     int $$18 = jx.a($$13.i, $$16);
-                     float $$19 = (float)((double)((float)$$5.a($$12, $$17, $$18) + (float)$$12.ordinal() * 0.09375F) - $$3);
-                     gpx.b(
-                        $$0,
-                        $$6,
-                        (double)((float)$$17 + 0.25F) - $$2,
-                        (double)$$19,
-                        (double)((float)$$18 + 0.25F) - $$4,
-                        (double)((float)$$17 + 0.75F) - $$2,
-                        (double)($$19 + 0.09375F),
-                        (double)((float)$$18 + 0.75F) - $$4,
-                        $$14.x(),
-                        $$14.y(),
-                        $$14.z(),
-                        1.0F
-                     );
-                  }
-               }
-            }
+   public void a(Set<ja> $$0) {
+      for (ja $$1 : $$0) {
+         for (ja $$2 : $$0) {
+            this.a($$1, $$2, true);
          }
       }
    }
 
-   private Vector3f a(efn.a $$0) {
-      return switch ($$0) {
-         case a -> new Vector3f(1.0F, 1.0F, 0.0F);
-         case c -> new Vector3f(1.0F, 0.0F, 1.0F);
-         case b -> new Vector3f(0.0F, 0.7F, 0.0F);
-         case d -> new Vector3f(0.0F, 0.0F, 0.5F);
-         case e -> new Vector3f(0.0F, 0.3F, 0.3F);
-         case f -> new Vector3f(0.0F, 0.5F, 0.5F);
-      };
+   public void a(ja $$0, ja $$1, boolean $$2) {
+      this.b.set($$0.ordinal() + $$1.ordinal() * a, $$2);
+      this.b.set($$1.ordinal() + $$0.ordinal() * a, $$2);
+   }
+
+   public void a(boolean $$0) {
+      this.b.set(0, this.b.size(), $$0);
+   }
+
+   public boolean a(ja $$0, ja $$1) {
+      return this.b.get($$0.ordinal() + $$1.ordinal() * a);
+   }
+
+   @Override
+   public String toString() {
+      StringBuilder $$0 = new StringBuilder();
+      $$0.append(' ');
+
+      for (ja $$1 : ja.values()) {
+         $$0.append(' ').append($$1.toString().toUpperCase().charAt(0));
+      }
+
+      $$0.append('\n');
+
+      for (ja $$2 : ja.values()) {
+         $$0.append($$2.toString().toUpperCase().charAt(0));
+
+         for (ja $$3 : ja.values()) {
+            if ($$2 == $$3) {
+               $$0.append("  ");
+            } else {
+               boolean $$4 = this.a($$2, $$3);
+               $$0.append(' ').append((char)($$4 ? 'Y' : 'n'));
+            }
+         }
+
+         $$0.append('\n');
+      }
+
+      return $$0.toString();
    }
 }

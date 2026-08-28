@@ -1,28 +1,17 @@
-import com.mojang.serialization.MapCodec;
-import java.util.Set;
+import java.util.function.Function;
 
-public class fca implements fbw {
-   private static final fca b = new fca();
-   public static final MapCodec<fca> a = MapCodec.unit(b);
+public interface fca<T extends fca<T>> {
+   T b(fci.a var1);
 
-   private fca() {
+   default <E> T a_(Iterable<E> $$0, Function<E, fci.a> $$1) {
+      T $$2 = this.d();
+
+      for (E $$3 : $$0) {
+         $$2 = $$2.b($$1.apply($$3));
+      }
+
+      return $$2;
    }
 
-   @Override
-   public fbx b() {
-      return fby.g;
-   }
-
-   @Override
-   public Set<bav<?>> a() {
-      return Set.of(fbh.b);
-   }
-
-   public boolean a(eyn $$0) {
-      return $$0.a(fbh.b);
-   }
-
-   public static fbw.a c() {
-      return () -> b;
-   }
+   T d();
 }

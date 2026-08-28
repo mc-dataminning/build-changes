@@ -1,32 +1,36 @@
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
-import java.util.Set;
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
 
-public record fbp(Optional<bm> b) implements fbw {
-   public static final MapCodec<fbp> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(bm.a.optionalFieldOf("predicate").forGetter(fbp::c)).apply($$0, fbp::new));
+public class fbp extends fam {
+   public static final MapCodec<fbp> a = RecordCodecBuilder.mapCodec(
+      $$0 -> a($$0).and(Codec.unboundedMap(ki.a, Codec.BOOL).fieldOf("toggles").forGetter($$0x -> $$0x.b)).apply($$0, fbp::new)
+   );
+   private final Map<ki<?>, Boolean> b;
 
-   @Override
-   public fbx b() {
-      return fby.m;
+   private fbp(List<fci> $$0, Map<ki<?>, Boolean> $$1) {
+      super($$0);
+      this.b = $$1;
    }
 
    @Override
-   public Set<bav<?>> a() {
-      return Set.of(fbh.f, fbh.c);
+   protected cyy a(cyy $$0, eyz $$1) {
+      $$0.a(kj.q, dcc.c, $$0x -> {
+         for (Entry<ki<?>, Boolean> $$1x : this.b.entrySet()) {
+            boolean $$2 = $$1x.getValue();
+            $$0x = $$0x.a($$1x.getKey(), !$$2);
+         }
+
+         return $$0x;
+      });
+      return $$0;
    }
 
-   public boolean a(eyn $$0) {
-      bup $$1 = $$0.c(fbh.c);
-      fdw $$2 = $$0.c(fbh.f);
-      return $$2 != null && $$1 != null ? this.b.isEmpty() || this.b.get().a($$0.d(), $$2, $$1) : false;
-   }
-
-   public static fbw.a a(bm.a $$0) {
-      return () -> new fbp(Optional.of($$0.b()));
-   }
-
-   public Optional<bm> c() {
-      return this.b;
+   @Override
+   public fao<fbp> b() {
+      return fap.P;
    }
 }

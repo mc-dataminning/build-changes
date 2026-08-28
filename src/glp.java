@@ -1,37 +1,17 @@
-public class glp<T extends ly> extends gnl {
-   private final gng a;
-
-   protected glp(gjd $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, T $$7, gng $$8) {
-      super($$0, $$1, $$2, $$3, $$4, $$5, $$6);
-      this.B = 0.96F;
-      this.C = true;
-      this.a = $$8;
-      this.j *= 0.1F;
-      this.k *= 0.1F;
-      this.l *= 0.1F;
-      this.D = this.D * 0.75F * $$7.d();
-      int $$9 = (int)(8.0 / (this.r.j() * 0.8 + 0.2));
-      this.t = (int)Math.max((float)$$9 * $$7.d(), 1.0F);
-      this.b($$8);
+public class glp extends glr {
+   protected glp(gjr $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, float $$7, gnv $$8) {
+      super($$0, $$1, $$2, $$3, 0.1F, -0.1F, 0.1F, $$4, $$5, $$6, $$7, $$8, 0.5F, 20, 0.1F, false);
    }
 
-   protected float a(float $$0, float $$1) {
-      return (this.r.i() * 0.2F + 0.8F) * $$0 * $$1;
-   }
+   public static class a implements gnd<mb> {
+      private final gnv a;
 
-   @Override
-   public gmp b() {
-      return gmp.b;
-   }
+      public a(gnv $$0) {
+         this.a = $$0;
+      }
 
-   @Override
-   public float b(float $$0) {
-      return this.D * azk.a(((float)this.s + $$0) / (float)this.t * 32.0F, 0.0F, 1.0F);
-   }
-
-   @Override
-   public void a() {
-      super.a();
-      this.b(this.a);
+      public gna a(mb $$0, gjr $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new glp($$1, $$2, $$3, $$4, 0.0, 0.0, 0.0, 1.0F, this.a);
+      }
    }
 }

@@ -1,113 +1,44 @@
-import com.mojang.datafixers.util.Pair;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-import java.util.Map.Entry;
-import java.util.function.Consumer;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
+import java.util.Optional;
 
-public class bze<E extends bwz> implements byr<E> {
-   private final Map<cgb<?>, cgc> a;
-   private final Set<cgb<?>> b;
-   private final bze.a c;
-   private final bze.b d;
-   private final caz<byr<? super E>> e = new caz<>();
-   private byq.a f = byq.a.a;
+public class bze implements cah {
+   private final bwd a;
+   private final boolean b;
 
-   public bze(Map<cgb<?>, cgc> $$0, Set<cgb<?>> $$1, bze.a $$2, bze.b $$3, List<Pair<? extends byr<? super E>, Integer>> $$4) {
+   public bze(bwd $$0, boolean $$1) {
       this.a = $$0;
       this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
-      $$4.forEach($$0x -> this.e.a((byr<? super E>)$$0x.getFirst(), (Integer)$$0x.getSecond()));
    }
 
    @Override
-   public byq.a a() {
-      return this.f;
+   public fei a() {
+      return this.b ? this.a.dt().b(0.0, (double)this.a.cS(), 0.0) : this.a.dt();
    }
 
-   private boolean a(E $$0) {
-      for (Entry<cgb<?>, cgc> $$1 : this.a.entrySet()) {
-         cgb<?> $$2 = $$1.getKey();
-         cgc $$3 = $$1.getValue();
-         if (!$$0.eb().a($$2, $$3)) {
+   @Override
+   public iu b() {
+      return this.a.dv();
+   }
+
+   @Override
+   public boolean a(bxc $$0) {
+      if (this.a instanceof bxc $$1) {
+         if (!$$1.bK()) {
             return false;
+         } else {
+            Optional<cgg> $$3 = $$0.eb().c(cge.h);
+            return $$3.isPresent() && $$3.get().a($$1);
          }
-      }
-
-      return true;
-   }
-
-   @Override
-   public final boolean e(aro $$0, E $$1, long $$2) {
-      if (this.a($$1)) {
-         this.f = byq.a.b;
-         this.c.a(this.e);
-         this.d.a(this.e.b(), $$0, $$1, $$2);
-         return true;
       } else {
-         return false;
+         return true;
       }
    }
 
-   @Override
-   public final void f(aro $$0, E $$1, long $$2) {
-      this.e.b().filter($$0x -> $$0x.a() == byq.a.b).forEach($$3 -> $$3.f($$0, $$1, $$2));
-      if (this.e.b().noneMatch($$0x -> $$0x.a() == byq.a.b)) {
-         this.g($$0, $$1, $$2);
-      }
-   }
-
-   @Override
-   public final void g(aro $$0, E $$1, long $$2) {
-      this.f = byq.a.a;
-      this.e.b().filter($$0x -> $$0x.a() == byq.a.b).forEach($$3 -> $$3.g($$0, $$1, $$2));
-      this.b.forEach($$1.eb()::b);
-   }
-
-   @Override
-   public String b() {
-      return this.getClass().getSimpleName();
+   public bwd c() {
+      return this.a;
    }
 
    @Override
    public String toString() {
-      Set<? extends byr<? super E>> $$0 = this.e.b().filter($$0x -> $$0x.a() == byq.a.b).collect(Collectors.toSet());
-      return "(" + this.getClass().getSimpleName() + "): " + $$0;
-   }
-
-   public static enum a {
-      a($$0 -> {
-      }),
-      b(caz::a);
-
-      private final Consumer<caz<?>> c;
-
-      private a(final Consumer<caz<?>> $$0) {
-         this.c = $$0;
-      }
-
-      public void a(caz<?> $$0) {
-         this.c.accept($$0);
-      }
-   }
-
-   public static enum b {
-      a {
-         @Override
-         public <E extends bwz> void a(Stream<byr<? super E>> $$0, aro $$1, E $$2, long $$3) {
-            $$0.filter($$0x -> $$0x.a() == byq.a.a).filter($$3x -> $$3x.e($$1, $$2, $$3)).findFirst();
-         }
-      },
-      b {
-         @Override
-         public <E extends bwz> void a(Stream<byr<? super E>> $$0, aro $$1, E $$2, long $$3) {
-            $$0.filter($$0x -> $$0x.a() == byq.a.a).forEach($$3x -> $$3x.e($$1, $$2, $$3));
-         }
-      };
-
-      public abstract <E extends bwz> void a(Stream<byr<? super E>> var1, aro var2, E var3, long var4);
+      return "EntityTracker for " + this.a;
    }
 }

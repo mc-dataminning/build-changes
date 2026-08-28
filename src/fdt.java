@@ -1,21 +1,26 @@
-public class fdt extends fdu {
-   private final bwa b;
+@FunctionalInterface
+public interface fdt<T> {
+   void handle(T var1, fdv<T> var2, long var3);
 
-   public fdt(bwa $$0) {
-      this($$0, $$0.dt());
-   }
+   public abstract static class a<T, C extends fdt<T>> {
+      private final alg a;
+      private final Class<?> b;
 
-   public fdt(bwa $$0, fdw $$1) {
-      super($$1);
-      this.b = $$0;
-   }
+      public a(alg $$0, Class<?> $$1) {
+         this.a = $$0;
+         this.b = $$1;
+      }
 
-   public bwa a() {
-      return this.b;
-   }
+      public alg a() {
+         return this.a;
+      }
 
-   @Override
-   public fdu.a d() {
-      return fdu.a.c;
+      public Class<?> b() {
+         return this.b;
+      }
+
+      public abstract void a(tz var1, C var2);
+
+      public abstract C b(tz var1);
    }
 }

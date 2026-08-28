@@ -1,22 +1,44 @@
-public class guk extends gwq<cii, hay, ged> {
-   private static final ale a = ale.b("textures/entity/bat.png");
+public class guk implements gtu.a {
+   private final fos a;
 
-   public guk(gvk.a $$0) {
-      super($$0, new ged($$0.a(gif.u)), 0.25F);
+   public guk(fos $$0) {
+      this.a = $$0;
    }
 
-   public ale a(hay $$0) {
-      return a;
-   }
+   @Override
+   public void a(fjc $$0, gps $$1, double $$2, double $$3, double $$4) {
+      iu $$5 = this.a.t.dv();
+      diy $$6 = this.a.t.dV();
 
-   public hay a() {
-      return new hay();
-   }
+      for (iu $$7 : iu.c($$5.b(-10, -10, -10), $$5.b(10, 10, 10))) {
+         ewg $$8 = $$6.b_($$7);
+         if ($$8.a(axh.a)) {
+            double $$9 = (double)((float)$$7.v() + $$8.a($$6, $$7));
+            gtu.a(
+               $$0,
+               $$1,
+               new fed(
+                     (double)((float)$$7.u() + 0.01F),
+                     (double)((float)$$7.v() + 0.01F),
+                     (double)((float)$$7.w() + 0.01F),
+                     (double)((float)$$7.u() + 0.99F),
+                     $$9,
+                     (double)((float)$$7.w() + 0.99F)
+                  )
+                  .d(-$$2, -$$3, -$$4),
+               0.0F,
+               1.0F,
+               0.0F,
+               0.15F
+            );
+         }
+      }
 
-   public void a(cii $$0, hay $$1, float $$2) {
-      super.a($$0, $$1, $$2);
-      $$1.a = $$0.m();
-      $$1.b.a($$0.c);
-      $$1.c.a($$0.d);
+      for (iu $$10 : iu.c($$5.b(-10, -10, -10), $$5.b(10, 10, 10))) {
+         ewg $$11 = $$6.b_($$10);
+         if ($$11.a(axh.a)) {
+            gtu.a($$0, $$1, String.valueOf($$11.e()), (double)$$10.u() + 0.5, (double)((float)$$10.v() + $$11.a($$6, $$10)), (double)$$10.w() + 0.5, -16777216);
+         }
+      }
    }
 }

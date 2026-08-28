@@ -1,85 +1,49 @@
-public class aii implements zd<agn> {
-   public static final yu<vs, aii> a = zd.a(aii::a, aii::new);
-   private final iu b;
-   private final ale c;
-   private final ale d;
-   private final ale e;
-   private final String f;
-   private final dxr.a g;
-   private final int h;
-   private final int i;
+import javax.annotation.Nullable;
 
-   public aii(iu $$0, ale $$1, ale $$2, ale $$3, String $$4, dxr.a $$5, int $$6, int $$7) {
+public class aii implements zf<agp> {
+   public static final yw<vu, aii> a = zf.a(aii::a, aii::new);
+   private final int b;
+   private final String c;
+   private final boolean d;
+
+   public aii(int $$0, String $$1, boolean $$2) {
       this.b = $$0;
       this.c = $$1;
       this.d = $$2;
-      this.e = $$3;
-      this.f = $$4;
-      this.g = $$5;
-      this.h = $$6;
-      this.i = $$7;
    }
 
-   private aii(vs $$0) {
-      this.b = $$0.e();
-      this.c = $$0.q();
-      this.d = $$0.q();
-      this.e = $$0.q();
-      this.f = $$0.p();
-      this.g = dxr.a.c.a($$0.p(), dxr.a.b);
-      this.h = $$0.l();
-      this.i = $$0.l();
+   private aii(vu $$0) {
+      this.b = $$0.l();
+      this.c = $$0.p();
+      this.d = $$0.readBoolean();
    }
 
-   private void a(vs $$0) {
-      $$0.a(this.b);
+   private void a(vu $$0) {
+      $$0.c(this.b);
       $$0.a(this.c);
       $$0.a(this.d);
-      $$0.a(this.e);
-      $$0.a(this.f);
-      $$0.a(this.g.c());
-      $$0.c(this.h);
-      $$0.c(this.i);
    }
 
    @Override
-   public zf<aii> a() {
-      return agl.cg;
+   public zh<aii> a() {
+      return agn.ce;
    }
 
-   public void a(agn $$0) {
+   public void a(agp $$0) {
       $$0.a(this);
    }
 
-   public iu b() {
-      return this.b;
+   @Nullable
+   public dhw a(div $$0) {
+      bwd $$1 = $$0.a(this.b);
+      return $$1 instanceof ctu ? ((ctu)$$1).q() : null;
    }
 
-   public ale e() {
+   public String b() {
       return this.c;
    }
 
-   public ale f() {
+   public boolean e() {
       return this.d;
-   }
-
-   public ale g() {
-      return this.e;
-   }
-
-   public String h() {
-      return this.f;
-   }
-
-   public dxr.a i() {
-      return this.g;
-   }
-
-   public int j() {
-      return this.h;
-   }
-
-   public int k() {
-      return this.i;
    }
 }

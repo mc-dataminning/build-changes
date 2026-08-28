@@ -1,35 +1,59 @@
-import com.mojang.datafixers.util.Pair;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
+import javax.annotation.concurrent.Immutable;
 
-public record btz(cl d) {
-   public static final btz a = new btz(cl.a.a().b());
-   public static final Codec<btz> b = cl.a.xmap(btz::new, btz::a);
-   public static final String c = "lock";
+@Immutable
+public class btz {
+   private static final float a = -72000.0F;
+   private static final float b = 1440000.0F;
+   private static final float c = 3600000.0F;
+   private final bty d;
+   private final float e;
 
-   public boolean a(cys $$0) {
-      return this.d.a($$0);
+   public btz(bty $$0, long $$1, long $$2, float $$3) {
+      this.d = $$0;
+      this.e = this.a($$0, $$1, $$2, $$3);
    }
 
-   public void a(tx $$0, jg.a $$1) {
-      if (this != a) {
-         DataResult<uu> $$2 = b.encode(this, $$1.a(ul.a), new tx());
-         $$2.result().ifPresent($$1x -> $$0.a("lock", $$1x));
-      }
-   }
-
-   public static btz b(tx $$0, jg.a $$1) {
-      if ($$0.b("lock", 10)) {
-         DataResult<Pair<btz, uu>> $$2 = b.decode($$1.a(ul.a), $$0.c("lock"));
-         if ($$2.isSuccess()) {
-            return (btz)((Pair)$$2.getOrThrow()).getFirst();
-         }
-      }
-
-      return a;
-   }
-
-   public cl a() {
+   public bty a() {
       return this.d;
+   }
+
+   public float b() {
+      return this.e;
+   }
+
+   public boolean c() {
+      return this.e >= (float)bty.d.ordinal();
+   }
+
+   public boolean a(float $$0) {
+      return this.e > $$0;
+   }
+
+   public float d() {
+      if (this.e < 2.0F) {
+         return 0.0F;
+      } else {
+         return this.e > 4.0F ? 1.0F : (this.e - 2.0F) / 2.0F;
+      }
+   }
+
+   private float a(bty $$0, long $$1, long $$2, float $$3) {
+      if ($$0 == bty.a) {
+         return 0.0F;
+      } else {
+         boolean $$4 = $$0 == bty.d;
+         float $$5 = 0.75F;
+         float $$6 = azm.a(((float)$$1 + -72000.0F) / 1440000.0F, 0.0F, 1.0F) * 0.25F;
+         $$5 += $$6;
+         float $$7 = 0.0F;
+         $$7 += azm.a((float)$$2 / 3600000.0F, 0.0F, 1.0F) * ($$4 ? 1.0F : 0.75F);
+         $$7 += azm.a($$3 * 0.25F, 0.0F, $$6);
+         if ($$0 == bty.b) {
+            $$7 *= 0.5F;
+         }
+
+         $$5 += $$7;
+         return (float)$$0.a() * $$5;
+      }
    }
 }

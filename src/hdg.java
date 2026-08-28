@@ -1,3 +1,11 @@
-public class hdg extends hcp {
-   public cjl.a a = cjl.a.b;
+public class hdg extends hdf {
+   public clg.d a;
+   public boolean b;
+   public cyy c;
+   public boolean d;
+
+   public hdg() {
+      this.a = clg.d.a;
+      this.c = cyy.k;
+   }
 }

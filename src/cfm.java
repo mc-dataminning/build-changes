@@ -1,51 +1,99 @@
 import java.util.EnumSet;
-import java.util.List;
 import javax.annotation.Nullable;
 
-public class cfm extends cfv {
-   private final cja a;
-   @Nullable
-   private bwz b;
-   private final cho c = cho.a().a(64.0);
+public class cfm extends cdy {
+   private final cdy a;
+   private final int b;
+   private boolean c;
 
-   public cfm(cja $$0) {
-      super($$0, false, true);
-      this.a = $$0;
-      this.a(EnumSet.of(cdv.a.d));
+   public cfm(int $$0, cdy $$1) {
+      this.b = $$0;
+      this.a = $$1;
+   }
+
+   public boolean a(cfm $$0) {
+      return this.P_() && $$0.i() < this.i();
    }
 
    @Override
    public boolean b() {
-      fdr $$0 = this.a.cR().c(10.0, 8.0, 10.0);
-      aro $$1 = a(this.a);
-      List<? extends bwz> $$2 = $$1.a(cqe.class, this.c, this.a, $$0);
-      List<cqs> $$3 = $$1.a(this.c, this.a, $$0);
+      return this.a.b();
+   }
 
-      for (bwz $$4 : $$2) {
-         cqe $$5 = (cqe)$$4;
+   @Override
+   public boolean c() {
+      return this.a.c();
+   }
 
-         for (cqs $$6 : $$3) {
-            int $$7 = $$5.f($$6);
-            if ($$7 <= -100) {
-               this.b = $$6;
-            }
-         }
-      }
-
-      if (this.b == null) {
-         return false;
-      } else {
-         if (this.b instanceof cqs $$8 && ($$8.U_() || $$8.b())) {
-            return false;
-         }
-
-         return true;
-      }
+   @Override
+   public boolean P_() {
+      return this.a.P_();
    }
 
    @Override
    public void d() {
-      this.a.g(this.b);
-      super.d();
+      if (!this.c) {
+         this.c = true;
+         this.a.d();
+      }
+   }
+
+   @Override
+   public void e() {
+      if (this.c) {
+         this.c = false;
+         this.a.e();
+      }
+   }
+
+   @Override
+   public boolean Q_() {
+      return this.a.Q_();
+   }
+
+   @Override
+   protected int a(int $$0) {
+      return this.a.a($$0);
+   }
+
+   @Override
+   public void a() {
+      this.a.a();
+   }
+
+   @Override
+   public void a(EnumSet<cdy.a> $$0) {
+      this.a.a($$0);
+   }
+
+   @Override
+   public EnumSet<cdy.a> j() {
+      return this.a.j();
+   }
+
+   public boolean h() {
+      return this.c;
+   }
+
+   public int i() {
+      return this.b;
+   }
+
+   public cdy k() {
+      return this.a;
+   }
+
+   @Override
+   public boolean equals(@Nullable Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else {
+         return $$0 != null && this.getClass() == $$0.getClass() ? this.a.equals(((cfm)$$0).a) : false;
+      }
+   }
+
+   @Override
+   public int hashCode() {
+      return this.a.hashCode();
    }
 }

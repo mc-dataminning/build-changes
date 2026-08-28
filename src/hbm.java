@@ -1,7 +1,12 @@
-import javax.annotation.Nullable;
+public class hbm extends hdf {
+   public ckj.e a;
+   public float b;
+   public float c;
+   public float d;
+   public float e;
 
-public class hbm extends hbp {
-   public boolean a = true;
-   @Nullable
-   public fdw b;
+   public hbm() {
+      this.a = ckj.e.a;
+      this.d = 1.0F;
+   }
 }

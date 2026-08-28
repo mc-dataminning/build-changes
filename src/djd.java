@@ -1,41 +1,25 @@
-import com.google.common.collect.Lists;
-import java.util.List;
+import javax.annotation.Nullable;
 
-public class djd {
-   private final List<djd.a> a = Lists.newArrayList();
+public interface djd {
+   boolean a(iu var1, dzz var2, int var3, int var4);
 
-   public void a(iu $$0, double $$1) {
-      if ($$1 != 0.0) {
-         this.a.add(new djd.a($$0, $$1));
-      }
+   default boolean a(iu $$0, dzz $$1, int $$2) {
+      return this.a($$0, $$1, $$2, 512);
    }
 
-   public double b(iu $$0, double $$1) {
-      if ($$1 == 0.0) {
-         return 0.0;
-      } else {
-         double $$2 = 0.0;
+   boolean a(iu var1, boolean var2);
 
-         for (djd.a $$3 : this.a) {
-            $$2 += $$3.a($$0);
-         }
-
-         return $$2 * $$1;
-      }
+   default boolean b(iu $$0, boolean $$1) {
+      return this.a($$0, $$1, null);
    }
 
-   static class a {
-      private final iu a;
-      private final double b;
+   default boolean a(iu $$0, boolean $$1, @Nullable bwd $$2) {
+      return this.a($$0, $$1, $$2, 512);
+   }
 
-      public a(iu $$0, double $$1) {
-         this.a = $$0;
-         this.b = $$1;
-      }
+   boolean a(iu var1, boolean var2, @Nullable bwd var3, int var4);
 
-      public double a(iu $$0) {
-         double $$1 = this.a.j($$0);
-         return $$1 == 0.0 ? Double.POSITIVE_INFINITY : this.b / Math.sqrt($$1);
-      }
+   default boolean b(bwd $$0) {
+      return false;
    }
 }

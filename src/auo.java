@@ -1,56 +1,33 @@
-import com.google.common.annotations.VisibleForTesting;
-import java.nio.file.Path;
-import java.util.Optional;
-import javax.annotation.Nullable;
+import java.util.function.UnaryOperator;
 
-public class auo extends auf {
-   private static final aub d = new aub(ww.c("dataPack.vanilla.description"), ab.b().a(atp.b), Optional.empty());
-   private static final atj e = new atj(cud.h);
-   private static final atf f = atf.a(aub.b, d, atj.a, e);
-   private static final atm g = new atm("vanilla", ww.c("dataPack.vanilla.name"), aum.c, Optional.of(c));
-   private static final ato h = new ato(false, aui.b.b, false);
-   private static final ato i = new ato(false, aui.b.a, false);
-   private static final ale j = ale.b("datapacks");
+public interface auo {
+   UnaryOperator<wy> a = UnaryOperator.identity();
+   auo b = a(a, true);
+   auo c = a(a("pack.source.builtin"), true);
+   auo d = a(a("pack.source.feature"), false);
+   auo e = a(a("pack.source.world"), true);
+   auo f = a(a("pack.source.server"), true);
 
-   public auo(fdm $$0) {
-      super(atp.b, b(), j, $$0);
+   wy a(wy var1);
+
+   boolean a();
+
+   static auo a(final UnaryOperator<wy> $$0, final boolean $$1) {
+      return new auo() {
+         @Override
+         public wy a(wy $$0x) {
+            return $$0.apply($$0);
+         }
+
+         @Override
+         public boolean a() {
+            return $$1;
+         }
+      };
    }
 
-   private static atm a(String $$0, ww $$1) {
-      return new atm($$0, $$1, aum.d, Optional.of(auh.a($$0)));
-   }
-
-   @VisibleForTesting
-   public static atr b() {
-      return new ats().a(f).a("minecraft").b().a().a(g);
-   }
-
-   @Override
-   protected ww a(String $$0) {
-      return ww.b($$0);
-   }
-
-   @Nullable
-   @Override
-   protected aui a(atn $$0) {
-      return aui.a(g, b($$0), atp.b, h);
-   }
-
-   @Nullable
-   @Override
-   protected aui a(String $$0, aui.c $$1, ww $$2) {
-      return aui.a(a($$0, $$2), $$1, atp.b, i);
-   }
-
-   public static aul a(Path $$0, fdm $$1) {
-      return new aul(new auo($$1), new aug($$0, atp.b, aum.e, $$1));
-   }
-
-   public static aul c() {
-      return new aul(new auo(new fdm($$0 -> true)));
-   }
-
-   public static aul a(eyb.c $$0) {
-      return a($$0.a(exz.j), $$0.d().e());
+   private static UnaryOperator<wy> a(String $$0) {
+      wy $$1 = wy.c($$0);
+      return $$1x -> wy.a("pack.nameAndSource", $$1x, $$1).a(n.h);
    }
 }

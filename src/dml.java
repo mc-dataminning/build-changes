@@ -1,111 +1,146 @@
-import com.google.common.collect.Maps;
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
 import java.util.Map;
+import java.util.function.BiConsumer;
+import java.util.function.Function;
+import javax.annotation.Nullable;
 
-public class dml extends dkm {
-   public static final MapCodec<dml> c = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(mf.e.q().fieldOf("candle").forGetter($$0x -> $$0x.h), t()).apply($$0, dml::new)
+public class dml extends dov {
+   public static final MapCodec<dml> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(
+               eao.a.fieldOf("block_set_type").forGetter($$0x -> $$0x.d),
+               Codec.intRange(1, 1024).fieldOf("ticks_to_stay_pressed").forGetter($$0x -> $$0x.f),
+               t()
+            )
+            .apply($$0, dml::new)
    );
-   public static final eaf d = dkm.b;
-   private static final feq e = fen.a(dlu.b(2.0, 8.0, 14.0), dlu.b(14.0, 0.0, 8.0));
-   private static final Map<dmk, dml> f = Maps.newHashMap();
-   private static final Iterable<fdw> g = List.of(new fdw(8.0, 16.0, 8.0).c(0.0625));
-   private final dmk h;
+   public static final eaq b = eap.A;
+   private final eao d;
+   private final int f;
+   private final Function<dzz, ffc> g;
 
    @Override
    public MapCodec<dml> a() {
-      return c;
+      return a;
    }
 
-   protected dml(dlu $$0, dzn.d $$1) {
-      super($$1);
-      this.l(this.B.b().b(d, Boolean.valueOf(false)));
-      if ($$0 instanceof dmk $$2) {
-         f.put($$2, this);
-         this.h = $$2;
+   protected dml(eao $$0, int $$1, dzy.d $$2) {
+      super($$2.a($$0.g()));
+      this.d = $$0;
+      this.l(this.B.b().b(e, ja.c).b(b, Boolean.valueOf(false)).b(c, eak.b));
+      this.f = $$1;
+      this.g = this.b();
+   }
+
+   private Function<dzz, ffc> b() {
+      ffc $$0 = dma.a(14.0);
+      ffc $$1 = dma.a(12.0);
+      Map<eak, Map<ja, ffc>> $$2 = fez.e(dma.b(6.0, 4.0, 8.0, 16.0));
+      return this.a($$3 -> fez.a($$2.get($$3.c(c)).get($$3.c(e)), $$3.c(b) ? $$0 : $$1, fem.e));
+   }
+
+   @Override
+   protected ffc a(dzz $$0, dib $$1, iu $$2, fen $$3) {
+      return this.g.apply($$0);
+   }
+
+   @Override
+   protected bub a(dzz $$0, div $$1, iu $$2, cqy $$3, fee $$4) {
+      if ($$0.c(b)) {
+         return bub.c;
       } else {
-         throw new IllegalArgumentException("Expected block to be of " + dmk.class + " was " + $$0.getClass());
+         this.a($$0, $$1, $$2, $$3);
+         return bub.a;
       }
    }
 
    @Override
-   protected Iterable<fdw> b(dzo $$0) {
-      return g;
+   protected void a(dzz $$0, arq $$1, iu $$2, dio $$3, BiConsumer<cyy, iu> $$4) {
+      if ($$3.g() && !$$0.c(b)) {
+         this.a($$0, $$1, $$2, null);
+      }
+
+      super.a($$0, $$1, $$2, $$3, $$4);
+   }
+
+   public void a(dzz $$0, div $$1, iu $$2, @Nullable cqy $$3) {
+      $$1.a($$2, $$0.b(b, Boolean.valueOf(true)), 3);
+      this.e($$0, $$1, $$2);
+      $$1.a($$2, this, this.f);
+      this.a($$3, $$1, $$2, true);
+      $$1.a($$3, eez.a, $$2);
+   }
+
+   protected void a(@Nullable cqy $$0, diw $$1, iu $$2, boolean $$3) {
+      $$1.a($$3 ? $$0 : null, $$2, this.a($$3), awo.e);
+   }
+
+   protected awm a(boolean $$0) {
+      return $$0 ? this.d.o() : this.d.n();
    }
 
    @Override
-   protected feq a(dzo $$0, dhv $$1, iu $$2, feb $$3) {
-      return e;
-   }
-
-   @Override
-   protected bty a(cys $$0, dzo $$1, dip $$2, iu $$3, cqs $$4, btx $$5, fds $$6) {
-      if ($$0.a(cyw.pb) || $$0.a(cyw.uZ)) {
-         return bty.e;
-      } else if (a($$6) && $$0.f() && $$1.c(d)) {
-         a($$4, $$1, $$2, $$3);
-         return bty.a;
-      } else {
-         return super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6);
+   protected void a(dzz $$0, arq $$1, iu $$2, boolean $$3) {
+      if (!$$3 && $$0.c(b)) {
+         this.e($$0, $$1, $$2);
       }
    }
 
    @Override
-   protected bty a(dzo $$0, dip $$1, iu $$2, cqs $$3, fds $$4) {
-      bty $$5 = dmh.a($$1, $$2, dlw.et.m(), $$3);
-      if ($$5.a()) {
-         c($$0, $$1, $$2);
-      }
-
-      return $$5;
-   }
-
-   private static boolean a(fds $$0) {
-      return $$0.g().e - (double)$$0.b().v() > 0.5;
+   protected int a(dzz $$0, dib $$1, iu $$2, ja $$3) {
+      return $$0.c(b) ? 15 : 0;
    }
 
    @Override
-   protected void a(dzp.a<dlu, dzo> $$0) {
-      $$0.a(d);
+   protected int b(dzz $$0, dib $$1, iu $$2, ja $$3) {
+      return $$0.c(b) && n($$0) == $$3 ? 15 : 0;
    }
 
    @Override
-   protected cys a(dis $$0, iu $$1, dzo $$2, boolean $$3) {
-      return new cys(dlw.et);
-   }
-
-   @Override
-   protected dzo a(dzo $$0, dis $$1, dje $$2, iu $$3, ja $$4, iu $$5, dzo $$6, azt $$7) {
-      return $$4 == ja.a && !$$0.a($$1, $$3) ? dlw.a.m() : super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
-   }
-
-   @Override
-   protected boolean a(dzo $$0, dis $$1, iu $$2) {
-      return $$1.a_($$2.e()).e();
-   }
-
-   @Override
-   protected int a(dzo $$0, dip $$1, iu $$2) {
-      return dmh.d;
-   }
-
-   @Override
-   protected boolean c_(dzo $$0) {
+   protected boolean f_(dzz $$0) {
       return true;
    }
 
    @Override
-   protected boolean a(dzo $$0, ewk $$1) {
-      return false;
+   protected void a(dzz $$0, arq $$1, iu $$2, azv $$3) {
+      if ($$0.c(b)) {
+         this.d($$0, $$1, $$2);
+      }
    }
 
-   public static dzo a(dmk $$0) {
-      return f.get($$0).m();
+   @Override
+   protected void a(dzz $$0, div $$1, iu $$2, bwd $$3) {
+      if (!$$1.C && this.d.e() && !$$0.c(b)) {
+         this.d($$0, $$1, $$2);
+      }
    }
 
-   public static boolean h(dzo $$0) {
-      return $$0.a(axa.bm, $$1 -> $$1.b(d) && !$$0.c(d));
+   protected void d(dzz $$0, div $$1, iu $$2) {
+      crf $$3 = this.d.e() ? $$1.a(crf.class, $$0.f($$1, $$2).a().a($$2)).stream().findFirst().orElse(null) : null;
+      boolean $$4 = $$3 != null;
+      boolean $$5 = $$0.c(b);
+      if ($$4 != $$5) {
+         $$1.a($$2, $$0.b(b, Boolean.valueOf($$4)), 3);
+         this.e($$0, $$1, $$2);
+         this.a(null, $$1, $$2, $$4);
+         $$1.a($$3, $$4 ? eez.a : eez.e, $$2);
+      }
+
+      if ($$4) {
+         $$1.a(new iu($$2), this, this.f);
+      }
+   }
+
+   private void e(dzz $$0, div $$1, iu $$2) {
+      ja $$3 = n($$0).g();
+      exo $$4 = exk.a($$1, $$3, $$3.o().d() ? ja.b : $$0.c(e));
+      $$1.a($$2, this, $$4);
+      $$1.a($$2.a($$3), this, $$4);
+   }
+
+   @Override
+   protected void a(eaa.a<dma, dzz> $$0) {
+      $$0.a(e, b, c);
    }
 }

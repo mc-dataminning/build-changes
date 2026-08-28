@@ -2,201 +2,201 @@ import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableList.Builder;
 
 public class qu {
-   private static final ege.o a = a(dlw.a);
-   private static final ege.o b = a(dlw.I);
-   private static final ege.o c = a(dlw.hG);
-   private static final ege.o d = a(dlw.hH);
-   private static final ege.o e = a(dlw.iY);
-   private static final ege.o f = a(dlw.N);
-   private static final ege.o g = a(dlw.jN);
-   private static final ege.o h = a(dlw.b);
-   private static final ege.o i = a(dlw.tp);
-   private static final ege.o j = a(dlw.j);
-   private static final ege.o k = a(dlw.l);
-   private static final ege.o l = a(dlw.k);
-   private static final ege.o m = a(dlw.fA);
-   private static final ege.o n = a(dlw.i);
-   private static final ege.o o = a(dlw.rr);
-   private static final ege.o p = a(dlw.O);
-   private static final ege.o q = a(dlw.L);
-   private static final ege.o r = a(dlw.bc);
-   private static final ege.o s = a(dlw.ja);
-   private static final ege.o t = a(dlw.ec);
-   private static final ege.o u = a(dlw.to);
-   private static final ege.o v = a(dlw.rt);
-   private static final ege.o w = a(dlw.eb);
-   private static final ege.o x = a(dlw.J);
-   private static final ege.o y = a(dlw.K);
-   private static final ege.o z = a(dlw.ei);
-   private static final ege.o A = a(dlw.ej);
-   private static final ege.o B = a(dlw.ek);
-   private static final ege.o C = a(dlw.el);
-   private static final ege.o D = a(dlw.pV);
-   private static final ege.o E = a(dlw.oR);
-   private static final ege.o F = a(dlw.oP);
-   private static final ege.o G = a(dlw.lm);
-   private static final ege.o H = a(dlw.oY);
-   private static final ege.o I = a(dlw.fU);
+   private static final egp.o a = a(dmc.a);
+   private static final egp.o b = a(dmc.I);
+   private static final egp.o c = a(dmc.hH);
+   private static final egp.o d = a(dmc.hI);
+   private static final egp.o e = a(dmc.iZ);
+   private static final egp.o f = a(dmc.N);
+   private static final egp.o g = a(dmc.jO);
+   private static final egp.o h = a(dmc.b);
+   private static final egp.o i = a(dmc.tq);
+   private static final egp.o j = a(dmc.j);
+   private static final egp.o k = a(dmc.l);
+   private static final egp.o l = a(dmc.k);
+   private static final egp.o m = a(dmc.fB);
+   private static final egp.o n = a(dmc.i);
+   private static final egp.o o = a(dmc.rs);
+   private static final egp.o p = a(dmc.O);
+   private static final egp.o q = a(dmc.L);
+   private static final egp.o r = a(dmc.bc);
+   private static final egp.o s = a(dmc.jb);
+   private static final egp.o t = a(dmc.ed);
+   private static final egp.o u = a(dmc.tp);
+   private static final egp.o v = a(dmc.ru);
+   private static final egp.o w = a(dmc.ec);
+   private static final egp.o x = a(dmc.J);
+   private static final egp.o y = a(dmc.K);
+   private static final egp.o z = a(dmc.ej);
+   private static final egp.o A = a(dmc.ek);
+   private static final egp.o B = a(dmc.el);
+   private static final egp.o C = a(dmc.em);
+   private static final egp.o D = a(dmc.pW);
+   private static final egp.o E = a(dmc.oS);
+   private static final egp.o F = a(dmc.oQ);
+   private static final egp.o G = a(dmc.ln);
+   private static final egp.o H = a(dmc.oZ);
+   private static final egp.o I = a(dmc.fV);
 
-   private static ege.o a(dlu $$0) {
-      return ege.a($$0.m());
+   private static egp.o a(dma $$0) {
+      return egp.a($$0.m());
    }
 
-   public static ege.o a() {
+   public static egp.o a() {
       return a(true, false, true);
    }
 
-   public static ege.o a(boolean $$0, boolean $$1, boolean $$2) {
-      ege.f $$3 = ege.a(egh.a(97), 2);
-      ege.f $$4 = ege.a(egh.a(256), 0);
-      ege.f $$5 = ege.b(egh.a(63), -1);
-      ege.f $$6 = ege.b(egh.a(74), 1);
-      ege.f $$7 = ege.a(egh.a(60), 0);
-      ege.f $$8 = ege.a(egh.a(62), 0);
-      ege.f $$9 = ege.a(egh.a(63), 0);
-      ege.f $$10 = ege.a(-1, 0);
-      ege.f $$11 = ege.a(0, 0);
-      ege.f $$12 = ege.b(-6, -1);
-      ege.f $$13 = ege.b();
-      ege.f $$14 = ege.a(djz.X, djz.Y);
-      ege.f $$15 = ege.a();
-      ege.o $$16 = ege.a(ege.a($$11, n), j);
-      ege.o $$17 = ege.a(ege.a(ege.e, r), q);
-      ege.o $$18 = ege.a(ege.a(ege.e, h), p);
-      ege.f $$19 = ege.a(djz.Q, djz.N, djz.O);
-      ege.f $$20 = ege.a(djz.f);
-      ege.o $$21 = ege.a(
-         ege.a(ege.a(djz.K), ege.a(ege.a(ege.a(efw.X, -0.0125, 0.0125), o), h)),
-         ege.a(ege.a(djz.P), ege.a(ege.a(ege.a(efw.Y, -0.05, 0.05), $$18), h)),
-         ege.a(ege.a(djz.u), ege.a(a(1.0), h)),
-         ege.a($$19, $$17),
-         ege.a($$20, $$17),
-         ege.a(ege.a(djz.aa), h)
+   public static egp.o a(boolean $$0, boolean $$1, boolean $$2) {
+      egp.f $$3 = egp.a(egs.a(97), 2);
+      egp.f $$4 = egp.a(egs.a(256), 0);
+      egp.f $$5 = egp.b(egs.a(63), -1);
+      egp.f $$6 = egp.b(egs.a(74), 1);
+      egp.f $$7 = egp.a(egs.a(60), 0);
+      egp.f $$8 = egp.a(egs.a(62), 0);
+      egp.f $$9 = egp.a(egs.a(63), 0);
+      egp.f $$10 = egp.a(-1, 0);
+      egp.f $$11 = egp.a(0, 0);
+      egp.f $$12 = egp.b(-6, -1);
+      egp.f $$13 = egp.b();
+      egp.f $$14 = egp.a(dkf.X, dkf.Y);
+      egp.f $$15 = egp.a();
+      egp.o $$16 = egp.a(egp.a($$11, n), j);
+      egp.o $$17 = egp.a(egp.a(egp.e, r), q);
+      egp.o $$18 = egp.a(egp.a(egp.e, h), p);
+      egp.f $$19 = egp.a(dkf.Q, dkf.N, dkf.O);
+      egp.f $$20 = egp.a(dkf.f);
+      egp.o $$21 = egp.a(
+         egp.a(egp.a(dkf.K), egp.a(egp.a(egp.a(egh.X, -0.0125, 0.0125), o), h)),
+         egp.a(egp.a(dkf.P), egp.a(egp.a(egp.a(egh.Y, -0.05, 0.05), $$18), h)),
+         egp.a(egp.a(dkf.u), egp.a(a(1.0), h)),
+         egp.a($$19, $$17),
+         egp.a($$20, $$17),
+         egp.a(egp.a(dkf.aa), h)
       );
-      ege.o $$22 = ege.a(ege.a(efw.Z, 0.45, 0.58), ege.a($$11, v));
-      ege.o $$23 = ege.a(ege.a(efw.Z, 0.35, 0.6), ege.a($$11, v));
-      ege.o $$24 = ege.a(
-         ege.a(ege.a(djz.I), ege.a(ege.a($$15, s), ege.a(ege.a(efw.aa, -0.5, 0.2), s), ege.a(ege.a(efw.ab, -0.0625, 0.025), w), ege.a($$11, t))),
-         ege.a(ege.a(djz.H), ege.a(ege.a($$15, h), $$22, ege.a($$11, t))),
-         ege.a(ege.a(djz.J), h),
-         ege.a(ege.a(djz.G), ege.a($$22, j)),
+      egp.o $$22 = egp.a(egp.a(egh.Z, 0.45, 0.58), egp.a($$11, v));
+      egp.o $$23 = egp.a(egp.a(egh.Z, 0.35, 0.6), egp.a($$11, v));
+      egp.o $$24 = egp.a(
+         egp.a(egp.a(dkf.I), egp.a(egp.a($$15, s), egp.a(egp.a(egh.aa, -0.5, 0.2), s), egp.a(egp.a(egh.ab, -0.0625, 0.025), w), egp.a($$11, t))),
+         egp.a(egp.a(dkf.H), egp.a(egp.a($$15, h), $$22, egp.a($$11, t))),
+         egp.a(egp.a(dkf.J), h),
+         egp.a(egp.a(dkf.G), egp.a($$22, j)),
          $$21,
-         ege.a(ege.a(djz.x), ege.a(a(1.75), h)),
-         ege.a(ege.a(djz.v), ege.a(ege.a(a(2.0), $$18), ege.a(a(1.0), h), ege.a(a(-1.0), j), $$18)),
-         ege.a(ege.a(djz.h), u),
+         egp.a(egp.a(dkf.x), egp.a(a(1.75), h)),
+         egp.a(egp.a(dkf.v), egp.a(egp.a(a(2.0), $$18), egp.a(a(1.0), h), egp.a(a(-1.0), j), $$18)),
+         egp.a(egp.a(dkf.h), u),
          j
       );
-      ege.o $$25 = ege.a(
-         ege.a(ege.a(djz.I), ege.a(ege.a($$15, s), ege.a(ege.a(efw.aa, 0.0, 0.2), s), ege.a(ege.a(efw.ab, 0.0, 0.025), w), ege.a($$11, t))),
-         ege.a(ege.a(djz.H), ege.a(ege.a($$15, h), $$23, ege.a($$11, t))),
-         ege.a(ege.a(djz.J), ege.a(ege.a($$15, h), ege.a($$11, t))),
-         ege.a(ege.a(djz.G), ege.a($$23, ege.a($$11, t))),
+      egp.o $$25 = egp.a(
+         egp.a(egp.a(dkf.I), egp.a(egp.a($$15, s), egp.a(egp.a(egh.aa, 0.0, 0.2), s), egp.a(egp.a(egh.ab, 0.0, 0.025), w), egp.a($$11, t))),
+         egp.a(egp.a(dkf.H), egp.a(egp.a($$15, h), $$23, egp.a($$11, t))),
+         egp.a(egp.a(dkf.J), egp.a(egp.a($$15, h), egp.a($$11, t))),
+         egp.a(egp.a(dkf.G), egp.a($$23, egp.a($$11, t))),
          $$21,
-         ege.a(ege.a(djz.x), ege.a(ege.a(a(1.75), h), ege.a(a(-0.5), l))),
-         ege.a(ege.a(djz.v), ege.a(ege.a(a(2.0), $$18), ege.a(a(1.0), h), ege.a(a(-1.0), $$16), $$18)),
-         ege.a(ege.a(djz.o, djz.p), ege.a(ege.a(a(1.75), l), ege.a(a(-0.95), k))),
-         ege.a(ege.a(djz.e), ege.a($$11, t)),
-         ege.a(ege.a(djz.h), u),
-         ege.a(ege.a(djz.Z), m),
+         egp.a(egp.a(dkf.x), egp.a(egp.a(a(1.75), h), egp.a(a(-0.5), l))),
+         egp.a(egp.a(dkf.v), egp.a(egp.a(a(2.0), $$18), egp.a(a(1.0), h), egp.a(a(-1.0), $$16), $$18)),
+         egp.a(egp.a(dkf.o, dkf.p), egp.a(egp.a(a(1.75), l), egp.a(a(-0.95), k))),
+         egp.a(egp.a(dkf.e), egp.a($$11, t)),
+         egp.a(egp.a(dkf.h), u),
+         egp.a(egp.a(dkf.Z), m),
          $$16
       );
-      ege.f $$26 = ege.a(efw.N, -0.909, -0.5454);
-      ege.f $$27 = ege.a(efw.N, -0.1818, 0.1818);
-      ege.f $$28 = ege.a(efw.N, 0.5454, 0.909);
-      ege.o $$29 = ege.a(
-         ege.a(
-            ege.a,
-            ege.a(
-               ege.a(ege.a(djz.D), ege.a($$3, ege.a(ege.a($$26, l), ege.a($$27, l), ege.a($$28, l), $$16))),
-               ege.a(ege.a(djz.g), ege.a($$8, ege.a(ege.a($$9), ege.a(ege.a(efw.W, 0.0), x)))),
-               ege.a(ege.a(djz.h), ege.a($$7, ege.a(ege.a($$9), ege.a(ege.a(efw.W, 0.0), x))))
+      egp.f $$26 = egp.a(egh.N, -0.909, -0.5454);
+      egp.f $$27 = egp.a(egh.N, -0.1818, 0.1818);
+      egp.f $$28 = egp.a(egh.N, 0.5454, 0.909);
+      egp.o $$29 = egp.a(
+         egp.a(
+            egp.a,
+            egp.a(
+               egp.a(egp.a(dkf.D), egp.a($$3, egp.a(egp.a($$26, l), egp.a($$27, l), egp.a($$28, l), $$16))),
+               egp.a(egp.a(dkf.g), egp.a($$8, egp.a(egp.a($$9), egp.a(egp.a(egh.W, 0.0), x)))),
+               egp.a(egp.a(dkf.h), egp.a($$7, egp.a(egp.a($$9), egp.a(egp.a(egh.W, 0.0), x))))
             )
          ),
-         ege.a(
-            ege.a(djz.B, djz.C, djz.D),
-            ege.a(
-               ege.a(
-                  ege.a,
-                  ege.a(
-                     ege.a($$4, d),
-                     ege.a($$6, ege.a(ege.a($$26, e), ege.a($$27, e), ege.a($$28, e), ege.e())),
-                     ege.a($$10, ege.a(ege.a(ege.e, g), f)),
-                     ege.a(ege.a($$13), d),
-                     ege.a($$12, c),
+         egp.a(
+            egp.a(dkf.B, dkf.C, dkf.D),
+            egp.a(
+               egp.a(
+                  egp.a,
+                  egp.a(
+                     egp.a($$4, d),
+                     egp.a($$6, egp.a(egp.a($$26, e), egp.a($$27, e), egp.a($$28, e), egp.e())),
+                     egp.a($$10, egp.a(egp.a(egp.e, g), f)),
+                     egp.a(egp.a($$13), d),
+                     egp.a($$12, c),
                      $$18
                   )
                ),
-               ege.a($$5, ege.a(ege.a($$9, ege.a(ege.a($$6), d)), ege.e())),
-               ege.a(ege.b, ege.a($$12, c))
+               egp.a($$5, egp.a(egp.a($$9, egp.a(egp.a($$6), d)), egp.e())),
+               egp.a(egp.b, egp.a($$12, c))
             )
          ),
-         ege.a(ege.a, ege.a($$10, ege.a(ege.a($$14, ege.a($$13, ege.a(ege.a($$11, a), ege.a(ege.d(), w), x))), $$25))),
-         ege.a($$12, ege.a(ege.a(ege.a, ege.a($$14, ege.a($$13, x))), ege.a(ege.b, $$24), ege.a($$19, ege.a(ege.c, r)), ege.a($$20, ege.a(ege.d, r)))),
-         ege.a(ege.a, ege.a(ege.a(ege.a(djz.I, djz.J), h), ege.a(ege.a(djz.Q, djz.R, djz.S), $$17), $$18))
+         egp.a(egp.a, egp.a($$10, egp.a(egp.a($$14, egp.a($$13, egp.a(egp.a($$11, a), egp.a(egp.d(), w), x))), $$25))),
+         egp.a($$12, egp.a(egp.a(egp.a, egp.a($$14, egp.a($$13, x))), egp.a(egp.b, $$24), egp.a($$19, egp.a(egp.c, r)), egp.a($$20, egp.a(egp.d, r)))),
+         egp.a(egp.a, egp.a(egp.a(egp.a(dkf.I, dkf.J), h), egp.a(egp.a(dkf.Q, dkf.R, dkf.S), $$17), $$18))
       );
-      Builder<ege.o> $$30 = ImmutableList.builder();
+      Builder<egp.o> $$30 = ImmutableList.builder();
       if ($$1) {
-         $$30.add(ege.a(ege.a(ege.a("bedrock_roof", egh.c(5), egh.b())), b));
+         $$30.add(egp.a(egp.a(egp.a("bedrock_roof", egs.c(5), egs.b())), b));
       }
 
       if ($$2) {
-         $$30.add(ege.a(ege.a("bedrock_floor", egh.a(), egh.b(5)), b));
+         $$30.add(egp.a(egp.a("bedrock_floor", egs.a(), egs.b(5)), b));
       }
 
-      ege.o $$31 = ege.a(ege.c(), $$29);
+      egp.o $$31 = egp.a(egp.c(), $$29);
       $$30.add($$0 ? $$31 : $$29);
-      $$30.add(ege.a(ege.a("deepslate", egh.a(0), egh.a(8)), i));
-      return ege.a((ege.o[])$$30.build().toArray(ege.o[]::new));
+      $$30.add(egp.a(egp.a("deepslate", egs.a(0), egs.a(8)), i));
+      return egp.a((egp.o[])$$30.build().toArray(egp.o[]::new));
    }
 
-   public static ege.o b() {
-      ege.f $$0 = ege.a(egh.a(31), 0);
-      ege.f $$1 = ege.a(egh.a(32), 0);
-      ege.f $$2 = ege.b(egh.a(30), 0);
-      ege.f $$3 = ege.a(ege.b(egh.a(35), 0));
-      ege.f $$4 = ege.a(egh.c(5), 0);
-      ege.f $$5 = ege.b();
-      ege.f $$6 = ege.a(efw.ac, -0.012);
-      ege.f $$7 = ege.a(efw.ad, -0.012);
-      ege.f $$8 = ege.a(efw.ae, -0.012);
-      ege.f $$9 = ege.a(efw.af, 0.54);
-      ege.f $$10 = ege.a(efw.ag, 1.17);
-      ege.f $$11 = ege.a(efw.ah, 0.0);
-      ege.o $$12 = ege.a($$8, ege.a($$2, ege.a($$3, p)));
-      return ege.a(
-         ege.a(ege.a("bedrock_floor", egh.a(), egh.b(5)), b),
-         ege.a(ege.a(ege.a("bedrock_roof", egh.c(5), egh.b())), b),
-         ege.a($$4, z),
-         ege.a(ege.a(djz.ah), ege.a(ege.a(ege.f, C), ege.a(ege.b, ege.a($$12, ege.a($$11, C), D)))),
-         ege.a(ege.a(djz.ag), ege.a(ege.a(ege.f, ege.a(ege.a($$11, A), B)), ege.a(ege.b, ege.a($$12, ege.a($$11, A), B)))),
-         ege.a(
-            ege.a,
-            ege.a(
-               ege.a(ege.a($$1), ege.a($$5, y)),
-               ege.a(ege.a(djz.ae), ege.a(ege.a($$9), ege.a($$0, ege.a(ege.a($$10, E), F)))),
-               ege.a(ege.a(djz.af), ege.a(ege.a($$9), ege.a($$0, ege.a(ege.a($$10, G), H))))
+   public static egp.o b() {
+      egp.f $$0 = egp.a(egs.a(31), 0);
+      egp.f $$1 = egp.a(egs.a(32), 0);
+      egp.f $$2 = egp.b(egs.a(30), 0);
+      egp.f $$3 = egp.a(egp.b(egs.a(35), 0));
+      egp.f $$4 = egp.a(egs.c(5), 0);
+      egp.f $$5 = egp.b();
+      egp.f $$6 = egp.a(egh.ac, -0.012);
+      egp.f $$7 = egp.a(egh.ad, -0.012);
+      egp.f $$8 = egp.a(egh.ae, -0.012);
+      egp.f $$9 = egp.a(egh.af, 0.54);
+      egp.f $$10 = egp.a(egh.ag, 1.17);
+      egp.f $$11 = egp.a(egh.ah, 0.0);
+      egp.o $$12 = egp.a($$8, egp.a($$2, egp.a($$3, p)));
+      return egp.a(
+         egp.a(egp.a("bedrock_floor", egs.a(), egs.b(5)), b),
+         egp.a(egp.a(egp.a("bedrock_roof", egs.c(5), egs.b())), b),
+         egp.a($$4, z),
+         egp.a(egp.a(dkf.ah), egp.a(egp.a(egp.f, C), egp.a(egp.b, egp.a($$12, egp.a($$11, C), D)))),
+         egp.a(egp.a(dkf.ag), egp.a(egp.a(egp.f, egp.a(egp.a($$11, A), B)), egp.a(egp.b, egp.a($$12, egp.a($$11, A), B)))),
+         egp.a(
+            egp.a,
+            egp.a(
+               egp.a(egp.a($$1), egp.a($$5, y)),
+               egp.a(egp.a(dkf.ae), egp.a(egp.a($$9), egp.a($$0, egp.a(egp.a($$10, E), F)))),
+               egp.a(egp.a(dkf.af), egp.a(egp.a($$9), egp.a($$0, egp.a(egp.a($$10, G), H))))
             )
          ),
-         ege.a(
-            ege.a(djz.ad),
-            ege.a(
-               ege.a(ege.b, ege.a($$6, ege.a(ege.a(ege.a($$5), ege.a($$2, ege.a($$3, A))), z))),
-               ege.a(ege.a, ege.a($$0, ege.a($$3, ege.a($$7, ege.a(ege.a($$1, p), ege.a(ege.a($$5), p))))))
+         egp.a(
+            egp.a(dkf.ad),
+            egp.a(
+               egp.a(egp.b, egp.a($$6, egp.a(egp.a(egp.a($$5), egp.a($$2, egp.a($$3, A))), z))),
+               egp.a(egp.a, egp.a($$0, egp.a($$3, egp.a($$7, egp.a(egp.a($$1, p), egp.a(egp.a($$5), p))))))
             )
          ),
          z
       );
    }
 
-   public static ege.o c() {
+   public static egp.o c() {
       return I;
    }
 
-   public static ege.o d() {
+   public static egp.o d() {
       return a;
    }
 
-   private static ege.f a(double $$0) {
-      return ege.a(efw.N, $$0 / 8.25, Double.MAX_VALUE);
+   private static egp.f a(double $$0) {
+      return egp.a(egh.N, $$0 / 8.25, Double.MAX_VALUE);
    }
 }

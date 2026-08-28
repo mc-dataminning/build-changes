@@ -1,41 +1,34 @@
-import java.io.IOException;
-import java.io.InputStream;
-import java.util.Optional;
-import java.util.Set;
-import java.util.function.BiConsumer;
-import javax.annotation.Nullable;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
+import java.util.regex.Pattern;
 
-public interface atn extends AutoCloseable {
-   String a = ".mcmeta";
-   String b = "pack.mcmeta";
+public record atn(List<atn.a> b) {
+   private static final Pattern c = Pattern.compile("[-_a-zA-Z0-9.]+");
+   private static final Codec<atn> d = RecordCodecBuilder.create($$0 -> $$0.group(atn.a.c.listOf().fieldOf("entries").forGetter(atn::a)).apply($$0, atn::new));
+   public static final auc<atn> a = new auc<>("overlays", d);
 
-   @Nullable
-   aus<InputStream> a(String... var1);
-
-   @Nullable
-   aus<InputStream> a(atp var1, ale var2);
-
-   void a(atp var1, String var2, String var3, atn.a var4);
-
-   Set<String> a(atp var1);
-
-   @Nullable
-   <T> T a(aua<T> var1) throws IOException;
-
-   atm a();
-
-   default String b() {
-      return this.a().a();
+   private static DataResult<String> a(String $$0) {
+      return !c.matcher($$0).matches() ? DataResult.error(() -> $$0 + " is not accepted directory name") : DataResult.success($$0);
    }
 
-   default Optional<auh> c() {
-      return this.a().d();
+   public List<String> a(int $$0) {
+      return this.b.stream().filter($$1 -> $$1.a($$0)).map(atn.a::b).toList();
    }
 
-   @Override
-   void close();
+   public List<atn.a> a() {
+      return this.b;
+   }
 
-   @FunctionalInterface
-   public interface a extends BiConsumer<ale, aus<InputStream>> {
+   public static record a(aze<Integer> a, String b) {
+      static final Codec<atn.a> c = RecordCodecBuilder.create(
+         $$0 -> $$0.group(aze.a(Codec.INT).fieldOf("formats").forGetter(atn.a::a), Codec.STRING.validate(atn::a).fieldOf("directory").forGetter(atn.a::b))
+               .apply($$0, atn.a::new)
+      );
+
+      public boolean a(int $$0) {
+         return this.a.a($$0);
+      }
    }
 }

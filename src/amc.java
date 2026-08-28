@@ -1,84 +1,78 @@
-import com.mojang.datafixers.util.Pair;
-import com.mojang.logging.LogUtils;
-import java.util.List;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.Executor;
-import java.util.stream.Stream;
-import net.minecraft.server.MinecraftServer;
-import org.slf4j.Logger;
+import it.unimi.dsi.fastutil.objects.Object2IntLinkedOpenHashMap;
+import it.unimi.dsi.fastutil.objects.Object2IntMaps;
+import it.unimi.dsi.fastutil.objects.ObjectIterator;
+import it.unimi.dsi.fastutil.objects.Object2IntMap.Entry;
+import java.util.Queue;
 
 public class amc {
-   private static final Logger a = LogUtils.getLogger();
+   private static final int a = 8;
+   private final Queue<amc.a> b = new axy<>();
+   private final Object2IntLinkedOpenHashMap<amc.b> c = new Object2IntLinkedOpenHashMap();
 
-   public static <D, R> CompletableFuture<R> a(amc.c $$0, amc.f<D> $$1, amc.e<D, R> $$2, Executor $$3, Executor $$4) {
-      try {
-         Pair<djn, auq> $$5 = $$0.a.a();
-         auq $$6 = (auq)$$5.getSecond();
-         jl<aln> $$7 = aln.a();
-         List<jr.a<?>> $$8 = axq.a($$6, $$7.a(aln.a));
-         js.b $$9 = $$7.b(aln.b);
-         List<jg.b<?>> $$10 = axq.a($$9, $$8);
-         js.b $$11 = akz.a($$6, $$10, akz.a);
-         List<jg.b<?>> $$12 = Stream.concat($$10.stream(), $$11.c()).toList();
-         js.b $$13 = akz.a($$6, $$12, akz.b);
-         djn $$14 = (djn)$$5.getFirst();
-         jg.a $$15 = jg.a.a($$12.stream());
-         amc.b<D> $$16 = $$1.get(new amc.a($$6, $$14, $$15, $$13));
-         jl<aln> $$17 = $$7.a(aln.b, $$11, $$16.b);
-         return alp.a($$6, $$17, $$8, $$14.b(), $$0.b(), $$0.c(), $$3, $$4).whenComplete(($$1x, $$2x) -> {
-            if ($$2x != null) {
-               $$6.close();
-            }
-         }).thenApplyAsync($$4x -> {
-            $$4x.g();
-            return $$2.create($$6, $$4x, $$17, $$16.a);
-         }, $$4);
-      } catch (Exception var18) {
-         return CompletableFuture.failedFuture(var18);
-      }
+   private static long b() {
+      return System.currentTimeMillis();
    }
 
-   public static record a(avb a, djn b, jg.a c, js.b d) {
-   }
+   public synchronized void a(String $$0, Throwable $$1) {
+      long $$2 = b();
+      String $$3 = $$1.getMessage();
+      this.b.add(new amc.a($$2, $$0, (Class<? extends Throwable>)$$1.getClass(), $$3));
 
-   public static record b<D>(D a, js.b b) {
-   }
-
-   public static record c(amc.d a, ej.a b, int c) {
-   }
-
-   public static record d(aul a, djn b, boolean c, boolean d) {
-      public Pair<djn, auq> a() {
-         djn $$0 = MinecraftServer.a(this.a, this.b, this.d, this.c);
-         List<atn> $$1 = this.a.h();
-         auq $$2 = new aut(atp.b, $$1);
-         return Pair.of($$0, $$2);
+      while (this.b.size() > 8) {
+         this.b.remove();
       }
 
-      public aul b() {
-         return this.a;
-      }
-
-      public djn c() {
-         return this.b;
-      }
-
-      public boolean d() {
-         return this.c;
-      }
-
-      public boolean e() {
-         return this.d;
-      }
+      amc.b $$4 = new amc.b($$0, (Class<? extends Throwable>)$$1.getClass());
+      int $$5 = this.c.getInt($$4);
+      this.c.putAndMoveToFirst($$4, $$5 + 1);
    }
 
-   @FunctionalInterface
-   public interface e<D, R> {
-      R create(auq var1, alp var2, jl<aln> var3, D var4);
+   public synchronized String a() {
+      long $$0 = b();
+      StringBuilder $$1 = new StringBuilder();
+      if (!this.b.isEmpty()) {
+         $$1.append("\n\t\tLatest entries:\n");
+
+         for (amc.a $$2 : this.b) {
+            $$1.append("\t\t\t")
+               .append($$2.b)
+               .append(":")
+               .append($$2.c)
+               .append(": ")
+               .append($$2.d)
+               .append(" (")
+               .append($$0 - $$2.a)
+               .append("ms ago)")
+               .append("\n");
+         }
+      }
+
+      if (!this.c.isEmpty()) {
+         if ($$1.isEmpty()) {
+            $$1.append("\n");
+         }
+
+         $$1.append("\t\tEntry counts:\n");
+         ObjectIterator var6 = Object2IntMaps.fastIterable(this.c).iterator();
+
+         while (var6.hasNext()) {
+            Entry<amc.b> $$3 = (Entry<amc.b>)var6.next();
+            $$1.append("\t\t\t")
+               .append(((amc.b)$$3.getKey()).a)
+               .append(":")
+               .append(((amc.b)$$3.getKey()).b)
+               .append(" x ")
+               .append($$3.getIntValue())
+               .append("\n");
+         }
+      }
+
+      return $$1.isEmpty() ? "~~NONE~~" : $$1.toString();
    }
 
-   @FunctionalInterface
-   public interface f<D> {
-      amc.b<D> get(amc.a var1);
+   static record a(long a, String b, Class<? extends Throwable> c, String d) {
+   }
+
+   static record b(String a, Class<? extends Throwable> b) {
    }
 }

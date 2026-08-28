@@ -1,20 +1,16 @@
-import io.netty.buffer.ByteBuf;
-import java.util.List;
-
-public record abc(ald<? extends jr<?>> b, List<jv.a> c) implements zd<aba> {
-   private static final yu<ByteBuf, ald<? extends jr<?>>> d = ale.b.a(ald::a, ald::a);
-   public static final yu<vs, abc> a = yu.a(d, abc::b, jv.a.a.a(ys.a()), abc::e, abc::new);
-
+public interface abc extends zl {
    @Override
-   public zf<abc> a() {
-      return abg.b;
+   default vs b() {
+      return vs.e;
    }
 
-   public void a(aba $$0) {
-      $$0.a(this);
-   }
+   void a(abd var1);
 
-   public List<jv.a> e() {
-      return this.c;
-   }
+   void a(abe var1);
+
+   void a(abh var1);
+
+   void a(abg var1);
+
+   void a(abf var1);
 }

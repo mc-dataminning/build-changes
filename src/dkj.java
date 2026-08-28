@@ -1,59 +1,57 @@
+import com.google.common.collect.Sets;
+import com.mojang.datafixers.util.Pair;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Set;
+import java.util.function.Predicate;
 import java.util.stream.Stream;
+import javax.annotation.Nullable;
 
-public class dkj extends djw {
-   public static final MapCodec<dkj> b = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(alc.d(djz.ai), alc.d(djz.aj), alc.d(djz.ak), alc.d(djz.al), alc.d(djz.am)).apply($$0, $$0.stable(dkj::new))
-   );
-   private final je<djs> c;
-   private final je<djs> d;
-   private final je<djs> e;
-   private final je<djs> f;
-   private final je<djs> g;
+public class dkj extends dkc implements dka.a {
+   public static final MapCodec<dkj> b = djy.c.fieldOf("biome").xmap(dkj::new, $$0 -> $$0.c).stable();
+   private final je<djy> c;
 
-   public static dkj a(jf<djs> $$0) {
-      return new dkj($$0.b(djz.ai), $$0.b(djz.aj), $$0.b(djz.ak), $$0.b(djz.al), $$0.b(djz.am));
-   }
-
-   private dkj(je<djs> $$0, je<djs> $$1, je<djs> $$2, je<djs> $$3, je<djs> $$4) {
+   public dkj(je<djy> $$0) {
       this.c = $$0;
-      this.d = $$1;
-      this.e = $$2;
-      this.f = $$3;
-      this.g = $$4;
    }
 
    @Override
-   protected Stream<je<djs>> b() {
-      return Stream.of(this.c, this.d, this.e, this.f, this.g);
+   protected Stream<je<djy>> b() {
+      return Stream.of(this.c);
    }
 
    @Override
-   protected MapCodec<? extends djw> a() {
+   protected MapCodec<? extends dkc> a() {
       return b;
    }
 
    @Override
-   public je<djs> getNoiseBiome(int $$0, int $$1, int $$2, dkb.f $$3) {
-      int $$4 = jp.c($$0);
-      int $$5 = jp.c($$1);
-      int $$6 = jp.c($$2);
-      int $$7 = jx.a($$4);
-      int $$8 = jx.a($$6);
-      if ((long)$$7 * (long)$$7 + (long)$$8 * (long)$$8 <= 4096L) {
-         return this.c;
+   public je<djy> getNoiseBiome(int $$0, int $$1, int $$2, dkh.f $$3) {
+      return this.c;
+   }
+
+   @Override
+   public je<djy> getNoiseBiome(int $$0, int $$1, int $$2) {
+      return this.c;
+   }
+
+   @Nullable
+   @Override
+   public Pair<iu, je<djy>> a(int $$0, int $$1, int $$2, int $$3, int $$4, Predicate<je<djy>> $$5, azv $$6, boolean $$7, dkh.f $$8) {
+      if ($$5.test(this.c)) {
+         return $$7 ? Pair.of(new iu($$0, $$1, $$2), this.c) : Pair.of(new iu($$0 - $$3 + $$6.a($$3 * 2 + 1), $$1, $$2 - $$3 + $$6.a($$3 * 2 + 1)), this.c);
       } else {
-         int $$9 = (jx.a($$4) * 2 + 1) * 8;
-         int $$10 = (jx.a($$6) * 2 + 1) * 8;
-         double $$11 = $$3.e().a(new efg.e($$9, $$5, $$10));
-         if ($$11 > 0.25) {
-            return this.d;
-         } else if ($$11 >= -0.0625) {
-            return this.e;
-         } else {
-            return $$11 < -0.21875 ? this.f : this.g;
-         }
+         return null;
       }
+   }
+
+   @Nullable
+   @Override
+   public Pair<iu, je<djy>> a(iu $$0, int $$1, int $$2, int $$3, Predicate<je<djy>> $$4, dkh.f $$5, diy $$6) {
+      return $$4.test(this.c) ? Pair.of($$0, this.c) : null;
+   }
+
+   @Override
+   public Set<je<djy>> a(int $$0, int $$1, int $$2, int $$3, dkh.f $$4) {
+      return Sets.newHashSet(Set.of(this.c));
    }
 }

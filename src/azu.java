@@ -1,6 +1,11 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-
 public interface azu {
-   <T> DataResult<T> a(Codec<T> var1, T var2, jg.a var3);
+   void a(wy var1);
+
+   void b(wy var1);
+
+   void c(wy var1);
+
+   void a(int var1);
+
+   void a();
 }

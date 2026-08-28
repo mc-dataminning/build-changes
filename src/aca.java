@@ -1,31 +1,44 @@
-public class aca implements zd<abs> {
-   public static final yu<wh, aca> a = yu.a(iu.b, aca::e, ys.a(dlu.k), aca::b, aca::new);
-   private final iu b;
-   private final dzo c;
+import java.util.function.BiFunction;
 
-   public aca(iu $$0, dzo $$1) {
-      this.b = $$0;
-      this.c = $$1;
+public class aca implements zf<abu> {
+   public static final yw<wj, aca> a = yw.a(iu.b, aca::b, yu.a(mg.e), aca::e, yu.s, aca::f, aca::new);
+   private final iu b;
+   private final dwz<?> c;
+   private final tz d;
+
+   public static aca a(dwx $$0, BiFunction<dwx, js, tz> $$1) {
+      js $$2 = $$0.i().F_();
+      return new aca($$0.aw_(), $$0.p(), $$1.apply($$0, $$2));
    }
 
-   public aca(dhv $$0, iu $$1) {
-      this($$1, $$0.a_($$1));
+   public static aca a(dwx $$0) {
+      return a($$0, dwx::a);
+   }
+
+   private aca(iu $$0, dwz<?> $$1, tz $$2) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
    }
 
    @Override
-   public zf<aca> a() {
-      return agl.j;
+   public zh<aca> a() {
+      return agn.h;
    }
 
-   public void a(abs $$0) {
+   public void a(abu $$0) {
       $$0.a(this);
    }
 
-   public dzo b() {
+   public iu b() {
+      return this.b;
+   }
+
+   public dwz<?> e() {
       return this.c;
    }
 
-   public iu e() {
-      return this.b;
+   public tz f() {
+      return this.d;
    }
 }

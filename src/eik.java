@@ -1,64 +1,42 @@
-import com.google.common.collect.ImmutableList;
 import com.mojang.serialization.Codec;
 
-public class eik extends eit<ekt> {
-   private static final ImmutableList<dlu> a = ImmutableList.of(dlw.I, dlw.fI, dlw.fJ, dlw.fK, dlw.fL, dlw.cD, dlw.cA);
-   private static final ja[] b = ja.values();
-   private static final double c = 0.9;
-
-   public eik(Codec<ekt> $$0) {
+public class eik extends eje<elb> {
+   public eik(Codec<elb> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(eiv<ekt> $$0) {
-      boolean $$1 = false;
-      azt $$2 = $$0.d();
-      djo $$3 = $$0.b();
-      ekt $$4 = $$0.f();
-      iu $$5 = $$0.e();
-      boolean $$6 = $$2.j() < 0.9;
-      int $$7 = $$6 ? $$4.d().a($$2) : 0;
-      int $$8 = $$6 ? $$4.d().a($$2) : 0;
-      boolean $$9 = $$6 && $$7 != 0 && $$8 != 0;
-      int $$10 = $$4.c().a($$2);
-      int $$11 = $$4.c().a($$2);
-      int $$12 = Math.max($$10, $$11);
+   public boolean a(ejg<elb> $$0) {
+      iu $$1 = $$0.e();
+      dju $$2 = $$0.b();
+      azv $$3 = $$0.d();
 
-      for (iu $$13 : iu.a($$5, $$10, 0, $$11)) {
-         if ($$13.k($$5) > $$12) {
-            break;
-         }
-
-         if (a($$3, $$13, $$4)) {
-            if ($$9) {
-               $$1 = true;
-               this.a($$3, $$13, $$4.b());
-            }
-
-            iu $$14 = $$13.b($$7, 0, $$8);
-            if (a($$3, $$14, $$4)) {
-               $$1 = true;
-               this.a($$3, $$14, $$4.a());
+      elb $$4;
+      for ($$4 = $$0.f(); $$1.v() > $$2.G_() + 3; $$1 = $$1.e()) {
+         if (!$$2.v($$1.e())) {
+            dzz $$5 = $$2.a_($$1.e());
+            if (b($$5) || a($$5)) {
+               break;
             }
          }
       }
 
-      return $$1;
-   }
-
-   private static boolean a(diq $$0, iu $$1, ekt $$2) {
-      dzo $$3 = $$0.a_($$1);
-      if ($$3.a($$2.a().b())) {
-         return false;
-      } else if (a.contains($$3.b())) {
+      if ($$1.v() <= $$2.G_() + 3) {
          return false;
       } else {
-         for (ja $$4 : b) {
-            boolean $$5 = $$0.a_($$1.a($$4)).l();
-            if ($$5 && $$4 != ja.b || !$$5 && $$4 == ja.b) {
-               return false;
+         for (int $$6 = 0; $$6 < 3; $$6++) {
+            int $$7 = $$3.a(2);
+            int $$8 = $$3.a(2);
+            int $$9 = $$3.a(2);
+            float $$10 = (float)($$7 + $$8 + $$9) * 0.333F + 0.5F;
+
+            for (iu $$11 : iu.c($$1.b(-$$7, -$$8, -$$9), $$1.b($$7, $$8, $$9))) {
+               if ($$11.j($$1) <= (double)($$10 * $$10)) {
+                  $$2.a($$11, $$4.b, 3);
+               }
             }
+
+            $$1 = $$1.b(-1 + $$3.a(2), -$$3.a(2), -1 + $$3.a(2));
          }
 
          return true;

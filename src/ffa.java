@@ -1,53 +1,24 @@
-import com.mojang.authlib.GameProfile;
-import javax.annotation.Nullable;
+import it.unimi.dsi.fastutil.doubles.DoubleList;
 
-public interface ffa {
-   String cn = "*";
-   ffa co = new ffa() {
-      @Override
-      public String cI() {
-         return "*";
-      }
-   };
+public class ffa extends ffc {
+   private final ffc b;
+   private final ja.a c;
+   private static final DoubleList d = new feo(1);
 
-   String cI();
-
-   @Nullable
-   default ww m_() {
-      return null;
+   public ffa(ffc $$0, ja.a $$1, int $$2) {
+      super(a($$0.a, $$1, $$2));
+      this.b = $$0;
+      this.c = $$1;
    }
 
-   default ww hc() {
-      ww $$0 = this.m_();
-      return $$0 != null ? $$0.f().a($$0x -> $$0x.a(new xc.e(ww.b(this.cI())))) : ww.b(this.cI());
+   private static fer a(fer $$0, ja.a $$1, int $$2) {
+      return new ffb(
+         $$0, $$1.a($$2, 0, 0), $$1.a(0, $$2, 0), $$1.a(0, 0, $$2), $$1.a($$2 + 1, $$0.a, $$0.a), $$1.a($$0.b, $$2 + 1, $$0.b), $$1.a($$0.c, $$0.c, $$2 + 1)
+      );
    }
 
-   static ffa c(final String $$0) {
-      if ($$0.equals("*")) {
-         return co;
-      } else {
-         final ww $$1 = ww.b($$0);
-         return new ffa() {
-            @Override
-            public String cI() {
-               return $$0;
-            }
-
-            @Override
-            public ww hc() {
-               return $$1;
-            }
-         };
-      }
-   }
-
-   static ffa a(GameProfile $$0) {
-      final String $$1 = $$0.getName();
-      return new ffa() {
-         @Override
-         public String cI() {
-            return $$1;
-         }
-      };
+   @Override
+   public DoubleList a(ja.a $$0) {
+      return $$0 == this.c ? d : this.b.a($$0);
    }
 }

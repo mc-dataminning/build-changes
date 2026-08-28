@@ -1,24 +1,21 @@
-public abstract class gzi<S extends hbp, M extends gfd<S>> extends gzy<S, M> {
-   public gzi(gxh<S, M> $$0) {
-      super($$0);
+public class gzi extends gwq<cov, hex, gim> {
+   private static final alg a = alg.b("textures/entity/piglin/zombified_piglin.png");
+
+   public gzi(gvz.a $$0, gis $$1, gis $$2, gis $$3, gis $$4, gis $$5, gis $$6) {
+      super($$0, new gim($$0.a($$1)), new gim($$0.a($$2)), 0.5F, gxp.a);
+      this.a(new hac<>(this, new ggd($$0.a($$3)), new ggd($$0.a($$4)), new ggd($$0.a($$5)), new ggd($$0.a($$6)), $$0.h()));
    }
 
-   @Override
-   public void a(fiq $$0, gpd $$1, int $$2, S $$3, float $$4, float $$5) {
-      if (this.a($$3)) {
-         float $$6 = $$3.u;
-         M $$7 = this.c();
-         fiu $$8 = $$1.getBuffer(gpn.b(this.a(), this.a($$6) % 1.0F, $$6 * 0.01F % 1.0F));
-         $$7.a($$3);
-         $$7.a($$0, $$8, $$2, hhp.d, -8355712);
-      }
+   public alg a(hex $$0) {
+      return a;
    }
 
-   protected abstract boolean a(S var1);
+   public hex b() {
+      return new hex();
+   }
 
-   protected abstract float a(float var1);
-
-   protected abstract ale a();
-
-   protected abstract M c();
+   public void a(cov $$0, hex $$1, float $$2) {
+      super.a($$0, $$1, $$2);
+      $$1.a = $$0.gh();
+   }
 }

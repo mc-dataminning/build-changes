@@ -1,87 +1,57 @@
+import com.google.common.collect.Sets;
 import java.util.EnumSet;
-import javax.annotation.Nullable;
+import java.util.List;
+import java.util.Set;
 
-public class ces extends cdv {
-   public static final int a = 120;
-   protected final bxh b;
-   protected double c;
-   protected double d;
-   protected double e;
-   protected final double f;
-   protected int g;
-   protected boolean h;
-   private final boolean i;
+public class ces<T extends cso> extends cdy {
+   private static final int a = 20;
+   private static final float b = 1.0F;
+   private final T c;
+   private int d;
 
-   public ces(bxh $$0, double $$1) {
-      this($$0, $$1, 120);
-   }
-
-   public ces(bxh $$0, double $$1, int $$2) {
-      this($$0, $$1, $$2, true);
-   }
-
-   public ces(bxh $$0, double $$1, int $$2, boolean $$3) {
-      this.b = $$0;
-      this.f = $$1;
-      this.g = $$2;
-      this.i = $$3;
-      this.a(EnumSet.of(cdv.a.a));
+   public ces(T $$0) {
+      this.c = $$0;
+      this.a(EnumSet.of(cdy.a.a));
    }
 
    @Override
    public boolean b() {
-      if (this.b.cX()) {
-         return false;
-      } else {
-         if (!this.h) {
-            if (this.i && this.b.ev() >= 100) {
-               return false;
-            }
-
-            if (this.b.dY().a(b(this.g)) != 0) {
-               return false;
-            }
-         }
-
-         fdw $$0 = this.h();
-         if ($$0 == null) {
-            return false;
-         } else {
-            this.c = $$0.d;
-            this.d = $$0.e;
-            this.e = $$0.f;
-            this.h = false;
-            return true;
-         }
-      }
-   }
-
-   @Nullable
-   protected fdw h() {
-      return chs.a(this.b, 10, 7);
+      return this.c.f() == null && !this.c.cX() && this.c.gE() && !this.c.gB().a() && !a(this.c.dV()).c(this.c.dv());
    }
 
    @Override
    public boolean c() {
-      return !this.b.O().k() && !this.b.cX();
+      return this.c.gE() && !this.c.gB().a() && !a(this.c.dV()).c(this.c.dv());
    }
 
    @Override
-   public void d() {
-      this.b.O().a(this.c, this.d, this.e, this.f);
+   public void a() {
+      if (this.c.gE()) {
+         csn $$0 = this.c.gB();
+         if (this.c.af > this.d) {
+            this.d = this.c.af + 20;
+            this.a($$0);
+         }
+
+         if (!this.c.gm()) {
+            fei $$1 = chv.a(this.c, 15, 4, fei.c($$0.q()), (float) (Math.PI / 2));
+            if ($$1 != null) {
+               this.c.O().a($$1.d, $$1.e, $$1.f, 1.0);
+            }
+         }
+      }
    }
 
-   @Override
-   public void e() {
-      this.b.O().m();
-      super.e();
-   }
+   private void a(csn $$0) {
+      if ($$0.r()) {
+         arq $$1 = a(this.c.dV());
+         Set<cso> $$2 = Sets.newHashSet();
+         List<cso> $$3 = $$1.a(cso.class, this.c.cR().g(16.0), $$0x -> !$$0x.gE() && csp.a($$0x));
+         $$2.addAll($$3);
 
-   public void i() {
-      this.h = true;
-   }
-
-   public void c(int $$0) {
-      this.g = $$0;
+         for (cso $$4 : $$2) {
+            $$0.a($$1, $$0.j(), $$4, null, true);
+         }
+      }
    }
 }

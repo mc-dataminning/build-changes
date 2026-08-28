@@ -1,77 +1,166 @@
-import it.unimi.dsi.fastutil.objects.ObjectArrayList;
-import it.unimi.dsi.fastutil.objects.ObjectList;
-import java.util.BitSet;
-import java.util.Objects;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.Lifecycle;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
+import java.util.UUID;
 import javax.annotation.Nullable;
 
-public class xe {
-   private final xg[] a;
-   private int b;
-   private int c;
-   @Nullable
-   private xi d;
+public interface xe {
+   Codec<xe> a = xe.a.e.dispatch("action", xe::a, $$0 -> $$0.h);
 
-   public xe(int $$0) {
-      this.a = new xg[$$0];
+   xe.a a();
+
+   public static enum a implements bak {
+      a("show_text", true, xe.e.b),
+      b("show_item", true, xe.d.b),
+      c("show_entity", true, xe.c.b);
+
+      public static final Codec<xe.a> d = bak.b(xe.a::values);
+      public static final Codec<xe.a> e = d.validate(xe.a::a);
+      private final String f;
+      private final boolean g;
+      final MapCodec<? extends xe> h;
+
+      private a(final String $$0, final boolean $$1, final MapCodec<? extends xe> $$2) {
+         this.f = $$0;
+         this.g = $$1;
+         this.h = $$2;
+      }
+
+      public boolean a() {
+         return this.g;
+      }
+
+      @Override
+      public String c() {
+         return this.f;
+      }
+
+      @Override
+      public String toString() {
+         return "<action " + this.f + ">";
+      }
+
+      private static DataResult<xe.a> a(xe.a $$0) {
+         return !$$0.a() ? DataResult.error(() -> "Action not allowed: " + $$0) : DataResult.success($$0, Lifecycle.stable());
+      }
    }
 
-   public boolean a(xi $$0, boolean $$1) {
-      if (Objects.equals($$0, this.d)) {
+   public static class b {
+      public static final MapCodec<xe.b> a = RecordCodecBuilder.mapCodec(
+         $$0 -> $$0.group(
+                  mf.f.q().fieldOf("id").forGetter($$0x -> $$0x.b),
+                  jy.f.fieldOf("uuid").forGetter($$0x -> $$0x.c),
+                  xa.a.optionalFieldOf("name").forGetter($$0x -> $$0x.d)
+               )
+               .apply($$0, xe.b::new)
+      );
+      public final bwm<?> b;
+      public final UUID c;
+      public final Optional<wy> d;
+      @Nullable
+      private List<wy> e;
+
+      public b(bwm<?> $$0, UUID $$1, @Nullable wy $$2) {
+         this($$0, $$1, Optional.ofNullable($$2));
+      }
+
+      public b(bwm<?> $$0, UUID $$1, Optional<wy> $$2) {
+         this.b = $$0;
+         this.c = $$1;
+         this.d = $$2;
+      }
+
+      public List<wy> a() {
+         if (this.e == null) {
+            this.e = new ArrayList<>();
+            this.d.ifPresent(this.e::add);
+            this.e.add(wy.a("gui.entity_tooltip.type", this.b.h()));
+            this.e.add(wy.b(this.c.toString()));
+         }
+
+         return this.e;
+      }
+
+      @Override
+      public boolean equals(Object $$0) {
+         if (this == $$0) {
+            return true;
+         } else if ($$0 != null && this.getClass() == $$0.getClass()) {
+            xe.b $$1 = (xe.b)$$0;
+            return this.b.equals($$1.b) && this.c.equals($$1.c) && this.d.equals($$1.d);
+         } else {
+            return false;
+         }
+      }
+
+      @Override
+      public int hashCode() {
+         int $$0 = this.b.hashCode();
+         $$0 = 31 * $$0 + this.c.hashCode();
+         return 31 * $$0 + this.d.hashCode();
+      }
+   }
+
+   public static record c(xe.b c) implements xe {
+      public static final MapCodec<xe.c> b = RecordCodecBuilder.mapCodec($$0 -> $$0.group(xe.b.a.forGetter(xe.c::b)).apply($$0, xe.c::new));
+
+      @Override
+      public xe.a a() {
+         return xe.a.c;
+      }
+
+      public xe.b b() {
+         return this.c;
+      }
+   }
+
+   public static record d(cyy c) implements xe {
+      public static final MapCodec<xe.d> b = cyy.a.xmap(xe.d::new, xe.d::b);
+
+      public d(cyy c) {
+         c = c.v();
+         this.c = c;
+      }
+
+      @Override
+      public xe.a a() {
+         return xe.a.b;
+      }
+
+      @Override
+      public boolean equals(Object $$0) {
+         if ($$0 instanceof xe.d $$1 && cyy.a(this.c, $$1.c)) {
+            return true;
+         }
+
          return false;
-      } else {
-         this.d = $$0;
-         this.a($$1 ? new xg($$0, true) : null);
-         return true;
+      }
+
+      @Override
+      public int hashCode() {
+         return cyy.b(this.c);
+      }
+
+      public cyy b() {
+         return this.c;
       }
    }
 
-   private void a(@Nullable xg $$0) {
-      int $$1 = this.b;
-      this.b = ($$1 + 1) % this.a.length;
-      this.c++;
-      this.a[$$1] = $$0;
-   }
+   public static record e(wy c) implements xe {
+      public static final MapCodec<xe.e> b = RecordCodecBuilder.mapCodec($$0 -> $$0.group(xa.a.fieldOf("value").forGetter(xe.e::b)).apply($$0, xe.e::new));
 
-   public void a(xi $$0) {
-      for (int $$1 = 0; $$1 < this.a.length; $$1++) {
-         xg $$2 = this.a[$$1];
-         if ($$2 != null && $$2.c() && $$0.equals($$2.b())) {
-            this.a[$$1] = null;
-            break;
-         }
-      }
-   }
-
-   public int a() {
-      int $$0 = this.c;
-      this.c = 0;
-      return $$0;
-   }
-
-   public xe.a b() {
-      int $$0 = this.a();
-      BitSet $$1 = new BitSet(this.a.length);
-      ObjectList<xi> $$2 = new ObjectArrayList(this.a.length);
-
-      for (int $$3 = 0; $$3 < this.a.length; $$3++) {
-         int $$4 = (this.b + $$3) % this.a.length;
-         xg $$5 = this.a[$$4];
-         if ($$5 != null) {
-            $$1.set($$3, true);
-            $$2.add($$5.b());
-            this.a[$$4] = $$5.a();
-         }
+      @Override
+      public xe.a a() {
+         return xe.a.a;
       }
 
-      xd $$6 = new xd($$2);
-      xd.b $$7 = new xd.b($$0, $$1);
-      return new xe.a($$6, $$7);
-   }
-
-   public int c() {
-      return this.c;
-   }
-
-   public static record a(xd a, xd.b b) {
+      public wy b() {
+         return this.c;
+      }
    }
 }

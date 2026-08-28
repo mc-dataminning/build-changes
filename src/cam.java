@@ -2,25 +2,14 @@ import com.mojang.datafixers.kinds.App;
 import java.util.function.Function;
 
 public class cam {
-   private static final float b = 0.95F;
-   public static final int a = 3;
-
-   public static byr<bwz> a() {
-      return ccd.a((Function<ccd.b<bwz>, ? extends App<ccd.c<bwz>, ccg<bwz>>>)($$0 -> $$0.group($$0.b(cgb.e)).apply($$0, $$1 -> ($$2, $$3, $$4) -> {
-               if ($$2.A.i() <= 0.95F) {
-                  return false;
-               } else {
-                  iu $$5 = $$0.<jd>b($$1).b();
-                  if ($$5.a($$3.dv(), 3.0)) {
-                     dzo $$6 = $$2.a_($$5);
-                     if ($$6.a(dlw.oF)) {
-                        dlq $$7 = (dlq)$$6.b();
-                        $$7.a($$3, $$2, $$5, null);
-                     }
-                  }
-
-                  return true;
+   public static byu<bxc> a() {
+      return ccg.a((Function<ccg.b<bxc>, ? extends App<ccg.c<bxc>, ccj<bxc>>>)($$0 -> $$0.group($$0.b(cge.E)).apply($$0, $$0x -> ($$0xx, $$1, $$2) -> {
+               csn $$3 = $$0xx.d($$1.dv());
+               if ($$3 == null) {
+                  $$1.eb().a(csr.j);
                }
+
+               return true;
             })));
    }
 }

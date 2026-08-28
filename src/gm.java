@@ -12,8 +12,8 @@ import java.util.concurrent.CompletableFuture;
 
 public class gm implements ArgumentType<gh> {
    private static final Collection<String> c = Arrays.asList("0 0 0", "~ ~ ~", "^ ^ ^", "^1 ^ ^-5", "0.1 -0.5 .9", "~0.5 ~1 ~-5");
-   public static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(ww.c("argument.pos3d.incomplete"));
-   public static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(ww.c("argument.pos.mixed"));
+   public static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(wy.c("argument.pos3d.incomplete"));
+   public static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(wy.c("argument.pos.mixed"));
    private final boolean d;
 
    public gm(boolean $$0) {
@@ -28,7 +28,7 @@ public class gm implements ArgumentType<gh> {
       return new gm($$0);
    }
 
-   public static fdw a(CommandContext<ei> $$0, String $$1) {
+   public static fei a(CommandContext<ei> $$0, String $$1) {
       return ((gh)$$0.getArgument($$1, gh.class)).a((ei)$$0.getSource());
    }
 

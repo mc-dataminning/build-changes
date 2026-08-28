@@ -1,36 +1,67 @@
-import java.util.function.Function;
-import javax.annotation.Nullable;
+public record giw(float b, float c, float d, float e, float f, float g, float h, float i, float j) {
+   public static final giw a = a(0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F);
 
-public class giw<C extends giw.a<C>, D> {
-   private final Function<C, D> a;
-   @Nullable
-   private C b;
-   @Nullable
-   private D c;
-
-   public giw(Function<C, D> $$0) {
-      this.a = $$0;
+   public static giw a(float $$0, float $$1, float $$2) {
+      return a($$0, $$1, $$2, 0.0F, 0.0F, 0.0F);
    }
 
-   public D a(C $$0) {
-      if ($$0 == this.b && this.c != null) {
-         return this.c;
-      } else {
-         D $$1 = this.a.apply($$0);
-         this.c = $$1;
-         this.b = $$0;
-         $$0.registerForCleaning(this);
-         return $$1;
-      }
+   public static giw b(float $$0, float $$1, float $$2) {
+      return a(0.0F, 0.0F, 0.0F, $$0, $$1, $$2);
    }
 
-   public void a() {
-      this.c = null;
-      this.b = null;
+   public static giw a(float $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
+      return new giw($$0, $$1, $$2, $$3, $$4, $$5, 1.0F, 1.0F, 1.0F);
    }
 
-   @FunctionalInterface
-   public interface a<C extends giw.a<C>> {
-      void registerForCleaning(giw<C, ?> var1);
+   public giw c(float $$0, float $$1, float $$2) {
+      return new giw(this.b + $$0, this.c + $$1, this.d + $$2, this.e, this.f, this.g, this.h, this.i, this.j);
+   }
+
+   public giw a(float $$0) {
+      return new giw(this.b, this.c, this.d, this.e, this.f, this.g, $$0, $$0, $$0);
+   }
+
+   public giw b(float $$0) {
+      return $$0 == 1.0F ? this : this.d($$0, $$0, $$0);
+   }
+
+   public giw d(float $$0, float $$1, float $$2) {
+      return new giw(this.b * $$0, this.c * $$1, this.d * $$2, this.e, this.f, this.g, this.h * $$0, this.i * $$1, this.j * $$2);
+   }
+
+   public float a() {
+      return this.b;
+   }
+
+   public float b() {
+      return this.c;
+   }
+
+   public float c() {
+      return this.d;
+   }
+
+   public float d() {
+      return this.e;
+   }
+
+   public float e() {
+      return this.f;
+   }
+
+   public float f() {
+      return this.g;
+   }
+
+   public float g() {
+      return this.h;
+   }
+
+   public float h() {
+      return this.i;
+   }
+
+   public float i() {
+      return this.j;
    }
 }

@@ -1,85 +1,48 @@
-import com.google.common.collect.Sets;
-import java.util.Set;
+import java.util.BitSet;
+import javax.annotation.Nullable;
 
-public record adj(int b, boolean c, Set<ald<dip>> d, int e, int f, int g, boolean h, boolean i, boolean j, agi k, boolean l) implements zd<abs> {
-   public static final yu<wh, adj> a = zd.a(adj::a, adj::new);
+public class adj implements zf<abu> {
+   public static final yw<vu, adj> a = zf.a(adj::a, adj::new);
+   private final int b;
+   private final int c;
+   private final adk d;
 
-   private adj(wh $$0) {
-      this(
-         $$0.readInt(),
-         $$0.readBoolean(),
-         $$0.a(Sets::newHashSetWithExpectedSize, $$0x -> $$0x.a(mg.bm)),
-         $$0.l(),
-         $$0.l(),
-         $$0.l(),
-         $$0.readBoolean(),
-         $$0.readBoolean(),
-         $$0.readBoolean(),
-         new agi($$0),
-         $$0.readBoolean()
-      );
+   public adj(dic $$0, evv $$1, @Nullable BitSet $$2, @Nullable BitSet $$3) {
+      this.b = $$0.h;
+      this.c = $$0.i;
+      this.d = new adk($$0, $$1, $$2, $$3);
    }
 
-   private void a(wh $$0) {
-      $$0.q(this.b);
-      $$0.a(this.c);
-      $$0.a(this.d, vs::b);
-      $$0.c(this.e);
-      $$0.c(this.f);
-      $$0.c(this.g);
-      $$0.a(this.h);
-      $$0.a(this.i);
-      $$0.a(this.j);
-      this.k.a($$0);
-      $$0.a(this.l);
+   private adj(vu $$0) {
+      this.b = $$0.l();
+      this.c = $$0.l();
+      this.d = new adk($$0, this.b, this.c);
+   }
+
+   private void a(vu $$0) {
+      $$0.c(this.b);
+      $$0.c(this.c);
+      this.d.a($$0);
    }
 
    @Override
-   public zf<adj> a() {
-      return agl.O;
+   public zh<adj> a() {
+      return agn.N;
    }
 
-   public void a(abs $$0) {
+   public void a(abu $$0) {
       $$0.a(this);
    }
 
-   public boolean e() {
+   public int b() {
+      return this.b;
+   }
+
+   public int e() {
       return this.c;
    }
 
-   public Set<ald<dip>> f() {
+   public adk f() {
       return this.d;
-   }
-
-   public int g() {
-      return this.e;
-   }
-
-   public int h() {
-      return this.f;
-   }
-
-   public int i() {
-      return this.g;
-   }
-
-   public boolean j() {
-      return this.h;
-   }
-
-   public boolean k() {
-      return this.i;
-   }
-
-   public boolean l() {
-      return this.j;
-   }
-
-   public agi m() {
-      return this.k;
-   }
-
-   public boolean n() {
-      return this.l;
    }
 }

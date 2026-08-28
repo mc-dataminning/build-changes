@@ -1,35 +1,40 @@
-import java.time.Duration;
-import java.util.List;
-import java.util.concurrent.TimeUnit;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
+import com.mojang.logging.LogUtils;
+import org.slf4j.Logger;
 
-public class flf {
-   public final fmn a = new fmn(af.i(), TimeUnit.MILLISECONDS, af.c);
-   private final List<fmn.e<?>> i;
-   public final fmn.e<List<fkg>> b;
-   public final fmn.e<flf.a> c;
-   public final fmn.e<Integer> d;
-   public final fmn.e<Boolean> e;
-   public final fmn.e<fkf> f;
-   public final fmn.e<fkk> g;
-   public final flg h = new flg(new fmt());
+public class flf extends flh {
+   private static final Logger d = LogUtils.getLogger();
+   public long a;
+   public int b;
+   public flf.a c = flf.a.a;
 
-   public flf(fjg $$0) {
-      this.c = this.a.a("server list", () -> {
-         fkj $$1 = $$0.b();
-         return fjb.b() ? new flf.a($$1.a, $$0.c()) : new flf.a($$1.a, List.of());
-      }, Duration.ofSeconds(60L), fmo.a);
-      this.d = this.a.a("pending invite count", $$0::h, Duration.ofSeconds(10L), fmo.a(360));
-      this.e = this.a.a("trial availablity", $$0::l, Duration.ofSeconds(60L), fmo.a(60));
-      this.f = this.a.a("unread news", $$0::k, Duration.ofMinutes(5L), fmo.a);
-      this.b = this.a.a("notifications", $$0::d, Duration.ofMinutes(5L), fmo.a);
-      this.g = this.a.a("online players", $$0::e, Duration.ofSeconds(10L), fmo.a);
-      this.i = List.of(this.b, this.c, this.d, this.e, this.f, this.g);
+   public static flf a(String $$0) {
+      flf $$1 = new flf();
+
+      try {
+         JsonParser $$2 = new JsonParser();
+         JsonObject $$3 = $$2.parse($$0).getAsJsonObject();
+         $$1.a = fnd.a("startDate", $$3, 0L);
+         $$1.b = fnd.a("daysLeft", $$3, 0);
+         $$1.c = b(fnd.b("subscriptionType", $$3, flf.a.a.name()));
+      } catch (Exception var4) {
+         d.error("Could not parse Subscription: {}", var4.getMessage());
+      }
+
+      return $$1;
    }
 
-   public List<fmn.e<?>> a() {
-      return this.i;
+   private static flf.a b(String $$0) {
+      try {
+         return flf.a.valueOf($$0);
+      } catch (Exception var2) {
+         return flf.a.a;
+      }
    }
 
-   public static record a(List<fkh> a, List<fkh> b) {
+   public static enum a {
+      a,
+      b;
    }
 }

@@ -1,13 +1,8 @@
-public interface bsa {
-   void a();
+import javax.annotation.ParametersAreNonnullByDefault;
 
-   void b();
-
-   void c();
-
-   boolean e();
-
-   bqj f();
-
-   void d();
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface bsa {
 }

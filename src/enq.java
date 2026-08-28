@@ -1,76 +1,21 @@
-import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import org.apache.commons.lang3.mutable.Mutable;
-import org.apache.commons.lang3.mutable.MutableObject;
 
-public class enq extends ens {
-   public static final MapCodec<enq> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(
-               Codec.floatRange(0.0F, 1.0F).fieldOf("leaves_probability").forGetter($$0x -> $$0x.b),
-               Codec.floatRange(0.0F, 1.0F).fieldOf("trunk_probability").forGetter($$0x -> $$0x.c),
-               Codec.floatRange(0.0F, 1.0F).fieldOf("ground_probability").forGetter($$0x -> $$0x.d)
-            )
-            .apply($$0, enq::new)
-   );
-   private final float b;
-   private final float c;
-   private final float d;
+public class enq extends enj {
+   public static final MapCodec<enq> b = dzz.a.fieldOf("state").xmap(dzy.a::b, dma::m).xmap(enq::new, $$0 -> $$0.c);
+   private final dma c;
 
-   @Override
-   protected ent<?> a() {
-      return ent.c;
-   }
-
-   public enq(float $$0, float $$1, float $$2) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
+   public enq(dma $$0) {
+      this.c = $$0;
    }
 
    @Override
-   public void a(ens.a $$0) {
-      azt $$1 = $$0.b();
-      djo $$2 = (djo)$$0.a();
-      List<iu> $$3 = af.a($$0.c(), $$1);
-      if (!$$3.isEmpty()) {
-         Mutable<iu> $$4 = new MutableObject($$3.getFirst());
-         $$3.forEach($$1x -> {
-            if ($$1x.v() < ((iu)$$4.getValue()).v()) {
-               $$4.setValue($$1x);
-            }
-         });
-         iu $$5 = (iu)$$4.getValue();
-         if ($$1.i() < this.d) {
-            $$2.F_().a(mg.aK).flatMap($$0x -> $$0x.a(ro.J)).ifPresent($$3x -> ((eif)$$3x.a()).a($$2, $$2.a().m().g(), $$1, $$5.d()));
-         }
-
-         $$0.c().forEach($$2x -> {
-            if ($$1.i() < this.c) {
-               iu $$3x = $$2x.e();
-               if ($$0.a($$3x)) {
-                  a($$3x, $$0);
-               }
-            }
-         });
-         $$0.d().forEach($$2x -> {
-            if ($$1.i() < this.b) {
-               iu $$3x = $$2x.e();
-               if ($$0.a($$3x)) {
-                  a($$3x, $$0);
-               }
-            }
-         });
-      }
+   protected enk<?> a() {
+      return enk.f;
    }
 
-   private static void a(iu $$0, ens.a $$1) {
-      while ($$1.a($$0.e()) && !((double)$$1.b().i() < 0.5)) {
-         $$1.a($$0, dlw.uc.m().b(dpn.b, Boolean.valueOf(false)));
-         $$0 = $$0.e();
-      }
-
-      $$1.a($$0, dlw.uc.m().b(dpn.b, Boolean.valueOf(true)));
+   @Override
+   public dzz a(azv $$0, iu $$1) {
+      ja.a $$2 = ja.a.a($$0);
+      return this.c.m().c(dss.d, $$2);
    }
 }

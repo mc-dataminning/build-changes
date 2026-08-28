@@ -1,59 +1,260 @@
-public interface ffi extends btr {
-   cys f();
+import com.google.common.collect.Sets;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Collection;
+import java.util.List;
+import java.util.Optional;
+import java.util.Set;
+import javax.annotation.Nullable;
 
-   default cys c(int $$0) {
-      return this.f().a($$0);
+public class ffi extends ffp {
+   private static final int a = 0;
+   private static final int b = 1;
+   private final ffn c;
+   private final String d;
+   private final Set<String> e = Sets.newHashSet();
+   private wy f;
+   private wy g = wx.a;
+   private wy h = wx.a;
+   private boolean i = true;
+   private boolean j = true;
+   private ffp.b k = ffp.b.a;
+   private ffp.b l = ffp.b.a;
+   private n m = n.v;
+   private ffp.a n = ffp.a.a;
+   private final xv o;
+
+   public ffi(ffn $$0, String $$1) {
+      this.c = $$0;
+      this.d = $$1;
+      this.f = wy.b($$1);
+      this.o = xv.a.a($$1).a(new xe.e(wy.b($$1)));
    }
 
-   void b(cys var1);
+   public ffi.a a() {
+      return new ffi.a(
+         this.d,
+         Optional.of(this.f),
+         this.m != n.v ? Optional.of(this.m) : Optional.empty(),
+         this.i,
+         this.j,
+         this.g,
+         this.h,
+         this.k,
+         this.l,
+         this.n,
+         List.copyOf(this.e)
+      );
+   }
 
-   default cys h() {
-      return this.c(this.aj_());
+   public ffn b() {
+      return this.c;
    }
 
    @Override
-   default int b() {
-      return 1;
+   public String c() {
+      return this.d;
    }
 
-   @Override
-   default boolean c() {
-      return this.f().f();
+   public wy d() {
+      return this.f;
    }
 
-   @Override
-   default void a() {
-      this.h();
+   public xm e() {
+      xm $$0 = xb.a((wy)this.f.f().c(this.o));
+      n $$1 = this.o();
+      if ($$1 != n.v) {
+         $$0.a($$1);
+      }
+
+      return $$0;
    }
 
-   @Override
-   default cys b(int $$0) {
-      return this.a($$0, this.aj_());
-   }
-
-   @Override
-   default cys a(int $$0) {
-      return $$0 == 0 ? this.f() : cys.k;
-   }
-
-   @Override
-   default cys a(int $$0, int $$1) {
-      return $$0 != 0 ? cys.k : this.c($$1);
-   }
-
-   @Override
-   default void a(int $$0, cys $$1) {
-      if ($$0 == 0) {
-         this.b($$1);
+   public void a(wy $$0) {
+      if ($$0 == null) {
+         throw new IllegalArgumentException("Name cannot be null");
+      } else {
+         this.f = $$0;
+         this.c.b(this);
       }
    }
 
-   public interface a extends ffi {
-      dwn t();
+   public void b(@Nullable wy $$0) {
+      this.g = $$0 == null ? wx.a : $$0;
+      this.c.b(this);
+   }
 
-      @Override
-      default boolean a(cqs $$0) {
-         return btr.a(this.t(), $$0);
+   public wy f() {
+      return this.g;
+   }
+
+   public void c(@Nullable wy $$0) {
+      this.h = $$0 == null ? wx.a : $$0;
+      this.c.b(this);
+   }
+
+   public wy g() {
+      return this.h;
+   }
+
+   @Override
+   public Collection<String> h() {
+      return this.e;
+   }
+
+   @Override
+   public xm d(wy $$0) {
+      xm $$1 = wy.i().b(this.g).b($$0).b(this.h);
+      n $$2 = this.o();
+      if ($$2 != n.v) {
+         $$1.a($$2);
+      }
+
+      return $$1;
+   }
+
+   public static xm a(@Nullable ffp $$0, wy $$1) {
+      return $$0 == null ? $$1.f() : $$0.d($$1);
+   }
+
+   @Override
+   public boolean i() {
+      return this.i;
+   }
+
+   public void a(boolean $$0) {
+      this.i = $$0;
+      this.c.b(this);
+   }
+
+   @Override
+   public boolean j() {
+      return this.j;
+   }
+
+   public void b(boolean $$0) {
+      this.j = $$0;
+      this.c.b(this);
+   }
+
+   @Override
+   public ffp.b k() {
+      return this.k;
+   }
+
+   @Override
+   public ffp.b l() {
+      return this.l;
+   }
+
+   public void a(ffp.b $$0) {
+      this.k = $$0;
+      this.c.b(this);
+   }
+
+   public void b(ffp.b $$0) {
+      this.l = $$0;
+      this.c.b(this);
+   }
+
+   @Override
+   public ffp.a m() {
+      return this.n;
+   }
+
+   public void a(ffp.a $$0) {
+      this.n = $$0;
+      this.c.b(this);
+   }
+
+   public int n() {
+      int $$0 = 0;
+      if (this.i()) {
+         $$0 |= 1;
+      }
+
+      if (this.j()) {
+         $$0 |= 2;
+      }
+
+      return $$0;
+   }
+
+   public void a(int $$0) {
+      this.a(($$0 & 1) > 0);
+      this.b(($$0 & 2) > 0);
+   }
+
+   public void a(n $$0) {
+      this.m = $$0;
+      this.c.b(this);
+   }
+
+   @Override
+   public n o() {
+      return this.m;
+   }
+
+   public static record a(String b, Optional<wy> c, Optional<n> d, boolean e, boolean f, wy g, wy h, ffp.b i, ffp.b j, ffp.a k, List<String> l) {
+      public static final Codec<ffi.a> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(
+                  Codec.STRING.fieldOf("Name").forGetter(ffi.a::a),
+                  xa.a.optionalFieldOf("DisplayName").forGetter(ffi.a::b),
+                  n.x.optionalFieldOf("TeamColor").forGetter(ffi.a::c),
+                  Codec.BOOL.optionalFieldOf("AllowFriendlyFire", true).forGetter(ffi.a::d),
+                  Codec.BOOL.optionalFieldOf("SeeFriendlyInvisibles", true).forGetter(ffi.a::e),
+                  xa.a.optionalFieldOf("MemberNamePrefix", wx.a).forGetter(ffi.a::f),
+                  xa.a.optionalFieldOf("MemberNameSuffix", wx.a).forGetter(ffi.a::g),
+                  ffp.b.e.optionalFieldOf("NameTagVisibility", ffp.b.a).forGetter(ffi.a::h),
+                  ffp.b.e.optionalFieldOf("DeathMessageVisibility", ffp.b.a).forGetter(ffi.a::i),
+                  ffp.a.e.optionalFieldOf("CollisionRule", ffp.a.a).forGetter(ffi.a::j),
+                  Codec.STRING.listOf().optionalFieldOf("Players", List.of()).forGetter(ffi.a::k)
+               )
+               .apply($$0, ffi.a::new)
+      );
+
+      public String a() {
+         return this.b;
+      }
+
+      public Optional<wy> b() {
+         return this.c;
+      }
+
+      public Optional<n> c() {
+         return this.d;
+      }
+
+      public boolean d() {
+         return this.e;
+      }
+
+      public boolean e() {
+         return this.f;
+      }
+
+      public wy f() {
+         return this.g;
+      }
+
+      public wy g() {
+         return this.h;
+      }
+
+      public ffp.b h() {
+         return this.i;
+      }
+
+      public ffp.b i() {
+         return this.j;
+      }
+
+      public ffp.a j() {
+         return this.k;
+      }
+
+      public List<String> k() {
+         return this.l;
       }
    }
 }

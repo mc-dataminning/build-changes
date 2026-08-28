@@ -1,17 +1,17 @@
-public class hau extends hcp {
-   public bws e = bws.b;
-   public gfr.a f = gfr.a.a;
-   public final hes g = new hes();
-   public gfr.a h = gfr.a.a;
-   public final hes i = new hes();
+public class hau extends han<hdr, ggw> {
+   public static final alg a = alg.b("textures/entity/trident_riptide.png");
+   private final ght b;
 
-   public hes aS_() {
-      return this.e == bws.b ? this.g : this.i;
+   public hau(gxw<hdr, ggw> $$0, giq $$1) {
+      super($$0);
+      this.b = new ght($$1.a(git.cz));
    }
 
-   public static void a(bwz $$0, hau $$1, heq $$2) {
-      $$1.e = $$0.fx();
-      $$2.a($$1.g, $$0.a(bws.b), cyq.c, false, $$0);
-      $$2.a($$1.i, $$0.a(bws.a), cyq.b, true, $$0);
+   public void a(fjc $$0, gps $$1, int $$2, hdr $$3, float $$4, float $$5) {
+      if ($$3.al) {
+         fjg $$6 = $$1.getBuffer(this.b.a(a));
+         this.b.a($$3);
+         this.b.a($$0, $$6, $$2, hif.d);
+      }
    }
 }

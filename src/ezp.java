@@ -1,61 +1,66 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableList.Builder;
+import com.mojang.datafixers.Products.P1;
+import com.mojang.serialization.codecs.RecordCodecBuilder.Instance;
+import com.mojang.serialization.codecs.RecordCodecBuilder.Mu;
 import java.util.List;
-import java.util.Set;
+import java.util.function.Predicate;
 
-public class ezp extends faa {
-   public static final MapCodec<ezp> a = RecordCodecBuilder.mapCodec(
-      $$0 -> a($$0).and(ezp.a.e.fieldOf("source").forGetter($$0x -> $$0x.b)).apply($$0, ezp::new)
-   );
-   private final ezp.a b;
+public abstract class ezp implements ezh {
+   protected final List<fci> e;
+   private final Predicate<eyz> a;
 
-   private ezp(List<fbw> $$0, ezp.a $$1) {
-      super($$0);
-      this.b = $$1;
+   protected ezp(List<fci> $$0) {
+      this.e = $$0;
+      this.a = af.a($$0);
    }
 
-   @Override
-   public fac<ezp> b() {
-      return fad.s;
+   protected static <T extends ezp> P1<Mu<T>, List<fci>> a(Instance<T> $$0) {
+      return $$0.group(fci.e.listOf().optionalFieldOf("conditions", List.of()).forGetter($$0x -> $$0x.e));
    }
 
-   @Override
-   public Set<bav<?>> a() {
-      return Set.of(this.b.g);
+   public void a(ezf $$0) {
+      for (int $$1 = 0; $$1 < this.e.size(); $$1++) {
+         this.e.get($$1).a($$0.a(".condition[" + $$1 + "]"));
+      }
    }
 
-   @Override
-   public cys a(cys $$0, eyn $$1) {
-      if ($$1.c(this.b.g) instanceof bub $$3) {
-         $$0.b(kj.g, $$3.an());
+   protected final boolean a(eyz $$0) {
+      return this.a.test($$0);
+   }
+
+   public abstract ezq a();
+
+   public abstract static class a<T extends ezp.a<T>> implements fca<T> {
+      private final Builder<fci> a = ImmutableList.builder();
+
+      protected abstract T aA_();
+
+      public T a(fci.a $$0) {
+         this.a.add($$0.build());
+         return this.aA_();
       }
 
-      return $$0;
-   }
-
-   public static faa.a<?> a(ezp.a $$0) {
-      return a($$1 -> new ezp($$1, $$0));
-   }
-
-   public static enum a implements bai {
-      a("this", fbh.a),
-      b("attacking_entity", fbh.d),
-      c("last_damage_player", fbh.b),
-      d("block_entity", fbh.h);
-
-      public static final Codec<ezp.a> e = bai.a(ezp.a::values);
-      private final String f;
-      final bav<?> g;
-
-      private a(final String $$0, final bav<?> $$1) {
-         this.f = $$0;
-         this.g = $$1;
+      public final T e() {
+         return this.aA_();
       }
 
-      @Override
-      public String c() {
-         return this.f;
+      protected List<fci> f() {
+         return this.a.build();
       }
+
+      public ezg.a a(ezp.a<?> $$0) {
+         return new ezg.a(this, $$0);
+      }
+
+      public ezl.a b(ezp.a<?> $$0) {
+         return new ezl.a(this, $$0);
+      }
+
+      public ezt.a c(ezp.a<?> $$0) {
+         return new ezt.a(this, $$0);
+      }
+
+      public abstract ezp b();
    }
 }

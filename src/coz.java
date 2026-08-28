@@ -1,67 +1,184 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableSet;
-import com.mojang.datafixers.util.Pair;
-import java.util.List;
+import com.google.common.annotations.VisibleForTesting;
+import com.google.common.collect.Lists;
+import it.unimi.dsi.fastutil.objects.ObjectArrayList;
+import java.util.Map;
 import java.util.Optional;
+import javax.annotation.Nullable;
 
-public class coz {
-   protected static final ImmutableList<? extends chi<? extends chh<? super coy>>> a = ImmutableList.of(chi.c, chi.d);
-   protected static final ImmutableList<? extends cgb<?>> b = ImmutableList.of(cgb.g, cgb.h, cgb.k, cgb.l, cgb.m, cgb.o, cgb.n, cgb.F, cgb.u, cgb.p, cgb.q);
+public class coz extends byt<cow> {
+   private static final int c = 4;
+   private static final int d = 10;
+   private static final int e = 2;
+   private static final int f = Math.round(10.0F);
+   private static final float g = 24.0F;
+   private static final float h = 1.4F;
+   private static final float i = 0.058333334F;
+   private static final ObjectArrayList<Integer> j = new ObjectArrayList(Lists.newArrayList(new Integer[]{40, 55, 60, 75, 80}));
 
-   static void a(bxz<coy> $$0) {
-      $$0.a(csl.a, 0, ImmutableList.of(new cbk<coy>(0.8F) {
-         protected boolean a(aro $$0, coy $$1) {
-            return $$1.n() && super.a($$0, (bwz)$$1);
-         }
-      }, new bzw(45, 90), new caa()));
+   @VisibleForTesting
+   public coz() {
+      super(Map.of(cge.p, cgf.a, cge.aV, cgf.b, cge.ba, cgf.c, cge.bb, cgf.c, cge.aW, cgf.b, cge.n, cgf.b, cge.bc, cgf.c), 200);
    }
 
-   static void b(bxz<coy> $$0) {
-      $$0.a(
-         csl.b,
-         10,
-         ImmutableList.of(
-            cbc.a(($$0x, $$1) -> $$1.gy(), ($$0x, $$1) -> $$1.eb().c(cgb.l)),
-            caq.a(8.0F, btj.a(30, 60)),
-            new can(ImmutableList.of(Pair.of(cai.a(0.3F), 2), Pair.of(cax.a(0.3F, 3), 2), Pair.of(new bza(30, 60), 1)))
-         )
-      );
-   }
-
-   static void a(coy $$0, bxz<coy> $$1) {
-      $$1.a(csl.k, 10, ImmutableList.of(cav.a(1.0F), bzx.a(coy::n, 40), cbf.a(($$1x, $$2) -> !a($$0, $$2))), ImmutableSet.of(Pair.of(cgb.p, cgc.a)));
-   }
-
-   private static boolean a(coy $$0, bwz $$1) {
-      Optional<List<cqs>> $$2 = $$0.eb().c(cgb.m);
-      return $$2.<Boolean>map($$1x -> {
-         if ($$1 instanceof cqs $$2x && $$1x.contains($$2x)) {
-            return true;
-         }
-
+   public static boolean a(arq $$0, cow $$1) {
+      if (!$$1.aJ() && !$$1.bj()) {
          return false;
-      }).orElse(false);
-   }
-
-   public static bxz.b<coy> a() {
-      return bxz.a(b, a);
-   }
-
-   public static bxz<coy> b(coy $$0, bxz<coy> $$1) {
-      a($$1);
-      b($$1);
-      a($$0, $$1);
-      $$1.a(ImmutableSet.of(csl.a));
-      $$1.b(csl.b);
-      $$1.f();
-      return $$1;
-   }
-
-   public static void a(coy $$0) {
-      if (!$$0.n()) {
-         $$0.eb().f();
+      } else if (cbn.a($$1)) {
+         return false;
+      } else if ($$1.eb().a(cge.bb, cgf.a)) {
+         return true;
       } else {
-         $$0.eb().a(ImmutableList.of(csl.k, csl.b));
+         bxc $$2 = $$1.eb().c(cge.p).orElse(null);
+         if ($$2 == null) {
+            return false;
+         } else if (a($$1, $$2)) {
+            $$1.eb().b(cge.p);
+            return false;
+         } else if (b($$1, $$2)) {
+            return false;
+         } else if (!c($$0, $$1)) {
+            return false;
+         } else {
+            iu $$3 = a($$1, coy.a($$2, $$1.dY()));
+            if ($$3 == null) {
+               return false;
+            } else {
+               dzz $$4 = $$0.a_($$3.e());
+               if ($$1.aq().a($$4)) {
+                  return false;
+               } else if (!coy.a($$1, $$3.b()) && !coy.a($$1, $$3.b(4).b())) {
+                  return false;
+               } else {
+                  $$1.eb().a(cge.bb, $$3);
+                  return true;
+               }
+            }
+         }
       }
+   }
+
+   protected boolean b(arq $$0, cow $$1) {
+      return a($$0, $$1);
+   }
+
+   protected boolean a(arq $$0, cow $$1, long $$2) {
+      return $$1.aw() != bxo.a && !$$1.eb().a(cge.aV);
+   }
+
+   protected void b(arq $$0, cow $$1, long $$2) {
+      if ($$1.eb().a(cge.ba, cgf.b)) {
+         $$1.eb().a(cge.ba, bau.a, (long)f);
+      }
+
+      $$1.b(bxo.r);
+      $$0.a(null, $$1, awn.cE, awo.f, 1.0F, 1.0F);
+      $$1.eb().c(cge.bb).ifPresent($$1x -> $$1.a(eu.a.b, $$1x.b()));
+   }
+
+   protected void c(arq $$0, cow $$1, long $$2) {
+      boolean $$3 = $$1.bj();
+      if (!$$3 && $$1.eb().a(cge.bc, cgf.a)) {
+         $$1.eb().b(cge.bc);
+      }
+
+      if (a($$1)) {
+         fei $$4 = $$1.eb().c(cge.bb).flatMap($$1x -> a($$1, $$1.dY(), fei.c($$1x))).orElse(null);
+         if ($$4 == null) {
+            $$1.b(bxo.a);
+            return;
+         }
+
+         if ($$3) {
+            $$1.eb().a(cge.bc, bau.a);
+         }
+
+         $$1.a(awn.cK, 1.0F, 1.0F);
+         $$1.b(bxo.g);
+         $$1.w($$1.aV);
+         $$1.q(true);
+         $$1.i($$4);
+      } else if (b($$1)) {
+         $$1.a(awn.cL, 1.0F, 1.0F);
+         $$1.b(bxo.a);
+         $$1.q(false);
+         boolean $$5 = $$1.eb().a(cge.y);
+         $$1.eb().a(cge.aV, bau.a, $$5 ? 2L : 10L);
+         $$1.eb().a(cge.aW, bau.a, 100L);
+      }
+   }
+
+   protected void d(arq $$0, cow $$1, long $$2) {
+      if ($$1.aw() == bxo.g || $$1.aw() == bxo.r) {
+         $$1.b(bxo.a);
+      }
+
+      $$1.eb().b(cge.bb);
+      $$1.eb().b(cge.ba);
+      $$1.eb().b(cge.bc);
+   }
+
+   private static boolean a(cow $$0) {
+      return $$0.eb().c(cge.ba).isEmpty() && $$0.aw() == bxo.r;
+   }
+
+   private static boolean b(cow $$0) {
+      boolean $$1 = $$0.aw() == bxo.g;
+      boolean $$2 = $$0.aJ();
+      boolean $$3 = $$0.bj() && $$0.eb().a(cge.bc, cgf.b);
+      return $$1 && ($$2 || $$3);
+   }
+
+   @Nullable
+   private static iu a(bxc $$0, fei $$1) {
+      die $$2 = new die($$1, $$1.a(ja.a, 10.0), die.a.a, die.b.a, $$0);
+      feg $$3 = $$0.dV().a($$2);
+      if ($$3.d() == feg.a.b) {
+         return iu.a((jo)$$3.g()).d();
+      } else {
+         die $$4 = new die($$1, $$1.a(ja.b, 10.0), die.a.a, die.b.a, $$0);
+         feg $$5 = $$0.dV().a($$4);
+         return $$5.d() == feg.a.b ? iu.a((jo)$$5.g()).d() : null;
+      }
+   }
+
+   private static boolean a(cow $$0, bxc $$1) {
+      return !$$1.a($$0, $$0.h(byi.m));
+   }
+
+   private static boolean b(cow $$0, bxc $$1) {
+      return $$1.f($$0) - 4.0F <= 0.0F;
+   }
+
+   private static boolean c(arq $$0, cow $$1) {
+      iu $$2 = $$1.dv();
+      if ($$0.a_($$2).a(dmc.pL)) {
+         return false;
+      } else {
+         for (int $$3 = 1; $$3 <= 4; $$3++) {
+            iu $$4 = $$2.a(ja.b, $$3);
+            if (!$$0.a_($$4).l() && !$$0.b_($$4).a(axh.a)) {
+               return false;
+            }
+         }
+
+         return true;
+      }
+   }
+
+   private static Optional<fei> a(cow $$0, azv $$1, fei $$2) {
+      for (int $$4 : af.a(j, $$1)) {
+         float $$5 = 0.058333334F * (float)$$0.h(byi.m);
+         Optional<fei> $$6 = bzx.a($$0, $$2, $$5, $$4, false);
+         if ($$6.isPresent()) {
+            if ($$0.b(bvj.h)) {
+               double $$7 = $$6.get().d().e * (double)$$0.fh();
+               return $$6.map($$1x -> $$1x.b(0.0, $$7, 0.0));
+            }
+
+            return $$6;
+         }
+      }
+
+      return Optional.empty();
    }
 }

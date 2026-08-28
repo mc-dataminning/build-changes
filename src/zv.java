@@ -1,26 +1,25 @@
-public class zv {
-   public static final zf<zk> a = a("custom_payload");
-   public static final zf<zl> b = a("custom_report_details");
-   public static final zf<zm> c = a("disconnect");
-   public static final zf<zn> d = a("keep_alive");
-   public static final zf<zo> e = a("ping");
-   public static final zf<zp> f = a("resource_pack_pop");
-   public static final zf<zq> g = a("resource_pack_push");
-   public static final zf<zr> h = a("server_links");
-   public static final zf<zs> i = a("store_cookie");
-   public static final zf<zt> j = a("transfer");
-   public static final zf<zu> k = a("update_tags");
-   public static final zf<zx> l = b("client_information");
-   public static final zf<zy> m = b("custom_payload");
-   public static final zf<zz> n = b("keep_alive");
-   public static final zf<aaa> o = b("pong");
-   public static final zf<aab> p = b("resource_pack");
+public record zv(String b, int c) implements zf<zl> {
+   public static final yw<vu, zv> a = zf.a(zv::a, zv::new);
 
-   private static <T extends zd<zj>> zf<T> a(String $$0) {
-      return new zf<>(ze.b, ale.b($$0));
+   private zv(vu $$0) {
+      this($$0.p(), $$0.l());
    }
 
-   private static <T extends zd<zw>> zf<T> b(String $$0) {
-      return new zf<>(ze.a, ale.b($$0));
+   private void a(vu $$0) {
+      $$0.a(this.b);
+      $$0.c(this.c);
+   }
+
+   @Override
+   public zh<zv> a() {
+      return zx.j;
+   }
+
+   public void a(zl $$0) {
+      $$0.a(this);
+   }
+
+   public int e() {
+      return this.c;
    }
 }

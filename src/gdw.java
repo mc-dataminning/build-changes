@@ -1,37 +1,98 @@
-public class gdw extends gfr<hav> {
-   public gdw(gig $$0) {
-      super($$0);
+import com.mojang.authlib.properties.PropertyMap;
+import java.io.File;
+import java.net.Proxy;
+import java.nio.file.Path;
+import javax.annotation.Nullable;
+
+public class gdw {
+   public final gdw.d a;
+   public final fhs b;
+   public final gdw.a c;
+   public final gdw.b d;
+   public final gdw.c e;
+
+   public gdw(gdw.d $$0, fhs $$1, gdw.a $$2, gdw.b $$3, gdw.c $$4) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+      this.d = $$3;
+      this.e = $$4;
    }
 
-   public static gim a(gik $$0) {
-      gio $$1 = gfr.a($$0, 0.0F);
-      giq $$2 = $$1.a();
-      giq $$3 = $$2.a("head", gil.c().a(0, 0).a(-4.0F, -8.0F, -4.0F, 8.0F, 8.0F, 8.0F, $$0), gii.a(0.0F, 1.0F, 0.0F));
-      $$3.a("hat", gil.c().a(32, 0).a(-4.0F, -8.0F, -4.0F, 8.0F, 8.0F, 8.0F, $$0.a(0.5F)), gii.a);
-      $$2.a("right_leg", gil.c().a(0, 16).a(-2.0F, 0.0F, -2.0F, 4.0F, 12.0F, 4.0F, $$0.a(-0.1F)), gii.a(-1.9F, 11.0F, 0.0F));
-      $$2.a("left_leg", gil.c().a(0, 16).a().a(-2.0F, 0.0F, -2.0F, 4.0F, 12.0F, 4.0F, $$0.a(-0.1F)), gii.a(1.9F, 11.0F, 0.0F));
-      return gim.a($$1, 64, 32);
+   public static class a {
+      public final File a;
+      public final File b;
+      public final File c;
+      @Nullable
+      public final String d;
+
+      public a(File $$0, File $$1, File $$2, @Nullable String $$3) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
+         this.d = $$3;
+      }
+
+      public Path a() {
+         return this.d == null ? this.c.toPath() : hjk.a(this.c.toPath(), this.d);
+      }
    }
 
-   public void a(hav $$0) {
-      super.a($$0);
-      this.o.e = (float) (Math.PI / 180.0) * $$0.l.b();
-      this.o.f = (float) (Math.PI / 180.0) * $$0.l.c();
-      this.o.g = (float) (Math.PI / 180.0) * $$0.l.d();
-      this.q.e = (float) (Math.PI / 180.0) * $$0.m.b();
-      this.q.f = (float) (Math.PI / 180.0) * $$0.m.c();
-      this.q.g = (float) (Math.PI / 180.0) * $$0.m.d();
-      this.s.e = (float) (Math.PI / 180.0) * $$0.n.b();
-      this.s.f = (float) (Math.PI / 180.0) * $$0.n.c();
-      this.s.g = (float) (Math.PI / 180.0) * $$0.n.d();
-      this.r.e = (float) (Math.PI / 180.0) * $$0.o.b();
-      this.r.f = (float) (Math.PI / 180.0) * $$0.o.c();
-      this.r.g = (float) (Math.PI / 180.0) * $$0.o.d();
-      this.u.e = (float) (Math.PI / 180.0) * $$0.p.b();
-      this.u.f = (float) (Math.PI / 180.0) * $$0.p.c();
-      this.u.g = (float) (Math.PI / 180.0) * $$0.p.d();
-      this.t.e = (float) (Math.PI / 180.0) * $$0.q.b();
-      this.t.f = (float) (Math.PI / 180.0) * $$0.q.c();
-      this.t.g = (float) (Math.PI / 180.0) * $$0.q.d();
+   public static class b {
+      public final boolean a;
+      public final String b;
+      public final String c;
+      public final boolean d;
+      public final boolean e;
+      public final boolean f;
+
+      public b(boolean $$0, String $$1, String $$2, boolean $$3, boolean $$4, boolean $$5) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
+         this.d = $$3;
+         this.e = $$4;
+         this.f = $$5;
+      }
+   }
+
+   public static record c(@Nullable String a, @Nullable String b, @Nullable String c, @Nullable String d) {
+      public boolean a() {
+         return !bal.h(this.b) || !bal.h(this.c) || !bal.h(this.d);
+      }
+
+      @Nullable
+      public String b() {
+         return this.a;
+      }
+
+      @Nullable
+      public String c() {
+         return this.b;
+      }
+
+      @Nullable
+      public String d() {
+         return this.c;
+      }
+
+      @Nullable
+      public String e() {
+         return this.d;
+      }
+   }
+
+   public static class d {
+      public final fpe a;
+      public final PropertyMap b;
+      public final PropertyMap c;
+      public final Proxy d;
+
+      public d(fpe $$0, PropertyMap $$1, PropertyMap $$2, Proxy $$3) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
+         this.d = $$3;
+      }
    }
 }

@@ -1,26 +1,56 @@
 import com.mojang.datafixers.kinds.App;
+import java.util.Optional;
 import java.util.function.Function;
+import java.util.function.Predicate;
 
+@Deprecated
 public class cat {
-   public static byr<bwz> a() {
-      return ccd.a((Function<ccd.b<bwz>, ? extends App<ccd.c<bwz>, ccg<bwz>>>)($$0 -> $$0.a((ccg<bwz>)(($$0x, $$1, $$2) -> {
-            if ($$0x.A.a(20) != 0) {
-               return false;
-            } else {
-               bxz<?> $$3 = $$1.eb();
-               csh $$4 = $$0x.d($$1.dv());
-               if ($$4 != null) {
-                  if ($$4.c() && !$$4.b()) {
-                     $$3.b(csl.h);
-                     $$3.a(csl.h);
-                  } else {
-                     $$3.b(csl.i);
-                     $$3.a(csl.i);
-                  }
-               }
+   public static byu<bxc> a(float $$0, btm $$1) {
+      return a($$0, $$1, $$0x -> true);
+   }
 
-               return true;
-            }
-         }))));
+   public static byu<bxc> a(bwm<?> $$0, float $$1, btm $$2) {
+      return a($$1, $$2, $$1x -> $$0.equals($$1x.aq()));
+   }
+
+   private static byu<bxc> a(float $$0, btm $$1, Predicate<bxc> $$2) {
+      float $$3 = $$0 * $$0;
+      cat.a $$4 = new cat.a($$1);
+      return ccg.a(
+         (Function<ccg.b<bxc>, ? extends App<ccg.c<bxc>, ccj<bxc>>>)($$3x -> $$3x.group($$3x.c(cge.o), $$3x.b(cge.h))
+               .apply($$3x, ($$4x, $$5) -> ($$6, $$7, $$8) -> {
+                     Optional<bxc> $$9 = $$3x.<cgg>b($$5).a($$2.and($$2xxxx -> $$2xxxx.g($$7) <= (double)$$3));
+                     if ($$9.isEmpty()) {
+                        return false;
+                     } else if (!$$4.a($$6.A)) {
+                        return false;
+                     } else {
+                        $$4x.a(new bze($$9.get(), true));
+                        return true;
+                     }
+                  }))
+      );
+   }
+
+   public static final class a {
+      private final btm a;
+      private int b;
+
+      public a(btm $$0) {
+         if ($$0.a() <= 1) {
+            throw new IllegalArgumentException();
+         } else {
+            this.a = $$0;
+         }
+      }
+
+      public boolean a(azv $$0) {
+         if (this.b == 0) {
+            this.b = this.a.a($$0) - 1;
+            return false;
+         } else {
+            return --this.b == 0;
+         }
+      }
    }
 }

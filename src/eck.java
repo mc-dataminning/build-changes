@@ -1,54 +1,114 @@
-import com.google.common.annotations.VisibleForTesting;
-import com.google.common.collect.ImmutableList;
-import java.util.Locale;
+import java.util.List;
+import java.util.function.Predicate;
+import org.apache.commons.lang3.Validate;
 
-public final class eck {
-   private final ImmutableList<ecm> a;
-   private final int[] b;
+public class eck<T> implements ecm<T> {
+   private final jj<T> a;
+   private final T[] b;
+   private final ecn<T> c;
+   private final int d;
+   private int e;
 
-   public eck(ImmutableList<ecm> $$0) {
+   private eck(jj<T> $$0, int $$1, ecn<T> $$2, List<T> $$3) {
       this.a = $$0;
-      int $$1 = $$0.isEmpty() ? 0 : ((ecm)$$0.getFirst()).b() + 1;
-      this.b = new int[$$1];
+      this.b = (T[])(new Object[1 << $$1]);
+      this.d = $$1;
+      this.c = $$2;
+      Validate.isTrue($$3.size() <= this.b.length, "Can't initialize LinearPalette of size %d with %d entries", new Object[]{this.b.length, $$3.size()});
 
-      for (int $$2 = 0; $$2 < $$0.size(); $$2++) {
-         ecm $$3 = (ecm)$$0.get($$2);
-         int $$4 = $$3.b();
-
-         for (int $$5 = 0; $$5 <= $$4; $$5++) {
-            this.b[$$5] = $$2;
-         }
+      for (int $$4 = 0; $$4 < $$3.size(); $$4++) {
+         this.b[$$4] = $$3.get($$4);
       }
+
+      this.e = $$3.size();
    }
 
-   @VisibleForTesting
-   public ImmutableList<ecm> a() {
-      return this.a;
+   private eck(jj<T> $$0, T[] $$1, ecn<T> $$2, int $$3, int $$4) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+      this.d = $$3;
+      this.e = $$4;
    }
 
-   public int b() {
-      return this.a.size();
-   }
-
-   public int a(ecm $$0) {
-      int $$1 = $$0.b();
-      if ($$1 >= this.b.length) {
-         throw new IllegalArgumentException(String.format(Locale.ROOT, "Requesting a ChunkStatus(%s) outside of dependency range(%s)", $$0, this.a));
-      } else {
-         return this.b[$$1];
-      }
-   }
-
-   public int c() {
-      return Math.max(0, this.a.size() - 1);
-   }
-
-   public ecm a(int $$0) {
-      return (ecm)this.a.get($$0);
+   public static <A> ecm<A> a(int $$0, jj<A> $$1, ecn<A> $$2, List<A> $$3) {
+      return new eck<>($$1, $$0, $$2, $$3);
    }
 
    @Override
-   public String toString() {
-      return this.a.toString();
+   public int a(T $$0) {
+      for (int $$1 = 0; $$1 < this.e; $$1++) {
+         if (this.b[$$1] == $$0) {
+            return $$1;
+         }
+      }
+
+      int $$2 = this.e;
+      if ($$2 < this.b.length) {
+         this.b[$$2] = $$0;
+         this.e++;
+         return $$2;
+      } else {
+         return this.c.onResize(this.d + 1, $$0);
+      }
+   }
+
+   @Override
+   public boolean a(Predicate<T> $$0) {
+      for (int $$1 = 0; $$1 < this.e; $$1++) {
+         if ($$0.test(this.b[$$1])) {
+            return true;
+         }
+      }
+
+      return false;
+   }
+
+   @Override
+   public T a(int $$0) {
+      if ($$0 >= 0 && $$0 < this.e) {
+         return this.b[$$0];
+      } else {
+         throw new ecl($$0);
+      }
+   }
+
+   @Override
+   public void a(vu $$0) {
+      this.e = $$0.l();
+
+      for (int $$1 = 0; $$1 < this.e; $$1++) {
+         this.b[$$1] = this.a.b($$0.l());
+      }
+   }
+
+   @Override
+   public void b(vu $$0) {
+      $$0.c(this.e);
+
+      for (int $$1 = 0; $$1 < this.e; $$1++) {
+         $$0.c(this.a.a(this.b[$$1]));
+      }
+   }
+
+   @Override
+   public int a() {
+      int $$0 = wp.a(this.b());
+
+      for (int $$1 = 0; $$1 < this.b(); $$1++) {
+         $$0 += wp.a(this.a.a(this.b[$$1]));
+      }
+
+      return $$0;
+   }
+
+   @Override
+   public int b() {
+      return this.e;
+   }
+
+   @Override
+   public ecm<T> a(ecn<T> $$0) {
+      return new eck<>(this.a, (T[])((Object[])this.b.clone()), $$0, this.d, this.e);
    }
 }

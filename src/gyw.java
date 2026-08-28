@@ -1,13 +1,22 @@
-public class gyw extends gzy<hbd, gel> {
-   private static final gpn a = gpn.r(ale.b("textures/entity/breeze/breeze_eyes.png"));
+public class gyw extends gws<cop, hcx> {
+   private static final alg a = alg.b("textures/entity/illager/vindicator.png");
 
-   public gyw(gxh<hbd, gel> $$0) {
-      super($$0);
+   public gyw(gvz.a $$0) {
+      super($$0, new ggf<>($$0.a(git.dJ)), 0.5F);
+      this.a(new haf<hcx, ggf<hcx>>(this) {
+         public void a(fjc $$0, gps $$1, int $$2, hcx $$3, float $$4, float $$5) {
+            if ($$3.c) {
+               super.a($$0, $$1, $$2, $$3, $$4, $$5);
+            }
+         }
+      });
    }
 
-   public void a(fiq $$0, gpd $$1, int $$2, hbd $$3, float $$4, float $$5) {
-      fiu $$6 = $$1.getBuffer(a);
-      gel $$7 = this.d();
-      gup.a($$7, $$7.a(), $$7.b()).a($$0, $$6, $$2, hhp.d);
+   public alg a(hcx $$0) {
+      return a;
+   }
+
+   public hcx b() {
+      return new hcx();
    }
 }

@@ -1,40 +1,18 @@
-import java.util.EnumSet;
+import javax.annotation.Nullable;
 
-public class cfs extends cfv {
-   private final bxv a;
-   private bwz b;
-   private int c;
+public class cfs<T extends bxc> extends cfr<T> {
+   private boolean i = true;
 
-   public cfs(bxv $$0) {
-      super($$0, false);
-      this.a = $$0;
-      this.a(EnumSet.of(cdv.a.d));
+   public cfs(cso $$0, Class<T> $$1, int $$2, boolean $$3, boolean $$4, @Nullable chr.a $$5) {
+      super($$0, $$1, $$2, $$3, $$4, $$5);
+   }
+
+   public void a(boolean $$0) {
+      this.i = $$0;
    }
 
    @Override
    public boolean b() {
-      if (this.a.q() && !this.a.gq()) {
-         bwz $$0 = this.a.e();
-         if ($$0 == null) {
-            return false;
-         } else {
-            this.b = $$0.eq();
-            int $$1 = $$0.es();
-            return $$1 != this.c && this.a(this.b, cho.a) && this.a.a(this.b, $$0);
-         }
-      } else {
-         return false;
-      }
-   }
-
-   @Override
-   public void d() {
-      this.e.g(this.b);
-      bwz $$0 = this.a.e();
-      if ($$0 != null) {
-         this.c = $$0.es();
-      }
-
-      super.d();
+      return this.i && super.b();
    }
 }

@@ -1,36 +1,28 @@
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
 
-public class fbk extends fbm {
-   public static final MapCodec<fbk> a = a(fbk::new);
+public class fbk extends fam {
+   public static final MapCodec<fbk> a = RecordCodecBuilder.mapCodec($$0 -> a($$0).and(das.a.fieldOf("id").forGetter($$0x -> $$0x.b)).apply($$0, fbk::new));
+   private final je<das> b;
 
-   fbk(List<fbw> $$0) {
-      super($$0, af.b($$0));
+   private fbk(List<fci> $$0, je<das> $$1) {
+      super($$0);
+      this.b = $$1;
    }
 
    @Override
-   public fbx b() {
-      return fby.b;
+   public fao<fbk> b() {
+      return fap.F;
    }
 
-   public static fbk.a a(fbw.a... $$0) {
-      return new fbk.a($$0);
+   @Override
+   public cyy a(cyy $$0, eyz $$1) {
+      $$0.a(kj.R, dau.a, this.b, dau::b);
+      return $$0;
    }
 
-   public static class a extends fbm.a {
-      public a(fbw.a... $$0) {
-         super($$0);
-      }
-
-      @Override
-      public fbk.a or(fbw.a $$0) {
-         this.a($$0);
-         return this;
-      }
-
-      @Override
-      protected fbw a(List<fbw> $$0) {
-         return new fbk($$0);
-      }
+   public static fam.a<?> a(je<das> $$0) {
+      return a($$1 -> new fbk($$1, $$0));
    }
 }

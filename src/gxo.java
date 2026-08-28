@@ -1,36 +1,39 @@
-public class gxo extends gwq<coc, hdl, ghc> {
-   public static final ale a = ale.b("textures/entity/slime/slime.png");
+import com.google.common.collect.Maps;
+import java.util.Map;
 
-   public gxo(gvk.a $$0) {
-      super($$0, new ghc($$0.a(gif.da)), 0.25F);
-      this.a(new hac(this, $$0.f()));
+public class gxo extends gxf<cjl, hdp, ggr> {
+   private final Map<cjm.a, ged<ggr>> a;
+
+   public gxo(gvz.a $$0) {
+      super($$0, new ggr($$0.a(git.cb)), 0.7F);
+      this.a = a($$0);
+      this.a(new hap<>(this, $$0.h(), hkv.d.g, $$0x -> $$0x.a, new ggr($$0.a(git.co)), new ggr($$0.a(git.cn))));
    }
 
-   protected float a(hdl $$0) {
-      return (float)$$0.b * 0.25F;
+   private static Map<cjm.a, ged<ggr>> a(gvz.a $$0) {
+      return Maps.newEnumMap(
+         Map.of(cjm.a.a, new ged<>(new ggr($$0.a(git.cb)), new ggr($$0.a(git.cm))), cjm.a.b, new ged<>(new gff($$0.a(git.ae)), new gff($$0.a(git.af))))
+      );
    }
 
-   protected void a(hdl $$0, fiq $$1) {
-      float $$2 = 0.999F;
-      $$1.b(0.999F, 0.999F, 0.999F);
-      $$1.a(0.0F, 0.001F, 0.0F);
-      float $$3 = (float)$$0.b;
-      float $$4 = $$0.a / ($$3 * 0.5F + 1.0F);
-      float $$5 = 1.0F / ($$4 + 1.0F);
-      $$1.b($$5 * $$3, 1.0F / $$5 * $$3, $$5 * $$3);
+   public void a(hdp $$0, fjc $$1, gps $$2, int $$3) {
+      if ($$0.b != null) {
+         this.g = this.a.get($$0.b.b().a()).a($$0.aj);
+         super.a($$0, $$1, $$2, $$3);
+      }
    }
 
-   public ale b(hdl $$0) {
-      return a;
+   public alg a(hdp $$0) {
+      return $$0.b == null ? hie.c() : $$0.b.b().b().b();
    }
 
-   public hdl b() {
-      return new hdl();
+   public hdp b() {
+      return new hdp();
    }
 
-   public void a(coc $$0, hdl $$1, float $$2) {
+   public void a(cjl $$0, hdp $$1, float $$2) {
       super.a($$0, $$1, $$2);
-      $$1.a = azk.h($$2, $$0.bF, $$0.bE);
-      $$1.b = $$0.go();
+      $$1.a = $$0.a(bwn.h).v();
+      $$1.b = $$0.t().a();
    }
 }

@@ -1,116 +1,118 @@
-import com.mojang.logging.LogUtils;
+import com.google.common.annotations.VisibleForTesting;
+import java.util.function.Predicate;
+import java.util.function.Supplier;
+import java.util.function.ToDoubleFunction;
 import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
-public class chz implements dic {
-   private static final Logger a = LogUtils.getLogger();
-   private boolean b;
-   private chz.a c;
-   private int d;
-   private int e;
-   private int f;
-   private int g;
-   private int h;
+public class chz {
+   private static final int a = 10;
 
-   public chz() {
-      this.c = chz.a.c;
+   public static iu a(azv $$0, int $$1, int $$2) {
+      int $$3 = $$0.a(2 * $$1 + 1) - $$1;
+      int $$4 = $$0.a(2 * $$2 + 1) - $$2;
+      int $$5 = $$0.a(2 * $$1 + 1) - $$1;
+      return new iu($$3, $$4, $$5);
    }
 
-   @Override
-   public void a(aro $$0, boolean $$1, boolean $$2) {
-      if (!$$0.V() && $$1) {
-         float $$3 = $$0.f(0.0F);
-         if ((double)$$3 == 0.5) {
-            this.c = $$0.A.a(10) == 0 ? chz.a.b : chz.a.c;
-         }
-
-         if (this.c != chz.a.c) {
-            if (!this.b) {
-               if (!this.a($$0)) {
-                  return;
-               }
-
-               this.b = true;
-            }
-
-            if (this.e > 0) {
-               this.e--;
-            } else {
-               this.e = 2;
-               if (this.d > 0) {
-                  this.b($$0);
-                  this.d--;
-               } else {
-                  this.c = chz.a.c;
-               }
-            }
-         }
+   @Nullable
+   public static iu a(azv $$0, int $$1, int $$2, int $$3, double $$4, double $$5, double $$6) {
+      double $$7 = azm.d($$5, $$4) - (float) (Math.PI / 2);
+      double $$8 = $$7 + (double)(2.0F * $$0.i() - 1.0F) * $$6;
+      double $$9 = Math.sqrt($$0.j()) * (double)azm.g * (double)$$1;
+      double $$10 = -$$9 * Math.sin($$8);
+      double $$11 = $$9 * Math.cos($$8);
+      if (!(Math.abs($$10) > (double)$$1) && !(Math.abs($$11) > (double)$$1)) {
+         int $$12 = $$0.a(2 * $$2 + 1) - $$2 + $$3;
+         return iu.a($$10, (double)$$12, $$11);
       } else {
-         this.c = chz.a.c;
-         this.b = false;
+         return null;
       }
    }
 
-   private boolean a(aro $$0) {
-      for (cqs $$1 : $$0.z()) {
-         if (!$$1.U_()) {
-            iu $$2 = $$1.dv();
-            if ($$0.c($$2) && !$$0.u($$2).a(awz.af)) {
-               for (int $$3 = 0; $$3 < 10; $$3++) {
-                  float $$4 = $$0.A.i() * (float) (Math.PI * 2);
-                  this.f = $$2.u() + azk.d(azk.b($$4) * 32.0F);
-                  this.g = $$2.v();
-                  this.h = $$2.w() + azk.d(azk.a($$4) * 32.0F);
-                  if (this.a($$0, new iu(this.f, this.g, this.h)) != null) {
-                     this.e = 0;
-                     this.d = 20;
-                     break;
-                  }
-               }
+   @VisibleForTesting
+   public static iu a(iu $$0, int $$1, Predicate<iu> $$2) {
+      if (!$$2.test($$0)) {
+         return $$0;
+      } else {
+         iu.a $$3 = $$0.k().c(ja.b);
 
-               return true;
+         while ($$3.v() <= $$1 && $$2.test($$3)) {
+            $$3.c(ja.b);
+         }
+
+         return $$3.j();
+      }
+   }
+
+   @VisibleForTesting
+   public static iu a(iu $$0, int $$1, int $$2, Predicate<iu> $$3) {
+      if ($$1 < 0) {
+         throw new IllegalArgumentException("aboveSolidAmount was " + $$1 + ", expected >= 0");
+      } else if (!$$3.test($$0)) {
+         return $$0;
+      } else {
+         iu.a $$4 = $$0.k().c(ja.b);
+
+         while ($$4.v() <= $$2 && $$3.test($$4)) {
+            $$4.c(ja.b);
+         }
+
+         int $$5 = $$4.v();
+
+         while ($$4.v() <= $$2 && $$4.v() - $$5 < $$1) {
+            $$4.c(ja.b);
+            if ($$3.test($$4)) {
+               $$4.c(ja.a);
+               break;
             }
          }
-      }
 
-      return false;
-   }
-
-   private void b(aro $$0) {
-      fdw $$1 = this.a($$0, new iu(this.f, this.g, this.h));
-      if ($$1 != null) {
-         com $$2;
-         try {
-            $$2 = new com($$0);
-            $$2.a($$0, $$0.d_($$2.dv()), bwi.h, null);
-         } catch (Exception var5) {
-            a.warn("Failed to create zombie for village siege at {}", $$1, var5);
-            return;
-         }
-
-         $$2.b($$1.d, $$1.e, $$1.f, $$0.A.i() * 360.0F, 0.0F);
-         $$0.a_($$2);
+         return $$4.j();
       }
    }
 
    @Nullable
-   private fdw a(aro $$0, iu $$1) {
-      for (int $$2 = 0; $$2 < 10; $$2++) {
-         int $$3 = $$1.u() + $$0.A.a(16) - 8;
-         int $$4 = $$1.w() + $$0.A.a(16) - 8;
-         int $$5 = $$0.a(efn.a.b, $$3, $$4);
-         iu $$6 = new iu($$3, $$5, $$4);
-         if ($$0.c($$6) && cnt.b(bwj.bO, $$0, bwi.h, $$6, $$0.A)) {
-            return fdw.c($$6);
+   public static fei a(bxk $$0, Supplier<iu> $$1) {
+      return a($$1, $$0::c);
+   }
+
+   @Nullable
+   public static fei a(Supplier<iu> $$0, ToDoubleFunction<iu> $$1) {
+      double $$2 = Double.NEGATIVE_INFINITY;
+      iu $$3 = null;
+
+      for (int $$4 = 0; $$4 < 10; $$4++) {
+         iu $$5 = $$0.get();
+         if ($$5 != null) {
+            double $$6 = $$1.applyAsDouble($$5);
+            if ($$6 > $$2) {
+               $$2 = $$6;
+               $$3 = $$5;
+            }
          }
       }
 
-      return null;
+      return $$3 != null ? fei.c($$3) : null;
    }
 
-   static enum a {
-      a,
-      b,
-      c;
+   public static iu a(bxk $$0, int $$1, azv $$2, iu $$3) {
+      int $$4 = $$3.u();
+      int $$5 = $$3.w();
+      if ($$0.ge() && $$1 > 1) {
+         iu $$6 = $$0.gb();
+         if ($$0.dA() > (double)$$6.u()) {
+            $$4 -= $$2.a($$1 / 2);
+         } else {
+            $$4 += $$2.a($$1 / 2);
+         }
+
+         if ($$0.dG() > (double)$$6.w()) {
+            $$5 -= $$2.a($$1 / 2);
+         } else {
+            $$5 += $$2.a($$1 / 2);
+         }
+      }
+
+      return iu.a((double)$$4 + $$0.dA(), (double)$$3.v() + $$0.dC(), (double)$$5 + $$0.dG());
    }
 }

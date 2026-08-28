@@ -1,25 +1,40 @@
 import com.mojang.serialization.MapCodec;
 
-public class dre extends dme {
+public class dre extends dma {
    public static final MapCodec<dre> a = b(dre::new);
-   private static final feq b = dlu.b(12.0, 0.0, 3.0);
+   private static final ffc b = dma.b(16.0, 0.0, 14.0);
 
    @Override
    public MapCodec<dre> a() {
       return a;
    }
 
-   public dre(dzn.d $$0) {
+   public dre(dzy.d $$0) {
       super($$0);
    }
 
    @Override
-   protected feq a(dzo $$0, dhv $$1, iu $$2, feb $$3) {
+   protected ffc b(dzz $$0, dib $$1, iu $$2, fen $$3) {
       return b;
    }
 
    @Override
-   protected boolean b(dzo $$0, dhv $$1, iu $$2) {
-      return $$0.a(axa.aO) || $$0.a(dlw.ek) || super.b($$0, $$1, $$2);
+   protected ffc b_(dzz $$0, dib $$1, iu $$2) {
+      return fez.b();
+   }
+
+   @Override
+   protected ffc c(dzz $$0, dib $$1, iu $$2, fen $$3) {
+      return fez.b();
+   }
+
+   @Override
+   protected boolean a(dzz $$0, ewv $$1) {
+      return false;
+   }
+
+   @Override
+   protected float c(dzz $$0, dib $$1, iu $$2) {
+      return 0.2F;
    }
 }

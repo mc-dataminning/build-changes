@@ -1,36 +1,52 @@
-public class gsg implements grp<dyf> {
-   private final gvi a;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.Maps;
+import com.google.common.collect.ImmutableMap.Builder;
+import java.util.Map;
 
-   public gsg(grq.a $$0) {
-      this.a = $$0.c();
+public class gsg {
+   private static final Map<dwz<?>, gsf<?>> a = Maps.newHashMap();
+
+   private static <T extends dwx> void a(dwz<? extends T> $$0, gsf<T> $$1) {
+      a.put($$0, $$1);
    }
 
-   public void a(dyf $$0, float $$1, fiq $$2, gpd $$3, int $$4, int $$5) {
-      dip $$6 = $$0.i();
-      if ($$6 != null) {
-         dhr $$7 = $$0.c();
-         bwa $$8 = $$7.b($$6, $$0.aw_());
-         if ($$8 != null) {
-            a($$1, $$2, $$3, $$4, $$8, this.a, $$7.b(), $$7.a());
+   public static Map<dwz<?>, gse<?>> a(gsf.a $$0) {
+      Builder<dwz<?>, gse<?>> $$1 = ImmutableMap.builder();
+      a.forEach(($$2, $$3) -> {
+         try {
+            $$1.put($$2, $$3.create($$0));
+         } catch (Exception var5) {
+            throw new IllegalStateException("Failed to create model for " + mf.j.b((dwz<?>)$$2), var5);
          }
-      }
+      });
+      return $$1.build();
    }
 
-   public static void a(float $$0, fiq $$1, gpd $$2, int $$3, bwa $$4, gvi $$5, double $$6, double $$7) {
-      $$1.a();
-      $$1.a(0.5F, 0.0F, 0.5F);
-      float $$8 = 0.53125F;
-      float $$9 = Math.max($$4.dq(), $$4.dr());
-      if ((double)$$9 > 1.0) {
-         $$8 /= $$9;
-      }
-
-      $$1.a(0.0F, 0.4F, 0.0F);
-      $$1.a(a.d.rotationDegrees((float)azk.d((double)$$0, $$6, $$7) * 10.0F));
-      $$1.a(0.0F, -0.2F, 0.0F);
-      $$1.a(a.b.rotationDegrees(-30.0F));
-      $$1.b($$8, $$8, $$8);
-      $$5.a($$4, 0.0, 0.0, 0.0, $$0, $$1, $$2, $$3);
-      $$1.b();
+   static {
+      a(dwz.h, gst::new);
+      a(dwz.i, gsp::new);
+      a(dwz.j, gsv::new);
+      a(dwz.l, gsr::new);
+      a(dwz.b, gsl::new);
+      a(dwz.d, gsl::new);
+      a(dwz.c, gsl::new);
+      a(dwz.n, gso::new);
+      a(dwz.E, gsq::new);
+      a(dwz.o, gsy::new);
+      a(dwz.w, gsx::new);
+      a(dwz.p, gsa::new);
+      a(dwz.q, gsu::new);
+      a(dwz.u, grz::new);
+      a(dwz.v, gsh::new);
+      a(dwz.U, gsw::new);
+      a(dwz.y, gss::new);
+      a(dwz.z, gsb::new);
+      a(dwz.A, gsm::new);
+      a(dwz.F, gsc::new);
+      a(dwz.H, gsk::new);
+      a(dwz.O, gsj::new);
+      a(dwz.P, gsn::new);
+      a(dwz.R, gsz::new);
+      a(dwz.S, gta::new);
    }
 }

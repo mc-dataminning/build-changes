@@ -1,72 +1,70 @@
-import it.unimi.dsi.fastutil.ints.IntArrayList;
-import it.unimi.dsi.fastutil.ints.IntList;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
-public class ddi {
-   public static final int a = -1;
-   public static final ddi b = new ddi(List.of(), IntList.of());
-   private final List<ddf> c;
-   private final IntList d;
+public class ddi extends ddf {
+   private static final ddl c = ddl.a(czc.rB);
+   private static final ddl d = ddl.a(czc.qf);
+   private static final ddl e = ddl.a(czc.vA);
 
-   private ddi(List<ddf> $$0, IntList $$1) {
-      this.c = $$0;
-      this.d = $$1;
+   public ddi(ddc $$0) {
+      super($$0);
    }
 
-   public static ddi a(ddf $$0) {
-      return $$0.b() ? b : new ddi(List.of($$0), IntList.of(0));
-   }
+   public boolean a(ddd $$0, div $$1) {
+      if ($$0.e() < 2) {
+         return false;
+      } else {
+         boolean $$2 = false;
+         int $$3 = 0;
 
-   public static ddi a(List<Optional<ddf>> $$0) {
-      int $$1 = $$0.size();
-      List<ddf> $$2 = new ArrayList<>($$1);
-      IntList $$3 = new IntArrayList($$1);
-      int $$4 = 0;
+         for (int $$4 = 0; $$4 < $$0.a(); $$4++) {
+            cyy $$5 = $$0.a($$4);
+            if (!$$5.f()) {
+               if (c.a($$5)) {
+                  if ($$2) {
+                     return false;
+                  }
 
-      for (Optional<ddf> $$5 : $$0) {
-         if ($$5.isPresent()) {
-            ddf $$6 = $$5.get();
-            if ($$6.b()) {
-               return b;
+                  $$2 = true;
+               } else if (d.a($$5)) {
+                  if (++$$3 > 3) {
+                     return false;
+                  }
+               } else if (!e.a($$5)) {
+                  return false;
+               }
             }
+         }
 
-            $$2.add($$6);
-            $$3.add($$4++);
-         } else {
-            $$3.add(-1);
+         return $$2 && $$3 >= 1;
+      }
+   }
+
+   public cyy a(ddd $$0, jg.a $$1) {
+      List<dbm> $$2 = new ArrayList<>();
+      int $$3 = 0;
+
+      for (int $$4 = 0; $$4 < $$0.a(); $$4++) {
+         cyy $$5 = $$0.a($$4);
+         if (!$$5.f()) {
+            if (d.a($$5)) {
+               $$3++;
+            } else if (e.a($$5)) {
+               dbm $$6 = $$5.a(kj.ai);
+               if ($$6 != null) {
+                  $$2.add($$6);
+               }
+            }
          }
       }
 
-      return new ddi($$2, $$3);
+      cyy $$7 = new cyy(czc.vz, 3);
+      $$7.b(kj.aj, new dbn($$3, $$2));
+      return $$7;
    }
 
-   public static ddi b(List<ddf> $$0) {
-      int $$1 = $$0.size();
-      IntList $$2 = new IntArrayList($$1);
-
-      for (int $$3 = 0; $$3 < $$1; $$3++) {
-         ddf $$4 = $$0.get($$3);
-         if ($$4.b()) {
-            return b;
-         }
-
-         $$2.add($$3);
-      }
-
-      return new ddi($$0, $$2);
-   }
-
-   public IntList a() {
-      return this.d;
-   }
-
-   public List<ddf> b() {
-      return this.c;
-   }
-
-   public boolean c() {
-      return this.d.isEmpty();
+   @Override
+   public ddz<ddi> a() {
+      return ddz.g;
    }
 }

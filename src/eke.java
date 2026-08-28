@@ -1,75 +1,54 @@
 import com.mojang.serialization.Codec;
+import javax.annotation.Nullable;
 
-public class eke extends eit<els> {
-   public eke(Codec<els> $$0) {
+public class eke extends eje<elx> {
+   public eke(Codec<elx> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(eiv<els> $$0) {
-      els $$1 = $$0.f();
-      djo $$2 = $$0.b();
-      iu $$3 = $$0.e();
-      if (!$$2.a_($$3.d()).a($$1.f)) {
-         return false;
-      } else if ($$1.c && !$$2.a_($$3.e()).a($$1.f)) {
+   public boolean a(ejg<elx> $$0) {
+      elx $$1 = $$0.f();
+      dju $$2 = $$0.b();
+      azv $$3 = $$0.d();
+      dma $$4 = $$1.b.b();
+      iu $$5 = a($$2, $$0.e().k().a(ja.a.b, $$2.G_() + 1, $$2.ao()), $$4);
+      if ($$5 == null) {
          return false;
       } else {
-         dzo $$4 = $$2.a_($$3);
-         if (!$$4.l() && !$$4.a($$1.f)) {
-            return false;
-         } else {
-            int $$5 = 0;
-            int $$6 = 0;
-            if ($$2.a_($$3.h()).a($$1.f)) {
-               $$6++;
+         int $$6 = $$1.a().a($$3);
+         int $$7 = $$1.a().a($$3);
+         int $$8 = $$1.a().a($$3);
+         int $$9 = Math.max($$6, Math.max($$7, $$8));
+         boolean $$10 = false;
+
+         for (iu $$11 : iu.a($$5, $$6, $$7, $$8)) {
+            if ($$11.k($$5) > $$9) {
+               break;
             }
 
-            if ($$2.a_($$3.i()).a($$1.f)) {
-               $$6++;
+            dzz $$12 = $$2.a_($$11);
+            if ($$12.a($$4)) {
+               this.a($$2, $$11, $$1.c);
+               $$10 = true;
             }
-
-            if ($$2.a_($$3.f()).a($$1.f)) {
-               $$6++;
-            }
-
-            if ($$2.a_($$3.g()).a($$1.f)) {
-               $$6++;
-            }
-
-            if ($$2.a_($$3.e()).a($$1.f)) {
-               $$6++;
-            }
-
-            int $$7 = 0;
-            if ($$2.v($$3.h())) {
-               $$7++;
-            }
-
-            if ($$2.v($$3.i())) {
-               $$7++;
-            }
-
-            if ($$2.v($$3.f())) {
-               $$7++;
-            }
-
-            if ($$2.v($$3.g())) {
-               $$7++;
-            }
-
-            if ($$2.v($$3.e())) {
-               $$7++;
-            }
-
-            if ($$6 == $$1.d && $$7 == $$1.e) {
-               $$2.a($$3, $$1.b.g(), 2);
-               $$2.a($$3, $$1.b.a(), 0);
-               $$5++;
-            }
-
-            return $$5 > 0;
          }
+
+         return $$10;
       }
+   }
+
+   @Nullable
+   private static iu a(diw $$0, iu.a $$1, dma $$2) {
+      while ($$1.v() > $$0.G_() + 1) {
+         dzz $$3 = $$0.a_($$1);
+         if ($$3.a($$2)) {
+            return $$1;
+         }
+
+         $$1.c(ja.a);
+      }
+
+      return null;
    }
 }

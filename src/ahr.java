@@ -1,20 +1,18 @@
-public record ahr(int b, der c, boolean d) implements zd<agn> {
-   public static final yu<vs, ahr> a = yu.a(ys.w, ahr::b, der.a, ahr::e, ys.b, ahr::f, ahr::new);
+import io.netty.buffer.ByteBuf;
+
+public record ahr(iu b, boolean c) implements zf<agp> {
+   public static final yw<ByteBuf, ahr> a = yw.a(iu.b, ahr::b, yu.b, ahr::e, ahr::new);
 
    @Override
-   public zf<ahr> a() {
-      return agl.bQ;
+   public zh<ahr> a() {
+      return agn.bO;
    }
 
-   public void a(agn $$0) {
+   public void a(agp $$0) {
       $$0.a(this);
    }
 
-   public der e() {
+   public boolean e() {
       return this.c;
-   }
-
-   public boolean f() {
-      return this.d;
    }
 }

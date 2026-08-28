@@ -1,46 +1,26 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import it.unimi.dsi.fastutil.objects.ReferenceLinkedOpenHashSet;
-import it.unimi.dsi.fastutil.objects.ReferenceSortedSets;
 import java.util.List;
-import java.util.SequencedSet;
+import java.util.function.Consumer;
 
-public record dbw(boolean d, SequencedSet<ki<?>> e) {
-   private static final Codec<SequencedSet<ki<?>>> f = ki.a.listOf().xmap(ReferenceLinkedOpenHashSet::new, List::copyOf);
-   public static final Codec<dbw> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               Codec.BOOL.optionalFieldOf("hide_tooltip", false).forGetter(dbw::a),
-               f.optionalFieldOf("hidden_components", ReferenceSortedSets.emptySet()).forGetter(dbw::b)
-            )
-            .apply($$0, dbw::new)
-   );
-   public static final yu<wh, dbw> b = yu.a(ys.b, dbw::a, ki.b.a(ys.a(ReferenceLinkedOpenHashSet::new)), dbw::b, dbw::new);
-   public static final dbw c = new dbw(false, ReferenceSortedSets.emptySet());
+public record dbw(int f) implements dbe, dcd {
+   public static final int a = 120000;
+   public static final int b = 0;
+   public static final int c = 4;
+   public static final Codec<dbw> d = ayu.a(0, 4).xmap(dbw::new, dbw::a);
+   public static final yw<wj, dbw> e = yw.a(yu.h, dbw::a, dbw::new);
 
-   public dbw a(ki<?> $$0, boolean $$1) {
-      if (this.e.contains($$0) == $$1) {
-         return this;
-      } else {
-         SequencedSet<ki<?>> $$2 = new ReferenceLinkedOpenHashSet(this.e);
-         if ($$1) {
-            $$2.add($$0);
-         } else {
-            $$2.remove($$0);
-         }
-
-         return new dbw(this.d, $$2);
-      }
+   @Override
+   public void a(div $$0, bxc $$1, cyy $$2, dbd $$3) {
+      $$1.a(new bvh(bvj.E, 120000, this.f, false, false, true));
    }
 
-   public boolean a(ki<?> $$0) {
-      return !this.d && !this.e.contains($$0);
+   @Override
+   public void a(cyu.b $$0, Consumer<wy> $$1, dan $$2, ke $$3) {
+      List<bvh> $$4 = List.of(new bvh(bvj.E, 120000, this.f, false, false, true));
+      dau.a($$4, $$1, 1.0F, $$0.b());
    }
 
-   public boolean a() {
-      return this.d;
-   }
-
-   public SequencedSet<ki<?>> b() {
-      return this.e;
+   public int a() {
+      return this.f;
    }
 }

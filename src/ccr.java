@@ -1,18 +1,19 @@
 import com.mojang.datafixers.kinds.App;
+import java.util.Optional;
 import java.util.function.Function;
 
 public class ccr {
-   private static final btd a = btj.a(100, 200);
-
-   public static byr<bwz> a() {
-      return ccd.a(
-         (Function<ccd.b<bwz>, ? extends App<ccd.c<bwz>, ccg<bwz>>>)($$0 -> $$0.group($$0.a(cgb.aC), $$0.a(cgb.n), $$0.c(cgb.aH), $$0.b(cgb.C), $$0.c(cgb.aA))
-               .apply($$0, ($$0x, $$1, $$2, $$3, $$4) -> ($$3x, $$4x, $$5) -> {
-                     $$0x.a(bas.a);
-                     $$2.a(bas.a, (long)a.a($$3x.C_()));
-                     $$1.b();
-                     $$4x.b(bxl.m);
-                     return true;
+   public static byu<bxc> a() {
+      return ccg.a(
+         (Function<ccg.b<bxc>, ? extends App<ccg.c<bxc>, ccj<bxc>>>)($$0 -> $$0.group($$0.a(cge.o), $$0.a(cge.aA), $$0.a(cge.az), $$0.c(cge.p))
+               .apply($$0, ($$1, $$2, $$3, $$4) -> ($$4x, $$5, $$6) -> {
+                     Optional<iu> $$7 = $$0.<bxc>a($$3).map(bwd::dv).or(() -> $$0.a($$2));
+                     if ($$7.isEmpty()) {
+                        return false;
+                     } else {
+                        $$1.a(new byw($$7.get()));
+                        return true;
+                     }
                   }))
       );
    }

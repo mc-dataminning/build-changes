@@ -1,30 +1,63 @@
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
 
-public record dez(dev f, dev g, dev h) implements dep {
+public record dez(int f, int g, List<dfb> h, dfb i, dfb j) implements dev {
    public static final MapCodec<dez> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(dev.a.fieldOf("input").forGetter(dez::b), dev.a.fieldOf("result").forGetter(dez::d), dev.a.fieldOf("crafting_station").forGetter(dez::e))
+      $$0 -> $$0.group(
+               Codec.INT.fieldOf("width").forGetter(dez::b),
+               Codec.INT.fieldOf("height").forGetter(dez::c),
+               dfb.a.listOf().fieldOf("ingredients").forGetter(dez::f),
+               dfb.a.fieldOf("result").forGetter(dez::d),
+               dfb.a.fieldOf("crafting_station").forGetter(dez::e)
+            )
             .apply($$0, dez::new)
    );
-   public static final yu<wh, dez> b = yu.a(dev.b, dez::b, dev.b, dez::d, dev.b, dez::e, dez::new);
-   public static final dep.a<dez> c = new dep.a<>(a, b);
+   public static final yw<wj, dez> b = yw.a(yu.h, dez::b, yu.h, dez::c, dfb.b.a(yu.a()), dez::f, dfb.b, dez::d, dfb.b, dez::e, dez::new);
+   public static final dev.a<dez> c = new dev.a<>(a, b);
+
+   public dez(int f, int g, List<dfb> h, dfb i, dfb j) {
+      if (h.size() != f * g) {
+         throw new IllegalArgumentException("Invalid shaped recipe display contents");
+      } else {
+         this.f = f;
+         this.g = g;
+         this.h = h;
+         this.i = i;
+         this.j = j;
+      }
+   }
 
    @Override
-   public dep.a<dez> a() {
+   public dev.a<dez> a() {
       return c;
    }
 
-   public dev b() {
+   @Override
+   public boolean a(cuh $$0) {
+      return this.h.stream().allMatch($$1 -> $$1.a($$0)) && dev.super.a($$0);
+   }
+
+   public int b() {
       return this.f;
    }
 
-   @Override
-   public dev d() {
+   public int c() {
       return this.g;
    }
 
-   @Override
-   public dev e() {
+   public List<dfb> f() {
       return this.h;
+   }
+
+   @Override
+   public dfb d() {
+      return this.i;
+   }
+
+   @Override
+   public dfb e() {
+      return this.j;
    }
 }

@@ -1,61 +1,45 @@
-import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
 import java.util.function.Consumer;
 
-public class ezi extends ezf {
-   public static final MapCodec<ezi> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(axp.a(mg.K).fieldOf("name").forGetter($$0x -> $$0x.j), Codec.BOOL.fieldOf("expand").forGetter($$0x -> $$0x.k))
-            .and(b($$0))
-            .apply($$0, ezi::new)
-   );
-   private final axp<cyo> j;
-   private final boolean k;
+public abstract class ezi extends ezp {
+   protected final List<ezp> d;
+   private final ezh a;
 
-   private ezi(axp<cyo> $$0, boolean $$1, int $$2, int $$3, List<fbw> $$4, List<fab> $$5) {
-      super($$2, $$3, $$4, $$5);
-      this.j = $$0;
-      this.k = $$1;
+   protected ezi(List<ezp> $$0, List<fci> $$1) {
+      super($$1);
+      this.d = $$0;
+      this.a = this.a($$0);
    }
 
    @Override
-   public eze a() {
-      return ezb.f;
-   }
+   public void a(ezf $$0) {
+      super.a($$0);
+      if (this.d.isEmpty()) {
+         $$0.b("Empty children list");
+      }
 
-   @Override
-   public void a(Consumer<cys> $$0, eyn $$1) {
-      mf.g.c(this.j).forEach($$1x -> $$0.accept(new cys($$1x)));
-   }
-
-   private boolean a(eyn $$0, Consumer<ezc> $$1) {
-      if (!this.a($$0)) {
-         return false;
-      } else {
-         for (final je<cyo> $$2 : mf.g.c(this.j)) {
-            $$1.accept(new ezf.c() {
-               @Override
-               public void a(Consumer<cys> $$0, eyn $$1) {
-                  $$0.accept(new cys($$2));
-               }
-            });
-         }
-
-         return true;
+      for (int $$1 = 0; $$1 < this.d.size(); $$1++) {
+         this.d.get($$1).a($$0.a(".entry[" + $$1 + "]"));
       }
    }
 
+   protected abstract ezh a(List<? extends ezh> var1);
+
    @Override
-   public boolean expand(eyn $$0, Consumer<ezc> $$1) {
-      return this.k ? this.a($$0, $$1) : super.expand($$0, $$1);
+   public final boolean expand(eyz $$0, Consumer<ezo> $$1) {
+      return !this.a($$0) ? false : this.a.expand($$0, $$1);
    }
 
-   public static ezf.a<?> a(axp<cyo> $$0) {
-      return a(($$1, $$2, $$3, $$4) -> new ezi($$0, false, $$1, $$2, $$3, $$4));
+   public static <T extends ezi> MapCodec<T> a(ezi.a<T> $$0) {
+      return RecordCodecBuilder.mapCodec(
+         $$1 -> $$1.group(ezn.a.listOf().optionalFieldOf("children", List.of()).forGetter($$0xx -> $$0xx.d)).and(a($$1).t1()).apply($$1, $$0::create)
+      );
    }
 
-   public static ezf.a<?> b(axp<cyo> $$0) {
-      return a(($$1, $$2, $$3, $$4) -> new ezi($$0, true, $$1, $$2, $$3, $$4));
+   @FunctionalInterface
+   public interface a<T extends ezi> {
+      T create(List<ezp> var1, List<fci> var2);
    }
 }

@@ -1,30 +1,49 @@
-public class glq extends gld {
-   private static final int a = 12235202;
+public class glq extends goa {
+   private final gnv a;
 
-   protected glq(gjd $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, float $$7, gng $$8) {
-      super($$0, $$1, $$2, $$3, 0.7F, 0.6F, 0.7F, $$4, $$5 + 0.15F, $$6, $$7, $$8, 0.5F, 7, 0.5F, false);
-      float $$9 = (float)Math.random() * 0.2F;
-      this.v = (float)axu.b(12235202) / 255.0F - $$9;
-      this.w = (float)axu.c(12235202) / 255.0F - $$9;
-      this.x = (float)axu.d(12235202) / 255.0F - $$9;
+   glq(gjr $$0, double $$1, double $$2, double $$3, double $$4, gnv $$5) {
+      super($$0, $$1, $$2, $$3, 0.0, 0.0, 0.0);
+      this.a = $$5;
+      this.t = 4;
+      float $$6 = this.r.i() * 0.6F + 0.4F;
+      this.v = $$6;
+      this.w = $$6;
+      this.x = $$6;
+      this.D = 1.0F - (float)$$4 * 0.5F;
+      this.b($$5);
+   }
+
+   @Override
+   public int a(float $$0) {
+      return 15728880;
    }
 
    @Override
    public void a() {
-      this.u = 0.88F * this.u;
-      this.B = 0.92F * this.B;
-      super.a();
+      this.d = this.g;
+      this.e = this.h;
+      this.f = this.i;
+      if (this.s++ >= this.t) {
+         this.k();
+      } else {
+         this.b(this.a);
+      }
    }
 
-   public static class a implements gmo<mb> {
-      private final gng a;
+   @Override
+   public gne b() {
+      return gne.b;
+   }
 
-      public a(gng $$0) {
+   public static class a implements gnd<mb> {
+      private final gnv a;
+
+      public a(gnv $$0) {
          this.a = $$0;
       }
 
-      public gml a(mb $$0, gjd $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new glq($$1, $$2, $$3, $$4, $$5, $$6, $$7, 1.0F, this.a);
+      public gna a(mb $$0, gjr $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new glq($$1, $$2, $$3, $$4, $$5, this.a);
       }
    }
 }

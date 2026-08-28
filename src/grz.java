@@ -1,36 +1,75 @@
-public class grz implements grp<dxk> {
-   public static final hkg a = new hkg(hhy.d, ale.b("entity/enchanting_table_book"));
-   private final gek b;
+public class grz implements gse<dwl> {
+   private static final int a = 16;
+   private static final float b = 0.6666667F;
+   private final geo c;
+   private final geo d;
+   private final gen e;
+   private final gen f;
 
-   public grz(grq.a $$0) {
-      this.b = new gek($$0.a(gif.J));
+   public grz(gsf.a $$0) {
+      this($$0.f());
    }
 
-   public void a(dxk $$0, float $$1, fiq $$2, gpd $$3, int $$4, int $$5) {
-      $$2.a();
-      $$2.a(0.5F, 0.75F, 0.5F);
-      float $$6 = (float)$$0.a + $$1;
-      $$2.a(0.0F, 0.1F + azk.a($$6 * 0.1F) * 0.01F, 0.0F);
-      float $$7 = $$0.h - $$0.i;
+   public grz(giq $$0) {
+      this.c = new geo($$0.a(git.q));
+      this.d = new geo($$0.a(git.s));
+      this.e = new gen($$0.a(git.r));
+      this.f = new gen($$0.a(git.t));
+   }
 
-      while ($$7 >= (float) Math.PI) {
-         $$7 -= (float) (Math.PI * 2);
+   public void a(dwl $$0, float $$1, fjc $$2, gps $$3, int $$4, int $$5, fei $$6) {
+      dzz $$7 = $$0.m();
+      geo $$9;
+      gen $$10;
+      float $$8;
+      if ($$7.b() instanceof dlf) {
+         $$8 = -ebf.b($$7.c(dlf.b));
+         $$9 = this.c;
+         $$10 = this.e;
+      } else {
+         $$8 = -$$7.c(dvl.b).p();
+         $$9 = this.d;
+         $$10 = this.f;
       }
 
-      while ($$7 < (float) -Math.PI) {
-         $$7 += (float) (Math.PI * 2);
-      }
+      long $$14 = $$0.i().ae();
+      iu $$15 = $$0.aw_();
+      float $$16 = ((float)Math.floorMod((long)($$15.u() * 7 + $$15.v() * 9 + $$15.w() * 13) + $$14, 100L) + $$1) / 100.0F;
+      a($$2, $$3, $$4, $$5, $$8, $$9, $$10, $$16, $$0.f(), $$0.b());
+   }
 
-      float $$8 = $$0.i + $$7 * $$1;
-      $$2.a(a.d.rotation(-$$8));
-      $$2.a(a.f.rotationDegrees(80.0F));
-      float $$9 = azk.h($$1, $$0.c, $$0.b);
-      float $$10 = azk.i($$9 + 0.25F) * 1.6F - 0.3F;
-      float $$11 = azk.i($$9 + 0.75F) * 1.6F - 0.3F;
-      float $$12 = azk.h($$1, $$0.g, $$0.f);
-      this.b.a($$6, azk.a($$10, 0.0F, 1.0F), azk.a($$11, 0.0F, 1.0F), $$12);
-      fiu $$13 = a.a($$3, gpn::d);
-      this.b.a($$2, $$13, $$4, $$5);
-      $$2.b();
+   public void a(fjc $$0, gps $$1, int $$2, int $$3, cxw $$4, dwn $$5) {
+      a($$0, $$1, $$2, $$3, 0.0F, this.c, this.e, 0.0F, $$4, $$5);
+   }
+
+   private static void a(fjc $$0, gps $$1, int $$2, int $$3, float $$4, geo $$5, gen $$6, float $$7, cxw $$8, dwn $$9) {
+      $$0.a();
+      $$0.a(0.5F, 0.0F, 0.5F);
+      $$0.a(a.d.rotationDegrees($$4));
+      $$0.b(0.6666667F, -0.6666667F, -0.6666667F);
+      $$5.a($$0, hkz.f.a($$1, gqc::d), $$2, $$3);
+      $$6.a($$7);
+      a($$0, $$1, $$2, $$3, $$6.e(), hkz.f, true, $$8, $$9);
+      $$0.b();
+   }
+
+   public static void a(fjc $$0, gps $$1, int $$2, int $$3, giu $$4, hkw $$5, boolean $$6, cxw $$7, dwn $$8) {
+      a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8, false, true);
+   }
+
+   public static void a(fjc $$0, gps $$1, int $$2, int $$3, giu $$4, hkw $$5, boolean $$6, cxw $$7, dwn $$8, boolean $$9, boolean $$10) {
+      $$4.a($$0, $$5.a($$1, gqc::d, $$10, $$9), $$2, $$3);
+      a($$0, $$1, $$2, $$3, $$4, $$6 ? gqn.w : gqn.x, $$7);
+
+      for (int $$11 = 0; $$11 < 16 && $$11 < $$8.b().size(); $$11++) {
+         dwn.b $$12 = $$8.b().get($$11);
+         hkw $$13 = $$6 ? gqn.a($$12.b()) : gqn.b($$12.b());
+         a($$0, $$1, $$2, $$3, $$4, $$13, $$12.c());
+      }
+   }
+
+   private static void a(fjc $$0, gps $$1, int $$2, int $$3, giu $$4, hkw $$5, cxw $$6) {
+      int $$7 = $$6.d();
+      $$4.a($$0, $$5.a($$1, gqc::n), $$2, $$3, $$7);
    }
 }

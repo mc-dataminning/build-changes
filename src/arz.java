@@ -1,3 +1,8 @@
-public interface arz {
-   ary create(int var1);
+import javax.annotation.ParametersAreNonnullByDefault;
+
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface arz {
 }

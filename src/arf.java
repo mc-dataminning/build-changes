@@ -1,45 +1,13 @@
-class arf extends aqw {
-   private static final int a = aqr.b + 1;
-   private final arb b;
-   private final djm c;
+import java.util.concurrent.CompletableFuture;
 
-   public arf(arb $$0, djm $$1) {
-      super(a + 1, 16, 256);
-      this.b = $$0;
-      this.c = $$1;
-      $$1.a(this::b);
-   }
+public interface arf {
+   arg d(long var1);
 
-   @Override
-   protected int b(long $$0) {
-      return this.c.a($$0, false);
-   }
+   void a(arg var1);
 
-   @Override
-   protected int c(long $$0) {
-      if (!this.b.a($$0)) {
-         aqq $$1 = this.b.b($$0);
-         if ($$1 != null) {
-            return $$1.j();
-         }
-      }
+   CompletableFuture<ebw> a(arg var1, eda var2, bai<arg> var3);
 
-      return a;
-   }
+   aqr a(ecx var1, dic var2);
 
-   @Override
-   protected void a(long $$0, int $$1) {
-      aqq $$2 = this.b.b($$0);
-      int $$3 = $$2 == null ? a : $$2.j();
-      if ($$3 != $$1) {
-         $$2 = this.b.a($$0, $$1, $$2, $$3);
-         if ($$2 != null) {
-            this.b.b.add($$2);
-         }
-      }
-   }
-
-   public int a(int $$0) {
-      return this.b($$0);
-   }
+   void g();
 }

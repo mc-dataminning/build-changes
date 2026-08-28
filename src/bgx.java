@@ -1,30 +1,46 @@
-import com.google.common.collect.ImmutableMap;
+import com.mojang.datafixers.DSL;
+import com.mojang.datafixers.DataFix;
+import com.mojang.datafixers.OpticFinder;
+import com.mojang.datafixers.TypeRewriteRule;
+import com.mojang.datafixers.Typed;
 import com.mojang.datafixers.schemas.Schema;
+import com.mojang.datafixers.types.Type;
+import com.mojang.datafixers.util.Pair;
 import com.mojang.serialization.Dynamic;
-import java.util.Map;
+import java.util.Optional;
 
-public class bgx extends bbf {
-   private static final Map<String, String> a = ImmutableMap.builder()
-      .put("down", "down_south")
-      .put("up", "up_north")
-      .put("north", "north_up")
-      .put("south", "south_up")
-      .put("west", "west_up")
-      .put("east", "east_up")
-      .build();
-
-   public bgx(Schema $$0) {
-      super($$0, "jigsaw_rotation_fix");
+public class bgx extends DataFix {
+   public bgx(Schema $$0, boolean $$1) {
+      super($$0, $$1);
    }
 
-   @Override
-   protected boolean a(String $$0) {
-      return $$0.equals("minecraft:jigsaw");
-   }
+   public TypeRewriteRule makeRule() {
+      Type<?> $$0 = this.getInputSchema().getType(biw.t);
+      OpticFinder<Pair<String, String>> $$1 = DSL.fieldFinder("id", DSL.named(biw.F.typeName(), bkr.a()));
+      OpticFinder<?> $$2 = $$0.findField("tag");
+      return this.fixTypeEverywhereTyped(
+         "ItemWaterPotionFix",
+         $$0,
+         $$2x -> {
+            Optional<Pair<String, String>> $$3 = $$2x.getOptional($$1);
+            if ($$3.isPresent()) {
+               String $$4 = (String)$$3.get().getSecond();
+               if ("minecraft:potion".equals($$4)
+                  || "minecraft:splash_potion".equals($$4)
+                  || "minecraft:lingering_potion".equals($$4)
+                  || "minecraft:tipped_arrow".equals($$4)) {
+                  Typed<?> $$5 = $$2x.getOrCreateTyped($$2);
+                  Dynamic<?> $$6 = (Dynamic<?>)$$5.get(DSL.remainderFinder());
+                  if ($$6.get("Potion").asString().result().isEmpty()) {
+                     $$6 = $$6.set("Potion", $$6.createString("minecraft:water"));
+                  }
 
-   @Override
-   protected <T> Dynamic<T> a(String $$0, Dynamic<T> $$1) {
-      String $$2 = $$1.get("facing").asString("north");
-      return $$1.remove("facing").set("orientation", $$1.createString(a.getOrDefault($$2, $$2)));
+                  return $$2x.set($$2, $$5.set(DSL.remainderFinder(), $$6));
+               }
+            }
+
+            return $$2x;
+         }
+      );
    }
 }

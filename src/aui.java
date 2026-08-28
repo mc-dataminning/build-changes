@@ -1,180 +1,98 @@
 import com.mojang.logging.LogUtils;
+import java.io.IOException;
+import java.nio.file.DirectoryStream;
+import java.nio.file.FileSystem;
+import java.nio.file.FileSystems;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.function.Function;
+import java.util.Optional;
+import java.util.function.BiConsumer;
+import java.util.function.Consumer;
 import javax.annotation.Nullable;
 import org.slf4j.Logger;
 
-public class aui {
-   private static final Logger a = LogUtils.getLogger();
-   private final atm b;
-   private final aui.c c;
-   private final aui.a d;
-   private final ato e;
+public class aui implements aup {
+   static final Logger a = LogUtils.getLogger();
+   private static final atq b = new atq(false, auk.b.a, false);
+   private final Path c;
+   private final atr d;
+   private final auo e;
+   private final fdy f;
 
-   @Nullable
-   public static aui a(atm $$0, aui.c $$1, atp $$2, ato $$3) {
-      int $$4 = ab.b().a($$2);
-      aui.a $$5 = a($$0, $$1, $$4);
-      return $$5 != null ? new aui($$0, $$1, $$5, $$3) : null;
+   public aui(Path $$0, atr $$1, auo $$2, fdy $$3) {
+      this.c = $$0;
+      this.d = $$1;
+      this.e = $$2;
+      this.f = $$3;
    }
 
-   public aui(atm $$0, aui.c $$1, aui.a $$2, ato $$3) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
-      this.e = $$3;
+   private static String a(Path $$0) {
+      return $$0.getFileName().toString();
    }
 
-   @Nullable
-   public static aui.a a(atm $$0, aui.c $$1, int $$2) {
+   @Override
+   public void loadPacks(Consumer<auk> $$0) {
       try {
-         aui.a var11;
-         try (atn $$3 = $$1.a($$0)) {
-            aub $$4 = $$3.a(aub.b);
-            if ($$4 == null) {
-               a.warn("Missing metadata in pack {}", $$0.a());
-               return null;
+         v.c(this.c);
+         a(this.c, this.f, ($$1, $$2) -> {
+            ato $$3 = this.b($$1);
+            auk $$4 = auk.a($$3, $$2, this.d, b);
+            if ($$4 != null) {
+               $$0.accept($$4);
             }
-
-            atj $$5 = $$3.a(atj.a);
-            cub $$6 = $$5 != null ? $$5.a() : cub.a();
-            azc<Integer> $$7 = a($$0.a(), $$4);
-            auj $$8 = auj.a($$7, $$2);
-            atl $$9 = $$3.a(atl.a);
-            List<String> $$10 = $$9 != null ? $$9.a($$2) : List.of();
-            var11 = new aui.a($$4.a(), $$8, $$6, $$10);
-         }
-
-         return var11;
-      } catch (Exception var14) {
-         a.warn("Failed to read pack {} metadata", $$0.a(), var14);
-         return null;
+         });
+      } catch (IOException var3) {
+         a.warn("Failed to list packs in {}", this.c, var3);
       }
    }
 
-   private static azc<Integer> a(String $$0, aub $$1) {
-      int $$2 = $$1.b();
-      if ($$1.c().isEmpty()) {
-         return new azc<>($$2);
-      } else {
-         azc<Integer> $$3 = $$1.c().get();
-         if (!$$3.a($$2)) {
-            a.warn("Pack {} declared support for versions {} but declared main format is {}, defaulting to {}", new Object[]{$$0, $$3, $$2, $$2});
-            return new azc<>($$2);
-         } else {
-            return $$3;
-         }
-      }
+   private ato b(Path $$0) {
+      String $$1 = a($$0);
+      return new ato("file/" + $$1, wy.b($$1), this.e, Optional.empty());
    }
 
-   public atm a() {
-      return this.b;
-   }
+   public static void a(Path $$0, fdy $$1, BiConsumer<Path, auk.c> $$2) throws IOException {
+      aui.a $$3 = new aui.a($$1);
 
-   public ww b() {
-      return this.b.b();
-   }
-
-   public ww c() {
-      return this.d.a();
-   }
-
-   public ww a(boolean $$0) {
-      return this.b.a($$0, this.d.a);
-   }
-
-   public auj d() {
-      return this.d.b();
-   }
-
-   public cub e() {
-      return this.d.c();
-   }
-
-   public atn f() {
-      return this.c.a(this.b, this.d);
-   }
-
-   public String g() {
-      return this.b.a();
-   }
-
-   public ato h() {
-      return this.e;
-   }
-
-   public boolean i() {
-      return this.e.a();
-   }
-
-   public boolean j() {
-      return this.e.c();
-   }
-
-   public aui.b k() {
-      return this.e.b();
-   }
-
-   public aum l() {
-      return this.b.c();
-   }
-
-   @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else {
-         return !($$0 instanceof aui $$1) ? false : this.b.equals($$1.b);
-      }
-   }
-
-   @Override
-   public int hashCode() {
-      return this.b.hashCode();
-   }
-
-   public static record a(ww a, auj b, cub c, List<String> d) {
-   }
-
-   public static enum b {
-      a,
-      b;
-
-      public <T> int a(List<T> $$0, T $$1, Function<T, ato> $$2, boolean $$3) {
-         aui.b $$4 = $$3 ? this.a() : this;
-         if ($$4 == b) {
-            int $$5;
-            for ($$5 = 0; $$5 < $$0.size(); $$5++) {
-               ato $$6 = $$2.apply($$0.get($$5));
-               if (!$$6.c() || $$6.b() != this) {
-                  break;
+      try (DirectoryStream<Path> $$4 = Files.newDirectoryStream($$0)) {
+         for (Path $$5 : $$4) {
+            try {
+               List<fdz> $$6 = new ArrayList<>();
+               auk.c $$7 = $$3.a($$5, $$6);
+               if (!$$6.isEmpty()) {
+                  a.warn("Ignoring potential pack entry: {}", fdx.a($$5, $$6));
+               } else if ($$7 != null) {
+                  $$2.accept($$5, $$7);
+               } else {
+                  a.info("Found non-pack entry '{}', ignoring", $$5);
                }
+            } catch (IOException var10) {
+               a.warn("Failed to read properties of '{}', ignoring", $$5, var10);
             }
-
-            $$0.add($$5, $$1);
-            return $$5;
-         } else {
-            int $$7;
-            for ($$7 = $$0.size() - 1; $$7 >= 0; $$7--) {
-               ato $$8 = $$2.apply($$0.get($$7));
-               if (!$$8.c() || $$8.b() != this) {
-                  break;
-               }
-            }
-
-            $$0.add($$7 + 1, $$1);
-            return $$7 + 1;
          }
-      }
-
-      public aui.b a() {
-         return this == a ? b : a;
       }
    }
 
-   public interface c {
-      atn a(atm var1);
+   static class a extends aum<auk.c> {
+      protected a(fdy $$0) {
+         super($$0);
+      }
 
-      atn a(atm var1, aui.a var2);
+      @Nullable
+      protected auk.c a(Path $$0) {
+         FileSystem $$1 = $$0.getFileSystem();
+         if ($$1 != FileSystems.getDefault() && !($$1 instanceof atz)) {
+            aui.a.info("Can't open pack archive at {}", $$0);
+            return null;
+         } else {
+            return new atm.a($$0);
+         }
+      }
+
+      protected auk.c b(Path $$0) {
+         return new ats.a($$0);
+      }
    }
 }

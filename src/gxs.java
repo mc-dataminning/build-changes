@@ -1,30 +1,43 @@
-public class gxs<T extends coe> extends gwq<T, hcp, ghf> {
-   private static final ale a = ale.b("textures/entity/spider/spider.png");
+public class gxs extends gxf<cjp, hdt, gfq<hcf>> {
+   private static final alg a = alg.b("textures/entity/fish/pufferfish.png");
+   private final gfq<hcf> j;
+   private final gfq<hcf> k;
+   private final gfq<hcf> l = this.c();
 
-   public gxs(gvk.a $$0) {
-      this($$0, gif.dg);
+   public gxs(gvz.a $$0) {
+      super($$0, new ggy($$0.a(git.cC)), 0.2F);
+      this.k = new ggz($$0.a(git.cD));
+      this.j = new gha($$0.a(git.cE));
    }
 
-   public gxs(gvk.a $$0, gie $$1) {
-      super($$0, new ghf($$0.a($$1)), 0.8F);
-      this.a(new hae<>(this));
-   }
-
-   @Override
-   protected float aR_() {
-      return 180.0F;
-   }
-
-   @Override
-   public ale b(hcp $$0) {
+   public alg a(hdt $$0) {
       return a;
    }
 
-   public hcp b() {
-      return new hcp();
+   public hdt b() {
+      return new hdt();
    }
 
-   public void a(T $$0, hcp $$1, float $$2) {
+   protected float b(hdt $$0) {
+      return 0.1F + 0.1F * (float)$$0.a;
+   }
+
+   public void a(hdt $$0, fjc $$1, gps $$2, int $$3) {
+      this.g = switch ($$0.a) {
+         case 0 -> this.j;
+         case 1 -> this.k;
+         default -> this.l;
+      };
+      super.a($$0, $$1, $$2, $$3);
+   }
+
+   public void a(cjp $$0, hdt $$1, float $$2) {
       super.a($$0, $$1, $$2);
+      $$1.a = $$0.x();
+   }
+
+   protected void a(hdt $$0, fjc $$1, float $$2, float $$3) {
+      $$1.a(0.0F, azm.b($$0.u * 0.05F) * 0.08F, 0.0F);
+      super.a($$0, $$1, $$2, $$3);
    }
 }

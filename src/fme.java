@@ -1,165 +1,104 @@
-import com.google.common.collect.Lists;
-import com.mojang.logging.LogUtils;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.List;
-import java.util.stream.Collectors;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.atomic.AtomicBoolean;
 
-public class fme extends hol {
-   private static final Logger b = LogUtils.getLogger();
-   public static final ww a = ww.c("mco.upload.select.world.title");
-   private static final ww c = ww.c("selectWorld.unable_to_load");
-   static final ww C = ww.c("selectWorld.world");
-   private static final DateFormat D = new SimpleDateFormat();
-   @Nullable
-   private final fnf E;
-   private final fmd F;
-   private final long G;
-   private final int H;
-   frq I;
-   List<eyc> J = Lists.newArrayList();
-   int K = -1;
-   fme.b L;
+public class fme extends hpb {
+   private static final wy a = wy.c("mco.selectServer.create");
+   private static final wy b = wy.c("mco.configure.world.name");
+   private static final wy c = wy.c("mco.configure.world.description");
+   private static final int C = 10;
+   private static final int D = 210;
+   private final fjn E;
+   private final fvq F = new fvq(this);
+   private fsl G;
+   private fsl H;
+   private final Runnable I;
 
-   public fme(@Nullable fnf $$0, long $$1, int $$2, fmd $$3) {
+   public fme(fjn $$0, fkt $$1, boolean $$2) {
       super(a);
       this.E = $$0;
-      this.F = $$3;
-      this.G = $$1;
-      this.H = $$2;
-   }
-
-   private void E() {
-      eyb.a $$0 = this.m.m().b();
-      this.J = this.m.m().a($$0).join().stream().filter(eyc::v).collect(Collectors.toList());
-
-      for (eyc $$1 : this.J) {
-         this.L.a($$1);
-      }
+      this.I = () -> this.a($$1, $$2);
    }
 
    @Override
    public void aN_() {
-      this.L = this.c(new fme.b());
+      this.F.a(this.l, this.p);
+      fvu $$0 = this.F.c(fvu.d()).a(10);
+      fsc $$1 = fsc.a(wx.j, $$0x -> this.I.run()).a();
+      $$1.j = false;
+      this.G = new fsl(this.p, 210, 20, b);
+      this.G.b($$1x -> $$1.j = !bal.h($$1x));
+      this.H = new fsl(this.p, 210, 20, c);
+      $$0.a(fvm.a(this.p, this.G, b));
+      $$0.a(fvm.a(this.p, this.H, c));
+      fvu $$2 = this.F.b(fvu.e().a(10));
+      $$2.a($$1);
+      $$2.a(fsc.a(wx.k, $$0x -> this.aK_()).a());
+      this.F.a($$1x -> {
+         fsa var10000 = this.c($$1x);
+      });
+      this.c();
+   }
+
+   @Override
+   protected void aB_() {
+      this.b(this.G);
+   }
+
+   @Override
+   protected void c() {
+      this.F.a();
+   }
+
+   private void a(fkt $$0, boolean $$1) {
+      if (!$$0.h() && $$1) {
+         AtomicBoolean $$2 = new AtomicBoolean();
+         this.m.a(new fwn(() -> {
+            $$2.set(true);
+            this.E.h();
+            this.m.a(this.E);
+         }, wy.c("mco.upload.preparing"), wy.i()));
+         CompletableFuture.<fkt>supplyAsync(() -> a($$0), af.h()).thenAcceptAsync($$1x -> {
+            if (!$$2.get()) {
+               this.b($$1x);
+            }
+         }, this.m).exceptionallyAsync($$0x -> {
+            this.E.h();
+            wy $$3;
+            if ($$0x.getCause() instanceof flo $$2x) {
+               $$3 = $$2x.a.b();
+            } else {
+               $$3 = wy.c("mco.errorMessage.initialize.failed");
+            }
+
+            this.m.a(new fmg($$3, this.E));
+            return null;
+         }, this.m);
+      } else {
+         this.b($$0);
+      }
+   }
+
+   private static fkt a(fkt $$0) {
+      fjs $$1 = fjs.a();
 
       try {
-         this.E();
-      } catch (Exception var2) {
-         b.error("Couldn't load level list", var2);
-         this.m.a(new flu(c, ww.a(var2.getMessage()), this.F));
-         return;
+         return $$1.a(Long.valueOf($$0.a));
+      } catch (flo var3) {
+         throw new RuntimeException(var3);
       }
+   }
 
-      this.I = this.c(frq.a(ww.c("mco.upload.button.name"), $$0 -> this.F()).a(this.n / 2 - 154, this.o - 32, 153, 20).a());
-      this.I.j = this.K >= 0 && this.K < this.J.size();
-      this.c(frq.a(wv.k, $$0 -> this.m.a(this.F)).a(this.n / 2 + 6, this.o - 32, 153, 20).a());
-      this.a(new hok(ww.c("mco.upload.select.world.subtitle"), this.n / 2, g(-1), -6250336));
-      if (this.J.isEmpty()) {
-         this.a(new hok(ww.c("mco.upload.select.world.none"), this.n / 2, this.o / 2 - 20, -1));
-      }
+   private void b(fkt $$0) {
+      fnr $$1 = new fnr($$0.a, this.G.a(), this.H.a());
+      fmp $$2 = fmp.a(this, $$0, $$1, () -> this.m.execute(() -> {
+            fjn.g();
+            this.m.a(this.E);
+         }));
+      this.m.a($$2);
    }
 
    @Override
-   public ww i() {
-      return wv.a(this.n(), this.m());
-   }
-
-   private void F() {
-      if (this.K != -1) {
-         eyc $$0 = this.J.get(this.K);
-         this.m.a(new fmk(this.E, this.G, this.H, this.F, $$0));
-      }
-   }
-
-   @Override
-   public void a(frc $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      $$0.a(this.p, this.l, this.n / 2, 13, -1);
-   }
-
-   @Override
-   public boolean a(int $$0, int $$1, int $$2) {
-      if ($$0 == 256) {
-         this.m.a(this.F);
-         return true;
-      } else {
-         return super.a($$0, $$1, $$2);
-      }
-   }
-
-   static ww a(eyc $$0) {
-      return $$0.h().d();
-   }
-
-   static String b(eyc $$0) {
-      return D.format(new Date($$0.f()));
-   }
-
-   class a extends fsm.a<fme.a> {
-      private final eyc b;
-      private final String c;
-      private final ww d;
-      private final ww e;
-
-      public a(final eyc $$0) {
-         this.b = $$0;
-         this.c = $$0.b();
-         this.d = ww.a("mco.upload.entry.id", $$0.a(), fme.b($$0));
-         this.e = $$0.s();
-      }
-
-      @Override
-      public void a(frc $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
-         this.a($$0, $$1, $$3, $$2);
-      }
-
-      @Override
-      public boolean a(double $$0, double $$1, int $$2) {
-         fme.this.L.a(fme.this.J.indexOf(this.b));
-         return super.a($$0, $$1, $$2);
-      }
-
-      protected void a(frc $$0, int $$1, int $$2, int $$3) {
-         String $$4;
-         if (this.c.isEmpty()) {
-            $$4 = fme.C + " " + ($$1 + 1);
-         } else {
-            $$4 = this.c;
-         }
-
-         $$0.b(fme.this.p, $$4, $$2 + 2, $$3 + 1, -1);
-         $$0.b(fme.this.p, this.d, $$2 + 2, $$3 + 12, -8355712);
-         $$0.b(fme.this.p, this.e, $$2 + 2, $$3 + 12 + 10, -8355712);
-      }
-
-      @Override
-      public ww a() {
-         ww $$0 = wv.b(ww.b(this.b.b()), ww.b(fme.b(this.b)), fme.a(this.b));
-         return ww.a("narrator.select", $$0);
-      }
-   }
-
-   class b extends fsm<fme.a> {
-      public b() {
-         super(fof.Q(), fme.this.n, fme.this.o - 40 - fme.g(0), fme.g(0), 36);
-      }
-
-      public void a(eyc $$0) {
-         this.b(fme.this.new a($$0));
-      }
-
-      public void a(@Nullable fme.a $$0) {
-         super.a($$0);
-         fme.this.K = this.aD_().indexOf($$0);
-         fme.this.I.j = fme.this.K >= 0 && fme.this.K < this.t();
-      }
-
-      @Override
-      public int a() {
-         return (int)((double)this.g * 0.6);
-      }
+   public void aK_() {
+      this.m.a(this.E);
    }
 }

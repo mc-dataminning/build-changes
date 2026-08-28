@@ -1,68 +1,45 @@
-import java.util.List;
-import java.util.Locale;
-import java.util.function.Function;
-import java.util.stream.Stream;
+public class hmg extends hlv {
+   private static final float n = 0.0F;
+   private static final float o = 0.75F;
+   private final cqy p;
+   private final ctk q;
+   private final boolean r;
 
-@FunctionalInterface
-public interface hmg<T> {
-   static <T> hmg<T> empty() {
-      return $$0 -> List.of();
+   public hmg(cqy $$0, ctk $$1, boolean $$2) {
+      super($$2 ? awn.pu : awn.pv, awo.g, hmm.t());
+      this.p = $$0;
+      this.q = $$1;
+      this.r = $$2;
+      this.k = hmm.a.a;
+      this.i = true;
+      this.j = 0;
+      this.d = 0.0F;
    }
 
-   static <T> hmg<T> plainText(List<T> $$0, Function<T, Stream<String>> $$1) {
-      // $VF: Couldn't be decompiled
-      // Please report this to the Vineflower issue tracker, at https://github.com/Vineflower/vineflower/issues with a copy of the class file (if you have the rights to distribute it!)
-      // java.lang.NullPointerException: Cannot invoke "org.jetbrains.java.decompiler.struct.gen.VarType.equals(Object)" because "curType" is null
-      //   at org.jetbrains.java.decompiler.modules.decompiler.exps.NewExprent.setLambdaGenericTypes(NewExprent.java:668)
-      //   at org.jetbrains.java.decompiler.modules.decompiler.exps.NewExprent.toJava(NewExprent.java:401)
-      //   at org.jetbrains.java.decompiler.modules.decompiler.ExprProcessor.getCastedExprent(ExprProcessor.java:1018)
-      //   at org.jetbrains.java.decompiler.modules.decompiler.exps.ExitExprent.toJava(ExitExprent.java:86)
-      //   at org.jetbrains.java.decompiler.modules.decompiler.ExprProcessor.listToJava(ExprProcessor.java:895)
-      //   at org.jetbrains.java.decompiler.modules.decompiler.stats.BasicBlockStatement.toJava(BasicBlockStatement.java:90)
-      //   at org.jetbrains.java.decompiler.modules.decompiler.ExprProcessor.jmpWrapper(ExprProcessor.java:833)
-      //   at org.jetbrains.java.decompiler.modules.decompiler.stats.SequenceStatement.toJava(SequenceStatement.java:107)
-      //   at org.jetbrains.java.decompiler.modules.decompiler.ExprProcessor.jmpWrapper(ExprProcessor.java:833)
-      //   at org.jetbrains.java.decompiler.modules.decompiler.stats.IfStatement.toJava(IfStatement.java:261)
-      //   at org.jetbrains.java.decompiler.modules.decompiler.stats.RootStatement.toJava(RootStatement.java:36)
-      //   at org.jetbrains.java.decompiler.main.ClassWriter.writeMethod(ClassWriter.java:1283)
-      //
-      // Bytecode:
-      // 00: aload 0
-      // 01: invokeinterface java/util/List.isEmpty ()Z 1
-      // 06: ifeq 0d
-      // 09: invokestatic hmg.empty ()Lhmg;
-      // 0c: areturn
-      // 0d: new hmh
-      // 10: dup
-      // 11: invokespecial hmh.<init> ()V
-      // 14: astore 2
-      // 15: aload 0
-      // 16: invokeinterface java/util/List.iterator ()Ljava/util/Iterator; 1
-      // 1b: astore 3
-      // 1c: aload 3
-      // 1d: invokeinterface java/util/Iterator.hasNext ()Z 1
-      // 22: ifeq 48
-      // 25: aload 3
-      // 26: invokeinterface java/util/Iterator.next ()Ljava/lang/Object; 1
-      // 2b: astore 4
-      // 2d: aload 1
-      // 2e: aload 4
-      // 30: invokeinterface java/util/function/Function.apply (Ljava/lang/Object;)Ljava/lang/Object; 2
-      // 35: checkcast java/util/stream/Stream
-      // 38: aload 2
-      // 39: aload 4
-      // 3b: invokedynamic accept (Lhmh;Ljava/lang/Object;)Ljava/util/function/Consumer; bsm=java/lang/invoke/LambdaMetafactory.metafactory (Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite; args=[ (Ljava/lang/Object;)V, hmg.a (Lhmh;Ljava/lang/Object;Ljava/lang/String;)V, (Ljava/lang/String;)V ]
-      // 40: invokeinterface java/util/stream/Stream.forEach (Ljava/util/function/Consumer;)V 2
-      // 45: goto 1c
-      // 48: aload 2
-      // 49: invokevirtual hmh.a ()V
-      // 4c: aload 2
-      // 4d: dup
-      // 4e: invokestatic java/util/Objects.requireNonNull (Ljava/lang/Object;)Ljava/lang/Object;
-      // 51: pop
-      // 52: invokedynamic search (Lhmh;)Lhmg; bsm=java/lang/invoke/LambdaMetafactory.metafactory (Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite; args=[ (Ljava/lang/String;)Ljava/util/List;, hmh.a (Ljava/lang/String;)Ljava/util/List;, (Ljava/lang/String;)Ljava/util/List; ]
-      // 57: areturn
+   @Override
+   public boolean s() {
+      return !this.q.bb();
    }
 
-   List<T> search(String var1);
+   @Override
+   public boolean r() {
+      return true;
+   }
+
+   @Override
+   public void q() {
+      if (this.q.dQ() || !this.p.bZ() || this.p.dk() != this.q) {
+         this.n();
+      } else if (this.r != this.p.bn()) {
+         this.d = 0.0F;
+      } else {
+         float $$0 = (float)this.q.dy().i();
+         boolean $$1 = !this.q.cq() && this.q.f() instanceof ctz;
+         if ($$0 >= 0.01F && !$$1) {
+            this.d = azm.b(0.0F, 0.75F, $$0);
+         } else {
+            this.d = 0.0F;
+         }
+      }
+   }
 }

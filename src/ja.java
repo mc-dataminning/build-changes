@@ -17,7 +17,7 @@ import org.joml.Quaternionf;
 import org.joml.Vector3f;
 import org.joml.Vector4f;
 
-public enum ja implements bai {
+public enum ja implements bak {
    a(0, 1, -1, "down", ja.b.b, ja.a.b, new jz(0, -1, 0)),
    b(1, 0, -1, "up", ja.b.a, ja.a.b, new jz(0, 1, 0)),
    c(2, 3, 2, "north", ja.b.b, ja.a.c, new jz(0, 0, -1)),
@@ -25,10 +25,10 @@ public enum ja implements bai {
    e(4, 5, 1, "west", ja.b.b, ja.a.a, new jz(-1, 0, 0)),
    f(5, 4, 3, "east", ja.b.a, ja.a.a, new jz(1, 0, 0));
 
-   public static final bai.a<ja> g = bai.a(ja::values);
+   public static final bak.a<ja> g = bak.a(ja::values);
    public static final Codec<ja> h = g.validate(ja::b);
-   public static final IntFunction<ja> i = aya.a(ja::d, values(), aya.a.b);
-   public static final yu<ByteBuf, ja> j = ys.a(i, ja::d);
+   public static final IntFunction<ja> i = ayc.a(ja::d, values(), ayc.a.b);
+   public static final yw<ByteBuf, ja> j = yu.a(i, ja::d);
    private final int k;
    private final int l;
    private final int m;
@@ -36,7 +36,7 @@ public enum ja implements bai {
    private final ja.a o;
    private final ja.b p;
    private final jz q;
-   private final fdw r;
+   private final fei r;
    private static final ja[] s = values();
    private static final ja[] t = Arrays.stream(s).sorted(Comparator.comparingInt($$0 -> $$0.k)).toArray(ja[]::new);
    private static final ja[] u = Arrays.stream(s).filter($$0 -> $$0.o().d()).sorted(Comparator.comparingInt($$0 -> $$0.m)).toArray(ja[]::new);
@@ -49,16 +49,16 @@ public enum ja implements bai {
       this.o = $$5;
       this.p = $$4;
       this.q = $$6;
-      this.r = fdw.a($$6);
+      this.r = fei.a($$6);
    }
 
-   public static ja[] a(bwa $$0) {
+   public static ja[] a(bwd $$0) {
       float $$1 = $$0.i(1.0F) * (float) (Math.PI / 180.0);
       float $$2 = -$$0.j(1.0F) * (float) (Math.PI / 180.0);
-      float $$3 = azk.a($$1);
-      float $$4 = azk.b($$1);
-      float $$5 = azk.a($$2);
-      float $$6 = azk.b($$2);
+      float $$3 = azm.a($$1);
+      float $$4 = azm.b($$1);
+      float $$5 = azm.a($$2);
+      float $$6 = azm.b($$2);
       boolean $$7 = $$5 > 0.0F;
       boolean $$8 = $$3 < 0.0F;
       boolean $$9 = $$6 > 0.0F;
@@ -93,7 +93,7 @@ public enum ja implements bai {
       return a($$3.x(), $$3.y(), $$3.z());
    }
 
-   public static Collection<ja> a(azt $$0) {
+   public static Collection<ja> a(azv $$0) {
       return af.b(values(), $$0);
    }
 
@@ -134,7 +134,7 @@ public enum ja implements bai {
       return this.p;
    }
 
-   public static ja a(bwa $$0, ja.a $$1) {
+   public static ja a(bwd $$0, ja.a $$1) {
       return switch ($$1) {
          case a -> f.a($$0.j(1.0F)) ? f : e;
          case b -> $$0.i(1.0F) < 0.0F ? b : a;
@@ -252,15 +252,15 @@ public enum ja implements bai {
    }
 
    public static ja a(int $$0) {
-      return t[azk.a($$0 % t.length)];
+      return t[azm.a($$0 % t.length)];
    }
 
    public static ja b(int $$0) {
-      return u[azk.a($$0 % u.length)];
+      return u[azm.a($$0 % u.length)];
    }
 
    public static ja a(double $$0) {
-      return b(azk.a($$0 / 90.0 + 0.5) & 3);
+      return b(azm.a($$0 / 90.0 + 0.5) & 3);
    }
 
    public static ja a(ja.a $$0, ja.b $$1) {
@@ -275,7 +275,7 @@ public enum ja implements bai {
       return (float)((this.m & 3) * 90);
    }
 
-   public static ja b(azt $$0) {
+   public static ja b(azv $$0) {
       return af.a(s, $$0);
    }
 
@@ -298,7 +298,7 @@ public enum ja implements bai {
       return $$3;
    }
 
-   public static ja a(fdw $$0) {
+   public static ja a(fei $$0) {
       return a($$0.d, $$0.e, $$0.f);
    }
 
@@ -353,18 +353,18 @@ public enum ja implements bai {
       return this.q;
    }
 
-   public fdw r() {
+   public fei r() {
       return this.r;
    }
 
    public boolean a(float $$0) {
       float $$1 = $$0 * (float) (Math.PI / 180.0);
-      float $$2 = -azk.a($$1);
-      float $$3 = azk.b($$1);
+      float $$2 = -azm.a($$1);
+      float $$3 = azm.b($$1);
       return (float)this.q.u() * $$2 + (float)this.q.w() * $$3 > 0.0F;
    }
 
-   public static enum a implements bai, Predicate<ja> {
+   public static enum a implements bak, Predicate<ja> {
       a("x") {
          @Override
          public int a(int $$0, int $$1, int $$2) {
@@ -445,7 +445,7 @@ public enum ja implements bai {
       };
 
       public static final ja.a[] d = values();
-      public static final bai.a<ja.a> e = bai.a(ja.a::values);
+      public static final bak.a<ja.a> e = bak.a(ja.a::values);
       private final String f;
 
       a(final String $$0) {
@@ -482,7 +482,7 @@ public enum ja implements bai {
          return this.f;
       }
 
-      public static ja.a a(azt $$0) {
+      public static ja.a a(azv $$0) {
          return af.a(d, $$0);
       }
 
@@ -551,11 +551,11 @@ public enum ja implements bai {
          this.d = $$1;
       }
 
-      public ja a(azt $$0) {
+      public ja a(azv $$0) {
          return af.a(this.c, $$0);
       }
 
-      public ja.a b(azt $$0) {
+      public ja.a b(azv $$0) {
          return af.a(this.d, $$0);
       }
 
@@ -572,7 +572,7 @@ public enum ja implements bai {
          return Arrays.stream(this.c);
       }
 
-      public List<ja> c(azt $$0) {
+      public List<ja> c(azv $$0) {
          return af.b(this.c, $$0);
       }
 

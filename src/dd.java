@@ -8,7 +8,7 @@ public class dd extends dj<dd.a> {
       return dd.a.a;
    }
 
-   public void a(arp $$0) {
+   public void a(arr $$0) {
       this.a($$0, $$0x -> true);
    }
 
@@ -43,7 +43,7 @@ public class dd extends dj<dd.a> {
          return ap.x.a(new dd.a(Optional.empty()));
       }
 
-      public static aq<dd.a> a(jf<dlu> $$0, jf<cyo> $$1, dlu $$2, cyo $$3) {
+      public static aq<dd.a> a(jf<dma> $$0, jf<cyu> $$1, dma $$2, cyu $$3) {
          return a(bx.a.a().a(bu.a.a().d(cl.a.a().a($$1, $$3))).b(ct.a.a().a(ay.a.a().a($$0, $$2))));
       }
 

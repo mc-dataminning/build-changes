@@ -1,60 +1,116 @@
-import java.util.Objects;
-import java.util.function.UnaryOperator;
-import javax.annotation.Nullable;
+import com.google.common.collect.Maps;
+import java.util.Map;
 
-public class gxl extends gwq<cnz, hdj, ggx> {
-   private static final ale a = gpy.s.b().a((UnaryOperator<String>)($$0 -> "textures/" + $$0 + ".png"));
-   private static final ale[] j = gpy.t.stream().map($$0 -> $$0.b().a((UnaryOperator<String>)($$0x -> "textures/" + $$0x + ".png"))).toArray(ale[]::new);
+public class gxl extends gut<cjj, hdm, ggo> {
+   private static final Map<cjj.a, alg> a = Maps.newEnumMap(
+      Map.of(
+         cjj.a.a,
+         alg.b("textures/entity/panda/panda.png"),
+         cjj.a.b,
+         alg.b("textures/entity/panda/lazy_panda.png"),
+         cjj.a.c,
+         alg.b("textures/entity/panda/worried_panda.png"),
+         cjj.a.d,
+         alg.b("textures/entity/panda/playful_panda.png"),
+         cjj.a.e,
+         alg.b("textures/entity/panda/brown_panda.png"),
+         cjj.a.f,
+         alg.b("textures/entity/panda/weak_panda.png"),
+         cjj.a.g,
+         alg.b("textures/entity/panda/aggressive_panda.png")
+      )
+   );
 
-   public gxl(gvk.a $$0) {
-      super($$0, new ggx($$0.a(gif.cO)), 0.0F);
+   public gxl(gvz.a $$0) {
+      super($$0, new ggo($$0.a(git.bX)), new ggo($$0.a(git.bY)), 0.9F);
+      this.a(new haj(this));
    }
 
-   public fdw a(hdj $$0) {
-      return $$0.a;
+   public alg a(hdm $$0) {
+      return a.getOrDefault($$0.a, a.get(cjj.a.a));
    }
 
-   public boolean a(cnz $$0, gsw $$1, double $$2, double $$3, double $$4) {
-      if (super.a($$0, $$1, $$2, $$3, $$4)) {
-         return true;
-      } else {
-         fdw $$5 = $$0.K(0.0F);
-         if ($$5 == null) {
-            return false;
-         } else {
-            bwj<?> $$6 = $$0.aq();
-            float $$7 = $$6.m() / 2.0F;
-            float $$8 = $$6.l() / 2.0F;
-            fdw $$9 = fdw.c($$0.dv());
-            return $$1.a(new fdr($$5.d, $$5.e + (double)$$7, $$5.f, $$9.d, $$9.e + (double)$$7, $$9.f).c((double)$$8, (double)$$7, (double)$$8));
+   public hdm b() {
+      return new hdm();
+   }
+
+   public void a(cjj $$0, hdm $$1, float $$2) {
+      super.a($$0, $$1, $$2);
+      hcu.a($$0, $$1, this.h);
+      $$1.a = $$0.gE();
+      $$1.b = $$0.q() > 0;
+      $$1.c = $$0.t();
+      $$1.d = $$0.gs();
+      $$1.e = $$0.gr();
+      $$1.f = $$0.gK();
+      $$1.g = $$0.x();
+      $$1.h = $$0.J($$2);
+      $$1.j = $$0.K($$2);
+      $$1.k = $$0.n_() ? 0.0F : $$0.L($$2);
+      $$1.l = $$0.bG > 0 ? (float)$$0.bG + $$2 : 0.0F;
+   }
+
+   protected void a(hdm $$0, fjc $$1, float $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      if ($$0.l > 0.0F) {
+         float $$4 = azm.i($$0.l);
+         int $$5 = azm.d($$0.l);
+         int $$6 = $$5 + 1;
+         float $$7 = 7.0F;
+         float $$8 = $$0.aj ? 0.3F : 0.8F;
+         if ((float)$$5 < 8.0F) {
+            float $$9 = 90.0F * (float)$$5 / 7.0F;
+            float $$10 = 90.0F * (float)$$6 / 7.0F;
+            float $$11 = this.a($$9, $$10, $$6, $$4, 8.0F);
+            $$1.a(0.0F, ($$8 + 0.2F) * ($$11 / 90.0F), 0.0F);
+            $$1.a(a.b.rotationDegrees(-$$11));
+         } else if ((float)$$5 < 16.0F) {
+            float $$12 = ((float)$$5 - 8.0F) / 7.0F;
+            float $$13 = 90.0F + 90.0F * $$12;
+            float $$14 = 90.0F + 90.0F * ((float)$$6 - 8.0F) / 7.0F;
+            float $$15 = this.a($$13, $$14, $$6, $$4, 16.0F);
+            $$1.a(0.0F, $$8 + 0.2F + ($$8 - 0.2F) * ($$15 - 90.0F) / 90.0F, 0.0F);
+            $$1.a(a.b.rotationDegrees(-$$15));
+         } else if ((float)$$5 < 24.0F) {
+            float $$16 = ((float)$$5 - 16.0F) / 7.0F;
+            float $$17 = 180.0F + 90.0F * $$16;
+            float $$18 = 180.0F + 90.0F * ((float)$$6 - 16.0F) / 7.0F;
+            float $$19 = this.a($$17, $$18, $$6, $$4, 24.0F);
+            $$1.a(0.0F, $$8 + $$8 * (270.0F - $$19) / 90.0F, 0.0F);
+            $$1.a(a.b.rotationDegrees(-$$19));
+         } else if ($$5 < 32) {
+            float $$20 = ((float)$$5 - 24.0F) / 7.0F;
+            float $$21 = 270.0F + 90.0F * $$20;
+            float $$22 = 270.0F + 90.0F * ((float)$$6 - 24.0F) / 7.0F;
+            float $$23 = this.a($$21, $$22, $$6, $$4, 32.0F);
+            $$1.a(0.0F, $$8 * ((360.0F - $$23) / 90.0F), 0.0F);
+            $$1.a(a.b.rotationDegrees(-$$23));
          }
+      }
+
+      float $$24 = $$0.h;
+      if ($$24 > 0.0F) {
+         $$1.a(0.0F, 0.8F * $$24, 0.0F);
+         $$1.a(a.b.rotationDegrees(azm.h($$24, $$0.ab, $$0.ab + 90.0F)));
+         $$1.a(0.0F, -1.0F * $$24, 0.0F);
+         if ($$0.f) {
+            float $$25 = (float)(Math.cos((double)($$0.u * 1.25F)) * Math.PI * 0.05F);
+            $$1.a(a.d.rotationDegrees($$25));
+            if ($$0.aj) {
+               $$1.a(0.0F, 0.8F, 0.55F);
+            }
+         }
+      }
+
+      float $$26 = $$0.j;
+      if ($$26 > 0.0F) {
+         float $$27 = $$0.aj ? 0.5F : 1.3F;
+         $$1.a(0.0F, $$27 * $$26, 0.0F);
+         $$1.a(a.b.rotationDegrees(azm.h($$26, $$0.ab, $$0.ab + 180.0F)));
       }
    }
 
-   public ale b(hdj $$0) {
-      return a($$0.b);
-   }
-
-   public hdj b() {
-      return new hdj();
-   }
-
-   public void a(cnz $$0, hdj $$1, float $$2) {
-      super.a($$0, $$1, $$2);
-      $$1.a = Objects.requireNonNullElse($$0.K($$2), fdw.c);
-      $$1.b = $$0.t();
-      $$1.c = $$0.J($$2);
-      $$1.d = $$0.aX;
-      $$1.e = $$0.aV;
-      $$1.f = $$0.n();
-   }
-
-   public static ale a(@Nullable cxq $$0) {
-      return $$0 == null ? a : j[$$0.a()];
-   }
-
-   protected void a(hdj $$0, fiq $$1, float $$2, float $$3) {
-      super.a($$0, $$1, $$2 + 180.0F, $$3);
-      $$1.a($$0.f.g().b(), 0.0F, 0.5F, 0.0F);
+   private float a(float $$0, float $$1, int $$2, float $$3, float $$4) {
+      return (float)$$2 < $$4 ? azm.h($$3, $$0, $$1) : $$0;
    }
 }

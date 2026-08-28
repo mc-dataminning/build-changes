@@ -1,71 +1,59 @@
-import javax.annotation.Nullable;
+public class fsm extends frz {
+   private final frm a;
+   private final fsw c;
 
-public abstract class fsm<E extends fsm.a<E>> extends frk<E> {
-   private static final ww a = ww.c("narration.selection.usage");
-
-   public fsm(fof $$0, int $$1, int $$2, int $$3, int $$4) {
+   public fsm(int $$0, int $$1, int $$2, int $$3, wy $$4, frm $$5) {
       super($$0, $$1, $$2, $$3, $$4);
+      this.a = $$5;
+      this.c = new fsw($$4, $$5).d(this.A() - this.b());
    }
 
-   public fsm(fof $$0, int $$1, int $$2, int $$3, int $$4, int $$5) {
-      super($$0, $$1, $$2, $$3, $$4, $$5);
-   }
-
-   @Nullable
-   @Override
-   public fqz a(fvt $$0) {
-      if (this.t() == 0) {
-         return null;
-      } else if (this.aI_() && $$0 instanceof fvt.a $$1) {
-         E $$2 = this.a($$1.b());
-         if ($$2 != null) {
-            return fqz.a(this, fqz.a($$2));
-         } else {
-            this.a(null);
-            return null;
-         }
-      } else if (!this.aI_()) {
-         E $$3 = this.p();
-         if ($$3 == null) {
-            $$3 = this.a($$0.a());
-         }
-
-         return $$3 == null ? null : fqz.a(this, fqz.a($$3));
-      } else {
-         return null;
-      }
+   public fsm a(int $$0) {
+      this.c.c($$0);
+      return this;
    }
 
    @Override
-   public void a(fvn $$0) {
-      E $$1 = this.x();
-      if ($$1 != null) {
-         this.a($$0.a(), $$1);
-         $$1.b($$0);
-      } else {
-         E $$2 = this.p();
-         if ($$2 != null) {
-            this.a($$0.a(), $$2);
-            $$2.b($$0);
-         }
-      }
-
-      if (this.aI_()) {
-         $$0.a(fvm.d, a);
-      }
+   public void h(int $$0) {
+      super.h($$0);
+      this.c.d(this.A() - this.b());
    }
 
-   public abstract static class a<E extends fsm.a<E>> extends frk.a<E> implements fvo {
-      public abstract ww a();
+   @Override
+   protected int c() {
+      return this.c.y();
+   }
 
-      @Override
-      public boolean a(double $$0, double $$1, int $$2) {
-         return true;
-      }
+   @Override
+   protected double o() {
+      return 9.0;
+   }
 
-      @Override
-      public void b(fvn $$0) {
-         $$0.a(fvm.a, this.a());
-      }
+   @Override
+   protected void c(fro $$0) {
+      super.c($$0);
+   }
+
+   public boolean q() {
+      return super.j();
+   }
+
+   @Override
+   protected void c(fro $$0, int $$1, int $$2, float $$3) {
+      $$0.c().a();
+      $$0.c().a((float)this.e(), (float)this.p(), 0.0F);
+      this.c.a($$0, $$1, $$2, $$3);
+      $$0.c().b();
+   }
+
+   @Override
+   protected void a(fvz $$0) {
+      $$0.a(fvy.a, this.B());
+   }
+
+   @Override
+   public void b(wy $$0) {
+      super.b($$0);
+      this.c.b($$0);
    }
 }

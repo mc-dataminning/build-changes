@@ -1,80 +1,88 @@
-import com.google.gson.JsonObject;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.Locale;
-import javax.annotation.Nullable;
+import com.google.common.collect.Lists;
+import com.google.common.collect.Sets;
+import java.util.List;
+import java.util.Set;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.CompletionStage;
+import java.util.concurrent.Executor;
+import java.util.concurrent.atomic.AtomicInteger;
 
-public abstract class avj<T> extends avs<T> {
-   public static final SimpleDateFormat a = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss Z", Locale.ROOT);
-   public static final String b = "forever";
-   protected final Date c;
-   protected final String d;
-   @Nullable
-   protected final Date e;
-   protected final String f;
+public class avj<S> implements auz {
+   private static final int c = 2;
+   private static final int d = 2;
+   private static final int e = 1;
+   protected final CompletableFuture<bau> a = new CompletableFuture<>();
+   protected CompletableFuture<List<S>> b;
+   final Set<auw> f;
+   private final int g;
+   private int h;
+   private int i;
+   private final AtomicInteger j = new AtomicInteger();
+   private final AtomicInteger k = new AtomicInteger();
 
-   public avj(@Nullable T $$0, @Nullable Date $$1, @Nullable String $$2, @Nullable Date $$3, @Nullable String $$4) {
-      super($$0);
-      this.c = $$1 == null ? new Date() : $$1;
-      this.d = $$2 == null ? "(Unknown)" : $$2;
-      this.e = $$3;
-      this.f = $$4 == null ? "Banned by an operator." : $$4;
+   public static avj<Void> a(avd $$0, List<auw> $$1, Executor $$2, Executor $$3, CompletableFuture<bau> $$4) {
+      return new avj<>($$2, $$3, $$0, $$1, ($$1x, $$2x, $$3x, $$4x, $$5) -> $$3x.a($$1x, $$2x, $$2, $$5), $$4);
    }
 
-   protected avj(@Nullable T $$0, JsonObject $$1) {
-      super($$0);
+   protected avj(Executor $$0, final Executor $$1, avd $$2, List<auw> $$3, avj.a<S> $$4, CompletableFuture<bau> $$5) {
+      this.g = $$3.size();
+      this.j.incrementAndGet();
+      $$5.thenRun(this.k::incrementAndGet);
+      List<CompletableFuture<S>> $$6 = Lists.newArrayList();
+      CompletableFuture<?> $$7 = $$5;
+      this.f = Sets.newHashSet($$3);
 
-      Date $$2;
-      try {
-         $$2 = $$1.has("created") ? a.parse($$1.get("created").getAsString()) : new Date();
-      } catch (ParseException var7) {
-         $$2 = new Date();
+      for (final auw $$8 : $$3) {
+         final CompletableFuture<?> $$9 = $$7;
+         CompletableFuture<S> $$10 = $$4.create(new auw.a() {
+            @Override
+            public <T> CompletableFuture<T> a(T $$0) {
+               $$1.execute(() -> {
+                  avj.this.f.remove($$8);
+                  if (avj.this.f.isEmpty()) {
+                     avj.this.a.complete(bau.a);
+                  }
+               });
+               return avj.this.a.thenCombine((CompletionStage<? extends T>)$$9, ($$1xx, $$2) -> $$0);
+            }
+         }, $$2, $$8, $$1x -> {
+            this.j.incrementAndGet();
+            $$0.execute(() -> {
+               $$1x.run();
+               this.k.incrementAndGet();
+            });
+         }, $$1x -> {
+            this.h++;
+            $$1.execute(() -> {
+               $$1x.run();
+               this.i++;
+            });
+         });
+         $$6.add($$10);
+         $$7 = $$10;
       }
 
-      this.c = $$2;
-      this.d = $$1.has("source") ? $$1.get("source").getAsString() : "(Unknown)";
-
-      Date $$5;
-      try {
-         $$5 = $$1.has("expires") ? a.parse($$1.get("expires").getAsString()) : null;
-      } catch (ParseException var6) {
-         $$5 = null;
-      }
-
-      this.e = $$5;
-      this.f = $$1.has("reason") ? $$1.get("reason").getAsString() : "Banned by an operator.";
-   }
-
-   public Date a() {
-      return this.c;
-   }
-
-   public String b() {
-      return this.d;
-   }
-
-   @Nullable
-   public Date c() {
-      return this.e;
-   }
-
-   public String d() {
-      return this.f;
-   }
-
-   public abstract ww e();
-
-   @Override
-   boolean f() {
-      return this.e == null ? false : this.e.before(new Date());
+      this.b = af.e($$6);
    }
 
    @Override
-   protected void a(JsonObject $$0) {
-      $$0.addProperty("created", a.format(this.c));
-      $$0.addProperty("source", this.d);
-      $$0.addProperty("expires", this.e == null ? "forever" : a.format(this.e));
-      $$0.addProperty("reason", this.f);
+   public CompletableFuture<?> a() {
+      return this.b;
+   }
+
+   @Override
+   public float b() {
+      int $$0 = this.g - this.f.size();
+      float $$1 = (float)(this.k.get() * 2 + this.i * 2 + $$0 * 1);
+      float $$2 = (float)(this.j.get() * 2 + this.h * 2 + this.g * 1);
+      return $$1 / $$2;
+   }
+
+   public static auz a(avd $$0, List<auw> $$1, Executor $$2, Executor $$3, CompletableFuture<bau> $$4, boolean $$5) {
+      return (auz)($$5 ? new auy($$0, $$1, $$2, $$3, $$4) : a($$0, $$1, $$2, $$3, $$4));
+   }
+
+   protected interface a<S> {
+      CompletableFuture<S> create(auw.a var1, avd var2, auw var3, Executor var4, Executor var5);
    }
 }

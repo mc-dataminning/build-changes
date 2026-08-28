@@ -22,16 +22,16 @@ public class ju {
    static <T> jf<T> a(final jg.b<T> $$0) {
       return new ju.c<T>($$0) {
          @Override
-         public Optional<je.c<T>> a(ald<T> $$0x) {
+         public Optional<je.c<T>> a(alf<T> $$0x) {
             return $$0.a($$0);
          }
       };
    }
 
-   static <T> jg.b<T> a(final ald<? extends jr<? extends T>> $$0, final Lifecycle $$1, jh<T> $$2, final Map<ald<T>, je.c<T>> $$3) {
+   static <T> jg.b<T> a(final alf<? extends jr<? extends T>> $$0, final Lifecycle $$1, jh<T> $$2, final Map<alf<T>, je.c<T>> $$3) {
       return new ju.e<T>($$2) {
          @Override
-         public ald<? extends jr<? extends T>> g() {
+         public alf<? extends jr<? extends T>> g() {
             return $$0;
          }
 
@@ -41,7 +41,7 @@ public class ju {
          }
 
          @Override
-         public Optional<je.c<T>> a(ald<T> $$0x) {
+         public Optional<je.c<T>> a(alf<T> $$0x) {
             return Optional.ofNullable($$3.get($$0));
          }
 
@@ -52,12 +52,12 @@ public class ju {
       };
    }
 
-   public <T> ju a(ald<? extends jr<T>> $$0, Lifecycle $$1, ju.i<T> $$2) {
+   public <T> ju a(alf<? extends jr<T>> $$0, Lifecycle $$1, ju.i<T> $$2) {
       this.a.add(new ju.k<>($$0, $$1, $$2));
       return this;
    }
 
-   public <T> ju a(ald<? extends jr<T>> $$0, ju.i<T> $$1) {
+   public <T> ju a(alf<? extends jr<T>> $$0, ju.i<T> $$1) {
       return this.a($$0, Lifecycle.stable(), $$1);
    }
 
@@ -68,39 +68,39 @@ public class ju {
    }
 
    private static jg.a a(ju.m $$0, js $$1, Stream<jg.b<?>> $$2) {
-      record a<T>(jg.b<T> a, alc.b<T> b) {
+      record a<T>(jg.b<T> a, ale.b<T> b) {
          public static <T> a<T> a(jg.b<T> $$0) {
-            return new a<>(new ju.d<>($$0, $$0), alc.b.a($$0));
+            return new a<>(new ju.d<>($$0, $$0), ale.b.a($$0));
          }
 
          public static <T> a<T> a(ju.m $$0, jg.b<T> $$1) {
-            return new a<>(new ju.d<>($$0.a(), $$1), new alc.b<>($$0.a(), $$1, $$1.h()));
+            return new a<>(new ju.d<>($$0.a(), $$1), new ale.b<>($$0.a(), $$1, $$1.h()));
          }
       }
 
-      final Map<ald<? extends jr<?>>, a<?>> $$3 = new HashMap<>();
+      final Map<alf<? extends jr<?>>, a<?>> $$3 = new HashMap<>();
       $$1.a().forEach($$1x -> $$3.put($$1x.a(), ju$a.a($$1x.b())));
       $$2.forEach($$2x -> $$3.put($$2x.g(), ju$a.a($$0, $$2x)));
       return new jg.a() {
          @Override
-         public Stream<ald<? extends jr<?>>> b() {
+         public Stream<alf<? extends jr<?>>> b() {
             return $$3.keySet().stream();
          }
 
-         <T> Optional<a<T>> f(ald<? extends jr<? extends T>> $$0) {
+         <T> Optional<a<T>> f(alf<? extends jr<? extends T>> $$0) {
             return Optional.ofNullable((a<T>)$$3.get($$0));
          }
 
          @Override
-         public <T> Optional<jg.b<T>> a(ald<? extends jr<? extends T>> $$0) {
+         public <T> Optional<jg.b<T>> a(alf<? extends jr<? extends T>> $$0) {
             return this.f($$0).map(a::a);
          }
 
          @Override
-         public <V> alc<V> a(DynamicOps<V> $$0) {
-            return alc.a($$0, new alc.c() {
+         public <V> ale<V> a(DynamicOps<V> $$0) {
+            return ale.a($$0, new ale.c() {
                @Override
-               public <T> Optional<alc.b<T>> a(ald<? extends jr<? extends T>> $$0) {
+               public <T> Optional<ale.b<T>> a(alf<? extends jr<? extends T>> $$0) {
                   return f($$0).map(a::b);
                }
             });
@@ -118,7 +118,7 @@ public class ju {
       return $$3;
    }
 
-   private jg.a a(js $$0, jg.a $$1, iw.a $$2, Map<ald<? extends jr<?>>, ju.j<?>> $$3, jg.a $$4) {
+   private jg.a a(js $$0, jg.a $$1, iw.a $$2, Map<alf<? extends jr<?>>, ju.j<?>> $$3, jg.a $$4) {
       ju.m $$5 = new ju.m();
       MutableObject<jg.a> $$6 = new MutableObject();
       List<jg.b<?>> $$7 = $$3.keySet().stream().map($$5x -> this.a($$5, $$2, $$5x, $$4, $$1, $$6)).collect(Collectors.toUnmodifiableList());
@@ -127,22 +127,22 @@ public class ju {
       return $$8;
    }
 
-   private <T> jg.b<T> a(jh<T> $$0, iw.a $$1, ald<? extends jr<? extends T>> $$2, jg.a $$3, jg.a $$4, MutableObject<jg.a> $$5) {
+   private <T> jg.b<T> a(jh<T> $$0, iw.a $$1, alf<? extends jr<? extends T>> $$2, jg.a $$3, jg.a $$4, MutableObject<jg.a> $$5) {
       iw<T> $$6 = $$1.a($$2);
       if ($$6 == null) {
          throw new NullPointerException("No cloner for " + $$2.a());
       } else {
-         Map<ald<T>, je.c<T>> $$7 = new HashMap<>();
+         Map<alf<T>, je.c<T>> $$7 = new HashMap<>();
          jg.b<T> $$8 = $$3.e($$2);
          $$8.c().forEach($$5x -> {
-            ald<T> $$6x = $$5x.h();
+            alf<T> $$6x = $$5x.h();
             ju.f<T> $$7x = new ju.f<>($$0, $$6x);
             $$7x.a = () -> $$6.a((T)$$5x.a(), $$3, (jg.a)$$5.getValue());
             $$7.put($$6x, $$7x);
          });
          jg.b<T> $$9 = $$4.e($$2);
          $$9.c().forEach($$5x -> {
-            ald<T> $$6x = $$5x.h();
+            alf<T> $$6x = $$5x.h();
             $$7.computeIfAbsent($$6x, $$6xx -> {
                ju.f<T> $$7x = new ju.f<>($$0, $$6x);
                $$7x.a = () -> $$6.a((T)$$5x.a(), $$4, (jg.a)$$5.getValue());
@@ -156,9 +156,9 @@ public class ju {
 
    public ju.g a(js $$0, jg.a $$1, iw.a $$2) {
       ju.b $$3 = this.b($$0);
-      Map<ald<? extends jr<?>>, ju.j<?>> $$4 = new HashMap<>();
+      Map<alf<? extends jr<?>>, ju.j<?>> $$4 = new HashMap<>();
       this.a.stream().map($$1x -> $$1x.a($$3)).forEach($$1x -> $$4.put($$1x.a, $$1x));
-      Set<ald<? extends jr<?>>> $$5 = $$0.b().collect(Collectors.toUnmodifiableSet());
+      Set<alf<? extends jr<?>>> $$5 = $$0.b().collect(Collectors.toUnmodifiableSet());
       $$1.b().filter($$1x -> !$$5.contains($$1x)).forEach($$1x -> $$4.putIfAbsent($$1x, new ju.j($$1x, Lifecycle.stable(), Map.of())));
       Stream<jg.b<?>> $$6 = $$4.values().stream().map($$1x -> $$1x.a($$3.a));
       jg.a $$7 = a($$3.a, $$0, $$6);
@@ -168,13 +168,13 @@ public class ju {
       return new ju.g($$8, $$7);
    }
 
-   static record b(ju.m a, ju.l b, Map<ale, jf<?>> c, Map<ald<?>, ju.h<?>> d, List<RuntimeException> e) {
+   static record b(ju.m a, ju.l b, Map<alg, jf<?>> c, Map<alf<?>, ju.h<?>> d, List<RuntimeException> e) {
 
-      public static ju.b a(js $$0, Stream<ald<? extends jr<?>>> $$1) {
+      public static ju.b a(js $$0, Stream<alf<? extends jr<?>>> $$1) {
          ju.m $$2 = new ju.m();
          List<RuntimeException> $$3 = new ArrayList<>();
          ju.l $$4 = new ju.l($$2);
-         Builder<ale, jf<?>> $$5 = ImmutableMap.builder();
+         Builder<alg, jf<?>> $$5 = ImmutableMap.builder();
          $$0.a().forEach($$1x -> $$5.put($$1x.a().a(), ju.a($$1x.b())));
          $$1.forEach($$2x -> $$5.put($$2x.a(), $$4));
          return new ju.b($$2, $$4, $$5.build(), new HashMap<>(), $$3);
@@ -183,7 +183,7 @@ public class ju {
       public <T> qh<T> a() {
          return new qh<T>() {
             @Override
-            public je.c<T> a(ald<T> $$0, T $$1, Lifecycle $$2) {
+            public je.c<T> a(alf<T> $$0, T $$1, Lifecycle $$2) {
                ju.h<?> $$3 = b.this.d.put($$0, new ju.h($$1, $$2));
                if ($$3 != null) {
                   b.this.e.add(new IllegalStateException("Duplicate registration for " + $$0 + ", new=" + $$1 + ", old=" + $$3.a));
@@ -193,7 +193,7 @@ public class ju {
             }
 
             @Override
-            public <S> jf<S> a(ald<? extends jr<? extends S>> $$0) {
+            public <S> jf<S> a(alf<? extends jr<? extends S>> $$0) {
                return (jf<S>)b.this.c.getOrDefault($$0.a(), b.this.b);
             }
          };
@@ -204,7 +204,7 @@ public class ju {
       }
 
       public void c() {
-         for (ald<Object> $$0 : this.b.a.keySet()) {
+         for (alf<Object> $$0 : this.b.a.keySet()) {
             this.e.add(new IllegalStateException("Unreferenced key: " + $$0));
          }
       }
@@ -229,11 +229,11 @@ public class ju {
          return this.b;
       }
 
-      public Map<ale, jf<?>> g() {
+      public Map<alg, jf<?>> g() {
          return this.c;
       }
 
-      public Map<ald<?>, ju.h<?>> h() {
+      public Map<alf<?>, ju.h<?>> h() {
          return this.d;
       }
 
@@ -250,7 +250,7 @@ public class ju {
       }
 
       @Override
-      public Optional<ji.c<T>> a(axp<T> $$0) {
+      public Optional<ji.c<T>> a(axr<T> $$0) {
          return Optional.of(ji.a(this.d, $$0));
       }
    }
@@ -284,7 +284,7 @@ public class ju {
       @Nullable
       Supplier<T> a;
 
-      protected f(jh<T> $$0, @Nullable ald<T> $$1) {
+      protected f(jh<T> $$0, @Nullable alf<T> $$1) {
          super(je.c.a.a, $$0, $$1, null);
       }
 
@@ -315,12 +315,12 @@ public class ju {
       void run(qh<T> var1);
    }
 
-   static record j<T>(ald<? extends jr<? extends T>> a, Lifecycle b, Map<ald<T>, ju.n<T>> c) {
+   static record j<T>(alf<? extends jr<? extends T>> a, Lifecycle b, Map<alf<T>, ju.n<T>> c) {
 
       public jg.b<T> a(ju.m $$0) {
-         Map<ald<T>, je.c<T>> $$1 = this.c.entrySet().stream().collect(Collectors.toUnmodifiableMap(Entry::getKey, $$1x -> {
+         Map<alf<T>, je.c<T>> $$1 = this.c.entrySet().stream().collect(Collectors.toUnmodifiableMap(Entry::getKey, $$1x -> {
             ju.n<T> $$2 = (ju.n<T>)$$1x.getValue();
-            je.c<T> $$3 = $$2.b().orElseGet(() -> je.c.a($$0.a(), (ald<T>)$$1x.getKey()));
+            je.c<T> $$3 = $$2.b().orElseGet(() -> je.c.a($$0.a(), (alf<T>)$$1x.getKey()));
             $$3.b($$2.a().a());
             return $$3;
          }));
@@ -328,22 +328,22 @@ public class ju {
       }
    }
 
-   static record k<T>(ald<? extends jr<T>> a, Lifecycle b, ju.i<T> c) {
+   static record k<T>(alf<? extends jr<T>> a, Lifecycle b, ju.i<T> c) {
       void b(ju.b $$0) {
          this.c.run($$0.a());
       }
 
       public ju.j<T> a(ju.b $$0) {
-         Map<ald<T>, ju.n<T>> $$1 = new HashMap<>();
-         Iterator<Entry<ald<?>, ju.h<?>>> $$2 = $$0.d.entrySet().iterator();
+         Map<alf<T>, ju.n<T>> $$1 = new HashMap<>();
+         Iterator<Entry<alf<?>, ju.h<?>>> $$2 = $$0.d.entrySet().iterator();
 
          while ($$2.hasNext()) {
-            Entry<ald<?>, ju.h<?>> $$3 = $$2.next();
-            ald<?> $$4 = $$3.getKey();
+            Entry<alf<?>, ju.h<?>> $$3 = $$2.next();
+            alf<?> $$4 = $$3.getKey();
             if ($$4.c(this.a)) {
                ju.h<T> $$6 = (ju.h<T>)$$3.getValue();
                je.c<T> $$7 = (je.c<T>)$$0.b.a.remove($$4);
-               $$1.put((ald<T>)$$4, new ju.n<>($$6, Optional.ofNullable($$7)));
+               $$1.put((alf<T>)$$4, new ju.n<>($$6, Optional.ofNullable($$7)));
                $$2.remove();
             }
          }
@@ -353,18 +353,18 @@ public class ju {
    }
 
    static class l extends ju.c<Object> {
-      final Map<ald<Object>, je.c<Object>> a = new HashMap<>();
+      final Map<alf<Object>, je.c<Object>> a = new HashMap<>();
 
       public l(jh<Object> $$0) {
          super($$0);
       }
 
       @Override
-      public Optional<je.c<Object>> a(ald<Object> $$0) {
+      public Optional<je.c<Object>> a(alf<Object> $$0) {
          return Optional.of(this.c($$0));
       }
 
-      <T> je.c<T> c(ald<T> $$0) {
+      <T> je.c<T> c(alf<T> $$0) {
          return (je.c<T>)this.a.computeIfAbsent($$0, $$0x -> je.c.a(this.d, $$0x));
       }
    }

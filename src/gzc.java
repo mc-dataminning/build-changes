@@ -1,23 +1,15 @@
-public class gzc<S extends hce, M extends gfd<S> & ghp> extends gzy<S, M> {
-   public gzc(gxh<S, M> $$0) {
-      super($$0);
+public class gzc extends gur<cor, hea> {
+   private static final alg a = alg.b("textures/entity/skeleton/wither_skeleton.png");
+
+   public gzc(gvz.a $$0) {
+      super($$0, git.dS, git.dT, git.dU);
    }
 
-   public void a(fiq $$0, gpd $$1, int $$2, S $$3, float $$4, float $$5) {
-      hes $$6 = $$3.i;
-      if (!$$6.c()) {
-         $$0.a();
-         this.a($$3, $$0);
-         $$6.a($$0, $$1, $$2, hhp.d);
-         $$0.b();
-      }
+   public alg b(hea $$0) {
+      return a;
    }
 
-   protected void a(S $$0, fiq $$1) {
-      this.d().a($$1);
-      $$1.a(a.b.rotation(0.75F));
-      $$1.b(1.07F, 1.07F, 1.07F);
-      $$1.a(0.0F, 0.13F, -0.34F);
-      $$1.a(a.b.rotation((float) Math.PI));
+   public hea b() {
+      return new hea();
    }
 }

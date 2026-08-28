@@ -1,18 +1,17 @@
-import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 import javax.annotation.Nullable;
 
-public record hfw(boolean b) implements hfz {
-   public static final MapCodec<hfw> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(Codec.BOOL.optionalFieldOf("normalize", true).forGetter(hfw::b)).apply($$0, hfw::new)
-   );
+public record hfw() implements hfs {
+   public static final MapCodec<hfw> a = MapCodec.unit(new hfw());
 
    @Override
-   public float a(cys $$0, @Nullable gjd $$1, @Nullable bwz $$2, int $$3) {
-      float $$4 = (float)$$0.o();
-      float $$5 = (float)$$0.p();
-      return this.b ? azk.a($$4 / $$5, 0.0F, 1.0F) : azk.a($$4, 0.0F, $$5);
+   public boolean get(cyy $$0, @Nullable gjr $$1, @Nullable bxc $$2, int $$3, cyw $$4) {
+      if ($$2 instanceof cqy $$5 && $$5.cj != null) {
+         bwv $$6 = gwg.a($$5);
+         return $$2.a($$6) == $$0;
+      }
+
+      return false;
    }
 
    @Override

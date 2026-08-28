@@ -1,5 +1,4 @@
-public class hdo extends hcp {
+public class hdo extends hdf {
    public float a;
-   public float b;
-   public float c;
+   public int b;
 }

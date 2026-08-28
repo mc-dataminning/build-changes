@@ -1,29 +1,21 @@
-import net.minecraft.server.MinecraftServer;
+import com.mojang.datafixers.util.Either;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
 
-public class fdf implements fdh<MinecraftServer> {
-   final ale a;
+public class fdf {
+   private static final Codec<fde> h = mf.G.q().dispatch(fde::b, fdd::a);
+   public static final Codec<fde> a = Codec.lazyInitialized(() -> {
+      Codec<fde> $$0 = Codec.withAlternative(h, fdi.a.codec());
+      return Codec.either(fdb.b, $$0).xmap(Either::unwrap, $$0x -> $$0x instanceof fdb $$1 ? Either.left($$1) : Either.right($$0x));
+   });
+   public static final fdd b = a("constant", fdb.a);
+   public static final fdd c = a("uniform", fdi.a);
+   public static final fdd d = a("binomial", fda.a);
+   public static final fdd e = a("score", fdg.a);
+   public static final fdd f = a("storage", fdh.a);
+   public static final fdd g = a("enchantment_level", fdc.a);
 
-   public fdf(ale $$0) {
-      this.a = $$0;
-   }
-
-   public void a(MinecraftServer $$0, fdj<MinecraftServer> $$1, long $$2) {
-      alt $$3 = $$0.aE();
-      $$3.a(this.a).ifPresent($$1x -> $$3.a($$1x, $$3.c()));
-   }
-
-   public static class a extends fdh.a<MinecraftServer, fdf> {
-      public a() {
-         super(ale.b("function"), fdf.class);
-      }
-
-      public void a(tx $$0, fdf $$1) {
-         $$0.a("Name", $$1.a.toString());
-      }
-
-      public fdf a(tx $$0) {
-         ale $$1 = ale.a($$0.l("Name"));
-         return new fdf($$1);
-      }
+   private static fdd a(String $$0, MapCodec<? extends fde> $$1) {
+      return jr.a(mf.G, alg.b($$0), new fdd($$1));
    }
 }

@@ -1,13 +1,27 @@
-public abstract class gmt extends gnl {
-   protected gmt(gjd $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6) {
-      super($$0, $$1, $$2, $$3, $$4, $$5, $$6);
-      this.B = 0.96F;
-      this.j = this.j * 0.01F + $$4;
-      this.k = this.k * 0.01F + $$5;
-      this.l = this.l * 0.01F + $$6;
-      this.g = this.g + (double)((this.r.i() - this.r.i()) * 0.05F);
-      this.h = this.h + (double)((this.r.i() - this.r.i()) * 0.05F);
-      this.i = this.i + (double)((this.r.i() - this.r.i()) * 0.05F);
-      this.t = (int)(8.0 / (Math.random() * 0.8 + 0.2)) + 4;
+public class gmt extends gmy {
+   gmt(gjr $$0, double $$1, double $$2, double $$3) {
+      super($$0, $$1, $$2, $$3, 0.0, 0.0, 0.0);
+      this.t = 8;
+   }
+
+   @Override
+   public void a() {
+      for (int $$0 = 0; $$0 < 6; $$0++) {
+         double $$1 = this.g + (this.r.j() - this.r.j()) * 4.0;
+         double $$2 = this.h + (this.r.j() - this.r.j()) * 4.0;
+         double $$3 = this.i + (this.r.j() - this.r.j()) * 4.0;
+         this.c.a(lx.w, $$1, $$2, $$3, (double)((float)this.s / (float)this.t), 0.0, 0.0);
+      }
+
+      this.s++;
+      if (this.s == this.t) {
+         this.k();
+      }
+   }
+
+   public static class a implements gnd<mb> {
+      public gna a(mb $$0, gjr $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new gmt($$1, $$2, $$3, $$4);
+      }
    }
 }

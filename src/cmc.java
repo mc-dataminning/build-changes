@@ -1,101 +1,124 @@
 import javax.annotation.Nullable;
 
-public class cmc extends clt {
-   private static final int b = 200;
-   private static final int c = 4;
-   private static final int d = 10;
-   private int e;
-   private int f;
+public class cmc extends cly {
+   private static final chr b = chr.a().d();
    @Nullable
-   private bvs g;
+   private ewu c;
+   @Nullable
+   private fei d;
+   private boolean e;
 
-   public cmc(clq $$0) {
+   public cmc(clw $$0) {
       super($$0);
    }
 
    @Override
-   public void b() {
-      this.e++;
-      if (this.e % 2 == 0 && this.e < 10) {
-         fdw $$0 = this.a.J(1.0F).d();
-         $$0.b((float) (-Math.PI / 4));
-         double $$1 = this.a.c.dA();
-         double $$2 = this.a.c.e(0.5);
-         double $$3 = this.a.c.dG();
-
-         for (int $$4 = 0; $$4 < 8; $$4++) {
-            double $$5 = $$1 + this.a.dY().k() / 2.0;
-            double $$6 = $$2 + this.a.dY().k() / 2.0;
-            double $$7 = $$3 + this.a.dY().k() / 2.0;
-
-            for (int $$8 = 0; $$8 < 6; $$8++) {
-               this.a.dV().a(lx.h, $$5, $$6, $$7, -$$0.d * 0.08F * (double)$$8, -$$0.e * 0.6F, -$$0.f * 0.08F * (double)$$8);
-            }
-
-            $$0.b((float) (Math.PI / 16));
-         }
-      }
+   public cmm<cmc> h() {
+      return cmm.a;
    }
 
    @Override
-   public void a(aro $$0) {
-      this.e++;
-      if (this.e >= 200) {
-         if (this.f >= 4) {
-            this.a.t().a(cmg.e);
-         } else {
-            this.a.t().a(cmg.g);
-         }
-      } else if (this.e == 10) {
-         fdw $$1 = new fdw(this.a.c.dA() - this.a.dA(), 0.0, this.a.c.dG() - this.a.dG()).d();
-         float $$2 = 5.0F;
-         double $$3 = this.a.c.dA() + $$1.d * 5.0 / 2.0;
-         double $$4 = this.a.c.dG() + $$1.f * 5.0 / 2.0;
-         double $$5 = this.a.c.e(0.5);
-         double $$6 = $$5;
-         iu.a $$7 = new iu.a($$3, $$5, $$4);
-
-         while ($$0.v($$7)) {
-            if (--$$6 < 0.0) {
-               $$6 = $$5;
-               break;
-            }
-
-            $$7.b($$3, $$6, $$4);
-         }
-
-         $$6 = (double)(azk.a($$6) + 1);
-         this.g = new bvs($$0, $$3, $$6, $$4);
-         this.g.a((bwz)this.a);
-         this.g.a(5.0F);
-         this.g.a(200);
-         this.g.a(lx.h);
-         this.g.b(0.25F);
-         this.g.a(new bve(bvg.g));
-         $$0.b(this.g);
+   public void a(arq $$0) {
+      double $$1 = this.d == null ? 0.0 : this.d.c(this.a.dA(), this.a.dC(), this.a.dG());
+      if ($$1 < 100.0 || $$1 > 22500.0 || this.a.P || this.a.Q) {
+         this.b($$0);
       }
    }
 
    @Override
    public void c() {
-      this.e = 0;
-      this.f++;
+      this.c = null;
+      this.d = null;
    }
 
+   @Nullable
    @Override
-   public void d() {
-      if (this.g != null) {
-         this.g.at();
-         this.g = null;
+   public fei f() {
+      return this.d;
+   }
+
+   private void b(arq $$0) {
+      if (this.c != null && this.c.c()) {
+         iu $$1 = $$0.a(efy.a.f, ejd.a(this.a.j()));
+         int $$2 = this.a.x() == null ? 0 : this.a.x().e();
+         if (this.a.dY().a($$2 + 3) == 0) {
+            this.a.t().a(cmm.c);
+            return;
+         }
+
+         cqy $$3 = $$0.a(b, this.a, (double)$$1.u(), (double)$$1.v(), (double)$$1.w());
+         double $$4;
+         if ($$3 != null) {
+            $$4 = $$1.b($$3.dt()) / 512.0;
+         } else {
+            $$4 = 64.0;
+         }
+
+         if ($$3 != null && (this.a.dY().a((int)($$4 + 2.0)) == 0 || this.a.dY().a($$2 + 2) == 0)) {
+            this.a($$3);
+            return;
+         }
+      }
+
+      if (this.c == null || this.c.c()) {
+         int $$6 = this.a.n();
+         int $$7 = $$6;
+         if (this.a.dY().a(8) == 0) {
+            this.e = !this.e;
+            $$7 = $$6 + 6;
+         }
+
+         if (this.e) {
+            $$7++;
+         } else {
+            $$7--;
+         }
+
+         if (this.a.x() != null && this.a.x().e() >= 0) {
+            $$7 %= 12;
+            if ($$7 < 0) {
+               $$7 += 12;
+            }
+         } else {
+            $$7 -= 12;
+            $$7 &= 7;
+            $$7 += 12;
+         }
+
+         this.c = this.a.a($$6, $$7, null);
+         if (this.c != null) {
+            this.c.a();
+         }
+      }
+
+      this.i();
+   }
+
+   private void a(cqy $$0) {
+      this.a.t().a(cmm.b);
+      this.a.t().b(cmm.b).a($$0);
+   }
+
+   private void i() {
+      if (this.c != null && !this.c.c()) {
+         jz $$0 = this.c.g();
+         this.c.a();
+         double $$1 = (double)$$0.u();
+         double $$2 = (double)$$0.w();
+
+         double $$3;
+         do {
+            $$3 = (double)((float)$$0.v() + this.a.dY().i() * 20.0F);
+         } while ($$3 < (double)$$0.v());
+
+         this.d = new fei($$1, $$3, $$2);
       }
    }
 
    @Override
-   public cmg<cmc> h() {
-      return cmg.f;
-   }
-
-   public void i() {
-      this.f = 0;
+   public void a(clv $$0, iu $$1, bus $$2, @Nullable cqy $$3) {
+      if ($$3 != null && this.a.c($$3)) {
+         this.a($$3);
+      }
    }
 }

@@ -1,55 +1,16 @@
-import java.security.PublicKey;
-
-public class ajb implements zd<aiz> {
-   public static final yu<vs, ajb> a = zd.a(ajb::a, ajb::new);
-   private final String b;
-   private final byte[] c;
-   private final byte[] d;
-   private final boolean e;
-
-   public ajb(String $$0, byte[] $$1, byte[] $$2, boolean $$3) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
-      this.e = $$3;
-   }
-
-   private ajb(vs $$0) {
-      this.b = $$0.d(20);
-      this.c = $$0.b();
-      this.d = $$0.b();
-      this.e = $$0.readBoolean();
-   }
-
-   private void a(vs $$0) {
-      $$0.a(this.b);
-      $$0.a(this.c);
-      $$0.a(this.d);
-      $$0.a(this.e);
-   }
-
+public interface ajb extends abo {
    @Override
-   public zf<ajb> a() {
-      return ajf.c;
+   default vs b() {
+      return vs.d;
    }
 
-   public void a(aiz $$0) {
-      $$0.a(this);
-   }
+   void a(ajd var1);
 
-   public String b() {
-      return this.b;
-   }
+   void a(ajg var1);
 
-   public PublicKey e() throws ayi {
-      return ayh.a(this.c);
-   }
+   void a(ajf var1);
 
-   public byte[] f() {
-      return this.d;
-   }
+   void a(aje var1);
 
-   public boolean g() {
-      return this.e;
-   }
+   void a(ajc var1);
 }

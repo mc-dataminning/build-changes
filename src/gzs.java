@@ -1,28 +1,64 @@
-public class gzs extends gzy<hcq, gfw> {
-   private final gfw a;
-   private final gfw b;
-   private final gzj c;
+import java.util.function.Function;
 
-   public gzs(gxh<hcq, gfw> $$0, gic $$1, gzj $$2) {
-      super($$0);
-      this.c = $$2;
-      this.a = new gfw($$1.a(gif.bD));
-      this.b = new gfw($$1.a(gif.bC));
+public class gzs<S extends hdf, M extends gfq<S> & gga> extends han<S, M> {
+   private static final float a = 0.625F;
+   private static final float b = 1.1875F;
+   private final gzs.a c;
+   private final Function<dtk.a, gho> d;
+
+   public gzs(gxw<S, M> $$0, giq $$1) {
+      this($$0, $$1, gzs.a.a);
    }
 
-   public void a(fiq $$0, gpd $$1, int $$2, hcq $$3, float $$4, float $$5) {
-      cys $$6 = $$3.c;
-      dhb $$7 = $$6.a(kj.D);
-      if ($$7 != null && $$7.d().isPresent()) {
-         this.a($$0, $$1, $$3, $$6, $$7.d().get(), $$2);
-      } else if ($$3.d) {
-         this.a($$0, $$1, $$3, cys.k, dha.m, $$2);
+   public gzs(gxw<S, M> $$0, giq $$1, gzs.a $$2) {
+      super($$0);
+      this.c = $$2;
+      this.d = af.b($$1x -> gsu.a($$1, $$1x));
+   }
+
+   public void a(fjc $$0, gps $$1, int $$2, S $$3, float $$4, float $$5) {
+      if (!$$3.as.c() || $$3.au != null) {
+         $$0.a();
+         $$0.b(this.c.c(), 1.0F, this.c.c());
+         M $$6 = this.d();
+         $$6.e().a($$0);
+         $$6.b().a($$0);
+         if ($$3.au != null) {
+            $$0.a(0.0F, this.c.b(), 0.0F);
+            $$0.b(1.1875F, -1.1875F, -1.1875F);
+            $$0.a(-0.5, 0.0, -0.5);
+            dtk.a $$7 = $$3.au;
+            gho $$8 = this.d.apply($$7);
+            gqc $$9 = gsu.a($$7, $$3.av);
+            gsu.a(null, 180.0F, $$3.at, $$0, $$1, $$2, $$8, $$9);
+         } else {
+            a($$0, this.c);
+            $$3.as.a($$0, $$1, $$2, hif.d);
+         }
+
+         $$0.b();
       }
    }
 
-   private void a(fiq $$0, gpd $$1, hcq $$2, cys $$3, ald<dgz> $$4, int $$5) {
-      gfw $$6 = $$2.aj ? this.b : this.a;
-      $$6.a($$2);
-      this.c.a(hkf.d.f, $$4, $$6, $$3, $$0, $$1, $$5);
+   public static void a(fjc $$0, gzs.a $$1) {
+      $$0.a(0.0F, -0.25F + $$1.a(), 0.0F);
+      $$0.a(a.d.rotationDegrees(180.0F));
+      $$0.b(0.625F, -0.625F, -0.625F);
+   }
+
+   public static record a(float b, float c, float d) {
+      public static final gzs.a a = new gzs.a(0.0F, 0.0F, 1.0F);
+
+      public float a() {
+         return this.b;
+      }
+
+      public float b() {
+         return this.c;
+      }
+
+      public float c() {
+         return this.d;
+      }
    }
 }

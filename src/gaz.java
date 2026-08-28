@@ -1,255 +1,124 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.Lists;
-import java.util.Collections;
-import java.util.List;
-import java.util.function.Consumer;
-import java.util.function.Function;
-import java.util.stream.Stream;
+import java.util.function.Supplier;
+import javax.annotation.Nullable;
 
-public class gaz {
-   private final aul a;
-   final List<aui> b;
-   final List<aui> c;
-   final Function<aui, ale> d;
-   final Runnable e;
-   private final Consumer<aul> f;
+public class gaz extends fxu {
+   private static final wy a = wy.c("options.title");
+   private static final wy b = wy.c("options.skinCustomisation");
+   private static final wy c = wy.c("options.sounds");
+   private static final wy d = wy.c("options.video");
+   private static final wy s = wy.c("options.controls");
+   private static final wy u = wy.c("options.language");
+   private static final wy v = wy.c("options.chat");
+   private static final wy w = wy.c("options.resourcepack");
+   private static final wy x = wy.c("options.accessibility");
+   private static final wy y = wy.c("options.telemetry");
+   private static final ftn z = ftn.a(wy.c("options.telemetry.disabled"));
+   private static final wy A = wy.c("options.credits_and_attribution");
+   private static final int B = 2;
+   private final fvq C = new fvq(this, 61, 33);
+   private final fxu D;
+   private final fow E;
+   @Nullable
+   private fsj<bty> F;
+   @Nullable
+   private fss G;
 
-   public gaz(Runnable $$0, Function<aui, ale> $$1, aul $$2, Consumer<aul> $$3) {
-      this.e = $$0;
-      this.d = $$1;
-      this.a = $$2;
-      this.b = Lists.newArrayList($$2.g());
-      Collections.reverse(this.b);
-      this.c = Lists.newArrayList($$2.d());
-      this.c.removeAll(this.b);
-      this.f = $$3;
+   public gaz(fxu $$0, fow $$1) {
+      super(a);
+      this.D = $$0;
+      this.E = $$1;
    }
 
-   public Stream<gaz.a> a() {
-      return this.c.stream().map($$0 -> new gaz.d($$0));
+   @Override
+   protected void aN_() {
+      fvu $$0 = this.C.a(fvu.d().a(8));
+      $$0.a(new ftj(a, this.p), fvt::b);
+      fvu $$1 = $$0.a(fvu.e()).a(8);
+      $$1.a(this.E.ak().a(this.m.n));
+      $$1.a(this.m());
+      fvp $$2 = new fvp();
+      $$2.c().f(4).e(4).b();
+      fvp.b $$3 = $$2.d(2);
+      $$3.a(this.a(b, () -> new gbb(this, this.E)));
+      $$3.a(this.a(c, () -> new gbc(this, this.E)));
+      $$3.a(this.a(d, () -> new gbe(this, this.m, this.E)));
+      $$3.a(this.a(s, () -> new gbf(this, this.E)));
+      $$3.a(this.a(u, () -> new gaw(this, this.E, this.m.ah())));
+      $$3.a(this.a(v, () -> new gau(this, this.E)));
+      $$3.a(this.a(w, () -> new gbm(this.m.ad(), this::a, this.m.ag(), wy.c("resourcePack.title"))));
+      $$3.a(this.a(x, () -> new gat(this, this.E)));
+      fsc $$4 = $$3.a(this.a(y, () -> new gcr(this, this.E)));
+      if (!this.m.E()) {
+         $$4.j = false;
+         $$4.a(z);
+      }
+
+      $$3.a(this.a(A, () -> new fww(this)));
+      this.C.c($$2);
+      this.C.b(fsc.a(wx.d, $$0x -> this.aK_()).a(200).a());
+      this.C.a($$1x -> {
+         fsa var10000 = this.c($$1x);
+      });
+      this.c();
    }
 
-   public Stream<gaz.a> b() {
-      return this.b.stream().map($$0 -> new gaz.c($$0));
+   @Override
+   protected void c() {
+      this.C.a();
    }
 
-   void e() {
-      this.a.b(Lists.reverse(this.b).stream().map(aui::g).collect(ImmutableList.toImmutableList()));
+   @Override
+   public void aK_() {
+      this.m.a(this.D);
    }
 
-   public void c() {
-      this.e();
-      this.f.accept(this.a);
+   private void a(aun $$0) {
+      this.E.a($$0);
+      this.m.a(this);
    }
 
-   public void d() {
-      this.a.a();
-      this.b.retainAll(this.a.d());
-      this.c.clear();
-      this.c.addAll(this.a.d());
-      this.c.removeAll(this.b);
-   }
-
-   public interface a {
-      ale a();
-
-      auj b();
-
-      String c();
-
-      ww d();
-
-      ww e();
-
-      aum f();
-
-      default ww g() {
-         return this.f().a(this.e());
-      }
-
-      boolean h();
-
-      boolean i();
-
-      void j();
-
-      void k();
-
-      void l();
-
-      void m();
-
-      boolean n();
-
-      default boolean o() {
-         return !this.n();
-      }
-
-      default boolean p() {
-         return this.n() && !this.i();
-      }
-
-      boolean q();
-
-      boolean r();
-   }
-
-   abstract class b implements gaz.a {
-      private final aui b;
-
-      public b(final aui $$0) {
-         this.b = $$0;
-      }
-
-      protected abstract List<aui> s();
-
-      protected abstract List<aui> t();
-
-      @Override
-      public ale a() {
-         return gaz.this.d.apply(this.b);
-      }
-
-      @Override
-      public auj b() {
-         return this.b.d();
-      }
-
-      @Override
-      public String c() {
-         return this.b.g();
-      }
-
-      @Override
-      public ww d() {
-         return this.b.b();
-      }
-
-      @Override
-      public ww e() {
-         return this.b.c();
-      }
-
-      @Override
-      public aum f() {
-         return this.b.l();
-      }
-
-      @Override
-      public boolean h() {
-         return this.b.j();
-      }
-
-      @Override
-      public boolean i() {
-         return this.b.i();
-      }
-
-      protected void u() {
-         this.s().remove(this.b);
-         this.b.k().a(this.t(), this.b, aui::h, true);
-         gaz.this.e.run();
-         gaz.this.e();
-         this.v();
-      }
-
-      private void v() {
-         if (this.b.g().equals("high_contrast")) {
-            foi<Boolean> $$0 = fof.Q().n.u();
-            $$0.a(!$$0.c());
+   private fvs m() {
+      if (this.m.s != null && this.m.U()) {
+         this.F = a(0, 0, "options.difficulty", this.m);
+         if (!this.m.s.k().l()) {
+            this.G = new fss(0, 0, $$0x -> this.m.a(new fws(this::c, wy.c("difficulty.lock.title"), wy.a("difficulty.lock.question", this.m.s.k().q().b()))));
+            this.F.h(this.F.A() - this.G.A());
+            this.G.b(this.m.s.k().r());
+            this.G.j = !this.G.a();
+            this.F.j = !this.G.a();
+            fvn $$0 = new fvn(150, 0, fvn.b.a);
+            $$0.a(this.F);
+            $$0.a(this.G);
+            return $$0;
+         } else {
+            this.F.j = false;
+            return this.F;
          }
-      }
-
-      protected void a(int $$0) {
-         List<aui> $$1 = this.s();
-         int $$2 = $$1.indexOf(this.b);
-         $$1.remove($$2);
-         $$1.add($$2 + $$0, this.b);
-         gaz.this.e.run();
-      }
-
-      @Override
-      public boolean q() {
-         List<aui> $$0 = this.s();
-         int $$1 = $$0.indexOf(this.b);
-         return $$1 > 0 && !$$0.get($$1 - 1).j();
-      }
-
-      @Override
-      public void l() {
-         this.a(-1);
-      }
-
-      @Override
-      public boolean r() {
-         List<aui> $$0 = this.s();
-         int $$1 = $$0.indexOf(this.b);
-         return $$1 >= 0 && $$1 < $$0.size() - 1 && !$$0.get($$1 + 1).j();
-      }
-
-      @Override
-      public void m() {
-         this.a(1);
+      } else {
+         return fsc.a(wy.c("options.online"), $$0x -> this.m.a(new gay(this, this.E))).a(this.n / 2 + 5, this.o / 6 - 12 + 24, 150, 20).a();
       }
    }
 
-   class c extends gaz.b {
-      public c(final aui $$0) {
-         super($$0);
-      }
+   public static fsj<bty> a(int $$0, int $$1, String $$2, fos $$3) {
+      return fsj.a(bty::b).a(bty.values()).a($$3.s.an()).a($$0, $$1, 150, 20, wy.c($$2), ($$1x, $$2x) -> $$3.L().b(new agt($$2x)));
+   }
 
-      @Override
-      protected List<aui> s() {
-         return gaz.this.b;
-      }
-
-      @Override
-      protected List<aui> t() {
-         return gaz.this.c;
-      }
-
-      @Override
-      public boolean n() {
-         return true;
-      }
-
-      @Override
-      public void j() {
-      }
-
-      @Override
-      public void k() {
-         this.u();
+   private void c(boolean $$0) {
+      this.m.a(this);
+      if ($$0 && this.m.s != null && this.G != null && this.F != null) {
+         this.m.L().b(new ahn(true));
+         this.G.b(true);
+         this.G.j = false;
+         this.F.j = false;
       }
    }
 
-   class d extends gaz.b {
-      public d(final aui $$0) {
-         super($$0);
-      }
+   @Override
+   public void aE_() {
+      this.E.az();
+   }
 
-      @Override
-      protected List<aui> s() {
-         return gaz.this.c;
-      }
-
-      @Override
-      protected List<aui> t() {
-         return gaz.this.b;
-      }
-
-      @Override
-      public boolean n() {
-         return false;
-      }
-
-      @Override
-      public void j() {
-         this.u();
-      }
-
-      @Override
-      public void k() {
-      }
+   private fsc a(wy $$0, Supplier<fxu> $$1) {
+      return fsc.a($$0, $$1x -> this.m.a($$1.get())).a();
    }
 }

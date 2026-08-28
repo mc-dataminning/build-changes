@@ -1,36 +1,14 @@
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Set;
-
-public record fbt(fbw b) implements fbw {
-   public static final MapCodec<fbt> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(fbw.e.fieldOf("term").forGetter(fbt::c)).apply($$0, fbt::new));
-
-   @Override
-   public fbx b() {
-      return fby.a;
-   }
-
-   public boolean a(eyn $$0) {
-      return !this.b.test($$0);
-   }
-
-   @Override
-   public Set<bav<?>> a() {
-      return this.b.a();
-   }
-
-   @Override
-   public void a(eyt $$0) {
-      fbw.super.a($$0);
-      this.b.a($$0);
-   }
-
-   public static fbw.a a(fbw.a $$0) {
-      fbt $$1 = new fbt($$0.build());
-      return () -> $$1;
-   }
-
-   public fbw c() {
-      return this.b;
-   }
+public class fbt {
+   public static final bax<bwd> a = bax.a("this_entity");
+   public static final bax<cqy> b = bax.a("last_damage_player");
+   public static final bax<bus> c = bax.a("damage_source");
+   public static final bax<bwd> d = bax.a("attacking_entity");
+   public static final bax<bwd> e = bax.a("direct_attacking_entity");
+   public static final bax<fei> f = bax.a("origin");
+   public static final bax<dzz> g = bax.a("block_state");
+   public static final bax<dwx> h = bax.a("block_entity");
+   public static final bax<cyy> i = bax.a("tool");
+   public static final bax<Float> j = bax.a("explosion_radius");
+   public static final bax<Integer> k = bax.a("enchantment_level");
+   public static final bax<Boolean> l = bax.a("enchantment_active");
 }

@@ -1,36 +1,40 @@
-public final class hho {
-   private static final int a = 16;
-   private static final int b = 16;
-   private static final String c = "missingno";
-   private static final ale d = ale.b("missingno");
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
 
-   public static fhq a() {
-      return a(16, 16);
+public class hho implements hhp {
+   private final ggm a;
+   private final hkw b;
+
+   public hho(ggm $$0, hkw $$1) {
+      this.a = $$0;
+      this.b = $$1;
    }
 
-   public static fhq a(int $$0, int $$1) {
-      fhq $$2 = new fhq($$0, $$1, false);
-      int $$3 = -524040;
+   @Override
+   public void a(cyw $$0, fjc $$1, gps $$2, int $$3, int $$4, boolean $$5) {
+      gsp.a($$1, $$2, $$3, $$4, this.a, this.b);
+   }
 
-      for (int $$4 = 0; $$4 < $$1; $$4++) {
-         for (int $$5 = 0; $$5 < $$0; $$5++) {
-            if ($$4 < $$1 / 2 ^ $$5 < $$0 / 2) {
-               $$2.a($$5, $$4, -524040);
-            } else {
-               $$2.a($$5, $$4, -16777216);
-            }
-         }
+   public static record a(ebn b, Optional<alg> c) implements hht.a {
+      public static final MapCodec<hho.a> a = RecordCodecBuilder.mapCodec(
+         $$0 -> $$0.group(ebn.a.fieldOf("wood_type").forGetter(hho.a::b), alg.a.optionalFieldOf("texture").forGetter(hho.a::c)).apply($$0, hho.a::new)
+      );
+
+      public a(ebn $$0) {
+         this($$0, Optional.empty());
       }
 
-      return $$2;
-   }
+      @Override
+      public MapCodec<hho.a> a() {
+         return a;
+      }
 
-   public static hht b() {
-      fhq $$0 = a(16, 16);
-      return new hht(d, new hjm(16, 16), $$0, avd.a);
-   }
-
-   public static ale c() {
-      return d;
+      @Override
+      public hht<?> a(giq $$0) {
+         ggm $$1 = gsp.a($$0, this.b, gsp.a.c);
+         hkw $$2 = this.c.<hkw>map(gqn.r::a).orElseGet(() -> gqn.b(this.b));
+         return new hho($$1, $$2);
+      }
    }
 }

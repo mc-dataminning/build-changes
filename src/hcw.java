@@ -1,17 +1,21 @@
-public class hcw extends hce {
-   public cjd.a a;
-   public boolean b;
-   public boolean c;
-   public int d;
-   public boolean e;
-   public boolean f;
-   public boolean g;
-   public float h;
-   public float j;
-   public float k;
-   public float l;
-
-   public hcw() {
-      this.a = cjd.a.a;
-   }
+public class hcw extends hbj {
+   public float G;
+   public float H;
+   public float I = 1.0F;
+   public float J;
+   public int K;
+   public bwv L = bwv.b;
+   public bua M = bua.a;
+   public boolean N;
+   public boolean O;
+   public boolean P;
+   public boolean Q;
+   public boolean R;
+   public float S;
+   public float T;
+   public float U;
+   public cyy V = cyy.k;
+   public cyy W = cyy.k;
+   public cyy X = cyy.k;
+   public cyy Y = cyy.k;
 }

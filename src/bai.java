@@ -1,100 +1,67 @@
-import com.mojang.datafixers.util.Pair;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.DynamicOps;
-import com.mojang.serialization.Keyable;
-import java.util.Arrays;
-import java.util.Map;
-import java.util.Objects;
-import java.util.function.Function;
-import java.util.function.Supplier;
-import java.util.function.ToIntFunction;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
-import javax.annotation.Nullable;
+import java.util.Locale;
+import java.util.function.Consumer;
 
-public interface bai {
-   int W = 16;
+public class bai<T> {
+   private final int a;
+   private final int b;
+   private final int c;
+   private final int d;
+   private final Object[] e;
 
-   String c();
-
-   static <E extends Enum<E> & bai> bai.a<E> a(Supplier<E[]> $$0) {
-      return a($$0, $$0x -> $$0x);
+   public static <T> bai<T> a(int $$0, int $$1, int $$2, bai.a<T> $$3) {
+      int $$4 = $$0 - $$2;
+      int $$5 = $$1 - $$2;
+      int $$6 = 2 * $$2 + 1;
+      return new bai<>($$4, $$5, $$6, $$6, $$3);
    }
 
-   static <E extends Enum<E> & bai> bai.a<E> a(Supplier<E[]> $$0, Function<String, String> $$1) {
-      E[] $$2 = (E[])$$0.get();
-      Function<String, E> $$3 = a($$2, $$1);
-      return new bai.a<>($$2, $$3);
-   }
+   private bai(int $$0, int $$1, int $$2, int $$3, bai.a<T> $$4) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+      this.d = $$3;
+      this.e = new Object[this.c * this.d];
 
-   static <T extends bai> Codec<T> b(Supplier<T[]> $$0) {
-      T[] $$1 = (T[])$$0.get();
-      Function<String, T> $$2 = a($$1, $$0x -> $$0x);
-      ToIntFunction<T> $$3 = af.g(Arrays.asList($$1));
-      return new bai.b<>($$1, $$2, $$3);
-   }
-
-   static <T extends bai> Function<String, T> a(T[] $$0, Function<String, String> $$1) {
-      if ($$0.length > 16) {
-         Map<String, T> $$2 = Arrays.<bai>stream($$0).collect(Collectors.toMap($$1x -> $$1.apply($$1x.c()), $$0x -> (T)$$0x));
-         return $$1x -> $$1x == null ? null : $$2.get($$1x);
-      } else {
-         return $$2x -> {
-            for (T $$3 : $$0) {
-               if ($$1.apply($$3.c()).equals($$2x)) {
-                  return $$3;
-               }
-            }
-
-            return null;
-         };
-      }
-   }
-
-   static Keyable a(final bai[] $$0) {
-      return new Keyable() {
-         public <T> Stream<T> keys(DynamicOps<T> $$0x) {
-            return Arrays.stream($$0).map(bai::c).map($$0::createString);
+      for (int $$5 = $$0; $$5 < $$0 + $$2; $$5++) {
+         for (int $$6 = $$1; $$6 < $$1 + $$3; $$6++) {
+            this.e[this.c($$5, $$6)] = $$4.get($$5, $$6);
          }
-      };
-   }
-
-   public static class a<E extends Enum<E> & bai> extends bai.b<E> {
-      private final Function<String, E> a;
-
-      public a(E[] $$0, Function<String, E> $$1) {
-         super($$0, $$1, $$0x -> ((Enum)$$0x).ordinal());
-         this.a = $$1;
-      }
-
-      @Nullable
-      public E a(@Nullable String $$0) {
-         return this.a.apply($$0);
-      }
-
-      public E a(@Nullable String $$0, E $$1) {
-         return Objects.requireNonNullElse(this.a($$0), $$1);
-      }
-
-      public E a(@Nullable String $$0, Supplier<? extends E> $$1) {
-         return Objects.requireNonNullElseGet(this.a($$0), $$1);
       }
    }
 
-   public static class b<S extends bai> implements Codec<S> {
-      private final Codec<S> a;
-
-      public b(S[] $$0, Function<String, S> $$1, ToIntFunction<S> $$2) {
-         this.a = ays.a(Codec.stringResolver(bai::c, $$1), ays.a($$2, $$1x -> $$1x >= 0 && $$1x < $$0.length ? $$0[$$1x] : null, -1));
+   public void a(Consumer<T> $$0) {
+      for (Object $$1 : this.e) {
+         $$0.accept((T)$$1);
       }
+   }
 
-      public <T> DataResult<Pair<S, T>> decode(DynamicOps<T> $$0, T $$1) {
-         return this.a.decode($$0, $$1);
+   public T a(int $$0, int $$1) {
+      if (!this.b($$0, $$1)) {
+         throw new IllegalArgumentException("Requested out of range value (" + $$0 + "," + $$1 + ") from " + this);
+      } else {
+         return (T)this.e[this.c($$0, $$1)];
       }
+   }
 
-      public <T> DataResult<T> a(S $$0, DynamicOps<T> $$1, T $$2) {
-         return this.a.encode($$0, $$1, $$2);
-      }
+   public boolean b(int $$0, int $$1) {
+      int $$2 = $$0 - this.a;
+      int $$3 = $$1 - this.b;
+      return $$2 >= 0 && $$2 < this.c && $$3 >= 0 && $$3 < this.d;
+   }
+
+   @Override
+   public String toString() {
+      return String.format(Locale.ROOT, "StaticCache2D[%d, %d, %d, %d]", this.a, this.b, this.a + this.c, this.b + this.d);
+   }
+
+   private int c(int $$0, int $$1) {
+      int $$2 = $$0 - this.a;
+      int $$3 = $$1 - this.b;
+      return $$2 * this.d + $$3;
+   }
+
+   @FunctionalInterface
+   public interface a<T> {
+      T get(int var1, int var2);
    }
 }

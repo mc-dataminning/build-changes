@@ -1,33 +1,24 @@
-public class fzg extends frq {
-   private static final ale a = ale.b("widget/page_forward_highlighted");
-   private static final ale b = ale.b("widget/page_forward");
-   private static final ale c = ale.b("widget/page_backward_highlighted");
-   private static final ale d = ale.b("widget/page_backward");
-   private final boolean u;
-   private final boolean v;
+public class fzg extends fyj<cvq> {
+   private static final alg G = alg.b("container/grindstone/error");
+   private static final alg H = alg.b("textures/gui/container/grindstone.png");
 
-   public fzg(int $$0, int $$1, boolean $$2, frq.c $$3, boolean $$4) {
-      super($$0, $$1, 23, 13, wv.a, $$3, q);
-      this.u = $$2;
-      this.v = $$4;
+   public fzg(cvq $$0, cqx $$1, wy $$2) {
+      super($$0, $$1, $$2);
    }
 
    @Override
-   public void b(frc $$0, int $$1, int $$2, float $$3) {
-      ale $$4;
-      if (this.u) {
-         $$4 = this.D() ? a : b;
-      } else {
-         $$4 = this.D() ? c : d;
-      }
-
-      $$0.a(gpn::H, $$4, this.F(), this.G(), 23, 13);
+   public void a(fro $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      this.a($$0, $$1, $$2);
    }
 
    @Override
-   public void a(hnc $$0) {
-      if (this.v) {
-         $$0.a(hlr.a(awl.cy, 1.0F));
+   protected void a(fro $$0, float $$1, int $$2, int $$3) {
+      int $$4 = (this.n - this.s) / 2;
+      int $$5 = (this.o - this.u) / 2;
+      $$0.a(gqc::H, H, $$4, $$5, 0.0F, 0.0F, this.s, this.u, 256, 256);
+      if ((this.z.b(0).h() || this.z.b(1).h()) && !this.z.b(2).h()) {
+         $$0.a(gqc::H, G, $$4 + 92, $$5 + 31, 28, 21);
       }
    }
 }

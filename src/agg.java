@@ -1,94 +1,67 @@
-public class agg implements zd<abs> {
-   public static final yu<wh, agg> a = zd.a(agg::a, agg::new);
-   private static final int b = 1;
-   private static final int c = 2;
-   private static final int d = 4;
-   private static final int e = 8;
-   private final int f;
-   private final je<bvc> g;
-   private final int h;
-   private final int i;
-   private final byte j;
+import com.google.common.collect.Sets;
+import java.util.Collection;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
-   public agg(int $$0, bve $$1, boolean $$2) {
-      this.f = $$0;
-      this.g = $$1.c();
-      this.h = $$1.e();
-      this.i = $$1.d();
-      byte $$3 = 0;
-      if ($$1.f()) {
-         $$3 = (byte)($$3 | 1);
-      }
+public class agg implements zf<abu> {
+   public static final yw<wj, agg> a = zf.a(agg::a, agg::new);
+   private final boolean b;
+   private final List<ai> c;
+   private final Set<alg> d;
+   private final Map<alg, ak> e;
+   private final boolean f;
 
-      if ($$1.g()) {
-         $$3 = (byte)($$3 | 2);
-      }
-
-      if ($$1.h()) {
-         $$3 = (byte)($$3 | 4);
-      }
-
-      if ($$2) {
-         $$3 = (byte)($$3 | 8);
-      }
-
-      this.j = $$3;
+   public agg(boolean $$0, Collection<ai> $$1, Set<alg> $$2, Map<alg, ak> $$3, boolean $$4) {
+      this.b = $$0;
+      this.c = List.copyOf($$1);
+      this.d = Set.copyOf($$2);
+      this.e = Map.copyOf($$3);
+      this.f = $$4;
    }
 
-   private agg(wh $$0) {
-      this.f = $$0.l();
-      this.g = bvc.b.decode($$0);
-      this.h = $$0.l();
-      this.i = $$0.l();
-      this.j = $$0.readByte();
+   private agg(wj $$0) {
+      this.b = $$0.readBoolean();
+      this.c = ai.b.decode($$0);
+      this.d = $$0.a(Sets::newLinkedHashSetWithExpectedSize, vu::q);
+      this.e = $$0.a(vu::q, ak::b);
+      this.f = $$0.readBoolean();
    }
 
-   private void a(wh $$0) {
-      $$0.c(this.f);
-      bvc.b.encode($$0, this.g);
-      $$0.c(this.h);
-      $$0.c(this.i);
-      $$0.l(this.j);
+   private void a(wj $$0) {
+      $$0.a(this.b);
+      ai.b.encode($$0, this.c);
+      $$0.a(this.d, vu::a);
+      $$0.a(this.e, vu::a, ($$0x, $$1) -> $$1.a($$0x));
+      $$0.a(this.f);
    }
 
    @Override
-   public zf<agg> a() {
-      return agl.bh;
+   public zh<agg> a() {
+      return agn.bf;
    }
 
-   public void a(abs $$0) {
+   public void a(abu $$0) {
       $$0.a(this);
    }
 
-   public int b() {
-      return this.f;
+   public List<ai> b() {
+      return this.c;
    }
 
-   public je<bvc> e() {
-      return this.g;
+   public Set<alg> e() {
+      return this.d;
    }
 
-   public int f() {
-      return this.h;
+   public Map<alg, ak> f() {
+      return this.e;
    }
 
-   public int g() {
-      return this.i;
+   public boolean g() {
+      return this.b;
    }
 
    public boolean h() {
-      return (this.j & 2) != 0;
-   }
-
-   public boolean i() {
-      return (this.j & 1) != 0;
-   }
-
-   public boolean j() {
-      return (this.j & 4) != 0;
-   }
-
-   public boolean k() {
-      return (this.j & 8) != 0;
+      return this.f;
    }
 }

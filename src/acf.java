@@ -1,20 +1,14 @@
-public record acf(int b) implements zd<abs> {
-   public static final yu<vs, acf> a = zd.a(acf::a, acf::new);
-
-   private acf(vs $$0) {
-      this($$0.l());
-   }
-
-   private void a(vs $$0) {
-      $$0.c(this.b);
+public class acf extends zd<abu> {
+   public acf(Iterable<zf<? super abu>> $$0) {
+      super($$0);
    }
 
    @Override
-   public zf<acf> a() {
-      return agl.m;
+   public zh<acf> a() {
+      return agn.a;
    }
 
-   public void a(abs $$0) {
+   public void a(abu $$0) {
       $$0.a(this);
    }
 }

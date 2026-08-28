@@ -1,276 +1,166 @@
-import java.util.function.Consumer;
-import java.util.function.Predicate;
-import java.util.function.Supplier;
+import com.google.common.collect.ImmutableList;
+import java.util.List;
+import javax.annotation.Nullable;
 
-public class ful {
-   private final Supplier<String> a;
-   private final Consumer<String> b;
-   private final Supplier<String> c;
-   private final Consumer<String> d;
-   private final Predicate<String> e;
-   private int f;
-   private int g;
+public class ful implements fum {
+   private static final alg a = alg.b("toast/system");
+   private static final int e = 200;
+   private static final int f = 12;
+   private static final int g = 10;
+   private final ful.a h;
+   private wy i;
+   private List<ayy> j;
+   private long k;
+   private boolean l;
+   private final int m;
+   private boolean n;
+   private fum.a o = fum.a.b;
 
-   public ful(Supplier<String> $$0, Consumer<String> $$1, Supplier<String> $$2, Consumer<String> $$3, Predicate<String> $$4) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
-      this.e = $$4;
-      this.f();
+   public ful(ful.a $$0, wy $$1, @Nullable wy $$2) {
+      this($$0, $$1, a($$2), Math.max(160, 30 + Math.max(fos.Q().h.a($$1), $$2 == null ? 0 : fos.Q().h.a($$2))));
    }
 
-   public static Supplier<String> a(fof $$0) {
-      return () -> b($$0);
+   public static ful a(fos $$0, ful.a $$1, wy $$2, wy $$3) {
+      frm $$4 = $$0.h;
+      List<ayy> $$5 = $$4.c($$3, 200);
+      int $$6 = Math.max(200, $$5.stream().mapToInt($$4::a).max().orElse(200));
+      return new ful($$1, $$2, $$5, $$6 + 30);
    }
 
-   public static String b(fof $$0) {
-      return n.a($$0.p.a().replaceAll("\\r", ""));
+   private ful(ful.a $$0, wy $$1, List<ayy> $$2, int $$3) {
+      this.h = $$0;
+      this.i = $$1;
+      this.j = $$2;
+      this.m = $$3;
    }
 
-   public static Consumer<String> c(fof $$0) {
-      return $$1 -> a($$0, $$1);
+   private static ImmutableList<ayy> a(@Nullable wy $$0) {
+      return $$0 == null ? ImmutableList.of() : ImmutableList.of($$0.g());
    }
 
-   public static void a(fof $$0, String $$1) {
-      $$0.p.a($$1);
+   @Override
+   public int c() {
+      return this.m;
    }
 
-   public boolean a(char $$0) {
-      if (baj.a($$0)) {
-         this.a(this.a.get(), Character.toString($$0));
-      }
-
-      return true;
-   }
-
-   public boolean a(int $$0) {
-      if (fxi.f($$0)) {
-         this.d();
-         return true;
-      } else if (fxi.e($$0)) {
-         this.c();
-         return true;
-      } else if (fxi.d($$0)) {
-         this.b();
-         return true;
-      } else if (fxi.c($$0)) {
-         this.a();
-         return true;
-      } else {
-         ful.a $$1 = fxi.s() ? ful.a.b : ful.a.a;
-         if ($$0 == 259) {
-            this.a(-1, $$1);
-            return true;
-         } else {
-            if ($$0 == 261) {
-               this.a(1, $$1);
-            } else {
-               if ($$0 == 263) {
-                  this.a(-1, fxi.t(), $$1);
-                  return true;
-               }
-
-               if ($$0 == 262) {
-                  this.a(1, fxi.t(), $$1);
-                  return true;
-               }
-
-               if ($$0 == 268) {
-                  this.a(fxi.t());
-                  return true;
-               }
-
-               if ($$0 == 269) {
-                  this.b(fxi.t());
-                  return true;
-               }
-            }
-
-            return false;
-         }
-      }
-   }
-
-   private int h(int $$0) {
-      return azk.a($$0, 0, this.a.get().length());
-   }
-
-   private void a(String $$0, String $$1) {
-      if (this.g != this.f) {
-         $$0 = this.c($$0);
-      }
-
-      this.f = azk.a(this.f, 0, $$0.length());
-      String $$2 = new StringBuilder($$0).insert(this.f, $$1).toString();
-      if (this.e.test($$2)) {
-         this.b.accept($$2);
-         this.g = this.f = Math.min($$2.length(), this.f + $$1.length());
-      }
-   }
-
-   public void a(String $$0) {
-      this.a(this.a.get(), $$0);
-   }
-
-   private void c(boolean $$0) {
-      if (!$$0) {
-         this.g = this.f;
-      }
-   }
-
-   public void a(int $$0, boolean $$1, ful.a $$2) {
-      switch ($$2) {
-         case a:
-            this.a($$0, $$1);
-            break;
-         case b:
-            this.b($$0, $$1);
-      }
-   }
-
-   public void b(int $$0) {
-      this.a($$0, false);
-   }
-
-   public void a(int $$0, boolean $$1) {
-      this.f = af.a(this.a.get(), this.f, $$0);
-      this.c($$1);
-   }
-
-   public void c(int $$0) {
-      this.b($$0, false);
-   }
-
-   public void b(int $$0, boolean $$1) {
-      this.f = fop.a(this.a.get(), $$0, this.f, true);
-      this.c($$1);
-   }
-
-   public void a(int $$0, ful.a $$1) {
-      switch ($$1) {
-         case a:
-            this.e($$0);
-            break;
-         case b:
-            this.d($$0);
-      }
-   }
-
-   public void d(int $$0) {
-      int $$1 = fop.a(this.a.get(), $$0, this.f, true);
-      this.e($$1 - this.f);
-   }
-
-   public void e(int $$0) {
-      String $$1 = this.a.get();
-      if (!$$1.isEmpty()) {
-         String $$2;
-         if (this.g != this.f) {
-            $$2 = this.c($$1);
-         } else {
-            int $$3 = af.a($$1, this.f, $$0);
-            int $$4 = Math.min($$3, this.f);
-            int $$5 = Math.max($$3, this.f);
-            $$2 = new StringBuilder($$1).delete($$4, $$5).toString();
-            if ($$0 < 0) {
-               this.g = this.f = $$4;
-            }
-         }
-
-         this.b.accept($$2);
-      }
-   }
-
-   public void a() {
-      String $$0 = this.a.get();
-      this.d.accept(this.b($$0));
-      this.b.accept(this.c($$0));
-   }
-
-   public void b() {
-      this.a(this.a.get(), this.c.get());
-      this.g = this.f;
-   }
-
-   public void c() {
-      this.d.accept(this.b(this.a.get()));
-   }
-
-   public void d() {
-      this.g = 0;
-      this.f = this.a.get().length();
-   }
-
-   private String b(String $$0) {
-      int $$1 = Math.min(this.f, this.g);
-      int $$2 = Math.max(this.f, this.g);
-      return $$0.substring($$1, $$2);
-   }
-
-   private String c(String $$0) {
-      if (this.g == this.f) {
-         return $$0;
-      } else {
-         int $$1 = Math.min(this.f, this.g);
-         int $$2 = Math.max(this.f, this.g);
-         String $$3 = $$0.substring(0, $$1) + $$0.substring($$2);
-         this.g = this.f = $$1;
-         return $$3;
-      }
+   @Override
+   public int d() {
+      return 20 + Math.max(this.j.size(), 1) * 12;
    }
 
    public void e() {
-      this.a(false);
+      this.n = true;
    }
 
-   public void a(boolean $$0) {
-      this.f = 0;
-      this.c($$0);
+   @Override
+   public fum.a a() {
+      return this.o;
    }
 
-   public void f() {
-      this.b(false);
+   @Override
+   public void a(fun $$0, long $$1) {
+      if (this.l) {
+         this.k = $$1;
+         this.l = false;
+      }
+
+      double $$2 = (double)this.h.l * $$0.d();
+      long $$3 = $$1 - this.k;
+      this.o = !this.n && (double)$$3 < $$2 ? fum.a.a : fum.a.b;
    }
 
-   public void b(boolean $$0) {
-      this.f = this.a.get().length();
-      this.c($$0);
+   @Override
+   public void a(fro $$0, frm $$1, long $$2) {
+      $$0.a(gqc::H, a, 0, 0, this.c(), this.d());
+      if (this.j.isEmpty()) {
+         $$0.a($$1, this.i, 18, 12, -256, false);
+      } else {
+         $$0.a($$1, this.i, 18, 7, -256, false);
+
+         for (int $$3 = 0; $$3 < this.j.size(); $$3++) {
+            $$0.a($$1, this.j.get($$3), 18, 18 + $$3 * 12, -1, false);
+         }
+      }
    }
 
-   public int g() {
-      return this.f;
+   public void a(wy $$0, @Nullable wy $$1) {
+      this.i = $$0;
+      this.j = a($$1);
+      this.l = true;
    }
 
-   public void f(int $$0) {
-      this.c($$0, true);
+   public ful.a f() {
+      return this.h;
    }
 
-   public void c(int $$0, boolean $$1) {
-      this.f = this.h($$0);
-      this.c($$1);
+   public static void a(fun $$0, ful.a $$1, wy $$2, @Nullable wy $$3) {
+      $$0.a(new ful($$1, $$2, $$3));
    }
 
-   public int h() {
-      return this.g;
+   public static void b(fun $$0, ful.a $$1, wy $$2, @Nullable wy $$3) {
+      ful $$4 = $$0.a(ful.class, $$1);
+      if ($$4 == null) {
+         a($$0, $$1, $$2, $$3);
+      } else {
+         $$4.a($$2, $$3);
+      }
    }
 
-   public void g(int $$0) {
-      this.g = this.h($$0);
+   public static void a(fun $$0, ful.a $$1) {
+      ful $$2 = $$0.a(ful.class, $$1);
+      if ($$2 != null) {
+         $$2.e();
+      }
    }
 
-   public void a(int $$0, int $$1) {
-      int $$2 = this.a.get().length();
-      this.f = azk.a($$0, 0, $$2);
-      this.g = azk.a($$1, 0, $$2);
+   public static void a(fos $$0, String $$1) {
+      a($$0.aA(), ful.a.d, wy.c("selectWorld.access_failure"), wy.b($$1));
    }
 
-   public boolean i() {
-      return this.f != this.g;
+   public static void b(fos $$0, String $$1) {
+      a($$0.aA(), ful.a.d, wy.c("selectWorld.delete_failure"), wy.b($$1));
    }
 
-   public static enum a {
-      a,
-      b;
+   public static void c(fos $$0, String $$1) {
+      a($$0.aA(), ful.a.e, wy.c("pack.copyFailure"), wy.b($$1));
+   }
+
+   public static void a(fos $$0, int $$1) {
+      a($$0.aA(), ful.a.f, wy.c("gui.fileDropFailure.title"), wy.a("gui.fileDropFailure.detail", $$1));
+   }
+
+   public static void a(fos $$0) {
+      b($$0.aA(), ful.a.h, wy.c("chunk.toast.lowDiskSpace"), wy.c("chunk.toast.lowDiskSpace.description"));
+   }
+
+   public static void a(fos $$0, dic $$1) {
+      b($$0.aA(), ful.a.i, wy.a("chunk.toast.loadFailure", wy.a($$1)).a(n.m), wy.c("chunk.toast.checkLog"));
+   }
+
+   public static void b(fos $$0, dic $$1) {
+      b($$0.aA(), ful.a.j, wy.a("chunk.toast.saveFailure", wy.a($$1)).a(n.m), wy.c("chunk.toast.checkLog"));
+   }
+
+   public static class a {
+      public static final ful.a a = new ful.a();
+      public static final ful.a b = new ful.a();
+      public static final ful.a c = new ful.a();
+      public static final ful.a d = new ful.a();
+      public static final ful.a e = new ful.a();
+      public static final ful.a f = new ful.a();
+      public static final ful.a g = new ful.a();
+      public static final ful.a h = new ful.a(10000L);
+      public static final ful.a i = new ful.a();
+      public static final ful.a j = new ful.a();
+      public static final ful.a k = new ful.a(10000L);
+      final long l;
+
+      public a(long $$0) {
+         this.l = $$0;
+      }
+
+      public a() {
+         this(5000L);
+      }
    }
 }

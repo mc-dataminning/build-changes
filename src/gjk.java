@@ -1,41 +1,36 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.ImmutableMap.Builder;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
+import java.util.function.Function;
+import javax.annotation.Nullable;
 
-public class gjk {
-   private final aul a = auo.c();
-   private final Map<auh, String> b;
+public class gjk<C extends gjk.a<C>, D> {
+   private final Function<C, D> a;
+   @Nullable
+   private C b;
+   @Nullable
+   private D c;
 
-   public gjk() {
-      this.a.a();
-      Builder<auh, String> $$0 = ImmutableMap.builder();
-      this.a.d().forEach($$1 -> {
-         atm $$2 = $$1.a();
-         $$2.d().ifPresent($$2x -> $$0.put($$2x, $$2.a()));
-      });
-      this.b = $$0.build();
+   public gjk(Function<C, D> $$0) {
+      this.a = $$0;
    }
 
-   public List<auh> a(List<auh> $$0) {
-      List<auh> $$1 = new ArrayList<>($$0.size());
-      List<String> $$2 = new ArrayList<>($$0.size());
-
-      for (auh $$3 : $$0) {
-         String $$4 = this.b.get($$3);
-         if ($$4 != null) {
-            $$2.add($$4);
-            $$1.add($$3);
-         }
+   public D a(C $$0) {
+      if ($$0 == this.b && this.c != null) {
+         return this.c;
+      } else {
+         D $$1 = this.a.apply($$0);
+         this.c = $$1;
+         this.b = $$0;
+         $$0.registerForCleaning(this);
+         return $$1;
       }
-
-      this.a.b($$2);
-      return $$1;
    }
 
-   public auq a() {
-      List<atn> $$0 = this.a.h();
-      return new aut(atp.b, $$0);
+   public void a() {
+      this.c = null;
+      this.b = null;
+   }
+
+   @FunctionalInterface
+   public interface a<C extends gjk.a<C>> {
+      void registerForCleaning(gjk<C, ?> var1);
    }
 }

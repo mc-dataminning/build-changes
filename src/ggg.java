@@ -1,67 +1,63 @@
-public class ggg extends gdp<hda> {
-   public ggg(gig $$0) {
+public class ggg extends gfq<hcz> {
+   private final giu a;
+   private final giu b;
+   private final giu c;
+   private final giu d;
+   private final giu e;
+
+   public ggg(giu $$0) {
       super($$0);
+      this.a = $$0.b("head");
+      this.b = $$0.b("right_arm");
+      this.c = $$0.b("left_arm");
+      this.d = $$0.b("right_leg");
+      this.e = $$0.b("left_leg");
    }
 
-   public void a(hda $$0) {
+   public static gja a() {
+      gjc $$0 = new gjc();
+      gje $$1 = $$0.a();
+      $$1.a("head", giz.c().a(0, 0).a(-4.0F, -12.0F, -5.5F, 8.0F, 10.0F, 8.0F).a(24, 0).a(-1.0F, -5.0F, -7.5F, 2.0F, 4.0F, 2.0F), giw.a(0.0F, -7.0F, -2.0F));
+      $$1.a(
+         "body",
+         giz.c().a(0, 40).a(-9.0F, -2.0F, -6.0F, 18.0F, 12.0F, 11.0F).a(0, 70).a(-4.5F, 10.0F, -3.0F, 9.0F, 5.0F, 6.0F, new giy(0.5F)),
+         giw.a(0.0F, -7.0F, 0.0F)
+      );
+      $$1.a("right_arm", giz.c().a(60, 21).a(-13.0F, -2.5F, -3.0F, 4.0F, 30.0F, 6.0F), giw.a(0.0F, -7.0F, 0.0F));
+      $$1.a("left_arm", giz.c().a(60, 58).a(9.0F, -2.5F, -3.0F, 4.0F, 30.0F, 6.0F), giw.a(0.0F, -7.0F, 0.0F));
+      $$1.a("right_leg", giz.c().a(37, 0).a(-3.5F, -3.0F, -3.0F, 6.0F, 16.0F, 5.0F), giw.a(-4.0F, 11.0F, 0.0F));
+      $$1.a("left_leg", giz.c().a(60, 0).a().a(-3.5F, -3.0F, -3.0F, 6.0F, 16.0F, 5.0F), giw.a(5.0F, 11.0F, 0.0F));
+      return gja.a($$0, 128, 128);
+   }
+
+   public void a(hcz $$0) {
       super.a($$0);
-      float $$1 = (float) (Math.PI / 6);
-      float $$2 = $$0.H;
-      cpj $$3 = $$0.d;
-      if ($$3 == cpj.e) {
-         float $$4 = $$0.u / 60.0F;
-         this.f.g = (float) (Math.PI / 6) + (float) (Math.PI / 180.0) * azk.a($$4 * 30.0F) * 10.0F;
-         this.g.g = (float) (-Math.PI / 6) - (float) (Math.PI / 180.0) * azk.b($$4 * 30.0F) * 10.0F;
-         this.o.b = this.o.b + azk.a($$4 * 10.0F);
-         this.o.c = this.o.c + azk.a($$4 * 40.0F) + 0.4F;
-         this.r.g = (float) (Math.PI / 180.0) * (70.0F + azk.b($$4 * 40.0F) * 10.0F);
-         this.s.g = this.r.g * -1.0F;
-         this.r.c = this.r.c + (azk.a($$4 * 40.0F) * 0.5F - 0.5F);
-         this.s.c = this.s.c + azk.a($$4 * 40.0F) * 0.5F + 0.5F;
-         this.q.c = this.q.c + azk.a($$4 * 40.0F) * 0.35F;
-      } else if ($$3 == cpj.a && $$2 == 0.0F) {
-         this.b($$0);
-      } else if ($$3 == cpj.b) {
-         gdt.a(this.r, this.s, this.o, $$0.e == bws.b);
-      } else if ($$3 == cpj.c) {
-         gdt.a(this.r, this.s, $$0.c, $$0.K, $$0.e == bws.b);
-      } else if ($$3 == cpj.d) {
-         this.o.e = 0.5F;
-         this.o.f = 0.0F;
-         if ($$0.e == bws.a) {
-            this.r.f = -0.5F;
-            this.r.e = -0.9F;
+      float $$1 = $$0.a;
+      float $$2 = $$0.ae;
+      float $$3 = $$0.ad;
+      if ($$1 > 0.0F) {
+         this.b.e = -2.0F + 1.5F * azm.e($$1, 10.0F);
+         this.c.e = -2.0F + 1.5F * azm.e($$1, 10.0F);
+      } else {
+         int $$4 = $$0.b;
+         if ($$4 > 0) {
+            this.b.e = -0.8F + 0.025F * azm.e((float)$$4, 70.0F);
+            this.c.e = 0.0F;
          } else {
-            this.s.f = 0.5F;
-            this.s.e = -0.9F;
+            this.b.e = (-0.2F + 1.5F * azm.e($$3, 13.0F)) * $$2;
+            this.c.e = (-0.2F - 1.5F * azm.e($$3, 13.0F)) * $$2;
          }
       }
+
+      this.a.f = $$0.aa * (float) (Math.PI / 180.0);
+      this.a.e = $$0.ab * (float) (Math.PI / 180.0);
+      this.d.e = -1.5F * azm.e($$3, 13.0F) * $$2;
+      this.e.e = 1.5F * azm.e($$3, 13.0F) * $$2;
+      this.d.f = 0.0F;
+      this.e.f = 0.0F;
    }
 
-   protected void a(hda $$0, float $$1) {
-      float $$2 = $$0.H;
-      if ($$2 > 0.0F && $$0.d == cpj.a) {
-         gdt.a(this.r, this.s, $$0.e, $$2, $$0.u);
-      } else {
-         super.a($$0, $$1);
-      }
-   }
-
-   private void b(hda $$0) {
-      if ($$0.e == bws.a) {
-         this.s.e = -1.8F;
-      } else {
-         this.r.e = -1.8F;
-      }
-   }
-
-   @Override
-   public void c_(boolean $$0) {
-      super.c_($$0);
-      this.a.k = $$0;
-      this.b.k = $$0;
-      this.c.k = $$0;
-      this.d.k = $$0;
-      this.e.k = $$0;
+   public giu b() {
+      return this.b;
    }
 }

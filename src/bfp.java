@@ -1,13 +1,13 @@
+import com.mojang.datafixers.Typed;
 import com.mojang.datafixers.schemas.Schema;
-import com.mojang.serialization.Dynamic;
 
-public class bfp extends bdo {
+public class bfp extends bgt {
    public bfp(Schema $$0) {
-      super($$0, "FireResistantToDamageResistantComponentFix", "minecraft:fire_resistant", "minecraft:damage_resistant");
+      super($$0, "Remove filtered text from books", $$0x -> $$0x.equals("minecraft:writable_book") || $$0x.equals("minecraft:written_book"));
    }
 
    @Override
-   protected <T> Dynamic<T> a(Dynamic<T> $$0) {
-      return $$0.emptyMap().set("types", $$0.createString("#minecraft:is_fire"));
+   protected Typed<?> a(Typed<?> $$0) {
+      return af.a($$0, $$0.getType(), $$0x -> $$0x.remove("filtered_title").remove("filtered_pages"));
    }
 }

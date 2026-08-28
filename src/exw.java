@@ -1,22 +1,31 @@
-import java.time.format.DateTimeFormatter;
-import java.time.format.DateTimeFormatterBuilder;
-import java.time.format.SignStyle;
-import java.time.temporal.ChronoField;
+import com.mojang.serialization.Codec;
 
-public class exw {
-   public static DateTimeFormatter a() {
-      return new DateTimeFormatterBuilder()
-         .appendValue(ChronoField.YEAR, 4, 10, SignStyle.EXCEEDS_PAD)
-         .appendLiteral('-')
-         .appendValue(ChronoField.MONTH_OF_YEAR, 2)
-         .appendLiteral('-')
-         .appendValue(ChronoField.DAY_OF_MONTH, 2)
-         .appendLiteral('_')
-         .appendValue(ChronoField.HOUR_OF_DAY, 2)
-         .appendLiteral('-')
-         .appendValue(ChronoField.MINUTE_OF_HOUR, 2)
-         .appendLiteral('-')
-         .appendValue(ChronoField.SECOND_OF_MINUTE, 2)
-         .toFormatter();
+public record exw(alg d, boolean e, int f, boolean g, boolean h) {
+   public static final int a = -1;
+   public static final Codec<je<exw>> b = mf.ap.r();
+   public static final yw<wj, je<exw>> c = yu.b(mg.R);
+
+   public boolean a() {
+      return this.f != -1;
+   }
+
+   public alg b() {
+      return this.d;
+   }
+
+   public boolean c() {
+      return this.e;
+   }
+
+   public int d() {
+      return this.f;
+   }
+
+   public boolean e() {
+      return this.g;
+   }
+
+   public boolean f() {
+      return this.h;
    }
 }

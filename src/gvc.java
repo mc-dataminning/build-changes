@@ -1,32 +1,31 @@
-public class gvc extends gud<cnh, hef, gey> {
-   private static final ale a = ale.b("textures/entity/zombie/drowned.png");
+import java.util.function.UnaryOperator;
 
-   public gvc(gvk.a $$0) {
-      super($$0, new gey($$0.a(gif.aC)), new gey($$0.a(gif.aD)), new gey($$0.a(gif.aH)), new gey($$0.a(gif.aI)), new gey($$0.a(gif.aE)), new gey($$0.a(gif.aF)));
-      this.a(new gzg(this, $$0.f()));
-   }
+public class gvc extends gun {
+   private final ggm a;
+   private final alg g;
+   private final gfq<hbq> h;
 
-   public hef a() {
-      return new hef();
+   public gvc(gvz.a $$0, gis $$1) {
+      super($$0);
+      this.g = $$1.a().a((UnaryOperator<String>)($$0x -> "textures/entity/" + $$0x + ".png"));
+      this.a = new ggm.a($$0.a(git.E), $$0x -> gqc.i());
+      this.h = new geu($$0.a($$1));
    }
 
    @Override
-   public ale a(hef $$0) {
-      return a;
+   protected gfq<hbq> a() {
+      return this.h;
    }
 
-   protected void a(hef $$0, fiq $$1, float $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      float $$4 = $$0.G;
-      if ($$4 > 0.0F) {
-         float $$5 = -10.0F - $$0.ab;
-         float $$6 = azk.h($$4, 0.0F, $$5);
-         $$1.a(a.b.rotationDegrees($$6), 0.0F, $$0.w / 2.0F / $$3, 0.0F);
+   @Override
+   protected gqc b() {
+      return this.h.a(this.g);
+   }
+
+   @Override
+   protected void b(hbq $$0, fjc $$1, gps $$2, int $$3) {
+      if (!$$0.f) {
+         this.a.a($$1, $$2.getBuffer(this.a.a(this.g)), $$3, hif.d);
       }
-   }
-
-   protected gfr.a a(cnh $$0, bws $$1) {
-      cys $$2 = $$0.a($$1);
-      return $$0.fx() == $$1 && $$0.gh() && $$2.a(cyw.wW) ? gfr.a.e : gfr.a.a;
    }
 }

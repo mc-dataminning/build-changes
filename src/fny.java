@@ -1,29 +1,30 @@
-import javax.annotation.Nullable;
+import java.util.function.IntFunction;
 
-public record fny(int a, ww b, @Nullable xi c, @Nullable fnz d) {
-   @Nullable
-   public fnz.a a() {
-      return this.d != null ? this.d.f() : null;
+public enum fny implements azp {
+   a(0, "options.off"),
+   b(1, "options.attack.crosshair"),
+   c(2, "options.attack.hotbar");
+
+   private static final IntFunction<fny> d = ayc.a(fny::b, values(), ayc.a.b);
+   private final int e;
+   private final String f;
+
+   private fny(final int $$0, final String $$1) {
+      this.e = $$0;
+      this.f = $$1;
    }
 
+   @Override
    public int b() {
-      return this.a;
+      return this.e;
    }
 
-   public ww c() {
-      return this.b;
+   @Override
+   public String a() {
+      return this.f;
    }
 
-   @Nullable
-   public xi d() {
-      return this.c;
-   }
-
-   @Nullable
-   public fnz e() {
-      return this.d;
-   }
-
-   public static record a(int a, ayw b, @Nullable fnz c, boolean d) {
+   public static fny a(int $$0) {
+      return d.apply($$0);
    }
 }

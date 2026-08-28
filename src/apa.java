@@ -1,39 +1,62 @@
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
 import com.mojang.brigadier.builder.RequiredArgumentBuilder;
-import java.util.Collection;
-import java.util.Collections;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
+import java.util.function.Predicate;
+import javax.annotation.Nullable;
 
 public class apa {
-   public static void a(CommandDispatcher<ei> $$0) {
+   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(wy.c("commands.setblock.failed"));
+
+   public static void a(CommandDispatcher<ei> $$0, ee $$1) {
+      Predicate<ead> $$2 = $$0x -> $$0x.c().v($$0x.d());
       $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)ej.a("spawnpoint").requires($$0x -> $$0x.c(2)))
-               .executes($$0x -> a((ei)$$0x.getSource(), Collections.singleton(((ei)$$0x.getSource()).h()), iu.a((jo)((ei)$$0x.getSource()).d()), 0.0F)))
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)ej.a("setblock").requires($$0x -> $$0x.c(2)))
             .then(
-               ((RequiredArgumentBuilder)ej.a("targets", ev.d())
-                     .executes($$0x -> a((ei)$$0x.getSource(), ev.f($$0x, "targets"), iu.a((jo)((ei)$$0x.getSource()).d()), 0.0F)))
+               ej.a("pos", gf.a())
                   .then(
-                     ((RequiredArgumentBuilder)ej.a("pos", gf.a()).executes($$0x -> a((ei)$$0x.getSource(), ev.f($$0x, "targets"), gf.c($$0x, "pos"), 0.0F)))
-                        .then(ej.a("angle", eo.a()).executes($$0x -> a((ei)$$0x.getSource(), ev.f($$0x, "targets"), gf.c($$0x, "pos"), eo.a($$0x, "angle"))))
+                     ((RequiredArgumentBuilder)((RequiredArgumentBuilder)((RequiredArgumentBuilder)((RequiredArgumentBuilder)ej.a("block", gc.a($$1))
+                                    .executes($$0x -> a((ei)$$0x.getSource(), gf.a($$0x, "pos"), gc.a($$0x, "block"), apa.a.a, null, false)))
+                                 .then(ej.a("destroy").executes($$0x -> a((ei)$$0x.getSource(), gf.a($$0x, "pos"), gc.a($$0x, "block"), apa.a.b, null, false))))
+                              .then(ej.a("keep").executes($$1x -> a((ei)$$1x.getSource(), gf.a($$1x, "pos"), gc.a($$1x, "block"), apa.a.a, $$2, false))))
+                           .then(ej.a("replace").executes($$0x -> a((ei)$$0x.getSource(), gf.a($$0x, "pos"), gc.a($$0x, "block"), apa.a.a, null, false))))
+                        .then(ej.a("strict").executes($$0x -> a((ei)$$0x.getSource(), gf.a($$0x, "pos"), gc.a($$0x, "block"), apa.a.a, null, true)))
                   )
             )
       );
    }
 
-   private static int a(ei $$0, Collection<arp> $$1, iu $$2, float $$3) {
-      ald<dip> $$4 = $$0.e().aj();
-
-      for (arp $$5 : $$1) {
-         $$5.a($$4, $$2, $$3, true, false);
-      }
-
-      String $$6 = $$4.a().toString();
-      if ($$1.size() == 1) {
-         $$0.a(() -> ww.a("commands.spawnpoint.success.single", $$2.u(), $$2.v(), $$2.w(), $$3, $$6, $$1.iterator().next().m_()), true);
+   private static int a(ei $$0, iu $$1, ga $$2, apa.a $$3, @Nullable Predicate<ead> $$4, boolean $$5) throws CommandSyntaxException {
+      arq $$6 = $$0.e();
+      if ($$6.ak()) {
+         throw a.create();
+      } else if ($$4 != null && !$$4.test(new ead($$6, $$1, true))) {
+         throw a.create();
       } else {
-         $$0.a(() -> ww.a("commands.spawnpoint.success.multiple", $$2.u(), $$2.v(), $$2.w(), $$3, $$6, $$1.size()), true);
-      }
+         boolean $$7;
+         if ($$3 == apa.a.b) {
+            $$6.b($$1, true);
+            $$7 = !$$2.a().l() || !$$6.a_($$1).l();
+         } else {
+            $$7 = true;
+         }
 
-      return $$1.size();
+         if ($$7 && !$$2.a($$6, $$1, 2 | ($$5 ? 304 : 256))) {
+            throw a.create();
+         } else {
+            if (!$$5) {
+               $$6.a($$1, $$2.a().b());
+            }
+
+            $$0.a(() -> wy.a("commands.setblock.success", $$1.u(), $$1.v(), $$1.w()), true);
+            return 1;
+         }
+      }
+   }
+
+   public static enum a {
+      a,
+      b;
    }
 }

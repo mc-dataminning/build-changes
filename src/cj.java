@@ -12,13 +12,13 @@ public class cj extends dj<cj.a> {
       return cj.a.a;
    }
 
-   public void a(arp $$0, cqr $$1, cys $$2) {
+   public void a(arr $$0, cqx $$1, cyy $$2) {
       int $$3 = 0;
       int $$4 = 0;
       int $$5 = 0;
 
       for (int $$6 = 0; $$6 < $$1.b(); $$6++) {
-         cys $$7 = $$1.a($$6);
+         cyy $$7 = $$1.a($$6);
          if ($$7.f()) {
             $$4++;
          } else {
@@ -32,7 +32,7 @@ public class cj extends dj<cj.a> {
       this.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
-   private void a(arp $$0, cqr $$1, cys $$2, int $$3, int $$4, int $$5) {
+   private void a(arr $$0, cqx $$1, cyy $$2, int $$3, int $$4, int $$5) {
       this.a($$0, $$5x -> $$5x.a($$1, $$2, $$3, $$4, $$5));
    }
 
@@ -54,7 +54,7 @@ public class cj extends dj<cj.a> {
          return ap.f.a(new cj.a(Optional.empty(), cj.a.a.b, List.of($$0)));
       }
 
-      public static aq<cj.a> a(dio... $$0) {
+      public static aq<cj.a> a(diu... $$0) {
          cl[] $$1 = new cl[$$0.length];
 
          for (int $$2 = 0; $$2 < $$0.length; $$2++) {
@@ -64,7 +64,7 @@ public class cj extends dj<cj.a> {
          return a($$1);
       }
 
-      public boolean a(cqr $$0, cys $$1, int $$2, int $$3, int $$4) {
+      public boolean a(cqx $$0, cyy $$1, int $$2, int $$3, int $$4) {
          if (!this.c.a($$2, $$3, $$4)) {
             return false;
          } else if (this.d.isEmpty()) {
@@ -78,7 +78,7 @@ public class cj extends dj<cj.a> {
                   return true;
                }
 
-               cys $$8 = $$0.a($$7);
+               cyy $$8 = $$0.a($$7);
                if (!$$8.f()) {
                   $$5.removeIf($$1x -> $$1x.a($$8));
                }

@@ -1,24 +1,21 @@
-public record acw(int b, bxm c, boolean d) implements zd<abs> {
-   public static final yu<vs, acw> a = yu.a(ys.h, acw::b, bxm.a, acw::e, ys.b, acw::f, acw::new);
-
-   public static acw a(bwa $$0) {
-      return new acw($$0.ar(), new bxm($$0.du(), $$0.dy(), $$0.dL(), $$0.dN()), $$0.aJ());
-   }
+public record acw(wy b, wu.a c) implements zf<abu> {
+   public static final yw<wj, acw> a = yw.a(xa.d, acw::b, wu.a.a, acw::e, acw::new);
 
    @Override
-   public zf<acw> a() {
-      return agl.D;
+   public zh<acw> a() {
+      return agn.B;
    }
 
-   public void a(abs $$0) {
+   public void a(abu $$0) {
       $$0.a(this);
    }
 
-   public bxm e() {
-      return this.c;
+   @Override
+   public boolean c() {
+      return true;
    }
 
-   public boolean f() {
-      return this.d;
+   public wu.a e() {
+      return this.c;
    }
 }

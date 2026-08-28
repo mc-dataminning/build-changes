@@ -1,108 +1,75 @@
-import com.mojang.logging.LogUtils;
-import java.time.Instant;
-import java.util.UUID;
-import java.util.function.BooleanSupplier;
+import com.mojang.brigadier.ParseResults;
+import com.mojang.brigadier.context.CommandContextBuilder;
+import com.mojang.brigadier.context.ParsedArgument;
+import com.mojang.brigadier.context.ParsedCommandNode;
+import com.mojang.brigadier.tree.ArgumentCommandNode;
+import com.mojang.brigadier.tree.CommandNode;
+import java.util.ArrayList;
+import java.util.List;
 import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
-public class xq {
-   static final Logger a = LogUtils.getLogger();
-   @Nullable
-   xr b;
-   Instant c = Instant.EPOCH;
-
-   public xq(UUID $$0, UUID $$1) {
-      this.b = xr.a($$0, $$1);
+public record xq<S>(List<xq.a<S>> a) {
+   public static <S> boolean a(ParseResults<S> $$0) {
+      return !b($$0).a().isEmpty();
    }
 
-   public xq.c a(baa $$0) {
-      return $$1 -> {
-         xr $$2 = this.b;
-         if ($$2 == null) {
-            return null;
-         } else {
-            this.b = $$2.a();
-            return new xi($$0.sign($$2x -> xm.a($$2x, $$2, $$1)));
-         }
-      };
+   public static <S> xq<S> b(ParseResults<S> $$0) {
+      String $$1 = $$0.getReader().getString();
+      CommandContextBuilder<S> $$2 = $$0.getContext();
+      CommandContextBuilder<S> $$3 = $$2;
+      List<xq.a<S>> $$4 = a($$1, $$2);
+
+      CommandContextBuilder<S> $$5;
+      while (($$5 = $$3.getChild()) != null && $$5.getRootNode() != $$2.getRootNode()) {
+         $$4.addAll(a($$1, $$5));
+         $$3 = $$5;
+      }
+
+      return new xq<>($$4);
    }
 
-   public xq.b a(final cqv $$0) {
-      final azz $$1 = $$0.a();
-      return new xq.b() {
-         @Override
-         public xm unpack(@Nullable xi $$0x, xp $$1x) throws xq.a {
-            if ($$0 == null) {
-               throw new xq.a(xq.a.a);
-            } else if ($$0.b().a()) {
-               throw new xq.a(xq.a.c);
-            } else {
-               xr $$2 = xq.this.b;
-               if ($$2 == null) {
-                  throw new xq.a(xq.a.b);
-               } else if ($$1.b().isBefore(xq.this.c)) {
-                  this.setChainBroken();
-                  throw new xq.a(xq.a.e);
-               } else {
-                  xq.this.c = $$1.b();
-                  xm $$3 = new xm($$2, $$0, $$1, null, xa.c);
-                  if (!$$3.a($$1)) {
-                     this.setChainBroken();
-                     throw new xq.a(xq.a.d);
-                  } else {
-                     if ($$3.a(Instant.now())) {
-                        xq.a.warn("Received expired chat: '{}'. Is the client/server system time unsynchronized?", $$1.a());
-                     }
+   private static <S> List<xq.a<S>> a(String $$0, CommandContextBuilder<S> $$1) {
+      List<xq.a<S>> $$2 = new ArrayList<>();
 
-                     xq.this.b = $$2.a();
-                     return $$3;
-                  }
+      for (ParsedCommandNode<S> $$3 : $$1.getNodes()) {
+         CommandNode $$5 = $$3.getNode();
+         if ($$5 instanceof ArgumentCommandNode) {
+            ArgumentCommandNode<S, ?> $$4 = (ArgumentCommandNode<S, ?>)$$5;
+            if ($$4.getType() instanceof fq) {
+               ParsedArgument<S, ?> $$5x = (ParsedArgument<S, ?>)$$1.getArguments().get($$4.getName());
+               if ($$5x != null) {
+                  String $$6 = $$5x.getRange().get($$0);
+                  $$2.add(new xq.a<>($$4, $$6));
                }
             }
          }
+      }
 
-         @Override
-         public void setChainBroken() {
-            xq.this.b = null;
+      return $$2;
+   }
+
+   @Nullable
+   public xq.a<S> a(String $$0) {
+      for (xq.a<S> $$1 : this.a) {
+         if ($$0.equals($$1.a())) {
+            return $$1;
          }
-      };
-   }
-
-   public static class a extends xw {
-      static final ww a = ww.c("chat.disabled.missingProfileKey");
-      static final ww b = ww.c("chat.disabled.chain_broken");
-      static final ww c = ww.c("chat.disabled.expiredProfileKey");
-      static final ww d = ww.c("chat.disabled.invalid_signature");
-      static final ww e = ww.c("chat.disabled.out_of_order_chat");
-
-      public a(ww $$0) {
-         super($$0);
-      }
-   }
-
-   @FunctionalInterface
-   public interface b {
-      static xq.b unsigned(UUID $$0, BooleanSupplier $$1) {
-         return ($$2, $$3) -> {
-            if ($$1.getAsBoolean()) {
-               throw new xq.a(xq.a.a);
-            } else {
-               return xm.a($$0, $$3.a());
-            }
-         };
       }
 
-      xm unpack(@Nullable xi var1, xp var2) throws xq.a;
-
-      default void setChainBroken() {
-      }
+      return null;
    }
 
-   @FunctionalInterface
-   public interface c {
-      xq.c a = $$0 -> null;
+   public static record a<S>(ArgumentCommandNode<S, ?> a, String b) {
+      public String a() {
+         return this.a.getName();
+      }
 
-      @Nullable
-      xi pack(xp var1);
+      public ArgumentCommandNode<S, ?> b() {
+         return this.a;
+      }
+
+      public String c() {
+         return this.b;
+      }
    }
 }

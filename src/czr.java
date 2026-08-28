@@ -1,43 +1,47 @@
-import java.util.List;
-
-public class czr extends cyo {
-   public czr(cyo.a $$0) {
+public class czr extends cyu {
+   public czr(cyu.a $$0) {
       super($$0);
    }
 
-   public static dbv a() {
-      jf<dlu> $$0 = mf.a(mf.e);
-      return new dbv(
-         List.of(dbv.a.a(ji.a(dlw.bz.p()), 15.0F), dbv.a.b($$0.b(axa.Q), 15.0F), dbv.a.b($$0.b(axa.a), 5.0F), dbv.a.b(ji.a(dlw.ft.p(), dlw.fu.p()), 2.0F)),
-         1.0F,
-         1,
-         true
-      );
+   @Override
+   public cyy m() {
+      cyy $$0 = super.m();
+      $$0.b(kj.R, new dau(dav.a));
+      return $$0;
    }
 
    @Override
-   public bty a(dcn $$0) {
-      dip $$1 = $$0.q();
+   public bub a(dct $$0) {
+      div $$1 = $$0.q();
       iu $$2 = $$0.a();
-      dzo $$3 = $$1.a_($$2);
-      if ($$3.b() instanceof dpl $$5 && !$$5.q($$3)) {
-         cqs $$6 = $$0.o();
-         cys $$7 = $$0.n();
-         if ($$6 instanceof arp) {
-            ap.N.a((arp)$$6, $$2, $$7);
+      cqy $$3 = $$0.o();
+      cyy $$4 = $$0.n();
+      dau $$5 = $$4.a(kj.R, dau.a);
+      dzz $$6 = $$1.a_($$2);
+      if ($$0.k() != ja.a && $$6.a(axc.cm) && $$5.a(dav.a)) {
+         $$1.a(null, $$2, awn.kJ, awo.e, 1.0F, 1.0F);
+         $$3.a($$0.p(), czb.a($$4, $$3, new cyy(czc.tn)));
+         $$3.b(awx.c.b($$4.h()));
+         if (!$$1.C) {
+            arq $$7 = (arq)$$1;
+
+            for (int $$8 = 0; $$8 < 5; $$8++) {
+               $$7.a(lx.ap, (double)$$2.u() + $$1.A.j(), (double)($$2.v() + 1), (double)$$2.w() + $$1.A.j(), 1, 0.0, 0.0, 0.0, 1.0);
+            }
          }
 
-         $$1.a($$6, $$2, awl.lN, awm.e, 1.0F, 1.0F);
-         dzo $$8 = $$5.p($$3);
-         $$1.b($$2, $$8);
-         $$1.a(eeo.c, $$2, eeo.a.a($$0.o(), $$8));
-         if ($$6 != null) {
-            $$7.a(1, $$6, bwz.d($$0.p()));
-         }
-
-         return bty.a;
+         $$1.a(null, $$2, awn.cB, awo.e, 1.0F, 1.0F);
+         $$1.a(null, eez.z, $$2);
+         $$1.b($$2, dmc.tp.m());
+         return bub.a;
+      } else {
+         return bub.e;
       }
+   }
 
-      return super.a($$0);
+   @Override
+   public wy a(cyy $$0) {
+      dau $$1 = $$0.a(kj.R);
+      return $$1 != null ? $$1.a(this.n + ".effect.") : super.a($$0);
    }
 }

@@ -1,85 +1,35 @@
-import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import javax.annotation.Nullable;
 
-public class ddz implements dcy {
-   final String c;
-   final dcw d;
-   final cys e;
-   final List<ddf> f;
-   @Nullable
-   private ddi g;
+public interface ddz<T extends ddp<?>> {
+   ddz<ded> a = a("crafting_shaped", new ded.a());
+   ddz<def> b = a("crafting_shapeless", new def.a());
+   ddz<dcw> c = a("crafting_special_armordye", new ddf.a<>(dcw::new));
+   ddz<dcz> d = a("crafting_special_bookcloning", new ddf.a<>(dcz::new));
+   ddz<ddm> e = a("crafting_special_mapcloning", new ddf.a<>(ddm::new));
+   ddz<ddn> f = a("crafting_special_mapextending", new ddf.a<>(ddn::new));
+   ddz<ddi> g = a("crafting_special_firework_rocket", new ddf.a<>(ddi::new));
+   ddz<ddk> h = a("crafting_special_firework_star", new ddf.a<>(ddk::new));
+   ddz<ddj> i = a("crafting_special_firework_star_fade", new ddf.a<>(ddj::new));
+   ddz<deq> j = a("crafting_special_tippedarrow", new ddf.a<>(deq::new));
+   ddz<dcx> k = a("crafting_special_bannerduplicate", new ddf.a<>(dcx::new));
+   ddz<deg> l = a("crafting_special_shielddecoration", new ddf.a<>(deg::new));
+   ddz<der> m = a("crafting_transmute", new der.a());
+   ddz<deb> n = a("crafting_special_repairitem", new ddf.a<>(deb::new));
+   ddz<dej> o = a("smelting", new dcv.b<>(dej::new, 200));
+   ddz<dcy> p = a("blasting", new dcv.b<>(dcy::new, 100));
+   ddz<deo> q = a("smoking", new dcv.b<>(deo::new, 100));
+   ddz<dda> r = a("campfire_cooking", new dcv.b<>(dda::new, 100));
+   ddz<dep> s = a("stonecutting", new deh.b<>(dep::new));
+   ddz<dem> t = a("smithing_transform", new dem.a());
+   ddz<den> u = a("smithing_trim", new den.a());
+   ddz<ddg> v = a("crafting_decorated_pot", new ddf.a<>(ddg::new));
 
-   public ddz(String $$0, dcw $$1, cys $$2, List<ddf> $$3) {
-      this.c = $$0;
-      this.d = $$1;
-      this.e = $$2;
-      this.f = $$3;
-   }
+   MapCodec<T> a();
 
-   @Override
-   public ddt<ddz> a() {
-      return ddt.b;
-   }
+   @Deprecated
+   yw<wj, T> b();
 
-   @Override
-   public String j() {
-      return this.c;
-   }
-
-   @Override
-   public dcw c() {
-      return this.d;
-   }
-
-   @Override
-   public ddi ak_() {
-      if (this.g == null) {
-         this.g = ddi.b(this.f);
-      }
-
-      return this.g;
-   }
-
-   public boolean a(dcx $$0, dip $$1) {
-      if ($$0.e() != this.f.size()) {
-         return false;
-      } else {
-         return $$0.a() == 1 && this.f.size() == 1 ? this.f.getFirst().a($$0.a(0)) : $$0.c().a(this, null);
-      }
-   }
-
-   public cys a(dcx $$0, jg.a $$1) {
-      return this.e.v();
-   }
-
-   @Override
-   public List<dep> g() {
-      return List.of(new deu(this.f.stream().map(ddf::c).toList(), new dev.f(this.e), new dev.d(cyw.fe)));
-   }
-
-   public static class a implements ddt<ddz> {
-      private static final MapCodec<ddz> x = RecordCodecBuilder.mapCodec(
-         $$0 -> $$0.group(
-                  Codec.STRING.optionalFieldOf("group", "").forGetter($$0x -> $$0x.c),
-                  dcw.e.fieldOf("category").orElse(dcw.d).forGetter($$0x -> $$0x.d),
-                  cys.d.fieldOf("result").forGetter($$0x -> $$0x.e),
-                  ddf.d.listOf(1, 9).fieldOf("ingredients").forGetter($$0x -> $$0x.f)
-               )
-               .apply($$0, ddz::new)
-      );
-      public static final yu<wh, ddz> w = yu.a(ys.o, $$0 -> $$0.c, dcw.g, $$0 -> $$0.d, cys.i, $$0 -> $$0.e, ddf.a.a(ys.a()), $$0 -> $$0.f, ddz::new);
-
-      @Override
-      public MapCodec<ddz> a() {
-         return x;
-      }
-
-      @Override
-      public yu<wh, ddz> b() {
-         return w;
-      }
+   static <S extends ddz<T>, T extends ddp<?>> S a(String $$0, S $$1) {
+      return jr.a(mf.r, $$0, $$1);
    }
 }

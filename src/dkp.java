@@ -1,66 +1,59 @@
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.stream.Stream;
 
-public abstract class dkp extends dlg {
-   public static final eam<ja> a = dpt.e;
-   public static final eaf b = eae.u;
+public class dkp extends dkc {
+   public static final MapCodec<dkp> b = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(ale.d(dkf.ai), ale.d(dkf.aj), ale.d(dkf.ak), ale.d(dkf.al), ale.d(dkf.am)).apply($$0, $$0.stable(dkp::new))
+   );
+   private final je<djy> c;
+   private final je<djy> d;
+   private final je<djy> e;
+   private final je<djy> f;
+   private final je<djy> g;
 
-   protected dkp(dzn.d $$0) {
-      super($$0);
-      this.l(this.B.b().b(a, ja.c).b(b, Boolean.valueOf(false)));
+   public static dkp a(jf<djy> $$0) {
+      return new dkp($$0.b(dkf.ai), $$0.b(dkf.aj), $$0.b(dkf.ak), $$0.b(dkf.al), $$0.b(dkf.am));
+   }
+
+   private dkp(je<djy> $$0, je<djy> $$1, je<djy> $$2, je<djy> $$3, je<djy> $$4) {
+      this.c = $$0;
+      this.d = $$1;
+      this.e = $$2;
+      this.f = $$3;
+      this.g = $$4;
    }
 
    @Override
-   protected abstract MapCodec<? extends dkp> a();
+   protected Stream<je<djy>> b() {
+      return Stream.of(this.c, this.d, this.e, this.f, this.g);
+   }
 
    @Override
-   protected bty a(dzo $$0, dip $$1, iu $$2, cqs $$3, fds $$4) {
-      if (!$$1.C) {
-         this.a($$1, $$2, $$3);
+   protected MapCodec<? extends dkc> a() {
+      return b;
+   }
+
+   @Override
+   public je<djy> getNoiseBiome(int $$0, int $$1, int $$2, dkh.f $$3) {
+      int $$4 = jp.c($$0);
+      int $$5 = jp.c($$1);
+      int $$6 = jp.c($$2);
+      int $$7 = jx.a($$4);
+      int $$8 = jx.a($$6);
+      if ((long)$$7 * (long)$$7 + (long)$$8 * (long)$$8 <= 4096L) {
+         return this.c;
+      } else {
+         int $$9 = (jx.a($$4) * 2 + 1) * 8;
+         int $$10 = (jx.a($$6) * 2 + 1) * 8;
+         double $$11 = $$3.e().a(new efr.e($$9, $$5, $$10));
+         if ($$11 > 0.25) {
+            return this.d;
+         } else if ($$11 >= -0.0625) {
+            return this.e;
+         } else {
+            return $$11 < -0.21875 ? this.f : this.g;
+         }
       }
-
-      return bty.a;
-   }
-
-   protected abstract void a(dip var1, iu var2, cqs var3);
-
-   @Override
-   public dzo a(dcl $$0) {
-      return this.m().b(a, $$0.g().g());
-   }
-
-   @Override
-   protected void a(dzo $$0, aro $$1, iu $$2, boolean $$3) {
-      btu.a($$0, $$1, $$2);
-   }
-
-   @Override
-   protected boolean c_(dzo $$0) {
-      return true;
-   }
-
-   @Override
-   protected int a(dzo $$0, dip $$1, iu $$2) {
-      return cuk.a($$1.c_($$2));
-   }
-
-   @Override
-   protected dzo a(dzo $$0, dsm $$1) {
-      return $$0.b(a, $$1.a($$0.c(a)));
-   }
-
-   @Override
-   protected dzo a(dzo $$0, dqv $$1) {
-      return $$0.a($$1.a($$0.c(a)));
-   }
-
-   @Override
-   protected void a(dzp.a<dlu, dzo> $$0) {
-      $$0.a(a, b);
-   }
-
-   @Nullable
-   protected static <T extends dwn> dwo<T> a(dip $$0, dwp<T> $$1, dwp<? extends dwa> $$2) {
-      return $$0 instanceof aro $$3 ? a($$1, $$2, ($$1x, $$2x, $$3x, $$4) -> dwa.a($$3, $$2x, $$3x, $$4)) : null;
    }
 }

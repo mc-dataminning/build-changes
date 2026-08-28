@@ -15,7 +15,7 @@ import javax.annotation.Nullable;
 
 public class gb implements ArgumentType<gb.b> {
    private static final Collection<String> a = Arrays.asList("stone", "minecraft:stone", "stone[foo=bar]", "#stone", "#stone[foo=bar]{baz=nbt}");
-   private final jg<dlu> b;
+   private final jg<dma> b;
 
    public gb(ee $$0) {
       this.b = $$0.e(mg.i);
@@ -29,12 +29,12 @@ public class gb implements ArgumentType<gb.b> {
       return a(this.b, $$0);
    }
 
-   public static gb.b a(jg<dlu> $$0, StringReader $$1) throws CommandSyntaxException {
+   public static gb.b a(jg<dma> $$0, StringReader $$1) throws CommandSyntaxException {
       return (gb.b)gd.b($$0, $$1, true).map($$0x -> new gb.a($$0x.a(), $$0x.b().keySet(), $$0x.c()), $$0x -> new gb.c($$0x.a(), $$0x.b(), $$0x.c()));
    }
 
-   public static Predicate<dzs> a(CommandContext<ei> $$0, String $$1) throws CommandSyntaxException {
-      return (Predicate<dzs>)$$0.getArgument($$1, gb.b.class);
+   public static Predicate<ead> a(CommandContext<ei> $$0, String $$1) throws CommandSyntaxException {
+      return (Predicate<ead>)$$0.getArgument($$1, gb.b.class);
    }
 
    public <S> CompletableFuture<Suggestions> listSuggestions(CommandContext<S> $$0, SuggestionsBuilder $$1) {
@@ -46,23 +46,23 @@ public class gb implements ArgumentType<gb.b> {
    }
 
    static class a implements gb.b {
-      private final dzo a;
-      private final Set<ear<?>> b;
+      private final dzz a;
+      private final Set<ebc<?>> b;
       @Nullable
-      private final tx c;
+      private final tz c;
 
-      public a(dzo $$0, Set<ear<?>> $$1, @Nullable tx $$2) {
+      public a(dzz $$0, Set<ebc<?>> $$1, @Nullable tz $$2) {
          this.a = $$0;
          this.b = $$1;
          this.c = $$2;
       }
 
-      public boolean a(dzs $$0) {
-         dzo $$1 = $$0.a();
+      public boolean a(ead $$0) {
+         dzz $$1 = $$0.a();
          if (!$$1.a(this.a.b())) {
             return false;
          } else {
-            for (ear<?> $$2 : this.b) {
+            for (ebc<?> $$2 : this.b) {
                if ($$1.c($$2) != this.a.c($$2)) {
                   return false;
                }
@@ -71,8 +71,8 @@ public class gb implements ArgumentType<gb.b> {
             if (this.c == null) {
                return true;
             } else {
-               dwn $$3 = $$0.b();
-               return $$3 != null && um.a(this.c, $$3.b($$0.c().F_()), true);
+               dwx $$3 = $$0.b();
+               return $$3 != null && uo.a(this.c, $$3.b($$0.c().F_()), true);
             }
          }
       }
@@ -83,29 +83,29 @@ public class gb implements ArgumentType<gb.b> {
       }
    }
 
-   public interface b extends Predicate<dzs> {
+   public interface b extends Predicate<ead> {
       boolean a();
    }
 
    static class c implements gb.b {
-      private final ji<dlu> a;
+      private final ji<dma> a;
       @Nullable
-      private final tx b;
+      private final tz b;
       private final Map<String, String> c;
 
-      c(ji<dlu> $$0, Map<String, String> $$1, @Nullable tx $$2) {
+      c(ji<dma> $$0, Map<String, String> $$1, @Nullable tz $$2) {
          this.a = $$0;
          this.c = $$1;
          this.b = $$2;
       }
 
-      public boolean a(dzs $$0) {
-         dzo $$1 = $$0.a();
+      public boolean a(ead $$0) {
+         dzz $$1 = $$0.a();
          if (!$$1.a(this.a)) {
             return false;
          } else {
             for (Entry<String, String> $$2 : this.c.entrySet()) {
-               ear<?> $$3 = $$1.b().l().a($$2.getKey());
+               ebc<?> $$3 = $$1.b().l().a($$2.getKey());
                if ($$3 == null) {
                   return false;
                }
@@ -123,8 +123,8 @@ public class gb implements ArgumentType<gb.b> {
             if (this.b == null) {
                return true;
             } else {
-               dwn $$5 = $$0.b();
-               return $$5 != null && um.a(this.b, $$5.b($$0.c().F_()), true);
+               dwx $$5 = $$0.b();
+               return $$5 != null && uo.a(this.b, $$5.b($$0.c().F_()), true);
             }
          }
       }

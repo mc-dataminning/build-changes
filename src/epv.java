@@ -2,29 +2,37 @@ import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class epv extends epo {
+public class epv extends eqe {
    public static final MapCodec<epv> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(Codec.INT.fieldOf("max_water_depth").forGetter($$0x -> $$0x.c)).apply($$0, epv::new)
+      $$0 -> $$0.group(
+               Codec.INT.fieldOf("noise_to_count_ratio").forGetter($$0x -> $$0x.c),
+               Codec.DOUBLE.fieldOf("noise_factor").forGetter($$0x -> $$0x.d),
+               Codec.DOUBLE.fieldOf("noise_offset").orElse(0.0).forGetter($$0x -> $$0x.e)
+            )
+            .apply($$0, epv::new)
    );
    private final int c;
+   private final double d;
+   private final double e;
 
-   private epv(int $$0) {
+   private epv(int $$0, double $$1, double $$2) {
       this.c = $$0;
+      this.d = $$1;
+      this.e = $$2;
    }
 
-   public static epv a(int $$0) {
-      return new epv($$0);
-   }
-
-   @Override
-   protected boolean a(epn $$0, azt $$1, iu $$2) {
-      int $$3 = $$0.a(efn.a.d, $$2.u(), $$2.w());
-      int $$4 = $$0.a(efn.a.b, $$2.u(), $$2.w());
-      return $$4 - $$3 <= this.c;
+   public static epv a(int $$0, double $$1, double $$2) {
+      return new epv($$0, $$1, $$2);
    }
 
    @Override
-   public epq<?> b() {
-      return epq.d;
+   protected int a(azv $$0, iu $$1) {
+      double $$2 = djy.e.a((double)$$1.u() / this.d, (double)$$1.w() / this.d, false);
+      return (int)Math.ceil(($$2 + this.e) * (double)this.c);
+   }
+
+   @Override
+   public eqb<?> b() {
+      return eqb.g;
    }
 }

@@ -1,29 +1,19 @@
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import net.minecraft.server.MinecraftServer;
 
 public class anc {
    public static void a(CommandDispatcher<ei> $$0) {
-      $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)ej.a("defaultgamemode").requires($$0x -> $$0x.c(2)))
-            .then(ej.a("gamemode", ew.a()).executes($$0x -> a((ei)$$0x.getSource(), ew.a($$0x, "gamemode"))))
-      );
-   }
+      LiteralArgumentBuilder<ei> $$1 = (LiteralArgumentBuilder<ei>)ej.a("debugmobspawning").requires($$0x -> $$0x.c(2));
 
-   private static int a(ei $$0, dim $$1) {
-      int $$2 = 0;
-      MinecraftServer $$3 = $$0.l();
-      $$3.a($$1);
-      dim $$4 = $$3.bd();
-      if ($$4 != null) {
-         for (arp $$5 : $$3.ag().t()) {
-            if ($$5.a($$4)) {
-               $$2++;
-            }
-         }
+      for (bxf $$2 : bxf.values()) {
+         $$1.then(ej.a($$2.a()).then(ej.a("at", gf.a()).executes($$1x -> a((ei)$$1x.getSource(), $$2, gf.a($$1x, "at")))));
       }
 
-      $$0.a(() -> ww.a("commands.defaultgamemode.success", $$1.d()), true);
-      return $$2;
+      $$0.register($$1);
+   }
+
+   private static int a(ei $$0, bxf $$1, iu $$2) {
+      djg.a($$1, $$0.e(), $$2);
+      return 1;
    }
 }

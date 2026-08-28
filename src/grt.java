@@ -1,23 +1,16 @@
-import it.unimi.dsi.fastutil.ints.Int2IntFunction;
+import com.google.common.collect.Streams;
+import java.util.function.Predicate;
 
-public class grt<S extends dwn> implements doc.b<S, Int2IntFunction> {
-   public Int2IntFunction a(S $$0, S $$1) {
-      return $$2 -> {
-         int $$3 = goy.a($$0.i(), $$0.aw_());
-         int $$4 = goy.a($$1.i(), $$1.aw_());
-         int $$5 = gpa.a($$3);
-         int $$6 = gpa.a($$4);
-         int $$7 = gpa.b($$3);
-         int $$8 = gpa.b($$4);
-         return gpa.a(Math.max($$5, $$6), Math.max($$7, $$8));
-      };
+public class grt implements grq {
+   public static final String a = "OR";
+   private final Iterable<? extends grq> d;
+
+   public grt(Iterable<? extends grq> $$0) {
+      this.d = $$0;
    }
 
-   public Int2IntFunction a(S $$0) {
-      return $$0x -> $$0x;
-   }
-
-   public Int2IntFunction a() {
-      return $$0 -> $$0;
+   @Override
+   public Predicate<dzz> getPredicate(eaa<dma, dzz> $$0) {
+      return af.b(Streams.stream(this.d).map($$1 -> $$1.getPredicate($$0)).toList());
    }
 }

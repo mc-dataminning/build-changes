@@ -1,103 +1,75 @@
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Codec;
+import com.google.common.collect.ImmutableList;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
-import java.util.Optional;
-import java.util.Set;
-import java.util.function.UnaryOperator;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import java.util.stream.Stream;
+import java.util.stream.Stream.Builder;
 
-public class faw extends faa {
-   private static final Logger b = LogUtils.getLogger();
+public class faw extends fam {
    public static final MapCodec<faw> a = RecordCodecBuilder.mapCodec(
       $$0 -> a($$0)
-            .and(
-               $$0.group(
-                  wy.a.optionalFieldOf("name").forGetter($$0x -> $$0x.c),
-                  eyn.b.e.optionalFieldOf("entity").forGetter($$0x -> $$0x.d),
-                  faw.a.c.optionalFieldOf("target", faw.a.a).forGetter($$0x -> $$0x.e)
-               )
-            )
+            .and($$0.group(eyx.e.fieldOf("component").forGetter($$0x -> $$0x.b), ezn.a.listOf().fieldOf("entries").forGetter($$0x -> $$0x.c)))
             .apply($$0, faw::new)
    );
-   private final Optional<ww> c;
-   private final Optional<eyn.b> d;
-   private final faw.a e;
+   private final eyw<?> b;
+   private final List<ezp> c;
 
-   private faw(List<fbw> $$0, Optional<ww> $$1, Optional<eyn.b> $$2, faw.a $$3) {
+   faw(List<fci> $$0, eyw<?> $$1, List<ezp> $$2) {
       super($$0);
-      this.c = $$1;
-      this.d = $$2;
-      this.e = $$3;
+      this.b = $$1;
+      this.c = List.copyOf($$2);
    }
 
    @Override
-   public fac<faw> b() {
-      return fad.p;
+   public fao<faw> b() {
+      return fap.t;
    }
 
    @Override
-   public Set<bav<?>> a() {
-      return this.d.<Set<bav<?>>>map($$0 -> Set.of($$0.a())).orElse(Set.of());
+   public cyy a(cyy $$0, eyz $$1) {
+      if ($$0.f()) {
+         return $$0;
+      } else {
+         Builder<cyy> $$2 = Stream.builder();
+         this.c.forEach($$2x -> $$2x.expand($$1, $$2xx -> $$2xx.a(eze.a($$1.d(), $$2::add), $$1)));
+         this.b.a($$0, $$2.build());
+         return $$0;
+      }
    }
 
-   public static UnaryOperator<ww> a(eyn $$0, @Nullable eyn.b $$1) {
-      if ($$1 != null) {
-         bwa $$2 = $$0.c($$1.a());
-         if ($$2 != null) {
-            ei $$3 = $$2.d($$0.d()).a(2);
-            return $$2x -> {
-               try {
-                  return wz.a($$3, $$2x, $$2, 0);
-               } catch (CommandSyntaxException var4) {
-                  b.warn("Failed to resolve text component", var4);
-                  return $$2x;
-               }
-            };
-         }
+   @Override
+   public void a(ezf $$0) {
+      super.a($$0);
+
+      for (int $$1 = 0; $$1 < this.c.size(); $$1++) {
+         this.c.get($$1).a($$0.a(".entry[" + $$1 + "]"));
+      }
+   }
+
+   public static faw.a a(eyw<?> $$0) {
+      return new faw.a($$0);
+   }
+
+   public static class a extends fam.a<faw.a> {
+      private final com.google.common.collect.ImmutableList.Builder<ezp> a = ImmutableList.builder();
+      private final eyw<?> b;
+
+      public a(eyw<?> $$0) {
+         this.b = $$0;
       }
 
-      return $$0x -> $$0x;
-   }
+      protected faw.a a() {
+         return this;
+      }
 
-   @Override
-   public cys a(cys $$0, eyn $$1) {
-      this.c.ifPresent($$2 -> $$0.b(this.e.a(), a($$1, this.d.orElse(null)).apply($$2)));
-      return $$0;
-   }
-
-   public static faa.a<?> a(ww $$0, faw.a $$1) {
-      return a($$2 -> new faw($$2, Optional.of($$0), Optional.empty(), $$1));
-   }
-
-   public static faa.a<?> a(ww $$0, faw.a $$1, eyn.b $$2) {
-      return a($$3 -> new faw($$3, Optional.of($$0), Optional.of($$2), $$1));
-   }
-
-   public static enum a implements bai {
-      a("custom_name"),
-      b("item_name");
-
-      public static final Codec<faw.a> c = bai.a(faw.a::values);
-      private final String d;
-
-      private a(final String $$0) {
-         this.d = $$0;
+      public faw.a a(ezp.a<?> $$0) {
+         this.a.add($$0.b());
+         return this;
       }
 
       @Override
-      public String c() {
-         return this.d;
-      }
-
-      public ki<ww> a() {
-         return switch (this) {
-            case a -> kj.g;
-            case b -> kj.h;
-         };
+      public fan b() {
+         return new faw(this.g(), this.b, this.a.build());
       }
    }
 }

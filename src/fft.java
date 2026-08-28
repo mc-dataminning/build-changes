@@ -1,29 +1,45 @@
-import java.util.function.Function;
+public class fft {
+   private static final fgd<Object> a = new fgd<Object>() {
+      @Override
+      public void a(fga<Object> $$0) {
+      }
 
-public class fft<T> implements ffk<T> {
-   private final Function<iu, ffr<T>> a;
+      @Override
+      public boolean a(iu $$0, Object $$1) {
+         return false;
+      }
 
-   public fft(Function<iu, ffr<T>> $$0) {
-      this.a = $$0;
+      @Override
+      public int a() {
+         return 0;
+      }
+   };
+   private static final ffw<Object> b = new ffw<Object>() {
+      @Override
+      public void a(fga<Object> $$0) {
+      }
+
+      @Override
+      public boolean a(iu $$0, Object $$1) {
+         return false;
+      }
+
+      @Override
+      public boolean b(iu $$0, Object $$1) {
+         return false;
+      }
+
+      @Override
+      public int a() {
+         return 0;
+      }
+   };
+
+   public static <T> fgd<T> a() {
+      return (fgd<T>)a;
    }
 
-   @Override
-   public boolean a(iu $$0, T $$1) {
-      return this.a.apply($$0).a($$0, $$1);
-   }
-
-   @Override
-   public void a(ffo<T> $$0) {
-      this.a.apply($$0.b()).a($$0);
-   }
-
-   @Override
-   public boolean b(iu $$0, T $$1) {
-      return false;
-   }
-
-   @Override
-   public int a() {
-      return 0;
+   public static <T> ffw<T> b() {
+      return (ffw<T>)b;
    }
 }

@@ -1,34 +1,20 @@
-import javax.annotation.Nullable;
+public class dwt extends dwx {
+   private final cxw a;
 
-public class dwt extends dxy {
-   public dwt(iu $$0, dzo $$1) {
-      super(dwp.K, $$0, $$1);
+   public dwt(iu $$0, dzz $$1) {
+      this($$0, $$1, ((dlt)$$1.b()).b());
    }
 
-   @Override
-   public eex.d a() {
-      return new dwt.a(this.aw_());
+   public dwt(iu $$0, dzz $$1, cxw $$2) {
+      super(dwz.z, $$0, $$1);
+      this.a = $$2;
    }
 
-   protected class a extends dxy.a {
-      public a(final iu $$1) {
-         super($$1);
-      }
+   public aca a() {
+      return aca.a(this);
+   }
 
-      @Override
-      public int a() {
-         return 16;
-      }
-
-      @Override
-      public boolean a(aro $$0, iu $$1, je<eeo> $$2, @Nullable eeo.a $$3) {
-         int $$4 = this.a($$0, this.c, dwt.this.m());
-         return $$4 != 0 && eex.a_($$2) != $$4 ? false : super.a($$0, $$1, $$2, $$3);
-      }
-
-      private int a(dip $$0, iu $$1, dzo $$2) {
-         ja $$3 = $$2.c(dmi.b).g();
-         return $$0.c($$1.a($$3), $$3);
-      }
+   public cxw c() {
+      return this.a;
    }
 }

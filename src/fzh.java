@@ -1,21 +1,30 @@
-public class fzh extends fxx<cwe> {
-   private static final ale G = ale.b("textures/gui/container/shulker_box.png");
+import org.joml.Vector3f;
 
-   public fzh(cwe $$0, cqr $$1, ww $$2) {
-      super($$0, $$1, $$2);
-      this.u++;
+public class fzh extends fym {
+   public static final float c = 4.5F;
+   private static final Vector3f d = new Vector3f(1.0F, 1.0F, 1.0F);
+   private static final int s = 16;
+   private static final int u = 16;
+   private final alg v = alg.b("textures/gui/hanging_signs/" + this.b.b() + ".png");
+
+   public fzh(dyl $$0, boolean $$1, boolean $$2) {
+      super($$0, $$1, $$2, wy.c("hanging_sign.edit"));
    }
 
    @Override
-   public void a(frc $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      this.a($$0, $$1, $$2);
+   protected void a(fro $$0, dzz $$1) {
+      $$0.c().a((float)this.n / 2.0F, 125.0F, 50.0F);
    }
 
    @Override
-   protected void a(frc $$0, float $$1, int $$2, int $$3) {
-      int $$4 = (this.n - this.s) / 2;
-      int $$5 = (this.o - this.u) / 2;
-      $$0.a(gpn::H, G, $$4, $$5, 0.0F, 0.0F, this.s, this.u, 256, 256);
+   protected void c(fro $$0) {
+      $$0.c().a(0.0F, -13.0F, 0.0F);
+      $$0.c().b(4.5F, 4.5F, 1.0F);
+      $$0.a(gqc::H, this.v, -8, -8, 0.0F, 0.0F, 16, 16, 16, 16);
+   }
+
+   @Override
+   protected Vector3f m() {
+      return d;
    }
 }

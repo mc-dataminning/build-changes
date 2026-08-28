@@ -1,4 +1,4 @@
-public class hcy extends hcp {
-   public float a;
-   public int b;
+public class hcy extends hcx {
+   public fei[] a = new fei[0];
+   public boolean n;
 }

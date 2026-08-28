@@ -1,92 +1,157 @@
-import java.util.IdentityHashMap;
+import com.google.common.collect.Lists;
+import com.mojang.brigadier.context.CommandContext;
+import com.mojang.brigadier.suggestion.Suggestions;
+import com.mojang.brigadier.suggestion.SuggestionsBuilder;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.HashSet;
 import java.util.List;
-import java.util.Map;
+import java.util.Locale;
+import java.util.Set;
 import java.util.concurrent.CompletableFuture;
 import java.util.stream.Stream;
+import javax.annotation.Nullable;
 
-public class gjv {
-   private static final gjv.a a = new gjv.a();
-   private static final gjv.a b = new gjv.a();
-   private static final gjv.a c = new gjv.a();
-   private CompletableFuture<hmg<cys>> d = CompletableFuture.completedFuture(hmg.empty());
-   private CompletableFuture<hmg<cys>> e = CompletableFuture.completedFuture(hmg.empty());
-   private CompletableFuture<hmg<gbl>> f = CompletableFuture.completedFuture(hmg.empty());
-   private final Map<gjv.a, Runnable> g = new IdentityHashMap<>();
+public class gjv implements en {
+   private final gjs a;
+   private final fos b;
+   private int d = -1;
+   @Nullable
+   private CompletableFuture<Suggestions> e;
+   private final Set<String> f = new HashSet<>();
 
-   private void a(gjv.a $$0, Runnable $$1) {
-      $$1.run();
-      this.g.put($$0, $$1);
+   public gjv(gjs $$0, fos $$1) {
+      this.a = $$0;
+      this.b = $$1;
    }
 
-   public void a() {
-      for (Runnable $$0 : this.g.values()) {
-         $$0.run();
+   @Override
+   public Collection<String> q() {
+      List<String> $$0 = Lists.newArrayList();
+
+      for (gkd $$1 : this.a.m()) {
+         $$0.add($$1.a().getName());
+      }
+
+      return $$0;
+   }
+
+   @Override
+   public Collection<String> y() {
+      if (this.f.isEmpty()) {
+         return this.q();
+      } else {
+         Set<String> $$0 = new HashSet<>(this.q());
+         $$0.addAll(this.f);
+         return $$0;
       }
    }
 
-   private static Stream<String> a(Stream<cys> $$0, cyo.b $$1, dah $$2) {
-      return $$0.<ww>flatMap($$2x -> $$2x.a($$1, null, $$2).stream()).map($$0x -> n.a($$0x.getString()).trim()).filter($$0x -> !$$0x.isEmpty());
+   @Override
+   public Collection<String> z() {
+      return (Collection<String>)(this.b.w != null && this.b.w.d() == feg.a.c ? Collections.singleton(((fef)this.b.w).a().cH()) : Collections.emptyList());
    }
 
-   public void a(fnq $$0, dip $$1) {
-      this.a(
-         a,
-         () -> {
-            List<gbl> $$2 = $$0.d();
-            js $$3 = $$1.F_();
-            jr<cyo> $$4 = $$3.f(mg.K);
-            cyo.b $$5 = cyo.b.a($$3);
-            bax $$6 = dew.a($$1);
-            dah $$7 = dah.a.a;
-            CompletableFuture<?> $$8 = this.f;
-            this.f = CompletableFuture.supplyAsync(
-               () -> new hmb<>(
-                     $$3xx -> a($$3xx.c().stream().flatMap($$1xxxx -> $$1xxxx.a($$6).stream()), $$5, $$7),
-                     $$2xx -> $$2xx.c().stream().flatMap($$1xxxx -> $$1xxxx.a($$6).stream()).map($$1xxxx -> $$4.b($$1xxxx.h())),
-                     $$2
-                  ),
-               af.h()
-            );
-            $$8.cancel(true);
-         }
-      );
+   @Override
+   public Collection<String> r() {
+      return this.a.z().e();
    }
 
-   public hmg<gbl> b() {
-      return this.f.join();
+   @Override
+   public Stream<alg> s() {
+      return this.b.ak().d().stream();
    }
 
-   public void a(List<cys> $$0) {
-      this.a(c, () -> {
-         CompletableFuture<?> $$1 = this.e;
-         this.e = CompletableFuture.supplyAsync(() -> new hmc<>($$0xxx -> $$0xxx.j().map(axp::b), $$0), af.h());
-         $$1.cancel(true);
-      });
+   @Override
+   public boolean c(int $$0) {
+      gop $$1 = this.b.t;
+      return $$1 != null ? $$1.s($$0) : $$0 == 0;
    }
 
-   public hmg<cys> c() {
-      return this.e.join();
+   @Override
+   public CompletableFuture<Suggestions> a(alf<? extends jr<?>> $$0, en.a $$1, SuggestionsBuilder $$2, CommandContext<?> $$3) {
+      return this.u().a($$0).map($$2x -> {
+         this.a($$2x, $$1, $$2);
+         return $$2.buildFuture();
+      }).orElseGet(() -> this.a($$3));
    }
 
-   public void a(jg.a $$0, List<cys> $$1) {
-      this.a(
-         b,
-         () -> {
-            cyo.b $$2 = cyo.b.a($$0);
-            dah $$3 = dah.a.a.c();
-            CompletableFuture<?> $$4 = this.d;
-            this.d = CompletableFuture.supplyAsync(
-               () -> new hmb<>($$2xx -> a(Stream.of($$2xx), $$2, $$3), $$0xxx -> $$0xxx.i().e().map(ald::a).stream(), $$1), af.h()
-            );
-            $$4.cancel(true);
-         }
-      );
+   @Override
+   public CompletableFuture<Suggestions> a(CommandContext<?> $$0) {
+      if (this.e != null) {
+         this.e.cancel(false);
+      }
+
+      this.e = new CompletableFuture<>();
+      int $$1 = ++this.d;
+      this.a.b(new ahc($$1, $$0.getInput()));
+      return this.e;
    }
 
-   public hmg<cys> d() {
-      return this.d.join();
+   private static String a(double $$0) {
+      return String.format(Locale.ROOT, "%.2f", $$0);
    }
 
-   static class a {
+   private static String a(int $$0) {
+      return Integer.toString($$0);
+   }
+
+   @Override
+   public Collection<en.b> A() {
+      feg $$0 = this.b.w;
+      if ($$0 != null && $$0.d() == feg.a.b) {
+         iu $$1 = ((fee)$$0).b();
+         return Collections.singleton(new en.b(a($$1.u()), a($$1.v()), a($$1.w())));
+      } else {
+         return en.super.A();
+      }
+   }
+
+   @Override
+   public Collection<en.b> B() {
+      feg $$0 = this.b.w;
+      if ($$0 != null && $$0.d() == feg.a.b) {
+         fei $$1 = $$0.g();
+         return Collections.singleton(new en.b(a($$1.d), a($$1.e), a($$1.f)));
+      } else {
+         return en.super.B();
+      }
+   }
+
+   @Override
+   public Set<alf<div>> t() {
+      return this.a.u();
+   }
+
+   @Override
+   public js u() {
+      return this.a.v();
+   }
+
+   @Override
+   public cuh v() {
+      return this.a.y();
+   }
+
+   public void a(int $$0, Suggestions $$1) {
+      if ($$0 == this.d) {
+         this.e.complete($$1);
+         this.e = null;
+         this.d = -1;
+      }
+   }
+
+   public void a(acs.a $$0, List<String> $$1) {
+      switch ($$0) {
+         case a:
+            this.f.addAll($$1);
+            break;
+         case b:
+            $$1.forEach(this.f::remove);
+            break;
+         case c:
+            this.f.clear();
+            this.f.addAll($$1);
+      }
    }
 }

@@ -1,19 +1,46 @@
-public class dik {
-   public static final int a = -10380959;
-   public static final int b = -8345771;
-   public static final int c = -12012264;
-   public static final int d = -7158200;
-   private static int[] e = new int[65536];
+import javax.annotation.Nullable;
 
-   public static void a(int[] $$0) {
-      e = $$0;
+public enum dik implements dhy {
+   a;
+
+   @Override
+   public float a(ja $$0, boolean $$1) {
+      return 1.0F;
    }
 
-   public static int a(double $$0, double $$1) {
-      $$1 *= $$0;
-      int $$2 = (int)((1.0 - $$0) * 255.0);
-      int $$3 = (int)((1.0 - $$1) * 255.0);
-      int $$4 = $$3 << 8 | $$2;
-      return $$4 >= e.length ? -12012264 : e[$$4];
+   @Override
+   public evv x_() {
+      return evv.c;
+   }
+
+   @Override
+   public int a(iu $$0, dig $$1) {
+      return -1;
+   }
+
+   @Nullable
+   @Override
+   public dwx c_(iu $$0) {
+      return null;
+   }
+
+   @Override
+   public dzz a_(iu $$0) {
+      return dmc.a.m();
+   }
+
+   @Override
+   public ewg b_(iu $$0) {
+      return ewh.a.g();
+   }
+
+   @Override
+   public int H_() {
+      return 0;
+   }
+
+   @Override
+   public int G_() {
+      return 0;
    }
 }

@@ -1,40 +1,63 @@
-public class gez extends gfd<hcg> {
-   public static final gip a = gip.scaling(0.5F);
-   private final gig b;
-   private final gig c;
+public class gez extends gey {
+   private static final String c = "saddle";
+   private static final String d = "bridle";
+   private static final String e = "reins";
+   private final giu f = this.b.b("reins");
 
-   public gez(gig $$0) {
+   public gez(giu $$0) {
       super($$0);
-      this.c = $$0.b("left_wing");
-      this.b = $$0.b("right_wing");
    }
 
-   public static gim a() {
-      gio $$0 = new gio();
-      giq $$1 = $$0.a();
-      gik $$2 = new gik(1.0F);
-      $$1.a(
-         "left_wing",
-         gil.c().a(22, 0).a(-10.0F, 0.0F, 0.0F, 10.0F, 20.0F, 2.0F, $$2),
-         gii.a(5.0F, 0.0F, 0.0F, (float) (Math.PI / 12), 0.0F, (float) (-Math.PI / 12))
+   public static gja c() {
+      gjc $$0 = b();
+      gje $$1 = $$0.a();
+      gje $$2 = $$1.b("body");
+      gje $$3 = $$2.b("head");
+      giy $$4 = new giy(0.05F);
+      $$2.a(
+         "saddle",
+         giz.c()
+            .a(74, 64)
+            .a(-4.5F, -17.0F, -15.5F, 9.0F, 5.0F, 11.0F, $$4)
+            .a(92, 114)
+            .a(-3.5F, -20.0F, -15.5F, 7.0F, 3.0F, 11.0F, $$4)
+            .a(0, 89)
+            .a(-7.5F, -12.0F, -23.5F, 15.0F, 12.0F, 27.0F, $$4),
+         giw.a(0.0F, 0.0F, 0.0F)
       );
-      $$1.a(
-         "right_wing",
-         gil.c().a(22, 0).a().a(0.0F, 0.0F, 0.0F, 10.0F, 20.0F, 2.0F, $$2),
-         gii.a(-5.0F, 0.0F, 0.0F, (float) (Math.PI / 12), 0.0F, (float) (Math.PI / 12))
+      $$3.a(
+         "reins",
+         giz.c()
+            .a(98, 42)
+            .a(3.51F, -18.0F, -17.0F, 0.0F, 7.0F, 15.0F)
+            .a(84, 57)
+            .a(-3.5F, -18.0F, -2.0F, 7.0F, 7.0F, 0.0F)
+            .a(98, 42)
+            .a(-3.51F, -18.0F, -17.0F, 0.0F, 7.0F, 15.0F),
+         giw.a(0.0F, 0.0F, 0.0F)
       );
-      return gim.a($$0, 64, 32);
+      $$3.a(
+         "bridle",
+         giz.c()
+            .a(60, 87)
+            .a(-3.5F, -7.0F, -15.0F, 7.0F, 8.0F, 19.0F, $$4)
+            .a(21, 64)
+            .a(-3.5F, -21.0F, -15.0F, 7.0F, 14.0F, 7.0F, $$4)
+            .a(50, 64)
+            .a(-2.5F, -21.0F, -21.0F, 5.0F, 5.0F, 6.0F, $$4)
+            .a(74, 70)
+            .a(2.5F, -19.0F, -18.0F, 1.0F, 2.0F, 2.0F)
+            .a(74, 70)
+            .a()
+            .a(-3.5F, -19.0F, -18.0F, 1.0F, 2.0F, 2.0F),
+         giw.a(0.0F, 0.0F, 0.0F)
+      );
+      return gja.a($$0, 128, 128);
    }
 
-   public void a(hcg $$0) {
+   @Override
+   public void a(hbt $$0) {
       super.a($$0);
-      this.c.c = $$0.N ? 3.0F : 0.0F;
-      this.c.e = $$0.S;
-      this.c.g = $$0.U;
-      this.c.f = $$0.T;
-      this.b.f = -this.c.f;
-      this.b.c = this.c.c;
-      this.b.e = this.c.e;
-      this.b.g = -this.c.g;
+      this.f.k = $$0.b;
    }
 }

@@ -1,22 +1,27 @@
-import java.util.Optional;
-import java.util.function.Consumer;
-import net.minecraft.server.MinecraftServer;
+import com.google.common.collect.ImmutableList;
+import java.util.List;
+import java.util.concurrent.CompletableFuture;
 
-public class asz implements asf {
-   public static final asf.a a = new asf.a("server_resource_pack");
-   private final MinecraftServer.b b;
+public interface asz {
+   asz e = new asz() {
+      @Override
+      public CompletableFuture<asj> a(String $$0) {
+         return CompletableFuture.completedFuture(asj.a($$0));
+      }
 
-   public asz(MinecraftServer.b $$0) {
-      this.b = $$0;
+      @Override
+      public CompletableFuture<List<asj>> a(List<String> $$0) {
+         return CompletableFuture.completedFuture($$0.stream().map(asj::a).collect(ImmutableList.toImmutableList()));
+      }
+   };
+
+   default void a() {
    }
 
-   @Override
-   public void a(Consumer<zd<?>> $$0) {
-      $$0.accept(new zq(this.b.a(), this.b.b(), this.b.c(), this.b.d(), Optional.ofNullable(this.b.e())));
+   default void b() {
    }
 
-   @Override
-   public asf.a a() {
-      return a;
-   }
+   CompletableFuture<asj> a(String var1);
+
+   CompletableFuture<List<asj>> a(List<String> var1);
 }

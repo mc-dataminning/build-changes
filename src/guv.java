@@ -1,20 +1,23 @@
-public class guv extends gue<ciw, hcp, get> {
-   private static final ale a = ale.b("textures/entity/cow/cow.png");
+public class guv extends gut<ckg, hbi, geg> {
+   private static final alg a = alg.b("textures/entity/armadillo.png");
 
-   public guv(gvk.a $$0) {
-      super($$0, new get($$0.a(gif.aj)), new get($$0.a(gif.ak)), 0.7F);
+   public guv(gvz.a $$0) {
+      super($$0, new geg($$0.a(git.d)), new geg($$0.a(git.e)), 0.4F);
    }
 
-   @Override
-   public ale b(hcp $$0) {
+   public alg a(hbi $$0) {
       return a;
    }
 
-   public hcp a() {
-      return new hcp();
+   public hbi a() {
+      return new hbi();
    }
 
-   public void a(ciw $$0, hcp $$1, float $$2) {
+   public void a(ckg $$0, hbi $$1, float $$2) {
       super.a($$0, $$1, $$2);
+      $$1.a = $$0.x();
+      $$1.d.a($$0.bL);
+      $$1.b.a($$0.bJ);
+      $$1.c.a($$0.bK);
    }
 }

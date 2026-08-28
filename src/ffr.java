@@ -1,2 +1,8 @@
-public interface ffr<T> extends ffq<T> {
+import javax.annotation.ParametersAreNonnullByDefault;
+
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface ffr {
 }

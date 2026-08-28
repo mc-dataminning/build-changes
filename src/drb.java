@@ -1,98 +1,49 @@
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
+import javax.annotation.Nullable;
 
-public class drb extends dme implements dlx {
-   public static final MapCodec<drb> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(ald.a(mg.aK).fieldOf("feature").forGetter($$0x -> $$0x.c), t()).apply($$0, drb::new)
-   );
-   private static final feq b = dlu.b(6.0, 0.0, 6.0);
-   private final ald<eif<?, ?>> c;
+public class drb extends dma implements dtj {
+   public static final MapCodec<drb> a = b(drb::new);
+   public static final eaq b = eap.I;
 
    @Override
    public MapCodec<drb> a() {
       return a;
    }
 
-   public drb(ald<eif<?, ?>> $$0, dzn.d $$1) {
-      super($$1);
-      this.c = $$0;
+   protected drb(dzy.d $$0) {
+      super($$0);
+      this.l(this.B.b().b(b, Boolean.valueOf(false)));
    }
 
    @Override
-   protected feq a(dzo $$0, dhv $$1, iu $$2, feb $$3) {
-      return b;
+   protected boolean b(dzz $$0, dzz $$1, ja $$2) {
+      return $$1.a(dmc.ag) && $$2.o() == ja.a.b;
+   }
+
+   @Nullable
+   @Override
+   public dzz a(dcr $$0) {
+      ewg $$1 = $$0.q().b_($$0.a());
+      boolean $$2 = $$1.a() == ewh.c;
+      return super.a($$0).b(b, Boolean.valueOf($$2));
    }
 
    @Override
-   protected void b(dzo $$0, aro $$1, iu $$2, azt $$3) {
-      if ($$3.a(25) == 0) {
-         int $$4 = 5;
-         int $$5 = 4;
-
-         for (iu $$6 : iu.c($$2.b(-4, -1, -4), $$2.b(4, 1, 4))) {
-            if ($$1.a_($$6).a(this)) {
-               if (--$$4 <= 0) {
-                  return;
-               }
-            }
-         }
-
-         iu $$7 = $$2.b($$3.a(3) - 1, $$3.a(2) - $$3.a(2), $$3.a(3) - 1);
-
-         for (int $$8 = 0; $$8 < 4; $$8++) {
-            if ($$1.v($$7) && $$0.a($$1, $$7)) {
-               $$2 = $$7;
-            }
-
-            $$7 = $$2.b($$3.a(3) - 1, $$3.a(2) - $$3.a(2), $$3.a(3) - 1);
-         }
-
-         if ($$1.v($$7) && $$0.a($$1, $$7)) {
-            $$1.a($$7, $$0, 2);
-         }
+   protected dzz a(dzz $$0, diy $$1, djk $$2, iu $$3, ja $$4, iu $$5, dzz $$6, azv $$7) {
+      if ($$0.c(b)) {
+         $$2.a($$3, ewh.c, ewh.c.a($$1));
       }
+
+      return super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
    }
 
    @Override
-   protected boolean b(dzo $$0, dhv $$1, iu $$2) {
-      return $$0.s();
+   protected ewg b_(dzz $$0) {
+      return $$0.c(b) ? ewh.c.a(false) : super.b_($$0);
    }
 
    @Override
-   protected boolean a(dzo $$0, dis $$1, iu $$2) {
-      iu $$3 = $$2.e();
-      dzo $$4 = $$1.a_($$3);
-      return $$4.a(axa.bc) ? true : $$1.b($$2, 0) < 13 && this.b($$4, $$1, $$3);
-   }
-
-   public boolean a(aro $$0, iu $$1, dzo $$2, azt $$3) {
-      Optional<? extends je<eif<?, ?>>> $$4 = $$0.F_().f(mg.aK).a(this.c);
-      if ($$4.isEmpty()) {
-         return false;
-      } else {
-         $$0.a($$1, false);
-         if ($$4.get().a().a($$0, $$0.m().g(), $$3, $$1)) {
-            return true;
-         } else {
-            $$0.a($$1, $$2, 3);
-            return false;
-         }
-      }
-   }
-
-   @Override
-   public boolean a(dis $$0, iu $$1, dzo $$2) {
-      return true;
-   }
-
-   @Override
-   public boolean a(dip $$0, azt $$1, iu $$2, dzo $$3) {
-      return (double)$$1.i() < 0.4;
-   }
-
-   @Override
-   public void a(aro $$0, azt $$1, iu $$2, dzo $$3) {
-      this.a($$0, $$2, $$3, $$1);
+   protected void a(eaa.a<dma, dzz> $$0) {
+      $$0.a(b);
    }
 }

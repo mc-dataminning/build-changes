@@ -1,33 +1,27 @@
 import com.google.common.collect.ImmutableSet;
-import java.util.Comparator;
-import java.util.List;
+import java.util.Optional;
 import java.util.Set;
-import java.util.stream.Collectors;
 
-public class che extends chh<bwz> {
+public abstract class che extends chk<bxc> {
+   protected abstract boolean a(arq var1, bxc var2, bxc var3);
+
+   protected abstract cge<bxc> b();
+
    @Override
-   public Set<cgb<?>> a() {
-      return ImmutableSet.of(cgb.j, cgb.k, cgb.l, cgb.m);
+   public Set<cge<?>> a() {
+      return ImmutableSet.of(this.b());
    }
 
    @Override
-   protected void a(aro $$0, bwz $$1) {
-      List<cqs> $$2 = $$0.z()
-         .stream()
-         .filter(bwh.f)
-         .filter($$1x -> $$1.a($$1x, this.a($$1)))
-         .sorted(Comparator.comparingDouble($$1::g))
-         .collect(Collectors.toList());
-      bxz<?> $$3 = $$1.eb();
-      $$3.a(cgb.j, $$2);
-      List<cqs> $$4 = $$2.stream().filter($$2x -> b($$0, $$1, $$2x)).collect(Collectors.toList());
-      $$3.a(cgb.k, $$4.isEmpty() ? null : $$4.get(0));
-      List<cqs> $$5 = $$4.stream().filter($$2x -> c($$0, $$1, $$2x)).toList();
-      $$3.a(cgb.m, $$5);
-      $$3.a(cgb.l, $$5.isEmpty() ? null : $$5.get(0));
+   protected void a(arq $$0, bxc $$1) {
+      $$1.eb().a(this.b(), this.c($$0, $$1));
    }
 
-   protected double a(bwz $$0) {
-      return $$0.h(byf.m);
+   private Optional<bxc> c(arq $$0, bxc $$1) {
+      return this.a($$1).flatMap($$2 -> $$2.a($$2x -> this.a($$0, $$1, $$2x)));
+   }
+
+   protected Optional<cgg> a(bxc $$0) {
+      return $$0.eb().c(cge.h);
    }
 }

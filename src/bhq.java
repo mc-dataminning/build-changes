@@ -1,44 +1,16 @@
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.OpticFinder;
-import com.mojang.datafixers.TypeRewriteRule;
 import com.mojang.datafixers.Typed;
 import com.mojang.datafixers.DSL.TypeReference;
 import com.mojang.datafixers.schemas.Schema;
 import com.mojang.datafixers.types.Type;
-import com.mojang.serialization.Dynamic;
 
-public abstract class bhq extends DataFix {
-   private final String a;
-   private final String b;
-   private final TypeReference c;
-
-   public bhq(Schema $$0, boolean $$1, String $$2, TypeReference $$3, String $$4) {
-      super($$0, $$1);
-      this.a = $$2;
-      this.c = $$3;
-      this.b = $$4;
+public class bhq extends bhr {
+   public bhq(Schema $$0, String $$1, TypeReference $$2, String $$3) {
+      super($$0, true, $$1, $$2, $$3);
    }
 
-   public TypeRewriteRule makeRule() {
-      Type<?> $$0 = this.getInputSchema().getType(this.c);
-      Type<?> $$1 = this.getInputSchema().getChoiceType(this.c, this.b);
-      Type<?> $$2 = this.getOutputSchema().getType(this.c);
-      OpticFinder<?> $$3 = DSL.namedChoice(this.b, $$1);
-      Type<?> $$4 = bbb.a($$0, $$0, $$2);
-      return this.a($$0, $$2, $$4, $$3);
+   @Override
+   protected Typed<?> a(Typed<?> $$0) {
+      Type<?> $$1 = this.getOutputSchema().getChoiceType(this.b, this.a);
+      return bbd.a($$1, $$0);
    }
-
-   private <S, T, A> TypeRewriteRule a(Type<S> $$0, Type<T> $$1, Type<?> $$2, OpticFinder<A> $$3) {
-      return this.fixTypeEverywhereTyped(this.a, $$0, $$1, $$3x -> {
-         if ($$3x.getOptional($$3).isEmpty()) {
-            return bbb.a($$1, $$3x);
-         } else {
-            Typed<?> $$4 = bbb.a($$2, $$3x);
-            return af.a((Typed<A>)$$4, $$1, this::a);
-         }
-      });
-   }
-
-   protected abstract <T> Dynamic<T> a(Dynamic<T> var1);
 }

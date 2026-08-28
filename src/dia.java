@@ -1,4 +1,2 @@
-@FunctionalInterface
-public interface dia {
-   int getColor(djs var1, double var2, double var4);
+public record dia(iu a, dma b, int c, int d) {
 }

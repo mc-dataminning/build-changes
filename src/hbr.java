@@ -1,4 +1,3 @@
-public class hbr extends hbp {
-   public float a;
-   public float b;
+public class hbr extends hea {
+   public boolean a;
 }

@@ -1,8 +1,12 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+import java.io.IOException;
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface hih {
+public class hih extends hig {
+   public hih(alg $$0) {
+      super($$0);
+   }
+
+   @Override
+   public hiq a(avd $$0) throws IOException {
+      return hiq.a($$0, this.d());
+   }
 }

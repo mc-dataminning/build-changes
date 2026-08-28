@@ -2,61 +2,91 @@ import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Set;
+import javax.annotation.Nullable;
 
-public record fcu(fdb b, String c, float d) implements fcs {
-   public static final MapCodec<fcu> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(
-               fdc.a.fieldOf("target").forGetter(fcu::c),
-               Codec.STRING.fieldOf("score").forGetter(fcu::d),
-               Codec.FLOAT.fieldOf("scale").orElse(1.0F).forGetter(fcu::e)
-            )
-            .apply($$0, fcu::new)
-   );
-
-   @Override
-   public fcr b() {
-      return fct.e;
-   }
-
-   @Override
-   public Set<bav<?>> a() {
-      return this.b.b();
-   }
-
-   public static fcu a(eyn.b $$0, String $$1) {
-      return a($$0, $$1, 1.0F);
-   }
-
-   public static fcu a(eyn.b $$0, String $$1, float $$2) {
-      return new fcu(fcy.a($$0), $$1, $$2);
-   }
-
-   @Override
-   public float b(eyn $$0) {
-      ffa $$1 = this.b.a($$0);
-      if ($$1 == null) {
-         return 0.0F;
-      } else {
-         ffb $$2 = $$0.d().g();
-         fet $$3 = $$2.a(this.c);
-         if ($$3 == null) {
-            return 0.0F;
-         } else {
-            fex $$4 = $$2.d($$1, $$3);
-            return $$4 == null ? 0.0F : (float)$$4.a() * this.d;
-         }
+public class fcu implements fcw {
+   private static final String d = "block_entity";
+   private static final fcu.a e = new fcu.a() {
+      @Override
+      public uw a(eyz $$0) {
+         dwx $$1 = $$0.c(fbt.h);
+         return $$1 != null ? $$1.b($$1.i().F_()) : null;
       }
+
+      @Override
+      public String a() {
+         return "block_entity";
+      }
+
+      @Override
+      public Set<bax<?>> b() {
+         return Set.of(fbt.h);
+      }
+   };
+   public static final fcu a = new fcu(e);
+   private static final Codec<fcu.a> f = Codec.STRING.xmap($$0 -> {
+      if ($$0.equals("block_entity")) {
+         return e;
+      } else {
+         eyz.b $$1 = eyz.b.a($$0);
+         return b($$1);
+      }
+   }, fcu.a::a);
+   public static final MapCodec<fcu> b = RecordCodecBuilder.mapCodec($$0 -> $$0.group(f.fieldOf("target").forGetter($$0x -> $$0x.g)).apply($$0, fcu::new));
+   public static final Codec<fcu> c = f.xmap(fcu::new, $$0 -> $$0.g);
+   private final fcu.a g;
+
+   private static fcu.a b(final eyz.b $$0) {
+      return new fcu.a() {
+         @Nullable
+         @Override
+         public uw a(eyz $$0x) {
+            bwd $$1 = $$0.c($$0.a());
+            return $$1 != null ? cy.b($$1) : null;
+         }
+
+         @Override
+         public String a() {
+            return $$0.name();
+         }
+
+         @Override
+         public Set<bax<?>> b() {
+            return Set.of($$0.a());
+         }
+      };
    }
 
-   public fdb c() {
-      return this.b;
+   private fcu(fcu.a $$0) {
+      this.g = $$0;
    }
 
-   public String d() {
-      return this.c;
+   @Override
+   public fcv a() {
+      return fcx.c;
    }
 
-   public float e() {
-      return this.d;
+   @Nullable
+   @Override
+   public uw a(eyz $$0) {
+      return this.g.a($$0);
+   }
+
+   @Override
+   public Set<bax<?>> b() {
+      return this.g.b();
+   }
+
+   public static fcw a(eyz.b $$0) {
+      return new fcu(b($$0));
+   }
+
+   interface a {
+      @Nullable
+      uw a(eyz var1);
+
+      String a();
+
+      Set<bax<?>> b();
    }
 }

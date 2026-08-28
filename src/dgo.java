@@ -1,9 +1,20 @@
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public interface dgo {
-   static MapCodec<? extends dgn> a(jr<MapCodec<? extends dgn>> $$0) {
-      jr.a($$0, "by_cost", dgp.b);
-      jr.a($$0, "by_cost_with_difficulty", dgq.c);
-      return jr.a($$0, "single", dgr.b);
+public record dgo(dfs c) implements dge {
+   public static final MapCodec<dgo> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(dfs.b.fieldOf("value").forGetter(dgo::b)).apply($$0, dgo::new));
+
+   @Override
+   public float a(int $$0, azv $$1, float $$2) {
+      return this.c.a($$0);
+   }
+
+   @Override
+   public MapCodec<dgo> a() {
+      return a;
+   }
+
+   public dfs b() {
+      return this.c;
    }
 }

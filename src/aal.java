@@ -1,16 +1,17 @@
-public record aal() implements aag {
-   public static final yu<vs, aal> a = aag.a(aal::a, aal::new);
-   public static final aag.b<aal> b = aag.a("debug/game_test_clear");
-
-   private aal(vs $$0) {
-      this();
-   }
-
-   private void a(vs $$0) {
-   }
+public record aal(efd c, int d) implements aai {
+   public static final yw<wj, aal> a = yw.a(efd.d, aal::b, yu.h, aal::c, aal::new);
+   public static final aai.b<aal> b = aai.a("debug/game_event_listeners");
 
    @Override
-   public aag.b<aal> a() {
+   public aai.b<aal> a() {
       return b;
+   }
+
+   public efd b() {
+      return this.c;
+   }
+
+   public int c() {
+      return this.d;
    }
 }

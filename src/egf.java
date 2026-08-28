@@ -1,284 +1,327 @@
-import java.util.Arrays;
-import java.util.Optional;
-import java.util.function.Function;
+import java.util.stream.Stream;
 
 public class egf {
-   private static final dzo a = dlw.hG.m();
-   private static final dzo b = dlw.hH.m();
-   private static final dzo c = dlw.iY.m();
-   private static final dzo d = dlw.hK.m();
-   private static final dzo e = dlw.hS.m();
-   private static final dzo f = dlw.hU.m();
-   private static final dzo g = dlw.hO.m();
-   private static final dzo h = dlw.ja.m();
-   private static final dzo i = dlw.ec.m();
-   private final dzo j;
-   private final int k;
-   private final dzo[] l;
-   private final euy m;
-   private final euy n;
-   private final euy o;
-   private final euy p;
-   private final euy q;
-   private final euy r;
-   private final euy s;
-   private final ega t;
-   private final euy u;
-   private final euy v;
+   public static final float a = -0.50375F;
+   private static final float n = 0.08F;
+   private static final double o = 1.5;
+   private static final double p = 1.5;
+   private static final double q = 1.5625;
+   private static final double r = -0.703125;
+   public static final int b = 64;
+   public static final long c = 4096L;
+   private static final efr s = efs.a(10.0);
+   private static final efr t = efs.a();
+   private static final alf<efr> u = a("zero");
+   private static final alf<efr> v = a("y");
+   private static final alf<efr> w = a("shift_x");
+   private static final alf<efr> x = a("shift_z");
+   private static final alf<efr> y = a("overworld/base_3d_noise");
+   private static final alf<efr> z = a("nether/base_3d_noise");
+   private static final alf<efr> A = a("end/base_3d_noise");
+   public static final alf<efr> d = a("overworld/continents");
+   public static final alf<efr> e = a("overworld/erosion");
+   public static final alf<efr> f = a("overworld/ridges");
+   public static final alf<efr> g = a("overworld/ridges_folded");
+   public static final alf<efr> h = a("overworld/offset");
+   public static final alf<efr> i = a("overworld/factor");
+   public static final alf<efr> j = a("overworld/jaggedness");
+   public static final alf<efr> k = a("overworld/depth");
+   private static final alf<efr> B = a("overworld/sloped_cheese");
+   public static final alf<efr> l = a("overworld_large_biomes/continents");
+   public static final alf<efr> m = a("overworld_large_biomes/erosion");
+   private static final alf<efr> C = a("overworld_large_biomes/offset");
+   private static final alf<efr> D = a("overworld_large_biomes/factor");
+   private static final alf<efr> E = a("overworld_large_biomes/jaggedness");
+   private static final alf<efr> F = a("overworld_large_biomes/depth");
+   private static final alf<efr> G = a("overworld_large_biomes/sloped_cheese");
+   private static final alf<efr> H = a("overworld_amplified/offset");
+   private static final alf<efr> I = a("overworld_amplified/factor");
+   private static final alf<efr> J = a("overworld_amplified/jaggedness");
+   private static final alf<efr> K = a("overworld_amplified/depth");
+   private static final alf<efr> L = a("overworld_amplified/sloped_cheese");
+   private static final alf<efr> M = a("end/sloped_cheese");
+   private static final alf<efr> N = a("overworld/caves/spaghetti_roughness_function");
+   private static final alf<efr> O = a("overworld/caves/entrances");
+   private static final alf<efr> P = a("overworld/caves/noodle");
+   private static final alf<efr> Q = a("overworld/caves/pillars");
+   private static final alf<efr> R = a("overworld/caves/spaghetti_2d_thickness_modulator");
+   private static final alf<efr> S = a("overworld/caves/spaghetti_2d");
 
-   public egf(egb $$0, dzo $$1, int $$2, ega $$3) {
-      this.j = $$1;
-      this.k = $$2;
-      this.t = $$3;
-      this.m = $$0.a(efw.P);
-      this.l = a($$3.a(ale.b("clay_bands")));
-      this.u = $$0.a(efw.N);
-      this.v = $$0.a(efw.O);
-      this.n = $$0.a(efw.Q);
-      this.o = $$0.a(efw.R);
-      this.p = $$0.a(efw.S);
-      this.q = $$0.a(efw.T);
-      this.r = $$0.a(efw.U);
-      this.s = $$0.a(efw.V);
+   private static alf<efr> a(String $$0) {
+      return alf.a(mg.aN, alg.b($$0));
    }
 
-   public void a(egb $$0, dju $$1, jr<djs> $$2, boolean $$3, egk $$4, final ebl $$5, efr $$6, ege.o $$7) {
-      final iu.a $$8 = new iu.a();
-      final dhw $$9 = $$5.f();
-      int $$10 = $$9.d();
-      int $$11 = $$9.e();
-      ebi $$12 = new ebi() {
-         @Override
-         public dzo a(int $$0) {
-            return $$5.a_($$8.q($$0));
-         }
-
-         @Override
-         public void a(int $$0, dzo $$1) {
-            dir $$2 = $$5.B();
-            if ($$2.d($$0)) {
-               $$5.a($$8.q($$0), $$1);
-               if (!$$1.y().c()) {
-                  $$5.e($$8);
-               }
-            }
-         }
-
-         @Override
-         public String toString() {
-            return "ChunkBlockColumn " + $$9;
-         }
-      };
-      ege.g $$13 = new ege.g(this, $$0, $$5, $$6, $$1::a, $$2, $$4);
-      ege.u $$14 = $$7.apply($$13);
-      iu.a $$15 = new iu.a();
-
-      for (int $$16 = 0; $$16 < 16; $$16++) {
-         for (int $$17 = 0; $$17 < 16; $$17++) {
-            int $$18 = $$10 + $$16;
-            int $$19 = $$11 + $$17;
-            int $$20 = $$5.a(efn.a.a, $$16, $$17) + 1;
-            $$8.p($$18).r($$19);
-            je<djs> $$21 = $$1.a($$15.d($$18, $$3 ? 0 : $$20, $$19));
-            if ($$21.a(djz.C)) {
-               this.a($$12, $$18, $$19, $$20, $$5);
-            }
-
-            int $$22 = $$5.a(efn.a.a, $$16, $$17) + 1;
-            $$13.a($$18, $$19);
-            int $$23 = 0;
-            int $$24 = Integer.MIN_VALUE;
-            int $$25 = Integer.MAX_VALUE;
-            int $$26 = $$5.G_();
-
-            for (int $$27 = $$22; $$27 >= $$26; $$27--) {
-               dzo $$28 = $$12.a($$27);
-               if ($$28.l()) {
-                  $$23 = 0;
-                  $$24 = Integer.MIN_VALUE;
-               } else if (!$$28.y().c()) {
-                  if ($$24 == Integer.MIN_VALUE) {
-                     $$24 = $$27 + 1;
-                  }
-               } else {
-                  if ($$25 >= $$27) {
-                     $$25 = edl.g;
-
-                     for (int $$29 = $$27 - 1; $$29 >= $$26 - 1; $$29--) {
-                        dzo $$30 = $$12.a($$29);
-                        if (!this.a($$30)) {
-                           $$25 = $$29 + 1;
-                           break;
-                        }
-                     }
-                  }
-
-                  $$23++;
-                  int $$31 = $$27 - $$25 + 1;
-                  $$13.a($$23, $$31, $$24, $$18, $$27, $$19);
-                  if ($$28 == this.j) {
-                     dzo $$32 = $$14.tryApply($$18, $$27, $$19);
-                     if ($$32 != null) {
-                        $$12.a($$27, $$32);
-                     }
-                  }
-               }
-            }
-
-            if ($$21.a(djz.X) || $$21.a(djz.Y)) {
-               this.a($$13.c(), $$21.a(), $$12, $$15, $$18, $$19, $$20);
-            }
-         }
-      }
+   public static je<? extends efr> a(qh<efr> $$0) {
+      jf<evj.a> $$1 = $$0.a(mg.aX);
+      jf<efr> $$2 = $$0.a(mg.aN);
+      $$0.a(u, efs.a());
+      int $$3 = edw.e * 2;
+      int $$4 = edw.d * 2;
+      $$0.a(v, efs.a($$3, $$4, (double)$$3, (double)$$4));
+      efr $$5 = a($$0, w, efs.b(efs.c(efs.b($$1.b(egh.j)))));
+      efr $$6 = a($$0, x, efs.b(efs.c(efs.c($$1.b(egh.j)))));
+      $$0.a(y, evg.a(0.25, 0.125, 80.0, 160.0, 8.0));
+      $$0.a(z, evg.a(0.25, 0.375, 80.0, 60.0, 8.0));
+      $$0.a(A, evg.a(0.25, 0.25, 80.0, 160.0, 4.0));
+      je<efr> $$7 = $$0.a(d, efs.b(efs.a($$5, $$6, 0.25, $$1.b(egh.c))));
+      je<efr> $$8 = $$0.a(e, efs.b(efs.a($$5, $$6, 0.25, $$1.b(egh.d))));
+      efr $$9 = a($$0, f, efs.b(efs.a($$5, $$6, 0.25, $$1.b(egh.i))));
+      $$0.a(g, a($$9));
+      efr $$10 = efs.b($$1.b(egh.M), 1500.0, 0.0);
+      a($$0, $$2, $$10, $$7, $$8, h, i, j, k, B, false);
+      je<efr> $$11 = $$0.a(l, efs.b(efs.a($$5, $$6, 0.25, $$1.b(egh.g))));
+      je<efr> $$12 = $$0.a(m, efs.b(efs.a($$5, $$6, 0.25, $$1.b(egh.h))));
+      a($$0, $$2, $$10, $$11, $$12, C, D, E, F, G, false);
+      a($$0, $$2, $$10, $$7, $$8, H, I, J, K, L, true);
+      $$0.a(M, efs.a(efs.a(0L), a($$2, A)));
+      $$0.a(N, b($$1));
+      $$0.a(R, efs.d(efs.a($$1.b(egh.u), 2.0, 1.0, -0.6, -1.3)));
+      $$0.a(S, f($$2, $$1));
+      $$0.a(O, d($$2, $$1));
+      $$0.a(P, e($$2, $$1));
+      return $$0.a(Q, c($$1));
    }
 
-   protected int a(int $$0, int $$1) {
-      double $$2 = this.u.a((double)$$0, 0.0, (double)$$1);
-      return (int)($$2 * 2.75 + 3.0 + this.t.a($$0, 0, $$1).j() * 0.25);
+   private static void a(
+      qh<efr> $$0, jf<efr> $$1, efr $$2, je<efr> $$3, je<efr> $$4, alf<efr> $$5, alf<efr> $$6, alf<efr> $$7, alf<efr> $$8, alf<efr> $$9, boolean $$10
+   ) {
+      efs.w.a $$11 = new efs.w.a($$3);
+      efs.w.a $$12 = new efs.w.a($$4);
+      efs.w.a $$13 = new efs.w.a($$1.b(f));
+      efs.w.a $$14 = new efs.w.a($$1.b(g));
+      efr $$15 = a($$0, $$5, a(efs.a(efs.a(-0.50375F), efs.a(qw.a($$11, $$12, $$14, $$10))), efs.c()));
+      efr $$16 = a($$0, $$6, a(efs.a(qw.a($$11, $$12, $$13, $$14, $$10)), s));
+      efr $$17 = a($$0, $$8, efs.a(efs.a(-64, 320, 1.5, -1.5), $$15));
+      efr $$18 = a($$0, $$7, a(efs.a(qw.b($$11, $$12, $$13, $$14, $$10)), t));
+      efr $$19 = efs.b($$18, $$2.g());
+      efr $$20 = b($$16, efs.a($$17, $$19));
+      $$0.a($$9, efs.a($$20, a($$1, y)));
    }
 
-   protected double b(int $$0, int $$1) {
-      return this.v.a((double)$$0, 0.0, (double)$$1);
+   private static efr a(qh<efr> $$0, alf<efr> $$1, efr $$2) {
+      return new efs.j($$0.a($$1, $$2));
    }
 
-   private boolean a(dzo $$0) {
-      return !$$0.l() && $$0.y().c();
+   private static efr a(jf<efr> $$0, alf<efr> $$1) {
+      return new efs.j($$0.b($$1));
    }
 
-   public int a() {
-      return this.k;
+   private static efr a(efr $$0) {
+      return efs.b(efs.a(efs.a($$0.d(), efs.a(-0.6666666666666666)).d(), efs.a(-0.3333333333333333)), efs.a(-3.0));
    }
 
-   @Deprecated
-   public Optional<dzo> a(ege.o $$0, eho $$1, Function<iu, je<djs>> $$2, ebl $$3, efr $$4, iu $$5, boolean $$6) {
-      ege.g $$7 = new ege.g(this, $$1.d(), $$3, $$4, $$2, $$1.c().f(mg.aG), $$1);
-      ege.u $$8 = $$0.apply($$7);
-      int $$9 = $$5.u();
-      int $$10 = $$5.v();
-      int $$11 = $$5.w();
-      $$7.a($$9, $$11);
-      $$7.a(1, 1, $$6 ? $$10 + 1 : Integer.MIN_VALUE, $$9, $$10, $$11);
-      dzo $$12 = $$8.tryApply($$9, $$10, $$11);
-      return Optional.ofNullable($$12);
+   public static float a(float $$0) {
+      return -(Math.abs(Math.abs($$0) - 0.6666667F) - 0.33333334F) * 3.0F;
    }
 
-   private void a(ebi $$0, int $$1, int $$2, int $$3, dir $$4) {
-      double $$5 = 0.2;
-      double $$6 = Math.min(Math.abs(this.p.a((double)$$1, 0.0, (double)$$2) * 8.25), this.n.a((double)$$1 * 0.2, 0.0, (double)$$2 * 0.2) * 15.0);
-      if (!($$6 <= 0.0)) {
-         double $$7 = 0.75;
-         double $$8 = 1.5;
-         double $$9 = Math.abs(this.o.a((double)$$1 * 0.75, 0.0, (double)$$2 * 0.75) * 1.5);
-         double $$10 = 64.0 + Math.min($$6 * $$6 * 2.5, Math.ceil($$9 * 50.0) + 24.0);
-         int $$11 = azk.a($$10);
-         if ($$3 <= $$11) {
-            for (int $$12 = $$11; $$12 >= $$4.G_(); $$12--) {
-               dzo $$13 = $$0.a($$12);
-               if ($$13.a(this.j.b())) {
-                  break;
-               }
-
-               if ($$13.a(dlw.J)) {
-                  return;
-               }
-            }
-
-            for (int $$14 = $$11; $$14 >= $$4.G_() && $$0.a($$14).l(); $$14--) {
-               $$0.a($$14, this.j);
-            }
-         }
-      }
+   private static efr b(jf<evj.a> $$0) {
+      efr $$1 = efs.a($$0.b(egh.z));
+      efr $$2 = efs.a($$0.b(egh.A), 0.0, -0.1);
+      return efs.d(efs.b($$2, efs.a($$1.d(), efs.a(-0.4))));
    }
 
-   private void a(int $$0, djs $$1, ebi $$2, iu.a $$3, int $$4, int $$5, int $$6) {
-      double $$7 = 1.28;
-      double $$8 = Math.min(Math.abs(this.s.a((double)$$4, 0.0, (double)$$5) * 8.25), this.q.a((double)$$4 * 1.28, 0.0, (double)$$5 * 1.28) * 15.0);
-      if (!($$8 <= 1.8)) {
-         double $$9 = 1.17;
-         double $$10 = 1.5;
-         double $$11 = Math.abs(this.r.a((double)$$4 * 1.17, 0.0, (double)$$5 * 1.17) * 1.5);
-         double $$12 = Math.min($$8 * $$8 * 1.2, Math.ceil($$11 * 40.0) + 14.0);
-         if ($$1.d($$3.d($$4, this.k, $$5), this.k)) {
-            $$12 -= 2.0;
-         }
+   private static efr d(jf<efr> $$0, jf<evj.a> $$1) {
+      efr $$2 = efs.d(efs.b($$1.b(egh.x), 2.0, 1.0));
+      efr $$3 = efs.a($$1.b(egh.y), -0.065, -0.088);
+      efr $$4 = efs.a($$2, $$1.b(egh.v), efs.z.a.a);
+      efr $$5 = efs.a($$2, $$1.b(egh.w), efs.z.a.a);
+      efr $$6 = efs.a(efs.d($$4, $$5), $$3).a(-1.0, 1.0);
+      efr $$7 = a($$0, N);
+      efr $$8 = efs.b($$1.b(egh.B), 0.75, 0.5);
+      efr $$9 = efs.a(efs.a($$8, efs.a(0.37)), efs.a(-10, 30, 0.3, 0.0));
+      return efs.d(efs.c($$9, efs.a($$7, $$6)));
+   }
 
-         double $$13;
-         if ($$12 > 2.0) {
-            $$13 = (double)this.k - $$12 - 7.0;
-            $$12 += (double)this.k;
+   private static efr e(jf<efr> $$0, jf<evj.a> $$1) {
+      efr $$2 = a($$0, v);
+      int $$3 = -64;
+      int $$4 = -60;
+      int $$5 = 320;
+      efr $$6 = a($$2, efs.b($$1.b(egh.I), 1.0, 1.0), -60, 320, -1);
+      efr $$7 = a($$2, efs.a($$1.b(egh.J), 1.0, 1.0, -0.05, -0.1), -60, 320, 0);
+      double $$8 = 2.6666666666666665;
+      efr $$9 = a($$2, efs.b($$1.b(egh.K), 2.6666666666666665, 2.6666666666666665), -60, 320, 0);
+      efr $$10 = a($$2, efs.b($$1.b(egh.L), 2.6666666666666665, 2.6666666666666665), -60, 320, 0);
+      efr $$11 = efs.b(efs.a(1.5), efs.d($$9.d(), $$10.d()));
+      return efs.a($$6, -1000000.0, 0.0, efs.a(64.0), efs.a($$7, $$11));
+   }
+
+   private static efr c(jf<evj.a> $$0) {
+      double $$1 = 25.0;
+      double $$2 = 0.3;
+      efr $$3 = efs.b($$0.b(egh.o), 25.0, 0.3);
+      efr $$4 = efs.a($$0.b(egh.p), 0.0, -2.0);
+      efr $$5 = efs.a($$0.b(egh.q), 0.0, 1.1);
+      efr $$6 = efs.a(efs.b($$3, efs.a(2.0)), $$4);
+      return efs.d(efs.b($$6, $$5.f()));
+   }
+
+   private static efr f(jf<efr> $$0, jf<evj.a> $$1) {
+      efr $$2 = efs.b($$1.b(egh.t), 2.0, 1.0);
+      efr $$3 = efs.a($$2, $$1.b(egh.r), efs.z.a.b);
+      efr $$4 = efs.a($$1.b(egh.s), 0.0, (double)Math.floorDiv(-64, 8), 8.0);
+      efr $$5 = a($$0, R);
+      efr $$6 = efs.a($$4, efs.a(-64, 320, 8.0, -40.0)).d();
+      efr $$7 = efs.a($$6, $$5).f();
+      double $$8 = 0.083;
+      efr $$9 = efs.a($$3, efs.b(efs.a(0.083), $$5));
+      return efs.d($$9, $$7).a(-1.0, 1.0);
+   }
+
+   private static efr a(jf<efr> $$0, jf<evj.a> $$1, efr $$2) {
+      efr $$3 = a($$0, S);
+      efr $$4 = a($$0, N);
+      efr $$5 = efs.a($$1.b(egh.C), 8.0);
+      efr $$6 = efs.b(efs.a(4.0), $$5.e());
+      efr $$7 = efs.a($$1.b(egh.D), 0.6666666666666666);
+      efr $$8 = efs.a(efs.a(efs.a(0.27), $$7).a(-1.0, 1.0), efs.a(efs.a(1.5), efs.b(efs.a(-0.64), $$2)).a(0.0, 0.5));
+      efr $$9 = efs.a($$6, $$8);
+      efr $$10 = efs.c(efs.c($$9, a($$0, O)), efs.a($$3, $$4));
+      efr $$11 = a($$0, Q);
+      efr $$12 = efs.a($$11, -1000000.0, 0.03, efs.a(-1000000.0), $$11);
+      return efs.d($$10, $$12);
+   }
+
+   private static efr b(efr $$0) {
+      efr $$1 = efs.f($$0);
+      return efs.b(efs.a($$1), efs.a(0.64)).i();
+   }
+
+   protected static ege a(jf<efr> $$0, jf<evj.a> $$1, boolean $$2, boolean $$3) {
+      efr $$4 = efs.a($$1.b(egh.k), 0.5);
+      efr $$5 = efs.a($$1.b(egh.l), 0.67);
+      efr $$6 = efs.a($$1.b(egh.n), 0.7142857142857143);
+      efr $$7 = efs.a($$1.b(egh.m));
+      efr $$8 = a($$0, w);
+      efr $$9 = a($$0, x);
+      efr $$10 = efs.a($$8, $$9, 0.25, $$1.b($$2 ? egh.e : egh.a));
+      efr $$11 = efs.a($$8, $$9, 0.25, $$1.b($$2 ? egh.f : egh.b));
+      efr $$12 = a($$0, $$2 ? D : ($$3 ? I : i));
+      efr $$13 = a($$0, $$2 ? F : ($$3 ? K : k));
+      efr $$14 = b(efs.c($$12), $$13);
+      efr $$15 = a($$0, $$2 ? G : ($$3 ? L : B));
+      efr $$16 = efs.c($$15, efs.b(efs.a(5.0), a($$0, O)));
+      efr $$17 = efs.a($$15, -1000000.0, 1.5625, $$16, a($$0, $$1, $$15));
+      efr $$18 = efs.c(b(a($$3, $$17)), a($$0, P));
+      efr $$19 = a($$0, v);
+      int $$20 = Stream.of(egi.a.values()).mapToInt($$0x -> $$0x.c).min().orElse(-edw.e * 2);
+      int $$21 = Stream.of(egi.a.values()).mapToInt($$0x -> $$0x.d).max().orElse(-edw.e * 2);
+      efr $$22 = a($$19, efs.b($$1.b(egh.E), 1.5, 1.5), $$20, $$21, 0);
+      float $$23 = 4.0F;
+      efr $$24 = a($$19, efs.b($$1.b(egh.F), 4.0, 4.0), $$20, $$21, 0).d();
+      efr $$25 = a($$19, efs.b($$1.b(egh.G), 4.0, 4.0), $$20, $$21, 0).d();
+      efr $$26 = efs.a(efs.a(-0.08F), efs.d($$24, $$25));
+      efr $$27 = efs.a($$1.b(egh.H));
+      return new ege(
+         $$4,
+         $$5,
+         $$6,
+         $$7,
+         $$10,
+         $$11,
+         a($$0, $$2 ? l : d),
+         a($$0, $$2 ? m : e),
+         $$13,
+         a($$0, f),
+         a($$3, efs.a($$14, efs.a(-0.703125)).a(-64.0, 64.0)),
+         $$18,
+         $$22,
+         $$26,
+         $$27
+      );
+   }
+
+   private static ege b(jf<efr> $$0, jf<evj.a> $$1, efr $$2) {
+      efr $$3 = a($$0, w);
+      efr $$4 = a($$0, x);
+      efr $$5 = efs.a($$3, $$4, 0.25, $$1.b(egh.a));
+      efr $$6 = efs.a($$3, $$4, 0.25, $$1.b(egh.b));
+      efr $$7 = b($$2);
+      return new ege(efs.a(), efs.a(), efs.a(), efs.a(), $$5, $$6, efs.a(), efs.a(), efs.a(), efs.a(), efs.a(), $$7, efs.a(), efs.a(), efs.a());
+   }
+
+   private static efr a(boolean $$0, efr $$1) {
+      return a($$1, -64, 384, $$0 ? 16 : 80, $$0 ? 0 : 64, -0.078125, 0, 24, $$0 ? 0.4 : 0.1171875);
+   }
+
+   private static efr a(jf<efr> $$0, int $$1, int $$2) {
+      return a(a($$0, z), $$1, $$2, 24, 0, 0.9375, -8, 24, 2.5);
+   }
+
+   private static efr a(efr $$0, int $$1, int $$2) {
+      return a($$0, $$1, $$2, 72, -184, -23.4375, 4, 32, -0.234375);
+   }
+
+   protected static ege a(jf<efr> $$0, jf<evj.a> $$1) {
+      return b($$0, $$1, a($$0, 0, 128));
+   }
+
+   protected static ege b(jf<efr> $$0, jf<evj.a> $$1) {
+      return b($$0, $$1, a($$0, -64, 192));
+   }
+
+   protected static ege c(jf<efr> $$0, jf<evj.a> $$1) {
+      return b($$0, $$1, a(a($$0, A), 0, 256));
+   }
+
+   private static efr c(efr $$0) {
+      return a($$0, 0, 128);
+   }
+
+   protected static ege a(jf<efr> $$0) {
+      efr $$1 = efs.c(efs.a(0L));
+      efr $$2 = b(c(a($$0, M)));
+      return new ege(
+         efs.a(), efs.a(), efs.a(), efs.a(), efs.a(), efs.a(), efs.a(), $$1, efs.a(), efs.a(), c(efs.a($$1, efs.a(-0.703125))), $$2, efs.a(), efs.a(), efs.a()
+      );
+   }
+
+   protected static ege a() {
+      return new ege(efs.a(), efs.a(), efs.a(), efs.a(), efs.a(), efs.a(), efs.a(), efs.a(), efs.a(), efs.a(), efs.a(), efs.a(), efs.a(), efs.a(), efs.a());
+   }
+
+   private static efr a(efr $$0, efr $$1) {
+      efr $$2 = efs.a(efs.b(), $$1, $$0);
+      return efs.b(efs.c($$2));
+   }
+
+   private static efr b(efr $$0, efr $$1) {
+      efr $$2 = efs.b($$1, $$0);
+      return efs.b(efs.a(4.0), $$2.h());
+   }
+
+   private static efr a(efr $$0, efr $$1, int $$2, int $$3, int $$4) {
+      return efs.a(efs.a($$0, (double)$$2, (double)($$3 + 1), $$1, efs.a((double)$$4)));
+   }
+
+   private static efr a(efr $$0, int $$1, int $$2, int $$3, int $$4, double $$5, int $$6, int $$7, double $$8) {
+      efr $$10 = efs.a($$1 + $$2 - $$3, $$1 + $$2 - $$4, 1.0, 0.0);
+      efr $$9 = efs.a($$10, $$5, $$0);
+      efr $$11 = efs.a($$1 + $$6, $$1 + $$7, 0.0, 1.0);
+      return efs.a($$11, $$8, $$9);
+   }
+
+   protected static final class a {
+      protected static double a(double $$0) {
+         if ($$0 < -0.75) {
+            return 0.5;
+         } else if ($$0 < -0.5) {
+            return 0.75;
+         } else if ($$0 < 0.5) {
+            return 1.0;
          } else {
-            $$12 = 0.0;
-            $$13 = 0.0;
-         }
-
-         double $$15 = $$12;
-         azt $$16 = this.t.a($$4, 0, $$5);
-         int $$17 = 2 + $$16.a(4);
-         int $$18 = this.k + 18 + $$16.a(10);
-         int $$19 = 0;
-
-         for (int $$20 = Math.max($$6, (int)$$12 + 1); $$20 >= $$0; $$20--) {
-            if ($$2.a($$20).l() && $$20 < (int)$$15 && $$16.j() > 0.01
-               || $$2.a($$20).a(dlw.J) && $$20 > (int)$$13 && $$20 < this.k && $$13 != 0.0 && $$16.j() > 0.15) {
-               if ($$19 <= $$17 && $$20 > $$18) {
-                  $$2.a($$20, i);
-                  $$19++;
-               } else {
-                  $$2.a($$20, h);
-               }
-            }
-         }
-      }
-   }
-
-   private static dzo[] a(azt $$0) {
-      dzo[] $$1 = new dzo[192];
-      Arrays.fill($$1, c);
-
-      for (int $$2 = 0; $$2 < $$1.length; $$2++) {
-         $$2 += $$0.a(5) + 1;
-         if ($$2 < $$1.length) {
-            $$1[$$2] = b;
+            return $$0 < 0.75 ? 2.0 : 3.0;
          }
       }
 
-      a($$0, $$1, 1, d);
-      a($$0, $$1, 2, e);
-      a($$0, $$1, 1, f);
-      int $$3 = $$0.a(9, 15);
-      int $$4 = 0;
-
-      for (int $$5 = 0; $$4 < $$3 && $$5 < $$1.length; $$5 += $$0.a(16) + 4) {
-         $$1[$$5] = a;
-         if ($$5 - 1 > 0 && $$0.h()) {
-            $$1[$$5 - 1] = g;
-         }
-
-         if ($$5 + 1 < $$1.length && $$0.h()) {
-            $$1[$$5 + 1] = g;
-         }
-
-         $$4++;
-      }
-
-      return $$1;
-   }
-
-   private static void a(azt $$0, dzo[] $$1, int $$2, dzo $$3) {
-      int $$4 = $$0.a(6, 15);
-
-      for (int $$5 = 0; $$5 < $$4; $$5++) {
-         int $$6 = $$2 + $$0.a(3);
-         int $$7 = $$0.a($$1.length);
-
-         for (int $$8 = 0; $$7 + $$8 < $$1.length && $$8 < $$6; $$8++) {
-            $$1[$$7 + $$8] = $$3;
+      protected static double b(double $$0) {
+         if ($$0 < -0.5) {
+            return 0.75;
+         } else if ($$0 < 0.0) {
+            return 1.0;
+         } else {
+            return $$0 < 0.5 ? 1.5 : 2.0;
          }
       }
-   }
-
-   protected dzo a(int $$0, int $$1, int $$2) {
-      int $$3 = (int)Math.round(this.m.a((double)$$0, 0.0, (double)$$2) * 4.0);
-      return this.l[($$1 + $$3 + this.l.length) % this.l.length];
    }
 }

@@ -1,5 +1,26 @@
-public class fvs {
-   public static boolean a(int $$0) {
-      return $$0 == 257 || $$0 == 32 || $$0 == 335;
+import java.util.function.Consumer;
+
+public interface fvs {
+   void j(int var1);
+
+   void k(int var1);
+
+   int F();
+
+   int G();
+
+   int A();
+
+   int y();
+
+   default fwj J() {
+      return new fwj(this.F(), this.G(), this.A(), this.y());
    }
+
+   default void c(int $$0, int $$1) {
+      this.j($$0);
+      this.k($$1);
+   }
+
+   void a(Consumer<fsa> var1);
 }

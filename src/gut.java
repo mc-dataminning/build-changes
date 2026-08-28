@@ -1,21 +1,17 @@
-public class gut extends gue<ciu, hbg, geq> {
-   private static final ale a = ale.b("textures/entity/chicken.png");
+@Deprecated
+public abstract class gut<T extends bxe, S extends hdf, M extends gfq<? super S>> extends gxf<T, S, M> {
+   private final M a;
+   private final M j;
 
-   public gut(gvk.a $$0) {
-      super($$0, new geq($$0.a(gif.Z)), new geq($$0.a(gif.aa)), 0.3F);
+   public gut(gvz.a $$0, M $$1, M $$2, float $$3) {
+      super($$0, $$1, $$3);
+      this.a = $$1;
+      this.j = $$2;
    }
 
-   public ale a(hbg $$0) {
-      return a;
-   }
-
-   public hbg a() {
-      return new hbg();
-   }
-
-   public void a(ciu $$0, hbg $$1, float $$2) {
-      super.a($$0, $$1, $$2);
-      $$1.a = azk.h($$2, $$0.bJ, $$0.bF);
-      $$1.b = azk.h($$2, $$0.bH, $$0.bG);
+   @Override
+   public void a(S $$0, fjc $$1, gps $$2, int $$3) {
+      this.g = $$0.aj ? this.j : this.a;
+      super.a($$0, $$1, $$2, $$3);
    }
 }

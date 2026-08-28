@@ -1,46 +1,26 @@
-public class dek extends dcz {
-   public dek(dcw $$0) {
-      super($$0);
-   }
+import java.util.Optional;
 
-   public boolean a(dcx $$0, dip $$1) {
-      if ($$0.f() == 3 && $$0.g() == 3 && $$0.e() == 9) {
-         for (int $$2 = 0; $$2 < $$0.g(); $$2++) {
-            for (int $$3 = 0; $$3 < $$0.f(); $$3++) {
-               cys $$4 = $$0.a($$3, $$2);
-               if ($$4.f()) {
-                  return false;
-               }
-
-               if ($$3 == 1 && $$2 == 1) {
-                  if (!$$4.a(cyw.wv)) {
-                     return false;
-                  }
-               } else if (!$$4.a(cyw.pf)) {
-                  return false;
-               }
-            }
-         }
-
-         return true;
-      } else {
-         return false;
-      }
-   }
-
-   public cys a(dcx $$0, jg.a $$1) {
-      cys $$2 = $$0.a(1, 1);
-      if (!$$2.a(cyw.wv)) {
-         return cys.k;
-      } else {
-         cys $$3 = new cys(cyw.wu, 8);
-         $$3.b(kj.R, $$2.a(kj.R));
-         return $$3;
-      }
+public interface dek extends ddp<del> {
+   @Override
+   default dea<dek> b() {
+      return dea.g;
    }
 
    @Override
-   public ddt<dek> a() {
-      return ddt.j;
+   ddz<? extends dek> a();
+
+   default boolean a(del $$0, div $$1) {
+      return ddl.a(this.c(), $$0.c()) && this.f().a($$0.d()) && ddl.a(this.k(), $$0.e());
+   }
+
+   Optional<ddl> c();
+
+   ddl f();
+
+   Optional<ddl> k();
+
+   @Override
+   default dds h() {
+      return ddr.l;
    }
 }

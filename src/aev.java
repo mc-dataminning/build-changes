@@ -1,32 +1,29 @@
-import javax.annotation.Nullable;
-
-public class aev implements zd<abs> {
-   public static final yu<vs, aev> a = zd.a(aev::a, aev::new);
+public class aev implements zf<abu> {
+   public static final yw<vu, aev> a = zf.a(aev::a, aev::new);
    private final int b;
 
-   public aev(bwa $$0) {
-      this.b = $$0.ar();
+   public aev(ebr $$0) {
+      this.b = $$0.q();
    }
 
-   private aev(vs $$0) {
+   private aev(vu $$0) {
       this.b = $$0.l();
    }
 
-   private void a(vs $$0) {
+   private void a(vu $$0) {
       $$0.c(this.b);
    }
 
    @Override
-   public zf<aev> a() {
-      return agl.aA;
+   public zh<aev> a() {
+      return agn.ay;
    }
 
-   public void a(abs $$0) {
+   public void a(abu $$0) {
       $$0.a(this);
    }
 
-   @Nullable
-   public bwa a(dip $$0) {
-      return $$0.a(this.b);
+   public int b() {
+      return this.b;
    }
 }

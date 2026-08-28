@@ -1,29 +1,36 @@
-import java.util.Locale;
+import javax.annotation.Nullable;
 
-public class fti extends ftf {
-   private static final int f = 500;
+public class fti extends fsa {
+   @Nullable
+   protected ftp a;
+   protected boolean b;
 
-   public fti(fra $$0, box $$1) {
-      super($$0, $$1);
+   public fti(int $$0, int $$1, int $$2, int $$3, boolean $$4) {
+      super($$0, $$1, $$2, $$3, wx.a);
+      this.b = $$4;
+   }
+
+   public void a(ftp $$0) {
+      this.a = $$0;
+   }
+
+   public void b(boolean $$0) {
+      this.b = $$0;
+   }
+
+   public boolean a() {
+      return this.b;
    }
 
    @Override
-   protected void d(frc $$0, int $$1, int $$2, int $$3) {
-      this.a($$0, "500 ms", $$1 + 1, $$3 - 60 + 1);
+   public void a(fvz $$0) {
+      this.c($$0);
    }
 
    @Override
-   protected String a(double $$0) {
-      return String.format(Locale.ROOT, "%d ms", (int)Math.round($$0));
-   }
-
-   @Override
-   protected int b(double $$0) {
-      return (int)Math.round($$0 * 60.0 / 500.0);
-   }
-
-   @Override
-   protected int a(long $$0) {
-      return this.a((double)$$0, 0.0, -16711936, 250.0, -256, 500.0, -65536);
+   public void b(fro $$0, int $$1, int $$2, float $$3) {
+      if (this.a != null) {
+         $$0.a(gqc::H, this.a.a(this.b, this.D()), this.F(), this.G(), this.g, this.h);
+      }
    }
 }

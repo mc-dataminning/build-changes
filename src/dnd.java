@@ -1,191 +1,292 @@
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import it.unimi.dsi.fastutil.floats.Float2FloatFunction;
+import java.util.List;
+import java.util.Map;
+import java.util.Optional;
+import java.util.function.BiPredicate;
+import java.util.function.Supplier;
 import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
-public class dnd extends dlg implements dpe {
-   public static final MapCodec<dnd> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(Codec.BOOL.fieldOf("automatic").forGetter($$0x -> $$0x.e), t()).apply($$0, dnd::new)
-   );
-   private static final Logger d = LogUtils.getLogger();
-   public static final eam<ja> b = dny.a;
-   public static final eaf c = eae.f;
-   private final boolean e;
-
-   @Override
-   public MapCodec<dnd> a() {
-      return a;
-   }
-
-   public dnd(boolean $$0, dzn.d $$1) {
-      super($$1);
-      this.l(this.B.b().b(b, ja.c).b(c, Boolean.valueOf(false)));
-      this.e = $$0;
-   }
-
-   @Override
-   public dwn a(iu $$0, dzo $$1) {
-      dwy $$2 = new dwy($$0, $$1);
-      $$2.b(this.e);
-      return $$2;
-   }
-
-   @Override
-   protected void a(dzo $$0, dip $$1, iu $$2, dlu $$3, @Nullable exd $$4, boolean $$5) {
-      if (!$$1.C) {
-         if ($$1.c_($$2) instanceof dwy $$7) {
-            this.a($$1, $$2, $$7, $$1.D($$2));
-         }
+public class dnd extends dku<dxf> implements dtj {
+   public static final MapCodec<dnd> b = b($$0 -> new dnd(() -> dwz.b, $$0));
+   public static final eax<ja> c = dqa.e;
+   public static final eax<ear> d = eap.bf;
+   public static final eaq e = eap.I;
+   public static final int f = 1;
+   private static final ffc g = dma.b(14.0, 0.0, 14.0);
+   private static final Map<ja, ffc> h = fez.c(dma.a(14.0, 0.0, 14.0, 0.0, 15.0));
+   private static final doi.b<dxf, Optional<btu>> i = new doi.b<dxf, Optional<btu>>() {
+      public Optional<btu> a(dxf $$0, dxf $$1) {
+         return Optional.of(new btt($$0, $$1));
       }
-   }
 
-   private void a(dip $$0, iu $$1, dwy $$2, boolean $$3) {
-      boolean $$4 = $$2.c();
-      if ($$3 != $$4) {
-         $$2.a($$3);
-         if ($$3) {
-            if ($$2.d() || $$2.s() == dwy.a.a) {
-               return;
+      public Optional<btu> a(dxf $$0) {
+         return Optional.of($$0);
+      }
+
+      public Optional<btu> a() {
+         return Optional.empty();
+      }
+   };
+   private static final doi.b<dxf, Optional<bud>> C = new doi.b<dxf, Optional<bud>>() {
+      public Optional<bud> a(final dxf $$0, final dxf $$1) {
+         final btu $$2 = new btt($$0, $$1);
+         return Optional.of(new bud() {
+            @Nullable
+            @Override
+            public cuq createMenu(int $$0x, cqx $$1x, cqy $$2x) {
+               if ($$0.d($$2) && $$1.d($$2)) {
+                  $$0.d_($$1.k);
+                  $$1.d_($$1.k);
+                  return cuz.b($$0, $$1, $$2);
+               } else {
+                  return null;
+               }
             }
 
-            $$2.k();
-            $$0.a($$1, this, 1);
-         }
+            @Override
+            public wy m_() {
+               if ($$0.h_()) {
+                  return $$0.m_();
+               } else {
+                  return (wy)($$1.h_() ? $$1.m_() : wy.c("container.chestDouble"));
+               }
+            }
+         });
       }
-   }
+
+      public Optional<bud> a(dxf $$0) {
+         return Optional.of($$0);
+      }
+
+      public Optional<bud> a() {
+         return Optional.empty();
+      }
+   };
 
    @Override
-   protected void a(dzo $$0, aro $$1, iu $$2, azt $$3) {
-      if ($$1.c_($$2) instanceof dwy $$5) {
-         dhq $$6 = $$5.a();
-         boolean $$7 = !baj.b($$6.m());
-         dwy.a $$8 = $$5.s();
-         boolean $$9 = $$5.j();
-         if ($$8 == dwy.a.b) {
-            $$5.k();
-            if ($$9) {
-               this.a($$0, $$1, $$2, $$6, $$7);
-            } else if ($$5.t()) {
-               $$6.a(0);
-            }
-
-            if ($$5.c() || $$5.d()) {
-               $$1.a($$2, this, 1);
-            }
-         } else if ($$8 == dwy.a.c) {
-            if ($$9) {
-               this.a($$0, $$1, $$2, $$6, $$7);
-            } else if ($$5.t()) {
-               $$6.a(0);
-            }
-         }
-
-         $$1.b($$2, this);
-      }
+   public MapCodec<? extends dnd> a() {
+      return b;
    }
 
-   private void a(dzo $$0, aro $$1, iu $$2, dhq $$3, boolean $$4) {
-      if ($$4) {
-         $$3.a($$1);
+   protected dnd(Supplier<dwz<? extends dxf>> $$0, dzy.d $$1) {
+      super($$1, $$0);
+      this.l(this.B.b().b(c, ja.c).b(d, ear.a).b(e, Boolean.valueOf(false)));
+   }
+
+   public static doi.a h(dzz $$0) {
+      ear $$1 = $$0.c(d);
+      if ($$1 == ear.a) {
+         return doi.a.a;
       } else {
-         $$3.a(0);
+         return $$1 == ear.c ? doi.a.b : doi.a.c;
       }
-
-      a($$1, $$2, $$0.c(b));
    }
 
    @Override
-   protected bty a(dzo $$0, dip $$1, iu $$2, cqs $$3, fds $$4) {
-      dwn $$5 = $$1.c_($$2);
-      if ($$5 instanceof dwy && $$3.gF()) {
-         $$3.a((dwy)$$5);
-         return bty.a;
+   protected dzz a(dzz $$0, diy $$1, djk $$2, iu $$3, ja $$4, iu $$5, dzz $$6, azv $$7) {
+      if ($$0.c(e)) {
+         $$2.a($$3, ewh.c, ewh.c.a($$1));
+      }
+
+      if ($$6.a(this) && $$4.o().d()) {
+         ear $$8 = $$6.c(d);
+         if ($$0.c(d) == ear.a && $$8 != ear.a && $$0.c(c) == $$6.c(c) && i($$6) == $$4.g()) {
+            return $$0.b(d, $$8.a());
+         }
+      } else if (i($$0) == $$4) {
+         return $$0.b(d, ear.a);
+      }
+
+      return super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
+   }
+
+   @Override
+   protected ffc a(dzz $$0, dib $$1, iu $$2, fen $$3) {
+      return switch ((ear)$$0.c(d)) {
+         case a -> g;
+         case b, c -> (ffc)h.get(i($$0));
+      };
+   }
+
+   public static ja i(dzz $$0) {
+      ja $$1 = $$0.c(c);
+      return $$0.c(d) == ear.b ? $$1.h() : $$1.i();
+   }
+
+   @Override
+   public dzz a(dcr $$0) {
+      ear $$1 = ear.a;
+      ja $$2 = $$0.g().g();
+      ewg $$3 = $$0.q().b_($$0.a());
+      boolean $$4 = $$0.h();
+      ja $$5 = $$0.k();
+      if ($$5.o().d() && $$4) {
+         ja $$6 = this.a($$0, $$5.g());
+         if ($$6 != null && $$6.o() != $$5.o()) {
+            $$2 = $$6;
+            $$1 = $$6.i() == $$5.g() ? ear.c : ear.b;
+         }
+      }
+
+      if ($$1 == ear.a && !$$4) {
+         if ($$2 == this.a($$0, $$2.h())) {
+            $$1 = ear.b;
+         } else if ($$2 == this.a($$0, $$2.i())) {
+            $$1 = ear.c;
+         }
+      }
+
+      return this.m().b(c, $$2).b(d, $$1).b(e, Boolean.valueOf($$3.a() == ewh.c));
+   }
+
+   @Override
+   protected ewg b_(dzz $$0) {
+      return $$0.c(e) ? ewh.c.a(false) : super.b_($$0);
+   }
+
+   @Nullable
+   private ja a(dcr $$0, ja $$1) {
+      dzz $$2 = $$0.q().a_($$0.a().a($$1));
+      return $$2.a(this) && $$2.c(d) == ear.a ? $$2.c(c) : null;
+   }
+
+   @Override
+   protected void a(dzz $$0, arq $$1, iu $$2, boolean $$3) {
+      btx.a($$0, $$1, $$2);
+   }
+
+   @Override
+   protected bub a(dzz $$0, div $$1, iu $$2, cqy $$3, fee $$4) {
+      if ($$1 instanceof arq $$5) {
+         bud $$6 = this.b($$0, $$1, $$2);
+         if ($$6 != null) {
+            $$3.a($$6);
+            $$3.b(this.c());
+            cpo.a($$5, $$3, true);
+         }
+      }
+
+      return bub.a;
+   }
+
+   protected awu<alg> c() {
+      return awx.i.b(awx.ao);
+   }
+
+   public dwz<? extends dxf> d() {
+      return this.a.get();
+   }
+
+   @Nullable
+   public static btu a(dnd $$0, dzz $$1, div $$2, iu $$3, boolean $$4) {
+      return $$0.a($$1, $$2, $$3, $$4).apply(i).orElse(null);
+   }
+
+   @Override
+   public doi.c<? extends dxf> a(dzz $$0, div $$1, iu $$2, boolean $$3) {
+      BiPredicate<diw, iu> $$4;
+      if ($$3) {
+         $$4 = ($$0x, $$1x) -> false;
       } else {
-         return bty.e;
+         $$4 = dnd::a;
       }
+
+      return doi.a(this.a.get(), dnd::h, dnd::i, c, $$0, $$1, $$2, $$4);
+   }
+
+   @Nullable
+   @Override
+   protected bud b(dzz $$0, div $$1, iu $$2) {
+      return this.a($$0, $$1, $$2, false).apply(C).orElse(null);
+   }
+
+   public static doi.b<dxf, Float2FloatFunction> a(final dye $$0) {
+      return new doi.b<dxf, Float2FloatFunction>() {
+         public Float2FloatFunction a(dxf $$0x, dxf $$1) {
+            return $$2 -> Math.max($$0.a($$2), $$1.a($$2));
+         }
+
+         public Float2FloatFunction a(dxf $$0x) {
+            return $$0::a;
+         }
+
+         public Float2FloatFunction a() {
+            return $$0::a;
+         }
+      };
    }
 
    @Override
-   protected boolean c_(dzo $$0) {
+   public dwx a(iu $$0, dzz $$1) {
+      return new dxf($$0, $$1);
+   }
+
+   @Nullable
+   @Override
+   public <T extends dwx> dwy<T> a(div $$0, dzz $$1, dwz<T> $$2) {
+      return $$0.C ? a($$2, this.d(), dxf::a) : null;
+   }
+
+   public static boolean a(diw $$0, iu $$1) {
+      return a((dib)$$0, $$1) || b($$0, $$1);
+   }
+
+   private static boolean a(dib $$0, iu $$1) {
+      iu $$2 = $$1.d();
+      return $$0.a_($$2).d($$0, $$2);
+   }
+
+   private static boolean b(diw $$0, iu $$1) {
+      List<civ> $$2 = $$0.a(
+         civ.class, new fed((double)$$1.u(), (double)($$1.v() + 1), (double)$$1.w(), (double)($$1.u() + 1), (double)($$1.v() + 2), (double)($$1.w() + 1))
+      );
+      if (!$$2.isEmpty()) {
+         for (civ $$3 : $$2) {
+            if ($$3.x()) {
+               return true;
+            }
+         }
+      }
+
+      return false;
+   }
+
+   @Override
+   protected boolean c_(dzz $$0) {
       return true;
    }
 
    @Override
-   protected int a(dzo $$0, dip $$1, iu $$2) {
-      dwn $$3 = $$1.c_($$2);
-      return $$3 instanceof dwy ? ((dwy)$$3).a().k() : 0;
+   protected int a(dzz $$0, div $$1, iu $$2) {
+      return cuq.b(a(this, $$0, $$1, $$2, false));
    }
 
    @Override
-   public void a(dip $$0, iu $$1, dzo $$2, bwz $$3, cys $$4) {
-      if ($$0.c_($$1) instanceof dwy $$6) {
-         dhq $$8 = $$6.a();
-         if ($$0 instanceof aro $$9) {
-            if (!$$4.c(kj.aa)) {
-               $$8.a($$9.O().c(dil.p));
-               $$6.b(this.e);
-            }
-
-            boolean $$10 = $$0.D($$1);
-            this.a($$0, $$1, $$6, $$10);
-         }
-      }
+   protected dzz a(dzz $$0, dst $$1) {
+      return $$0.b(c, $$1.a($$0.c(c)));
    }
 
    @Override
-   protected dzo a(dzo $$0, dsm $$1) {
-      return $$0.b(b, $$1.a($$0.c(b)));
+   protected dzz a(dzz $$0, drc $$1) {
+      return $$0.a($$1.a($$0.c(c)));
    }
 
    @Override
-   protected dzo a(dzo $$0, dqv $$1) {
-      return $$0.a($$1.a($$0.c(b)));
+   protected void a(eaa.a<dma, dzz> $$0) {
+      $$0.a(c, d, e);
    }
 
    @Override
-   protected void a(dzp.a<dlu, dzo> $$0) {
-      $$0.a(b, c);
+   protected boolean a(dzz $$0, ewv $$1) {
+      return false;
    }
 
    @Override
-   public dzo a(dcl $$0) {
-      return this.m().b(b, $$0.d().g());
-   }
-
-   private static void a(aro $$0, iu $$1, ja $$2) {
-      iu.a $$3 = $$1.k();
-      dil $$4 = $$0.O();
-      int $$5 = $$4.d(dil.y);
-
-      while ($$5-- > 0) {
-         $$3.c($$2);
-         dzo $$6 = $$0.a_($$3);
-         dlu $$7 = $$6.b();
-         if (!$$6.a(dlw.lj) || !($$0.c_($$3) instanceof dwy $$9) || $$9.s() != dwy.a.a) {
-            break;
-         }
-
-         if ($$9.c() || $$9.d()) {
-            dhq $$10 = $$9.a();
-            if ($$9.k()) {
-               if (!$$10.a($$0)) {
-                  break;
-               }
-
-               $$0.b($$3, $$7);
-            } else if ($$9.t()) {
-               $$10.a(0);
-            }
-         }
-
-         $$2 = $$6.c(b);
-      }
-
-      if ($$5 <= 0) {
-         int $$11 = Math.max($$4.d(dil.y), 0);
-         d.warn("Command Block chain tried to execute more than {} steps!", $$11);
+   protected void a(dzz $$0, arq $$1, iu $$2, azv $$3) {
+      dwx $$4 = $$1.c_($$2);
+      if ($$4 instanceof dxf) {
+         ((dxf)$$4).k();
       }
    }
 }

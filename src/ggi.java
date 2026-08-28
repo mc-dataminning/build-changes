@@ -1,21 +1,16 @@
-public class ggi extends gfr<hdb> {
-   public ggi(gig $$0) {
+public class ggi extends gfq<hcf> {
+   private static final String a = "knot";
+   private final giu b;
+
+   public ggi(giu $$0) {
       super($$0);
+      this.b = $$0.b("knot");
    }
 
-   public static gim a() {
-      gio $$0 = gfr.a(gik.a, 0.0F);
-      giq $$1 = $$0.a();
-      giq $$2 = $$1.a("head");
-      $$2.a("hat");
-      $$1.a("body");
-      $$1.a("left_arm");
-      $$1.a("right_arm");
-      $$1.a("left_leg");
-      $$1.a("right_leg");
-      gil $$3 = gil.c().a(24, 0).a(-3.0F, -6.0F, -1.0F, 6.0F, 6.0F, 1.0F, new gik(1.0F));
-      $$2.a("left_ear", $$3, gii.a(-6.0F, -6.0F, 0.0F));
-      $$2.a("right_ear", $$3, gii.a(6.0F, -6.0F, 0.0F));
-      return gim.a($$0, 64, 64);
+   public static gja a() {
+      gjc $$0 = new gjc();
+      gje $$1 = $$0.a();
+      $$1.a("knot", giz.c().a(0, 0).a(-3.0F, -8.0F, -3.0F, 6.0F, 8.0F, 6.0F), giw.a);
+      return gja.a($$0, 32, 32);
    }
 }

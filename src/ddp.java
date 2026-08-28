@@ -1,15 +1,35 @@
-public interface ddp {
-   cys a(int var1);
+import com.mojang.serialization.Codec;
+import java.util.List;
 
-   int a();
+public interface ddp<T extends ddv> {
+   Codec<ddp<?>> a = mf.r.q().dispatch(ddp::a, ddz::a);
+   yw<wj, ddp<?>> b = yu.a(mg.ah).b(ddp::a, ddz::b);
 
-   default boolean b() {
-      for (int $$0 = 0; $$0 < this.a(); $$0++) {
-         if (!this.a($$0).f()) {
-            return false;
-         }
-      }
+   boolean a(T var1, div var2);
 
+   cyy a(T var1, jg.a var2);
+
+   default boolean al_() {
+      return false;
+   }
+
+   default boolean i() {
       return true;
    }
+
+   default String j() {
+      return "";
+   }
+
+   ddz<? extends ddp<T>> a();
+
+   dea<? extends ddp<T>> b();
+
+   ddo ak_();
+
+   default List<dev> g() {
+      return List.of();
+   }
+
+   dds h();
 }

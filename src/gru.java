@@ -1,58 +1,66 @@
-public class gru implements grp<dws> {
-   private final gwi a;
+import com.google.common.annotations.VisibleForTesting;
+import com.google.common.collect.Streams;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
+import java.lang.reflect.Type;
+import java.util.List;
+import java.util.Set;
+import java.util.Map.Entry;
+import java.util.function.Predicate;
+import java.util.stream.Collectors;
 
-   public gru(grq.a $$0) {
-      this.a = $$0.e();
+public class gru {
+   private final grq a;
+   private final grk b;
+
+   public gru(grq $$0, grk $$1) {
+      this.a = $$0;
+      this.b = $$1;
    }
 
-   public void a(dws $$0, float $$1, fiq $$2, gpd $$3, int $$4, int $$5) {
-      if ($$0.i() != null) {
-         int $$6 = $$0.m().c(eae.by);
-         if ($$6 > 0) {
-            ja $$7 = $$0.c();
-            if ($$7 != null) {
-               cys $$8 = $$0.d();
-               if (!$$8.f()) {
-                  $$2.a();
-                  $$2.a(0.0F, 0.5F, 0.0F);
-                  float[] $$9 = this.a($$7, $$6);
-                  $$2.a($$9[0], $$9[1], $$9[2]);
-                  $$2.a(a.d.rotationDegrees(75.0F));
-                  boolean $$10 = $$7 == ja.f || $$7 == ja.e;
-                  $$2.a(a.d.rotationDegrees((float)(($$10 ? 90 : 0) + 11)));
-                  $$2.b(0.5F, 0.5F, 0.5F);
-                  int $$11 = goy.a($$0.i(), $$0.m(), $$0.aw_().a($$7));
-                  this.a.a($$8, cyq.i, $$11, hhp.d, $$2, $$3, $$0.i(), 0);
-                  $$2.b();
-               }
+   public grk a() {
+      return this.b;
+   }
+
+   public Predicate<dzz> a(eaa<dma, dzz> $$0) {
+      return this.a.getPredicate($$0);
+   }
+
+   public static class a implements JsonDeserializer<gru> {
+      public gru a(JsonElement $$0, Type $$1, JsonDeserializationContext $$2) throws JsonParseException {
+         JsonObject $$3 = $$0.getAsJsonObject();
+         return new gru(this.b($$3), (grk)$$2.deserialize($$3.get("apply"), grk.class));
+      }
+
+      private grq b(JsonObject $$0) {
+         return $$0.has("when") ? a(azc.u($$0, "when")) : grq.b;
+      }
+
+      @VisibleForTesting
+      static grq a(JsonObject $$0) {
+         Set<Entry<String, JsonElement>> $$1 = $$0.entrySet();
+         if ($$1.isEmpty()) {
+            throw new JsonParseException("No elements found in selector");
+         } else if ($$1.size() == 1) {
+            if ($$0.has("OR")) {
+               List<grq> $$2 = Streams.stream(azc.v($$0, "OR")).map($$0x -> a($$0x.getAsJsonObject())).collect(Collectors.toList());
+               return new grt($$2);
+            } else if ($$0.has("AND")) {
+               List<grq> $$3 = Streams.stream(azc.v($$0, "AND")).map($$0x -> a($$0x.getAsJsonObject())).collect(Collectors.toList());
+               return new grp($$3);
+            } else {
+               return a($$1.iterator().next());
             }
+         } else {
+            return new grp($$1.stream().map(gru.a::a).collect(Collectors.toList()));
          }
       }
-   }
 
-   private float[] a(ja $$0, int $$1) {
-      float[] $$2 = new float[]{0.5F, 0.0F, 0.5F};
-      float $$3 = (float)$$1 / 10.0F * 0.75F;
-      switch ($$0) {
-         case f:
-            $$2[0] = 0.73F + $$3;
-            break;
-         case e:
-            $$2[0] = 0.25F - $$3;
-            break;
-         case b:
-            $$2[1] = 0.25F + $$3;
-            break;
-         case a:
-            $$2[1] = -0.23F - $$3;
-            break;
-         case c:
-            $$2[2] = 0.25F - $$3;
-            break;
-         case d:
-            $$2[2] = 0.73F + $$3;
+      private static grq a(Entry<String, JsonElement> $$0) {
+         return new grr($$0.getKey(), $$0.getValue().getAsString());
       }
-
-      return $$2;
    }
 }

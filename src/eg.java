@@ -5,22 +5,22 @@ public interface eg {
    eg a = new eg() {
       @Nullable
       @Override
-      public xm a(String $$0) {
+      public xo a(String $$0) {
          return null;
       }
    };
 
    @Nullable
-   xm a(String var1);
+   xo a(String var1);
 
-   public static record a(Map<String, xm> b) implements eg {
+   public static record a(Map<String, xo> b) implements eg {
       @Nullable
       @Override
-      public xm a(String $$0) {
+      public xo a(String $$0) {
          return this.b.get($$0);
       }
 
-      public Map<String, xm> a() {
+      public Map<String, xo> a() {
          return this.b;
       }
    }

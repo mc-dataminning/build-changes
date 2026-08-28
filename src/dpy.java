@@ -1,82 +1,122 @@
 import com.mojang.serialization.MapCodec;
 
-public class dpy extends dnr {
-   public static final MapCodec<dpy> g = b(dpy::new);
+public class dpy extends dpt {
+   public static final MapCodec<dpy> a = b(dpy::new);
+   private static final double b = 0.13;
+   private static final double c = 0.08;
+   private static final double e = 0.05;
+   private static final int f = 20;
+   private static final ffc g = dma.b(14.0, 0.0, 15.0);
 
    @Override
-   public MapCodec<? extends dpy> a() {
+   public MapCodec<dpy> a() {
+      return a;
+   }
+
+   public dpy(dzy.d $$0) {
+      super($$0);
+   }
+
+   private static boolean c(bwd $$0) {
+      return $$0 instanceof bxc || $$0 instanceof ctk || $$0 instanceof cne || $$0 instanceof cti;
+   }
+
+   @Override
+   protected ffc b(dzz $$0, dib $$1, iu $$2, fen $$3) {
       return g;
    }
 
-   protected dpy(dzn.d $$0) {
-      super(2.0F, 16.0F, 2.0F, 16.0F, 16.0F, $$0);
-      this.l(
-         this.B
-            .b()
-            .b(a, Boolean.valueOf(false))
-            .b(b, Boolean.valueOf(false))
-            .b(c, Boolean.valueOf(false))
-            .b(d, Boolean.valueOf(false))
-            .b(e, Boolean.valueOf(false))
-      );
-   }
-
    @Override
-   public dzo a(dcl $$0) {
-      dhv $$1 = $$0.q();
-      iu $$2 = $$0.a();
-      evv $$3 = $$0.q().b_($$0.a());
-      iu $$4 = $$2.f();
-      iu $$5 = $$2.g();
-      iu $$6 = $$2.h();
-      iu $$7 = $$2.i();
-      dzo $$8 = $$1.a_($$4);
-      dzo $$9 = $$1.a_($$5);
-      dzo $$10 = $$1.a_($$6);
-      dzo $$11 = $$1.a_($$7);
-      return this.m()
-         .b(a, Boolean.valueOf(this.a($$8, $$8.c($$1, $$4, ja.d))))
-         .b(c, Boolean.valueOf(this.a($$9, $$9.c($$1, $$5, ja.c))))
-         .b(d, Boolean.valueOf(this.a($$10, $$10.c($$1, $$6, ja.f))))
-         .b(b, Boolean.valueOf(this.a($$11, $$11.c($$1, $$7, ja.e))))
-         .b(e, Boolean.valueOf($$3.a() == evw.c));
-   }
-
-   @Override
-   protected dzo a(dzo $$0, dis $$1, dje $$2, iu $$3, ja $$4, iu $$5, dzo $$6, azt $$7) {
-      if ($$0.c(e)) {
-         $$2.a($$3, evw.c, evw.c.a($$1));
+   public void a(div $$0, dzz $$1, iu $$2, bwd $$3, double $$4) {
+      $$3.a(awn.mZ, 1.0F, 1.0F);
+      if (!$$0.C) {
+         $$0.a($$3, (byte)54);
       }
 
-      return $$4.o().d() ? $$0.b(f.get($$4), Boolean.valueOf(this.a($$6, $$6.c($$1, $$5, $$4.g())))) : super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
+      if ($$3.a($$4, 0.2F, $$0.al().l())) {
+         $$3.a(this.H.g(), this.H.a() * 0.5F, this.H.b() * 0.75F);
+      }
    }
 
    @Override
-   protected feq c(dzo $$0, dhv $$1, iu $$2, feb $$3) {
-      return fen.a();
-   }
-
-   @Override
-   protected boolean b(dzo $$0, dzo $$1, ja $$2) {
-      if ($$1.a(this)) {
-         if (!$$2.o().d()) {
-            return true;
-         }
-
-         if ($$0.c(f.get($$2)) && $$1.c(f.get($$2.g()))) {
-            return true;
-         }
+   protected void a(dzz $$0, div $$1, iu $$2, bwd $$3) {
+      if (this.a($$2, $$3)) {
+         this.a($$3, $$2);
+         this.d($$3);
+         this.a($$1, $$3);
       }
 
-      return super.b($$0, $$1, $$2);
+      super.a($$0, $$1, $$2, $$3);
    }
 
-   public final boolean a(dzo $$0, boolean $$1) {
-      return !k($$0) && $$1 || $$0.b() instanceof dpy || $$0.a(axa.N);
+   private static double b(double $$0) {
+      return $$0 / 0.98F + 0.08;
    }
 
-   @Override
-   protected void a(dzp.a<dlu, dzo> $$0) {
-      $$0.a(a, b, d, c, e);
+   private static double c(double $$0) {
+      return ($$0 - 0.08) * 0.98F;
+   }
+
+   private boolean a(iu $$0, bwd $$1) {
+      if ($$1.aJ()) {
+         return false;
+      } else if ($$1.dC() > (double)$$0.v() + 0.9375 - 1.0E-7) {
+         return false;
+      } else if (b($$1.dy().e) >= -0.08) {
+         return false;
+      } else {
+         double $$2 = Math.abs((double)$$0.u() + 0.5 - $$1.dA());
+         double $$3 = Math.abs((double)$$0.w() + 0.5 - $$1.dG());
+         double $$4 = 0.4375 + (double)($$1.dq() / 2.0F);
+         return $$2 + 1.0E-7 > $$4 || $$3 + 1.0E-7 > $$4;
+      }
+   }
+
+   private void a(bwd $$0, iu $$1) {
+      if ($$0 instanceof arr && $$0.dV().ae() % 20L == 0L) {
+         ap.K.a((arr)$$0, $$0.dV().a_($$1));
+      }
+   }
+
+   private void d(bwd $$0) {
+      fei $$1 = $$0.dy();
+      if (b($$0.dy().e) < -0.13) {
+         double $$2 = -0.05 / b($$0.dy().e);
+         $$0.i(new fei($$1.d * $$2, c(-0.05), $$1.f * $$2));
+      } else {
+         $$0.i(new fei($$1.d, c(-0.05), $$1.f));
+      }
+
+      $$0.k();
+   }
+
+   private void a(div $$0, bwd $$1) {
+      if (c($$1)) {
+         if ($$0.A.a(5) == 0) {
+            $$1.a(awn.mZ, 1.0F, 1.0F);
+         }
+
+         if (!$$0.C && $$0.A.a(5) == 0) {
+            $$0.a($$1, (byte)53);
+         }
+      }
+   }
+
+   public static void a(bwd $$0) {
+      a($$0, 5);
+   }
+
+   public static void b(bwd $$0) {
+      a($$0, 10);
+   }
+
+   private static void a(bwd $$0, int $$1) {
+      if ($$0.dV().C) {
+         dzz $$2 = dmc.pL.m();
+
+         for (int $$3 = 0; $$3 < $$1; $$3++) {
+            $$0.dV().a(new lp(lx.b, $$2), $$0.dA(), $$0.dC(), $$0.dG(), 0.0, 0.0, 0.0);
+         }
+      }
    }
 }

@@ -1,4 +1,7 @@
+import java.nio.file.Path;
+import javax.annotation.Nullable;
+
 @FunctionalInterface
 public interface gcu {
-   gct apply(alp var1, jl<aln> var2, gck var3);
+   boolean create(gcv var1, jl<alp> var2, eyr var3, @Nullable Path var4);
 }

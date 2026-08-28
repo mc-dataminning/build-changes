@@ -1,95 +1,197 @@
 import com.mojang.serialization.MapCodec;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
-public class dnt extends dlg {
+public class dnt extends dlm {
    public static final MapCodec<dnt> a = b(dnt::new);
-   public static final eao b = eae.aW;
-   public static final eaf c = eae.s;
-   private static final feq d = dlu.b(16.0, 0.0, 6.0);
+   public static final eaq b = eap.bA;
+   public static final eaq c = eap.G;
+   private static final eax<jc> d = eap.W;
+   private static final int e = 6;
+   private static final int f = 4;
+   private static final ddt g = new ddt(10);
+   private static final int h = 17;
+
+   public dnt(dzy.d $$0) {
+      super($$0);
+      this.l(this.B.b().b(d, jc.k).b(c, Boolean.valueOf(false)).b(b, Boolean.valueOf(false)));
+   }
 
    @Override
-   public MapCodec<dnt> a() {
+   protected MapCodec<dnt> a() {
       return a;
    }
 
-   public dnt(dzn.d $$0) {
-      super($$0);
-      this.l(this.B.b().b(b, Integer.valueOf(0)).b(c, Boolean.valueOf(false)));
-   }
-
    @Override
-   protected feq a(dzo $$0, dhv $$1, iu $$2, feb $$3) {
-      return d;
-   }
-
-   @Override
-   protected boolean g_(dzo $$0) {
+   protected boolean c_(dzz $$0) {
       return true;
    }
 
    @Override
-   protected int a(dzo $$0, dhv $$1, iu $$2, ja $$3) {
-      return $$0.c(b);
+   protected int a(dzz $$0, div $$1, iu $$2) {
+      return $$1.c_($$2) instanceof dxm $$4 ? $$4.s() : 0;
    }
 
-   private static void d(dzo $$0, dip $$1, iu $$2) {
-      int $$3 = $$1.a(diy.a, $$2) - $$1.z_();
-      float $$4 = $$1.a(1.0F);
-      boolean $$5 = $$0.c(c);
-      if ($$5) {
-         $$3 = 15 - $$3;
-      } else if ($$3 > 0) {
-         float $$6 = $$4 < (float) Math.PI ? 0.0F : (float) (Math.PI * 2);
-         $$4 += ($$6 - $$4) * 0.2F;
-         $$3 = Math.round((float)$$3 * azk.b($$4));
-      }
-
-      $$3 = azk.a($$3, 0, 15);
-      if ($$0.c(b) != $$3) {
-         $$1.a($$2, $$0.b(b, Integer.valueOf($$3)), 3);
+   @Override
+   protected void a(dzz $$0, div $$1, iu $$2, dma $$3, @Nullable exo $$4, boolean $$5) {
+      boolean $$6 = $$1.D($$2);
+      boolean $$7 = $$0.c(c);
+      dwx $$8 = $$1.c_($$2);
+      if ($$6 && !$$7) {
+         $$1.a($$2, this, 4);
+         $$1.a($$2, $$0.b(c, Boolean.valueOf(true)), 2);
+         this.a($$8, true);
+      } else if (!$$6 && $$7) {
+         $$1.a($$2, $$0.b(c, Boolean.valueOf(false)).b(b, Boolean.valueOf(false)), 2);
+         this.a($$8, false);
       }
    }
 
    @Override
-   protected bty a(dzo $$0, dip $$1, iu $$2, cqs $$3, fds $$4) {
-      if (!$$3.gv()) {
-         return super.a($$0, $$1, $$2, $$3, $$4);
-      } else {
-         if (!$$1.C) {
-            dzo $$5 = $$0.a(c);
-            $$1.a($$2, $$5, 2);
-            $$1.a(eeo.c, $$2, eeo.a.a($$3, $$5));
-            d($$5, $$1, $$2);
-         }
-
-         return bty.a;
-      }
-   }
-
-   @Override
-   protected boolean f_(dzo $$0) {
-      return true;
-   }
-
-   @Override
-   public dwn a(iu $$0, dzo $$1) {
-      return new dxe($$0, $$1);
+   protected void a(dzz $$0, arq $$1, iu $$2, azv $$3) {
+      this.a($$0, $$1, $$2);
    }
 
    @Nullable
    @Override
-   public <T extends dwn> dwo<T> a(dip $$0, dzo $$1, dwp<T> $$2) {
-      return !$$0.C && $$0.B_().g() ? a($$2, dwp.r, dnt::a) : null;
+   public <T extends dwx> dwy<T> a(div $$0, dzz $$1, dwz<T> $$2) {
+      return $$0.C ? null : a($$2, dwz.Q, dxm::a);
    }
 
-   private static void a(dip $$0, iu $$1, dzo $$2, dxe $$3) {
-      if ($$0.ae() % 20L == 0L) {
-         d($$2, $$0, $$1);
+   private void a(@Nullable dwx $$0, boolean $$1) {
+      if ($$0 instanceof dxm $$2) {
+         $$2.a($$1);
       }
    }
 
    @Override
-   protected void a(dzp.a<dlu, dzo> $$0) {
-      $$0.a(b, c);
+   public dwx a(iu $$0, dzz $$1) {
+      dxm $$2 = new dxm($$0, $$1);
+      $$2.a($$1.b(c) && $$1.c(c));
+      return $$2;
+   }
+
+   @Override
+   public dzz a(dcr $$0) {
+      ja $$1 = $$0.d().g();
+
+      ja $$2 = switch ($$1) {
+         case a -> $$0.g().g();
+         case b -> $$0.g();
+         case c, d, e, f -> ja.b;
+      };
+      return this.m().b(d, jc.a($$1, $$2)).b(c, Boolean.valueOf($$0.q().D($$0.a())));
+   }
+
+   @Override
+   public void a(div $$0, iu $$1, dzz $$2, bxc $$3, cyy $$4) {
+      if ($$2.c(c)) {
+         $$0.a($$1, this, 4);
+      }
+   }
+
+   @Override
+   protected void a(dzz $$0, arq $$1, iu $$2, boolean $$3) {
+      btx.a($$0, $$1, $$2);
+   }
+
+   @Override
+   protected bub a(dzz $$0, div $$1, iu $$2, cqy $$3, fee $$4) {
+      if (!$$1.C && $$1.c_($$2) instanceof dxm $$5) {
+         $$3.a($$5);
+      }
+
+      return bub.a;
+   }
+
+   protected void a(dzz $$0, arq $$1, iu $$2) {
+      if ($$1.c_($$2) instanceof dxm $$3) {
+         ddd var11 = $$3.ax_();
+         Optional<ddu<dde>> $$6 = a($$1, var11);
+         if ($$6.isEmpty()) {
+            $$1.c(1050, $$2, 0);
+         } else {
+            ddu<dde> $$7 = $$6.get();
+            cyy $$8 = $$7.b().a(var11, $$1.F_());
+            if ($$8.f()) {
+               $$1.c(1050, $$2, 0);
+            } else {
+               $$3.d(6);
+               $$1.a($$2, $$0.b(b, Boolean.valueOf(true)), 2);
+               $$8.a($$1);
+               this.a($$1, $$2, $$3, $$8, $$0, $$7);
+
+               for (cyy $$9 : $$7.b().a(var11)) {
+                  if (!$$9.f()) {
+                     this.a($$1, $$2, $$3, $$9, $$0, $$7);
+                  }
+               }
+
+               $$3.f().forEach($$0x -> {
+                  if (!$$0x.f()) {
+                     $$0x.h(1);
+                  }
+               });
+               $$3.e();
+            }
+         }
+      }
+   }
+
+   public static Optional<ddu<dde>> a(arq $$0, ddd $$1) {
+      return g.a($$0, $$1);
+   }
+
+   private void a(arq $$0, iu $$1, dxm $$2, cyy $$3, dzz $$4, ddu<?> $$5) {
+      ja $$6 = $$4.c(d).a();
+      btu $$7 = dya.a($$0, $$1.a($$6));
+      cyy $$8 = $$3.v();
+      if ($$7 != null && ($$7 instanceof dxm || $$3.M() > $$7.f_($$3))) {
+         while (!$$8.f()) {
+            cyy $$9 = $$8.c(1);
+            cyy $$10 = dya.a($$2, $$7, $$9, $$6.g());
+            if (!$$10.f()) {
+               break;
+            }
+
+            $$8.h(1);
+         }
+      } else if ($$7 != null) {
+         while (!$$8.f()) {
+            int $$11 = $$8.M();
+            $$8 = dya.a($$2, $$7, $$8, $$6.g());
+            if ($$11 == $$8.M()) {
+               break;
+            }
+         }
+      }
+
+      if (!$$8.f()) {
+         fei $$12 = fei.b($$1);
+         fei $$13 = $$12.a($$6, 0.7);
+         lf.a($$0, $$8, 6, $$6, $$13);
+
+         for (arr $$14 : $$0.a(arr.class, fed.a($$12, 17.0, 17.0, 17.0))) {
+            ap.ad.a($$14, $$5.a(), $$2.f());
+         }
+
+         $$0.c(1049, $$1, 0);
+         $$0.c(2010, $$1, $$6.d());
+      }
+   }
+
+   @Override
+   protected dzz a(dzz $$0, dst $$1) {
+      return $$0.b(d, $$1.a().a($$0.c(d)));
+   }
+
+   @Override
+   protected dzz a(dzz $$0, drc $$1) {
+      return $$0.b(d, $$1.a().a($$0.c(d)));
+   }
+
+   @Override
+   protected void a(eaa.a<dma, dzz> $$0) {
+      $$0.a(d, c, b);
    }
 }

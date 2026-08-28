@@ -11,9 +11,9 @@ import java.util.Collection;
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
 
-public class fd implements ArgumentType<ffe> {
+public class fd implements ArgumentType<ffq> {
    private static final Collection<String> b = Arrays.asList("foo", "foo.bar.baz", "minecraft:foo");
-   public static final DynamicCommandExceptionType a = new DynamicCommandExceptionType($$0 -> ww.b("argument.criteria.invalid", $$0));
+   public static final DynamicCommandExceptionType a = new DynamicCommandExceptionType($$0 -> wy.b("argument.criteria.invalid", $$0));
 
    private fd() {
    }
@@ -22,11 +22,11 @@ public class fd implements ArgumentType<ffe> {
       return new fd();
    }
 
-   public static ffe a(CommandContext<ei> $$0, String $$1) {
-      return (ffe)$$0.getArgument($$1, ffe.class);
+   public static ffq a(CommandContext<ei> $$0, String $$1) {
+      return (ffq)$$0.getArgument($$1, ffq.class);
    }
 
-   public ffe a(StringReader $$0) throws CommandSyntaxException {
+   public ffq a(StringReader $$0) throws CommandSyntaxException {
       int $$1 = $$0.getCursor();
 
       while ($$0.canRead() && $$0.peek() != ' ') {
@@ -34,16 +34,16 @@ public class fd implements ArgumentType<ffe> {
       }
 
       String $$2 = $$0.getString().substring($$1, $$0.getCursor());
-      return ffe.a($$2).orElseThrow(() -> {
+      return ffq.a($$2).orElseThrow(() -> {
          $$0.setCursor($$1);
          return a.createWithContext($$0, $$2);
       });
    }
 
    public <S> CompletableFuture<Suggestions> listSuggestions(CommandContext<S> $$0, SuggestionsBuilder $$1) {
-      List<String> $$2 = Lists.newArrayList(ffe.c());
+      List<String> $$2 = Lists.newArrayList(ffq.c());
 
-      for (awu<?> $$3 : mf.v) {
+      for (aww<?> $$3 : mf.v) {
          for (Object $$4 : $$3.b()) {
             String $$5 = this.a($$3, $$4);
             $$2.add($$5);
@@ -53,8 +53,8 @@ public class fd implements ArgumentType<ffe> {
       return en.b($$2, $$1);
    }
 
-   public <T> String a(awu<T> $$0, Object $$1) {
-      return aws.a($$0, (T)$$1);
+   public <T> String a(aww<T> $$0, Object $$1) {
+      return awu.a($$0, (T)$$1);
    }
 
    public Collection<String> getExamples() {

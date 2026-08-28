@@ -1,69 +1,92 @@
-import com.google.common.collect.Maps;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Map.Entry;
+import com.google.common.base.Suppliers;
+import com.google.common.collect.BiMap;
+import com.google.common.collect.ImmutableBiMap;
+import java.util.Optional;
+import java.util.function.Supplier;
 
-public class cyp {
-   private final Map<ale, cyp.a> a = Maps.newHashMap();
-   private int b;
+public class cyp extends cyu implements daa {
+   public static final Supplier<BiMap<dma, dma>> a = Suppliers.memoize(
+      () -> ImmutableBiMap.builder()
+            .put(dmc.rB, dmc.sb)
+            .put(dmc.rC, dmc.sd)
+            .put(dmc.rD, dmc.sc)
+            .put(dmc.rE, dmc.se)
+            .put(dmc.rK, dmc.si)
+            .put(dmc.rJ, dmc.sh)
+            .put(dmc.rI, dmc.sg)
+            .put(dmc.rH, dmc.sf)
+            .put(dmc.sa, dmc.sq)
+            .put(dmc.rZ, dmc.sp)
+            .put(dmc.rY, dmc.so)
+            .put(dmc.rX, dmc.sn)
+            .put(dmc.rW, dmc.sm)
+            .put(dmc.rV, dmc.sl)
+            .put(dmc.rU, dmc.sk)
+            .put(dmc.rT, dmc.sj)
+            .put(dmc.rO, dmc.rS)
+            .put(dmc.rN, dmc.rR)
+            .put(dmc.rM, dmc.rQ)
+            .put(dmc.rL, dmc.rP)
+            .put(dmc.sr, dmc.sv)
+            .put(dmc.ss, dmc.sw)
+            .put(dmc.su, dmc.sy)
+            .put(dmc.st, dmc.sx)
+            .put(dmc.sz, dmc.sD)
+            .put(dmc.sA, dmc.sE)
+            .put(dmc.sC, dmc.sG)
+            .put(dmc.sB, dmc.sF)
+            .put(dmc.sH, dmc.sL)
+            .put(dmc.sI, dmc.sM)
+            .put(dmc.sJ, dmc.sN)
+            .put(dmc.sK, dmc.sO)
+            .put(dmc.sP, dmc.sT)
+            .put(dmc.sQ, dmc.sU)
+            .put(dmc.sR, dmc.sV)
+            .put(dmc.sS, dmc.sW)
+            .build()
+   );
+   public static final Supplier<BiMap<dma, dma>> b = Suppliers.memoize(() -> a.get().inverse());
 
-   public boolean a(cys $$0) {
-      return this.a($$0, 0.0F) > 0.0F;
+   public cyp(cyu.a $$0) {
+      super($$0);
    }
 
-   public float a(cys $$0, float $$1) {
-      ale $$2 = this.b($$0);
-      cyp.a $$3 = this.a.get($$2);
-      if ($$3 != null) {
-         float $$4 = (float)($$3.b - $$3.a);
-         float $$5 = (float)$$3.b - ((float)this.b + $$1);
-         return azk.a($$5 / $$4, 0.0F, 1.0F);
-      } else {
-         return 0.0F;
-      }
-   }
-
-   public void a() {
-      this.b++;
-      if (!this.a.isEmpty()) {
-         Iterator<Entry<ale, cyp.a>> $$0 = this.a.entrySet().iterator();
-
-         while ($$0.hasNext()) {
-            Entry<ale, cyp.a> $$1 = $$0.next();
-            if ($$1.getValue().b <= this.b) {
-               $$0.remove();
-               this.b($$1.getKey());
-            }
+   @Override
+   public bub a(dct $$0) {
+      div $$1 = $$0.q();
+      iu $$2 = $$0.a();
+      dzz $$3 = $$1.a_($$2);
+      return a($$3).map($$3x -> {
+         cqy $$4 = $$0.o();
+         cyy $$5 = $$0.n();
+         if ($$4 instanceof arr $$6) {
+            ap.N.a($$6, $$2, $$5);
          }
+
+         $$5.h(1);
+         $$1.a($$2, $$3x, 11);
+         $$1.a(eez.c, $$2, eez.a.a($$4, $$3x));
+         $$1.a($$4, 3003, $$2, 0);
+         return bub.a;
+      }).orElse(bub.e);
+   }
+
+   public static Optional<dzz> a(dzz $$0) {
+      return Optional.ofNullable((dma)a.get().get($$0.b())).map($$1 -> ((dma)$$1).m($$0));
+   }
+
+   @Override
+   public boolean a(div $$0, dyl $$1, boolean $$2, cqy $$3) {
+      if ($$1.b(true)) {
+         $$0.a(null, 3003, $$1.aw_(), 0);
+         return true;
+      } else {
+         return false;
       }
    }
 
-   public ale b(cys $$0) {
-      dby $$1 = $$0.a(kj.y);
-      ale $$2 = mf.g.b($$0.h());
-      return $$1 == null ? $$2 : $$1.c().orElse($$2);
-   }
-
-   public void a(cys $$0, int $$1) {
-      this.a(this.b($$0), $$1);
-   }
-
-   public void a(ale $$0, int $$1) {
-      this.a.put($$0, new cyp.a(this.b, this.b + $$1));
-      this.b($$0, $$1);
-   }
-
-   public void a(ale $$0) {
-      this.a.remove($$0);
-      this.b($$0);
-   }
-
-   protected void b(ale $$0, int $$1) {
-   }
-
-   protected void b(ale $$0) {
-   }
-
-   static record a(int a, int b) {
+   @Override
+   public boolean a(dym $$0, cqy $$1) {
+      return true;
    }
 }

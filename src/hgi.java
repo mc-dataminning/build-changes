@@ -1,23 +1,16 @@
-import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import javax.annotation.Nullable;
 
-public record hgi() implements hgp<ald<bwj<?>>> {
-   public static final Codec<ald<bwj<?>>> a = ald.a(mg.B);
-   public static final hgp.a<hgi, ald<bwj<?>>> b = hgp.a.a(MapCodec.unit(new hgi()), a);
+public record hgi() implements hgp {
+   public static final MapCodec<hgi> a = MapCodec.unit(new hgi());
 
-   @Nullable
-   public ald<bwj<?>> a(cys $$0, @Nullable gjd $$1, @Nullable bwz $$2, int $$3, cyq $$4) {
-      return $$2 == null ? null : $$2.aq().r().h();
+   @Override
+   public float a(cyy $$0, @Nullable gjr $$1, @Nullable bxc $$2, int $$3) {
+      return $$2 instanceof cqy $$4 ? $$4.gE().a($$0, 0.0F) : 0.0F;
    }
 
    @Override
-   public hgp.a<hgi, ald<bwj<?>>> a() {
-      return b;
-   }
-
-   @Override
-   public Codec<ald<bwj<?>>> b() {
+   public MapCodec<hgi> a() {
       return a;
    }
 }

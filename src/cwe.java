@@ -1,61 +1,73 @@
-public class cwe extends cuk {
-   private static final int m = 27;
-   private final btr n;
+import javax.annotation.Nullable;
 
-   public cwe(int $$0, cqr $$1) {
-      this($$0, $$1, new buf(27));
+public class cwe extends bui {
+   @Nullable
+   private dxv b;
+
+   public cwe() {
+      super(27);
    }
 
-   public cwe(int $$0, cqr $$1, btr $$2) {
-      super(cvt.u, $$0);
-      a($$2, 27);
-      this.n = $$2;
-      $$2.c_($$1.k);
-      int $$3 = 3;
-      int $$4 = 9;
+   public void a(dxv $$0) {
+      this.b = $$0;
+   }
 
-      for (int $$5 = 0; $$5 < 3; $$5++) {
-         for (int $$6 = 0; $$6 < 9; $$6++) {
-            this.a(new cwf($$2, $$6 + $$5 * 9, 8 + $$6 * 18, 18 + $$5 * 18));
+   public boolean b(dxv $$0) {
+      return this.b == $$0;
+   }
+
+   @Override
+   public void a(uf $$0, jg.a $$1) {
+      for (int $$2 = 0; $$2 < this.b(); $$2++) {
+         this.a($$2, cyy.k);
+      }
+
+      for (int $$3 = 0; $$3 < $$0.size(); $$3++) {
+         tz $$4 = $$0.a($$3);
+         int $$5 = $$4.f("Slot") & 255;
+         if ($$5 >= 0 && $$5 < this.b()) {
+            this.a($$5, cyy.a($$1, (uw)$$4).orElse(cyy.k));
+         }
+      }
+   }
+
+   @Override
+   public uf a(jg.a $$0) {
+      uf $$1 = new uf();
+
+      for (int $$2 = 0; $$2 < this.b(); $$2++) {
+         cyy $$3 = this.a($$2);
+         if (!$$3.f()) {
+            tz $$4 = new tz();
+            $$4.a("Slot", (byte)$$2);
+            $$1.add($$3.b($$0, $$4));
          }
       }
 
-      this.c($$1, 8, 84);
+      return $$1;
    }
 
    @Override
-   public boolean b(cqs $$0) {
-      return this.n.a($$0);
+   public boolean a(cqy $$0) {
+      return this.b != null && !this.b.c($$0) ? false : super.a($$0);
    }
 
    @Override
-   public cys b(cqs $$0, int $$1) {
-      cys $$2 = cys.k;
-      cwh $$3 = this.k.get($$1);
-      if ($$3 != null && $$3.h()) {
-         cys $$4 = $$3.g();
-         $$2 = $$4.v();
-         if ($$1 < this.n.b()) {
-            if (!this.a($$4, this.n.b(), this.k.size(), true)) {
-               return cys.k;
-            }
-         } else if (!this.a($$4, 0, this.n.b(), false)) {
-            return cys.k;
-         }
-
-         if ($$4.f()) {
-            $$3.e(cys.k);
-         } else {
-            $$3.d();
-         }
+   public void c_(cqy $$0) {
+      if (this.b != null) {
+         this.b.a($$0);
       }
 
-      return $$2;
+      super.c_($$0);
    }
 
    @Override
-   public void a(cqs $$0) {
-      super.a($$0);
-      this.n.c($$0);
+   public void c(cqy $$0) {
+      if (this.b != null) {
+         this.b.b($$0);
+      }
+
+      super.c($$0);
+      this.b = null;
    }
 }

@@ -1,24 +1,22 @@
 import com.mojang.datafixers.kinds.App;
-import java.util.Optional;
 import java.util.function.Function;
-import java.util.function.Predicate;
 
 public class cbe {
-   public static byr<bwz> a(Function<bwz, Optional<cae>> $$0, Predicate<bwz> $$1, int $$2, int $$3, float $$4) {
-      return ccd.a(
-         (Function<ccd.b<bwz>, ? extends App<ccd.c<bwz>, ccg<bwz>>>)($$5 -> $$5.group($$5.a(cgb.o), $$5.a(cgb.n))
-               .apply($$5, ($$5x, $$6) -> ($$7, $$8, $$9) -> {
-                     Optional<cae> $$10 = $$0.apply($$8);
-                     if (!$$10.isEmpty() && $$1.test($$8)) {
-                        cae $$11 = $$10.get();
-                        if ($$8.dt().a((jo)$$11.a(), (double)$$3)) {
-                           return false;
-                        } else {
-                           cae $$12 = $$10.get();
-                           $$5x.a($$12);
-                           $$6.a(new cge($$12, $$4, $$2));
-                           return true;
-                        }
+   private static final float a = 0.3F;
+
+   public static cae<bxc> a() {
+      return ccg.a(
+         (Function<ccg.b<bxc>, ? extends App<ccg.c<bxc>, ccj<bxc>>>)($$0 -> $$0.group($$0.a(cge.n), $$0.a(cge.o), $$0.b(cge.e), $$0.b(cge.h), $$0.c(cge.r))
+               .apply($$0, ($$1, $$2, $$3, $$4, $$5) -> ($$6, $$7, $$8) -> {
+                     jd $$9 = $$0.b($$3);
+                     cgg $$10 = $$0.b($$4);
+                     if ($$6.C_().a(100) == 0 && $$6.aj() == $$9.a() && $$9.b().a($$7.dt(), 4.0) && $$10.d($$0xxx -> bwm.bD.equals($$0xxx.aq()))) {
+                        $$10.a($$1xx -> bwm.bD.equals($$1xx.aq()) && $$1xx.g($$7) <= 32.0).ifPresent($$3xx -> {
+                           $$5.a($$3xx);
+                           $$2.a(new bze($$3xx, true));
+                           $$1.a(new cgh(new bze($$3xx, false), 0.3F, 1));
+                        });
+                        return true;
                      } else {
                         return false;
                      }

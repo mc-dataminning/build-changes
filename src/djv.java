@@ -1,3 +1,23 @@
-public interface djv {
-   je<djs> getNoiseBiome(int var1, int var2, int var3, dkb.f var4);
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+
+public class djv {
+   public static final Codec<djv> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(awm.b.fieldOf("sound").forGetter($$0x -> $$0x.b), Codec.DOUBLE.fieldOf("tick_chance").forGetter($$0x -> $$0x.c)).apply($$0, djv::new)
+   );
+   private final je<awm> b;
+   private final double c;
+
+   public djv(je<awm> $$0, double $$1) {
+      this.b = $$0;
+      this.c = $$1;
+   }
+
+   public je<awm> a() {
+      return this.b;
+   }
+
+   public double b() {
+      return this.c;
+   }
 }

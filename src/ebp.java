@@ -1,55 +1,58 @@
-import it.unimi.dsi.fastutil.longs.LongSet;
-import java.io.IOException;
-import java.util.function.BooleanSupplier;
-import javax.annotation.Nullable;
+public interface ebp {
+   void a(ebr var1, double var2);
 
-public abstract class ebp implements eby, AutoCloseable {
-   @Nullable
-   public ebv a(int $$0, int $$1, boolean $$2) {
-      return (ebv)this.a($$0, $$1, ecm.n, $$2);
-   }
+   void a(ebr var1, double var2, double var4, long var6);
 
-   @Nullable
-   public ebv a(int $$0, int $$1) {
-      return this.a($$0, $$1, false);
-   }
+   void a(ebr var1, double var2, double var4);
 
-   @Nullable
-   @Override
-   public ebx c(int $$0, int $$1) {
-      return this.a($$0, $$1, ecm.c, false);
-   }
+   void a(ebr var1, int var2);
 
-   public boolean b(int $$0, int $$1) {
-      return this.a($$0, $$1, ecm.n, false) != null;
-   }
+   void b(ebr var1, int var2);
 
-   @Nullable
-   public abstract ebl a(int var1, int var2, ecm var3, boolean var4);
+   void b(ebr var1, double var2);
 
-   public abstract void a(BooleanSupplier var1, boolean var2);
+   void c(ebr var1, double var2);
 
-   public void a(int $$0, int $$1, int $$2, boolean $$3) {
-   }
+   public static class a implements ebp {
+      private final ebr a;
 
-   public abstract String e();
+      public a(ebr $$0) {
+         this.a = $$0;
+      }
 
-   public abstract int j();
+      @Override
+      public void a(ebr $$0, double $$1) {
+         this.a.a($$1);
+      }
 
-   @Override
-   public void close() throws IOException {
-   }
+      @Override
+      public void a(ebr $$0, double $$1, double $$2, long $$3) {
+         this.a.a($$1, $$2, $$3);
+      }
 
-   public abstract evk q();
+      @Override
+      public void a(ebr $$0, double $$1, double $$2) {
+         this.a.c($$1, $$2);
+      }
 
-   public void b(boolean $$0) {
-   }
+      @Override
+      public void a(ebr $$0, int $$1) {
+         this.a.b($$1);
+      }
 
-   public boolean a(dhw $$0, boolean $$1) {
-      return false;
-   }
+      @Override
+      public void b(ebr $$0, int $$1) {
+         this.a.c($$1);
+      }
 
-   public LongSet k() {
-      return LongSet.of();
+      @Override
+      public void b(ebr $$0, double $$1) {
+         this.a.c($$1);
+      }
+
+      @Override
+      public void c(ebr $$0, double $$1) {
+         this.a.b($$1);
+      }
    }
 }

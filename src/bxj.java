@@ -1,13 +1,13 @@
-public interface bxj extends bxi {
-   void b(int var1);
+import javax.annotation.Nullable;
 
-   boolean a();
+public interface bxj {
+   @Nullable
+   bwj<bxc> d();
 
-   void c(int var1);
+   div dV();
 
-   void b();
-
-   default int c() {
-      return 0;
+   @Nullable
+   default bxc e() {
+      return bwj.a(this.d(), this.dV(), bxc.class);
    }
 }

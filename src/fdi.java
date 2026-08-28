@@ -1,49 +1,42 @@
-import com.google.common.annotations.VisibleForTesting;
-import com.google.common.collect.Maps;
-import com.mojang.logging.LogUtils;
-import java.util.Map;
-import javax.annotation.Nullable;
-import net.minecraft.server.MinecraftServer;
-import org.slf4j.Logger;
+import com.google.common.collect.Sets;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Set;
 
-public class fdi<C> {
-   private static final Logger b = LogUtils.getLogger();
-   public static final fdi<MinecraftServer> a = new fdi<MinecraftServer>().a(new fdf.a()).a(new fdg.a());
-   private final Map<ale, fdh.a<C, ?>> c = Maps.newHashMap();
-   private final Map<Class<?>, fdh.a<C, ?>> d = Maps.newHashMap();
+public record fdi(fde b, fde c) implements fde {
+   public static final MapCodec<fdi> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(fdf.a.fieldOf("min").forGetter(fdi::c), fdf.a.fieldOf("max").forGetter(fdi::d)).apply($$0, fdi::new)
+   );
 
-   public fdi<C> a(fdh.a<C, ?> $$0) {
-      this.c.put($$0.a(), $$0);
-      this.d.put($$0.b(), $$0);
-      return this;
+   @Override
+   public fdd b() {
+      return fdf.c;
    }
 
-   private <T extends fdh<C>> fdh.a<C, T> a(Class<?> $$0) {
-      return (fdh.a<C, T>)this.d.get($$0);
+   public static fdi a(float $$0, float $$1) {
+      return new fdi(fdb.a($$0), fdb.a($$1));
    }
 
-   public <T extends fdh<C>> tx a(T $$0) {
-      fdh.a<C, T> $$1 = this.a($$0.getClass());
-      tx $$2 = new tx();
-      $$1.a($$2, $$0);
-      $$2.a("Type", $$1.a().toString());
-      return $$2;
+   @Override
+   public int a(eyz $$0) {
+      return azm.a($$0.b(), this.b.a($$0), this.c.a($$0));
    }
 
-   @Nullable
-   public fdh<C> a(tx $$0) {
-      ale $$1 = ale.c($$0.l("Type"));
-      fdh.a<C, ?> $$2 = this.c.get($$1);
-      if ($$2 == null) {
-         b.error("Failed to deserialize timer callback: {}", $$0);
-         return null;
-      } else {
-         try {
-            return $$2.b($$0);
-         } catch (Exception var5) {
-            b.error("Failed to deserialize timer callback: {}", $$0, var5);
-            return null;
-         }
-      }
+   @Override
+   public float b(eyz $$0) {
+      return azm.a($$0.b(), this.b.b($$0), this.c.b($$0));
+   }
+
+   @Override
+   public Set<bax<?>> a() {
+      return Sets.union(this.b.a(), this.c.a());
+   }
+
+   public fde c() {
+      return this.b;
+   }
+
+   public fde d() {
+      return this.c;
    }
 }

@@ -1,27 +1,60 @@
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableList.Builder;
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
+import java.util.function.Function;
+import java.util.function.Predicate;
 
-public class fby {
-   public static final fbx a = a("inverted", fbt.a);
-   public static final fbx b = a("any_of", fbk.a);
-   public static final fbx c = a("all_of", fbj.a);
-   public static final fbx d = a("random_chance", fcb.a);
-   public static final fbx e = a("random_chance_with_enchanted_bonus", fcc.a);
-   public static final fbx f = a("entity_properties", fbz.a);
-   public static final fbx g = a("killed_by_player", fca.a);
-   public static final fbx h = a("entity_scores", fbr.a);
-   public static final fbx i = a("block_state_property", fbv.a);
-   public static final fbx j = a("match_tool", fcd.a);
-   public static final fbx k = a("table_bonus", fbl.a);
-   public static final fbx l = a("survives_explosion", fbs.a);
-   public static final fbx m = a("damage_source_properties", fbp.a);
-   public static final fbx n = a("location_check", fbu.a);
-   public static final fbx o = a("weather_check", fcg.a);
-   public static final fbx p = a("reference", fbn.a);
-   public static final fbx q = a("time_check", fce.a);
-   public static final fbx r = a("value_check", fcf.a);
-   public static final fbx s = a("enchantment_active_check", fbq.a);
+public abstract class fby implements fci {
+   protected final List<fci> c;
+   private final Predicate<eyz> a;
 
-   private static fbx a(String $$0, MapCodec<? extends fbw> $$1) {
-      return jr.a(mf.F, ale.b($$0), new fbx($$1));
+   protected fby(List<fci> $$0, Predicate<eyz> $$1) {
+      this.c = $$0;
+      this.a = $$1;
+   }
+
+   protected static <T extends fby> MapCodec<T> a(Function<List<fci>, T> $$0) {
+      return RecordCodecBuilder.mapCodec($$1 -> $$1.group(fci.e.listOf().fieldOf("terms").forGetter($$0xx -> $$0xx.c)).apply($$1, $$0));
+   }
+
+   protected static <T extends fby> Codec<T> b(Function<List<fci>, T> $$0) {
+      return fci.e.listOf().xmap($$0, $$0x -> $$0x.c);
+   }
+
+   public final boolean a(eyz $$0) {
+      return this.a.test($$0);
+   }
+
+   @Override
+   public void a(ezf $$0) {
+      fci.super.a($$0);
+
+      for (int $$1 = 0; $$1 < this.c.size(); $$1++) {
+         this.c.get($$1).a($$0.a(".term[" + $$1 + "]"));
+      }
+   }
+
+   public abstract static class a implements fci.a {
+      private final Builder<fci> a = ImmutableList.builder();
+
+      protected a(fci.a... $$0) {
+         for (fci.a $$1 : $$0) {
+            this.a.add($$1.build());
+         }
+      }
+
+      public void a(fci.a $$0) {
+         this.a.add($$0.build());
+      }
+
+      @Override
+      public fci build() {
+         return this.a(this.a.build());
+      }
+
+      protected abstract fci a(List<fci> var1);
    }
 }

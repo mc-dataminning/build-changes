@@ -1,12 +1,37 @@
-public record aey(cys b) implements zd<abs> {
-   public static final yu<wh, aey> a = yu.a(cys.h, aey::b, aey::new);
+public class aey implements zf<abu> {
+   public static final yw<vu, aey> a = zf.a(aey::a, aey::new);
+   private final int b;
+   private final int c;
 
-   @Override
-   public zf<aey> a() {
-      return agl.cs;
+   public aey(int $$0, int $$1) {
+      this.b = $$0;
+      this.c = $$1;
    }
 
-   public void a(abs $$0) {
+   private aey(vu $$0) {
+      this.b = $$0.l();
+      this.c = $$0.l();
+   }
+
+   private void a(vu $$0) {
+      $$0.c(this.b);
+      $$0.c(this.c);
+   }
+
+   @Override
+   public zh<aey> a() {
+      return agn.aB;
+   }
+
+   public void a(abu $$0) {
       $$0.a(this);
+   }
+
+   public int b() {
+      return this.b;
+   }
+
+   public int e() {
+      return this.c;
    }
 }

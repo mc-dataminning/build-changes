@@ -1,8 +1,9 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+public class hjo extends hjt {
+   public hjo(hir $$0) {
+      super($$0, alg.b("textures/atlas/mob_effects.png"), hkn.i);
+   }
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface hjo {
+   public hip a(je<bvf> $$0) {
+      return this.a($$0.e().map(alf::a).orElseGet(hie::c));
+   }
 }

@@ -1,66 +1,167 @@
-import com.mojang.authlib.minecraft.report.AbuseReport;
-import com.mojang.authlib.minecraft.report.AbuseReportLimits;
-import com.mojang.authlib.minecraft.report.ReportedEntity;
-import com.mojang.datafixers.util.Either;
-import java.time.Instant;
-import java.util.UUID;
+import com.google.common.collect.Lists;
+import com.mojang.logging.LogUtils;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.util.List;
+import java.util.Objects;
 import javax.annotation.Nullable;
-import org.apache.commons.lang3.StringUtils;
+import org.slf4j.Logger;
 
-public class gkh extends gki {
-   private final String g;
+public class gkh {
+   private static final Logger a = LogUtils.getLogger();
+   private static final bsr b = new bsr(af.h(), "server-list-io");
+   private static final int c = 16;
+   private final fos d;
+   private final List<gkg> e = Lists.newArrayList();
+   private final List<gkg> f = Lists.newArrayList();
 
-   gkh(UUID $$0, Instant $$1, UUID $$2, String $$3) {
-      super($$0, $$1, $$2);
-      this.g = $$3;
+   public gkh(fos $$0) {
+      this.d = $$0;
    }
 
-   public String a() {
-      return this.g;
+   public void a() {
+      try {
+         this.e.clear();
+         this.f.clear();
+         tz $$0 = um.a(this.d.q.toPath().resolve("servers.dat"));
+         if ($$0 == null) {
+            return;
+         }
+
+         uf $$1 = $$0.c("servers", 10);
+
+         for (int $$2 = 0; $$2 < $$1.size(); $$2++) {
+            tz $$3 = $$1.a($$2);
+            gkg $$4 = gkg.a($$3);
+            if ($$3.q("hidden")) {
+               this.f.add($$4);
+            } else {
+               this.e.add($$4);
+            }
+         }
+      } catch (Exception var6) {
+         a.error("Couldn't load server list", var6);
+      }
    }
 
-   public gkh c() {
-      gkh $$0 = new gkh(this.a, this.b, this.c, this.g);
-      $$0.d = this.d;
-      $$0.f = this.f;
-      return $$0;
+   public void b() {
+      try {
+         uf $$0 = new uf();
+
+         for (gkg $$1 : this.e) {
+            tz $$2 = $$1.a();
+            $$2.a("hidden", false);
+            $$0.add($$2);
+         }
+
+         for (gkg $$3 : this.f) {
+            tz $$4 = $$3.a();
+            $$4.a("hidden", true);
+            $$0.add($$4);
+         }
+
+         tz $$5 = new tz();
+         $$5.a("servers", $$0);
+         Path $$6 = this.d.q.toPath();
+         Path $$7 = Files.createTempFile($$6, "servers", ".dat");
+         um.b($$5, $$7);
+         Path $$8 = $$6.resolve("servers.dat_old");
+         Path $$9 = $$6.resolve("servers.dat");
+         af.a($$9, $$7, $$8);
+      } catch (Exception var7) {
+         a.error("Couldn't save server list", var7);
+      }
    }
 
-   @Override
-   public fxi a(fxi $$0, gkm $$1) {
-      return new gbu($$0, $$1, this);
+   public gkg a(int $$0) {
+      return this.e.get($$0);
    }
 
-   public static class a extends gki.a<gkh> {
-      public a(gkh $$0, AbuseReportLimits $$1) {
-         super($$0, $$1);
-      }
-
-      public a(UUID $$0, String $$1, AbuseReportLimits $$2) {
-         super(new gkh(UUID.randomUUID(), Instant.now(), $$0, $$1), $$2);
-      }
-
-      @Override
-      public boolean b() {
-         return StringUtils.isNotEmpty(this.g());
-      }
-
-      @Nullable
-      @Override
-      public gki.b c() {
-         return this.a.d.length() > this.b.maxOpinionCommentsLength() ? gki.b.d : super.c();
-      }
-
-      @Override
-      public Either<gki.c, gki.b> a(gkm $$0) {
-         gki.b $$1 = this.c();
-         if ($$1 != null) {
-            return Either.right($$1);
-         } else {
-            ReportedEntity $$2 = new ReportedEntity(this.a.c);
-            AbuseReport $$3 = AbuseReport.name(this.a.d, $$2, this.a.b);
-            return Either.left(new gki.c(this.a.a, gkl.c, $$3));
+   @Nullable
+   public gkg a(String $$0) {
+      for (gkg $$1 : this.e) {
+         if ($$1.b.equals($$0)) {
+            return $$1;
          }
       }
+
+      for (gkg $$2 : this.f) {
+         if ($$2.b.equals($$0)) {
+            return $$2;
+         }
+      }
+
+      return null;
+   }
+
+   @Nullable
+   public gkg b(String $$0) {
+      for (int $$1 = 0; $$1 < this.f.size(); $$1++) {
+         gkg $$2 = this.f.get($$1);
+         if ($$2.b.equals($$0)) {
+            this.f.remove($$1);
+            this.e.add($$2);
+            return $$2;
+         }
+      }
+
+      return null;
+   }
+
+   public void a(gkg $$0) {
+      if (!this.e.remove($$0)) {
+         this.f.remove($$0);
+      }
+   }
+
+   public void a(gkg $$0, boolean $$1) {
+      if ($$1) {
+         this.f.add(0, $$0);
+
+         while (this.f.size() > 16) {
+            this.f.remove(this.f.size() - 1);
+         }
+      } else {
+         this.e.add($$0);
+      }
+   }
+
+   public int c() {
+      return this.e.size();
+   }
+
+   public void a(int $$0, int $$1) {
+      gkg $$2 = this.a($$0);
+      this.e.set($$0, this.a($$1));
+      this.e.set($$1, $$2);
+      this.b();
+   }
+
+   public void a(int $$0, gkg $$1) {
+      this.e.set($$0, $$1);
+   }
+
+   private static boolean a(gkg $$0, List<gkg> $$1) {
+      for (int $$2 = 0; $$2 < $$1.size(); $$2++) {
+         gkg $$3 = $$1.get($$2);
+         if (Objects.equals($$3.a, $$0.a) && $$3.b.equals($$0.b)) {
+            $$1.set($$2, $$0);
+            return true;
+         }
+      }
+
+      return false;
+   }
+
+   public static void b(gkg $$0) {
+      b.a_(() -> {
+         gkh $$1 = new gkh(fos.Q());
+         $$1.a();
+         if (!a($$0, $$1.e)) {
+            a($$0, $$1.f);
+         }
+
+         $$1.b();
+      });
    }
 }

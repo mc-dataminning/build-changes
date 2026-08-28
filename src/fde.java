@@ -1,8 +1,9 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+public interface fde extends eza {
+   float b(eyz var1);
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface fde {
+   default int a(eyz $$0) {
+      return Math.round(this.b($$0));
+   }
+
+   fdd b();
 }

@@ -1,14 +1,32 @@
-public class hab<S extends hdk, M extends gfd<S>> extends gzy<S, M> {
-   private final ggz<S> a;
-   private final ale b;
+import com.google.common.collect.Maps;
+import java.util.Map;
 
-   public hab(gxh<S, M> $$0, gic $$1, gie $$2, ale $$3) {
+public class hab extends han<hcv, ggc> {
+   private static final alg a = alg.b("invisible");
+   private static final Map<clh, alg> b = Maps.newEnumMap(
+      Map.of(
+         clh.a,
+         a,
+         clh.b,
+         alg.b("textures/entity/horse/horse_markings_white.png"),
+         clh.c,
+         alg.b("textures/entity/horse/horse_markings_whitefield.png"),
+         clh.d,
+         alg.b("textures/entity/horse/horse_markings_whitedots.png"),
+         clh.e,
+         alg.b("textures/entity/horse/horse_markings_blackdots.png")
+      )
+   );
+
+   public hab(gxw<hcv, ggc> $$0) {
       super($$0);
-      this.b = $$3;
-      this.a = new ggz<>($$1.a($$2));
    }
 
-   public void a(fiq $$0, gpd $$1, int $$2, S $$3, float $$4, float $$5) {
-      a(this.a, this.b, $$0, $$1, $$2, $$3, -1);
+   public void a(fjc $$0, gps $$1, int $$2, hcv $$3, float $$4, float $$5) {
+      alg $$6 = b.get($$3.h);
+      if ($$6 != a && !$$3.z) {
+         fjg $$7 = $$1.getBuffer(gqc.j($$6));
+         this.d().a($$0, $$7, $$2, gxa.a($$3, 0.0F));
+      }
    }
 }

@@ -1,155 +1,80 @@
-import it.unimi.dsi.fastutil.ints.IntArrayFIFOQueue;
-import it.unimi.dsi.fastutil.ints.IntPriorityQueue;
-import java.util.BitSet;
-import java.util.EnumSet;
-import java.util.Set;
+import com.google.common.collect.ImmutableMap;
+import java.util.Map;
 
-public class gst {
-   private static final int a = 4;
-   private static final int b = 16;
-   private static final int c = 15;
-   private static final int d = 4096;
-   private static final int e = 0;
-   private static final int f = 4;
-   private static final int g = 8;
-   private static final int h = (int)Math.pow(16.0, 0.0);
-   private static final int i = (int)Math.pow(16.0, 1.0);
-   private static final int j = (int)Math.pow(16.0, 2.0);
-   private static final int k = -1;
-   private static final ja[] l = ja.values();
-   private final BitSet m = new BitSet(4096);
-   private static final int[] n = af.a(new int[1352], $$0 -> {
-      int $$1 = 0;
-      int $$2 = 15;
-      int $$3 = 0;
+public class gst extends gry {
+   private static final float a = 0.6666667F;
+   private static final fei b = new fei(0.0, 0.33333334F, 0.046666667F);
+   private final Map<ebn, gst.a> c;
 
-      for (int $$4 = 0; $$4 < 16; $$4++) {
-         for (int $$5 = 0; $$5 < 16; $$5++) {
-            for (int $$6 = 0; $$6 < 16; $$6++) {
-               if ($$4 == 0 || $$4 == 15 || $$5 == 0 || $$5 == 15 || $$6 == 0 || $$6 == 15) {
-                  $$0[$$3++] = a($$4, $$5, $$6);
-               }
-            }
-         }
-      }
-   });
-   private int o = 4096;
-
-   public void a(iu $$0) {
-      this.m.set(b($$0), true);
-      this.o--;
+   public gst(gsf.a $$0) {
+      super($$0);
+      this.c = ebn.a().collect(ImmutableMap.toImmutableMap($$0x -> $$0x, $$1 -> new gst.a(a($$0.f(), $$1, true), a($$0.f(), $$1, false))));
    }
 
-   private static int b(iu $$0) {
-      return a($$0.u() & 15, $$0.v() & 15, $$0.w() & 15);
+   @Override
+   protected ggm a(dzz $$0, ebn $$1) {
+      gst.a $$2 = this.c.get($$1);
+      return $$0.b() instanceof dud ? $$2.a() : $$2.b();
    }
 
-   private static int a(int $$0, int $$1, int $$2) {
-      return $$0 << 0 | $$1 << 8 | $$2 << 4;
+   @Override
+   protected hkw a(ebn $$0) {
+      return gqn.a($$0);
    }
 
-   public gsu a() {
-      gsu $$0 = new gsu();
-      if (4096 - this.o < 256) {
-         $$0.a(true);
-      } else if (this.o == 0) {
-         $$0.a(false);
-      } else {
-         for (int $$1 : n) {
-            if (!this.m.get($$1)) {
-               $$0.a(this.a($$1));
-            }
-         }
-      }
-
-      return $$0;
+   @Override
+   protected float a() {
+      return 0.6666667F;
    }
 
-   private Set<ja> a(int $$0) {
-      Set<ja> $$1 = EnumSet.noneOf(ja.class);
-      IntPriorityQueue $$2 = new IntArrayFIFOQueue();
-      $$2.enqueue($$0);
-      this.m.set($$0, true);
-
-      while (!$$2.isEmpty()) {
-         int $$3 = $$2.dequeueInt();
-         this.a($$3, $$1);
-
-         for (ja $$4 : l) {
-            int $$5 = this.a($$3, $$4);
-            if ($$5 >= 0 && !this.m.get($$5)) {
-               this.m.set($$5, true);
-               $$2.enqueue($$5);
-            }
-         }
-      }
-
-      return $$1;
+   @Override
+   protected float b() {
+      return 0.6666667F;
    }
 
-   private void a(int $$0, Set<ja> $$1) {
-      int $$2 = $$0 >> 0 & 15;
-      if ($$2 == 0) {
-         $$1.add(ja.e);
-      } else if ($$2 == 15) {
-         $$1.add(ja.f);
-      }
+   private static void a(fjc $$0, float $$1) {
+      $$0.a(0.5F, 0.5F, 0.5F);
+      $$0.a(a.d.rotationDegrees($$1));
+   }
 
-      int $$3 = $$0 >> 8 & 15;
-      if ($$3 == 0) {
-         $$1.add(ja.a);
-      } else if ($$3 == 15) {
-         $$1.add(ja.b);
-      }
-
-      int $$4 = $$0 >> 4 & 15;
-      if ($$4 == 0) {
-         $$1.add(ja.c);
-      } else if ($$4 == 15) {
-         $$1.add(ja.d);
+   @Override
+   protected void a(fjc $$0, float $$1, dzz $$2) {
+      a($$0, $$1);
+      if (!($$2.b() instanceof dud)) {
+         $$0.a(0.0F, -0.3125F, -0.4375F);
       }
    }
 
-   private int a(int $$0, ja $$1) {
-      switch ($$1) {
-         case a:
-            if (($$0 >> 8 & 15) == 0) {
-               return -1;
-            }
+   @Override
+   protected fei c() {
+      return b;
+   }
 
-            return $$0 - j;
-         case b:
-            if (($$0 >> 8 & 15) == 15) {
-               return -1;
-            }
+   public static void a(fjc $$0, gps $$1, int $$2, int $$3, ggm $$4, hkw $$5) {
+      $$0.a();
+      a($$0, 0.0F);
+      $$0.b(0.6666667F, -0.6666667F, -0.6666667F);
+      fjg $$6 = $$5.a($$1, $$4::a);
+      $$4.a($$0, $$6, $$2, $$3);
+      $$0.b();
+   }
 
-            return $$0 + j;
-         case c:
-            if (($$0 >> 4 & 15) == 0) {
-               return -1;
-            }
+   public static ggm a(giq $$0, ebn $$1, boolean $$2) {
+      gis $$3 = $$2 ? git.a($$1) : git.b($$1);
+      return new ggm.a($$0.a($$3), gqc::g);
+   }
 
-            return $$0 - i;
-         case d:
-            if (($$0 >> 4 & 15) == 15) {
-               return -1;
-            }
-
-            return $$0 + i;
-         case e:
-            if (($$0 >> 0 & 15) == 0) {
-               return -1;
-            }
-
-            return $$0 - h;
-         case f:
-            if (($$0 >> 0 & 15) == 15) {
-               return -1;
-            }
-
-            return $$0 + h;
-         default:
-            return -1;
+   public static gja a(boolean $$0) {
+      gjc $$1 = new gjc();
+      gje $$2 = $$1.a();
+      $$2.a("sign", giz.c().a(0, 0).a(-12.0F, -14.0F, -1.0F, 24.0F, 12.0F, 2.0F), giw.a);
+      if ($$0) {
+         $$2.a("stick", giz.c().a(0, 14).a(-1.0F, -2.0F, -1.0F, 2.0F, 14.0F, 2.0F), giw.a);
       }
+
+      return gja.a($$1, 64, 32);
+   }
+
+   static record a(ggm a, ggm b) {
    }
 }

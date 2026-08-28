@@ -1,2 +1,8 @@
-public record gck(egj a, djn b) {
+import javax.annotation.ParametersAreNonnullByDefault;
+
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface gck {
 }

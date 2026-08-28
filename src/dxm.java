@@ -1,135 +1,245 @@
-import it.unimi.dsi.fastutil.objects.Object2IntLinkedOpenHashMap;
-import it.unimi.dsi.fastutil.objects.Object2IntSortedMap;
-import java.util.Collections;
-import java.util.SequencedSet;
+import com.google.common.annotations.VisibleForTesting;
+import it.unimi.dsi.fastutil.ints.IntArrayList;
+import it.unimi.dsi.fastutil.ints.IntList;
 
-public class dxm {
-   private final Object2IntSortedMap<cyo> a;
+public class dxm extends dyg implements cvi {
+   public static final int d = 3;
+   public static final int e = 3;
+   public static final int f = 9;
+   public static final int g = 1;
+   public static final int h = 0;
+   public static final int i = 9;
+   public static final int j = 10;
+   private jn<cyy> q = jn.a(9, cyy.k);
+   private int r = 0;
+   protected final cvc k = new cvc() {
+      private final int[] a = new int[9];
+      private int b = 0;
 
-   dxm(Object2IntSortedMap<cyo> $$0) {
-      this.a = $$0;
-   }
-
-   public boolean a(cys $$0) {
-      return this.a.containsKey($$0.h());
-   }
-
-   public SequencedSet<cyo> a() {
-      return Collections.unmodifiableSequencedSet(this.a.keySet());
-   }
-
-   public int b(cys $$0) {
-      return $$0.f() ? 0 : this.a.getInt($$0.h());
-   }
-
-   public static dxm a(jg.a $$0, cub $$1) {
-      return a($$0, $$1, 200);
-   }
-
-   public static dxm a(jg.a $$0, cub $$1, int $$2) {
-      return new dxm.a($$0, $$1)
-         .a(cyw.rl, $$2 * 100)
-         .a(dlw.iZ, $$2 * 8 * 10)
-         .a(cyw.th, $$2 * 12)
-         .a(cyw.pg, $$2 * 8)
-         .a(cyw.ph, $$2 * 8)
-         .a(axi.r, $$2 * 3 / 2)
-         .a(axi.D, $$2 * 3 / 2)
-         .a(axi.b, $$2 * 3 / 2)
-         .a(dlw.y, $$2 * 3 / 2)
-         .a(axi.i, $$2 * 3 / 2)
-         .a(dlw.is, $$2 * 3 / 2)
-         .a(axi.j, $$2 * 3 / 4)
-         .a(dlw.kb, $$2 * 3 / 4)
-         .a(axi.n, $$2 * 3 / 2)
-         .a(axi.m, $$2 * 3 / 2)
-         .a(axi.k, $$2 * 3 / 2)
-         .a(axi.l, $$2 * 3 / 2)
-         .a(dlw.bf, $$2 * 3 / 2)
-         .a(dlw.cs, $$2 * 3 / 2)
-         .a(dlw.ct, $$2 * 3 / 2)
-         .a(dlw.oC, $$2 * 3 / 2)
-         .a(dlw.eg, $$2 * 3 / 2)
-         .a(dlw.cD, $$2 * 3 / 2)
-         .a(dlw.hs, $$2 * 3 / 2)
-         .a(dlw.cI, $$2 * 3 / 2)
-         .a(dlw.hw, $$2 * 3 / 2)
-         .a(axi.F, $$2 * 3 / 2)
-         .a(cyw.pe, $$2 * 3 / 2)
-         .a(cyw.rW, $$2 * 3 / 2)
-         .a(dlw.cX, $$2 * 3 / 2)
-         .a(axi.aU, $$2)
-         .a(axi.bu, $$2 * 4)
-         .a(cyw.pw, $$2)
-         .a(cyw.pv, $$2)
-         .a(cyw.pz, $$2)
-         .a(cyw.py, $$2)
-         .a(cyw.px, $$2)
-         .a(axi.h, $$2)
-         .a(axi.aR, $$2 * 6)
-         .a(axi.a, $$2 / 2)
-         .a(axi.d, $$2 / 2)
-         .a(cyw.pZ, $$2 / 2)
-         .a(axi.p, $$2 / 2)
-         .a(cyw.pc, $$2 / 2)
-         .a(axi.g, 1 + $$2 / 3)
-         .a(dlw.mG, 1 + $$2 * 20)
-         .a(cyw.wZ, $$2 * 3 / 2)
-         .a(dlw.nB, $$2 / 4)
-         .a(dlw.bC, $$2 / 2)
-         .a(dlw.ou, $$2 / 4)
-         .a(dlw.ov, $$2 * 3 / 2)
-         .a(dlw.ow, $$2 * 3 / 2)
-         .a(dlw.oz, $$2 * 3 / 2)
-         .a(dlw.oA, $$2 * 3 / 2)
-         .a(dlw.oD, $$2 * 3 / 2)
-         .a(dlw.pG, $$2 * 3 / 2)
-         .a(dlw.tc, $$2 / 2)
-         .a(dlw.td, $$2 / 2)
-         .a(dlw.ag, $$2 * 3 / 2)
-         .a(dlw.th, $$2 / 2)
-         .a(axi.aL)
-         .a();
-   }
-
-   public static class a {
-      private final jg<cyo> a;
-      private final cub b;
-      private final Object2IntSortedMap<cyo> c = new Object2IntLinkedOpenHashMap();
-
-      public a(jg.a $$0, cub $$1) {
-         this.a = $$0.e(mg.K);
-         this.b = $$1;
+      @Override
+      public int a(int $$0) {
+         return $$0 == 9 ? this.b : this.a[$$0];
       }
 
-      public dxm a() {
-         return new dxm(this.c);
-      }
-
-      public dxm.a a(axp<cyo> $$0) {
-         this.c.keySet().removeIf($$1 -> $$1.e().a($$0));
-         return this;
-      }
-
-      public dxm.a a(axp<cyo> $$0, int $$1) {
-         this.a.a($$0).ifPresent($$1x -> {
-            for (je<cyo> $$2 : $$1x) {
-               this.a($$1, $$2.a());
-            }
-         });
-         return this;
-      }
-
-      public dxm.a a(dio $$0, int $$1) {
-         cyo $$2 = $$0.h();
-         this.a($$1, $$2);
-         return this;
-      }
-
-      private void a(int $$0, cyo $$1) {
-         if ($$1.a(this.b)) {
-            this.c.put($$1, $$0);
+      @Override
+      public void a(int $$0, int $$1) {
+         if ($$0 == 9) {
+            this.b = $$1;
+         } else {
+            this.a[$$0] = $$1;
          }
       }
+
+      @Override
+      public int a() {
+         return 10;
+      }
+   };
+
+   public dxm(iu $$0, dzz $$1) {
+      super(dwz.Q, $$0, $$1);
+   }
+
+   @Override
+   protected wy j() {
+      return wy.c("container.crafter");
+   }
+
+   @Override
+   protected cuq a(int $$0, cqx $$1) {
+      return new cvg($$0, $$1, this, this.k);
+   }
+
+   public void a(int $$0, boolean $$1) {
+      if (this.e($$0)) {
+         this.k.a($$0, $$1 ? 0 : 1);
+         this.e();
+      }
+   }
+
+   public boolean c(int $$0) {
+      return $$0 >= 0 && $$0 < 9 ? this.k.a($$0) == 1 : false;
+   }
+
+   @Override
+   public boolean b(int $$0, cyy $$1) {
+      if (this.k.a($$0) == 1) {
+         return false;
+      } else {
+         cyy $$2 = this.q.get($$0);
+         int $$3 = $$2.M();
+         if ($$3 >= $$2.k()) {
+            return false;
+         } else {
+            return $$2.f() ? true : !this.a($$3, $$2, $$0);
+         }
+      }
+   }
+
+   private boolean a(int $$0, cyy $$1, int $$2) {
+      for (int $$3 = $$2 + 1; $$3 < 9; $$3++) {
+         if (!this.c($$3)) {
+            cyy $$4 = this.a($$3);
+            if ($$4.f() || $$4.M() < $$0 && cyy.c($$4, $$1)) {
+               return true;
+            }
+         }
+      }
+
+      return false;
+   }
+
+   @Override
+   protected void a(tz $$0, jg.a $$1) {
+      super.a($$0, $$1);
+      this.r = $$0.h("crafting_ticks_remaining");
+      this.q = jn.a(this.b(), cyy.k);
+      if (!this.b_($$0)) {
+         btv.b($$0, this.q, $$1);
+      }
+
+      int[] $$2 = $$0.n("disabled_slots");
+
+      for (int $$3 = 0; $$3 < 9; $$3++) {
+         this.k.a($$3, 0);
+      }
+
+      for (int $$4 : $$2) {
+         if (this.e($$4)) {
+            this.k.a($$4, 1);
+         }
+      }
+
+      this.k.a(9, $$0.h("triggered"));
+   }
+
+   @Override
+   protected void b(tz $$0, jg.a $$1) {
+      super.b($$0, $$1);
+      $$0.a("crafting_ticks_remaining", this.r);
+      if (!this.c_($$0)) {
+         btv.a($$0, this.q, $$1);
+      }
+
+      this.c($$0);
+      this.d($$0);
+   }
+
+   @Override
+   public int b() {
+      return 9;
+   }
+
+   @Override
+   public boolean c() {
+      for (cyy $$0 : this.q) {
+         if (!$$0.f()) {
+            return false;
+         }
+      }
+
+      return true;
+   }
+
+   @Override
+   public cyy a(int $$0) {
+      return this.q.get($$0);
+   }
+
+   @Override
+   public void a(int $$0, cyy $$1) {
+      if (this.c($$0)) {
+         this.a($$0, true);
+      }
+
+      super.a($$0, $$1);
+   }
+
+   @Override
+   public boolean a(cqy $$0) {
+      return btu.a(this, $$0);
+   }
+
+   @Override
+   public jn<cyy> f() {
+      return this.q;
+   }
+
+   @Override
+   protected void a(jn<cyy> $$0) {
+      this.q = $$0;
+   }
+
+   @Override
+   public int au_() {
+      return 3;
+   }
+
+   @Override
+   public int g() {
+      return 3;
+   }
+
+   @Override
+   public void fillStackedContents(crd $$0) {
+      for (cyy $$1 : this.q) {
+         $$0.a($$1);
+      }
+   }
+
+   private void c(tz $$0) {
+      IntList $$1 = new IntArrayList();
+
+      for (int $$2 = 0; $$2 < 9; $$2++) {
+         if (this.c($$2)) {
+            $$1.add($$2);
+         }
+      }
+
+      $$0.b("disabled_slots", $$1);
+   }
+
+   private void d(tz $$0) {
+      $$0.a("triggered", this.k.a(9));
+   }
+
+   public void a(boolean $$0) {
+      this.k.a(9, $$0 ? 1 : 0);
+   }
+
+   @VisibleForTesting
+   public boolean k() {
+      return this.k.a(9) == 1;
+   }
+
+   public static void a(div $$0, iu $$1, dzz $$2, dxm $$3) {
+      int $$4 = $$3.r - 1;
+      if ($$4 >= 0) {
+         $$3.r = $$4;
+         if ($$4 == 0) {
+            $$0.a($$1, $$2.b(dnt.b, Boolean.valueOf(false)), 3);
+         }
+      }
+   }
+
+   public void d(int $$0) {
+      this.r = $$0;
+   }
+
+   public int s() {
+      int $$0 = 0;
+
+      for (int $$1 = 0; $$1 < this.b(); $$1++) {
+         cyy $$2 = this.a($$1);
+         if (!$$2.f() || this.c($$1)) {
+            $$0++;
+         }
+      }
+
+      return $$0;
+   }
+
+   private boolean e(int $$0) {
+      return $$0 > -1 && $$0 < 9 && this.q.get($$0).f();
    }
 }

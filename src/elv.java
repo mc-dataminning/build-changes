@@ -1,22 +1,30 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class elv implements ekx {
+public record elv(int b, int c, int d, je<epx> e) implements eli {
    public static final Codec<elv> a = RecordCodecBuilder.create(
       $$0 -> $$0.group(
-               Codec.intRange(0, 512).fieldOf("floor_search_range").forGetter($$0x -> $$0x.b),
-               Codec.intRange(0, 64).fieldOf("placement_radius_around_floor").forGetter($$0x -> $$0x.c),
-               Codec.floatRange(0.0F, 1.0F).fieldOf("placement_probability_per_valid_position").forGetter($$0x -> $$0x.d)
+               ayu.m.fieldOf("tries").orElse(128).forGetter(elv::a),
+               ayu.l.fieldOf("xz_spread").orElse(7).forGetter(elv::b),
+               ayu.l.fieldOf("y_spread").orElse(3).forGetter(elv::c),
+               epx.b.fieldOf("feature").forGetter(elv::d)
             )
             .apply($$0, elv::new)
    );
-   public final int b;
-   public final int c;
-   public final float d;
 
-   public elv(int $$0, int $$1, float $$2) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
+   public int a() {
+      return this.b;
+   }
+
+   public int b() {
+      return this.c;
+   }
+
+   public int c() {
+      return this.d;
+   }
+
+   public je<epx> d() {
+      return this.e;
    }
 }

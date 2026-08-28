@@ -1,61 +1,43 @@
 import com.mojang.serialization.Codec;
-import io.netty.buffer.ByteBuf;
-import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
-import java.util.Map;
-import java.util.Map.Entry;
-import java.util.function.Consumer;
-import javax.annotation.Nullable;
+import java.util.List;
 
-public record das(Map<String, String> d) implements dbx {
-   public static final das a = new das(Map.of());
-   public static final Codec<das> b = Codec.unboundedMap(Codec.STRING, Codec.STRING).xmap(das::new, das::b);
-   private static final yu<ByteBuf, Map<String, String>> e = ys.a(Object2ObjectOpenHashMap::new, ys.o, ys.o);
-   public static final yu<ByteBuf, das> c = e.a(das::new, das::b);
+public class das implements cue {
+   public static final Codec<je<das>> a = mf.h.r();
+   public static final yw<wj, je<das>> b = yu.b(mg.ae);
+   private final String c;
+   private final List<bvh> d;
+   private cuh e = cuj.g;
 
-   public <T extends Comparable<T>> das a(ear<T> $$0, T $$1) {
-      return new das(af.a(this.d, $$0.f(), $$0.b($$1)));
+   public das(String $$0, bvh... $$1) {
+      this.c = $$0;
+      this.d = List.of($$1);
    }
 
-   public <T extends Comparable<T>> das a(ear<T> $$0, dzo $$1) {
-      return this.a($$0, $$1.c($$0));
-   }
-
-   @Nullable
-   public <T extends Comparable<T>> T a(ear<T> $$0) {
-      String $$1 = this.d.get($$0.f());
-      return $$1 == null ? null : $$0.b($$1).orElse(null);
-   }
-
-   public dzo a(dzo $$0) {
-      dzp<dlu, dzo> $$1 = $$0.b().l();
-
-      for (Entry<String, String> $$2 : this.d.entrySet()) {
-         ear<?> $$3 = $$1.a($$2.getKey());
-         if ($$3 != null) {
-            $$0 = a($$0, $$3, $$2.getValue());
-         }
-      }
-
-      return $$0;
-   }
-
-   private static <T extends Comparable<T>> dzo a(dzo $$0, ear<T> $$1, String $$2) {
-      return $$1.b($$2).map($$2x -> $$0.b($$1, $$2x)).orElse($$0);
-   }
-
-   public boolean a() {
-      return this.d.isEmpty();
+   public das a(cuf... $$0) {
+      this.e = cuj.e.a($$0);
+      return this;
    }
 
    @Override
-   public void a(cyo.b $$0, Consumer<ww> $$1, dah $$2, ke $$3) {
-      Integer $$4 = this.a(dlo.c);
-      if ($$4 != null) {
-         $$1.accept(ww.a("container.beehive.honey", $$4, 5).a(n.h));
-      }
+   public cuh k() {
+      return this.e;
    }
 
-   public Map<String, String> b() {
+   public List<bvh> a() {
       return this.d;
+   }
+
+   public String b() {
+      return this.c;
+   }
+
+   public boolean c() {
+      for (bvh $$0 : this.d) {
+         if ($$0.c().a().a()) {
+            return true;
+         }
+      }
+
+      return false;
    }
 }

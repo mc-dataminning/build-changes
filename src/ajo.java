@@ -1,7 +1,3 @@
-public record ajo() implements ajm {
-   public static final ajo a = new ajo();
-
-   @Override
-   public void a(vs $$0) {
-   }
+public interface ajo {
+   void a(vu var1);
 }

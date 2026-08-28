@@ -1,14 +1,41 @@
-public abstract class gtz<T extends bxb & cpd> extends gue<T, hcd, gfo> {
-   public gtz(gvk.a $$0, gie $$1, gie $$2, float $$3) {
-      super($$0, new gfo($$0.a($$1)), new gfo($$0.a($$2)), $$3);
+import it.unimi.dsi.fastutil.longs.LongOpenHashSet;
+import it.unimi.dsi.fastutil.longs.LongSet;
+
+public class gtz implements gtu.a {
+   private final fos a;
+   private static final int b = 10;
+
+   public gtz(fos $$0) {
+      this.a = $$0;
    }
 
-   public hcd a() {
-      return new hcd();
-   }
+   @Override
+   public void a(fjc $$0, gps $$1, double $$2, double $$3, double $$4) {
+      div $$5 = this.a.s;
+      iu $$6 = iu.a($$2, $$3, $$4);
+      LongSet $$7 = new LongOpenHashSet();
 
-   public void a(T $$0, hcd $$1, float $$2) {
-      super.a($$0, $$1, $$2);
-      $$1.a = $$0.q();
+      for (iu $$8 : iu.c($$6.b(-10, -10, -10), $$6.b(10, 10, 10))) {
+         int $$9 = $$5.a(dje.a, $$8);
+         float $$10 = (float)(15 - $$9) / 15.0F * 0.5F + 0.16F;
+         int $$11 = azm.g($$10, 0.9F, 0.9F);
+         long $$12 = jx.e($$8.a());
+         if ($$7.add($$12)) {
+            gtu.a(
+               $$0,
+               $$1,
+               $$5.S().q().a(dje.a, jx.a($$12)),
+               (double)jx.a(jx.b($$12), 8),
+               (double)jx.a(jx.c($$12), 8),
+               (double)jx.a(jx.d($$12), 8),
+               16711680,
+               0.3F
+            );
+         }
+
+         if ($$9 != 15) {
+            gtu.a($$0, $$1, String.valueOf($$9), (double)$$8.u() + 0.5, (double)$$8.v() + 0.25, (double)$$8.w() + 0.5, $$11);
+         }
+      }
    }
 }

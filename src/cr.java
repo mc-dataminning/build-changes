@@ -19,8 +19,8 @@ public record cr(cv.d c, Optional<bx> d) implements by {
    }
 
    @Override
-   public boolean a(bwa $$0, aro $$1, @Nullable fdw $$2) {
-      return !($$0 instanceof bwy $$3) ? false : this.c.d($$3.g()) && (this.d.isEmpty() || $$3.j().anyMatch($$2x -> this.d.get().a($$1, $$2, $$2x)));
+   public boolean a(bwd $$0, arq $$1, @Nullable fei $$2) {
+      return !($$0 instanceof bxb $$3) ? false : this.c.d($$3.g()) && (this.d.isEmpty() || $$3.j().anyMatch($$2x -> this.d.get().a($$1, $$2, $$2x)));
    }
 
    public cv.d b() {

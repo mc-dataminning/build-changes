@@ -1,30 +1,41 @@
-import com.mojang.serialization.MapCodec;
+import java.util.Map;
+import java.util.function.Function;
 
-public class dtg extends dno {
-   public static final MapCodec<dtg> b = b(dtg::new);
-   private static final ww c = ww.c("container.upgrade");
+public interface dtg {
+   int d = 1;
+   int e = 4;
+   eaz f = eap.V;
 
-   @Override
-   public MapCodec<dtg> a() {
-      return b;
+   default Function<dzz, ffc> a(eax<ja> $$0, eaz $$1) {
+      Map<ja, ffc> $$2 = fez.c(dma.a(0.0, 0.0, 0.0, 8.0, this.b(), 8.0));
+      return $$3 -> {
+         ffc $$4 = fez.a();
+         ja $$5 = $$3.c($$0);
+         int $$6 = $$3.c($$1);
+
+         for (int $$7 = 0; $$7 < $$6; $$7++) {
+            $$4 = fez.a($$4, $$2.get($$5));
+            $$5 = $$5.i();
+         }
+
+         return $$4.b();
+      };
    }
 
-   protected dtg(dzn.d $$0) {
-      super($$0);
+   default eaz c() {
+      return f;
    }
 
-   @Override
-   protected bua b(dzo $$0, dip $$1, iu $$2) {
-      return new bug(($$2x, $$3, $$4) -> new cwk($$2x, $$3, cux.a($$1, $$2)), c);
+   default double b() {
+      return 1.0;
    }
 
-   @Override
-   protected bty a(dzo $$0, dip $$1, iu $$2, cqs $$3, fds $$4) {
-      if (!$$1.C) {
-         $$3.a($$0.b($$1, $$2));
-         $$3.a(awv.aF);
-      }
+   default boolean a(dzz $$0, dcr $$1, eaz $$2) {
+      return !$$1.h() && $$1.n().a($$0.b().h()) && $$0.c($$2) < 4;
+   }
 
-      return bty.a;
+   default dzz a(dcr $$0, dma $$1, eaz $$2, eax<ja> $$3) {
+      dzz $$4 = $$0.q().a_($$0.a());
+      return $$4.a($$1) ? $$4.b($$2, Integer.valueOf(Math.min(4, $$4.c($$2) + 1))) : $$1.m().b($$3, $$0.g().g());
    }
 }

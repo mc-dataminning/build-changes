@@ -1,7 +1,7 @@
 import io.netty.buffer.ByteBuf;
 
 public class jw {
-   public static final yu<ByteBuf, jw> a = new yu<ByteBuf, jw>() {
+   public static final yw<ByteBuf, jw> a = new yw<ByteBuf, jw>() {
       public jw a(ByteBuf $$0) {
          return new jw($$0.readFloat(), $$0.readFloat(), $$0.readFloat());
       }
@@ -22,15 +22,15 @@ public class jw {
       this.d = !Float.isInfinite($$2) && !Float.isNaN($$2) ? $$2 % 360.0F : 0.0F;
    }
 
-   public jw(ud $$0) {
+   public jw(uf $$0) {
       this($$0.i(0), $$0.i(1), $$0.i(2));
    }
 
-   public ud a() {
-      ud $$0 = new ud();
-      $$0.add(ua.a(this.b));
-      $$0.add(ua.a(this.c));
-      $$0.add(ua.a(this.d));
+   public uf a() {
+      uf $$0 = new uf();
+      $$0.add(uc.a(this.b));
+      $$0.add(uc.a(this.c));
+      $$0.add(uc.a(this.d));
       return $$0;
    }
 
@@ -52,14 +52,14 @@ public class jw {
    }
 
    public float e() {
-      return azk.h(this.b);
+      return azm.h(this.b);
    }
 
    public float f() {
-      return azk.h(this.c);
+      return azm.h(this.c);
    }
 
    public float g() {
-      return azk.h(this.d);
+      return azm.h(this.d);
    }
 }

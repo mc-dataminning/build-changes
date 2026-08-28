@@ -1,25 +1,15 @@
-public record zt(String b, int c) implements zd<zj> {
-   public static final yu<vs, zt> a = zd.a(zt::a, zt::new);
+import io.netty.buffer.ByteBuf;
+import java.util.List;
 
-   private zt(vs $$0) {
-      this($$0.p(), $$0.l());
-   }
-
-   private void a(vs $$0) {
-      $$0.a(this.b);
-      $$0.c(this.c);
-   }
+public record zt(List<aly.c> b) implements zf<zl> {
+   public static final yw<ByteBuf, zt> a = yw.a(aly.c, zt::b, zt::new);
 
    @Override
-   public zf<zt> a() {
-      return zv.j;
+   public zh<zt> a() {
+      return zx.h;
    }
 
-   public void a(zj $$0) {
+   public void a(zl $$0) {
       $$0.a(this);
-   }
-
-   public int e() {
-      return this.c;
    }
 }

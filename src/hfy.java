@@ -1,19 +1,20 @@
 import com.mojang.serialization.MapCodec;
+import javax.annotation.Nullable;
 
-public class hfy {
-   private static final ays.b<ale, MapCodec<? extends hfz>> b = new ays.b<>();
-   public static final MapCodec<hfz> a = b.a(ale.a).dispatchMap("property", hfz::a, $$0 -> $$0);
+public record hfy() implements hfs {
+   public static final MapCodec<hfy> a = MapCodec.unit(new hfy());
 
-   public static void a() {
-      b.a(ale.b("custom_model_data"), hfv.a);
-      b.a(ale.b("bundle/fullness"), hfp.a);
-      b.a(ale.b("damage"), hfw.a);
-      b.a(ale.b("cooldown"), hfs.a);
-      b.a(ale.b("time"), hga.a);
-      b.a(ale.b("compass"), hfq.a);
-      b.a(ale.b("crossbow/pull"), hfu.a);
-      b.a(ale.b("use_cycle"), hgb.a);
-      b.a(ale.b("use_duration"), hgc.a);
-      b.a(ale.b("count"), hft.a);
+   @Override
+   public boolean get(cyy $$0, @Nullable gjr $$1, @Nullable bxc $$2, int $$3, cyw $$4) {
+      if ($$2 instanceof gop $$5 && $$5.bQ.g() == $$0) {
+         return true;
+      }
+
+      return false;
+   }
+
+   @Override
+   public MapCodec<hfy> a() {
+      return a;
    }
 }

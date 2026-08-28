@@ -8,17 +8,17 @@ public record ep(List<ep.a> b) {
    private static final int c = 8;
    private static final int d = 16;
 
-   public ep(vs $$0) {
-      this($$0.a(vs.a(ArrayList::new, 8), ep.a::new));
+   public ep(vu $$0) {
+      this($$0.a(vu.a(ArrayList::new, 8), ep.a::new));
    }
 
-   public void a(vs $$0) {
+   public void a(vu $$0) {
       $$0.a(this.b, ($$0x, $$1) -> $$1.a($$0x));
    }
 
-   public static ep a(xo<?> $$0, ep.b $$1) {
+   public static ep a(xq<?> $$0, ep.b $$1) {
       List<ep.a> $$2 = $$0.a().stream().map($$1x -> {
-         xi $$2x = $$1.sign($$1x.c());
+         xk $$2x = $$1.sign($$1x.c());
          return $$2x != null ? new ep.a($$1x.a(), $$2x) : null;
       }).filter(Objects::nonNull).toList();
       return new ep($$2);
@@ -28,20 +28,20 @@ public record ep(List<ep.a> b) {
       return this.b;
    }
 
-   public static record a(String a, xi b) {
-      public a(vs $$0) {
-         this($$0.d(16), xi.a($$0));
+   public static record a(String a, xk b) {
+      public a(vu $$0) {
+         this($$0.d(16), xk.a($$0));
       }
 
-      public void a(vs $$0) {
+      public void a(vu $$0) {
          $$0.a(this.a, 16);
-         xi.a($$0, this.b);
+         xk.a($$0, this.b);
       }
    }
 
    @FunctionalInterface
    public interface b {
       @Nullable
-      xi sign(String var1);
+      xk sign(String var1);
    }
 }

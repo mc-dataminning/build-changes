@@ -1,242 +1,138 @@
-import com.mojang.logging.LogUtils;
-import io.netty.handler.codec.DecoderException;
-import io.netty.handler.codec.EncoderException;
-import java.util.ArrayList;
+import io.netty.buffer.ByteBuf;
 import java.util.List;
-import java.util.Locale;
-import java.util.Objects;
+import java.util.Optional;
+import java.util.OptionalInt;
 import javax.annotation.Nullable;
-import org.apache.commons.lang3.ObjectUtils;
-import org.slf4j.Logger;
+import org.joml.Quaternionf;
+import org.joml.Vector3f;
 
 public class akl {
-   private static final Logger a = LogUtils.getLogger();
-   private static final int b = 254;
-   static final ayc c = new ayc();
-   private final akk d;
-   private final akl.b<?>[] e;
-   private boolean f;
+   private static final ayi<akk<?>> H = ayi.c(16);
+   public static final akk<Byte> a = akk.a(yu.c);
+   public static final akk<Integer> b = akk.a(yu.h);
+   public static final akk<Long> c = akk.a(yu.k);
+   public static final akk<Float> d = akk.a(yu.l);
+   public static final akk<String> e = akk.a(yu.o);
+   public static final akk<wy> f = akk.a(xa.d);
+   public static final akk<Optional<wy>> g = akk.a(xa.e);
+   public static final akk<cyy> h = new akk<cyy>() {
+      @Override
+      public yw<? super wj, cyy> codec() {
+         return cyy.h;
+      }
 
-   akl(akk $$0, akl.b<?>[] $$1) {
-      this.d = $$0;
-      this.e = $$1;
-   }
-
-   public static <T> akh<T> a(Class<? extends akk> $$0, aki<T> $$1) {
-      if (a.isDebugEnabled()) {
-         try {
-            Class<?> $$2 = Class.forName(Thread.currentThread().getStackTrace()[2].getClassName());
-            if (!$$2.equals($$0)) {
-               a.debug("defineId called for: {} from {}", new Object[]{$$0, $$2, new RuntimeException()});
-            }
-         } catch (ClassNotFoundException var3) {
+      public cyy a(cyy $$0) {
+         return $$0.v();
+      }
+   };
+   public static final akk<dzz> i = akk.a(yu.a(dma.k));
+   private static final yw<ByteBuf, Optional<dzz>> I = new yw<ByteBuf, Optional<dzz>>() {
+      public void a(ByteBuf $$0, Optional<dzz> $$1) {
+         if ($$1.isPresent()) {
+            wp.a($$0, dma.j($$1.get()));
+         } else {
+            wp.a($$0, 0);
          }
       }
 
-      int $$3 = c.c($$0);
-      if ($$3 > 254) {
-         throw new IllegalArgumentException("Data value id is too big with " + $$3 + "! (Max is 254)");
-      } else {
-         return $$1.a($$3);
+      public Optional<dzz> a(ByteBuf $$0) {
+         int $$1 = wp.a($$0);
+         return $$1 == 0 ? Optional.empty() : Optional.of(dma.a($$1));
       }
-   }
-
-   private <T> akl.b<T> b(akh<T> $$0) {
-      return (akl.b<T>)this.e[$$0.a()];
-   }
-
-   public <T> T a(akh<T> $$0) {
-      return this.b($$0).b();
-   }
-
-   public <T> void a(akh<T> $$0, T $$1) {
-      this.a($$0, $$1, false);
-   }
-
-   public <T> void a(akh<T> $$0, T $$1, boolean $$2) {
-      akl.b<T> $$3 = this.b($$0);
-      if ($$2 || ObjectUtils.notEqual($$1, $$3.b())) {
-         $$3.a($$1);
-         this.d.a($$0);
-         $$3.a(true);
-         this.f = true;
+   };
+   public static final akk<Optional<dzz>> j = akk.a(I);
+   public static final akk<Boolean> k = akk.a(yu.b);
+   public static final akk<lv> l = akk.a(lx.bl);
+   public static final akk<List<lv>> m = akk.a(lx.bl.a(yu.a()));
+   public static final akk<jw> n = akk.a(jw.a);
+   public static final akk<iu> o = akk.a(iu.b);
+   public static final akk<Optional<iu>> p = akk.a(iu.b.a(yu::a));
+   public static final akk<ja> q = akk.a(ja.j);
+   public static final akk<Optional<bwj<bxc>>> r = akk.a(bwj.b().a(yu::a));
+   public static final akk<Optional<jd>> s = akk.a(jd.c.a(yu::a));
+   public static final akk<tz> t = new akk<tz>() {
+      @Override
+      public yw<? super wj, tz> codec() {
+         return yu.s;
       }
-   }
 
-   public boolean a() {
-      return this.f;
+      public tz a(tz $$0) {
+         return $$0.i();
+      }
+   };
+   public static final akk<cql> u = akk.a(cql.d);
+   private static final yw<ByteBuf, OptionalInt> J = new yw<ByteBuf, OptionalInt>() {
+      public OptionalInt a(ByteBuf $$0) {
+         int $$1 = wp.a($$0);
+         return $$1 == 0 ? OptionalInt.empty() : OptionalInt.of($$1 - 1);
+      }
+
+      public void a(ByteBuf $$0, OptionalInt $$1) {
+         wp.a($$0, $$1.orElse(-1) + 1);
+      }
+   };
+   public static final akk<OptionalInt> v = akk.a(J);
+   public static final akk<bxo> w = akk.a(bxo.t);
+   public static final akk<je<ciw>> x = akk.a(ciw.d);
+   public static final akk<je<cjb>> y = akk.a(cjb.d);
+   public static final akk<je<ckb>> z = akk.a(ckb.d);
+   public static final akk<je<ckt>> A = akk.a(ckt.d);
+   public static final akk<je<cjm>> B = akk.a(cjm.d);
+   public static final akk<je<cmz>> C = akk.a(cmz.d);
+   public static final akk<ckg.a> D = akk.a(ckg.a.e);
+   public static final akk<clq.a> E = akk.a(clq.a.i);
+   public static final akk<Vector3f> F = akk.a(yu.u);
+   public static final akk<Quaternionf> G = akk.a(yu.v);
+
+   public static void a(akk<?> $$0) {
+      H.d($$0);
    }
 
    @Nullable
-   public List<akl.c<?>> b() {
-      if (!this.f) {
-         return null;
-      } else {
-         this.f = false;
-         List<akl.c<?>> $$0 = new ArrayList<>();
-
-         for (akl.b<?> $$1 : this.e) {
-            if ($$1.c()) {
-               $$1.a(false);
-               $$0.add($$1.e());
-            }
-         }
-
-         return $$0;
-      }
+   public static akk<?> a(int $$0) {
+      return H.a($$0);
    }
 
-   @Nullable
-   public List<akl.c<?>> c() {
-      List<akl.c<?>> $$0 = null;
-
-      for (akl.b<?> $$1 : this.e) {
-         if (!$$1.d()) {
-            if ($$0 == null) {
-               $$0 = new ArrayList<>();
-            }
-
-            $$0.add($$1.e());
-         }
-      }
-
-      return $$0;
+   public static int b(akk<?> $$0) {
+      return H.a($$0);
    }
 
-   public void a(List<akl.c<?>> $$0) {
-      for (akl.c<?> $$1 : $$0) {
-         akl.b<?> $$2 = this.e[$$1.a];
-         this.a($$2, $$1);
-         this.d.a($$2.a());
-      }
-
-      this.d.a($$0);
+   private akl() {
    }
 
-   private <T> void a(akl.b<T> $$0, akl.c<?> $$1) {
-      if (!Objects.equals($$1.b(), $$0.a.b())) {
-         throw new IllegalStateException(
-            String.format(
-               Locale.ROOT,
-               "Invalid entity data item type for field %d on entity %s: old=%s(%s), new=%s(%s)",
-               $$0.a.a(),
-               this.d,
-               $$0.b,
-               $$0.b.getClass(),
-               $$1.c,
-               $$1.c.getClass()
-            )
-         );
-      } else {
-         $$0.a((T)$$1.c);
-      }
-   }
-
-   public static class a {
-      private final akk a;
-      private final akl.b<?>[] b;
-
-      public a(akk $$0) {
-         this.a = $$0;
-         this.b = new akl.b[akl.c.b($$0.getClass())];
-      }
-
-      public <T> akl.a a(akh<T> $$0, T $$1) {
-         int $$2 = $$0.a();
-         if ($$2 > this.b.length) {
-            throw new IllegalArgumentException("Data value id is too big with " + $$2 + "! (Max is " + this.b.length + ")");
-         } else if (this.b[$$2] != null) {
-            throw new IllegalArgumentException("Duplicate id value for " + $$2 + "!");
-         } else if (akj.b($$0.b()) < 0) {
-            throw new IllegalArgumentException("Unregistered serializer " + $$0.b() + " for " + $$2 + "!");
-         } else {
-            this.b[$$0.a()] = new akl.b<>($$0, $$1);
-            return this;
-         }
-      }
-
-      public akl a() {
-         for (int $$0 = 0; $$0 < this.b.length; $$0++) {
-            if (this.b[$$0] == null) {
-               throw new IllegalStateException("Entity " + this.a.getClass() + " has not defined synched data value " + $$0);
-            }
-         }
-
-         return new akl(this.a, this.b);
-      }
-   }
-
-   public static class b<T> {
-      final akh<T> a;
-      T b;
-      private final T c;
-      private boolean d;
-
-      public b(akh<T> $$0, T $$1) {
-         this.a = $$0;
-         this.c = $$1;
-         this.b = $$1;
-      }
-
-      public akh<T> a() {
-         return this.a;
-      }
-
-      public void a(T $$0) {
-         this.b = $$0;
-      }
-
-      public T b() {
-         return this.b;
-      }
-
-      public boolean c() {
-         return this.d;
-      }
-
-      public void a(boolean $$0) {
-         this.d = $$0;
-      }
-
-      public boolean d() {
-         return this.c.equals(this.b);
-      }
-
-      public akl.c<T> e() {
-         return akl.c.a(this.a, this.b);
-      }
-   }
-
-   public static record c<T>(int a, aki<T> b, T c) {
-
-      public static <T> akl.c<T> a(akh<T> $$0, T $$1) {
-         aki<T> $$2 = $$0.b();
-         return new akl.c<>($$0.a(), $$2, $$2.copy($$1));
-      }
-
-      public void a(wh $$0) {
-         int $$1 = akj.b(this.b);
-         if ($$1 < 0) {
-            throw new EncoderException("Unknown serializer type " + this.b);
-         } else {
-            $$0.l(this.a);
-            $$0.c($$1);
-            this.b.codec().encode($$0, this.c);
-         }
-      }
-
-      public static akl.c<?> a(wh $$0, int $$1) {
-         int $$2 = $$0.l();
-         aki<?> $$3 = akj.a($$2);
-         if ($$3 == null) {
-            throw new DecoderException("Unknown serializer type " + $$2);
-         } else {
-            return a($$0, $$1, $$3);
-         }
-      }
-
-      private static <T> akl.c<T> a(wh $$0, int $$1, aki<T> $$2) {
-         return new akl.c<>($$1, $$2, $$2.codec().decode($$0));
-      }
+   static {
+      a(a);
+      a(b);
+      a(c);
+      a(d);
+      a(e);
+      a(f);
+      a(g);
+      a(h);
+      a(k);
+      a(n);
+      a(o);
+      a(p);
+      a(q);
+      a(r);
+      a(i);
+      a(j);
+      a(t);
+      a(l);
+      a(m);
+      a(u);
+      a(v);
+      a(w);
+      a(x);
+      a(y);
+      a(z);
+      a(A);
+      a(B);
+      a(s);
+      a(C);
+      a(E);
+      a(D);
+      a(F);
+      a(G);
    }
 }

@@ -1,27 +1,42 @@
 import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.TypeRewriteRule;
+import com.mojang.datafixers.Typed;
 import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.Type;
-import com.mojang.datafixers.util.Pair;
-import com.mojang.serialization.Dynamic;
-import java.util.Objects;
+import org.apache.commons.lang3.mutable.MutableBoolean;
 
-public class bft extends DataFix {
-   public bft(Schema $$0, boolean $$1) {
-      super($$0, $$1);
+public class bft extends bhr {
+   private static final String c = "minecraft:wolf";
+   private static final String d = "minecraft:generic.max_health";
+
+   public bft(Schema $$0) {
+      super($$0, false, "FixWolfHealth", biw.D, "minecraft:wolf");
    }
 
-   protected TypeRewriteRule makeRule() {
-      Type<Pair<String, Dynamic<?>>> $$0 = DSL.named(bit.q.typeName(), DSL.remainderType());
-      if (!Objects.equals($$0, this.getInputSchema().getType(bit.q))) {
-         throw new IllegalStateException("Poi type is not what was expected.");
-      } else {
-         return this.fixTypeEverywhere("POI rebuild", $$0, $$0x -> $$0xx -> $$0xx.mapSecond(bft::a));
-      }
-   }
+   @Override
+   protected Typed<?> a(Typed<?> $$0) {
+      return $$0.update(
+         DSL.remainderFinder(),
+         $$0x -> {
+            MutableBoolean $$1 = new MutableBoolean(false);
+            $$0x = $$0x.update(
+               "Attributes",
+               $$1x -> $$1x.createList(
+                     $$1x.asStream()
+                        .map($$1xx -> "minecraft:generic.max_health".equals(bkr.a($$1xx.get("Name").asString(""))) ? $$1xx.update("Base", $$1xxx -> {
+                              if ($$1xxx.asDouble(0.0) == 20.0) {
+                                 $$1.setTrue();
+                                 return $$1xxx.createDouble(40.0);
+                              } else {
+                                 return $$1xxx;
+                              }
+                           }) : $$1xx)
+                  )
+            );
+            if ($$1.isTrue()) {
+               $$0x = $$0x.update("Health", $$0xx -> $$0xx.createFloat($$0xx.asFloat(0.0F) * 2.0F));
+            }
 
-   private static <T> Dynamic<T> a(Dynamic<T> $$0) {
-      return $$0.update("Sections", $$0x -> $$0x.updateMapValues($$0xx -> $$0xx.mapSecond($$0xxx -> $$0xxx.remove("Valid"))));
+            return $$0x;
+         }
+      );
    }
 }

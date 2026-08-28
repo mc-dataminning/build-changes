@@ -1,56 +1,43 @@
-import com.mojang.logging.LogUtils;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import java.util.Arrays;
 
-public class clu extends cls {
-   private static final Logger b = LogUtils.getLogger();
-   private static final int c = 10;
-   @Nullable
-   private fdw d;
-   private int e;
+public class clu {
+   public static final int a = 64;
+   private static final int b = 63;
+   private final clu.a[] c = new clu.a[64];
+   private int d = -1;
 
-   public clu(clq $$0) {
-      super($$0);
+   public clu() {
+      Arrays.fill(this.c, new clu.a(0.0, 0.0F));
    }
 
-   @Override
-   public void a(aro $$0) {
-      if (this.d == null) {
-         b.warn("Aborting charge player as no target was set.");
-         this.a.t().a(cmg.a);
-      } else if (this.e > 0 && this.e++ >= 10) {
-         this.a.t().a(cmg.a);
-      } else {
-         double $$1 = this.d.c(this.a.dA(), this.a.dC(), this.a.dG());
-         if ($$1 < 100.0 || $$1 > 22500.0 || this.a.P || this.a.Q) {
-            this.e++;
-         }
+   public void a(clu $$0) {
+      System.arraycopy($$0.c, 0, this.c, 0, 64);
+      this.d = $$0.d;
+   }
+
+   public void a(double $$0, float $$1) {
+      clu.a $$2 = new clu.a($$0, $$1);
+      if (this.d < 0) {
+         Arrays.fill(this.c, $$2);
       }
+
+      if (++this.d == 64) {
+         this.d = 0;
+      }
+
+      this.c[this.d] = $$2;
    }
 
-   @Override
-   public void c() {
-      this.d = null;
-      this.e = 0;
+   public clu.a a(int $$0) {
+      return this.c[this.d - $$0 & 63];
    }
 
-   public void a(fdw $$0) {
-      this.d = $$0;
+   public clu.a a(int $$0, float $$1) {
+      clu.a $$2 = this.a($$0);
+      clu.a $$3 = this.a($$0 + 1);
+      return new clu.a(azm.d((double)$$1, $$3.a, $$2.a), azm.i($$1, $$3.b, $$2.b));
    }
 
-   @Override
-   public float e() {
-      return 3.0F;
-   }
-
-   @Nullable
-   @Override
-   public fdw f() {
-      return this.d;
-   }
-
-   @Override
-   public cmg<clu> h() {
-      return cmg.i;
+   public static record a(double a, float b) {
    }
 }

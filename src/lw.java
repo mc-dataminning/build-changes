@@ -13,5 +13,5 @@ public abstract class lw<T extends lv> {
 
    public abstract MapCodec<T> c();
 
-   public abstract yu<? super wh, T> d();
+   public abstract yw<? super wj, T> d();
 }

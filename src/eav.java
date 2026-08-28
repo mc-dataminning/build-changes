@@ -1,21 +1,28 @@
-public enum eav implements bai {
-   a("inactive"),
-   b("active"),
-   c("cooldown");
+public enum eav implements bak {
+   a(ja.a),
+   b(ja.b);
 
-   private final String d;
+   private final ja c;
 
-   private eav(final String $$0) {
-      this.d = $$0;
+   private eav(final ja $$0) {
+      this.c = $$0;
+   }
+
+   public ja a() {
+      return this.c;
    }
 
    @Override
    public String toString() {
-      return this.d;
+      return this.c();
    }
 
    @Override
    public String c() {
-      return this.d;
+      return this == a ? "upper" : "lower";
+   }
+
+   public eav b() {
+      return this == a ? b : a;
    }
 }

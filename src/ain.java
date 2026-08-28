@@ -1,33 +1,53 @@
-import java.util.UUID;
-import javax.annotation.Nullable;
+public class ain implements zf<agp> {
+   public static final yw<vu, ain> a = zf.a(ain::a, ain::new);
+   private static final int b = 384;
+   private final iu c;
+   private final String[] d;
+   private final boolean e;
 
-public class ain implements zd<agn> {
-   public static final yu<vs, ain> a = zd.a(ain::a, ain::new);
-   private final UUID b;
-
-   public ain(UUID $$0) {
-      this.b = $$0;
+   public ain(iu $$0, boolean $$1, String $$2, String $$3, String $$4, String $$5) {
+      this.c = $$0;
+      this.e = $$1;
+      this.d = new String[]{$$2, $$3, $$4, $$5};
    }
 
-   private ain(vs $$0) {
-      this.b = $$0.n();
+   private ain(vu $$0) {
+      this.c = $$0.e();
+      this.e = $$0.readBoolean();
+      this.d = new String[4];
+
+      for (int $$1 = 0; $$1 < 4; $$1++) {
+         this.d[$$1] = $$0.d(384);
+      }
    }
 
-   private void a(vs $$0) {
-      $$0.a(this.b);
+   private void a(vu $$0) {
+      $$0.a(this.c);
+      $$0.a(this.e);
+
+      for (int $$1 = 0; $$1 < 4; $$1++) {
+         $$0.a(this.d[$$1]);
+      }
    }
 
    @Override
-   public zf<ain> a() {
-      return agl.cm;
+   public zh<ain> a() {
+      return agn.ck;
    }
 
-   public void a(agn $$0) {
+   public void a(agp $$0) {
       $$0.a(this);
    }
 
-   @Nullable
-   public bwa a(aro $$0) {
-      return $$0.b(this.b);
+   public iu b() {
+      return this.c;
+   }
+
+   public boolean e() {
+      return this.e;
+   }
+
+   public String[] f() {
+      return this.d;
    }
 }

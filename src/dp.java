@@ -8,7 +8,7 @@ public class dp extends dj<dp.a> {
       return dp.a.a;
    }
 
-   public void a(arp $$0) {
+   public void a(arr $$0) {
       this.a($$0, $$0x -> true);
    }
 

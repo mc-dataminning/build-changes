@@ -1,9 +1,24 @@
-import com.mojang.blaze3d.systems.RenderSystem;
+import it.unimi.dsi.fastutil.ints.IntSet;
+import javax.annotation.Nullable;
 
-public class fhb extends fha {
-   public fhb(int $$0, int $$1, boolean $$2) {
-      super($$2);
-      RenderSystem.assertOnRenderThreadOrInit();
-      this.a($$0, $$1);
+public interface fhb extends AutoCloseable {
+   float a = 7.0F;
+
+   @Override
+   default void close() {
+   }
+
+   @Nullable
+   default fha a(int $$0) {
+      return null;
+   }
+
+   IntSet a();
+
+   public static record a(fhb a, fut.a b) implements AutoCloseable {
+      @Override
+      public void close() {
+         this.a.close();
+      }
    }
 }

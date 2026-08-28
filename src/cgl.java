@@ -1,44 +1,125 @@
-public class cgl extends cgj {
+public class cgl extends cgm {
    private boolean p;
 
-   public cgl(bxb $$0, dip $$1) {
+   public cgl(bxe $$0, div $$1) {
       super($$0, $$1);
    }
 
    @Override
-   protected ewl a(int $$0) {
-      this.p = this.a.aq() == bwj.H;
-      this.o = new ewp(this.p);
-      this.o.a(false);
-      return new ewl(this.o, $$0);
+   protected eww a(int $$0) {
+      this.o = new exc();
+      return new eww(this.o, $$0);
    }
 
    @Override
    protected boolean a() {
-      return this.p || this.a.bm();
+      return this.a.aJ() || this.a.bm() || this.a.bZ();
    }
 
    @Override
-   protected fdw b() {
-      return new fdw(this.a.dA(), this.a.e(0.5), this.a.dG());
+   protected fei b() {
+      return new fei(this.a.dA(), (double)this.r(), this.a.dG());
    }
 
    @Override
-   protected double a(fdw $$0) {
-      return $$0.e;
+   public ewu a(iu $$0, int $$1) {
+      ecg $$2 = this.b.S().a(jx.a($$0.u()), jx.a($$0.w()));
+      if ($$2 == null) {
+         return null;
+      } else {
+         if ($$2.a_($$0).l()) {
+            iu.a $$3 = $$0.k().c(ja.a);
+
+            while ($$3.v() > this.b.G_() && $$2.a_($$3).l()) {
+               $$3.c(ja.a);
+            }
+
+            if ($$3.v() > this.b.G_()) {
+               return super.a($$3.d(), $$1);
+            }
+
+            $$3.q($$0.v() + 1);
+
+            while ($$3.v() <= this.b.ao() && $$2.a_($$3).l()) {
+               $$3.c(ja.b);
+            }
+
+            $$0 = $$3;
+         }
+
+         if (!$$2.a_($$0).e()) {
+            return super.a($$0, $$1);
+         } else {
+            iu.a $$4 = $$0.k().c(ja.b);
+
+            while ($$4.v() <= this.b.ao() && $$2.a_($$4).e()) {
+               $$4.c(ja.b);
+            }
+
+            return super.a($$4.j(), $$1);
+         }
+      }
    }
 
    @Override
-   protected boolean a(fdw $$0, fdw $$1) {
-      return a(this.a, $$0, $$1, false);
+   public ewu a(bwd $$0, int $$1) {
+      return this.a($$0.dv(), $$1);
+   }
+
+   private int r() {
+      if (this.a.bj() && this.o()) {
+         int $$0 = this.a.dB();
+         dzz $$1 = this.b.a_(iu.a(this.a.dA(), (double)$$0, this.a.dG()));
+         int $$2 = 0;
+
+         while ($$1.a(dmc.J)) {
+            $$1 = this.b.a_(iu.a(this.a.dA(), (double)(++$$0), this.a.dG()));
+            if (++$$2 > 16) {
+               return this.a.dB();
+            }
+         }
+
+         return $$0;
+      } else {
+         return azm.a(this.a.dC() + 0.5);
+      }
    }
 
    @Override
-   public boolean a(iu $$0) {
-      return !this.b.a_($$0).s();
+   protected void d() {
+      super.d();
+      if (this.p) {
+         if (this.b.h(iu.a(this.a.dA(), this.a.dC() + 0.5, this.a.dG()))) {
+            return;
+         }
+
+         for (int $$0 = 0; $$0 < this.c.e(); $$0++) {
+            ews $$1 = this.c.a($$0);
+            if (this.b.h(new iu($$1.a, $$1.b, $$1.c))) {
+               this.c.b($$0);
+               return;
+            }
+         }
+      }
    }
 
-   @Override
-   public void a(boolean $$0) {
+   protected boolean a(ewx $$0) {
+      if ($$0 == ewx.j) {
+         return false;
+      } else {
+         return $$0 == ewx.i ? false : $$0 != ewx.b;
+      }
+   }
+
+   public void b(boolean $$0) {
+      this.o.b($$0);
+   }
+
+   public void c(boolean $$0) {
+      this.p = $$0;
+   }
+
+   public void d(boolean $$0) {
+      this.o.d($$0);
    }
 }

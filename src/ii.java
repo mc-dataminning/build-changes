@@ -18,13 +18,13 @@ public class ii<A extends ArgumentType<?>> implements ie<A, ii<A>.a> {
       return new ii<>($$0);
    }
 
-   public void a(ii<A>.a $$0, vs $$1) {
+   public void a(ii<A>.a $$0, vu $$1) {
    }
 
    public void a(ii<A>.a $$0, JsonObject $$1) {
    }
 
-   public ii<A>.a a(vs $$0) {
+   public ii<A>.a a(vu $$0) {
       return this.a;
    }
 

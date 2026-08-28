@@ -1,26 +1,31 @@
-public enum dub {
-   a {
-      @Override
-      public boolean a(dzo $$0, dhv $$1, iu $$2, ja $$3) {
-         return dlu.a($$0.h($$1, $$2), $$3);
-      }
-   },
-   b {
-      private final feq d = dlu.b(2.0, 0.0, 10.0);
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-      @Override
-      public boolean a(dzo $$0, dhv $$1, iu $$2, ja $$3) {
-         return !fen.c($$0.h($$1, $$2).a($$3), this.d, fea.c);
-      }
-   },
-   c {
-      private final feq d = fen.a(fen.b(), dlu.b(12.0, 0.0, 16.0), fea.e);
+public class dub extends dqf implements dlr {
+   public static final MapCodec<dub> h = RecordCodecBuilder.mapCodec($$0 -> $$0.group(cxw.q.fieldOf("color").forGetter(dub::b), t()).apply($$0, dub::new));
+   private final cxw i;
 
-      @Override
-      public boolean a(dzo $$0, dhv $$1, iu $$2, ja $$3) {
-         return !fen.c($$0.h($$1, $$2).a($$3), this.d, fea.c);
-      }
-   };
+   @Override
+   public MapCodec<dub> a() {
+      return h;
+   }
 
-   public abstract boolean a(dzo var1, dhv var2, iu var3, ja var4);
+   public dub(cxw $$0, dzy.d $$1) {
+      super($$1);
+      this.i = $$0;
+      this.l(
+         this.B
+            .b()
+            .b(a, Boolean.valueOf(false))
+            .b(b, Boolean.valueOf(false))
+            .b(c, Boolean.valueOf(false))
+            .b(d, Boolean.valueOf(false))
+            .b(e, Boolean.valueOf(false))
+      );
+   }
+
+   @Override
+   public cxw b() {
+      return this.i;
+   }
 }

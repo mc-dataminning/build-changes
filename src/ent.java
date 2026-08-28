@@ -1,26 +1,29 @@
+import com.mojang.serialization.DataResult;
 import com.mojang.serialization.MapCodec;
 
-public class ent<P extends ens> {
-   public static final ent<enu> a = a("trunk_vine", enu.a);
-   public static final ent<enp> b = a("leave_vine", enp.a);
-   public static final ent<enq> c = a("pale_moss", enq.a);
-   public static final ent<eno> d = a("creaking_heart", eno.a);
-   public static final ent<enn> e = a("cocoa", enn.a);
-   public static final ent<enm> f = a("beehive", enm.a);
-   public static final ent<enk> g = a("alter_ground", enk.a);
-   public static final ent<enl> h = a("attached_to_leaves", enl.a);
-   public static final ent<enr> i = a("place_on_ground", enr.a);
-   private final MapCodec<P> j;
+public class ent extends enj {
+   public static final MapCodec<ent> b = bsm.b(dzz.a).comapFlatMap(ent::a, $$0 -> $$0.c).fieldOf("entries");
+   private final bsm<dzz> c;
 
-   private static <P extends ens> ent<P> a(String $$0, MapCodec<P> $$1) {
-      return jr.a(mf.X, $$0, new ent<>($$1));
+   private static DataResult<ent> a(bsm<dzz> $$0) {
+      return $$0.c() ? DataResult.error(() -> "WeightedStateProvider with no states") : DataResult.success(new ent($$0));
    }
 
-   private ent(MapCodec<P> $$0) {
-      this.j = $$0;
+   public ent(bsm<dzz> $$0) {
+      this.c = $$0;
    }
 
-   public MapCodec<P> a() {
-      return this.j;
+   public ent(bsm.a<dzz> $$0) {
+      this($$0.a());
+   }
+
+   @Override
+   protected enk<?> a() {
+      return enk.b;
+   }
+
+   @Override
+   public dzz a(azv $$0, iu $$1) {
+      return this.c.b($$0);
    }
 }

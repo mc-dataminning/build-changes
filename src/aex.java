@@ -1,29 +1,32 @@
-public class aex implements zd<abs> {
-   public static final yu<vs, aex> a = zd.a(aex::a, aex::new);
+import javax.annotation.Nullable;
+
+public class aex implements zf<abu> {
+   public static final yw<vu, aex> a = zf.a(aex::a, aex::new);
    private final int b;
 
-   public aex(int $$0) {
-      this.b = $$0;
+   public aex(bwd $$0) {
+      this.b = $$0.ar();
    }
 
-   private aex(vs $$0) {
+   private aex(vu $$0) {
       this.b = $$0.l();
    }
 
-   private void a(vs $$0) {
+   private void a(vu $$0) {
       $$0.c(this.b);
    }
 
    @Override
-   public zf<aex> a() {
-      return agl.aC;
+   public zh<aex> a() {
+      return agn.aA;
    }
 
-   public void a(abs $$0) {
+   public void a(abu $$0) {
       $$0.a(this);
    }
 
-   public int b() {
-      return this.b;
+   @Nullable
+   public bwd a(div $$0) {
+      return $$0.a(this.b);
    }
 }

@@ -1,159 +1,144 @@
-public class dwv extends dxw implements dxu {
-   private static final int d = 1;
-   private jn<cys> e = jn.a(27, cys.k);
-   private final dxb f = new dxb() {
-      @Override
-      protected void a(dip $$0, iu $$1, dzo $$2) {
-         dwv.a($$0, $$1, $$2, awl.eS);
-      }
+import java.util.List;
+import org.apache.commons.lang3.mutable.MutableInt;
 
-      @Override
-      protected void b(dip $$0, iu $$1, dzo $$2) {
-         dwv.a($$0, $$1, $$2, awl.eQ);
-      }
+public class dwv extends dwx {
+   private static final int d = 50;
+   private static final int e = 60;
+   private static final int f = 60;
+   private static final int g = 40;
+   private static final int h = 5;
+   private static final int i = 48;
+   private static final int j = 32;
+   private static final int k = 48;
+   private long l;
+   public int a;
+   public boolean b;
+   public ja c;
+   private List<bxc> m;
+   private boolean q;
+   private int r;
 
-      @Override
-      protected void a(dip $$0, iu $$1, dzo $$2, int $$3, int $$4) {
-         dwv.this.a($$0, $$1, $$2, $$3, $$4);
-      }
-
-      @Override
-      protected boolean a(cqs $$0) {
-         if (!($$0.bQ instanceof cut)) {
-            return false;
-         } else {
-            btr $$1 = ((cut)$$0.bQ).l();
-            return $$1 == dwv.this || $$1 instanceof btq && ((btq)$$1).a(dwv.this);
-         }
-      }
-   };
-   private final dww g = new dww();
-
-   protected dwv(dwp<?> $$0, iu $$1, dzo $$2) {
-      super($$0, $$1, $$2);
-   }
-
-   public dwv(iu $$0, dzo $$1) {
-      this(dwp.b, $$0, $$1);
-   }
-
-   @Override
-   public int b() {
-      return 27;
-   }
-
-   @Override
-   protected ww j() {
-      return ww.c("container.chest");
-   }
-
-   @Override
-   protected void a(tx $$0, jg.a $$1) {
-      super.a($$0, $$1);
-      this.e = jn.a(this.b(), cys.k);
-      if (!this.b_($$0)) {
-         bts.b($$0, this.e, $$1);
-      }
-   }
-
-   @Override
-   protected void b(tx $$0, jg.a $$1) {
-      super.b($$0, $$1);
-      if (!this.c_($$0)) {
-         bts.a($$0, this.e, $$1);
-      }
-   }
-
-   public static void a(dip $$0, iu $$1, dzo $$2, dwv $$3) {
-      $$3.g.a();
-   }
-
-   static void a(dip $$0, iu $$1, dzo $$2, awk $$3) {
-      eag $$4 = $$2.c(dmx.d);
-      if ($$4 != eag.b) {
-         double $$5 = (double)$$1.u() + 0.5;
-         double $$6 = (double)$$1.v() + 0.5;
-         double $$7 = (double)$$1.w() + 0.5;
-         if ($$4 == eag.c) {
-            ja $$8 = dmx.i($$2);
-            $$5 += (double)$$8.j() * 0.5;
-            $$7 += (double)$$8.l() * 0.5;
-         }
-
-         $$0.a(null, $$5, $$6, $$7, $$3, awm.e, 0.5F, $$0.A.i() * 0.1F + 0.9F);
-      }
+   public dwv(iu $$0, dzz $$1) {
+      super(dwz.F, $$0, $$1);
    }
 
    @Override
    public boolean a_(int $$0, int $$1) {
       if ($$0 == 1) {
-         this.g.a($$1 > 0);
+         this.a();
+         this.r = 0;
+         this.c = ja.a($$1);
+         this.a = 0;
+         this.b = true;
          return true;
       } else {
          return super.a_($$0, $$1);
       }
    }
 
-   @Override
-   public void c_(cqs $$0) {
-      if (!this.p && !$$0.U_()) {
-         this.f.a($$0, this.i(), this.aw_(), this.m());
+   private static void a(div $$0, iu $$1, dzz $$2, dwv $$3, dwv.a $$4) {
+      if ($$3.b) {
+         $$3.a++;
+      }
+
+      if ($$3.a >= 50) {
+         $$3.b = false;
+         $$3.a = 0;
+      }
+
+      if ($$3.a >= 5 && $$3.r == 0 && a($$1, $$3.m)) {
+         $$3.q = true;
+         $$0.a(null, $$1, awn.ca, awo.e, 1.0F, 1.0F);
+      }
+
+      if ($$3.q) {
+         if ($$3.r < 40) {
+            $$3.r++;
+         } else {
+            $$4.run($$0, $$1, $$3.m);
+            $$3.q = false;
+         }
       }
    }
 
-   @Override
-   public void c(cqs $$0) {
-      if (!this.p && !$$0.U_()) {
-         this.f.b($$0, this.i(), this.aw_(), this.m());
+   public static void a(div $$0, iu $$1, dzz $$2, dwv $$3) {
+      a($$0, $$1, $$2, $$3, dwv::b);
+   }
+
+   public static void b(div $$0, iu $$1, dzz $$2, dwv $$3) {
+      a($$0, $$1, $$2, $$3, dwv::a);
+   }
+
+   public void a(ja $$0) {
+      iu $$1 = this.aw_();
+      this.c = $$0;
+      if (this.b) {
+         this.a = 0;
+      } else {
+         this.b = true;
+      }
+
+      this.n.a($$1, this.m().b(), 1, $$0.d());
+   }
+
+   private void a() {
+      iu $$0 = this.aw_();
+      if (this.n.ae() > this.l + 60L || this.m == null) {
+         this.l = this.n.ae();
+         fed $$1 = new fed($$0).g(48.0);
+         this.m = this.n.a(bxc.class, $$1);
+      }
+
+      if (!this.n.C) {
+         for (bxc $$2 : this.m) {
+            if ($$2.bK() && !$$2.dQ() && $$0.a($$2.dt(), 32.0)) {
+               $$2.eb().a(cge.E, this.n.ae());
+            }
+         }
       }
    }
 
-   @Override
-   protected jn<cys> f() {
-      return this.e;
-   }
-
-   @Override
-   protected void a(jn<cys> $$0) {
-      this.e = $$0;
-   }
-
-   @Override
-   public float a(float $$0) {
-      return this.g.a($$0);
-   }
-
-   public static int a(dhv $$0, iu $$1) {
-      dzo $$2 = $$0.a_($$1);
-      if ($$2.x()) {
-         dwn $$3 = $$0.c_($$1);
-         if ($$3 instanceof dwv) {
-            return ((dwv)$$3).f.a();
+   private static boolean a(iu $$0, List<bxc> $$1) {
+      for (bxc $$2 : $$1) {
+         if ($$2.bK() && !$$2.dQ() && $$0.a($$2.dt(), 32.0) && $$2.aq().a(axf.c)) {
+            return true;
          }
       }
 
-      return 0;
+      return false;
    }
 
-   public static void a(dwv $$0, dwv $$1) {
-      jn<cys> $$2 = $$0.f();
-      $$0.a($$1.f());
-      $$1.a($$2);
+   private static void a(div $$0, iu $$1, List<bxc> $$2) {
+      $$2.stream().filter($$1x -> a($$1, $$1x)).forEach(dwv::a);
    }
 
-   @Override
-   protected cuk a(int $$0, cqr $$1) {
-      return cut.a($$0, $$1, this);
+   private static void b(div $$0, iu $$1, List<bxc> $$2) {
+      MutableInt $$3 = new MutableInt(16700985);
+      int $$4 = (int)$$2.stream().filter($$1x -> $$1.a($$1x.dt(), 48.0)).count();
+      $$2.stream().filter($$1x -> a($$1, $$1x)).forEach($$4x -> {
+         float $$5 = 1.0F;
+         double $$6 = Math.sqrt(($$4x.dA() - (double)$$1.u()) * ($$4x.dA() - (double)$$1.u()) + ($$4x.dG() - (double)$$1.w()) * ($$4x.dG() - (double)$$1.w()));
+         double $$7 = (double)((float)$$1.u() + 0.5F) + 1.0 / $$6 * ($$4x.dA() - (double)$$1.u());
+         double $$8 = (double)((float)$$1.w() + 0.5F) + 1.0 / $$6 * ($$4x.dG() - (double)$$1.w());
+         int $$9 = azm.a(($$4 - 21) / -2, 3, 15);
+
+         for (int $$10 = 0; $$10 < $$9; $$10++) {
+            int $$11 = $$3.addAndGet(5);
+            $$0.a(lq.a(lx.u, $$11), $$7, (double)((float)$$1.v() + 0.5F), $$8, 0.0, 0.0, 0.0);
+         }
+      });
    }
 
-   public void k() {
-      if (!this.p) {
-         this.f.c(this.i(), this.aw_(), this.m());
-      }
+   private static boolean a(iu $$0, bxc $$1) {
+      return $$1.bK() && !$$1.dQ() && $$0.a($$1.dt(), 48.0) && $$1.aq().a(axf.c);
    }
 
-   protected void a(dip $$0, iu $$1, dzo $$2, int $$3, int $$4) {
-      dlu $$5 = $$2.b();
-      $$0.a($$1, $$5, 1, $$4);
+   private static void a(bxc $$0) {
+      $$0.a(new bvh(bvj.x, 60));
+   }
+
+   @FunctionalInterface
+   interface a {
+      void run(div var1, iu var2, List<bxc> var3);
    }
 }

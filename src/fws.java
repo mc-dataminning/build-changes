@@ -1,74 +1,102 @@
-import com.google.common.hash.Hashing;
-import javax.annotation.Nullable;
+import com.google.common.collect.Lists;
+import it.unimi.dsi.fastutil.booleans.BooleanConsumer;
+import java.util.List;
 
-public class fws implements AutoCloseable {
-   private static final ale a = ale.b("textures/misc/unknown_server.png");
-   private static final int b = 64;
-   private static final int c = 64;
-   private final hib d;
-   private final ale e;
-   @Nullable
-   private hhm f;
-   private boolean g;
+public class fws extends fxu {
+   private static final int d = 20;
+   private final wy s;
+   private fsv u = fsv.a;
+   protected wy a;
+   protected wy b;
+   private int v;
+   protected final BooleanConsumer c;
+   private final List<fsc> w = Lists.newArrayList();
 
-   private fws(hib $$0, ale $$1) {
-      this.d = $$0;
-      this.e = $$1;
+   public fws(BooleanConsumer $$0, wy $$1, wy $$2) {
+      this($$0, $$1, $$2, wx.f, wx.g);
    }
 
-   public static fws a(hib $$0, String $$1) {
-      return new fws($$0, ale.b("worlds/" + af.a($$1, ale::b) + "/" + Hashing.sha1().hashUnencodedChars($$1) + "/icon"));
-   }
-
-   public static fws b(hib $$0, String $$1) {
-      return new fws($$0, ale.b("servers/" + Hashing.sha1().hashUnencodedChars($$1) + "/icon"));
-   }
-
-   public void a(fhq $$0) {
-      if ($$0.a() == 64 && $$0.b() == 64) {
-         try {
-            this.c();
-            if (this.f == null) {
-               this.f = new hhm($$0);
-            } else {
-               this.f.a($$0);
-               this.f.d();
-            }
-
-            this.d.a(this.e, this.f);
-         } catch (Throwable var3) {
-            $$0.close();
-            this.a();
-            throw var3;
-         }
-      } else {
-         $$0.close();
-         throw new IllegalArgumentException("Icon must be 64x64, but was " + $$0.a() + "x" + $$0.b());
-      }
-   }
-
-   public void a() {
-      this.c();
-      if (this.f != null) {
-         this.d.c(this.e);
-         this.f.close();
-         this.f = null;
-      }
-   }
-
-   public ale b() {
-      return this.f != null ? this.e : a;
+   public fws(BooleanConsumer $$0, wy $$1, wy $$2, wy $$3, wy $$4) {
+      super($$1);
+      this.c = $$0;
+      this.s = $$2;
+      this.a = $$3;
+      this.b = $$4;
    }
 
    @Override
-   public void close() {
-      this.a();
-      this.g = true;
+   public wy i() {
+      return wx.a(super.i(), this.s);
    }
 
-   private void c() {
-      if (this.g) {
-         throw new IllegalStateException("Icon already closed");
+   @Override
+   protected void aN_() {
+      super.aN_();
+      this.u = fsv.a(this.p, this.s, this.n - 50);
+      int $$0 = azm.a(this.E() + this.F() + 20, this.o / 6 + 96, this.o - 24);
+      this.w.clear();
+      this.a($$0);
+   }
+
+   protected void a(int $$0) {
+      this.a(fsc.a(this.a, $$0x -> this.c.accept(true)).a(this.n / 2 - 155, $$0, 150, 20).a());
+      this.a(fsc.a(this.b, $$0x -> this.c.accept(false)).a(this.n / 2 - 155 + 160, $$0, 150, 20).a());
+   }
+
+   protected void a(fsc $$0) {
+      this.w.add(this.c($$0));
+   }
+
+   @Override
+   public void a(fro $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      $$0.a(this.p, this.l, this.n / 2, this.m(), 16777215);
+      this.u.a($$0, this.n / 2, this.E());
+   }
+
+   private int m() {
+      int $$0 = (this.o - this.F()) / 2;
+      return azm.a($$0 - 20 - 9, 10, 80);
+   }
+
+   private int E() {
+      return this.m() + 20;
+   }
+
+   private int F() {
+      return this.u.a() * 9;
+   }
+
+   public void b(int $$0) {
+      this.v = $$0;
+
+      for (fsc $$1 : this.w) {
+         $$1.j = false;
+      }
+   }
+
+   @Override
+   public void e() {
+      super.e();
+      if (--this.v == 0) {
+         for (fsc $$0 : this.w) {
+            $$0.j = true;
+         }
+      }
+   }
+
+   @Override
+   public boolean aC_() {
+      return false;
+   }
+
+   @Override
+   public boolean a(int $$0, int $$1, int $$2) {
+      if ($$0 == 256) {
+         this.c.accept(false);
+         return true;
+      } else {
+         return super.a($$0, $$1, $$2);
       }
    }
 }

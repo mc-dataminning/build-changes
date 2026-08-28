@@ -1,86 +1,69 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import com.mojang.datafixers.util.Pair;
 import javax.annotation.Nullable;
 
-public abstract class deb implements ddj<dec> {
-   private final ddf c;
-   private final cys d;
-   private final String e;
+public class deb extends ddf {
+   public deb(ddc $$0) {
+      super($$0);
+   }
+
    @Nullable
-   private ddi f;
+   private static Pair<cyy, cyy> c(ddd $$0) {
+      if ($$0.e() != 2) {
+         return null;
+      } else {
+         cyy $$1 = null;
 
-   public deb(String $$0, ddf $$1, cys $$2) {
-      this.e = $$0;
-      this.c = $$1;
-      this.d = $$2;
+         for (int $$2 = 0; $$2 < $$0.a(); $$2++) {
+            cyy $$3 = $$0.a($$2);
+            if (!$$3.f()) {
+               if ($$1 != null) {
+                  return a($$1, $$3) ? Pair.of($$1, $$3) : null;
+               }
+
+               $$1 = $$3;
+            }
+         }
+
+         return null;
+      }
+   }
+
+   private static boolean a(cyy $$0, cyy $$1) {
+      return $$1.a($$0.h()) && $$0.M() == 1 && $$1.M() == 1 && $$0.c(kj.d) && $$1.c(kj.d) && $$0.c(kj.e) && $$1.c(kj.e);
+   }
+
+   public boolean a(ddd $$0, div $$1) {
+      return c($$0) != null;
+   }
+
+   public cyy a(ddd $$0, jg.a $$1) {
+      Pair<cyy, cyy> $$2 = c($$0);
+      if ($$2 == null) {
+         return cyy.k;
+      } else {
+         cyy $$3 = (cyy)$$2.getFirst();
+         cyy $$4 = (cyy)$$2.getSecond();
+         int $$5 = Math.max($$3.p(), $$4.p());
+         int $$6 = $$3.p() - $$3.o();
+         int $$7 = $$4.p() - $$4.o();
+         int $$8 = $$6 + $$7 + $$5 * 5 / 100;
+         cyy $$9 = new cyy($$3.h());
+         $$9.b(kj.d, $$5);
+         $$9.b(Math.max($$5 - $$8, 0));
+         dfr $$10 = dfn.b($$3);
+         dfr $$11 = dfn.b($$4);
+         dfn.a($$9, $$3x -> $$1.e(mg.aQ).c().filter($$0xx -> $$0xx.a(axe.o)).forEach($$3xx -> {
+               int $$4x = Math.max($$10.a($$3xx), $$11.a($$3xx));
+               if ($$4x > 0) {
+                  $$3x.b($$3xx, $$4x);
+               }
+            }));
+         return $$9;
+      }
    }
 
    @Override
-   public abstract ddt<? extends deb> a();
-
-   @Override
-   public abstract ddu<? extends deb> b();
-
-   public boolean a(dec $$0, dip $$1) {
-      return this.c.a($$0.c());
-   }
-
-   @Override
-   public String j() {
-      return this.e;
-   }
-
-   public ddf k() {
-      return this.c;
-   }
-
-   protected cys l() {
-      return this.d;
-   }
-
-   @Override
-   public ddi ak_() {
-      if (this.f == null) {
-         this.f = ddi.a(this.c);
-      }
-
-      return this.f;
-   }
-
-   public cys a(dec $$0, jg.a $$1) {
-      return this.d.v();
-   }
-
-   @FunctionalInterface
-   public interface a<T extends deb> {
-      T create(String var1, ddf var2, cys var3);
-   }
-
-   public static class b<T extends deb> implements ddt<T> {
-      private final MapCodec<T> w;
-      private final yu<wh, T> x;
-
-      protected b(deb.a<T> $$0) {
-         this.w = RecordCodecBuilder.mapCodec(
-            $$1 -> $$1.group(
-                     Codec.STRING.optionalFieldOf("group", "").forGetter(deb::j),
-                     ddf.d.fieldOf("ingredient").forGetter(deb::k),
-                     cys.d.fieldOf("result").forGetter(deb::l)
-                  )
-                  .apply($$1, $$0::create)
-         );
-         this.x = yu.a(ys.o, deb::j, ddf.a, deb::k, cys.i, deb::l, $$0::create);
-      }
-
-      @Override
-      public MapCodec<T> a() {
-         return this.w;
-      }
-
-      @Override
-      public yu<wh, T> b() {
-         return this.x;
-      }
+   public ddz<deb> a() {
+      return ddz.n;
    }
 }

@@ -1,50 +1,78 @@
-import com.google.common.collect.Maps;
-import it.unimi.dsi.fastutil.longs.Long2ObjectMap;
-import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
-import it.unimi.dsi.fastutil.objects.Object2IntMap;
-import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
-import java.util.List;
-import java.util.Map;
+import com.mojang.serialization.Dynamic;
 
-public class diz {
-   private final Long2ObjectMap<List<arp>> a = new Long2ObjectOpenHashMap();
-   private final Map<arp, diz.a> b = Maps.newHashMap();
-   private final aqs c;
+public final class diz {
+   private final String a;
+   private final dis b;
+   private final boolean c;
+   private final bty d;
+   private final boolean e;
+   private final dir f;
+   private final djt g;
 
-   public diz(aqs $$0) {
-      this.c = $$0;
+   public diz(String $$0, dis $$1, boolean $$2, bty $$3, boolean $$4, dir $$5, djt $$6) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+      this.d = $$3;
+      this.e = $$4;
+      this.f = $$5;
+      this.g = $$6;
    }
 
-   private List<arp> a(dhw $$0) {
-      return (List<arp>)this.a.computeIfAbsent($$0.a(), $$1 -> this.c.c($$0));
+   public static diz a(Dynamic<?> $$0, djt $$1) {
+      dis $$2 = dis.a($$0.get("GameType").asInt(0));
+      return new diz(
+         $$0.get("LevelName").asString(""),
+         $$2,
+         $$0.get("hardcore").asBoolean(false),
+         $$0.get("Difficulty").asNumber().map($$0x -> bty.a($$0x.byteValue())).result().orElse(bty.c),
+         $$0.get("allowCommands").asBoolean($$2 == dis.b),
+         new dir($$1.b(), $$0.get("GameRules")),
+         $$1
+      );
    }
 
-   public void a(dhw $$0, bxc $$1) {
-      for (arp $$2 : this.a($$0)) {
-         this.b.computeIfAbsent($$2, $$0x -> new diz.a()).a($$1);
-      }
+   public String a() {
+      return this.a;
    }
 
-   public boolean a(bxc $$0, dhw $$1) {
-      for (arp $$2 : this.a($$1)) {
-         diz.a $$3 = this.b.get($$2);
-         if ($$3 == null || $$3.b($$0)) {
-            return true;
-         }
-      }
-
-      return false;
+   public dis b() {
+      return this.b;
    }
 
-   static class a {
-      private final Object2IntMap<bxc> a = new Object2IntOpenHashMap(bxc.values().length);
+   public boolean c() {
+      return this.c;
+   }
 
-      public void a(bxc $$0) {
-         this.a.computeInt($$0, ($$0x, $$1) -> $$1 == null ? 1 : $$1 + 1);
-      }
+   public bty d() {
+      return this.d;
+   }
 
-      public boolean b(bxc $$0) {
-         return this.a.getOrDefault($$0, 0) < $$0.b();
-      }
+   public boolean e() {
+      return this.e;
+   }
+
+   public dir f() {
+      return this.f;
+   }
+
+   public djt g() {
+      return this.g;
+   }
+
+   public diz a(dis $$0) {
+      return new diz(this.a, $$0, this.c, this.d, this.e, this.f, this.g);
+   }
+
+   public diz a(bty $$0) {
+      return new diz(this.a, this.b, this.c, $$0, this.e, this.f, this.g);
+   }
+
+   public diz a(djt $$0) {
+      return new diz(this.a, this.b, this.c, this.d, this.e, this.f, $$0);
+   }
+
+   public diz h() {
+      return new diz(this.a, this.b, this.c, this.d, this.e, this.f.a(this.g.b()), this.g);
    }
 }

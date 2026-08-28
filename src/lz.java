@@ -4,7 +4,7 @@ import com.mojang.serialization.codecs.RecordCodecBuilder;
 
 public record lz(float c) implements lv {
    public static final MapCodec<lz> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(Codec.FLOAT.fieldOf("roll").forGetter($$0x -> $$0x.c)).apply($$0, lz::new));
-   public static final yu<wh, lz> b = yu.a(ys.l, $$0 -> $$0.c, lz::new);
+   public static final yw<wj, lz> b = yw.a(yu.l, $$0 -> $$0.c, lz::new);
 
    @Override
    public lw<lz> a() {

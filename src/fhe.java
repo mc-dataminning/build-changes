@@ -1,48 +1,219 @@
-import com.google.common.base.Charsets;
+import it.unimi.dsi.fastutil.ints.IntArraySet;
+import it.unimi.dsi.fastutil.ints.IntSet;
 import java.nio.ByteBuffer;
-import org.lwjgl.BufferUtils;
-import org.lwjgl.glfw.GLFW;
-import org.lwjgl.glfw.GLFWErrorCallback;
-import org.lwjgl.glfw.GLFWErrorCallbackI;
+import java.nio.IntBuffer;
+import java.util.Locale;
+import java.util.function.Function;
+import javax.annotation.Nullable;
+import org.lwjgl.system.MemoryStack;
 import org.lwjgl.system.MemoryUtil;
+import org.lwjgl.util.freetype.FT_Bitmap;
+import org.lwjgl.util.freetype.FT_Face;
+import org.lwjgl.util.freetype.FT_GlyphSlot;
+import org.lwjgl.util.freetype.FT_Vector;
+import org.lwjgl.util.freetype.FreeType;
 
-public class fhe {
-   public static final int a = 65545;
-   private final ByteBuffer b = BufferUtils.createByteBuffer(8192);
+public class fhe implements fhb {
+   @Nullable
+   private ByteBuffer b;
+   @Nullable
+   private FT_Face c;
+   final float d;
+   private final fur<fhe.b> e = new fur<>(fhe.b[]::new, fhe.b[][]::new);
 
-   public String a(long $$0, GLFWErrorCallbackI $$1) {
-      GLFWErrorCallback $$2 = GLFW.glfwSetErrorCallback($$1);
-      String $$3 = GLFW.glfwGetClipboardString($$0);
-      $$3 = $$3 != null ? bah.a($$3) : "";
-      GLFWErrorCallback $$4 = GLFW.glfwSetErrorCallback($$2);
-      if ($$4 != null) {
-         $$4.free();
+   public fhe(ByteBuffer $$0, FT_Face $$1, float $$2, float $$3, float $$4, float $$5, String $$6) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$3;
+      IntSet $$7 = new IntArraySet();
+      $$6.codePoints().forEach($$7::add);
+      int $$8 = Math.round($$2 * $$3);
+      FreeType.FT_Set_Pixel_Sizes($$1, $$8, $$8);
+      float $$9 = $$4 * $$3;
+      float $$10 = -$$5 * $$3;
+      MemoryStack $$11 = MemoryStack.stackPush();
+
+      try {
+         FT_Vector $$12 = fve.a(FT_Vector.malloc($$11), $$9, $$10);
+         FreeType.FT_Set_Transform($$1, null, $$12);
+         IntBuffer $$13 = $$11.mallocInt(1);
+         int $$14 = (int)FreeType.FT_Get_First_Char($$1, $$13);
+
+         while (true) {
+            int $$15 = $$13.get(0);
+            if ($$15 == 0) {
+               break;
+            }
+
+            if (!$$7.contains($$14)) {
+               this.e.a($$14, new fhe.b($$15));
+            }
+
+            $$14 = (int)FreeType.FT_Get_Next_Char($$1, (long)$$14, $$13);
+         }
+      } catch (Throwable var18) {
+         if ($$11 != null) {
+            try {
+               $$11.close();
+            } catch (Throwable var17) {
+               var18.addSuppressed(var17);
+            }
+         }
+
+         throw var18;
       }
 
-      return $$3;
+      if ($$11 != null) {
+         $$11.close();
+      }
    }
 
-   private static void a(long $$0, ByteBuffer $$1, byte[] $$2) {
-      $$1.clear();
-      $$1.put($$2);
-      $$1.put((byte)0);
-      $$1.flip();
-      GLFW.glfwSetClipboardString($$0, $$1);
+   @Nullable
+   @Override
+   public fha a(int $$0) {
+      fhe.b $$1 = this.e.a($$0);
+      return $$1 != null ? this.a($$0, $$1) : null;
    }
 
-   public void a(long $$0, String $$1) {
-      byte[] $$2 = $$1.getBytes(Charsets.UTF_8);
-      int $$3 = $$2.length + 1;
-      if ($$3 < this.b.capacity()) {
-         a($$0, this.b, $$2);
-      } else {
-         ByteBuffer $$4 = MemoryUtil.memAlloc($$3);
-
-         try {
-            a($$0, $$4, $$2);
-         } finally {
-            MemoryUtil.memFree($$4);
+   private fha a(int $$0, fhe.b $$1) {
+      fha $$2 = $$1.b;
+      if ($$2 == null) {
+         FT_Face $$3 = this.b();
+         synchronized ($$3) {
+            $$2 = $$1.b;
+            if ($$2 == null) {
+               $$2 = this.a($$0, $$3, $$1.a);
+               $$1.b = $$2;
+            }
          }
+      }
+
+      return $$2;
+   }
+
+   private fha a(int $$0, FT_Face $$1, int $$2) {
+      int $$3 = FreeType.FT_Load_Glyph($$1, $$2, 4194312);
+      if ($$3 != 0) {
+         fve.a($$3, String.format(Locale.ROOT, "Loading glyph U+%06X", $$0));
+      }
+
+      FT_GlyphSlot $$4 = $$1.glyph();
+      if ($$4 == null) {
+         throw new NullPointerException(String.format(Locale.ROOT, "Glyph U+%06X not initialized", $$0));
+      } else {
+         float $$5 = fve.a($$4.advance());
+         FT_Bitmap $$6 = $$4.bitmap();
+         int $$7 = $$4.bitmap_left();
+         int $$8 = $$4.bitmap_top();
+         int $$9 = $$6.width();
+         int $$10 = $$6.rows();
+         return (fha)($$9 > 0 && $$10 > 0 ? new fhe.a((float)$$7, (float)$$8, $$9, $$10, $$5, $$2) : () -> $$5 / this.d);
+      }
+   }
+
+   FT_Face b() {
+      if (this.b != null && this.c != null) {
+         return this.c;
+      } else {
+         throw new IllegalStateException("Provider already closed");
+      }
+   }
+
+   @Override
+   public void close() {
+      if (this.c != null) {
+         synchronized (fve.a) {
+            fve.b(FreeType.FT_Done_Face(this.c), "Deleting face");
+         }
+
+         this.c = null;
+      }
+
+      MemoryUtil.memFree(this.b);
+      this.b = null;
+   }
+
+   @Override
+   public IntSet a() {
+      return this.e.b();
+   }
+
+   class a implements fha {
+      final int b;
+      final int c;
+      final float d;
+      final float e;
+      private final float f;
+      final int g;
+
+      a(final float $$0, final float $$1, final int $$2, final int $$3, final float $$4, final int $$5) {
+         this.b = $$2;
+         this.c = $$3;
+         this.f = $$4 / fhe.this.d;
+         this.d = $$0 / fhe.this.d;
+         this.e = $$1 / fhe.this.d;
+         this.g = $$5;
+      }
+
+      @Override
+      public float getAdvance() {
+         return this.f;
+      }
+
+      @Override
+      public fuy bake(Function<fhc, fuy> $$0) {
+         return $$0.apply(new fhc() {
+            @Override
+            public int a() {
+               return a.this.b;
+            }
+
+            @Override
+            public int b() {
+               return a.this.c;
+            }
+
+            @Override
+            public float d() {
+               return fhe.this.d;
+            }
+
+            @Override
+            public float i() {
+               return a.this.d;
+            }
+
+            @Override
+            public float j() {
+               return a.this.e;
+            }
+
+            @Override
+            public void a(int $$0, int $$1) {
+               FT_Face $$2 = fhe.this.b();
+               fic $$3 = new fic(fic.a.d, a.this.b, a.this.c, false);
+               if ($$3.a($$2, a.this.g)) {
+                  $$3.a(0, $$0, $$1, 0, 0, a.this.b, a.this.c, true);
+               } else {
+                  $$3.close();
+               }
+            }
+
+            @Override
+            public boolean c() {
+               return false;
+            }
+         });
+      }
+   }
+
+   static class b {
+      final int a;
+      @Nullable
+      volatile fha b;
+
+      b(int $$0) {
+         this.a = $$0;
       }
    }
 }

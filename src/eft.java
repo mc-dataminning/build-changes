@@ -1,110 +1,112 @@
-import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.function.Function;
+import java.util.List;
+import java.util.concurrent.CompletableFuture;
+import java.util.stream.Stream;
 
-public record eft(efg b, efg c, efg d, efg e, efg f, efg g, efg h, efg i, efg j, efg k, efg l, efg m, efg n, efg o, efg p) {
-   public static final Codec<eft> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               a("barrier", eft::a),
-               a("fluid_level_floodedness", eft::b),
-               a("fluid_level_spread", eft::c),
-               a("lava", eft::d),
-               a("temperature", eft::e),
-               a("vegetation", eft::f),
-               a("continents", eft::g),
-               a("erosion", eft::h),
-               a("depth", eft::i),
-               a("ridges", eft::j),
-               a("initial_density_without_jaggedness", eft::k),
-               a("final_density", eft::l),
-               a("vein_toggle", eft::m),
-               a("vein_ridged", eft::n),
-               a("vein_gap", eft::o)
-            )
-            .apply($$0, eft::new)
+public class eft extends ebx {
+   public static final MapCodec<eft> c = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(eow.a.fieldOf("settings").forGetter(eft::h)).apply($$0, $$0.stable(eft::new))
    );
+   private final eow d;
 
-   private static RecordCodecBuilder<eft, efg> a(String $$0, Function<eft, efg> $$1) {
-      return efg.d.fieldOf($$0).forGetter($$1);
+   public eft(eow $$0) {
+      super(new dkj($$0.d()), af.b($$0::a));
+      this.d = $$0;
    }
 
-   public eft a(efg.f $$0) {
-      return new eft(
-         this.b.a($$0),
-         this.c.a($$0),
-         this.d.a($$0),
-         this.e.a($$0),
-         this.f.a($$0),
-         this.g.a($$0),
-         this.h.a($$0),
-         this.i.a($$0),
-         this.j.a($$0),
-         this.k.a($$0),
-         this.l.a($$0),
-         this.m.a($$0),
-         this.n.a($$0),
-         this.o.a($$0),
-         this.p.a($$0)
-      );
+   @Override
+   public eby a(jg<eqz> $$0, egm $$1, long $$2) {
+      Stream<je<eqz>> $$3 = this.d.c().map(ji::a).orElseGet(() -> $$0.c().map($$0xx -> $$0xx));
+      return eby.a($$1, $$2, this.b, $$3);
    }
 
-   public efg a() {
-      return this.b;
+   @Override
+   protected MapCodec<? extends ebx> b() {
+      return c;
    }
 
-   public efg b() {
-      return this.c;
-   }
-
-   public efg c() {
+   public eow h() {
       return this.d;
    }
 
-   public efg d() {
-      return this.e;
+   @Override
+   public void a(ary $$0, djr $$1, egm $$2, ebw $$3) {
    }
 
-   public efg e() {
-      return this.f;
+   @Override
+   public int a(dix $$0) {
+      return $$0.G_() + Math.min($$0.H_(), this.d.f().size());
    }
 
-   public efg f() {
-      return this.g;
+   @Override
+   public CompletableFuture<ebw> a(eha $$0, egm $$1, djr $$2, ebw $$3) {
+      List<dzz> $$4 = this.d.f();
+      iu.a $$5 = new iu.a();
+      efy $$6 = $$3.a(efy.a.c);
+      efy $$7 = $$3.a(efy.a.a);
+
+      for (int $$8 = 0; $$8 < Math.min($$3.H_(), $$4.size()); $$8++) {
+         dzz $$9 = $$4.get($$8);
+         if ($$9 != null) {
+            int $$10 = $$3.G_() + $$8;
+
+            for (int $$11 = 0; $$11 < 16; $$11++) {
+               for (int $$12 = 0; $$12 < 16; $$12++) {
+                  $$3.a($$5.d($$11, $$10, $$12), $$9);
+                  $$6.a($$11, $$10, $$12, $$9);
+                  $$7.a($$11, $$10, $$12, $$9);
+               }
+            }
+         }
+      }
+
+      return CompletableFuture.completedFuture($$3);
    }
 
-   public efg g() {
-      return this.h;
+   @Override
+   public int a(int $$0, int $$1, efy.a $$2, dix $$3, egm $$4) {
+      List<dzz> $$5 = this.d.f();
+
+      for (int $$6 = Math.min($$5.size() - 1, $$3.ao()); $$6 >= 0; $$6--) {
+         dzz $$7 = $$5.get($$6);
+         if ($$7 != null && $$2.e().test($$7)) {
+            return $$3.G_() + $$6 + 1;
+         }
+      }
+
+      return $$3.G_();
    }
 
-   public efg h() {
-      return this.i;
+   @Override
+   public djh a(int $$0, int $$1, dix $$2, egm $$3) {
+      return new djh($$2.G_(), this.d.f().stream().limit((long)$$2.H_()).map($$0x -> $$0x == null ? dmc.a.m() : $$0x).toArray(dzz[]::new));
    }
 
-   public efg i() {
-      return this.j;
+   @Override
+   public void a(List<String> $$0, egm $$1, iu $$2) {
    }
 
-   public efg j() {
-      return this.k;
+   @Override
+   public void a(ary $$0, long $$1, egm $$2, dka $$3, djr $$4, ebw $$5) {
    }
 
-   public efg k() {
-      return this.l;
+   @Override
+   public void a(ary $$0) {
    }
 
-   public efg l() {
-      return this.m;
+   @Override
+   public int g() {
+      return 0;
    }
 
-   public efg m() {
-      return this.n;
+   @Override
+   public int e() {
+      return 384;
    }
 
-   public efg n() {
-      return this.o;
-   }
-
-   public efg o() {
-      return this.p;
+   @Override
+   public int f() {
+      return -63;
    }
 }

@@ -1,15 +1,11 @@
-public enum fgj {
-   a(34962),
-   b(34963),
-   c(35051),
-   d(36662),
-   e(36663),
-   f(35052),
-   g(35345);
+import java.lang.annotation.ElementType;
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
+import javax.annotation.Nonnull;
+import javax.annotation.meta.TypeQualifierDefault;
 
-   final int h;
-
-   private fgj(final int $$0) {
-      this.h = $$0;
-   }
+@Nonnull
+@TypeQualifierDefault({ElementType.FIELD})
+@Retention(RetentionPolicy.RUNTIME)
+public @interface fgj {
 }

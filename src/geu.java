@@ -1,87 +1,65 @@
-import java.util.List;
+public class geu extends gdz {
+   private static final int a = 28;
+   private static final int b = 32;
+   private static final int c = 6;
+   private static final int d = 20;
+   private static final int e = 4;
+   private static final String f = "water_patch";
+   private static final String g = "back";
+   private static final String i = "front";
+   private static final String j = "right";
+   private static final String k = "left";
 
-public class geu extends gfd<hbh> {
-   public static final List<gig> a = List.of();
-   private final gig b;
-   private final List<gig> c;
-
-   public geu(gig $$0) {
+   public geu(giu $$0) {
       super($$0);
-      gig $$1 = $$0.b("root");
-      gig $$2 = $$1.b("upper_body");
-      this.b = $$2.b("head");
-      this.c = List.of(this.b);
    }
 
-   private static gio b() {
-      gio $$0 = new gio();
-      giq $$1 = $$0.a();
-      giq $$2 = $$1.a("root", gil.c(), gii.a(0.0F, 24.0F, 0.0F));
-      giq $$3 = $$2.a("upper_body", gil.c(), gii.a(-1.0F, -19.0F, 0.0F));
-      $$3.a(
-         "head",
-         gil.c()
-            .a(0, 0)
-            .a(-3.0F, -10.0F, -3.0F, 6.0F, 10.0F, 6.0F)
-            .a(28, 31)
-            .a(-3.0F, -13.0F, -3.0F, 6.0F, 3.0F, 6.0F)
-            .a(12, 40)
-            .a(3.0F, -13.0F, 0.0F, 9.0F, 14.0F, 0.0F)
-            .a(34, 12)
-            .a(-12.0F, -14.0F, 0.0F, 9.0F, 14.0F, 0.0F),
-         gii.a(-3.0F, -11.0F, 0.0F)
+   private static void a(gje $$0) {
+      int $$1 = 16;
+      int $$2 = 14;
+      int $$3 = 10;
+      $$0.a("bottom", giz.c().a(0, 0).a(-14.0F, -9.0F, -3.0F, 28.0F, 16.0F, 3.0F), giw.a(0.0F, 3.0F, 1.0F, (float) (Math.PI / 2), 0.0F, 0.0F));
+      $$0.a("back", giz.c().a(0, 19).a(-13.0F, -7.0F, -1.0F, 18.0F, 6.0F, 2.0F), giw.a(-15.0F, 4.0F, 4.0F, 0.0F, (float) (Math.PI * 3.0 / 2.0), 0.0F));
+      $$0.a("front", giz.c().a(0, 27).a(-8.0F, -7.0F, -1.0F, 16.0F, 6.0F, 2.0F), giw.a(15.0F, 4.0F, 0.0F, 0.0F, (float) (Math.PI / 2), 0.0F));
+      $$0.a("right", giz.c().a(0, 35).a(-14.0F, -7.0F, -1.0F, 28.0F, 6.0F, 2.0F), giw.a(0.0F, 4.0F, -9.0F, 0.0F, (float) Math.PI, 0.0F));
+      $$0.a("left", giz.c().a(0, 43).a(-14.0F, -7.0F, -1.0F, 28.0F, 6.0F, 2.0F), giw.a(0.0F, 4.0F, 9.0F));
+      int $$4 = 20;
+      int $$5 = 7;
+      int $$6 = 6;
+      float $$7 = -5.0F;
+      $$0.a(
+         "left_paddle",
+         giz.c().a(62, 0).a(-1.0F, 0.0F, -5.0F, 2.0F, 2.0F, 18.0F).a(-1.001F, -3.0F, 8.0F, 1.0F, 6.0F, 7.0F),
+         giw.a(3.0F, -5.0F, 9.0F, 0.0F, 0.0F, (float) (Math.PI / 16))
       );
-      $$3.a("body", gil.c().a(0, 16).a(0.0F, -3.0F, -3.0F, 6.0F, 13.0F, 5.0F).a(24, 0).a(-6.0F, -4.0F, -3.0F, 6.0F, 7.0F, 5.0F), gii.a(0.0F, -7.0F, 1.0F));
-      $$3.a(
-         "right_arm", gil.c().a(22, 13).a(-2.0F, -1.5F, -1.5F, 3.0F, 21.0F, 3.0F).a(46, 0).a(-2.0F, 19.5F, -1.5F, 3.0F, 4.0F, 3.0F), gii.a(-7.0F, -9.5F, 1.5F)
+      $$0.a(
+         "right_paddle",
+         giz.c().a(62, 20).a(-1.0F, 0.0F, -5.0F, 2.0F, 2.0F, 18.0F).a(0.001F, -3.0F, 8.0F, 1.0F, 6.0F, 7.0F),
+         giw.a(3.0F, -5.0F, -9.0F, 0.0F, (float) Math.PI, (float) (Math.PI / 16))
       );
-      $$3.a(
-         "left_arm",
-         gil.c()
-            .a(30, 40)
-            .a(0.0F, -1.0F, -1.5F, 3.0F, 16.0F, 3.0F)
-            .a(52, 12)
-            .a(0.0F, -5.0F, -1.5F, 3.0F, 4.0F, 3.0F)
-            .a(52, 19)
-            .a(0.0F, 15.0F, -1.5F, 3.0F, 4.0F, 3.0F),
-         gii.a(6.0F, -9.0F, 0.5F)
-      );
-      $$2.a(
-         "left_leg", gil.c().a(42, 40).a(-1.5F, 0.0F, -1.5F, 3.0F, 16.0F, 3.0F).a(45, 55).a(-1.5F, 15.7F, -4.5F, 5.0F, 0.0F, 9.0F), gii.a(1.5F, -16.0F, 0.5F)
-      );
-      $$2.a(
-         "right_leg",
-         gil.c()
-            .a(0, 34)
-            .a(-3.0F, -1.5F, -1.5F, 3.0F, 19.0F, 3.0F)
-            .a(45, 46)
-            .a(-5.0F, 17.2F, -4.5F, 5.0F, 0.0F, 9.0F)
-            .a(12, 34)
-            .a(-3.0F, -4.5F, -1.5F, 3.0F, 3.0F, 3.0F),
-         gii.a(-1.0F, -17.5F, 0.5F)
-      );
-      return $$0;
    }
 
-   public static gim a() {
-      gio $$0 = b();
-      return gim.a($$0, 64, 64);
+   public static gja a() {
+      gjc $$0 = new gjc();
+      gje $$1 = $$0.a();
+      a($$1);
+      return gja.a($$0, 128, 64);
    }
 
-   public void a(hbh $$0) {
-      super.a($$0);
-      this.b.e = $$0.ab * (float) (Math.PI / 180.0);
-      this.b.f = $$0.aa * (float) (Math.PI / 180.0);
-      if ($$0.e) {
-         this.a(fpb.a, $$0.ad, $$0.ae, 1.0F, 1.0F);
-      }
-
-      this.a($$0.b, fpb.b, $$0.u);
-      this.a($$0.a, fpb.c, $$0.u);
-      this.a($$0.c, fpb.d, $$0.u);
+   public static gja b() {
+      gjc $$0 = new gjc();
+      gje $$1 = $$0.a();
+      a($$1);
+      $$1.a("chest_bottom", giz.c().a(0, 76).a(0.0F, 0.0F, 0.0F, 12.0F, 8.0F, 12.0F), giw.a(-2.0F, -5.0F, -6.0F, 0.0F, (float) (-Math.PI / 2), 0.0F));
+      $$1.a("chest_lid", giz.c().a(0, 59).a(0.0F, 0.0F, 0.0F, 12.0F, 4.0F, 12.0F), giw.a(-2.0F, -9.0F, -6.0F, 0.0F, (float) (-Math.PI / 2), 0.0F));
+      $$1.a("chest_lock", giz.c().a(0, 59).a(0.0F, 0.0F, 0.0F, 2.0F, 4.0F, 1.0F), giw.a(-1.0F, -6.0F, -1.0F, 0.0F, (float) (-Math.PI / 2), 0.0F));
+      return gja.a($$0, 128, 128);
    }
 
-   public List<gig> b(hbh $$0) {
-      return !$$0.d ? a : this.c;
+   public static gja c() {
+      gjc $$0 = new gjc();
+      gje $$1 = $$0.a();
+      $$1.a("water_patch", giz.c().a(0, 0).a(-14.0F, -9.0F, -3.0F, 28.0F, 16.0F, 3.0F), giw.a(0.0F, -3.0F, 1.0F, (float) (Math.PI / 2), 0.0F, 0.0F));
+      return gja.a($$0, 0, 0);
    }
 }

@@ -1,84 +1,100 @@
-import com.google.gson.JsonDeserializationContext;
-import com.google.gson.JsonDeserializer;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParseException;
-import java.lang.reflect.Type;
+import com.mojang.blaze3d.systems.RenderSystem;
 
-public record gqu(gqt b, gqt c, gqt d, gqt e, gqt f, gqt g, gqt h, gqt i) {
-   public static final gqu a = new gqu(gqt.a, gqt.a, gqt.a, gqt.a, gqt.a, gqt.a, gqt.a, gqt.a);
+public class gqu {
+   public static final alg a = alg.b("textures/misc/forcefield.png");
 
-   public gqt a(cyq $$0) {
-      return switch ($$0) {
-         case b -> this.b;
-         case c -> this.c;
-         case d -> this.d;
-         case e -> this.e;
-         case f -> this.f;
-         case g -> this.g;
-         case h -> this.h;
-         case i -> this.i;
-         default -> gqt.a;
-      };
-   }
+   public void a(ebr $$0, fei $$1, double $$2, double $$3) {
+      double $$4 = $$0.e();
+      double $$5 = $$0.g();
+      double $$6 = $$0.f();
+      double $$7 = $$0.h();
+      if (!($$1.d < $$5 - $$2) || !($$1.d > $$4 + $$2) || !($$1.f < $$7 - $$2) || !($$1.f > $$6 + $$2)) {
+         double $$8 = 1.0 - $$0.b($$1.d, $$1.f) / $$2;
+         $$8 = Math.pow($$8, 4.0);
+         $$8 = azm.a($$8, 0.0, 1.0);
+         double $$9 = $$1.d;
+         double $$10 = $$1.f;
+         float $$11 = (float)$$3;
+         gqc $$12 = gqc.a(fos.O());
+         $$12.a();
+         int $$13 = $$0.d().a();
+         float $$14 = (float)axw.b($$13) / 255.0F;
+         float $$15 = (float)axw.c($$13) / 255.0F;
+         float $$16 = (float)axw.d($$13) / 255.0F;
+         RenderSystem.setShaderColor($$14, $$15, $$16, (float)$$8);
+         float $$17 = (float)(af.c() % 3000L) / 3000.0F;
+         float $$18 = (float)(-azm.e($$1.e * 0.5));
+         float $$19 = $$18 + $$11;
+         fix $$20 = fje.b().a(fjh.c.h, fja.i);
+         double $$21 = Math.max((double)azm.a($$10 - $$2), $$6);
+         double $$22 = Math.min((double)azm.c($$10 + $$2), $$7);
+         float $$23 = (float)(azm.a($$21) & 1) * 0.5F;
+         if ($$9 > $$5 - $$2) {
+            float $$24 = $$23;
 
-   public gqt a() {
-      return this.b;
-   }
-
-   public gqt b() {
-      return this.c;
-   }
-
-   public gqt c() {
-      return this.d;
-   }
-
-   public gqt d() {
-      return this.e;
-   }
-
-   public gqt e() {
-      return this.f;
-   }
-
-   public gqt f() {
-      return this.g;
-   }
-
-   public gqt g() {
-      return this.h;
-   }
-
-   public gqt h() {
-      return this.i;
-   }
-
-   protected static class a implements JsonDeserializer<gqu> {
-      public gqu a(JsonElement $$0, Type $$1, JsonDeserializationContext $$2) throws JsonParseException {
-         JsonObject $$3 = $$0.getAsJsonObject();
-         gqt $$4 = this.a($$2, $$3, cyq.c);
-         gqt $$5 = this.a($$2, $$3, cyq.b);
-         if ($$5 == gqt.a) {
-            $$5 = $$4;
+            for (double $$25 = $$21; $$25 < $$22; $$24 += 0.5F) {
+               double $$26 = Math.min(1.0, $$22 - $$25);
+               float $$27 = (float)$$26 * 0.5F;
+               $$20.a((float)($$5 - $$9), -$$11, (float)($$25 - $$10)).a($$17 - $$24, $$17 + $$19);
+               $$20.a((float)($$5 - $$9), -$$11, (float)($$25 + $$26 - $$10)).a($$17 - ($$27 + $$24), $$17 + $$19);
+               $$20.a((float)($$5 - $$9), $$11, (float)($$25 + $$26 - $$10)).a($$17 - ($$27 + $$24), $$17 + $$18);
+               $$20.a((float)($$5 - $$9), $$11, (float)($$25 - $$10)).a($$17 - $$24, $$17 + $$18);
+               $$25++;
+            }
          }
 
-         gqt $$6 = this.a($$2, $$3, cyq.e);
-         gqt $$7 = this.a($$2, $$3, cyq.d);
-         if ($$7 == gqt.a) {
-            $$7 = $$6;
+         if ($$9 < $$4 + $$2) {
+            float $$28 = $$23;
+
+            for (double $$29 = $$21; $$29 < $$22; $$28 += 0.5F) {
+               double $$30 = Math.min(1.0, $$22 - $$29);
+               float $$31 = (float)$$30 * 0.5F;
+               $$20.a((float)($$4 - $$9), -$$11, (float)($$29 - $$10)).a($$17 + $$28, $$17 + $$19);
+               $$20.a((float)($$4 - $$9), -$$11, (float)($$29 + $$30 - $$10)).a($$17 + $$31 + $$28, $$17 + $$19);
+               $$20.a((float)($$4 - $$9), $$11, (float)($$29 + $$30 - $$10)).a($$17 + $$31 + $$28, $$17 + $$18);
+               $$20.a((float)($$4 - $$9), $$11, (float)($$29 - $$10)).a($$17 + $$28, $$17 + $$18);
+               $$29++;
+            }
          }
 
-         gqt $$8 = this.a($$2, $$3, cyq.f);
-         gqt $$9 = this.a($$2, $$3, cyq.g);
-         gqt $$10 = this.a($$2, $$3, cyq.h);
-         gqt $$11 = this.a($$2, $$3, cyq.i);
-         return new gqu($$5, $$4, $$7, $$6, $$8, $$9, $$10, $$11);
-      }
+         $$21 = Math.max((double)azm.a($$9 - $$2), $$4);
+         $$22 = Math.min((double)azm.c($$9 + $$2), $$5);
+         $$23 = (float)(azm.a($$21) & 1) * 0.5F;
+         if ($$10 > $$7 - $$2) {
+            float $$32 = $$23;
 
-      private gqt a(JsonDeserializationContext $$0, JsonObject $$1, cyq $$2) {
-         String $$3 = $$2.c();
-         return $$1.has($$3) ? (gqt)$$0.deserialize($$1.get($$3), gqt.class) : gqt.a;
+            for (double $$33 = $$21; $$33 < $$22; $$32 += 0.5F) {
+               double $$34 = Math.min(1.0, $$22 - $$33);
+               float $$35 = (float)$$34 * 0.5F;
+               $$20.a((float)($$33 - $$9), -$$11, (float)($$7 - $$10)).a($$17 + $$32, $$17 + $$19);
+               $$20.a((float)($$33 + $$34 - $$9), -$$11, (float)($$7 - $$10)).a($$17 + $$35 + $$32, $$17 + $$19);
+               $$20.a((float)($$33 + $$34 - $$9), $$11, (float)($$7 - $$10)).a($$17 + $$35 + $$32, $$17 + $$18);
+               $$20.a((float)($$33 - $$9), $$11, (float)($$7 - $$10)).a($$17 + $$32, $$17 + $$18);
+               $$33++;
+            }
+         }
+
+         if ($$10 < $$6 + $$2) {
+            float $$36 = $$23;
+
+            for (double $$37 = $$21; $$37 < $$22; $$36 += 0.5F) {
+               double $$38 = Math.min(1.0, $$22 - $$37);
+               float $$39 = (float)$$38 * 0.5F;
+               $$20.a((float)($$37 - $$9), -$$11, (float)($$6 - $$10)).a($$17 - $$36, $$17 + $$19);
+               $$20.a((float)($$37 + $$38 - $$9), -$$11, (float)($$6 - $$10)).a($$17 - ($$39 + $$36), $$17 + $$19);
+               $$20.a((float)($$37 + $$38 - $$9), $$11, (float)($$6 - $$10)).a($$17 - ($$39 + $$36), $$17 + $$18);
+               $$20.a((float)($$37 - $$9), $$11, (float)($$6 - $$10)).a($$17 - $$36, $$17 + $$18);
+               $$37++;
+            }
+         }
+
+         fjb $$40 = $$20.a();
+         if ($$40 != null) {
+            fiy.a($$40);
+         }
+
+         $$12.b();
+         RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, 1.0F);
       }
    }
 }

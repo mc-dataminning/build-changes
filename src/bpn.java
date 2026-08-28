@@ -1,67 +1,27 @@
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Optional;
 import javax.annotation.Nullable;
 
-public abstract class bpn<S> {
-   private final Map<bpn.b<?>, bpn.a<?>> a = new HashMap<>();
-   private final bpk<S> b;
-   private final bpl<S> c;
+public class bpn<S> {
+   private final Map<bpl<?>, bpr<S, ?>> a = new HashMap<>();
 
-   protected bpn(bpk<S> $$0, bpl<S> $$1) {
-      this.b = $$0;
-      this.c = $$1;
-   }
-
-   public bpl<S> a() {
-      return this.c;
-   }
-
-   public <T> Optional<T> a(bpi<T> $$0) {
-      Optional<T> $$1 = this.b($$0);
-      if ($$1.isPresent()) {
-         this.c.a(this.c());
-      }
-
-      return $$1;
-   }
-
-   public <T> Optional<T> b(bpi<T> $$0) {
-      bpn.b<T> $$1 = new bpn.b<>($$0, this.c());
-      bpn.a<T> $$2 = this.a($$1);
+   public <T> void a(bpl<T> $$0, bpr<S, T> $$1) {
+      bpr<S, ?> $$2 = this.a.putIfAbsent($$0, $$1);
       if ($$2 != null) {
-         this.a($$2.b());
-         return $$2.a;
-      } else {
-         bpo<S, T> $$3 = this.b.a($$0);
-         if ($$3 == null) {
-            throw new IllegalStateException("No symbol " + $$0);
-         } else {
-            Optional<T> $$4 = $$3.a(this);
-            this.a($$1, $$4);
-            return $$4;
-         }
+         throw new IllegalArgumentException("Trying to override rule: " + $$0);
       }
+   }
+
+   public <T> void a(bpl<T> $$0, bpu<S> $$1, bpr.a<S, T> $$2) {
+      this.a($$0, bpr.a($$1, $$2));
+   }
+
+   public <T> void a(bpl<T> $$0, bpu<S> $$1, bpr.b<T> $$2) {
+      this.a($$0, bpr.a($$1, $$2));
    }
 
    @Nullable
-   private <T> bpn.a<T> a(bpn.b<T> $$0) {
-      return (bpn.a<T>)this.a.get($$0);
-   }
-
-   private <T> void a(bpn.b<T> $$0, Optional<T> $$1) {
-      this.a.put($$0, new bpn.a<>($$1, this.c()));
-   }
-
-   public abstract S b();
-
-   public abstract int c();
-
-   public abstract void a(int var1);
-
-   static record a<T>(Optional<T> a, int b) {
-   }
-
-   static record b<T>(bpi<T> a, int b) {
+   public <T> bpr<S, T> a(bpl<T> $$0) {
+      return (bpr<S, T>)this.a.get($$0);
    }
 }

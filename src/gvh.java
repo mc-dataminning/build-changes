@@ -1,21 +1,13 @@
-public class gvh extends gwq<cnk, hcp, gfc> {
-   private static final ale a = ale.b("textures/entity/endermite.png");
+public class gvh extends gyh<cnk> {
+   private static final alg a = alg.b("textures/entity/spider/cave_spider.png");
 
-   public gvh(gvk.a $$0) {
-      super($$0, new gfc($$0.a(gif.aO)), 0.3F);
+   public gvh(gvz.a $$0) {
+      super($$0, git.U);
+      this.e = 0.56F;
    }
 
    @Override
-   protected float aR_() {
-      return 180.0F;
-   }
-
-   @Override
-   public ale b(hcp $$0) {
+   public alg b(hdf $$0) {
       return a;
-   }
-
-   public hcp b() {
-      return new hcp();
    }
 }

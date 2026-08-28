@@ -1,19 +1,30 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import com.mojang.serialization.MapCodec;
 
-public record dwc(ale e, String f) {
-   public static final Codec<dwc> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(ale.a.fieldOf("asset_id").forGetter(dwc::a), Codec.STRING.fieldOf("translation_key").forGetter(dwc::b)).apply($$0, dwc::new)
-   );
-   public static final yu<wh, dwc> b = yu.a(ale.b, dwc::a, ys.o, dwc::b, dwc::new);
-   public static final Codec<je<dwc>> c = ala.a(mg.aF, a);
-   public static final yu<wh, je<dwc>> d = ys.a(mg.aF, b);
+public class dwc extends dps {
+   public static final MapCodec<dwc> c = b(dwc::new);
+   private static final ffc g = dma.b(8.0, 9.0, 16.0);
 
-   public ale a() {
-      return this.e;
+   @Override
+   public MapCodec<dwc> a() {
+      return c;
    }
 
-   public String b() {
-      return this.f;
+   public dwc(dzy.d $$0) {
+      super($$0, ja.a, g, false, 0.1);
+   }
+
+   @Override
+   protected int a(azv $$0) {
+      return drm.a($$0);
+   }
+
+   @Override
+   protected dma b() {
+      return dmc.pd;
+   }
+
+   @Override
+   protected boolean h(dzz $$0) {
+      return drm.a($$0);
    }
 }

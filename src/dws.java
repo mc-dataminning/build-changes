@@ -1,222 +1,324 @@
-import com.mojang.logging.LogUtils;
-import it.unimi.dsi.fastutil.objects.ObjectArrayList;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.Lists;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
 import java.util.Objects;
+import java.util.Set;
+import java.util.stream.Collectors;
 import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
-public class dws extends dwn {
-   private static final Logger a = LogUtils.getLogger();
-   private static final String b = "LootTable";
-   private static final String c = "LootTableSeed";
-   private static final String d = "hit_direction";
-   private static final String e = "item";
-   private static final int f = 10;
-   private static final int g = 40;
+public class dws extends dwx implements bud, bue, dwr {
+   private static final int f = 4;
+   public static final List<List<je<bvf>>> a = List.of(List.of(bvj.a, bvj.c), List.of(bvj.k, bvj.h), List.of(bvj.e), List.of(bvj.j));
+   private static final Set<je<bvf>> g = a.stream().flatMap(Collection::stream).collect(Collectors.toSet());
+   public static final int b = 0;
+   public static final int c = 1;
+   public static final int d = 2;
+   public static final int e = 3;
    private static final int h = 10;
-   private int i;
-   private long j;
-   private long k;
-   private cys l = cys.k;
+   private static final wy i = wy.c("container.beacon");
+   private static final String j = "primary_effect";
+   private static final String k = "secondary_effect";
+   List<dwr.a> l = new ArrayList<>();
+   private List<dwr.a> m = new ArrayList<>();
+   int q;
+   private int r;
    @Nullable
-   private ja m;
+   je<bvf> s;
    @Nullable
-   private ald<eys> q;
-   private long r;
-
-   public dws(iu $$0, dzo $$1) {
-      super(dwp.O, $$0, $$1);
-   }
-
-   public boolean a(long $$0, aro $$1, bwz $$2, ja $$3, cys $$4) {
-      if (this.m == null) {
-         this.m = $$3;
-      }
-
-      this.j = $$0 + 40L;
-      if ($$0 < this.k) {
-         return false;
-      } else {
-         this.k = $$0 + 10L;
-         this.a($$1, $$2, $$4);
-         int $$5 = this.f();
-         if (++this.i >= 10) {
-            this.b($$1, $$2, $$4);
-            return true;
-         } else {
-            $$1.a(this.aw_(), this.m().b(), 2);
-            int $$6 = this.f();
-            if ($$5 != $$6) {
-               dzo $$7 = this.m();
-               dzo $$8 = $$7.b(eae.by, Integer.valueOf($$6));
-               $$1.a(this.aw_(), $$8, 3);
-            }
-
-            return false;
-         }
-      }
-   }
-
-   private void a(aro $$0, bwz $$1, cys $$2) {
-      if (this.q != null) {
-         eys $$3 = $$0.p().bc().b(this.q);
-         if ($$1 instanceof arp $$4) {
-            ap.Q.a($$4, this.q);
-         }
-
-         eyq $$5 = new eyq.a($$0).a(fbh.f, fdw.b(this.o)).a($$1.eg()).a(fbh.a, $$1).a(fbh.i, $$2).a(fbg.i);
-         ObjectArrayList<cys> $$6 = $$3.a($$5, this.r);
-
-         this.l = switch ($$6.size()) {
-            case 0 -> cys.k;
-            case 1 -> (cys)$$6.getFirst();
-            default -> {
-               a.warn("Expected max 1 loot from loot table {}, but got {}", this.q.a(), $$6.size());
-               yield (cys)$$6.getFirst();
-            }
+   je<bvf> t;
+   @Nullable
+   private wy u;
+   private buc v = buc.a;
+   private final cvc w = new cvc() {
+      @Override
+      public int a(int $$0) {
+         return switch ($$0) {
+            case 0 -> dws.this.q;
+            case 1 -> cuv.a(dws.this.s);
+            case 2 -> cuv.a(dws.this.t);
+            default -> 0;
          };
-         this.q = null;
-         this.e();
       }
+
+      @Override
+      public void a(int $$0, int $$1) {
+         switch ($$0) {
+            case 0:
+               dws.this.q = $$1;
+               break;
+            case 1:
+               if (!dws.this.n.C && !dws.this.l.isEmpty()) {
+                  dws.a(dws.this.n, dws.this.o, awn.bN);
+               }
+
+               dws.this.s = dws.a(cuv.e($$1));
+               break;
+            case 2:
+               dws.this.t = dws.a(cuv.e($$1));
+         }
+      }
+
+      @Override
+      public int a() {
+         return 3;
+      }
+   };
+
+   @Nullable
+   static je<bvf> a(@Nullable je<bvf> $$0) {
+      return g.contains($$0) ? $$0 : null;
    }
 
-   private void b(aro $$0, bwz $$1, cys $$2) {
-      this.c($$0, $$1, $$2);
-      dzo $$3 = this.m();
-      $$0.c(3008, this.aw_(), dlu.j($$3));
-      dlu $$6;
-      if (this.m().b() instanceof dma $$5) {
-         $$6 = $$5.b();
+   public dws(iu $$0, dzz $$1) {
+      super(dwz.p, $$0, $$1);
+   }
+
+   public static void a(div $$0, iu $$1, dzz $$2, dws $$3) {
+      int $$4 = $$1.u();
+      int $$5 = $$1.v();
+      int $$6 = $$1.w();
+      iu $$7;
+      if ($$3.r < $$5) {
+         $$7 = $$1;
+         $$3.m = Lists.newArrayList();
+         $$3.r = $$1.v() - 1;
       } else {
-         $$6 = dlw.a;
+         $$7 = new iu($$4, $$3.r + 1, $$6);
       }
 
-      $$0.a(this.o, $$6.m(), 3);
-   }
+      dwr.a $$9 = $$3.m.isEmpty() ? null : $$3.m.get($$3.m.size() - 1);
+      int $$10 = $$0.a(efy.a.b, $$4, $$6);
 
-   private void c(aro $$0, bwz $$1, cys $$2) {
-      this.a($$0, $$1, $$2);
-      if (!this.l.f()) {
-         double $$3 = (double)bwj.aq.l();
-         double $$4 = 1.0 - $$3;
-         double $$5 = $$3 / 2.0;
-         ja $$6 = Objects.requireNonNullElse(this.m, ja.b);
-         iu $$7 = this.o.a($$6, 1);
-         double $$8 = (double)$$7.u() + 0.5 * $$4 + $$5;
-         double $$9 = (double)$$7.v() + 0.5 + (double)(bwj.aq.m() / 2.0F);
-         double $$10 = (double)$$7.w() + 0.5 * $$4 + $$5;
-         cmx $$11 = new cmx($$0, $$8, $$9, $$10, this.l.a($$0.A.a(21) + 10));
-         $$11.i(fdw.c);
-         $$0.b($$11);
-         this.l = cys.k;
-      }
-   }
+      for (int $$11 = 0; $$11 < 10 && $$7.v() <= $$10; $$11++) {
+         dzz $$12 = $$0.a_($$7);
+         if ($$12.b() instanceof dlr $$14) {
+            int $$15 = $$14.b().d();
+            if ($$3.m.size() <= 1) {
+               $$9 = new dwr.a($$15);
+               $$3.m.add($$9);
+            } else if ($$9 != null) {
+               if ($$15 == $$9.b()) {
+                  $$9.a();
+               } else {
+                  $$9 = new dwr.a(axw.d($$9.b(), $$15));
+                  $$3.m.add($$9);
+               }
+            }
+         } else {
+            if ($$9 == null || $$12.g() >= 15 && !$$12.a(dmc.I)) {
+               $$3.m.clear();
+               $$3.r = $$10;
+               break;
+            }
 
-   public void a(aro $$0) {
-      if (this.i != 0 && $$0.ae() >= this.j) {
-         int $$1 = this.f();
-         this.i = Math.max(0, this.i - 2);
-         int $$2 = this.f();
-         if ($$1 != $$2) {
-            $$0.a(this.aw_(), this.m().b(eae.by, Integer.valueOf($$2)), 3);
+            $$9.a();
          }
 
-         int $$3 = 4;
-         this.j = $$0.ae() + 4L;
+         $$7 = $$7.d();
+         $$3.r++;
       }
 
-      if (this.i == 0) {
-         this.m = null;
-         this.j = 0L;
-         this.k = 0L;
-      } else {
-         $$0.a(this.aw_(), this.m().b(), 2);
-      }
-   }
-
-   private boolean c(tx $$0) {
-      if ($$0.b("LootTable", 8)) {
-         this.q = ald.a(mg.bo, ale.a($$0.l("LootTable")));
-         this.r = $$0.i("LootTableSeed");
-         return true;
-      } else {
-         return false;
-      }
-   }
-
-   private boolean d(tx $$0) {
-      if (this.q == null) {
-         return false;
-      } else {
-         $$0.a("LootTable", this.q.a().toString());
-         if (this.r != 0L) {
-            $$0.a("LootTableSeed", this.r);
+      int $$16 = $$3.q;
+      if ($$0.ae() % 80L == 0L) {
+         if (!$$3.l.isEmpty()) {
+            $$3.q = a($$0, $$4, $$5, $$6);
          }
 
-         return true;
+         if ($$3.q > 0 && !$$3.l.isEmpty()) {
+            a($$0, $$1, $$3.q, $$3.s, $$3.t);
+            a($$0, $$1, awn.bL);
+         }
       }
+
+      if ($$3.r >= $$10) {
+         $$3.r = $$0.G_() - 1;
+         boolean $$17 = $$16 > 0;
+         $$3.l = $$3.m;
+         if (!$$0.C) {
+            boolean $$18 = $$3.q > 0;
+            if (!$$17 && $$18) {
+               a($$0, $$1, awn.bK);
+
+               for (arr $$19 : $$0.a(arr.class, new fed((double)$$4, (double)$$5, (double)$$6, (double)$$4, (double)($$5 - 4), (double)$$6).c(10.0, 5.0, 10.0))) {
+                  ap.m.a($$19, $$3.q);
+               }
+            } else if ($$17 && !$$18) {
+               a($$0, $$1, awn.bM);
+            }
+         }
+      }
+   }
+
+   private static int a(div $$0, int $$1, int $$2, int $$3) {
+      int $$4 = 0;
+
+      for (int $$5 = 1; $$5 <= 4; $$4 = $$5++) {
+         int $$6 = $$2 - $$5;
+         if ($$6 < $$0.G_()) {
+            break;
+         }
+
+         boolean $$7 = true;
+
+         for (int $$8 = $$1 - $$5; $$8 <= $$1 + $$5 && $$7; $$8++) {
+            for (int $$9 = $$3 - $$5; $$9 <= $$3 + $$5; $$9++) {
+               if (!$$0.a_(new iu($$8, $$6, $$9)).a(axc.aP)) {
+                  $$7 = false;
+                  break;
+               }
+            }
+         }
+
+         if (!$$7) {
+            break;
+         }
+      }
+
+      return $$4;
    }
 
    @Override
-   public tx a(jg.a $$0) {
-      tx $$1 = super.a($$0);
-      if (this.m != null) {
-         $$1.a("hit_direction", this.m.ordinal());
-      }
-
-      if (!this.l.f()) {
-         $$1.a("item", this.l.a($$0));
-      }
-
-      return $$1;
+   public void ar_() {
+      a(this.n, this.o, awn.bM);
+      super.ar_();
    }
 
-   public aby a() {
-      return aby.a(this);
+   private static void a(div $$0, iu $$1, int $$2, @Nullable je<bvf> $$3, @Nullable je<bvf> $$4) {
+      if (!$$0.C && $$3 != null) {
+         double $$5 = (double)($$2 * 10 + 10);
+         int $$6 = 0;
+         if ($$2 >= 4 && Objects.equals($$3, $$4)) {
+            $$6 = 1;
+         }
+
+         int $$7 = (9 + $$2 * 2) * 20;
+         fed $$8 = new fed($$1).g($$5).b(0.0, (double)$$0.H_(), 0.0);
+         List<cqy> $$9 = $$0.a(cqy.class, $$8);
+
+         for (cqy $$10 : $$9) {
+            $$10.a(new bvh($$3, $$7, $$6, true, true));
+         }
+
+         if ($$2 >= 4 && !Objects.equals($$3, $$4) && $$4 != null) {
+            for (cqy $$11 : $$9) {
+               $$11.a(new bvh($$4, $$7, 0, true, true));
+            }
+         }
+      }
+   }
+
+   public static void a(div $$0, iu $$1, awm $$2) {
+      $$0.a(null, $$1, $$2, awo.e, 1.0F, 1.0F);
    }
 
    @Override
-   protected void a(tx $$0, jg.a $$1) {
-      super.a($$0, $$1);
-      if (!this.c($$0) && $$0.e("item")) {
-         this.l = cys.a($$1, (uu)$$0.p("item")).orElse(cys.k);
-      } else {
-         this.l = cys.k;
-      }
+   public List<dwr.a> a() {
+      return (List<dwr.a>)(this.q == 0 ? ImmutableList.of() : this.l);
+   }
 
-      if ($$0.e("hit_direction")) {
-         this.m = ja.values()[$$0.h("hit_direction")];
-      }
+   public aca c() {
+      return aca.a(this);
    }
 
    @Override
-   protected void b(tx $$0, jg.a $$1) {
-      super.b($$0, $$1);
-      if (!this.d($$0) && !this.l.f()) {
-         $$0.a("item", this.l.a($$1));
-      }
+   public tz a(jg.a $$0) {
+      return this.e($$0);
    }
 
-   public void a(ald<eys> $$0, long $$1) {
-      this.q = $$0;
-      this.r = $$1;
-   }
-
-   private int f() {
-      if (this.i == 0) {
-         return 0;
-      } else if (this.i < 3) {
-         return 1;
-      } else {
-         return this.i < 6 ? 2 : 3;
+   private static void a(tz $$0, String $$1, @Nullable je<bvf> $$2) {
+      if ($$2 != null) {
+         $$2.e().ifPresent($$2x -> $$0.a($$1, $$2x.a().toString()));
       }
    }
 
    @Nullable
-   public ja c() {
-      return this.m;
+   private static je<bvf> a(tz $$0, String $$1) {
+      if ($$0.b($$1, 8)) {
+         alg $$2 = alg.c($$0.l($$1));
+         return $$2 == null ? null : mf.d.c($$2).map(dws::a).orElse(null);
+      } else {
+         return null;
+      }
    }
 
-   public cys d() {
-      return this.l;
+   @Override
+   protected void a(tz $$0, jg.a $$1) {
+      super.a($$0, $$1);
+      this.s = a($$0, "primary_effect");
+      this.t = a($$0, "secondary_effect");
+      if ($$0.e("CustomName")) {
+         this.u = a($$0.c("CustomName"), $$1);
+      }
+
+      this.v = buc.b($$0, $$1);
+   }
+
+   @Override
+   protected void b(tz $$0, jg.a $$1) {
+      super.b($$0, $$1);
+      a($$0, "primary_effect", this.s);
+      a($$0, "secondary_effect", this.t);
+      $$0.a("Levels", this.q);
+      if (this.u != null) {
+         $$0.a("CustomName", xa.a, $$1.a(un.a), this.u);
+      }
+
+      this.v.a($$0, $$1);
+   }
+
+   public void a(@Nullable wy $$0) {
+      this.u = $$0;
+   }
+
+   @Nullable
+   @Override
+   public wy an() {
+      return this.u;
+   }
+
+   @Nullable
+   @Override
+   public cuq createMenu(int $$0, cqx $$1, cqy $$2) {
+      return dwq.a($$2, this.v, this.m_()) ? new cuv($$0, $$1, this.w, cvd.a(this.n, this.aw_())) : null;
+   }
+
+   @Override
+   public wy m_() {
+      return this.al();
+   }
+
+   @Override
+   public wy al() {
+      return this.u != null ? this.u : i;
+   }
+
+   @Override
+   protected void a(ke $$0) {
+      super.a($$0);
+      this.u = $$0.a(kj.g);
+      this.v = $$0.a(kj.as, buc.a);
+   }
+
+   @Override
+   protected void a(kg.a $$0) {
+      super.a($$0);
+      $$0.a(kj.g, this.u);
+      if (!this.v.equals(buc.a)) {
+         $$0.a(kj.as, this.v);
+      }
+   }
+
+   @Override
+   public void a(tz $$0) {
+      $$0.r("CustomName");
+      $$0.r("lock");
+   }
+
+   @Override
+   public void a(div $$0) {
+      super.a($$0);
+      this.r = $$0.G_() - 1;
    }
 }

@@ -1,81 +1,29 @@
-import com.mojang.authlib.GameProfile;
-
-public class gob extends gnx {
-   private fdw h = fdw.c;
-   private int i;
-
-   public gob(gjd $$0, GameProfile $$1) {
-      super($$0, $$1);
-      this.ad = true;
-   }
-
-   @Override
-   public boolean a(double $$0) {
-      double $$1 = this.cR().a() * 10.0;
-      if (Double.isNaN($$1)) {
-         $$1 = 1.0;
-      }
-
-      $$1 *= 64.0 * cK();
-      return $$0 < $$1 * $$1;
-   }
-
-   @Override
-   public boolean b(bup $$0) {
-      return true;
-   }
-
-   @Override
-   public void h() {
-      super.h();
-      this.r(false);
-   }
-
-   @Override
-   public void k_() {
-      if (this.bR()) {
-         this.N_().e();
-      }
-
-      if (this.bl > 0) {
-         this.a(this.bl, this.bk);
-         this.bl--;
-      }
-
-      if (this.i > 0) {
-         this.j(new fdw((this.h.d - this.dy().d) / (double)this.i, (this.h.e - this.dy().e) / (double)this.i, (this.h.f - this.dy().f) / (double)this.i));
-         this.i--;
-      }
-
-      this.bU = this.bV;
-      this.eY();
-      float $$1;
-      if (this.aJ() && !this.eG()) {
-         $$1 = (float)Math.min(0.1, this.dy().i());
+public class gob extends gnm {
+   gob(gjr $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, gnv $$7) {
+      super($$0, $$1, $$2, $$3, $$7, 1.25F);
+      this.B = 0.6F;
+      this.j = $$4;
+      this.k = $$5;
+      this.l = $$6;
+      this.D *= 0.75F;
+      this.t = 60 + this.r.a(12);
+      this.b($$7);
+      if (this.r.a(4) == 0) {
+         this.a(0.6F + this.r.i() * 0.2F, 0.6F + this.r.i() * 0.3F, this.r.i() * 0.2F);
       } else {
-         $$1 = 0.0F;
-      }
-
-      this.bV = this.bV + ($$1 - this.bV) * 0.4F;
-
-      try (bqo $$2 = bqi.a().d("push")) {
-         this.o();
+         this.a(0.1F + this.r.i() * 0.2F, 0.4F + this.r.i() * 0.3F, this.r.i() * 0.2F);
       }
    }
 
-   @Override
-   public void l(double $$0, double $$1, double $$2) {
-      this.h = new fdw($$0, $$1, $$2);
-      this.i = this.aq().p() + 1;
-   }
+   public static class a implements gnd<mb> {
+      private final gnv a;
 
-   @Override
-   protected void gb() {
-   }
+      public a(gnv $$0) {
+         this.a = $$0;
+      }
 
-   @Override
-   public void a(abt $$0) {
-      super.a($$0);
-      this.by();
+      public gna a(mb $$0, gjr $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new gob($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
+      }
    }
 }

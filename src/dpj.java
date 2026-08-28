@@ -1,56 +1,55 @@
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
 
-public abstract class dpj extends dlu {
-   protected final ja a;
-   protected final boolean b;
-   protected final feq d;
+public class dpj extends dvj implements dmd {
+   public static final MapCodec<dpj> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(alf.a(mg.aK).fieldOf("feature").forGetter($$0x -> $$0x.e), mf.e.q().fieldOf("grows_on").forGetter($$0x -> $$0x.d), t())
+            .apply($$0, dpj::new)
+   );
+   private static final double b = 0.4;
+   private static final ffc c = dma.b(8.0, 0.0, 9.0);
+   private final dma d;
+   private final alf<eiq<?, ?>> e;
 
-   protected dpj(dzn.d $$0, ja $$1, feq $$2, boolean $$3) {
-      super($$0);
-      this.a = $$1;
-      this.d = $$2;
-      this.b = $$3;
+   @Override
+   public MapCodec<dpj> a() {
+      return a;
+   }
+
+   protected dpj(alf<eiq<?, ?>> $$0, dma $$1, dzy.d $$2) {
+      super($$2);
+      this.e = $$0;
+      this.d = $$1;
    }
 
    @Override
-   protected abstract MapCodec<? extends dpj> a();
-
-   @Nullable
-   @Override
-   public dzo a(dcl $$0) {
-      dzo $$1 = $$0.q().a_($$0.a().a(this.a));
-      return !$$1.a(this.c()) && !$$1.a(this.b()) ? this.b($$0.q().A) : this.b().m();
-   }
-
-   public dzo b(azt $$0) {
-      return this.m();
+   protected ffc a(dzz $$0, dib $$1, iu $$2, fen $$3) {
+      return c;
    }
 
    @Override
-   protected boolean a(dzo $$0, dis $$1, iu $$2) {
-      iu $$3 = $$2.a(this.a.g());
-      dzo $$4 = $$1.a_($$3);
-      return !this.o($$4) ? false : $$4.a(this.b()) || $$4.c($$1, $$3, this.a);
+   protected boolean b(dzz $$0, dib $$1, iu $$2) {
+      return $$0.a(axc.aO) || $$0.a(dmc.fB) || $$0.a(dmc.el) || super.b($$0, $$1, $$2);
+   }
+
+   private Optional<? extends je<eiq<?, ?>>> a(diy $$0) {
+      return $$0.F_().f(mg.aK).a(this.e);
    }
 
    @Override
-   protected void a(dzo $$0, aro $$1, iu $$2, azt $$3) {
-      if (!$$0.a($$1, $$2)) {
-         $$1.b($$2, true);
-      }
-   }
-
-   protected boolean o(dzo $$0) {
-      return true;
+   public boolean a(diy $$0, iu $$1, dzz $$2) {
+      dzz $$3 = $$0.a_($$1.e());
+      return $$3.a(this.d);
    }
 
    @Override
-   protected feq a(dzo $$0, dhv $$1, iu $$2, feb $$3) {
-      return this.d;
+   public boolean a(div $$0, azv $$1, iu $$2, dzz $$3) {
+      return (double)$$1.i() < 0.4;
    }
 
-   protected abstract dpl c();
-
-   protected abstract dlu b();
+   @Override
+   public void a(arq $$0, azv $$1, iu $$2, dzz $$3) {
+      this.a($$0).ifPresent($$3x -> ((eiq)$$3x.a()).a($$0, $$0.m().g(), $$1, $$2));
+   }
 }

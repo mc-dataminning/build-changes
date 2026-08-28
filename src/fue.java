@@ -1,16 +1,26 @@
-import it.unimi.dsi.fastutil.ints.IntSet;
-import it.unimi.dsi.fastutil.ints.IntSets;
-import javax.annotation.Nullable;
+import java.util.function.Consumer;
 
-public class fue implements fgp {
-   @Nullable
-   @Override
-   public fgo a(int $$0) {
-      return fuo.b;
+public class fue implements fuf {
+   private final wy b;
+   protected final fvp a = new fvp();
+
+   public fue(wy $$0) {
+      this.b = $$0;
    }
 
    @Override
-   public IntSet a() {
-      return IntSets.EMPTY_SET;
+   public wy a() {
+      return this.b;
+   }
+
+   @Override
+   public void a(Consumer<fsa> $$0) {
+      this.a.a($$0);
+   }
+
+   @Override
+   public void a(fwj $$0) {
+      this.a.a();
+      fvo.a(this.a, $$0, 0.5F, 0.16666667F);
    }
 }

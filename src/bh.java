@@ -8,7 +8,7 @@ public class bh extends dj<bh.a> {
       return bh.a.a;
    }
 
-   public void a(arp $$0, cys $$1) {
+   public void a(arr $$0, cyy $$1) {
       this.a($$0, $$1x -> $$1x.a($$1));
    }
 
@@ -21,7 +21,7 @@ public class bh extends dj<bh.a> {
          return ap.A.a(new bh.a(Optional.empty(), Optional.empty()));
       }
 
-      public static aq<bh.a> a(jf<cyo> $$0, dio $$1) {
+      public static aq<bh.a> a(jf<cyu> $$0, diu $$1) {
          return a(cl.a.a().a($$0, $$1.h()));
       }
 
@@ -29,7 +29,7 @@ public class bh extends dj<bh.a> {
          return ap.A.a(new bh.a(Optional.empty(), Optional.of($$0.b())));
       }
 
-      public boolean a(cys $$0) {
+      public boolean a(cyy $$0) {
          return this.c.isEmpty() || this.c.get().a($$0);
       }
 

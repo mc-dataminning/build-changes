@@ -4,9 +4,9 @@ import java.util.Optional;
 
 public record ct(
    Optional<ct.b> b,
-   Optional<ji<djs>> c,
-   Optional<ji<eqi>> d,
-   Optional<ald<dip>> e,
+   Optional<ji<djy>> c,
+   Optional<ji<eqt>> d,
+   Optional<alf<div>> e,
    Optional<Boolean> f,
    Optional<cq> g,
    Optional<ay> h,
@@ -17,8 +17,8 @@ public record ct(
       $$0 -> $$0.group(
                ct.b.a.optionalFieldOf("position").forGetter(ct::a),
                jt.a(mg.aG).optionalFieldOf("biomes").forGetter(ct::b),
-               jt.a(mg.bc).optionalFieldOf("structures").forGetter(ct::c),
-               ald.a(mg.bm).optionalFieldOf("dimension").forGetter(ct::d),
+               jt.a(mg.bd).optionalFieldOf("structures").forGetter(ct::c),
+               alf.a(mg.bn).optionalFieldOf("dimension").forGetter(ct::d),
                Codec.BOOL.optionalFieldOf("smokey").forGetter(ct::e),
                cq.a.optionalFieldOf("light").forGetter(ct::f),
                ay.a.optionalFieldOf("block").forGetter(ct::g),
@@ -28,7 +28,7 @@ public record ct(
             .apply($$0, ct::new)
    );
 
-   public boolean a(aro $$0, double $$1, double $$2, double $$3) {
+   public boolean a(arq $$0, double $$1, double $$2, double $$3) {
       if (this.b.isPresent() && !this.b.get().a($$1, $$2, $$3)) {
          return false;
       } else if (this.e.isPresent() && this.e.get() != $$0.aj()) {
@@ -38,7 +38,7 @@ public record ct(
          boolean $$5 = $$0.p($$4);
          if (!this.c.isPresent() || $$5 && this.c.get().a($$0.u($$4))) {
             if (!this.d.isPresent() || $$5 && $$0.b().a($$4, this.d.get()).b()) {
-               if (!this.f.isPresent() || $$5 && this.f.get() == dmj.a($$0, $$4)) {
+               if (!this.f.isPresent() || $$5 && this.f.get() == dmp.a($$0, $$4)) {
                   if (this.g.isPresent() && !this.g.get().a($$0, $$4)) {
                      return false;
                   } else if (this.h.isPresent() && !this.h.get().a($$0, $$4)) {
@@ -62,15 +62,15 @@ public record ct(
       return this.b;
    }
 
-   public Optional<ji<djs>> b() {
+   public Optional<ji<djy>> b() {
       return this.c;
    }
 
-   public Optional<ji<eqi>> c() {
+   public Optional<ji<eqt>> c() {
       return this.d;
    }
 
-   public Optional<ald<dip>> d() {
+   public Optional<alf<div>> d() {
       return this.e;
    }
 
@@ -98,9 +98,9 @@ public record ct(
       private cv.c a;
       private cv.c b;
       private cv.c c;
-      private Optional<ji<djs>> d;
-      private Optional<ji<eqi>> e;
-      private Optional<ald<dip>> f;
+      private Optional<ji<djy>> d;
+      private Optional<ji<eqt>> e;
+      private Optional<alf<div>> f;
       private Optional<Boolean> g;
       private Optional<cq> h;
       private Optional<ay> i;
@@ -125,15 +125,15 @@ public record ct(
          return new ct.a();
       }
 
-      public static ct.a a(je<djs> $$0) {
+      public static ct.a a(je<djy> $$0) {
          return a().a(ji.a($$0));
       }
 
-      public static ct.a a(ald<dip> $$0) {
+      public static ct.a a(alf<div> $$0) {
          return a().b($$0);
       }
 
-      public static ct.a b(je<eqi> $$0) {
+      public static ct.a b(je<eqt> $$0) {
          return a().b(ji.a($$0));
       }
 
@@ -156,17 +156,17 @@ public record ct(
          return this;
       }
 
-      public ct.a a(ji<djs> $$0) {
+      public ct.a a(ji<djy> $$0) {
          this.d = Optional.of($$0);
          return this;
       }
 
-      public ct.a b(ji<eqi> $$0) {
+      public ct.a b(ji<eqt> $$0) {
          this.e = Optional.of($$0);
          return this;
       }
 
-      public ct.a b(ald<dip> $$0) {
+      public ct.a b(alf<div> $$0) {
          this.f = Optional.of($$0);
          return this;
       }

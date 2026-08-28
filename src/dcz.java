@@ -1,53 +1,96 @@
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+public class dcz extends ddf {
+   public dcz(ddc $$0) {
+      super($$0);
+   }
 
-public abstract class dcz implements dcy {
-   private final dcw c;
+   public boolean a(ddd $$0, div $$1) {
+      if ($$0.e() < 2) {
+         return false;
+      } else {
+         boolean $$2 = false;
+         boolean $$3 = false;
 
-   public dcz(dcw $$0) {
-      this.c = $$0;
+         for (int $$4 = 0; $$4 < $$0.a(); $$4++) {
+            cyy $$5 = $$0.a($$4);
+            if (!$$5.f()) {
+               if ($$5.c(kj.V)) {
+                  if ($$3) {
+                     return false;
+                  }
+
+                  $$3 = true;
+               } else {
+                  if (!$$5.a(axk.bR)) {
+                     return false;
+                  }
+
+                  $$2 = true;
+               }
+            }
+         }
+
+         return $$3 && $$2;
+      }
+   }
+
+   public cyy a(ddd $$0, jg.a $$1) {
+      int $$2 = 0;
+      cyy $$3 = cyy.k;
+
+      for (int $$4 = 0; $$4 < $$0.a(); $$4++) {
+         cyy $$5 = $$0.a($$4);
+         if (!$$5.f()) {
+            if ($$5.c(kj.V)) {
+               if (!$$3.f()) {
+                  return cyy.k;
+               }
+
+               $$3 = $$5;
+            } else {
+               if (!$$5.a(axk.bR)) {
+                  return cyy.k;
+               }
+
+               $$2++;
+            }
+         }
+      }
+
+      dci $$6 = $$3.a(kj.V);
+      if (!$$3.f() && $$2 >= 1 && $$6 != null) {
+         dci $$7 = $$6.b();
+         if ($$7 == null) {
+            return cyy.k;
+         } else {
+            cyy $$8 = $$3.c($$2);
+            $$8.b(kj.V, $$7);
+            return $$8;
+         }
+      } else {
+         return cyy.k;
+      }
    }
 
    @Override
-   public boolean al_() {
-      return true;
+   public jn<cyy> a(ddd $$0) {
+      jn<cyy> $$1 = jn.a($$0.a(), cyy.k);
+
+      for (int $$2 = 0; $$2 < $$1.size(); $$2++) {
+         cyy $$3 = $$0.a($$2);
+         cyy $$4 = $$3.h().i();
+         if (!$$4.f()) {
+            $$1.set($$2, $$4);
+         } else if ($$3.c(kj.V)) {
+            $$1.set($$2, $$3.c(1));
+            break;
+         }
+      }
+
+      return $$1;
    }
 
    @Override
-   public dcw c() {
-      return this.c;
-   }
-
-   @Override
-   public ddi ak_() {
-      return ddi.b;
-   }
-
-   @Override
-   public abstract ddt<? extends dcz> a();
-
-   public static class a<T extends dcy> implements ddt<T> {
-      private final MapCodec<T> w;
-      private final yu<wh, T> x;
-
-      public a(dcz.a.a<T> $$0) {
-         this.w = RecordCodecBuilder.mapCodec($$1 -> $$1.group(dcw.e.fieldOf("category").orElse(dcw.d).forGetter(dcy::c)).apply($$1, $$0::create));
-         this.x = yu.a(dcw.g, dcy::c, $$0::create);
-      }
-
-      @Override
-      public MapCodec<T> a() {
-         return this.w;
-      }
-
-      @Override
-      public yu<wh, T> b() {
-         return this.x;
-      }
-
-      @FunctionalInterface
-      public interface a<T extends dcy> {
-         T create(dcw var1);
-      }
+   public ddz<dcz> a() {
+      return ddz.d;
    }
 }

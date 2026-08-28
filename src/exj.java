@@ -1,42 +1,35 @@
-import java.util.Optional;
+import com.google.common.collect.Sets;
+import java.util.Set;
+import javax.annotation.Nullable;
 
-public record exj(je<exk> b, byte c, byte d, byte e, Optional<ww> f) {
-   public static final yu<wh, exj> a = yu.a(exk.c, exj::c, ys.c, exj::d, ys.c, exj::e, ys.c, exj::f, wy.c, exj::g, exj::new);
-
-   public exj(je<exk> b, byte c, byte d, byte e, Optional<ww> f) {
-      e = (byte)(e & 15);
-      this.b = b;
-      this.c = c;
-      this.d = d;
-      this.e = e;
-      this.f = f;
+public class exj extends exq {
+   public exj(dsi $$0) {
+      super($$0);
    }
 
-   public ale a() {
-      return this.b.a().b();
+   @Override
+   public void a(div $$0, iu $$1, dzz $$2, @Nullable exo $$3, boolean $$4) {
+      int $$5 = this.c($$0, $$1);
+      if ($$2.c(dsi.f) != $$5) {
+         if ($$0.a_($$1) == $$2) {
+            $$0.a($$1, $$2.b(dsi.f, Integer.valueOf($$5)), 2);
+         }
+
+         Set<iu> $$6 = Sets.newHashSet();
+         $$6.add($$1);
+
+         for (ja $$7 : ja.values()) {
+            $$6.add($$1.a($$7));
+         }
+
+         for (iu $$8 : $$6) {
+            $$0.a($$8, this.a);
+         }
+      }
    }
 
-   public boolean b() {
-      return this.b.a().c();
-   }
-
-   public je<exk> c() {
-      return this.b;
-   }
-
-   public byte d() {
-      return this.c;
-   }
-
-   public byte e() {
-      return this.d;
-   }
-
-   public byte f() {
-      return this.e;
-   }
-
-   public Optional<ww> g() {
-      return this.f;
+   private int c(div $$0, iu $$1) {
+      int $$2 = this.a($$0, $$1);
+      return $$2 == 15 ? $$2 : Math.max($$2, this.b($$0, $$1));
    }
 }

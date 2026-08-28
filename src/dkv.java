@@ -1,77 +1,66 @@
-import com.mojang.datafixers.DataFixUtils;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Map;
-import java.util.Optional;
+import javax.annotation.Nullable;
 
-public class dkv extends dme {
-   public static final MapCodec<dkv> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(
-               ald.a(mg.i).fieldOf("fruit").forGetter($$0x -> $$0x.d),
-               ald.a(mg.i).fieldOf("stem").forGetter($$0x -> $$0x.e),
-               ald.a(mg.K).fieldOf("seed").forGetter($$0x -> $$0x.f),
-               t()
-            )
-            .apply($$0, dkv::new)
-   );
-   public static final eam<ja> b = dpt.e;
-   private static final Map<ja, feq> c = fen.c(dlu.a(4.0, 0.0, 10.0, 0.0, 10.0));
-   private final ald<dlu> d;
-   private final ald<dlu> e;
-   private final ald<cyo> f;
+public abstract class dkv extends dlm {
+   public static final eax<ja> a = dqa.e;
+   public static final eaq b = eap.u;
 
-   @Override
-   public MapCodec<dkv> a() {
-      return a;
-   }
-
-   protected dkv(ald<dlu> $$0, ald<dlu> $$1, ald<cyo> $$2, dzn.d $$3) {
-      super($$3);
-      this.l(this.B.b().b(b, ja.c));
-      this.e = $$0;
-      this.d = $$1;
-      this.f = $$2;
+   protected dkv(dzy.d $$0) {
+      super($$0);
+      this.l(this.B.b().b(a, ja.c).b(b, Boolean.valueOf(false)));
    }
 
    @Override
-   protected feq a(dzo $$0, dhv $$1, iu $$2, feb $$3) {
-      return c.get($$0.c(b));
-   }
+   protected abstract MapCodec<? extends dkv> a();
 
    @Override
-   protected dzo a(dzo $$0, dis $$1, dje $$2, iu $$3, ja $$4, iu $$5, dzo $$6, azt $$7) {
-      if (!$$6.a(this.d) && $$4 == $$0.c(b)) {
-         Optional<dlu> $$8 = $$1.F_().f(mg.i).f(this.e);
-         if ($$8.isPresent()) {
-            return $$8.get().m().c(dtw.c, Integer.valueOf(7));
-         }
+   protected bub a(dzz $$0, div $$1, iu $$2, cqy $$3, fee $$4) {
+      if (!$$1.C) {
+         this.a($$1, $$2, $$3);
       }
 
-      return super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
+      return bub.a;
+   }
+
+   protected abstract void a(div var1, iu var2, cqy var3);
+
+   @Override
+   public dzz a(dcr $$0) {
+      return this.m().b(a, $$0.g().g());
    }
 
    @Override
-   protected boolean b(dzo $$0, dhv $$1, iu $$2) {
-      return $$0.a(dlw.cK);
+   protected void a(dzz $$0, arq $$1, iu $$2, boolean $$3) {
+      btx.a($$0, $$1, $$2);
    }
 
    @Override
-   protected cys a(dis $$0, iu $$1, dzo $$2, boolean $$3) {
-      return new cys((dio)DataFixUtils.orElse($$0.F_().f(mg.K).f(this.f), this));
+   protected boolean c_(dzz $$0) {
+      return true;
    }
 
    @Override
-   protected dzo a(dzo $$0, dsm $$1) {
-      return $$0.b(b, $$1.a($$0.c(b)));
+   protected int a(dzz $$0, div $$1, iu $$2) {
+      return cuq.a($$1.c_($$2));
    }
 
    @Override
-   protected dzo a(dzo $$0, dqv $$1) {
-      return $$0.a($$1.a($$0.c(b)));
+   protected dzz a(dzz $$0, dst $$1) {
+      return $$0.b(a, $$1.a($$0.c(a)));
    }
 
    @Override
-   protected void a(dzp.a<dlu, dzo> $$0) {
-      $$0.a(b);
+   protected dzz a(dzz $$0, drc $$1) {
+      return $$0.a($$1.a($$0.c(a)));
+   }
+
+   @Override
+   protected void a(eaa.a<dma, dzz> $$0) {
+      $$0.a(a, b);
+   }
+
+   @Nullable
+   protected static <T extends dwx> dwy<T> a(div $$0, dwz<T> $$1, dwz<? extends dwk> $$2) {
+      return $$0 instanceof arq $$3 ? a($$1, $$2, ($$1x, $$2x, $$3x, $$4) -> dwk.a($$3, $$2x, $$3x, $$4)) : null;
    }
 }

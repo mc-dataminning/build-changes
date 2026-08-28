@@ -1,43 +1,36 @@
-public class gxd extends gwq<cjj, hdd, gfd<hbp>> {
-   private static final ale a = ale.b("textures/entity/fish/pufferfish.png");
-   private final gfd<hbp> j;
-   private final gfd<hbp> k;
-   private final gfd<hbp> l = this.c();
+public class gxd extends gxf<cny, heb, ggh> {
+   private static final alg a = alg.b("textures/entity/slime/magmacube.png");
 
-   public gxd(gvk.a $$0) {
-      super($$0, new ggl($$0.a(gif.cA)), 0.2F);
-      this.k = new ggm($$0.a(gif.cB));
-      this.j = new ggn($$0.a(gif.cC));
+   public gxd(gvz.a $$0) {
+      super($$0, new ggh($$0.a(git.bH)), 0.25F);
    }
 
-   public ale a(hdd $$0) {
+   protected int a(cny $$0, iu $$1) {
+      return 15;
+   }
+
+   public alg a(heb $$0) {
       return a;
    }
 
-   public hdd b() {
-      return new hdd();
+   public heb b() {
+      return new heb();
    }
 
-   protected float b(hdd $$0) {
-      return 0.1F + 0.1F * (float)$$0.a;
-   }
-
-   public void a(hdd $$0, fiq $$1, gpd $$2, int $$3) {
-      this.g = switch ($$0.a) {
-         case 0 -> this.j;
-         case 1 -> this.k;
-         default -> this.l;
-      };
-      super.a($$0, $$1, $$2, $$3);
-   }
-
-   public void a(cjj $$0, hdd $$1, float $$2) {
+   public void a(cny $$0, heb $$1, float $$2) {
       super.a($$0, $$1, $$2);
-      $$1.a = $$0.x();
+      $$1.a = azm.h($$2, $$0.bF, $$0.bE);
+      $$1.b = $$0.go();
    }
 
-   protected void a(hdd $$0, fiq $$1, float $$2, float $$3) {
-      $$1.a(0.0F, azk.b($$0.u * 0.05F) * 0.08F, 0.0F);
-      super.a($$0, $$1, $$2, $$3);
+   protected float b(heb $$0) {
+      return (float)$$0.b * 0.25F;
+   }
+
+   protected void a(heb $$0, fjc $$1) {
+      int $$2 = $$0.b;
+      float $$3 = $$0.a / ((float)$$2 * 0.5F + 1.0F);
+      float $$4 = 1.0F / ($$3 + 1.0F);
+      $$1.b($$4 * (float)$$2, 1.0F / $$4 * (float)$$2, $$4 * (float)$$2);
    }
 }

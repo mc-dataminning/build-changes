@@ -1,138 +1,174 @@
+import com.google.common.annotations.VisibleForTesting;
+import com.google.common.base.MoreObjects;
+import com.google.common.cache.CacheBuilder;
+import com.google.common.cache.CacheLoader;
+import com.google.common.cache.LoadingCache;
+import java.util.function.Predicate;
+import javax.annotation.Nullable;
+
 public class eae {
-   public static final eaf a = eaf.a("attached");
-   public static final eaf b = eaf.a("berries");
-   public static final eaf c = eaf.a("bloom");
-   public static final eaf d = eaf.a("bottom");
-   public static final eaf e = eaf.a("can_summon");
-   public static final eaf f = eaf.a("conditional");
-   public static final eaf g = eaf.a("disarmed");
-   public static final eaf h = eaf.a("drag");
-   public static final eaf i = eaf.a("enabled");
-   public static final eaf j = eaf.a("extended");
-   public static final eaf k = eaf.a("eye");
-   public static final eaf l = eaf.a("falling");
-   public static final eaf m = eaf.a("hanging");
-   public static final eaf n = eaf.a("has_bottle_0");
-   public static final eaf o = eaf.a("has_bottle_1");
-   public static final eaf p = eaf.a("has_bottle_2");
-   public static final eaf q = eaf.a("has_record");
-   public static final eaf r = eaf.a("has_book");
-   public static final eaf s = eaf.a("inverted");
-   public static final eaf t = eaf.a("in_wall");
-   public static final eaf u = eaf.a("lit");
-   public static final eaf v = eaf.a("locked");
-   public static final eaf w = eaf.a("natural");
-   public static final eaf x = eaf.a("occupied");
-   public static final eaf y = eaf.a("open");
-   public static final eaf z = eaf.a("persistent");
-   public static final eaf A = eaf.a("powered");
-   public static final eaf B = eaf.a("short");
-   public static final eaf C = eaf.a("shrieking");
-   public static final eaf D = eaf.a("signal_fire");
-   public static final eaf E = eaf.a("snowy");
-   public static final eaf F = eaf.a("tip");
-   public static final eaf G = eaf.a("triggered");
-   public static final eaf H = eaf.a("unstable");
-   public static final eaf I = eaf.a("waterlogged");
-   public static final eam<ja.a> J = eam.a("axis", ja.a.class, ja.a.a, ja.a.c);
-   public static final eam<ja.a> K = eam.a("axis", ja.a.class);
-   public static final eaf L = eaf.a("up");
-   public static final eaf M = eaf.a("down");
-   public static final eaf N = eaf.a("north");
-   public static final eaf O = eaf.a("east");
-   public static final eaf P = eaf.a("south");
-   public static final eaf Q = eaf.a("west");
-   public static final eam<ja> R = eam.a("facing", ja.class, ja.c, ja.f, ja.d, ja.e, ja.b, ja.a);
-   public static final eam<ja> S = eam.a("facing", ja.class, $$0 -> $$0 != ja.b);
-   public static final eam<ja> T = eam.a("facing", ja.class, ja.c.a);
-   public static final eao U = eao.a("flower_amount", 1, 4);
-   public static final eao V = eao.a("segment_amount", 1, 4);
-   public static final eam<jc> W = eam.a("orientation", jc.class);
-   public static final eam<dzz> X = eam.a("face", dzz.class);
-   public static final eam<eac> Y = eam.a("attachment", eac.class);
-   public static final eam<ebb> Z = eam.a("east", ebb.class);
-   public static final eam<ebb> aa = eam.a("north", ebb.class);
-   public static final eam<ebb> ab = eam.a("south", ebb.class);
-   public static final eam<ebb> ac = eam.a("west", ebb.class);
-   public static final eam<eat> ad = eam.a("east", eat.class);
-   public static final eam<eat> ae = eam.a("north", eat.class);
-   public static final eam<eat> af = eam.a("south", eat.class);
-   public static final eam<eat> ag = eam.a("west", eat.class);
-   public static final eam<eak> ah = eam.a("half", eak.class);
-   public static final eam<ean> ai = eam.a("half", ean.class);
-   public static final eam<eas> aj = eam.a("shape", eas.class);
-   public static final eam<eas> ak = eam.a("shape", eas.class, $$0 -> $$0 != eas.j && $$0 != eas.i && $$0 != eas.g && $$0 != eas.h);
-   public static final int al = 1;
-   public static final int am = 2;
-   public static final int an = 3;
-   public static final int ao = 4;
-   public static final int ap = 5;
-   public static final int aq = 7;
-   public static final int ar = 15;
-   public static final int as = 25;
-   public static final eao at = eao.a("age", 0, 1);
-   public static final eao au = eao.a("age", 0, 2);
-   public static final eao av = eao.a("age", 0, 3);
-   public static final eao aw = eao.a("age", 0, 4);
-   public static final eao ax = eao.a("age", 0, 5);
-   public static final eao ay = eao.a("age", 0, 7);
-   public static final eao az = eao.a("age", 0, 15);
-   public static final eao aA = eao.a("age", 0, 25);
-   public static final eao aB = eao.a("bites", 0, 6);
-   public static final eao aC = eao.a("candles", 1, 4);
-   public static final eao aD = eao.a("delay", 1, 4);
-   public static final int aE = 7;
-   public static final eao aF = eao.a("distance", 1, 7);
-   public static final eao aG = eao.a("eggs", 1, 4);
-   public static final eao aH = eao.a("hatch", 0, 2);
-   public static final eao aI = eao.a("layers", 1, 8);
-   public static final int aJ = 0;
-   public static final int aK = 1;
-   public static final int aL = 3;
-   public static final int aM = 8;
-   public static final eao aN = eao.a("level", 1, 3);
-   public static final eao aO = eao.a("level", 0, 8);
-   public static final eao aP = eao.a("level", 1, 8);
-   public static final eao aQ = eao.a("honey_level", 0, 5);
-   public static final int aR = 15;
-   public static final eao aS = eao.a("level", 0, 15);
-   public static final eao aT = eao.a("moisture", 0, 7);
-   public static final eao aU = eao.a("note", 0, 24);
-   public static final eao aV = eao.a("pickles", 1, 4);
-   public static final eao aW = eao.a("power", 0, 15);
-   public static final eao aX = eao.a("stage", 0, 1);
-   public static final int aY = 7;
-   public static final eao aZ = eao.a("distance", 0, 7);
-   public static final int ba = 0;
-   public static final int bb = 4;
-   public static final eao bc = eao.a("charges", 0, 4);
-   public static final eao bd = eao.a("rotation", 0, eau.a());
-   public static final eam<eab> be = eam.a("part", eab.class);
-   public static final eam<eag> bf = eam.a("type", eag.class);
-   public static final eam<eah> bg = eam.a("mode", eah.class);
-   public static final eam<eaj> bh = eam.a("hinge", eaj.class);
-   public static final eam<eap> bi = eam.a("instrument", eap.class);
-   public static final eam<eaq> bj = eam.a("type", eaq.class);
-   public static final eam<eaw> bk = eam.a("type", eaw.class);
-   public static final eam<eax> bl = eam.a("shape", eax.class);
-   public static final eam<eay> bm = eam.a("mode", eay.class);
-   public static final eam<eaa> bn = eam.a("leaves", eaa.class);
-   public static final eam<eba> bo = eam.a("tilt", eba.class);
-   public static final eam<ja> bp = eam.a("vertical_direction", ja.class, ja.b, ja.a);
-   public static final eam<eal> bq = eam.a("thickness", eal.class);
-   public static final eam<eav> br = eam.a("sculk_sensor_phase", eav.class);
-   public static final eaf bs = eaf.a("slot_0_occupied");
-   public static final eaf bt = eaf.a("slot_1_occupied");
-   public static final eaf bu = eaf.a("slot_2_occupied");
-   public static final eaf bv = eaf.a("slot_3_occupied");
-   public static final eaf bw = eaf.a("slot_4_occupied");
-   public static final eaf bx = eaf.a("slot_5_occupied");
-   public static final eao by = eao.a("dusted", 0, 3);
-   public static final eaf bz = eaf.a("cracked");
-   public static final eaf bA = eaf.a("crafting");
-   public static final eam<dyu> bB = eam.a("trial_spawner_state", dyu.class);
-   public static final eam<dzb> bC = eam.a("vault_state", dzb.class);
-   public static final eam<eai> bD = eam.a("creaking_heart_state", eai.class);
-   public static final eaf bE = eaf.a("ominous");
-   public static final eam<eaz> bF = eam.a("mode", eaz.class);
+   private final Predicate<ead>[][][] a;
+   private final int b;
+   private final int c;
+   private final int d;
+
+   public eae(Predicate<ead>[][][] $$0) {
+      this.a = $$0;
+      this.b = $$0.length;
+      if (this.b > 0) {
+         this.c = $$0[0].length;
+         if (this.c > 0) {
+            this.d = $$0[0][0].length;
+         } else {
+            this.d = 0;
+         }
+      } else {
+         this.c = 0;
+         this.d = 0;
+      }
+   }
+
+   public int a() {
+      return this.b;
+   }
+
+   public int b() {
+      return this.c;
+   }
+
+   public int c() {
+      return this.d;
+   }
+
+   @VisibleForTesting
+   public Predicate<ead>[][][] d() {
+      return this.a;
+   }
+
+   @Nullable
+   @VisibleForTesting
+   public eae.b a(diy $$0, iu $$1, ja $$2, ja $$3) {
+      LoadingCache<iu, ead> $$4 = a($$0, false);
+      return this.a($$1, $$2, $$3, $$4);
+   }
+
+   @Nullable
+   private eae.b a(iu $$0, ja $$1, ja $$2, LoadingCache<iu, ead> $$3) {
+      for (int $$4 = 0; $$4 < this.d; $$4++) {
+         for (int $$5 = 0; $$5 < this.c; $$5++) {
+            for (int $$6 = 0; $$6 < this.b; $$6++) {
+               if (!this.a[$$6][$$5][$$4].test((ead)$$3.getUnchecked(a($$0, $$1, $$2, $$4, $$5, $$6)))) {
+                  return null;
+               }
+            }
+         }
+      }
+
+      return new eae.b($$0, $$1, $$2, $$3, this.d, this.c, this.b);
+   }
+
+   @Nullable
+   public eae.b a(diy $$0, iu $$1) {
+      LoadingCache<iu, ead> $$2 = a($$0, false);
+      int $$3 = Math.max(Math.max(this.d, this.c), this.b);
+
+      for (iu $$4 : iu.c($$1, $$1.b($$3 - 1, $$3 - 1, $$3 - 1))) {
+         for (ja $$5 : ja.values()) {
+            for (ja $$6 : ja.values()) {
+               if ($$6 != $$5 && $$6 != $$5.g()) {
+                  eae.b $$7 = this.a($$4, $$5, $$6, $$2);
+                  if ($$7 != null) {
+                     return $$7;
+                  }
+               }
+            }
+         }
+      }
+
+      return null;
+   }
+
+   public static LoadingCache<iu, ead> a(diy $$0, boolean $$1) {
+      return CacheBuilder.newBuilder().build(new eae.a($$0, $$1));
+   }
+
+   protected static iu a(iu $$0, ja $$1, ja $$2, int $$3, int $$4, int $$5) {
+      if ($$1 != $$2 && $$1 != $$2.g()) {
+         jz $$6 = new jz($$1.j(), $$1.k(), $$1.l());
+         jz $$7 = new jz($$2.j(), $$2.k(), $$2.l());
+         jz $$8 = $$6.d($$7);
+         return $$0.b(
+            $$7.u() * -$$4 + $$8.u() * $$3 + $$6.u() * $$5, $$7.v() * -$$4 + $$8.v() * $$3 + $$6.v() * $$5, $$7.w() * -$$4 + $$8.w() * $$3 + $$6.w() * $$5
+         );
+      } else {
+         throw new IllegalArgumentException("Invalid forwards & up combination");
+      }
+   }
+
+   static class a extends CacheLoader<iu, ead> {
+      private final diy a;
+      private final boolean b;
+
+      public a(diy $$0, boolean $$1) {
+         this.a = $$0;
+         this.b = $$1;
+      }
+
+      public ead a(iu $$0) {
+         return new ead(this.a, $$0, this.b);
+      }
+   }
+
+   public static class b {
+      private final iu a;
+      private final ja b;
+      private final ja c;
+      private final LoadingCache<iu, ead> d;
+      private final int e;
+      private final int f;
+      private final int g;
+
+      public b(iu $$0, ja $$1, ja $$2, LoadingCache<iu, ead> $$3, int $$4, int $$5, int $$6) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
+         this.d = $$3;
+         this.e = $$4;
+         this.f = $$5;
+         this.g = $$6;
+      }
+
+      public iu a() {
+         return this.a;
+      }
+
+      public ja b() {
+         return this.b;
+      }
+
+      public ja c() {
+         return this.c;
+      }
+
+      public int d() {
+         return this.e;
+      }
+
+      public int e() {
+         return this.f;
+      }
+
+      public int f() {
+         return this.g;
+      }
+
+      public ead a(int $$0, int $$1, int $$2) {
+         return (ead)this.d.getUnchecked(eae.a(this.a, this.b(), this.c(), $$0, $$1, $$2));
+      }
+
+      @Override
+      public String toString() {
+         return MoreObjects.toStringHelper(this).add("up", this.c).add("forwards", this.b).add("frontTopLeft", this.a).toString();
+      }
+   }
 }

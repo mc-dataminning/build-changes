@@ -1,13 +1,29 @@
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.Executor;
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.Map;
+import java.util.Optional;
 
-public abstract class avg<T> implements auu {
-   @Override
-   public final CompletableFuture<Void> a(auu.a $$0, avb $$1, Executor $$2, Executor $$3) {
-      return CompletableFuture.<T>supplyAsync(() -> this.b($$1, bqi.a()), $$2).thenCompose($$0::a).thenAcceptAsync($$1x -> this.a((T)$$1x, $$1, bqi.a()), $$3);
+@FunctionalInterface
+public interface avg {
+   avg b = $$0 -> Optional.empty();
+
+   Optional<avb> getResource(alg var1);
+
+   default avb getResourceOrThrow(alg $$0) throws FileNotFoundException {
+      return this.getResource($$0).orElseThrow(() -> new FileNotFoundException($$0.toString()));
    }
 
-   protected abstract T b(avb var1, bqj var2);
+   default InputStream open(alg $$0) throws IOException {
+      return this.getResourceOrThrow($$0).d();
+   }
 
-   protected abstract void a(T var1, avb var2, bqj var3);
+   default BufferedReader openAsReader(alg $$0) throws IOException {
+      return this.getResourceOrThrow($$0).e();
+   }
+
+   static avg fromMap(Map<alg, avb> $$0) {
+      return $$1 -> Optional.ofNullable($$0.get($$1));
+   }
 }

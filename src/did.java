@@ -1,27 +1,25 @@
-import com.google.common.collect.ImmutableList;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
+import java.util.function.Predicate;
 
 public class did {
-   public static final did a = new did(ImmutableList.of("vanilla"), ImmutableList.of());
-   public static final Codec<did> b = RecordCodecBuilder.create(
-      $$0 -> $$0.group(Codec.STRING.listOf().fieldOf("Enabled").forGetter($$0x -> $$0x.c), Codec.STRING.listOf().fieldOf("Disabled").forGetter($$0x -> $$0x.d))
-            .apply($$0, did::new)
-   );
-   private final List<String> c;
-   private final List<String> d;
+   private final fei a;
+   private final fei b;
+   private final Predicate<dzz> c;
 
-   public did(List<String> $$0, List<String> $$1) {
-      this.c = ImmutableList.copyOf($$0);
-      this.d = ImmutableList.copyOf($$1);
+   public did(fei $$0, fei $$1, Predicate<dzz> $$2) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
    }
 
-   public List<String> a() {
+   public fei a() {
+      return this.b;
+   }
+
+   public fei b() {
+      return this.a;
+   }
+
+   public Predicate<dzz> c() {
       return this.c;
-   }
-
-   public List<String> b() {
-      return this.d;
    }
 }

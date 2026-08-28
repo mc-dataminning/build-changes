@@ -1,31 +1,41 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import java.util.function.Supplier;
+public class gka {
+   private final gop a;
+   private final gjr b;
+   private final gpn c;
+   private gka.a d = gka.a.a;
 
-public interface gka {
-   Codec<gka> a = bai.a(gka.a::values).dispatch(gka::a, gka.a::a);
+   public gka(gop $$0, gjr $$1, gpn $$2) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+   }
 
-   gka.a a();
-
-   public static enum a implements bai {
-      a("player", () -> gkb.a.b),
-      b("system", () -> gkb.b.b);
-
-      private final String c;
-      private final Supplier<MapCodec<? extends gka>> d;
-
-      private a(final String $$0, final Supplier<MapCodec<? extends gka>> $$1) {
-         this.c = $$0;
-         this.d = $$1;
+   public void a() {
+      switch (this.d) {
+         case b:
+            iu $$0 = this.a.dv();
+            boolean $$1 = this.b.e($$0.v());
+            if ($$1 || this.c.a($$0) || this.a.U_() || !this.a.bK()) {
+               this.d = gka.a.c;
+            }
+         case a:
+         case c:
       }
+   }
 
-      private MapCodec<? extends gka> a() {
-         return this.d.get();
-      }
+   public boolean b() {
+      return this.d == gka.a.c;
+   }
 
-      @Override
-      public String c() {
-         return this.c;
+   public void c() {
+      if (this.d == gka.a.a) {
+         this.d = gka.a.b;
       }
+   }
+
+   static enum a {
+      a,
+      b,
+      c;
    }
 }

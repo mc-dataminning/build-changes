@@ -1,26 +1,40 @@
-import java.util.Optional;
+import javax.annotation.Nullable;
 
-public record acx(fdw b, Optional<fdw> c, lv d, je<awk> e) implements zd<abs> {
-   public static final yu<wh, acx> a = yu.a(fdw.b, acx::b, fdw.b.a(ys::a), acx::e, lx.bk, acx::f, awk.d, acx::g, acx::new);
+public class acx implements zf<abu> {
+   public static final yw<vu, acx> a = zf.a(acx::a, acx::new);
+   private final int b;
+   private final byte c;
 
-   @Override
-   public zf<acx> a() {
-      return agl.E;
+   public acx(bwd $$0, byte $$1) {
+      this.b = $$0.ar();
+      this.c = $$1;
    }
 
-   public void a(abs $$0) {
+   private acx(vu $$0) {
+      this.b = $$0.readInt();
+      this.c = $$0.readByte();
+   }
+
+   private void a(vu $$0) {
+      $$0.q(this.b);
+      $$0.l(this.c);
+   }
+
+   @Override
+   public zh<acx> a() {
+      return agn.C;
+   }
+
+   public void a(abu $$0) {
       $$0.a(this);
    }
 
-   public Optional<fdw> e() {
+   @Nullable
+   public bwd a(div $$0) {
+      return $$0.a(this.b);
+   }
+
+   public byte b() {
       return this.c;
-   }
-
-   public lv f() {
-      return this.d;
-   }
-
-   public je<awk> g() {
-      return this.e;
    }
 }

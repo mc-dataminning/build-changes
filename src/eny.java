@@ -1,72 +1,39 @@
-import com.google.common.collect.Lists;
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
-import java.util.function.BiConsumer;
 
-public class eny extends eoe {
-   public static final MapCodec<eny> a = RecordCodecBuilder.mapCodec($$0 -> a($$0).apply($$0, eny::new));
+public class eny extends eod {
+   public static final MapCodec<eny> a = Codec.floatRange(0.0F, 1.0F).fieldOf("probability").xmap(eny::new, $$0 -> $$0.b);
+   private final float b;
 
-   public eny(int $$0, int $$1, int $$2) {
-      super($$0, $$1, $$2);
+   public eny(float $$0) {
+      this.b = $$0;
    }
 
    @Override
-   protected eof<?> a() {
-      return eof.e;
+   protected eoe<?> a() {
+      return eoe.e;
    }
 
    @Override
-   public List<emj.a> a(div $$0, BiConsumer<iu, dzo> $$1, azt $$2, int $$3, iu $$4, elt $$5) {
-      List<emj.a> $$6 = Lists.newArrayList();
-      iu $$7 = $$4.e();
-      a($$0, $$1, $$2, $$7, $$5);
-      a($$0, $$1, $$2, $$7.i(), $$5);
-      a($$0, $$1, $$2, $$7.g(), $$5);
-      a($$0, $$1, $$2, $$7.g().i(), $$5);
-      ja $$8 = ja.c.a.a($$2);
-      int $$9 = $$3 - $$2.a(4);
-      int $$10 = 2 - $$2.a(3);
-      int $$11 = $$4.u();
-      int $$12 = $$4.v();
-      int $$13 = $$4.w();
-      int $$14 = $$11;
-      int $$15 = $$13;
-      int $$16 = $$12 + $$3 - 1;
-
-      for (int $$17 = 0; $$17 < $$3; $$17++) {
-         if ($$17 >= $$9 && $$10 > 0) {
-            $$14 += $$8.j();
-            $$15 += $$8.l();
-            $$10--;
-         }
-
-         int $$18 = $$12 + $$17;
-         iu $$19 = new iu($$14, $$18, $$15);
-         if (ekf.c($$0, $$19)) {
-            this.b($$0, $$1, $$2, $$19, $$5);
-            this.b($$0, $$1, $$2, $$19.i(), $$5);
-            this.b($$0, $$1, $$2, $$19.g(), $$5);
-            this.b($$0, $$1, $$2, $$19.i().g(), $$5);
-         }
-      }
-
-      $$6.add(new emj.a(new iu($$14, $$16, $$15), 0, true));
-
-      for (int $$20 = -1; $$20 <= 2; $$20++) {
-         for (int $$21 = -1; $$21 <= 2; $$21++) {
-            if (($$20 < 0 || $$20 > 1 || $$21 < 0 || $$21 > 1) && $$2.a(3) <= 0) {
-               int $$22 = $$2.a(3) + 2;
-
-               for (int $$23 = 0; $$23 < $$22; $$23++) {
-                  this.b($$0, $$1, $$2, new iu($$11 + $$20, $$16 - $$23 - 1, $$13 + $$21), $$5);
+   public void a(eod.a $$0) {
+      azv $$1 = $$0.b();
+      if (!($$1.i() >= this.b)) {
+         List<iu> $$2 = $$0.c();
+         if (!$$2.isEmpty()) {
+            int $$3 = $$2.getFirst().v();
+            $$2.stream().filter($$1x -> $$1x.v() - $$3 <= 2).forEach($$2x -> {
+               for (ja $$3x : ja.c.a) {
+                  if ($$1.i() <= 0.25F) {
+                     ja $$4 = $$3x.g();
+                     iu $$5 = $$2x.b($$4.j(), 0, $$4.l());
+                     if ($$0.a($$5)) {
+                        $$0.a($$5, dmc.fY.m().b(dnh.c, Integer.valueOf($$1.a(3))).b(dnh.e, $$3x));
+                     }
+                  }
                }
-
-               $$6.add(new emj.a(new iu($$11 + $$20, $$16, $$13 + $$21), 0, false));
-            }
+            });
          }
       }
-
-      return $$6;
    }
 }

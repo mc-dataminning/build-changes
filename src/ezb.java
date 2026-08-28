@@ -1,18 +1,41 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
+import java.util.stream.Stream;
 
-public class ezb {
-   public static final Codec<ezd> a = mf.D.q().dispatch(ezd::a, eze::a);
-   public static final eze b = a("empty", eyy.a);
-   public static final eze c = a("item", eza.a);
-   public static final eze d = a("loot_table", ezg.a);
-   public static final eze e = a("dynamic", eyx.a);
-   public static final eze f = a("tag", ezi.a);
-   public static final eze g = a("alternatives", eyu.a);
-   public static final eze h = a("sequence", ezh.a);
-   public static final eze i = a("group", eyz.a);
+public record ezb<T>(alf<jr<T>> d, Codec<T> e, ezb.a<T> f) {
+   public static final ezb<fci> a = new ezb<>(mg.br, fci.e, e());
+   public static final ezb<fan> b = new ezb<>(mg.bq, fap.c, e());
+   public static final ezb<eze> c = new ezb<>(mg.bp, eze.d, f());
 
-   private static eze a(String $$0, MapCodec<? extends ezd> $$1) {
-      return jr.a(mf.D, ale.b($$0), new eze($$1));
+   public void a(ezf $$0, alf<T> $$1, T $$2) {
+      this.f.run($$0, $$1, $$2);
+   }
+
+   public static Stream<ezb<?>> a() {
+      return Stream.of(a, b, c);
+   }
+
+   private static <T extends eza> ezb.a<T> e() {
+      return ($$0, $$1, $$2) -> $$2.a($$0.a("{" + $$1.b() + "/" + $$1.a() + "}", $$1));
+   }
+
+   private static ezb.a<eze> f() {
+      return ($$0, $$1, $$2) -> $$2.a($$0.a($$2.a()).a("{" + $$1.b() + "/" + $$1.a() + "}", $$1));
+   }
+
+   public alf<jr<T>> b() {
+      return this.d;
+   }
+
+   public Codec<T> c() {
+      return this.e;
+   }
+
+   public ezb.a<T> d() {
+      return this.f;
+   }
+
+   @FunctionalInterface
+   public interface a<T> {
+      void run(ezf var1, alf<T> var2, T var3);
    }
 }

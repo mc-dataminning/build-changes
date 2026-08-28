@@ -35,11 +35,11 @@ public class jx extends jz {
       return new jx(a($$0.u()), a($$0.v()), a($$0.w()));
    }
 
-   public static jx a(dhw $$0, int $$1) {
+   public static jx a(dic $$0, int $$1) {
       return new jx($$0.h, $$1, $$0.i);
    }
 
-   public static jx a(edt $$0) {
+   public static jx a(eee $$0) {
       return a($$0.dv());
    }
 
@@ -51,7 +51,7 @@ public class jx extends jz {
       return new jx(b($$0), c($$0), d($$0));
    }
 
-   public static jx a(ebl $$0) {
+   public static jx a(ebw $$0) {
       return a($$0.f(), $$0.aq());
    }
 
@@ -64,7 +64,7 @@ public class jx extends jz {
    }
 
    public static int a(double $$0) {
-      return a(azk.a($$0));
+      return a(azm.a($$0));
    }
 
    public static int a(int $$0) {
@@ -72,7 +72,7 @@ public class jx extends jz {
    }
 
    public static int b(double $$0) {
-      return azk.a($$0) >> 4;
+      return azm.a($$0) >> 4;
    }
 
    public static int b(int $$0) {
@@ -183,7 +183,7 @@ public class jx extends jz {
    }
 
    public static long g(long $$0) {
-      return dhw.c(b($$0), d($$0));
+      return dic.c(b($$0), d($$0));
    }
 
    public iu j() {
@@ -195,8 +195,8 @@ public class jx extends jz {
       return this.j().b(8, 8, 8);
    }
 
-   public dhw r() {
-      return new dhw(this.a(), this.c());
+   public dic r() {
+      return new dic(this.a(), this.c());
    }
 
    public static long c(iu $$0) {
@@ -229,7 +229,7 @@ public class jx extends jz {
       return a($$2 - $$1, $$3 - $$1, $$4 - $$1, $$2 + $$1, $$3 + $$1, $$4 + $$1);
    }
 
-   public static Stream<jx> a(dhw $$0, int $$1, int $$2, int $$3) {
+   public static Stream<jx> a(dic $$0, int $$1, int $$2, int $$3) {
       int $$4 = $$0.h;
       int $$5 = $$0.i;
       return a($$4 - $$1, $$2, $$5 - $$1, $$4 + $$1, $$3, $$5 + $$1);

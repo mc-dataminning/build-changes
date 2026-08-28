@@ -1,53 +1,20 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class eky implements ekx {
-   public static final Codec<Double> a = Codec.doubleRange(0.0, 1.0);
-   public static final Codec<eky> b = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               efk.i.fieldOf("blocks").forGetter($$0x -> $$0x.c),
-               efm.a.fieldOf("layers").forGetter($$0x -> $$0x.d),
-               efl.a.fieldOf("crack").forGetter($$0x -> $$0x.e),
-               a.fieldOf("use_potential_placements_chance").orElse(0.35).forGetter($$0x -> $$0x.f),
-               a.fieldOf("use_alternate_layer0_chance").orElse(0.0).forGetter($$0x -> $$0x.g),
-               Codec.BOOL.fieldOf("placements_require_layer0_alternate").orElse(true).forGetter($$0x -> $$0x.h),
-               btd.b(1, 20).fieldOf("outer_wall_distance").orElse(btj.a(4, 5)).forGetter($$0x -> $$0x.i),
-               btd.b(1, 20).fieldOf("distribution_points").orElse(btj.a(3, 4)).forGetter($$0x -> $$0x.j),
-               btd.b(0, 10).fieldOf("point_offset").orElse(btj.a(1, 2)).forGetter($$0x -> $$0x.k),
-               Codec.INT.fieldOf("min_gen_offset").orElse(-16).forGetter($$0x -> $$0x.l),
-               Codec.INT.fieldOf("max_gen_offset").orElse(16).forGetter($$0x -> $$0x.n),
-               a.fieldOf("noise_multiplier").orElse(0.05).forGetter($$0x -> $$0x.o),
-               Codec.INT.fieldOf("invalid_blocks_threshold").forGetter($$0x -> $$0x.p)
-            )
+public class eky {
+   public static final Codec<eky> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(epx.b.fieldOf("feature").forGetter($$0x -> $$0x.b), Codec.floatRange(0.0F, 1.0F).fieldOf("chance").forGetter($$0x -> $$0x.c))
             .apply($$0, eky::new)
    );
-   public final efk c;
-   public final efm d;
-   public final efl e;
-   public final double f;
-   public final double g;
-   public final boolean h;
-   public final btd i;
-   public final btd j;
-   public final btd k;
-   public final int l;
-   public final int n;
-   public final double o;
-   public final int p;
+   public final je<epx> b;
+   public final float c;
 
-   public eky(efk $$0, efm $$1, efl $$2, double $$3, double $$4, boolean $$5, btd $$6, btd $$7, btd $$8, int $$9, int $$10, double $$11, int $$12) {
-      this.c = $$0;
-      this.d = $$1;
-      this.e = $$2;
-      this.f = $$3;
-      this.g = $$4;
-      this.h = $$5;
-      this.i = $$6;
-      this.j = $$7;
-      this.k = $$8;
-      this.l = $$9;
-      this.n = $$10;
-      this.o = $$11;
-      this.p = $$12;
+   public eky(je<epx> $$0, float $$1) {
+      this.b = $$0;
+      this.c = $$1;
+   }
+
+   public boolean a(dju $$0, ebx $$1, azv $$2, iu $$3) {
+      return this.b.a().a($$0, $$1, $$2, $$3);
    }
 }

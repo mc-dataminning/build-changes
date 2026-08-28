@@ -1,26 +1,13 @@
-import com.mojang.serialization.MapCodec;
+import com.mojang.datafixers.util.Either;
+import com.mojang.serialization.Codec;
 
-public class epa extends epo {
-   private static final epa c = new epa();
-   public static MapCodec<epa> a = MapCodec.unit(() -> c);
+public abstract class epa {
+   private static final Codec<Either<egs, epa>> a = Codec.either(egs.a, mf.L.q().dispatch(epa::a, epb::codec));
+   public static final Codec<epa> c = a.xmap(
+      $$0 -> (epa)$$0.map(eoz::a, $$0x -> $$0x), $$0 -> $$0.a() == epb.a ? Either.left(((eoz)$$0).b()) : Either.right($$0)
+   );
 
-   private epa() {
-   }
+   public abstract int a(azv var1, egv var2);
 
-   public static epa a() {
-      return c;
-   }
-
-   @Override
-   protected boolean a(epn $$0, azt $$1, iu $$2) {
-      epm $$3 = $$0.e()
-         .orElseThrow(() -> new IllegalStateException("Tried to biome check an unregistered feature, or a feature that should not restrict the biome"));
-      je<djs> $$4 = $$0.d().u($$2);
-      return $$0.f().a($$4).a($$3);
-   }
-
-   @Override
-   public epq<?> b() {
-      return epq.e;
-   }
+   public abstract epb<?> a();
 }

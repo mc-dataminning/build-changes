@@ -1,109 +1,121 @@
-public abstract class ctw extends bwa {
-   protected static final akh<Integer> e = akl.a(ctw.class, akj.b);
-   protected static final akh<Integer> f = akl.a(ctw.class, akj.b);
-   protected static final akh<Float> g = akl.a(ctw.class, akj.d);
+public class ctw extends ctl implements dxz {
+   private boolean c = true;
+   private boolean d = false;
 
-   public ctw(bwj<?> $$0, dip $$1) {
+   public ctw(bwm<? extends ctw> $$0, div $$1) {
       super($$0, $$1);
    }
 
    @Override
-   public boolean b(bup $$0) {
-      return true;
+   public dzz v() {
+      return dmc.hA.m();
    }
 
    @Override
-   public boolean a(aro $$0, bup $$1, float $$2) {
-      if (this.dQ()) {
-         return true;
-      } else if (this.d($$1)) {
-         return false;
-      } else {
-         boolean var10000;
-         label32: {
-            this.l(-this.J());
-            this.d(10);
-            this.bC();
-            this.b(this.H() + $$2 * 10.0F);
-            this.a(eeo.o, $$1.d());
-            if ($$1.d() instanceof cqs $$3 && $$3.gj().d) {
-               var10000 = true;
-               break label32;
-            }
+   public int x() {
+      return 1;
+   }
 
-            var10000 = false;
-         }
+   @Override
+   public int b() {
+      return 5;
+   }
 
-         boolean $$4 = var10000;
-         if (($$4 || !(this.H() > 40.0F)) && !this.e($$1)) {
-            if ($$4) {
-               this.at();
-            }
-         } else {
-            this.a($$0, $$1);
-         }
-
-         return true;
+   @Override
+   public void a(int $$0, int $$1, int $$2, boolean $$3) {
+      boolean $$4 = !$$3;
+      if ($$4 != this.B()) {
+         this.r($$4);
       }
    }
 
-   boolean e(bup $$0) {
+   public boolean B() {
+      return this.c;
+   }
+
+   public void r(boolean $$0) {
+      this.c = $$0;
+   }
+
+   @Override
+   public double C() {
+      return this.dA();
+   }
+
+   @Override
+   public double D() {
+      return this.dC() + 0.5;
+   }
+
+   @Override
+   public double E() {
+      return this.dG();
+   }
+
+   @Override
+   public boolean F() {
       return false;
    }
 
    @Override
-   public boolean a(dii $$0) {
-      return $$0.c() instanceof bxb && !$$0.a().O().c(dil.c);
+   public void h() {
+      this.d = false;
+      super.h();
+      this.K();
    }
 
-   public void a(aro $$0, cyo $$1) {
-      this.c($$0);
-      if ($$0.O().c(dil.i)) {
-         cys $$2 = new cys($$1);
-         $$2.b(kj.g, this.an());
-         this.a($$0, $$2);
+   @Override
+   protected double a(iu $$0, ebd $$1, double $$2) {
+      double $$3 = super.a($$0, $$1, $$2);
+      this.K();
+      return $$3;
+   }
+
+   private void K() {
+      if (!this.dV().C && this.bK() && this.B() && !this.d && this.G()) {
+         this.d = true;
+         this.e();
+      }
+   }
+
+   public boolean G() {
+      if (dya.a(this.dV(), this)) {
+         return true;
+      } else {
+         for (cnd $$1 : this.dV().a(cnd.class, this.cR().c(0.25, 0.0, 0.25), bwk.a)) {
+            if (dya.a(this, $$1)) {
+               return true;
+            }
+         }
+
+         return false;
       }
    }
 
    @Override
-   protected void a(akl.a $$0) {
-      $$0.a(e, 0);
-      $$0.a(f, 1);
-      $$0.a(g, 0.0F);
-   }
-
-   public void d(int $$0) {
-      this.al.a(e, $$0);
-   }
-
-   public void l(int $$0) {
-      this.al.a(f, $$0);
-   }
-
-   public void b(float $$0) {
-      this.al.a(g, $$0);
-   }
-
-   public float H() {
-      return this.al.a(g);
-   }
-
-   public int I() {
-      return this.al.a(e);
-   }
-
-   public int J() {
-      return this.al.a(f);
-   }
-
-   protected void a(aro $$0, bup $$1) {
-      this.a($$0, this.o());
+   protected cyu o() {
+      return czc.ow;
    }
 
    @Override
-   public int bX() {
-      return 10;
+   public cyy dI() {
+      return new cyy(czc.ow);
    }
 
-   protected abstract cyo o();
+   @Override
+   protected void b(tz $$0) {
+      super.b($$0);
+      $$0.a("Enabled", this.c);
+   }
+
+   @Override
+   protected void a(tz $$0) {
+      super.a($$0);
+      this.c = $$0.e("Enabled") ? $$0.q("Enabled") : true;
+   }
+
+   @Override
+   public cuq a(int $$0, cqx $$1) {
+      return new cvr($$0, $$1, this);
+   }
 }

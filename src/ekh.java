@@ -1,56 +1,44 @@
 import com.mojang.serialization.Codec;
-import java.util.Optional;
-import java.util.OptionalInt;
-import java.util.function.Predicate;
 
-public class ekh extends eit<elv> {
-   public ekh(Codec<elv> $$0) {
+public class ekh extends eje<elq> {
+   private static final int a = 7;
+
+   ekh(Codec<elq> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(eiv<elv> $$0) {
-      djo $$1 = $$0.b();
-      iu $$2 = $$0.e();
-      elv $$3 = $$0.f();
-      azt $$4 = $$0.d();
-      OptionalInt $$5 = a($$1, $$2, $$3);
-      if ($$5.isEmpty()) {
-         return false;
-      } else {
-         iu $$6 = $$2.h($$5.getAsInt());
-         jz $$7 = new jz($$3.c, $$3.c, $$3.c);
-         eqa $$8 = eqa.a($$6.b($$7), $$6.a($$7));
-         return iu.a($$8).filter($$2x -> $$4.i() < $$3.d).filter($$1x -> this.b($$1, $$1x)).mapToInt($$1x -> {
-            $$1.a($$1x, dlw.ll.m(), 2);
-            return 1;
-         }).sum() > 0;
-      }
-   }
+   public boolean a(ejg<elq> $$0) {
+      dju $$1 = $$0.b();
+      azv $$2 = $$0.d();
+      elq $$3 = $$0.f();
+      iu $$4 = $$0.e();
+      int $$5 = $$2.a($$3.c + 1);
+      iu.a $$6 = new iu.a();
 
-   private static OptionalInt a(djo $$0, iu $$1, elv $$2) {
-      Predicate<dzo> $$3 = $$0x -> $$0x.a(dlw.J);
-      Predicate<dzo> $$4 = $$0x -> !$$0x.a(dlw.J);
-      Optional<efd> $$5 = efd.a($$0, $$1, $$2.b, $$3, $$4);
-      return $$5.<OptionalInt>map(efd::c).orElseGet(OptionalInt::empty);
-   }
+      for (int $$7 = 0; $$7 < $$5; $$7++) {
+         this.a($$6, $$2, $$4, Math.min($$7, 7));
+         dzz $$8 = $$1.a_($$6);
 
-   private boolean b(djo $$0, iu $$1) {
-      if (!this.a($$0, $$1) && !this.a($$0, $$1.e())) {
-         for (ja $$2 : ja.c.a) {
-            if (this.a($$0, $$1.a($$2))) {
-               return false;
+         for (elq.a $$9 : $$3.b) {
+            if (ejz.a($$8, $$1::a_, $$2, $$3, $$9, $$6)) {
+               $$1.a($$6, $$9.c, 2);
+               break;
             }
          }
-
-         return true;
-      } else {
-         return false;
       }
+
+      return true;
    }
 
-   private boolean a(diq $$0, iu $$1) {
-      dzo $$2 = $$0.a_($$1);
-      return $$2.a(dlw.J) || $$2.l();
+   private void a(iu.a $$0, azv $$1, iu $$2, int $$3) {
+      int $$4 = this.a($$1, $$3);
+      int $$5 = this.a($$1, $$3);
+      int $$6 = this.a($$1, $$3);
+      $$0.a($$2, $$4, $$5, $$6);
+   }
+
+   private int a(azv $$0, int $$1) {
+      return Math.round(($$0.i() - $$0.i()) * (float)$$1);
    }
 }

@@ -8,7 +8,7 @@ public class cc extends dj<cc.a> {
       return cc.a.a;
    }
 
-   public void a(arp $$0, cys $$1) {
+   public void a(arr $$0, cyy $$1) {
       this.a($$0, $$1x -> $$1x.a($$1));
    }
 
@@ -21,7 +21,7 @@ public class cc extends dj<cc.a> {
          return ap.k.a(new cc.a(Optional.empty(), Optional.of($$0.b())));
       }
 
-      public boolean a(cys $$0) {
+      public boolean a(cyy $$0) {
          return !this.c.isPresent() || this.c.get().a($$0);
       }
 

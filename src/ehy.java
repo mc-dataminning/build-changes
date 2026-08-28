@@ -1,83 +1,61 @@
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class ehy extends eit<ele> {
-   public ehy(Codec<ele> $$0) {
-      super($$0);
+public class ehy {
+   public static final ehy a = new ehy(false, dmc.gW.m(), dmc.qq.m(), dmc.ex.m(), dmc.aX.m());
+   public static final Codec<ehy> b = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               Codec.BOOL.optionalFieldOf("debug_mode", false).forGetter(ehy::a),
+               dzz.a.optionalFieldOf("air_state", a.b()).forGetter(ehy::b),
+               dzz.a.optionalFieldOf("water_state", a.b()).forGetter(ehy::c),
+               dzz.a.optionalFieldOf("lava_state", a.b()).forGetter(ehy::d),
+               dzz.a.optionalFieldOf("barrier_state", a.b()).forGetter(ehy::e)
+            )
+            .apply($$0, ehy::new)
+   );
+   private final boolean c;
+   private final dzz d;
+   private final dzz e;
+   private final dzz f;
+   private final dzz g;
+
+   public static ehy a(boolean $$0, dzz $$1, dzz $$2, dzz $$3, dzz $$4) {
+      return new ehy($$0, $$1, $$2, $$3, $$4);
    }
 
-   @Override
-   public boolean a(eiv<ele> $$0) {
-      iu $$1 = $$0.e();
-      djo $$2 = $$0.b();
-      azt $$3 = $$0.d();
-      if ($$2.v($$1) && !$$2.v($$1.d())) {
-         iu.a $$4 = $$1.k();
-         iu.a $$5 = $$1.k();
-         boolean $$6 = true;
-         boolean $$7 = true;
-         boolean $$8 = true;
-         boolean $$9 = true;
-
-         while ($$2.v($$4)) {
-            if ($$2.t($$4)) {
-               return true;
-            }
-
-            $$2.a($$4, dlw.el.m(), 2);
-            $$6 = $$6 && this.b($$2, $$3, $$5.a($$4, ja.c));
-            $$7 = $$7 && this.b($$2, $$3, $$5.a($$4, ja.d));
-            $$8 = $$8 && this.b($$2, $$3, $$5.a($$4, ja.e));
-            $$9 = $$9 && this.b($$2, $$3, $$5.a($$4, ja.f));
-            $$4.c(ja.a);
-         }
-
-         $$4.c(ja.b);
-         this.a($$2, $$3, $$5.a($$4, ja.c));
-         this.a($$2, $$3, $$5.a($$4, ja.d));
-         this.a($$2, $$3, $$5.a($$4, ja.e));
-         this.a($$2, $$3, $$5.a($$4, ja.f));
-         $$4.c(ja.a);
-         iu.a $$10 = new iu.a();
-
-         for (int $$11 = -3; $$11 < 4; $$11++) {
-            for (int $$12 = -3; $$12 < 4; $$12++) {
-               int $$13 = azk.a($$11) * azk.a($$12);
-               if ($$3.a(10) < 10 - $$13) {
-                  $$10.g($$4.b($$11, 0, $$12));
-                  int $$14 = 3;
-
-                  while ($$2.v($$5.a($$10, ja.a))) {
-                     $$10.c(ja.a);
-                     if (--$$14 <= 0) {
-                        break;
-                     }
-                  }
-
-                  if (!$$2.v($$5.a($$10, ja.a))) {
-                     $$2.a($$10, dlw.el.m(), 2);
-                  }
-               }
-            }
-         }
-
-         return true;
-      } else {
-         return false;
-      }
+   public static ehy a(dzz $$0, dzz $$1, dzz $$2, dzz $$3) {
+      return new ehy(false, $$0, $$1, $$2, $$3);
    }
 
-   private void a(diq $$0, azt $$1, iu $$2) {
-      if ($$1.h()) {
-         $$0.a($$2, dlw.el.m(), 2);
-      }
+   public static ehy a(boolean $$0, dzz $$1) {
+      return new ehy($$0, $$1, a.c(), a.d(), a.e());
    }
 
-   private boolean b(diq $$0, azt $$1, iu $$2) {
-      if ($$1.a(10) != 0) {
-         $$0.a($$2, dlw.el.m(), 2);
-         return true;
-      } else {
-         return false;
-      }
+   private ehy(boolean $$0, dzz $$1, dzz $$2, dzz $$3, dzz $$4) {
+      this.c = $$0;
+      this.d = $$1;
+      this.e = $$2;
+      this.f = $$3;
+      this.g = $$4;
+   }
+
+   public boolean a() {
+      return this.c;
+   }
+
+   public dzz b() {
+      return this.d;
+   }
+
+   public dzz c() {
+      return this.e;
+   }
+
+   public dzz d() {
+      return this.f;
+   }
+
+   public dzz e() {
+      return this.g;
    }
 }

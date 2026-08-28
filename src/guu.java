@@ -1,27 +1,29 @@
-public class guu extends gwq<civ, hcp, ger> {
-   private static final ale a = ale.b("textures/entity/fish/cod.png");
+public class guu extends gxf<ckd, hbh, gee> {
+   private static final alg a = alg.b("textures/entity/allay/allay.png");
 
-   public guu(gvk.a $$0) {
-      super($$0, new ger($$0.a(gif.ab)), 0.3F);
+   public guu(gvz.a $$0) {
+      super($$0, new gee($$0.a(git.c)), 0.4F);
+      this.a(new haf<>(this));
    }
 
-   @Override
-   public ale b(hcp $$0) {
+   public alg a(hbh $$0) {
       return a;
    }
 
-   public hcp a() {
-      return new hcp();
+   public hbh a() {
+      return new hbh();
    }
 
-   @Override
-   protected void a(hcp $$0, fiq $$1, float $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      float $$4 = 4.3F * azk.a(0.6F * $$0.u);
-      $$1.a(a.d.rotationDegrees($$4));
-      if (!$$0.ak) {
-         $$1.a(0.1F, 0.1F, -0.1F);
-         $$1.a(a.f.rotationDegrees(90.0F));
-      }
+   public void a(ckd $$0, hbh $$1, float $$2) {
+      super.a($$0, $$1, $$2);
+      hbj.a($$0, $$1, this.h);
+      $$1.a = $$0.q();
+      $$1.b = $$0.t();
+      $$1.c = $$0.K($$2);
+      $$1.d = $$0.J($$2);
+   }
+
+   protected int a(ckd $$0, iu $$1) {
+      return 15;
    }
 }

@@ -1,82 +1,324 @@
+import com.google.common.annotations.VisibleForTesting;
+import com.google.common.collect.Lists;
+import com.google.common.collect.Sets;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import it.unimi.dsi.fastutil.objects.Object2ObjectArrayMap;
+import it.unimi.dsi.fastutil.objects.Object2IntMap;
+import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
+import it.unimi.dsi.fastutil.objects.ObjectArrayList;
+import it.unimi.dsi.fastutil.objects.ObjectIterator;
+import it.unimi.dsi.fastutil.objects.Object2IntMap.Entry;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
+import java.util.Optional;
+import java.util.Set;
+import javax.annotation.Nullable;
 
-public class dtc extends dkq {
-   public static final MapCodec<dtc> c = RecordCodecBuilder.mapCodec($$0 -> $$0.group(dtc.a.b.fieldOf("kind").forGetter(dkq::b), t()).apply($$0, dtc::new));
-   public static final int d = eau.a();
-   private static final int b = d + 1;
-   public static final eao e = eae.bd;
-   private static final feq f = dlu.b(8.0, 0.0, 8.0);
-   private static final feq g = dlu.b(10.0, 0.0, 8.0);
+public class dtc {
+   public static final int a = 24;
+   public static final int b = 1000;
+   public static final float c = 0.5F;
+   private static final int f = 32;
+   public static final int d = 11;
+   public static final int e = 1024;
+   final boolean g;
+   private final axr<dma> h;
+   private final int i;
+   private final int j;
+   private final int k;
+   private final int l;
+   private List<dtc.a> m = new ArrayList<>();
 
-   @Override
-   public MapCodec<? extends dtc> a() {
-      return c;
+   public dtc(boolean $$0, axr<dma> $$1, int $$2, int $$3, int $$4, int $$5) {
+      this.g = $$0;
+      this.h = $$1;
+      this.i = $$2;
+      this.j = $$3;
+      this.k = $$4;
+      this.l = $$5;
    }
 
-   protected dtc(dtc.a $$0, dzn.d $$1) {
-      super($$0, $$1);
-      this.l(this.m().b(e, Integer.valueOf(0)));
+   public static dtc a() {
+      return new dtc(false, axc.bV, 10, 4, 10, 5);
    }
 
-   @Override
-   protected feq a(dzo $$0, dhv $$1, iu $$2, feb $$3) {
-      return this.b() == dtc.b.h ? g : f;
+   public static dtc b() {
+      return new dtc(true, axc.bW, 50, 1, 5, 10);
    }
 
-   @Override
-   protected feq d_(dzo $$0) {
-      return fen.a();
+   public axr<dma> c() {
+      return this.h;
    }
 
-   @Override
-   public dzo a(dcl $$0) {
-      return super.a($$0).b(e, Integer.valueOf(eau.a($$0.i())));
+   public int d() {
+      return this.i;
    }
 
-   @Override
-   protected dzo a(dzo $$0, dsm $$1) {
-      return $$0.b(e, Integer.valueOf($$1.a($$0.c(e), b)));
+   public int e() {
+      return this.j;
    }
 
-   @Override
-   protected dzo a(dzo $$0, dqv $$1) {
-      return $$0.b(e, Integer.valueOf($$1.a($$0.c(e), b)));
+   public int f() {
+      return this.k;
    }
 
-   @Override
-   protected void a(dzp.a<dlu, dzo> $$0) {
-      super.a($$0);
-      $$0.a(e);
+   public int g() {
+      return this.l;
    }
 
-   public interface a extends bai {
-      Map<String, dtc.a> a = new Object2ObjectArrayMap();
-      Codec<dtc.a> b = Codec.stringResolver(bai::c, a::get);
+   public boolean h() {
+      return this.g;
    }
 
-   public static enum b implements dtc.a {
-      c("skeleton"),
-      d("wither_skeleton"),
-      e("player"),
-      f("zombie"),
-      g("creeper"),
-      h("piglin"),
-      i("dragon");
+   @VisibleForTesting
+   public List<dtc.a> i() {
+      return this.m;
+   }
 
-      private final String j;
+   public void j() {
+      this.m.clear();
+   }
 
-      private b(final String $$0) {
-         this.j = $$0;
-         a.put($$0, this);
+   public void a(tz $$0) {
+      this.m.clear();
+      $$0.<List>a("cursors", dtc.a.b.sizeLimitedListOf(32)).orElse(List.of()).forEach(this::a);
+   }
+
+   public void b(tz $$0) {
+      $$0.a("cursors", dtc.a.b.listOf(), this.m);
+   }
+
+   public void a(iu $$0, int $$1) {
+      while ($$1 > 0) {
+         int $$2 = Math.min($$1, 1000);
+         this.a(new dtc.a($$0, $$2));
+         $$1 -= $$2;
+      }
+   }
+
+   private void a(dtc.a $$0) {
+      if (this.m.size() < 32) {
+         this.m.add($$0);
+      }
+   }
+
+   public void a(diw $$0, iu $$1, azv $$2, boolean $$3) {
+      if (!this.m.isEmpty()) {
+         List<dtc.a> $$4 = new ArrayList<>();
+         Map<iu, dtc.a> $$5 = new HashMap<>();
+         Object2IntMap<iu> $$6 = new Object2IntOpenHashMap();
+
+         for (dtc.a $$7 : this.m) {
+            if (!$$7.a($$1)) {
+               $$7.a($$0, $$1, $$2, this, $$3);
+               if ($$7.e <= 0) {
+                  $$0.c(3006, $$7.a(), 0);
+               } else {
+                  iu $$8 = $$7.a();
+                  $$6.computeInt($$8, ($$1x, $$2x) -> ($$2x == null ? 0 : $$2x) + $$7.e);
+                  dtc.a $$9 = $$5.get($$8);
+                  if ($$9 == null) {
+                     $$5.put($$8, $$7);
+                     $$4.add($$7);
+                  } else if (!this.h() && $$7.e + $$9.e <= 1000) {
+                     $$9.a($$7);
+                  } else {
+                     $$4.add($$7);
+                     if ($$7.e < $$9.e) {
+                        $$5.put($$8, $$7);
+                     }
+                  }
+               }
+            }
+         }
+
+         ObjectIterator var16 = $$6.object2IntEntrySet().iterator();
+
+         while (var16.hasNext()) {
+            Entry<iu> $$10 = (Entry<iu>)var16.next();
+            iu $$11 = (iu)$$10.getKey();
+            int $$12 = $$10.getIntValue();
+            dtc.a $$13 = $$5.get($$11);
+            Collection<ja> $$14 = $$13 == null ? null : $$13.d();
+            if ($$12 > 0 && $$14 != null) {
+               int $$15 = (int)(Math.log1p((double)$$12) / 2.3F) + 1;
+               int $$16 = ($$15 << 6) + drf.a($$14);
+               $$0.c(3006, $$11, $$16);
+            }
+         }
+
+         this.m = $$4;
+      }
+   }
+
+   public static class a {
+      private static final ObjectArrayList<jz> c = af.a(
+         new ObjectArrayList(18),
+         $$0 -> iu.d(new iu(-1, -1, -1), new iu(1, 1, 1))
+               .filter($$0x -> ($$0x.u() == 0 || $$0x.v() == 0 || $$0x.w() == 0) && !$$0x.equals(iu.c))
+               .map(iu::j)
+               .forEach($$0::add)
+      );
+      public static final int a = 1;
+      private iu d;
+      int e;
+      private int f;
+      private int g;
+      @Nullable
+      private Set<ja> h;
+      private static final Codec<Set<ja>> i = ja.g.listOf().xmap($$0 -> Sets.newEnumSet($$0, ja.class), Lists::newArrayList);
+      public static final Codec<dtc.a> b = RecordCodecBuilder.create(
+         $$0 -> $$0.group(
+                  iu.a.fieldOf("pos").forGetter(dtc.a::a),
+                  Codec.intRange(0, 1000).fieldOf("charge").orElse(0).forGetter(dtc.a::b),
+                  Codec.intRange(0, 1).fieldOf("decay_delay").orElse(1).forGetter(dtc.a::c),
+                  Codec.intRange(0, Integer.MAX_VALUE).fieldOf("update_delay").orElse(0).forGetter($$0x -> $$0x.f),
+                  i.lenientOptionalFieldOf("facings").forGetter($$0x -> Optional.ofNullable($$0x.d()))
+               )
+               .apply($$0, dtc.a::new)
+      );
+
+      private a(iu $$0, int $$1, int $$2, int $$3, Optional<Set<ja>> $$4) {
+         this.d = $$0;
+         this.e = $$1;
+         this.g = $$2;
+         this.f = $$3;
+         this.h = $$4.orElse(null);
       }
 
-      @Override
-      public String c() {
-         return this.j;
+      public a(iu $$0, int $$1) {
+         this($$0, $$1, 1, 0, Optional.empty());
+      }
+
+      public iu a() {
+         return this.d;
+      }
+
+      boolean a(iu $$0) {
+         return this.d.l($$0) > 1024;
+      }
+
+      public int b() {
+         return this.e;
+      }
+
+      public int c() {
+         return this.g;
+      }
+
+      @Nullable
+      public Set<ja> d() {
+         return this.h;
+      }
+
+      private boolean a(diw $$0, iu $$1, boolean $$2) {
+         if (this.e <= 0) {
+            return false;
+         } else if ($$2) {
+            return true;
+         } else {
+            return $$0 instanceof arq $$3 ? $$3.n($$1) : false;
+         }
+      }
+
+      public void a(diw $$0, iu $$1, azv $$2, dtc $$3, boolean $$4) {
+         if (this.a($$0, $$1, $$3.g)) {
+            if (this.f > 0) {
+               this.f--;
+            } else {
+               dzz $$5 = $$0.a_(this.d);
+               dsx $$6 = a($$5);
+               if ($$4 && $$6.a($$0, this.d, $$5, this.h, $$3.h())) {
+                  if ($$6.d()) {
+                     $$5 = $$0.a_(this.d);
+                     $$6 = a($$5);
+                  }
+
+                  $$0.a(null, this.d, awn.wG, awo.e, 1.0F, 1.0F);
+               }
+
+               this.e = $$6.a(this, $$0, $$1, $$2, $$3, $$4);
+               if (this.e <= 0) {
+                  $$6.a($$0, $$5, this.d, $$2);
+               } else {
+                  iu $$7 = a($$0, this.d, $$2);
+                  if ($$7 != null) {
+                     $$6.a($$0, $$5, this.d, $$2);
+                     this.d = $$7.j();
+                     if ($$3.h() && !this.d.a(new jz($$1.u(), this.d.v(), $$1.w()), 15.0)) {
+                        this.e = 0;
+                        return;
+                     }
+
+                     $$5 = $$0.a_($$7);
+                  }
+
+                  if ($$5.b() instanceof dsx) {
+                     this.h = drf.o($$5);
+                  }
+
+                  this.g = $$6.j_(this.g);
+                  this.f = $$6.b();
+               }
+            }
+         }
+      }
+
+      void a(dtc.a $$0) {
+         this.e = this.e + $$0.e;
+         $$0.e = 0;
+         this.f = Math.min(this.f, $$0.f);
+      }
+
+      private static dsx a(dzz $$0) {
+         return $$0.b() instanceof dsx $$1 ? $$1 : dsx.u_;
+      }
+
+      private static List<jz> a(azv $$0) {
+         return af.a(c, $$0);
+      }
+
+      @Nullable
+      private static iu a(diw $$0, iu $$1, azv $$2) {
+         iu.a $$3 = $$1.k();
+         iu.a $$4 = $$1.k();
+
+         for (jz $$5 : a($$2)) {
+            $$4.a($$1, $$5);
+            dzz $$6 = $$0.a_($$4);
+            if ($$6.b() instanceof dsx && a($$0, $$1, $$4)) {
+               $$3.g($$4);
+               if (dtd.a($$0, $$6, $$4)) {
+                  break;
+               }
+            }
+         }
+
+         return $$3.equals($$1) ? null : $$3;
+      }
+
+      private static boolean a(diw $$0, iu $$1, iu $$2) {
+         if ($$1.k($$2) == 1) {
+            return true;
+         } else {
+            iu $$3 = $$2.b($$1);
+            ja $$4 = ja.a(ja.a.a, $$3.u() < 0 ? ja.b.b : ja.b.a);
+            ja $$5 = ja.a(ja.a.b, $$3.v() < 0 ? ja.b.b : ja.b.a);
+            ja $$6 = ja.a(ja.a.c, $$3.w() < 0 ? ja.b.b : ja.b.a);
+            if ($$3.u() == 0) {
+               return a($$0, $$1, $$5) || a($$0, $$1, $$6);
+            } else {
+               return $$3.v() == 0 ? a($$0, $$1, $$4) || a($$0, $$1, $$6) : a($$0, $$1, $$4) || a($$0, $$1, $$5);
+            }
+         }
+      }
+
+      private static boolean a(diw $$0, iu $$1, ja $$2) {
+         iu $$3 = $$1.a($$2);
+         return !$$0.a_($$3).c($$0, $$3, $$2.g());
       }
    }
 }

@@ -2,21 +2,22 @@ import java.io.DataInput;
 import java.io.DataOutput;
 import java.io.IOException;
 
-public class uc extends un {
-   private static final int b = 12;
-   public static final uw<uc> a = new uw.a<uc>() {
-      public uc a(DataInput $$0, ug $$1) throws IOException {
+public class uc extends up {
+   private static final int c = 12;
+   public static final uc a = new uc(0.0F);
+   public static final uy<uc> b = new uy.a<uc>() {
+      public uc a(DataInput $$0, ui $$1) throws IOException {
          return uc.a(d($$0, $$1));
       }
 
       @Override
-      public ur.b a(DataInput $$0, ur $$1, ug $$2) throws IOException {
+      public ut.b a(DataInput $$0, ut $$1, ui $$2) throws IOException {
          return $$1.a(d($$0, $$2));
       }
 
-      private static int d(DataInput $$0, ug $$1) throws IOException {
+      private static float d(DataInput $$0, ui $$1) throws IOException {
          $$1.b(12L);
-         return $$0.readInt();
+         return $$0.readFloat();
       }
 
       @Override
@@ -26,12 +27,12 @@ public class uc extends un {
 
       @Override
       public String a() {
-         return "INT";
+         return "FLOAT";
       }
 
       @Override
       public String b() {
-         return "TAG_Int";
+         return "TAG_Float";
       }
 
       @Override
@@ -39,19 +40,19 @@ public class uc extends un {
          return true;
       }
    };
-   private final int c;
+   private final float w;
 
-   uc(int $$0) {
-      this.c = $$0;
+   private uc(float $$0) {
+      this.w = $$0;
    }
 
-   public static uc a(int $$0) {
-      return $$0 >= -128 && $$0 <= 1024 ? uc.a.a[$$0 - -128] : new uc($$0);
+   public static uc a(float $$0) {
+      return $$0 == 0.0F ? a : new uc($$0);
    }
 
    @Override
    public void a(DataOutput $$0) throws IOException {
-      $$0.writeInt(this.c);
+      $$0.writeFloat(this.w);
    }
 
    @Override
@@ -61,12 +62,12 @@ public class uc extends un {
 
    @Override
    public byte b() {
-      return 3;
+      return 5;
    }
 
    @Override
-   public uw<uc> c() {
-      return a;
+   public uy<uc> c() {
+      return b;
    }
 
    public uc e() {
@@ -75,71 +76,56 @@ public class uc extends un {
 
    @Override
    public boolean equals(Object $$0) {
-      return this == $$0 ? true : $$0 instanceof uc && this.c == ((uc)$$0).c;
+      return this == $$0 ? true : $$0 instanceof uc && this.w == ((uc)$$0).w;
    }
 
    @Override
    public int hashCode() {
-      return this.c;
+      return Float.floatToIntBits(this.w);
    }
 
    @Override
-   public void a(uy $$0) {
+   public void a(va $$0) {
       $$0.a(this);
    }
 
    @Override
    public long f() {
-      return (long)this.c;
+      return (long)this.w;
    }
 
    @Override
    public int g() {
-      return this.c;
+      return azm.d(this.w);
    }
 
    @Override
    public short h() {
-      return (short)(this.c & 65535);
+      return (short)(azm.d(this.w) & 65535);
    }
 
    @Override
    public byte i() {
-      return (byte)(this.c & 0xFF);
+      return (byte)(azm.d(this.w) & 0xFF);
    }
 
    @Override
    public double j() {
-      return (double)this.c;
+      return (double)this.w;
    }
 
    @Override
    public float k() {
-      return (float)this.c;
+      return this.w;
    }
 
    @Override
    public Number l() {
-      return this.c;
+      return this.w;
    }
 
    @Override
-   public ur.b a(ur $$0) {
-      return $$0.a(this.c);
-   }
-
-   static class a {
-      private static final int b = 1024;
-      private static final int c = -128;
-      static final uc[] a = new uc[1153];
-
-      private a() {
-      }
-
-      static {
-         for (int $$0 = 0; $$0 < a.length; $$0++) {
-            a[$$0] = new uc(-128 + $$0);
-         }
-      }
+   public ut.b a(ut $$0) {
+      return $$0.a(this.w);
    }
 }

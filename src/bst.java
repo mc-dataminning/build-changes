@@ -2,44 +2,19 @@ import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.Executor;
 import java.util.function.Consumer;
 
-public interface bst<R extends Runnable> extends AutoCloseable {
-   String v_();
-
-   void a_(R var1);
-
-   @Override
-   default void close() {
+public class bst extends bsp<bsv.c> {
+   public bst(int $$0, Executor $$1, String $$2) {
+      super(new bsv.a($$0), $$1, $$2);
+      brx.a.a(this);
    }
 
-   R f(Runnable var1);
-
-   default <Source> CompletableFuture<Source> a(Consumer<CompletableFuture<Source>> $$0) {
-      CompletableFuture<Source> $$1 = new CompletableFuture<>();
-      this.a_(this.f(() -> $$0.accept($$1)));
-      return $$1;
+   public bsv.c b(Runnable $$0) {
+      return new bsv.c(0, $$0);
    }
 
-   static bst<Runnable> a(final String $$0, final Executor $$1) {
-      return new bst<Runnable>() {
-         @Override
-         public String v_() {
-            return $$0;
-         }
-
-         @Override
-         public void a_(Runnable $$0x) {
-            $$1.execute($$0);
-         }
-
-         @Override
-         public Runnable f(Runnable $$0x) {
-            return $$0;
-         }
-
-         @Override
-         public String toString() {
-            return $$0;
-         }
-      };
+   public <Source> CompletableFuture<Source> a(int $$0, Consumer<CompletableFuture<Source>> $$1) {
+      CompletableFuture<Source> $$2 = new CompletableFuture<>();
+      this.a_(new bsv.c($$0, () -> $$1.accept($$2)));
+      return $$2;
    }
 }

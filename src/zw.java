@@ -1,11 +1,31 @@
-public interface zw extends abp {
-   void a(zz var1);
+import java.util.Map;
 
-   void a(aaa var1);
+public class zw implements zf<zl> {
+   public static final yw<vu, zw> a = zf.a(zw::a, zw::new);
+   private final Map<alf<? extends jr<?>>, axt.a> b;
 
-   void a(zy var1);
+   public zw(Map<alf<? extends jr<?>>, axt.a> $$0) {
+      this.b = $$0;
+   }
 
-   void a(aab var1);
+   private zw(vu $$0) {
+      this.b = $$0.a(vu::r, axt.a::b);
+   }
 
-   void a(zx var1);
+   private void a(vu $$0) {
+      $$0.a(this.b, vu::b, ($$0x, $$1) -> $$1.a($$0x));
+   }
+
+   @Override
+   public zh<zw> a() {
+      return zx.k;
+   }
+
+   public void a(zl $$0) {
+      $$0.a(this);
+   }
+
+   public Map<alf<? extends jr<?>>, axt.a> b() {
+      return this.b;
+   }
 }

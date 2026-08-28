@@ -1,13 +1,38 @@
-import com.google.common.collect.ImmutableMap;
-import java.util.Map;
+import com.mojang.datafixers.DSL;
+import com.mojang.datafixers.DataFix;
+import com.mojang.datafixers.TypeRewriteRule;
+import com.mojang.datafixers.schemas.Schema;
+import com.mojang.serialization.Dynamic;
 
-public class bir {
-   public static final Map<String, String> a = ImmutableMap.builder()
-      .put("minecraft:acacia_bark", "minecraft:acacia_wood")
-      .put("minecraft:birch_bark", "minecraft:birch_wood")
-      .put("minecraft:dark_oak_bark", "minecraft:dark_oak_wood")
-      .put("minecraft:jungle_bark", "minecraft:jungle_wood")
-      .put("minecraft:oak_bark", "minecraft:oak_wood")
-      .put("minecraft:spruce_bark", "minecraft:spruce_wood")
-      .build();
+public class bir extends DataFix {
+   public bir(Schema $$0) {
+      super($$0, false);
+   }
+
+   protected TypeRewriteRule makeRule() {
+      return this.fixTypeEverywhereTyped(
+         "RaidRenamesDataFix", this.getInputSchema().getType(biw.l), $$0 -> $$0.update(DSL.remainderFinder(), $$0x -> $$0x.update("data", bir::a))
+      );
+   }
+
+   private static Dynamic<?> a(Dynamic<?> $$0) {
+      return $$0.renameAndFixField("Raids", "raids", $$0x -> $$0x.createList($$0x.asStream().map(bir::b)))
+         .renameField("Tick", "tick")
+         .renameField("NextAvailableID", "next_id");
+   }
+
+   private static Dynamic<?> b(Dynamic<?> $$0) {
+      return bbd.a($$0, "CX", "CY", "CZ", "center")
+         .renameField("Id", "id")
+         .renameField("Started", "started")
+         .renameField("Active", "active")
+         .renameField("TicksActive", "ticks_active")
+         .renameField("BadOmenLevel", "raid_omen_level")
+         .renameField("GroupsSpawned", "groups_spawned")
+         .renameField("PreRaidTicks", "cooldown_ticks")
+         .renameField("PostRaidTicks", "post_raid_ticks")
+         .renameField("TotalHealth", "total_health")
+         .renameField("NumGroups", "group_count")
+         .renameField("Status", "status");
+   }
 }

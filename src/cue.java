@@ -1,8 +1,11 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+import java.util.Set;
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface cue {
+public interface cue {
+   Set<alf<? extends jr<? extends cue>>> bU = Set.of(mg.K, mg.i, mg.B, mg.V, mg.ae, mg.W);
+
+   cuh k();
+
+   default boolean a(cuh $$0) {
+      return this.k().a($$0);
+   }
 }

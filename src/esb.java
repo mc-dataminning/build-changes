@@ -1,53 +1,90 @@
-public class esb {
-   public static class a extends eqm {
-      public a(iu $$0) {
-         super(eqz.aa, 0, new eqa($$0));
+import com.mojang.datafixers.util.Either;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
+import java.util.Optional;
+import java.util.function.Function;
+import java.util.stream.Collectors;
+import javax.annotation.Nullable;
+
+public abstract class esb {
+   public static final Codec<esb> f = mf.ag.q().dispatch("element_type", esb::a, esc::codec);
+   private static final je<eut> a = je.a(new eut(List.of()));
+   @Nullable
+   private volatile esd.a b;
+
+   protected static <E extends esb> RecordCodecBuilder<E, esd.a> e() {
+      return esd.a.c.fieldOf("projection").forGetter(esb::f);
+   }
+
+   protected esb(esd.a $$0) {
+      this.b = $$0;
+   }
+
+   public abstract jz a(euw var1, dst var2);
+
+   public abstract List<euv.a> a(euw var1, iu var2, dst var3, azv var4);
+
+   public abstract eql a(euw var1, iu var2, dst var3);
+
+   public abstract boolean a(euw var1, dju var2, djr var3, ebx var4, iu var5, iu var6, dst var7, eql var8, azv var9, euf var10, boolean var11);
+
+   public abstract esc<?> a();
+
+   public void a(diw $$0, euv.d $$1, iu $$2, dst $$3, azv $$4, eql $$5) {
+   }
+
+   public esb a(esd.a $$0) {
+      this.b = $$0;
+      return this;
+   }
+
+   public esd.a f() {
+      esd.a $$0 = this.b;
+      if ($$0 == null) {
+         throw new IllegalStateException();
+      } else {
+         return $$0;
       }
+   }
 
-      public a(tx $$0) {
-         super(eqz.aa, $$0);
-      }
+   public int g() {
+      return 1;
+   }
 
-      @Override
-      protected void a(eqy $$0, tx $$1) {
-      }
+   public static Function<esd.a, eru> h() {
+      return $$0 -> eru.b;
+   }
 
-      @Override
-      public void a(djo $$0, djl $$1, ebm $$2, azt $$3, eqa $$4, dhw $$5, iu $$6) {
-         int $$7 = $$0.a(efn.a.c, this.f.h(), this.f.j());
-         iu.a $$8 = new iu.a(this.f.h(), $$7, this.f.j());
+   public static Function<esd.a, ery> a(String $$0) {
+      return $$1 -> new ery(Either.left(alg.a($$0)), a, $$1, Optional.empty());
+   }
 
-         while ($$8.v() > $$0.G_()) {
-            dzo $$9 = $$0.a_($$8);
-            dzo $$10 = $$0.a_($$8.e());
-            if ($$10 == dlw.bc.m() || $$10 == dlw.b.m() || $$10 == dlw.g.m() || $$10 == dlw.c.m() || $$10 == dlw.e.m()) {
-               dzo $$11 = !$$9.l() && !this.b($$9) ? $$9 : dlw.L.m();
+   public static Function<esd.a, ery> a(String $$0, je<eut> $$1) {
+      return $$2 -> new ery(Either.left(alg.a($$0)), $$1, $$2, Optional.empty());
+   }
 
-               for (ja $$12 : ja.values()) {
-                  iu $$13 = $$8.a($$12);
-                  dzo $$14 = $$0.a_($$13);
-                  if ($$14.l() || this.b($$14)) {
-                     iu $$15 = $$13.e();
-                     dzo $$16 = $$0.a_($$15);
-                     if (($$16.l() || this.b($$16)) && $$12 != ja.b) {
-                        $$0.a($$13, $$10, 3);
-                     } else {
-                        $$0.a($$13, $$11, 3);
-                     }
-                  }
-               }
+   public static Function<esd.a, esa> b(String $$0) {
+      return $$1 -> new esa(Either.left(alg.a($$0)), a, $$1, Optional.empty());
+   }
 
-               this.f = new eqa($$8);
-               this.a($$0, $$4, $$3, $$8, eyj.F, null);
-               return;
-            }
+   public static Function<esd.a, esa> b(String $$0, je<eut> $$1) {
+      return $$2 -> new esa(Either.left(alg.a($$0)), $$1, $$2, Optional.empty());
+   }
 
-            $$8.e(0, -1, 0);
-         }
-      }
+   public static Function<esd.a, esa> a(String $$0, euf $$1) {
+      return $$2 -> new esa(Either.left(alg.a($$0)), a, $$2, Optional.of($$1));
+   }
 
-      private boolean b(dzo $$0) {
-         return $$0 == dlw.J.m() || $$0 == dlw.K.m();
-      }
+   public static Function<esd.a, esa> a(String $$0, je<eut> $$1, euf $$2) {
+      return $$3 -> new esa(Either.left(alg.a($$0)), $$1, $$3, Optional.of($$2));
+   }
+
+   public static Function<esd.a, erv> a(je<epx> $$0) {
+      return $$1 -> new erv($$0, $$1);
+   }
+
+   public static Function<esd.a, erz> b(List<Function<esd.a, ? extends esb>> $$0) {
+      return $$1 -> new erz($$0.stream().map($$1x -> (esb)$$1x.apply($$1)).collect(Collectors.toList()), $$1);
    }
 }

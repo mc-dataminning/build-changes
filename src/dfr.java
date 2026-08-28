@@ -1,54 +1,142 @@
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import com.mojang.serialization.Codec;
+import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
+import it.unimi.dsi.fastutil.objects.ObjectIterator;
+import it.unimi.dsi.fastutil.objects.Object2IntMap.Entry;
+import java.util.Collections;
 import java.util.Optional;
+import java.util.Set;
+import java.util.function.Consumer;
+import java.util.function.Predicate;
+import javax.annotation.Nullable;
 
-public record dfr(ji<bvc> d, dfm e, dfm f, dfm g, dfm h) implements dfw {
-   public static final MapCodec<dfr> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(
-               jt.a(mg.W).fieldOf("to_apply").forGetter(dfr::b),
-               dfm.b.fieldOf("min_duration").forGetter(dfr::c),
-               dfm.b.fieldOf("max_duration").forGetter(dfr::d),
-               dfm.b.fieldOf("min_amplifier").forGetter(dfr::e),
-               dfm.b.fieldOf("max_amplifier").forGetter(dfr::f)
-            )
-            .apply($$0, dfr::new)
-   );
+public class dfr implements dcd {
+   public static final dfr a = new dfr(new Object2IntOpenHashMap());
+   private static final Codec<Integer> d = Codec.intRange(1, 255);
+   public static final Codec<dfr> b = Codec.unboundedMap(dfl.c, d).xmap($$0 -> new dfr(new Object2IntOpenHashMap($$0)), $$0 -> $$0.e);
+   public static final yw<wj, dfr> c = yw.a(yu.a(Object2IntOpenHashMap::new, dfl.d, yu.h), $$0 -> $$0.e, dfr::new);
+   final Object2IntOpenHashMap<je<dfl>> e;
 
-   @Override
-   public void a(aro $$0, int $$1, dfe $$2, bwa $$3, fdw $$4) {
-      if ($$3 instanceof bwz $$5) {
-         azt $$6 = $$5.dY();
-         Optional<je<bvc>> $$7 = this.d.a($$6);
-         if ($$7.isPresent()) {
-            int $$8 = Math.round(azk.b($$6, this.e.a($$1), this.f.a($$1)) * 20.0F);
-            int $$9 = Math.max(0, Math.round(azk.b($$6, this.g.a($$1), this.h.a($$1))));
-            $$5.a(new bve($$7.get(), $$8, $$9));
+   dfr(Object2IntOpenHashMap<je<dfl>> $$0) {
+      this.e = $$0;
+      ObjectIterator var2 = $$0.object2IntEntrySet().iterator();
+
+      while (var2.hasNext()) {
+         Entry<je<dfl>> $$1 = (Entry<je<dfl>>)var2.next();
+         int $$2 = $$1.getIntValue();
+         if ($$2 < 0 || $$2 > 255) {
+            throw new IllegalArgumentException("Enchantment " + $$1.getKey() + " has invalid level " + $$2);
          }
       }
    }
 
+   public int a(je<dfl> $$0) {
+      return this.e.getInt($$0);
+   }
+
    @Override
-   public MapCodec<dfr> a() {
-      return a;
+   public void a(cyu.b $$0, Consumer<wy> $$1, dan $$2, ke $$3) {
+      jg.a $$4 = $$0.a();
+      ji<dfl> $$5 = a($$4, mg.aQ, axe.a);
+
+      for (je<dfl> $$6 : $$5) {
+         int $$7 = this.e.getInt($$6);
+         if ($$7 > 0) {
+            $$1.accept(dfl.a($$6, $$7));
+         }
+      }
+
+      ObjectIterator var10 = this.e.object2IntEntrySet().iterator();
+
+      while (var10.hasNext()) {
+         Entry<je<dfl>> $$8 = (Entry<je<dfl>>)var10.next();
+         je<dfl> $$9 = (je<dfl>)$$8.getKey();
+         if (!$$5.a($$9)) {
+            $$1.accept(dfl.a((je<dfl>)$$8.getKey(), $$8.getIntValue()));
+         }
+      }
    }
 
-   public ji<bvc> b() {
-      return this.d;
+   private static <T> ji<T> a(@Nullable jg.a $$0, alf<jr<T>> $$1, axr<T> $$2) {
+      if ($$0 != null) {
+         Optional<ji.c<T>> $$3 = $$0.e($$1).a($$2);
+         if ($$3.isPresent()) {
+            return $$3.get();
+         }
+      }
+
+      return ji.a();
    }
 
-   public dfm c() {
-      return this.e;
+   public Set<je<dfl>> a() {
+      return Collections.unmodifiableSet(this.e.keySet());
    }
 
-   public dfm d() {
-      return this.f;
+   public Set<Entry<je<dfl>>> b() {
+      return Collections.unmodifiableSet(this.e.object2IntEntrySet());
    }
 
-   public dfm e() {
-      return this.g;
+   public int c() {
+      return this.e.size();
    }
 
-   public dfm f() {
-      return this.h;
+   public boolean d() {
+      return this.e.isEmpty();
+   }
+
+   @Override
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else {
+         return $$0 instanceof dfr $$1 ? this.e.equals($$1.e) : false;
+      }
+   }
+
+   @Override
+   public int hashCode() {
+      return this.e.hashCode();
+   }
+
+   @Override
+   public String toString() {
+      return "ItemEnchantments{enchantments=" + this.e + "}";
+   }
+
+   public static class a {
+      private final Object2IntOpenHashMap<je<dfl>> a = new Object2IntOpenHashMap();
+
+      public a(dfr $$0) {
+         this.a.putAll($$0.e);
+      }
+
+      public void a(je<dfl> $$0, int $$1) {
+         if ($$1 <= 0) {
+            this.a.removeInt($$0);
+         } else {
+            this.a.put($$0, Math.min($$1, 255));
+         }
+      }
+
+      public void b(je<dfl> $$0, int $$1) {
+         if ($$1 > 0) {
+            this.a.merge($$0, Math.min($$1, 255), Integer::max);
+         }
+      }
+
+      public void a(Predicate<je<dfl>> $$0) {
+         this.a.keySet().removeIf($$0);
+      }
+
+      public int a(je<dfl> $$0) {
+         return this.a.getOrDefault($$0, 0);
+      }
+
+      public Set<je<dfl>> a() {
+         return this.a.keySet();
+      }
+
+      public dfr b() {
+         return new dfr(this.a);
+      }
    }
 }

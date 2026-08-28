@@ -1,40 +1,22 @@
-import com.google.common.collect.ImmutableMap;
+import com.mojang.datafixers.kinds.App;
+import java.util.function.Function;
 
-public class cby extends byq<cqe> {
-   public cby() {
-      super(ImmutableMap.of());
-   }
+public class cby {
+   private static final int a = 36;
 
-   protected boolean a(aro $$0, cqe $$1, long $$2) {
-      return c($$1) || b($$1);
-   }
+   public static byu<bxc> a() {
+      return ccg.a(
+         (Function<ccg.b<bxc>, ? extends App<ccg.c<bxc>, ccj<bxc>>>)($$0 -> $$0.group($$0.a(cge.y), $$0.a(cge.z), $$0.a(cge.B))
+               .apply($$0, ($$1, $$2, $$3) -> ($$4, $$5, $$6) -> {
+                     boolean $$7 = $$0.a($$1).isPresent() || $$0.a($$3).isPresent() || $$0.<bxc>a($$2).filter($$1xx -> $$1xx.g($$5) <= 36.0).isPresent();
+                     if (!$$7) {
+                        $$1.b();
+                        $$2.b();
+                        $$5.eb().a($$4.af(), $$4.ae());
+                     }
 
-   protected void b(aro $$0, cqe $$1, long $$2) {
-      if (c($$1) || b($$1)) {
-         bxz<?> $$3 = $$1.eb();
-         if (!$$3.c(csl.g)) {
-            $$3.b(cgb.u);
-            $$3.b(cgb.n);
-            $$3.b(cgb.o);
-            $$3.b(cgb.s);
-            $$3.b(cgb.r);
-         }
-
-         $$3.a(csl.g);
-      }
-   }
-
-   protected void c(aro $$0, cqe $$1, long $$2) {
-      if ($$2 % 100L == 0L) {
-         $$1.a($$0, $$2, 3);
-      }
-   }
-
-   public static boolean b(bwz $$0) {
-      return $$0.eb().a(cgb.B);
-   }
-
-   public static boolean c(bwz $$0) {
-      return $$0.eb().a(cgb.y);
+                     return true;
+                  }))
+      );
    }
 }

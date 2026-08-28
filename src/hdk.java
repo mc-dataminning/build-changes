@@ -1,5 +1,7 @@
-public class hdk extends hcg {
-   public boolean b;
-   public boolean c;
-   public boolean d;
+public class hdk extends hdf {
+   public cjh.a a;
+
+   public hdk() {
+      this.a = cjh.a.a;
+   }
 }

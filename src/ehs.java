@@ -1,42 +1,19 @@
-import com.google.common.collect.ImmutableSet;
-import com.mojang.serialization.Codec;
-import java.util.function.Function;
-import org.apache.commons.lang3.mutable.MutableBoolean;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class ehs extends ehq {
-   public ehs(Codec<ehp> $$0) {
-      super($$0);
-      this.h = ImmutableSet.of(evw.e, evw.c);
-   }
+record ehs(jz e) implements ehf {
+   public static MapCodec<ehs> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(jz.g.optionalFieldOf("offset", jz.i).forGetter(ehs::g)).apply($$0, ehs::new));
 
    @Override
-   protected int a() {
-      return 10;
+   public ehg<?> a() {
+      return ehg.m;
    }
 
-   @Override
-   protected float a(azt $$0) {
-      return ($$0.i() * 2.0F + $$0.i()) * 2.0F;
+   public boolean a(dju $$0, iu $$1) {
+      return $$0.a(null, fez.b().a($$1));
    }
 
-   @Override
-   protected double b() {
-      return 5.0;
-   }
-
-   protected boolean a(eho $$0, ehp $$1, ebl $$2, Function<iu, je<djs>> $$3, ebk $$4, iu.a $$5, iu.a $$6, eez $$7, MutableBoolean $$8) {
-      if (this.a($$1, $$2.a_($$5))) {
-         dzo $$9;
-         if ($$5.v() <= $$0.a() + 31) {
-            $$9 = g.g();
-         } else {
-            $$9 = e;
-         }
-
-         $$2.a($$5, $$9);
-         return true;
-      } else {
-         return false;
-      }
+   public jz g() {
+      return this.e;
    }
 }

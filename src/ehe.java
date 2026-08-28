@@ -1,21 +1,25 @@
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
 
-@Deprecated
-public class ehe extends ehf {
-   public static final MapCodec<ehe> a = RecordCodecBuilder.mapCodec($$0 -> a($$0).apply($$0, ehe::new));
+class ehe extends ehh {
+   public static final MapCodec<ehe> a = a(ehe::new);
 
-   public ehe(jz $$0) {
+   public ehe(List<ehf> $$0) {
       super($$0);
    }
 
-   @Override
-   protected boolean a(dzo $$0) {
-      return $$0.e();
+   public boolean a(dju $$0, iu $$1) {
+      for (ehf $$2 : this.e) {
+         if ($$2.test($$0, $$1)) {
+            return true;
+         }
+      }
+
+      return false;
    }
 
    @Override
-   public egv<?> a() {
-      return egv.e;
+   public ehg<?> a() {
+      return ehg.i;
    }
 }

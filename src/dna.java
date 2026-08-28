@@ -1,96 +1,119 @@
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Map;
+import java.util.Optional;
+import java.util.Map.Entry;
+import java.util.stream.Collectors;
+import javax.annotation.Nullable;
 
-public class dna extends drm {
-   public static final MapCodec<dna> a = b(dna::new);
+public class dna extends dti {
+   public static final MapCodec<dna> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(ebn.a.fieldOf("wood_type").forGetter(dti::d), t()).apply($$0, dna::new));
+   public static final eaz b = eap.bd;
+   public static final eaq c = eap.a;
+   private static final ffc e = dma.b(10.0, 0.0, 16.0);
+   private static final Map<Integer, ffc> f = fez.c(dma.a(14.0, 2.0, 0.0, 10.0))
+      .entrySet()
+      .stream()
+      .collect(Collectors.toMap($$0 -> ebf.a($$0.getKey()), Entry::getValue));
 
    @Override
    public MapCodec<dna> a() {
       return a;
    }
 
-   protected dna(dzn.d $$0) {
-      super(10.0F, $$0);
-      this.l(
-         this.B
-            .b()
-            .b(b, Boolean.valueOf(false))
-            .b(c, Boolean.valueOf(false))
-            .b(d, Boolean.valueOf(false))
-            .b(e, Boolean.valueOf(false))
-            .b(f, Boolean.valueOf(false))
-            .b(g, Boolean.valueOf(false))
-      );
+   public dna(ebn $$0, dzy.d $$1) {
+      super($$0, $$1.a($$0.e()));
+      this.l(this.B.b().b(b, Integer.valueOf(0)).b(c, Boolean.valueOf(false)).b(d, Boolean.valueOf(false)));
    }
 
    @Override
-   public dzo a(dcl $$0) {
-      return a($$0.q(), $$0.a(), this.m());
-   }
-
-   public static dzo a(dhv $$0, iu $$1, dzo $$2) {
-      dzo $$3 = $$0.a_($$1.e());
-      dzo $$4 = $$0.a_($$1.d());
-      dzo $$5 = $$0.a_($$1.f());
-      dzo $$6 = $$0.a_($$1.i());
-      dzo $$7 = $$0.a_($$1.g());
-      dzo $$8 = $$0.a_($$1.h());
-      dlu $$9 = $$2.b();
-      return $$2.c(g, Boolean.valueOf($$3.a($$9) || $$3.a(dlw.kX) || $$3.a(dlw.fU)))
-         .c(f, Boolean.valueOf($$4.a($$9) || $$4.a(dlw.kX)))
-         .c(b, Boolean.valueOf($$5.a($$9) || $$5.a(dlw.kX)))
-         .c(c, Boolean.valueOf($$6.a($$9) || $$6.a(dlw.kX)))
-         .c(d, Boolean.valueOf($$7.a($$9) || $$7.a(dlw.kX)))
-         .c(e, Boolean.valueOf($$8.a($$9) || $$8.a(dlw.kX)));
-   }
-
-   @Override
-   protected dzo a(dzo $$0, dis $$1, dje $$2, iu $$3, ja $$4, iu $$5, dzo $$6, azt $$7) {
-      if (!$$0.a($$1, $$3)) {
-         $$2.a($$3, this, 1);
-         return super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
-      } else {
-         boolean $$8 = $$6.a(this) || $$6.a(dlw.kX) || $$4 == ja.a && $$6.a(dlw.fU);
-         return $$0.b(h.get($$4), Boolean.valueOf($$8));
+   protected bub a(cyy $$0, dzz $$1, div $$2, iu $$3, cqy $$4, bua $$5, fee $$6) {
+      if ($$2.c_($$3) instanceof dyl $$7 && this.a($$4, $$6, $$7, $$0)) {
+         return bub.e;
       }
+
+      return super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6);
+   }
+
+   private boolean a(cqy $$0, fee $$1, dyl $$2, cyy $$3) {
+      return !$$2.a($$2.a($$0), $$0) && $$3.h() instanceof cyn && $$1.c().equals(ja.a);
    }
 
    @Override
-   protected void a(dzo $$0, aro $$1, iu $$2, azt $$3) {
-      if (!$$0.a($$1, $$2)) {
-         $$1.b($$2, true);
-      }
+   protected boolean a(dzz $$0, diy $$1, iu $$2) {
+      return $$1.a_($$2.d()).a($$1, $$2.d(), ja.a, duj.b);
    }
 
    @Override
-   protected boolean a(dzo $$0, dis $$1, iu $$2) {
-      dzo $$3 = $$1.a_($$2.e());
-      boolean $$4 = !$$1.a_($$2.d()).l() && !$$3.l();
-
-      for (ja $$5 : ja.c.a) {
-         iu $$6 = $$2.a($$5);
-         dzo $$7 = $$1.a_($$6);
-         if ($$7.a(this)) {
-            if ($$4) {
-               return false;
+   public dzz a(dcr $$0) {
+      div $$1 = $$0.q();
+      ewg $$2 = $$1.b_($$0.a());
+      iu $$3 = $$0.a().d();
+      dzz $$4 = $$1.a_($$3);
+      boolean $$5 = $$4.a(axc.aD);
+      ja $$6 = ja.a((double)$$0.i());
+      boolean $$7 = !dma.a($$4.g($$1, $$3), ja.a) || $$0.h();
+      if ($$5 && !$$0.h()) {
+         if ($$4.b(dvn.b)) {
+            ja $$8 = $$4.c(dvn.b);
+            if ($$8.o().a($$6)) {
+               $$7 = false;
             }
-
-            dzo $$8 = $$1.a_($$6.e());
-            if ($$8.a(this) || $$8.a(dlw.fU)) {
-               return true;
+         } else if ($$4.b(b)) {
+            Optional<ja> $$9 = ebf.a($$4.c(b));
+            if ($$9.isPresent() && $$9.get().o().a($$6)) {
+               $$7 = false;
             }
          }
       }
 
-      return $$3.a(this) || $$3.a(dlw.fU);
+      int $$10 = !$$7 ? ebf.a($$6.g()) : ebf.a($$0.i() + 180.0F);
+      return this.m().b(c, Boolean.valueOf($$7)).b(b, Integer.valueOf($$10)).b(d, Boolean.valueOf($$2.a() == ewh.c));
    }
 
    @Override
-   protected void a(dzp.a<dlu, dzo> $$0) {
-      $$0.a(b, c, d, e, f, g);
+   protected ffc a(dzz $$0, dib $$1, iu $$2, fen $$3) {
+      return f.getOrDefault($$0.c(b), e);
    }
 
    @Override
-   protected boolean a(dzo $$0, ewk $$1) {
-      return false;
+   protected ffc b_(dzz $$0, dib $$1, iu $$2) {
+      return this.a($$0, $$1, $$2, fen.a());
+   }
+
+   @Override
+   protected dzz a(dzz $$0, diy $$1, djk $$2, iu $$3, ja $$4, iu $$5, dzz $$6, azv $$7) {
+      return $$4 == ja.b && !this.a($$0, $$1, $$3) ? dmc.a.m() : super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
+   }
+
+   @Override
+   public float h(dzz $$0) {
+      return ebf.b($$0.c(b));
+   }
+
+   @Override
+   protected dzz a(dzz $$0, dst $$1) {
+      return $$0.b(b, Integer.valueOf($$1.a($$0.c(b), 16)));
+   }
+
+   @Override
+   protected dzz a(dzz $$0, drc $$1) {
+      return $$0.b(b, Integer.valueOf($$1.a($$0.c(b), 16)));
+   }
+
+   @Override
+   protected void a(eaa.a<dma, dzz> $$0) {
+      $$0.a(b, c, d);
+   }
+
+   @Override
+   public dwx a(iu $$0, dzz $$1) {
+      return new dxy($$0, $$1);
+   }
+
+   @Nullable
+   @Override
+   public <T extends dwx> dwy<T> a(div $$0, dzz $$1, dwz<T> $$2) {
+      return a($$2, dwz.i, dyl::a);
    }
 }

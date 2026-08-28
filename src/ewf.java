@@ -1,145 +1,103 @@
-import java.util.Arrays;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
-public class ewf {
-   private ewh[] a = new ewh[128];
-   private int b;
+public abstract class ewf {
+   public static final jk<ewg> c = new jk<>();
+   protected final eaa<ewf, ewg> d;
+   private ewg a;
+   private final je.c<ewf> b = mf.c.f(this);
 
-   public ewh a(ewh $$0) {
-      if ($$0.d >= 0) {
-         throw new IllegalStateException("OW KNOWS!");
+   protected ewf() {
+      eaa.a<ewf, ewg> $$0 = new eaa.a<>(this);
+      this.a($$0);
+      this.d = $$0.a(ewf::g, ewg::new);
+      this.f(this.d.b());
+   }
+
+   protected void a(eaa.a<ewf, ewg> $$0) {
+   }
+
+   public eaa<ewf, ewg> f() {
+      return this.d;
+   }
+
+   protected final void f(ewg $$0) {
+      this.a = $$0;
+   }
+
+   public final ewg g() {
+      return this.a;
+   }
+
+   public abstract cyu a();
+
+   protected void a(div $$0, iu $$1, ewg $$2, azv $$3) {
+   }
+
+   protected void b(arq $$0, iu $$1, dzz $$2, ewg $$3) {
+   }
+
+   protected void a(arq $$0, iu $$1, ewg $$2, azv $$3) {
+   }
+
+   @Nullable
+   protected lv h() {
+      return null;
+   }
+
+   protected abstract boolean a(ewg var1, dib var2, iu var3, ewf var4, ja var5);
+
+   protected abstract fei a(dib var1, iu var2, ewg var3);
+
+   public abstract int a(diy var1);
+
+   protected boolean i() {
+      return false;
+   }
+
+   protected boolean b() {
+      return false;
+   }
+
+   protected abstract float c();
+
+   public abstract float a(ewg var1, dib var2, iu var3);
+
+   public abstract float a(ewg var1);
+
+   protected abstract dzz b(ewg var1);
+
+   public abstract boolean c(ewg var1);
+
+   public abstract int d(ewg var1);
+
+   public boolean a(ewf $$0) {
+      return $$0 == this;
+   }
+
+   @Deprecated
+   public boolean a(axr<ewf> $$0) {
+      return this.b.a($$0);
+   }
+
+   public abstract ffc b(ewg var1, dib var2, iu var3);
+
+   @Nullable
+   public fed c(ewg $$0, dib $$1, iu $$2) {
+      if (this.b()) {
+         return null;
       } else {
-         if (this.b == this.a.length) {
-            ewh[] $$1 = new ewh[this.b << 1];
-            System.arraycopy(this.a, 0, $$1, 0, this.b);
-            this.a = $$1;
-         }
-
-         this.a[this.b] = $$0;
-         $$0.d = this.b;
-         this.a(this.b++);
-         return $$0;
+         float $$3 = $$0.a($$1, $$2);
+         return new fed((double)$$2.u(), (double)$$2.v(), (double)$$2.w(), (double)$$2.u() + 1.0, (double)((float)$$2.v() + $$3), (double)$$2.w() + 1.0);
       }
    }
 
-   public void a() {
-      this.b = 0;
+   public Optional<awm> j() {
+      return Optional.empty();
    }
 
-   public ewh b() {
-      return this.a[0];
-   }
-
-   public ewh c() {
-      ewh $$0 = this.a[0];
-      this.a[0] = this.a[--this.b];
-      this.a[this.b] = null;
-      if (this.b > 0) {
-         this.b(0);
-      }
-
-      $$0.d = -1;
-      return $$0;
-   }
-
-   public void b(ewh $$0) {
-      this.a[$$0.d] = this.a[--this.b];
-      this.a[this.b] = null;
-      if (this.b > $$0.d) {
-         if (this.a[$$0.d].g < $$0.g) {
-            this.a($$0.d);
-         } else {
-            this.b($$0.d);
-         }
-      }
-
-      $$0.d = -1;
-   }
-
-   public void a(ewh $$0, float $$1) {
-      float $$2 = $$0.g;
-      $$0.g = $$1;
-      if ($$1 < $$2) {
-         this.a($$0.d);
-      } else {
-         this.b($$0.d);
-      }
-   }
-
-   public int d() {
+   @Deprecated
+   public je.c<ewf> k() {
       return this.b;
-   }
-
-   private void a(int $$0) {
-      ewh $$1 = this.a[$$0];
-      float $$2 = $$1.g;
-
-      while ($$0 > 0) {
-         int $$3 = $$0 - 1 >> 1;
-         ewh $$4 = this.a[$$3];
-         if (!($$2 < $$4.g)) {
-            break;
-         }
-
-         this.a[$$0] = $$4;
-         $$4.d = $$0;
-         $$0 = $$3;
-      }
-
-      this.a[$$0] = $$1;
-      $$1.d = $$0;
-   }
-
-   private void b(int $$0) {
-      ewh $$1 = this.a[$$0];
-      float $$2 = $$1.g;
-
-      while (true) {
-         int $$3 = 1 + ($$0 << 1);
-         int $$4 = $$3 + 1;
-         if ($$3 >= this.b) {
-            break;
-         }
-
-         ewh $$5 = this.a[$$3];
-         float $$6 = $$5.g;
-         ewh $$7;
-         float $$8;
-         if ($$4 >= this.b) {
-            $$7 = null;
-            $$8 = Float.POSITIVE_INFINITY;
-         } else {
-            $$7 = this.a[$$4];
-            $$8 = $$7.g;
-         }
-
-         if ($$6 < $$8) {
-            if (!($$6 < $$2)) {
-               break;
-            }
-
-            this.a[$$0] = $$5;
-            $$5.d = $$0;
-            $$0 = $$3;
-         } else {
-            if (!($$8 < $$2)) {
-               break;
-            }
-
-            this.a[$$0] = $$7;
-            $$7.d = $$0;
-            $$0 = $$4;
-         }
-      }
-
-      this.a[$$0] = $$1;
-      $$1.d = $$0;
-   }
-
-   public boolean e() {
-      return this.b == 0;
-   }
-
-   public ewh[] f() {
-      return Arrays.copyOf(this.a, this.b);
    }
 }

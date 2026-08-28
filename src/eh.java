@@ -1,7 +1,7 @@
 public interface eh {
    eh a = new eh() {
       @Override
-      public void a(ww $$0) {
+      public void a(wy $$0) {
       }
 
       @Override
@@ -20,7 +20,7 @@ public interface eh {
       }
    };
 
-   void a(ww var1);
+   void a(wy var1);
 
    boolean t_();
 

@@ -1,115 +1,98 @@
-import com.mojang.logging.LogUtils;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import com.google.common.annotations.VisibleForTesting;
 
-public class dyh extends dwn {
-   private static final Logger a = LogUtils.getLogger();
-   private eaz b;
-   private String c = "";
-   private boolean d;
-   private boolean e;
+public class dyh extends dwx implements efb.b<dyh.a> {
+   private final dyh.a a;
 
-   public dyh(iu $$0, dzo $$1) {
-      super(dwp.T, $$0, $$1);
-      this.b = $$1.c(dui.b);
+   public dyh(iu $$0, dzz $$1) {
+      super(dwz.L, $$0, $$1);
+      this.a = new dyh.a($$1, new eev($$0));
+   }
+
+   public static void a(div $$0, iu $$1, dzz $$2, dyh $$3) {
+      $$3.a.d().a($$0, $$1, $$0.C_(), true);
    }
 
    @Override
-   public void b(tx $$0, jg.a $$1) {
-      $$0.a("mode", this.b.c());
-      $$0.a("message", this.c);
-      $$0.a("powered", this.d);
+   protected void a(tz $$0, jg.a $$1) {
+      super.a($$0, $$1);
+      this.a.b.a($$0);
    }
 
    @Override
-   public void a(tx $$0, jg.a $$1) {
-      String $$2 = $$0.l("mode");
-      eaz $$3 = eaz.e.a($$2);
-      this.b = $$3 != null ? $$3 : eaz.c;
-      this.c = $$0.l("message");
-      this.d = $$0.q("powered");
+   protected void b(tz $$0, jg.a $$1) {
+      this.a.b.b($$0);
+      super.b($$0, $$1);
    }
 
-   private void u() {
-      if (this.n != null) {
-         iu $$0 = this.aw_();
-         dzo $$1 = this.n.a_($$0);
-         if ($$1.a(dlw.pE)) {
-            this.n.a($$0, $$1.b(dui.b, this.b), 2);
+   public dyh.a a() {
+      return this.a;
+   }
+
+   public static class a implements efb {
+      public static final int a = 8;
+      final dtc b;
+      private final dzz c;
+      private final efd d;
+
+      public a(dzz $$0, efd $$1) {
+         this.c = $$0;
+         this.d = $$1;
+         this.b = dtc.a();
+      }
+
+      @Override
+      public efd a() {
+         return this.d;
+      }
+
+      @Override
+      public int b() {
+         return 8;
+      }
+
+      @Override
+      public efb.a c() {
+         return efb.a.b;
+      }
+
+      @Override
+      public boolean a(arq $$0, je<eez> $$1, eez.a $$2, fei $$3) {
+         if ($$1.a(eez.p) && $$2.a() instanceof bxc $$4) {
+            if (!$$4.eK()) {
+               bus $$5 = $$4.eH();
+               int $$6 = $$4.a($$0, x.a($$5, bus::d));
+               if ($$4.en() && $$6 > 0) {
+                  this.b.a(iu.a((jo)$$3.a(ja.b, 0.5)), $$6);
+                  this.a($$0, $$4);
+               }
+
+               $$4.eJ();
+               this.d.a($$0).ifPresent($$1x -> this.a($$0, iu.a((jo)$$1x), this.c, $$0.C_()));
+            }
+
+            return true;
+         } else {
+            return false;
          }
       }
-   }
 
-   @Nullable
-   public aby a() {
-      return aby.a(this);
-   }
-
-   @Override
-   public tx a(jg.a $$0) {
-      return this.e($$0);
-   }
-
-   public boolean c() {
-      return this.d;
-   }
-
-   public void a(boolean $$0) {
-      this.d = $$0;
-   }
-
-   public eaz d() {
-      return this.b;
-   }
-
-   public void a(eaz $$0) {
-      this.b = $$0;
-      this.u();
-   }
-
-   private dlu v() {
-      return this.m().b();
-   }
-
-   public void f() {
-      this.e = false;
-      if (this.b == eaz.a && this.n != null) {
-         this.a(false);
-         this.n.a(this.aw_(), this.v());
+      @VisibleForTesting
+      public dtc d() {
+         return this.b;
       }
-   }
 
-   public void j() {
-      if (this.b == eaz.a && this.n != null) {
-         this.a(true);
-         iu $$0 = this.aw_();
-         this.n.a($$0, this.v());
-         this.n.U().b($$0, this.v());
-         this.k();
-      } else {
-         if (this.b == eaz.b) {
-            this.k();
+      private void a(arq $$0, iu $$1, dzz $$2, azv $$3) {
+         $$0.a($$1, $$2.b(dsz.b, Boolean.valueOf(true)), 3);
+         $$0.a($$1, $$2.b(), 8);
+         $$0.a(lx.K, (double)$$1.u() + 0.5, (double)$$1.v() + 1.15, (double)$$1.w() + 0.5, 2, 0.2, 0.0, 0.2, 0.0);
+         $$0.a(null, $$1, awn.wN, awo.e, 2.0F, 0.6F + $$3.i() * 0.4F);
+      }
+
+      private void a(div $$0, bxc $$1) {
+         if ($$1.eq() instanceof arr $$3) {
+            bus $$4 = $$1.eH() == null ? $$0.al().a((cqy)$$3) : $$1.eH();
+            ap.Z.a($$3, $$1, $$4);
          }
-
-         this.e = true;
       }
-   }
-
-   public void k() {
-      if (!this.c.isBlank()) {
-         a.info("Test {} (at {}): {}", new Object[]{this.b.c(), this.aw_(), this.c});
-      }
-   }
-
-   public boolean s() {
-      return this.e;
-   }
-
-   public String t() {
-      return this.c;
-   }
-
-   public void a(String $$0) {
-      this.c = $$0;
    }
 }

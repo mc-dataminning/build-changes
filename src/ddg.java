@@ -1,66 +1,35 @@
-public class ddg extends dcz {
-   public ddg(dcw $$0) {
+public class ddg extends ddf {
+   public ddg(ddc $$0) {
       super($$0);
    }
 
-   public boolean a(dcx $$0, dip $$1) {
-      if ($$0.e() < 2) {
-         return false;
-      } else {
-         boolean $$2 = false;
-         boolean $$3 = false;
-
-         for (int $$4 = 0; $$4 < $$0.a(); $$4++) {
-            cys $$5 = $$0.a($$4);
-            if (!$$5.f()) {
-               if ($$5.c(kj.M)) {
-                  if ($$3) {
-                     return false;
-                  }
-
-                  $$3 = true;
-               } else {
-                  if (!$$5.a(cyw.vm)) {
-                     return false;
-                  }
-
-                  $$2 = true;
-               }
-            }
-         }
-
-         return $$3 && $$2;
-      }
+   private static cyy c(ddd $$0) {
+      return $$0.a(1, 0);
    }
 
-   public cys a(dcx $$0, jg.a $$1) {
-      int $$2 = 0;
-      cys $$3 = cys.k;
+   private static cyy d(ddd $$0) {
+      return $$0.a(0, 1);
+   }
 
-      for (int $$4 = 0; $$4 < $$0.a(); $$4++) {
-         cys $$5 = $$0.a($$4);
-         if (!$$5.f()) {
-            if ($$5.c(kj.M)) {
-               if (!$$3.f()) {
-                  return cys.k;
-               }
+   private static cyy e(ddd $$0) {
+      return $$0.a(2, 1);
+   }
 
-               $$3 = $$5;
-            } else {
-               if (!$$5.a(cyw.vm)) {
-                  return cys.k;
-               }
+   private static cyy f(ddd $$0) {
+      return $$0.a(1, 2);
+   }
 
-               $$2++;
-            }
-         }
-      }
+   public boolean a(ddd $$0, div $$1) {
+      return $$0.f() == 3 && $$0.g() == 3 && $$0.e() == 4 ? c($$0).a(axk.bF) && d($$0).a(axk.bF) && e($$0).a(axk.bF) && f($$0).a(axk.bF) : false;
+   }
 
-      return !$$3.f() && $$2 >= 1 ? $$3.c($$2 + 1) : cys.k;
+   public cyy a(ddd $$0, jg.a $$1) {
+      dyf $$2 = new dyf(c($$0).h(), d($$0).h(), e($$0).h(), f($$0).h());
+      return dxp.a($$2);
    }
 
    @Override
-   public ddt<ddg> a() {
-      return ddt.e;
+   public ddz<ddg> a() {
+      return ddz.v;
    }
 }

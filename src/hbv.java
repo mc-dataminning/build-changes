@@ -1,8 +1,4 @@
-public class hbv extends hcp {
-   public boolean d;
-   public boolean e;
-   public boolean f;
-   public float g;
-   public float h;
-   public float i;
+public class hbv extends hdf {
+   public float a;
+   public float b;
 }

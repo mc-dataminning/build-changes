@@ -1,90 +1,36 @@
-import com.google.common.collect.Lists;
-import java.util.List;
-import java.util.Objects;
-import java.util.function.UnaryOperator;
+import com.google.common.base.Preconditions;
+import com.mojang.serialization.Codec;
+import java.nio.ByteBuffer;
+import java.util.Arrays;
+import java.util.Base64;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
-public class xk implements ww {
-   private final wx c;
-   private final List<ww> d;
-   private xt e;
-   private ayw f = ayw.a;
-   @Nullable
-   private ts g;
+public record xk(byte[] c) {
+   public static final Codec<xk> a = ayu.r.xmap(xk::new, xk::b);
+   public static final int b = 256;
 
-   xk(wx $$0, List<ww> $$1, xt $$2) {
-      this.c = $$0;
-      this.d = $$1;
-      this.e = $$2;
+   public xk(byte[] c) {
+      Preconditions.checkState(c.length == 256, "Invalid message signature size");
+      this.c = c;
    }
 
-   public static xk a(wx $$0) {
-      return new xk($$0, Lists.newArrayList(), xt.a);
+   public static xk a(vu $$0) {
+      byte[] $$1 = new byte[256];
+      $$0.b($$1);
+      return new xk($$1);
    }
 
-   @Override
-   public wx b() {
-      return this.c;
+   public static void a(vu $$0, xk $$1) {
+      $$0.c($$1.c);
    }
 
-   @Override
-   public List<ww> c() {
-      return this.d;
+   public boolean a(bab $$0, baa $$1) {
+      return $$0.validate($$1, this.c);
    }
 
-   public xk b(xt $$0) {
-      this.e = $$0;
-      return this;
-   }
-
-   @Override
-   public xt a() {
-      return this.e;
-   }
-
-   public xk f(String $$0) {
-      return $$0.isEmpty() ? this : this.b(ww.b($$0));
-   }
-
-   public xk b(ww $$0) {
-      this.d.add($$0);
-      return this;
-   }
-
-   public xk a(UnaryOperator<xt> $$0) {
-      this.b($$0.apply(this.a()));
-      return this;
-   }
-
-   public xk c(xt $$0) {
-      this.b($$0.a(this.a()));
-      return this;
-   }
-
-   public xk a(n... $$0) {
-      this.b(this.a().a($$0));
-      return this;
-   }
-
-   public xk a(n $$0) {
-      this.b(this.a().b($$0));
-      return this;
-   }
-
-   public xk b(int $$0) {
-      this.b(this.a().a($$0));
-      return this;
-   }
-
-   @Override
-   public ayw g() {
-      ts $$0 = ts.a();
-      if (this.g != $$0) {
-         this.f = $$0.a(this);
-         this.g = $$0;
-      }
-
-      return this.f;
+   public ByteBuffer a() {
+      return ByteBuffer.wrap(this.c);
    }
 
    @Override
@@ -92,39 +38,67 @@ public class xk implements ww {
       if (this == $$0) {
          return true;
       } else {
-         return !($$0 instanceof xk $$1) ? false : this.c.equals($$1.c) && this.e.equals($$1.e) && this.d.equals($$1.d);
+         if ($$0 instanceof xk $$1 && Arrays.equals(this.c, $$1.c)) {
+            return true;
+         }
+
+         return false;
       }
    }
 
    @Override
    public int hashCode() {
-      return Objects.hash(this.c, this.e, this.d);
+      return Arrays.hashCode(this.c);
    }
 
    @Override
    public String toString() {
-      StringBuilder $$0 = new StringBuilder(this.c.toString());
-      boolean $$1 = !this.e.h();
-      boolean $$2 = !this.d.isEmpty();
-      if ($$1 || $$2) {
-         $$0.append('[');
-         if ($$1) {
-            $$0.append("style=");
-            $$0.append(this.e);
-         }
+      return Base64.getEncoder().encodeToString(this.c);
+   }
 
-         if ($$1 && $$2) {
-            $$0.append(", ");
-         }
+   public xk.a a(xl $$0) {
+      int $$1 = $$0.a(this);
+      return $$1 != -1 ? new xk.a($$1) : new xk.a(this);
+   }
 
-         if ($$2) {
-            $$0.append("siblings=");
-            $$0.append(this.d);
-         }
+   public byte[] b() {
+      return this.c;
+   }
 
-         $$0.append(']');
+   public static record a(int b, @Nullable xk c) {
+      public static final int a = -1;
+
+      public a(xk $$0) {
+         this(-1, $$0);
       }
 
-      return $$0.toString();
+      public a(int $$0) {
+         this($$0, null);
+      }
+
+      public static xk.a a(vu $$0) {
+         int $$1 = $$0.l() - 1;
+         return $$1 == -1 ? new xk.a(xk.a($$0)) : new xk.a($$1);
+      }
+
+      public static void a(vu $$0, xk.a $$1) {
+         $$0.c($$1.a() + 1);
+         if ($$1.b() != null) {
+            xk.a($$0, $$1.b());
+         }
+      }
+
+      public Optional<xk> a(xl $$0) {
+         return this.c != null ? Optional.of(this.c) : Optional.ofNullable($$0.a(this.b));
+      }
+
+      public int a() {
+         return this.b;
+      }
+
+      @Nullable
+      public xk b() {
+         return this.c;
+      }
    }
 }

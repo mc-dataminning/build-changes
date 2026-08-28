@@ -1,116 +1,79 @@
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import javax.annotation.Nullable;
+import java.util.function.ToIntFunction;
 
-public class dqt extends dsn implements dtb {
-   public static final MapCodec<dqt> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(dzd.a.fieldOf("tree").forGetter($$0x -> $$0x.g), t()).apply($$0, dqt::new)
-   );
-   public static final eao b = eae.aw;
-   public static final int c = 4;
-   private static final int[] h = new int[]{13, 10, 7, 3, 0};
-   private static final feq[] i = dlu.a(4, $$0 -> dlu.b(2.0, (double)h[$$0], 16.0));
-   private static final eaf C = eae.I;
-   public static final eaf d = eae.m;
+public class dqt extends dma implements dtj {
+   public static final MapCodec<dqt> a = b(dqt::new);
+   public static final int b = 15;
+   public static final eaz c = eap.aS;
+   public static final eaq d = eap.I;
+   public static final ToIntFunction<dzz> e = $$0 -> $$0.c(c);
 
    @Override
    public MapCodec<dqt> a() {
       return a;
    }
 
-   public dqt(dzd $$0, dzn.d $$1) {
-      super($$0, $$1);
-      this.l(this.B.b().b(f, Integer.valueOf(0)).b(b, Integer.valueOf(0)).b(C, Boolean.valueOf(false)).b(d, Boolean.valueOf(false)));
+   public dqt(dzy.d $$0) {
+      super($$0);
+      this.l(this.B.b().b(c, Integer.valueOf(15)).b(d, Boolean.valueOf(false)));
    }
 
    @Override
-   protected void a(dzp.a<dlu, dzo> $$0) {
-      $$0.a(f).a(b).a(C).a(d);
+   protected void a(eaa.a<dma, dzz> $$0) {
+      $$0.a(c, d);
    }
 
    @Override
-   protected boolean b(dzo $$0, dhv $$1, iu $$2) {
-      return super.b($$0, $$1, $$2) || $$0.a(dlw.ee);
-   }
-
-   @Nullable
-   @Override
-   public dzo a(dcl $$0) {
-      evv $$1 = $$0.q().b_($$0.a());
-      boolean $$2 = $$1.a() == evw.c;
-      return super.a($$0).b(C, Boolean.valueOf($$2)).b(b, Integer.valueOf(4));
-   }
-
-   @Override
-   protected feq a(dzo $$0, dhv $$1, iu $$2, feb $$3) {
-      int $$4 = $$0.c(d) ? $$0.c(b) : 4;
-      return i[$$4].a($$0.a($$2));
-   }
-
-   @Override
-   protected boolean a(dzo $$0, dis $$1, iu $$2) {
-      return o($$0) ? $$1.a_($$2.d()).a(dlw.aS) : super.a($$0, $$1, $$2);
-   }
-
-   @Override
-   protected dzo a(dzo $$0, dis $$1, dje $$2, iu $$3, ja $$4, iu $$5, dzo $$6, azt $$7) {
-      if ($$0.c(C)) {
-         $$2.a($$3, evw.c, evw.c.a($$1));
-      }
-
-      return $$4 == ja.b && !$$0.a($$1, $$3) ? dlw.a.m() : super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
-   }
-
-   @Override
-   protected evv b_(dzo $$0) {
-      return $$0.c(C) ? evw.c.a(false) : super.b_($$0);
-   }
-
-   @Override
-   protected void b(dzo $$0, aro $$1, iu $$2, azt $$3) {
-      if (!o($$0)) {
-         if ($$3.a(7) == 0) {
-            this.a($$1, $$2, $$0, $$3);
-         }
+   protected bub a(dzz $$0, div $$1, iu $$2, cqy $$3, fee $$4) {
+      if (!$$1.C && $$3.gF()) {
+         $$1.a($$2, $$0.a(c), 2);
+         return bub.b;
       } else {
-         if (!q($$0)) {
-            $$1.a($$2, $$0.a(b), 2);
-         }
+         return bub.c;
       }
    }
 
    @Override
-   public boolean a(dis $$0, iu $$1, dzo $$2) {
-      return !o($$2) || !q($$2);
+   protected ffc a(dzz $$0, dib $$1, iu $$2, fen $$3) {
+      return $$3.a(czc.id) ? fez.b() : fez.a();
    }
 
    @Override
-   public boolean a(dip $$0, azt $$1, iu $$2, dzo $$3) {
-      return o($$3) ? !q($$3) : super.a($$0, $$1, $$2, $$3);
+   protected boolean e_(dzz $$0) {
+      return $$0.y().c();
    }
 
    @Override
-   public void a(aro $$0, azt $$1, iu $$2, dzo $$3) {
-      if (o($$3) && !q($$3)) {
-         $$0.a($$2, $$3.a(b), 2);
-      } else {
-         super.a($$0, $$1, $$2, $$3);
+   protected dsm a_(dzz $$0) {
+      return dsm.a;
+   }
+
+   @Override
+   protected float c(dzz $$0, dib $$1, iu $$2) {
+      return 1.0F;
+   }
+
+   @Override
+   protected dzz a(dzz $$0, diy $$1, djk $$2, iu $$3, ja $$4, iu $$5, dzz $$6, azv $$7) {
+      if ($$0.c(d)) {
+         $$2.a($$3, ewh.c, ewh.c.a($$1));
       }
+
+      return super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
    }
 
-   private static boolean o(dzo $$0) {
-      return $$0.c(d);
+   @Override
+   protected ewg b_(dzz $$0) {
+      return $$0.c(d) ? ewh.c.a(false) : super.b_($$0);
    }
 
-   private static boolean q(dzo $$0) {
-      return $$0.c(b) == 4;
+   @Override
+   protected cyy a(diy $$0, iu $$1, dzz $$2, boolean $$3) {
+      return a(super.a($$0, $$1, $$2, $$3), $$2.c(c));
    }
 
-   public static dzo c() {
-      return b(0);
-   }
-
-   public static dzo b(int $$0) {
-      return dlw.H.m().b(d, Boolean.valueOf(true)).b(b, Integer.valueOf($$0));
+   public static cyy a(cyy $$0, int $$1) {
+      $$0.b(kj.aq, day.a.a(c, $$1));
+      return $$0;
    }
 }

@@ -1,23 +1,20 @@
-public class dww {
-   private boolean a;
-   private float b;
-   private float c;
-
-   public void a() {
-      this.c = this.b;
-      float $$0 = 0.1F;
-      if (!this.a && this.b > 0.0F) {
-         this.b = Math.max(this.b - 0.1F, 0.0F);
-      } else if (this.a && this.b < 1.0F) {
-         this.b = Math.min(this.b + 0.1F, 1.0F);
-      }
+public class dww extends dwk {
+   public dww(iu $$0, dzz $$1) {
+      super(dwz.D, $$0, $$1, dea.c);
    }
 
-   public float a(float $$0) {
-      return azk.h($$0, this.c, this.b);
+   @Override
+   protected wy j() {
+      return wy.c("container.blast_furnace");
    }
 
-   public void a(boolean $$0) {
-      this.a = $$0;
+   @Override
+   protected int a(dxw $$0, cyy $$1) {
+      return super.a($$0, $$1) / 2;
+   }
+
+   @Override
+   protected cuq a(int $$0, cqx $$1) {
+      return new cuw($$0, $$1, this, this.m);
    }
 }

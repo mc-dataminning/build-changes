@@ -1,14 +1,61 @@
-import io.netty.buffer.ByteBuf;
+public class ahw implements zf<agp> {
+   public static final yw<vu, ahw> a = zf.a(ahw::a, ahw::new);
+   private final int b;
+   private final ahw.a c;
+   private final int d;
 
-public record ahw() implements zd<agn> {
-   public static final yu<ByteBuf, ahw> a = yu.a(new ahw());
-
-   @Override
-   public zf<ahw> a() {
-      return agl.bV;
+   public ahw(bwd $$0, ahw.a $$1) {
+      this($$0, $$1, 0);
    }
 
-   public void a(agn $$0) {
+   public ahw(bwd $$0, ahw.a $$1, int $$2) {
+      this.b = $$0.ar();
+      this.c = $$1;
+      this.d = $$2;
+   }
+
+   private ahw(vu $$0) {
+      this.b = $$0.l();
+      this.c = $$0.b(ahw.a.class);
+      this.d = $$0.l();
+   }
+
+   private void a(vu $$0) {
+      $$0.c(this.b);
+      $$0.a(this.c);
+      $$0.c(this.d);
+   }
+
+   @Override
+   public zh<ahw> a() {
+      return agn.bT;
+   }
+
+   public void a(agp $$0) {
       $$0.a(this);
+   }
+
+   public int b() {
+      return this.b;
+   }
+
+   public ahw.a e() {
+      return this.c;
+   }
+
+   public int f() {
+      return this.d;
+   }
+
+   public static enum a {
+      a,
+      b,
+      c,
+      d,
+      e,
+      f,
+      g,
+      h,
+      i;
    }
 }

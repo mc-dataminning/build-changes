@@ -1,5 +1,8 @@
-import java.util.concurrent.CompletableFuture;
+import javax.annotation.ParametersAreNonnullByDefault;
 
-public interface ecu {
-   CompletableFuture<Void> a(dhw var1, ur var2);
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface ecu {
 }

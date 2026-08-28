@@ -1,71 +1,103 @@
-public abstract class djz {
-   public static final ald<djs> a = a("the_void");
-   public static final ald<djs> b = a("plains");
-   public static final ald<djs> c = a("sunflower_plains");
-   public static final ald<djs> d = a("snowy_plains");
-   public static final ald<djs> e = a("ice_spikes");
-   public static final ald<djs> f = a("desert");
-   public static final ald<djs> g = a("swamp");
-   public static final ald<djs> h = a("mangrove_swamp");
-   public static final ald<djs> i = a("forest");
-   public static final ald<djs> j = a("flower_forest");
-   public static final ald<djs> k = a("birch_forest");
-   public static final ald<djs> l = a("dark_forest");
-   public static final ald<djs> m = a("pale_garden");
-   public static final ald<djs> n = a("old_growth_birch_forest");
-   public static final ald<djs> o = a("old_growth_pine_taiga");
-   public static final ald<djs> p = a("old_growth_spruce_taiga");
-   public static final ald<djs> q = a("taiga");
-   public static final ald<djs> r = a("snowy_taiga");
-   public static final ald<djs> s = a("savanna");
-   public static final ald<djs> t = a("savanna_plateau");
-   public static final ald<djs> u = a("windswept_hills");
-   public static final ald<djs> v = a("windswept_gravelly_hills");
-   public static final ald<djs> w = a("windswept_forest");
-   public static final ald<djs> x = a("windswept_savanna");
-   public static final ald<djs> y = a("jungle");
-   public static final ald<djs> z = a("sparse_jungle");
-   public static final ald<djs> A = a("bamboo_jungle");
-   public static final ald<djs> B = a("badlands");
-   public static final ald<djs> C = a("eroded_badlands");
-   public static final ald<djs> D = a("wooded_badlands");
-   public static final ald<djs> E = a("meadow");
-   public static final ald<djs> F = a("cherry_grove");
-   public static final ald<djs> G = a("grove");
-   public static final ald<djs> H = a("snowy_slopes");
-   public static final ald<djs> I = a("frozen_peaks");
-   public static final ald<djs> J = a("jagged_peaks");
-   public static final ald<djs> K = a("stony_peaks");
-   public static final ald<djs> L = a("river");
-   public static final ald<djs> M = a("frozen_river");
-   public static final ald<djs> N = a("beach");
-   public static final ald<djs> O = a("snowy_beach");
-   public static final ald<djs> P = a("stony_shore");
-   public static final ald<djs> Q = a("warm_ocean");
-   public static final ald<djs> R = a("lukewarm_ocean");
-   public static final ald<djs> S = a("deep_lukewarm_ocean");
-   public static final ald<djs> T = a("ocean");
-   public static final ald<djs> U = a("deep_ocean");
-   public static final ald<djs> V = a("cold_ocean");
-   public static final ald<djs> W = a("deep_cold_ocean");
-   public static final ald<djs> X = a("frozen_ocean");
-   public static final ald<djs> Y = a("deep_frozen_ocean");
-   public static final ald<djs> Z = a("mushroom_fields");
-   public static final ald<djs> aa = a("dripstone_caves");
-   public static final ald<djs> ab = a("lush_caves");
-   public static final ald<djs> ac = a("deep_dark");
-   public static final ald<djs> ad = a("nether_wastes");
-   public static final ald<djs> ae = a("warped_forest");
-   public static final ald<djs> af = a("crimson_forest");
-   public static final ald<djs> ag = a("soul_sand_valley");
-   public static final ald<djs> ah = a("basalt_deltas");
-   public static final ald<djs> ai = a("the_end");
-   public static final ald<djs> aj = a("end_highlands");
-   public static final ald<djs> ak = a("end_midlands");
-   public static final ald<djs> al = a("small_end_islands");
-   public static final ald<djs> am = a("end_barrens");
+import com.google.common.base.Suppliers;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.Lists;
+import com.mojang.logging.LogUtils;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Set;
+import java.util.function.Supplier;
+import java.util.stream.Collectors;
+import org.slf4j.Logger;
 
-   private static ald<djs> a(String $$0) {
-      return ald.a(mg.aG, ale.b($$0));
+public class djz {
+   private static final Logger c = LogUtils.getLogger();
+   public static final djz a = new djz(ji.a(), List.of());
+   public static final MapCodec<djz> b = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(
+               eic.c.promotePartial(af.a("Carver: ", c::error)).fieldOf("carvers").forGetter($$0x -> $$0x.d),
+               epx.d.promotePartial(af.a("Features: ", c::error)).fieldOf("features").forGetter($$0x -> $$0x.e)
+            )
+            .apply($$0, djz::new)
+   );
+   private final ji<eic<?>> d;
+   private final List<ji<epx>> e;
+   private final Supplier<List<eiq<?, ?>>> f;
+   private final Supplier<Set<epx>> g;
+
+   djz(ji<eic<?>> $$0, List<ji<epx>> $$1) {
+      this.d = $$0;
+      this.e = $$1;
+      this.f = Suppliers.memoize(
+         () -> $$1.stream().flatMap(ji::a).map(je::a).flatMap(epx::a).filter($$0xx -> $$0xx.b() == eje.g).collect(ImmutableList.toImmutableList())
+      );
+      this.g = Suppliers.memoize(() -> $$1.stream().flatMap(ji::a).map(je::a).collect(Collectors.toSet()));
+   }
+
+   public Iterable<je<eic<?>>> a() {
+      return this.d;
+   }
+
+   public List<eiq<?, ?>> b() {
+      return this.f.get();
+   }
+
+   public List<ji<epx>> c() {
+      return this.e;
+   }
+
+   public boolean a(epx $$0) {
+      return this.g.get().contains($$0);
+   }
+
+   public static class a extends djz.b {
+      private final jf<epx> a;
+      private final jf<eic<?>> b;
+
+      public a(jf<epx> $$0, jf<eic<?>> $$1) {
+         this.a = $$0;
+         this.b = $$1;
+      }
+
+      public djz.a a(efu.a $$0, alf<epx> $$1) {
+         this.a($$0.ordinal(), this.a.b($$1));
+         return this;
+      }
+
+      public djz.a a(alf<eic<?>> $$0) {
+         this.a(this.b.b($$0));
+         return this;
+      }
+   }
+
+   public static class b {
+      private final List<je<eic<?>>> a = new ArrayList<>();
+      private final List<List<je<epx>>> b = new ArrayList<>();
+
+      public djz.b a(efu.a $$0, je<epx> $$1) {
+         return this.a($$0.ordinal(), $$1);
+      }
+
+      public djz.b a(int $$0, je<epx> $$1) {
+         this.a($$0);
+         this.b.get($$0).add($$1);
+         return this;
+      }
+
+      public djz.b a(je<eic<?>> $$0) {
+         this.a.add($$0);
+         return this;
+      }
+
+      private void a(int $$0) {
+         while (this.b.size() <= $$0) {
+            this.b.add(Lists.newArrayList());
+         }
+      }
+
+      public djz a() {
+         return new djz(ji.a(this.a), this.b.stream().map(ji::a).collect(ImmutableList.toImmutableList()));
+      }
    }
 }

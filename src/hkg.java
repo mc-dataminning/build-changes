@@ -1,67 +1,131 @@
-import java.util.Comparator;
-import java.util.Objects;
-import java.util.function.Function;
-import javax.annotation.Nullable;
+import com.mojang.datafixers.util.Either;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.OptionalInt;
 
-public class hkg {
-   public static final Comparator<hkg> a = Comparator.<hkg, ale>comparing(hkg::a).thenComparing(hkg::b);
-   private final ale b;
-   private final ale c;
-   @Nullable
-   private gpn d;
+public interface hkg {
+   Codec<hkg> a = hkg.d.d.dispatch(hkg::a, hkg.d::a);
+   hkg b = new hkg.b();
 
-   public hkg(ale $$0, ale $$1) {
-      this.b = $$0;
-      this.c = $$1;
-   }
+   hkg.d a();
 
-   public ale a() {
-      return this.b;
-   }
+   public static record a(int d, int e, hkg.a.a f, boolean g) implements hkg {
+      public static final MapCodec<hkg.a> c = RecordCodecBuilder.mapCodec(
+            $$0 -> $$0.group(
+                     ayu.m.fieldOf("width").forGetter(hkg.a::b),
+                     ayu.m.fieldOf("height").forGetter(hkg.a::c),
+                     hkg.a.a.g.fieldOf("border").forGetter(hkg.a::d),
+                     Codec.BOOL.optionalFieldOf("stretch_inner", false).forGetter(hkg.a::e)
+                  )
+                  .apply($$0, hkg.a::new)
+         )
+         .validate(hkg.a::a);
 
-   public ale b() {
-      return this.c;
-   }
-
-   public hhz c() {
-      return fof.Q().a(this.a()).apply(this.b());
-   }
-
-   public gpn a(Function<ale, gpn> $$0) {
-      if (this.d == null) {
-         this.d = $$0.apply(this.b);
+      private static DataResult<hkg.a> a(hkg.a $$0) {
+         hkg.a.a $$1 = $$0.d();
+         if ($$1.a() + $$1.c() >= $$0.b()) {
+            return DataResult.error(() -> "Nine-sliced texture has no horizontal center slice: " + $$1.a() + " + " + $$1.c() + " >= " + $$0.b());
+         } else {
+            return $$1.b() + $$1.d() >= $$0.c()
+               ? DataResult.error(() -> "Nine-sliced texture has no vertical center slice: " + $$1.b() + " + " + $$1.d() + " >= " + $$0.c())
+               : DataResult.success($$0);
+         }
       }
 
-      return this.d;
-   }
+      @Override
+      public hkg.d a() {
+         return hkg.d.c;
+      }
 
-   public fiu a(gpd $$0, Function<ale, gpn> $$1) {
-      return this.c().a($$0.getBuffer(this.a($$1)));
-   }
+      public int b() {
+         return this.d;
+      }
 
-   public fiu a(gpd $$0, Function<ale, gpn> $$1, boolean $$2, boolean $$3) {
-      return this.c().a(gwi.a($$0, this.a($$1), $$2, $$3));
-   }
+      public int c() {
+         return this.e;
+      }
 
-   @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else if ($$0 != null && this.getClass() == $$0.getClass()) {
-         hkg $$1 = (hkg)$$0;
-         return this.b.equals($$1.b) && this.c.equals($$1.c);
-      } else {
-         return false;
+      public hkg.a.a d() {
+         return this.f;
+      }
+
+      public boolean e() {
+         return this.g;
+      }
+
+      public static record a(int a, int b, int c, int d) {
+         private static final Codec<hkg.a.a> e = ayu.m.flatComapMap($$0 -> new hkg.a.a($$0, $$0, $$0, $$0), $$0 -> {
+            OptionalInt $$1 = $$0.e();
+            return $$1.isPresent() ? DataResult.success($$1.getAsInt()) : DataResult.error(() -> "Border has different side sizes");
+         });
+         private static final Codec<hkg.a.a> f = RecordCodecBuilder.create(
+            $$0 -> $$0.group(
+                     ayu.l.fieldOf("left").forGetter(hkg.a.a::a),
+                     ayu.l.fieldOf("top").forGetter(hkg.a.a::b),
+                     ayu.l.fieldOf("right").forGetter(hkg.a.a::c),
+                     ayu.l.fieldOf("bottom").forGetter(hkg.a.a::d)
+                  )
+                  .apply($$0, hkg.a.a::new)
+         );
+         static final Codec<hkg.a.a> g = Codec.either(e, f).xmap(Either::unwrap, $$0 -> $$0.e().isPresent() ? Either.left($$0) : Either.right($$0));
+
+         private OptionalInt e() {
+            return this.a() == this.b() && this.b() == this.c() && this.c() == this.d() ? OptionalInt.of(this.a()) : OptionalInt.empty();
+         }
       }
    }
 
-   @Override
-   public int hashCode() {
-      return Objects.hash(this.b, this.c);
+   public static record b() implements hkg {
+      public static final MapCodec<hkg.b> c = MapCodec.unit(hkg.b::new);
+
+      @Override
+      public hkg.d a() {
+         return hkg.d.a;
+      }
    }
 
-   @Override
-   public String toString() {
-      return "Material{atlasLocation=" + this.b + ", texture=" + this.c + "}";
+   public static record c(int d, int e) implements hkg {
+      public static final MapCodec<hkg.c> c = RecordCodecBuilder.mapCodec(
+         $$0 -> $$0.group(ayu.m.fieldOf("width").forGetter(hkg.c::b), ayu.m.fieldOf("height").forGetter(hkg.c::c)).apply($$0, hkg.c::new)
+      );
+
+      @Override
+      public hkg.d a() {
+         return hkg.d.b;
+      }
+
+      public int b() {
+         return this.d;
+      }
+
+      public int c() {
+         return this.e;
+      }
+   }
+
+   public static enum d implements bak {
+      a("stretch", hkg.b.c),
+      b("tile", hkg.c.c),
+      c("nine_slice", hkg.a.c);
+
+      public static final Codec<hkg.d> d = bak.a(hkg.d::values);
+      private final String e;
+      private final MapCodec<? extends hkg> f;
+
+      private d(final String $$0, final MapCodec<? extends hkg> $$1) {
+         this.e = $$0;
+         this.f = $$1;
+      }
+
+      @Override
+      public String c() {
+         return this.e;
+      }
+
+      public MapCodec<? extends hkg> a() {
+         return this.f;
+      }
    }
 }

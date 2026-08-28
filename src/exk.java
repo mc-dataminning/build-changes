@@ -1,31 +1,26 @@
-import com.mojang.serialization.Codec;
+import javax.annotation.Nullable;
 
-public record exk(ale d, boolean e, int f, boolean g, boolean h) {
-   public static final int a = -1;
-   public static final Codec<je<exk>> b = mf.ap.r();
-   public static final yu<wh, je<exk>> c = ys.b(mg.R);
+public class exk {
+   @Nullable
+   public static exo a(div $$0, @Nullable ja $$1, @Nullable ja $$2) {
+      if ($$0.K().b(cuj.c)) {
+         exo $$3 = exo.a($$0.A).a(exo.a.a);
+         if ($$2 != null) {
+            $$3 = $$3.a($$2);
+         }
 
-   public boolean a() {
-      return this.f != -1;
+         if ($$1 != null) {
+            $$3 = $$3.b($$1);
+         }
+
+         return $$3;
+      } else {
+         return null;
+      }
    }
 
-   public ale b() {
-      return this.d;
-   }
-
-   public boolean c() {
-      return this.e;
-   }
-
-   public int d() {
-      return this.f;
-   }
-
-   public boolean e() {
-      return this.g;
-   }
-
-   public boolean f() {
-      return this.h;
+   @Nullable
+   public static exo a(@Nullable exo $$0, ja $$1) {
+      return $$0 == null ? null : $$0.b($$1);
    }
 }

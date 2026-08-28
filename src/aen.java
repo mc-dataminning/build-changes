@@ -1,33 +1,37 @@
-import javax.annotation.Nullable;
+public class aen implements zf<abu> {
+   public static final yw<vu, aen> a = zf.a(aen::a, aen::new);
+   private final int b;
+   private final byte c;
 
-public class aen implements zd<abs> {
-   public static final yu<vs, aen> a = zd.a(aen::a, aen::new);
-   @Nullable
-   private final ale b;
-
-   public aen(@Nullable ale $$0) {
-      this.b = $$0;
+   public aen(bwd $$0, byte $$1) {
+      this.b = $$0.ar();
+      this.c = $$1;
    }
 
-   private aen(vs $$0) {
-      this.b = $$0.c(vs::q);
+   private aen(vu $$0) {
+      this.b = $$0.l();
+      this.c = $$0.readByte();
    }
 
-   private void a(vs $$0) {
-      $$0.a(this.b, vs::a);
+   private void a(vu $$0) {
+      $$0.c(this.b);
+      $$0.l(this.c);
    }
 
    @Override
-   public zf<aen> a() {
-      return agl.as;
+   public zh<aen> a() {
+      return agn.aq;
    }
 
-   public void a(abs $$0) {
+   public void a(abu $$0) {
       $$0.a(this);
    }
 
-   @Nullable
-   public ale b() {
-      return this.b;
+   public bwd a(div $$0) {
+      return $$0.a(this.b);
+   }
+
+   public float b() {
+      return azm.a(this.c);
    }
 }

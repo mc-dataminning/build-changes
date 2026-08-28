@@ -1,53 +1,92 @@
 import com.mojang.serialization.MapCodec;
-import java.util.function.Function;
+import javax.annotation.Nullable;
 
-public class dqh extends dme implements dsy {
+public class dqh extends dlm {
    public static final MapCodec<dqh> a = b(dqh::new);
-   public static final eam<ja> b = eae.T;
-   private final Function<dzo, feq> c;
-
-   public dqh(dzn.d $$0) {
-      super($$0);
-      this.l(this.B.b().b(b, ja.c).b(this.c(), Integer.valueOf(1)));
-      this.c = this.q();
-   }
-
-   private Function<dzo, feq> q() {
-      return this.a(this.a(b, this.c()));
-   }
+   public static final eaq b = eap.q;
 
    @Override
-   protected MapCodec<dqh> a() {
+   public MapCodec<dqh> a() {
       return a;
    }
 
-   @Override
-   public dzo a(dzo $$0, dsm $$1) {
-      return $$0.b(b, $$1.a($$0.c(b)));
+   protected dqh(dzy.d $$0) {
+      super($$0);
+      this.l(this.B.b().b(b, Boolean.valueOf(false)));
    }
 
    @Override
-   public dzo a(dzo $$0, dqv $$1) {
-      return $$0.a($$1.a($$0.c(b)));
+   public void a(div $$0, iu $$1, dzz $$2, @Nullable bxc $$3, cyy $$4) {
+      super.a($$0, $$1, $$2, $$3, $$4);
+      dbg $$5 = $$4.a(kj.aa, dbg.a);
+      if ($$5.a("RecordItem")) {
+         $$0.a($$1, $$2.b(b, Boolean.valueOf(true)), 2);
+      }
    }
 
    @Override
-   public boolean a(dzo $$0, dcl $$1) {
-      return this.a($$0, $$1, this.c()) ? true : super.a($$0, $$1);
+   protected bub a(dzz $$0, div $$1, iu $$2, cqy $$3, fee $$4) {
+      if ($$0.c(b) && $$1.c_($$2) instanceof dyc $$5) {
+         $$5.s();
+         return bub.a;
+      } else {
+         return bub.e;
+      }
    }
 
    @Override
-   public feq a(dzo $$0, dhv $$1, iu $$2, feb $$3) {
-      return this.c.apply($$0);
+   protected bub a(cyy $$0, dzz $$1, div $$2, iu $$3, cqy $$4, bua $$5, fee $$6) {
+      if ($$1.c(b)) {
+         return bub.f;
+      } else {
+         cyy $$7 = $$4.b($$5);
+         bub $$8 = czd.a($$2, $$3, $$7, $$4);
+         return (bub)(!$$8.a() ? bub.f : $$8);
+      }
    }
 
    @Override
-   public dzo a(dcl $$0) {
-      return this.a($$0, this, this.c(), b);
+   protected void a(dzz $$0, arq $$1, iu $$2, boolean $$3) {
+      btx.a($$0, $$1, $$2);
    }
 
    @Override
-   protected void a(dzp.a<dlu, dzo> $$0) {
-      $$0.a(b, this.c());
+   public dwx a(iu $$0, dzz $$1) {
+      return new dyc($$0, $$1);
+   }
+
+   @Override
+   public boolean f_(dzz $$0) {
+      return true;
+   }
+
+   @Override
+   public int a(dzz $$0, dib $$1, iu $$2, ja $$3) {
+      if ($$1.c_($$2) instanceof dyc $$4 && $$4.j().a()) {
+         return 15;
+      }
+
+      return 0;
+   }
+
+   @Override
+   protected boolean c_(dzz $$0) {
+      return true;
+   }
+
+   @Override
+   protected int a(dzz $$0, div $$1, iu $$2) {
+      return $$1.c_($$2) instanceof dyc $$3 ? $$3.u() : 0;
+   }
+
+   @Override
+   protected void a(eaa.a<dma, dzz> $$0) {
+      $$0.a(b);
+   }
+
+   @Nullable
+   @Override
+   public <T extends dwx> dwy<T> a(div $$0, dzz $$1, dwz<T> $$2) {
+      return $$1.c(b) ? a($$2, dwz.e, dyc::a) : null;
    }
 }

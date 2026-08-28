@@ -1,18 +1,34 @@
-public interface ddu<T extends ddj<?>> {
-   ddu<dcy> a = a("crafting");
-   ddu<ded> b = a("smelting");
-   ddu<dcs> c = a("blasting");
-   ddu<dei> d = a("smoking");
-   ddu<dcu> e = a("campfire_cooking");
-   ddu<dej> f = a("stonecutting");
-   ddu<dee> g = a("smithing");
+public record ddu<T extends ddp<?>>(alf<ddp<?>> b, T c) {
+   public static final yw<wj, ddu<?>> a = yw.a(alf.b(mg.bt), ddu::a, ddp.b, ddu::b, ddu::new);
 
-   static <T extends ddj<?>> ddu<T> a(final String $$0) {
-      return jr.a(mf.q, ale.b($$0), new ddu<T>() {
-         @Override
-         public String toString() {
-            return $$0;
+   @Override
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else {
+         if ($$0 instanceof ddu<?> $$1 && this.b == $$1.b) {
+            return true;
          }
-      });
+
+         return false;
+      }
+   }
+
+   @Override
+   public int hashCode() {
+      return this.b.hashCode();
+   }
+
+   @Override
+   public String toString() {
+      return this.b.toString();
+   }
+
+   public alf<ddp<?>> a() {
+      return this.b;
+   }
+
+   public T b() {
+      return this.c;
    }
 }

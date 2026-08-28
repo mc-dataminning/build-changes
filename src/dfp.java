@@ -1,20 +1,19 @@
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import com.mojang.serialization.Codec;
 
-public record dfp(dfm c) implements dfy {
-   public static final MapCodec<dfp> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(dfm.b.fieldOf("value").forGetter(dfp::b)).apply($$0, dfp::new));
+public enum dfp implements bak {
+   a("attacker"),
+   b("damaging_entity"),
+   c("victim");
 
-   @Override
-   public float a(int $$0, azt $$1, float $$2) {
-      return $$2 + this.c.a($$0);
+   public static final Codec<dfp> d = bak.a(dfp::values);
+   private final String e;
+
+   private dfp(final String $$0) {
+      this.e = $$0;
    }
 
    @Override
-   public MapCodec<dfp> a() {
-      return a;
-   }
-
-   public dfm b() {
-      return this.c;
+   public String c() {
+      return this.e;
    }
 }

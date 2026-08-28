@@ -1,59 +1,143 @@
+import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.Maps;
 import com.mojang.datafixers.DSL;
 import com.mojang.datafixers.DataFixUtils;
+import com.mojang.datafixers.DSL.TypeReference;
 import com.mojang.datafixers.schemas.Schema;
+import com.mojang.datafixers.types.Type;
 import com.mojang.datafixers.types.templates.TypeTemplate;
 import com.mojang.datafixers.types.templates.Hook.HookFunction;
-import com.mojang.datafixers.util.Pair;
-import com.mojang.logging.LogUtils;
 import com.mojang.serialization.Dynamic;
 import com.mojang.serialization.DynamicOps;
 import java.util.Map;
+import java.util.Objects;
 import java.util.function.Supplier;
-import org.slf4j.Logger;
 
 public class bop extends Schema {
-   private static final Logger c = LogUtils.getLogger();
-   static final Map<String, String> d = (Map<String, String>)DataFixUtils.make(Maps.newHashMap(), $$0 -> {
-      $$0.put("minecraft:furnace", "Furnace");
-      $$0.put("minecraft:lit_furnace", "Furnace");
-      $$0.put("minecraft:chest", "Chest");
-      $$0.put("minecraft:trapped_chest", "Chest");
-      $$0.put("minecraft:ender_chest", "EnderChest");
-      $$0.put("minecraft:jukebox", "RecordPlayer");
-      $$0.put("minecraft:dispenser", "Trap");
-      $$0.put("minecraft:dropper", "Dropper");
-      $$0.put("minecraft:sign", "Sign");
-      $$0.put("minecraft:mob_spawner", "MobSpawner");
-      $$0.put("minecraft:noteblock", "Music");
-      $$0.put("minecraft:brewing_stand", "Cauldron");
-      $$0.put("minecraft:enhanting_table", "EnchantTable");
-      $$0.put("minecraft:command_block", "CommandBlock");
-      $$0.put("minecraft:beacon", "Beacon");
-      $$0.put("minecraft:skull", "Skull");
-      $$0.put("minecraft:daylight_detector", "DLDetector");
-      $$0.put("minecraft:hopper", "Hopper");
-      $$0.put("minecraft:banner", "Banner");
-      $$0.put("minecraft:flower_pot", "FlowerPot");
-      $$0.put("minecraft:repeating_command_block", "CommandBlock");
-      $$0.put("minecraft:chain_command_block", "CommandBlock");
-      $$0.put("minecraft:standing_sign", "Sign");
-      $$0.put("minecraft:wall_sign", "Sign");
-      $$0.put("minecraft:piston_head", "Piston");
-      $$0.put("minecraft:daylight_detector_inverted", "DLDetector");
-      $$0.put("minecraft:unpowered_comparator", "Comparator");
-      $$0.put("minecraft:powered_comparator", "Comparator");
-      $$0.put("minecraft:wall_banner", "Banner");
-      $$0.put("minecraft:standing_banner", "Banner");
-      $$0.put("minecraft:structure_block", "Structure");
-      $$0.put("minecraft:end_portal", "Airportal");
-      $$0.put("minecraft:end_gateway", "EndGateway");
-      $$0.put("minecraft:shield", "Banner");
+   protected static final Map<String, String> a = (Map<String, String>)DataFixUtils.make(() -> {
+      Map<String, String> $$0 = Maps.newHashMap();
+      $$0.put("minecraft:furnace", "minecraft:furnace");
+      $$0.put("minecraft:lit_furnace", "minecraft:furnace");
+      $$0.put("minecraft:chest", "minecraft:chest");
+      $$0.put("minecraft:trapped_chest", "minecraft:chest");
+      $$0.put("minecraft:ender_chest", "minecraft:ender_chest");
+      $$0.put("minecraft:jukebox", "minecraft:jukebox");
+      $$0.put("minecraft:dispenser", "minecraft:dispenser");
+      $$0.put("minecraft:dropper", "minecraft:dropper");
+      $$0.put("minecraft:sign", "minecraft:sign");
+      $$0.put("minecraft:mob_spawner", "minecraft:mob_spawner");
+      $$0.put("minecraft:spawner", "minecraft:mob_spawner");
+      $$0.put("minecraft:noteblock", "minecraft:noteblock");
+      $$0.put("minecraft:brewing_stand", "minecraft:brewing_stand");
+      $$0.put("minecraft:enhanting_table", "minecraft:enchanting_table");
+      $$0.put("minecraft:command_block", "minecraft:command_block");
+      $$0.put("minecraft:beacon", "minecraft:beacon");
+      $$0.put("minecraft:skull", "minecraft:skull");
+      $$0.put("minecraft:daylight_detector", "minecraft:daylight_detector");
+      $$0.put("minecraft:hopper", "minecraft:hopper");
+      $$0.put("minecraft:banner", "minecraft:banner");
+      $$0.put("minecraft:flower_pot", "minecraft:flower_pot");
+      $$0.put("minecraft:repeating_command_block", "minecraft:command_block");
+      $$0.put("minecraft:chain_command_block", "minecraft:command_block");
+      $$0.put("minecraft:shulker_box", "minecraft:shulker_box");
+      $$0.put("minecraft:white_shulker_box", "minecraft:shulker_box");
+      $$0.put("minecraft:orange_shulker_box", "minecraft:shulker_box");
+      $$0.put("minecraft:magenta_shulker_box", "minecraft:shulker_box");
+      $$0.put("minecraft:light_blue_shulker_box", "minecraft:shulker_box");
+      $$0.put("minecraft:yellow_shulker_box", "minecraft:shulker_box");
+      $$0.put("minecraft:lime_shulker_box", "minecraft:shulker_box");
+      $$0.put("minecraft:pink_shulker_box", "minecraft:shulker_box");
+      $$0.put("minecraft:gray_shulker_box", "minecraft:shulker_box");
+      $$0.put("minecraft:silver_shulker_box", "minecraft:shulker_box");
+      $$0.put("minecraft:cyan_shulker_box", "minecraft:shulker_box");
+      $$0.put("minecraft:purple_shulker_box", "minecraft:shulker_box");
+      $$0.put("minecraft:blue_shulker_box", "minecraft:shulker_box");
+      $$0.put("minecraft:brown_shulker_box", "minecraft:shulker_box");
+      $$0.put("minecraft:green_shulker_box", "minecraft:shulker_box");
+      $$0.put("minecraft:red_shulker_box", "minecraft:shulker_box");
+      $$0.put("minecraft:black_shulker_box", "minecraft:shulker_box");
+      $$0.put("minecraft:bed", "minecraft:bed");
+      $$0.put("minecraft:light_gray_shulker_box", "minecraft:shulker_box");
+      $$0.put("minecraft:banner", "minecraft:banner");
+      $$0.put("minecraft:white_banner", "minecraft:banner");
+      $$0.put("minecraft:orange_banner", "minecraft:banner");
+      $$0.put("minecraft:magenta_banner", "minecraft:banner");
+      $$0.put("minecraft:light_blue_banner", "minecraft:banner");
+      $$0.put("minecraft:yellow_banner", "minecraft:banner");
+      $$0.put("minecraft:lime_banner", "minecraft:banner");
+      $$0.put("minecraft:pink_banner", "minecraft:banner");
+      $$0.put("minecraft:gray_banner", "minecraft:banner");
+      $$0.put("minecraft:silver_banner", "minecraft:banner");
+      $$0.put("minecraft:light_gray_banner", "minecraft:banner");
+      $$0.put("minecraft:cyan_banner", "minecraft:banner");
+      $$0.put("minecraft:purple_banner", "minecraft:banner");
+      $$0.put("minecraft:blue_banner", "minecraft:banner");
+      $$0.put("minecraft:brown_banner", "minecraft:banner");
+      $$0.put("minecraft:green_banner", "minecraft:banner");
+      $$0.put("minecraft:red_banner", "minecraft:banner");
+      $$0.put("minecraft:black_banner", "minecraft:banner");
+      $$0.put("minecraft:standing_sign", "minecraft:sign");
+      $$0.put("minecraft:wall_sign", "minecraft:sign");
+      $$0.put("minecraft:piston_head", "minecraft:piston");
+      $$0.put("minecraft:daylight_detector_inverted", "minecraft:daylight_detector");
+      $$0.put("minecraft:unpowered_comparator", "minecraft:comparator");
+      $$0.put("minecraft:powered_comparator", "minecraft:comparator");
+      $$0.put("minecraft:wall_banner", "minecraft:banner");
+      $$0.put("minecraft:standing_banner", "minecraft:banner");
+      $$0.put("minecraft:structure_block", "minecraft:structure_block");
+      $$0.put("minecraft:end_portal", "minecraft:end_portal");
+      $$0.put("minecraft:end_gateway", "minecraft:end_gateway");
+      $$0.put("minecraft:sign", "minecraft:sign");
+      $$0.put("minecraft:shield", "minecraft:banner");
+      $$0.put("minecraft:white_bed", "minecraft:bed");
+      $$0.put("minecraft:orange_bed", "minecraft:bed");
+      $$0.put("minecraft:magenta_bed", "minecraft:bed");
+      $$0.put("minecraft:light_blue_bed", "minecraft:bed");
+      $$0.put("minecraft:yellow_bed", "minecraft:bed");
+      $$0.put("minecraft:lime_bed", "minecraft:bed");
+      $$0.put("minecraft:pink_bed", "minecraft:bed");
+      $$0.put("minecraft:gray_bed", "minecraft:bed");
+      $$0.put("minecraft:silver_bed", "minecraft:bed");
+      $$0.put("minecraft:light_gray_bed", "minecraft:bed");
+      $$0.put("minecraft:cyan_bed", "minecraft:bed");
+      $$0.put("minecraft:purple_bed", "minecraft:bed");
+      $$0.put("minecraft:blue_bed", "minecraft:bed");
+      $$0.put("minecraft:brown_bed", "minecraft:bed");
+      $$0.put("minecraft:green_bed", "minecraft:bed");
+      $$0.put("minecraft:red_bed", "minecraft:bed");
+      $$0.put("minecraft:black_bed", "minecraft:bed");
+      $$0.put("minecraft:oak_sign", "minecraft:sign");
+      $$0.put("minecraft:spruce_sign", "minecraft:sign");
+      $$0.put("minecraft:birch_sign", "minecraft:sign");
+      $$0.put("minecraft:jungle_sign", "minecraft:sign");
+      $$0.put("minecraft:acacia_sign", "minecraft:sign");
+      $$0.put("minecraft:dark_oak_sign", "minecraft:sign");
+      $$0.put("minecraft:crimson_sign", "minecraft:sign");
+      $$0.put("minecraft:warped_sign", "minecraft:sign");
+      $$0.put("minecraft:skeleton_skull", "minecraft:skull");
+      $$0.put("minecraft:wither_skeleton_skull", "minecraft:skull");
+      $$0.put("minecraft:zombie_head", "minecraft:skull");
+      $$0.put("minecraft:player_head", "minecraft:skull");
+      $$0.put("minecraft:creeper_head", "minecraft:skull");
+      $$0.put("minecraft:dragon_head", "minecraft:skull");
+      $$0.put("minecraft:barrel", "minecraft:barrel");
+      $$0.put("minecraft:conduit", "minecraft:conduit");
+      $$0.put("minecraft:smoker", "minecraft:smoker");
+      $$0.put("minecraft:blast_furnace", "minecraft:blast_furnace");
+      $$0.put("minecraft:lectern", "minecraft:lectern");
+      $$0.put("minecraft:bell", "minecraft:bell");
+      $$0.put("minecraft:jigsaw", "minecraft:jigsaw");
+      $$0.put("minecraft:campfire", "minecraft:campfire");
+      $$0.put("minecraft:bee_nest", "minecraft:beehive");
+      $$0.put("minecraft:beehive", "minecraft:beehive");
+      $$0.put("minecraft:sculk_sensor", "minecraft:sculk_sensor");
+      $$0.put("minecraft:decorated_pot", "minecraft:decorated_pot");
+      $$0.put("minecraft:crafter", "minecraft:crafter");
+      return ImmutableMap.copyOf($$0);
    });
-   public static final Map<String, String> a = Map.of("minecraft:armor_stand", "ArmorStand", "minecraft:painting", "Painting");
    protected static final HookFunction b = new HookFunction() {
       public <T> T apply(DynamicOps<T> $$0, T $$1) {
-         return bop.a(new Dynamic($$0, $$1), bop.d, bop.a);
+         return bos.a(new Dynamic($$0, $$1), bop.a, bos.a);
       }
    };
 
@@ -61,257 +145,19 @@ public class bop extends Schema {
       super($$0, $$1);
    }
 
-   protected static void a(Schema $$0, Map<String, Supplier<TypeTemplate>> $$1, String $$2) {
-      $$0.register($$1, $$2, () -> DSL.optionalFields("inTile", bit.E.in($$0)));
-   }
-
-   protected static void b(Schema $$0, Map<String, Supplier<TypeTemplate>> $$1, String $$2) {
-      $$0.register($$1, $$2, () -> DSL.optionalFields("DisplayTile", bit.E.in($$0)));
-   }
-
-   protected static void c(Schema $$0, Map<String, Supplier<TypeTemplate>> $$1, String $$2) {
-      $$0.register($$1, $$2, () -> DSL.optionalFields("Items", DSL.list(bit.t.in($$0))));
-   }
-
-   public Map<String, Supplier<TypeTemplate>> registerEntities(Schema $$0) {
-      Map<String, Supplier<TypeTemplate>> $$1 = Maps.newHashMap();
-      $$0.register($$1, "Item", $$1x -> DSL.optionalFields("Item", bit.t.in($$0)));
-      $$0.registerSimple($$1, "XPOrb");
-      a($$0, $$1, "ThrownEgg");
-      $$0.registerSimple($$1, "LeashKnot");
-      $$0.registerSimple($$1, "Painting");
-      $$0.register($$1, "Arrow", $$1x -> DSL.optionalFields("inTile", bit.E.in($$0)));
-      $$0.register($$1, "TippedArrow", $$1x -> DSL.optionalFields("inTile", bit.E.in($$0)));
-      $$0.register($$1, "SpectralArrow", $$1x -> DSL.optionalFields("inTile", bit.E.in($$0)));
-      a($$0, $$1, "Snowball");
-      a($$0, $$1, "Fireball");
-      a($$0, $$1, "SmallFireball");
-      a($$0, $$1, "ThrownEnderpearl");
-      $$0.registerSimple($$1, "EyeOfEnderSignal");
-      $$0.register($$1, "ThrownPotion", $$1x -> DSL.optionalFields("inTile", bit.E.in($$0), "Potion", bit.t.in($$0)));
-      a($$0, $$1, "ThrownExpBottle");
-      $$0.register($$1, "ItemFrame", $$1x -> DSL.optionalFields("Item", bit.t.in($$0)));
-      a($$0, $$1, "WitherSkull");
-      $$0.registerSimple($$1, "PrimedTnt");
-      $$0.register($$1, "FallingSand", $$1x -> DSL.optionalFields("Block", bit.E.in($$0), "TileEntityData", bit.s.in($$0)));
-      $$0.register($$1, "FireworksRocketEntity", $$1x -> DSL.optionalFields("FireworksItem", bit.t.in($$0)));
-      $$0.registerSimple($$1, "Boat");
-      $$0.register($$1, "Minecart", () -> DSL.optionalFields("DisplayTile", bit.E.in($$0), "Items", DSL.list(bit.t.in($$0))));
-      b($$0, $$1, "MinecartRideable");
-      $$0.register($$1, "MinecartChest", $$1x -> DSL.optionalFields("DisplayTile", bit.E.in($$0), "Items", DSL.list(bit.t.in($$0))));
-      b($$0, $$1, "MinecartFurnace");
-      b($$0, $$1, "MinecartTNT");
-      $$0.register($$1, "MinecartSpawner", () -> DSL.optionalFields("DisplayTile", bit.E.in($$0), bit.H.in($$0)));
-      $$0.register($$1, "MinecartHopper", $$1x -> DSL.optionalFields("DisplayTile", bit.E.in($$0), "Items", DSL.list(bit.t.in($$0))));
-      $$0.register($$1, "MinecartCommandBlock", () -> DSL.optionalFields("DisplayTile", bit.E.in($$0), "LastOutput", bit.z.in($$0)));
-      $$0.registerSimple($$1, "ArmorStand");
-      $$0.registerSimple($$1, "Creeper");
-      $$0.registerSimple($$1, "Skeleton");
-      $$0.registerSimple($$1, "Spider");
-      $$0.registerSimple($$1, "Giant");
-      $$0.registerSimple($$1, "Zombie");
-      $$0.registerSimple($$1, "Slime");
-      $$0.registerSimple($$1, "Ghast");
-      $$0.registerSimple($$1, "PigZombie");
-      $$0.register($$1, "Enderman", $$1x -> DSL.optionalFields("carried", bit.E.in($$0)));
-      $$0.registerSimple($$1, "CaveSpider");
-      $$0.registerSimple($$1, "Silverfish");
-      $$0.registerSimple($$1, "Blaze");
-      $$0.registerSimple($$1, "LavaSlime");
-      $$0.registerSimple($$1, "EnderDragon");
-      $$0.registerSimple($$1, "WitherBoss");
-      $$0.registerSimple($$1, "Bat");
-      $$0.registerSimple($$1, "Witch");
-      $$0.registerSimple($$1, "Endermite");
-      $$0.registerSimple($$1, "Guardian");
-      $$0.registerSimple($$1, "Pig");
-      $$0.registerSimple($$1, "Sheep");
-      $$0.registerSimple($$1, "Cow");
-      $$0.registerSimple($$1, "Chicken");
-      $$0.registerSimple($$1, "Squid");
-      $$0.registerSimple($$1, "Wolf");
-      $$0.registerSimple($$1, "MushroomCow");
-      $$0.registerSimple($$1, "SnowMan");
-      $$0.registerSimple($$1, "Ozelot");
-      $$0.registerSimple($$1, "VillagerGolem");
-      $$0.register($$1, "EntityHorse", $$1x -> DSL.optionalFields("Items", DSL.list(bit.t.in($$0)), "ArmorItem", bit.t.in($$0), "SaddleItem", bit.t.in($$0)));
-      $$0.registerSimple($$1, "Rabbit");
-      $$0.register(
-         $$1, "Villager", $$1x -> DSL.optionalFields("Inventory", DSL.list(bit.t.in($$0)), "Offers", DSL.optionalFields("Recipes", DSL.list(bit.x.in($$0))))
-      );
-      $$0.registerSimple($$1, "EnderCrystal");
-      $$0.register($$1, "AreaEffectCloud", $$1x -> DSL.optionalFields("Particle", bit.y.in($$0)));
-      $$0.registerSimple($$1, "ShulkerBullet");
-      $$0.registerSimple($$1, "DragonFireball");
-      $$0.registerSimple($$1, "Shulker");
-      return $$1;
+   public Type<?> getChoiceType(TypeReference $$0, String $$1) {
+      return Objects.equals($$0.typeName(), biw.s.typeName()) ? super.getChoiceType($$0, bkr.a($$1)) : super.getChoiceType($$0, $$1);
    }
 
    public Map<String, Supplier<TypeTemplate>> registerBlockEntities(Schema $$0) {
-      Map<String, Supplier<TypeTemplate>> $$1 = Maps.newHashMap();
-      c($$0, $$1, "Furnace");
-      c($$0, $$1, "Chest");
-      $$0.registerSimple($$1, "EnderChest");
-      $$0.register($$1, "RecordPlayer", $$1x -> DSL.optionalFields("RecordItem", bit.t.in($$0)));
-      c($$0, $$1, "Trap");
-      c($$0, $$1, "Dropper");
-      $$0.register($$1, "Sign", () -> a($$0));
-      $$0.register($$1, "MobSpawner", $$1x -> bit.H.in($$0));
-      $$0.registerSimple($$1, "Music");
-      $$0.registerSimple($$1, "Piston");
-      c($$0, $$1, "Cauldron");
-      $$0.registerSimple($$1, "EnchantTable");
-      $$0.registerSimple($$1, "Airportal");
-      $$0.register($$1, "Control", () -> DSL.optionalFields("LastOutput", bit.z.in($$0)));
-      $$0.registerSimple($$1, "Beacon");
-      $$0.register($$1, "Skull", () -> DSL.optionalFields("custom_name", bit.z.in($$0)));
-      $$0.registerSimple($$1, "DLDetector");
-      c($$0, $$1, "Hopper");
-      $$0.registerSimple($$1, "Comparator");
-      $$0.register($$1, "FlowerPot", $$1x -> DSL.optionalFields("Item", DSL.or(DSL.constType(DSL.intType()), bit.F.in($$0))));
-      $$0.register($$1, "Banner", () -> DSL.optionalFields("CustomName", bit.z.in($$0)));
-      $$0.registerSimple($$1, "Structure");
-      $$0.registerSimple($$1, "EndGateway");
+      Map<String, Supplier<TypeTemplate>> $$1 = super.registerBlockEntities($$0);
+      bcg.a.forEach(($$1x, $$2) -> $$1.put($$2, Objects.requireNonNull($$1.remove($$1x), () -> "Didn't find " + $$1x + " in schema")));
       return $$1;
    }
 
-   public static TypeTemplate a(Schema $$0) {
-      return DSL.optionalFields(
-         new Pair[]{
-            Pair.of("Text1", bit.z.in($$0)),
-            Pair.of("Text2", bit.z.in($$0)),
-            Pair.of("Text3", bit.z.in($$0)),
-            Pair.of("Text4", bit.z.in($$0)),
-            Pair.of("FilteredText1", bit.z.in($$0)),
-            Pair.of("FilteredText2", bit.z.in($$0)),
-            Pair.of("FilteredText3", bit.z.in($$0)),
-            Pair.of("FilteredText4", bit.z.in($$0))
-         }
-      );
-   }
-
    public void registerTypes(Schema $$0, Map<String, Supplier<TypeTemplate>> $$1, Map<String, Supplier<TypeTemplate>> $$2) {
-      $$0.registerType(false, bit.a, () -> DSL.optionalFields("CustomBossEvents", DSL.compoundList(DSL.optionalFields("Name", bit.z.in($$0)))));
-      $$0.registerType(false, bit.b, () -> DSL.optionalFields("Inventory", DSL.list(bit.t.in($$0)), "EnderItems", DSL.list(bit.t.in($$0))));
-      $$0.registerType(
-         false,
-         bit.c,
-         () -> DSL.fields(
-               "Level",
-               DSL.optionalFields(
-                  "Entities",
-                  DSL.list(bit.C.in($$0)),
-                  "TileEntities",
-                  DSL.list(DSL.or(bit.s.in($$0), DSL.remainder())),
-                  "TileTicks",
-                  DSL.list(DSL.fields("i", bit.E.in($$0)))
-               )
-            )
-      );
-      $$0.registerType(true, bit.s, () -> DSL.optionalFields("components", bit.w.in($$0), DSL.taggedChoiceLazy("id", DSL.string(), $$2)));
-      $$0.registerType(true, bit.C, () -> DSL.optionalFields("Riding", bit.C.in($$0), bit.D.in($$0)));
-      $$0.registerType(false, bit.B, () -> DSL.constType(bko.a()));
-      $$0.registerType(
-         true,
-         bit.D,
-         () -> DSL.and(bit.A.in($$0), DSL.optionalFields("CustomName", DSL.constType(DSL.string()), DSL.taggedChoiceLazy("id", DSL.string(), $$1)))
-      );
-      $$0.registerType(
-         true, bit.t, () -> DSL.hook(DSL.optionalFields("id", DSL.or(DSL.constType(DSL.intType()), bit.F.in($$0)), "tag", b($$0)), b, HookFunction.IDENTITY)
-      );
-      $$0.registerType(false, bit.e, DSL::remainder);
-      $$0.registerType(false, bit.E, () -> DSL.or(DSL.constType(DSL.intType()), DSL.constType(bko.a())));
-      $$0.registerType(false, bit.F, () -> DSL.constType(bko.a()));
-      $$0.registerType(false, bit.g, DSL::remainder);
-      $$0.registerType(false, bit.h, DSL::remainder);
-      $$0.registerType(false, bit.i, DSL::remainder);
-      $$0.registerType(false, bit.j, () -> DSL.optionalFields("banners", DSL.list(DSL.optionalFields("Name", bit.z.in($$0)))));
-      $$0.registerType(false, bit.k, DSL::remainder);
-      $$0.registerType(false, bit.l, DSL::remainder);
-      $$0.registerType(false, bit.m, DSL::remainder);
-      $$0.registerType(
-         false,
-         bit.o,
-         () -> DSL.optionalFields(
-               "data",
-               DSL.optionalFields(
-                  "Objectives",
-                  DSL.list(bit.J.in($$0)),
-                  "Teams",
-                  DSL.list(bit.K.in($$0)),
-                  "PlayerScores",
-                  DSL.list(DSL.optionalFields("display", bit.z.in($$0)))
-               )
-            )
-      );
-      $$0.registerType(false, bit.n, () -> DSL.optionalFields("data", DSL.optionalFields("Features", DSL.compoundList(bit.I.in($$0)))));
-      $$0.registerType(false, bit.I, DSL::remainder);
-      $$0.registerType(false, bit.J, DSL::remainder);
-      $$0.registerType(
-         false, bit.K, () -> DSL.optionalFields("MemberNamePrefix", bit.z.in($$0), "MemberNameSuffix", bit.z.in($$0), "DisplayName", bit.z.in($$0))
-      );
-      $$0.registerType(true, bit.H, DSL::remainder);
-      $$0.registerType(false, bit.q, DSL::remainder);
-      $$0.registerType(false, bit.O, DSL::remainder);
-      $$0.registerType(false, bit.r, () -> DSL.optionalFields("Entities", DSL.list(bit.C.in($$0))));
-      $$0.registerType(true, bit.w, DSL::remainder);
-      $$0.registerType(true, bit.x, () -> DSL.optionalFields("buy", bit.t.in($$0), "buyB", bit.t.in($$0), "sell", bit.t.in($$0)));
-      $$0.registerType(true, bit.y, () -> DSL.constType(DSL.string()));
-      $$0.registerType(true, bit.z, () -> DSL.constType(DSL.string()));
-      $$0.registerType(
-         false,
-         bit.f,
-         () -> DSL.optionalFields(
-               "entities",
-               DSL.list(DSL.optionalFields("nbt", bit.C.in($$0))),
-               "blocks",
-               DSL.list(DSL.optionalFields("nbt", bit.s.in($$0))),
-               "palette",
-               DSL.list(bit.u.in($$0))
-            )
-      );
-      $$0.registerType(false, bit.u, DSL::remainder);
-      $$0.registerType(false, bit.v, DSL::remainder);
-      $$0.registerType(true, bit.A, () -> DSL.optional(DSL.field("Equipment", DSL.list(bit.t.in($$0)))));
-   }
-
-   public static TypeTemplate b(Schema $$0) {
-      return DSL.optionalFields(
-         new Pair[]{
-            Pair.of("EntityTag", bit.C.in($$0)),
-            Pair.of("BlockEntityTag", bit.s.in($$0)),
-            Pair.of("CanDestroy", DSL.list(bit.E.in($$0))),
-            Pair.of("CanPlaceOn", DSL.list(bit.E.in($$0))),
-            Pair.of("Items", DSL.list(bit.t.in($$0))),
-            Pair.of("ChargedProjectiles", DSL.list(bit.t.in($$0))),
-            Pair.of("pages", DSL.list(bit.z.in($$0))),
-            Pair.of("filtered_pages", DSL.compoundList(bit.z.in($$0))),
-            Pair.of("display", DSL.optionalFields("Name", bit.z.in($$0), "Lore", DSL.list(bit.z.in($$0))))
-         }
-      );
-   }
-
-   protected static <T> T a(Dynamic<T> $$0, Map<String, String> $$1, Map<String, String> $$2) {
-      return (T)$$0.update("tag", $$3 -> $$3.update("BlockEntityTag", $$2xx -> {
-            String $$3x = $$0.get("id").asString().result().map(bko::a).orElse("minecraft:air");
-            if (!"minecraft:air".equals($$3x)) {
-               String $$4 = $$1.get($$3x);
-               if ($$4 != null) {
-                  return $$2xx.set("id", $$0.createString($$4));
-               }
-
-               c.warn("Unable to resolve BlockEntity for ItemStack: {}", $$3x);
-            }
-
-            return $$2xx;
-         }).update("EntityTag", $$2xx -> {
-            if ($$2xx.get("id").result().isPresent()) {
-               return $$2xx;
-            } else {
-               String $$3x = bko.a($$0.get("id").asString(""));
-               String $$4 = $$2.get($$3x);
-               return $$4 != null ? $$2xx.set("id", $$0.createString($$4)) : $$2xx;
-            }
-         })).getValue();
+      super.registerTypes($$0, $$1, $$2);
+      $$0.registerType(true, biw.s, () -> DSL.optionalFields("components", biw.w.in($$0), DSL.taggedChoiceLazy("id", bkr.a(), $$2)));
+      $$0.registerType(true, biw.t, () -> DSL.hook(DSL.optionalFields("id", biw.F.in($$0), "tag", bos.b($$0)), b, HookFunction.IDENTITY));
    }
 }

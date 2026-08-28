@@ -13,49 +13,49 @@ import net.minecraft.server.MinecraftServer;
 
 public class ez implements fq<ez.a> {
    private static final Collection<String> a = Arrays.asList("Hello world!", "foo", "@e", "Hello @p :)");
-   static final Dynamic2CommandExceptionType b = new Dynamic2CommandExceptionType(($$0, $$1) -> ww.b("argument.message.too_long", $$0, $$1));
+   static final Dynamic2CommandExceptionType b = new Dynamic2CommandExceptionType(($$0, $$1) -> wy.b("argument.message.too_long", $$0, $$1));
 
    public static ez a() {
       return new ez();
    }
 
-   public static ww a(CommandContext<ei> $$0, String $$1) throws CommandSyntaxException {
+   public static wy a(CommandContext<ei> $$0, String $$1) throws CommandSyntaxException {
       ez.a $$2 = (ez.a)$$0.getArgument($$1, ez.a.class);
       return $$2.a((ei)$$0.getSource());
    }
 
-   public static void a(CommandContext<ei> $$0, String $$1, Consumer<xm> $$2) throws CommandSyntaxException {
+   public static void a(CommandContext<ei> $$0, String $$1, Consumer<xo> $$2) throws CommandSyntaxException {
       ez.a $$3 = (ez.a)$$0.getArgument($$1, ez.a.class);
       ei $$4 = (ei)$$0.getSource();
-      ww $$5 = $$3.a($$4);
+      wy $$5 = $$3.a($$4);
       eg $$6 = $$4.n();
-      xm $$7 = $$6.a($$1);
+      xo $$7 = $$6.a($$1);
       if ($$7 != null) {
          a($$2, $$4, $$7.a($$5));
       } else {
-         b($$2, $$4, xm.a($$3.a).a($$5));
+         b($$2, $$4, xo.a($$3.a).a($$5));
       }
    }
 
-   private static void a(Consumer<xm> $$0, ei $$1, xm $$2) {
+   private static void a(Consumer<xo> $$0, ei $$1, xo $$2) {
       MinecraftServer $$3 = $$1.l();
-      CompletableFuture<ash> $$4 = a($$1, $$2);
-      ww $$5 = $$3.bk().decorate($$1.i(), $$2.d());
+      CompletableFuture<asj> $$4 = a($$1, $$2);
+      wy $$5 = $$3.bk().decorate($$1.i(), $$2.d());
       $$1.o().append($$4, $$3x -> {
-         xm $$4x = $$2.a($$5).a($$3x.e());
+         xo $$4x = $$2.a($$5).a($$3x.e());
          $$0.accept($$4x);
       });
    }
 
-   private static void b(Consumer<xm> $$0, ei $$1, xm $$2) {
-      wr $$3 = $$1.l().bk();
-      ww $$4 = $$3.decorate($$1.i(), $$2.d());
+   private static void b(Consumer<xo> $$0, ei $$1, xo $$2) {
+      wt $$3 = $$1.l().bk();
+      wy $$4 = $$3.decorate($$1.i(), $$2.d());
       $$0.accept($$2.a($$4));
    }
 
-   private static CompletableFuture<ash> a(ei $$0, xm $$1) {
-      arp $$2 = $$0.i();
-      return $$2 != null && $$1.a($$2.cG()) ? $$2.Z().a($$1.c()) : CompletableFuture.completedFuture(ash.a($$1.c()));
+   private static CompletableFuture<asj> a(ei $$0, xo $$1) {
+      arr $$2 = $$0.i();
+      return $$2 != null && $$1.a($$2.cG()) ? $$2.Z().a($$1.c()) : CompletableFuture.completedFuture(asj.a($$1.c()));
    }
 
    public ez.a a(StringReader $$0) throws CommandSyntaxException {
@@ -72,17 +72,17 @@ public class ez implements fq<ez.a> {
 
    public static record a(String a, ez.b[] b) {
 
-      ww a(ei $$0) throws CommandSyntaxException {
+      wy a(ei $$0) throws CommandSyntaxException {
          return this.a($$0, gz.a($$0));
       }
 
-      public ww a(ei $$0, boolean $$1) throws CommandSyntaxException {
+      public wy a(ei $$0, boolean $$1) throws CommandSyntaxException {
          if (this.b.length != 0 && $$1) {
-            xk $$2 = ww.b(this.a.substring(0, this.b[0].a()));
+            xm $$2 = wy.b(this.a.substring(0, this.b[0].a()));
             int $$3 = this.b[0].a();
 
             for (ez.b $$4 : this.b) {
-               ww $$5 = $$4.a($$0);
+               wy $$5 = $$4.a($$0);
                if ($$3 < $$4.a()) {
                   $$2.f(this.a.substring($$3, $$4.a()));
                }
@@ -97,7 +97,7 @@ public class ez implements fq<ez.a> {
 
             return $$2;
          } else {
-            return ww.b(this.a);
+            return wy.b(this.a);
          }
       }
 
@@ -148,7 +148,7 @@ public class ez implements fq<ez.a> {
    }
 
    public static record b(int a, int b, gy c) {
-      public ww a(ei $$0) throws CommandSyntaxException {
+      public wy a(ei $$0) throws CommandSyntaxException {
          return gy.a(this.c.b($$0));
       }
    }

@@ -1,31 +1,44 @@
-public class cyb extends cyo {
-   public cyb(cyo.a $$0) {
+import java.util.List;
+
+public class cyb extends cyu {
+   public cyb(cyu.a $$0) {
       super($$0);
    }
 
    @Override
-   public bty a(dip $$0, cqs $$1, btx $$2) {
-      cys $$3 = $$1.b($$2);
-      if ($$1.cj != null) {
-         if (!$$0.C) {
-            int $$4 = $$1.cj.a($$3);
-            $$3.a($$4, $$1, bwz.d($$2));
-         }
-
-         $$0.a(null, $$1.dA(), $$1.dC(), $$1.dG(), awl.jw, awm.g, 1.0F, 0.4F / ($$0.C_().i() * 0.4F + 0.8F));
-         $$1.a(eeo.C);
+   public bub a(dct $$0) {
+      div $$1 = $$0.q();
+      iu $$2 = $$0.a();
+      dzz $$3 = $$1.a_($$2);
+      if (!$$3.a(dmc.cw) && !$$3.a(dmc.I)) {
+         return bub.d;
       } else {
-         $$0.a(null, $$1.dA(), $$1.dC(), $$1.dG(), awl.jy, awm.g, 0.5F, 0.4F / ($$0.C_().i() * 0.4F + 0.8F));
-         if ($$0 instanceof aro $$5) {
-            int $$6 = (int)(dfh.b($$5, $$3, $$1) * 20.0F);
-            int $$7 = dfh.a($$5, $$3, $$1);
-            crm.a(new cri($$1, $$0, $$7, $$6), $$5, $$3);
+         iu $$4 = $$2.d();
+         if (!$$1.v($$4)) {
+            return bub.d;
+         } else {
+            double $$5 = (double)$$4.u();
+            double $$6 = (double)$$4.v();
+            double $$7 = (double)$$4.w();
+            List<bwd> $$8 = $$1.a_(null, new fed($$5, $$6, $$7, $$5 + 1.0, $$6 + 2.0, $$7 + 1.0));
+            if (!$$8.isEmpty()) {
+               return bub.d;
+            } else {
+               if ($$1 instanceof arq) {
+                  clv $$9 = new clv($$1, $$5 + 0.5, $$6, $$7 + 0.5);
+                  $$9.a(false);
+                  $$1.b($$9);
+                  $$1.a($$0.o(), eez.t, $$4);
+                  edz $$10 = ((arq)$$1).F();
+                  if ($$10 != null) {
+                     $$10.g();
+                  }
+               }
+
+               $$0.n().h(1);
+               return bub.a;
+            }
          }
-
-         $$1.b(awv.c.b(this));
-         $$1.a(eeo.D);
       }
-
-      return bty.a;
    }
 }

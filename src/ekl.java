@@ -1,47 +1,31 @@
 import com.mojang.serialization.Codec;
-import java.util.HashSet;
-import java.util.Set;
-import java.util.function.Predicate;
 
-public class ekl extends eki {
-   public ekl(Codec<elw> $$0) {
+public class ekl extends eje<ema> {
+   public ekl(Codec<ema> $$0) {
       super($$0);
    }
 
    @Override
-   protected Set<iu> a(djo $$0, elw $$1, azt $$2, iu $$3, Predicate<dzo> $$4, int $$5, int $$6) {
-      Set<iu> $$7 = super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6);
-      Set<iu> $$8 = new HashSet<>();
-      iu.a $$9 = new iu.a();
+   public boolean a(ejg<ema> $$0) {
+      ema $$1 = $$0.f();
+      dju $$2 = $$0.b();
+      iu $$3 = $$0.e();
+      dzz $$4 = $$1.a().a($$0.d(), $$3);
+      if ($$4.a($$2, $$3)) {
+         if ($$4.b() instanceof doj) {
+            if (!$$2.v($$3.d())) {
+               return false;
+            }
 
-      for (iu $$10 : $$7) {
-         if (!a($$0, $$7, $$10, $$9)) {
-            $$8.add($$10);
+            doj.a($$2, $$4, $$3, 2);
+         } else if ($$4.b() instanceof drd) {
+            drd.a($$2, $$3, $$2.C_(), 2);
+         } else {
+            $$2.a($$3, $$4, 2);
          }
-      }
 
-      for (iu $$11 : $$8) {
-         $$0.a($$11, dlw.J.m(), 2);
-      }
-
-      return $$8;
-   }
-
-   private static boolean a(djo $$0, Set<iu> $$1, iu $$2, iu.a $$3) {
-      return a($$0, $$2, $$3, ja.c) || a($$0, $$2, $$3, ja.f) || a($$0, $$2, $$3, ja.d) || a($$0, $$2, $$3, ja.e) || a($$0, $$2, $$3, ja.a);
-   }
-
-   private static boolean a(djo $$0, iu $$1, iu.a $$2, ja $$3) {
-      $$2.a($$1, $$3);
-      return !$$0.a_($$2).c($$0, $$2, $$3.g());
-   }
-
-   @Override
-   protected boolean a(djo $$0, elw $$1, ebm $$2, azt $$3, iu $$4) {
-      if (super.a($$0, $$1, $$2, $$3, $$4.e())) {
-         dzo $$5 = $$0.a_($$4);
-         if ($$5.b(eae.I) && !$$5.c(eae.I)) {
-            $$0.a($$4, $$5.b(eae.I, Boolean.valueOf(true)), 2);
+         if ($$1.b()) {
+            $$2.a($$3, $$2.a_($$3).b(), 1);
          }
 
          return true;

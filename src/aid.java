@@ -1,18 +1,28 @@
-import java.util.Optional;
+public record aid(int b, int c) implements zf<agp> {
+   public static final yw<vu, aid> a = zf.a(aid::a, aid::new);
 
-public record aid(Optional<je<bvc>> b, Optional<je<bvc>> c) implements zd<agn> {
-   public static final yu<wh, aid> a = yu.a(bvc.b.a(ys::a), aid::b, bvc.b.a(ys::a), aid::e, aid::new);
-
-   @Override
-   public zf<aid> a() {
-      return agl.cb;
+   private aid(vu $$0) {
+      this($$0.l(), $$0.l());
+      if (this.c < 0 && this.c != -1) {
+         throw new IllegalArgumentException("Invalid selectedItemIndex: " + this.c);
+      }
    }
 
-   public void a(agn $$0) {
+   private void a(vu $$0) {
+      $$0.c(this.b);
+      $$0.c(this.c);
+   }
+
+   @Override
+   public zh<aid> a() {
+      return agn.bm;
+   }
+
+   public void a(agp $$0) {
       $$0.a(this);
    }
 
-   public Optional<je<bvc>> e() {
+   public int e() {
       return this.c;
    }
 }

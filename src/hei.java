@@ -1,8 +1,5 @@
-import javax.annotation.ParametersAreNonnullByDefault;
-
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface hei {
+public class hei extends hcf {
+   public float a;
+   public float b;
+   public boolean c;
 }

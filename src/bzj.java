@@ -1,28 +1,79 @@
-import com.mojang.datafixers.kinds.App;
+import java.util.Map;
+import java.util.Optional;
 import java.util.function.Function;
 
-public class bzj {
-   private static iu a(bxb $$0, iu $$1) {
-      azt $$2 = $$0.dV().A;
-      return $$1.b(a($$2), 0, a($$2));
+public class bzj<E extends bxc & cqi> extends byt<E> {
+   private static final int c = 3;
+   private static final int d = 60;
+   private final Function<bxc, Optional<cah>> e;
+   private final float f;
+
+   public bzj(Function<bxc, Optional<cah>> $$0, float $$1, int $$2) {
+      super(Map.of(cge.o, cgf.c, cge.n, cgf.c, cge.aQ, cgf.c), $$2);
+      this.e = $$0;
+      this.f = $$1;
    }
 
-   private static int a(azt $$0) {
-      return $$0.a(3) - 1;
+   @Override
+   protected boolean a(arq $$0, E $$1) {
+      return this.b($$1);
    }
 
-   public static <E extends bxb> cab<E> a(cgb<iu> $$0, int $$1, float $$2) {
-      return ccd.a(
-         (Function<ccd.b<E>, ? extends App<ccd.c<E>, ccg<E>>>)($$3 -> $$3.group($$3.b($$0), $$3.c(cgb.p), $$3.c(cgb.n), $$3.a(cgb.o))
-               .apply($$3, ($$3x, $$4, $$5, $$6) -> ($$4x, $$5x, $$6x) -> {
-                     iu $$7 = $$3.b($$3x);
-                     boolean $$8 = $$7.a($$5x.dv(), (double)$$1);
-                     if (!$$8) {
-                        bys.a($$5x, a($$5x, $$7), $$2, $$1);
-                     }
+   @Override
+   protected boolean a(arq $$0, E $$1, long $$2) {
+      return this.b($$1);
+   }
 
-                     return true;
-                  }))
-      );
+   @Override
+   protected void d(arq $$0, E $$1, long $$2) {
+      this.e.apply($$1).ifPresent($$1x -> byv.a($$1, $$1x, this.f, 3));
+   }
+
+   @Override
+   protected void c(arq $$0, E $$1, long $$2) {
+      Optional<cah> $$3 = this.e.apply($$1);
+      if (!$$3.isEmpty()) {
+         cah $$4 = $$3.get();
+         double $$5 = $$4.a().f($$1.bE());
+         if ($$5 < 3.0) {
+            cyy $$6 = $$1.n().a(0, 1);
+            if (!$$6.f()) {
+               a($$1, $$6, a($$4));
+               if ($$1 instanceof ckd $$7) {
+                  cke.a((bxc)$$7).ifPresent($$2x -> this.a($$4, $$6, $$2x));
+               }
+
+               $$1.eb().a(cge.aQ, 60);
+            }
+         }
+      }
+   }
+
+   private void a(cah $$0, cyy $$1, arr $$2) {
+      iu $$3 = $$0.b().e();
+      ap.aa.a($$2, $$3, $$1);
+   }
+
+   private boolean b(E $$0) {
+      if ($$0.n().c()) {
+         return false;
+      } else {
+         Optional<cah> $$1 = this.e.apply($$0);
+         return $$1.isPresent();
+      }
+   }
+
+   private static fei a(cah $$0) {
+      return $$0.a().b(0.0, 1.0, 0.0);
+   }
+
+   public static void a(bxc $$0, cyy $$1, fei $$2) {
+      fei $$3 = new fei(0.2F, 0.3F, 0.2F);
+      byv.a($$0, $$1, $$2, $$3, 0.2F);
+      div $$4 = $$0.dV();
+      if ($$4.ae() % 7L == 0L && $$4.A.j() < 0.9) {
+         float $$5 = af.<Float>a(ckd.d, $$4.C_());
+         $$4.a(null, $$0, awn.g, awo.g, 1.0F, $$5);
+      }
    }
 }

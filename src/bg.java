@@ -8,7 +8,7 @@ public class bg extends dj<bg.a> {
       return bg.a.a;
    }
 
-   public void a(arp $$0, int $$1) {
+   public void a(arr $$0, int $$1) {
       this.a($$0, $$1x -> $$1x.a($$1));
    }
 

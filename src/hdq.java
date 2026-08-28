@@ -1,13 +1,6 @@
-import javax.annotation.Nullable;
-
-public class hdq extends hbj {
-   @Nullable
-   public bvx.k.e a;
-   @Nullable
-   public bvx.k.b f;
-
-   @Override
-   public boolean a() {
-      return this.a != null;
-   }
+public class hdq extends hcw {
+   public boolean a;
+   public boolean b;
+   public float c;
+   public cpp d = cpp.f;
 }

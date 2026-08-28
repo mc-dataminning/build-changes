@@ -1,9 +1,31 @@
-public class fwx {
-   private static final String[] a = new String[]{"O o o", "o O o", "o o O", "o O o"};
-   private static final long b = 300L;
+public class fwx extends fxu {
+   private fsv a;
+   private final Runnable b;
+   private final Runnable c;
 
-   public static String a(long $$0) {
-      int $$1 = (int)($$0 / 300L % (long)a.length);
-      return a[$$1];
+   public fwx(Runnable $$0, Runnable $$1) {
+      super(wy.c("datapackFailure.title"));
+      this.a = fsv.a;
+      this.b = $$0;
+      this.c = $$1;
+   }
+
+   @Override
+   protected void aN_() {
+      super.aN_();
+      this.a = fsv.a(this.p, this.n(), this.n - 50);
+      this.c(fsc.a(wy.c("datapackFailure.safeMode"), $$0 -> this.c.run()).a(this.n / 2 - 155, this.o / 6 + 96, 150, 20).a());
+      this.c(fsc.a(wx.k, $$0 -> this.b.run()).a(this.n / 2 - 155 + 160, this.o / 6 + 96, 150, 20).a());
+   }
+
+   @Override
+   public void a(fro $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      this.a.a($$0, this.n / 2, 70);
+   }
+
+   @Override
+   public boolean aC_() {
+      return false;
    }
 }

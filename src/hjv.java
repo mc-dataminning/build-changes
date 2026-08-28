@@ -1,20 +1,31 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import com.google.common.collect.Lists;
+import com.ibm.icu.lang.UCharacter;
+import com.ibm.icu.text.ArabicShaping;
+import com.ibm.icu.text.Bidi;
+import com.ibm.icu.text.BidiRun;
+import java.util.List;
 
-public record hjv(boolean e, boolean f) {
-   public static final boolean a = false;
-   public static final boolean b = false;
-   public static final Codec<hjv> c = RecordCodecBuilder.create(
-      $$0 -> $$0.group(Codec.BOOL.optionalFieldOf("blur", false).forGetter(hjv::a), Codec.BOOL.optionalFieldOf("clamp", false).forGetter(hjv::b))
-            .apply($$0, hjv::new)
-   );
-   public static final aua<hjv> d = new aua<>("texture", c);
+public class hjv {
+   public static ayy a(xd $$0, boolean $$1) {
+      xw $$2 = xw.a($$0, UCharacter::getMirror, hjv::a);
+      Bidi $$3 = new Bidi($$2.a(), $$1 ? 127 : 126);
+      $$3.setReorderingMode(0);
+      List<ayy> $$4 = Lists.newArrayList();
+      int $$5 = $$3.countRuns();
 
-   public boolean a() {
-      return this.e;
+      for (int $$6 = 0; $$6 < $$5; $$6++) {
+         BidiRun $$7 = $$3.getVisualRun($$6);
+         $$4.addAll($$2.a($$7.getStart(), $$7.getLength(), $$7.isOddRun()));
+      }
+
+      return ayy.composite($$4);
    }
 
-   public boolean b() {
-      return this.f;
+   private static String a(String $$0) {
+      try {
+         return new ArabicShaping(8).shape($$0);
+      } catch (Exception var2) {
+         return $$0;
+      }
    }
 }

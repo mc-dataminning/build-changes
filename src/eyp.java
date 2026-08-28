@@ -1,41 +1,54 @@
-import com.mojang.serialization.Codec;
-import java.util.stream.Stream;
+import com.mojang.serialization.Dynamic;
+import com.mojang.serialization.OptionalDynamic;
 
-public record eyp<T>(ald<jr<T>> d, Codec<T> e, eyp.a<T> f) {
-   public static final eyp<fbw> a = new eyp<>(mg.bq, fbw.e, e());
-   public static final eyp<fab> b = new eyp<>(mg.bp, fad.c, e());
-   public static final eyp<eys> c = new eyp<>(mg.bo, eys.d, f());
+public class eyp {
+   private final int a;
+   private final long b;
+   private final String c;
+   private final eyf d;
+   private final boolean e;
 
-   public void a(eyt $$0, ald<T> $$1, T $$2) {
-      this.f.run($$0, $$1, $$2);
+   private eyp(int $$0, long $$1, String $$2, int $$3, String $$4, boolean $$5) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+      this.d = new eyf($$3, $$4);
+      this.e = $$5;
    }
 
-   public static Stream<eyp<?>> a() {
-      return Stream.of(a, b, c);
+   public static eyp a(Dynamic<?> $$0) {
+      int $$1 = $$0.get("version").asInt(0);
+      long $$2 = $$0.get("LastPlayed").asLong(0L);
+      OptionalDynamic<?> $$3 = $$0.get("Version");
+      return $$3.result().isPresent()
+         ? new eyp(
+            $$1,
+            $$2,
+            $$3.get("Name").asString(ab.b().c()),
+            $$3.get("Id").asInt(ab.b().d().c()),
+            $$3.get("Series").asString(eyf.a),
+            $$3.get("Snapshot").asBoolean(!ab.b().g())
+         )
+         : new eyp($$1, $$2, "", 0, eyf.a, false);
    }
 
-   private static <T extends eyo> eyp.a<T> e() {
-      return ($$0, $$1, $$2) -> $$2.a($$0.a("{" + $$1.b() + "/" + $$1.a() + "}", $$1));
+   public int a() {
+      return this.a;
    }
 
-   private static eyp.a<eys> f() {
-      return ($$0, $$1, $$2) -> $$2.a($$0.a($$2.a()).a("{" + $$1.b() + "/" + $$1.a() + "}", $$1));
+   public long b() {
+      return this.b;
    }
 
-   public ald<jr<T>> b() {
+   public String c() {
+      return this.c;
+   }
+
+   public eyf d() {
       return this.d;
    }
 
-   public Codec<T> c() {
+   public boolean e() {
       return this.e;
-   }
-
-   public eyp.a<T> d() {
-      return this.f;
-   }
-
-   @FunctionalInterface
-   public interface a<T> {
-      void run(eyt var1, ald<T> var2, T var3);
    }
 }

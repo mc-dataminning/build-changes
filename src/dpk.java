@@ -1,73 +1,57 @@
 import com.mojang.serialization.MapCodec;
-import java.util.Optional;
+import javax.annotation.Nullable;
 
-public abstract class dpk extends dpj implements dlx {
-   protected dpk(dzn.d $$0, ja $$1, feq $$2, boolean $$3) {
-      super($$0, $$1, $$2, $$3);
+public class dpk extends dkv {
+   public static final MapCodec<dpk> c = b(dpk::new);
+
+   @Override
+   public MapCodec<dpk> a() {
+      return c;
+   }
+
+   protected dpk(dzy.d $$0) {
+      super($$0);
    }
 
    @Override
-   protected abstract MapCodec<? extends dpk> a();
+   public dwx a(iu $$0, dzz $$1) {
+      return new dxx($$0, $$1);
+   }
 
-   protected dzo a(dzo $$0, dzo $$1) {
-      return $$1;
+   @Nullable
+   @Override
+   public <T extends dwx> dwy<T> a(div $$0, dzz $$1, dwz<T> $$2) {
+      return a($$0, $$2, dwz.a);
    }
 
    @Override
-   protected dzo a(dzo $$0, dis $$1, dje $$2, iu $$3, ja $$4, iu $$5, dzo $$6, azt $$7) {
-      if ($$4 == this.a.g() && !$$0.a($$1, $$3)) {
-         $$2.a($$3, this, 1);
+   protected void a(div $$0, iu $$1, cqy $$2) {
+      dwx $$3 = $$0.c_($$1);
+      if ($$3 instanceof dxx) {
+         $$2.a((bud)$$3);
+         $$2.a(awx.am);
       }
+   }
 
-      dpl $$8 = this.c();
-      if ($$4 == this.a && !$$6.a(this) && !$$6.a($$8)) {
-         return this.a($$0, $$8.b($$7));
-      } else {
-         if (this.b) {
-            $$2.a($$3, evw.c, evw.c.a($$1));
+   @Override
+   public void a(dzz $$0, div $$1, iu $$2, azv $$3) {
+      if ($$0.c(b)) {
+         double $$4 = (double)$$2.u() + 0.5;
+         double $$5 = (double)$$2.v();
+         double $$6 = (double)$$2.w() + 0.5;
+         if ($$3.j() < 0.1) {
+            $$1.a($$4, $$5, $$6, awn.kz, awo.e, 1.0F, 1.0F, false);
          }
 
-         return super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
+         ja $$7 = $$0.c(a);
+         ja.a $$8 = $$7.o();
+         double $$9 = 0.52;
+         double $$10 = $$3.j() * 0.6 - 0.3;
+         double $$11 = $$8 == ja.a.a ? (double)$$7.j() * 0.52 : $$10;
+         double $$12 = $$3.j() * 6.0 / 16.0;
+         double $$13 = $$8 == ja.a.c ? (double)$$7.l() * 0.52 : $$10;
+         $$1.a(lx.ah, $$4 + $$11, $$5 + $$12, $$6 + $$13, 0.0, 0.0, 0.0);
+         $$1.a(lx.F, $$4 + $$11, $$5 + $$12, $$6 + $$13, 0.0, 0.0, 0.0);
       }
-   }
-
-   @Override
-   protected cys a(dis $$0, iu $$1, dzo $$2, boolean $$3) {
-      return new cys(this.c());
-   }
-
-   @Override
-   public boolean a(dis $$0, iu $$1, dzo $$2) {
-      Optional<iu> $$3 = this.a($$0, $$1, $$2.b());
-      return $$3.isPresent() && this.c().h($$0.a_($$3.get().a(this.a)));
-   }
-
-   @Override
-   public boolean a(dip $$0, azt $$1, iu $$2, dzo $$3) {
-      return true;
-   }
-
-   @Override
-   public void a(aro $$0, azt $$1, iu $$2, dzo $$3) {
-      Optional<iu> $$4 = this.a($$0, $$2, $$3.b());
-      if ($$4.isPresent()) {
-         dzo $$5 = $$0.a_($$4.get());
-         ((dpl)$$5.b()).a($$0, $$1, $$4.get(), $$5);
-      }
-   }
-
-   private Optional<iu> a(dhv $$0, iu $$1, dlu $$2) {
-      return l.a($$0, $$1, $$2, this.a, this.c());
-   }
-
-   @Override
-   protected boolean a(dzo $$0, dcl $$1) {
-      boolean $$2 = super.a($$0, $$1);
-      return $$2 && $$1.n().a(this.c().h()) ? false : $$2;
-   }
-
-   @Override
-   protected dlu b() {
-      return this;
    }
 }

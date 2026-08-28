@@ -1,11 +1,8 @@
-@FunctionalInterface
-public interface gip {
-   gip a = $$0 -> $$0;
+import javax.annotation.ParametersAreNonnullByDefault;
 
-   static gip scaling(float $$0) {
-      float $$1 = 24.016F * (1.0F - $$0);
-      return $$2 -> $$2.a($$2x -> $$2x.b($$0).c(0.0F, $$1, 0.0F));
-   }
-
-   gio apply(gio var1);
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface gip {
 }

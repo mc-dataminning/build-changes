@@ -1,394 +1,374 @@
-import com.google.common.collect.ImmutableList;
+import com.mojang.datafixers.util.Pair;
+import com.mojang.logging.LogUtils;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import it.unimi.dsi.fastutil.longs.Long2FloatLinkedOpenHashMap;
-import java.util.Optional;
+import it.unimi.dsi.fastutil.longs.Long2ObjectMaps;
+import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
+import it.unimi.dsi.fastutil.longs.LongOpenHashSet;
+import it.unimi.dsi.fastutil.longs.LongSet;
+import it.unimi.dsi.fastutil.longs.Long2ObjectMap.Entry;
+import it.unimi.dsi.fastutil.objects.ObjectArrayList;
+import it.unimi.dsi.fastutil.objects.ObjectIterator;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import java.util.function.BiConsumer;
+import java.util.function.Predicate;
 import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public final class djs {
+public class djs extends exs {
+   private static final int c = 4;
+   private static final Logger d = LogUtils.getLogger();
+   private static final Codec<Pair<dic, arw>> e = Codec.mapPair(dic.a.fieldOf("chunk_pos"), arw.a).codec();
    public static final Codec<djs> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               djs.b.a.forGetter($$0x -> $$0x.i),
-               djy.a.fieldOf("effects").forGetter($$0x -> $$0x.l),
-               djt.b.forGetter($$0x -> $$0x.j),
-               dke.c.forGetter($$0x -> $$0x.k)
-            )
-            .apply($$0, djs::new)
+      $$0 -> $$0.group(e.listOf().optionalFieldOf("tickets", List.of()).forGetter(djs::h)).apply($$0, djs::a)
    );
-   public static final Codec<djs> b = RecordCodecBuilder.create(
-      $$0 -> $$0.group(djs.b.a.forGetter($$0x -> $$0x.i), djy.a.fieldOf("effects").forGetter($$0x -> $$0x.l))
-            .apply($$0, ($$0x, $$1) -> new djs($$0x, $$1, djt.a, dke.b))
-   );
-   public static final Codec<je<djs>> c = ala.a(mg.aG, a);
-   public static final Codec<ji<djs>> d = jt.a(mg.aG, a);
-   private static final eva f = new eva(new egm(new efo(1234L)), ImmutableList.of(0));
-   static final eva g = new eva(new egm(new efo(3456L)), ImmutableList.of(-2, -1, 0));
-   @Deprecated(
-      forRemoval = true
-   )
-   public static final eva e = new eva(new egm(new efo(2345L)), ImmutableList.of(0));
-   private static final int h = 1024;
-   private final djs.b i;
-   private final djt j;
-   private final dke k;
-   private final djy l;
-   private final ThreadLocal<Long2FloatLinkedOpenHashMap> m = ThreadLocal.withInitial(() -> af.a(() -> {
-         Long2FloatLinkedOpenHashMap $$0x = new Long2FloatLinkedOpenHashMap(1024, 0.25F) {
-            protected void rehash(int $$0) {
-            }
-         };
-         $$0x.defaultReturnValue(Float.NaN);
-         return $$0x;
+   public static final ext<djs> b = new ext<>("chunks", djs::new, a, bbb.i);
+   private final Long2ObjectOpenHashMap<List<arw>> f;
+   private final Long2ObjectOpenHashMap<List<arw>> g;
+   private LongSet h = new LongOpenHashSet();
+   @Nullable
+   private djs.a i;
+   @Nullable
+   private djs.a j;
+
+   private djs(Long2ObjectOpenHashMap<List<arw>> $$0, Long2ObjectOpenHashMap<List<arw>> $$1) {
+      this.f = $$0;
+      this.g = $$1;
+      this.i();
+   }
+
+   public djs() {
+      this(new Long2ObjectOpenHashMap(4), new Long2ObjectOpenHashMap());
+   }
+
+   private static djs a(List<Pair<dic, arw>> $$0) {
+      Long2ObjectOpenHashMap<List<arw>> $$1 = new Long2ObjectOpenHashMap();
+
+      for (Pair<dic, arw> $$2 : $$0) {
+         dic $$3 = (dic)$$2.getFirst();
+         List<arw> $$4 = (List<arw>)$$1.computeIfAbsent($$3.a(), $$0x -> new ObjectArrayList(4));
+         $$4.add((arw)$$2.getSecond());
+      }
+
+      return new djs(new Long2ObjectOpenHashMap(4), $$1);
+   }
+
+   private List<Pair<dic, arw>> h() {
+      List<Pair<dic, arw>> $$0 = new ArrayList<>();
+      this.a((BiConsumer<dic, arw>)(($$1, $$2) -> {
+         if ($$2.a().e()) {
+            $$0.add(new Pair($$1, $$2));
+         }
       }));
-
-   djs(djs.b $$0, djy $$1, djt $$2, dke $$3) {
-      this.i = $$0;
-      this.j = $$2;
-      this.k = $$3;
-      this.l = $$1;
+      return $$0;
    }
 
-   public int a() {
-      return this.l.d();
+   private void a(BiConsumer<dic, arw> $$0) {
+      a($$0, this.f);
+      a($$0, this.g);
    }
 
-   public dke b() {
-      return this.k;
-   }
+   private static void a(BiConsumer<dic, arw> $$0, Long2ObjectOpenHashMap<List<arw>> $$1) {
+      ObjectIterator var2 = Long2ObjectMaps.fastIterable($$1).iterator();
 
-   public boolean c() {
-      return this.i.a();
-   }
+      while (var2.hasNext()) {
+         Entry<List<arw>> $$2 = (Entry<List<arw>>)var2.next();
+         dic $$3 = new dic($$2.getLongKey());
 
-   public djs.c a(iu $$0, int $$1) {
-      if (!this.c()) {
-         return djs.c.a;
-      } else {
-         return this.b($$0, $$1) ? djs.c.c : djs.c.b;
+         for (arw $$4 : (List)$$2.getValue()) {
+            $$0.accept($$3, $$4);
+         }
       }
    }
 
-   private float e(iu $$0, int $$1) {
-      float $$2 = this.i.d.a($$0, this.g());
-      int $$3 = $$1 + 17;
-      if ($$0.v() > $$3) {
-         float $$4 = (float)(f.a((double)((float)$$0.u() / 8.0F), (double)((float)$$0.w() / 8.0F), false) * 8.0);
-         return $$2 - ($$4 + (float)$$0.v() - (float)$$3) * 0.05F / 40.0F;
+   public void a() {
+      ObjectIterator var1 = Long2ObjectMaps.fastIterable(this.g).iterator();
+
+      while (var1.hasNext()) {
+         Entry<List<arw>> $$0 = (Entry<List<arw>>)var1.next();
+
+         for (arw $$1 : (List)$$0.getValue()) {
+            this.a($$0.getLongKey(), $$1);
+         }
+      }
+
+      this.g.clear();
+   }
+
+   public void a(@Nullable djs.a $$0) {
+      this.i = $$0;
+   }
+
+   public void b(@Nullable djs.a $$0) {
+      this.j = $$0;
+   }
+
+   public boolean b() {
+      return !this.f.isEmpty();
+   }
+
+   public List<arw> a(long $$0) {
+      return (List<arw>)this.f.getOrDefault($$0, List.of());
+   }
+
+   private List<arw> b(long $$0) {
+      return (List<arw>)this.f.computeIfAbsent($$0, $$0x -> new ObjectArrayList(4));
+   }
+
+   public void a(arx $$0, dic $$1, int $$2) {
+      arw $$3 = new arw($$0, aqt.a(are.b) - $$2);
+      this.a($$1.a(), $$3);
+   }
+
+   public void a(arw $$0, dic $$1) {
+      this.a($$1.a(), $$0);
+   }
+
+   public boolean a(long $$0, arw $$1) {
+      List<arw> $$2 = this.b($$0);
+
+      for (arw $$3 : $$2) {
+         if (a($$1, $$3)) {
+            $$3.c();
+            this.f();
+            return false;
+         }
+      }
+
+      int $$4 = a($$2, true);
+      int $$5 = a($$2, false);
+      $$2.add($$1);
+      if ($$1.a().b() && $$1.b() < $$4 && this.j != null) {
+         this.j.update($$0, $$1.b(), true);
+      }
+
+      if ($$1.a().a() && $$1.b() < $$5 && this.i != null) {
+         this.i.update($$0, $$1.b(), true);
+      }
+
+      if ($$1.a().equals(arx.f)) {
+         this.h.add($$0);
+      }
+
+      this.f();
+      return true;
+   }
+
+   private static boolean a(arw $$0, arw $$1) {
+      return $$1.a() == $$0.a() && $$1.b() == $$0.b();
+   }
+
+   public int a(long $$0, boolean $$1) {
+      return a(this.a($$0), $$1);
+   }
+
+   private static int a(List<arw> $$0, boolean $$1) {
+      arw $$2 = b($$0, $$1);
+      return $$2 == null ? aqt.b + 1 : $$2.b();
+   }
+
+   @Nullable
+   private static arw b(@Nullable List<arw> $$0, boolean $$1) {
+      if ($$0 == null) {
+         return null;
       } else {
+         arw $$2 = null;
+
+         for (arw $$3 : $$0) {
+            if ($$2 == null || $$3.b() < $$2.b()) {
+               if ($$1 && $$3.a().b()) {
+                  $$2 = $$3;
+               } else if (!$$1 && $$3.a().a()) {
+                  $$2 = $$3;
+               }
+            }
+         }
+
          return $$2;
       }
    }
 
-   @Deprecated
-   private float f(iu $$0, int $$1) {
-      long $$2 = $$0.a();
-      Long2FloatLinkedOpenHashMap $$3 = this.m.get();
-      float $$4 = $$3.get($$2);
-      if (!Float.isNaN($$4)) {
-         return $$4;
-      } else {
-         float $$5 = this.e($$0, $$1);
-         if ($$3.size() == 1024) {
-            $$3.removeFirstFloat();
-         }
-
-         $$3.put($$2, $$5);
-         return $$5;
-      }
+   public void b(arx $$0, dic $$1, int $$2) {
+      arw $$3 = new arw($$0, aqt.a(are.b) - $$2);
+      this.b($$1.a(), $$3);
    }
 
-   public boolean a(dis $$0, iu $$1) {
-      return this.a($$0, $$1, true);
+   public void b(arw $$0, dic $$1) {
+      this.b($$1.a(), $$0);
    }
 
-   public boolean a(dis $$0, iu $$1, boolean $$2) {
-      if (this.c($$1, $$0.P())) {
+   public boolean b(long $$0, arw $$1) {
+      List<arw> $$2 = (List<arw>)this.f.get($$0);
+      if ($$2 == null) {
          return false;
       } else {
-         if ($$0.d($$1.v()) && $$0.a(diy.b, $$1) < 10) {
-            dzo $$3 = $$0.a_($$1);
-            evv $$4 = $$0.b_($$1);
-            if ($$4.a() == evw.c && $$3.b() instanceof dqo) {
-               if (!$$2) {
-                  return true;
-               }
+         boolean $$3 = false;
+         Iterator<arw> $$4 = $$2.iterator();
 
-               boolean $$5 = $$0.A($$1.h()) && $$0.A($$1.i()) && $$0.A($$1.f()) && $$0.A($$1.g());
-               if (!$$5) {
-                  return true;
-               }
+         while ($$4.hasNext()) {
+            arw $$5 = $$4.next();
+            if (a($$1, $$5)) {
+               $$4.remove();
+               $$3 = true;
+               break;
             }
          }
 
-         return false;
-      }
-   }
-
-   public boolean b(iu $$0, int $$1) {
-      return !this.c($$0, $$1);
-   }
-
-   public boolean c(iu $$0, int $$1) {
-      return this.f($$0, $$1) >= 0.15F;
-   }
-
-   public boolean d(iu $$0, int $$1) {
-      return this.f($$0, $$1) > 0.1F;
-   }
-
-   public boolean b(dis $$0, iu $$1) {
-      if (this.c($$1, $$0.P())) {
-         return false;
-      } else {
-         if ($$0.d($$1.v()) && $$0.a(diy.b, $$1) < 10) {
-            dzo $$2 = $$0.a_($$1);
-            if (($$2.l() || $$2.a(dlw.ea)) && dlw.ea.m().a($$0, $$1)) {
-               return true;
-            }
-         }
-
-         return false;
-      }
-   }
-
-   public djt d() {
-      return this.j;
-   }
-
-   public int e() {
-      return this.l.a();
-   }
-
-   public int a(double $$0, double $$1) {
-      int $$2 = this.q();
-      return this.l.g().a($$0, $$1, $$2);
-   }
-
-   private int q() {
-      Optional<Integer> $$0 = this.l.f();
-      return $$0.isPresent() ? $$0.get() : this.r();
-   }
-
-   private int r() {
-      double $$0 = (double)azk.a(this.i.c, 0.0F, 1.0F);
-      double $$1 = (double)azk.a(this.i.e, 0.0F, 1.0F);
-      return din.a($$0, $$1);
-   }
-
-   public int f() {
-      return this.l.e().orElseGet(this::s);
-   }
-
-   private int s() {
-      double $$0 = (double)azk.a(this.i.c, 0.0F, 1.0F);
-      double $$1 = (double)azk.a(this.i.e, 0.0F, 1.0F);
-      return dik.a($$0, $$1);
-   }
-
-   public float g() {
-      return this.i.c;
-   }
-
-   public djy h() {
-      return this.l;
-   }
-
-   public int i() {
-      return this.l.b();
-   }
-
-   public int j() {
-      return this.l.c();
-   }
-
-   public Optional<djr> k() {
-      return this.l.h();
-   }
-
-   public Optional<je<awk>> l() {
-      return this.l.i();
-   }
-
-   public Optional<djq> m() {
-      return this.l.j();
-   }
-
-   public Optional<djp> n() {
-      return this.l.k();
-   }
-
-   public Optional<bsj<awi>> o() {
-      return this.l.l();
-   }
-
-   public float p() {
-      return this.l.m();
-   }
-
-   public static class a {
-      private boolean a = true;
-      @Nullable
-      private Float b;
-      private djs.d c = djs.d.a;
-      @Nullable
-      private Float d;
-      @Nullable
-      private djy e;
-      @Nullable
-      private dke f;
-      @Nullable
-      private djt g;
-
-      public djs.a a(boolean $$0) {
-         this.a = $$0;
-         return this;
-      }
-
-      public djs.a a(float $$0) {
-         this.b = $$0;
-         return this;
-      }
-
-      public djs.a b(float $$0) {
-         this.d = $$0;
-         return this;
-      }
-
-      public djs.a a(djy $$0) {
-         this.e = $$0;
-         return this;
-      }
-
-      public djs.a a(dke $$0) {
-         this.f = $$0;
-         return this;
-      }
-
-      public djs.a a(djt $$0) {
-         this.g = $$0;
-         return this;
-      }
-
-      public djs.a a(djs.d $$0) {
-         this.c = $$0;
-         return this;
-      }
-
-      public djs a() {
-         if (this.b != null && this.d != null && this.e != null && this.f != null && this.g != null) {
-            return new djs(new djs.b(this.a, this.b, this.c, this.d), this.e, this.g, this.f);
+         if (!$$3) {
+            return false;
          } else {
-            throw new IllegalStateException("You are missing parameters to build a proper biome\n" + this);
-         }
-      }
-
-      @Override
-      public String toString() {
-         return "BiomeBuilder{\nhasPrecipitation="
-            + this.a
-            + ",\ntemperature="
-            + this.b
-            + ",\ntemperatureModifier="
-            + this.c
-            + ",\ndownfall="
-            + this.d
-            + ",\nspecialEffects="
-            + this.e
-            + ",\nmobSpawnSettings="
-            + this.f
-            + ",\ngenerationSettings="
-            + this.g
-            + ",\n}";
-      }
-   }
-
-   static record b(boolean b, float c, djs.d d, float e) {
-      public static final MapCodec<djs.b> a = RecordCodecBuilder.mapCodec(
-         $$0 -> $$0.group(
-                  Codec.BOOL.fieldOf("has_precipitation").forGetter($$0x -> $$0x.b),
-                  Codec.FLOAT.fieldOf("temperature").forGetter($$0x -> $$0x.c),
-                  djs.d.c.optionalFieldOf("temperature_modifier", djs.d.a).forGetter($$0x -> $$0x.d),
-                  Codec.FLOAT.fieldOf("downfall").forGetter($$0x -> $$0x.e)
-               )
-               .apply($$0, djs.b::new)
-      );
-
-      public boolean a() {
-         return this.b;
-      }
-
-      public float b() {
-         return this.c;
-      }
-
-      public djs.d c() {
-         return this.d;
-      }
-
-      public float d() {
-         return this.e;
-      }
-   }
-
-   public static enum c implements bai {
-      a("none"),
-      b("rain"),
-      c("snow");
-
-      public static final Codec<djs.c> d = bai.a(djs.c::values);
-      private final String e;
-
-      private c(final String $$0) {
-         this.e = $$0;
-      }
-
-      @Override
-      public String c() {
-         return this.e;
-      }
-   }
-
-   public static enum d implements bai {
-      a("none") {
-         @Override
-         public float a(iu $$0, float $$1) {
-            return $$1;
-         }
-      },
-      b("frozen") {
-         @Override
-         public float a(iu $$0, float $$1) {
-            double $$2 = djs.g.a((double)$$0.u() * 0.05, (double)$$0.w() * 0.05, false) * 7.0;
-            double $$3 = djs.e.a((double)$$0.u() * 0.2, (double)$$0.w() * 0.2, false);
-            double $$4 = $$2 + $$3;
-            if ($$4 < 0.3) {
-               double $$5 = djs.e.a((double)$$0.u() * 0.09, (double)$$0.w() * 0.09, false);
-               if ($$5 < 0.8) {
-                  return 0.2F;
-               }
+            if ($$2.isEmpty()) {
+               this.f.remove($$0);
             }
 
-            return $$1;
+            if ($$1.a().b() && this.j != null) {
+               this.j.update($$0, a($$2, true), false);
+            }
+
+            if ($$1.a().a() && this.i != null) {
+               this.i.update($$0, a($$2, false), false);
+            }
+
+            if ($$1.a().equals(arx.f)) {
+               this.i();
+            }
+
+            this.f();
+            return true;
          }
-      };
+      }
+   }
 
-      private final String d;
-      public static final Codec<djs.d> c = bai.a(djs.d::values);
+   private void i() {
+      this.h = this.a((Predicate<arw>)($$0 -> $$0.a().equals(arx.f)));
+   }
 
-      public abstract float a(iu var1, float var2);
+   public String b(long $$0, boolean $$1) {
+      List<arw> $$2 = this.a($$0);
+      arw $$3 = b($$2, $$1);
+      return $$3 == null ? "no_ticket" : $$3.toString();
+   }
 
-      d(final String $$0) {
-         this.d = $$0;
+   public void c() {
+      this.a($$0 -> {
+         $$0.d();
+         return $$0.e();
+      }, null);
+      this.f();
+   }
+
+   public void d() {
+      this.a($$0 -> $$0.a() != arx.i, this.g);
+   }
+
+   public void a(Predicate<arw> $$0, @Nullable Long2ObjectOpenHashMap<List<arw>> $$1) {
+      ObjectIterator<Entry<List<arw>>> $$2 = this.f.long2ObjectEntrySet().fastIterator();
+      boolean $$3 = false;
+
+      while ($$2.hasNext()) {
+         Entry<List<arw>> $$4 = (Entry<List<arw>>)$$2.next();
+         Iterator<arw> $$5 = ((List)$$4.getValue()).iterator();
+         boolean $$6 = false;
+         boolean $$7 = false;
+
+         while ($$5.hasNext()) {
+            arw $$8 = $$5.next();
+            if ($$0.test($$8)) {
+               if ($$1 != null) {
+                  List<arw> $$9 = (List<arw>)$$1.computeIfAbsent($$4.getLongKey(), $$1x -> new ObjectArrayList(((List)$$4.getValue()).size()));
+                  $$9.add($$8);
+               }
+
+               $$5.remove();
+               if ($$8.a().a()) {
+                  $$7 = true;
+               }
+
+               if ($$8.a().b()) {
+                  $$6 = true;
+               }
+
+               if ($$8.a().equals(arx.f)) {
+                  $$3 = true;
+               }
+            }
+         }
+
+         if ($$7 || $$6) {
+            if ($$7 && this.i != null) {
+               this.i.update($$4.getLongKey(), a((List<arw>)$$4.getValue(), false), false);
+            }
+
+            if ($$6 && this.j != null) {
+               this.j.update($$4.getLongKey(), a((List<arw>)$$4.getValue(), true), false);
+            }
+
+            this.f();
+            if (((List)$$4.getValue()).isEmpty()) {
+               $$2.remove();
+            }
+         }
       }
 
-      public String a() {
-         return this.d;
+      if ($$3) {
+         this.i();
+      }
+   }
+
+   public void a(int $$0, arx $$1) {
+      List<Pair<arw, Long>> $$2 = new ArrayList<>();
+      ObjectIterator var4 = this.f.long2ObjectEntrySet().iterator();
+
+      while (var4.hasNext()) {
+         Entry<List<arw>> $$3 = (Entry<List<arw>>)var4.next();
+
+         for (arw $$4 : (List)$$3.getValue()) {
+            if ($$4.a() == $$1) {
+               $$2.add(Pair.of($$4, $$3.getLongKey()));
+            }
+         }
       }
 
-      @Override
-      public String c() {
-         return this.d;
+      for (Pair<arw, Long> $$5 : $$2) {
+         Long $$6 = (Long)$$5.getSecond();
+         arw $$7 = (arw)$$5.getFirst();
+         this.b($$6, $$7);
+         arx $$8 = $$7.a();
+         this.a($$6, new arw($$8, $$0));
       }
+   }
+
+   public boolean a(dic $$0, boolean $$1) {
+      arw $$2 = new arw(arx.f, aqu.c);
+      return $$1 ? this.a($$0.a(), $$2) : this.b($$0.a(), $$2);
+   }
+
+   public LongSet e() {
+      return this.h;
+   }
+
+   private LongSet a(Predicate<arw> $$0) {
+      LongOpenHashSet $$1 = new LongOpenHashSet();
+      ObjectIterator var3 = Long2ObjectMaps.fastIterable(this.f).iterator();
+
+      while (var3.hasNext()) {
+         Entry<List<arw>> $$2 = (Entry<List<arw>>)var3.next();
+
+         for (arw $$3 : (List)$$2.getValue()) {
+            if ($$0.test($$3)) {
+               $$1.add($$2.getLongKey());
+               break;
+            }
+         }
+      }
+
+      return $$1;
+   }
+
+   @FunctionalInterface
+   public interface a {
+      void update(long var1, int var3, boolean var4);
    }
 }

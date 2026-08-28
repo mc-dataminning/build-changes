@@ -1,44 +1,47 @@
-public class ggq extends gdn {
-   public ggq(gig $$0) {
+public class ggq extends gfq<hdo> {
+   private static final String a = "tail_base";
+   private static final String b = "tail_tip";
+   private final giu c;
+   private final giu d;
+   private final giu e;
+   private final giu f;
+   private final giu g;
+   private final giu i;
+
+   public ggq(giu $$0) {
       super($$0);
+      giu $$1 = $$0.b("body");
+      this.g = $$1.b("tail_base");
+      this.i = this.g.b("tail_tip");
+      this.c = $$1.b("left_wing_base");
+      this.d = this.c.b("left_wing_tip");
+      this.e = $$1.b("right_wing_base");
+      this.f = this.e.b("right_wing_tip");
    }
 
-   private static void a(giq $$0) {
-      $$0.a(
-         "bottom",
-         gil.c().a(0, 0).a(-14.0F, -11.0F, -4.0F, 28.0F, 20.0F, 4.0F).a(0, 0).a(-14.0F, -9.0F, -8.0F, 28.0F, 16.0F, 4.0F),
-         gii.a(0.0F, -2.1F, 1.0F, 1.5708F, 0.0F, 0.0F)
-      );
-      int $$1 = 20;
-      int $$2 = 7;
-      int $$3 = 6;
-      float $$4 = -5.0F;
-      $$0.a(
-         "left_paddle",
-         gil.c().a(0, 24).a(-1.0F, 0.0F, -5.0F, 2.0F, 2.0F, 18.0F).a(-1.001F, -3.0F, 8.0F, 1.0F, 6.0F, 7.0F),
-         gii.a(3.0F, -4.0F, 9.0F, 0.0F, 0.0F, (float) (Math.PI / 16))
-      );
-      $$0.a(
-         "right_paddle",
-         gil.c().a(40, 24).a(-1.0F, 0.0F, -5.0F, 2.0F, 2.0F, 18.0F).a(0.001F, -3.0F, 8.0F, 1.0F, 6.0F, 7.0F),
-         gii.a(3.0F, -4.0F, -9.0F, 0.0F, (float) Math.PI, (float) (Math.PI / 16))
-      );
+   public static gja a() {
+      gjc $$0 = new gjc();
+      gje $$1 = $$0.a();
+      gje $$2 = $$1.a("body", giz.c().a(0, 8).a(-3.0F, -2.0F, -8.0F, 5.0F, 3.0F, 9.0F), giw.b(-0.1F, 0.0F, 0.0F));
+      gje $$3 = $$2.a("tail_base", giz.c().a(3, 20).a(-2.0F, 0.0F, 0.0F, 3.0F, 2.0F, 6.0F), giw.a(0.0F, -2.0F, 1.0F));
+      $$3.a("tail_tip", giz.c().a(4, 29).a(-1.0F, 0.0F, 0.0F, 1.0F, 1.0F, 6.0F), giw.a(0.0F, 0.5F, 6.0F));
+      gje $$4 = $$2.a("left_wing_base", giz.c().a(23, 12).a(0.0F, 0.0F, 0.0F, 6.0F, 2.0F, 9.0F), giw.a(2.0F, -2.0F, -8.0F, 0.0F, 0.0F, 0.1F));
+      $$4.a("left_wing_tip", giz.c().a(16, 24).a(0.0F, 0.0F, 0.0F, 13.0F, 1.0F, 9.0F), giw.a(6.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.1F));
+      gje $$5 = $$2.a("right_wing_base", giz.c().a(23, 12).a().a(-6.0F, 0.0F, 0.0F, 6.0F, 2.0F, 9.0F), giw.a(-3.0F, -2.0F, -8.0F, 0.0F, 0.0F, -0.1F));
+      $$5.a("right_wing_tip", giz.c().a(16, 24).a().a(-13.0F, 0.0F, 0.0F, 13.0F, 1.0F, 9.0F), giw.a(-6.0F, 0.0F, 0.0F, 0.0F, 0.0F, -0.1F));
+      $$2.a("head", giz.c().a(0, 0).a(-4.0F, -2.0F, -5.0F, 7.0F, 3.0F, 5.0F), giw.a(0.0F, 1.0F, -7.0F, 0.2F, 0.0F, 0.0F));
+      return gja.a($$0, 64, 64);
    }
 
-   public static gim a() {
-      gio $$0 = new gio();
-      giq $$1 = $$0.a();
-      a($$1);
-      return gim.a($$0, 128, 64);
-   }
-
-   public static gim b() {
-      gio $$0 = new gio();
-      giq $$1 = $$0.a();
-      a($$1);
-      $$1.a("chest_bottom", gil.c().a(0, 76).a(0.0F, 0.0F, 0.0F, 12.0F, 8.0F, 12.0F), gii.a(-2.0F, -10.1F, -6.0F, 0.0F, (float) (-Math.PI / 2), 0.0F));
-      $$1.a("chest_lid", gil.c().a(0, 59).a(0.0F, 0.0F, 0.0F, 12.0F, 4.0F, 12.0F), gii.a(-2.0F, -14.1F, -6.0F, 0.0F, (float) (-Math.PI / 2), 0.0F));
-      $$1.a("chest_lock", gil.c().a(0, 59).a(0.0F, 0.0F, 0.0F, 2.0F, 4.0F, 1.0F), gii.a(-1.0F, -11.1F, -1.0F, 0.0F, (float) (-Math.PI / 2), 0.0F));
-      return gim.a($$0, 128, 128);
+   public void a(hdo $$0) {
+      super.a($$0);
+      float $$1 = $$0.a * 7.448451F * (float) (Math.PI / 180.0);
+      float $$2 = 16.0F;
+      this.c.g = azm.b($$1) * 16.0F * (float) (Math.PI / 180.0);
+      this.d.g = azm.b($$1) * 16.0F * (float) (Math.PI / 180.0);
+      this.e.g = -this.c.g;
+      this.f.g = -this.d.g;
+      this.g.e = -(5.0F + azm.b($$1 * 2.0F) * 5.0F) * (float) (Math.PI / 180.0);
+      this.i.e = -(5.0F + azm.b($$1 * 2.0F) * 5.0F) * (float) (Math.PI / 180.0);
    }
 }

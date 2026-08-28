@@ -1,18 +1,28 @@
-import io.netty.buffer.ByteBuf;
+public record ahp(fei b, float c, float d, boolean e) implements zf<agp> {
+   public static final yw<vu, ahp> a = yw.a(fei.b, ahp::b, yu.l, ahp::e, yu.l, ahp::f, yu.b, ahp::g, ahp::new);
 
-public record ahp(iu b, boolean c) implements zd<agn> {
-   public static final yu<ByteBuf, ahp> a = yu.a(iu.b, ahp::b, ys.b, ahp::e, ahp::new);
-
-   @Override
-   public zf<ahp> a() {
-      return agl.bO;
+   public static ahp a(bwd $$0) {
+      return $$0.bR() ? new ahp($$0.N_().a(), $$0.N_().b(), $$0.N_().c(), $$0.aJ()) : new ahp($$0.dt(), $$0.dL(), $$0.dN(), $$0.aJ());
    }
 
-   public void a(agn $$0) {
+   @Override
+   public zh<ahp> a() {
+      return agn.bM;
+   }
+
+   public void a(agp $$0) {
       $$0.a(this);
    }
 
-   public boolean e() {
+   public float e() {
       return this.c;
+   }
+
+   public float f() {
+      return this.d;
+   }
+
+   public boolean g() {
+      return this.e;
    }
 }

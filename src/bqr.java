@@ -1,99 +1,51 @@
-import com.mojang.logging.LogUtils;
-import java.net.SocketAddress;
-import java.nio.file.Path;
+import java.util.function.Supplier;
 import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
-public interface bqr {
-   bqr f = (bqr)(Runtime.class.getModule().getLayer().findModule("jdk.jfr").isPresent() ? bqq.a() : new bqr.a());
-
-   boolean a(bqp var1);
-
-   Path b();
-
-   boolean c();
-
-   boolean d();
-
-   void a(float var1);
-
-   void a(vq var1, zf<?> var2, SocketAddress var3, int var4);
-
-   void b(vq var1, zf<?> var2, SocketAddress var3, int var4);
-
-   void a(ede var1, dhw var2, edd var3, int var4);
-
-   void b(ede var1, dhw var2, edd var3, int var4);
-
+public class bqr implements AutoCloseable {
+   public static final bqr a = new bqr(null);
    @Nullable
-   bqu e();
+   private final bqm b;
 
-   @Nullable
-   bqu a(dhw var1, ald<dip> var2, String var3);
+   bqr(@Nullable bqm $$0) {
+      this.b = $$0;
+   }
 
-   @Nullable
-   bqu a(dhw var1, ald<dip> var2, je<eqi> var3);
-
-   public static class a implements bqr {
-      private static final Logger b = LogUtils.getLogger();
-      static final bqu a = $$0 -> {
-      };
-
-      @Override
-      public boolean a(bqp $$0) {
-         b.warn("Attempted to start Flight Recorder, but it's not supported on this JVM");
-         return false;
+   public bqr a(String $$0) {
+      if (this.b != null) {
+         this.b.e($$0);
       }
 
-      @Override
-      public Path b() {
-         throw new IllegalStateException("Attempted to stop Flight Recorder, but it's not supported on this JVM");
+      return this;
+   }
+
+   public bqr a(Supplier<String> $$0) {
+      if (this.b != null) {
+         this.b.e($$0.get());
       }
 
-      @Override
-      public boolean c() {
-         return false;
+      return this;
+   }
+
+   public bqr a(long $$0) {
+      if (this.b != null) {
+         this.b.a($$0);
       }
 
-      @Override
-      public boolean d() {
-         return false;
+      return this;
+   }
+
+   public bqr a(int $$0) {
+      if (this.b != null) {
+         this.b.a($$0);
       }
 
-      @Override
-      public void a(vq $$0, zf<?> $$1, SocketAddress $$2, int $$3) {
-      }
+      return this;
+   }
 
-      @Override
-      public void b(vq $$0, zf<?> $$1, SocketAddress $$2, int $$3) {
-      }
-
-      @Override
-      public void a(ede $$0, dhw $$1, edd $$2, int $$3) {
-      }
-
-      @Override
-      public void b(ede $$0, dhw $$1, edd $$2, int $$3) {
-      }
-
-      @Override
-      public void a(float $$0) {
-      }
-
-      @Override
-      public bqu e() {
-         return a;
-      }
-
-      @Nullable
-      @Override
-      public bqu a(dhw $$0, ald<dip> $$1, String $$2) {
-         return null;
-      }
-
-      @Override
-      public bqu a(dhw $$0, ald<dip> $$1, je<eqi> $$2) {
-         return a;
+   @Override
+   public void close() {
+      if (this.b != null) {
+         this.b.c();
       }
    }
 }

@@ -1,72 +1,19 @@
-import com.mojang.logging.LogUtils;
-import java.util.Collection;
-import java.util.stream.Stream;
-import org.slf4j.Logger;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class edx<T extends edt> {
-   private static final Logger a = LogUtils.getLogger();
-   private final ayb<T> b;
-   private eei c;
+public record edx(je<edw> e, ebx f) {
+   public static final Codec<edx> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(edw.l.fieldOf("type").forGetter(edx::a), ebx.a.fieldOf("generator").forGetter(edx::b)).apply($$0, $$0.stable(edx::new))
+   );
+   public static final alf<edx> b = alf.a(mg.bo, alg.b("overworld"));
+   public static final alf<edx> c = alf.a(mg.bo, alg.b("the_nether"));
+   public static final alf<edx> d = alf.a(mg.bo, alg.b("the_end"));
 
-   public edx(Class<T> $$0, eei $$1) {
-      this.c = $$1;
-      this.b = new ayb<>($$0);
+   public je<edw> a() {
+      return this.e;
    }
 
-   public void a(T $$0) {
-      this.b.add($$0);
-   }
-
-   public boolean b(T $$0) {
-      return this.b.remove($$0);
-   }
-
-   public axv.a a(fdr $$0, axv<T> $$1) {
-      for (T $$2 : this.b) {
-         if ($$2.cR().c($$0) && $$1.accept($$2).a()) {
-            return axv.a.b;
-         }
-      }
-
-      return axv.a.a;
-   }
-
-   public <U extends T> axv.a a(eea<T, U> $$0, fdr $$1, axv<? super U> $$2) {
-      Collection<? extends T> $$3 = this.b.a($$0.a());
-      if ($$3.isEmpty()) {
-         return axv.a.a;
-      } else {
-         for (T $$4 : $$3) {
-            U $$5 = (U)$$0.a($$4);
-            if ($$5 != null && $$4.cR().c($$1) && $$2.accept($$5).a()) {
-               return axv.a.b;
-            }
-         }
-
-         return axv.a.a;
-      }
-   }
-
-   public boolean a() {
-      return this.b.isEmpty();
-   }
-
-   public Stream<T> b() {
-      return this.b.stream();
-   }
-
-   public eei c() {
-      return this.c;
-   }
-
-   public eei a(eei $$0) {
-      eei $$1 = this.c;
-      this.c = $$0;
-      return $$1;
-   }
-
-   @bat
-   public int d() {
-      return this.b.size();
+   public ebx b() {
+      return this.f;
    }
 }

@@ -9,8 +9,8 @@ public class bq extends dj<bq.a> {
       return bq.a.a;
    }
 
-   public void a(arp $$0, @Nullable bwa $$1) {
-      eyn $$2 = $$1 != null ? bx.b($$0, $$1) : null;
+   public void a(arr $$0, @Nullable bwd $$1) {
+      eyz $$2 = $$1 != null ? bx.b($$0, $$1) : null;
       this.a($$0, $$2x -> $$2x.a($$0, $$2));
    }
 
@@ -32,8 +32,8 @@ public class bq extends dj<bq.a> {
          return ap.B.a(new bq.a(Optional.empty(), Optional.empty(), Optional.of(bx.a($$0.b()))));
       }
 
-      public boolean a(arp $$0, @Nullable eyn $$1) {
-         return this.c.isPresent() && !this.c.get().a((bwz)$$0) ? false : !this.d.isPresent() || $$1 != null && this.d.get().a($$1);
+      public boolean a(arr $$0, @Nullable eyz $$1) {
+         return this.c.isPresent() && !this.c.get().a((bxc)$$0) ? false : !this.d.isPresent() || $$1 != null && this.d.get().a($$1);
       }
 
       @Override

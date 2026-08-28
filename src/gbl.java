@@ -1,72 +1,255 @@
-import java.util.ArrayList;
-import java.util.HashSet;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.Lists;
+import java.util.Collections;
 import java.util.List;
-import java.util.Set;
-import java.util.function.Predicate;
+import java.util.function.Consumer;
+import java.util.function.Function;
+import java.util.stream.Stream;
 
 public class gbl {
-   public static final gbl a = new gbl(List.of());
-   private final List<deq> b;
-   private final Set<der> c = new HashSet<>();
-   private final Set<der> d = new HashSet<>();
+   private final aun a;
+   final List<auk> b;
+   final List<auk> c;
+   final Function<auk, alg> d;
+   final Runnable e;
+   private final Consumer<aun> f;
 
-   public gbl(List<deq> $$0) {
-      this.b = $$0;
+   public gbl(Runnable $$0, Function<auk, alg> $$1, aun $$2, Consumer<aun> $$3) {
+      this.e = $$0;
+      this.d = $$1;
+      this.a = $$2;
+      this.b = Lists.newArrayList($$2.g());
+      Collections.reverse(this.b);
+      this.c = Lists.newArrayList($$2.d());
+      this.c.removeAll(this.b);
+      this.f = $$3;
    }
 
-   public void a(cqx $$0, Predicate<dep> $$1) {
-      for (deq $$2 : this.b) {
-         boolean $$3 = $$1.test($$2.b());
-         if ($$3) {
-            this.d.add($$2.a());
-         } else {
-            this.d.remove($$2.a());
-         }
+   public Stream<gbl.a> a() {
+      return this.c.stream().map($$0 -> new gbl.d($$0));
+   }
 
-         if ($$3 && $$2.a($$0)) {
-            this.c.add($$2.a());
-         } else {
-            this.c.remove($$2.a());
+   public Stream<gbl.a> b() {
+      return this.b.stream().map($$0 -> new gbl.c($$0));
+   }
+
+   void e() {
+      this.a.b(Lists.reverse(this.b).stream().map(auk::g).collect(ImmutableList.toImmutableList()));
+   }
+
+   public void c() {
+      this.e();
+      this.f.accept(this.a);
+   }
+
+   public void d() {
+      this.a.a();
+      this.b.retainAll(this.a.d());
+      this.c.clear();
+      this.c.addAll(this.a.d());
+      this.c.removeAll(this.b);
+   }
+
+   public interface a {
+      alg a();
+
+      aul b();
+
+      String c();
+
+      wy d();
+
+      wy e();
+
+      auo f();
+
+      default wy g() {
+         return this.f().a(this.e());
+      }
+
+      boolean h();
+
+      boolean i();
+
+      void j();
+
+      void k();
+
+      void l();
+
+      void m();
+
+      boolean n();
+
+      default boolean o() {
+         return !this.n();
+      }
+
+      default boolean p() {
+         return this.n() && !this.i();
+      }
+
+      boolean q();
+
+      boolean r();
+   }
+
+   abstract class b implements gbl.a {
+      private final auk b;
+
+      public b(final auk $$0) {
+         this.b = $$0;
+      }
+
+      protected abstract List<auk> s();
+
+      protected abstract List<auk> t();
+
+      @Override
+      public alg a() {
+         return gbl.this.d.apply(this.b);
+      }
+
+      @Override
+      public aul b() {
+         return this.b.d();
+      }
+
+      @Override
+      public String c() {
+         return this.b.g();
+      }
+
+      @Override
+      public wy d() {
+         return this.b.b();
+      }
+
+      @Override
+      public wy e() {
+         return this.b.c();
+      }
+
+      @Override
+      public auo f() {
+         return this.b.l();
+      }
+
+      @Override
+      public boolean h() {
+         return this.b.j();
+      }
+
+      @Override
+      public boolean i() {
+         return this.b.i();
+      }
+
+      protected void u() {
+         this.s().remove(this.b);
+         this.b.k().a(this.t(), this.b, auk::h, true);
+         gbl.this.e.run();
+         gbl.this.e();
+         this.v();
+      }
+
+      private void v() {
+         if (this.b.g().equals("high_contrast")) {
+            fov<Boolean> $$0 = fos.Q().n.u();
+            $$0.a(!$$0.c());
          }
+      }
+
+      protected void a(int $$0) {
+         List<auk> $$1 = this.s();
+         int $$2 = $$1.indexOf(this.b);
+         $$1.remove($$2);
+         $$1.add($$2 + $$0, this.b);
+         gbl.this.e.run();
+      }
+
+      @Override
+      public boolean q() {
+         List<auk> $$0 = this.s();
+         int $$1 = $$0.indexOf(this.b);
+         return $$1 > 0 && !$$0.get($$1 - 1).j();
+      }
+
+      @Override
+      public void l() {
+         this.a(-1);
+      }
+
+      @Override
+      public boolean r() {
+         List<auk> $$0 = this.s();
+         int $$1 = $$0.indexOf(this.b);
+         return $$1 >= 0 && $$1 < $$0.size() - 1 && !$$0.get($$1 + 1).j();
+      }
+
+      @Override
+      public void m() {
+         this.a(1);
       }
    }
 
-   public boolean a(der $$0) {
-      return this.c.contains($$0);
-   }
-
-   public boolean a() {
-      return !this.c.isEmpty();
-   }
-
-   public boolean b() {
-      return !this.d.isEmpty();
-   }
-
-   public List<deq> c() {
-      return this.b;
-   }
-
-   public List<deq> a(gbl.a $$0) {
-      Predicate<der> $$1 = switch ($$0) {
-         case a -> this.d::contains;
-         case b -> this.c::contains;
-         case c -> $$0x -> this.d.contains($$0x) && !this.c.contains($$0x);
-      };
-      List<deq> $$2 = new ArrayList<>();
-
-      for (deq $$3 : this.b) {
-         if ($$1.test($$3.a())) {
-            $$2.add($$3);
-         }
+   class c extends gbl.b {
+      public c(final auk $$0) {
+         super($$0);
       }
 
-      return $$2;
+      @Override
+      protected List<auk> s() {
+         return gbl.this.b;
+      }
+
+      @Override
+      protected List<auk> t() {
+         return gbl.this.c;
+      }
+
+      @Override
+      public boolean n() {
+         return true;
+      }
+
+      @Override
+      public void j() {
+      }
+
+      @Override
+      public void k() {
+         this.u();
+      }
    }
 
-   public static enum a {
-      a,
-      b,
-      c;
+   class d extends gbl.b {
+      public d(final auk $$0) {
+         super($$0);
+      }
+
+      @Override
+      protected List<auk> s() {
+         return gbl.this.c;
+      }
+
+      @Override
+      protected List<auk> t() {
+         return gbl.this.b;
+      }
+
+      @Override
+      public boolean n() {
+         return false;
+      }
+
+      @Override
+      public void j() {
+         this.u();
+      }
+
+      @Override
+      public void k() {
+      }
    }
 }

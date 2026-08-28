@@ -1,16 +1,18 @@
 import com.mojang.serialization.MapCodec;
 import javax.annotation.Nullable;
 
-public record hff() implements hfc {
-   public static final MapCodec<hff> a = MapCodec.unit(new hff());
+public interface hff {
+   void a(hfi var1, cyy var2, hfg var3, cyw var4, @Nullable gjr var5, @Nullable bxc var6, int var7);
 
-   @Override
-   public boolean get(cys $$0, @Nullable gjd $$1, @Nullable bwz $$2, int $$3, cyq $$4) {
-      return $$4 == cyq.g && fxi.t();
+   public static record a(hky a, giq b, hff c, @Nullable azw d) {
+      public hkp a(alg $$0) {
+         return this.a().a($$0, hkq.a);
+      }
    }
 
-   @Override
-   public MapCodec<hff> a() {
-      return a;
+   public interface b extends hlh {
+      MapCodec<? extends hff.b> a();
+
+      hff a(hff.a var1);
    }
 }

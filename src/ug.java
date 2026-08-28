@@ -1,60 +1,187 @@
-import com.google.common.annotations.VisibleForTesting;
+import it.unimi.dsi.fastutil.longs.LongSet;
+import java.io.DataInput;
+import java.io.DataOutput;
+import java.io.IOException;
+import java.util.Arrays;
+import java.util.List;
+import org.apache.commons.lang3.ArrayUtils;
 
-public class ug {
-   private static final int a = 512;
-   private final long b;
-   private long c;
-   private final int d;
-   private int e;
+public class ug extends ty<uh> {
+   private static final int b = 24;
+   public static final uy<ug> a = new uy.b<ug>() {
+      public ug a(DataInput $$0, ui $$1) throws IOException {
+         return new ug(d($$0, $$1));
+      }
 
-   public ug(long $$0, int $$1) {
-      this.b = $$0;
-      this.d = $$1;
+      @Override
+      public ut.b a(DataInput $$0, ut $$1, ui $$2) throws IOException {
+         return $$1.a(d($$0, $$2));
+      }
+
+      private static long[] d(DataInput $$0, ui $$1) throws IOException {
+         $$1.b(24L);
+         int $$2 = $$0.readInt();
+         $$1.a(8L, (long)$$2);
+         long[] $$3 = new long[$$2];
+
+         for (int $$4 = 0; $$4 < $$2; $$4++) {
+            $$3[$$4] = $$0.readLong();
+         }
+
+         return $$3;
+      }
+
+      @Override
+      public void b(DataInput $$0, ui $$1) throws IOException {
+         $$0.skipBytes($$0.readInt() * 8);
+      }
+
+      @Override
+      public String a() {
+         return "LONG[]";
+      }
+
+      @Override
+      public String b() {
+         return "TAG_Long_Array";
+      }
+   };
+   private long[] c;
+
+   public ug(long[] $$0) {
+      this.c = $$0;
    }
 
-   public static ug a(long $$0) {
-      return new ug($$0, 512);
+   public ug(LongSet $$0) {
+      this.c = $$0.toLongArray();
    }
 
-   public static ug a() {
-      return new ug(Long.MAX_VALUE, 512);
+   public ug(List<Long> $$0) {
+      this(a($$0));
    }
 
-   public void a(long $$0, long $$1) {
-      this.b($$0 * $$1);
+   private static long[] a(List<Long> $$0) {
+      long[] $$1 = new long[$$0.size()];
+
+      for (int $$2 = 0; $$2 < $$0.size(); $$2++) {
+         Long $$3 = $$0.get($$2);
+         $$1[$$2] = $$3 == null ? 0L : $$3;
+      }
+
+      return $$1;
    }
 
-   public void b(long $$0) {
-      if (this.c + $$0 > this.b) {
-         throw new uh("Tried to read NBT tag that was too big; tried to allocate: " + this.c + " + " + $$0 + " bytes where max allowed: " + this.b);
-      } else {
-         this.c += $$0;
+   @Override
+   public void a(DataOutput $$0) throws IOException {
+      $$0.writeInt(this.c.length);
+
+      for (long $$1 : this.c) {
+         $$0.writeLong($$1);
       }
    }
 
-   public void b() {
-      if (this.e >= this.d) {
-         throw new uh("Tried to read NBT tag with too high complexity, depth > " + this.d);
-      } else {
-         this.e++;
-      }
+   @Override
+   public int a() {
+      return 24 + 8 * this.c.length;
    }
 
-   public void c() {
-      if (this.e <= 0) {
-         throw new uh("NBT-Accounter tried to pop stack-depth at top-level");
-      } else {
-         this.e--;
-      }
+   @Override
+   public byte b() {
+      return 12;
    }
 
-   @VisibleForTesting
-   public long d() {
+   @Override
+   public uy<ug> c() {
+      return a;
+   }
+
+   @Override
+   public String toString() {
+      return this.p_();
+   }
+
+   public ug e() {
+      long[] $$0 = new long[this.c.length];
+      System.arraycopy(this.c, 0, $$0, 0, this.c.length);
+      return new ug($$0);
+   }
+
+   @Override
+   public boolean equals(Object $$0) {
+      return this == $$0 ? true : $$0 instanceof ug && Arrays.equals(this.c, ((ug)$$0).c);
+   }
+
+   @Override
+   public int hashCode() {
+      return Arrays.hashCode(this.c);
+   }
+
+   @Override
+   public void a(va $$0) {
+      $$0.a(this);
+   }
+
+   public long[] g() {
       return this.c;
    }
 
-   @VisibleForTesting
-   public int e() {
-      return this.e;
+   @Override
+   public int size() {
+      return this.c.length;
+   }
+
+   public uh a(int $$0) {
+      return uh.a(this.c[$$0]);
+   }
+
+   public uh a(int $$0, uh $$1) {
+      long $$2 = this.c[$$0];
+      this.c[$$0] = $$1.f();
+      return uh.a($$2);
+   }
+
+   public void b(int $$0, uh $$1) {
+      this.c = ArrayUtils.add(this.c, $$0, $$1.f());
+   }
+
+   @Override
+   public boolean a(int $$0, uw $$1) {
+      if ($$1 instanceof up) {
+         this.c[$$0] = ((up)$$1).f();
+         return true;
+      } else {
+         return false;
+      }
+   }
+
+   @Override
+   public boolean b(int $$0, uw $$1) {
+      if ($$1 instanceof up) {
+         this.c = ArrayUtils.add(this.c, $$0, ((up)$$1).f());
+         return true;
+      } else {
+         return false;
+      }
+   }
+
+   public uh b(int $$0) {
+      long $$1 = this.c[$$0];
+      this.c = ArrayUtils.remove(this.c, $$0);
+      return uh.a($$1);
+   }
+
+   @Override
+   public byte f() {
+      return 4;
+   }
+
+   @Override
+   public void clear() {
+      this.c = new long[0];
+   }
+
+   @Override
+   public ut.b a(ut $$0) {
+      return $$0.a(this.c);
    }
 }

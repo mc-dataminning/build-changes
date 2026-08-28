@@ -1,42 +1,27 @@
-import java.util.EnumSet;
+import javax.annotation.Nullable;
 
-public class cej extends cdv {
-   private final bxh a;
-   private double b;
-   private double c;
-   private double d;
-   private final double e;
+public class cej extends cev {
+   private static final int i = 10;
+   private static final int j = 7;
 
-   public cej(bxh $$0, double $$1) {
-      this.a = $$0;
-      this.e = $$1;
-      this.a(EnumSet.of(cdv.a.a));
+   public cej(bxk $$0, double $$1, boolean $$2) {
+      super($$0, $$1, 10, $$2);
    }
 
    @Override
    public boolean b() {
-      if (this.a.ga()) {
-         return false;
-      } else {
-         fdw $$0 = chs.a(this.a, 16, 7, fdw.c(this.a.gb()), (float) (Math.PI / 2));
-         if ($$0 == null) {
-            return false;
-         } else {
-            this.b = $$0.d;
-            this.c = $$0.e;
-            this.d = $$0.f;
-            return true;
-         }
-      }
+      arq $$0 = (arq)this.b.dV();
+      iu $$1 = this.b.dv();
+      return $$0.c($$1) ? false : super.b();
    }
 
+   @Nullable
    @Override
-   public boolean c() {
-      return !this.a.O().k();
-   }
-
-   @Override
-   public void d() {
-      this.a.O().a(this.b, this.c, this.d, this.e);
+   protected fei h() {
+      arq $$0 = (arq)this.b.dV();
+      iu $$1 = this.b.dv();
+      jx $$2 = jx.a($$1);
+      jx $$3 = byv.a($$0, $$2, 2);
+      return $$3 != $$2 ? chv.a(this.b, 10, 7, fei.c($$3.k()), (float) (Math.PI / 2)) : null;
    }
 }

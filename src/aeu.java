@@ -1,29 +1,29 @@
-public class aeu implements zd<abs> {
-   public static final yu<vs, aeu> a = zd.a(aeu::a, aeu::new);
-   private final int b;
+public class aeu implements zf<abu> {
+   public static final yw<vu, aeu> a = zf.a(aeu::a, aeu::new);
+   private final double b;
 
-   public aeu(ebg $$0) {
-      this.b = $$0.r();
+   public aeu(ebr $$0) {
+      this.b = $$0.k();
    }
 
-   private aeu(vs $$0) {
-      this.b = $$0.l();
+   private aeu(vu $$0) {
+      this.b = $$0.readDouble();
    }
 
-   private void a(vs $$0) {
-      $$0.c(this.b);
+   private void a(vu $$0) {
+      $$0.a(this.b);
    }
 
    @Override
-   public zf<aeu> a() {
-      return agl.az;
+   public zh<aeu> a() {
+      return agn.ax;
    }
 
-   public void a(abs $$0) {
+   public void a(abu $$0) {
       $$0.a(this);
    }
 
-   public int b() {
+   public double b() {
       return this.b;
    }
 }

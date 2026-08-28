@@ -1,201 +1,213 @@
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
-public class ewj {
-   private final List<ewh> a;
-   @Nullable
-   private ewj.a b;
-   private int c;
-   private final iu d;
-   private final float e;
-   private final boolean f;
+public abstract class ewj extends ewe {
+   public static final float e = 0.44444445F;
 
-   public ewj(List<ewh> $$0, iu $$1, boolean $$2) {
-      this.a = $$0;
-      this.d = $$1;
-      this.e = $$0.isEmpty() ? Float.MAX_VALUE : this.a.get(this.a.size() - 1).c(this.d);
-      this.f = $$2;
-   }
-
-   public void a() {
-      this.c++;
-   }
-
-   public boolean b() {
-      return this.c <= 0;
-   }
-
-   public boolean c() {
-      return this.c >= this.a.size();
-   }
-
-   @Nullable
-   public ewh d() {
-      return !this.a.isEmpty() ? this.a.get(this.a.size() - 1) : null;
-   }
-
-   public ewh a(int $$0) {
-      return this.a.get($$0);
-   }
-
-   public void b(int $$0) {
-      if (this.a.size() > $$0) {
-         this.a.subList($$0, this.a.size()).clear();
-      }
-   }
-
-   public void a(int $$0, ewh $$1) {
-      this.a.set($$0, $$1);
-   }
-
-   public int e() {
-      return this.a.size();
-   }
-
-   public int f() {
-      return this.c;
-   }
-
-   public void c(int $$0) {
-      this.c = $$0;
-   }
-
-   public fdw a(bwa $$0, int $$1) {
-      ewh $$2 = this.a.get($$1);
-      double $$3 = (double)$$2.a + (double)((int)($$0.dq() + 1.0F)) * 0.5;
-      double $$4 = (double)$$2.b;
-      double $$5 = (double)$$2.c + (double)((int)($$0.dq() + 1.0F)) * 0.5;
-      return new fdw($$3, $$4, $$5);
-   }
-
-   public iu d(int $$0) {
-      return this.a.get($$0).a();
-   }
-
-   public fdw a(bwa $$0) {
-      return this.a($$0, this.c);
-   }
-
-   public iu g() {
-      return this.a.get(this.c).a();
-   }
-
-   public ewh h() {
-      return this.a.get(this.c);
-   }
-
-   @Nullable
-   public ewh i() {
-      return this.c > 0 ? this.a.get(this.c - 1) : null;
-   }
-
-   public boolean a(@Nullable ewj $$0) {
-      if ($$0 == null) {
-         return false;
-      } else if ($$0.a.size() != this.a.size()) {
-         return false;
-      } else {
-         for (int $$1 = 0; $$1 < this.a.size(); $$1++) {
-            ewh $$2 = this.a.get($$1);
-            ewh $$3 = $$0.a.get($$1);
-            if ($$2.a != $$3.a || $$2.b != $$3.b || $$2.c != $$3.c) {
-               return false;
-            }
-         }
-
-         return true;
-      }
-   }
-
-   public boolean j() {
-      return this.f;
-   }
-
-   @bat
-   void a(ewh[] $$0, ewh[] $$1, Set<ewq> $$2) {
-      this.b = new ewj.a($$0, $$1, $$2);
-   }
-
-   @Nullable
-   public ewj.a k() {
-      return this.b;
-   }
-
-   public void a(vs $$0) {
-      if (this.b != null && !this.b.c.isEmpty()) {
-         $$0.a(this.f);
-         $$0.q(this.c);
-         $$0.a(this.d);
-         $$0.a(this.a, ($$0x, $$1) -> $$1.a($$0x));
-         this.b.a($$0);
-      }
-   }
-
-   public static ewj b(vs $$0) {
-      boolean $$1 = $$0.readBoolean();
-      int $$2 = $$0.readInt();
-      iu $$3 = $$0.e();
-      List<ewh> $$4 = $$0.a(ewh::b);
-      ewj.a $$5 = ewj.a.b($$0);
-      ewj $$6 = new ewj($$4, $$3, $$1);
-      $$6.b = $$5;
-      $$6.c = $$2;
-      return $$6;
+   @Override
+   public ewf d() {
+      return ewh.d;
    }
 
    @Override
-   public String toString() {
-      return "Path(length=" + this.a.size() + ")";
+   public ewf e() {
+      return ewh.e;
    }
 
-   public iu l() {
-      return this.d;
+   @Override
+   public cyu a() {
+      return czc.rn;
    }
 
-   public float m() {
-      return this.e;
-   }
+   @Override
+   public void a(div $$0, iu $$1, ewg $$2, azv $$3) {
+      iu $$4 = $$1.d();
+      if ($$0.a_($$4).l() && !$$0.a_($$4).s()) {
+         if ($$3.a(100) == 0) {
+            double $$5 = (double)$$1.u() + $$3.j();
+            double $$6 = (double)$$1.v() + 1.0;
+            double $$7 = (double)$$1.w() + $$3.j();
+            $$0.a(lx.ab, $$5, $$6, $$7, 0.0, 0.0, 0.0);
+            $$0.a($$5, $$6, $$7, awn.ov, awo.e, 0.2F + $$3.i() * 0.2F, 0.9F + $$3.i() * 0.15F, false);
+         }
 
-   static ewh[] c(vs $$0) {
-      ewh[] $$1 = new ewh[$$0.l()];
-
-      for (int $$2 = 0; $$2 < $$1.length; $$2++) {
-         $$1[$$2] = ewh.b($$0);
-      }
-
-      return $$1;
-   }
-
-   static void a(vs $$0, ewh[] $$1) {
-      $$0.c($$1.length);
-
-      for (ewh $$2 : $$1) {
-         $$2.a($$0);
+         if ($$3.a(200) == 0) {
+            $$0.a((double)$$1.u(), (double)$$1.v(), (double)$$1.w(), awn.ot, awo.e, 0.2F + $$3.i() * 0.2F, 0.9F + $$3.i() * 0.15F, false);
+         }
       }
    }
 
-   public ewj n() {
-      ewj $$0 = new ewj(this.a, this.d, this.f);
-      $$0.b = this.b;
-      $$0.c = this.c;
-      return $$0;
+   @Override
+   public void a(arq $$0, iu $$1, ewg $$2, azv $$3) {
+      if ($$0.O().c(dir.b)) {
+         int $$4 = $$3.a(3);
+         if ($$4 > 0) {
+            iu $$5 = $$1;
+
+            for (int $$6 = 0; $$6 < $$4; $$6++) {
+               $$5 = $$5.b($$3.a(3) - 1, 1, $$3.a(3) - 1);
+               if (!$$0.p($$5)) {
+                  return;
+               }
+
+               dzz $$7 = $$0.a_($$5);
+               if ($$7.l()) {
+                  if (this.a((diy)$$0, $$5)) {
+                     $$0.b($$5, dln.a($$0, $$5));
+                     return;
+                  }
+               } else if ($$7.d()) {
+                  return;
+               }
+            }
+         } else {
+            for (int $$8 = 0; $$8 < 3; $$8++) {
+               iu $$9 = $$1.b($$3.a(3) - 1, 0, $$3.a(3) - 1);
+               if (!$$0.p($$9)) {
+                  return;
+               }
+
+               if ($$0.v($$9.d()) && this.b($$0, $$9)) {
+                  $$0.b($$9.d(), dln.a($$0, $$9));
+               }
+            }
+         }
+      }
    }
 
-   public static record a(ewh[] a, ewh[] b, Set<ewq> c) {
-
-      public void a(vs $$0) {
-         $$0.a(this.c, ($$0x, $$1) -> $$1.a($$0x));
-         ewj.a($$0, this.a);
-         ewj.a($$0, this.b);
+   private boolean a(diy $$0, iu $$1) {
+      for (ja $$2 : ja.values()) {
+         if (this.b($$0, $$1.a($$2))) {
+            return true;
+         }
       }
 
-      public static ewj.a b(vs $$0) {
-         HashSet<ewq> $$1 = $$0.a(HashSet::new, ewq::c);
-         ewh[] $$2 = ewj.c($$0);
-         ewh[] $$3 = ewj.c($$0);
-         return new ewj.a($$2, $$3, $$1);
+      return false;
+   }
+
+   private boolean b(diy $$0, iu $$1) {
+      return $$0.d($$1.v()) && !$$0.C($$1) ? false : $$0.a_($$1).m();
+   }
+
+   @Nullable
+   @Override
+   public lv h() {
+      return lx.i;
+   }
+
+   @Override
+   protected void a(diw $$0, iu $$1, dzz $$2) {
+      this.a($$0, $$1);
+   }
+
+   @Override
+   public int b(diy $$0) {
+      return $$0.B_().i() ? 4 : 2;
+   }
+
+   @Override
+   public dzz b(ewg $$0) {
+      return dmc.K.m().b(dqv.b, Integer.valueOf(e($$0)));
+   }
+
+   @Override
+   public boolean a(ewf $$0) {
+      return $$0 == ewh.e || $$0 == ewh.d;
+   }
+
+   @Override
+   public int c(diy $$0) {
+      return $$0.B_().i() ? 1 : 2;
+   }
+
+   @Override
+   public boolean a(ewg $$0, dib $$1, iu $$2, ewf $$3, ja $$4) {
+      return $$0.a($$1, $$2) >= 0.44444445F && $$3.a(axh.a);
+   }
+
+   @Override
+   public int a(diy $$0) {
+      return $$0.B_().i() ? 10 : 30;
+   }
+
+   @Override
+   public int a(div $$0, iu $$1, ewg $$2, ewg $$3) {
+      int $$4 = this.a($$0);
+      if (!$$2.c() && !$$3.c() && !$$2.c(a) && !$$3.c(a) && $$3.a($$0, $$1) > $$2.a($$0, $$1) && $$0.C_().a(4) != 0) {
+         $$4 *= 4;
+      }
+
+      return $$4;
+   }
+
+   private void a(diw $$0, iu $$1) {
+      $$0.c(1501, $$1, 0);
+   }
+
+   @Override
+   protected boolean a(arq $$0) {
+      return $$0.O().c(dir.W);
+   }
+
+   @Override
+   protected void a(diw $$0, iu $$1, dzz $$2, ja $$3, ewg $$4) {
+      if ($$3 == ja.a) {
+         ewg $$5 = $$0.b_($$1);
+         if (this.a(axh.b) && $$5.a(axh.a)) {
+            if ($$2.b() instanceof dqv) {
+               $$0.a($$1, dmc.b.m(), 3);
+            }
+
+            this.a($$0, $$1);
+            return;
+         }
+      }
+
+      super.a($$0, $$1, $$2, $$3, $$4);
+   }
+
+   @Override
+   protected boolean i() {
+      return true;
+   }
+
+   @Override
+   protected float c() {
+      return 100.0F;
+   }
+
+   @Override
+   public Optional<awm> j() {
+      return Optional.of(awn.dm);
+   }
+
+   public static class a extends ewj {
+      @Override
+      protected void a(eaa.a<ewf, ewg> $$0) {
+         super.a($$0);
+         $$0.a(b);
+      }
+
+      @Override
+      public int d(ewg $$0) {
+         return $$0.c(b);
+      }
+
+      @Override
+      public boolean c(ewg $$0) {
+         return false;
+      }
+   }
+
+   public static class b extends ewj {
+      @Override
+      public int d(ewg $$0) {
+         return 8;
+      }
+
+      @Override
+      public boolean c(ewg $$0) {
+         return true;
       }
    }
 }

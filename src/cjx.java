@@ -1,550 +1,325 @@
-import com.google.common.collect.ImmutableList;
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Dynamic;
-import java.util.Objects;
-import java.util.Optional;
-import java.util.UUID;
-import java.util.function.BiConsumer;
+import com.mojang.serialization.Codec;
+import io.netty.buffer.ByteBuf;
+import java.util.List;
+import java.util.function.Consumer;
+import java.util.function.IntFunction;
 import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
-public class cjx extends bxh implements cqc, eex {
-   private static final Logger bF = LogUtils.getLogger();
-   private static final jz bG = new jz(1, 1, 1);
-   private static final int bH = 5;
-   private static final float bI = 55.0F;
-   private static final float bJ = 15.0F;
-   private static final int bK = 6000;
-   private static final int bL = 3;
-   public static final int a = 1024;
-   private static final akh<Boolean> bM = akl.a(cjx.class, akj.k);
-   private static final akh<Boolean> bN = akl.a(cjx.class, akj.k);
-   protected static final ImmutableList<chi<? extends chh<? super cjx>>> b = ImmutableList.of(chi.c, chi.d, chi.f, chi.b);
-   protected static final ImmutableList<cgb<?>> c = ImmutableList.of(
-      cgb.u, cgb.o, cgb.h, cgb.n, cgb.F, cgb.y, cgb.M, cgb.aN, cgb.aO, cgb.aP, cgb.aQ, cgb.aa, new cgb[0]
+public class cjx extends ciq {
+   public static final cjx.d a = new cjx.d(cjx.b.a, cxw.a, cxw.a);
+   private static final akj<Integer> c = akn.a(cjx.class, akl.b);
+   public static final List<cjx.d> b = List.of(
+      new cjx.d(cjx.b.h, cxw.b, cxw.h),
+      new cjx.d(cjx.b.g, cxw.h, cxw.h),
+      new cjx.d(cjx.b.g, cxw.h, cxw.l),
+      new cjx.d(cjx.b.l, cxw.a, cxw.h),
+      new cjx.d(cjx.b.b, cxw.l, cxw.h),
+      new cjx.d(cjx.b.a, cxw.b, cxw.a),
+      new cjx.d(cjx.b.f, cxw.g, cxw.d),
+      new cjx.d(cjx.b.j, cxw.k, cxw.e),
+      new cjx.d(cjx.b.l, cxw.a, cxw.o),
+      new cjx.d(cjx.b.f, cxw.a, cxw.e),
+      new cjx.d(cjx.b.i, cxw.a, cxw.h),
+      new cjx.d(cjx.b.l, cxw.a, cxw.b),
+      new cjx.d(cjx.b.d, cxw.j, cxw.g),
+      new cjx.d(cjx.b.e, cxw.f, cxw.d),
+      new cjx.d(cjx.b.k, cxw.o, cxw.a),
+      new cjx.d(cjx.b.c, cxw.h, cxw.o),
+      new cjx.d(cjx.b.j, cxw.o, cxw.a),
+      new cjx.d(cjx.b.g, cxw.a, cxw.e),
+      new cjx.d(cjx.b.a, cxw.o, cxw.a),
+      new cjx.d(cjx.b.b, cxw.h, cxw.a),
+      new cjx.d(cjx.b.d, cxw.j, cxw.e),
+      new cjx.d(cjx.b.g, cxw.e, cxw.e)
    );
-   public static final ImmutableList<Float> d = ImmutableList.of(
-      0.5625F, 0.625F, 0.75F, 0.9375F, 1.0F, 1.0F, 1.125F, 1.25F, 1.5F, 1.875F, 2.0F, 2.25F, new Float[]{2.5F, 3.0F, 3.75F, 4.0F}
-   );
-   private final eel<eex.b> bO;
-   private eex.a bP;
-   private final eex.d bQ;
-   private final eel<cjx.a> bR;
-   private final buf bS = new buf(1);
-   @Nullable
-   private iu bT;
-   private long bU;
-   private float bV;
-   private float bW;
-   private float bX;
-   private float bY;
-   private float bZ;
+   private boolean bF = true;
 
-   public cjx(bwj<? extends cjx> $$0, dip $$1) {
+   public cjx(bwm<? extends cjx> $$0, div $$1) {
       super($$0, $$1);
-      this.bz = new ccv(this, 20, true);
-      this.a_(this.fM());
-      this.bQ = new cjx.b();
-      this.bP = new eex.a();
-      this.bO = new eel<>(new eex.b(this));
-      this.bR = new eel<>(new cjx.a(this.bQ.b(), eeo.E.a().a()));
+   }
+
+   public static String b(int $$0) {
+      return "entity.minecraft.tropical_fish.predefined." + $$0;
+   }
+
+   static int a(cjx.b $$0, cxw $$1, cxw $$2) {
+      return $$0.b() & 65535 | ($$1.a() & 0xFF) << 16 | ($$2.a() & 0xFF) << 24;
+   }
+
+   public static cxw c(int $$0) {
+      return cxw.a($$0 >> 16 & 0xFF);
+   }
+
+   public static cxw r(int $$0) {
+      return cxw.a($$0 >> 24 & 0xFF);
+   }
+
+   public static cjx.b s(int $$0) {
+      return cjx.b.a($$0 & 65535);
    }
 
    @Override
-   protected bxz.b<cjx> ec() {
-      return bxz.a(c, b);
-   }
-
-   @Override
-   protected bxz<?> a(Dynamic<?> $$0) {
-      return cjy.a(this.ec().a($$0));
-   }
-
-   @Override
-   public bxz<cjx> eb() {
-      return (bxz<cjx>)super.eb();
-   }
-
-   public static bye.a j() {
-      return bxb.E().a(byf.s, 20.0).a(byf.l, 0.1F).a(byf.v, 0.1F).a(byf.c, 2.0);
-   }
-
-   @Override
-   protected cgj b(dip $$0) {
-      cgh $$1 = new cgh(this, $$0);
-      $$1.b(false);
-      $$1.a(true);
-      $$1.a(48.0F);
-      return $$1;
-   }
-
-   @Override
-   protected void a(akl.a $$0) {
+   protected void a(akn.a $$0) {
       super.a($$0);
-      $$0.a(bM, false);
-      $$0.a(bN, true);
+      $$0.a(c, a.a());
    }
 
    @Override
-   public void a_(fdw $$0) {
-      if (this.bj()) {
-         this.a(0.02F, $$0);
-         this.a(bxd.a, this.dy());
-         this.i(this.dy().c(0.8F));
-      } else if (this.bw()) {
-         this.a(0.02F, $$0);
-         this.a(bxd.a, this.dy());
-         this.i(this.dy().c(0.5));
+   public void b(tz $$0) {
+      super.b($$0);
+      $$0.a("Variant", this.gz());
+   }
+
+   @Override
+   public void a(tz $$0) {
+      super.a($$0);
+      this.t($$0.h("Variant"));
+   }
+
+   private void t(int $$0) {
+      this.al.a(c, $$0);
+   }
+
+   @Override
+   public boolean q(int $$0) {
+      return !this.bF;
+   }
+
+   private int gz() {
+      return this.al.a(c);
+   }
+
+   public cxw gw() {
+      return c(this.gz());
+   }
+
+   public cxw gx() {
+      return r(this.gz());
+   }
+
+   public cjx.b gy() {
+      return s(this.gz());
+   }
+
+   private void a(cjx.b $$0) {
+      int $$1 = this.gz();
+      cxw $$2 = c($$1);
+      cxw $$3 = r($$1);
+      this.t(a($$0, $$2, $$3));
+   }
+
+   private void a(cxw $$0) {
+      int $$1 = this.gz();
+      cjx.b $$2 = s($$1);
+      cxw $$3 = r($$1);
+      this.t(a($$2, $$0, $$3));
+   }
+
+   private void b(cxw $$0) {
+      int $$1 = this.gz();
+      cjx.b $$2 = s($$1);
+      cxw $$3 = c($$1);
+      this.t(a($$2, $$3, $$0));
+   }
+
+   @Nullable
+   @Override
+   public <T> T a(ki<? extends T> $$0) {
+      if ($$0 == kj.aB) {
+         return c((ki<T>)$$0, this.gy());
+      } else if ($$0 == kj.aC) {
+         return c((ki<T>)$$0, this.gw());
       } else {
-         this.a(this.fn(), $$0);
-         this.a(bxd.a, this.dy());
-         this.i(this.dy().c(0.91F));
+         return $$0 == kj.aD ? c((ki<T>)$$0, this.gx()) : super.a($$0);
       }
    }
 
    @Override
-   public boolean a(aro $$0, bup $$1, float $$2) {
-      return this.b($$1.d()) ? false : super.a($$0, $$1, $$2);
-   }
-
-   @Override
-   protected boolean t(bwa $$0) {
-      return this.b($$0) || super.t($$0);
-   }
-
-   private boolean b(@Nullable bwa $$0) {
-      if (!($$0 instanceof cqs $$1)) {
-         return false;
-      } else {
-         Optional<UUID> $$2 = this.eb().c(cgb.aN);
-         return $$2.isPresent() && $$1.cG().equals($$2.get());
-      }
-   }
-
-   @Override
-   protected void b(iu $$0, dzo $$1) {
-   }
-
-   @Override
-   protected void a(double $$0, boolean $$1, dzo $$2, iu $$3) {
-   }
-
-   @Override
-   protected awk u() {
-      return this.d(bwk.a) ? awl.a : awl.b;
-   }
-
-   @Override
-   protected awk e(bup $$0) {
-      return awl.d;
-   }
-
-   @Override
-   protected awk l_() {
-      return awl.c;
-   }
-
-   @Override
-   protected float fd() {
-      return 0.4F;
-   }
-
-   @Override
-   protected void a(aro $$0) {
-      bqj $$1 = bqi.a();
-      $$1.a("allayBrain");
-      this.eb().a($$0, this);
-      $$1.c();
-      $$1.a("allayActivityUpdate");
-      cjy.a(this);
-      $$1.c();
+   protected void a(ke $$0) {
+      this.a($$0, kj.aB);
+      this.a($$0, kj.aC);
+      this.a($$0, kj.aD);
       super.a($$0);
    }
 
    @Override
-   public void k_() {
-      super.k_();
-      if (!this.dV().C && this.bK() && this.af % 10 == 0) {
-         this.c(1.0F);
-      }
-
-      if (this.q() && this.gs() && this.af % 20 == 0) {
-         this.w(false);
-         this.bT = null;
-      }
-
-      this.gt();
-   }
-
-   @Override
-   public void h() {
-      super.h();
-      if (this.dV().C) {
-         this.bW = this.bV;
-         if (this.m()) {
-            this.bV = azk.a(this.bV + 1.0F, 0.0F, 5.0F);
-         } else {
-            this.bV = azk.a(this.bV - 1.0F, 0.0F, 5.0F);
-         }
-
-         if (this.q()) {
-            this.bX++;
-            this.bZ = this.bY;
-            if (this.t()) {
-               this.bY++;
-            } else {
-               this.bY--;
-            }
-
-            this.bY = azk.a(this.bY, 0.0F, 15.0F);
-         } else {
-            this.bX = 0.0F;
-            this.bY = 0.0F;
-            this.bZ = 0.0F;
-         }
-      } else {
-         eex.c.a(this.dV(), this.bP, this.bQ);
-         if (this.gn()) {
-            this.w(false);
-         }
-      }
-   }
-
-   @Override
-   public boolean fM() {
-      return !this.gr() && this.m();
-   }
-
-   public boolean m() {
-      return !this.b(btx.a).f();
-   }
-
-   @Override
-   protected boolean f(bwk $$0) {
-      return false;
-   }
-
-   private boolean gr() {
-      return this.eb().a(cgb.aQ, cgc.a);
-   }
-
-   @Override
-   protected bty b(cqs $$0, btx $$1) {
-      cys $$2 = $$0.b($$1);
-      cys $$3 = this.b(btx.a);
-      if (this.q() && $$2.a(axi.W) && this.gw()) {
-         this.gu();
-         this.dV().a(this, (byte)18);
-         this.dV().a($$0, this, awl.E, awm.g, 2.0F, 1.0F);
-         this.a($$0, $$2);
-         return bty.a;
-      } else if ($$3.f() && !$$2.f()) {
-         cys $$4 = $$2.c(1);
-         this.a(btx.a, $$4);
-         this.a($$0, $$2);
-         this.dV().a($$0, this, awl.e, awm.g, 2.0F, 1.0F);
-         this.eb().a(cgb.aN, $$0.cG());
-         return bty.a;
-      } else if (!$$3.f() && $$1 == btx.a && $$2.f()) {
-         this.a(bwk.a, cys.k);
-         this.dV().a($$0, this, awl.f, awm.g, 2.0F, 1.0F);
-         this.a(btx.a);
-
-         for (cys $$5 : this.n().f()) {
-            bys.a(this, $$5, this.dt());
-         }
-
-         this.eb().b(cgb.aN);
-         $$0.i($$3);
-         return bty.a;
+   protected <T> boolean b(ki<T> $$0, T $$1) {
+      if ($$0 == kj.aB) {
+         this.a(c(kj.aB, $$1));
+         return true;
+      } else if ($$0 == kj.aC) {
+         this.a(c(kj.aC, $$1));
+         return true;
+      } else if ($$0 == kj.aD) {
+         this.b(c(kj.aD, $$1));
+         return true;
       } else {
          return super.b($$0, $$1);
       }
    }
 
-   public void b(iu $$0, boolean $$1) {
-      if ($$1) {
-         if (!this.q()) {
-            this.bT = $$0;
-            this.w(true);
-         }
-      } else if ($$0.equals(this.bT) || this.bT == null) {
-         this.bT = null;
-         this.w(false);
-      }
+   @Override
+   public void a_(cyy $$0) {
+      super.a_($$0);
+      $$0.a(kj.aB, this);
+      $$0.a(kj.aC, this);
+      $$0.a(kj.aD, this);
    }
 
    @Override
-   public buf n() {
-      return this.bS;
+   public cyy R_() {
+      return new cyy(czc.rv);
    }
 
    @Override
-   protected jz X() {
-      return bG;
+   protected awm u() {
+      return awn.AN;
    }
 
    @Override
-   public boolean c(aro $$0, cys $$1) {
-      cys $$2 = this.b(btx.a);
-      return !$$2.f() && $$0.O().c(dil.c) && this.bS.c($$1) && this.c($$2, $$1);
-   }
-
-   private boolean c(cys $$0, cys $$1) {
-      return cys.b($$0, $$1) && !this.d($$0, $$1);
-   }
-
-   private boolean d(cys $$0, cys $$1) {
-      dao $$2 = $$0.a(kj.R);
-      dao $$3 = $$1.a(kj.R);
-      return !Objects.equals($$2, $$3);
+   protected awm l_() {
+      return awn.AO;
    }
 
    @Override
-   protected void a(aro $$0, cmx $$1) {
-      cqc.a($$0, this, this, $$1);
+   protected awm e(bus $$0) {
+      return awn.AQ;
    }
 
    @Override
-   protected void ab() {
-      super.ab();
-      agk.a(this);
+   protected awm t() {
+      return awn.AP;
    }
 
+   @Nullable
    @Override
-   public boolean ba() {
-      return !this.aJ();
-   }
-
-   @Override
-   public void a(BiConsumer<eel<?>, aro> $$0) {
-      if (this.dV() instanceof aro $$1) {
-         $$0.accept(this.bO, $$1);
-         $$0.accept(this.bR, $$1);
-      }
-   }
-
-   public boolean q() {
-      return this.al.a(bM);
-   }
-
-   public void w(boolean $$0) {
-      if (!this.dV().C && this.dj() && (!$$0 || !this.gn())) {
-         this.al.a(bM, $$0);
-      }
-   }
-
-   private boolean gs() {
-      return this.bT == null || !this.bT.a(this.dt(), (double)eeo.E.a().a()) || !this.dV().a_(this.bT).a(dlw.eg);
-   }
-
-   public float J(float $$0) {
-      return azk.h($$0, this.bW, this.bV) / 5.0F;
-   }
-
-   public boolean t() {
-      float $$0 = this.bX % 55.0F;
-      return $$0 < 15.0F;
-   }
-
-   public float K(float $$0) {
-      return azk.h($$0, this.bZ, this.bY) / 15.0F;
-   }
-
-   @Override
-   public boolean a(cys $$0, cys $$1) {
-      return !this.c($$0, $$1);
-   }
-
-   @Override
-   protected void f(aro $$0) {
-      super.f($$0);
-      this.bS.f().forEach($$1x -> this.a($$0, $$1x));
-      cys $$1 = this.a(bwk.a);
-      if (!$$1.f() && !dfh.a($$1, dfg.D)) {
-         this.a($$0, $$1);
-         this.a(bwk.a, cys.k);
-      }
-   }
-
-   @Override
-   public boolean h(double $$0) {
-      return false;
-   }
-
-   @Override
-   public void b(tx $$0) {
-      super.b($$0);
-      this.b($$0, this.dX());
-      alc<uu> $$1 = this.dX().a(ul.a);
-      eex.a.a
-         .encodeStart($$1, this.bP)
-         .resultOrPartial($$0x -> bF.error("Failed to encode vibration listener for Allay: '{}'", $$0x))
-         .ifPresent($$1x -> $$0.a("listener", $$1x));
-      $$0.a("DuplicationCooldown", this.bU);
-      $$0.a("CanDuplicate", this.gw());
-   }
-
-   @Override
-   public void a(tx $$0) {
-      super.a($$0);
-      this.a($$0, this.dX());
-      alc<uu> $$1 = this.dX().a(ul.a);
-      if ($$0.b("listener", 10)) {
-         eex.a.a
-            .parse($$1, $$0.p("listener"))
-            .resultOrPartial($$0x -> bF.error("Failed to parse vibration listener for Allay: '{}'", $$0x))
-            .ifPresent($$0x -> this.bP = $$0x);
-      }
-
-      this.bU = (long)$$0.h("DuplicationCooldown");
-      this.al.a(bN, $$0.q("CanDuplicate"));
-   }
-
-   @Override
-   protected boolean go() {
-      return false;
-   }
-
-   private void gt() {
-      if (this.bU > 0L) {
-         this.bU--;
-      }
-
-      if (!this.dV().w_() && this.bU == 0L && !this.gw()) {
-         this.al.a(bN, true);
-      }
-   }
-
-   private void gu() {
-      cjx $$0 = bwj.c.a(this.dV(), bwi.e);
-      if ($$0 != null) {
-         $$0.f(this.dt());
-         $$0.fY();
-         $$0.gv();
-         this.gv();
-         this.dV().b($$0);
-      }
-   }
-
-   private void gv() {
-      this.bU = 6000L;
-      this.al.a(bN, false);
-   }
-
-   private boolean gw() {
-      return this.al.a(bN);
-   }
-
-   private void a(cqs $$0, cys $$1) {
-      $$1.a(1, $$0);
-   }
-
-   @Override
-   public fdw cT() {
-      return new fdw(0.0, (double)this.cS() * 0.6, (double)this.dq() * 0.1);
-   }
-
-   @Override
-   public void b(byte $$0) {
-      if ($$0 == 18) {
-         for (int $$1 = 0; $$1 < 3; $$1++) {
-            this.gx();
-         }
+   public bxu a(djm $$0, btz $$1, bwl $$2, @Nullable bxu $$3) {
+      $$3 = super.a($$0, $$1, $$2, $$3);
+      azv $$4 = $$0.C_();
+      cjx.d $$6;
+      if ($$3 instanceof cjx.c $$5) {
+         $$6 = $$5.b;
+      } else if ((double)$$4.i() < 0.9) {
+         $$6 = af.a(b, $$4);
+         $$3 = new cjx.c(this, $$6);
       } else {
-         super.b($$0);
+         this.bF = false;
+         cjx.b[] $$8 = cjx.b.values();
+         cxw[] $$9 = cxw.values();
+         cjx.b $$10 = af.a($$8, $$4);
+         cxw $$11 = af.a($$9, $$4);
+         cxw $$12 = af.a($$9, $$4);
+         $$6 = new cjx.d($$10, $$11, $$12);
+      }
+
+      this.t($$6.a());
+      return $$3;
+   }
+
+   public static boolean b(bwm<cjx> $$0, diw $$1, bwl $$2, iu $$3, azv $$4) {
+      return $$1.b_($$3.e()).a(axh.a) && $$1.a_($$3.d()).a(dmc.J) && ($$1.u($$3).a(axb.ap) || cjz.c($$0, $$1, $$2, $$3, $$4));
+   }
+
+   public static enum a {
+      a(0),
+      b(1);
+
+      final int c;
+
+      private a(final int $$0) {
+         this.c = $$0;
       }
    }
 
-   private void gx() {
-      double $$0 = this.ae.k() * 0.02;
-      double $$1 = this.ae.k() * 0.02;
-      double $$2 = this.ae.k() * 0.02;
-      this.dV().a(lx.S, this.d(1.0), this.dD() + 0.5, this.g(1.0), $$0, $$1, $$2);
-   }
+   public static enum b implements bak, dcd {
+      a("kob", cjx.a.a, 0),
+      b("sunstreak", cjx.a.a, 1),
+      c("snooper", cjx.a.a, 2),
+      d("dasher", cjx.a.a, 3),
+      e("brinely", cjx.a.a, 4),
+      f("spotty", cjx.a.a, 5),
+      g("flopper", cjx.a.b, 0),
+      h("stripey", cjx.a.b, 1),
+      i("glitter", cjx.a.b, 2),
+      j("blockfish", cjx.a.b, 3),
+      k("betty", cjx.a.b, 4),
+      l("clayfish", cjx.a.b, 5);
 
-   @Override
-   public eex.a x() {
-      return this.bP;
-   }
+      public static final Codec<cjx.b> m = bak.a(cjx.b::values);
+      private static final IntFunction<cjx.b> o = ayc.a(cjx.b::b, values(), a);
+      public static final yw<ByteBuf, cjx.b> n = yu.a(o, cjx.b::b);
+      private final String p;
+      private final wy q;
+      private final cjx.a r;
+      private final int s;
 
-   @Override
-   public eex.d gq() {
-      return this.bQ;
-   }
-
-   class a implements eeq {
-      private final ees b;
-      private final int c;
-
-      public a(final ees $$0, final int $$1) {
-         this.b = $$0;
-         this.c = $$1;
+      private b(final String $$0, final cjx.a $$1, final int $$2) {
+         this.p = $$0;
+         this.r = $$1;
+         this.s = $$1.c | $$2 << 8;
+         this.q = wy.c("entity.minecraft.tropical_fish.type." + this.p);
       }
 
-      @Override
-      public ees a() {
-         return this.b;
+      public static cjx.b a(int $$0) {
+         return o.apply($$0);
       }
 
-      @Override
+      public cjx.a a() {
+         return this.r;
+      }
+
       public int b() {
-         return this.c;
+         return this.s;
       }
 
       @Override
-      public boolean a(aro $$0, je<eeo> $$1, eeo.a $$2, fdw $$3) {
-         if ($$1.a(eeo.E)) {
-            cjx.this.b(iu.a((jo)$$3), true);
-            return true;
-         } else if ($$1.a(eeo.F)) {
-            cjx.this.b(iu.a((jo)$$3), false);
-            return true;
+      public String c() {
+         return this.p;
+      }
+
+      public wy d() {
+         return this.q;
+      }
+
+      @Override
+      public void a(cyu.b $$0, Consumer<wy> $$1, dan $$2, ke $$3) {
+         cxw $$4 = $$3.a(kj.aC, cjx.a.c());
+         cxw $$5 = $$3.a(kj.aD, cjx.a.d());
+         n[] $$6 = new n[]{n.u, n.h};
+         int $$7 = cjx.b.indexOf(new cjx.d(this, $$4, $$5));
+         if ($$7 != -1) {
+            $$1.accept(wy.c(cjx.b($$7)).a($$6));
          } else {
-            return false;
+            $$1.accept(this.q.e().a($$6));
+            xm $$8 = wy.c("color.minecraft." + $$4.b());
+            if ($$4 != $$5) {
+               $$8.f(", ").b(wy.c("color.minecraft." + $$5.b()));
+            }
+
+            $$8.a($$6);
+            $$1.accept($$8);
          }
       }
    }
 
-   class b implements eex.d {
-      private static final int b = 16;
-      private final ees c = new eem(cjx.this, cjx.this.cS());
+   static class c extends ciq.a {
+      final cjx.d b;
 
-      @Override
+      c(cjx $$0, cjx.d $$1) {
+         super($$0);
+         this.b = $$1;
+      }
+   }
+
+   public static record d(cjx.b b, cxw c, cxw d) {
+      public static final Codec<cjx.d> a = Codec.INT.xmap(cjx.d::new, cjx.d::a);
+
+      public d(int $$0) {
+         this(cjx.s($$0), cjx.c($$0), cjx.r($$0));
+      }
+
       public int a() {
-         return 16;
-      }
-
-      @Override
-      public ees b() {
-         return this.c;
-      }
-
-      @Override
-      public boolean a(aro $$0, iu $$1, je<eeo> $$2, eeo.a $$3) {
-         if (cjx.this.gf()) {
-            return false;
-         } else {
-            Optional<jd> $$4 = cjx.this.eb().c(cgb.aO);
-            if ($$4.isEmpty()) {
-               return true;
-            } else {
-               jd $$5 = $$4.get();
-               return $$5.a($$0.aj(), cjx.this.dv(), 1024) && $$5.b().equals($$1);
-            }
-         }
-      }
-
-      @Override
-      public void a(aro $$0, iu $$1, je<eeo> $$2, @Nullable bwa $$3, @Nullable bwa $$4, float $$5) {
-         if ($$2.a(eeo.H)) {
-            cjy.a(cjx.this, new iu($$1));
-         }
-      }
-
-      @Override
-      public axp<eeo> c() {
-         return axg.e;
+         return cjx.a(this.b, this.c, this.d);
       }
    }
 }

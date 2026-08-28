@@ -1,184 +1,63 @@
-import java.util.UUID;
-import net.minecraft.server.MinecraftServer;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
-public class exu implements eyg {
-   private final eyh a;
-   private final eyg b;
+public record exu(iu b, cxw c, Optional<wy> d) {
+   public static final Codec<exu> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               iu.a.fieldOf("pos").forGetter(exu::c),
+               cxw.q.lenientOptionalFieldOf("color", cxw.a).forGetter(exu::d),
+               xa.a.lenientOptionalFieldOf("name").forGetter(exu::e)
+            )
+            .apply($$0, exu::new)
+   );
 
-   public exu(eyh $$0, eyg $$1) {
-      this.a = $$0;
-      this.b = $$1;
+   @Nullable
+   public static exu a(dib $$0, iu $$1) {
+      if ($$0.c_($$1) instanceof dwl $$3) {
+         cxw $$4 = $$3.f();
+         Optional<wy> $$5 = Optional.ofNullable($$3.an());
+         return new exu($$1, $$4, $$5);
+      } else {
+         return null;
+      }
    }
 
-   @Override
-   public iu a() {
-      return this.b.a();
+   public je<exw> a() {
+      return switch (this.c) {
+         case a -> exx.k;
+         case b -> exx.l;
+         case c -> exx.m;
+         case d -> exx.n;
+         case e -> exx.o;
+         case f -> exx.p;
+         case g -> exx.q;
+         case h -> exx.r;
+         case i -> exx.s;
+         case j -> exx.t;
+         case k -> exx.u;
+         case l -> exx.v;
+         case m -> exx.w;
+         case n -> exx.x;
+         case o -> exx.y;
+         case p -> exx.z;
+      };
    }
 
-   @Override
-   public float b() {
-      return this.b.b();
+   public String b() {
+      return "banner-" + this.b.u() + "," + this.b.v() + "," + this.b.w();
    }
 
-   @Override
-   public long c() {
-      return this.b.c();
+   public iu c() {
+      return this.b;
    }
 
-   @Override
-   public long d() {
-      return this.b.d();
+   public cxw d() {
+      return this.c;
    }
 
-   @Override
-   public String e() {
-      return this.a.e();
-   }
-
-   @Override
-   public int f() {
-      return this.b.f();
-   }
-
-   @Override
-   public void a(int $$0) {
-   }
-
-   @Override
-   public boolean g() {
-      return this.b.g();
-   }
-
-   @Override
-   public int h() {
-      return this.b.h();
-   }
-
-   @Override
-   public boolean i() {
-      return this.b.i();
-   }
-
-   @Override
-   public int j() {
-      return this.b.j();
-   }
-
-   @Override
-   public dim k() {
-      return this.a.k();
-   }
-
-   @Override
-   public void a(long $$0) {
-   }
-
-   @Override
-   public void b(long $$0) {
-   }
-
-   @Override
-   public void a(iu $$0, float $$1) {
-   }
-
-   @Override
-   public void a(boolean $$0) {
-   }
-
-   @Override
-   public void b(int $$0) {
-   }
-
-   @Override
-   public void b(boolean $$0) {
-   }
-
-   @Override
-   public void c(int $$0) {
-   }
-
-   @Override
-   public void a(dim $$0) {
-   }
-
-   @Override
-   public boolean l() {
-      return this.a.l();
-   }
-
-   @Override
-   public boolean m() {
-      return this.a.m();
-   }
-
-   @Override
-   public boolean n() {
-      return this.b.n();
-   }
-
-   @Override
-   public void c(boolean $$0) {
-   }
-
-   @Override
-   public dil o() {
-      return this.a.o();
-   }
-
-   @Override
-   public ebg.c p() {
-      return this.b.p();
-   }
-
-   @Override
-   public void a(ebg.c $$0) {
-   }
-
-   @Override
-   public btv q() {
-      return this.a.q();
-   }
-
-   @Override
-   public boolean r() {
-      return this.a.r();
-   }
-
-   @Override
-   public fdj<MinecraftServer> s() {
-      return this.b.s();
-   }
-
-   @Override
-   public int t() {
-      return 0;
-   }
-
-   @Override
-   public void d(int $$0) {
-   }
-
-   @Override
-   public int u() {
-      return 0;
-   }
-
-   @Override
-   public void e(int $$0) {
-   }
-
-   @Override
-   public UUID v() {
-      return null;
-   }
-
-   @Override
-   public void a(UUID $$0) {
-   }
-
-   @Override
-   public void a(p $$0, dir $$1) {
-      $$0.a("Derived", true);
-      this.b.a($$0, $$1);
+   public Optional<wy> e() {
+      return this.d;
    }
 }

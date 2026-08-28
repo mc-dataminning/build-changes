@@ -1,58 +1,18 @@
-public class hlr extends hle {
-   public hlr(awk $$0, awm $$1, float $$2, float $$3, azt $$4, iu $$5) {
-      this($$0, $$1, $$2, $$3, $$4, (double)$$5.u() + 0.5, (double)$$5.v() + 0.5, (double)$$5.w() + 0.5);
+import java.nio.file.Path;
+import java.util.List;
+import java.util.UUID;
+
+public interface hlr {
+   void scheduleReload(hlr.a var1);
+
+   public interface a {
+      void a();
+
+      void a(boolean var1);
+
+      List<hlr.b> b();
    }
 
-   public static hlr a(awk $$0, float $$1) {
-      return a($$0, $$1, 0.25F);
-   }
-
-   public static hlr a(je<awk> $$0, float $$1) {
-      return a($$0.a(), $$1);
-   }
-
-   public static hlr a(awk $$0, float $$1, float $$2) {
-      return new hlr($$0.a(), awm.a, $$2, $$1, hlw.t(), false, 0, hlw.a.a, 0.0, 0.0, 0.0, true);
-   }
-
-   public static hlr a(awk $$0) {
-      return new hlr($$0.a(), awm.b, 1.0F, 1.0F, hlw.t(), false, 0, hlw.a.a, 0.0, 0.0, 0.0, true);
-   }
-
-   public static hlr a(awk $$0, fdw $$1) {
-      return new hlr($$0, awm.c, 4.0F, 1.0F, hlw.t(), false, 0, hlw.a.b, $$1.d, $$1.e, $$1.f);
-   }
-
-   public static hlr b(awk $$0, float $$1, float $$2) {
-      return new hlr($$0.a(), awm.i, $$2, $$1, hlw.t(), false, 0, hlw.a.a, 0.0, 0.0, 0.0, true);
-   }
-
-   public static hlr b(awk $$0) {
-      return b($$0, 1.0F, 1.0F);
-   }
-
-   public static hlr a(awk $$0, azt $$1, double $$2, double $$3, double $$4) {
-      return new hlr($$0, awm.i, 1.0F, 1.0F, $$1, false, 0, hlw.a.b, $$2, $$3, $$4);
-   }
-
-   public hlr(awk $$0, awm $$1, float $$2, float $$3, azt $$4, double $$5, double $$6, double $$7) {
-      this($$0, $$1, $$2, $$3, $$4, false, 0, hlw.a.b, $$5, $$6, $$7);
-   }
-
-   private hlr(awk $$0, awm $$1, float $$2, float $$3, azt $$4, boolean $$5, int $$6, hlw.a $$7, double $$8, double $$9, double $$10) {
-      this($$0.a(), $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8, $$9, $$10, false);
-   }
-
-   public hlr(ale $$0, awm $$1, float $$2, float $$3, azt $$4, boolean $$5, int $$6, hlw.a $$7, double $$8, double $$9, double $$10, boolean $$11) {
-      super($$0, $$1, $$4);
-      this.d = $$2;
-      this.e = $$3;
-      this.f = $$8;
-      this.g = $$9;
-      this.h = $$10;
-      this.i = $$5;
-      this.j = $$6;
-      this.k = $$7;
-      this.l = $$11;
+   public static record b(UUID a, Path b) {
    }
 }

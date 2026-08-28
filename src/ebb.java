@@ -1,21 +1,20 @@
-public enum ebb implements bai {
-   a("none"),
-   b("low"),
-   c("tall");
+public enum ebb implements bak {
+   a("normal"),
+   b("sticky");
 
-   private final String d;
+   private final String c;
 
    private ebb(final String $$0) {
-      this.d = $$0;
+      this.c = $$0;
    }
 
    @Override
    public String toString() {
-      return this.c();
+      return this.c;
    }
 
    @Override
    public String c() {
-      return this.d;
+      return this.c;
    }
 }

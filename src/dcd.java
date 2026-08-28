@@ -1,8 +1,5 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+import java.util.function.Consumer;
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface dcd {
+public interface dcd {
+   void a(cyu.b var1, Consumer<wy> var2, dan var3, ke var4);
 }

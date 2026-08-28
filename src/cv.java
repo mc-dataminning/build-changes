@@ -11,8 +11,8 @@ import java.util.function.Function;
 import java.util.function.Supplier;
 
 public interface cv<T extends Number> {
-   SimpleCommandExceptionType a = new SimpleCommandExceptionType(ww.c("argument.range.empty"));
-   SimpleCommandExceptionType b = new SimpleCommandExceptionType(ww.c("argument.range.swapped"));
+   SimpleCommandExceptionType a = new SimpleCommandExceptionType(wy.c("argument.range.empty"));
+   SimpleCommandExceptionType b = new SimpleCommandExceptionType(wy.c("argument.range.swapped"));
 
    Optional<T> a();
 
@@ -38,8 +38,8 @@ public interface cv<T extends Number> {
       });
    }
 
-   static <B extends ByteBuf, T extends Number, R extends cv<T>> yu<B, R> a(final yu<B, T> $$0, final cv.a<T, R> $$1) {
-      return new yu<B, R>() {
+   static <B extends ByteBuf, T extends Number, R extends cv<T>> yw<B, R> a(final yw<B, T> $$0, final cv.a<T, R> $$1) {
+      return new yw<B, R>() {
          private static final int d = 1;
          public static final int a = 2;
 
@@ -135,7 +135,7 @@ public interface cv<T extends Number> {
    public static record c(Optional<Double> f, Optional<Double> g, Optional<Double> h, Optional<Double> i) implements cv<Double> {
       public static final cv.c c = new cv.c(Optional.empty(), Optional.empty());
       public static final Codec<cv.c> d = cv.a(Codec.DOUBLE, cv.c::new);
-      public static final yu<ByteBuf, cv.c> e = cv.a(ys.m, cv.c::new);
+      public static final yw<ByteBuf, cv.c> e = cv.a(yu.m, cv.c::new);
 
       private c(Optional<Double> $$0, Optional<Double> $$1) {
          this($$0, $$1, a($$0), a($$1));
@@ -207,7 +207,7 @@ public interface cv<T extends Number> {
    public static record d(Optional<Integer> f, Optional<Integer> g, Optional<Long> h, Optional<Long> i) implements cv<Integer> {
       public static final cv.d c = new cv.d(Optional.empty(), Optional.empty());
       public static final Codec<cv.d> d = cv.a(Codec.INT, cv.d::new);
-      public static final yu<ByteBuf, cv.d> e = cv.a(ys.g, cv.d::new);
+      public static final yw<ByteBuf, cv.d> e = cv.a(yu.g, cv.d::new);
 
       private d(Optional<Integer> $$0, Optional<Integer> $$1) {
          this($$0, $$1, $$0.map($$0x -> $$0x.longValue() * $$0x.longValue()), a($$1));

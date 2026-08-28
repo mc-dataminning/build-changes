@@ -1,9 +1,67 @@
-import java.util.stream.Stream;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
-public interface bpq<S> {
-   Stream<String> possibleValues(bpn<S> var1);
+public abstract class bpq<S> {
+   private final Map<bpq.b<?>, bpq.a<?>> a = new HashMap<>();
+   private final bpn<S> b;
+   private final bpo<S> c;
 
-   static <S> bpq<S> b() {
-      return $$0 -> Stream.empty();
+   protected bpq(bpn<S> $$0, bpo<S> $$1) {
+      this.b = $$0;
+      this.c = $$1;
+   }
+
+   public bpo<S> a() {
+      return this.c;
+   }
+
+   public <T> Optional<T> a(bpl<T> $$0) {
+      Optional<T> $$1 = this.b($$0);
+      if ($$1.isPresent()) {
+         this.c.a(this.c());
+      }
+
+      return $$1;
+   }
+
+   public <T> Optional<T> b(bpl<T> $$0) {
+      bpq.b<T> $$1 = new bpq.b<>($$0, this.c());
+      bpq.a<T> $$2 = this.a($$1);
+      if ($$2 != null) {
+         this.a($$2.b());
+         return $$2.a;
+      } else {
+         bpr<S, T> $$3 = this.b.a($$0);
+         if ($$3 == null) {
+            throw new IllegalStateException("No symbol " + $$0);
+         } else {
+            Optional<T> $$4 = $$3.a(this);
+            this.a($$1, $$4);
+            return $$4;
+         }
+      }
+   }
+
+   @Nullable
+   private <T> bpq.a<T> a(bpq.b<T> $$0) {
+      return (bpq.a<T>)this.a.get($$0);
+   }
+
+   private <T> void a(bpq.b<T> $$0, Optional<T> $$1) {
+      this.a.put($$0, new bpq.a<>($$1, this.c()));
+   }
+
+   public abstract S b();
+
+   public abstract int c();
+
+   public abstract void a(int var1);
+
+   static record a<T>(Optional<T> a, int b) {
+   }
+
+   static record b<T>(bpl<T> a, int b) {
    }
 }

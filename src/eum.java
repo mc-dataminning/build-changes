@@ -1,20 +1,26 @@
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class eum extends eue {
-   public static final MapCodec<eum> a = axp.a(mg.i).fieldOf("tag").xmap(eum::new, $$0 -> $$0.b);
-   private final axp<dlu> b;
+public class eum extends eup {
+   public static final MapCodec<eum> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(mf.e.q().fieldOf("block").forGetter($$0x -> $$0x.b), Codec.FLOAT.fieldOf("probability").forGetter($$0x -> $$0x.d)).apply($$0, eum::new)
+   );
+   private final dma b;
+   private final float d;
 
-   public eum(axp<dlu> $$0) {
+   public eum(dma $$0, float $$1) {
       this.b = $$0;
+      this.d = $$1;
    }
 
    @Override
-   public boolean a(dzo $$0, azt $$1) {
-      return $$0.a(this.b);
+   public boolean a(dzz $$0, azv $$1) {
+      return $$0.a(this.b) && $$1.i() < this.d;
    }
 
    @Override
-   protected euf<?> a() {
-      return euf.d;
+   protected euq<?> a() {
+      return euq.e;
    }
 }

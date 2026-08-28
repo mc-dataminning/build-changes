@@ -1,34 +1,13 @@
-import java.util.Objects;
-import javax.annotation.Nullable;
+import it.unimi.dsi.fastutil.doubles.DoubleList;
 
-public record feu(String a, int b, @Nullable ww c, @Nullable ym d) {
-   public boolean a() {
-      return this.a.startsWith("#");
-   }
+interface feu {
+   DoubleList a();
 
-   public ww b() {
-      return (ww)(this.c != null ? this.c : ww.b(this.c()));
-   }
+   boolean a(feu.a var1);
 
-   public xk a(ym $$0) {
-      return Objects.requireNonNullElse(this.d, $$0).a(this.b);
-   }
+   int size();
 
-   public String c() {
-      return this.a;
-   }
-
-   public int d() {
-      return this.b;
-   }
-
-   @Nullable
-   public ww e() {
-      return this.c;
-   }
-
-   @Nullable
-   public ym f() {
-      return this.d;
+   public interface a {
+      boolean merge(int var1, int var2, int var3);
    }
 }

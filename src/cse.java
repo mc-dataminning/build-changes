@@ -1,16 +1,35 @@
-public class cse extends csd {
-   private static final float f = 3.0F;
+import javax.annotation.Nullable;
 
-   public cse(bwj<? extends csd> $$0, dip $$1) {
+public class cse extends crh {
+   public cse(bwm<? extends cse> $$0, div $$1) {
       super($$0, $$1);
    }
 
-   public cse(coq $$0, dip $$1) {
-      super(bwj.s, $$1, $$0, $$0.dA(), $$0.x(), $$0.dG());
+   public cse(div $$0, bxc $$1, cyy $$2) {
+      super(bwm.aW, $$0, $$1, $$2);
+   }
+
+   public cse(div $$0, double $$1, double $$2, double $$3, cyy $$4) {
+      super(bwm.aW, $$0, $$1, $$2, $$3, $$4);
    }
 
    @Override
-   protected void a(fdw $$0) {
-      this.dV().a(this, null, d, $$0.a(), $$0.b(), $$0.c(), 3.0F, false, dip.a.e, lx.A, lx.z, awl.cQ);
+   protected cyu g() {
+      return czc.wx;
+   }
+
+   @Override
+   public void a(arq $$0, cyy $$1, @Nullable bwd $$2) {
+      bvv $$3 = new bvv(this.dV(), this.dA(), this.dC(), this.dG());
+      if (this.q() instanceof bxc $$4) {
+         $$3.a($$4);
+      }
+
+      $$3.a(3.0F);
+      $$3.c(-0.5F);
+      $$3.c(10);
+      $$3.d(-$$3.e() / (float)$$3.i());
+      $$3.c($$1);
+      $$0.b($$3);
    }
 }

@@ -1,38 +1,29 @@
-public class gye extends gua<ckx, hbq, gdo<hbq>> {
-   private final ale a;
+public class gye extends gut<clq, hec, ghq> {
+   private static final alg a = alg.b("textures/entity/sniffer/sniffer.png");
 
-   public gye(gvk.a $$0, gye.a $$1) {
-      super($$0, new gfp($$0.a($$1.d)), new gfp($$0.a($$1.e)));
-      this.a = $$1.c;
-      this.a(new haa<>(this, $$0.h(), $$1.f, $$0x -> $$0x.b, new gfe($$0.a($$1.g)), new gfe($$0.a($$1.h))));
+   public gye(gvz.a $$0) {
+      super($$0, new ghq($$0.a(git.de)), new ghq($$0.a(git.df)), 1.1F);
    }
 
-   public ale a(hbq $$0) {
-      return this.a;
+   public alg a(hec $$0) {
+      return a;
    }
 
-   public hbq b() {
-      return new hbq();
+   public hec b() {
+      return new hec();
    }
 
-   public static enum a {
-      a(ale.b("textures/entity/horse/horse_skeleton.png"), gif.cT, gif.cU, hkf.d.n, gif.cV, gif.cW),
-      b(ale.b("textures/entity/horse/horse_zombie.png"), gif.ee, gif.ef, hkf.d.m, gif.eg, gif.eh);
+   public void a(clq $$0, hec $$1, float $$2) {
+      super.a($$0, $$1, $$2);
+      $$1.a = $$0.t();
+      $$1.b.a($$0.bJ);
+      $$1.c.a($$0.bH);
+      $$1.d.a($$0.bK);
+      $$1.e.a($$0.bF);
+      $$1.f.a($$0.bG);
+   }
 
-      final ale c;
-      final gie d;
-      final gie e;
-      final hkf.d f;
-      final gie g;
-      final gie h;
-
-      private a(final ale $$0, final gie $$1, final gie $$2, final hkf.d $$3, final gie $$4, final gie $$5) {
-         this.c = $$0;
-         this.d = $$1;
-         this.e = $$2;
-         this.f = $$3;
-         this.g = $$4;
-         this.h = $$5;
-      }
+   protected fed a(clq $$0) {
+      return super.a($$0).g(0.6F);
    }
 }

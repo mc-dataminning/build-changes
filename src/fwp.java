@@ -1,65 +1,92 @@
-public class fwp extends fxi {
-   private static final ww a = ww.c("gui.toMenu");
-   private static final ww b = ww.c("gui.toTitle");
-   private static final ww c = ww.c("gui.report_to_server");
-   private static final ww d = ww.c("gui.open_report_dir");
-   private final fxi s;
-   private final vr u;
-   private final ww v;
-   private final fvi w = fvi.d();
+import com.mojang.authlib.minecraft.BanDetails;
+import it.unimi.dsi.fastutil.booleans.BooleanConsumer;
+import java.net.URI;
+import java.time.Duration;
+import java.time.Instant;
+import org.apache.commons.lang3.StringUtils;
 
-   public fwp(fxi $$0, ww $$1, ww $$2) {
-      this($$0, $$1, new vr($$2));
+public class fwp {
+   private static final wy b = wy.c("gui.banned.title.temporary").a(n.r);
+   private static final wy c = wy.c("gui.banned.title.permanent").a(n.r);
+   public static final wy a = wy.c("gui.banned.name.title").a(n.r);
+   private static final wy d = wy.c("gui.banned.skin.title").a(n.r);
+   private static final wy e = wy.a("gui.banned.skin.description", wy.a(ayh.n));
+
+   public static fwr a(BooleanConsumer $$0, BanDetails $$1) {
+      return new fwr($$0, a($$1), b($$1), ayh.n, wx.m, true);
    }
 
-   public fwp(fxi $$0, ww $$1, ww $$2, ww $$3) {
-      this($$0, $$1, new vr($$2), $$3);
+   public static fwr a(Runnable $$0) {
+      URI $$1 = ayh.n;
+      return new fwr($$2 -> {
+         if ($$2) {
+            af.n().a($$1);
+         }
+
+         $$0.run();
+      }, d, e, $$1, wx.m, true);
    }
 
-   public fwp(fxi $$0, ww $$1, vr $$2) {
-      this($$0, $$1, $$2, a);
+   public static fwr a(String $$0, Runnable $$1) {
+      URI $$2 = ayh.n;
+      return new fwr($$2x -> {
+         if ($$2x) {
+            af.n().a($$2);
+         }
+
+         $$1.run();
+      }, a, wy.a("gui.banned.name.description", wy.b($$0).a(n.o), wy.a(ayh.n)), $$2, wx.m, true);
    }
 
-   public fwp(fxi $$0, ww $$1, vr $$2, ww $$3) {
-      super($$1);
-      this.s = $$0;
-      this.u = $$2;
-      this.v = $$3;
+   private static wy a(BanDetails $$0) {
+      return f($$0) ? b : c;
    }
 
-   @Override
-   protected void aN_() {
-      this.w.c().b().a(10);
-      this.w.a(new fsx(this.l, this.p));
-      this.w.a(new fsk(this.u.a(), this.p).d(this.n - 50).b(true));
-      this.w.c().a(2);
-      this.u.c().ifPresent($$0 -> this.w.a(frq.a(c, fwf.b(this, $$0, false)).a(200).a()));
-      this.u.b().ifPresent($$0 -> this.w.a(frq.a(d, $$1x -> af.n().a($$0.getParent())).a(200).a()));
-      frq $$0;
-      if (this.m.F()) {
-         $$0 = frq.a(this.v, $$0x -> this.m.a(this.s)).a(200).a();
+   private static wy b(BanDetails $$0) {
+      return wy.a("gui.banned.description", c($$0), d($$0), wy.a(ayh.n));
+   }
+
+   private static wy c(BanDetails $$0) {
+      String $$1 = $$0.reason();
+      String $$2 = $$0.reasonMessage();
+      if (StringUtils.isNumeric($$1)) {
+         int $$3 = Integer.parseInt($$1);
+         gks $$4 = gks.a($$3);
+         wy $$5;
+         if ($$4 != null) {
+            $$5 = xb.a($$4.a().f(), xv.a.a(true));
+         } else if ($$2 != null) {
+            $$5 = wy.a("gui.banned.description.reason_id_message", $$3, $$2).a(n.r);
+         } else {
+            $$5 = wy.a("gui.banned.description.reason_id", $$3).a(n.r);
+         }
+
+         return wy.a("gui.banned.description.reason", $$5);
       } else {
-         $$0 = frq.a(b, $$0x -> this.m.a(new fxk())).a(200).a();
+         return wy.c("gui.banned.description.unknownreason");
       }
-
-      this.w.a($$0);
-      this.w.a();
-      this.w.a(this::c);
-      this.c();
    }
 
-   @Override
-   protected void c() {
-      fvc.a(this.w, this.J());
+   private static wy d(BanDetails $$0) {
+      if (f($$0)) {
+         wy $$1 = e($$0);
+         return wy.a("gui.banned.description.temporary", wy.a("gui.banned.description.temporary.duration", $$1).a(n.r));
+      } else {
+         return wy.c("gui.banned.description.permanent").a(n.r);
+      }
    }
 
-   @Override
-   public ww i() {
-      return wv.a(this.l, this.u.a());
+   private static wy e(BanDetails $$0) {
+      Duration $$1 = Duration.between(Instant.now(), $$0.expires());
+      long $$2 = $$1.toHours();
+      if ($$2 > 72L) {
+         return wx.a($$1.toDays());
+      } else {
+         return $$2 < 1L ? wx.c($$1.toMinutes()) : wx.b($$1.toHours());
+      }
    }
 
-   @Override
-   public boolean aC_() {
-      return false;
+   private static boolean f(BanDetails $$0) {
+      return $$0.expires() != null;
    }
 }

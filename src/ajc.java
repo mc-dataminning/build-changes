@@ -1,29 +1,41 @@
-public class ajc implements zd<aiz> {
-   public static final yu<vs, ajc> a = zd.a(ajc::a, ajc::new);
-   private final int b;
+public record ajc(int b, ajp c) implements zf<ajb> {
+   public static final yw<vu, ajc> a = zf.a(ajc::a, ajc::new);
+   private static final int d = 1048576;
 
-   public ajc(int $$0) {
-      this.b = $$0;
+   private ajc(vu $$0) {
+      this($$0.l(), a($$0.q(), $$0));
    }
 
-   private ajc(vs $$0) {
-      this.b = $$0.l();
+   private static ajp a(alg $$0, vu $$1) {
+      return b($$0, $$1);
    }
 
-   private void a(vs $$0) {
+   private static ajr b(alg $$0, vu $$1) {
+      int $$2 = $$1.readableBytes();
+      if ($$2 >= 0 && $$2 <= 1048576) {
+         $$1.k($$2);
+         return new ajr($$0);
+      } else {
+         throw new IllegalArgumentException("Payload may not be larger than 1048576 bytes");
+      }
+   }
+
+   private void a(vu $$0) {
       $$0.c(this.b);
+      $$0.a(this.c.a());
+      this.c.a($$0);
    }
 
    @Override
-   public zf<ajc> a() {
-      return ajf.d;
+   public zh<ajc> a() {
+      return ajh.a;
    }
 
-   public void a(aiz $$0) {
+   public void a(ajb $$0) {
       $$0.a(this);
    }
 
-   public int b() {
-      return this.b;
+   public ajp e() {
+      return this.c;
    }
 }

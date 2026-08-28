@@ -1,47 +1,46 @@
-public class fwb extends fxi {
-   private static final int a = 90;
-   private final ww b;
-   private fsj c = fsj.a;
-   private final Runnable d;
-   private final ww s;
-   private final boolean u;
+import java.util.List;
+import java.util.function.BiConsumer;
+import java.util.function.Consumer;
 
-   public fwb(Runnable $$0, ww $$1, ww $$2) {
-      this($$0, $$1, $$2, wv.k, true);
+public class fwb<T> {
+   private final T b;
+   private final BiConsumer<Consumer<String>, T> c;
+   public static final fwb<?> a = new fwb<>(bau.a, ($$0, $$1) -> {
+   });
+
+   private fwb(T $$0, BiConsumer<Consumer<String>, T> $$1) {
+      this.b = $$0;
+      this.c = $$1;
    }
 
-   public fwb(Runnable $$0, ww $$1, ww $$2, ww $$3, boolean $$4) {
-      super($$1);
-      this.d = $$0;
-      this.b = $$2;
-      this.s = $$3;
-      this.u = $$4;
+   public static fwb<?> a(String $$0) {
+      return new fwb<>($$0, Consumer::accept);
    }
 
-   @Override
-   public ww i() {
-      return wv.a(super.i(), this.b);
+   public static fwb<?> a(wy $$0) {
+      return new fwb<>($$0, ($$0x, $$1) -> $$0x.accept($$1.getString()));
    }
 
-   @Override
-   protected void aN_() {
-      super.aN_();
-      this.c = fsj.a(this.p, this.b, this.n - 50);
-      int $$0 = this.c.a() * 9;
-      int $$1 = azk.a(90 + $$0 + 12, this.o / 6 + 96, this.o - 24);
-      int $$2 = 150;
-      this.c(frq.a(this.s, $$0x -> this.d.run()).a((this.n - 150) / 2, $$1, 150, 20).a());
+   public static fwb<?> a(List<wy> $$0) {
+      return new fwb<>($$0, ($$1, $$2) -> $$0.stream().map(wy::getString).forEach($$1));
+   }
+
+   public void a(Consumer<String> $$0) {
+      this.c.accept($$0, this.b);
    }
 
    @Override
-   public void a(frc $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      $$0.a(this.p, this.l, this.n / 2, 70, 16777215);
-      this.c.a($$0, this.n / 2, 90);
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else {
+         return !($$0 instanceof fwb<?> $$1) ? false : $$1.c == this.c && $$1.b.equals(this.b);
+      }
    }
 
    @Override
-   public boolean aC_() {
-      return this.u;
+   public int hashCode() {
+      int $$0 = this.b.hashCode();
+      return 31 * $$0 + this.c.hashCode();
    }
 }

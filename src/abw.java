@@ -1,20 +1,42 @@
-public record abw(int b) implements zd<abs> {
-   public static final yu<vs, abw> a = zd.a(abw::a, abw::new);
+public class abw implements zf<abu> {
+   public static final yw<vu, abw> a = zf.a(abw::a, abw::new);
+   public static final int b = 0;
+   public static final int c = 2;
+   public static final int d = 3;
+   public static final int e = 4;
+   public static final int f = 5;
+   private final int g;
+   private final int h;
 
-   private abw(vs $$0) {
-      this($$0.l());
+   public abw(bwd $$0, int $$1) {
+      this.g = $$0.ar();
+      this.h = $$1;
    }
 
-   private void a(vs $$0) {
-      $$0.c(this.b);
+   private abw(vu $$0) {
+      this.g = $$0.l();
+      this.h = $$0.readUnsignedByte();
+   }
+
+   private void a(vu $$0) {
+      $$0.c(this.g);
+      $$0.l(this.h);
    }
 
    @Override
-   public zf<abw> a() {
-      return agl.f;
+   public zh<abw> a() {
+      return agn.d;
    }
 
-   public void a(abs $$0) {
+   public void a(abu $$0) {
       $$0.a(this);
+   }
+
+   public int b() {
+      return this.g;
+   }
+
+   public int e() {
+      return this.h;
    }
 }

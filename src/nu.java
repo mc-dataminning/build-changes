@@ -2,57 +2,57 @@ import java.util.function.BiConsumer;
 
 public record nu(jg.a a) implements nk {
    @Override
-   public void generate(BiConsumer<ald<eys>, eys.a> $$0) {
-      jg.b<djs> $$1 = this.a.e(mg.aG);
+   public void generate(BiConsumer<alf<eze>, eze.a> $$0) {
+      jg.b<djy> $$1 = this.a.e(mg.aG);
       $$0.accept(
-         eyj.am,
-         eys.b()
+         eyv.am,
+         eze.b()
             .a(
-               eyr.a()
-                  .a(fcp.a(1.0F))
-                  .a(ezg.a(eyj.an).a(10).b(-2))
-                  .a(ezg.a(eyj.ao).a(5).b(2).a(fbz.a(eyn.b.a, bx.a.a().a(cd.a(true)))))
-                  .a(ezg.a(eyj.ap).a(85).b(-1))
+               ezd.a()
+                  .a(fdb.a(1.0F))
+                  .a(ezs.a(eyv.an).a(10).b(-2))
+                  .a(ezs.a(eyv.ao).a(5).b(2).a(fcl.a(eyz.b.a, bx.a.a().a(cd.a(true)))))
+                  .a(ezs.a(eyv.ap).a(85).b(-1))
             )
       );
-      $$0.accept(eyj.ap, a());
+      $$0.accept(eyv.ap, a());
       $$0.accept(
-         eyj.an,
-         eys.b()
+         eyv.an,
+         eze.b()
             .a(
-               eyr.a()
-                  .a(eza.a(dlw.fB).a(17))
-                  .a(eza.a(cyw.qk).a(10).a(fat.a(fcw.a(0.0F, 0.9F))))
-                  .a(eza.a(cyw.ro).a(10))
-                  .a(eza.a(cyw.sA).a(10))
-                  .a(eza.a(cyw.tm).a(10).a(fay.a(dap.a)))
-                  .a(eza.a(cyw.qb).a(5))
-                  .a(eza.a(cyw.rW).a(2).a(fat.a(fcw.a(0.0F, 0.9F))))
-                  .a(eza.a(cyw.pc).a(10))
-                  .a(eza.a(cyw.pZ).a(5))
-                  .a(eza.a(cyw.sg).a(1).a(fas.a(fcp.a(10.0F))))
-                  .a(eza.a(dlw.gc).a(10))
-                  .a(eza.a(cyw.tf).a(10))
-                  .a(eza.a(dlw.nB).a(fbu.a(ct.a.a().a(ji.a($$1.b(djz.y), $$1.b(djz.z), $$1.b(djz.A))))).a(10))
+               ezd.a()
+                  .a(ezm.a(dmc.fC).a(17))
+                  .a(ezm.a(czc.qm).a(10).a(fbf.a(fdi.a(0.0F, 0.9F))))
+                  .a(ezm.a(czc.rq).a(10))
+                  .a(ezm.a(czc.sC).a(10))
+                  .a(ezm.a(czc.to).a(10).a(fbk.a(dav.a)))
+                  .a(ezm.a(czc.qd).a(5))
+                  .a(ezm.a(czc.rY).a(2).a(fbf.a(fdi.a(0.0F, 0.9F))))
+                  .a(ezm.a(czc.pe).a(10))
+                  .a(ezm.a(czc.qb).a(5))
+                  .a(ezm.a(czc.si).a(1).a(fbe.a(fdb.a(10.0F))))
+                  .a(ezm.a(dmc.gd).a(10))
+                  .a(ezm.a(czc.th).a(10))
+                  .a(ezm.a(dmc.nC).a(fcg.a(ct.a.a().a(ji.a($$1.b(dkf.y), $$1.b(dkf.z), $$1.b(dkf.A))))).a(10))
             )
       );
       $$0.accept(
-         eyj.ao,
-         eys.b()
+         eyv.ao,
+         eze.b()
             .a(
-               eyr.a()
-                  .a(eza.a(cyw.vP))
-                  .a(eza.a(cyw.op))
-                  .a(eza.a(cyw.pe).a(fat.a(fcw.a(0.0F, 0.25F))).a(ezr.a(this.a, fcp.a(30.0F))))
-                  .a(eza.a(cyw.rW).a(fat.a(fcw.a(0.0F, 0.25F))).a(ezr.a(this.a, fcp.a(30.0F))))
-                  .a(eza.a(cyw.rA).a(ezr.a(this.a, fcp.a(30.0F))))
-                  .a(eza.a(cyw.wX))
+               ezd.a()
+                  .a(ezm.a(czc.vR))
+                  .a(ezm.a(czc.or))
+                  .a(ezm.a(czc.pg).a(fbf.a(fdi.a(0.0F, 0.25F))).a(fad.a(this.a, fdb.a(30.0F))))
+                  .a(ezm.a(czc.rY).a(fbf.a(fdi.a(0.0F, 0.25F))).a(fad.a(this.a, fdb.a(30.0F))))
+                  .a(ezm.a(czc.rC).a(fad.a(this.a, fdb.a(30.0F))))
+                  .a(ezm.a(czc.wZ))
             )
       );
    }
 
-   public static eys.a a() {
-      return eys.b().a(eyr.a().a(eza.a(cyw.sa).a(60)).a(eza.a(cyw.sb).a(25)).a(eza.a(cyw.sc).a(2)).a(eza.a(cyw.sd).a(13)));
+   public static eze.a a() {
+      return eze.b().a(ezd.a().a(ezm.a(czc.sc).a(60)).a(ezm.a(czc.sd).a(25)).a(ezm.a(czc.se).a(2)).a(ezm.a(czc.sf).a(13)));
    }
 
    public jg.a b() {

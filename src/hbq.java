@@ -1,8 +1,10 @@
-public class hbq extends hcp {
-   public cys b = cys.k;
-   public boolean c;
-   public boolean d;
+public class hbq extends hcf {
+   public float a;
+   public int b;
+   public float c;
+   public float d;
    public float e;
-   public float f;
+   public boolean f;
    public float g;
+   public float h;
 }

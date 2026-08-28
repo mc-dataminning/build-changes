@@ -1,32 +1,48 @@
-import java.util.Objects;
-import org.joml.Matrix4f;
+import javax.annotation.Nullable;
+import org.joml.Vector3f;
 
-public interface fzu {
-   static fzu a(ayw $$0) {
-      return new fzt($$0);
+public class fzu extends fym {
+   public static final float c = 62.500004F;
+   public static final float d = 0.9765628F;
+   private static final Vector3f s = new Vector3f(0.9765628F, 0.9765628F, 0.9765628F);
+   @Nullable
+   private ggm u;
+
+   public fzu(dyl $$0, boolean $$1, boolean $$2) {
+      super($$0, $$1, $$2);
    }
 
-   static fzu a(cwr $$0) {
-      Objects.requireNonNull($$0);
-
-      return (fzu)(switch ($$0) {
-         case cwq $$1 -> new fzs($$1.a());
-         case fzr.a $$2 -> new fzr($$2);
-         default -> throw new IllegalArgumentException("Unknown TooltipComponent");
-      });
+   @Override
+   protected void aN_() {
+      super.aN_();
+      boolean $$0 = this.a.m().b() instanceof dud;
+      this.u = gst.a(this.m.aS(), this.b, $$0);
    }
 
-   int a(fra var1);
-
-   int b(fra var1);
-
-   default boolean a() {
-      return false;
+   @Override
+   protected void a(fro $$0, dzz $$1) {
+      super.a($$0, $$1);
+      boolean $$2 = $$1.b() instanceof dud;
+      if (!$$2) {
+         $$0.c().a(0.0F, 35.0F, 0.0F);
+      }
    }
 
-   default void a(fra $$0, int $$1, int $$2, Matrix4f $$3, gpd.a $$4) {
+   @Override
+   protected void c(fro $$0) {
+      if (this.u != null) {
+         $$0.c().a(0.0F, 31.0F, 0.0F);
+         $$0.c().b(62.500004F, 62.500004F, -62.500004F);
+         $$0.a($$1 -> {
+            hkw $$2 = gqn.a(this.b);
+            fjg $$3 = $$2.a($$1, this.u::a);
+            this.u.a($$0.c(), $$3, 15728880, hif.d);
+         });
+      }
    }
 
-   default void a(fra $$0, int $$1, int $$2, int $$3, int $$4, frc $$5) {
+   @Override
+   protected Vector3f m() {
+      return s;
    }
 }

@@ -1,7 +1,7 @@
-import javax.annotation.Nullable;
-
-public class hbo extends hcg {
-   public boolean a;
-   @Nullable
-   public dzo b;
+public class hbo extends hdf {
+   public float a;
+   public boolean b = true;
+   public boolean c;
+   public boolean d;
+   public boolean e;
 }

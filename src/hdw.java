@@ -1,5 +1,3 @@
-public class hdw extends hcp {
-   public boolean a;
-   public boolean b;
-   public boolean c;
+public class hdw extends hdf {
+   public cjr.a a = cjr.a.b;
 }

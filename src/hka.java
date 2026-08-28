@@ -1,53 +1,28 @@
-import java.util.Arrays;
-import java.util.Map;
-import java.util.stream.Collectors;
-import org.joml.Quaternionf;
+import com.mojang.datafixers.util.Either;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
 
-public enum hka implements hkp {
-   a(0, 0),
-   b(0, 90),
-   c(0, 180),
-   d(0, 270),
-   e(90, 0),
-   f(90, 90),
-   g(90, 180),
-   h(90, 270),
-   i(180, 0),
-   j(180, 90),
-   k(180, 180),
-   l(180, 270),
-   m(270, 0),
-   n(270, 90),
-   o(270, 180),
-   p(270, 270);
+public record hka(int c, Optional<Integer> d) {
+   public static final Codec<hka> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(ayu.l.fieldOf("index").forGetter(hka::a), ayu.m.optionalFieldOf("time").forGetter(hka::b)).apply($$0, hka::new)
+   );
+   public static final Codec<hka> b = Codec.either(ayu.l, a)
+      .xmap($$0 -> (hka)$$0.map(hka::new, $$0x -> $$0x), $$0 -> $$0.d.isPresent() ? Either.right($$0) : Either.left($$0.c));
 
-   private static final int q = 360;
-   private static final Map<Integer, hka> r = Arrays.stream(values()).collect(Collectors.toMap($$0 -> $$0.u, $$0 -> (hka)$$0));
-   private final j s;
-   private final h t;
-   private final int u;
-
-   private static int b(int $$0, int $$1) {
-      return $$0 * 360 + $$1;
+   public hka(int $$0) {
+      this($$0, Optional.empty());
    }
 
-   private hka(final int $$0, final int $$1) {
-      this.u = b($$0, $$1);
-      Quaternionf $$2 = new Quaternionf().rotateYXZ((float)(-$$1) * (float) (Math.PI / 180.0), (float)(-$$0) * (float) (Math.PI / 180.0), 0.0F);
-      this.s = new j(null, $$2, null, null);
-      this.t = h.a($$0, $$1);
+   public int a(int $$0) {
+      return this.d.orElse($$0);
    }
 
-   @Override
-   public j a() {
-      return this.s;
+   public int a() {
+      return this.c;
    }
 
-   public static hka a(int $$0, int $$1) {
-      return r.get(b(azk.b($$0, 360), azk.b($$1, 360)));
-   }
-
-   public h c() {
-      return this.t;
+   public Optional<Integer> b() {
+      return this.d;
    }
 }

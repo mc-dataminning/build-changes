@@ -1,32 +1,19 @@
-import com.google.common.collect.Maps;
-import java.util.Map;
+public class gzm extends han<hbs, gex> {
+   private static final alg a = alg.b("textures/entity/breeze/breeze_wind.png");
+   private final gex b;
 
-public class gzm extends gzy<hcf, gfp> {
-   private static final ale a = ale.b("invisible");
-   private static final Map<clb, ale> b = Maps.newEnumMap(
-      Map.of(
-         clb.a,
-         a,
-         clb.b,
-         ale.b("textures/entity/horse/horse_markings_white.png"),
-         clb.c,
-         ale.b("textures/entity/horse/horse_markings_whitefield.png"),
-         clb.d,
-         ale.b("textures/entity/horse/horse_markings_whitedots.png"),
-         clb.e,
-         ale.b("textures/entity/horse/horse_markings_blackdots.png")
-      )
-   );
-
-   public gzm(gxh<hcf, gfp> $$0) {
-      super($$0);
+   public gzm(gvz.a $$0, gxw<hbs, gex> $$1) {
+      super($$1);
+      this.b = new gex($$0.a(git.L));
    }
 
-   public void a(fiq $$0, gpd $$1, int $$2, hcf $$3, float $$4, float $$5) {
-      ale $$6 = b.get($$3.h);
-      if ($$6 != a && !$$3.z) {
-         fiu $$7 = $$1.getBuffer(gpn.j($$6));
-         this.d().a($$0, $$7, $$2, gwl.a($$3, 0.0F));
-      }
+   public void a(fjc $$0, gps $$1, int $$2, hbs $$3, float $$4, float $$5) {
+      fjg $$6 = $$1.getBuffer(gqc.a(a, this.a($$3.u) % 1.0F, 0.0F));
+      this.b.a($$3);
+      gve.a(this.b, this.b.d()).a($$0, $$6, $$2, hif.d);
+   }
+
+   private float a(float $$0) {
+      return $$0 * 0.02F;
    }
 }

@@ -1,60 +1,58 @@
+import com.google.common.collect.Lists;
+import java.util.List;
 import javax.annotation.Nullable;
 
-public class hnt {
-   private boolean a;
+public class hnt implements hnu<hmj> {
+   private final List<hnu<hmj>> a = Lists.newArrayList();
    @Nullable
-   private hnn.b b;
-   @Nullable
-   private String c;
-   @Nullable
-   private final String d;
+   private final wy b;
 
-   public hnt(@Nullable String $$0) {
-      this.d = $$0;
+   public hnt(alg $$0, @Nullable String $$1) {
+      this.b = $$1 == null ? null : wy.c($$1);
    }
 
-   public void a(hno.a $$0) {
-      if (this.c != null) {
-         $$0.a(hnn.j, !this.c.equals("vanilla"));
+   @Override
+   public int e() {
+      int $$0 = 0;
+
+      for (hnu<hmj> $$1 : this.a) {
+         $$0 += $$1.e();
       }
 
-      $$0.a(hnn.k, this.a());
+      return $$0;
    }
 
-   private hnn.c a() {
-      gjs $$0 = fof.Q().S();
-      if ($$0 != null && $$0.e()) {
-         return hnn.c.a;
-      } else {
-         return fof.Q().U() ? hnn.c.b : hnn.c.c;
-      }
-   }
+   public hmj a(azv $$0) {
+      int $$1 = this.e();
+      if (!this.a.isEmpty() && $$1 != 0) {
+         int $$2 = $$0.a($$1);
 
-   public boolean a(hnk $$0) {
-      if (!this.a && this.b != null && this.c != null) {
-         this.a = true;
-         $$0.send(hnl.b, $$0x -> {
-            $$0x.a(hnn.n, this.b);
-            if (this.d != null) {
-               $$0x.a(hnn.o, this.d);
+         for (hnu<hmj> $$3 : this.a) {
+            $$2 -= $$3.e();
+            if ($$2 < 0) {
+               return $$3.b($$0);
             }
-         });
-         return true;
+         }
+
+         return hns.b;
       } else {
-         return false;
+         return hns.b;
       }
    }
 
-   public void a(dim $$0, boolean $$1) {
-      this.b = switch ($$0) {
-         case a -> $$1 ? hnn.b.e : hnn.b.a;
-         case b -> hnn.b.b;
-         case c -> hnn.b.c;
-         case d -> hnn.b.d;
-      };
+   public void a(hnu<hmj> $$0) {
+      this.a.add($$0);
    }
 
-   public void a(String $$0) {
-      this.c = $$0;
+   @Nullable
+   public wy a() {
+      return this.b;
+   }
+
+   @Override
+   public void a(hnp $$0) {
+      for (hnu<hmj> $$1 : this.a) {
+         $$1.a($$0);
+      }
    }
 }

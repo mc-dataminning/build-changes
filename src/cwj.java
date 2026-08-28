@@ -1,89 +1,101 @@
-import com.mojang.serialization.Codec;
-import it.unimi.dsi.fastutil.ints.IntArrayList;
-import it.unimi.dsi.fastutil.ints.IntList;
-import it.unimi.dsi.fastutil.ints.IntLists;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.function.Function;
-import java.util.stream.Stream;
-import javax.annotation.Nullable;
+public class cwj extends cwn {
+   private final cvi a;
+   private final cqy b;
+   private int g;
 
-public class cwj {
-   private static final List<cwi> b = af.a(new ArrayList<>(), $$0 -> {
-      a($$0, "contents", 0);
-      a($$0, "container.", 0, 54);
-      a($$0, "hotbar.", 0, 9);
-      a($$0, "inventory.", 9, 27);
-      a($$0, "enderchest.", 200, 27);
-      a($$0, "villager.", 300, 8);
-      a($$0, "horse.", 500, 15);
-      int $$1 = bwk.a.a(98);
-      int $$2 = bwk.b.a(98);
-      a($$0, "weapon", $$1);
-      a($$0, "weapon.mainhand", $$1);
-      a($$0, "weapon.offhand", $$2);
-      a($$0, "weapon.*", $$1, $$2);
-      $$1 = bwk.f.a(100);
-      $$2 = bwk.e.a(100);
-      int $$5 = bwk.d.a(100);
-      int $$6 = bwk.c.a(100);
-      int $$7 = bwk.g.a(105);
-      a($$0, "armor.head", $$1);
-      a($$0, "armor.chest", $$2);
-      a($$0, "armor.legs", $$5);
-      a($$0, "armor.feet", $$6);
-      a($$0, "armor.body", $$7);
-      a($$0, "armor.*", $$1, $$2, $$5, $$6, $$7);
-      a($$0, "saddle", bwk.h.a(106));
-      a($$0, "horse.chest", 499);
-      a($$0, "player.cursor", 499);
-      a($$0, "player.crafting.", 500, 4);
-   });
-   public static final Codec<cwi> a = bai.b(() -> b.toArray(new cwi[0]));
-   private static final Function<String, cwi> c = bai.a(b.toArray(new cwi[0]), $$0 -> $$0);
-
-   private static cwi a(String $$0, int $$1) {
-      return cwi.a($$0, IntLists.singleton($$1));
+   public cwj(cqy $$0, cvi $$1, btu $$2, int $$3, int $$4, int $$5) {
+      super($$2, $$3, $$4, $$5);
+      this.b = $$0;
+      this.a = $$1;
    }
 
-   private static cwi a(String $$0, IntList $$1) {
-      return cwi.a($$0, IntLists.unmodifiable($$1));
+   @Override
+   public boolean a(cyy $$0) {
+      return false;
    }
 
-   private static cwi a(String $$0, int... $$1) {
-      return cwi.a($$0, IntList.of($$1));
-   }
-
-   private static void a(List<cwi> $$0, String $$1, int $$2) {
-      $$0.add(a($$1, $$2));
-   }
-
-   private static void a(List<cwi> $$0, String $$1, int $$2, int $$3) {
-      IntList $$4 = new IntArrayList($$3);
-
-      for (int $$5 = 0; $$5 < $$3; $$5++) {
-         int $$6 = $$2 + $$5;
-         $$0.add(a($$1 + $$5, $$6));
-         $$4.add($$6);
+   @Override
+   public cyy a(int $$0) {
+      if (this.h()) {
+         this.g = this.g + Math.min($$0, this.g().M());
       }
 
-      $$0.add(a($$1 + "*", $$4));
+      return super.a($$0);
    }
 
-   private static void a(List<cwi> $$0, String $$1, int... $$2) {
-      $$0.add(a($$1, $$2));
+   @Override
+   protected void a(cyy $$0, int $$1) {
+      this.g += $$1;
+      this.c_($$0);
    }
 
-   @Nullable
-   public static cwi a(String $$0) {
-      return c.apply($$0);
+   @Override
+   protected void b(int $$0) {
+      this.g += $$0;
    }
 
-   public static Stream<String> a() {
-      return b.stream().map(bai::c);
+   @Override
+   protected void c_(cyy $$0) {
+      if (this.g > 0) {
+         $$0.a(this.b.dV(), this.b, this.g);
+      }
+
+      if (this.c instanceof cwh $$1) {
+         $$1.a(this.b, this.a.h());
+      }
+
+      this.g = 0;
    }
 
-   public static Stream<String> b() {
-      return b.stream().filter($$0 -> $$0.b() == 1).map(bai::c);
+   private static jn<cyy> a(ddd $$0) {
+      jn<cyy> $$1 = jn.a($$0.a(), cyy.k);
+
+      for (int $$2 = 0; $$2 < $$1.size(); $$2++) {
+         $$1.set($$2, $$0.a($$2));
+      }
+
+      return $$1;
+   }
+
+   private jn<cyy> a(ddd $$0, div $$1) {
+      return $$1 instanceof arq $$2 ? $$2.t().a(dea.a, $$0, $$2).map($$1x -> ((dde)$$1x.b()).a($$0)).orElseGet(() -> a($$0)) : dde.b($$0);
+   }
+
+   @Override
+   public void a(cqy $$0, cyy $$1) {
+      this.c_($$1);
+      ddd.a $$2 = this.a.ay_();
+      ddd $$3 = $$2.a();
+      int $$4 = $$2.b();
+      int $$5 = $$2.c();
+      jn<cyy> $$6 = this.a($$3, $$0.dV());
+
+      for (int $$7 = 0; $$7 < $$3.g(); $$7++) {
+         for (int $$8 = 0; $$8 < $$3.f(); $$8++) {
+            int $$9 = $$8 + $$4 + ($$7 + $$5) * this.a.au_();
+            cyy $$10 = this.a.a($$9);
+            cyy $$11 = $$6.get($$8 + $$7 * $$3.f());
+            if (!$$10.f()) {
+               this.a.a($$9, 1);
+               $$10 = this.a.a($$9);
+            }
+
+            if (!$$11.f()) {
+               if ($$10.f()) {
+                  this.a.a($$9, $$11);
+               } else if (cyy.c($$10, $$11)) {
+                  $$11.g($$10.M());
+                  this.a.a($$9, $$11);
+               } else if (!this.b.gi().f($$11)) {
+                  this.b.a($$11, false);
+               }
+            }
+         }
+      }
+   }
+
+   @Override
+   public boolean f() {
+      return true;
    }
 }

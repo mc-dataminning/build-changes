@@ -1,127 +1,145 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Arrays;
-import java.util.List;
+import com.google.common.annotations.VisibleForTesting;
 import java.util.Optional;
-import java.util.function.Function;
-import javax.annotation.Nullable;
 
-public class dyc {
-   private static final Codec<ww[]> c = wy.a
-      .listOf()
-      .comapFlatMap(
-         $$0 -> af.a($$0, 4).map($$0x -> new ww[]{(ww)$$0x.get(0), (ww)$$0x.get(1), (ww)$$0x.get(2), (ww)$$0x.get(3)}),
-         $$0 -> List.of($$0[0], $$0[1], $$0[2], $$0[3])
-      );
-   public static final Codec<dyc> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               c.fieldOf("messages").forGetter($$0x -> $$0x.d),
-               c.lenientOptionalFieldOf("filtered_messages").forGetter(dyc::d),
-               cxq.q.fieldOf("color").orElse(cxq.p).forGetter($$0x -> $$0x.f),
-               Codec.BOOL.fieldOf("has_glowing_text").orElse(false).forGetter($$0x -> $$0x.g)
-            )
-            .apply($$0, dyc::a)
-   );
-   public static final int b = 4;
-   private final ww[] d;
-   private final ww[] e;
-   private final cxq f;
-   private final boolean g;
-   @Nullable
-   private ayw[] h;
-   private boolean i;
+public class dyc extends dwx implements ffu.a {
+   public static final String b = "RecordItem";
+   public static final String c = "ticks_since_song_started";
+   private cyy d = cyy.k;
+   private final czf e = new czf(this::k, this.aw_());
 
-   public dyc() {
-      this(c(), c(), cxq.p, false);
+   public dyc(iu $$0, dzz $$1) {
+      super(dwz.e, $$0, $$1);
    }
 
-   public dyc(ww[] $$0, ww[] $$1, cxq $$2, boolean $$3) {
+   public czf j() {
+      return this.e;
+   }
+
+   public void k() {
+      this.n.a(this.aw_(), this.m().b());
+      this.e();
+   }
+
+   private void a(boolean $$0) {
+      if (this.n != null && this.n.a_(this.aw_()) == this.m()) {
+         this.n.a(this.aw_(), this.m().b(dqh.b, Boolean.valueOf($$0)), 2);
+         this.n.a(eez.c, this.aw_(), eez.a.a(this.m()));
+      }
+   }
+
+   public void s() {
+      if (this.n != null && !this.n.C) {
+         iu $$0 = this.aw_();
+         cyy $$1 = this.f();
+         if (!$$1.f()) {
+            this.h();
+            fei $$2 = fei.a($$0, 0.5, 1.01, 0.5).a(this.n.A, 0.7F);
+            cyy $$3 = $$1.v();
+            cnd $$4 = new cnd(this.n, $$2.a(), $$2.b(), $$2.c(), $$3);
+            $$4.j();
+            this.n.b($$4);
+         }
+      }
+   }
+
+   public static void a(div $$0, iu $$1, dzz $$2, dyc $$3) {
+      $$3.e.b($$0, $$2);
+   }
+
+   public int u() {
+      return cze.a(this.n.F_(), this.d).map(je::a).map(cze::e).orElse(0);
+   }
+
+   @Override
+   protected void a(tz $$0, jg.a $$1) {
+      super.a($$0, $$1);
+      if ($$0.b("RecordItem", 10)) {
+         this.d = cyy.a($$1, (uw)$$0.p("RecordItem")).orElse(cyy.k);
+      } else {
+         if (!this.d.f()) {
+            this.e.a(this.n, this.m());
+         }
+
+         this.d = cyy.k;
+      }
+
+      if ($$0.b("ticks_since_song_started", 4)) {
+         cze.a($$1, this.d).ifPresent($$1x -> this.e.a($$1x, $$0.i("ticks_since_song_started")));
+      }
+   }
+
+   @Override
+   protected void b(tz $$0, jg.a $$1) {
+      super.b($$0, $$1);
+      if (!this.f().f()) {
+         $$0.a("RecordItem", this.f().a($$1));
+      }
+
+      if (this.e.b() != null) {
+         $$0.a("ticks_since_song_started", this.e.c());
+      }
+   }
+
+   @Override
+   public cyy f() {
+      return this.d;
+   }
+
+   @Override
+   public cyy c(int $$0) {
+      cyy $$1 = this.d;
+      this.b(cyy.k);
+      return $$1;
+   }
+
+   @Override
+   public void b(cyy $$0) {
       this.d = $$0;
-      this.e = $$1;
-      this.f = $$2;
-      this.g = $$3;
-   }
-
-   private static ww[] c() {
-      return new ww[]{wv.a, wv.a, wv.a, wv.a};
-   }
-
-   private static dyc a(ww[] $$0, Optional<ww[]> $$1, cxq $$2, boolean $$3) {
-      return new dyc($$0, $$1.orElse(Arrays.copyOf($$0, $$0.length)), $$2, $$3);
-   }
-
-   public boolean a() {
-      return this.g;
-   }
-
-   public dyc a(boolean $$0) {
-      return $$0 == this.g ? this : new dyc(this.d, this.e, this.f, $$0);
-   }
-
-   public cxq b() {
-      return this.f;
-   }
-
-   public dyc a(cxq $$0) {
-      return $$0 == this.b() ? this : new dyc(this.d, this.e, $$0, this.g);
-   }
-
-   public ww a(int $$0, boolean $$1) {
-      return this.b($$1)[$$0];
-   }
-
-   public dyc a(int $$0, ww $$1) {
-      return this.a($$0, $$1, $$1);
-   }
-
-   public dyc a(int $$0, ww $$1, ww $$2) {
-      ww[] $$3 = Arrays.copyOf(this.d, this.d.length);
-      ww[] $$4 = Arrays.copyOf(this.e, this.e.length);
-      $$3[$$0] = $$1;
-      $$4[$$0] = $$2;
-      return new dyc($$3, $$4, this.f, this.g);
-   }
-
-   public boolean a(cqs $$0) {
-      return Arrays.stream(this.b($$0.aa())).anyMatch($$0x -> !$$0x.getString().isEmpty());
-   }
-
-   public ww[] b(boolean $$0) {
-      return $$0 ? this.e : this.d;
-   }
-
-   public ayw[] a(boolean $$0, Function<ww, ayw> $$1) {
-      if (this.h == null || this.i != $$0) {
-         this.i = $$0;
-         this.h = new ayw[4];
-
-         for (int $$2 = 0; $$2 < 4; $$2++) {
-            this.h[$$2] = $$1.apply(this.a($$2, $$0));
-         }
+      boolean $$1 = !this.d.f();
+      Optional<je<cze>> $$2 = cze.a(this.n.F_(), this.d);
+      this.a($$1);
+      if ($$1 && $$2.isPresent()) {
+         this.e.a(this.n, $$2.get());
+      } else {
+         this.e.a(this.n, this.m());
       }
-
-      return this.h;
    }
 
-   private Optional<ww[]> d() {
-      for (int $$0 = 0; $$0 < 4; $$0++) {
-         if (!this.e[$$0].equals(this.d[$$0])) {
-            return Optional.of(this.e);
-         }
-      }
-
-      return Optional.empty();
+   @Override
+   public int aj_() {
+      return 1;
    }
 
-   public boolean b(cqs $$0) {
-      for (ww $$1 : this.b($$0.aa())) {
-         xt $$2 = $$1.a();
-         wu $$3 = $$2.i();
-         if ($$3 != null && $$3.a() == wu.a.c) {
-            return true;
-         }
-      }
+   @Override
+   public dwx t() {
+      return this;
+   }
 
-      return false;
+   @Override
+   public boolean b(int $$0, cyy $$1) {
+      return $$1.c(kj.ae) && this.a($$0).f();
+   }
+
+   @Override
+   public boolean a(btu $$0, int $$1, cyy $$2) {
+      return $$0.a_(cyy::f);
+   }
+
+   @Override
+   public void a(iu $$0, dzz $$1) {
+      this.s();
+   }
+
+   @VisibleForTesting
+   public void c(cyy $$0) {
+      this.d = $$0;
+      cze.a(this.n.F_(), $$0).ifPresent($$0x -> this.e.a($$0x, 0L));
+      this.n.a(this.aw_(), this.m().b());
+      this.e();
+   }
+
+   @VisibleForTesting
+   public void v() {
+      cze.a(this.n.F_(), this.f()).ifPresent($$0 -> this.e.a(this.n, (je<cze>)$$0));
    }
 }

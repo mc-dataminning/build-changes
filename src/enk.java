@@ -1,63 +1,24 @@
 import com.mojang.serialization.MapCodec;
-import java.util.List;
 
-public class enk extends ens {
-   public static final MapCodec<enk> a = emy.a.fieldOf("provider").xmap(enk::new, $$0 -> $$0.b);
-   private final emy b;
+public class enk<P extends enj> {
+   public static final enk<ens> a = a("simple_state_provider", ens.b);
+   public static final enk<ent> b = a("weighted_state_provider", ent.b);
+   public static final enk<eno> c = a("noise_threshold_provider", eno.b);
+   public static final enk<enn> d = a("noise_provider", enn.g);
+   public static final enk<enl> e = a("dual_noise_provider", enl.b);
+   public static final enk<enq> f = a("rotated_block_provider", enq.b);
+   public static final enk<enp> g = a("randomized_int_state_provider", enp.b);
+   private final MapCodec<P> h;
 
-   public enk(emy $$0) {
-      this.b = $$0;
+   private static <P extends enj> enk<P> a(String $$0, MapCodec<P> $$1) {
+      return jr.a(mf.T, $$0, new enk<>($$1));
    }
 
-   @Override
-   protected ent<?> a() {
-      return ent.g;
+   private enk(MapCodec<P> $$0) {
+      this.h = $$0;
    }
 
-   @Override
-   public void a(ens.a $$0) {
-      List<iu> $$1 = ekf.a($$0);
-      if (!$$1.isEmpty()) {
-         int $$2 = $$1.get(0).v();
-         $$1.stream().filter($$1x -> $$1x.v() == $$2).forEach($$1x -> {
-            this.a($$0, $$1x.h().f());
-            this.a($$0, $$1x.g(2).f());
-            this.a($$0, $$1x.h().e(2));
-            this.a($$0, $$1x.g(2).e(2));
-
-            for (int $$2x = 0; $$2x < 5; $$2x++) {
-               int $$3 = $$0.b().a(64);
-               int $$4 = $$3 % 8;
-               int $$5 = $$3 / 8;
-               if ($$4 == 0 || $$4 == 7 || $$5 == 0 || $$5 == 7) {
-                  this.a($$0, $$1x.b(-3 + $$4, 0, -3 + $$5));
-               }
-            }
-         });
-      }
-   }
-
-   private void a(ens.a $$0, iu $$1) {
-      for (int $$2 = -2; $$2 <= 2; $$2++) {
-         for (int $$3 = -2; $$3 <= 2; $$3++) {
-            if (Math.abs($$2) != 2 || Math.abs($$3) != 2) {
-               this.b($$0, $$1.b($$2, 0, $$3));
-            }
-         }
-      }
-   }
-
-   private void b(ens.a $$0, iu $$1) {
-      for (int $$2 = 2; $$2 >= -3; $$2--) {
-         iu $$3 = $$1.b($$2);
-         if (eit.a($$0.a(), $$3)) {
-            $$0.a($$3, this.b.a($$0.b(), $$1));
-            break;
-         }
-
-         if (!$$0.a($$3) && $$2 < 0) {
-            break;
-         }
-      }
+   public MapCodec<P> a() {
+      return this.h;
    }
 }

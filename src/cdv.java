@@ -1,65 +1,89 @@
 import java.util.EnumSet;
+import java.util.List;
+import java.util.function.Predicate;
+import javax.annotation.Nullable;
 
-public abstract class cdv {
-   private final EnumSet<cdv.a> a = EnumSet.noneOf(cdv.a.class);
+public class cdv extends cdy {
+   private final bxe a;
+   private final Predicate<bxe> b;
+   @Nullable
+   private bxe c;
+   private final double d;
+   private final cgm e;
+   private int f;
+   private final float g;
+   private float h;
+   private final float i;
 
-   public abstract boolean b();
-
-   public boolean c() {
-      return this.b();
-   }
-
-   public boolean P_() {
-      return true;
-   }
-
-   public void d() {
-   }
-
-   public void e() {
-   }
-
-   public boolean Q_() {
-      return false;
-   }
-
-   public void a() {
-   }
-
-   public void a(EnumSet<cdv.a> $$0) {
-      this.a.clear();
-      this.a.addAll($$0);
+   public cdv(bxe $$0, double $$1, float $$2, float $$3) {
+      this.a = $$0;
+      this.b = $$1x -> $$1x != null && $$0.getClass() != $$1x.getClass();
+      this.d = $$1;
+      this.e = $$0.O();
+      this.g = $$2;
+      this.i = $$3;
+      this.a(EnumSet.of(cdy.a.a, cdy.a.b));
+      if (!($$0.O() instanceof cgl) && !($$0.O() instanceof cgk)) {
+         throw new IllegalArgumentException("Unsupported mob type for FollowMobGoal");
+      }
    }
 
    @Override
-   public String toString() {
-      return this.getClass().getSimpleName();
+   public boolean b() {
+      List<bxe> $$0 = this.a.dV().a(bxe.class, this.a.cR().g((double)this.i), this.b);
+      if (!$$0.isEmpty()) {
+         for (bxe $$1 : $$0) {
+            if (!$$1.cp()) {
+               this.c = $$1;
+               return true;
+            }
+         }
+      }
+
+      return false;
    }
 
-   public EnumSet<cdv.a> j() {
-      return this.a;
+   @Override
+   public boolean c() {
+      return this.c != null && !this.e.k() && this.a.g(this.c) > (double)(this.g * this.g);
    }
 
-   protected int a(int $$0) {
-      return this.Q_() ? $$0 : b($$0);
+   @Override
+   public void d() {
+      this.f = 0;
+      this.h = this.a.a(ewx.j);
+      this.a.a(ewx.j, 0.0F);
    }
 
-   protected static int b(int $$0) {
-      return azk.e($$0, 2);
+   @Override
+   public void e() {
+      this.c = null;
+      this.e.m();
+      this.a.a(ewx.j, this.h);
    }
 
-   protected static aro a(bwa $$0) {
-      return (aro)$$0.dV();
-   }
-
-   protected static aro a(dip $$0) {
-      return (aro)$$0;
-   }
-
-   public static enum a {
-      a,
-      b,
-      c,
-      d;
+   @Override
+   public void a() {
+      if (this.c != null && !this.a.O_()) {
+         this.a.J().a(this.c, 10.0F, (float)this.a.ac());
+         if (--this.f <= 0) {
+            this.f = this.a(10);
+            double $$0 = this.a.dA() - this.c.dA();
+            double $$1 = this.a.dC() - this.c.dC();
+            double $$2 = this.a.dG() - this.c.dG();
+            double $$3 = $$0 * $$0 + $$1 * $$1 + $$2 * $$2;
+            if (!($$3 <= (double)(this.g * this.g))) {
+               this.e.a(this.c, this.d);
+            } else {
+               this.e.m();
+               cda $$4 = this.c.J();
+               if ($$3 <= (double)this.g || $$4.e() == this.a.dA() && $$4.f() == this.a.dC() && $$4.g() == this.a.dG()) {
+                  double $$5 = this.c.dA() - this.a.dA();
+                  double $$6 = this.c.dG() - this.a.dG();
+                  this.e.a(this.a.dA() - $$5, this.a.dC(), this.a.dG() - $$6, this.d);
+               }
+            }
+         }
+      }
    }
 }

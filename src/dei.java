@@ -1,25 +1,19 @@
-public class dei extends dcp {
-   public dei(String $$0, dcv $$1, ddf $$2, cys $$3, float $$4, int $$5) {
-      super($$0, $$1, $$2, $$3, $$4, $$5);
+public record dei(cyy a) implements ddv {
+   @Override
+   public cyy a(int $$0) {
+      if ($$0 != 0) {
+         throw new IllegalArgumentException("No item for index " + $$0);
+      } else {
+         return this.a;
+      }
    }
 
    @Override
-   protected cyo f() {
-      return cyw.xp;
+   public int a() {
+      return 1;
    }
 
-   @Override
-   public ddu<dei> b() {
-      return ddu.d;
-   }
-
-   @Override
-   public ddt<dei> a() {
-      return ddt.q;
-   }
-
-   @Override
-   public ddm h() {
-      return ddl.j;
+   public cyy c() {
+      return this.a;
    }
 }

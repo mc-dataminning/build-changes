@@ -1,97 +1,122 @@
 import com.mojang.serialization.MapCodec;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
-public class dsa extends dlu {
+public class dsa extends dma implements dmi {
    public static final MapCodec<dsa> a = b(dsa::new);
-   public static final eaf b = dsd.b;
+   private static final float b = 0.083333336F;
+   private static final float c = 0.9F;
+   private static final float d = 1.5F;
+   private static final float e = 2.5F;
+   private static final ffc f = fez.a(0.0, 0.0, 0.0, 1.0, 0.9F, 1.0);
+   private static final double g = 4.0;
+   private static final double h = 7.0;
 
    @Override
    public MapCodec<dsa> a() {
       return a;
    }
 
-   public dsa(dzn.d $$0) {
+   public dsa(dzy.d $$0) {
       super($$0);
-      this.l(this.m().b(b, Boolean.valueOf(false)));
    }
 
    @Override
-   protected void a_(dzo $$0, dip $$1, iu $$2, cqs $$3) {
-      d($$0, $$1, $$2);
-      super.a_($$0, $$1, $$2, $$3);
+   protected boolean b(dzz $$0, dzz $$1, ja $$2) {
+      return $$1.a(this) ? true : super.b($$0, $$1, $$2);
    }
 
    @Override
-   public void a(dip $$0, iu $$1, dzo $$2, bwa $$3) {
-      if (!$$3.ce()) {
-         d($$2, $$0, $$1);
-      }
-
-      super.a($$0, $$1, $$2, $$3);
-   }
-
-   @Override
-   protected bty a(cys $$0, dzo $$1, dip $$2, iu $$3, cqs $$4, btx $$5, fds $$6) {
-      if ($$2.C) {
-         a($$2, $$3);
-      } else {
-         d($$1, $$2, $$3);
-      }
-
-      return (bty)($$0.h() instanceof cxa && new dcl($$4, $$5, $$0, $$6).b() ? bty.e : bty.a);
-   }
-
-   private static void d(dzo $$0, dip $$1, iu $$2) {
-      a($$1, $$2);
-      if (!$$0.c(b)) {
-         $$1.a($$2, $$0.b(b, Boolean.valueOf(true)), 3);
-      }
-   }
-
-   @Override
-   protected boolean f(dzo $$0) {
-      return $$0.c(b);
-   }
-
-   @Override
-   protected void b(dzo $$0, aro $$1, iu $$2, azt $$3) {
-      if ($$0.c(b)) {
-         $$1.a($$2, $$0.b(b, Boolean.valueOf(false)), 3);
-      }
-   }
-
-   @Override
-   protected void a(dzo $$0, aro $$1, iu $$2, cys $$3, boolean $$4) {
-      super.a($$0, $$1, $$2, $$3, $$4);
-      if ($$4) {
-         this.a($$1, $$2, $$3, btj.a(1, 5));
-      }
-   }
-
-   @Override
-   public void a(dzo $$0, dip $$1, iu $$2, azt $$3) {
-      if ($$0.c(b)) {
-         a($$1, $$2);
-      }
-   }
-
-   private static void a(dip $$0, iu $$1) {
-      double $$2 = 0.5625;
-      azt $$3 = $$0.A;
-
-      for (ja $$4 : ja.values()) {
-         iu $$5 = $$1.a($$4);
-         if (!$$0.a_($$5).s()) {
-            ja.a $$6 = $$4.o();
-            double $$7 = $$6 == ja.a.a ? 0.5 + 0.5625 * (double)$$4.j() : (double)$$3.i();
-            double $$8 = $$6 == ja.a.b ? 0.5 + 0.5625 * (double)$$4.k() : (double)$$3.i();
-            double $$9 = $$6 == ja.a.c ? 0.5 + 0.5625 * (double)$$4.l() : (double)$$3.i();
-            $$0.a(ls.b, (double)$$1.u() + $$7, (double)$$1.v() + $$8, (double)$$1.w() + $$9, 0.0, 0.0, 0.0);
+   protected void a(dzz $$0, div $$1, iu $$2, bwd $$3) {
+      if (!($$3 instanceof bxc) || $$3.dw().a(this)) {
+         $$3.a($$0, new fei(0.9F, 1.5, 0.9F));
+         if ($$1.C) {
+            azv $$4 = $$1.C_();
+            boolean $$5 = $$3.aa != $$3.dA() || $$3.ac != $$3.dG();
+            if ($$5 && $$4.h()) {
+               $$1.a(
+                  lx.aN,
+                  $$3.dA(),
+                  (double)($$2.v() + 1),
+                  $$3.dG(),
+                  (double)(azm.b($$4, -1.0F, 1.0F) * 0.083333336F),
+                  0.05F,
+                  (double)(azm.b($$4, -1.0F, 1.0F) * 0.083333336F)
+               );
+            }
          }
       }
+
+      $$3.p(true);
+      if ($$1 instanceof arq $$6 && $$3.bY() && ($$6.O().c(dir.c) || $$3 instanceof cqy) && $$3.c($$6, $$2)) {
+         $$1.b($$2, false);
+      }
    }
 
    @Override
-   protected void a(dzp.a<dlu, dzo> $$0) {
-      $$0.a(b);
+   public void a(div $$0, dzz $$1, iu $$2, bwd $$3, double $$4) {
+      if (!($$4 < 4.0) && $$3 instanceof bxc $$5) {
+         bxc.a $$7 = $$5.eN();
+         awm $$8 = $$4 < 7.0 ? $$7.a() : $$7.b();
+         $$3.a($$8, 1.0F, 1.0F);
+      }
+   }
+
+   @Override
+   protected ffc a(dzz $$0, dib $$1, iu $$2, bwd $$3) {
+      ffc $$4 = this.b($$0, $$1, $$2, fen.a($$3));
+      return $$4.c() ? fez.b() : $$4;
+   }
+
+   @Override
+   protected ffc b(dzz $$0, dib $$1, iu $$2, fen $$3) {
+      if ($$3 instanceof fes $$4) {
+         bwd $$5 = $$4.c();
+         if ($$5 != null) {
+            if ($$5.Z > 2.5) {
+               return f;
+            }
+
+            boolean $$6 = $$5 instanceof cnc;
+            if ($$6 || a($$5) && $$3.a(fez.b(), $$2, false) && !$$3.b()) {
+               return super.b($$0, $$1, $$2, $$3);
+            }
+         }
+      }
+
+      return fez.a();
+   }
+
+   @Override
+   protected ffc c(dzz $$0, dib $$1, iu $$2, fen $$3) {
+      return fez.a();
+   }
+
+   public static boolean a(bwd $$0) {
+      if ($$0.aq().a(axf.h)) {
+         return true;
+      } else {
+         return $$0 instanceof bxc ? ((bxc)$$0).a(bwn.c).a(czc.qm) : false;
+      }
+   }
+
+   @Override
+   public cyy a(@Nullable bxc $$0, diw $$1, iu $$2, dzz $$3) {
+      $$1.a($$2, dmc.a.m(), 11);
+      if (!$$1.w_()) {
+         $$1.c(2001, $$2, dma.j($$3));
+      }
+
+      return new cyy(czc.ro);
+   }
+
+   @Override
+   public Optional<awm> ao_() {
+      return Optional.of(awn.dn);
+   }
+
+   @Override
+   protected boolean a(dzz $$0, ewv $$1) {
+      return true;
    }
 }

@@ -1,82 +1,73 @@
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.Optional;
-import javax.annotation.Nullable;
-
-public class deg implements dee {
-   final Optional<ddf> c;
-   final ddf d;
-   final Optional<ddf> e;
-   final dem f;
-   @Nullable
-   private ddi g;
-
-   public deg(Optional<ddf> $$0, ddf $$1, Optional<ddf> $$2, dem $$3) {
-      this.c = $$0;
-      this.d = $$1;
-      this.e = $$2;
-      this.f = $$3;
+public class deg extends ddf {
+   public deg(ddc $$0) {
+      super($$0);
    }
 
-   public cys a(def $$0, jg.a $$1) {
-      return this.f.a($$0.d());
+   public boolean a(ddd $$0, div $$1) {
+      if ($$0.e() != 2) {
+         return false;
+      } else {
+         boolean $$2 = false;
+         boolean $$3 = false;
+
+         for (int $$4 = 0; $$4 < $$0.a(); $$4++) {
+            cyy $$5 = $$0.a($$4);
+            if (!$$5.f()) {
+               if ($$5.h() instanceof cxe) {
+                  if ($$3) {
+                     return false;
+                  }
+
+                  $$3 = true;
+               } else {
+                  if (!$$5.a(czc.wy)) {
+                     return false;
+                  }
+
+                  if ($$2) {
+                     return false;
+                  }
+
+                  dwn $$6 = $$5.a(kj.am, dwn.a);
+                  if (!$$6.b().isEmpty()) {
+                     return false;
+                  }
+
+                  $$2 = true;
+               }
+            }
+         }
+
+         return $$2 && $$3;
+      }
    }
 
-   @Override
-   public Optional<ddf> c() {
-      return this.c;
-   }
+   public cyy a(ddd $$0, jg.a $$1) {
+      cyy $$2 = cyy.k;
+      cyy $$3 = cyy.k;
 
-   @Override
-   public ddf f() {
-      return this.d;
-   }
-
-   @Override
-   public Optional<ddf> k() {
-      return this.e;
-   }
-
-   @Override
-   public ddt<deg> a() {
-      return ddt.t;
-   }
-
-   @Override
-   public ddi ak_() {
-      if (this.g == null) {
-         this.g = ddi.a(List.of(this.c, Optional.of(this.d), this.e));
+      for (int $$4 = 0; $$4 < $$0.a(); $$4++) {
+         cyy $$5 = $$0.a($$4);
+         if (!$$5.f()) {
+            if ($$5.h() instanceof cxe) {
+               $$2 = $$5;
+            } else if ($$5.a(czc.wy)) {
+               $$3 = $$5.v();
+            }
+         }
       }
 
-      return this.g;
+      if ($$3.f()) {
+         return $$3;
+      } else {
+         $$3.b(kj.am, $$2.a(kj.am));
+         $$3.b(kj.an, ((cxe)$$2.h()).a());
+         return $$3;
+      }
    }
 
    @Override
-   public List<dep> g() {
-      return List.of(new dey(ddf.a(this.c), this.d.c(), ddf.a(this.e), this.f.a(), new dev.d(cyw.xu)));
-   }
-
-   public static class a implements ddt<deg> {
-      private static final MapCodec<deg> x = RecordCodecBuilder.mapCodec(
-         $$0 -> $$0.group(
-                  ddf.d.optionalFieldOf("template").forGetter($$0x -> $$0x.c),
-                  ddf.d.fieldOf("base").forGetter($$0x -> $$0x.d),
-                  ddf.d.optionalFieldOf("addition").forGetter($$0x -> $$0x.e),
-                  dem.a.fieldOf("result").forGetter($$0x -> $$0x.f)
-               )
-               .apply($$0, deg::new)
-      );
-      public static final yu<wh, deg> w = yu.a(ddf.b, $$0 -> $$0.c, ddf.a, $$0 -> $$0.d, ddf.b, $$0 -> $$0.e, dem.b, $$0 -> $$0.f, deg::new);
-
-      @Override
-      public MapCodec<deg> a() {
-         return x;
-      }
-
-      @Override
-      public yu<wh, deg> b() {
-         return w;
-      }
+   public ddz<deg> a() {
+      return ddz.l;
    }
 }

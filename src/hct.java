@@ -1,3 +1,4 @@
-public class hct extends hcs {
-   public float n = -1.0F;
+public class hct extends hdf {
+   public int a;
+   public boolean b;
 }

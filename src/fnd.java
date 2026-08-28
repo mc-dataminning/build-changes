@@ -1,56 +1,93 @@
-import com.mojang.logging.LogUtils;
-import org.slf4j.Logger;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.mojang.util.UndashedUuid;
+import java.util.Date;
+import java.util.UUID;
+import java.util.function.Function;
+import javax.annotation.Nullable;
 
-public abstract class fnd implements Runnable {
-   protected static final int a = 25;
-   private static final Logger b = LogUtils.getLogger();
-   private boolean c = false;
-
-   protected static void a(long $$0) {
-      try {
-         Thread.sleep($$0 * 1000L);
-      } catch (InterruptedException var3) {
-         Thread.currentThread().interrupt();
-         b.error("", var3);
-      }
-   }
-
-   public static void a(fxi $$0) {
-      fof $$1 = fof.Q();
-      $$1.execute(() -> $$1.a($$0));
-   }
-
-   protected void a(ww $$0) {
-      this.b();
-      fof $$1 = fof.Q();
-      $$1.execute(() -> $$1.a(new flu($$0, new fjb(new fxk()))));
-   }
-
-   protected void a(Exception $$0) {
-      if ($$0 instanceof flc $$1) {
-         this.a($$1.a.b());
+public class fnd {
+   public static <T> T a(String $$0, JsonObject $$1, Function<JsonObject, T> $$2) {
+      JsonElement $$3 = $$1.get($$0);
+      if ($$3 == null || $$3.isJsonNull()) {
+         throw new IllegalStateException("Missing required property: " + $$0);
+      } else if (!$$3.isJsonObject()) {
+         throw new IllegalStateException("Required property " + $$0 + " was not a JsonObject as espected");
       } else {
-         this.a(ww.b($$0.getMessage()));
+         return $$2.apply($$3.getAsJsonObject());
       }
    }
 
-   protected void a(flc $$0) {
-      this.a($$0.a.b());
+   @Nullable
+   public static <T> T b(String $$0, JsonObject $$1, Function<JsonObject, T> $$2) {
+      JsonElement $$3 = $$1.get($$0);
+      if ($$3 == null || $$3.isJsonNull()) {
+         return null;
+      } else if (!$$3.isJsonObject()) {
+         throw new IllegalStateException("Required property " + $$0 + " was not a JsonObject as espected");
+      } else {
+         return $$2.apply($$3.getAsJsonObject());
+      }
    }
 
-   public abstract ww a();
-
-   public boolean d() {
-      return this.c;
+   public static String a(String $$0, JsonObject $$1) {
+      String $$2 = b($$0, $$1, null);
+      if ($$2 == null) {
+         throw new IllegalStateException("Missing required property: " + $$0);
+      } else {
+         return $$2;
+      }
    }
 
-   public void c() {
+   public static String a(String $$0, JsonObject $$1, String $$2) {
+      return b($$0, $$1, $$2);
    }
 
-   public void e() {
+   @Nullable
+   public static String b(String $$0, JsonObject $$1, @Nullable String $$2) {
+      JsonElement $$3 = $$1.get($$0);
+      if ($$3 != null) {
+         return $$3.isJsonNull() ? $$2 : $$3.getAsString();
+      } else {
+         return $$2;
+      }
    }
 
-   public void b() {
-      this.c = true;
+   @Nullable
+   public static UUID a(String $$0, JsonObject $$1, @Nullable UUID $$2) {
+      String $$3 = b($$0, $$1, null);
+      return $$3 == null ? $$2 : UndashedUuid.fromStringLenient($$3);
+   }
+
+   public static int a(String $$0, JsonObject $$1, int $$2) {
+      JsonElement $$3 = $$1.get($$0);
+      if ($$3 != null) {
+         return $$3.isJsonNull() ? $$2 : $$3.getAsInt();
+      } else {
+         return $$2;
+      }
+   }
+
+   public static long a(String $$0, JsonObject $$1, long $$2) {
+      JsonElement $$3 = $$1.get($$0);
+      if ($$3 != null) {
+         return $$3.isJsonNull() ? $$2 : $$3.getAsLong();
+      } else {
+         return $$2;
+      }
+   }
+
+   public static boolean a(String $$0, JsonObject $$1, boolean $$2) {
+      JsonElement $$3 = $$1.get($$0);
+      if ($$3 != null) {
+         return $$3.isJsonNull() ? $$2 : $$3.getAsBoolean();
+      } else {
+         return $$2;
+      }
+   }
+
+   public static Date b(String $$0, JsonObject $$1) {
+      JsonElement $$2 = $$1.get($$0);
+      return $$2 != null ? new Date(Long.parseLong($$2.getAsString())) : new Date();
    }
 }

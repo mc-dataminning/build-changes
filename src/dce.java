@@ -1,54 +1,32 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
+import java.util.Optional;
 
-public record dce(List<bve> c, float f) implements dcg {
-   public static final MapCodec<dce> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(bve.d.listOf().fieldOf("effects").forGetter(dce::b), Codec.floatRange(0.0F, 1.0F).optionalFieldOf("probability", 1.0F).forGetter(dce::c))
-            .apply($$0, dce::new)
+public record dce(float c, Optional<alg> d) {
+   public static final Codec<dce> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(ayu.o.fieldOf("seconds").forGetter(dce::b), alg.a.optionalFieldOf("cooldown_group").forGetter(dce::c)).apply($$0, dce::new)
    );
-   public static final yu<wh, dce> b = yu.a(bve.e.a(ys.a()), dce::b, ys.l, dce::c, dce::new);
+   public static final yw<wj, dce> b = yw.a(yu.l, dce::b, alg.b.a(yu::a), dce::c, dce::new);
 
-   public dce(bve $$0, float $$1) {
-      this(List.of($$0), $$1);
+   public dce(float $$0) {
+      this($$0, Optional.empty());
    }
 
-   public dce(List<bve> $$0) {
-      this($$0, 1.0F);
+   public int a() {
+      return (int)(this.c * 20.0F);
    }
 
-   public dce(bve $$0) {
-      this($$0, 1.0F);
-   }
-
-   @Override
-   public dcg.a<dce> a() {
-      return dcg.a.a;
-   }
-
-   @Override
-   public boolean a(dip $$0, cys $$1, bwz $$2) {
-      if ($$2.dY().i() >= this.f) {
-         return false;
-      } else {
-         boolean $$3 = false;
-
-         for (bve $$4 : this.c) {
-            if ($$2.a(new bve($$4))) {
-               $$3 = true;
-            }
-         }
-
-         return $$3;
+   public void a(cyy $$0, bxc $$1) {
+      if ($$1 instanceof cqy $$2) {
+         $$2.gE().a($$0, this.a());
       }
    }
 
-   public List<bve> b() {
+   public float b() {
       return this.c;
    }
 
-   public float c() {
-      return this.f;
+   public Optional<alg> c() {
+      return this.d;
    }
 }

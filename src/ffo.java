@@ -1,73 +1,65 @@
-import it.unimi.dsi.fastutil.Hash.Strategy;
-import java.util.Comparator;
-import javax.annotation.Nullable;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.EnumMap;
+import java.util.List;
+import java.util.Map;
 
-public record ffo<T>(T d, iu e, long f, ffs g, long h) {
-   public static final Comparator<ffo<?>> a = ($$0, $$1) -> {
-      int $$2 = Long.compare($$0.f, $$1.f);
-      if ($$2 != 0) {
-         return $$2;
-      } else {
-         $$2 = $$0.g.compareTo($$1.g);
-         return $$2 != 0 ? $$2 : Long.compare($$0.h, $$1.h);
-      }
-   };
-   public static final Comparator<ffo<?>> b = ($$0, $$1) -> {
-      int $$2 = $$0.g.compareTo($$1.g);
-      return $$2 != 0 ? $$2 : Long.compare($$0.h, $$1.h);
-   };
-   public static final Strategy<ffo<?>> c = new Strategy<ffo<?>>() {
-      public int a(ffo<?> $$0) {
-         return 31 * $$0.b().hashCode() + $$0.a().hashCode();
-      }
+public class ffo extends exs {
+   public static final String a = "scoreboard";
+   private final ffn b;
 
-      public boolean a(@Nullable ffo<?> $$0, @Nullable ffo<?> $$1) {
-         if ($$0 == $$1) {
-            return true;
-         } else {
-            return $$0 != null && $$1 != null ? $$0.a() == $$1.a() && $$0.b().equals($$1.b()) : false;
+   public ffo(ffn $$0) {
+      this.b = $$0;
+   }
+
+   public void a(ffo.a $$0) {
+      $$0.a().forEach(this.b::a);
+      $$0.b().forEach(this.b::a);
+      $$0.c().forEach(($$0x, $$1) -> {
+         fff $$2 = this.b.a($$1);
+         this.b.a($$0x, $$2);
+      });
+      $$0.d().forEach(this.b::a);
+   }
+
+   public ffo.a a() {
+      Map<ffe, String> $$0 = new EnumMap<>(ffe.class);
+
+      for (ffe $$1 : ffe.values()) {
+         fff $$2 = this.b.a($$1);
+         if ($$2 != null) {
+            $$0.put($$1, $$2.c());
          }
       }
-   };
 
-   public ffo(T $$0, iu $$1, long $$2, long $$3) {
-      this($$0, $$1, $$2, ffs.d, $$3);
+      return new ffo.a(this.b.b().stream().map(fff::a).toList(), this.b.g(), $$0, this.b.f().stream().map(ffi::a).toList());
    }
 
-   public ffo(T d, iu e, long f, ffs g, long h) {
-      e = e.j();
-      this.d = d;
-      this.e = e;
-      this.f = f;
-      this.g = g;
-      this.h = h;
-   }
+   public static record a(List<fff.a> b, List<ffn.a> c, Map<ffe, String> d, List<ffi.a> e) {
+      public static final Codec<ffo.a> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(
+                  fff.a.a.listOf().optionalFieldOf("Objectives", List.of()).forGetter(ffo.a::a),
+                  ffn.a.a.listOf().optionalFieldOf("PlayerScores", List.of()).forGetter(ffo.a::b),
+                  Codec.unboundedMap(ffe.t, Codec.STRING).optionalFieldOf("DisplaySlots", Map.of()).forGetter(ffo.a::c),
+                  ffi.a.a.listOf().optionalFieldOf("Teams", List.of()).forGetter(ffo.a::d)
+               )
+               .apply($$0, ffo.a::new)
+      );
 
-   public static <T> ffo<T> a(T $$0, iu $$1) {
-      return new ffo<>($$0, $$1, 0L, ffs.d, 0L);
-   }
+      public List<fff.a> a() {
+         return this.b;
+      }
 
-   public ffn<T> a(long $$0) {
-      return new ffn<>(this.d, this.e, (int)(this.f - $$0), this.g);
-   }
+      public List<ffn.a> b() {
+         return this.c;
+      }
 
-   public T a() {
-      return this.d;
-   }
+      public Map<ffe, String> c() {
+         return this.d;
+      }
 
-   public iu b() {
-      return this.e;
-   }
-
-   public long c() {
-      return this.f;
-   }
-
-   public ffs d() {
-      return this.g;
-   }
-
-   public long e() {
-      return this.h;
+      public List<ffi.a> d() {
+         return this.e;
+      }
    }
 }

@@ -1,33 +1,57 @@
 import com.mojang.serialization.Codec;
+import java.util.List;
+import java.util.stream.Stream;
 
-public class eir extends eit<ele> {
-   public eir(Codec<ele> $$0) {
+public class eir extends eis {
+   public eir(Codec<elp> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(eiv<ele> $$0) {
-      a($$0.b(), $$0.e(), false);
-      return true;
-   }
+   protected boolean a(diw $$0, azv $$1, iu $$2, dzz $$3) {
+      if (!this.b($$0, $$1, $$2, $$3)) {
+         return false;
+      } else {
+         ja $$4 = ja.c.a.a($$1);
+         int $$5 = $$1.a(2) + 2;
+         List<ja> $$6 = af.a(Stream.of($$4, $$4.h(), $$4.i()), $$1);
 
-   public static void a(djg $$0, iu $$1, boolean $$2) {
-      iu.a $$3 = $$1.k();
+         for (ja $$8 : $$6.subList(0, $$5)) {
+            iu.a $$9 = $$2.k();
+            int $$10 = $$1.a(2) + 1;
+            $$9.c($$8);
+            int $$12;
+            ja $$11;
+            if ($$8 == $$4) {
+               $$11 = $$4;
+               $$12 = $$1.a(3) + 2;
+            } else {
+               $$9.c(ja.b);
+               ja[] $$13 = new ja[]{$$8, ja.b};
+               $$11 = af.a($$13, $$1);
+               $$12 = $$1.a(3) + 3;
+            }
 
-      for (int $$4 = -2; $$4 <= 2; $$4++) {
-         for (int $$5 = -2; $$5 <= 2; $$5++) {
-            for (int $$6 = -1; $$6 < 3; $$6++) {
-               iu $$7 = $$3.g($$1).e($$5, $$6, $$4);
-               dlu $$8 = $$6 == -1 ? dlw.cv : dlw.a;
-               if (!$$0.a_($$7).a($$8)) {
-                  if ($$2) {
-                     $$0.a($$7, true, null);
-                  }
+            for (int $$16 = 0; $$16 < $$10 && this.b($$0, $$1, $$9, $$3); $$16++) {
+               $$9.c($$11);
+            }
 
-                  $$0.a($$7, $$8.m(), 3);
+            $$9.c($$11.g());
+            $$9.c(ja.b);
+
+            for (int $$17 = 0; $$17 < $$12; $$17++) {
+               $$9.c($$4);
+               if (!this.b($$0, $$1, $$9, $$3)) {
+                  break;
+               }
+
+               if ($$1.i() < 0.25F) {
+                  $$9.c(ja.b);
                }
             }
          }
+
+         return true;
       }
    }
 }

@@ -1,20 +1,18 @@
 import com.mojang.serialization.MapCodec;
 
-public class enh extends emy {
-   public static final MapCodec<enh> b = dzo.a.fieldOf("state").xmap(enh::new, $$0 -> $$0.c);
-   private final dzo c;
+public class enh<P extends eng> {
+   public static final enh<enf> a = a("mangrove_root_placer", enf.c);
+   private final MapCodec<P> b;
 
-   protected enh(dzo $$0) {
-      this.c = $$0;
+   private static <P extends eng> enh<P> a(String $$0, MapCodec<P> $$1) {
+      return jr.a(mf.W, $$0, new enh<>($$1));
    }
 
-   @Override
-   protected emz<?> a() {
-      return emz.a;
+   private enh(MapCodec<P> $$0) {
+      this.b = $$0;
    }
 
-   @Override
-   public dzo a(azt $$0, iu $$1) {
-      return this.c;
+   public MapCodec<P> a() {
+      return this.b;
    }
 }

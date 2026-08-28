@@ -1,121 +1,144 @@
-import com.google.common.collect.Lists;
-import com.mojang.authlib.minecraft.report.AbuseReport;
-import com.mojang.authlib.minecraft.report.AbuseReportLimits;
-import com.mojang.authlib.minecraft.report.ReportChatMessage;
-import com.mojang.authlib.minecraft.report.ReportEvidence;
-import com.mojang.authlib.minecraft.report.ReportedEntity;
-import com.mojang.datafixers.util.Either;
-import it.unimi.dsi.fastutil.ints.IntOpenHashSet;
-import it.unimi.dsi.fastutil.ints.IntSet;
-import java.nio.ByteBuffer;
-import java.time.Instant;
 import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.HashMap;
 import java.util.List;
-import java.util.Objects;
-import java.util.UUID;
+import java.util.Locale;
+import java.util.Map;
+import java.util.function.BiConsumer;
+import java.util.stream.Collectors;
 import javax.annotation.Nullable;
-import org.apache.commons.lang3.StringUtils;
 
-public class gkf extends gki {
-   final IntSet g = new IntOpenHashSet();
+public class gkf {
+   @Nullable
+   private gkf.a a;
+   @Nullable
+   private gkf.b b;
 
-   gkf(UUID $$0, Instant $$1, UUID $$2) {
-      super($$0, $$1, $$2);
+   public void a(alf<? extends jr<?>> $$0, List<jv.a> $$1) {
+      if (this.a == null) {
+         this.a = new gkf.a();
+      }
+
+      this.a.a($$0, $$1);
    }
 
-   public void a(int $$0, AbuseReportLimits $$1) {
-      if (this.g.contains($$0)) {
-         this.g.remove($$0);
-      } else if (this.g.size() < $$1.maxReportedMessageCount()) {
-         this.g.add($$0);
+   public void a(Map<alf<? extends jr<?>>, axt.a> $$0) {
+      if (this.b == null) {
+         this.b = new gkf.b();
       }
+
+      $$0.forEach(this.b::a);
    }
 
-   public gkf a() {
-      gkf $$0 = new gkf(this.a, this.b, this.c);
-      $$0.g.addAll(this.g);
-      $$0.d = this.d;
-      $$0.e = this.e;
-      $$0.f = this.f;
-      return $$0;
+   private static <T> jr.a<T> a(js.b $$0, alf<? extends jr<? extends T>> $$1, axt.a $$2) {
+      jr<T> $$3 = $$0.f($$1);
+      return $$3.a($$2.a($$3));
    }
 
-   @Override
-   public fxi a(fxi $$0, gkm $$1) {
-      return new gbr($$0, $$1, this);
+   private js a(avg $$0, gkf.a $$1, boolean $$2) {
+      jl<gju> $$3 = gju.a();
+      js.b $$4 = $$3.b(gju.b);
+      Map<alf<? extends jr<?>>, alb.c> $$5 = new HashMap<>();
+      $$1.a.forEach(($$1x, $$2x) -> $$5.put($$1x, new alb.c($$2x, axt.a.a)));
+      List<jr.a<?>> $$6 = new ArrayList<>();
+      if (this.b != null) {
+         this.b.a(($$4x, $$5x) -> {
+            if (!$$5x.a()) {
+               if (jv.a($$4x)) {
+                  $$5.compute($$4x, ($$1xx, $$2xx) -> {
+                     List<jv.a> $$3xx = $$2xx != null ? $$2xx.a() : List.of();
+                     return new alb.c($$3xx, $$5x);
+                  });
+               } else if (!$$2) {
+                  $$6.add(a($$4, $$4x, $$5x));
+               }
+            }
+         });
+      }
+
+      List<jg.b<?>> $$7 = axs.a($$4, $$6);
+
+      js.b $$8;
+      try {
+         $$8 = alb.a($$5, $$0, $$7, alb.c).e();
+      } catch (Exception var13) {
+         o $$10 = o.a(var13, "Network Registry Load");
+         a($$10, $$5, $$6);
+         throw new z($$10);
+      }
+
+      js $$12 = $$3.a(gju.b, $$8).a();
+      $$6.forEach(jr.a::d);
+      return $$12;
    }
 
-   public static class a extends gki.a<gkf> {
-      public a(gkf $$0, AbuseReportLimits $$1) {
-         super($$0, $$1);
-      }
+   private static void a(o $$0, Map<alf<? extends jr<?>>, alb.c> $$1, List<jr.a<?>> $$2) {
+      p $$3 = $$0.a("Received Elements and Tags");
+      $$3.a(
+         "Dynamic Registries",
+         () -> $$1.entrySet()
+               .stream()
+               .sorted(Comparator.comparing($$0xx -> ((alf)$$0xx.getKey()).a()))
+               .map(
+                  $$0xx -> String.format(
+                        Locale.ROOT,
+                        "\n\t\t%s: elements=%d tags=%d",
+                        ((alf)$$0xx.getKey()).a(),
+                        ((alb.c)$$0xx.getValue()).a().size(),
+                        ((alb.c)$$0xx.getValue()).b().b()
+                     )
+               )
+               .collect(Collectors.joining())
+      );
+      $$3.a(
+         "Static Registries",
+         () -> $$2.stream()
+               .sorted(Comparator.comparing($$0xx -> $$0xx.a().a()))
+               .map($$0xx -> String.format(Locale.ROOT, "\n\t\t%s: tags=%d", $$0xx.a().a(), $$0xx.b()))
+               .collect(Collectors.joining())
+      );
+   }
 
-      public a(UUID $$0, AbuseReportLimits $$1) {
-         super(new gkf(UUID.randomUUID(), Instant.now(), $$0), $$1);
-      }
-
-      public IntSet a() {
-         return this.a.g;
-      }
-
-      public void a(int $$0) {
-         this.a.a($$0, this.b);
-      }
-
-      public boolean b(int $$0) {
-         return this.a.g.contains($$0);
-      }
-
-      @Override
-      public boolean b() {
-         return StringUtils.isNotEmpty(this.g()) || !this.a().isEmpty() || this.i() != null;
-      }
-
-      @Nullable
-      @Override
-      public gki.b c() {
-         if (this.a.g.isEmpty()) {
-            return gki.b.b;
-         } else if (this.a.g.size() > this.b.maxReportedMessageCount()) {
-            return gki.b.c;
-         } else if (this.a.e == null) {
-            return gki.b.a;
-         } else {
-            return this.a.d.length() > this.b.maxOpinionCommentsLength() ? gki.b.d : super.c();
+   private void a(gkf.b $$0, js.b $$1, boolean $$2) {
+      $$0.a(($$2x, $$3) -> {
+         if ($$2 || jv.a($$2x)) {
+            a($$1, $$2x, $$3).d();
          }
-      }
+      });
+   }
 
-      @Override
-      public Either<gki.c, gki.b> a(gkm $$0) {
-         gki.b $$1 = this.c();
-         if ($$1 != null) {
-            return Either.right($$1);
-         } else {
-            String $$2 = Objects.requireNonNull(this.a.e).a();
-            ReportEvidence $$3 = this.b($$0);
-            ReportedEntity $$4 = new ReportedEntity(this.a.c);
-            AbuseReport $$5 = AbuseReport.chat(this.a.d, $$2, $$3, $$4, this.a.b);
-            return Either.left(new gki.c(this.a.a, gkl.a, $$5));
+   public js.b a(avg $$0, js.b $$1, boolean $$2) {
+      js $$3;
+      if (this.a != null) {
+         $$3 = this.a($$0, this.a, $$2);
+      } else {
+         if (this.b != null) {
+            this.a(this.b, $$1, !$$2);
          }
+
+         $$3 = $$1;
       }
 
-      private ReportEvidence b(gkm $$0) {
-         List<ReportChatMessage> $$1 = new ArrayList<>();
-         gkg $$2 = new gkg(this.b.leadingContextMessageCount());
-         $$2.a($$0.b(), this.a.g, ($$1x, $$2x) -> $$1.add(this.a($$2x, this.b($$1x))));
-         return new ReportEvidence(Lists.reverse($$1));
+      return $$3.e();
+   }
+
+   static class a {
+      final Map<alf<? extends jr<?>>, List<jv.a>> a = new HashMap<>();
+
+      public void a(alf<? extends jr<?>> $$0, List<jv.a> $$1) {
+         this.a.computeIfAbsent($$0, $$0x -> new ArrayList<>()).addAll($$1);
+      }
+   }
+
+   static class b {
+      private final Map<alf<? extends jr<?>>, axt.a> a = new HashMap<>();
+
+      public void a(alf<? extends jr<?>> $$0, axt.a $$1) {
+         this.a.put($$0, $$1);
       }
 
-      private ReportChatMessage a(gkb.a $$0, boolean $$1) {
-         xr $$2 = $$0.g().k();
-         xp $$3 = $$0.g().m();
-         List<ByteBuffer> $$4 = $$3.d().a().stream().map(xi::a).toList();
-         ByteBuffer $$5 = x.a($$0.g().l(), xi::a);
-         return new ReportChatMessage($$2.b(), $$2.c(), $$2.d(), $$3.b(), $$3.c(), $$4, $$3.a(), $$5, $$1);
-      }
-
-      public gkf.a d() {
-         return new gkf.a(this.a.a(), this.b);
+      public void a(BiConsumer<? super alf<? extends jr<?>>, ? super axt.a> $$0) {
+         this.a.forEach($$0);
       }
    }
 }

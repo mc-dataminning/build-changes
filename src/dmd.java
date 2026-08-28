@@ -1,44 +1,23 @@
-import com.mojang.serialization.MapCodec;
+public interface dmd {
+   boolean a(diy var1, iu var2, dzz var3);
 
-public class dmd extends dks {
-   public static final MapCodec<dmd> b = b(dmd::new);
-   public static final int c = 5;
-   private static final ja[] d = ja.values();
+   boolean a(div var1, azv var2, iu var3, dzz var4);
 
-   @Override
-   public MapCodec<dmd> a() {
-      return b;
+   void a(arq var1, azv var2, iu var3, dzz var4);
+
+   default iu a(iu $$0) {
+      return switch (this.am_()) {
+         case a -> $$0.d();
+         case b -> $$0;
+      };
    }
 
-   public dmd(dzn.d $$0) {
-      super($$0);
+   default dmd.a am_() {
+      return dmd.a.b;
    }
 
-   @Override
-   protected void b(dzo $$0, aro $$1, iu $$2, azt $$3) {
-      if ($$3.a(5) == 0) {
-         ja $$4 = d[$$3.a(d.length)];
-         iu $$5 = $$2.a($$4);
-         dzo $$6 = $$1.a_($$5);
-         dlu $$7 = null;
-         if (h($$6)) {
-            $$7 = dlw.rc;
-         } else if ($$6.a(dlw.rc) && $$6.c(dkt.d) == $$4) {
-            $$7 = dlw.rb;
-         } else if ($$6.a(dlw.rb) && $$6.c(dkt.d) == $$4) {
-            $$7 = dlw.ra;
-         } else if ($$6.a(dlw.ra) && $$6.c(dkt.d) == $$4) {
-            $$7 = dlw.qZ;
-         }
-
-         if ($$7 != null) {
-            dzo $$8 = $$7.m().b(dkt.d, $$4).b(dkt.c, Boolean.valueOf($$6.y().a() == evw.c));
-            $$1.b($$5, $$8);
-         }
-      }
-   }
-
-   public static boolean h(dzo $$0) {
-      return $$0.l() || $$0.a(dlw.J) && $$0.y().e() == 8;
+   public static enum a {
+      a,
+      b;
    }
 }

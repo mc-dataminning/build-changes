@@ -11,16 +11,16 @@ import java.util.concurrent.CompletableFuture;
 
 public class fv implements ArgumentType<String> {
    private static final Collection<String> a = Arrays.asList("foo", "123");
-   private static final DynamicCommandExceptionType b = new DynamicCommandExceptionType($$0 -> ww.b("team.notFound", $$0));
+   private static final DynamicCommandExceptionType b = new DynamicCommandExceptionType($$0 -> wy.b("team.notFound", $$0));
 
    public static fv a() {
       return new fv();
    }
 
-   public static few a(CommandContext<ei> $$0, String $$1) throws CommandSyntaxException {
+   public static ffi a(CommandContext<ei> $$0, String $$1) throws CommandSyntaxException {
       String $$2 = (String)$$0.getArgument($$1, String.class);
-      ffb $$3 = ((ei)$$0.getSource()).l().aJ();
-      few $$4 = $$3.b($$2);
+      ffn $$3 = ((ei)$$0.getSource()).l().aJ();
+      ffi $$4 = $$3.b($$2);
       if ($$4 == null) {
          throw b.create($$2);
       } else {

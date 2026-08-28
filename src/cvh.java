@@ -1,22 +1,19 @@
-public class cvh extends cwh {
-   private final cum a;
+public class cvh extends cwn {
+   private final cvg a;
 
-   public cvh(cum $$0, btr $$1, int $$2, int $$3, int $$4) {
-      super($$1, $$2, $$3, $$4);
-      this.a = $$0;
+   public cvh(btu $$0, int $$1, int $$2, int $$3, cvg $$4) {
+      super($$0, $$1, $$2, $$3);
+      this.a = $$4;
    }
 
    @Override
-   public boolean a(cys $$0) {
-      return this.a.d($$0) || c($$0);
+   public boolean a(cyy $$0) {
+      return !this.a.e(this.d) && super.a($$0);
    }
 
    @Override
-   public int a_(cys $$0) {
-      return c($$0) ? 1 : super.a_($$0);
-   }
-
-   public static boolean c(cys $$0) {
-      return $$0.a(cyw.rj);
+   public void d() {
+      super.d();
+      this.a.a(this.c);
    }
 }

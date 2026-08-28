@@ -1,38 +1,17 @@
-public class gmv extends gnl {
-   private final gng a;
-
-   gmv(gjd $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, gng $$7) {
-      super($$0, $$1, $$2, $$3, $$4, $$5, $$6);
-      this.B = 0.96F;
-      this.a = $$7;
-      this.d(1.0F);
-      this.n = false;
-      this.b($$7);
+public class gmv extends gno {
+   protected gmv(gjr $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, gnv $$7) {
+      super($$0, $$1, $$2, $$3, $$4, $$5, $$6, 2.5F, $$7);
    }
 
-   @Override
-   public int a(float $$0) {
-      return 240;
-   }
+   public static class a implements gnd<mb> {
+      private final gnv a;
 
-   @Override
-   public gmp b() {
-      return gmp.c;
-   }
+      public a(gnv $$0) {
+         this.a = $$0;
+      }
 
-   @Override
-   public void a() {
-      super.a();
-      this.b(this.a);
-   }
-
-   public static record a(gng a) implements gmo<mb> {
-      public gml a(mb $$0, gjd $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         gmv $$8 = new gmv($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
-         $$8.e(1.0F);
-         $$8.b($$5, $$6, $$7);
-         $$8.a($$1.A.a(4) + 6);
-         return $$8;
+      public gna a(mb $$0, gjr $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new gmv($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
       }
    }
 }

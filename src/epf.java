@@ -1,66 +1,23 @@
-import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.stream.Stream;
 
-public class epf extends epp {
-   private final ja c;
-   private final egu d;
-   private final egu e;
-   private final int f;
+public class epf extends epa {
    public static final MapCodec<epf> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(
-               ja.h.fieldOf("direction_of_search").forGetter($$0x -> $$0x.c),
-               egu.b.fieldOf("target_condition").forGetter($$0x -> $$0x.d),
-               egu.b.optionalFieldOf("allowed_search_condition", egu.e()).forGetter($$0x -> $$0x.e),
-               Codec.intRange(1, 32).fieldOf("max_steps").forGetter($$0x -> $$0x.f)
-            )
-            .apply($$0, epf::new)
+      $$0 -> $$0.group(bsm.b(epa.c).fieldOf("distribution").forGetter($$0x -> $$0x.b)).apply($$0, epf::new)
    );
+   private final bsm<epa> b;
 
-   private epf(ja $$0, egu $$1, egu $$2, int $$3) {
-      this.c = $$0;
-      this.d = $$1;
-      this.e = $$2;
-      this.f = $$3;
-   }
-
-   public static epf a(ja $$0, egu $$1, egu $$2, int $$3) {
-      return new epf($$0, $$1, $$2, $$3);
-   }
-
-   public static epf a(ja $$0, egu $$1, int $$2) {
-      return a($$0, $$1, egu.e(), $$2);
+   public epf(bsm<epa> $$0) {
+      this.b = $$0;
    }
 
    @Override
-   public Stream<iu> a_(epn $$0, azt $$1, iu $$2) {
-      iu.a $$3 = $$2.k();
-      djo $$4 = $$0.d();
-      if (!this.e.test($$4, $$3)) {
-         return Stream.of();
-      } else {
-         for (int $$5 = 0; $$5 < this.f; $$5++) {
-            if (this.d.test($$4, $$3)) {
-               return Stream.of($$3);
-            }
-
-            $$3.c(this.c);
-            if ($$4.e($$3.v())) {
-               return Stream.of();
-            }
-
-            if (!this.e.test($$4, $$3)) {
-               break;
-            }
-         }
-
-         return this.d.test($$4, $$3) ? Stream.of($$3) : Stream.of();
-      }
+   public int a(azv $$0, egv $$1) {
+      return this.b.b($$0).a($$0, $$1);
    }
 
    @Override
-   public epq<?> b() {
-      return epq.j;
+   public epb<?> a() {
+      return epb.f;
    }
 }

@@ -21,7 +21,7 @@ public class nf implements mm {
    private static <T> JsonElement a(jr<T> $$0) {
       JsonObject $$1 = new JsonObject();
       if ($$0 instanceof iz) {
-         ale $$2 = ((iz)$$0).b();
+         alg $$2 = ((iz)$$0).b();
          $$1.addProperty("default", $$2.toString());
       }
 

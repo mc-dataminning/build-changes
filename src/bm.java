@@ -5,10 +5,10 @@ import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
 import java.util.Optional;
 
-public record bm(List<ds<bur>> b, Optional<bx> c, Optional<bx> d, Optional<Boolean> e) {
+public record bm(List<ds<buu>> b, Optional<bx> c, Optional<bx> d, Optional<Boolean> e) {
    public static final Codec<bm> a = RecordCodecBuilder.create(
       $$0 -> $$0.group(
-               ds.a(mg.aL).listOf().optionalFieldOf("tags", List.of()).forGetter(bm::a),
+               ds.a(mg.aM).listOf().optionalFieldOf("tags", List.of()).forGetter(bm::a),
                bx.a.optionalFieldOf("direct_entity").forGetter(bm::b),
                bx.a.optionalFieldOf("source_entity").forGetter(bm::c),
                Codec.BOOL.optionalFieldOf("is_direct").forGetter(bm::d)
@@ -16,12 +16,12 @@ public record bm(List<ds<bur>> b, Optional<bx> c, Optional<bx> d, Optional<Boole
             .apply($$0, bm::new)
    );
 
-   public boolean a(arp $$0, bup $$1) {
+   public boolean a(arr $$0, bus $$1) {
       return this.a($$0.y(), $$0.dt(), $$1);
    }
 
-   public boolean a(aro $$0, fdw $$1, bup $$2) {
-      for (ds<bur> $$3 : this.b) {
+   public boolean a(arq $$0, fei $$1, bus $$2) {
+      for (ds<buu> $$3 : this.b) {
          if (!$$3.a($$2.l())) {
             return false;
          }
@@ -34,7 +34,7 @@ public record bm(List<ds<bur>> b, Optional<bx> c, Optional<bx> d, Optional<Boole
       }
    }
 
-   public List<ds<bur>> a() {
+   public List<ds<buu>> a() {
       return this.b;
    }
 
@@ -51,7 +51,7 @@ public record bm(List<ds<bur>> b, Optional<bx> c, Optional<bx> d, Optional<Boole
    }
 
    public static class a {
-      private final Builder<ds<bur>> a = ImmutableList.builder();
+      private final Builder<ds<buu>> a = ImmutableList.builder();
       private Optional<bx> b = Optional.empty();
       private Optional<bx> c = Optional.empty();
       private Optional<Boolean> d = Optional.empty();
@@ -60,7 +60,7 @@ public record bm(List<ds<bur>> b, Optional<bx> c, Optional<bx> d, Optional<Boole
          return new bm.a();
       }
 
-      public bm.a a(ds<bur> $$0) {
+      public bm.a a(ds<buu> $$0) {
          this.a.add($$0);
          return this;
       }

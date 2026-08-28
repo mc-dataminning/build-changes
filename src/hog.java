@@ -1,36 +1,51 @@
-import java.util.function.Function;
+import java.time.Duration;
+import java.time.Instant;
+import javax.annotation.Nullable;
 
-public enum hog {
-   a("movement", hob::new),
-   b("find_tree", hoa::new),
-   c("punch_tree", hod::new),
-   d("open_inventory", hoc::new),
-   e("craft_planks", hnz::new),
-   f("none", hny::new);
+public abstract class hog {
+   private static final int a = 60000;
+   private static final int b = 10;
+   private int c;
+   private boolean d = false;
+   @Nullable
+   private Instant e;
 
-   private final String g;
-   private final Function<hoe, ? extends hof> h;
-
-   private <T extends hof> hog(final String $$0, final Function<hoe, T> $$1) {
-      this.g = $$0;
-      this.h = $$1;
+   public void a() {
+      this.d = true;
+      this.e = Instant.now();
+      this.c = 0;
    }
 
-   public hof a(hoe $$0) {
-      return this.h.apply($$0);
-   }
-
-   public String a() {
-      return this.g;
-   }
-
-   public static hog a(String $$0) {
-      for (hog $$1 : values()) {
-         if ($$1.g.equals($$0)) {
-            return $$1;
-         }
+   public void a(hoa $$0) {
+      if (this.b()) {
+         this.f();
+         this.c++;
+         this.e = Instant.now();
       }
 
-      return f;
+      if (this.c()) {
+         this.b($$0);
+         this.c = 0;
+      }
    }
+
+   public boolean b() {
+      return this.d && this.e != null && Duration.between(this.e, Instant.now()).toMillis() > 60000L;
+   }
+
+   public boolean c() {
+      return this.c >= 10;
+   }
+
+   public void d() {
+      this.d = false;
+   }
+
+   protected int e() {
+      return this.c;
+   }
+
+   public abstract void f();
+
+   public abstract void b(hoa var1);
 }

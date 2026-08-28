@@ -1,12 +1,33 @@
-public record aep(ww b) implements zd<abs> {
-   public static final yu<wh, aep> a = yu.a(wy.d, aep::b, aep::new);
+import javax.annotation.Nullable;
 
-   @Override
-   public zf<aep> a() {
-      return agl.au;
+public class aep implements zf<abu> {
+   public static final yw<vu, aep> a = zf.a(aep::a, aep::new);
+   @Nullable
+   private final alg b;
+
+   public aep(@Nullable alg $$0) {
+      this.b = $$0;
    }
 
-   public void a(abs $$0) {
+   private aep(vu $$0) {
+      this.b = $$0.c(vu::q);
+   }
+
+   private void a(vu $$0) {
+      $$0.a(this.b, vu::a);
+   }
+
+   @Override
+   public zh<aep> a() {
+      return agn.as;
+   }
+
+   public void a(abu $$0) {
       $$0.a(this);
+   }
+
+   @Nullable
+   public alg b() {
+      return this.b;
    }
 }

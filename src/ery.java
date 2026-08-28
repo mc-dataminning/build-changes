@@ -1,25 +1,30 @@
-import com.mojang.serialization.Codec;
+import com.mojang.datafixers.util.Either;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.function.BiConsumer;
-import java.util.stream.Stream;
+import java.util.Optional;
 
-record ery(bsj<List<eru>> c) implements eru {
-   static MapCodec<ery> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(bsj.b(Codec.list(eru.b)).fieldOf("groups").forGetter(ery::c)).apply($$0, ery::new));
+public class ery extends esa {
+   public static final MapCodec<ery> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(d(), b(), e(), c()).apply($$0, ery::new));
 
-   @Override
-   public void a(azt $$0, BiConsumer<ald<ers>, ald<ers>> $$1) {
-      this.c.a($$0).ifPresent($$2 -> $$2.forEach($$2x -> $$2x.a($$0, $$1)));
+   protected ery(Either<alg, euv> $$0, je<eut> $$1, esd.a $$2, Optional<euf> $$3) {
+      super($$0, $$1, $$2, $$3);
    }
 
    @Override
-   public Stream<ald<ers>> a() {
-      return this.c.d().stream().flatMap($$0 -> $$0.a().stream()).flatMap(eru::a);
+   protected eur a(dst $$0, eql $$1, euf $$2, boolean $$3) {
+      eur $$4 = super.a($$0, $$1, $$2, $$3);
+      $$4.b(etw.b);
+      $$4.a(etw.d);
+      return $$4;
    }
 
    @Override
-   public MapCodec<ery> b() {
-      return a;
+   public esc<?> a() {
+      return esc.e;
+   }
+
+   @Override
+   public String toString() {
+      return "LegacySingle[" + this.c + "]";
    }
 }

@@ -1,52 +1,37 @@
-import java.util.ArrayList;
-import java.util.List;
+public class afb implements zf<abu> {
+   public static final yw<vu, afb> a = zf.a(afb::a, afb::new);
+   private final iu b;
+   private final float c;
 
-public record afb(int c, List<akl.c<?>> d) implements zd<abs> {
-   public static final yu<wh, afb> a = zd.a(afb::b, afb::new);
-   public static final int b = 255;
-
-   private afb(wh $$0) {
-      this($$0.l(), a($$0));
+   public afb(iu $$0, float $$1) {
+      this.b = $$0;
+      this.c = $$1;
    }
 
-   private static void a(List<akl.c<?>> $$0, wh $$1) {
-      for (akl.c<?> $$2 : $$0) {
-         $$2.a($$1);
-      }
-
-      $$1.l(255);
+   private afb(vu $$0) {
+      this.b = $$0.e();
+      this.c = $$0.readFloat();
    }
 
-   private static List<akl.c<?>> a(wh $$0) {
-      List<akl.c<?>> $$1 = new ArrayList<>();
-
-      int $$2;
-      while (($$2 = $$0.readUnsignedByte()) != 255) {
-         $$1.add(akl.c.a($$0, $$2));
-      }
-
-      return $$1;
-   }
-
-   private void b(wh $$0) {
-      $$0.c(this.c);
-      a(this.d, $$0);
+   private void a(vu $$0) {
+      $$0.a(this.b);
+      $$0.a(this.c);
    }
 
    @Override
-   public zf<afb> a() {
-      return agl.aF;
+   public zh<afb> a() {
+      return agn.aD;
    }
 
-   public void a(abs $$0) {
+   public void a(abu $$0) {
       $$0.a(this);
    }
 
-   public int b() {
-      return this.c;
+   public iu b() {
+      return this.b;
    }
 
-   public List<akl.c<?>> e() {
-      return this.d;
+   public float e() {
+      return this.c;
    }
 }

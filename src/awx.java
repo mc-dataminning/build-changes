@@ -1,8 +1,98 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+public class awx {
+   public static final aww<dma> a = a("mined", mf.e);
+   public static final aww<cyu> b = a("crafted", mf.g);
+   public static final aww<cyu> c = a("used", mf.g);
+   public static final aww<cyu> d = a("broken", mf.g);
+   public static final aww<cyu> e = a("picked_up", mf.g);
+   public static final aww<cyu> f = a("dropped", mf.g);
+   public static final aww<bwm<?>> g = a("killed", mf.f);
+   public static final aww<bwm<?>> h = a("killed_by", mf.f);
+   public static final aww<alg> i = a("custom", mf.k);
+   public static final alg j = a("leave_game", awv.b);
+   public static final alg k = a("play_time", awv.e);
+   public static final alg l = a("total_world_time", awv.e);
+   public static final alg m = a("time_since_death", awv.e);
+   public static final alg n = a("time_since_rest", awv.e);
+   public static final alg o = a("sneak_time", awv.e);
+   public static final alg p = a("walk_one_cm", awv.d);
+   public static final alg q = a("crouch_one_cm", awv.d);
+   public static final alg r = a("sprint_one_cm", awv.d);
+   public static final alg s = a("walk_on_water_one_cm", awv.d);
+   public static final alg t = a("fall_one_cm", awv.d);
+   public static final alg u = a("climb_one_cm", awv.d);
+   public static final alg v = a("fly_one_cm", awv.d);
+   public static final alg w = a("walk_under_water_one_cm", awv.d);
+   public static final alg x = a("minecart_one_cm", awv.d);
+   public static final alg y = a("boat_one_cm", awv.d);
+   public static final alg z = a("pig_one_cm", awv.d);
+   public static final alg A = a("horse_one_cm", awv.d);
+   public static final alg B = a("aviate_one_cm", awv.d);
+   public static final alg C = a("swim_one_cm", awv.d);
+   public static final alg D = a("strider_one_cm", awv.d);
+   public static final alg E = a("jump", awv.b);
+   public static final alg F = a("drop", awv.b);
+   public static final alg G = a("damage_dealt", awv.c);
+   public static final alg H = a("damage_dealt_absorbed", awv.c);
+   public static final alg I = a("damage_dealt_resisted", awv.c);
+   public static final alg J = a("damage_taken", awv.c);
+   public static final alg K = a("damage_blocked_by_shield", awv.c);
+   public static final alg L = a("damage_absorbed", awv.c);
+   public static final alg M = a("damage_resisted", awv.c);
+   public static final alg N = a("deaths", awv.b);
+   public static final alg O = a("mob_kills", awv.b);
+   public static final alg P = a("animals_bred", awv.b);
+   public static final alg Q = a("player_kills", awv.b);
+   public static final alg R = a("fish_caught", awv.b);
+   public static final alg S = a("talked_to_villager", awv.b);
+   public static final alg T = a("traded_with_villager", awv.b);
+   public static final alg U = a("eat_cake_slice", awv.b);
+   public static final alg V = a("fill_cauldron", awv.b);
+   public static final alg W = a("use_cauldron", awv.b);
+   public static final alg X = a("clean_armor", awv.b);
+   public static final alg Y = a("clean_banner", awv.b);
+   public static final alg Z = a("clean_shulker_box", awv.b);
+   public static final alg aa = a("interact_with_brewingstand", awv.b);
+   public static final alg ab = a("interact_with_beacon", awv.b);
+   public static final alg ac = a("inspect_dropper", awv.b);
+   public static final alg ad = a("inspect_hopper", awv.b);
+   public static final alg ae = a("inspect_dispenser", awv.b);
+   public static final alg af = a("play_noteblock", awv.b);
+   public static final alg ag = a("tune_noteblock", awv.b);
+   public static final alg ah = a("pot_flower", awv.b);
+   public static final alg ai = a("trigger_trapped_chest", awv.b);
+   public static final alg aj = a("open_enderchest", awv.b);
+   public static final alg ak = a("enchant_item", awv.b);
+   public static final alg al = a("play_record", awv.b);
+   public static final alg am = a("interact_with_furnace", awv.b);
+   public static final alg an = a("interact_with_crafting_table", awv.b);
+   public static final alg ao = a("open_chest", awv.b);
+   public static final alg ap = a("sleep_in_bed", awv.b);
+   public static final alg aq = a("open_shulker_box", awv.b);
+   public static final alg ar = a("open_barrel", awv.b);
+   public static final alg as = a("interact_with_blast_furnace", awv.b);
+   public static final alg at = a("interact_with_smoker", awv.b);
+   public static final alg au = a("interact_with_lectern", awv.b);
+   public static final alg av = a("interact_with_campfire", awv.b);
+   public static final alg aw = a("interact_with_cartography_table", awv.b);
+   public static final alg ax = a("interact_with_loom", awv.b);
+   public static final alg ay = a("interact_with_stonecutter", awv.b);
+   public static final alg az = a("bell_ring", awv.b);
+   public static final alg aA = a("raid_trigger", awv.b);
+   public static final alg aB = a("raid_win", awv.b);
+   public static final alg aC = a("interact_with_anvil", awv.b);
+   public static final alg aD = a("interact_with_grindstone", awv.b);
+   public static final alg aE = a("target_hit", awv.b);
+   public static final alg aF = a("interact_with_smithing_table", awv.b);
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface awx {
+   private static alg a(String $$0, awv $$1) {
+      alg $$2 = alg.b($$0);
+      jr.a(mf.k, $$0, $$2);
+      i.a($$2, $$1);
+      return $$2;
+   }
+
+   private static <T> aww<T> a(String $$0, jr<T> $$1) {
+      wy $$2 = wy.c("stat_type.minecraft." + $$0);
+      return jr.a(mf.v, $$0, new aww<>($$1, $$2));
+   }
 }

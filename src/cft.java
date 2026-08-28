@@ -1,40 +1,36 @@
-import java.util.EnumSet;
+import javax.annotation.Nullable;
 
-public class cft extends cfv {
-   private final bxv a;
-   private bwz b;
-   private int c;
+public class cft<T extends bxc> extends cfr<T> {
+   private static final int i = 200;
+   private int j = 0;
 
-   public cft(bxv $$0) {
-      super($$0, false);
-      this.a = $$0;
-      this.a(EnumSet.of(cdv.a.d));
+   public cft(cso $$0, Class<T> $$1, boolean $$2, @Nullable chr.a $$3) {
+      super($$0, $$1, 500, $$2, false, $$3);
+   }
+
+   public int i() {
+      return this.j;
+   }
+
+   public void k() {
+      this.j--;
    }
 
    @Override
    public boolean b() {
-      if (this.a.q() && !this.a.gq()) {
-         bwz $$0 = this.a.e();
-         if ($$0 == null) {
-            return false;
-         } else {
-            this.b = $$0.et();
-            int $$1 = $$0.eu();
-            return $$1 != this.c && this.a(this.b, cho.a) && this.a.a(this.b, $$0);
-         }
-      } else {
+      if (this.j > 0 || !this.e.dY().h()) {
          return false;
+      } else if (!((cso)this.e).gE()) {
+         return false;
+      } else {
+         this.h();
+         return this.c != null;
       }
    }
 
    @Override
    public void d() {
-      this.e.g(this.b);
-      bwz $$0 = this.a.e();
-      if ($$0 != null) {
-         this.c = $$0.eu();
-      }
-
+      this.j = b(200);
       super.d();
    }
 }

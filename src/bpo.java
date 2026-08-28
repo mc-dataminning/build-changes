@@ -1,31 +1,45 @@
-import java.util.Optional;
+import java.util.ArrayList;
+import java.util.List;
 
-public interface bpo<S, T> {
-   Optional<T> a(bpn<S> var1);
+public interface bpo<S> {
+   void a(int var1, bpt<S> var2, Object var3);
 
-   static <S, T> bpo<S, T> a(bpr<S> $$0, bpo.a<S, T> $$1) {
-      return new bpo.c<>($$1, $$0);
+   default void a(int $$0, Object $$1) {
+      this.a($$0, bpt.b(), $$1);
    }
 
-   static <S, T> bpo<S, T> a(bpr<S> $$0, bpo.b<T> $$1) {
-      return new bpo.c<>(($$1x, $$2) -> Optional.of($$1.run($$2)), $$0);
-   }
+   void a(int var1);
 
-   @FunctionalInterface
-   public interface a<S, T> {
-      Optional<T> run(bpn<S> var1, bpp var2);
-   }
+   public static class a<S> implements bpo<S> {
+      private final List<bpp<S>> a = new ArrayList<>();
+      private int b = -1;
 
-   @FunctionalInterface
-   public interface b<T> {
-      T run(bpp var1);
-   }
+      private void b(int $$0) {
+         if ($$0 > this.b) {
+            this.b = $$0;
+            this.a.clear();
+         }
+      }
 
-   public static record c<S, T>(bpo.a<S, T> a, bpr<S> b) implements bpo<S, T> {
       @Override
-      public Optional<T> a(bpn<S> $$0) {
-         bpp $$1 = new bpp();
-         return this.b.a($$0, $$1, bpj.a) ? this.a.run($$0, $$1) : Optional.empty();
+      public void a(int $$0) {
+         this.b($$0);
+      }
+
+      @Override
+      public void a(int $$0, bpt<S> $$1, Object $$2) {
+         this.b($$0);
+         if ($$0 == this.b) {
+            this.a.add(new bpp<>($$0, $$1, $$2));
+         }
+      }
+
+      public List<bpp<S>> a() {
+         return this.a;
+      }
+
+      public int b() {
+         return this.b;
       }
    }
 }

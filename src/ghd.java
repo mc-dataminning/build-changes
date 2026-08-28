@@ -1,64 +1,44 @@
-public class ghd extends gfd<hdm> {
-   public static final gip a = gip.scaling(0.5F);
-   private static final float b = 9.0F;
-   private static final float c = 100.0F;
-   private final gig d;
-
-   public ghd(gig $$0) {
+public class ghd extends gdz {
+   public ghd(giu $$0) {
       super($$0);
-      this.d = $$0.b("bone").b("body").b("head");
    }
 
-   public static gim a() {
-      gio $$0 = new gio();
-      giq $$1 = $$0.a();
-      giq $$2 = $$1.a("bone", gil.c(), gii.a(0.0F, 5.0F, 0.0F));
-      giq $$3 = $$2.a(
-         "body",
-         gil.c()
-            .a(62, 68)
-            .a(-12.5F, -14.0F, -20.0F, 25.0F, 29.0F, 40.0F, new gik(0.0F))
-            .a(62, 0)
-            .a(-12.5F, -14.0F, -20.0F, 25.0F, 24.0F, 40.0F, new gik(0.5F))
-            .a(87, 68)
-            .a(-12.5F, 12.0F, -20.0F, 25.0F, 0.0F, 40.0F, new gik(0.0F)),
-         gii.a(0.0F, 0.0F, 0.0F)
+   private static void a(gje $$0) {
+      $$0.a(
+         "bottom",
+         giz.c().a(0, 0).a(-14.0F, -11.0F, -4.0F, 28.0F, 20.0F, 4.0F).a(0, 0).a(-14.0F, -9.0F, -8.0F, 28.0F, 16.0F, 4.0F),
+         giw.a(0.0F, -2.1F, 1.0F, 1.5708F, 0.0F, 0.0F)
       );
-      $$2.a("right_front_leg", gil.c().a(32, 87).a(-3.5F, -1.0F, -4.0F, 7.0F, 10.0F, 8.0F, new gik(0.0F)), gii.a(-7.5F, 10.0F, -15.0F));
-      $$2.a("right_mid_leg", gil.c().a(32, 105).a(-3.5F, -1.0F, -4.0F, 7.0F, 10.0F, 8.0F, new gik(0.0F)), gii.a(-7.5F, 10.0F, 0.0F));
-      $$2.a("right_hind_leg", gil.c().a(32, 123).a(-3.5F, -1.0F, -4.0F, 7.0F, 10.0F, 8.0F, new gik(0.0F)), gii.a(-7.5F, 10.0F, 15.0F));
-      $$2.a("left_front_leg", gil.c().a(0, 87).a(-3.5F, -1.0F, -4.0F, 7.0F, 10.0F, 8.0F, new gik(0.0F)), gii.a(7.5F, 10.0F, -15.0F));
-      $$2.a("left_mid_leg", gil.c().a(0, 105).a(-3.5F, -1.0F, -4.0F, 7.0F, 10.0F, 8.0F, new gik(0.0F)), gii.a(7.5F, 10.0F, 0.0F));
-      $$2.a("left_hind_leg", gil.c().a(0, 123).a(-3.5F, -1.0F, -4.0F, 7.0F, 10.0F, 8.0F, new gik(0.0F)), gii.a(7.5F, 10.0F, 15.0F));
-      giq $$4 = $$3.a(
-         "head",
-         gil.c().a(8, 15).a(-6.5F, -7.5F, -11.5F, 13.0F, 18.0F, 11.0F, new gik(0.0F)).a(8, 4).a(-6.5F, 7.5F, -11.5F, 13.0F, 0.0F, 11.0F, new gik(0.0F)),
-         gii.a(0.0F, 6.5F, -19.48F)
+      int $$1 = 20;
+      int $$2 = 7;
+      int $$3 = 6;
+      float $$4 = -5.0F;
+      $$0.a(
+         "left_paddle",
+         giz.c().a(0, 24).a(-1.0F, 0.0F, -5.0F, 2.0F, 2.0F, 18.0F).a(-1.001F, -3.0F, 8.0F, 1.0F, 6.0F, 7.0F),
+         giw.a(3.0F, -4.0F, 9.0F, 0.0F, 0.0F, (float) (Math.PI / 16))
       );
-      $$4.a("left_ear", gil.c().a(2, 0).a(0.0F, 0.0F, -3.0F, 1.0F, 19.0F, 7.0F, new gik(0.0F)), gii.a(6.51F, -7.5F, -4.51F));
-      $$4.a("right_ear", gil.c().a(48, 0).a(-1.0F, 0.0F, -3.0F, 1.0F, 19.0F, 7.0F, new gik(0.0F)), gii.a(-6.51F, -7.5F, -4.51F));
-      $$4.a("nose", gil.c().a(10, 45).a(-6.5F, -2.0F, -9.0F, 13.0F, 2.0F, 9.0F, new gik(0.0F)), gii.a(0.0F, -4.5F, -11.5F));
-      $$4.a("lower_beak", gil.c().a(10, 57).a(-6.5F, -7.0F, -8.0F, 13.0F, 12.0F, 9.0F, new gik(0.0F)), gii.a(0.0F, 2.5F, -12.5F));
-      return gim.a($$0, 192, 192);
+      $$0.a(
+         "right_paddle",
+         giz.c().a(40, 24).a(-1.0F, 0.0F, -5.0F, 2.0F, 2.0F, 18.0F).a(0.001F, -3.0F, 8.0F, 1.0F, 6.0F, 7.0F),
+         giw.a(3.0F, -4.0F, -9.0F, 0.0F, (float) Math.PI, (float) (Math.PI / 16))
+      );
    }
 
-   public void a(hdm $$0) {
-      super.a($$0);
-      this.d.e = $$0.ab * (float) (Math.PI / 180.0);
-      this.d.f = $$0.aa * (float) (Math.PI / 180.0);
-      if ($$0.a) {
-         this.a(fpd.e, $$0.ad, $$0.ae, 9.0F, 100.0F);
-      } else {
-         this.a(fpd.d, $$0.ad, $$0.ae, 9.0F, 100.0F);
-      }
+   public static gja a() {
+      gjc $$0 = new gjc();
+      gje $$1 = $$0.a();
+      a($$1);
+      return gja.a($$0, 128, 64);
+   }
 
-      this.a($$0.b, fpd.f, $$0.u);
-      this.a($$0.c, fpd.c, $$0.u);
-      this.a($$0.d, fpd.g, $$0.u);
-      this.a($$0.e, fpd.i, $$0.u);
-      this.a($$0.f, fpd.b, $$0.u);
-      if ($$0.aj) {
-         this.a(fpd.a);
-      }
+   public static gja b() {
+      gjc $$0 = new gjc();
+      gje $$1 = $$0.a();
+      a($$1);
+      $$1.a("chest_bottom", giz.c().a(0, 76).a(0.0F, 0.0F, 0.0F, 12.0F, 8.0F, 12.0F), giw.a(-2.0F, -10.1F, -6.0F, 0.0F, (float) (-Math.PI / 2), 0.0F));
+      $$1.a("chest_lid", giz.c().a(0, 59).a(0.0F, 0.0F, 0.0F, 12.0F, 4.0F, 12.0F), giw.a(-2.0F, -14.1F, -6.0F, 0.0F, (float) (-Math.PI / 2), 0.0F));
+      $$1.a("chest_lock", giz.c().a(0, 59).a(0.0F, 0.0F, 0.0F, 2.0F, 4.0F, 1.0F), giw.a(-1.0F, -11.1F, -1.0F, 0.0F, (float) (-Math.PI / 2), 0.0F));
+      return gja.a($$0, 128, 128);
    }
 }

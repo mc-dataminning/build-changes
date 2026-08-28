@@ -1,4 +1,4 @@
-public class uj extends ui {
+public class uj extends uk {
    public uj(String $$0) {
       super($$0);
    }

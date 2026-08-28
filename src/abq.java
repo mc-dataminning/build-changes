@@ -1,28 +1,12 @@
-import javax.annotation.Nullable;
+public class abq {
+   public static final zh<abp> a = a("cookie_request");
+   public static final zh<abs> b = b("cookie_response");
 
-public record abq(ale b, @Nullable byte[] c) implements zd<abp> {
-   public static final yu<vs, abq> a = zd.a(abq::a, abq::new);
-
-   private abq(vs $$0) {
-      this($$0.q(), $$0.c(zs.b));
+   private static <T extends zf<abo>> zh<T> a(String $$0) {
+      return new zh<>(zg.b, alg.b($$0));
    }
 
-   private void a(vs $$0) {
-      $$0.a(this.b);
-      $$0.a(this.c, zs.b);
-   }
-
-   @Override
-   public zf<abq> a() {
-      return abo.b;
-   }
-
-   public void a(abp $$0) {
-      $$0.a(this);
-   }
-
-   @Nullable
-   public byte[] e() {
-      return this.c;
+   private static <T extends zf<abr>> zh<T> b(String $$0) {
+      return new zh<>(zg.a, alg.b($$0));
    }
 }

@@ -1,199 +1,132 @@
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableList.Builder;
-import com.mojang.logging.LogUtils;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
-import java.util.stream.Stream;
-import org.slf4j.Logger;
+import java.util.Set;
+import java.util.function.Predicate;
 
-public interface ezz {
-   MapCodec<ezz> a = a(Integer.MAX_VALUE);
+public class ezz extends fam {
+   public static final MapCodec<ezz> a = RecordCodecBuilder.mapCodec(
+      $$0 -> a($$0)
+            .and(
+               $$0.group(
+                  ezz.b.b.fieldOf("source").forGetter($$0x -> $$0x.b),
+                  ki.a.listOf().optionalFieldOf("include").forGetter($$0x -> $$0x.c),
+                  ki.a.listOf().optionalFieldOf("exclude").forGetter($$0x -> $$0x.d)
+               )
+            )
+            .apply($$0, ezz::new)
+   );
+   private final ezz.b b;
+   private final Optional<List<ki<?>>> c;
+   private final Optional<List<ki<?>>> d;
+   private final Predicate<ki<?>> e;
 
-   static MapCodec<ezz> a(int $$0) {
-      return ezz.f.e.dispatchMap("mode", ezz::a, $$0x -> $$0x.g).validate($$1 -> {
-         if ($$1 instanceof ezz.d $$2 && $$2.c().isPresent()) {
-            int $$3 = $$2.c().get();
-            if ($$3 > $$0) {
-               return DataResult.error(() -> "Size value too large: " + $$3 + ", max size is " + $$0);
-            }
+   ezz(List<fci> $$0, ezz.b $$1, Optional<List<ki<?>>> $$2, Optional<List<ki<?>>> $$3) {
+      super($$0);
+      this.b = $$1;
+      this.c = $$2.map(List::copyOf);
+      this.d = $$3.map(List::copyOf);
+      List<Predicate<ki<?>>> $$4 = new ArrayList<>(2);
+      $$3.ifPresent($$1x -> $$4.add($$1xx -> !$$1x.contains($$1xx)));
+      $$2.ifPresent($$1x -> $$4.add($$1x::contains));
+      this.e = af.a($$4);
+   }
+
+   @Override
+   public fao<ezz> b() {
+      return fap.J;
+   }
+
+   @Override
+   public Set<bax<?>> a() {
+      return this.b.a();
+   }
+
+   @Override
+   public cyy a(cyy $$0, eyz $$1) {
+      kg $$2 = this.b.a($$1);
+      $$0.b($$2.a(this.e));
+      return $$0;
+   }
+
+   public static ezz.a a(ezz.b $$0) {
+      return new ezz.a($$0);
+   }
+
+   public static class a extends fam.a<ezz.a> {
+      private final ezz.b a;
+      private Optional<Builder<ki<?>>> b = Optional.empty();
+      private Optional<Builder<ki<?>>> c = Optional.empty();
+
+      a(ezz.b $$0) {
+         this.a = $$0;
+      }
+
+      public ezz.a a(ki<?> $$0) {
+         if (this.b.isEmpty()) {
+            this.b = Optional.of(ImmutableList.builder());
          }
 
-         return DataResult.success($$1);
-      });
-   }
-
-   ezz.f a();
-
-   default <T> List<T> a(List<T> $$0, List<T> $$1) {
-      return this.a($$0, $$1, Integer.MAX_VALUE);
-   }
-
-   <T> List<T> a(List<T> var1, List<T> var2, int var3);
-
-   public static class a implements ezz {
-      private static final Logger d = LogUtils.getLogger();
-      public static final ezz.a b = new ezz.a();
-      public static final MapCodec<ezz.a> c = MapCodec.unit(() -> b);
-
-      private a() {
+         this.b.get().add($$0);
+         return this;
       }
 
-      @Override
-      public ezz.f a() {
-         return ezz.f.d;
-      }
-
-      @Override
-      public <T> List<T> a(List<T> $$0, List<T> $$1, int $$2) {
-         if ($$0.size() + $$1.size() > $$2) {
-            d.error("Contents overflow in section append");
-            return $$0;
-         } else {
-            return Stream.concat($$0.stream(), $$1.stream()).toList();
+      public ezz.a b(ki<?> $$0) {
+         if (this.c.isEmpty()) {
+            this.c = Optional.of(ImmutableList.builder());
          }
+
+         this.c.get().add($$0);
+         return this;
+      }
+
+      protected ezz.a a() {
+         return this;
+      }
+
+      @Override
+      public fan b() {
+         return new ezz(this.g(), this.a, this.b.map(Builder::build), this.c.map(Builder::build));
       }
    }
 
-   public static record b(int c) implements ezz {
-      private static final Logger d = LogUtils.getLogger();
-      public static final MapCodec<ezz.b> b = RecordCodecBuilder.mapCodec(
-         $$0 -> $$0.group(ays.l.optionalFieldOf("offset", 0).forGetter(ezz.b::b)).apply($$0, ezz.b::new)
-      );
+   public static enum b implements bak {
+      a("block_entity");
 
-      @Override
-      public ezz.f a() {
-         return ezz.f.c;
+      public static final Codec<ezz.b> b = bak.b(ezz.b::values);
+      private final String c;
+
+      private b(final String $$0) {
+         this.c = $$0;
       }
 
-      @Override
-      public <T> List<T> a(List<T> $$0, List<T> $$1, int $$2) {
-         int $$3 = $$0.size();
-         if (this.c > $$3) {
-            d.error("Cannot insert when offset is out of bounds");
-            return $$0;
-         } else if ($$3 + $$1.size() > $$2) {
-            d.error("Contents overflow in section insertion");
-            return $$0;
-         } else {
-            Builder<T> $$4 = ImmutableList.builder();
-            $$4.addAll($$0.subList(0, this.c));
-            $$4.addAll($$1);
-            $$4.addAll($$0.subList(this.c, $$3));
-            return $$4.build();
-         }
-      }
-
-      public int b() {
-         return this.c;
-      }
-   }
-
-   public static class c implements ezz {
-      public static final ezz.c b = new ezz.c();
-      public static final MapCodec<ezz.c> c = MapCodec.unit(() -> b);
-
-      private c() {
-      }
-
-      @Override
-      public ezz.f a() {
-         return ezz.f.a;
-      }
-
-      @Override
-      public <T> List<T> a(List<T> $$0, List<T> $$1, int $$2) {
-         return $$1;
-      }
-   }
-
-   public static record d(int c, Optional<Integer> d) implements ezz {
-      private static final Logger e = LogUtils.getLogger();
-      public static final MapCodec<ezz.d> b = RecordCodecBuilder.mapCodec(
-         $$0 -> $$0.group(ays.l.optionalFieldOf("offset", 0).forGetter(ezz.d::b), ays.l.optionalFieldOf("size").forGetter(ezz.d::c)).apply($$0, ezz.d::new)
-      );
-
-      public d(int $$0) {
-         this($$0, Optional.empty());
-      }
-
-      @Override
-      public ezz.f a() {
-         return ezz.f.b;
-      }
-
-      @Override
-      public <T> List<T> a(List<T> $$0, List<T> $$1, int $$2) {
-         int $$3 = $$0.size();
-         if (this.c > $$3) {
-            e.error("Cannot replace when offset is out of bounds");
-            return $$0;
-         } else {
-            Builder<T> $$4 = ImmutableList.builder();
-            $$4.addAll($$0.subList(0, this.c));
-            $$4.addAll($$1);
-            int $$5 = this.c + this.d.orElse($$1.size());
-            if ($$5 < $$3) {
-               $$4.addAll($$0.subList($$5, $$3));
-            }
-
-            List<T> $$6 = $$4.build();
-            if ($$6.size() > $$2) {
-               e.error("Contents overflow in section replacement");
-               return $$0;
-            } else {
-               return $$6;
-            }
+      public kg a(eyz $$0) {
+         switch (this) {
+            case a:
+               dwx $$1 = $$0.c(fbt.h);
+               return $$1 != null ? $$1.q() : kg.a;
+            default:
+               throw new MatchException(null, null);
          }
       }
 
-      public int b() {
-         return this.c;
-      }
-
-      public Optional<Integer> c() {
-         return this.d;
-      }
-   }
-
-   public static record e<T>(List<T> a, ezz b) {
-      public static <T> Codec<ezz.e<T>> a(Codec<T> $$0, int $$1) {
-         return RecordCodecBuilder.create(
-            $$2 -> $$2.group($$0.sizeLimitedListOf($$1).fieldOf("values").forGetter($$0xx -> $$0xx.a), ezz.a($$1).forGetter($$0xx -> $$0xx.b))
-                  .apply($$2, ezz.e::new)
-         );
-      }
-
-      public List<T> a(List<T> $$0) {
-         return this.b.a($$0, this.a);
-      }
-   }
-
-   public static enum f implements bai {
-      a("replace_all", ezz.c.c),
-      b("replace_section", ezz.d.b),
-      c("insert", ezz.b.b),
-      d("append", ezz.a.c);
-
-      public static final Codec<ezz.f> e = bai.a(ezz.f::values);
-      private final String f;
-      final MapCodec<? extends ezz> g;
-
-      private f(final String $$0, final MapCodec<? extends ezz> $$1) {
-         this.f = $$0;
-         this.g = $$1;
-      }
-
-      public MapCodec<? extends ezz> a() {
-         return this.g;
+      public Set<bax<?>> a() {
+         switch (this) {
+            case a:
+               return Set.of(fbt.h);
+            default:
+               throw new MatchException(null, null);
+         }
       }
 
       @Override
       public String c() {
-         return this.f;
+         return this.c;
       }
    }
 }

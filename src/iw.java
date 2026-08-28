@@ -20,15 +20,15 @@ public class iw<T> {
    }
 
    public static class a {
-      private final Map<ald<? extends jr<?>>, iw<?>> a = new HashMap<>();
+      private final Map<alf<? extends jr<?>>, iw<?>> a = new HashMap<>();
 
-      public <T> iw.a a(ald<? extends jr<? extends T>> $$0, Codec<T> $$1) {
+      public <T> iw.a a(alf<? extends jr<? extends T>> $$0, Codec<T> $$1) {
          this.a.put($$0, new iw($$1));
          return this;
       }
 
       @Nullable
-      public <T> iw<T> a(ald<? extends jr<? extends T>> $$0) {
+      public <T> iw<T> a(alf<? extends jr<? extends T>> $$0) {
          return (iw<T>)this.a.get($$0);
       }
    }

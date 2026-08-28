@@ -13,11 +13,11 @@ import org.apache.commons.io.FilenameUtils;
 
 public class fn<T> implements ArgumentType<Collection<je.c<T>>> {
    private static final Collection<String> b = List.of("minecraft:*", "*:asset", "*");
-   public static final Dynamic2CommandExceptionType a = new Dynamic2CommandExceptionType(($$0, $$1) -> ww.b("argument.resource_selector.not_found", $$0, $$1));
-   final ald<? extends jr<T>> c;
+   public static final Dynamic2CommandExceptionType a = new Dynamic2CommandExceptionType(($$0, $$1) -> wy.b("argument.resource_selector.not_found", $$0, $$1));
+   final alf<? extends jr<T>> c;
    private final jg<T> d;
 
-   fn(ee $$0, ald<? extends jr<T>> $$1) {
+   fn(ee $$0, alf<? extends jr<T>> $$1) {
       this.c = $$1;
       this.d = $$0.e($$1);
    }
@@ -48,27 +48,27 @@ public class fn<T> implements ArgumentType<Collection<je.c<T>>> {
    }
 
    private static boolean a(char $$0) {
-      return ale.a($$0) || $$0 == '*' || $$0 == '?';
+      return alg.a($$0) || $$0 == '*' || $$0 == '?';
    }
 
    private static String a(String $$0) {
       return !$$0.contains(":") ? "minecraft:" + $$0 : $$0;
    }
 
-   private static boolean a(String $$0, ale $$1) {
+   private static boolean a(String $$0, alg $$1) {
       return FilenameUtils.wildcardMatch($$1.toString(), $$0);
    }
 
-   public static <T> fn<T> a(ee $$0, ald<? extends jr<T>> $$1) {
+   public static <T> fn<T> a(ee $$0, alf<? extends jr<T>> $$1) {
       return new fn<>($$0, $$1);
    }
 
-   public static <T> Collection<je.c<T>> a(CommandContext<ei> $$0, String $$1, ald<? extends jr<T>> $$2) {
+   public static <T> Collection<je.c<T>> a(CommandContext<ei> $$0, String $$1, alf<? extends jr<T>> $$2) {
       return (Collection<je.c<T>>)$$0.getArgument($$1, Collection.class);
    }
 
    public <S> CompletableFuture<Suggestions> listSuggestions(CommandContext<S> $$0, SuggestionsBuilder $$1) {
-      return en.b(this.d.c_().map(ald::a).map(ale::toString), $$1);
+      return en.b(this.d.c_().map(alf::a).map(alg::toString), $$1);
    }
 
    public Collection<String> getExamples() {
@@ -76,11 +76,11 @@ public class fn<T> implements ArgumentType<Collection<je.c<T>>> {
    }
 
    public static class a<T> implements ie<fn<T>, fn.a<T>.a> {
-      public void a(fn.a<T>.a $$0, vs $$1) {
+      public void a(fn.a<T>.a $$0, vu $$1) {
          $$1.b($$0.b);
       }
 
-      public fn.a<T>.a a(vs $$0) {
+      public fn.a<T>.a a(vu $$0) {
          return new fn.a.a($$0.r());
       }
 
@@ -93,9 +93,9 @@ public class fn<T> implements ArgumentType<Collection<je.c<T>>> {
       }
 
       public final class a implements ie.a<fn<T>> {
-         final ald<? extends jr<T>> b;
+         final alf<? extends jr<T>> b;
 
-         a(final ald<? extends jr<T>> $$1) {
+         a(final alf<? extends jr<T>> $$1) {
             this.b = $$1;
          }
 

@@ -1,81 +1,51 @@
-import java.util.Optional;
+public enum gpf {
+   a(new gpf.b(gpf.a.f, gpf.a.e, gpf.a.a), new gpf.b(gpf.a.f, gpf.a.e, gpf.a.d), new gpf.b(gpf.a.c, gpf.a.e, gpf.a.d), new gpf.b(gpf.a.c, gpf.a.e, gpf.a.a)),
+   b(new gpf.b(gpf.a.f, gpf.a.b, gpf.a.d), new gpf.b(gpf.a.f, gpf.a.b, gpf.a.a), new gpf.b(gpf.a.c, gpf.a.b, gpf.a.a), new gpf.b(gpf.a.c, gpf.a.b, gpf.a.d)),
+   c(new gpf.b(gpf.a.c, gpf.a.b, gpf.a.d), new gpf.b(gpf.a.c, gpf.a.e, gpf.a.d), new gpf.b(gpf.a.f, gpf.a.e, gpf.a.d), new gpf.b(gpf.a.f, gpf.a.b, gpf.a.d)),
+   d(new gpf.b(gpf.a.f, gpf.a.b, gpf.a.a), new gpf.b(gpf.a.f, gpf.a.e, gpf.a.a), new gpf.b(gpf.a.c, gpf.a.e, gpf.a.a), new gpf.b(gpf.a.c, gpf.a.b, gpf.a.a)),
+   e(new gpf.b(gpf.a.f, gpf.a.b, gpf.a.d), new gpf.b(gpf.a.f, gpf.a.e, gpf.a.d), new gpf.b(gpf.a.f, gpf.a.e, gpf.a.a), new gpf.b(gpf.a.f, gpf.a.b, gpf.a.a)),
+   f(new gpf.b(gpf.a.c, gpf.a.b, gpf.a.a), new gpf.b(gpf.a.c, gpf.a.e, gpf.a.a), new gpf.b(gpf.a.c, gpf.a.e, gpf.a.d), new gpf.b(gpf.a.c, gpf.a.b, gpf.a.d));
 
-public class gpf implements gpd {
-   private final gpd.a a;
-   private final gpd.a b = gpd.a(new fin(1536));
-   private int c = 255;
-   private int d = 255;
-   private int e = 255;
-   private int f = 255;
+   private static final gpf[] g = af.a(new gpf[6], $$0 -> {
+      $$0[gpf.a.e] = a;
+      $$0[gpf.a.b] = b;
+      $$0[gpf.a.d] = c;
+      $$0[gpf.a.a] = d;
+      $$0[gpf.a.f] = e;
+      $$0[gpf.a.c] = f;
+   });
+   private final gpf.b[] h;
 
-   public gpf(gpd.a $$0) {
-      this.a = $$0;
+   public static gpf a(ja $$0) {
+      return g[$$0.d()];
    }
 
-   @Override
-   public fiu getBuffer(gpn $$0) {
-      if ($$0.V()) {
-         fiu $$1 = this.b.getBuffer($$0);
-         return new gpf.a($$1, this.c, this.d, this.e, this.f);
-      } else {
-         fiu $$2 = this.a.getBuffer($$0);
-         Optional<gpn> $$3 = $$0.U();
-         if ($$3.isPresent()) {
-            fiu $$4 = this.b.getBuffer($$3.get());
-            gpf.a $$5 = new gpf.a($$4, this.c, this.d, this.e, this.f);
-            return fix.a($$5, $$2);
-         } else {
-            return $$2;
-         }
-      }
+   private gpf(final gpf.b... $$0) {
+      this.h = $$0;
    }
 
-   public void a(int $$0, int $$1, int $$2, int $$3) {
-      this.c = $$0;
-      this.d = $$1;
-      this.e = $$2;
-      this.f = $$3;
+   public gpf.b a(int $$0) {
+      return this.h[$$0];
    }
 
-   public void a() {
-      this.b.b();
+   public static final class a {
+      public static final int a = ja.d.d();
+      public static final int b = ja.b.d();
+      public static final int c = ja.f.d();
+      public static final int d = ja.c.d();
+      public static final int e = ja.a.d();
+      public static final int f = ja.e.d();
    }
 
-   static record a(fiu a, int b) implements fiu {
-      public a(fiu $$0, int $$1, int $$2, int $$3, int $$4) {
-         this($$0, axu.a($$4, $$1, $$2, $$3));
-      }
+   public static class b {
+      public final int a;
+      public final int b;
+      public final int c;
 
-      @Override
-      public fiu a(float $$0, float $$1, float $$2) {
-         this.a.a($$0, $$1, $$2).a(this.b);
-         return this;
-      }
-
-      @Override
-      public fiu a(int $$0, int $$1, int $$2, int $$3) {
-         return this;
-      }
-
-      @Override
-      public fiu a(float $$0, float $$1) {
-         this.a.a($$0, $$1);
-         return this;
-      }
-
-      @Override
-      public fiu a(int $$0, int $$1) {
-         return this;
-      }
-
-      @Override
-      public fiu b(int $$0, int $$1) {
-         return this;
-      }
-
-      @Override
-      public fiu b(float $$0, float $$1, float $$2) {
-         return this;
+      b(int $$0, int $$1, int $$2) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
       }
    }
 }

@@ -1,40 +1,20 @@
-import javax.annotation.Nullable;
+public record acv(xk.a b) implements zf<abu> {
+   public static final yw<vu, acv> a = zf.a(acv::a, acv::new);
 
-public class acv implements zd<abs> {
-   public static final yu<vs, acv> a = zd.a(acv::a, acv::new);
-   private final int b;
-   private final byte c;
-
-   public acv(bwa $$0, byte $$1) {
-      this.b = $$0.ar();
-      this.c = $$1;
+   private acv(vu $$0) {
+      this(xk.a.a($$0));
    }
 
-   private acv(vs $$0) {
-      this.b = $$0.readInt();
-      this.c = $$0.readByte();
-   }
-
-   private void a(vs $$0) {
-      $$0.q(this.b);
-      $$0.l(this.c);
+   private void a(vu $$0) {
+      xk.a.a($$0, this.b);
    }
 
    @Override
-   public zf<acv> a() {
-      return agl.C;
+   public zh<acv> a() {
+      return agn.A;
    }
 
-   public void a(abs $$0) {
+   public void a(abu $$0) {
       $$0.a(this);
-   }
-
-   @Nullable
-   public bwa a(dip $$0) {
-      return $$0.a(this.b);
-   }
-
-   public byte b() {
-      return this.c;
    }
 }

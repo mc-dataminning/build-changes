@@ -1,21 +1,38 @@
-public class gyt extends gwb<cop, heh, ghy> {
-   private static final ale a = ale.b("textures/entity/piglin/zombified_piglin.png");
+public class gyt extends gup<cld, hcg, gea<hcg>> {
+   private final alg a;
 
-   public gyt(gvk.a $$0, gie $$1, gie $$2, gie $$3, gie $$4, gie $$5, gie $$6) {
-      super($$0, new ghy($$0.a($$1)), new ghy($$0.a($$2)), 0.5F, gxa.a);
-      this.a(new gzn<>(this, new gfq($$0.a($$3)), new gfq($$0.a($$4)), new gfq($$0.a($$5)), new gfq($$0.a($$5)), $$0.h()));
+   public gyt(gvz.a $$0, gyt.a $$1) {
+      super($$0, new ggc($$0.a($$1.d)), new ggc($$0.a($$1.e)));
+      this.a = $$1.c;
+      this.a(new hap<>(this, $$0.h(), $$1.f, $$0x -> $$0x.b, new gfr($$0.a($$1.g)), new gfr($$0.a($$1.h))));
    }
 
-   public ale a(heh $$0) {
-      return a;
+   public alg a(hcg $$0) {
+      return this.a;
    }
 
-   public heh b() {
-      return new heh();
+   public hcg b() {
+      return new hcg();
    }
 
-   public void a(cop $$0, heh $$1, float $$2) {
-      super.a($$0, $$1, $$2);
-      $$1.a = $$0.gh();
+   public static enum a {
+      a(alg.b("textures/entity/horse/horse_skeleton.png"), git.cV, git.cW, hkv.d.n, git.cX, git.cY),
+      b(alg.b("textures/entity/horse/horse_zombie.png"), git.ei, git.ej, hkv.d.m, git.ek, git.el);
+
+      final alg c;
+      final gis d;
+      final gis e;
+      final hkv.d f;
+      final gis g;
+      final gis h;
+
+      private a(final alg $$0, final gis $$1, final gis $$2, final hkv.d $$3, final gis $$4, final gis $$5) {
+         this.c = $$0;
+         this.d = $$1;
+         this.e = $$2;
+         this.f = $$3;
+         this.g = $$4;
+         this.h = $$5;
+      }
    }
 }

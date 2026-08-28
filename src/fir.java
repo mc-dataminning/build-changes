@@ -1,67 +1,86 @@
-import org.joml.Matrix3f;
-import org.joml.Matrix4f;
-import org.joml.Vector3f;
+import com.mojang.blaze3d.platform.GlStateManager;
+import com.mojang.blaze3d.systems.RenderSystem;
+import javax.annotation.Nullable;
+import org.apache.commons.lang3.StringUtils;
 
-public class fir implements fiu {
-   private final fiu a;
-   private final Matrix4f b;
-   private final Matrix3f c;
-   private final float d;
-   private final Vector3f e = new Vector3f();
-   private final Vector3f f = new Vector3f();
-   private float g;
-   private float h;
-   private float i;
+public class fir implements AutoCloseable {
+   private static final int a = -1;
+   private final alg b;
+   private int c;
 
-   public fir(fiu $$0, fiq.a $$1, float $$2) {
-      this.a = $$0;
-      this.b = new Matrix4f($$1.a()).invert();
-      this.c = new Matrix3f($$1.b()).invert();
-      this.d = $$2;
+   private fir(int $$0, alg $$1) {
+      this.b = $$1;
+      this.c = $$0;
+   }
+
+   public static fir a(alg $$0, fir.a $$1, String $$2) throws gqj.b {
+      RenderSystem.assertOnRenderThread();
+      int $$3 = GlStateManager.glCreateShader($$1.b());
+      GlStateManager.glShaderSource($$3, $$2);
+      GlStateManager.glCompileShader($$3);
+      if (GlStateManager.glGetShaderi($$3, 35713) == 0) {
+         String $$4 = StringUtils.trim(GlStateManager.glGetShaderInfoLog($$3, 32768));
+         throw new gqj.b("Couldn't compile " + $$1.a() + " shader (" + $$0 + ") : " + $$4);
+      } else {
+         return new fir($$3, $$0);
+      }
    }
 
    @Override
-   public fiu a(float $$0, float $$1, float $$2) {
-      this.g = $$0;
-      this.h = $$1;
-      this.i = $$2;
-      this.a.a($$0, $$1, $$2);
-      return this;
+   public void close() {
+      if (this.c == -1) {
+         throw new IllegalStateException("Already closed");
+      } else {
+         RenderSystem.assertOnRenderThread();
+         GlStateManager.glDeleteShader(this.c);
+         this.c = -1;
+      }
    }
 
-   @Override
-   public fiu a(int $$0, int $$1, int $$2, int $$3) {
-      this.a.a(-1);
-      return this;
+   public alg a() {
+      return this.b;
    }
 
-   @Override
-   public fiu a(float $$0, float $$1) {
-      return this;
+   public int b() {
+      return this.c;
    }
 
-   @Override
-   public fiu a(int $$0, int $$1) {
-      this.a.a($$0, $$1);
-      return this;
-   }
+   public static enum a {
+      a("vertex", ".vsh", 35633),
+      b("fragment", ".fsh", 35632);
 
-   @Override
-   public fiu b(int $$0, int $$1) {
-      this.a.b($$0, $$1);
-      return this;
-   }
+      private static final fir.a[] c = values();
+      private final String d;
+      private final String e;
+      private final int f;
 
-   @Override
-   public fiu b(float $$0, float $$1, float $$2) {
-      this.a.b($$0, $$1, $$2);
-      Vector3f $$3 = this.c.transform($$0, $$1, $$2, this.f);
-      ja $$4 = ja.a($$3.x(), $$3.y(), $$3.z());
-      Vector3f $$5 = this.b.transformPosition(this.g, this.h, this.i, this.e);
-      $$5.rotateY((float) Math.PI);
-      $$5.rotateX((float) (-Math.PI / 2));
-      $$5.rotate($$4.b());
-      this.a.a(-$$5.x() * this.d, -$$5.y() * this.d);
-      return this;
+      private a(final String $$0, final String $$1, final int $$2) {
+         this.d = $$0;
+         this.e = $$1;
+         this.f = $$2;
+      }
+
+      @Nullable
+      public static fir.a a(alg $$0) {
+         for (fir.a $$1 : c) {
+            if ($$0.a().endsWith($$1.e)) {
+               return $$1;
+            }
+         }
+
+         return null;
+      }
+
+      public String a() {
+         return this.d;
+      }
+
+      public int b() {
+         return this.f;
+      }
+
+      public akz c() {
+         return new akz("shaders", this.e);
+      }
    }
 }

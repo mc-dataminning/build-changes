@@ -1,29 +1,80 @@
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableList.Builder;
+import com.mojang.datafixers.Products.P1;
+import com.mojang.serialization.codecs.RecordCodecBuilder.Instance;
+import com.mojang.serialization.codecs.RecordCodecBuilder.Mu;
 import java.util.List;
+import java.util.function.Function;
+import java.util.function.Predicate;
 
-public class fam extends faa {
-   public static final MapCodec<fam> a = RecordCodecBuilder.mapCodec($$0 -> a($$0).and(uv.j.fieldOf("tag").forGetter($$0x -> $$0x.b)).apply($$0, fam::new));
-   private final tx b;
+public abstract class fam implements fan {
+   protected final List<fci> g;
+   private final Predicate<eyz> a;
 
-   private fam(List<fbw> $$0, tx $$1) {
-      super($$0);
-      this.b = $$1;
+   protected fam(List<fci> $$0) {
+      this.g = $$0;
+      this.a = af.a($$0);
    }
 
    @Override
-   public fac<fam> b() {
-      return fad.j;
+   public abstract fao<? extends fam> b();
+
+   protected static <T extends fam> P1<Mu<T>, List<fci>> a(Instance<T> $$0) {
+      return $$0.group(fci.e.listOf().optionalFieldOf("conditions", List.of()).forGetter($$0x -> $$0x.g));
    }
+
+   public final cyy b(cyy $$0, eyz $$1) {
+      return this.a.test($$1) ? this.a($$0, $$1) : $$0;
+   }
+
+   protected abstract cyy a(cyy var1, eyz var2);
 
    @Override
-   public cys a(cys $$0, eyn $$1) {
-      dba.a(kj.b, $$0, $$0x -> $$0x.a(this.b));
-      return $$0;
+   public void a(ezf $$0) {
+      fan.super.a($$0);
+
+      for (int $$1 = 0; $$1 < this.g.size(); $$1++) {
+         this.g.get($$1).a($$0.a(".conditions[" + $$1 + "]"));
+      }
    }
 
-   @Deprecated
-   public static faa.a<?> a(tx $$0) {
-      return a($$1 -> new fam($$1, $$0));
+   protected static fam.a<?> a(Function<List<fci>, fan> $$0) {
+      return new fam.b($$0);
+   }
+
+   public abstract static class a<T extends fam.a<T>> implements fan.a, fca<T> {
+      private final Builder<fci> a = ImmutableList.builder();
+
+      public T a(fci.a $$0) {
+         this.a.add($$0.build());
+         return this.c();
+      }
+
+      public final T f() {
+         return this.c();
+      }
+
+      protected abstract T c();
+
+      protected List<fci> g() {
+         return this.a.build();
+      }
+   }
+
+   static final class b extends fam.a<fam.b> {
+      private final Function<List<fci>, fan> a;
+
+      public b(Function<List<fci>, fan> $$0) {
+         this.a = $$0;
+      }
+
+      protected fam.b a() {
+         return this;
+      }
+
+      @Override
+      public fan b() {
+         return this.a.apply(this.g());
+      }
    }
 }

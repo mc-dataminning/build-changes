@@ -1,29 +1,30 @@
-public record agc(float b, boolean c) implements zd<abs> {
-   public static final yu<vs, agc> a = zd.a(agc::a, agc::new);
+import java.util.Set;
 
-   private agc(vs $$0) {
-      this($$0.readFloat(), $$0.readBoolean());
-   }
+public record agc(int b, bxp c, Set<bxq> d, boolean e) implements zf<abu> {
+   public static final yw<vu, agc> a = yw.a(yu.h, agc::b, bxp.a, agc::e, bxq.m, agc::f, yu.b, agc::g, agc::new);
 
-   public static agc a(buh $$0) {
-      return new agc($$0.f(), $$0.l());
-   }
-
-   private void a(vs $$0) {
-      $$0.a(this.b);
-      $$0.a(this.c);
+   public static agc a(int $$0, bxp $$1, Set<bxq> $$2, boolean $$3) {
+      return new agc($$0, $$1, $$2, $$3);
    }
 
    @Override
-   public zf<agc> a() {
-      return agl.cq;
+   public zh<agc> a() {
+      return agn.bd;
    }
 
-   public void a(abs $$0) {
+   public void a(abu $$0) {
       $$0.a(this);
    }
 
-   public boolean e() {
+   public bxp e() {
       return this.c;
+   }
+
+   public Set<bxq> f() {
+      return this.d;
+   }
+
+   public boolean g() {
+      return this.e;
    }
 }

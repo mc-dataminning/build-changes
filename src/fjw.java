@@ -1,50 +1,50 @@
-import com.google.common.collect.Maps;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.mojang.logging.LogUtils;
-import java.util.Date;
-import java.util.Map;
-import java.util.Map.Entry;
-import org.slf4j.Logger;
+public class fjw {
+   private volatile long a;
+   private volatile long b;
+   private long c = af.c();
+   private long d;
+   private long e;
 
-public class fjw extends fkv {
-   private static final Logger f = LogUtils.getLogger();
-   public String a;
-   public Date b;
-   public long c;
-   private boolean g;
-   public Map<String, String> d = Maps.newHashMap();
-   public Map<String, String> e = Maps.newHashMap();
+   public void a(long $$0) {
+      this.b = $$0;
+   }
 
-   public static fjw a(JsonElement $$0) {
-      JsonObject $$1 = $$0.getAsJsonObject();
-      fjw $$2 = new fjw();
+   public long a() {
+      return this.b;
+   }
 
-      try {
-         $$2.a = fmr.b("backupId", $$1, "");
-         $$2.b = fmr.b("lastModifiedDate", $$1);
-         $$2.c = fmr.a("size", $$1, 0L);
-         if ($$1.has("metadata")) {
-            JsonObject $$3 = $$1.getAsJsonObject("metadata");
+   public long b() {
+      return this.a;
+   }
 
-            for (Entry<String, JsonElement> $$5 : $$3.entrySet()) {
-               if (!$$5.getValue().isJsonNull()) {
-                  $$2.d.put($$5.getKey(), $$5.getValue().getAsString());
-               }
-            }
-         }
-      } catch (Exception var7) {
-         f.error("Could not parse Backup: {}", var7.getMessage());
+   public void b(long $$0) {
+      this.a += $$0;
+   }
+
+   public boolean c() {
+      return this.a != 0L;
+   }
+
+   public boolean d() {
+      return this.a == this.a();
+   }
+
+   public double e() {
+      return Math.min((double)this.b() / (double)this.a(), 1.0);
+   }
+
+   public void f() {
+      long $$0 = af.c();
+      long $$1 = $$0 - this.c;
+      if ($$1 >= 1000L) {
+         long $$2 = this.a;
+         this.e = 1000L * ($$2 - this.d) / $$1;
+         this.d = $$2;
+         this.c = $$0;
       }
-
-      return $$2;
    }
 
-   public boolean a() {
-      return this.g;
-   }
-
-   public void a(boolean $$0) {
-      this.g = $$0;
+   public long g() {
+      return this.e;
    }
 }

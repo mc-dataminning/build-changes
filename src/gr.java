@@ -11,8 +11,8 @@ import java.util.Collections;
 
 public class gr implements ArgumentType<gr.a> {
    private static final Collection<String> a = Arrays.asList("foo", "foo:bar", "#foo");
-   private static final DynamicCommandExceptionType b = new DynamicCommandExceptionType($$0 -> ww.b("arguments.function.tag.unknown", $$0));
-   private static final DynamicCommandExceptionType c = new DynamicCommandExceptionType($$0 -> ww.b("arguments.function.unknown", $$0));
+   private static final DynamicCommandExceptionType b = new DynamicCommandExceptionType($$0 -> wy.b("arguments.function.tag.unknown", $$0));
+   private static final DynamicCommandExceptionType c = new DynamicCommandExceptionType($$0 -> wy.b("arguments.function.unknown", $$0));
 
    public static gr a() {
       return new gr();
@@ -21,7 +21,7 @@ public class gr implements ArgumentType<gr.a> {
    public gr.a a(StringReader $$0) throws CommandSyntaxException {
       if ($$0.canRead() && $$0.peek() == '#') {
          $$0.skip();
-         final ale $$1 = ale.a($$0);
+         final alg $$1 = alg.a($$0);
          return new gr.a() {
             @Override
             public Collection<hw<ei>> a(CommandContext<ei> $$0) throws CommandSyntaxException {
@@ -29,17 +29,17 @@ public class gr implements ArgumentType<gr.a> {
             }
 
             @Override
-            public Pair<ale, Either<hw<ei>, Collection<hw<ei>>>> b(CommandContext<ei> $$0) throws CommandSyntaxException {
+            public Pair<alg, Either<hw<ei>, Collection<hw<ei>>>> b(CommandContext<ei> $$0) throws CommandSyntaxException {
                return Pair.of($$1, Either.right(gr.b($$0, $$1)));
             }
 
             @Override
-            public Pair<ale, Collection<hw<ei>>> c(CommandContext<ei> $$0) throws CommandSyntaxException {
+            public Pair<alg, Collection<hw<ei>>> c(CommandContext<ei> $$0) throws CommandSyntaxException {
                return Pair.of($$1, gr.b($$0, $$1));
             }
          };
       } else {
-         final ale $$2 = ale.a($$0);
+         final alg $$2 = alg.a($$0);
          return new gr.a() {
             @Override
             public Collection<hw<ei>> a(CommandContext<ei> $$0) throws CommandSyntaxException {
@@ -47,23 +47,23 @@ public class gr implements ArgumentType<gr.a> {
             }
 
             @Override
-            public Pair<ale, Either<hw<ei>, Collection<hw<ei>>>> b(CommandContext<ei> $$0) throws CommandSyntaxException {
+            public Pair<alg, Either<hw<ei>, Collection<hw<ei>>>> b(CommandContext<ei> $$0) throws CommandSyntaxException {
                return Pair.of($$2, Either.left(gr.a($$0, $$2)));
             }
 
             @Override
-            public Pair<ale, Collection<hw<ei>>> c(CommandContext<ei> $$0) throws CommandSyntaxException {
+            public Pair<alg, Collection<hw<ei>>> c(CommandContext<ei> $$0) throws CommandSyntaxException {
                return Pair.of($$2, Collections.singleton(gr.a($$0, $$2)));
             }
          };
       }
    }
 
-   static hw<ei> a(CommandContext<ei> $$0, ale $$1) throws CommandSyntaxException {
+   static hw<ei> a(CommandContext<ei> $$0, alg $$1) throws CommandSyntaxException {
       return ((ei)$$0.getSource()).l().aE().a($$1).orElseThrow(() -> c.create($$1.toString()));
    }
 
-   static Collection<hw<ei>> b(CommandContext<ei> $$0, ale $$1) throws CommandSyntaxException {
+   static Collection<hw<ei>> b(CommandContext<ei> $$0, alg $$1) throws CommandSyntaxException {
       Collection<hw<ei>> $$2 = ((ei)$$0.getSource()).l().aE().b($$1);
       if ($$2 == null) {
          throw b.create($$1.toString());
@@ -76,11 +76,11 @@ public class gr implements ArgumentType<gr.a> {
       return ((gr.a)$$0.getArgument($$1, gr.a.class)).a($$0);
    }
 
-   public static Pair<ale, Either<hw<ei>, Collection<hw<ei>>>> b(CommandContext<ei> $$0, String $$1) throws CommandSyntaxException {
+   public static Pair<alg, Either<hw<ei>, Collection<hw<ei>>>> b(CommandContext<ei> $$0, String $$1) throws CommandSyntaxException {
       return ((gr.a)$$0.getArgument($$1, gr.a.class)).b($$0);
    }
 
-   public static Pair<ale, Collection<hw<ei>>> c(CommandContext<ei> $$0, String $$1) throws CommandSyntaxException {
+   public static Pair<alg, Collection<hw<ei>>> c(CommandContext<ei> $$0, String $$1) throws CommandSyntaxException {
       return ((gr.a)$$0.getArgument($$1, gr.a.class)).c($$0);
    }
 
@@ -91,8 +91,8 @@ public class gr implements ArgumentType<gr.a> {
    public interface a {
       Collection<hw<ei>> a(CommandContext<ei> var1) throws CommandSyntaxException;
 
-      Pair<ale, Either<hw<ei>, Collection<hw<ei>>>> b(CommandContext<ei> var1) throws CommandSyntaxException;
+      Pair<alg, Either<hw<ei>, Collection<hw<ei>>>> b(CommandContext<ei> var1) throws CommandSyntaxException;
 
-      Pair<ale, Collection<hw<ei>>> c(CommandContext<ei> var1) throws CommandSyntaxException;
+      Pair<alg, Collection<hw<ei>>> c(CommandContext<ei> var1) throws CommandSyntaxException;
    }
 }

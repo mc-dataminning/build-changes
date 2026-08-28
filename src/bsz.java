@@ -1,45 +1,53 @@
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class bsz extends btb {
-   public static final bsz a = new bsz(0.0F);
-   public static final MapCodec<bsz> b = Codec.FLOAT.fieldOf("value").xmap(bsz::a, bsz::d);
-   private final float d;
+public class bsz extends btg {
+   public static final MapCodec<bsz> a = RecordCodecBuilder.mapCodec(
+         $$0 -> $$0.group(
+                  btg.c.fieldOf("source").forGetter($$0x -> $$0x.b),
+                  Codec.INT.fieldOf("min_inclusive").forGetter($$0x -> $$0x.f),
+                  Codec.INT.fieldOf("max_inclusive").forGetter($$0x -> $$0x.g)
+               )
+               .apply($$0, bsz::new)
+      )
+      .validate(
+         $$0 -> $$0.g < $$0.f
+               ? DataResult.error(() -> "Max must be at least min, min_inclusive: " + $$0.f + ", max_inclusive: " + $$0.g)
+               : DataResult.success($$0)
+      );
+   private final btg b;
+   private final int f;
+   private final int g;
 
-   public static bsz a(float $$0) {
-      return $$0 == 0.0F ? a : new bsz($$0);
+   public static bsz a(btg $$0, int $$1, int $$2) {
+      return new bsz($$0, $$1, $$2);
    }
 
-   private bsz(float $$0) {
-      this.d = $$0;
-   }
-
-   public float d() {
-      return this.d;
-   }
-
-   @Override
-   public float a(azt $$0) {
-      return this.d;
-   }
-
-   @Override
-   public float a() {
-      return this.d;
-   }
-
-   @Override
-   public float b() {
-      return this.d;
+   public bsz(btg $$0, int $$1, int $$2) {
+      this.b = $$0;
+      this.f = $$1;
+      this.g = $$2;
    }
 
    @Override
-   public btc<?> c() {
-      return btc.a;
+   public int a(azv $$0) {
+      return azm.a(this.b.a($$0), this.f, this.g);
    }
 
    @Override
-   public String toString() {
-      return Float.toString(this.d);
+   public int a() {
+      return Math.max(this.f, this.b.a());
+   }
+
+   @Override
+   public int b() {
+      return Math.min(this.g, this.b.b());
+   }
+
+   @Override
+   public bth<?> c() {
+      return bth.d;
    }
 }

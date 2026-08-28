@@ -1,154 +1,306 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableList.Builder;
-import it.unimi.dsi.fastutil.longs.LongIterator;
-import it.unimi.dsi.fastutil.longs.LongSet;
+import it.unimi.dsi.fastutil.objects.ObjectArrayList;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
-import java.util.Map.Entry;
-import java.util.function.Consumer;
-import java.util.function.Predicate;
+import java.util.Optional;
+import java.util.Set;
 import javax.annotation.Nullable;
 
-public class djl {
-   private final diq a;
-   private final egl b;
-   private final eqj c;
+public class djl implements dio {
+   private static final dip a = new dip();
+   private static final int b = 16;
+   private static final float c = 2.0F;
+   private final boolean d;
+   private final dio.a e;
+   private final arq f;
+   private final fei g;
+   @Nullable
+   private final bwd h;
+   private final float i;
+   private final bus j;
+   private final dip k;
+   private final Map<cqy, fei> l = new HashMap<>();
 
-   public djl(diq $$0, egl $$1, eqj $$2) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
+   public djl(arq $$0, @Nullable bwd $$1, @Nullable bus $$2, @Nullable dip $$3, fei $$4, float $$5, boolean $$6, dio.a $$7) {
+      this.f = $$0;
+      this.h = $$1;
+      this.i = $$5;
+      this.g = $$4;
+      this.d = $$6;
+      this.e = $$7;
+      this.j = $$2 == null ? $$0.al().a(this) : $$2;
+      this.k = $$3 == null ? this.b($$1) : $$3;
    }
 
-   public djl a(arw $$0) {
-      if ($$0.a() != this.a) {
-         throw new IllegalStateException("Using invalid structure manager (source level: " + $$0.a() + ", region: " + $$0);
+   private dip b(@Nullable bwd $$0) {
+      return (dip)($$0 == null ? a : new dim($$0));
+   }
+
+   public static float a(fei $$0, bwd $$1) {
+      fed $$2 = $$1.cR();
+      double $$3 = 1.0 / (($$2.d - $$2.a) * 2.0 + 1.0);
+      double $$4 = 1.0 / (($$2.e - $$2.b) * 2.0 + 1.0);
+      double $$5 = 1.0 / (($$2.f - $$2.c) * 2.0 + 1.0);
+      double $$6 = (1.0 - Math.floor(1.0 / $$3) * $$3) / 2.0;
+      double $$7 = (1.0 - Math.floor(1.0 / $$5) * $$5) / 2.0;
+      if (!($$3 < 0.0) && !($$4 < 0.0) && !($$5 < 0.0)) {
+         int $$8 = 0;
+         int $$9 = 0;
+
+         for (double $$10 = 0.0; $$10 <= 1.0; $$10 += $$3) {
+            for (double $$11 = 0.0; $$11 <= 1.0; $$11 += $$4) {
+               for (double $$12 = 0.0; $$12 <= 1.0; $$12 += $$5) {
+                  double $$13 = azm.d($$10, $$2.a, $$2.d);
+                  double $$14 = azm.d($$11, $$2.b, $$2.e);
+                  double $$15 = azm.d($$12, $$2.c, $$2.f);
+                  fei $$16 = new fei($$13 + $$6, $$14, $$15 + $$7);
+                  if ($$1.dV().a(new die($$16, $$0, die.a.a, die.b.a, $$1)).d() == feg.a.a) {
+                     $$8++;
+                  }
+
+                  $$9++;
+               }
+            }
+         }
+
+         return (float)$$8 / (float)$$9;
       } else {
-         return new djl($$0, this.b, this.c);
+         return 0.0F;
       }
    }
 
-   public List<eqq> a(dhw $$0, Predicate<eqi> $$1) {
-      Map<eqi, LongSet> $$2 = this.a.a($$0.h, $$0.i, ecm.e).h();
-      Builder<eqq> $$3 = ImmutableList.builder();
+   @Override
+   public float e() {
+      return this.i;
+   }
 
-      for (Entry<eqi, LongSet> $$4 : $$2.entrySet()) {
-         eqi $$5 = $$4.getKey();
-         if ($$1.test($$5)) {
-            this.a($$5, $$4.getValue(), $$3::add);
+   @Override
+   public fei f() {
+      return this.g;
+   }
+
+   private List<iu> m() {
+      Set<iu> $$0 = new HashSet<>();
+      int $$1 = 16;
+
+      for (int $$2 = 0; $$2 < 16; $$2++) {
+         for (int $$3 = 0; $$3 < 16; $$3++) {
+            for (int $$4 = 0; $$4 < 16; $$4++) {
+               if ($$2 == 0 || $$2 == 15 || $$3 == 0 || $$3 == 15 || $$4 == 0 || $$4 == 15) {
+                  double $$5 = (double)((float)$$2 / 15.0F * 2.0F - 1.0F);
+                  double $$6 = (double)((float)$$3 / 15.0F * 2.0F - 1.0F);
+                  double $$7 = (double)((float)$$4 / 15.0F * 2.0F - 1.0F);
+                  double $$8 = Math.sqrt($$5 * $$5 + $$6 * $$6 + $$7 * $$7);
+                  $$5 /= $$8;
+                  $$6 /= $$8;
+                  $$7 /= $$8;
+                  float $$9 = this.i * (0.7F + this.f.A.i() * 0.6F);
+                  double $$10 = this.g.d;
+                  double $$11 = this.g.e;
+                  double $$12 = this.g.f;
+
+                  for (float $$13 = 0.3F; $$9 > 0.0F; $$9 -= 0.22500001F) {
+                     iu $$14 = iu.a($$10, $$11, $$12);
+                     dzz $$15 = this.f.a_($$14);
+                     ewg $$16 = this.f.b_($$14);
+                     if (!this.f.k($$14)) {
+                        break;
+                     }
+
+                     Optional<Float> $$17 = this.k.a(this, this.f, $$14, $$15, $$16);
+                     if ($$17.isPresent()) {
+                        $$9 -= ($$17.get() + 0.3F) * 0.3F;
+                     }
+
+                     if ($$9 > 0.0F && this.k.a(this, this.f, $$14, $$15, $$9)) {
+                        $$0.add($$14);
+                     }
+
+                     $$10 += $$5 * 0.3F;
+                     $$11 += $$6 * 0.3F;
+                     $$12 += $$7 * 0.3F;
+                  }
+               }
+            }
          }
       }
 
-      return $$3.build();
+      return new ObjectArrayList($$0);
    }
 
-   public List<eqq> a(jx $$0, eqi $$1) {
-      LongSet $$2 = this.a.a($$0.a(), $$0.c(), ecm.e).b($$1);
-      Builder<eqq> $$3 = ImmutableList.builder();
-      this.a($$1, $$2, $$3::add);
-      return $$3.build();
-   }
+   private void n() {
+      float $$0 = this.i * 2.0F;
+      int $$1 = azm.a(this.g.d - (double)$$0 - 1.0);
+      int $$2 = azm.a(this.g.d + (double)$$0 + 1.0);
+      int $$3 = azm.a(this.g.e - (double)$$0 - 1.0);
+      int $$4 = azm.a(this.g.e + (double)$$0 + 1.0);
+      int $$5 = azm.a(this.g.f - (double)$$0 - 1.0);
+      int $$6 = azm.a(this.g.f + (double)$$0 + 1.0);
 
-   public void a(eqi $$0, LongSet $$1, Consumer<eqq> $$2) {
-      LongIterator var4 = $$1.iterator();
+      for (bwd $$8 : this.f.a_(this.h, new fed((double)$$1, (double)$$3, (double)$$5, (double)$$2, (double)$$4, (double)$$6))) {
+         if (!$$8.a(this)) {
+            double $$9 = Math.sqrt($$8.g(this.g)) / (double)$$0;
+            if ($$9 <= 1.0) {
+               double $$10 = $$8.dA() - this.g.d;
+               double $$11 = ($$8 instanceof cne ? $$8.dC() : $$8.dE()) - this.g.e;
+               double $$12 = $$8.dG() - this.g.f;
+               double $$13 = Math.sqrt($$10 * $$10 + $$11 * $$11 + $$12 * $$12);
+               if ($$13 != 0.0) {
+                  $$10 /= $$13;
+                  $$11 /= $$13;
+                  $$12 /= $$13;
+                  boolean $$14 = this.k.a(this, $$8);
+                  float $$15 = this.k.a($$8);
+                  float $$16 = !$$14 && $$15 == 0.0F ? 0.0F : a(this.g, $$8);
+                  if ($$14) {
+                     $$8.a(this.f, this.j, this.k.a(this, $$8, $$16));
+                  }
 
-      while (var4.hasNext()) {
-         long $$3 = (Long)var4.next();
-         jx $$4 = jx.a(new dhw($$3), this.a.aq());
-         eqq $$5 = this.a($$4, $$0, this.a.a($$4.a(), $$4.c(), ecm.d));
-         if ($$5 != null && $$5.b()) {
-            $$2.accept($$5);
+                  double $$17 = (1.0 - $$9) * (double)$$16 * (double)$$15;
+                  double $$19;
+                  if ($$8 instanceof bxc $$18) {
+                     $$19 = $$17 * (1.0 - $$18.h(byi.i));
+                  } else {
+                     $$19 = $$17;
+                  }
+
+                  $$10 *= $$19;
+                  $$11 *= $$19;
+                  $$12 *= $$19;
+                  fei $$21 = new fei($$10, $$11, $$12);
+                  $$8.h($$21);
+                  if ($$8 instanceof cqy) {
+                     cqy $$22 = (cqy)$$8;
+                     if (!$$22.U_() && (!$$22.b() || !$$22.gj().b)) {
+                        this.l.put($$22, $$21);
+                     }
+                  }
+
+                  $$8.b_(this.h);
+               }
+            }
          }
       }
+   }
+
+   private void a(List<iu> $$0) {
+      List<djl.a> $$1 = new ArrayList<>();
+      af.c($$0, this.f.A);
+
+      for (iu $$2 : $$0) {
+         this.f.a_($$2).a(this.f, $$2, this, ($$1x, $$2x) -> a($$1, $$1x, $$2x));
+      }
+
+      for (djl.a $$3 : $$1) {
+         dma.a(this.f, $$3.a, $$3.b);
+      }
+   }
+
+   private void b(List<iu> $$0) {
+      for (iu $$1 : $$0) {
+         if (this.f.A.a(3) == 0 && this.f.a_($$1).l() && this.f.a_($$1.e()).s()) {
+            this.f.b($$1, dln.a(this.f, $$1));
+         }
+      }
+   }
+
+   public void i() {
+      this.f.a(this.h, eez.w, this.g);
+      List<iu> $$0 = this.m();
+      this.n();
+      if (this.o()) {
+         bqm $$1 = bql.a();
+         $$1.a("explosion_blocks");
+         this.a($$0);
+         $$1.c();
+      }
+
+      if (this.d) {
+         this.b($$0);
+      }
+   }
+
+   private static void a(List<djl.a> $$0, cyy $$1, iu $$2) {
+      for (djl.a $$3 : $$0) {
+         $$3.a($$1);
+         if ($$1.f()) {
+            return;
+         }
+      }
+
+      $$0.add(new djl.a($$2, $$1));
+   }
+
+   private boolean o() {
+      return this.e != dio.a.a;
+   }
+
+   public Map<cqy, fei> j() {
+      return this.l;
+   }
+
+   @Override
+   public arq a() {
+      return this.f;
    }
 
    @Nullable
-   public eqq a(jx $$0, eqi $$1, ech $$2) {
-      return $$2.a($$1);
+   @Override
+   public bxc c() {
+      return dio.a(this.h);
    }
 
-   public void a(jx $$0, eqi $$1, eqq $$2, ech $$3) {
-      $$3.a($$1, $$2);
+   @Nullable
+   @Override
+   public bwd d() {
+      return this.h;
    }
 
-   public void a(jx $$0, eqi $$1, long $$2, ech $$3) {
-      $$3.a($$1, $$2);
+   public bus k() {
+      return this.j;
    }
 
-   public boolean a() {
-      return this.b.d();
+   @Override
+   public dio.a b() {
+      return this.e;
    }
 
-   public eqq a(iu $$0, eqi $$1) {
-      for (eqq $$2 : this.a(jx.a($$0), $$1)) {
-         if ($$2.a().b($$0)) {
-            return $$2;
-         }
+   @Override
+   public boolean g() {
+      if (this.e != dio.a.d) {
+         return false;
+      } else {
+         return this.h != null && this.h.aq() == bwm.s ? this.f.O().c(dir.c) : true;
+      }
+   }
+
+   @Override
+   public boolean h() {
+      boolean $$0 = this.f.O().c(dir.c);
+      boolean $$1 = this.h == null || !this.h.bj();
+      boolean $$2 = this.h == null || this.h.aq() != bwm.s && this.h.aq() != bwm.bH;
+      return $$0 ? $$1 && $$2 : this.e.a() && $$1 && $$2;
+   }
+
+   public boolean l() {
+      return this.i < 2.0F || !this.o();
+   }
+
+   static class a {
+      final iu a;
+      cyy b;
+
+      a(iu $$0, cyy $$1) {
+         this.a = $$0;
+         this.b = $$1;
       }
 
-      return eqq.b;
-   }
-
-   public eqq a(iu $$0, axp<eqi> $$1) {
-      return this.a($$0, $$1x -> $$1x.a($$1));
-   }
-
-   public eqq a(iu $$0, ji<eqi> $$1) {
-      return this.a($$0, $$1::a);
-   }
-
-   public eqq a(iu $$0, Predicate<je<eqi>> $$1) {
-      jr<eqi> $$2 = this.b().f(mg.bc);
-
-      for (eqq $$3 : this.a(new dhw($$0), $$2x -> $$2.c($$2.a($$2x)).map($$1::test).orElse(false))) {
-         if (this.a($$0, $$3)) {
-            return $$3;
+      public void a(cyy $$0) {
+         if (cnd.a(this.b, $$0)) {
+            this.b = cnd.a(this.b, $$0, 16);
          }
       }
-
-      return eqq.b;
-   }
-
-   public eqq b(iu $$0, eqi $$1) {
-      for (eqq $$2 : this.a(jx.a($$0), $$1)) {
-         if (this.a($$0, $$2)) {
-            return $$2;
-         }
-      }
-
-      return eqq.b;
-   }
-
-   public boolean a(iu $$0, eqq $$1) {
-      for (eqm $$2 : $$1.i()) {
-         if ($$2.f().b($$0)) {
-            return true;
-         }
-      }
-
-      return false;
-   }
-
-   public boolean a(iu $$0) {
-      jx $$1 = jx.a($$0);
-      return this.a.a($$1.a(), $$1.c(), ecm.e).y();
-   }
-
-   public Map<eqi, LongSet> b(iu $$0) {
-      jx $$1 = jx.a($$0);
-      return this.a.a($$1.a(), $$1.c(), ecm.e).h();
-   }
-
-   public eqk a(dhw $$0, eqi $$1, erf $$2, boolean $$3) {
-      return this.c.a($$0, $$1, $$2, $$3);
-   }
-
-   public void a(eqq $$0) {
-      $$0.e();
-      this.c.a($$0.c(), $$0.h());
-   }
-
-   public js b() {
-      return this.a.F_();
    }
 }

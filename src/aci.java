@@ -1,29 +1,18 @@
-public class aci implements zd<abs> {
-   public static final yu<vs, aci> a = zd.a(aci::a, aci::new);
-   private final boolean b;
+import io.netty.buffer.ByteBuf;
 
-   public aci(boolean $$0) {
-      this.b = $$0;
-   }
+public class aci implements zf<abu> {
+   public static final aci a = new aci();
+   public static final yw<ByteBuf, aci> b = yw.a(a);
 
-   private aci(vs $$0) {
-      this.b = $$0.readBoolean();
-   }
-
-   private void a(vs $$0) {
-      $$0.a(this.b);
+   private aci() {
    }
 
    @Override
-   public zf<aci> a() {
-      return agl.p;
+   public zh<aci> a() {
+      return agn.n;
    }
 
-   public void a(abs $$0) {
+   public void a(abu $$0) {
       $$0.a(this);
-   }
-
-   public boolean b() {
-      return this.b;
    }
 }

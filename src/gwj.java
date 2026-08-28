@@ -1,25 +1,21 @@
-public class gwj extends gvj<cmr, hbp> {
-   private static final ale a = ale.b("textures/entity/lead_knot.png");
-   private final gfv g;
+public class gwj extends gxf<cnt, hcq, gfw> {
+   private static final alg a = alg.b("textures/entity/ghast/ghast.png");
+   private static final alg j = alg.b("textures/entity/ghast/ghast_shooting.png");
 
-   public gwj(gvk.a $$0) {
-      super($$0);
-      this.g = new gfv($$0.a(gif.bz));
+   public gwj(gvz.a $$0) {
+      super($$0, new gfw($$0.a(git.aZ)), 1.5F);
    }
 
-   @Override
-   public void a(hbp $$0, fiq $$1, gpd $$2, int $$3) {
-      $$1.a();
-      $$1.b(-1.0F, -1.0F, 1.0F);
-      this.g.a($$0);
-      fiu $$4 = $$2.getBuffer(this.g.a(a));
-      this.g.a($$1, $$4, $$3, hhp.d);
-      $$1.b();
-      super.a($$0, $$1, $$2, $$3);
+   public alg a(hcq $$0) {
+      return $$0.a ? j : a;
    }
 
-   @Override
-   public hbp d() {
-      return new hbp();
+   public hcq b() {
+      return new hcq();
+   }
+
+   public void a(cnt $$0, hcq $$1, float $$2) {
+      super.a($$0, $$1, $$2);
+      $$1.a = $$0.j();
    }
 }

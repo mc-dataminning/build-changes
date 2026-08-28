@@ -1,76 +1,65 @@
-import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
-import java.util.function.BiFunction;
+import java.util.Optional;
+import java.util.Set;
 
-public class fad {
-   public static final BiFunction<cys, eyn, cys> a = ($$0, $$1) -> $$0;
-   public static final Codec<fab> b = mf.E.q().dispatch("function", fab::b, fac::a);
-   public static final Codec<fab> c = Codec.lazyInitialized(() -> Codec.withAlternative(b, faf.b));
-   public static final Codec<je<fab>> d = ala.a(mg.bp, c);
-   public static final fac<fas> e = a("set_count", fas.a);
-   public static final fac<fau> f = a("set_item", fau.a);
-   public static final fac<ezr> g = a("enchant_with_levels", ezr.a);
-   public static final fac<ezq> h = a("enchant_randomly", ezq.a);
-   public static final fac<fao> i = a("set_enchantments", fao.a);
-   public static final fac<fam> j = a("set_custom_data", fam.a);
-   public static final fac<faj> k = a("set_components", faj.a);
-   public static final fac<fbc> l = a("furnace_smelt", fbc.a);
-   public static final fac<ezs> m = a("enchanted_count_increase", ezs.b);
-   public static final fac<fat> n = a("set_damage", fat.a);
-   public static final fac<fag> o = a("set_attributes", fag.a);
-   public static final fac<faw> p = a("set_name", faw.a);
-   public static final fac<ezt> q = a("exploration_map", ezt.f);
-   public static final fac<faz> r = a("set_stew_effect", faz.a);
-   public static final fac<ezp> s = a("copy_name", ezp.a);
-   public static final fac<fak> t = a("set_contents", fak.a);
-   public static final fac<fae> u = a("modify_contents", fae.a);
-   public static final fac<ezv> v = a("filtered", ezv.a);
-   public static final fac<ezy> w = a("limit_count", ezy.a);
-   public static final fac<ezk> x = a("apply_bonus", ezk.a);
-   public static final fac<fal> y = a("set_loot_table", fal.a);
-   public static final fac<ezl> z = a("explosion_decay", ezl.a);
-   public static final fac<fav> A = a("set_lore", fav.a);
-   public static final fac<ezu> B = a("fill_player_head", ezu.a);
-   public static final fac<ezo> C = a("copy_custom_data", ezo.a);
-   public static final fac<ezm> D = a("copy_state", ezm.a);
-   public static final fac<fah> E = a("set_banner_pattern", fah.a);
-   public static final fac<fay> F = a("set_potion", fay.a);
-   public static final fac<far> G = a("set_instrument", far.a);
-   public static final fac<ezw> H = a("reference", ezw.a);
-   public static final fac<faf> I = a("sequence", faf.a);
-   public static final fac<ezn> J = a("copy_components", ezn.a);
-   public static final fac<faq> K = a("set_fireworks", faq.a);
-   public static final fac<fap> L = a("set_firework_explosion", fap.a);
-   public static final fac<fai> M = a("set_book_cover", fai.a);
-   public static final fac<fbb> N = a("set_written_book_pages", fbb.a);
-   public static final fac<fba> O = a("set_writable_book_pages", fba.a);
-   public static final fac<fbd> P = a("toggle_tooltips", fbd.a);
-   public static final fac<fax> Q = a("set_ominous_bottle_amplifier", fax.a);
-   public static final fac<fan> R = a("set_custom_model_data", fan.a);
+public class fad extends fam {
+   public static final MapCodec<fad> a = RecordCodecBuilder.mapCodec(
+      $$0 -> a($$0)
+            .and($$0.group(fdf.a.fieldOf("levels").forGetter($$0x -> $$0x.b), jt.a(mg.aQ).optionalFieldOf("options").forGetter($$0x -> $$0x.c)))
+            .apply($$0, fad::new)
+   );
+   private final fde b;
+   private final Optional<ji<dfl>> c;
 
-   private static <T extends fab> fac<T> a(String $$0, MapCodec<T> $$1) {
-      return jr.a(mf.E, ale.b($$0), new fac<>($$1));
+   fad(List<fci> $$0, fde $$1, Optional<ji<dfl>> $$2) {
+      super($$0);
+      this.b = $$1;
+      this.c = $$2;
    }
 
-   public static BiFunction<cys, eyn, cys> a(List<? extends BiFunction<cys, eyn, cys>> $$0) {
-      List<BiFunction<cys, eyn, cys>> $$1 = List.copyOf($$0);
+   @Override
+   public fao<fad> b() {
+      return fap.g;
+   }
 
-      return switch ($$1.size()) {
-         case 0 -> a;
-         case 1 -> (BiFunction)$$1.get(0);
-         case 2 -> {
-            BiFunction<cys, eyn, cys> $$2 = $$1.get(0);
-            BiFunction<cys, eyn, cys> $$3 = $$1.get(1);
-            yield ($$2x, $$3x) -> $$3.apply($$2.apply($$2x, $$3x), $$3x);
-         }
-         default -> ($$1x, $$2x) -> {
-         for (BiFunction<cys, eyn, cys> $$3x : $$1) {
-            $$1x = $$3x.apply($$1x, $$2x);
-         }
+   @Override
+   public Set<bax<?>> a() {
+      return this.b.a();
+   }
 
-         return $$1x;
-      };
-      };
+   @Override
+   public cyy a(cyy $$0, eyz $$1) {
+      azv $$2 = $$1.b();
+      js $$3 = $$1.d().F_();
+      return dfn.a($$2, $$0, this.b.a($$1), $$3, this.c);
+   }
+
+   public static fad.a a(jg.a $$0, fde $$1) {
+      return new fad.a($$1).a($$0.e(mg.aQ).b(axe.n));
+   }
+
+   public static class a extends fam.a<fad.a> {
+      private final fde a;
+      private Optional<ji<dfl>> b = Optional.empty();
+
+      public a(fde $$0) {
+         this.a = $$0;
+      }
+
+      protected fad.a a() {
+         return this;
+      }
+
+      public fad.a a(ji<dfl> $$0) {
+         this.b = Optional.of($$0);
+         return this;
+      }
+
+      @Override
+      public fan b() {
+         return new fad(this.g(), this.a, this.b);
+      }
    }
 }

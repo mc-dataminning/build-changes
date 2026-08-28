@@ -12,7 +12,7 @@ public class mp implements mm {
    private final CompletableFuture<jg.a> f;
 
    public mp(mo $$0, CompletableFuture<jg.a> $$1, List<mq> $$2) {
-      this.d = $$0.a(mg.br);
+      this.d = $$0.a(mg.bs);
       this.e = $$2;
       this.f = $$1;
    }
@@ -20,7 +20,7 @@ public class mp implements mm {
    @Override
    public CompletableFuture<?> a(mk $$0) {
       return this.f.thenCompose($$1 -> {
-         Set<ale> $$2 = new HashSet<>();
+         Set<alg> $$2 = new HashSet<>();
          List<CompletableFuture<?>> $$3 = new ArrayList<>();
          Consumer<ai> $$4 = $$4x -> {
             if (!$$2.add($$4x.a())) {

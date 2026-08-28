@@ -1,245 +1,222 @@
-import com.google.common.annotations.VisibleForTesting;
-import it.unimi.dsi.fastutil.ints.IntArrayList;
-import it.unimi.dsi.fastutil.ints.IntList;
+import com.mojang.logging.LogUtils;
+import it.unimi.dsi.fastutil.objects.ObjectArrayList;
+import java.util.Objects;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class dxc extends dxw implements cvc {
-   public static final int d = 3;
-   public static final int e = 3;
-   public static final int f = 9;
-   public static final int g = 1;
-   public static final int h = 0;
-   public static final int i = 9;
-   public static final int j = 10;
-   private jn<cys> q = jn.a(9, cys.k);
-   private int r = 0;
-   protected final cuw k = new cuw() {
-      private final int[] a = new int[9];
-      private int b = 0;
+public class dxc extends dwx {
+   private static final Logger a = LogUtils.getLogger();
+   private static final String b = "LootTable";
+   private static final String c = "LootTableSeed";
+   private static final String d = "hit_direction";
+   private static final String e = "item";
+   private static final int f = 10;
+   private static final int g = 40;
+   private static final int h = 10;
+   private int i;
+   private long j;
+   private long k;
+   private cyy l = cyy.k;
+   @Nullable
+   private ja m;
+   @Nullable
+   private alf<eze> q;
+   private long r;
 
-      @Override
-      public int a(int $$0) {
-         return $$0 == 9 ? this.b : this.a[$$0];
+   public dxc(iu $$0, dzz $$1) {
+      super(dwz.O, $$0, $$1);
+   }
+
+   public boolean a(long $$0, arq $$1, bxc $$2, ja $$3, cyy $$4) {
+      if (this.m == null) {
+         this.m = $$3;
       }
 
-      @Override
-      public void a(int $$0, int $$1) {
-         if ($$0 == 9) {
-            this.b = $$1;
+      this.j = $$0 + 40L;
+      if ($$0 < this.k) {
+         return false;
+      } else {
+         this.k = $$0 + 10L;
+         this.a($$1, $$2, $$4);
+         int $$5 = this.f();
+         if (++this.i >= 10) {
+            this.b($$1, $$2, $$4);
+            return true;
          } else {
-            this.a[$$0] = $$1;
+            $$1.a(this.aw_(), this.m().b(), 2);
+            int $$6 = this.f();
+            if ($$5 != $$6) {
+               dzz $$7 = this.m();
+               dzz $$8 = $$7.b(eap.by, Integer.valueOf($$6));
+               $$1.a(this.aw_(), $$8, 3);
+            }
+
+            return false;
          }
       }
-
-      @Override
-      public int a() {
-         return 10;
-      }
-   };
-
-   public dxc(iu $$0, dzo $$1) {
-      super(dwp.Q, $$0, $$1);
    }
 
-   @Override
-   protected ww j() {
-      return ww.c("container.crafter");
-   }
+   private void a(arq $$0, bxc $$1, cyy $$2) {
+      if (this.q != null) {
+         eze $$3 = $$0.p().bc().b(this.q);
+         if ($$1 instanceof arr $$4) {
+            ap.Q.a($$4, this.q);
+         }
 
-   @Override
-   protected cuk a(int $$0, cqr $$1) {
-      return new cva($$0, $$1, this, this.k);
-   }
+         ezc $$5 = new ezc.a($$0).a(fbt.f, fei.b(this.o)).a($$1.eg()).a(fbt.a, $$1).a(fbt.i, $$2).a(fbs.i);
+         ObjectArrayList<cyy> $$6 = $$3.a($$5, this.r);
 
-   public void a(int $$0, boolean $$1) {
-      if (this.e($$0)) {
-         this.k.a($$0, $$1 ? 0 : 1);
+         this.l = switch ($$6.size()) {
+            case 0 -> cyy.k;
+            case 1 -> (cyy)$$6.getFirst();
+            default -> {
+               a.warn("Expected max 1 loot from loot table {}, but got {}", this.q.a(), $$6.size());
+               yield (cyy)$$6.getFirst();
+            }
+         };
+         this.q = null;
          this.e();
       }
    }
 
-   public boolean c(int $$0) {
-      return $$0 >= 0 && $$0 < 9 ? this.k.a($$0) == 1 : false;
+   private void b(arq $$0, bxc $$1, cyy $$2) {
+      this.c($$0, $$1, $$2);
+      dzz $$3 = this.m();
+      $$0.c(3008, this.aw_(), dma.j($$3));
+      dma $$6;
+      if (this.m().b() instanceof dmg $$5) {
+         $$6 = $$5.b();
+      } else {
+         $$6 = dmc.a;
+      }
+
+      $$0.a(this.o, $$6.m(), 3);
    }
 
-   @Override
-   public boolean b(int $$0, cys $$1) {
-      if (this.k.a($$0) == 1) {
+   private void c(arq $$0, bxc $$1, cyy $$2) {
+      this.a($$0, $$1, $$2);
+      if (!this.l.f()) {
+         double $$3 = (double)bwm.aq.l();
+         double $$4 = 1.0 - $$3;
+         double $$5 = $$3 / 2.0;
+         ja $$6 = Objects.requireNonNullElse(this.m, ja.b);
+         iu $$7 = this.o.a($$6, 1);
+         double $$8 = (double)$$7.u() + 0.5 * $$4 + $$5;
+         double $$9 = (double)$$7.v() + 0.5 + (double)(bwm.aq.m() / 2.0F);
+         double $$10 = (double)$$7.w() + 0.5 * $$4 + $$5;
+         cnd $$11 = new cnd($$0, $$8, $$9, $$10, this.l.a($$0.A.a(21) + 10));
+         $$11.i(fei.c);
+         $$0.b($$11);
+         this.l = cyy.k;
+      }
+   }
+
+   public void a(arq $$0) {
+      if (this.i != 0 && $$0.ae() >= this.j) {
+         int $$1 = this.f();
+         this.i = Math.max(0, this.i - 2);
+         int $$2 = this.f();
+         if ($$1 != $$2) {
+            $$0.a(this.aw_(), this.m().b(eap.by, Integer.valueOf($$2)), 3);
+         }
+
+         int $$3 = 4;
+         this.j = $$0.ae() + 4L;
+      }
+
+      if (this.i == 0) {
+         this.m = null;
+         this.j = 0L;
+         this.k = 0L;
+      } else {
+         $$0.a(this.aw_(), this.m().b(), 2);
+      }
+   }
+
+   private boolean c(tz $$0) {
+      if ($$0.b("LootTable", 8)) {
+         this.q = alf.a(mg.bp, alg.a($$0.l("LootTable")));
+         this.r = $$0.i("LootTableSeed");
+         return true;
+      } else {
+         return false;
+      }
+   }
+
+   private boolean d(tz $$0) {
+      if (this.q == null) {
          return false;
       } else {
-         cys $$2 = this.q.get($$0);
-         int $$3 = $$2.M();
-         if ($$3 >= $$2.k()) {
-            return false;
-         } else {
-            return $$2.f() ? true : !this.a($$3, $$2, $$0);
+         $$0.a("LootTable", this.q.a().toString());
+         if (this.r != 0L) {
+            $$0.a("LootTableSeed", this.r);
          }
-      }
-   }
 
-   private boolean a(int $$0, cys $$1, int $$2) {
-      for (int $$3 = $$2 + 1; $$3 < 9; $$3++) {
-         if (!this.c($$3)) {
-            cys $$4 = this.a($$3);
-            if ($$4.f() || $$4.M() < $$0 && cys.c($$4, $$1)) {
-               return true;
-            }
-         }
+         return true;
       }
-
-      return false;
    }
 
    @Override
-   protected void a(tx $$0, jg.a $$1) {
+   public tz a(jg.a $$0) {
+      tz $$1 = super.a($$0);
+      if (this.m != null) {
+         $$1.a("hit_direction", this.m.ordinal());
+      }
+
+      if (!this.l.f()) {
+         $$1.a("item", this.l.a($$0));
+      }
+
+      return $$1;
+   }
+
+   public aca a() {
+      return aca.a(this);
+   }
+
+   @Override
+   protected void a(tz $$0, jg.a $$1) {
       super.a($$0, $$1);
-      this.r = $$0.h("crafting_ticks_remaining");
-      this.q = jn.a(this.b(), cys.k);
-      if (!this.b_($$0)) {
-         bts.b($$0, this.q, $$1);
+      if (!this.c($$0) && $$0.e("item")) {
+         this.l = cyy.a($$1, (uw)$$0.p("item")).orElse(cyy.k);
+      } else {
+         this.l = cyy.k;
       }
 
-      int[] $$2 = $$0.n("disabled_slots");
-
-      for (int $$3 = 0; $$3 < 9; $$3++) {
-         this.k.a($$3, 0);
+      if ($$0.e("hit_direction")) {
+         this.m = ja.values()[$$0.h("hit_direction")];
       }
-
-      for (int $$4 : $$2) {
-         if (this.e($$4)) {
-            this.k.a($$4, 1);
-         }
-      }
-
-      this.k.a(9, $$0.h("triggered"));
    }
 
    @Override
-   protected void b(tx $$0, jg.a $$1) {
+   protected void b(tz $$0, jg.a $$1) {
       super.b($$0, $$1);
-      $$0.a("crafting_ticks_remaining", this.r);
-      if (!this.c_($$0)) {
-         bts.a($$0, this.q, $$1);
+      if (!this.d($$0) && !this.l.f()) {
+         $$0.a("item", this.l.a($$1));
       }
-
-      this.c($$0);
-      this.d($$0);
    }
 
-   @Override
-   public int b() {
-      return 9;
-   }
-
-   @Override
-   public boolean c() {
-      for (cys $$0 : this.q) {
-         if (!$$0.f()) {
-            return false;
-         }
-      }
-
-      return true;
-   }
-
-   @Override
-   public cys a(int $$0) {
-      return this.q.get($$0);
-   }
-
-   @Override
-   public void a(int $$0, cys $$1) {
-      if (this.c($$0)) {
-         this.a($$0, true);
-      }
-
-      super.a($$0, $$1);
-   }
-
-   @Override
-   public boolean a(cqs $$0) {
-      return btr.a(this, $$0);
-   }
-
-   @Override
-   public jn<cys> f() {
-      return this.q;
-   }
-
-   @Override
-   protected void a(jn<cys> $$0) {
+   public void a(alf<eze> $$0, long $$1) {
       this.q = $$0;
+      this.r = $$1;
    }
 
-   @Override
-   public int au_() {
-      return 3;
-   }
-
-   @Override
-   public int g() {
-      return 3;
-   }
-
-   @Override
-   public void fillStackedContents(cqx $$0) {
-      for (cys $$1 : this.q) {
-         $$0.a($$1);
+   private int f() {
+      if (this.i == 0) {
+         return 0;
+      } else if (this.i < 3) {
+         return 1;
+      } else {
+         return this.i < 6 ? 2 : 3;
       }
    }
 
-   private void c(tx $$0) {
-      IntList $$1 = new IntArrayList();
-
-      for (int $$2 = 0; $$2 < 9; $$2++) {
-         if (this.c($$2)) {
-            $$1.add($$2);
-         }
-      }
-
-      $$0.b("disabled_slots", $$1);
+   @Nullable
+   public ja c() {
+      return this.m;
    }
 
-   private void d(tx $$0) {
-      $$0.a("triggered", this.k.a(9));
-   }
-
-   public void a(boolean $$0) {
-      this.k.a(9, $$0 ? 1 : 0);
-   }
-
-   @VisibleForTesting
-   public boolean k() {
-      return this.k.a(9) == 1;
-   }
-
-   public static void a(dip $$0, iu $$1, dzo $$2, dxc $$3) {
-      int $$4 = $$3.r - 1;
-      if ($$4 >= 0) {
-         $$3.r = $$4;
-         if ($$4 == 0) {
-            $$0.a($$1, $$2.b(dnn.b, Boolean.valueOf(false)), 3);
-         }
-      }
-   }
-
-   public void d(int $$0) {
-      this.r = $$0;
-   }
-
-   public int s() {
-      int $$0 = 0;
-
-      for (int $$1 = 0; $$1 < this.b(); $$1++) {
-         cys $$2 = this.a($$1);
-         if (!$$2.f() || this.c($$1)) {
-            $$0++;
-         }
-      }
-
-      return $$0;
-   }
-
-   private boolean e(int $$0) {
-      return $$0 > -1 && $$0 < 9 && this.q.get($$0).f();
+   public cyy d() {
+      return this.l;
    }
 }

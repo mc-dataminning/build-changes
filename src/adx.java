@@ -1,21 +1,29 @@
-public record adx(int b, ww c) implements zd<abs> {
-   public static final yu<wh, adx> a = yu.a(ys.h, adx::b, wy.d, adx::e, adx::new);
+public class adx implements zf<abu> {
+   public static final yw<vu, adx> a = zf.a(adx::a, adx::new);
+   private final int b;
 
-   @Override
-   public zf<adx> a() {
-      return agl.ae;
+   public adx(bup $$0) {
+      this($$0.b());
    }
 
-   public void a(abs $$0) {
+   public adx(int $$0) {
+      this.b = $$0;
+   }
+
+   private adx(vu $$0) {
+      this.b = $$0.l();
+   }
+
+   private void a(vu $$0) {
+      $$0.c(this.b);
+   }
+
+   @Override
+   public zh<adx> a() {
+      return agn.ac;
+   }
+
+   public void a(abu $$0) {
       $$0.a(this);
-   }
-
-   @Override
-   public boolean c() {
-      return true;
-   }
-
-   public ww e() {
-      return this.c;
    }
 }

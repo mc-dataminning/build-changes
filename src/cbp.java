@@ -1,53 +1,28 @@
 import com.mojang.datafixers.kinds.App;
+import com.mojang.datafixers.util.Pair;
+import java.util.List;
 import java.util.function.Function;
-import org.apache.commons.lang3.mutable.MutableLong;
 
 public class cbp {
-   public static byr<bxh> a(int $$0, float $$1) {
-      MutableLong $$2 = new MutableLong(0L);
-      return ccd.a(
-         (Function<ccd.b<bxh>, ? extends App<ccd.c<bxh>, ccg<bxh>>>)($$3 -> $$3.group($$3.c(cgb.p), $$3.c(cgb.n), $$3.a(cgb.o))
-               .apply($$3, ($$3x, $$4, $$5) -> ($$5x, $$6, $$7) -> {
-                     if ($$5x.b_($$6.dv()).a(axf.a)) {
-                        return false;
-                     } else if ($$7 < $$2.getValue()) {
-                        $$2.setValue($$7 + 20L + 2L);
-                        return true;
-                     } else {
-                        iu $$8 = null;
-                        iu $$9 = null;
-                        iu $$10 = $$6.dv();
+   public static <E extends bxc> cae<E> a(List<Pair<? extends ccj<? super E>, Integer>> $$0) {
+      return a($$0, bzh.a.b, bzh.b.a);
+   }
 
-                        for (iu $$12 : iu.a($$10, $$0, $$0, $$0)) {
-                           if ($$12.u() != $$10.u() || $$12.w() != $$10.w()) {
-                              dzo $$13 = $$6.dV().a_($$12.d());
-                              dzo $$14 = $$6.dV().a_($$12);
-                              if ($$14.a(dlw.J)) {
-                                 if ($$13.l()) {
-                                    $$8 = $$12.j();
-                                    break;
-                                 }
+   public static <E extends bxc> cae<E> a(List<Pair<? extends ccj<? super E>, Integer>> $$0, bzh.a $$1, bzh.b $$2) {
+      cbc<ccj<? super E>> $$3 = new cbc<>();
+      $$0.forEach($$1x -> $$3.a((ccj<? super E>)$$1x.getFirst(), (Integer)$$1x.getSecond()));
+      return ccg.a((Function<ccg.b<E>, ? extends App<ccg.c<E>, ccj<E>>>)($$3x -> $$3x.a((ccj<E>)(($$3xx, $$4, $$5) -> {
+            if ($$1 == bzh.a.b) {
+               $$3.a();
+            }
 
-                                 if ($$9 == null && !$$12.a($$6.dt(), 1.5)) {
-                                    $$9 = $$12.j();
-                                 }
-                              }
-                           }
-                        }
+            for (ccj<? super E> $$6 : $$3) {
+               if ($$6.trigger($$3xx, $$4, $$5) && $$2 == bzh.b.a) {
+                  break;
+               }
+            }
 
-                        if ($$8 == null) {
-                           $$8 = $$9;
-                        }
-
-                        if ($$8 != null) {
-                           $$5.a(new byt($$8));
-                           $$4.a(new cge(new byt($$8), $$1, 0));
-                        }
-
-                        $$2.setValue($$7 + 40L);
-                        return true;
-                     }
-                  }))
-      );
+            return true;
+         }))));
    }
 }

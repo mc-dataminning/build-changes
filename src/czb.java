@@ -1,43 +1,39 @@
-import com.mojang.logging.LogUtils;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
-import org.slf4j.Logger;
-
-public class czb extends cyo {
-   private static final Logger a = LogUtils.getLogger();
-
-   public czb(cyo.a $$0) {
-      super($$0);
+public class czb {
+   public static bub a(div $$0, cqy $$1, bua $$2) {
+      $$1.c($$2);
+      return bub.c;
    }
 
-   @Override
-   public bty a(dip $$0, cqs $$1, btx $$2) {
-      cys $$3 = $$1.b($$2);
-      List<ald<ddj<?>>> $$4 = $$3.a(kj.ag, List.of());
-      $$3.a(1, $$1);
-      if ($$4.isEmpty()) {
-         return bty.d;
-      } else {
-         if (!$$0.C) {
-            ddq $$5 = $$0.p().aI();
-            List<ddo<?>> $$6 = new ArrayList<>($$4.size());
-
-            for (ald<ddj<?>> $$7 : $$4) {
-               Optional<ddo<?>> $$8 = $$5.b($$7);
-               if (!$$8.isPresent()) {
-                  a.error("Invalid recipe: {}", $$7);
-                  return bty.d;
-               }
-
-               $$6.add($$8.get());
-            }
-
-            $$1.a($$6);
-            $$1.b(awv.c.b(this));
+   public static cyy a(cyy $$0, cqy $$1, cyy $$2, boolean $$3) {
+      boolean $$4 = $$1.fU();
+      if ($$3 && $$4) {
+         if (!$$1.gi().i($$2)) {
+            $$1.gi().f($$2);
          }
 
-         return bty.a;
+         return $$0;
+      } else {
+         $$0.a(1, $$1);
+         if ($$0.f()) {
+            return $$2;
+         } else {
+            if (!$$1.gi().f($$2)) {
+               $$1.a($$2, false);
+            }
+
+            return $$0;
+         }
+      }
+   }
+
+   public static cyy a(cyy $$0, cqy $$1, cyy $$2) {
+      return a($$0, $$1, $$2, true);
+   }
+
+   public static void a(cnd $$0, Iterable<cyy> $$1) {
+      div $$2 = $$0.dV();
+      if (!$$2.C) {
+         $$1.forEach($$2x -> $$2.b(new cnd($$2, $$0.dA(), $$0.dC(), $$0.dG(), $$2x)));
       }
    }
 }

@@ -6,33 +6,30 @@ import com.mojang.datafixers.Typed;
 import com.mojang.datafixers.schemas.Schema;
 import com.mojang.datafixers.types.Type;
 import com.mojang.datafixers.util.Pair;
+import com.mojang.serialization.Dynamic;
+import java.util.Objects;
 import java.util.Optional;
-import java.util.function.Predicate;
-import java.util.function.UnaryOperator;
 
-public abstract class bgr extends DataFix {
-   private final String a;
-   private final Predicate<String> b;
-
-   public bgr(Schema $$0, String $$1, Predicate<String> $$2) {
-      super($$0, false);
-      this.a = $$1;
-      this.b = $$2;
+public class bgr extends DataFix {
+   public bgr(Schema $$0, boolean $$1) {
+      super($$0, $$1);
    }
 
-   public final TypeRewriteRule makeRule() {
-      Type<?> $$0 = this.getInputSchema().getType(bit.t);
-      return this.fixTypeEverywhereTyped(this.a, $$0, a($$0, this.b, this::a));
+   public TypeRewriteRule makeRule() {
+      Type<?> $$0 = this.getInputSchema().getType(biw.t);
+      OpticFinder<Pair<String, String>> $$1 = DSL.fieldFinder("id", DSL.named(biw.F.typeName(), bkr.a()));
+      OpticFinder<?> $$2 = $$0.findField("tag");
+      return this.fixTypeEverywhereTyped("ItemInstanceMapIdFix", $$0, $$2x -> {
+         Optional<Pair<String, String>> $$3 = $$2x.getOptional($$1);
+         if ($$3.isPresent() && Objects.equals($$3.get().getSecond(), "minecraft:filled_map")) {
+            Dynamic<?> $$4 = (Dynamic<?>)$$2x.get(DSL.remainderFinder());
+            Typed<?> $$5 = $$2x.getOrCreateTyped($$2);
+            Dynamic<?> $$6 = (Dynamic<?>)$$5.get(DSL.remainderFinder());
+            $$6 = $$6.set("map", $$6.createInt($$4.get("Damage").asInt(0)));
+            return $$2x.set($$2, $$5.set(DSL.remainderFinder(), $$6));
+         } else {
+            return $$2x;
+         }
+      });
    }
-
-   public static UnaryOperator<Typed<?>> a(Type<?> $$0, Predicate<String> $$1, UnaryOperator<Typed<?>> $$2) {
-      OpticFinder<Pair<String, String>> $$3 = DSL.fieldFinder("id", DSL.named(bit.F.typeName(), bko.a()));
-      OpticFinder<?> $$4 = $$0.findField("tag");
-      return $$4x -> {
-         Optional<Pair<String, String>> $$5 = $$4x.getOptional($$3);
-         return $$5.isPresent() && $$1.test((String)$$5.get().getSecond()) ? $$4x.updateTyped($$4, $$2) : $$4x;
-      };
-   }
-
-   protected abstract Typed<?> a(Typed<?> var1);
 }

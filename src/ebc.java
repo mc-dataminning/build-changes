@@ -1,58 +1,112 @@
+import com.google.common.base.MoreObjects;
 import com.mojang.serialization.Codec;
-import it.unimi.dsi.fastutil.objects.Object2ObjectArrayMap;
-import java.util.Map;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.DynamicOps;
+import java.util.List;
+import java.util.Optional;
 import java.util.stream.Stream;
+import javax.annotation.Nullable;
 
-public record ebc(String n, ead o, dtn p, dtn q, awk r, awk s) {
-   private static final Map<String, ebc> t = new Object2ObjectArrayMap();
-   public static final Codec<ebc> a = Codec.stringResolver(ebc::b, t::get);
-   public static final ebc b = a(new ebc("oak", ead.g));
-   public static final ebc c = a(new ebc("spruce", ead.h));
-   public static final ebc d = a(new ebc("birch", ead.i));
-   public static final ebc e = a(new ebc("acacia", ead.j));
-   public static final ebc f = a(new ebc("cherry", ead.k, dtn.aV, dtn.aY, awl.eO, awl.eP));
-   public static final ebc g = a(new ebc("jungle", ead.l));
-   public static final ebc h = a(new ebc("dark_oak", ead.m));
-   public static final ebc i = a(new ebc("pale_oak", ead.n));
-   public static final ebc j = a(new ebc("crimson", ead.o, dtn.aU, dtn.aR, awl.rE, awl.rF));
-   public static final ebc k = a(new ebc("warped", ead.p, dtn.aU, dtn.aR, awl.rE, awl.rF));
-   public static final ebc l = a(new ebc("mangrove", ead.q));
-   public static final ebc m = a(new ebc("bamboo", ead.r, dtn.aT, dtn.aS, awl.bw, awl.bx));
+public abstract class ebc<T extends Comparable<T>> {
+   private final Class<T> a;
+   private final String b;
+   @Nullable
+   private Integer c;
+   private final Codec<T> d = Codec.STRING
+      .comapFlatMap(
+         $$0x -> this.b($$0x)
+               .<DataResult>map(DataResult::success)
+               .orElseGet(() -> DataResult.error(() -> "Unable to read property: " + this + " with value: " + $$0x)),
+         this::b
+      );
+   private final Codec<ebc.a<T>> e = this.d.xmap(this::c, ebc.a::b);
 
-   public ebc(String $$0, ead $$1) {
-      this($$0, $$1, dtn.b, dtn.aQ, awl.ji, awl.jj);
+   protected ebc(String $$0, Class<T> $$1) {
+      this.a = $$1;
+      this.b = $$0;
    }
 
-   private static ebc a(ebc $$0) {
-      t.put($$0.b(), $$0);
-      return $$0;
+   public ebc.a<T> c(T $$0) {
+      return new ebc.a<>(this, $$0);
    }
 
-   public static Stream<ebc> a() {
-      return t.values().stream();
+   public ebc.a<T> a(eab<?, ?> $$0) {
+      return new ebc.a<>(this, $$0.c(this));
    }
 
-   public String b() {
-      return this.n;
+   public Stream<ebc.a<T>> c() {
+      return this.a().stream().map(this::c);
    }
 
-   public ead c() {
-      return this.o;
+   public Codec<T> d() {
+      return this.d;
    }
 
-   public dtn d() {
-      return this.p;
+   public Codec<ebc.a<T>> e() {
+      return this.e;
    }
 
-   public dtn e() {
-      return this.q;
+   public String f() {
+      return this.b;
    }
 
-   public awk f() {
-      return this.r;
+   public Class<T> g() {
+      return this.a;
    }
 
-   public awk g() {
-      return this.s;
+   public abstract List<T> a();
+
+   public abstract String b(T var1);
+
+   public abstract Optional<T> b(String var1);
+
+   public abstract int a(T var1);
+
+   @Override
+   public String toString() {
+      return MoreObjects.toStringHelper(this).add("name", this.b).add("clazz", this.a).add("values", this.a()).toString();
+   }
+
+   @Override
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else {
+         return !($$0 instanceof ebc<?> $$1) ? false : this.a.equals($$1.a) && this.b.equals($$1.b);
+      }
+   }
+
+   @Override
+   public final int hashCode() {
+      if (this.c == null) {
+         this.c = this.b();
+      }
+
+      return this.c;
+   }
+
+   public int b() {
+      return 31 * this.a.hashCode() + this.b.hashCode();
+   }
+
+   public <U, S extends eab<?, S>> DataResult<S> a(DynamicOps<U> $$0, S $$1, U $$2) {
+      DataResult<T> $$3 = this.d.parse($$0, $$2);
+      return $$3.map($$1x -> $$1.b(this, $$1x)).setPartial($$1);
+   }
+
+   public static record a<T extends Comparable<T>>(ebc<T> a, T b) {
+      public a(ebc<T> a, T b) {
+         if (!a.a().contains(b)) {
+            throw new IllegalArgumentException("Value " + b + " does not belong to property " + a);
+         } else {
+            this.a = a;
+            this.b = b;
+         }
+      }
+
+      @Override
+      public String toString() {
+         return this.a.f() + "=" + this.a.b(this.b);
+      }
    }
 }

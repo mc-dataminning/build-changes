@@ -1,32 +1,61 @@
 import com.mojang.serialization.MapCodec;
 import javax.annotation.Nullable;
 
-public class dmo extends dlu {
+public class dmo extends dta {
    public static final MapCodec<dmo> a = b(dmo::new);
-   private static final ww b = ww.c("container.cartography_table");
+   public static final eax<ja> b = eap.T;
 
    @Override
    public MapCodec<dmo> a() {
       return a;
    }
 
-   protected dmo(dzn.d $$0) {
+   public dmo(dzy.d $$0) {
       super($$0);
-   }
-
-   @Override
-   protected bty a(dzo $$0, dip $$1, iu $$2, cqs $$3, fds $$4) {
-      if (!$$1.C) {
-         $$3.a($$0.b($$1, $$2));
-         $$3.a(awv.aw);
-      }
-
-      return bty.a;
+      this.l(this.m().b(b, ja.c));
    }
 
    @Nullable
    @Override
-   protected bua b(dzo $$0, dip $$1, iu $$2) {
-      return new bug(($$2x, $$3, $$4) -> new cus($$2x, $$3, cux.a($$1, $$2)), b);
+   public dwx a(iu $$0, dzz $$1) {
+      return new dxd($$0, $$1);
+   }
+
+   @Nullable
+   @Override
+   public <T extends dwx> dwy<T> a(div $$0, dzz $$1, dwz<T> $$2) {
+      return !$$0.C ? a($$2, dwz.K, ($$0x, $$1x, $$2x, $$3) -> efi.c.a($$0x, $$3.x(), $$3.gq())) : null;
+   }
+
+   @Nullable
+   @Override
+   public dzz a(dcr $$0) {
+      return super.a($$0).b(b, $$0.g());
+   }
+
+   @Override
+   public int a(dzz $$0, dib $$1, iu $$2, ja $$3) {
+      return $$3 != $$0.c(b) ? super.a($$0, $$1, $$2, $$3) : 0;
+   }
+
+   @Override
+   protected void a(eaa.a<dma, dzz> $$0) {
+      super.a($$0);
+      $$0.a(b);
+   }
+
+   @Override
+   public dzz a(dzz $$0, dst $$1) {
+      return $$0.b(b, $$1.a($$0.c(b)));
+   }
+
+   @Override
+   public dzz a(dzz $$0, drc $$1) {
+      return $$0.a($$1.a($$0.c(b)));
+   }
+
+   @Override
+   public int c() {
+      return 10;
    }
 }

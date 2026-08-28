@@ -1,9 +1,5 @@
-import javax.annotation.Nullable;
-
 public interface bxs {
-   boolean isSpawnPositionOk(dis var1, iu var2, @Nullable bwj<?> var3);
+   void a(arq var1, awo var2, cyy var3);
 
-   default iu a(dis $$0, iu $$1) {
-      return $$1;
-   }
+   boolean a();
 }

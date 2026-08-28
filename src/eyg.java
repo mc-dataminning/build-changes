@@ -1,69 +1,184 @@
-import java.util.Locale;
 import java.util.UUID;
-import javax.annotation.Nullable;
 import net.minecraft.server.MinecraftServer;
 
-public interface eyg extends eyi {
-   @Override
-   String e();
+public class eyg implements eys {
+   private final eyt a;
+   private final eys b;
 
-   void a(boolean var1);
-
-   int j();
-
-   void c(int var1);
-
-   void b(int var1);
-
-   int h();
-
-   @Override
-   default void a(p $$0, dir $$1) {
-      eyi.super.a($$0, $$1);
-      $$0.a("Level name", this::e);
-      $$0.a(
-         "Level game mode",
-         () -> String.format(Locale.ROOT, "Game mode: %s (ID %d). Hardcore: %b. Commands: %b", this.k().b(), this.k().a(), this.l(), this.m())
-      );
-      $$0.a("Level weather", () -> String.format(Locale.ROOT, "Rain time: %d (now: %b), thunder time: %d (now: %b)", this.j(), this.i(), this.h(), this.g()));
+   public eyg(eyt $$0, eys $$1) {
+      this.a = $$0;
+      this.b = $$1;
    }
 
-   int f();
+   @Override
+   public iu a() {
+      return this.b.a();
+   }
 
-   void a(int var1);
+   @Override
+   public float b() {
+      return this.b.b();
+   }
 
-   int t();
+   @Override
+   public long c() {
+      return this.b.c();
+   }
 
-   void d(int var1);
+   @Override
+   public long d() {
+      return this.b.d();
+   }
 
-   int u();
+   @Override
+   public String e() {
+      return this.a.e();
+   }
 
-   void e(int var1);
+   @Override
+   public int f() {
+      return this.b.f();
+   }
 
-   @Nullable
-   UUID v();
+   @Override
+   public void a(int $$0) {
+   }
 
-   void a(UUID var1);
+   @Override
+   public boolean g() {
+      return this.b.g();
+   }
 
-   dim k();
+   @Override
+   public int h() {
+      return this.b.h();
+   }
 
-   void a(ebg.c var1);
+   @Override
+   public boolean i() {
+      return this.b.i();
+   }
 
-   ebg.c p();
+   @Override
+   public int j() {
+      return this.b.j();
+   }
 
-   boolean n();
+   @Override
+   public dis k() {
+      return this.a.k();
+   }
 
-   void c(boolean var1);
+   @Override
+   public void a(long $$0) {
+   }
 
-   boolean m();
+   @Override
+   public void b(long $$0) {
+   }
 
-   void a(dim var1);
+   @Override
+   public void a(iu $$0, float $$1) {
+   }
 
-   fdj<MinecraftServer> s();
+   @Override
+   public void a(boolean $$0) {
+   }
 
-   void a(long var1);
+   @Override
+   public void b(int $$0) {
+   }
 
-   void b(long var1);
+   @Override
+   public void b(boolean $$0) {
+   }
 
-   dil o();
+   @Override
+   public void c(int $$0) {
+   }
+
+   @Override
+   public void a(dis $$0) {
+   }
+
+   @Override
+   public boolean l() {
+      return this.a.l();
+   }
+
+   @Override
+   public boolean m() {
+      return this.a.m();
+   }
+
+   @Override
+   public boolean n() {
+      return this.b.n();
+   }
+
+   @Override
+   public void c(boolean $$0) {
+   }
+
+   @Override
+   public dir o() {
+      return this.a.o();
+   }
+
+   @Override
+   public ebr.c p() {
+      return this.b.p();
+   }
+
+   @Override
+   public void a(ebr.c $$0) {
+   }
+
+   @Override
+   public bty q() {
+      return this.a.q();
+   }
+
+   @Override
+   public boolean r() {
+      return this.a.r();
+   }
+
+   @Override
+   public fdv<MinecraftServer> s() {
+      return this.b.s();
+   }
+
+   @Override
+   public int t() {
+      return 0;
+   }
+
+   @Override
+   public void d(int $$0) {
+   }
+
+   @Override
+   public int u() {
+      return 0;
+   }
+
+   @Override
+   public void e(int $$0) {
+   }
+
+   @Override
+   public UUID v() {
+      return null;
+   }
+
+   @Override
+   public void a(UUID $$0) {
+   }
+
+   @Override
+   public void a(p $$0, dix $$1) {
+      $$0.a("Derived", true);
+      this.b.a($$0, $$1);
+   }
 }

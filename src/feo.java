@@ -1,24 +1,21 @@
-import it.unimi.dsi.fastutil.doubles.DoubleList;
+import it.unimi.dsi.fastutil.doubles.AbstractDoubleList;
 
-public class feo extends feq {
-   private final feq b;
-   private final ja.a c;
-   private static final DoubleList d = new fec(1);
+public class feo extends AbstractDoubleList {
+   private final int a;
 
-   public feo(feq $$0, ja.a $$1, int $$2) {
-      super(a($$0.a, $$1, $$2));
-      this.b = $$0;
-      this.c = $$1;
+   public feo(int $$0) {
+      if ($$0 <= 0) {
+         throw new IllegalArgumentException("Need at least 1 part");
+      } else {
+         this.a = $$0;
+      }
    }
 
-   private static fef a(fef $$0, ja.a $$1, int $$2) {
-      return new fep(
-         $$0, $$1.a($$2, 0, 0), $$1.a(0, $$2, 0), $$1.a(0, 0, $$2), $$1.a($$2 + 1, $$0.a, $$0.a), $$1.a($$0.b, $$2 + 1, $$0.b), $$1.a($$0.c, $$0.c, $$2 + 1)
-      );
+   public double getDouble(int $$0) {
+      return (double)$$0 / (double)this.a;
    }
 
-   @Override
-   public DoubleList a(ja.a $$0) {
-      return $$0 == this.c ? d : this.b.a($$0);
+   public int size() {
+      return this.a + 1;
    }
 }

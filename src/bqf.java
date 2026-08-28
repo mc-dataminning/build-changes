@@ -1,78 +1,36 @@
-import com.google.common.collect.ImmutableSet;
-import java.util.Set;
-import java.util.function.Supplier;
-import javax.annotation.Nullable;
-import org.apache.commons.lang3.tuple.Pair;
+import java.util.function.BooleanSupplier;
+import java.util.function.IntSupplier;
+import java.util.function.LongSupplier;
 
-public class bqf implements bqg {
-   public static final bqf a = new bqf();
+public class bqf {
+   private final LongSupplier a;
+   private final IntSupplier b;
+   private final BooleanSupplier c;
+   private bqj d = bqi.a;
 
-   private bqf() {
+   public bqf(LongSupplier $$0, IntSupplier $$1, BooleanSupplier $$2) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
    }
 
-   @Override
-   public void a() {
+   public boolean a() {
+      return this.d != bqi.a;
    }
 
-   @Override
    public void b() {
+      this.d = bqi.a;
    }
 
-   @Override
-   public void a(String $$0) {
-   }
-
-   @Override
-   public void a(Supplier<String> $$0) {
-   }
-
-   @Override
-   public void a(brs $$0) {
-   }
-
-   @Override
    public void c() {
+      this.d = new bqe(this.a, this.b, this.c);
    }
 
-   @Override
-   public void b(String $$0) {
+   public bqm d() {
+      return this.d;
    }
 
-   @Override
-   public void b(Supplier<String> $$0) {
-   }
-
-   @Override
-   public bqo d(String $$0) {
-      return bqo.a;
-   }
-
-   @Override
-   public bqo c(Supplier<String> $$0) {
-      return bqo.a;
-   }
-
-   @Override
-   public void a(String $$0, int $$1) {
-   }
-
-   @Override
-   public void a(Supplier<String> $$0, int $$1) {
-   }
-
-   @Override
-   public bqh d() {
-      return bqd.a;
-   }
-
-   @Nullable
-   @Override
-   public bqb.a c(String $$0) {
-      return null;
-   }
-
-   @Override
-   public Set<Pair<String, brs>> e() {
-      return ImmutableSet.of();
+   public bqk e() {
+      return this.d.d();
    }
 }

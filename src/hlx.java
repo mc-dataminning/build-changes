@@ -1,5 +1,16 @@
-public interface hlx extends hlw {
-   boolean m();
+public class hlx extends hlz {
+   public hlx(cit $$0) {
+      super($$0, awn.bQ, awo.g);
+      this.j = 0;
+   }
 
-   void q();
+   @Override
+   protected hlv o() {
+      return new hly(this.n);
+   }
+
+   @Override
+   protected boolean p() {
+      return !this.n.W_();
+   }
 }

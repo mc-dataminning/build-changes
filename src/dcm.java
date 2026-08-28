@@ -1,62 +1,31 @@
-public class dcm extends dcl {
-   private final ja b;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
 
-   public dcm(dip $$0, iu $$1, ja $$2, cys $$3, ja $$4) {
-      super($$0, null, btx.a, $$3, new fds(fdw.c($$1), $$4, $$1, false));
-      this.b = $$2;
-   }
+public interface dcm {
+   Codec<dcm> d = mf.aw.q().dispatch(dcm::a, dcm.a::a);
+   yw<wj, dcm> e = yu.a(mg.n).b(dcm::a, dcm.a::b);
 
-   @Override
-   public iu a() {
-      return this.j().b();
-   }
+   dcm.a<? extends dcm> a();
 
-   @Override
-   public boolean b() {
-      return this.q().a_(this.j().b()).a(this);
-   }
+   boolean a(div var1, cyy var2, bxc var3);
 
-   @Override
-   public boolean c() {
-      return this.b();
-   }
+   public static record a<T extends dcm>(MapCodec<T> f, yw<wj, T> g) {
+      public static final dcm.a<dck> a = a("apply_effects", dck.a, dck.b);
+      public static final dcm.a<dco> b = a("remove_effects", dco.a, dco.b);
+      public static final dcm.a<dcl> c = a("clear_all_effects", dcl.b, dcl.c);
+      public static final dcm.a<dcp> d = a("teleport_randomly", dcp.a, dcp.b);
+      public static final dcm.a<dcn> e = a("play_sound", dcn.a, dcn.b);
 
-   @Override
-   public ja d() {
-      return ja.a;
-   }
-
-   @Override
-   public ja[] f() {
-      switch (this.b) {
-         case a:
-         default:
-            return new ja[]{ja.a, ja.c, ja.f, ja.d, ja.e, ja.b};
-         case b:
-            return new ja[]{ja.a, ja.b, ja.c, ja.f, ja.d, ja.e};
-         case c:
-            return new ja[]{ja.a, ja.c, ja.f, ja.e, ja.b, ja.d};
-         case d:
-            return new ja[]{ja.a, ja.d, ja.f, ja.e, ja.b, ja.c};
-         case e:
-            return new ja[]{ja.a, ja.e, ja.d, ja.b, ja.c, ja.f};
-         case f:
-            return new ja[]{ja.a, ja.f, ja.d, ja.b, ja.c, ja.e};
+      private static <T extends dcm> dcm.a<T> a(String $$0, MapCodec<T> $$1, yw<wj, T> $$2) {
+         return jr.a(mf.aw, $$0, new dcm.a<>($$1, $$2));
       }
-   }
 
-   @Override
-   public ja g() {
-      return this.b.o() == ja.a.b ? ja.c : this.b;
-   }
+      public MapCodec<T> a() {
+         return this.f;
+      }
 
-   @Override
-   public boolean h() {
-      return false;
-   }
-
-   @Override
-   public float i() {
-      return (float)(this.b.e() * 90);
+      public yw<wj, T> b() {
+         return this.g;
+      }
    }
 }

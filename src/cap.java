@@ -1,34 +1,26 @@
 import com.mojang.datafixers.kinds.App;
-import java.util.Optional;
 import java.util.function.Function;
-import java.util.function.Predicate;
 
 public class cap {
-   public static byr<bwz> a(bxc $$0, float $$1) {
-      return a($$1x -> $$0.equals($$1x.aq().f()), $$1);
-   }
+   private static final float b = 0.95F;
+   public static final int a = 3;
 
-   public static cab<bwz> a(bwj<?> $$0, float $$1) {
-      return a($$1x -> $$0.equals($$1x.aq()), $$1);
-   }
-
-   public static cab<bwz> a(float $$0) {
-      return a($$0x -> true, $$0);
-   }
-
-   public static cab<bwz> a(Predicate<bwz> $$0, float $$1) {
-      float $$2 = $$1 * $$1;
-      return ccd.a(
-         (Function<ccd.b<bwz>, ? extends App<ccd.c<bwz>, ccg<bwz>>>)($$2x -> $$2x.group($$2x.c(cgb.o), $$2x.b(cgb.h))
-               .apply($$2x, ($$3, $$4) -> ($$5, $$6, $$7) -> {
-                     Optional<bwz> $$8 = $$2x.<cgd>b($$4).a($$0.and($$2xxxx -> $$2xxxx.g($$6) <= (double)$$2 && !$$6.y($$2xxxx)));
-                     if ($$8.isEmpty()) {
-                        return false;
-                     } else {
-                        $$3.a(new bzb($$8.get(), true));
-                        return true;
+   public static byu<bxc> a() {
+      return ccg.a((Function<ccg.b<bxc>, ? extends App<ccg.c<bxc>, ccj<bxc>>>)($$0 -> $$0.group($$0.b(cge.e)).apply($$0, $$1 -> ($$2, $$3, $$4) -> {
+               if ($$2.A.i() <= 0.95F) {
+                  return false;
+               } else {
+                  iu $$5 = $$0.<jd>b($$1).b();
+                  if ($$5.a($$3.dv(), 3.0)) {
+                     dzz $$6 = $$2.a_($$5);
+                     if ($$6.a(dmc.oG)) {
+                        dlw $$7 = (dlw)$$6.b();
+                        $$7.a($$3, $$2, $$5, null);
                      }
-                  }))
-      );
+                  }
+
+                  return true;
+               }
+            })));
    }
 }

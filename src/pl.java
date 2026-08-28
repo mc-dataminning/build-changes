@@ -3,32 +3,32 @@ import java.util.function.Function;
 import java.util.stream.Stream;
 
 public abstract class pl<T> extends pq<T> {
-   private final Function<T, ald<T>> d;
+   private final Function<T, alf<T>> d;
 
-   public pl(mo $$0, ald<? extends jr<T>> $$1, CompletableFuture<jg.a> $$2, Function<T, ald<T>> $$3) {
+   public pl(mo $$0, alf<? extends jr<T>> $$1, CompletableFuture<jg.a> $$2, Function<T, alf<T>> $$3) {
       super($$0, $$1, $$2);
       this.d = $$3;
    }
 
-   public pl(mo $$0, ald<? extends jr<T>> $$1, CompletableFuture<jg.a> $$2, CompletableFuture<pq.c<T>> $$3, Function<T, ald<T>> $$4) {
+   public pl(mo $$0, alf<? extends jr<T>> $$1, CompletableFuture<jg.a> $$2, CompletableFuture<pq.c<T>> $$3, Function<T, alf<T>> $$4) {
       super($$0, $$1, $$2, $$3);
       this.d = $$4;
    }
 
-   protected pl.a<T> a(axp<T> $$0) {
-      axm $$1 = this.c($$0);
+   protected pl.a<T> a(axr<T> $$0) {
+      axo $$1 = this.c($$0);
       return new pl.a<>($$1, this.d);
    }
 
    protected static class a<T> extends pq.b<T> {
-      private final Function<T, ald<T>> a;
+      private final Function<T, alf<T>> a;
 
-      a(axm $$0, Function<T, ald<T>> $$1) {
+      a(axo $$0, Function<T, alf<T>> $$1) {
          super($$0);
          this.a = $$1;
       }
 
-      public pl.a<T> a(axp<T> $$0) {
+      public pl.a<T> a(axr<T> $$0) {
          super.b($$0);
          return this;
       }

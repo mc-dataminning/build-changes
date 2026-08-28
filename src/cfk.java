@@ -1,32 +1,16 @@
-public class cfk extends cef {
-   private final com b;
-   private int c;
+import javax.annotation.Nullable;
 
-   public cfk(com $$0, double $$1, boolean $$2) {
-      super($$0, $$1, $$2);
-      this.b = $$0;
+public class cfk extends cfl {
+   public cfk(bxk $$0, double $$1) {
+      super($$0, $$1);
    }
 
+   @Nullable
    @Override
-   public void d() {
-      super.d();
-      this.c = 0;
-   }
-
-   @Override
-   public void e() {
-      super.e();
-      this.b.v(false);
-   }
-
-   @Override
-   public void a() {
-      super.a();
-      this.c++;
-      if (this.c >= 5 && this.k() < this.l() / 2) {
-         this.b.v(true);
-      } else {
-         this.b.v(false);
-      }
+   protected fei h() {
+      fei $$0 = this.b.h(0.0F);
+      int $$1 = 8;
+      fei $$2 = chx.a(this.b, 8, 7, $$0.d, $$0.f, (float) (Math.PI / 2), 3, 1);
+      return $$2 != null ? $$2 : cht.a(this.b, 8, 4, -2, $$0.d, $$0.f, (float) (Math.PI / 2));
    }
 }

@@ -1,51 +1,25 @@
-import java.util.function.Supplier;
-import javax.annotation.Nullable;
+public final class bqo implements Comparable<bqo> {
+   public final double a;
+   public final double b;
+   public final long c;
+   public final String d;
 
-public class bqo implements AutoCloseable {
-   public static final bqo a = new bqo(null);
-   @Nullable
-   private final bqj b;
-
-   bqo(@Nullable bqj $$0) {
-      this.b = $$0;
+   public bqo(String $$0, double $$1, double $$2, long $$3) {
+      this.d = $$0;
+      this.a = $$1;
+      this.b = $$2;
+      this.c = $$3;
    }
 
-   public bqo a(String $$0) {
-      if (this.b != null) {
-         this.b.e($$0);
+   public int a(bqo $$0) {
+      if ($$0.a < this.a) {
+         return -1;
+      } else {
+         return $$0.a > this.a ? 1 : $$0.d.compareTo(this.d);
       }
-
-      return this;
    }
 
-   public bqo a(Supplier<String> $$0) {
-      if (this.b != null) {
-         this.b.e($$0.get());
-      }
-
-      return this;
-   }
-
-   public bqo a(long $$0) {
-      if (this.b != null) {
-         this.b.a($$0);
-      }
-
-      return this;
-   }
-
-   public bqo a(int $$0) {
-      if (this.b != null) {
-         this.b.a($$0);
-      }
-
-      return this;
-   }
-
-   @Override
-   public void close() {
-      if (this.b != null) {
-         this.b.c();
-      }
+   public int a() {
+      return (this.d.hashCode() & 11184810) + 4473924;
    }
 }

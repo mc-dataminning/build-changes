@@ -1,80 +1,44 @@
-import com.google.common.cache.CacheBuilder;
-import com.google.common.cache.CacheLoader;
-import com.google.common.cache.LoadingCache;
-import com.mojang.logging.LogUtils;
-import it.unimi.dsi.fastutil.objects.Object2IntMap;
-import it.unimi.dsi.fastutil.objects.Object2IntMaps;
-import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
-import java.util.Locale;
-import java.util.Optional;
-import java.util.concurrent.TimeUnit;
-import org.apache.commons.lang3.mutable.MutableInt;
-import org.slf4j.Logger;
+import com.mojang.serialization.Codec;
+import java.util.List;
 
-public class eiu {
-   private static final Logger a = LogUtils.getLogger();
-   private static final LoadingCache<aro, eiu.b> b = CacheBuilder.newBuilder()
-      .weakKeys()
-      .expireAfterAccess(5L, TimeUnit.MINUTES)
-      .build(new CacheLoader<aro, eiu.b>() {
-         public eiu.b a(aro $$0) {
-            return new eiu.b(Object2IntMaps.synchronize(new Object2IntOpenHashMap()), new MutableInt(0));
+public class eiu extends eis {
+   public eiu(Codec<elp> $$0) {
+      super($$0);
+   }
+
+   @Override
+   protected boolean a(diw $$0, azv $$1, iu $$2, dzz $$3) {
+      iu.a $$4 = $$2.k();
+      int $$5 = $$1.a(3) + 1;
+
+      for (int $$6 = 0; $$6 < $$5; $$6++) {
+         if (!this.b($$0, $$1, $$4, $$3)) {
+            return true;
          }
-      });
 
-   public static void a(aro $$0) {
-      try {
-         ((eiu.b)b.get($$0)).b().increment();
-      } catch (Exception var2) {
-         a.error("Failed to increment chunk count", var2);
+         $$4.c(ja.b);
       }
-   }
 
-   public static void a(aro $$0, eif<?, ?> $$1, Optional<epm> $$2) {
-      try {
-         ((eiu.b)b.get($$0)).a().computeInt(new eiu.a($$1, $$2), ($$0x, $$1x) -> $$1x == null ? 1 : $$1x + 1);
-      } catch (Exception var4) {
-         a.error("Failed to increment feature count", var4);
-      }
-   }
+      iu $$7 = $$4.j();
+      int $$8 = $$1.a(3) + 2;
+      List<ja> $$9 = ja.c.a.c($$1);
 
-   public static void a() {
-      b.invalidateAll();
-      a.debug("Cleared feature counts");
-   }
+      for (ja $$11 : $$9.subList(0, $$8)) {
+         $$4.g($$7);
+         $$4.c($$11);
+         int $$12 = $$1.a(5) + 2;
+         int $$13 = 0;
 
-   public static void b() {
-      a.debug("Logging feature counts:");
-      b.asMap()
-         .forEach(
-            ($$0, $$1) -> {
-               String $$2 = $$0.aj().a().toString();
-               boolean $$3 = $$0.p().x();
-               jr<epm> $$4 = $$0.F_().f(mg.aZ);
-               String $$5 = ($$3 ? "running" : "dead") + " " + $$2;
-               Integer $$6 = $$1.b().getValue();
-               a.debug($$5 + " total_chunks: " + $$6);
-               $$1.a()
-                  .forEach(
-                     ($$3x, $$4x) -> a.debug(
-                           $$5
-                              + " "
-                              + String.format(Locale.ROOT, "%10d ", $$4x)
-                              + String.format(Locale.ROOT, "%10f ", (double)$$4x.intValue() / (double)$$6.intValue())
-                              + $$3x.b().flatMap($$4::d).<ale>map(ald::a)
-                              + " "
-                              + $$3x.a().b()
-                              + " "
-                              + $$3x.a()
-                        )
-                  );
+         for (int $$14 = 0; $$14 < $$12 && this.b($$0, $$1, $$4, $$3); $$14++) {
+            $$13++;
+            $$4.c(ja.b);
+            if ($$14 == 0 || $$13 >= 2 && $$1.i() < 0.25F) {
+               $$4.c($$11);
+               $$13 = 0;
             }
-         );
-   }
+         }
+      }
 
-   static record a(eif<?, ?> a, Optional<epm> b) {
-   }
-
-   static record b(Object2IntMap<eiu.a> a, MutableInt b) {
+      return true;
    }
 }

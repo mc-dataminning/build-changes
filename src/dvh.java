@@ -1,35 +1,27 @@
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dvh extends dme {
-   public static final MapCodec<dvh> a = b(dvh::new);
-   private static final feq b = dlu.b(14.0, 0.0, 1.5);
+public class dvh extends dqp {
+   public static final MapCodec<dvh> f = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(
+               ayu.a(0.0F, 1.0F).fieldOf("leaf_particle_chance").forGetter($$0x -> $$0x.e), lx.bk.fieldOf("leaf_particle").forGetter($$0x -> $$0x.g), t()
+            )
+            .apply($$0, dvh::new)
+   );
+   protected final lv g;
+
+   public dvh(float $$0, lv $$1, dzy.d $$2) {
+      super($$0, $$2);
+      this.g = $$1;
+   }
+
+   @Override
+   protected void a(div $$0, iu $$1, azv $$2) {
+      azq.a($$0, $$1, $$2, this.g);
+   }
 
    @Override
    public MapCodec<dvh> a() {
-      return a;
-   }
-
-   protected dvh(dzn.d $$0) {
-      super($$0);
-   }
-
-   @Override
-   protected void a(dzo $$0, dip $$1, iu $$2, bwa $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      if ($$1 instanceof aro && $$3 instanceof ctc) {
-         $$1.a(new iu($$2), true, $$3);
-      }
-   }
-
-   @Override
-   protected feq a(dzo $$0, dhv $$1, iu $$2, feb $$3) {
-      return b;
-   }
-
-   @Override
-   protected boolean b(dzo $$0, dhv $$1, iu $$2) {
-      evv $$3 = $$1.b_($$2);
-      evv $$4 = $$1.b_($$2.d());
-      return ($$3.a() == evw.c || $$0.b() instanceof dpv) && $$4.a() == evw.a;
+      return f;
    }
 }

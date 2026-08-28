@@ -1,18 +1,23 @@
 import io.netty.buffer.ByteBuf;
 
-public class abd implements zd<aba> {
+public class abd implements zf<abc> {
    public static final abd a = new abd();
-   public static final yu<ByteBuf, abd> b = yu.a(a);
+   public static final yw<ByteBuf, abd> b = yw.a(a);
 
    private abd() {
    }
 
    @Override
-   public zf<abd> a() {
-      return abg.e;
+   public zh<abd> a() {
+      return abi.a;
    }
 
-   public void a(aba $$0) {
+   public void a(abc $$0) {
       $$0.a(this);
+   }
+
+   @Override
+   public boolean d() {
+      return true;
    }
 }

@@ -1,178 +1,158 @@
-import com.google.common.base.Strings;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
-import com.mojang.logging.LogUtils;
-import java.util.Locale;
+import com.mojang.blaze3d.platform.GlStateManager;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Stream;
 import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
-public interface fji {
-   ww a = ww.c("mco.errorMessage.noDetails");
-   Logger b = LogUtils.getLogger();
+public record fji(int i, int j, fji.a k, fji.b l, int m) {
+   public static final int a = 32;
+   private static final fji[] n = new fji[32];
+   private static final List<fji> o = new ArrayList<>(32);
+   public static final fji b = a(0, 0, fji.a.a, fji.b.a, 3);
+   public static final fji c = a(1, 0, fji.a.b, fji.b.c, 4);
+   public static final fji d = a(2, 0, fji.a.a, fji.b.d, 2);
+   public static final fji e = d;
+   public static final fji f = a(3, 1, fji.a.e, fji.b.d, 2);
+   public static final fji g = a(4, 2, fji.a.e, fji.b.d, 2);
+   public static final fji h = a(5, 0, fji.a.c, fji.b.b, 3);
 
-   int a();
-
-   ww b();
-
-   String c();
-
-   static fji a(int $$0, String $$1) {
-      if ($$0 == 429) {
-         return fji.b.c;
-      } else if (Strings.isNullOrEmpty($$1)) {
-         return fji.b.b($$0);
+   public fji(int i, int j, fji.a k, fji.b l, int m) {
+      if (i < 0 || i >= n.length) {
+         throw new IllegalArgumentException("Element ID must be in range [0; " + n.length + ")");
+      } else if (!this.a(j, l)) {
+         throw new IllegalStateException("Multiple vertex elements of the same type other than UVs are not supported");
       } else {
-         try {
-            JsonObject $$2 = JsonParser.parseString($$1).getAsJsonObject();
-            String $$3 = aza.a($$2, "reason", null);
-            String $$4 = aza.a($$2, "errorMsg", null);
-            int $$5 = aza.a($$2, "errorCode", -1);
-            if ($$4 != null || $$3 != null || $$5 != -1) {
-               return new fji.c($$0, $$5 != -1 ? $$5 : $$0, $$3, $$4);
-            }
-         } catch (Exception var6) {
-            b.error("Could not parse RealmsError", var6);
-         }
-
-         return new fji.d($$0, $$1);
+         this.i = i;
+         this.j = j;
+         this.k = k;
+         this.l = l;
+         this.m = m;
       }
    }
 
-   public static record a(String d) implements fji {
-      public static final int c = 401;
-
-      @Override
-      public int a() {
-         return 401;
-      }
-
-      @Override
-      public ww b() {
-         return ww.b(this.d);
-      }
-
-      @Override
-      public String c() {
-         return String.format(Locale.ROOT, "Realms authentication error with message '%s'", this.d);
+   public static fji a(int $$0, int $$1, fji.a $$2, fji.b $$3, int $$4) {
+      fji $$5 = new fji($$0, $$1, $$2, $$3, $$4);
+      if (n[$$0] != null) {
+         throw new IllegalArgumentException("Duplicate element registration for: " + $$0);
+      } else {
+         n[$$0] = $$5;
+         o.add($$5);
+         return $$5;
       }
    }
 
-   public static record b(int e, @Nullable ww f) implements fji {
-      public static final fji.b c = new fji.b(429, ww.c("mco.errorMessage.serviceBusy"));
-      public static final ww d = ww.c("mco.errorMessage.retry");
+   private boolean a(int $$0, fji.b $$1) {
+      return $$0 == 0 || $$1 == fji.b.d;
+   }
 
-      public static fji.b a(String $$0) {
-         return new fji.b(500, ww.a("mco.errorMessage.realmsService.unknownCompatibility", $$0));
+   @Override
+   public String toString() {
+      return this.m + "," + this.l + "," + this.k + " (" + this.i + ")";
+   }
+
+   public int a() {
+      return 1 << this.i;
+   }
+
+   public int b() {
+      return this.k.a() * this.m;
+   }
+
+   public void a(int $$0, long $$1, int $$2) {
+      this.l.g.setupBufferState(this.m, this.k.b(), $$2, $$1, $$0);
+   }
+
+   @Nullable
+   public static fji a(int $$0) {
+      return n[$$0];
+   }
+
+   public static Stream<fji> b(int $$0) {
+      return o.stream().filter($$1 -> $$1 != null && ($$0 & $$1.a()) != 0);
+   }
+
+   public int c() {
+      return this.i;
+   }
+
+   public int d() {
+      return this.j;
+   }
+
+   public fji.a e() {
+      return this.k;
+   }
+
+   public fji.b f() {
+      return this.l;
+   }
+
+   public int g() {
+      return this.m;
+   }
+
+   public static enum a {
+      a(4, "Float", 5126),
+      b(1, "Unsigned Byte", 5121),
+      c(1, "Byte", 5120),
+      d(2, "Unsigned Short", 5123),
+      e(2, "Short", 5122),
+      f(4, "Unsigned Int", 5125),
+      g(4, "Int", 5124);
+
+      private final int h;
+      private final String i;
+      private final int j;
+
+      private a(final int $$0, final String $$1, final int $$2) {
+         this.h = $$0;
+         this.i = $$1;
+         this.j = $$2;
       }
 
-      public static fji.b a(flb $$0) {
-         return new fji.b(500, ww.a("mco.errorMessage.realmsService.connectivity", $$0.getMessage()));
-      }
-
-      public static fji.b a(int $$0) {
-         return new fji.b($$0, d);
-      }
-
-      public static fji.b b(int $$0) {
-         return new fji.b($$0, null);
-      }
-
-      @Override
       public int a() {
-         return this.e;
+         return this.h;
+      }
+
+      public int b() {
+         return this.j;
       }
 
       @Override
-      public ww b() {
-         return this.f != null ? this.f : a;
-      }
-
-      @Override
-      public String c() {
-         return this.f != null
-            ? String.format(Locale.ROOT, "Realms service error (%d) with message '%s'", this.e, this.f.getString())
-            : String.format(Locale.ROOT, "Realms service error (%d) with no payload", this.e);
-      }
-
-      public int d() {
-         return this.e;
-      }
-
-      @Nullable
-      public ww e() {
-         return this.f;
+      public String toString() {
+         return this.i;
       }
    }
 
-   public static record c(int c, int d, @Nullable String e, @Nullable String f) implements fji {
-      @Override
-      public int a() {
-         return this.d;
-      }
-
-      @Override
-      public ww b() {
-         String $$0 = "mco.errorMessage." + this.d;
-         if (hjg.a($$0)) {
-            return ww.c($$0);
+   public static enum b {
+      a("Position", ($$0, $$1, $$2, $$3, $$4) -> GlStateManager._vertexAttribPointer($$4, $$0, $$1, false, $$2, $$3)),
+      b("Normal", ($$0, $$1, $$2, $$3, $$4) -> GlStateManager._vertexAttribPointer($$4, $$0, $$1, true, $$2, $$3)),
+      c("Vertex Color", ($$0, $$1, $$2, $$3, $$4) -> GlStateManager._vertexAttribPointer($$4, $$0, $$1, true, $$2, $$3)),
+      d("UV", ($$0, $$1, $$2, $$3, $$4) -> {
+         if ($$1 == 5126) {
+            GlStateManager._vertexAttribPointer($$4, $$0, $$1, false, $$2, $$3);
          } else {
-            if (this.e != null) {
-               String $$1 = "mco.errorReason." + this.e;
-               if (hjg.a($$1)) {
-                  return ww.c($$1);
-               }
-            }
-
-            return (ww)(this.f != null ? ww.b(this.f) : a);
+            GlStateManager._vertexAttribIPointer($$4, $$0, $$1, $$2, $$3);
          }
+      }),
+      e("Generic", ($$0, $$1, $$2, $$3, $$4) -> GlStateManager._vertexAttribPointer($$4, $$0, $$1, false, $$2, $$3));
+
+      private final String f;
+      final fji.b.a g;
+
+      private b(final String $$0, final fji.b.a $$1) {
+         this.f = $$0;
+         this.g = $$1;
       }
 
       @Override
-      public String c() {
-         return String.format(Locale.ROOT, "Realms service error (%d/%d/%s) with message '%s'", this.c, this.d, this.e, this.f);
-      }
-
-      public int d() {
-         return this.c;
-      }
-
-      public int e() {
-         return this.d;
-      }
-
-      @Nullable
-      public String f() {
-         return this.e;
-      }
-
-      @Nullable
-      public String g() {
+      public String toString() {
          return this.f;
       }
-   }
 
-   public static record d(int c, String d) implements fji {
-      @Override
-      public int a() {
-         return this.c;
-      }
-
-      @Override
-      public ww b() {
-         return ww.b(this.d);
-      }
-
-      @Override
-      public String c() {
-         return String.format(Locale.ROOT, "Realms service error (%d) with raw payload '%s'", this.c, this.d);
-      }
-
-      public int d() {
-         return this.c;
-      }
-
-      public String e() {
-         return this.d;
+      @FunctionalInterface
+      interface a {
+         void setupBufferState(int var1, int var2, int var3, long var4, int var6);
       }
    }
 }

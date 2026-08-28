@@ -1,38 +1,41 @@
-public class fna extends fnd {
-   private static final ww b = ww.c("mco.connect.connecting");
-   private final hoj c;
-   private final fkh d;
-   private final fki e;
+import com.mojang.logging.LogUtils;
+import org.slf4j.Logger;
 
-   public fna(fxi $$0, fkh $$1, fki $$2) {
-      this.d = $$1;
-      this.e = $$2;
-      this.c = new hoj($$0);
-   }
-
-   @Override
-   public void run() {
-      if (this.e.a != null) {
-         this.c.a(this.d, gkv.a(this.e.a));
-      } else {
-         this.b();
+public interface fna {
+   fna a = new fna() {
+      @Override
+      public long a() {
+         return 1L;
       }
-   }
 
-   @Override
-   public void b() {
-      super.b();
-      this.c.a();
-      fof.Q().af().i();
-   }
+      @Override
+      public long b() {
+         return 1L;
+      }
+   };
 
-   @Override
-   public void c() {
-      this.c.b();
-   }
+   long a();
 
-   @Override
-   public ww a() {
-      return b;
+   long b();
+
+   static fna a(final int $$0) {
+      return new fna() {
+         private static final Logger c = LogUtils.getLogger();
+         private int d;
+
+         @Override
+         public long a() {
+            this.d = 0;
+            return 1L;
+         }
+
+         @Override
+         public long b() {
+            this.d++;
+            long $$0 = Math.min(1L << this.d, (long)$$0);
+            c.debug("Skipping for {} extra cycles", $$0);
+            return $$0;
+         }
+      };
    }
 }

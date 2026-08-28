@@ -1,35 +1,71 @@
-public class ggm extends gfd<hbp> {
-   private final gig a;
-   private final gig b;
+import java.util.List;
+import java.util.Optional;
+import java.util.function.Function;
+import org.joml.Vector3f;
 
-   public ggm(gig $$0) {
-      super($$0);
-      this.a = $$0.b("left_blue_fin");
-      this.b = $$0.b("right_blue_fin");
+public abstract class ggm {
+   private static final Vector3f a = new Vector3f();
+   protected final giu v;
+   protected final Function<alg, gqc> w;
+   private final List<giu> b;
+
+   public ggm(giu $$0, Function<alg, gqc> $$1) {
+      this.v = $$0;
+      this.w = $$1;
+      this.b = $$0.e().toList();
    }
 
-   public static gim a() {
-      gio $$0 = new gio();
-      giq $$1 = $$0.a();
-      int $$2 = 22;
-      $$1.a("body", gil.c().a(12, 22).a(-2.5F, -5.0F, -2.5F, 5.0F, 5.0F, 5.0F), gii.a(0.0F, 22.0F, 0.0F));
-      $$1.a("right_blue_fin", gil.c().a(24, 0).a(-2.0F, 0.0F, 0.0F, 2.0F, 0.0F, 2.0F), gii.a(-2.5F, 18.0F, -1.5F));
-      $$1.a("left_blue_fin", gil.c().a(24, 3).a(0.0F, 0.0F, 0.0F, 2.0F, 0.0F, 2.0F), gii.a(2.5F, 18.0F, -1.5F));
-      $$1.a("top_front_fin", gil.c().a(19, 17).a(-2.5F, -1.0F, 0.0F, 5.0F, 1.0F, 0.0F), gii.a(0.0F, 17.0F, -2.5F, (float) (Math.PI / 4), 0.0F, 0.0F));
-      $$1.a("top_back_fin", gil.c().a(11, 17).a(-2.5F, -1.0F, 0.0F, 5.0F, 1.0F, 0.0F), gii.a(0.0F, 17.0F, 2.5F, (float) (-Math.PI / 4), 0.0F, 0.0F));
-      $$1.a("right_front_fin", gil.c().a(5, 17).a(-1.0F, -5.0F, 0.0F, 1.0F, 5.0F, 0.0F), gii.a(-2.5F, 22.0F, -2.5F, 0.0F, (float) (-Math.PI / 4), 0.0F));
-      $$1.a("right_back_fin", gil.c().a(9, 17).a(-1.0F, -5.0F, 0.0F, 1.0F, 5.0F, 0.0F), gii.a(-2.5F, 22.0F, 2.5F, 0.0F, (float) (Math.PI / 4), 0.0F));
-      $$1.a("left_back_fin", gil.c().a(1, 17).a(0.0F, -5.0F, 0.0F, 1.0F, 5.0F, 0.0F), gii.a(2.5F, 22.0F, 2.5F, 0.0F, (float) (-Math.PI / 4), 0.0F));
-      $$1.a("left_front_fin", gil.c().a(1, 17).a(0.0F, -5.0F, 0.0F, 1.0F, 5.0F, 0.0F), gii.a(2.5F, 22.0F, -2.5F, 0.0F, (float) (Math.PI / 4), 0.0F));
-      $$1.a("bottom_back_fin", gil.c().a(18, 20).a(0.0F, 0.0F, 0.0F, 5.0F, 1.0F, 0.0F), gii.a(-2.5F, 22.0F, 2.5F, (float) (Math.PI / 4), 0.0F, 0.0F));
-      $$1.a("bottom_front_fin", gil.c().a(17, 19).a(-2.5F, 0.0F, 0.0F, 5.0F, 1.0F, 1.0F), gii.a(0.0F, 22.0F, -2.5F, (float) (-Math.PI / 4), 0.0F, 0.0F));
-      return gim.a($$0, 32, 32);
+   public final gqc a(alg $$0) {
+      return this.w.apply($$0);
    }
 
-   @Override
-   public void a(hbp $$0) {
-      super.a($$0);
-      this.b.g = -0.2F + 0.4F * azk.a($$0.u * 0.2F);
-      this.a.g = 0.2F - 0.4F * azk.a($$0.u * 0.2F);
+   public final void a(fjc $$0, fjg $$1, int $$2, int $$3, int $$4) {
+      this.e().a($$0, $$1, $$2, $$3, $$4);
+   }
+
+   public final void a(fjc $$0, fjg $$1, int $$2, int $$3) {
+      this.a($$0, $$1, $$2, $$3, -1);
+   }
+
+   public final giu e() {
+      return this.v;
+   }
+
+   public Optional<giu> a(String $$0) {
+      return $$0.equals("root") ? Optional.of(this.e()) : this.e().e().filter($$1 -> $$1.a($$0)).findFirst().map($$1 -> $$1.b($$0));
+   }
+
+   public final List<giu> f() {
+      return this.b;
+   }
+
+   public final void g() {
+      for (giu $$0 : this.b) {
+         $$0.c();
+      }
+   }
+
+   protected void a(bvu $$0, fpg $$1, float $$2) {
+      this.a($$0, $$1, $$2, 1.0F);
+   }
+
+   protected void a(fpg $$0, float $$1, float $$2, float $$3, float $$4) {
+      long $$5 = (long)($$1 * 50.0F * $$3);
+      float $$6 = Math.min($$2 * $$4, 1.0F);
+      fpi.a(this, $$0, $$5, $$6, a);
+   }
+
+   protected void a(bvu $$0, fpg $$1, float $$2, float $$3) {
+      $$0.a($$3x -> fpi.a(this, $$1, (long)((float)$$3x.a($$2) * $$3), 1.0F, a));
+   }
+
+   protected void a(fpg $$0) {
+      fpi.a(this, $$0, 0L, 1.0F, a);
+   }
+
+   public static class a extends ggm {
+      public a(giu $$0, Function<alg, gqc> $$1) {
+         super($$0, $$1);
+      }
    }
 }

@@ -1,8 +1,8 @@
-@FunctionalInterface
-public interface akw<T, V> {
-   V get(ald<T> var1);
+import javax.annotation.ParametersAreNonnullByDefault;
 
-   static <T, V> akw<T, V> fixed(V $$0) {
-      return $$1 -> $$0;
-   }
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface akw {
 }

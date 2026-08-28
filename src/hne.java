@@ -1,7 +1,8 @@
-public interface hne<T> {
-   int e();
+import javax.annotation.ParametersAreNonnullByDefault;
 
-   T b(azt var1);
-
-   void a(hmz var1);
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface hne {
 }

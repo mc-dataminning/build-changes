@@ -1,27 +1,16 @@
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class epb extends epo {
-   public static final MapCodec<epb> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(egu.b.fieldOf("predicate").forGetter($$0x -> $$0x.c)).apply($$0, epb::new)
-   );
-   private final egu c;
+public interface epb<P extends epa> {
+   epb<eoz> a = a("constant", eoz.b);
+   epb<epd> b = a("uniform", epd.a);
+   epb<eoy> c = a("biased_to_bottom", eoy.a);
+   epb<epe> d = a("very_biased_to_bottom", epe.a);
+   epb<epc> e = a("trapezoid", epc.a);
+   epb<epf> f = a("weighted_list", epf.a);
 
-   private epb(egu $$0) {
-      this.c = $$0;
-   }
+   MapCodec<P> codec();
 
-   public static epb a(egu $$0) {
-      return new epb($$0);
-   }
-
-   @Override
-   protected boolean a(epn $$0, azt $$1, iu $$2) {
-      return this.c.test($$0.d(), $$2);
-   }
-
-   @Override
-   public epq<?> b() {
-      return epq.a;
+   private static <P extends epa> epb<P> a(String $$0, MapCodec<P> $$1) {
+      return jr.a(mf.L, $$0, () -> $$1);
    }
 }

@@ -1,43 +1,98 @@
-import com.mojang.datafixers.kinds.App;
-import java.util.Optional;
-import java.util.function.Function;
+import com.google.common.collect.Iterators;
+import com.google.common.collect.Lists;
+import com.mojang.datafixers.util.Pair;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.Dynamic;
+import com.mojang.serialization.DynamicOps;
+import java.util.Comparator;
+import java.util.Iterator;
+import java.util.List;
+import java.util.stream.Stream;
 
-public class cbc {
-   public static <E extends bxb> byr<E> a(cbc.b<E> $$0) {
-      return a(($$0x, $$1) -> true, $$0);
+public class cbc<U> implements Iterable<U> {
+   protected final List<cbc.a<U>> a;
+   private final azv b = azv.a();
+
+   public cbc() {
+      this.a = Lists.newArrayList();
    }
 
-   public static <E extends bxb> byr<E> a(cbc.a<E> $$0, cbc.b<E> $$1) {
-      return ccd.a(
-         (Function<ccd.b<E>, ? extends App<ccd.c<E>, ccg<E>>>)($$2 -> $$2.group($$2.c(cgb.p), $$2.a(cgb.F)).apply($$2, ($$2x, $$3) -> ($$4, $$5, $$6) -> {
-                  if (!$$0.test($$4, (E)$$5)) {
-                     return false;
-                  } else {
-                     Optional<? extends bwz> $$7 = $$1.get($$4, (E)$$5);
-                     if ($$7.isEmpty()) {
-                        return false;
-                     } else {
-                        bwz $$8 = $$7.get();
-                        if (!$$5.c($$8)) {
-                           return false;
-                        } else {
-                           $$2x.a($$8);
-                           $$3.b();
-                           return true;
-                        }
-                     }
-                  }
-               }))
-      );
+   private cbc(List<cbc.a<U>> $$0) {
+      this.a = Lists.newArrayList($$0);
    }
 
-   @FunctionalInterface
-   public interface a<E> {
-      boolean test(aro var1, E var2);
+   public static <U> Codec<cbc<U>> a(Codec<U> $$0) {
+      return cbc.a.a($$0).listOf().xmap(cbc::new, $$0x -> $$0x.a);
    }
 
-   @FunctionalInterface
-   public interface b<E> {
-      Optional<? extends bwz> get(aro var1, E var2);
+   public cbc<U> a(U $$0, int $$1) {
+      this.a.add(new cbc.a<>($$0, $$1));
+      return this;
+   }
+
+   public cbc<U> a() {
+      this.a.forEach($$0 -> $$0.a(this.b.i()));
+      this.a.sort(Comparator.comparingDouble(cbc.a::c));
+      return this;
+   }
+
+   public Stream<U> b() {
+      return this.a.stream().map(cbc.a::a);
+   }
+
+   @Override
+   public Iterator<U> iterator() {
+      return Iterators.transform(this.a.iterator(), cbc.a::a);
+   }
+
+   @Override
+   public String toString() {
+      return "ShufflingList[" + this.a + "]";
+   }
+
+   public static class a<T> {
+      final T a;
+      final int b;
+      private double c;
+
+      a(T $$0, int $$1) {
+         this.b = $$1;
+         this.a = $$0;
+      }
+
+      private double c() {
+         return this.c;
+      }
+
+      void a(float $$0) {
+         this.c = -Math.pow((double)$$0, (double)(1.0F / (float)this.b));
+      }
+
+      public T a() {
+         return this.a;
+      }
+
+      public int b() {
+         return this.b;
+      }
+
+      @Override
+      public String toString() {
+         return this.b + ":" + this.a;
+      }
+
+      public static <E> Codec<cbc.a<E>> a(final Codec<E> $$0) {
+         return new Codec<cbc.a<E>>() {
+            public <T> DataResult<Pair<cbc.a<E>, T>> decode(DynamicOps<T> $$0x, T $$1) {
+               Dynamic<T> $$2 = new Dynamic($$0, $$1);
+               return $$2.get("data").flatMap($$0::parse).map($$1x -> new cbc.a<>($$1x, $$2.get("weight").asInt(1))).map($$1x -> Pair.of($$1x, $$0.empty()));
+            }
+
+            public <T> DataResult<T> a(cbc.a<E> $$0x, DynamicOps<T> $$1, T $$2) {
+               return $$1.mapBuilder().add("weight", $$1.createInt($$0.b)).add("data", $$0.encodeStart($$1, $$0.a)).build($$2);
+            }
+         };
+      }
    }
 }

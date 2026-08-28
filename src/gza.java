@@ -1,20 +1,25 @@
-public class gza extends gzy<hbf, geo> {
-   private static final ale a = ale.b("textures/entity/cat/cat_collar.png");
-   private final geo b;
-   private final geo c;
+public class gza extends gxf<coq, her, gih> {
+   private static final alg a = alg.b("textures/entity/witch.png");
 
-   public gza(gxh<hbf, geo> $$0, gic $$1) {
-      super($$0);
-      this.b = new geo($$1.a(gif.T));
-      this.c = new geo($$1.a(gif.S));
+   public gza(gvz.a $$0) {
+      super($$0, new gih($$0.a(git.dP)), 0.5F);
+      this.a(new haz(this));
    }
 
-   public void a(fiq $$0, gpd $$1, int $$2, hbf $$3, float $$4, float $$5) {
-      cxq $$6 = $$3.c;
-      if ($$6 != null) {
-         int $$7 = $$6.d();
-         geo $$8 = $$3.aj ? this.c : this.b;
-         a($$8, a, $$0, $$1, $$2, $$3, $$7);
-      }
+   public alg a(her $$0) {
+      return a;
+   }
+
+   public her b() {
+      return new her();
+   }
+
+   public void a(coq $$0, her $$1, float $$2) {
+      super.a($$0, $$1, $$2);
+      hcu.a($$0, $$1, this.h);
+      $$1.a = $$0.ar();
+      cyy $$3 = $$0.fa();
+      $$1.b = !$$3.f();
+      $$1.c = $$3.a(czc.to);
    }
 }

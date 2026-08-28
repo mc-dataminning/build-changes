@@ -1,41 +1,19 @@
-import com.mojang.logging.LogUtils;
-import org.slf4j.Logger;
+import java.util.function.Consumer;
 
-public interface fmo {
-   fmo a = new fmo() {
-      @Override
-      public long a() {
-         return 1L;
-      }
+public class fmo {
+   private static final int a = 8226750;
+   private static final wy b = wy.c("mco.info").b(8226750);
+   private static final wy c = wy.c("mco.warning").b(-65536);
 
-      @Override
-      public long b() {
-         return 1L;
-      }
-   };
+   public static fte a(fxu $$0, wy $$1, Consumer<fte> $$2) {
+      return new fte.a($$0, b).a($$1).a(wx.j, $$2).a(wx.e, fte::aK_).a();
+   }
 
-   long a();
+   public static fte b(fxu $$0, wy $$1, Consumer<fte> $$2) {
+      return new fte.a($$0, c).a($$1).a(wx.j, $$2).a(wx.e, fte::aK_).a();
+   }
 
-   long b();
-
-   static fmo a(final int $$0) {
-      return new fmo() {
-         private static final Logger c = LogUtils.getLogger();
-         private int d;
-
-         @Override
-         public long a() {
-            this.d = 0;
-            return 1L;
-         }
-
-         @Override
-         public long b() {
-            this.d++;
-            long $$0 = Math.min(1L << this.d, (long)$$0);
-            c.debug("Skipping for {} extra cycles", $$0);
-            return $$0;
-         }
-      };
+   public static fte c(fxu $$0, wy $$1, Consumer<fte> $$2) {
+      return new fte.a($$0, c).a($$1).a(wx.h, $$2).a();
    }
 }

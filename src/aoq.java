@@ -1,28 +1,55 @@
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
+import com.mojang.brigadier.builder.RequiredArgumentBuilder;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.brigadier.exceptions.Dynamic2CommandExceptionType;
+import com.mojang.brigadier.exceptions.DynamicCommandExceptionType;
 import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
-import net.minecraft.server.MinecraftServer;
 
 public class aoq {
-   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(ww.c("commands.save.failed"));
+   private static final DynamicCommandExceptionType a = new DynamicCommandExceptionType($$0 -> wy.b("commands.ride.not_riding", $$0));
+   private static final Dynamic2CommandExceptionType b = new Dynamic2CommandExceptionType(($$0, $$1) -> wy.b("commands.ride.already_riding", $$0, $$1));
+   private static final Dynamic2CommandExceptionType c = new Dynamic2CommandExceptionType(($$0, $$1) -> wy.b("commands.ride.mount.failure.generic", $$0, $$1));
+   private static final SimpleCommandExceptionType d = new SimpleCommandExceptionType(wy.c("commands.ride.mount.failure.cant_ride_players"));
+   private static final SimpleCommandExceptionType e = new SimpleCommandExceptionType(wy.c("commands.ride.mount.failure.loop"));
+   private static final SimpleCommandExceptionType f = new SimpleCommandExceptionType(wy.c("commands.ride.mount.failure.wrong_dimension"));
 
    public static void a(CommandDispatcher<ei> $$0) {
       $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)ej.a("save-all").requires($$0x -> $$0x.c(4)))
-               .executes($$0x -> a((ei)$$0x.getSource(), false)))
-            .then(ej.a("flush").executes($$0x -> a((ei)$$0x.getSource(), true)))
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)ej.a("ride").requires($$0x -> $$0x.c(2)))
+            .then(
+               ((RequiredArgumentBuilder)ej.a("target", ev.a())
+                     .then(ej.a("mount").then(ej.a("vehicle", ev.a()).executes($$0x -> a((ei)$$0x.getSource(), ev.a($$0x, "target"), ev.a($$0x, "vehicle"))))))
+                  .then(ej.a("dismount").executes($$0x -> a((ei)$$0x.getSource(), ev.a($$0x, "target"))))
+            )
       );
    }
 
-   private static int a(ei $$0, boolean $$1) throws CommandSyntaxException {
-      $$0.a(() -> ww.c("commands.save.saving"), false);
-      MinecraftServer $$2 = $$0.l();
-      boolean $$3 = $$2.b(true, $$1, true);
-      if (!$$3) {
-         throw a.create();
+   private static int a(ei $$0, bwd $$1, bwd $$2) throws CommandSyntaxException {
+      bwd $$3 = $$1.dk();
+      if ($$3 != null) {
+         throw b.create($$1.m_(), $$3.m_());
+      } else if ($$2.aq() == bwm.bS) {
+         throw d.create();
+      } else if ($$1.da().anyMatch($$1x -> $$1x == $$2)) {
+         throw e.create();
+      } else if ($$1.dV() != $$2.dV()) {
+         throw f.create();
+      } else if (!$$1.a($$2, true)) {
+         throw c.create($$1.m_(), $$2.m_());
       } else {
-         $$0.a(() -> ww.c("commands.save.success"), true);
+         $$0.a(() -> wy.a("commands.ride.mount.success", $$1.m_(), $$2.m_()), true);
+         return 1;
+      }
+   }
+
+   private static int a(ei $$0, bwd $$1) throws CommandSyntaxException {
+      bwd $$2 = $$1.dk();
+      if ($$2 == null) {
+         throw a.create($$1.m_());
+      } else {
+         $$1.bP();
+         $$0.a(() -> wy.a("commands.ride.dismount.success", $$1.m_(), $$2.m_()), true);
          return 1;
       }
    }

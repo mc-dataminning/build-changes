@@ -1,25 +1,77 @@
-public class gle extends gnl {
-   gle(gjd $$0, double $$1, double $$2, double $$3, dzo $$4) {
-      super($$0, $$1, $$2, $$3);
-      this.a(fof.Q().ap().a().a($$4));
-      this.u = 0.0F;
-      this.t = 80;
-      this.n = false;
+import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
+import it.unimi.dsi.fastutil.longs.Long2ObjectMap.Entry;
+import it.unimi.dsi.fastutil.objects.ObjectIterator;
+
+public class gle implements AutoCloseable {
+   private final Long2ObjectOpenHashMap<gle.a> a = new Long2ObjectOpenHashMap();
+   private int b;
+   private boolean c;
+
+   public void a(iu $$0, dzz $$1, gop $$2) {
+      this.a.compute($$0.a(), ($$2x, $$3) -> $$3 != null ? $$3.a(this.b) : new gle.a(this.b, $$1, $$2.dt()));
+   }
+
+   public boolean a(iu $$0, dzz $$1) {
+      gle.a $$2 = (gle.a)this.a.get($$0.a());
+      if ($$2 == null) {
+         return false;
+      } else {
+         $$2.a($$1);
+         return true;
+      }
+   }
+
+   public void a(int $$0, gjr $$1) {
+      ObjectIterator<Entry<gle.a>> $$2 = this.a.long2ObjectEntrySet().iterator();
+
+      while ($$2.hasNext()) {
+         Entry<gle.a> $$3 = (Entry<gle.a>)$$2.next();
+         gle.a $$4 = (gle.a)$$3.getValue();
+         if ($$4.b <= $$0) {
+            iu $$5 = iu.d($$3.getLongKey());
+            $$2.remove();
+            $$1.a($$5, $$4.c, $$4.a);
+         }
+      }
+   }
+
+   public gle a() {
+      this.b++;
+      this.c = true;
+      return this;
    }
 
    @Override
-   public gmp b() {
-      return gmp.a;
+   public void close() {
+      this.c = false;
    }
 
-   @Override
-   public float b(float $$0) {
-      return 0.5F;
+   public int b() {
+      return this.b;
    }
 
-   public static class a implements gmo<lp> {
-      public gml a(lp $$0, gjd $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new gle($$1, $$2, $$3, $$4, $$0.b());
+   public boolean c() {
+      return this.c;
+   }
+
+   static class a {
+      final fei a;
+      int b;
+      dzz c;
+
+      a(int $$0, dzz $$1, fei $$2) {
+         this.b = $$0;
+         this.c = $$1;
+         this.a = $$2;
+      }
+
+      gle.a a(int $$0) {
+         this.b = $$0;
+         return this;
+      }
+
+      void a(dzz $$0) {
+         this.c = $$0;
       }
    }
 }

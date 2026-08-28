@@ -1,110 +1,234 @@
-import com.mojang.brigadier.context.CommandContext;
-import java.util.Collection;
-import java.util.LinkedList;
+import com.mojang.logging.LogUtils;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Arrays;
 import java.util.List;
-import java.util.function.Supplier;
-import java.util.function.UnaryOperator;
-import java.util.stream.Stream;
+import java.util.Optional;
+import net.minecraft.server.MinecraftServer;
+import org.slf4j.Logger;
 
-public class tl implements tn, to {
-   static final tn a = Stream::empty;
-   static final to b = Stream::empty;
-   private final tn c;
-   private final to d;
-   private final ei e;
+public interface tl {
+   Codec<tl> a = mf.aB.q().dispatch(tl::a, $$0 -> $$0);
+   Codec<je<tl>> b = alc.a(mg.bf, a);
 
-   @Override
-   public Stream<iu> findTestPos() {
-      return this.d.findTestPos();
+   static MapCodec<? extends tl> a(jr<MapCodec<? extends tl>> $$0) {
+      jr.a($$0, "all_of", tl.a.c);
+      jr.a($$0, "game_rules", tl.c.c);
+      jr.a($$0, "time_of_day", tl.d.c);
+      jr.a($$0, "weather", tl.e.c);
+      return jr.a($$0, "function", tl.b.c);
    }
 
-   public static tl.a a() {
-      return new tl.a();
+   void a(arq var1);
+
+   default void b(arq $$0) {
    }
 
-   tl(ei $$0, tn $$1, to $$2) {
-      this.e = $$0;
-      this.c = $$1;
-      this.d = $$2;
+   MapCodec<? extends tl> a();
+
+   public static record a(List<je<tl>> d) implements tl {
+      public static final MapCodec<tl.a> c = RecordCodecBuilder.mapCodec(
+         $$0 -> $$0.group(tl.b.listOf().fieldOf("definitions").forGetter(tl.a::b)).apply($$0, tl.a::new)
+      );
+
+      public a(tl... $$0) {
+         this(Arrays.stream($$0).map(je::a).toList());
+      }
+
+      @Override
+      public void a(arq $$0) {
+         this.d.forEach($$1 -> $$1.a().a($$0));
+      }
+
+      @Override
+      public void b(arq $$0) {
+         this.d.forEach($$1 -> $$1.a().b($$0));
+      }
+
+      @Override
+      public MapCodec<tl.a> a() {
+         return c;
+      }
+
+      public List<je<tl>> b() {
+         return this.d;
+      }
    }
 
-   public ei b() {
-      return this.e;
+   public static record b(Optional<alg> d, Optional<alg> e) implements tl {
+      private static final Logger f = LogUtils.getLogger();
+      public static final MapCodec<tl.b> c = RecordCodecBuilder.mapCodec(
+         $$0 -> $$0.group(alg.a.optionalFieldOf("setup").forGetter(tl.b::b), alg.a.optionalFieldOf("teardown").forGetter(tl.b::c)).apply($$0, tl.b::new)
+      );
+
+      @Override
+      public void a(arq $$0) {
+         this.d.ifPresent($$1 -> a($$0, $$1));
+      }
+
+      @Override
+      public void b(arq $$0) {
+         this.e.ifPresent($$1 -> a($$0, $$1));
+      }
+
+      private static void a(arq $$0, alg $$1) {
+         MinecraftServer $$2 = $$0.p();
+         alv $$3 = $$2.aE();
+         Optional<hw<ei>> $$4 = $$3.a($$1);
+         if ($$4.isPresent()) {
+            ei $$5 = $$2.aH().a(2).a().a($$0);
+            $$3.a($$4.get(), $$5);
+         } else {
+            f.error("Test Batch failed for non-existent function {}", $$1);
+         }
+      }
+
+      @Override
+      public MapCodec<tl.b> a() {
+         return c;
+      }
+
+      public Optional<alg> b() {
+         return this.d;
+      }
+
+      public Optional<alg> c() {
+         return this.e;
+      }
    }
 
-   @Override
-   public Stream<je.c<sq>> findTests() {
-      return this.c.findTests();
+   public static record c(List<tl.c.a<Boolean, dir.a>> d, List<tl.c.a<Integer, dir.d>> e) implements tl {
+      public static final MapCodec<tl.c> c = RecordCodecBuilder.mapCodec(
+         $$0 -> $$0.group(
+                  tl.c.a.a(dir.a.class, Codec.BOOL).listOf().fieldOf("bool_rules").forGetter(tl.c::b),
+                  tl.c.a.a(dir.d.class, Codec.INT).listOf().fieldOf("int_rules").forGetter(tl.c::c)
+               )
+               .apply($$0, tl.c::new)
+      );
+
+      @Override
+      public void a(arq $$0) {
+         dir $$1 = $$0.O();
+         MinecraftServer $$2 = $$0.p();
+
+         for (tl.c.a<Boolean, dir.a> $$3 : this.d) {
+            $$1.b($$3.a()).a($$3.b(), $$2);
+         }
+
+         for (tl.c.a<Integer, dir.d> $$4 : this.e) {
+            $$1.b($$4.a()).a($$4.b(), $$2);
+         }
+      }
+
+      @Override
+      public void b(arq $$0) {
+         dir $$1 = $$0.O();
+         MinecraftServer $$2 = $$0.p();
+
+         for (tl.c.a<Boolean, dir.a> $$3 : this.d) {
+            $$1.b($$3.a()).a(dir.a($$3.a()).a(), $$2);
+         }
+
+         for (tl.c.a<Integer, dir.d> $$4 : this.e) {
+            $$1.b($$4.a()).a(dir.a($$4.a()).a(), $$2);
+         }
+      }
+
+      @Override
+      public MapCodec<tl.c> a() {
+         return c;
+      }
+
+      public static <S, T extends dir.g<T>> tl.c.a<S, T> a(dir.e<T> $$0, S $$1) {
+         return new tl.c.a<>($$0, $$1);
+      }
+
+      public List<tl.c.a<Boolean, dir.a>> b() {
+         return this.d;
+      }
+
+      public List<tl.c.a<Integer, dir.d>> c() {
+         return this.e;
+      }
+
+      public static record a<S, T extends dir.g<T>>(dir.e<T> a, S b) {
+         public static <S, T extends dir.g<T>> Codec<tl.c.a<S, T>> a(Class<T> $$0, Codec<S> $$1) {
+            return RecordCodecBuilder.create(
+               $$2 -> $$2.group(dir.a($$0).fieldOf("rule").forGetter(tl.c.a::a), $$1.fieldOf("value").forGetter(tl.c.a::b)).apply($$2, tl.c.a::new)
+            );
+         }
+      }
    }
 
-   public static class a {
-      private final UnaryOperator<Supplier<Stream<je.c<sq>>>> a;
-      private final UnaryOperator<Supplier<Stream<iu>>> b;
+   public static record d(int d) implements tl {
+      public static final MapCodec<tl.d> c = RecordCodecBuilder.mapCodec($$0 -> $$0.group(ayu.l.fieldOf("time").forGetter(tl.d::b)).apply($$0, tl.d::new));
 
-      public a() {
-         this.a = $$0 -> $$0;
-         this.b = $$0 -> $$0;
+      @Override
+      public void a(arq $$0) {
+         $$0.b((long)this.d);
       }
 
-      private a(UnaryOperator<Supplier<Stream<je.c<sq>>>> $$0, UnaryOperator<Supplier<Stream<iu>>> $$1) {
-         this.a = $$0;
-         this.b = $$1;
+      @Override
+      public MapCodec<tl.d> a() {
+         return c;
       }
 
-      public tl.a a(int $$0) {
-         return new tl.a(b($$0), b($$0));
+      public int b() {
+         return this.d;
+      }
+   }
+
+   public static record e(tl.e.a d) implements tl {
+      public static final MapCodec<tl.e> c = RecordCodecBuilder.mapCodec($$0 -> $$0.group(tl.e.a.d.fieldOf("weather").forGetter(tl.e::b)).apply($$0, tl.e::new));
+
+      @Override
+      public void a(arq $$0) {
+         this.d.a($$0);
       }
 
-      private static <Q> UnaryOperator<Supplier<Stream<Q>>> b(int $$0) {
-         return $$1 -> {
-            List<Q> $$2 = new LinkedList<>();
-            List<Q> $$3 = ((Stream)$$1.get()).toList();
-
-            for (int $$4 = 0; $$4 < $$0; $$4++) {
-               $$2.addAll($$3);
-            }
-
-            return $$2::stream;
-         };
+      @Override
+      public void b(arq $$0) {
+         $$0.h();
       }
 
-      private tl a(ei $$0, tn $$1, to $$2) {
-         return new tl($$0, this.a.apply($$1::findTests)::get, this.b.apply($$2::findTestPos)::get);
+      @Override
+      public MapCodec<tl.e> a() {
+         return c;
       }
 
-      public tl a(CommandContext<ei> $$0, int $$1) {
-         ei $$2 = (ei)$$0.getSource();
-         iu $$3 = iu.a((jo)$$2.d());
-         return this.a($$2, tl.a, () -> th.c($$3, $$1, $$2.e()));
+      public tl.e.a b() {
+         return this.d;
       }
 
-      public tl a(CommandContext<ei> $$0) {
-         ei $$1 = (ei)$$0.getSource();
-         iu $$2 = iu.a((jo)$$1.d());
-         return this.a($$1, tl.a, () -> th.b($$2, 15, $$1.e()).stream());
-      }
+      public static enum a implements bak {
+         a("clear", 100000, 0, false, false),
+         b("rain", 0, 100000, true, false),
+         c("thunder", 0, 100000, true, true);
 
-      public tl b(CommandContext<ei> $$0) {
-         ei $$1 = (ei)$$0.getSource();
-         iu $$2 = iu.a((jo)$$1.d());
-         return this.a($$1, tl.a, () -> th.c($$2, 200, $$1.e()));
-      }
+         public static final Codec<tl.e.a> d = bak.a(tl.e.a::values);
+         private final String e;
+         private final int f;
+         private final int g;
+         private final boolean h;
+         private final boolean i;
 
-      public tl c(CommandContext<ei> $$0) {
-         ei $$1 = (ei)$$0.getSource();
-         return this.a($$1, tl.a, () -> th.a(iu.a((jo)$$1.d()), $$1.i().L(), $$1.e()));
-      }
+         private a(final String $$0, final int $$1, final int $$2, final boolean $$3, final boolean $$4) {
+            this.e = $$0;
+            this.f = $$1;
+            this.g = $$2;
+            this.h = $$3;
+            this.i = $$4;
+         }
 
-      public tl a(CommandContext<ei> $$0, boolean $$1) {
-         return this.a((ei)$$0.getSource(), () -> sf.a().filter($$1x -> !$$1 || ((sq)$$1x.a()).h()), tl.b);
-      }
+         void a(arq $$0) {
+            $$0.a(this.f, this.g, this.h, this.i);
+         }
 
-      public tl a(CommandContext<ei> $$0, Collection<je.c<sq>> $$1) {
-         return this.a((ei)$$0.getSource(), $$1::stream, tl.b);
-      }
-
-      public tl d(CommandContext<ei> $$0) {
-         return this.a($$0, false);
+         @Override
+         public String c() {
+            return this.e;
+         }
       }
    }
 }

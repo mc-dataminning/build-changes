@@ -1,160 +1,116 @@
-import com.google.common.annotations.VisibleForTesting;
-import java.util.Optional;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import javax.annotation.Nullable;
 
-public class dra {
-   public static final dra.e[] a = new dra.e[]{dra.e.a, dra.e.b, dra.e.c};
-   private final dra.b b;
+public class dra extends dsv implements dtj {
+   public static final MapCodec<dra> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(dzn.a.fieldOf("tree").forGetter($$0x -> $$0x.g), t()).apply($$0, dra::new)
+   );
+   public static final eaz b = eap.aw;
+   public static final int c = 4;
+   private static final int[] h = new int[]{13, 10, 7, 3, 0};
+   private static final ffc[] i = dma.a(4, $$0 -> dma.b(2.0, (double)h[$$0], 16.0));
+   private static final eaq C = eap.I;
+   public static final eaq d = eap.m;
 
-   public dra(dqy $$0) {
-      this(new dra.a($$0));
+   @Override
+   public MapCodec<dra> a() {
+      return a;
    }
 
-   public dra(dra.b $$0) {
-      this.b = $$0;
+   public dra(dzn $$0, dzy.d $$1) {
+      super($$0, $$1);
+      this.l(this.B.b().b(f, Integer.valueOf(0)).b(b, Integer.valueOf(0)).b(C, Boolean.valueOf(false)).b(d, Boolean.valueOf(false)));
    }
 
-   public boolean a(dzo $$0, dhv $$1, iu $$2, ja $$3) {
-      return ja.a().anyMatch($$4 -> this.a($$0, $$1, $$2, $$3, $$4, this.b::a).isPresent());
+   @Override
+   protected void a(eaa.a<dma, dzz> $$0) {
+      $$0.a(f).a(b).a(C).a(d);
    }
 
-   public Optional<dra.c> a(dzo $$0, diq $$1, iu $$2, azt $$3) {
-      return ja.a($$3)
-         .stream()
-         .filter($$1x -> this.b.b($$0, $$1x))
-         .map($$4 -> this.a($$0, $$1, $$2, $$4, $$3, false))
-         .filter(Optional::isPresent)
-         .findFirst()
-         .orElse(Optional.empty());
+   @Override
+   protected boolean b(dzz $$0, dib $$1, iu $$2) {
+      return super.b($$0, $$1, $$2) || $$0.a(dmc.ef);
    }
 
-   public long a(dzo $$0, diq $$1, iu $$2, boolean $$3) {
-      return ja.a().filter($$1x -> this.b.b($$0, $$1x)).map($$4 -> this.a($$0, $$1, $$2, $$4, $$3)).reduce(0L, Long::sum);
+   @Nullable
+   @Override
+   public dzz a(dcr $$0) {
+      ewg $$1 = $$0.q().b_($$0.a());
+      boolean $$2 = $$1.a() == ewh.c;
+      return super.a($$0).b(C, Boolean.valueOf($$2)).b(b, Integer.valueOf(4));
    }
 
-   public Optional<dra.c> a(dzo $$0, diq $$1, iu $$2, ja $$3, azt $$4, boolean $$5) {
-      return ja.a($$4).stream().map($$5x -> this.a($$0, $$1, $$2, $$3, $$5x, $$5)).filter(Optional::isPresent).findFirst().orElse(Optional.empty());
+   @Override
+   protected ffc a(dzz $$0, dib $$1, iu $$2, fen $$3) {
+      int $$4 = $$0.c(d) ? $$0.c(b) : 4;
+      return i[$$4].a($$0.a($$2));
    }
 
-   private long a(dzo $$0, diq $$1, iu $$2, ja $$3, boolean $$4) {
-      return ja.a().map($$5 -> this.a($$0, $$1, $$2, $$3, $$5, $$4)).filter(Optional::isPresent).count();
+   @Override
+   protected boolean a(dzz $$0, diy $$1, iu $$2) {
+      return o($$0) ? $$1.a_($$2.d()).a(dmc.aS) : super.a($$0, $$1, $$2);
    }
 
-   @VisibleForTesting
-   public Optional<dra.c> a(dzo $$0, diq $$1, iu $$2, ja $$3, ja $$4, boolean $$5) {
-      return this.a($$0, $$1, $$2, $$3, $$4, this.b::a).flatMap($$2x -> this.a($$1, $$2x, $$5));
+   @Override
+   protected dzz a(dzz $$0, diy $$1, djk $$2, iu $$3, ja $$4, iu $$5, dzz $$6, azv $$7) {
+      if ($$0.c(C)) {
+         $$2.a($$3, ewh.c, ewh.c.a($$1));
+      }
+
+      return $$4 == ja.b && !$$0.a($$1, $$3) ? dmc.a.m() : super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
    }
 
-   public Optional<dra.c> a(dzo $$0, dhv $$1, iu $$2, ja $$3, ja $$4, dra.d $$5) {
-      if ($$4.o() == $$3.o()) {
-         return Optional.empty();
-      } else if (this.b.a($$0) || this.b.a($$0, $$3) && !this.b.a($$0, $$4)) {
-         for (dra.e $$6 : this.b.a()) {
-            dra.c $$7 = $$6.a($$2, $$4, $$3);
-            if ($$5.test($$1, $$2, $$7)) {
-               return Optional.of($$7);
-            }
+   @Override
+   protected ewg b_(dzz $$0) {
+      return $$0.c(C) ? ewh.c.a(false) : super.b_($$0);
+   }
+
+   @Override
+   protected void b(dzz $$0, arq $$1, iu $$2, azv $$3) {
+      if (!o($$0)) {
+         if ($$3.a(7) == 0) {
+            this.a($$1, $$2, $$0, $$3);
          }
-
-         return Optional.empty();
       } else {
-         return Optional.empty();
-      }
-   }
-
-   public Optional<dra.c> a(diq $$0, dra.c $$1, boolean $$2) {
-      dzo $$3 = $$0.a_($$1.a());
-      return this.b.a($$0, $$1, $$3, $$2) ? Optional.of($$1) : Optional.empty();
-   }
-
-   public static class a implements dra.b {
-      protected dqy a;
-
-      public a(dqy $$0) {
-         this.a = $$0;
-      }
-
-      @Nullable
-      @Override
-      public dzo a(dzo $$0, dhv $$1, iu $$2, ja $$3) {
-         return this.a.c($$0, $$1, $$2, $$3);
-      }
-
-      protected boolean a(dhv $$0, iu $$1, iu $$2, ja $$3, dzo $$4) {
-         return $$4.l() || $$4.a(this.a) || $$4.a(dlw.J) && $$4.y().b();
-      }
-
-      @Override
-      public boolean a(dhv $$0, iu $$1, dra.c $$2) {
-         dzo $$3 = $$0.a_($$2.a());
-         return this.a($$0, $$1, $$2.a(), $$2.b(), $$3) && this.a.a($$0, $$3, $$2.a(), $$2.b());
-      }
-   }
-
-   public interface b {
-      @Nullable
-      dzo a(dzo var1, dhv var2, iu var3, ja var4);
-
-      boolean a(dhv var1, iu var2, dra.c var3);
-
-      default dra.e[] a() {
-         return dra.a;
-      }
-
-      default boolean a(dzo $$0, ja $$1) {
-         return dqy.a($$0, $$1);
-      }
-
-      default boolean a(dzo $$0) {
-         return false;
-      }
-
-      default boolean b(dzo $$0, ja $$1) {
-         return this.a($$0) || this.a($$0, $$1);
-      }
-
-      default boolean a(diq $$0, dra.c $$1, dzo $$2, boolean $$3) {
-         dzo $$4 = this.a($$2, $$0, $$1.a(), $$1.b());
-         if ($$4 != null) {
-            if ($$3) {
-               $$0.z($$1.a()).e($$1.a());
-            }
-
-            return $$0.a($$1.a(), $$4, 2);
-         } else {
-            return false;
+         if (!q($$0)) {
+            $$1.a($$2, $$0.a(b), 2);
          }
       }
    }
 
-   public static record c(iu a, ja b) {
+   @Override
+   public boolean a(diy $$0, iu $$1, dzz $$2) {
+      return !o($$2) || !q($$2);
    }
 
-   @FunctionalInterface
-   public interface d {
-      boolean test(dhv var1, iu var2, dra.c var3);
+   @Override
+   public boolean a(div $$0, azv $$1, iu $$2, dzz $$3) {
+      return o($$3) ? !q($$3) : super.a($$0, $$1, $$2, $$3);
    }
 
-   public static enum e {
-      a {
-         @Override
-         public dra.c a(iu $$0, ja $$1, ja $$2) {
-            return new dra.c($$0, $$1);
-         }
-      },
-      b {
-         @Override
-         public dra.c a(iu $$0, ja $$1, ja $$2) {
-            return new dra.c($$0.a($$1), $$2);
-         }
-      },
-      c {
-         @Override
-         public dra.c a(iu $$0, ja $$1, ja $$2) {
-            return new dra.c($$0.a($$1).a($$2), $$1.g());
-         }
-      };
+   @Override
+   public void a(arq $$0, azv $$1, iu $$2, dzz $$3) {
+      if (o($$3) && !q($$3)) {
+         $$0.a($$2, $$3.a(b), 2);
+      } else {
+         super.a($$0, $$1, $$2, $$3);
+      }
+   }
 
-      public abstract dra.c a(iu var1, ja var2, ja var3);
+   private static boolean o(dzz $$0) {
+      return $$0.c(d);
+   }
+
+   private static boolean q(dzz $$0) {
+      return $$0.c(b) == 4;
+   }
+
+   public static dzz c() {
+      return b(0);
+   }
+
+   public static dzz b(int $$0) {
+      return dmc.H.m().b(d, Boolean.valueOf(true)).b(b, Integer.valueOf($$0));
    }
 }

@@ -1,53 +1,83 @@
-public class gsd implements grp<dya> {
-   private final gsd.a a;
+import com.google.common.collect.ImmutableMap;
+import java.util.Map;
+import java.util.function.Supplier;
+import javax.annotation.Nullable;
 
-   public gsd(grq.a $$0) {
-      this($$0.f());
+public class gsd implements ave {
+   private Map<dwz<?>, gse<?>> d = ImmutableMap.of();
+   private final frm e;
+   private final Supplier<giq> f;
+   public div a;
+   public fnz b;
+   public feg c;
+   private final gqw g;
+   private final hfg h;
+   private final gwx i;
+   private final gvx j;
+
+   public gsd(frm $$0, Supplier<giq> $$1, gqw $$2, hfg $$3, gwx $$4, gvx $$5) {
+      this.i = $$4;
+      this.h = $$3;
+      this.j = $$5;
+      this.e = $$0;
+      this.f = $$1;
+      this.g = $$2;
    }
 
-   public gsd(gic $$0) {
-      this.a = new gsd.a($$0.a(gif.cP));
+   @Nullable
+   public <E extends dwx> gse<E> a(E $$0) {
+      return (gse<E>)this.d.get($$0.p());
    }
 
-   public void a(dya $$0, float $$1, fiq $$2, gpd $$3, int $$4, int $$5) {
-      ja $$6 = $$0.m().a(dsz.c, ja.b);
-      cxq $$7 = $$0.s();
-      hkg $$8;
-      if ($$7 == null) {
-         $$8 = gpy.s;
+   public void a(div $$0, fnz $$1, feg $$2) {
+      if (this.a != $$0) {
+         this.a($$0);
+      }
+
+      this.b = $$1;
+      this.c = $$2;
+   }
+
+   public <E extends dwx> void a(E $$0, float $$1, fjc $$2, gps $$3) {
+      gse<E> $$4 = this.a($$0);
+      if ($$4 != null) {
+         if ($$0.l() && $$0.p().a($$0.m())) {
+            if ($$4.a($$0, this.b.b())) {
+               try {
+                  a($$4, $$0, $$1, $$2, $$3, this.b.b());
+               } catch (Throwable var9) {
+                  o $$6 = o.a(var9, "Rendering Block Entity");
+                  p $$7 = $$6.a("Block Entity Details");
+                  $$0.a($$7);
+                  throw new z($$6);
+               }
+            }
+         }
+      }
+   }
+
+   private static <T extends dwx> void a(gse<T> $$0, T $$1, float $$2, fjc $$3, gps $$4, fei $$5) {
+      div $$6 = $$1.i();
+      int $$7;
+      if ($$6 != null) {
+         $$7 = gpn.a($$6, $$1.aw_());
       } else {
-         $$8 = gpy.d($$7);
+         $$7 = 15728880;
       }
 
-      float $$10 = $$0.a($$1);
-      this.a($$2, $$3, $$4, $$5, $$6, $$10, $$8);
+      $$0.a($$1, $$2, $$3, $$4, $$7, hif.d, $$5);
    }
 
-   public void a(fiq $$0, gpd $$1, int $$2, int $$3, ja $$4, float $$5, hkg $$6) {
-      $$0.a();
-      $$0.a(0.5F, 0.5F, 0.5F);
-      float $$7 = 0.9995F;
-      $$0.b(0.9995F, 0.9995F, 0.9995F);
-      $$0.a($$4.b());
-      $$0.b(1.0F, -1.0F, -1.0F);
-      $$0.a(0.0F, -1.0F, 0.0F);
-      this.a.a($$5);
-      fiu $$8 = $$6.a($$1, this.a::a);
-      this.a.a($$0, $$8, $$2, $$3);
-      $$0.b();
+   public void a(@Nullable div $$0) {
+      this.a = $$0;
+      if ($$0 == null) {
+         this.b = null;
+      }
    }
 
-   static class a extends gfz {
-      private final gig a;
-
-      public a(gig $$0) {
-         super($$0, gpn::g);
-         this.a = $$0.b("lid");
-      }
-
-      public void a(float $$0) {
-         this.a.a(0.0F, 24.0F - $$0 * 0.5F * 16.0F, 0.0F);
-         this.a.f = 270.0F * $$0 * (float) (Math.PI / 180.0);
-      }
+   @Override
+   public void a(avd $$0) {
+      gsf.a $$1 = new gsf.a(this, this.g, this.h, this.i, this.j, this.f.get(), this.e);
+      this.d = gsg.a($$1);
    }
 }

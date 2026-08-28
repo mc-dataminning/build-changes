@@ -1,20 +1,20 @@
-import it.unimi.dsi.fastutil.doubles.AbstractDoubleList;
-import it.unimi.dsi.fastutil.doubles.DoubleList;
+public interface fem {
+   fem a = ($$0, $$1) -> false;
+   fem b = ($$0, $$1) -> !$$0 && !$$1;
+   fem c = ($$0, $$1) -> $$1 && !$$0;
+   fem d = ($$0, $$1) -> !$$0;
+   fem e = ($$0, $$1) -> $$0 && !$$1;
+   fem f = ($$0, $$1) -> !$$1;
+   fem g = ($$0, $$1) -> $$0 != $$1;
+   fem h = ($$0, $$1) -> !$$0 || !$$1;
+   fem i = ($$0, $$1) -> $$0 && $$1;
+   fem j = ($$0, $$1) -> $$0 == $$1;
+   fem k = ($$0, $$1) -> $$1;
+   fem l = ($$0, $$1) -> !$$0 || $$1;
+   fem m = ($$0, $$1) -> $$0;
+   fem n = ($$0, $$1) -> $$0 || !$$1;
+   fem o = ($$0, $$1) -> $$0 || $$1;
+   fem p = ($$0, $$1) -> true;
 
-public class fem extends AbstractDoubleList {
-   private final DoubleList a;
-   private final double b;
-
-   public fem(DoubleList $$0, double $$1) {
-      this.a = $$0;
-      this.b = $$1;
-   }
-
-   public double getDouble(int $$0) {
-      return this.a.getDouble($$0) + this.b;
-   }
-
-   public int size() {
-      return this.a.size();
-   }
+   boolean apply(boolean var1, boolean var2);
 }

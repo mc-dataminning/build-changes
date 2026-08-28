@@ -1,44 +1,25 @@
-import java.util.Map;
-import javax.annotation.Nullable;
+public class dad extends cyu implements czs {
+   public static float a = 1.5F;
 
-public class dad extends cxa {
-   protected final dlu a;
-   private final ja b;
-
-   public dad(dlu $$0, dlu $$1, ja $$2, cyo.a $$3) {
-      super($$0, $$3);
-      this.a = $$1;
-      this.b = $$2;
+   public dad(cyu.a $$0) {
+      super($$0);
    }
 
-   protected boolean a(dis $$0, dzo $$1, iu $$2) {
-      return $$1.a($$0, $$2);
-   }
-
-   @Nullable
    @Override
-   protected dzo c(dcl $$0) {
-      dzo $$1 = this.a.a($$0);
-      dzo $$2 = null;
-      dis $$3 = $$0.q();
-      iu $$4 = $$0.a();
-
-      for (ja $$5 : $$0.f()) {
-         if ($$5 != this.b.g()) {
-            dzo $$6 = $$5 == this.b ? this.c().a($$0) : $$1;
-            if ($$6 != null && this.a($$3, $$6, $$4)) {
-               $$2 = $$6;
-               break;
-            }
-         }
+   public bub a(div $$0, cqy $$1, bua $$2) {
+      cyy $$3 = $$1.b($$2);
+      $$0.a(null, $$1.dA(), $$1.dC(), $$1.dG(), awn.zB, awo.g, 0.5F, 0.4F / ($$0.C_().i() * 0.4F + 0.8F));
+      if ($$0 instanceof arq $$4) {
+         crs.a(crx::new, $$4, $$3, $$1, 0.0F, a, 1.0F);
       }
 
-      return $$2 != null && $$3.a($$2, $$4, feb.a()) ? $$2 : null;
+      $$1.b(awx.c.b(this));
+      $$3.a(1, $$1);
+      return bub.a;
    }
 
    @Override
-   public void a(Map<dlu, cyo> $$0, cyo $$1) {
-      super.a($$0, $$1);
-      $$0.put(this.a, $$1);
+   public crs a(div $$0, jo $$1, cyy $$2, ja $$3) {
+      return new crx($$0, $$1.a(), $$1.b(), $$1.c(), $$2);
    }
 }

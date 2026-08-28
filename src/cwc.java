@@ -1,68 +1,57 @@
-import javax.annotation.Nullable;
+public class cwc extends cwn {
+   private final cwa a;
+   private final cqy b;
+   private int g;
+   private final dhs h;
 
-public class cwc implements btr, cwb {
-   private final jn<cys> b = jn.a(1, cys.k);
-   @Nullable
-   private ddo<?> c;
-
-   @Override
-   public int b() {
-      return 1;
+   public cwc(cqy $$0, dhs $$1, cwa $$2, int $$3, int $$4, int $$5) {
+      super($$2, $$3, $$4, $$5);
+      this.b = $$0;
+      this.h = $$1;
+      this.a = $$2;
    }
 
    @Override
-   public boolean c() {
-      for (cys $$0 : this.b) {
-         if (!$$0.f()) {
-            return false;
-         }
+   public boolean a(cyy $$0) {
+      return false;
+   }
+
+   @Override
+   public cyy a(int $$0) {
+      if (this.h()) {
+         this.g = this.g + Math.min($$0, this.g().M());
       }
 
-      return true;
+      return super.a($$0);
    }
 
    @Override
-   public cys a(int $$0) {
-      return this.b.get(0);
+   protected void a(cyy $$0, int $$1) {
+      this.g += $$1;
+      this.c_($$0);
    }
 
    @Override
-   public cys a(int $$0, int $$1) {
-      return bts.a(this.b, 0);
+   protected void c_(cyy $$0) {
+      $$0.a(this.b.dV(), this.b, this.g);
+      this.g = 0;
    }
 
    @Override
-   public cys b(int $$0) {
-      return bts.a(this.b, 0);
-   }
+   public void a(cqy $$0, cyy $$1) {
+      this.c_($$1);
+      dht $$2 = this.a.g();
+      if ($$2 != null) {
+         cyy $$3 = this.a.a(0);
+         cyy $$4 = this.a.a(1);
+         if ($$2.b($$3, $$4) || $$2.b($$4, $$3)) {
+            this.h.a($$2);
+            $$0.a(awx.T);
+            this.a.a(0, $$3);
+            this.a.a(1, $$4);
+         }
 
-   @Override
-   public void a(int $$0, cys $$1) {
-      this.b.set(0, $$1);
-   }
-
-   @Override
-   public void e() {
-   }
-
-   @Override
-   public boolean a(cqs $$0) {
-      return true;
-   }
-
-   @Override
-   public void a() {
-      this.b.clear();
-   }
-
-   @Override
-   public void a(@Nullable ddo<?> $$0) {
-      this.c = $$0;
-   }
-
-   @Nullable
-   @Override
-   public ddo<?> d() {
-      return this.c;
+         this.h.s(this.h.t() + $$2.q());
+      }
    }
 }

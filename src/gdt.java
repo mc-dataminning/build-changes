@@ -1,69 +1,110 @@
-public class gdt {
-   public static void a(gig $$0, gig $$1, gig $$2, boolean $$3) {
-      gig $$4 = $$3 ? $$0 : $$1;
-      gig $$5 = $$3 ? $$1 : $$0;
-      $$4.f = ($$3 ? -0.3F : 0.3F) + $$2.f;
-      $$5.f = ($$3 ? 0.6F : -0.6F) + $$2.f;
-      $$4.e = (float) (-Math.PI / 2) + $$2.e + 0.1F;
-      $$5.e = -1.5F + $$2.e;
+import com.mojang.authlib.GameProfile;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
+import java.util.function.Supplier;
+
+public class gdt implements gdo, gdp {
+   private static final alg a = alg.b("spectator/teleport_to_team");
+   private static final wy b = wy.c("spectatorMenu.team_teleport");
+   private static final wy c = wy.c("spectatorMenu.team_teleport.prompt");
+   private final List<gdp> d;
+
+   public gdt() {
+      fos $$0 = fos.Q();
+      this.d = a($$0, $$0.s.R());
    }
 
-   public static void a(gig $$0, gig $$1, float $$2, int $$3, boolean $$4) {
-      gig $$5 = $$4 ? $$0 : $$1;
-      gig $$6 = $$4 ? $$1 : $$0;
-      $$5.f = $$4 ? -0.8F : 0.8F;
-      $$5.e = -0.97079635F;
-      $$6.e = $$5.e;
-      float $$7 = azk.a((float)$$3, 0.0F, $$2);
-      float $$8 = $$7 / $$2;
-      $$6.f = azk.h($$8, 0.4F, 0.85F) * (float)($$4 ? 1 : -1);
-      $$6.e = azk.h($$8, $$6.e, (float) (-Math.PI / 2));
+   private static List<gdp> a(fos $$0, ffn $$1) {
+      return $$1.f().stream().flatMap($$1x -> gdt.a.a($$0, $$1x).stream()).toList();
    }
 
-   public static void a(gig $$0, gig $$1, bws $$2, float $$3, float $$4) {
-      float $$5 = azk.a($$3 * (float) Math.PI);
-      float $$6 = azk.a((1.0F - (1.0F - $$3) * (1.0F - $$3)) * (float) Math.PI);
-      $$0.g = 0.0F;
-      $$1.g = 0.0F;
-      $$0.f = (float) (Math.PI / 20);
-      $$1.f = (float) (-Math.PI / 20);
-      if ($$2 == bws.b) {
-         $$0.e = -1.8849558F + azk.b($$4 * 0.09F) * 0.15F;
-         $$1.e = -0.0F + azk.b($$4 * 0.19F) * 0.5F;
-         $$0.e += $$5 * 2.2F - $$6 * 0.4F;
-         $$1.e += $$5 * 1.2F - $$6 * 0.4F;
-      } else {
-         $$0.e = -0.0F + azk.b($$4 * 0.19F) * 0.5F;
-         $$1.e = -1.8849558F + azk.b($$4 * 0.09F) * 0.15F;
-         $$0.e += $$5 * 1.2F - $$6 * 0.4F;
-         $$1.e += $$5 * 2.2F - $$6 * 0.4F;
+   @Override
+   public List<gdp> a() {
+      return this.d;
+   }
+
+   @Override
+   public wy b() {
+      return c;
+   }
+
+   @Override
+   public void a(gdn $$0) {
+      $$0.a(this);
+   }
+
+   @Override
+   public wy aO_() {
+      return b;
+   }
+
+   @Override
+   public void a(fro $$0, float $$1, float $$2) {
+      $$0.a(gqc::H, a, 0, 0, 16, 16, axw.a($$2, $$1, $$1, $$1));
+   }
+
+   @Override
+   public boolean aP_() {
+      return !this.d.isEmpty();
+   }
+
+   static class a implements gdp {
+      private final ffi a;
+      private final Supplier<hjq> b;
+      private final List<gkd> c;
+
+      private a(ffi $$0, List<gkd> $$1, Supplier<hjq> $$2) {
+         this.a = $$0;
+         this.c = $$1;
+         this.b = $$2;
       }
 
-      a($$0, $$1, $$4);
-   }
+      public static Optional<gdp> a(fos $$0, ffi $$1) {
+         List<gkd> $$2 = new ArrayList<>();
 
-   public static void a(gig $$0, float $$1, float $$2) {
-      $$0.g = $$0.g + $$2 * (azk.b($$1 * 0.09F) * 0.05F + 0.05F);
-      $$0.e = $$0.e + $$2 * azk.a($$1 * 0.067F) * 0.05F;
-   }
+         for (String $$3 : $$1.h()) {
+            gkd $$4 = $$0.L().a($$3);
+            if ($$4 != null && $$4.e() != dis.d) {
+               $$2.add($$4);
+            }
+         }
 
-   public static void a(gig $$0, gig $$1, float $$2) {
-      a($$0, $$2, 1.0F);
-      a($$1, $$2, -1.0F);
-   }
+         if ($$2.isEmpty()) {
+            return Optional.empty();
+         } else {
+            GameProfile $$5 = $$2.get(azv.a().a($$2.size())).a();
+            Supplier<hjq> $$6 = $$0.an().a($$5);
+            return Optional.of(new gdt.a($$1, $$2, $$6));
+         }
+      }
 
-   public static void a(gig $$0, gig $$1, boolean $$2, float $$3, float $$4) {
-      float $$5 = azk.a($$3 * (float) Math.PI);
-      float $$6 = azk.a((1.0F - (1.0F - $$3) * (1.0F - $$3)) * (float) Math.PI);
-      $$1.g = 0.0F;
-      $$0.g = 0.0F;
-      $$1.f = -(0.1F - $$5 * 0.6F);
-      $$0.f = 0.1F - $$5 * 0.6F;
-      float $$7 = (float) -Math.PI / ($$2 ? 1.5F : 2.25F);
-      $$1.e = $$7;
-      $$0.e = $$7;
-      $$1.e += $$5 * 1.2F - $$6 * 0.4F;
-      $$0.e += $$5 * 1.2F - $$6 * 0.4F;
-      a($$1, $$0, $$4);
+      @Override
+      public void a(gdn $$0) {
+         $$0.a(new gds(this.c));
+      }
+
+      @Override
+      public wy aO_() {
+         return this.a.d();
+      }
+
+      @Override
+      public void a(fro $$0, float $$1, float $$2) {
+         Integer $$3 = this.a.o().f();
+         if ($$3 != null) {
+            float $$4 = (float)($$3 >> 16 & 0xFF) / 255.0F;
+            float $$5 = (float)($$3 >> 8 & 0xFF) / 255.0F;
+            float $$6 = (float)($$3 & 0xFF) / 255.0F;
+            $$0.a(1, 1, 15, 15, axw.a($$2, $$4 * $$1, $$5 * $$1, $$6 * $$1));
+         }
+
+         ftb.a($$0, this.b.get(), 2, 2, 12, axw.a($$2, $$1, $$1, $$1));
+      }
+
+      @Override
+      public boolean aP_() {
+         return true;
+      }
    }
 }

@@ -1,38 +1,42 @@
-import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
+import java.util.Collections;
 import java.util.List;
-import java.util.function.BiConsumer;
-import java.util.function.Function;
-import java.util.stream.Stream;
 
-public interface eru {
-   Codec<eru> b = mf.ah.q().dispatch(eru::b, Function.identity());
+public class eru extends esb {
+   public static final MapCodec<eru> a = MapCodec.unit(() -> eru.b);
+   public static final eru b = new eru();
 
-   void a(azt var1, BiConsumer<ald<ers>, ald<ers>> var2);
-
-   Stream<ald<ers>> a();
-
-   static ert a(String $$0, String $$1) {
-      return a(qo.a($$0), qo.a($$1));
+   private eru() {
+      super(esd.a.a);
    }
 
-   static ert a(ald<ers> $$0, ald<ers> $$1) {
-      return new ert($$0, $$1);
+   @Override
+   public jz a(euw $$0, dst $$1) {
+      return jz.i;
    }
 
-   static erx a(String $$0, bsj<String> $$1) {
-      bsj.a<ald<ers>> $$2 = bsj.b();
-      $$1.d().forEach($$1x -> $$2.a(qo.a((String)$$1x.a()), $$1x.b()));
-      return a(qo.a($$0), $$2.a());
+   @Override
+   public List<euv.a> a(euw $$0, iu $$1, dst $$2, azv $$3) {
+      return Collections.emptyList();
    }
 
-   static erx a(ald<ers> $$0, bsj<ald<ers>> $$1) {
-      return new erx($$0, $$1);
+   @Override
+   public eql a(euw $$0, iu $$1, dst $$2) {
+      throw new IllegalStateException("Invalid call to EmtyPoolElement.getBoundingBox, filter me!");
    }
 
-   static ery a(bsj<List<eru>> $$0) {
-      return new ery($$0);
+   @Override
+   public boolean a(euw $$0, dju $$1, djr $$2, ebx $$3, iu $$4, iu $$5, dst $$6, eql $$7, azv $$8, euf $$9, boolean $$10) {
+      return true;
    }
 
-   MapCodec<? extends eru> b();
+   @Override
+   public esc<?> a() {
+      return esc.d;
+   }
+
+   @Override
+   public String toString() {
+      return "Empty";
+   }
 }

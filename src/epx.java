@@ -1,44 +1,57 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.ImmutableMap.Builder;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.Lifecycle;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Map;
+import java.util.List;
 import java.util.Optional;
+import java.util.stream.Stream;
+import org.apache.commons.lang3.mutable.MutableBoolean;
 
-public class epx {
+public record epx(je<eiq<?, ?>> e, List<eqa> f) {
    public static final Codec<epx> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(Codec.unboundedMap(ald.a(mg.bn), edm.a).fieldOf("dimensions").forGetter($$0x -> $$0x.c)).apply($$0, epx::new)
-      )
-      .validate(epx::a);
-   public static final Codec<je<epx>> b = ala.a(mg.bl, a);
-   private final Map<ald<edm>, edm> c;
+      $$0 -> $$0.group(eiq.b.fieldOf("feature").forGetter($$0x -> $$0x.e), eqa.b.listOf().fieldOf("placement").forGetter($$0x -> $$0x.f)).apply($$0, epx::new)
+   );
+   public static final Codec<je<epx>> b = alc.a(mg.ba, a);
+   public static final Codec<ji<epx>> c = jt.a(mg.ba, a);
+   public static final Codec<List<ji<epx>>> d = jt.a(mg.ba, a, true).listOf();
 
-   public epx(Map<ald<edm>, edm> $$0) {
-      this.c = $$0;
+   public boolean a(dju $$0, ebx $$1, azv $$2, iu $$3) {
+      return this.a(new epy($$0, $$1, Optional.empty()), $$2, $$3);
    }
 
-   private ImmutableMap<ald<edm>, edm> c() {
-      Builder<ald<edm>, edm> $$0 = ImmutableMap.builder();
-      egi.a(this.c.keySet().stream()).forEach($$1 -> {
-         edm $$2 = this.c.get($$1);
-         if ($$2 != null) {
-            $$0.put($$1, $$2);
+   public boolean b(dju $$0, ebx $$1, azv $$2, iu $$3) {
+      return this.a(new epy($$0, $$1, Optional.of(this)), $$2, $$3);
+   }
+
+   private boolean a(epy $$0, azv $$1, iu $$2) {
+      Stream<iu> $$3 = Stream.of($$2);
+
+      for (eqa $$4 : this.f) {
+         $$3 = $$3.flatMap($$3x -> $$4.a_($$0, $$1, $$3x));
+      }
+
+      eiq<?, ?> $$5 = this.e.a();
+      MutableBoolean $$6 = new MutableBoolean();
+      $$3.forEach($$4 -> {
+         if ($$5.a($$0.d(), $$0.f(), $$1, $$4)) {
+            $$6.setTrue();
          }
       });
-      return $$0.build();
+      return $$6.isTrue();
    }
 
-   public egi a() {
-      return new egi(this.c());
+   public Stream<eiq<?, ?>> a() {
+      return this.e.a().a();
    }
 
-   public Optional<edm> b() {
-      return Optional.ofNullable(this.c.get(edm.b));
+   @Override
+   public String toString() {
+      return "Placed " + this.e;
    }
 
-   private static DataResult<epx> a(epx $$0) {
-      return $$0.b().isEmpty() ? DataResult.error(() -> "Missing overworld dimension") : DataResult.success($$0, Lifecycle.stable());
+   public je<eiq<?, ?>> b() {
+      return this.e;
+   }
+
+   public List<eqa> c() {
+      return this.f;
    }
 }

@@ -1,29 +1,41 @@
-public class guf extends gwq<cjx, has, gds> {
-   private static final ale a = ale.b("textures/entity/allay/allay.png");
+import com.google.common.collect.Lists;
+import java.util.Iterator;
+import java.util.List;
+import org.joml.Vector3f;
 
-   public guf(gvk.a $$0) {
-      super($$0, new gds($$0.a(gif.c)), 0.4F);
-      this.a(new gzq<>(this));
+public class guf implements gtu.a {
+   public static final int a = 200;
+   private final fos b;
+   private final List<aaw> c = Lists.newArrayList();
+
+   guf(fos $$0) {
+      this.b = $$0;
    }
 
-   public ale a(has $$0) {
-      return a;
+   public void a(aaw $$0) {
+      this.c.add($$0);
    }
 
-   public has a() {
-      return new has();
-   }
+   @Override
+   public void a(fjc $$0, gps $$1, double $$2, double $$3, double $$4) {
+      fjg $$5 = $$1.getBuffer(gqc.y());
+      long $$6 = this.b.s.ae();
+      Iterator<aaw> $$7 = this.c.iterator();
 
-   public void a(cjx $$0, has $$1, float $$2) {
-      super.a($$0, $$1, $$2);
-      hau.a($$0, $$1, this.h);
-      $$1.a = $$0.q();
-      $$1.b = $$0.t();
-      $$1.c = $$0.K($$2);
-      $$1.d = $$0.J($$2);
-   }
-
-   protected int a(cjx $$0, iu $$1) {
-      return 15;
+      while ($$7.hasNext()) {
+         aaw $$8 = $$7.next();
+         long $$9 = $$6 - $$8.b();
+         if ($$9 > 200L) {
+            $$7.remove();
+         } else {
+            for (aaw.a $$10 : $$8.c()) {
+               Vector3f $$11 = $$10.a().c().a($$2, $$3 - 0.1, $$4).k();
+               exo $$12 = $$10.b();
+               gqm.a($$0, $$5, $$11, $$12.b().r().c(0.5), -16776961);
+               gqm.a($$0, $$5, $$11, $$12.c().r().c(0.4), -65536);
+               gqm.a($$0, $$5, $$11, $$12.d().r().c(0.3), -256);
+            }
+         }
+      }
    }
 }

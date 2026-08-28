@@ -1,16 +1,23 @@
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import javax.annotation.Nullable;
 
-public interface hhd<T> {
-   void a(@Nullable T var1, cyq var2, fiq var3, gpd var4, int var5, int var6, boolean var7);
+public record hhd() implements hhf<bwv> {
+   public static final Codec<bwv> a = bwv.c;
+   public static final hhf.a<hhd, bwv> b = hhf.a.a(MapCodec.unit(new hhd()), a);
 
    @Nullable
-   T b(cys var1);
+   public bwv a(cyy $$0, @Nullable gjr $$1, @Nullable bxc $$2, int $$3, cyw $$4) {
+      return $$2 == null ? null : $$2.fx();
+   }
 
-   public interface a {
-      @Nullable
-      hhd<?> a(gic var1);
+   @Override
+   public hhf.a<hhd, bwv> a() {
+      return b;
+   }
 
-      MapCodec<? extends hhd.a> a();
+   @Override
+   public Codec<bwv> b() {
+      return a;
    }
 }

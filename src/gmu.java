@@ -1,40 +1,76 @@
-public class gmu extends gnl {
-   private final gng a;
+public class gmu extends gna {
+   private static final int a = 3;
+   private final bwd b;
+   private final bwd D;
+   private int E;
+   private final gvx F;
+   private double G;
+   private double H;
+   private double I;
+   private double J;
+   private double K;
+   private double L;
 
-   gmu(gjd $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, gng $$7) {
-      super($$0, $$1, $$2, $$3, $$4, $$5, $$6);
-      this.B = 0.96F;
-      this.a = $$7;
-      this.d(1.5F);
-      this.n = false;
-      this.b($$7);
+   public gmu(gvx $$0, gjr $$1, bwd $$2, bwd $$3) {
+      this($$0, $$1, $$2, $$3, $$2.dy());
+   }
+
+   private gmu(gvx $$0, gjr $$1, bwd $$2, bwd $$3, fei $$4) {
+      super($$1, $$2.dA(), $$2.dC(), $$2.dG(), $$4.d, $$4.e, $$4.f);
+      this.b = this.a($$2);
+      this.D = $$3;
+      this.F = $$0;
+      this.c();
+      this.d();
+   }
+
+   private bwd a(bwd $$0) {
+      return (bwd)(!($$0 instanceof cnd) ? $$0 : ((cnd)$$0).v());
    }
 
    @Override
-   public int a(float $$0) {
-      return 240;
+   public gne b() {
+      return gne.d;
    }
 
    @Override
-   public gmp b() {
-      return gmp.c;
+   public void a(fjc $$0, gps $$1, fnz $$2, float $$3) {
+      float $$4 = ((float)this.E + $$3) / 3.0F;
+      $$4 *= $$4;
+      double $$5 = azm.d((double)$$3, this.J, this.G);
+      double $$6 = azm.d((double)$$3, this.K, this.H);
+      double $$7 = azm.d((double)$$3, this.L, this.I);
+      double $$8 = azm.d((double)$$4, this.b.dA(), $$5);
+      double $$9 = azm.d((double)$$4, this.b.dC(), $$6);
+      double $$10 = azm.d((double)$$4, this.b.dG(), $$7);
+      fei $$11 = $$2.b();
+      this.F.a(this.b, $$8 - $$11.a(), $$9 - $$11.b(), $$10 - $$11.c(), $$3, new fjc(), $$1, this.F.a(this.b, $$3));
+   }
+
+   @Override
+   public void a(fjg $$0, fnz $$1, float $$2) {
    }
 
    @Override
    public void a() {
-      super.a();
-      this.b(this.a);
+      this.E++;
+      if (this.E == 3) {
+         this.k();
+      }
+
+      this.d();
+      this.c();
    }
 
-   public static record a(gng a) implements gmo<lz> {
-      public gml a(lz $$0, gjd $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         gmu $$8 = new gmu($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
-         $$8.e(1.0F);
-         $$8.b($$5, $$6, $$7);
-         $$8.A = $$0.b();
-         $$8.z = $$0.b();
-         $$8.a($$1.A.a(12) + 8);
-         return $$8;
-      }
+   private void c() {
+      this.G = this.D.dA();
+      this.H = (this.D.dC() + this.D.dE()) / 2.0;
+      this.I = this.D.dG();
+   }
+
+   private void d() {
+      this.J = this.G;
+      this.K = this.H;
+      this.L = this.I;
    }
 }

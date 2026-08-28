@@ -1,90 +1,337 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
+import com.google.common.base.Stopwatch;
+import com.google.common.collect.Lists;
+import it.unimi.dsi.fastutil.objects.Object2LongMap;
+import it.unimi.dsi.fastutil.objects.Object2LongOpenHashMap;
+import it.unimi.dsi.fastutil.objects.ObjectIterator;
+import it.unimi.dsi.fastutil.objects.Object2LongMap.Entry;
+import java.util.Collection;
+import java.util.List;
+import java.util.Objects;
+import java.util.Optional;
+import java.util.concurrent.TimeUnit;
+import java.util.stream.Stream;
+import javax.annotation.Nullable;
 
-public abstract class sq {
-   public static final Codec<sq> b = mf.aC.q().dispatch(sq::a, $$0 -> $$0);
-   private final tj<je<tk>> a;
+public class sq {
+   private final je.c<sr> a;
+   @Nullable
+   private iu b;
+   private final arq c;
+   private final Collection<st> d = Lists.newArrayList();
+   private final int e;
+   private final Collection<sw> f = Lists.newCopyOnWriteArrayList();
+   private final Object2LongMap<Runnable> g = new Object2LongOpenHashMap();
+   private boolean h;
+   private boolean i;
+   private int j;
+   private boolean k;
+   private final tg l;
+   private final Stopwatch m = Stopwatch.createUnstarted();
+   private boolean n;
+   private final dst o;
+   @Nullable
+   private so p;
+   @Nullable
+   private dys q;
 
-   public static MapCodec<? extends sq> a(jr<MapCodec<? extends sq>> $$0) {
-      a($$0, "block_based", sc.a);
-      return a($$0, "function", sg.a);
-   }
-
-   private static MapCodec<? extends sq> a(jr<MapCodec<? extends sq>> $$0, String $$1, MapCodec<? extends sq> $$2) {
-      return jr.a($$0, ald.a(mg.az, ale.b($$1)), $$2);
-   }
-
-   protected sq(tj<je<tk>> $$0) {
+   public sq(je.c<sr> $$0, dst $$1, arq $$2, tg $$3) {
       this.a = $$0;
+      this.c = $$2;
+      this.l = $$3;
+      this.e = $$0.a().f();
+      this.o = $$1;
    }
 
-   public abstract void a(so var1);
-
-   public abstract MapCodec<? extends sq> a();
-
-   public je<tk> d() {
-      return this.a.a();
+   public void a(@Nullable iu $$0) {
+      this.b = $$0;
    }
 
-   public ale e() {
-      return this.a.b();
+   public sq a(int $$0) {
+      this.j = -(this.a.a().g() + $$0 + 1);
+      return this;
    }
 
-   public int f() {
-      return this.a.c();
+   public void a() {
+      if (!this.h) {
+         dys $$0 = this.f();
+         if (!$$0.A()) {
+            this.a(wy.a("test.error.structure.failure", $$0.k().getString()));
+         }
+
+         this.h = true;
+         $$0.C();
+         eql $$1 = $$0.d();
+         this.c.n().a($$1);
+         this.c.a($$1);
+         this.d.forEach($$0x -> $$0x.a(this));
+      }
    }
 
-   public int g() {
-      return this.a.d();
+   public void a(sv $$0) {
+      if (!this.k()) {
+         if (!this.h) {
+            this.a(wy.c("test.error.ticking_without_structure"));
+         }
+
+         if (this.q == null) {
+            this.a(wy.c("test.error.missing_block_entity"));
+         }
+
+         if (this.p != null) {
+            this.G();
+         }
+
+         if (this.i || this.q.d().b().allMatch(this.c::a)) {
+            this.i = true;
+            this.E();
+            if (this.k()) {
+               if (this.p != null) {
+                  this.d.forEach($$1 -> $$1.b(this, $$0));
+               } else {
+                  this.d.forEach($$1 -> $$1.a(this, $$0));
+               }
+            }
+         }
+      }
+   }
+
+   private void E() {
+      this.j++;
+      if (this.j >= 0) {
+         if (!this.k) {
+            this.F();
+         }
+
+         ObjectIterator<Entry<Runnable>> $$0 = this.g.object2LongEntrySet().iterator();
+
+         while ($$0.hasNext()) {
+            Entry<Runnable> $$1 = (Entry<Runnable>)$$0.next();
+            if ($$1.getLongValue() <= (long)this.j) {
+               try {
+                  ((Runnable)$$1.getKey()).run();
+               } catch (so var4) {
+                  this.a(var4);
+               } catch (Exception var5) {
+                  this.a(new tr(var5));
+               }
+
+               $$0.remove();
+            }
+         }
+
+         if (this.j > this.e) {
+            if (this.f.isEmpty()) {
+               this.a(new sz(wy.a("test.error.timeout.no_result", this.a.a().f())));
+            } else {
+               this.f.forEach($$0x -> $$0x.c(this.j));
+               if (this.p == null) {
+                  this.a(new sz(wy.a("test.error.timeout.no_sequences_finished", this.a.a().f())));
+               }
+            }
+         } else {
+            this.f.forEach($$0x -> $$0x.b(this.j));
+         }
+      }
+   }
+
+   private void F() {
+      if (!this.k) {
+         this.k = true;
+         this.f().x();
+
+         try {
+            this.a.a().a(new sp(this));
+         } catch (so var2) {
+            this.a(var2);
+         } catch (Exception var3) {
+            this.a(new tr(var3));
+         }
+      }
+   }
+
+   public void a(long $$0, Runnable $$1) {
+      this.g.put($$1, $$0);
+   }
+
+   public alg b() {
+      return this.a.h().a();
+   }
+
+   @Nullable
+   public iu c() {
+      return this.b;
+   }
+
+   public iu d() {
+      return this.q.B();
+   }
+
+   public fed e() {
+      dys $$0 = this.f();
+      return $$0.f();
+   }
+
+   public dys f() {
+      if (this.q == null) {
+         if (this.b == null) {
+            throw new IllegalStateException("This GameTestInfo has no position");
+         }
+
+         if (this.c.c_(this.b) instanceof dys $$0) {
+            this.q = $$0;
+         }
+
+         if (this.q == null) {
+            throw new IllegalStateException("Could not find a test instance block entity at the given coordinate " + this.b);
+         }
+      }
+
+      return this.q;
+   }
+
+   public arq g() {
+      return this.c;
    }
 
    public boolean h() {
-      return this.a.e();
+      return this.n && this.p == null;
    }
 
    public boolean i() {
-      return this.a.g();
+      return this.p != null;
    }
 
-   public int j() {
-      return this.a.h();
+   public boolean j() {
+      return this.k;
    }
 
-   public int k() {
-      return this.a.i();
+   public boolean k() {
+      return this.n;
    }
 
-   public boolean l() {
-      return this.a.j();
+   public long l() {
+      return this.m.elapsed(TimeUnit.MILLISECONDS);
    }
 
-   public dsm m() {
-      return this.a.f();
+   private void G() {
+      if (!this.n) {
+         this.n = true;
+         if (this.m.isRunning()) {
+            this.m.stop();
+         }
+      }
    }
 
-   protected tj<je<tk>> n() {
+   public void m() {
+      if (this.p == null) {
+         this.G();
+         fed $$0 = this.e();
+         List<bwd> $$1 = this.g().a(bwd.class, $$0.g(1.0), $$0x -> !($$0x instanceof cqy));
+         $$1.forEach($$0x -> $$0x.a(bwd.e.b));
+      }
+   }
+
+   public void a(wy $$0) {
+      this.a(new sh($$0, this.j));
+   }
+
+   public void a(so $$0) {
+      this.p = $$0;
+   }
+
+   @Nullable
+   public so n() {
+      return this.p;
+   }
+
+   @Override
+   public String toString() {
+      return this.b().toString();
+   }
+
+   public void a(st $$0) {
+      this.d.add($$0);
+   }
+
+   public sq o() {
+      this.q = this.a(Objects.requireNonNull(this.b), this.o, this.c);
+      this.a();
+      return this;
+   }
+
+   private dys a(iu $$0, dst $$1, arq $$2) {
+      $$2.b($$0, dmc.pG.m());
+      dys $$3 = Objects.requireNonNull((dys)$$2.c_($$0));
+      alf<sr> $$4 = this.w().h();
+      jz $$5 = dys.a($$2, $$4).orElse(new jz(1, 1, 1));
+      $$3.a(new dys.a(Optional.of($$4), $$5, $$1, false, dys.b.a, Optional.empty()));
+      return $$3;
+   }
+
+   int p() {
+      return this.j;
+   }
+
+   sw q() {
+      sw $$0 = new sw(this);
+      this.f.add($$0);
+      return $$0;
+   }
+
+   public boolean r() {
+      return this.a.a().h();
+   }
+
+   public boolean s() {
+      return !this.a.a().h();
+   }
+
+   public alg t() {
+      return this.a.a().e();
+   }
+
+   public dst u() {
+      return this.a.a().n().f().a(this.o);
+   }
+
+   public sr v() {
+      return this.a.a();
+   }
+
+   public je.c<sr> w() {
       return this.a;
    }
 
-   protected abstract xk b();
-
-   public ww c() {
-      return this.o().b(this.p());
+   public int x() {
+      return this.e;
    }
 
-   protected xk o() {
-      return this.a("test_instance.description.type", this.b());
+   public boolean y() {
+      return this.a.a().j() > 1;
    }
 
-   protected ww p() {
-      return this.a("test_instance.description.structure", this.a.b().toString()).b(this.a("test_instance.description.batch", this.a.a().g()));
+   public int z() {
+      return this.a.a().j();
    }
 
-   protected xk a(String $$0, String $$1) {
-      return this.a($$0, ww.b($$1));
+   public int A() {
+      return this.a.a().k();
    }
 
-   protected xk a(String $$0, xk $$1) {
-      return ww.a($$0, $$1.a(n.j)).b(ww.b("\n"));
+   public tg B() {
+      return this.l;
+   }
+
+   public Stream<st> C() {
+      return this.d.stream();
+   }
+
+   public sq D() {
+      sq $$0 = new sq(this.a, this.o, this.c, this.B());
+      if (this.b != null) {
+         $$0.a(this.b);
+      }
+
+      return $$0;
    }
 }

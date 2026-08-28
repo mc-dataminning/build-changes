@@ -15,13 +15,13 @@ import javax.annotation.Nullable;
 
 public class fk<T> implements ArgumentType<je<T>> {
    private static final Collection<String> b = List.of("foo", "foo:bar", "012", "{}", "true");
-   public static final DynamicCommandExceptionType a = new DynamicCommandExceptionType($$0 -> ww.b("argument.resource_or_id.failed_to_parse", $$0));
-   private static final SimpleCommandExceptionType c = new SimpleCommandExceptionType(ww.c("argument.resource_or_id.invalid"));
+   public static final DynamicCommandExceptionType a = new DynamicCommandExceptionType($$0 -> wy.b("argument.resource_or_id.failed_to_parse", $$0));
+   private static final SimpleCommandExceptionType c = new SimpleCommandExceptionType(wy.c("argument.resource_or_id.invalid"));
    private final jg.a d;
    private final boolean e;
    private final Codec<je<T>> f;
 
-   protected fk(ee $$0, ald<jr<T>> $$1, Codec<je<T>> $$2) {
+   protected fk(ee $$0, alf<jr<T>> $$1, Codec<je<T>> $$2) {
       this.d = $$0;
       this.e = $$0.a($$1).isPresent();
       this.f = $$2;
@@ -31,7 +31,7 @@ public class fk<T> implements ArgumentType<je<T>> {
       return new fk.c($$0);
    }
 
-   public static je<eys> a(CommandContext<ei> $$0, String $$1) throws CommandSyntaxException {
+   public static je<eze> a(CommandContext<ei> $$0, String $$1) throws CommandSyntaxException {
       return d($$0, $$1);
    }
 
@@ -39,7 +39,7 @@ public class fk<T> implements ArgumentType<je<T>> {
       return new fk.a($$0);
    }
 
-   public static je<fab> b(CommandContext<ei> $$0, String $$1) {
+   public static je<fan> b(CommandContext<ei> $$0, String $$1) {
       return d($$0, $$1);
    }
 
@@ -47,7 +47,7 @@ public class fk<T> implements ArgumentType<je<T>> {
       return new fk.b($$0);
    }
 
-   public static je<fbw> c(CommandContext<ei> $$0, String $$1) {
+   public static je<fci> c(CommandContext<ei> $$0, String $$1) {
       return d($$0, $$1);
    }
 
@@ -57,7 +57,7 @@ public class fk<T> implements ArgumentType<je<T>> {
 
    @Nullable
    public je<T> a(StringReader $$0) throws CommandSyntaxException {
-      alc<?> $$1 = this.d.a(JavaOps.INSTANCE);
+      ale<?> $$1 = this.d.a(JavaOps.INSTANCE);
       Dynamic<?> $$2 = a((DynamicOps<T>)$$1, $$0);
       return !this.e ? null : (je)this.f.parse($$2).getOrThrow($$1x -> a.createWithContext($$0, $$1x));
    }
@@ -65,12 +65,12 @@ public class fk<T> implements ArgumentType<je<T>> {
    @VisibleForTesting
    static <T> Dynamic<T> a(DynamicOps<T> $$0, StringReader $$1) throws CommandSyntaxException {
       int $$2 = $$1.getCursor();
-      T $$3 = uv.b($$0, $$1);
+      T $$3 = ux.b($$0, $$1);
       if (b($$1)) {
          return new Dynamic($$0, $$3);
       } else {
          $$1.setCursor($$2);
-         ale $$4 = ale.a($$1);
+         alg $$4 = alg.a($$1);
          if (b($$1)) {
             return new Dynamic($$0, $$0.createString($$4.toString()));
          } else {
@@ -88,21 +88,21 @@ public class fk<T> implements ArgumentType<je<T>> {
       return b;
    }
 
-   public static class a extends fk<fab> {
+   public static class a extends fk<fan> {
       protected a(ee $$0) {
-         super($$0, mg.bp, fad.d);
+         super($$0, mg.bq, fap.d);
       }
    }
 
-   public static class b extends fk<fbw> {
+   public static class b extends fk<fci> {
       protected b(ee $$0) {
-         super($$0, mg.bq, fbw.f);
+         super($$0, mg.br, fci.f);
       }
    }
 
-   public static class c extends fk<eys> {
+   public static class c extends fk<eze> {
       protected c(ee $$0) {
-         super($$0, mg.bo, eys.e);
+         super($$0, mg.bp, eze.e);
       }
    }
 }

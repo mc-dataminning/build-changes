@@ -1,33 +1,25 @@
+import javax.annotation.Nullable;
+
 public class cht {
-   public static boolean a(bxb $$0) {
-      return $$0.O() instanceof cgi;
+   @Nullable
+   public static fei a(bxk $$0, int $$1, int $$2, int $$3, double $$4, double $$5, double $$6) {
+      boolean $$7 = chw.a($$0, $$1);
+      return chz.a($$0, () -> a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7));
    }
 
-   public static boolean a(bxh $$0, int $$1) {
-      return $$0.ge() && $$0.gb().a($$0.dt(), (double)($$0.gc() + (float)$$1) + 1.0);
-   }
-
-   public static boolean a(iu $$0, bxh $$1) {
-      return $$1.dV().e($$0.v());
-   }
-
-   public static boolean a(boolean $$0, bxh $$1, iu $$2) {
-      return $$0 && !$$1.a($$2);
-   }
-
-   public static boolean a(cgj $$0, iu $$1) {
-      return !$$0.a($$1);
-   }
-
-   public static boolean a(bxh $$0, iu $$1) {
-      return $$0.dV().b_($$1).a(axf.a);
-   }
-
-   public static boolean b(bxh $$0, iu $$1) {
-      return $$0.a(ewr.b($$0, $$1)) != 0.0F;
-   }
-
-   public static boolean c(bxh $$0, iu $$1) {
-      return $$0.dV().a_($$1).e();
+   @Nullable
+   public static iu a(bxk $$0, int $$1, int $$2, int $$3, double $$4, double $$5, double $$6, boolean $$7) {
+      iu $$8 = chz.a($$0.dY(), $$1, $$2, $$3, $$4, $$5, $$6);
+      if ($$8 == null) {
+         return null;
+      } else {
+         iu $$9 = chz.a($$0, $$1, $$0.dY(), $$8);
+         if (!chw.a($$9, $$0) && !chw.a($$7, $$0, $$9)) {
+            $$9 = chz.a($$9, $$0.dV().ao(), $$1x -> chw.c($$0, $$1x));
+            return chw.b($$0, $$9) ? null : $$9;
+         } else {
+            return null;
+         }
+      }
    }
 }

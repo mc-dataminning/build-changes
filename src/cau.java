@@ -1,48 +1,33 @@
 import com.mojang.datafixers.kinds.App;
-import java.util.Optional;
 import java.util.function.Function;
+import org.apache.commons.lang3.mutable.MutableInt;
 
 public class cau {
-   public static byr<bxh> a(cgb<iu> $$0, float $$1, int $$2, boolean $$3) {
-      return a($$0, $$1, $$2, $$3, fdw::c);
-   }
+   private static final int a = 300;
 
-   public static cab<bxh> b(cgb<? extends bwa> $$0, float $$1, int $$2, boolean $$3) {
-      return a($$0, $$1, $$2, $$3, bwa::dt);
-   }
-
-   private static <T> cab<bxh> a(cgb<T> $$0, float $$1, int $$2, boolean $$3, Function<T, fdw> $$4) {
-      return ccd.a(
-         (Function<ccd.b<bxh>, ? extends App<ccd.c<bxh>, ccg<bxh>>>)($$5 -> $$5.group($$5.a(cgb.n), $$5.b($$0)).apply($$5, ($$5x, $$6) -> ($$7, $$8, $$9) -> {
-                  Optional<cge> $$10 = $$5.a($$5x);
-                  if ($$10.isPresent() && !$$3) {
-                     return false;
-                  } else {
-                     fdw $$11 = $$8.dt();
-                     fdw $$12 = $$4.apply($$5.b($$6));
-                     if (!$$11.a((jo)$$12, (double)$$2)) {
-                        return false;
-                     } else {
-                        if ($$10.isPresent() && $$10.get().b() == $$1) {
-                           fdw $$13 = $$10.get().a().a().d($$11);
-                           fdw $$14 = $$12.d($$11);
-                           if ($$13.b($$14) < 0.0) {
-                              return false;
-                           }
-                        }
-
-                        for (int $$15 = 0; $$15 < 10; $$15++) {
-                           fdw $$16 = chv.b($$8, 16, 7, $$12);
-                           if ($$16 != null) {
-                              $$5x.a(new cge($$16, $$1, 0));
-                              break;
-                           }
+   public static byu<bxc> a(int $$0, int $$1) {
+      int $$2 = $$0 * 20;
+      MutableInt $$3 = new MutableInt(0);
+      return ccg.a(
+         (Function<ccg.b<bxc>, ? extends App<ccg.c<bxc>, ccj<bxc>>>)($$3x -> $$3x.group($$3x.b(cge.D), $$3x.b(cge.E))
+               .apply($$3x, ($$4, $$5) -> ($$6, $$7, $$8) -> {
+                     long $$9 = $$3x.<Long>b($$5);
+                     boolean $$10 = $$9 + 300L <= $$8;
+                     if ($$3.getValue() <= $$2 && !$$10) {
+                        iu $$11 = $$3x.<jd>b($$4).b();
+                        if ($$11.a($$7.dv(), (double)$$1)) {
+                           $$3.increment();
                         }
 
                         return true;
+                     } else {
+                        $$5.b();
+                        $$4.b();
+                        $$7.eb().a($$6.af(), $$6.ae());
+                        $$3.setValue(0);
+                        return true;
                      }
-                  }
-               }))
+                  }))
       );
    }
 }

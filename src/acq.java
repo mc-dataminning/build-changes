@@ -1,33 +1,53 @@
-import java.util.List;
+public class acq implements zf<abu> {
+   public static final yw<wj, acq> a = zf.a(acq::a, acq::new);
+   private final int b;
+   private final int c;
+   private final int d;
+   private final cyy e;
 
-public record acq(acq.a b, List<String> c) implements zd<abs> {
-   public static final yu<vs, acq> a = zd.a(acq::a, acq::new);
-
-   private acq(vs $$0) {
-      this($$0.b(acq.a.class), $$0.a(vs::p));
+   public acq(int $$0, int $$1, int $$2, cyy $$3) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
+      this.e = $$3.v();
    }
 
-   private void a(vs $$0) {
-      $$0.a(this.b);
-      $$0.a(this.c, vs::a);
+   private acq(wj $$0) {
+      this.b = $$0.x();
+      this.c = $$0.l();
+      this.d = $$0.readShort();
+      this.e = cyy.h.decode($$0);
+   }
+
+   private void a(wj $$0) {
+      $$0.f(this.b);
+      $$0.c(this.c);
+      $$0.m(this.d);
+      cyy.h.encode($$0, this.e);
    }
 
    @Override
-   public zf<acq> a() {
-      return agl.x;
+   public zh<acq> a() {
+      return agn.v;
    }
 
-   public void a(abs $$0) {
+   public void a(abu $$0) {
       $$0.a(this);
    }
 
-   public List<String> e() {
-      return this.c;
+   public int b() {
+      return this.b;
    }
 
-   public static enum a {
-      a,
-      b,
-      c;
+   public int e() {
+      return this.d;
+   }
+
+   public cyy f() {
+      return this.e;
+   }
+
+   public int g() {
+      return this.c;
    }
 }

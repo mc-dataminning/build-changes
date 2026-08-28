@@ -1,65 +1,99 @@
 import com.mojang.serialization.MapCodec;
+import java.util.List;
+import java.util.Map;
+import java.util.stream.IntStream;
 import javax.annotation.Nullable;
 
-public class dnh extends dlg implements dtb {
+public class dnh extends dqa implements dmd {
    public static final MapCodec<dnh> a = b(dnh::new);
-   public static final eaf b = eae.I;
-   private static final feq c = dlu.a(6.0);
+   public static final int b = 2;
+   public static final eaz c = eap.au;
+   private static final List<Map<ja, ffc>> d = IntStream.rangeClosed(0, 2)
+      .mapToObj($$0 -> fez.c(dma.b((double)(4 + $$0 * 2), (double)(7 - $$0 * 2), 12.0).a(0.0, 0.0, (double)($$0 - 5) / 16.0).d()))
+      .toList();
 
    @Override
    public MapCodec<dnh> a() {
       return a;
    }
 
-   public dnh(dzn.d $$0) {
+   public dnh(dzy.d $$0) {
       super($$0);
-      this.l(this.B.b().b(b, Boolean.valueOf(true)));
+      this.l(this.B.b().b(e, ja.c).b(c, Integer.valueOf(0)));
    }
 
    @Override
-   protected void a(dzp.a<dlu, dzo> $$0) {
-      $$0.a(b);
+   protected boolean f(dzz $$0) {
+      return $$0.c(c) < 2;
    }
 
    @Override
-   public dwn a(iu $$0, dzo $$1) {
-      return new dxa($$0, $$1);
+   protected void b(dzz $$0, arq $$1, iu $$2, azv $$3) {
+      if ($$1.A.a(5) == 0) {
+         int $$4 = $$0.c(c);
+         if ($$4 < 2) {
+            $$1.a($$2, $$0.b(c, Integer.valueOf($$4 + 1)), 2);
+         }
+      }
+   }
+
+   @Override
+   protected boolean a(dzz $$0, diy $$1, iu $$2) {
+      dzz $$3 = $$1.a_($$2.a($$0.c(e)));
+      return $$3.a(axc.B);
+   }
+
+   @Override
+   protected ffc a(dzz $$0, dib $$1, iu $$2, fen $$3) {
+      return d.get($$0.c(c)).get($$0.c(e));
    }
 
    @Nullable
    @Override
-   public <T extends dwn> dwo<T> a(dip $$0, dzo $$1, dwp<T> $$2) {
-      return a($$2, dwp.A, $$0.C ? dxa::a : dxa::b);
-   }
+   public dzz a(dcr $$0) {
+      dzz $$1 = this.m();
+      diy $$2 = $$0.q();
+      iu $$3 = $$0.a();
 
-   @Override
-   protected evv b_(dzo $$0) {
-      return $$0.c(b) ? evw.c.a(false) : super.b_($$0);
-   }
-
-   @Override
-   protected dzo a(dzo $$0, dis $$1, dje $$2, iu $$3, ja $$4, iu $$5, dzo $$6, azt $$7) {
-      if ($$0.c(b)) {
-         $$2.a($$3, evw.c, evw.c.a($$1));
+      for (ja $$4 : $$0.f()) {
+         if ($$4.o().d()) {
+            $$1 = $$1.b(e, $$4);
+            if ($$1.a($$2, $$3)) {
+               return $$1;
+            }
+         }
       }
 
-      return super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
+      return null;
    }
 
    @Override
-   protected feq a(dzo $$0, dhv $$1, iu $$2, feb $$3) {
-      return c;
-   }
-
-   @Nullable
-   @Override
-   public dzo a(dcl $$0) {
-      evv $$1 = $$0.q().b_($$0.a());
-      return this.m().b(b, Boolean.valueOf($$1.a(axf.a) && $$1.e() == 8));
+   protected dzz a(dzz $$0, diy $$1, djk $$2, iu $$3, ja $$4, iu $$5, dzz $$6, azv $$7) {
+      return $$4 == $$0.c(e) && !$$0.a($$1, $$3) ? dmc.a.m() : super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
    }
 
    @Override
-   protected boolean a(dzo $$0, ewk $$1) {
+   public boolean a(diy $$0, iu $$1, dzz $$2) {
+      return $$2.c(c) < 2;
+   }
+
+   @Override
+   public boolean a(div $$0, azv $$1, iu $$2, dzz $$3) {
+      return true;
+   }
+
+   @Override
+   public void a(arq $$0, azv $$1, iu $$2, dzz $$3) {
+      $$0.a($$2, $$3.b(c, Integer.valueOf($$3.c(c) + 1)), 2);
+   }
+
+   @Override
+   protected void a(eaa.a<dma, dzz> $$0) {
+      $$0.a(e, c);
+   }
+
+   @Override
+   protected boolean a(dzz $$0, ewv $$1) {
       return false;
    }
 }

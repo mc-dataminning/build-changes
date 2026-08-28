@@ -1,37 +1,26 @@
-public class aed implements zd<abs> {
-   public static final yu<vs, aed> a = zd.a(aed::a, aed::new);
-   private final int b;
-   private final double c;
+import java.util.Set;
 
-   public aed(int $$0, double $$1) {
-      this.b = $$0;
-      this.c = $$1;
-   }
+public record aed(int b, bxp c, Set<bxq> d) implements zf<abu> {
+   public static final yw<vu, aed> a = yw.a(yu.h, aed::b, bxp.a, aed::e, bxq.m, aed::f, aed::new);
 
-   private aed(vs $$0) {
-      this.b = $$0.l();
-      this.c = $$0.readDouble();
-   }
-
-   private void a(vs $$0) {
-      $$0.c(this.b);
-      $$0.a(this.c);
+   public static aed a(int $$0, bxp $$1, Set<bxq> $$2) {
+      return new aed($$0, $$1, $$2);
    }
 
    @Override
-   public zf<aed> a() {
-      return agl.bj;
+   public zh<aed> a() {
+      return agn.ai;
    }
 
-   public void a(abs $$0) {
+   public void a(abu $$0) {
       $$0.a(this);
    }
 
-   public int b() {
-      return this.b;
+   public bxp e() {
+      return this.c;
    }
 
-   public double e() {
-      return this.c;
+   public Set<bxq> f() {
+      return this.d;
    }
 }

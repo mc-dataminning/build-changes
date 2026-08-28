@@ -1,42 +1,30 @@
-import java.util.Optional;
+import com.mojang.serialization.Codec;
 
-public class epn extends egk {
-   private final djo a;
-   private final ebm b;
-   private final Optional<epm> c;
+public enum epn implements bak {
+   a(ja.b, 1, "ceiling"),
+   b(ja.a, -1, "floor");
 
-   public epn(djo $$0, ebm $$1, Optional<epm> $$2) {
-      super($$1, $$0);
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
+   public static final Codec<epn> c = bak.a(epn::values);
+   private final ja d;
+   private final int e;
+   private final String f;
+
+   private epn(final ja $$0, final int $$1, final String $$2) {
+      this.d = $$0;
+      this.e = $$1;
+      this.f = $$2;
    }
 
-   public int a(efn.a $$0, int $$1, int $$2) {
-      return this.a.a($$0, $$1, $$2);
+   public ja a() {
+      return this.d;
    }
 
-   public ebk a(dhw $$0) {
-      return ((ecf)this.a.a($$0.h, $$0.i)).F();
+   public int b() {
+      return this.e;
    }
 
-   public dzo a(iu $$0) {
-      return this.a.a_($$0);
-   }
-
-   public int c() {
-      return this.a.G_();
-   }
-
-   public djo d() {
-      return this.a;
-   }
-
-   public Optional<epm> e() {
-      return this.c;
-   }
-
-   public ebm f() {
-      return this.b;
+   @Override
+   public String c() {
+      return this.f;
    }
 }

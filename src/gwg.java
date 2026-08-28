@@ -1,79 +1,106 @@
-public class gwg extends gvj<cmx, hcm> {
-   private static final float a = 0.15F;
-   private static final float g = 0.0F;
-   private static final float h = 0.0F;
-   private static final float i = 0.09375F;
-   private final heq j;
-   private final azt k = azt.a();
+public class gwg extends gvy<cro, hcn> {
+   private static final alg a = alg.b("textures/entity/fishing_hook.png");
+   private static final gqc g = gqc.f(a);
+   private static final double h = 960.0;
 
-   public gwg(gvk.a $$0) {
+   public gwg(gvz.a $$0) {
       super($$0);
-      this.j = $$0.b();
-      this.e = 0.15F;
-      this.f = 0.75F;
    }
 
-   public hcm a() {
-      return new hcm();
+   public boolean a(cro $$0, gtl $$1, double $$2, double $$3, double $$4) {
+      return super.a($$0, $$1, $$2, $$3, $$4) && $$0.g() != null;
    }
 
-   public void a(cmx $$0, hcm $$1, float $$2) {
+   public void a(hcn $$0, fjc $$1, gps $$2, int $$3) {
+      $$1.a();
+      $$1.a();
+      $$1.b(0.5F, 0.5F, 0.5F);
+      $$1.a(this.d.b());
+      fjc.a $$4 = $$1.c();
+      fjg $$5 = $$2.getBuffer(g);
+      a($$5, $$4, $$3, 0.0F, 0, 0, 1);
+      a($$5, $$4, $$3, 1.0F, 0, 1, 1);
+      a($$5, $$4, $$3, 1.0F, 1, 1, 0);
+      a($$5, $$4, $$3, 0.0F, 1, 0, 0);
+      $$1.b();
+      float $$6 = (float)$$0.a.d;
+      float $$7 = (float)$$0.a.e;
+      float $$8 = (float)$$0.a.f;
+      fjg $$9 = $$2.getBuffer(gqc.A());
+      fjc.a $$10 = $$1.c();
+      int $$11 = 16;
+
+      for (int $$12 = 0; $$12 <= 16; $$12++) {
+         a($$6, $$7, $$8, $$9, $$10, a($$12, 16), a($$12 + 1, 16));
+      }
+
+      $$1.b();
+      super.a($$0, $$1, $$2, $$3);
+   }
+
+   public static bwv a(cqy $$0) {
+      return $$0.fa().h() instanceof cyh ? $$0.fx() : $$0.fx().e();
+   }
+
+   private fei a(cqy $$0, float $$1, float $$2) {
+      int $$3 = a($$0) == bwv.b ? 1 : -1;
+      if (this.d.d.aE().a() && $$0 == fos.Q().t) {
+         double $$11 = 960.0 / (double)this.d.d.ak().c().intValue();
+         fei $$12 = this.d.b.j().a((float)$$3 * 0.525F, -0.1F).c($$11).b($$1 * 0.5F).a(-$$1 * 0.7F);
+         return $$0.n($$2).e($$12);
+      } else {
+         float $$4 = azm.h($$2, $$0.aW, $$0.aV) * (float) (Math.PI / 180.0);
+         double $$5 = (double)azm.a($$4);
+         double $$6 = (double)azm.b($$4);
+         float $$7 = $$0.ek();
+         double $$8 = (double)$$3 * 0.35 * (double)$$7;
+         double $$9 = 0.8 * (double)$$7;
+         float $$10 = $$0.ci() ? -0.1875F : 0.0F;
+         return $$0.n($$2).b(-$$6 * $$8 - $$5 * $$9, (double)$$10 - 0.45 * (double)$$7, -$$5 * $$8 + $$6 * $$9);
+      }
+   }
+
+   private static float a(int $$0, int $$1) {
+      return (float)$$0 / (float)$$1;
+   }
+
+   private static void a(fjg $$0, fjc.a $$1, int $$2, float $$3, int $$4, int $$5, int $$6) {
+      $$0.a($$1, $$3 - 0.5F, (float)$$4 - 0.5F, 0.0F).a(-1).a((float)$$5, (float)$$6).b(hif.d).c($$2).b($$1, 0.0F, 1.0F, 0.0F);
+   }
+
+   private static void a(float $$0, float $$1, float $$2, fjg $$3, fjc.a $$4, float $$5, float $$6) {
+      float $$7 = $$0 * $$5;
+      float $$8 = $$1 * ($$5 * $$5 + $$5) * 0.5F + 0.25F;
+      float $$9 = $$2 * $$5;
+      float $$10 = $$0 * $$6 - $$7;
+      float $$11 = $$1 * ($$6 * $$6 + $$6) * 0.5F + 0.25F - $$8;
+      float $$12 = $$2 * $$6 - $$9;
+      float $$13 = azm.c($$10 * $$10 + $$11 * $$11 + $$12 * $$12);
+      $$10 /= $$13;
+      $$11 /= $$13;
+      $$12 /= $$13;
+      $$3.a($$4, $$7, $$8, $$9).a(-16777216).b($$4, $$10, $$11, $$12);
+   }
+
+   public hcn a() {
+      return new hcn();
+   }
+
+   public void a(cro $$0, hcn $$1, float $$2) {
       super.a($$0, $$1, $$2);
-      $$1.u = (float)$$0.g() + $$2;
-      $$1.d = $$0.b;
-      $$1.a($$0, $$0.f(), this.j);
-   }
-
-   public void a(hcm $$0, fiq $$1, gpd $$2, int $$3) {
-      if (!$$0.a.c()) {
-         $$1.a();
-         float $$4 = 0.25F;
-         float $$5 = azk.a($$0.u / 10.0F + $$0.d) * 0.1F + 0.1F;
-         float $$6 = $$0.a.f().d.y();
-         $$1.a(0.0F, $$5 + 0.25F * $$6, 0.0F);
-         float $$7 = cmx.f($$0.u, $$0.d);
-         $$1.a(a.d.rotation($$7));
-         a($$1, $$2, $$3, $$0, this.k);
-         $$1.b();
-         super.a($$0, $$1, $$2, $$3);
+      cqy $$3 = $$0.g();
+      if ($$3 == null) {
+         $$1.a = fei.c;
+      } else {
+         float $$4 = $$3.D($$2);
+         float $$5 = azm.a(azm.c($$4) * (float) Math.PI);
+         fei $$6 = this.a($$3, $$5, $$2);
+         fei $$7 = $$0.p($$2).b(0.0, 0.25, 0.0);
+         $$1.a = $$6.d($$7);
       }
    }
 
-   public static void a(fiq $$0, gpd $$1, int $$2, hck $$3, azt $$4) {
-      $$4.b((long)$$3.c);
-      int $$5 = $$3.b;
-      hes $$6 = $$3.a;
-      boolean $$7 = $$6.d();
-      float $$8 = $$6.f().d.x();
-      float $$9 = $$6.f().d.y();
-      float $$10 = $$6.f().d.z();
-      if (!$$7) {
-         float $$11 = -0.0F * (float)($$5 - 1) * 0.5F * $$8;
-         float $$12 = -0.0F * (float)($$5 - 1) * 0.5F * $$9;
-         float $$13 = -0.09375F * (float)($$5 - 1) * 0.5F * $$10;
-         $$0.a($$11, $$12, $$13);
-      }
-
-      for (int $$14 = 0; $$14 < $$5; $$14++) {
-         $$0.a();
-         if ($$14 > 0) {
-            if ($$7) {
-               float $$15 = ($$4.i() * 2.0F - 1.0F) * 0.15F;
-               float $$16 = ($$4.i() * 2.0F - 1.0F) * 0.15F;
-               float $$17 = ($$4.i() * 2.0F - 1.0F) * 0.15F;
-               $$0.a($$15, $$16, $$17);
-            } else {
-               float $$18 = ($$4.i() * 2.0F - 1.0F) * 0.15F * 0.5F;
-               float $$19 = ($$4.i() * 2.0F - 1.0F) * 0.15F * 0.5F;
-               $$0.a($$18, $$19, 0.0F);
-            }
-         }
-
-         $$6.a($$0, $$1, $$2, hhp.d);
-         $$0.b();
-         if (!$$7) {
-            $$0.a(0.0F * $$8, 0.0F * $$9, 0.09375F * $$10);
-         }
-      }
+   protected boolean a(cro $$0) {
+      return false;
    }
 }

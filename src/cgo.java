@@ -1,19 +1,44 @@
-import com.google.common.collect.ImmutableSet;
-import java.util.Optional;
-import java.util.Set;
+public class cgo extends cgm {
+   private boolean p;
 
-public class cgo extends chh<bvq> {
+   public cgo(bxe $$0, div $$1) {
+      super($$0, $$1);
+   }
+
    @Override
-   public Set<cgb<?>> a() {
-      return ImmutableSet.of(cgb.L, cgb.h);
+   protected eww a(int $$0) {
+      this.p = this.a.aq() == bwm.H;
+      this.o = new exa(this.p);
+      this.o.a(false);
+      return new eww(this.o, $$0);
    }
 
-   protected void a(aro $$0, bvq $$1) {
-      $$1.eb().c(cgb.h).ifPresent($$1x -> this.a($$1, $$1x));
+   @Override
+   protected boolean a() {
+      return this.p || this.a.bm();
    }
 
-   private void a(bvq $$0, cgd $$1) {
-      Optional<bvq> $$2 = $$1.a($$1x -> $$1x.aq() == $$0.aq() && !$$1x.n_()).map(bvq.class::cast);
-      $$0.eb().a(cgb.L, $$2);
+   @Override
+   protected fei b() {
+      return new fei(this.a.dA(), this.a.e(0.5), this.a.dG());
+   }
+
+   @Override
+   protected double a(fei $$0) {
+      return $$0.e;
+   }
+
+   @Override
+   protected boolean a(fei $$0, fei $$1) {
+      return a(this.a, $$0, $$1, false);
+   }
+
+   @Override
+   public boolean a(iu $$0) {
+      return !this.b.a_($$0).s();
+   }
+
+   @Override
+   public void a(boolean $$0) {
    }
 }

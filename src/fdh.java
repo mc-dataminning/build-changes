@@ -1,26 +1,48 @@
-@FunctionalInterface
-public interface fdh<T> {
-   void handle(T var1, fdj<T> var2, long var3);
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
+import java.util.Optional;
 
-   public abstract static class a<T, C extends fdh<T>> {
-      private final ale a;
-      private final Class<?> b;
+public record fdh(alg b, fa.g c) implements fde {
+   public static final MapCodec<fdh> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(alg.a.fieldOf("storage").forGetter(fdh::c), fa.g.a.fieldOf("path").forGetter(fdh::d)).apply($$0, fdh::new)
+   );
 
-      public a(ale $$0, Class<?> $$1) {
-         this.a = $$0;
-         this.b = $$1;
+   @Override
+   public fdd b() {
+      return fdf.f;
+   }
+
+   private Optional<up> c(eyz $$0) {
+      tz $$1 = $$0.d().p().aK().a(this.b);
+
+      try {
+         List<uw> $$2 = this.c.a($$1);
+         if ($$2.size() == 1 && $$2.get(0) instanceof up $$3) {
+            return Optional.of($$3);
+         }
+      } catch (CommandSyntaxException var6) {
       }
 
-      public ale a() {
-         return this.a;
-      }
+      return Optional.empty();
+   }
 
-      public Class<?> b() {
-         return this.b;
-      }
+   @Override
+   public float b(eyz $$0) {
+      return this.c($$0).map(up::k).orElse(0.0F);
+   }
 
-      public abstract void a(tx var1, C var2);
+   @Override
+   public int a(eyz $$0) {
+      return this.c($$0).map(up::g).orElse(0);
+   }
 
-      public abstract C b(tx var1);
+   public alg c() {
+      return this.b;
+   }
+
+   public fa.g d() {
+      return this.c;
    }
 }

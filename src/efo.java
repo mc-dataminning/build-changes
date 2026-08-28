@@ -1,82 +1,181 @@
-import com.google.common.annotations.VisibleForTesting;
-import java.util.concurrent.atomic.AtomicLong;
+import java.util.Optional;
+import java.util.OptionalInt;
+import java.util.function.Predicate;
 
-public class efo implements efc {
-   private static final int d = 48;
-   private static final long e = 281474976710655L;
-   private static final long f = 25214903917L;
-   private static final long g = 11L;
-   private final AtomicLong h = new AtomicLong();
-   private final efp i = new efp(this);
-
-   public efo(long $$0) {
-      this.b($$0);
+public abstract class efo {
+   public static efo.b a(int $$0, int $$1) {
+      return new efo.b($$0 - 1, $$1 + 1);
    }
 
-   @Override
-   public azt d() {
-      return new efo(this.g());
+   public static efo.b b(int $$0, int $$1) {
+      return new efo.b($$0, $$1);
    }
 
-   @Override
-   public ega e() {
-      return new efo.a(this.g());
+   public static efo a(int $$0) {
+      return new efo.c($$0, false);
    }
 
-   @Override
-   public void b(long $$0) {
-      if (!this.h.compareAndSet(this.h.get(), ($$0 ^ 25214903917L) & 281474976710655L)) {
-         throw bal.a("LegacyRandomSource", null);
+   public static efo b(int $$0) {
+      return new efo.c($$0 + 1, false);
+   }
+
+   public static efo c(int $$0) {
+      return new efo.c($$0, true);
+   }
+
+   public static efo d(int $$0) {
+      return new efo.c($$0 - 1, true);
+   }
+
+   public static efo a() {
+      return efo.a.a;
+   }
+
+   public static efo a(OptionalInt $$0, OptionalInt $$1) {
+      if ($$0.isPresent() && $$1.isPresent()) {
+         return b($$0.getAsInt(), $$1.getAsInt());
+      } else if ($$0.isPresent()) {
+         return c($$0.getAsInt());
       } else {
-         this.i.a();
+         return $$1.isPresent() ? a($$1.getAsInt()) : a();
       }
    }
 
-   @Override
-   public int c(int $$0) {
-      long $$1 = this.h.get();
-      long $$2 = $$1 * 25214903917L + 11L & 281474976710655L;
-      if (!this.h.compareAndSet($$1, $$2)) {
-         throw bal.a("LegacyRandomSource", null);
+   public abstract OptionalInt b();
+
+   public abstract OptionalInt c();
+
+   public abstract OptionalInt d();
+
+   public efo a(OptionalInt $$0) {
+      return a($$0, this.b());
+   }
+
+   public efo b(OptionalInt $$0) {
+      return a(this.c(), $$0);
+   }
+
+   public static Optional<efo> a(djb $$0, iu $$1, int $$2, Predicate<dzz> $$3, Predicate<dzz> $$4) {
+      iu.a $$5 = $$1.k();
+      if (!$$0.a($$1, $$3)) {
+         return Optional.empty();
       } else {
-         return (int)($$2 >> 48 - $$0);
+         int $$6 = $$1.v();
+         OptionalInt $$7 = a($$0, $$2, $$3, $$4, $$5, $$6, ja.b);
+         OptionalInt $$8 = a($$0, $$2, $$3, $$4, $$5, $$6, ja.a);
+         return Optional.of(a($$8, $$7));
       }
    }
 
-   @Override
-   public double k() {
-      return this.i.b();
+   private static OptionalInt a(djb $$0, int $$1, Predicate<dzz> $$2, Predicate<dzz> $$3, iu.a $$4, int $$5, ja $$6) {
+      $$4.q($$5);
+
+      for (int $$7 = 1; $$7 < $$1 && $$0.a($$4, $$2); $$7++) {
+         $$4.c($$6);
+      }
+
+      return $$0.a($$4, $$3) ? OptionalInt.of($$4.v()) : OptionalInt.empty();
    }
 
-   public static class a implements ega {
-      private final long a;
+   public static final class a extends efo {
+      static final efo.a a = new efo.a();
 
-      public a(long $$0) {
+      private a() {
+      }
+
+      @Override
+      public OptionalInt b() {
+         return OptionalInt.empty();
+      }
+
+      @Override
+      public OptionalInt c() {
+         return OptionalInt.empty();
+      }
+
+      @Override
+      public OptionalInt d() {
+         return OptionalInt.empty();
+      }
+
+      @Override
+      public String toString() {
+         return "C(-)";
+      }
+   }
+
+   public static final class b extends efo {
+      private final int a;
+      private final int b;
+
+      protected b(int $$0, int $$1) {
          this.a = $$0;
+         this.b = $$1;
+         if (this.g() < 0) {
+            throw new IllegalArgumentException("Column of negative height: " + this);
+         }
       }
 
       @Override
-      public azt a(int $$0, int $$1, int $$2) {
-         long $$3 = azk.b($$0, $$1, $$2);
-         long $$4 = $$3 ^ this.a;
-         return new efo($$4);
+      public OptionalInt b() {
+         return OptionalInt.of(this.b);
       }
 
       @Override
-      public azt a(String $$0) {
-         int $$1 = $$0.hashCode();
-         return new efo((long)$$1 ^ this.a);
+      public OptionalInt c() {
+         return OptionalInt.of(this.a);
       }
 
       @Override
-      public azt a(long $$0) {
-         return new efo($$0);
+      public OptionalInt d() {
+         return OptionalInt.of(this.g());
       }
 
-      @VisibleForTesting
+      public int e() {
+         return this.b;
+      }
+
+      public int f() {
+         return this.a;
+      }
+
+      public int g() {
+         return this.b - this.a - 1;
+      }
+
       @Override
-      public void a(StringBuilder $$0) {
-         $$0.append("LegacyPositionalRandomFactory{").append(this.a).append("}");
+      public String toString() {
+         return "C(" + this.b + "-" + this.a + ")";
+      }
+   }
+
+   public static final class c extends efo {
+      private final int a;
+      private final boolean b;
+
+      public c(int $$0, boolean $$1) {
+         this.a = $$0;
+         this.b = $$1;
+      }
+
+      @Override
+      public OptionalInt b() {
+         return this.b ? OptionalInt.empty() : OptionalInt.of(this.a);
+      }
+
+      @Override
+      public OptionalInt c() {
+         return this.b ? OptionalInt.of(this.a) : OptionalInt.empty();
+      }
+
+      @Override
+      public OptionalInt d() {
+         return OptionalInt.empty();
+      }
+
+      @Override
+      public String toString() {
+         return this.b ? "C(" + this.a + "-)" : "C(-" + this.a + ")";
       }
    }
 }

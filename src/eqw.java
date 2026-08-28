@@ -1,26 +1,51 @@
-import java.util.Optional;
-import java.util.function.Predicate;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import it.unimi.dsi.fastutil.longs.LongCollection;
+import it.unimi.dsi.fastutil.longs.LongOpenHashSet;
+import it.unimi.dsi.fastutil.longs.LongSet;
 
-@FunctionalInterface
-public interface eqw<C extends ekx> {
-   Optional<eqv<C>> createGenerator(eqw.a<C> var1);
+public class eqw extends exs {
+   private final LongSet b;
+   private final LongSet c;
+   private static final Codec<LongSet> d = Codec.LONG_STREAM.xmap(LongOpenHashSet::toSet, LongCollection::longStream);
+   public static final Codec<eqw> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(d.fieldOf("All").forGetter($$0x -> $$0x.b), d.fieldOf("Remaining").forGetter($$0x -> $$0x.c)).apply($$0, eqw::new)
+   );
 
-   static <C extends ekx> eqw<C> simple(Predicate<eqw.a<C>> $$0, eqv<C> $$1) {
-      Optional<eqv<C>> $$2 = Optional.of($$1);
-      return $$2x -> $$0.test($$2x) ? $$2 : Optional.empty();
+   public static ext<eqw> a(String $$0) {
+      return new ext<>($$0, eqw::new, a, bbb.o);
    }
 
-   static <C extends ekx> Predicate<eqw.a<C>> checkForBiomeOnTop(efn.a $$0) {
-      return $$1 -> $$1.a($$0);
+   private eqw(LongSet $$0, LongSet $$1) {
+      this.b = $$0;
+      this.c = $$1;
    }
 
-   public static record a<C extends ekx>(ebm a, djw b, egb c, long d, dhw e, C f, dir g, Predicate<je<djs>> h, eul i, js j) {
-      public boolean a(efn.a $$0) {
-         int $$1 = this.e.b();
-         int $$2 = this.e.c();
-         int $$3 = this.a.c($$1, $$2, $$0, this.g, this.c);
-         je<djs> $$4 = this.a.d().getNoiseBiome(jp.a($$1), jp.a($$3), jp.a($$2), this.c.b());
-         return this.h.test($$4);
+   public eqw() {
+      this(new LongOpenHashSet(), new LongOpenHashSet());
+   }
+
+   public void a(long $$0) {
+      this.b.add($$0);
+      this.c.add($$0);
+      this.f();
+   }
+
+   public boolean b(long $$0) {
+      return this.b.contains($$0);
+   }
+
+   public boolean c(long $$0) {
+      return this.c.contains($$0);
+   }
+
+   public void d(long $$0) {
+      if (this.c.remove($$0)) {
+         this.f();
       }
+   }
+
+   public LongSet a() {
+      return this.b;
    }
 }

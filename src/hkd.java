@@ -1,40 +1,31 @@
-import java.util.List;
-import javax.annotation.Nullable;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public abstract class hkd implements hjz {
-   protected final hjz a;
+public record hkd(hkd.a c) {
+   public static final Codec<hkd> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(hkd.a.d.optionalFieldOf("hat", hkd.a.a).forGetter(hkd::a)).apply($$0, hkd::new)
+   );
+   public static final auc<hkd> b = new auc<>("villager", a);
 
-   public hkd(hjz $$0) {
-      this.a = $$0;
+   public hkd.a a() {
+      return this.c;
    }
 
-   @Override
-   public List<gqk> a(@Nullable dzo $$0, @Nullable ja $$1, azt $$2) {
-      return this.a.a($$0, $$1, $$2);
-   }
+   public static enum a implements bak {
+      a("none"),
+      b("partial"),
+      c("full");
 
-   @Override
-   public boolean a() {
-      return this.a.a();
-   }
+      public static final Codec<hkd.a> d = bak.a(hkd.a::values);
+      private final String e;
 
-   @Override
-   public boolean b() {
-      return this.a.b();
-   }
+      private a(final String $$0) {
+         this.e = $$0;
+      }
 
-   @Override
-   public boolean c() {
-      return this.a.c();
-   }
-
-   @Override
-   public hhz d() {
-      return this.a.d();
-   }
-
-   @Override
-   public gqu e() {
-      return this.a.e();
+      @Override
+      public String c() {
+         return this.e;
+      }
    }
 }

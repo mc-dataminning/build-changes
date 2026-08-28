@@ -1,428 +1,97 @@
-import com.google.common.collect.Lists;
-import com.google.common.collect.Queues;
-import com.mojang.logging.LogUtils;
-import it.unimi.dsi.fastutil.longs.Long2ObjectMap;
-import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
-import it.unimi.dsi.fastutil.longs.LongIterator;
-import it.unimi.dsi.fastutil.longs.LongOpenHashSet;
-import it.unimi.dsi.fastutil.longs.LongSet;
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.List;
-import java.util.Queue;
-import java.util.concurrent.BlockingQueue;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.Future;
-import java.util.concurrent.LinkedBlockingQueue;
-import java.util.concurrent.atomic.AtomicBoolean;
-import java.util.concurrent.atomic.AtomicReference;
-import java.util.function.Consumer;
+import com.mojang.blaze3d.systems.RenderSystem;
+import it.unimi.dsi.fastutil.objects.Object2ObjectSortedMaps;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.SequencedMap;
 import javax.annotation.Nullable;
-import org.joml.Vector3d;
-import org.slf4j.Logger;
 
-public class gps {
-   private static final Logger a = LogUtils.getLogger();
-   private static final ja[] b = ja.values();
-   private static final int c = 60;
-   private static final int d = jx.a(60);
-   private static final double e = Math.ceil(Math.sqrt(3.0) * 16.0);
-   private boolean f = true;
-   @Nullable
-   private Future<?> g;
-   @Nullable
-   private gqc h;
-   private final AtomicReference<gps.b> i = new AtomicReference<>();
-   private final AtomicReference<gps.a> j = new AtomicReference<>();
-   private final AtomicBoolean k = new AtomicBoolean(false);
-
-   public void a(@Nullable gqc $$0) {
-      if (this.g != null) {
-         try {
-            this.g.get();
-            this.g = null;
-         } catch (Exception var3) {
-            a.warn("Full update failed", var3);
-         }
-      }
-
-      this.h = $$0;
-      if ($$0 != null) {
-         this.i.set(new gps.b($$0));
-         this.a();
-      } else {
-         this.i.set(null);
-      }
+public interface gps {
+   static gps.a a(fiz $$0) {
+      return a(Object2ObjectSortedMaps.emptyMap(), $$0);
    }
 
-   public void a() {
-      this.f = true;
+   static gps.a a(SequencedMap<gqc, fiz> $$0, fiz $$1) {
+      return new gps.a($$1, $$0);
    }
 
-   public void a(gsw $$0, List<gss.b> $$1, List<gss.b> $$2) {
-      this.i.get().a().b.a(($$2x, $$3, $$4, $$5) -> {
-         gss.b $$6 = $$2x.a();
-         if ($$6 != null) {
-            $$1.add($$6);
-            if ($$5) {
-               $$2.add($$6);
-            }
-         }
-      }, $$0, 32);
-   }
+   fjg getBuffer(gqc var1);
 
-   public boolean b() {
-      return this.k.compareAndSet(true, false);
-   }
-
-   public void a(dhw $$0) {
-      gps.a $$1 = this.j.get();
-      if ($$1 != null) {
-         this.a($$1, $$0);
-      }
-
-      gps.a $$2 = this.i.get().b;
-      if ($$2 != $$1) {
-         this.a($$2, $$0);
-      }
-   }
-
-   public void a(gss.b $$0) {
-      gps.a $$1 = this.j.get();
-      if ($$1 != null) {
-         $$1.b.add($$0);
-      }
-
-      gps.a $$2 = this.i.get().b;
-      if ($$2 != $$1) {
-         $$2.b.add($$0);
-      }
-   }
-
-   public void a(boolean $$0, fnn $$1, gsw $$2, List<gss.b> $$3, LongOpenHashSet $$4) {
-      fdw $$5 = $$1.b();
-      if (this.f && (this.g == null || this.g.isDone())) {
-         this.a($$0, $$1, $$5, $$4);
-      }
-
-      this.a($$0, $$2, $$3, $$5, $$4);
-   }
-
-   private void a(boolean $$0, fnn $$1, fdw $$2, LongOpenHashSet $$3) {
-      this.f = false;
-      LongOpenHashSet $$4 = $$3.clone();
-      this.g = CompletableFuture.runAsync(() -> {
-         gps.b $$4x = new gps.b(this.h);
-         this.j.set($$4x.b);
-         Queue<gps.d> $$5 = Queues.newArrayDeque();
-         this.a($$1, $$5);
-         $$5.forEach($$1xx -> $$4x.a.a.a($$1xx.a, $$1xx));
-         this.a($$4x.a, $$2, $$5, $$0, $$0xx -> {
-         }, $$4);
-         this.i.set($$4x);
-         this.j.set(null);
-         this.k.set(true);
-      }, af.h());
-   }
-
-   private void a(boolean $$0, gsw $$1, List<gss.b> $$2, fdw $$3, LongOpenHashSet $$4) {
-      gps.b $$5 = this.i.get();
-      this.a($$5);
-      if (!$$5.b.b.isEmpty()) {
-         Queue<gps.d> $$6 = Queues.newArrayDeque();
-
-         while (!$$5.b.b.isEmpty()) {
-            gss.b $$7 = $$5.b.b.poll();
-            gps.d $$8 = $$5.a.a.a($$7);
-            if ($$8 != null && $$8.a == $$7) {
-               $$6.add($$8);
-            }
-         }
-
-         gsw $$9 = goy.a($$1);
-         Consumer<gss.b> $$10 = $$1x -> {
-            if ($$9.a($$1x.b())) {
-               this.k.set(true);
-            }
-         };
-         this.a($$5.a, $$3, $$6, $$0, $$10, $$4);
-      }
-   }
-
-   private void a(gps.b $$0) {
-      LongIterator $$1 = $$0.b.a.iterator();
-
-      while ($$1.hasNext()) {
-         long $$2 = $$1.nextLong();
-         List<gss.b> $$3 = (List<gss.b>)$$0.a.c.get($$2);
-         if ($$3 != null && $$3.get(0).a()) {
-            $$0.b.b.addAll($$3);
-            $$0.a.c.remove($$2);
-         }
-      }
-
-      $$0.b.a.clear();
-   }
-
-   private void a(gps.a $$0, dhw $$1) {
-      $$0.a.add(dhw.c($$1.h - 1, $$1.i));
-      $$0.a.add(dhw.c($$1.h, $$1.i - 1));
-      $$0.a.add(dhw.c($$1.h + 1, $$1.i));
-      $$0.a.add(dhw.c($$1.h, $$1.i + 1));
-      $$0.a.add(dhw.c($$1.h - 1, $$1.i - 1));
-      $$0.a.add(dhw.c($$1.h - 1, $$1.i + 1));
-      $$0.a.add(dhw.c($$1.h + 1, $$1.i - 1));
-      $$0.a.add(dhw.c($$1.h + 1, $$1.i + 1));
-   }
-
-   private void a(fnn $$0, Queue<gps.d> $$1) {
-      iu $$2 = $$0.c();
-      long $$3 = jx.c($$2);
-      int $$4 = jx.c($$3);
-      gss.b $$5 = this.h.a($$3);
-      if ($$5 == null) {
-         dir $$6 = this.h.c();
-         boolean $$7 = $$4 < $$6.aq();
-         int $$8 = $$7 ? $$6.aq() : $$6.ar();
-         int $$9 = this.h.b();
-         List<gps.d> $$10 = Lists.newArrayList();
-         int $$11 = jx.b($$3);
-         int $$12 = jx.d($$3);
-
-         for (int $$13 = -$$9; $$13 <= $$9; $$13++) {
-            for (int $$14 = -$$9; $$14 <= $$9; $$14++) {
-               gss.b $$15 = this.h.a(jx.b($$13 + $$11, $$8, $$14 + $$12));
-               if ($$15 != null && this.a($$3, $$15.g())) {
-                  ja $$16 = $$7 ? ja.b : ja.a;
-                  gps.d $$17 = new gps.d($$15, $$16, 0);
-                  $$17.a($$17.d, $$16);
-                  if ($$13 > 0) {
-                     $$17.a($$17.d, ja.f);
-                  } else if ($$13 < 0) {
-                     $$17.a($$17.d, ja.e);
-                  }
-
-                  if ($$14 > 0) {
-                     $$17.a($$17.d, ja.d);
-                  } else if ($$14 < 0) {
-                     $$17.a($$17.d, ja.c);
-                  }
-
-                  $$10.add($$17);
-               }
-            }
-         }
-
-         $$10.sort(Comparator.comparingDouble($$1x -> $$2.j(jx.a($$1x.a.g()).k())));
-         $$1.addAll($$10);
-      } else {
-         $$1.add(new gps.d($$5, null, 0));
-      }
-   }
-
-   private void a(gps.c $$0, fdw $$1, Queue<gps.d> $$2, boolean $$3, Consumer<gss.b> $$4, LongOpenHashSet $$5) {
-      jx $$6 = jx.a($$1);
-      long $$7 = $$6.s();
-      iu $$8 = $$6.k();
-
-      while (!$$2.isEmpty()) {
-         gps.d $$9 = $$2.poll();
-         gss.b $$10 = $$9.a;
-         if (!$$5.contains($$9.a.g())) {
-            if ($$0.b.a($$9.a)) {
-               $$4.accept($$9.a);
-            }
-         } else {
-            $$9.a.c.compareAndSet(gss.a.a, gss.a.b);
-         }
-
-         long $$11 = $$10.g();
-         boolean $$12 = Math.abs(jx.b($$11) - $$6.a()) > d || Math.abs(jx.c($$11) - $$6.b()) > d || Math.abs(jx.d($$11) - $$6.c()) > d;
-
-         for (ja $$13 : b) {
-            gss.b $$14 = this.a($$7, $$10, $$13);
-            if ($$14 != null && (!$$3 || !$$9.a($$13.g()))) {
-               if ($$3 && $$9.a()) {
-                  gss.a $$15 = $$10.d();
-                  boolean $$16 = false;
-
-                  for (int $$17 = 0; $$17 < b.length; $$17++) {
-                     if ($$9.a($$17) && $$15.a(b[$$17].g(), $$13)) {
-                        $$16 = true;
-                        break;
-                     }
-                  }
-
-                  if (!$$16) {
-                     continue;
-                  }
-               }
-
-               if ($$3 && $$12) {
-                  int $$18 = jx.c(jx.b($$11));
-                  int $$19 = jx.c(jx.c($$11));
-                  int $$20 = jx.c(jx.d($$11));
-                  boolean $$21 = $$13.o() == ja.a.a ? $$8.u() > $$18 : $$8.u() < $$18;
-                  boolean $$22 = $$13.o() == ja.a.b ? $$8.v() > $$19 : $$8.v() < $$19;
-                  boolean $$23 = $$13.o() == ja.a.c ? $$8.w() > $$20 : $$8.w() < $$20;
-                  Vector3d $$24 = new Vector3d((double)($$18 + ($$21 ? 16 : 0)), (double)($$19 + ($$22 ? 16 : 0)), (double)($$20 + ($$23 ? 16 : 0)));
-                  Vector3d $$25 = new Vector3d($$1.d, $$1.e, $$1.f).sub($$24).normalize().mul(e);
-                  boolean $$26 = true;
-
-                  while ($$24.distanceSquared($$1.d, $$1.e, $$1.f) > 3600.0) {
-                     $$24.add($$25);
-                     dir $$27 = this.h.c();
-                     if ($$24.y > (double)$$27.ao() || $$24.y < (double)$$27.G_()) {
-                        break;
-                     }
-
-                     gss.b $$28 = this.h.a(iu.a($$24.x, $$24.y, $$24.z));
-                     if ($$28 == null || $$0.a.a($$28) == null) {
-                        $$26 = false;
-                        break;
-                     }
-                  }
-
-                  if (!$$26) {
-                     continue;
-                  }
-               }
-
-               gps.d $$29 = $$0.a.a($$14);
-               if ($$29 != null) {
-                  $$29.b($$13);
-               } else {
-                  gps.d $$30 = new gps.d($$14, $$13, $$9.b + 1);
-                  $$30.a($$9.d, $$13);
-                  if ($$14.a()) {
-                     $$2.add($$30);
-                     $$0.a.a($$14, $$30);
-                  } else if (this.a($$7, $$14.g())) {
-                     $$0.a.a($$14, $$30);
-                     long $$31 = jx.g($$14.g());
-                     ((List)$$0.c.computeIfAbsent($$31, $$0x -> new ArrayList())).add($$14);
-                  }
-               }
-            }
-         }
-      }
-   }
-
-   private boolean a(long $$0, long $$1) {
-      return aqx.a(jx.b($$0), jx.d($$0), this.h.b(), jx.b($$1), jx.d($$1));
-   }
-
-   @Nullable
-   private gss.b a(long $$0, gss.b $$1, ja $$2) {
-      long $$3 = $$1.a($$2);
-      if (!this.a($$0, $$3)) {
-         return null;
-      } else {
-         return azk.a(jx.c($$0) - jx.c($$3)) > this.h.b() ? null : this.h.a($$3);
-      }
-   }
-
-   @Nullable
-   @bat
-   public gps.d b(gss.b $$0) {
-      return this.i.get().a.a.a($$0);
-   }
-
-   public gpe c() {
-      return this.i.get().a.b;
-   }
-
-   static record a(LongSet a, BlockingQueue<gss.b> b) {
-
-      a() {
-         this(new LongOpenHashSet(), new LinkedBlockingQueue<>());
-      }
-   }
-
-   static record b(gps.c a, gps.a b) {
-
-      b(gqc $$0) {
-         this(new gps.c($$0), new gps.a());
-      }
-   }
-
-   static class c {
-      public final gps.e a;
-      public final gpe b;
-      public final Long2ObjectMap<List<gss.b>> c;
-
-      public c(gqc $$0) {
-         this.a = new gps.e($$0.f.length);
-         this.b = new gpe($$0.d(), $$0.b(), $$0.c, $$0.b.G_());
-         this.c = new Long2ObjectOpenHashMap();
-      }
-   }
-
-   @bat
-   public static class d {
-      @bat
-      protected final gss.b a;
-      private byte c;
-      byte d;
-      @bat
-      public final int b;
-
-      d(gss.b $$0, @Nullable ja $$1, int $$2) {
-         this.a = $$0;
-         if ($$1 != null) {
-            this.b($$1);
-         }
-
-         this.b = $$2;
-      }
-
-      void a(byte $$0, ja $$1) {
-         this.d = (byte)(this.d | $$0 | 1 << $$1.ordinal());
-      }
-
-      boolean a(ja $$0) {
-         return (this.d & 1 << $$0.ordinal()) > 0;
-      }
-
-      void b(ja $$0) {
-         this.c = (byte)(this.c | this.c | 1 << $$0.ordinal());
-      }
-
-      @bat
-      public boolean a(int $$0) {
-         return (this.c & 1 << $$0) > 0;
-      }
-
-      boolean a() {
-         return this.c != 0;
-      }
-
-      @Override
-      public int hashCode() {
-         return Long.hashCode(this.a.g());
-      }
-
-      @Override
-      public boolean equals(Object $$0) {
-         return !($$0 instanceof gps.d $$1) ? false : this.a.g() == $$1.a.g();
-      }
-   }
-
-   static class e {
-      private final gps.d[] a;
-
-      e(int $$0) {
-         this.a = new gps.d[$$0];
-      }
-
-      public void a(gss.b $$0, gps.d $$1) {
-         this.a[$$0.b] = $$1;
-      }
-
+   public static class a implements gps {
+      protected final fiz a;
+      protected final SequencedMap<gqc, fiz> b;
+      protected final Map<gqc, fix> c = new HashMap<>();
       @Nullable
-      public gps.d a(gss.b $$0) {
-         int $$1 = $$0.b;
-         return $$1 >= 0 && $$1 < this.a.length ? this.a[$$1] : null;
+      protected gqc d;
+
+      protected a(fiz $$0, SequencedMap<gqc, fiz> $$1) {
+         this.a = $$0;
+         this.b = $$1;
+      }
+
+      @Override
+      public fjg getBuffer(gqc $$0) {
+         fix $$1 = this.c.get($$0);
+         if ($$1 != null && !$$0.X()) {
+            this.a($$0, $$1);
+            $$1 = null;
+         }
+
+         if ($$1 != null) {
+            return $$1;
+         } else {
+            fiz $$2 = this.b.get($$0);
+            if ($$2 != null) {
+               $$1 = new fix($$2, $$0.T(), $$0.S());
+            } else {
+               if (this.d != null) {
+                  this.a(this.d);
+               }
+
+               $$1 = new fix(this.a, $$0.T(), $$0.S());
+               this.d = $$0;
+            }
+
+            this.c.put($$0, $$1);
+            return $$1;
+         }
+      }
+
+      public void a() {
+         if (this.d != null) {
+            this.a(this.d);
+            this.d = null;
+         }
+      }
+
+      public void b() {
+         this.a();
+
+         for (gqc $$0 : this.b.keySet()) {
+            this.a($$0);
+         }
+      }
+
+      public void a(gqc $$0) {
+         fix $$1 = this.c.remove($$0);
+         if ($$1 != null) {
+            this.a($$0, $$1);
+         }
+      }
+
+      private void a(gqc $$0, fix $$1) {
+         fjb $$2 = $$1.a();
+         if ($$2 != null) {
+            if ($$0.Y()) {
+               fiz $$3 = this.b.getOrDefault($$0, this.a);
+               $$2.a($$3, RenderSystem.getProjectionType().a());
+            }
+
+            $$0.a($$2);
+         }
+
+         if ($$0.equals(this.d)) {
+            this.d = null;
+         }
       }
    }
 }

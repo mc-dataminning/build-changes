@@ -1,49 +1,61 @@
+import com.mojang.datafixers.Products.P3;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
+import com.mojang.serialization.codecs.RecordCodecBuilder.Instance;
+import com.mojang.serialization.codecs.RecordCodecBuilder.Mu;
+import java.util.Optional;
+import java.util.function.BiConsumer;
 
-public record eng(emy b, List<eng.a> c) {
-   public static final Codec<eng> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(emy.a.fieldOf("fallback").forGetter(eng::a), eng.a.a.listOf().fieldOf("rules").forGetter(eng::b)).apply($$0, eng::new)
-   );
+public abstract class eng {
+   public static final Codec<eng> d = mf.W.q().dispatch(eng::a, enh::a);
+   protected final btg e;
+   protected final enj f;
+   protected final Optional<end> g;
 
-   public static eng a(emy $$0) {
-      return new eng($$0, List.of());
+   protected static <P extends eng> P3<Mu<P>, btg, enj, Optional<end>> a(Instance<P> $$0) {
+      return $$0.group(
+         btg.c.fieldOf("trunk_offset_y").forGetter($$0x -> $$0x.e),
+         enj.a.fieldOf("root_provider").forGetter($$0x -> $$0x.f),
+         end.a.optionalFieldOf("above_root_placement").forGetter($$0x -> $$0x.g)
+      );
    }
 
-   public static eng a(dlu $$0) {
-      return a(emy.a($$0));
+   public eng(btg $$0, enj $$1, Optional<end> $$2) {
+      this.e = $$0;
+      this.f = $$1;
+      this.g = $$2;
    }
 
-   public dzo a(djo $$0, azt $$1, iu $$2) {
-      for (eng.a $$3 : this.c) {
-         if ($$3.a().test($$0, $$2)) {
-            return $$3.b().a($$1, $$2);
+   protected abstract enh<?> a();
+
+   public abstract boolean a(djb var1, BiConsumer<iu, dzz> var2, azv var3, iu var4, iu var5, eme var6);
+
+   protected boolean a(djb $$0, iu $$1) {
+      return ekq.d($$0, $$1);
+   }
+
+   protected void a(djb $$0, BiConsumer<iu, dzz> $$1, azv $$2, iu $$3, eme $$4) {
+      if (this.a($$0, $$3)) {
+         $$1.accept($$3, this.a($$0, $$3, this.f.a($$2, $$3)));
+         if (this.g.isPresent()) {
+            end $$5 = this.g.get();
+            iu $$6 = $$3.d();
+            if ($$2.i() < $$5.b() && $$0.a($$6, dzy.a::l)) {
+               $$1.accept($$6, this.a($$0, $$6, $$5.a().a($$2, $$6)));
+            }
          }
       }
-
-      return this.b.a($$1, $$2);
    }
 
-   public emy a() {
-      return this.b;
-   }
-
-   public List<eng.a> b() {
-      return this.c;
-   }
-
-   public static record a(egu b, emy c) {
-      public static final Codec<eng.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(egu.b.fieldOf("if_true").forGetter(eng.a::a), emy.a.fieldOf("then").forGetter(eng.a::b)).apply($$0, eng.a::new)
-      );
-
-      public egu a() {
-         return this.b;
+   protected dzz a(djb $$0, iu $$1, dzz $$2) {
+      if ($$2.b(eap.I)) {
+         boolean $$3 = $$0.b($$1, $$0x -> $$0x.a(axh.a));
+         return $$2.b(eap.I, Boolean.valueOf($$3));
+      } else {
+         return $$2;
       }
+   }
 
-      public emy b() {
-         return this.c;
-      }
+   public iu a(iu $$0, azv $$1) {
+      return $$0.b(this.e.a($$1));
    }
 }

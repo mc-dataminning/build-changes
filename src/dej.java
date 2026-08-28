@@ -1,31 +1,29 @@
-import java.util.List;
-
-public class dej extends deb {
-   public dej(String $$0, ddf $$1, cys $$2) {
-      super($$0, $$1, $$2);
+public class dej extends dcv {
+   public dej(String $$0, ddb $$1, ddl $$2, cyy $$3, float $$4, int $$5) {
+      super($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
    @Override
-   public ddu<dej> b() {
-      return ddu.f;
+   protected cyu f() {
+      return czc.fi;
    }
 
    @Override
-   public ddt<dej> a() {
-      return ddt.s;
+   public ddz<dej> a() {
+      return ddz.o;
    }
 
    @Override
-   public List<dep> g() {
-      return List.of(new dez(this.k().c(), this.c(), new dev.d(cyw.xv)));
-   }
-
-   public dev c() {
-      return new dev.f(this.l());
+   public dea<dej> b() {
+      return dea.b;
    }
 
    @Override
-   public ddm h() {
-      return ddl.k;
+   public dds h() {
+      return switch (this.e()) {
+         case b -> ddr.f;
+         case a -> ddr.e;
+         case c -> ddr.g;
+      };
    }
 }

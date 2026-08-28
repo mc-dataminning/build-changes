@@ -1,20 +1,44 @@
-public record agx(float b) implements zd<agn> {
-   public static final yu<vs, agx> a = zd.a(agx::a, agx::new);
+import java.time.Instant;
+import javax.annotation.Nullable;
 
-   private agx(vs $$0) {
-      this($$0.readFloat());
+public record agx(String b, Instant c, long d, @Nullable xk e, xf.b f) implements zf<agp> {
+   public static final yw<vu, agx> a = zf.a(agx::a, agx::new);
+
+   private agx(vu $$0) {
+      this($$0.d(256), $$0.t(), $$0.readLong(), $$0.c(xk::a), new xf.b($$0));
    }
 
-   private void a(vs $$0) {
-      $$0.a(this.b);
+   private void a(vu $$0) {
+      $$0.a(this.b, 256);
+      $$0.a(this.c);
+      $$0.b(this.d);
+      $$0.a(this.e, xk::a);
+      this.f.a($$0);
    }
 
    @Override
-   public zf<agx> a() {
-      return agl.bt;
+   public zh<agx> a() {
+      return agn.br;
    }
 
-   public void a(agn $$0) {
+   public void a(agp $$0) {
       $$0.a(this);
+   }
+
+   public Instant e() {
+      return this.c;
+   }
+
+   public long f() {
+      return this.d;
+   }
+
+   @Nullable
+   public xk g() {
+      return this.e;
+   }
+
+   public xf.b h() {
+      return this.f;
    }
 }

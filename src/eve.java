@@ -1,24 +1,14 @@
-import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
+import com.mojang.serialization.MapCodec;
 
-public class eve extends evj<eve.a> {
-   protected eve(eby $$0) {
-      super(diy.b, $$0, new eve.a(new Long2ObjectOpenHashMap()));
-   }
+public interface eve<P extends evd> {
+   eve<evb> a = a("clear", evb.a);
+   eve<evc> b = a("passthrough", evc.b);
+   eve<eva> c = a("append_static", eva.a);
+   eve<euz> d = a("append_loot", euz.a);
 
-   @Override
-   protected int a(long $$0) {
-      long $$1 = jx.e($$0);
-      ebq $$2 = this.a($$1, false);
-      return $$2 == null ? 0 : $$2.a(jx.b(iu.a($$0)), jx.b(iu.b($$0)), jx.b(iu.c($$0)));
-   }
+   MapCodec<P> codec();
 
-   protected static final class a extends evg<eve.a> {
-      public a(Long2ObjectOpenHashMap<ebq> $$0) {
-         super($$0);
-      }
-
-      public eve.a a() {
-         return new eve.a(this.a.clone());
-      }
+   private static <P extends evd> eve<P> a(String $$0, MapCodec<P> $$1) {
+      return jr.a(mf.n, $$0, () -> $$1);
    }
 }

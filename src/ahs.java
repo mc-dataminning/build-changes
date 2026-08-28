@@ -1,36 +1,18 @@
-public class ahs implements zd<agn> {
-   public static final yu<vs, ahs> a = zd.a(ahs::a, ahs::new);
-   private static final int b = 2;
-   private final boolean c;
+import io.netty.buffer.ByteBuf;
 
-   public ahs(cqo $$0) {
-      this.c = $$0.b;
-   }
-
-   private ahs(vs $$0) {
-      byte $$1 = $$0.readByte();
-      this.c = ($$1 & 2) != 0;
-   }
-
-   private void a(vs $$0) {
-      byte $$1 = 0;
-      if (this.c) {
-         $$1 = (byte)($$1 | 2);
-      }
-
-      $$0.l($$1);
-   }
+public record ahs(int b, boolean c) implements zf<agp> {
+   public static final yw<ByteBuf, ahs> a = yw.a(yu.h, ahs::b, yu.b, ahs::e, ahs::new);
 
    @Override
-   public zf<ahs> a() {
-      return agl.bR;
+   public zh<ahs> a() {
+      return agn.bP;
    }
 
-   public void a(agn $$0) {
+   public void a(agp $$0) {
       $$0.a(this);
    }
 
-   public boolean b() {
+   public boolean e() {
       return this.c;
    }
 }

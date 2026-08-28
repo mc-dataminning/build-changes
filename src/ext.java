@@ -1,30 +1,28 @@
-public class ext {
-   private final int b;
-   private final String c;
-   public static String a = "main";
+import com.mojang.serialization.Codec;
+import java.util.function.Function;
+import java.util.function.Supplier;
 
-   public ext(int $$0) {
-      this($$0, a);
+public record ext<T extends exs>(String a, Function<exs.a, T> b, Function<exs.a, Codec<T>> c, bbb d) {
+   public ext(String $$0, Supplier<T> $$1, Codec<T> $$2, bbb $$3) {
+      this($$0, $$1x -> $$1.get(), $$1x -> $$2, $$3);
    }
 
-   public ext(int $$0, String $$1) {
-      this.b = $$0;
-      this.c = $$1;
+   @Override
+   public boolean equals(Object $$0) {
+      if ($$0 instanceof ext<?> $$1 && this.a.equals($$1.a)) {
+         return true;
+      }
+
+      return false;
    }
 
-   public boolean a() {
-      return !this.c.equals(a);
+   @Override
+   public int hashCode() {
+      return this.a.hashCode();
    }
 
-   public String b() {
-      return this.c;
-   }
-
-   public int c() {
-      return this.b;
-   }
-
-   public boolean a(ext $$0) {
-      return this.b().equals($$0.b());
+   @Override
+   public String toString() {
+      return "SavedDataType[" + this.a + "]";
    }
 }

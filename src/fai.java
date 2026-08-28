@@ -1,44 +1,65 @@
-import com.mojang.serialization.Codec;
+import com.mojang.logging.LogUtils;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
-import java.util.Optional;
+import org.slf4j.Logger;
 
-public class fai extends faa {
+public class fai extends fam {
+   private static final Logger b = LogUtils.getLogger();
    public static final MapCodec<fai> a = RecordCodecBuilder.mapCodec(
-      $$0 -> a($$0)
-            .and(
-               $$0.group(
-                  asg.a(Codec.string(0, 32)).optionalFieldOf("title").forGetter($$0x -> $$0x.c),
-                  Codec.STRING.optionalFieldOf("author").forGetter($$0x -> $$0x.b),
-                  ays.a(0, 3).optionalFieldOf("generation").forGetter($$0x -> $$0x.d)
-               )
-            )
-            .apply($$0, fai::new)
+      $$0 -> a($$0).and(alf.a(mg.bq).fieldOf("name").forGetter($$0x -> $$0x.c)).apply($$0, fai::new)
    );
-   private final Optional<String> b;
-   private final Optional<asg<String>> c;
-   private final Optional<Integer> d;
+   private final alf<fan> c;
 
-   public fai(List<fbw> $$0, Optional<asg<String>> $$1, Optional<String> $$2, Optional<Integer> $$3) {
+   private fai(List<fci> $$0, alf<fan> $$1) {
       super($$0);
-      this.b = $$2;
       this.c = $$1;
-      this.d = $$3;
    }
 
    @Override
-   protected cys a(cys $$0, eyn $$1) {
-      $$0.a(kj.V, dcc.a, this::a);
-      return $$0;
-   }
-
-   private dcc a(dcc $$0) {
-      return new dcc(this.c.orElseGet($$0::d), this.b.orElseGet($$0::e), this.d.orElseGet($$0::f), $$0.a(), $$0.g());
+   public fao<fai> b() {
+      return fap.H;
    }
 
    @Override
-   public fac<fai> b() {
-      return fad.M;
+   public void a(ezf $$0) {
+      if (!$$0.b()) {
+         $$0.b("Uses reference to " + this.c.a() + ", but references are not allowed");
+      } else if ($$0.a(this.c)) {
+         $$0.b("Function " + this.c.a() + " is recursively called");
+      } else {
+         super.a($$0);
+         $$0.a()
+            .c(this.c)
+            .ifPresentOrElse($$1 -> $$1.a().a($$0.a(".{" + this.c.a() + "}", this.c)), () -> $$0.b("Unknown function table called " + this.c.a()));
+      }
+   }
+
+   @Override
+   protected cyy a(cyy $$0, eyz $$1) {
+      fan $$2 = $$1.a().c(this.c).map(je::a).orElse(null);
+      if ($$2 == null) {
+         b.warn("Unknown function: {}", this.c.a());
+         return $$0;
+      } else {
+         eyz.c<?> $$3 = eyz.a($$2);
+         if ($$1.b($$3)) {
+            cyy var5;
+            try {
+               var5 = $$2.apply($$0, $$1);
+            } finally {
+               $$1.c($$3);
+            }
+
+            return var5;
+         } else {
+            b.warn("Detected infinite loop in loot tables");
+            return $$0;
+         }
+      }
+   }
+
+   public static fam.a<?> a(alf<fan> $$0) {
+      return a($$1 -> new fai($$1, $$0));
    }
 }

@@ -1,69 +1,63 @@
-import javax.annotation.Nullable;
+import com.mojang.serialization.Codec;
+import java.util.List;
+import java.util.Optional;
+import java.util.function.Consumer;
+import java.util.stream.Stream;
 
-public class dyf extends dwn implements djk {
-   private final dhr a = new dhr() {
-      @Override
-      public void a(dip $$0, iu $$1, int $$2) {
-         $$0.a($$1, dlw.cA, $$2, 0);
+public record dyf(Optional<cyu> d, Optional<cyu> e, Optional<cyu> f, Optional<cyu> g) implements dcd {
+   public static final dyf a = new dyf(Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty());
+   public static final Codec<dyf> b = mf.g.q().sizeLimitedListOf(4).xmap(dyf::new, dyf::a);
+   public static final yw<wj, dyf> c = yu.a(mg.K).a(yu.c(4)).a(dyf::new, dyf::a);
+
+   private dyf(List<cyu> $$0) {
+      this(a($$0, 0), a($$0, 1), a($$0, 2), a($$0, 3));
+   }
+
+   public dyf(cyu $$0, cyu $$1, cyu $$2, cyu $$3) {
+      this(List.of($$0, $$1, $$2, $$3));
+   }
+
+   private static Optional<cyu> a(List<cyu> $$0, int $$1) {
+      if ($$1 >= $$0.size()) {
+         return Optional.empty();
+      } else {
+         cyu $$2 = $$0.get($$1);
+         return $$2 == czc.ry ? Optional.empty() : Optional.of($$2);
       }
+   }
 
-      @Override
-      public void a(@Nullable dip $$0, iu $$1, djj $$2) {
-         super.a($$0, $$1, $$2);
-         if ($$0 != null) {
-            dzo $$3 = $$0.a_($$1);
-            $$0.a($$1, $$3, $$3, 260);
-         }
+   public List<cyu> a() {
+      return Stream.of(this.d, this.e, this.f, this.g).map($$0 -> $$0.orElse(czc.ry)).toList();
+   }
+
+   @Override
+   public void a(cyu.b $$0, Consumer<wy> $$1, dan $$2, ke $$3) {
+      if (!this.equals(a)) {
+         $$1.accept(wx.a);
+         a($$1, this.g);
+         a($$1, this.e);
+         a($$1, this.f);
+         a($$1, this.d);
       }
-   };
-
-   public dyf(iu $$0, dzo $$1) {
-      super(dwp.j, $$0, $$1);
    }
 
-   @Override
-   protected void a(tx $$0, jg.a $$1) {
-      super.a($$0, $$1);
-      this.a.a(this.n, this.o, $$0);
+   private static void a(Consumer<wy> $$0, Optional<cyu> $$1) {
+      $$0.accept(new cyy($$1.orElse(czc.ry), 1).y().e().a(n.h));
    }
 
-   @Override
-   protected void b(tx $$0, jg.a $$1) {
-      super.b($$0, $$1);
-      this.a.a($$0);
+   public Optional<cyu> b() {
+      return this.d;
    }
 
-   public static void a(dip $$0, iu $$1, dzo $$2, dyf $$3) {
-      $$3.a.a($$0, $$1);
+   public Optional<cyu> c() {
+      return this.e;
    }
 
-   public static void b(dip $$0, iu $$1, dzo $$2, dyf $$3) {
-      $$3.a.a((aro)$$0, $$1);
+   public Optional<cyu> d() {
+      return this.f;
    }
 
-   public aby a() {
-      return aby.a(this);
-   }
-
-   @Override
-   public tx a(jg.a $$0) {
-      tx $$1 = this.e($$0);
-      $$1.r("SpawnPotentials");
-      return $$1;
-   }
-
-   @Override
-   public boolean a_(int $$0, int $$1) {
-      return this.a.a(this.n, $$0) ? true : super.a_($$0, $$1);
-   }
-
-   @Override
-   public void a(bwj<?> $$0, azt $$1) {
-      this.a.a($$0, this.n, $$1, this.o);
-      this.e();
-   }
-
-   public dhr c() {
-      return this.a;
+   public Optional<cyu> e() {
+      return this.g;
    }
 }

@@ -1,65 +1,61 @@
-import com.google.common.collect.Lists;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonDeserializationContext;
-import com.google.gson.JsonDeserializer;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonParseException;
-import java.lang.reflect.Type;
-import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
 
-public record gqv(List<gqy> a) implements gqx {
-   public gqv(List<gqy> a) {
-      if (a.isEmpty()) {
-         throw new IllegalArgumentException("Variant list must contain at least one element");
-      } else {
-         this.a = a;
+public class gqv {
+   private Map<dzz, hkp> a = Map.of();
+   private final hld b;
+
+   public gqv(hld $$0) {
+      this.b = $$0;
+   }
+
+   public hip a(dzz $$0) {
+      return this.b($$0).d();
+   }
+
+   public hkp b(dzz $$0) {
+      hkp $$1 = this.a.get($$0);
+      if ($$1 == null) {
+         $$1 = this.b.a();
       }
+
+      return $$1;
    }
 
-   @Override
-   public Object a(dzo $$0) {
-      return this;
+   public hld a() {
+      return this.b;
    }
 
-   @Override
-   public void a(hkr.a $$0) {
-      this.a.forEach($$1 -> $$0.a($$1.c()));
+   public void a(Map<dzz, hkp> $$0) {
+      this.a = $$0;
    }
 
-   @Override
-   public hjz a(hki $$0) {
-      if (this.a.size() == 1) {
-         gqy $$1 = this.a.getFirst();
-         return $$0.a($$1.c(), $$1);
-      } else {
-         bsj.a<hjz> $$2 = bsj.b();
+   public static hle c(dzz $$0) {
+      return a(mf.e.b($$0.b()), $$0);
+   }
 
-         for (gqy $$3 : this.a) {
-            hjz $$4 = $$0.a($$3.c(), $$3);
-            $$2.a($$4, $$3.f());
+   public static hle a(alg $$0, dzz $$1) {
+      return new hle($$0, b($$1.G()));
+   }
+
+   public static String b(Map<ebc<?>, Comparable<?>> $$0) {
+      StringBuilder $$1 = new StringBuilder();
+
+      for (Entry<ebc<?>, Comparable<?>> $$2 : $$0.entrySet()) {
+         if ($$1.length() != 0) {
+            $$1.append(',');
          }
 
-         return new hkv($$2.a());
+         ebc<?> $$3 = $$2.getKey();
+         $$1.append($$3.f());
+         $$1.append('=');
+         $$1.append(a($$3, $$2.getValue()));
       }
+
+      return $$1.toString();
    }
 
-   public static class a implements JsonDeserializer<gqv> {
-      public gqv a(JsonElement $$0, Type $$1, JsonDeserializationContext $$2) throws JsonParseException {
-         List<gqy> $$3 = Lists.newArrayList();
-         if ($$0.isJsonArray()) {
-            JsonArray $$4 = $$0.getAsJsonArray();
-            if ($$4.isEmpty()) {
-               throw new JsonParseException("Empty variant array");
-            }
-
-            for (JsonElement $$5 : $$4) {
-               $$3.add((gqy)$$2.deserialize($$5, gqy.class));
-            }
-         } else {
-            $$3.add((gqy)$$2.deserialize($$0, gqy.class));
-         }
-
-         return new gqv($$3);
-      }
+   private static <T extends Comparable<T>> String a(ebc<T> $$0, Comparable<?> $$1) {
+      return $$0.b((T)$$1);
    }
 }

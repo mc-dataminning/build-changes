@@ -1,69 +1,40 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Collection;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
-public class ene extends emy {
-   public static final MapCodec<ene> b = RecordCodecBuilder.mapCodec(
+public record ene(ji<dma> b, ji<dma> c, enj d, int e, int f, float g) {
+   public static final Codec<ene> a = RecordCodecBuilder.create(
       $$0 -> $$0.group(
-               emy.a.fieldOf("source").forGetter($$0x -> $$0x.c),
-               Codec.STRING.fieldOf("property").forGetter($$0x -> $$0x.d),
-               btd.c.fieldOf("values").forGetter($$0x -> $$0x.f)
+               jt.a(mg.i).fieldOf("can_grow_through").forGetter($$0x -> $$0x.b),
+               jt.a(mg.i).fieldOf("muddy_roots_in").forGetter($$0x -> $$0x.c),
+               enj.a.fieldOf("muddy_roots_provider").forGetter($$0x -> $$0x.d),
+               Codec.intRange(1, 12).fieldOf("max_root_width").forGetter($$0x -> $$0x.e),
+               Codec.intRange(1, 64).fieldOf("max_root_length").forGetter($$0x -> $$0x.f),
+               Codec.floatRange(0.0F, 1.0F).fieldOf("random_skew_chance").forGetter($$0x -> $$0x.g)
             )
             .apply($$0, ene::new)
    );
-   private final emy c;
-   private final String d;
-   @Nullable
-   private eao e;
-   private final btd f;
 
-   public ene(emy $$0, eao $$1, btd $$2) {
-      this.c = $$0;
-      this.e = $$1;
-      this.d = $$1.f();
-      this.f = $$2;
-      Collection<Integer> $$3 = $$1.a();
-
-      for (int $$4 = $$2.a(); $$4 <= $$2.b(); $$4++) {
-         if (!$$3.contains($$4)) {
-            throw new IllegalArgumentException("Property value out of range: " + $$1.f() + ": " + $$4);
-         }
-      }
+   public ji<dma> a() {
+      return this.b;
    }
 
-   public ene(emy $$0, String $$1, btd $$2) {
-      this.c = $$0;
-      this.d = $$1;
-      this.f = $$2;
+   public ji<dma> b() {
+      return this.c;
    }
 
-   @Override
-   protected emz<?> a() {
-      return emz.g;
+   public enj c() {
+      return this.d;
    }
 
-   @Override
-   public dzo a(azt $$0, iu $$1) {
-      dzo $$2 = this.c.a($$0, $$1);
-      if (this.e == null || !$$2.b(this.e)) {
-         eao $$3 = a($$2, this.d);
-         if ($$3 == null) {
-            return $$2;
-         }
-
-         this.e = $$3;
-      }
-
-      return $$2.b(this.e, Integer.valueOf(this.f.a($$0)));
+   public int d() {
+      return this.e;
    }
 
-   @Nullable
-   private static eao a(dzo $$0, String $$1) {
-      Collection<ear<?>> $$2 = $$0.F();
-      Optional<eao> $$3 = $$2.stream().filter($$1x -> $$1x.f().equals($$1)).filter($$0x -> $$0x instanceof eao).map($$0x -> (eao)$$0x).findAny();
-      return $$3.orElse(null);
+   public int e() {
+      return this.f;
+   }
+
+   public float f() {
+      return this.g;
    }
 }

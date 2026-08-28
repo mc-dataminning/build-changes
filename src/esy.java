@@ -1,124 +1,97 @@
-import java.util.Map;
+import com.mojang.datafixers.util.Either;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
+import java.util.function.IntFunction;
 
-public class esy {
-   private static final int a = 32;
-   static final iu b = new iu(4, 0, 15);
-   private static final ale[] c = new ale[]{
-      ale.b("shipwreck/with_mast"),
-      ale.b("shipwreck/sideways_full"),
-      ale.b("shipwreck/sideways_fronthalf"),
-      ale.b("shipwreck/sideways_backhalf"),
-      ale.b("shipwreck/rightsideup_full"),
-      ale.b("shipwreck/rightsideup_fronthalf"),
-      ale.b("shipwreck/rightsideup_backhalf"),
-      ale.b("shipwreck/with_mast_degraded"),
-      ale.b("shipwreck/rightsideup_full_degraded"),
-      ale.b("shipwreck/rightsideup_fronthalf_degraded"),
-      ale.b("shipwreck/rightsideup_backhalf_degraded")
-   };
-   private static final ale[] d = new ale[]{
-      ale.b("shipwreck/with_mast"),
-      ale.b("shipwreck/upsidedown_full"),
-      ale.b("shipwreck/upsidedown_fronthalf"),
-      ale.b("shipwreck/upsidedown_backhalf"),
-      ale.b("shipwreck/sideways_full"),
-      ale.b("shipwreck/sideways_fronthalf"),
-      ale.b("shipwreck/sideways_backhalf"),
-      ale.b("shipwreck/rightsideup_full"),
-      ale.b("shipwreck/rightsideup_fronthalf"),
-      ale.b("shipwreck/rightsideup_backhalf"),
-      ale.b("shipwreck/with_mast_degraded"),
-      ale.b("shipwreck/upsidedown_full_degraded"),
-      ale.b("shipwreck/upsidedown_fronthalf_degraded"),
-      ale.b("shipwreck/upsidedown_backhalf_degraded"),
-      ale.b("shipwreck/sideways_full_degraded"),
-      ale.b("shipwreck/sideways_fronthalf_degraded"),
-      ale.b("shipwreck/sideways_backhalf_degraded"),
-      ale.b("shipwreck/rightsideup_full_degraded"),
-      ale.b("shipwreck/rightsideup_fronthalf_degraded"),
-      ale.b("shipwreck/rightsideup_backhalf_degraded")
-   };
-   static final Map<String, ald<eys>> e = Map.of("map_chest", eyj.G, "treasure_chest", eyj.I, "supply_chest", eyj.H);
+public class esy extends eqt {
+   public static final MapCodec<esy> d = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(a($$0), esy.a.c.fieldOf("mineshaft_type").forGetter($$0x -> $$0x.e)).apply($$0, esy::new)
+   );
+   private final esy.a e;
 
-   public static esy.a a(eul $$0, iu $$1, dsm $$2, eqn $$3, azt $$4, boolean $$5) {
-      ale $$6 = af.a($$5 ? c : d, $$4);
-      esy.a $$7 = new esy.a($$0, $$6, $$1, $$2, $$5);
-      $$3.a($$7);
-      return $$7;
+   public esy(eqt.c $$0, esy.a $$1) {
+      super($$0);
+      this.e = $$1;
    }
 
-   public static class a extends eqs {
-      private final boolean h;
+   @Override
+   public Optional<eqt.b> a(eqt.a $$0) {
+      $$0.f().j();
+      dic $$1 = $$0.h();
+      iu $$2 = new iu($$1.b(), 50, $$1.e());
+      erl $$3 = new erl();
+      int $$4 = this.a($$3, $$0);
+      return Optional.of(new eqt.b($$2.b(0, $$4, 0), Either.right($$3)));
+   }
 
-      public a(eul $$0, ale $$1, iu $$2, dsm $$3, boolean $$4) {
-         super(eqz.ab, 0, $$0, $$1, $$1.toString(), a($$3), $$2);
-         this.h = $$4;
+   private int a(erl $$0, eqt.a $$1) {
+      dic $$2 = $$1.h();
+      egx $$3 = $$1.f();
+      ebx $$4 = $$1.b();
+      esx.d $$5 = new esx.d(0, $$3, $$2.a(2), $$2.b(2), this.e);
+      $$0.a($$5);
+      $$5.a($$5, $$0, $$3);
+      int $$6 = $$4.f();
+      if (this.e == esy.a.b) {
+         iu $$7 = $$0.d().g();
+         int $$8 = $$4.a($$7.u(), $$7.w(), efy.a.a, $$1.i(), $$1.d());
+         int $$9 = $$8 <= $$6 ? $$6 : azm.b($$3, $$6, $$8);
+         int $$10 = $$9 - $$7.v();
+         $$0.a($$10);
+         return $$10;
+      } else {
+         return $$0.a($$6, $$4.g(), $$3, 10);
+      }
+   }
+
+   @Override
+   public erc<?> e() {
+      return erc.h;
+   }
+
+   public static enum a implements bak {
+      a("normal", dmc.X, dmc.n, dmc.ei),
+      b("mesa", dmc.ad, dmc.t, dmc.kJ);
+
+      public static final Codec<esy.a> c = bak.a(esy.a::values);
+      private static final IntFunction<esy.a> d = ayc.a(Enum::ordinal, values(), ayc.a.a);
+      private final String e;
+      private final dzz f;
+      private final dzz g;
+      private final dzz h;
+
+      private a(final String $$0, final dma $$1, final dma $$2, final dma $$3) {
+         this.e = $$0;
+         this.f = $$1.m();
+         this.g = $$2.m();
+         this.h = $$3.m();
       }
 
-      public a(eul $$0, tx $$1) {
-         super(eqz.ab, $$1, $$0, $$1x -> a(dsm.valueOf($$1.l("Rot"))));
-         this.h = $$1.q("isBeached");
+      public String a() {
+         return this.e;
+      }
+
+      public static esy.a a(int $$0) {
+         return d.apply($$0);
+      }
+
+      public dzz b() {
+         return this.f;
+      }
+
+      public dzz d() {
+         return this.g;
+      }
+
+      public dzz e() {
+         return this.h;
       }
 
       @Override
-      protected void a(eqy $$0, tx $$1) {
-         super.a($$0, $$1);
-         $$1.a("isBeached", this.h);
-         $$1.a("Rot", this.c.d().name());
-      }
-
-      private static eug a(dsm $$0) {
-         return new eug().a($$0).a(dqv.a).a(esy.b).a(etl.d);
-      }
-
-      @Override
-      protected void a(String $$0, iu $$1, djg $$2, azt $$3, eqa $$4) {
-         ald<eys> $$5 = esy.e.get($$0);
-         if ($$5 != null) {
-            bue.a($$2, $$3, $$1.e(), $$5);
-         }
-      }
-
-      @Override
-      public void a(djo $$0, djl $$1, ebm $$2, azt $$3, eqa $$4, dhw $$5, iu $$6) {
-         if (this.l()) {
-            super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6);
-         } else {
-            int $$7 = $$0.ao() + 1;
-            int $$8 = 0;
-            jz $$9 = this.b.a();
-            efn.a $$10 = this.h ? efn.a.a : efn.a.c;
-            int $$11 = $$9.u() * $$9.w();
-            if ($$11 == 0) {
-               $$8 = $$0.a($$10, this.d.u(), this.d.w());
-            } else {
-               iu $$12 = this.d.b($$9.u() - 1, 0, $$9.w() - 1);
-
-               for (iu $$13 : iu.c(this.d, $$12)) {
-                  int $$14 = $$0.a($$10, $$13.u(), $$13.w());
-                  $$8 += $$14;
-                  $$7 = Math.min($$7, $$14);
-               }
-
-               $$8 /= $$11;
-            }
-
-            this.c(this.h ? this.a($$7, $$3) : $$8);
-            super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6);
-         }
-      }
-
-      public boolean l() {
-         jz $$0 = this.b.a();
-         return $$0.u() > 32 || $$0.v() > 32;
-      }
-
-      public int a(int $$0, azt $$1) {
-         return $$0 - this.b.a().v() / 2 - $$1.a(3);
-      }
-
-      public void c(int $$0) {
-         this.d = new iu(this.d.u(), $$0, this.d.w());
+      public String c() {
+         return this.e;
       }
    }
 }

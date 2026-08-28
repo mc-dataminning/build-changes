@@ -1,39 +1,43 @@
-import javax.annotation.Nullable;
+import com.mojang.logging.LogUtils;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
+import org.slf4j.Logger;
 
-public class czh extends cxg {
-   private final bwj<? extends bxb> a;
-   private final awk b;
+public class czh extends cyu {
+   private static final Logger a = LogUtils.getLogger();
 
-   public czh(bwj<? extends bxb> $$0, evu $$1, awk $$2, cyo.a $$3) {
-      super($$1, $$3);
-      this.a = $$0;
-      this.b = $$2;
+   public czh(cyu.a $$0) {
+      super($$0);
    }
 
    @Override
-   public void a(@Nullable bwz $$0, dip $$1, cys $$2, iu $$3) {
-      if ($$1 instanceof aro) {
-         this.a((aro)$$1, $$2, $$3);
-         $$1.a($$0, eeo.t, $$3);
-      }
-   }
+   public bub a(div $$0, cqy $$1, bua $$2) {
+      cyy $$3 = $$1.b($$2);
+      List<alf<ddp<?>>> $$4 = $$3.a(kj.ag, List.of());
+      $$3.a(1, $$1);
+      if ($$4.isEmpty()) {
+         return bub.d;
+      } else {
+         if (!$$0.C) {
+            ddw $$5 = $$0.p().aI();
+            List<ddu<?>> $$6 = new ArrayList<>($$4.size());
 
-   @Override
-   protected void a(@Nullable bwz $$0, diq $$1, iu $$2) {
-      $$1.a($$0, $$2, this.b, awm.g, 1.0F, 1.0F);
-   }
+            for (alf<ddp<?>> $$7 : $$4) {
+               Optional<ddu<?>> $$8 = $$5.b($$7);
+               if (!$$8.isPresent()) {
+                  a.error("Invalid recipe: {}", $$7);
+                  return bub.d;
+               }
 
-   private void a(aro $$0, cys $$1, iu $$2) {
-      bxb $$3 = this.a.b($$0, bwj.a($$0, $$1, null), $$2, bwi.l, true, false);
-      if ($$3 instanceof ciq $$4) {
-         dba $$5 = $$1.a(kj.Z, dba.a);
-         $$4.h($$5.d());
-         $$4.w(true);
-      }
+               $$6.add($$8.get());
+            }
 
-      if ($$3 != null) {
-         $$0.a_($$3);
-         $$3.T();
+            $$1.a($$6);
+            $$1.b(awx.c.b(this));
+         }
+
+         return bub.a;
       }
    }
 }

@@ -1,82 +1,67 @@
-import java.util.function.Consumer;
-import java.util.function.Predicate;
-import java.util.function.Supplier;
+import io.netty.buffer.ByteBuf;
+import java.util.EnumSet;
+import java.util.HashSet;
+import java.util.Set;
 
-public interface bxq {
-   bxq a = new bxq() {
-      @Override
-      public cys a() {
-         return cys.k;
+public enum bxq {
+   a(0),
+   b(1),
+   c(2),
+   d(3),
+   e(4),
+   f(5),
+   g(6),
+   h(7),
+   i(8);
+
+   public static final Set<bxq> j = Set.of(values());
+   public static final Set<bxq> k = Set.of(e, d);
+   public static final Set<bxq> l = Set.of(f, g, h, i);
+   public static final yw<ByteBuf, Set<bxq>> m = yu.g.a(bxq::a, bxq::a);
+   private final int n;
+
+   @SafeVarargs
+   public static Set<bxq> a(Set<bxq>... $$0) {
+      HashSet<bxq> $$1 = new HashSet<>();
+
+      for (Set<bxq> $$2 : $$0) {
+         $$1.addAll($$2);
       }
 
-      @Override
-      public boolean a(cys $$0) {
-         return false;
+      return $$1;
+   }
+
+   private bxq(final int $$0) {
+      this.n = $$0;
+   }
+
+   private int a() {
+      return 1 << this.n;
+   }
+
+   private boolean b(int $$0) {
+      return ($$0 & this.a()) == this.a();
+   }
+
+   public static Set<bxq> a(int $$0) {
+      Set<bxq> $$1 = EnumSet.noneOf(bxq.class);
+
+      for (bxq $$2 : values()) {
+         if ($$2.b($$0)) {
+            $$1.add($$2);
+         }
       }
-   };
 
-   static bxq a(final Supplier<cys> $$0, final Consumer<cys> $$1) {
-      return new bxq() {
-         @Override
-         public cys a() {
-            return $$0.get();
-         }
-
-         @Override
-         public boolean a(cys $$0x) {
-            $$1.accept($$0);
-            return true;
-         }
-      };
+      return $$1;
    }
 
-   static bxq a(final btr $$0, final int $$1, final Predicate<cys> $$2) {
-      return new bxq() {
-         @Override
-         public cys a() {
-            return $$0.a($$1);
-         }
+   public static int a(Set<bxq> $$0) {
+      int $$1 = 0;
 
-         @Override
-         public boolean a(cys $$0x) {
-            if (!$$2.test($$0)) {
-               return false;
-            } else {
-               $$0.a($$1, $$0);
-               return true;
-            }
-         }
-      };
+      for (bxq $$2 : $$0) {
+         $$1 |= $$2.a();
+      }
+
+      return $$1;
    }
-
-   static bxq a(btr $$0, int $$1) {
-      return a($$0, $$1, $$0x -> true);
-   }
-
-   static bxq a(final bwz $$0, final bwk $$1, final Predicate<cys> $$2) {
-      return new bxq() {
-         @Override
-         public cys a() {
-            return $$0.a($$1);
-         }
-
-         @Override
-         public boolean a(cys $$0x) {
-            if (!$$2.test($$0)) {
-               return false;
-            } else {
-               $$0.a($$1, $$0);
-               return true;
-            }
-         }
-      };
-   }
-
-   static bxq a(bwz $$0, bwk $$1) {
-      return a($$0, $$1, $$0x -> true);
-   }
-
-   cys a();
-
-   boolean a(cys var1);
 }

@@ -1,17 +1,7 @@
-import java.util.List;
+public interface cvc {
+   int a(int var1);
 
-public interface cvc extends btr, cwm {
-   int au_();
+   void a(int var1, int var2);
 
-   int g();
-
-   List<cys> h();
-
-   default dcx ax_() {
-      return this.ay_().a();
-   }
-
-   default dcx.a ay_() {
-      return dcx.b(this.au_(), this.g(), this.h());
-   }
+   int a();
 }

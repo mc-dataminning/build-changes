@@ -1,78 +1,132 @@
+import com.google.common.collect.ImmutableMap;
 import com.mojang.serialization.MapCodec;
+import java.util.Map;
+import java.util.function.Function;
+import javax.annotation.Nullable;
 
-public class dpz extends dlu implements don, dpe {
+public class dpz extends dlm {
    public static final MapCodec<dpz> a = b(dpz::new);
-   public static final eam<jc> b = eae.W;
+   public static final eax<ja> b = eap.S;
+   public static final eaq c = eap.i;
+   private final Function<dzz, ffc> d;
+   private final Map<ja, ffc> e;
 
    @Override
    public MapCodec<dpz> a() {
       return a;
    }
 
-   protected dpz(dzn.d $$0) {
+   public dpz(dzy.d $$0) {
       super($$0);
-      this.l(this.B.b().b(b, jc.k));
+      this.l(this.B.b().b(b, ja.a).b(c, Boolean.valueOf(true)));
+      ffc $$1 = dma.b(12.0, 11.0, 16.0);
+      this.d = this.b($$1);
+      this.e = ImmutableMap.builderWithExpectedSize(5).putAll(fez.c(fez.a($$1, dma.a(4.0, 8.0, 10.0, 0.0, 4.0)))).put(ja.a, $$1).build();
+   }
+
+   private Function<dzz, ffc> b(ffc $$0) {
+      ffc $$1 = fez.a(dma.b(16.0, 10.0, 16.0), dma.b(8.0, 4.0, 10.0));
+      ffc $$2 = fez.a($$1, $$0, fem.e);
+      Map<ja, ffc> $$3 = fez.d(dma.a(4.0, 4.0, 8.0, 0.0, 8.0), new fei(8.0, 6.0, 8.0).c(0.0625));
+      return this.a($$2x -> fez.a($$2, fez.a($$3.get($$2x.c(b)), fez.b(), fem.i)), new ebc[]{c});
    }
 
    @Override
-   protected void a(dzp.a<dlu, dzo> $$0) {
-      $$0.a(b);
+   protected ffc a(dzz $$0, dib $$1, iu $$2, fen $$3) {
+      return this.d.apply($$0);
    }
 
    @Override
-   protected dzo a(dzo $$0, dsm $$1) {
-      return $$0.b(b, $$1.a().a($$0.c(b)));
+   protected ffc a(dzz $$0, dib $$1, iu $$2) {
+      return this.e.get($$0.c(b));
    }
 
    @Override
-   protected dzo a(dzo $$0, dqv $$1) {
-      return $$0.b(b, $$1.a().a($$0.c(b)));
+   public dzz a(dcr $$0) {
+      ja $$1 = $$0.k().g();
+      return this.m().b(b, $$1.o() == ja.a.b ? ja.a : $$1).b(c, Boolean.valueOf(true));
    }
 
    @Override
-   public dzo a(dcl $$0) {
-      ja $$1 = $$0.k();
-      ja $$2;
-      if ($$1.o() == ja.a.b) {
-         $$2 = $$0.g().g();
-      } else {
-         $$2 = ja.b;
+   public dwx a(iu $$0, dzz $$1) {
+      return new dya($$0, $$1);
+   }
+
+   @Nullable
+   @Override
+   public <T extends dwx> dwy<T> a(div $$0, dzz $$1, dwz<T> $$2) {
+      return $$0.C ? null : a($$2, dwz.s, dya::a);
+   }
+
+   @Override
+   protected void a(dzz $$0, div $$1, iu $$2, dzz $$3, boolean $$4) {
+      if (!$$3.a($$0.b())) {
+         this.a($$1, $$2, $$0);
+      }
+   }
+
+   @Override
+   protected bub a(dzz $$0, div $$1, iu $$2, cqy $$3, fee $$4) {
+      if (!$$1.C && $$1.c_($$2) instanceof dya $$5) {
+         $$3.a($$5);
+         $$3.a(awx.ad);
       }
 
-      return this.m().b(b, jc.a($$1, $$2));
+      return bub.a;
    }
 
    @Override
-   public dwn a(iu $$0, dzo $$1) {
-      return new dxr($$0, $$1);
+   protected void a(dzz $$0, div $$1, iu $$2, dma $$3, @Nullable exo $$4, boolean $$5) {
+      this.a($$1, $$2, $$0);
    }
 
-   @Override
-   protected bty a(dzo $$0, dip $$1, iu $$2, cqs $$3, fds $$4) {
-      dwn $$5 = $$1.c_($$2);
-      if ($$5 instanceof dxr && $$3.gF()) {
-         $$3.a((dxr)$$5);
-         return bty.a;
-      } else {
-         return bty.e;
+   private void a(div $$0, iu $$1, dzz $$2) {
+      boolean $$3 = !$$0.D($$1);
+      if ($$3 != $$2.c(c)) {
+         $$0.a($$1, $$2.b(c, Boolean.valueOf($$3)), 2);
       }
    }
 
-   public static boolean a(euk.a $$0, euk.a $$1) {
-      ja $$2 = o($$0.a().b());
-      ja $$3 = o($$1.a().b());
-      ja $$4 = p($$0.a().b());
-      ja $$5 = p($$1.a().b());
-      dxr.a $$6 = $$0.b();
-      boolean $$7 = $$6 == dxr.a.a;
-      return $$2 == $$3.g() && ($$7 || $$4 == $$5) && $$0.e().equals($$1.c());
+   @Override
+   protected void a(dzz $$0, arq $$1, iu $$2, boolean $$3) {
+      btx.a($$0, $$1, $$2);
    }
 
-   public static ja o(dzo $$0) {
-      return $$0.c(b).a();
+   @Override
+   protected boolean c_(dzz $$0) {
+      return true;
    }
 
-   public static ja p(dzo $$0) {
-      return $$0.c(b).b();
+   @Override
+   protected int a(dzz $$0, div $$1, iu $$2) {
+      return cuq.a($$1.c_($$2));
+   }
+
+   @Override
+   protected dzz a(dzz $$0, dst $$1) {
+      return $$0.b(b, $$1.a($$0.c(b)));
+   }
+
+   @Override
+   protected dzz a(dzz $$0, drc $$1) {
+      return $$0.a($$1.a($$0.c(b)));
+   }
+
+   @Override
+   protected void a(eaa.a<dma, dzz> $$0) {
+      $$0.a(b, c);
+   }
+
+   @Override
+   protected void a(dzz $$0, div $$1, iu $$2, bwd $$3) {
+      dwx $$4 = $$1.c_($$2);
+      if ($$4 instanceof dya) {
+         dya.a($$1, $$2, $$0, $$3, (dya)$$4);
+      }
+   }
+
+   @Override
+   protected boolean a(dzz $$0, ewv $$1) {
+      return false;
    }
 }

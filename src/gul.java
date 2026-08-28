@@ -1,31 +1,45 @@
-public class gul extends gue<cip, haz, gee> {
-   private static final ale a = ale.b("textures/entity/bee/bee_angry.png");
-   private static final ale j = ale.b("textures/entity/bee/bee_angry_nectar.png");
-   private static final ale k = ale.b("textures/entity/bee/bee.png");
-   private static final ale l = ale.b("textures/entity/bee/bee_nectar.png");
+import com.google.common.collect.Lists;
+import java.util.List;
 
-   public gul(gvk.a $$0) {
-      super($$0, new gee($$0.a(gif.x)), new gee($$0.a(gif.y)), 0.4F);
+public class gul implements gtu.a {
+   private final List<iu> a = Lists.newArrayList();
+   private final List<Float> b = Lists.newArrayList();
+   private final List<Float> c = Lists.newArrayList();
+   private final List<Float> d = Lists.newArrayList();
+   private final List<Float> e = Lists.newArrayList();
+   private final List<Float> f = Lists.newArrayList();
+
+   public void a(iu $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
+      this.a.add($$0);
+      this.b.add($$1);
+      this.c.add($$5);
+      this.d.add($$2);
+      this.e.add($$3);
+      this.f.add($$4);
    }
 
-   public ale a(haz $$0) {
-      if ($$0.d) {
-         return $$0.e ? j : a;
-      } else {
-         return $$0.e ? l : k;
+   @Override
+   public void a(fjc $$0, gps $$1, double $$2, double $$3, double $$4) {
+      fjg $$5 = $$1.getBuffer(gqc.B());
+
+      for (int $$6 = 0; $$6 < this.a.size(); $$6++) {
+         iu $$7 = this.a.get($$6);
+         Float $$8 = this.b.get($$6);
+         float $$9 = $$8 / 2.0F;
+         gqm.b(
+            $$0,
+            $$5,
+            (double)((float)$$7.u() + 0.5F - $$9) - $$2,
+            (double)((float)$$7.v() + 0.5F - $$9) - $$3,
+            (double)((float)$$7.w() + 0.5F - $$9) - $$4,
+            (double)((float)$$7.u() + 0.5F + $$9) - $$2,
+            (double)((float)$$7.v() + 0.5F + $$9) - $$3,
+            (double)((float)$$7.w() + 0.5F + $$9) - $$4,
+            this.d.get($$6),
+            this.e.get($$6),
+            this.f.get($$6),
+            this.c.get($$6)
+         );
       }
-   }
-
-   public haz a() {
-      return new haz();
-   }
-
-   public void a(cip $$0, haz $$1, float $$2) {
-      super.a($$0, $$1, $$2);
-      $$1.a = $$0.J($$2);
-      $$1.b = !$$0.gD();
-      $$1.c = $$0.aJ() && $$0.dy().h() < 1.0E-7;
-      $$1.d = $$0.W_();
-      $$1.e = $$0.gC();
    }
 }

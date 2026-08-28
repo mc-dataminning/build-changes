@@ -1,38 +1,26 @@
-import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
-
-public class duj extends dlg implements dpe {
-   public static final MapCodec<duj> a = b(duj::new);
-
-   public duj(dzn.d $$0) {
-      super($$0);
-   }
-
-   @Nullable
-   @Override
-   public dwn a(iu $$0, dzo $$1) {
-      return new dyi($$0, $$1);
-   }
-
-   @Override
-   protected bty a(dzo $$0, dip $$1, iu $$2, cqs $$3, fds $$4) {
-      if ($$1.c_($$2) instanceof dyi $$6) {
-         if (!$$3.gF()) {
-            return bty.e;
-         } else {
-            if ($$3.cU().C) {
-               $$3.a($$6);
-            }
-
-            return bty.a;
-         }
-      } else {
-         return bty.e;
+public enum duj {
+   a {
+      @Override
+      public boolean a(dzz $$0, dib $$1, iu $$2, ja $$3) {
+         return dma.a($$0.h($$1, $$2), $$3);
       }
-   }
+   },
+   b {
+      private final ffc d = dma.b(2.0, 0.0, 10.0);
 
-   @Override
-   protected MapCodec<duj> a() {
-      return a;
-   }
+      @Override
+      public boolean a(dzz $$0, dib $$1, iu $$2, ja $$3) {
+         return !fez.c($$0.h($$1, $$2).a($$3), this.d, fem.c);
+      }
+   },
+   c {
+      private final ffc d = fez.a(fez.b(), dma.b(12.0, 0.0, 16.0), fem.e);
+
+      @Override
+      public boolean a(dzz $$0, dib $$1, iu $$2, ja $$3) {
+         return !fez.c($$0.h($$1, $$2).a($$3), this.d, fem.c);
+      }
+   };
+
+   public abstract boolean a(dzz var1, dib var2, iu var3, ja var4);
 }

@@ -1,126 +1,118 @@
-import com.google.common.collect.ImmutableMap;
-import java.util.Arrays;
-import java.util.Map;
-import java.util.stream.Stream;
+import java.util.List;
 
-public class gsa extends grj {
-   private static final String a = "plank";
-   private static final String b = "vChains";
-   private static final String c = "normalChains";
-   private static final String d = "chainL1";
-   private static final String e = "chainL2";
-   private static final String f = "chainR1";
-   private static final String g = "chainR2";
-   private static final String h = "board";
-   private static final float i = 1.0F;
-   private static final float j = 0.9F;
-   private static final fdw k = new fdw(0.0, -0.32F, 0.073F);
-   private final Map<gsa.b, gfz> l;
+public class gsa<T extends dwx & dwr> implements gse<T> {
+   public static final alg a = alg.b("textures/entity/beacon_beam.png");
+   public static final int b = 2048;
+   private static final float e = 96.0F;
+   public static final float c = 0.2F;
+   public static final float d = 0.25F;
 
-   public gsa(grq.a $$0) {
-      super($$0);
-      Stream<gsa.b> $$1 = ebc.a().flatMap($$0x -> Arrays.stream(gsa.a.values()).map($$1x -> new gsa.b($$0x, $$1x)));
-      this.l = $$1.collect(ImmutableMap.toImmutableMap($$0x -> $$0x, $$1x -> a($$0.f(), $$1x.a, $$1x.b)));
-   }
-
-   public static gfz a(gic $$0, ebc $$1, gsa.a $$2) {
-      return new gfz.a($$0.a(gif.a($$1, $$2)), gpn::g);
+   public gsa(gsf.a $$0) {
    }
 
    @Override
-   protected float a() {
-      return 1.0F;
+   public void a(T $$0, float $$1, fjc $$2, gps $$3, int $$4, int $$5, fei $$6) {
+      long $$7 = $$0.i().ae();
+      float $$8 = (float)$$6.d($$0.aw_().b()).i();
+      float $$9 = Math.max(1.0F, $$8 / 96.0F);
+      List<dwr.a> $$10 = $$0.a();
+      int $$11 = 0;
+
+      for (int $$12 = 0; $$12 < $$10.size(); $$12++) {
+         dwr.a $$13 = $$10.get($$12);
+         a($$2, $$3, $$1, $$9, $$7, $$11, $$12 == $$10.size() - 1 ? 2048 : $$13.c(), $$13.b());
+         $$11 += $$13.c();
+      }
    }
 
-   @Override
-   protected float b() {
-      return 0.9F;
+   private static void a(fjc $$0, gps $$1, float $$2, float $$3, long $$4, int $$5, int $$6, int $$7) {
+      a($$0, $$1, a, $$2, 1.0F, $$4, $$5, $$6, $$7, 0.2F * $$3, 0.25F * $$3);
    }
 
-   private static void a(fiq $$0, float $$1) {
-      $$0.a(0.5, 0.9375, 0.5);
-      $$0.a(a.d.rotationDegrees($$1));
-      $$0.a(0.0F, -0.3125F, 0.0F);
-   }
-
-   @Override
-   protected void a(fiq $$0, float $$1, dzo $$2) {
-      a($$0, $$1);
-   }
-
-   @Override
-   protected gfz a(dzo $$0, ebc $$1) {
-      gsa.a $$2 = gsa.a.a($$0);
-      return this.l.get(new gsa.b($$1, $$2));
-   }
-
-   @Override
-   protected hkg a(ebc $$0) {
-      return gpy.b($$0);
-   }
-
-   @Override
-   protected fdw c() {
-      return k;
-   }
-
-   public static void a(fiq $$0, gpd $$1, int $$2, int $$3, gfz $$4, hkg $$5) {
+   public static void a(fjc $$0, gps $$1, alg $$2, float $$3, float $$4, long $$5, int $$6, int $$7, int $$8, float $$9, float $$10) {
+      int $$11 = $$6 + $$7;
       $$0.a();
-      a($$0, 0.0F);
-      $$0.b(1.0F, -1.0F, -1.0F);
-      fiu $$6 = $$5.a($$1, $$4::a);
-      $$4.a($$0, $$6, $$2, $$3);
+      $$0.a(0.5, 0.0, 0.5);
+      float $$12 = (float)Math.floorMod($$5, 40) + $$3;
+      float $$13 = $$7 < 0 ? $$12 : -$$12;
+      float $$14 = azm.i($$13 * 0.2F - (float)azm.d($$13 * 0.1F));
+      $$0.a();
+      $$0.a(a.d.rotationDegrees($$12 * 2.25F - 45.0F));
+      float $$15 = 0.0F;
+      float $$18 = 0.0F;
+      float $$19 = -$$9;
+      float $$20 = 0.0F;
+      float $$21 = 0.0F;
+      float $$22 = -$$9;
+      float $$23 = 0.0F;
+      float $$24 = 1.0F;
+      float $$25 = -1.0F + $$14;
+      float $$26 = (float)$$7 * $$4 * (0.5F / $$9) + $$25;
+      a($$0, $$1.getBuffer(gqc.e($$2, false)), $$8, $$6, $$11, 0.0F, $$9, $$9, 0.0F, $$19, 0.0F, 0.0F, $$22, 0.0F, 1.0F, $$26, $$25);
+      $$0.b();
+      $$15 = -$$10;
+      float $$28 = -$$10;
+      $$18 = -$$10;
+      $$19 = -$$10;
+      $$23 = 0.0F;
+      $$24 = 1.0F;
+      $$25 = -1.0F + $$14;
+      $$26 = (float)$$7 * $$4 + $$25;
+      a($$0, $$1.getBuffer(gqc.e($$2, true)), axw.c(32, $$8), $$6, $$11, $$15, $$28, $$10, $$18, $$19, $$10, $$10, $$10, 0.0F, 1.0F, $$26, $$25);
       $$0.b();
    }
 
-   public static gim a(gsa.a $$0) {
-      gio $$1 = new gio();
-      giq $$2 = $$1.a();
-      $$2.a("board", gil.c().a(0, 12).a(-7.0F, 0.0F, -1.0F, 14.0F, 10.0F, 2.0F), gii.a);
-      if ($$0 == gsa.a.a) {
-         $$2.a("plank", gil.c().a(0, 0).a(-8.0F, -6.0F, -2.0F, 16.0F, 2.0F, 4.0F), gii.a);
-      }
-
-      if ($$0 == gsa.a.a || $$0 == gsa.a.b) {
-         giq $$3 = $$2.a("normalChains", gil.c(), gii.a);
-         $$3.a("chainL1", gil.c().a(0, 6).a(-1.5F, 0.0F, 0.0F, 3.0F, 6.0F, 0.0F), gii.a(-5.0F, -6.0F, 0.0F, 0.0F, (float) (-Math.PI / 4), 0.0F));
-         $$3.a("chainL2", gil.c().a(6, 6).a(-1.5F, 0.0F, 0.0F, 3.0F, 6.0F, 0.0F), gii.a(-5.0F, -6.0F, 0.0F, 0.0F, (float) (Math.PI / 4), 0.0F));
-         $$3.a("chainR1", gil.c().a(0, 6).a(-1.5F, 0.0F, 0.0F, 3.0F, 6.0F, 0.0F), gii.a(5.0F, -6.0F, 0.0F, 0.0F, (float) (-Math.PI / 4), 0.0F));
-         $$3.a("chainR2", gil.c().a(6, 6).a(-1.5F, 0.0F, 0.0F, 3.0F, 6.0F, 0.0F), gii.a(5.0F, -6.0F, 0.0F, 0.0F, (float) (Math.PI / 4), 0.0F));
-      }
-
-      if ($$0 == gsa.a.c) {
-         $$2.a("vChains", gil.c().a(14, 6).a(-6.0F, -6.0F, 0.0F, 12.0F, 6.0F, 0.0F), gii.a);
-      }
-
-      return gim.a($$1, 64, 32);
+   private static void a(
+      fjc $$0,
+      fjg $$1,
+      int $$2,
+      int $$3,
+      int $$4,
+      float $$5,
+      float $$6,
+      float $$7,
+      float $$8,
+      float $$9,
+      float $$10,
+      float $$11,
+      float $$12,
+      float $$13,
+      float $$14,
+      float $$15,
+      float $$16
+   ) {
+      fjc.a $$17 = $$0.c();
+      a($$17, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8, $$13, $$14, $$15, $$16);
+      a($$17, $$1, $$2, $$3, $$4, $$11, $$12, $$9, $$10, $$13, $$14, $$15, $$16);
+      a($$17, $$1, $$2, $$3, $$4, $$7, $$8, $$11, $$12, $$13, $$14, $$15, $$16);
+      a($$17, $$1, $$2, $$3, $$4, $$9, $$10, $$5, $$6, $$13, $$14, $$15, $$16);
    }
 
-   public static enum a implements bai {
-      a("wall"),
-      b("ceiling"),
-      c("ceiling_middle");
-
-      private final String d;
-
-      private a(final String $$0) {
-         this.d = $$0;
-      }
-
-      public static gsa.a a(dzo $$0) {
-         if ($$0.b() instanceof dmu) {
-            return $$0.c(eae.a) ? c : b;
-         } else {
-            return a;
-         }
-      }
-
-      @Override
-      public String c() {
-         return this.d;
-      }
+   private static void a(
+      fjc.a $$0, fjg $$1, int $$2, int $$3, int $$4, float $$5, float $$6, float $$7, float $$8, float $$9, float $$10, float $$11, float $$12
+   ) {
+      a($$0, $$1, $$2, $$4, $$5, $$6, $$10, $$11);
+      a($$0, $$1, $$2, $$3, $$5, $$6, $$10, $$12);
+      a($$0, $$1, $$2, $$3, $$7, $$8, $$9, $$12);
+      a($$0, $$1, $$2, $$4, $$7, $$8, $$9, $$11);
    }
 
-   public static record b(ebc a, gsa.a b) {
+   private static void a(fjc.a $$0, fjg $$1, int $$2, int $$3, float $$4, float $$5, float $$6, float $$7) {
+      $$1.a($$0, $$4, (float)$$3, $$5).a($$2).a($$6, $$7).b(hif.d).c(15728880).b($$0, 0.0F, 1.0F, 0.0F);
+   }
+
+   @Override
+   public boolean a(T $$0) {
+      return true;
+   }
+
+   @Override
+   public int aQ_() {
+      return Integer.MAX_VALUE;
+   }
+
+   @Override
+   public boolean a(T $$0, fei $$1) {
+      return fei.b($$0.aw_()).d(1.0, 0.0, 1.0).a((jo)$$1.d(1.0, 0.0, 1.0), (double)this.aQ_());
    }
 }

@@ -1,19 +1,44 @@
 import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.Typed;
+import com.mojang.datafixers.TypeRewriteRule;
 import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.util.Pair;
+import com.mojang.logging.LogUtils;
 import com.mojang.serialization.Dynamic;
+import org.slf4j.Logger;
 
-public abstract class bjg extends beu {
-   public bjg(String $$0, Schema $$1, boolean $$2) {
-      super($$0, $$1, $$2);
+public class bjg extends bbj {
+   private static final Logger b = LogUtils.getLogger();
+
+   public bjg(Schema $$0) {
+      super($$0, biw.l);
    }
 
-   @Override
-   protected Pair<String, Typed<?>> a(String $$0, Typed<?> $$1) {
-      Pair<String, Dynamic<?>> $$2 = this.a($$0, (Dynamic<?>)$$1.getOrCreate(DSL.remainderFinder()));
-      return Pair.of((String)$$2.getFirst(), $$1.set(DSL.remainderFinder(), (Dynamic)$$2.getSecond()));
+   protected TypeRewriteRule makeRule() {
+      return this.fixTypeEverywhereTyped(
+         "SavedDataUUIDFix",
+         this.getInputSchema().getType(this.a),
+         $$0 -> $$0.update(
+               DSL.remainderFinder(),
+               $$0x -> $$0x.update(
+                     "data",
+                     $$0xx -> $$0xx.update(
+                           "Raids",
+                           $$0xxx -> $$0xxx.createList(
+                                 $$0xxx.asStream()
+                                    .map(
+                                       $$0xxxx -> $$0xxxx.update(
+                                             "HeroesOfTheVillage",
+                                             $$0xxxxx -> $$0xxxxx.createList(
+                                                   $$0xxxxx.asStream().map($$0xxxxxx -> (Dynamic)d($$0xxxxxx, "UUIDMost", "UUIDLeast").orElseGet(() -> {
+                                                         b.warn("HeroesOfTheVillage contained invalid UUIDs.");
+                                                         return $$0xxxxxx;
+                                                      }))
+                                                )
+                                          )
+                                    )
+                              )
+                        )
+                  )
+            )
+      );
    }
-
-   protected abstract Pair<String, Dynamic<?>> a(String var1, Dynamic<?> var2);
 }

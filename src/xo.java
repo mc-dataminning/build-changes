@@ -1,75 +1,135 @@
-import com.mojang.brigadier.ParseResults;
-import com.mojang.brigadier.context.CommandContextBuilder;
-import com.mojang.brigadier.context.ParsedArgument;
-import com.mojang.brigadier.context.ParsedCommandNode;
-import com.mojang.brigadier.tree.ArgumentCommandNode;
-import com.mojang.brigadier.tree.CommandNode;
-import java.util.ArrayList;
-import java.util.List;
+import com.google.common.primitives.Ints;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.security.SignatureException;
+import java.time.Duration;
+import java.time.Instant;
+import java.util.Objects;
+import java.util.Optional;
+import java.util.UUID;
 import javax.annotation.Nullable;
 
-public record xo<S>(List<xo.a<S>> a) {
-   public static <S> boolean a(ParseResults<S> $$0) {
-      return !b($$0).a().isEmpty();
+public record xo(xt d, @Nullable xk e, xr f, @Nullable wy g, xc h) {
+   public static final MapCodec<xo> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(
+               xt.a.fieldOf("link").forGetter(xo::k),
+               xk.a.optionalFieldOf("signature").forGetter($$0x -> Optional.ofNullable($$0x.e)),
+               xr.a.forGetter(xo::m),
+               xa.a.optionalFieldOf("unsigned_content").forGetter($$0x -> Optional.ofNullable($$0x.g)),
+               xc.a.optionalFieldOf("filter_mask", xc.c).forGetter(xo::o)
+            )
+            .apply($$0, ($$0x, $$1, $$2, $$3, $$4) -> new xo($$0x, (xk)$$1.orElse(null), $$2, (wy)$$3.orElse(null), $$4))
+   );
+   private static final UUID i = af.e;
+   public static final Duration b = Duration.ofMinutes(5L);
+   public static final Duration c = b.plus(Duration.ofMinutes(2L));
+
+   public static xo a(String $$0) {
+      return a(i, $$0);
    }
 
-   public static <S> xo<S> b(ParseResults<S> $$0) {
-      String $$1 = $$0.getReader().getString();
-      CommandContextBuilder<S> $$2 = $$0.getContext();
-      CommandContextBuilder<S> $$3 = $$2;
-      List<xo.a<S>> $$4 = a($$1, $$2);
-
-      CommandContextBuilder<S> $$5;
-      while (($$5 = $$3.getChild()) != null && $$5.getRootNode() != $$2.getRootNode()) {
-         $$4.addAll(a($$1, $$5));
-         $$3 = $$5;
-      }
-
-      return new xo<>($$4);
+   public static xo a(UUID $$0, String $$1) {
+      xr $$2 = xr.a($$1);
+      xt $$3 = xt.a($$0);
+      return new xo($$3, null, $$2, null, xc.c);
    }
 
-   private static <S> List<xo.a<S>> a(String $$0, CommandContextBuilder<S> $$1) {
-      List<xo.a<S>> $$2 = new ArrayList<>();
+   public xo a(wy $$0) {
+      wy $$1 = !$$0.equals(wy.b(this.c())) ? $$0 : null;
+      return new xo(this.d, this.e, this.f, $$1, this.h);
+   }
 
-      for (ParsedCommandNode<S> $$3 : $$1.getNodes()) {
-         CommandNode $$5 = $$3.getNode();
-         if ($$5 instanceof ArgumentCommandNode) {
-            ArgumentCommandNode<S, ?> $$4 = (ArgumentCommandNode<S, ?>)$$5;
-            if ($$4.getType() instanceof fq) {
-               ParsedArgument<S, ?> $$5x = (ParsedArgument<S, ?>)$$1.getArguments().get($$4.getName());
-               if ($$5x != null) {
-                  String $$6 = $$5x.getRange().get($$0);
-                  $$2.add(new xo.a<>($$4, $$6));
-               }
-            }
-         }
-      }
+   public xo a() {
+      return this.g != null ? new xo(this.d, this.e, this.f, null, this.h) : this;
+   }
 
-      return $$2;
+   public xo a(xc $$0) {
+      return this.h.equals($$0) ? this : new xo(this.d, this.e, this.f, this.g, $$0);
+   }
+
+   public xo a(boolean $$0) {
+      return this.a($$0 ? this.h : xc.c);
+   }
+
+   public xo b() {
+      xr $$0 = xr.a(this.c());
+      xt $$1 = xt.a(this.g());
+      return new xo($$1, null, $$0, this.g, this.h);
+   }
+
+   public static void a(baa.a $$0, xt $$1, xr $$2) throws SignatureException {
+      $$0.update(Ints.toByteArray(1));
+      $$1.a($$0);
+      $$2.a($$0);
+   }
+
+   public boolean a(bab $$0) {
+      return this.e != null && this.e.a($$0, $$0x -> a($$0x, this.d, this.f));
+   }
+
+   public String c() {
+      return this.f.a();
+   }
+
+   public wy d() {
+      return Objects.requireNonNullElseGet(this.g, () -> wy.b(this.c()));
+   }
+
+   public Instant e() {
+      return this.f.b();
+   }
+
+   public long f() {
+      return this.f.c();
+   }
+
+   public boolean a(Instant $$0) {
+      return $$0.isAfter(this.e().plus(b));
+   }
+
+   public boolean b(Instant $$0) {
+      return $$0.isAfter(this.e().plus(c));
+   }
+
+   public UUID g() {
+      return this.d.c();
+   }
+
+   public boolean h() {
+      return this.g().equals(i);
+   }
+
+   public boolean i() {
+      return this.e != null;
+   }
+
+   public boolean a(UUID $$0) {
+      return this.i() && this.d.c().equals($$0);
+   }
+
+   public boolean j() {
+      return this.h.b();
+   }
+
+   public xt k() {
+      return this.d;
    }
 
    @Nullable
-   public xo.a<S> a(String $$0) {
-      for (xo.a<S> $$1 : this.a) {
-         if ($$0.equals($$1.a())) {
-            return $$1;
-         }
-      }
-
-      return null;
+   public xk l() {
+      return this.e;
    }
 
-   public static record a<S>(ArgumentCommandNode<S, ?> a, String b) {
-      public String a() {
-         return this.a.getName();
-      }
+   public xr m() {
+      return this.f;
+   }
 
-      public ArgumentCommandNode<S, ?> b() {
-         return this.a;
-      }
+   @Nullable
+   public wy n() {
+      return this.g;
+   }
 
-      public String c() {
-         return this.b;
-      }
+   public xc o() {
+      return this.h;
    }
 }

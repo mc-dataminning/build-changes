@@ -1,37 +1,99 @@
-import com.mojang.authlib.GameProfile;
-import java.net.SocketAddress;
 import javax.annotation.Nullable;
 
-public class hmj extends avo {
-   @Nullable
-   private tx h;
+public class hmj implements hnu<hmj> {
+   public static final akz a = new akz("sounds", ".ogg");
+   private final alg b;
+   private final btj c;
+   private final btj d;
+   private final int e;
+   private final hmj.a f;
+   private final boolean g;
+   private final boolean h;
+   private final int i;
 
-   public hmj(hmk $$0, jl<aln> $$1, eye $$2) {
-      super($$0, $$1, $$2, 8);
-      this.a(10);
+   public hmj(alg $$0, btj $$1, btj $$2, int $$3, hmj.a $$4, boolean $$5, boolean $$6, int $$7) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
+      this.e = $$3;
+      this.f = $$4;
+      this.g = $$5;
+      this.h = $$6;
+      this.i = $$7;
+   }
+
+   public alg a() {
+      return this.b;
+   }
+
+   public alg b() {
+      return a.a(this.b);
+   }
+
+   public btj c() {
+      return this.c;
+   }
+
+   public btj d() {
+      return this.d;
    }
 
    @Override
-   protected void b(arp $$0) {
-      if (this.b().a($$0.gh())) {
-         this.h = $$0.f(new tx());
+   public int e() {
+      return this.e;
+   }
+
+   public hmj a(azv $$0) {
+      return this;
+   }
+
+   @Override
+   public void a(hnp $$0) {
+      if (this.h) {
+         $$0.a(this);
+      }
+   }
+
+   public hmj.a f() {
+      return this.f;
+   }
+
+   public boolean g() {
+      return this.g;
+   }
+
+   public boolean h() {
+      return this.h;
+   }
+
+   public int i() {
+      return this.i;
+   }
+
+   @Override
+   public String toString() {
+      return "Sound[" + this.b + "]";
+   }
+
+   public static enum a {
+      a("file"),
+      b("event");
+
+      private final String c;
+
+      private a(final String $$0) {
+         this.c = $$0;
       }
 
-      super.b($$0);
-   }
+      @Nullable
+      public static hmj.a a(String $$0) {
+         for (hmj.a $$1 : values()) {
+            if ($$1.c.equals($$0)) {
+               return $$1;
+            }
+         }
 
-   @Override
-   public ww a(SocketAddress $$0, GameProfile $$1) {
-      return (ww)(this.b().a($$1) && this.a($$1.getName()) != null ? ww.c("multiplayer.disconnect.name_taken") : super.a($$0, $$1));
-   }
-
-   public hmk b() {
-      return (hmk)super.c();
-   }
-
-   @Nullable
-   @Override
-   public tx r() {
-      return this.h;
+         return null;
+      }
    }
 }

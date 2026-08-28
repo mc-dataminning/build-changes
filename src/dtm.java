@@ -1,60 +1,49 @@
 import com.mojang.serialization.MapCodec;
 
-public class dtm extends dlu {
+public class dtm extends dpt {
    public static final MapCodec<dtm> a = b(dtm::new);
-   private static final feq b = dlu.b(16.0, 0.0, 14.0);
-   private static final int c = 20;
 
    @Override
    public MapCodec<dtm> a() {
       return a;
    }
 
-   public dtm(dzn.d $$0) {
+   public dtm(dzy.d $$0) {
       super($$0);
    }
 
    @Override
-   protected feq b(dzo $$0, dhv $$1, iu $$2, feb $$3) {
-      return b;
+   public void a(div $$0, dzz $$1, iu $$2, bwd $$3, double $$4) {
+      if (!$$3.cf()) {
+         $$3.a($$4, 0.0F, $$0.al().l());
+      }
    }
 
    @Override
-   protected feq b_(dzo $$0, dhv $$1, iu $$2) {
-      return fen.b();
+   public void a(dib $$0, bwd $$1) {
+      if ($$1.cf()) {
+         super.a($$0, $$1);
+      } else {
+         this.a($$1);
+      }
+   }
+
+   private void a(bwd $$0) {
+      fei $$1 = $$0.dy();
+      if ($$1.e < 0.0) {
+         double $$2 = $$0 instanceof bxc ? 1.0 : 0.8;
+         $$0.n($$1.d, -$$1.e * $$2, $$1.f);
+      }
    }
 
    @Override
-   protected feq c(dzo $$0, dhv $$1, iu $$2, feb $$3) {
-      return fen.b();
-   }
-
-   @Override
-   protected void a(dzo $$0, aro $$1, iu $$2, azt $$3) {
-      dmb.b($$1, $$2.d(), $$0);
-   }
-
-   @Override
-   protected dzo a(dzo $$0, dis $$1, dje $$2, iu $$3, ja $$4, iu $$5, dzo $$6, azt $$7) {
-      if ($$4 == ja.b && $$6.a(dlw.J)) {
-         $$2.a($$3, this, 20);
+   public void a(div $$0, iu $$1, dzz $$2, bwd $$3) {
+      double $$4 = Math.abs($$3.dy().e);
+      if ($$4 < 0.1 && !$$3.ce()) {
+         double $$5 = 0.4 + $$4 * 0.2;
+         $$3.i($$3.dy().d($$5, 1.0, $$5));
       }
 
-      return super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
-   }
-
-   @Override
-   protected void a(dzo $$0, dip $$1, iu $$2, dzo $$3, boolean $$4) {
-      $$1.a($$2, this, 20);
-   }
-
-   @Override
-   protected boolean a(dzo $$0, ewk $$1) {
-      return false;
-   }
-
-   @Override
-   protected float c(dzo $$0, dhv $$1, iu $$2) {
-      return 0.2F;
+      super.a($$0, $$1, $$2, $$3);
    }
 }

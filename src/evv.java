@@ -1,123 +1,160 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import it.unimi.dsi.fastutil.objects.Reference2ObjectArrayMap;
-import java.util.stream.Stream;
 import javax.annotation.Nullable;
 
-public final class evv extends dzq<evu, evv> {
-   public static final Codec<evv> a = a(mf.c.q(), evu::g).stable();
-   public static final int f = 9;
-   public static final int g = 8;
+public class evv implements evy {
+   public static final int b = 1;
+   public static final evv c = new evv();
+   protected final dix d;
+   @Nullable
+   private final evx<?, ?> a;
+   @Nullable
+   private final evx<?, ?> e;
 
-   public evv(evu $$0, Reference2ObjectArrayMap<ear<?>, Comparable<?>> $$1, MapCodec<evv> $$2) {
-      super($$0, $$1, $$2);
+   public evv(ecj $$0, boolean $$1, boolean $$2) {
+      this.d = $$0.r();
+      this.a = $$1 ? new evo($$0) : null;
+      this.e = $$2 ? new evz($$0) : null;
    }
 
-   public evu a() {
-      return this.d;
+   private evv() {
+      this.d = dix.e(0, 0);
+      this.a = null;
+      this.e = null;
    }
 
-   public boolean b() {
-      return this.a().c(this);
+   @Override
+   public void a(iu $$0) {
+      if (this.a != null) {
+         this.a.a($$0);
+      }
+
+      if (this.e != null) {
+         this.e.a($$0);
+      }
    }
 
-   public boolean a(evu $$0) {
-      return this.d == $$0 && this.d.c(this);
+   @Override
+   public boolean I_() {
+      return this.e != null && this.e.I_() ? true : this.a != null && this.a.I_();
    }
 
-   public boolean c() {
-      return this.a().b();
+   @Override
+   public int a() {
+      int $$0 = 0;
+      if (this.a != null) {
+         $$0 += this.a.a();
+      }
+
+      if (this.e != null) {
+         $$0 += this.e.a();
+      }
+
+      return $$0;
    }
 
-   public float a(dhv $$0, iu $$1) {
-      return this.a().a(this, $$0, $$1);
+   @Override
+   public void a(jx $$0, boolean $$1) {
+      if (this.a != null) {
+         this.a.a($$0, $$1);
+      }
+
+      if (this.e != null) {
+         this.e.a($$0, $$1);
+      }
    }
 
-   public float d() {
-      return this.a().a(this);
+   @Override
+   public void a(dic $$0, boolean $$1) {
+      if (this.a != null) {
+         this.a.a($$0, $$1);
+      }
+
+      if (this.e != null) {
+         this.e.a($$0, $$1);
+      }
+   }
+
+   @Override
+   public void b(dic $$0) {
+      if (this.a != null) {
+         this.a.b($$0);
+      }
+
+      if (this.e != null) {
+         this.e.b($$0);
+      }
+   }
+
+   public evt a(dje $$0) {
+      if ($$0 == dje.b) {
+         return (evt)(this.a == null ? evt.a.a : this.a);
+      } else {
+         return (evt)(this.e == null ? evt.a.a : this.e);
+      }
+   }
+
+   public String a(dje $$0, jx $$1) {
+      if ($$0 == dje.b) {
+         if (this.a != null) {
+            return this.a.b($$1.s());
+         }
+      } else if (this.e != null) {
+         return this.e.b($$1.s());
+      }
+
+      return "n/a";
+   }
+
+   public evu.b b(dje $$0, jx $$1) {
+      if ($$0 == dje.b) {
+         if (this.a != null) {
+            return this.a.c($$1.s());
+         }
+      } else if (this.e != null) {
+         return this.e.c($$1.s());
+      }
+
+      return evu.b.a;
+   }
+
+   public void a(dje $$0, jx $$1, @Nullable ecb $$2) {
+      if ($$0 == dje.b) {
+         if (this.a != null) {
+            this.a.a($$1.s(), $$2);
+         }
+      } else if (this.e != null) {
+         this.e.a($$1.s(), $$2);
+      }
+   }
+
+   public void b(dic $$0, boolean $$1) {
+      if (this.a != null) {
+         this.a.b($$0, $$1);
+      }
+
+      if (this.e != null) {
+         this.e.b($$0, $$1);
+      }
+   }
+
+   public int a(iu $$0, int $$1) {
+      int $$2 = this.e == null ? 0 : this.e.b($$0) - $$1;
+      int $$3 = this.a == null ? 0 : this.a.b($$0);
+      return Math.max($$3, $$2);
+   }
+
+   public boolean a(long $$0) {
+      return this.a == null || this.a.f.k($$0) && (this.e == null || this.e.f.k($$0));
+   }
+
+   public int c() {
+      return this.d.ap() + 2;
+   }
+
+   public int d() {
+      return this.d.aq() - 1;
    }
 
    public int e() {
-      return this.a().d(this);
-   }
-
-   public boolean b(dhv $$0, iu $$1) {
-      for (int $$2 = -1; $$2 <= 1; $$2++) {
-         for (int $$3 = -1; $$3 <= 1; $$3++) {
-            iu $$4 = $$1.b($$2, 0, $$3);
-            evv $$5 = $$0.b_($$4);
-            if (!$$5.a().a(this.a()) && !$$0.a_($$4).s()) {
-               return true;
-            }
-         }
-      }
-
-      return false;
-   }
-
-   public void a(aro $$0, iu $$1, dzo $$2) {
-      this.a().b($$0, $$1, $$2, this);
-   }
-
-   public void a(dip $$0, iu $$1, azt $$2) {
-      this.a().a($$0, $$1, this, $$2);
-   }
-
-   public boolean f() {
-      return this.a().i();
-   }
-
-   public void a(aro $$0, iu $$1, azt $$2) {
-      this.a().a($$0, $$1, this, $$2);
-   }
-
-   public fdw c(dhv $$0, iu $$1) {
-      return this.a().a($$0, $$1, this);
-   }
-
-   public dzo g() {
-      return this.a().b(this);
-   }
-
-   @Nullable
-   public lv h() {
-      return this.a().h();
-   }
-
-   public boolean a(axp<evu> $$0) {
-      return this.a().k().a($$0);
-   }
-
-   public boolean a(ji<evu> $$0) {
-      return $$0.a(this.a().k());
-   }
-
-   public boolean b(evu $$0) {
-      return this.a() == $$0;
-   }
-
-   public float i() {
-      return this.a().c();
-   }
-
-   public boolean a(dhv $$0, iu $$1, evu $$2, ja $$3) {
-      return this.a().a(this, $$0, $$1, $$2, $$3);
-   }
-
-   public feq d(dhv $$0, iu $$1) {
-      return this.a().b(this, $$0, $$1);
-   }
-
-   @Nullable
-   public fdr e(dhv $$0, iu $$1) {
-      return this.a().c(this, $$0, $$1);
-   }
-
-   public je<evu> j() {
-      return this.d.k();
-   }
-
-   public Stream<axp<evu>> k() {
-      return this.d.k().c();
+      return this.d() + this.c();
    }
 }

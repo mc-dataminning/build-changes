@@ -1,22 +1,30 @@
-public class gyh extends gwd<coi, hch> {
-   private static final ale a = ale.b("textures/entity/illager/vindicator.png");
+public class gyh<T extends cok> extends gxf<T, hdf, ghs> {
+   private static final alg a = alg.b("textures/entity/spider/spider.png");
 
-   public gyh(gvk.a $$0) {
-      super($$0, new gfs<>($$0.a(gif.dH)), 0.5F);
-      this.a(new gzq<hch, gfs<hch>>(this) {
-         public void a(fiq $$0, gpd $$1, int $$2, hch $$3, float $$4, float $$5) {
-            if ($$3.c) {
-               super.a($$0, $$1, $$2, $$3, $$4, $$5);
-            }
-         }
-      });
+   public gyh(gvz.a $$0) {
+      this($$0, git.di);
    }
 
-   public ale a(hch $$0) {
+   public gyh(gvz.a $$0, gis $$1) {
+      super($$0, new ghs($$0.a($$1)), 0.8F);
+      this.a(new hat<>(this));
+   }
+
+   @Override
+   protected float aR_() {
+      return 180.0F;
+   }
+
+   @Override
+   public alg b(hdf $$0) {
       return a;
    }
 
-   public hch b() {
-      return new hch();
+   public hdf b() {
+      return new hdf();
+   }
+
+   public void a(T $$0, hdf $$1, float $$2) {
+      super.a($$0, $$1, $$2);
    }
 }

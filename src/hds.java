@@ -1,5 +1,3 @@
-public class hds extends hbp {
+public class hds extends hdf {
    public float a;
-   public float b;
-   public boolean c;
 }

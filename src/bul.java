@@ -1,28 +1,9 @@
-public class bul {
-   public static final float a = 20.0F;
-   public static final float b = 25.0F;
-   public static final float c = 2.0F;
-   public static final float d = 0.2F;
-   private static final int e = 4;
+import javax.annotation.Nullable;
 
-   public static float a(bwz $$0, float $$1, bup $$2, float $$3, float $$4) {
-      float $$5 = 2.0F + $$4 / 4.0F;
-      float $$6 = azk.a($$3 - $$1 / $$5, $$3 * 0.2F, 20.0F);
-      float $$7 = $$6 / 25.0F;
-      cys $$8 = $$2.e();
-      float $$10;
-      if ($$8 != null && $$0.dV() instanceof aro $$9) {
-         $$10 = azk.a(dfh.c($$9, $$8, $$0, $$2, $$7), 0.0F, 1.0F);
-      } else {
-         $$10 = $$7;
-      }
+public interface bul extends btu {
+   int[] a(ja var1);
 
-      float $$12 = 1.0F - $$10;
-      return $$1 * $$12;
-   }
+   boolean a(int var1, cyy var2, @Nullable ja var3);
 
-   public static float a(float $$0, float $$1) {
-      float $$2 = azk.a($$1, 0.0F, 20.0F);
-      return $$0 * (1.0F - $$2 / 25.0F);
-   }
+   boolean b(int var1, cyy var2, ja var3);
 }

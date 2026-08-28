@@ -1,170 +1,205 @@
-import com.google.common.collect.Lists;
-import com.mojang.logging.LogQueues;
+import com.google.common.base.MoreObjects;
 import com.mojang.logging.LogUtils;
-import java.awt.BorderLayout;
-import java.awt.Dimension;
-import java.awt.Font;
-import java.awt.event.FocusAdapter;
-import java.awt.event.FocusEvent;
-import java.awt.event.WindowAdapter;
-import java.awt.event.WindowEvent;
-import java.util.Collection;
-import java.util.concurrent.atomic.AtomicBoolean;
-import javax.swing.JComponent;
-import javax.swing.JFrame;
-import javax.swing.JList;
-import javax.swing.JPanel;
-import javax.swing.JScrollBar;
-import javax.swing.JScrollPane;
-import javax.swing.JTextArea;
-import javax.swing.JTextField;
-import javax.swing.SwingUtilities;
-import javax.swing.UIManager;
-import javax.swing.border.EtchedBorder;
-import javax.swing.border.TitledBorder;
-import javax.swing.text.BadLocationException;
-import javax.swing.text.Document;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.Reader;
+import java.io.Writer;
+import java.nio.charset.CharacterCodingException;
+import java.nio.charset.CharsetDecoder;
+import java.nio.charset.CodingErrorAction;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.util.Objects;
+import java.util.Properties;
+import java.util.function.Function;
+import java.util.function.IntFunction;
+import java.util.function.Supplier;
+import java.util.function.UnaryOperator;
+import javax.annotation.Nullable;
 import org.slf4j.Logger;
 
-public class aqk extends JComponent {
-   private static final Font a = new Font("Monospaced", 0, 12);
-   private static final Logger b = LogUtils.getLogger();
-   private static final String c = "Minecraft server";
-   private static final String d = "Minecraft server - shutting down!";
-   private final aqe e;
-   private Thread f;
-   private final Collection<Runnable> g = Lists.newArrayList();
-   final AtomicBoolean h = new AtomicBoolean();
+public abstract class aqk<T extends aqk<T>> {
+   private static final Logger a = LogUtils.getLogger();
+   protected final Properties ac;
 
-   public static aqk a(final aqe $$0) {
+   public aqk(Properties $$0) {
+      this.ac = $$0;
+   }
+
+   public static Properties b(Path $$0) {
       try {
-         UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
-      } catch (Exception var3) {
-      }
-
-      final JFrame $$1 = new JFrame("Minecraft server");
-      final aqk $$2 = new aqk($$0);
-      $$1.setDefaultCloseOperation(2);
-      $$1.add($$2);
-      $$1.pack();
-      $$1.setLocationRelativeTo(null);
-      $$1.setVisible(true);
-      $$1.addWindowListener(new WindowAdapter() {
-         @Override
-         public void windowClosing(WindowEvent $$0x) {
-            if (!$$2.h.getAndSet(true)) {
-               $$1.setTitle("Minecraft server - shutting down!");
-               $$0.a(true);
-               $$2.f();
-            }
-         }
-      });
-      $$2.a($$1::dispose);
-      $$2.a();
-      return $$2;
-   }
-
-   private aqk(aqe $$0) {
-      this.e = $$0;
-      this.setPreferredSize(new Dimension(854, 480));
-      this.setLayout(new BorderLayout());
-
-      try {
-         this.add(this.e(), "Center");
-         this.add(this.c(), "West");
-      } catch (Exception var3) {
-         b.error("Couldn't build server GUI", var3);
-      }
-   }
-
-   public void a(Runnable $$0) {
-      this.g.add($$0);
-   }
-
-   private JComponent c() {
-      JPanel $$0 = new JPanel(new BorderLayout());
-      aqm $$1 = new aqm(this.e);
-      this.g.add($$1::a);
-      $$0.add($$1, "North");
-      $$0.add(this.d(), "Center");
-      $$0.setBorder(new TitledBorder(new EtchedBorder(), "Stats"));
-      return $$0;
-   }
-
-   private JComponent d() {
-      JList<?> $$0 = new aql(this.e);
-      JScrollPane $$1 = new JScrollPane($$0, 22, 30);
-      $$1.setBorder(new TitledBorder(new EtchedBorder(), "Players"));
-      return $$1;
-   }
-
-   private JComponent e() {
-      JPanel $$0 = new JPanel(new BorderLayout());
-      JTextArea $$1 = new JTextArea();
-      JScrollPane $$2 = new JScrollPane($$1, 22, 30);
-      $$1.setEditable(false);
-      $$1.setFont(a);
-      JTextField $$3 = new JTextField();
-      $$3.addActionListener($$1x -> {
-         String $$2x = $$3.getText().trim();
-         if (!$$2x.isEmpty()) {
-            this.e.a($$2x, this.e.aH());
-         }
-
-         $$3.setText("");
-      });
-      $$1.addFocusListener(new FocusAdapter() {
-         @Override
-         public void focusGained(FocusEvent $$0) {
-         }
-      });
-      $$0.add($$2, "Center");
-      $$0.add($$3, "South");
-      $$0.setBorder(new TitledBorder(new EtchedBorder(), "Log and chat"));
-      this.f = new Thread(() -> {
-         String $$2x;
-         while (($$2x = LogQueues.getNextLogEvent("ServerGuiConsole")) != null) {
-            this.a($$1, $$2, $$2x);
-         }
-      });
-      this.f.setUncaughtExceptionHandler(new r(b));
-      this.f.setDaemon(true);
-      return $$0;
-   }
-
-   public void a() {
-      this.f.start();
-   }
-
-   public void b() {
-      if (!this.h.getAndSet(true)) {
-         this.f();
-      }
-   }
-
-   void f() {
-      this.g.forEach(Runnable::run);
-   }
-
-   public void a(JTextArea $$0, JScrollPane $$1, String $$2) {
-      if (!SwingUtilities.isEventDispatchThread()) {
-         SwingUtilities.invokeLater(() -> this.a($$0, $$1, $$2));
-      } else {
-         Document $$3 = $$0.getDocument();
-         JScrollBar $$4 = $$1.getVerticalScrollBar();
-         boolean $$5 = false;
-         if ($$1.getViewport().getView() == $$0) {
-            $$5 = (double)$$4.getValue() + $$4.getSize().getHeight() + (double)(a.getSize() * 4) > (double)$$4.getMaximum();
-         }
-
          try {
-            $$3.insertString($$3.getLength(), $$2, null);
-         } catch (BadLocationException var8) {
-         }
+            Properties var13;
+            try (InputStream $$1 = Files.newInputStream($$0)) {
+               CharsetDecoder $$2 = StandardCharsets.UTF_8
+                  .newDecoder()
+                  .onMalformedInput(CodingErrorAction.REPORT)
+                  .onUnmappableCharacter(CodingErrorAction.REPORT);
+               Properties $$3 = new Properties();
+               $$3.load(new InputStreamReader($$1, $$2));
+               var13 = $$3;
+            }
 
-         if ($$5) {
-            $$4.setValue(Integer.MAX_VALUE);
+            return var13;
+         } catch (CharacterCodingException var9) {
+            a.info("Failed to load properties as UTF-8 from file {}, trying ISO_8859_1", $$0);
+
+            Properties var4;
+            try (Reader $$5 = Files.newBufferedReader($$0, StandardCharsets.ISO_8859_1)) {
+               Properties $$6 = new Properties();
+               $$6.load($$5);
+               var4 = $$6;
+            }
+
+            return var4;
          }
+      } catch (IOException var10) {
+         a.error("Failed to load properties from file: {}", $$0, var10);
+         return new Properties();
+      }
+   }
+
+   public void c(Path $$0) {
+      try (Writer $$1 = Files.newBufferedWriter($$0, StandardCharsets.UTF_8)) {
+         this.ac.store($$1, "Minecraft server properties");
+      } catch (IOException var7) {
+         a.error("Failed to store properties to file: {}", $$0);
+      }
+   }
+
+   private static <V extends Number> Function<String, V> a(Function<String, V> $$0) {
+      return $$1 -> {
+         try {
+            return $$0.apply($$1);
+         } catch (NumberFormatException var3) {
+            return null;
+         }
+      };
+   }
+
+   protected static <V> Function<String, V> a(IntFunction<V> $$0, Function<String, V> $$1) {
+      return $$2 -> {
+         try {
+            return $$0.apply(Integer.parseInt($$2));
+         } catch (NumberFormatException var4) {
+            return $$1.apply($$2);
+         }
+      };
+   }
+
+   @Nullable
+   private String c(String $$0) {
+      return (String)this.ac.get($$0);
+   }
+
+   @Nullable
+   protected <V> V a(String $$0, Function<String, V> $$1) {
+      String $$2 = this.c($$0);
+      if ($$2 == null) {
+         return null;
+      } else {
+         this.ac.remove($$0);
+         return $$1.apply($$2);
+      }
+   }
+
+   protected <V> V a(String $$0, Function<String, V> $$1, Function<V, String> $$2, V $$3) {
+      String $$4 = this.c($$0);
+      V $$5 = (V)MoreObjects.firstNonNull($$4 != null ? $$1.apply($$4) : null, $$3);
+      this.ac.put($$0, $$2.apply($$5));
+      return $$5;
+   }
+
+   protected <V> aqk<T>.a<V> b(String $$0, Function<String, V> $$1, Function<V, String> $$2, V $$3) {
+      String $$4 = this.c($$0);
+      V $$5 = (V)MoreObjects.firstNonNull($$4 != null ? $$1.apply($$4) : null, $$3);
+      this.ac.put($$0, $$2.apply($$5));
+      return new aqk.a<>($$0, $$5, $$2);
+   }
+
+   protected <V> V a(String $$0, Function<String, V> $$1, UnaryOperator<V> $$2, Function<V, String> $$3, V $$4) {
+      return this.a($$0, $$2x -> {
+         V $$3x = $$1.apply($$2x);
+         return $$3x != null ? $$2.apply($$3x) : null;
+      }, $$3, $$4);
+   }
+
+   protected <V> V a(String $$0, Function<String, V> $$1, V $$2) {
+      return this.a($$0, $$1, Objects::toString, $$2);
+   }
+
+   protected <V> aqk<T>.a<V> b(String $$0, Function<String, V> $$1, V $$2) {
+      return this.b($$0, $$1, Objects::toString, $$2);
+   }
+
+   protected String a(String $$0, String $$1) {
+      return this.a($$0, Function.identity(), Function.identity(), $$1);
+   }
+
+   @Nullable
+   protected String a(String $$0) {
+      return this.a($$0, Function.identity());
+   }
+
+   protected int a(String $$0, int $$1) {
+      return this.a($$0, a(Integer::parseInt), Integer.valueOf($$1));
+   }
+
+   protected aqk<T>.a<Integer> b(String $$0, int $$1) {
+      return this.b($$0, a(Integer::parseInt), $$1);
+   }
+
+   protected int a(String $$0, UnaryOperator<Integer> $$1, int $$2) {
+      return this.a($$0, a(Integer::parseInt), $$1, Objects::toString, $$2);
+   }
+
+   protected long a(String $$0, long $$1) {
+      return this.a($$0, a(Long::parseLong), $$1);
+   }
+
+   protected boolean a(String $$0, boolean $$1) {
+      return this.a($$0, Boolean::valueOf, $$1);
+   }
+
+   protected aqk<T>.a<Boolean> b(String $$0, boolean $$1) {
+      return this.b($$0, Boolean::valueOf, $$1);
+   }
+
+   @Nullable
+   protected Boolean b(String $$0) {
+      return this.a($$0, Boolean::valueOf);
+   }
+
+   protected Properties a() {
+      Properties $$0 = new Properties();
+      $$0.putAll(this.ac);
+      return $$0;
+   }
+
+   protected abstract T b(js var1, Properties var2);
+
+   public class a<V> implements Supplier<V> {
+      private final String b;
+      private final V c;
+      private final Function<V, String> d;
+
+      a(final String $$1, final V $$2, final Function<V, String> $$3) {
+         this.b = $$1;
+         this.c = $$2;
+         this.d = $$3;
+      }
+
+      @Override
+      public V get() {
+         return this.c;
+      }
+
+      public T a(js $$0, V $$1) {
+         Properties $$2 = aqk.this.a();
+         $$2.put(this.b, this.d.apply($$1));
+         return aqk.this.b($$0, $$2);
       }
    }
 }

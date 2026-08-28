@@ -1,67 +1,94 @@
-import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.Sets;
-import java.util.Optional;
+import com.mojang.serialization.Lifecycle;
+import java.util.Locale;
 import java.util.Set;
+import javax.annotation.Nullable;
 
-public class eyt {
-   private final azr a;
-   private final baw b;
-   private final Optional<jf.a> c;
-   private final Set<ald<?>> d;
+public interface eyt {
+   int d = 19133;
+   int e = 19132;
 
-   public eyt(azr $$0, baw $$1, jf.a $$2) {
-      this($$0, $$1, Optional.of($$2), Set.of());
+   djt D();
+
+   void a(djt var1);
+
+   boolean F();
+
+   Set<String> G();
+
+   Set<String> H();
+
+   void a(String var1, boolean var2);
+
+   default void a(p $$0) {
+      $$0.a("Known server brands", () -> String.join(", ", this.G()));
+      $$0.a("Removed feature flags", () -> String.join(", ", this.H()));
+      $$0.a("Level was modded", () -> Boolean.toString(this.F()));
+      $$0.a("Level storage version", () -> {
+         int $$0x = this.x();
+         return String.format(Locale.ROOT, "0x%05X - %s", $$0x, this.f($$0x));
+      });
    }
 
-   public eyt(azr $$0, baw $$1) {
-      this($$0, $$1, Optional.empty(), Set.of());
-   }
-
-   private eyt(azr $$0, baw $$1, Optional<jf.a> $$2, Set<ald<?>> $$3) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
-   }
-
-   public eyt a(String $$0) {
-      return new eyt(this.a.a($$0), this.b, this.c, this.d);
-   }
-
-   public eyt a(String $$0, ald<?> $$1) {
-      Set<ald<?>> $$2 = ImmutableSet.builder().addAll(this.d).add($$1).build();
-      return new eyt(this.a.a($$0), this.b, this.c, $$2);
-   }
-
-   public boolean a(ald<?> $$0) {
-      return this.d.contains($$0);
-   }
-
-   public void b(String $$0) {
-      this.a.b($$0);
-   }
-
-   public void a(eyo $$0) {
-      Set<bav<?>> $$1 = $$0.a();
-      Set<bav<?>> $$2 = Sets.difference($$1, this.b.b());
-      if (!$$2.isEmpty()) {
-         this.a.b("Parameters " + $$2 + " are not provided in this context");
+   default String f(int $$0) {
+      switch ($$0) {
+         case 19132:
+            return "McRegion";
+         case 19133:
+            return "Anvil";
+         default:
+            return "Unknown?";
       }
    }
 
-   public jf.a a() {
-      return this.c.orElseThrow(() -> new UnsupportedOperationException("References not allowed"));
-   }
+   @Nullable
+   tz E();
 
-   public boolean b() {
-      return this.c.isPresent();
-   }
+   void a(@Nullable tz var1);
 
-   public eyt a(baw $$0) {
-      return new eyt(this.a, $$0, this.c, this.d);
-   }
+   eys I();
 
-   public azr c() {
-      return this.a;
+   diz J();
+
+   tz a(js var1, @Nullable tz var2);
+
+   boolean l();
+
+   int x();
+
+   String e();
+
+   dis k();
+
+   void a(dis var1);
+
+   boolean m();
+
+   bty q();
+
+   void a(bty var1);
+
+   boolean r();
+
+   void d(boolean var1);
+
+   dir o();
+
+   @Nullable
+   tz w();
+
+   edz.a C();
+
+   void a(edz.a var1);
+
+   egw y();
+
+   boolean z();
+
+   boolean A();
+
+   Lifecycle B();
+
+   default cuh K() {
+      return this.D().b();
    }
 }

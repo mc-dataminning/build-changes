@@ -1,30 +1,22 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public record elk(int b, int c, int d, je<epm> e) implements ekx {
+public class elk implements eli {
    public static final Codec<elk> a = RecordCodecBuilder.create(
       $$0 -> $$0.group(
-               ays.m.fieldOf("tries").orElse(128).forGetter(elk::a),
-               ays.l.fieldOf("xz_spread").orElse(7).forGetter(elk::b),
-               ays.l.fieldOf("y_spread").orElse(3).forGetter(elk::c),
-               epm.b.fieldOf("feature").forGetter(elk::d)
+               enj.a.fieldOf("cap_provider").forGetter($$0x -> $$0x.b),
+               enj.a.fieldOf("stem_provider").forGetter($$0x -> $$0x.c),
+               Codec.INT.fieldOf("foliage_radius").orElse(2).forGetter($$0x -> $$0x.d)
             )
             .apply($$0, elk::new)
    );
+   public final enj b;
+   public final enj c;
+   public final int d;
 
-   public int a() {
-      return this.b;
-   }
-
-   public int b() {
-      return this.c;
-   }
-
-   public int c() {
-      return this.d;
-   }
-
-   public je<epm> d() {
-      return this.e;
+   public elk(enj $$0, enj $$1, int $$2) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
    }
 }

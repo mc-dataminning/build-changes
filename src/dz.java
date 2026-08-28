@@ -10,7 +10,7 @@ import javax.annotation.Nullable;
 
 public record dz(@Nullable Float c, @Nullable Float d) {
    public static final dz a = new dz(null, null);
-   public static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(ww.c("argument.range.ints"));
+   public static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(wy.c("argument.range.ints"));
 
    public static dz a(float $$0) {
       return new dz($$0, $$0);
@@ -66,13 +66,13 @@ public record dz(@Nullable Float c, @Nullable Float d) {
    public static dz a(@Nullable JsonElement $$0) {
       if ($$0 == null || $$0.isJsonNull()) {
          return a;
-      } else if (aza.b($$0)) {
-         float $$1 = aza.e($$0, "value");
+      } else if (azc.b($$0)) {
+         float $$1 = azc.e($$0, "value");
          return new dz($$1, $$1);
       } else {
-         JsonObject $$2 = aza.m($$0, "value");
-         Float $$3 = $$2.has("min") ? aza.m($$2, "min") : null;
-         Float $$4 = $$2.has("max") ? aza.m($$2, "max") : null;
+         JsonObject $$2 = azc.m($$0, "value");
+         Float $$3 = $$2.has("min") ? azc.m($$2, "min") : null;
+         Float $$4 = $$2.has("max") ? azc.m($$2, "max") : null;
          return new dz($$3, $$4);
       }
    }

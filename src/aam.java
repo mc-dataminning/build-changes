@@ -1,45 +1,36 @@
-import java.util.List;
+public record aam(iu c, int d, String e, int f) implements aai {
+   public static final yw<vu, aam> a = aai.a(aam::a, aam::new);
+   public static final aai.b<aam> b = aai.a("debug/game_test_add_marker");
 
-public record aam(int c, iu d, List<aam.a> e) implements aag {
-   public static final yu<vs, aam> a = aag.a(aam::a, aam::new);
-   public static final aag.b<aam> b = aag.a("debug/goal_selector");
-
-   private aam(vs $$0) {
-      this($$0.readInt(), $$0.e(), $$0.a(aam.a::new));
+   private aam(vu $$0) {
+      this($$0.e(), $$0.readInt(), $$0.p(), $$0.readInt());
    }
 
-   private void a(vs $$0) {
-      $$0.q(this.c);
-      $$0.a(this.d);
-      $$0.a(this.e, ($$0x, $$1) -> $$1.a($$0x));
+   private void a(vu $$0) {
+      $$0.a(this.c);
+      $$0.q(this.d);
+      $$0.a(this.e);
+      $$0.q(this.f);
    }
 
    @Override
-   public aag.b<aam> a() {
+   public aai.b<aam> a() {
       return b;
    }
 
-   public int b() {
+   public iu b() {
       return this.c;
    }
 
-   public iu c() {
+   public int c() {
       return this.d;
    }
 
-   public List<aam.a> d() {
+   public String d() {
       return this.e;
    }
 
-   public static record a(int a, boolean b, String c) {
-      public a(vs $$0) {
-         this($$0.readInt(), $$0.readBoolean(), $$0.d(255));
-      }
-
-      public void a(vs $$0) {
-         $$0.q(this.a);
-         $$0.a(this.b);
-         $$0.a(this.c);
-      }
+   public int e() {
+      return this.f;
    }
 }

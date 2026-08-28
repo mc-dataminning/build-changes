@@ -1,21 +1,9 @@
-import com.mojang.brigadier.StringReader;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import java.util.Optional;
+import java.util.stream.Stream;
 
-public class bpt implements bpo<StringReader, ale> {
-   public static final bpo<StringReader, ale> a = new bpt();
+public interface bpt<S> {
+   Stream<String> possibleValues(bpq<S> var1);
 
-   private bpt() {
-   }
-
-   @Override
-   public Optional<ale> a(bpn<StringReader> $$0) {
-      $$0.b().skipWhitespace();
-
-      try {
-         return Optional.of(ale.b($$0.b()));
-      } catch (CommandSyntaxException var3) {
-         return Optional.empty();
-      }
+   static <S> bpt<S> b() {
+      return $$0 -> Stream.empty();
    }
 }

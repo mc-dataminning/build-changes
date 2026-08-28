@@ -1,32 +1,16 @@
-import com.mojang.serialization.Codec;
+public class fob {
+   private static volatile boolean a;
 
-public enum fob implements azn, bai {
-   a(0, "minimized", "options.inactivityFpsLimit.minimized"),
-   b(1, "afk", "options.inactivityFpsLimit.afk");
-
-   public static final Codec<fob> c = bai.a(fob::values);
-   private final int d;
-   private final String e;
-   private final String f;
-
-   private fob(final int $$0, final String $$1, final String $$2) {
-      this.d = $$0;
-      this.e = $$1;
-      this.f = $$2;
-   }
-
-   @Override
-   public int b() {
-      return this.d;
-   }
-
-   @Override
-   public String a() {
-      return this.f;
-   }
-
-   @Override
-   public String c() {
-      return this.e;
+   public static void a() {
+      if (!a) {
+         a = true;
+         hfh.a();
+         hhu.a();
+         fqd.a();
+         hhe.a();
+         hfr.a();
+         hgo.a();
+         hiw.a();
+      }
    }
 }

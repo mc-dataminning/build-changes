@@ -1,10 +1,9 @@
-public class hcx extends hcp {
-   public cje.b a;
-   public float b;
-   public ggc.a c;
-
-   public hcx() {
-      this.a = cje.b.a;
-      this.c = ggc.a.a;
-   }
+public class hcx extends hbj {
+   public boolean b;
+   public boolean c;
+   public bwv d = bwv.b;
+   public cng.a j = cng.a.h;
+   public int k;
+   public int l;
+   public float m;
 }

@@ -1,24 +1,50 @@
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class emz<P extends emy> {
-   public static final emz<enh> a = a("simple_state_provider", enh.b);
-   public static final emz<eni> b = a("weighted_state_provider", eni.b);
-   public static final emz<end> c = a("noise_threshold_provider", end.b);
-   public static final emz<enc> d = a("noise_provider", enc.g);
-   public static final emz<ena> e = a("dual_noise_provider", ena.b);
-   public static final emz<enf> f = a("rotated_block_provider", enf.b);
-   public static final emz<ene> g = a("randomized_int_state_provider", ene.b);
-   private final MapCodec<P> h;
+public class emz extends emu {
+   public static final MapCodec<emz> a = RecordCodecBuilder.mapCodec(
+      $$0 -> b($$0)
+            .and(
+               $$0.group(
+                  btg.b(1, 512).fieldOf("foliage_height").forGetter($$0x -> $$0x.b),
+                  Codec.intRange(0, 256).fieldOf("leaf_placement_attempts").forGetter($$0x -> $$0x.c)
+               )
+            )
+            .apply($$0, emz::new)
+   );
+   private final btg b;
+   private final int c;
 
-   private static <P extends emy> emz<P> a(String $$0, MapCodec<P> $$1) {
-      return jr.a(mf.T, $$0, new emz<>($$1));
+   public emz(btg $$0, btg $$1, btg $$2, int $$3) {
+      super($$0, $$1);
+      this.b = $$2;
+      this.c = $$3;
    }
 
-   private emz(MapCodec<P> $$0) {
-      this.h = $$0;
+   @Override
+   protected emv<?> a() {
+      return emv.j;
    }
 
-   public MapCodec<P> a() {
-      return this.h;
+   @Override
+   protected void a(djb $$0, emu.b $$1, azv $$2, eme $$3, int $$4, emu.a $$5, int $$6, int $$7, int $$8) {
+      iu $$9 = $$5.a();
+      iu.a $$10 = $$9.k();
+
+      for (int $$11 = 0; $$11 < this.c; $$11++) {
+         $$10.a($$9, $$2.a($$7) - $$2.a($$7), $$2.a($$6) - $$2.a($$6), $$2.a($$7) - $$2.a($$7));
+         a($$0, $$1, $$2, $$3, $$10);
+      }
+   }
+
+   @Override
+   public int a(azv $$0, int $$1, eme $$2) {
+      return this.b.a($$0);
+   }
+
+   @Override
+   protected boolean a(azv $$0, int $$1, int $$2, int $$3, int $$4, boolean $$5) {
+      return false;
    }
 }

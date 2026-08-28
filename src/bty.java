@@ -1,75 +1,49 @@
+import java.util.function.IntFunction;
 import javax.annotation.Nullable;
 
-public sealed interface bty permits bty.d, bty.a, bty.c, bty.f {
-   bty.d a = new bty.d(bty.e.b, bty.b.b);
-   bty.d b = new bty.d(bty.e.c, bty.b.b);
-   bty.d c = new bty.d(bty.e.a, bty.b.b);
-   bty.a d = new bty.a();
-   bty.c e = new bty.c();
-   bty.f f = new bty.f();
+public enum bty implements bak {
+   a(0, "peaceful"),
+   b(1, "easy"),
+   c(2, "normal"),
+   d(3, "hard");
 
-   default boolean a() {
-      return false;
+   public static final bak.a<bty> e = bak.a(bty::values);
+   private static final IntFunction<bty> f = ayc.a(bty::a, values(), ayc.a.b);
+   private final int g;
+   private final String h;
+
+   private bty(final int $$0, final String $$1) {
+      this.g = $$0;
+      this.h = $$1;
    }
 
-   public static record a() implements bty {
+   public int a() {
+      return this.g;
    }
 
-   public static record b(boolean c, @Nullable cys d) {
-      static bty.b a = new bty.b(false, null);
-      static bty.b b = new bty.b(true, null);
-
-      public boolean a() {
-         return this.c;
-      }
-
-      @Nullable
-      public cys b() {
-         return this.d;
-      }
+   public wy b() {
+      return wy.c("options.difficulty." + this.h);
    }
 
-   public static record c() implements bty {
+   public wy d() {
+      return wy.c("options.difficulty." + this.h + ".info");
    }
 
-   public static record d(bty.e g, bty.b h) implements bty {
-      @Override
-      public boolean a() {
-         return true;
-      }
-
-      public bty.d a(cys $$0) {
-         return new bty.d(this.g, new bty.b(true, $$0));
-      }
-
-      public bty.d b() {
-         return new bty.d(this.g, bty.b.a);
-      }
-
-      public boolean c() {
-         return this.h.c;
-      }
-
-      @Nullable
-      public cys d() {
-         return this.h.d;
-      }
-
-      public bty.e e() {
-         return this.g;
-      }
-
-      public bty.b f() {
-         return this.h;
-      }
+   public static bty a(int $$0) {
+      return f.apply($$0);
    }
 
-   public static enum e {
-      a,
-      b,
-      c;
+   @Nullable
+   public static bty a(String $$0) {
+      return e.a($$0);
    }
 
-   public static record f() implements bty {
+   public String e() {
+      return this.h;
+   }
+
+   @Override
+   public String c() {
+      return this.h;
    }
 }

@@ -1,21 +1,13 @@
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import javax.annotation.Nullable;
 
-public class hfq implements hfz {
-   public static final MapCodec<hfq> a = hfr.a.xmap(hfq::new, $$0 -> $$0.b);
-   private final hfr b;
-
-   public hfq(boolean $$0, hfr.a $$1) {
-      this(new hfr($$0, $$1));
-   }
-
-   private hfq(hfr $$0) {
-      this.b = $$0;
-   }
+public record hfq(ks.a<?> b) implements hfs {
+   public static final MapCodec<hfq> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(ks.a("predicate").forGetter(hfq::b)).apply($$0, hfq::new));
 
    @Override
-   public float a(cys $$0, @Nullable gjd $$1, @Nullable bwz $$2, int $$3) {
-      return this.b.a($$0, $$1, $$2, $$3);
+   public boolean get(cyy $$0, @Nullable gjr $$1, @Nullable bxc $$2, int $$3, cyw $$4) {
+      return this.b.b().a($$0);
    }
 
    @Override

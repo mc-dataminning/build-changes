@@ -1,39 +1,86 @@
-public class btu {
-   public static void a(dip $$0, iu $$1, btr $$2) {
-      a($$0, (double)$$1.u(), (double)$$1.v(), (double)$$1.w(), $$2);
+import java.util.Set;
+import java.util.function.Predicate;
+
+public interface btu extends bts {
+   float r_ = 4.0F;
+
+   int b();
+
+   boolean c();
+
+   cyy a(int var1);
+
+   cyy a(int var1, int var2);
+
+   cyy b(int var1);
+
+   void a(int var1, cyy var2);
+
+   default int aj_() {
+      return 99;
    }
 
-   public static void a(dip $$0, bwa $$1, btr $$2) {
-      a($$0, $$1.dA(), $$1.dC(), $$1.dG(), $$2);
+   default int f_(cyy $$0) {
+      return Math.min(this.aj_(), $$0.k());
    }
 
-   private static void a(dip $$0, double $$1, double $$2, double $$3, btr $$4) {
-      for (int $$5 = 0; $$5 < $$4.b(); $$5++) {
-         a($$0, $$1, $$2, $$3, $$4.a($$5));
+   void e();
+
+   boolean a(cqy var1);
+
+   default void c_(cqy $$0) {
+   }
+
+   default void c(cqy $$0) {
+   }
+
+   default boolean b(int $$0, cyy $$1) {
+      return true;
+   }
+
+   default boolean a(btu $$0, int $$1, cyy $$2) {
+      return true;
+   }
+
+   default int a_(cyu $$0) {
+      int $$1 = 0;
+
+      for (int $$2 = 0; $$2 < this.b(); $$2++) {
+         cyy $$3 = this.a($$2);
+         if ($$3.h().equals($$0)) {
+            $$1 += $$3.M();
+         }
       }
+
+      return $$1;
    }
 
-   public static void a(dip $$0, iu $$1, jn<cys> $$2) {
-      $$2.forEach($$2x -> a($$0, (double)$$1.u(), (double)$$1.v(), (double)$$1.w(), $$2x));
+   default boolean a(Set<cyu> $$0) {
+      return this.a_($$1 -> !$$1.f() && $$0.contains($$1.h()));
    }
 
-   public static void a(dip $$0, double $$1, double $$2, double $$3, cys $$4) {
-      double $$5 = (double)bwj.aq.l();
-      double $$6 = 1.0 - $$5;
-      double $$7 = $$5 / 2.0;
-      double $$8 = Math.floor($$1) + $$0.A.j() * $$6 + $$7;
-      double $$9 = Math.floor($$2) + $$0.A.j() * $$6;
-      double $$10 = Math.floor($$3) + $$0.A.j() * $$6 + $$7;
-
-      while (!$$4.f()) {
-         cmx $$11 = new cmx($$0, $$8, $$9, $$10, $$4.a($$0.A.a(21) + 10));
-         float $$12 = 0.05F;
-         $$11.n($$0.A.a(0.0, 0.11485000171139836), $$0.A.a(0.2, 0.11485000171139836), $$0.A.a(0.0, 0.11485000171139836));
-         $$0.b($$11);
+   default boolean a_(Predicate<cyy> $$0) {
+      for (int $$1 = 0; $$1 < this.b(); $$1++) {
+         cyy $$2 = this.a($$1);
+         if ($$0.test($$2)) {
+            return true;
+         }
       }
+
+      return false;
    }
 
-   public static void a(dzo $$0, dip $$1, iu $$2) {
-      $$1.b($$2, $$0.b());
+   static boolean a(dwx $$0, cqy $$1) {
+      return a($$0, $$1, 4.0F);
+   }
+
+   static boolean a(dwx $$0, cqy $$1, float $$2) {
+      div $$3 = $$0.i();
+      iu $$4 = $$0.aw_();
+      if ($$3 == null) {
+         return false;
+      } else {
+         return $$3.c_($$4) != $$0 ? false : $$1.a($$4, (double)$$2);
+      }
    }
 }

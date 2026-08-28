@@ -1,43 +1,25 @@
-public class gls extends gnl {
-   private final gng a;
-
-   protected gls(gjd $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, gng $$7) {
+public class gls extends goa {
+   gls(gjr $$0, double $$1, double $$2, double $$3, dzz $$4) {
       super($$0, $$1, $$2, $$3);
-      this.u = -0.1F;
-      this.B = 0.9F;
-      this.a = $$7;
-      this.j = $$4 + (Math.random() * 2.0 - 1.0) * 0.05F;
-      this.k = $$5 + (Math.random() * 2.0 - 1.0) * 0.05F;
-      this.l = $$6 + (Math.random() * 2.0 - 1.0) * 0.05F;
-      float $$8 = this.r.i() * 0.3F + 0.7F;
-      this.v = $$8;
-      this.w = $$8;
-      this.x = $$8;
-      this.D = 0.1F * (this.r.i() * this.r.i() * 6.0F + 1.0F);
-      this.t = (int)(16.0 / ((double)this.r.i() * 0.8 + 0.2)) + 2;
-      this.b($$7);
+      this.a(fos.Q().ap().a().a($$4));
+      this.u = 0.0F;
+      this.t = 80;
+      this.n = false;
    }
 
    @Override
-   public gmp b() {
-      return gmp.b;
+   public gne b() {
+      return gne.a;
    }
 
    @Override
-   public void a() {
-      super.a();
-      this.b(this.a);
+   public float b(float $$0) {
+      return 0.5F;
    }
 
-   public static class a implements gmo<mb> {
-      private final gng a;
-
-      public a(gng $$0) {
-         this.a = $$0;
-      }
-
-      public gml a(mb $$0, gjd $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new gls($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
+   public static class a implements gnd<lp> {
+      public gna a(lp $$0, gjr $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new gls($$1, $$2, $$3, $$4, $$0.b());
       }
    }
 }

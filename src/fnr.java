@@ -1,33 +1,36 @@
-import com.mojang.serialization.Codec;
+import com.mojang.logging.LogUtils;
+import org.slf4j.Logger;
 
-public enum fnr implements azn, bai {
-   a(0, "false", "options.off"),
-   b(1, "fast", "options.clouds.fast"),
-   c(2, "true", "options.clouds.fancy");
+public class fnr extends fnp {
+   private static final Logger b = LogUtils.getLogger();
+   private static final wy c = wy.c("mco.create.world.wait");
+   private final String d;
+   private final String e;
+   private final long f;
 
-   public static final Codec<fnr> d = bai.a(fnr::values);
-   private final int e;
-   private final String f;
-   private final String g;
-
-   private fnr(final int $$0, final String $$1, final String $$2) {
-      this.e = $$0;
-      this.f = $$1;
-      this.g = $$2;
+   public fnr(long $$0, String $$1, String $$2) {
+      this.f = $$0;
+      this.d = $$1;
+      this.e = $$2;
    }
 
    @Override
-   public String c() {
-      return this.f;
+   public void run() {
+      fjs $$0 = fjs.a();
+
+      try {
+         $$0.a(this.f, this.d, this.e);
+      } catch (flo var3) {
+         b.error("Couldn't create world", var3);
+         this.a(var3);
+      } catch (Exception var4) {
+         b.error("Could not create world", var4);
+         this.a(var4);
+      }
    }
 
    @Override
-   public int b() {
-      return this.e;
-   }
-
-   @Override
-   public String a() {
-      return this.g;
+   public wy a() {
+      return c;
    }
 }

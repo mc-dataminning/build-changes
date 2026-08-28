@@ -1,121 +1,89 @@
-public class ctq extends ctf implements dxp {
-   private boolean c = true;
-   private boolean d = false;
+import java.util.function.Function;
+import javax.annotation.Nullable;
 
-   public ctq(bwj<? extends ctq> $$0, dip $$1) {
-      super($$0, $$1);
+public class ctq {
+   public static int[][] a(ja $$0) {
+      ja $$1 = $$0.h();
+      ja $$2 = $$1.g();
+      ja $$3 = $$0.g();
+      return new int[][]{
+         {$$1.j(), $$1.l()},
+         {$$2.j(), $$2.l()},
+         {$$3.j() + $$1.j(), $$3.l() + $$1.l()},
+         {$$3.j() + $$2.j(), $$3.l() + $$2.l()},
+         {$$0.j() + $$1.j(), $$0.l() + $$1.l()},
+         {$$0.j() + $$2.j(), $$0.l() + $$2.l()},
+         {$$3.j(), $$3.l()},
+         {$$0.j(), $$0.l()}
+      };
    }
 
-   @Override
-   public dzo v() {
-      return dlw.hz.m();
+   public static boolean a(double $$0) {
+      return !Double.isInfinite($$0) && $$0 < 1.0;
    }
 
-   @Override
-   public int x() {
-      return 1;
-   }
-
-   @Override
-   public int b() {
-      return 5;
-   }
-
-   @Override
-   public void a(int $$0, int $$1, int $$2, boolean $$3) {
-      boolean $$4 = !$$3;
-      if ($$4 != this.B()) {
-         this.r($$4);
+   public static boolean a(dif $$0, bxc $$1, fed $$2) {
+      for (ffc $$4 : $$0.e($$1, $$2)) {
+         if (!$$4.c()) {
+            return false;
+         }
       }
+
+      return $$0.A_().a($$2);
    }
 
-   public boolean B() {
-      return this.c;
+   public static boolean a(dif $$0, fei $$1, bxc $$2, bxo $$3) {
+      return a($$0, $$2, $$2.f($$3).c($$1));
    }
 
-   public void r(boolean $$0) {
-      this.c = $$0;
+   public static ffc a(dib $$0, iu $$1) {
+      dzz $$2 = $$0.a_($$1);
+      return !$$2.a(axc.aS) && (!($$2.b() instanceof duz) || !$$2.c(duz.b)) ? $$2.g($$0, $$1) : fez.a();
    }
 
-   @Override
-   public double C() {
-      return this.dA();
-   }
+   public static double a(iu $$0, int $$1, Function<iu, ffc> $$2) {
+      iu.a $$3 = $$0.k();
+      int $$4 = 0;
 
-   @Override
-   public double D() {
-      return this.dC() + 0.5;
-   }
-
-   @Override
-   public double E() {
-      return this.dG();
-   }
-
-   @Override
-   public boolean F() {
-      return false;
-   }
-
-   @Override
-   public void h() {
-      this.d = false;
-      super.h();
-      this.K();
-   }
-
-   @Override
-   protected double a(iu $$0, eas $$1, double $$2) {
-      double $$3 = super.a($$0, $$1, $$2);
-      this.K();
-      return $$3;
-   }
-
-   private void K() {
-      if (!this.dV().C && this.bK() && this.B() && !this.d && this.G()) {
-         this.d = true;
-         this.e();
-      }
-   }
-
-   public boolean G() {
-      if (dxq.a(this.dV(), this)) {
-         return true;
-      } else {
-         for (cmx $$1 : this.dV().a(cmx.class, this.cR().c(0.25, 0.0, 0.25), bwh.a)) {
-            if (dxq.a(this, $$1)) {
-               return true;
-            }
+      while ($$4 < $$1) {
+         ffc $$5 = $$2.apply($$3);
+         if (!$$5.c()) {
+            return (double)($$0.v() + $$4) + $$5.b(ja.a.b);
          }
 
-         return false;
+         $$4++;
+         $$3.c(ja.b);
       }
+
+      return Double.POSITIVE_INFINITY;
    }
 
-   @Override
-   protected cyo o() {
-      return cyw.ou;
-   }
+   @Nullable
+   public static fei a(bwm<?> $$0, dif $$1, iu $$2, boolean $$3) {
+      if ($$3 && $$0.a($$1.a_($$2))) {
+         return null;
+      } else {
+         double $$4 = $$1.a(a((dib)$$1, $$2), () -> a((dib)$$1, $$2.e()));
+         if (!a($$4)) {
+            return null;
+         } else if ($$3 && $$4 <= 0.0 && $$0.a($$1.a_($$2.e()))) {
+            return null;
+         } else {
+            fei $$5 = fei.a($$2, $$4);
+            fed $$6 = $$0.n().a($$5);
 
-   @Override
-   public cys dI() {
-      return new cys(cyw.ou);
-   }
+            for (ffc $$8 : $$1.e(null, $$6)) {
+               if (!$$8.c()) {
+                  return null;
+               }
+            }
 
-   @Override
-   protected void b(tx $$0) {
-      super.b($$0);
-      $$0.a("Enabled", this.c);
-   }
-
-   @Override
-   protected void a(tx $$0) {
-      super.a($$0);
-      this.c = $$0.e("Enabled") ? $$0.q("Enabled") : true;
-   }
-
-   @Override
-   public cuk a(int $$0, cqr $$1) {
-      return new cvl($$0, $$1, this);
+            if ($$0 != bwm.bS || !$$1.a_($$2).a(axc.cv) && !$$1.a_($$2.d()).a(axc.cv)) {
+               return !$$1.A_().a($$6) ? null : $$5;
+            } else {
+               return null;
+            }
+         }
+      }
    }
 }

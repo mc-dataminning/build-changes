@@ -1,53 +1,45 @@
-public class abz implements zd<abs> {
-   public static final yu<wh, abz> a = zd.a(abz::a, abz::new);
-   private final iu b;
-   private final int c;
+public class abz implements zf<abu> {
+   public static final yw<vu, abz> a = zf.a(abz::a, abz::new);
+   private final int b;
+   private final iu c;
    private final int d;
-   private final dlu e;
 
-   public abz(iu $$0, dlu $$1, int $$2, int $$3) {
+   public abz(int $$0, iu $$1, int $$2) {
       this.b = $$0;
-      this.e = $$1;
-      this.c = $$2;
-      this.d = $$3;
+      this.c = $$1;
+      this.d = $$2;
    }
 
-   private abz(wh $$0) {
-      this.b = $$0.e();
-      this.c = $$0.readUnsignedByte();
+   private abz(vu $$0) {
+      this.b = $$0.l();
+      this.c = $$0.e();
       this.d = $$0.readUnsignedByte();
-      this.e = ys.a(mg.i).decode($$0);
    }
 
-   private void a(wh $$0) {
-      $$0.a(this.b);
-      $$0.l(this.c);
+   private void a(vu $$0) {
+      $$0.c(this.b);
+      $$0.a(this.c);
       $$0.l(this.d);
-      ys.a(mg.i).encode($$0, this.e);
    }
 
    @Override
-   public zf<abz> a() {
-      return agl.i;
+   public zh<abz> a() {
+      return agn.g;
    }
 
-   public void a(abs $$0) {
+   public void a(abu $$0) {
       $$0.a(this);
    }
 
-   public iu b() {
+   public int b() {
       return this.b;
    }
 
-   public int e() {
+   public iu e() {
       return this.c;
    }
 
    public int f() {
       return this.d;
-   }
-
-   public dlu g() {
-      return this.e;
    }
 }

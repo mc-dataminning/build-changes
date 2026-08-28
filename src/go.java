@@ -13,15 +13,15 @@ public class go implements gh {
    }
 
    @Override
-   public fdw a(ei $$0) {
-      fdw $$1 = $$0.d();
-      return new fdw(this.a.a($$1.d), this.b.a($$1.e), this.c.a($$1.f));
+   public fei a(ei $$0) {
+      fei $$1 = $$0.d();
+      return new fei(this.a.a($$1.d), this.b.a($$1.e), this.c.a($$1.f));
    }
 
    @Override
-   public fdv b(ei $$0) {
-      fdv $$1 = $$0.k();
-      return new fdv((float)this.a.a((double)$$1.i), (float)this.b.a((double)$$1.j));
+   public feh b(ei $$0) {
+      feh $$1 = $$0.k();
+      return new feh((float)this.a.a((double)$$1.i), (float)this.b.a((double)$$1.j));
    }
 
    @Override
@@ -96,7 +96,7 @@ public class go implements gh {
       return new go(new gn(false, $$0), new gn(false, $$1), new gn(false, $$2));
    }
 
-   public static go a(fdv $$0) {
+   public static go a(feh $$0) {
       return new go(new gn(false, (double)$$0.i), new gn(false, (double)$$0.j), new gn(true, 0.0));
    }
 

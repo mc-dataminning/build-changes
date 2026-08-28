@@ -1,131 +1,173 @@
+import com.mojang.logging.LogUtils;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.DynamicOps;
+import com.mojang.serialization.MapDecoder;
+import com.mojang.serialization.MapEncoder;
+import com.mojang.serialization.MapLike;
 import io.netty.buffer.ByteBuf;
-import it.unimi.dsi.fastutil.ints.IntArrayList;
-import it.unimi.dsi.fastutil.ints.IntList;
-import java.util.ArrayList;
+import java.util.UUID;
 import java.util.function.Consumer;
-import java.util.function.IntFunction;
+import java.util.function.Predicate;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public record dbg(dbg.a e, IntList f, IntList g, boolean h, boolean i) implements dbx {
-   public static final dbg a = new dbg(dbg.a.a, IntList.of(), IntList.of(), false, false);
-   public static final Codec<IntList> b = Codec.INT.listOf().xmap(IntArrayList::new, ArrayList::new);
-   public static final Codec<dbg> c = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               dbg.a.g.fieldOf("shape").forGetter(dbg::a),
-               b.optionalFieldOf("colors", IntList.of()).forGetter(dbg::b),
-               b.optionalFieldOf("fade_colors", IntList.of()).forGetter(dbg::c),
-               Codec.BOOL.optionalFieldOf("has_trail", false).forGetter(dbg::d),
-               Codec.BOOL.optionalFieldOf("has_twinkle", false).forGetter(dbg::e)
-            )
-            .apply($$0, dbg::new)
+public final class dbg implements dcd {
+   private static final Logger e = LogUtils.getLogger();
+   public static final dbg a = new dbg(new tz());
+   private static final String f = "id";
+   public static final Codec<dbg> b = Codec.withAlternative(tz.a, ux.i).xmap(dbg::new, $$0 -> $$0.i);
+   public static final Codec<dbg> c = b.validate(
+      $$0 -> $$0.e().b("id", 8) ? DataResult.success($$0) : DataResult.error(() -> "Missing id for entity in: " + $$0)
    );
-   private static final yu<ByteBuf, IntList> j = ys.g.a(ys.a()).a(IntArrayList::new, ArrayList::new);
-   public static final yu<ByteBuf, dbg> d = yu.a(dbg.a.f, dbg::a, j, dbg::b, j, dbg::c, ys.b, dbg::d, ys.b, dbg::e, dbg::new);
-   private static final ww k = ww.c("item.minecraft.firework_star.custom_color");
+   @Deprecated
+   public static final yw<ByteBuf, dbg> d = yu.r.a(dbg::new, $$0 -> $$0.i);
+   private static final alg g = dwz.j.a().h().a();
+   private static final alg h = dwz.R.a().h().a();
+   private final tz i;
+
+   private dbg(tz $$0) {
+      this.i = $$0;
+   }
+
+   public static dbg a(tz $$0) {
+      return new dbg($$0.i());
+   }
+
+   public static Predicate<cyy> a(ki<dbg> $$0, tz $$1) {
+      return $$2 -> {
+         dbg $$3 = $$2.a($$0, a);
+         return $$3.b($$1);
+      };
+   }
+
+   public boolean b(tz $$0) {
+      return uo.a($$0, this.i, true);
+   }
+
+   public static void a(ki<dbg> $$0, cyy $$1, Consumer<tz> $$2) {
+      dbg $$3 = $$1.a($$0, a).a($$2);
+      if ($$3.i.g()) {
+         $$1.e($$0);
+      } else {
+         $$1.b($$0, $$3);
+      }
+   }
+
+   public static void a(ki<dbg> $$0, cyy $$1, tz $$2) {
+      if (!$$2.g()) {
+         $$1.b($$0, a($$2));
+      } else {
+         $$1.e($$0);
+      }
+   }
+
+   public dbg a(Consumer<tz> $$0) {
+      tz $$1 = this.i.i();
+      $$0.accept($$1);
+      return new dbg($$1);
+   }
+
+   @Nullable
+   public alg a() {
+      return !this.i.b("id", 8) ? null : alg.c(this.i.l("id"));
+   }
+
+   @Nullable
+   public <T> T a(jg.a $$0, alf<? extends jr<T>> $$1) {
+      alg $$2 = this.a();
+      return $$2 == null ? null : $$0.a($$1).flatMap($$2x -> $$2x.a(alf.a($$1, $$2))).map(je::a).orElse(null);
+   }
+
+   public void a(bwd $$0) {
+      tz $$1 = $$0.f(new tz());
+      UUID $$2 = $$0.cG();
+      $$1.a(this.i);
+      $$0.g($$1);
+      $$0.a_($$2);
+   }
+
+   public boolean a(dwx $$0, jg.a $$1) {
+      tz $$2 = $$0.e($$1);
+      tz $$3 = $$2.i();
+      $$2.a(this.i);
+      if (!$$2.equals($$3)) {
+         try {
+            $$0.d($$2, $$1);
+            $$0.e();
+            return true;
+         } catch (Exception var8) {
+            e.warn("Failed to apply custom data to block entity at {}", $$0.aw_(), var8);
+
+            try {
+               $$0.d($$3, $$1);
+            } catch (Exception var7) {
+               e.warn("Failed to rollback block entity at {} after failure", $$0.aw_(), var7);
+            }
+         }
+      }
+
+      return false;
+   }
+
+   public <T> DataResult<dbg> a(DynamicOps<uw> $$0, MapEncoder<T> $$1, T $$2) {
+      return $$1.encode($$2, $$0, $$0.mapBuilder()).build(this.i).map($$0x -> new dbg((tz)$$0x));
+   }
+
+   public <T> DataResult<T> a(MapDecoder<T> $$0) {
+      return this.a(un.a, $$0);
+   }
+
+   public <T> DataResult<T> a(DynamicOps<uw> $$0, MapDecoder<T> $$1) {
+      MapLike<uw> $$2 = (MapLike<uw>)$$0.getMap(this.i).getOrThrow();
+      return $$1.decode($$0, $$2);
+   }
+
+   public int b() {
+      return this.i.f();
+   }
+
+   public boolean c() {
+      return this.i.g();
+   }
+
+   public tz d() {
+      return this.i.i();
+   }
+
+   public boolean a(String $$0) {
+      return this.i.e($$0);
+   }
 
    @Override
-   public void a(cyo.b $$0, Consumer<ww> $$1, dah $$2, ke $$3) {
-      this.a($$1);
-      this.b($$1);
-   }
-
-   public void a(Consumer<ww> $$0) {
-      $$0.accept(this.e.a().a(n.h));
-   }
-
-   public void b(Consumer<ww> $$0) {
-      if (!this.f.isEmpty()) {
-         $$0.accept(a(ww.i().a(n.h), this.f));
-      }
-
-      if (!this.g.isEmpty()) {
-         $$0.accept(a(ww.c("item.minecraft.firework_star.fade_to").b(wv.v).a(n.h), this.g));
-      }
-
-      if (this.h) {
-         $$0.accept(ww.c("item.minecraft.firework_star.trail").a(n.h));
-      }
-
-      if (this.i) {
-         $$0.accept(ww.c("item.minecraft.firework_star.flicker").a(n.h));
+   public boolean equals(Object $$0) {
+      if ($$0 == this) {
+         return true;
+      } else {
+         return $$0 instanceof dbg $$1 ? this.i.equals($$1.i) : false;
       }
    }
 
-   private static ww a(xk $$0, IntList $$1) {
-      for (int $$2 = 0; $$2 < $$1.size(); $$2++) {
-         if ($$2 > 0) {
-            $$0.f(", ");
-         }
-
-         $$0.b(a($$1.getInt($$2)));
-      }
-
-      return $$0;
+   @Override
+   public int hashCode() {
+      return this.i.hashCode();
    }
 
-   private static ww a(int $$0) {
-      cxq $$1 = cxq.b($$0);
-      return (ww)($$1 == null ? k : ww.c("item.minecraft.firework_star." + $$1.b()));
+   @Override
+   public String toString() {
+      return this.i.toString();
    }
 
-   public dbg a(IntList $$0) {
-      return new dbg(this.e, this.f, new IntArrayList($$0), this.h, this.i);
-   }
-
-   public dbg.a a() {
-      return this.e;
-   }
-
-   public IntList b() {
-      return this.f;
-   }
-
-   public IntList c() {
-      return this.g;
-   }
-
-   public boolean d() {
-      return this.h;
-   }
-
-   public boolean e() {
+   @Deprecated
+   public tz e() {
       return this.i;
    }
 
-   public static enum a implements bai {
-      a(0, "small_ball"),
-      b(1, "large_ball"),
-      c(2, "star"),
-      d(3, "creeper"),
-      e(4, "burst");
-
-      private static final IntFunction<dbg.a> h = aya.a(dbg.a::b, values(), aya.a.a);
-      public static final yu<ByteBuf, dbg.a> f = ys.a(h, dbg.a::b);
-      public static final Codec<dbg.a> g = bai.b(dbg.a::values);
-      private final int i;
-      private final String j;
-
-      private a(final int $$0, final String $$1) {
-         this.i = $$0;
-         this.j = $$1;
-      }
-
-      public xk a() {
-         return ww.c("item.minecraft.firework_star.shape." + this.j);
-      }
-
-      public int b() {
-         return this.i;
-      }
-
-      public static dbg.a a(int $$0) {
-         return h.apply($$0);
-      }
-
-      @Override
-      public String c() {
-         return this.j;
+   @Override
+   public void a(cyu.b $$0, Consumer<wy> $$1, dan $$2, ke $$3) {
+      alg $$4 = alg.c(this.i.l("id"));
+      if (g.equals($$4) || h.equals($$4)) {
+         djq.a(this, $$1, "SpawnData");
       }
    }
 }

@@ -1,36 +1,31 @@
-import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
+import java.util.Set;
 
-public record fcp(float c) implements fcs {
-   public static final MapCodec<fcp> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(Codec.FLOAT.fieldOf("value").forGetter(fcp::c)).apply($$0, fcp::new));
-   public static final Codec<fcp> b = Codec.FLOAT.xmap(fcp::new, fcp::c);
+public record fcp(Optional<cl> b) implements fci {
+   public static final MapCodec<fcp> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(cl.a.optionalFieldOf("predicate").forGetter(fcp::c)).apply($$0, fcp::new));
 
    @Override
-   public fcr b() {
-      return fct.b;
+   public fcj b() {
+      return fck.j;
    }
 
    @Override
-   public float b(eyn $$0) {
-      return this.c;
+   public Set<bax<?>> a() {
+      return Set.of(fbt.i);
    }
 
-   public static fcp a(float $$0) {
-      return new fcp($$0);
+   public boolean a(eyz $$0) {
+      cyy $$1 = $$0.c(fbt.i);
+      return $$1 != null && (this.b.isEmpty() || this.b.get().a($$1));
    }
 
-   @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else {
-         return $$0 != null && this.getClass() == $$0.getClass() ? Float.compare(((fcp)$$0).c, this.c) == 0 : false;
-      }
+   public static fci.a a(cl.a $$0) {
+      return () -> new fcp(Optional.of($$0.b()));
    }
 
-   @Override
-   public int hashCode() {
-      return this.c != 0.0F ? Float.floatToIntBits(this.c) : 0;
+   public Optional<cl> c() {
+      return this.b;
    }
 }

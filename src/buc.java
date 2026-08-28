@@ -1,37 +1,35 @@
+import com.mojang.datafixers.util.Pair;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
+import com.mojang.serialization.DataResult;
 
-public class buc {
-   public static final Codec<buc> a = RecordCodecBuilder.create($$0 -> $$0.group(ego.b.fieldOf("source").forGetter($$0x -> $$0x.b)).apply($$0, buc::new));
-   private final ego b;
+public record buc(cl d) {
+   public static final buc a = new buc(cl.a.a().b());
+   public static final Codec<buc> b = cl.a.xmap(buc::new, buc::a);
+   public static final String c = "lock";
 
-   public buc(ego $$0) {
-      this.b = $$0;
+   public boolean a(cyy $$0) {
+      return this.d.a($$0);
    }
 
-   public buc(long $$0, ale $$1) {
-      this(a($$0, Optional.of($$1)));
+   public void a(tz $$0, jg.a $$1) {
+      if (this != a) {
+         DataResult<uw> $$2 = b.encode(this, $$1.a(un.a), new tz());
+         $$2.result().ifPresent($$1x -> $$0.a("lock", $$1x));
+      }
    }
 
-   public buc(long $$0, Optional<ale> $$1) {
-      this(a($$0, $$1));
-   }
-
-   private static ego a(long $$0, Optional<ale> $$1) {
-      egc.a $$2 = egc.b($$0);
-      if ($$1.isPresent()) {
-         $$2 = $$2.a(a($$1.get()));
+   public static buc b(tz $$0, jg.a $$1) {
+      if ($$0.b("lock", 10)) {
+         DataResult<Pair<buc, uw>> $$2 = b.decode($$1.a(un.a), $$0.c("lock"));
+         if ($$2.isSuccess()) {
+            return (buc)((Pair)$$2.getOrThrow()).getFirst();
+         }
       }
 
-      return new ego($$2.a());
+      return a;
    }
 
-   public static egc.a a(ale $$0) {
-      return egc.a($$0.toString());
-   }
-
-   public azt a() {
-      return this.b;
+   public cl a() {
+      return this.d;
    }
 }

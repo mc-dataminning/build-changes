@@ -1,53 +1,46 @@
-public class aiq implements zd<agn> {
-   public static final yu<vs, aiq> a = zd.a(aiq::a, aiq::new);
-   private final btx b;
-   private final int c;
-   private final float d;
-   private final float e;
+import io.netty.buffer.ByteBuf;
+import java.util.Optional;
+import java.util.function.IntFunction;
 
-   public aiq(btx $$0, int $$1, float $$2, float $$3) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
-      this.e = $$3;
-   }
+public record aiq(iu b, aiq.a c, dys.a d) implements zf<agp> {
+   public static final yw<wj, aiq> a = yw.a(iu.b, aiq::b, aiq.a.h, aiq::e, dys.a.b, aiq::f, aiq::new);
 
-   private aiq(vs $$0) {
-      this.b = $$0.b(btx.class);
-      this.c = $$0.l();
-      this.d = $$0.readFloat();
-      this.e = $$0.readFloat();
-   }
-
-   private void a(vs $$0) {
-      $$0.a(this.b);
-      $$0.c(this.c);
-      $$0.a(this.d);
-      $$0.a(this.e);
+   public aiq(iu $$0, aiq.a $$1, Optional<alf<sr>> $$2, jz $$3, dst $$4, boolean $$5) {
+      this($$0, $$1, new dys.a($$2, $$3, $$4, $$5, dys.b.a, Optional.empty()));
    }
 
    @Override
-   public zf<aiq> a() {
-      return agl.co;
+   public zh<aiq> a() {
+      return agn.cj;
    }
 
-   public void a(agn $$0) {
+   public void a(agp $$0) {
       $$0.a(this);
    }
 
-   public btx b() {
-      return this.b;
-   }
-
-   public int e() {
+   public aiq.a e() {
       return this.c;
    }
 
-   public float f() {
+   public dys.a f() {
       return this.d;
    }
 
-   public float g() {
-      return this.e;
+   public static enum a {
+      a(0),
+      b(1),
+      c(2),
+      d(3),
+      e(4),
+      f(5),
+      g(6);
+
+      private static final IntFunction<aiq.a> i = ayc.a($$0 -> $$0.j, values(), ayc.a.a);
+      public static final yw<ByteBuf, aiq.a> h = yu.a(i, $$0 -> $$0.j);
+      private final int j;
+
+      private a(final int $$0) {
+         this.j = $$0;
+      }
    }
 }

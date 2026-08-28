@@ -1,30 +1,41 @@
-public class gxt<T extends cjp> extends gue<T, hdo, ghh> {
-   private static final ale a = ale.b("textures/entity/squid/squid.png");
+public class gxt extends gut<cjq, hdu, ghc> {
+   private static final alg a = alg.b("textures/entity/rabbit/brown.png");
+   private static final alg j = alg.b("textures/entity/rabbit/white.png");
+   private static final alg k = alg.b("textures/entity/rabbit/black.png");
+   private static final alg l = alg.b("textures/entity/rabbit/gold.png");
+   private static final alg m = alg.b("textures/entity/rabbit/salt.png");
+   private static final alg n = alg.b("textures/entity/rabbit/white_splotched.png");
+   private static final alg o = alg.b("textures/entity/rabbit/toast.png");
+   private static final alg p = alg.b("textures/entity/rabbit/caerbannog.png");
 
-   public gxt(gvk.a $$0, ghh $$1, ghh $$2) {
-      super($$0, $$1, $$2, 0.7F);
+   public gxt(gvz.a $$0) {
+      super($$0, new ghc($$0.a(git.cF)), new ghc($$0.a(git.cG)), 0.3F);
    }
 
-   public ale a(hdo $$0) {
-      return a;
+   public alg a(hdu $$0) {
+      if ($$0.b) {
+         return o;
+      } else {
+         return switch ($$0.c) {
+            case a -> a;
+            case b -> j;
+            case c -> k;
+            case e -> l;
+            case f -> m;
+            case d -> n;
+            case g -> p;
+         };
+      }
    }
 
-   public hdo b() {
-      return new hdo();
+   public hdu b() {
+      return new hdu();
    }
 
-   public void a(T $$0, hdo $$1, float $$2) {
+   public void a(cjq $$0, hdu $$1, float $$2) {
       super.a($$0, $$1, $$2);
-      $$1.a = azk.h($$2, $$0.bM, $$0.bL);
-      $$1.b = azk.h($$2, $$0.bG, $$0.bF);
-      $$1.c = azk.h($$2, $$0.bI, $$0.bH);
-   }
-
-   protected void a(hdo $$0, fiq $$1, float $$2, float $$3) {
-      $$1.a(0.0F, $$0.aj ? 0.25F : 0.5F, 0.0F);
-      $$1.a(a.d.rotationDegrees(180.0F - $$2));
-      $$1.a(a.b.rotationDegrees($$0.b));
-      $$1.a(a.d.rotationDegrees($$0.c));
-      $$1.a(0.0F, $$0.aj ? -0.6F : -1.2F, 0.0F);
+      $$1.a = $$0.J($$2);
+      $$1.b = "Toast".equals(n.a($$0.al().getString()));
+      $$1.c = $$0.gq();
    }
 }

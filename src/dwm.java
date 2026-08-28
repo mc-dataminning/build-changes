@@ -1,20 +1,19 @@
-public class dwm extends dwa {
-   public dwm(iu $$0, dzo $$1) {
-      super(dwp.D, $$0, $$1, ddu.c);
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+
+public record dwm(alg e, String f) {
+   public static final Codec<dwm> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(alg.a.fieldOf("asset_id").forGetter(dwm::a), Codec.STRING.fieldOf("translation_key").forGetter(dwm::b)).apply($$0, dwm::new)
+   );
+   public static final yw<wj, dwm> b = yw.a(alg.b, dwm::a, yu.o, dwm::b, dwm::new);
+   public static final Codec<je<dwm>> c = alc.a(mg.aF, a);
+   public static final yw<wj, je<dwm>> d = yu.a(mg.aF, b);
+
+   public alg a() {
+      return this.e;
    }
 
-   @Override
-   protected ww j() {
-      return ww.c("container.blast_furnace");
-   }
-
-   @Override
-   protected int a(dxm $$0, cys $$1) {
-      return super.a($$0, $$1) / 2;
-   }
-
-   @Override
-   protected cuk a(int $$0, cqr $$1) {
-      return new cuq($$0, $$1, this, this.m);
+   public String b() {
+      return this.f;
    }
 }

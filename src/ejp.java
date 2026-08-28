@@ -1,57 +1,51 @@
 import com.mojang.serialization.Codec;
-import java.util.Optional;
 
-public class ejp extends eit<elg> {
-   public ejp(Codec<elg> $$0) {
+public class ejp extends eig {
+   public ejp(Codec<elk> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(eiv<elg> $$0) {
-      diq $$1 = $$0.b();
-      iu $$2 = $$0.e();
-      azt $$3 = $$0.d();
-      elg $$4 = $$0.f();
-      Optional<ja> $$5 = a($$1, $$2, $$3);
-      if ($$5.isEmpty()) {
-         return false;
-      } else {
-         iu $$6 = $$2.a($$5.get().g());
-         a($$1, $$3, $$6, $$4);
-         int $$7 = $$3.i() < $$4.b && eio.c($$1.a_($$2.a($$5.get()))) ? 2 : 1;
-         eio.a($$1, $$2, $$5.get(), $$7, false);
-         return true;
-      }
-   }
+   protected void a(diw $$0, azv $$1, iu $$2, int $$3, iu.a $$4, elk $$5) {
+      for (int $$6 = $$3 - 3; $$6 <= $$3; $$6++) {
+         int $$7 = $$6 < $$3 ? $$5.d : $$5.d - 1;
+         int $$8 = $$5.d - 2;
 
-   private static Optional<ja> a(diq $$0, iu $$1, azt $$2) {
-      boolean $$3 = eio.b($$0.a_($$1.d()));
-      boolean $$4 = eio.b($$0.a_($$1.e()));
-      if ($$3 && $$4) {
-         return Optional.of($$2.h() ? ja.a : ja.b);
-      } else if ($$3) {
-         return Optional.of(ja.a);
-      } else {
-         return $$4 ? Optional.of(ja.b) : Optional.empty();
-      }
-   }
+         for (int $$9 = -$$7; $$9 <= $$7; $$9++) {
+            for (int $$10 = -$$7; $$10 <= $$7; $$10++) {
+               boolean $$11 = $$9 == -$$7;
+               boolean $$12 = $$9 == $$7;
+               boolean $$13 = $$10 == -$$7;
+               boolean $$14 = $$10 == $$7;
+               boolean $$15 = $$11 || $$12;
+               boolean $$16 = $$13 || $$14;
+               if ($$6 >= $$3 || $$15 != $$16) {
+                  $$4.a($$2, $$9, $$6, $$10);
+                  dzz $$17 = $$5.b.a($$1, $$2);
+                  if ($$17.b(dqb.e) && $$17.b(dqb.c) && $$17.b(dqb.b) && $$17.b(dqb.d) && $$17.b(dqb.f)) {
+                     $$17 = $$17.b(dqb.f, Boolean.valueOf($$6 >= $$3 - 1))
+                        .b(dqb.e, Boolean.valueOf($$9 < -$$8))
+                        .b(dqb.c, Boolean.valueOf($$9 > $$8))
+                        .b(dqb.b, Boolean.valueOf($$10 < -$$8))
+                        .b(dqb.d, Boolean.valueOf($$10 > $$8));
+                  }
 
-   private static void a(diq $$0, azt $$1, iu $$2, elg $$3) {
-      eio.c($$0, $$2);
-
-      for (ja $$4 : ja.c.a) {
-         if (!($$1.i() > $$3.c)) {
-            iu $$5 = $$2.a($$4);
-            eio.c($$0, $$5);
-            if (!($$1.i() > $$3.d)) {
-               iu $$6 = $$5.a(ja.b($$1));
-               eio.c($$0, $$6);
-               if (!($$1.i() > $$3.e)) {
-                  iu $$7 = $$6.a(ja.b($$1));
-                  eio.c($$0, $$7);
+                  this.a($$0, $$4, $$17);
                }
             }
          }
       }
+   }
+
+   @Override
+   protected int a(int $$0, int $$1, int $$2, int $$3) {
+      int $$4 = 0;
+      if ($$3 < $$1 && $$3 >= $$1 - 3) {
+         $$4 = $$2;
+      } else if ($$3 == $$1) {
+         $$4 = $$2;
+      }
+
+      return $$4;
    }
 }

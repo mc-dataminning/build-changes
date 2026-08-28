@@ -1,34 +1,48 @@
-import com.mojang.datafixers.util.Either;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Set;
+import java.util.Map.Entry;
 
-public interface fut {
-   MapCodec<fut> b = fuu.f.dispatchMap(fut::a, fuu::a);
+public enum fut implements bak {
+   a("uniform"),
+   b("jp");
 
-   fuu a();
+   public static final Codec<fut> c = bak.a(fut::values);
+   private final String d;
 
-   Either<fut.b, fut.c> b();
-
-   public static record a(fut b, fuh.a c) {
-      public static final Codec<fut.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(fut.b.forGetter(fut.a::a), fuh.a.a.optionalFieldOf("filter", fuh.a.b).forGetter(fut.a::b)).apply($$0, fut.a::new)
-      );
-
-      public fut a() {
-         return this.b;
-      }
-
-      public fuh.a b() {
-         return this.c;
-      }
+   private fut(final String $$0) {
+      this.d = $$0;
    }
 
-   public interface b {
-      fgp load(avb var1) throws IOException;
+   @Override
+   public String c() {
+      return this.d;
    }
 
-   public static record c(ale a) {
+   public static class a {
+      private final Map<fut, Boolean> c;
+      public static final Codec<fut.a> a = Codec.unboundedMap(fut.c, Codec.BOOL).xmap(fut.a::new, $$0 -> $$0.c);
+      public static final fut.a b = new fut.a(Map.of());
+
+      public a(Map<fut, Boolean> $$0) {
+         this.c = $$0;
+      }
+
+      public boolean a(Set<fut> $$0) {
+         for (Entry<fut, Boolean> $$1 : this.c.entrySet()) {
+            if ($$0.contains($$1.getKey()) != $$1.getValue()) {
+               return false;
+            }
+         }
+
+         return true;
+      }
+
+      public fut.a a(fut.a $$0) {
+         Map<fut, Boolean> $$1 = new HashMap<>($$0.c);
+         $$1.putAll(this.c);
+         return new fut.a(Map.copyOf($$1));
+      }
    }
 }

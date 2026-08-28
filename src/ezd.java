@@ -1,66 +1,146 @@
 import com.google.common.collect.ImmutableList;
+import com.google.common.collect.Lists;
 import com.google.common.collect.ImmutableList.Builder;
-import com.mojang.datafixers.Products.P1;
-import com.mojang.serialization.codecs.RecordCodecBuilder.Instance;
-import com.mojang.serialization.codecs.RecordCodecBuilder.Mu;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
+import java.util.function.BiFunction;
+import java.util.function.Consumer;
 import java.util.function.Predicate;
+import org.apache.commons.lang3.mutable.MutableInt;
 
-public abstract class ezd implements eyv {
-   protected final List<fbw> e;
-   private final Predicate<eyn> a;
+public class ezd {
+   public static final Codec<ezd> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               ezn.a.listOf().fieldOf("entries").forGetter($$0x -> $$0x.b),
+               fci.e.listOf().optionalFieldOf("conditions", List.of()).forGetter($$0x -> $$0x.c),
+               fap.c.listOf().optionalFieldOf("functions", List.of()).forGetter($$0x -> $$0x.e),
+               fdf.a.fieldOf("rolls").forGetter($$0x -> $$0x.g),
+               fdf.a.fieldOf("bonus_rolls").orElse(fdb.a(0.0F)).forGetter($$0x -> $$0x.h)
+            )
+            .apply($$0, ezd::new)
+   );
+   private final List<ezp> b;
+   private final List<fci> c;
+   private final Predicate<eyz> d;
+   private final List<fan> e;
+   private final BiFunction<cyy, eyz, cyy> f;
+   private final fde g;
+   private final fde h;
 
-   protected ezd(List<fbw> $$0) {
-      this.e = $$0;
-      this.a = af.a($$0);
+   ezd(List<ezp> $$0, List<fci> $$1, List<fan> $$2, fde $$3, fde $$4) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = af.a($$1);
+      this.e = $$2;
+      this.f = fap.a($$2);
+      this.g = $$3;
+      this.h = $$4;
    }
 
-   protected static <T extends ezd> P1<Mu<T>, List<fbw>> a(Instance<T> $$0) {
-      return $$0.group(fbw.e.listOf().optionalFieldOf("conditions", List.of()).forGetter($$0x -> $$0x.e));
-   }
+   private void b(Consumer<cyy> $$0, eyz $$1) {
+      azv $$2 = $$1.b();
+      List<ezo> $$3 = Lists.newArrayList();
+      MutableInt $$4 = new MutableInt();
 
-   public void a(eyt $$0) {
-      for (int $$1 = 0; $$1 < this.e.size(); $$1++) {
-         this.e.get($$1).a($$0.a(".condition[" + $$1 + "]"));
+      for (ezp $$5 : this.b) {
+         $$5.expand($$1, $$3x -> {
+            int $$4x = $$3x.a($$1.c());
+            if ($$4x > 0) {
+               $$3.add($$3x);
+               $$4.add($$4x);
+            }
+         });
+      }
+
+      int $$6 = $$3.size();
+      if ($$4.intValue() != 0 && $$6 != 0) {
+         if ($$6 == 1) {
+            $$3.get(0).a($$0, $$1);
+         } else {
+            int $$7 = $$2.a($$4.intValue());
+
+            for (ezo $$8 : $$3) {
+               $$7 -= $$8.a($$1.c());
+               if ($$7 < 0) {
+                  $$8.a($$0, $$1);
+                  return;
+               }
+            }
+         }
       }
    }
 
-   protected final boolean a(eyn $$0) {
-      return this.a.test($$0);
+   public void a(Consumer<cyy> $$0, eyz $$1) {
+      if (this.d.test($$1)) {
+         Consumer<cyy> $$2 = fan.a(this.f, $$0, $$1);
+         int $$3 = this.g.a($$1) + azm.d(this.h.b($$1) * $$1.c());
+
+         for (int $$4 = 0; $$4 < $$3; $$4++) {
+            this.b($$2, $$1);
+         }
+      }
    }
 
-   public abstract eze a();
-
-   public abstract static class a<T extends ezd.a<T>> implements fbo<T> {
-      private final Builder<fbw> a = ImmutableList.builder();
-
-      protected abstract T aA_();
-
-      public T a(fbw.a $$0) {
-         this.a.add($$0.build());
-         return this.aA_();
+   public void a(ezf $$0) {
+      for (int $$1 = 0; $$1 < this.c.size(); $$1++) {
+         this.c.get($$1).a($$0.a(".condition[" + $$1 + "]"));
       }
 
-      public final T e() {
-         return this.aA_();
+      for (int $$2 = 0; $$2 < this.e.size(); $$2++) {
+         this.e.get($$2).a($$0.a(".functions[" + $$2 + "]"));
       }
 
-      protected List<fbw> f() {
-         return this.a.build();
+      for (int $$3 = 0; $$3 < this.b.size(); $$3++) {
+         this.b.get($$3).a($$0.a(".entries[" + $$3 + "]"));
       }
 
-      public eyu.a a(ezd.a<?> $$0) {
-         return new eyu.a(this, $$0);
+      this.g.a($$0.a(".rolls"));
+      this.h.a($$0.a(".bonusRolls"));
+   }
+
+   public static ezd.a a() {
+      return new ezd.a();
+   }
+
+   public static class a implements faj<ezd.a>, fca<ezd.a> {
+      private final Builder<ezp> a = ImmutableList.builder();
+      private final Builder<fci> b = ImmutableList.builder();
+      private final Builder<fan> c = ImmutableList.builder();
+      private fde d = fdb.a(1.0F);
+      private fde e = fdb.a(0.0F);
+
+      public ezd.a a(fde $$0) {
+         this.d = $$0;
+         return this;
       }
 
-      public eyz.a b(ezd.a<?> $$0) {
-         return new eyz.a(this, $$0);
+      public ezd.a a() {
+         return this;
       }
 
-      public ezh.a c(ezd.a<?> $$0) {
-         return new ezh.a(this, $$0);
+      public ezd.a b(fde $$0) {
+         this.e = $$0;
+         return this;
       }
 
-      public abstract ezd b();
+      public ezd.a a(ezp.a<?> $$0) {
+         this.a.add($$0.b());
+         return this;
+      }
+
+      public ezd.a a(fci.a $$0) {
+         this.b.add($$0.build());
+         return this;
+      }
+
+      public ezd.a a(fan.a $$0) {
+         this.c.add($$0.b());
+         return this;
+      }
+
+      public ezd b() {
+         return new ezd(this.a.build(), this.b.build(), this.c.build(), this.d, this.e);
+      }
    }
 }

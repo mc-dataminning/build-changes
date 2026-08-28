@@ -1,21 +1,20 @@
-public class gim {
-   private final gio a;
-   private final gin b;
-
-   private gim(gio $$0, gin $$1) {
-      this.a = $$0;
-      this.b = $$1;
+public class gim extends geb<hex> {
+   public gim(giu $$0) {
+      super($$0);
    }
 
-   public gim a(gip $$0) {
-      return new gim($$0.apply(this.a), this.b);
+   public void a(hex $$0) {
+      super.a($$0);
+      gef.a(this.s, this.r, $$0.a, $$0.H, $$0.u);
    }
 
-   public gig a() {
-      return this.a.a().a(this.b.a, this.b.b);
-   }
-
-   public static gim a(gio $$0, int $$1, int $$2) {
-      return new gim($$0, new gin($$1, $$2));
+   @Override
+   public void c_(boolean $$0) {
+      super.c_($$0);
+      this.a.k = $$0;
+      this.b.k = $$0;
+      this.c.k = $$0;
+      this.d.k = $$0;
+      this.e.k = $$0;
    }
 }

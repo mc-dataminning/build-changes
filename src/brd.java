@@ -1,228 +1,186 @@
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonNull;
-import com.google.gson.JsonObject;
-import com.google.gson.LongSerializationPolicy;
+import com.google.common.collect.Lists;
+import com.google.common.collect.Maps;
 import com.mojang.datafixers.util.Pair;
+import java.io.IOException;
+import java.io.UncheckedIOException;
+import java.nio.file.Path;
 import java.time.Duration;
-import java.util.DoubleSummaryStatistics;
+import java.time.Instant;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
-import java.util.function.BiConsumer;
-import java.util.function.BiFunction;
-import java.util.function.Function;
-import java.util.function.ToDoubleFunction;
-import java.util.stream.Collectors;
-import java.util.stream.DoubleStream;
+import java.util.NoSuchElementException;
+import java.util.Spliterators;
+import java.util.stream.Stream;
+import java.util.stream.StreamSupport;
+import javax.annotation.Nullable;
+import jdk.jfr.consumer.RecordedEvent;
+import jdk.jfr.consumer.RecordingFile;
 
 public class brd {
-   private static final String b = "bytesPerSecond";
-   private static final String c = "count";
-   private static final String d = "durationNanosTotal";
-   private static final String e = "totalBytes";
-   private static final String f = "countPerSecond";
-   final Gson a = new GsonBuilder().setPrettyPrinting().setLongSerializationPolicy(LongSerializationPolicy.DEFAULT).create();
+   private Instant a = Instant.EPOCH;
+   private Instant b = Instant.EPOCH;
+   private final List<bri> c = Lists.newArrayList();
+   private final List<brp> d = Lists.newArrayList();
+   private final List<brk> e = Lists.newArrayList();
+   private final Map<bro, brd.a> f = Maps.newHashMap();
+   private final Map<bro, brd.a> g = Maps.newHashMap();
+   private final Map<brj, brd.a> h = Maps.newHashMap();
+   private final Map<brj, brd.a> i = Maps.newHashMap();
+   private final List<brl> j = Lists.newArrayList();
+   private final List<brl> k = Lists.newArrayList();
+   private int l;
+   private Duration m = Duration.ZERO;
+   private final List<brm> n = Lists.newArrayList();
+   private final List<brq> o = Lists.newArrayList();
+   private final List<brr> p = Lists.newArrayList();
+   @Nullable
+   private Duration q = null;
 
-   private static void a(brl $$0, JsonObject $$1) {
-      $$1.addProperty("protocolId", $$0.b());
-      $$1.addProperty("packetId", $$0.c());
+   private brd(Stream<RecordedEvent> $$0) {
+      this.a($$0);
    }
 
-   private static void a(brg $$0, JsonObject $$1) {
-      $$1.addProperty("level", $$0.a());
-      $$1.addProperty("dimension", $$0.b());
-      $$1.addProperty("x", $$0.c());
-      $$1.addProperty("z", $$0.d());
-   }
+   public static bre a(Path $$0) {
+      try {
+         bre var4;
+         try (final RecordingFile $$1 = new RecordingFile($$0)) {
+            Iterator<RecordedEvent> $$2 = new Iterator<RecordedEvent>() {
+               @Override
+               public boolean hasNext() {
+                  return $$1.hasMoreEvents();
+               }
 
-   public String a(brb $$0) {
-      JsonObject $$1 = new JsonObject();
-      $$1.addProperty("startedEpoch", $$0.c().toEpochMilli());
-      $$1.addProperty("endedEpoch", $$0.d().toEpochMilli());
-      $$1.addProperty("durationMs", $$0.e().toMillis());
-      Duration $$2 = $$0.f();
-      if ($$2 != null) {
-         $$1.addProperty("worldGenDurationMs", $$2.toMillis());
-      }
+               public RecordedEvent a() {
+                  if (!this.hasNext()) {
+                     throw new NoSuchElementException();
+                  } else {
+                     try {
+                        return $$1.readEvent();
+                     } catch (IOException var2) {
+                        throw new UncheckedIOException(var2);
+                     }
+                  }
+               }
+            };
+            Stream<RecordedEvent> $$3 = StreamSupport.stream(Spliterators.spliteratorUnknownSize($$2, 1297), false);
+            var4 = new brd($$3).a();
+         }
 
-      $$1.add("heap", this.a($$0.i()));
-      $$1.add("cpuPercent", this.d($$0.h()));
-      $$1.add("network", this.c($$0));
-      $$1.add("fileIO", this.b($$0));
-      $$1.add("serverTick", this.c($$0.g()));
-      $$1.add("threadAllocation", this.a($$0.j()));
-      $$1.add("chunkGen", this.b($$0.a()));
-      $$1.add("structureGen", this.a($$0.r()));
-      return this.a.toJson($$1);
-   }
-
-   private JsonElement a(brj.a $$0) {
-      JsonObject $$1 = new JsonObject();
-      $$1.addProperty("allocationRateBytesPerSecond", $$0.e());
-      $$1.addProperty("gcCount", $$0.d());
-      $$1.addProperty("gcOverHeadPercent", $$0.a());
-      $$1.addProperty("gcTotalDurationMs", $$0.c().toMillis());
-      return $$1;
-   }
-
-   private JsonElement a(List<brm> $$0) {
-      JsonObject $$1 = new JsonObject();
-      brq<brm> $$2 = brq.a($$0);
-      JsonArray $$3 = new JsonArray();
-      $$1.add("structure", $$3);
-      $$0.stream().collect(Collectors.groupingBy(brm::c)).forEach(($$3x, $$4) -> {
-         JsonObject $$5 = new JsonObject();
-         $$3.add($$5);
-         $$5.addProperty("name", $$3x);
-         brq<brm> $$6 = brq.a((List<brm>)$$4);
-         $$5.addProperty("count", $$6.d());
-         $$5.addProperty("durationNanosTotal", $$6.f().toNanos());
-         $$5.addProperty("durationNanosAvg", $$6.f().toNanos() / (long)$$6.d());
-         JsonObject $$7 = af.a(new JsonObject(), $$1xx -> $$5.add("durationNanosPercentiles", $$1xx));
-         $$6.e().forEach(($$1xx, $$2xx) -> $$7.addProperty("p" + $$1xx, $$2xx));
-         Function<brm, JsonElement> $$8 = $$0xx -> {
-            JsonObject $$1xx = new JsonObject();
-            $$1xx.addProperty("durationNanos", $$0xx.a().toNanos());
-            $$1xx.addProperty("chunkPosX", $$0xx.b().h);
-            $$1xx.addProperty("chunkPosZ", $$0xx.b().i);
-            $$1xx.addProperty("structureName", $$0xx.c());
-            $$1xx.addProperty("level", $$0xx.d());
-            $$1xx.addProperty("success", $$0xx.e());
-            return $$1xx;
-         };
-         $$1.add("fastest", $$8.apply($$2.a()));
-         $$1.add("slowest", $$8.apply($$2.b()));
-         $$1.add("secondSlowest", (JsonElement)($$2.c() != null ? $$8.apply($$2.c()) : JsonNull.INSTANCE));
-      });
-      return $$1;
-   }
-
-   private JsonElement b(List<Pair<ecm, brq<brf>>> $$0) {
-      JsonObject $$1 = new JsonObject();
-      $$1.addProperty("durationNanosTotal", $$0.stream().mapToDouble($$0x -> (double)((brq)$$0x.getSecond()).f().toNanos()).sum());
-      JsonArray $$2 = af.a(new JsonArray(), $$1x -> $$1.add("status", $$1x));
-
-      for (Pair<ecm, brq<brf>> $$3 : $$0) {
-         brq<brf> $$4 = (brq<brf>)$$3.getSecond();
-         JsonObject $$5 = af.a(new JsonObject(), $$2::add);
-         $$5.addProperty("state", ((ecm)$$3.getFirst()).toString());
-         $$5.addProperty("count", $$4.d());
-         $$5.addProperty("durationNanosTotal", $$4.f().toNanos());
-         $$5.addProperty("durationNanosAvg", $$4.f().toNanos() / (long)$$4.d());
-         JsonObject $$6 = af.a(new JsonObject(), $$1x -> $$5.add("durationNanosPercentiles", $$1x));
-         $$4.e().forEach(($$1x, $$2x) -> $$6.addProperty("p" + $$1x, $$2x));
-         Function<brf, JsonElement> $$7 = $$0x -> {
-            JsonObject $$1x = new JsonObject();
-            $$1x.addProperty("durationNanos", $$0x.a().toNanos());
-            $$1x.addProperty("level", $$0x.e());
-            $$1x.addProperty("chunkPosX", $$0x.b().h);
-            $$1x.addProperty("chunkPosZ", $$0x.b().i);
-            $$1x.addProperty("worldPosX", $$0x.c().c());
-            $$1x.addProperty("worldPosZ", $$0x.c().d());
-            return $$1x;
-         };
-         $$5.add("fastest", $$7.apply($$4.a()));
-         $$5.add("slowest", $$7.apply($$4.b()));
-         $$5.add("secondSlowest", (JsonElement)($$4.c() != null ? $$7.apply($$4.c()) : JsonNull.INSTANCE));
-      }
-
-      return $$1;
-   }
-
-   private JsonElement a(brn.a $$0) {
-      JsonArray $$1 = new JsonArray();
-      $$0.a().forEach(($$1x, $$2) -> $$1.add(af.a(new JsonObject(), $$2x -> {
-            $$2x.addProperty("thread", $$1x);
-            $$2x.addProperty("bytesPerSecond", $$2);
-         })));
-      return $$1;
-   }
-
-   private JsonElement c(List<bro> $$0) {
-      if ($$0.isEmpty()) {
-         return JsonNull.INSTANCE;
-      } else {
-         JsonObject $$1 = new JsonObject();
-         double[] $$2 = $$0.stream().mapToDouble($$0x -> (double)$$0x.b().toNanos() / 1000000.0).toArray();
-         DoubleSummaryStatistics $$3 = DoubleStream.of($$2).summaryStatistics();
-         $$1.addProperty("minMs", $$3.getMin());
-         $$1.addProperty("averageMs", $$3.getAverage());
-         $$1.addProperty("maxMs", $$3.getMax());
-         Map<Integer, Double> $$4 = bqs.a($$2);
-         $$4.forEach(($$1x, $$2x) -> $$1.addProperty("p" + $$1x, $$2x));
-         return $$1;
+         return var4;
+      } catch (IOException var7) {
+         throw new UncheckedIOException(var7);
       }
    }
 
-   private JsonElement b(brb $$0) {
-      JsonObject $$1 = new JsonObject();
-      $$1.add("write", this.a($$0.o()));
-      $$1.add("read", this.a($$0.p()));
-      $$1.add("chunksRead", this.a($$0.n(), brd::a));
-      $$1.add("chunksWritten", this.a($$0.m(), brd::a));
-      return $$1;
+   private bre a() {
+      Duration $$0 = Duration.between(this.a, this.b);
+      return new bre(
+         this.a,
+         this.b,
+         $$0,
+         this.q,
+         this.p,
+         this.e,
+         brm.a($$0, this.n, this.m, this.l),
+         brq.a(this.o),
+         a($$0, this.f),
+         a($$0, this.g),
+         a($$0, this.i),
+         a($$0, this.h),
+         brl.a($$0, this.j),
+         brl.a($$0, this.k),
+         this.c,
+         this.d
+      );
    }
 
-   private JsonElement a(bri.a $$0) {
-      JsonObject $$1 = new JsonObject();
-      $$1.addProperty("totalBytes", $$0.a());
-      $$1.addProperty("count", $$0.c());
-      $$1.addProperty("bytesPerSecond", $$0.b());
-      $$1.addProperty("countPerSecond", $$0.d());
-      JsonArray $$2 = new JsonArray();
-      $$1.add("topContributors", $$2);
-      $$0.f().forEach($$1x -> {
-         JsonObject $$2x = new JsonObject();
-         $$2.add($$2x);
-         $$2x.addProperty("path", (String)$$1x.getFirst());
-         $$2x.addProperty("totalBytes", (Number)$$1x.getSecond());
+   private void a(Stream<RecordedEvent> $$0) {
+      $$0.forEach($$0x -> {
+         if ($$0x.getEndTime().isAfter(this.b) || this.b.equals(Instant.EPOCH)) {
+            this.b = $$0x.getEndTime();
+         }
+
+         if ($$0x.getStartTime().isBefore(this.a) || this.a.equals(Instant.EPOCH)) {
+            this.a = $$0x.getStartTime();
+         }
+
+         String var2 = $$0x.getEventType().getName();
+         switch (var2) {
+            case "minecraft.ChunkGeneration":
+               this.c.add(bri.a($$0x));
+               break;
+            case "minecraft.StructureGeneration":
+               this.d.add(brp.a($$0x));
+               break;
+            case "minecraft.LoadWorld":
+               this.q = $$0x.getDuration();
+               break;
+            case "minecraft.ServerTickTime":
+               this.p.add(brr.a($$0x));
+               break;
+            case "minecraft.PacketReceived":
+               this.a($$0x, $$0x.getInt("bytes"), this.f);
+               break;
+            case "minecraft.PacketSent":
+               this.a($$0x, $$0x.getInt("bytes"), this.g);
+               break;
+            case "minecraft.ChunkRegionRead":
+               this.b($$0x, $$0x.getInt("bytes"), this.h);
+               break;
+            case "minecraft.ChunkRegionWrite":
+               this.b($$0x, $$0x.getInt("bytes"), this.i);
+               break;
+            case "jdk.ThreadAllocationStatistics":
+               this.o.add(brq.a($$0x));
+               break;
+            case "jdk.GCHeapSummary":
+               this.n.add(brm.a($$0x));
+               break;
+            case "jdk.CPULoad":
+               this.e.add(brk.a($$0x));
+               break;
+            case "jdk.FileWrite":
+               this.a($$0x, this.j, "bytesWritten");
+               break;
+            case "jdk.FileRead":
+               this.a($$0x, this.k, "bytesRead");
+               break;
+            case "jdk.GarbageCollection":
+               this.l++;
+               this.m = this.m.plus($$0x.getDuration());
+         }
       });
-      return $$1;
    }
 
-   private JsonElement c(brb $$0) {
-      JsonObject $$1 = new JsonObject();
-      $$1.add("sent", this.a($$0.l(), brd::a));
-      $$1.add("received", this.a($$0.k(), brd::a));
-      return $$1;
+   private void a(RecordedEvent $$0, int $$1, Map<bro, brd.a> $$2) {
+      $$2.computeIfAbsent(bro.a($$0), $$0x -> new brd.a()).a($$1);
    }
 
-   private <T> JsonElement a(brk<T> $$0, BiConsumer<T, JsonObject> $$1) {
-      JsonObject $$2 = new JsonObject();
-      $$2.addProperty("totalBytes", $$0.d());
-      $$2.addProperty("count", $$0.c());
-      $$2.addProperty("bytesPerSecond", $$0.b());
-      $$2.addProperty("countPerSecond", $$0.a());
-      JsonArray $$3 = new JsonArray();
-      $$2.add("topContributors", $$3);
-      $$0.e().forEach($$2x -> {
-         JsonObject $$3x = new JsonObject();
-         $$3.add($$3x);
-         T $$4 = (T)$$2x.getFirst();
-         brk.a $$5 = (brk.a)$$2x.getSecond();
-         $$1.accept($$4, $$3x);
-         $$3x.addProperty("totalBytes", $$5.c());
-         $$3x.addProperty("count", $$5.b());
-         $$3x.addProperty("averageSize", $$5.a());
-      });
-      return $$2;
+   private void b(RecordedEvent $$0, int $$1, Map<brj, brd.a> $$2) {
+      $$2.computeIfAbsent(brj.a($$0), $$0x -> new brd.a()).a($$1);
    }
 
-   private JsonElement d(List<brh> $$0) {
-      JsonObject $$1 = new JsonObject();
-      BiFunction<List<brh>, ToDoubleFunction<brh>, JsonObject> $$2 = ($$0x, $$1x) -> {
-         JsonObject $$2x = new JsonObject();
-         DoubleSummaryStatistics $$3 = $$0x.stream().mapToDouble($$1x).summaryStatistics();
-         $$2x.addProperty("min", $$3.getMin());
-         $$2x.addProperty("average", $$3.getAverage());
-         $$2x.addProperty("max", $$3.getMax());
-         return $$2x;
-      };
-      $$1.add("jvm", (JsonElement)$$2.apply($$0, brh::a));
-      $$1.add("userJvm", (JsonElement)$$2.apply($$0, brh::b));
-      $$1.add("system", (JsonElement)$$2.apply($$0, brh::c));
-      return $$1;
+   private void a(RecordedEvent $$0, List<brl> $$1, String $$2) {
+      $$1.add(new brl($$0.getDuration(), $$0.getString("path"), $$0.getLong($$2)));
+   }
+
+   private static <T> brn<T> a(Duration $$0, Map<T, brd.a> $$1) {
+      List<Pair<T, brn.a>> $$2 = $$1.entrySet().stream().map($$0x -> Pair.of($$0x.getKey(), ((brd.a)$$0x.getValue()).a())).toList();
+      return new brn<>($$0, $$2);
+   }
+
+   public static final class a {
+      private long a;
+      private long b;
+
+      public void a(int $$0) {
+         this.b += (long)$$0;
+         this.a++;
+      }
+
+      public brn.a a() {
+         return new brn.a(this.a, this.b);
+      }
    }
 }

@@ -1,1239 +1,236 @@
-import com.google.common.collect.UnmodifiableIterator;
-import java.util.function.Function;
-import java.util.function.ToIntFunction;
+import com.mojang.serialization.MapCodec;
+import java.util.Map;
+import java.util.function.BiConsumer;
+import javax.annotation.Nullable;
 
-public class dlw {
-   private static final dzn.f uh = ($$0x, $$1x, $$2) -> $$1x.c_($$2) instanceof dya $$4 ? $$4.t() : true;
-   private static final dzn.f ui = ($$0x, $$1x, $$2) -> !$$0x.c(dzh.c);
-   public static final dlu a = a("air", dkr::new, dzn.d.a().p().b().g().m());
-   public static final dlu b = a("stone", dzn.d.a().a(evz.l).a(eap.b).n().a(1.5F, 6.0F));
-   public static final dlu c = a("granite", dzn.d.a().a(evz.k).a(eap.b).n().a(1.5F, 6.0F));
-   public static final dlu d = a("polished_granite", dzn.d.a().a(evz.k).a(eap.b).n().a(1.5F, 6.0F));
-   public static final dlu e = a("diorite", dzn.d.a().a(evz.o).a(eap.b).n().a(1.5F, 6.0F));
-   public static final dlu f = a("polished_diorite", dzn.d.a().a(evz.o).a(eap.b).n().a(1.5F, 6.0F));
-   public static final dlu g = a("andesite", dzn.d.a().a(evz.l).a(eap.b).n().a(1.5F, 6.0F));
-   public static final dlu h = a("polished_andesite", dzn.d.a().a(evz.l).a(eap.b).n().a(1.5F, 6.0F));
-   public static final dlu i = a("grass_block", dph::new, dzn.d.a().a(evz.b).e().d(0.6F).a(dtn.d));
-   public static final dlu j = a("dirt", dzn.d.a().a(evz.k).d(0.5F).a(dtn.c));
-   public static final dlu k = a("coarse_dirt", dzn.d.a().a(evz.k).d(0.5F).a(dtn.c));
-   public static final dlu l = a("podzol", dtk::new, dzn.d.a().a(evz.I).d(0.5F).a(dtn.c));
-   public static final dlu m = a("cobblestone", dzn.d.a().a(evz.l).a(eap.b).n().a(2.0F, 6.0F));
-   public static final dlu n = a("oak_planks", dzn.d.a().a(evz.n).a(eap.e).a(2.0F, 3.0F).a(dtn.b).i());
-   public static final dlu o = a("spruce_planks", dzn.d.a().a(evz.I).a(eap.e).a(2.0F, 3.0F).a(dtn.b).i());
-   public static final dlu p = a("birch_planks", dzn.d.a().a(evz.c).a(eap.e).a(2.0F, 3.0F).a(dtn.b).i());
-   public static final dlu q = a("jungle_planks", dzn.d.a().a(evz.k).a(eap.e).a(2.0F, 3.0F).a(dtn.b).i());
-   public static final dlu r = a("acacia_planks", dzn.d.a().a(evz.p).a(eap.e).a(2.0F, 3.0F).a(dtn.b).i());
-   public static final dlu s = a("cherry_planks", dzn.d.a().a(evz.K).a(eap.e).a(2.0F, 3.0F).a(dtn.aV).i());
-   public static final dlu t = a("dark_oak_planks", dzn.d.a().a(evz.A).a(eap.e).a(2.0F, 3.0F).a(dtn.b).i());
-   public static final dlu u = a("pale_oak_wood", dsl::new, dzn.d.a().a(evz.l).a(eap.e).d(2.0F).a(dtn.b).i());
-   public static final dlu v = a("pale_oak_planks", dzn.d.a().a(evz.o).a(eap.e).a(2.0F, 3.0F).a(dtn.b).i());
-   public static final dlu w = a("mangrove_planks", dzn.d.a().a(evz.C).a(eap.e).a(2.0F, 3.0F).a(dtn.b).i());
-   public static final dlu x = a("bamboo_planks", dzn.d.a().a(evz.s).a(eap.e).a(2.0F, 3.0F).a(dtn.aT).i());
-   public static final dlu y = a("bamboo_mosaic", dzn.d.a().a(evz.s).a(eap.e).a(2.0F, 3.0F).a(dtn.aT).i());
-   public static final dlu z = a("oak_sapling", $$0x -> new dsn(dzd.b, $$0x), dzn.d.a().a(evz.h).b().e().d().a(dtn.d).a(ewa.b));
-   public static final dlu A = a("spruce_sapling", $$0x -> new dsn(dzd.c, $$0x), dzn.d.a().a(evz.h).b().e().d().a(dtn.d).a(ewa.b));
-   public static final dlu B = a("birch_sapling", $$0x -> new dsn(dzd.f, $$0x), dzn.d.a().a(evz.h).b().e().d().a(dtn.d).a(ewa.b));
-   public static final dlu C = a("jungle_sapling", $$0x -> new dsn(dzd.g, $$0x), dzn.d.a().a(evz.h).b().e().d().a(dtn.d).a(ewa.b));
-   public static final dlu D = a("acacia_sapling", $$0x -> new dsn(dzd.h, $$0x), dzn.d.a().a(evz.h).b().e().d().a(dtn.d).a(ewa.b));
-   public static final dlu E = a("cherry_sapling", $$0x -> new dsn(dzd.i, $$0x), dzn.d.a().a(evz.u).b().e().d().a(dtn.aW).a(ewa.b));
-   public static final dlu F = a("dark_oak_sapling", $$0x -> new dsn(dzd.j, $$0x), dzn.d.a().a(evz.h).b().e().d().a(dtn.d).a(ewa.b));
-   public static final dlu G = a("pale_oak_sapling", $$0x -> new dsn(dzd.k, $$0x), dzn.d.a().a(evz.g).b().e().d().a(dtn.d).a(ewa.b));
-   public static final dlu H = a("mangrove_propagule", $$0x -> new dqt(dzd.d, $$0x), dzn.d.a().a(evz.h).b().e().d().a(dtn.d).a(dzn.c.b).a(ewa.b));
-   public static final dlu I = a("bedrock", dzn.d.a().a(evz.l).a(eap.b).a(-1.0F, 3600000.0F).g().a(dlw::a));
-   public static final dlu J = a("water", $$0x -> new dqo(evw.c, $$0x), dzn.d.a().a(evz.m).p().b().d(100.0F).a(ewa.b).g().j().a(dtn.a));
-   public static final dlu K = a("lava", $$0x -> new dqo(evw.e, $$0x), dzn.d.a().a(evz.e).p().b().e().d(100.0F).a($$0x -> 15).a(ewa.b).g().j().a(dtn.a));
-   public static final dlu L = a("sand", $$0x -> new dnc(new ayd(14406560), $$0x), dzn.d.a().a(evz.c).a(eap.c).d(0.5F).a(dtn.j));
-   public static final dlu M = a("suspicious_sand", $$0x -> new dma(L, awl.cT, awl.cT, $$0x), dzn.d.a().a(evz.c).a(eap.c).d(0.25F).a(dtn.ba).a(ewa.b));
-   public static final dlu N = a("red_sand", $$0x -> new dnc(new ayd(11098145), $$0x), dzn.d.a().a(evz.p).a(eap.c).d(0.5F).a(dtn.j));
-   public static final dlu O = a("gravel", $$0x -> new dnc(new ayd(-8356741), $$0x), dzn.d.a().a(evz.l).a(eap.c).d(0.6F).a(dtn.c));
-   public static final dlu P = a("suspicious_gravel", $$0x -> new dma(O, awl.cU, awl.cU, $$0x), dzn.d.a().a(evz.l).a(eap.c).d(0.25F).a(dtn.bb).a(ewa.b));
-   public static final dlu Q = a("gold_ore", $$0x -> new dof(bta.a(0), $$0x), dzn.d.a().a(evz.l).a(eap.b).n().a(3.0F, 3.0F));
-   public static final dlu R = a("deepslate_gold_ore", $$0x -> new dof(bta.a(0), $$0x), dzn.d.b(Q).a(evz.ah).a(4.5F, 3.0F).a(dtn.aF));
-   public static final dlu S = a("iron_ore", $$0x -> new dof(bta.a(0), $$0x), dzn.d.a().a(evz.l).a(eap.b).n().a(3.0F, 3.0F));
-   public static final dlu T = a("deepslate_iron_ore", $$0x -> new dof(bta.a(0), $$0x), dzn.d.b(S).a(evz.ah).a(4.5F, 3.0F).a(dtn.aF));
-   public static final dlu U = a("coal_ore", $$0x -> new dof(btj.a(0, 2), $$0x), dzn.d.a().a(evz.l).a(eap.b).n().a(3.0F, 3.0F));
-   public static final dlu V = a("deepslate_coal_ore", $$0x -> new dof(btj.a(0, 2), $$0x), dzn.d.b(U).a(evz.ah).a(4.5F, 3.0F).a(dtn.aF));
-   public static final dlu W = a("nether_gold_ore", $$0x -> new dof(btj.a(0, 1), $$0x), dzn.d.a().a(evz.J).a(eap.b).n().a(3.0F, 3.0F).a(dtn.V));
-   public static final dlu X = a("oak_log", dsl::new, a(evz.n, evz.I, dtn.b));
-   public static final dlu Y = a("spruce_log", dsl::new, a(evz.I, evz.A, dtn.b));
-   public static final dlu Z = a("birch_log", dsl::new, a(evz.c, evz.o, dtn.b));
-   public static final dlu aa = a("jungle_log", dsl::new, a(evz.k, evz.I, dtn.b));
-   public static final dlu ab = a("acacia_log", dsl::new, a(evz.p, evz.l, dtn.b));
-   public static final dlu ac = a("cherry_log", dsl::new, a(evz.K, evz.R, dtn.aV));
-   public static final dlu ad = a("dark_oak_log", dsl::new, a(evz.A, evz.A, dtn.b));
-   public static final dlu ae = a("pale_oak_log", dsl::new, a(v.w(), u.w(), dtn.b));
-   public static final dlu af = a("mangrove_log", dsl::new, a(evz.C, evz.I, dtn.b));
-   public static final dlu ag = a("mangrove_roots", dqu::new, dzn.d.a().a(evz.I).a(eap.e).d(0.7F).a(dtn.aL).c().b(dlw::b).c(dlw::b).c().i());
-   public static final dlu ah = a("muddy_mangrove_roots", dsl::new, dzn.d.a().a(evz.I).d(0.7F).a(dtn.aM));
-   public static final dlu ai = a("bamboo_block", dsl::new, a(evz.s, evz.h, dtn.aT));
-   public static final dlu aj = a("stripped_spruce_log", dsl::new, a(evz.I, evz.I, dtn.b));
-   public static final dlu ak = a("stripped_birch_log", dsl::new, a(evz.c, evz.c, dtn.b));
-   public static final dlu al = a("stripped_jungle_log", dsl::new, a(evz.k, evz.k, dtn.b));
-   public static final dlu am = a("stripped_acacia_log", dsl::new, a(evz.p, evz.p, dtn.b));
-   public static final dlu an = a("stripped_cherry_log", dsl::new, a(evz.K, evz.Q, dtn.aV));
-   public static final dlu ao = a("stripped_dark_oak_log", dsl::new, a(evz.A, evz.A, dtn.b));
-   public static final dlu ap = a("stripped_pale_oak_log", dsl::new, a(v.w(), v.w(), dtn.b));
-   public static final dlu aq = a("stripped_oak_log", dsl::new, a(evz.n, evz.n, dtn.b));
-   public static final dlu ar = a("stripped_mangrove_log", dsl::new, a(evz.C, evz.C, dtn.b));
-   public static final dlu as = a("stripped_bamboo_block", dsl::new, a(evz.s, evz.s, dtn.aT));
-   public static final dlu at = a("oak_wood", dsl::new, dzn.d.a().a(evz.n).a(eap.e).d(2.0F).a(dtn.b).i());
-   public static final dlu au = a("spruce_wood", dsl::new, dzn.d.a().a(evz.I).a(eap.e).d(2.0F).a(dtn.b).i());
-   public static final dlu av = a("birch_wood", dsl::new, dzn.d.a().a(evz.c).a(eap.e).d(2.0F).a(dtn.b).i());
-   public static final dlu aw = a("jungle_wood", dsl::new, dzn.d.a().a(evz.k).a(eap.e).d(2.0F).a(dtn.b).i());
-   public static final dlu ax = a("acacia_wood", dsl::new, dzn.d.a().a(evz.v).a(eap.e).d(2.0F).a(dtn.b).i());
-   public static final dlu ay = a("cherry_wood", dsl::new, dzn.d.a().a(evz.R).a(eap.e).d(2.0F).a(dtn.aV).i());
-   public static final dlu az = a("dark_oak_wood", dsl::new, dzn.d.a().a(evz.A).a(eap.e).d(2.0F).a(dtn.b).i());
-   public static final dlu aA = a("mangrove_wood", dsl::new, dzn.d.a().a(evz.C).a(eap.e).d(2.0F).a(dtn.b).i());
-   public static final dlu aB = a("stripped_oak_wood", dsl::new, dzn.d.a().a(evz.n).a(eap.e).d(2.0F).a(dtn.b).i());
-   public static final dlu aC = a("stripped_spruce_wood", dsl::new, dzn.d.a().a(evz.I).a(eap.e).d(2.0F).a(dtn.b).i());
-   public static final dlu aD = a("stripped_birch_wood", dsl::new, dzn.d.a().a(evz.c).a(eap.e).d(2.0F).a(dtn.b).i());
-   public static final dlu aE = a("stripped_jungle_wood", dsl::new, dzn.d.a().a(evz.k).a(eap.e).d(2.0F).a(dtn.b).i());
-   public static final dlu aF = a("stripped_acacia_wood", dsl::new, dzn.d.a().a(evz.p).a(eap.e).d(2.0F).a(dtn.b).i());
-   public static final dlu aG = a("stripped_cherry_wood", dsl::new, dzn.d.a().a(evz.Q).a(eap.e).d(2.0F).a(dtn.aV).i());
-   public static final dlu aH = a("stripped_dark_oak_wood", dsl::new, dzn.d.a().a(evz.A).a(eap.e).d(2.0F).a(dtn.b).i());
-   public static final dlu aI = a("stripped_pale_oak_wood", dsl::new, dzn.d.a().a(v.w()).a(eap.e).d(2.0F).a(dtn.b).i());
-   public static final dlu aJ = a("stripped_mangrove_wood", dsl::new, a(evz.C, evz.C, dtn.b));
-   public static final dlu aK = a("oak_leaves", $$0x -> new dul(0.01F, $$0x), a(dtn.d));
-   public static final dlu aL = a("spruce_leaves", $$0x -> new dul(0.01F, $$0x), a(dtn.d));
-   public static final dlu aM = a("birch_leaves", $$0x -> new dul(0.01F, $$0x), a(dtn.d));
-   public static final dlu aN = a("jungle_leaves", $$0x -> new dul(0.01F, $$0x), a(dtn.d));
-   public static final dlu aO = a("acacia_leaves", $$0x -> new dul(0.01F, $$0x), a(dtn.d));
-   public static final dlu aP = a(
-      "cherry_leaves", $$0x -> new duy(0.1F, lx.H, $$0x), dzn.d.a().a(evz.u).d(0.2F).e().a(dtn.aX).c().a(dlw::c).b(dlw::b).c(dlw::b).i().a(ewa.b).a(dlw::b)
-   );
-   public static final dlu aQ = a("dark_oak_leaves", $$0x -> new dul(0.01F, $$0x), a(dtn.d));
-   public static final dlu aR = a(
-      "pale_oak_leaves", $$0x -> new duy(0.02F, lx.I, $$0x), dzn.d.a().a(evz.g).d(0.2F).e().a(dtn.d).c().a(dlw::c).b(dlw::b).c(dlw::b).i().a(ewa.b).a(dlw::b)
-   );
-   public static final dlu aS = a("mangrove_leaves", $$0x -> new dqs(0.01F, $$0x), a(dtn.d));
-   public static final dlu aT = a("azalea_leaves", $$0x -> new duy(0.01F, lq.a(lx.J, -9399763), $$0x), a(dtn.ay));
-   public static final dlu aU = a("flowering_azalea_leaves", $$0x -> new duy(0.01F, lq.a(lx.J, -9399763), $$0x), a(dtn.ay));
-   public static final dlu aV = a("sponge", dtp::new, dzn.d.a().a(evz.s).d(0.6F).a(dtn.bf));
-   public static final dlu aW = a("wet_sponge", dvv::new, dzn.d.a().a(evz.s).d(0.6F).a(dtn.bg));
-   public static final dlu aX = a("glass", dup::new, dzn.d.a().a(eap.d).d(0.3F).a(dtn.h).c().a(dlw::a).a(dlw::b).b(dlw::b).c(dlw::b));
-   public static final dlu aY = a("lapis_ore", $$0x -> new dof(btj.a(2, 5), $$0x), dzn.d.a().a(evz.l).a(eap.b).n().a(3.0F, 3.0F));
-   public static final dlu aZ = a("deepslate_lapis_ore", $$0x -> new dof(btj.a(2, 5), $$0x), dzn.d.b(aY).a(evz.ah).a(4.5F, 3.0F).a(dtn.aF));
-   public static final dlu ba = a("lapis_block", dzn.d.a().a(evz.G).n().a(3.0F, 3.0F));
-   public static final dlu bb = a("dispenser", doa::new, dzn.d.a().a(evz.l).a(eap.b).n().d(3.5F));
-   public static final dlu bc = a("sandstone", dzn.d.a().a(evz.c).a(eap.b).n().d(0.8F));
-   public static final dlu bd = a("chiseled_sandstone", dzn.d.a().a(evz.c).a(eap.b).n().d(0.8F));
-   public static final dlu be = a("cut_sandstone", dzn.d.a().a(evz.c).a(eap.b).n().d(0.8F));
-   public static final dlu bf = a("note_block", dri::new, dzn.d.a().a(evz.n).a(eap.e).a(dtn.b).d(0.8F).i());
-   public static final dlu bg = a("white_bed", cxq.a);
-   public static final dlu bh = a("orange_bed", cxq.b);
-   public static final dlu bi = a("magenta_bed", cxq.c);
-   public static final dlu bj = a("light_blue_bed", cxq.d);
-   public static final dlu bk = a("yellow_bed", cxq.e);
-   public static final dlu bl = a("lime_bed", cxq.f);
-   public static final dlu bm = a("pink_bed", cxq.g);
-   public static final dlu bn = a("gray_bed", cxq.h);
-   public static final dlu bo = a("light_gray_bed", cxq.i);
-   public static final dlu bp = a("cyan_bed", cxq.j);
-   public static final dlu bq = a("purple_bed", cxq.k);
-   public static final dlu br = a("blue_bed", cxq.l);
-   public static final dlu bs = a("brown_bed", cxq.m);
-   public static final dlu bt = a("green_bed", cxq.n);
-   public static final dlu bu = a("red_bed", cxq.o);
-   public static final dlu bv = a("black_bed", cxq.p);
-   public static final dlu bw = a("powered_rail", drv::new, dzn.d.a().b().d(0.7F).a(dtn.g));
-   public static final dlu bx = a("detector_rail", dnw::new, dzn.d.a().b().d(0.7F).a(dtn.g));
-   public static final dlu by = a("sticky_piston", $$0x -> new dzh(true, $$0x), a());
-   public static final dlu bz = a("cobweb", dvr::new, dzn.d.a().a(evz.d).a(dtn.bk).k().b().n().d(4.0F).a(ewa.b));
-   public static final dlu bA = a("short_grass", duf::new, dzn.d.a().a(evz.h).p().b().d().a(dtn.d).a(dzn.c.c).i().a(ewa.b));
-   public static final dlu bB = a("fern", duf::new, dzn.d.a().a(evz.h).p().b().d().a(dtn.d).a(dzn.c.c).i().a(ewa.b));
-   public static final dlu bC = a("dead_bush", dnu::new, dzn.d.a().a(evz.n).p().b().d().a(dtn.d).i().a(ewa.b));
-   public static final dlu bD = a("seagrass", dsx::new, dzn.d.a().a(evz.m).p().b().d().a(dtn.q).a(ewa.b));
-   public static final dlu bE = a("tall_seagrass", dug::new, dzn.d.a().a(evz.m).p().b().d().a(dtn.q).a(dzn.c.b).a(ewa.b));
-   public static final dlu bF = a("piston", $$0x -> new dzh(false, $$0x), a());
-   public static final dlu bG = a("piston_head", dzi::new, dzn.d.a().a(evz.l).d(1.5F).g().a(ewa.c));
-   public static final dlu bH = a("white_wool", dzn.d.a().a(evz.i).a(eap.h).d(0.8F).a(dtn.i).i());
-   public static final dlu bI = a("orange_wool", dzn.d.a().a(evz.p).a(eap.h).d(0.8F).a(dtn.i).i());
-   public static final dlu bJ = a("magenta_wool", dzn.d.a().a(evz.q).a(eap.h).d(0.8F).a(dtn.i).i());
-   public static final dlu bK = a("light_blue_wool", dzn.d.a().a(evz.r).a(eap.h).d(0.8F).a(dtn.i).i());
-   public static final dlu bL = a("yellow_wool", dzn.d.a().a(evz.s).a(eap.h).d(0.8F).a(dtn.i).i());
-   public static final dlu bM = a("lime_wool", dzn.d.a().a(evz.t).a(eap.h).d(0.8F).a(dtn.i).i());
-   public static final dlu bN = a("pink_wool", dzn.d.a().a(evz.u).a(eap.h).d(0.8F).a(dtn.i).i());
-   public static final dlu bO = a("gray_wool", dzn.d.a().a(evz.v).a(eap.h).d(0.8F).a(dtn.i).i());
-   public static final dlu bP = a("light_gray_wool", dzn.d.a().a(evz.w).a(eap.h).d(0.8F).a(dtn.i).i());
-   public static final dlu bQ = a("cyan_wool", dzn.d.a().a(evz.x).a(eap.h).d(0.8F).a(dtn.i).i());
-   public static final dlu bR = a("purple_wool", dzn.d.a().a(evz.y).a(eap.h).d(0.8F).a(dtn.i).i());
-   public static final dlu bS = a("blue_wool", dzn.d.a().a(evz.z).a(eap.h).d(0.8F).a(dtn.i).i());
-   public static final dlu bT = a("brown_wool", dzn.d.a().a(evz.A).a(eap.h).d(0.8F).a(dtn.i).i());
-   public static final dlu bU = a("green_wool", dzn.d.a().a(evz.B).a(eap.h).d(0.8F).a(dtn.i).i());
-   public static final dlu bV = a("red_wool", dzn.d.a().a(evz.C).a(eap.h).d(0.8F).a(dtn.i).i());
-   public static final dlu bW = a("black_wool", dzn.d.a().a(evz.D).a(eap.h).d(0.8F).a(dtn.i).i());
-   public static final dlu bX = a("moving_piston", dzg::new, dzn.d.a().a(evz.l).k().d(-1.0F).f().g().c().a(dlw::b).b(dlw::b).c(dlw::b).a(ewa.c));
-   public static final dlu bY = a("dandelion", $$0x -> new doy(bvg.w, 0.35F, $$0x), dzn.d.a().a(evz.h).b().d().a(dtn.d).a(dzn.c.b).a(ewa.b));
-   public static final dlu bZ = a("torchflower", $$0x -> new doy(bvg.p, 5.0F, $$0x), dzn.d.a().a(evz.h).b().d().a(dtn.d).a(dzn.c.b).a(ewa.b));
-   public static final dlu ca = a("poppy", $$0x -> new doy(bvg.p, 5.0F, $$0x), dzn.d.a().a(evz.h).b().d().a(dtn.d).a(dzn.c.b).a(ewa.b));
-   public static final dlu cb = a("blue_orchid", $$0x -> new doy(bvg.w, 0.35F, $$0x), dzn.d.a().a(evz.h).b().d().a(dtn.d).a(dzn.c.b).a(ewa.b));
-   public static final dlu cc = a("allium", $$0x -> new doy(bvg.l, 3.0F, $$0x), dzn.d.a().a(evz.h).b().d().a(dtn.d).a(dzn.c.b).a(ewa.b));
-   public static final dlu cd = a("azure_bluet", $$0x -> new doy(bvg.o, 11.0F, $$0x), dzn.d.a().a(evz.h).b().d().a(dtn.d).a(dzn.c.b).a(ewa.b));
-   public static final dlu ce = a("red_tulip", $$0x -> new doy(bvg.r, 7.0F, $$0x), dzn.d.a().a(evz.h).b().d().a(dtn.d).a(dzn.c.b).a(ewa.b));
-   public static final dlu cf = a("orange_tulip", $$0x -> new doy(bvg.r, 7.0F, $$0x), dzn.d.a().a(evz.h).b().d().a(dtn.d).a(dzn.c.b).a(ewa.b));
-   public static final dlu cg = a("white_tulip", $$0x -> new doy(bvg.r, 7.0F, $$0x), dzn.d.a().a(evz.h).b().d().a(dtn.d).a(dzn.c.b).a(ewa.b));
-   public static final dlu ch = a("pink_tulip", $$0x -> new doy(bvg.r, 7.0F, $$0x), dzn.d.a().a(evz.h).b().d().a(dtn.d).a(dzn.c.b).a(ewa.b));
-   public static final dlu ci = a("oxeye_daisy", $$0x -> new doy(bvg.j, 7.0F, $$0x), dzn.d.a().a(evz.h).b().d().a(dtn.d).a(dzn.c.b).a(ewa.b));
-   public static final dlu cj = a("cornflower", $$0x -> new doy(bvg.h, 5.0F, $$0x), dzn.d.a().a(evz.h).b().d().a(dtn.d).a(dzn.c.b).a(ewa.b));
-   public static final dlu ck = a("wither_rose", $$0x -> new dvw(bvg.t, 7.0F, $$0x), dzn.d.a().a(evz.h).b().d().a(dtn.d).a(dzn.c.b).a(ewa.b));
-   public static final dlu cl = a("lily_of_the_valley", $$0x -> new doy(bvg.s, 11.0F, $$0x), dzn.d.a().a(evz.h).b().d().a(dtn.d).a(dzn.c.b).a(ewa.b));
-   public static final dlu cm = a("brown_mushroom", $$0x -> new drb(rn.e, $$0x), dzn.d.a().a(evz.A).b().e().d().a(dtn.d).a($$0x -> 1).d(dlw::a).a(ewa.b));
-   public static final dlu cn = a("red_mushroom", $$0x -> new drb(rn.f, $$0x), dzn.d.a().a(evz.C).b().e().d().a(dtn.d).d(dlw::a).a(ewa.b));
-   public static final dlu co = a("gold_block", dzn.d.a().a(evz.E).a(eap.g).n().a(3.0F, 6.0F).a(dtn.g));
-   public static final dlu cp = a("iron_block", dzn.d.a().a(evz.g).a(eap.k).n().a(5.0F, 6.0F).a(dtn.bo));
-   public static final dlu cq = a("bricks", dzn.d.a().a(evz.C).a(eap.b).n().a(2.0F, 6.0F));
-   public static final dlu cr = a("tnt", dum::new, dzn.d.a().a(evz.e).d().a(dtn.d).i().a(dlw::b));
-   public static final dlu cs = a("bookshelf", dzn.d.a().a(evz.n).a(eap.e).d(1.5F).a(dtn.b).i());
-   public static final dlu ct = a("chiseled_bookshelf", dmy::new, dzn.d.a().a(evz.n).a(eap.e).d(1.5F).a(dtn.aZ).i());
-   public static final dlu cu = a("mossy_cobblestone", dzn.d.a().a(evz.l).a(eap.b).n().a(2.0F, 6.0F));
-   public static final dlu cv = a("obsidian", dzn.d.a().a(evz.D).a(eap.b).n().a(50.0F, 1200.0F));
-   public static final dlu cw = a("torch", $$0x -> new dun(lx.F, $$0x), dzn.d.a().b().d().a($$0x -> 14).a(dtn.b).a(ewa.b));
-   public static final dlu cx = a("wall_torch", $$0x -> new dvg(lx.F, $$0x), a(cw, true).b().d().a($$0x -> 14).a(dtn.b).a(ewa.b));
-   public static final dlu cy = a("fire", dov::new, dzn.d.a().a(evz.e).p().b().d().a($$0x -> 15).a(dtn.i).a(ewa.b));
-   public static final dlu cz = a("soul_fire", dtl::new, dzn.d.a().a(evz.r).p().b().d().a($$0x -> 10).a(dtn.i).a(ewa.b));
-   public static final dlu cA = a("spawner", dto::new, dzn.d.a().a(evz.l).a(eap.b).n().d(5.0F).a(dtn.bl).c());
-   public static final dlu cB = a("creaking_heart", dnp::new, dzn.d.a().a(evz.p).a(eap.b).d(10.0F).a(dtn.bi));
-   public static final dlu cC = a("oak_stairs", n);
-   public static final dlu cD = a("chest", $$0x -> new dmx(() -> dwp.b, $$0x), dzn.d.a().a(evz.n).a(eap.e).d(2.5F).a(dtn.b).i());
-   public static final dlu cE = a("redstone_wire", dsb::new, dzn.d.a().b().d().a(ewa.b));
-   public static final dlu cF = a("diamond_ore", $$0x -> new dof(btj.a(3, 7), $$0x), dzn.d.a().a(evz.l).a(eap.b).n().a(3.0F, 3.0F));
-   public static final dlu cG = a("deepslate_diamond_ore", $$0x -> new dof(btj.a(3, 7), $$0x), dzn.d.b(cF).a(evz.ah).a(4.5F, 3.0F).a(dtn.aF));
-   public static final dlu cH = a("diamond_block", dzn.d.a().a(evz.F).n().a(5.0F, 6.0F).a(dtn.g));
-   public static final dlu cI = a("crafting_table", dno::new, dzn.d.a().a(evz.n).a(eap.e).d(2.5F).a(dtn.b).i());
-   public static final dlu cJ = a("wheat", dnq::new, dzn.d.a().a($$0x -> $$0x.c(dnq.f) >= 6 ? evz.s : evz.h).b().e().d().a(dtn.w).a(ewa.b));
-   public static final dlu cK = a("farmland", dos::new, dzn.d.a().a(evz.k).e().d(0.6F).a(dtn.c).c(dlw::a).b(dlw::a));
-   public static final dlu cL = a("furnace", dpd::new, dzn.d.a().a(evz.l).a(eap.b).n().d(3.5F).a(a(13)));
-   public static final dlu cM = a("oak_sign", $$0x -> new dtv(ebc.b, $$0x), dzn.d.a().a(evz.n).k().a(eap.e).b().d(1.0F).i());
-   public static final dlu cN = a("spruce_sign", $$0x -> new dtv(ebc.c, $$0x), dzn.d.a().a(Y.w()).k().a(eap.e).b().d(1.0F).i());
-   public static final dlu cO = a("birch_sign", $$0x -> new dtv(ebc.d, $$0x), dzn.d.a().a(evz.c).k().a(eap.e).b().d(1.0F).i());
-   public static final dlu cP = a("acacia_sign", $$0x -> new dtv(ebc.e, $$0x), dzn.d.a().a(evz.p).k().a(eap.e).b().d(1.0F).i());
-   public static final dlu cQ = a("cherry_sign", $$0x -> new dtv(ebc.f, $$0x), dzn.d.a().a(s.w()).k().a(eap.e).b().d(1.0F).i());
-   public static final dlu cR = a("jungle_sign", $$0x -> new dtv(ebc.g, $$0x), dzn.d.a().a(aa.w()).k().a(eap.e).b().d(1.0F).i());
-   public static final dlu cS = a("dark_oak_sign", $$0x -> new dtv(ebc.h, $$0x), dzn.d.a().a(ad.w()).k().a(eap.e).b().d(1.0F).i());
-   public static final dlu cT = a("pale_oak_sign", $$0x -> new dtv(ebc.i, $$0x), dzn.d.a().a(v.w()).k().a(eap.e).b().d(1.0F).i());
-   public static final dlu cU = a("mangrove_sign", $$0x -> new dtv(ebc.l, $$0x), dzn.d.a().a(af.w()).k().a(eap.e).b().d(1.0F).i());
-   public static final dlu cV = a("bamboo_sign", $$0x -> new dtv(ebc.m, $$0x), dzn.d.a().a(x.w()).k().a(eap.e).b().d(1.0F).i());
-   public static final dlu cW = a("oak_door", $$0x -> new dob(ead.g, $$0x), dzn.d.a().a(n.w()).a(eap.e).d(3.0F).c().i().a(ewa.b));
-   public static final dlu cX = a("ladder", dqd::new, dzn.d.a().l().d(0.4F).a(dtn.m).c().a(ewa.b));
-   public static final dlu cY = a("rail", dry::new, dzn.d.a().b().d(0.7F).a(dtn.g));
-   public static final dlu cZ = a("cobblestone_stairs", m);
-   public static final dlu da = a("oak_wall_sign", $$0x -> new dve(ebc.b, $$0x), a(cM, true).a(evz.n).k().a(eap.e).b().d(1.0F).i());
-   public static final dlu db = a("spruce_wall_sign", $$0x -> new dve(ebc.c, $$0x), a(cN, true).a(Y.w()).k().a(eap.e).b().d(1.0F).i());
-   public static final dlu dc = a("birch_wall_sign", $$0x -> new dve(ebc.d, $$0x), a(cO, true).a(evz.c).k().a(eap.e).b().d(1.0F).i());
-   public static final dlu dd = a("acacia_wall_sign", $$0x -> new dve(ebc.e, $$0x), a(cP, true).a(evz.p).k().a(eap.e).b().d(1.0F).i());
-   public static final dlu de = a("cherry_wall_sign", $$0x -> new dve(ebc.f, $$0x), a(cQ, true).a(ac.w()).k().a(eap.e).b().d(1.0F).i());
-   public static final dlu df = a("jungle_wall_sign", $$0x -> new dve(ebc.g, $$0x), a(cR, true).a(aa.w()).k().a(eap.e).b().d(1.0F).i());
-   public static final dlu dg = a("dark_oak_wall_sign", $$0x -> new dve(ebc.h, $$0x), a(cS, true).a(ad.w()).k().a(eap.e).b().d(1.0F).i());
-   public static final dlu dh = a("pale_oak_wall_sign", $$0x -> new dve(ebc.i, $$0x), a(cT, true).a(v.w()).k().a(eap.e).b().d(1.0F).i());
-   public static final dlu di = a("mangrove_wall_sign", $$0x -> new dve(ebc.l, $$0x), a(cU, true).a(af.w()).k().a(eap.e).b().d(1.0F).i());
-   public static final dlu dj = a("bamboo_wall_sign", $$0x -> new dve(ebc.m, $$0x), a(cV, true).a(x.w()).k().a(eap.e).b().d(1.0F).i());
-   public static final dlu dk = a("oak_hanging_sign", $$0x -> new dmu(ebc.b, $$0x), dzn.d.a().a(X.w()).k().a(eap.e).b().d(1.0F).i());
-   public static final dlu dl = a("spruce_hanging_sign", $$0x -> new dmu(ebc.c, $$0x), dzn.d.a().a(Y.w()).k().a(eap.e).b().d(1.0F).i());
-   public static final dlu dm = a("birch_hanging_sign", $$0x -> new dmu(ebc.d, $$0x), dzn.d.a().a(evz.c).k().a(eap.e).b().d(1.0F).i());
-   public static final dlu dn = a("acacia_hanging_sign", $$0x -> new dmu(ebc.e, $$0x), dzn.d.a().a(evz.p).k().a(eap.e).b().d(1.0F).i());
-   public static final dlu do = a("cherry_hanging_sign", $$0x -> new dmu(ebc.f, $$0x), dzn.d.a().a(evz.Q).k().a(eap.e).b().d(1.0F).i());
-   public static final dlu dp = a("jungle_hanging_sign", $$0x -> new dmu(ebc.g, $$0x), dzn.d.a().a(aa.w()).k().a(eap.e).b().d(1.0F).i());
-   public static final dlu dq = a("dark_oak_hanging_sign", $$0x -> new dmu(ebc.h, $$0x), dzn.d.a().a(ad.w()).k().a(eap.e).b().d(1.0F).i());
-   public static final dlu dr = a("pale_oak_hanging_sign", $$0x -> new dmu(ebc.i, $$0x), dzn.d.a().a(v.w()).k().a(eap.e).b().d(1.0F).i());
-   public static final dlu ds = a("crimson_hanging_sign", $$0x -> new dmu(ebc.j, $$0x), dzn.d.a().a(evz.ab).k().a(eap.e).b().d(1.0F));
-   public static final dlu dt = a("warped_hanging_sign", $$0x -> new dmu(ebc.k, $$0x), dzn.d.a().a(evz.ae).k().a(eap.e).b().d(1.0F));
-   public static final dlu du = a("mangrove_hanging_sign", $$0x -> new dmu(ebc.l, $$0x), dzn.d.a().a(af.w()).k().a(eap.e).b().d(1.0F).i());
-   public static final dlu dv = a("bamboo_hanging_sign", $$0x -> new dmu(ebc.m, $$0x), dzn.d.a().a(evz.s).k().a(eap.e).b().d(1.0F).i());
-   public static final dlu dw = a("oak_wall_hanging_sign", $$0x -> new dvd(ebc.b, $$0x), a(dk, true).a(X.w()).k().a(eap.e).b().d(1.0F).i());
-   public static final dlu dx = a("spruce_wall_hanging_sign", $$0x -> new dvd(ebc.c, $$0x), a(dl, true).a(evz.n).k().a(eap.e).b().d(1.0F).i());
-   public static final dlu dy = a("birch_wall_hanging_sign", $$0x -> new dvd(ebc.d, $$0x), a(dm, true).a(evz.c).k().a(eap.e).b().d(1.0F).i());
-   public static final dlu dz = a("acacia_wall_hanging_sign", $$0x -> new dvd(ebc.e, $$0x), a(dn, true).a(evz.p).k().a(eap.e).b().d(1.0F).i());
-   public static final dlu dA = a("cherry_wall_hanging_sign", $$0x -> new dvd(ebc.f, $$0x), a(do, true).a(evz.Q).k().a(eap.e).b().d(1.0F).i());
-   public static final dlu dB = a("jungle_wall_hanging_sign", $$0x -> new dvd(ebc.g, $$0x), a(dp, true).a(aa.w()).k().a(eap.e).b().d(1.0F).i());
-   public static final dlu dC = a("dark_oak_wall_hanging_sign", $$0x -> new dvd(ebc.h, $$0x), a(dq, true).a(ad.w()).k().a(eap.e).b().d(1.0F).i());
-   public static final dlu dD = a("pale_oak_wall_hanging_sign", $$0x -> new dvd(ebc.i, $$0x), a(dr, true).a(v.w()).k().a(eap.e).b().d(1.0F).i());
-   public static final dlu dE = a("mangrove_wall_hanging_sign", $$0x -> new dvd(ebc.l, $$0x), a(du, true).a(af.w()).k().a(eap.e).b().d(1.0F).i());
-   public static final dlu dF = a("crimson_wall_hanging_sign", $$0x -> new dvd(ebc.j, $$0x), a(ds, true).a(evz.ab).k().a(eap.e).b().d(1.0F));
-   public static final dlu dG = a("warped_wall_hanging_sign", $$0x -> new dvd(ebc.k, $$0x), a(dt, true).a(evz.ae).k().a(eap.e).b().d(1.0F));
-   public static final dlu dH = a("bamboo_wall_hanging_sign", $$0x -> new dvd(ebc.m, $$0x), a(dv, true).a(evz.s).k().a(eap.e).b().d(1.0F).i());
-   public static final dlu dI = a("lever", dql::new, dzn.d.a().b().d(0.5F).a(dtn.f).a(ewa.b));
-   public static final dlu dJ = a("stone_pressure_plate", $$0x -> new drw(ead.e, $$0x), dzn.d.a().a(evz.l).k().a(eap.b).b().d(0.5F).a(ewa.b));
-   public static final dlu dK = a("iron_door", $$0x -> new dob(ead.b, $$0x), dzn.d.a().a(evz.g).d(5.0F).c().a(ewa.b));
-   public static final dlu dL = a("oak_pressure_plate", $$0x -> new drw(ead.g, $$0x), dzn.d.a().a(n.w()).k().a(eap.e).b().d(0.5F).i().a(ewa.b));
-   public static final dlu dM = a("spruce_pressure_plate", $$0x -> new drw(ead.h, $$0x), dzn.d.a().a(o.w()).k().a(eap.e).b().d(0.5F).i().a(ewa.b));
-   public static final dlu dN = a("birch_pressure_plate", $$0x -> new drw(ead.i, $$0x), dzn.d.a().a(p.w()).k().a(eap.e).b().d(0.5F).i().a(ewa.b));
-   public static final dlu dO = a("jungle_pressure_plate", $$0x -> new drw(ead.l, $$0x), dzn.d.a().a(q.w()).k().a(eap.e).b().d(0.5F).i().a(ewa.b));
-   public static final dlu dP = a("acacia_pressure_plate", $$0x -> new drw(ead.j, $$0x), dzn.d.a().a(r.w()).k().a(eap.e).b().d(0.5F).i().a(ewa.b));
-   public static final dlu dQ = a("cherry_pressure_plate", $$0x -> new drw(ead.k, $$0x), dzn.d.a().a(s.w()).k().a(eap.e).b().d(0.5F).i().a(ewa.b));
-   public static final dlu dR = a("dark_oak_pressure_plate", $$0x -> new drw(ead.m, $$0x), dzn.d.a().a(t.w()).k().a(eap.e).b().d(0.5F).i().a(ewa.b));
-   public static final dlu dS = a("pale_oak_pressure_plate", $$0x -> new drw(ead.n, $$0x), dzn.d.a().a(v.w()).k().a(eap.e).b().d(0.5F).i().a(ewa.b));
-   public static final dlu dT = a("mangrove_pressure_plate", $$0x -> new drw(ead.q, $$0x), dzn.d.a().a(w.w()).k().a(eap.e).b().d(0.5F).i().a(ewa.b));
-   public static final dlu dU = a("bamboo_pressure_plate", $$0x -> new drw(ead.r, $$0x), dzn.d.a().a(x.w()).k().a(eap.e).b().d(0.5F).i().a(ewa.b));
-   public static final dlu dV = a("redstone_ore", dsa::new, dzn.d.a().a(evz.l).a(eap.b).n().e().a(a(9)).a(3.0F, 3.0F));
-   public static final dlu dW = a("deepslate_redstone_ore", dsa::new, dzn.d.b(dV).a(evz.ah).a(4.5F, 3.0F).a(dtn.aF));
-   public static final dlu dX = a("redstone_torch", dsd::new, dzn.d.a().b().d().a(a(7)).a(dtn.b).a(ewa.b));
-   public static final dlu dY = a("redstone_wall_torch", dse::new, a(dX, true).b().d().a(a(7)).a(dtn.b).a(ewa.b));
-   public static final dlu dZ = a("stone_button", $$0x -> new dmf(ead.e, 20, $$0x), b());
-   public static final dlu ea = a("snow", dtj::new, dzn.d.a().a(evz.i).p().l().e().d(0.1F).n().a(dtn.k).c(($$0x, $$1x, $$2) -> $$0x.c(dtj.c) >= 8).a(ewa.b));
-   public static final dlu eb = a("ice", dpv::new, dzn.d.a().a(evz.f).a(0.98F).e().d(0.5F).a(dtn.h).c().a(($$0x, $$1x, $$2, $$3) -> $$3 == bwj.aU).a(dlw::b));
-   public static final dlu ec = a("snow_block", dzn.d.a().a(evz.i).n().d(0.2F).a(dtn.k));
-   public static final dlu ed = a("cactus", dmg::new, dzn.d.a().a(evz.h).e().d(0.4F).a(dtn.i).a(ewa.b));
-   public static final dlu ee = a("clay", dzn.d.a().a(evz.j).a(eap.f).d(0.6F).a(dtn.c));
-   public static final dlu ef = a("sugar_cane", dua::new, dzn.d.a().a(evz.h).b().e().d().a(dtn.d).a(ewa.b));
-   public static final dlu eg = a("jukebox", dqa::new, dzn.d.a().a(evz.k).a(eap.e).a(2.0F, 6.0F).a(dtn.b).i());
-   public static final dlu eh = a("oak_fence", dot::new, dzn.d.a().a(n.w()).k().a(eap.e).a(2.0F, 3.0F).a(dtn.b).i());
-   public static final dlu ei = a("netherrack", drh::new, dzn.d.a().a(evz.J).a(eap.b).n().d(0.4F).a(dtn.M));
-   public static final dlu ej = a("soul_sand", dtm::new, dzn.d.a().a(evz.A).a(eap.l).d(0.5F).b(0.4F).a(dtn.I).a(dlw::b).a(dlw::a).c(dlw::a).b(dlw::a));
-   public static final dlu ek = a("soul_soil", dzn.d.a().a(evz.A).d(0.5F).a(dtn.J));
-   public static final dlu el = a("basalt", dsl::new, dzn.d.a().a(evz.D).a(eap.b).n().a(1.25F, 4.2F).a(dtn.K));
-   public static final dlu em = a("polished_basalt", dsl::new, dzn.d.a().a(evz.D).a(eap.b).n().a(1.25F, 4.2F).a(dtn.K));
-   public static final dlu en = a("soul_torch", $$0x -> new dun(lx.N, $$0x), dzn.d.a().b().d().a($$0x -> 10).a(dtn.b).a(ewa.b));
-   public static final dlu eo = a("soul_wall_torch", $$0x -> new dvg(lx.N, $$0x), a(en, true).b().d().a($$0x -> 10).a(dtn.b).a(ewa.b));
-   public static final dlu ep = a("glowstone", dzn.d.a().a(evz.c).a(eap.p).d(0.3F).a(dtn.h).a($$0x -> 15).a(dlw::b));
-   public static final dlu eq = a("nether_portal", drd::new, dzn.d.a().b().e().d(-1.0F).a(dtn.h).a($$0x -> 11).a(ewa.c));
-   public static final dlu er = a("carved_pumpkin", dmp::new, dzn.d.a().a(evz.p).d(1.0F).a(dtn.b).a(dlw::b).a(ewa.b));
-   public static final dlu es = a("jack_o_lantern", dmp::new, dzn.d.a().a(evz.p).d(1.0F).a(dtn.b).a($$0x -> 15).a(dlw::b).a(ewa.b));
-   public static final dlu et = a("cake", dmh::new, dzn.d.a().k().d(0.5F).a(dtn.i).a(ewa.b));
-   public static final dlu eu = a("repeater", dsg::new, dzn.d.a().d().a(dtn.f).a(ewa.b));
-   public static final dlu ev = b("white_stained_glass", cxq.a);
-   public static final dlu ew = b("orange_stained_glass", cxq.b);
-   public static final dlu ex = b("magenta_stained_glass", cxq.c);
-   public static final dlu ey = b("light_blue_stained_glass", cxq.d);
-   public static final dlu ez = b("yellow_stained_glass", cxq.e);
-   public static final dlu eA = b("lime_stained_glass", cxq.f);
-   public static final dlu eB = b("pink_stained_glass", cxq.g);
-   public static final dlu eC = b("gray_stained_glass", cxq.h);
-   public static final dlu eD = b("light_gray_stained_glass", cxq.i);
-   public static final dlu eE = b("cyan_stained_glass", cxq.j);
-   public static final dlu eF = b("purple_stained_glass", cxq.k);
-   public static final dlu eG = b("blue_stained_glass", cxq.l);
-   public static final dlu eH = b("brown_stained_glass", cxq.m);
-   public static final dlu eI = b("green_stained_glass", cxq.n);
-   public static final dlu eJ = b("red_stained_glass", cxq.o);
-   public static final dlu eK = b("black_stained_glass", cxq.p);
-   public static final dlu eL = a("oak_trapdoor", $$0x -> new duq(ead.g, $$0x), dzn.d.a().a(evz.n).a(eap.e).d(3.0F).c().a(dlw::a).i());
-   public static final dlu eM = a("spruce_trapdoor", $$0x -> new duq(ead.h, $$0x), dzn.d.a().a(evz.I).a(eap.e).d(3.0F).c().a(dlw::a).i());
-   public static final dlu eN = a("birch_trapdoor", $$0x -> new duq(ead.i, $$0x), dzn.d.a().a(evz.c).a(eap.e).d(3.0F).c().a(dlw::a).i());
-   public static final dlu eO = a("jungle_trapdoor", $$0x -> new duq(ead.l, $$0x), dzn.d.a().a(evz.k).a(eap.e).d(3.0F).c().a(dlw::a).i());
-   public static final dlu eP = a("acacia_trapdoor", $$0x -> new duq(ead.j, $$0x), dzn.d.a().a(evz.p).a(eap.e).d(3.0F).c().a(dlw::a).i());
-   public static final dlu eQ = a("cherry_trapdoor", $$0x -> new duq(ead.k, $$0x), dzn.d.a().a(evz.K).a(eap.e).d(3.0F).c().a(dlw::a).i());
-   public static final dlu eR = a("dark_oak_trapdoor", $$0x -> new duq(ead.m, $$0x), dzn.d.a().a(evz.A).a(eap.e).d(3.0F).c().a(dlw::a).i());
-   public static final dlu eS = a("pale_oak_trapdoor", $$0x -> new duq(ead.n, $$0x), dzn.d.a().a(v.w()).a(eap.e).d(3.0F).c().a(dlw::a).i());
-   public static final dlu eT = a("mangrove_trapdoor", $$0x -> new duq(ead.q, $$0x), dzn.d.a().a(evz.C).a(eap.e).d(3.0F).c().a(dlw::a).i());
-   public static final dlu eU = a("bamboo_trapdoor", $$0x -> new duq(ead.r, $$0x), dzn.d.a().a(evz.s).a(eap.e).d(3.0F).c().a(dlw::a).i());
-   public static final dlu eV = a("stone_bricks", dzn.d.a().a(evz.l).a(eap.b).n().a(1.5F, 6.0F));
-   public static final dlu eW = a("mossy_stone_bricks", dzn.d.a().a(evz.l).a(eap.b).n().a(1.5F, 6.0F));
-   public static final dlu eX = a("cracked_stone_bricks", dzn.d.a().a(evz.l).a(eap.b).n().a(1.5F, 6.0F));
-   public static final dlu eY = a("chiseled_stone_bricks", dzn.d.a().a(evz.l).a(eap.b).n().a(1.5F, 6.0F));
-   public static final dlu eZ = a("packed_mud", dzn.d.b(j).a(1.0F, 3.0F).a(dtn.aP));
-   public static final dlu fa = a("mud_bricks", dzn.d.a().a(evz.S).a(eap.b).n().a(1.5F, 3.0F).a(dtn.aO));
-   public static final dlu fb = a("infested_stone", $$0x -> new dpw(b, $$0x), dzn.d.a().a(evz.j));
-   public static final dlu fc = a("infested_cobblestone", $$0x -> new dpw(m, $$0x), dzn.d.a().a(evz.j));
-   public static final dlu fd = a("infested_stone_bricks", $$0x -> new dpw(eV, $$0x), dzn.d.a().a(evz.j));
-   public static final dlu fe = a("infested_mossy_stone_bricks", $$0x -> new dpw(eW, $$0x), dzn.d.a().a(evz.j));
-   public static final dlu ff = a("infested_cracked_stone_bricks", $$0x -> new dpw(eX, $$0x), dzn.d.a().a(evz.j));
-   public static final dlu fg = a("infested_chiseled_stone_bricks", $$0x -> new dpw(eY, $$0x), dzn.d.a().a(evz.j));
-   public static final dlu fh = a("brown_mushroom_block", dpu::new, dzn.d.a().a(evz.k).a(eap.e).d(0.2F).a(dtn.b).i());
-   public static final dlu fi = a("red_mushroom_block", dpu::new, dzn.d.a().a(evz.C).a(eap.e).d(0.2F).a(dtn.b).i());
-   public static final dlu fj = a("mushroom_stem", dpu::new, dzn.d.a().a(evz.d).a(eap.e).d(0.2F).a(dtn.b).i());
-   public static final dlu fk = a("iron_bars", dpy::new, dzn.d.a().n().a(5.0F, 6.0F).a(dtn.bo).c());
-   public static final dlu fl = a("chain", dmv::new, dzn.d.a().k().n().a(5.0F, 6.0F).a(dtn.U).c());
-   public static final dlu fm = a("glass_pane", dpy::new, dzn.d.a().a(eap.d).d(0.3F).a(dtn.h).c());
-   public static final dlu fn = a(aks.a, drx::new, dzn.d.a().a(evz.p).a(eap.m).d(1.0F).a(dtn.b).a(ewa.b));
-   public static final dlu fo = a(aks.d, dzn.d.a().a(evz.t).d(1.0F).a(dtn.b).a(ewa.b));
-   public static final dlu fp = a(aks.c, $$0x -> new dkv(aks.b, aks.a, akt.a, $$0x), dzn.d.a().a(evz.h).b().d().a(dtn.b).a(ewa.b));
-   public static final dlu fq = a(aks.f, $$0x -> new dkv(aks.e, aks.d, akt.b, $$0x), dzn.d.a().a(evz.h).b().d().a(dtn.b).a(ewa.b));
-   public static final dlu fr = a(aks.b, $$0x -> new dtw(aks.a, aks.c, akt.a, $$0x), dzn.d.a().a(evz.h).b().e().d().a(dtn.x).a(ewa.b));
-   public static final dlu fs = a(aks.e, $$0x -> new dtw(aks.d, aks.f, akt.b, $$0x), dzn.d.a().a(evz.h).b().e().d().a(dtn.x).a(ewa.b));
-   public static final dlu ft = a("vine", dva::new, dzn.d.a().a(evz.h).p().b().e().d(0.2F).a(dtn.y).i().a(ewa.b));
-   public static final dlu fu = a("glow_lichen", dpg::new, dzn.d.a().a(evz.aj).p().b().d(0.2F).a(dtn.aE).a(dpg.b(7)).i().a(ewa.b));
-   public static final dlu fv = a("resin_clump", dqy::new, dzn.d.a().a(evz.L).p().b().a(dtn.bm).i().a(ewa.b));
-   public static final dlu fw = a("oak_fence_gate", $$0x -> new dou(ebc.b, $$0x), dzn.d.a().a(n.w()).k().a(eap.e).a(2.0F, 3.0F).i());
-   public static final dlu fx = a("brick_stairs", cq);
-   public static final dlu fy = a("stone_brick_stairs", eV);
-   public static final dlu fz = a("mud_brick_stairs", fa);
-   public static final dlu fA = a("mycelium", drc::new, dzn.d.a().a(evz.y).e().d(0.6F).a(dtn.d));
-   public static final dlu fB = a("lily_pad", dvh::new, dzn.d.a().a(evz.h).d().a(dtn.e).c().a(ewa.b));
-   public static final dlu fC = a("resin_block", dzn.d.a().a(evz.L).a(eap.b).a(dtn.bm));
-   public static final dlu fD = a("resin_bricks", dzn.d.a().a(evz.L).a(eap.b).n().a(dtn.bn).a(1.5F, 6.0F));
-   public static final dlu fE = a("resin_brick_stairs", fD);
-   public static final dlu fF = a("resin_brick_slab", $$0x -> new dtd($$0x), dzn.d.a().a(evz.L).a(eap.b).n().a(dtn.bn).a(1.5F, 6.0F));
-   public static final dlu fG = a("resin_brick_wall", $$0x -> new dvc($$0x), dzn.d.a().a(evz.L).a(eap.b).n().a(dtn.bn).a(1.5F, 6.0F));
-   public static final dlu fH = a("chiseled_resin_bricks", dzn.d.a().a(evz.L).a(eap.b).n().a(dtn.bn).a(1.5F, 6.0F));
-   public static final dlu fI = a("nether_bricks", dzn.d.a().a(evz.J).a(eap.b).n().a(2.0F, 6.0F).a(dtn.N));
-   public static final dlu fJ = a("nether_brick_fence", dot::new, dzn.d.a().a(evz.J).a(eap.b).n().a(2.0F, 6.0F).a(dtn.N));
-   public static final dlu fK = a("nether_brick_stairs", fI);
-   public static final dlu fL = a("nether_wart", drg::new, dzn.d.a().a(evz.C).b().e().a(dtn.z).a(ewa.b));
-   public static final dlu fM = a("enchanting_table", doh::new, dzn.d.a().a(evz.C).a(eap.b).n().a($$0x -> 7).a(5.0F, 1200.0F));
-   public static final dlu fN = a("brewing_stand", dlz::new, dzn.d.a().a(evz.g).d(0.5F).a($$0x -> 1).c());
-   public static final dlu fO = a("cauldron", dmq::new, dzn.d.a().a(evz.l).n().d(2.0F).c());
-   public static final dlu fP = a("water_cauldron", $$0x -> new dqg(djs.c.b, kb.d, $$0x), dzn.d.b(fO));
-   public static final dlu fQ = a("lava_cauldron", dqf::new, dzn.d.b(fO).a($$0x -> 15));
-   public static final dlu fR = a("powder_snow_cauldron", $$0x -> new dqg(djs.c.c, kb.f, $$0x), dzn.d.b(fO));
-   public static final dlu fS = a("end_portal", doj::new, dzn.d.a().a(evz.D).b().a($$0x -> 15).a(-1.0F, 3600000.0F).g().a(ewa.c));
-   public static final dlu fT = a("end_portal_frame", dok::new, dzn.d.a().a(evz.B).a(eap.b).a(dtn.h).a($$0x -> 1).a(-1.0F, 3600000.0F).g());
-   public static final dlu fU = a("end_stone", dzn.d.a().a(evz.c).a(eap.b).n().a(3.0F, 9.0F));
-   public static final dlu fV = a("dragon_egg", doe::new, dzn.d.a().a(evz.D).a(3.0F, 9.0F).a($$0x -> 1).c().a(ewa.b));
-   public static final dlu fW = a("redstone_lamp", dsc::new, dzn.d.a().a(evz.L).a(a(15)).d(0.3F).a(dtn.h).a(dlw::b));
-   public static final dlu fX = a("cocoa", dnb::new, dzn.d.a().a(evz.h).e().a(0.2F, 3.0F).a(dtn.b).c().a(ewa.b));
-   public static final dlu fY = a("sandstone_stairs", bc);
-   public static final dlu fZ = a("emerald_ore", $$0x -> new dof(btj.a(3, 7), $$0x), dzn.d.a().a(evz.l).a(eap.b).n().a(3.0F, 3.0F));
-   public static final dlu ga = a("deepslate_emerald_ore", $$0x -> new dof(btj.a(3, 7), $$0x), dzn.d.b(fZ).a(evz.ah).a(4.5F, 3.0F).a(dtn.aF));
-   public static final dlu gb = a("ender_chest", dom::new, dzn.d.a().a(evz.l).a(eap.b).a(22.5F, 600.0F).a($$0x -> 7));
-   public static final dlu gc = a("tripwire_hook", duu::new, dzn.d.a().b().a(dtn.b).a(ewa.b));
-   public static final dlu gd = a("tripwire", $$0x -> new dut(gc, $$0x), dzn.d.a().b().a(ewa.b));
-   public static final dlu ge = a("emerald_block", dzn.d.a().a(evz.H).a(eap.n).n().a(5.0F, 6.0F).a(dtn.g));
-   public static final dlu gf = a("spruce_stairs", o);
-   public static final dlu gg = a("birch_stairs", p);
-   public static final dlu gh = a("jungle_stairs", q);
-   public static final dlu gi = a("command_block", $$0x -> new dnd(false, $$0x), dzn.d.a().a(evz.A).n().a(-1.0F, 3600000.0F).g());
-   public static final dlu gj = a("beacon", dlm::new, dzn.d.a().a(evz.F).a(eap.d).d(3.0F).a($$0x -> 15).c().a(dlw::b));
-   public static final dlu gk = a("cobblestone_wall", dvc::new, dzn.d.b(m).k());
-   public static final dlu gl = a("mossy_cobblestone_wall", dvc::new, dzn.d.b(m).k());
-   public static final dlu gm = a("flower_pot", $$0x -> new doz(a, $$0x), c());
-   public static final dlu gn = a("potted_torchflower", $$0x -> new doz(bZ, $$0x), c());
-   public static final dlu go = a("potted_oak_sapling", $$0x -> new doz(z, $$0x), c());
-   public static final dlu gp = a("potted_spruce_sapling", $$0x -> new doz(A, $$0x), c());
-   public static final dlu gq = a("potted_birch_sapling", $$0x -> new doz(B, $$0x), c());
-   public static final dlu gr = a("potted_jungle_sapling", $$0x -> new doz(C, $$0x), c());
-   public static final dlu gs = a("potted_acacia_sapling", $$0x -> new doz(D, $$0x), c());
-   public static final dlu gt = a("potted_cherry_sapling", $$0x -> new doz(E, $$0x), c());
-   public static final dlu gu = a("potted_dark_oak_sapling", $$0x -> new doz(F, $$0x), c());
-   public static final dlu gv = a("potted_pale_oak_sapling", $$0x -> new doz(G, $$0x), c());
-   public static final dlu gw = a("potted_mangrove_propagule", $$0x -> new doz(H, $$0x), c());
-   public static final dlu gx = a("potted_fern", $$0x -> new doz(bB, $$0x), c());
-   public static final dlu gy = a("potted_dandelion", $$0x -> new doz(bY, $$0x), c());
-   public static final dlu gz = a("potted_poppy", $$0x -> new doz(ca, $$0x), c());
-   public static final dlu gA = a("potted_blue_orchid", $$0x -> new doz(cb, $$0x), c());
-   public static final dlu gB = a("potted_allium", $$0x -> new doz(cc, $$0x), c());
-   public static final dlu gC = a("potted_azure_bluet", $$0x -> new doz(cd, $$0x), c());
-   public static final dlu gD = a("potted_red_tulip", $$0x -> new doz(ce, $$0x), c());
-   public static final dlu gE = a("potted_orange_tulip", $$0x -> new doz(cf, $$0x), c());
-   public static final dlu gF = a("potted_white_tulip", $$0x -> new doz(cg, $$0x), c());
-   public static final dlu gG = a("potted_pink_tulip", $$0x -> new doz(ch, $$0x), c());
-   public static final dlu gH = a("potted_oxeye_daisy", $$0x -> new doz(ci, $$0x), c());
-   public static final dlu gI = a("potted_cornflower", $$0x -> new doz(cj, $$0x), c());
-   public static final dlu gJ = a("potted_lily_of_the_valley", $$0x -> new doz(cl, $$0x), c());
-   public static final dlu gK = a("potted_wither_rose", $$0x -> new doz(ck, $$0x), c());
-   public static final dlu gL = a("potted_red_mushroom", $$0x -> new doz(cn, $$0x), c());
-   public static final dlu gM = a("potted_brown_mushroom", $$0x -> new doz(cm, $$0x), c());
-   public static final dlu gN = a("potted_dead_bush", $$0x -> new doz(bC, $$0x), c());
-   public static final dlu gO = a("potted_cactus", $$0x -> new doz(ed, $$0x), c());
-   public static final dlu gP = a("carrots", dmn::new, dzn.d.a().a(evz.h).b().e().d().a(dtn.w).a(ewa.b));
-   public static final dlu gQ = a("potatoes", drs::new, dzn.d.a().a(evz.h).b().e().d().a(dtn.w).a(ewa.b));
-   public static final dlu gR = a("oak_button", $$0x -> new dmf(ead.g, 30, $$0x), b());
-   public static final dlu gS = a("spruce_button", $$0x -> new dmf(ead.h, 30, $$0x), b());
-   public static final dlu gT = a("birch_button", $$0x -> new dmf(ead.i, 30, $$0x), b());
-   public static final dlu gU = a("jungle_button", $$0x -> new dmf(ead.l, 30, $$0x), b());
-   public static final dlu gV = a("acacia_button", $$0x -> new dmf(ead.j, 30, $$0x), b());
-   public static final dlu gW = a("cherry_button", $$0x -> new dmf(ead.k, 30, $$0x), b());
-   public static final dlu gX = a("dark_oak_button", $$0x -> new dmf(ead.m, 30, $$0x), b());
-   public static final dlu gY = a("pale_oak_button", $$0x -> new dmf(ead.n, 30, $$0x), b());
-   public static final dlu gZ = a("mangrove_button", $$0x -> new dmf(ead.q, 30, $$0x), b());
-   public static final dlu ha = a("bamboo_button", $$0x -> new dmf(ead.r, 30, $$0x), b());
-   public static final dlu hb = a("skeleton_skull", $$0x -> new dtc(dtc.b.c, $$0x), dzn.d.a().a(eap.r).d(1.0F).a(ewa.b));
-   public static final dlu hc = a("skeleton_wall_skull", $$0x -> new dvf(dtc.b.c, $$0x), a(hb, true).d(1.0F).a(ewa.b));
-   public static final dlu hd = a("wither_skeleton_skull", dvx::new, dzn.d.a().a(eap.u).d(1.0F).a(ewa.b));
-   public static final dlu he = a("wither_skeleton_wall_skull", dvy::new, a(hd, true).d(1.0F).a(ewa.b));
-   public static final dlu hf = a("zombie_head", $$0x -> new dtc(dtc.b.f, $$0x), dzn.d.a().a(eap.q).d(1.0F).a(ewa.b));
-   public static final dlu hg = a("zombie_wall_head", $$0x -> new dvf(dtc.b.f, $$0x), a(hf, true).d(1.0F).a(ewa.b));
-   public static final dlu hh = a("player_head", dro::new, dzn.d.a().a(eap.w).d(1.0F).a(ewa.b));
-   public static final dlu hi = a("player_wall_head", drp::new, a(hh, true).d(1.0F).a(ewa.b));
-   public static final dlu hj = a("creeper_head", $$0x -> new dtc(dtc.b.g, $$0x), dzn.d.a().a(eap.s).d(1.0F).a(ewa.b));
-   public static final dlu hk = a("creeper_wall_head", $$0x -> new dvf(dtc.b.g, $$0x), a(hj, true).d(1.0F).a(ewa.b));
-   public static final dlu hl = a("dragon_head", $$0x -> new dtc(dtc.b.i, $$0x), dzn.d.a().a(eap.t).d(1.0F).a(ewa.b));
-   public static final dlu hm = a("dragon_wall_head", $$0x -> new dvf(dtc.b.i, $$0x), a(hl, true).d(1.0F).a(ewa.b));
-   public static final dlu hn = a("piglin_head", $$0x -> new dtc(dtc.b.h, $$0x), dzn.d.a().a(eap.v).d(1.0F).a(ewa.b));
-   public static final dlu ho = a("piglin_wall_head", drl::new, a(hn, true).d(1.0F).a(ewa.b));
-   public static final dlu hp = a("anvil", dku::new, dzn.d.a().a(evz.g).n().a(5.0F, 1200.0F).a(dtn.n).a(ewa.c));
-   public static final dlu hq = a("chipped_anvil", dku::new, dzn.d.a().a(evz.g).n().a(5.0F, 1200.0F).a(dtn.n).a(ewa.c));
-   public static final dlu hr = a("damaged_anvil", dku::new, dzn.d.a().a(evz.g).n().a(5.0F, 1200.0F).a(dtn.n).a(ewa.c));
-   public static final dlu hs = a("trapped_chest", dur::new, dzn.d.a().a(evz.n).a(eap.e).d(2.5F).a(dtn.b).i());
-   public static final dlu ht = a("light_weighted_pressure_plate", $$0x -> new dvu(15, ead.d, $$0x), dzn.d.a().a(evz.E).k().b().d(0.5F).a(ewa.b));
-   public static final dlu hu = a("heavy_weighted_pressure_plate", $$0x -> new dvu(150, ead.b, $$0x), dzn.d.a().a(evz.g).k().b().d(0.5F).a(ewa.b));
-   public static final dlu hv = a("comparator", dne::new, dzn.d.a().d().a(dtn.f).a(ewa.b));
-   public static final dlu hw = a("daylight_detector", dnt::new, dzn.d.a().a(evz.n).a(eap.e).d(0.2F).a(dtn.b).i());
-   public static final dlu hx = a("redstone_block", dru::new, dzn.d.a().a(evz.e).n().a(5.0F, 6.0F).a(dtn.g).a(dlw::b));
-   public static final dlu hy = a("nether_quartz_ore", $$0x -> new dof(btj.a(2, 5), $$0x), dzn.d.a().a(evz.J).a(eap.b).n().a(3.0F, 3.0F).a(dtn.P));
-   public static final dlu hz = a("hopper", dps::new, dzn.d.a().a(evz.l).n().a(3.0F, 4.8F).a(dtn.g).c());
-   public static final dlu hA = a("quartz_block", dzn.d.a().a(evz.o).a(eap.b).n().d(0.8F));
-   public static final dlu hB = a("chiseled_quartz_block", dzn.d.a().a(evz.o).a(eap.b).n().d(0.8F));
-   public static final dlu hC = a("quartz_pillar", dsl::new, dzn.d.a().a(evz.o).a(eap.b).n().d(0.8F));
-   public static final dlu hD = a("quartz_stairs", hA);
-   public static final dlu hE = a("activator_rail", drv::new, dzn.d.a().b().d(0.7F).a(dtn.g));
-   public static final dlu hF = a("dropper", dog::new, dzn.d.a().a(evz.l).a(eap.b).n().d(3.5F));
-   public static final dlu hG = a("white_terracotta", dzn.d.a().a(evz.K).a(eap.b).n().a(1.25F, 4.2F));
-   public static final dlu hH = a("orange_terracotta", dzn.d.a().a(evz.L).a(eap.b).n().a(1.25F, 4.2F));
-   public static final dlu hI = a("magenta_terracotta", dzn.d.a().a(evz.M).a(eap.b).n().a(1.25F, 4.2F));
-   public static final dlu hJ = a("light_blue_terracotta", dzn.d.a().a(evz.N).a(eap.b).n().a(1.25F, 4.2F));
-   public static final dlu hK = a("yellow_terracotta", dzn.d.a().a(evz.O).a(eap.b).n().a(1.25F, 4.2F));
-   public static final dlu hL = a("lime_terracotta", dzn.d.a().a(evz.P).a(eap.b).n().a(1.25F, 4.2F));
-   public static final dlu hM = a("pink_terracotta", dzn.d.a().a(evz.Q).a(eap.b).n().a(1.25F, 4.2F));
-   public static final dlu hN = a("gray_terracotta", dzn.d.a().a(evz.R).a(eap.b).n().a(1.25F, 4.2F));
-   public static final dlu hO = a("light_gray_terracotta", dzn.d.a().a(evz.S).a(eap.b).n().a(1.25F, 4.2F));
-   public static final dlu hP = a("cyan_terracotta", dzn.d.a().a(evz.T).a(eap.b).n().a(1.25F, 4.2F));
-   public static final dlu hQ = a("purple_terracotta", dzn.d.a().a(evz.U).a(eap.b).n().a(1.25F, 4.2F));
-   public static final dlu hR = a("blue_terracotta", dzn.d.a().a(evz.V).a(eap.b).n().a(1.25F, 4.2F));
-   public static final dlu hS = a("brown_terracotta", dzn.d.a().a(evz.W).a(eap.b).n().a(1.25F, 4.2F));
-   public static final dlu hT = a("green_terracotta", dzn.d.a().a(evz.X).a(eap.b).n().a(1.25F, 4.2F));
-   public static final dlu hU = a("red_terracotta", dzn.d.a().a(evz.Y).a(eap.b).n().a(1.25F, 4.2F));
-   public static final dlu hV = a("black_terracotta", dzn.d.a().a(evz.Z).a(eap.b).n().a(1.25F, 4.2F));
-   public static final dlu hW = a("white_stained_glass_pane", $$0x -> new dtt(cxq.a, $$0x), dzn.d.a().a(eap.d).d(0.3F).a(dtn.h).c());
-   public static final dlu hX = a("orange_stained_glass_pane", $$0x -> new dtt(cxq.b, $$0x), dzn.d.a().a(eap.d).d(0.3F).a(dtn.h).c());
-   public static final dlu hY = a("magenta_stained_glass_pane", $$0x -> new dtt(cxq.c, $$0x), dzn.d.a().a(eap.d).d(0.3F).a(dtn.h).c());
-   public static final dlu hZ = a("light_blue_stained_glass_pane", $$0x -> new dtt(cxq.d, $$0x), dzn.d.a().a(eap.d).d(0.3F).a(dtn.h).c());
-   public static final dlu ia = a("yellow_stained_glass_pane", $$0x -> new dtt(cxq.e, $$0x), dzn.d.a().a(eap.d).d(0.3F).a(dtn.h).c());
-   public static final dlu ib = a("lime_stained_glass_pane", $$0x -> new dtt(cxq.f, $$0x), dzn.d.a().a(eap.d).d(0.3F).a(dtn.h).c());
-   public static final dlu ic = a("pink_stained_glass_pane", $$0x -> new dtt(cxq.g, $$0x), dzn.d.a().a(eap.d).d(0.3F).a(dtn.h).c());
-   public static final dlu id = a("gray_stained_glass_pane", $$0x -> new dtt(cxq.h, $$0x), dzn.d.a().a(eap.d).d(0.3F).a(dtn.h).c());
-   public static final dlu ie = a("light_gray_stained_glass_pane", $$0x -> new dtt(cxq.i, $$0x), dzn.d.a().a(eap.d).d(0.3F).a(dtn.h).c());
-   public static final dlu if = a("cyan_stained_glass_pane", $$0x -> new dtt(cxq.j, $$0x), dzn.d.a().a(eap.d).d(0.3F).a(dtn.h).c());
-   public static final dlu ig = a("purple_stained_glass_pane", $$0x -> new dtt(cxq.k, $$0x), dzn.d.a().a(eap.d).d(0.3F).a(dtn.h).c());
-   public static final dlu ih = a("blue_stained_glass_pane", $$0x -> new dtt(cxq.l, $$0x), dzn.d.a().a(eap.d).d(0.3F).a(dtn.h).c());
-   public static final dlu ii = a("brown_stained_glass_pane", $$0x -> new dtt(cxq.m, $$0x), dzn.d.a().a(eap.d).d(0.3F).a(dtn.h).c());
-   public static final dlu ij = a("green_stained_glass_pane", $$0x -> new dtt(cxq.n, $$0x), dzn.d.a().a(eap.d).d(0.3F).a(dtn.h).c());
-   public static final dlu ik = a("red_stained_glass_pane", $$0x -> new dtt(cxq.o, $$0x), dzn.d.a().a(eap.d).d(0.3F).a(dtn.h).c());
-   public static final dlu il = a("black_stained_glass_pane", $$0x -> new dtt(cxq.p, $$0x), dzn.d.a().a(eap.d).d(0.3F).a(dtn.h).c());
-   public static final dlu im = a("acacia_stairs", r);
-   public static final dlu in = a("cherry_stairs", s);
-   public static final dlu io = a("dark_oak_stairs", t);
-   public static final dlu ip = a("pale_oak_stairs", v);
-   public static final dlu iq = a("mangrove_stairs", w);
-   public static final dlu ir = a("bamboo_stairs", x);
-   public static final dlu is = a("bamboo_mosaic_stairs", y);
-   public static final dlu it = a("slime_block", dte::new, dzn.d.a().a(evz.b).a(0.8F).a(dtn.o).c());
-   public static final dlu iu = a("barrier", dlb::new, dzn.d.a().a(-1.0F, 3600000.8F).a(a(evz.a)).g().c().a(dlw::a).o().a(ewa.c));
-   public static final dlu iv = a("light", dqm::new, dzn.d.a().p().a(-1.0F, 3600000.8F).a(a(evz.a)).g().c().a(dqm.e));
-   public static final dlu iw = a("iron_trapdoor", $$0x -> new duq(ead.b, $$0x), dzn.d.a().a(evz.g).n().d(5.0F).c().a(dlw::a));
-   public static final dlu ix = a("prismarine", dzn.d.a().a(evz.x).a(eap.b).n().a(1.5F, 6.0F));
-   public static final dlu iy = a("prismarine_bricks", dzn.d.a().a(evz.F).a(eap.b).n().a(1.5F, 6.0F));
-   public static final dlu iz = a("dark_prismarine", dzn.d.a().a(evz.F).a(eap.b).n().a(1.5F, 6.0F));
-   public static final dlu iA = a("prismarine_stairs", ix);
-   public static final dlu iB = a("prismarine_brick_stairs", iy);
-   public static final dlu iC = a("dark_prismarine_stairs", iz);
-   public static final dlu iD = a("prismarine_slab", dtd::new, dzn.d.a().a(evz.x).a(eap.b).n().a(1.5F, 6.0F));
-   public static final dlu iE = a("prismarine_brick_slab", dtd::new, dzn.d.a().a(evz.F).a(eap.b).n().a(1.5F, 6.0F));
-   public static final dlu iF = a("dark_prismarine_slab", dtd::new, dzn.d.a().a(evz.F).a(eap.b).n().a(1.5F, 6.0F));
-   public static final dlu iG = a("sea_lantern", dzn.d.a().a(evz.o).a(eap.d).d(0.3F).a(dtn.h).a($$0x -> 15).a(dlw::b));
-   public static final dlu iH = a("hay_block", dpp::new, dzn.d.a().a(evz.s).a(eap.o).d(0.5F).a(dtn.d));
-   public static final dlu iI = a("white_carpet", $$0x -> new dvz(cxq.a, $$0x), dzn.d.a().a(evz.i).d(0.1F).a(dtn.i).i());
-   public static final dlu iJ = a("orange_carpet", $$0x -> new dvz(cxq.b, $$0x), dzn.d.a().a(evz.p).d(0.1F).a(dtn.i).i());
-   public static final dlu iK = a("magenta_carpet", $$0x -> new dvz(cxq.c, $$0x), dzn.d.a().a(evz.q).d(0.1F).a(dtn.i).i());
-   public static final dlu iL = a("light_blue_carpet", $$0x -> new dvz(cxq.d, $$0x), dzn.d.a().a(evz.r).d(0.1F).a(dtn.i).i());
-   public static final dlu iM = a("yellow_carpet", $$0x -> new dvz(cxq.e, $$0x), dzn.d.a().a(evz.s).d(0.1F).a(dtn.i).i());
-   public static final dlu iN = a("lime_carpet", $$0x -> new dvz(cxq.f, $$0x), dzn.d.a().a(evz.t).d(0.1F).a(dtn.i).i());
-   public static final dlu iO = a("pink_carpet", $$0x -> new dvz(cxq.g, $$0x), dzn.d.a().a(evz.u).d(0.1F).a(dtn.i).i());
-   public static final dlu iP = a("gray_carpet", $$0x -> new dvz(cxq.h, $$0x), dzn.d.a().a(evz.v).d(0.1F).a(dtn.i).i());
-   public static final dlu iQ = a("light_gray_carpet", $$0x -> new dvz(cxq.i, $$0x), dzn.d.a().a(evz.w).d(0.1F).a(dtn.i).i());
-   public static final dlu iR = a("cyan_carpet", $$0x -> new dvz(cxq.j, $$0x), dzn.d.a().a(evz.x).d(0.1F).a(dtn.i).i());
-   public static final dlu iS = a("purple_carpet", $$0x -> new dvz(cxq.k, $$0x), dzn.d.a().a(evz.y).d(0.1F).a(dtn.i).i());
-   public static final dlu iT = a("blue_carpet", $$0x -> new dvz(cxq.l, $$0x), dzn.d.a().a(evz.z).d(0.1F).a(dtn.i).i());
-   public static final dlu iU = a("brown_carpet", $$0x -> new dvz(cxq.m, $$0x), dzn.d.a().a(evz.A).d(0.1F).a(dtn.i).i());
-   public static final dlu iV = a("green_carpet", $$0x -> new dvz(cxq.n, $$0x), dzn.d.a().a(evz.B).d(0.1F).a(dtn.i).i());
-   public static final dlu iW = a("red_carpet", $$0x -> new dvz(cxq.o, $$0x), dzn.d.a().a(evz.C).d(0.1F).a(dtn.i).i());
-   public static final dlu iX = a("black_carpet", $$0x -> new dvz(cxq.p, $$0x), dzn.d.a().a(evz.D).d(0.1F).a(dtn.i).i());
-   public static final dlu iY = a("terracotta", dzn.d.a().a(evz.p).a(eap.b).n().a(1.25F, 4.2F));
-   public static final dlu iZ = a("coal_block", dzn.d.a().a(evz.D).a(eap.b).n().a(5.0F, 6.0F));
-   public static final dlu ja = a("packed_ice", dzn.d.a().a(evz.f).a(eap.i).a(0.98F).d(0.5F).a(dtn.h));
-   public static final dlu jb = a("sunflower", due::new, dzn.d.a().a(evz.h).b().d().a(dtn.d).a(dzn.c.b).i().a(ewa.b));
-   public static final dlu jc = a("lilac", due::new, dzn.d.a().a(evz.h).b().d().a(dtn.d).a(dzn.c.b).i().a(ewa.b));
-   public static final dlu jd = a("rose_bush", due::new, dzn.d.a().a(evz.h).b().d().a(dtn.d).a(dzn.c.b).i().a(ewa.b));
-   public static final dlu je = a("peony", due::new, dzn.d.a().a(evz.h).b().d().a(dtn.d).a(dzn.c.b).i().a(ewa.b));
-   public static final dlu jf = a("tall_grass", dod::new, dzn.d.a().a(evz.h).p().b().d().a(dtn.d).a(dzn.c.b).i().a(ewa.b));
-   public static final dlu jg = a("large_fern", dod::new, dzn.d.a().a(evz.h).p().b().d().a(dtn.d).a(dzn.c.b).i().a(ewa.b));
-   public static final dlu jh = a("white_banner", $$0x -> new dkz(cxq.a, $$0x), dzn.d.a().a(evz.n).k().a(eap.e).b().d(1.0F).a(dtn.b).i());
-   public static final dlu ji = a("orange_banner", $$0x -> new dkz(cxq.b, $$0x), dzn.d.a().a(evz.n).k().a(eap.e).b().d(1.0F).a(dtn.b).i());
-   public static final dlu jj = a("magenta_banner", $$0x -> new dkz(cxq.c, $$0x), dzn.d.a().a(evz.n).k().a(eap.e).b().d(1.0F).a(dtn.b).i());
-   public static final dlu jk = a("light_blue_banner", $$0x -> new dkz(cxq.d, $$0x), dzn.d.a().a(evz.n).k().a(eap.e).b().d(1.0F).a(dtn.b).i());
-   public static final dlu jl = a("yellow_banner", $$0x -> new dkz(cxq.e, $$0x), dzn.d.a().a(evz.n).k().a(eap.e).b().d(1.0F).a(dtn.b).i());
-   public static final dlu jm = a("lime_banner", $$0x -> new dkz(cxq.f, $$0x), dzn.d.a().a(evz.n).k().a(eap.e).b().d(1.0F).a(dtn.b).i());
-   public static final dlu jn = a("pink_banner", $$0x -> new dkz(cxq.g, $$0x), dzn.d.a().a(evz.n).k().a(eap.e).b().d(1.0F).a(dtn.b).i());
-   public static final dlu jo = a("gray_banner", $$0x -> new dkz(cxq.h, $$0x), dzn.d.a().a(evz.n).k().a(eap.e).b().d(1.0F).a(dtn.b).i());
-   public static final dlu jp = a("light_gray_banner", $$0x -> new dkz(cxq.i, $$0x), dzn.d.a().a(evz.n).k().a(eap.e).b().d(1.0F).a(dtn.b).i());
-   public static final dlu jq = a("cyan_banner", $$0x -> new dkz(cxq.j, $$0x), dzn.d.a().a(evz.n).k().a(eap.e).b().d(1.0F).a(dtn.b).i());
-   public static final dlu jr = a("purple_banner", $$0x -> new dkz(cxq.k, $$0x), dzn.d.a().a(evz.n).k().a(eap.e).b().d(1.0F).a(dtn.b).i());
-   public static final dlu js = a("blue_banner", $$0x -> new dkz(cxq.l, $$0x), dzn.d.a().a(evz.n).k().a(eap.e).b().d(1.0F).a(dtn.b).i());
-   public static final dlu jt = a("brown_banner", $$0x -> new dkz(cxq.m, $$0x), dzn.d.a().a(evz.n).k().a(eap.e).b().d(1.0F).a(dtn.b).i());
-   public static final dlu ju = a("green_banner", $$0x -> new dkz(cxq.n, $$0x), dzn.d.a().a(evz.n).k().a(eap.e).b().d(1.0F).a(dtn.b).i());
-   public static final dlu jv = a("red_banner", $$0x -> new dkz(cxq.o, $$0x), dzn.d.a().a(evz.n).k().a(eap.e).b().d(1.0F).a(dtn.b).i());
-   public static final dlu jw = a("black_banner", $$0x -> new dkz(cxq.p, $$0x), dzn.d.a().a(evz.n).k().a(eap.e).b().d(1.0F).a(dtn.b).i());
-   public static final dlu jx = a("white_wall_banner", $$0x -> new dvb(cxq.a, $$0x), a(jh, true).a(evz.n).k().a(eap.e).b().d(1.0F).a(dtn.b).i());
-   public static final dlu jy = a("orange_wall_banner", $$0x -> new dvb(cxq.b, $$0x), a(ji, true).a(evz.n).k().a(eap.e).b().d(1.0F).a(dtn.b).i());
-   public static final dlu jz = a("magenta_wall_banner", $$0x -> new dvb(cxq.c, $$0x), a(jj, true).a(evz.n).k().a(eap.e).b().d(1.0F).a(dtn.b).i());
-   public static final dlu jA = a("light_blue_wall_banner", $$0x -> new dvb(cxq.d, $$0x), a(jk, true).a(evz.n).k().a(eap.e).b().d(1.0F).a(dtn.b).i());
-   public static final dlu jB = a("yellow_wall_banner", $$0x -> new dvb(cxq.e, $$0x), a(jl, true).a(evz.n).k().a(eap.e).b().d(1.0F).a(dtn.b).i());
-   public static final dlu jC = a("lime_wall_banner", $$0x -> new dvb(cxq.f, $$0x), a(jm, true).a(evz.n).k().a(eap.e).b().d(1.0F).a(dtn.b).i());
-   public static final dlu jD = a("pink_wall_banner", $$0x -> new dvb(cxq.g, $$0x), a(jn, true).a(evz.n).k().a(eap.e).b().d(1.0F).a(dtn.b).i());
-   public static final dlu jE = a("gray_wall_banner", $$0x -> new dvb(cxq.h, $$0x), a(jo, true).a(evz.n).k().a(eap.e).b().d(1.0F).a(dtn.b).i());
-   public static final dlu jF = a("light_gray_wall_banner", $$0x -> new dvb(cxq.i, $$0x), a(jp, true).a(evz.n).k().a(eap.e).b().d(1.0F).a(dtn.b).i());
-   public static final dlu jG = a("cyan_wall_banner", $$0x -> new dvb(cxq.j, $$0x), a(jq, true).a(evz.n).k().a(eap.e).b().d(1.0F).a(dtn.b).i());
-   public static final dlu jH = a("purple_wall_banner", $$0x -> new dvb(cxq.k, $$0x), a(jr, true).a(evz.n).k().a(eap.e).b().d(1.0F).a(dtn.b).i());
-   public static final dlu jI = a("blue_wall_banner", $$0x -> new dvb(cxq.l, $$0x), a(js, true).a(evz.n).k().a(eap.e).b().d(1.0F).a(dtn.b).i());
-   public static final dlu jJ = a("brown_wall_banner", $$0x -> new dvb(cxq.m, $$0x), a(jt, true).a(evz.n).k().a(eap.e).b().d(1.0F).a(dtn.b).i());
-   public static final dlu jK = a("green_wall_banner", $$0x -> new dvb(cxq.n, $$0x), a(ju, true).a(evz.n).k().a(eap.e).b().d(1.0F).a(dtn.b).i());
-   public static final dlu jL = a("red_wall_banner", $$0x -> new dvb(cxq.o, $$0x), a(jv, true).a(evz.n).k().a(eap.e).b().d(1.0F).a(dtn.b).i());
-   public static final dlu jM = a("black_wall_banner", $$0x -> new dvb(cxq.p, $$0x), a(jw, true).a(evz.n).k().a(eap.e).b().d(1.0F).a(dtn.b).i());
-   public static final dlu jN = a("red_sandstone", dzn.d.a().a(evz.p).a(eap.b).n().d(0.8F));
-   public static final dlu jO = a("chiseled_red_sandstone", dzn.d.a().a(evz.p).a(eap.b).n().d(0.8F));
-   public static final dlu jP = a("cut_red_sandstone", dzn.d.a().a(evz.p).a(eap.b).n().d(0.8F));
-   public static final dlu jQ = a("red_sandstone_stairs", jN);
-   public static final dlu jR = a("oak_slab", dtd::new, dzn.d.a().a(evz.n).a(eap.e).a(2.0F, 3.0F).a(dtn.b).i());
-   public static final dlu jS = a("spruce_slab", dtd::new, dzn.d.a().a(evz.I).a(eap.e).a(2.0F, 3.0F).a(dtn.b).i());
-   public static final dlu jT = a("birch_slab", dtd::new, dzn.d.a().a(evz.c).a(eap.e).a(2.0F, 3.0F).a(dtn.b).i());
-   public static final dlu jU = a("jungle_slab", dtd::new, dzn.d.a().a(evz.k).a(eap.e).a(2.0F, 3.0F).a(dtn.b).i());
-   public static final dlu jV = a("acacia_slab", dtd::new, dzn.d.a().a(evz.p).a(eap.e).a(2.0F, 3.0F).a(dtn.b).i());
-   public static final dlu jW = a("cherry_slab", dtd::new, dzn.d.a().a(evz.K).a(eap.e).a(2.0F, 3.0F).a(dtn.aV).i());
-   public static final dlu jX = a("dark_oak_slab", dtd::new, dzn.d.a().a(evz.A).a(eap.e).a(2.0F, 3.0F).a(dtn.b).i());
-   public static final dlu jY = a("pale_oak_slab", dtd::new, dzn.d.a().a(v.w()).a(eap.e).a(2.0F, 3.0F).a(dtn.b).i());
-   public static final dlu jZ = a("mangrove_slab", dtd::new, dzn.d.a().a(evz.C).a(eap.e).a(2.0F, 3.0F).a(dtn.b).i());
-   public static final dlu ka = a("bamboo_slab", dtd::new, dzn.d.a().a(evz.s).a(eap.e).a(2.0F, 3.0F).a(dtn.aT).i());
-   public static final dlu kb = a("bamboo_mosaic_slab", dtd::new, dzn.d.a().a(evz.s).a(eap.e).a(2.0F, 3.0F).a(dtn.aT).i());
-   public static final dlu kc = a("stone_slab", dtd::new, dzn.d.a().a(evz.l).a(eap.b).n().a(2.0F, 6.0F));
-   public static final dlu kd = a("smooth_stone_slab", dtd::new, dzn.d.a().a(evz.l).a(eap.b).n().a(2.0F, 6.0F));
-   public static final dlu ke = a("sandstone_slab", dtd::new, dzn.d.a().a(evz.c).a(eap.b).n().a(2.0F, 6.0F));
-   public static final dlu kf = a("cut_sandstone_slab", dtd::new, dzn.d.a().a(evz.c).a(eap.b).n().a(2.0F, 6.0F));
-   public static final dlu kg = a("petrified_oak_slab", dtd::new, dzn.d.a().a(evz.n).a(eap.b).n().a(2.0F, 6.0F));
-   public static final dlu kh = a("cobblestone_slab", dtd::new, dzn.d.a().a(evz.l).a(eap.b).n().a(2.0F, 6.0F));
-   public static final dlu ki = a("brick_slab", dtd::new, dzn.d.a().a(evz.C).a(eap.b).n().a(2.0F, 6.0F));
-   public static final dlu kj = a("stone_brick_slab", dtd::new, dzn.d.a().a(evz.l).a(eap.b).n().a(2.0F, 6.0F));
-   public static final dlu kk = a("mud_brick_slab", dtd::new, dzn.d.a().a(evz.S).a(eap.b).n().a(1.5F, 3.0F).a(dtn.aO));
-   public static final dlu kl = a("nether_brick_slab", dtd::new, dzn.d.a().a(evz.J).a(eap.b).n().a(2.0F, 6.0F).a(dtn.N));
-   public static final dlu km = a("quartz_slab", dtd::new, dzn.d.a().a(evz.o).a(eap.b).n().a(2.0F, 6.0F));
-   public static final dlu kn = a("red_sandstone_slab", dtd::new, dzn.d.a().a(evz.p).a(eap.b).n().a(2.0F, 6.0F));
-   public static final dlu ko = a("cut_red_sandstone_slab", dtd::new, dzn.d.a().a(evz.p).a(eap.b).n().a(2.0F, 6.0F));
-   public static final dlu kp = a("purpur_slab", dtd::new, dzn.d.a().a(evz.q).a(eap.b).n().a(2.0F, 6.0F));
-   public static final dlu kq = a("smooth_stone", dzn.d.a().a(evz.l).a(eap.b).n().a(2.0F, 6.0F));
-   public static final dlu kr = a("smooth_sandstone", dzn.d.a().a(evz.c).a(eap.b).n().a(2.0F, 6.0F));
-   public static final dlu ks = a("smooth_quartz", dzn.d.a().a(evz.o).a(eap.b).n().a(2.0F, 6.0F));
-   public static final dlu kt = a("smooth_red_sandstone", dzn.d.a().a(evz.p).a(eap.b).n().a(2.0F, 6.0F));
-   public static final dlu ku = a("spruce_fence_gate", $$0x -> new dou(ebc.c, $$0x), dzn.d.a().a(o.w()).k().a(eap.e).a(2.0F, 3.0F).i());
-   public static final dlu kv = a("birch_fence_gate", $$0x -> new dou(ebc.d, $$0x), dzn.d.a().a(p.w()).k().a(eap.e).a(2.0F, 3.0F).i());
-   public static final dlu kw = a("jungle_fence_gate", $$0x -> new dou(ebc.g, $$0x), dzn.d.a().a(q.w()).k().a(eap.e).a(2.0F, 3.0F).i());
-   public static final dlu kx = a("acacia_fence_gate", $$0x -> new dou(ebc.e, $$0x), dzn.d.a().a(r.w()).k().a(eap.e).a(2.0F, 3.0F).i());
-   public static final dlu ky = a("cherry_fence_gate", $$0x -> new dou(ebc.f, $$0x), dzn.d.a().a(s.w()).k().a(eap.e).a(2.0F, 3.0F).i());
-   public static final dlu kz = a("dark_oak_fence_gate", $$0x -> new dou(ebc.h, $$0x), dzn.d.a().a(t.w()).k().a(eap.e).a(2.0F, 3.0F).i());
-   public static final dlu kA = a("pale_oak_fence_gate", $$0x -> new dou(ebc.i, $$0x), dzn.d.a().a(v.w()).k().a(eap.e).a(2.0F, 3.0F).i());
-   public static final dlu kB = a("mangrove_fence_gate", $$0x -> new dou(ebc.l, $$0x), dzn.d.a().a(w.w()).k().a(eap.e).a(2.0F, 3.0F).i());
-   public static final dlu kC = a("bamboo_fence_gate", $$0x -> new dou(ebc.m, $$0x), dzn.d.a().a(x.w()).k().a(eap.e).a(2.0F, 3.0F).i());
-   public static final dlu kD = a("spruce_fence", dot::new, dzn.d.a().a(o.w()).a(eap.e).a(2.0F, 3.0F).i().a(dtn.b));
-   public static final dlu kE = a("birch_fence", dot::new, dzn.d.a().a(p.w()).a(eap.e).a(2.0F, 3.0F).i().a(dtn.b));
-   public static final dlu kF = a("jungle_fence", dot::new, dzn.d.a().a(q.w()).a(eap.e).a(2.0F, 3.0F).i().a(dtn.b));
-   public static final dlu kG = a("acacia_fence", dot::new, dzn.d.a().a(r.w()).a(eap.e).a(2.0F, 3.0F).i().a(dtn.b));
-   public static final dlu kH = a("cherry_fence", dot::new, dzn.d.a().a(s.w()).a(eap.e).a(2.0F, 3.0F).i().a(dtn.aV));
-   public static final dlu kI = a("dark_oak_fence", dot::new, dzn.d.a().a(t.w()).a(eap.e).a(2.0F, 3.0F).i().a(dtn.b));
-   public static final dlu kJ = a("pale_oak_fence", dot::new, dzn.d.a().a(v.w()).a(eap.e).a(2.0F, 3.0F).i().a(dtn.b));
-   public static final dlu kK = a("mangrove_fence", dot::new, dzn.d.a().a(w.w()).a(eap.e).a(2.0F, 3.0F).i().a(dtn.b));
-   public static final dlu kL = a("bamboo_fence", dot::new, dzn.d.a().a(x.w()).a(eap.e).a(2.0F, 3.0F).a(dtn.aT).i());
-   public static final dlu kM = a("spruce_door", $$0x -> new dob(ead.h, $$0x), dzn.d.a().a(o.w()).a(eap.e).d(3.0F).c().i().a(ewa.b));
-   public static final dlu kN = a("birch_door", $$0x -> new dob(ead.i, $$0x), dzn.d.a().a(p.w()).a(eap.e).d(3.0F).c().i().a(ewa.b));
-   public static final dlu kO = a("jungle_door", $$0x -> new dob(ead.l, $$0x), dzn.d.a().a(q.w()).a(eap.e).d(3.0F).c().i().a(ewa.b));
-   public static final dlu kP = a("acacia_door", $$0x -> new dob(ead.j, $$0x), dzn.d.a().a(r.w()).a(eap.e).d(3.0F).c().i().a(ewa.b));
-   public static final dlu kQ = a("cherry_door", $$0x -> new dob(ead.k, $$0x), dzn.d.a().a(s.w()).a(eap.e).d(3.0F).c().i().a(ewa.b));
-   public static final dlu kR = a("dark_oak_door", $$0x -> new dob(ead.m, $$0x), dzn.d.a().a(t.w()).a(eap.e).d(3.0F).c().i().a(ewa.b));
-   public static final dlu kS = a("pale_oak_door", $$0x -> new dob(ead.n, $$0x), dzn.d.a().a(v.w()).a(eap.e).d(3.0F).c().i().a(ewa.b));
-   public static final dlu kT = a("mangrove_door", $$0x -> new dob(ead.q, $$0x), dzn.d.a().a(w.w()).a(eap.e).d(3.0F).c().i().a(ewa.b));
-   public static final dlu kU = a("bamboo_door", $$0x -> new dob(ead.r, $$0x), dzn.d.a().a(x.w()).a(eap.e).d(3.0F).c().i().a(ewa.b));
-   public static final dlu kV = a("end_rod", dol::new, dzn.d.a().l().d().a($$0x -> 14).a(dtn.b).c());
-   public static final dlu kW = a("chorus_plant", dna::new, dzn.d.a().a(evz.y).l().d(0.4F).a(dtn.b).c().a(ewa.b));
-   public static final dlu kX = a("chorus_flower", $$0x -> new dmz(kW, $$0x), dzn.d.a().a(evz.y).l().e().d(0.4F).a(dtn.b).c().a(dlw::a).a(ewa.b).a(dlw::b));
-   public static final dlu kY = a("purpur_block", dzn.d.a().a(evz.q).a(eap.b).n().a(1.5F, 6.0F));
-   public static final dlu kZ = a("purpur_pillar", dsl::new, dzn.d.a().a(evz.q).a(eap.b).n().a(1.5F, 6.0F));
-   public static final dlu la = a("purpur_stairs", kY);
-   public static final dlu lb = a("end_stone_bricks", dzn.d.a().a(evz.c).a(eap.b).n().a(3.0F, 9.0F));
-   public static final dlu lc = a("torchflower_crop", duo::new, dzn.d.a().a(evz.h).b().e().d().a(dtn.w).a(ewa.b));
-   public static final dlu ld = a("pitcher_crop", drn::new, dzn.d.a().a(evz.h).b().e().d().a(dtn.w).a(ewa.b));
-   public static final dlu le = a("pitcher_plant", dod::new, dzn.d.a().a(evz.h).b().d().a(dtn.w).a(dzn.c.b).i().a(ewa.b));
-   public static final dlu lf = a("beetroots", dlp::new, dzn.d.a().a(evz.h).b().e().d().a(dtn.w).a(ewa.b));
-   public static final dlu lg = a("dirt_path", dnz::new, dzn.d.a().a(evz.k).d(0.65F).a(dtn.d).c(dlw::a).b(dlw::a));
-   public static final dlu lh = a("end_gateway", doi::new, dzn.d.a().a(evz.D).b().a($$0x -> 15).a(-1.0F, 3600000.0F).g().a(ewa.c));
-   public static final dlu li = a("repeating_command_block", $$0x -> new dnd(false, $$0x), dzn.d.a().a(evz.y).n().a(-1.0F, 3600000.0F).g());
-   public static final dlu lj = a("chain_command_block", $$0x -> new dnd(true, $$0x), dzn.d.a().a(evz.B).n().a(-1.0F, 3600000.0F).g());
-   public static final dlu lk = a(
-      "frosted_ice", dpb::new, dzn.d.a().a(evz.f).a(0.98F).d(0.5F).a(dtn.h).c().a(($$0x, $$1x, $$2, $$3) -> $$3 == bwj.aU).a(dlw::b)
-   );
-   public static final dlu ll = a(
-      "magma_block", dqr::new, dzn.d.a().a(evz.J).a(eap.b).n().a($$0x -> 3).d(0.5F).a(($$0x, $$1x, $$2, $$3) -> $$3.d()).d(dlw::a).e(dlw::a)
-   );
-   public static final dlu lm = a("nether_wart_block", dzn.d.a().a(evz.C).d(1.0F).a(dtn.L));
-   public static final dlu ln = a("red_nether_bricks", dzn.d.a().a(evz.J).a(eap.b).n().a(2.0F, 6.0F).a(dtn.N));
-   public static final dlu lo = a("bone_block", dsl::new, dzn.d.a().a(evz.c).a(eap.j).n().d(2.0F).a(dtn.Q));
-   public static final dlu lp = a("structure_void", dtz::new, dzn.d.a().p().b().g().o().a(ewa.b));
-   public static final dlu lq = a("observer", drk::new, dzn.d.a().a(evz.l).a(eap.b).d(3.0F).n().a(dlw::b));
-   public static final dlu lr = a("shulker_box", $$0x -> new dsz(null, $$0x), c(evz.y));
-   public static final dlu ls = a("white_shulker_box", $$0x -> new dsz(cxq.a, $$0x), c(evz.i));
-   public static final dlu lt = a("orange_shulker_box", $$0x -> new dsz(cxq.b, $$0x), c(evz.p));
-   public static final dlu lu = a("magenta_shulker_box", $$0x -> new dsz(cxq.c, $$0x), c(evz.q));
-   public static final dlu lv = a("light_blue_shulker_box", $$0x -> new dsz(cxq.d, $$0x), c(evz.r));
-   public static final dlu lw = a("yellow_shulker_box", $$0x -> new dsz(cxq.e, $$0x), c(evz.s));
-   public static final dlu lx = a("lime_shulker_box", $$0x -> new dsz(cxq.f, $$0x), c(evz.t));
-   public static final dlu ly = a("pink_shulker_box", $$0x -> new dsz(cxq.g, $$0x), c(evz.u));
-   public static final dlu lz = a("gray_shulker_box", $$0x -> new dsz(cxq.h, $$0x), c(evz.v));
-   public static final dlu lA = a("light_gray_shulker_box", $$0x -> new dsz(cxq.i, $$0x), c(evz.w));
-   public static final dlu lB = a("cyan_shulker_box", $$0x -> new dsz(cxq.j, $$0x), c(evz.x));
-   public static final dlu lC = a("purple_shulker_box", $$0x -> new dsz(cxq.k, $$0x), c(evz.U));
-   public static final dlu lD = a("blue_shulker_box", $$0x -> new dsz(cxq.l, $$0x), c(evz.z));
-   public static final dlu lE = a("brown_shulker_box", $$0x -> new dsz(cxq.m, $$0x), c(evz.A));
-   public static final dlu lF = a("green_shulker_box", $$0x -> new dsz(cxq.n, $$0x), c(evz.B));
-   public static final dlu lG = a("red_shulker_box", $$0x -> new dsz(cxq.o, $$0x), c(evz.C));
-   public static final dlu lH = a("black_shulker_box", $$0x -> new dsz(cxq.p, $$0x), c(evz.D));
-   public static final dlu lI = a("white_glazed_terracotta", dpf::new, dzn.d.a().a(cxq.a).a(eap.b).n().d(1.4F).a(ewa.e));
-   public static final dlu lJ = a("orange_glazed_terracotta", dpf::new, dzn.d.a().a(cxq.b).a(eap.b).n().d(1.4F).a(ewa.e));
-   public static final dlu lK = a("magenta_glazed_terracotta", dpf::new, dzn.d.a().a(cxq.c).a(eap.b).n().d(1.4F).a(ewa.e));
-   public static final dlu lL = a("light_blue_glazed_terracotta", dpf::new, dzn.d.a().a(cxq.d).a(eap.b).n().d(1.4F).a(ewa.e));
-   public static final dlu lM = a("yellow_glazed_terracotta", dpf::new, dzn.d.a().a(cxq.e).a(eap.b).n().d(1.4F).a(ewa.e));
-   public static final dlu lN = a("lime_glazed_terracotta", dpf::new, dzn.d.a().a(cxq.f).a(eap.b).n().d(1.4F).a(ewa.e));
-   public static final dlu lO = a("pink_glazed_terracotta", dpf::new, dzn.d.a().a(cxq.g).a(eap.b).n().d(1.4F).a(ewa.e));
-   public static final dlu lP = a("gray_glazed_terracotta", dpf::new, dzn.d.a().a(cxq.h).a(eap.b).n().d(1.4F).a(ewa.e));
-   public static final dlu lQ = a("light_gray_glazed_terracotta", dpf::new, dzn.d.a().a(cxq.i).a(eap.b).n().d(1.4F).a(ewa.e));
-   public static final dlu lR = a("cyan_glazed_terracotta", dpf::new, dzn.d.a().a(cxq.j).a(eap.b).n().d(1.4F).a(ewa.e));
-   public static final dlu lS = a("purple_glazed_terracotta", dpf::new, dzn.d.a().a(cxq.k).a(eap.b).n().d(1.4F).a(ewa.e));
-   public static final dlu lT = a("blue_glazed_terracotta", dpf::new, dzn.d.a().a(cxq.l).a(eap.b).n().d(1.4F).a(ewa.e));
-   public static final dlu lU = a("brown_glazed_terracotta", dpf::new, dzn.d.a().a(cxq.m).a(eap.b).n().d(1.4F).a(ewa.e));
-   public static final dlu lV = a("green_glazed_terracotta", dpf::new, dzn.d.a().a(cxq.n).a(eap.b).n().d(1.4F).a(ewa.e));
-   public static final dlu lW = a("red_glazed_terracotta", dpf::new, dzn.d.a().a(cxq.o).a(eap.b).n().d(1.4F).a(ewa.e));
-   public static final dlu lX = a("black_glazed_terracotta", dpf::new, dzn.d.a().a(cxq.p).a(eap.b).n().d(1.4F).a(ewa.e));
-   public static final dlu lY = a("white_concrete", dzn.d.a().a(cxq.a).a(eap.b).n().d(1.8F));
-   public static final dlu lZ = a("orange_concrete", dzn.d.a().a(cxq.b).a(eap.b).n().d(1.8F));
-   public static final dlu ma = a("magenta_concrete", dzn.d.a().a(cxq.c).a(eap.b).n().d(1.8F));
-   public static final dlu mb = a("light_blue_concrete", dzn.d.a().a(cxq.d).a(eap.b).n().d(1.8F));
-   public static final dlu mc = a("yellow_concrete", dzn.d.a().a(cxq.e).a(eap.b).n().d(1.8F));
-   public static final dlu md = a("lime_concrete", dzn.d.a().a(cxq.f).a(eap.b).n().d(1.8F));
-   public static final dlu me = a("pink_concrete", dzn.d.a().a(cxq.g).a(eap.b).n().d(1.8F));
-   public static final dlu mf = a("gray_concrete", dzn.d.a().a(cxq.h).a(eap.b).n().d(1.8F));
-   public static final dlu mg = a("light_gray_concrete", dzn.d.a().a(cxq.i).a(eap.b).n().d(1.8F));
-   public static final dlu mh = a("cyan_concrete", dzn.d.a().a(cxq.j).a(eap.b).n().d(1.8F));
-   public static final dlu mi = a("purple_concrete", dzn.d.a().a(cxq.k).a(eap.b).n().d(1.8F));
-   public static final dlu mj = a("blue_concrete", dzn.d.a().a(cxq.l).a(eap.b).n().d(1.8F));
-   public static final dlu mk = a("brown_concrete", dzn.d.a().a(cxq.m).a(eap.b).n().d(1.8F));
-   public static final dlu ml = a("green_concrete", dzn.d.a().a(cxq.n).a(eap.b).n().d(1.8F));
-   public static final dlu mm = a("red_concrete", dzn.d.a().a(cxq.o).a(eap.b).n().d(1.8F));
-   public static final dlu mn = a("black_concrete", dzn.d.a().a(cxq.p).a(eap.b).n().d(1.8F));
-   public static final dlu mo = a("white_concrete_powder", $$0x -> new dng(lY, $$0x), dzn.d.a().a(cxq.a).a(eap.c).d(0.5F).a(dtn.j));
-   public static final dlu mp = a("orange_concrete_powder", $$0x -> new dng(lZ, $$0x), dzn.d.a().a(cxq.b).a(eap.c).d(0.5F).a(dtn.j));
-   public static final dlu mq = a("magenta_concrete_powder", $$0x -> new dng(ma, $$0x), dzn.d.a().a(cxq.c).a(eap.c).d(0.5F).a(dtn.j));
-   public static final dlu mr = a("light_blue_concrete_powder", $$0x -> new dng(mb, $$0x), dzn.d.a().a(cxq.d).a(eap.c).d(0.5F).a(dtn.j));
-   public static final dlu ms = a("yellow_concrete_powder", $$0x -> new dng(mc, $$0x), dzn.d.a().a(cxq.e).a(eap.c).d(0.5F).a(dtn.j));
-   public static final dlu mt = a("lime_concrete_powder", $$0x -> new dng(md, $$0x), dzn.d.a().a(cxq.f).a(eap.c).d(0.5F).a(dtn.j));
-   public static final dlu mu = a("pink_concrete_powder", $$0x -> new dng(me, $$0x), dzn.d.a().a(cxq.g).a(eap.c).d(0.5F).a(dtn.j));
-   public static final dlu mv = a("gray_concrete_powder", $$0x -> new dng(mf, $$0x), dzn.d.a().a(cxq.h).a(eap.c).d(0.5F).a(dtn.j));
-   public static final dlu mw = a("light_gray_concrete_powder", $$0x -> new dng(mg, $$0x), dzn.d.a().a(cxq.i).a(eap.c).d(0.5F).a(dtn.j));
-   public static final dlu mx = a("cyan_concrete_powder", $$0x -> new dng(mh, $$0x), dzn.d.a().a(cxq.j).a(eap.c).d(0.5F).a(dtn.j));
-   public static final dlu my = a("purple_concrete_powder", $$0x -> new dng(mi, $$0x), dzn.d.a().a(cxq.k).a(eap.c).d(0.5F).a(dtn.j));
-   public static final dlu mz = a("blue_concrete_powder", $$0x -> new dng(mj, $$0x), dzn.d.a().a(cxq.l).a(eap.c).d(0.5F).a(dtn.j));
-   public static final dlu mA = a("brown_concrete_powder", $$0x -> new dng(mk, $$0x), dzn.d.a().a(cxq.m).a(eap.c).d(0.5F).a(dtn.j));
-   public static final dlu mB = a("green_concrete_powder", $$0x -> new dng(ml, $$0x), dzn.d.a().a(cxq.n).a(eap.c).d(0.5F).a(dtn.j));
-   public static final dlu mC = a("red_concrete_powder", $$0x -> new dng(mm, $$0x), dzn.d.a().a(cxq.o).a(eap.c).d(0.5F).a(dtn.j));
-   public static final dlu mD = a("black_concrete_powder", $$0x -> new dng(mn, $$0x), dzn.d.a().a(cxq.p).a(eap.c).d(0.5F).a(dtn.j));
-   public static final dlu mE = a("kelp", dqb::new, dzn.d.a().a(evz.m).b().e().d().a(dtn.q).a(ewa.b));
-   public static final dlu mF = a("kelp_plant", dqc::new, dzn.d.a().a(evz.m).b().d().a(dtn.q).a(ewa.b));
-   public static final dlu mG = a("dried_kelp_block", dzn.d.a().a(evz.B).a(0.5F, 2.5F).a(dtn.d));
-   public static final dlu mH = a("turtle_egg", duv::new, dzn.d.a().a(evz.c).k().d(0.5F).a(dtn.g).e().c().a(ewa.b));
-   public static final dlu mI = a("sniffer_egg", dti::new, dzn.d.a().a(evz.C).d(0.5F).a(dtn.g).c());
-   public static final dlu mJ = a("dead_tube_coral_block", dzn.d.a().a(evz.v).k().a(eap.b).n().a(1.5F, 6.0F));
-   public static final dlu mK = a("dead_brain_coral_block", dzn.d.a().a(evz.v).k().a(eap.b).n().a(1.5F, 6.0F));
-   public static final dlu mL = a("dead_bubble_coral_block", dzn.d.a().a(evz.v).k().a(eap.b).n().a(1.5F, 6.0F));
-   public static final dlu mM = a("dead_fire_coral_block", dzn.d.a().a(evz.v).k().a(eap.b).n().a(1.5F, 6.0F));
-   public static final dlu mN = a("dead_horn_coral_block", dzn.d.a().a(evz.v).k().a(eap.b).n().a(1.5F, 6.0F));
-   public static final dlu mO = a("tube_coral_block", $$0x -> new dnj(mJ, $$0x), dzn.d.a().a(evz.z).a(eap.b).n().a(1.5F, 6.0F).a(dtn.r));
-   public static final dlu mP = a("brain_coral_block", $$0x -> new dnj(mK, $$0x), dzn.d.a().a(evz.u).a(eap.b).n().a(1.5F, 6.0F).a(dtn.r));
-   public static final dlu mQ = a("bubble_coral_block", $$0x -> new dnj(mL, $$0x), dzn.d.a().a(evz.y).a(eap.b).n().a(1.5F, 6.0F).a(dtn.r));
-   public static final dlu mR = a("fire_coral_block", $$0x -> new dnj(mM, $$0x), dzn.d.a().a(evz.C).a(eap.b).n().a(1.5F, 6.0F).a(dtn.r));
-   public static final dlu mS = a("horn_coral_block", $$0x -> new dnj(mN, $$0x), dzn.d.a().a(evz.s).a(eap.b).n().a(1.5F, 6.0F).a(dtn.r));
-   public static final dlu mT = a("dead_tube_coral", dld::new, dzn.d.a().a(evz.v).k().a(eap.b).n().b().d());
-   public static final dlu mU = a("dead_brain_coral", dld::new, dzn.d.a().a(evz.v).k().a(eap.b).n().b().d());
-   public static final dlu mV = a("dead_bubble_coral", dld::new, dzn.d.a().a(evz.v).k().a(eap.b).n().b().d());
-   public static final dlu mW = a("dead_fire_coral", dld::new, dzn.d.a().a(evz.v).k().a(eap.b).n().b().d());
-   public static final dlu mX = a("dead_horn_coral", dld::new, dzn.d.a().a(evz.v).k().a(eap.b).n().b().d());
-   public static final dlu mY = a("tube_coral", $$0x -> new dnl(mT, $$0x), dzn.d.a().a(evz.z).b().d().a(dtn.q).a(ewa.b));
-   public static final dlu mZ = a("brain_coral", $$0x -> new dnl(mU, $$0x), dzn.d.a().a(evz.u).b().d().a(dtn.q).a(ewa.b));
-   public static final dlu na = a("bubble_coral", $$0x -> new dnl(mV, $$0x), dzn.d.a().a(evz.y).b().d().a(dtn.q).a(ewa.b));
-   public static final dlu nb = a("fire_coral", $$0x -> new dnl(mW, $$0x), dzn.d.a().a(evz.C).b().d().a(dtn.q).a(ewa.b));
-   public static final dlu nc = a("horn_coral", $$0x -> new dnl(mX, $$0x), dzn.d.a().a(evz.s).b().d().a(dtn.q).a(ewa.b));
-   public static final dlu nd = a("dead_tube_coral_fan", dlc::new, dzn.d.a().a(evz.v).k().a(eap.b).n().b().d());
-   public static final dlu ne = a("dead_brain_coral_fan", dlc::new, dzn.d.a().a(evz.v).k().a(eap.b).n().b().d());
-   public static final dlu nf = a("dead_bubble_coral_fan", dlc::new, dzn.d.a().a(evz.v).k().a(eap.b).n().b().d());
-   public static final dlu ng = a("dead_fire_coral_fan", dlc::new, dzn.d.a().a(evz.v).k().a(eap.b).n().b().d());
-   public static final dlu nh = a("dead_horn_coral_fan", dlc::new, dzn.d.a().a(evz.v).k().a(eap.b).n().b().d());
-   public static final dlu ni = a("tube_coral_fan", $$0x -> new dnk(nd, $$0x), dzn.d.a().a(evz.z).b().d().a(dtn.q).a(ewa.b));
-   public static final dlu nj = a("brain_coral_fan", $$0x -> new dnk(ne, $$0x), dzn.d.a().a(evz.u).b().d().a(dtn.q).a(ewa.b));
-   public static final dlu nk = a("bubble_coral_fan", $$0x -> new dnk(nf, $$0x), dzn.d.a().a(evz.y).b().d().a(dtn.q).a(ewa.b));
-   public static final dlu nl = a("fire_coral_fan", $$0x -> new dnk(ng, $$0x), dzn.d.a().a(evz.C).b().d().a(dtn.q).a(ewa.b));
-   public static final dlu nm = a("horn_coral_fan", $$0x -> new dnk(nh, $$0x), dzn.d.a().a(evz.s).b().d().a(dtn.q).a(ewa.b));
-   public static final dlu nn = a("dead_tube_coral_wall_fan", dlf::new, a(nd, false).a(evz.v).k().a(eap.b).n().b().d());
-   public static final dlu no = a("dead_brain_coral_wall_fan", dlf::new, a(ne, false).a(evz.v).k().a(eap.b).n().b().d());
-   public static final dlu np = a("dead_bubble_coral_wall_fan", dlf::new, a(nf, false).a(evz.v).k().a(eap.b).n().b().d());
-   public static final dlu nq = a("dead_fire_coral_wall_fan", dlf::new, a(ng, false).a(evz.v).k().a(eap.b).n().b().d());
-   public static final dlu nr = a("dead_horn_coral_wall_fan", dlf::new, a(nh, false).a(evz.v).k().a(eap.b).n().b().d());
-   public static final dlu ns = a("tube_coral_wall_fan", $$0x -> new dnm(nn, $$0x), a(ni, false).a(evz.z).b().d().a(dtn.q).a(ewa.b));
-   public static final dlu nt = a("brain_coral_wall_fan", $$0x -> new dnm(no, $$0x), a(nj, false).a(evz.u).b().d().a(dtn.q).a(ewa.b));
-   public static final dlu nu = a("bubble_coral_wall_fan", $$0x -> new dnm(np, $$0x), a(nk, false).a(evz.y).b().d().a(dtn.q).a(ewa.b));
-   public static final dlu nv = a("fire_coral_wall_fan", $$0x -> new dnm(nq, $$0x), a(nl, false).a(evz.C).b().d().a(dtn.q).a(ewa.b));
-   public static final dlu nw = a("horn_coral_wall_fan", $$0x -> new dnm(nr, $$0x), a(nm, false).a(evz.s).b().d().a(dtn.q).a(ewa.b));
-   public static final dlu nx = a("sea_pickle", dsw::new, dzn.d.a().a(evz.B).a($$0x -> dsw.o($$0x) ? 0 : 3 + 3 * $$0x.c(dsw.c)).a(dtn.o).c().a(ewa.b));
-   public static final dlu ny = a("blue_ice", dpm::new, dzn.d.a().a(evz.f).d(2.8F).a(0.989F).a(dtn.h));
-   public static final dlu nz = a("conduit", dnh::new, dzn.d.a().a(evz.F).k().a(eap.d).d(3.0F).a($$0x -> 15).c());
-   public static final dlu nA = a("bamboo_sapling", dkx::new, dzn.d.a().a(evz.n).k().e().d().b().d(1.0F).a(dtn.t).a(dzn.c.b).i().a(ewa.b));
-   public static final dlu nB = a("bamboo", dky::new, dzn.d.a().a(evz.h).k().e().d().d(1.0F).a(dtn.s).c().f().a(dzn.c.b).i().a(ewa.b).a(dlw::b));
-   public static final dlu nC = a("potted_bamboo", $$0x -> new doz(nB, $$0x), c());
-   public static final dlu nD = a("void_air", dkr::new, dzn.d.a().p().b().g().m());
-   public static final dlu nE = a("cave_air", dkr::new, dzn.d.a().p().b().g().m());
-   public static final dlu nF = a("bubble_column", dmb::new, dzn.d.a().a(evz.m).p().b().g().a(ewa.b).j().a(dtn.a));
-   public static final dlu nG = a("polished_granite_stairs", d);
-   public static final dlu nH = a("smooth_red_sandstone_stairs", kt);
-   public static final dlu nI = a("mossy_stone_brick_stairs", eW);
-   public static final dlu nJ = a("polished_diorite_stairs", f);
-   public static final dlu nK = a("mossy_cobblestone_stairs", cu);
-   public static final dlu nL = a("end_stone_brick_stairs", lb);
-   public static final dlu nM = a("stone_stairs", b);
-   public static final dlu nN = a("smooth_sandstone_stairs", kr);
-   public static final dlu nO = a("smooth_quartz_stairs", ks);
-   public static final dlu nP = a("granite_stairs", c);
-   public static final dlu nQ = a("andesite_stairs", g);
-   public static final dlu nR = a("red_nether_brick_stairs", ln);
-   public static final dlu nS = a("polished_andesite_stairs", h);
-   public static final dlu nT = a("diorite_stairs", e);
-   public static final dlu nU = a("polished_granite_slab", dtd::new, dzn.d.b(d));
-   public static final dlu nV = a("smooth_red_sandstone_slab", dtd::new, dzn.d.b(kt));
-   public static final dlu nW = a("mossy_stone_brick_slab", dtd::new, dzn.d.b(eW));
-   public static final dlu nX = a("polished_diorite_slab", dtd::new, dzn.d.b(f));
-   public static final dlu nY = a("mossy_cobblestone_slab", dtd::new, dzn.d.b(cu));
-   public static final dlu nZ = a("end_stone_brick_slab", dtd::new, dzn.d.b(lb));
-   public static final dlu oa = a("smooth_sandstone_slab", dtd::new, dzn.d.b(kr));
-   public static final dlu ob = a("smooth_quartz_slab", dtd::new, dzn.d.b(ks));
-   public static final dlu oc = a("granite_slab", dtd::new, dzn.d.b(c));
-   public static final dlu od = a("andesite_slab", dtd::new, dzn.d.b(g));
-   public static final dlu oe = a("red_nether_brick_slab", dtd::new, dzn.d.b(ln));
-   public static final dlu of = a("polished_andesite_slab", dtd::new, dzn.d.b(h));
-   public static final dlu og = a("diorite_slab", dtd::new, dzn.d.b(e));
-   public static final dlu oh = a("brick_wall", dvc::new, dzn.d.b(cq).k());
-   public static final dlu oi = a("prismarine_wall", dvc::new, dzn.d.b(ix).k());
-   public static final dlu oj = a("red_sandstone_wall", dvc::new, dzn.d.b(jN).k());
-   public static final dlu ok = a("mossy_stone_brick_wall", dvc::new, dzn.d.b(eW).k());
-   public static final dlu ol = a("granite_wall", dvc::new, dzn.d.b(c).k());
-   public static final dlu om = a("stone_brick_wall", dvc::new, dzn.d.b(eV).k());
-   public static final dlu on = a("mud_brick_wall", dvc::new, dzn.d.b(fa).k());
-   public static final dlu oo = a("nether_brick_wall", dvc::new, dzn.d.b(fI).k());
-   public static final dlu op = a("andesite_wall", dvc::new, dzn.d.b(g).k());
-   public static final dlu oq = a("red_nether_brick_wall", dvc::new, dzn.d.b(ln).k());
-   public static final dlu or = a("sandstone_wall", dvc::new, dzn.d.b(bc).k());
-   public static final dlu os = a("end_stone_brick_wall", dvc::new, dzn.d.b(lb).k());
-   public static final dlu ot = a("diorite_wall", dvc::new, dzn.d.b(e).k());
-   public static final dlu ou = a("scaffolding", dso::new, dzn.d.a().a(evz.c).b().a(dtn.u).f().a(dlw::a).a(ewa.b).a(dlw::b));
-   public static final dlu ov = a("loom", dqq::new, dzn.d.a().a(evz.n).a(eap.e).d(2.5F).a(dtn.b).i());
-   public static final dlu ow = a("barrel", dla::new, dzn.d.a().a(evz.n).a(eap.e).d(2.5F).a(dtn.b).i());
-   public static final dlu ox = a("smoker", dth::new, dzn.d.a().a(evz.l).a(eap.b).n().d(3.5F).a(a(13)));
-   public static final dlu oy = a("blast_furnace", dlt::new, dzn.d.a().a(evz.l).a(eap.b).n().d(3.5F).a(a(13)));
-   public static final dlu oz = a("cartography_table", dmo::new, dzn.d.a().a(evz.n).a(eap.e).d(2.5F).a(dtn.b).i());
-   public static final dlu oA = a("fletching_table", dow::new, dzn.d.a().a(evz.n).a(eap.e).d(2.5F).a(dtn.b).i());
-   public static final dlu oB = a("grindstone", dpi::new, dzn.d.a().a(evz.g).n().a(2.0F, 6.0F).a(dtn.f).a(ewa.c));
-   public static final dlu oC = a("lectern", dqj::new, dzn.d.a().a(evz.n).a(eap.e).d(2.5F).a(dtn.b).i());
-   public static final dlu oD = a("smithing_table", dtg::new, dzn.d.a().a(evz.n).a(eap.e).d(2.5F).a(dtn.b).i());
-   public static final dlu oE = a("stonecutter", dtx::new, dzn.d.a().a(evz.l).a(eap.b).n().d(3.5F));
-   public static final dlu oF = a("bell", dlq::new, dzn.d.a().a(evz.E).k().d(5.0F).a(dtn.n).a(ewa.b));
-   public static final dlu oG = a("lantern", dqe::new, dzn.d.a().a(evz.g).k().d(3.5F).a(dtn.A).a($$0x -> 15).c().a(ewa.b));
-   public static final dlu oH = a("soul_lantern", dqe::new, dzn.d.a().a(evz.g).k().d(3.5F).a(dtn.A).a($$0x -> 10).c().a(ewa.b));
-   public static final dlu oI = a("campfire", $$0x -> new dmj(true, 1, $$0x), dzn.d.a().a(evz.I).a(eap.e).d(2.0F).a(dtn.b).a(a(15)).c().i());
-   public static final dlu oJ = a("soul_campfire", $$0x -> new dmj(false, 2, $$0x), dzn.d.a().a(evz.I).a(eap.e).d(2.0F).a(dtn.b).a(a(10)).c().i());
-   public static final dlu oK = a("sweet_berry_bush", dud::new, dzn.d.a().a(evz.h).e().b().a(dtn.v).a(ewa.b));
-   public static final dlu oL = a("warped_stem", dsl::new, b(evz.ae));
-   public static final dlu oM = a("stripped_warped_stem", dsl::new, b(evz.ae));
-   public static final dlu oN = a("warped_hyphae", dsl::new, dzn.d.a().a(evz.af).a(eap.e).d(2.0F).a(dtn.B));
-   public static final dlu oO = a("stripped_warped_hyphae", dsl::new, dzn.d.a().a(evz.af).a(eap.e).d(2.0F).a(dtn.B));
-   public static final dlu oP = a("warped_nylium", drj::new, dzn.d.a().a(evz.ad).a(eap.b).n().d(0.4F).a(dtn.C).e());
-   public static final dlu oQ = a("warped_fungus", $$0x -> new dpc(rn.d, oP, $$0x), dzn.d.a().a(evz.x).d().b().a(dtn.D).a(ewa.b));
-   public static final dlu oR = a("warped_wart_block", dzn.d.a().a(evz.ag).d(1.0F).a(dtn.L));
-   public static final dlu oS = a("warped_roots", dsk::new, dzn.d.a().a(evz.x).p().b().d().a(dtn.E).a(dzn.c.b).a(ewa.b));
-   public static final dlu oT = a("nether_sprouts", dre::new, dzn.d.a().a(evz.x).p().b().d().a(dtn.O).a(dzn.c.b).a(ewa.b));
-   public static final dlu oU = a("crimson_stem", dsl::new, b(evz.ab));
-   public static final dlu oV = a("stripped_crimson_stem", dsl::new, b(evz.ab));
-   public static final dlu oW = a("crimson_hyphae", dsl::new, dzn.d.a().a(evz.ac).a(eap.e).d(2.0F).a(dtn.B));
-   public static final dlu oX = a("stripped_crimson_hyphae", dsl::new, dzn.d.a().a(evz.ac).a(eap.e).d(2.0F).a(dtn.B));
-   public static final dlu oY = a("crimson_nylium", drj::new, dzn.d.a().a(evz.aa).a(eap.b).n().d(0.4F).a(dtn.C).e());
-   public static final dlu oZ = a("crimson_fungus", $$0x -> new dpc(rn.b, oY, $$0x), dzn.d.a().a(evz.J).d().b().a(dtn.D).a(ewa.b));
-   public static final dlu pa = a("shroomlight", dzn.d.a().a(evz.C).d(1.0F).a(dtn.F).a($$0x -> 15));
-   public static final dlu pb = a("weeping_vines", dvs::new, dzn.d.a().a(evz.J).e().b().d().a(dtn.G).a(ewa.b));
-   public static final dlu pc = a("weeping_vines_plant", dvt::new, dzn.d.a().a(evz.J).b().d().a(dtn.G).a(ewa.b));
-   public static final dlu pd = a("twisting_vines", duw::new, dzn.d.a().a(evz.x).e().b().d().a(dtn.G).a(ewa.b));
-   public static final dlu pe = a("twisting_vines_plant", dux::new, dzn.d.a().a(evz.x).b().d().a(dtn.G).a(ewa.b));
-   public static final dlu pf = a("crimson_roots", dsk::new, dzn.d.a().a(evz.J).p().b().d().a(dtn.E).a(dzn.c.b).a(ewa.b));
-   public static final dlu pg = a("crimson_planks", dzn.d.a().a(evz.ab).a(eap.e).a(2.0F, 3.0F).a(dtn.aU));
-   public static final dlu ph = a("warped_planks", dzn.d.a().a(evz.ae).a(eap.e).a(2.0F, 3.0F).a(dtn.aU));
-   public static final dlu pi = a("crimson_slab", dtd::new, dzn.d.a().a(pg.w()).a(eap.e).a(2.0F, 3.0F).a(dtn.aU));
-   public static final dlu pj = a("warped_slab", dtd::new, dzn.d.a().a(ph.w()).a(eap.e).a(2.0F, 3.0F).a(dtn.aU));
-   public static final dlu pk = a("crimson_pressure_plate", $$0x -> new drw(ead.o, $$0x), dzn.d.a().a(pg.w()).k().a(eap.e).b().d(0.5F).a(ewa.b));
-   public static final dlu pl = a("warped_pressure_plate", $$0x -> new drw(ead.p, $$0x), dzn.d.a().a(ph.w()).k().a(eap.e).b().d(0.5F).a(ewa.b));
-   public static final dlu pm = a("crimson_fence", dot::new, dzn.d.a().a(pg.w()).a(eap.e).a(2.0F, 3.0F).a(dtn.aU));
-   public static final dlu pn = a("warped_fence", dot::new, dzn.d.a().a(ph.w()).a(eap.e).a(2.0F, 3.0F).a(dtn.aU));
-   public static final dlu po = a("crimson_trapdoor", $$0x -> new duq(ead.o, $$0x), dzn.d.a().a(pg.w()).a(eap.e).d(3.0F).c().a(dlw::a));
-   public static final dlu pp = a("warped_trapdoor", $$0x -> new duq(ead.p, $$0x), dzn.d.a().a(ph.w()).a(eap.e).d(3.0F).c().a(dlw::a));
-   public static final dlu pq = a("crimson_fence_gate", $$0x -> new dou(ebc.j, $$0x), dzn.d.a().a(pg.w()).k().a(eap.e).a(2.0F, 3.0F));
-   public static final dlu pr = a("warped_fence_gate", $$0x -> new dou(ebc.k, $$0x), dzn.d.a().a(ph.w()).k().a(eap.e).a(2.0F, 3.0F));
-   public static final dlu ps = a("crimson_stairs", pg);
-   public static final dlu pt = a("warped_stairs", ph);
-   public static final dlu pu = a("crimson_button", $$0x -> new dmf(ead.o, 30, $$0x), b());
-   public static final dlu pv = a("warped_button", $$0x -> new dmf(ead.p, 30, $$0x), b());
-   public static final dlu pw = a("crimson_door", $$0x -> new dob(ead.o, $$0x), dzn.d.a().a(pg.w()).a(eap.e).d(3.0F).c().a(ewa.b));
-   public static final dlu px = a("warped_door", $$0x -> new dob(ead.p, $$0x), dzn.d.a().a(ph.w()).a(eap.e).d(3.0F).c().a(ewa.b));
-   public static final dlu py = a("crimson_sign", $$0x -> new dtv(ebc.j, $$0x), dzn.d.a().a(pg.w()).a(eap.e).k().b().d(1.0F));
-   public static final dlu pz = a("warped_sign", $$0x -> new dtv(ebc.k, $$0x), dzn.d.a().a(ph.w()).a(eap.e).k().b().d(1.0F));
-   public static final dlu pA = a("crimson_wall_sign", $$0x -> new dve(ebc.j, $$0x), a(py, true).a(pg.w()).a(eap.e).k().b().d(1.0F));
-   public static final dlu pB = a("warped_wall_sign", $$0x -> new dve(ebc.k, $$0x), a(pz, true).a(ph.w()).a(eap.e).k().b().d(1.0F));
-   public static final dlu pC = a("structure_block", dty::new, dzn.d.a().a(evz.w).n().a(-1.0F, 3600000.0F).g());
-   public static final dlu pD = a("jigsaw", dpz::new, dzn.d.a().a(evz.w).n().a(-1.0F, 3600000.0F).g());
-   public static final dlu pE = a("test_block", dui::new, dzn.d.a().a(evz.w).a(-1.0F, 3600000.0F).g());
-   public static final dlu pF = a("test_instance_block", duj::new, dzn.d.a().c().a(-1.0F, 3600000.0F).g().c(dlw::b));
-   public static final dlu pG = a("composter", dnf::new, dzn.d.a().a(evz.n).a(eap.e).d(0.6F).a(dtn.b).i());
-   public static final dlu pH = a("target", duh::new, dzn.d.a().a(evz.o).d(0.5F).a(dtn.d));
-   public static final dlu pI = a("bee_nest", dlo::new, dzn.d.a().a(evz.s).a(eap.e).d(0.3F).a(dtn.b).i());
-   public static final dlu pJ = a("beehive", dlo::new, dzn.d.a().a(evz.n).a(eap.e).d(0.6F).a(dtn.b).i());
-   public static final dlu pK = a("honey_block", dpr::new, dzn.d.a().a(evz.p).b(0.4F).c(0.5F).c().a(dtn.p));
-   public static final dlu pL = a("honeycomb_block", dzn.d.a().a(evz.p).d(0.6F).a(dtn.r));
-   public static final dlu pM = a("netherite_block", dzn.d.a().a(evz.D).n().a(50.0F, 1200.0F).a(dtn.R));
-   public static final dlu pN = a("ancient_debris", dzn.d.a().a(evz.D).n().a(30.0F, 1200.0F).a(dtn.S));
-   public static final dlu pO = a("crying_obsidian", dns::new, dzn.d.a().a(evz.D).a(eap.b).n().a(50.0F, 1200.0F).a($$0x -> 10));
-   public static final dlu pP = a("respawn_anchor", dsh::new, dzn.d.a().a(evz.D).a(eap.b).n().a(50.0F, 1200.0F).a($$0x -> dsh.a($$0x, 15)));
-   public static final dlu pQ = a("potted_crimson_fungus", $$0x -> new doz(oZ, $$0x), c());
-   public static final dlu pR = a("potted_warped_fungus", $$0x -> new doz(oQ, $$0x), c());
-   public static final dlu pS = a("potted_crimson_roots", $$0x -> new doz(pf, $$0x), c());
-   public static final dlu pT = a("potted_warped_roots", $$0x -> new doz(oS, $$0x), c());
-   public static final dlu pU = a("lodestone", dzn.d.a().a(evz.g).n().d(3.5F).a(dtn.T).a(ewa.c));
-   public static final dlu pV = a("blackstone", dzn.d.a().a(evz.D).a(eap.b).n().a(1.5F, 6.0F));
-   public static final dlu pW = a("blackstone_stairs", pV);
-   public static final dlu pX = a("blackstone_wall", dvc::new, dzn.d.b(pV).k());
-   public static final dlu pY = a("blackstone_slab", dtd::new, dzn.d.b(pV).a(2.0F, 6.0F));
-   public static final dlu pZ = a("polished_blackstone", dzn.d.b(pV).a(2.0F, 6.0F));
-   public static final dlu qa = a("polished_blackstone_bricks", dzn.d.b(pZ).a(1.5F, 6.0F));
-   public static final dlu qb = a("cracked_polished_blackstone_bricks", dzn.d.b(qa));
-   public static final dlu qc = a("chiseled_polished_blackstone", dzn.d.b(pZ).a(1.5F, 6.0F));
-   public static final dlu qd = a("polished_blackstone_brick_slab", dtd::new, dzn.d.b(qa).a(2.0F, 6.0F));
-   public static final dlu qe = a("polished_blackstone_brick_stairs", qa);
-   public static final dlu qf = a("polished_blackstone_brick_wall", dvc::new, dzn.d.b(qa).k());
-   public static final dlu qg = a("gilded_blackstone", dzn.d.b(pV).a(dtn.W));
-   public static final dlu qh = a("polished_blackstone_stairs", pZ);
-   public static final dlu qi = a("polished_blackstone_slab", dtd::new, dzn.d.b(pZ));
-   public static final dlu qj = a("polished_blackstone_pressure_plate", $$0x -> new drw(ead.f, $$0x), dzn.d.a().a(evz.D).k().a(eap.b).b().d(0.5F).a(ewa.b));
-   public static final dlu qk = a("polished_blackstone_button", $$0x -> new dmf(ead.e, 20, $$0x), b());
-   public static final dlu ql = a("polished_blackstone_wall", dvc::new, dzn.d.b(pZ).k());
-   public static final dlu qm = a("chiseled_nether_bricks", dzn.d.a().a(evz.J).a(eap.b).n().a(2.0F, 6.0F).a(dtn.N));
-   public static final dlu qn = a("cracked_nether_bricks", dzn.d.a().a(evz.J).a(eap.b).n().a(2.0F, 6.0F).a(dtn.N));
-   public static final dlu qo = a("quartz_bricks", dzn.d.b(hA));
-   public static final dlu qp = a("candle", dmk::new, d(evz.c));
-   public static final dlu qq = a("white_candle", dmk::new, d(evz.d));
-   public static final dlu qr = a("orange_candle", dmk::new, d(evz.p));
-   public static final dlu qs = a("magenta_candle", dmk::new, d(evz.q));
-   public static final dlu qt = a("light_blue_candle", dmk::new, d(evz.r));
-   public static final dlu qu = a("yellow_candle", dmk::new, d(evz.s));
-   public static final dlu qv = a("lime_candle", dmk::new, d(evz.t));
-   public static final dlu qw = a("pink_candle", dmk::new, d(evz.u));
-   public static final dlu qx = a("gray_candle", dmk::new, d(evz.v));
-   public static final dlu qy = a("light_gray_candle", dmk::new, d(evz.w));
-   public static final dlu qz = a("cyan_candle", dmk::new, d(evz.x));
-   public static final dlu qA = a("purple_candle", dmk::new, d(evz.y));
-   public static final dlu qB = a("blue_candle", dmk::new, d(evz.z));
-   public static final dlu qC = a("brown_candle", dmk::new, d(evz.A));
-   public static final dlu qD = a("green_candle", dmk::new, d(evz.B));
-   public static final dlu qE = a("red_candle", dmk::new, d(evz.C));
-   public static final dlu qF = a("black_candle", dmk::new, d(evz.D));
-   public static final dlu qG = a("candle_cake", $$0x -> new dml(qp, $$0x), dzn.d.b(et).a(a(3)));
-   public static final dlu qH = a("white_candle_cake", $$0x -> new dml(qq, $$0x), dzn.d.b(qG));
-   public static final dlu qI = a("orange_candle_cake", $$0x -> new dml(qr, $$0x), dzn.d.b(qG));
-   public static final dlu qJ = a("magenta_candle_cake", $$0x -> new dml(qs, $$0x), dzn.d.b(qG));
-   public static final dlu qK = a("light_blue_candle_cake", $$0x -> new dml(qt, $$0x), dzn.d.b(qG));
-   public static final dlu qL = a("yellow_candle_cake", $$0x -> new dml(qu, $$0x), dzn.d.b(qG));
-   public static final dlu qM = a("lime_candle_cake", $$0x -> new dml(qv, $$0x), dzn.d.b(qG));
-   public static final dlu qN = a("pink_candle_cake", $$0x -> new dml(qw, $$0x), dzn.d.b(qG));
-   public static final dlu qO = a("gray_candle_cake", $$0x -> new dml(qx, $$0x), dzn.d.b(qG));
-   public static final dlu qP = a("light_gray_candle_cake", $$0x -> new dml(qy, $$0x), dzn.d.b(qG));
-   public static final dlu qQ = a("cyan_candle_cake", $$0x -> new dml(qz, $$0x), dzn.d.b(qG));
-   public static final dlu qR = a("purple_candle_cake", $$0x -> new dml(qA, $$0x), dzn.d.b(qG));
-   public static final dlu qS = a("blue_candle_cake", $$0x -> new dml(qB, $$0x), dzn.d.b(qG));
-   public static final dlu qT = a("brown_candle_cake", $$0x -> new dml(qC, $$0x), dzn.d.b(qG));
-   public static final dlu qU = a("green_candle_cake", $$0x -> new dml(qD, $$0x), dzn.d.b(qG));
-   public static final dlu qV = a("red_candle_cake", $$0x -> new dml(qE, $$0x), dzn.d.b(qG));
-   public static final dlu qW = a("black_candle_cake", $$0x -> new dml(qF, $$0x), dzn.d.b(qG));
-   public static final dlu qX = a("amethyst_block", dks::new, dzn.d.a().a(evz.y).d(1.5F).a(dtn.Y).n());
-   public static final dlu qY = a("budding_amethyst", dmd::new, dzn.d.a().a(evz.y).e().d(1.5F).a(dtn.Y).n().a(ewa.b));
-   public static final dlu qZ = a("amethyst_cluster", $$0x -> new dkt(7.0F, 10.0F, $$0x), dzn.d.a().a(evz.y).k().c().a(dtn.Z).d(1.5F).a($$0x -> 5).a(ewa.b));
-   public static final dlu ra = a("large_amethyst_bud", $$0x -> new dkt(5.0F, 10.0F, $$0x), dzn.d.b(qZ).a(dtn.ab).a($$0x -> 4));
-   public static final dlu rb = a("medium_amethyst_bud", $$0x -> new dkt(4.0F, 10.0F, $$0x), dzn.d.b(qZ).a(dtn.ac).a($$0x -> 2));
-   public static final dlu rc = a("small_amethyst_bud", $$0x -> new dkt(3.0F, 8.0F, $$0x), dzn.d.b(qZ).a(dtn.aa).a($$0x -> 1));
-   public static final dlu rd = a("tuff", dzn.d.a().a(evz.R).a(eap.b).a(dtn.ad).n().a(1.5F, 6.0F));
-   public static final dlu re = a("tuff_slab", dtd::new, dzn.d.b(rd));
-   public static final dlu rf = a("tuff_stairs", $$0x -> new dtu(rd.m(), $$0x), dzn.d.b(rd));
-   public static final dlu rg = a("tuff_wall", dvc::new, dzn.d.b(rd).k());
-   public static final dlu rh = a("polished_tuff", dzn.d.b(rd).a(dtn.af));
-   public static final dlu ri = a("polished_tuff_slab", dtd::new, dzn.d.b(rh));
-   public static final dlu rj = a("polished_tuff_stairs", $$0x -> new dtu(rh.m(), $$0x), dzn.d.b(rh));
-   public static final dlu rk = a("polished_tuff_wall", dvc::new, dzn.d.b(rh).k());
-   public static final dlu rl = a("chiseled_tuff", dzn.d.b(rd));
-   public static final dlu rm = a("tuff_bricks", dzn.d.b(rd).a(dtn.ae));
-   public static final dlu rn = a("tuff_brick_slab", dtd::new, dzn.d.b(rm));
-   public static final dlu ro = a("tuff_brick_stairs", $$0x -> new dtu(rm.m(), $$0x), dzn.d.b(rm));
-   public static final dlu rp = a("tuff_brick_wall", dvc::new, dzn.d.b(rm).k());
-   public static final dlu rq = a("chiseled_tuff_bricks", dzn.d.b(rm));
-   public static final dlu rr = a("calcite", dzn.d.a().a(evz.K).a(eap.b).a(dtn.ag).n().d(0.75F));
-   public static final dlu rs = a("tinted_glass", duk::new, dzn.d.b(aX).a(evz.v).c().a(dlw::a).a(dlw::b).b(dlw::b).c(dlw::b));
-   public static final dlu rt = a("powder_snow", drt::new, dzn.d.a().a(evz.i).d(0.25F).a(dtn.l).f().c().a(dlw::b));
-   public static final dlu ru = a("sculk_sensor", dss::new, dzn.d.a().a(evz.x).d(1.5F).a(dtn.az).a($$0x -> 1).e(($$0x, $$1x, $$2) -> dss.o($$0x) == eav.b));
-   public static final dlu rv = a("calibrated_sculk_sensor", dmi::new, dzn.d.b(ru));
-   public static final dlu rw = a("sculk", dsq::new, dzn.d.a().a(evz.D).d(0.2F).a(dtn.aB));
-   public static final dlu rx = a("sculk_vein", dsv::new, dzn.d.a().a(evz.D).k().b().d(0.2F).a(dtn.aC).a(ewa.b));
-   public static final dlu ry = a("sculk_catalyst", dsr::new, dzn.d.a().a(evz.D).a(3.0F, 3.0F).a(dtn.aA).a($$0x -> 6));
-   public static final dlu rz = a("sculk_shrieker", dst::new, dzn.d.a().a(evz.D).a(3.0F, 3.0F).a(dtn.aD));
-   public static final dlu rA = a("copper_block", $$0x -> new dvm(dvj.a.a, $$0x), dzn.d.a().a(evz.p).n().a(3.0F, 6.0F).a(dtn.aj));
-   public static final dlu rB = a("exposed_copper", $$0x -> new dvm(dvj.a.b, $$0x), dzn.d.a(rA).a(evz.S));
-   public static final dlu rC = a("weathered_copper", $$0x -> new dvm(dvj.a.c, $$0x), dzn.d.a(rA).a(evz.ae));
-   public static final dlu rD = a("oxidized_copper", $$0x -> new dvm(dvj.a.d, $$0x), dzn.d.a(rA).a(evz.ad));
-   public static final dlu rE = a("copper_ore", $$0x -> new dof(bta.a(0), $$0x), dzn.d.b(S));
-   public static final dlu rF = a("deepslate_copper_ore", $$0x -> new dof(bta.a(0), $$0x), dzn.d.b(rE).a(evz.ah).a(4.5F, 3.0F).a(dtn.aF));
-   public static final dlu rG = a("oxidized_cut_copper", $$0x -> new dvm(dvj.a.d, $$0x), dzn.d.a(rD));
-   public static final dlu rH = a("weathered_cut_copper", $$0x -> new dvm(dvj.a.c, $$0x), dzn.d.a(rC));
-   public static final dlu rI = a("exposed_cut_copper", $$0x -> new dvm(dvj.a.b, $$0x), dzn.d.a(rB));
-   public static final dlu rJ = a("cut_copper", $$0x -> new dvm(dvj.a.a, $$0x), dzn.d.a(rA));
-   public static final dlu rK = a("oxidized_chiseled_copper", $$0x -> new dvm(dvj.a.d, $$0x), dzn.d.a(rD));
-   public static final dlu rL = a("weathered_chiseled_copper", $$0x -> new dvm(dvj.a.c, $$0x), dzn.d.a(rC));
-   public static final dlu rM = a("exposed_chiseled_copper", $$0x -> new dvm(dvj.a.b, $$0x), dzn.d.a(rB));
-   public static final dlu rN = a("chiseled_copper", $$0x -> new dvm(dvj.a.a, $$0x), dzn.d.a(rA));
-   public static final dlu rO = a("waxed_oxidized_chiseled_copper", dzn.d.a(rK));
-   public static final dlu rP = a("waxed_weathered_chiseled_copper", dzn.d.a(rL));
-   public static final dlu rQ = a("waxed_exposed_chiseled_copper", dzn.d.a(rM));
-   public static final dlu rR = a("waxed_chiseled_copper", dzn.d.a(rN));
-   public static final dlu rS = a("oxidized_cut_copper_stairs", $$0x -> new dvp(dvj.a.d, rG.m(), $$0x), dzn.d.a(rG));
-   public static final dlu rT = a("weathered_cut_copper_stairs", $$0x -> new dvp(dvj.a.c, rH.m(), $$0x), dzn.d.a(rC));
-   public static final dlu rU = a("exposed_cut_copper_stairs", $$0x -> new dvp(dvj.a.b, rI.m(), $$0x), dzn.d.a(rB));
-   public static final dlu rV = a("cut_copper_stairs", $$0x -> new dvp(dvj.a.a, rJ.m(), $$0x), dzn.d.a(rA));
-   public static final dlu rW = a("oxidized_cut_copper_slab", $$0x -> new dvo(dvj.a.d, $$0x), dzn.d.a(rG));
-   public static final dlu rX = a("weathered_cut_copper_slab", $$0x -> new dvo(dvj.a.c, $$0x), dzn.d.a(rH));
-   public static final dlu rY = a("exposed_cut_copper_slab", $$0x -> new dvo(dvj.a.b, $$0x), dzn.d.a(rI));
-   public static final dlu rZ = a("cut_copper_slab", $$0x -> new dvo(dvj.a.a, $$0x), dzn.d.a(rJ));
-   public static final dlu sa = a("waxed_copper_block", dzn.d.a(rA));
-   public static final dlu sb = a("waxed_weathered_copper", dzn.d.a(rC));
-   public static final dlu sc = a("waxed_exposed_copper", dzn.d.a(rB));
-   public static final dlu sd = a("waxed_oxidized_copper", dzn.d.a(rD));
-   public static final dlu se = a("waxed_oxidized_cut_copper", dzn.d.a(rD));
-   public static final dlu sf = a("waxed_weathered_cut_copper", dzn.d.a(rC));
-   public static final dlu sg = a("waxed_exposed_cut_copper", dzn.d.a(rB));
-   public static final dlu sh = a("waxed_cut_copper", dzn.d.a(rA));
-   public static final dlu si = b("waxed_oxidized_cut_copper_stairs", se);
-   public static final dlu sj = b("waxed_weathered_cut_copper_stairs", sf);
-   public static final dlu sk = b("waxed_exposed_cut_copper_stairs", sg);
-   public static final dlu sl = b("waxed_cut_copper_stairs", sh);
-   public static final dlu sm = a("waxed_oxidized_cut_copper_slab", dtd::new, dzn.d.a(se).n());
-   public static final dlu sn = a("waxed_weathered_cut_copper_slab", dtd::new, dzn.d.a(sf).n());
-   public static final dlu so = a("waxed_exposed_cut_copper_slab", dtd::new, dzn.d.a(sg).n());
-   public static final dlu sp = a("waxed_cut_copper_slab", dtd::new, dzn.d.a(sh).n());
-   public static final dlu sq = a("copper_door", $$0x -> new dvl(ead.c, dvj.a.a, $$0x), dzn.d.a().a(rA.w()).a(3.0F, 6.0F).c().a(ewa.b));
-   public static final dlu sr = a("exposed_copper_door", $$0x -> new dvl(ead.c, dvj.a.b, $$0x), dzn.d.a(sq).a(rB.w()));
-   public static final dlu ss = a("oxidized_copper_door", $$0x -> new dvl(ead.c, dvj.a.d, $$0x), dzn.d.a(sq).a(rD.w()));
-   public static final dlu st = a("weathered_copper_door", $$0x -> new dvl(ead.c, dvj.a.c, $$0x), dzn.d.a(sq).a(rC.w()));
-   public static final dlu su = a("waxed_copper_door", $$0x -> new dob(ead.c, $$0x), dzn.d.a(sq));
-   public static final dlu sv = a("waxed_exposed_copper_door", $$0x -> new dob(ead.c, $$0x), dzn.d.a(sr));
-   public static final dlu sw = a("waxed_oxidized_copper_door", $$0x -> new dob(ead.c, $$0x), dzn.d.a(ss));
-   public static final dlu sx = a("waxed_weathered_copper_door", $$0x -> new dob(ead.c, $$0x), dzn.d.a(st));
-   public static final dlu sy = a("copper_trapdoor", $$0x -> new dvq(ead.c, dvj.a.a, $$0x), dzn.d.a().a(rA.w()).a(3.0F, 6.0F).n().c().a(dlw::a));
-   public static final dlu sz = a("exposed_copper_trapdoor", $$0x -> new dvq(ead.c, dvj.a.b, $$0x), dzn.d.a(sy).a(rB.w()));
-   public static final dlu sA = a("oxidized_copper_trapdoor", $$0x -> new dvq(ead.c, dvj.a.d, $$0x), dzn.d.a(sy).a(rD.w()));
-   public static final dlu sB = a("weathered_copper_trapdoor", $$0x -> new dvq(ead.c, dvj.a.c, $$0x), dzn.d.a(sy).a(rC.w()));
-   public static final dlu sC = a("waxed_copper_trapdoor", $$0x -> new duq(ead.c, $$0x), dzn.d.a(sy));
-   public static final dlu sD = a("waxed_exposed_copper_trapdoor", $$0x -> new duq(ead.c, $$0x), dzn.d.a(sz));
-   public static final dlu sE = a("waxed_oxidized_copper_trapdoor", $$0x -> new duq(ead.c, $$0x), dzn.d.a(sA));
-   public static final dlu sF = a("waxed_weathered_copper_trapdoor", $$0x -> new duq(ead.c, $$0x), dzn.d.a(sB));
-   public static final dlu sG = a(
-      "copper_grate", $$0x -> new dvn(dvj.a.a, $$0x), dzn.d.a().a(3.0F, 6.0F).a(dtn.al).a(evz.p).c().n().a(dlw::a).a(dlw::b).b(dlw::b).c(dlw::b)
-   );
-   public static final dlu sH = a("exposed_copper_grate", $$0x -> new dvn(dvj.a.b, $$0x), dzn.d.a(sG).a(evz.S));
-   public static final dlu sI = a("weathered_copper_grate", $$0x -> new dvn(dvj.a.c, $$0x), dzn.d.a(sG).a(evz.ae));
-   public static final dlu sJ = a("oxidized_copper_grate", $$0x -> new dvn(dvj.a.d, $$0x), dzn.d.a(sG).a(evz.ad));
-   public static final dlu sK = a("waxed_copper_grate", dvi::new, dzn.d.a(sG));
-   public static final dlu sL = a("waxed_exposed_copper_grate", dvi::new, dzn.d.a(sH));
-   public static final dlu sM = a("waxed_weathered_copper_grate", dvi::new, dzn.d.a(sI));
-   public static final dlu sN = a("waxed_oxidized_copper_grate", dvi::new, dzn.d.a(sJ));
-   public static final dlu sO = a("copper_bulb", $$0x -> new dvk(dvj.a.a, $$0x), dzn.d.a().a(rA.w()).a(3.0F, 6.0F).a(dtn.ak).n().a(dlw::b).a(a(15)));
-   public static final dlu sP = a("exposed_copper_bulb", $$0x -> new dvk(dvj.a.b, $$0x), dzn.d.a(sO).a(evz.S).a(a(12)));
-   public static final dlu sQ = a("weathered_copper_bulb", $$0x -> new dvk(dvj.a.c, $$0x), dzn.d.a(sO).a(evz.ae).a(a(8)));
-   public static final dlu sR = a("oxidized_copper_bulb", $$0x -> new dvk(dvj.a.d, $$0x), dzn.d.a(sO).a(evz.ad).a(a(4)));
-   public static final dlu sS = a("waxed_copper_bulb", dni::new, dzn.d.a(sO));
-   public static final dlu sT = a("waxed_exposed_copper_bulb", dni::new, dzn.d.a(sP));
-   public static final dlu sU = a("waxed_weathered_copper_bulb", dni::new, dzn.d.a(sQ));
-   public static final dlu sV = a("waxed_oxidized_copper_bulb", dni::new, dzn.d.a(sR));
-   public static final dlu sW = a("lightning_rod", dqn::new, dzn.d.a().a(evz.p).k().n().a(3.0F, 6.0F).a(dtn.aj).c());
-   public static final dlu sX = a(
-      "pointed_dripstone", drq::new, dzn.d.a().a(evz.W).k().a(eap.b).c().a(dtn.ai).e().a(1.5F, 3.0F).f().a(dzn.c.b).a(ewa.b).a(dlw::b)
-   );
-   public static final dlu sY = a("dripstone_block", dzn.d.a().a(evz.W).a(eap.b).a(dtn.ah).n().a(1.5F, 1.0F));
-   public static final dlu sZ = a("cave_vines", dms::new, dzn.d.a().a(evz.h).e().b().a(dmr.i_(14)).d().a(dtn.am).a(ewa.b));
-   public static final dlu ta = a("cave_vines_plant", dmt::new, dzn.d.a().a(evz.h).b().a(dmr.i_(14)).d().a(dtn.am).a(ewa.b));
-   public static final dlu tb = a("spore_blossom", dtq::new, dzn.d.a().a(evz.h).d().b().a(dtn.an).a(ewa.b));
-   public static final dlu tc = a("azalea", dkw::new, dzn.d.a().a(evz.h).l().d().a(dtn.ao).c().a(ewa.b));
-   public static final dlu td = a("flowering_azalea", dkw::new, dzn.d.a().a(evz.h).l().d().a(dtn.ap).c().a(ewa.b));
-   public static final dlu te = a("moss_carpet", dmm::new, dzn.d.a().a(evz.B).d(0.1F).a(dtn.aq).a(ewa.b));
-   public static final dlu tf = a("pink_petals", dox::new, dzn.d.a().a(evz.h).b().a(dtn.ar).a(ewa.b));
-   public static final dlu tg = a("wildflowers", dox::new, dzn.d.a().a(evz.h).b().a(dtn.ar).a(ewa.b));
-   public static final dlu th = a("leaf_litter", dqh::new, dzn.d.a().a(evz.h).b().a(dtn.as).a(ewa.b));
-   public static final dlu ti = a("moss_block", $$0x -> new dly(rg.n, $$0x), dzn.d.a().a(evz.B).d(0.1F).a(dtn.at).a(ewa.b));
-   public static final dlu tj = a("big_dripleaf", dlr::new, dzn.d.a().a(evz.h).l().d(0.1F).a(dtn.au).a(ewa.b));
-   public static final dlu tk = a("big_dripleaf_stem", dls::new, dzn.d.a().a(evz.h).b().d(0.1F).a(dtn.au).a(ewa.b));
-   public static final dlu tl = a("small_dripleaf", dtf::new, dzn.d.a().a(evz.h).b().d().a(dtn.av).a(dzn.c.c).a(ewa.b));
-   public static final dlu tm = a("hanging_roots", dpo::new, dzn.d.a().a(evz.k).p().b().d().a(dtn.ax).a(dzn.c.b).i().a(ewa.b));
-   public static final dlu tn = a("rooted_dirt", dsj::new, dzn.d.a().a(evz.k).d(0.5F).a(dtn.aw));
-   public static final dlu to = a("mud", dqx::new, dzn.d.b(j).a(evz.T).a(dlw::b).a(dlw::a).c(dlw::a).b(dlw::a).a(dtn.aN));
-   public static final dlu tp = a("deepslate", dsl::new, dzn.d.a().a(evz.ah).a(eap.b).n().a(3.0F, 6.0F).a(dtn.aF));
-   public static final dlu tq = a("cobbled_deepslate", dzn.d.b(tp).a(3.5F, 6.0F));
-   public static final dlu tr = a("cobbled_deepslate_stairs", tq);
-   public static final dlu ts = a("cobbled_deepslate_slab", dtd::new, dzn.d.b(tq));
-   public static final dlu tt = a("cobbled_deepslate_wall", dvc::new, dzn.d.b(tq).k());
-   public static final dlu tu = a("polished_deepslate", dzn.d.b(tq).a(dtn.aI));
-   public static final dlu tv = a("polished_deepslate_stairs", tu);
-   public static final dlu tw = a("polished_deepslate_slab", dtd::new, dzn.d.b(tu));
-   public static final dlu tx = a("polished_deepslate_wall", dvc::new, dzn.d.b(tu).k());
-   public static final dlu ty = a("deepslate_tiles", dzn.d.b(tq).a(dtn.aH));
-   public static final dlu tz = a("deepslate_tile_stairs", ty);
-   public static final dlu tA = a("deepslate_tile_slab", dtd::new, dzn.d.b(ty));
-   public static final dlu tB = a("deepslate_tile_wall", dvc::new, dzn.d.b(ty).k());
-   public static final dlu tC = a("deepslate_bricks", dzn.d.b(tq).a(dtn.aG));
-   public static final dlu tD = a("deepslate_brick_stairs", tC);
-   public static final dlu tE = a("deepslate_brick_slab", dtd::new, dzn.d.b(tC));
-   public static final dlu tF = a("deepslate_brick_wall", dvc::new, dzn.d.b(tC).k());
-   public static final dlu tG = a("chiseled_deepslate", dzn.d.b(tq).a(dtn.aG));
-   public static final dlu tH = a("cracked_deepslate_bricks", dzn.d.b(tC));
-   public static final dlu tI = a("cracked_deepslate_tiles", dzn.d.b(ty));
-   public static final dlu tJ = a("infested_deepslate", $$0x -> new dpx(tp, $$0x), dzn.d.a().a(evz.ah).a(dtn.aF));
-   public static final dlu tK = a("smooth_basalt", dzn.d.b(el));
-   public static final dlu tL = a("raw_iron_block", dzn.d.a().a(evz.ai).a(eap.b).n().a(5.0F, 6.0F));
-   public static final dlu tM = a("raw_copper_block", dzn.d.a().a(evz.p).a(eap.b).n().a(5.0F, 6.0F));
-   public static final dlu tN = a("raw_gold_block", dzn.d.a().a(evz.E).a(eap.b).n().a(5.0F, 6.0F));
-   public static final dlu tO = a("potted_azalea_bush", $$0x -> new doz(tc, $$0x), c());
-   public static final dlu tP = a("potted_flowering_azalea_bush", $$0x -> new doz(td, $$0x), c());
-   public static final dlu tQ = a("ochre_froglight", dsl::new, dzn.d.a().a(evz.c).d(0.3F).a($$0x -> 15).a(dtn.aJ));
-   public static final dlu tR = a("verdant_froglight", dsl::new, dzn.d.a().a(evz.aj).d(0.3F).a($$0x -> 15).a(dtn.aJ));
-   public static final dlu tS = a("pearlescent_froglight", dsl::new, dzn.d.a().a(evz.u).d(0.3F).a($$0x -> 15).a(dtn.aJ));
-   public static final dlu tT = a("frogspawn", dpa::new, dzn.d.a().a(evz.m).d().c().b().a(dtn.aK).a(ewa.b));
-   public static final dlu tU = a("reinforced_deepslate", dzn.d.a().a(evz.ah).a(eap.b).a(dtn.aF).a(55.0F, 1200.0F));
-   public static final dlu tV = a("decorated_pot", dnv::new, dzn.d.a().a(evz.Y).a(0.0F, 0.0F).a(ewa.b).c());
-   public static final dlu tW = a("crafter", dnn::new, dzn.d.a().a(evz.l).a(1.5F, 3.5F));
-   public static final dlu tX = a("trial_spawner", dus::new, dzn.d.a().a(evz.l).a(eap.b).a($$0x -> $$0x.c(dus.b).a()).d(50.0F).a(dtn.be).c(dlw::b).c());
-   public static final dlu tY = a("vault", duz::new, dzn.d.a().a(evz.l).a(eap.b).c().a(dtn.bh).a($$0x -> $$0x.c(duz.b).a()).d(50.0F).c(dlw::b));
-   public static final dlu tZ = a("heavy_core", dpq::new, dzn.d.a().a(evz.g).a(eap.c).a(dtn.bj).d(10.0F).a(ewa.a).f(1200.0F));
-   public static final dlu ua = a("pale_moss_block", $$0x -> new dly(ro.K, $$0x), dzn.d.a().i().a(evz.w).d(0.1F).a(dtn.at).a(ewa.b));
-   public static final dlu ub = a("pale_moss_carpet", dqw::new, dzn.d.a().i().a(ua.w()).d(0.1F).a(dtn.aq).a(ewa.b));
-   public static final dlu uc = a("pale_hanging_moss", dpn::new, dzn.d.a().i().a(ua.w()).b().a(dtn.aq).a(ewa.b));
-   public static final dlu ud = a("open_eyeblossom", $$0x -> new doo(doo.a.a, $$0x), dzn.d.a().a(cB.w()).b().d().a(dtn.d).a(dzn.c.b).a(ewa.b).e());
-   public static final dlu ue = a("closed_eyeblossom", $$0x -> new doo(doo.a.b, $$0x), dzn.d.a().a(aR.w()).b().d().a(dtn.d).a(dzn.c.b).a(ewa.b).e());
-   public static final dlu uf = a("potted_open_eyeblossom", $$0x -> new doz(ud, $$0x), c().e());
-   public static final dlu ug = a("potted_closed_eyeblossom", $$0x -> new doz(ue, $$0x), c().e());
+public class dlw extends dlm {
+   public static final MapCodec<dlw> a = b(dlw::new);
+   public static final eax<ja> b = dqa.e;
+   public static final eax<ean> c = eap.Y;
+   public static final eaq d = eap.A;
+   private static final ffc f = fez.a(dma.b(6.0, 6.0, 13.0), dma.b(8.0, 4.0, 6.0));
+   private static final ffc g = fez.a(f, dma.b(2.0, 13.0, 16.0));
+   private static final Map<ja.a, ffc> h = fez.a(dma.a(16.0, 16.0, 8.0));
+   private static final Map<ja.a, ffc> i = fez.a(fez.a(f, dma.a(2.0, 16.0, 13.0, 15.0)));
+   private static final Map<ja, ffc> C = fez.c(fez.a(f, dma.a(2.0, 13.0, 15.0, 0.0, 13.0)));
+   public static final int e = 1;
 
-   private static ToIntFunction<dzo> a(int $$0) {
-      return $$1 -> $$1.c(eae.u) ? $$0 : 0;
+   @Override
+   public MapCodec<dlw> a() {
+      return a;
    }
 
-   private static Function<dzo, evz> a(evz $$0) {
-      return $$1 -> $$1.c(eae.I) ? evz.m : $$0;
+   public dlw(dzy.d $$0) {
+      super($$0);
+      this.l(this.B.b().b(b, ja.c).b(c, ean.a).b(d, Boolean.valueOf(false)));
    }
 
-   private static Boolean a(dzo $$0, dhv $$1, iu $$2, bwj<?> $$3) {
-      return false;
-   }
+   @Override
+   protected void a(dzz $$0, div $$1, iu $$2, dma $$3, @Nullable exo $$4, boolean $$5) {
+      boolean $$6 = $$1.D($$2);
+      if ($$6 != $$0.c(d)) {
+         if ($$6) {
+            this.a($$1, $$2, null);
+         }
 
-   private static Boolean b(dzo $$0, dhv $$1, iu $$2, bwj<?> $$3) {
-      return true;
-   }
-
-   private static Boolean c(dzo $$0, dhv $$1, iu $$2, bwj<?> $$3) {
-      return $$3 == bwj.aI || $$3 == bwj.aO;
-   }
-
-   private static dlu a(String $$0, cxq $$1) {
-      return a($$0, $$1x -> new dln($$1, $$1x), dzn.d.a().a($$1x -> $$1x.c(dln.b) == eab.b ? $$1.e() : evz.d).a(dtn.b).d(0.2F).c().i().a(ewa.b));
-   }
-
-   private static dzn.d a(evz $$0, evz $$1, dtn $$2) {
-      return dzn.d.a().a($$2x -> $$2x.c(dsl.d) == ja.a.b ? $$0 : $$1).a(eap.e).d(2.0F).a($$2).i();
-   }
-
-   private static dzn.d b(evz $$0) {
-      return dzn.d.a().a($$1 -> $$0).a(eap.e).d(2.0F).a(dtn.B);
-   }
-
-   private static boolean a(dzo $$0, dhv $$1, iu $$2) {
-      return true;
-   }
-
-   private static boolean b(dzo $$0, dhv $$1, iu $$2) {
-      return false;
-   }
-
-   private static dlu b(String $$0, cxq $$1) {
-      return a($$0, $$1x -> new dts($$1, $$1x), dzn.d.a().a($$1).a(eap.d).d(0.3F).a(dtn.h).c().a(dlw::a).a(dlw::b).b(dlw::b).c(dlw::b));
-   }
-
-   private static dzn.d a(dtn $$0) {
-      return dzn.d.a().a(evz.h).d(0.2F).e().a($$0).c().a(dlw::c).b(dlw::b).c(dlw::b).i().a(ewa.b).a(dlw::b);
-   }
-
-   private static dzn.d c(evz $$0) {
-      return dzn.d.a().a($$0).k().d(2.0F).f().c().b(uh).c(uh).a(ewa.b);
-   }
-
-   private static dzn.d a() {
-      return dzn.d.a().a(evz.l).d(1.5F).a(dlw::b).b(ui).c(ui).a(ewa.c);
-   }
-
-   private static dzn.d b() {
-      return dzn.d.a().b().d(0.5F).a(ewa.b);
-   }
-
-   private static dzn.d c() {
-      return dzn.d.a().d().c().a(ewa.b);
-   }
-
-   private static dzn.d d(evz $$0) {
-      return dzn.d.a().a($$0).c().d(0.1F).a(dtn.X).a(dmk.i).a(ewa.b);
-   }
-
-   @Deprecated
-   private static dlu a(String $$0, dlu $$1) {
-      return a($$0, $$1x -> new dtu($$1.m(), $$1x), dzn.d.b($$1));
-   }
-
-   private static dlu b(String $$0, dlu $$1) {
-      return a($$0, $$1x -> new dtu($$1.m(), $$1x), dzn.d.a($$1));
-   }
-
-   private static dzn.d a(dlu $$0, boolean $$1) {
-      dzn.d $$2 = $$0.s();
-      dzn.d $$3 = dzn.d.a().a($$0.u());
-      if ($$1) {
-         $$3 = $$3.a($$0.v());
+         $$1.a($$2, $$0.b(d, Boolean.valueOf($$6)), 3);
       }
-
-      return $$3;
    }
 
-   private static dlu a(ald<dlu> $$0, Function<dzn.d, dlu> $$1, dzn.d $$2) {
-      dlu $$3 = $$1.apply($$2.a($$0));
-      return jr.a(mf.e, $$0, $$3);
+   @Override
+   protected void a(div $$0, dzz $$1, fee $$2, crs $$3) {
+      cqy $$6 = $$3.q() instanceof cqy $$5 ? $$5 : null;
+      this.a($$0, $$1, $$2, $$6, true);
    }
 
-   private static dlu a(ald<dlu> $$0, dzn.d $$1) {
-      return a($$0, dlu::new, $$1);
+   @Override
+   protected bub a(dzz $$0, div $$1, iu $$2, cqy $$3, fee $$4) {
+      return (bub)(this.a($$1, $$0, $$4, $$3, true) ? bub.a : bub.e);
    }
 
-   private static ald<dlu> a(String $$0) {
-      return ald.a(mg.i, ale.b($$0));
+   public boolean a(div $$0, dzz $$1, fee $$2, @Nullable cqy $$3, boolean $$4) {
+      ja $$5 = $$2.c();
+      iu $$6 = $$2.b();
+      boolean $$7 = !$$4 || this.a($$1, $$5, $$2.g().e - (double)$$6.v());
+      if ($$7) {
+         boolean $$8 = this.a($$3, $$0, $$6, $$5);
+         if ($$8 && $$3 != null) {
+            $$3.a(awx.az);
+         }
+
+         return true;
+      } else {
+         return false;
+      }
    }
 
-   private static dlu a(String $$0, Function<dzn.d, dlu> $$1, dzn.d $$2) {
-      return a(a($$0), $$1, $$2);
+   private boolean a(dzz $$0, ja $$1, double $$2) {
+      if ($$1.o() != ja.a.b && !($$2 > 0.8124F)) {
+         ja $$3 = $$0.c(b);
+         ean $$4 = $$0.c(c);
+         switch ($$4) {
+            case a:
+               return $$3.o() == $$1.o();
+            case c:
+            case d:
+               return $$3.o() != $$1.o();
+            case b:
+               return true;
+            default:
+               return false;
+         }
+      } else {
+         return false;
+      }
    }
 
-   private static dlu a(String $$0, dzn.d $$1) {
-      return a($$0, dlu::new, $$1);
+   public boolean a(div $$0, iu $$1, @Nullable ja $$2) {
+      return this.a(null, $$0, $$1, $$2);
    }
 
-   static {
-      for (dlu $$0 : mf.e) {
-         UnmodifiableIterator var2 = $$0.l().a().iterator();
+   public boolean a(@Nullable bwd $$0, div $$1, iu $$2, @Nullable ja $$3) {
+      dwx $$4 = $$1.c_($$2);
+      if (!$$1.C && $$4 instanceof dwv) {
+         if ($$3 == null) {
+            $$3 = $$1.a_($$2).c(b);
+         }
 
-         while (var2.hasNext()) {
-            dzo $$1 = (dzo)var2.next();
-            dlu.k.b($$1);
-            $$1.a();
+         ((dwv)$$4).a($$3);
+         $$1.a(null, $$2, awn.bZ, awo.e, 2.0F, 1.0F);
+         $$1.a($$0, eez.c, $$2);
+         return true;
+      } else {
+         return false;
+      }
+   }
+
+   private ffc o(dzz $$0) {
+      ja $$1 = $$0.c(b);
+
+      return switch ((ean)$$0.c(c)) {
+         case a -> (ffc)h.get($$1.o());
+         case c -> (ffc)C.get($$1);
+         case d -> (ffc)i.get($$1.o());
+         case b -> g;
+      };
+   }
+
+   @Override
+   protected ffc b(dzz $$0, dib $$1, iu $$2, fen $$3) {
+      return this.o($$0);
+   }
+
+   @Override
+   protected ffc a(dzz $$0, dib $$1, iu $$2, fen $$3) {
+      return this.o($$0);
+   }
+
+   @Nullable
+   @Override
+   public dzz a(dcr $$0) {
+      ja $$1 = $$0.k();
+      iu $$2 = $$0.a();
+      div $$3 = $$0.q();
+      ja.a $$4 = $$1.o();
+      if ($$4 == ja.a.b) {
+         dzz $$5 = this.m().b(c, $$1 == ja.a ? ean.b : ean.a).b(b, $$0.g());
+         if ($$5.a((diy)$$0.q(), $$2)) {
+            return $$5;
+         }
+      } else {
+         boolean $$6 = $$4 == ja.a.a && $$3.a_($$2.h()).c($$3, $$2.h(), ja.f) && $$3.a_($$2.i()).c($$3, $$2.i(), ja.e)
+            || $$4 == ja.a.c && $$3.a_($$2.f()).c($$3, $$2.f(), ja.d) && $$3.a_($$2.g()).c($$3, $$2.g(), ja.c);
+         dzz $$7 = this.m().b(b, $$1.g()).b(c, $$6 ? ean.d : ean.c);
+         if ($$7.a((diy)$$0.q(), $$0.a())) {
+            return $$7;
+         }
+
+         boolean $$8 = $$3.a_($$2.e()).c($$3, $$2.e(), ja.b);
+         $$7 = $$7.b(c, $$8 ? ean.a : ean.b);
+         if ($$7.a((diy)$$0.q(), $$0.a())) {
+            return $$7;
          }
       }
+
+      return null;
+   }
+
+   @Override
+   protected void a(dzz $$0, arq $$1, iu $$2, dio $$3, BiConsumer<cyy, iu> $$4) {
+      if ($$3.g()) {
+         this.a($$1, $$2, null);
+      }
+
+      super.a($$0, $$1, $$2, $$3, $$4);
+   }
+
+   @Override
+   protected dzz a(dzz $$0, diy $$1, djk $$2, iu $$3, ja $$4, iu $$5, dzz $$6, azv $$7) {
+      ean $$8 = $$0.c(c);
+      ja $$9 = q($$0).g();
+      if ($$9 == $$4 && !$$0.a($$1, $$3) && $$8 != ean.d) {
+         return dmc.a.m();
+      } else {
+         if ($$4.o() == $$0.c(b).o()) {
+            if ($$8 == ean.d && !$$6.c($$1, $$5, $$4)) {
+               return $$0.b(c, ean.c).b(b, $$4.g());
+            }
+
+            if ($$8 == ean.c && $$9.g() == $$4 && $$6.c($$1, $$5, $$0.c(b))) {
+               return $$0.b(c, ean.d);
+            }
+         }
+
+         return super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
+      }
+   }
+
+   @Override
+   protected boolean a(dzz $$0, diy $$1, iu $$2) {
+      ja $$3 = q($$0).g();
+      return $$3 == ja.b ? dma.a($$1, $$2.d(), ja.a) : dov.b($$1, $$2, $$3);
+   }
+
+   private static ja q(dzz $$0) {
+      switch ((ean)$$0.c(c)) {
+         case a:
+            return ja.b;
+         case b:
+            return ja.a;
+         default:
+            return $$0.c(b).g();
+      }
+   }
+
+   @Override
+   protected void a(eaa.a<dma, dzz> $$0) {
+      $$0.a(b, c, d);
+   }
+
+   @Nullable
+   @Override
+   public dwx a(iu $$0, dzz $$1) {
+      return new dwv($$0, $$1);
+   }
+
+   @Nullable
+   @Override
+   public <T extends dwx> dwy<T> a(div $$0, dzz $$1, dwz<T> $$2) {
+      return a($$2, dwz.F, $$0.C ? dwv::a : dwv::b);
+   }
+
+   @Override
+   protected boolean a(dzz $$0, ewv $$1) {
+      return false;
+   }
+
+   @Override
+   public dzz a(dzz $$0, dst $$1) {
+      return $$0.b(b, $$1.a($$0.c(b)));
+   }
+
+   @Override
+   public dzz a(dzz $$0, drc $$1) {
+      return $$0.a($$1.a($$0.c(b)));
    }
 }

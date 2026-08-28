@@ -1,42 +1,77 @@
-import com.google.common.collect.Lists;
 import com.mojang.serialization.Codec;
+import io.netty.buffer.ByteBuf;
 import java.util.List;
+import java.util.Locale;
 import java.util.function.Consumer;
 
-public record dbl(List<ww> e, List<ww> f) implements dbx {
-   public static final dbl a = new dbl(List.of());
-   public static final int b = 256;
-   private static final xt g = xt.a.a(n.f).b(true);
-   public static final Codec<dbl> c = wy.a.sizeLimitedListOf(256).xmap(dbl::new, dbl::a);
-   public static final yu<wh, dbl> d = wy.b.a(ys.c(256)).a(dbl::new, dbl::a);
+public record dbl(int d) implements dcd {
+   public static final Codec<dbl> a = ayu.i.xmap(dbl::new, dbl::a);
+   public static final yw<ByteBuf, dbl> b = yw.a(yu.g, dbl::a, dbl::new);
+   public static final int c = -6265536;
 
-   public dbl(List<ww> $$0) {
-      this($$0, Lists.transform($$0, $$0x -> wz.a($$0x.f(), g)));
+   public static int a(cyy $$0, int $$1) {
+      dbl $$2 = $$0.a(kj.K);
+      return $$2 != null ? axw.f($$2.a()) : $$1;
    }
 
-   public dbl(List<ww> e, List<ww> f) {
-      if (e.size() > 256) {
-         throw new IllegalArgumentException("Got " + e.size() + " lines, but maximum is 256");
+   public static cyy a(cyy $$0, List<cxx> $$1) {
+      if (!$$0.a(axk.bO)) {
+         return cyy.k;
       } else {
-         this.e = e;
-         this.f = f;
+         cyy $$2 = $$0.c(1);
+         int $$3 = 0;
+         int $$4 = 0;
+         int $$5 = 0;
+         int $$6 = 0;
+         int $$7 = 0;
+         dbl $$8 = $$2.a(kj.K);
+         if ($$8 != null) {
+            int $$9 = axw.b($$8.a());
+            int $$10 = axw.c($$8.a());
+            int $$11 = axw.d($$8.a());
+            $$6 += Math.max($$9, Math.max($$10, $$11));
+            $$3 += $$9;
+            $$4 += $$10;
+            $$5 += $$11;
+            $$7++;
+         }
+
+         for (cxx $$12 : $$1) {
+            int $$13 = $$12.a().d();
+            int $$14 = axw.b($$13);
+            int $$15 = axw.c($$13);
+            int $$16 = axw.d($$13);
+            $$6 += Math.max($$14, Math.max($$15, $$16));
+            $$3 += $$14;
+            $$4 += $$15;
+            $$5 += $$16;
+            $$7++;
+         }
+
+         int $$17 = $$3 / $$7;
+         int $$18 = $$4 / $$7;
+         int $$19 = $$5 / $$7;
+         float $$20 = (float)$$6 / (float)$$7;
+         float $$21 = (float)Math.max($$17, Math.max($$18, $$19));
+         $$17 = (int)((float)$$17 * $$20 / $$21);
+         $$18 = (int)((float)$$18 * $$20 / $$21);
+         $$19 = (int)((float)$$19 * $$20 / $$21);
+         int $$22 = axw.a(0, $$17, $$18, $$19);
+         $$2.b(kj.K, new dbl($$22));
+         return $$2;
       }
    }
 
-   public dbl a(ww $$0) {
-      return new dbl(af.a(this.e, $$0));
-   }
-
    @Override
-   public void a(cyo.b $$0, Consumer<ww> $$1, dah $$2, ke $$3) {
-      this.f.forEach($$1);
+   public void a(cyu.b $$0, Consumer<wy> $$1, dan $$2, ke $$3) {
+      if ($$2.a()) {
+         $$1.accept(wy.a("item.color", String.format(Locale.ROOT, "#%06X", this.d)).a(n.h));
+      } else {
+         $$1.accept(wy.c("item.dyed").a(n.h, n.u));
+      }
    }
 
-   public List<ww> a() {
-      return this.e;
-   }
-
-   public List<ww> b() {
-      return this.f;
+   public int a() {
+      return this.d;
    }
 }

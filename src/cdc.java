@@ -1,83 +1,32 @@
-import java.util.EnumSet;
-import java.util.function.Predicate;
-import javax.annotation.Nullable;
+public class cdc extends cda {
+   private final int h;
+   private static final int i = 10;
+   private static final int j = 20;
 
-public class cdc<T extends bwz> extends cdv {
-   protected final bxh a;
-   private final double i;
-   private final double j;
-   @Nullable
-   protected T b;
-   protected final float c;
-   @Nullable
-   protected ewj d;
-   protected final cgj e;
-   protected final Class<T> f;
-   protected final Predicate<bwz> g;
-   protected final Predicate<bwz> h;
-   private final cho k;
-
-   public cdc(bxh $$0, Class<T> $$1, float $$2, double $$3, double $$4) {
-      this($$0, $$1, $$0x -> true, $$2, $$3, $$4, bwh.e::test);
-   }
-
-   public cdc(bxh $$0, Class<T> $$1, Predicate<bwz> $$2, float $$3, double $$4, double $$5, Predicate<bwz> $$6) {
-      this.a = $$0;
-      this.f = $$1;
-      this.g = $$2;
-      this.c = $$3;
-      this.i = $$4;
-      this.j = $$5;
-      this.h = $$6;
-      this.e = $$0.O();
-      this.a(EnumSet.of(cdv.a.a));
-      this.k = cho.a().a((double)$$3).a(($$2x, $$3x) -> $$6.test($$2x) && $$2.test($$2x));
-   }
-
-   public cdc(bxh $$0, Class<T> $$1, float $$2, double $$3, double $$4, Predicate<bwz> $$5) {
-      this($$0, $$1, $$0x -> true, $$2, $$3, $$4, $$5);
-   }
-
-   @Override
-   public boolean b() {
-      this.b = a(this.a)
-         .a(this.a.dV().a(this.f, this.a.cR().c((double)this.c, 3.0, (double)this.c), $$0x -> true), this.k, this.a, this.a.dA(), this.a.dC(), this.a.dG());
-      if (this.b == null) {
-         return false;
-      } else {
-         fdw $$0 = chs.a(this.a, 16, 7, this.b.dt());
-         if ($$0 == null) {
-            return false;
-         } else if (this.b.i($$0.d, $$0.e, $$0.f) < this.b.g(this.a)) {
-            return false;
-         } else {
-            this.d = this.e.a($$0.d, $$0.e, $$0.f, 0);
-            return this.d != null;
-         }
-      }
-   }
-
-   @Override
-   public boolean c() {
-      return !this.e.k();
-   }
-
-   @Override
-   public void d() {
-      this.e.a(this.d, this.i);
-   }
-
-   @Override
-   public void e() {
-      this.b = null;
+   public cdc(bxe $$0, int $$1) {
+      super($$0);
+      this.h = $$1;
    }
 
    @Override
    public void a() {
-      if (this.a.g((bwa)this.b) < 49.0) {
-         this.a.O().a(this.j);
+      if (this.d > 0) {
+         this.d--;
+         this.i().ifPresent($$0x -> this.a.aX = this.a(this.a.aX, $$0x + 20.0F, this.b));
+         this.h().ifPresent($$0x -> this.a.x(this.a(this.a.dN(), $$0x + 10.0F, this.c)));
       } else {
-         this.a.O().a(this.i);
+         if (this.a.O().k()) {
+            this.a.x(this.a(this.a.dN(), 0.0F, 5.0F));
+         }
+
+         this.a.aX = this.a(this.a.aX, this.a.aV, this.b);
+      }
+
+      float $$0 = azm.h(this.a.aX - this.a.aV);
+      if ($$0 < (float)(-this.h)) {
+         this.a.aV -= 4.0F;
+      } else if ($$0 > (float)this.h) {
+         this.a.aV += 4.0F;
       }
    }
 }

@@ -1,38 +1,43 @@
-public class gvp extends gvj<cmw, hbu> {
-   private final gqh a;
+public class gvp<T extends clc> extends gup<T, hcb, gfk> {
+   private final alg a;
 
-   public gvp(gvk.a $$0) {
-      super($$0);
-      this.e = 0.5F;
-      this.a = $$0.d();
+   public gvp(gvz.a $$0, gvp.a $$1) {
+      super($$0, new gfk($$0.a($$1.d)), new gfk($$0.a($$1.e)));
+      this.a = $$1.c;
+      this.a(new hap<>(this, $$0.h(), $$1.f, $$0x -> $$0x.b, new gfr($$0.a($$1.g)), new gfr($$0.a($$1.h))));
    }
 
-   public boolean a(cmw $$0, gsw $$1, double $$2, double $$3, double $$4) {
-      return !super.a($$0, $$1, $$2, $$3, $$4) ? false : $$0.j() != $$0.dV().a_($$0.dv());
+   public alg a(hcb $$0) {
+      return this.a;
    }
 
-   public void a(hbu $$0, fiq $$1, gpd $$2, int $$3) {
-      dzo $$4 = $$0.c;
-      if ($$4.o() == dsf.b) {
-         $$1.a();
-         $$1.a(-0.5, 0.0, -0.5);
-         this.a.b().a($$0, this.a.a($$4), $$4, $$0.b, $$1, $$2.getBuffer(gov.b($$4)), false, azt.a(), $$4.b($$0.a), hhp.d);
-         $$1.b();
-         super.a($$0, $$1, $$2, $$3);
-      }
+   public hcb a() {
+      return new hcb();
    }
 
-   public hbu a() {
-      return new hbu();
-   }
-
-   public void a(cmw $$0, hbu $$1, float $$2) {
+   public void a(T $$0, hcb $$1, float $$2) {
       super.a($$0, $$1, $$2);
-      iu $$3 = iu.a($$0.dA(), $$0.cR().e, $$0.dG());
-      $$1.a = $$0.f();
-      $$1.b = $$3;
-      $$1.c = $$0.j();
-      $$1.d = $$0.dV().u($$3);
-      $$1.e = $$0.dV();
+      $$1.a = $$0.t();
+   }
+
+   public static enum a {
+      a(alg.b("textures/entity/horse/donkey.png"), git.ax, git.ay, hkv.d.k, git.az, git.aA),
+      b(alg.b("textures/entity/horse/mule.png"), git.bN, git.bO, hkv.d.l, git.bP, git.bQ);
+
+      final alg c;
+      final gis d;
+      final gis e;
+      final hkv.d f;
+      final gis g;
+      final gis h;
+
+      private a(final alg $$0, final gis $$1, final gis $$2, final hkv.d $$3, final gis $$4, final gis $$5) {
+         this.c = $$0;
+         this.d = $$1;
+         this.e = $$2;
+         this.f = $$3;
+         this.g = $$4;
+         this.h = $$5;
+      }
    }
 }

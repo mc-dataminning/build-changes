@@ -1,134 +1,81 @@
-public class gly extends gnl {
-   private final double a;
-   private final double b;
-   private final double F;
-   private final boolean G;
-   private final gml.a H;
-
-   gly(gjd $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6) {
-      this($$0, $$1, $$2, $$3, $$4, $$5, $$6, false, gml.a.a);
-   }
-
-   gly(gjd $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, boolean $$7, gml.a $$8) {
-      super($$0, $$1, $$2, $$3);
-      this.G = $$7;
-      this.H = $$8;
-      this.e($$8.b());
-      this.j = $$4;
-      this.k = $$5;
-      this.l = $$6;
-      this.a = $$1;
-      this.b = $$2;
-      this.F = $$3;
-      this.d = $$1 + $$4;
-      this.e = $$2 + $$5;
-      this.f = $$3 + $$6;
-      this.g = this.d;
-      this.h = this.e;
-      this.i = this.f;
-      this.D = 0.1F * (this.r.i() * 0.5F + 0.2F);
-      float $$9 = this.r.i() * 0.6F + 0.4F;
-      this.v = 0.9F * $$9;
-      this.w = 0.9F * $$9;
-      this.x = $$9;
+public class gly extends goa {
+   gly(gjr $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6) {
+      super($$0, $$1, $$2, $$3, 0.0, 0.0, 0.0);
+      this.B = 0.7F;
+      this.u = 0.5F;
+      this.j *= 0.1F;
+      this.k *= 0.1F;
+      this.l *= 0.1F;
+      this.j += $$4 * 0.4;
+      this.k += $$5 * 0.4;
+      this.l += $$6 * 0.4;
+      float $$7 = (float)(Math.random() * 0.3F + 0.6F);
+      this.v = $$7;
+      this.w = $$7;
+      this.x = $$7;
+      this.D *= 0.75F;
+      this.t = Math.max((int)(6.0 / (Math.random() * 0.8 + 0.6)), 1);
       this.n = false;
-      this.t = (int)(Math.random() * 10.0) + 30;
+      this.a();
    }
 
    @Override
-   public gmp b() {
-      return this.H.a() ? gmp.b : gmp.c;
-   }
-
-   @Override
-   public void a(double $$0, double $$1, double $$2) {
-      this.a(this.n().d($$0, $$1, $$2));
-      this.l();
-   }
-
-   @Override
-   public int a(float $$0) {
-      if (this.G) {
-         return 240;
-      } else {
-         int $$1 = super.a($$0);
-         float $$2 = (float)this.s / (float)this.t;
-         $$2 *= $$2;
-         $$2 *= $$2;
-         int $$3 = $$1 & 0xFF;
-         int $$4 = $$1 >> 16 & 0xFF;
-         $$4 += (int)($$2 * 15.0F * 16.0F);
-         if ($$4 > 240) {
-            $$4 = 240;
-         }
-
-         return $$3 | $$4 << 16;
-      }
+   public float b(float $$0) {
+      return this.D * azm.a(((float)this.s + $$0) / (float)this.t * 32.0F, 0.0F, 1.0F);
    }
 
    @Override
    public void a() {
-      this.d = this.g;
-      this.e = this.h;
-      this.f = this.i;
-      if (this.s++ >= this.t) {
-         this.k();
-      } else {
-         float $$0 = (float)this.s / (float)this.t;
-         $$0 = 1.0F - $$0;
-         float $$1 = 1.0F - $$0;
-         $$1 *= $$1;
-         $$1 *= $$1;
-         this.g = this.a + this.j * (double)$$0;
-         this.h = this.b + this.k * (double)$$0 - (double)($$1 * 1.2F);
-         this.i = this.F + this.l * (double)$$0;
-      }
+      super.a();
+      this.w *= 0.96F;
+      this.x *= 0.9F;
    }
 
    @Override
-   public void a(fiu $$0, fnn $$1, float $$2) {
-      this.e(this.H.a(this.s, this.t, $$2));
-      super.a($$0, $$1, $$2);
+   public gne b() {
+      return gne.b;
    }
 
-   public static class a implements gmo<mb> {
-      private final gng a;
+   public static class a implements gnd<mb> {
+      private final gnv a;
 
-      public a(gng $$0) {
+      public a(gnv $$0) {
          this.a = $$0;
       }
 
-      public gml a(mb $$0, gjd $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         gly $$8 = new gly($$1, $$2, $$3, $$4, $$5, $$6, $$7);
+      public gna a(mb $$0, gjr $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         gly $$8 = new gly($$1, $$2, $$3, $$4, $$5, $$6 + 1.0, $$7);
+         $$8.a(20);
          $$8.a(this.a);
          return $$8;
       }
    }
 
-   public static class b implements gmo<mb> {
-      private final gng a;
+   public static class b implements gnd<mb> {
+      private final gnv a;
 
-      public b(gng $$0) {
+      public b(gnv $$0) {
          this.a = $$0;
       }
 
-      public gml a(mb $$0, gjd $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+      public gna a(mb $$0, gjr $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
          gly $$8 = new gly($$1, $$2, $$3, $$4, $$5, $$6, $$7);
+         $$8.v *= 0.3F;
+         $$8.w *= 0.8F;
          $$8.a(this.a);
          return $$8;
       }
    }
 
-   public static class c implements gmo<mb> {
-      private final gng a;
+   public static class c implements gnd<mb> {
+      private final gnv a;
 
-      public c(gng $$0) {
+      public c(gnv $$0) {
          this.a = $$0;
       }
 
-      public gml a(mb $$0, gjd $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         gly $$8 = new gly($$1, $$2, $$3, $$4, $$5, $$6, $$7, true, new gml.a(0.0F, 0.6F, 0.25F, 1.0F));
-         $$8.d(1.5F);
+      public gna a(mb $$0, gjr $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         gly $$8 = new gly($$1, $$2, $$3, $$4, $$5, $$6, $$7);
          $$8.a(this.a);
          return $$8;
       }

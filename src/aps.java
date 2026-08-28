@@ -1,51 +1,63 @@
-import com.google.common.collect.ImmutableList;
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.arguments.IntegerArgumentType;
+import com.mojang.brigadier.arguments.StringArgumentType;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
+import com.mojang.brigadier.builder.RequiredArgumentBuilder;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
 import java.util.Collection;
+import java.util.List;
 
 public class aps {
+   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(wy.c("commands.transfer.error.no_players"));
+
    public static void a(CommandDispatcher<ei> $$0) {
       $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)ej.a("warden_spawn_tracker").requires($$0x -> $$0x.c(2)))
-               .then(ej.a("clear").executes($$0x -> a((ei)$$0x.getSource(), ImmutableList.of(((ei)$$0x.getSource()).h())))))
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)ej.a("transfer").requires($$0x -> $$0x.c(3)))
             .then(
-               ej.a("set")
+               ((RequiredArgumentBuilder)ej.a("hostname", StringArgumentType.string())
+                     .executes($$0x -> a((ei)$$0x.getSource(), StringArgumentType.getString($$0x, "hostname"), 25565, List.of(((ei)$$0x.getSource()).h()))))
                   .then(
-                     ej.a("warning_level", IntegerArgumentType.integer(0, 4))
-                        .executes(
-                           $$0x -> a((ei)$$0x.getSource(), ImmutableList.of(((ei)$$0x.getSource()).h()), IntegerArgumentType.getInteger($$0x, "warning_level"))
+                     ((RequiredArgumentBuilder)ej.a("port", IntegerArgumentType.integer(1, 65535))
+                           .executes(
+                              $$0x -> a(
+                                    (ei)$$0x.getSource(),
+                                    StringArgumentType.getString($$0x, "hostname"),
+                                    IntegerArgumentType.getInteger($$0x, "port"),
+                                    List.of(((ei)$$0x.getSource()).h())
+                                 )
+                           ))
+                        .then(
+                           ej.a("players", ev.d())
+                              .executes(
+                                 $$0x -> a(
+                                       (ei)$$0x.getSource(),
+                                       StringArgumentType.getString($$0x, "hostname"),
+                                       IntegerArgumentType.getInteger($$0x, "port"),
+                                       ev.f($$0x, "players")
+                                    )
+                              )
                         )
                   )
             )
       );
    }
 
-   private static int a(ei $$0, Collection<? extends cqs> $$1, int $$2) {
-      for (cqs $$3 : $$1) {
-         $$3.ac().ifPresent($$1x -> $$1x.a($$2));
-      }
-
-      if ($$1.size() == 1) {
-         $$0.a(() -> ww.a("commands.warden_spawn_tracker.set.success.single", $$1.iterator().next().m_()), true);
+   private static int a(ei $$0, String $$1, int $$2, Collection<arr> $$3) throws CommandSyntaxException {
+      if ($$3.isEmpty()) {
+         throw a.create();
       } else {
-         $$0.a(() -> ww.a("commands.warden_spawn_tracker.set.success.multiple", $$1.size()), true);
+         for (arr $$4 : $$3) {
+            $$4.f.b(new zv($$1, $$2));
+         }
+
+         if ($$3.size() == 1) {
+            $$0.a(() -> wy.a("commands.transfer.success.single", $$3.iterator().next().m_(), $$1, $$2), true);
+         } else {
+            $$0.a(() -> wy.a("commands.transfer.success.multiple", $$3.size(), $$1, $$2), true);
+         }
+
+         return $$3.size();
       }
-
-      return $$1.size();
-   }
-
-   private static int a(ei $$0, Collection<? extends cqs> $$1) {
-      for (cqs $$2 : $$1) {
-         $$2.ac().ifPresent(cpx::b);
-      }
-
-      if ($$1.size() == 1) {
-         $$0.a(() -> ww.a("commands.warden_spawn_tracker.clear.success.single", $$1.iterator().next().m_()), true);
-      } else {
-         $$0.a(() -> ww.a("commands.warden_spawn_tracker.clear.success.multiple", $$1.size()), true);
-      }
-
-      return $$1.size();
    }
 }

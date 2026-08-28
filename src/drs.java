@@ -1,25 +1,21 @@
 import com.mojang.serialization.MapCodec;
+import java.util.Map;
 
-public class drs extends dnq {
-   public static final MapCodec<drs> a = b(drs::new);
-   private static final feq[] b = dlu.a(7, $$0 -> dlu.b(16.0, 0.0, (double)(2 + $$0)));
+public class drs extends dvp {
+   public static final MapCodec<drs> b = b(drs::new);
+   private static final Map<ja, ffc> e = fez.c(dma.b(10.0, 8.0, 8.0, 16.0));
 
    @Override
    public MapCodec<drs> a() {
-      return a;
+      return b;
    }
 
-   public drs(dzn.d $$0) {
-      super($$0);
-   }
-
-   @Override
-   protected dio d() {
-      return cyw.vj;
+   public drs(dzy.d $$0) {
+      super(dtk.b.h, $$0);
    }
 
    @Override
-   protected feq a(dzo $$0, dhv $$1, iu $$2, feb $$3) {
-      return b[this.h($$0)];
+   protected ffc a(dzz $$0, dib $$1, iu $$2, fen $$3) {
+      return e.get($$0.c(d));
    }
 }

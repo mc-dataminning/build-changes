@@ -12,7 +12,7 @@ public final class kd implements Predicate<ke> {
          $$0 -> new kd($$0.entrySet().stream().map(kl::a).collect(Collectors.toList())),
          $$0 -> $$0.d.stream().filter($$0x -> !$$0x.a().d()).collect(Collectors.toMap(kl::a, kl::b))
       );
-   public static final yu<wh, kd> b = kl.a.a(ys.a()).a(kd::new, $$0 -> $$0.d);
+   public static final yw<wj, kd> b = kl.a.a(yu.a()).a(kd::new, $$0 -> $$0.d);
    public static final kd c = new kd(List.of());
    private final List<kl<?>> d;
 

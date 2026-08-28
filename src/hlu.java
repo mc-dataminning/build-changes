@@ -1,28 +1,107 @@
-import java.util.List;
-import javax.annotation.Nullable;
+public abstract class hlu implements hmm {
+   protected hmj a;
+   protected final awo b;
+   protected final alg c;
+   protected float d = 1.0F;
+   protected float e = 1.0F;
+   protected double f;
+   protected double g;
+   protected double h;
+   protected boolean i;
+   protected int j;
+   protected hmm.a k = hmm.a.b;
+   protected boolean l;
+   protected azv m;
 
-public class hlu {
-   private final List<hlt> a;
-   private final boolean b;
-   @Nullable
-   private final String c;
-
-   public hlu(List<hlt> $$0, boolean $$1, @Nullable String $$2) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
+   protected hlu(awm $$0, awo $$1, azv $$2) {
+      this($$0.a(), $$1, $$2);
    }
 
-   public List<hlt> a() {
+   protected hlu(alg $$0, awo $$1, azv $$2) {
+      this.c = $$0;
+      this.b = $$1;
+      this.m = $$2;
+   }
+
+   @Override
+   public alg a() {
+      return this.c;
+   }
+
+   @Override
+   public hnt a(hns $$0) {
+      if (this.c.equals(hns.c)) {
+         this.a = hns.e;
+         return hns.d;
+      } else {
+         hnt $$1 = $$0.a(this.c);
+         if ($$1 == null) {
+            this.a = hns.b;
+         } else {
+            this.a = $$1.a(this.m);
+         }
+
+         return $$1;
+      }
+   }
+
+   @Override
+   public hmj b() {
       return this.a;
    }
 
-   public boolean b() {
+   @Override
+   public awo c() {
       return this.b;
    }
 
-   @Nullable
-   public String c() {
-      return this.c;
+   @Override
+   public boolean d() {
+      return this.i;
+   }
+
+   @Override
+   public int e() {
+      return this.j;
+   }
+
+   @Override
+   public float f() {
+      return this.d * this.a.c().a(this.m);
+   }
+
+   @Override
+   public float g() {
+      return this.e * this.a.d().a(this.m);
+   }
+
+   @Override
+   public double h() {
+      return this.f;
+   }
+
+   @Override
+   public double i() {
+      return this.g;
+   }
+
+   @Override
+   public double j() {
+      return this.h;
+   }
+
+   @Override
+   public hmm.a k() {
+      return this.k;
+   }
+
+   @Override
+   public boolean l() {
+      return this.l;
+   }
+
+   @Override
+   public String toString() {
+      return "SoundInstance[" + this.c + "]";
    }
 }

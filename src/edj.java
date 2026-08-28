@@ -1,13 +1,32 @@
-public class edj {
-   public static final ald<edl> a = a("overworld");
-   public static final ald<edl> b = a("the_nether");
-   public static final ald<edl> c = a("the_end");
-   public static final ald<edl> d = a("overworld_caves");
-   public static final ale e = ale.b("overworld");
-   public static final ale f = ale.b("the_nether");
-   public static final ale g = ale.b("the_end");
+import com.mojang.datafixers.DataFixer;
+import java.io.IOException;
+import java.nio.file.Path;
+import java.util.concurrent.CompletableFuture;
+import java.util.function.Supplier;
+import org.apache.commons.io.FileUtils;
 
-   private static ald<edl> a(String $$0) {
-      return ald.a(mg.aN, ale.b($$0));
+public class edj extends edg {
+   private final edi a;
+   private final Path b;
+
+   public edj(edp $$0, Path $$1, edp $$2, Path $$3, DataFixer $$4, boolean $$5) {
+      super($$0, $$1, $$4, $$5);
+      this.b = $$3;
+      this.a = new edi($$2, $$3, $$5);
+   }
+
+   @Override
+   public CompletableFuture<Void> a(dic $$0, Supplier<tz> $$1) {
+      this.e($$0);
+      return this.a.a($$0, $$1);
+   }
+
+   @Override
+   public void close() throws IOException {
+      super.close();
+      this.a.close();
+      if (this.b.toFile().exists()) {
+         FileUtils.deleteDirectory(this.b.toFile());
+      }
    }
 }

@@ -1,88 +1,109 @@
-import com.google.common.collect.Lists;
-import io.netty.buffer.ByteBuf;
-import java.util.BitSet;
-import java.util.List;
-import javax.annotation.Nullable;
+public class adi implements zf<abu> {
+   public static final yw<wj, adi> a = zf.a(adi::a, adi::new);
+   private final double b;
+   private final double c;
+   private final double d;
+   private final float e;
+   private final float f;
+   private final float g;
+   private final float h;
+   private final int i;
+   private final boolean j;
+   private final boolean k;
+   private final lv l;
 
-public class adi {
-   private static final yu<ByteBuf, byte[]> a = ys.a(2048);
-   private final BitSet b;
-   private final BitSet c;
-   private final BitSet d;
-   private final BitSet e;
-   private final List<byte[]> f;
-   private final List<byte[]> g;
-
-   public adi(dhw $$0, evk $$1, @Nullable BitSet $$2, @Nullable BitSet $$3) {
-      this.b = new BitSet();
-      this.c = new BitSet();
-      this.d = new BitSet();
-      this.e = new BitSet();
-      this.f = Lists.newArrayList();
-      this.g = Lists.newArrayList();
-
-      for (int $$4 = 0; $$4 < $$1.c(); $$4++) {
-         if ($$2 == null || $$2.get($$4)) {
-            this.a($$0, $$1, diy.a, $$4, this.b, this.d, this.f);
-         }
-
-         if ($$3 == null || $$3.get($$4)) {
-            this.a($$0, $$1, diy.b, $$4, this.c, this.e, this.g);
-         }
-      }
+   public <T extends lv> adi(T $$0, boolean $$1, boolean $$2, double $$3, double $$4, double $$5, float $$6, float $$7, float $$8, float $$9, int $$10) {
+      this.l = $$0;
+      this.j = $$1;
+      this.k = $$2;
+      this.b = $$3;
+      this.c = $$4;
+      this.d = $$5;
+      this.e = $$6;
+      this.f = $$7;
+      this.g = $$8;
+      this.h = $$9;
+      this.i = $$10;
    }
 
-   public adi(vs $$0, int $$1, int $$2) {
-      this.b = $$0.w();
-      this.c = $$0.w();
-      this.d = $$0.w();
-      this.e = $$0.w();
-      this.f = $$0.a(a);
-      this.g = $$0.a(a);
+   private adi(wj $$0) {
+      this.j = $$0.readBoolean();
+      this.k = $$0.readBoolean();
+      this.b = $$0.readDouble();
+      this.c = $$0.readDouble();
+      this.d = $$0.readDouble();
+      this.e = $$0.readFloat();
+      this.f = $$0.readFloat();
+      this.g = $$0.readFloat();
+      this.h = $$0.readFloat();
+      this.i = $$0.readInt();
+      this.l = lx.bl.decode($$0);
    }
 
-   public void a(vs $$0) {
+   private void a(wj $$0) {
+      $$0.a(this.j);
+      $$0.a(this.k);
       $$0.a(this.b);
       $$0.a(this.c);
       $$0.a(this.d);
       $$0.a(this.e);
-      $$0.a(this.f, a);
-      $$0.a(this.g, a);
+      $$0.a(this.f);
+      $$0.a(this.g);
+      $$0.a(this.h);
+      $$0.q(this.i);
+      lx.bl.encode($$0, this.l);
    }
 
-   private void a(dhw $$0, evk $$1, diy $$2, int $$3, BitSet $$4, BitSet $$5, List<byte[]> $$6) {
-      ebq $$7 = $$1.a($$2).a(jx.a($$0, $$1.d() + $$3));
-      if ($$7 != null) {
-         if ($$7.d()) {
-            $$5.set($$3);
-         } else {
-            $$4.set($$3);
-            $$6.add($$7.b().a());
-         }
-      }
+   @Override
+   public zh<adi> a() {
+      return agn.M;
    }
 
-   public BitSet a() {
+   public void a(abu $$0) {
+      $$0.a(this);
+   }
+
+   public boolean b() {
+      return this.j;
+   }
+
+   public boolean e() {
+      return this.k;
+   }
+
+   public double f() {
       return this.b;
    }
 
-   public BitSet b() {
-      return this.d;
-   }
-
-   public List<byte[]> c() {
-      return this.f;
-   }
-
-   public BitSet d() {
+   public double g() {
       return this.c;
    }
 
-   public BitSet e() {
+   public double h() {
+      return this.d;
+   }
+
+   public float i() {
       return this.e;
    }
 
-   public List<byte[]> f() {
+   public float j() {
+      return this.f;
+   }
+
+   public float k() {
       return this.g;
+   }
+
+   public float l() {
+      return this.h;
+   }
+
+   public int m() {
+      return this.i;
+   }
+
+   public lv n() {
+      return this.l;
    }
 }

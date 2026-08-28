@@ -1,31 +1,15 @@
-import com.google.common.collect.Lists;
+import com.mojang.datafixers.util.Pair;
 import com.mojang.serialization.MapCodec;
 import java.util.List;
-import java.util.Optional;
-import java.util.function.Consumer;
 
-public class esg extends eqi {
-   public static final MapCodec<esg> d = a(esg::new);
-
-   public esg(eqi.c $$0) {
-      super($$0);
+public class esg {
+   public static MapCodec<? extends esf> a(jr<MapCodec<? extends esf>> $$0) {
+      jr.a($$0, "random", esi.a);
+      jr.a($$0, "random_group", esj.a);
+      return jr.a($$0, "direct", ese.a);
    }
 
-   @Override
-   public Optional<eqi.b> a(eqi.a $$0) {
-      dsm $$1 = dsm.a($$0.f());
-      iu $$2 = this.a($$0, $$1);
-      return $$2.v() < 60 ? Optional.empty() : Optional.of(new eqi.b($$2, (Consumer<era>)($$3 -> this.a($$3, $$2, $$1, $$0))));
-   }
-
-   private void a(era $$0, iu $$1, dsm $$2, eqi.a $$3) {
-      List<eqm> $$4 = Lists.newArrayList();
-      esf.a($$3.e(), $$1, $$2, $$4, $$3.f());
-      $$4.forEach($$0::a);
-   }
-
-   @Override
-   public eqr<?> e() {
-      return eqr.c;
+   public static void a(qh<esd> $$0, je<esd> $$1, List<esf> $$2) {
+      $$2.stream().flatMap(esf::a).map($$0x -> $$0x.a().a()).forEach($$2x -> qo.a($$0, $$2x, new esd($$1, List.of(Pair.of(esb.b($$2x), 1)), esd.a.b)));
    }
 }

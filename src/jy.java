@@ -33,13 +33,13 @@ public final class jy {
       }
    }, UndashedUuid::toString), a);
    public static final Codec<UUID> f = Codec.withAlternative(a, d);
-   public static final yu<ByteBuf, UUID> g = new yu<ByteBuf, UUID>() {
+   public static final yw<ByteBuf, UUID> g = new yw<ByteBuf, UUID>() {
       public UUID a(ByteBuf $$0) {
-         return vs.g($$0);
+         return vu.g($$0);
       }
 
       public void a(ByteBuf $$0, UUID $$1) {
-         vs.a($$0, $$1);
+         vu.a($$0, $$1);
       }
    };
    public static final int h = 16;

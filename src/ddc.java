@@ -1,70 +1,30 @@
-import java.util.ArrayList;
-import java.util.List;
+import com.mojang.serialization.Codec;
+import io.netty.buffer.ByteBuf;
+import java.util.function.IntFunction;
 
-public class ddc extends dcz {
-   private static final ddf c = ddf.a(cyw.rz);
-   private static final ddf d = ddf.a(cyw.qd);
-   private static final ddf e = ddf.a(cyw.vy);
+public enum ddc implements bak {
+   a("building", 0),
+   b("redstone", 1),
+   c("equipment", 2),
+   d("misc", 3);
 
-   public ddc(dcw $$0) {
-      super($$0);
-   }
+   public static final Codec<ddc> e = bak.a(ddc::values);
+   public static final IntFunction<ddc> f = ayc.a(ddc::a, values(), ayc.a.a);
+   public static final yw<ByteBuf, ddc> g = yu.a(f, ddc::a);
+   private final String h;
+   private final int i;
 
-   public boolean a(dcx $$0, dip $$1) {
-      if ($$0.e() < 2) {
-         return false;
-      } else {
-         boolean $$2 = false;
-         int $$3 = 0;
-
-         for (int $$4 = 0; $$4 < $$0.a(); $$4++) {
-            cys $$5 = $$0.a($$4);
-            if (!$$5.f()) {
-               if (c.a($$5)) {
-                  if ($$2) {
-                     return false;
-                  }
-
-                  $$2 = true;
-               } else if (d.a($$5)) {
-                  if (++$$3 > 3) {
-                     return false;
-                  }
-               } else if (!e.a($$5)) {
-                  return false;
-               }
-            }
-         }
-
-         return $$2 && $$3 >= 1;
-      }
-   }
-
-   public cys a(dcx $$0, jg.a $$1) {
-      List<dbg> $$2 = new ArrayList<>();
-      int $$3 = 0;
-
-      for (int $$4 = 0; $$4 < $$0.a(); $$4++) {
-         cys $$5 = $$0.a($$4);
-         if (!$$5.f()) {
-            if (d.a($$5)) {
-               $$3++;
-            } else if (e.a($$5)) {
-               dbg $$6 = $$5.a(kj.ai);
-               if ($$6 != null) {
-                  $$2.add($$6);
-               }
-            }
-         }
-      }
-
-      cys $$7 = new cys(cyw.vx, 3);
-      $$7.b(kj.aj, new dbh($$3, $$2));
-      return $$7;
+   private ddc(final String $$0, final int $$1) {
+      this.h = $$0;
+      this.i = $$1;
    }
 
    @Override
-   public ddt<ddc> a() {
-      return ddt.g;
+   public String c() {
+      return this.h;
+   }
+
+   private int a() {
+      return this.i;
    }
 }

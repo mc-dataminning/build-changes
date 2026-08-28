@@ -1,64 +1,109 @@
-public abstract class bxh extends bxb {
-   protected static final float bE = 0.0F;
+import java.util.Objects;
+import java.util.UUID;
+import javax.annotation.Nullable;
 
-   protected bxh(bwj<? extends bxh> $$0, dip $$1) {
-      super($$0, $$1);
+public interface bxh {
+   String a_ = "AngerTime";
+   String b_ = "AngryAt";
+
+   int a();
+
+   void a(int var1);
+
+   @Nullable
+   UUID b();
+
+   void a(@Nullable UUID var1);
+
+   void c();
+
+   default void a_(tz $$0) {
+      $$0.a("AngerTime", this.a());
+      if (this.b() != null) {
+         $$0.a("AngryAt", this.b());
+      }
    }
 
-   public float c(iu $$0) {
-      return this.a($$0, this.dV());
-   }
-
-   public float a(iu $$0, dis $$1) {
-      return 0.0F;
-   }
-
-   @Override
-   public boolean a(diq $$0, bwi $$1) {
-      return this.a(this.dv(), $$0) >= 0.0F;
-   }
-
-   public boolean gm() {
-      return !this.O().k();
-   }
-
-   public boolean gn() {
-      if (this.bs.a(cgb.aa)) {
-         return this.bs.c(cgb.aa).isPresent();
-      } else {
-         for (cfj $$0 : this.bC.b()) {
-            if ($$0.h() && $$0.k() instanceof ceo) {
-               return true;
+   default void a(div $$0, tz $$1) {
+      this.a($$1.h("AngerTime"));
+      if ($$0 instanceof arq $$2) {
+         if (!$$1.b("AngryAt")) {
+            this.a(null);
+         } else {
+            UUID $$4 = $$1.a("AngryAt");
+            this.a($$4);
+            if ($$2.b($$4) instanceof bxc $$6) {
+               this.g($$6);
             }
          }
+      }
+   }
 
+   default void a(arq $$0, boolean $$1) {
+      bxc $$2 = this.f();
+      UUID $$3 = this.b();
+      if (($$2 == null || $$2.eG()) && $$3 != null && $$0.b($$3) instanceof bxe) {
+         this.V_();
+      } else {
+         if ($$2 != null && !Objects.equals($$3, $$2.cG())) {
+            this.a($$2.cG());
+            this.c();
+         }
+
+         if (this.a() > 0 && ($$2 == null || $$2.aq() != bwm.bS || !$$1)) {
+            this.a(this.a() - 1);
+            if (this.a() == 0) {
+               this.V_();
+            }
+         }
+      }
+   }
+
+   default boolean a(bxc $$0, arq $$1) {
+      if (!this.c($$0)) {
          return false;
+      } else {
+         return $$0.aq() == bwm.bS && this.a_($$1) ? true : $$0.cG().equals(this.b());
       }
    }
 
-   protected boolean go() {
-      return true;
+   default boolean a_(arq $$0) {
+      return $$0.O().c(dir.P) && this.W_() && this.b() == null;
    }
 
-   @Override
-   public void a(bwa $$0) {
-      super.a($$0);
-      if (this.go() && !this.gn()) {
-         this.bC.b(cdv.a.a);
-         float $$1 = 2.0F;
-         float $$2 = this.f($$0);
-         fdw $$3 = new fdw($$0.dA() - this.dA(), $$0.dC() - this.dC(), $$0.dG() - this.dG()).d().c((double)Math.max($$2 - 2.0F, 0.0F));
-         this.O().a(this.dA() + $$3.d, this.dC() + $$3.e, this.dG() + $$3.f, this.gp());
+   default boolean W_() {
+      return this.a() > 0;
+   }
+
+   default void a_(arq $$0, cqy $$1) {
+      if ($$0.O().c(dir.O)) {
+         if ($$1.cG().equals(this.b())) {
+            this.V_();
+         }
       }
    }
 
-   @Override
-   public boolean a(bwa $$0, float $$1) {
-      this.a($$0.dv(), 5);
-      return true;
+   default void X_() {
+      this.V_();
+      this.c();
    }
 
-   protected double gp() {
-      return 1.0;
+   default void V_() {
+      this.a(null);
+      this.a(null);
+      this.g(null);
+      this.a(0);
    }
+
+   @Nullable
+   bxc eq();
+
+   void a(@Nullable bxc var1);
+
+   void g(@Nullable bxc var1);
+
+   boolean c(bxc var1);
+
+   @Nullable
+   bxc f();
 }

@@ -1,52 +1,52 @@
 import com.mojang.brigadier.CommandDispatcher;
+import com.mojang.brigadier.arguments.IntegerArgumentType;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
 import com.mojang.brigadier.builder.RequiredArgumentBuilder;
+import com.mojang.brigadier.context.ContextChain;
+import java.util.List;
 
 public class aop {
-   public static void a(CommandDispatcher<ei> $$0) {
+   public static <T extends ek<T>> void a(CommandDispatcher<T> $$0) {
       $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)ej.a("rotate").requires($$0x -> $$0x.c(2)))
-            .then(
-               ((RequiredArgumentBuilder)ej.a("target", ev.a())
-                     .then(ej.a("rotation", gj.a()).executes($$0x -> a((ei)$$0x.getSource(), ev.a($$0x, "target"), gj.a($$0x, "rotation")))))
-                  .then(
-                     ((LiteralArgumentBuilder)ej.a("facing")
-                           .then(
-                              ej.a("entity")
-                                 .then(
-                                    ((RequiredArgumentBuilder)ej.a("facingEntity", ev.a())
-                                          .executes($$0x -> a((ei)$$0x.getSource(), ev.a($$0x, "target"), new any.a(ev.a($$0x, "facingEntity"), eu.a.a))))
-                                       .then(
-                                          ej.a("facingAnchor", eu.a())
-                                             .executes(
-                                                $$0x -> a(
-                                                      (ei)$$0x.getSource(),
-                                                      ev.a($$0x, "target"),
-                                                      new any.a(ev.a($$0x, "facingEntity"), eu.a($$0x, "facingAnchor"))
-                                                   )
-                                             )
-                                       )
-                                 )
-                           ))
-                        .then(
-                           ej.a("facingLocation", gm.a())
-                              .executes($$0x -> a((ei)$$0x.getSource(), ev.a($$0x, "target"), new any.b(gm.a($$0x, "facingLocation"))))
-                        )
-                  )
-            )
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)LiteralArgumentBuilder.literal("return")
+                     .requires($$0x -> $$0x.c(2)))
+                  .then(RequiredArgumentBuilder.argument("value", IntegerArgumentType.integer()).executes(new aop.c())))
+               .then(LiteralArgumentBuilder.literal("fail").executes(new aop.a())))
+            .then(LiteralArgumentBuilder.literal("run").forward($$0.getRoot(), new aop.b(), false))
       );
    }
 
-   private static int a(ei $$0, bwa $$1, gh $$2) {
-      fdv $$3 = $$2.b($$0);
-      $$1.a($$3.j, $$3.i);
-      $$0.a(() -> ww.a("commands.rotate.success", $$1.m_()), true);
-      return 1;
+   static class a<T extends ek<T>> implements hg.a<T> {
+      public void a(T $$0, ContextChain<T> $$1, he $$2, hk<T> $$3) {
+         $$0.p().onFailure();
+         hl $$4 = $$3.b();
+         $$4.a();
+         $$4.b();
+      }
    }
 
-   private static int a(ei $$0, bwa $$1, any $$2) {
-      $$2.perform($$0, $$1);
-      $$0.a(() -> ww.a("commands.rotate.success", $$1.m_()), true);
-      return 1;
+   static class b<T extends ek<T>> implements hh.a<T> {
+      public void a(T $$0, List<T> $$1, ContextChain<T> $$2, he $$3, hk<T> $$4) {
+         if ($$1.isEmpty()) {
+            if ($$3.c()) {
+               $$4.a(ht.a());
+            }
+         } else {
+            $$4.b().b();
+            ContextChain<T> $$5 = $$2.nextStage();
+            String $$6 = $$5.getTopContext().getInput();
+            $$4.a(new hp.a<>($$6, $$5, $$3.d(), $$0, $$1));
+         }
+      }
+   }
+
+   static class c<T extends ek<T>> implements hg.a<T> {
+      public void a(T $$0, ContextChain<T> $$1, he $$2, hk<T> $$3) {
+         int $$4 = IntegerArgumentType.getInteger($$1.getTopContext(), "value");
+         $$0.p().onSuccess($$4);
+         hl $$5 = $$3.b();
+         $$5.a($$4);
+         $$5.b();
+      }
    }
 }

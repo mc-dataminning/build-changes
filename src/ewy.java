@@ -1,35 +1,40 @@
-import com.google.common.collect.Sets;
-import java.util.Set;
+import it.unimi.dsi.fastutil.HashCommon;
 import javax.annotation.Nullable;
 
-public class ewy extends exf {
-   public ewy(dsb $$0) {
-      super($$0);
+public class ewy {
+   private static final int a = 4096;
+   private static final int b = 4095;
+   private final long[] c = new long[4096];
+   private final ewx[] d = new ewx[4096];
+
+   public ewx a(dib $$0, iu $$1) {
+      long $$2 = $$1.a();
+      int $$3 = a($$2);
+      ewx $$4 = this.a($$3, $$2);
+      return $$4 != null ? $$4 : this.a($$0, $$1, $$3, $$2);
    }
 
-   @Override
-   public void a(dip $$0, iu $$1, dzo $$2, @Nullable exd $$3, boolean $$4) {
-      int $$5 = this.c($$0, $$1);
-      if ($$2.c(dsb.f) != $$5) {
-         if ($$0.a_($$1) == $$2) {
-            $$0.a($$1, $$2.b(dsb.f, Integer.valueOf($$5)), 2);
-         }
+   @Nullable
+   private ewx a(int $$0, long $$1) {
+      return this.c[$$0] == $$1 ? this.d[$$0] : null;
+   }
 
-         Set<iu> $$6 = Sets.newHashSet();
-         $$6.add($$1);
+   private ewx a(dib $$0, iu $$1, int $$2, long $$3) {
+      ewx $$4 = exc.b($$0, $$1);
+      this.c[$$2] = $$3;
+      this.d[$$2] = $$4;
+      return $$4;
+   }
 
-         for (ja $$7 : ja.values()) {
-            $$6.add($$1.a($$7));
-         }
-
-         for (iu $$8 : $$6) {
-            $$0.a($$8, this.a);
-         }
+   public void a(iu $$0) {
+      long $$1 = $$0.a();
+      int $$2 = a($$1);
+      if (this.c[$$2] == $$1) {
+         this.d[$$2] = null;
       }
    }
 
-   private int c(dip $$0, iu $$1) {
-      int $$2 = this.a($$0, $$1);
-      return $$2 == 15 ? $$2 : Math.max($$2, this.b($$0, $$1));
+   private static int a(long $$0) {
+      return (int)HashCommon.mix($$0) & 4095;
    }
 }

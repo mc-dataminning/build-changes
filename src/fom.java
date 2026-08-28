@@ -1,99 +1,66 @@
-import com.google.common.collect.ImmutableList;
+import com.mojang.datafixers.DataFixer;
 import com.mojang.logging.LogUtils;
-import java.io.PrintWriter;
-import java.io.StringWriter;
-import java.util.List;
-import javax.annotation.Nullable;
+import com.mojang.serialization.DataResult;
+import java.nio.file.Path;
 import org.slf4j.Logger;
 
 public class fom {
-   private static final Logger a = LogUtils.getLogger();
-   @Nullable
-   private fom.c b;
-   private int c;
+   private static final Logger b = LogUtils.getLogger();
+   public static final int a = 9;
+   private final Path c;
+   private final DataFixer d;
+   private final gor[] e = new gor[9];
+   private boolean f;
 
-   public void a(fom.b $$0, List<atn> $$1) {
-      this.c++;
-      if (this.b != null && !this.b.d) {
-         a.warn("Reload already ongoing, replacing");
+   public fom(Path $$0, DataFixer $$1) {
+      this.c = $$0.resolve("hotbar.nbt");
+      this.d = $$1;
+
+      for (int $$2 = 0; $$2 < 9; $$2++) {
+         this.e[$$2] = new gor();
       }
-
-      this.b = new fom.c($$0, $$1.stream().map(atn::b).collect(ImmutableList.toImmutableList()));
    }
 
-   public void a(Throwable $$0) {
-      if (this.b == null) {
-         a.warn("Trying to signal reload recovery, but nothing was started");
-         this.b = new fom.c(fom.b.c, ImmutableList.of());
-      }
+   private void b() {
+      try {
+         tz $$0 = um.a(this.c);
+         if ($$0 == null) {
+            return;
+         }
 
-      this.b.c = new fom.a($$0);
+         int $$1 = uo.b($$0, 1343);
+         $$0 = bbb.d.a(this.d, $$0, $$1);
+
+         for (int $$2 = 0; $$2 < 9; $$2++) {
+            this.e[$$2] = gor.a.parse(un.a, $$0.c(String.valueOf($$2))).resultOrPartial($$0x -> b.warn("Failed to parse hotbar: {}", $$0x)).orElseGet(gor::new);
+         }
+      } catch (Exception var4) {
+         b.error("Failed to load creative mode options", var4);
+      }
    }
 
    public void a() {
-      if (this.b == null) {
-         a.warn("Trying to finish reload, but nothing was started");
-      } else {
-         this.b.d = true;
-      }
-   }
+      try {
+         tz $$0 = uo.e(new tz());
 
-   public void a(o $$0) {
-      p $$1 = $$0.a("Last reload");
-      $$1.a("Reload number", this.c);
-      if (this.b != null) {
-         this.b.a($$1);
-      }
-   }
-
-   static class a {
-      private final Throwable a;
-
-      a(Throwable $$0) {
-         this.a = $$0;
-      }
-
-      public void a(p $$0) {
-         $$0.a("Recovery", "Yes");
-         $$0.a("Recovery reason", () -> {
-            StringWriter $$0x = new StringWriter();
-            this.a.printStackTrace(new PrintWriter($$0x));
-            return $$0x.toString();
-         });
-      }
-   }
-
-   public static enum b {
-      a("initial"),
-      b("manual"),
-      c("unknown");
-
-      final String d;
-
-      private b(final String $$0) {
-         this.d = $$0;
-      }
-   }
-
-   static class c {
-      private final fom.b a;
-      private final List<String> b;
-      @Nullable
-      fom.a c;
-      boolean d;
-
-      c(fom.b $$0, List<String> $$1) {
-         this.a = $$0;
-         this.b = $$1;
-      }
-
-      public void a(p $$0) {
-         $$0.a("Reload reason", this.a.d);
-         $$0.a("Finished", this.d ? "Yes" : "No");
-         $$0.a("Packs", () -> String.join(", ", this.b));
-         if (this.c != null) {
-            this.c.a($$0);
+         for (int $$1 = 0; $$1 < 9; $$1++) {
+            gor $$2 = this.a($$1);
+            DataResult<uw> $$3 = gor.a.encodeStart(un.a, $$2);
+            $$0.a(String.valueOf($$1), (uw)$$3.getOrThrow());
          }
+
+         um.b($$0, this.c);
+      } catch (Exception var5) {
+         b.error("Failed to save creative mode options", var5);
       }
+   }
+
+   public gor a(int $$0) {
+      if (!this.f) {
+         this.b();
+         this.f = true;
+      }
+
+      return this.e[$$0];
    }
 }

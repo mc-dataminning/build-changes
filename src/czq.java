@@ -1,19 +1,19 @@
-public class czq extends cyp {
-   private final arp a;
-
-   public czq(arp $$0) {
-      this.a = $$0;
+public class czq extends daj {
+   public czq(dma $$0, dma $$1, cyu.a $$2) {
+      super($$0, $$1, ja.a, $$2);
    }
 
    @Override
-   protected void b(ale $$0, int $$1) {
-      super.b($$0, $$1);
-      this.a.f.b(new acp($$0, $$1));
+   public wy a(cyy $$0) {
+      dby $$1 = $$0.a(kj.ak);
+      return (wy)($$1 != null && $$1.c().isPresent() ? wy.a(this.n + ".named", $$1.c().get()) : super.a($$0));
    }
 
    @Override
-   protected void b(ale $$0) {
-      super.b($$0);
-      this.a.f.b(new acp($$0, 0));
+   public void l(cyy $$0) {
+      dby $$1 = $$0.a(kj.ak);
+      if ($$1 != null && !$$1.b()) {
+         $$1.a().thenAcceptAsync($$1x -> $$0.b(kj.ak, $$1x), dyn.a);
+      }
    }
 }

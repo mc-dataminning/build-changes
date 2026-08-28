@@ -1,39 +1,24 @@
-import com.google.common.collect.Sets;
-import java.util.Set;
-import java.util.function.ToIntFunction;
-
-class bvm extends bvc {
-   private final ToIntFunction<azt> c;
-
-   protected bvm(bvd $$0, int $$1, ToIntFunction<azt> $$2) {
-      super($$0, $$1, lx.Y);
-      this.c = $$2;
+class bvm extends bvf {
+   protected bvm(bvg $$0, int $$1, lv $$2) {
+      super($$0, $$1, $$2);
    }
 
    @Override
-   public void a(aro $$0, bwz $$1, int $$2, bwa.e $$3) {
-      if ($$3 == bwa.e.a && ($$1 instanceof cqs || $$0.O().c(dil.c))) {
-         this.a($$0, $$1.dY(), $$1.dv());
-      }
+   public boolean a(int $$0, int $$1) {
+      return $$0 == 1;
    }
 
-   private void a(aro $$0, azt $$1, iu $$2) {
-      Set<iu> $$3 = Sets.newHashSet();
-      int $$4 = this.c.applyAsInt($$1);
-
-      for (iu $$5 : iu.a($$1, 15, $$2, 1)) {
-         iu $$6 = $$5.e();
-         if (!$$3.contains($$5) && $$0.a_($$5).v() && $$0.a_($$6).c($$0, $$6, ja.b)) {
-            $$3.add($$5.j());
-            if ($$3.size() >= $$4) {
-               break;
-            }
+   @Override
+   public boolean a(arq $$0, bxc $$1, int $$2) {
+      if ($$1 instanceof arr $$3 && !$$1.U_()) {
+         iu $$4 = $$3.ag();
+         if ($$4 != null) {
+            $$0.B().a($$3, $$4);
+            $$3.af();
+            return false;
          }
       }
 
-      for (iu $$7 : $$3) {
-         $$0.a($$7, dlw.bz.m(), 3);
-         $$0.c(3018, $$7, 0);
-      }
+      return true;
    }
 }

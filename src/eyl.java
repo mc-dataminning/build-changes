@@ -1,69 +1,28 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import java.util.Map;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
+public class eyl {
+   public static final eyl a = new eyl("advancements");
+   public static final eyl b = new eyl("stats");
+   public static final eyl c = new eyl("playerdata");
+   public static final eyl d = new eyl("players");
+   public static final eyl e = new eyl("level.dat");
+   public static final eyl f = new eyl("level.dat_old");
+   public static final eyl g = new eyl("icon.png");
+   public static final eyl h = new eyl("session.lock");
+   public static final eyl i = new eyl("generated");
+   public static final eyl j = new eyl("datapacks");
+   public static final eyl k = new eyl("resources.zip");
+   public static final eyl l = new eyl(".");
+   private final String m;
 
-public interface eyl {
-   eyk<dbk> a = new eyk<dbk>() {
-      @Override
-      public ki<dbk> a() {
-         return kj.ap;
-      }
+   private eyl(String $$0) {
+      this.m = $$0;
+   }
 
-      public Stream<cys> a(dbk $$0) {
-         return $$0.b();
-      }
+   public String a() {
+      return this.m;
+   }
 
-      public dbk c() {
-         return dbk.a;
-      }
-
-      public dbk a(dbk $$0, Stream<cys> $$1) {
-         return dbk.a($$1.toList());
-      }
-   };
-   eyk<dav> b = new eyk<dav>() {
-      @Override
-      public ki<dav> a() {
-         return kj.Q;
-      }
-
-      public dav c() {
-         return dav.a;
-      }
-
-      public Stream<cys> a(dav $$0) {
-         return $$0.b();
-      }
-
-      public dav a(dav $$0, Stream<cys> $$1) {
-         dav.a $$2 = new dav.a($$0).a();
-         $$1.forEach($$2::a);
-         return $$2.d();
-      }
-   };
-   eyk<daw> c = new eyk<daw>() {
-      @Override
-      public ki<daw> a() {
-         return kj.P;
-      }
-
-      public daw c() {
-         return daw.a;
-      }
-
-      public Stream<cys> a(daw $$0) {
-         return $$0.a().stream();
-      }
-
-      public daw a(daw $$0, Stream<cys> $$1) {
-         return daw.a($$1.toList());
-      }
-   };
-   Map<ki<?>, eyk<?>> d = Stream.of(a, b, c).collect(Collectors.toMap(eyk::a, $$0 -> (eyk<?>)$$0));
-   Codec<eyk<?>> e = mf.am.q().comapFlatMap($$0 -> {
-      eyk<?> $$1 = d.get($$0);
-      return $$1 != null ? DataResult.success($$1) : DataResult.error(() -> "No items in component");
-   }, eyk::a);
+   @Override
+   public String toString() {
+      return "/" + this.m;
+   }
 }

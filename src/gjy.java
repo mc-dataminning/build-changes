@@ -1,67 +1,41 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.ImmutableMap.Builder;
 import java.util.ArrayList;
 import java.util.List;
-import javax.annotation.Nullable;
+import java.util.Map;
 
 public class gjy {
-   private final gka[] a;
-   private int b;
+   private final aun a = auq.c();
+   private final Map<auj, String> b;
 
-   public static Codec<gjy> a(int $$0) {
-      return Codec.list(gka.a)
-         .comapFlatMap(
-            $$1 -> {
-               int $$2 = $$1.size();
-               return $$2 > $$0
-                  ? DataResult.error(() -> "Expected: a buffer of size less than or equal to " + $$0 + " but: " + $$2 + " is greater than " + $$0)
-                  : DataResult.success(new gjy($$0, $$1));
-            },
-            gjy::c
-         );
+   public gjy() {
+      this.a.a();
+      Builder<auj, String> $$0 = ImmutableMap.builder();
+      this.a.d().forEach($$1 -> {
+         ato $$2 = $$1.a();
+         $$2.d().ifPresent($$2x -> $$0.put($$2x, $$2.a()));
+      });
+      this.b = $$0.build();
    }
 
-   public gjy(int $$0) {
-      this.a = new gka[$$0];
-   }
+   public List<auj> a(List<auj> $$0) {
+      List<auj> $$1 = new ArrayList<>($$0.size());
+      List<String> $$2 = new ArrayList<>($$0.size());
 
-   private gjy(int $$0, List<gka> $$1) {
-      this.a = $$1.toArray(gka[]::new);
-      this.b = $$1.size();
-   }
-
-   private List<gka> c() {
-      List<gka> $$0 = new ArrayList<>(this.d());
-
-      for (int $$1 = this.a(); $$1 <= this.b(); $$1++) {
-         $$0.add(this.b($$1));
+      for (auj $$3 : $$0) {
+         String $$4 = this.b.get($$3);
+         if ($$4 != null) {
+            $$2.add($$4);
+            $$1.add($$3);
+         }
       }
 
-      return $$0;
+      this.a.b($$2);
+      return $$1;
    }
 
-   public void a(gka $$0) {
-      this.a[this.c(this.b++)] = $$0;
-   }
-
-   @Nullable
-   public gka b(int $$0) {
-      return $$0 >= this.a() && $$0 <= this.b() ? this.a[this.c($$0)] : null;
-   }
-
-   private int c(int $$0) {
-      return $$0 % this.a.length;
-   }
-
-   public int a() {
-      return Math.max(this.b - this.a.length, 0);
-   }
-
-   public int b() {
-      return this.b - 1;
-   }
-
-   private int d() {
-      return this.b() - this.a() + 1;
+   public aus a() {
+      List<atp> $$0 = this.a.h();
+      return new auv(atr.b, $$0);
    }
 }

@@ -1,22 +1,53 @@
-import com.google.common.collect.ImmutableSet;
-import java.util.Comparator;
 import java.util.List;
+import java.util.Optional;
 import java.util.Set;
+import java.util.function.BiPredicate;
+import java.util.function.Predicate;
 
-public class cha<T extends bwz> extends chh<T> {
-   @Override
-   protected void a(aro $$0, T $$1) {
-      double $$2 = $$1.h(byf.m);
-      fdr $$3 = $$1.cR().c($$2, $$2, $$2);
-      List<bwz> $$4 = $$0.a(bwz.class, $$3, $$1x -> $$1x != $$1 && $$1x.bK());
-      $$4.sort(Comparator.comparingDouble($$1::g));
-      bxz<?> $$5 = $$1.eb();
-      $$5.a(cgb.g, $$4);
-      $$5.a(cgb.h, new cgd($$0, $$1, $$4));
+public class cha<T extends bxc> extends chk<T> {
+   private final BiPredicate<T, bxc> a;
+   private final Predicate<T> b;
+   private final cge<Boolean> c;
+   private final int d;
+
+   public cha(int $$0, BiPredicate<T, bxc> $$1, Predicate<T> $$2, cge<Boolean> $$3, int $$4) {
+      super($$0);
+      this.a = $$1;
+      this.b = $$2;
+      this.c = $$3;
+      this.d = $$4;
    }
 
    @Override
-   public Set<cgb<?>> a() {
-      return ImmutableSet.of(cgb.g, cgb.h);
+   protected void a(arq $$0, T $$1) {
+      if (!this.b.test($$1)) {
+         this.c($$1);
+      } else {
+         this.a($$1);
+      }
+   }
+
+   @Override
+   public Set<cge<?>> a() {
+      return Set.of(cge.g);
+   }
+
+   @Override
+   public void a(T $$0) {
+      Optional<List<bxc>> $$1 = $$0.eb().c(cge.g);
+      if (!$$1.isEmpty()) {
+         boolean $$2 = $$1.get().stream().anyMatch($$1x -> this.a.test($$0, $$1x));
+         if ($$2) {
+            this.b($$0);
+         }
+      }
+   }
+
+   public void b(T $$0) {
+      $$0.eb().a(this.c, true, (long)this.d);
+   }
+
+   public void c(T $$0) {
+      $$0.eb().b(this.c);
    }
 }

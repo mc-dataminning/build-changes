@@ -1,71 +1,129 @@
-import java.util.List;
-import java.util.Optional;
-import java.util.function.Function;
-import org.joml.Vector3f;
+public class gfz extends gfq<hcs> {
+   public static final gjd a = gjd.scaling(2.35F);
+   private static final float[] b = new float[]{1.75F, 0.25F, 0.0F, 0.0F, 0.5F, 0.5F, 0.5F, 0.5F, 1.25F, 0.75F, 0.0F, 0.0F};
+   private static final float[] c = new float[]{0.0F, 0.0F, 0.0F, 0.0F, 0.25F, 1.75F, 1.25F, 0.75F, 0.0F, 0.0F, 0.0F, 0.0F};
+   private static final float[] d = new float[]{0.0F, 0.0F, 0.25F, 1.75F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.75F, 1.25F};
+   private static final float[] e = new float[]{0.0F, 0.0F, 8.0F, -8.0F, -8.0F, 8.0F, 8.0F, -8.0F, 0.0F, 0.0F, 8.0F, -8.0F};
+   private static final float[] f = new float[]{-8.0F, -8.0F, -8.0F, -8.0F, 0.0F, 0.0F, 0.0F, 0.0F, 8.0F, 8.0F, 8.0F, 8.0F};
+   private static final float[] g = new float[]{8.0F, -8.0F, 0.0F, 0.0F, -8.0F, -8.0F, 8.0F, 8.0F, 8.0F, -8.0F, 0.0F, 0.0F};
+   private static final String i = "eye";
+   private static final String j = "tail0";
+   private static final String k = "tail1";
+   private static final String l = "tail2";
+   private final giu m;
+   private final giu n;
+   private final giu[] o = new giu[12];
+   private final giu[] p;
 
-public abstract class gfz {
-   private static final Vector3f a = new Vector3f();
-   protected final gig v;
-   protected final Function<ale, gpn> w;
-   private final List<gig> b;
+   public gfz(giu $$0) {
+      super($$0);
+      this.m = $$0.b("head");
 
-   public gfz(gig $$0, Function<ale, gpn> $$1) {
-      this.v = $$0;
-      this.w = $$1;
-      this.b = $$0.e().toList();
+      for (int $$1 = 0; $$1 < this.o.length; $$1++) {
+         this.o[$$1] = this.m.b(a($$1));
+      }
+
+      this.n = this.m.b("eye");
+      this.p = new giu[3];
+      this.p[0] = this.m.b("tail0");
+      this.p[1] = this.p[0].b("tail1");
+      this.p[2] = this.p[1].b("tail2");
    }
 
-   public final gpn a(ale $$0) {
-      return this.w.apply($$0);
+   private static String a(int $$0) {
+      return "spike" + $$0;
    }
 
-   public final void a(fiq $$0, fiu $$1, int $$2, int $$3, int $$4) {
-      this.e().a($$0, $$1, $$2, $$3, $$4);
+   public static gja a() {
+      gjc $$0 = new gjc();
+      gje $$1 = $$0.a();
+      gje $$2 = $$1.a(
+         "head",
+         giz.c()
+            .a(0, 0)
+            .a(-6.0F, 10.0F, -8.0F, 12.0F, 12.0F, 16.0F)
+            .a(0, 28)
+            .a(-8.0F, 10.0F, -6.0F, 2.0F, 12.0F, 12.0F)
+            .a(0, 28)
+            .a(6.0F, 10.0F, -6.0F, 2.0F, 12.0F, 12.0F, true)
+            .a(16, 40)
+            .a(-6.0F, 8.0F, -6.0F, 12.0F, 2.0F, 12.0F)
+            .a(16, 40)
+            .a(-6.0F, 22.0F, -6.0F, 12.0F, 2.0F, 12.0F),
+         giw.a
+      );
+      giz $$3 = giz.c().a(0, 0).a(-1.0F, -4.5F, -1.0F, 2.0F, 9.0F, 2.0F);
+
+      for (int $$4 = 0; $$4 < 12; $$4++) {
+         float $$5 = b($$4, 0.0F, 0.0F);
+         float $$6 = c($$4, 0.0F, 0.0F);
+         float $$7 = d($$4, 0.0F, 0.0F);
+         float $$8 = (float) Math.PI * b[$$4];
+         float $$9 = (float) Math.PI * c[$$4];
+         float $$10 = (float) Math.PI * d[$$4];
+         $$2.a(a($$4), $$3, giw.a($$5, $$6, $$7, $$8, $$9, $$10));
+      }
+
+      $$2.a("eye", giz.c().a(8, 0).a(-1.0F, 15.0F, 0.0F, 2.0F, 2.0F, 1.0F), giw.a(0.0F, 0.0F, -8.25F));
+      gje $$11 = $$2.a("tail0", giz.c().a(40, 0).a(-2.0F, 14.0F, 7.0F, 4.0F, 4.0F, 8.0F), giw.a);
+      gje $$12 = $$11.a("tail1", giz.c().a(0, 54).a(0.0F, 14.0F, 0.0F, 3.0F, 3.0F, 7.0F), giw.a(-1.5F, 0.5F, 14.0F));
+      $$12.a("tail2", giz.c().a(41, 32).a(0.0F, 14.0F, 0.0F, 2.0F, 2.0F, 6.0F).a(25, 19).a(1.0F, 10.5F, 3.0F, 1.0F, 9.0F, 9.0F), giw.a(0.5F, 0.5F, 6.0F));
+      return gja.a($$0, 64, 64);
    }
 
-   public final void a(fiq $$0, fiu $$1, int $$2, int $$3) {
-      this.a($$0, $$1, $$2, $$3, -1);
+   public static gja b() {
+      return a().a(a);
    }
 
-   public final gig e() {
-      return this.v;
+   public void a(hcs $$0) {
+      super.a($$0);
+      this.m.f = $$0.aa * (float) (Math.PI / 180.0);
+      this.m.e = $$0.ab * (float) (Math.PI / 180.0);
+      float $$1 = (1.0F - $$0.a) * 0.55F;
+      this.a($$0.u, $$1);
+      if ($$0.e != null && $$0.d != null) {
+         double $$2 = $$0.e.e - $$0.c.e;
+         if ($$2 > 0.0) {
+            this.n.c = 0.0F;
+         } else {
+            this.n.c = 1.0F;
+         }
+
+         fei $$3 = $$0.d;
+         $$3 = new fei($$3.d, 0.0, $$3.f);
+         fei $$4 = new fei($$0.c.d - $$0.e.d, 0.0, $$0.c.f - $$0.e.f).d().b((float) (Math.PI / 2));
+         double $$5 = $$3.b($$4);
+         this.n.b = azm.c((float)Math.abs($$5)) * 2.0F * (float)Math.signum($$5);
+      }
+
+      this.n.k = true;
+      float $$6 = $$0.b;
+      this.p[0].f = azm.a($$6) * (float) Math.PI * 0.05F;
+      this.p[1].f = azm.a($$6) * (float) Math.PI * 0.1F;
+      this.p[2].f = azm.a($$6) * (float) Math.PI * 0.15F;
    }
 
-   public Optional<gig> a(String $$0) {
-      return $$0.equals("root") ? Optional.of(this.e()) : this.e().e().filter($$1 -> $$1.a($$0)).findFirst().map($$1 -> $$1.b($$0));
-   }
-
-   public final List<gig> f() {
-      return this.b;
-   }
-
-   public final void g() {
-      for (gig $$0 : this.b) {
-         $$0.c();
+   private void a(float $$0, float $$1) {
+      for (int $$2 = 0; $$2 < 12; $$2++) {
+         this.o[$$2].b = b($$2, $$0, $$1);
+         this.o[$$2].c = c($$2, $$0, $$1);
+         this.o[$$2].d = d($$2, $$0, $$1);
       }
    }
 
-   protected void a(bvr $$0, fou $$1, float $$2) {
-      this.a($$0, $$1, $$2, 1.0F);
+   private static float a(int $$0, float $$1, float $$2) {
+      return 1.0F + azm.b($$1 * 1.5F + (float)$$0) * 0.01F - $$2;
    }
 
-   protected void a(fou $$0, float $$1, float $$2, float $$3, float $$4) {
-      long $$5 = (long)($$1 * 50.0F * $$3);
-      float $$6 = Math.min($$2 * $$4, 1.0F);
-      fow.a(this, $$0, $$5, $$6, a);
+   private static float b(int $$0, float $$1, float $$2) {
+      return e[$$0] * a($$0, $$1, $$2);
    }
 
-   protected void a(bvr $$0, fou $$1, float $$2, float $$3) {
-      $$0.a($$3x -> fow.a(this, $$1, (long)((float)$$3x.a($$2) * $$3), 1.0F, a));
+   private static float c(int $$0, float $$1, float $$2) {
+      return 16.0F + f[$$0] * a($$0, $$1, $$2);
    }
 
-   protected void a(fou $$0) {
-      fow.a(this, $$0, 0L, 1.0F, a);
-   }
-
-   public static class a extends gfz {
-      public a(gig $$0, Function<ale, gpn> $$1) {
-         super($$0, $$1);
-      }
+   private static float d(int $$0, float $$1, float $$2) {
+      return g[$$0] * a($$0, $$1, $$2);
    }
 }

@@ -1,45 +1,33 @@
-public class aip implements zd<agn> {
-   public static final yu<vs, aip> a = zd.a(aip::a, aip::new);
-   private final fds b;
-   private final btx c;
-   private final int d;
+import java.util.UUID;
+import javax.annotation.Nullable;
 
-   public aip(btx $$0, fds $$1, int $$2) {
-      this.c = $$0;
-      this.b = $$1;
-      this.d = $$2;
+public class aip implements zf<agp> {
+   public static final yw<vu, aip> a = zf.a(aip::a, aip::new);
+   private final UUID b;
+
+   public aip(UUID $$0) {
+      this.b = $$0;
    }
 
-   private aip(vs $$0) {
-      this.c = $$0.b(btx.class);
-      this.b = $$0.v();
-      this.d = $$0.l();
+   private aip(vu $$0) {
+      this.b = $$0.n();
    }
 
-   private void a(vs $$0) {
-      $$0.a(this.c);
+   private void a(vu $$0) {
       $$0.a(this.b);
-      $$0.c(this.d);
    }
 
    @Override
-   public zf<aip> a() {
-      return agl.cn;
+   public zh<aip> a() {
+      return agn.cm;
    }
 
-   public void a(agn $$0) {
+   public void a(agp $$0) {
       $$0.a(this);
    }
 
-   public btx b() {
-      return this.c;
-   }
-
-   public fds e() {
-      return this.b;
-   }
-
-   public int f() {
-      return this.d;
+   @Nullable
+   public bwd a(arq $$0) {
+      return $$0.b(this.b);
    }
 }

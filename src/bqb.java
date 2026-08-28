@@ -1,196 +1,25 @@
-import com.google.common.collect.Lists;
-import com.google.common.collect.Maps;
-import com.mojang.logging.LogUtils;
-import it.unimi.dsi.fastutil.longs.LongArrayList;
-import it.unimi.dsi.fastutil.longs.LongList;
-import it.unimi.dsi.fastutil.objects.Object2LongMap;
-import it.unimi.dsi.fastutil.objects.Object2LongMaps;
-import it.unimi.dsi.fastutil.objects.Object2LongOpenHashMap;
-import it.unimi.dsi.fastutil.objects.ObjectArraySet;
-import java.time.Duration;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-import java.util.function.BooleanSupplier;
-import java.util.function.IntSupplier;
-import java.util.function.LongSupplier;
-import java.util.function.Supplier;
-import javax.annotation.Nullable;
-import org.apache.commons.lang3.tuple.Pair;
-import org.slf4j.Logger;
+import com.mojang.brigadier.StringReader;
+import com.mojang.serialization.Dynamic;
+import com.mojang.serialization.DynamicOps;
+import java.util.Optional;
 
-public class bqb implements bqg {
-   private static final long a = Duration.ofMillis(100L).toNanos();
-   private static final Logger c = LogUtils.getLogger();
-   private final List<String> d = Lists.newArrayList();
-   private final LongList e = new LongArrayList();
-   private final Map<String, bqb.a> f = Maps.newHashMap();
-   private final IntSupplier g;
-   private final LongSupplier h;
-   private final long i;
-   private final int j;
-   private String k = "";
-   private boolean l;
-   @Nullable
-   private bqb.a m;
-   private final BooleanSupplier n;
-   private final Set<Pair<String, brs>> o = new ObjectArraySet();
+public class bqb<T> implements bpr<StringReader, Dynamic<? extends T>> {
+   private final DynamicOps<T> a;
 
-   public bqb(LongSupplier $$0, IntSupplier $$1, BooleanSupplier $$2) {
-      this.i = $$0.getAsLong();
-      this.h = $$0;
-      this.j = $$1.getAsInt();
-      this.g = $$1;
-      this.n = $$2;
+   public bqb(DynamicOps<T> $$0) {
+      this.a = $$0;
    }
 
    @Override
-   public void a() {
-      if (this.l) {
-         c.error("Profiler tick already started - missing endTick()?");
-      } else {
-         this.l = true;
-         this.k = "";
-         this.d.clear();
-         this.a("root");
-      }
-   }
+   public Optional<Dynamic<? extends T>> a(bpq<StringReader> $$0) {
+      $$0.b().skipWhitespace();
+      int $$1 = $$0.c();
 
-   @Override
-   public void b() {
-      if (!this.l) {
-         c.error("Profiler tick already ended - missing startTick()?");
-      } else {
-         this.c();
-         this.l = false;
-         if (!this.k.isEmpty()) {
-            c.error("Profiler tick ended before path was fully popped (remainder: '{}'). Mismatched push/pop?", LogUtils.defer(() -> bqh.b(this.k)));
-         }
-      }
-   }
-
-   @Override
-   public void a(String $$0) {
-      if (!this.l) {
-         c.error("Cannot push '{}' to profiler if profiler tick hasn't started - missing startTick()?", $$0);
-      } else {
-         if (!this.k.isEmpty()) {
-            this.k = this.k + "\u001e";
-         }
-
-         this.k = this.k + $$0;
-         this.d.add(this.k);
-         this.e.add(af.d());
-         this.m = null;
-      }
-   }
-
-   @Override
-   public void a(Supplier<String> $$0) {
-      this.a($$0.get());
-   }
-
-   @Override
-   public void a(brs $$0) {
-      this.o.add(Pair.of(this.k, $$0));
-   }
-
-   @Override
-   public void c() {
-      if (!this.l) {
-         c.error("Cannot pop from profiler if profiler tick hasn't started - missing startTick()?");
-      } else if (this.e.isEmpty()) {
-         c.error("Tried to pop one too many times! Mismatched push() and pop()?");
-      } else {
-         long $$0 = af.d();
-         long $$1 = this.e.removeLong(this.e.size() - 1);
-         this.d.remove(this.d.size() - 1);
-         long $$2 = $$0 - $$1;
-         bqb.a $$3 = this.f();
-         $$3.c += $$2;
-         $$3.d++;
-         $$3.a = Math.max($$3.a, $$2);
-         $$3.b = Math.min($$3.b, $$2);
-         if ($$2 > a && !this.n.getAsBoolean()) {
-            c.warn("Something's taking too long! '{}' took aprox {} ms", LogUtils.defer(() -> bqh.b(this.k)), LogUtils.defer(() -> (double)$$2 / 1000000.0));
-         }
-
-         this.k = this.d.isEmpty() ? "" : this.d.get(this.d.size() - 1);
-         this.m = null;
-      }
-   }
-
-   @Override
-   public void b(String $$0) {
-      this.c();
-      this.a($$0);
-   }
-
-   @Override
-   public void b(Supplier<String> $$0) {
-      this.c();
-      this.a($$0);
-   }
-
-   private bqb.a f() {
-      if (this.m == null) {
-         this.m = this.f.computeIfAbsent(this.k, $$0 -> new bqb.a());
-      }
-
-      return this.m;
-   }
-
-   @Override
-   public void a(String $$0, int $$1) {
-      this.f().e.addTo($$0, (long)$$1);
-   }
-
-   @Override
-   public void a(Supplier<String> $$0, int $$1) {
-      this.f().e.addTo($$0.get(), (long)$$1);
-   }
-
-   @Override
-   public bqh d() {
-      return new bqe(this.f, this.i, this.j, this.h.getAsLong(), this.g.getAsInt());
-   }
-
-   @Nullable
-   @Override
-   public bqb.a c(String $$0) {
-      return this.f.get($$0);
-   }
-
-   @Override
-   public Set<Pair<String, brs>> e() {
-      return this.o;
-   }
-
-   public static class a implements bqk {
-      long a = Long.MIN_VALUE;
-      long b = Long.MAX_VALUE;
-      long c;
-      long d;
-      final Object2LongOpenHashMap<String> e = new Object2LongOpenHashMap();
-
-      @Override
-      public long a() {
-         return this.c;
-      }
-
-      @Override
-      public long b() {
-         return this.a;
-      }
-
-      @Override
-      public long c() {
-         return this.d;
-      }
-
-      @Override
-      public Object2LongMap<String> d() {
-         return Object2LongMaps.unmodifiable(this.e);
+      try {
+         return Optional.of(new Dynamic(this.a, ux.b(this.a, $$0.b())));
+      } catch (Exception var4) {
+         $$0.a().a($$1, var4);
+         return Optional.empty();
       }
    }
 }

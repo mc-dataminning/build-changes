@@ -1,25 +1,38 @@
-import javax.annotation.Nullable;
+public class exb extends ews {
+   private float m = Float.MAX_VALUE;
+   private ews n;
+   private boolean o;
 
-public class exb implements exc {
-   private final dip b;
-
-   public exb(dip $$0) {
-      this.b = $$0;
+   public exb(ews $$0) {
+      super($$0.a, $$0.b, $$0.c);
    }
 
-   @Override
-   public void a(ja $$0, dzo $$1, iu $$2, iu $$3, int $$4, int $$5) {
-      exc.a(this.b, $$0, $$2, $$3, $$1, $$4, $$5 - 1);
+   public exb(int $$0, int $$1, int $$2) {
+      super($$0, $$1, $$2);
    }
 
-   @Override
-   public void a(iu $$0, dlu $$1, @Nullable exd $$2) {
-      dzo $$3 = this.b.a_($$0);
-      this.a($$3, $$0, $$1, $$2, false);
+   public void a(float $$0, ews $$1) {
+      if ($$0 < this.m) {
+         this.m = $$0;
+         this.n = $$1;
+      }
    }
 
-   @Override
-   public void a(dzo $$0, iu $$1, dlu $$2, @Nullable exd $$3, boolean $$4) {
-      exc.a(this.b, $$0, $$1, $$2, $$3, $$4);
+   public ews d() {
+      return this.n;
+   }
+
+   public void e() {
+      this.o = true;
+   }
+
+   public boolean f() {
+      return this.o;
+   }
+
+   public static exb c(vu $$0) {
+      exb $$1 = new exb($$0.readInt(), $$0.readInt(), $$0.readInt());
+      a($$0, $$1);
+      return $$1;
    }
 }

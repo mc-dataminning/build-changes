@@ -1,33 +1,31 @@
-public enum auj {
-   a("old"),
-   b("new"),
-   c("compatible");
+import io.netty.buffer.ByteBuf;
 
-   private final ww d;
-   private final ww e;
+public record auj(String c, String d, String e) {
+   public static final yw<ByteBuf, auj> a = yw.a(yu.o, auj::b, yu.o, auj::c, yu.o, auj::d, auj::new);
+   public static final String b = "minecraft";
 
-   private auj(final String $$0) {
-      this.d = ww.c("pack.incompatible." + $$0).a(n.h);
-      this.e = ww.c("pack.incompatible.confirm." + $$0);
+   public static auj a(String $$0) {
+      return new auj("minecraft", $$0, ab.b().b());
    }
 
    public boolean a() {
-      return this == c;
+      return this.c.equals("minecraft");
    }
 
-   public static auj a(azc<Integer> $$0, int $$1) {
-      if ($$0.b() < $$1) {
-         return a;
-      } else {
-         return $$1 < $$0.a() ? b : c;
-      }
+   @Override
+   public String toString() {
+      return this.c + ":" + this.d + ":" + this.e;
    }
 
-   public ww b() {
+   public String b() {
+      return this.c;
+   }
+
+   public String c() {
       return this.d;
    }
 
-   public ww c() {
+   public String d() {
       return this.e;
    }
 }

@@ -1,211 +1,90 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.ImmutableMap.Builder;
-import com.mojang.blaze3d.platform.GlStateManager;
 import com.mojang.blaze3d.systems.RenderSystem;
-import it.unimi.dsi.fastutil.ints.IntArrayList;
-import it.unimi.dsi.fastutil.ints.IntList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.Optional;
 import javax.annotation.Nullable;
+import org.lwjgl.opengl.ARBTimerQuery;
+import org.lwjgl.opengl.GL;
+import org.lwjgl.opengl.GL32C;
 
 public class fiv {
-   public static final int a = -1;
-   private final List<fiw> b;
-   private final List<String> c;
-   private final int d;
-   private final int e;
-   private final int[] f = new int[32];
-   @Nullable
-   private fit g;
+   private int a;
 
-   fiv(List<fiw> $$0, List<String> $$1, IntList $$2, int $$3) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$3;
-      this.e = $$0.stream().mapToInt(fiw::a).reduce(0, ($$0x, $$1x) -> $$0x | $$1x);
-
-      for (int $$4 = 0; $$4 < this.f.length; $$4++) {
-         fiw $$5 = fiw.a($$4);
-         int $$6 = $$5 != null ? $$0.indexOf($$5) : -1;
-         this.f[$$4] = $$6 != -1 ? $$2.getInt($$6) : -1;
-      }
+   public static Optional<fiv> a() {
+      return fiv.b.a;
    }
 
-   public static fiv.a a() {
-      return new fiv.a();
-   }
-
-   public void a(int $$0) {
-      int $$1 = 0;
-
-      for (String $$2 : this.d()) {
-         GlStateManager._glBindAttribLocation($$0, $$1, $$2);
-         $$1++;
-      }
-   }
-
-   @Override
-   public String toString() {
-      return "VertexFormat" + this.c;
-   }
-
-   public int b() {
-      return this.d;
-   }
-
-   public List<fiw> c() {
-      return this.b;
-   }
-
-   public List<String> d() {
-      return this.c;
-   }
-
-   public int[] e() {
-      return this.f;
-   }
-
-   public int a(fiw $$0) {
-      return this.f[$$0.c()];
-   }
-
-   public boolean b(fiw $$0) {
-      return (this.e & $$0.a()) != 0;
-   }
-
-   public int f() {
-      return this.e;
-   }
-
-   public String c(fiw $$0) {
-      int $$1 = this.b.indexOf($$0);
-      if ($$1 == -1) {
-         throw new IllegalArgumentException($$0 + " is not contained in format");
-      } else {
-         return this.c.get($$1);
-      }
-   }
-
-   @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else {
-         if ($$0 instanceof fiv $$1 && this.e == $$1.e && this.d == $$1.d && this.c.equals($$1.c) && Arrays.equals(this.f, $$1.f)) {
-            return true;
-         }
-
-         return false;
-      }
-   }
-
-   @Override
-   public int hashCode() {
-      return this.e * 31 + Arrays.hashCode(this.f);
-   }
-
-   public void g() {
+   public void b() {
       RenderSystem.assertOnRenderThread();
-      int $$0 = this.b();
-
-      for (int $$1 = 0; $$1 < this.b.size(); $$1++) {
-         GlStateManager._enableVertexAttribArray($$1);
-         fiw $$2 = this.b.get($$1);
-         $$2.a($$1, (long)this.a($$2), $$0);
+      if (this.a != 0) {
+         throw new IllegalStateException("Current profile not ended");
+      } else {
+         this.a = GL32C.glGenQueries();
+         GL32C.glBeginQuery(35007, this.a);
       }
    }
 
-   public void h() {
+   public fiv.a c() {
       RenderSystem.assertOnRenderThread();
-
-      for (int $$0 = 0; $$0 < this.b.size(); $$0++) {
-         GlStateManager._disableVertexAttribArray($$0);
+      if (this.a == 0) {
+         throw new IllegalStateException("endProfile called before beginProfile");
+      } else {
+         GL32C.glEndQuery(35007);
+         fiv.a $$0 = new fiv.a(this.a);
+         this.a = 0;
+         return $$0;
       }
-   }
-
-   public fit i() {
-      fit $$0 = this.g;
-      if ($$0 == null) {
-         this.g = $$0 = new fit(fgk.a);
-      }
-
-      return $$0;
    }
 
    public static class a {
-      private final Builder<String, fiw> a = ImmutableMap.builder();
-      private final IntList b = new IntArrayList();
-      private int c;
+      private static final long a = 0L;
+      private static final long b = -1L;
+      private final int c;
+      private long d;
 
-      a() {
-      }
-
-      public fiv.a a(String $$0, fiw $$1) {
-         this.a.put($$0, $$1);
-         this.b.add(this.c);
-         this.c = this.c + $$1.b();
-         return this;
-      }
-
-      public fiv.a a(int $$0) {
-         this.c += $$0;
-         return this;
-      }
-
-      public fiv a() {
-         ImmutableMap<String, fiw> $$0 = this.a.buildOrThrow();
-         ImmutableList<fiw> $$1 = $$0.values().asList();
-         ImmutableList<String> $$2 = $$0.keySet().asList();
-         return new fiv($$1, $$2, this.b, this.c);
-      }
-   }
-
-   public static enum b {
-      a(5123, 2),
-      b(5125, 4);
-
-      public final int c;
-      public final int d;
-
-      private b(final int $$0, final int $$1) {
+      a(int $$0) {
          this.c = $$0;
-         this.d = $$1;
       }
 
-      public static fiv.b a(int $$0) {
-         return ($$0 & -65536) != 0 ? b : a;
+      public void a() {
+         RenderSystem.assertOnRenderThread();
+         if (this.d == 0L) {
+            this.d = -1L;
+            GL32C.glDeleteQueries(this.c);
+         }
+      }
+
+      public boolean b() {
+         RenderSystem.assertOnRenderThread();
+         if (this.d != 0L) {
+            return true;
+         } else if (1 == GL32C.glGetQueryObjecti(this.c, 34919)) {
+            this.d = ARBTimerQuery.glGetQueryObjecti64(this.c, 34918);
+            GL32C.glDeleteQueries(this.c);
+            return true;
+         } else {
+            return false;
+         }
+      }
+
+      public long c() {
+         RenderSystem.assertOnRenderThread();
+         if (this.d == 0L) {
+            this.d = ARBTimerQuery.glGetQueryObjecti64(this.c, 34918);
+            GL32C.glDeleteQueries(this.c);
+         }
+
+         return this.d;
       }
    }
 
-   public static enum c {
-      a(4, 2, 2, false),
-      b(5, 2, 1, true),
-      c(1, 2, 2, false),
-      d(3, 2, 1, true),
-      e(4, 3, 3, false),
-      f(5, 3, 1, true),
-      g(6, 3, 1, true),
-      h(4, 4, 4, false);
+   static class b {
+      static final Optional<fiv> a = Optional.ofNullable(a());
 
-      public final int i;
-      public final int j;
-      public final int k;
-      public final boolean l;
-
-      private c(final int $$0, final int $$1, final int $$2, final boolean $$3) {
-         this.i = $$0;
-         this.j = $$1;
-         this.k = $$2;
-         this.l = $$3;
+      private b() {
       }
 
-      public int a(int $$0) {
-         return switch (this) {
-            case a, h -> $$0 / 4 * 6;
-            case b, c, d, e, f, g -> $$0;
-            default -> 0;
-         };
+      @Nullable
+      private static fiv a() {
+         return !GL.getCapabilities().GL_ARB_timer_query ? null : new fiv();
       }
    }
 }

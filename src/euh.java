@@ -1,15 +1,19 @@
-import java.util.List;
-import javax.annotation.Nullable;
+import com.mojang.serialization.MapCodec;
 
-public abstract class euh {
-   @Nullable
-   public euk.d a(dis $$0, iu $$1, iu $$2, euk.d $$3, euk.d $$4, eug $$5) {
-      return $$4;
+public class euh extends eui {
+   public static final MapCodec<euh> a = MapCodec.unit(() -> euh.b);
+   public static final euh b = new euh();
+
+   private euh() {
    }
 
-   protected abstract euj<?> a();
+   @Override
+   public boolean a(iu $$0, iu $$1, iu $$2, azv $$3) {
+      return true;
+   }
 
-   public List<euk.d> a(djg $$0, iu $$1, iu $$2, List<euk.d> $$3, List<euk.d> $$4, eug $$5) {
-      return $$4;
+   @Override
+   protected euj<?> a() {
+      return euj.a;
    }
 }

@@ -1,25 +1,61 @@
-public class gix {
-   private static final int a = 49;
-   private static final int b = 3;
-   private double c = 2000000.0;
-   private int d = 1;
-   private volatile long e = af.d();
+import java.util.Set;
+import javax.annotation.Nullable;
+import org.joml.Vector3f;
 
-   public void a() {
-      this.e = af.d();
+public final class gix {
+   @Nullable
+   private final String a;
+   private final Vector3f b;
+   private final Vector3f c;
+   private final giy d;
+   private final boolean e;
+   private final gjf f;
+   private final gjf g;
+   private final Set<ja> h;
+
+   protected gix(
+      @Nullable String $$0,
+      float $$1,
+      float $$2,
+      float $$3,
+      float $$4,
+      float $$5,
+      float $$6,
+      float $$7,
+      float $$8,
+      giy $$9,
+      boolean $$10,
+      float $$11,
+      float $$12,
+      Set<ja> $$13
+   ) {
+      this.a = $$0;
+      this.f = new gjf($$1, $$2);
+      this.b = new Vector3f($$3, $$4, $$5);
+      this.c = new Vector3f($$6, $$7, $$8);
+      this.d = $$9;
+      this.e = $$10;
+      this.g = new gjf($$11, $$12);
+      this.h = $$13;
    }
 
-   public void a(int $$0) {
-      if ($$0 > 0) {
-         double $$1 = (double)(af.d() - this.e);
-         double $$2 = $$1 / (double)$$0;
-         double $$3 = azk.a($$2, this.c / 3.0, this.c * 3.0);
-         this.c = (this.c * (double)this.d + $$3) / (double)(this.d + 1);
-         this.d = Math.min(49, this.d + 1);
-      }
-   }
-
-   public float b() {
-      return (float)(7000000.0 / this.c);
+   public giu.a a(int $$0, int $$1) {
+      return new giu.a(
+         (int)this.f.a(),
+         (int)this.f.b(),
+         this.b.x(),
+         this.b.y(),
+         this.b.z(),
+         this.c.x(),
+         this.c.y(),
+         this.c.z(),
+         this.d.b,
+         this.d.c,
+         this.d.d,
+         this.e,
+         (float)$$0 * this.g.a(),
+         (float)$$1 * this.g.b(),
+         this.h
+      );
    }
 }

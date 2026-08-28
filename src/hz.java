@@ -20,31 +20,31 @@ public class hz<T extends ek<T>> implements hw<T> {
    private static final int b = 8;
    private final List<String> c;
    private final Object2ObjectLinkedOpenHashMap<List<String>, hy<T>> d = new Object2ObjectLinkedOpenHashMap(8, 0.25F);
-   private final ale e;
+   private final alg e;
    private final List<hz.a<T>> f;
 
-   public hz(ale $$0, List<hz.a<T>> $$1, List<String> $$2) {
+   public hz(alg $$0, List<hz.a<T>> $$1, List<String> $$2) {
       this.e = $$0;
       this.f = $$1;
       this.c = $$2;
    }
 
    @Override
-   public ale a() {
+   public alg a() {
       return this.e;
    }
 
    @Override
-   public hy<T> a(@Nullable tx $$0, CommandDispatcher<T> $$1) throws el {
+   public hy<T> a(@Nullable tz $$0, CommandDispatcher<T> $$1) throws el {
       if ($$0 == null) {
-         throw new el(ww.a("commands.function.error.missing_arguments", ww.a(this.a())));
+         throw new el(wy.a("commands.function.error.missing_arguments", wy.a(this.a())));
       } else {
          List<String> $$2 = new ArrayList<>(this.c.size());
 
          for (String $$3 : this.c) {
-            uu $$4 = $$0.c($$3);
+            uw $$4 = $$0.c($$3);
             if ($$4 == null) {
-               throw new el(ww.a("commands.function.error.missing_argument", ww.a(this.a()), $$3));
+               throw new el(wy.a("commands.function.error.missing_argument", wy.a(this.a()), $$3));
             }
 
             $$2.add(a($$4));
@@ -65,17 +65,17 @@ public class hz<T extends ek<T>> implements hw<T> {
       }
    }
 
-   private static String a(uu $$0) {
-      if ($$0 instanceof ua $$1) {
+   private static String a(uw $$0) {
+      if ($$0 instanceof uc $$1) {
          return a.format((double)$$1.k());
-      } else if ($$0 instanceof ty $$2) {
+      } else if ($$0 instanceof ua $$2) {
          return a.format($$2.j());
-      } else if ($$0 instanceof tv $$3) {
+      } else if ($$0 instanceof tx $$3) {
          return String.valueOf($$3.i());
-      } else if ($$0 instanceof up $$4) {
+      } else if ($$0 instanceof ur $$4) {
          return String.valueOf($$4.h());
       } else {
-         return $$0 instanceof uf $$5 ? String.valueOf($$5.f()) : $$0.p_();
+         return $$0 instanceof uh $$5 ? String.valueOf($$5.f()) : $$0.p_();
       }
    }
 
@@ -99,7 +99,7 @@ public class hz<T extends ek<T>> implements hw<T> {
    interface a<T> {
       IntList a();
 
-      hn<T> a(List<String> var1, CommandDispatcher<T> var2, ale var3) throws el;
+      hn<T> a(List<String> var1, CommandDispatcher<T> var2, alg var3) throws el;
    }
 
    static class b<T extends ek<T>> implements hz.a<T> {
@@ -119,13 +119,13 @@ public class hz<T extends ek<T>> implements hw<T> {
       }
 
       @Override
-      public hn<T> a(List<String> $$0, CommandDispatcher<T> $$1, ale $$2) throws el {
+      public hn<T> a(List<String> $$0, CommandDispatcher<T> $$1, alg $$2) throws el {
          String $$3 = this.a.a($$0);
 
          try {
             return hw.a($$1, this.c, new StringReader($$3));
          } catch (CommandSyntaxException var6) {
-            throw new el(ww.a("commands.function.error.parse", ww.a($$2), $$3, var6.getMessage()));
+            throw new el(wy.a("commands.function.error.parse", wy.a($$2), $$3, var6.getMessage()));
          }
       }
    }
@@ -143,7 +143,7 @@ public class hz<T extends ek<T>> implements hw<T> {
       }
 
       @Override
-      public hn<T> a(List<String> $$0, CommandDispatcher<T> $$1, ale $$2) {
+      public hn<T> a(List<String> $$0, CommandDispatcher<T> $$1, alg $$2) {
          return this.a;
       }
    }

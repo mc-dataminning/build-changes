@@ -1,33 +1,266 @@
-import com.google.common.collect.Iterables;
-import com.google.common.collect.Lists;
 import com.mojang.brigadier.CommandDispatcher;
+import com.mojang.brigadier.arguments.DoubleArgumentType;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import java.util.Collection;
+import com.mojang.brigadier.builder.RequiredArgumentBuilder;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.brigadier.exceptions.Dynamic2CommandExceptionType;
+import com.mojang.brigadier.exceptions.Dynamic3CommandExceptionType;
+import com.mojang.brigadier.exceptions.DynamicCommandExceptionType;
+import java.util.stream.Stream;
 
 public class amp {
-   public static void a(CommandDispatcher<ei> $$0) {
+   private static final DynamicCommandExceptionType a = new DynamicCommandExceptionType($$0 -> wy.b("commands.attribute.failed.entity", $$0));
+   private static final Dynamic2CommandExceptionType b = new Dynamic2CommandExceptionType(
+      ($$0, $$1) -> wy.b("commands.attribute.failed.no_attribute", $$0, $$1)
+   );
+   private static final Dynamic3CommandExceptionType c = new Dynamic3CommandExceptionType(
+      ($$0, $$1, $$2) -> wy.b("commands.attribute.failed.no_modifier", $$1, $$0, $$2)
+   );
+   private static final Dynamic3CommandExceptionType d = new Dynamic3CommandExceptionType(
+      ($$0, $$1, $$2) -> wy.b("commands.attribute.failed.modifier_already_present", $$2, $$1, $$0)
+   );
+
+   public static void a(CommandDispatcher<ei> $$0, ee $$1) {
       $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)ej.a("banlist").requires($$0x -> $$0x.c(3)))
-                  .executes($$0x -> {
-                     avo $$1 = ((ei)$$0x.getSource()).l().ag();
-                     return a((ei)$$0x.getSource(), Lists.newArrayList(Iterables.concat($$1.f().d(), $$1.g().d())));
-                  }))
-               .then(ej.a("ips").executes($$0x -> a((ei)$$0x.getSource(), ((ei)$$0x.getSource()).l().ag().g().d()))))
-            .then(ej.a("players").executes($$0x -> a((ei)$$0x.getSource(), ((ei)$$0x.getSource()).l().ag().f().d())))
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)ej.a("attribute").requires($$0x -> $$0x.c(2)))
+            .then(
+               ej.a("target", ev.a())
+                  .then(
+                     ((RequiredArgumentBuilder)((RequiredArgumentBuilder)ej.a("attribute", fh.a($$1, mg.c))
+                              .then(
+                                 ((LiteralArgumentBuilder)ej.a("get")
+                                       .executes($$0x -> a((ei)$$0x.getSource(), ev.a($$0x, "target"), fh.a($$0x, "attribute"), 1.0)))
+                                    .then(
+                                       ej.a("scale", DoubleArgumentType.doubleArg())
+                                          .executes(
+                                             $$0x -> a(
+                                                   (ei)$$0x.getSource(),
+                                                   ev.a($$0x, "target"),
+                                                   fh.a($$0x, "attribute"),
+                                                   DoubleArgumentType.getDouble($$0x, "scale")
+                                                )
+                                          )
+                                    )
+                              ))
+                           .then(
+                              ((LiteralArgumentBuilder)((LiteralArgumentBuilder)ej.a("base")
+                                       .then(
+                                          ej.a("set")
+                                             .then(
+                                                ej.a("value", DoubleArgumentType.doubleArg())
+                                                   .executes(
+                                                      $$0x -> c(
+                                                            (ei)$$0x.getSource(),
+                                                            ev.a($$0x, "target"),
+                                                            fh.a($$0x, "attribute"),
+                                                            DoubleArgumentType.getDouble($$0x, "value")
+                                                         )
+                                                   )
+                                             )
+                                       ))
+                                    .then(
+                                       ((LiteralArgumentBuilder)ej.a("get")
+                                             .executes($$0x -> b((ei)$$0x.getSource(), ev.a($$0x, "target"), fh.a($$0x, "attribute"), 1.0)))
+                                          .then(
+                                             ej.a("scale", DoubleArgumentType.doubleArg())
+                                                .executes(
+                                                   $$0x -> b(
+                                                         (ei)$$0x.getSource(),
+                                                         ev.a($$0x, "target"),
+                                                         fh.a($$0x, "attribute"),
+                                                         DoubleArgumentType.getDouble($$0x, "scale")
+                                                      )
+                                                )
+                                          )
+                                    ))
+                                 .then(ej.a("reset").executes($$0x -> a((ei)$$0x.getSource(), ev.a($$0x, "target"), fh.a($$0x, "attribute"))))
+                           ))
+                        .then(
+                           ((LiteralArgumentBuilder)((LiteralArgumentBuilder)ej.a("modifier")
+                                    .then(
+                                       ej.a("add")
+                                          .then(
+                                             ej.a("id", fj.a())
+                                                .then(
+                                                   ((RequiredArgumentBuilder)((RequiredArgumentBuilder)ej.a("value", DoubleArgumentType.doubleArg())
+                                                            .then(
+                                                               ej.a("add_value")
+                                                                  .executes(
+                                                                     $$0x -> a(
+                                                                           (ei)$$0x.getSource(),
+                                                                           ev.a($$0x, "target"),
+                                                                           fh.a($$0x, "attribute"),
+                                                                           fj.a($$0x, "id"),
+                                                                           DoubleArgumentType.getDouble($$0x, "value"),
+                                                                           byg.a.a
+                                                                        )
+                                                                  )
+                                                            ))
+                                                         .then(
+                                                            ej.a("add_multiplied_base")
+                                                               .executes(
+                                                                  $$0x -> a(
+                                                                        (ei)$$0x.getSource(),
+                                                                        ev.a($$0x, "target"),
+                                                                        fh.a($$0x, "attribute"),
+                                                                        fj.a($$0x, "id"),
+                                                                        DoubleArgumentType.getDouble($$0x, "value"),
+                                                                        byg.a.b
+                                                                     )
+                                                               )
+                                                         ))
+                                                      .then(
+                                                         ej.a("add_multiplied_total")
+                                                            .executes(
+                                                               $$0x -> a(
+                                                                     (ei)$$0x.getSource(),
+                                                                     ev.a($$0x, "target"),
+                                                                     fh.a($$0x, "attribute"),
+                                                                     fj.a($$0x, "id"),
+                                                                     DoubleArgumentType.getDouble($$0x, "value"),
+                                                                     byg.a.c
+                                                                  )
+                                                            )
+                                                      )
+                                                )
+                                          )
+                                    ))
+                                 .then(
+                                    ej.a("remove")
+                                       .then(
+                                          ej.a("id", fj.a())
+                                             .suggests(($$0x, $$1x) -> en.a(c(ev.a($$0x, "target"), fh.a($$0x, "attribute")), $$1x))
+                                             .executes($$0x -> a((ei)$$0x.getSource(), ev.a($$0x, "target"), fh.a($$0x, "attribute"), fj.a($$0x, "id")))
+                                       )
+                                 ))
+                              .then(
+                                 ej.a("value")
+                                    .then(
+                                       ej.a("get")
+                                          .then(
+                                             ((RequiredArgumentBuilder)ej.a("id", fj.a())
+                                                   .suggests(($$0x, $$1x) -> en.a(c(ev.a($$0x, "target"), fh.a($$0x, "attribute")), $$1x))
+                                                   .executes(
+                                                      $$0x -> a((ei)$$0x.getSource(), ev.a($$0x, "target"), fh.a($$0x, "attribute"), fj.a($$0x, "id"), 1.0)
+                                                   ))
+                                                .then(
+                                                   ej.a("scale", DoubleArgumentType.doubleArg())
+                                                      .executes(
+                                                         $$0x -> a(
+                                                               (ei)$$0x.getSource(),
+                                                               ev.a($$0x, "target"),
+                                                               fh.a($$0x, "attribute"),
+                                                               fj.a($$0x, "id"),
+                                                               DoubleArgumentType.getDouble($$0x, "scale")
+                                                            )
+                                                      )
+                                                )
+                                          )
+                                    )
+                              )
+                        )
+                  )
+            )
       );
    }
 
-   private static int a(ei $$0, Collection<? extends avj<?>> $$1) {
-      if ($$1.isEmpty()) {
-         $$0.a(() -> ww.c("commands.banlist.none"), false);
+   private static bye a(bwd $$0, je<byd> $$1) throws CommandSyntaxException {
+      bye $$2 = a($$0).eZ().a($$1);
+      if ($$2 == null) {
+         throw b.create($$0.al(), a($$1));
       } else {
-         $$0.a(() -> ww.a("commands.banlist.list", $$1.size()), false);
-
-         for (avj<?> $$2 : $$1) {
-            $$0.a(() -> ww.a("commands.banlist.entry", $$2.e(), $$2.b(), $$2.d()), false);
-         }
+         return $$2;
       }
+   }
 
-      return $$1.size();
+   private static bxc a(bwd $$0) throws CommandSyntaxException {
+      if (!($$0 instanceof bxc)) {
+         throw a.create($$0.al());
+      } else {
+         return (bxc)$$0;
+      }
+   }
+
+   private static bxc b(bwd $$0, je<byd> $$1) throws CommandSyntaxException {
+      bxc $$2 = a($$0);
+      if (!$$2.eZ().b($$1)) {
+         throw b.create($$0.al(), a($$1));
+      } else {
+         return $$2;
+      }
+   }
+
+   private static int a(ei $$0, bwd $$1, je<byd> $$2, double $$3) throws CommandSyntaxException {
+      bxc $$4 = b($$1, $$2);
+      double $$5 = $$4.h($$2);
+      $$0.a(() -> wy.a("commands.attribute.value.get.success", a($$2), $$1.al(), $$5), false);
+      return (int)($$5 * $$3);
+   }
+
+   private static int b(ei $$0, bwd $$1, je<byd> $$2, double $$3) throws CommandSyntaxException {
+      bxc $$4 = b($$1, $$2);
+      double $$5 = $$4.i($$2);
+      $$0.a(() -> wy.a("commands.attribute.base_value.get.success", a($$2), $$1.al(), $$5), false);
+      return (int)($$5 * $$3);
+   }
+
+   private static int a(ei $$0, bwd $$1, je<byd> $$2, alg $$3, double $$4) throws CommandSyntaxException {
+      bxc $$5 = b($$1, $$2);
+      byf $$6 = $$5.eZ();
+      if (!$$6.a($$2, $$3)) {
+         throw c.create($$1.al(), a($$2), $$3);
+      } else {
+         double $$7 = $$6.b($$2, $$3);
+         $$0.a(() -> wy.a("commands.attribute.modifier.value.get.success", wy.a($$3), a($$2), $$1.al(), $$7), false);
+         return (int)($$7 * $$4);
+      }
+   }
+
+   private static Stream<alg> c(bwd $$0, je<byd> $$1) throws CommandSyntaxException {
+      bye $$2 = a($$0, $$1);
+      return $$2.c().stream().map(byg::a);
+   }
+
+   private static int c(ei $$0, bwd $$1, je<byd> $$2, double $$3) throws CommandSyntaxException {
+      a($$1, $$2).a($$3);
+      $$0.a(() -> wy.a("commands.attribute.base_value.set.success", a($$2), $$1.al(), $$3), false);
+      return 1;
+   }
+
+   private static int a(ei $$0, bwd $$1, je<byd> $$2) throws CommandSyntaxException {
+      bxc $$3 = a($$1);
+      if (!$$3.eZ().e($$2)) {
+         throw b.create($$1.al(), a($$2));
+      } else {
+         double $$4 = $$3.i($$2);
+         $$0.a(() -> wy.a("commands.attribute.base_value.reset.success", a($$2), $$1.al(), $$4), false);
+         return 1;
+      }
+   }
+
+   private static int a(ei $$0, bwd $$1, je<byd> $$2, alg $$3, double $$4, byg.a $$5) throws CommandSyntaxException {
+      bye $$6 = a($$1, $$2);
+      byg $$7 = new byg($$3, $$4, $$5);
+      if ($$6.b($$3)) {
+         throw d.create($$1.al(), a($$2), $$3);
+      } else {
+         $$6.d($$7);
+         $$0.a(() -> wy.a("commands.attribute.modifier.add.success", wy.a($$3), a($$2), $$1.al()), false);
+         return 1;
+      }
+   }
+
+   private static int a(ei $$0, bwd $$1, je<byd> $$2, alg $$3) throws CommandSyntaxException {
+      bye $$4 = a($$1, $$2);
+      if ($$4.c($$3)) {
+         $$0.a(() -> wy.a("commands.attribute.modifier.remove.success", wy.a($$3), a($$2), $$1.al()), false);
+         return 1;
+      } else {
+         throw c.create($$1.al(), a($$2), $$3);
+      }
+   }
+
+   private static wy a(je<byd> $$0) {
+      return wy.c($$0.a().c());
    }
 }

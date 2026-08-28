@@ -1,7 +1,5 @@
-import javax.annotation.Nullable;
-
-public class hcz extends hcp {
-   public cys a = cys.k;
-   @Nullable
-   public cjg b;
+public class hcz extends hdf {
+   public float a;
+   public int b;
+   public bvz.a c = bvz.a.a;
 }

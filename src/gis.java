@@ -1,8 +1,6 @@
-import javax.annotation.ParametersAreNonnullByDefault;
-
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface gis {
+public record gis(alg a, String b) {
+   @Override
+   public String toString() {
+      return this.a + "#" + this.b;
+   }
 }

@@ -1,23 +1,12 @@
-import javax.annotation.Nullable;
-
-public record aei(int b, je<bvc> c) implements zd<abs> {
-   public static final yu<wh, aei> a = yu.a(ys.h, aei::b, bvc.b, aei::e, aei::new);
+public record aei(awr b) implements zf<abu> {
+   public static final yw<vu, aei> a = yw.a(awr.a, aei::b, aei::new);
 
    @Override
-   public zf<aei> a() {
-      return agl.ao;
+   public zh<aei> a() {
+      return agn.am;
    }
 
-   public void a(abs $$0) {
+   public void a(abu $$0) {
       $$0.a(this);
-   }
-
-   @Nullable
-   public bwa a(dip $$0) {
-      return $$0.a(this.b);
-   }
-
-   public je<bvc> e() {
-      return this.c;
    }
 }

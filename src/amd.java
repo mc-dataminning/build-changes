@@ -1,6 +1,18 @@
-public record amd(auq a, alp b, jl<aln> c, eyh d) implements AutoCloseable {
+public class amd implements Runnable {
+   private final int a;
+   private final Runnable b;
+
+   public amd(int $$0, Runnable $$1) {
+      this.a = $$0;
+      this.b = $$1;
+   }
+
+   public int a() {
+      return this.a;
+   }
+
    @Override
-   public void close() {
-      this.a.close();
+   public void run() {
+      this.b.run();
    }
 }

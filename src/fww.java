@@ -1,101 +1,42 @@
-import it.unimi.dsi.fastutil.objects.Object2IntMap;
-import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
+public class fww extends fxu {
+   private static final int a = 8;
+   private static final int b = 210;
+   private static final wy c = wy.c("credits_and_attribution.screen.title");
+   private static final wy d = wy.c("credits_and_attribution.button.credits");
+   private static final wy s = wy.c("credits_and_attribution.button.attribution");
+   private static final wy u = wy.c("credits_and_attribution.button.licenses");
+   private final fxu v;
+   private final fvq w = new fvq(this);
 
-public class fww extends fxi {
-   private static final long a = 2000L;
-   private final asc b;
-   private long c = -1L;
-   private boolean d;
-   private static final Object2IntMap<ecm> s = af.a(new Object2IntOpenHashMap(), $$0 -> {
-      $$0.defaultReturnValue(0);
-      $$0.put(ecm.c, 5526612);
-      $$0.put(ecm.d, 10066329);
-      $$0.put(ecm.e, 6250897);
-      $$0.put(ecm.f, 8434258);
-      $$0.put(ecm.g, 13750737);
-      $$0.put(ecm.h, 7497737);
-      $$0.put(ecm.i, 3159410);
-      $$0.put(ecm.j, 2213376);
-      $$0.put(ecm.k, 13421772);
-      $$0.put(ecm.l, 16769184);
-      $$0.put(ecm.m, 15884384);
-      $$0.put(ecm.n, 16777215);
-   });
-
-   public fww(asc $$0) {
-      super(fnw.a);
-      this.b = $$0;
+   public fww(fxu $$0) {
+      super(c);
+      this.v = $$0;
    }
 
    @Override
-   public boolean aC_() {
-      return false;
+   protected void aN_() {
+      this.w.a(c, this.p);
+      fvu $$0 = this.w.c(fvu.d()).a(8);
+      $$0.c().b();
+      $$0.a(fsc.a(d, $$0x -> this.m()).a(210).a());
+      $$0.a(fsc.a(s, fwr.b(this, ayh.d)).a(210).a());
+      $$0.a(fsc.a(u, fwr.b(this, ayh.e)).a(210).a());
+      this.w.b(fsc.a(wx.d, $$0x -> this.aK_()).a(200).a());
+      this.w.a();
+      this.w.a(this::c);
    }
 
    @Override
-   protected boolean aM_() {
-      return false;
+   protected void c() {
+      this.w.a();
+   }
+
+   private void m() {
+      this.m.a(new fxx(false, () -> this.m.a(this)));
    }
 
    @Override
-   public void aE_() {
-      this.d = true;
-      this.d(true);
-   }
-
-   @Override
-   protected void b(fvn $$0) {
-      if (this.d) {
-         $$0.a(fvm.a, ww.c("narrator.loading.done"));
-      } else {
-         $$0.a(fvm.a, this.m());
-      }
-   }
-
-   private ww m() {
-      return ww.a("loading.progress", azk.a(this.b.f(), 0, 100));
-   }
-
-   @Override
-   public void a(frc $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      long $$4 = af.c();
-      if ($$4 - this.c > 2000L) {
-         this.c = $$4;
-         this.d(true);
-      }
-
-      int $$5 = this.n / 2;
-      int $$6 = this.o / 2;
-      a($$0, this.b, $$5, $$6, 2, 0);
-      int $$7 = this.b.e() + 9 + 2;
-      $$0.a(this.p, this.m(), $$5, $$6 - $$7, 16777215);
-   }
-
-   public static void a(frc $$0, asc $$1, int $$2, int $$3, int $$4, int $$5) {
-      int $$6 = $$4 + $$5;
-      int $$7 = $$1.d();
-      int $$8 = $$7 * $$6 - $$5;
-      int $$9 = $$1.e();
-      int $$10 = $$9 * $$6 - $$5;
-      int $$11 = $$2 - $$10 / 2;
-      int $$12 = $$3 - $$10 / 2;
-      int $$13 = $$8 / 2 + 1;
-      int $$14 = -16772609;
-      if ($$5 != 0) {
-         $$0.a($$2 - $$13, $$3 - $$13, $$2 - $$13 + 1, $$3 + $$13, -16772609);
-         $$0.a($$2 + $$13 - 1, $$3 - $$13, $$2 + $$13, $$3 + $$13, -16772609);
-         $$0.a($$2 - $$13, $$3 - $$13, $$2 + $$13, $$3 - $$13 + 1, -16772609);
-         $$0.a($$2 - $$13, $$3 + $$13 - 1, $$2 + $$13, $$3 + $$13, -16772609);
-      }
-
-      for (int $$15 = 0; $$15 < $$9; $$15++) {
-         for (int $$16 = 0; $$16 < $$9; $$16++) {
-            ecm $$17 = $$1.a($$15, $$16);
-            int $$18 = $$11 + $$15 * $$6;
-            int $$19 = $$12 + $$16 * $$6;
-            $$0.a($$18, $$19, $$18 + $$4, $$19 + $$4, axu.f(s.getInt($$17)));
-         }
-      }
+   public void aK_() {
+      this.m.a(this.v);
    }
 }

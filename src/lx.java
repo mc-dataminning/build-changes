@@ -116,14 +116,15 @@ public class lx {
    public static final mb bg = a("raid_omen", false);
    public static final mb bh = a("trial_omen", false);
    public static final lw<lp> bi = a("block_crumble", false, lp::a, lp::b);
-   public static final Codec<lv> bj = mf.i.q().dispatch("type", lv::a, lw::c);
-   public static final yu<wh, lv> bk = ys.a(mg.Y).b(lv::a, lw::d);
+   public static final mb bj = a("firefly", false);
+   public static final Codec<lv> bk = mf.i.q().dispatch("type", lv::a, lw::c);
+   public static final yw<wj, lv> bl = yu.a(mg.Y).b(lv::a, lw::d);
 
    private static mb a(String $$0, boolean $$1) {
       return jr.a(mf.i, $$0, new mb($$1));
    }
 
-   private static <T extends lv> lw<T> a(String $$0, boolean $$1, final Function<lw<T>, MapCodec<T>> $$2, final Function<lw<T>, yu<? super wh, T>> $$3) {
+   private static <T extends lv> lw<T> a(String $$0, boolean $$1, final Function<lw<T>, MapCodec<T>> $$2, final Function<lw<T>, yw<? super wj, T>> $$3) {
       return jr.a(mf.i, $$0, new lw<T>($$1) {
          @Override
          public MapCodec<T> c() {
@@ -131,7 +132,7 @@ public class lx {
          }
 
          @Override
-         public yu<? super wh, T> d() {
+         public yw<? super wj, T> d() {
             return $$3.apply(this);
          }
       });

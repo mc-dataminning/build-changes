@@ -1,108 +1,147 @@
-import com.google.common.collect.Lists;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.Optional;
-import java.util.function.BiConsumer;
+import com.mojang.datafixers.Products.P2;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder.Instance;
+import com.mojang.serialization.codecs.RecordCodecBuilder.Mu;
 
-public class emu extends emv {
-   public static final int a = 8;
-   public static final int b = 15;
-   public static final MapCodec<emu> c = RecordCodecBuilder.mapCodec(
-      $$0 -> a($$0).and(emt.a.fieldOf("mangrove_root_placement").forGetter($$0x -> $$0x.h)).apply($$0, emu::new)
-   );
-   private final emt h;
+public abstract class emu {
+   public static final Codec<emu> d = mf.U.q().dispatch(emu::a, emv::a);
+   protected final btg e;
+   protected final btg f;
 
-   public emu(btd $$0, emy $$1, Optional<ems> $$2, emt $$3) {
-      super($$0, $$1, $$2);
-      this.h = $$3;
+   protected static <P extends emu> P2<Mu<P>, btg, btg> b(Instance<P> $$0) {
+      return $$0.group(btg.b(0, 16).fieldOf("radius").forGetter($$0x -> $$0x.e), btg.b(0, 16).fieldOf("offset").forGetter($$0x -> $$0x.f));
    }
 
-   @Override
-   public boolean a(div $$0, BiConsumer<iu, dzo> $$1, azt $$2, iu $$3, iu $$4, elt $$5) {
-      List<iu> $$6 = Lists.newArrayList();
-      iu.a $$7 = $$3.k();
-
-      while ($$7.v() < $$4.v()) {
-         if (!this.a($$0, $$7)) {
-            return false;
-         }
-
-         $$7.c(ja.b);
-      }
-
-      $$6.add($$4.e());
-
-      for (ja $$8 : ja.c.a) {
-         iu $$9 = $$4.a($$8);
-         List<iu> $$10 = Lists.newArrayList();
-         if (!this.a($$0, $$2, $$9, $$8, $$4, $$10, 0)) {
-            return false;
-         }
-
-         $$6.addAll($$10);
-         $$6.add($$4.a($$8));
-      }
-
-      for (iu $$11 : $$6) {
-         this.a($$0, $$1, $$2, $$11, $$5);
-      }
-
-      return true;
+   public emu(btg $$0, btg $$1) {
+      this.e = $$0;
+      this.f = $$1;
    }
 
-   private boolean a(div $$0, azt $$1, iu $$2, ja $$3, iu $$4, List<iu> $$5, int $$6) {
-      int $$7 = this.h.e();
-      if ($$6 != $$7 && $$5.size() <= $$7) {
-         for (iu $$9 : this.a($$2, $$3, $$1, $$4)) {
-            if (this.a($$0, $$9)) {
-               $$5.add($$9);
-               if (!this.a($$0, $$1, $$9, $$3, $$4, $$5, $$6 + 1)) {
-                  return false;
-               }
+   protected abstract emv<?> a();
+
+   public void a(djb $$0, emu.b $$1, azv $$2, eme $$3, int $$4, emu.a $$5, int $$6, int $$7) {
+      this.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a($$2));
+   }
+
+   protected abstract void a(djb var1, emu.b var2, azv var3, eme var4, int var5, emu.a var6, int var7, int var8, int var9);
+
+   public abstract int a(azv var1, int var2, eme var3);
+
+   public int a(azv $$0, int $$1) {
+      return this.e.a($$0);
+   }
+
+   private int a(azv $$0) {
+      return this.f.a($$0);
+   }
+
+   protected abstract boolean a(azv var1, int var2, int var3, int var4, int var5, boolean var6);
+
+   protected boolean b(azv $$0, int $$1, int $$2, int $$3, int $$4, boolean $$5) {
+      int $$6;
+      int $$7;
+      if ($$5) {
+         $$6 = Math.min(Math.abs($$1), Math.abs($$1 - 1));
+         $$7 = Math.min(Math.abs($$3), Math.abs($$3 - 1));
+      } else {
+         $$6 = Math.abs($$1);
+         $$7 = Math.abs($$3);
+      }
+
+      return this.a($$0, $$6, $$2, $$7, $$4, $$5);
+   }
+
+   protected void a(djb $$0, emu.b $$1, azv $$2, eme $$3, iu $$4, int $$5, int $$6, boolean $$7) {
+      int $$8 = $$7 ? 1 : 0;
+      iu.a $$9 = new iu.a();
+
+      for (int $$10 = -$$5; $$10 <= $$5 + $$8; $$10++) {
+         for (int $$11 = -$$5; $$11 <= $$5 + $$8; $$11++) {
+            if (!this.b($$2, $$10, $$6, $$11, $$5, $$7)) {
+               $$9.a($$4, $$10, $$6, $$11);
+               a($$0, $$1, $$2, $$3, $$9);
             }
          }
+      }
+   }
 
+   protected final void a(djb $$0, emu.b $$1, azv $$2, eme $$3, iu $$4, int $$5, int $$6, boolean $$7, float $$8, float $$9) {
+      this.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
+      int $$10 = $$7 ? 1 : 0;
+      iu $$11 = $$4.e();
+      iu.a $$12 = new iu.a();
+
+      for (ja $$13 : ja.c.a) {
+         ja $$14 = $$13.h();
+         int $$15 = $$14.f() == ja.b.a ? $$5 + $$10 : $$5;
+         $$12.a($$4, 0, $$6 - 1, 0).c($$14, $$15).c($$13, -$$5);
+         int $$16 = -$$5;
+
+         while ($$16 < $$5 + $$10) {
+            boolean $$17 = $$1.a($$12.c(ja.b));
+            $$12.c(ja.a);
+            if ($$17 && a($$0, $$1, $$2, $$3, $$8, $$11, $$12)) {
+               $$12.c(ja.a);
+               a($$0, $$1, $$2, $$3, $$9, $$11, $$12);
+               $$12.c(ja.b);
+            }
+
+            $$16++;
+            $$12.c($$13);
+         }
+      }
+   }
+
+   private static boolean a(djb $$0, emu.b $$1, azv $$2, eme $$3, float $$4, iu $$5, iu.a $$6) {
+      if ($$6.k($$5) >= 7) {
+         return false;
+      } else {
+         return $$2.i() > $$4 ? false : a($$0, $$1, $$2, $$3, $$6);
+      }
+   }
+
+   protected static boolean a(djb $$0, emu.b $$1, azv $$2, eme $$3, iu $$4) {
+      boolean $$5 = $$0.a($$4, $$0x -> $$0x.a(eap.z, Boolean.valueOf(false)));
+      if (!$$5 && ekq.d($$0, $$4)) {
+         dzz $$6 = $$3.e.a($$2, $$4);
+         if ($$6.b(eap.I)) {
+            $$6 = $$6.b(eap.I, Boolean.valueOf($$0.b($$4, $$0x -> $$0x.a(ewh.c))));
+         }
+
+         $$1.a($$4, $$6);
          return true;
       } else {
          return false;
       }
    }
 
-   protected List<iu> a(iu $$0, ja $$1, azt $$2, iu $$3) {
-      iu $$4 = $$0.e();
-      iu $$5 = $$0.a($$1);
-      int $$6 = $$0.k($$3);
-      int $$7 = this.h.d();
-      float $$8 = this.h.f();
-      if ($$6 > $$7 - 3 && $$6 <= $$7) {
-         return $$2.i() < $$8 ? List.of($$4, $$5.e()) : List.of($$4);
-      } else if ($$6 > $$7) {
-         return List.of($$4);
-      } else if ($$2.i() < $$8) {
-         return List.of($$4);
-      } else {
-         return $$2.h() ? List.of($$5) : List.of($$4);
+   public static final class a {
+      private final iu a;
+      private final int b;
+      private final boolean c;
+
+      public a(iu $$0, int $$1, boolean $$2) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
+      }
+
+      public iu a() {
+         return this.a;
+      }
+
+      public int b() {
+         return this.b;
+      }
+
+      public boolean c() {
+         return this.c;
       }
    }
 
-   @Override
-   protected boolean a(div $$0, iu $$1) {
-      return super.a($$0, $$1) || $$0.a($$1, $$0x -> $$0x.a(this.h.a()));
-   }
+   public interface b {
+      void a(iu var1, dzz var2);
 
-   @Override
-   protected void a(div $$0, BiConsumer<iu, dzo> $$1, azt $$2, iu $$3, elt $$4) {
-      if ($$0.a($$3, $$0x -> $$0x.a(this.h.b()))) {
-         dzo $$5 = this.h.c().a($$2, $$3);
-         $$1.accept($$3, this.a($$0, $$3, $$5));
-      } else {
-         super.a($$0, $$1, $$2, $$3, $$4);
-      }
-   }
-
-   @Override
-   protected emw<?> a() {
-      return emw.a;
+      boolean a(iu var1);
    }
 }

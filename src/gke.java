@@ -1,47 +1,26 @@
-import javax.annotation.Nullable;
+import com.mojang.authlib.minecraft.UserApiService;
+import java.nio.file.Path;
+import java.util.Optional;
+import java.util.concurrent.CompletableFuture;
 
-public enum gke {
-   a("generic_violation"),
-   b("false_reporting"),
-   c("hate_speech"),
-   d("hate_terrorism_notorious_figure"),
-   e("harassment_or_bullying"),
-   f("defamation_impersonation_false_information"),
-   g("drugs"),
-   h("fraud"),
-   i("spam_or_advertising"),
-   j("nudity_or_pornography"),
-   k("sexually_inappropriate"),
-   l("extreme_violence_or_gore"),
-   m("imminent_harm_to_person_or_property");
+public interface gke {
+   gke a = new gke() {
+      @Override
+      public CompletableFuture<Optional<cra>> a() {
+         return CompletableFuture.completedFuture(Optional.empty());
+      }
 
-   private final ww n;
+      @Override
+      public boolean b() {
+         return false;
+      }
+   };
 
-   private gke(final String $$0) {
-      this.n = ww.c("gui.banned.reason." + $$0);
+   static gke a(UserApiService $$0, fpe $$1, Path $$2) {
+      return (gke)($$1.g() == fpe.a.c ? new gjj($$0, $$1.b(), $$2) : a);
    }
 
-   public ww a() {
-      return this.n;
-   }
+   CompletableFuture<Optional<cra>> a();
 
-   @Nullable
-   public static gke a(int $$0) {
-      return switch ($$0) {
-         case 2 -> b;
-         default -> null;
-         case 5 -> c;
-         case 16, 25 -> d;
-         case 17, 19, 23, 31 -> a;
-         case 21 -> e;
-         case 27 -> f;
-         case 28 -> g;
-         case 29 -> h;
-         case 30 -> i;
-         case 32 -> j;
-         case 33 -> k;
-         case 34 -> l;
-         case 53 -> m;
-      };
-   }
+   boolean b();
 }

@@ -1,18 +1,18 @@
-public class gne extends gls {
-   gne(gjd $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, gng $$7) {
-      super($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
-      this.u = 0.5F;
+import javax.annotation.Nullable;
+
+public record gne(String f, @Nullable gqc g) {
+   public static final gne a = new gne("TERRAIN_SHEET", gqc.B(hio.d));
+   public static final gne b = new gne("PARTICLE_SHEET_OPAQUE", gqc.A(hio.e));
+   public static final gne c = new gne("PARTICLE_SHEET_TRANSLUCENT", gqc.B(hio.e));
+   public static final gne d = new gne("CUSTOM", null);
+   public static final gne e = new gne("NO_RENDER", null);
+
+   public String a() {
+      return this.f;
    }
 
-   public static class a implements gmo<mb> {
-      private final gng a;
-
-      public a(gng $$0) {
-         this.a = $$0;
-      }
-
-      public gml a(mb $$0, gjd $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new gne($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
-      }
+   @Nullable
+   public gqc b() {
+      return this.g;
    }
 }

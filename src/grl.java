@@ -1,113 +1,175 @@
+import com.google.common.collect.Lists;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
+import com.mojang.logging.LogUtils;
+import it.unimi.dsi.fastutil.objects.Object2ObjectArrayMap;
+import it.unimi.dsi.fastutil.objects.Object2ObjectMap;
+import it.unimi.dsi.fastutil.objects.Object2ObjectMaps;
+import it.unimi.dsi.fastutil.objects.ObjectIterator;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.Objects;
+import java.util.Map.Entry;
+import java.util.stream.Collectors;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class grl<T extends dwn & dwh> implements grp<T> {
-   public static final ale a = ale.b("textures/entity/beacon_beam.png");
-   public static final int b = 1024;
+public class grl {
+   public static final grl a = new grl(Map.of());
+   private static final char b = '#';
+   private final Map<String, hkw> c;
 
-   public grl(grq.a $$0) {
+   grl(Map<String, hkw> $$0) {
+      this.c = $$0;
    }
 
-   @Override
-   public void a(T $$0, float $$1, fiq $$2, gpd $$3, int $$4, int $$5) {
-      long $$6 = $$0.i().ae();
-      List<dwh.a> $$7 = $$0.a();
-      int $$8 = 0;
+   @Nullable
+   public hkw a(String $$0) {
+      if (b($$0)) {
+         $$0 = $$0.substring(1);
+      }
 
-      for (int $$9 = 0; $$9 < $$7.size(); $$9++) {
-         dwh.a $$10 = $$7.get($$9);
-         a($$2, $$3, $$1, $$6, $$8, $$9 == $$7.size() - 1 ? 1024 : $$10.c(), $$10.b());
-         $$8 += $$10.c();
+      return this.c.get($$0);
+   }
+
+   private static boolean b(String $$0) {
+      return $$0.charAt(0) == '#';
+   }
+
+   public static grl.a a(JsonObject $$0, alg $$1) {
+      grl.a.a $$2 = new grl.a.a();
+
+      for (Entry<String, JsonElement> $$3 : $$0.entrySet()) {
+         a($$1, $$3.getKey(), $$3.getValue().getAsString(), $$2);
+      }
+
+      return $$2.a();
+   }
+
+   private static void a(alg $$0, String $$1, String $$2, grl.a.a $$3) {
+      if (b($$2)) {
+         $$3.a($$1, $$2.substring(1));
+      } else {
+         alg $$4 = alg.c($$2);
+         if ($$4 == null) {
+            throw new JsonParseException($$2 + " is not valid resource location");
+         }
+
+         $$3.a($$1, new hkw($$0, $$4));
       }
    }
 
-   private static void a(fiq $$0, gpd $$1, float $$2, long $$3, int $$4, int $$5, int $$6) {
-      a($$0, $$1, a, $$2, 1.0F, $$3, $$4, $$5, $$6, 0.2F, 0.25F);
+   public static record a(Map<String, grl.d> b) {
+      public static final grl.a a = new grl.a(Map.of());
+
+      public Map<String, grl.d> a() {
+         return this.b;
+      }
+
+      public static class a {
+         private final Map<String, grl.d> a = new HashMap<>();
+
+         public grl.a.a a(String $$0, String $$1) {
+            this.a.put($$0, new grl.b($$1));
+            return this;
+         }
+
+         public grl.a.a a(String $$0, hkw $$1) {
+            this.a.put($$0, new grl.e($$1));
+            return this;
+         }
+
+         public grl.a a() {
+            return this.a.isEmpty() ? grl.a.a : new grl.a(Map.copyOf(this.a));
+         }
+      }
    }
 
-   public static void a(fiq $$0, gpd $$1, ale $$2, float $$3, float $$4, long $$5, int $$6, int $$7, int $$8, float $$9, float $$10) {
-      int $$11 = $$6 + $$7;
-      $$0.a();
-      $$0.a(0.5, 0.0, 0.5);
-      float $$12 = (float)Math.floorMod($$5, 40) + $$3;
-      float $$13 = $$7 < 0 ? $$12 : -$$12;
-      float $$14 = azk.i($$13 * 0.2F - (float)azk.d($$13 * 0.1F));
-      $$0.a();
-      $$0.a(a.d.rotationDegrees($$12 * 2.25F - 45.0F));
-      float $$15 = 0.0F;
-      float $$18 = 0.0F;
-      float $$19 = -$$9;
-      float $$20 = 0.0F;
-      float $$21 = 0.0F;
-      float $$22 = -$$9;
-      float $$23 = 0.0F;
-      float $$24 = 1.0F;
-      float $$25 = -1.0F + $$14;
-      float $$26 = (float)$$7 * $$4 * (0.5F / $$9) + $$25;
-      a($$0, $$1.getBuffer(gpn.e($$2, false)), $$8, $$6, $$11, 0.0F, $$9, $$9, 0.0F, $$19, 0.0F, 0.0F, $$22, 0.0F, 1.0F, $$26, $$25);
-      $$0.b();
-      $$15 = -$$10;
-      float $$28 = -$$10;
-      $$18 = -$$10;
-      $$19 = -$$10;
-      $$23 = 0.0F;
-      $$24 = 1.0F;
-      $$25 = -1.0F + $$14;
-      $$26 = (float)$$7 * $$4 + $$25;
-      a($$0, $$1.getBuffer(gpn.e($$2, true)), axu.c(32, $$8), $$6, $$11, $$15, $$28, $$10, $$18, $$19, $$10, $$10, $$10, 0.0F, 1.0F, $$26, $$25);
-      $$0.b();
+   static record b(String a) implements grl.d {
    }
 
-   private static void a(
-      fiq $$0,
-      fiu $$1,
-      int $$2,
-      int $$3,
-      int $$4,
-      float $$5,
-      float $$6,
-      float $$7,
-      float $$8,
-      float $$9,
-      float $$10,
-      float $$11,
-      float $$12,
-      float $$13,
-      float $$14,
-      float $$15,
-      float $$16
-   ) {
-      fiq.a $$17 = $$0.c();
-      a($$17, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8, $$13, $$14, $$15, $$16);
-      a($$17, $$1, $$2, $$3, $$4, $$11, $$12, $$9, $$10, $$13, $$14, $$15, $$16);
-      a($$17, $$1, $$2, $$3, $$4, $$7, $$8, $$11, $$12, $$13, $$14, $$15, $$16);
-      a($$17, $$1, $$2, $$3, $$4, $$9, $$10, $$5, $$6, $$13, $$14, $$15, $$16);
+   public static class c {
+      private static final Logger a = LogUtils.getLogger();
+      private final List<grl.a> b = new ArrayList<>();
+
+      public grl.c a(grl.a $$0) {
+         this.b.addLast($$0);
+         return this;
+      }
+
+      public grl.c b(grl.a $$0) {
+         this.b.addFirst($$0);
+         return this;
+      }
+
+      public grl a(hla $$0) {
+         if (this.b.isEmpty()) {
+            return grl.a;
+         } else {
+            Object2ObjectMap<String, hkw> $$1 = new Object2ObjectArrayMap();
+            Object2ObjectMap<String, grl.b> $$2 = new Object2ObjectArrayMap();
+
+            for (grl.a $$3 : Lists.reverse(this.b)) {
+               $$3.b.forEach(($$2x, $$3x) -> {
+                  Objects.requireNonNull($$3x);
+                  switch ($$3x) {
+                     case grl.e $$6x:
+                        $$2.remove($$2x);
+                        $$1.put($$2x, $$6x.a());
+                        break;
+                     case grl.b $$7x:
+                        $$1.remove($$2x);
+                        $$2.put($$2x, $$7x);
+                        break;
+                     default:
+                        throw new MatchException(null, null);
+                  }
+               });
+            }
+
+            if ($$2.isEmpty()) {
+               return new grl($$1);
+            } else {
+               boolean $$4 = true;
+
+               while ($$4) {
+                  $$4 = false;
+                  ObjectIterator<it.unimi.dsi.fastutil.objects.Object2ObjectMap.Entry<String, grl.b>> $$5 = Object2ObjectMaps.fastIterator($$2);
+
+                  while ($$5.hasNext()) {
+                     it.unimi.dsi.fastutil.objects.Object2ObjectMap.Entry<String, grl.b> $$6 = (it.unimi.dsi.fastutil.objects.Object2ObjectMap.Entry<String, grl.b>)$$5.next();
+                     hkw $$7 = (hkw)$$1.get(((grl.b)$$6.getValue()).a);
+                     if ($$7 != null) {
+                        $$1.put((String)$$6.getKey(), $$7);
+                        $$5.remove();
+                        $$4 = true;
+                     }
+                  }
+               }
+
+               if (!$$2.isEmpty()) {
+                  a.warn(
+                     "Unresolved texture references in {}:\n{}",
+                     $$0.get(),
+                     $$2.entrySet()
+                        .stream()
+                        .map($$0x -> "\t#" + (String)$$0x.getKey() + "-> #" + ((grl.b)$$0x.getValue()).a + "\n")
+                        .collect(Collectors.joining())
+                  );
+               }
+
+               return new grl($$1);
+            }
+         }
+      }
    }
 
-   private static void a(
-      fiq.a $$0, fiu $$1, int $$2, int $$3, int $$4, float $$5, float $$6, float $$7, float $$8, float $$9, float $$10, float $$11, float $$12
-   ) {
-      a($$0, $$1, $$2, $$4, $$5, $$6, $$10, $$11);
-      a($$0, $$1, $$2, $$3, $$5, $$6, $$10, $$12);
-      a($$0, $$1, $$2, $$3, $$7, $$8, $$9, $$12);
-      a($$0, $$1, $$2, $$4, $$7, $$8, $$9, $$11);
+   public sealed interface d permits grl.e, grl.b {
    }
 
-   private static void a(fiq.a $$0, fiu $$1, int $$2, int $$3, float $$4, float $$5, float $$6, float $$7) {
-      $$1.a($$0, $$4, (float)$$3, $$5).a($$2).a($$6, $$7).b(hhp.d).c(15728880).b($$0, 0.0F, 1.0F, 0.0F);
-   }
-
-   @Override
-   public boolean a(T $$0) {
-      return true;
-   }
-
-   @Override
-   public int aQ_() {
-      return 256;
-   }
-
-   @Override
-   public boolean a(T $$0, fdw $$1) {
-      return fdw.b($$0.aw_()).d(1.0, 0.0, 1.0).a((jo)$$1.d(1.0, 0.0, 1.0), (double)this.aQ_());
+   static record e(hkw a) implements grl.d {
    }
 }

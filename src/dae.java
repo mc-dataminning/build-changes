@@ -1,33 +1,41 @@
-public abstract class dae extends czl implements czm {
-   public static float a = 0.5F;
+import javax.annotation.Nullable;
 
-   public dae(cyo.a $$0) {
-      super($$0);
+public class dae extends cxg implements cxu {
+   private final awm a;
+
+   public dae(dma $$0, awm $$1, cyu.a $$2) {
+      super($$0, $$2);
+      this.a = $$1;
    }
 
    @Override
-   public bty a(dip $$0, cqs $$1, btx $$2) {
-      cys $$3 = $$1.b($$2);
-      if ($$0 instanceof aro $$4) {
-         crm.a(this::a, $$4, $$3, $$1, -20.0F, a, 1.0F);
+   public bub a(dct $$0) {
+      bub $$1 = super.a($$0);
+      cqy $$2 = $$0.o();
+      if ($$1.a() && $$2 != null) {
+         $$2.a($$0.p(), cxm.b($$0.n(), $$2));
       }
 
-      $$1.b(awv.c.b(this));
-      $$3.a(1, $$1);
-      return bty.a;
-   }
-
-   protected abstract crb a(aro var1, bwz var2, cys var3);
-
-   protected abstract crb a(dip var1, jo var2, cys var3);
-
-   @Override
-   public crm a(dip $$0, jo $$1, cys $$2, ja $$3) {
-      return this.a($$0, $$1, $$2);
+      return $$1;
    }
 
    @Override
-   public czm.a a() {
-      return czm.a.a().a(czm.a.a.c() * 0.5F).b(czm.a.a.d() * 1.25F).a();
+   protected awm a(dzz $$0) {
+      return this.a;
+   }
+
+   @Override
+   public boolean a(@Nullable bxc $$0, div $$1, iu $$2, @Nullable fee $$3) {
+      if ($$1.k($$2) && $$1.v($$2)) {
+         if (!$$1.C) {
+            $$1.a($$2, this.c().m(), 3);
+         }
+
+         $$1.a($$0, eez.z, $$2);
+         $$1.a($$0, $$2, this.a, awo.e, 1.0F, 1.0F);
+         return true;
+      } else {
+         return false;
+      }
    }
 }

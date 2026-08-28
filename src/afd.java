@@ -1,61 +1,52 @@
-public class afd implements zd<abs> {
-   public static final yu<vs, afd> a = zd.a(afd::a, afd::new);
-   private final int b;
-   private final int c;
-   private final int d;
-   private final int e;
+import java.util.ArrayList;
+import java.util.List;
 
-   public afd(bwa $$0) {
-      this($$0.ar(), $$0.dy());
+public record afd(int c, List<akn.c<?>> d) implements zf<abu> {
+   public static final yw<wj, afd> a = zf.a(afd::b, afd::new);
+   public static final int b = 255;
+
+   private afd(wj $$0) {
+      this($$0.l(), a($$0));
    }
 
-   public afd(int $$0, fdw $$1) {
-      this.b = $$0;
-      double $$2 = 3.9;
-      double $$3 = azk.a($$1.d, -3.9, 3.9);
-      double $$4 = azk.a($$1.e, -3.9, 3.9);
-      double $$5 = azk.a($$1.f, -3.9, 3.9);
-      this.c = (int)($$3 * 8000.0);
-      this.d = (int)($$4 * 8000.0);
-      this.e = (int)($$5 * 8000.0);
+   private static void a(List<akn.c<?>> $$0, wj $$1) {
+      for (akn.c<?> $$2 : $$0) {
+         $$2.a($$1);
+      }
+
+      $$1.l(255);
    }
 
-   private afd(vs $$0) {
-      this.b = $$0.l();
-      this.c = $$0.readShort();
-      this.d = $$0.readShort();
-      this.e = $$0.readShort();
+   private static List<akn.c<?>> a(wj $$0) {
+      List<akn.c<?>> $$1 = new ArrayList<>();
+
+      int $$2;
+      while (($$2 = $$0.readUnsignedByte()) != 255) {
+         $$1.add(akn.c.a($$0, $$2));
+      }
+
+      return $$1;
    }
 
-   private void a(vs $$0) {
-      $$0.c(this.b);
-      $$0.m(this.c);
-      $$0.m(this.d);
-      $$0.m(this.e);
+   private void b(wj $$0) {
+      $$0.c(this.c);
+      a(this.d, $$0);
    }
 
    @Override
-   public zf<afd> a() {
-      return agl.aH;
+   public zh<afd> a() {
+      return agn.aF;
    }
 
-   public void a(abs $$0) {
+   public void a(abu $$0) {
       $$0.a(this);
    }
 
    public int b() {
-      return this.b;
+      return this.c;
    }
 
-   public double e() {
-      return (double)this.c / 8000.0;
-   }
-
-   public double f() {
-      return (double)this.d / 8000.0;
-   }
-
-   public double g() {
-      return (double)this.e / 8000.0;
+   public List<akn.c<?>> e() {
+      return this.d;
    }
 }

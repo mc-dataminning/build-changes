@@ -55,7 +55,7 @@ public class ml {
    }
 
    static {
-      alg.a();
+      ali.a();
    }
 
    public class a {

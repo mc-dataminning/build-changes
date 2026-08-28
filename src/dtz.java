@@ -1,30 +1,46 @@
 import com.mojang.serialization.MapCodec;
 
-public class dtz extends dlu {
-   public static final MapCodec<dtz> a = b(dtz::new);
-   private static final feq b = dlu.a(6.0);
-
-   @Override
-   public MapCodec<dtz> a() {
-      return a;
-   }
-
-   protected dtz(dzn.d $$0) {
+public abstract class dtz extends dts {
+   protected dtz(dzy.d $$0) {
       super($$0);
    }
 
-   @Override
-   protected dsf a_(dzo $$0) {
-      return dsf.a;
+   private static boolean b(dzz $$0, diy $$1, iu $$2) {
+      iu $$3 = $$2.d();
+      dzz $$4 = $$1.a_($$3);
+      if ($$4.a(dmc.eb) && $$4.c(dtr.c) == 1) {
+         return true;
+      } else if ($$4.y().e() == 8) {
+         return false;
+      } else {
+         int $$5 = evx.a($$0, $$4, ja.b, $$4.g());
+         return $$5 < 15;
+      }
    }
 
    @Override
-   protected feq a(dzo $$0, dhv $$1, iu $$2, feb $$3) {
-      return b;
+   protected abstract MapCodec<? extends dtz> a();
+
+   private static boolean c(dzz $$0, diy $$1, iu $$2) {
+      iu $$3 = $$2.d();
+      return b($$0, $$1, $$2) && !$$1.b_($$3).a(axh.a);
    }
 
    @Override
-   protected float c(dzo $$0, dhv $$1, iu $$2) {
-      return 1.0F;
+   protected void b(dzz $$0, arq $$1, iu $$2, azv $$3) {
+      if (!b($$0, $$1, $$2)) {
+         $$1.b($$2, dmc.j.m());
+      } else {
+         if ($$1.B($$2.d()) >= 9) {
+            dzz $$4 = this.m();
+
+            for (int $$5 = 0; $$5 < 4; $$5++) {
+               iu $$6 = $$2.b($$3.a(3) - 1, $$3.a(5) - 3, $$3.a(3) - 1);
+               if ($$1.a_($$6).a(dmc.j) && c($$4, $$1, $$6)) {
+                  $$1.b($$6, $$4.b(c, Boolean.valueOf(o($$1.a_($$6.d())))));
+               }
+            }
+         }
+      }
    }
 }

@@ -2,14 +2,14 @@ import io.netty.buffer.ByteBuf;
 import java.util.Iterator;
 
 public record is(iu b, iu c) implements Iterable<iu> {
-   public static final yu<ByteBuf, is> a = new yu<ByteBuf, is>() {
+   public static final yw<ByteBuf, is> a = new yw<ByteBuf, is>() {
       public is a(ByteBuf $$0) {
-         return new is(vs.b($$0), vs.b($$0));
+         return new is(vu.b($$0), vu.b($$0));
       }
 
       public void a(ByteBuf $$0, is $$1) {
-         vs.a($$0, $$1.f());
-         vs.a($$0, $$1.g());
+         vu.a($$0, $$1.f());
+         vu.a($$0, $$1.g());
       }
    };
 
@@ -38,8 +38,8 @@ public record is(iu b, iu c) implements Iterable<iu> {
       return $$0.u() >= this.b.u() && $$0.v() >= this.b.v() && $$0.w() >= this.b.w() && $$0.u() <= this.c.u() && $$0.v() <= this.c.v() && $$0.w() <= this.c.w();
    }
 
-   public fdr b() {
-      return fdr.a(this.b, this.c);
+   public fed b() {
+      return fed.a(this.b, this.c);
    }
 
    @Override

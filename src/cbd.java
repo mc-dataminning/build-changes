@@ -1,29 +1,81 @@
-import com.mojang.datafixers.kinds.App;
-import java.util.function.BiPredicate;
-import java.util.function.Function;
+import com.google.common.collect.ImmutableMap;
+import java.util.List;
+import java.util.Optional;
+import java.util.Set;
 
-public class cbd {
-   public static byr<bwz> a(int $$0, BiPredicate<bwz, bwz> $$1) {
-      return ccd.a(
-         (Function<ccd.b<bwz>, ? extends App<ccd.c<bwz>, ccg<bwz>>>)($$2 -> $$2.group($$2.b(cgb.p), $$2.a(cgb.ac), $$2.c(cgb.aj), $$2.a(cgb.ak))
-               .apply($$2, ($$3, $$4, $$5, $$6) -> ($$7, $$8, $$9) -> {
-                     bwz $$10 = $$2.b($$3);
-                     if (!$$10.eG()) {
-                        return false;
-                     } else {
-                        if ($$1.test($$8, $$10)) {
-                           $$6.a(true, (long)$$0);
-                        }
+public class cbd extends byt<bxc> {
+   public static final int c = 100;
+   private long d;
 
-                        $$5.a($$10.dv(), (long)$$0);
-                        if ($$10.aq() != bwj.bS || $$7.O().c(dil.O)) {
-                           $$3.b();
-                           $$4.b();
-                        }
+   public cbd() {
+      super(ImmutableMap.of(cge.b, cgf.a, cge.J, cgf.c));
+   }
 
-                        return true;
-                     }
-                  }))
-      );
+   @Override
+   protected boolean a(arq $$0, bxc $$1) {
+      if ($$1.bZ()) {
+         return false;
+      } else {
+         byc<?> $$2 = $$1.eb();
+         jd $$3 = $$2.c(cge.b).get();
+         if ($$0.aj() != $$3.a()) {
+            return false;
+         } else {
+            Optional<Long> $$4 = $$2.c(cge.J);
+            if ($$4.isPresent()) {
+               long $$5 = $$0.ae() - $$4.get();
+               if ($$5 > 0L && $$5 < 100L) {
+                  return false;
+               }
+            }
+
+            dzz $$6 = $$0.a_($$3.b());
+            return $$3.b().a($$1.dt(), 2.0) && $$6.a(axc.T) && !$$6.c(dlt.c);
+         }
+      }
+   }
+
+   @Override
+   protected boolean a(arq $$0, bxc $$1, long $$2) {
+      Optional<jd> $$3 = $$1.eb().c(cge.b);
+      if ($$3.isEmpty()) {
+         return false;
+      } else {
+         iu $$4 = $$3.get().b();
+         return $$1.eb().c(csr.e) && $$1.dC() > (double)$$4.v() + 0.4 && $$4.a($$1.dt(), 1.14);
+      }
+   }
+
+   @Override
+   protected void d(arq $$0, bxc $$1, long $$2) {
+      if ($$2 > this.d) {
+         byc<?> $$3 = $$1.eb();
+         if ($$3.a(cge.w)) {
+            Set<jd> $$4 = $$3.c(cge.w).get();
+            Optional<List<bxc>> $$5;
+            if ($$3.a(cge.g)) {
+               $$5 = $$3.c(cge.g);
+            } else {
+               $$5 = Optional.empty();
+            }
+
+            bzr.a($$0, $$1, null, null, $$4, $$5);
+         }
+
+         $$1.b($$1.eb().c(cge.b).get().b());
+      }
+   }
+
+   @Override
+   protected boolean a(long $$0) {
+      return false;
+   }
+
+   @Override
+   protected void b(arq $$0, bxc $$1, long $$2) {
+      if ($$1.fQ()) {
+         $$1.fR();
+         this.d = $$2 + 40L;
+      }
    }
 }

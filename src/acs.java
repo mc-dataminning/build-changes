@@ -1,25 +1,33 @@
-public record acs(long[] b, bou c) implements zd<abs> {
-   public static final yu<vs, acs> a = zd.a(acs::a, acs::new);
+import java.util.List;
 
-   private acs(vs $$0) {
-      this($$0.d(), $$0.b(bou.class));
+public record acs(acs.a b, List<String> c) implements zf<abu> {
+   public static final yw<vu, acs> a = zf.a(acs::a, acs::new);
+
+   private acs(vu $$0) {
+      this($$0.b(acs.a.class), $$0.a(vu::p));
    }
 
-   private void a(vs $$0) {
+   private void a(vu $$0) {
       $$0.a(this.b);
-      $$0.a(this.c);
+      $$0.a(this.c, vu::a);
    }
 
    @Override
-   public zf<acs> a() {
-      return agl.z;
+   public zh<acs> a() {
+      return agn.x;
    }
 
-   public void a(abs $$0) {
+   public void a(abu $$0) {
       $$0.a(this);
    }
 
-   public bou e() {
+   public List<String> e() {
       return this.c;
+   }
+
+   public static enum a {
+      a,
+      b,
+      c;
    }
 }

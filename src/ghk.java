@@ -1,18 +1,51 @@
-public class ghk extends gfz {
-   public static final ale a = ale.b("textures/entity/trident.png");
+public class ghk extends gfq<hdz> {
+   public static final String a = "lid";
+   private static final String b = "base";
+   private final giu c;
+   private final giu d;
 
-   public ghk(gig $$0) {
-      super($$0, gpn::d);
+   public ghk(giu $$0) {
+      super($$0, gqc::h);
+      this.c = $$0.b("lid");
+      this.d = $$0.b("head");
    }
 
-   public static gim a() {
-      gio $$0 = new gio();
-      giq $$1 = $$0.a();
-      giq $$2 = $$1.a("pole", gil.c().a(0, 6).a(-0.5F, 2.0F, -0.5F, 1.0F, 25.0F, 1.0F), gii.a);
-      $$2.a("base", gil.c().a(4, 0).a(-1.5F, 0.0F, -0.5F, 3.0F, 2.0F, 1.0F), gii.a);
-      $$2.a("left_spike", gil.c().a(4, 3).a(-2.5F, -3.0F, -0.5F, 1.0F, 4.0F, 1.0F), gii.a);
-      $$2.a("middle_spike", gil.c().a(0, 0).a(-0.5F, -4.0F, -0.5F, 1.0F, 4.0F, 1.0F), gii.a);
-      $$2.a("right_spike", gil.c().a(4, 3).a().a(1.5F, -3.0F, -0.5F, 1.0F, 4.0F, 1.0F), gii.a);
-      return gim.a($$0, 32, 32);
+   private static gjc c() {
+      gjc $$0 = new gjc();
+      gje $$1 = $$0.a();
+      $$1.a("lid", giz.c().a(0, 0).a(-8.0F, -16.0F, -8.0F, 16.0F, 12.0F, 16.0F), giw.a(0.0F, 24.0F, 0.0F));
+      $$1.a("base", giz.c().a(0, 28).a(-8.0F, -8.0F, -8.0F, 16.0F, 8.0F, 16.0F), giw.a(0.0F, 24.0F, 0.0F));
+      return $$0;
+   }
+
+   public static gja a() {
+      gjc $$0 = c();
+      $$0.a().a("head", giz.c().a(0, 52).a(-3.0F, 0.0F, -3.0F, 6.0F, 6.0F, 6.0F), giw.a(0.0F, 12.0F, 0.0F));
+      return gja.a($$0, 64, 64);
+   }
+
+   public static gja b() {
+      gjc $$0 = c();
+      return gja.a($$0, 64, 64);
+   }
+
+   public void a(hdz $$0) {
+      super.a($$0);
+      float $$1 = (0.5F + $$0.c) * (float) Math.PI;
+      float $$2 = -1.0F + azm.a($$1);
+      float $$3 = 0.0F;
+      if ($$1 > (float) Math.PI) {
+         $$3 = azm.a($$0.u * 0.1F) * 0.7F;
+      }
+
+      this.c.a(0.0F, 16.0F + azm.a($$1) * 8.0F + $$3, 0.0F);
+      if ($$0.c > 0.3F) {
+         this.c.f = $$2 * $$2 * $$2 * $$2 * (float) Math.PI * 0.125F;
+      } else {
+         this.c.f = 0.0F;
+      }
+
+      this.d.e = $$0.ab * (float) (Math.PI / 180.0);
+      this.d.f = ($$0.d - 180.0F - $$0.e) * (float) (Math.PI / 180.0);
    }
 }

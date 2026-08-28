@@ -1,69 +1,82 @@
-public class dxl extends dwn implements dxu {
-   private final dww a = new dww();
-   private final dxb b = new dxb() {
-      @Override
-      protected void a(dip $$0, iu $$1, dzo $$2) {
-         $$0.a(null, (double)$$1.u() + 0.5, (double)$$1.v() + 0.5, (double)$$1.w() + 0.5, awl.iu, awm.e, 0.5F, $$0.A.i() * 0.1F + 0.9F);
+import java.util.List;
+
+public abstract class dxl {
+   private static final int a = 5;
+   private int b;
+   private double c;
+
+   protected abstract void a(div var1, iu var2, dzz var3);
+
+   protected abstract void b(div var1, iu var2, dzz var3);
+
+   protected abstract void a(div var1, iu var2, dzz var3, int var4, int var5);
+
+   protected abstract boolean a(cqy var1);
+
+   public void a(cqy $$0, div $$1, iu $$2, dzz $$3) {
+      int $$4 = this.b++;
+      if ($$4 == 0) {
+         this.a($$1, $$2, $$3);
+         $$1.a($$0, eez.k, $$2);
+         d($$1, $$2, $$3);
       }
 
-      @Override
-      protected void b(dip $$0, iu $$1, dzo $$2) {
-         $$0.a(null, (double)$$1.u() + 0.5, (double)$$1.v() + 0.5, (double)$$1.w() + 0.5, awl.it, awm.e, 0.5F, $$0.A.i() * 0.1F + 0.9F);
-      }
-
-      @Override
-      protected void a(dip $$0, iu $$1, dzo $$2, int $$3, int $$4) {
-         $$0.a(dxl.this.o, dlw.gb, 1, $$4);
-      }
-
-      @Override
-      protected boolean a(cqs $$0) {
-         return $$0.gw().b(dxl.this);
-      }
-   };
-
-   public dxl(iu $$0, dzo $$1) {
-      super(dwp.d, $$0, $$1);
+      this.a($$1, $$2, $$3, $$4, this.b);
+      this.c = Math.max($$0.gK(), this.c);
    }
 
-   public static void a(dip $$0, iu $$1, dzo $$2, dxl $$3) {
-      $$3.a.a();
+   public void b(cqy $$0, div $$1, iu $$2, dzz $$3) {
+      int $$4 = this.b--;
+      if (this.b == 0) {
+         this.b($$1, $$2, $$3);
+         $$1.a($$0, eez.j, $$2);
+         this.c = 0.0;
+      }
+
+      this.a($$1, $$2, $$3, $$4, this.b);
    }
 
-   @Override
-   public boolean a_(int $$0, int $$1) {
-      if ($$0 == 1) {
-         this.a.a($$1 > 0);
-         return true;
-      } else {
-         return super.a_($$0, $$1);
+   private List<cqy> a(div $$0, iu $$1) {
+      double $$2 = this.c + 4.0;
+      fed $$3 = new fed($$1).g($$2);
+      return $$0.a(eel.a(cqy.class), $$3, this::a);
+   }
+
+   public void c(div $$0, iu $$1, dzz $$2) {
+      List<cqy> $$3 = this.a($$0, $$1);
+      this.c = 0.0;
+
+      for (cqy $$4 : $$3) {
+         this.c = Math.max($$4.gK(), this.c);
+      }
+
+      int $$5 = $$3.size();
+      int $$6 = this.b;
+      if ($$6 != $$5) {
+         boolean $$7 = $$5 != 0;
+         boolean $$8 = $$6 != 0;
+         if ($$7 && !$$8) {
+            this.a($$0, $$1, $$2);
+            $$0.a(null, eez.k, $$1);
+         } else if (!$$7) {
+            this.b($$0, $$1, $$2);
+            $$0.a(null, eez.j, $$1);
+         }
+
+         this.b = $$5;
+      }
+
+      this.a($$0, $$1, $$2, $$6, $$5);
+      if ($$5 > 0) {
+         d($$0, $$1, $$2);
       }
    }
 
-   public void a(cqs $$0) {
-      if (!this.p && !$$0.U_()) {
-         this.b.a($$0, this.i(), this.aw_(), this.m());
-      }
+   public int a() {
+      return this.b;
    }
 
-   public void b(cqs $$0) {
-      if (!this.p && !$$0.U_()) {
-         this.b.b($$0, this.i(), this.aw_(), this.m());
-      }
-   }
-
-   public boolean c(cqs $$0) {
-      return btr.a(this, $$0);
-   }
-
-   public void a() {
-      if (!this.p) {
-         this.b.c(this.i(), this.aw_(), this.m());
-      }
-   }
-
-   @Override
-   public float a(float $$0) {
-      return this.a.a($$0);
+   private static void d(div $$0, iu $$1, dzz $$2) {
+      $$0.a($$1, $$2.b(), 5);
    }
 }

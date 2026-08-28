@@ -1,49 +1,42 @@
 import java.util.EnumSet;
 
-public class cem extends cdv {
-   private static final cho b = cho.b().a(6.0);
-   public static final int a = 400;
-   private final cja c;
-   private cqe d;
-   private int e;
+public class cem extends cdy {
+   private final bxk a;
+   private double b;
+   private double c;
+   private double d;
+   private final double e;
 
-   public cem(cja $$0) {
-      this.c = $$0;
-      this.a(EnumSet.of(cdv.a.a, cdv.a.b));
+   public cem(bxk $$0, double $$1) {
+      this.a = $$0;
+      this.e = $$1;
+      this.a(EnumSet.of(cdy.a.a));
    }
 
    @Override
    public boolean b() {
-      if (!this.c.dV().V()) {
-         return false;
-      } else if (this.c.dY().a(8000) != 0) {
+      if (this.a.ga()) {
          return false;
       } else {
-         this.d = a(this.c).a(cqe.class, b, this.c, this.c.dA(), this.c.dC(), this.c.dG(), this.c.cR().c(6.0, 2.0, 6.0));
-         return this.d != null;
+         fei $$0 = chv.a(this.a, 16, 7, fei.c(this.a.gb()), (float) (Math.PI / 2));
+         if ($$0 == null) {
+            return false;
+         } else {
+            this.b = $$0.d;
+            this.c = $$0.e;
+            this.d = $$0.f;
+            return true;
+         }
       }
    }
 
    @Override
    public boolean c() {
-      return this.e > 0;
+      return !this.a.O().k();
    }
 
    @Override
    public void d() {
-      this.e = this.a(400);
-      this.c.w(true);
-   }
-
-   @Override
-   public void e() {
-      this.c.w(false);
-      this.d = null;
-   }
-
-   @Override
-   public void a() {
-      this.c.J().a(this.d, 30.0F, 30.0F);
-      this.e--;
+      this.a.O().a(this.b, this.c, this.d, this.e);
    }
 }

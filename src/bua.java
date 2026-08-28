@@ -1,3 +1,4 @@
-public interface bua extends cvs {
-   ww m_();
+public enum bua {
+   a,
+   b;
 }

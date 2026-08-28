@@ -1,17 +1,51 @@
-import com.google.common.collect.ImmutableMap;
+import com.google.common.base.Suppliers;
+import com.mojang.datafixers.DSL;
+import com.mojang.datafixers.Typed;
 import com.mojang.datafixers.schemas.Schema;
-import java.util.Map;
-import java.util.Objects;
+import com.mojang.datafixers.types.Type;
+import com.mojang.datafixers.util.Pair;
+import com.mojang.serialization.Dynamic;
+import java.util.function.Supplier;
 
-public class bfj extends bjh {
-   public static final Map<String, String> a = ImmutableMap.builder().put("minecraft:zombie_pigman_spawn_egg", "minecraft:zombified_piglin_spawn_egg").build();
+public class bfj extends bew {
+   private final Supplier<Type<?>> b = Suppliers.memoize(() -> this.getOutputSchema().getChoiceType(biw.D, "ZombieVillager"));
 
    public bfj(Schema $$0) {
-      super("EntityZombifiedPiglinRenameFix", $$0, true);
+      super("EntityZombieSplitFix", $$0, true);
    }
 
    @Override
-   protected String a(String $$0) {
-      return Objects.equals("minecraft:zombie_pigman", $$0) ? "minecraft:zombified_piglin" : $$0;
+   protected Pair<String, Typed<?>> a(String $$0, Typed<?> $$1) {
+      if (!$$0.equals("Zombie")) {
+         return Pair.of($$0, $$1);
+      } else {
+         Dynamic<?> $$2 = (Dynamic<?>)$$1.getOptional(DSL.remainderFinder()).orElseThrow();
+         int $$3 = $$2.get("ZombieType").asInt(0);
+         String $$4;
+         Typed<?> $$5;
+         switch ($$3) {
+            case 1:
+            case 2:
+            case 3:
+            case 4:
+            case 5:
+               $$4 = "ZombieVillager";
+               $$5 = this.a($$1, $$3 - 1);
+               break;
+            case 6:
+               $$4 = "Husk";
+               $$5 = $$1;
+               break;
+            default:
+               $$4 = "Zombie";
+               $$5 = $$1;
+         }
+
+         return Pair.of($$4, $$5.update(DSL.remainderFinder(), $$0x -> $$0x.remove("ZombieType")));
+      }
+   }
+
+   private Typed<?> a(Typed<?> $$0, int $$1) {
+      return af.a($$0, this.b.get(), $$1x -> $$1x.set("Profession", $$1x.createInt($$1)));
    }
 }

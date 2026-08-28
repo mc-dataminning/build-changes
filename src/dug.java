@@ -1,72 +1,79 @@
 import com.mojang.serialization.MapCodec;
 import javax.annotation.Nullable;
 
-public class dug extends dod implements dqp {
-   public static final MapCodec<dug> c = b(dug::new);
-   public static final eam<eak> d = dod.b;
-   private static final feq e = dlu.b(12.0, 0.0, 16.0);
+public class dug extends dlm implements dpl {
+   public static final MapCodec<dug> a = b(dug::new);
+   public static final eax<ebj> b = eap.bm;
 
    @Override
    public MapCodec<dug> a() {
-      return c;
+      return a;
    }
 
-   public dug(dzn.d $$0) {
+   protected dug(dzy.d $$0) {
       super($$0);
+      this.l(this.B.b().b(b, ebj.b));
    }
 
    @Override
-   protected feq a(dzo $$0, dhv $$1, iu $$2, feb $$3) {
-      return e;
+   public dwx a(iu $$0, dzz $$1) {
+      return new dyq($$0, $$1);
    }
 
    @Override
-   protected boolean b(dzo $$0, dhv $$1, iu $$2) {
-      return $$0.c($$1, $$2, ja.b) && !$$0.a(dlw.ll);
+   protected bub a(dzz $$0, div $$1, iu $$2, cqy $$3, fee $$4) {
+      dwx $$5 = $$1.c_($$2);
+      if ($$5 instanceof dyq) {
+         return (bub)(((dyq)$$5).a($$3) ? bub.a : bub.e);
+      } else {
+         return bub.e;
+      }
    }
 
    @Override
-   protected cys a(dis $$0, iu $$1, dzo $$2, boolean $$3) {
-      return new cys(dlw.bD);
-   }
-
-   @Nullable
-   @Override
-   public dzo a(dcl $$0) {
-      dzo $$1 = super.a($$0);
-      if ($$1 != null) {
-         evv $$2 = $$0.q().b_($$0.a().d());
-         if ($$2.a(axf.a) && $$2.e() == 8) {
-            return $$1;
+   public void a(div $$0, iu $$1, dzz $$2, @Nullable bxc $$3, cyy $$4) {
+      if (!$$0.C) {
+         if ($$3 != null) {
+            dwx $$5 = $$0.c_($$1);
+            if ($$5 instanceof dyq) {
+               ((dyq)$$5).a($$3);
+            }
          }
       }
-
-      return null;
    }
 
    @Override
-   protected boolean a(dzo $$0, dis $$1, iu $$2) {
-      if ($$0.c(d) == eak.a) {
-         dzo $$3 = $$1.a_($$2.e());
-         return $$3.a(this) && $$3.c(d) == eak.b;
-      } else {
-         evv $$4 = $$1.b_($$2);
-         return super.a($$0, $$1, $$2) && $$4.a(axf.a) && $$4.e() == 8;
+   protected void a(eaa.a<dma, dzz> $$0) {
+      $$0.a(b);
+   }
+
+   @Override
+   protected void a(dzz $$0, div $$1, iu $$2, dma $$3, @Nullable exo $$4, boolean $$5) {
+      if ($$1 instanceof arq) {
+         if ($$1.c_($$2) instanceof dyq $$7) {
+            boolean $$8 = $$1.D($$2);
+            boolean $$9 = $$7.E();
+            if ($$8 && !$$9) {
+               $$7.d(true);
+               this.a((arq)$$1, $$7);
+            } else if (!$$8 && $$9) {
+               $$7.d(false);
+            }
+         }
       }
    }
 
-   @Override
-   protected evv b_(dzo $$0) {
-      return evw.c.a(false);
-   }
-
-   @Override
-   public boolean a(@Nullable bwz $$0, dhv $$1, iu $$2, dzo $$3, evu $$4) {
-      return false;
-   }
-
-   @Override
-   public boolean a(diq $$0, iu $$1, dzo $$2, evv $$3) {
-      return false;
+   private void a(arq $$0, dyq $$1) {
+      switch ($$1.v()) {
+         case a:
+            $$1.c(false);
+            break;
+         case b:
+            $$1.c($$0);
+            break;
+         case c:
+            $$1.C();
+         case d:
+      }
    }
 }

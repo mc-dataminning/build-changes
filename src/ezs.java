@@ -1,95 +1,63 @@
-import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.Sets;
+import com.mojang.datafixers.util.Either;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
-import java.util.Set;
+import java.util.Optional;
+import java.util.function.Consumer;
 
-public class ezs extends faa {
-   public static final int a = 0;
-   public static final MapCodec<ezs> b = RecordCodecBuilder.mapCodec(
-      $$0 -> a($$0)
-            .and(
-               $$0.group(
-                  dff.c.fieldOf("enchantment").forGetter($$0x -> $$0x.c),
-                  fct.a.fieldOf("count").forGetter($$0x -> $$0x.d),
-                  Codec.INT.optionalFieldOf("limit", 0).forGetter($$0x -> $$0x.e)
-               )
-            )
-            .apply($$0, ezs::new)
+public class ezs extends ezr {
+   public static final MapCodec<ezs> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(Codec.either(alf.a(mg.bp), eze.d).fieldOf("value").forGetter($$0x -> $$0x.j)).and(b($$0)).apply($$0, ezs::new)
    );
-   private final je<dff> c;
-   private final fcs d;
-   private final int e;
+   private final Either<alf<eze>, eze> j;
 
-   ezs(List<fbw> $$0, je<dff> $$1, fcs $$2, int $$3) {
-      super($$0);
-      this.c = $$1;
-      this.d = $$2;
-      this.e = $$3;
+   private ezs(Either<alf<eze>, eze> $$0, int $$1, int $$2, List<fci> $$3, List<fan> $$4) {
+      super($$1, $$2, $$3, $$4);
+      this.j = $$0;
    }
 
    @Override
-   public fac<ezs> b() {
-      return fad.m;
+   public ezq a() {
+      return ezn.d;
    }
 
    @Override
-   public Set<bav<?>> a() {
-      return Sets.union(ImmutableSet.of(fbh.d), this.d.a());
-   }
-
-   private boolean c() {
-      return this.e > 0;
+   public void a(Consumer<cyy> $$0, eyz $$1) {
+      ((eze)this.j.map($$1x -> $$1.a().c($$1x).map(je::a).orElse(eze.a), $$0x -> $$0x)).a($$1, $$0);
    }
 
    @Override
-   public cys a(cys $$0, eyn $$1) {
-      bwa $$2 = $$1.c(fbh.d);
-      if ($$2 instanceof bwz $$3) {
-         int $$4 = dfh.a(this.c, $$3);
-         if ($$4 == 0) {
-            return $$0;
+   public void a(ezf $$0) {
+      Optional<alf<eze>> $$1 = this.j.left();
+      if ($$1.isPresent()) {
+         alf<eze> $$2 = $$1.get();
+         if (!$$0.b()) {
+            $$0.b("Uses reference to " + $$2.a() + ", but references are not allowed");
+            return;
          }
 
-         float $$5 = (float)$$4 * this.d.b($$1);
-         $$0.g(Math.round($$5));
-         if (this.c()) {
-            $$0.f(this.e);
+         if ($$0.a($$2)) {
+            $$0.b("Table " + $$2.a() + " is recursively called");
+            return;
          }
       }
 
-      return $$0;
+      super.a($$0);
+      this.j
+         .ifLeft(
+            $$1x -> $$0.a()
+                  .c($$1x)
+                  .ifPresentOrElse($$2x -> ((eze)$$2x.a()).a($$0.a("->{" + $$1x.a() + "}", $$1x)), () -> $$0.b("Unknown loot table called " + $$1x.a()))
+         )
+         .ifRight($$1x -> $$1x.a($$0.a("->{inline}")));
    }
 
-   public static ezs.a a(jg.a $$0, fcs $$1) {
-      jg.b<dff> $$2 = $$0.e(mg.aP);
-      return new ezs.a($$2.b(dfk.s), $$1);
+   public static ezr.a<?> a(alf<eze> $$0) {
+      return a(($$1, $$2, $$3, $$4) -> new ezs(Either.left($$0), $$1, $$2, $$3, $$4));
    }
 
-   public static class a extends faa.a<ezs.a> {
-      private final je<dff> a;
-      private final fcs b;
-      private int c = 0;
-
-      public a(je<dff> $$0, fcs $$1) {
-         this.a = $$0;
-         this.b = $$1;
-      }
-
-      protected ezs.a a() {
-         return this;
-      }
-
-      public ezs.a a(int $$0) {
-         this.c = $$0;
-         return this;
-      }
-
-      @Override
-      public fab b() {
-         return new ezs(this.g(), this.a, this.b, this.c);
-      }
+   public static ezr.a<?> a(eze $$0) {
+      return a(($$1, $$2, $$3, $$4) -> new ezs(Either.right($$0), $$1, $$2, $$3, $$4));
    }
 }

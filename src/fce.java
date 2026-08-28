@@ -1,61 +1,35 @@
-import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
 import java.util.Set;
 
-public record fce(Optional<Long> b, eym c) implements fbw {
-   public static final MapCodec<fce> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(Codec.LONG.optionalFieldOf("period").forGetter(fce::c), eym.a.fieldOf("value").forGetter(fce::d)).apply($$0, fce::new)
-   );
+public class fce implements fci {
+   private static final fce b = new fce();
+   public static final MapCodec<fce> a = MapCodec.unit(b);
 
-   @Override
-   public fbx b() {
-      return fby.q;
+   private fce() {
    }
 
    @Override
-   public Set<bav<?>> a() {
-      return this.c.a();
+   public fcj b() {
+      return fck.l;
    }
 
-   public boolean a(eyn $$0) {
-      aro $$1 = $$0.d();
-      long $$2 = $$1.af();
-      if (this.b.isPresent()) {
-         $$2 %= this.b.get();
+   @Override
+   public Set<bax<?>> a() {
+      return Set.of(fbt.j);
+   }
+
+   public boolean a(eyz $$0) {
+      Float $$1 = $$0.c(fbt.j);
+      if ($$1 != null) {
+         azv $$2 = $$0.b();
+         float $$3 = 1.0F / $$1;
+         return $$2.i() <= $$3;
+      } else {
+         return true;
       }
-
-      return this.c.b($$0, (int)$$2);
    }
 
-   public static fce.a a(eym $$0) {
-      return new fce.a($$0);
-   }
-
-   public Optional<Long> c() {
-      return this.b;
-   }
-
-   public eym d() {
-      return this.c;
-   }
-
-   public static class a implements fbw.a {
-      private Optional<Long> a = Optional.empty();
-      private final eym b;
-
-      public a(eym $$0) {
-         this.b = $$0;
-      }
-
-      public fce.a a(long $$0) {
-         this.a = Optional.of($$0);
-         return this;
-      }
-
-      public fce a() {
-         return new fce(this.a, this.b);
-      }
+   public static fci.a c() {
+      return () -> b;
    }
 }

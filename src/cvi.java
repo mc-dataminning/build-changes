@@ -1,9 +1,17 @@
-public class cvi extends cum {
-   public cvi(int $$0, cqr $$1) {
-      super(cvt.o, ddu.b, dds.e, cwa.b, $$0, $$1);
+import java.util.List;
+
+public interface cvi extends btu, cws {
+   int au_();
+
+   int g();
+
+   List<cyy> h();
+
+   default ddd ax_() {
+      return this.ay_().a();
    }
 
-   public cvi(int $$0, cqr $$1, btr $$2, cuw $$3) {
-      super(cvt.o, ddu.b, dds.e, cwa.b, $$0, $$1, $$2, $$3);
+   default ddd.a ay_() {
+      return ddd.b(this.au_(), this.g(), this.h());
    }
 }

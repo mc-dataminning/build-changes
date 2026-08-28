@@ -1,7 +1,5 @@
-import javax.annotation.Nullable;
-
-public class hdu extends hbp {
+public class hdu extends hdf {
    public float a;
-   @Nullable
-   public dzo b;
+   public boolean b;
+   public cjq.g c = cjq.g.a;
 }

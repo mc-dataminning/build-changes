@@ -1,5 +1,3 @@
-public class gga extends gfg<hbv> {
-   public gga(gig $$0) {
-      super($$0);
-   }
+public interface gga {
+   giu b();
 }

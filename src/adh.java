@@ -1,48 +1,53 @@
-import java.util.BitSet;
-import javax.annotation.Nullable;
-
-public class adh implements zd<abs> {
-   public static final yu<vs, adh> a = zd.a(adh::a, adh::new);
+public class adh implements zf<abu> {
+   public static final yw<vu, adh> a = zf.a(adh::a, adh::new);
    private final int b;
-   private final int c;
-   private final adi d;
+   private final iu c;
+   private final int d;
+   private final boolean e;
 
-   public adh(dhw $$0, evk $$1, @Nullable BitSet $$2, @Nullable BitSet $$3) {
-      this.b = $$0.h;
-      this.c = $$0.i;
-      this.d = new adi($$0, $$1, $$2, $$3);
+   public adh(int $$0, iu $$1, int $$2, boolean $$3) {
+      this.b = $$0;
+      this.c = $$1.j();
+      this.d = $$2;
+      this.e = $$3;
    }
 
-   private adh(vs $$0) {
-      this.b = $$0.l();
-      this.c = $$0.l();
-      this.d = new adi($$0, this.b, this.c);
+   private adh(vu $$0) {
+      this.b = $$0.readInt();
+      this.c = $$0.e();
+      this.d = $$0.readInt();
+      this.e = $$0.readBoolean();
    }
 
-   private void a(vs $$0) {
-      $$0.c(this.b);
-      $$0.c(this.c);
-      this.d.a($$0);
+   private void a(vu $$0) {
+      $$0.q(this.b);
+      $$0.a(this.c);
+      $$0.q(this.d);
+      $$0.a(this.e);
    }
 
    @Override
-   public zf<adh> a() {
-      return agl.N;
+   public zh<adh> a() {
+      return agn.L;
    }
 
-   public void a(abs $$0) {
+   public void a(abu $$0) {
       $$0.a(this);
    }
 
-   public int b() {
-      return this.b;
+   public boolean b() {
+      return this.e;
    }
 
    public int e() {
-      return this.c;
+      return this.b;
    }
 
-   public adi f() {
+   public int f() {
       return this.d;
+   }
+
+   public iu g() {
+      return this.c;
    }
 }

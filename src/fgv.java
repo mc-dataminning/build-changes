@@ -1,13 +1,15 @@
-public interface fgv {
-   <T> fic<T> a(String var1, fib<T> var2);
+public enum fgv {
+   a(34962),
+   b(34963),
+   c(35051),
+   d(36662),
+   e(36663),
+   f(35052),
+   g(35345);
 
-   <T> void a(fic<T> var1);
+   final int h;
 
-   <T> fic<T> b(fic<T> var1);
-
-   void a(fgv var1);
-
-   void a();
-
-   void a(Runnable var1);
+   private fgv(final int $$0) {
+      this.h = $$0;
+   }
 }

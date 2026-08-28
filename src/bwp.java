@@ -1,42 +1,46 @@
-public abstract class bwp extends bxb {
-   protected bwp(bwj<? extends bwp> $$0, dip $$1) {
-      super($$0, $$1);
+import com.google.common.collect.Maps;
+import com.mojang.datafixers.util.Either;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
+import java.util.Map;
+import java.util.function.Function;
+
+public record bwp(alf<eze> c, Map<bwn, Float> d) {
+   public static final Codec<Map<bwn, Float>> a = Codec.either(Codec.FLOAT, Codec.unboundedMap(bwn.l, Codec.FLOAT))
+      .xmap($$0 -> (Map)$$0.map(bwp::a, Function.identity()), $$0 -> {
+         boolean $$1 = $$0.values().stream().distinct().count() == 1L;
+         boolean $$2 = $$0.keySet().containsAll(bwn.j);
+         return $$1 && $$2 ? Either.left($$0.values().stream().findFirst().orElse(0.0F)) : Either.right($$0);
+      });
+   public static final Codec<bwp> b = RecordCodecBuilder.create(
+      $$0 -> $$0.group(alf.a(mg.bp).fieldOf("loot_table").forGetter(bwp::a), a.optionalFieldOf("slot_drop_chances", Map.of()).forGetter(bwp::b))
+            .apply($$0, bwp::new)
+   );
+
+   public bwp(alf<eze> $$0, float $$1) {
+      this($$0, a($$1));
    }
 
-   @Override
-   protected void a(double $$0, boolean $$1, dzo $$2, iu $$3) {
+   private static Map<bwn, Float> a(float $$0) {
+      return a(List.of(bwn.values()), $$0);
    }
 
-   @Override
-   public void a_(fdw $$0) {
-      if (this.bj()) {
-         this.a(0.02F, $$0);
-         this.a(bxd.a, this.dy());
-         this.i(this.dy().c(0.8F));
-      } else if (this.bw()) {
-         this.a(0.02F, $$0);
-         this.a(bxd.a, this.dy());
-         this.i(this.dy().c(0.5));
-      } else {
-         float $$1 = 0.91F;
-         if (this.aJ()) {
-            $$1 = this.dV().a_(this.aQ()).b().g() * 0.91F;
-         }
+   private static Map<bwn, Float> a(List<bwn> $$0, float $$1) {
+      Map<bwn, Float> $$2 = Maps.newHashMap();
 
-         float $$2 = 0.16277137F / ($$1 * $$1 * $$1);
-         $$1 = 0.91F;
-         if (this.aJ()) {
-            $$1 = this.dV().a_(this.aQ()).b().g() * 0.91F;
-         }
-
-         this.a(this.aJ() ? 0.1F * $$2 : 0.02F, $$0);
-         this.a(bxd.a, this.dy());
-         this.i(this.dy().c((double)$$1));
+      for (bwn $$3 : $$0) {
+         $$2.put($$3, $$1);
       }
+
+      return $$2;
    }
 
-   @Override
-   public boolean d_() {
-      return false;
+   public alf<eze> a() {
+      return this.c;
+   }
+
+   public Map<bwn, Float> b() {
+      return this.d;
    }
 }

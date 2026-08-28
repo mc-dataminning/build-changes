@@ -1,32 +1,24 @@
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
+import javax.annotation.Nullable;
 
-public class hhg implements hgz {
-   private final ghk a;
+public record hhg() implements hhf<alf<dhl>> {
+   public static final Codec<alf<dhl>> a = alf.a(mg.bj);
+   public static final hhf.a<hhg, alf<dhl>> b = hhf.a.a(MapCodec.unit(new hhg()), a);
 
-   public hhg(ghk $$0) {
-      this.a = $$0;
+   @Nullable
+   public alf<dhl> a(cyy $$0, @Nullable gjr $$1, @Nullable bxc $$2, int $$3, cyw $$4) {
+      dhj $$5 = $$0.a(kj.W);
+      return $$5 == null ? null : $$5.a().e().orElse(null);
    }
 
    @Override
-   public void a(cyq $$0, fiq $$1, gpd $$2, int $$3, int $$4, boolean $$5) {
-      $$1.a();
-      $$1.b(1.0F, -1.0F, -1.0F);
-      fiu $$6 = gwi.a($$2, this.a.a(ghk.a), false, $$5);
-      this.a.a($$1, $$6, $$3, $$4);
-      $$1.b();
+   public hhf.a<hhg, alf<dhl>> a() {
+      return b;
    }
 
-   public static record a() implements hhd.a {
-      public static final MapCodec<hhg.a> a = MapCodec.unit(new hhg.a());
-
-      @Override
-      public MapCodec<hhg.a> a() {
-         return a;
-      }
-
-      @Override
-      public hhd<?> a(gic $$0) {
-         return new hhg(new ghk($$0.a(gif.dx)));
-      }
+   @Override
+   public Codec<alf<dhl>> b() {
+      return a;
    }
 }

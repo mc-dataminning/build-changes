@@ -1,173 +1,55 @@
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Codec;
-import it.unimi.dsi.fastutil.objects.ObjectArrayList;
-import it.unimi.dsi.fastutil.objects.ObjectList;
-import it.unimi.dsi.fastutil.objects.ObjectListIterator;
-import java.util.EnumSet;
-import java.util.Set;
-import java.util.function.Predicate;
-import org.slf4j.Logger;
+public interface efn extends azv {
+   float b = 5.9604645E-8F;
+   double c = 1.110223E-16F;
 
-public class efn {
-   private static final Logger a = LogUtils.getLogger();
-   static final Predicate<dzo> b = $$0 -> !$$0.l();
-   static final Predicate<dzo> c = dzn.a::d;
-   private final axy d;
-   private final Predicate<dzo> e;
-   private final ebl f;
+   int c(int var1);
 
-   public efn(ebl $$0, efn.a $$1) {
-      this.e = $$1.e();
-      this.f = $$0;
-      int $$2 = azk.e($$0.H_() + 1);
-      this.d = new bab($$2, 256);
+   @Override
+   default int f() {
+      return this.c(32);
    }
 
-   public static void a(ebl $$0, Set<efn.a> $$1) {
-      if (!$$1.isEmpty()) {
-         int $$2 = $$1.size();
-         ObjectList<efn> $$3 = new ObjectArrayList($$2);
-         ObjectListIterator<efn> $$4 = $$3.iterator();
-         int $$5 = $$0.b() + 16;
-         iu.a $$6 = new iu.a();
-
-         for (int $$7 = 0; $$7 < 16; $$7++) {
-            for (int $$8 = 0; $$8 < 16; $$8++) {
-               for (efn.a $$9 : $$1) {
-                  $$3.add($$0.a($$9));
-               }
-
-               for (int $$10 = $$5 - 1; $$10 >= $$0.G_(); $$10--) {
-                  $$6.d($$7, $$10, $$8);
-                  dzo $$11 = $$0.a_($$6);
-                  if (!$$11.a(dlw.a)) {
-                     while ($$4.hasNext()) {
-                        efn $$12 = (efn)$$4.next();
-                        if ($$12.e.test($$11)) {
-                           $$12.a($$7, $$8, $$10 + 1);
-                           $$4.remove();
-                        }
-                     }
-
-                     if ($$3.isEmpty()) {
-                        break;
-                     }
-
-                     $$4.back($$2);
-                  }
-               }
-            }
-         }
-      }
-   }
-
-   public boolean a(int $$0, int $$1, int $$2, dzo $$3) {
-      int $$4 = this.a($$0, $$2);
-      if ($$1 <= $$4 - 2) {
-         return false;
+   @Override
+   default int a(int $$0) {
+      if ($$0 <= 0) {
+         throw new IllegalArgumentException("Bound must be positive");
+      } else if (($$0 & $$0 - 1) == 0) {
+         return (int)((long)$$0 * (long)this.c(31) >> 31);
       } else {
-         if (this.e.test($$3)) {
-            if ($$1 >= $$4) {
-               this.a($$0, $$2, $$1 + 1);
-               return true;
-            }
-         } else if ($$4 - 1 == $$1) {
-            iu.a $$5 = new iu.a();
+         int $$1;
+         int $$2;
+         do {
+            $$1 = this.c(31);
+            $$2 = $$1 % $$0;
+         } while ($$1 - $$2 + ($$0 - 1) < 0);
 
-            for (int $$6 = $$1 - 1; $$6 >= this.f.G_(); $$6--) {
-               $$5.d($$0, $$6, $$2);
-               if (this.e.test(this.f.a_($$5))) {
-                  this.a($$0, $$2, $$6 + 1);
-                  return true;
-               }
-            }
-
-            this.a($$0, $$2, this.f.G_());
-            return true;
-         }
-
-         return false;
+         return $$2;
       }
    }
 
-   public int a(int $$0, int $$1) {
-      return this.a(c($$0, $$1));
+   @Override
+   default long g() {
+      int $$0 = this.c(32);
+      int $$1 = this.c(32);
+      long $$2 = (long)$$0 << 32;
+      return $$2 + (long)$$1;
    }
 
-   public int b(int $$0, int $$1) {
-      return this.a(c($$0, $$1)) - 1;
+   @Override
+   default boolean h() {
+      return this.c(1) != 0;
    }
 
-   private int a(int $$0) {
-      return this.d.a($$0) + this.f.G_();
+   @Override
+   default float i() {
+      return (float)this.c(24) * 5.9604645E-8F;
    }
 
-   private void a(int $$0, int $$1, int $$2) {
-      this.d.b(c($$0, $$1), $$2 - this.f.G_());
-   }
-
-   public void a(ebl $$0, efn.a $$1, long[] $$2) {
-      long[] $$3 = this.d.a();
-      if ($$3.length == $$2.length) {
-         System.arraycopy($$2, 0, $$3, 0, $$2.length);
-      } else {
-         a.warn("Ignoring heightmap data for chunk " + $$0.f() + ", size does not match; expected: " + $$3.length + ", got: " + $$2.length);
-         a($$0, EnumSet.of($$1));
-      }
-   }
-
-   public long[] a() {
-      return this.d.a();
-   }
-
-   private static int c(int $$0, int $$1) {
-      return $$0 + $$1 * 16;
-   }
-
-   public static enum a implements bai {
-      a("WORLD_SURFACE_WG", efn.b.a, efn.b),
-      b("WORLD_SURFACE", efn.b.c, efn.b),
-      c("OCEAN_FLOOR_WG", efn.b.a, efn.c),
-      d("OCEAN_FLOOR", efn.b.b, efn.c),
-      e("MOTION_BLOCKING", efn.b.c, $$0 -> $$0.d() || !$$0.y().c()),
-      f("MOTION_BLOCKING_NO_LEAVES", efn.b.b, $$0 -> ($$0.d() || !$$0.y().c()) && !($$0.b() instanceof dqi));
-
-      public static final Codec<efn.a> g = bai.a(efn.a::values);
-      private final String h;
-      private final efn.b i;
-      private final Predicate<dzo> j;
-
-      private a(final String $$0, final efn.b $$1, final Predicate<dzo> $$2) {
-         this.h = $$0;
-         this.i = $$1;
-         this.j = $$2;
-      }
-
-      public String a() {
-         return this.h;
-      }
-
-      public boolean b() {
-         return this.i == efn.b.c;
-      }
-
-      public boolean d() {
-         return this.i != efn.b.a;
-      }
-
-      public Predicate<dzo> e() {
-         return this.j;
-      }
-
-      @Override
-      public String c() {
-         return this.h;
-      }
-   }
-
-   public static enum b {
-      a,
-      b,
-      c;
+   @Override
+   default double j() {
+      int $$0 = this.c(26);
+      int $$1 = this.c(27);
+      long $$2 = ((long)$$0 << 27) + (long)$$1;
+      return (double)$$2 * 1.110223E-16F;
    }
 }

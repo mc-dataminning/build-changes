@@ -1,3 +1,8 @@
-public interface gdv {
-   void a(bws var1, fiq var2);
+import javax.annotation.ParametersAreNonnullByDefault;
+
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface gdv {
 }

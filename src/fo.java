@@ -28,27 +28,27 @@ public class fo implements ArgumentType<fo.b> {
       return $$3.a($$1, $$1x -> en.b(((ei)$$0.getSource()).q(), $$1x));
    };
    private static final Collection<String> b = Arrays.asList("Player", "0123", "*", "@e");
-   private static final SimpleCommandExceptionType c = new SimpleCommandExceptionType(ww.c("argument.scoreHolder.empty"));
+   private static final SimpleCommandExceptionType c = new SimpleCommandExceptionType(wy.c("argument.scoreHolder.empty"));
    final boolean d;
 
    public fo(boolean $$0) {
       this.d = $$0;
    }
 
-   public static ffa a(CommandContext<ei> $$0, String $$1) throws CommandSyntaxException {
+   public static ffm a(CommandContext<ei> $$0, String $$1) throws CommandSyntaxException {
       return b($$0, $$1).iterator().next();
    }
 
-   public static Collection<ffa> b(CommandContext<ei> $$0, String $$1) throws CommandSyntaxException {
+   public static Collection<ffm> b(CommandContext<ei> $$0, String $$1) throws CommandSyntaxException {
       return a($$0, $$1, Collections::emptyList);
    }
 
-   public static Collection<ffa> c(CommandContext<ei> $$0, String $$1) throws CommandSyntaxException {
-      return a($$0, $$1, ((ei)$$0.getSource()).l().aJ()::e);
+   public static Collection<ffm> c(CommandContext<ei> $$0, String $$1) throws CommandSyntaxException {
+      return a($$0, $$1, ((ei)$$0.getSource()).l().aJ()::d);
    }
 
-   public static Collection<ffa> a(CommandContext<ei> $$0, String $$1, Supplier<Collection<ffa>> $$2) throws CommandSyntaxException {
-      Collection<ffa> $$3 = ((fo.b)$$0.getArgument($$1, fo.b.class)).getNames((ei)$$0.getSource(), $$2);
+   public static Collection<ffm> a(CommandContext<ei> $$0, String $$1, Supplier<Collection<ffm>> $$2) throws CommandSyntaxException {
+      Collection<ffm> $$3 = ((fo.b)$$0.getArgument($$1, fo.b.class)).getNames((ei)$$0.getSource(), $$2);
       if ($$3.isEmpty()) {
          throw ev.d.create();
       } else {
@@ -91,7 +91,7 @@ public class fo implements ArgumentType<fo.b> {
          String $$5 = $$0.getString().substring($$4, $$0.getCursor());
          if ($$5.equals("*")) {
             return ($$0x, $$1x) -> {
-               Collection<ffa> $$2 = (Collection<ffa>)$$1x.get();
+               Collection<ffm> $$2 = (Collection<ffm>)$$1x.get();
                if ($$2.isEmpty()) {
                   throw c.create();
                } else {
@@ -99,7 +99,7 @@ public class fo implements ArgumentType<fo.b> {
                }
             };
          } else {
-            List<ffa> $$6 = List.of(ffa.c($$5));
+            List<ffm> $$6 = List.of(ffm.c($$5));
             if ($$5.startsWith("#")) {
                return ($$1x, $$2) -> $$6;
             } else {
@@ -107,11 +107,11 @@ public class fo implements ArgumentType<fo.b> {
                   UUID $$7 = UUID.fromString($$5);
                   return ($$2, $$3) -> {
                      MinecraftServer $$4x = $$2.l();
-                     ffa $$5x = null;
-                     List<ffa> $$6x = null;
+                     ffm $$5x = null;
+                     List<ffm> $$6x = null;
 
-                     for (aro $$7x : $$4x.L()) {
-                        bwa $$8 = $$7x.b($$7);
+                     for (arq $$7x : $$4x.L()) {
+                        bwd $$8 = $$7x.b($$7);
                         if ($$8 != null) {
                            if ($$5x == null) {
                               $$5x = $$8;
@@ -135,7 +135,7 @@ public class fo implements ArgumentType<fo.b> {
                } catch (IllegalArgumentException var7) {
                   return ($$2, $$3) -> {
                      MinecraftServer $$4x = $$2.l();
-                     arp $$5x = $$4x.ag().a($$5);
+                     arr $$5x = $$4x.ag().a($$5);
                      return $$5x != null ? List.of($$5x) : $$6;
                   };
                }
@@ -151,7 +151,7 @@ public class fo implements ArgumentType<fo.b> {
    public static class a implements ie<fo, fo.a.a> {
       private static final byte a = 1;
 
-      public void a(fo.a.a $$0, vs $$1) {
+      public void a(fo.a.a $$0, vu $$1) {
          int $$2 = 0;
          if ($$0.b) {
             $$2 |= 1;
@@ -160,7 +160,7 @@ public class fo implements ArgumentType<fo.b> {
          $$1.l($$2);
       }
 
-      public fo.a.a a(vs $$0) {
+      public fo.a.a a(vu $$0) {
          byte $$1 = $$0.readByte();
          boolean $$2 = ($$1 & 1) != 0;
          return new fo.a.a($$2);
@@ -194,7 +194,7 @@ public class fo implements ArgumentType<fo.b> {
 
    @FunctionalInterface
    public interface b {
-      Collection<ffa> getNames(ei var1, Supplier<Collection<ffa>> var2) throws CommandSyntaxException;
+      Collection<ffm> getNames(ei var1, Supplier<Collection<ffm>> var2) throws CommandSyntaxException;
    }
 
    public static class c implements fo.b {
@@ -205,8 +205,8 @@ public class fo implements ArgumentType<fo.b> {
       }
 
       @Override
-      public Collection<ffa> getNames(ei $$0, Supplier<Collection<ffa>> $$1) throws CommandSyntaxException {
-         List<? extends bwa> $$2 = this.a.b($$0);
+      public Collection<ffm> getNames(ei $$0, Supplier<Collection<ffm>> $$1) throws CommandSyntaxException {
+         List<? extends bwd> $$2 = this.a.b($$0);
          if ($$2.isEmpty()) {
             throw ev.d.create();
          } else {

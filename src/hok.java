@@ -1,22 +1,22 @@
-public class hok implements fst {
-   private final ww a;
-   private final int b;
-   private final int c;
-   private final int d;
+import java.time.Duration;
+import javax.annotation.Nullable;
 
-   public hok(ww $$0, int $$1, int $$2, int $$3) {
-      this.a = $$0;
+public class hok {
+   private final boolean a;
+   @Nullable
+   private final Duration b;
+
+   public hok(boolean $$0, @Nullable Duration $$1) {
       this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
+      this.a = $$0;
    }
 
-   @Override
-   public void a(frc $$0, int $$1, int $$2, float $$3) {
-      $$0.a(fof.Q().h, this.a, this.b, this.c, this.d);
-   }
-
-   public ww a() {
-      return this.a;
+   public void a(hoa $$0) {
+      if (this.b != null) {
+         $$0.send(hob.d, $$0x -> {
+            $$0x.a(hod.x, (int)this.b.toMillis());
+            $$0x.a(hod.y, this.a);
+         });
+      }
    }
 }

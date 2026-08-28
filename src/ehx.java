@@ -1,118 +1,31 @@
-import com.google.common.collect.ImmutableList;
 import com.mojang.serialization.Codec;
-import javax.annotation.Nullable;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class ehx extends eit<ekr> {
-   private static final ImmutableList<dlu> a = ImmutableList.of(dlw.K, dlw.I, dlw.ll, dlw.ej, dlw.fI, dlw.fJ, dlw.fK, dlw.fL, dlw.cD, dlw.cA);
-   private static final int b = 5;
-   private static final int c = 50;
-   private static final int d = 8;
-   private static final int ao = 15;
+public class ehx extends els {
+   public static final MapCodec<ehx> d = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(
+               Codec.floatRange(0.0F, 1.0F).fieldOf("probability").forGetter($$0x -> $$0x.l),
+               epa.c.fieldOf("y").forGetter($$0x -> $$0x.e),
+               bte.c.fieldOf("yScale").forGetter($$0x -> $$0x.f),
+               egs.a.fieldOf("lava_level").forGetter($$0x -> $$0x.g),
+               ehy.b.optionalFieldOf("debug_settings", ehy.a).forGetter($$0x -> $$0x.h),
+               jt.a(mg.i).fieldOf("replaceable").forGetter($$0x -> $$0x.i)
+            )
+            .apply($$0, ehx::new)
+   );
+   public final epa e;
+   public final bte f;
+   public final egs g;
+   public final ehy h;
+   public final ji<dma> i;
 
-   public ehx(Codec<ekr> $$0) {
+   public ehx(float $$0, epa $$1, bte $$2, egs $$3, ehy $$4, ji<dma> $$5) {
       super($$0);
-   }
-
-   @Override
-   public boolean a(eiv<ekr> $$0) {
-      int $$1 = $$0.c().f();
-      iu $$2 = $$0.e();
-      djo $$3 = $$0.b();
-      azt $$4 = $$0.d();
-      ekr $$5 = $$0.f();
-      if (!a($$3, $$1, $$2.k())) {
-         return false;
-      } else {
-         int $$6 = $$5.b().a($$4);
-         boolean $$7 = $$4.i() < 0.9F;
-         int $$8 = Math.min($$6, $$7 ? 5 : 8);
-         int $$9 = $$7 ? 50 : 15;
-         boolean $$10 = false;
-
-         for (iu $$11 : iu.a($$4, $$9, $$2.u() - $$8, $$2.v(), $$2.w() - $$8, $$2.u() + $$8, $$2.v(), $$2.w() + $$8)) {
-            int $$12 = $$6 - $$11.k($$2);
-            if ($$12 >= 0) {
-               $$10 |= this.a($$3, $$1, $$11, $$12, $$5.a().a($$4));
-            }
-         }
-
-         return $$10;
-      }
-   }
-
-   private boolean a(diq $$0, int $$1, iu $$2, int $$3, int $$4) {
-      boolean $$5 = false;
-
-      for (iu $$6 : iu.b($$2.u() - $$4, $$2.v(), $$2.w() - $$4, $$2.u() + $$4, $$2.v(), $$2.w() + $$4)) {
-         int $$7 = $$6.k($$2);
-         iu $$8 = a($$0, $$1, $$6) ? a($$0, $$1, $$6.k(), $$7) : a($$0, $$6.k(), $$7);
-         if ($$8 != null) {
-            int $$9 = $$3 - $$7 / 2;
-
-            for (iu.a $$10 = $$8.k(); $$9 >= 0; $$9--) {
-               if (a($$0, $$1, (iu)$$10)) {
-                  this.a($$0, $$10, dlw.el.m());
-                  $$10.c(ja.b);
-                  $$5 = true;
-               } else {
-                  if (!$$0.a_($$10).a(dlw.el)) {
-                     break;
-                  }
-
-                  $$10.c(ja.b);
-               }
-            }
-         }
-      }
-
-      return $$5;
-   }
-
-   @Nullable
-   private static iu a(diq $$0, int $$1, iu.a $$2, int $$3) {
-      while ($$2.v() > $$0.G_() + 1 && $$3 > 0) {
-         $$3--;
-         if (a($$0, $$1, $$2)) {
-            return $$2;
-         }
-
-         $$2.c(ja.a);
-      }
-
-      return null;
-   }
-
-   private static boolean a(diq $$0, int $$1, iu.a $$2) {
-      if (!a($$0, $$1, (iu)$$2)) {
-         return false;
-      } else {
-         dzo $$3 = $$0.a_($$2.c(ja.a));
-         $$2.c(ja.b);
-         return !$$3.l() && !a.contains($$3.b());
-      }
-   }
-
-   @Nullable
-   private static iu a(diq $$0, iu.a $$1, int $$2) {
-      while ($$1.v() <= $$0.ao() && $$2 > 0) {
-         $$2--;
-         dzo $$3 = $$0.a_($$1);
-         if (a.contains($$3.b())) {
-            return null;
-         }
-
-         if ($$3.l()) {
-            return $$1;
-         }
-
-         $$1.c(ja.b);
-      }
-
-      return null;
-   }
-
-   private static boolean a(diq $$0, int $$1, iu $$2) {
-      dzo $$3 = $$0.a_($$2);
-      return $$3.l() || $$3.a(dlw.K) && $$2.v() <= $$1;
+      this.e = $$1;
+      this.f = $$2;
+      this.g = $$3;
+      this.h = $$4;
+      this.i = $$5;
    }
 }

@@ -1,33 +1,42 @@
-public class gyp extends gue<cju, hee, ghv> {
-   public gyp(gvk.a $$0) {
-      super($$0, new ghv($$0.a(gif.dT)), new ghv($$0.a(gif.dV)), 0.5F);
-      this.a(new ham(this, $$0.f(), $$0.h()));
-      this.a(new han(this));
+public class gyp extends guq<cty, hdj> {
+   private final gqw g;
+
+   public gyp(gvz.a $$0) {
+      super($$0, git.dw);
+      this.g = $$0.d();
    }
 
-   protected int a(hee $$0) {
-      float $$1 = $$0.f;
-      return $$1 == 1.0F ? -1 : axu.a(1.0F, $$1, $$1, $$1);
+   protected void a(hdj $$0, dzz $$1, fjc $$2, gps $$3, int $$4) {
+      float $$5 = $$0.n;
+      if ($$5 > -1.0F && $$5 < 10.0F) {
+         float $$6 = 1.0F - $$5 / 10.0F;
+         $$6 = azm.a($$6, 0.0F, 1.0F);
+         $$6 *= $$6;
+         $$6 *= $$6;
+         float $$7 = 1.0F + $$6 * 0.3F;
+         $$2.b($$7, $$7, $$7);
+      }
+
+      a(this.g, $$1, $$2, $$3, $$4, $$5 > -1.0F && (int)$$5 / 5 % 2 == 0);
    }
 
-   public ale b(hee $$0) {
-      return $$0.g;
+   public static void a(gqw $$0, dzz $$1, fjc $$2, gps $$3, int $$4, boolean $$5) {
+      int $$6;
+      if ($$5) {
+         $$6 = hif.a(hif.a(1.0F), 10);
+      } else {
+         $$6 = hif.d;
+      }
+
+      $$0.a($$1, $$2, $$3, $$4, $$6);
    }
 
-   public hee b() {
-      return new hee();
+   public hdj a() {
+      return new hdj();
    }
 
-   public void a(cju $$0, hee $$1, float $$2) {
+   public void a(cty $$0, hdj $$1, float $$2) {
       super.a($$0, $$1, $$2);
-      $$1.a = $$0.W_();
-      $$1.b = $$0.x();
-      $$1.c = $$0.gE();
-      $$1.d = $$0.L($$2);
-      $$1.e = $$0.K($$2);
-      $$1.g = $$0.gC();
-      $$1.f = $$0.J($$2);
-      $$1.h = $$0.q() ? $$0.gF() : null;
-      $$1.i = $$0.aj().v();
+      $$1.n = $$0.q() > -1 ? (float)$$0.q() - $$2 + 1.0F : -1.0F;
    }
 }

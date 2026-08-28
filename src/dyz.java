@@ -1,124 +1,64 @@
-import com.google.common.annotations.VisibleForTesting;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import it.unimi.dsi.fastutil.objects.ObjectArrayList;
-import it.unimi.dsi.fastutil.objects.ObjectLinkedOpenHashSet;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Objects;
-import java.util.Set;
 import java.util.UUID;
+import java.util.function.Predicate;
 
-public class dyz {
-   static final String a = "server_data";
-   static Codec<dyz> b = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               jy.c.lenientOptionalFieldOf("rewarded_players", Set.of()).forGetter($$0x -> $$0x.e),
-               Codec.LONG.lenientOptionalFieldOf("state_updating_resumes_at", 0L).forGetter($$0x -> $$0x.f),
-               cys.b.listOf().lenientOptionalFieldOf("items_to_eject", List.of()).forGetter($$0x -> $$0x.g),
-               Codec.INT.lenientOptionalFieldOf("total_ejections_needed", 0).forGetter($$0x -> $$0x.i)
-            )
-            .apply($$0, dyz::new)
-   );
-   private static final int d = 128;
-   private final Set<UUID> e = new ObjectLinkedOpenHashSet();
-   private long f;
-   private final List<cys> g = new ObjectArrayList();
-   private long h;
-   private int i;
-   boolean c;
+public interface dyz {
+   dyz a = ($$0, $$1, $$2, $$3, $$4) -> $$1.a($$0, $$2x -> $$2x.dv().a($$2, $$3) && !$$2x.b() && !$$2x.U_())
+         .stream()
+         .filter($$3x -> !$$4 || a($$0, $$2.b(), $$3x.bE()))
+         .map(bwd::cG)
+         .toList();
+   dyz b = ($$0, $$1, $$2, $$3, $$4) -> $$1.a($$0, $$2x -> $$2x.dv().a($$2, $$3) && !$$2x.U_())
+         .stream()
+         .filter($$3x -> !$$4 || a($$0, $$2.b(), $$3x.bE()))
+         .map(bwd::cG)
+         .toList();
+   dyz c = ($$0, $$1, $$2, $$3, $$4) -> {
+      fed $$5 = new fed($$2).g($$3);
+      return $$1.a($$0, bwm.bb, $$5, bxc::bK).stream().filter($$3x -> !$$4 || a($$0, $$2.b(), $$3x.bE())).map(bwd::cG).toList();
+   };
 
-   dyz(Set<UUID> $$0, long $$1, List<cys> $$2, int $$3) {
-      this.e.addAll($$0);
-      this.f = $$1;
-      this.g.addAll($$2);
-      this.i = $$3;
+   List<UUID> detect(arq var1, dyz.a var2, iu var3, double var4, boolean var6);
+
+   private static boolean a(div $$0, fei $$1, fei $$2) {
+      fee $$3 = $$0.a(new die($$2, $$1, die.a.c, die.b.a, fen.a()));
+      return $$3.b().equals(iu.a((jo)$$1)) || $$3.d() == feg.a.a;
    }
 
-   dyz() {
-   }
-
-   void a(long $$0) {
-      this.h = $$0;
-   }
-
-   long a() {
-      return this.h;
-   }
-
-   Set<UUID> b() {
-      return this.e;
-   }
-
-   boolean a(cqs $$0) {
-      return this.e.contains($$0.cG());
-   }
-
-   @VisibleForTesting
-   public void b(cqs $$0) {
-      this.e.add($$0.cG());
-      if (this.e.size() > 128) {
-         Iterator<UUID> $$1 = this.e.iterator();
-         if ($$1.hasNext()) {
-            $$1.next();
-            $$1.remove();
+   public interface a {
+      dyz.a a = new dyz.a() {
+         @Override
+         public List<arr> a(arq $$0, Predicate<? super cqy> $$1) {
+            return $$0.a($$1);
          }
+
+         @Override
+         public <T extends bwd> List<T> a(arq $$0, eel<bwd, T> $$1, fed $$2, Predicate<? super T> $$3) {
+            return $$0.a($$1, $$2, $$3);
+         }
+      };
+
+      List<? extends cqy> a(arq var1, Predicate<? super cqy> var2);
+
+      <T extends bwd> List<T> a(arq var1, eel<bwd, T> var2, fed var3, Predicate<? super T> var4);
+
+      static dyz.a a(cqy $$0) {
+         return a(List.of($$0));
       }
 
-      this.i();
-   }
+      static dyz.a a(final List<cqy> $$0) {
+         return new dyz.a() {
+            @Override
+            public List<cqy> a(arq $$0x, Predicate<? super cqy> $$1) {
+               return $$0.stream().filter($$1).toList();
+            }
 
-   long c() {
-      return this.f;
-   }
-
-   void b(long $$0) {
-      this.f = $$0;
-      this.i();
-   }
-
-   List<cys> d() {
-      return this.g;
-   }
-
-   void e() {
-      this.i = 0;
-      this.i();
-   }
-
-   void a(List<cys> $$0) {
-      this.g.clear();
-      this.g.addAll($$0);
-      this.i = this.g.size();
-      this.i();
-   }
-
-   cys f() {
-      return this.g.isEmpty() ? cys.k : Objects.requireNonNullElse(this.g.get(this.g.size() - 1), cys.k);
-   }
-
-   cys g() {
-      if (this.g.isEmpty()) {
-         return cys.k;
-      } else {
-         this.i();
-         return Objects.requireNonNullElse(this.g.remove(this.g.size() - 1), cys.k);
+            @Override
+            public <T extends bwd> List<T> a(arq $$0x, eel<bwd, T> $$1, fed $$2, Predicate<? super T> $$3) {
+               return $$0.stream().map($$1::a).filter(Objects::nonNull).filter($$3).toList();
+            }
+         };
       }
-   }
-
-   void a(dyz $$0) {
-      this.f = $$0.c();
-      this.g.clear();
-      this.g.addAll($$0.g);
-      this.e.clear();
-      this.e.addAll($$0.e);
-   }
-
-   private void i() {
-      this.c = true;
-   }
-
-   public float h() {
-      return this.i == 1 ? 1.0F : 1.0F - azk.f((float)this.d().size(), 1.0F, (float)this.i);
    }
 }

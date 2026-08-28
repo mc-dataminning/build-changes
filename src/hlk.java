@@ -1,123 +1,130 @@
-import it.unimi.dsi.fastutil.objects.Object2ObjectArrayMap;
-import java.util.Optional;
 import javax.annotation.Nullable;
 
-public class hlk implements hlg {
-   private static final int a = 40;
-   private static final float b = 0.001F;
-   private final goa c;
-   private final hnc d;
-   private final dju e;
-   private final azt f;
-   private final Object2ObjectArrayMap<djs, hlk.a> g = new Object2ObjectArrayMap();
-   private Optional<djq> h = Optional.empty();
-   private Optional<djp> i = Optional.empty();
-   private float j;
+public interface hlk extends hlh {
+   boolean c = true;
+   hlk.a d = hlk.a.b;
+
+   hkp a(grl var1, hky var2, hlf var3, boolean var4, boolean var5, grj var6);
+
    @Nullable
-   private djs k;
-
-   public hlk(goa $$0, hnc $$1, dju $$2) {
-      this.f = $$0.dV().C_();
-      this.c = $$0;
-      this.d = $$1;
-      this.e = $$2;
+   default Boolean a() {
+      return null;
    }
 
-   public float b() {
-      return this.j;
+   @Nullable
+   default hlk.a b() {
+      return null;
    }
 
-   @Override
-   public void a() {
-      this.g.values().removeIf(hlf::m);
-      djs $$0 = this.e.a(this.c.dA(), this.c.dC(), this.c.dG()).a();
-      if ($$0 != this.k) {
-         this.k = $$0;
-         this.h = $$0.m();
-         this.i = $$0.n();
-         this.g.values().forEach(hlk.a::o);
-         $$0.l().ifPresent($$1 -> this.g.compute($$0, ($$1x, $$2) -> {
-               if ($$2 == null) {
-                  $$2 = new hlk.a((awk)$$1.a());
-                  this.d.a((hlw)$$2);
-               }
+   @Nullable
+   default grj e() {
+      return null;
+   }
 
-               $$2.p();
-               return $$2;
-            }));
+   default grl.a d() {
+      return grl.a.a;
+   }
+
+   @Nullable
+   default hlk c() {
+      return null;
+   }
+
+   static hkp a(hlk $$0, hky $$1, hlf $$2) {
+      grl $$3 = a($$0, $$1.b());
+      boolean $$4 = a($$0);
+      boolean $$5 = b($$0).a();
+      grj $$6 = c($$0);
+      return $$0.a($$3, $$1, $$2, $$4, $$5, $$6);
+   }
+
+   static grl a(hlk $$0, hla $$1) {
+      grl.c $$2 = new grl.c();
+
+      while ($$0 != null) {
+         $$2.a($$0.d());
+         $$0 = $$0.c();
       }
 
-      this.i.ifPresent($$0x -> {
-         if (this.f.j() < $$0x.b()) {
-            this.d.a(hlr.b($$0x.a().a()));
-         }
-      });
-      this.h
-         .ifPresent(
-            $$0x -> {
-               dip $$1 = this.c.dV();
-               int $$2 = $$0x.c() * 2 + 1;
-               iu $$3 = iu.a(
-                  this.c.dA() + (double)this.f.a($$2) - (double)$$0x.c(),
-                  this.c.dE() + (double)this.f.a($$2) - (double)$$0x.c(),
-                  this.c.dG() + (double)this.f.a($$2) - (double)$$0x.c()
-               );
-               int $$4 = $$1.a(diy.a, $$3);
-               if ($$4 > 0) {
-                  this.j -= (float)$$4 / 15.0F * 0.001F;
-               } else {
-                  this.j = this.j - (float)($$1.a(diy.b, $$3) - 1) / (float)$$0x.b();
-               }
+      return $$2.a($$1);
+   }
 
-               if (this.j >= 1.0F) {
-                  double $$5 = (double)$$3.u() + 0.5;
-                  double $$6 = (double)$$3.v() + 0.5;
-                  double $$7 = (double)$$3.w() + 0.5;
-                  double $$8 = $$5 - this.c.dA();
-                  double $$9 = $$6 - this.c.dE();
-                  double $$10 = $$7 - this.c.dG();
-                  double $$11 = Math.sqrt($$8 * $$8 + $$9 * $$9 + $$10 * $$10);
-                  double $$12 = $$11 + $$0x.d();
-                  hlr $$13 = hlr.a($$0x.a().a(), this.f, this.c.dA() + $$8 / $$11 * $$12, this.c.dE() + $$9 / $$11 * $$12, this.c.dG() + $$10 / $$11 * $$12);
-                  this.d.a($$13);
-                  this.j = 0.0F;
-               } else {
-                  this.j = Math.max(this.j, 0.0F);
-               }
+   static boolean a(hlk $$0) {
+      while ($$0 != null) {
+         Boolean $$1 = $$0.a();
+         if ($$1 != null) {
+            return $$1;
+         }
+
+         $$0 = $$0.c();
+      }
+
+      return true;
+   }
+
+   static hlk.a b(hlk $$0) {
+      while ($$0 != null) {
+         hlk.a $$1 = $$0.b();
+         if ($$1 != null) {
+            return $$1;
+         }
+
+         $$0 = $$0.c();
+      }
+
+      return d;
+   }
+
+   static gri a(hlk $$0, cyw $$1) {
+      while ($$0 != null) {
+         grj $$2 = $$0.e();
+         if ($$2 != null) {
+            gri $$3 = $$2.a($$1);
+            if ($$3 != gri.a) {
+               return $$3;
             }
-         );
-   }
-
-   public static class a extends hlf {
-      private int n;
-      private int o;
-
-      public a(awk $$0) {
-         super($$0, awm.i, hlw.t());
-         this.i = true;
-         this.j = 0;
-         this.d = 1.0F;
-         this.l = true;
-      }
-
-      @Override
-      public void q() {
-         if (this.o < 0) {
-            this.n();
          }
 
-         this.o = this.o + this.n;
-         this.d = azk.a((float)this.o / 40.0F, 0.0F, 1.0F);
+         $$0 = $$0.c();
       }
 
-      public void o() {
-         this.o = Math.min(this.o, 40);
-         this.n = -1;
+      return gri.a;
+   }
+
+   static grj c(hlk $$0) {
+      gri $$1 = a($$0, cyw.b);
+      gri $$2 = a($$0, cyw.c);
+      gri $$3 = a($$0, cyw.d);
+      gri $$4 = a($$0, cyw.e);
+      gri $$5 = a($$0, cyw.f);
+      gri $$6 = a($$0, cyw.g);
+      gri $$7 = a($$0, cyw.h);
+      gri $$8 = a($$0, cyw.i);
+      return new grj($$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8);
+   }
+
+   public static enum a {
+      a("front"),
+      b("side");
+
+      private final String c;
+
+      private a(final String $$0) {
+         this.c = $$0;
       }
 
-      public void p() {
-         this.o = Math.max(0, this.o);
-         this.n = 1;
+      public static hlk.a a(String $$0) {
+         for (hlk.a $$1 : values()) {
+            if ($$1.c.equals($$0)) {
+               return $$1;
+            }
+         }
+
+         throw new IllegalArgumentException("Invalid gui light: " + $$0);
+      }
+
+      public boolean a() {
+         return this == b;
       }
    }
 }

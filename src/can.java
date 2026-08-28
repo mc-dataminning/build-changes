@@ -1,15 +1,18 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.ImmutableSet;
-import com.mojang.datafixers.util.Pair;
-import java.util.List;
-import java.util.Map;
+import com.mojang.datafixers.kinds.App;
+import java.util.function.Function;
 
-public class can<E extends bwz> extends bze<E> {
-   public can(List<Pair<? extends byr<? super E>, Integer>> $$0) {
-      this(ImmutableMap.of(), $$0);
-   }
-
-   public can(Map<cgb<?>, cgc> $$0, List<Pair<? extends byr<? super E>, Integer>> $$1) {
-      super($$0, ImmutableSet.of(), bze.a.b, bze.b.a, $$1);
+public class can {
+   public static byu<cqk> a() {
+      return ccg.a((Function<ccg.b<cqk>, ? extends App<ccg.c<cqk>, ccj<cqk>>>)($$0 -> $$0.group($$0.c(cge.c)).apply($$0, $$0x -> ($$0xx, $$1, $$2) -> {
+               cql $$3 = $$1.gy();
+               boolean $$4 = !$$3.b().a(cqn.b) && !$$3.b().a(cqn.m);
+               if ($$4 && $$1.t() == 0 && $$3.c() <= 1) {
+                  $$1.a($$1.gy().b($$0xx.F_(), cqn.b));
+                  $$1.g($$0xx);
+                  return true;
+               } else {
+                  return false;
+               }
+            })));
    }
 }

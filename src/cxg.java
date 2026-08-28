@@ -1,136 +1,191 @@
+import java.util.Map;
 import javax.annotation.Nullable;
 
-public class cxg extends cyo implements cxo {
-   private final evu a;
+public class cxg extends cyu {
+   @Deprecated
+   private final dma a;
 
-   public cxg(evu $$0, cyo.a $$1) {
+   public cxg(dma $$0, cyu.a $$1) {
       super($$1);
       this.a = $$0;
    }
 
    @Override
-   public bty a(dip $$0, cqs $$1, btx $$2) {
-      cys $$3 = $$1.b($$2);
-      fds $$4 = a($$0, $$1, this.a == evw.a ? dhy.b.b : dhy.b.a);
-      if ($$4.d() == fdu.a.a) {
-         return bty.e;
-      } else if ($$4.d() != fdu.a.b) {
-         return bty.e;
+   public bub a(dct $$0) {
+      bub $$1 = this.a(new dcr($$0));
+      return !$$1.a() && $$0.n().c(kj.w) ? super.a($$0.q(), $$0.o(), $$0.p()) : $$1;
+   }
+
+   public bub a(dcr $$0) {
+      if (!this.c().a($$0.q().K())) {
+         return bub.d;
+      } else if (!$$0.b()) {
+         return bub.d;
       } else {
-         iu $$5 = $$4.b();
-         ja $$6 = $$4.c();
-         iu $$7 = $$5.a($$6);
-         if (!$$0.a($$1, $$5) || !$$1.a($$7, $$6, $$3)) {
-            return bty.d;
-         } else if (this.a == evw.a) {
-            dzo $$8 = $$0.a_($$5);
-            if ($$8.b() instanceof dmc $$9) {
-               cys $$10 = $$9.a($$1, $$0, $$5, $$8);
-               if (!$$10.f()) {
-                  $$1.b(awv.c.b(this));
-                  $$9.ao_().ifPresent($$1x -> $$1.a($$1x, 1.0F, 1.0F));
-                  $$0.a($$1, eeo.y, $$5);
-                  cys $$11 = cyv.a($$3, $$1, $$10);
-                  if (!$$0.C) {
-                     ap.k.a((arp)$$1, $$10);
-                  }
-
-                  return bty.a.a($$11);
-               }
-            }
-
-            return bty.d;
+         dcr $$1 = this.b($$0);
+         if ($$1 == null) {
+            return bub.d;
          } else {
-            dzo $$12 = $$0.a_($$5);
-            iu $$13 = $$12.b() instanceof dqp && this.a == evw.c ? $$5 : $$7;
-            if (this.a($$1, $$0, $$13, $$4)) {
-               this.a($$1, $$0, $$3, $$13);
-               if ($$1 instanceof arp) {
-                  ap.z.a((arp)$$1, $$13, $$3);
+            dzz $$2 = this.c($$1);
+            if ($$2 == null) {
+               return bub.d;
+            } else if (!this.a($$1, $$2)) {
+               return bub.d;
+            } else {
+               iu $$3 = $$1.a();
+               div $$4 = $$1.q();
+               cqy $$5 = $$1.o();
+               cyy $$6 = $$1.n();
+               dzz $$7 = $$4.a_($$3);
+               if ($$7.a($$2.b())) {
+                  $$7 = this.a($$3, $$4, $$6, $$7);
+                  this.a($$3, $$4, $$5, $$6, $$7);
+                  a($$4, $$3, $$6);
+                  $$7.b().a($$4, $$3, $$7, $$5, $$6);
+                  if ($$5 instanceof arr) {
+                     ap.z.a((arr)$$5, $$3, $$6);
+                  }
                }
 
-               $$1.b(awv.c.b(this));
-               cys $$14 = cyv.a($$3, $$1, b($$3, $$1));
-               return bty.a.a($$14);
-            } else {
-               return bty.d;
+               dtv $$8 = $$7.A();
+               $$4.a($$5, $$3, this.a($$7), awo.e, ($$8.a() + 1.0F) / 2.0F, $$8.b() * 0.8F);
+               $$4.a(eez.i, $$3, eez.a.a($$5, $$7));
+               $$6.a(1, $$5);
+               return bub.a;
             }
          }
       }
    }
 
-   public static cys b(cys $$0, cqs $$1) {
-      return !$$1.fU() ? new cys(cyw.rj) : $$0;
+   protected awm a(dzz $$0) {
+      return $$0.A().e();
    }
 
-   @Override
-   public void a(@Nullable bwz $$0, dip $$1, cys $$2, iu $$3) {
+   @Nullable
+   public dcr b(dcr $$0) {
+      return $$0;
    }
 
-   @Override
-   public boolean a(@Nullable bwz $$0, dip $$1, iu $$2, @Nullable fds $$3) {
-      if (!(this.a instanceof evt $$4)) {
+   private static void a(div $$0, iu $$1, cyy $$2) {
+      dwx $$3 = $$0.c_($$1);
+      if ($$3 != null) {
+         $$3.a($$2);
+         $$3.e();
+      }
+   }
+
+   protected boolean a(iu $$0, div $$1, @Nullable cqy $$2, cyy $$3, dzz $$4) {
+      return a($$1, $$2, $$0, $$3);
+   }
+
+   @Nullable
+   protected dzz c(dcr $$0) {
+      dzz $$1 = this.c().a($$0);
+      return $$1 != null && this.b($$0, $$1) ? $$1 : null;
+   }
+
+   private dzz a(iu $$0, div $$1, cyy $$2, dzz $$3) {
+      day $$4 = $$2.a(kj.aq, day.a);
+      if ($$4.a()) {
+         return $$3;
+      } else {
+         dzz $$5 = $$4.a($$3);
+         if ($$5 != $$3) {
+            $$1.a($$0, $$5, 2);
+         }
+
+         return $$5;
+      }
+   }
+
+   protected boolean b(dcr $$0, dzz $$1) {
+      return (!this.b() || $$1.a((diy)$$0.q(), $$0.a())) && $$0.q().a($$1, $$0.a(), fen.a());
+   }
+
+   protected boolean b() {
+      return true;
+   }
+
+   protected boolean a(dcr $$0, dzz $$1) {
+      return $$0.q().a($$0.a(), $$1, 11);
+   }
+
+   public static boolean a(div $$0, @Nullable cqy $$1, iu $$2, cyy $$3) {
+      if ($$0.C) {
          return false;
       } else {
-         dlu $$7;
-         boolean $$8;
-         dzo $$6;
-         boolean var10000;
-         label82: {
-            $$6 = $$1.a_($$2);
-            $$7 = $$6.b();
-            $$8 = $$6.a(this.a);
-            label70:
-            if (!$$6.l() && !$$8) {
-               if ($$7 instanceof dqp $$9 && $$9.a($$0, $$1, $$2, $$6, this.a)) {
-                  break label70;
+         dbg $$4 = $$3.a(kj.aa, dbg.a);
+         if (!$$4.c()) {
+            dwz<?> $$5 = $$4.a($$0.F_(), mg.e);
+            if ($$5 == null) {
+               return false;
+            }
+
+            dwx $$6 = $$0.c_($$2);
+            if ($$6 != null) {
+               dwz<?> $$7 = $$6.p();
+               if ($$7 != $$5) {
+                  return false;
                }
 
-               var10000 = false;
-               break label82;
-            }
+               if (!$$7.b() || $$1 != null && $$1.gF()) {
+                  return $$4.a($$6, $$0.F_());
+               }
 
-            var10000 = true;
-         }
-
-         boolean $$10 = var10000;
-         if (!$$10) {
-            return $$3 != null && this.a($$0, $$1, $$3.b().a($$3.c()), null);
-         } else if ($$1.B_().i() && this.a.a(axf.a)) {
-            int $$11 = $$2.u();
-            int $$12 = $$2.v();
-            int $$13 = $$2.w();
-            $$1.a($$0, $$2, awl.ju, awm.e, 0.5F, 2.6F + ($$1.A.i() - $$1.A.i()) * 0.8F);
-
-            for (int $$14 = 0; $$14 < 8; $$14++) {
-               $$1.a(lx.aa, (double)$$11 + Math.random(), (double)$$12 + Math.random(), (double)$$13 + Math.random(), 0.0, 0.0, 0.0);
-            }
-
-            return true;
-         } else {
-            if ($$7 instanceof dqp $$15 && this.a == evw.c) {
-               $$15.a($$1, $$2, $$6, $$4.a(false));
-               this.a($$0, $$1, $$2);
-               return true;
-            }
-
-            if (!$$1.C && $$8 && !$$6.n()) {
-               $$1.b($$2, true);
-            }
-
-            if (!$$1.a($$2, this.a.g().g(), 11) && !$$6.y().b()) {
                return false;
-            } else {
-               this.a($$0, $$1, $$2);
-               return true;
             }
          }
+
+         return false;
       }
    }
 
-   protected void a(@Nullable bwz $$0, diq $$1, iu $$2) {
-      awk $$3 = this.a.a(axf.b) ? awl.dg : awl.dd;
-      $$1.a($$0, $$2, $$3, awm.e, 1.0F, 1.0F);
-      $$1.a($$0, eeo.z, $$2);
+   @Override
+   public boolean a(cyy $$0, @Nullable cqy $$1) {
+      if ($$1 != null && $$1.G() >= 2) {
+         dbg $$2 = $$0.a(kj.aa);
+         if ($$2 != null) {
+            dwz<?> $$3 = $$2.a($$1.dV().F_(), mg.e);
+            return $$3 != null && $$3.b();
+         }
+      }
+
+      return false;
+   }
+
+   public dma c() {
+      return this.a;
+   }
+
+   public void a(Map<dma, cyu> $$0, cyu $$1) {
+      $$0.put(this.c(), $$1);
+   }
+
+   @Override
+   public boolean d() {
+      return !(this.c() instanceof dth);
+   }
+
+   @Override
+   public void a(cnd $$0) {
+      dbq $$1 = $$0.f().b(kj.ap, dbq.a);
+      if ($$1 != null) {
+         czb.a($$0, $$1.e());
+      }
+   }
+
+   public static void a(cyy $$0, dwz<?> $$1, tz $$2) {
+      $$2.r("id");
+      if ($$2.g()) {
+         $$0.e(kj.aa);
+      } else {
+         dwx.a($$2, $$1);
+         $$0.b(kj.aa, dbg.a($$2));
+      }
+   }
+
+   @Override
+   public cuh k() {
+      return this.c().k();
    }
 }

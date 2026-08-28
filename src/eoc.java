@@ -1,41 +1,69 @@
-import com.google.common.collect.Lists;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
-import java.util.function.BiConsumer;
 
-public class eoc extends eob {
-   public static final MapCodec<eoc> b = RecordCodecBuilder.mapCodec($$0 -> a($$0).apply($$0, eoc::new));
+public class eoc extends eod {
+   public static final MapCodec<eoc> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(
+               ayu.m.fieldOf("tries").orElse(128).forGetter($$0x -> $$0x.b),
+               ayu.l.fieldOf("radius").orElse(2).forGetter($$0x -> $$0x.c),
+               ayu.l.fieldOf("height").orElse(1).forGetter($$0x -> $$0x.d),
+               enj.a.fieldOf("block_state_provider").forGetter($$0x -> $$0x.e)
+            )
+            .apply($$0, eoc::new)
+   );
+   private final int b;
+   private final int c;
+   private final int d;
+   private final enj e;
 
-   public eoc(int $$0, int $$1, int $$2) {
-      super($$0, $$1, $$2);
+   public eoc(int $$0, int $$1, int $$2, enj $$3) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
+      this.e = $$3;
    }
 
    @Override
-   protected eof<?> a() {
-      return eof.d;
+   protected eoe<?> a() {
+      return eoe.i;
    }
 
    @Override
-   public List<emj.a> a(div $$0, BiConsumer<iu, dzo> $$1, azt $$2, int $$3, iu $$4, elt $$5) {
-      List<emj.a> $$6 = Lists.newArrayList();
-      $$6.addAll(super.a($$0, $$1, $$2, $$3, $$4, $$5));
+   public void a(eod.a $$0) {
+      List<iu> $$1 = ekq.a($$0);
+      if (!$$1.isEmpty()) {
+         iu $$2 = $$1.getFirst();
+         int $$3 = $$2.v();
+         int $$4 = $$2.u();
+         int $$5 = $$2.u();
+         int $$6 = $$2.w();
+         int $$7 = $$2.w();
 
-      for (int $$7 = $$3 - 2 - $$2.a(4); $$7 > $$3 / 2; $$7 -= 2 + $$2.a(4)) {
-         float $$8 = $$2.i() * (float) (Math.PI * 2);
-         int $$9 = 0;
-         int $$10 = 0;
-
-         for (int $$11 = 0; $$11 < 5; $$11++) {
-            $$9 = (int)(1.5F + azk.b($$8) * (float)$$11);
-            $$10 = (int)(1.5F + azk.a($$8) * (float)$$11);
-            iu $$12 = $$4.b($$9, $$7 - 3 + $$11 / 2, $$10);
-            this.b($$0, $$1, $$2, $$12, $$5);
+         for (iu $$8 : $$1) {
+            if ($$8.v() == $$3) {
+               $$4 = Math.min($$4, $$8.u());
+               $$5 = Math.max($$5, $$8.u());
+               $$6 = Math.min($$6, $$8.w());
+               $$7 = Math.max($$7, $$8.w());
+            }
          }
 
-         $$6.add(new emj.a($$4.b($$9, $$7, $$10), -2, false));
-      }
+         azv $$9 = $$0.b();
+         eql $$10 = new eql($$4, $$3, $$6, $$5, $$3, $$7).c(this.c, this.d, this.c);
+         iu.a $$11 = new iu.a();
 
-      return $$6;
+         for (int $$12 = 0; $$12 < this.b; $$12++) {
+            $$11.d($$9.a($$10.h(), $$10.k()), $$9.a($$10.i(), $$10.l()), $$9.a($$10.j(), $$10.m()));
+            this.a($$0, $$11);
+         }
+      }
+   }
+
+   private void a(eod.a $$0, iu $$1) {
+      iu $$2 = $$1.d();
+      if ($$0.a().a($$2, $$0x -> $$0x.l() || $$0x.a(dmc.fu)) && ekq.a($$0.a(), $$1)) {
+         $$0.a($$2, this.e.a($$0.b(), $$2));
+      }
    }
 }

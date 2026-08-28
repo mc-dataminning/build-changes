@@ -1,29 +1,24 @@
-public class adp implements zd<abs> {
-   public static final yu<vs, adp> a = zd.a(adp::a, adp::new);
-   private final btx b;
+import java.util.List;
+import javax.annotation.Nullable;
 
-   public adp(btx $$0) {
-      this.b = $$0;
-   }
-
-   private adp(vs $$0) {
-      this.b = $$0.b(btx.class);
-   }
-
-   private void a(vs $$0) {
-      $$0.a(this.b);
-   }
+public record adp(int b, List<ctz.a> c) implements zf<abu> {
+   public static final yw<vu, adp> a = yw.a(yu.h, adp::b, ctz.a.a.a(yu.a()), adp::e, adp::new);
 
    @Override
-   public zf<adp> a() {
-      return agl.W;
+   public zh<adp> a() {
+      return agn.T;
    }
 
-   public void a(abs $$0) {
+   public void a(abu $$0) {
       $$0.a(this);
    }
 
-   public btx b() {
-      return this.b;
+   @Nullable
+   public bwd a(div $$0) {
+      return $$0.a(this.b);
+   }
+
+   public List<ctz.a> e() {
+      return this.c;
    }
 }

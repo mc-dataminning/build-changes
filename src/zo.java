@@ -1,29 +1,14 @@
-public class zo implements zd<zj> {
-   public static final yu<vs, zo> a = zd.a(zo::a, zo::new);
-   private final int b;
+import io.netty.buffer.ByteBuf;
 
-   public zo(int $$0) {
-      this.b = $$0;
-   }
-
-   private zo(vs $$0) {
-      this.b = $$0.readInt();
-   }
-
-   private void a(vs $$0) {
-      $$0.q(this.b);
-   }
+public record zo(wy b) implements zf<zl> {
+   public static final yw<ByteBuf, zo> a = xa.f.a(zo::new, zo::b);
 
    @Override
-   public zf<zo> a() {
-      return zv.e;
+   public zh<zo> a() {
+      return zx.c;
    }
 
-   public void a(zj $$0) {
+   public void a(zl $$0) {
       $$0.a(this);
-   }
-
-   public int b() {
-      return this.b;
    }
 }

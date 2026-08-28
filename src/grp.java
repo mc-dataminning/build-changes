@@ -1,15 +1,16 @@
-public interface grp<T extends dwn> {
-   void a(T var1, float var2, fiq var3, gpd var4, int var5, int var6);
+import com.google.common.collect.Streams;
+import java.util.function.Predicate;
 
-   default boolean a(T $$0) {
-      return false;
+public class grp implements grq {
+   public static final String a = "AND";
+   private final Iterable<? extends grq> d;
+
+   public grp(Iterable<? extends grq> $$0) {
+      this.d = $$0;
    }
 
-   default int aQ_() {
-      return 64;
-   }
-
-   default boolean a(T $$0, fdw $$1) {
-      return fdw.b($$0.aw_()).a((jo)$$1, (double)this.aQ_());
+   @Override
+   public Predicate<dzz> getPredicate(eaa<dma, dzz> $$0) {
+      return af.a(Streams.stream(this.d).map($$1 -> $$1.getPredicate($$0)).toList());
    }
 }

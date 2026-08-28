@@ -1,37 +1,78 @@
-import com.mojang.serialization.Codec;
+public interface dgy {
+   alf<dgt> a = dgz.a("trades/desert_armorer_boots_4");
+   alf<dgt> b = dgz.a("trades/desert_armorer_leggings_4");
+   alf<dgt> c = dgz.a("trades/desert_armorer_chestplate_4");
+   alf<dgt> d = dgz.a("trades/desert_armorer_helmet_4");
+   alf<dgt> e = dgz.a("trades/desert_armorer_leggings_5");
+   alf<dgt> f = dgz.a("trades/desert_armorer_chestplate_5");
+   alf<dgt> g = dgz.a("trades/plains_armorer_boots_4");
+   alf<dgt> h = dgz.a("trades/plains_armorer_leggings_4");
+   alf<dgt> i = dgz.a("trades/plains_armorer_chestplate_4");
+   alf<dgt> j = dgz.a("trades/plains_armorer_helmet_4");
+   alf<dgt> k = dgz.a("trades/plains_armorer_boots_5");
+   alf<dgt> l = dgz.a("trades/plains_armorer_leggings_5");
+   alf<dgt> m = dgz.a("trades/savanna_armorer_boots_4");
+   alf<dgt> n = dgz.a("trades/savanna_armorer_leggings_4");
+   alf<dgt> o = dgz.a("trades/savanna_armorer_chestplate_4");
+   alf<dgt> p = dgz.a("trades/savanna_armorer_helmet_4");
+   alf<dgt> q = dgz.a("trades/savanna_armorer_chestplate_5");
+   alf<dgt> r = dgz.a("trades/savanna_armorer_helmet_5");
+   alf<dgt> s = dgz.a("trades/snow_armorer_boots_4");
+   alf<dgt> t = dgz.a("trades/snow_armorer_helmet_4");
+   alf<dgt> u = dgz.a("trades/snow_armorer_boots_5");
+   alf<dgt> v = dgz.a("trades/snow_armorer_helmet_5");
+   alf<dgt> w = dgz.a("trades/jungle_armorer_boots_4");
+   alf<dgt> x = dgz.a("trades/jungle_armorer_leggings_4");
+   alf<dgt> y = dgz.a("trades/jungle_armorer_chestplate_4");
+   alf<dgt> z = dgz.a("trades/jungle_armorer_helmet_4");
+   alf<dgt> A = dgz.a("trades/jungle_armorer_boots_5");
+   alf<dgt> B = dgz.a("trades/jungle_armorer_helmet_5");
+   alf<dgt> C = dgz.a("trades/swamp_armorer_boots_4");
+   alf<dgt> D = dgz.a("trades/swamp_armorer_leggings_4");
+   alf<dgt> E = dgz.a("trades/swamp_armorer_chestplate_4");
+   alf<dgt> F = dgz.a("trades/swamp_armorer_helmet_4");
+   alf<dgt> G = dgz.a("trades/swamp_armorer_boots_5");
+   alf<dgt> H = dgz.a("trades/swamp_armorer_helmet_5");
+   alf<dgt> I = dgz.a("trades/taiga_armorer_leggings_5");
+   alf<dgt> J = dgz.a("trades/taiga_armorer_chestplate_5");
 
-public enum dgy implements bai {
-   a(bwk.f, 11, "helmet"),
-   b(bwk.e, 16, "chestplate"),
-   c(bwk.d, 15, "leggings"),
-   d(bwk.c, 13, "boots"),
-   e(bwk.g, 16, "body");
-
-   public static final Codec<dgy> f = bai.b(dgy::values);
-   private final bwk g;
-   private final String h;
-   private final int i;
-
-   private dgy(final bwk $$0, final int $$1, final String $$2) {
-      this.g = $$0;
-      this.h = $$2;
-      this.i = $$1;
-   }
-
-   public int a(int $$0) {
-      return this.i * $$0;
-   }
-
-   public bwk a() {
-      return this.g;
-   }
-
-   public String b() {
-      return this.h;
-   }
-
-   @Override
-   public String c() {
-      return this.h;
+   static void a(qh<dgt> $$0) {
+      jf<dfl> $$1 = $$0.a(mg.aQ);
+      $$0.a(a, new dgx($$1.b(dfq.h), btd.a(1)));
+      $$0.a(b, new dgx($$1.b(dfq.h), btd.a(1)));
+      $$0.a(c, new dgx($$1.b(dfq.h), btd.a(1)));
+      $$0.a(d, new dgx($$1.b(dfq.h), btd.a(1)));
+      $$0.a(e, new dgx($$1.b(dfq.h), btd.a(1)));
+      $$0.a(f, new dgx($$1.b(dfq.h), btd.a(1)));
+      $$0.a(g, new dgx($$1.b(dfq.a), btd.a(1)));
+      $$0.a(h, new dgx($$1.b(dfq.a), btd.a(1)));
+      $$0.a(i, new dgx($$1.b(dfq.a), btd.a(1)));
+      $$0.a(j, new dgx($$1.b(dfq.a), btd.a(1)));
+      $$0.a(k, new dgx($$1.b(dfq.a), btd.a(1)));
+      $$0.a(l, new dgx($$1.b(dfq.a), btd.a(1)));
+      $$0.a(m, new dgx($$1.b(dfq.k), btd.a(1)));
+      $$0.a(n, new dgx($$1.b(dfq.k), btd.a(1)));
+      $$0.a(o, new dgx($$1.b(dfq.k), btd.a(1)));
+      $$0.a(p, new dgx($$1.b(dfq.k), btd.a(1)));
+      $$0.a(q, new dgx($$1.b(dfq.k), btd.a(1)));
+      $$0.a(r, new dgx($$1.b(dfq.k), btd.a(1)));
+      $$0.a(s, new dgx($$1.b(dfq.j), btd.a(1)));
+      $$0.a(t, new dgx($$1.b(dfq.g), btd.a(1)));
+      $$0.a(u, new dgx($$1.b(dfq.j), btd.a(1)));
+      $$0.a(v, new dgx($$1.b(dfq.g), btd.a(1)));
+      $$0.a(w, new dgx($$1.b(dfq.w), btd.a(1)));
+      $$0.a(x, new dgx($$1.b(dfq.w), btd.a(1)));
+      $$0.a(y, new dgx($$1.b(dfq.w), btd.a(1)));
+      $$0.a(z, new dgx($$1.b(dfq.w), btd.a(1)));
+      $$0.a(A, new dgx($$1.b(dfq.c), btd.a(1)));
+      $$0.a(B, new dgx($$1.b(dfq.e), btd.a(1)));
+      $$0.a(C, new dgx($$1.b(dfq.O), btd.a(1)));
+      $$0.a(D, new dgx($$1.b(dfq.O), btd.a(1)));
+      $$0.a(E, new dgx($$1.b(dfq.O), btd.a(1)));
+      $$0.a(F, new dgx($$1.b(dfq.O), btd.a(1)));
+      $$0.a(G, new dgx($$1.b(dfq.i), btd.a(1)));
+      $$0.a(H, new dgx($$1.b(dfq.f), btd.a(1)));
+      $$0.a(I, new dgx($$1.b(dfq.d), btd.a(1)));
+      $$0.a(J, new dgx($$1.b(dfq.d), btd.a(1)));
    }
 }

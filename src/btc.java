@@ -1,14 +1,45 @@
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 
-public interface btc<P extends btb> {
-   btc<bsz> a = a("constant", bsz.b);
-   btc<bti> b = a("uniform", bti.a);
-   btc<bsx> c = a("clamped_normal", bsx.a);
-   btc<bth> d = a("trapezoid", bth.a);
+public class btc extends bte {
+   public static final btc a = new btc(0.0F);
+   public static final MapCodec<btc> b = Codec.FLOAT.fieldOf("value").xmap(btc::a, btc::d);
+   private final float d;
 
-   MapCodec<P> codec();
+   public static btc a(float $$0) {
+      return $$0 == 0.0F ? a : new btc($$0);
+   }
 
-   static <P extends btb> btc<P> a(String $$0, MapCodec<P> $$1) {
-      return jr.a(mf.J, $$0, () -> $$1);
+   private btc(float $$0) {
+      this.d = $$0;
+   }
+
+   public float d() {
+      return this.d;
+   }
+
+   @Override
+   public float a(azv $$0) {
+      return this.d;
+   }
+
+   @Override
+   public float a() {
+      return this.d;
+   }
+
+   @Override
+   public float b() {
+      return this.d;
+   }
+
+   @Override
+   public btf<?> c() {
+      return btf.a;
+   }
+
+   @Override
+   public String toString() {
+      return Float.toString(this.d);
    }
 }

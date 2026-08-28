@@ -1,19 +1,16 @@
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
+import java.util.function.Function;
 
-record ehh(jz e) implements egu {
-   public static MapCodec<ehh> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(jz.g.optionalFieldOf("offset", jz.i).forGetter(ehh::g)).apply($$0, ehh::new));
+abstract class ehh implements ehf {
+   protected final List<ehf> e;
 
-   @Override
-   public egv<?> a() {
-      return egv.m;
+   protected ehh(List<ehf> $$0) {
+      this.e = $$0;
    }
 
-   public boolean a(djo $$0, iu $$1) {
-      return $$0.a(null, fen.b().a($$1));
-   }
-
-   public jz g() {
-      return this.e;
+   public static <T extends ehh> MapCodec<T> a(Function<List<ehf>, T> $$0) {
+      return RecordCodecBuilder.mapCodec($$1 -> $$1.group(ehf.b.listOf().fieldOf("predicates").forGetter($$0xx -> $$0xx.e)).apply($$1, $$0));
    }
 }

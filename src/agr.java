@@ -1,29 +1,29 @@
-public class agr implements zd<agn> {
-   public static final yu<vs, agr> a = zd.a(agr::a, agr::new);
-   private final btv b;
+public class agr implements zf<agp> {
+   public static final yw<vu, agr> a = zf.a(agr::a, agr::new);
+   private final int b;
 
-   public agr(btv $$0) {
+   public agr(int $$0) {
       this.b = $$0;
    }
 
-   private agr(vs $$0) {
-      this.b = btv.a($$0.readUnsignedByte());
+   private agr(vu $$0) {
+      this.b = $$0.l();
    }
 
-   private void a(vs $$0) {
-      $$0.l(this.b.a());
+   private void a(vu $$0) {
+      $$0.c(this.b);
    }
 
    @Override
-   public zf<agr> a() {
-      return agl.bn;
+   public zh<agr> a() {
+      return agn.bk;
    }
 
-   public void a(agn $$0) {
+   public void a(agp $$0) {
       $$0.a(this);
    }
 
-   public btv b() {
+   public int b() {
       return this.b;
    }
 }

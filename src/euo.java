@@ -1,30 +1,36 @@
-import com.mojang.logging.LogUtils;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.UnmodifiableIterator;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
 import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
-public class euo implements eus {
-   private static final Logger b = LogUtils.getLogger();
-   public static final MapCodec<euo> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(ald.a(mg.bo).fieldOf("loot_table").forGetter($$0x -> $$0x.d)).apply($$0, euo::new)
-   );
-   private final ald<eys> d;
+public class euo extends eus {
+   public static final MapCodec<euo> a = euk.b.listOf().fieldOf("rules").xmap(euo::new, $$0 -> $$0.b);
+   private final ImmutableList<euk> b;
 
-   public euo(ald<eys> $$0) {
-      this.d = $$0;
+   public euo(List<? extends euk> $$0) {
+      this.b = ImmutableList.copyOf($$0);
+   }
+
+   @Nullable
+   @Override
+   public euv.d a(diy $$0, iu $$1, iu $$2, euv.d $$3, euv.d $$4, eur $$5) {
+      azv $$6 = azv.a(azm.a($$4.a()));
+      dzz $$7 = $$0.a_($$4.a());
+      UnmodifiableIterator var9 = this.b.iterator();
+
+      while (var9.hasNext()) {
+         euk $$8 = (euk)var9.next();
+         if ($$8.a($$4.b(), $$7, $$3.a(), $$4.a(), $$2, $$6)) {
+            return new euv.d($$4.a(), $$8.a(), $$8.a($$6, $$4.c()));
+         }
+      }
+
+      return $$4;
    }
 
    @Override
-   public tx a(azt $$0, @Nullable tx $$1) {
-      tx $$2 = $$1 == null ? new tx() : $$1.i();
-      ald.a(mg.bo).encodeStart(ul.a, this.d).resultOrPartial(b::error).ifPresent($$1x -> $$2.a("LootTable", $$1x));
-      $$2.a("LootTableSeed", $$0.g());
-      return $$2;
-   }
-
-   @Override
-   public eut<?> a() {
-      return eut.d;
+   protected euu<?> a() {
+      return euu.i;
    }
 }

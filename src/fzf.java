@@ -1,30 +1,13 @@
-public class fzf extends fxw {
-   private final dhq u;
+import java.util.List;
 
-   public fzf(dhq $$0) {
-      this.u = $$0;
-   }
+public class fzf extends fyk<cvo> {
+   private static final alg G = alg.b("container/furnace/lit_progress");
+   private static final alg H = alg.b("container/furnace/burn_progress");
+   private static final alg I = alg.b("textures/gui/container/furnace.png");
+   private static final wy J = wy.c("gui.recipebook.toggleRecipes.smeltable");
+   private static final List<gbt.a> K = List.of(new gbt.a(gbz.b), new gbt.a(czc.qI, ddr.e), new gbt.a(czc.b, ddr.f), new gbt.a(czc.rn, czc.pl, ddr.g));
 
-   @Override
-   public dhq m() {
-      return this.u;
-   }
-
-   @Override
-   int E() {
-      return 150;
-   }
-
-   @Override
-   protected void aN_() {
-      super.aN_();
-      this.a.a(this.m().m());
-   }
-
-   @Override
-   protected void a(dhq $$0) {
-      if ($$0 instanceof cto.a $$1) {
-         this.m.L().b(new aig($$1.h().ar(), this.a.a(), $$0.p()));
-      }
+   public fzf(cvo $$0, cqx $$1, wy $$2) {
+      super($$0, $$1, $$2, J, I, G, H, K);
    }
 }

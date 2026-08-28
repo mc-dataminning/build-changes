@@ -1,45 +1,59 @@
-public class afg implements zd<abs> {
-   public static final yu<vs, afg> a = zd.a(afg::a, afg::new);
-   private final float b;
+import com.google.common.collect.Lists;
+import com.mojang.datafixers.util.Pair;
+import java.util.List;
+
+public class afg implements zf<abu> {
+   public static final yw<wj, afg> a = zf.a(afg::a, afg::new);
+   private static final byte b = -128;
    private final int c;
-   private final float d;
+   private final List<Pair<bwn, cyy>> d;
 
-   public afg(float $$0, int $$1, float $$2) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
+   public afg(int $$0, List<Pair<bwn, cyy>> $$1) {
+      this.c = $$0;
+      this.d = $$1;
    }
 
-   private afg(vs $$0) {
-      this.b = $$0.readFloat();
+   private afg(wj $$0) {
       this.c = $$0.l();
-      this.d = $$0.readFloat();
+      this.d = Lists.newArrayList();
+
+      int $$1;
+      do {
+         $$1 = $$0.readByte();
+         bwn $$2 = bwn.j.get($$1 & 127);
+         cyy $$3 = cyy.h.decode($$0);
+         this.d.add(Pair.of($$2, $$3));
+      } while (($$1 & -128) != 0);
    }
 
-   private void a(vs $$0) {
-      $$0.a(this.b);
+   private void a(wj $$0) {
       $$0.c(this.c);
-      $$0.a(this.d);
+      int $$1 = this.d.size();
+
+      for (int $$2 = 0; $$2 < $$1; $$2++) {
+         Pair<bwn, cyy> $$3 = this.d.get($$2);
+         bwn $$4 = (bwn)$$3.getFirst();
+         boolean $$5 = $$2 != $$1 - 1;
+         int $$6 = $$4.ordinal();
+         $$0.l($$5 ? $$6 | -128 : $$6);
+         cyy.h.encode($$0, (cyy)$$3.getSecond());
+      }
    }
 
    @Override
-   public zf<afg> a() {
-      return agl.aK;
+   public zh<afg> a() {
+      return agn.aI;
    }
 
-   public void a(abs $$0) {
+   public void a(abu $$0) {
       $$0.a(this);
    }
 
-   public float b() {
-      return this.b;
-   }
-
-   public int e() {
+   public int b() {
       return this.c;
    }
 
-   public float f() {
+   public List<Pair<bwn, cyy>> e() {
       return this.d;
    }
 }

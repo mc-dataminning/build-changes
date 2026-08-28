@@ -1,76 +1,89 @@
-import com.mojang.serialization.MapCodec;
-import java.util.function.BiConsumer;
-import javax.annotation.Nullable;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableList.Builder;
+import com.mojang.datafixers.util.Pair;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
+import java.util.Map;
+import java.util.Optional;
+import java.util.function.Function;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
-public abstract class dkm extends dlu {
-   public static final int a = 3;
-   public static final eaf b = eae.u;
+public class dkm {
+   public static final Codec<dkm> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(dkm.a.c.fieldOf("preset").forGetter($$0x -> $$0x.c), ale.c(mg.aG)).apply($$0, dkm::new)
+   );
+   public static final Codec<je<dkm>> b = alc.a(mg.aV, a);
+   private final dkm.a c;
+   private final dkh.c<je<djy>> d;
 
-   @Override
-   protected abstract MapCodec<? extends dkm> a();
-
-   protected dkm(dzn.d $$0) {
-      super($$0);
+   public dkm(dkm.a $$0, jf<djy> $$1) {
+      this.c = $$0;
+      this.d = $$0.e.apply($$1::b);
    }
 
-   protected abstract Iterable<fdw> b(dzo var1);
-
-   public static boolean c(dzo $$0) {
-      return $$0.b(b) && ($$0.a(axa.ag) || $$0.a(axa.bm)) && $$0.c(b);
+   public dkh.c<je<djy>> a() {
+      return this.d;
    }
 
-   @Override
-   protected void a(dip $$0, dzo $$1, fds $$2, crm $$3) {
-      if (!$$0.C && $$3.bY() && this.d($$1)) {
-         a($$0, $$1, $$2.b(), true);
-      }
+   public static Map<dkm.a, dkh.c<alf<djy>>> b() {
+      return dkm.a.f.values().stream().collect(Collectors.toMap($$0 -> (dkm.a)$$0, $$0 -> $$0.c().apply($$0x -> $$0x)));
    }
 
-   protected boolean d(dzo $$0) {
-      return !$$0.c(b);
-   }
-
-   @Override
-   public void a(dzo $$0, dip $$1, iu $$2, azt $$3) {
-      if ($$0.c(b)) {
-         this.b($$0).forEach($$3x -> a($$1, $$3x.b((double)$$2.u(), (double)$$2.v(), (double)$$2.w()), $$3));
-      }
-   }
-
-   private static void a(dip $$0, fdw $$1, azt $$2) {
-      float $$3 = $$2.i();
-      if ($$3 < 0.3F) {
-         $$0.a(lx.ah, $$1.d, $$1.e, $$1.f, 0.0, 0.0, 0.0);
-         if ($$3 < 0.17F) {
-            $$0.a($$1.d + 0.5, $$1.e + 0.5, $$1.f + 0.5, awl.dL, awm.e, 1.0F + $$2.i(), $$2.i() * 0.7F + 0.3F, false);
+   public static record a(alg d, dkm.a.a e) {
+      public static final dkm.a a = new dkm.a(
+         alg.b("nether"),
+         new dkm.a.a() {
+            @Override
+            public <T> dkh.c<T> apply(Function<alf<djy>, T> $$0) {
+               return new dkh.c<>(
+                  List.of(
+                     Pair.of(dkh.a(0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F), $$0.apply(dkf.ad)),
+                     Pair.of(dkh.a(0.0F, -0.5F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F), $$0.apply(dkf.ag)),
+                     Pair.of(dkh.a(0.4F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F), $$0.apply(dkf.af)),
+                     Pair.of(dkh.a(0.0F, 0.5F, 0.0F, 0.0F, 0.0F, 0.0F, 0.375F), $$0.apply(dkf.ae)),
+                     Pair.of(dkh.a(-0.5F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.175F), $$0.apply(dkf.ah))
+                  )
+               );
+            }
          }
+      );
+      public static final dkm.a b = new dkm.a(alg.b("overworld"), new dkm.a.a() {
+         @Override
+         public <T> dkh.c<T> apply(Function<alf<djy>, T> $$0) {
+            return dkm.a.a($$0);
+         }
+      });
+      static final Map<alg, dkm.a> f = Stream.of(a, b).collect(Collectors.toMap(dkm.a::b, $$0 -> (dkm.a)$$0));
+      public static final Codec<dkm.a> c = alg.a
+         .flatXmap(
+            $$0 -> Optional.ofNullable(f.get($$0)).<DataResult>map(DataResult::success).orElseGet(() -> DataResult.error(() -> "Unknown preset: " + $$0)),
+            $$0 -> DataResult.success($$0.d)
+         );
+
+      static <T> dkh.c<T> a(Function<alf<djy>, T> $$0) {
+         Builder<Pair<dkh.d, T>> $$1 = ImmutableList.builder();
+         new dko().a($$2 -> $$1.add($$2.mapSecond($$0)));
+         return new dkh.c<>($$1.build());
       }
 
-      $$0.a(lx.aM, $$1.d, $$1.e, $$1.f, 0.0, 0.0, 0.0);
-   }
-
-   public static void a(@Nullable cqs $$0, dzo $$1, diq $$2, iu $$3) {
-      a($$2, $$1, $$3, false);
-      if ($$1.b() instanceof dkm) {
-         ((dkm)$$1.b())
-            .b($$1)
-            .forEach($$2x -> $$2.a(lx.ah, (double)$$3.u() + $$2x.a(), (double)$$3.v() + $$2x.b(), (double)$$3.w() + $$2x.c(), 0.0, 0.1F, 0.0));
+      public Stream<alf<djy>> a() {
+         return this.e.apply($$0 -> $$0).a().stream().<alf<djy>>map(Pair::getSecond).distinct();
       }
 
-      $$2.a(null, $$3, awl.dN, awm.e, 1.0F, 1.0F);
-      $$2.a($$0, eeo.c, $$3);
-   }
-
-   private static void a(diq $$0, dzo $$1, iu $$2, boolean $$3) {
-      $$0.a($$2, $$1.b(b, Boolean.valueOf($$3)), 11);
-   }
-
-   @Override
-   protected void a(dzo $$0, aro $$1, iu $$2, dii $$3, BiConsumer<cys, iu> $$4) {
-      if ($$3.g() && $$0.c(b)) {
-         a(null, $$0, $$1, $$2);
+      public alg b() {
+         return this.d;
       }
 
-      super.a($$0, $$1, $$2, $$3, $$4);
+      public dkm.a.a c() {
+         return this.e;
+      }
+
+      @FunctionalInterface
+      interface a {
+         <T> dkh.c<T> apply(Function<alf<djy>, T> var1);
+      }
    }
 }

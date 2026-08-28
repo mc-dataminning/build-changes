@@ -1,22 +1,5 @@
-import com.google.common.collect.Lists;
-import java.util.List;
+import java.util.Set;
+import javax.annotation.Nullable;
 
-public class gda implements gdc {
-   private static final ww a = ww.c("spectatorMenu.root.prompt");
-   private final List<gdd> b = Lists.newArrayList();
-
-   public gda() {
-      this.b.add(new gdg());
-      this.b.add(new gdh());
-   }
-
-   @Override
-   public List<gdd> a() {
-      return this.b;
-   }
-
-   @Override
-   public ww b() {
-      return a;
-   }
+public record gda(gdh.a a, Set<dir.e<dir.a>> b, @Nullable alf<eou> c) {
 }

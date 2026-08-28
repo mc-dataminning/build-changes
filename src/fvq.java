@@ -1,88 +1,130 @@
-import com.google.common.collect.Maps;
-import java.util.Comparator;
-import java.util.Map;
 import java.util.function.Consumer;
 
-public class fvq {
-   int a;
-   final Map<fvq.a, fvq.b> b = Maps.newTreeMap(Comparator.<fvq.a, fvm>comparing($$0 -> $$0.a).thenComparing($$0 -> $$0.b));
+public class fvq implements fvr {
+   public static final int a = 33;
+   private static final int b = 30;
+   private final fvo c = new fvo();
+   private final fvo d = new fvo();
+   private final fvo e = new fvo();
+   private final fxu f;
+   private int g;
+   private int h;
 
-   public void a(Consumer<fvn> $$0) {
-      this.a++;
-      $$0.accept(new fvq.c(0));
+   public fvq(fxu $$0) {
+      this($$0, 33);
    }
 
-   public String a(boolean $$0) {
-      final StringBuilder $$1 = new StringBuilder();
-      Consumer<String> $$2 = new Consumer<String>() {
-         private boolean b = true;
-
-         public void a(String $$0) {
-            if (!this.b) {
-               $$1.append(". ");
-            }
-
-            this.b = false;
-            $$1.append($$0);
-         }
-      };
-      this.b.forEach(($$2x, $$3) -> {
-         if ($$3.b == this.a && ($$0 || !$$3.c)) {
-            $$3.a.a($$2);
-            $$3.c = true;
-         }
-      });
-      return $$1.toString();
+   public fvq(fxu $$0, int $$1) {
+      this($$0, $$1, $$1);
    }
 
-   static class a {
-      final fvm a;
-      final int b;
-
-      a(fvm $$0, int $$1) {
-         this.a = $$0;
-         this.b = $$1;
-      }
+   public fvq(fxu $$0, int $$1, int $$2) {
+      this.f = $$0;
+      this.g = $$1;
+      this.h = $$2;
+      this.c.c().a(0.5F, 0.5F);
+      this.d.c().a(0.5F, 0.5F);
    }
 
-   static class b {
-      fvp<?> a;
-      int b;
-      boolean c;
-
-      b() {
-         this.a = fvp.a;
-         this.b = -1;
-      }
-
-      public fvq.b a(int $$0, fvp<?> $$1) {
-         if (!this.a.equals($$1)) {
-            this.a = $$1;
-            this.c = false;
-         } else if (this.b + 1 != $$0) {
-            this.c = false;
-         }
-
-         this.b = $$0;
-         return this;
-      }
+   @Override
+   public void j(int $$0) {
    }
 
-   class c implements fvn {
-      private final int b;
+   @Override
+   public void k(int $$0) {
+   }
 
-      c(final int $$0) {
-         this.b = $$0;
-      }
+   @Override
+   public int F() {
+      return 0;
+   }
 
-      @Override
-      public void a(fvm $$0, fvp<?> $$1) {
-         fvq.this.b.computeIfAbsent(new fvq.a($$0, this.b), $$0x -> new fvq.b()).a(fvq.this.a, $$1);
-      }
+   @Override
+   public int G() {
+      return 0;
+   }
 
-      @Override
-      public fvn a() {
-         return fvq.this.new c(this.b + 1);
-      }
+   @Override
+   public int A() {
+      return this.f.n;
+   }
+
+   @Override
+   public int y() {
+      return this.f.o;
+   }
+
+   public int b() {
+      return this.h;
+   }
+
+   public void a(int $$0) {
+      this.h = $$0;
+   }
+
+   public void b(int $$0) {
+      this.g = $$0;
+   }
+
+   public int c() {
+      return this.g;
+   }
+
+   public int d() {
+      return this.f.o - this.c() - this.b();
+   }
+
+   @Override
+   public void b(Consumer<fvs> $$0) {
+      this.c.b($$0);
+      this.e.b($$0);
+      this.d.b($$0);
+   }
+
+   @Override
+   public void a() {
+      int $$0 = this.c();
+      int $$1 = this.b();
+      this.c.b(this.f.n);
+      this.c.a($$0);
+      this.c.c(0, 0);
+      this.c.a();
+      this.d.b(this.f.n);
+      this.d.a($$1);
+      this.d.a();
+      this.d.k(this.f.o - $$1);
+      this.e.b(this.f.n);
+      this.e.a();
+      int $$2 = $$0 + 30;
+      int $$3 = this.f.o - $$1 - this.e.y();
+      this.e.c(0, Math.min($$2, $$3));
+   }
+
+   public <T extends fvs> T a(T $$0) {
+      return this.c.a($$0);
+   }
+
+   public <T extends fvs> T a(T $$0, Consumer<fvt> $$1) {
+      return this.c.a($$0, $$1);
+   }
+
+   public void a(wy $$0, frm $$1) {
+      this.c.a(new ftj($$0, $$1));
+   }
+
+   public <T extends fvs> T b(T $$0) {
+      return this.d.a($$0);
+   }
+
+   public <T extends fvs> T b(T $$0, Consumer<fvt> $$1) {
+      return this.d.a($$0, $$1);
+   }
+
+   public <T extends fvs> T c(T $$0) {
+      return this.e.a($$0);
+   }
+
+   public <T extends fvs> T c(T $$0, Consumer<fvt> $$1) {
+      return this.e.a($$0, $$1);
    }
 }

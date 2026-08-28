@@ -1,165 +1,107 @@
-import com.mojang.authlib.minecraft.TelemetryPropertyContainer;
-import com.mojang.serialization.Codec;
-import it.unimi.dsi.fastutil.longs.LongArrayList;
-import it.unimi.dsi.fastutil.longs.LongList;
-import java.time.Instant;
-import java.time.ZoneId;
-import java.time.ZoneOffset;
-import java.time.format.DateTimeFormatter;
-import java.util.UUID;
-import java.util.function.Function;
-import java.util.stream.Collectors;
+import javax.annotation.Nullable;
 
-public record hnn<T>(String F, String G, Codec<T> H, hnn.a<T> I) {
-   private static final DateTimeFormatter J = DateTimeFormatter.ISO_OFFSET_DATE_TIME.withZone(ZoneId.from(ZoneOffset.UTC));
-   public static final hnn<String> a = b("user_id", "userId");
-   public static final hnn<String> b = b("client_id", "clientId");
-   public static final hnn<UUID> c = e("minecraft_session_id", "deviceSessionId");
-   public static final hnn<String> d = b("game_version", "buildDisplayName");
-   public static final hnn<String> e = b("operating_system", "buildPlatform");
-   public static final hnn<String> f = b("platform", "platform");
-   public static final hnn<Boolean> g = a("client_modded", "clientModded");
-   public static final hnn<String> h = b("launcher_name", "launcherName");
-   public static final hnn<UUID> i = e("world_session_id", "worldSessionId");
-   public static final hnn<Boolean> j = a("server_modded", "serverModded");
-   public static final hnn<hnn.c> k = a("server_type", "serverType", hnn.c.d, ($$0, $$1, $$2) -> $$0.addProperty($$1, $$2.c()));
-   public static final hnn<Boolean> l = a("opt_in", "isOptional");
-   public static final hnn<Instant> m = a("event_timestamp_utc", "eventTimestampUtc", ays.q, ($$0, $$1, $$2) -> $$0.addProperty($$1, J.format($$2)));
-   public static final hnn<hnn.b> n = a("game_mode", "playerGameMode", hnn.b.f, ($$0, $$1, $$2) -> $$0.addProperty($$1, $$2.a()));
-   public static final hnn<String> o = b("realms_map_content", "realmsMapContent");
-   public static final hnn<Integer> p = c("seconds_since_load", "secondsSinceLoad");
-   public static final hnn<Integer> q = c("ticks_since_load", "ticksSinceLoad");
-   public static final hnn<LongList> r = g("frame_rate_samples", "serializedFpsSamples");
-   public static final hnn<LongList> s = g("render_time_samples", "serializedRenderTimeSamples");
-   public static final hnn<LongList> t = g("used_memory_samples", "serializedUsedMemoryKbSamples");
-   public static final hnn<Integer> u = c("number_of_samples", "numSamples");
-   public static final hnn<Integer> v = c("render_distance", "renderDistance");
-   public static final hnn<Integer> w = c("dedicated_memory_kb", "dedicatedMemoryKb");
-   public static final hnn<Integer> x = c("world_load_time_ms", "worldLoadTimeMs");
-   public static final hnn<Boolean> y = a("new_world", "newWorld");
-   public static final hnn<hnr.a> z = f("load_time_total_time_ms", "loadTimeTotalTimeMs");
-   public static final hnn<hnr.a> A = f("load_time_pre_window_ms", "loadTimePreWindowMs");
-   public static final hnn<hnr.a> B = f("load_time_bootstrap_ms", "loadTimeBootstrapMs");
-   public static final hnn<hnr.a> C = f("load_time_loading_overlay_ms", "loadTimeLoadingOverlayMs");
-   public static final hnn<String> D = b("advancement_id", "advancementId");
-   public static final hnn<Long> E = d("advancement_game_time", "advancementGameTime");
+public class hnn {
+   private static final int a = 100;
+   private final azv b = azv.a();
+   private final fos c;
+   @Nullable
+   private hmm d;
+   private float e = 1.0F;
+   private int f = 100;
 
-   public static <T> hnn<T> a(String $$0, String $$1, Codec<T> $$2, hnn.a<T> $$3) {
-      return new hnn<>($$0, $$1, $$2, $$3);
+   public hnn(fos $$0) {
+      this.c = $$0;
    }
 
-   public static hnn<Boolean> a(String $$0, String $$1) {
-      return a($$0, $$1, Codec.BOOL, TelemetryPropertyContainer::addProperty);
-   }
+   public void a() {
+      hnm $$0 = this.c.al();
+      float $$1 = $$0.b();
+      if (this.d != null && this.e != $$1) {
+         boolean $$2 = this.a($$1);
+         if (!$$2) {
+            return;
+         }
+      }
 
-   public static hnn<String> b(String $$0, String $$1) {
-      return a($$0, $$1, Codec.STRING, TelemetryPropertyContainer::addProperty);
-   }
-
-   public static hnn<Integer> c(String $$0, String $$1) {
-      return a($$0, $$1, Codec.INT, TelemetryPropertyContainer::addProperty);
-   }
-
-   public static hnn<Long> d(String $$0, String $$1) {
-      return a($$0, $$1, Codec.LONG, TelemetryPropertyContainer::addProperty);
-   }
-
-   public static hnn<UUID> e(String $$0, String $$1) {
-      return a($$0, $$1, jy.d, ($$0x, $$1x, $$2) -> $$0x.addProperty($$1x, $$2.toString()));
-   }
-
-   public static hnn<hnr.a> f(String $$0, String $$1) {
-      return a($$0, $$1, hnr.a.a, ($$0x, $$1x, $$2) -> $$0x.addProperty($$1x, $$2.a()));
-   }
-
-   public static hnn<LongList> g(String $$0, String $$1) {
-      return a(
-         $$0,
-         $$1,
-         Codec.LONG.listOf().xmap(LongArrayList::new, Function.identity()),
-         ($$0x, $$1x, $$2) -> $$0x.addProperty($$1x, $$2.longStream().mapToObj(String::valueOf).collect(Collectors.joining(";")))
-      );
-   }
-
-   public void a(hno $$0, TelemetryPropertyContainer $$1) {
-      T $$2 = $$0.a(this);
-      if ($$2 != null) {
-         this.I.apply($$1, this.G, $$2);
+      awk $$3 = $$0.a();
+      if ($$3 == null) {
+         this.f = Math.max(this.f, 100);
       } else {
-         $$1.addNullProperty(this.G);
+         if (this.d != null) {
+            if ($$0.a(this.d)) {
+               this.c.ak().b(this.d);
+               this.f = azm.a(this.b, 0, $$3.b() / 2);
+            }
+
+            if (!this.c.ak().c(this.d)) {
+               this.d = null;
+               this.f = Math.min(this.f, azm.a(this.b, $$3.b(), $$3.c()));
+            }
+         }
+
+         this.f = Math.min(this.f, $$3.c());
+         if (this.d == null && this.f-- <= 0) {
+            this.a($$0);
+         }
       }
    }
 
-   public xk a() {
-      return ww.c("telemetry.property." + this.F + ".title");
-   }
-
-   @Override
-   public String toString() {
-      return "TelemetryProperty[" + this.F + "]";
-   }
-
-   public String b() {
-      return this.F;
-   }
-
-   public String c() {
-      return this.G;
-   }
-
-   public Codec<T> d() {
-      return this.H;
-   }
-
-   public hnn.a<T> e() {
-      return this.I;
-   }
-
-   public interface a<T> {
-      void apply(TelemetryPropertyContainer var1, String var2, T var3);
-   }
-
-   public static enum b implements bai {
-      a("survival", 0),
-      b("creative", 1),
-      c("adventure", 2),
-      d("spectator", 6),
-      e("hardcore", 99);
-
-      public static final Codec<hnn.b> f = bai.a(hnn.b::values);
-      private final String g;
-      private final int h;
-
-      private b(final String $$0, final int $$1) {
-         this.g = $$0;
-         this.h = $$1;
+   public void a(hnm $$0) {
+      this.d = hmh.a($$0.a().a().a());
+      if (this.d.b() != hns.b) {
+         this.c.ak().a(this.d);
+         this.c.ak().a(this.d, $$0.b());
       }
 
-      public int a() {
-         return this.h;
-      }
+      this.f = Integer.MAX_VALUE;
+      this.e = $$0.b();
+   }
 
-      @Override
-      public String c() {
-         return this.g;
+   public void a(awk $$0) {
+      if (this.b($$0)) {
+         this.b();
       }
    }
 
-   public static enum c implements bai {
-      a("realm"),
-      b("local"),
-      c("server");
-
-      public static final Codec<hnn.c> d = bai.a(hnn.c::values);
-      private final String e;
-
-      private c(final String $$0) {
-         this.e = $$0;
+   public void b() {
+      if (this.d != null) {
+         this.c.ak().b(this.d);
+         this.d = null;
       }
 
-      @Override
-      public String c() {
-         return this.e;
+      this.f += 100;
+   }
+
+   private boolean a(float $$0) {
+      if (this.d == null) {
+         return false;
+      } else if (this.e == $$0) {
+         return true;
+      } else {
+         if (this.e < $$0) {
+            this.e = this.e + azm.a(this.e, 5.0E-4F, 0.005F);
+            if (this.e > $$0) {
+               this.e = $$0;
+            }
+         } else {
+            this.e = 0.03F * $$0 + 0.97F * this.e;
+            if (Math.abs(this.e - $$0) < 1.0E-4F || this.e < $$0) {
+               this.e = $$0;
+            }
+         }
+
+         this.e = azm.a(this.e, 0.0F, 1.0F);
+         if (this.e <= 1.0E-4F) {
+            this.b();
+            return false;
+         } else {
+            this.c.ak().a(this.d, this.e);
+            return true;
+         }
       }
+   }
+
+   public boolean b(awk $$0) {
+      return this.d == null ? false : $$0.a().a().a().equals(this.d.a());
    }
 }

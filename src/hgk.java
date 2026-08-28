@@ -1,22 +1,23 @@
-import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import javax.annotation.Nullable;
 
-public record hgk() implements hgp<cyq> {
-   public static final Codec<cyq> a = cyq.j;
-   public static final hgp.a<hgk, cyq> b = hgp.a.a(MapCodec.unit(new hgk()), a);
+public class hgk implements hgp {
+   public static final MapCodec<hgk> a = MapCodec.unit(new hgk());
 
-   public cyq a(cys $$0, @Nullable gjd $$1, @Nullable bwz $$2, int $$3, cyq $$4) {
-      return $$4;
+   @Override
+   public float a(cyy $$0, @Nullable gjr $$1, @Nullable bxc $$2, int $$3) {
+      if ($$2 == null) {
+         return 0.0F;
+      } else if (cxr.g($$0)) {
+         return 0.0F;
+      } else {
+         int $$4 = cxr.b($$0, $$2);
+         return (float)hgs.a($$0, $$2) / (float)$$4;
+      }
    }
 
    @Override
-   public hgp.a<hgk, cyq> a() {
-      return b;
-   }
-
-   @Override
-   public Codec<cyq> b() {
+   public MapCodec<hgk> a() {
       return a;
    }
 }

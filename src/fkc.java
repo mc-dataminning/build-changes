@@ -1,10 +1,12 @@
-import com.google.common.collect.Lists;
-import com.google.gson.annotations.SerializedName;
-import java.util.List;
+public class fkc extends fka {
+   final long a;
 
-public class fkc extends fkv implements fkp {
-   @SerializedName("pingResults")
-   public List<fkq> a = Lists.newArrayList();
-   @SerializedName("worldIds")
-   public List<Long> b = Lists.newArrayList();
+   public fkc(long $$0) {
+      this.a = $$0;
+   }
+
+   @Override
+   public wy[] b() {
+      return new wy[]{wy.c("mco.upload.failed.too_big.title"), wy.a("mco.upload.failed.too_big.description", fjo.b(this.a, fjo.a(this.a)))};
+   }
 }

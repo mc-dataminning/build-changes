@@ -1,7 +1,7 @@
 import java.util.List;
 
 public interface hy<T> {
-   ale a();
+   alg a();
 
    List<hn<T>> b();
 }

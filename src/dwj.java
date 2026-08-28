@@ -1,20 +1,21 @@
-public class dwj extends dwn {
-   private final cxq a;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-   public dwj(iu $$0, dzo $$1) {
-      this($$0, $$1, ((dln)$$1.b()).b());
+public class dwj extends dms {
+   public static final MapCodec<dwj> b = RecordCodecBuilder.mapCodec($$0 -> $$0.group(cxw.q.fieldOf("color").forGetter(dwj::b), t()).apply($$0, dwj::new));
+   private final cxw c;
+
+   @Override
+   public MapCodec<dwj> a() {
+      return b;
    }
 
-   public dwj(iu $$0, dzo $$1, cxq $$2) {
-      super(dwp.z, $$0, $$1);
-      this.a = $$2;
+   protected dwj(cxw $$0, dzy.d $$1) {
+      super($$1);
+      this.c = $$0;
    }
 
-   public aby a() {
-      return aby.a(this);
-   }
-
-   public cxq c() {
-      return this.a;
+   public cxw b() {
+      return this.c;
    }
 }

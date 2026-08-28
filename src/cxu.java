@@ -1,27 +1,8 @@
-public class cxu extends cyo {
-   public cxu(cyo.a $$0) {
-      super($$0);
+import javax.annotation.Nullable;
+
+public interface cxu {
+   default void a(@Nullable bxc $$0, div $$1, cyy $$2, iu $$3) {
    }
 
-   @Override
-   public bty a(dip $$0, cqs $$1, btx $$2) {
-      cys $$3 = $$1.b($$2);
-      if ($$0.C) {
-         return bty.a;
-      } else {
-         $$3.a(1, $$1);
-         $$1.b(awv.c.b(this));
-         $$1.dV().a(null, $$1, awl.Bs, $$1.dm(), 1.0F, 1.0F);
-         cys $$4 = czf.a($$0, $$1.dz(), $$1.dF(), (byte)0, true, false);
-         if ($$3.f()) {
-            return bty.a.a($$4);
-         } else {
-            if (!$$1.gi().f($$4.v())) {
-               $$1.a($$4, false);
-            }
-
-            return bty.a;
-         }
-      }
-   }
+   boolean a(@Nullable bxc var1, div var2, iu var3, @Nullable fee var4);
 }

@@ -1,65 +1,79 @@
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
+import java.util.List;
+import java.util.Optional;
 
-public class dpo extends dlu implements dtb {
+public class dpo extends dtz implements dmd {
    public static final MapCodec<dpo> a = b(dpo::new);
-   private static final eaf b = eae.I;
-   private static final feq c = dlu.b(12.0, 10.0, 16.0);
 
    @Override
    public MapCodec<dpo> a() {
       return a;
    }
 
-   protected dpo(dzn.d $$0) {
+   public dpo(dzy.d $$0) {
       super($$0);
-      this.l(this.B.b().b(b, Boolean.valueOf(false)));
    }
 
    @Override
-   protected void a(dzp.a<dlu, dzo> $$0) {
-      $$0.a(b);
+   public boolean a(diy $$0, iu $$1, dzz $$2) {
+      return $$0.a_($$1.d()).l();
    }
 
    @Override
-   protected evv b_(dzo $$0) {
-      return $$0.c(b) ? evw.c.a(false) : super.b_($$0);
-   }
-
-   @Nullable
-   @Override
-   public dzo a(dcl $$0) {
-      dzo $$1 = super.a($$0);
-      if ($$1 != null) {
-         evv $$2 = $$0.q().b_($$0.a());
-         return $$1.b(b, Boolean.valueOf($$2.a() == evw.c));
-      } else {
-         return null;
-      }
+   public boolean a(div $$0, azv $$1, iu $$2, dzz $$3) {
+      return true;
    }
 
    @Override
-   protected boolean a(dzo $$0, dis $$1, iu $$2) {
-      iu $$3 = $$2.d();
-      dzo $$4 = $$1.a_($$3);
-      return $$4.c($$1, $$3, ja.a);
-   }
+   public void a(arq $$0, azv $$1, iu $$2, dzz $$3) {
+      iu $$4 = $$2.d();
+      dzz $$5 = dmc.bA.m();
+      Optional<je.c<epx>> $$6 = $$0.F_().f(mg.ba).a(rz.o);
 
-   @Override
-   protected feq a(dzo $$0, dhv $$1, iu $$2, feb $$3) {
-      return c;
-   }
+      label51:
+      for (int $$7 = 0; $$7 < 128; $$7++) {
+         iu $$8 = $$4;
 
-   @Override
-   protected dzo a(dzo $$0, dis $$1, dje $$2, iu $$3, ja $$4, iu $$5, dzo $$6, azt $$7) {
-      if ($$4 == ja.b && !this.a($$0, $$1, $$3)) {
-         return dlw.a.m();
-      } else {
-         if ($$0.c(b)) {
-            $$2.a($$3, evw.c, evw.c.a($$1));
+         for (int $$9 = 0; $$9 < $$7 / 16; $$9++) {
+            $$8 = $$8.b($$1.a(3) - 1, ($$1.a(3) - 1) * $$1.a(3) / 2, $$1.a(3) - 1);
+            if (!$$0.a_($$8.e()).a(this) || $$0.a_($$8).m($$0, $$8)) {
+               continue label51;
+            }
          }
 
-         return super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
+         dzz $$10 = $$0.a_($$8);
+         if ($$10.a($$5.b()) && $$1.a(10) == 0) {
+            dmd $$11 = (dmd)$$5.b();
+            if ($$11.a($$0, $$8, $$10)) {
+               $$11.a($$0, $$1, $$8, $$10);
+            }
+         }
+
+         if ($$10.l()) {
+            je<epx> $$14;
+            if ($$1.a(8) == 0) {
+               List<eiq<?, ?>> $$12 = $$0.u($$8).a().d().b();
+               if ($$12.isEmpty()) {
+                  continue;
+               }
+
+               int $$13 = $$1.a($$12.size());
+               $$14 = ((elv)$$12.get($$13).c()).d();
+            } else {
+               if (!$$6.isPresent()) {
+                  continue;
+               }
+
+               $$14 = $$6.get();
+            }
+
+            $$14.a().a($$0, $$0.m().g(), $$1, $$8);
+         }
       }
+   }
+
+   @Override
+   public dmd.a am_() {
+      return dmd.a.a;
    }
 }

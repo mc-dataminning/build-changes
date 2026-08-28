@@ -1,23 +1,61 @@
-public record aah(ale a) implements aag {
-   public static <T extends vs> yu<T, aah> a(ale $$0, int $$1) {
-      return aag.a(($$0x, $$1x) -> {
-      }, $$2 -> {
-         int $$3 = $$2.readableBytes();
-         if ($$3 >= 0 && $$3 <= $$1) {
-            $$2.k($$3);
-            return new aah($$0);
-         } else {
-            throw new IllegalArgumentException("Payload may not be larger than " + $$1 + " bytes");
-         }
-      });
+import java.util.UUID;
+
+public record aah(aah.a c) implements aai {
+   public static final yw<vu, aah> a = aai.a(aah::a, aah::new);
+   public static final aai.b<aah> b = aai.a("debug/breeze");
+
+   private aah(vu $$0) {
+      this(new aah.a($$0));
+   }
+
+   private void a(vu $$0) {
+      this.c.a($$0);
    }
 
    @Override
-   public aag.b<aah> a() {
-      return new aag.b<>(this.a);
+   public aai.b<aah> a() {
+      return b;
    }
 
-   public ale b() {
-      return this.a;
+   public aah.a b() {
+      return this.c;
+   }
+
+   public static record a(UUID a, int b, Integer c, iu d) {
+      public a(vu $$0) {
+         this($$0.n(), $$0.readInt(), $$0.c(vu::readInt), $$0.c(iu.b));
+      }
+
+      public void a(vu $$0) {
+         $$0.a(this.a);
+         $$0.q(this.b);
+         $$0.a(this.c, vu::q);
+         $$0.a(this.d, iu.b);
+      }
+
+      public String a() {
+         return agl.a(this.a);
+      }
+
+      @Override
+      public String toString() {
+         return this.a();
+      }
+
+      public UUID b() {
+         return this.a;
+      }
+
+      public int c() {
+         return this.b;
+      }
+
+      public Integer d() {
+         return this.c;
+      }
+
+      public iu e() {
+         return this.d;
+      }
    }
 }

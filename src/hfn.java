@@ -1,6 +1,8 @@
-import javax.annotation.Nullable;
+import javax.annotation.ParametersAreNonnullByDefault;
 
-@FunctionalInterface
-public interface hfn {
-   boolean get(cys var1, @Nullable gjd var2, @Nullable bwz var3, int var4, cyq var5);
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface hfn {
 }

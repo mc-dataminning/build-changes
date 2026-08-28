@@ -1,12 +1,12 @@
 public class el extends Exception {
-   private final ww a;
+   private final wy a;
 
-   public el(ww $$0) {
+   public el(wy $$0) {
       super($$0.getString());
       this.a = $$0;
    }
 
-   public ww a() {
+   public wy a() {
       return this.a;
    }
 }

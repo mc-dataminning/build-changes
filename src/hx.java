@@ -54,7 +54,7 @@ class hx<T extends ek<T>> {
       this.b.add(new hz.b<>($$3, this.a($$3.b()), $$2));
    }
 
-   public hw<T> a(ale $$0) {
+   public hw<T> a(alg $$0) {
       return (hw<T>)(this.b != null ? new hz<>($$0, this.b, this.c) : new ia<>($$0, this.a));
    }
 }

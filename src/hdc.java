@@ -1,3 +1,3 @@
-public class hdc extends hcp {
-   public float a;
+public class hdc extends hda {
+   public float d;
 }

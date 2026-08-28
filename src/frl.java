@@ -1,120 +1,54 @@
-public abstract class frl extends fro {
-   private static final ale a = ale.b("widget/slider");
-   private static final ale d = ale.b("widget/slider_highlighted");
-   private static final ale e = ale.b("widget/slider_handle");
-   private static final ale f = ale.b("widget/slider_handle_highlighted");
-   protected static final int b = 2;
-   private static final int m = 8;
-   private static final int n = 4;
-   protected double c;
-   private boolean o;
+import javax.annotation.Nullable;
 
-   public frl(int $$0, int $$1, int $$2, int $$3, ww $$4, double $$5) {
-      super($$0, $$1, $$2, $$3, $$4);
-      this.c = $$5;
+public interface frl {
+   static frl a(ftz $$0) {
+      return new frl.a($$0);
    }
 
-   private ale c() {
-      return this.E() && this.aI_() && !this.o ? d : a;
+   @Nullable
+   static frl a(fty $$0, @Nullable frl $$1) {
+      return $$1 == null ? null : new frl.b($$0, $$1);
    }
 
-   private ale e() {
-      return !this.E() || !this.i && !this.o ? e : f;
+   static frl a(ftz $$0, fty... $$1) {
+      frl $$2 = a($$0);
+
+      for (fty $$3 : $$1) {
+         $$2 = a($$3, $$2);
+      }
+
+      return $$2;
    }
 
-   @Override
-   protected xk d() {
-      return ww.a("gui.narrate.slider", this.B());
+   ftz a();
+
+   void a(boolean var1);
+
+   public static record a(ftz a) implements frl {
+      @Override
+      public void a(boolean $$0) {
+         this.a.a($$0);
+      }
    }
 
-   @Override
-   public void a(fvn $$0) {
-      $$0.a(fvm.a, this.d());
-      if (this.j) {
-         if (this.aI_()) {
-            $$0.a(fvm.d, ww.c("narration.slider.usage.focused"));
+   public static record b(fty a, frl b) implements frl {
+      @Override
+      public void a(boolean $$0) {
+         if (!$$0) {
+            this.a.a(null);
          } else {
-            $$0.a(fvm.d, ww.c("narration.slider.usage.hovered"));
-         }
-      }
-   }
-
-   @Override
-   public void b(frc $$0, int $$1, int $$2, float $$3) {
-      fof $$4 = fof.Q();
-      $$0.a(gpn::H, this.c(), this.F(), this.G(), this.A(), this.y(), axu.a(this.l));
-      $$0.a(gpn::H, this.e(), this.F() + (int)(this.c * (double)(this.g - 8)), this.G(), 8, this.y(), axu.a(this.l));
-      int $$5 = this.j ? 16777215 : 10526880;
-      this.a($$0, $$4.h, 2, $$5 | azk.f(this.l * 255.0F) << 24);
-   }
-
-   @Override
-   public void a(double $$0, double $$1) {
-      this.a($$0);
-   }
-
-   @Override
-   public void a(boolean $$0) {
-      super.a($$0);
-      if (!$$0) {
-         this.o = false;
-      } else {
-         foc $$1 = fof.Q().aX();
-         if ($$1 == foc.b || $$1 == foc.d) {
-            this.o = true;
-         }
-      }
-   }
-
-   @Override
-   public boolean a(int $$0, int $$1, int $$2) {
-      if (fvs.a($$0)) {
-         this.o = !this.o;
-         return true;
-      } else {
-         if (this.o) {
-            boolean $$3 = $$0 == 263;
-            if ($$3 || $$0 == 262) {
-               float $$4 = $$3 ? -1.0F : 1.0F;
-               this.b(this.c + (double)($$4 / (float)(this.g - 8)));
-               return true;
-            }
+            this.a.a(this.b.a());
          }
 
-         return false;
-      }
-   }
-
-   private void a(double $$0) {
-      this.b(($$0 - (double)(this.F() + 4)) / (double)(this.g - 8));
-   }
-
-   private void b(double $$0) {
-      double $$1 = this.c;
-      this.c = azk.a($$0, 0.0, 1.0);
-      if ($$1 != this.c) {
-         this.a();
+         this.b.a($$0);
       }
 
-      this.b();
+      public fty b() {
+         return this.a;
+      }
+
+      public frl c() {
+         return this.b;
+      }
    }
-
-   @Override
-   protected void b(double $$0, double $$1, double $$2, double $$3) {
-      this.a($$0);
-      super.b($$0, $$1, $$2, $$3);
-   }
-
-   @Override
-   public void a(hnc $$0) {
-   }
-
-   @Override
-   public void b(double $$0, double $$1) {
-      super.a(fof.Q().ak());
-   }
-
-   protected abstract void b();
-
-   protected abstract void a();
 }

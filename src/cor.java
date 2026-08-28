@@ -1,81 +1,96 @@
-import com.google.common.annotations.VisibleForTesting;
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableSet;
-import com.mojang.datafixers.util.Pair;
-import java.util.List;
-import java.util.Set;
+import javax.annotation.Nullable;
 
-public class cor {
-   public static final float a = 0.6F;
-   public static final float b = 4.0F;
-   public static final float c = 8.0F;
-   public static final float d = 24.0F;
-   static final List<chi<? extends chh<? super coq>>> e = ImmutableList.of(chi.c, chi.f, chi.d, chi.z);
-   static final List<cgb<?>> f = ImmutableList.of(
-      cgb.o, cgb.h, cgb.C, cgb.F, cgb.p, cgb.n, cgb.aV, cgb.ba, cgb.aW, cgb.aX, cgb.aY, cgb.aZ, new cgb[]{cgb.bb, cgb.bc, cgb.y, cgb.z, cgb.u}
-   );
-   private static final int g = 100;
-
-   protected static bxz<?> a(coq $$0, bxz<coq> $$1) {
-      a($$1);
-      b($$1);
-      b($$0, $$1);
-      $$1.a(Set.of(csl.a));
-      $$1.b(csl.k);
-      $$1.f();
-      return $$1;
+public class cor extends cnh {
+   public cor(bwm<? extends cor> $$0, div $$1) {
+      super($$0, $$1);
+      this.a(ewx.i, 8.0F);
    }
 
-   private static void a(bxz<coq> $$0) {
-      $$0.a(csl.a, 0, ImmutableList.of(new cbk(0.8F), new bzw(45, 90)));
+   @Override
+   protected void D() {
+      this.bD.a(3, new cfr<>(this, cpm.class, true));
+      super.D();
    }
 
-   private static void b(bxz<coq> $$0) {
-      $$0.a(
-         csl.b,
-         ImmutableList.of(
-            Pair.of(0, cbc.a(($$0x, $$1) -> $$1.eb().c(cgb.C))),
-            Pair.of(1, cbc.a(($$0x, $$1) -> $$1.t())),
-            Pair.of(2, new cor.a(20, 40)),
-            Pair.of(3, new can(ImmutableList.of(Pair.of(new bza(20, 100), 1), Pair.of(cai.a(0.6F), 2))))
-         )
-      );
+   @Override
+   protected awm u() {
+      return awn.DE;
    }
 
-   private static void b(coq $$0, bxz<coq> $$1) {
-      $$1.a(
-         csl.k,
-         ImmutableList.of(
-            Pair.of(0, cbf.a(chh.a($$0, 100).negate()::test)), Pair.of(1, new cou()), Pair.of(2, new cot()), Pair.of(3, new cov()), Pair.of(4, new cow())
-         ),
-         ImmutableSet.of(Pair.of(cgb.p, cgc.a), Pair.of(cgb.n, cgc.b))
-      );
+   @Override
+   protected awm e(bus $$0) {
+      return awn.DG;
    }
 
-   static void a(coq $$0) {
-      $$0.eb().a(ImmutableList.of(csl.k, csl.b));
+   @Override
+   protected awm l_() {
+      return awn.DF;
    }
 
-   public static class a extends caa {
-      @VisibleForTesting
-      public a(int $$0, int $$1) {
-         super($$0, $$1);
+   @Override
+   awm m() {
+      return awn.DH;
+   }
+
+   @Override
+   public axr<cyu> Y() {
+      return null;
+   }
+
+   @Override
+   public boolean h(cyy $$0) {
+      return !$$0.a(axk.bW) && super.h($$0);
+   }
+
+   @Override
+   protected void a(arq $$0, bus $$1, boolean $$2) {
+      super.a($$0, $$1, $$2);
+      if ($$1.d() instanceof cnl $$4 && $$4.x()) {
+         $$4.gq();
+         this.a($$0, czc.vr);
       }
+   }
 
-      @Override
-      protected void c(aro $$0, bxb $$1, long $$2) {
-         super.c($$0, $$1, $$2);
-         $$1.a(awl.cM);
-         $$1.b(bxl.p);
-      }
+   @Override
+   protected void a(azv $$0, btz $$1) {
+      this.a(bwn.a, new cyy(czc.pC));
+   }
 
-      @Override
-      protected void b(aro $$0, bxb $$1, long $$2) {
-         super.b($$0, $$1, $$2);
-         $$1.b(bxl.a);
-         if ($$1.eb().a(cgb.p)) {
-            $$1.eb().a(cgb.aW, bas.a, 60L);
+   @Override
+   protected void a(djm $$0, azv $$1, btz $$2) {
+   }
+
+   @Nullable
+   @Override
+   public bxu a(djm $$0, btz $$1, bwl $$2, @Nullable bxu $$3) {
+      bxu $$4 = super.a($$0, $$1, $$2, $$3);
+      this.g(byi.c).a(4.0);
+      this.n();
+      return $$4;
+   }
+
+   @Override
+   public boolean c(arq $$0, bwd $$1) {
+      if (!super.c($$0, $$1)) {
+         return false;
+      } else {
+         if ($$1 instanceof bxc) {
+            ((bxc)$$1).b(new bvh(bvj.t, 200), this);
          }
+
+         return true;
       }
+   }
+
+   @Override
+   protected crf a(cyy $$0, float $$1, @Nullable cyy $$2) {
+      crf $$3 = super.a($$0, $$1, $$2);
+      $$3.e(100.0F);
+      return $$3;
+   }
+
+   @Override
+   public boolean b(bvh $$0) {
+      return $$0.a(bvj.t) ? false : super.b($$0);
    }
 }

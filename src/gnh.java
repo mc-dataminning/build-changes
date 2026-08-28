@@ -1,54 +1,42 @@
-public class gnh extends gmx {
-   gnh(gjd $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, int $$7, gng $$8) {
-      super($$0, $$1, $$2, $$3, $$8, 0.0F);
-      this.B = 0.92F;
-      this.D = 0.5F;
-      this.e(1.0F);
-      this.a((float)axu.b($$7), (float)axu.c($$7), (float)axu.d($$7));
-      this.t = (int)((double)(this.D * 12.0F) / (Math.random() * 0.8F + 0.2F));
-      this.b($$8);
-      this.n = false;
-      this.j = $$4;
-      this.k = $$5;
-      this.l = $$6;
+public class gnh extends gng {
+   gnh(gjr $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6) {
+      super($$0, $$1, $$2, $$3, $$4, $$5, $$6);
+      this.D *= 1.5F;
+      this.t = (int)(Math.random() * 2.0) + 60;
+   }
+
+   @Override
+   public float b(float $$0) {
+      float $$1 = 1.0F - ((float)this.s + $$0) / ((float)this.t * 1.5F);
+      return this.D * $$1;
    }
 
    @Override
    public void a() {
-      super.a();
-      if (!this.o) {
-         this.b(this.a);
-         if (this.s > this.t / 2) {
-            this.e(1.0F - ((float)this.s - (float)(this.t / 2)) / (float)this.t);
-         }
-
-         if (this.c.a_(iu.a(this.g, this.h, this.i)).l()) {
-            this.k -= 0.0074F;
-         }
+      this.d = this.g;
+      this.e = this.h;
+      this.f = this.i;
+      if (this.s++ >= this.t) {
+         this.k();
+      } else {
+         float $$0 = (float)this.s / (float)this.t;
+         this.g = this.g + this.j * (double)$$0;
+         this.h = this.h + this.k * (double)$$0;
+         this.i = this.i + this.l * (double)$$0;
       }
    }
 
-   public static class a implements gmo<mb> {
-      private final gng a;
+   public static class a implements gnd<mb> {
+      private final gnv a;
 
-      public a(gng $$0) {
+      public a(gnv $$0) {
          this.a = $$0;
       }
 
-      public gml a(mb $$0, gjd $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new gnh($$1, $$2, $$3, $$4, $$5, $$6, $$7, axu.a(255, 204, 31, 102), this.a);
-      }
-   }
-
-   public static class b implements gmo<mb> {
-      private final gng a;
-
-      public b(gng $$0) {
-         this.a = $$0;
-      }
-
-      public gml a(mb $$0, gjd $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new gnh($$1, $$2, $$3, $$4, $$5, $$6, $$7, axu.a(255, 255, 255, 255), this.a);
+      public gna a(mb $$0, gjr $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         gnh $$8 = new gnh($$1, $$2, $$3, $$4, $$5, $$6, $$7);
+         $$8.a(this.a);
+         return $$8;
       }
    }
 }

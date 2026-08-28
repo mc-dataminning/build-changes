@@ -1,43 +1,41 @@
-import com.mojang.logging.LogUtils;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
 import java.util.Optional;
-import org.slf4j.Logger;
 
-public class fbc extends faa {
-   private static final Logger b = LogUtils.getLogger();
-   public static final MapCodec<fbc> a = RecordCodecBuilder.mapCodec($$0 -> a($$0).apply($$0, fbc::new));
+public class fbc extends fam {
+   public static final MapCodec<fbc> a = RecordCodecBuilder.mapCodec(
+      $$0 -> a($$0)
+            .and(
+               $$0.group(
+                  fal.e.a(dbm.c, 256).optionalFieldOf("explosions").forGetter($$0x -> $$0x.c),
+                  ayu.k.optionalFieldOf("flight_duration").forGetter($$0x -> $$0x.d)
+               )
+            )
+            .apply($$0, fbc::new)
+   );
+   public static final dbn b = new dbn(0, List.of());
+   private final Optional<fal.e<dbm>> c;
+   private final Optional<Integer> d;
 
-   private fbc(List<fbw> $$0) {
+   protected fbc(List<fci> $$0, Optional<fal.e<dbm>> $$1, Optional<Integer> $$2) {
       super($$0);
+      this.c = $$1;
+      this.d = $$2;
    }
 
    @Override
-   public fac<fbc> b() {
-      return fad.l;
+   protected cyy a(cyy $$0, eyz $$1) {
+      $$0.a(kj.aj, b, this::a);
+      return $$0;
+   }
+
+   private dbn a(dbn $$0) {
+      return new dbn(this.d.orElseGet($$0::a), this.c.<List<dbm>>map($$1 -> $$1.a($$0.b())).orElse($$0.b()));
    }
 
    @Override
-   public cys a(cys $$0, eyn $$1) {
-      if ($$0.f()) {
-         return $$0;
-      } else {
-         dec $$2 = new dec($$0);
-         Optional<ddo<ded>> $$3 = $$1.d().t().a(ddu.b, $$2, $$1.d());
-         if ($$3.isPresent()) {
-            cys $$4 = $$3.get().b().a($$2, $$1.d().F_());
-            if (!$$4.f()) {
-               return $$4.c($$0.M());
-            }
-         }
-
-         b.warn("Couldn't smelt {} because there is no smelting recipe", $$0);
-         return $$0;
-      }
-   }
-
-   public static faa.a<?> c() {
-      return a(fbc::new);
+   public fao<fbc> b() {
+      return fap.K;
    }
 }

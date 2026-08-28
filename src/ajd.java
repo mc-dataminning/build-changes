@@ -1,29 +1,55 @@
-public class ajd implements zd<aiz> {
-   public static final yu<vs, ajd> a = zd.a(ajd::a, ajd::new);
-   private final ww b;
+import java.security.PublicKey;
 
-   public ajd(ww $$0) {
+public class ajd implements zf<ajb> {
+   public static final yw<vu, ajd> a = zf.a(ajd::a, ajd::new);
+   private final String b;
+   private final byte[] c;
+   private final byte[] d;
+   private final boolean e;
+
+   public ajd(String $$0, byte[] $$1, byte[] $$2, boolean $$3) {
       this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
+      this.e = $$3;
    }
 
-   private ajd(vs $$0) {
-      this.b = ww.a.b($$0.d(262144), js.b);
+   private ajd(vu $$0) {
+      this.b = $$0.d(20);
+      this.c = $$0.b();
+      this.d = $$0.b();
+      this.e = $$0.readBoolean();
    }
 
-   private void a(vs $$0) {
-      $$0.a(ww.a.a(this.b, js.b));
+   private void a(vu $$0) {
+      $$0.a(this.b);
+      $$0.a(this.c);
+      $$0.a(this.d);
+      $$0.a(this.e);
    }
 
    @Override
-   public zf<ajd> a() {
-      return ajf.e;
+   public zh<ajd> a() {
+      return ajh.c;
    }
 
-   public void a(aiz $$0) {
+   public void a(ajb $$0) {
       $$0.a(this);
    }
 
-   public ww b() {
+   public String b() {
       return this.b;
+   }
+
+   public PublicKey e() throws ayk {
+      return ayj.a(this.c);
+   }
+
+   public byte[] f() {
+      return this.d;
+   }
+
+   public boolean g() {
+      return this.e;
    }
 }

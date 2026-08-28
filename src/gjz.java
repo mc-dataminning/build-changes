@@ -1,60 +1,68 @@
-import com.mojang.serialization.Codec;
-import java.time.Instant;
-import java.util.Optional;
-import javax.annotation.Nullable;
+import com.google.common.base.Splitter;
+import io.netty.buffer.ByteBuf;
+import io.netty.channel.ChannelFutureListener;
+import io.netty.channel.ChannelHandlerContext;
+import io.netty.channel.SimpleChannelInboundHandler;
+import java.util.List;
 
-public enum gjz implements bai {
-   a("secure"),
-   b("modified"),
-   c("not_secure");
+public class gjz extends SimpleChannelInboundHandler<ByteBuf> {
+   private static final Splitter a = Splitter.on('\u0000').limit(6);
+   private final glj b;
+   private final gjz.a c;
 
-   public static final Codec<gjz> d = bai.a(gjz::values);
-   private final String e;
-
-   private gjz(final String $$0) {
-      this.e = $$0;
+   public gjz(glj $$0, gjz.a $$1) {
+      this.b = $$0;
+      this.c = $$1;
    }
 
-   public static gjz a(xm $$0, ww $$1, Instant $$2) {
-      if (!$$0.i() || $$0.b($$2)) {
-         return c;
-      } else {
-         return a($$0, $$1) ? b : a;
+   public void channelActive(ChannelHandlerContext $$0) throws Exception {
+      super.channelActive($$0);
+      ByteBuf $$1 = $$0.alloc().buffer();
+
+      try {
+         $$1.writeByte(254);
+         $$1.writeByte(1);
+         $$1.writeByte(250);
+         ask.a($$1, "MC|PingHost");
+         int $$2 = $$1.writerIndex();
+         $$1.writeShort(0);
+         int $$3 = $$1.writerIndex();
+         $$1.writeByte(127);
+         ask.a($$1, this.b.a());
+         $$1.writeInt(this.b.b());
+         int $$4 = $$1.writerIndex() - $$3;
+         $$1.setShort($$2, $$4);
+         $$0.channel().writeAndFlush($$1).addListener(ChannelFutureListener.CLOSE_ON_FAILURE);
+      } catch (Exception var6) {
+         $$1.release();
+         throw var6;
       }
    }
 
-   private static boolean a(xm $$0, ww $$1) {
-      if (!$$1.getString().contains($$0.c())) {
-         return true;
-      } else {
-         ww $$2 = $$0.n();
-         return $$2 == null ? false : a($$2);
+   protected void a(ChannelHandlerContext $$0, ByteBuf $$1) {
+      short $$2 = $$1.readUnsignedByte();
+      if ($$2 == 255) {
+         String $$3 = ask.a($$1);
+         List<String> $$4 = a.splitToList($$3);
+         if ("§1".equals($$4.get(0))) {
+            int $$5 = azm.a($$4.get(1), 0);
+            String $$6 = $$4.get(2);
+            String $$7 = $$4.get(3);
+            int $$8 = azm.a($$4.get(4), -1);
+            int $$9 = azm.a($$4.get(5), -1);
+            this.c.handleResponse($$5, $$6, $$7, $$8, $$9);
+         }
       }
+
+      $$0.close();
    }
 
-   private static boolean a(ww $$0) {
-      return $$0.<Boolean>a(($$0x, $$1) -> a($$0x) ? Optional.of(true) : Optional.empty(), xt.a).orElse(false);
+   public void exceptionCaught(ChannelHandlerContext $$0, Throwable $$1) {
+      $$0.close();
    }
 
-   private static boolean a(xt $$0) {
-      return !$$0.l().equals(xt.b);
-   }
-
-   public boolean a() {
-      return this == c;
-   }
-
-   @Nullable
-   public fnz a(xm $$0) {
-      return switch (this) {
-         case b -> fnz.a($$0.c());
-         case c -> fnz.c();
-         default -> null;
-      };
-   }
-
-   @Override
-   public String c() {
-      return this.e;
+   @FunctionalInterface
+   public interface a {
+      void handleResponse(int var1, String var2, String var3, int var4, int var5);
    }
 }

@@ -1,37 +1,41 @@
-import javax.annotation.Nullable;
+import it.unimi.dsi.fastutil.doubles.DoubleArrayList;
+import it.unimi.dsi.fastutil.doubles.DoubleList;
+import java.util.Arrays;
 
-public class fek extends feg {
-   @Nullable
-   private iu b;
-   @Nullable
-   private iu c;
+public class fek extends ffc {
+   private final DoubleList b;
+   private final DoubleList c;
+   private final DoubleList d;
 
-   protected fek(cte $$0, boolean $$1) {
-      super($$0, $$1);
-      this.a($$0);
+   protected fek(fer $$0, double[] $$1, double[] $$2, double[] $$3) {
+      this(
+         $$0,
+         DoubleArrayList.wrap(Arrays.copyOf($$1, $$0.b() + 1)),
+         DoubleArrayList.wrap(Arrays.copyOf($$2, $$0.c() + 1)),
+         DoubleArrayList.wrap(Arrays.copyOf($$3, $$0.d() + 1))
+      );
    }
 
-   private void a(cte $$0) {
-      iu $$1 = $$0.j();
-      dzo $$2 = $$0.dV().a_($$1);
-      boolean $$3 = dlj.h($$2);
-      if ($$3) {
-         this.b = $$1.e();
-         eas $$4 = $$2.c(((dlj)$$2.b()).c());
-         if ($$4.b()) {
-            this.c = switch ($$4) {
-               case c -> $$1.i();
-               case d -> $$1.h();
-               case e -> $$1.f();
-               case f -> $$1.g();
-               default -> null;
-            };
-         }
+   fek(fer $$0, DoubleList $$1, DoubleList $$2, DoubleList $$3) {
+      super($$0);
+      int $$4 = $$0.b() + 1;
+      int $$5 = $$0.c() + 1;
+      int $$6 = $$0.d() + 1;
+      if ($$4 == $$1.size() && $$5 == $$2.size() && $$6 == $$3.size()) {
+         this.b = $$1;
+         this.c = $$2;
+         this.d = $$3;
+      } else {
+         throw (IllegalArgumentException)af.b(new IllegalArgumentException("Lengths of point arrays must be consistent with the size of the VoxelShape."));
       }
    }
 
    @Override
-   public feq a(dzo $$0, dhz $$1, iu $$2) {
-      return !$$2.equals(this.b) && !$$2.equals(this.c) ? super.a($$0, $$1, $$2) : fen.a();
+   public DoubleList a(ja.a $$0) {
+      return switch ($$0) {
+         case a -> this.b;
+         case b -> this.c;
+         case c -> this.d;
+      };
    }
 }

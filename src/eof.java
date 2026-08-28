@@ -1,26 +1,45 @@
 import com.mojang.serialization.MapCodec;
 
-public class eof<P extends eoe> {
-   public static final eof<eod> a = a("straight_trunk_placer", eod.a);
-   public static final eof<eoa> b = a("forking_trunk_placer", eoa.a);
-   public static final eof<eob> c = a("giant_trunk_placer", eob.a);
-   public static final eof<eoc> d = a("mega_jungle_trunk_placer", eoc.b);
-   public static final eof<eny> e = a("dark_oak_trunk_placer", eny.a);
-   public static final eof<enz> f = a("fancy_trunk_placer", enz.a);
-   public static final eof<enw> g = a("bending_trunk_placer", enw.a);
-   public static final eof<eog> h = a("upwards_branching_trunk_placer", eog.a);
-   public static final eof<enx> i = a("cherry_trunk_placer", enx.a);
-   private final MapCodec<P> j;
+public class eof extends eod {
+   public static final MapCodec<eof> a = MapCodec.unit(() -> eof.b);
+   public static final eof b = new eof();
 
-   private static <P extends eoe> eof<P> a(String $$0, MapCodec<P> $$1) {
-      return jr.a(mf.V, $$0, new eof<>($$1));
+   @Override
+   protected eoe<?> a() {
+      return eoe.a;
    }
 
-   private eof(MapCodec<P> $$0) {
-      this.j = $$0;
-   }
+   @Override
+   public void a(eod.a $$0) {
+      azv $$1 = $$0.b();
+      $$0.c().forEach($$2 -> {
+         if ($$1.a(3) > 0) {
+            iu $$3 = $$2.h();
+            if ($$0.a($$3)) {
+               $$0.a($$3, dvk.d);
+            }
+         }
 
-   public MapCodec<P> a() {
-      return this.j;
+         if ($$1.a(3) > 0) {
+            iu $$4 = $$2.i();
+            if ($$0.a($$4)) {
+               $$0.a($$4, dvk.f);
+            }
+         }
+
+         if ($$1.a(3) > 0) {
+            iu $$5 = $$2.f();
+            if ($$0.a($$5)) {
+               $$0.a($$5, dvk.e);
+            }
+         }
+
+         if ($$1.a(3) > 0) {
+            iu $$6 = $$2.g();
+            if ($$0.a($$6)) {
+               $$0.a($$6, dvk.c);
+            }
+         }
+      });
    }
 }

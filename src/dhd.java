@@ -1,32 +1,17 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.function.Consumer;
-import java.util.function.UnaryOperator;
+import com.google.common.collect.Maps;
+import java.util.Map;
 
-public record dhd(je<dhf> c, je<dhh> d) implements dbx {
-   public static final Codec<dhd> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(dhf.c.fieldOf("material").forGetter(dhd::a), dhh.c.fieldOf("pattern").forGetter(dhd::b)).apply($$0, dhd::new)
-   );
-   public static final yu<wh, dhd> b = yu.a(dhf.d, dhd::a, dhh.d, dhd::b, dhd::new);
-   private static final ww e = ww.c(af.a("item", ale.b("smithing_template.upgrade"))).a(n.h);
+public interface dhd {
+   dhc a = new dhc(5, a(1, 2, 3, 1, 3), 15, awn.av, 0.0F, 0.0F, axk.bh, dhg.b);
+   dhc b = new dhc(15, a(1, 4, 5, 2, 4), 12, awn.ap, 0.0F, 0.0F, axk.bi, dhg.c);
+   dhc c = new dhc(15, a(2, 5, 6, 2, 5), 9, awn.au, 0.0F, 0.0F, axk.bj, dhg.d);
+   dhc d = new dhc(7, a(1, 3, 5, 2, 7), 25, awn.at, 0.0F, 0.0F, axk.bk, dhg.e);
+   dhc e = new dhc(33, a(3, 6, 8, 3, 11), 10, awn.aq, 2.0F, 0.0F, axk.bl, dhg.f);
+   dhc f = new dhc(25, a(2, 5, 6, 2, 5), 9, awn.ax, 0.0F, 0.0F, axk.bn, dhg.g);
+   dhc g = new dhc(37, a(3, 6, 8, 3, 11), 15, awn.aw, 3.0F, 0.1F, axk.bm, dhg.h);
+   dhc h = new dhc(4, a(3, 6, 8, 3, 11), 10, awn.ay, 0.0F, 0.0F, axk.bo, dhg.i);
 
-   @Override
-   public void a(cyo.b $$0, Consumer<ww> $$1, dah $$2, ke $$3) {
-      $$1.accept(e);
-      $$1.accept(wv.a().b(this.d.a().a(this.c)));
-      $$1.accept(wv.a().b(this.c.a().b()));
-   }
-
-   public ale a(String $$0, ald<dgz> $$1) {
-      dhe.a $$2 = this.a().a().a().a($$1);
-      return this.b().a().a().a((UnaryOperator<String>)($$2x -> $$0 + "/" + $$2x + "_" + $$2.a()));
-   }
-
-   public je<dhf> a() {
-      return this.c;
-   }
-
-   public je<dhh> b() {
-      return this.d;
+   private static Map<dhe, Integer> a(int $$0, int $$1, int $$2, int $$3, int $$4) {
+      return Maps.newEnumMap(Map.of(dhe.d, $$0, dhe.c, $$1, dhe.b, $$2, dhe.a, $$3, dhe.e, $$4));
    }
 }

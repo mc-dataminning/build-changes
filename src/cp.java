@@ -8,7 +8,7 @@ public class cp extends dj<cp.a> {
       return cp.a.a;
    }
 
-   public void a(arp $$0, fdw $$1, int $$2) {
+   public void a(arr $$0, fei $$1, int $$2) {
       this.a($$0, $$3 -> $$3.a($$0, $$1, $$2));
    }
 
@@ -26,7 +26,7 @@ public class cp extends dj<cp.a> {
          return ap.v.a(new cp.a(Optional.empty(), Optional.of($$0), cv.d.c));
       }
 
-      public boolean a(arp $$0, fdw $$1, int $$2) {
+      public boolean a(arr $$0, fei $$1, int $$2) {
          return this.c.isPresent() && !this.c.get().a($$1.d, $$1.e, $$1.f, $$0.dA(), $$0.dC(), $$0.dG()) ? false : this.d.d($$2);
       }
 

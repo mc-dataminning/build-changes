@@ -1,289 +1,142 @@
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.io.OutputStream;
-import java.io.OutputStreamWriter;
-import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
-import java.net.Proxy;
-import java.net.URL;
-import java.nio.charset.StandardCharsets;
-import javax.annotation.Nullable;
+import java.util.function.Consumer;
 
-public abstract class fjj<T extends fjj<T>> {
-   protected HttpURLConnection a;
-   private boolean c;
-   protected String b;
-   private static final int d = 60000;
-   private static final int e = 5000;
-   private static final String f = "Is-Prerelease";
-   private static final String g = "Cookie";
+public class fjj {
+   public static fjg a() {
+      throw new IllegalArgumentException();
+   }
 
-   public fjj(String $$0, int $$1, int $$2) {
-      try {
-         this.b = $$0;
-         Proxy $$3 = fjh.a();
-         if ($$3 != null) {
-            this.a = (HttpURLConnection)new URL($$0).openConnection($$3);
+   public static fjg a(fjg $$0) {
+      return $$0;
+   }
+
+   public static fjg a(fjg $$0, fjg $$1) {
+      return new fjj.a($$0, $$1);
+   }
+
+   public static fjg a(fjg... $$0) {
+      return new fjj.b($$0);
+   }
+
+   static class a implements fjg {
+      private final fjg a;
+      private final fjg b;
+
+      public a(fjg $$0, fjg $$1) {
+         if ($$0 == $$1) {
+            throw new IllegalArgumentException("Duplicate delegates");
          } else {
-            this.a = (HttpURLConnection)new URL($$0).openConnection();
+            this.a = $$0;
+            this.b = $$1;
          }
+      }
 
-         this.a.setConnectTimeout($$1);
-         this.a.setReadTimeout($$2);
-      } catch (MalformedURLException var5) {
-         throw new flb(var5.getMessage(), var5);
-      } catch (IOException var6) {
-         throw new flb(var6.getMessage(), var6);
+      @Override
+      public fjg a(float $$0, float $$1, float $$2) {
+         this.a.a($$0, $$1, $$2);
+         this.b.a($$0, $$1, $$2);
+         return this;
+      }
+
+      @Override
+      public fjg a(int $$0, int $$1, int $$2, int $$3) {
+         this.a.a($$0, $$1, $$2, $$3);
+         this.b.a($$0, $$1, $$2, $$3);
+         return this;
+      }
+
+      @Override
+      public fjg a(float $$0, float $$1) {
+         this.a.a($$0, $$1);
+         this.b.a($$0, $$1);
+         return this;
+      }
+
+      @Override
+      public fjg a(int $$0, int $$1) {
+         this.a.a($$0, $$1);
+         this.b.a($$0, $$1);
+         return this;
+      }
+
+      @Override
+      public fjg b(int $$0, int $$1) {
+         this.a.b($$0, $$1);
+         this.b.b($$0, $$1);
+         return this;
+      }
+
+      @Override
+      public fjg b(float $$0, float $$1, float $$2) {
+         this.a.b($$0, $$1, $$2);
+         this.b.b($$0, $$1, $$2);
+         return this;
+      }
+
+      @Override
+      public void a(float $$0, float $$1, float $$2, int $$3, float $$4, float $$5, int $$6, int $$7, float $$8, float $$9, float $$10) {
+         this.a.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8, $$9, $$10);
+         this.b.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8, $$9, $$10);
       }
    }
 
-   public void a(String $$0, String $$1) {
-      a(this.a, $$0, $$1);
-   }
-
-   public static void a(HttpURLConnection $$0, String $$1, String $$2) {
-      String $$3 = $$0.getRequestProperty("Cookie");
-      if ($$3 == null) {
-         $$0.setRequestProperty("Cookie", $$1 + "=" + $$2);
-      } else {
-         $$0.setRequestProperty("Cookie", $$3 + ";" + $$1 + "=" + $$2);
-      }
-   }
-
-   public void a(boolean $$0) {
-      this.a.addRequestProperty("Is-Prerelease", String.valueOf($$0));
-   }
-
-   public int a() {
-      return a(this.a);
-   }
-
-   public static int a(HttpURLConnection $$0) {
-      String $$1 = $$0.getHeaderField("Retry-After");
-
-      try {
-         return Integer.valueOf($$1);
-      } catch (Exception var3) {
-         return 5;
-      }
-   }
-
-   public int b() {
-      try {
-         this.d();
-         return this.a.getResponseCode();
-      } catch (Exception var2) {
-         throw new flb(var2.getMessage(), var2);
-      }
-   }
-
-   public String c() {
-      try {
-         this.d();
-         String $$0;
-         if (this.b() >= 400) {
-            $$0 = this.a(this.a.getErrorStream());
-         } else {
-            $$0 = this.a(this.a.getInputStream());
-         }
-
-         this.f();
-         return $$0;
-      } catch (IOException var2) {
-         throw new flb(var2.getMessage(), var2);
-      }
-   }
-
-   private String a(@Nullable InputStream $$0) throws IOException {
-      if ($$0 == null) {
-         return "";
-      } else {
-         InputStreamReader $$1 = new InputStreamReader($$0, StandardCharsets.UTF_8);
-         StringBuilder $$2 = new StringBuilder();
-
-         for (int $$3 = $$1.read(); $$3 != -1; $$3 = $$1.read()) {
-            $$2.append((char)$$3);
-         }
-
-         return $$2.toString();
-      }
-   }
-
-   private void f() {
-      byte[] $$0 = new byte[1024];
-
-      try {
-         InputStream $$1 = this.a.getInputStream();
-
-         while ($$1.read($$0) > 0) {
-         }
-
-         $$1.close();
-         return;
-      } catch (Exception var9) {
-         try {
-            InputStream $$3 = this.a.getErrorStream();
-            if ($$3 != null) {
-               while ($$3.read($$0) > 0) {
+   static record b(fjg[] a) implements fjg {
+      b(fjg[] a) {
+         for (int $$1 = 0; $$1 < a.length; $$1++) {
+            for (int $$2 = $$1 + 1; $$2 < a.length; $$2++) {
+               if (a[$$1] == a[$$2]) {
+                  throw new IllegalArgumentException("Duplicate delegates");
                }
-
-               $$3.close();
-               return;
             }
-         } catch (IOException var8) {
-            return;
          }
-      } finally {
-         if (this.a != null) {
-            this.a.disconnect();
-         }
-      }
-   }
 
-   protected T d() {
-      if (this.c) {
-         return (T)this;
-      } else {
-         T $$0 = this.e();
-         this.c = true;
-         return $$0;
-      }
-   }
-
-   protected abstract T e();
-
-   public static fjj<?> a(String $$0) {
-      return new fjj.b($$0, 5000, 60000);
-   }
-
-   public static fjj<?> a(String $$0, int $$1, int $$2) {
-      return new fjj.b($$0, $$1, $$2);
-   }
-
-   public static fjj<?> b(String $$0, String $$1) {
-      return new fjj.c($$0, $$1, 5000, 60000);
-   }
-
-   public static fjj<?> a(String $$0, String $$1, int $$2, int $$3) {
-      return new fjj.c($$0, $$1, $$2, $$3);
-   }
-
-   public static fjj<?> b(String $$0) {
-      return new fjj.a($$0, 5000, 60000);
-   }
-
-   public static fjj<?> c(String $$0, String $$1) {
-      return new fjj.d($$0, $$1, 5000, 60000);
-   }
-
-   public static fjj<?> b(String $$0, String $$1, int $$2, int $$3) {
-      return new fjj.d($$0, $$1, $$2, $$3);
-   }
-
-   public String c(String $$0) {
-      return a(this.a, $$0);
-   }
-
-   public static String a(HttpURLConnection $$0, String $$1) {
-      try {
-         return $$0.getHeaderField($$1);
-      } catch (Exception var3) {
-         return "";
-      }
-   }
-
-   public static class a extends fjj<fjj.a> {
-      public a(String $$0, int $$1, int $$2) {
-         super($$0, $$1, $$2);
+         this.a = a;
       }
 
-      public fjj.a f() {
-         try {
-            this.a.setDoOutput(true);
-            this.a.setRequestMethod("DELETE");
-            this.a.connect();
-            return this;
-         } catch (Exception var2) {
-            throw new flb(var2.getMessage(), var2);
+      private void a(Consumer<fjg> $$0) {
+         for (fjg $$1 : this.a) {
+            $$0.accept($$1);
          }
       }
-   }
 
-   public static class b extends fjj<fjj.b> {
-      public b(String $$0, int $$1, int $$2) {
-         super($$0, $$1, $$2);
+      @Override
+      public fjg a(float $$0, float $$1, float $$2) {
+         this.a($$3 -> $$3.a($$0, $$1, $$2));
+         return this;
       }
 
-      public fjj.b f() {
-         try {
-            this.a.setDoInput(true);
-            this.a.setDoOutput(true);
-            this.a.setUseCaches(false);
-            this.a.setRequestMethod("GET");
-            return this;
-         } catch (Exception var2) {
-            throw new flb(var2.getMessage(), var2);
-         }
-      }
-   }
-
-   public static class c extends fjj<fjj.c> {
-      private final String c;
-
-      public c(String $$0, String $$1, int $$2, int $$3) {
-         super($$0, $$2, $$3);
-         this.c = $$1;
+      @Override
+      public fjg a(int $$0, int $$1, int $$2, int $$3) {
+         this.a($$4 -> $$4.a($$0, $$1, $$2, $$3));
+         return this;
       }
 
-      public fjj.c f() {
-         try {
-            if (this.c != null) {
-               this.a.setRequestProperty("Content-Type", "application/json; charset=utf-8");
-            }
-
-            this.a.setDoInput(true);
-            this.a.setDoOutput(true);
-            this.a.setUseCaches(false);
-            this.a.setRequestMethod("POST");
-            OutputStream $$0 = this.a.getOutputStream();
-            OutputStreamWriter $$1 = new OutputStreamWriter($$0, "UTF-8");
-            $$1.write(this.c);
-            $$1.close();
-            $$0.flush();
-            return this;
-         } catch (Exception var3) {
-            throw new flb(var3.getMessage(), var3);
-         }
-      }
-   }
-
-   public static class d extends fjj<fjj.d> {
-      private final String c;
-
-      public d(String $$0, String $$1, int $$2, int $$3) {
-         super($$0, $$2, $$3);
-         this.c = $$1;
+      @Override
+      public fjg a(float $$0, float $$1) {
+         this.a($$2 -> $$2.a($$0, $$1));
+         return this;
       }
 
-      public fjj.d f() {
-         try {
-            if (this.c != null) {
-               this.a.setRequestProperty("Content-Type", "application/json; charset=utf-8");
-            }
+      @Override
+      public fjg a(int $$0, int $$1) {
+         this.a($$2 -> $$2.a($$0, $$1));
+         return this;
+      }
 
-            this.a.setDoOutput(true);
-            this.a.setDoInput(true);
-            this.a.setRequestMethod("PUT");
-            OutputStream $$0 = this.a.getOutputStream();
-            OutputStreamWriter $$1 = new OutputStreamWriter($$0, "UTF-8");
-            $$1.write(this.c);
-            $$1.close();
-            $$0.flush();
-            return this;
-         } catch (Exception var3) {
-            throw new flb(var3.getMessage(), var3);
-         }
+      @Override
+      public fjg b(int $$0, int $$1) {
+         this.a($$2 -> $$2.b($$0, $$1));
+         return this;
+      }
+
+      @Override
+      public fjg b(float $$0, float $$1, float $$2) {
+         this.a($$3 -> $$3.b($$0, $$1, $$2));
+         return this;
+      }
+
+      @Override
+      public void a(float $$0, float $$1, float $$2, int $$3, float $$4, float $$5, int $$6, int $$7, float $$8, float $$9, float $$10) {
+         this.a($$11 -> $$11.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8, $$9, $$10));
       }
    }
 }

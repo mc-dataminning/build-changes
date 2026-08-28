@@ -1,49 +1,34 @@
-import com.mojang.blaze3d.systems.RenderSystem;
-import javax.annotation.Nullable;
-
-public class fim {
-   @Nullable
-   private static fit a;
-
-   public static void a() {
-      if (a != null) {
-         b();
-         fit.b();
-      }
+public record fim(int a, int b, boolean c, int d) implements fin<fhm> {
+   public fhm a() {
+      return new fhn(this.a, this.b, this.c);
    }
 
-   public static void b() {
-      a = null;
+   public void a(fhm $$0) {
+      $$0.b(axw.j(this.d), axw.k(this.d), axw.l(this.d), axw.i(this.d));
    }
 
-   public static void a(fip $$0) {
-      RenderSystem.assertOnRenderThread();
-      fit $$1 = c($$0);
-      $$1.a(RenderSystem.getModelViewMatrix(), RenderSystem.getProjectionMatrix(), RenderSystem.getShader());
+   public void b(fhm $$0) {
+      $$0.a();
    }
 
-   public static void b(fip $$0) {
-      RenderSystem.assertOnRenderThread();
-      fit $$1 = c($$0);
-      $$1.c();
+   @Override
+   public boolean a(fin<?> $$0) {
+      return !($$0 instanceof fim $$1) ? false : this.a == $$1.a && this.b == $$1.b && this.c == $$1.c;
    }
 
-   private static fit c(fip $$0) {
-      fit $$1 = a($$0.c().a());
-      $$1.a($$0);
-      return $$1;
+   public int b() {
+      return this.a;
    }
 
-   private static fit a(fiv $$0) {
-      fit $$1 = $$0.i();
-      a($$1);
-      return $$1;
+   public int c() {
+      return this.b;
    }
 
-   private static void a(fit $$0) {
-      if ($$0 != a) {
-         $$0.a();
-         a = $$0;
-      }
+   public boolean d() {
+      return this.c;
+   }
+
+   public int e() {
+      return this.d;
    }
 }

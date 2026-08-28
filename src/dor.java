@@ -1,52 +1,39 @@
 import com.mojang.serialization.MapCodec;
 
-public abstract class dor extends dlu implements doq {
-   public dor(dzn.d $$0) {
+public class dor extends dsp {
+   public static final MapCodec<dor> b = b(dor::new);
+
+   @Override
+   public MapCodec<dor> a() {
+      return b;
+   }
+
+   protected dor(dzy.d $$0) {
       super($$0);
+      this.l(this.B.b().b(a, ja.b));
    }
 
    @Override
-   protected abstract MapCodec<? extends dor> a();
-
-   @Override
-   protected void a(dzo $$0, dip $$1, iu $$2, dzo $$3, boolean $$4) {
-      $$1.a($$2, this, this.b());
+   public dzz a(dcr $$0) {
+      ja $$1 = $$0.k();
+      dzz $$2 = $$0.q().a_($$0.a().a($$1.g()));
+      return $$2.a(this) && $$2.c(a) == $$1 ? this.m().b(a, $$1.g()) : this.m().b(a, $$1);
    }
 
    @Override
-   protected dzo a(dzo $$0, dis $$1, dje $$2, iu $$3, ja $$4, iu $$5, dzo $$6, azt $$7) {
-      $$2.a($$3, this, this.b());
-      return super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
-   }
-
-   @Override
-   protected void a(dzo $$0, aro $$1, iu $$2, azt $$3) {
-      if (n($$1.a_($$2.e())) && $$2.v() >= $$1.G_()) {
-         cmw $$4 = cmw.a($$1, $$2, $$0);
-         this.a($$4);
+   public void a(dzz $$0, div $$1, iu $$2, azv $$3) {
+      ja $$4 = $$0.c(a);
+      double $$5 = (double)$$2.u() + 0.55 - (double)($$3.i() * 0.1F);
+      double $$6 = (double)$$2.v() + 0.55 - (double)($$3.i() * 0.1F);
+      double $$7 = (double)$$2.w() + 0.55 - (double)($$3.i() * 0.1F);
+      double $$8 = (double)(0.4F - ($$3.i() + $$3.i()) * 0.4F);
+      if ($$3.a(5) == 0) {
+         $$1.a(lx.t, $$5 + (double)$$4.j() * $$8, $$6 + (double)$$4.k() * $$8, $$7 + (double)$$4.l() * $$8, $$3.k() * 0.005, $$3.k() * 0.005, $$3.k() * 0.005);
       }
    }
 
-   protected void a(cmw $$0) {
-   }
-
-   protected int b() {
-      return 2;
-   }
-
-   public static boolean n(dzo $$0) {
-      return $$0.l() || $$0.a(axa.aN) || $$0.n() || $$0.v();
-   }
-
    @Override
-   public void a(dzo $$0, dip $$1, iu $$2, azt $$3) {
-      if ($$3.a(16) == 0) {
-         iu $$4 = $$2.e();
-         if (n($$1.a_($$4))) {
-            azo.a($$1, $$2, $$3, new lp(lx.C, $$0));
-         }
-      }
+   protected void a(eaa.a<dma, dzz> $$0) {
+      $$0.a(a);
    }
-
-   public abstract int b(dzo var1, dhv var2, iu var3);
 }

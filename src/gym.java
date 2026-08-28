@@ -1,40 +1,39 @@
-public class gym extends gwq<cmk, hec, ghu> {
-   private static final ale a = ale.b("textures/entity/wither/wither_invulnerable.png");
-   private static final ale j = ale.b("textures/entity/wither/wither.png");
+public class gym<T extends bwd & crp> extends gvy<T, heh> {
+   private final hfg a;
+   private final float g;
+   private final boolean h;
 
-   public gym(gvk.a $$0) {
-      super($$0, new ghu($$0.a(gif.dM)), 1.0F);
-      this.a(new hal(this, $$0.f()));
+   public gym(gvz.a $$0, float $$1, boolean $$2) {
+      super($$0);
+      this.a = $$0.b();
+      this.g = $$1;
+      this.h = $$2;
    }
 
-   protected int a(cmk $$0, iu $$1) {
-      return 15;
+   public gym(gvz.a $$0) {
+      this($$0, 1.0F, false);
    }
 
-   public ale a(hec $$0) {
-      int $$1 = azk.d($$0.c);
-      return $$1 > 0 && ($$1 > 80 || $$1 / 5 % 2 != 1) ? a : j;
+   @Override
+   protected int a(T $$0, iu $$1) {
+      return this.h ? 15 : super.a($$0, $$1);
    }
 
-   public hec b() {
-      return new hec();
+   public void a(heh $$0, fjc $$1, gps $$2, int $$3) {
+      $$1.a();
+      $$1.b(this.g, this.g, this.g);
+      $$1.a(this.d.b());
+      $$0.a.a($$1, $$2, $$3, hif.d);
+      $$1.b();
+      super.a($$0, $$1, $$2, $$3);
    }
 
-   protected void a(hec $$0, fiq $$1) {
-      float $$2 = 2.0F;
-      if ($$0.c > 0.0F) {
-         $$2 -= $$0.c / 220.0F * 0.5F;
-      }
-
-      $$1.b($$2, $$2, $$2);
+   public heh a() {
+      return new heh();
    }
 
-   public void a(cmk $$0, hec $$1, float $$2) {
+   public void a(T $$0, heh $$1, float $$2) {
       super.a($$0, $$1, $$2);
-      int $$3 = $$0.t();
-      $$1.c = $$3 > 0 ? (float)$$3 - $$2 : 0.0F;
-      System.arraycopy($$0.q(), 0, $$1.a, 0, $$1.a.length);
-      System.arraycopy($$0.n(), 0, $$1.b, 0, $$1.b.length);
-      $$1.d = $$0.x();
+      this.a.a($$1.a, $$0.f(), cyw.h, $$0);
    }
 }

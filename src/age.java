@@ -1,67 +1,29 @@
-import com.google.common.collect.Sets;
-import java.util.Collection;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
+public record age(float b, boolean c) implements zf<abu> {
+   public static final yw<vu, age> a = zf.a(age::a, age::new);
 
-public class age implements zd<abs> {
-   public static final yu<wh, age> a = zd.a(age::a, age::new);
-   private final boolean b;
-   private final List<ai> c;
-   private final Set<ale> d;
-   private final Map<ale, ak> e;
-   private final boolean f;
-
-   public age(boolean $$0, Collection<ai> $$1, Set<ale> $$2, Map<ale, ak> $$3, boolean $$4) {
-      this.b = $$0;
-      this.c = List.copyOf($$1);
-      this.d = Set.copyOf($$2);
-      this.e = Map.copyOf($$3);
-      this.f = $$4;
+   private age(vu $$0) {
+      this($$0.readFloat(), $$0.readBoolean());
    }
 
-   private age(wh $$0) {
-      this.b = $$0.readBoolean();
-      this.c = ai.b.decode($$0);
-      this.d = $$0.a(Sets::newLinkedHashSetWithExpectedSize, vs::q);
-      this.e = $$0.a(vs::q, ak::b);
-      this.f = $$0.readBoolean();
+   public static age a(buk $$0) {
+      return new age($$0.f(), $$0.l());
    }
 
-   private void a(wh $$0) {
+   private void a(vu $$0) {
       $$0.a(this.b);
-      ai.b.encode($$0, this.c);
-      $$0.a(this.d, vs::a);
-      $$0.a(this.e, vs::a, ($$0x, $$1) -> $$1.a($$0x));
-      $$0.a(this.f);
+      $$0.a(this.c);
    }
 
    @Override
-   public zf<age> a() {
-      return agl.bf;
+   public zh<age> a() {
+      return agn.cq;
    }
 
-   public void a(abs $$0) {
+   public void a(abu $$0) {
       $$0.a(this);
    }
 
-   public List<ai> b() {
+   public boolean e() {
       return this.c;
-   }
-
-   public Set<ale> e() {
-      return this.d;
-   }
-
-   public Map<ale, ak> f() {
-      return this.e;
-   }
-
-   public boolean g() {
-      return this.b;
-   }
-
-   public boolean h() {
-      return this.f;
    }
 }

@@ -1,13 +1,18 @@
-public class dal extends cyo {
-   public dal(cyo.a $$0) {
+public class dal extends cxc {
+   public dal(cyu.a $$0) {
       super($$0);
    }
 
    @Override
-   public bty a(dip $$0, cqs $$1, btx $$2) {
-      cys $$3 = $$1.b($$2);
-      $$1.a($$3, $$2);
-      $$1.b(awv.c.b(this));
-      return bty.a;
+   public cyy m() {
+      cyy $$0 = super.m();
+      $$0.b(kj.R, new dau(dav.C));
+      return $$0;
+   }
+
+   @Override
+   public wy a(cyy $$0) {
+      dau $$1 = $$0.a(kj.R);
+      return $$1 != null ? $$1.a(this.n + ".effect.") : super.a($$0);
    }
 }

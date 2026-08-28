@@ -1,41 +1,34 @@
-public class bza implements byr<bwz> {
-   private final int a;
-   private final int b;
-   private byq.a c = byq.a.a;
-   private long d;
+import com.google.common.collect.ImmutableMap;
 
-   public bza(int $$0, int $$1) {
-      this.a = $$0;
-      this.b = $$1;
+public class bza extends byt<ckr> {
+   private static final int c = 60;
+   private static final int d = 100;
+   private int e;
+
+   public bza() {
+      super(ImmutableMap.of(cge.n, cgf.b), 100);
    }
 
-   @Override
-   public byq.a a() {
-      return this.c;
+   protected boolean a(arq $$0, ckr $$1) {
+      return $$1.aw() == bxo.a;
    }
 
-   @Override
-   public final boolean e(aro $$0, bwz $$1, long $$2) {
-      this.c = byq.a.b;
-      int $$3 = this.a + $$0.C_().a(this.b + 1 - this.a);
-      this.d = $$2 + (long)$$3;
-      return true;
+   protected boolean a(arq $$0, ckr $$1, long $$2) {
+      return this.e < 60;
    }
 
-   @Override
-   public final void f(aro $$0, bwz $$1, long $$2) {
-      if ($$2 > this.d) {
-         this.g($$0, $$1, $$2);
+   protected void b(arq $$0, ckr $$1, long $$2) {
+      if (!$$1.bm()) {
+         $$1.b(bxo.i);
+         this.e = 0;
       }
    }
 
-   @Override
-   public final void g(aro $$0, bwz $$1, long $$2) {
-      this.c = byq.a.a;
+   protected void c(arq $$0, ckr $$1, long $$2) {
+      $$1.b(bxo.a);
    }
 
-   @Override
-   public String b() {
-      return this.getClass().getSimpleName();
+   protected void d(arq $$0, ckr $$1, long $$2) {
+      this.e++;
    }
 }

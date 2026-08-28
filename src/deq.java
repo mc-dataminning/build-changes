@@ -1,35 +1,46 @@
-import java.util.List;
-import java.util.Optional;
-import java.util.OptionalInt;
-
-public record deq(der b, dep c, OptionalInt d, ddm e, Optional<List<ddf>> f) {
-   public static final yu<wh, deq> a = yu.a(der.a, deq::a, dep.e, deq::b, ys.i, deq::c, ys.a(mg.af), deq::d, ddf.a.a(ys.a()).a(ys::a), deq::e, deq::new);
-
-   public List<cys> a(bax $$0) {
-      return this.c.d().a($$0);
+public class deq extends ddf {
+   public deq(ddc $$0) {
+      super($$0);
    }
 
-   public boolean a(cqx $$0) {
-      return this.f.isEmpty() ? false : $$0.a(this.f.get(), null);
+   public boolean a(ddd $$0, div $$1) {
+      if ($$0.f() == 3 && $$0.g() == 3 && $$0.e() == 9) {
+         for (int $$2 = 0; $$2 < $$0.g(); $$2++) {
+            for (int $$3 = 0; $$3 < $$0.f(); $$3++) {
+               cyy $$4 = $$0.a($$3, $$2);
+               if ($$4.f()) {
+                  return false;
+               }
+
+               if ($$3 == 1 && $$2 == 1) {
+                  if (!$$4.a(czc.wx)) {
+                     return false;
+                  }
+               } else if (!$$4.a(czc.ph)) {
+                  return false;
+               }
+            }
+         }
+
+         return true;
+      } else {
+         return false;
+      }
    }
 
-   public der a() {
-      return this.b;
+   public cyy a(ddd $$0, jg.a $$1) {
+      cyy $$2 = $$0.a(1, 1);
+      if (!$$2.a(czc.wx)) {
+         return cyy.k;
+      } else {
+         cyy $$3 = new cyy(czc.ww, 8);
+         $$3.b(kj.R, $$2.a(kj.R));
+         return $$3;
+      }
    }
 
-   public dep b() {
-      return this.c;
-   }
-
-   public OptionalInt c() {
-      return this.d;
-   }
-
-   public ddm d() {
-      return this.e;
-   }
-
-   public Optional<List<ddf>> e() {
-      return this.f;
+   @Override
+   public ddz<deq> a() {
+      return ddz.j;
    }
 }

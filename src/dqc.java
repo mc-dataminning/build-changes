@@ -1,40 +1,51 @@
 import com.mojang.serialization.MapCodec;
 import javax.annotation.Nullable;
 
-public class dqc extends dpk implements dqp {
-   public static final MapCodec<dqc> c = b(dqc::new);
+public class dqc extends dpt {
+   public static final MapCodec<dqc> e = b(dqc::new);
 
    @Override
-   public MapCodec<dqc> a() {
-      return c;
+   public MapCodec<? extends dqc> a() {
+      return e;
    }
 
-   protected dqc(dzn.d $$0) {
-      super($$0, ja.b, fen.b(), true);
+   public dqc(dzy.d $$0) {
+      super($$0);
    }
 
-   @Override
-   protected dpl c() {
-      return (dpl)dlw.mE;
-   }
-
-   @Override
-   protected evv b_(dzo $$0) {
-      return evw.c.a(false);
+   public static dzz b() {
+      return dmc.J.m();
    }
 
    @Override
-   protected boolean o(dzo $$0) {
-      return this.c().o($$0);
+   public void a(div $$0, cqy $$1, iu $$2, dzz $$3, @Nullable dwx $$4, cyy $$5) {
+      super.a($$0, $$1, $$2, $$3, $$4, $$5);
+      if (!dfn.a($$5, axe.s)) {
+         if ($$0.B_().i()) {
+            $$0.a($$2, false);
+            return;
+         }
+
+         dzz $$6 = $$0.a_($$2.e());
+         if ($$6.d() || $$6.n()) {
+            $$0.b($$2, b());
+         }
+      }
    }
 
    @Override
-   public boolean a(@Nullable bwz $$0, dhv $$1, iu $$2, dzo $$3, evu $$4) {
-      return false;
+   protected void b(dzz $$0, arq $$1, iu $$2, azv $$3) {
+      if ($$1.a(dje.b, $$2) > 11 - $$0.g()) {
+         this.d($$0, $$1, $$2);
+      }
    }
 
-   @Override
-   public boolean a(diq $$0, iu $$1, dzo $$2, evv $$3) {
-      return false;
+   protected void d(dzz $$0, div $$1, iu $$2) {
+      if ($$1.B_().i()) {
+         $$1.a($$2, false);
+      } else {
+         $$1.b($$2, b());
+         $$1.b($$2, b().b(), null);
+      }
    }
 }

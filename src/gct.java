@@ -1,70 +1,132 @@
-import java.util.Set;
-import java.util.function.BiFunction;
-import java.util.function.UnaryOperator;
+import it.unimi.dsi.fastutil.booleans.BooleanConsumer;
+import java.util.Collection;
+import javax.annotation.Nullable;
 
-public record gct(egl a, jr<edm> b, egi c, jl<aln> d, alp e, djn f, gco g) {
-   public gct(egj $$0, jl<aln> $$1, alp $$2, djn $$3) {
-      this($$0.a(), $$0.b(), $$1, $$2, $$3, new gco(gcv.a.a, Set.of(), null));
+public class gct extends fxu {
+   private static final wy a = wy.c("selectWorld.experimental.title");
+   private static final wy b = wy.c("selectWorld.experimental.message");
+   private static final wy c = wy.c("selectWorld.experimental.details");
+   private static final int d = 10;
+   private static final int s = 100;
+   private final BooleanConsumer u;
+   final Collection<auk> v;
+   private final fvp w = new fvp().a(10).b(20);
+
+   public gct(Collection<auk> $$0, BooleanConsumer $$1) {
+      super(a);
+      this.v = $$0;
+      this.u = $$1;
    }
 
-   public gct(egl $$0, egi $$1, jl<aln> $$2, alp $$3, djn $$4, gco $$5) {
-      this($$0, $$2.a(aln.c).f(mg.bn), $$1, $$2.a(aln.c), $$3, $$4, $$5);
+   @Override
+   public wy i() {
+      return wx.a(super.i(), b);
    }
 
-   public gct a(egl $$0, egi $$1) {
-      return new gct($$0, this.b, $$1, this.d, this.e, this.f, this.g);
+   @Override
+   protected void aN_() {
+      super.aN_();
+      fvp.b $$0 = this.w.d(2);
+      fvt $$1 = $$0.b().b();
+      $$0.a(new ftj(this.l, this.p), 2, $$1);
+      fsw $$2 = $$0.a(new fsw(b, this.p).b(true), 2, $$1);
+      $$2.d(310);
+      $$0.a(fsc.a(c, $$0x -> this.m.a(new gct.a())).a(100).a(), 2, $$1);
+      $$0.a(fsc.a(wx.i, $$0x -> this.u.accept(true)).a());
+      $$0.a(fsc.a(wx.k, $$0x -> this.u.accept(false)).a());
+      this.w.a($$1x -> {
+         fsa var10000 = this.c($$1x);
+      });
+      this.w.a();
+      this.c();
    }
 
-   public gct a(gct.b $$0) {
-      return new gct($$0.apply(this.a), this.b, this.c, this.d, this.e, this.f, this.g);
+   @Override
+   protected void c() {
+      fvo.a(this.w, 0, 0, this.n, this.o, 0.5F, 0.5F);
    }
 
-   public gct a(gct.a $$0) {
-      return new gct(this.a, this.b, $$0.apply(this.a(), this.c), this.d, this.e, this.f, this.g);
+   @Override
+   public void aK_() {
+      this.u.accept(false);
    }
 
-   public js.b a() {
-      return this.d.a();
-   }
+   class a extends fxu {
+      private static final wy b = wy.c("selectWorld.experimental.details.title");
+      final fvq c = new fvq(this);
+      @Nullable
+      private gct.a.a d;
 
-   public void b() {
-      for (edm $$0 : this.d()) {
-         $$0.b().a();
+      a() {
+         super(b);
       }
-   }
 
-   public egl c() {
-      return this.a;
-   }
+      @Override
+      protected void aN_() {
+         this.c.a(b, this.p);
+         this.d = this.c.c(new gct.a.a(this.m, gct.this.v));
+         this.c.b(fsc.a(wx.k, $$0 -> this.aK_()).a());
+         this.c.a($$1 -> {
+            fsa var10000 = this.c($$1);
+         });
+         this.c();
+      }
 
-   public jr<edm> d() {
-      return this.b;
-   }
+      @Override
+      protected void c() {
+         if (this.d != null) {
+            this.d.a(this.n, this.c);
+         }
 
-   public egi e() {
-      return this.c;
-   }
+         this.c.a();
+      }
 
-   public jl<aln> f() {
-      return this.d;
-   }
+      @Override
+      public void aK_() {
+         this.m.a(gct.this);
+      }
 
-   public alp g() {
-      return this.e;
-   }
+      class a extends fsy<gct.a.b> {
+         public a(final fos $$0, final Collection<auk> $$1) {
+            super($$0, a.this.n, a.this.c.d(), a.this.c.c(), (9 + 2) * 3);
 
-   public djn h() {
-      return this.f;
-   }
+            for (auk $$2 : $$1) {
+               String $$3 = cuj.a(cuj.g, $$2.e());
+               if (!$$3.isEmpty()) {
+                  wy $$4 = xb.a($$2.b().f(), xv.a.a(true));
+                  wy $$5 = wy.a("selectWorld.experimental.details.entry", $$3);
+                  this.b(a.this.new b($$4, $$5, fsv.a(a.this.p, $$5, this.a())));
+               }
+            }
+         }
 
-   public gco i() {
-      return this.g;
-   }
+         @Override
+         public int a() {
+            return this.g * 3 / 4;
+         }
+      }
 
-   @FunctionalInterface
-   public interface a extends BiFunction<js.b, egi, egi> {
-   }
+      class b extends fsy.a<gct.a.b> {
+         private final wy b;
+         private final wy c;
+         private final fsv d;
 
-   public interface b extends UnaryOperator<egl> {
+         b(final wy $$0, final wy $$1, final fsv $$2) {
+            this.b = $$0;
+            this.c = $$1;
+            this.d = $$2;
+         }
+
+         @Override
+         public void a(fro $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
+            $$0.b(a.this.m.h, this.b, $$3, $$2, -1);
+            this.d.b($$0, $$3, $$2 + 12, 9, -1);
+         }
+
+         @Override
+         public wy a() {
+            return wy.a("narrator.select", wx.a(this.b, this.c));
+         }
+      }
    }
 }

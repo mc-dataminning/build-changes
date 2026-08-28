@@ -1,8 +1,5 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+public interface cqm {
+   cql gy();
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface cqm {
+   void a(cql var1);
 }

@@ -1,27 +1,45 @@
-import java.util.List;
+import com.mojang.serialization.Codec;
+import java.util.HashMap;
+import java.util.Map;
 
-public enum bwb {
-   a(bwb.a.c),
-   b(bwb.a.b),
-   c(bwb.a.c),
-   d(bwb.a.d);
+public record bwb(Map<bwn, Float> f) {
+   public static final float a = 0.085F;
+   public static final float b = 1.0F;
+   public static final int c = 2;
+   public static final bwb d = new bwb(af.a(bwn.class, $$0 -> 0.085F));
+   public static final Codec<bwb> e = Codec.unboundedMap(bwn.l, ayu.n).xmap(bwb::b, bwb::a).xmap(bwb::new, bwb::a);
 
-   private final bwb.a e;
-
-   private bwb(final bwb.a $$0) {
-      this.e = $$0;
+   private static Map<bwn, Float> a(Map<bwn, Float> $$0) {
+      Map<bwn, Float> $$1 = new HashMap<>($$0);
+      $$1.values().removeIf($$0x -> $$0x == 0.085F);
+      return $$1;
    }
 
-   public List<fdw> a(float $$0, float $$1) {
-      return this.e.create($$0, $$1);
+   private static Map<bwn, Float> b(Map<bwn, Float> $$0) {
+      return af.a(bwn.class, $$1 -> $$0.getOrDefault($$1, 0.085F));
    }
 
-   public interface a {
-      List<fdw> a = List.of(fdw.c);
-      bwb.a b = ($$0, $$1) -> a;
-      bwb.a c = ($$0, $$1) -> List.of(new fdw(0.0, (double)$$1, 0.0));
-      bwb.a d = ($$0, $$1) -> List.of(new fdw(0.0, (double)$$1 / 2.0, 0.0));
+   public bwb a(bwn $$0) {
+      return this.a($$0, 2.0F);
+   }
 
-      List<fdw> create(float var1, float var2);
+   public bwb a(bwn $$0, float $$1) {
+      if ($$1 < 0.0F) {
+         throw new IllegalArgumentException("Tried to set invalid equipment chance " + $$1 + " for " + $$0);
+      } else {
+         return this.b($$0) == $$1 ? this : new bwb(af.a(bwn.class, $$2 -> $$2 == $$0 ? $$1 : this.b($$2)));
+      }
+   }
+
+   public float b(bwn $$0) {
+      return this.f.getOrDefault($$0, 0.085F);
+   }
+
+   public boolean c(bwn $$0) {
+      return this.b($$0) > 1.0F;
+   }
+
+   public Map<bwn, Float> a() {
+      return this.f;
    }
 }

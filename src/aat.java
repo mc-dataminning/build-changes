@@ -1,23 +1,21 @@
-import java.util.List;
+public record aat(iu c) implements aai {
+   public static final yw<vu, aat> a = aai.a(aat::a, aat::new);
+   public static final aai.b<aat> b = aai.a("debug/poi_removed");
 
-public record aat(List<iu> c) implements aag {
-   public static final yu<vs, aat> a = aag.a(aat::a, aat::new);
-   public static final aag.b<aat> b = aag.a("debug/raids");
-
-   private aat(vs $$0) {
-      this($$0.a(iu.b));
+   private aat(vu $$0) {
+      this($$0.e());
    }
 
-   private void a(vs $$0) {
-      $$0.a(this.c, iu.b);
+   private void a(vu $$0) {
+      $$0.a(this.c);
    }
 
    @Override
-   public aag.b<aat> a() {
+   public aai.b<aat> a() {
       return b;
    }
 
-   public List<iu> b() {
+   public iu b() {
       return this.c;
    }
 }

@@ -1,37 +1,38 @@
 import com.mojang.serialization.MapCodec;
 import javax.annotation.Nullable;
 
-public class dus extends dlg {
+public class dus extends dlm implements dpl {
    public static final MapCodec<dus> a = b(dus::new);
-   public static final eam<dyu> b = eae.bB;
-   public static final eaf c = eae.bE;
 
-   @Override
-   public MapCodec<dus> a() {
-      return a;
-   }
-
-   public dus(dzn.d $$0) {
+   public dus(dzy.d $$0) {
       super($$0);
-      this.l(this.B.b().b(b, dyu.a).b(c, Boolean.valueOf(false)));
-   }
-
-   @Override
-   protected void a(dzp.a<dlu, dzo> $$0) {
-      $$0.a(b, c);
    }
 
    @Nullable
    @Override
-   public dwn a(iu $$0, dzo $$1) {
-      return new dyn($$0, $$1);
+   public dwx a(iu $$0, dzz $$1) {
+      return new dys($$0, $$1);
    }
 
-   @Nullable
    @Override
-   public <T extends dwn> dwo<T> a(dip $$0, dzo $$1, dwp<T> $$2) {
-      return $$0 instanceof aro $$3
-         ? a($$2, dwp.R, ($$1x, $$2x, $$3x, $$4) -> $$4.c().a($$3, $$2x, $$3x.d(eae.bE).orElse(false)))
-         : a($$2, dwp.R, ($$0x, $$1x, $$2x, $$3x) -> $$3x.c().a($$0x, $$1x, $$2x.d(eae.bE).orElse(false)));
+   protected bub a(dzz $$0, div $$1, iu $$2, cqy $$3, fee $$4) {
+      if ($$1.c_($$2) instanceof dys $$6) {
+         if (!$$3.gF()) {
+            return bub.e;
+         } else {
+            if ($$3.cU().C) {
+               $$3.a($$6);
+            }
+
+            return bub.a;
+         }
+      } else {
+         return bub.e;
+      }
+   }
+
+   @Override
+   protected MapCodec<dus> a() {
+      return a;
    }
 }

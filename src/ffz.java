@@ -1,27 +1,90 @@
-import org.joml.Matrix4f;
+import it.unimi.dsi.fastutil.Hash.Strategy;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
+import java.util.function.Function;
+import javax.annotation.Nullable;
 
-public enum ffz {
-   a(fiy.a, ($$0, $$1) -> $$0.scale(1.0F - $$1 / 4096.0F)),
-   b(fiy.b, ($$0, $$1) -> $$0.translate(0.0F, 0.0F, $$1 / 512.0F));
+public record ffz<T>(T b, iu c, int d, fge e) {
+   private static final String f = "i";
+   private static final String g = "x";
+   private static final String h = "y";
+   private static final String i = "z";
+   private static final String j = "t";
+   private static final String k = "p";
+   public static final Strategy<ffz<?>> a = new Strategy<ffz<?>>() {
+      public int a(ffz<?> $$0) {
+         return 31 * $$0.b().hashCode() + $$0.a().hashCode();
+      }
 
-   private final fiy c;
-   private final ffz.a d;
+      public boolean a(@Nullable ffz<?> $$0, @Nullable ffz<?> $$1) {
+         if ($$0 == $$1) {
+            return true;
+         } else {
+            return $$0 != null && $$1 != null ? $$0.a() == $$1.a() && $$0.b().equals($$1.b()) : false;
+         }
+      }
+   };
 
-   private ffz(final fiy $$0, final ffz.a $$1) {
-      this.c = $$0;
-      this.d = $$1;
+   public static <T> List<ffz<T>> a(uf $$0, Function<String, Optional<T>> $$1, dic $$2) {
+      List<ffz<T>> $$3 = new ArrayList<>($$0.size());
+      long $$4 = $$2.a();
+
+      for (int $$5 = 0; $$5 < $$0.size(); $$5++) {
+         tz $$6 = $$0.a($$5);
+         a($$6, $$1).ifPresent($$2x -> {
+            if (dic.a($$2x.b()) == $$4) {
+               $$3.add($$2x);
+            }
+         });
+      }
+
+      return $$3;
    }
 
-   public fiy a() {
+   public static <T> Optional<ffz<T>> a(tz $$0, Function<String, Optional<T>> $$1) {
+      return $$1.apply($$0.l("i")).map($$1x -> {
+         iu $$2 = new iu($$0.h("x"), $$0.h("y"), $$0.h("z"));
+         return new ffz<>((T)$$1x, $$2, $$0.h("t"), fge.a($$0.h("p")));
+      });
+   }
+
+   private static tz a(String $$0, iu $$1, int $$2, fge $$3) {
+      tz $$4 = new tz();
+      $$4.a("i", $$0);
+      $$4.a("x", $$1.u());
+      $$4.a("y", $$1.v());
+      $$4.a("z", $$1.w());
+      $$4.a("t", $$2);
+      $$4.a("p", $$3.a());
+      return $$4;
+   }
+
+   public tz a(Function<T, String> $$0) {
+      return a($$0.apply(this.b), this.c, this.d, this.e);
+   }
+
+   public fga<T> a(long $$0, long $$1) {
+      return new fga<>(this.b, this.c, $$0 + (long)this.d, this.e, $$1);
+   }
+
+   public static <T> ffz<T> a(T $$0, iu $$1) {
+      return new ffz<>($$0, $$1, 0, fge.d);
+   }
+
+   public T a() {
+      return this.b;
+   }
+
+   public iu b() {
       return this.c;
    }
 
-   public void a(Matrix4f $$0, float $$1) {
-      this.d.apply($$0, $$1);
+   public int c() {
+      return this.d;
    }
 
-   @FunctionalInterface
-   interface a {
-      void apply(Matrix4f var1, float var2);
+   public fge d() {
+      return this.e;
    }
 }

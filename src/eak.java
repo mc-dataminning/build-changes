@@ -1,28 +1,16 @@
-public enum eak implements bai {
-   a(ja.a),
-   b(ja.b);
+public enum eak implements bak {
+   a("floor"),
+   b("wall"),
+   c("ceiling");
 
-   private final ja c;
+   private final String d;
 
-   private eak(final ja $$0) {
-      this.c = $$0;
-   }
-
-   public ja a() {
-      return this.c;
-   }
-
-   @Override
-   public String toString() {
-      return this.c();
+   private eak(final String $$0) {
+      this.d = $$0;
    }
 
    @Override
    public String c() {
-      return this == a ? "upper" : "lower";
-   }
-
-   public eak b() {
-      return this == a ? b : a;
+      return this.d;
    }
 }

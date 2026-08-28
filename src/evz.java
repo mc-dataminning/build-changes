@@ -1,127 +1,331 @@
-import com.google.common.base.Preconditions;
+import java.util.Objects;
+import javax.annotation.Nullable;
+import org.jetbrains.annotations.VisibleForTesting;
 
-public class evz {
-   private static final evz[] am = new evz[64];
-   public static final evz a = new evz(0, 0);
-   public static final evz b = new evz(1, 8368696);
-   public static final evz c = new evz(2, 16247203);
-   public static final evz d = new evz(3, 13092807);
-   public static final evz e = new evz(4, 16711680);
-   public static final evz f = new evz(5, 10526975);
-   public static final evz g = new evz(6, 10987431);
-   public static final evz h = new evz(7, 31744);
-   public static final evz i = new evz(8, 16777215);
-   public static final evz j = new evz(9, 10791096);
-   public static final evz k = new evz(10, 9923917);
-   public static final evz l = new evz(11, 7368816);
-   public static final evz m = new evz(12, 4210943);
-   public static final evz n = new evz(13, 9402184);
-   public static final evz o = new evz(14, 16776437);
-   public static final evz p = new evz(15, 14188339);
-   public static final evz q = new evz(16, 11685080);
-   public static final evz r = new evz(17, 6724056);
-   public static final evz s = new evz(18, 15066419);
-   public static final evz t = new evz(19, 8375321);
-   public static final evz u = new evz(20, 15892389);
-   public static final evz v = new evz(21, 5000268);
-   public static final evz w = new evz(22, 10066329);
-   public static final evz x = new evz(23, 5013401);
-   public static final evz y = new evz(24, 8339378);
-   public static final evz z = new evz(25, 3361970);
-   public static final evz A = new evz(26, 6704179);
-   public static final evz B = new evz(27, 6717235);
-   public static final evz C = new evz(28, 10040115);
-   public static final evz D = new evz(29, 1644825);
-   public static final evz E = new evz(30, 16445005);
-   public static final evz F = new evz(31, 6085589);
-   public static final evz G = new evz(32, 4882687);
-   public static final evz H = new evz(33, 55610);
-   public static final evz I = new evz(34, 8476209);
-   public static final evz J = new evz(35, 7340544);
-   public static final evz K = new evz(36, 13742497);
-   public static final evz L = new evz(37, 10441252);
-   public static final evz M = new evz(38, 9787244);
-   public static final evz N = new evz(39, 7367818);
-   public static final evz O = new evz(40, 12223780);
-   public static final evz P = new evz(41, 6780213);
-   public static final evz Q = new evz(42, 10505550);
-   public static final evz R = new evz(43, 3746083);
-   public static final evz S = new evz(44, 8874850);
-   public static final evz T = new evz(45, 5725276);
-   public static final evz U = new evz(46, 8014168);
-   public static final evz V = new evz(47, 4996700);
-   public static final evz W = new evz(48, 4993571);
-   public static final evz X = new evz(49, 5001770);
-   public static final evz Y = new evz(50, 9321518);
-   public static final evz Z = new evz(51, 2430480);
-   public static final evz aa = new evz(52, 12398641);
-   public static final evz ab = new evz(53, 9715553);
-   public static final evz ac = new evz(54, 6035741);
-   public static final evz ad = new evz(55, 1474182);
-   public static final evz ae = new evz(56, 3837580);
-   public static final evz af = new evz(57, 5647422);
-   public static final evz ag = new evz(58, 1356933);
-   public static final evz ah = new evz(59, 6579300);
-   public static final evz ai = new evz(60, 14200723);
-   public static final evz aj = new evz(61, 8365974);
-   public final int ak;
-   public final int al;
+public final class evz extends evx<ewa.a, ewa> {
+   private static final long g = evx.a.a(15);
+   private static final long h = evx.a.a(15, ja.b);
+   private static final long i = evx.a.a(15, false, ja.b);
+   private final iu.a j = new iu.a();
+   private final evq k;
 
-   private evz(int $$0, int $$1) {
-      if ($$0 >= 0 && $$0 <= 63) {
-         this.al = $$0;
-         this.ak = $$1;
-         am[$$0] = this;
+   public evz(ecj $$0) {
+      this($$0, new ewa($$0));
+   }
+
+   @VisibleForTesting
+   protected evz(ecj $$0, ewa $$1) {
+      super($$0, $$1);
+      this.k = new evq($$0.r());
+   }
+
+   private static boolean a(int $$0) {
+      return $$0 == 15;
+   }
+
+   private int a(int $$0, int $$1, int $$2) {
+      evq $$3 = this.b(jx.a($$0), jx.a($$1));
+      return $$3 == null ? $$2 : $$3.a(jx.b($$0), jx.b($$1));
+   }
+
+   @Nullable
+   private evq b(int $$0, int $$1) {
+      eci $$2 = this.e.c($$0, $$1);
+      return $$2 != null ? $$2.D() : null;
+   }
+
+   @Override
+   protected void a(long $$0) {
+      int $$1 = iu.a($$0);
+      int $$2 = iu.b($$0);
+      int $$3 = iu.c($$0);
+      long $$4 = jx.e($$0);
+      int $$5 = this.f.j($$4) ? this.a($$1, $$3, Integer.MAX_VALUE) : Integer.MAX_VALUE;
+      if ($$5 != Integer.MAX_VALUE) {
+         this.b($$1, $$3, $$5);
+      }
+
+      if (this.f.b($$4)) {
+         boolean $$6 = $$2 >= $$5;
+         if ($$6) {
+            this.b($$0, h);
+            this.c($$0, i);
+         } else {
+            int $$7 = this.f.e($$0);
+            if ($$7 > 0) {
+               this.f.a($$0, 0);
+               this.b($$0, evx.a.a($$7));
+            } else {
+               this.b($$0, c);
+            }
+         }
+      }
+   }
+
+   private void b(int $$0, int $$1, int $$2) {
+      int $$3 = jx.c(this.f.c());
+      this.a($$0, $$1, $$2, $$3);
+      this.b($$0, $$1, $$2, $$3);
+   }
+
+   private void a(int $$0, int $$1, int $$2, int $$3) {
+      if ($$2 > $$3) {
+         int $$4 = jx.a($$0);
+         int $$5 = jx.a($$1);
+         int $$6 = $$2 - 1;
+
+         for (int $$7 = jx.a($$6); this.f.a($$7); $$7--) {
+            if (this.f.b(jx.b($$4, $$7, $$5))) {
+               int $$8 = jx.c($$7);
+               int $$9 = $$8 + 15;
+
+               for (int $$10 = Math.min($$9, $$6); $$10 >= $$8; $$10--) {
+                  long $$11 = iu.a($$0, $$10, $$1);
+                  if (!a(this.f.e($$11))) {
+                     return;
+                  }
+
+                  this.f.a($$11, 0);
+                  this.b($$11, $$10 == $$2 - 1 ? g : h);
+               }
+            }
+         }
+      }
+   }
+
+   private void b(int $$0, int $$1, int $$2, int $$3) {
+      int $$4 = jx.a($$0);
+      int $$5 = jx.a($$1);
+      int $$6 = Math.max(
+         Math.max(this.a($$0 - 1, $$1, Integer.MIN_VALUE), this.a($$0 + 1, $$1, Integer.MIN_VALUE)),
+         Math.max(this.a($$0, $$1 - 1, Integer.MIN_VALUE), this.a($$0, $$1 + 1, Integer.MIN_VALUE))
+      );
+      int $$7 = Math.max($$2, $$3);
+
+      for (long $$8 = jx.b($$4, jx.a($$7), $$5); !this.f.m($$8); $$8 = jx.a($$8, ja.b)) {
+         if (this.f.b($$8)) {
+            int $$9 = jx.c(jx.c($$8));
+            int $$10 = $$9 + 15;
+
+            for (int $$11 = Math.max($$9, $$7); $$11 <= $$10; $$11++) {
+               long $$12 = iu.a($$0, $$11, $$1);
+               if (a(this.f.e($$12))) {
+                  return;
+               }
+
+               this.f.a($$12, 15);
+               if ($$11 < $$6 || $$11 == $$2) {
+                  this.c($$12, i);
+               }
+            }
+         }
+      }
+   }
+
+   @Override
+   protected void a(long $$0, long $$1, int $$2) {
+      dzz $$3 = null;
+      int $$4 = this.d($$0);
+
+      for (ja $$5 : d) {
+         if (evx.a.a($$1, $$5)) {
+            long $$6 = iu.a($$0, $$5);
+            if (this.f.b(jx.e($$6))) {
+               int $$7 = this.f.e($$6);
+               int $$8 = $$2 - 1;
+               if ($$8 > $$7) {
+                  this.j.f($$6);
+                  dzz $$9 = this.c(this.j);
+                  int $$10 = $$2 - this.b($$9);
+                  if ($$10 > $$7) {
+                     if ($$3 == null) {
+                        $$3 = evx.a.b($$1) ? dmc.a.m() : this.c(this.j.f($$0));
+                     }
+
+                     if (!this.a($$3, $$9, $$5)) {
+                        this.f.a($$6, $$10);
+                        if ($$10 > 1) {
+                           this.c($$6, evx.a.a($$10, a($$9), $$5.g()));
+                        }
+
+                        this.a($$6, $$5, $$10, true, $$4);
+                     }
+                  }
+               }
+            }
+         }
+      }
+   }
+
+   @Override
+   protected void a(long $$0, long $$1) {
+      int $$2 = this.d($$0);
+      int $$3 = evx.a.a($$1);
+
+      for (ja $$4 : d) {
+         if (evx.a.a($$1, $$4)) {
+            long $$5 = iu.a($$0, $$4);
+            if (this.f.b(jx.e($$5))) {
+               int $$6 = this.f.e($$5);
+               if ($$6 != 0) {
+                  if ($$6 <= $$3 - 1) {
+                     this.f.a($$5, 0);
+                     this.b($$5, evx.a.a($$6, $$4.g()));
+                     this.a($$5, $$4, $$6, false, $$2);
+                  } else {
+                     this.c($$5, evx.a.b($$6, false, $$4.g()));
+                  }
+               }
+            }
+         }
+      }
+   }
+
+   private int d(long $$0) {
+      int $$1 = iu.b($$0);
+      int $$2 = jx.b($$1);
+      if ($$2 != 0) {
+         return 0;
       } else {
-         throw new IndexOutOfBoundsException("Map colour ID must be between 0 and 63 (inclusive)");
+         int $$3 = iu.a($$0);
+         int $$4 = iu.c($$0);
+         int $$5 = jx.b($$3);
+         int $$6 = jx.b($$4);
+         if ($$5 != 0 && $$5 != 15 && $$6 != 0 && $$6 != 15) {
+            return 0;
+         } else {
+            int $$7 = jx.a($$3);
+            int $$8 = jx.a($$1);
+            int $$9 = jx.a($$4);
+            int $$10 = 0;
+
+            while (!this.f.b(jx.b($$7, $$8 - $$10 - 1, $$9)) && this.f.a($$8 - $$10 - 1)) {
+               $$10++;
+            }
+
+            return $$10;
+         }
       }
    }
 
-   public int a(evz.a $$0) {
-      return this == a ? 0 : axu.b(axu.f(this.ak), $$0.f);
-   }
+   private void a(long $$0, ja $$1, int $$2, boolean $$3, int $$4) {
+      if ($$4 != 0) {
+         int $$5 = iu.a($$0);
+         int $$6 = iu.c($$0);
+         if (a($$1, jx.b($$5), jx.b($$6))) {
+            int $$7 = iu.b($$0);
+            int $$8 = jx.a($$5);
+            int $$9 = jx.a($$6);
+            int $$10 = jx.a($$7) - 1;
+            int $$11 = $$10 - $$4 + 1;
 
-   public static evz a(int $$0) {
-      Preconditions.checkPositionIndex($$0, am.length, "material id");
-      return c($$0);
-   }
+            while ($$10 >= $$11) {
+               if (!this.f.b(jx.b($$8, $$10, $$9))) {
+                  $$10--;
+               } else {
+                  int $$12 = jx.c($$10);
 
-   private static evz c(int $$0) {
-      evz $$1 = am[$$0];
-      return $$1 != null ? $$1 : a;
-   }
+                  for (int $$13 = 15; $$13 >= 0; $$13--) {
+                     long $$14 = iu.a($$5, $$12 + $$13, $$6);
+                     if ($$3) {
+                        this.f.a($$14, $$2);
+                        if ($$2 > 1) {
+                           this.c($$14, evx.a.a($$2, true, $$1.g()));
+                        }
+                     } else {
+                        this.f.a($$14, 0);
+                        this.b($$14, evx.a.a($$2, $$1.g()));
+                     }
+                  }
 
-   public static int b(int $$0) {
-      int $$1 = $$0 & 0xFF;
-      return c($$1 >> 2).a(evz.a.b($$1 & 3));
-   }
-
-   public byte b(evz.a $$0) {
-      return (byte)(this.al << 2 | $$0.e & 3);
-   }
-
-   public static enum a {
-      a(0, 180),
-      b(1, 220),
-      c(2, 255),
-      d(3, 135);
-
-      private static final evz.a[] g = new evz.a[]{a, b, c, d};
-      public final int e;
-      public final int f;
-
-      private a(final int $$0, final int $$1) {
-         this.e = $$0;
-         this.f = $$1;
+                  $$10--;
+               }
+            }
+         }
       }
+   }
 
-      public static evz.a a(int $$0) {
-         Preconditions.checkPositionIndex($$0, g.length, "brightness id");
-         return b($$0);
+   private static boolean a(ja $$0, int $$1, int $$2) {
+      return switch ($$0) {
+         case c -> $$2 == 15;
+         case d -> $$2 == 0;
+         case e -> $$1 == 15;
+         case f -> $$1 == 0;
+         default -> false;
+      };
+   }
+
+   @Override
+   public void a(dic $$0, boolean $$1) {
+      super.a($$0, $$1);
+      if ($$1) {
+         evq $$2 = Objects.requireNonNullElse(this.b($$0.h, $$0.i), this.k);
+         int $$3 = $$2.a() - 1;
+         int $$4 = jx.a($$3) + 1;
+         long $$5 = jx.b($$0.h, $$0.i);
+         int $$6 = this.f.n($$5);
+         int $$7 = Math.max(this.f.c(), $$4);
+
+         for (int $$8 = $$6 - 1; $$8 >= $$7; $$8--) {
+            ecb $$9 = this.f.c(jx.b($$0.h, $$8, $$0.i));
+            if ($$9 != null && $$9.d()) {
+               $$9.a(15);
+            }
+         }
       }
+   }
 
-      static evz.a b(int $$0) {
-         return g[$$0];
+   @Override
+   public void b(dic $$0) {
+      long $$1 = jx.b($$0.h, $$0.i);
+      this.f.b($$1, true);
+      evq $$2 = Objects.requireNonNullElse(this.b($$0.h, $$0.i), this.k);
+      evq $$3 = Objects.requireNonNullElse(this.b($$0.h, $$0.i - 1), this.k);
+      evq $$4 = Objects.requireNonNullElse(this.b($$0.h, $$0.i + 1), this.k);
+      evq $$5 = Objects.requireNonNullElse(this.b($$0.h - 1, $$0.i), this.k);
+      evq $$6 = Objects.requireNonNullElse(this.b($$0.h + 1, $$0.i), this.k);
+      int $$7 = this.f.n($$1);
+      int $$8 = this.f.c();
+      int $$9 = jx.c($$0.h);
+      int $$10 = jx.c($$0.i);
+
+      for (int $$11 = $$7 - 1; $$11 >= $$8; $$11--) {
+         long $$12 = jx.b($$0.h, $$11, $$0.i);
+         ecb $$13 = this.f.c($$12);
+         if ($$13 != null) {
+            int $$14 = jx.c($$11);
+            int $$15 = $$14 + 15;
+            boolean $$16 = false;
+
+            for (int $$17 = 0; $$17 < 16; $$17++) {
+               for (int $$18 = 0; $$18 < 16; $$18++) {
+                  int $$19 = $$2.a($$18, $$17);
+                  if ($$19 <= $$15) {
+                     int $$20 = $$17 == 0 ? $$3.a($$18, 15) : $$2.a($$18, $$17 - 1);
+                     int $$21 = $$17 == 15 ? $$4.a($$18, 0) : $$2.a($$18, $$17 + 1);
+                     int $$22 = $$18 == 0 ? $$5.a(15, $$17) : $$2.a($$18 - 1, $$17);
+                     int $$23 = $$18 == 15 ? $$6.a(0, $$17) : $$2.a($$18 + 1, $$17);
+                     int $$24 = Math.max(Math.max($$20, $$21), Math.max($$22, $$23));
+
+                     for (int $$25 = $$15; $$25 >= Math.max($$14, $$19); $$25--) {
+                        $$13.a($$18, jx.b($$25), $$17, 15);
+                        if ($$25 == $$19 || $$25 < $$24) {
+                           long $$26 = iu.a($$9 + $$18, $$25, $$10 + $$17);
+                           this.c($$26, evx.a.a($$25 == $$19, $$25 < $$20, $$25 < $$21, $$25 < $$22, $$25 < $$23));
+                        }
+                     }
+
+                     if ($$19 < $$14) {
+                        $$16 = true;
+                     }
+                  }
+               }
+            }
+
+            if (!$$16) {
+               break;
+            }
+         }
       }
    }
 }

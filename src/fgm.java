@@ -1,28 +1,26 @@
-import com.mojang.blaze3d.platform.GlStateManager;
+import com.mojang.jtracy.TracyClient;
+import com.mojang.logging.LogListeners;
+import org.slf4j.event.Level;
 
-public class fgm implements AutoCloseable {
-   private long a = GlStateManager._glFenceSync(37143, 0);
+public class fgm {
+   private static boolean a;
 
-   @Override
-   public void close() {
-      if (this.a != 0L) {
-         GlStateManager._glDeleteSync(this.a);
-         this.a = 0L;
+   public static void a() {
+      if (!a) {
+         TracyClient.load();
+         if (TracyClient.isAvailable()) {
+            LogListeners.addListener("Tracy", ($$0, $$1) -> TracyClient.message($$0, a($$1)));
+            a = true;
+         }
       }
    }
 
-   public boolean a(long $$0) {
-      if (this.a == 0L) {
-         return true;
-      } else {
-         int $$1 = GlStateManager._glClientWaitSync(this.a, 0, $$0);
-         if ($$1 == 37147) {
-            return false;
-         } else if ($$1 == 37149) {
-            throw new IllegalStateException("Failed to complete gpu fence");
-         } else {
-            return true;
-         }
-      }
+   private static int a(Level $$0) {
+      return switch ($$0) {
+         case DEBUG -> 11184810;
+         case WARN -> 16777130;
+         case ERROR -> 16755370;
+         default -> 16777215;
+      };
    }
 }

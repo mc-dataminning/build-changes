@@ -1,268 +1,138 @@
-import com.google.common.collect.Lists;
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.google.gson.JsonDeserializationContext;
-import com.google.gson.JsonDeserializer;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonParseException;
-import com.google.gson.JsonParser;
-import com.google.gson.JsonSerializationContext;
-import com.google.gson.JsonSerializer;
-import com.google.gson.stream.JsonReader;
-import com.mojang.brigadier.Message;
-import com.mojang.datafixers.util.Either;
-import com.mojang.serialization.JsonOps;
-import java.io.StringReader;
-import java.lang.reflect.Type;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.Lifecycle;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.io.File;
 import java.net.URI;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Date;
-import java.util.List;
-import java.util.Optional;
-import java.util.UUID;
-import javax.annotation.Nullable;
+import java.nio.file.Path;
 
-public interface ww extends Message, xb {
-   xt a();
+public interface ww {
+   Codec<ww> a = ww.a.h.dispatch("action", ww::a, $$0 -> $$0.k);
 
-   wx b();
+   ww.a a();
 
-   @Override
-   default String getString() {
-      return xb.super.getString();
-   }
+   public static enum a implements bak {
+      a("open_url", true, ww.e.b),
+      b("open_file", false, ww.d.b),
+      c("run_command", true, ww.f.b),
+      d("suggest_command", true, ww.g.b),
+      e("change_page", true, ww.b.b),
+      f("copy_to_clipboard", true, ww.c.b);
 
-   default String a(int $$0) {
-      StringBuilder $$1 = new StringBuilder();
-      this.a((xb.a)($$2 -> {
-         int $$3 = $$0 - $$1.length();
-         if ($$3 <= 0) {
-            return a;
-         } else {
-            $$1.append($$2.length() <= $$3 ? $$2 : $$2.substring(0, $$3));
-            return Optional.empty();
-         }
-      }));
-      return $$1.toString();
-   }
+      public static final Codec<ww.a> g = bak.a(ww.a::values);
+      public static final Codec<ww.a> h = g.validate(ww.a::a);
+      private final boolean i;
+      private final String j;
+      final MapCodec<? extends ww> k;
 
-   List<ww> c();
-
-   @Nullable
-   default String d() {
-      if (this.b() instanceof yd $$0 && this.c().isEmpty() && this.a().h()) {
-         return $$0.b();
+      private a(final String $$0, final boolean $$1, final MapCodec<? extends ww> $$2) {
+         this.j = $$0;
+         this.i = $$1;
+         this.k = $$2;
       }
 
-      return null;
-   }
+      public boolean a() {
+         return this.i;
+      }
 
-   default xk e() {
-      return xk.a(this.b());
-   }
+      @Override
+      public String c() {
+         return this.j;
+      }
 
-   default xk f() {
-      return new xk(this.b(), new ArrayList<>(this.c()), this.a());
-   }
-
-   ayw g();
-
-   @Override
-   default <T> Optional<T> a(xb.b<T> $$0, xt $$1) {
-      xt $$2 = this.a().a($$1);
-      Optional<T> $$3 = this.b().a($$0, $$2);
-      if ($$3.isPresent()) {
-         return $$3;
-      } else {
-         for (ww $$4 : this.c()) {
-            Optional<T> $$5 = $$4.a($$0, $$2);
-            if ($$5.isPresent()) {
-               return $$5;
-            }
-         }
-
-         return Optional.empty();
+      public static DataResult<ww.a> a(ww.a $$0) {
+         return !$$0.a() ? DataResult.error(() -> "Click event type not allowed: " + $$0) : DataResult.success($$0, Lifecycle.stable());
       }
    }
 
-   @Override
-   default <T> Optional<T> a(xb.a<T> $$0) {
-      Optional<T> $$1 = this.b().a($$0);
-      if ($$1.isPresent()) {
-         return $$1;
-      } else {
-         for (ww $$2 : this.c()) {
-            Optional<T> $$3 = $$2.a($$0);
-            if ($$3.isPresent()) {
-               return $$3;
-            }
-         }
+   public static record b(int c) implements ww {
+      public static final MapCodec<ww.b> b = RecordCodecBuilder.mapCodec($$0 -> $$0.group(ayu.m.fieldOf("page").forGetter(ww.b::b)).apply($$0, ww.b::new));
 
-         return Optional.empty();
+      @Override
+      public ww.a a() {
+         return ww.a.e;
+      }
+
+      public int b() {
+         return this.c;
       }
    }
 
-   default List<ww> h() {
-      return this.a(xt.a);
-   }
+   public static record c(String c) implements ww {
+      public static final MapCodec<ww.c> b = RecordCodecBuilder.mapCodec(
+         $$0 -> $$0.group(Codec.STRING.fieldOf("value").forGetter(ww.c::b)).apply($$0, ww.c::new)
+      );
 
-   default List<ww> a(xt $$0) {
-      List<ww> $$1 = Lists.newArrayList();
-      this.a(($$1x, $$2) -> {
-         if (!$$2.isEmpty()) {
-            $$1.add(b($$2).c($$1x));
-         }
+      @Override
+      public ww.a a() {
+         return ww.a.f;
+      }
 
-         return Optional.empty();
-      }, $$0);
-      return $$1;
-   }
-
-   default boolean a(ww $$0) {
-      if (this.equals($$0)) {
-         return true;
-      } else {
-         List<ww> $$1 = this.h();
-         List<ww> $$2 = $$0.a(this.a());
-         return Collections.indexOfSubList($$1, $$2) != -1;
+      public String b() {
+         return this.c;
       }
    }
 
-   static ww a(@Nullable String $$0) {
-      return (ww)($$0 != null ? b($$0) : wv.a);
-   }
+   public static record d(String c) implements ww {
+      public static final MapCodec<ww.d> b = RecordCodecBuilder.mapCodec(
+         $$0 -> $$0.group(Codec.STRING.fieldOf("path").forGetter(ww.d::c)).apply($$0, ww.d::new)
+      );
 
-   static xk b(String $$0) {
-      return xk.a(yd.a($$0));
-   }
-
-   static xk c(String $$0) {
-      return xk.a(new yh($$0, null, yh.a));
-   }
-
-   static xk a(String $$0, Object... $$1) {
-      return xk.a(new yh($$0, null, $$1));
-   }
-
-   static xk b(String $$0, Object... $$1) {
-      for (int $$2 = 0; $$2 < $$1.length; $$2++) {
-         Object $$3 = $$1[$$2];
-         if (!yh.a($$3) && !($$3 instanceof ww)) {
-            $$1[$$2] = String.valueOf($$3);
-         }
+      public d(File $$0) {
+         this($$0.toString());
       }
 
-      return a($$0, $$1);
-   }
-
-   static xk a(String $$0, @Nullable String $$1) {
-      return xk.a(new yh($$0, $$1, yh.a));
-   }
-
-   static xk a(String $$0, @Nullable String $$1, Object... $$2) {
-      return xk.a(new yh($$0, $$1, $$2));
-   }
-
-   static xk i() {
-      return xk.a(yd.c);
-   }
-
-   static xk d(String $$0) {
-      return xk.a(new ya($$0));
-   }
-
-   static xk a(String $$0, boolean $$1, Optional<ww> $$2, xy $$3) {
-      return xk.a(new yc($$0, $$1, $$2, $$3));
-   }
-
-   static xk a(ha $$0, String $$1) {
-      return xk.a(new ye(Either.left($$0), $$1));
-   }
-
-   static xk b(String $$0, String $$1) {
-      return xk.a(new ye(Either.right($$0), $$1));
-   }
-
-   static xk a(ha $$0, Optional<ww> $$1) {
-      return xk.a(new yf($$0, $$1));
-   }
-
-   static ww a(Date $$0) {
-      return b($$0.toString());
-   }
-
-   static ww a(Message $$0) {
-      return (ww)($$0 instanceof ww $$1 ? $$1 : b($$0.getString()));
-   }
-
-   static ww a(UUID $$0) {
-      return b($$0.toString());
-   }
-
-   static ww a(ale $$0) {
-      return b($$0.toString());
-   }
-
-   static ww a(dhw $$0) {
-      return b($$0.toString());
-   }
-
-   static ww a(URI $$0) {
-      return b($$0.toString());
-   }
-
-   public static class a {
-      private static final Gson a = new GsonBuilder().disableHtmlEscaping().create();
-
-      private a() {
+      public d(Path $$0) {
+         this($$0.toFile());
       }
 
-      static xk b(JsonElement $$0, jg.a $$1) {
-         return (xk)wy.a.parse($$1.a(JsonOps.INSTANCE), $$0).getOrThrow(JsonParseException::new);
+      public File b() {
+         return new File(this.c);
       }
 
-      static JsonElement b(ww $$0, jg.a $$1) {
-         return (JsonElement)wy.a.encodeStart($$1.a(JsonOps.INSTANCE), $$0).getOrThrow(JsonParseException::new);
-      }
-
-      public static String a(ww $$0, jg.a $$1) {
-         return a.toJson(b($$0, $$1));
-      }
-
-      @Nullable
-      public static xk a(String $$0, jg.a $$1) {
-         JsonElement $$2 = JsonParser.parseString($$0);
-         return $$2 == null ? null : b($$2, $$1);
-      }
-
-      @Nullable
-      public static xk a(@Nullable JsonElement $$0, jg.a $$1) {
-         return $$0 == null ? null : b($$0, $$1);
-      }
-
-      @Nullable
-      public static xk b(String $$0, jg.a $$1) {
-         JsonReader $$2 = new JsonReader(new StringReader($$0));
-         $$2.setLenient(true);
-         JsonElement $$3 = JsonParser.parseReader($$2);
-         return $$3 == null ? null : b($$3, $$1);
+      @Override
+      public ww.a a() {
+         return ww.a.b;
       }
    }
 
-   public static class b implements JsonDeserializer<xk>, JsonSerializer<ww> {
-      private final jg.a a;
+   public static record e(URI c) implements ww {
+      public static final MapCodec<ww.e> b = RecordCodecBuilder.mapCodec($$0 -> $$0.group(ayu.D.fieldOf("url").forGetter(ww.e::b)).apply($$0, ww.e::new));
 
-      public b(jg.a $$0) {
-         this.a = $$0;
+      @Override
+      public ww.a a() {
+         return ww.a.a;
       }
 
-      public xk a(JsonElement $$0, Type $$1, JsonDeserializationContext $$2) throws JsonParseException {
-         return ww.a.b($$0, this.a);
+      public URI b() {
+         return this.c;
+      }
+   }
+
+   public static record f(String c) implements ww {
+      public static final MapCodec<ww.f> b = RecordCodecBuilder.mapCodec($$0 -> $$0.group(ayu.E.fieldOf("command").forGetter(ww.f::b)).apply($$0, ww.f::new));
+
+      @Override
+      public ww.a a() {
+         return ww.a.c;
       }
 
-      public JsonElement a(ww $$0, Type $$1, JsonSerializationContext $$2) {
-         return ww.a.b($$0, this.a);
+      public String b() {
+         return this.c;
+      }
+   }
+
+   public static record g(String c) implements ww {
+      public static final MapCodec<ww.g> b = RecordCodecBuilder.mapCodec($$0 -> $$0.group(ayu.E.fieldOf("command").forGetter(ww.g::b)).apply($$0, ww.g::new));
+
+      @Override
+      public ww.a a() {
+         return ww.a.d;
+      }
+
+      public String b() {
+         return this.c;
       }
    }
 }

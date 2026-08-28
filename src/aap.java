@@ -1,31 +1,35 @@
-public record aap(int c, ewj d, float e) implements aag {
-   public static final yu<vs, aap> a = aag.a(aap::a, aap::new);
-   public static final aag.b<aap> b = aag.a("debug/path");
+public record aap(aap.a c) implements aai {
+   public static final yw<vu, aap> a = aai.a(aap::a, aap::new);
+   public static final aai.b<aap> b = aai.a("debug/hive");
 
-   private aap(vs $$0) {
-      this($$0.readInt(), ewj.b($$0), $$0.readFloat());
+   private aap(vu $$0) {
+      this(new aap.a($$0));
    }
 
-   private void a(vs $$0) {
-      $$0.q(this.c);
-      this.d.a($$0);
-      $$0.a(this.e);
+   private void a(vu $$0) {
+      this.c.a($$0);
    }
 
    @Override
-   public aag.b<aap> a() {
+   public aai.b<aap> a() {
       return b;
    }
 
-   public int b() {
+   public aap.a b() {
       return this.c;
    }
 
-   public ewj c() {
-      return this.d;
-   }
+   public static record a(iu a, String b, int c, int d, boolean e) {
+      public a(vu $$0) {
+         this($$0.e(), $$0.p(), $$0.readInt(), $$0.readInt(), $$0.readBoolean());
+      }
 
-   public float d() {
-      return this.e;
+      public void a(vu $$0) {
+         $$0.a(this.a);
+         $$0.a(this.b);
+         $$0.q(this.c);
+         $$0.q(this.d);
+         $$0.a(this.e);
+      }
    }
 }

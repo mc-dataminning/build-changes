@@ -1,23 +1,72 @@
-import java.util.UUID;
+import it.unimi.dsi.fastutil.objects.ObjectArrayList;
+import it.unimi.dsi.fastutil.objects.ObjectList;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
-public record xh(UUID a, cqu b) {
-   public static xh a(cqu $$0) {
-      return new xh(UUID.randomUUID(), $$0);
+public class xh {
+   private final int a;
+   private final ObjectList<xi> b = new ObjectArrayList();
+   @Nullable
+   private xk c;
+
+   public xh(int $$0) {
+      this.a = $$0;
+
+      for (int $$1 = 0; $$1 < $$0; $$1++) {
+         this.b.add(null);
+      }
    }
 
-   public xq.c a(UUID $$0) {
-      return new xq($$0, this.a).a(baa.a(this.b.b(), "SHA256withRSA"));
+   public void a(xk $$0) {
+      if (!$$0.equals(this.c)) {
+         this.b.add(new xi($$0, true));
+         this.c = $$0;
+      }
    }
 
-   public xn a() {
-      return new xn(this.a, this.b.c());
+   public int a() {
+      return this.b.size();
    }
 
-   public UUID b() {
-      return this.a;
+   public boolean a(int $$0) {
+      int $$1 = this.b.size() - this.a;
+      if ($$0 >= 0 && $$0 <= $$1) {
+         this.b.removeElements(0, $$0);
+         return true;
+      } else {
+         return false;
+      }
    }
 
-   public cqu c() {
-      return this.b;
+   public Optional<xf> a(xf.b $$0) {
+      if (!this.a($$0.a())) {
+         return Optional.empty();
+      } else {
+         ObjectList<xk> $$1 = new ObjectArrayList($$0.b().cardinality());
+         if ($$0.b().length() > this.a) {
+            return Optional.empty();
+         } else {
+            for (int $$2 = 0; $$2 < this.a; $$2++) {
+               boolean $$3 = $$0.b().get($$2);
+               xi $$4 = (xi)this.b.get($$2);
+               if ($$3) {
+                  if ($$4 == null) {
+                     return Optional.empty();
+                  }
+
+                  this.b.set($$2, $$4.a());
+                  $$1.add($$4.b());
+               } else {
+                  if ($$4 != null && !$$4.c()) {
+                     return Optional.empty();
+                  }
+
+                  this.b.set($$2, null);
+               }
+            }
+
+            return Optional.of(new xf($$1));
+         }
+      }
    }
 }

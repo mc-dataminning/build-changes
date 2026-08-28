@@ -1,5 +1,6 @@
 import com.google.common.collect.Lists;
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
@@ -10,7 +11,7 @@ import java.util.stream.Collectors;
 import javax.annotation.Nullable;
 import org.jetbrains.annotations.Contract;
 
-public enum n implements bai {
+public enum n implements bak {
    a("BLACK", '0', 0, 0),
    b("DARK_BLUE", '1', 1, 170),
    c("DARK_GREEN", '2', 2, 43520),
@@ -34,17 +35,18 @@ public enum n implements bai {
    u("ITALIC", 'o', true),
    v("RESET", 'r', -1, null);
 
-   public static final Codec<n> w = bai.a(n::values);
-   public static final char x = '§';
-   private static final Map<String, n> y = Arrays.stream(values()).collect(Collectors.toMap($$0 -> c($$0.A), $$0 -> (n)$$0));
-   private static final Pattern z = Pattern.compile("(?i)§[0-9A-FK-OR]");
-   private final String A;
-   private final char B;
-   private final boolean C;
-   private final String D;
-   private final int E;
+   public static final Codec<n> w = bak.a(n::values);
+   public static final Codec<n> x = w.validate($$0 -> $$0.d() ? DataResult.error(() -> "Formatting was not a valid color: " + $$0) : DataResult.success($$0));
+   public static final char y = '§';
+   private static final Map<String, n> z = Arrays.stream(values()).collect(Collectors.toMap($$0 -> c($$0.B), $$0 -> (n)$$0));
+   private static final Pattern A = Pattern.compile("(?i)§[0-9A-FK-OR]");
+   private final String B;
+   private final char C;
+   private final boolean D;
+   private final String E;
+   private final int F;
    @Nullable
-   private final Integer F;
+   private final Integer G;
 
    private static String c(String $$0) {
       return $$0.toLowerCase(Locale.ROOT).replaceAll("[^a-z]", "");
@@ -59,33 +61,33 @@ public enum n implements bai {
    }
 
    private n(final String $$0, final char $$1, final boolean $$2, final int $$3, @Nullable final Integer $$4) {
-      this.A = $$0;
-      this.B = $$1;
-      this.C = $$2;
-      this.E = $$3;
-      this.F = $$4;
-      this.D = "§" + $$1;
+      this.B = $$0;
+      this.C = $$1;
+      this.D = $$2;
+      this.F = $$3;
+      this.G = $$4;
+      this.E = "§" + $$1;
    }
 
    public char a() {
-      return this.B;
-   }
-
-   public int b() {
-      return this.E;
-   }
-
-   public boolean d() {
       return this.C;
    }
 
+   public int b() {
+      return this.F;
+   }
+
+   public boolean d() {
+      return this.D;
+   }
+
    public boolean e() {
-      return !this.C && this != v;
+      return !this.D && this != v;
    }
 
    @Nullable
    public Integer f() {
-      return this.F;
+      return this.G;
    }
 
    public String g() {
@@ -94,18 +96,18 @@ public enum n implements bai {
 
    @Override
    public String toString() {
-      return this.D;
+      return this.E;
    }
 
    @Nullable
    @Contract("!null->!null;_->_")
    public static String a(@Nullable String $$0) {
-      return $$0 == null ? null : z.matcher($$0).replaceAll("");
+      return $$0 == null ? null : A.matcher($$0).replaceAll("");
    }
 
    @Nullable
    public static n b(@Nullable String $$0) {
-      return $$0 == null ? null : y.get(c($$0));
+      return $$0 == null ? null : z.get(c($$0));
    }
 
    @Nullable
@@ -128,7 +130,7 @@ public enum n implements bai {
       char $$1 = Character.toLowerCase($$0);
 
       for (n $$2 : values()) {
-         if ($$2.B == $$1) {
+         if ($$2.C == $$1) {
             return $$2;
          }
       }

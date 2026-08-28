@@ -1,104 +1,71 @@
 import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.ImmutableMap.Builder;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
-import java.util.Map.Entry;
-import java.util.concurrent.CompletableFuture;
 import javax.annotation.Nullable;
 
-public class gtd implements gtf.a {
-   final fof a;
-   private double b = Double.MIN_VALUE;
-   private final int c = 12;
+class gtd {
+   private final Map<iu, dwx> a;
    @Nullable
-   private gtd.a d;
+   private final List<eco<dzz>> b;
+   private final boolean c;
+   private final ecg d;
 
-   public gtd(fof $$0) {
-      this.a = $$0;
-   }
+   gtd(ecg $$0) {
+      this.d = $$0;
+      this.c = $$0.H().ak();
+      this.a = ImmutableMap.copyOf($$0.I());
+      if ($$0 instanceof ecc) {
+         this.b = null;
+      } else {
+         ech[] $$1 = $$0.d();
+         this.b = new ArrayList<>($$1.length);
 
-   @Override
-   public void a(fiq $$0, gpd $$1, double $$2, double $$3, double $$4) {
-      double $$5 = (double)af.d();
-      if ($$5 - this.b > 3.0E9) {
-         this.b = $$5;
-         hmk $$6 = this.a.V();
-         if ($$6 != null) {
-            this.d = new gtd.a($$6, $$2, $$4);
-         } else {
-            this.d = null;
-         }
-      }
-
-      if (this.d != null) {
-         Map<dhw, String> $$7 = this.d.b.getNow(null);
-         double $$8 = this.a.j.k().b().e * 0.85;
-
-         for (Entry<dhw, String> $$9 : this.d.a.entrySet()) {
-            dhw $$10 = $$9.getKey();
-            String $$11 = $$9.getValue();
-            if ($$7 != null) {
-               $$11 = $$11 + $$7.get($$10);
-            }
-
-            String[] $$12 = $$11.split("\n");
-            int $$13 = 0;
-
-            for (String $$14 : $$12) {
-               gtf.a($$0, $$1, $$14, (double)jx.a($$10.h, 8), $$8 + (double)$$13, (double)jx.a($$10.i, 8), -1, 0.15F, true, 0.0F, true);
-               $$13 -= 2;
-            }
+         for (ech $$2 : $$1) {
+            this.b.add($$2.c() ? null : $$2.h().d());
          }
       }
    }
 
-   final class a {
-      final Map<dhw, String> a;
-      final CompletableFuture<Map<dhw, String>> b;
+   @Nullable
+   public dwx a(iu $$0) {
+      return this.a.get($$0);
+   }
 
-      a(final hmk $$0, final double $$1, final double $$2) {
-         gjd $$3 = gtd.this.a.s;
-         ald<dip> $$4 = $$3.aj();
-         int $$5 = jx.a($$1);
-         int $$6 = jx.a($$2);
-         Builder<dhw, String> $$7 = ImmutableMap.builder();
-         giz $$8 = $$3.h();
-
-         for (int $$9 = $$5 - 12; $$9 <= $$5 + 12; $$9++) {
-            for (int $$10 = $$6 - 12; $$10 <= $$6 + 12; $$10++) {
-               dhw $$11 = new dhw($$9, $$10);
-               String $$12 = "";
-               ebv $$13 = $$8.a($$9, $$10, false);
-               $$12 = $$12 + "Client: ";
-               if ($$13 == null) {
-                  $$12 = $$12 + "0n/a\n";
-               } else {
-                  $$12 = $$12 + ($$13.E() ? " E" : "");
-                  $$12 = $$12 + "\n";
-               }
-
-               $$7.put($$11, $$12);
-            }
+   public dzz b(iu $$0) {
+      int $$1 = $$0.u();
+      int $$2 = $$0.v();
+      int $$3 = $$0.w();
+      if (this.c) {
+         dzz $$4 = null;
+         if ($$2 == 60) {
+            $$4 = dmc.iv.m();
          }
 
-         this.a = $$7.build();
-         this.b = $$0.a(() -> {
-            aro $$4x = $$0.a($$4);
-            if ($$4x == null) {
-               return ImmutableMap.of();
-            } else {
-               Builder<dhw, String> $$5x = ImmutableMap.builder();
-               arl $$6x = $$4x.m();
+         if ($$2 == 70) {
+            $$4 = efp.a($$1, $$3);
+         }
 
-               for (int $$7x = $$5 - 12; $$7x <= $$5 + 12; $$7x++) {
-                  for (int $$8x = $$6 - 12; $$8x <= $$6 + 12; $$8x++) {
-                     dhw $$9x = new dhw($$7x, $$8x);
-                     $$5x.put($$9x, "Server: " + $$6x.a($$9x));
-                  }
+         return $$4 == null ? dmc.a.m() : $$4;
+      } else if (this.b == null) {
+         return dmc.a.m();
+      } else {
+         try {
+            int $$5 = this.d.f($$2);
+            if ($$5 >= 0 && $$5 < this.b.size()) {
+               eco<dzz> $$6 = this.b.get($$5);
+               if ($$6 != null) {
+                  return $$6.a($$1 & 15, $$2 & 15, $$3 & 15);
                }
-
-               return $$5x.build();
             }
-         });
+
+            return dmc.a.m();
+         } catch (Throwable var8) {
+            o $$8 = o.a(var8, "Getting block state");
+            p $$9 = $$8.a("Block being got");
+            $$9.a("Location", () -> p.a(this.d, $$1, $$2, $$3));
+            throw new z($$8);
+         }
       }
    }
 }

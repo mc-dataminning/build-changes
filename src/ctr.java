@@ -1,60 +1,75 @@
-public class ctr extends cte {
-   private final dhr b = new dhr() {
-      @Override
-      public void a(dip $$0, iu $$1, int $$2) {
-         $$0.a(ctr.this, (byte)$$2);
-      }
-   };
-   private final Runnable c;
+public class ctr extends ctk {
+   private float b;
+   private float c;
 
-   public ctr(bwj<? extends ctr> $$0, dip $$1) {
+   public ctr(bwm<?> $$0, div $$1) {
       super($$0, $$1);
-      this.c = this.c($$1);
    }
 
    @Override
-   protected cyo o() {
-      return cyw.oq;
+   public bub a(cqy $$0, bua $$1) {
+      if (!$$0.fX() && !this.ca() && (this.dV().C || $$0.n(this))) {
+         this.c = this.b;
+         if (!this.dV().C) {
+            return (bub)($$0.n(this) ? bub.c : bub.e);
+         } else {
+            return bub.a;
+         }
+      } else {
+         return bub.e;
+      }
    }
 
    @Override
-   public cys dI() {
-      return new cys(cyw.oq);
-   }
-
-   private Runnable c(dip $$0) {
-      return $$0 instanceof aro ? () -> this.b.a((aro)$$0, this.dv()) : () -> this.b.a($$0, this.dv());
+   protected cyu o() {
+      return czc.os;
    }
 
    @Override
-   public dzo v() {
-      return dlw.cA.m();
+   public cyy dI() {
+      return new cyy(czc.os);
    }
 
    @Override
-   protected void a(tx $$0) {
-      super.a($$0);
-      this.b.a(this.dV(), this.dv(), $$0);
+   public void a(int $$0, int $$1, int $$2, boolean $$3) {
+      if ($$3) {
+         if (this.ca()) {
+            this.bO();
+         }
+
+         if (this.I() == 0) {
+            this.l(-this.J());
+            this.d(10);
+            this.b(50.0F);
+            this.bC();
+         }
+      }
    }
 
    @Override
-   protected void b(tx $$0) {
-      super.b($$0);
-      this.b.a($$0);
-   }
-
-   @Override
-   public void b(byte $$0) {
-      this.b.a(this.dV(), $$0);
+   public boolean z() {
+      return true;
    }
 
    @Override
    public void h() {
+      double $$0 = (double)this.dL();
+      fei $$1 = this.dt();
       super.h();
-      this.c.run();
+      double $$2 = ((double)this.dL() - $$0) % 360.0;
+      if (this.dV().C && $$1.f(this.dt()) > 0.01) {
+         this.b += (float)$$2;
+         this.b %= 360.0F;
+      }
    }
 
-   public dhr q() {
-      return this.b;
+   @Override
+   protected void a(bwd $$0, bwd.b $$1) {
+      super.a($$0, $$1);
+      if (this.dV().C && $$0 instanceof cqy $$2 && $$2.gP() && b(this.dV())) {
+         float $$3 = (float)azm.e(0.5, (double)this.c, (double)this.b);
+         $$2.w($$2.dL() - ($$3 - this.c));
+         this.c = $$3;
+      }
    }
 }

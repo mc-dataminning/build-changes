@@ -1,43 +1,31 @@
-public class gva<T extends ckw> extends gua<T, hbl, gex> {
-   private final ale a;
+public class gva extends gut<cit, hbo, geq> {
+   private static final alg a = alg.b("textures/entity/bee/bee_angry.png");
+   private static final alg j = alg.b("textures/entity/bee/bee_angry_nectar.png");
+   private static final alg k = alg.b("textures/entity/bee/bee.png");
+   private static final alg l = alg.b("textures/entity/bee/bee_nectar.png");
 
-   public gva(gvk.a $$0, gva.a $$1) {
-      super($$0, new gex($$0.a($$1.d)), new gex($$0.a($$1.e)));
-      this.a = $$1.c;
-      this.a(new haa<>(this, $$0.h(), $$1.f, $$0x -> $$0x.b, new gfe($$0.a($$1.g)), new gfe($$0.a($$1.h))));
+   public gva(gvz.a $$0) {
+      super($$0, new geq($$0.a(git.x)), new geq($$0.a(git.y)), 0.4F);
    }
 
-   public ale a(hbl $$0) {
-      return this.a;
-   }
-
-   public hbl a() {
-      return new hbl();
-   }
-
-   public void a(T $$0, hbl $$1, float $$2) {
-      super.a($$0, $$1, $$2);
-      $$1.a = $$0.t();
-   }
-
-   public static enum a {
-      a(ale.b("textures/entity/horse/donkey.png"), gif.av, gif.aw, hkf.d.k, gif.ax, gif.ay),
-      b(ale.b("textures/entity/horse/mule.png"), gif.bL, gif.bM, hkf.d.l, gif.bN, gif.bO);
-
-      final ale c;
-      final gie d;
-      final gie e;
-      final hkf.d f;
-      final gie g;
-      final gie h;
-
-      private a(final ale $$0, final gie $$1, final gie $$2, final hkf.d $$3, final gie $$4, final gie $$5) {
-         this.c = $$0;
-         this.d = $$1;
-         this.e = $$2;
-         this.f = $$3;
-         this.g = $$4;
-         this.h = $$5;
+   public alg a(hbo $$0) {
+      if ($$0.d) {
+         return $$0.e ? j : a;
+      } else {
+         return $$0.e ? l : k;
       }
+   }
+
+   public hbo a() {
+      return new hbo();
+   }
+
+   public void a(cit $$0, hbo $$1, float $$2) {
+      super.a($$0, $$1, $$2);
+      $$1.a = $$0.J($$2);
+      $$1.b = !$$0.gD();
+      $$1.c = $$0.aJ() && $$0.dy().h() < 1.0E-7;
+      $$1.d = $$0.W_();
+      $$1.e = $$0.gC();
    }
 }

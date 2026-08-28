@@ -1,42 +1,44 @@
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
 import java.util.stream.Stream;
 
-public class epr extends epp {
+public class epr extends eqa {
    public static final MapCodec<epr> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(btd.b(-16, 16).fieldOf("xz_spread").forGetter($$0x -> $$0x.c), btd.b(-16, 16).fieldOf("y_spread").forGetter($$0x -> $$0x.d))
-            .apply($$0, epr::new)
+      $$0 -> $$0.group(iu.a.listOf().fieldOf("positions").forGetter($$0x -> $$0x.c)).apply($$0, epr::new)
    );
-   private final btd c;
-   private final btd d;
+   private final List<iu> c;
 
-   public static epr a(btd $$0, btd $$1) {
-      return new epr($$0, $$1);
+   public static epr a(iu... $$0) {
+      return new epr(List.of($$0));
    }
 
-   public static epr a(btd $$0) {
-      return new epr(bta.a(0), $$0);
-   }
-
-   public static epr b(btd $$0) {
-      return new epr($$0, bta.a(0));
-   }
-
-   private epr(btd $$0, btd $$1) {
+   private epr(List<iu> $$0) {
       this.c = $$0;
-      this.d = $$1;
    }
 
    @Override
-   public Stream<iu> a_(epn $$0, azt $$1, iu $$2) {
-      int $$3 = $$2.u() + this.c.a($$1);
-      int $$4 = $$2.v() + this.d.a($$1);
-      int $$5 = $$2.w() + this.c.a($$1);
-      return Stream.of(new iu($$3, $$4, $$5));
+   public Stream<iu> a_(epy $$0, azv $$1, iu $$2) {
+      int $$3 = jx.a($$2.u());
+      int $$4 = jx.a($$2.w());
+      boolean $$5 = false;
+
+      for (iu $$6 : this.c) {
+         if (a($$3, $$4, $$6)) {
+            $$5 = true;
+            break;
+         }
+      }
+
+      return !$$5 ? Stream.empty() : this.c.stream().filter($$2x -> a($$3, $$4, $$2x));
+   }
+
+   private static boolean a(int $$0, int $$1, iu $$2) {
+      return $$0 == jx.a($$2.u()) && $$1 == jx.a($$2.w());
    }
 
    @Override
-   public epq<?> b() {
-      return epq.n;
+   public eqb<?> b() {
+      return eqb.o;
    }
 }

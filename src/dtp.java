@@ -1,74 +1,49 @@
 import com.mojang.serialization.MapCodec;
 import javax.annotation.Nullable;
 
-public class dtp extends dlu {
-   public static final MapCodec<dtp> a = b(dtp::new);
-   public static final int b = 6;
-   public static final int c = 64;
-   private static final ja[] d = ja.values();
+public class dtp extends dkv {
+   public static final MapCodec<dtp> c = b(dtp::new);
 
    @Override
    public MapCodec<dtp> a() {
-      return a;
+      return c;
    }
 
-   protected dtp(dzn.d $$0) {
+   protected dtp(dzy.d $$0) {
       super($$0);
    }
 
    @Override
-   protected void a(dzo $$0, dip $$1, iu $$2, dzo $$3, boolean $$4) {
-      if (!$$3.a($$0.b())) {
-         this.a($$1, $$2);
+   public dwx a(iu $$0, dzz $$1) {
+      return new dyo($$0, $$1);
+   }
+
+   @Nullable
+   @Override
+   public <T extends dwx> dwy<T> a(div $$0, dzz $$1, dwz<T> $$2) {
+      return a($$0, $$2, dwz.C);
+   }
+
+   @Override
+   protected void a(div $$0, iu $$1, cqy $$2) {
+      dwx $$3 = $$0.c_($$1);
+      if ($$3 instanceof dyo) {
+         $$2.a((bud)$$3);
+         $$2.a(awx.at);
       }
    }
 
    @Override
-   protected void a(dzo $$0, dip $$1, iu $$2, dlu $$3, @Nullable exd $$4, boolean $$5) {
-      this.a($$1, $$2);
-      super.a($$0, $$1, $$2, $$3, $$4, $$5);
-   }
+   public void a(dzz $$0, div $$1, iu $$2, azv $$3) {
+      if ($$0.c(b)) {
+         double $$4 = (double)$$2.u() + 0.5;
+         double $$5 = (double)$$2.v();
+         double $$6 = (double)$$2.w() + 0.5;
+         if ($$3.j() < 0.1) {
+            $$1.a($$4, $$5, $$6, awn.zl, awo.e, 1.0F, 1.0F, false);
+         }
 
-   protected void a(dip $$0, iu $$1) {
-      if (this.b($$0, $$1)) {
-         $$0.a($$1, dlw.aW.m(), 2);
-         $$0.a(null, $$1, awl.zU, awm.e, 1.0F, 1.0F);
+         $$1.a(lx.ah, $$4, $$5 + 1.1, $$6, 0.0, 0.0, 0.0);
       }
-   }
-
-   private boolean b(dip $$0, iu $$1) {
-      return iu.a($$1, 6, 65, ($$0x, $$1x) -> {
-         for (ja $$2 : d) {
-            $$1x.accept($$0x.a($$2));
-         }
-      }, $$2 -> {
-         if ($$2.equals($$1)) {
-            return iu.b.a;
-         } else {
-            dzo $$3 = $$0.a_($$2);
-            evv $$4 = $$0.b_($$2);
-            if (!$$4.a(axf.a)) {
-               return iu.b.b;
-            } else {
-               if ($$3.b() instanceof dmc $$6 && !$$6.a(null, $$0, $$2, $$3).f()) {
-                  return iu.b.a;
-               }
-
-               if ($$3.b() instanceof dqo) {
-                  $$0.a($$2, dlw.a.m(), 3);
-               } else {
-                  if (!$$3.a(dlw.mE) && !$$3.a(dlw.mF) && !$$3.a(dlw.bD) && !$$3.a(dlw.bE)) {
-                     return iu.b.b;
-                  }
-
-                  dwn $$7 = $$3.x() ? $$0.c_($$2) : null;
-                  a($$3, $$0, $$2, $$7);
-                  $$0.a($$2, dlw.a.m(), 3);
-               }
-
-               return iu.b.a;
-            }
-         }
-      }) > 1;
    }
 }

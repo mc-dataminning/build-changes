@@ -1,8 +1,6 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+import javax.annotation.Nullable;
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface hgd {
+@FunctionalInterface
+public interface hgd {
+   boolean get(cyy var1, @Nullable gjr var2, @Nullable bxc var3, int var4, cyw var5);
 }

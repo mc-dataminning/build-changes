@@ -1,3 +1,3 @@
-public class hdt extends haw {
-   public boolean d;
+public class hdt extends hdf {
+   public int a;
 }

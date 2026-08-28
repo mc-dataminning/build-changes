@@ -1,73 +1,18 @@
-public class dea extends dcz {
-   public dea(dcw $$0) {
-      super($$0);
-   }
+public interface dea<T extends ddp<?>> {
+   dea<dde> a = a("crafting");
+   dea<dej> b = a("smelting");
+   dea<dcy> c = a("blasting");
+   dea<deo> d = a("smoking");
+   dea<dda> e = a("campfire_cooking");
+   dea<dep> f = a("stonecutting");
+   dea<dek> g = a("smithing");
 
-   public boolean a(dcx $$0, dip $$1) {
-      if ($$0.e() != 2) {
-         return false;
-      } else {
-         boolean $$2 = false;
-         boolean $$3 = false;
-
-         for (int $$4 = 0; $$4 < $$0.a(); $$4++) {
-            cys $$5 = $$0.a($$4);
-            if (!$$5.f()) {
-               if ($$5.h() instanceof cwy) {
-                  if ($$3) {
-                     return false;
-                  }
-
-                  $$3 = true;
-               } else {
-                  if (!$$5.a(cyw.ww)) {
-                     return false;
-                  }
-
-                  if ($$2) {
-                     return false;
-                  }
-
-                  dwd $$6 = $$5.a(kj.am, dwd.a);
-                  if (!$$6.b().isEmpty()) {
-                     return false;
-                  }
-
-                  $$2 = true;
-               }
-            }
+   static <T extends ddp<?>> dea<T> a(final String $$0) {
+      return jr.a(mf.q, alg.b($$0), new dea<T>() {
+         @Override
+         public String toString() {
+            return $$0;
          }
-
-         return $$2 && $$3;
-      }
-   }
-
-   public cys a(dcx $$0, jg.a $$1) {
-      cys $$2 = cys.k;
-      cys $$3 = cys.k;
-
-      for (int $$4 = 0; $$4 < $$0.a(); $$4++) {
-         cys $$5 = $$0.a($$4);
-         if (!$$5.f()) {
-            if ($$5.h() instanceof cwy) {
-               $$2 = $$5;
-            } else if ($$5.a(cyw.ww)) {
-               $$3 = $$5.v();
-            }
-         }
-      }
-
-      if ($$3.f()) {
-         return $$3;
-      } else {
-         $$3.b(kj.am, $$2.a(kj.am));
-         $$3.b(kj.an, ((cwy)$$2.h()).a());
-         return $$3;
-      }
-   }
-
-   @Override
-   public ddt<dea> a() {
-      return ddt.l;
+      });
    }
 }

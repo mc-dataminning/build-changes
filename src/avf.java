@@ -1,61 +1,78 @@
-import com.google.gson.JsonElement;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.ImmutableMap.Builder;
+import com.google.gson.JsonObject;
 import com.google.gson.JsonParseException;
-import com.google.gson.JsonParser;
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DynamicOps;
 import com.mojang.serialization.JsonOps;
+import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.Reader;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Map.Entry;
-import org.slf4j.Logger;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.nio.charset.StandardCharsets;
+import java.util.Collection;
+import java.util.Optional;
 
-public abstract class avf<T> extends avg<Map<ale, T>> {
-   private static final Logger a = LogUtils.getLogger();
-   private final DynamicOps<JsonElement> b;
-   private final Codec<T> c;
-   private final akx d;
+public interface avf {
+   avf a = new avf() {
+      @Override
+      public <T> Optional<T> a(auc<T> $$0) {
+         return Optional.empty();
+      }
+   };
+   auu<avf> b = () -> a;
 
-   protected avf(jg.a $$0, Codec<T> $$1, ald<? extends jr<T>> $$2) {
-      this($$0.a(JsonOps.INSTANCE), $$1, akx.a($$2));
-   }
-
-   protected avf(Codec<T> $$0, akx $$1) {
-      this(JsonOps.INSTANCE, $$0, $$1);
-   }
-
-   private avf(DynamicOps<JsonElement> $$0, Codec<T> $$1, akx $$2) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
-   }
-
-   protected Map<ale, T> a(avb $$0, bqj $$1) {
-      Map<ale, T> $$2 = new HashMap<>();
-      a($$0, this.d, this.b, this.c, $$2);
-      return $$2;
-   }
-
-   public static <T> void a(avb $$0, ald<? extends jr<T>> $$1, DynamicOps<JsonElement> $$2, Codec<T> $$3, Map<ale, T> $$4) {
-      a($$0, akx.a($$1), $$2, $$3, $$4);
-   }
-
-   public static <T> void a(avb $$0, akx $$1, DynamicOps<JsonElement> $$2, Codec<T> $$3, Map<ale, T> $$4) {
-      for (Entry<ale, auz> $$5 : $$1.a($$0).entrySet()) {
-         ale $$6 = $$5.getKey();
-         ale $$7 = $$1.b($$6);
-
-         try (Reader $$8 = $$5.getValue().e()) {
-            $$3.parse($$2, JsonParser.parseReader($$8)).ifSuccess($$2x -> {
-               if ($$4.putIfAbsent($$7, (T)$$2x) != null) {
-                  throw new IllegalStateException("Duplicate data file ignored with ID " + $$7);
+   static avf a(InputStream $$0) throws IOException {
+      avf var3;
+      try (BufferedReader $$1 = new BufferedReader(new InputStreamReader($$0, StandardCharsets.UTF_8))) {
+         final JsonObject $$2 = azc.a($$1);
+         var3 = new avf() {
+            @Override
+            public <T> Optional<T> a(auc<T> $$0) {
+               String $$1 = $$0.a();
+               if ($$2.has($$1)) {
+                  T $$2 = (T)$$0.b().parse(JsonOps.INSTANCE, $$2.get($$1)).getOrThrow(JsonParseException::new);
+                  return Optional.of($$2);
+               } else {
+                  return Optional.empty();
                }
-            }).ifError($$2x -> a.error("Couldn't parse data file '{}' from '{}': {}", new Object[]{$$7, $$6, $$2x}));
-         } catch (IllegalArgumentException | IOException | JsonParseException var14) {
-            a.error("Couldn't parse data file '{}' from '{}'", new Object[]{$$7, $$6, var14});
-         }
+            }
+         };
+      }
+
+      return var3;
+   }
+
+   <T> Optional<T> a(auc<T> var1);
+
+   default avf a(Collection<auc<?>> $$0) {
+      avf.a $$1 = new avf.a();
+
+      for (auc<?> $$2 : $$0) {
+         this.a($$1, $$2);
+      }
+
+      return $$1.a();
+   }
+
+   private <T> void a(avf.a $$0, auc<T> $$1) {
+      this.a($$1).ifPresent($$2 -> $$0.a($$1, (T)$$2));
+   }
+
+   public static class a {
+      private final Builder<auc<?>, Object> a = ImmutableMap.builder();
+
+      public <T> avf.a a(auc<T> $$0, T $$1) {
+         this.a.put($$0, $$1);
+         return this;
+      }
+
+      public avf a() {
+         final ImmutableMap<auc<?>, Object> $$0 = this.a.build();
+         return $$0.isEmpty() ? avf.a : new avf() {
+            @Override
+            public <T> Optional<T> a(auc<T> $$0x) {
+               return Optional.ofNullable((T)$$0.get($$0));
+            }
+         };
       }
    }
 }

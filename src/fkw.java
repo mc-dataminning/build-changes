@@ -1,27 +1,81 @@
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.Lists;
+import com.google.common.collect.ImmutableMap.Builder;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
+import com.mojang.authlib.minecraft.MinecraftSessionService;
+import com.mojang.authlib.yggdrasil.ProfileResult;
 import com.mojang.logging.LogUtils;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+import java.util.UUID;
 import org.slf4j.Logger;
 
-public class fkw extends fkv {
-   private static final Logger d = LogUtils.getLogger();
-   public String a;
-   public String b;
-   public String c;
+public class fkw extends flh {
+   private static final Logger b = LogUtils.getLogger();
+   public Map<Long, List<ProfileResult>> a = Map.of();
 
    public static fkw a(String $$0) {
-      JsonParser $$1 = new JsonParser();
-      JsonObject $$2 = $$1.parse($$0).getAsJsonObject();
-      fkw $$3 = new fkw();
+      fkw $$1 = new fkw();
+      Builder<Long, List<ProfileResult>> $$2 = ImmutableMap.builder();
 
       try {
-         $$3.a = fmr.b("downloadLink", $$2, "");
-         $$3.b = fmr.b("resourcePackUrl", $$2, "");
-         $$3.c = fmr.b("resourcePackHash", $$2, "");
-      } catch (Exception var5) {
-         d.error("Could not parse WorldDownload: {}", var5.getMessage());
+         JsonObject $$3 = azc.a($$0);
+         if (azc.d($$3, "lists")) {
+            for (JsonElement $$5 : $$3.getAsJsonArray("lists")) {
+               JsonObject $$6 = $$5.getAsJsonObject();
+               String $$7 = fnd.b("playerList", $$6, null);
+               List<ProfileResult> $$9;
+               if ($$7 != null) {
+                  JsonElement $$8 = JsonParser.parseString($$7);
+                  if ($$8.isJsonArray()) {
+                     $$9 = a($$8.getAsJsonArray());
+                  } else {
+                     $$9 = Lists.newArrayList();
+                  }
+               } else {
+                  $$9 = Lists.newArrayList();
+               }
+
+               $$2.put(fnd.a("serverId", $$6, -1L), $$9);
+            }
+         }
+      } catch (Exception var11) {
+         b.error("Could not parse RealmsServerPlayerLists: {}", var11.getMessage());
       }
 
-      return $$3;
+      $$1.a = $$2.build();
+      return $$1;
+   }
+
+   private static List<ProfileResult> a(JsonArray $$0) {
+      List<ProfileResult> $$1 = new ArrayList<>($$0.size());
+      MinecraftSessionService $$2 = fos.Q().am();
+
+      for (JsonElement $$3 : $$0) {
+         if ($$3.isJsonObject()) {
+            UUID $$4 = fnd.a("playerId", $$3.getAsJsonObject(), null);
+            if ($$4 != null && !fos.Q().b($$4)) {
+               try {
+                  ProfileResult $$5 = $$2.fetchProfile($$4, false);
+                  if ($$5 != null) {
+                     $$1.add($$5);
+                  }
+               } catch (Exception var7) {
+                  b.error("Could not get name for {}", $$4, var7);
+               }
+            }
+         }
+      }
+
+      return $$1;
+   }
+
+   public List<ProfileResult> a(long $$0) {
+      List<ProfileResult> $$1 = this.a.get($$0);
+      return $$1 != null ? $$1 : List.of();
    }
 }

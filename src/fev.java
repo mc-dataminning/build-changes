@@ -1,46 +1,85 @@
-import it.unimi.dsi.fastutil.objects.Object2IntMap;
-import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
-import it.unimi.dsi.fastutil.objects.Reference2ObjectOpenHashMap;
-import java.util.Collections;
-import java.util.Map;
-import java.util.function.Consumer;
-import javax.annotation.Nullable;
+import it.unimi.dsi.fastutil.doubles.DoubleArrayList;
+import it.unimi.dsi.fastutil.doubles.DoubleList;
+import it.unimi.dsi.fastutil.doubles.DoubleLists;
 
-class fev {
-   private final Reference2ObjectOpenHashMap<fet, fey> a = new Reference2ObjectOpenHashMap(16, 0.5F);
+public class fev implements feu {
+   private static final DoubleList a = DoubleLists.unmodifiable(DoubleArrayList.wrap(new double[]{0.0}));
+   private final double[] b;
+   private final int[] c;
+   private final int[] d;
+   private final int e;
 
-   @Nullable
-   public fey a(fet $$0) {
-      return (fey)this.a.get($$0);
+   public fev(DoubleList $$0, DoubleList $$1, boolean $$2, boolean $$3) {
+      double $$4 = Double.NaN;
+      int $$5 = $$0.size();
+      int $$6 = $$1.size();
+      int $$7 = $$5 + $$6;
+      this.b = new double[$$7];
+      this.c = new int[$$7];
+      this.d = new int[$$7];
+      boolean $$8 = !$$2;
+      boolean $$9 = !$$3;
+      int $$10 = 0;
+      int $$11 = 0;
+      int $$12 = 0;
+
+      while (true) {
+         boolean $$13 = $$11 >= $$5;
+         boolean $$14 = $$12 >= $$6;
+         if ($$13 && $$14) {
+            this.e = Math.max(1, $$10);
+            return;
+         }
+
+         boolean $$15 = !$$13 && ($$14 || $$0.getDouble($$11) < $$1.getDouble($$12) + 1.0E-7);
+         if ($$15) {
+            $$11++;
+            if ($$8 && ($$12 == 0 || $$14)) {
+               continue;
+            }
+         } else {
+            $$12++;
+            if ($$9 && ($$11 == 0 || $$13)) {
+               continue;
+            }
+         }
+
+         int $$16 = $$11 - 1;
+         int $$17 = $$12 - 1;
+         double $$18 = $$15 ? $$0.getDouble($$16) : $$1.getDouble($$17);
+         if (!($$4 >= $$18 - 1.0E-7)) {
+            this.c[$$10] = $$16;
+            this.d[$$10] = $$17;
+            this.b[$$10] = $$18;
+            $$10++;
+            $$4 = $$18;
+         } else {
+            this.c[$$10 - 1] = $$16;
+            this.d[$$10 - 1] = $$17;
+         }
+      }
    }
 
-   public fey a(fet $$0, Consumer<fey> $$1) {
-      return (fey)this.a.computeIfAbsent($$0, $$1x -> {
-         fey $$2 = new fey();
-         $$1.accept($$2);
-         return $$2;
-      });
+   @Override
+   public boolean a(feu.a $$0) {
+      int $$1 = this.e - 1;
+
+      for (int $$2 = 0; $$2 < $$1; $$2++) {
+         if (!$$0.merge(this.c[$$2], this.d[$$2], $$2)) {
+            return false;
+         }
+      }
+
+      return true;
    }
 
-   public boolean b(fet $$0) {
-      return this.a.remove($$0) != null;
+   @Override
+   public int size() {
+      return this.e;
    }
 
-   public boolean a() {
-      return !this.a.isEmpty();
-   }
-
-   public Object2IntMap<fet> b() {
-      Object2IntMap<fet> $$0 = new Object2IntOpenHashMap();
-      this.a.forEach(($$1, $$2) -> $$0.put($$1, $$2.a()));
-      return $$0;
-   }
-
-   void a(fet $$0, fey $$1) {
-      this.a.put($$0, $$1);
-   }
-
-   Map<fet, fey> c() {
-      return Collections.unmodifiableMap(this.a);
+   @Override
+   public DoubleList a() {
+      return (DoubleList)(this.e <= 1 ? a : DoubleArrayList.wrap(this.b, this.e));
    }
 }

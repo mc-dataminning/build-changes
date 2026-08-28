@@ -1,23 +1,18 @@
-import java.util.List;
-import java.util.UUID;
+import io.netty.buffer.ByteBuf;
 
-public record ady(List<UUID> b) implements zd<abs> {
-   public static final yu<vs, ady> a = zd.a(ady::a, ady::new);
+public class ady implements zf<abu> {
+   public static final ady a = new ady();
+   public static final yw<ByteBuf, ady> b = yw.a(a);
 
-   private ady(vs $$0) {
-      this($$0.a(jy.g));
-   }
-
-   private void a(vs $$0) {
-      $$0.a(this.b, jy.g);
+   private ady() {
    }
 
    @Override
-   public zf<ady> a() {
-      return agl.af;
+   public zh<ady> a() {
+      return agn.ad;
    }
 
-   public void a(abs $$0) {
+   public void a(abu $$0) {
       $$0.a(this);
    }
 }

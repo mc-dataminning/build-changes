@@ -1,45 +1,46 @@
-import net.minecraft.server.MinecraftServer;
+import java.io.ByteArrayOutputStream;
+import java.io.DataOutputStream;
+import java.io.IOException;
 
-public class awb implements eh {
-   private static final String b = "Rcon";
-   private static final ww c = ww.b("Rcon");
-   private final StringBuffer d = new StringBuffer();
-   private final MinecraftServer e;
+public class awb {
+   private final ByteArrayOutputStream a;
+   private final DataOutputStream b;
 
-   public awb(MinecraftServer $$0) {
-      this.e = $$0;
+   public awb(int $$0) {
+      this.a = new ByteArrayOutputStream($$0);
+      this.b = new DataOutputStream(this.a);
    }
 
-   public void e() {
-      this.d.setLength(0);
+   public void a(byte[] $$0) throws IOException {
+      this.b.write($$0, 0, $$0.length);
    }
 
-   public String f() {
-      return this.d.toString();
+   public void a(String $$0) throws IOException {
+      this.b.writeBytes($$0);
+      this.b.write(0);
    }
 
-   public ei g() {
-      aro $$0 = this.e.J();
-      return new ei(this, fdw.a($$0.aa()), fdv.a, $$0, 4, "Rcon", c, this.e, null);
+   public void a(int $$0) throws IOException {
+      this.b.write($$0);
    }
 
-   @Override
-   public void a(ww $$0) {
-      this.d.append($$0.getString());
+   public void a(short $$0) throws IOException {
+      this.b.writeShort(Short.reverseBytes($$0));
    }
 
-   @Override
-   public boolean t_() {
-      return true;
+   public void b(int $$0) throws IOException {
+      this.b.writeInt(Integer.reverseBytes($$0));
    }
 
-   @Override
-   public boolean u_() {
-      return true;
+   public void a(float $$0) throws IOException {
+      this.b.writeInt(Integer.reverseBytes(Float.floatToIntBits($$0)));
    }
 
-   @Override
-   public boolean c() {
-      return this.e.m();
+   public byte[] a() {
+      return this.a.toByteArray();
+   }
+
+   public void b() {
+      this.a.reset();
    }
 }

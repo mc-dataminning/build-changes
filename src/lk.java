@@ -1,22 +1,22 @@
 public class lk extends lf {
-   private final czm c;
-   private final czm.a d;
+   private final czs c;
+   private final czs.a d;
 
-   public lk(cyo $$0) {
-      if ($$0 instanceof czm $$1) {
+   public lk(cyu $$0) {
+      if ($$0 instanceof czs $$1) {
          this.c = $$1;
          this.d = $$1.a();
       } else {
-         throw new IllegalArgumentException($$0 + " not instance of " + czm.class.getSimpleName());
+         throw new IllegalArgumentException($$0 + " not instance of " + czs.class.getSimpleName());
       }
    }
 
    @Override
-   public cys a(ld $$0, cys $$1) {
-      aro $$2 = $$0.b();
-      ja $$3 = $$0.d().c(doa.b);
+   public cyy a(ld $$0, cyy $$1) {
+      arq $$2 = $$0.b();
+      ja $$3 = $$0.d().c(dog.b);
       jo $$4 = this.d.b().getDispensePosition($$0, $$3);
-      crm.a(this.c.a($$2, $$4, $$1, $$3), $$2, $$1, (double)$$3.j(), (double)$$3.k(), (double)$$3.l(), this.d.d(), this.d.c());
+      crs.a(this.c.a($$2, $$4, $$1, $$3), $$2, $$1, (double)$$3.j(), (double)$$3.k(), (double)$$3.l(), this.d.d(), this.d.c());
       $$1.h(1);
       return $$1;
    }

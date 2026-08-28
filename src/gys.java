@@ -1,28 +1,27 @@
-public class gys extends gwb<coo, heg, ghx<heg>> {
-   private static final ale a = ale.b("textures/entity/zombie_villager/zombie_villager.png");
+public class gys extends gut<cjy, hem, gia> {
+   private static final alg a = alg.b("textures/entity/turtle/big_sea_turtle.png");
 
-   public gys(gvk.a $$0) {
-      super($$0, new ghx<>($$0.a(gif.ek)), new ghx<>($$0.a(gif.el)), 0.5F, gyg.a);
-      this.a(new gzn<>(this, new ghx($$0.a(gif.eo)), new ghx($$0.a(gif.ep)), new ghx($$0.a(gif.em)), new ghx($$0.a(gif.en)), $$0.h()));
-      this.a(new hai<>(this, $$0.e(), "zombie_villager"));
+   public gys(gvz.a $$0) {
+      super($$0, new gia($$0.a(git.dE)), new gia($$0.a(git.dF)), 0.7F);
    }
 
-   public ale a(heg $$0) {
-      return a;
+   protected float a(hem $$0) {
+      float $$1 = super.g($$0);
+      return $$0.aj ? $$1 * 0.83F : $$1;
    }
 
-   public heg b() {
-      return new heg();
+   public hem b() {
+      return new hem();
    }
 
-   public void a(coo $$0, heg $$1, float $$2) {
+   public void a(cjy $$0, hem $$1, float $$2) {
       super.a($$0, $$1, $$2);
-      $$1.b = $$0.gx();
-      $$1.c = $$0.gy();
-      $$1.a = $$0.gh();
+      $$1.a = !$$0.bj() && $$0.aJ();
+      $$1.b = $$0.t();
+      $$1.c = !$$0.n_() && $$0.q();
    }
 
-   protected boolean b(heg $$0) {
-      return super.a($$0) || $$0.b;
+   public alg b(hem $$0) {
+      return a;
    }
 }

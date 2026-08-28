@@ -1,16 +1,16 @@
-public enum dzz implements bai {
-   a("floor"),
-   b("wall"),
-   c("ceiling");
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import it.unimi.dsi.fastutil.objects.Reference2ObjectArrayMap;
 
-   private final String d;
+public class dzz extends dzy.a {
+   public static final Codec<dzz> a = a(mf.e.q(), dma::m).stable();
 
-   private dzz(final String $$0) {
-      this.d = $$0;
+   public dzz(dma $$0, Reference2ObjectArrayMap<ebc<?>, Comparable<?>> $$1, MapCodec<dzz> $$2) {
+      super($$0, $$1, $$2);
    }
 
    @Override
-   public String c() {
-      return this.d;
+   protected dzz B() {
+      return this;
    }
 }

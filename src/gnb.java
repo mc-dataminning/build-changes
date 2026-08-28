@@ -1,20 +1,27 @@
-public class gnb extends gmd {
-   protected gnb(gjd $$0, double $$1, double $$2, double $$3, double $$4, gng $$5) {
-      super($$0, $$1, $$2, $$3, $$4, $$5);
-      this.t = 16;
-      this.D = 1.5F;
-      this.b($$5);
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.Streams;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonObject;
+import java.util.List;
+
+public class gnb {
+   private final List<alg> a;
+
+   private gnb(List<alg> $$0) {
+      this.a = $$0;
    }
 
-   public static class a implements gmo<mb> {
-      private final gng a;
+   public List<alg> a() {
+      return this.a;
+   }
 
-      public a(gng $$0) {
-         this.a = $$0;
-      }
-
-      public gml a(mb $$0, gjd $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new gnb($$1, $$2, $$3, $$4, $$5, this.a);
+   public static gnb a(JsonObject $$0) {
+      JsonArray $$1 = azc.a($$0, "textures", null);
+      if ($$1 == null) {
+         return new gnb(List.of());
+      } else {
+         List<alg> $$2 = Streams.stream($$1).map($$0x -> azc.a($$0x, "texture")).map(alg::a).collect(ImmutableList.toImmutableList());
+         return new gnb($$2);
       }
    }
 }

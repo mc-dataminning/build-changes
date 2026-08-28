@@ -1,21 +1,25 @@
-public record acu(ww b, ws.a c) implements zd<abs> {
-   public static final yu<wh, acu> a = yu.a(wy.d, acu::b, ws.a.a, acu::e, acu::new);
+public record acu(long[] b, box c) implements zf<abu> {
+   public static final yw<vu, acu> a = zf.a(acu::a, acu::new);
 
-   @Override
-   public zf<acu> a() {
-      return agl.B;
+   private acu(vu $$0) {
+      this($$0.d(), $$0.b(box.class));
    }
 
-   public void a(abs $$0) {
+   private void a(vu $$0) {
+      $$0.a(this.b);
+      $$0.a(this.c);
+   }
+
+   @Override
+   public zh<acu> a() {
+      return agn.z;
+   }
+
+   public void a(abu $$0) {
       $$0.a(this);
    }
 
-   @Override
-   public boolean c() {
-      return true;
-   }
-
-   public ws.a e() {
+   public box e() {
       return this.c;
    }
 }

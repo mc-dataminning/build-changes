@@ -1,181 +1,70 @@
-import com.mojang.blaze3d.systems.RenderSystem;
-import org.joml.Matrix3f;
-import org.joml.Matrix4f;
-import org.joml.Matrix4fStack;
-import org.joml.Vector3f;
+public class gpz {
+   private int a;
+   private int b;
+   private int c;
+   private int d;
 
-public class gpz implements AutoCloseable {
-   private static final ale b = ale.b("textures/environment/sun.png");
-   private static final ale c = ale.b("textures/environment/moon_phases.png");
-   public static final ale a = ale.b("textures/environment/end_sky.png");
-   private static final float d = 512.0F;
-   private final fit e = fit.a(fiv.c.h, fio.e, this::a);
-   private final fit f = fit.a(fiv.c.g, fio.e, $$0 -> this.a($$0, 16.0F));
-   private final fit g = fit.a(fiv.c.g, fio.e, $$0 -> this.a($$0, -16.0F));
-   private final fit h = fit.a(fiv.c.h, fio.j, this::b);
-
-   private void a(fiu $$0) {
-      azt $$1 = azt.a(10842L);
-      int $$2 = 1500;
-      float $$3 = 100.0F;
-
-      for (int $$4 = 0; $$4 < 1500; $$4++) {
-         float $$5 = $$1.i() * 2.0F - 1.0F;
-         float $$6 = $$1.i() * 2.0F - 1.0F;
-         float $$7 = $$1.i() * 2.0F - 1.0F;
-         float $$8 = 0.15F + $$1.i() * 0.1F;
-         float $$9 = azk.k($$5, $$6, $$7);
-         if (!($$9 <= 0.010000001F) && !($$9 >= 1.0F)) {
-            Vector3f $$10 = new Vector3f($$5, $$6, $$7).normalize(100.0F);
-            float $$11 = (float)($$1.j() * (float) Math.PI * 2.0);
-            Matrix3f $$12 = new Matrix3f().rotateTowards(new Vector3f($$10).negate(), new Vector3f(0.0F, 1.0F, 0.0F)).rotateZ(-$$11);
-            $$0.a(new Vector3f($$8, -$$8, 0.0F).mul($$12).add($$10));
-            $$0.a(new Vector3f($$8, $$8, 0.0F).mul($$12).add($$10));
-            $$0.a(new Vector3f(-$$8, $$8, 0.0F).mul($$12).add($$10));
-            $$0.a(new Vector3f(-$$8, -$$8, 0.0F).mul($$12).add($$10));
-         }
-      }
+   public gpz(int $$0, int $$1, int $$2, int $$3) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+      this.d = $$3;
    }
 
-   private void a(fiu $$0, float $$1) {
-      float $$2 = Math.signum($$1) * 512.0F;
-      $$0.a(0.0F, $$1, 0.0F);
-
-      for (int $$3 = -180; $$3 <= 180; $$3 += 45) {
-         $$0.a($$2 * azk.b((float)$$3 * (float) (Math.PI / 180.0)), $$1, 512.0F * azk.a((float)$$3 * (float) (Math.PI / 180.0)));
-      }
+   public gpz a(gpz $$0) {
+      int $$1 = this.a;
+      int $$2 = this.b;
+      int $$3 = this.a + this.c;
+      int $$4 = this.b + this.d;
+      int $$5 = $$0.a();
+      int $$6 = $$0.b();
+      int $$7 = $$5 + $$0.c();
+      int $$8 = $$6 + $$0.d();
+      this.a = Math.max($$1, $$5);
+      this.b = Math.max($$2, $$6);
+      this.c = Math.max(0, Math.min($$3, $$7) - this.a);
+      this.d = Math.max(0, Math.min($$4, $$8) - this.b);
+      return this;
    }
 
-   public void a(float $$0, float $$1, float $$2) {
-      RenderSystem.setShaderColor($$0, $$1, $$2, 1.0F);
-      this.f.a(gpn.G());
-      RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, 1.0F);
+   public int a() {
+      return this.a;
    }
 
-   public void a(fiq $$0) {
-      RenderSystem.setShaderColor(0.0F, 0.0F, 0.0F, 1.0F);
-      $$0.a();
-      $$0.a(0.0F, 12.0F, 0.0F);
-      this.g.a(gpn.G());
-      $$0.b();
-      RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, 1.0F);
+   public int b() {
+      return this.b;
    }
 
-   public void a(fiq $$0, gpd.a $$1, float $$2, int $$3, float $$4, float $$5, gor $$6) {
-      $$0.a();
-      $$0.a(a.d.rotationDegrees(-90.0F));
-      $$0.a(a.b.rotationDegrees($$2 * 360.0F));
-      this.a($$4, $$1, $$0);
-      this.a($$3, $$4, $$1, $$0);
-      $$1.b();
-      if ($$5 > 0.0F) {
-         this.a($$6, $$5, $$0);
-      }
-
-      $$0.b();
+   public void a(int $$0) {
+      this.a = $$0;
    }
 
-   private void a(float $$0, gpd $$1, fiq $$2) {
-      float $$3 = 30.0F;
-      float $$4 = 100.0F;
-      fiu $$5 = $$1.getBuffer(gpn.C(b));
-      int $$6 = axu.a($$0);
-      Matrix4f $$7 = $$2.c().a();
-      $$5.a($$7, -30.0F, 100.0F, -30.0F).a(0.0F, 0.0F).a($$6);
-      $$5.a($$7, 30.0F, 100.0F, -30.0F).a(1.0F, 0.0F).a($$6);
-      $$5.a($$7, 30.0F, 100.0F, 30.0F).a(1.0F, 1.0F).a($$6);
-      $$5.a($$7, -30.0F, 100.0F, 30.0F).a(0.0F, 1.0F).a($$6);
+   public void b(int $$0) {
+      this.b = $$0;
    }
 
-   private void a(int $$0, float $$1, gpd $$2, fiq $$3) {
-      float $$4 = 20.0F;
-      int $$5 = $$0 % 4;
-      int $$6 = $$0 / 4 % 2;
-      float $$7 = (float)($$5 + 0) / 4.0F;
-      float $$8 = (float)($$6 + 0) / 2.0F;
-      float $$9 = (float)($$5 + 1) / 4.0F;
-      float $$10 = (float)($$6 + 1) / 2.0F;
-      float $$11 = 100.0F;
-      fiu $$12 = $$2.getBuffer(gpn.C(c));
-      int $$13 = axu.a($$1);
-      Matrix4f $$14 = $$3.c().a();
-      $$12.a($$14, -20.0F, -100.0F, 20.0F).a($$9, $$10).a($$13);
-      $$12.a($$14, 20.0F, -100.0F, 20.0F).a($$7, $$10).a($$13);
-      $$12.a($$14, 20.0F, -100.0F, -20.0F).a($$7, $$8).a($$13);
-      $$12.a($$14, -20.0F, -100.0F, -20.0F).a($$9, $$8).a($$13);
+   public int c() {
+      return this.c;
    }
 
-   private void a(gor $$0, float $$1, fiq $$2) {
-      Matrix4fStack $$3 = RenderSystem.getModelViewStack();
-      $$3.pushMatrix();
-      $$3.mul($$2.c().a());
-      RenderSystem.setShaderColor($$1, $$1, $$1, $$1);
-      RenderSystem.setShaderFog(gor.a);
-      this.e.a(gpn.J());
-      RenderSystem.setShaderFog($$0);
-      RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, 1.0F);
-      $$3.popMatrix();
+   public int d() {
+      return this.d;
    }
 
-   public void a(fiq $$0, gpd.a $$1, float $$2, int $$3) {
-      $$0.a();
-      $$0.a(a.b.rotationDegrees(90.0F));
-      float $$4 = azk.a($$2) < 0.0F ? 180.0F : 0.0F;
-      $$0.a(a.f.rotationDegrees($$4));
-      $$0.a(a.f.rotationDegrees(90.0F));
-      Matrix4f $$5 = $$0.c().a();
-      fiu $$6 = $$1.getBuffer(gpn.I());
-      float $$7 = axu.i($$3);
-      $$6.a($$5, 0.0F, 100.0F, 0.0F).a($$3);
-      int $$8 = axu.g($$3);
-      int $$9 = 16;
-
-      for (int $$10 = 0; $$10 <= 16; $$10++) {
-         float $$11 = (float)$$10 * (float) (Math.PI * 2) / 16.0F;
-         float $$12 = azk.a($$11);
-         float $$13 = azk.b($$11);
-         $$6.a($$5, $$12 * 120.0F, $$13 * 120.0F, -$$13 * 40.0F * $$7).a($$8);
-      }
-
-      $$0.b();
+   public void c(int $$0) {
+      this.c = $$0;
    }
 
-   private void b(fiu $$0) {
-      for (int $$1 = 0; $$1 < 6; $$1++) {
-         Matrix4f $$2 = new Matrix4f();
-         switch ($$1) {
-            case 1:
-               $$2.rotationX((float) (Math.PI / 2));
-               break;
-            case 2:
-               $$2.rotationX((float) (-Math.PI / 2));
-               break;
-            case 3:
-               $$2.rotationX((float) Math.PI);
-               break;
-            case 4:
-               $$2.rotationZ((float) (Math.PI / 2));
-               break;
-            case 5:
-               $$2.rotationZ((float) (-Math.PI / 2));
-         }
-
-         $$0.a($$2, -100.0F, -100.0F, -100.0F).a(0.0F, 0.0F).a(-14145496);
-         $$0.a($$2, -100.0F, -100.0F, 100.0F).a(0.0F, 16.0F).a(-14145496);
-         $$0.a($$2, 100.0F, -100.0F, 100.0F).a(16.0F, 16.0F).a(-14145496);
-         $$0.a($$2, 100.0F, -100.0F, -100.0F).a(16.0F, 0.0F).a(-14145496);
-      }
+   public void d(int $$0) {
+      this.d = $$0;
    }
 
-   public void a() {
-      this.h.a(gpn.H());
+   public void a(int $$0, int $$1) {
+      this.a = $$0;
+      this.b = $$1;
    }
 
-   @Override
-   public void close() {
-      this.e.close();
-      this.f.close();
-      this.g.close();
-      this.h.close();
+   public boolean b(int $$0, int $$1) {
+      return $$0 >= this.a && $$0 <= this.a + this.c && $$1 >= this.b && $$1 <= this.b + this.d;
    }
 }

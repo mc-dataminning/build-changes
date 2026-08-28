@@ -1,87 +1,59 @@
 import javax.annotation.Nullable;
 
-public class cle extends cdv {
-   private final cld a;
-
-   public cle(cld $$0) {
-      this.a = $$0;
+public class cle extends clc {
+   public cle(bwm<? extends cle> $$0, div $$1) {
+      super($$0, $$1);
    }
 
    @Override
-   public boolean b() {
-      return this.a.dV().a(this.a.dA(), this.a.dC(), this.a.dG(), 10.0);
+   protected awm u() {
+      return awn.hB;
    }
 
    @Override
-   public void a() {
-      aro $$0 = (aro)this.a.dV();
-      btw $$1 = $$0.d_(this.a.dv());
-      this.a.w(false);
-      this.a.x(true);
-      this.a.c_(0);
-      bwy $$2 = bwj.aw.a($$0, bwi.k);
-      if ($$2 != null) {
-         $$2.e(this.a.dA(), this.a.dC(), this.a.dG());
-         $$2.a(true);
-         $$0.b($$2);
-         cob $$3 = this.a($$1, this.a);
-         if ($$3 != null) {
-            $$3.n(this.a);
-            $$0.a_($$3);
+   protected awm gQ() {
+      return awn.hC;
+   }
 
-            for (int $$4 = 0; $$4 < 3; $$4++) {
-               ckx $$5 = this.a($$1);
-               if ($$5 != null) {
-                  cob $$6 = this.a($$1, $$5);
-                  if ($$6 != null) {
-                     $$6.n($$5);
-                     $$5.j(this.a.dY().a(0.0, 1.1485), 0.0, this.a.dY().a(0.0, 1.1485));
-                     $$0.a_($$5);
-                  }
-               }
-            }
-         }
-      }
+   @Override
+   protected awm l_() {
+      return awn.hE;
    }
 
    @Nullable
-   private ckx a(btw $$0) {
-      cld $$1 = bwj.bg.a(this.a.dV(), bwi.k);
-      if ($$1 != null) {
-         $$1.a((aro)this.a.dV(), $$0, bwi.k, null);
-         $$1.a_(this.a.dA(), this.a.dC(), this.a.dG());
-         $$1.aj = 60;
-         $$1.fY();
-         $$1.x(true);
-         $$1.c_(0);
-      }
+   @Override
+   protected awm gs() {
+      return awn.hF;
+   }
 
-      return $$1;
+   @Override
+   protected awm e(bus $$0) {
+      return awn.hG;
+   }
+
+   @Override
+   public boolean a(cis $$0) {
+      if ($$0 == this) {
+         return false;
+      } else {
+         return !($$0 instanceof cle) && !($$0 instanceof clf) ? false : this.gY() && ((cld)$$0).gY();
+      }
+   }
+
+   @Override
+   protected void gX() {
+      this.a(awn.hH, 0.4F, 1.0F);
    }
 
    @Nullable
-   private cob a(btw $$0, ckx $$1) {
-      cob $$2 = bwj.bf.a($$1.dV(), bwi.k);
-      if ($$2 != null) {
-         $$2.a((aro)$$1.dV(), $$0, bwi.k, null);
-         $$2.a_($$1.dA(), $$1.dC(), $$1.dG());
-         $$2.aj = 60;
-         $$2.fY();
-         if ($$2.a(bwk.f).f()) {
-            $$2.a(bwk.f, new cys(cyw.qp));
-         }
-
-         this.a($$2, bwk.a, $$0);
-         this.a($$2, bwk.f, $$0);
+   @Override
+   public bvt a(arq $$0, bvt $$1) {
+      bwm<? extends cld> $$2 = $$1 instanceof clf ? bwm.aF : bwm.I;
+      cld $$3 = $$2.a($$0, bwl.e);
+      if ($$3 != null) {
+         this.a($$1, $$3);
       }
 
-      return $$2;
-   }
-
-   private void a(cob $$0, bwk $$1, btw $$2) {
-      cys $$3 = $$0.a($$1);
-      $$3.b(kj.l, dfl.a);
-      dfh.a($$3, $$0.dV().F_(), dgt.a, $$2, $$0.dY());
-      $$0.a($$1, $$3);
+      return $$3;
    }
 }

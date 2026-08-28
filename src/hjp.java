@@ -1,14 +1,15 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+public class hjp extends hjt {
+   private static final alg a = alg.b("back");
 
-public record hjp(hjq d) {
-   public static final hjp a = new hjp(hjq.b);
-   public static final Codec<hjp> b = RecordCodecBuilder.create(
-      $$0 -> $$0.group(hjq.a.optionalFieldOf("scaling", hjq.b).forGetter(hjp::a)).apply($$0, hjp::new)
-   );
-   public static final aua<hjp> c = new aua<>("gui", b);
+   public hjp(hir $$0) {
+      super($$0, alg.b("textures/atlas/paintings.png"), hkn.j);
+   }
 
-   public hjq a() {
-      return this.d;
+   public hip a(cmz $$0) {
+      return this.a($$0.d());
+   }
+
+   public hip a() {
+      return this.a(a);
    }
 }

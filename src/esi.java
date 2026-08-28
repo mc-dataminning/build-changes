@@ -1,28 +1,25 @@
 import com.mojang.serialization.MapCodec;
-import java.util.Optional;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.function.BiConsumer;
+import java.util.stream.Stream;
 
-public class esi extends eqi {
-   public static final MapCodec<esi> d = a(esi::new);
+record esi(alf<esd> c, bsm<alf<esd>> d) implements esf {
+   static MapCodec<esi> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(alf.a(mg.be).fieldOf("alias").forGetter(esi::c), bsm.b(alf.a(mg.be)).fieldOf("targets").forGetter(esi::d)).apply($$0, esi::new)
+   );
 
-   public esi(eqi.c $$0) {
-      super($$0);
+   @Override
+   public void a(azv $$0, BiConsumer<alf<esd>, alf<esd>> $$1) {
+      this.d.a($$0).ifPresent($$1x -> $$1.accept(this.c, $$1x));
    }
 
    @Override
-   public Optional<eqi.b> a(eqi.a $$0) {
-      return a($$0, efn.a.a, $$1 -> this.a($$1, $$0));
-   }
-
-   private void a(era $$0, eqi.a $$1) {
-      dhw $$2 = $$1.h();
-      egm $$3 = $$1.f();
-      iu $$4 = new iu($$2.d(), 90, $$2.e());
-      dsm $$5 = dsm.a($$3);
-      esh.a($$1.e(), $$4, $$5, $$0, $$3);
+   public Stream<alf<esd>> a() {
+      return this.d.d().stream().map(bsl::a);
    }
 
    @Override
-   public eqr<?> e() {
-      return eqr.e;
+   public MapCodec<esi> b() {
+      return a;
    }
 }

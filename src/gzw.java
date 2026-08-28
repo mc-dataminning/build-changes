@@ -1,12 +1,12 @@
-public class gzw extends gzk<hcy, ggd> {
-   private static final gpn a = gpn.q(ale.b("textures/entity/phantom_eyes.png"));
+public class gzw extends gzz<hce, gfo<hce>> {
+   private static final gqc a = gqc.q(alg.b("textures/entity/enderman/enderman_eyes.png"));
 
-   public gzw(gxh<hcy, ggd> $$0) {
+   public gzw(gxw<hce, gfo<hce>> $$0) {
       super($$0);
    }
 
    @Override
-   public gpn a() {
+   public gqc a() {
       return a;
    }
 }

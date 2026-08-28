@@ -1,39 +1,69 @@
+import com.google.common.collect.Maps;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Map.Entry;
+
 public class cyv {
-   public static bty a(dip $$0, cqs $$1, btx $$2) {
-      $$1.c($$2);
-      return bty.c;
+   private final Map<alg, cyv.a> a = Maps.newHashMap();
+   private int b;
+
+   public boolean a(cyy $$0) {
+      return this.a($$0, 0.0F) > 0.0F;
    }
 
-   public static cys a(cys $$0, cqs $$1, cys $$2, boolean $$3) {
-      boolean $$4 = $$1.fU();
-      if ($$3 && $$4) {
-         if (!$$1.gi().i($$2)) {
-            $$1.gi().f($$2);
-         }
-
-         return $$0;
+   public float a(cyy $$0, float $$1) {
+      alg $$2 = this.b($$0);
+      cyv.a $$3 = this.a.get($$2);
+      if ($$3 != null) {
+         float $$4 = (float)($$3.b - $$3.a);
+         float $$5 = (float)$$3.b - ((float)this.b + $$1);
+         return azm.a($$5 / $$4, 0.0F, 1.0F);
       } else {
-         $$0.a(1, $$1);
-         if ($$0.f()) {
-            return $$2;
-         } else {
-            if (!$$1.gi().f($$2)) {
-               $$1.a($$2, false);
-            }
+         return 0.0F;
+      }
+   }
 
-            return $$0;
+   public void a() {
+      this.b++;
+      if (!this.a.isEmpty()) {
+         Iterator<Entry<alg, cyv.a>> $$0 = this.a.entrySet().iterator();
+
+         while ($$0.hasNext()) {
+            Entry<alg, cyv.a> $$1 = $$0.next();
+            if ($$1.getValue().b <= this.b) {
+               $$0.remove();
+               this.b($$1.getKey());
+            }
          }
       }
    }
 
-   public static cys a(cys $$0, cqs $$1, cys $$2) {
-      return a($$0, $$1, $$2, true);
+   public alg b(cyy $$0) {
+      dce $$1 = $$0.a(kj.y);
+      alg $$2 = mf.g.b($$0.h());
+      return $$1 == null ? $$2 : $$1.c().orElse($$2);
    }
 
-   public static void a(cmx $$0, Iterable<cys> $$1) {
-      dip $$2 = $$0.dV();
-      if (!$$2.C) {
-         $$1.forEach($$2x -> $$2.b(new cmx($$2, $$0.dA(), $$0.dC(), $$0.dG(), $$2x)));
-      }
+   public void a(cyy $$0, int $$1) {
+      this.a(this.b($$0), $$1);
+   }
+
+   public void a(alg $$0, int $$1) {
+      this.a.put($$0, new cyv.a(this.b, this.b + $$1));
+      this.b($$0, $$1);
+   }
+
+   public void a(alg $$0) {
+      this.a.remove($$0);
+      this.b($$0);
+   }
+
+   protected void b(alg $$0, int $$1) {
+   }
+
+   protected void b(alg $$0) {
+   }
+
+   static record a(int a, int b) {
    }
 }

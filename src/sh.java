@@ -1,15 +1,16 @@
-public class sh extends RuntimeException {
-   protected final ww a;
+public class sh extends so {
+   protected final wy a;
    protected final int b;
 
-   public sh(ww $$0, int $$1) {
+   public sh(wy $$0, int $$1) {
       super($$0.getString());
       this.a = $$0;
       this.b = $$1;
    }
 
-   public ww a() {
-      return ww.a("test.error.tick", this.a, this.b);
+   @Override
+   public wy a() {
+      return wy.a("test.error.tick", this.a, this.b);
    }
 
    @Override

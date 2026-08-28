@@ -1,28 +1,20 @@
-public class cyd<T extends bwa & bww> extends cyo {
-   private final bwj<T> a;
-   private final int b;
+public class cyd extends cyu {
+   public static float a = 1.5F;
 
-   public cyd(bwj<T> $$0, int $$1, cyo.a $$2) {
-      super($$2);
-      this.a = $$0;
-      this.b = $$1;
+   public cyd(cyu.a $$0) {
+      super($$0);
    }
 
    @Override
-   public bty a(dip $$0, cqs $$1, btx $$2) {
-      cys $$3 = $$1.b($$2);
-      if ($$0.C) {
-         return bty.e;
-      } else {
-         bwa $$4 = $$1.dl();
-         if ($$1.bZ() && $$4 instanceof bww $$5 && $$4.aq() == this.a && $$5.a()) {
-            bwk $$6 = bwz.d($$2);
-            cys $$7 = $$3.a(this.b, cyw.rW, $$1, $$6);
-            return bty.b.a($$7);
-         }
-
-         $$1.b(awv.c.b(this));
-         return bty.e;
+   public bub a(div $$0, cqy $$1, bua $$2) {
+      cyy $$3 = $$1.b($$2);
+      $$0.a(null, $$1.dA(), $$1.dC(), $$1.dG(), awn.iP, awo.g, 0.5F, 0.4F / ($$0.C_().i() * 0.4F + 0.8F));
+      if ($$0 instanceof arq $$4) {
+         crs.a(csc::new, $$4, $$3, $$1, 0.0F, a, 1.0F);
       }
+
+      $$1.b(awx.c.b(this));
+      $$3.a(1, $$1);
+      return bub.a;
    }
 }

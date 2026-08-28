@@ -1,103 +1,76 @@
-import com.mojang.datafixers.DataFixUtils;
-import com.mojang.datafixers.RewriteResult;
-import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.Typed;
-import com.mojang.datafixers.View;
-import com.mojang.datafixers.functions.PointFreeRule;
-import com.mojang.datafixers.types.Type;
+import com.mojang.datafixers.DataFixer;
+import com.mojang.datafixers.DSL.TypeReference;
+import com.mojang.datafixers.util.Pair;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
 import com.mojang.serialization.Dynamic;
 import com.mojang.serialization.DynamicOps;
-import java.util.BitSet;
-import java.util.Map;
-import java.util.Optional;
-import java.util.function.Function;
-import java.util.function.UnaryOperator;
-import java.util.stream.Collectors;
-import java.util.stream.IntStream;
+import java.util.Set;
 
-public class bbb {
-   public static Dynamic<?> a(Dynamic<?> $$0) {
-      Optional<Number> $$1 = $$0.get("X").asNumber().result();
-      Optional<Number> $$2 = $$0.get("Y").asNumber().result();
-      Optional<Number> $$3 = $$0.get("Z").asNumber().result();
-      return !$$1.isEmpty() && !$$2.isEmpty() && !$$3.isEmpty()
-         ? $$0.createIntList(IntStream.of($$1.get().intValue(), $$2.get().intValue(), $$3.get().intValue()))
-         : $$0;
+public enum bbb {
+   a(biw.a),
+   b(biw.b),
+   c(biw.c),
+   d(biw.d),
+   e(biw.e),
+   f(biw.f),
+   g(biw.g),
+   h(biw.h),
+   i(biw.i),
+   j(biw.j),
+   k(biw.k),
+   l(biw.l),
+   m(biw.m),
+   n(biw.o),
+   o(biw.n),
+   p(biw.p),
+   q(biw.q),
+   r(biw.O),
+   s(biw.r);
+
+   public static final Set<TypeReference> t;
+   private final TypeReference u;
+
+   private bbb(final TypeReference $$0) {
+      this.u = $$0;
    }
 
-   public static <T, R> Typed<R> a(Type<R> $$0, Typed<T> $$1) {
-      return new Typed($$0, $$1.getOps(), $$1.getValue());
+   static int a() {
+      return ab.b().d().c();
    }
 
-   public static <T> Typed<T> a(Type<T> $$0, Object $$1, DynamicOps<?> $$2) {
-      return new Typed($$0, $$2, $$1);
-   }
-
-   public static Type<?> a(Type<?> $$0, Type<?> $$1, Type<?> $$2) {
-      return $$0.all(a($$1, $$2), true, false).view().newType();
-   }
-
-   private static <A, B> TypeRewriteRule a(Type<A> $$0, Type<B> $$1) {
-      RewriteResult<A, B> $$2 = RewriteResult.create(View.create("Patcher", $$0, $$1, $$0x -> $$0xx -> {
-            throw new UnsupportedOperationException();
-         }), new BitSet());
-      return TypeRewriteRule.everywhere(TypeRewriteRule.ifSame($$0, $$2), PointFreeRule.nop(), true, true);
-   }
-
-   @SafeVarargs
-   public static <T> Function<Typed<?>, Typed<?>> a(Function<Typed<?>, Typed<?>>... $$0) {
-      return $$1 -> {
-         for (Function<Typed<?>, Typed<?>> $$2 : $$0) {
-            $$1 = $$2.apply($$1);
+   public <A> Codec<A> a(final Codec<A> $$0, final DataFixer $$1, final int $$2) {
+      return new Codec<A>() {
+         public <T> DataResult<T> encode(A $$0x, DynamicOps<T> $$1x, T $$2x) {
+            return $$0.encode($$0, $$1, $$2).flatMap($$1xxx -> $$1.mergeToMap($$1xxx, $$1.createString("DataVersion"), $$1.createInt(bbb.a())));
          }
 
-         return $$1;
+         public <T> DataResult<Pair<A, T>> decode(DynamicOps<T> $$0x, T $$1x) {
+            int $$2 = $$0.get($$1, "DataVersion").flatMap($$0::getNumberValue).map(Number::intValue).result().orElse($$2);
+            Dynamic<T> $$3 = new Dynamic($$0, $$0.remove($$1, "DataVersion"));
+            Dynamic<T> $$4 = bbb.this.a($$1, $$3, $$2);
+            return $$0.decode($$4);
+         }
       };
    }
 
-   public static Dynamic<?> a(String $$0, Map<String, String> $$1) {
-      Dynamic<uu> $$2 = new Dynamic(ul.a, new tx());
-      Dynamic<uu> $$3 = $$2.set("Name", $$2.createString($$0));
-      if (!$$1.isEmpty()) {
-         $$3 = $$3.set(
-            "Properties",
-            $$2.createMap(
-               $$1.entrySet()
-                  .stream()
-                  .collect(Collectors.toMap($$1x -> $$2.createString((String)$$1x.getKey()), $$1x -> $$2.createString((String)$$1x.getValue())))
-            )
-         );
-      }
-
-      return $$3;
+   public <T> Dynamic<T> a(DataFixer $$0, Dynamic<T> $$1, int $$2, int $$3) {
+      return $$0.update(this.u, $$1, $$2, $$3);
    }
 
-   public static Dynamic<?> a(String $$0) {
-      return a($$0, Map.of());
+   public <T> Dynamic<T> a(DataFixer $$0, Dynamic<T> $$1, int $$2) {
+      return this.a($$0, $$1, $$2, a());
    }
 
-   public static Dynamic<?> a(Dynamic<?> $$0, String $$1, UnaryOperator<String> $$2) {
-      return $$0.update($$1, $$2x -> (Dynamic)DataFixUtils.orElse($$2x.asString().map($$2).map($$0::createString).result(), $$2x));
+   public tz a(DataFixer $$0, tz $$1, int $$2, int $$3) {
+      return (tz)this.a($$0, new Dynamic(un.a, $$1), $$2, $$3).getValue();
    }
 
-   public static String a(int $$0) {
-      return switch ($$0) {
-         case 1 -> "orange";
-         case 2 -> "magenta";
-         case 3 -> "light_blue";
-         case 4 -> "yellow";
-         case 5 -> "lime";
-         case 6 -> "pink";
-         case 7 -> "gray";
-         case 8 -> "light_gray";
-         case 9 -> "cyan";
-         case 10 -> "purple";
-         case 11 -> "blue";
-         case 12 -> "brown";
-         case 13 -> "green";
-         case 14 -> "red";
-         case 15 -> "black";
-         default -> "white";
-      };
+   public tz a(DataFixer $$0, tz $$1, int $$2) {
+      return this.a($$0, $$1, $$2, a());
+   }
+
+   static {
+      t = Set.of(a.u);
    }
 }

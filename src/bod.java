@@ -1,11 +1,10 @@
 import com.mojang.datafixers.DSL;
 import com.mojang.datafixers.schemas.Schema;
 import com.mojang.datafixers.types.templates.TypeTemplate;
-import com.mojang.datafixers.util.Pair;
 import java.util.Map;
 import java.util.function.Supplier;
 
-public class bod extends bko {
+public class bod extends bkr {
    public bod(int $$0, Schema $$1) {
       super($$0, $$1);
    }
@@ -14,21 +13,26 @@ public class bod extends bko {
       super.registerTypes($$0, $$1, $$2);
       $$0.registerType(
          true,
-         bit.A,
-         () -> DSL.optional(
-               DSL.field(
-                  "equipment",
-                  DSL.optionalFields(
-                     new Pair[]{
-                        Pair.of("mainhand", bit.t.in($$0)),
-                        Pair.of("offhand", bit.t.in($$0)),
-                        Pair.of("feet", bit.t.in($$0)),
-                        Pair.of("legs", bit.t.in($$0)),
-                        Pair.of("chest", bit.t.in($$0)),
-                        Pair.of("head", bit.t.in($$0)),
-                        Pair.of("body", bit.t.in($$0)),
-                        Pair.of("saddle", bit.t.in($$0))
-                     }
+         biw.z,
+         () -> DSL.or(
+               DSL.or(DSL.constType(DSL.string()), DSL.list(biw.z.in($$0))),
+               DSL.optionalFields(
+                  "extra",
+                  DSL.list(biw.z.in($$0)),
+                  "separator",
+                  biw.z.in($$0),
+                  "hoverEvent",
+                  DSL.taggedChoice(
+                     "action",
+                     DSL.string(),
+                     Map.of(
+                        "show_text",
+                        DSL.optionalFields("contents", biw.z.in($$0)),
+                        "show_item",
+                        DSL.optionalFields("contents", DSL.or(biw.t.in($$0), biw.F.in($$0))),
+                        "show_entity",
+                        DSL.optionalFields("type", biw.B.in($$0), "name", biw.z.in($$0))
+                     )
                   )
                )
             )

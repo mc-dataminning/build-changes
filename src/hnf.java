@@ -1,8 +1,10 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+import java.io.Closeable;
+import java.io.IOException;
+import java.nio.ByteBuffer;
+import javax.sound.sampled.AudioFormat;
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface hnf {
+public interface hnf extends Closeable {
+   AudioFormat a();
+
+   ByteBuffer a(int var1) throws IOException;
 }

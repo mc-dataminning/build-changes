@@ -1,77 +1,97 @@
-import com.mojang.datafixers.DataFixer;
-import com.mojang.logging.LogUtils;
-import java.io.File;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.StandardCopyOption;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
-import java.util.Optional;
-import org.slf4j.Logger;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.stream.Stream;
+import javax.annotation.Nullable;
 
 public class eye {
-   private static final Logger b = LogUtils.getLogger();
-   private final File c;
-   protected final DataFixer a;
-   private static final DateTimeFormatter d = exw.a();
+   private static final String a = "command_storage_";
+   private final Map<String, eye.a> b = new HashMap<>();
+   private final eyh c;
 
-   public eye(eyb.c $$0, DataFixer $$1) {
-      this.a = $$1;
-      this.c = $$0.a(exz.c).toFile();
-      this.c.mkdirs();
+   public eye(eyh $$0) {
+      this.c = $$0;
    }
 
-   public void a(cqs $$0) {
-      try {
-         tx $$1 = $$0.f(new tx());
-         Path $$2 = this.c.toPath();
-         Path $$3 = Files.createTempFile($$2, $$0.cH() + "-", ".dat");
-         uk.a($$1, $$3);
-         Path $$4 = $$2.resolve($$0.cH() + ".dat");
-         Path $$5 = $$2.resolve($$0.cH() + ".dat_old");
-         af.a($$4, $$3, $$5);
-      } catch (Exception var7) {
-         b.warn("Failed to save player data for {}", $$0.al().getString());
-      }
+   public tz a(alg $$0) {
+      eye.a $$1 = this.a($$0.b());
+      return $$1 != null ? $$1.b($$0.a()) : new tz();
    }
 
-   private void a(cqs $$0, String $$1) {
-      Path $$2 = this.c.toPath();
-      Path $$3 = $$2.resolve($$0.cH() + $$1);
-      Path $$4 = $$2.resolve($$0.cH() + "_corrupted_" + LocalDateTime.now().format(d) + $$1);
-      if (Files.isRegularFile($$3)) {
-         try {
-            Files.copy($$3, $$4, StandardCopyOption.REPLACE_EXISTING, StandardCopyOption.COPY_ATTRIBUTES);
-         } catch (Exception var7) {
-            b.warn("Failed to copy the player.dat file for {}", $$0.al().getString(), var7);
+   @Nullable
+   private eye.a a(String $$0) {
+      eye.a $$1 = this.b.get($$0);
+      if ($$1 != null) {
+         return $$1;
+      } else {
+         eye.a $$2 = this.c.b(eye.a.a($$0));
+         if ($$2 != null) {
+            this.b.put($$0, $$2);
          }
+
+         return $$2;
       }
    }
 
-   private Optional<tx> b(cqs $$0, String $$1) {
-      File $$2 = new File(this.c, $$0.cH() + $$1);
-      if ($$2.exists() && $$2.isFile()) {
-         try {
-            return Optional.of(uk.a($$2.toPath(), ug.a()));
-         } catch (Exception var5) {
-            b.warn("Failed to load player data for {}", $$0.al().getString());
+   private eye.a b(String $$0) {
+      eye.a $$1 = this.b.get($$0);
+      if ($$1 != null) {
+         return $$1;
+      } else {
+         eye.a $$2 = this.c.a(eye.a.a($$0));
+         this.b.put($$0, $$2);
+         return $$2;
+      }
+   }
+
+   public void a(alg $$0, tz $$1) {
+      this.b($$0.b()).a($$0.a(), $$1);
+   }
+
+   public Stream<alg> a() {
+      return this.b.entrySet().stream().flatMap($$0 -> $$0.getValue().c($$0.getKey()));
+   }
+
+   static String c(String $$0) {
+      return "command_storage_" + $$0;
+   }
+
+   static class a extends exs {
+      public static final Codec<eye.a> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(Codec.unboundedMap(ayu.C, tz.a).fieldOf("contents").forGetter($$0x -> $$0x.b)).apply($$0, eye.a::new)
+      );
+      private final Map<String, tz> b;
+
+      private a(Map<String, tz> $$0) {
+         this.b = $$0;
+      }
+
+      private a() {
+         this(new HashMap<>());
+      }
+
+      public static ext<eye.a> a(String $$0) {
+         return new ext<>(eye.c($$0), eye.a::new, a, bbb.h);
+      }
+
+      public tz b(String $$0) {
+         tz $$1 = this.b.get($$0);
+         return $$1 != null ? $$1 : new tz();
+      }
+
+      public void a(String $$0, tz $$1) {
+         if ($$1.g()) {
+            this.b.remove($$0);
+         } else {
+            this.b.put($$0, $$1);
          }
+
+         this.f();
       }
 
-      return Optional.empty();
-   }
-
-   public Optional<tx> b(cqs $$0) {
-      Optional<tx> $$1 = this.b($$0, ".dat");
-      if ($$1.isEmpty()) {
-         this.a($$0, ".dat");
+      public Stream<alg> c(String $$0) {
+         return this.b.keySet().stream().map($$1 -> alg.a($$0, $$1));
       }
-
-      return $$1.or(() -> this.b($$0, ".dat_old")).map($$1x -> {
-         int $$2 = um.b($$1x, -1);
-         $$1x = baz.b.a(this.a, $$1x, $$2);
-         $$0.g($$1x);
-         return $$1x;
-      });
    }
 }

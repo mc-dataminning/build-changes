@@ -1,17 +1,23 @@
-public record aaj(ees c, int d) implements aag {
-   public static final yu<wh, aaj> a = yu.a(ees.d, aaj::b, ys.h, aaj::c, aaj::new);
-   public static final aag.b<aaj> b = aag.a("debug/game_event_listeners");
+public record aaj(alg a) implements aai {
+   public static <T extends vu> yw<T, aaj> a(alg $$0, int $$1) {
+      return aai.a(($$0x, $$1x) -> {
+      }, $$2 -> {
+         int $$3 = $$2.readableBytes();
+         if ($$3 >= 0 && $$3 <= $$1) {
+            $$2.k($$3);
+            return new aaj($$0);
+         } else {
+            throw new IllegalArgumentException("Payload may not be larger than " + $$1 + " bytes");
+         }
+      });
+   }
 
    @Override
-   public aag.b<aaj> a() {
-      return b;
+   public aai.b<aaj> a() {
+      return new aai.b<>(this.a);
    }
 
-   public ees b() {
-      return this.c;
-   }
-
-   public int c() {
-      return this.d;
+   public alg b() {
+      return this.a;
    }
 }

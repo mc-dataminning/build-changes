@@ -1,13 +1,11 @@
 import javax.annotation.Nullable;
 
-public class hdz extends hce implements hdy {
-   public boolean a;
+public class hdz extends hdf {
+   public fei a = fei.c;
    @Nullable
-   public cqf b;
-
-   @Nullable
-   @Override
-   public cqf a() {
-      return this.b;
-   }
+   public cxw b;
+   public float c;
+   public float d;
+   public float e;
+   public ja f = ja.a;
 }

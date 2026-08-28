@@ -1,37 +1,56 @@
-import com.google.common.base.MoreObjects;
+import com.mojang.datafixers.util.Pair;
 import java.time.Duration;
-import java.time.Instant;
+import java.util.Comparator;
 import java.util.List;
-import java.util.Map;
-import java.util.TreeMap;
-import java.util.stream.Collectors;
-import jdk.jfr.consumer.RecordedEvent;
-import jdk.jfr.consumer.RecordedThread;
 
-public record brn(Instant a, String b, long c) {
-   private static final String d = "unknown";
+public final class brn<T> {
+   private final brn.a a;
+   private final List<Pair<T, brn.a>> b;
+   private final Duration c;
 
-   public static brn a(RecordedEvent $$0) {
-      RecordedThread $$1 = $$0.getThread("thread");
-      String $$2 = $$1 == null ? "unknown" : (String)MoreObjects.firstNonNull($$1.getJavaName(), "unknown");
-      return new brn($$0.getStartTime(), $$2, $$0.getLong("allocated"));
+   public brn(Duration $$0, List<Pair<T, brn.a>> $$1) {
+      this.c = $$0;
+      this.a = $$1.stream().<brn.a>map(Pair::getSecond).reduce(new brn.a(0L, 0L), brn.a::a);
+      this.b = $$1.stream().sorted(Comparator.comparing(Pair::getSecond, brn.a.c)).limit(10L).toList();
    }
 
-   public static brn.a a(List<brn> $$0) {
-      Map<String, Double> $$1 = new TreeMap<>();
-      Map<String, List<brn>> $$2 = $$0.stream().collect(Collectors.groupingBy($$0x -> $$0x.b));
-      $$2.forEach(($$1x, $$2x) -> {
-         if ($$2x.size() >= 2) {
-            brn $$3 = (brn)$$2x.get(0);
-            brn $$4 = (brn)$$2x.get($$2x.size() - 1);
-            long $$5 = Duration.between($$3.a, $$4.a).getSeconds();
-            long $$6 = $$4.c - $$3.c;
-            $$1.put($$1x, (double)$$6 / (double)$$5);
-         }
-      });
-      return new brn.a($$1);
+   public double a() {
+      return (double)this.a.a / (double)this.c.getSeconds();
    }
 
-   public static record a(Map<String, Double> a) {
+   public double b() {
+      return (double)this.a.b / (double)this.c.getSeconds();
+   }
+
+   public long c() {
+      return this.a.a;
+   }
+
+   public long d() {
+      return this.a.b;
+   }
+
+   public List<Pair<T, brn.a>> e() {
+      return this.b;
+   }
+
+   public static record a(long a, long b) {
+      static final Comparator<brn.a> c = Comparator.comparing(brn.a::c).thenComparing(brn.a::b).reversed();
+
+      brn.a a(brn.a $$0) {
+         return new brn.a(this.a + $$0.a, this.b + $$0.b);
+      }
+
+      public float a() {
+         return (float)this.b / (float)this.a;
+      }
+
+      public long b() {
+         return this.a;
+      }
+
+      public long c() {
+         return this.b;
+      }
    }
 }

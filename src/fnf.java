@@ -1,36 +1,58 @@
+import com.google.gson.annotations.SerializedName;
 import com.mojang.logging.LogUtils;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.NoSuchFileException;
+import java.nio.file.Path;
 import org.slf4j.Logger;
 
-public class fnf extends fnd {
-   private static final Logger b = LogUtils.getLogger();
-   private static final ww c = ww.c("mco.create.world.wait");
-   private final String d;
-   private final String e;
-   private final long f;
+public class fnf {
+   private static final String a = "realms_persistence.json";
+   private static final fkk b = new fkk();
+   private static final Logger c = LogUtils.getLogger();
 
-   public fnf(long $$0, String $$1, String $$2) {
-      this.f = $$0;
-      this.d = $$1;
-      this.e = $$2;
+   public fnf.a a() {
+      return b();
    }
 
-   @Override
-   public void run() {
-      fjg $$0 = fjg.a();
+   public void a(fnf.a $$0) {
+      b($$0);
+   }
+
+   public static fnf.a b() {
+      Path $$0 = c();
 
       try {
-         $$0.a(this.f, this.d, this.e);
-      } catch (flc var3) {
-         b.error("Couldn't create world", var3);
-         this.a(var3);
+         String $$1 = Files.readString($$0, StandardCharsets.UTF_8);
+         fnf.a $$2 = b.a($$1, fnf.a.class);
+         if ($$2 != null) {
+            return $$2;
+         }
+      } catch (NoSuchFileException var3) {
       } catch (Exception var4) {
-         b.error("Could not create world", var4);
-         this.a(var4);
+         c.warn("Failed to read Realms storage {}", $$0, var4);
+      }
+
+      return new fnf.a();
+   }
+
+   public static void b(fnf.a $$0) {
+      Path $$1 = c();
+
+      try {
+         Files.writeString($$1, b.a($$0), StandardCharsets.UTF_8);
+      } catch (Exception var3) {
       }
    }
 
-   @Override
-   public ww a() {
-      return c;
+   private static Path c() {
+      return fos.Q().q.toPath().resolve("realms_persistence.json");
+   }
+
+   public static class a implements flb {
+      @SerializedName("newsLink")
+      public String a;
+      @SerializedName("hasUnreadNews")
+      public boolean b;
    }
 }

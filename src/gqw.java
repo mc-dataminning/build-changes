@@ -1,175 +1,78 @@
-import com.google.common.collect.Lists;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParseException;
-import com.mojang.logging.LogUtils;
-import it.unimi.dsi.fastutil.objects.Object2ObjectArrayMap;
-import it.unimi.dsi.fastutil.objects.Object2ObjectMap;
-import it.unimi.dsi.fastutil.objects.Object2ObjectMaps;
-import it.unimi.dsi.fastutil.objects.ObjectIterator;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Objects;
-import java.util.Map.Entry;
-import java.util.stream.Collectors;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import java.util.function.Supplier;
 
-public class gqw {
-   public static final gqw a = new gqw(Map.of());
-   private static final char b = '#';
-   private final Map<String, hkg> c;
+public class gqw implements ave {
+   private final gqv a;
+   private final gqy b;
+   private final Supplier<gqp> c;
+   private final gqx d;
+   private final azv e = azv.a();
+   private final fpu f;
 
-   gqw(Map<String, hkg> $$0) {
-      this.c = $$0;
+   public gqw(gqv $$0, Supplier<gqp> $$1, fpu $$2) {
+      this.a = $$0;
+      this.c = $$1;
+      this.f = $$2;
+      this.b = new gqy(this.f);
+      this.d = new gqx();
    }
 
-   @Nullable
-   public hkg a(String $$0) {
-      if (b($$0)) {
-         $$0 = $$0.substring(1);
-      }
-
-      return this.c.get($$0);
+   public gqv a() {
+      return this.a;
    }
 
-   private static boolean b(String $$0) {
-      return $$0.charAt(0) == '#';
-   }
-
-   public static gqw.a a(JsonObject $$0, ale $$1) {
-      gqw.a.a $$2 = new gqw.a.a();
-
-      for (Entry<String, JsonElement> $$3 : $$0.entrySet()) {
-         a($$1, $$3.getKey(), $$3.getValue().getAsString(), $$2);
-      }
-
-      return $$2.a();
-   }
-
-   private static void a(ale $$0, String $$1, String $$2, gqw.a.a $$3) {
-      if (b($$2)) {
-         $$3.a($$1, $$2.substring(1));
-      } else {
-         ale $$4 = ale.c($$2);
-         if ($$4 == null) {
-            throw new JsonParseException($$2 + " is not valid resource location");
-         }
-
-         $$3.a($$1, new hkg($$0, $$4));
+   public void a(dzz $$0, iu $$1, dhy $$2, fjc $$3, fjg $$4) {
+      if ($$0.o() == dsm.b) {
+         hkp $$5 = this.a.b($$0);
+         long $$6 = $$0.b($$1);
+         this.b.a($$2, $$5, $$0, $$1, $$3, $$4, true, this.e, $$6, hif.d);
       }
    }
 
-   public static record a(Map<String, gqw.d> b) {
-      public static final gqw.a a = new gqw.a(Map.of());
-
-      public Map<String, gqw.d> a() {
-         return this.b;
-      }
-
-      public static class a {
-         private final Map<String, gqw.d> a = new HashMap<>();
-
-         public gqw.a.a a(String $$0, String $$1) {
-            this.a.put($$0, new gqw.b($$1));
-            return this;
-         }
-
-         public gqw.a.a a(String $$0, hkg $$1) {
-            this.a.put($$0, new gqw.e($$1));
-            return this;
-         }
-
-         public gqw.a a() {
-            return this.a.isEmpty() ? gqw.a.a : new gqw.a(Map.copyOf(this.a));
-         }
+   public void a(dzz $$0, iu $$1, dhy $$2, fjc $$3, fjg $$4, boolean $$5, azv $$6) {
+      try {
+         this.b.a($$2, this.a($$0), $$0, $$1, $$3, $$4, $$5, $$6, $$0.b($$1), hif.d);
+      } catch (Throwable var11) {
+         o $$8 = o.a(var11, "Tesselating block in world");
+         p $$9 = $$8.a("Block being tesselated");
+         p.a($$9, $$2, $$1, $$0);
+         throw new z($$8);
       }
    }
 
-   static record b(String a) implements gqw.d {
-   }
-
-   public static class c {
-      private static final Logger a = LogUtils.getLogger();
-      private final List<gqw.a> b = new ArrayList<>();
-
-      public gqw.c a(gqw.a $$0) {
-         this.b.addLast($$0);
-         return this;
-      }
-
-      public gqw.c b(gqw.a $$0) {
-         this.b.addFirst($$0);
-         return this;
-      }
-
-      public gqw a(hkk $$0) {
-         if (this.b.isEmpty()) {
-            return gqw.a;
-         } else {
-            Object2ObjectMap<String, hkg> $$1 = new Object2ObjectArrayMap();
-            Object2ObjectMap<String, gqw.b> $$2 = new Object2ObjectArrayMap();
-
-            for (gqw.a $$3 : Lists.reverse(this.b)) {
-               $$3.b.forEach(($$2x, $$3x) -> {
-                  Objects.requireNonNull($$3x);
-                  switch ($$3x) {
-                     case gqw.e $$6x:
-                        $$2.remove($$2x);
-                        $$1.put($$2x, $$6x.a());
-                        break;
-                     case gqw.b $$7x:
-                        $$1.remove($$2x);
-                        $$2.put($$2x, $$7x);
-                        break;
-                     default:
-                        throw new MatchException(null, null);
-                  }
-               });
-            }
-
-            if ($$2.isEmpty()) {
-               return new gqw($$1);
-            } else {
-               boolean $$4 = true;
-
-               while ($$4) {
-                  $$4 = false;
-                  ObjectIterator<it.unimi.dsi.fastutil.objects.Object2ObjectMap.Entry<String, gqw.b>> $$5 = Object2ObjectMaps.fastIterator($$2);
-
-                  while ($$5.hasNext()) {
-                     it.unimi.dsi.fastutil.objects.Object2ObjectMap.Entry<String, gqw.b> $$6 = (it.unimi.dsi.fastutil.objects.Object2ObjectMap.Entry<String, gqw.b>)$$5.next();
-                     hkg $$7 = (hkg)$$1.get(((gqw.b)$$6.getValue()).a);
-                     if ($$7 != null) {
-                        $$1.put((String)$$6.getKey(), $$7);
-                        $$5.remove();
-                        $$4 = true;
-                     }
-                  }
-               }
-
-               if (!$$2.isEmpty()) {
-                  a.warn(
-                     "Unresolved texture references in {}:\n{}",
-                     $$0.get(),
-                     $$2.entrySet()
-                        .stream()
-                        .map($$0x -> "\t#" + (String)$$0x.getKey() + "-> #" + ((gqw.b)$$0x.getValue()).a + "\n")
-                        .collect(Collectors.joining())
-                  );
-               }
-
-               return new gqw($$1);
-            }
-         }
+   public void a(iu $$0, dhy $$1, fjg $$2, dzz $$3, ewg $$4) {
+      try {
+         this.d.a($$1, $$0, $$2, $$3, $$4);
+      } catch (Throwable var9) {
+         o $$6 = o.a(var9, "Tesselating liquid in world");
+         p $$7 = $$6.a("Block being tesselated");
+         p.a($$7, $$1, $$0, null);
+         throw new z($$6);
       }
    }
 
-   public sealed interface d permits gqw.e, gqw.b {
+   public gqy b() {
+      return this.b;
    }
 
-   static record e(hkg a) implements gqw.d {
+   public hkp a(dzz $$0) {
+      return this.a.b($$0);
+   }
+
+   public void a(dzz $$0, fjc $$1, gps $$2, int $$3, int $$4) {
+      dsm $$5 = $$0.o();
+      if ($$5 != dsm.a) {
+         hkp $$6 = this.a($$0);
+         int $$7 = this.f.a($$0, null, null, 0);
+         float $$8 = (float)($$7 >> 16 & 0xFF) / 255.0F;
+         float $$9 = (float)($$7 >> 8 & 0xFF) / 255.0F;
+         float $$10 = (float)($$7 & 0xFF) / 255.0F;
+         this.b.a($$1.c(), $$2.getBuffer(gpk.c($$0)), $$0, $$6, $$8, $$9, $$10, $$3, $$4);
+         this.c.get().a($$0.b(), cyw.a, $$1, $$2, $$3, $$4);
+      }
+   }
+
+   @Override
+   public void a(avd $$0) {
+      this.d.a();
    }
 }

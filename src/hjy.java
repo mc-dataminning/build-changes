@@ -1,70 +1,78 @@
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.Maps;
+import com.mojang.logging.LogUtils;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
-import java.util.Map.Entry;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.Executor;
-import java.util.function.Function;
-import java.util.stream.Collectors;
+import java.util.SortedMap;
+import java.util.TreeMap;
+import java.util.function.Consumer;
+import java.util.stream.Stream;
 import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class hjy implements AutoCloseable {
-   private final Map<ale, hjy.a> a;
+public class hjy implements ave {
+   private static final Logger a = LogUtils.getLogger();
+   private static final hjx b = new hjx("US", "English", false);
+   private Map<String, hjx> c = ImmutableMap.of("en_us", b);
+   private String d;
+   private final Consumer<hju> e;
 
-   public hjy(Map<ale, ale> $$0, hib $$1) {
-      this.a = $$0.entrySet().stream().collect(Collectors.toMap(Entry::getKey, $$1x -> {
-         hhy $$2 = new hhy((ale)$$1x.getKey());
-         $$1.a((ale)$$1x.getKey(), $$2);
-         return new hjy.a($$2, (ale)$$1x.getValue());
-      }));
+   public hjy(String $$0, Consumer<hju> $$1) {
+      this.d = $$0;
+      this.e = $$1;
    }
 
-   public hhy a(ale $$0) {
-      return this.a.get($$0).a();
+   private static Map<String, hjx> a(Stream<atp> $$0) {
+      Map<String, hjx> $$1 = Maps.newHashMap();
+      $$0.forEach($$1x -> {
+         try {
+            hki $$2 = $$1x.a(hki.c);
+            if ($$2 != null) {
+               $$2.a().forEach($$1::putIfAbsent);
+            }
+         } catch (IOException | RuntimeException var3) {
+            a.warn("Unable to parse language metadata section of resourcepack: {}", $$1x.b(), var3);
+         }
+      });
+      return ImmutableMap.copyOf($$1);
    }
 
    @Override
-   public void close() {
-      this.a.values().forEach(hjy.a::close);
-      this.a.clear();
+   public void a(avd $$0) {
+      this.c = a($$0.b());
+      List<String> $$1 = new ArrayList<>(2);
+      boolean $$2 = b.d();
+      $$1.add("en_us");
+      if (!this.d.equals("en_us")) {
+         hjx $$3 = this.c.get(this.d);
+         if ($$3 != null) {
+            $$1.add(this.d);
+            $$2 = $$3.d();
+         }
+      }
+
+      hju $$4 = hju.a($$0, $$1, $$2);
+      hjw.a($$4);
+      tu.a($$4);
+      this.e.accept($$4);
    }
 
-   public Map<ale, CompletableFuture<hjy.b>> a(avb $$0, int $$1, Executor $$2) {
-      return af.a(
-         this.a, (Function<? super hjy.a, CompletableFuture<hjy.b>>)($$3 -> hhu.a($$3.a).a($$0, $$3.b, $$1, $$2).thenApply($$1xx -> new hjy.b($$3.a, $$1xx)))
-      );
+   public void a(String $$0) {
+      this.d = $$0;
    }
 
-   static record a(hhy a, ale b) implements AutoCloseable {
-
-      @Override
-      public void close() {
-         this.a.f();
-      }
+   public String a() {
+      return this.d;
    }
 
-   public static class b {
-      private final hhy a;
-      private final hhu.a b;
+   public SortedMap<String, hjx> b() {
+      return new TreeMap<>(this.c);
+   }
 
-      public b(hhy $$0, hhu.a $$1) {
-         this.a = $$0;
-         this.b = $$1;
-      }
-
-      @Nullable
-      public hhz a(ale $$0) {
-         return this.b.f().get($$0);
-      }
-
-      public hhz a() {
-         return this.b.e();
-      }
-
-      public CompletableFuture<Void> b() {
-         return this.b.g();
-      }
-
-      public void c() {
-         this.a.a(this.b);
-      }
+   @Nullable
+   public hjx b(String $$0) {
+      return this.c.get($$0);
    }
 }

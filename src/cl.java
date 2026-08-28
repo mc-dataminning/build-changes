@@ -6,7 +6,7 @@ import java.util.Map;
 import java.util.Optional;
 import java.util.function.Predicate;
 
-public record cl(Optional<ji<cyo>> b, cv.d c, kd d, Map<ks.b<?>, ks> e) implements Predicate<cys> {
+public record cl(Optional<ji<cyu>> b, cv.d c, kd d, Map<ks.b<?>, ks> e) implements Predicate<cyy> {
    public static final Codec<cl> a = RecordCodecBuilder.create(
       $$0 -> $$0.group(
                jt.a(mg.K).optionalFieldOf("items").forGetter(cl::a),
@@ -17,7 +17,7 @@ public record cl(Optional<ji<cyo>> b, cv.d c, kd d, Map<ks.b<?>, ks> e) implemen
             .apply($$0, cl::new)
    );
 
-   public boolean a(cys $$0) {
+   public boolean a(cyy $$0) {
       if (this.b.isPresent() && !$$0.a(this.b.get())) {
          return false;
       } else if (!this.c.d($$0.M())) {
@@ -35,7 +35,7 @@ public record cl(Optional<ji<cyo>> b, cv.d c, kd d, Map<ks.b<?>, ks> e) implemen
       }
    }
 
-   public Optional<ji<cyo>> a() {
+   public Optional<ji<cyu>> a() {
       return this.b;
    }
 
@@ -52,7 +52,7 @@ public record cl(Optional<ji<cyo>> b, cv.d c, kd d, Map<ks.b<?>, ks> e) implemen
    }
 
    public static class a {
-      private Optional<ji<cyo>> a = Optional.empty();
+      private Optional<ji<cyu>> a = Optional.empty();
       private cv.d b = cv.d.c;
       private kd c;
       private final Builder<ks.b<?>, ks> d;
@@ -66,12 +66,12 @@ public record cl(Optional<ji<cyo>> b, cv.d c, kd d, Map<ks.b<?>, ks> e) implemen
          return new cl.a();
       }
 
-      public cl.a a(jf<cyo> $$0, dio... $$1) {
+      public cl.a a(jf<cyu> $$0, diu... $$1) {
          this.a = Optional.of(ji.a($$0x -> $$0x.h().e(), $$1));
          return this;
       }
 
-      public cl.a a(jf<cyo> $$0, axp<cyo> $$1) {
+      public cl.a a(jf<cyu> $$0, axr<cyu> $$1) {
          this.a = Optional.of($$0.b($$1));
          return this;
       }

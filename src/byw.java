@@ -1,37 +1,34 @@
-import com.google.common.collect.ImmutableMap;
-import java.util.Optional;
+public class byw implements cah {
+   private final iu a;
+   private final fei b;
 
-public class byw extends byq<bwz> {
-   private final cgb<Integer> c;
-
-   public byw(cgb<Integer> $$0) {
-      super(ImmutableMap.of($$0, cgc.a));
-      this.c = $$0;
+   public byw(iu $$0) {
+      this.a = $$0.j();
+      this.b = fei.b($$0);
    }
 
-   private Optional<Integer> b(bwz $$0) {
-      return $$0.eb().c(this.c);
-   }
-
-   @Override
-   protected boolean a(long $$0) {
-      return false;
+   public byw(fei $$0) {
+      this.a = iu.a((jo)$$0);
+      this.b = $$0;
    }
 
    @Override
-   protected boolean a(aro $$0, bwz $$1, long $$2) {
-      Optional<Integer> $$3 = this.b($$1);
-      return $$3.isPresent() && $$3.get() > 0;
+   public fei a() {
+      return this.b;
    }
 
    @Override
-   protected void c(aro $$0, bwz $$1, long $$2) {
-      Optional<Integer> $$3 = this.b($$1);
-      $$1.eb().a(this.c, $$3.get() - 1);
+   public iu b() {
+      return this.a;
    }
 
    @Override
-   protected void b(aro $$0, bwz $$1, long $$2) {
-      $$1.eb().b(this.c);
+   public boolean a(bxc $$0) {
+      return true;
+   }
+
+   @Override
+   public String toString() {
+      return "BlockPosTracker{blockPos=" + this.a + ", centerPosition=" + this.b + "}";
    }
 }

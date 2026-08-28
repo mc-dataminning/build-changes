@@ -1,116 +1,44 @@
-import com.google.common.collect.Sets;
 import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.arguments.StringArgumentType;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
 import com.mojang.brigadier.builder.RequiredArgumentBuilder;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
 import java.util.Collection;
-import java.util.Set;
+import javax.annotation.Nullable;
 
 public class api {
-   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(ww.c("commands.tag.add.failed"));
-   private static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(ww.c("commands.tag.remove.failed"));
-
    public static void a(CommandDispatcher<ei> $$0) {
-      $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)ej.a("tag").requires($$0x -> $$0x.c(2)))
-            .then(
-               ((RequiredArgumentBuilder)((RequiredArgumentBuilder)ej.a("targets", ev.b())
-                        .then(
-                           ej.a("add")
-                              .then(
-                                 ej.a("name", StringArgumentType.word())
-                                    .executes($$0x -> a((ei)$$0x.getSource(), ev.b($$0x, "targets"), StringArgumentType.getString($$0x, "name")))
-                              )
-                        ))
-                     .then(
-                        ej.a("remove")
-                           .then(
-                              ej.a("name", StringArgumentType.word())
-                                 .suggests(($$0x, $$1) -> en.b(a(ev.b($$0x, "targets")), $$1))
-                                 .executes($$0x -> b((ei)$$0x.getSource(), ev.b($$0x, "targets"), StringArgumentType.getString($$0x, "name")))
-                           )
-                     ))
-                  .then(ej.a("list").executes($$0x -> a((ei)$$0x.getSource(), ev.b($$0x, "targets"))))
-            )
-      );
-   }
+      RequiredArgumentBuilder<ei, gy> $$1 = (RequiredArgumentBuilder<ei, gy>)((RequiredArgumentBuilder)ej.a("targets", ev.d())
+            .executes($$0x -> a((ei)$$0x.getSource(), ev.f($$0x, "targets"), null, null)))
+         .then(ej.a("*").then(ej.a("sound", fj.a()).suggests(ij.b).executes($$0x -> a((ei)$$0x.getSource(), ev.f($$0x, "targets"), null, fj.a($$0x, "sound")))));
 
-   private static Collection<String> a(Collection<? extends bwa> $$0) {
-      Set<String> $$1 = Sets.newHashSet();
-
-      for (bwa $$2 : $$0) {
-         $$1.addAll($$2.as());
+      for (awo $$2 : awo.values()) {
+         $$1.then(
+            ((LiteralArgumentBuilder)ej.a($$2.a()).executes($$1x -> a((ei)$$1x.getSource(), ev.f($$1x, "targets"), $$2, null)))
+               .then(ej.a("sound", fj.a()).suggests(ij.b).executes($$1x -> a((ei)$$1x.getSource(), ev.f($$1x, "targets"), $$2, fj.a($$1x, "sound"))))
+         );
       }
 
-      return $$1;
+      $$0.register((LiteralArgumentBuilder)((LiteralArgumentBuilder)ej.a("stopsound").requires($$0x -> $$0x.c(2))).then($$1));
    }
 
-   private static int a(ei $$0, Collection<? extends bwa> $$1, String $$2) throws CommandSyntaxException {
-      int $$3 = 0;
+   private static int a(ei $$0, Collection<arr> $$1, @Nullable awo $$2, @Nullable alg $$3) {
+      afx $$4 = new afx($$3, $$2);
 
-      for (bwa $$4 : $$1) {
-         if ($$4.a($$2)) {
-            $$3++;
-         }
+      for (arr $$5 : $$1) {
+         $$5.f.b($$4);
       }
 
-      if ($$3 == 0) {
-         throw a.create();
-      } else {
-         if ($$1.size() == 1) {
-            $$0.a(() -> ww.a("commands.tag.add.success.single", $$2, $$1.iterator().next().m_()), true);
+      if ($$2 != null) {
+         if ($$3 != null) {
+            $$0.a(() -> wy.a("commands.stopsound.success.source.sound", wy.a($$3), $$2.a()), true);
          } else {
-            $$0.a(() -> ww.a("commands.tag.add.success.multiple", $$2, $$1.size()), true);
+            $$0.a(() -> wy.a("commands.stopsound.success.source.any", $$2.a()), true);
          }
-
-         return $$3;
-      }
-   }
-
-   private static int b(ei $$0, Collection<? extends bwa> $$1, String $$2) throws CommandSyntaxException {
-      int $$3 = 0;
-
-      for (bwa $$4 : $$1) {
-         if ($$4.b($$2)) {
-            $$3++;
-         }
-      }
-
-      if ($$3 == 0) {
-         throw b.create();
+      } else if ($$3 != null) {
+         $$0.a(() -> wy.a("commands.stopsound.success.sourceless.sound", wy.a($$3)), true);
       } else {
-         if ($$1.size() == 1) {
-            $$0.a(() -> ww.a("commands.tag.remove.success.single", $$2, $$1.iterator().next().m_()), true);
-         } else {
-            $$0.a(() -> ww.a("commands.tag.remove.success.multiple", $$2, $$1.size()), true);
-         }
-
-         return $$3;
-      }
-   }
-
-   private static int a(ei $$0, Collection<? extends bwa> $$1) {
-      Set<String> $$2 = Sets.newHashSet();
-
-      for (bwa $$3 : $$1) {
-         $$2.addAll($$3.as());
+         $$0.a(() -> wy.c("commands.stopsound.success.sourceless.any"), true);
       }
 
-      if ($$1.size() == 1) {
-         bwa $$4 = $$1.iterator().next();
-         if ($$2.isEmpty()) {
-            $$0.a(() -> ww.a("commands.tag.list.single.empty", $$4.m_()), false);
-         } else {
-            $$0.a(() -> ww.a("commands.tag.list.single.success", $$4.m_(), $$2.size(), wz.a($$2)), false);
-         }
-      } else if ($$2.isEmpty()) {
-         $$0.a(() -> ww.a("commands.tag.list.multiple.empty", $$1.size()), false);
-      } else {
-         $$0.a(() -> ww.a("commands.tag.list.multiple.success", $$1.size(), $$2.size(), wz.a($$2)), false);
-      }
-
-      return $$2.size();
+      return $$1.size();
    }
 }

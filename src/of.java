@@ -1,7 +1,7 @@
 import javax.annotation.Nullable;
 
 public interface of {
-   void a(ald<ddj<?>> var1, ddj<?> var2, @Nullable ai var3);
+   void a(alf<ddp<?>> var1, ddp<?> var2, @Nullable ai var3);
 
    ah.a a();
 

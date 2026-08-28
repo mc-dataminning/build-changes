@@ -1,27 +1,13 @@
-public abstract class bsr<R extends Runnable> extends bsn<R> {
-   private int b;
+import java.util.concurrent.ConcurrentLinkedQueue;
+import java.util.concurrent.Executor;
 
-   public bsr(String $$0) {
-      super($$0);
+public class bsr extends bsp<Runnable> {
+   public bsr(Executor $$0, String $$1) {
+      super(new bsv.b(new ConcurrentLinkedQueue<>()), $$0, $$1);
    }
 
    @Override
-   public boolean ax() {
-      return this.bB() || super.ax();
-   }
-
-   protected boolean bB() {
-      return this.b != 0;
-   }
-
-   @Override
-   public void d(R $$0) {
-      this.b++;
-
-      try {
-         super.d($$0);
-      } finally {
-         this.b--;
-      }
+   public Runnable f(Runnable $$0) {
+      return $$0;
    }
 }

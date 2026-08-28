@@ -1,31 +1,109 @@
-public class fwr extends fxi {
-   private final ww a;
+import it.unimi.dsi.fastutil.booleans.BooleanConsumer;
+import java.net.URI;
 
-   public fwr(ww $$0, ww $$1) {
-      super($$0);
-      this.a = $$1;
+public class fwr extends fws {
+   private static final wy d = wy.c("chat.copy");
+   private static final wy s = wy.c("chat.link.warning");
+   private final String u;
+   private final boolean v;
+
+   public fwr(BooleanConsumer $$0, String $$1, boolean $$2) {
+      this($$0, c($$2), wy.b($$1), $$1, $$2 ? wx.e : wx.g, $$2);
+   }
+
+   public fwr(BooleanConsumer $$0, wy $$1, String $$2, boolean $$3) {
+      this($$0, $$1, a($$3, $$2), $$2, $$3 ? wx.e : wx.g, $$3);
+   }
+
+   public fwr(BooleanConsumer $$0, wy $$1, URI $$2, boolean $$3) {
+      this($$0, $$1, $$2.toString(), $$3);
+   }
+
+   public fwr(BooleanConsumer $$0, wy $$1, wy $$2, URI $$3, wy $$4, boolean $$5) {
+      this($$0, $$1, $$2, $$3.toString(), $$4, true);
+   }
+
+   public fwr(BooleanConsumer $$0, wy $$1, wy $$2, String $$3, wy $$4, boolean $$5) {
+      super($$0, $$1, $$2);
+      this.a = (wy)($$5 ? wy.c("chat.link.open") : wx.f);
+      this.b = $$4;
+      this.v = !$$5;
+      this.u = $$3;
+   }
+
+   protected static xm a(boolean $$0, String $$1) {
+      return c($$0).b(wx.v).b(wy.b($$1));
+   }
+
+   protected static xm c(boolean $$0) {
+      return wy.c($$0 ? "chat.link.confirmTrusted" : "chat.link.confirm");
    }
 
    @Override
-   protected void aN_() {
-      super.aN_();
-      this.c(frq.a(wv.e, $$0 -> this.m.a(null)).a(this.n / 2 - 100, 140, 200, 20).a());
+   protected void a(int $$0) {
+      this.c(fsc.a(this.a, $$0x -> this.c.accept(true)).a(this.n / 2 - 50 - 105, $$0, 100, 20).a());
+      this.c(fsc.a(d, $$0x -> {
+         this.l();
+         this.c.accept(false);
+      }).a(this.n / 2 - 50, $$0, 100, 20).a());
+      this.c(fsc.a(this.b, $$0x -> this.c.accept(false)).a(this.n / 2 - 50 + 105, $$0, 100, 20).a());
+   }
+
+   public void l() {
+      this.m.p.a(this.u);
    }
 
    @Override
-   public void a(frc $$0, int $$1, int $$2, float $$3) {
+   public void a(fro $$0, int $$1, int $$2, float $$3) {
       super.a($$0, $$1, $$2, $$3);
-      $$0.a(this.p, this.l, this.n / 2, 90, 16777215);
-      $$0.a(this.p, this.a, this.n / 2, 110, 16777215);
+      if (this.v) {
+         $$0.a(this.p, s, this.n / 2, 110, 16764108);
+      }
    }
 
-   @Override
-   public void b(frc $$0, int $$1, int $$2, float $$3) {
-      $$0.b(0, 0, this.n, this.o, -12574688, -11530224);
+   public static void a(fxu $$0, String $$1, boolean $$2) {
+      fos $$3 = fos.Q();
+      $$3.a(new fwr($$3x -> {
+         if ($$3x) {
+            af.n().a($$1);
+         }
+
+         $$3.a($$0);
+      }, $$1, $$2));
    }
 
-   @Override
-   public boolean aC_() {
-      return false;
+   public static void a(fxu $$0, URI $$1, boolean $$2) {
+      fos $$3 = fos.Q();
+      $$3.a(new fwr($$3x -> {
+         if ($$3x) {
+            af.n().a($$1);
+         }
+
+         $$3.a($$0);
+      }, $$1.toString(), $$2));
+   }
+
+   public static void a(fxu $$0, URI $$1) {
+      a($$0, $$1, true);
+   }
+
+   public static void a(fxu $$0, String $$1) {
+      a($$0, $$1, true);
+   }
+
+   public static fsc.c b(fxu $$0, String $$1, boolean $$2) {
+      return $$3 -> a($$0, $$1, $$2);
+   }
+
+   public static fsc.c b(fxu $$0, URI $$1, boolean $$2) {
+      return $$3 -> a($$0, $$1, $$2);
+   }
+
+   public static fsc.c b(fxu $$0, String $$1) {
+      return b($$0, $$1, true);
+   }
+
+   public static fsc.c b(fxu $$0, URI $$1) {
+      return b($$0, $$1, true);
    }
 }

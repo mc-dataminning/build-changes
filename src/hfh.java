@@ -1,21 +1,18 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import javax.annotation.Nullable;
 
-public record hfh(ki<?> b, boolean c) implements hfc {
-   public static final MapCodec<hfh> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(mf.am.q().fieldOf("component").forGetter(hfh::b), Codec.BOOL.optionalFieldOf("ignore_default", false).forGetter(hfh::c))
-            .apply($$0, hfh::new)
-   );
+public class hfh {
+   private static final ayu.b<alg, MapCodec<? extends hff.b>> b = new ayu.b<>();
+   public static final Codec<hff.b> a = b.a(alg.a).dispatch(hff.b::a, $$0 -> $$0);
 
-   @Override
-   public boolean get(cys $$0, @Nullable gjd $$1, @Nullable bwz $$2, int $$3, cyq $$4) {
-      return this.c ? $$0.d(this.b) : $$0.c(this.b);
-   }
-
-   @Override
-   public MapCodec<hfh> a() {
-      return a;
+   public static void a() {
+      b.a(alg.b("empty"), hfe.a.a);
+      b.a(alg.b("model"), hez.a.a);
+      b.a(alg.b("range_dispatch"), hfk.b.a);
+      b.a(alg.b("special"), hfm.a.a);
+      b.a(alg.b("composite"), hfc.a.a);
+      b.a(alg.b("bundle/selected_item"), hfa.a.a);
+      b.a(alg.b("select"), hfl.c.a);
+      b.a(alg.b("condition"), hfd.a.a);
    }
 }

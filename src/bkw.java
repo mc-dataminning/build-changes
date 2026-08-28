@@ -10,7 +10,7 @@ public class bkw extends Schema {
 
    public Map<String, Supplier<TypeTemplate>> registerEntities(Schema $$0) {
       Map<String, Supplier<TypeTemplate>> $$1 = super.registerEntities($$0);
-      $$1.remove("TippedArrow");
+      $$1.remove("Minecart");
       return $$1;
    }
 }

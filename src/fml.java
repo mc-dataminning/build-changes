@@ -1,40 +1,50 @@
 import javax.annotation.Nullable;
 
-public class fml {
-   public final int a;
+public class fml extends hpb {
+   private static final wy a = wy.c("mco.account.privacy.information");
+   private static final int b = 15;
+   private final fvu c = fvu.d();
+   private final fxu C;
    @Nullable
-   public final String b;
+   private fsw D;
 
-   fml(int $$0, String $$1) {
-      this.a = $$0;
-      this.b = $$1;
+   public fml(fxu $$0) {
+      super(foi.a);
+      this.C = $$0;
    }
 
-   @Nullable
-   public String a() {
-      if (this.a >= 200 && this.a < 300) {
-         return null;
-      } else {
-         return this.a == 400 && this.b != null ? this.b : String.valueOf(this.a);
-      }
+   @Override
+   public void aN_() {
+      this.c.a(15).c().b();
+      this.D = new fsw(a, this.p).b(true);
+      this.c.a(this.D);
+      fvu $$0 = this.c.a(fvu.e().a(8));
+      wy $$1 = wy.c("mco.account.privacy.info.button");
+      $$0.a(fsc.a($$1, fwr.b(this, ayh.a)).a());
+      $$0.a(fsc.a(wx.k, $$0x -> this.aK_()).a());
+      this.c.a($$1x -> {
+         fsa var10000 = this.c($$1x);
+      });
+      this.c();
    }
 
-   public static class a {
-      private int a = -1;
-      private String b;
+   @Override
+   public void aK_() {
+      this.m.a(this.C);
+   }
 
-      public fml.a a(int $$0) {
-         this.a = $$0;
-         return this;
+   @Override
+   protected void c() {
+      if (this.D != null) {
+         this.D.d(this.n - 15);
       }
 
-      public fml.a a(@Nullable String $$0) {
-         this.b = $$0;
-         return this;
-      }
+      this.c.a();
+      fvo.a(this.c, this.J());
+   }
 
-      public fml a() {
-         return new fml(this.a, this.b);
-      }
+   @Override
+   public wy i() {
+      return a;
    }
 }

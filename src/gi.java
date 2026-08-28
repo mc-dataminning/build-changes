@@ -15,27 +15,27 @@ public class gi implements gh {
    }
 
    @Override
-   public fdw a(ei $$0) {
-      fdv $$1 = $$0.k();
-      fdw $$2 = $$0.m().a($$0);
-      float $$3 = azk.b(($$1.j + 90.0F) * (float) (Math.PI / 180.0));
-      float $$4 = azk.a(($$1.j + 90.0F) * (float) (Math.PI / 180.0));
-      float $$5 = azk.b(-$$1.i * (float) (Math.PI / 180.0));
-      float $$6 = azk.a(-$$1.i * (float) (Math.PI / 180.0));
-      float $$7 = azk.b((-$$1.i + 90.0F) * (float) (Math.PI / 180.0));
-      float $$8 = azk.a((-$$1.i + 90.0F) * (float) (Math.PI / 180.0));
-      fdw $$9 = new fdw((double)($$3 * $$5), (double)$$6, (double)($$4 * $$5));
-      fdw $$10 = new fdw((double)($$3 * $$7), (double)$$8, (double)($$4 * $$7));
-      fdw $$11 = $$9.c($$10).c(-1.0);
+   public fei a(ei $$0) {
+      feh $$1 = $$0.k();
+      fei $$2 = $$0.m().a($$0);
+      float $$3 = azm.b(($$1.j + 90.0F) * (float) (Math.PI / 180.0));
+      float $$4 = azm.a(($$1.j + 90.0F) * (float) (Math.PI / 180.0));
+      float $$5 = azm.b(-$$1.i * (float) (Math.PI / 180.0));
+      float $$6 = azm.a(-$$1.i * (float) (Math.PI / 180.0));
+      float $$7 = azm.b((-$$1.i + 90.0F) * (float) (Math.PI / 180.0));
+      float $$8 = azm.a((-$$1.i + 90.0F) * (float) (Math.PI / 180.0));
+      fei $$9 = new fei((double)($$3 * $$5), (double)$$6, (double)($$4 * $$5));
+      fei $$10 = new fei((double)($$3 * $$7), (double)$$8, (double)($$4 * $$7));
+      fei $$11 = $$9.c($$10).c(-1.0);
       double $$12 = $$9.d * this.d + $$10.d * this.c + $$11.d * this.b;
       double $$13 = $$9.e * this.d + $$10.e * this.c + $$11.e * this.b;
       double $$14 = $$9.f * this.d + $$10.f * this.c + $$11.f * this.b;
-      return new fdw($$2.d + $$12, $$2.e + $$13, $$2.f + $$14);
+      return new fei($$2.d + $$12, $$2.e + $$13, $$2.f + $$14);
    }
 
    @Override
-   public fdv b(ei $$0) {
-      return fdv.a;
+   public feh b(ei $$0) {
+      return feh.a;
    }
 
    @Override

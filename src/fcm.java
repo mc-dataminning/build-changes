@@ -1,26 +1,28 @@
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Set;
 
-public record fcm(ale b) implements fck {
-   public static final MapCodec<fcm> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(ale.a.fieldOf("source").forGetter(fcm::c)).apply($$0, fcm::new));
+public class fcm implements fci {
+   private static final fcm b = new fcm();
+   public static final MapCodec<fcm> a = MapCodec.unit(b);
 
-   @Override
-   public fcj a() {
-      return fcl.b;
+   private fcm() {
    }
 
    @Override
-   public uu a(eyn $$0) {
-      return $$0.d().p().aK().a(this.b);
+   public fcj b() {
+      return fck.g;
    }
 
    @Override
-   public Set<bav<?>> b() {
-      return Set.of();
+   public Set<bax<?>> a() {
+      return Set.of(fbt.b);
    }
 
-   public ale c() {
-      return this.b;
+   public boolean a(eyz $$0) {
+      return $$0.a(fbt.b);
+   }
+
+   public static fci.a c() {
+      return () -> b;
    }
 }

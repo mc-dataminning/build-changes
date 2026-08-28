@@ -1,70 +1,389 @@
+import com.google.common.collect.Maps;
+import java.util.Map;
+
 public class gpk {
-   private int a;
-   private int b;
-   private int c;
-   private int d;
+   private static final Map<dma, gqc> a = af.a(Maps.newHashMap(), $$0 -> {
+      gqc $$1 = gqc.s();
+      $$0.put(dmc.ge, $$1);
+      gqc $$2 = gqc.d();
+      $$0.put(dmc.i, $$2);
+      $$0.put(dmc.fl, $$2);
+      $$0.put(dmc.fn, $$2);
+      $$0.put(dmc.gd, $$2);
+      $$0.put(dmc.hA, $$2);
+      $$0.put(dmc.fm, $$2);
+      $$0.put(dmc.aN, $$2);
+      $$0.put(dmc.aK, $$2);
+      $$0.put(dmc.aL, $$2);
+      $$0.put(dmc.aO, $$2);
+      $$0.put(dmc.aP, $$2);
+      $$0.put(dmc.aM, $$2);
+      $$0.put(dmc.aQ, $$2);
+      $$0.put(dmc.aR, $$2);
+      $$0.put(dmc.aT, $$2);
+      $$0.put(dmc.aU, $$2);
+      $$0.put(dmc.ag, $$2);
+      $$0.put(dmc.aS, $$2);
+      gqc $$3 = gqc.e();
+      $$0.put(dmc.z, $$3);
+      $$0.put(dmc.A, $$3);
+      $$0.put(dmc.B, $$3);
+      $$0.put(dmc.C, $$3);
+      $$0.put(dmc.D, $$3);
+      $$0.put(dmc.E, $$3);
+      $$0.put(dmc.F, $$3);
+      $$0.put(dmc.G, $$3);
+      $$0.put(dmc.aX, $$3);
+      $$0.put(dmc.bg, $$3);
+      $$0.put(dmc.bh, $$3);
+      $$0.put(dmc.bi, $$3);
+      $$0.put(dmc.bj, $$3);
+      $$0.put(dmc.bk, $$3);
+      $$0.put(dmc.bl, $$3);
+      $$0.put(dmc.bm, $$3);
+      $$0.put(dmc.bn, $$3);
+      $$0.put(dmc.bo, $$3);
+      $$0.put(dmc.bp, $$3);
+      $$0.put(dmc.bq, $$3);
+      $$0.put(dmc.br, $$3);
+      $$0.put(dmc.bs, $$3);
+      $$0.put(dmc.bt, $$3);
+      $$0.put(dmc.bu, $$3);
+      $$0.put(dmc.bv, $$3);
+      $$0.put(dmc.bw, $$3);
+      $$0.put(dmc.bx, $$3);
+      $$0.put(dmc.bz, $$3);
+      $$0.put(dmc.bA, $$3);
+      $$0.put(dmc.bB, $$3);
+      $$0.put(dmc.bD, $$3);
+      $$0.put(dmc.bC, $$3);
+      $$0.put(dmc.bE, $$3);
+      $$0.put(dmc.bF, $$3);
+      $$0.put(dmc.bZ, $$3);
+      $$0.put(dmc.ue, $$3);
+      $$0.put(dmc.uf, $$3);
+      $$0.put(dmc.cb, $$3);
+      $$0.put(dmc.cc, $$3);
+      $$0.put(dmc.cd, $$3);
+      $$0.put(dmc.ce, $$3);
+      $$0.put(dmc.cf, $$3);
+      $$0.put(dmc.cg, $$3);
+      $$0.put(dmc.ch, $$3);
+      $$0.put(dmc.ci, $$3);
+      $$0.put(dmc.cj, $$3);
+      $$0.put(dmc.ck, $$3);
+      $$0.put(dmc.cl, $$3);
+      $$0.put(dmc.cm, $$3);
+      $$0.put(dmc.cn, $$3);
+      $$0.put(dmc.co, $$3);
+      $$0.put(dmc.cx, $$3);
+      $$0.put(dmc.cy, $$3);
+      $$0.put(dmc.eo, $$3);
+      $$0.put(dmc.ep, $$3);
+      $$0.put(dmc.cz, $$3);
+      $$0.put(dmc.cA, $$3);
+      $$0.put(dmc.cB, $$3);
+      $$0.put(dmc.tY, $$3);
+      $$0.put(dmc.tZ, $$3);
+      $$0.put(dmc.cF, $$3);
+      $$0.put(dmc.cK, $$3);
+      $$0.put(dmc.cX, $$3);
+      $$0.put(dmc.cY, $$3);
+      $$0.put(dmc.cZ, $$3);
+      $$0.put(dmc.dL, $$3);
+      $$0.put(dmc.dY, $$3);
+      $$0.put(dmc.dZ, $$3);
+      $$0.put(dmc.ee, $$3);
+      $$0.put(dmc.eg, $$3);
+      $$0.put(dmc.ev, $$3);
+      $$0.put(dmc.eM, $$3);
+      $$0.put(dmc.eN, $$3);
+      $$0.put(dmc.eO, $$3);
+      $$0.put(dmc.eP, $$3);
+      $$0.put(dmc.eQ, $$3);
+      $$0.put(dmc.eR, $$3);
+      $$0.put(dmc.eS, $$3);
+      $$0.put(dmc.eT, $$3);
+      $$0.put(dmc.pp, $$3);
+      $$0.put(dmc.pq, $$3);
+      $$0.put(dmc.eU, $$3);
+      $$0.put(dmc.eV, $$3);
+      $$0.put(dmc.sz, $$3);
+      $$0.put(dmc.sA, $$3);
+      $$0.put(dmc.sC, $$3);
+      $$0.put(dmc.sB, $$3);
+      $$0.put(dmc.sD, $$3);
+      $$0.put(dmc.sE, $$3);
+      $$0.put(dmc.sG, $$3);
+      $$0.put(dmc.sF, $$3);
+      $$0.put(dmc.fq, $$3);
+      $$0.put(dmc.fr, $$3);
+      $$0.put(dmc.fs, $$3);
+      $$0.put(dmc.ft, $$3);
+      $$0.put(dmc.fu, $$3);
+      $$0.put(dmc.uc, $$3);
+      $$0.put(dmc.ud, $$3);
+      $$0.put(dmc.fv, $$3);
+      $$0.put(dmc.fw, $$3);
+      $$0.put(dmc.fC, $$3);
+      $$0.put(dmc.fM, $$3);
+      $$0.put(dmc.fO, $$3);
+      $$0.put(dmc.fY, $$3);
+      $$0.put(dmc.gk, $$3);
+      $$0.put(dmc.gn, $$3);
+      $$0.put(dmc.gp, $$3);
+      $$0.put(dmc.gq, $$3);
+      $$0.put(dmc.gr, $$3);
+      $$0.put(dmc.gs, $$3);
+      $$0.put(dmc.gt, $$3);
+      $$0.put(dmc.gu, $$3);
+      $$0.put(dmc.gv, $$3);
+      $$0.put(dmc.gw, $$3);
+      $$0.put(dmc.gx, $$3);
+      $$0.put(dmc.gy, $$3);
+      $$0.put(dmc.gz, $$3);
+      $$0.put(dmc.gA, $$3);
+      $$0.put(dmc.ug, $$3);
+      $$0.put(dmc.uh, $$3);
+      $$0.put(dmc.gB, $$3);
+      $$0.put(dmc.gC, $$3);
+      $$0.put(dmc.gD, $$3);
+      $$0.put(dmc.gE, $$3);
+      $$0.put(dmc.gF, $$3);
+      $$0.put(dmc.gG, $$3);
+      $$0.put(dmc.gH, $$3);
+      $$0.put(dmc.gI, $$3);
+      $$0.put(dmc.gJ, $$3);
+      $$0.put(dmc.gK, $$3);
+      $$0.put(dmc.gL, $$3);
+      $$0.put(dmc.gM, $$3);
+      $$0.put(dmc.gN, $$3);
+      $$0.put(dmc.gO, $$3);
+      $$0.put(dmc.gP, $$3);
+      $$0.put(dmc.tP, $$3);
+      $$0.put(dmc.tQ, $$3);
+      $$0.put(dmc.go, $$3);
+      $$0.put(dmc.gQ, $$3);
+      $$0.put(dmc.gR, $$3);
+      $$0.put(dmc.hw, $$3);
+      $$0.put(dmc.hF, $$3);
+      $$0.put(dmc.ix, $$3);
+      $$0.put(dmc.jc, $$3);
+      $$0.put(dmc.jd, $$3);
+      $$0.put(dmc.je, $$3);
+      $$0.put(dmc.jf, $$3);
+      $$0.put(dmc.jg, $$3);
+      $$0.put(dmc.jh, $$3);
+      $$0.put(dmc.kN, $$3);
+      $$0.put(dmc.kO, $$3);
+      $$0.put(dmc.kP, $$3);
+      $$0.put(dmc.kQ, $$3);
+      $$0.put(dmc.kR, $$3);
+      $$0.put(dmc.kS, $$3);
+      $$0.put(dmc.kT, $$3);
+      $$0.put(dmc.kU, $$3);
+      $$0.put(dmc.kV, $$3);
+      $$0.put(dmc.sr, $$3);
+      $$0.put(dmc.ss, $$3);
+      $$0.put(dmc.su, $$3);
+      $$0.put(dmc.st, $$3);
+      $$0.put(dmc.sv, $$3);
+      $$0.put(dmc.sw, $$3);
+      $$0.put(dmc.sy, $$3);
+      $$0.put(dmc.sx, $$3);
+      $$0.put(dmc.kW, $$3);
+      $$0.put(dmc.kX, $$3);
+      $$0.put(dmc.kY, $$3);
+      $$0.put(dmc.ca, $$3);
+      $$0.put(dmc.ld, $$3);
+      $$0.put(dmc.lf, $$3);
+      $$0.put(dmc.le, $$3);
+      $$0.put(dmc.lg, $$3);
+      $$0.put(dmc.mF, $$3);
+      $$0.put(dmc.mG, $$3);
+      $$0.put(dmc.mI, $$3);
+      $$0.put(dmc.mU, $$3);
+      $$0.put(dmc.mV, $$3);
+      $$0.put(dmc.mW, $$3);
+      $$0.put(dmc.mX, $$3);
+      $$0.put(dmc.mY, $$3);
+      $$0.put(dmc.mZ, $$3);
+      $$0.put(dmc.na, $$3);
+      $$0.put(dmc.nb, $$3);
+      $$0.put(dmc.nc, $$3);
+      $$0.put(dmc.nd, $$3);
+      $$0.put(dmc.ne, $$3);
+      $$0.put(dmc.nf, $$3);
+      $$0.put(dmc.ng, $$3);
+      $$0.put(dmc.nh, $$3);
+      $$0.put(dmc.ni, $$3);
+      $$0.put(dmc.nj, $$3);
+      $$0.put(dmc.nk, $$3);
+      $$0.put(dmc.nl, $$3);
+      $$0.put(dmc.nm, $$3);
+      $$0.put(dmc.nn, $$3);
+      $$0.put(dmc.no, $$3);
+      $$0.put(dmc.np, $$3);
+      $$0.put(dmc.nq, $$3);
+      $$0.put(dmc.nr, $$3);
+      $$0.put(dmc.ns, $$3);
+      $$0.put(dmc.nt, $$3);
+      $$0.put(dmc.nu, $$3);
+      $$0.put(dmc.nv, $$3);
+      $$0.put(dmc.nw, $$3);
+      $$0.put(dmc.nx, $$3);
+      $$0.put(dmc.ny, $$3);
+      $$0.put(dmc.nA, $$3);
+      $$0.put(dmc.nB, $$3);
+      $$0.put(dmc.nC, $$3);
+      $$0.put(dmc.nD, $$3);
+      $$0.put(dmc.ov, $$3);
+      $$0.put(dmc.oF, $$3);
+      $$0.put(dmc.oH, $$3);
+      $$0.put(dmc.oI, $$3);
+      $$0.put(dmc.oJ, $$3);
+      $$0.put(dmc.oK, $$3);
+      $$0.put(dmc.oL, $$3);
+      $$0.put(dmc.pc, $$3);
+      $$0.put(dmc.pd, $$3);
+      $$0.put(dmc.pe, $$3);
+      $$0.put(dmc.pf, $$3);
+      $$0.put(dmc.oU, $$3);
+      $$0.put(dmc.pa, $$3);
+      $$0.put(dmc.oR, $$3);
+      $$0.put(dmc.pg, $$3);
+      $$0.put(dmc.oT, $$3);
+      $$0.put(dmc.pR, $$3);
+      $$0.put(dmc.pS, $$3);
+      $$0.put(dmc.pT, $$3);
+      $$0.put(dmc.pU, $$3);
+      $$0.put(dmc.px, $$3);
+      $$0.put(dmc.py, $$3);
+      $$0.put(dmc.sY, $$3);
+      $$0.put(dmc.rd, $$3);
+      $$0.put(dmc.rc, $$3);
+      $$0.put(dmc.rb, $$3);
+      $$0.put(dmc.ra, $$3);
+      $$0.put(dmc.sX, $$3);
+      $$0.put(dmc.ta, $$3);
+      $$0.put(dmc.tb, $$3);
+      $$0.put(dmc.tc, $$3);
+      $$0.put(dmc.te, $$3);
+      $$0.put(dmc.td, $$3);
+      $$0.put(dmc.tg, $$3);
+      $$0.put(dmc.th, $$3);
+      $$0.put(dmc.ti, $$3);
+      $$0.put(dmc.tk, $$3);
+      $$0.put(dmc.tl, $$3);
+      $$0.put(dmc.tm, $$3);
+      $$0.put(dmc.tn, $$3);
+      $$0.put(dmc.rv, $$3);
+      $$0.put(dmc.rw, $$3);
+      $$0.put(dmc.ry, $$3);
+      $$0.put(dmc.rA, $$3);
+      $$0.put(dmc.H, $$3);
+      $$0.put(dmc.tU, $$3);
+      $$0.put(dmc.sH, $$3);
+      $$0.put(dmc.sI, $$3);
+      $$0.put(dmc.sJ, $$3);
+      $$0.put(dmc.sK, $$3);
+      $$0.put(dmc.sL, $$3);
+      $$0.put(dmc.sM, $$3);
+      $$0.put(dmc.sN, $$3);
+      $$0.put(dmc.sO, $$3);
+      $$0.put(dmc.ui, $$3);
+      gqc $$4 = gqc.f();
+      $$0.put(dmc.ec, $$4);
+      $$0.put(dmc.er, $$4);
+      $$0.put(dmc.ew, $$4);
+      $$0.put(dmc.ex, $$4);
+      $$0.put(dmc.ey, $$4);
+      $$0.put(dmc.ez, $$4);
+      $$0.put(dmc.eA, $$4);
+      $$0.put(dmc.eB, $$4);
+      $$0.put(dmc.eC, $$4);
+      $$0.put(dmc.eD, $$4);
+      $$0.put(dmc.eE, $$4);
+      $$0.put(dmc.eF, $$4);
+      $$0.put(dmc.eG, $$4);
+      $$0.put(dmc.eH, $$4);
+      $$0.put(dmc.eI, $$4);
+      $$0.put(dmc.eJ, $$4);
+      $$0.put(dmc.eK, $$4);
+      $$0.put(dmc.eL, $$4);
+      $$0.put(dmc.hX, $$4);
+      $$0.put(dmc.hY, $$4);
+      $$0.put(dmc.hZ, $$4);
+      $$0.put(dmc.ia, $$4);
+      $$0.put(dmc.ib, $$4);
+      $$0.put(dmc.ic, $$4);
+      $$0.put(dmc.id, $$4);
+      $$0.put(dmc.ie, $$4);
+      $$0.put(dmc.if, $$4);
+      $$0.put(dmc.ig, $$4);
+      $$0.put(dmc.ih, $$4);
+      $$0.put(dmc.ii, $$4);
+      $$0.put(dmc.ij, $$4);
+      $$0.put(dmc.ik, $$4);
+      $$0.put(dmc.il, $$4);
+      $$0.put(dmc.im, $$4);
+      $$0.put(dmc.iu, $$4);
+      $$0.put(dmc.pL, $$4);
+      $$0.put(dmc.ll, $$4);
+      $$0.put(dmc.nG, $$4);
+      $$0.put(dmc.rt, $$4);
+   });
+   private static final Map<ewf, gqc> b = af.a(Maps.newHashMap(), $$0 -> {
+      gqc $$1 = gqc.f();
+      $$0.put(ewh.b, $$1);
+      $$0.put(ewh.c, $$1);
+   });
+   private static boolean c;
 
-   public gpk(int $$0, int $$1, int $$2, int $$3) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
+   public static gqc a(dzz $$0) {
+      dma $$1 = $$0.b();
+      if ($$1 instanceof dqp) {
+         return c ? gqc.d() : gqc.c();
+      } else {
+         gqc $$2 = a.get($$1);
+         return $$2 != null ? $$2 : gqc.c();
+      }
    }
 
-   public gpk a(gpk $$0) {
-      int $$1 = this.a;
-      int $$2 = this.b;
-      int $$3 = this.a + this.c;
-      int $$4 = this.b + this.d;
-      int $$5 = $$0.a();
-      int $$6 = $$0.b();
-      int $$7 = $$5 + $$0.c();
-      int $$8 = $$6 + $$0.d();
-      this.a = Math.max($$1, $$5);
-      this.b = Math.max($$2, $$6);
-      this.c = Math.max(0, Math.min($$3, $$7) - this.a);
-      this.d = Math.max(0, Math.min($$4, $$8) - this.b);
-      return this;
+   public static gqc b(dzz $$0) {
+      dma $$1 = $$0.b();
+      if ($$1 instanceof dqp) {
+         return c ? gqc.d() : gqc.c();
+      } else {
+         gqc $$2 = a.get($$1);
+         if ($$2 != null) {
+            return $$2 == gqc.f() ? gqc.g() : $$2;
+         } else {
+            return gqc.c();
+         }
+      }
    }
 
-   public int a() {
-      return this.a;
+   public static gqc c(dzz $$0) {
+      gqc $$1 = a($$0);
+      return $$1 == gqc.f() ? gqn.j() : gqn.i();
    }
 
-   public int b() {
-      return this.b;
+   public static gqc a(cyy $$0) {
+      if ($$0.h() instanceof cxg $$2) {
+         dma $$3 = $$2.c();
+         return c($$3.m());
+      } else {
+         return gqn.j();
+      }
    }
 
-   public void a(int $$0) {
-      this.a = $$0;
+   public static gqc a(ewg $$0) {
+      gqc $$1 = b.get($$0.a());
+      return $$1 != null ? $$1 : gqc.c();
    }
 
-   public void b(int $$0) {
-      this.b = $$0;
-   }
-
-   public int c() {
-      return this.c;
-   }
-
-   public int d() {
-      return this.d;
-   }
-
-   public void c(int $$0) {
-      this.c = $$0;
-   }
-
-   public void d(int $$0) {
-      this.d = $$0;
-   }
-
-   public void a(int $$0, int $$1) {
-      this.a = $$0;
-      this.b = $$1;
-   }
-
-   public boolean b(int $$0, int $$1) {
-      return $$0 >= this.a && $$0 <= this.a + this.c && $$1 >= this.b && $$1 <= this.b + this.d;
+   public static void a(boolean $$0) {
+      c = $$0;
    }
 }

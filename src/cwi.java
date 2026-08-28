@@ -1,28 +1,68 @@
-import it.unimi.dsi.fastutil.ints.IntList;
+import javax.annotation.Nullable;
 
-public interface cwi extends bai {
-   IntList a();
+public class cwi implements btu, cwh {
+   private final jn<cyy> b = jn.a(1, cyy.k);
+   @Nullable
+   private ddu<?> c;
 
-   default int b() {
-      return this.a().size();
+   @Override
+   public int b() {
+      return 1;
    }
 
-   static cwi a(final String $$0, final IntList $$1) {
-      return new cwi() {
-         @Override
-         public IntList a() {
-            return $$1;
+   @Override
+   public boolean c() {
+      for (cyy $$0 : this.b) {
+         if (!$$0.f()) {
+            return false;
          }
+      }
 
-         @Override
-         public String c() {
-            return $$0;
-         }
+      return true;
+   }
 
-         @Override
-         public String toString() {
-            return $$0;
-         }
-      };
+   @Override
+   public cyy a(int $$0) {
+      return this.b.get(0);
+   }
+
+   @Override
+   public cyy a(int $$0, int $$1) {
+      return btv.a(this.b, 0);
+   }
+
+   @Override
+   public cyy b(int $$0) {
+      return btv.a(this.b, 0);
+   }
+
+   @Override
+   public void a(int $$0, cyy $$1) {
+      this.b.set(0, $$1);
+   }
+
+   @Override
+   public void e() {
+   }
+
+   @Override
+   public boolean a(cqy $$0) {
+      return true;
+   }
+
+   @Override
+   public void a() {
+      this.b.clear();
+   }
+
+   @Override
+   public void a(@Nullable ddu<?> $$0) {
+      this.c = $$0;
+   }
+
+   @Nullable
+   @Override
+   public ddu<?> d() {
+      return this.c;
    }
 }

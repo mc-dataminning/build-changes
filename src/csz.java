@@ -1,11 +1,11 @@
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public record csz(ji<eqi> c) implements csv {
-   public static final MapCodec<csz> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(jt.a(mg.bc).fieldOf("structures").forGetter(csz::b)).apply($$0, csz::new));
+public record csz(cv.c c) implements ctb {
+   public static final MapCodec<csz> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(cv.c.d.fieldOf("range").forGetter(csz::b)).apply($$0, csz::new));
 
-   public boolean a(csx $$0) {
-      return $$0.b().a().b().a($$0.a(), this.c).b();
+   public boolean a(ctd $$0) {
+      return this.c.d((double)$$0.b().a().as());
    }
 
    @Override
@@ -13,7 +13,7 @@ public record csz(ji<eqi> c) implements csv {
       return a;
    }
 
-   public ji<eqi> b() {
+   public cv.c b() {
       return this.c;
    }
 }

@@ -1,66 +1,54 @@
-public abstract class hag<M extends ggj> extends gzy<hdb, M> {
-   private final gfz a;
-   private final ale b;
-   private final hag.a c;
+import java.util.List;
+import java.util.function.Function;
 
-   public hag(gwl<?, hdb, M> $$0, gfz $$1, ale $$2, hag.a $$3) {
+public class hag<S extends hdf, M extends gfq<S>> extends han<S, M> {
+   private final alg a;
+   private final hag.a<S> b;
+   private final hag.b<S, M> c;
+   private final Function<alg, gqc> d;
+   private final boolean e;
+
+   public hag(gxw<S, M> $$0, alg $$1, hag.a<S> $$2, hag.b<S, M> $$3, Function<alg, gqc> $$4, boolean $$5) {
       super($$0);
       this.a = $$1;
       this.b = $$2;
       this.c = $$3;
+      this.d = $$4;
+      this.e = $$5;
    }
 
-   protected abstract int a(hdb var1);
-
-   private void a(fiq $$0, gpd $$1, int $$2, float $$3, float $$4, float $$5) {
-      float $$6 = azk.c($$3 * $$3 + $$5 * $$5);
-      float $$7 = (float)(Math.atan2((double)$$3, (double)$$5) * 180.0F / (float)Math.PI);
-      float $$8 = (float)(Math.atan2((double)$$4, (double)$$6) * 180.0F / (float)Math.PI);
-      $$0.a(a.d.rotationDegrees($$7 - 90.0F));
-      $$0.a(a.f.rotationDegrees($$8));
-      this.a.a($$0, $$1.getBuffer(this.a.a(this.b)), $$2, hhp.d);
-   }
-
-   public void a(fiq $$0, gpd $$1, int $$2, hdb $$3, float $$4, float $$5) {
-      int $$6 = this.a($$3);
-      if ($$6 > 0) {
-         azt $$7 = azt.a((long)$$3.aG);
-
-         for (int $$8 = 0; $$8 < $$6; $$8++) {
-            $$0.a();
-            gig $$9 = this.d().a($$7);
-            gig.a $$10 = $$9.a($$7);
-            $$9.a($$0);
-            float $$11 = $$7.i();
-            float $$12 = $$7.i();
-            float $$13 = $$7.i();
-            if (this.c == hag.a.b) {
-               int $$14 = $$7.a(3);
-               switch ($$14) {
-                  case 0:
-                     $$11 = a($$11);
-                     break;
-                  case 1:
-                     $$12 = a($$12);
-                     break;
-                  default:
-                     $$13 = a($$13);
-               }
-            }
-
-            $$0.a(azk.h($$11, $$10.b, $$10.e) / 16.0F, azk.h($$12, $$10.c, $$10.f) / 16.0F, azk.h($$13, $$10.d, $$10.g) / 16.0F);
-            this.a($$0, $$1, $$2, -($$11 * 2.0F - 1.0F), -($$12 * 2.0F - 1.0F), -($$13 * 2.0F - 1.0F));
-            $$0.b();
+   public void a(fjc $$0, gps $$1, int $$2, S $$3, float $$4, float $$5) {
+      if (!$$3.z || this.e) {
+         if (this.a($$3)) {
+            fjg $$6 = $$1.getBuffer(this.d.apply(this.a));
+            float $$7 = this.b.apply($$3, $$3.u);
+            int $$8 = axw.a(azm.d($$7 * 255.0F), 255, 255, 255);
+            this.d().a($$0, $$6, $$2, gxa.a($$3, 0.0F), $$8);
+            this.a();
          }
       }
    }
 
-   private static float a(float $$0) {
-      return $$0 > 0.5F ? 1.0F : 0.5F;
+   private boolean a(S $$0) {
+      List<giu> $$1 = this.c.getPartsToDraw(this.d(), $$0);
+      if ($$1.isEmpty()) {
+         return false;
+      } else {
+         this.d().f().forEach($$0x -> $$0x.l = true);
+         $$1.forEach($$0x -> $$0x.l = false);
+         return true;
+      }
    }
 
-   public static enum a {
-      a,
-      b;
+   private void a() {
+      this.d().f().forEach($$0 -> $$0.l = false);
+   }
+
+   public interface a<S extends hdf> {
+      float apply(S var1, float var2);
+   }
+
+   public interface b<S extends hdf, M extends gfq<S>> {
+      List<giu> getPartsToDraw(M var1, S var2);
    }
 }

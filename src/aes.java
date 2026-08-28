@@ -1,29 +1,37 @@
-public class aes implements zd<abs> {
-   public static final yu<vs, aes> a = zd.a(aes::a, aes::new);
+public class aes implements zf<abu> {
+   public static final yw<vu, aes> a = zf.a(aes::a, aes::new);
    private final double b;
+   private final double c;
 
-   public aes(ebg $$0) {
-      this.b = $$0.k();
+   public aes(ebr $$0) {
+      this.b = $$0.a();
+      this.c = $$0.b();
    }
 
-   private aes(vs $$0) {
+   private aes(vu $$0) {
       this.b = $$0.readDouble();
+      this.c = $$0.readDouble();
    }
 
-   private void a(vs $$0) {
+   private void a(vu $$0) {
       $$0.a(this.b);
+      $$0.a(this.c);
    }
 
    @Override
-   public zf<aes> a() {
-      return agl.ax;
+   public zh<aes> a() {
+      return agn.av;
    }
 
-   public void a(abs $$0) {
+   public void a(abu $$0) {
       $$0.a(this);
    }
 
    public double b() {
+      return this.c;
+   }
+
+   public double e() {
       return this.b;
    }
 }

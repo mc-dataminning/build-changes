@@ -1,66 +1,36 @@
-import it.unimi.dsi.fastutil.shorts.ShortIterator;
-import it.unimi.dsi.fastutil.shorts.ShortSet;
-import java.util.function.BiConsumer;
+public record aem(agk e, byte f) implements zf<abu> {
+   public static final yw<wj, aem> a = zf.a(aem::a, aem::new);
+   public static final byte b = 1;
+   public static final byte c = 2;
+   public static final byte d = 3;
 
-public class aem implements zd<abs> {
-   public static final yu<vs, aem> a = zd.a(aem::a, aem::new);
-   private static final int b = 12;
-   private final jx c;
-   private final short[] d;
-   private final dzo[] e;
-
-   public aem(jx $$0, ShortSet $$1, ebw $$2) {
-      this.c = $$0;
-      int $$3 = $$1.size();
-      this.d = new short[$$3];
-      this.e = new dzo[$$3];
-      int $$4 = 0;
-
-      for (ShortIterator var6 = $$1.iterator(); var6.hasNext(); $$4++) {
-         short $$5 = (Short)var6.next();
-         this.d[$$4] = $$5;
-         this.e[$$4] = $$2.a(jx.a($$5), jx.b($$5), jx.c($$5));
-      }
+   private aem(wj $$0) {
+      this(new agk($$0), $$0.readByte());
    }
 
-   private aem(vs $$0) {
-      this.c = jx.a($$0.readLong());
-      int $$1 = $$0.l();
-      this.d = new short[$$1];
-      this.e = new dzo[$$1];
-
-      for (int $$2 = 0; $$2 < $$1; $$2++) {
-         long $$3 = $$0.m();
-         this.d[$$2] = (short)((int)($$3 & 4095L));
-         this.e[$$2] = dlu.k.a((int)($$3 >>> 12));
-      }
-   }
-
-   private void a(vs $$0) {
-      $$0.b(this.c.s());
-      $$0.c(this.d.length);
-
-      for (int $$1 = 0; $$1 < this.d.length; $$1++) {
-         $$0.a((long)dlu.j(this.e[$$1]) << 12 | (long)this.d[$$1]);
-      }
+   private void a(wj $$0) {
+      this.e.a($$0);
+      $$0.l(this.f);
    }
 
    @Override
-   public zf<aem> a() {
-      return agl.ar;
+   public zh<aem> a() {
+      return agn.ap;
    }
 
-   public void a(abs $$0) {
+   public void a(abu $$0) {
       $$0.a(this);
    }
 
-   public void a(BiConsumer<iu, dzo> $$0) {
-      iu.a $$1 = new iu.a();
+   public boolean a(byte $$0) {
+      return (this.f & $$0) != 0;
+   }
 
-      for (int $$2 = 0; $$2 < this.d.length; $$2++) {
-         short $$3 = this.d[$$2];
-         $$1.d(this.c.d($$3), this.c.e($$3), this.c.f($$3));
-         $$0.accept($$1, this.e[$$2]);
-      }
+   public agk b() {
+      return this.e;
+   }
+
+   public byte e() {
+      return this.f;
    }
 }

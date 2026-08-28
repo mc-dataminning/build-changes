@@ -1,72 +1,51 @@
+import com.google.common.collect.Lists;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
-public class enl extends ens {
-   public static final MapCodec<enl> a = RecordCodecBuilder.mapCodec(
+public class enl extends enn {
+   public static final MapCodec<enl> b = RecordCodecBuilder.mapCodec(
       $$0 -> $$0.group(
-               Codec.floatRange(0.0F, 1.0F).fieldOf("probability").forGetter($$0x -> $$0x.b),
-               Codec.intRange(0, 16).fieldOf("exclusion_radius_xz").forGetter($$0x -> $$0x.c),
-               Codec.intRange(0, 16).fieldOf("exclusion_radius_y").forGetter($$0x -> $$0x.d),
-               emy.a.fieldOf("block_provider").forGetter($$0x -> $$0x.e),
-               Codec.intRange(1, 16).fieldOf("required_empty_blocks").forGetter($$0x -> $$0x.f),
-               ays.b(ja.g.listOf()).fieldOf("directions").forGetter($$0x -> $$0x.g)
+               aze.a(Codec.INT, 1, 64).fieldOf("variety").forGetter($$0x -> $$0x.i),
+               evj.a.a.fieldOf("slow_noise").forGetter($$0x -> $$0x.j),
+               ayu.o.fieldOf("slow_scale").forGetter($$0x -> $$0x.k)
             )
+            .and(b($$0))
             .apply($$0, enl::new)
    );
-   protected final float b;
-   protected final int c;
-   protected final int d;
-   protected final emy e;
-   protected final int f;
-   protected final List<ja> g;
+   private final aze<Integer> i;
+   private final evj.a j;
+   private final float k;
+   private final evj l;
 
-   public enl(float $$0, int $$1, int $$2, emy $$3, int $$4, List<ja> $$5) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
-      this.e = $$3;
-      this.f = $$4;
-      this.g = $$5;
+   public enl(aze<Integer> $$0, evj.a $$1, float $$2, long $$3, evj.a $$4, float $$5, List<dzz> $$6) {
+      super($$3, $$4, $$5, $$6);
+      this.i = $$0;
+      this.j = $$1;
+      this.k = $$2;
+      this.l = evj.b(new egx(new efz($$3)), $$1);
    }
 
    @Override
-   public void a(ens.a $$0) {
-      Set<iu> $$1 = new HashSet<>();
-      azt $$2 = $$0.b();
-
-      for (iu $$3 : af.a($$0.d(), $$2)) {
-         ja $$4 = af.a(this.g, $$2);
-         iu $$5 = $$3.a($$4);
-         if (!$$1.contains($$5) && $$2.i() < this.b && this.a($$0, $$3, $$4)) {
-            iu $$6 = $$5.b(-this.c, -this.d, -this.c);
-            iu $$7 = $$5.b(this.c, this.d, this.c);
-
-            for (iu $$8 : iu.c($$6, $$7)) {
-               $$1.add($$8.j());
-            }
-
-            $$0.a($$5, this.e.a($$2, $$5));
-         }
-      }
-   }
-
-   private boolean a(ens.a $$0, iu $$1, ja $$2) {
-      for (int $$3 = 1; $$3 <= this.f; $$3++) {
-         iu $$4 = $$1.a($$2, $$3);
-         if (!$$0.a($$4)) {
-            return false;
-         }
-      }
-
-      return true;
+   protected enk<?> a() {
+      return enk.e;
    }
 
    @Override
-   protected ent<?> a() {
-      return ent.h;
+   public dzz a(azv $$0, iu $$1) {
+      double $$2 = this.a($$1);
+      int $$3 = (int)azm.a($$2, -1.0, 1.0, (double)this.i.a().intValue(), (double)(this.i.b() + 1));
+      List<dzz> $$4 = Lists.newArrayListWithCapacity($$3);
+
+      for (int $$5 = 0; $$5 < $$3; $$5++) {
+         $$4.add(this.a(this.h, this.a($$1.b($$5 * 54545, 0, $$5 * 34234))));
+      }
+
+      return this.a($$4, $$1, (double)this.e);
+   }
+
+   protected double a(iu $$0) {
+      return this.l.a((double)((float)$$0.u() * this.k), (double)((float)$$0.v() * this.k), (double)((float)$$0.w() * this.k));
    }
 }

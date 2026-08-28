@@ -1,58 +1,25 @@
-public interface ebe {
-   void a(ebg var1, double var2);
+public enum ebe implements bak {
+   a("up"),
+   b("side"),
+   c("none");
 
-   void a(ebg var1, double var2, double var4, long var6);
+   private final String d;
 
-   void a(ebg var1, double var2, double var4);
+   private ebe(final String $$0) {
+      this.d = $$0;
+   }
 
-   void a(ebg var1, int var2);
+   @Override
+   public String toString() {
+      return this.c();
+   }
 
-   void b(ebg var1, int var2);
+   @Override
+   public String c() {
+      return this.d;
+   }
 
-   void b(ebg var1, double var2);
-
-   void c(ebg var1, double var2);
-
-   public static class a implements ebe {
-      private final ebg a;
-
-      public a(ebg $$0) {
-         this.a = $$0;
-      }
-
-      @Override
-      public void a(ebg $$0, double $$1) {
-         this.a.a($$1);
-      }
-
-      @Override
-      public void a(ebg $$0, double $$1, double $$2, long $$3) {
-         this.a.a($$1, $$2, $$3);
-      }
-
-      @Override
-      public void a(ebg $$0, double $$1, double $$2) {
-         this.a.c($$1, $$2);
-      }
-
-      @Override
-      public void a(ebg $$0, int $$1) {
-         this.a.b($$1);
-      }
-
-      @Override
-      public void b(ebg $$0, int $$1) {
-         this.a.c($$1);
-      }
-
-      @Override
-      public void b(ebg $$0, double $$1) {
-         this.a.c($$1);
-      }
-
-      @Override
-      public void c(ebg $$0, double $$1) {
-         this.a.b($$1);
-      }
+   public boolean a() {
+      return this != c;
    }
 }

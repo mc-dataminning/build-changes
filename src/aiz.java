@@ -1,16 +1,8 @@
-public interface aiz extends abm {
+public interface aiz extends agq {
    @Override
-   default vq b() {
-      return vq.d;
+   default vs b() {
+      return vs.a;
    }
 
-   void a(ajb var1);
-
-   void a(aje var1);
-
-   void a(ajd var1);
-
-   void a(ajc var1);
-
-   void a(aja var1);
+   void a(aiw var1);
 }

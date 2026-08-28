@@ -1,30 +1,69 @@
-import com.mojang.serialization.Codec;
-import io.netty.buffer.ByteBuf;
-import java.util.function.IntFunction;
+import java.util.ArrayList;
+import java.util.List;
 
-public enum dcw implements bai {
-   a("building", 0),
-   b("redstone", 1),
-   c("equipment", 2),
-   d("misc", 3);
+public class dcw extends ddf {
+   public dcw(ddc $$0) {
+      super($$0);
+   }
 
-   public static final Codec<dcw> e = bai.a(dcw::values);
-   public static final IntFunction<dcw> f = aya.a(dcw::a, values(), aya.a.a);
-   public static final yu<ByteBuf, dcw> g = ys.a(f, dcw::a);
-   private final String h;
-   private final int i;
+   public boolean a(ddd $$0, div $$1) {
+      if ($$0.e() < 2) {
+         return false;
+      } else {
+         boolean $$2 = false;
+         boolean $$3 = false;
 
-   private dcw(final String $$0, final int $$1) {
-      this.h = $$0;
-      this.i = $$1;
+         for (int $$4 = 0; $$4 < $$0.a(); $$4++) {
+            cyy $$5 = $$0.a($$4);
+            if (!$$5.f()) {
+               if ($$5.a(axk.bO)) {
+                  if ($$2) {
+                     return false;
+                  }
+
+                  $$2 = true;
+               } else {
+                  if (!($$5.h() instanceof cxx)) {
+                     return false;
+                  }
+
+                  $$3 = true;
+               }
+            }
+         }
+
+         return $$3 && $$2;
+      }
+   }
+
+   public cyy a(ddd $$0, jg.a $$1) {
+      List<cxx> $$2 = new ArrayList<>();
+      cyy $$3 = cyy.k;
+
+      for (int $$4 = 0; $$4 < $$0.a(); $$4++) {
+         cyy $$5 = $$0.a($$4);
+         if (!$$5.f()) {
+            if ($$5.a(axk.bO)) {
+               if (!$$3.f()) {
+                  return cyy.k;
+               }
+
+               $$3 = $$5.v();
+            } else {
+               if (!($$5.h() instanceof cxx $$6)) {
+                  return cyy.k;
+               }
+
+               $$2.add($$6);
+            }
+         }
+      }
+
+      return !$$3.f() && !$$2.isEmpty() ? dbl.a($$3, $$2) : cyy.k;
    }
 
    @Override
-   public String c() {
-      return this.h;
-   }
-
-   private int a() {
-      return this.i;
+   public ddz<dcw> a() {
+      return ddz.c;
    }
 }

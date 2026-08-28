@@ -1,22 +1,21 @@
 import com.mojang.datafixers.DSL;
 import com.mojang.datafixers.Typed;
 import com.mojang.datafixers.schemas.Schema;
+import com.mojang.serialization.Dynamic;
 
-public class bkg extends bhp {
-   public bkg(Schema $$0, boolean $$1) {
-      super($$0, $$1, "WeaponSmithChestLootTableFix", bit.s, "minecraft:chest");
+public class bkg extends bhr {
+   private static final String c = "CanPickUpLoot";
+
+   public bkg(Schema $$0) {
+      super($$0, true, "Villager CanPickUpLoot default value", biw.D, "Villager");
    }
 
    @Override
    protected Typed<?> a(Typed<?> $$0) {
-      return $$0.update(
-         DSL.remainderFinder(),
-         $$0x -> {
-            String $$1 = $$0x.get("LootTable").asString("");
-            return $$1.equals("minecraft:chests/village_blacksmith")
-               ? $$0x.set("LootTable", $$0x.createString("minecraft:chests/village/village_weaponsmith"))
-               : $$0x;
-         }
-      );
+      return $$0.update(DSL.remainderFinder(), bkg::a);
+   }
+
+   private static Dynamic<?> a(Dynamic<?> $$0) {
+      return $$0.set("CanPickUpLoot", $$0.createBoolean(true));
    }
 }

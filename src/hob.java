@@ -1,115 +1,130 @@
-import javax.annotation.Nullable;
+import com.mojang.authlib.minecraft.TelemetryEvent;
+import com.mojang.authlib.minecraft.TelemetrySession;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.MapCodec;
+import it.unimi.dsi.fastutil.objects.Object2ObjectLinkedOpenHashMap;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+import java.util.stream.Stream;
 
-public class hob implements hof {
-   private static final int a = 40;
-   private static final int b = 40;
-   private static final int c = 100;
-   private static final int d = 20;
-   private static final int e = -1;
-   private static final ww f = ww.a("tutorial.move.title", hoe.a("forward"), hoe.a("left"), hoe.a("back"), hoe.a("right"));
-   private static final ww g = ww.a("tutorial.move.description", hoe.a("jump"));
-   private static final ww h = ww.c("tutorial.look.title");
-   private static final ww i = ww.c("tutorial.look.description");
-   private final hoe j;
-   @Nullable
-   private fuc k;
-   @Nullable
-   private fuc l;
-   private int m;
-   private int n;
-   private int o;
-   private boolean p;
-   private boolean q;
-   private int r = -1;
-   private int s = -1;
+public class hob {
+   static final Map<String, hob> h = new Object2ObjectLinkedOpenHashMap();
+   public static final Codec<hob> a = Codec.STRING.comapFlatMap($$0 -> {
+      hob $$1 = h.get($$0);
+      return $$1 != null ? DataResult.success($$1) : DataResult.error(() -> "No TelemetryEventType with key: '" + $$0 + "'");
+   }, hob::a);
+   private static final List<hod<?>> i = List.of(hod.a, hod.b, hod.c, hod.d, hod.e, hod.f, hod.g, hod.h, hod.m, hod.l);
+   private static final List<hod<?>> j = Stream.concat(i.stream(), Stream.of(hod.i, hod.j, hod.k)).toList();
+   public static final hob b = a("world_loaded", "WorldLoaded").a(j).a(hod.n).a(hod.o).b();
+   public static final hob c = a("performance_metrics", "PerformanceMetrics").a(j).a(hod.r).a(hod.s).a(hod.t).a(hod.u).a(hod.v).a(hod.w).a().b();
+   public static final hob d = a("world_load_times", "WorldLoadTimes").a(j).a(hod.x).a(hod.y).a().b();
+   public static final hob e = a("world_unloaded", "WorldUnloaded").a(j).a(hod.p).a(hod.q).b();
+   public static final hob f = a("advancement_made", "AdvancementMade").a(j).a(hod.D).a(hod.E).a().b();
+   public static final hob g = a("game_load_times", "GameLoadTimes").a(i).a(hod.z).a(hod.A).a(hod.B).a(hod.C).a().b();
+   private final String k;
+   private final String l;
+   private final List<hod<?>> m;
+   private final boolean n;
+   private final MapCodec<hnx> o;
 
-   public hob(hoe $$0) {
-      this.j = $$0;
+   hob(String $$0, String $$1, List<hod<?>> $$2, boolean $$3) {
+      this.k = $$0;
+      this.l = $$1;
+      this.m = $$2;
+      this.n = $$3;
+      this.o = hoe.a($$2).xmap($$0x -> new hnx(this, $$0x), hnx::b);
+   }
+
+   public static hob.a a(String $$0, String $$1) {
+      return new hob.a($$0, $$1);
+   }
+
+   public String a() {
+      return this.k;
+   }
+
+   public List<hod<?>> b() {
+      return this.m;
+   }
+
+   public MapCodec<hnx> c() {
+      return this.o;
+   }
+
+   public boolean d() {
+      return this.n;
+   }
+
+   public TelemetryEvent a(TelemetrySession $$0, hoe $$1) {
+      TelemetryEvent $$2 = $$0.createNewEvent(this.l);
+
+      for (hod<?> $$3 : this.m) {
+         $$3.a($$1, $$2);
+      }
+
+      return $$2;
+   }
+
+   public <T> boolean a(hod<T> $$0) {
+      return this.m.contains($$0);
    }
 
    @Override
-   public void a() {
-      this.m++;
-      if (this.p) {
-         this.n++;
-         this.p = false;
+   public String toString() {
+      return "TelemetryEventType[" + this.k + "]";
+   }
+
+   public xm e() {
+      return this.a("title");
+   }
+
+   public xm f() {
+      return this.a("description");
+   }
+
+   private xm a(String $$0) {
+      return wy.c("telemetry.event." + this.k + "." + $$0);
+   }
+
+   public static List<hob> g() {
+      return List.copyOf(h.values());
+   }
+
+   public static class a {
+      private final String a;
+      private final String b;
+      private final List<hod<?>> c = new ArrayList<>();
+      private boolean d;
+
+      a(String $$0, String $$1) {
+         this.a = $$0;
+         this.b = $$1;
       }
 
-      if (this.q) {
-         this.o++;
-         this.q = false;
+      public hob.a a(List<hod<?>> $$0) {
+         this.c.addAll($$0);
+         return this;
       }
 
-      if (this.r == -1 && this.n > 40) {
-         if (this.k != null) {
-            this.k.e();
-            this.k = null;
-         }
-
-         this.r = this.m;
+      public <T> hob.a a(hod<T> $$0) {
+         this.c.add($$0);
+         return this;
       }
 
-      if (this.s == -1 && this.o > 40) {
-         if (this.l != null) {
-            this.l.e();
-            this.l = null;
-         }
-
-         this.s = this.m;
+      public hob.a a() {
+         this.d = true;
+         return this;
       }
 
-      if (this.r != -1 && this.s != -1) {
-         if (this.j.f()) {
-            this.j.a(hog.b);
+      public hob b() {
+         hob $$0 = new hob(this.a, this.b, List.copyOf(this.c), this.d);
+         if (hob.h.putIfAbsent(this.a, $$0) != null) {
+            throw new IllegalStateException("Duplicate TelemetryEventType with key: '" + this.a + "'");
          } else {
-            this.j.a(hog.f);
+            return $$0;
          }
-      }
-
-      if (this.k != null) {
-         this.k.a((float)this.n / 40.0F);
-      }
-
-      if (this.l != null) {
-         this.l.a((float)this.o / 40.0F);
-      }
-
-      if (this.m >= 100) {
-         fof $$0 = this.j.e();
-         if (this.r == -1 && this.k == null) {
-            this.k = new fuc($$0.h, fuc.a.a, f, g, true);
-            $$0.aA().a(this.k);
-         } else if (this.r != -1 && this.m - this.r >= 20 && this.s == -1 && this.l == null) {
-            this.l = new fuc($$0.h, fuc.a.b, h, i, true);
-            $$0.aA().a(this.l);
-         }
-      }
-   }
-
-   @Override
-   public void b() {
-      if (this.k != null) {
-         this.k.e();
-         this.k = null;
-      }
-
-      if (this.l != null) {
-         this.l.e();
-         this.l = null;
-      }
-   }
-
-   @Override
-   public void a(gny $$0) {
-      if ($$0.a.a() || $$0.a.b() || $$0.a.c() || $$0.a.d() || $$0.a.e()) {
-         this.p = true;
-      }
-   }
-
-   @Override
-   public void a(double $$0, double $$1) {
-      if (Math.abs($$0) > 0.01 || Math.abs($$1) > 0.01) {
-         this.q = true;
       }
    }
 }

@@ -1,36 +1,23 @@
-public record aek(agi e, byte f) implements zd<abs> {
-   public static final yu<wh, aek> a = zd.a(aek::a, aek::new);
-   public static final byte b = 1;
-   public static final byte c = 2;
-   public static final byte d = 3;
+import javax.annotation.Nullable;
 
-   private aek(wh $$0) {
-      this(new agi($$0), $$0.readByte());
-   }
-
-   private void a(wh $$0) {
-      this.e.a($$0);
-      $$0.l(this.f);
-   }
+public record aek(int b, je<bvf> c) implements zf<abu> {
+   public static final yw<wj, aek> a = yw.a(yu.h, aek::b, bvf.b, aek::e, aek::new);
 
    @Override
-   public zf<aek> a() {
-      return agl.ap;
+   public zh<aek> a() {
+      return agn.ao;
    }
 
-   public void a(abs $$0) {
+   public void a(abu $$0) {
       $$0.a(this);
    }
 
-   public boolean a(byte $$0) {
-      return (this.f & $$0) != 0;
+   @Nullable
+   public bwd a(div $$0) {
+      return $$0.a(this.b);
    }
 
-   public agi b() {
-      return this.e;
-   }
-
-   public byte e() {
-      return this.f;
+   public je<bvf> e() {
+      return this.c;
    }
 }

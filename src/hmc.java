@@ -1,33 +1,44 @@
-import com.google.common.collect.ImmutableList;
-import java.util.Comparator;
-import java.util.List;
-import java.util.function.Function;
-import java.util.function.ToIntFunction;
-import java.util.stream.Stream;
+public class hmc extends hlv {
+   public static final int n = 20;
+   private final gop o;
+   private int p;
 
-public class hmc<T> implements hmg<T> {
-   protected final Comparator<T> a;
-   protected final hmf<T> b;
-
-   public hmc(Function<T, Stream<ale>> $$0, List<T> $$1) {
-      ToIntFunction<T> $$2 = af.g($$1);
-      this.a = Comparator.comparingInt($$2);
-      this.b = hmf.a($$1, $$0);
+   public hmc(gop $$0) {
+      super(awn.is, awo.h, hmm.t());
+      this.o = $$0;
+      this.i = true;
+      this.j = 0;
+      this.d = 0.1F;
    }
 
    @Override
-   public List<T> search(String $$0) {
-      int $$1 = $$0.indexOf(58);
-      return $$1 == -1 ? this.a($$0) : this.a($$0.substring(0, $$1).trim(), $$0.substring($$1 + 1).trim());
-   }
+   public void q() {
+      this.p++;
+      if (!this.o.dQ() && (this.p <= 20 || this.o.fI())) {
+         this.f = (double)((float)this.o.dA());
+         this.g = (double)((float)this.o.dC());
+         this.h = (double)((float)this.o.dG());
+         float $$0 = (float)this.o.dy().h();
+         if ((double)$$0 >= 1.0E-7) {
+            this.d = azm.a($$0 / 4.0F, 0.0F, 1.0F);
+         } else {
+            this.d = 0.0F;
+         }
 
-   protected List<T> a(String $$0) {
-      return this.b.b($$0);
-   }
+         if (this.p < 20) {
+            this.d = 0.0F;
+         } else if (this.p < 40) {
+            this.d = this.d * ((float)(this.p - 20) / 20.0F);
+         }
 
-   protected List<T> a(String $$0, String $$1) {
-      List<T> $$2 = this.b.a($$0);
-      List<T> $$3 = this.b.b($$1);
-      return ImmutableList.copyOf(new hmd<T>($$2.iterator(), $$3.iterator(), this.a));
+         float $$1 = 0.8F;
+         if (this.d > 0.8F) {
+            this.e = 1.0F + (this.d - 0.8F);
+         } else {
+            this.e = 1.0F;
+         }
+      } else {
+         this.n();
+      }
    }
 }

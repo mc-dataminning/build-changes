@@ -1,22 +1,50 @@
-import java.util.ArrayList;
-import java.util.List;
+public class gap extends fxu {
+   private static final int a = 600;
+   private final vr b;
+   private fsc c;
+   private int d;
+   private final fvu s = fvu.d();
 
-public class gap extends gao {
-   private static final ww a = ww.c("options.skinCustomisation.title");
-
-   public gap(fxi $$0, foj $$1) {
-      super($$0, $$1, a);
+   public gap(wy $$0, vr $$1) {
+      super($$0);
+      this.b = $$1;
    }
 
    @Override
-   protected void m() {
-      List<fro> $$0 = new ArrayList<>();
+   public boolean aC_() {
+      return false;
+   }
 
-      for (cqt $$1 : cqt.values()) {
-         $$0.add(frx.b(this.c.a($$1)).a($$1.d(), ($$1x, $$2) -> this.c.a($$1, $$2)));
+   @Override
+   protected void aN_() {
+      this.s.c().b().a(10);
+      this.s.a(new ftj(this.l, this.p));
+      this.c = this.s.a(fsc.a(wx.p, $$0 -> this.b.a(fwt.a)).a());
+      this.c.j = false;
+      this.s.a();
+      this.s.a($$1 -> {
+         fsa var10000 = this.c($$1);
+      });
+      this.c();
+   }
+
+   @Override
+   protected void c() {
+      fvo.a(this.s, this.J());
+   }
+
+   @Override
+   public void e() {
+      super.e();
+      this.d++;
+      if (this.d == 600) {
+         this.c.j = true;
       }
 
-      $$0.add(this.c.x().a(this.c));
-      this.d.a($$0);
+      if (this.b.i()) {
+         this.b.b();
+      } else {
+         this.b.n();
+      }
    }
 }

@@ -12,8 +12,8 @@ public record dm(cv.d c) implements by {
    }
 
    @Override
-   public boolean a(bwa $$0, aro $$1, @Nullable fdw $$2) {
-      return $$0 instanceof coc $$3 ? this.c.d($$3.go()) : false;
+   public boolean a(bwd $$0, arq $$1, @Nullable fei $$2) {
+      return $$0 instanceof coi $$3 ? this.c.d($$3.go()) : false;
    }
 
    @Override

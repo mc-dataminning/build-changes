@@ -1,39 +1,55 @@
-public class gxx<T extends bwa & crj> extends gvj<T, hdr> {
-   private final heq a;
-   private final float g;
-   private final boolean h;
+public class gxx extends gxf<cjr, hdw, ghf> {
+   private static final alg a = alg.b("textures/entity/fish/salmon.png");
+   private final ghf j;
+   private final ghf k;
+   private final ghf l;
 
-   public gxx(gvk.a $$0, float $$1, boolean $$2) {
-      super($$0);
-      this.a = $$0.b();
-      this.g = $$1;
-      this.h = $$2;
+   public gxx(gvz.a $$0) {
+      super($$0, new ghf($$0.a(git.cI)), 0.4F);
+      this.j = new ghf($$0.a(git.cK));
+      this.k = new ghf($$0.a(git.cI));
+      this.l = new ghf($$0.a(git.cJ));
    }
 
-   public gxx(gvk.a $$0) {
-      this($$0, 1.0F, false);
-   }
-
-   @Override
-   protected int a(T $$0, iu $$1) {
-      return this.h ? 15 : super.a($$0, $$1);
-   }
-
-   public void a(hdr $$0, fiq $$1, gpd $$2, int $$3) {
-      $$1.a();
-      $$1.b(this.g, this.g, this.g);
-      $$1.a(this.d.b());
-      $$0.a.a($$1, $$2, $$3, hhp.d);
-      $$1.b();
-      super.a($$0, $$1, $$2, $$3);
-   }
-
-   public hdr a() {
-      return new hdr();
-   }
-
-   public void a(T $$0, hdr $$1, float $$2) {
+   public void a(cjr $$0, hdw $$1, float $$2) {
       super.a($$0, $$1, $$2);
-      this.a.a($$1.a, $$0.ae_(), cyq.h, $$0);
+      $$1.a = $$0.gw();
+   }
+
+   public alg a(hdw $$0) {
+      return a;
+   }
+
+   public hdw b() {
+      return new hdw();
+   }
+
+   protected void a(hdw $$0, fjc $$1, float $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      float $$4 = 1.0F;
+      float $$5 = 1.0F;
+      if (!$$0.ak) {
+         $$4 = 1.3F;
+         $$5 = 1.7F;
+      }
+
+      float $$6 = $$4 * 4.3F * azm.a($$5 * 0.6F * $$0.u);
+      $$1.a(a.d.rotationDegrees($$6));
+      if (!$$0.ak) {
+         $$1.a(0.2F, 0.1F, 0.0F);
+         $$1.a(a.f.rotationDegrees(90.0F));
+      }
+   }
+
+   public void a(hdw $$0, fjc $$1, gps $$2, int $$3) {
+      if ($$0.a == cjr.a.a) {
+         this.g = this.j;
+      } else if ($$0.a == cjr.a.c) {
+         this.g = this.l;
+      } else {
+         this.g = this.k;
+      }
+
+      super.a($$0, $$1, $$2, $$3);
    }
 }

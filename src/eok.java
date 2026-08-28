@@ -1,112 +1,165 @@
-import com.google.common.collect.ImmutableSet;
-import java.util.Optional;
-import java.util.Set;
-import java.util.stream.Collectors;
+import com.google.common.collect.Lists;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
+import java.util.Objects;
+import java.util.function.BiConsumer;
 
-public class eok {
-   public static final ald<eoj> a = a("classic_flat");
-   public static final ald<eoj> b = a("tunnelers_dream");
-   public static final ald<eoj> c = a("water_world");
-   public static final ald<eoj> d = a("overworld");
-   public static final ald<eoj> e = a("snowy_kingdom");
-   public static final ald<eoj> f = a("bottomless_pit");
-   public static final ald<eoj> g = a("desert");
-   public static final ald<eoj> h = a("redstone_ready");
-   public static final ald<eoj> i = a("the_void");
+public class eok extends eop {
+   public static final MapCodec<eok> a = RecordCodecBuilder.mapCodec($$0 -> a($$0).apply($$0, eok::new));
+   private static final double b = 0.618;
+   private static final double h = 1.382;
+   private static final double i = 0.381;
+   private static final double j = 0.328;
 
-   public static void a(qh<eoj> $$0) {
-      new eok.a($$0).a();
+   public eok(int $$0, int $$1, int $$2) {
+      super($$0, $$1, $$2);
    }
 
-   private static ald<eoj> a(String $$0) {
-      return ald.a(mg.aQ, ale.b($$0));
+   @Override
+   protected eoq<?> a() {
+      return eoq.f;
+   }
+
+   @Override
+   public List<emu.a> a(djb $$0, BiConsumer<iu, dzz> $$1, azv $$2, int $$3, iu $$4, eme $$5) {
+      int $$6 = 5;
+      int $$7 = $$3 + 2;
+      int $$8 = azm.a((double)$$7 * 0.618);
+      a($$0, $$1, $$2, $$4.e(), $$5);
+      double $$9 = 1.0;
+      int $$10 = Math.min(1, azm.a(1.382 + Math.pow(1.0 * (double)$$7 / 13.0, 2.0)));
+      int $$11 = $$4.v() + $$8;
+      int $$12 = $$7 - 5;
+      List<eok.a> $$13 = Lists.newArrayList();
+      $$13.add(new eok.a($$4.b($$12), $$11));
+
+      for (; $$12 >= 0; $$12--) {
+         float $$14 = b($$7, $$12);
+         if (!($$14 < 0.0F)) {
+            for (int $$15 = 0; $$15 < $$10; $$15++) {
+               double $$16 = 1.0;
+               double $$17 = 1.0 * (double)$$14 * ((double)$$2.i() + 0.328);
+               double $$18 = (double)($$2.i() * 2.0F) * Math.PI;
+               double $$19 = $$17 * Math.sin($$18) + 0.5;
+               double $$20 = $$17 * Math.cos($$18) + 0.5;
+               iu $$21 = $$4.b(azm.a($$19), $$12 - 1, azm.a($$20));
+               iu $$22 = $$21.b(5);
+               if (this.a($$0, $$1, $$2, $$21, $$22, false, $$5)) {
+                  int $$23 = $$4.u() - $$21.u();
+                  int $$24 = $$4.w() - $$21.w();
+                  double $$25 = (double)$$21.v() - Math.sqrt((double)($$23 * $$23 + $$24 * $$24)) * 0.381;
+                  int $$26 = $$25 > (double)$$11 ? $$11 : (int)$$25;
+                  iu $$27 = new iu($$4.u(), $$26, $$4.w());
+                  if (this.a($$0, $$1, $$2, $$27, $$21, false, $$5)) {
+                     $$13.add(new eok.a($$21, $$27.v()));
+                  }
+               }
+            }
+         }
+      }
+
+      this.a($$0, $$1, $$2, $$4, $$4.b($$8), true, $$5);
+      this.a($$0, $$1, $$2, $$7, $$4, $$13, $$5);
+      List<emu.a> $$28 = Lists.newArrayList();
+
+      for (eok.a $$29 : $$13) {
+         if (this.a($$7, $$29.a() - $$4.v())) {
+            $$28.add($$29.a);
+         }
+      }
+
+      return $$28;
+   }
+
+   private boolean a(djb $$0, BiConsumer<iu, dzz> $$1, azv $$2, iu $$3, iu $$4, boolean $$5, eme $$6) {
+      if (!$$5 && Objects.equals($$3, $$4)) {
+         return true;
+      } else {
+         iu $$7 = $$4.b(-$$3.u(), -$$3.v(), -$$3.w());
+         int $$8 = this.a($$7);
+         float $$9 = (float)$$7.u() / (float)$$8;
+         float $$10 = (float)$$7.v() / (float)$$8;
+         float $$11 = (float)$$7.w() / (float)$$8;
+
+         for (int $$12 = 0; $$12 <= $$8; $$12++) {
+            iu $$13 = $$3.b(azm.d(0.5F + (float)$$12 * $$9), azm.d(0.5F + (float)$$12 * $$10), azm.d(0.5F + (float)$$12 * $$11));
+            if ($$5) {
+               this.a($$0, $$1, $$2, $$13, $$6, $$2x -> $$2x.c(dss.d, this.a($$3, $$13)));
+            } else if (!this.b($$0, $$13)) {
+               return false;
+            }
+         }
+
+         return true;
+      }
+   }
+
+   private int a(iu $$0) {
+      int $$1 = azm.a($$0.u());
+      int $$2 = azm.a($$0.v());
+      int $$3 = azm.a($$0.w());
+      return Math.max($$1, Math.max($$2, $$3));
+   }
+
+   private ja.a a(iu $$0, iu $$1) {
+      ja.a $$2 = ja.a.b;
+      int $$3 = Math.abs($$1.u() - $$0.u());
+      int $$4 = Math.abs($$1.w() - $$0.w());
+      int $$5 = Math.max($$3, $$4);
+      if ($$5 > 0) {
+         if ($$3 == $$5) {
+            $$2 = ja.a.a;
+         } else {
+            $$2 = ja.a.c;
+         }
+      }
+
+      return $$2;
+   }
+
+   private boolean a(int $$0, int $$1) {
+      return (double)$$1 >= (double)$$0 * 0.2;
+   }
+
+   private void a(djb $$0, BiConsumer<iu, dzz> $$1, azv $$2, int $$3, iu $$4, List<eok.a> $$5, eme $$6) {
+      for (eok.a $$7 : $$5) {
+         int $$8 = $$7.a();
+         iu $$9 = new iu($$4.u(), $$8, $$4.w());
+         if (!$$9.equals($$7.a.a()) && this.a($$3, $$8 - $$4.v())) {
+            this.a($$0, $$1, $$2, $$9, $$7.a.a(), true, $$6);
+         }
+      }
+   }
+
+   private static float b(int $$0, int $$1) {
+      if ((float)$$1 < (float)$$0 * 0.3F) {
+         return -1.0F;
+      } else {
+         float $$2 = (float)$$0 / 2.0F;
+         float $$3 = $$2 - (float)$$1;
+         float $$4 = azm.c($$2 * $$2 - $$3 * $$3);
+         if ($$3 == 0.0F) {
+            $$4 = $$2;
+         } else if (Math.abs($$3) >= $$2) {
+            return 0.0F;
+         }
+
+         return $$4 * 0.5F;
+      }
    }
 
    static class a {
-      private final qh<eoj> a;
+      final emu.a a;
+      private final int b;
 
-      a(qh<eoj> $$0) {
-         this.a = $$0;
+      public a(iu $$0, int $$1) {
+         this.a = new emu.a($$0, 0, false);
+         this.b = $$1;
       }
 
-      private void a(ald<eoj> $$0, dio $$1, ald<djs> $$2, Set<ald<eqo>> $$3, boolean $$4, boolean $$5, eoi... $$6) {
-         jf<eqo> $$7 = this.a.a(mg.bb);
-         jf<epm> $$8 = this.a.a(mg.aZ);
-         jf<djs> $$9 = this.a.a(mg.aG);
-         ji.a<eqo> $$10 = ji.a($$3.stream().map($$7::b).collect(Collectors.toList()));
-         eol $$11 = new eol(Optional.of($$10), $$9.b($$2), eol.b($$8));
-         if ($$4) {
-            $$11.a();
-         }
-
-         if ($$5) {
-            $$11.b();
-         }
-
-         for (int $$12 = $$6.length - 1; $$12 >= 0; $$12--) {
-            $$11.e().add($$6[$$12]);
-         }
-
-         this.a.a($$0, new eoj($$1.h().e(), $$11));
-      }
-
-      public void a() {
-         this.a(eok.a, dlw.i, djz.b, ImmutableSet.of(eqb.a), false, false, new eoi(1, dlw.i), new eoi(2, dlw.j), new eoi(1, dlw.I));
-         this.a(eok.b, dlw.b, djz.u, ImmutableSet.of(eqb.j, eqb.r), true, false, new eoi(1, dlw.i), new eoi(5, dlw.j), new eoi(230, dlw.b), new eoi(1, dlw.I));
-         this.a(
-            eok.c,
-            cyw.rk,
-            djz.U,
-            ImmutableSet.of(eqb.m, eqb.l, eqb.g),
-            false,
-            false,
-            new eoi(90, dlw.J),
-            new eoi(5, dlw.O),
-            new eoi(5, dlw.j),
-            new eoi(5, dlw.b),
-            new eoi(64, dlw.tp),
-            new eoi(1, dlw.I)
-         );
-         this.a(
-            eok.d,
-            dlw.bA,
-            djz.b,
-            ImmutableSet.of(eqb.a, eqb.j, eqb.f, eqb.k, eqb.r),
-            true,
-            true,
-            new eoi(1, dlw.i),
-            new eoi(3, dlw.j),
-            new eoi(59, dlw.b),
-            new eoi(1, dlw.I)
-         );
-         this.a(
-            eok.e,
-            dlw.ea,
-            djz.d,
-            ImmutableSet.of(eqb.a, eqb.c),
-            false,
-            false,
-            new eoi(1, dlw.ea),
-            new eoi(1, dlw.i),
-            new eoi(3, dlw.j),
-            new eoi(59, dlw.b),
-            new eoi(1, dlw.I)
-         );
-         this.a(eok.f, cyw.qc, djz.b, ImmutableSet.of(eqb.a), false, false, new eoi(1, dlw.i), new eoi(3, dlw.j), new eoi(2, dlw.m));
-         this.a(
-            eok.g,
-            dlw.L,
-            djz.f,
-            ImmutableSet.of(eqb.a, eqb.b, eqb.j, eqb.r),
-            true,
-            false,
-            new eoi(8, dlw.L),
-            new eoi(52, dlw.bc),
-            new eoi(3, dlw.b),
-            new eoi(1, dlw.I)
-         );
-         this.a(eok.h, cyw.mg, djz.f, ImmutableSet.of(), false, false, new eoi(116, dlw.bc), new eoi(3, dlw.b), new eoi(1, dlw.I));
-         this.a(eok.i, dlw.iu, djz.a, ImmutableSet.of(), true, false, new eoi(1, dlw.a));
+      public int a() {
+         return this.b;
       }
    }
 }

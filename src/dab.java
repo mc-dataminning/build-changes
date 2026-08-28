@@ -1,21 +1,21 @@
-public class dab extends dae {
-   public dab(cyo.a $$0) {
-      super($$0);
+import javax.annotation.Nullable;
+
+public class dab extends daj {
+   public dab(dma $$0, dma $$1, cyu.a $$2) {
+      super($$0, $$1, ja.a, $$2);
+   }
+
+   public dab(cyu.a $$0, dma $$1, dma $$2, ja $$3) {
+      super($$1, $$2, $$3, $$0);
    }
 
    @Override
-   public bty a(dip $$0, cqs $$1, btx $$2) {
-      $$0.a(null, $$1.dA(), $$1.dC(), $$1.dG(), awl.zO, awm.h, 0.5F, 0.4F / ($$0.C_().i() * 0.4F + 0.8F));
-      return super.a($$0, $$1, $$2);
-   }
+   protected boolean a(iu $$0, div $$1, @Nullable cqy $$2, cyy $$3, dzz $$4) {
+      boolean $$5 = super.a($$0, $$1, $$2, $$3, $$4);
+      if (!$$1.C && !$$5 && $$2 != null && $$1.c_($$0) instanceof dyl $$6 && $$1.a_($$0).b() instanceof dti $$7) {
+         $$7.a($$2, $$6, true);
+      }
 
-   @Override
-   protected crb a(aro $$0, bwz $$1, cys $$2) {
-      return new crz($$0, $$1, $$2);
-   }
-
-   @Override
-   protected crb a(dip $$0, jo $$1, cys $$2) {
-      return new crz($$0, $$1.a(), $$1.b(), $$1.c(), $$2);
+      return $$5;
    }
 }

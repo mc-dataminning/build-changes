@@ -1,51 +1,48 @@
-import com.google.common.collect.Lists;
-import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
 
-public class ena extends enc {
-   public static final MapCodec<ena> b = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(
-               azc.a(Codec.INT, 1, 64).fieldOf("variety").forGetter($$0x -> $$0x.i),
-               euy.a.a.fieldOf("slow_noise").forGetter($$0x -> $$0x.j),
-               ays.o.fieldOf("slow_scale").forGetter($$0x -> $$0x.k)
-            )
-            .and(b($$0))
-            .apply($$0, ena::new)
+public class ena extends emu {
+   public static final MapCodec<ena> a = RecordCodecBuilder.mapCodec(
+      $$0 -> b($$0).and(btg.b(0, 24).fieldOf("trunk_height").forGetter($$0x -> $$0x.b)).apply($$0, ena::new)
    );
-   private final azc<Integer> i;
-   private final euy.a j;
-   private final float k;
-   private final euy l;
+   private final btg b;
 
-   public ena(azc<Integer> $$0, euy.a $$1, float $$2, long $$3, euy.a $$4, float $$5, List<dzo> $$6) {
-      super($$3, $$4, $$5, $$6);
-      this.i = $$0;
-      this.j = $$1;
-      this.k = $$2;
-      this.l = euy.b(new egm(new efo($$3)), $$1);
+   public ena(btg $$0, btg $$1, btg $$2) {
+      super($$0, $$1);
+      this.b = $$2;
    }
 
    @Override
-   protected emz<?> a() {
-      return emz.e;
+   protected emv<?> a() {
+      return emv.b;
    }
 
    @Override
-   public dzo a(azt $$0, iu $$1) {
-      double $$2 = this.a($$1);
-      int $$3 = (int)azk.a($$2, -1.0, 1.0, (double)this.i.a().intValue(), (double)(this.i.b() + 1));
-      List<dzo> $$4 = Lists.newArrayListWithCapacity($$3);
+   protected void a(djb $$0, emu.b $$1, azv $$2, eme $$3, int $$4, emu.a $$5, int $$6, int $$7, int $$8) {
+      iu $$9 = $$5.a();
+      int $$10 = $$2.a(2);
+      int $$11 = 1;
+      int $$12 = 0;
 
-      for (int $$5 = 0; $$5 < $$3; $$5++) {
-         $$4.add(this.a(this.h, this.a($$1.b($$5 * 54545, 0, $$5 * 34234))));
+      for (int $$13 = $$8; $$13 >= -$$6; $$13--) {
+         this.a($$0, $$1, $$2, $$3, $$9, $$10, $$13, $$5.c());
+         if ($$10 >= $$11) {
+            $$10 = $$12;
+            $$12 = 1;
+            $$11 = Math.min($$11 + 1, $$7 + $$5.b());
+         } else {
+            $$10++;
+         }
       }
-
-      return this.a($$4, $$1, (double)this.e);
    }
 
-   protected double a(iu $$0) {
-      return this.l.a((double)((float)$$0.u() * this.k), (double)((float)$$0.v() * this.k), (double)((float)$$0.w() * this.k));
+   @Override
+   public int a(azv $$0, int $$1, eme $$2) {
+      return Math.max(4, $$1 - this.b.a($$0));
+   }
+
+   @Override
+   protected boolean a(azv $$0, int $$1, int $$2, int $$3, int $$4, boolean $$5) {
+      return $$1 == $$4 && $$3 == $$4 && $$4 > 0;
    }
 }

@@ -1,75 +1,104 @@
 import com.mojang.serialization.MapCodec;
-import java.util.Map;
 
-public class dpu extends dlu {
+public class dpu extends dma implements dmd {
    public static final MapCodec<dpu> a = b(dpu::new);
-   public static final eaf b = drm.b;
-   public static final eaf c = drm.c;
-   public static final eaf d = drm.d;
-   public static final eaf e = drm.e;
-   public static final eaf f = drm.f;
-   public static final eaf g = drm.g;
-   private static final Map<ja, eaf> h = drm.h;
+   private static final ffc c = dma.b(14.0, 0.0, 16.0);
+   private static final ffc d = dma.b(14.0, 2.0, 16.0);
+   public static final eaq b = eap.F;
 
    @Override
    public MapCodec<dpu> a() {
       return a;
    }
 
-   public dpu(dzn.d $$0) {
+   public dpu(dzy.d $$0) {
       super($$0);
-      this.l(
-         this.B
-            .b()
-            .b(b, Boolean.valueOf(true))
-            .b(c, Boolean.valueOf(true))
-            .b(d, Boolean.valueOf(true))
-            .b(e, Boolean.valueOf(true))
-            .b(f, Boolean.valueOf(true))
-            .b(g, Boolean.valueOf(true))
-      );
+      this.l(this.B.b().b(b, Boolean.valueOf(true)));
    }
 
    @Override
-   public dzo a(dcl $$0) {
-      dhv $$1 = $$0.q();
-      iu $$2 = $$0.a();
-      return this.m()
-         .b(g, Boolean.valueOf(!$$1.a_($$2.e()).a(this)))
-         .b(f, Boolean.valueOf(!$$1.a_($$2.d()).a(this)))
-         .b(b, Boolean.valueOf(!$$1.a_($$2.f()).a(this)))
-         .b(c, Boolean.valueOf(!$$1.a_($$2.i()).a(this)))
-         .b(d, Boolean.valueOf(!$$1.a_($$2.g()).a(this)))
-         .b(e, Boolean.valueOf(!$$1.a_($$2.h()).a(this)));
+   protected ffc a(dzz $$0, dib $$1, iu $$2, fen $$3) {
+      return $$0.c(b) ? d : c;
    }
 
    @Override
-   protected dzo a(dzo $$0, dis $$1, dje $$2, iu $$3, ja $$4, iu $$5, dzo $$6, azt $$7) {
-      return $$6.a(this) ? $$0.b(h.get($$4), Boolean.valueOf(false)) : super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
+   public void a(dzz $$0, div $$1, iu $$2, azv $$3) {
+      if ($$3.a(500) == 0) {
+         dzz $$4 = $$1.a_($$2.d());
+         if ($$4.a(axc.w) || $$4.a(dmc.aR)) {
+            $$1.a((double)$$2.u(), (double)$$2.v(), (double)$$2.w(), awn.td, awo.e, 1.0F, 1.0F, false);
+         }
+      }
    }
 
    @Override
-   protected dzo a(dzo $$0, dsm $$1) {
-      return $$0.b(h.get($$1.a(ja.c)), $$0.c(b))
-         .b(h.get($$1.a(ja.d)), $$0.c(d))
-         .b(h.get($$1.a(ja.f)), $$0.c(c))
-         .b(h.get($$1.a(ja.e)), $$0.c(e))
-         .b(h.get($$1.a(ja.b)), $$0.c(f))
-         .b(h.get($$1.a(ja.a)), $$0.c(g));
+   protected boolean e_(dzz $$0) {
+      return true;
    }
 
    @Override
-   protected dzo a(dzo $$0, dqv $$1) {
-      return $$0.b(h.get($$1.b(ja.c)), $$0.c(b))
-         .b(h.get($$1.b(ja.d)), $$0.c(d))
-         .b(h.get($$1.b(ja.f)), $$0.c(c))
-         .b(h.get($$1.b(ja.e)), $$0.c(e))
-         .b(h.get($$1.b(ja.b)), $$0.c(f))
-         .b(h.get($$1.b(ja.a)), $$0.c(g));
+   protected boolean a(dzz $$0, diy $$1, iu $$2) {
+      return this.b($$1, $$2);
+   }
+
+   private boolean b(dib $$0, iu $$1) {
+      iu $$2 = $$1.a(ja.b);
+      dzz $$3 = $$0.a_($$2);
+      return drf.a($$0, ja.b, $$2, $$3) || $$3.a(dmc.ud);
    }
 
    @Override
-   protected void a(dzp.a<dlu, dzo> $$0) {
-      $$0.a(f, g, b, c, d, e);
+   protected dzz a(dzz $$0, diy $$1, djk $$2, iu $$3, ja $$4, iu $$5, dzz $$6, azv $$7) {
+      if (!this.b($$1, $$3)) {
+         $$2.a($$3, this, 1);
+      }
+
+      return $$0.b(b, Boolean.valueOf(!$$1.a_($$3.e()).a(this)));
+   }
+
+   @Override
+   protected void a(dzz $$0, arq $$1, iu $$2, azv $$3) {
+      if (!this.b($$1, $$2)) {
+         $$1.b($$2, true);
+      }
+   }
+
+   @Override
+   protected void a(eaa.a<dma, dzz> $$0) {
+      $$0.a(b);
+   }
+
+   @Override
+   public boolean a(diy $$0, iu $$1, dzz $$2) {
+      return this.o($$0.a_(this.a($$0, $$1).e()));
+   }
+
+   private boolean o(dzz $$0) {
+      return $$0.l();
+   }
+
+   public iu a(dib $$0, iu $$1) {
+      iu.a $$2 = $$1.k();
+
+      dzz $$3;
+      do {
+         $$2.c(ja.a);
+         $$3 = $$0.a_($$2);
+      } while ($$3.a(this));
+
+      return $$2.a(ja.b).j();
+   }
+
+   @Override
+   public boolean a(div $$0, azv $$1, iu $$2, dzz $$3) {
+      return true;
+   }
+
+   @Override
+   public void a(arq $$0, azv $$1, iu $$2, dzz $$3) {
+      iu $$4 = this.a($$0, $$2).e();
+      if (this.o($$0.a_($$4))) {
+         $$0.b($$4, $$3.b(b, Boolean.valueOf(true)));
+      }
    }
 }

@@ -1,32 +1,36 @@
-public class gvq extends gvj<crh, hbw> {
-   private final heq a;
+public class gvq extends gvy<crj, hcf> {
+   private static final alg a = alg.b("textures/entity/enderdragon/dragon_fireball.png");
+   private static final gqc g = gqc.g(a);
 
-   public gvq(gvk.a $$0) {
+   public gvq(gvz.a $$0) {
       super($$0);
-      this.a = $$0.b();
    }
 
-   public void a(hbw $$0, fiq $$1, gpd $$2, int $$3) {
-      $$1.a();
-      $$1.a(this.d.b());
-      if ($$0.a) {
-         $$1.a(a.f.rotationDegrees(180.0F));
-         $$1.a(a.d.rotationDegrees(180.0F));
-         $$1.a(a.b.rotationDegrees(90.0F));
-      }
+   protected int a(crj $$0, iu $$1) {
+      return 15;
+   }
 
-      $$0.b.a($$1, $$2, $$3, hhp.d);
+   @Override
+   public void a(hcf $$0, fjc $$1, gps $$2, int $$3) {
+      $$1.a();
+      $$1.b(2.0F, 2.0F, 2.0F);
+      $$1.a(this.d.b());
+      fjc.a $$4 = $$1.c();
+      fjg $$5 = $$2.getBuffer(g);
+      a($$5, $$4, $$3, 0.0F, 0, 0, 1);
+      a($$5, $$4, $$3, 1.0F, 0, 1, 1);
+      a($$5, $$4, $$3, 1.0F, 1, 1, 0);
+      a($$5, $$4, $$3, 0.0F, 1, 0, 0);
       $$1.b();
       super.a($$0, $$1, $$2, $$3);
    }
 
-   public hbw a() {
-      return new hbw();
+   private static void a(fjg $$0, fjc.a $$1, int $$2, float $$3, int $$4, int $$5, int $$6) {
+      $$0.a($$1, $$3 - 0.5F, (float)$$4 - 0.25F, 0.0F).a(-1).a((float)$$5, (float)$$6).b(hif.d).c($$2).b($$1, 0.0F, 1.0F, 0.0F);
    }
 
-   public void a(crh $$0, hbw $$1, float $$2) {
-      super.a($$0, $$1, $$2);
-      $$1.a = $$0.g();
-      this.a.a($$1.b, $$0.ae_(), cyq.h, $$0);
+   @Override
+   public hcf d() {
+      return new hcf();
    }
 }

@@ -1,28 +1,31 @@
-import com.google.common.collect.ImmutableList;
-import java.util.Iterator;
-import java.util.List;
-import java.util.function.Function;
-import java.util.stream.Stream;
+public class hmb implements hlw {
+   private final gop a;
+   private boolean b;
+   private boolean c = true;
 
-public class hmb<T> extends hmc<T> {
-   private final hmg<T> c;
-
-   public hmb(Function<T, Stream<String>> $$0, Function<T, Stream<ale>> $$1, List<T> $$2) {
-      super($$1, $$2);
-      this.c = hmg.plainText($$2, $$0);
+   public hmb(gop $$0) {
+      this.a = $$0;
    }
 
    @Override
-   protected List<T> a(String $$0) {
-      return this.c.search($$0);
-   }
+   public void a() {
+      div $$0 = this.a.dV();
+      dzz $$1 = $$0.c(this.a.cR().c(0.0, -0.4F, 0.0).h(1.0E-6)).filter($$0x -> $$0x.a(dmc.nG)).findFirst().orElse(null);
+      if ($$1 != null) {
+         if (!this.b && !this.c && $$1.a(dmc.nG) && !this.a.U_()) {
+            boolean $$2 = $$1.c(dmh.b);
+            if ($$2) {
+               this.a.a(awn.db, 1.0F, 1.0F);
+            } else {
+               this.a.a(awn.cZ, 1.0F, 1.0F);
+            }
+         }
 
-   @Override
-   protected List<T> a(String $$0, String $$1) {
-      List<T> $$2 = this.b.a($$0);
-      List<T> $$3 = this.b.b($$1);
-      List<T> $$4 = this.c.search($$1);
-      Iterator<T> $$5 = new hme<T>($$3.iterator(), $$4.iterator(), this.a);
-      return ImmutableList.copyOf(new hmd<T>($$2.iterator(), $$5, this.a));
+         this.b = true;
+      } else {
+         this.b = false;
+      }
+
+      this.c = false;
    }
 }

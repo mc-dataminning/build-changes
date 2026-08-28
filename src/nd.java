@@ -20,7 +20,7 @@ public class nd implements mm {
          .thenCompose(
             $$2 -> {
                JsonObject $$3 = new JsonObject();
-               alc<JsonElement> $$4 = $$2.a(JsonOps.INSTANCE);
+               ale<JsonElement> $$4 = $$2.a(JsonOps.INSTANCE);
                $$2.e(mg.K)
                   .c()
                   .forEach(
@@ -29,7 +29,7 @@ public class nd implements mm {
                         $$3x.add(
                            "components",
                            (JsonElement)kg.b
-                              .encodeStart($$4, ((cyo)$$2x.a()).f())
+                              .encodeStart($$4, ((cyu)$$2x.a()).f())
                               .getOrThrow($$0xxx -> new IllegalStateException("Failed to encode components: " + $$0xxx))
                         );
                         $$3.add($$2x.g(), $$3x);

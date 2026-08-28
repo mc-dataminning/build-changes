@@ -1,30 +1,22 @@
-import com.google.common.collect.ImmutableSet;
-import java.util.Set;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.UUID;
 
-public class cgv extends chh<bwz> {
+public class cgv extends che {
+   public static final float a = 10.0F;
+
    @Override
-   public Set<cgb<?>> a() {
-      return ImmutableSet.of(cgb.y, cgb.z);
+   protected boolean a(arq $$0, bxc $$1, bxc $$2) {
+      return !$$1.eb().a(cge.V) && chk.c($$0, $$1, $$2) && ckr.i($$2) && !this.a($$1, $$2) ? $$2.a($$1, 10.0) : false;
+   }
+
+   private boolean a(bxc $$0, bxc $$1) {
+      List<UUID> $$2 = $$0.eb().c(cge.ab).orElseGet(ArrayList::new);
+      return $$2.contains($$1.cG());
    }
 
    @Override
-   protected void a(aro $$0, bwz $$1) {
-      bxz<?> $$2 = $$1.eb();
-      bup $$3 = $$1.eH();
-      if ($$3 != null) {
-         $$2.a(cgb.y, $$1.eH());
-         bwa $$4 = $$3.d();
-         if ($$4 instanceof bwz) {
-            $$2.a(cgb.z, (bwz)$$4);
-         }
-      } else {
-         $$2.b(cgb.y);
-      }
-
-      $$2.c(cgb.z).ifPresent($$2x -> {
-         if (!$$2x.bK() || $$2x.dV() != $$0) {
-            $$2.b(cgb.z);
-         }
-      });
+   protected cge<bxc> b() {
+      return cge.C;
    }
 }

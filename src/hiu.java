@@ -1,45 +1,26 @@
-import com.google.common.base.Splitter;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParseException;
-import com.mojang.logging.LogUtils;
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.nio.charset.StandardCharsets;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.util.List;
-import java.util.Map.Entry;
-import org.slf4j.Logger;
+import com.mojang.serialization.MapCodec;
+import java.util.function.Function;
+import java.util.function.Predicate;
 
-public class hiu {
-   private static final Logger b = LogUtils.getLogger();
-   public static final Splitter a = Splitter.on('/');
+public interface hiu {
+   akz a = new akz("textures", ".png");
 
-   public static Path a(Path $$0, String $$1) {
-      Path $$2 = $$0.resolve("objects");
-      atx.a $$3 = atx.c();
-      Path $$4 = $$0.resolve("indexes/" + $$1 + ".json");
+   void a(avd var1, hiu.a var2);
 
-      try (BufferedReader $$5 = Files.newBufferedReader($$4, StandardCharsets.UTF_8)) {
-         JsonObject $$6 = aza.a($$5);
-         JsonObject $$7 = aza.a($$6, "objects", null);
-         if ($$7 != null) {
-            for (Entry<String, JsonElement> $$8 : $$7.entrySet()) {
-               JsonObject $$9 = (JsonObject)$$8.getValue();
-               String $$10 = $$8.getKey();
-               List<String> $$11 = a.splitToList($$10);
-               String $$12 = aza.i($$9, "hash");
-               Path $$13 = $$2.resolve($$12.substring(0, 2) + "/" + $$12);
-               $$3.a($$11, $$13);
-            }
-         }
-      } catch (JsonParseException var17) {
-         b.error("Unable to parse resource index file: {}", $$4);
-      } catch (IOException var18) {
-         b.error("Can't open the resource index file: {}", $$4);
+   MapCodec<? extends hiu> a();
+
+   public interface a {
+      default void a(alg $$0, avb $$1) {
+         this.a($$0, $$2 -> $$2.loadSprite($$0, $$1));
       }
 
-      return $$3.a("index-" + $$1).getPath("/");
+      void a(alg var1, hiu.b var2);
+
+      void a(Predicate<alg> var1);
+   }
+
+   public interface b extends Function<hit, hij> {
+      default void a() {
+      }
    }
 }

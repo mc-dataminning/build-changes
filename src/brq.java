@@ -1,22 +1,37 @@
+import com.google.common.base.MoreObjects;
 import java.time.Duration;
-import java.util.Comparator;
+import java.time.Instant;
 import java.util.List;
 import java.util.Map;
-import javax.annotation.Nullable;
+import java.util.TreeMap;
+import java.util.stream.Collectors;
+import jdk.jfr.consumer.RecordedEvent;
+import jdk.jfr.consumer.RecordedThread;
 
-public record brq<T extends brp>(T a, T b, @Nullable T c, int d, Map<Integer, Double> e, Duration f) {
-   public static <T extends brp> brq<T> a(List<T> $$0) {
-      if ($$0.isEmpty()) {
-         throw new IllegalArgumentException("No values");
-      } else {
-         List<T> $$1 = $$0.stream().sorted(Comparator.comparing(brp::a)).toList();
-         Duration $$2 = $$1.stream().map(brp::a).reduce(Duration::plus).orElse(Duration.ZERO);
-         T $$3 = (T)$$1.get(0);
-         T $$4 = (T)$$1.get($$1.size() - 1);
-         T $$5 = $$1.size() > 1 ? $$1.get($$1.size() - 2) : null;
-         int $$6 = $$1.size();
-         Map<Integer, Double> $$7 = bqs.a($$1.stream().mapToLong($$0x -> $$0x.a().toNanos()).toArray());
-         return new brq<>($$3, $$4, $$5, $$6, $$7, $$2);
-      }
+public record brq(Instant a, String b, long c) {
+   private static final String d = "unknown";
+
+   public static brq a(RecordedEvent $$0) {
+      RecordedThread $$1 = $$0.getThread("thread");
+      String $$2 = $$1 == null ? "unknown" : (String)MoreObjects.firstNonNull($$1.getJavaName(), "unknown");
+      return new brq($$0.getStartTime(), $$2, $$0.getLong("allocated"));
+   }
+
+   public static brq.a a(List<brq> $$0) {
+      Map<String, Double> $$1 = new TreeMap<>();
+      Map<String, List<brq>> $$2 = $$0.stream().collect(Collectors.groupingBy($$0x -> $$0x.b));
+      $$2.forEach(($$1x, $$2x) -> {
+         if ($$2x.size() >= 2) {
+            brq $$3 = (brq)$$2x.get(0);
+            brq $$4 = (brq)$$2x.get($$2x.size() - 1);
+            long $$5 = Duration.between($$3.a, $$4.a).getSeconds();
+            long $$6 = $$4.c - $$3.c;
+            $$1.put($$1x, (double)$$6 / (double)$$5);
+         }
+      });
+      return new brq.a($$1);
+   }
+
+   public static record a(Map<String, Double> a) {
    }
 }

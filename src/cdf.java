@@ -1,77 +1,83 @@
+import java.util.EnumSet;
 import java.util.function.Predicate;
+import javax.annotation.Nullable;
 
-public class cdf extends cdm {
-   private static final int g = 240;
-   private final Predicate<btv> h;
-   protected int a;
-   protected int b = -1;
-   protected int c = -1;
+public class cdf<T extends bxc> extends cdy {
+   protected final bxk a;
+   private final double i;
+   private final double j;
+   @Nullable
+   protected T b;
+   protected final float c;
+   @Nullable
+   protected ewu d;
+   protected final cgm e;
+   protected final Class<T> f;
+   protected final Predicate<bxc> g;
+   protected final Predicate<bxc> h;
+   private final chr k;
 
-   public cdf(bxb $$0, Predicate<btv> $$1) {
-      super($$0);
-      this.h = $$1;
+   public cdf(bxk $$0, Class<T> $$1, float $$2, double $$3, double $$4) {
+      this($$0, $$1, $$0x -> true, $$2, $$3, $$4, bwk.e::test);
    }
 
-   public cdf(bxb $$0, int $$1, Predicate<btv> $$2) {
-      this($$0, $$2);
-      this.c = $$1;
+   public cdf(bxk $$0, Class<T> $$1, Predicate<bxc> $$2, float $$3, double $$4, double $$5, Predicate<bxc> $$6) {
+      this.a = $$0;
+      this.f = $$1;
+      this.g = $$2;
+      this.c = $$3;
+      this.i = $$4;
+      this.j = $$5;
+      this.h = $$6;
+      this.e = $$0.O();
+      this.a(EnumSet.of(cdy.a.a));
+      this.k = chr.a().a((double)$$3).a(($$2x, $$3x) -> $$6.test($$2x) && $$2.test($$2x));
    }
 
-   protected int f() {
-      return Math.max(240, this.c);
+   public cdf(bxk $$0, Class<T> $$1, float $$2, double $$3, double $$4, Predicate<bxc> $$5) {
+      this($$0, $$1, $$0x -> true, $$2, $$3, $$4, $$5);
    }
 
    @Override
    public boolean b() {
-      if (!super.b()) {
+      this.b = a(this.a)
+         .a(this.a.dV().a(this.f, this.a.cR().c((double)this.c, 3.0, (double)this.c), $$0x -> true), this.k, this.a, this.a.dA(), this.a.dC(), this.a.dG());
+      if (this.b == null) {
          return false;
       } else {
-         return !a(this.d).O().c(dil.c) ? false : this.a(this.d.dV().an()) && !this.h();
+         fei $$0 = chv.a(this.a, 16, 7, this.b.dt());
+         if ($$0 == null) {
+            return false;
+         } else if (this.b.i($$0.d, $$0.e, $$0.f) < this.b.g(this.a)) {
+            return false;
+         } else {
+            this.d = this.e.a($$0.d, $$0.e, $$0.f, 0);
+            return this.d != null;
+         }
       }
-   }
-
-   @Override
-   public void d() {
-      super.d();
-      this.a = 0;
    }
 
    @Override
    public boolean c() {
-      return this.a <= this.f() && !this.h() && this.e.a(this.d.dt(), 2.0) && this.a(this.d.dV().an());
+      return !this.e.k();
+   }
+
+   @Override
+   public void d() {
+      this.e.a(this.d, this.i);
    }
 
    @Override
    public void e() {
-      super.e();
-      this.d.dV().a(this.d.ar(), this.e, -1);
+      this.b = null;
    }
 
    @Override
    public void a() {
-      super.a();
-      if (this.d.dY().a(20) == 0) {
-         this.d.dV().c(1019, this.e, 0);
-         if (!this.d.aI) {
-            this.d.a(this.d.fz());
-         }
+      if (this.a.g((bwd)this.b) < 49.0) {
+         this.a.O().a(this.j);
+      } else {
+         this.a.O().a(this.i);
       }
-
-      this.a++;
-      int $$0 = (int)((float)this.a / (float)this.f() * 10.0F);
-      if ($$0 != this.b) {
-         this.d.dV().a(this.d.ar(), this.e, $$0);
-         this.b = $$0;
-      }
-
-      if (this.a == this.f() && this.a(this.d.dV().an())) {
-         this.d.dV().a(this.e, false);
-         this.d.dV().c(1021, this.e, 0);
-         this.d.dV().c(2001, this.e, dlu.j(this.d.dV().a_(this.e)));
-      }
-   }
-
-   private boolean a(btv $$0) {
-      return this.h.test($$0);
    }
 }

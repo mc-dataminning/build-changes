@@ -1,57 +1,47 @@
-import java.util.OptionalInt;
+public class czm extends cyu {
+   private final bwm<? extends ctk> a;
 
-public interface czm {
-   crm a(dip var1, jo var2, cys var3, ja var4);
-
-   default czm.a a() {
-      return czm.a.a;
+   public czm(bwm<? extends ctk> $$0, cyu.a $$1) {
+      super($$1);
+      this.a = $$0;
    }
 
-   default void a(crm $$0, double $$1, double $$2, double $$3, float $$4, float $$5) {
-      $$0.c($$1, $$2, $$3, $$4, $$5);
-   }
-
-   public static record a(czm.b b, float c, float d, OptionalInt e) {
-      public static final czm.a a = a().a();
-
-      public static czm.a.a a() {
-         return new czm.a.a();
-      }
-
-      public static class a {
-         private czm.b a = ($$0, $$1) -> doa.a($$0, 0.7, new fdw(0.0, 0.1, 0.0));
-         private float b = 6.0F;
-         private float c = 1.1F;
-         private OptionalInt d = OptionalInt.empty();
-
-         public czm.a.a a(czm.b $$0) {
-            this.a = $$0;
-            return this;
+   @Override
+   public bub a(dct $$0) {
+      div $$1 = $$0.q();
+      iu $$2 = $$0.a();
+      dzz $$3 = $$1.a_($$2);
+      if (!$$3.a(axc.P)) {
+         return bub.d;
+      } else {
+         cyy $$4 = $$0.n();
+         ebd $$5 = $$3.b() instanceof dlp ? $$3.c(((dlp)$$3.b()).c()) : ebd.a;
+         double $$6 = 0.0;
+         if ($$5.b()) {
+            $$6 = 0.5;
          }
 
-         public czm.a.a a(float $$0) {
-            this.b = $$0;
-            return this;
-         }
+         fei $$7 = new fei((double)$$2.u() + 0.5, (double)$$2.v() + 0.0625 + $$6, (double)$$2.w() + 0.5);
+         ctk $$8 = ctk.a($$1, $$7.d, $$7.e, $$7.f, this.a, bwl.o, $$4, $$0.o());
+         if ($$8 == null) {
+            return bub.d;
+         } else {
+            if (ctk.b($$1)) {
+               for (bwd $$10 : $$1.a_(null, $$8.cR())) {
+                  if ($$10 instanceof ctk) {
+                     return bub.d;
+                  }
+               }
+            }
 
-         public czm.a.a b(float $$0) {
-            this.c = $$0;
-            return this;
-         }
+            if ($$1 instanceof arq $$11) {
+               $$11.b($$8);
+               $$11.a(eez.t, $$2, eez.a.a($$0.o(), $$11.a_($$2.e())));
+            }
 
-         public czm.a.a a(int $$0) {
-            this.d = OptionalInt.of($$0);
-            return this;
-         }
-
-         public czm.a a() {
-            return new czm.a(this.a, this.b, this.c, this.d);
+            $$4.h(1);
+            return bub.a;
          }
       }
-   }
-
-   @FunctionalInterface
-   public interface b {
-      jo getDispensePosition(ld var1, ja var2);
    }
 }

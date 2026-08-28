@@ -1,97 +1,65 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.ImmutableList.Builder;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import it.unimi.dsi.fastutil.objects.ObjectOpenHashSet;
 import java.util.List;
+import java.util.Optional;
 import java.util.Set;
+import java.util.function.Function;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
-public class faz extends faa {
-   private static final Codec<List<faz.b>> b = faz.b.a.listOf().validate($$0 -> {
-      Set<je<bvc>> $$1 = new ObjectOpenHashSet();
-
-      for (faz.b $$2 : $$0) {
-         if (!$$1.add($$2.a())) {
-            return DataResult.error(() -> "Encountered duplicate mob effect: '" + $$2.a() + "'");
-         }
-      }
-
-      return DataResult.success($$0);
-   });
+public class faz extends fam {
+   private static final Codec<fde> b = Codec.withAlternative(fdf.a, ayu.i, fdb::new);
    public static final MapCodec<faz> a = RecordCodecBuilder.mapCodec(
-      $$0 -> a($$0).and(b.optionalFieldOf("effects", List.of()).forGetter($$0x -> $$0x.c)).apply($$0, faz::new)
+      $$0 -> a($$0)
+            .and(
+               $$0.group(
+                  fal.e.a(fdf.a, Integer.MAX_VALUE).optionalFieldOf("floats").forGetter($$0x -> $$0x.c),
+                  fal.e.a(Codec.BOOL, Integer.MAX_VALUE).optionalFieldOf("flags").forGetter($$0x -> $$0x.d),
+                  fal.e.a(Codec.STRING, Integer.MAX_VALUE).optionalFieldOf("strings").forGetter($$0x -> $$0x.e),
+                  fal.e.a(b, Integer.MAX_VALUE).optionalFieldOf("colors").forGetter($$0x -> $$0x.f)
+               )
+            )
+            .apply($$0, faz::new)
    );
-   private final List<faz.b> c;
+   private final Optional<fal.e<fde>> c;
+   private final Optional<fal.e<Boolean>> d;
+   private final Optional<fal.e<String>> e;
+   private final Optional<fal.e<fde>> f;
 
-   faz(List<fbw> $$0, List<faz.b> $$1) {
+   public faz(List<fci> $$0, Optional<fal.e<fde>> $$1, Optional<fal.e<Boolean>> $$2, Optional<fal.e<String>> $$3, Optional<fal.e<fde>> $$4) {
       super($$0);
       this.c = $$1;
+      this.d = $$2;
+      this.e = $$3;
+      this.f = $$4;
    }
 
    @Override
-   public fac<faz> b() {
-      return fad.r;
+   public Set<bax<?>> a() {
+      return Stream.concat(this.c.stream(), this.f.stream()).flatMap($$0 -> $$0.a().stream()).flatMap($$0 -> $$0.a().stream()).collect(Collectors.toSet());
    }
 
    @Override
-   public Set<bav<?>> a() {
-      return this.c.stream().flatMap($$0 -> $$0.b().a().stream()).collect(ImmutableSet.toImmutableSet());
+   public fao<faz> b() {
+      return fap.R;
+   }
+
+   private static <T> List<T> a(Optional<fal.e<T>> $$0, List<T> $$1) {
+      return $$0.<List<T>>map($$1x -> $$1x.a($$1)).orElse($$1);
+   }
+
+   private static <T, E> List<E> a(Optional<fal.e<T>> $$0, List<E> $$1, Function<T, E> $$2) {
+      return $$0.<List<E>>map($$2x -> {
+         List<E> $$3 = $$2x.a().stream().map($$2).toList();
+         return $$2x.b().a($$1, $$3);
+      }).orElse($$1);
    }
 
    @Override
-   public cys a(cys $$0, eyn $$1) {
-      if ($$0.a(cyw.xa) && !this.c.isEmpty()) {
-         faz.b $$2 = af.a(this.c, $$1.b());
-         je<bvc> $$3 = $$2.a();
-         int $$4 = $$2.b().a($$1);
-         if (!$$3.a().a()) {
-            $$4 *= 20;
-         }
-
-         dbu.a $$5 = new dbu.a($$3, $$4);
-         $$0.a(kj.T, dbu.a, $$5, dbu::a);
-         return $$0;
-      } else {
-         return $$0;
-      }
-   }
-
-   public static faz.a c() {
-      return new faz.a();
-   }
-
-   public static class a extends faa.a<faz.a> {
-      private final Builder<faz.b> a = ImmutableList.builder();
-
-      protected faz.a a() {
-         return this;
-      }
-
-      public faz.a a(je<bvc> $$0, fcs $$1) {
-         this.a.add(new faz.b($$0, $$1));
-         return this;
-      }
-
-      @Override
-      public fab b() {
-         return new faz(this.g(), this.a.build());
-      }
-   }
-
-   static record b(je<bvc> b, fcs c) {
-      public static final Codec<faz.b> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(bvc.a.fieldOf("type").forGetter(faz.b::a), fct.a.fieldOf("duration").forGetter(faz.b::b)).apply($$0, faz.b::new)
-      );
-
-      public je<bvc> a() {
-         return this.b;
-      }
-
-      public fcs b() {
-         return this.c;
-      }
+   public cyy a(cyy $$0, eyz $$1) {
+      dbh $$2 = $$0.a(kj.p, dbh.a);
+      $$0.b(kj.p, new dbh(a(this.c, $$2.a(), $$1x -> $$1x.b($$1)), a(this.d, $$2.b()), a(this.e, $$2.c()), a(this.f, $$2.d(), $$1x -> $$1x.a($$1))));
+      return $$0;
    }
 }

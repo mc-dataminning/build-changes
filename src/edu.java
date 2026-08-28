@@ -1,15 +1,13 @@
-public interface edu {
-   edu a = new edu() {
-      @Override
-      public void a() {
-      }
+public class edu {
+   public static final alf<edw> a = a("overworld");
+   public static final alf<edw> b = a("the_nether");
+   public static final alf<edw> c = a("the_end");
+   public static final alf<edw> d = a("overworld_caves");
+   public static final alg e = alg.b("overworld");
+   public static final alg f = alg.b("the_nether");
+   public static final alg g = alg.b("the_end");
 
-      @Override
-      public void a(bwa.e $$0) {
-      }
-   };
-
-   void a();
-
-   void a(bwa.e var1);
+   private static alf<edw> a(String $$0) {
+      return alf.a(mg.aO, alg.b($$0));
+   }
 }

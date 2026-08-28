@@ -1,21 +1,19 @@
 import javax.annotation.Nullable;
 
-public class hcs extends hbp {
+public class hcs extends hdf {
    public float a;
    public float b;
-   public long c;
-   public int d;
-   public float e;
-   public float f;
-   public int g;
-   public dzo h = dlw.a.m();
-   public boolean i;
+   public fei c;
    @Nullable
-   public fdw j;
+   public fei d;
    @Nullable
-   public fdw k;
+   public fei e;
    @Nullable
-   public fdw l;
-   @Nullable
-   public fdw m;
+   public fei f;
+   public float g;
+   public float h;
+
+   public hcs() {
+      this.c = fei.c;
+   }
 }

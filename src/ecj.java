@@ -1,8 +1,11 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+import javax.annotation.Nullable;
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface ecj {
+public interface ecj {
+   @Nullable
+   eci c(int var1, int var2);
+
+   default void a(dje $$0, jx $$1) {
+   }
+
+   dib r();
 }

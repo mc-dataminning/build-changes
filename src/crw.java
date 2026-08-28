@@ -1,208 +1,52 @@
-import java.util.UUID;
-import javax.annotation.Nullable;
-
-public class crw extends crt {
-   private long a = 0L;
-
-   public crw(bwj<? extends crw> $$0, dip $$1) {
+public class crw extends crm {
+   public crw(bwm<? extends crw> $$0, div $$1) {
       super($$0, $$1);
    }
 
-   public crw(dip $$0, bwz $$1, cys $$2) {
-      super(bwj.Q, $$1, $$0, $$2);
+   public crw(div $$0, bxc $$1, fei $$2) {
+      super(bwm.bi, $$1, $$2, $$0);
+   }
+
+   public crw(div $$0, double $$1, double $$2, double $$3, fei $$4) {
+      super(bwm.bi, $$1, $$2, $$3, $$4, $$0);
    }
 
    @Override
-   protected cyo f() {
-      return cyw.tg;
-   }
-
-   @Override
-   protected void c(UUID $$0) {
-      this.g();
-      super.c($$0);
-      this.j();
-   }
-
-   @Override
-   public void c(@Nullable bwa $$0) {
-      this.g();
-      super.c($$0);
-      this.j();
-   }
-
-   private void g() {
-      if (this.q() instanceof arp $$0) {
-         $$0.b(this);
-      }
-   }
-
-   private void j() {
-      if (this.q() instanceof arp $$0) {
-         $$0.a(this);
-      }
-   }
-
-   @Nullable
-   @Override
-   protected bwa b(UUID $$0) {
-      if (this.dV() instanceof aro $$1) {
-         bwa $$3 = super.b($$0);
-         if ($$3 != null) {
-            return $$3;
+   protected void a(fef $$0) {
+      super.a($$0);
+      if (this.dV() instanceof arq $$1) {
+         bwd var7 = $$0.a();
+         bwd $$4 = this.q();
+         int $$5 = var7.aG();
+         var7.e(5.0F);
+         bus $$6 = this.dW().a((crm)this, $$4);
+         if (!var7.a($$1, $$6, 5.0F)) {
+            var7.h($$5);
          } else {
-            for (aro $$4 : $$1.p().L()) {
-               if ($$4 != $$1) {
-                  $$3 = $$4.b($$0);
-                  if ($$3 != null) {
-                     return $$3;
-                  }
-               }
-            }
-
-            return null;
+            dfn.a($$1, var7, $$6);
          }
-      } else {
-         return null;
       }
    }
 
    @Override
-   protected void a(fdt $$0) {
+   protected void a(fee $$0) {
       super.a($$0);
-      $$0.a().a(this.dW().b(this, this.q()), 0.0F);
+      if (this.dV() instanceof arq $$1) {
+         bwd $$3 = this.q();
+         if (!($$3 instanceof bxe) || $$1.O().c(dir.c)) {
+            iu $$4 = $$0.b().a($$0.c());
+            if (this.dV().v($$4)) {
+               this.dV().b($$4, dln.a(this.dV(), $$4));
+            }
+         }
+      }
    }
 
    @Override
-   protected void a(fdu $$0) {
+   protected void a(feg $$0) {
       super.a($$0);
-
-      for (int $$1 = 0; $$1 < 32; $$1++) {
-         this.dV().a(lx.af, this.dA(), this.dC() + this.ae.j() * 2.0, this.dG(), this.ae.k(), 0.0, this.ae.k());
-      }
-
-      if (this.dV() instanceof aro $$2 && !this.dQ()) {
-         bwa $$4 = this.q();
-         if ($$4 != null && a($$4, $$2)) {
-            fdw $$5 = this.bB();
-            if ($$4 instanceof arp $$6) {
-               if ($$6.f.c()) {
-                  if (this.ae.i() < 0.05F && $$2.O().c(dil.e)) {
-                     cnk $$7 = bwj.O.a($$2, bwi.k);
-                     if ($$7 != null) {
-                        $$7.b($$4.dA(), $$4.dC(), $$4.dG(), $$4.dL(), $$4.dN());
-                        $$2.b($$7);
-                     }
-                  }
-
-                  if (this.aD()) {
-                     $$4.aB();
-                  }
-
-                  arp $$8 = $$6.a(new ewv($$2, $$5, fdw.c, 0.0F, 0.0F, bxn.a(bxn.k, bxn.l), ewv.a));
-                  if ($$8 != null) {
-                     $$8.k();
-                     $$8.gO();
-                     $$8.a($$6.y(), this.dW().m(), 5.0F);
-                  }
-
-                  this.a($$2, $$5);
-               }
-            } else {
-               bwa $$9 = $$4.b(new ewv($$2, $$5, $$4.dy(), $$4.dL(), $$4.dN(), ewv.a));
-               if ($$9 != null) {
-                  $$9.k();
-               }
-
-               this.a($$2, $$5);
-            }
-
-            this.at();
-            return;
-         }
-
+      if (!this.dV().C) {
          this.at();
-         return;
       }
-   }
-
-   private static boolean a(bwa $$0, dip $$1) {
-      if ($$0.dV().aj() == $$1.aj()) {
-         return !($$0 instanceof bwz $$2) ? $$0.bK() : $$2.bK() && !$$2.fQ();
-      } else {
-         return $$0.n(true);
-      }
-   }
-
-   @Override
-   public void h() {
-      int $$0;
-      int $$1;
-      bwa $$2;
-      label30: {
-         $$0 = jx.b(this.dt().a());
-         $$1 = jx.b(this.dt().c());
-         $$2 = this.q();
-         if ($$2 instanceof arp $$3 && !$$2.bK() && $$3.y().O().c(dil.Z)) {
-            this.at();
-            break label30;
-         }
-
-         super.h();
-      }
-
-      if (this.bK()) {
-         iu $$4 = iu.a((jo)this.dt());
-         if ((--this.a <= 0L || $$0 != jx.a($$4.u()) || $$1 != jx.a($$4.w())) && $$2 instanceof arp $$5) {
-            this.a = $$5.c(this);
-         }
-      }
-   }
-
-   private void a(dip $$0, fdw $$1) {
-      $$0.a(null, $$1.d, $$1.e, $$1.f, awl.vf, awm.h);
-   }
-
-   @Nullable
-   @Override
-   public bwa b(ewv $$0) {
-      bwa $$1 = super.b($$0);
-      if ($$1 != null) {
-         $$1.f(iu.a((jo)$$1.dt()));
-      }
-
-      return $$1;
-   }
-
-   @Override
-   public boolean a(dip $$0, dip $$1) {
-      return $$0.aj() == dip.k && $$1.aj() == dip.i && this.q() instanceof arp $$2 ? super.a($$0, $$1) && $$2.i : super.a($$0, $$1);
-   }
-
-   @Override
-   protected void a(dzo $$0) {
-      super.a($$0);
-      if ($$0.a(dlw.lh) && this.q() instanceof arp $$1) {
-         $$1.a($$0);
-      }
-   }
-
-   @Override
-   public void b(bwa.e $$0) {
-      if ($$0 != bwa.e.d) {
-         this.g();
-      }
-
-      super.b($$0);
-   }
-
-   @Override
-   public void a(boolean $$0, iu $$1) {
-      bwa.a(this, $$0, $$1);
-   }
-
-   @Override
-   public void l(boolean $$0) {
-      bwa.b(this, $$0);
    }
 }

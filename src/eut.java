@@ -1,14 +1,18 @@
-import com.mojang.serialization.MapCodec;
+import java.util.List;
 
-public interface eut<P extends eus> {
-   eut<euq> a = a("clear", euq.a);
-   eut<eur> b = a("passthrough", eur.b);
-   eut<eup> c = a("append_static", eup.a);
-   eut<euo> d = a("append_loot", euo.a);
+public class eut {
+   private final List<eus> a;
 
-   MapCodec<P> codec();
+   public eut(List<eus> $$0) {
+      this.a = $$0;
+   }
 
-   private static <P extends eus> eut<P> a(String $$0, MapCodec<P> $$1) {
-      return jr.a(mf.n, $$0, () -> $$1);
+   public List<eus> a() {
+      return this.a;
+   }
+
+   @Override
+   public String toString() {
+      return "ProcessorList[" + this.a + "]";
    }
 }

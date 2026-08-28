@@ -1,24 +1,46 @@
-class bux extends bvc {
-   protected bux(bvd $$0, int $$1) {
-      super($$0, $$1);
-   }
+import java.util.Optional;
+import javax.annotation.Nullable;
 
-   @Override
-   public boolean a(int $$0, int $$1) {
-      return true;
-   }
+public record bux(String i) {
+   public static final bux a = new bux("generic");
+   public static final bux b = new bux("ladder");
+   public static final bux c = new bux("vines");
+   public static final bux d = new bux("weeping_vines");
+   public static final bux e = new bux("twisting_vines");
+   public static final bux f = new bux("scaffolding");
+   public static final bux g = new bux("other_climbable");
+   public static final bux h = new bux("water");
 
-   @Override
-   public boolean a(aro $$0, bwz $$1, int $$2) {
-      if ($$1 instanceof arp $$3 && !$$3.U_() && $$0.an() != btv.a && $$0.c($$3.dv())) {
-         csh $$4 = $$0.d($$3.dv());
-         if ($$4 == null || $$4.m() < $$4.l()) {
-            $$3.a(new bve(bvg.I, 600, $$2));
-            $$3.c($$3.dv());
-            return false;
-         }
+   public static bux a(dzz $$0) {
+      if ($$0.a(dmc.cY) || $$0.a(axc.R)) {
+         return b;
+      } else if ($$0.a(dmc.fu)) {
+         return c;
+      } else if ($$0.a(dmc.pc) || $$0.a(dmc.pd)) {
+         return d;
+      } else if ($$0.a(dmc.pe) || $$0.a(dmc.pf)) {
+         return e;
+      } else {
+         return $$0.a(dmc.ov) ? f : g;
       }
+   }
 
-      return true;
+   @Nullable
+   public static bux a(bxc $$0) {
+      Optional<iu> $$1 = $$0.eO();
+      if ($$1.isPresent()) {
+         dzz $$2 = $$0.dV().a_($$1.get());
+         return a($$2);
+      } else {
+         return $$0.bj() ? h : null;
+      }
+   }
+
+   public String a() {
+      return "death.fell.accident." + this.i;
+   }
+
+   public String b() {
+      return this.i;
    }
 }

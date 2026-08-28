@@ -1,14 +1,27 @@
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.PrimitiveCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import javax.annotation.Nullable;
 
-public interface hgz extends hhd<Void> {
+public record hgz(int c) implements hhf<String> {
+   public static final PrimitiveCodec<String> a = Codec.STRING;
+   public static final hhf.a<hgz, String> b = hhf.a.a(
+      RecordCodecBuilder.mapCodec($$0 -> $$0.group(ayu.l.optionalFieldOf("index", 0).forGetter(hgz::c)).apply($$0, hgz::new)), a
+   );
+
    @Nullable
-   default Void a(cys $$0) {
-      return null;
+   public String a(cyy $$0, @Nullable gjr $$1, @Nullable bxc $$2, int $$3, cyw $$4) {
+      dbh $$5 = $$0.a(kj.p);
+      return $$5 != null ? $$5.c(this.c) : null;
    }
 
-   default void a(@Nullable Void $$0, cyq $$1, fiq $$2, gpd $$3, int $$4, int $$5, boolean $$6) {
-      this.a($$1, $$2, $$3, $$4, $$5, $$6);
+   @Override
+   public hhf.a<hgz, String> a() {
+      return b;
    }
 
-   void a(cyq var1, fiq var2, gpd var3, int var4, int var5, boolean var6);
+   @Override
+   public Codec<String> b() {
+      return a;
+   }
 }

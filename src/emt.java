@@ -1,40 +1,28 @@
-import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public record emt(ji<dlu> b, ji<dlu> c, emy d, int e, int f, float g) {
-   public static final Codec<emt> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               jt.a(mg.i).fieldOf("can_grow_through").forGetter($$0x -> $$0x.b),
-               jt.a(mg.i).fieldOf("muddy_roots_in").forGetter($$0x -> $$0x.c),
-               emy.a.fieldOf("muddy_roots_provider").forGetter($$0x -> $$0x.d),
-               Codec.intRange(1, 12).fieldOf("max_root_width").forGetter($$0x -> $$0x.e),
-               Codec.intRange(1, 64).fieldOf("max_root_length").forGetter($$0x -> $$0x.f),
-               Codec.floatRange(0.0F, 1.0F).fieldOf("random_skew_chance").forGetter($$0x -> $$0x.g)
-            )
-            .apply($$0, emt::new)
-   );
+public class emt extends emp {
+   public static final MapCodec<emt> c = RecordCodecBuilder.mapCodec($$0 -> a($$0).apply($$0, emt::new));
 
-   public ji<dlu> a() {
-      return this.b;
+   public emt(btg $$0, btg $$1, int $$2) {
+      super($$0, $$1, $$2);
    }
 
-   public ji<dlu> b() {
-      return this.c;
+   @Override
+   protected emv<?> a() {
+      return emv.f;
    }
 
-   public emy c() {
-      return this.d;
+   @Override
+   protected void a(djb $$0, emu.b $$1, azv $$2, eme $$3, int $$4, emu.a $$5, int $$6, int $$7, int $$8) {
+      for (int $$9 = $$8; $$9 >= $$8 - $$6; $$9--) {
+         int $$10 = $$7 + ($$9 != $$8 && $$9 != $$8 - $$6 ? 1 : 0);
+         this.a($$0, $$1, $$2, $$3, $$5.a(), $$10, $$9, $$5.c());
+      }
    }
 
-   public int d() {
-      return this.e;
-   }
-
-   public int e() {
-      return this.f;
-   }
-
-   public float f() {
-      return this.g;
+   @Override
+   protected boolean a(azv $$0, int $$1, int $$2, int $$3, int $$4, boolean $$5) {
+      return azm.l((float)$$1 + 0.5F) + azm.l((float)$$3 + 0.5F) > (float)($$4 * $$4);
    }
 }

@@ -1,75 +1,108 @@
-import com.mojang.logging.LogUtils;
 import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
-public class gcr extends fxi {
-   private static final Logger d = LogUtils.getLogger();
-   public static final egl a = new egl((long)"test1".hashCode(), true, false);
-   protected final fxi b;
-   private frq s;
-   private frq u;
-   private frq v;
-   private frq w;
-   protected frz c;
-   private gcx x;
+public class gcr extends fxu {
+   private static final wy a = wy.c("telemetry_info.screen.title");
+   private static final wy b = wy.c("telemetry_info.screen.description").b(-4539718);
+   private static final wy c = wy.c("telemetry_info.button.privacy_statement");
+   private static final wy d = wy.c("telemetry_info.button.give_feedback");
+   private static final wy s = wy.c("telemetry_info.button.show_data");
+   private static final wy u = wy.c("telemetry_info.opt_in.description");
+   private static final int v = 8;
+   private static final boolean w = fos.Q().D();
+   private final fxu x;
+   private final fow y;
+   private final fvq z = new fvq(this, 16 + 9 * 5 + 20, w ? 33 + fse.a(fos.Q().h) : 33);
+   @Nullable
+   private gcq A;
+   @Nullable
+   private fsw B;
+   private double C;
 
-   public gcr(fxi $$0) {
-      super(ww.c("selectWorld.title"));
-      this.b = $$0;
+   public gcr(fxu $$0, fow $$1) {
+      super(a);
+      this.x = $$0;
+      this.y = $$1;
+   }
+
+   @Override
+   public wy i() {
+      return wx.a(super.i(), b);
    }
 
    @Override
    protected void aN_() {
-      this.c = new frz(this.p, this.n / 2 - 100, 22, 200, 20, this.c, ww.c("selectWorld.search"));
-      this.c.b($$0 -> this.x.a($$0));
-      this.d(this.c);
-      this.x = this.c(new gcx(this, this.m, this.n, this.o - 112, 48, 36, this.c.a(), this.x));
-      this.u = this.c(frq.a(eyc.a, $$0 -> this.x.b().ifPresent(gcx.c::c)).a(this.n / 2 - 154, this.o - 52, 150, 20).a());
-      this.c(frq.a(ww.c("selectWorld.create"), $$0 -> gcj.a(this.m, this)).a(this.n / 2 + 4, this.o - 52, 150, 20).a());
-      this.v = this.c(frq.a(ww.c("selectWorld.edit"), $$0 -> this.x.b().ifPresent(gcx.c::g)).a(this.n / 2 - 154, this.o - 28, 72, 20).a());
-      this.s = this.c(frq.a(ww.c("selectWorld.delete"), $$0 -> this.x.b().ifPresent(gcx.c::d)).a(this.n / 2 - 76, this.o - 28, 72, 20).a());
-      this.w = this.c(frq.a(ww.c("selectWorld.recreate"), $$0 -> this.x.b().ifPresent(gcx.c::h)).a(this.n / 2 + 4, this.o - 28, 72, 20).a());
-      this.c(frq.a(wv.k, $$0 -> this.m.a(this.b)).a(this.n / 2 + 82, this.o - 28, 72, 20).a());
-      this.a(null);
+      fvu $$0 = this.z.a(fvu.d().a(4));
+      $$0.c().b();
+      $$0.a(new ftj(a, this.p));
+      this.B = $$0.a(new fsw(b, this.p).b(true));
+      fvu $$1 = $$0.a(fvu.e().a(8));
+      $$1.a(fsc.a(c, this::a).a());
+      $$1.a(fsc.a(d, this::b).a());
+      fvu $$2 = this.z.b(fvu.d().a(4));
+      if (w) {
+         $$2.a(this.m());
+      }
+
+      fvu $$3 = $$2.a(fvu.e().a(8));
+      $$3.a(fsc.a(s, this::c).a());
+      $$3.a(fsc.a(wx.d, $$0x -> this.aK_()).a());
+      fvu $$4 = this.z.c(fvu.d().a(8));
+      this.A = $$4.a(new gcq(0, 0, this.n - 40, this.z.d(), this.p));
+      this.A.a($$0x -> this.C = $$0x);
+      this.z.a($$1x -> {
+         fsa var10000 = this.c($$1x);
+      });
+      this.c();
+   }
+
+   @Override
+   protected void c() {
+      if (this.A != null) {
+         this.A.a(this.C);
+         this.A.h(this.n - 40);
+         this.A.i(this.z.d());
+         this.A.q();
+      }
+
+      if (this.B != null) {
+         this.B.d(this.n - 16);
+      }
+
+      this.z.a();
    }
 
    @Override
    protected void aB_() {
-      this.b(this.c);
+      if (this.A != null) {
+         this.b(this.A);
+      }
+   }
+
+   private fsa m() {
+      fov<Boolean> $$0 = this.y.al();
+      return fse.a(u, this.p).a($$0).a(this::a).a();
+   }
+
+   private void a(fsa $$0, boolean $$1) {
+      if (this.A != null) {
+         this.A.b($$1);
+      }
+   }
+
+   private void a(fsc $$0) {
+      fwr.a(this, ayh.c);
+   }
+
+   private void b(fsc $$0) {
+      fwr.a(this, ayh.i);
+   }
+
+   private void c(fsc $$0) {
+      af.n().a(this.m.u().b());
    }
 
    @Override
    public void aK_() {
-      this.m.a(this.b);
-   }
-
-   @Override
-   public void a(frc $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      this.c.a($$0, $$1, $$2, $$3);
-      $$0.a(this.p, this.l, this.n / 2, 8, 16777215);
-   }
-
-   public void a(@Nullable eyc $$0) {
-      if ($$0 == null) {
-         this.u.b(eyc.a);
-         this.u.j = false;
-         this.v.j = false;
-         this.w.j = false;
-         this.s.j = false;
-      } else {
-         this.u.b($$0.t());
-         this.u.j = $$0.u();
-         this.v.j = $$0.w();
-         this.w.j = $$0.x();
-         this.s.j = $$0.y();
-      }
-   }
-
-   @Override
-   public void aE_() {
-      if (this.x != null) {
-         this.x.aD_().forEach(gcx.a::close);
-      }
+      this.m.a(this.x);
    }
 }

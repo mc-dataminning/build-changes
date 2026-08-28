@@ -1,6 +1,21 @@
-import java.util.Set;
-import java.util.function.Supplier;
+public enum brv {
+   a("pathfinding"),
+   b("event-loops"),
+   c("consecutive-executors"),
+   d("ticking"),
+   e("jvm"),
+   f("chunk rendering"),
+   g("chunk rendering dispatching"),
+   h("cpu"),
+   i("gpu");
 
-public interface brv {
-   Set<brt> a(Supplier<bqg> var1);
+   private final String j;
+
+   private brv(final String $$0) {
+      this.j = $$0;
+   }
+
+   public String a() {
+      return this.j;
+   }
 }

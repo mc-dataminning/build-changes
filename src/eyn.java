@@ -1,147 +1,596 @@
-import com.google.common.collect.Sets;
+import com.google.common.collect.Maps;
+import com.mojang.datafixers.DataFixer;
+import com.mojang.logging.LogUtils;
+import com.mojang.serialization.Dynamic;
+import com.mojang.serialization.Lifecycle;
+import java.io.BufferedOutputStream;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.UncheckedIOException;
+import java.nio.file.FileVisitResult;
+import java.nio.file.Files;
+import java.nio.file.InvalidPathException;
+import java.nio.file.Path;
+import java.nio.file.PathMatcher;
+import java.nio.file.Paths;
+import java.nio.file.SimpleFileVisitor;
+import java.nio.file.attribute.BasicFileAttributes;
+import java.time.Instant;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+import java.util.Objects;
 import java.util.Optional;
 import java.util.Set;
+import java.util.concurrent.CompletableFuture;
 import java.util.function.Consumer;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+import java.util.zip.ZipEntry;
+import java.util.zip.ZipOutputStream;
 import javax.annotation.Nullable;
-import net.minecraft.server.MinecraftServer;
+import org.slf4j.Logger;
 
 public class eyn {
-   private final eyq a;
-   private final azt b;
-   private final jf.a c;
-   private final Set<eyn.c<?>> d = Sets.newLinkedHashSet();
+   static final Logger c = LogUtils.getLogger();
+   static final DateTimeFormatter d = eyi.a();
+   public static final String a = "Data";
+   private static final PathMatcher e = $$0 -> false;
+   public static final String b = "allowed_symlinks.txt";
+   private static final int f = 104857600;
+   private static final int g = 67108864;
+   private final Path h;
+   private final Path i;
+   final DataFixer j;
+   private final fdy k;
 
-   eyn(eyq $$0, azt $$1, jf.a $$2) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
+   public eyn(Path $$0, Path $$1, fdy $$2, DataFixer $$3) {
+      this.j = $$3;
+
+      try {
+         v.c($$0);
+      } catch (IOException var6) {
+         throw new UncheckedIOException(var6);
+      }
+
+      this.h = $$0;
+      this.i = $$1;
+      this.k = $$2;
    }
 
-   public boolean a(bav<?> $$0) {
-      return this.a.b().a($$0);
+   public static fdy a(Path $$0) {
+      if (Files.exists($$0)) {
+         try {
+            fdy var2;
+            try (BufferedReader $$1 = Files.newBufferedReader($$0)) {
+               var2 = new fdy(fea.a($$1));
+            }
+
+            return var2;
+         } catch (Exception var6) {
+            c.error("Failed to parse {}, disallowing all symbolic links", "allowed_symlinks.txt", var6);
+         }
+      }
+
+      return new fdy(e);
    }
 
-   public <T> T b(bav<T> $$0) {
-      return this.a.b().b($$0);
+   public static eyn b(Path $$0) {
+      fdy $$1 = a($$0.resolve("allowed_symlinks.txt"));
+      return new eyn($$0, $$0.resolve("../backups"), $$1, bbc.a());
+   }
+
+   public static djt a(Dynamic<?> $$0) {
+      return djt.c.parse($$0).resultOrPartial(c::error).orElse(djt.d);
+   }
+
+   public static ame.d a(Dynamic<?> $$0, aun $$1, boolean $$2) {
+      return new ame.d($$1, a($$0), $$2, false);
+   }
+
+   public static eyk a(Dynamic<?> $$0, djt $$1, jr<edx> $$2, jg.a $$3) {
+      Dynamic<?> $$4 = ale.a($$0, $$3);
+      Dynamic<?> $$5 = $$4.get("WorldGenSettings").orElseEmptyMap();
+      egu $$6 = (egu)egu.a.parse($$5).getOrThrow();
+      diz $$7 = diz.a($$4, $$1);
+      egt.b $$8 = $$6.b().a($$2);
+      Lifecycle $$9 = $$8.a().add($$3.d());
+      eyr $$10 = eyr.a($$4, $$7, $$8.d(), $$6.a(), $$9);
+      return new eyk($$10, $$8);
+   }
+
+   public String a() {
+      return "Anvil";
+   }
+
+   public eyn.a b() throws eym {
+      if (!Files.isDirectory(this.h)) {
+         throw new eym(wy.c("selectWorld.load_folder_access"));
+      } else {
+         try {
+            eyn.a var3;
+            try (Stream<Path> $$0 = Files.list(this.h)) {
+               List<eyn.b> $$1 = $$0.filter($$0x -> Files.isDirectory($$0x))
+                  .map(eyn.b::new)
+                  .filter($$0x -> Files.isRegularFile($$0x.b()) || Files.isRegularFile($$0x.c()))
+                  .toList();
+               var3 = new eyn.a($$1);
+            }
+
+            return var3;
+         } catch (IOException var6) {
+            throw new eym(wy.c("selectWorld.load_folder_access"));
+         }
+      }
+   }
+
+   public CompletableFuture<List<eyo>> a(eyn.a $$0) {
+      List<CompletableFuture<eyo>> $$1 = new ArrayList<>($$0.a.size());
+
+      for (eyn.b $$2 : $$0.a) {
+         $$1.add(CompletableFuture.supplyAsync(() -> {
+            boolean $$1x;
+            try {
+               $$1x = ayr.b($$2.f());
+            } catch (Exception var13) {
+               c.warn("Failed to read {} lock", $$2.f(), var13);
+               return null;
+            }
+
+            try {
+               return this.a($$2, $$1x);
+            } catch (OutOfMemoryError var12) {
+               azk.b();
+               String $$5 = "Ran out of memory trying to read summary of world folder \"" + $$2.a() + "\"";
+               c.error(LogUtils.FATAL_MARKER, $$5);
+               OutOfMemoryError $$6 = new OutOfMemoryError("Ran out of memory reading level data");
+               $$6.initCause(var12);
+               o $$7 = o.a($$6, $$5);
+               p $$8 = $$7.a("World details");
+               $$8.a("Folder Name", $$2.a());
+
+               try {
+                  long $$9 = Files.size($$2.b());
+                  $$8.a("level.dat size", $$9);
+               } catch (IOException var11) {
+                  $$8.a("level.dat size", (Throwable)var11);
+               }
+
+               throw new z($$7);
+            }
+         }, af.h().a("loadLevelSummaries")));
+      }
+
+      return af.f($$1).thenApply($$0x -> $$0x.stream().filter(Objects::nonNull).sorted().toList());
+   }
+
+   private int f() {
+      return 19133;
+   }
+
+   static tz c(Path $$0) throws IOException {
+      return um.a($$0, ui.a(104857600L));
+   }
+
+   static Dynamic<?> a(Path $$0, DataFixer $$1) throws IOException {
+      tz $$2 = c($$0);
+      tz $$3 = $$2.p("Data");
+      int $$4 = uo.b($$3, -1);
+      Dynamic<?> $$5 = bbb.a.a($$1, new Dynamic(un.a, $$3), $$4);
+      $$5 = $$5.update("Player", $$2x -> bbb.b.a($$1, $$2x, $$4));
+      return $$5.update("WorldGenSettings", $$2x -> bbb.r.a($$1, $$2x, $$4));
+   }
+
+   private eyo a(eyn.b $$0, boolean $$1) {
+      Path $$2 = $$0.b();
+      if (Files.exists($$2)) {
+         try {
+            if (Files.isSymbolicLink($$2)) {
+               List<fdz> $$3 = this.k.a($$2);
+               if (!$$3.isEmpty()) {
+                  c.warn("{}", fdx.a($$2, $$3));
+                  return new eyo.c($$0.a(), $$0.d());
+               }
+            }
+
+            if (e($$2) instanceof tz $$5) {
+               tz $$6 = $$5.p("Data");
+               int $$7 = uo.b($$6, -1);
+               Dynamic<?> $$8 = bbb.a.a(this.j, new Dynamic(un.a, $$6), $$7);
+               return this.a($$8, $$0, $$1);
+            }
+
+            c.warn("Invalid root tag in {}", $$2);
+         } catch (Exception var9) {
+            c.error("Exception reading {}", $$2, var9);
+         }
+      }
+
+      return new eyo.b($$0.a(), $$0.d(), a($$0));
+   }
+
+   private static long a(eyn.b $$0) {
+      Instant $$1 = d($$0.b());
+      if ($$1 == null) {
+         $$1 = d($$0.c());
+      }
+
+      return $$1 == null ? -1L : $$1.toEpochMilli();
    }
 
    @Nullable
-   public <T> T c(bav<T> $$0) {
-      return this.a.b().c($$0);
-   }
-
-   public void a(ale $$0, Consumer<cys> $$1) {
-      this.a.a($$0, $$1);
-   }
-
-   public boolean a(eyn.c<?> $$0) {
-      return this.d.contains($$0);
-   }
-
-   public boolean b(eyn.c<?> $$0) {
-      return this.d.add($$0);
-   }
-
-   public void c(eyn.c<?> $$0) {
-      this.d.remove($$0);
-   }
-
-   public jf.a a() {
-      return this.c;
-   }
-
-   public azt b() {
-      return this.b;
-   }
-
-   public float c() {
-      return this.a.c();
-   }
-
-   public aro d() {
-      return this.a.a();
-   }
-
-   public static eyn.c<eys> a(eys $$0) {
-      return new eyn.c<>(eyp.c, $$0);
-   }
-
-   public static eyn.c<fbw> a(fbw $$0) {
-      return new eyn.c<>(eyp.a, $$0);
-   }
-
-   public static eyn.c<fab> a(fab $$0) {
-      return new eyn.c<>(eyp.b, $$0);
-   }
-
-   public static class a {
-      private final eyq a;
-      @Nullable
-      private azt b;
-
-      public a(eyq $$0) {
-         this.a = $$0;
-      }
-
-      public eyn.a a(long $$0) {
-         if ($$0 != 0L) {
-            this.b = azt.a($$0);
-         }
-
-         return this;
-      }
-
-      public eyn.a a(azt $$0) {
-         this.b = $$0;
-         return this;
-      }
-
-      public aro a() {
-         return this.a.a();
-      }
-
-      public eyn a(Optional<ale> $$0) {
-         aro $$1 = this.a();
-         MinecraftServer $$2 = $$1.p();
-         azt $$3 = Optional.ofNullable(this.b).or(() -> $$0.map($$1::a)).orElseGet($$1::C_);
-         return new eyn(this.a, $$3, $$2.bc().a());
+   static Instant d(Path $$0) {
+      try {
+         return Files.getLastModifiedTime($$0).toInstant();
+      } catch (IOException var2) {
+         return null;
       }
    }
 
-   public static enum b implements bai {
-      a("this", fbh.a),
-      b("attacker", fbh.d),
-      c("direct_attacker", fbh.e),
-      d("attacking_player", fbh.b);
-
-      public static final bai.a<eyn.b> e = bai.a(eyn.b::values);
-      private final String f;
-      private final bav<? extends bwa> g;
-
-      private b(final String $$0, final bav<? extends bwa> $$1) {
-         this.f = $$0;
-         this.g = $$1;
+   eyo a(Dynamic<?> $$0, eyn.b $$1, boolean $$2) {
+      eyp $$3 = eyp.a($$0);
+      int $$4 = $$3.a();
+      if ($$4 != 19132 && $$4 != 19133) {
+         throw new ul("Unknown data version: " + Integer.toHexString($$4));
+      } else {
+         boolean $$5 = $$4 != this.f();
+         Path $$6 = $$1.d();
+         djt $$7 = a($$0);
+         diz $$8 = diz.a($$0, $$7);
+         cuh $$9 = b($$0);
+         boolean $$10 = cuj.a($$9);
+         return new eyo($$8, $$3, $$1.a(), $$5, $$2, $$10, $$6);
       }
+   }
 
-      public bav<? extends bwa> a() {
-         return this.g;
+   private static cuh b(Dynamic<?> $$0) {
+      Set<alg> $$1 = $$0.get("enabled_features").asStream().flatMap($$0x -> $$0x.asString().result().map(alg::c).stream()).collect(Collectors.toSet());
+      return cuj.e.a($$1, $$0x -> {
+      });
+   }
+
+   @Nullable
+   private static uw e(Path $$0) throws IOException {
+      vi $$1 = new vi(new vf("Data", tz.b, "Player"), new vf("Data", tz.b, "WorldGenSettings"));
+      um.a($$0, $$1, ui.a(104857600L));
+      return $$1.d();
+   }
+
+   public boolean a(String $$0) {
+      try {
+         Path $$1 = this.c($$0);
+         Files.createDirectory($$1);
+         Files.deleteIfExists($$1);
+         return true;
+      } catch (IOException var3) {
+         return false;
       }
+   }
 
-      public static eyn.b a(String $$0) {
-         eyn.b $$1 = e.a($$0);
-         if ($$1 != null) {
-            return $$1;
-         } else {
-            throw new IllegalArgumentException("Invalid entity target " + $$0);
-         }
+   public boolean b(String $$0) {
+      try {
+         return Files.isDirectory(this.c($$0));
+      } catch (InvalidPathException var3) {
+         return false;
+      }
+   }
+
+   public Path c(String $$0) {
+      return this.h.resolve($$0);
+   }
+
+   public Path c() {
+      return this.h;
+   }
+
+   public Path d() {
+      return this.i;
+   }
+
+   public eyn.c d(String $$0) throws IOException, fdx {
+      Path $$1 = this.c($$0);
+      List<fdz> $$2 = this.k.a($$1, true);
+      if (!$$2.isEmpty()) {
+         throw new fdx($$1, $$2);
+      } else {
+         return new eyn.c($$0, $$1);
+      }
+   }
+
+   public eyn.c e(String $$0) throws IOException {
+      Path $$1 = this.c($$0);
+      return new eyn.c($$0, $$1);
+   }
+
+   public fdy e() {
+      return this.k;
+   }
+
+   public static record a(List<eyn.b> a) implements Iterable<eyn.b> {
+
+      public boolean a() {
+         return this.a.isEmpty();
       }
 
       @Override
-      public String c() {
-         return this.f;
+      public Iterator<eyn.b> iterator() {
+         return this.a.iterator();
+      }
+
+      public List<eyn.b> b() {
+         return this.a;
       }
    }
 
-   public static record c<T>(eyp<T> a, T b) {
+   public static record b(Path a) {
+
+      public String a() {
+         return this.a.getFileName().toString();
+      }
+
+      public Path b() {
+         return this.a(eyl.e);
+      }
+
+      public Path c() {
+         return this.a(eyl.f);
+      }
+
+      public Path a(LocalDateTime $$0) {
+         return this.a.resolve(eyl.e.a() + "_corrupted_" + $$0.format(eyn.d));
+      }
+
+      public Path b(LocalDateTime $$0) {
+         return this.a.resolve(eyl.e.a() + "_raw_" + $$0.format(eyn.d));
+      }
+
+      public Path d() {
+         return this.a(eyl.g);
+      }
+
+      public Path e() {
+         return this.a(eyl.h);
+      }
+
+      public Path a(eyl $$0) {
+         return this.a.resolve($$0.a());
+      }
+
+      public Path f() {
+         return this.a;
+      }
+   }
+
+   public class c implements AutoCloseable {
+      final ayr b;
+      final eyn.b c;
+      private final String d;
+      private final Map<eyl, Path> e = Maps.newHashMap();
+
+      c(final String $$1, final Path $$2) throws IOException {
+         this.d = $$1;
+         this.c = new eyn.b($$2);
+         this.b = ayr.a($$2);
+      }
+
+      public long a() {
+         try {
+            return Files.getFileStore(this.c.a).getUsableSpace();
+         } catch (Exception var2) {
+            return Long.MAX_VALUE;
+         }
+      }
+
+      public boolean b() {
+         return this.a() < 67108864L;
+      }
+
+      public void c() {
+         try {
+            this.close();
+         } catch (IOException var2) {
+            eyn.c.warn("Failed to unlock access to level {}", this.f(), var2);
+         }
+      }
+
+      public eyn d() {
+         return eyn.this;
+      }
+
+      public eyn.b e() {
+         return this.c;
+      }
+
+      public String f() {
+         return this.d;
+      }
+
+      public Path a(eyl $$0) {
+         return this.e.computeIfAbsent($$0, this.c::a);
+      }
+
+      public Path a(alf<div> $$0) {
+         return edw.a($$0, this.c.f());
+      }
+
+      private void o() {
+         if (!this.b.a()) {
+            throw new IllegalStateException("Lock is no longer valid");
+         }
+      }
+
+      public eyq g() {
+         this.o();
+         return new eyq(this, eyn.this.j);
+      }
+
+      public eyo a(Dynamic<?> $$0) {
+         this.o();
+         return eyn.this.a($$0, this.c, false);
+      }
+
+      public Dynamic<?> h() throws IOException {
+         return this.b(false);
+      }
+
+      public Dynamic<?> i() throws IOException {
+         return this.b(true);
+      }
+
+      private Dynamic<?> b(boolean $$0) throws IOException {
+         this.o();
+         return eyn.a($$0 ? this.c.c() : this.c.b(), eyn.this.j);
+      }
+
+      public void a(js $$0, eyt $$1) {
+         this.a($$0, $$1, null);
+      }
+
+      public void a(js $$0, eyt $$1, @Nullable tz $$2) {
+         tz $$3 = $$1.a($$0, $$2);
+         tz $$4 = new tz();
+         $$4.a("Data", $$3);
+         this.a($$4);
+      }
+
+      private void a(tz $$0) {
+         Path $$1 = this.c.f();
+
+         try {
+            Path $$2 = Files.createTempFile($$1, "level", ".dat");
+            um.a($$0, $$2);
+            Path $$3 = this.c.c();
+            Path $$4 = this.c.b();
+            af.a($$4, $$2, $$3);
+         } catch (Exception var6) {
+            eyn.c.error("Failed to save level {}", $$1, var6);
+         }
+      }
+
+      public Optional<Path> j() {
+         return !this.b.a() ? Optional.empty() : Optional.of(this.c.d());
+      }
+
+      public void k() throws IOException {
+         this.o();
+         final Path $$0 = this.c.e();
+         eyn.c.info("Deleting level {}", this.d);
+
+         for (int $$1 = 1; $$1 <= 5; $$1++) {
+            eyn.c.info("Attempt {}...", $$1);
+
+            try {
+               Files.walkFileTree(this.c.f(), new SimpleFileVisitor<Path>() {
+                  public FileVisitResult a(Path $$0x, BasicFileAttributes $$1) throws IOException {
+                     if (!$$0.equals($$0)) {
+                        eyn.c.debug("Deleting {}", $$0);
+                        Files.delete($$0);
+                     }
+
+                     return FileVisitResult.CONTINUE;
+                  }
+
+                  public FileVisitResult a(Path $$0x, @Nullable IOException $$1) throws IOException {
+                     if ($$1 != null) {
+                        throw $$1;
+                     } else {
+                        if ($$0.equals(c.this.c.f())) {
+                           c.this.b.close();
+                           Files.deleteIfExists($$0);
+                        }
+
+                        Files.delete($$0);
+                        return FileVisitResult.CONTINUE;
+                     }
+                  }
+               });
+               break;
+            } catch (IOException var6) {
+               if ($$1 >= 5) {
+                  throw var6;
+               }
+
+               eyn.c.warn("Failed to delete {}", this.c.f(), var6);
+
+               try {
+                  Thread.sleep(500L);
+               } catch (InterruptedException var5) {
+               }
+            }
+         }
+      }
+
+      public void a(String $$0) throws IOException {
+         this.a((Consumer<tz>)($$1 -> $$1.a("LevelName", $$0.trim())));
+      }
+
+      public void b(String $$0) throws IOException {
+         this.a((Consumer<tz>)($$1 -> {
+            $$1.a("LevelName", $$0.trim());
+            $$1.r("Player");
+         }));
+      }
+
+      private void a(Consumer<tz> $$0) throws IOException {
+         this.o();
+         tz $$1 = eyn.c(this.c.b());
+         $$0.accept($$1.p("Data"));
+         this.a($$1);
+      }
+
+      public long l() throws IOException {
+         this.o();
+         String $$0 = LocalDateTime.now().format(eyn.d) + "_" + this.d;
+         Path $$1 = eyn.this.d();
+
+         try {
+            v.c($$1);
+         } catch (IOException var9) {
+            throw new RuntimeException(var9);
+         }
+
+         Path $$3 = $$1.resolve(v.a($$1, $$0, ".zip"));
+
+         try (final ZipOutputStream $$4 = new ZipOutputStream(new BufferedOutputStream(Files.newOutputStream($$3)))) {
+            final Path $$5 = Paths.get(this.d);
+            Files.walkFileTree(this.c.f(), new SimpleFileVisitor<Path>() {
+               public FileVisitResult a(Path $$0, BasicFileAttributes $$1) throws IOException {
+                  if ($$0.endsWith("session.lock")) {
+                     return FileVisitResult.CONTINUE;
+                  } else {
+                     String $$2 = $$5.resolve(c.this.c.f().relativize($$0)).toString().replace('\\', '/');
+                     ZipEntry $$3 = new ZipEntry($$2);
+                     $$4.putNextEntry($$3);
+                     com.google.common.io.Files.asByteSource($$0.toFile()).copyTo($$4);
+                     $$4.closeEntry();
+                     return FileVisitResult.CONTINUE;
+                  }
+               }
+            });
+         }
+
+         return Files.size($$3);
+      }
+
+      public boolean m() {
+         return Files.exists(this.c.b()) || Files.exists(this.c.c());
+      }
+
+      @Override
+      public void close() throws IOException {
+         this.b.close();
+      }
+
+      public boolean n() {
+         return af.a(this.c.b(), this.c.c(), this.c.a(LocalDateTime.now()), true);
+      }
+
+      @Nullable
+      public Instant a(boolean $$0) {
+         return eyn.d($$0 ? this.c.c() : this.c.b());
+      }
    }
 }

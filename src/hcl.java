@@ -1,8 +1,8 @@
-public class hcl extends hbj {
-   public final hes a = new hes();
-
-   @Override
-   public boolean a() {
-      return !this.a.c();
-   }
+public class hcl extends hdf {
+   public boolean d;
+   public boolean e;
+   public boolean f;
+   public float g;
+   public float h;
+   public float i;
 }

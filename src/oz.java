@@ -30,8 +30,8 @@ public class oz implements mm {
       return this;
    }
 
-   private tx a(String $$0, tx $$1) {
-      tx $$2 = $$1;
+   private tz a(String $$0, tz $$1) {
+      tz $$2 = $$1;
 
       for (oz.a $$3 : this.g) {
          $$2 = $$3.apply($$0, $$2);
@@ -81,10 +81,10 @@ public class oz implements mm {
          oz.c var10;
          try (BufferedReader $$2 = Files.newBufferedReader($$0)) {
             String $$3 = IOUtils.toString($$2);
-            tx $$4 = this.a($$1, um.a($$3));
+            tz $$4 = this.a($$1, uo.a($$3));
             ByteArrayOutputStream $$5 = new ByteArrayOutputStream();
             HashingOutputStream $$6 = new HashingOutputStream(Hashing.sha1(), $$5);
-            uk.a($$4, $$6);
+            um.a($$4, $$6);
             byte[] $$7 = $$5.toByteArray();
             HashCode $$8 = $$6.hash();
             var10 = new oz.c($$1, $$7, $$8);
@@ -108,7 +108,7 @@ public class oz implements mm {
 
    @FunctionalInterface
    public interface a {
-      tx apply(String var1, tx var2);
+      tz apply(String var1, tz var2);
    }
 
    static class b extends RuntimeException {

@@ -1,31 +1,20 @@
-import java.util.Optional;
-import java.util.function.Function;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class eho extends egk {
-   private final js a;
-   private final efr b;
-   private final egb c;
-   private final ege.o d;
+class eho extends ehq {
+   public static final MapCodec<eho> a = RecordCodecBuilder.mapCodec($$0 -> a($$0).apply($$0, eho::new));
 
-   public eho(efq $$0, js $$1, dir $$2, efr $$3, egb $$4, ege.o $$5) {
-      super($$0, $$2);
-      this.a = $$1;
-      this.b = $$3;
-      this.c = $$4;
-      this.d = $$5;
+   public eho(jz $$0) {
+      super($$0);
    }
 
-   @Deprecated
-   public Optional<dzo> a(Function<iu, je<djs>> $$0, ebl $$1, iu $$2, boolean $$3) {
-      return this.c.c().a(this.d, this, $$0, $$1, this.b, $$2, $$3);
+   @Override
+   protected boolean a(dzz $$0) {
+      return $$0.v();
    }
 
-   @Deprecated
-   public js c() {
-      return this.a;
-   }
-
-   public egb d() {
-      return this.c;
+   @Override
+   public ehg<?> a() {
+      return ehg.f;
    }
 }

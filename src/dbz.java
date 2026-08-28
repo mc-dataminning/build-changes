@@ -1,48 +1,23 @@
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.function.Consumer;
 
-public record dbz(cys c) {
-   public static final Codec<dbz> a = cys.b.xmap(dbz::new, dbz::a);
-   public static final yu<wh, dbz> b = yu.a(cys.i, dbz::a, dbz::new);
-
-   public cys a(cys $$0, int $$1, boolean $$2, dbz.a $$3) {
-      if ($$2) {
-         return $$0;
-      } else if ($$0.M() >= $$1) {
-         return $$0;
-      } else {
-         cys $$4 = this.c.v();
-         if ($$0.f()) {
-            return $$4;
-         } else {
-            $$3.apply($$4);
-            return $$0;
-         }
-      }
-   }
+public record dbz(alf<eze> b, long c) implements dcd {
+   private static final wy d = wy.c("item.container.loot_table.unknown");
+   public static final Codec<dbz> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(alf.a(mg.bp).fieldOf("loot_table").forGetter(dbz::a), Codec.LONG.optionalFieldOf("seed", 0L).forGetter(dbz::b)).apply($$0, dbz::new)
+   );
 
    @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else if ($$0 != null && this.getClass() == $$0.getClass()) {
-         dbz $$1 = (dbz)$$0;
-         return cys.a(this.c, $$1.c);
-      } else {
-         return false;
-      }
+   public void a(cyu.b $$0, Consumer<wy> $$1, dan $$2, ke $$3) {
+      $$1.accept(d);
    }
 
-   @Override
-   public int hashCode() {
-      return cys.b(this.c);
+   public alf<eze> a() {
+      return this.b;
    }
 
-   public cys a() {
+   public long b() {
       return this.c;
-   }
-
-   @FunctionalInterface
-   public interface a {
-      void apply(cys var1);
    }
 }

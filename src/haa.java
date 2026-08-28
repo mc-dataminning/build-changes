@@ -1,32 +1,42 @@
-import java.util.function.Function;
-
-public class haa<S extends hcp, RM extends gfd<? super S>, EM extends gfd<? super S>> extends gzy<S, RM> {
-   private final gzj a;
-   private final hkf.d b;
-   private final Function<S, cys> c;
-   private final EM d;
-   private final EM e;
-
-   public haa(gxh<S, RM> $$0, gzj $$1, hkf.d $$2, Function<S, cys> $$3, EM $$4, EM $$5) {
+public class haa extends han<hco, gfu> {
+   public haa(gxw<hco, gfu> $$0) {
       super($$0);
-      this.a = $$1;
-      this.b = $$2;
-      this.c = $$3;
-      this.d = $$4;
-      this.e = $$5;
    }
 
-   public haa(gxh<S, RM> $$0, gzj $$1, EM $$2, hkf.d $$3, Function<S, cys> $$4) {
-      this($$0, $$1, $$3, $$4, $$2, $$2);
-   }
+   public void a(fjc $$0, gps $$1, int $$2, hco $$3, float $$4, float $$5) {
+      hfi $$6 = $$3.i;
+      if (!$$6.c()) {
+         boolean $$7 = $$3.d;
+         boolean $$8 = $$3.aj;
+         $$0.a();
+         $$0.a(this.d().b.b / 16.0F, this.d().b.c / 16.0F, this.d().b.d / 16.0F);
+         if ($$8) {
+            float $$9 = 0.75F;
+            $$0.b(0.75F, 0.75F, 0.75F);
+         }
 
-   public void a(fiq $$0, gpd $$1, int $$2, S $$3, float $$4, float $$5) {
-      cys $$6 = this.c.apply($$3);
-      dhb $$7 = $$6.a(kj.D);
-      if ($$7 != null && !$$7.d().isEmpty()) {
-         EM $$8 = $$3.aj ? this.e : this.d;
-         $$8.a($$3);
-         this.a.a(this.b, $$7.d().get(), $$8, $$6, $$0, $$1, $$2);
+         $$0.a(a.f.rotation($$3.a));
+         $$0.a(a.d.rotationDegrees($$4));
+         $$0.a(a.b.rotationDegrees($$5));
+         if ($$3.aj) {
+            if ($$7) {
+               $$0.a(0.4F, 0.26F, 0.15F);
+            } else {
+               $$0.a(0.06F, 0.26F, -0.5F);
+            }
+         } else if ($$7) {
+            $$0.a(0.46F, 0.26F, 0.22F);
+         } else {
+            $$0.a(0.06F, 0.27F, -0.5F);
+         }
+
+         $$0.a(a.b.rotationDegrees(90.0F));
+         if ($$7) {
+            $$0.a(a.f.rotationDegrees(90.0F));
+         }
+
+         $$6.a($$0, $$1, $$2, hif.d);
+         $$0.b();
       }
    }
 }

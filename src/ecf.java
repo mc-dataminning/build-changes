@@ -1,289 +1,262 @@
-import com.google.common.collect.Lists;
-import it.unimi.dsi.fastutil.shorts.ShortList;
-import java.util.Collections;
-import java.util.EnumSet;
-import java.util.List;
+import it.unimi.dsi.fastutil.longs.LongSet;
 import java.util.Map;
+import java.util.function.BiConsumer;
+import java.util.function.Predicate;
 import javax.annotation.Nullable;
 
-public class ecf extends ebl {
+public class ecf extends ecq {
+   private final ecg n;
+   private final boolean o;
+
+   public ecf(ecg $$0, boolean $$1) {
+      super($$0.f(), ect.a, $$0.l, $$0.H().F_().f(mg.aG), $$0.v());
+      this.n = $$0;
+      this.o = $$1;
+   }
+
    @Nullable
-   private volatile evk n;
-   private volatile ecm o = ecm.c;
-   private final List<tx> p = Lists.newArrayList();
+   @Override
+   public dwx c_(iu $$0) {
+      return this.n.c_($$0);
+   }
+
+   @Override
+   public dzz a_(iu $$0) {
+      return this.n.a_($$0);
+   }
+
+   @Override
+   public ewg b_(iu $$0) {
+      return this.n.b_($$0);
+   }
+
+   @Override
+   public ech b(int $$0) {
+      return this.o ? this.n.b($$0) : super.b($$0);
+   }
+
    @Nullable
-   private ebk q;
-   @Nullable
-   private efb r;
-   private final ffm<dlu> s;
-   private final ffm<evu> t;
-
-   public ecf(dhw $$0, eci $$1, dir $$2, jr<djs> $$3, @Nullable egq $$4) {
-      this($$0, $$1, null, new ffm<>(), new ffm<>(), $$2, $$3, $$4);
-   }
-
-   public ecf(dhw $$0, eci $$1, @Nullable ebw[] $$2, ffm<dlu> $$3, ffm<evu> $$4, dir $$5, jr<djs> $$6, @Nullable egq $$7) {
-      super($$0, $$1, $$5, $$6, 0L, $$2, $$7);
-      this.s = $$3;
-      this.t = $$4;
+   @Override
+   public dzz a(iu $$0, dzz $$1, int $$2) {
+      return this.o ? this.n.a($$0, $$1, $$2) : null;
    }
 
    @Override
-   public ffr<dlu> q() {
-      return this.s;
+   public void a(dwx $$0) {
+      if (this.o) {
+         this.n.a($$0);
+      }
    }
 
    @Override
-   public ffr<evu> r() {
-      return this.t;
+   public void a(bwd $$0) {
+      if (this.o) {
+         this.n.a($$0);
+      }
    }
 
    @Override
-   public ebl.a a(long $$0) {
-      return new ebl.a(this.s.a($$0), this.t.a($$0));
+   public void a(ecx $$0) {
+      if (this.o) {
+         super.a($$0);
+      }
    }
 
    @Override
-   public dzo a_(iu $$0) {
-      int $$1 = $$0.v();
-      if (this.e($$1)) {
-         return dlw.nD.m();
+   public ech[] d() {
+      return this.n.d();
+   }
+
+   @Override
+   public void a(efy.a $$0, long[] $$1) {
+   }
+
+   private efy.a c(efy.a $$0) {
+      if ($$0 == efy.a.a) {
+         return efy.a.b;
       } else {
-         ebw $$2 = this.b(this.f($$1));
-         return $$2.c() ? dlw.a.m() : $$2.a($$0.u() & 15, $$1 & 15, $$0.w() & 15);
+         return $$0 == efy.a.c ? efy.a.d : $$0;
       }
    }
 
    @Override
-   public evv b_(iu $$0) {
-      int $$1 = $$0.v();
-      if (this.e($$1)) {
-         return evw.a.g();
-      } else {
-         ebw $$2 = this.b(this.f($$1));
-         return $$2.c() ? evw.a.g() : $$2.b($$0.u() & 15, $$1 & 15, $$0.w() & 15);
-      }
+   public efy a(efy.a $$0) {
+      return this.n.a($$0);
+   }
+
+   @Override
+   public int a(efy.a $$0, int $$1, int $$2) {
+      return this.n.a(this.c($$0), $$1, $$2);
+   }
+
+   @Override
+   public je<djy> getNoiseBiome(int $$0, int $$1, int $$2) {
+      return this.n.getNoiseBiome($$0, $$1, $$2);
+   }
+
+   @Override
+   public dic f() {
+      return this.n.f();
    }
 
    @Nullable
    @Override
-   public dzo a(iu $$0, dzo $$1, int $$2) {
-      int $$3 = $$0.u();
-      int $$4 = $$0.v();
-      int $$5 = $$0.w();
-      if (this.e($$4)) {
-         return dlw.nD.m();
-      } else {
-         int $$6 = this.f($$4);
-         ebw $$7 = this.b($$6);
-         boolean $$8 = $$7.c();
-         if ($$8 && $$1.a(dlw.a)) {
-            return $$1;
-         } else {
-            int $$9 = jx.b($$3);
-            int $$10 = jx.b($$4);
-            int $$11 = jx.b($$5);
-            dzo $$12 = $$7.a($$9, $$10, $$11, $$1);
-            if (this.o.a(ecm.k)) {
-               boolean $$13 = $$7.c();
-               if ($$13 != $$8) {
-                  this.n.a($$0, $$13);
-               }
-
-               if (evm.a($$12, $$1)) {
-                  this.i.a(this, $$9, $$4, $$11);
-                  this.n.a($$0);
-               }
-            }
-
-            EnumSet<efn.a> $$14 = this.n().e();
-            EnumSet<efn.a> $$15 = null;
-
-            for (efn.a $$16 : $$14) {
-               efn $$17 = this.h.get($$16);
-               if ($$17 == null) {
-                  if ($$15 == null) {
-                     $$15 = EnumSet.noneOf(efn.a.class);
-                  }
-
-                  $$15.add($$16);
-               }
-            }
-
-            if ($$15 != null) {
-               efn.a(this, $$15);
-            }
-
-            for (efn.a $$18 : $$14) {
-               this.h.get($$18).a($$9, $$4, $$11, $$1);
-            }
-
-            return $$12;
-         }
-      }
+   public erb a(eqt $$0) {
+      return this.n.a($$0);
    }
 
    @Override
-   public void a(dwn $$0) {
-      this.j.remove($$0.aw_());
-      this.k.put($$0.aw_(), $$0);
-   }
-
-   @Nullable
-   @Override
-   public dwn c_(iu $$0) {
-      return this.k.get($$0);
-   }
-
-   public Map<iu, dwn> H() {
-      return this.k;
-   }
-
-   public void b(tx $$0) {
-      this.p.add($$0);
+   public void a(eqt $$0, erb $$1) {
    }
 
    @Override
-   public void a(bwa $$0) {
-      if (!$$0.bZ()) {
-         tx $$1 = new tx();
-         $$0.e($$1);
-         this.b($$1);
-      }
+   public Map<eqt, erb> g() {
+      return this.n.g();
    }
 
    @Override
-   public void a(eqi $$0, eqq $$1) {
-      efb $$2 = this.z();
-      if ($$2 != null && $$1.b()) {
-         eqa $$3 = $$1.a();
-         dir $$4 = this.B();
-         if ($$3.i() < $$4.G_() || $$3.l() > $$4.ao()) {
-            return;
-         }
-      }
-
-      super.a($$0, $$1);
-   }
-
-   public List<tx> I() {
-      return this.p;
+   public void a(Map<eqt, erb> $$0) {
    }
 
    @Override
-   public ecm n() {
-      return this.o;
-   }
-
-   public void a(ecm $$0) {
-      this.o = $$0;
-      if (this.r != null && $$0.a(this.r.a())) {
-         this.a(null);
-      }
-
-      this.i();
+   public LongSet b(eqt $$0) {
+      return this.n.b($$0);
    }
 
    @Override
-   public je<djs> getNoiseBiome(int $$0, int $$1, int $$2) {
-      if (this.o().a(ecm.f)) {
-         return super.getNoiseBiome($$0, $$1, $$2);
-      } else {
-         throw new IllegalStateException("Asking for biomes before we have biomes");
-      }
-   }
-
-   public static short g(iu $$0) {
-      int $$1 = $$0.u();
-      int $$2 = $$0.v();
-      int $$3 = $$0.w();
-      int $$4 = $$1 & 15;
-      int $$5 = $$2 & 15;
-      int $$6 = $$3 & 15;
-      return (short)($$4 | $$5 << 4 | $$6 << 8);
-   }
-
-   public static iu a(short $$0, int $$1, dhw $$2) {
-      int $$3 = jx.a($$2.h, $$0 & 15);
-      int $$4 = jx.a($$1, $$0 >>> 4 & 15);
-      int $$5 = jx.a($$2.i, $$0 >>> 8 & 15);
-      return new iu($$3, $$4, $$5);
+   public void a(eqt $$0, long $$1) {
    }
 
    @Override
-   public void e(iu $$0) {
-      if (!this.t($$0)) {
-         ebl.a(this.b, this.f($$0.v())).add(g($$0));
-      }
+   public Map<eqt, LongSet> h() {
+      return this.n.h();
    }
 
    @Override
-   public void a(ShortList $$0, int $$1) {
-      ebl.a(this.b, $$1).addAll($$0);
+   public void b(Map<eqt, LongSet> $$0) {
    }
 
-   public Map<iu, tx> J() {
-      return Collections.unmodifiableMap(this.j);
-   }
-
-   @Nullable
    @Override
-   public tx a(iu $$0, jg.a $$1) {
-      dwn $$2 = this.c_($$0);
-      return $$2 != null ? $$2.b($$1) : this.j.get($$0);
+   public void i() {
+      this.n.i();
+   }
+
+   @Override
+   public boolean s() {
+      return false;
+   }
+
+   @Override
+   public boolean j() {
+      return false;
+   }
+
+   @Override
+   public boolean k() {
+      return false;
+   }
+
+   @Override
+   public ecx n() {
+      return this.n.n();
    }
 
    @Override
    public void d(iu $$0) {
-      this.k.remove($$0);
-      this.j.remove($$0);
+   }
+
+   @Override
+   public void e(iu $$0) {
+   }
+
+   @Override
+   public void a(tz $$0) {
    }
 
    @Nullable
-   public ebk E() {
-      return this.q;
+   @Override
+   public tz f(iu $$0) {
+      return this.n.f($$0);
    }
 
-   public ebk F() {
-      if (this.q == null) {
-         this.q = new ebk(this.H_(), this.G_());
+   @Nullable
+   @Override
+   public tz a(iu $$0, jg.a $$1) {
+      return this.n.a($$0, $$1);
+   }
+
+   @Override
+   public void a(Predicate<dzz> $$0, BiConsumer<iu, dzz> $$1) {
+      this.n.a($$0, $$1);
+   }
+
+   @Override
+   public fgd<dma> q() {
+      return this.o ? this.n.q() : fft.a();
+   }
+
+   @Override
+   public fgd<ewf> r() {
+      return this.o ? this.n.r() : fft.a();
+   }
+
+   @Override
+   public ebw.a a(long $$0) {
+      return this.n.a($$0);
+   }
+
+   @Nullable
+   @Override
+   public ehb v() {
+      return this.n.v();
+   }
+
+   @Override
+   public ebv E() {
+      if (this.o) {
+         return super.E();
+      } else {
+         throw (UnsupportedOperationException)af.b(new UnsupportedOperationException("Meaningless in this context"));
       }
-
-      return this.q;
-   }
-
-   public void a(ebk $$0) {
-      this.q = $$0;
-   }
-
-   public void a(evk $$0) {
-      this.n = $$0;
-   }
-
-   public void a(@Nullable efb $$0) {
-      this.r = $$0;
-   }
-
-   @Nullable
-   @Override
-   public efb z() {
-      return this.r;
-   }
-
-   private static <T> ffj<T> a(ffm<T> $$0) {
-      return new ffj<>($$0.b());
-   }
-
-   public ffj<dlu> K() {
-      return a(this.s);
-   }
-
-   public ffj<evu> L() {
-      return a(this.t);
    }
 
    @Override
-   public dir B() {
-      return (dir)(this.A() ? efb.b : this);
+   public ebv F() {
+      if (this.o) {
+         return super.F();
+      } else {
+         throw (UnsupportedOperationException)af.b(new UnsupportedOperationException("Meaningless in this context"));
+      }
+   }
+
+   public ecg G() {
+      return this.n;
+   }
+
+   @Override
+   public boolean x() {
+      return this.n.x();
+   }
+
+   @Override
+   public void a(boolean $$0) {
+      this.n.a($$0);
+   }
+
+   @Override
+   public void a(dkb $$0, dkh.f $$1) {
+      if (this.o) {
+         this.n.a($$0, $$1);
+      }
+   }
+
+   @Override
+   public void C() {
+      this.n.C();
+   }
+
+   @Override
+   public evq D() {
+      return this.n.D();
    }
 }

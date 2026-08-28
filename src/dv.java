@@ -8,8 +8,8 @@ public class dv extends dj<dv.a> {
       return dv.a.a;
    }
 
-   public void a(arp $$0, cpz $$1, cys $$2) {
-      eyn $$3 = bx.b($$0, $$1);
+   public void a(arr $$0, cqf $$1, cyy $$2) {
+      eyz $$3 = bx.b($$0, $$1);
       this.a($$0, $$2x -> $$2x.a($$3, $$2));
    }
 
@@ -31,7 +31,7 @@ public class dv extends dj<dv.a> {
          return ap.t.a(new dv.a(Optional.of(bx.a($$0)), Optional.empty(), Optional.empty()));
       }
 
-      public boolean a(eyn $$0, cys $$1) {
+      public boolean a(eyz $$0, cyy $$1) {
          return this.c.isPresent() && !this.c.get().a($$0) ? false : !this.d.isPresent() || this.d.get().a($$1);
       }
 

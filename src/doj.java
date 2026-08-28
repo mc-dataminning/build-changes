@@ -1,99 +1,102 @@
 import com.mojang.serialization.MapCodec;
-import java.util.Set;
+import javax.annotation.Nullable;
 
-public class doj extends dlg implements drr {
+public class doj extends dvj {
    public static final MapCodec<doj> a = b(doj::new);
-   private static final feq b = dlu.b(16.0, 6.0, 12.0);
+   public static final eax<eav> b = eap.ah;
 
    @Override
-   public MapCodec<doj> a() {
+   public MapCodec<? extends doj> a() {
       return a;
    }
 
-   protected doj(dzn.d $$0) {
+   public doj(dzy.d $$0) {
       super($$0);
+      this.l(this.B.b().b(b, eav.b));
    }
 
    @Override
-   public dwn a(iu $$0, dzo $$1) {
-      return new dyk($$0, $$1);
-   }
-
-   @Override
-   protected feq a(dzo $$0, dhv $$1, iu $$2, feb $$3) {
-      return b;
-   }
-
-   @Override
-   protected feq a(dzo $$0, dhv $$1, iu $$2, bwa $$3) {
-      return $$0.f($$1, $$2);
-   }
-
-   @Override
-   protected void a(dzo $$0, dip $$1, iu $$2, bwa $$3) {
-      if ($$3.n(false)) {
-         if (!$$1.C && $$1.aj() == dip.k && $$3 instanceof arp $$4 && !$$4.i) {
-            $$4.n();
-            return;
-         }
-
-         $$3.a(this, $$2);
-      }
-   }
-
-   @Override
-   public ewv a(aro $$0, bwa $$1, iu $$2) {
-      ald<dip> $$3 = $$0.aj() == dip.k ? dip.i : dip.k;
-      aro $$4 = $$0.p().a($$3);
-      if ($$4 == null) {
-         return null;
+   protected dzz a(dzz $$0, diy $$1, djk $$2, iu $$3, ja $$4, iu $$5, dzz $$6, azv $$7) {
+      eav $$8 = $$0.c(b);
+      if ($$4.o() != ja.a.b || $$8 == eav.b != ($$4 == ja.b) || $$6.a(this) && $$6.c(b) != $$8) {
+         return $$8 == eav.b && $$4 == ja.a && !$$0.a($$1, $$3) ? dmc.a.m() : super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
       } else {
-         boolean $$5 = $$3 == dip.k;
-         iu $$6 = $$5 ? aro.a : $$4.aa();
-         fdw $$7 = $$6.c();
-         float $$8;
-         Set<bxn> $$9;
-         if ($$5) {
-            eir.a($$4, iu.a((jo)$$7).e(), true);
-            $$8 = ja.e.p();
-            $$9 = bxn.a(bxn.l, Set.of(bxn.e));
-            if ($$1 instanceof arp) {
-               $$7 = $$7.a(0.0, 1.0, 0.0);
-            }
+         return dmc.a.m();
+      }
+   }
+
+   @Nullable
+   @Override
+   public dzz a(dcr $$0) {
+      iu $$1 = $$0.a();
+      div $$2 = $$0.q();
+      return $$1.v() < $$2.ao() && $$2.a_($$1.d()).a($$0) ? super.a($$0) : null;
+   }
+
+   @Override
+   public void a(div $$0, iu $$1, dzz $$2, bxc $$3, cyy $$4) {
+      iu $$5 = $$1.d();
+      $$0.a($$5, b($$0, $$5, this.m().b(b, eav.a)), 3);
+   }
+
+   @Override
+   protected boolean a(dzz $$0, diy $$1, iu $$2) {
+      if ($$0.c(b) != eav.a) {
+         return super.a($$0, $$1, $$2);
+      } else {
+         dzz $$3 = $$1.a_($$2.e());
+         return $$3.a(this) && $$3.c(b) == eav.b;
+      }
+   }
+
+   public static void a(diw $$0, dzz $$1, iu $$2, int $$3) {
+      iu $$4 = $$2.d();
+      $$0.a($$2, b($$0, $$2, $$1.b(b, eav.b)), $$3);
+      $$0.a($$4, b($$0, $$4, $$1.b(b, eav.a)), $$3);
+   }
+
+   public static dzz b(diy $$0, iu $$1, dzz $$2) {
+      return $$2.b(eap.I) ? $$2.b(eap.I, Boolean.valueOf($$0.A($$1))) : $$2;
+   }
+
+   @Override
+   public dzz a(div $$0, iu $$1, dzz $$2, cqy $$3) {
+      if (!$$0.C) {
+         if ($$3.gk()) {
+            b($$0, $$1, $$2, $$3);
          } else {
-            $$8 = 0.0F;
-            $$9 = bxn.a(bxn.l, bxn.k);
-            if ($$1 instanceof arp $$12) {
-               return $$12.a(false, ewv.a);
-            }
-
-            $$7 = $$1.a($$4, $$6).c();
+            a($$2, $$0, $$1, null, $$3, $$3.fa());
          }
+      }
 
-         return new ewv($$4, $$7, fdw.c, $$8, 0.0F, $$9, ewv.b.then(ewv.c));
+      return super.a($$0, $$1, $$2, $$3);
+   }
+
+   @Override
+   public void a(div $$0, cqy $$1, iu $$2, dzz $$3, @Nullable dwx $$4, cyy $$5) {
+      super.a($$0, $$1, $$2, dmc.a.m(), $$4, $$5);
+   }
+
+   protected static void b(div $$0, iu $$1, dzz $$2, cqy $$3) {
+      eav $$4 = $$2.c(b);
+      if ($$4 == eav.a) {
+         iu $$5 = $$1.e();
+         dzz $$6 = $$0.a_($$5);
+         if ($$6.a($$2.b()) && $$6.c(b) == eav.b) {
+            dzz $$7 = $$6.y().b(ewh.c) ? dmc.J.m() : dmc.a.m();
+            $$0.a($$5, $$7, 35);
+            $$0.a($$3, 2001, $$5, dma.j($$6));
+         }
       }
    }
 
    @Override
-   public void a(dzo $$0, dip $$1, iu $$2, azt $$3) {
-      double $$4 = (double)$$2.u() + $$3.j();
-      double $$5 = (double)$$2.v() + 0.8;
-      double $$6 = (double)$$2.w() + $$3.j();
-      $$1.a(lx.ah, $$4, $$5, $$6, 0.0, 0.0, 0.0);
+   protected void a(eaa.a<dma, dzz> $$0) {
+      $$0.a(b);
    }
 
    @Override
-   protected cys a(dis $$0, iu $$1, dzo $$2, boolean $$3) {
-      return cys.k;
-   }
-
-   @Override
-   protected boolean a(dzo $$0, evu $$1) {
-      return false;
-   }
-
-   @Override
-   protected dsf a_(dzo $$0) {
-      return dsf.a;
+   protected long a(dzz $$0, iu $$1) {
+      return azm.b($$1.u(), $$1.c($$0.c(b) == eav.b ? 0 : 1).v(), $$1.w());
    }
 }

@@ -1,85 +1,120 @@
-import com.mojang.authlib.exceptions.MinecraftClientException;
-import com.mojang.authlib.exceptions.MinecraftClientHttpException;
-import com.mojang.authlib.minecraft.UserApiService;
-import com.mojang.authlib.minecraft.report.AbuseReport;
-import com.mojang.authlib.minecraft.report.AbuseReportLimits;
-import com.mojang.authlib.yggdrasil.request.AbuseReportRequest;
-import com.mojang.datafixers.util.Unit;
-import java.util.UUID;
+import com.google.common.base.Suppliers;
+import com.mojang.authlib.GameProfile;
+import java.util.Optional;
 import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.CompletionException;
+import java.util.function.Supplier;
+import javax.annotation.Nullable;
 
-public interface gkd {
-   static gkd a(gkj $$0, UserApiService $$1) {
-      return new gkd.b($$0, $$1);
+public class gkd {
+   private final GameProfile a;
+   private final Supplier<hjq> b;
+   private dis c = dis.e;
+   private int d;
+   @Nullable
+   private wy e;
+   private boolean f = true;
+   @Nullable
+   private xp g;
+   private xu h;
+   private int i;
+
+   public gkd(GameProfile $$0, boolean $$1) {
+      this.a = $$0;
+      this.h = c($$1);
+      Supplier<Supplier<hjq>> $$2 = Suppliers.memoize(() -> a($$0));
+      this.b = () -> $$2.get().get();
    }
 
-   CompletableFuture<Unit> a(UUID var1, gkl var2, AbuseReport var3);
-
-   boolean a();
-
-   default AbuseReportLimits b() {
-      return AbuseReportLimits.DEFAULTS;
+   private static Supplier<hjq> a(GameProfile $$0) {
+      fos $$1 = fos.Q();
+      hjr $$2 = $$1.an();
+      CompletableFuture<Optional<hjq>> $$3 = $$2.c($$0);
+      boolean $$4 = !$$1.b($$0.getId());
+      hjq $$5 = hjh.a($$0);
+      return () -> {
+         hjq $$3x = $$3.getNow(Optional.empty()).orElse($$5);
+         return $$4 && !$$3x.f() ? $$5 : $$3x;
+      };
    }
 
-   public static class a extends xw {
-      public a(ww $$0, Throwable $$1) {
-         super($$0, $$1);
-      }
+   public GameProfile a() {
+      return this.a;
    }
 
-   public static record b(gkj a, UserApiService b) implements gkd {
-      private static final ww c = ww.c("gui.abuseReport.send.service_unavailable");
-      private static final ww d = ww.c("gui.abuseReport.send.http_error");
-      private static final ww e = ww.c("gui.abuseReport.send.json_error");
+   @Nullable
+   public xp b() {
+      return this.g;
+   }
 
-      @Override
-      public CompletableFuture<Unit> a(UUID $$0, gkl $$1, AbuseReport $$2) {
-         return CompletableFuture.supplyAsync(() -> {
-            AbuseReportRequest $$3 = new AbuseReportRequest(1, $$0, $$2, this.a.b(), this.a.c(), this.a.d(), $$1.a());
+   public xu c() {
+      return this.h;
+   }
 
-            try {
-               this.b.reportAbuse($$3);
-               return Unit.INSTANCE;
-            } catch (MinecraftClientHttpException var7) {
-               ww $$5 = this.a(var7);
-               throw new CompletionException(new gkd.a($$5, var7));
-            } catch (MinecraftClientException var8) {
-               ww $$7 = this.a(var8);
-               throw new CompletionException(new gkd.a($$7, var8));
-            }
-         }, af.i());
-      }
+   public boolean d() {
+      return this.g != null;
+   }
 
-      @Override
-      public boolean a() {
-         return this.b.canSendReports();
-      }
+   protected void a(xp $$0) {
+      this.g = $$0;
+      this.h = $$0.a(crb.b);
+   }
 
-      private ww a(MinecraftClientHttpException $$0) {
-         return ww.a("gui.abuseReport.send.error_message", $$0.getMessage());
-      }
+   protected void a(boolean $$0) {
+      this.g = null;
+      this.h = c($$0);
+   }
 
-      private ww a(MinecraftClientException $$0) {
-         return switch ($$0.getType()) {
-            case SERVICE_UNAVAILABLE -> c;
-            case HTTP_ERROR -> d;
-            case JSON_ERROR -> e;
-            default -> throw new MatchException(null, null);
-         };
-      }
+   private static xu c(boolean $$0) {
+      return $$0 ? xu.c : xu.b;
+   }
 
-      @Override
-      public AbuseReportLimits b() {
-         return this.b.getAbuseReportLimits();
-      }
+   public dis e() {
+      return this.c;
+   }
 
-      public gkj c() {
-         return this.a;
-      }
+   protected void a(dis $$0) {
+      this.c = $$0;
+   }
 
-      public UserApiService d() {
-         return this.b;
-      }
+   public int f() {
+      return this.d;
+   }
+
+   protected void a(int $$0) {
+      this.d = $$0;
+   }
+
+   public hjq g() {
+      return this.b.get();
+   }
+
+   @Nullable
+   public ffi h() {
+      return fos.Q().s.R().e(this.a().getName());
+   }
+
+   public void a(@Nullable wy $$0) {
+      this.e = $$0;
+   }
+
+   @Nullable
+   public wy i() {
+      return this.e;
+   }
+
+   public void b(boolean $$0) {
+      this.f = $$0;
+   }
+
+   public boolean j() {
+      return this.f;
+   }
+
+   public void b(int $$0) {
+      this.i = $$0;
+   }
+
+   public int k() {
+      return this.i;
    }
 }

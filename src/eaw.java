@@ -1,21 +1,23 @@
-public enum eaw implements bai {
-   a("top"),
-   b("bottom"),
-   c("double");
+public enum eaw implements bak {
+   a("tip_merge"),
+   b("tip"),
+   c("frustum"),
+   d("middle"),
+   e("base");
 
-   private final String d;
+   private final String f;
 
    private eaw(final String $$0) {
-      this.d = $$0;
+      this.f = $$0;
    }
 
    @Override
    public String toString() {
-      return this.d;
+      return this.f;
    }
 
    @Override
    public String c() {
-      return this.d;
+      return this.f;
    }
 }

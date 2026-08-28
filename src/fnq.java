@@ -1,91 +1,66 @@
-import com.google.common.collect.HashBasedTable;
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.Table;
-import com.google.common.collect.ImmutableList.Builder;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Map;
-import java.util.OptionalInt;
-import java.util.Set;
+import com.mojang.logging.LogUtils;
+import org.slf4j.Logger;
 
-public class fnq extends awo {
-   private final Map<der, deq> b = new HashMap<>();
-   private final Set<der> c = new HashSet<>();
-   private Map<ddb, List<gbl>> d = Map.of();
-   private List<gbl> e = List.of();
+public class fnq extends fnp {
+   private static final Logger b = LogUtils.getLogger();
+   private static final wy c = wy.c("mco.configure.world.opening");
+   private final fkt d;
+   private final fxu e;
+   private final boolean f;
+   private final fos g;
 
-   public void a(deq $$0) {
-      this.b.put($$0.a(), $$0);
+   public fnq(fkt $$0, fxu $$1, boolean $$2, fos $$3) {
+      this.d = $$0;
+      this.e = $$1;
+      this.f = $$2;
+      this.g = $$3;
    }
 
-   public void a(der $$0) {
-      this.b.remove($$0);
-      this.c.remove($$0);
-   }
+   @Override
+   public void run() {
+      fjs $$0 = fjs.a();
 
-   public void b() {
-      this.b.clear();
-      this.c.clear();
-   }
+      for (int $$1 = 0; $$1 < 25; $$1++) {
+         if (this.d()) {
+            return;
+         }
 
-   public boolean b(der $$0) {
-      return this.c.contains($$0);
-   }
+         try {
+            boolean $$2 = $$0.f(this.d.a);
+            if ($$2) {
+               this.g.execute(() -> {
+                  if (this.e instanceof fmc) {
+                     ((fmc)this.e).f();
+                  }
 
-   public void c(der $$0) {
-      this.c.remove($$0);
-   }
-
-   public void d(der $$0) {
-      this.c.add($$0);
-   }
-
-   public void c() {
-      Map<ddm, List<List<deq>>> $$0 = a(this.b.values());
-      Map<ddb, List<gbl>> $$1 = new HashMap<>();
-      Builder<gbl> $$2 = ImmutableList.builder();
-      $$0.forEach(($$2x, $$3x) -> $$1.put($$2x, $$3x.stream().map(gbl::new).peek($$2::add).collect(ImmutableList.toImmutableList())));
-
-      for (gbn $$3 : gbn.values()) {
-         $$1.put($$3, $$3.a().stream().flatMap($$1x -> $$1.getOrDefault($$1x, List.of()).stream()).collect(ImmutableList.toImmutableList()));
-      }
-
-      this.d = Map.copyOf($$1);
-      this.e = $$2.build();
-   }
-
-   private static Map<ddm, List<List<deq>>> a(Iterable<deq> $$0) {
-      Map<ddm, List<List<deq>>> $$1 = new HashMap<>();
-      Table<ddm, Integer, List<deq>> $$2 = HashBasedTable.create();
-
-      for (deq $$3 : $$0) {
-         ddm $$4 = $$3.d();
-         OptionalInt $$5 = $$3.c();
-         if ($$5.isEmpty()) {
-            $$1.computeIfAbsent($$4, $$0x -> new ArrayList<>()).add(List.of($$3));
-         } else {
-            List<deq> $$6 = (List<deq>)$$2.get($$4, $$5.getAsInt());
-            if ($$6 == null) {
-               $$6 = new ArrayList<>();
-               $$2.put($$4, $$5.getAsInt(), $$6);
-               $$1.computeIfAbsent($$4, $$0x -> new ArrayList<>()).add($$6);
+                  this.d.e = fkt.c.b;
+                  if (this.f) {
+                     fjn.a(this.d, this.e);
+                  } else {
+                     this.g.a(this.e);
+                  }
+               });
+               break;
+            }
+         } catch (flp var4) {
+            if (this.d()) {
+               return;
             }
 
-            $$6.add($$3);
+            a((long)var4.c);
+         } catch (Exception var5) {
+            if (this.d()) {
+               return;
+            }
+
+            b.error("Failed to open server", var5);
+            this.a(var5);
          }
       }
-
-      return $$1;
    }
 
-   public List<gbl> d() {
-      return this.e;
-   }
-
-   public List<gbl> a(ddb $$0) {
-      return this.d.getOrDefault($$0, Collections.emptyList());
+   @Override
+   public wy a() {
+      return c;
    }
 }

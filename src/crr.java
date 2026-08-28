@@ -1,51 +1,81 @@
-public class crr extends crt {
-   public crr(bwj<? extends crr> $$0, dip $$1) {
+public class crr extends crs {
+   public crr(bwm<? extends crr> $$0, div $$1) {
       super($$0, $$1);
    }
 
-   public crr(dip $$0, bwz $$1, cys $$2) {
-      super(bwj.bk, $$1, $$0, $$2);
-   }
-
-   public crr(dip $$0, double $$1, double $$2, double $$3, cys $$4) {
-      super(bwj.bk, $$1, $$2, $$3, $$0, $$4);
-   }
-
-   @Override
-   protected cyo f() {
-      return cyw.rn;
-   }
-
-   private lv g() {
-      cys $$0 = this.ae_();
-      return (lv)($$0.f() ? lx.Z : new lt(lx.U, $$0));
+   public crr(div $$0, clg $$1) {
+      this(bwm.ay, $$0);
+      this.c($$1);
+      this.a_(
+         $$1.dA() - (double)($$1.dq() + 1.0F) * 0.5 * (double)azm.a($$1.aV * (float) (Math.PI / 180.0)),
+         $$1.dE() - 0.1F,
+         $$1.dG() + (double)($$1.dq() + 1.0F) * 0.5 * (double)azm.b($$1.aV * (float) (Math.PI / 180.0))
+      );
    }
 
    @Override
-   public void b(byte $$0) {
-      if ($$0 == 3) {
-         lv $$1 = this.g();
+   protected double bd() {
+      return 0.06;
+   }
 
-         for (int $$2 = 0; $$2 < 8; $$2++) {
-            this.dV().a($$1, this.dA(), this.dC(), this.dG(), 0.0, 0.0, 0.0);
+   @Override
+   public void h() {
+      super.h();
+      fei $$0 = this.dy();
+      feg $$1 = cru.a(this, this::b);
+      this.b($$1);
+      double $$2 = this.dA() + $$0.d;
+      double $$3 = this.dC() + $$0.e;
+      double $$4 = this.dG() + $$0.f;
+      this.A();
+      float $$5 = 0.99F;
+      if (this.dV().a(this.cR()).noneMatch(dzy.a::l)) {
+         this.at();
+      } else if (this.bj()) {
+         this.at();
+      } else {
+         this.i($$0.c(0.99F));
+         this.bf();
+         this.a_($$2, $$3, $$4);
+      }
+   }
+
+   @Override
+   protected void a(fef $$0) {
+      super.a($$0);
+      if (this.q() instanceof bxc $$1) {
+         bwd $$2 = $$0.a();
+         bus $$3 = this.dW().b(this, $$1);
+         if (this.dV() instanceof arq $$4 && $$2.a($$4, $$3, 1.0F)) {
+            dfn.a($$4, $$2, $$3);
          }
       }
    }
 
    @Override
-   protected void a(fdt $$0) {
+   protected void a(fee $$0) {
       super.a($$0);
-      bwa $$1 = $$0.a();
-      int $$2 = $$1 instanceof cnc ? 3 : 0;
-      $$1.a(this.dW().b(this, this.q()), (float)$$2);
+      if (!this.dV().C) {
+         this.at();
+      }
    }
 
    @Override
-   protected void a(fdu $$0) {
+   protected void a(akn.a $$0) {
+   }
+
+   @Override
+   public void a(abv $$0) {
       super.a($$0);
-      if (!this.dV().C) {
-         this.dV().a(this, (byte)3);
-         this.at();
+      double $$1 = $$0.j();
+      double $$2 = $$0.k();
+      double $$3 = $$0.l();
+
+      for (int $$4 = 0; $$4 < 7; $$4++) {
+         double $$5 = 0.4 + 0.1 * (double)$$4;
+         this.dV().a(lx.ak, this.dA(), this.dC(), this.dG(), $$1 * $$5, $$2, $$3 * $$5);
       }
+
+      this.n($$1, $$2, $$3);
    }
 }

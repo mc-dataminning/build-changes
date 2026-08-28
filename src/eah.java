@@ -1,20 +1,18 @@
-public enum eah implements bai {
-   a("compare"),
-   b("subtract");
+import java.util.function.Predicate;
+import javax.annotation.Nullable;
 
-   private final String c;
+public class eah implements Predicate<dzz> {
+   private final dma a;
 
-   private eah(final String $$0) {
-      this.c = $$0;
+   public eah(dma $$0) {
+      this.a = $$0;
    }
 
-   @Override
-   public String toString() {
-      return this.c;
+   public static eah a(dma $$0) {
+      return new eah($$0);
    }
 
-   @Override
-   public String c() {
-      return this.c;
+   public boolean a(@Nullable dzz $$0) {
+      return $$0 != null && $$0.a(this.a);
    }
 }

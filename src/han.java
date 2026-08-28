@@ -1,16 +1,25 @@
-public class han extends gzy<hee, ghv> {
-   private static final ale a = ale.b("textures/entity/wolf/wolf_collar.png");
+public abstract class han<S extends hcf, M extends gfq<? super S>> {
+   private final gxw<S, M> a;
 
-   public han(gxh<hee, ghv> $$0) {
-      super($$0);
+   public han(gxw<S, M> $$0) {
+      this.a = $$0;
    }
 
-   public void a(fiq $$0, gpd $$1, int $$2, hee $$3, float $$4, float $$5) {
-      cxq $$6 = $$3.h;
-      if ($$6 != null && !$$3.z) {
-         int $$7 = $$6.d();
-         fiu $$8 = $$1.getBuffer(gpn.g(a));
-         this.d().a($$0, $$8, $$2, hhp.d, $$7);
+   protected static <S extends hdf> void a(gfq<S> $$0, alg $$1, fjc $$2, gps $$3, int $$4, S $$5, int $$6) {
+      if (!$$5.z) {
+         $$0.a($$5);
+         b($$0, $$1, $$2, $$3, $$4, $$5, $$6);
       }
    }
+
+   protected static void b(gfq<?> $$0, alg $$1, fjc $$2, gps $$3, int $$4, hdf $$5, int $$6) {
+      fjg $$7 = $$3.getBuffer(gqc.g($$1));
+      $$0.a($$2, $$7, $$4, gxa.a($$5, 0.0F), $$6);
+   }
+
+   public M d() {
+      return this.a.c();
+   }
+
+   public abstract void a(fjc var1, gps var2, int var3, S var4, float var5, float var6);
 }

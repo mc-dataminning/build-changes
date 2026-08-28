@@ -1,40 +1,42 @@
-public interface eqc {
-   ald<eqi> a = a("pillager_outpost");
-   ald<eqi> b = a("mineshaft");
-   ald<eqi> c = a("mineshaft_mesa");
-   ald<eqi> d = a("mansion");
-   ald<eqi> e = a("jungle_pyramid");
-   ald<eqi> f = a("desert_pyramid");
-   ald<eqi> g = a("igloo");
-   ald<eqi> h = a("shipwreck");
-   ald<eqi> i = a("shipwreck_beached");
-   ald<eqi> j = a("swamp_hut");
-   ald<eqi> k = a("stronghold");
-   ald<eqi> l = a("monument");
-   ald<eqi> m = a("ocean_ruin_cold");
-   ald<eqi> n = a("ocean_ruin_warm");
-   ald<eqi> o = a("fortress");
-   ald<eqi> p = a("nether_fossil");
-   ald<eqi> q = a("end_city");
-   ald<eqi> r = a("buried_treasure");
-   ald<eqi> s = a("bastion_remnant");
-   ald<eqi> t = a("village_plains");
-   ald<eqi> u = a("village_desert");
-   ald<eqi> v = a("village_savanna");
-   ald<eqi> w = a("village_snowy");
-   ald<eqi> x = a("village_taiga");
-   ald<eqi> y = a("ruined_portal");
-   ald<eqi> z = a("ruined_portal_desert");
-   ald<eqi> A = a("ruined_portal_jungle");
-   ald<eqi> B = a("ruined_portal_swamp");
-   ald<eqi> C = a("ruined_portal_mountain");
-   ald<eqi> D = a("ruined_portal_ocean");
-   ald<eqi> E = a("ruined_portal_nether");
-   ald<eqi> F = a("ancient_city");
-   ald<eqi> G = a("trail_ruins");
-   ald<eqi> H = a("trial_chambers");
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.stream.Stream;
 
-   private static ald<eqi> a(String $$0) {
-      return ald.a(mg.bc, ale.b($$0));
+public class eqc extends eqa {
+   public static final MapCodec<eqc> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(btg.b(-16, 16).fieldOf("xz_spread").forGetter($$0x -> $$0x.c), btg.b(-16, 16).fieldOf("y_spread").forGetter($$0x -> $$0x.d))
+            .apply($$0, eqc::new)
+   );
+   private final btg c;
+   private final btg d;
+
+   public static eqc a(btg $$0, btg $$1) {
+      return new eqc($$0, $$1);
+   }
+
+   public static eqc a(btg $$0) {
+      return new eqc(btd.a(0), $$0);
+   }
+
+   public static eqc b(btg $$0) {
+      return new eqc($$0, btd.a(0));
+   }
+
+   private eqc(btg $$0, btg $$1) {
+      this.c = $$0;
+      this.d = $$1;
+   }
+
+   @Override
+   public Stream<iu> a_(epy $$0, azv $$1, iu $$2) {
+      int $$3 = $$2.u() + this.c.a($$1);
+      int $$4 = $$2.v() + this.d.a($$1);
+      int $$5 = $$2.w() + this.c.a($$1);
+      return Stream.of(new iu($$3, $$4, $$5));
+   }
+
+   @Override
+   public eqb<?> b() {
+      return eqb.n;
    }
 }

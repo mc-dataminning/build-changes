@@ -11,17 +11,17 @@ import java.util.concurrent.CompletableFuture;
 
 public class fc implements ArgumentType<String> {
    private static final Collection<String> a = Arrays.asList("foo", "*", "012");
-   private static final DynamicCommandExceptionType b = new DynamicCommandExceptionType($$0 -> ww.b("arguments.objective.notFound", $$0));
-   private static final DynamicCommandExceptionType c = new DynamicCommandExceptionType($$0 -> ww.b("arguments.objective.readonly", $$0));
+   private static final DynamicCommandExceptionType b = new DynamicCommandExceptionType($$0 -> wy.b("arguments.objective.notFound", $$0));
+   private static final DynamicCommandExceptionType c = new DynamicCommandExceptionType($$0 -> wy.b("arguments.objective.readonly", $$0));
 
    public static fc a() {
       return new fc();
    }
 
-   public static fet a(CommandContext<ei> $$0, String $$1) throws CommandSyntaxException {
+   public static fff a(CommandContext<ei> $$0, String $$1) throws CommandSyntaxException {
       String $$2 = (String)$$0.getArgument($$1, String.class);
-      ffb $$3 = ((ei)$$0.getSource()).l().aJ();
-      fet $$4 = $$3.a($$2);
+      ffn $$3 = ((ei)$$0.getSource()).l().aJ();
+      fff $$4 = $$3.a($$2);
       if ($$4 == null) {
          throw b.create($$2);
       } else {
@@ -29,10 +29,10 @@ public class fc implements ArgumentType<String> {
       }
    }
 
-   public static fet b(CommandContext<ei> $$0, String $$1) throws CommandSyntaxException {
-      fet $$2 = a($$0, $$1);
-      if ($$2.c().e()) {
-         throw c.create($$2.b());
+   public static fff b(CommandContext<ei> $$0, String $$1) throws CommandSyntaxException {
+      fff $$2 = a($$0, $$1);
+      if ($$2.d().e()) {
+         throw c.create($$2.c());
       } else {
          return $$2;
       }
@@ -45,7 +45,7 @@ public class fc implements ArgumentType<String> {
    public <S> CompletableFuture<Suggestions> listSuggestions(CommandContext<S> $$0, SuggestionsBuilder $$1) {
       S $$2 = (S)$$0.getSource();
       if ($$2 instanceof ei $$3) {
-         return en.b($$3.l().aJ().d(), $$1);
+         return en.b($$3.l().aJ().c(), $$1);
       } else {
          return $$2 instanceof en $$4 ? $$4.a($$0) : Suggestions.empty();
       }

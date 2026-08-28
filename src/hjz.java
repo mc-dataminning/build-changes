@@ -1,16 +1,8 @@
-import java.util.List;
-import javax.annotation.Nullable;
+import javax.annotation.ParametersAreNonnullByDefault;
 
-public interface hjz {
-   List<gqk> a(@Nullable dzo var1, @Nullable ja var2, azt var3);
-
-   boolean a();
-
-   boolean b();
-
-   boolean c();
-
-   hhz d();
-
-   gqu e();
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface hjz {
 }

@@ -1,29 +1,20 @@
-public class zn implements zd<zj> {
-   public static final yu<vs, zn> a = zd.a(zn::a, zn::new);
-   private final long b;
+import io.netty.buffer.ByteBuf;
+import java.util.HashMap;
+import java.util.Map;
 
-   public zn(long $$0) {
-      this.b = $$0;
-   }
-
-   private zn(vs $$0) {
-      this.b = $$0.readLong();
-   }
-
-   private void a(vs $$0) {
-      $$0.b(this.b);
-   }
+public record zn(Map<String, String> b) implements zf<zl> {
+   private static final int c = 128;
+   private static final int d = 4096;
+   private static final int e = 32;
+   private static final yw<ByteBuf, Map<String, String>> f = yu.a(HashMap::new, yu.b(128), yu.b(4096), 32);
+   public static final yw<ByteBuf, zn> a = yw.a(f, zn::b, zn::new);
 
    @Override
-   public zf<zn> a() {
-      return zv.d;
+   public zh<zn> a() {
+      return zx.b;
    }
 
-   public void a(zj $$0) {
+   public void a(zl $$0) {
       $$0.a(this);
-   }
-
-   public long b() {
-      return this.b;
    }
 }

@@ -1,42 +1,59 @@
+import com.mojang.logging.LogUtils;
+import java.io.IOException;
+import java.nio.channels.FileChannel;
+import java.nio.file.Path;
+import java.time.LocalDate;
+import java.util.Optional;
+import java.util.concurrent.CompletableFuture;
 import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class hoc implements hof {
-   private static final int a = 600;
-   private static final ww b = ww.c("tutorial.open_inventory.title");
-   private static final ww c = ww.a("tutorial.open_inventory.description", hoe.a("inventory"));
-   private final hoe d;
+public class hoc implements AutoCloseable {
+   private static final Logger a = LogUtils.getLogger();
+   private static final String b = ".json";
+   private static final int c = 7;
+   private final bpd d;
    @Nullable
-   private fuc e;
-   private int f;
+   private CompletableFuture<Optional<hny>> e;
 
-   public hoc(hoe $$0) {
+   private hoc(bpd $$0) {
       this.d = $$0;
    }
 
-   @Override
-   public void a() {
-      this.f++;
-      if (!this.d.f()) {
-         this.d.a(hog.f);
-      } else {
-         if (this.f >= 600 && this.e == null) {
-            fof $$0 = this.d.e();
-            this.e = new fuc($$0.h, fuc.a.d, b, c, false);
-            $$0.aA().a(this.e);
+   public static CompletableFuture<Optional<hoc>> a(Path $$0) {
+      return CompletableFuture.supplyAsync(() -> {
+         try {
+            bpd $$1 = bpd.a($$0, ".json");
+            $$1.a().a(LocalDate.now(), 7).a();
+            return Optional.of(new hoc($$1));
+         } catch (Exception var2) {
+            a.error("Failed to create telemetry log manager", var2);
+            return Optional.empty();
          }
+      }, af.h());
+   }
+
+   public CompletableFuture<Optional<hnz>> a() {
+      if (this.e == null) {
+         this.e = CompletableFuture.supplyAsync(() -> {
+            try {
+               bpd.e $$0 = this.d.a(LocalDate.now());
+               FileChannel $$1 = $$0.e();
+               return Optional.of(new hny($$1, af.h()));
+            } catch (IOException var3) {
+               a.error("Failed to open channel for telemetry event log", var3);
+               return Optional.empty();
+            }
+         }, af.h());
       }
+
+      return this.e.thenApply($$0 -> $$0.map(hny::a));
    }
 
    @Override
-   public void b() {
+   public void close() {
       if (this.e != null) {
-         this.e.e();
-         this.e = null;
+         this.e.thenAccept($$0 -> $$0.ifPresent(hny::close));
       }
-   }
-
-   @Override
-   public void c() {
-      this.d.a(hog.e);
    }
 }

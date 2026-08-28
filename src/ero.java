@@ -1,81 +1,72 @@
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
+import java.util.Optional;
 
 public class ero extends erq {
    public static final MapCodec<ero> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(erq.f.listOf().fieldOf("elements").forGetter($$0x -> $$0x.b), e()).apply($$0, ero::new)
-   );
-   private final List<erq> b;
+         $$0 -> a($$0)
+               .and(
+                  $$0.group(
+                     Codec.intRange(0, 4096).fieldOf("spacing").forGetter(ero::a),
+                     Codec.intRange(0, 4096).fieldOf("separation").forGetter(ero::b),
+                     erp.c.optionalFieldOf("spread_type", erp.a).forGetter(ero::c)
+                  )
+               )
+               .apply($$0, ero::new)
+      )
+      .validate(ero::a);
+   private final int c;
+   private final int d;
+   private final erp e;
 
-   public ero(List<erq> $$0, ers.a $$1) {
-      super($$1);
-      if ($$0.isEmpty()) {
-         throw new IllegalArgumentException("Elements are empty");
-      } else {
-         this.b = $$0;
-         this.b($$1);
-      }
+   private static DataResult<ero> a(ero $$0) {
+      return $$0.c <= $$0.d ? DataResult.error(() -> "Spacing has to be larger than separation") : DataResult.success($$0);
+   }
+
+   public ero(jz $$0, erq.c $$1, float $$2, int $$3, Optional<erq.a> $$4, int $$5, int $$6, erp $$7) {
+      super($$0, $$1, $$2, $$3, $$4);
+      this.c = $$5;
+      this.d = $$6;
+      this.e = $$7;
+   }
+
+   public ero(int $$0, int $$1, erp $$2, int $$3) {
+      this(jz.i, erq.c.a, 1.0F, $$3, Optional.empty(), $$0, $$1, $$2);
+   }
+
+   public int a() {
+      return this.c;
+   }
+
+   public int b() {
+      return this.d;
+   }
+
+   public erp c() {
+      return this.e;
+   }
+
+   public dic a(long $$0, int $$1, int $$2) {
+      int $$3 = Math.floorDiv($$1, this.c);
+      int $$4 = Math.floorDiv($$2, this.c);
+      egx $$5 = new egx(new efz(0L));
+      $$5.a($$0, $$3, $$4, this.i());
+      int $$6 = this.c - this.d;
+      int $$7 = this.e.a($$5, $$6);
+      int $$8 = this.e.a($$5, $$6);
+      return new dic($$3 * this.c + $$7, $$4 * this.c + $$8);
    }
 
    @Override
-   public jz a(eul $$0, dsm $$1) {
-      int $$2 = 0;
-      int $$3 = 0;
-      int $$4 = 0;
-
-      for (erq $$5 : this.b) {
-         jz $$6 = $$5.a($$0, $$1);
-         $$2 = Math.max($$2, $$6.u());
-         $$3 = Math.max($$3, $$6.v());
-         $$4 = Math.max($$4, $$6.w());
-      }
-
-      return new jz($$2, $$3, $$4);
+   protected boolean a(eby $$0, int $$1, int $$2) {
+      dic $$3 = this.a($$0.d(), $$1, $$2);
+      return $$3.h == $$1 && $$3.i == $$2;
    }
 
    @Override
-   public List<euk.a> a(eul $$0, iu $$1, dsm $$2, azt $$3) {
-      return this.b.get(0).a($$0, $$1, $$2, $$3);
-   }
-
-   @Override
-   public eqa a(eul $$0, iu $$1, dsm $$2) {
-      Stream<eqa> $$3 = this.b.stream().filter($$0x -> $$0x != erj.b).map($$3x -> $$3x.a($$0, $$1, $$2));
-      return eqa.b($$3::iterator).orElseThrow(() -> new IllegalStateException("Unable to calculate boundingbox for ListPoolElement"));
-   }
-
-   @Override
-   public boolean a(eul $$0, djo $$1, djl $$2, ebm $$3, iu $$4, iu $$5, dsm $$6, eqa $$7, azt $$8, etu $$9, boolean $$10) {
-      for (erq $$11 : this.b) {
-         if (!$$11.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8, $$9, $$10)) {
-            return false;
-         }
-      }
-
-      return true;
-   }
-
-   @Override
-   public err<?> a() {
-      return err.b;
-   }
-
-   @Override
-   public erq a(ers.a $$0) {
-      super.a($$0);
-      this.b($$0);
-      return this;
-   }
-
-   @Override
-   public String toString() {
-      return "List[" + this.b.stream().map(Object::toString).collect(Collectors.joining(", ")) + "]";
-   }
-
-   private void b(ers.a $$0) {
-      this.b.forEach($$1 -> $$1.a($$0));
+   public err<?> e() {
+      return err.a;
    }
 }

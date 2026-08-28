@@ -1,7 +1,7 @@
 public interface gh {
-   fdw a(ei var1);
+   fei a(ei var1);
 
-   fdv b(ei var1);
+   feh b(ei var1);
 
    default iu c(ei $$0) {
       return iu.a((jo)this.a($$0));

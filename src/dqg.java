@@ -1,95 +1,78 @@
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dqg extends dkn {
-   public static final MapCodec<dqg> c = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(djs.c.d.fieldOf("precipitation").forGetter($$0x -> $$0x.i), kb.b.fieldOf("interactions").forGetter($$0x -> $$0x.b), t())
-            .apply($$0, dqg::new)
-   );
-   public static final int d = 1;
-   public static final int e = 3;
-   public static final eao f = eae.aN;
-   private static final int g = 6;
-   private static final double h = 3.0;
-   private final djs.c i;
+public class dqg extends dma implements dot, dpl {
+   public static final MapCodec<dqg> a = b(dqg::new);
+   public static final eax<jc> b = eap.W;
 
    @Override
    public MapCodec<dqg> a() {
-      return c;
+      return a;
    }
 
-   public dqg(djs.c $$0, kb.a $$1, dzn.d $$2) {
-      super($$2, $$1);
-      this.i = $$0;
-      this.l(this.B.b().b(f, Integer.valueOf(1)));
-   }
-
-   @Override
-   public boolean d(dzo $$0) {
-      return $$0.c(f) == 3;
+   protected dqg(dzy.d $$0) {
+      super($$0);
+      this.l(this.B.b().b(b, jc.k));
    }
 
    @Override
-   protected boolean a(evu $$0) {
-      return $$0 == evw.c && this.i == djs.c.b;
+   protected void a(eaa.a<dma, dzz> $$0) {
+      $$0.a(b);
    }
 
    @Override
-   protected double b(dzo $$0) {
-      return (6.0 + (double)$$0.c(f).intValue() * 3.0) / 16.0;
+   protected dzz a(dzz $$0, dst $$1) {
+      return $$0.b(b, $$1.a().a($$0.c(b)));
    }
 
    @Override
-   protected void a(dzo $$0, dip $$1, iu $$2, bwa $$3) {
-      if ($$1 instanceof aro $$4 && $$3.bY() && this.a($$0, $$2, $$3)) {
-         $$3.aH();
-         if ($$3.c($$4, $$2)) {
-            this.e($$0, $$1, $$2);
-         }
-      }
+   protected dzz a(dzz $$0, drc $$1) {
+      return $$0.b(b, $$1.a().a($$0.c(b)));
    }
 
-   private void e(dzo $$0, dip $$1, iu $$2) {
-      if (this.i == djs.c.c) {
-         d(dlw.fP.m().b(f, $$0.c(f)), $$1, $$2);
+   @Override
+   public dzz a(dcr $$0) {
+      ja $$1 = $$0.k();
+      ja $$2;
+      if ($$1.o() == ja.a.b) {
+         $$2 = $$0.g().g();
       } else {
-         d($$0, $$1, $$2);
+         $$2 = ja.b;
+      }
+
+      return this.m().b(b, jc.a($$1, $$2));
+   }
+
+   @Override
+   public dwx a(iu $$0, dzz $$1) {
+      return new dyb($$0, $$1);
+   }
+
+   @Override
+   protected bub a(dzz $$0, div $$1, iu $$2, cqy $$3, fee $$4) {
+      dwx $$5 = $$1.c_($$2);
+      if ($$5 instanceof dyb && $$3.gF()) {
+         $$3.a((dyb)$$5);
+         return bub.a;
+      } else {
+         return bub.e;
       }
    }
 
-   public static void d(dzo $$0, dip $$1, iu $$2) {
-      int $$3 = $$0.c(f) - 1;
-      dzo $$4 = $$3 == 0 ? dlw.fO.m() : $$0.b(f, Integer.valueOf($$3));
-      $$1.b($$2, $$4);
-      $$1.a(eeo.c, $$2, eeo.a.a($$4));
+   public static boolean a(euv.a $$0, euv.a $$1) {
+      ja $$2 = o($$0.a().b());
+      ja $$3 = o($$1.a().b());
+      ja $$4 = p($$0.a().b());
+      ja $$5 = p($$1.a().b());
+      dyb.a $$6 = $$0.b();
+      boolean $$7 = $$6 == dyb.a.a;
+      return $$2 == $$3.g() && ($$7 || $$4 == $$5) && $$0.e().equals($$1.c());
    }
 
-   @Override
-   public void a(dzo $$0, dip $$1, iu $$2, djs.c $$3) {
-      if (dmq.a($$1, $$3) && $$0.c(f) != 3 && $$3 == this.i) {
-         dzo $$4 = $$0.a(f);
-         $$1.b($$2, $$4);
-         $$1.a(eeo.c, $$2, eeo.a.a($$4));
-      }
+   public static ja o(dzz $$0) {
+      return $$0.c(b).a();
    }
 
-   @Override
-   protected int a(dzo $$0, dip $$1, iu $$2) {
-      return $$0.c(f);
-   }
-
-   @Override
-   protected void a(dzp.a<dlu, dzo> $$0) {
-      $$0.a(f);
-   }
-
-   @Override
-   protected void a(dzo $$0, dip $$1, iu $$2, evu $$3) {
-      if (!this.d($$0)) {
-         dzo $$4 = $$0.b(f, Integer.valueOf($$0.c(f) + 1));
-         $$1.b($$2, $$4);
-         $$1.a(eeo.c, $$2, eeo.a.a($$4));
-         $$1.c(1047, $$2, 0);
-      }
+   public static ja p(dzz $$0) {
+      return $$0.c(b).b();
    }
 }

@@ -1,82 +1,88 @@
 import com.mojang.serialization.MapCodec;
-import java.util.Map;
-import java.util.function.Function;
+import javax.annotation.Nullable;
 
-public class dpi extends dop {
+public class dpi extends dqc {
    public static final MapCodec<dpi> a = b(dpi::new);
-   private static final ww b = ww.c("container.grindstone_title");
-   private final Function<dzo, feq> d;
+   public static final int b = 3;
+   public static final eaz c = eap.av;
+   private static final int f = 4;
+   private static final int g = 2;
 
    @Override
    public MapCodec<dpi> a() {
       return a;
    }
 
-   protected dpi(dzn.d $$0) {
+   public dpi(dzy.d $$0) {
       super($$0);
-      this.l(this.B.b().b(e, ja.c).b(c, dzz.b));
-      this.d = this.b();
-   }
-
-   private Function<dzo, feq> b() {
-      feq $$0 = fen.a(dlu.a(2.0, 6.0, 7.0, 4.0, 10.0, 16.0), dlu.a(2.0, 5.0, 3.0, 4.0, 11.0, 9.0));
-      feq $$1 = fen.a($$0, h.z);
-      feq $$2 = fen.a(dlu.a(8.0, 2.0, 14.0, 0.0, 12.0), $$0, $$1);
-      Map<dzz, Map<ja, feq>> $$3 = fen.e($$2);
-      return this.a($$1x -> $$3.get($$1x.c(c)).get($$1x.c(e)));
-   }
-
-   private feq o(dzo $$0) {
-      return this.d.apply($$0);
+      this.l(this.B.b().b(c, Integer.valueOf(0)));
    }
 
    @Override
-   protected feq b(dzo $$0, dhv $$1, iu $$2, feb $$3) {
-      return this.o($$0);
+   public void a(dzz $$0, div $$1, iu $$2, dzz $$3, boolean $$4) {
+      $$1.a($$2, this, azm.a($$1.C_(), 60, 120));
    }
 
    @Override
-   protected feq a(dzo $$0, dhv $$1, iu $$2, feb $$3) {
-      return this.o($$0);
+   protected void a(dzz $$0, arq $$1, iu $$2, azv $$3) {
+      if (($$3.a(3) == 0 || this.a($$1, $$2, 4)) && $$1.B($$2) > 11 - $$0.c(c) - $$0.g() && this.e($$0, $$1, $$2)) {
+         iu.a $$4 = new iu.a();
+
+         for (ja $$5 : ja.values()) {
+            $$4.a($$2, $$5);
+            dzz $$6 = $$1.a_($$4);
+            if ($$6.a(this) && !this.e($$6, $$1, $$4)) {
+               $$1.a($$4, this, azm.a($$3, 20, 40));
+            }
+         }
+      } else {
+         $$1.a($$2, this, azm.a($$3, 20, 40));
+      }
+   }
+
+   private boolean e(dzz $$0, div $$1, iu $$2) {
+      int $$3 = $$0.c(c);
+      if ($$3 < 3) {
+         $$1.a($$2, $$0.b(c, Integer.valueOf($$3 + 1)), 2);
+         return false;
+      } else {
+         this.d($$0, $$1, $$2);
+         return true;
+      }
    }
 
    @Override
-   protected boolean a(dzo $$0, dis $$1, iu $$2) {
+   protected void a(dzz $$0, div $$1, iu $$2, dma $$3, @Nullable exo $$4, boolean $$5) {
+      if ($$3.m().a(this) && this.a($$1, $$2, 2)) {
+         this.d($$0, $$1, $$2);
+      }
+
+      super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   }
+
+   private boolean a(dib $$0, iu $$1, int $$2) {
+      int $$3 = 0;
+      iu.a $$4 = new iu.a();
+
+      for (ja $$5 : ja.values()) {
+         $$4.a($$1, $$5);
+         if ($$0.a_($$4).a(this)) {
+            if (++$$3 >= $$2) {
+               return false;
+            }
+         }
+      }
+
       return true;
    }
 
    @Override
-   protected bty a(dzo $$0, dip $$1, iu $$2, cqs $$3, fds $$4) {
-      if (!$$1.C) {
-         $$3.a($$0.b($$1, $$2));
-         $$3.a(awv.aD);
-      }
-
-      return bty.a;
+   protected void a(eaa.a<dma, dzz> $$0) {
+      $$0.a(c);
    }
 
    @Override
-   protected bua b(dzo $$0, dip $$1, iu $$2) {
-      return new bug(($$2x, $$3, $$4) -> new cvk($$2x, $$3, cux.a($$1, $$2)), b);
-   }
-
-   @Override
-   protected dzo a(dzo $$0, dsm $$1) {
-      return $$0.b(e, $$1.a($$0.c(e)));
-   }
-
-   @Override
-   protected dzo a(dzo $$0, dqv $$1) {
-      return $$0.a($$1.a($$0.c(e)));
-   }
-
-   @Override
-   protected void a(dzp.a<dlu, dzo> $$0) {
-      $$0.a(e, c);
-   }
-
-   @Override
-   protected boolean a(dzo $$0, ewk $$1) {
-      return false;
+   protected cyy a(diy $$0, iu $$1, dzz $$2, boolean $$3) {
+      return cyy.k;
    }
 }

@@ -1,72 +1,101 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.logging.LogUtils;
+import java.util.function.Function;
+import org.slf4j.Logger;
 
-public class erd extends erf {
-   public static final MapCodec<erd> a = RecordCodecBuilder.mapCodec(
-         $$0 -> a($$0)
-               .and(
-                  $$0.group(
-                     Codec.intRange(0, 4096).fieldOf("spacing").forGetter(erd::a),
-                     Codec.intRange(0, 4096).fieldOf("separation").forGetter(erd::b),
-                     ere.c.optionalFieldOf("spread_type", ere.a).forGetter(erd::c)
-                  )
-               )
-               .apply($$0, erd::new)
-      )
-      .validate(erd::a);
-   private final int c;
-   private final int d;
-   private final ere e;
+public abstract class erd extends eqx {
+   private static final Logger h = LogUtils.getLogger();
+   protected final String a;
+   protected euv b;
+   protected eur c;
+   protected iu d;
 
-   private static DataResult<erd> a(erd $$0) {
-      return $$0.c <= $$0.d ? DataResult.error(() -> "Spacing has to be larger than separation") : DataResult.success($$0);
-   }
-
-   public erd(jz $$0, erf.c $$1, float $$2, int $$3, Optional<erf.a> $$4, int $$5, int $$6, ere $$7) {
-      super($$0, $$1, $$2, $$3, $$4);
-      this.c = $$5;
+   public erd(erk $$0, int $$1, euw $$2, alg $$3, String $$4, eur $$5, iu $$6) {
+      super($$0, $$1, $$2.a($$3).b($$5, $$6));
+      this.a(ja.c);
+      this.a = $$4;
       this.d = $$6;
-      this.e = $$7;
+      this.b = $$2.a($$3);
+      this.c = $$5;
    }
 
-   public erd(int $$0, int $$1, ere $$2, int $$3) {
-      this(jz.i, erf.c.a, 1.0F, $$3, Optional.empty(), $$0, $$1, $$2);
+   public erd(erk $$0, tz $$1, euw $$2, Function<alg, eur> $$3) {
+      super($$0, $$1);
+      this.a(ja.c);
+      this.a = $$1.l("Template");
+      this.d = new iu($$1.h("TPX"), $$1.h("TPY"), $$1.h("TPZ"));
+      alg $$4 = this.b();
+      this.b = $$2.a($$4);
+      this.c = $$3.apply($$4);
+      this.f = this.b.b(this.c, this.d);
    }
 
-   public int a() {
-      return this.c;
+   protected alg b() {
+      return alg.a(this.a);
    }
 
-   public int b() {
+   @Override
+   protected void a(erj $$0, tz $$1) {
+      $$1.a("TPX", this.d.u());
+      $$1.a("TPY", this.d.v());
+      $$1.a("TPZ", this.d.w());
+      $$1.a("Template", this.a);
+   }
+
+   @Override
+   public void a(dju $$0, djr $$1, ebx $$2, azv $$3, eql $$4, dic $$5, iu $$6) {
+      this.c.a($$4);
+      this.f = this.b.b(this.c, this.d);
+      if (this.b.a($$0, this.d, $$6, this.c, $$3, 2)) {
+         for (euv.d $$8 : this.b.a(this.d, this.c, dmc.pD)) {
+            if ($$8.c() != null) {
+               ebj $$9 = ebj.valueOf($$8.c().l("mode"));
+               if ($$9 == ebj.d) {
+                  this.a($$8.c().l("metadata"), $$8.a(), $$0, $$3, $$4);
+               }
+            }
+         }
+
+         for (euv.d $$11 : this.b.a(this.d, this.c, dmc.pE)) {
+            if ($$11.c() != null) {
+               String $$12 = $$11.c().l("final_state");
+               dzz $$13 = dmc.a.m();
+
+               try {
+                  $$13 = gd.a($$0.a(mg.i), $$12, true).a();
+               } catch (CommandSyntaxException var15) {
+                  h.error("Error while parsing blockstate {} in jigsaw block @ {}", $$12, $$11.a());
+               }
+
+               $$0.a($$11.a(), $$13, 3);
+            }
+         }
+      }
+   }
+
+   protected abstract void a(String var1, iu var2, djm var3, azv var4, eql var5);
+
+   @Deprecated
+   @Override
+   public void a(int $$0, int $$1, int $$2) {
+      super.a($$0, $$1, $$2);
+      this.d = this.d.b($$0, $$1, $$2);
+   }
+
+   @Override
+   public dst a() {
+      return this.c.d();
+   }
+
+   public euv c() {
+      return this.b;
+   }
+
+   public iu d() {
       return this.d;
    }
 
-   public ere c() {
-      return this.e;
-   }
-
-   public dhw a(long $$0, int $$1, int $$2) {
-      int $$3 = Math.floorDiv($$1, this.c);
-      int $$4 = Math.floorDiv($$2, this.c);
-      egm $$5 = new egm(new efo(0L));
-      $$5.a($$0, $$3, $$4, this.i());
-      int $$6 = this.c - this.d;
-      int $$7 = this.e.a($$5, $$6);
-      int $$8 = this.e.a($$5, $$6);
-      return new dhw($$3 * this.c + $$7, $$4 * this.c + $$8);
-   }
-
-   @Override
-   protected boolean a(ebn $$0, int $$1, int $$2) {
-      dhw $$3 = this.a($$0.d(), $$1, $$2);
-      return $$3.h == $$1 && $$3.i == $$2;
-   }
-
-   @Override
-   public erg<?> e() {
-      return erg.a;
+   public eur e() {
+      return this.c;
    }
 }

@@ -1,3 +1,8 @@
-public interface ajt extends wc {
-   void a(aju var1);
+import javax.annotation.ParametersAreNonnullByDefault;
+
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface ajt {
 }

@@ -1,36 +1,89 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import io.netty.buffer.ByteBuf;
 import java.util.List;
-import java.util.stream.Stream;
+import java.util.Optional;
 
-public record dcb(List<asg<String>> g) implements dau<String, dcb> {
-   public static final dcb a = new dcb(List.of());
-   public static final int b = 1024;
-   public static final int c = 100;
-   private static final Codec<asg<String>> h = asg.a(Codec.string(0, 1024));
-   public static final Codec<List<asg<String>>> d = h.sizeLimitedListOf(100);
-   public static final Codec<dcb> e = RecordCodecBuilder.create($$0 -> $$0.group(d.optionalFieldOf("pages", List.of()).forGetter(dcb::a)).apply($$0, dcb::new));
-   public static final yu<ByteBuf, dcb> f = asg.a(ys.b(1024)).a(ys.c(100)).a(dcb::new, dcb::a);
+public record dcb(List<dcb.a> c, float d, int e, boolean f) {
+   public static final Codec<dcb> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               dcb.a.a.listOf().fieldOf("rules").forGetter(dcb::a),
+               Codec.FLOAT.optionalFieldOf("default_mining_speed", 1.0F).forGetter(dcb::b),
+               ayu.l.optionalFieldOf("damage_per_block", 1).forGetter(dcb::c),
+               Codec.BOOL.optionalFieldOf("can_destroy_blocks_in_creative", true).forGetter(dcb::d)
+            )
+            .apply($$0, dcb::new)
+   );
+   public static final yw<wj, dcb> b = yw.a(dcb.a.b.a(yu.a()), dcb::a, yu.l, dcb::b, yu.h, dcb::c, yu.b, dcb::d, dcb::new);
 
-   public dcb(List<asg<String>> g) {
-      if (g.size() > 100) {
-         throw new IllegalArgumentException("Got " + g.size() + " pages, but maximum is 100");
-      } else {
-         this.g = g;
+   public float a(dzz $$0) {
+      for (dcb.a $$1 : this.c) {
+         if ($$1.d.isPresent() && $$0.a($$1.c)) {
+            return $$1.d.get();
+         }
       }
+
+      return this.d;
    }
 
-   public Stream<String> a(boolean $$0) {
-      return this.g.stream().map($$1 -> $$1.a($$0));
+   public boolean b(dzz $$0) {
+      for (dcb.a $$1 : this.c) {
+         if ($$1.e.isPresent() && $$0.a($$1.c)) {
+            return $$1.e.get();
+         }
+      }
+
+      return false;
    }
 
-   public dcb b(List<asg<String>> $$0) {
-      return new dcb($$0);
+   public List<dcb.a> a() {
+      return this.c;
    }
 
-   @Override
-   public List<asg<String>> a() {
-      return this.g;
+   public float b() {
+      return this.d;
+   }
+
+   public int c() {
+      return this.e;
+   }
+
+   public boolean d() {
+      return this.f;
+   }
+
+   public static record a(ji<dma> c, Optional<Float> d, Optional<Boolean> e) {
+      public static final Codec<dcb.a> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(
+                  jt.a(mg.i).fieldOf("blocks").forGetter(dcb.a::a),
+                  ayu.o.optionalFieldOf("speed").forGetter(dcb.a::b),
+                  Codec.BOOL.optionalFieldOf("correct_for_drops").forGetter(dcb.a::c)
+               )
+               .apply($$0, dcb.a::new)
+      );
+      public static final yw<wj, dcb.a> b = yw.a(yu.c(mg.i), dcb.a::a, yu.l.a(yu::a), dcb.a::b, yu.b.a(yu::a), dcb.a::c, dcb.a::new);
+
+      public static dcb.a a(ji<dma> $$0, float $$1) {
+         return new dcb.a($$0, Optional.of($$1), Optional.of(true));
+      }
+
+      public static dcb.a a(ji<dma> $$0) {
+         return new dcb.a($$0, Optional.empty(), Optional.of(false));
+      }
+
+      public static dcb.a b(ji<dma> $$0, float $$1) {
+         return new dcb.a($$0, Optional.of($$1), Optional.empty());
+      }
+
+      public ji<dma> a() {
+         return this.c;
+      }
+
+      public Optional<Float> b() {
+         return this.d;
+      }
+
+      public Optional<Boolean> c() {
+         return this.e;
+      }
    }
 }

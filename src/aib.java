@@ -1,28 +1,29 @@
-public record aib(int b, int c) implements zd<agn> {
-   public static final yu<vs, aib> a = zd.a(aib::a, aib::new);
+public class aib implements zf<agp> {
+   public static final yw<vu, aib> a = zf.a(aib::a, aib::new);
+   private final String b;
 
-   private aib(vs $$0) {
-      this($$0.l(), $$0.l());
-      if (this.c < 0 && this.c != -1) {
-         throw new IllegalArgumentException("Invalid selectedItemIndex: " + this.c);
-      }
+   public aib(String $$0) {
+      this.b = $$0;
    }
 
-   private void a(vs $$0) {
-      $$0.c(this.b);
-      $$0.c(this.c);
+   private aib(vu $$0) {
+      this.b = $$0.p();
+   }
+
+   private void a(vu $$0) {
+      $$0.a(this.b);
    }
 
    @Override
-   public zf<aib> a() {
-      return agl.bm;
+   public zh<aib> a() {
+      return agn.bY;
    }
 
-   public void a(agn $$0) {
+   public void a(agp $$0) {
       $$0.a(this);
    }
 
-   public int e() {
-      return this.c;
+   public String b() {
+      return this.b;
    }
 }

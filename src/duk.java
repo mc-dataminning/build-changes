@@ -1,24 +1,25 @@
-import com.mojang.serialization.MapCodec;
+import java.util.List;
+import java.util.Objects;
+import java.util.stream.Collectors;
+import javax.annotation.Nullable;
 
-public class duk extends dup {
-   public static final MapCodec<duk> a = b(duk::new);
+public interface duk {
+   dca c();
 
-   @Override
-   public MapCodec<duk> a() {
-      return a;
+   static List<duk> d() {
+      return mf.g.s().map(duk::a).filter(Objects::nonNull).collect(Collectors.toList());
    }
 
-   public duk(dzn.d $$0) {
-      super($$0);
-   }
+   @Nullable
+   static duk a(diu $$0) {
+      if ($$0.h() instanceof cxg $$1) {
+         dma var6 = $$1.c();
+         if (var6 instanceof duk) {
+            return (duk)var6;
+         }
+      }
 
-   @Override
-   protected boolean e_(dzo $$0) {
-      return false;
-   }
-
-   @Override
-   protected int i_(dzo $$0) {
-      return 15;
+      cyu $$2 = $$0.h();
+      return $$2 instanceof duk ? (duk)$$2 : null;
    }
 }

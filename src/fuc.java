@@ -1,123 +1,123 @@
-import java.util.ArrayList;
-import java.util.List;
 import javax.annotation.Nullable;
 
-public class fuc implements fua {
-   private static final ale h = ale.b("toast/tutorial");
-   public static final int a = 154;
-   public static final int e = 1;
-   public static final int f = 3;
-   public static final int g = 4;
-   private static final int i = 7;
-   private static final int j = 3;
-   private static final int k = 11;
-   private static final int l = 30;
-   private static final int m = 126;
-   private final fuc.a n;
-   private final List<ayw> o;
-   private fua.a p = fua.a.a;
-   private long q;
-   private float r;
-   private float s;
-   private final boolean t;
-   private final int u;
+public class fuc implements gdq {
+   private static final alg a = alg.b("hud/hotbar");
+   private static final alg b = alg.b("hud/hotbar_selection");
+   private static final long c = 5000L;
+   private static final long d = 2000L;
+   private final fos e;
+   private long f;
+   @Nullable
+   private gdn g;
 
-   public fuc(fra $$0, fuc.a $$1, ww $$2, @Nullable ww $$3, boolean $$4, int $$5) {
-      this.n = $$1;
-      this.o = new ArrayList<>(2);
-      this.o.addAll($$0.c($$2.f().b(-11534256), 126));
-      if ($$3 != null) {
-         this.o.addAll($$0.c($$3, 126));
-      }
-
-      this.t = $$4;
-      this.u = $$5;
+   public fuc(fos $$0) {
+      this.e = $$0;
    }
 
-   public fuc(fra $$0, fuc.a $$1, ww $$2, @Nullable ww $$3, boolean $$4) {
-      this($$0, $$1, $$2, $$3, $$4, 0);
-   }
-
-   @Override
-   public fua.a a() {
-      return this.p;
-   }
-
-   @Override
-   public void a(fub $$0, long $$1) {
-      if (this.u > 0) {
-         this.s = Math.min((float)$$1 / (float)this.u, 1.0F);
-         this.r = this.s;
-         this.q = $$1;
-         if ($$1 > (long)this.u) {
-            this.e();
-         }
-      } else if (this.t) {
-         this.r = azk.b(this.r, this.s, (float)($$1 - this.q) / 100.0F);
-         this.q = $$1;
+   public void a(int $$0) {
+      this.f = af.c();
+      if (this.g != null) {
+         this.g.b($$0);
+      } else {
+         this.g = new gdn(this);
       }
    }
 
-   @Override
-   public int d() {
-      return 7 + this.f() + 3;
+   private float c() {
+      long $$0 = this.f - af.c() + 5000L;
+      return azm.a((float)$$0 / 2000.0F, 0.0F, 1.0F);
    }
 
-   private int f() {
-      return Math.max(this.o.size(), 2) * 11;
-   }
-
-   @Override
-   public void a(frc $$0, fra $$1, long $$2) {
-      int $$3 = this.d();
-      $$0.a(gpn::H, h, 0, 0, this.c(), $$3);
-      this.n.a($$0, 6, 6);
-      int $$4 = this.o.size() * 11;
-      int $$5 = 7 + (this.f() - $$4) / 2;
-
-      for (int $$6 = 0; $$6 < this.o.size(); $$6++) {
-         $$0.a($$1, this.o.get($$6), 30, $$5 + $$6 * 11, -16777216, false);
-      }
-
-      if (this.t) {
-         int $$7 = $$3 - 4;
-         $$0.a(3, $$7, 157, $$7 + 1, -1);
-         int $$8;
-         if (this.s >= this.r) {
-            $$8 = -16755456;
+   public void a(fro $$0) {
+      if (this.g != null) {
+         float $$1 = this.c();
+         if ($$1 <= 0.0F) {
+            this.g.d();
          } else {
-            $$8 = -11206656;
+            int $$2 = $$0.a() / 2;
+            $$0.c().a();
+            $$0.c().a(0.0F, 0.0F, -90.0F);
+            int $$3 = azm.d((float)$$0.b() - 22.0F * $$1);
+            gdr $$4 = this.g.f();
+            this.a($$0, $$1, $$2, $$3, $$4);
+            $$0.c().b();
          }
-
-         $$0.a(3, $$7, (int)(3.0F + 154.0F * this.r), $$7 + 1, $$8);
       }
    }
 
-   public void e() {
-      this.p = fua.a.b;
-   }
-
-   public void a(float $$0) {
-      this.s = $$0;
-   }
-
-   public static enum a {
-      a(ale.b("toast/movement_keys")),
-      b(ale.b("toast/mouse")),
-      c(ale.b("toast/tree")),
-      d(ale.b("toast/recipe_book")),
-      e(ale.b("toast/wooden_planks")),
-      f(ale.b("toast/social_interactions")),
-      g(ale.b("toast/right_click"));
-
-      private final ale h;
-
-      private a(final ale $$0) {
-         this.h = $$0;
+   protected void a(fro $$0, float $$1, int $$2, int $$3, gdr $$4) {
+      int $$5 = axw.a($$1);
+      $$0.a(gqc::H, a, $$2 - 91, $$3, 182, 22, $$5);
+      if ($$4.a() >= 0) {
+         $$0.a(gqc::H, b, $$2 - 91 - 1 + $$4.a() * 20, $$3 - 1, 24, 23, $$5);
       }
 
-      public void a(frc $$0, int $$1, int $$2) {
-         $$0.a(gpn::H, this.h, $$1, $$2, 20, 20);
+      for (int $$6 = 0; $$6 < 9; $$6++) {
+         this.a($$0, $$6, $$0.a() / 2 - 90 + $$6 * 20 + 2, (float)($$3 + 3), $$1, $$4.a($$6));
+      }
+   }
+
+   private void a(fro $$0, int $$1, int $$2, float $$3, float $$4, gdp $$5) {
+      if ($$5 != gdn.a) {
+         $$0.c().a();
+         $$0.c().a((float)$$2, $$3, 0.0F);
+         float $$6 = $$5.aP_() ? 1.0F : 0.25F;
+         $$5.a($$0, $$6, $$4);
+         $$0.c().b();
+         int $$7 = (int)($$4 * 255.0F);
+         if ($$7 > 3 && $$5.aP_()) {
+            wy $$8 = this.e.n.S[$$1].k();
+            $$0.b(this.e.h, $$8, $$2 + 19 - 2 - this.e.h.a($$8), (int)$$3 + 6 + 3, 16777215 + ($$7 << 24));
+         }
+      }
+   }
+
+   public void b(fro $$0) {
+      int $$1 = (int)(this.c() * 255.0F);
+      if ($$1 > 3 && this.g != null) {
+         gdp $$2 = this.g.b();
+         wy $$3 = $$2 == gdn.a ? this.g.c().b() : $$2.aO_();
+         if ($$3 != null) {
+            int $$4 = this.e.h.a($$3);
+            int $$5 = ($$0.a() - $$4) / 2;
+            int $$6 = $$0.b() - 35;
+            $$0.a(this.e.h, $$3, $$5, $$6, $$4, axw.c($$1, -1));
+         }
+      }
+   }
+
+   @Override
+   public void a(gdn $$0) {
+      this.g = null;
+      this.f = 0L;
+   }
+
+   public boolean a() {
+      return this.g != null;
+   }
+
+   public void b(int $$0) {
+      int $$1 = this.g.e() + $$0;
+
+      while ($$1 >= 0 && $$1 <= 8 && (this.g.a($$1) == gdn.a || !this.g.a($$1).aP_())) {
+         $$1 += $$0;
+      }
+
+      if ($$1 >= 0 && $$1 <= 8) {
+         this.g.b($$1);
+         this.f = af.c();
+      }
+   }
+
+   public void b() {
+      this.f = af.c();
+      if (this.a()) {
+         int $$0 = this.g.e();
+         if ($$0 != -1) {
+            this.g.b($$0);
+         }
+      } else {
+         this.g = new gdn(this);
       }
    }
 }

@@ -1,366 +1,339 @@
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.Maps;
-import com.google.common.collect.Sets;
+import java.util.Collections;
+import java.util.List;
 import java.util.Map;
-import java.util.Set;
-import java.util.function.UnaryOperator;
+import java.util.function.BiFunction;
+import java.util.function.Function;
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-public class fqs {
-   private final Map<fqt, ale> a = Maps.newHashMap();
-   private final Set<fqt> b = Sets.newHashSet();
+public abstract class fqs {
+   private final Map<fqt, List<fqu>> a = Maps.newHashMap();
 
-   public fqs a(fqt $$0, ale $$1) {
-      this.a.put($$0, $$1);
-      return this;
+   protected void a(fqt $$0, List<fqu> $$1) {
+      List<fqu> $$2 = this.a.put($$0, $$1);
+      if ($$2 != null) {
+         throw new IllegalStateException("Value " + $$0 + " is already defined");
+      }
    }
 
-   public fqs b(fqt $$0, ale $$1) {
-      this.a.put($$0, $$1);
-      this.b.add($$0);
-      return this;
+   Map<fqt, List<fqu>> a() {
+      this.c();
+      return ImmutableMap.copyOf(this.a);
    }
 
-   public Stream<fqt> a() {
-      return this.b.stream();
-   }
+   private void c() {
+      List<ebc<?>> $$0 = this.b();
+      Stream<fqt> $$1 = Stream.of(fqt.a());
 
-   public fqs a(fqt $$0, fqt $$1) {
-      this.a.put($$1, this.a.get($$0));
-      return this;
-   }
-
-   public fqs b(fqt $$0, fqt $$1) {
-      this.a.put($$1, this.a.get($$0));
-      this.b.add($$1);
-      return this;
-   }
-
-   public ale a(fqt $$0) {
-      for (fqt $$1 = $$0; $$1 != null; $$1 = $$1.b()) {
-         ale $$2 = this.a.get($$1);
-         if ($$2 != null) {
-            return $$2;
-         }
+      for (ebc<?> $$2 : $$0) {
+         $$1 = $$1.flatMap($$1x -> $$2.c().map($$1x::a));
       }
 
-      throw new IllegalStateException("Can't find texture for slot " + $$0);
+      List<fqt> $$3 = $$1.filter($$0x -> !this.a.containsKey($$0x)).collect(Collectors.toList());
+      if (!$$3.isEmpty()) {
+         throw new IllegalStateException("Missing definition for properties: " + $$3);
+      }
    }
 
-   public fqs c(fqt $$0, ale $$1) {
-      fqs $$2 = new fqs();
-      $$2.a.putAll(this.a);
-      $$2.b.addAll(this.b);
-      $$2.a($$0, $$1);
-      return $$2;
-   }
-
-   public static fqs a(dlu $$0) {
-      ale $$1 = J($$0);
-      return b($$1);
-   }
-
-   public static fqs b(dlu $$0) {
-      ale $$1 = J($$0);
-      return a($$1);
-   }
-
-   public static fqs a(ale $$0) {
-      return new fqs().a(fqt.b, $$0);
-   }
-
-   public static fqs b(ale $$0) {
-      return new fqs().a(fqt.a, $$0);
-   }
-
-   public static fqs c(dlu $$0) {
-      return d(fqt.p, J($$0));
-   }
-
-   public static fqs d(dlu $$0) {
-      return d(fqt.i, J($$0));
-   }
-
-   public static fqs e(dlu $$0) {
-      return new fqs().a(fqt.p, J($$0)).a(fqt.q, a($$0, "_emissive"));
-   }
-
-   public static fqs c(ale $$0) {
-      return d(fqt.p, $$0);
-   }
-
-   public static fqs f(dlu $$0) {
-      return d(fqt.r, J($$0));
-   }
-
-   public static fqs g(dlu $$0) {
-      return new fqs().a(fqt.r, J($$0)).a(fqt.q, a($$0, "_emissive"));
-   }
-
-   public static fqs d(ale $$0) {
-      return d(fqt.r, $$0);
-   }
-
-   public static fqs h(dlu $$0) {
-      return d(fqt.t, J($$0));
-   }
-
-   public static fqs e(ale $$0) {
-      return d(fqt.t, $$0);
-   }
-
-   public static fqs i(dlu $$0) {
-      return d(fqt.u, J($$0));
-   }
-
-   public static fqs j(dlu $$0) {
-      return new fqs().a(fqt.Q, J($$0)).a(fqt.z, a($$0, "_stem"));
-   }
-
-   public static fqs f(ale $$0) {
-      return d(fqt.u, $$0);
-   }
-
-   public static fqs k(dlu $$0) {
-      return d(fqt.z, J($$0));
-   }
-
-   public static fqs a(dlu $$0, dlu $$1) {
-      return new fqs().a(fqt.z, J($$0)).a(fqt.A, J($$1));
-   }
-
-   public static fqs l(dlu $$0) {
-      return d(fqt.v, J($$0));
-   }
-
-   public static fqs m(dlu $$0) {
-      return d(fqt.y, J($$0));
-   }
-
-   public static fqs g(ale $$0) {
-      return d(fqt.B, $$0);
-   }
-
-   public static fqs b(dlu $$0, dlu $$1) {
-      return new fqs().a(fqt.w, J($$0)).a(fqt.x, a($$1, "_top"));
-   }
-
-   public static fqs d(fqt $$0, ale $$1) {
-      return new fqs().a($$0, $$1);
-   }
-
-   public static fqs n(dlu $$0) {
-      return new fqs().a(fqt.i, a($$0, "_side")).a(fqt.d, a($$0, "_top"));
-   }
-
-   public static fqs o(dlu $$0) {
-      return new fqs().a(fqt.i, a($$0, "_side")).a(fqt.f, a($$0, "_top"));
-   }
-
-   public static fqs p(dlu $$0) {
-      return new fqs().a(fqt.r, a($$0, "_plant")).a(fqt.i, a($$0, "_side")).a(fqt.f, a($$0, "_top"));
-   }
-
-   public static fqs q(dlu $$0) {
-      return new fqs().a(fqt.i, J($$0)).a(fqt.d, a($$0, "_top")).a(fqt.c, J($$0));
-   }
-
-   public static fqs a(ale $$0, ale $$1) {
-      return new fqs().a(fqt.i, $$0).a(fqt.d, $$1);
-   }
-
-   public static fqs r(dlu $$0) {
-      return new fqs().a(fqt.b, J($$0)).a(fqt.i, a($$0, "_side")).a(fqt.f, a($$0, "_top"));
-   }
-
-   public static fqs s(dlu $$0) {
-      return new fqs().a(fqt.b, J($$0)).a(fqt.c, a($$0, "_particle"));
-   }
-
-   public static fqs t(dlu $$0) {
-      return new fqs().a(fqt.i, a($$0, "_side")).a(fqt.f, a($$0, "_top")).a(fqt.e, a($$0, "_bottom"));
-   }
-
-   public static fqs u(dlu $$0) {
-      ale $$1 = J($$0);
-      return new fqs().a(fqt.s, $$1).a(fqt.i, $$1).a(fqt.f, a($$0, "_top")).a(fqt.e, a($$0, "_bottom"));
-   }
-
-   public static fqs v(dlu $$0) {
-      ale $$1 = J($$0);
-      return new fqs().a(fqt.b, $$1).a(fqt.s, $$1).a(fqt.i, $$1).a(fqt.d, a($$0, "_top"));
-   }
-
-   public static fqs b(ale $$0, ale $$1) {
-      return new fqs().a(fqt.f, $$0).a(fqt.e, $$1);
-   }
-
-   public static fqs w(dlu $$0) {
-      return new fqs().a(fqt.f, a($$0, "_top")).a(fqt.e, a($$0, "_bottom"));
-   }
-
-   public static fqs x(dlu $$0) {
-      return new fqs().a(fqt.c, J($$0));
-   }
-
-   public static fqs h(ale $$0) {
-      return new fqs().a(fqt.c, $$0);
-   }
-
-   public static fqs y(dlu $$0) {
-      return new fqs().a(fqt.D, a($$0, "_0"));
-   }
-
-   public static fqs z(dlu $$0) {
-      return new fqs().a(fqt.D, a($$0, "_1"));
-   }
-
-   public static fqs A(dlu $$0) {
-      return new fqs().a(fqt.E, J($$0));
-   }
-
-   public static fqs B(dlu $$0) {
-      return new fqs().a(fqt.H, J($$0));
-   }
-
-   public static fqs i(ale $$0) {
-      return new fqs().a(fqt.H, $$0);
-   }
-
-   public static fqs a(dlu $$0, String $$1, String $$2) {
-      return new fqs().a(fqt.i, a($$0, $$1)).a(fqt.f, a($$0, $$2)).a(fqt.e, a($$0, "_bottom"));
-   }
+   abstract List<ebc<?>> b();
 
-   public static fqs a(dlu $$0, String $$1, String $$2, String $$3, String $$4) {
-      return new fqs().a(fqt.g, a($$0, $$1)).a(fqt.i, a($$0, $$2)).a(fqt.f, a($$0, $$3)).a(fqt.e, a($$0, $$4));
+   public static <T1 extends Comparable<T1>> fqs.a<T1> a(ebc<T1> $$0) {
+      return new fqs.a<>($$0);
    }
 
-   public static fqs a(cyo $$0) {
-      return new fqs().a(fqt.c, c($$0));
+   public static <T1 extends Comparable<T1>, T2 extends Comparable<T2>> fqs.b<T1, T2> a(ebc<T1> $$0, ebc<T2> $$1) {
+      return new fqs.b<>($$0, $$1);
    }
 
-   public static fqs C(dlu $$0) {
-      return new fqs().a(fqt.i, a($$0, "_side")).a(fqt.g, a($$0, "_front")).a(fqt.h, a($$0, "_back"));
+   public static <T1 extends Comparable<T1>, T2 extends Comparable<T2>, T3 extends Comparable<T3>> fqs.c<T1, T2, T3> a(ebc<T1> $$0, ebc<T2> $$1, ebc<T3> $$2) {
+      return new fqs.c<>($$0, $$1, $$2);
    }
 
-   public static fqs D(dlu $$0) {
-      return new fqs().a(fqt.i, a($$0, "_side")).a(fqt.g, a($$0, "_front")).a(fqt.f, a($$0, "_top")).a(fqt.e, a($$0, "_bottom"));
+   public static <T1 extends Comparable<T1>, T2 extends Comparable<T2>, T3 extends Comparable<T3>, T4 extends Comparable<T4>> fqs.d<T1, T2, T3, T4> a(
+      ebc<T1> $$0, ebc<T2> $$1, ebc<T3> $$2, ebc<T4> $$3
+   ) {
+      return new fqs.d<>($$0, $$1, $$2, $$3);
    }
 
-   public static fqs E(dlu $$0) {
-      return new fqs().a(fqt.i, a($$0, "_side")).a(fqt.g, a($$0, "_front")).a(fqt.f, a($$0, "_top"));
+   public static <T1 extends Comparable<T1>, T2 extends Comparable<T2>, T3 extends Comparable<T3>, T4 extends Comparable<T4>, T5 extends Comparable<T5>> fqs.e<T1, T2, T3, T4, T5> a(
+      ebc<T1> $$0, ebc<T2> $$1, ebc<T3> $$2, ebc<T4> $$3, ebc<T5> $$4
+   ) {
+      return new fqs.e<>($$0, $$1, $$2, $$3, $$4);
    }
 
-   public static fqs F(dlu $$0) {
-      return new fqs().a(fqt.i, a($$0, "_side")).a(fqt.g, a($$0, "_front")).a(fqt.d, a($$0, "_end"));
-   }
-
-   public static fqs G(dlu $$0) {
-      return new fqs().a(fqt.f, a($$0, "_top"));
-   }
-
-   public static fqs c(dlu $$0, dlu $$1) {
-      return new fqs()
-         .a(fqt.c, a($$0, "_front"))
-         .a(fqt.o, J($$1))
-         .a(fqt.n, a($$0, "_top"))
-         .a(fqt.j, a($$0, "_front"))
-         .a(fqt.l, a($$0, "_side"))
-         .a(fqt.k, a($$0, "_side"))
-         .a(fqt.m, a($$0, "_front"));
-   }
-
-   public static fqs d(dlu $$0, dlu $$1) {
-      return new fqs()
-         .a(fqt.c, a($$0, "_front"))
-         .a(fqt.o, J($$1))
-         .a(fqt.n, a($$0, "_top"))
-         .a(fqt.j, a($$0, "_front"))
-         .a(fqt.k, a($$0, "_front"))
-         .a(fqt.l, a($$0, "_side"))
-         .a(fqt.m, a($$0, "_side"));
-   }
-
-   public static fqs a(String $$0) {
-      return new fqs()
-         .a(fqt.c, a(dlw.mI, $$0 + "_north"))
-         .a(fqt.e, a(dlw.mI, $$0 + "_bottom"))
-         .a(fqt.f, a(dlw.mI, $$0 + "_top"))
-         .a(fqt.j, a(dlw.mI, $$0 + "_north"))
-         .a(fqt.k, a(dlw.mI, $$0 + "_south"))
-         .a(fqt.l, a(dlw.mI, $$0 + "_east"))
-         .a(fqt.m, a(dlw.mI, $$0 + "_west"));
-   }
-
-   public static fqs H(dlu $$0) {
-      return new fqs().a(fqt.L, a($$0, "_log_lit")).a(fqt.D, a($$0, "_fire"));
-   }
-
-   public static fqs a(dlu $$0, boolean $$1) {
-      return new fqs()
-         .a(fqt.c, a(dlw.et, "_side"))
-         .a(fqt.e, a(dlw.et, "_bottom"))
-         .a(fqt.f, a(dlw.et, "_top"))
-         .a(fqt.i, a(dlw.et, "_side"))
-         .a(fqt.M, a($$0, $$1 ? "_lit" : ""));
-   }
-
-   public static fqs j(ale $$0) {
-      return new fqs()
-         .a(fqt.c, a(dlw.fO, "_side"))
-         .a(fqt.i, a(dlw.fO, "_side"))
-         .a(fqt.f, a(dlw.fO, "_top"))
-         .a(fqt.e, a(dlw.fO, "_bottom"))
-         .a(fqt.N, a(dlw.fO, "_inner"))
-         .a(fqt.O, $$0);
-   }
+   public static class a<T1 extends Comparable<T1>> extends fqs {
+      private final ebc<T1> a;
 
-   public static fqs a(boolean $$0) {
-      String $$1 = $$0 ? "_can_summon" : "";
-      return new fqs()
-         .a(fqt.c, a(dlw.rz, "_bottom"))
-         .a(fqt.i, a(dlw.rz, "_side"))
-         .a(fqt.f, a(dlw.rz, "_top"))
-         .a(fqt.P, a(dlw.rz, $$1 + "_inner_top"))
-         .a(fqt.e, a(dlw.rz, "_bottom"));
-   }
-
-   public static fqs b(cyo $$0) {
-      return new fqs().a(fqt.I, c($$0));
-   }
-
-   public static fqs I(dlu $$0) {
-      return new fqs().a(fqt.I, J($$0));
-   }
-
-   public static fqs k(ale $$0) {
-      return new fqs().a(fqt.I, $$0);
-   }
+      a(ebc<T1> $$0) {
+         this.a = $$0;
+      }
 
-   public static fqs c(ale $$0, ale $$1) {
-      return new fqs().a(fqt.I, $$0).a(fqt.J, $$1);
-   }
-
-   public static fqs a(ale $$0, ale $$1, ale $$2) {
-      return new fqs().a(fqt.I, $$0).a(fqt.J, $$1).a(fqt.K, $$2);
-   }
-
-   public static ale J(dlu $$0) {
-      ale $$1 = mf.e.b($$0);
-      return $$1.f("block/");
-   }
-
-   public static ale a(dlu $$0, String $$1) {
-      ale $$2 = mf.e.b($$0);
-      return $$2.a((UnaryOperator<String>)($$1x -> "block/" + $$1x + $$1));
-   }
+      @Override
+      public List<ebc<?>> b() {
+         return ImmutableList.of(this.a);
+      }
 
-   public static ale c(cyo $$0) {
-      ale $$1 = mf.g.b($$0);
-      return $$1.f("item/");
-   }
+      public fqs.a<T1> a(T1 $$0, List<fqu> $$1) {
+         fqt $$2 = fqt.a(this.a.c($$0));
+         this.a($$2, $$1);
+         return this;
+      }
 
-   public static ale a(cyo $$0, String $$1) {
-      ale $$2 = mf.g.b($$0);
-      return $$2.a((UnaryOperator<String>)($$1x -> "item/" + $$1x + $$1));
+      public fqs.a<T1> a(T1 $$0, fqu $$1) {
+         return this.a($$0, Collections.singletonList($$1));
+      }
+
+      public fqs a(Function<T1, fqu> $$0) {
+         this.a.a().forEach($$1 -> this.a((T1)$$1, $$0.apply((T1)$$1)));
+         return this;
+      }
+
+      public fqs b(Function<T1, List<fqu>> $$0) {
+         this.a.a().forEach($$1 -> this.a((T1)$$1, $$0.apply((T1)$$1)));
+         return this;
+      }
+   }
+
+   public static class b<T1 extends Comparable<T1>, T2 extends Comparable<T2>> extends fqs {
+      private final ebc<T1> a;
+      private final ebc<T2> b;
+
+      b(ebc<T1> $$0, ebc<T2> $$1) {
+         this.a = $$0;
+         this.b = $$1;
+      }
+
+      @Override
+      public List<ebc<?>> b() {
+         return ImmutableList.of(this.a, this.b);
+      }
+
+      public fqs.b<T1, T2> a(T1 $$0, T2 $$1, List<fqu> $$2) {
+         fqt $$3 = fqt.a(this.a.c($$0), this.b.c($$1));
+         this.a($$3, $$2);
+         return this;
+      }
+
+      public fqs.b<T1, T2> a(T1 $$0, T2 $$1, fqu $$2) {
+         return this.a($$0, $$1, Collections.singletonList($$2));
+      }
+
+      public fqs a(BiFunction<T1, T2, fqu> $$0) {
+         this.a.a().forEach($$1 -> this.b.a().forEach($$2 -> this.a((T1)$$1, (T2)$$2, $$0.apply((T1)$$1, (T2)$$2))));
+         return this;
+      }
+
+      public fqs b(BiFunction<T1, T2, List<fqu>> $$0) {
+         this.a.a().forEach($$1 -> this.b.a().forEach($$2 -> this.a((T1)$$1, (T2)$$2, $$0.apply((T1)$$1, (T2)$$2))));
+         return this;
+      }
+   }
+
+   public static class c<T1 extends Comparable<T1>, T2 extends Comparable<T2>, T3 extends Comparable<T3>> extends fqs {
+      private final ebc<T1> a;
+      private final ebc<T2> b;
+      private final ebc<T3> c;
+
+      c(ebc<T1> $$0, ebc<T2> $$1, ebc<T3> $$2) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
+      }
+
+      @Override
+      public List<ebc<?>> b() {
+         return ImmutableList.of(this.a, this.b, this.c);
+      }
+
+      public fqs.c<T1, T2, T3> a(T1 $$0, T2 $$1, T3 $$2, List<fqu> $$3) {
+         fqt $$4 = fqt.a(this.a.c($$0), this.b.c($$1), this.c.c($$2));
+         this.a($$4, $$3);
+         return this;
+      }
+
+      public fqs.c<T1, T2, T3> a(T1 $$0, T2 $$1, T3 $$2, fqu $$3) {
+         return this.a($$0, $$1, $$2, Collections.singletonList($$3));
+      }
+
+      public fqs a(fqs.h<T1, T2, T3, fqu> $$0) {
+         this.a
+            .a()
+            .forEach($$1 -> this.b.a().forEach($$2 -> this.c.a().forEach($$3 -> this.a((T1)$$1, (T2)$$2, (T3)$$3, $$0.apply((T1)$$1, (T2)$$2, (T3)$$3)))));
+         return this;
+      }
+
+      public fqs b(fqs.h<T1, T2, T3, List<fqu>> $$0) {
+         this.a
+            .a()
+            .forEach($$1 -> this.b.a().forEach($$2 -> this.c.a().forEach($$3 -> this.a((T1)$$1, (T2)$$2, (T3)$$3, $$0.apply((T1)$$1, (T2)$$2, (T3)$$3)))));
+         return this;
+      }
+   }
+
+   public static class d<T1 extends Comparable<T1>, T2 extends Comparable<T2>, T3 extends Comparable<T3>, T4 extends Comparable<T4>> extends fqs {
+      private final ebc<T1> a;
+      private final ebc<T2> b;
+      private final ebc<T3> c;
+      private final ebc<T4> d;
+
+      d(ebc<T1> $$0, ebc<T2> $$1, ebc<T3> $$2, ebc<T4> $$3) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
+         this.d = $$3;
+      }
+
+      @Override
+      public List<ebc<?>> b() {
+         return ImmutableList.of(this.a, this.b, this.c, this.d);
+      }
+
+      public fqs.d<T1, T2, T3, T4> a(T1 $$0, T2 $$1, T3 $$2, T4 $$3, List<fqu> $$4) {
+         fqt $$5 = fqt.a(this.a.c($$0), this.b.c($$1), this.c.c($$2), this.d.c($$3));
+         this.a($$5, $$4);
+         return this;
+      }
+
+      public fqs.d<T1, T2, T3, T4> a(T1 $$0, T2 $$1, T3 $$2, T4 $$3, fqu $$4) {
+         return this.a($$0, $$1, $$2, $$3, Collections.singletonList($$4));
+      }
+
+      public fqs a(fqs.g<T1, T2, T3, T4, fqu> $$0) {
+         this.a
+            .a()
+            .forEach(
+               $$1 -> this.b
+                     .a()
+                     .forEach(
+                        $$2 -> this.c
+                              .a()
+                              .forEach(
+                                 $$3 -> this.d.a().forEach($$4 -> this.a((T1)$$1, (T2)$$2, (T3)$$3, (T4)$$4, $$0.apply((T1)$$1, (T2)$$2, (T3)$$3, (T4)$$4)))
+                              )
+                     )
+            );
+         return this;
+      }
+
+      public fqs b(fqs.g<T1, T2, T3, T4, List<fqu>> $$0) {
+         this.a
+            .a()
+            .forEach(
+               $$1 -> this.b
+                     .a()
+                     .forEach(
+                        $$2 -> this.c
+                              .a()
+                              .forEach(
+                                 $$3 -> this.d.a().forEach($$4 -> this.a((T1)$$1, (T2)$$2, (T3)$$3, (T4)$$4, $$0.apply((T1)$$1, (T2)$$2, (T3)$$3, (T4)$$4)))
+                              )
+                     )
+            );
+         return this;
+      }
+   }
+
+   public static class e<T1 extends Comparable<T1>, T2 extends Comparable<T2>, T3 extends Comparable<T3>, T4 extends Comparable<T4>, T5 extends Comparable<T5>>
+      extends fqs {
+      private final ebc<T1> a;
+      private final ebc<T2> b;
+      private final ebc<T3> c;
+      private final ebc<T4> d;
+      private final ebc<T5> e;
+
+      e(ebc<T1> $$0, ebc<T2> $$1, ebc<T3> $$2, ebc<T4> $$3, ebc<T5> $$4) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
+         this.d = $$3;
+         this.e = $$4;
+      }
+
+      @Override
+      public List<ebc<?>> b() {
+         return ImmutableList.of(this.a, this.b, this.c, this.d, this.e);
+      }
+
+      public fqs.e<T1, T2, T3, T4, T5> a(T1 $$0, T2 $$1, T3 $$2, T4 $$3, T5 $$4, List<fqu> $$5) {
+         fqt $$6 = fqt.a(this.a.c($$0), this.b.c($$1), this.c.c($$2), this.d.c($$3), this.e.c($$4));
+         this.a($$6, $$5);
+         return this;
+      }
+
+      public fqs.e<T1, T2, T3, T4, T5> a(T1 $$0, T2 $$1, T3 $$2, T4 $$3, T5 $$4, fqu $$5) {
+         return this.a($$0, $$1, $$2, $$3, $$4, Collections.singletonList($$5));
+      }
+
+      public fqs a(fqs.f<T1, T2, T3, T4, T5, fqu> $$0) {
+         this.a
+            .a()
+            .forEach(
+               $$1 -> this.b
+                     .a()
+                     .forEach(
+                        $$2 -> this.c
+                              .a()
+                              .forEach(
+                                 $$3 -> this.d
+                                       .a()
+                                       .forEach(
+                                          $$4 -> this.e
+                                                .a()
+                                                .forEach(
+                                                   $$5 -> this.a(
+                                                         (T1)$$1, (T2)$$2, (T3)$$3, (T4)$$4, (T5)$$5, $$0.apply((T1)$$1, (T2)$$2, (T3)$$3, (T4)$$4, (T5)$$5)
+                                                      )
+                                                )
+                                       )
+                              )
+                     )
+            );
+         return this;
+      }
+
+      public fqs b(fqs.f<T1, T2, T3, T4, T5, List<fqu>> $$0) {
+         this.a
+            .a()
+            .forEach(
+               $$1 -> this.b
+                     .a()
+                     .forEach(
+                        $$2 -> this.c
+                              .a()
+                              .forEach(
+                                 $$3 -> this.d
+                                       .a()
+                                       .forEach(
+                                          $$4 -> this.e
+                                                .a()
+                                                .forEach(
+                                                   $$5 -> this.a(
+                                                         (T1)$$1, (T2)$$2, (T3)$$3, (T4)$$4, (T5)$$5, $$0.apply((T1)$$1, (T2)$$2, (T3)$$3, (T4)$$4, (T5)$$5)
+                                                      )
+                                                )
+                                       )
+                              )
+                     )
+            );
+         return this;
+      }
+   }
+
+   @FunctionalInterface
+   public interface f<P1, P2, P3, P4, P5, R> {
+      R apply(P1 var1, P2 var2, P3 var3, P4 var4, P5 var5);
+   }
+
+   @FunctionalInterface
+   public interface g<P1, P2, P3, P4, R> {
+      R apply(P1 var1, P2 var2, P3 var3, P4 var4);
+   }
+
+   @FunctionalInterface
+   public interface h<P1, P2, P3, R> {
+      R apply(P1 var1, P2 var2, P3 var3);
    }
 }

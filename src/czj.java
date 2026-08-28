@@ -1,17 +1,21 @@
-public class czj extends cxa {
-   public czj(dlu $$0, cyo.a $$1) {
-      super($$0, $$1);
+public class czj extends dak {
+   public czj(cyu.a $$0) {
+      super($$0);
    }
 
    @Override
-   public bty a(dcn $$0) {
-      return bty.e;
+   public bub a(div $$0, cqy $$1, bua $$2) {
+      $$0.a(null, $$1.dA(), $$1.dC(), $$1.dG(), awn.oG, awo.g, 0.5F, 0.4F / ($$0.C_().i() * 0.4F + 0.8F));
+      return super.a($$0, $$1, $$2);
    }
 
    @Override
-   public bty a(dip $$0, cqs $$1, btx $$2) {
-      fds $$3 = a($$0, $$1, dhy.b.b);
-      fds $$4 = $$3.a($$3.b().d());
-      return super.a(new dcn($$1, $$2, $$4));
+   protected crh a(arq $$0, bxc $$1, cyy $$2) {
+      return new cse($$0, $$1, $$2);
+   }
+
+   @Override
+   protected crh a(div $$0, jo $$1, cyy $$2) {
+      return new cse($$0, $$1.a(), $$1.b(), $$1.c(), $$2);
    }
 }

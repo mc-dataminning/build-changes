@@ -1,23 +1,22 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
+import java.util.stream.Stream;
 
-public record elu(int b, int c, int d) implements ekx {
+public class elu implements eli {
    public static final Codec<elu> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               ays.m.fieldOf("spread_width").forGetter(elu::a), ays.m.fieldOf("spread_height").forGetter(elu::b), ays.m.fieldOf("max_height").forGetter(elu::c)
-            )
-            .apply($$0, elu::new)
+      $$0 -> $$0.apply2(elu::new, eky.a.listOf().fieldOf("features").forGetter($$0x -> $$0x.b), epx.b.fieldOf("default").forGetter($$0x -> $$0x.c))
    );
+   public final List<eky> b;
+   public final je<epx> c;
 
-   public int a() {
-      return this.b;
+   public elu(List<eky> $$0, je<epx> $$1) {
+      this.b = $$0;
+      this.c = $$1;
    }
 
-   public int b() {
-      return this.c;
-   }
-
-   public int c() {
-      return this.d;
+   @Override
+   public Stream<eiq<?, ?>> e() {
+      return Stream.concat(this.b.stream().flatMap($$0 -> $$0.b.a().a()), this.c.a().a());
    }
 }

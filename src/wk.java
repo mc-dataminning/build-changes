@@ -1,3 +1,6 @@
-public interface wk extends wc {
-   void d();
+public interface wk extends we {
+   @Override
+   default zg a() {
+      return zg.a;
+   }
 }

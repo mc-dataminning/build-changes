@@ -1,112 +1,83 @@
-import it.unimi.dsi.fastutil.doubles.DoubleDoubleImmutablePair;
-import java.util.function.Predicate;
-import javax.annotation.Nullable;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.nio.ByteBuffer;
+import java.nio.ByteOrder;
+import java.security.PublicKey;
+import java.time.Duration;
+import java.time.Instant;
+import java.util.Arrays;
+import java.util.UUID;
 
-public abstract class crb extends crt {
-   public static final double a = 4.0;
-   protected static final double b = 16.0;
-   public static final Predicate<bwz> c = $$0 -> $$0.fq() || $$0.bY();
+public record crb(crb.a d) {
+   public static final wy a = wy.c("multiplayer.disconnect.expired_public_key");
+   private static final wy e = wy.c("multiplayer.disconnect.invalid_public_key_signature");
+   public static final Duration b = Duration.ofHours(8L);
+   public static final Codec<crb> c = crb.a.a.xmap(crb::new, crb::b);
 
-   public crb(bwj<? extends crb> $$0, dip $$1) {
-      super($$0, $$1);
-   }
-
-   public crb(bwj<? extends crb> $$0, dip $$1, bwz $$2, cys $$3) {
-      super($$0, $$2, $$1, $$3);
-   }
-
-   public crb(bwj<? extends crb> $$0, dip $$1, double $$2, double $$3, double $$4, cys $$5) {
-      super($$0, $$2, $$3, $$4, $$1, $$5);
-   }
-
-   @Override
-   protected cyo f() {
-      return cyw.ws;
-   }
-
-   @Override
-   protected double bd() {
-      return 0.05;
-   }
-
-   @Override
-   protected void a(fds $$0) {
-      super.a($$0);
-      if (!this.dV().C) {
-         cys $$1 = this.ae_();
-         ja $$2 = $$0.c();
-         iu $$3 = $$0.b();
-         iu $$4 = $$3.a($$2);
-         dao $$5 = $$1.a(kj.R, dao.a);
-         if ($$5.a(dap.a)) {
-            this.a($$4);
-            this.a($$4.a($$2.g()));
-
-            for (ja $$6 : ja.c.a) {
-               this.a($$4.a($$6));
-            }
-         }
+   public static crb a(bab $$0, UUID $$1, crb.a $$2) throws crb.b {
+      if (!$$2.a($$0, $$1)) {
+         throw new crb.b(e);
+      } else {
+         return new crb($$2);
       }
    }
 
-   @Override
-   protected void a(fdu $$0) {
-      super.a($$0);
-      if (this.dV() instanceof aro $$1) {
-         cys $$3 = this.ae_();
-         dao $$4 = $$3.a(kj.R, dao.a);
-         if ($$4.a(dap.a)) {
-            this.b($$1);
-         } else if ($$4.c()) {
-            this.a($$1, $$3, $$0.d() == fdu.a.c ? ((fdt)$$0).a() : null);
-         }
+   public bab a() {
+      return bab.a(this.d.c, "SHA256withRSA");
+   }
 
-         int $$5 = $$4.e().isPresent() && $$4.e().get().a().c() ? 2007 : 2002;
-         $$1.c($$5, this.dv(), $$4.b());
-         this.at();
+   public crb.a b() {
+      return this.d;
+   }
+
+   public static record a(Instant b, PublicKey c, byte[] d) {
+      private static final int e = 4096;
+      public static final Codec<crb.a> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(
+                  ayu.q.fieldOf("expires_at").forGetter(crb.a::b), ayj.f.fieldOf("key").forGetter(crb.a::c), ayu.r.fieldOf("signature_v2").forGetter(crb.a::d)
+               )
+               .apply($$0, crb.a::new)
+      );
+
+      public a(vu $$0) {
+         this($$0.t(), $$0.u(), $$0.a(4096));
+      }
+
+      public void a(vu $$0) {
+         $$0.a(this.b);
+         $$0.a(this.c);
+         $$0.a(this.d);
+      }
+
+      boolean a(bab $$0, UUID $$1) {
+         return $$0.a(this.a($$1), this.d);
+      }
+
+      private byte[] a(UUID $$0) {
+         byte[] $$1 = this.c.getEncoded();
+         byte[] $$2 = new byte[24 + $$1.length];
+         ByteBuffer $$3 = ByteBuffer.wrap($$2).order(ByteOrder.BIG_ENDIAN);
+         $$3.putLong($$0.getMostSignificantBits()).putLong($$0.getLeastSignificantBits()).putLong(this.b.toEpochMilli()).put($$1);
+         return $$2;
+      }
+
+      public boolean a() {
+         return this.b.isBefore(Instant.now());
+      }
+
+      public boolean a(Duration $$0) {
+         return this.b.plus($$0).isBefore(Instant.now());
+      }
+
+      @Override
+      public boolean equals(Object $$0) {
+         return !($$0 instanceof crb.a $$1) ? false : this.b.equals($$1.b) && this.c.equals($$1.c) && Arrays.equals(this.d, $$1.d);
       }
    }
 
-   private void b(aro $$0) {
-      fdr $$1 = this.cR().c(4.0, 2.0, 4.0);
-
-      for (bwz $$3 : this.dV().a(bwz.class, $$1, c)) {
-         double $$4 = this.g($$3);
-         if ($$4 < 16.0) {
-            if ($$3.fq()) {
-               $$3.a($$0, this.dW().c(this, this.q()), 1.0F);
-            }
-
-            if ($$3.bY() && $$3.bK()) {
-               $$3.aN();
-            }
-         }
+   public static class b extends xy {
+      public b(wy $$0) {
+         super($$0);
       }
-
-      for (ckd $$6 : this.dV().a(ckd.class, $$1)) {
-         $$6.q();
-      }
-   }
-
-   protected abstract void a(aro var1, cys var2, @Nullable bwa var3);
-
-   private void a(iu $$0) {
-      dzo $$1 = this.dV().a_($$0);
-      if ($$1.a(axa.aN)) {
-         this.dV().a($$0, false, this);
-      } else if (dkm.c($$1)) {
-         dkm.a(null, $$1, this.dV(), $$0);
-      } else if (dmj.h($$1)) {
-         this.dV().a(null, 1009, $$0, 0);
-         dmj.a(this.q(), this.dV(), $$0, $$1);
-         this.dV().b($$0, $$1.b(dmj.b, Boolean.valueOf(false)));
-      }
-   }
-
-   @Override
-   public DoubleDoubleImmutablePair a_(bwz $$0, bup $$1) {
-      double $$2 = $$0.dt().d - this.dt().d;
-      double $$3 = $$0.dt().f - this.dt().f;
-      return DoubleDoubleImmutablePair.of($$2, $$3);
    }
 }

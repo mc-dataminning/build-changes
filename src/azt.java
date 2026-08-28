@@ -1,69 +1,65 @@
-import io.netty.util.internal.ThreadLocalRandom;
+import com.google.common.collect.HashMultimap;
+import com.google.common.collect.ImmutableMultimap;
+import com.google.common.collect.Multimap;
+import java.util.Optional;
+import java.util.function.Supplier;
+import java.util.stream.Collectors;
+import javax.annotation.Nullable;
 
 public interface azt {
-   @Deprecated
-   double a = 2.297;
+   azt a(String var1);
 
-   static azt a() {
-      return a(egc.a());
-   }
+   void b(String var1);
 
-   @Deprecated
-   static azt b() {
-      return new egg(egc.a());
-   }
+   public static class a implements azt {
+      private final Multimap<String, String> a;
+      private final Supplier<String> b;
+      @Nullable
+      private String c;
 
-   static azt a(long $$0) {
-      return new efo($$0);
-   }
-
-   static azt c() {
-      return new egd(ThreadLocalRandom.current().nextLong());
-   }
-
-   azt d();
-
-   ega e();
-
-   void b(long var1);
-
-   int f();
-
-   int a(int var1);
-
-   default int a(int $$0, int $$1) {
-      return this.a($$1 - $$0 + 1) + $$0;
-   }
-
-   long g();
-
-   boolean h();
-
-   float i();
-
-   double j();
-
-   double k();
-
-   default double a(double $$0, double $$1) {
-      return $$0 + $$1 * (this.j() - this.j());
-   }
-
-   default float a(float $$0, float $$1) {
-      return $$0 + $$1 * (this.i() - this.i());
-   }
-
-   default void b(int $$0) {
-      for (int $$1 = 0; $$1 < $$0; $$1++) {
-         this.f();
+      public a() {
+         this(HashMultimap.create(), () -> "");
       }
-   }
 
-   default int b(int $$0, int $$1) {
-      if ($$0 >= $$1) {
-         throw new IllegalArgumentException("bound - origin is non positive");
-      } else {
-         return $$0 + this.a($$1 - $$0);
+      private a(Multimap<String, String> $$0, Supplier<String> $$1) {
+         this.a = $$0;
+         this.b = $$1;
+      }
+
+      private String c() {
+         if (this.c == null) {
+            this.c = this.b.get();
+         }
+
+         return this.c;
+      }
+
+      @Override
+      public azt a(String $$0) {
+         return new azt.a(this.a, () -> this.c() + $$0);
+      }
+
+      @Override
+      public void b(String $$0) {
+         this.a.put(this.c(), $$0);
+      }
+
+      public Multimap<String, String> a() {
+         return ImmutableMultimap.copyOf(this.a);
+      }
+
+      public Optional<String> b() {
+         Multimap<String, String> $$0 = this.a();
+         if (!$$0.isEmpty()) {
+            String $$1 = $$0.asMap()
+               .entrySet()
+               .stream()
+               .map($$0x -> " at " + (String)$$0x.getKey() + ": " + String.join("; ", (Iterable<? extends CharSequence>)$$0x.getValue()))
+               .collect(Collectors.joining("\n"));
+            return Optional.of($$1);
+         } else {
+            return Optional.empty();
+         }
       }
    }
 }

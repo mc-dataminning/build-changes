@@ -1,73 +1,68 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.Lists;
-import it.unimi.dsi.fastutil.ints.Int2IntFunction;
-import java.util.List;
-import java.util.Optional;
-import java.util.function.UnaryOperator;
+import com.mojang.logging.LogUtils;
+import java.util.function.BooleanSupplier;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class xu {
-   private final String a;
-   private final List<xt> b;
-   private final Int2IntFunction c;
+@FunctionalInterface
+public interface xu {
+   Logger a = LogUtils.getLogger();
+   xu b = xo::b;
+   xu c = $$0 -> {
+      a.error("Received chat message from {}, but they have no chat session initialized and secure chat is enforced", $$0.g());
+      return null;
+   };
 
-   private xu(String $$0, List<xt> $$1, Int2IntFunction $$2) {
-      this.a = $$0;
-      this.b = ImmutableList.copyOf($$1);
-      this.c = $$2;
-   }
+   @Nullable
+   xo updateAndValidate(xo var1);
 
-   public String a() {
-      return this.a;
-   }
+   public static class a implements xu {
+      private final bab d;
+      private final BooleanSupplier e;
+      @Nullable
+      private xo f;
+      private boolean g = true;
 
-   public List<ayw> a(int $$0, int $$1, boolean $$2) {
-      if ($$1 == 0) {
-         return ImmutableList.of();
-      } else {
-         List<ayw> $$3 = Lists.newArrayList();
-         xt $$4 = this.b.get($$0);
-         int $$5 = $$0;
-
-         for (int $$6 = 1; $$6 < $$1; $$6++) {
-            int $$7 = $$0 + $$6;
-            xt $$8 = this.b.get($$7);
-            if (!$$8.equals($$4)) {
-               String $$9 = this.a.substring($$5, $$7);
-               $$3.add($$2 ? ayw.backward($$9, $$4, this.c) : ayw.forward($$9, $$4));
-               $$4 = $$8;
-               $$5 = $$7;
-            }
-         }
-
-         if ($$5 < $$0 + $$1) {
-            String $$10 = this.a.substring($$5, $$0 + $$1);
-            $$3.add($$2 ? ayw.backward($$10, $$4, this.c) : ayw.forward($$10, $$4));
-         }
-
-         return $$2 ? Lists.reverse($$3) : $$3;
+      public a(bab $$0, BooleanSupplier $$1) {
+         this.d = $$0;
+         this.e = $$1;
       }
-   }
 
-   public static xu a(xb $$0) {
-      return a($$0, $$0x -> $$0x, $$0x -> $$0x);
-   }
-
-   public static xu a(xb $$0, Int2IntFunction $$1, UnaryOperator<String> $$2) {
-      StringBuilder $$3 = new StringBuilder();
-      List<xt> $$4 = Lists.newArrayList();
-      $$0.a(($$2x, $$3x) -> {
-         bah.c($$3x, $$2x, ($$2xx, $$3xx, $$4x) -> {
-            $$3.appendCodePoint($$4x);
-            int $$5 = Character.charCount($$4x);
-
-            for (int $$6 = 0; $$6 < $$5; $$6++) {
-               $$4.add($$3xx);
-            }
-
+      private boolean a(xo $$0) {
+         if ($$0.equals(this.f)) {
             return true;
-         });
-         return Optional.empty();
-      }, xt.a);
-      return new xu($$2.apply($$3.toString()), $$4, $$1);
+         } else if (this.f != null && !$$0.k().a(this.f.k())) {
+            a.error(
+               "Received out-of-order chat message from {}: expected index > {} for session {}, but was {} for session {}",
+               new Object[]{$$0.g(), this.f.k().b(), this.f.k().d(), $$0.k().b(), $$0.k().d()}
+            );
+            return false;
+         } else {
+            return true;
+         }
+      }
+
+      private boolean b(xo $$0) {
+         if (this.e.getAsBoolean()) {
+            a.error("Received message from player with expired profile public key: {}", $$0);
+            return false;
+         } else if (!$$0.a(this.d)) {
+            a.error("Received message with invalid signature from {}", $$0.g());
+            return false;
+         } else {
+            return this.a($$0);
+         }
+      }
+
+      @Nullable
+      @Override
+      public xo updateAndValidate(xo $$0) {
+         this.g = this.g && this.b($$0);
+         if (!this.g) {
+            return null;
+         } else {
+            this.f = $$0;
+            return $$0;
+         }
+      }
    }
 }

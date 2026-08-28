@@ -1,17 +1,16 @@
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
 
-public class euq implements eus {
-   private static final euq b = new euq();
-   public static final MapCodec<euq> a = MapCodec.unit(b);
+public interface euq<P extends eup> {
+   euq<ets> a = a("always_true", ets.a);
+   euq<etx> b = a("block_match", etx.a);
+   euq<etz> c = a("blockstate_match", etz.a);
+   euq<eux> d = a("tag_match", eux.a);
+   euq<eum> e = a("random_block_match", eum.a);
+   euq<eun> f = a("random_blockstate_match", eun.a);
 
-   @Override
-   public tx a(azt $$0, @Nullable tx $$1) {
-      return new tx();
-   }
+   MapCodec<P> codec();
 
-   @Override
-   public eut<?> a() {
-      return eut.a;
+   static <P extends eup> euq<P> a(String $$0, MapCodec<P> $$1) {
+      return jr.a(mf.m, $$0, () -> $$1);
    }
 }

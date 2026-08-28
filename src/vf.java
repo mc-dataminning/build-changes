@@ -1,89 +1,15 @@
-public interface vf extends ur {
-   vf a = new vf() {
-   };
+import java.util.List;
 
-   @Override
-   default ur.b a() {
-      return ur.b.a;
+public record vf(List<String> a, uy<?> b, String c) {
+   public vf(uy<?> $$0, String $$1) {
+      this(List.of(), $$0, $$1);
    }
 
-   @Override
-   default ur.b a(String $$0) {
-      return ur.b.a;
+   public vf(String $$0, uy<?> $$1, String $$2) {
+      this(List.of($$0), $$1, $$2);
    }
 
-   @Override
-   default ur.b a(byte $$0) {
-      return ur.b.a;
-   }
-
-   @Override
-   default ur.b a(short $$0) {
-      return ur.b.a;
-   }
-
-   @Override
-   default ur.b a(int $$0) {
-      return ur.b.a;
-   }
-
-   @Override
-   default ur.b a(long $$0) {
-      return ur.b.a;
-   }
-
-   @Override
-   default ur.b a(float $$0) {
-      return ur.b.a;
-   }
-
-   @Override
-   default ur.b a(double $$0) {
-      return ur.b.a;
-   }
-
-   @Override
-   default ur.b a(byte[] $$0) {
-      return ur.b.a;
-   }
-
-   @Override
-   default ur.b a(int[] $$0) {
-      return ur.b.a;
-   }
-
-   @Override
-   default ur.b a(long[] $$0) {
-      return ur.b.a;
-   }
-
-   @Override
-   default ur.b a(uw<?> $$0, int $$1) {
-      return ur.b.a;
-   }
-
-   @Override
-   default ur.a b(uw<?> $$0, int $$1) {
-      return ur.a.b;
-   }
-
-   @Override
-   default ur.a a(uw<?> $$0) {
-      return ur.a.b;
-   }
-
-   @Override
-   default ur.a a(uw<?> $$0, String $$1) {
-      return ur.a.b;
-   }
-
-   @Override
-   default ur.b b() {
-      return ur.b.a;
-   }
-
-   @Override
-   default ur.b b(uw<?> $$0) {
-      return ur.b.a;
+   public vf(String $$0, String $$1, uy<?> $$2, String $$3) {
+      this(List.of($$0, $$1), $$2, $$3);
    }
 }

@@ -1,33 +1,30 @@
-public class gha extends ghb {
-   protected final gig a;
+public class gha extends gfq<hcf> {
+   private final giu a;
+   private final giu b;
 
-   public gha(gig $$0) {
+   public gha(giu $$0) {
       super($$0);
-      this.a = $$0.b("head");
+      this.a = $$0.b("left_fin");
+      this.b = $$0.b("right_fin");
    }
 
-   public static gio a() {
-      gio $$0 = new gio();
-      giq $$1 = $$0.a();
-      $$1.a("head", gil.c().a(0, 0).a(-4.0F, -8.0F, -4.0F, 8.0F, 8.0F, 8.0F), gii.a);
-      return $$0;
-   }
-
-   public static gim b() {
-      gio $$0 = a();
-      giq $$1 = $$0.a();
-      $$1.b("head").a("hat", gil.c().a(32, 0).a(-4.0F, -8.0F, -4.0F, 8.0F, 8.0F, 8.0F, new gik(0.25F)), gii.a);
-      return gim.a($$0, 64, 64);
-   }
-
-   public static gim c() {
-      gio $$0 = a();
-      return gim.a($$0, 64, 32);
+   public static gja a() {
+      gjc $$0 = new gjc();
+      gje $$1 = $$0.a();
+      int $$2 = 23;
+      $$1.a("body", giz.c().a(0, 27).a(-1.5F, -2.0F, -1.5F, 3.0F, 2.0F, 3.0F), giw.a(0.0F, 23.0F, 0.0F));
+      $$1.a("right_eye", giz.c().a(24, 6).a(-1.5F, 0.0F, -1.5F, 1.0F, 1.0F, 1.0F), giw.a(0.0F, 20.0F, 0.0F));
+      $$1.a("left_eye", giz.c().a(28, 6).a(0.5F, 0.0F, -1.5F, 1.0F, 1.0F, 1.0F), giw.a(0.0F, 20.0F, 0.0F));
+      $$1.a("back_fin", giz.c().a(-3, 0).a(-1.5F, 0.0F, 0.0F, 3.0F, 0.0F, 3.0F), giw.a(0.0F, 22.0F, 1.5F));
+      $$1.a("right_fin", giz.c().a(25, 0).a(-1.0F, 0.0F, 0.0F, 1.0F, 0.0F, 2.0F), giw.a(-1.5F, 22.0F, -1.5F));
+      $$1.a("left_fin", giz.c().a(25, 0).a(0.0F, 0.0F, 0.0F, 1.0F, 0.0F, 2.0F), giw.a(1.5F, 22.0F, -1.5F));
+      return gja.a($$0, 32, 32);
    }
 
    @Override
-   public void a(float $$0, float $$1, float $$2) {
-      this.a.f = $$1 * (float) (Math.PI / 180.0);
-      this.a.e = $$2 * (float) (Math.PI / 180.0);
+   public void a(hcf $$0) {
+      super.a($$0);
+      this.b.g = -0.2F + 0.4F * azm.a($$0.u * 0.2F);
+      this.a.g = 0.2F - 0.4F * azm.a($$0.u * 0.2F);
    }
 }

@@ -1,71 +1,42 @@
-import java.util.List;
-import javax.annotation.Nullable;
+import java.util.function.Consumer;
 
-public class cxb extends cyo {
-   private final bwj<? extends ctc> a;
-
-   public cxb(bwj<? extends ctc> $$0, cyo.a $$1) {
-      super($$1);
-      this.a = $$0;
+public class cxb extends cyu {
+   public cxb(cyu.a $$0) {
+      super($$0);
    }
 
    @Override
-   public bty a(dip $$0, cqs $$1, btx $$2) {
-      cys $$3 = $$1.b($$2);
-      fdu $$4 = a($$0, $$1, dhy.b.c);
-      if ($$4.d() == fdu.a.a) {
-         return bty.e;
+   public bub a(dct $$0) {
+      ja $$1 = $$0.k();
+      if ($$1 == ja.a) {
+         return bub.d;
       } else {
-         fdw $$5 = $$1.h(1.0F);
-         double $$6 = 5.0;
-         List<bwa> $$7 = $$0.a($$1, $$1.cR().b($$5.c(5.0)).g(1.0), bwh.h);
-         if (!$$7.isEmpty()) {
-            fdw $$8 = $$1.bE();
-
-            for (bwa $$9 : $$7) {
-               fdr $$10 = $$9.cR().g((double)$$9.bS());
-               if ($$10.d($$8)) {
-                  return bty.e;
+         div $$2 = $$0.q();
+         dcr $$3 = new dcr($$0);
+         iu $$4 = $$3.a();
+         cyy $$5 = $$0.n();
+         fei $$6 = fei.c($$4);
+         fed $$7 = bwm.f.n().a($$6.a(), $$6.b(), $$6.c());
+         if ($$2.a(null, $$7) && $$2.a_(null, $$7).isEmpty()) {
+            if ($$2 instanceof arq $$8) {
+               Consumer<cms> $$9 = bwm.a($$8, $$5, $$0.o());
+               cms $$10 = bwm.f.b($$8, $$9, $$4, bwl.m, true, true);
+               if ($$10 == null) {
+                  return bub.d;
                }
-            }
-         }
 
-         if ($$4.d() == fdu.a.b) {
-            ctc $$11 = this.a($$0, $$4, $$3, $$1);
-            if ($$11 == null) {
-               return bty.d;
-            } else {
-               $$11.w($$1.dL());
-               if (!$$0.a($$11, $$11.cR())) {
-                  return bty.d;
-               } else {
-                  if (!$$0.C) {
-                     $$0.b($$11);
-                     $$0.a($$1, eeo.t, $$4.g());
-                     $$3.a(1, $$1);
-                  }
-
-                  $$1.b(awv.c.b(this));
-                  return bty.a;
-               }
+               float $$11 = (float)azm.d((azm.h($$0.i() - 180.0F) + 22.5F) / 45.0F) * 45.0F;
+               $$10.b($$10.dA(), $$10.dC(), $$10.dG(), $$11, 0.0F);
+               $$8.a_($$10);
+               $$2.a(null, $$10.dA(), $$10.dC(), $$10.dG(), awn.aD, awo.e, 0.75F, 0.8F);
+               $$10.a(eez.t, $$0.o());
             }
+
+            $$5.h(1);
+            return bub.a;
          } else {
-            return bty.e;
+            return bub.d;
          }
       }
-   }
-
-   @Nullable
-   private ctc a(dip $$0, fdu $$1, cys $$2, cqs $$3) {
-      ctc $$4 = this.a.a($$0, bwi.m);
-      if ($$4 != null) {
-         fdw $$5 = $$1.g();
-         $$4.p($$5.d, $$5.e, $$5.f);
-         if ($$0 instanceof aro $$6) {
-            bwj.<ctc>a($$6, $$2, $$3).accept($$4);
-         }
-      }
-
-      return $$4;
    }
 }

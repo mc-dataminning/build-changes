@@ -1,16 +1,33 @@
-public record ads(int b, dep c) implements zd<abs> {
-   public static final yu<wh, ads> a = yu.a(ys.w, ads::b, dep.e, ads::e, ads::new);
+public class ads implements zf<abu> {
+   public static final yw<wj, ads> a = yw.a(yu.w, ads::b, yu.a(mg.V), ads::e, xa.d, ads::f, ads::new);
+   private final int b;
+   private final cvz<?> c;
+   private final wy d;
 
-   @Override
-   public zf<ads> a() {
-      return agl.Z;
+   public ads(int $$0, cvz<?> $$1, wy $$2) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
    }
 
-   public void a(abs $$0) {
+   @Override
+   public zh<ads> a() {
+      return agn.X;
+   }
+
+   public void a(abu $$0) {
       $$0.a(this);
    }
 
-   public dep e() {
+   public int b() {
+      return this.b;
+   }
+
+   public cvz<?> e() {
       return this.c;
+   }
+
+   public wy f() {
+      return this.d;
    }
 }

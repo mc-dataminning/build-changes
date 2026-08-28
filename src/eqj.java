@@ -1,179 +1,113 @@
-import com.mojang.datafixers.DataFixer;
-import com.mojang.logging.LogUtils;
-import it.unimi.dsi.fastutil.longs.Long2BooleanMap;
-import it.unimi.dsi.fastutil.longs.Long2BooleanOpenHashMap;
-import it.unimi.dsi.fastutil.longs.Long2ObjectMap;
-import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
-import it.unimi.dsi.fastutil.objects.Object2IntMap;
-import it.unimi.dsi.fastutil.objects.Object2IntMaps;
-import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
-import java.util.HashMap;
 import java.util.Map;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import java.util.Objects;
+import java.util.Optional;
 
 public class eqj {
-   private static final Logger a = LogUtils.getLogger();
-   private static final int b = -1;
-   private final ecu c;
-   private final js d;
-   private final eul e;
-   private final ald<dip> f;
-   private final ebm g;
-   private final egb h;
-   private final dir i;
-   private final djw j;
-   private final long k;
-   private final DataFixer l;
-   private final Long2ObjectMap<Object2IntMap<eqi>> m = new Long2ObjectOpenHashMap();
-   private final Map<eqi, Long2BooleanMap> n = new HashMap<>();
+   public static final alf<eqi> a = a("normal");
+   public static final alf<eqi> b = a("flat");
+   public static final alf<eqi> c = a("large_biomes");
+   public static final alf<eqi> d = a("amplified");
+   public static final alf<eqi> e = a("single_biome_surface");
+   public static final alf<eqi> f = a("debug_all_block_states");
 
-   public eqj(ecu $$0, js $$1, eul $$2, ald<dip> $$3, ebm $$4, egb $$5, dir $$6, djw $$7, long $$8, DataFixer $$9) {
-      this.c = $$0;
-      this.d = $$1;
-      this.e = $$2;
-      this.f = $$3;
-      this.g = $$4;
-      this.h = $$5;
-      this.i = $$6;
-      this.j = $$7;
-      this.k = $$8;
-      this.l = $$9;
+   public static void a(qh<eqi> $$0) {
+      new eqj.a($$0).a();
    }
 
-   public eqk a(dhw $$0, eqi $$1, erf $$2, boolean $$3) {
-      long $$4 = $$0.a();
-      Object2IntMap<eqi> $$5 = (Object2IntMap<eqi>)this.m.get($$4);
-      if ($$5 != null) {
-         return this.a($$5, $$1, $$3);
-      } else {
-         eqk $$6 = this.a($$0, $$1, $$3, $$4);
-         if ($$6 != null) {
-            return $$6;
-         } else if (!$$2.a($$0.h, $$0.i, this.k)) {
-            return eqk.b;
-         } else {
-            boolean $$7 = this.n.computeIfAbsent($$1, $$0x -> new Long2BooleanOpenHashMap()).computeIfAbsent($$4, $$2x -> this.b($$0, $$1));
-            return !$$7 ? eqk.b : eqk.c;
-         }
-      }
+   private static alf<eqi> a(String $$0) {
+      return alf.a(mg.bm, alg.b($$0));
    }
 
-   private boolean b(dhw $$0, eqi $$1) {
-      return $$1.b(new eqi.a(this.d, this.g, this.j, this.h, this.e, this.k, $$0, this.i, $$1.a()::a)).isPresent();
-   }
+   public static Optional<alf<eqi>> a(egt $$0) {
+      return $$0.a(edx.b).flatMap($$0x -> {
+         Object var10000;
+         Objects.requireNonNull(var10000);
+         ebx $$1 = (ebx)var10000;
 
-   @Nullable
-   private eqk a(dhw $$0, eqi $$1, boolean $$2, long $$3) {
-      vb $$4 = new vb(new vd(uc.a, "DataVersion"), new vd("Level", "Structures", tx.b, "Starts"), new vd("structures", tx.b, "starts"));
-
-      try {
-         this.c.a($$0, $$4).join();
-      } catch (Exception var13) {
-         a.warn("Failed to read chunk {}", $$0, var13);
-         return eqk.c;
-      }
-
-      if (!($$4.d() instanceof tx $$7)) {
-         return null;
-      } else {
-         int $$8 = ecv.a($$7);
-         if ($$8 <= 1493) {
-            return eqk.c;
-         } else {
-            ecv.a($$7, this.f, this.g.c());
-
-            tx $$9;
-            try {
-               $$9 = baz.c.a(this.l, $$7, $$8);
-            } catch (Exception var12) {
-               a.warn("Failed to partially datafix chunk {}", $$0, var12);
-               return eqk.c;
-            }
-
-            Object2IntMap<eqi> $$12 = this.a($$9);
-            if ($$12 == null) {
-               return null;
-            } else {
-               this.a($$3, $$12);
-               return this.a($$12, $$1, $$2);
-            }
-         }
-      }
-   }
-
-   @Nullable
-   private Object2IntMap<eqi> a(tx $$0) {
-      if (!$$0.b("structures", 10)) {
-         return null;
-      } else {
-         tx $$1 = $$0.p("structures");
-         if (!$$1.b("starts", 10)) {
-            return null;
-         } else {
-            tx $$2 = $$1.p("starts");
-            if ($$2.g()) {
-               return Object2IntMaps.emptyMap();
-            } else {
-               Object2IntMap<eqi> $$3 = new Object2IntOpenHashMap();
-               jr<eqi> $$4 = this.d.f(mg.bc);
-
-               for (String $$5 : $$2.e()) {
-                  ale $$6 = ale.c($$5);
-                  if ($$6 != null) {
-                     eqi $$7 = $$4.a($$6);
-                     if ($$7 != null) {
-                        tx $$8 = $$2.p($$5);
-                        if (!$$8.g()) {
-                           String $$9 = $$8.l("id");
-                           if (!"INVALID".equals($$9)) {
-                              int $$10 = $$8.h("references");
-                              $$3.put($$7, $$10);
-                           }
-                        }
-                     }
-                  }
-               }
-
-               return $$3;
-            }
-         }
-      }
-   }
-
-   private static Object2IntMap<eqi> a(Object2IntMap<eqi> $$0) {
-      return $$0.isEmpty() ? Object2IntMaps.emptyMap() : $$0;
-   }
-
-   private eqk a(Object2IntMap<eqi> $$0, eqi $$1, boolean $$2) {
-      int $$3 = $$0.getOrDefault($$1, -1);
-      return $$3 == -1 || $$2 && $$3 != 0 ? eqk.b : eqk.a;
-   }
-
-   public void a(dhw $$0, Map<eqi, eqq> $$1) {
-      long $$2 = $$0.a();
-      Object2IntMap<eqi> $$3 = new Object2IntOpenHashMap();
-      $$1.forEach(($$1x, $$2x) -> {
-         if ($$2x.b()) {
-            $$3.put($$1x, $$2x.f());
-         }
+         $$0x.b();
+         return switch ($$1) {
+            case eft $$3 -> Optional.of(b);
+            case efp $$4 -> Optional.of(f);
+            case egb $$5 -> Optional.of(a);
+            default -> Optional.empty();
+         };
       });
-      this.a($$2, $$3);
    }
 
-   private void a(long $$0, Object2IntMap<eqi> $$1) {
-      this.m.put($$0, a($$1));
-      this.n.values().forEach($$1x -> $$1x.remove($$0));
+   public static egt a(jg.a $$0) {
+      return $$0.e(mg.bm).b(a).a().a();
    }
 
-   public void a(dhw $$0, eqi $$1) {
-      this.m.compute($$0.a(), ($$1x, $$2) -> {
-         if ($$2 == null || $$2.isEmpty()) {
-            $$2 = new Object2IntOpenHashMap();
-         }
+   public static edx b(jg.a $$0) {
+      return $$0.e(mg.bm).b(a).a().b().orElseThrow();
+   }
 
-         $$2.computeInt($$1, ($$0xx, $$1xx) -> $$1xx == null ? 1 : $$1xx + 1);
-         return $$2;
-      });
+   public static egt c(jg.a $$0) {
+      return $$0.e(mg.bm).b(b).a().a();
+   }
+
+   static class a {
+      private final qh<eqi> a;
+      private final jf<egd> b;
+      private final jf<djy> c;
+      private final jf<epx> d;
+      private final jf<eqz> e;
+      private final jf<dkm> f;
+      private final je<edw> g;
+      private final edx h;
+      private final edx i;
+
+      a(qh<eqi> $$0) {
+         this.a = $$0;
+         jf<edw> $$1 = $$0.a(mg.aO);
+         this.b = $$0.a(mg.aW);
+         this.c = $$0.a(mg.aG);
+         this.d = $$0.a(mg.ba);
+         this.e = $$0.a(mg.bc);
+         this.f = $$0.a(mg.aV);
+         this.g = $$1.b(edu.a);
+         je<edw> $$2 = $$1.b(edu.b);
+         je<egd> $$3 = this.b.b(egd.f);
+         je.c<dkm> $$4 = this.f.b(dkn.a);
+         this.h = new edx($$2, new egb(dkl.a($$4), $$3));
+         je<edw> $$5 = $$1.b(edu.c);
+         je<egd> $$6 = this.b.b(egd.g);
+         this.i = new edx($$5, new egb(dkp.a(this.c), $$6));
+      }
+
+      private edx a(ebx $$0) {
+         return new edx(this.g, $$0);
+      }
+
+      private edx a(dkc $$0, je<egd> $$1) {
+         return this.a(new egb($$0, $$1));
+      }
+
+      private eqi a(edx $$0) {
+         return new eqi(Map.of(edx.b, $$0, edx.c, this.h, edx.d, this.i));
+      }
+
+      private void a(alf<eqi> $$0, edx $$1) {
+         this.a.a($$0, this.a($$1));
+      }
+
+      private void a(dkc $$0) {
+         je<egd> $$1 = this.b.b(egd.c);
+         this.a(eqj.a, this.a($$0, $$1));
+         je<egd> $$2 = this.b.b(egd.d);
+         this.a(eqj.c, this.a($$0, $$2));
+         je<egd> $$3 = this.b.b(egd.e);
+         this.a(eqj.d, this.a($$0, $$3));
+      }
+
+      public void a() {
+         je.c<dkm> $$0 = this.f.b(dkn.b);
+         this.a(dkl.a($$0));
+         je<egd> $$1 = this.b.b(egd.c);
+         je.c<djy> $$2 = this.c.b(dkf.b);
+         this.a(eqj.e, this.a(new dkj($$2), $$1));
+         this.a(eqj.b, this.a(new eft(eow.a(this.c, this.e, this.d))));
+         this.a(eqj.f, this.a(new efp($$2)));
+      }
    }
 }

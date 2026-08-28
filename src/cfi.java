@@ -1,26 +1,30 @@
-import javax.annotation.Nullable;
+public class cfi extends cdy {
+   private final bxk a;
 
-public class cfi extends ces {
-   public static final float i = 0.001F;
-   protected final float j;
-
-   public cfi(bxh $$0, double $$1) {
-      this($$0, $$1, 0.001F);
+   public cfi(bxk $$0) {
+      this.a = $$0;
    }
 
-   public cfi(bxh $$0, double $$1, float $$2) {
-      super($$0, $$1);
-      this.j = $$2;
-   }
-
-   @Nullable
    @Override
-   protected fdw h() {
-      if (this.b.bj()) {
-         fdw $$0 = chv.a(this.b, 15, 7);
-         return $$0 == null ? super.h() : $$0;
-      } else {
-         return this.b.dY().i() >= this.j ? chv.a(this.b, 10, 7) : super.h();
+   public boolean b() {
+      return this.a.aJ() && !this.a.dV().b_(this.a.dv()).a(axh.a);
+   }
+
+   @Override
+   public void d() {
+      iu $$0 = null;
+
+      for (iu $$2 : iu.b(
+         azm.a(this.a.dA() - 2.0), azm.a(this.a.dC() - 2.0), azm.a(this.a.dG() - 2.0), azm.a(this.a.dA() + 2.0), this.a.dB(), azm.a(this.a.dG() + 2.0)
+      )) {
+         if (this.a.dV().b_($$2).a(axh.a)) {
+            $$0 = $$2;
+            break;
+         }
+      }
+
+      if ($$0 != null) {
+         this.a.L().a((double)$$0.u(), (double)$$0.v(), (double)$$0.w(), 1.0);
       }
    }
 }

@@ -1,44 +1,73 @@
 import com.mojang.serialization.Codec;
+import java.util.List;
 
-public class ejw extends eit<elf> {
-   private static final int a = 7;
-
-   ejw(Codec<elf> $$0) {
+public class ejw extends eje<eln> {
+   public ejw(Codec<eln> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(eiv<elf> $$0) {
-      djo $$1 = $$0.b();
-      azt $$2 = $$0.d();
-      elf $$3 = $$0.f();
-      iu $$4 = $$0.e();
-      int $$5 = $$2.a($$3.c + 1);
-      iu.a $$6 = new iu.a();
+   public boolean a(ejg<eln> $$0) {
+      dju $$1 = $$0.b();
+      iu $$2 = $$0.e();
+      azv $$3 = $$0.d();
+      eln $$4 = $$0.f();
+      if (!c($$1.a_($$2))) {
+         return false;
+      } else {
+         List<ja> $$5 = $$4.a($$3);
+         if (a($$1, $$2, $$1.a_($$2), $$4, $$3, $$5)) {
+            return true;
+         } else {
+            iu.a $$6 = $$2.k();
 
-      for (int $$7 = 0; $$7 < $$5; $$7++) {
-         this.a($$6, $$2, $$4, Math.min($$7, 7));
-         dzo $$8 = $$1.a_($$6);
+            for (ja $$7 : $$5) {
+               $$6.g($$2);
+               List<ja> $$8 = $$4.a($$3, $$7.g());
 
-         for (elf.a $$9 : $$3.b) {
-            if (ejo.a($$8, $$1::a_, $$2, $$3, $$9, $$6)) {
-               $$1.a($$6, $$9.c, 2);
-               break;
+               for (int $$9 = 0; $$9 < $$4.c; $$9++) {
+                  $$6.a($$2, $$7);
+                  dzz $$10 = $$1.a_($$6);
+                  if (!c($$10) && !$$10.a($$4.b)) {
+                     break;
+                  }
+
+                  if (a($$1, $$6, $$10, $$4, $$3, $$8)) {
+                     return true;
+                  }
+               }
             }
+
+            return false;
+         }
+      }
+   }
+
+   public static boolean a(dju $$0, iu $$1, dzz $$2, eln $$3, azv $$4, List<ja> $$5) {
+      iu.a $$6 = $$1.k();
+
+      for (ja $$7 : $$5) {
+         dzz $$8 = $$0.a_($$6.a($$1, $$7));
+         if ($$8.a($$3.h)) {
+            dzz $$9 = $$3.b.c($$2, $$0, $$1, $$7);
+            if ($$9 == null) {
+               return false;
+            }
+
+            $$0.a($$1, $$9, 3);
+            $$0.z($$1).e($$1);
+            if ($$4.i() < $$3.g) {
+               $$3.b.c().a($$9, $$0, $$1, $$7, $$4, true);
+            }
+
+            return true;
          }
       }
 
-      return true;
+      return false;
    }
 
-   private void a(iu.a $$0, azt $$1, iu $$2, int $$3) {
-      int $$4 = this.a($$1, $$3);
-      int $$5 = this.a($$1, $$3);
-      int $$6 = this.a($$1, $$3);
-      $$0.a($$2, $$4, $$5, $$6);
-   }
-
-   private int a(azt $$0, int $$1) {
-      return Math.round(($$0.i() - $$0.i()) * (float)$$1);
+   private static boolean c(dzz $$0) {
+      return $$0.l() || $$0.a(dmc.J);
    }
 }

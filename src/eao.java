@@ -1,68 +1,102 @@
-import it.unimi.dsi.fastutil.ints.IntImmutableList;
-import java.util.List;
-import java.util.Optional;
-import java.util.stream.IntStream;
+import com.mojang.serialization.Codec;
+import it.unimi.dsi.fastutil.objects.Object2ObjectArrayMap;
+import java.util.Map;
+import java.util.stream.Stream;
 
-public final class eao extends ear<Integer> {
-   private final IntImmutableList a;
-   private final int b;
-   private final int c;
+public record eao(String s, boolean t, boolean u, boolean v, eao.a w, dtv x, awm y, awm z, awm A, awm B, awm C, awm D, awm E, awm F) {
+   private static final Map<String, eao> G = new Object2ObjectArrayMap();
+   public static final Codec<eao> a = Codec.stringResolver(eao::b, G::get);
+   public static final eao b = a(new eao("iron", false, false, false, eao.a.a, dtv.bo, awn.nQ, awn.nR, awn.nY, awn.nZ, awn.pr, awn.ps, awn.Af, awn.Ag));
+   public static final eao c = a(new eao("copper", true, true, false, eao.a.a, dtv.aj, awn.fP, awn.fQ, awn.fW, awn.fX, awn.pr, awn.ps, awn.Af, awn.Ag));
+   public static final eao d = a(new eao("gold", false, true, false, eao.a.a, dtv.g, awn.nQ, awn.nR, awn.nY, awn.nZ, awn.pr, awn.ps, awn.Af, awn.Ag));
+   public static final eao e = a(new eao("stone", true, true, false, eao.a.b, dtv.f, awn.nQ, awn.nR, awn.nY, awn.nZ, awn.Ak, awn.Al, awn.Af, awn.Ag));
+   public static final eao f = a(
+      new eao("polished_blackstone", true, true, false, eao.a.b, dtv.f, awn.nQ, awn.nR, awn.nY, awn.nZ, awn.Ak, awn.Al, awn.Af, awn.Ag)
+   );
+   public static final eao g = a(new eao("oak"));
+   public static final eao h = a(new eao("spruce"));
+   public static final eao i = a(new eao("birch"));
+   public static final eao j = a(new eao("acacia"));
+   public static final eao k = a(new eao("cherry", true, true, true, eao.a.a, dtv.aV, awn.eG, awn.eH, awn.eI, awn.eJ, awn.eM, awn.eN, awn.eK, awn.eL));
+   public static final eao l = a(new eao("jungle"));
+   public static final eao m = a(new eao("dark_oak"));
+   public static final eao n = a(new eao("pale_oak"));
+   public static final eao o = a(new eao("crimson", true, true, true, eao.a.a, dtv.aU, awn.rx, awn.ry, awn.rz, awn.rA, awn.rD, awn.rE, awn.rB, awn.rC));
+   public static final eao p = a(new eao("warped", true, true, true, eao.a.a, dtv.aU, awn.rx, awn.ry, awn.rz, awn.rA, awn.rD, awn.rE, awn.rB, awn.rC));
+   public static final eao q = a(new eao("mangrove"));
+   public static final eao r = a(new eao("bamboo", true, true, true, eao.a.a, dtv.aT, awn.bo, awn.bp, awn.bq, awn.br, awn.bu, awn.bv, awn.bs, awn.bt));
 
-   private eao(String $$0, int $$1, int $$2) {
-      super($$0, Integer.class);
-      if ($$1 < 0) {
-         throw new IllegalArgumentException("Min value of " + $$0 + " must be 0 or greater");
-      } else if ($$2 <= $$1) {
-         throw new IllegalArgumentException("Max value of " + $$0 + " must be greater than min (" + $$1 + ")");
-      } else {
-         this.b = $$1;
-         this.c = $$2;
-         this.a = IntImmutableList.toList(IntStream.range($$1, $$2 + 1));
-      }
+   public eao(String $$0) {
+      this($$0, true, true, true, eao.a.a, dtv.b, awn.DW, awn.DX, awn.DY, awn.DZ, awn.Ec, awn.Ed, awn.Ea, awn.Eb);
    }
 
-   @Override
-   public List<Integer> a() {
-      return this.a;
+   private static eao a(eao $$0) {
+      G.put($$0.s, $$0);
+      return $$0;
    }
 
-   @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else {
-         if ($$0 instanceof eao $$1 && super.equals($$0)) {
-            return this.a.equals($$1.a);
-         }
-
-         return false;
-      }
+   public static Stream<eao> a() {
+      return G.values().stream();
    }
 
-   @Override
-   public int b() {
-      return 31 * super.b() + this.a.hashCode();
+   public String b() {
+      return this.s;
    }
 
-   public static eao a(String $$0, int $$1, int $$2) {
-      return new eao($$0, $$1, $$2);
+   public boolean c() {
+      return this.t;
    }
 
-   @Override
-   public Optional<Integer> b(String $$0) {
-      try {
-         int $$1 = Integer.parseInt($$0);
-         return $$1 >= this.b && $$1 <= this.c ? Optional.of($$1) : Optional.empty();
-      } catch (NumberFormatException var3) {
-         return Optional.empty();
-      }
+   public boolean d() {
+      return this.u;
    }
 
-   public String a(Integer $$0) {
-      return $$0.toString();
+   public boolean e() {
+      return this.v;
    }
 
-   public int b(Integer $$0) {
-      return $$0 <= this.c ? $$0 - this.b : -1;
+   public eao.a f() {
+      return this.w;
+   }
+
+   public dtv g() {
+      return this.x;
+   }
+
+   public awm h() {
+      return this.y;
+   }
+
+   public awm i() {
+      return this.z;
+   }
+
+   public awm j() {
+      return this.A;
+   }
+
+   public awm k() {
+      return this.B;
+   }
+
+   public awm l() {
+      return this.C;
+   }
+
+   public awm m() {
+      return this.D;
+   }
+
+   public awm n() {
+      return this.E;
+   }
+
+   public awm o() {
+      return this.F;
+   }
+
+   public static enum a {
+      a,
+      b;
    }
 }

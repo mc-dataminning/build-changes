@@ -1,18 +1,34 @@
-import java.util.function.Consumer;
+import com.mojang.datafixers.util.Either;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.io.IOException;
 
-public interface fvf extends fvg {
-   void b(Consumer<fvg> var1);
+public interface fvf {
+   MapCodec<fvf> b = fvg.f.dispatchMap(fvf::a, fvg::a);
 
-   @Override
-   default void a(Consumer<fro> $$0) {
-      this.b($$1 -> $$1.a($$0));
+   fvg a();
+
+   Either<fvf.b, fvf.c> b();
+
+   public static record a(fvf b, fut.a c) {
+      public static final Codec<fvf.a> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(fvf.b.forGetter(fvf.a::a), fut.a.a.optionalFieldOf("filter", fut.a.b).forGetter(fvf.a::b)).apply($$0, fvf.a::new)
+      );
+
+      public fvf a() {
+         return this.b;
+      }
+
+      public fut.a b() {
+         return this.c;
+      }
    }
 
-   default void a() {
-      this.b($$0 -> {
-         if ($$0 instanceof fvf $$1) {
-            $$1.a();
-         }
-      });
+   public interface b {
+      fhb load(avd var1) throws IOException;
+   }
+
+   public static record c(alg a) {
    }
 }

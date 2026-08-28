@@ -1,25 +1,143 @@
+import com.google.common.collect.Lists;
 import com.mojang.serialization.MapCodec;
+import java.util.List;
+import java.util.Map;
+import java.util.WeakHashMap;
+import javax.annotation.Nullable;
 
-public class dsk extends dme {
+public class dsk extends dlq {
    public static final MapCodec<dsk> a = b(dsk::new);
-   private static final feq b = dlu.b(12.0, 0.0, 13.0);
+   public static final eaq b = eap.u;
+   private static final Map<dib, List<dsk.a>> f = new WeakHashMap<>();
+   public static final int c = 60;
+   public static final int d = 8;
+   public static final int e = 160;
+   private static final int g = 2;
 
    @Override
-   public MapCodec<dsk> a() {
+   public MapCodec<? extends dsk> a() {
       return a;
    }
 
-   protected dsk(dzn.d $$0) {
+   protected dsk(dzy.d $$0) {
       super($$0);
+      this.l(this.B.b().b(b, Boolean.valueOf(true)));
    }
 
    @Override
-   protected feq a(dzo $$0, dhv $$1, iu $$2, feb $$3) {
-      return b;
+   protected void a(dzz $$0, div $$1, iu $$2, dzz $$3, boolean $$4) {
+      this.b($$1, $$2, $$0);
+   }
+
+   private void b(div $$0, iu $$1, dzz $$2) {
+      exo $$3 = this.a($$0, $$2);
+
+      for (ja $$4 : ja.values()) {
+         $$0.a($$1.a($$4), this, exk.a($$3, $$4));
+      }
    }
 
    @Override
-   protected boolean b(dzo $$0, dhv $$1, iu $$2) {
-      return $$0.a(axa.aO) || $$0.a(dlw.ek) || super.b($$0, $$1, $$2);
+   protected void a(dzz $$0, arq $$1, iu $$2, boolean $$3) {
+      if (!$$3) {
+         this.b($$1, $$2, $$0);
+      }
+   }
+
+   @Override
+   protected int a(dzz $$0, dib $$1, iu $$2, ja $$3) {
+      return $$0.c(b) && ja.b != $$3 ? 15 : 0;
+   }
+
+   protected boolean a(div $$0, iu $$1, dzz $$2) {
+      return $$0.b($$1.e(), ja.a);
+   }
+
+   @Override
+   protected void a(dzz $$0, arq $$1, iu $$2, azv $$3) {
+      boolean $$4 = this.a($$1, $$2, $$0);
+      List<dsk.a> $$5 = f.get($$1);
+
+      while ($$5 != null && !$$5.isEmpty() && $$1.ae() - $$5.get(0).b > 60L) {
+         $$5.remove(0);
+      }
+
+      if ($$0.c(b)) {
+         if ($$4) {
+            $$1.a($$2, $$0.b(b, Boolean.valueOf(false)), 3);
+            if (a($$1, $$2, true)) {
+               $$1.c(1502, $$2, 0);
+               $$1.a($$2, $$1.a_($$2).b(), 160);
+            }
+         }
+      } else if (!$$4 && !a($$1, $$2, false)) {
+         $$1.a($$2, $$0.b(b, Boolean.valueOf(true)), 3);
+      }
+   }
+
+   @Override
+   protected void a(dzz $$0, div $$1, iu $$2, dma $$3, @Nullable exo $$4, boolean $$5) {
+      if ($$0.c(b) == this.a($$1, $$2, $$0) && !$$1.U().b($$2, this)) {
+         $$1.a($$2, this, 2);
+      }
+   }
+
+   @Override
+   protected int b(dzz $$0, dib $$1, iu $$2, ja $$3) {
+      return $$3 == ja.a ? $$0.a($$1, $$2, $$3) : 0;
+   }
+
+   @Override
+   protected boolean f_(dzz $$0) {
+      return true;
+   }
+
+   @Override
+   public void a(dzz $$0, div $$1, iu $$2, azv $$3) {
+      if ($$0.c(b)) {
+         double $$4 = (double)$$2.u() + 0.5 + ($$3.j() - 0.5) * 0.2;
+         double $$5 = (double)$$2.v() + 0.7 + ($$3.j() - 0.5) * 0.2;
+         double $$6 = (double)$$2.w() + 0.5 + ($$3.j() - 0.5) * 0.2;
+         $$1.a(ls.b, $$4, $$5, $$6, 0.0, 0.0, 0.0);
+      }
+   }
+
+   @Override
+   protected void a(eaa.a<dma, dzz> $$0) {
+      $$0.a(b);
+   }
+
+   private static boolean a(div $$0, iu $$1, boolean $$2) {
+      List<dsk.a> $$3 = f.computeIfAbsent($$0, $$0x -> Lists.newArrayList());
+      if ($$2) {
+         $$3.add(new dsk.a($$1.j(), $$0.ae()));
+      }
+
+      int $$4 = 0;
+
+      for (dsk.a $$5 : $$3) {
+         if ($$5.a.equals($$1)) {
+            if (++$$4 >= 8) {
+               return true;
+            }
+         }
+      }
+
+      return false;
+   }
+
+   @Nullable
+   protected exo a(div $$0, dzz $$1) {
+      return exk.a($$0, null, ja.b);
+   }
+
+   public static class a {
+      final iu a;
+      final long b;
+
+      public a(iu $$0, long $$1) {
+         this.a = $$0;
+         this.b = $$1;
+      }
    }
 }

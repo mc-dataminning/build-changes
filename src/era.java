@@ -1,70 +1,33 @@
-import com.google.common.collect.Lists;
-import java.util.List;
-import javax.annotation.Nullable;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class era implements eqn {
-   private final List<eqm> a = Lists.newArrayList();
+public record era(era.a b, bsm<dkk.c> c) {
+   public static final Codec<era> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(era.a.c.fieldOf("bounding_box").forGetter(era::a), bsm.a(dkk.c.a).fieldOf("spawns").forGetter(era::b)).apply($$0, era::new)
+   );
 
-   @Override
-   public void a(eqm $$0) {
-      this.a.add($$0);
+   public era.a a() {
+      return this.b;
    }
 
-   @Nullable
-   @Override
-   public eqm a(eqa $$0) {
-      return eqm.a(this.a, $$0);
+   public bsm<dkk.c> b() {
+      return this.c;
    }
 
-   @Deprecated
-   public void a(int $$0) {
-      for (eqm $$1 : this.a) {
-         $$1.a(0, $$0, 0);
-      }
-   }
+   public static enum a implements bak {
+      a("piece"),
+      b("full");
 
-   @Deprecated
-   public int a(int $$0, int $$1, azt $$2, int $$3) {
-      int $$4 = $$0 - $$3;
-      eqa $$5 = this.d();
-      int $$6 = $$5.e() + $$1 + 1;
-      if ($$6 < $$4) {
-         $$6 += $$2.a($$4 - $$6);
+      public static final Codec<era.a> c = bak.a(era.a::values);
+      private final String d;
+
+      private a(final String $$0) {
+         this.d = $$0;
       }
 
-      int $$7 = $$6 - $$5.l();
-      this.a($$7);
-      return $$7;
-   }
-
-   /** @deprecated */
-   public void a(azt $$0, int $$1, int $$2) {
-      eqa $$3 = this.d();
-      int $$4 = $$2 - $$1 + 1 - $$3.e();
-      int $$5;
-      if ($$4 > 1) {
-         $$5 = $$1 + $$0.a($$4);
-      } else {
-         $$5 = $$1;
+      @Override
+      public String c() {
+         return this.d;
       }
-
-      int $$7 = $$5 - $$3.i();
-      this.a($$7);
-   }
-
-   public eqx a() {
-      return new eqx(this.a);
-   }
-
-   public void b() {
-      this.a.clear();
-   }
-
-   public boolean c() {
-      return this.a.isEmpty();
-   }
-
-   public eqa d() {
-      return eqm.a(this.a.stream());
    }
 }

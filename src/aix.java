@@ -1,8 +1,7 @@
-public interface aix extends ago {
-   @Override
-   default vq b() {
-      return vq.a;
-   }
+public class aix {
+   public static final zh<aiw> a = a("intention");
 
-   void a(aiu var1);
+   private static <T extends zf<aiz>> zh<T> a(String $$0) {
+      return new zh<>(zg.a, alg.b($$0));
+   }
 }

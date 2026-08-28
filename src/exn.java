@@ -1,41 +1,46 @@
-import com.mojang.serialization.Codec;
-import io.netty.buffer.ByteBuf;
-import java.util.function.Consumer;
+import java.util.Locale;
+import javax.annotation.Nullable;
 
-public record exn(int c) implements dbx {
-   public static final Codec<exn> a = Codec.INT.xmap(exn::new, exn::b);
-   public static final yu<ByteBuf, exn> b = ys.h.a(exn::new, exn::b);
-   private static final ww d = ww.c("filled_map.locked").a(n.h);
+public interface exn {
+   ja[] a = new ja[]{ja.e, ja.f, ja.a, ja.b, ja.c, ja.d};
 
-   public String a() {
-      return "map_" + this.c;
-   }
+   void a(ja var1, dzz var2, iu var3, iu var4, int var5, int var6);
 
-   @Override
-   public void a(cyo.b $$0, Consumer<ww> $$1, dah $$2, ke $$3) {
-      exp $$4 = $$0.a(this);
-      if ($$4 == null) {
-         $$1.accept(ww.c("filled_map.unknown").a(n.h));
-      } else {
-         dbp $$5 = $$3.a(kj.O);
-         if ($$3.a(kj.g) == null && $$5 == null) {
-            $$1.accept(ww.a("filled_map.id", this.c).a(n.h));
-         }
+   void a(iu var1, dma var2, @Nullable exo var3);
 
-         if ($$4.h || $$5 == dbp.a) {
-            $$1.accept(d);
-         }
+   void a(dzz var1, iu var2, dma var3, @Nullable exo var4, boolean var5);
 
-         if ($$2.a()) {
-            int $$6 = $$5 == dbp.b ? 1 : 0;
-            int $$7 = Math.min($$4.f + $$6, 4);
-            $$1.accept(ww.a("filled_map.scale", 1 << $$7).a(n.h));
-            $$1.accept(ww.a("filled_map.level", $$7, 4).a(n.h));
+   default void a(iu $$0, dma $$1, @Nullable ja $$2, @Nullable exo $$3) {
+      for (ja $$4 : a) {
+         if ($$4 != $$2) {
+            this.a($$0.a($$4), $$1, null);
          }
       }
    }
 
-   public int b() {
-      return this.c;
+   static void a(diw $$0, ja $$1, iu $$2, iu $$3, dzz $$4, int $$5, int $$6) {
+      dzz $$7 = $$0.a_($$2);
+      if (($$5 & 128) == 0 || !$$7.a(dmc.cF)) {
+         dzz $$8 = $$7.a($$0, $$0, $$2, $$1, $$3, $$4, $$0.C_());
+         dma.a($$7, $$8, $$0, $$2, $$5, $$6);
+      }
+   }
+
+   static void a(div $$0, dzz $$1, iu $$2, dma $$3, @Nullable exo $$4, boolean $$5) {
+      try {
+         $$1.a($$0, $$2, $$3, $$4, $$5);
+      } catch (Throwable var9) {
+         o $$7 = o.a(var9, "Exception while updating neighbours");
+         p $$8 = $$7.a("Block being updated");
+         $$8.a("Source block type", () -> {
+            try {
+               return String.format(Locale.ROOT, "ID #%s (%s // %s)", mf.e.b($$3), $$3.v(), $$3.getClass().getCanonicalName());
+            } catch (Throwable var2x) {
+               return "ID #" + mf.e.b($$3);
+            }
+         });
+         p.a($$8, $$0, $$2, $$1);
+         throw new z($$7);
+      }
    }
 }

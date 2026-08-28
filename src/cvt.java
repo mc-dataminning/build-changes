@@ -1,55 +1,173 @@
-public class cvt<T extends cuk> implements cty {
-   public static final cvt<cut> a = a("generic_9x1", cut::a);
-   public static final cvt<cut> b = a("generic_9x2", cut::b);
-   public static final cvt<cut> c = a("generic_9x3", cut::c);
-   public static final cvt<cut> d = a("generic_9x4", cut::d);
-   public static final cvt<cut> e = a("generic_9x5", cut::e);
-   public static final cvt<cut> f = a("generic_9x6", cut::f);
-   public static final cvt<cvf> g = a("generic_3x3", cvf::new);
-   public static final cvt<cva> h = a("crafter_3x3", cva::new);
-   public static final cvt<cun> i = a("anvil", cun::new);
-   public static final cvt<cup> j = a("beacon", cup::new);
-   public static final cvt<cuq> k = a("blast_furnace", cuq::new);
-   public static final cvt<cur> l = a("brewing_stand", cur::new);
-   public static final cvt<cvd> m = a("crafting", cvd::new);
-   public static final cvt<cvg> n = a("enchantment", cvg::new);
-   public static final cvt<cvi> o = a("furnace", cvi::new);
-   public static final cvt<cvk> p = a("grindstone", cvk::new);
-   public static final cvt<cvl> q = a("hopper", cvl::new);
-   public static final cvt<cvq> r = a("lectern", ($$0, $$1) -> new cvq($$0));
-   public static final cvt<cvr> s = a("loom", cvr::new);
-   public static final cvt<cvv> t = a("merchant", cvv::new);
-   public static final cvt<cwe> u = a("shulker_box", cwe::new);
-   public static final cvt<cwk> v = a("smithing", cwk::new);
-   public static final cvt<cwl> w = a("smoker", cwl::new);
-   public static final cvt<cus> x = a("cartography_table", cus::new);
-   public static final cvt<cwn> y = a("stonecutter", cwn::new);
-   private final cub z;
-   private final cvt.a<T> A;
+import java.util.List;
+import java.util.Map;
 
-   private static <T extends cuk> cvt<T> a(String $$0, cvt.a<T> $$1) {
-      return jr.a(mf.p, $$0, new cvt<>($$1, cud.g));
+public class cvt extends cur {
+   public static final int o = 0;
+   public static final int p = 0;
+   private static final int H = 2;
+   private static final int I = 2;
+   public static final int q = 1;
+   public static final int r = 4;
+   public static final int s = 5;
+   public static final int t = 5;
+   public static final int u = 4;
+   public static final int v = 9;
+   public static final int w = 9;
+   public static final int x = 36;
+   public static final int y = 36;
+   public static final int z = 45;
+   public static final int A = 45;
+   public static final alg B = alg.b("container/slot/helmet");
+   public static final alg C = alg.b("container/slot/chestplate");
+   public static final alg D = alg.b("container/slot/leggings");
+   public static final alg E = alg.b("container/slot/boots");
+   public static final alg F = alg.b("container/slot/shield");
+   private static final Map<bwn, alg> J = Map.of(bwn.c, E, bwn.d, D, bwn.e, C, bwn.f, B);
+   private static final bwn[] K = new bwn[]{bwn.f, bwn.e, bwn.d, bwn.c};
+   public final boolean G;
+   private final cqy L;
+
+   public cvt(cqx $$0, boolean $$1, final cqy $$2) {
+      super(null, 0, 2, 2);
+      this.G = $$1;
+      this.L = $$2;
+      this.a($$2, 154, 28);
+      this.d(98, 18);
+
+      for (int $$3 = 0; $$3 < 4; $$3++) {
+         bwn $$4 = K[$$3];
+         alg $$5 = J.get($$4);
+         this.a(new cuu($$0, $$2, $$4, 39 - $$3, 8, 8 + $$3 * 18, $$5));
+      }
+
+      this.c($$0, 8, 84);
+      this.a(new cwn($$0, 40, 77, 62) {
+         @Override
+         public void a(cyy $$0, cyy $$1) {
+            $$2.a(bwn.b, $$1, $$0);
+            super.a($$0, $$1);
+         }
+
+         @Override
+         public alg c() {
+            return cvt.F;
+         }
+      });
    }
 
-   private static <T extends cuk> cvt<T> a(String $$0, cvt.a<T> $$1, ctz... $$2) {
-      return jr.a(mf.p, $$0, new cvt<>($$1, cud.e.a($$2)));
-   }
-
-   private cvt(cvt.a<T> $$0, cub $$1) {
-      this.A = $$0;
-      this.z = $$1;
-   }
-
-   public T a(int $$0, cqr $$1) {
-      return this.A.create($$0, $$1);
+   public static boolean e(int $$0) {
+      return $$0 >= 36 && $$0 < 45 || $$0 == 45;
    }
 
    @Override
-   public cub k() {
-      return this.z;
+   public void a(btu $$0) {
+      if (this.L.dV() instanceof arq $$1) {
+         cvj.a(this, $$1, this.L, this.m, this.n, null);
+      }
    }
 
-   interface a<T extends cuk> {
-      T create(int var1, cqr var2);
+   @Override
+   public void a(cqy $$0) {
+      super.a($$0);
+      this.n.a();
+      if (!$$0.dV().C) {
+         this.a($$0, this.m);
+      }
+   }
+
+   @Override
+   public boolean b(cqy $$0) {
+      return true;
+   }
+
+   @Override
+   public cyy b(cqy $$0, int $$1) {
+      cyy $$2 = cyy.k;
+      cwn $$3 = this.k.get($$1);
+      if ($$3.h()) {
+         cyy $$4 = $$3.g();
+         $$2 = $$4.v();
+         bwn $$5 = $$0.g($$2);
+         if ($$1 == 0) {
+            if (!this.a($$4, 9, 45, true)) {
+               return cyy.k;
+            }
+
+            $$3.b($$4, $$2);
+         } else if ($$1 >= 1 && $$1 < 5) {
+            if (!this.a($$4, 9, 45, false)) {
+               return cyy.k;
+            }
+         } else if ($$1 >= 5 && $$1 < 9) {
+            if (!this.a($$4, 9, 45, false)) {
+               return cyy.k;
+            }
+         } else if ($$5.a() == bwn.a.b && !this.k.get(8 - $$5.b()).h()) {
+            int $$6 = 8 - $$5.b();
+            if (!this.a($$4, $$6, $$6 + 1, false)) {
+               return cyy.k;
+            }
+         } else if ($$5 == bwn.b && !this.k.get(45).h()) {
+            if (!this.a($$4, 45, 46, false)) {
+               return cyy.k;
+            }
+         } else if ($$1 >= 9 && $$1 < 36) {
+            if (!this.a($$4, 36, 45, false)) {
+               return cyy.k;
+            }
+         } else if ($$1 >= 36 && $$1 < 45) {
+            if (!this.a($$4, 9, 36, false)) {
+               return cyy.k;
+            }
+         } else if (!this.a($$4, 9, 45, false)) {
+            return cyy.k;
+         }
+
+         if ($$4.f()) {
+            $$3.a(cyy.k, $$2);
+         } else {
+            $$3.d();
+         }
+
+         if ($$4.M() == $$2.M()) {
+            return cyy.k;
+         }
+
+         $$3.a($$0, $$4);
+         if ($$1 == 0) {
+            $$0.a($$4, false);
+         }
+      }
+
+      return $$2;
+   }
+
+   @Override
+   public boolean a(cyy $$0, cwn $$1) {
+      return $$1.c != this.n && super.a($$0, $$1);
+   }
+
+   @Override
+   public cwn m() {
+      return this.k.get(0);
+   }
+
+   @Override
+   public List<cwn> n() {
+      return this.k.subList(1, 5);
+   }
+
+   public cvi r() {
+      return this.m;
+   }
+
+   @Override
+   public cwg ai_() {
+      return cwg.a;
+   }
+
+   @Override
+   protected cqy q() {
+      return this.L;
    }
 }

@@ -1,18 +1,51 @@
+import java.util.EnumSet;
+import java.util.List;
 import javax.annotation.Nullable;
 
-public class cfp<T extends bwz> extends cfo<T> {
-   private boolean i = true;
+public class cfp extends cfy {
+   private final cjg a;
+   @Nullable
+   private bxc b;
+   private final chr c = chr.a().a(64.0);
 
-   public cfp(csi $$0, Class<T> $$1, int $$2, boolean $$3, boolean $$4, @Nullable cho.a $$5) {
-      super($$0, $$1, $$2, $$3, $$4, $$5);
-   }
-
-   public void a(boolean $$0) {
-      this.i = $$0;
+   public cfp(cjg $$0) {
+      super($$0, false, true);
+      this.a = $$0;
+      this.a(EnumSet.of(cdy.a.d));
    }
 
    @Override
    public boolean b() {
-      return this.i && super.b();
+      fed $$0 = this.a.cR().c(10.0, 8.0, 10.0);
+      arq $$1 = a(this.a);
+      List<? extends bxc> $$2 = $$1.a(cqk.class, this.c, this.a, $$0);
+      List<cqy> $$3 = $$1.a(this.c, this.a, $$0);
+
+      for (bxc $$4 : $$2) {
+         cqk $$5 = (cqk)$$4;
+
+         for (cqy $$6 : $$3) {
+            int $$7 = $$5.f($$6);
+            if ($$7 <= -100) {
+               this.b = $$6;
+            }
+         }
+      }
+
+      if (this.b == null) {
+         return false;
+      } else {
+         if (this.b instanceof cqy $$8 && ($$8.U_() || $$8.b())) {
+            return false;
+         }
+
+         return true;
+      }
+   }
+
+   @Override
+   public void d() {
+      this.a.g(this.b);
+      super.d();
    }
 }

@@ -1,57 +1,78 @@
 import com.mojang.serialization.Codec;
-import java.util.List;
-import java.util.stream.Stream;
 
-public class eig extends eih {
-   public eig(Codec<ele> $$0) {
+public abstract class eig extends eje<elk> {
+   public eig(Codec<elk> $$0) {
       super($$0);
    }
 
+   protected void a(diw $$0, azv $$1, iu $$2, elk $$3, int $$4, iu.a $$5) {
+      for (int $$6 = 0; $$6 < $$4; $$6++) {
+         $$5.g($$2).c(ja.b, $$6);
+         this.a($$0, $$5, $$3.c.a($$1, $$2));
+      }
+   }
+
+   protected void a(diw $$0, iu.a $$1, dzz $$2) {
+      dzz $$3 = $$0.a_($$1);
+      if ($$3.l() || $$3.a(axc.cs)) {
+         this.a($$0, $$1, $$2);
+      }
+   }
+
+   protected int a(azv $$0) {
+      int $$1 = $$0.a(3) + 4;
+      if ($$0.a(12) == 0) {
+         $$1 *= 2;
+      }
+
+      return $$1;
+   }
+
+   protected boolean a(diw $$0, iu $$1, int $$2, iu.a $$3, elk $$4) {
+      int $$5 = $$1.v();
+      if ($$5 >= $$0.G_() + 1 && $$5 + $$2 + 1 <= $$0.ao()) {
+         dzz $$6 = $$0.a_($$1.e());
+         if (!b($$6) && !$$6.a(axc.bc)) {
+            return false;
+         } else {
+            for (int $$7 = 0; $$7 <= $$2; $$7++) {
+               int $$8 = this.a(-1, -1, $$4.d, $$7);
+
+               for (int $$9 = -$$8; $$9 <= $$8; $$9++) {
+                  for (int $$10 = -$$8; $$10 <= $$8; $$10++) {
+                     dzz $$11 = $$0.a_($$3.a($$1, $$9, $$7, $$10));
+                     if (!$$11.l() && !$$11.a(axc.Q)) {
+                        return false;
+                     }
+                  }
+               }
+            }
+
+            return true;
+         }
+      } else {
+         return false;
+      }
+   }
+
    @Override
-   protected boolean a(diq $$0, azt $$1, iu $$2, dzo $$3) {
-      if (!this.b($$0, $$1, $$2, $$3)) {
+   public boolean a(ejg<elk> $$0) {
+      dju $$1 = $$0.b();
+      iu $$2 = $$0.e();
+      azv $$3 = $$0.d();
+      elk $$4 = $$0.f();
+      int $$5 = this.a($$3);
+      iu.a $$6 = new iu.a();
+      if (!this.a($$1, $$2, $$5, $$6, $$4)) {
          return false;
       } else {
-         ja $$4 = ja.c.a.a($$1);
-         int $$5 = $$1.a(2) + 2;
-         List<ja> $$6 = af.a(Stream.of($$4, $$4.h(), $$4.i()), $$1);
-
-         for (ja $$8 : $$6.subList(0, $$5)) {
-            iu.a $$9 = $$2.k();
-            int $$10 = $$1.a(2) + 1;
-            $$9.c($$8);
-            int $$12;
-            ja $$11;
-            if ($$8 == $$4) {
-               $$11 = $$4;
-               $$12 = $$1.a(3) + 2;
-            } else {
-               $$9.c(ja.b);
-               ja[] $$13 = new ja[]{$$8, ja.b};
-               $$11 = af.a($$13, $$1);
-               $$12 = $$1.a(3) + 3;
-            }
-
-            for (int $$16 = 0; $$16 < $$10 && this.b($$0, $$1, $$9, $$3); $$16++) {
-               $$9.c($$11);
-            }
-
-            $$9.c($$11.g());
-            $$9.c(ja.b);
-
-            for (int $$17 = 0; $$17 < $$12; $$17++) {
-               $$9.c($$4);
-               if (!this.b($$0, $$1, $$9, $$3)) {
-                  break;
-               }
-
-               if ($$1.i() < 0.25F) {
-                  $$9.c(ja.b);
-               }
-            }
-         }
-
+         this.a($$1, $$3, $$2, $$5, $$6, $$4);
+         this.a($$1, $$3, $$2, $$4, $$5, $$6);
          return true;
       }
    }
+
+   protected abstract int a(int var1, int var2, int var3, int var4);
+
+   protected abstract void a(diw var1, azv var2, iu var3, int var4, iu.a var5, elk var6);
 }

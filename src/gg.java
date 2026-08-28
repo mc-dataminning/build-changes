@@ -12,15 +12,15 @@ import java.util.concurrent.CompletableFuture;
 
 public class gg implements ArgumentType<gh> {
    private static final Collection<String> b = Arrays.asList("0 0", "~ ~", "~1 ~-2", "^ ^", "^-1 ^0");
-   public static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(ww.c("argument.pos2d.incomplete"));
+   public static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(wy.c("argument.pos2d.incomplete"));
 
    public static gg a() {
       return new gg();
    }
 
-   public static aqz a(CommandContext<ei> $$0, String $$1) {
+   public static arb a(CommandContext<ei> $$0, String $$1) {
       iu $$2 = ((gh)$$0.getArgument($$1, gh.class)).c((ei)$$0.getSource());
-      return new aqz($$2.u(), $$2.w());
+      return new arb($$2.u(), $$2.w());
    }
 
    public gh a(StringReader $$0) throws CommandSyntaxException {

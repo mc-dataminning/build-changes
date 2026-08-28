@@ -1,60 +1,63 @@
-public class aqo implements Comparable<aqo> {
-   private final int a;
-   private final iu b;
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.Graphics;
+import java.text.DecimalFormat;
+import java.text.DecimalFormatSymbols;
+import java.util.Locale;
+import javax.swing.JComponent;
+import javax.swing.Timer;
+import net.minecraft.server.MinecraftServer;
+
+public class aqo extends JComponent {
+   private static final DecimalFormat a = af.a(
+      new DecimalFormat("########0.000"), $$0 -> $$0.setDecimalFormatSymbols(DecimalFormatSymbols.getInstance(Locale.ROOT))
+   );
+   private final int[] b = new int[256];
    private int c;
-   private int d;
+   private final String[] d = new String[11];
+   private final MinecraftServer e;
+   private final Timer f;
 
-   public aqo(int $$0, iu $$1) {
-      this.a = $$0;
-      this.b = $$1;
+   public aqo(MinecraftServer $$0) {
+      this.e = $$0;
+      this.setPreferredSize(new Dimension(456, 246));
+      this.setMinimumSize(new Dimension(456, 246));
+      this.setMaximumSize(new Dimension(456, 246));
+      this.f = new Timer(500, $$0x -> this.b());
+      this.f.start();
+      this.setBackground(Color.BLACK);
    }
 
-   public int a() {
-      return this.a;
-   }
-
-   public iu b() {
-      return this.b;
-   }
-
-   public void a(int $$0) {
-      if ($$0 > 10) {
-         $$0 = 10;
-      }
-
-      this.c = $$0;
-   }
-
-   public int c() {
-      return this.c;
-   }
-
-   public void b(int $$0) {
-      this.d = $$0;
-   }
-
-   public int d() {
-      return this.d;
+   private void b() {
+      long $$0 = Runtime.getRuntime().totalMemory() - Runtime.getRuntime().freeMemory();
+      this.d[0] = "Memory use: " + $$0 / 1024L / 1024L + " mb (" + Runtime.getRuntime().freeMemory() * 100L / Runtime.getRuntime().maxMemory() + "% free)";
+      this.d[1] = "Avg tick: " + a.format((double)this.e.aQ() / (double)baq.b) + " ms";
+      this.b[this.c++ & 0xFF] = (int)($$0 * 100L / Runtime.getRuntime().maxMemory());
+      this.repaint();
    }
 
    @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else if ($$0 != null && this.getClass() == $$0.getClass()) {
-         aqo $$1 = (aqo)$$0;
-         return this.a == $$1.a;
-      } else {
-         return false;
+   public void paint(Graphics $$0) {
+      $$0.setColor(new Color(16777215));
+      $$0.fillRect(0, 0, 456, 246);
+
+      for (int $$1 = 0; $$1 < 256; $$1++) {
+         int $$2 = this.b[$$1 + this.c & 0xFF];
+         $$0.setColor(new Color($$2 + 28 << 16));
+         $$0.fillRect($$1, 100 - $$2, 1, $$2);
+      }
+
+      $$0.setColor(Color.BLACK);
+
+      for (int $$3 = 0; $$3 < this.d.length; $$3++) {
+         String $$4 = this.d[$$3];
+         if ($$4 != null) {
+            $$0.drawString($$4, 32, 116 + $$3 * 16);
+         }
       }
    }
 
-   @Override
-   public int hashCode() {
-      return Integer.hashCode(this.a);
-   }
-
-   public int a(aqo $$0) {
-      return this.c != $$0.c ? Integer.compare(this.c, $$0.c) : Integer.compare(this.a, $$0.a);
+   public void a() {
+      this.f.stop();
    }
 }

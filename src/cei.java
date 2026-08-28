@@ -1,70 +1,82 @@
 import java.util.EnumSet;
 
-public abstract class cei extends cdv {
-   private static final int g = 1200;
-   private static final int h = 1200;
-   private static final int i = 200;
-   protected final bxh a;
-   public final double b;
-   protected int c;
-   protected int d;
-   private int j;
-   protected iu e = iu.c;
-   private boolean k;
-   private final int l;
-   private final int m;
-   protected int f;
+public class cei extends cdy {
+   protected final bxk a;
+   private final double b;
+   private final boolean c;
+   private ewu d;
+   private double e;
+   private double f;
+   private double g;
+   private int h;
+   private int i;
+   private final int j = 20;
+   private long k;
+   private static final long l = 20L;
 
-   public cei(bxh $$0, double $$1, int $$2) {
-      this($$0, $$1, $$2, 1);
-   }
-
-   public cei(bxh $$0, double $$1, int $$2, int $$3) {
+   public cei(bxk $$0, double $$1, boolean $$2) {
       this.a = $$0;
       this.b = $$1;
-      this.l = $$2;
-      this.f = 0;
-      this.m = $$3;
-      this.a(EnumSet.of(cdv.a.a, cdv.a.c));
+      this.c = $$2;
+      this.a(EnumSet.of(cdy.a.a, cdy.a.b));
    }
 
    @Override
    public boolean b() {
-      if (this.c > 0) {
-         this.c--;
+      long $$0 = this.a.dV().ae();
+      if ($$0 - this.k < 20L) {
          return false;
       } else {
-         this.c = this.a(this.a);
-         return this.n();
+         this.k = $$0;
+         bxc $$1 = this.a.f();
+         if ($$1 == null) {
+            return false;
+         } else if (!$$1.bK()) {
+            return false;
+         } else {
+            this.d = this.a.O().a($$1, 0);
+            return this.d != null ? true : this.a.h($$1);
+         }
       }
-   }
-
-   protected int a(bxh $$0) {
-      return b(200 + $$0.dY().a(200));
    }
 
    @Override
    public boolean c() {
-      return this.d >= -this.j && this.d <= 1200 && this.a(this.a.dV(), this.e);
+      bxc $$0 = this.a.f();
+      if ($$0 == null) {
+         return false;
+      } else if (!$$0.bK()) {
+         return false;
+      } else if (!this.c) {
+         return !this.a.O().k();
+      } else if (!this.a.a($$0.dv())) {
+         return false;
+      } else {
+         if ($$0 instanceof cqy $$1 && ($$1.U_() || $$1.b())) {
+            return false;
+         }
+
+         return true;
+      }
    }
 
    @Override
    public void d() {
-      this.h();
-      this.d = 0;
-      this.j = this.a.dY().a(this.a.dY().a(1200) + 1200) + 1200;
+      this.a.O().a(this.d, this.b);
+      this.a.v(true);
+      this.h = 0;
+      this.i = 0;
    }
 
-   protected void h() {
-      this.a.O().a((double)this.e.u() + 0.5, (double)(this.e.v() + 1), (double)this.e.w() + 0.5, this.b);
-   }
+   @Override
+   public void e() {
+      bxc $$0 = this.a.f();
+      if (!bwk.e.test($$0)) {
+         this.a.g(null);
+      }
 
-   public double i() {
-      return 1.0;
-   }
-
-   protected iu k() {
-      return this.e.d();
+      this.a.v(false);
+      this.a.O().m();
    }
 
    @Override
@@ -74,49 +86,61 @@ public abstract class cei extends cdv {
 
    @Override
    public void a() {
-      iu $$0 = this.k();
-      if (!$$0.a(this.a.dt(), this.i())) {
-         this.k = false;
-         this.d++;
-         if (this.l()) {
-            this.a.O().a((double)$$0.u() + 0.5, (double)$$0.v(), (double)$$0.w() + 0.5, this.b);
-         }
-      } else {
-         this.k = true;
-         this.d--;
-      }
-   }
-
-   public boolean l() {
-      return this.d % 40 == 0;
-   }
-
-   protected boolean m() {
-      return this.k;
-   }
-
-   protected boolean n() {
-      int $$0 = this.l;
-      int $$1 = this.m;
-      iu $$2 = this.a.dv();
-      iu.a $$3 = new iu.a();
-
-      for (int $$4 = this.f; $$4 <= $$1; $$4 = $$4 > 0 ? -$$4 : 1 - $$4) {
-         for (int $$5 = 0; $$5 < $$0; $$5++) {
-            for (int $$6 = 0; $$6 <= $$5; $$6 = $$6 > 0 ? -$$6 : 1 - $$6) {
-               for (int $$7 = $$6 < $$5 && $$6 > -$$5 ? $$5 : 0; $$7 <= $$5; $$7 = $$7 > 0 ? -$$7 : 1 - $$7) {
-                  $$3.a($$2, $$6, $$4 - 1, $$7);
-                  if (this.a.a($$3) && this.a(this.a.dV(), $$3)) {
-                     this.e = $$3;
-                     return true;
-                  }
-               }
+      bxc $$0 = this.a.f();
+      if ($$0 != null) {
+         this.a.J().a($$0, 30.0F, 30.0F);
+         this.h = Math.max(this.h - 1, 0);
+         if ((this.c || this.a.P().a($$0))
+            && this.h <= 0
+            && (this.e == 0.0 && this.f == 0.0 && this.g == 0.0 || $$0.i(this.e, this.f, this.g) >= 1.0 || this.a.dY().i() < 0.05F)) {
+            this.e = $$0.dA();
+            this.f = $$0.dC();
+            this.g = $$0.dG();
+            this.h = 4 + this.a.dY().a(7);
+            double $$1 = this.a.g((bwd)$$0);
+            if ($$1 > 1024.0) {
+               this.h += 10;
+            } else if ($$1 > 256.0) {
+               this.h += 5;
             }
-         }
-      }
 
-      return false;
+            if (!this.a.O().a($$0, this.b)) {
+               this.h += 15;
+            }
+
+            this.h = this.a(this.h);
+         }
+
+         this.i = Math.max(this.i - 1, 0);
+         this.a($$0);
+      }
    }
 
-   protected abstract boolean a(dis var1, iu var2);
+   protected void a(bxc $$0) {
+      if (this.b($$0)) {
+         this.h();
+         this.a.a(bua.a);
+         this.a.c(a(this.a), $$0);
+      }
+   }
+
+   protected void h() {
+      this.i = this.a(20);
+   }
+
+   protected boolean i() {
+      return this.i <= 0;
+   }
+
+   protected boolean b(bxc $$0) {
+      return this.i() && this.a.h($$0) && this.a.P().a($$0);
+   }
+
+   protected int k() {
+      return this.i;
+   }
+
+   protected int l() {
+      return this.a(20);
+   }
 }

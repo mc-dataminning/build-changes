@@ -1,56 +1,63 @@
-import com.mojang.logging.LogUtils;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
-import java.util.Set;
-import org.slf4j.Logger;
 
-public class fat extends faa {
-   private static final Logger b = LogUtils.getLogger();
+public class fat extends fam {
    public static final MapCodec<fat> a = RecordCodecBuilder.mapCodec(
       $$0 -> a($$0)
-            .and($$0.group(fct.a.fieldOf("damage").forGetter($$0x -> $$0x.c), Codec.BOOL.fieldOf("add").orElse(false).forGetter($$0x -> $$0x.d)))
+            .and($$0.group(dwn.b.fieldOf("patterns").forGetter($$0x -> $$0x.b), Codec.BOOL.fieldOf("append").forGetter($$0x -> $$0x.c)))
             .apply($$0, fat::new)
    );
-   private final fcs c;
-   private final boolean d;
+   private final dwn b;
+   private final boolean c;
 
-   private fat(List<fbw> $$0, fcs $$1, boolean $$2) {
+   fat(List<fci> $$0, dwn $$1, boolean $$2) {
       super($$0);
-      this.c = $$1;
-      this.d = $$2;
+      this.b = $$1;
+      this.c = $$2;
    }
 
    @Override
-   public fac<fat> b() {
-      return fad.n;
-   }
-
-   @Override
-   public Set<bav<?>> a() {
-      return this.c.a();
-   }
-
-   @Override
-   public cys a(cys $$0, eyn $$1) {
-      if ($$0.m()) {
-         int $$2 = $$0.p();
-         float $$3 = this.d ? 1.0F - (float)$$0.o() / (float)$$2 : 0.0F;
-         float $$4 = 1.0F - azk.a(this.c.b($$1) + $$3, 0.0F, 1.0F);
-         $$0.b(azk.d($$4 * (float)$$2));
+   protected cyy a(cyy $$0, eyz $$1) {
+      if (this.c) {
+         $$0.a(kj.am, dwn.a, this.b, ($$0x, $$1x) -> new dwn.a().a($$0x).a($$1x).a());
       } else {
-         b.warn("Couldn't set damage of loot item {}", $$0);
+         $$0.b(kj.am, this.b);
       }
 
       return $$0;
    }
 
-   public static faa.a<?> a(fcs $$0) {
-      return a($$1 -> new fat($$1, $$0, false));
+   @Override
+   public fao<fat> b() {
+      return fap.E;
    }
 
-   public static faa.a<?> a(fcs $$0, boolean $$1) {
-      return a($$2 -> new fat($$2, $$0, $$1));
+   public static fat.a a(boolean $$0) {
+      return new fat.a($$0);
+   }
+
+   public static class a extends fam.a<fat.a> {
+      private final dwn.a a = new dwn.a();
+      private final boolean b;
+
+      a(boolean $$0) {
+         this.b = $$0;
+      }
+
+      protected fat.a a() {
+         return this;
+      }
+
+      @Override
+      public fan b() {
+         return new fat(this.g(), this.a.a(), this.b);
+      }
+
+      public fat.a a(je<dwm> $$0, cxw $$1) {
+         this.a.a($$0, $$1);
+         return this;
+      }
    }
 }

@@ -1,81 +1,73 @@
-import com.google.common.base.Predicates;
 import com.mojang.serialization.MapCodec;
 
-public class dok extends dlu {
+public class dok extends dox {
    public static final MapCodec<dok> a = b(dok::new);
-   public static final eam<ja> b = dpt.e;
-   public static final eaf c = eae.k;
-   private static final feq d = dlu.b(16.0, 0.0, 13.0);
-   private static final feq e = fen.a(d, dlu.b(8.0, 13.0, 16.0));
-   private static dzt f;
+   private static final ffc b = dma.b(14.0, 0.0, 16.0);
 
    @Override
    public MapCodec<dok> a() {
       return a;
    }
 
-   public dok(dzn.d $$0) {
+   public dok(dzy.d $$0) {
       super($$0);
-      this.l(this.B.b().b(b, ja.c).b(c, Boolean.valueOf(false)));
    }
 
    @Override
-   protected boolean g_(dzo $$0) {
-      return true;
+   protected ffc a(dzz $$0, dib $$1, iu $$2, fen $$3) {
+      return b;
    }
 
    @Override
-   protected feq a(dzo $$0, dhv $$1, iu $$2, feb $$3) {
-      return $$0.c(c) ? e : d;
+   protected bub a(dzz $$0, div $$1, iu $$2, cqy $$3, fee $$4) {
+      this.d($$0, $$1, $$2);
+      return bub.a;
    }
 
    @Override
-   public dzo a(dcl $$0) {
-      return this.m().b(b, $$0.g().g()).b(c, Boolean.valueOf(false));
+   protected void a_(dzz $$0, div $$1, iu $$2, cqy $$3) {
+      this.d($$0, $$1, $$2);
    }
 
-   @Override
-   protected boolean c_(dzo $$0) {
-      return true;
-   }
+   private void d(dzz $$0, div $$1, iu $$2) {
+      ebr $$3 = $$1.A_();
 
-   @Override
-   protected int a(dzo $$0, dip $$1, iu $$2) {
-      return $$0.c(c) ? 15 : 0;
-   }
+      for (int $$4 = 0; $$4 < 1000; $$4++) {
+         iu $$5 = $$2.b($$1.A.a(16) - $$1.A.a(16), $$1.A.a(8) - $$1.A.a(8), $$1.A.a(16) - $$1.A.a(16));
+         if ($$1.a_($$5).l() && $$3.a($$5)) {
+            if ($$1.C) {
+               for (int $$6 = 0; $$6 < 128; $$6++) {
+                  double $$7 = $$1.A.j();
+                  float $$8 = ($$1.A.i() - 0.5F) * 0.2F;
+                  float $$9 = ($$1.A.i() - 0.5F) * 0.2F;
+                  float $$10 = ($$1.A.i() - 0.5F) * 0.2F;
+                  double $$11 = azm.d($$7, (double)$$5.u(), (double)$$2.u()) + ($$1.A.j() - 0.5) + 0.5;
+                  double $$12 = azm.d($$7, (double)$$5.v(), (double)$$2.v()) + $$1.A.j() - 0.5;
+                  double $$13 = azm.d($$7, (double)$$5.w(), (double)$$2.w()) + ($$1.A.j() - 0.5) + 0.5;
+                  $$1.a(lx.af, $$11, $$12, $$13, (double)$$8, (double)$$9, (double)$$10);
+               }
+            } else {
+               $$1.a($$5, $$0, 2);
+               $$1.a($$2, false);
+            }
 
-   @Override
-   protected dzo a(dzo $$0, dsm $$1) {
-      return $$0.b(b, $$1.a($$0.c(b)));
-   }
-
-   @Override
-   protected dzo a(dzo $$0, dqv $$1) {
-      return $$0.a($$1.a($$0.c(b)));
-   }
-
-   @Override
-   protected void a(dzp.a<dlu, dzo> $$0) {
-      $$0.a(b, c);
-   }
-
-   public static dzt b() {
-      if (f == null) {
-         f = dzu.a()
-            .a("?vvv?", ">???<", ">???<", ">???<", "?^^^?")
-            .a('?', dzs.a(dzx.a))
-            .a('^', dzs.a(dzx.a(dlw.fT).a(c, Predicates.equalTo(true)).a(b, Predicates.equalTo(ja.d))))
-            .a('>', dzs.a(dzx.a(dlw.fT).a(c, Predicates.equalTo(true)).a(b, Predicates.equalTo(ja.e))))
-            .a('v', dzs.a(dzx.a(dlw.fT).a(c, Predicates.equalTo(true)).a(b, Predicates.equalTo(ja.c))))
-            .a('<', dzs.a(dzx.a(dlw.fT).a(c, Predicates.equalTo(true)).a(b, Predicates.equalTo(ja.f))))
-            .b();
+            return;
+         }
       }
-
-      return f;
    }
 
    @Override
-   protected boolean a(dzo $$0, ewk $$1) {
+   protected int b() {
+      return 5;
+   }
+
+   @Override
+   protected boolean a(dzz $$0, ewv $$1) {
       return false;
+   }
+
+   @Override
+   public int b(dzz $$0, dib $$1, iu $$2) {
+      return -16777216;
    }
 }

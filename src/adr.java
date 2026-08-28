@@ -1,37 +1,29 @@
-public class adr implements zd<abs> {
-   public static final yu<vs, adr> a = zd.a(adr::a, adr::new);
-   private final iu b;
-   private final boolean c;
+public class adr implements zf<abu> {
+   public static final yw<vu, adr> a = zf.a(adr::a, adr::new);
+   private final bua b;
 
-   public adr(iu $$0, boolean $$1) {
+   public adr(bua $$0) {
       this.b = $$0;
-      this.c = $$1;
    }
 
-   private adr(vs $$0) {
-      this.b = $$0.e();
-      this.c = $$0.readBoolean();
+   private adr(vu $$0) {
+      this.b = $$0.b(bua.class);
    }
 
-   private void a(vs $$0) {
+   private void a(vu $$0) {
       $$0.a(this.b);
-      $$0.a(this.c);
    }
 
    @Override
-   public zf<adr> a() {
-      return agl.Y;
+   public zh<adr> a() {
+      return agn.W;
    }
 
-   public void a(abs $$0) {
+   public void a(abu $$0) {
       $$0.a(this);
    }
 
-   public iu b() {
+   public bua b() {
       return this.b;
-   }
-
-   public boolean e() {
-      return this.c;
    }
 }

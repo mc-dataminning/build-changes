@@ -1,160 +1,127 @@
-import com.google.common.collect.Maps;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
+import java.util.Optional;
+import java.util.function.Function;
 import javax.annotation.Nullable;
 
-public class csj extends exh {
-   private static final String a = "raids";
-   private final Map<Integer, csh> b = Maps.newHashMap();
-   private final aro c;
-   private int d;
-   private int e;
+public abstract class csj extends crg implements crp {
+   public static final dip d = new djo(true, false, Optional.empty(), mf.e.a(axc.cD).map(Function.identity()));
+   public static final double e = 0.25;
 
-   public static exh.a<csj> a(aro $$0) {
-      return new exh.a<>(() -> new csj($$0), ($$1, $$2) -> a($$0, $$1), baz.l);
+   public csj(bwm<? extends csj> $$0, div $$1) {
+      super($$0, $$1);
+      this.c = 0.0;
    }
 
-   public csj(aro $$0) {
-      this.c = $$0;
-      this.d = 1;
-      this.g();
+   public csj(bwm<? extends csj> $$0, div $$1, bwd $$2, double $$3, double $$4, double $$5) {
+      super($$0, $$3, $$4, $$5, $$1);
+      this.c($$2);
+      this.c = 0.0;
    }
 
-   public csh a(int $$0) {
-      return this.b.get($$0);
-   }
-
-   public void a() {
-      this.e++;
-      Iterator<csh> $$0 = this.b.values().iterator();
-
-      while ($$0.hasNext()) {
-         csh $$1 = $$0.next();
-         if (this.c.O().c(dil.C)) {
-            $$1.n();
-         }
-
-         if ($$1.d()) {
-            $$0.remove();
-            this.g();
-         } else {
-            $$1.o();
-         }
-      }
-
-      if (this.e % 200 == 0) {
-         this.g();
-      }
-
-      agk.a(this.c, this.b.values());
-   }
-
-   public static boolean a(csi $$0, csh $$1) {
-      return $$0 != null && $$1 != null && $$1.i() != null ? $$0.bK() && $$0.gA() && $$0.ev() <= 2400 && $$0.dV().B_() == $$1.i().B_() : false;
-   }
-
-   @Nullable
-   public csh a(arp $$0, iu $$1) {
-      if ($$0.U_()) {
-         return null;
-      } else if (this.c.O().c(dil.C)) {
-         return null;
-      } else {
-         edl $$2 = $$0.dV().B_();
-         if (!$$2.c()) {
-            return null;
-         } else {
-            List<cic> $$3 = this.c.A().c($$0x -> $$0x.a(axk.b), $$1, 64, cib.b.b).toList();
-            int $$4 = 0;
-            fdw $$5 = fdw.c;
-
-            for (cic $$6 : $$3) {
-               iu $$7 = $$6.g();
-               $$5 = $$5.b((double)$$7.u(), (double)$$7.v(), (double)$$7.w());
-               $$4++;
-            }
-
-            iu $$8;
-            if ($$4 > 0) {
-               $$5 = $$5.c(1.0 / (double)$$4);
-               $$8 = iu.a((jo)$$5);
-            } else {
-               $$8 = $$1;
-            }
-
-            csh $$10 = this.a($$0.y(), $$8);
-            if (!$$10.j() && !this.b.containsKey($$10.t())) {
-               this.b.put($$10.t(), $$10);
-            }
-
-            if (!$$10.j() || $$10.m() < $$10.l()) {
-               $$10.a($$0);
-            }
-
-            this.g();
-            return $$10;
-         }
-      }
-   }
-
-   private csh a(aro $$0, iu $$1) {
-      csh $$2 = $$0.d($$1);
-      return $$2 != null ? $$2 : new csh(this.b(), $$0, $$1);
-   }
-
-   public static csj a(aro $$0, tx $$1) {
-      csj $$2 = new csj($$0);
-      $$2.d = $$1.h("NextAvailableID");
-      $$2.e = $$1.h("Tick");
-      ud $$3 = $$1.c("Raids", 10);
-
-      for (int $$4 = 0; $$4 < $$3.size(); $$4++) {
-         tx $$5 = $$3.a($$4);
-         csh $$6 = new csh($$0, $$5);
-         $$2.b.put($$6.t(), $$6);
-      }
-
-      return $$2;
+   csj(bwm<? extends csj> $$0, double $$1, double $$2, double $$3, fei $$4, div $$5) {
+      super($$0, $$1, $$2, $$3, $$4, $$5);
+      this.c = 0.0;
    }
 
    @Override
-   public tx a(tx $$0, jg.a $$1) {
-      $$0.a("NextAvailableID", this.d);
-      $$0.a("Tick", this.e);
-      ud $$2 = new ud();
+   protected fed c(fei $$0) {
+      float $$1 = this.aq().n().a() / 2.0F;
+      float $$2 = this.aq().n().b();
+      float $$3 = 0.15F;
+      return new fed($$0.d - (double)$$1, $$0.e - 0.15F, $$0.f - (double)$$1, $$0.d + (double)$$1, $$0.e - 0.15F + (double)$$2, $$0.f + (double)$$1);
+   }
 
-      for (csh $$3 : this.b.values()) {
-         tx $$4 = new tx();
-         $$3.a($$4);
-         $$2.add($$4);
+   @Override
+   public boolean i(bwd $$0) {
+      return $$0 instanceof csj ? false : super.i($$0);
+   }
+
+   @Override
+   protected boolean b(bwd $$0) {
+      if ($$0 instanceof csj) {
+         return false;
+      } else {
+         return $$0.aq() == bwm.R ? false : super.b($$0);
       }
-
-      $$0.a("Raids", $$2);
-      return $$0;
    }
 
-   public static String a(je<edl> $$0) {
-      return $$0.a(edj.c) ? "raids_end" : "raids";
+   @Override
+   protected void a(fef $$0) {
+      super.a($$0);
+      if (this.dV() instanceof arq $$1) {
+         bxc $$4 = this.q() instanceof bxc $$3 ? $$3 : null;
+         bwd $$5 = $$0.a();
+         if ($$4 != null) {
+            $$4.B($$5);
+         }
+
+         bus $$6 = this.dW().c(this, $$4);
+         if ($$5.a($$1, $$6, 1.0F) && $$5 instanceof bxc $$7) {
+            dfn.a($$1, (bwd)$$7, $$6);
+         }
+
+         this.a(this.dt());
+      }
    }
 
-   private int b() {
-      return ++this.d;
+   @Override
+   public void j(double $$0, double $$1, double $$2) {
+   }
+
+   protected abstract void a(fei var1);
+
+   @Override
+   protected void a(fee $$0) {
+      super.a($$0);
+      if (!this.dV().C) {
+         jz $$1 = $$0.c().q();
+         fei $$2 = fei.a($$1).d(0.25, 0.25, 0.25);
+         fei $$3 = $$0.g().e($$2);
+         this.a($$3);
+         this.at();
+      }
+   }
+
+   @Override
+   protected void a(feg $$0) {
+      super.a($$0);
+      if (!this.dV().C) {
+         this.at();
+      }
+   }
+
+   @Override
+   protected boolean g() {
+      return false;
+   }
+
+   @Override
+   public cyy f() {
+      return cyy.k;
+   }
+
+   @Override
+   protected float m() {
+      return 1.0F;
+   }
+
+   @Override
+   protected float n() {
+      return this.m();
    }
 
    @Nullable
-   public csh a(iu $$0, int $$1) {
-      csh $$2 = null;
-      double $$3 = (double)$$1;
+   @Override
+   protected lv j() {
+      return null;
+   }
 
-      for (csh $$4 : this.b.values()) {
-         double $$5 = $$4.s().j($$0);
-         if ($$4.u() && $$5 < $$3) {
-            $$2 = $$4;
-            $$3 = $$5;
-         }
+   @Override
+   public void h() {
+      if (!this.dV().C && this.dB() > this.dV().ao() + 30) {
+         this.a(this.dt());
+         this.at();
+      } else {
+         super.h();
       }
-
-      return $$2;
    }
 }

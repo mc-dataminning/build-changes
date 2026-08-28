@@ -1,54 +1,133 @@
-import java.util.Set;
+public class ggp extends gfq<hdn> {
+   private static final String a = "feather";
+   private final giu b;
+   private final giu c;
+   private final giu d;
+   private final giu e;
+   private final giu f;
+   private final giu g;
+   private final giu i;
 
-public class ggp extends gfd<hde> {
-   private static final float a = 50.0F;
-   private static final float b = -40.0F;
-   private static final float c = 0.6F;
-   private static final gip d = gip.scaling(0.6F);
-   private static final gip e = new gea(true, 22.0F, 2.0F, 2.65F, 2.5F, 36.0F, Set.of("head", "left_ear", "right_ear", "nose"));
-   private static final String f = "left_haunch";
-   private static final String g = "right_haunch";
-   private final gig i;
-   private final gig j;
-   private final gig k;
-   private final gig l;
-   private final gig m;
-
-   public ggp(gig $$0) {
+   public ggp(giu $$0) {
       super($$0);
-      this.i = $$0.b("left_haunch");
-      this.j = $$0.b("right_haunch");
-      this.k = $$0.b("left_front_leg");
-      this.l = $$0.b("right_front_leg");
-      this.m = $$0.b("head");
+      this.b = $$0.b("body");
+      this.c = $$0.b("tail");
+      this.d = $$0.b("left_wing");
+      this.e = $$0.b("right_wing");
+      this.f = $$0.b("head");
+      this.g = $$0.b("left_leg");
+      this.i = $$0.b("right_leg");
    }
 
-   public static gim a(boolean $$0) {
-      gio $$1 = new gio();
-      giq $$2 = $$1.a();
-      giq $$3 = $$2.a("left_haunch", gil.c().a(30, 15).a(-1.0F, 0.0F, 0.0F, 2.0F, 4.0F, 5.0F), gii.a(3.0F, 17.5F, 3.7F, -0.36651915F, 0.0F, 0.0F));
-      giq $$4 = $$2.a("right_haunch", gil.c().a(16, 15).a(-1.0F, 0.0F, 0.0F, 2.0F, 4.0F, 5.0F), gii.a(-3.0F, 17.5F, 3.7F, -0.36651915F, 0.0F, 0.0F));
-      $$3.a("left_hind_foot", gil.c().a(26, 24).a(-1.0F, 5.5F, -3.7F, 2.0F, 1.0F, 7.0F), gii.b(0.36651915F, 0.0F, 0.0F));
-      $$4.a("right_hind_foot", gil.c().a(8, 24).a(-1.0F, 5.5F, -3.7F, 2.0F, 1.0F, 7.0F), gii.b(0.36651915F, 0.0F, 0.0F));
-      $$2.a("body", gil.c().a(0, 0).a(-3.0F, -2.0F, -10.0F, 6.0F, 5.0F, 10.0F), gii.a(0.0F, 19.0F, 8.0F, (float) (-Math.PI / 9), 0.0F, 0.0F));
-      $$2.a("left_front_leg", gil.c().a(8, 15).a(-1.0F, 0.0F, -1.0F, 2.0F, 7.0F, 2.0F), gii.a(3.0F, 17.0F, -1.0F, -0.19198622F, 0.0F, 0.0F));
-      $$2.a("right_front_leg", gil.c().a(0, 15).a(-1.0F, 0.0F, -1.0F, 2.0F, 7.0F, 2.0F), gii.a(-3.0F, 17.0F, -1.0F, -0.19198622F, 0.0F, 0.0F));
-      giq $$5 = $$2.a("head", gil.c().a(32, 0).a(-2.5F, -4.0F, -5.0F, 5.0F, 4.0F, 5.0F), gii.a(0.0F, 16.0F, -1.0F));
-      $$5.a("right_ear", gil.c().a(52, 0).a(-2.5F, -9.0F, -1.0F, 2.0F, 5.0F, 1.0F), gii.a(0.0F, 0.0F, 0.0F, 0.0F, (float) (-Math.PI / 12), 0.0F));
-      $$5.a("left_ear", gil.c().a(58, 0).a(0.5F, -9.0F, -1.0F, 2.0F, 5.0F, 1.0F), gii.a(0.0F, 0.0F, 0.0F, 0.0F, (float) (Math.PI / 12), 0.0F));
-      $$2.a("tail", gil.c().a(52, 6).a(-1.5F, -1.5F, 0.0F, 3.0F, 3.0F, 2.0F), gii.a(0.0F, 20.0F, 7.0F, -0.3490659F, 0.0F, 0.0F));
-      $$5.a("nose", gil.c().a(32, 9).a(-0.5F, -2.5F, -5.5F, 1.0F, 1.0F, 1.0F), gii.a);
-      return gim.a($$1, 64, 32).a($$0 ? e : d);
+   public static gja a() {
+      gjc $$0 = new gjc();
+      gje $$1 = $$0.a();
+      $$1.a("body", giz.c().a(2, 8).a(-1.5F, 0.0F, -1.5F, 3.0F, 6.0F, 3.0F), giw.a(0.0F, 16.5F, -3.0F, 0.4937F, 0.0F, 0.0F));
+      $$1.a("tail", giz.c().a(22, 1).a(-1.5F, -1.0F, -1.0F, 3.0F, 4.0F, 1.0F), giw.a(0.0F, 21.07F, 1.16F, 1.015F, 0.0F, 0.0F));
+      $$1.a("left_wing", giz.c().a(19, 8).a(-0.5F, 0.0F, -1.5F, 1.0F, 5.0F, 3.0F), giw.a(1.5F, 16.94F, -2.76F, -0.6981F, (float) -Math.PI, 0.0F));
+      $$1.a("right_wing", giz.c().a(19, 8).a(-0.5F, 0.0F, -1.5F, 1.0F, 5.0F, 3.0F), giw.a(-1.5F, 16.94F, -2.76F, -0.6981F, (float) -Math.PI, 0.0F));
+      gje $$2 = $$1.a("head", giz.c().a(2, 2).a(-1.0F, -1.5F, -1.0F, 2.0F, 3.0F, 2.0F), giw.a(0.0F, 15.69F, -2.76F));
+      $$2.a("head2", giz.c().a(10, 0).a(-1.0F, -0.5F, -2.0F, 2.0F, 1.0F, 4.0F), giw.a(0.0F, -2.0F, -1.0F));
+      $$2.a("beak1", giz.c().a(11, 7).a(-0.5F, -1.0F, -0.5F, 1.0F, 2.0F, 1.0F), giw.a(0.0F, -0.5F, -1.5F));
+      $$2.a("beak2", giz.c().a(16, 7).a(-0.5F, 0.0F, -0.5F, 1.0F, 2.0F, 1.0F), giw.a(0.0F, -1.75F, -2.45F));
+      $$2.a("feather", giz.c().a(2, 18).a(0.0F, -4.0F, -2.0F, 0.0F, 5.0F, 4.0F), giw.a(0.0F, -2.15F, 0.15F, -0.2214F, 0.0F, 0.0F));
+      giz $$3 = giz.c().a(14, 18).a(-0.5F, 0.0F, -0.5F, 1.0F, 2.0F, 1.0F);
+      $$1.a("left_leg", $$3, giw.a(1.0F, 22.0F, -1.05F, -0.0299F, 0.0F, 0.0F));
+      $$1.a("right_leg", $$3, giw.a(-1.0F, 22.0F, -1.05F, -0.0299F, 0.0F, 0.0F));
+      return gja.a($$0, 32, 32);
    }
 
-   public void a(hde $$0) {
+   public void a(hdn $$0) {
       super.a($$0);
-      this.m.e = $$0.ab * (float) (Math.PI / 180.0);
-      this.m.f = $$0.aa * (float) (Math.PI / 180.0);
-      float $$1 = azk.a($$0.a * (float) Math.PI);
-      this.i.e += $$1 * 50.0F * (float) (Math.PI / 180.0);
-      this.j.e += $$1 * 50.0F * (float) (Math.PI / 180.0);
-      this.k.e += $$1 * -40.0F * (float) (Math.PI / 180.0);
-      this.l.e += $$1 * -40.0F * (float) (Math.PI / 180.0);
+      this.a($$0.c);
+      this.f.e = $$0.ab * (float) (Math.PI / 180.0);
+      this.f.f = $$0.aa * (float) (Math.PI / 180.0);
+      switch ($$0.c) {
+         case b:
+            this.g.e = this.g.e + azm.b($$0.ad * 0.6662F) * 1.4F * $$0.ae;
+            this.i.e = this.i.e + azm.b($$0.ad * 0.6662F + (float) Math.PI) * 1.4F * $$0.ae;
+         case a:
+         case e:
+         default:
+            float $$3 = $$0.b * 0.3F;
+            this.f.c += $$3;
+            this.c.e = this.c.e + azm.b($$0.ad * 0.6662F) * 0.3F * $$0.ae;
+            this.c.c += $$3;
+            this.b.c += $$3;
+            this.d.g = -0.0873F - $$0.b;
+            this.d.c += $$3;
+            this.e.g = 0.0873F + $$0.b;
+            this.e.c += $$3;
+            this.g.c += $$3;
+            this.i.c += $$3;
+         case c:
+            break;
+         case d:
+            float $$1 = azm.b($$0.u);
+            float $$2 = azm.a($$0.u);
+            this.f.b += $$1;
+            this.f.c += $$2;
+            this.f.e = 0.0F;
+            this.f.f = 0.0F;
+            this.f.g = azm.a($$0.u) * 0.4F;
+            this.b.b += $$1;
+            this.b.c += $$2;
+            this.d.g = -0.0873F - $$0.b;
+            this.d.b += $$1;
+            this.d.c += $$2;
+            this.e.g = 0.0873F + $$0.b;
+            this.e.b += $$1;
+            this.e.c += $$2;
+            this.c.b += $$1;
+            this.c.c += $$2;
+      }
+   }
+
+   private void a(ggp.a $$0) {
+      switch ($$0) {
+         case a:
+            this.g.e += (float) (Math.PI * 2.0 / 9.0);
+            this.i.e += (float) (Math.PI * 2.0 / 9.0);
+         case b:
+         case e:
+         default:
+            break;
+         case c:
+            float $$1 = 1.9F;
+            this.f.c++;
+            this.c.e += (float) (Math.PI / 6);
+            this.c.c++;
+            this.b.c++;
+            this.d.g = -0.0873F;
+            this.d.c++;
+            this.e.g = 0.0873F;
+            this.e.c++;
+            this.g.c++;
+            this.i.c++;
+            this.g.e++;
+            this.i.e++;
+            break;
+         case d:
+            this.g.g = (float) (-Math.PI / 9);
+            this.i.g = (float) (Math.PI / 9);
+      }
+   }
+
+   public static ggp.a a(cjk $$0) {
+      if ($$0.gD()) {
+         return ggp.a.d;
+      } else if ($$0.x()) {
+         return ggp.a.c;
+      } else {
+         return $$0.gF() ? ggp.a.a : ggp.a.b;
+      }
+   }
+
+   public static enum a {
+      a,
+      b,
+      c,
+      d,
+      e;
    }
 }

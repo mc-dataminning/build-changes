@@ -1,42 +1,34 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.function.Consumer;
+import javax.annotation.Nullable;
 
-public class djq {
-   public static final Codec<djq> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               awk.b.fieldOf("sound").forGetter($$0x -> $$0x.c),
-               Codec.INT.fieldOf("tick_delay").forGetter($$0x -> $$0x.d),
-               Codec.INT.fieldOf("block_search_extent").forGetter($$0x -> $$0x.e),
-               Codec.DOUBLE.fieldOf("offset").forGetter($$0x -> $$0x.f)
-            )
-            .apply($$0, djq::new)
-   );
-   public static final djq b = new djq(awl.h, 6000, 8, 2.0);
-   private final je<awk> c;
-   private final int d;
-   private final int e;
-   private final double f;
+public interface djq {
+   void a(bwm<?> var1, azv var2);
 
-   public djq(je<awk> $$0, int $$1, int $$2, double $$3) {
-      this.c = $$0;
-      this.d = $$1;
-      this.e = $$2;
-      this.f = $$3;
+   static void a(dbg $$0, Consumer<wy> $$1, String $$2) {
+      wy $$3 = a($$0, $$2);
+      if ($$3 != null) {
+         $$1.accept($$3);
+      } else {
+         $$1.accept(wx.a);
+         $$1.accept(wy.c("block.minecraft.spawner.desc1").a(n.h));
+         $$1.accept(wx.a().b(wy.c("block.minecraft.spawner.desc2").a(n.j)));
+      }
    }
 
-   public je<awk> a() {
-      return this.c;
+   @Nullable
+   static wy a(dbg $$0, String $$1) {
+      tz $$2 = $$0.e();
+      alg $$3 = a($$2, $$1);
+      return $$3 != null ? mf.f.b($$3).map($$0x -> wy.c($$0x.g()).a(n.h)).orElse(null) : null;
    }
 
-   public int b() {
-      return this.d;
-   }
-
-   public int c() {
-      return this.e;
-   }
-
-   public double d() {
-      return this.f;
+   @Nullable
+   private static alg a(tz $$0, String $$1) {
+      if ($$0.b($$1, 10)) {
+         String $$2 = $$0.p($$1).p("entity").l("id");
+         return alg.c($$2);
+      } else {
+         return null;
+      }
    }
 }

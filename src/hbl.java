@@ -1,3 +1,5 @@
-public class hbl extends hbq {
-   public boolean a;
+public class hbl extends hcf {
+   public float a;
+   public float b;
+   public float c;
 }

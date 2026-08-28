@@ -1,27 +1,24 @@
-import com.google.common.collect.ImmutableMap;
-import java.util.Map;
+public class gzo extends han<hce, gfo<hce>> {
+   private final gqw a;
 
-public class gzo extends gzy<hcj, gft> {
-   private static final Map<bvw.a, ale> a = ImmutableMap.of(
-      bvw.a.b,
-      ale.b("textures/entity/iron_golem/iron_golem_crackiness_low.png"),
-      bvw.a.c,
-      ale.b("textures/entity/iron_golem/iron_golem_crackiness_medium.png"),
-      bvw.a.d,
-      ale.b("textures/entity/iron_golem/iron_golem_crackiness_high.png")
-   );
-
-   public gzo(gxh<hcj, gft> $$0) {
+   public gzo(gxw<hce, gfo<hce>> $$0, gqw $$1) {
       super($$0);
+      this.a = $$1;
    }
 
-   public void a(fiq $$0, gpd $$1, int $$2, hcj $$3, float $$4, float $$5) {
-      if (!$$3.z) {
-         bvw.a $$6 = $$3.c;
-         if ($$6 != bvw.a.a) {
-            ale $$7 = a.get($$6);
-            b(this.d(), $$7, $$0, $$1, $$2, $$3, -1);
-         }
+   public void a(fjc $$0, gps $$1, int $$2, hce $$3, float $$4, float $$5) {
+      dzz $$6 = $$3.b;
+      if ($$6 != null) {
+         $$0.a();
+         $$0.a(0.0F, 0.6875F, -0.75F);
+         $$0.a(a.b.rotationDegrees(20.0F));
+         $$0.a(a.d.rotationDegrees(45.0F));
+         $$0.a(0.25F, 0.1875F, 0.25F);
+         float $$7 = 0.5F;
+         $$0.b(-0.5F, -0.5F, 0.5F);
+         $$0.a(a.d.rotationDegrees(90.0F));
+         this.a.a($$6, $$0, $$1, $$2, hif.d);
+         $$0.b();
       }
    }
 }

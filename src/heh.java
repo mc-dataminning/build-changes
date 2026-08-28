@@ -1,3 +1,3 @@
-public class heh extends hcg {
-   public boolean a;
+public class heh extends hcf {
+   public final hfi a = new hfi();
 }

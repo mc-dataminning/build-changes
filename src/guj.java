@@ -1,32 +1,37 @@
-import com.google.common.collect.Maps;
-import java.util.Locale;
-import java.util.Map;
+import com.google.common.collect.Sets;
+import java.util.Set;
 
-public class guj extends gue<ckd, hax, gdz> {
-   private static final Map<ckd.e, ale> a = af.a(Maps.newHashMap(), $$0 -> {
-      for (ckd.e $$1 : ckd.e.values()) {
-         $$0.put($$1, ale.b(String.format(Locale.ROOT, "textures/entity/axolotl/axolotl_%s.png", $$1.b())));
-      }
-   });
+public class guj implements gtu.a {
+   private static final int a = 60;
+   private final Set<jx> b = Sets.newHashSet();
 
-   public guj(gvk.a $$0) {
-      super($$0, new gdz($$0.a(gif.m)), new gdz($$0.a(gif.n)), 0.5F);
+   guj() {
    }
 
-   public ale a(hax $$0) {
-      return a.get($$0.a);
+   @Override
+   public void a() {
+      this.b.clear();
    }
 
-   public hax a() {
-      return new hax();
+   public void a(jx $$0) {
+      this.b.add($$0);
    }
 
-   public void a(ckd $$0, hax $$1, float $$2) {
-      super.a($$0, $$1, $$2);
-      $$1.a = $$0.t();
-      $$1.b = $$0.bM.a($$2);
-      $$1.d = $$0.bN.a($$2);
-      $$1.e = $$0.bO.a($$2);
-      $$1.c = $$0.bP.a($$2);
+   public void b(jx $$0) {
+      this.b.remove($$0);
+   }
+
+   @Override
+   public void a(fjc $$0, gps $$1, double $$2, double $$3, double $$4) {
+      iu $$5 = iu.a($$2, $$3, $$4);
+      this.b.forEach($$3x -> {
+         if ($$5.a($$3x.k(), 60.0)) {
+            a($$0, $$1, $$3x);
+         }
+      });
+   }
+
+   private static void a(fjc $$0, gps $$1, jx $$2) {
+      gtu.a($$0, $$1, $$2.k(), 0.2F, 1.0F, 0.2F, 0.15F);
    }
 }

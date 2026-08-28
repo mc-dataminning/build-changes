@@ -22,11 +22,11 @@ import org.apache.commons.lang3.mutable.MutableBoolean;
 
 public class fa implements ArgumentType<fa.g> {
    private static final Collection<String> d = Arrays.asList("foo", "foo.bar", "foo[0]", "[0]", "[]", "{foo=bar}");
-   public static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(ww.c("arguments.nbtpath.node.invalid"));
-   public static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(ww.c("arguments.nbtpath.too_deep"));
-   public static final DynamicCommandExceptionType c = new DynamicCommandExceptionType($$0 -> ww.b("arguments.nbtpath.nothing_found", $$0));
-   static final DynamicCommandExceptionType e = new DynamicCommandExceptionType($$0 -> ww.b("commands.data.modify.expected_list", $$0));
-   static final DynamicCommandExceptionType f = new DynamicCommandExceptionType($$0 -> ww.b("commands.data.modify.invalid_index", $$0));
+   public static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(wy.c("arguments.nbtpath.node.invalid"));
+   public static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(wy.c("arguments.nbtpath.too_deep"));
+   public static final DynamicCommandExceptionType c = new DynamicCommandExceptionType($$0 -> wy.b("arguments.nbtpath.nothing_found", $$0));
+   static final DynamicCommandExceptionType e = new DynamicCommandExceptionType($$0 -> wy.b("commands.data.modify.expected_list", $$0));
+   static final DynamicCommandExceptionType f = new DynamicCommandExceptionType($$0 -> wy.b("commands.data.modify.invalid_index", $$0));
    private static final char g = '[';
    private static final char h = ']';
    private static final char i = '{';
@@ -71,7 +71,7 @@ public class fa implements ArgumentType<fa.g> {
             $$0.skip();
             int $$3 = $$0.peek();
             if ($$3 == 123) {
-               tx $$4 = uv.a($$0);
+               tz $$4 = ux.a($$0);
                $$0.expect(']');
                yield new fa.d($$4);
             } else if ($$3 == 93) {
@@ -88,7 +88,7 @@ public class fa implements ArgumentType<fa.g> {
                throw a.createWithContext($$0);
             }
 
-            tx $$2 = uv.a($$0);
+            tz $$2 = ux.a($$0);
             yield new fa.f($$2);
          }
          default -> a($$0, b($$0));
@@ -97,7 +97,7 @@ public class fa implements ArgumentType<fa.g> {
 
    private static fa.h a(StringReader $$0, String $$1) throws CommandSyntaxException {
       if ($$0.canRead() && $$0.peek() == '{') {
-         tx $$2 = uv.a($$0);
+         tz $$2 = ux.a($$0);
          return new fa.e($$1, $$2);
       } else {
          return new fa.b($$1);
@@ -126,8 +126,8 @@ public class fa implements ArgumentType<fa.g> {
       return $$0 != ' ' && $$0 != '"' && $$0 != '\'' && $$0 != '[' && $$0 != ']' && $$0 != '.' && $$0 != '{' && $$0 != '}';
    }
 
-   static Predicate<uu> a(tx $$0) {
-      return $$1 -> um.a($$0, $$1, true);
+   static Predicate<uw> a(tz $$0) {
+      return $$1 -> uo.a($$0, $$1, true);
    }
 
    static class a implements fa.h {
@@ -137,34 +137,34 @@ public class fa implements ArgumentType<fa.g> {
       }
 
       @Override
-      public void a(uu $$0, List<uu> $$1) {
-         if ($$0 instanceof tw) {
-            $$1.addAll((tw)$$0);
+      public void a(uw $$0, List<uw> $$1) {
+         if ($$0 instanceof ty) {
+            $$1.addAll((ty)$$0);
          }
       }
 
       @Override
-      public void a(uu $$0, Supplier<uu> $$1, List<uu> $$2) {
-         if ($$0 instanceof tw<?> $$3) {
+      public void a(uw $$0, Supplier<uw> $$1, List<uw> $$2) {
+         if ($$0 instanceof ty<?> $$3) {
             if ($$3.isEmpty()) {
-               uu $$4 = $$1.get();
+               uw $$4 = $$1.get();
                if ($$3.b(0, $$4)) {
                   $$2.add($$4);
                }
             } else {
-               $$2.addAll((Collection<? extends uu>)$$3);
+               $$2.addAll((Collection<? extends uw>)$$3);
             }
          }
       }
 
       @Override
-      public uu a() {
-         return new ud();
+      public uw a() {
+         return new uf();
       }
 
       @Override
-      public int a(uu $$0, Supplier<uu> $$1) {
-         if (!($$0 instanceof tw<?> $$2)) {
+      public int a(uw $$0, Supplier<uw> $$1) {
+         if (!($$0 instanceof ty<?> $$2)) {
             return 0;
          } else {
             int $$3 = $$2.size();
@@ -172,7 +172,7 @@ public class fa implements ArgumentType<fa.g> {
                $$2.b(0, $$1.get());
                return 1;
             } else {
-               uu $$4 = $$1.get();
+               uw $$4 = $$1.get();
                int $$5 = $$3 - (int)$$2.stream().filter($$4::equals).count();
                if ($$5 == 0) {
                   return 0;
@@ -193,8 +193,8 @@ public class fa implements ArgumentType<fa.g> {
       }
 
       @Override
-      public int a(uu $$0) {
-         if ($$0 instanceof tw<?> $$1) {
+      public int a(uw $$0) {
+         if ($$0 instanceof ty<?> $$1) {
             int $$2 = $$1.size();
             if ($$2 > 0) {
                $$1.clear();
@@ -214,9 +214,9 @@ public class fa implements ArgumentType<fa.g> {
       }
 
       @Override
-      public void a(uu $$0, List<uu> $$1) {
-         if ($$0 instanceof tx) {
-            uu $$2 = ((tx)$$0).c(this.a);
+      public void a(uw $$0, List<uw> $$1) {
+         if ($$0 instanceof tz) {
+            uw $$2 = ((tz)$$0).c(this.a);
             if ($$2 != null) {
                $$1.add($$2);
             }
@@ -224,9 +224,9 @@ public class fa implements ArgumentType<fa.g> {
       }
 
       @Override
-      public void a(uu $$0, Supplier<uu> $$1, List<uu> $$2) {
-         if ($$0 instanceof tx $$3) {
-            uu $$4;
+      public void a(uw $$0, Supplier<uw> $$1, List<uw> $$2) {
+         if ($$0 instanceof tz $$3) {
+            uw $$4;
             if ($$3.e(this.a)) {
                $$4 = $$3.c(this.a);
             } else {
@@ -239,15 +239,15 @@ public class fa implements ArgumentType<fa.g> {
       }
 
       @Override
-      public uu a() {
-         return new tx();
+      public uw a() {
+         return new tz();
       }
 
       @Override
-      public int a(uu $$0, Supplier<uu> $$1) {
-         if ($$0 instanceof tx $$2) {
-            uu $$3 = $$1.get();
-            uu $$4 = $$2.a(this.a, $$3);
+      public int a(uw $$0, Supplier<uw> $$1) {
+         if ($$0 instanceof tz $$2) {
+            uw $$3 = $$1.get();
+            uw $$4 = $$2.a(this.a, $$3);
             if (!$$3.equals($$4)) {
                return 1;
             }
@@ -257,8 +257,8 @@ public class fa implements ArgumentType<fa.g> {
       }
 
       @Override
-      public int a(uu $$0) {
-         if ($$0 instanceof tx $$1 && $$1.e(this.a)) {
+      public int a(uw $$0) {
+         if ($$0 instanceof tz $$1 && $$1.e(this.a)) {
             $$1.r(this.a);
             return 1;
          }
@@ -275,8 +275,8 @@ public class fa implements ArgumentType<fa.g> {
       }
 
       @Override
-      public void a(uu $$0, List<uu> $$1) {
-         if ($$0 instanceof tw<?> $$2) {
+      public void a(uw $$0, List<uw> $$1) {
+         if ($$0 instanceof ty<?> $$2) {
             int $$3 = $$2.size();
             int $$4 = this.a < 0 ? $$3 + this.a : this.a;
             if (0 <= $$4 && $$4 < $$3) {
@@ -286,23 +286,23 @@ public class fa implements ArgumentType<fa.g> {
       }
 
       @Override
-      public void a(uu $$0, Supplier<uu> $$1, List<uu> $$2) {
+      public void a(uw $$0, Supplier<uw> $$1, List<uw> $$2) {
          this.a($$0, $$2);
       }
 
       @Override
-      public uu a() {
-         return new ud();
+      public uw a() {
+         return new uf();
       }
 
       @Override
-      public int a(uu $$0, Supplier<uu> $$1) {
-         if ($$0 instanceof tw<?> $$2) {
+      public int a(uw $$0, Supplier<uw> $$1) {
+         if ($$0 instanceof ty<?> $$2) {
             int $$3 = $$2.size();
             int $$4 = this.a < 0 ? $$3 + this.a : this.a;
             if (0 <= $$4 && $$4 < $$3) {
-               uu $$5 = $$2.get($$4);
-               uu $$6 = $$1.get();
+               uw $$5 = $$2.get($$4);
+               uw $$6 = $$1.get();
                if (!$$6.equals($$5) && $$2.a($$4, $$6)) {
                   return 1;
                }
@@ -313,8 +313,8 @@ public class fa implements ArgumentType<fa.g> {
       }
 
       @Override
-      public int a(uu $$0) {
-         if ($$0 instanceof tw<?> $$1) {
+      public int a(uw $$0) {
+         if ($$0 instanceof ty<?> $$1) {
             int $$2 = $$1.size();
             int $$3 = this.a < 0 ? $$2 + this.a : this.a;
             if (0 <= $$3 && $$3 < $$2) {
@@ -328,31 +328,31 @@ public class fa implements ArgumentType<fa.g> {
    }
 
    static class d implements fa.h {
-      private final tx a;
-      private final Predicate<uu> b;
+      private final tz a;
+      private final Predicate<uw> b;
 
-      public d(tx $$0) {
+      public d(tz $$0) {
          this.a = $$0;
          this.b = fa.a($$0);
       }
 
       @Override
-      public void a(uu $$0, List<uu> $$1) {
-         if ($$0 instanceof ud $$2) {
+      public void a(uw $$0, List<uw> $$1) {
+         if ($$0 instanceof uf $$2) {
             $$2.stream().filter(this.b).forEach($$1::add);
          }
       }
 
       @Override
-      public void a(uu $$0, Supplier<uu> $$1, List<uu> $$2) {
+      public void a(uw $$0, Supplier<uw> $$1, List<uw> $$2) {
          MutableBoolean $$3 = new MutableBoolean();
-         if ($$0 instanceof ud $$4) {
+         if ($$0 instanceof uf $$4) {
             $$4.stream().filter(this.b).forEach($$2x -> {
                $$2.add($$2x);
                $$3.setTrue();
             });
             if ($$3.isFalse()) {
-               tx $$5 = this.a.i();
+               tz $$5 = this.a.i();
                $$4.add($$5);
                $$2.add($$5);
             }
@@ -360,23 +360,23 @@ public class fa implements ArgumentType<fa.g> {
       }
 
       @Override
-      public uu a() {
-         return new ud();
+      public uw a() {
+         return new uf();
       }
 
       @Override
-      public int a(uu $$0, Supplier<uu> $$1) {
+      public int a(uw $$0, Supplier<uw> $$1) {
          int $$2 = 0;
-         if ($$0 instanceof ud $$3) {
+         if ($$0 instanceof uf $$3) {
             int $$4 = $$3.size();
             if ($$4 == 0) {
                $$3.add($$1.get());
                $$2++;
             } else {
                for (int $$5 = 0; $$5 < $$4; $$5++) {
-                  uu $$6 = $$3.k($$5);
+                  uw $$6 = $$3.k($$5);
                   if (this.b.test($$6)) {
-                     uu $$7 = $$1.get();
+                     uw $$7 = $$1.get();
                      if (!$$7.equals($$6) && $$3.a($$5, $$7)) {
                         $$2++;
                      }
@@ -389,9 +389,9 @@ public class fa implements ArgumentType<fa.g> {
       }
 
       @Override
-      public int a(uu $$0) {
+      public int a(uw $$0) {
          int $$1 = 0;
-         if ($$0 instanceof ud $$2) {
+         if ($$0 instanceof uf $$2) {
             for (int $$3 = $$2.size() - 1; $$3 >= 0; $$3--) {
                if (this.b.test($$2.k($$3))) {
                   $$2.c($$3);
@@ -406,19 +406,19 @@ public class fa implements ArgumentType<fa.g> {
 
    static class e implements fa.h {
       private final String a;
-      private final tx b;
-      private final Predicate<uu> c;
+      private final tz b;
+      private final Predicate<uw> c;
 
-      public e(String $$0, tx $$1) {
+      public e(String $$0, tz $$1) {
          this.a = $$0;
          this.b = $$1;
          this.c = fa.a($$1);
       }
 
       @Override
-      public void a(uu $$0, List<uu> $$1) {
-         if ($$0 instanceof tx) {
-            uu $$2 = ((tx)$$0).c(this.a);
+      public void a(uw $$0, List<uw> $$1) {
+         if ($$0 instanceof tz) {
+            uw $$2 = ((tz)$$0).c(this.a);
             if (this.c.test($$2)) {
                $$1.add($$2);
             }
@@ -426,11 +426,11 @@ public class fa implements ArgumentType<fa.g> {
       }
 
       @Override
-      public void a(uu $$0, Supplier<uu> $$1, List<uu> $$2) {
-         if ($$0 instanceof tx $$3) {
-            uu $$4 = $$3.c(this.a);
+      public void a(uw $$0, Supplier<uw> $$1, List<uw> $$2) {
+         if ($$0 instanceof tz $$3) {
+            uw $$4 = $$3.c(this.a);
             if ($$4 == null) {
-               uu var6 = this.b.i();
+               uw var6 = this.b.i();
                $$3.a(this.a, var6);
                $$2.add(var6);
             } else if (this.c.test($$4)) {
@@ -440,16 +440,16 @@ public class fa implements ArgumentType<fa.g> {
       }
 
       @Override
-      public uu a() {
-         return new tx();
+      public uw a() {
+         return new tz();
       }
 
       @Override
-      public int a(uu $$0, Supplier<uu> $$1) {
-         if ($$0 instanceof tx $$2) {
-            uu $$3 = $$2.c(this.a);
+      public int a(uw $$0, Supplier<uw> $$1) {
+         if ($$0 instanceof tz $$2) {
+            uw $$3 = $$2.c(this.a);
             if (this.c.test($$3)) {
-               uu $$4 = $$1.get();
+               uw $$4 = $$1.get();
                if (!$$4.equals($$3)) {
                   $$2.a(this.a, $$4);
                   return 1;
@@ -461,9 +461,9 @@ public class fa implements ArgumentType<fa.g> {
       }
 
       @Override
-      public int a(uu $$0) {
-         if ($$0 instanceof tx $$1) {
-            uu $$2 = $$1.c(this.a);
+      public int a(uw $$0) {
+         if ($$0 instanceof tz $$1) {
+            uw $$2 = $$1.c(this.a);
             if (this.c.test($$2)) {
                $$1.r(this.a);
                return 1;
@@ -475,36 +475,36 @@ public class fa implements ArgumentType<fa.g> {
    }
 
    static class f implements fa.h {
-      private final Predicate<uu> a;
+      private final Predicate<uw> a;
 
-      public f(tx $$0) {
+      public f(tz $$0) {
          this.a = fa.a($$0);
       }
 
       @Override
-      public void a(uu $$0, List<uu> $$1) {
-         if ($$0 instanceof tx && this.a.test($$0)) {
+      public void a(uw $$0, List<uw> $$1) {
+         if ($$0 instanceof tz && this.a.test($$0)) {
             $$1.add($$0);
          }
       }
 
       @Override
-      public void a(uu $$0, Supplier<uu> $$1, List<uu> $$2) {
+      public void a(uw $$0, Supplier<uw> $$1, List<uw> $$2) {
          this.a($$0, $$2);
       }
 
       @Override
-      public uu a() {
-         return new tx();
+      public uw a() {
+         return new tz();
       }
 
       @Override
-      public int a(uu $$0, Supplier<uu> $$1) {
+      public int a(uw $$0, Supplier<uw> $$1) {
          return 0;
       }
 
       @Override
-      public int a(uu $$0) {
+      public int a(uw $$0) {
          return 0;
       }
    }
@@ -532,8 +532,8 @@ public class fa implements ArgumentType<fa.g> {
          this.c = $$2;
       }
 
-      public List<uu> a(uu $$0) throws CommandSyntaxException {
-         List<uu> $$1 = Collections.singletonList($$0);
+      public List<uw> a(uw $$0) throws CommandSyntaxException {
+         List<uw> $$1 = Collections.singletonList($$0);
 
          for (fa.h $$2 : this.d) {
             $$1 = $$2.a($$1);
@@ -545,8 +545,8 @@ public class fa implements ArgumentType<fa.g> {
          return $$1;
       }
 
-      public int b(uu $$0) {
-         List<uu> $$1 = Collections.singletonList($$0);
+      public int b(uw $$0) {
+         List<uw> $$1 = Collections.singletonList($$0);
 
          for (fa.h $$2 : this.d) {
             $$1 = $$2.a($$1);
@@ -558,8 +558,8 @@ public class fa implements ArgumentType<fa.g> {
          return $$1.size();
       }
 
-      private List<uu> d(uu $$0) throws CommandSyntaxException {
-         List<uu> $$1 = Collections.singletonList($$0);
+      private List<uw> d(uw $$0) throws CommandSyntaxException {
+         List<uw> $$1 = Collections.singletonList($$0);
 
          for (int $$2 = 0; $$2 < this.d.length - 1; $$2++) {
             fa.h $$3 = this.d[$$2];
@@ -573,29 +573,29 @@ public class fa implements ArgumentType<fa.g> {
          return $$1;
       }
 
-      public List<uu> a(uu $$0, Supplier<uu> $$1) throws CommandSyntaxException {
-         List<uu> $$2 = this.d($$0);
+      public List<uw> a(uw $$0, Supplier<uw> $$1) throws CommandSyntaxException {
+         List<uw> $$2 = this.d($$0);
          fa.h $$3 = this.d[this.d.length - 1];
          return $$3.a($$2, $$1);
       }
 
-      private static int a(List<uu> $$0, Function<uu, Integer> $$1) {
+      private static int a(List<uw> $$0, Function<uw, Integer> $$1) {
          return $$0.stream().map($$1).reduce(0, ($$0x, $$1x) -> $$0x + $$1x);
       }
 
-      public static boolean a(uu $$0, int $$1) {
+      public static boolean a(uw $$0, int $$1) {
          if ($$1 >= 512) {
             return true;
          } else {
-            if ($$0 instanceof tx $$2) {
+            if ($$0 instanceof tz $$2) {
                for (String $$3 : $$2.e()) {
-                  uu $$4 = $$2.c($$3);
+                  uw $$4 = $$2.c($$3);
                   if ($$4 != null && a($$4, $$1 + 1)) {
                      return true;
                   }
                }
-            } else if ($$0 instanceof ud) {
-               for (uu $$6 : (ud)$$0) {
+            } else if ($$0 instanceof uf) {
+               for (uw $$6 : (uf)$$0) {
                   if (a($$6, $$1 + 1)) {
                      return true;
                   }
@@ -606,12 +606,12 @@ public class fa implements ArgumentType<fa.g> {
          }
       }
 
-      public int a(uu $$0, uu $$1) throws CommandSyntaxException {
+      public int a(uw $$0, uw $$1) throws CommandSyntaxException {
          if (a($$1, this.b())) {
             throw fa.b.create();
          } else {
-            uu $$2 = $$1.d();
-            List<uu> $$3 = this.d($$0);
+            uw $$2 = $$1.d();
+            List<uw> $$3 = this.d($$0);
             if ($$3.isEmpty()) {
                return 0;
             } else {
@@ -633,30 +633,30 @@ public class fa implements ArgumentType<fa.g> {
          return this.d.length;
       }
 
-      public int a(int $$0, tx $$1, List<uu> $$2) throws CommandSyntaxException {
-         List<uu> $$3 = new ArrayList<>($$2.size());
+      public int a(int $$0, tz $$1, List<uw> $$2) throws CommandSyntaxException {
+         List<uw> $$3 = new ArrayList<>($$2.size());
 
-         for (uu $$4 : $$2) {
-            uu $$5 = $$4.d();
+         for (uw $$4 : $$2) {
+            uw $$5 = $$4.d();
             $$3.add($$5);
             if (a($$5, this.b())) {
                throw fa.b.create();
             }
          }
 
-         Collection<uu> $$6 = this.a($$1, ud::new);
+         Collection<uw> $$6 = this.a($$1, uf::new);
          int $$7 = 0;
          boolean $$8 = false;
 
-         for (uu $$9 : $$6) {
-            if (!($$9 instanceof tw<?> $$10)) {
+         for (uw $$9 : $$6) {
+            if (!($$9 instanceof ty<?> $$10)) {
                throw fa.e.create($$9);
             }
 
             boolean $$11 = false;
             int $$12 = $$0 < 0 ? $$10.size() + $$0 + 1 : $$0;
 
-            for (uu $$13 : $$3) {
+            for (uw $$13 : $$3) {
                try {
                   if ($$10.b($$12, $$8 ? $$13.d() : $$13)) {
                      $$12++;
@@ -674,8 +674,8 @@ public class fa implements ArgumentType<fa.g> {
          return $$7;
       }
 
-      public int c(uu $$0) {
-         List<uu> $$1 = Collections.singletonList($$0);
+      public int c(uw $$0) {
+         List<uw> $$1 = Collections.singletonList($$0);
 
          for (int $$2 = 0; $$2 < this.d.length - 1; $$2++) {
             $$1 = this.d[$$2].a($$1);
@@ -701,28 +701,28 @@ public class fa implements ArgumentType<fa.g> {
    }
 
    interface h {
-      void a(uu var1, List<uu> var2);
+      void a(uw var1, List<uw> var2);
 
-      void a(uu var1, Supplier<uu> var2, List<uu> var3);
+      void a(uw var1, Supplier<uw> var2, List<uw> var3);
 
-      uu a();
+      uw a();
 
-      int a(uu var1, Supplier<uu> var2);
+      int a(uw var1, Supplier<uw> var2);
 
-      int a(uu var1);
+      int a(uw var1);
 
-      default List<uu> a(List<uu> $$0) {
+      default List<uw> a(List<uw> $$0) {
          return this.a($$0, this::a);
       }
 
-      default List<uu> a(List<uu> $$0, Supplier<uu> $$1) {
+      default List<uw> a(List<uw> $$0, Supplier<uw> $$1) {
          return this.a($$0, ($$1x, $$2) -> this.a($$1x, $$1, $$2));
       }
 
-      default List<uu> a(List<uu> $$0, BiConsumer<uu, List<uu>> $$1) {
-         List<uu> $$2 = Lists.newArrayList();
+      default List<uw> a(List<uw> $$0, BiConsumer<uw, List<uw>> $$1) {
+         List<uw> $$2 = Lists.newArrayList();
 
-         for (uu $$3 : $$0) {
+         for (uw $$3 : $$0) {
             $$1.accept($$3, $$2);
          }
 

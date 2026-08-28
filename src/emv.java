@@ -1,61 +1,28 @@
-import com.mojang.datafixers.Products.P3;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder.Instance;
-import com.mojang.serialization.codecs.RecordCodecBuilder.Mu;
-import java.util.Optional;
-import java.util.function.BiConsumer;
+import com.mojang.serialization.MapCodec;
 
-public abstract class emv {
-   public static final Codec<emv> d = mf.W.q().dispatch(emv::a, emw::a);
-   protected final btd e;
-   protected final emy f;
-   protected final Optional<ems> g;
+public class emv<P extends emu> {
+   public static final emv<emp> a = a("blob_foliage_placer", emp.a);
+   public static final emv<ena> b = a("spruce_foliage_placer", ena.a);
+   public static final emv<emy> c = a("pine_foliage_placer", emy.a);
+   public static final emv<emo> d = a("acacia_foliage_placer", emo.a);
+   public static final emv<emq> e = a("bush_foliage_placer", emq.c);
+   public static final emv<emt> f = a("fancy_foliage_placer", emt.c);
+   public static final emv<emw> g = a("jungle_foliage_placer", emw.a);
+   public static final emv<emx> h = a("mega_pine_foliage_placer", emx.a);
+   public static final emv<ems> i = a("dark_oak_foliage_placer", ems.a);
+   public static final emv<emz> j = a("random_spread_foliage_placer", emz.a);
+   public static final emv<emr> k = a("cherry_foliage_placer", emr.a);
+   private final MapCodec<P> l;
 
-   protected static <P extends emv> P3<Mu<P>, btd, emy, Optional<ems>> a(Instance<P> $$0) {
-      return $$0.group(
-         btd.c.fieldOf("trunk_offset_y").forGetter($$0x -> $$0x.e),
-         emy.a.fieldOf("root_provider").forGetter($$0x -> $$0x.f),
-         ems.a.optionalFieldOf("above_root_placement").forGetter($$0x -> $$0x.g)
-      );
+   private static <P extends emu> emv<P> a(String $$0, MapCodec<P> $$1) {
+      return jr.a(mf.U, $$0, new emv<>($$1));
    }
 
-   public emv(btd $$0, emy $$1, Optional<ems> $$2) {
-      this.e = $$0;
-      this.f = $$1;
-      this.g = $$2;
+   private emv(MapCodec<P> $$0) {
+      this.l = $$0;
    }
 
-   protected abstract emw<?> a();
-
-   public abstract boolean a(div var1, BiConsumer<iu, dzo> var2, azt var3, iu var4, iu var5, elt var6);
-
-   protected boolean a(div $$0, iu $$1) {
-      return ekf.d($$0, $$1);
-   }
-
-   protected void a(div $$0, BiConsumer<iu, dzo> $$1, azt $$2, iu $$3, elt $$4) {
-      if (this.a($$0, $$3)) {
-         $$1.accept($$3, this.a($$0, $$3, this.f.a($$2, $$3)));
-         if (this.g.isPresent()) {
-            ems $$5 = this.g.get();
-            iu $$6 = $$3.d();
-            if ($$2.i() < $$5.b() && $$0.a($$6, dzn.a::l)) {
-               $$1.accept($$6, this.a($$0, $$6, $$5.a().a($$2, $$6)));
-            }
-         }
-      }
-   }
-
-   protected dzo a(div $$0, iu $$1, dzo $$2) {
-      if ($$2.b(eae.I)) {
-         boolean $$3 = $$0.b($$1, $$0x -> $$0x.a(axf.a));
-         return $$2.b(eae.I, Boolean.valueOf($$3));
-      } else {
-         return $$2;
-      }
-   }
-
-   public iu a(iu $$0, azt $$1) {
-      return $$0.b(this.e.a($$1));
+   public MapCodec<P> a() {
+      return this.l;
    }
 }

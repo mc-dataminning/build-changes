@@ -1,29 +1,16 @@
-public class aaa implements zd<zw> {
-   public static final yu<vs, aaa> a = zd.a(aaa::a, aaa::new);
-   private final int b;
+import com.google.common.collect.Lists;
 
-   public aaa(int $$0) {
-      this.b = $$0;
-   }
-
-   private aaa(vs $$0) {
-      this.b = $$0.readInt();
-   }
-
-   private void a(vs $$0) {
-      $$0.q(this.b);
-   }
+public record aaa(aai b) implements zf<zy> {
+   private static final int c = 32767;
+   public static final yw<vu, aaa> a = aai.<vu>a($$0 -> aaj.a($$0, 32767), af.a(Lists.newArrayList(new aai.c[]{new aai.c<>(aag.b, aag.a)}), $$0 -> {
+   })).a(aaa::new, aaa::b);
 
    @Override
-   public zf<aaa> a() {
-      return zv.o;
+   public zh<aaa> a() {
+      return zx.m;
    }
 
-   public void a(zw $$0) {
+   public void a(zy $$0) {
       $$0.a(this);
-   }
-
-   public int b() {
-      return this.b;
    }
 }

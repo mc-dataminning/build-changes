@@ -1,43 +1,25 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
-public class elr implements ekx {
+public class elr implements eli {
    public static final Codec<elr> a = RecordCodecBuilder.create(
       $$0 -> $$0.group(
-               Codec.BOOL.fieldOf("crystal_invulnerable").orElse(false).forGetter($$0x -> $$0x.b),
-               ekd.a.a.listOf().fieldOf("spikes").forGetter($$0x -> $$0x.c),
-               iu.a.optionalFieldOf("crystal_beam_target").forGetter($$0x -> Optional.ofNullable($$0x.d))
+               Codec.floatRange(0.0F, 1.0F).fieldOf("chance_of_taller_dripstone").orElse(0.2F).forGetter($$0x -> $$0x.b),
+               Codec.floatRange(0.0F, 1.0F).fieldOf("chance_of_directional_spread").orElse(0.7F).forGetter($$0x -> $$0x.c),
+               Codec.floatRange(0.0F, 1.0F).fieldOf("chance_of_spread_radius2").orElse(0.5F).forGetter($$0x -> $$0x.d),
+               Codec.floatRange(0.0F, 1.0F).fieldOf("chance_of_spread_radius3").orElse(0.5F).forGetter($$0x -> $$0x.e)
             )
             .apply($$0, elr::new)
    );
-   private final boolean b;
-   private final List<ekd.a> c;
-   @Nullable
-   private final iu d;
+   public final float b;
+   public final float c;
+   public final float d;
+   public final float e;
 
-   public elr(boolean $$0, List<ekd.a> $$1, @Nullable iu $$2) {
-      this($$0, $$1, Optional.ofNullable($$2));
-   }
-
-   private elr(boolean $$0, List<ekd.a> $$1, Optional<iu> $$2) {
+   public elr(float $$0, float $$1, float $$2, float $$3) {
       this.b = $$0;
       this.c = $$1;
-      this.d = $$2.orElse(null);
-   }
-
-   public boolean a() {
-      return this.b;
-   }
-
-   public List<ekd.a> b() {
-      return this.c;
-   }
-
-   @Nullable
-   public iu c() {
-      return this.d;
+      this.d = $$2;
+      this.e = $$3;
    }
 }

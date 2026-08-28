@@ -1,70 +1,74 @@
 import com.mojang.serialization.MapCodec;
 import javax.annotation.Nullable;
 
-public class dtx extends dlu {
+public class dtx extends dma {
    public static final MapCodec<dtx> a = b(dtx::new);
-   private static final ww c = ww.c("container.stonecutter");
-   public static final eam<ja> b = dpt.e;
-   private static final feq d = dlu.b(16.0, 0.0, 9.0);
+   public static final int b = 6;
+   public static final int c = 64;
+   private static final ja[] d = ja.values();
 
    @Override
    public MapCodec<dtx> a() {
       return a;
    }
 
-   public dtx(dzn.d $$0) {
+   protected dtx(dzy.d $$0) {
       super($$0);
-      this.l(this.B.b().b(b, ja.c));
    }
 
    @Override
-   public dzo a(dcl $$0) {
-      return this.m().b(b, $$0.g().g());
-   }
-
-   @Override
-   protected bty a(dzo $$0, dip $$1, iu $$2, cqs $$3, fds $$4) {
-      if (!$$1.C) {
-         $$3.a($$0.b($$1, $$2));
-         $$3.a(awv.ay);
+   protected void a(dzz $$0, div $$1, iu $$2, dzz $$3, boolean $$4) {
+      if (!$$3.a($$0.b())) {
+         this.a($$1, $$2);
       }
-
-      return bty.a;
-   }
-
-   @Nullable
-   @Override
-   protected bua b(dzo $$0, dip $$1, iu $$2) {
-      return new bug(($$2x, $$3, $$4) -> new cwn($$2x, $$3, cux.a($$1, $$2)), c);
    }
 
    @Override
-   protected feq a(dzo $$0, dhv $$1, iu $$2, feb $$3) {
-      return d;
+   protected void a(dzz $$0, div $$1, iu $$2, dma $$3, @Nullable exo $$4, boolean $$5) {
+      this.a($$1, $$2);
+      super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
-   @Override
-   protected boolean g_(dzo $$0) {
-      return true;
+   protected void a(div $$0, iu $$1) {
+      if (this.b($$0, $$1)) {
+         $$0.a($$1, dmc.aW.m(), 2);
+         $$0.a(null, $$1, awn.zX, awo.e, 1.0F, 1.0F);
+      }
    }
 
-   @Override
-   protected dzo a(dzo $$0, dsm $$1) {
-      return $$0.b(b, $$1.a($$0.c(b)));
-   }
+   private boolean b(div $$0, iu $$1) {
+      return iu.a($$1, 6, 65, ($$0x, $$1x) -> {
+         for (ja $$2 : d) {
+            $$1x.accept($$0x.a($$2));
+         }
+      }, $$2 -> {
+         if ($$2.equals($$1)) {
+            return iu.b.a;
+         } else {
+            dzz $$3 = $$0.a_($$2);
+            ewg $$4 = $$0.b_($$2);
+            if (!$$4.a(axh.a)) {
+               return iu.b.b;
+            } else {
+               if ($$3.b() instanceof dmi $$6 && !$$6.a(null, $$0, $$2, $$3).f()) {
+                  return iu.b.a;
+               }
 
-   @Override
-   protected dzo a(dzo $$0, dqv $$1) {
-      return $$0.a($$1.a($$0.c(b)));
-   }
+               if ($$3.b() instanceof dqv) {
+                  $$0.a($$2, dmc.a.m(), 3);
+               } else {
+                  if (!$$3.a(dmc.mF) && !$$3.a(dmc.mG) && !$$3.a(dmc.bE) && !$$3.a(dmc.bF)) {
+                     return iu.b.b;
+                  }
 
-   @Override
-   protected void a(dzp.a<dlu, dzo> $$0) {
-      $$0.a(b);
-   }
+                  dwx $$7 = $$3.x() ? $$0.c_($$2) : null;
+                  a($$3, $$0, $$2, $$7);
+                  $$0.a($$2, dmc.a.m(), 3);
+               }
 
-   @Override
-   protected boolean a(dzo $$0, ewk $$1) {
-      return false;
+               return iu.b.a;
+            }
+         }
+      }) > 1;
    }
 }

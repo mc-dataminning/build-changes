@@ -1,37 +1,28 @@
-public class ael implements zd<abs> {
-   public static final yu<vs, ael> a = zd.a(ael::a, ael::new);
-   private final int b;
-   private final byte c;
+import javax.annotation.Nullable;
 
-   public ael(bwa $$0, byte $$1) {
-      this.b = $$0.ar();
-      this.c = $$1;
+public record ael(String b, @Nullable String c) implements zf<abu> {
+   public static final yw<vu, ael> a = zf.a(ael::a, ael::new);
+
+   private ael(vu $$0) {
+      this($$0.p(), $$0.c(vu::p));
    }
 
-   private ael(vs $$0) {
-      this.b = $$0.l();
-      this.c = $$0.readByte();
-   }
-
-   private void a(vs $$0) {
-      $$0.c(this.b);
-      $$0.l(this.c);
+   private void a(vu $$0) {
+      $$0.a(this.b);
+      $$0.a(this.c, vu::a);
    }
 
    @Override
-   public zf<ael> a() {
-      return agl.aq;
+   public zh<ael> a() {
+      return agn.cp;
    }
 
-   public void a(abs $$0) {
+   public void a(abu $$0) {
       $$0.a(this);
    }
 
-   public bwa a(dip $$0) {
-      return $$0.a(this.b);
-   }
-
-   public float b() {
-      return azk.a(this.c);
+   @Nullable
+   public String e() {
+      return this.c;
    }
 }

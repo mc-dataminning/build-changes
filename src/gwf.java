@@ -1,34 +1,32 @@
-public class gwf extends gwq<cja, hcj, gft> {
-   private static final ale a = ale.b("textures/entity/iron_golem/iron_golem.png");
+public class gwf extends gvy<crn, hcm> {
+   private final hfg a;
 
-   public gwf(gvk.a $$0) {
-      super($$0, new gft($$0.a(gif.bw)), 0.7F);
-      this.a(new gzo(this));
-      this.a(new gzp(this, $$0.d()));
+   public gwf(gvz.a $$0) {
+      super($$0);
+      this.a = $$0.b();
    }
 
-   public ale a(hcj $$0) {
-      return a;
-   }
-
-   public hcj b() {
-      return new hcj();
-   }
-
-   public void a(cja $$0, hcj $$1, float $$2) {
-      super.a($$0, $$1, $$2);
-      $$1.a = (float)$$0.n() > 0.0F ? (float)$$0.n() - $$2 : 0.0F;
-      $$1.b = $$0.q();
-      $$1.c = $$0.m();
-   }
-
-   protected void a(hcj $$0, fiq $$1, float $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      if (!((double)$$0.ae < 0.01)) {
-         float $$4 = 13.0F;
-         float $$5 = $$0.ad + 6.0F;
-         float $$6 = (Math.abs($$5 % 13.0F - 6.5F) - 3.25F) / 3.25F;
-         $$1.a(a.f.rotationDegrees(6.5F * $$6));
+   public void a(hcm $$0, fjc $$1, gps $$2, int $$3) {
+      $$1.a();
+      $$1.a(this.d.b());
+      if ($$0.a) {
+         $$1.a(a.f.rotationDegrees(180.0F));
+         $$1.a(a.d.rotationDegrees(180.0F));
+         $$1.a(a.b.rotationDegrees(90.0F));
       }
+
+      $$0.b.a($$1, $$2, $$3, hif.d);
+      $$1.b();
+      super.a($$0, $$1, $$2, $$3);
+   }
+
+   public hcm a() {
+      return new hcm();
+   }
+
+   public void a(crn $$0, hcm $$1, float $$2) {
+      super.a($$0, $$1, $$2);
+      $$1.a = $$0.g();
+      this.a.a($$1.b, $$0.f(), cyw.h, $$0);
    }
 }

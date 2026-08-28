@@ -1,42 +1,13 @@
-public class gzl extends gzy<hby, gfh> {
-   public gzl(gxh<hby, gfh> $$0) {
+public class gzl extends han<hbs, gex> {
+   private static final gqc a = gqc.r(alg.b("textures/entity/breeze/breeze_eyes.png"));
+
+   public gzl(gxw<hbs, gex> $$0) {
       super($$0);
    }
 
-   public void a(fiq $$0, gpd $$1, int $$2, hby $$3, float $$4, float $$5) {
-      hes $$6 = $$3.i;
-      if (!$$6.c()) {
-         boolean $$7 = $$3.d;
-         boolean $$8 = $$3.aj;
-         $$0.a();
-         $$0.a(this.d().b.b / 16.0F, this.d().b.c / 16.0F, this.d().b.d / 16.0F);
-         if ($$8) {
-            float $$9 = 0.75F;
-            $$0.b(0.75F, 0.75F, 0.75F);
-         }
-
-         $$0.a(a.f.rotation($$3.a));
-         $$0.a(a.d.rotationDegrees($$4));
-         $$0.a(a.b.rotationDegrees($$5));
-         if ($$3.aj) {
-            if ($$7) {
-               $$0.a(0.4F, 0.26F, 0.15F);
-            } else {
-               $$0.a(0.06F, 0.26F, -0.5F);
-            }
-         } else if ($$7) {
-            $$0.a(0.46F, 0.26F, 0.22F);
-         } else {
-            $$0.a(0.06F, 0.27F, -0.5F);
-         }
-
-         $$0.a(a.b.rotationDegrees(90.0F));
-         if ($$7) {
-            $$0.a(a.f.rotationDegrees(90.0F));
-         }
-
-         $$6.a($$0, $$1, $$2, hhp.d);
-         $$0.b();
-      }
+   public void a(fjc $$0, gps $$1, int $$2, hbs $$3, float $$4, float $$5) {
+      fjg $$6 = $$1.getBuffer(a);
+      gex $$7 = this.d();
+      gve.a($$7, $$7.a(), $$7.b()).a($$0, $$6, $$2, hif.d);
    }
 }

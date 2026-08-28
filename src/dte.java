@@ -1,49 +1,142 @@
 import com.mojang.serialization.MapCodec;
+import javax.annotation.Nullable;
 
-public class dte extends dpm {
+public class dte extends dvj implements dmd, dtj {
    public static final MapCodec<dte> a = b(dte::new);
+   public static final int b = 4;
+   public static final eaz c = eap.aV;
+   public static final eaq d = eap.I;
+   private static final ffc e = dma.b(4.0, 0.0, 6.0);
+   private static final ffc f = dma.b(10.0, 0.0, 6.0);
+   private static final ffc g = dma.b(12.0, 0.0, 6.0);
+   private static final ffc h = dma.b(12.0, 0.0, 7.0);
 
    @Override
    public MapCodec<dte> a() {
       return a;
    }
 
-   public dte(dzn.d $$0) {
+   protected dte(dzy.d $$0) {
       super($$0);
+      this.l(this.B.b().b(c, Integer.valueOf(1)).b(d, Boolean.valueOf(true)));
    }
 
+   @Nullable
    @Override
-   public void a(dip $$0, dzo $$1, iu $$2, bwa $$3, double $$4) {
-      if (!$$3.cf()) {
-         $$3.a($$4, 0.0F, $$0.al().l());
-      }
-   }
-
-   @Override
-   public void a(dhv $$0, bwa $$1) {
-      if ($$1.cf()) {
-         super.a($$0, $$1);
+   public dzz a(dcr $$0) {
+      dzz $$1 = $$0.q().a_($$0.a());
+      if ($$1.a(this)) {
+         return $$1.b(c, Integer.valueOf(Math.min(4, $$1.c(c) + 1)));
       } else {
-         this.a($$1);
+         ewg $$2 = $$0.q().b_($$0.a());
+         boolean $$3 = $$2.a() == ewh.c;
+         return super.a($$0).b(d, Boolean.valueOf($$3));
       }
    }
 
-   private void a(bwa $$0) {
-      fdw $$1 = $$0.dy();
-      if ($$1.e < 0.0) {
-         double $$2 = $$0 instanceof bwz ? 1.0 : 0.8;
-         $$0.n($$1.d, -$$1.e * $$2, $$1.f);
+   public static boolean o(dzz $$0) {
+      return !$$0.c(d);
+   }
+
+   @Override
+   protected boolean b(dzz $$0, dib $$1, iu $$2) {
+      return !$$0.g($$1, $$2).a(ja.b).c() || $$0.c($$1, $$2, ja.b);
+   }
+
+   @Override
+   protected boolean a(dzz $$0, diy $$1, iu $$2) {
+      iu $$3 = $$2.e();
+      return this.b($$1.a_($$3), $$1, $$3);
+   }
+
+   @Override
+   protected dzz a(dzz $$0, diy $$1, djk $$2, iu $$3, ja $$4, iu $$5, dzz $$6, azv $$7) {
+      if (!$$0.a($$1, $$3)) {
+         return dmc.a.m();
+      } else {
+         if ($$0.c(d)) {
+            $$2.a($$3, ewh.c, ewh.c.a($$1));
+         }
+
+         return super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
       }
    }
 
    @Override
-   public void a(dip $$0, iu $$1, dzo $$2, bwa $$3) {
-      double $$4 = Math.abs($$3.dy().e);
-      if ($$4 < 0.1 && !$$3.ce()) {
-         double $$5 = 0.4 + $$4 * 0.2;
-         $$3.i($$3.dy().d($$5, 1.0, $$5));
+   protected boolean a(dzz $$0, dcr $$1) {
+      return !$$1.h() && $$1.n().a(this.h()) && $$0.c(c) < 4 ? true : super.a($$0, $$1);
+   }
+
+   @Override
+   protected ffc a(dzz $$0, dib $$1, iu $$2, fen $$3) {
+      return switch ($$0.c(c)) {
+         case 2 -> f;
+         case 3 -> g;
+         case 4 -> h;
+         default -> e;
+      };
+   }
+
+   @Override
+   protected ewg b_(dzz $$0) {
+      return $$0.c(d) ? ewh.c.a(false) : super.b_($$0);
+   }
+
+   @Override
+   protected void a(eaa.a<dma, dzz> $$0) {
+      $$0.a(c, d);
+   }
+
+   @Override
+   public boolean a(diy $$0, iu $$1, dzz $$2) {
+      return !o($$2) && $$0.a_($$1.e()).a(axc.at);
+   }
+
+   @Override
+   public boolean a(div $$0, azv $$1, iu $$2, dzz $$3) {
+      return true;
+   }
+
+   @Override
+   public void a(arq $$0, azv $$1, iu $$2, dzz $$3) {
+      int $$4 = 5;
+      int $$5 = 1;
+      int $$6 = 2;
+      int $$7 = 0;
+      int $$8 = $$2.u() - 2;
+      int $$9 = 0;
+
+      for (int $$10 = 0; $$10 < 5; $$10++) {
+         for (int $$11 = 0; $$11 < $$5; $$11++) {
+            int $$12 = 2 + $$2.v() - 1;
+
+            for (int $$13 = $$12 - 2; $$13 < $$12; $$13++) {
+               iu $$14 = new iu($$8 + $$10, $$13, $$2.w() - $$9 + $$11);
+               if ($$14 != $$2 && $$1.a(6) == 0 && $$0.a_($$14).a(dmc.J)) {
+                  dzz $$15 = $$0.a_($$14.e());
+                  if ($$15.a(axc.at)) {
+                     $$0.a($$14, dmc.ny.m().b(c, Integer.valueOf($$1.a(4) + 1)), 3);
+                  }
+               }
+            }
+         }
+
+         if ($$7 < 2) {
+            $$5 += 2;
+            $$9++;
+         } else {
+            $$5 -= 2;
+            $$9--;
+         }
+
+         $$7++;
       }
 
-      super.a($$0, $$1, $$2, $$3);
+      $$0.a($$2, $$3.b(c, Integer.valueOf(4)), 2);
+   }
+
+   @Override
+   protected boolean a(dzz $$0, ewv $$1) {
+      return false;
    }
 }

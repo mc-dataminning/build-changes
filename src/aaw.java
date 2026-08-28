@@ -1,29 +1,32 @@
-import java.util.HashSet;
-import java.util.Set;
+import io.netty.buffer.ByteBuf;
+import java.util.List;
 
-public record aaw(Set<jx> c, Set<jx> d) implements aag {
-   public static final yu<vs, aaw> a = aag.a(aaw::a, aaw::new);
-   public static final aag.b<aaw> b = aag.a("debug/village_sections");
-
-   private aaw(vs $$0) {
-      this($$0.a(HashSet::new, vs::g), $$0.a(HashSet::new, vs::g));
-   }
-
-   private void a(vs $$0) {
-      $$0.a(this.c, vs::a);
-      $$0.a(this.d, vs::a);
-   }
+public record aaw(long c, List<aaw.a> d) implements aai {
+   public static final aai.b<aaw> a = aai.a("debug/redstone_update_order");
+   public static final yw<vu, aaw> b = yw.a(yu.k, aaw::b, aaw.a.a.a(yu.a()), aaw::c, aaw::new);
 
    @Override
-   public aag.b<aaw> a() {
-      return b;
+   public aai.b<aaw> a() {
+      return a;
    }
 
-   public Set<jx> b() {
+   public long b() {
       return this.c;
    }
 
-   public Set<jx> c() {
+   public List<aaw.a> c() {
       return this.d;
+   }
+
+   public static record a(iu b, exo c) {
+      public static final yw<ByteBuf, aaw.a> a = yw.a(iu.b, aaw.a::a, exo.a, aaw.a::b, aaw.a::new);
+
+      public iu a() {
+         return this.b;
+      }
+
+      public exo b() {
+         return this.c;
+      }
    }
 }

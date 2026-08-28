@@ -1,41 +1,24 @@
 import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.Iterables;
+import java.util.Collection;
 import java.util.List;
-import java.util.Optional;
 import java.util.Set;
 
-public class cgt extends chh<bwz> {
-   private static final int a = 200;
-   private static final int b = 599;
-
-   public cgt() {
-      this(200);
-   }
-
-   public cgt(int $$0) {
-      super($$0);
-   }
-
+public class cgt extends chd<cow> {
    @Override
-   protected void a(aro $$0, bwz $$1) {
-      a($$1);
+   public Set<cge<?>> a() {
+      return ImmutableSet.copyOf(Iterables.concat(super.a(), List.of(cge.C)));
    }
 
-   @Override
-   public Set<cgb<?>> a() {
-      return ImmutableSet.of(cgb.g);
-   }
-
-   public static void a(bwz $$0) {
-      Optional<List<bwz>> $$1 = $$0.eb().c(cgb.g);
-      if (!$$1.isEmpty()) {
-         boolean $$2 = $$1.get().stream().anyMatch($$0x -> $$0x.aq().equals(bwj.ap));
-         if ($$2) {
-            b($$0);
-         }
-      }
-   }
-
-   public static void b(bwz $$0) {
-      $$0.eb().a(cgb.G, true, 599L);
+   protected void a(arq $$0, cow $$1) {
+      super.a($$0, $$1);
+      $$1.eb()
+         .c(cge.g)
+         .stream()
+         .flatMap(Collection::stream)
+         .filter(bwk.e)
+         .filter($$2 -> chk.c($$0, $$1, $$2))
+         .findFirst()
+         .ifPresentOrElse($$1x -> $$1.eb().a(cge.C, $$1x), () -> $$1.eb().b(cge.C));
    }
 }

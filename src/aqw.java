@@ -1,69 +1,91 @@
-public abstract class aqw extends evh {
-   protected aqw(int $$0, int $$1, int $$2) {
-      super($$0, $$1, $$2);
+import com.mojang.logging.LogUtils;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.Executor;
+import java.util.function.IntConsumer;
+import java.util.function.IntSupplier;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
+
+public class aqw implements aqs.a, AutoCloseable {
+   public static final int a = 4;
+   private static final Logger c = LogUtils.getLogger();
+   private final aqx d;
+   private final bsw<Runnable> e;
+   private final bst f;
+   protected boolean b;
+
+   public aqw(bsw<Runnable> $$0, Executor $$1) {
+      this.d = new aqx($$0.v_() + "_queue");
+      this.e = $$0;
+      this.f = new bst(4, $$1, "dispatcher");
+      this.b = true;
+   }
+
+   public boolean a() {
+      return this.f.c() || this.d.b();
    }
 
    @Override
-   protected boolean a(long $$0) {
-      return $$0 == dhw.c;
+   public void onLevelChange(dic $$0, IntSupplier $$1, int $$2, IntConsumer $$3) {
+      this.f.a_(new bsv.c(0, () -> {
+         int $$4 = $$1.getAsInt();
+         this.d.a($$4, $$0, $$2);
+         $$3.accept($$2);
+      }));
    }
 
-   @Override
-   protected void a(long $$0, int $$1, boolean $$2) {
-      if (!$$2 || $$1 < this.f - 2) {
-         dhw $$3 = new dhw($$0);
-         int $$4 = $$3.h;
-         int $$5 = $$3.i;
-
-         for (int $$6 = -1; $$6 <= 1; $$6++) {
-            for (int $$7 = -1; $$7 <= 1; $$7++) {
-               long $$8 = dhw.c($$4 + $$6, $$5 + $$7);
-               if ($$8 != $$0) {
-                  this.b($$0, $$8, $$1, $$2);
-               }
-            }
+   public void a(long $$0, Runnable $$1, boolean $$2) {
+      this.f.a_(new bsv.c(1, () -> {
+         this.d.a($$0, $$2);
+         this.a($$0);
+         if (this.b) {
+            this.b = false;
+            this.b();
          }
-      }
+
+         $$1.run();
+      }));
    }
 
-   @Override
-   protected int a(long $$0, long $$1, int $$2) {
-      int $$3 = $$2;
-      dhw $$4 = new dhw($$0);
-      int $$5 = $$4.h;
-      int $$6 = $$4.i;
-
-      for (int $$7 = -1; $$7 <= 1; $$7++) {
-         for (int $$8 = -1; $$8 <= 1; $$8++) {
-            long $$9 = dhw.c($$5 + $$7, $$6 + $$8);
-            if ($$9 == $$0) {
-               $$9 = dhw.c;
-            }
-
-            if ($$9 != $$1) {
-               int $$10 = this.b($$9, $$0, this.c($$9));
-               if ($$3 > $$10) {
-                  $$3 = $$10;
-               }
-
-               if ($$3 == 0) {
-                  return $$3;
-               }
-            }
+   public void a(Runnable $$0, long $$1, IntSupplier $$2) {
+      this.f.a_(new bsv.c(2, () -> {
+         int $$3 = $$2.getAsInt();
+         this.d.a($$0, $$1, $$3);
+         if (this.b) {
+            this.b = false;
+            this.b();
          }
-      }
+      }));
+   }
 
-      return $$3;
+   protected void b() {
+      this.f.a_(new bsv.c(3, () -> {
+         aqx.a $$0 = this.c();
+         if ($$0 == null) {
+            this.b = true;
+         } else {
+            this.a($$0);
+         }
+      }));
+   }
+
+   protected void a(aqx.a $$0) {
+      CompletableFuture.allOf($$0.b().stream().map($$0x -> this.e.a($$1 -> {
+            $$0x.run();
+            $$1.complete(bau.a);
+         })).toArray(CompletableFuture[]::new)).thenAccept($$0x -> this.b());
+   }
+
+   protected void a(long $$0) {
+   }
+
+   @Nullable
+   protected aqx.a c() {
+      return this.d.a();
    }
 
    @Override
-   protected int b(long $$0, long $$1, int $$2) {
-      return $$0 == dhw.c ? this.b($$1) : $$2 + 1;
-   }
-
-   protected abstract int b(long var1);
-
-   public void b(long $$0, int $$1, boolean $$2) {
-      this.a(dhw.c, $$0, $$1, $$2);
+   public void close() {
+      this.e.close();
    }
 }

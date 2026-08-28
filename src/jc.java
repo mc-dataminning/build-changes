@@ -1,4 +1,4 @@
-public enum jc implements bai {
+public enum jc implements bak {
    a("down_east", ja.a, ja.f),
    b("down_north", ja.a, ja.c),
    c("down_south", ja.a, ja.d),

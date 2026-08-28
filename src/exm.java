@@ -1,44 +1,25 @@
-import java.util.Optional;
 import javax.annotation.Nullable;
 
-public record exm(iu a, int b, int c) {
-   @Nullable
-   public static exm a(tx $$0) {
-      Optional<iu> $$1 = um.a($$0, "pos");
-      if ($$1.isEmpty()) {
-         return null;
-      } else {
-         int $$2 = $$0.h("rotation");
-         int $$3 = $$0.h("entity_id");
-         return new exm($$1.get(), $$2, $$3);
-      }
+public class exm implements exn {
+   private final div b;
+
+   public exm(div $$0) {
+      this.b = $$0;
    }
 
-   public tx a() {
-      tx $$0 = new tx();
-      $$0.a("pos", um.a(this.a));
-      $$0.a("rotation", this.b);
-      $$0.a("entity_id", this.c);
-      return $$0;
+   @Override
+   public void a(ja $$0, dzz $$1, iu $$2, iu $$3, int $$4, int $$5) {
+      exn.a(this.b, $$0, $$2, $$3, $$1, $$4, $$5 - 1);
    }
 
-   public String b() {
-      return a(this.a);
+   @Override
+   public void a(iu $$0, dma $$1, @Nullable exo $$2) {
+      dzz $$3 = this.b.a_($$0);
+      this.a($$3, $$0, $$1, $$2, false);
    }
 
-   public static String a(iu $$0) {
-      return "frame-" + $$0.u() + "," + $$0.v() + "," + $$0.w();
-   }
-
-   public iu c() {
-      return this.a;
-   }
-
-   public int d() {
-      return this.b;
-   }
-
-   public int e() {
-      return this.c;
+   @Override
+   public void a(dzz $$0, iu $$1, dma $$2, @Nullable exo $$3, boolean $$4) {
+      exn.a(this.b, $$0, $$1, $$2, $$3, $$4);
    }
 }

@@ -13,8 +13,8 @@ public class em {
 
    public static <T, O> T a(DynamicOps<O> $$0, Codec<T> $$1, jg.a $$2, DynamicCommandExceptionType $$3, StringReader $$4) throws CommandSyntaxException {
       int $$5 = $$4.getCursor();
-      alc<O> $$6 = $$2.a($$0);
-      O $$7 = uv.b($$6, $$4);
+      ale<O> $$6 = $$2.a($$0);
+      O $$7 = ux.b($$6, $$4);
       DataResult<T> $$8 = $$1.parse($$6, $$7);
       return (T)$$8.getOrThrow($$3x -> {
          $$4.setCursor($$5);

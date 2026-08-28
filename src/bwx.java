@@ -1,256 +1,135 @@
-import com.mojang.datafixers.util.Either;
-import java.util.Optional;
-import java.util.UUID;
+import java.util.function.Consumer;
 import javax.annotation.Nullable;
 
-public interface bwx {
-   String o_ = "leash";
-   double p_ = 10.0;
-   double q_ = 6.0;
-
+public class bwx {
+   public static final int a = 3;
+   private final bwd b;
+   private int c;
+   private final bwx.a d = new bwx.a(0, fei.c, 0.0F, 0.0F);
    @Nullable
-   bwx.a T_();
-
-   void a(@Nullable bwx.a var1);
-
-   default boolean O_() {
-      return this.T_() != null && this.T_().a != null;
-   }
-
-   default boolean M_() {
-      return this.T_() != null;
-   }
-
-   default boolean p() {
-      return this.w() && !this.O_();
-   }
-
-   default boolean w() {
-      return true;
-   }
-
-   default void e_(int $$0) {
-      this.a(new bwx.a($$0));
-      a((bwa)this, false, false);
-   }
-
-   default void c(tx $$0) {
-      bwx.a $$1 = a($$0);
-      if (this.T_() != null && $$1 == null) {
-         this.z();
-      }
-
-      this.a($$1);
-   }
-
+   private fei e;
    @Nullable
-   private static bwx.a a(tx $$0) {
-      if ($$0.b("leash", 10)) {
-         return new bwx.a(Either.left($$0.p("leash").a("UUID")));
+   private feh f;
+   @Nullable
+   private final Consumer<bwx> g;
+
+   public bwx(bwd $$0) {
+      this($$0, 3, null);
+   }
+
+   public bwx(bwd $$0, int $$1) {
+      this($$0, $$1, null);
+   }
+
+   public bwx(bwd $$0, @Nullable Consumer<bwx> $$1) {
+      this($$0, 3, $$1);
+   }
+
+   public bwx(bwd $$0, int $$1, @Nullable Consumer<bwx> $$2) {
+      this.c = $$1;
+      this.b = $$0;
+      this.g = $$2;
+   }
+
+   public fei a() {
+      return this.d.a > 0 ? this.d.b : this.b.dt();
+   }
+
+   public float b() {
+      return this.d.a > 0 ? this.d.c : this.b.dL();
+   }
+
+   public float c() {
+      return this.d.a > 0 ? this.d.d : this.b.dN();
+   }
+
+   public void a(fei $$0, float $$1, float $$2) {
+      if (this.c == 0) {
+         this.b.b($$0, $$1, $$2);
+         this.f();
       } else {
-         if ($$0.b("leash", 11)) {
-            Either<UUID, iu> $$1 = um.a($$0, "leash").<Either<UUID, iu>>map(Either::right).orElse(null);
-            if ($$1 != null) {
-               return new bwx.a($$1);
-            }
-         }
-
-         return null;
-      }
-   }
-
-   default void a(tx $$0, @Nullable bwx.a $$1) {
-      if ($$1 != null) {
-         Either<UUID, iu> $$2 = $$1.b;
-         if ($$1.a instanceof cmr $$3) {
-            $$2 = Either.right($$3.j());
-         } else if ($$1.a != null) {
-            $$2 = Either.left($$1.a.cG());
-         }
-
-         if ($$2 != null) {
-            $$0.a("leash", (uu)$$2.map($$0x -> {
-               tx $$1x = new tx();
-               $$1x.a("UUID", $$0x);
-               return $$1x;
-            }, um::a));
+         this.d.a = this.c;
+         this.d.b = $$0;
+         this.d.c = $$1;
+         this.d.d = $$2;
+         this.e = this.b.dt();
+         this.f = new feh(this.b.dN(), this.b.dL());
+         if (this.g != null) {
+            this.g.accept(this);
          }
       }
    }
 
-   private static <E extends bwa & bwx> void a(E $$0, bwx.a $$1) {
-      if ($$1.b != null && $$0.dV() instanceof aro $$2) {
-         Optional<UUID> $$3 = $$1.b.left();
-         Optional<iu> $$4 = $$1.b.right();
-         if ($$3.isPresent()) {
-            bwa $$5 = $$2.b($$3.get());
-            if ($$5 != null) {
-               a($$0, $$5, true);
-               return;
-            }
-         } else if ($$4.isPresent()) {
-            a($$0, cmr.b($$2, $$4.get()), true);
-            return;
-         }
-
-         if ($$0.af > 100) {
-            $$0.a($$2, cyw.vO);
-            $$0.a(null);
-         }
-      }
+   public boolean d() {
+      return this.d.a > 0;
    }
 
-   default void y() {
-      a((bwa)this, true, true);
+   public void a(int $$0) {
+      this.c = $$0;
    }
 
-   default void z() {
-      a((bwa)this, true, false);
-   }
-
-   default void A() {
-   }
-
-   private static <E extends bwa & bwx> void a(E $$0, boolean $$1, boolean $$2) {
-      bwx.a $$3 = $$0.T_();
-      if ($$3 != null && $$3.a != null) {
-         $$0.a(null);
-         $$0.A();
-         if ($$0.dV() instanceof aro $$4) {
-            if ($$2) {
-               $$0.a($$4, cyw.vO);
-            }
-
-            if ($$1) {
-               $$4.m().b($$0, new afc($$0, null));
-            }
-         }
-      }
-   }
-
-   static <E extends bwa & bwx> void a_(aro $$0, E $$1) {
-      bwx.a $$2 = $$1.T_();
-      if ($$2 != null && $$2.b != null) {
-         a($$1, $$2);
-      }
-
-      if ($$2 != null && $$2.a != null) {
-         if (!$$1.bK() || !$$2.a.bK()) {
-            if ($$0.O().c(dil.i)) {
-               $$1.y();
-            } else {
-               $$1.z();
-            }
-         }
-
-         bwa $$3 = $$1.C();
-         if ($$3 != null && $$3.dV() == $$1.dV()) {
-            float $$4 = $$1.f($$3);
-            if (!$$1.a($$3, $$4)) {
-               return;
-            }
-
-            if ((double)$$4 > 10.0) {
-               $$1.B();
-            } else if ((double)$$4 > 6.0) {
-               $$1.b($$3, $$4);
-               $$1.cy();
-            } else {
-               $$1.a($$3);
-            }
-         }
-      }
-   }
-
-   default boolean a(bwa $$0, float $$1) {
-      return true;
-   }
-
-   default void B() {
-      this.y();
-   }
-
-   default void a(bwa $$0) {
-   }
-
-   default void b(bwa $$0, float $$1) {
-      a((bwa)this, $$0, $$1);
-   }
-
-   private static <E extends bwa & bwx> void a(E $$0, bwa $$1, float $$2) {
-      double $$3 = ($$1.dA() - $$0.dA()) / (double)$$2;
-      double $$4 = ($$1.dC() - $$0.dC()) / (double)$$2;
-      double $$5 = ($$1.dG() - $$0.dG()) / (double)$$2;
-      $$0.i($$0.dy().b(Math.copySign($$3 * $$3 * 0.4, $$3), Math.copySign($$4 * $$4 * 0.4, $$4), Math.copySign($$5 * $$5 * 0.4, $$5)));
-   }
-
-   default void a_(bwa $$0, boolean $$1) {
-      a((bwa)this, $$0, $$1);
-   }
-
-   private static <E extends bwa & bwx> void a(E $$0, bwa $$1, boolean $$2) {
-      bwx.a $$3 = $$0.T_();
-      if ($$3 == null) {
-         $$3 = new bwx.a($$1);
-         $$0.a($$3);
+   public void e() {
+      if (!this.d()) {
+         this.f();
       } else {
-         $$3.a($$1);
-      }
-
-      if ($$2 && $$0.dV() instanceof aro $$4) {
-         $$4.m().b($$0, new afc($$0, $$1));
-      }
-
-      if ($$0.bZ()) {
-         $$0.bP();
-      }
-   }
-
-   @Nullable
-   default bwa C() {
-      return b((bwa)this);
-   }
-
-   @Nullable
-   private static <E extends bwa & bwx> bwa b(E $$0) {
-      bwx.a $$1 = $$0.T_();
-      if ($$1 == null) {
-         return null;
-      } else {
-         if ($$1.c != 0 && $$0.dV().C) {
-            bwa var3 = $$0.dV().a($$1.c);
-            if (var3 instanceof bwa) {
-               $$1.a(var3);
+         double $$0 = 1.0 / (double)this.d.a;
+         if (this.e != null) {
+            fei $$1 = this.b.dt().d(this.e);
+            if (this.b.dV().a(this.b, this.b.ax().c(this.d.b.e($$1)))) {
+               this.d.a($$1);
             }
          }
 
-         return $$1.a;
+         if (this.f != null) {
+            float $$2 = this.b.dL() - this.f.j;
+            float $$3 = this.b.dN() - this.f.i;
+            this.d.a($$2, $$3);
+         }
+
+         double $$4 = azm.d($$0, this.b.dA(), this.d.b.d);
+         double $$5 = azm.d($$0, this.b.dC(), this.d.b.e);
+         double $$6 = azm.d($$0, this.b.dG(), this.d.b.f);
+         fei $$7 = new fei($$4, $$5, $$6);
+         float $$8 = (float)azm.e($$0, (double)this.b.dL(), (double)this.d.c);
+         float $$9 = (float)azm.d($$0, (double)this.b.dN(), (double)this.d.d);
+         this.b.b($$7);
+         this.b.b($$8, $$9);
+         this.d.a();
+         this.e = $$7;
+         this.f = new feh(this.b.dN(), this.b.dL());
       }
    }
 
-   public static final class a {
-      int c;
-      @Nullable
-      public bwa a;
-      @Nullable
-      public Either<UUID, iu> b;
+   public void f() {
+      this.d.a = 0;
+      this.e = null;
+      this.f = null;
+   }
 
-      a(Either<UUID, iu> $$0) {
-         this.b = $$0;
-      }
+   static class a {
+      protected int a;
+      fei b;
+      float c;
+      float d;
 
-      a(bwa $$0) {
+      a(int $$0, fei $$1, float $$2, float $$3) {
          this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
+         this.d = $$3;
       }
 
-      a(int $$0) {
-         this.c = $$0;
+      public void a() {
+         this.a--;
       }
 
-      public void a(bwa $$0) {
-         this.a = $$0;
-         this.b = null;
-         this.c = 0;
+      public void a(fei $$0) {
+         this.b = this.b.e($$0);
+      }
+
+      public void a(float $$0, float $$1) {
+         this.c += $$0;
+         this.d += $$1;
       }
    }
 }

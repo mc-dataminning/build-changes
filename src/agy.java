@@ -1,34 +1,20 @@
-public class agy implements zd<agn> {
-   public static final yu<vs, agy> a = zd.a(agy::a, agy::new);
-   private final agy.a b;
+public record agy(xp.a b) implements zf<agp> {
+   public static final yw<vu, agy> a = zf.a(agy::a, agy::new);
 
-   public agy(agy.a $$0) {
-      this.b = $$0;
+   private agy(vu $$0) {
+      this(xp.a.a($$0));
    }
 
-   private agy(vs $$0) {
-      this.b = $$0.b(agy.a.class);
-   }
-
-   private void a(vs $$0) {
-      $$0.a(this.b);
+   private void a(vu $$0) {
+      xp.a.a($$0, this.b);
    }
 
    @Override
-   public zf<agy> a() {
-      return agl.bu;
+   public zh<agy> a() {
+      return agn.bs;
    }
 
-   public void a(agn $$0) {
+   public void a(agp $$0) {
       $$0.a(this);
-   }
-
-   public agy.a b() {
-      return this.b;
-   }
-
-   public static enum a {
-      a,
-      b;
    }
 }

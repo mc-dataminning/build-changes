@@ -1,35 +1,40 @@
 import com.google.common.collect.ImmutableMap;
 
-public class ccp<E extends cpv> extends byq<E> {
-   private static final double c = 6.0;
-   private static final double d = 20.0;
+public class ccp extends byt<cqb> {
+   private static final int c = 25;
+   private static final int d = 20;
 
-   public ccp(int $$0) {
-      super(ImmutableMap.of(cgb.aC, cgc.a, cgb.p, cgc.b, cgb.n, cgc.b, cgb.o, cgc.c, cgb.C, cgc.c, cgb.aA, cgc.c, cgb.aH, cgc.c), $$0);
+   public ccp() {
+      super(ImmutableMap.of(cge.az, cgf.a, cge.p, cgf.b, cge.aG, cgf.c, cge.aE, cgf.c), cqc.b);
    }
 
-   protected boolean a(aro $$0, E $$1, long $$2) {
+   protected void a(arq $$0, cqb $$1, long $$2) {
+      byc<cqb> $$3 = $$1.eb();
+      $$3.a(cge.aE, bau.a, 25L);
+      $$3.b(cge.n);
+      bxc $$4 = $$1.eb().c(cge.az).get();
+      byv.a($$1, $$4);
+      $$1.b(bxo.l);
+      $$1.a($$4, 20, false);
+   }
+
+   protected boolean b(arq $$0, cqb $$1, long $$2) {
       return true;
    }
 
-   protected void b(aro $$0, E $$1, long $$2) {
-      $$1.a(awl.CT, 5.0F, 1.0F);
+   protected void c(arq $$0, cqb $$1, long $$2) {
+      if (!$$1.eb().a(cge.aE) && !$$1.eb().a(cge.aG)) {
+         $$1.eb().a(cge.aG, bau.a, (long)(cqc.b - 25));
+         $$1.a(awn.CV, 3.0F, 1.0F);
+      }
    }
 
-   protected void c(aro $$0, E $$1, long $$2) {
-      if ($$1.c(bxl.m)) {
-         $$1.b(bxl.a);
+   protected void d(arq $$0, cqb $$1, long $$2) {
+      if ($$1.c(bxo.l)) {
+         $$1.b(bxo.a);
       }
 
-      $$1.eb().b(cgb.aC);
-      $$1.eb().c(cgb.C).filter($$1::b).ifPresent($$1x -> {
-         if ($$1.a($$1x, 6.0, 20.0)) {
-            $$1.d($$1x);
-         }
-
-         if (!$$1.eb().a(cgb.aA)) {
-            cpw.a($$1, $$1x.dv());
-         }
-      });
+      $$1.eb().c(cge.az).ifPresent($$1::i);
+      $$1.eb().b(cge.az);
    }
 }

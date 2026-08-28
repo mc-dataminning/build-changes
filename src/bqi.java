@@ -1,56 +1,78 @@
-import com.mojang.jtracy.TracyClient;
-import java.util.Objects;
-import java.util.concurrent.atomic.AtomicInteger;
+import com.google.common.collect.ImmutableSet;
+import java.util.Set;
+import java.util.function.Supplier;
+import javax.annotation.Nullable;
+import org.apache.commons.lang3.tuple.Pair;
 
-public final class bqi {
-   private static final ThreadLocal<bqn> a = ThreadLocal.withInitial(bqn::new);
-   private static final ThreadLocal<bqj> b = new ThreadLocal<>();
-   private static final AtomicInteger c = new AtomicInteger();
+public class bqi implements bqj {
+   public static final bqi a = new bqi();
 
    private bqi() {
    }
 
-   public static bqi.a a(bqj $$0) {
-      b($$0);
-      return bqi::b;
+   @Override
+   public void a() {
    }
 
-   private static void b(bqj $$0) {
-      if (b.get() != null) {
-         throw new IllegalStateException("Profiler is already active");
-      } else {
-         bqj $$1 = c($$0);
-         b.set($$1);
-         c.incrementAndGet();
-         $$1.a();
-      }
+   @Override
+   public void b() {
    }
 
-   private static void b() {
-      bqj $$0 = b.get();
-      if ($$0 == null) {
-         throw new IllegalStateException("Profiler was not active");
-      } else {
-         b.remove();
-         c.decrementAndGet();
-         $$0.b();
-      }
+   @Override
+   public void a(String $$0) {
    }
 
-   private static bqj c(bqj $$0) {
-      return bqj.a(c(), $$0);
+   @Override
+   public void a(Supplier<String> $$0) {
    }
 
-   public static bqj a() {
-      return c.get() == 0 ? c() : Objects.requireNonNullElseGet(b.get(), bqi::c);
+   @Override
+   public void a(brv $$0) {
    }
 
-   private static bqj c() {
-      return (bqj)(TracyClient.isAvailable() ? a.get() : bqf.a);
+   @Override
+   public void c() {
    }
 
-   public interface a extends AutoCloseable {
-      @Override
-      void close();
+   @Override
+   public void b(String $$0) {
+   }
+
+   @Override
+   public void b(Supplier<String> $$0) {
+   }
+
+   @Override
+   public bqr d(String $$0) {
+      return bqr.a;
+   }
+
+   @Override
+   public bqr c(Supplier<String> $$0) {
+      return bqr.a;
+   }
+
+   @Override
+   public void a(String $$0, int $$1) {
+   }
+
+   @Override
+   public void a(Supplier<String> $$0, int $$1) {
+   }
+
+   @Override
+   public bqk d() {
+      return bqg.a;
+   }
+
+   @Nullable
+   @Override
+   public bqe.a c(String $$0) {
+      return null;
+   }
+
+   @Override
+   public Set<Pair<String, brv>> e() {
+      return ImmutableSet.of();
    }
 }
