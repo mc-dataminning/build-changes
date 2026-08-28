@@ -18,7 +18,18 @@ public abstract class dqh {
    public dqh(dqj<?> $$0, jd $$1, dtc $$2) {
       this.e = $$0;
       this.o = $$1.j();
+      this.a($$2);
       this.f = $$2;
+   }
+
+   private void a(dtc $$0) {
+      if (!this.b($$0)) {
+         throw new IllegalStateException("Invalid block entity " + this.k() + " state at " + this.o + ", got " + $$0);
+      }
+   }
+
+   public boolean b(dtc $$0) {
+      return this.e.a($$0);
    }
 
    public static jd b(ub $$0) {
@@ -188,11 +199,15 @@ public abstract class dqh {
    }
 
    public void a(p $$0) {
-      $$0.a("Name", () -> lt.j.b(this.r()) + " // " + this.getClass().getCanonicalName());
+      $$0.a("Name", this::k);
       if (this.n != null) {
          p.a($$0, this.n, this.o, this.n());
          p.a($$0, this.n, this.o, this.n.a_(this.o));
       }
+   }
+
+   private String k() {
+      return lt.j.b(this.r()) + " // " + this.getClass().getCanonicalName();
    }
 
    public boolean q() {
@@ -204,7 +219,8 @@ public abstract class dqh {
    }
 
    @Deprecated
-   public void b(dtc $$0) {
+   public void c(dtc $$0) {
+      this.a($$0);
       this.f = $$0;
    }
 

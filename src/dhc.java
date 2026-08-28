@@ -146,19 +146,28 @@ public class dhc extends dfk {
    @Override
    protected void a(dtc $$0, dcw $$1, jd $$2, dtc $$3, boolean $$4) {
       if (!$$0.a($$3.b())) {
-         if ($$1.c_($$2) instanceof dqq $$6 && !$$6.c()) {
-            for (int $$7 = 0; $$7 < 6; $$7++) {
-               cuq $$8 = $$6.a($$7);
-               if (!$$8.e()) {
-                  bqn.a($$1, (double)$$2.u(), (double)$$2.v(), (double)$$2.w(), $$8);
+         boolean $$9;
+         label32: {
+            if ($$1.c_($$2) instanceof dqq $$6 && !$$6.c()) {
+               for (int $$7 = 0; $$7 < 6; $$7++) {
+                  cuq $$8 = $$6.a($$7);
+                  if (!$$8.e()) {
+                     bqn.a($$1, (double)$$2.u(), (double)$$2.v(), (double)$$2.w(), $$8);
+                  }
                }
+
+               $$6.a();
+               $$9 = true;
+               break label32;
             }
 
-            $$6.a();
-            $$1.c($$2, this);
+            $$9 = false;
          }
 
          super.a($$0, $$1, $$2, $$3, $$4);
+         if ($$9) {
+            $$1.c($$2, this);
+         }
       }
    }
 

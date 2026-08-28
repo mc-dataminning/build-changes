@@ -30,7 +30,7 @@ public class yi implements xa {
       hi $$1 = null;
 
       try {
-         hj $$2 = new hj(new StringReader($$0));
+         hj $$2 = new hj(new StringReader($$0), true);
          $$1 = $$2.t();
       } catch (CommandSyntaxException var3) {
          d.warn("Invalid selector component: {}: {}", $$0, var3.getMessage());

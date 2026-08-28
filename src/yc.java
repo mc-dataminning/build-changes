@@ -18,7 +18,7 @@ public record yc(String d, @Nullable hi e) implements yb {
    @Nullable
    private static hi a(String $$0) {
       try {
-         hj $$1 = new hj(new StringReader($$0));
+         hj $$1 = new hj(new StringReader($$0), true);
          return $$1.t();
       } catch (CommandSyntaxException var2) {
          return null;

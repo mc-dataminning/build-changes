@@ -18,7 +18,7 @@ public class fy implements ArgumentType<fy.b> {
    public static final SuggestionProvider<et> a = ($$0, $$1) -> {
       StringReader $$2 = new StringReader($$1.getInput());
       $$2.setCursor($$1.getStart());
-      hj $$3 = new hj($$2);
+      hj $$3 = new hj($$2, hj.a((et)$$0.getSource()));
 
       try {
          $$3.t();
@@ -65,25 +65,33 @@ public class fy implements ArgumentType<fy.b> {
    }
 
    public fy.b a(StringReader $$0) throws CommandSyntaxException {
+      return this.a($$0, true);
+   }
+
+   public <S> fy.b a(StringReader $$0, S $$1) throws CommandSyntaxException {
+      return this.a($$0, hj.a($$1));
+   }
+
+   private fy.b a(StringReader $$0, boolean $$1) throws CommandSyntaxException {
       if ($$0.canRead() && $$0.peek() == '@') {
-         hj $$1 = new hj($$0);
-         hi $$2 = $$1.t();
-         if (!this.d && $$2.a() > 1) {
+         hj $$2 = new hj($$0, $$1);
+         hi $$3 = $$2.t();
+         if (!this.d && $$3.a() > 1) {
             throw fg.a.createWithContext($$0);
          } else {
-            return new fy.c($$2);
+            return new fy.c($$3);
          }
       } else {
-         int $$3 = $$0.getCursor();
+         int $$4 = $$0.getCursor();
 
          while ($$0.canRead() && $$0.peek() != ' ') {
             $$0.skip();
          }
 
-         String $$4 = $$0.getString().substring($$3, $$0.getCursor());
-         if ($$4.equals("*")) {
-            return ($$0x, $$1) -> {
-               Collection<eyf> $$2 = $$1.get();
+         String $$5 = $$0.getString().substring($$4, $$0.getCursor());
+         if ($$5.equals("*")) {
+            return ($$0x, $$1x) -> {
+               Collection<eyf> $$2 = (Collection<eyf>)$$1x.get();
                if ($$2.isEmpty()) {
                   throw c.create();
                } else {
@@ -91,19 +99,19 @@ public class fy implements ArgumentType<fy.b> {
                }
             };
          } else {
-            List<eyf> $$5 = List.of(eyf.c($$4));
-            if ($$4.startsWith("#")) {
-               return ($$1, $$2) -> $$5;
+            List<eyf> $$6 = List.of(eyf.c($$5));
+            if ($$5.startsWith("#")) {
+               return ($$1x, $$2) -> $$6;
             } else {
                try {
-                  UUID $$6 = UUID.fromString($$4);
-                  return ($$2, $$3x) -> {
+                  UUID $$7 = UUID.fromString($$5);
+                  return ($$2, $$3) -> {
                      MinecraftServer $$4x = $$2.l();
                      eyf $$5x = null;
                      List<eyf> $$6x = null;
 
-                     for (aqu $$7 : $$4x.K()) {
-                        bsr $$8 = $$7.a($$6);
+                     for (aqu $$7x : $$4x.K()) {
+                        bsr $$8 = $$7x.a($$7);
                         if ($$8 != null) {
                            if ($$5x == null) {
                               $$5x = $$8;
@@ -121,14 +129,14 @@ public class fy implements ArgumentType<fy.b> {
                      if ($$6x != null) {
                         return $$6x;
                      } else {
-                        return $$5x != null ? List.of($$5x) : $$5;
+                        return $$5x != null ? List.of($$5x) : $$6;
                      }
                   };
-               } catch (IllegalArgumentException var6) {
-                  return ($$2, $$3x) -> {
+               } catch (IllegalArgumentException var7) {
+                  return ($$2, $$3) -> {
                      MinecraftServer $$4x = $$2.l();
-                     aqv $$5x = $$4x.ah().a($$4);
-                     return $$5x != null ? List.of($$5x) : $$5;
+                     aqv $$5x = $$4x.ah().a($$5);
+                     return $$5x != null ? List.of($$5x) : $$6;
                   };
                }
             }

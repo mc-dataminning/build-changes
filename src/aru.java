@@ -389,7 +389,7 @@ public class aru extends arr implements agi, arx, wn {
             dtc $$11 = $$10.a(dhh.b, $$9).a(dhh.c, Boolean.valueOf($$0.g()));
             if ($$11 != $$8) {
                this.f.dO().a($$3, $$11, 2);
-               $$4.b($$11);
+               $$4.c($$11);
                this.f.dO().m($$3).a($$4);
             }
 

@@ -223,13 +223,18 @@ public class dvi extends duy {
 
                if ($$1.t()) {
                   dqh $$14 = this.a($$0, dvi.b.c);
+                  if ($$14 != null && !$$14.b($$1)) {
+                     this.d($$0);
+                     $$14 = null;
+                  }
+
                   if ($$14 == null) {
                      $$14 = ((diq)$$10).a($$0, $$1);
                      if ($$14 != null) {
                         this.b($$14);
                      }
                   } else {
-                     $$14.b($$1);
+                     $$14.c($$1);
                      this.c($$14);
                   }
                }
@@ -327,7 +332,7 @@ public class dvi extends duy {
                n.warn("Block state mismatch on block entity {} in position {}, {} != {}, updating", new Object[]{$$0, $$1, $$2, $$3});
             }
 
-            $$0.b($$2);
+            $$0.c($$2);
          }
 
          $$0.a(this.r);

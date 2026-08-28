@@ -26,42 +26,50 @@ public class fi implements ArgumentType<fi.a> {
       return new fi();
    }
 
+   public <S> fi.a a(StringReader $$0, S $$1) throws CommandSyntaxException {
+      return a($$0, hj.a($$1));
+   }
+
    public fi.a a(StringReader $$0) throws CommandSyntaxException {
+      return a($$0, true);
+   }
+
+   private static fi.a a(StringReader $$0, boolean $$1) throws CommandSyntaxException {
       if ($$0.canRead() && $$0.peek() == '@') {
-         hj $$1 = new hj($$0);
-         hi $$2 = $$1.t();
-         if ($$2.b()) {
+         hj $$2 = new hj($$0, $$1);
+         hi $$3 = $$2.t();
+         if ($$3.b()) {
             throw fg.c.createWithContext($$0);
          } else {
-            return new fi.b($$2);
+            return new fi.b($$3);
          }
       } else {
-         int $$3 = $$0.getCursor();
+         int $$4 = $$0.getCursor();
 
          while ($$0.canRead() && $$0.peek() != ' ') {
             $$0.skip();
          }
 
-         String $$4 = $$0.getString().substring($$3, $$0.getCursor());
-         return $$1 -> {
-            Optional<GameProfile> $$2 = $$1.l().au().a($$4);
+         String $$5 = $$0.getString().substring($$4, $$0.getCursor());
+         return $$1x -> {
+            Optional<GameProfile> $$2 = $$1x.l().au().a($$5);
             return Collections.singleton($$2.orElseThrow(a::create));
          };
       }
    }
 
    public <S> CompletableFuture<Suggestions> listSuggestions(CommandContext<S> $$0, SuggestionsBuilder $$1) {
-      if ($$0.getSource() instanceof ey) {
-         StringReader $$2 = new StringReader($$1.getInput());
-         $$2.setCursor($$1.getStart());
-         hj $$3 = new hj($$2);
+      if ($$0.getSource() instanceof ey $$2) {
+         StringReader $$3 = new StringReader($$1.getInput());
+         $$3.setCursor($$1.getStart());
+         hj $$4 = new hj($$3, hj.a($$2));
 
          try {
-            $$3.t();
-         } catch (CommandSyntaxException var6) {
+            $$4.t();
+         } catch (CommandSyntaxException var7) {
          }
 
-         return $$3.a($$1, $$1x -> ey.b(((ey)$$0.getSource()).q(), $$1x));
+         return $$4.a($$1, $$1x -> ey.b($$2.q(), $$1x));
       } else {
          return Suggestions.empty();
       }

@@ -161,11 +161,10 @@ public class dkj extends dfk {
             this.d($$0, $$1, $$2);
          }
 
+         super.a($$0, $$1, $$2, $$3, $$4);
          if ($$0.c(c)) {
             $$1.a($$2.e(), this);
          }
-
-         super.a($$0, $$1, $$2, $$3, $$4);
       }
    }
 

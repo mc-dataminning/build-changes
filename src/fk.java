@@ -8,6 +8,7 @@ import java.util.Collection;
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
 import java.util.function.Consumer;
+import javax.annotation.Nullable;
 import net.minecraft.server.MinecraftServer;
 
 public class fk implements ga<fk.a> {
@@ -61,6 +62,10 @@ public class fk implements ga<fk.a> {
       return fk.a.a($$0, true);
    }
 
+   public <S> fk.a a(StringReader $$0, @Nullable S $$1) throws CommandSyntaxException {
+      return fk.a.a($$0, hj.a($$1));
+   }
+
    public Collection<String> getExamples() {
       return a;
    }
@@ -68,7 +73,7 @@ public class fk implements ga<fk.a> {
    public static record a(String a, fk.b[] b) {
 
       wz a(et $$0) throws CommandSyntaxException {
-         return this.a($$0, $$0.c(2));
+         return this.a($$0, hj.a($$0));
       }
 
       public wz a(et $$0, boolean $$1) throws CommandSyntaxException {
@@ -120,7 +125,7 @@ public class fk implements ga<fk.a> {
                         $$5 = $$0.getCursor();
 
                         try {
-                           hj $$6 = new hj($$0);
+                           hj $$6 = new hj($$0, true);
                            $$7 = $$6.t();
                            break;
                         } catch (CommandSyntaxException var8) {

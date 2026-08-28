@@ -21,7 +21,7 @@ public class yh implements xa {
    @Nullable
    private static hi a(String $$0) {
       try {
-         return new hj(new StringReader($$0)).t();
+         return new hj(new StringReader($$0), true).t();
       } catch (CommandSyntaxException var2) {
          return null;
       }

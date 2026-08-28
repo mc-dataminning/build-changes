@@ -79,10 +79,18 @@ public class fg implements ArgumentType<hi> {
    }
 
    public hi a(StringReader $$0) throws CommandSyntaxException {
-      int $$1 = 0;
-      hj $$2 = new hj($$0);
-      hi $$3 = $$2.t();
-      if ($$3.a() > 1 && this.h) {
+      return this.a($$0, true);
+   }
+
+   public <S> hi a(StringReader $$0, S $$1) throws CommandSyntaxException {
+      return this.a($$0, hj.a($$1));
+   }
+
+   private hi a(StringReader $$0, boolean $$1) throws CommandSyntaxException {
+      int $$2 = 0;
+      hj $$3 = new hj($$0, $$1);
+      hi $$4 = $$3.t();
+      if ($$4.a() > 1 && this.h) {
          if (this.i) {
             $$0.setCursor(0);
             throw b.createWithContext($$0);
@@ -90,11 +98,11 @@ public class fg implements ArgumentType<hi> {
             $$0.setCursor(0);
             throw a.createWithContext($$0);
          }
-      } else if ($$3.b() && this.i && !$$3.c()) {
+      } else if ($$4.b() && this.i && !$$4.c()) {
          $$0.setCursor(0);
          throw c.createWithContext($$0);
       } else {
-         return $$3;
+         return $$4;
       }
    }
 
@@ -102,7 +110,7 @@ public class fg implements ArgumentType<hi> {
       if ($$0.getSource() instanceof ey $$2) {
          StringReader $$3 = new StringReader($$1.getInput());
          $$3.setCursor($$1.getStart());
-         hj $$4 = new hj($$3, $$2.c(2));
+         hj $$4 = new hj($$3, hj.a($$2));
 
          try {
             $$4.t();

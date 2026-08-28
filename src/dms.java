@@ -76,11 +76,10 @@ public class dms extends dfk implements dna {
    @Override
    protected void a(dtc $$0, dcw $$1, jd $$2, dtc $$3, boolean $$4) {
       if (!$$0.a($$3.b())) {
+         super.a($$0, $$1, $$2, $$3, $$4);
          if (m($$0) == duj.b) {
             b($$1, $$2, $$0);
          }
-
-         super.a($$0, $$1, $$2, $$3, $$4);
       }
    }
 

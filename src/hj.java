@@ -87,13 +87,17 @@ public class hj {
    private boolean ae;
    private boolean af;
 
-   public hj(StringReader $$0) {
-      this($$0, true);
-   }
-
    public hj(StringReader $$0, boolean $$1) {
       this.x = $$0;
       this.y = $$1;
+   }
+
+   public static <S> boolean a(S $$0) {
+      if ($$0 instanceof ey $$1 && $$1.c(2)) {
+         return true;
+      }
+
+      return false;
    }
 
    public hi a() {

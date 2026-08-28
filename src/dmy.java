@@ -133,11 +133,10 @@ public class dmy extends dfk {
    protected void a(dtc $$0, dcw $$1, jd $$2, dtc $$3, boolean $$4) {
       if (!$$0.a($$3.b())) {
          dqh $$5 = $$1.c_($$2);
+         super.a($$0, $$1, $$2, $$3, $$4);
          if ($$5 instanceof drr) {
             $$1.c($$2, $$0.b());
          }
-
-         super.a($$0, $$1, $$2, $$3, $$4);
       }
    }
 
