@@ -23,6 +23,8 @@ public abstract class fig implements AutoCloseable {
       return this.c;
    }
 
+   public abstract boolean d();
+
    @Override
    public abstract void close();
 

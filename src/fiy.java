@@ -1,6 +1,7 @@
 import com.google.common.collect.Sets;
 import com.mojang.blaze3d.platform.GlStateManager;
 import com.mojang.blaze3d.systems.RenderSystem;
+import com.mojang.logging.LogUtils;
 import it.unimi.dsi.fastutil.ints.IntArrayList;
 import it.unimi.dsi.fastutil.ints.IntList;
 import it.unimi.dsi.fastutil.objects.Object2ObjectMap;
@@ -14,8 +15,10 @@ import javax.annotation.Nullable;
 import org.jetbrains.annotations.VisibleForTesting;
 import org.joml.Matrix4f;
 import org.joml.Vector3f;
+import org.slf4j.Logger;
 
 public class fiy implements AutoCloseable {
+   private static final Logger r = LogUtils.getLogger();
    public static Set<String> a = Sets.newHashSet(
       new String[]{
          "ModelViewMat",
@@ -36,14 +39,14 @@ public class fiy implements AutoCloseable {
       }
    );
    public static fiy b = new fiy(-1, "invalid");
-   private static final fis r = new fis();
-   private final List<String> s = new ArrayList<>();
-   private final Object2ObjectMap<String, flh> t = new Object2ObjectOpenHashMap();
-   private final IntList u = new IntArrayList();
-   private final List<fjd> v = new ArrayList<>();
-   private final Map<String, fjd> w = new HashMap<>();
-   private final int x;
-   private final String y;
+   private static final fis s = new fis();
+   private final List<String> t = new ArrayList<>();
+   private final Object2ObjectMap<String, flh> u = new Object2ObjectOpenHashMap();
+   private final IntList v = new IntArrayList();
+   private final List<fjd> w = new ArrayList<>();
+   private final Map<String, fjd> x = new HashMap<>();
+   private final int y;
+   private final String z;
    @Nullable
    public fjd c;
    @Nullable
@@ -76,8 +79,8 @@ public class fiy implements AutoCloseable {
    public fjd q;
 
    private fiy(int $$0, String $$1) {
-      this.x = $$0;
-      this.y = $$1;
+      this.y = $$0;
+      this.z = $$1;
    }
 
    public static fiy a(fjb $$0, fjb $$1, fls $$2, String $$3) throws gss.b {
@@ -110,20 +113,22 @@ public class fiy implements AutoCloseable {
 
       for (fjp.c $$2 : $$0) {
          String $$3 = $$2.a();
-         int $$4 = fjd.a(this.x, $$3);
+         int $$4 = fjd.a(this.y, $$3);
          if ($$4 != -1) {
             fjd $$5 = this.a($$2);
             $$5.b($$4);
-            this.v.add($$5);
-            this.w.put($$3, $$5);
+            this.w.add($$5);
+            this.x.put($$3, $$5);
          }
       }
 
       for (String $$6 : $$1) {
-         int $$7 = fjd.a(this.x, $$6);
-         if ($$7 != -1) {
-            this.s.add($$6);
-            this.u.add($$7);
+         int $$7 = fjd.a(this.y, $$6);
+         if ($$7 == -1) {
+            r.warn("{} shader program does not use sampler {} defined in the pipeline. This might be a bug.", this.z, $$6);
+         } else {
+            this.t.add($$6);
+            this.v.add($$7);
          }
       }
 
@@ -150,8 +155,8 @@ public class fiy implements AutoCloseable {
 
    @Override
    public void close() {
-      this.v.forEach(fjd::close);
-      GlStateManager.glDeleteProgram(this.x);
+      this.w.forEach(fjd::close);
+      GlStateManager.glDeleteProgram(this.y);
    }
 
    public void a() {
@@ -159,9 +164,9 @@ public class fiy implements AutoCloseable {
       GlStateManager._glUseProgram(0);
       int $$0 = GlStateManager._getActiveTexture();
 
-      for (int $$1 = 0; $$1 < this.u.size(); $$1++) {
-         String $$2 = this.s.get($$1);
-         if (!this.t.containsKey($$2)) {
+      for (int $$1 = 0; $$1 < this.v.size(); $$1++) {
+         String $$2 = this.t.get($$1);
+         if (!this.u.containsKey($$2)) {
             GlStateManager._activeTexture(33984 + $$1);
             GlStateManager._bindTexture(0);
          }
@@ -173,16 +178,16 @@ public class fiy implements AutoCloseable {
    @Nullable
    public fjd a(String $$0) {
       RenderSystem.assertOnRenderThread();
-      return this.w.get($$0);
+      return this.x.get($$0);
    }
 
    public fis b(String $$0) {
       fjd $$1 = this.a($$0);
-      return (fis)($$1 == null ? r : $$1);
+      return (fis)($$1 == null ? s : $$1);
    }
 
    public void a(String $$0, @Nullable flh $$1) {
-      this.t.put($$0, $$1);
+      this.u.put($$0, $$1);
    }
 
    public void a(fls.c $$0, Matrix4f $$1, Matrix4f $$2, float $$3, float $$4) {
@@ -256,23 +261,27 @@ public class fiy implements AutoCloseable {
 
    @VisibleForTesting
    public int b() {
-      return this.x;
+      return this.y;
    }
 
    @Override
    public String toString() {
-      return this.y;
+      return this.z;
    }
 
    public String c() {
-      return this.y;
+      return this.z;
    }
 
    public IntList d() {
-      return this.u;
+      return this.v;
    }
 
-   public List<fjd> e() {
-      return this.v;
+   public List<String> e() {
+      return this.t;
+   }
+
+   public List<fjd> f() {
+      return this.w;
    }
 }

@@ -133,7 +133,7 @@ public class ckb extends cjf implements byk {
    public void a(tz $$0) {
       super.a($$0);
       this.a($$0.<ckb.a>a("Type", ckb.a.d).orElse(ckb.a.c));
-      this.bM = $$0.<dda>a("stew_effects", dda.c).orElse(dda.a);
+      this.bM = $$0.<dda>a("stew_effects", dda.c).orElse(null);
    }
 
    private Optional<dda> j(czy $$0) {

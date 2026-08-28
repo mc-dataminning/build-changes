@@ -26,8 +26,8 @@ public class fiu implements fkz {
 
    protected fiu(fix $$0) {
       this.b = $$0;
-      this.c = $$0.l().a();
-      this.d = $$0.l().a();
+      this.c = $$0.m().a();
+      this.d = $$0.m().a();
    }
 
    @Override
@@ -45,7 +45,7 @@ public class fiu implements fkz {
          }
 
          this.f = true;
-         int $$4 = ((fjc)$$0).a(this.b.l(), $$2);
+         int $$4 = ((fjc)$$0).a(this.b.m(), $$2);
          GlStateManager._glBindFramebuffer(36160, $$4);
          int $$5 = 0;
          if ($$1.isPresent()) {
@@ -77,8 +77,7 @@ public class fiu implements fkz {
       } else if ($$0.d() == fli.c) {
          throw new IllegalStateException("Trying to clear a depth texture as a color texture!");
       } else {
-         GlStateManager._glBindFramebuffer(36160, this.d);
-         this.b.l().a(this.d, ((fjc)$$0).a, 0, 0);
+         this.b.m().a(this.d, ((fjc)$$0).a, 0, 0, true);
          GL11.glClearColor(axy.j($$1), axy.k($$1), axy.l($$1), axy.i($$1));
          GlStateManager._colorMask(true, true, true, true);
          GlStateManager._clear(16384);
@@ -95,7 +94,7 @@ public class fiu implements fkz {
       } else if ($$2.d() != fli.c) {
          throw new IllegalStateException("Trying to clear a color texture as a depth texture!");
       } else {
-         int $$4 = ((fjc)$$0).a(this.b.l(), $$2);
+         int $$4 = ((fjc)$$0).a(this.b.m(), $$2);
          GlStateManager._glBindFramebuffer(36160, $$4);
          GL11.glClearDepth($$3);
          GL11.glClearColor(axy.j($$1), axy.k($$1), axy.l($$1), axy.i($$1));
@@ -113,9 +112,8 @@ public class fiu implements fkz {
       } else if ($$0.d() != fli.c) {
          throw new IllegalStateException("Trying to clear a color texture as a depth texture!");
       } else {
-         GlStateManager._glBindFramebuffer(36160, this.d);
+         this.b.m().a(this.d, 0, ((fjc)$$0).a, 0, true);
          GL11.glDrawBuffer(0);
-         this.b.l().a(this.d, 0, ((fjc)$$0).a, 0);
          GL11.glClearDepth($$1);
          GlStateManager._depthMask(true);
          GlStateManager._clear(256);
@@ -354,6 +352,7 @@ public class fiu implements fkz {
                "Dest texture (" + $$1.a($$2) + "x" + $$1.b($$2) + ") is not large enough to write a rectangle of " + $$7 + "x" + $$8 + " at " + $$3 + "x" + $$4
             );
          } else if ($$5 + $$7 <= $$0.a($$2) && $$6 + $$8 <= $$0.b($$2)) {
+            GlStateManager._disableScissorTest();
             GlStateManager._glBindFramebuffer(36008, this.c);
             GlStateManager._glBindFramebuffer(36009, this.d);
             boolean $$9 = $$0.d() == fli.c;
@@ -392,6 +391,7 @@ public class fiu implements fkz {
       if (this.f) {
          throw new IllegalStateException("Close the existing render pass before performing additional commands");
       } else {
+         GlStateManager._disableScissorTest();
          GlStateManager._glBindFramebuffer(36008, this.d);
          GlStateManager._glFramebufferTexture2D(36008, 36064, 3553, ((fjc)$$0).b(), 0);
          GlStateManager._glBlitFrameBuffer(0, 0, $$0.a(0), $$0.b(0), 0, 0, $$0.a(0), $$0.b(0), 16384, 9728);
@@ -447,7 +447,7 @@ public class fiu implements fkz {
    }
 
    private void a(fiz $$0, int $$1, int $$2, @Nullable fls.b $$3, fja $$4) {
-      this.b.m().a($$4.b().l(), (fit)$$0.d[0]);
+      this.b.n().a($$4.b().l(), (fit)$$0.d[0]);
       if ($$3 != null) {
          GlStateManager._glBindBuffer(34963, ((fit)$$0.e).f);
          GlStateManager._drawElements(GlConst.toGl($$4.b().m()), $$2, GlConst.toGl($$3), (long)$$1 * (long)$$3.c);
@@ -473,7 +473,7 @@ public class fiu implements fkz {
             }
          }
 
-         for (String $$3 : $$0.c.b().q()) {
+         for (String $$3 : $$0.c.c().e()) {
             if (!$$0.i.containsKey($$3)) {
                throw new IllegalStateException("Missing sampler " + $$3);
             }
@@ -512,8 +512,8 @@ public class fiu implements fkz {
 
       IntList $$9 = $$5.d();
 
-      for (int $$10 = 0; $$10 < $$4.q().size(); $$10++) {
-         String $$11 = $$4.q().get($$10);
+      for (int $$10 = 0; $$10 < $$5.e().size(); $$10++) {
+         String $$11 = $$5.e().get($$10);
          fjc $$12 = (fjc)$$0.i.get($$11);
          if ($$12 != null) {
             if ($$8 || $$0.k.contains($$11)) {
@@ -536,7 +536,7 @@ public class fiu implements fkz {
          $$14 == null ? 0.0F : (float)$$14.l()
       );
 
-      for (fjd $$15 : $$5.e()) {
+      for (fjd $$15 : $$5.f()) {
          $$15.c();
       }
 

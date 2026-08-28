@@ -1,7 +1,7 @@
-// 25w09a	2026-08-28T03:43:28.284725945	vanilla/Tags for minecraft:entity_type
+// 25w09b	2026-08-28T03:46:07.686895674	vanilla/Tags for minecraft:entity_type
 813a5e82a124f244206efa3c974874c17f57957d data/minecraft/tags/entity_type/can_wear_horse_armor.json
-7682a23a9a2c2cf40a063a7d8e005275500409ea data/minecraft/tags/entity_type/powder_snow_walkable_mobs.json
 bb7b6f7f302ad860e4bf695fe03aef6d7a5b2533 data/minecraft/tags/entity_type/can_turn_in_boats.json
+7682a23a9a2c2cf40a063a7d8e005275500409ea data/minecraft/tags/entity_type/powder_snow_walkable_mobs.json
 3b9491f8c3d5a66d5ce8a9dd1582fce60060ded3 data/minecraft/tags/entity_type/undead.json
 5decf1729450d88915af4860ad75ac73b3e07f06 data/minecraft/tags/entity_type/freeze_immune_entity_types.json
 1f530932eab976d894e835ba8fa845e9ccecf9ad data/minecraft/tags/entity_type/arthropod.json
@@ -27,8 +27,8 @@ efb8543801555f1eaabd69b80205ea45d64cb29d data/minecraft/tags/entity_type/boat.js
 966d6c3a0c97a5ee98ddbb27e5e17002d9b87480 data/minecraft/tags/entity_type/skeletons.json
 e2f26c4696552a05feacf8eaadfb3b41a8907161 data/minecraft/tags/entity_type/ignores_poison_and_regen.json
 938693c0d925c28b546fc000571541b1f61e42c1 data/minecraft/tags/entity_type/immune_to_infested.json
-2430106b9ae60bf140590375b97dd755e5d8ed82 data/minecraft/tags/entity_type/can_equip_saddle.json
 bb7b6f7f302ad860e4bf695fe03aef6d7a5b2533 data/minecraft/tags/entity_type/deflects_projectiles.json
+2430106b9ae60bf140590375b97dd755e5d8ed82 data/minecraft/tags/entity_type/can_equip_saddle.json
 4c073b476785113705dfd3c6b286a337ddbd56b0 data/minecraft/tags/entity_type/beehive_inhabitors.json
 104ae562893e0785b922c7ac28bdaf5a86792945 data/minecraft/tags/entity_type/not_scary_for_pufferfish.json
 8629ab74d7e233ee955826685af6d6e0b912cac4 data/minecraft/tags/entity_type/axolotl_always_hostiles.json

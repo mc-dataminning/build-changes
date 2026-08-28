@@ -37,7 +37,7 @@ public record gnh(String a, @Nullable gnh.a b) {
 
    private static String g() {
       StringBuilder $$0 = new StringBuilder();
-      $$0.append("25w09a");
+      $$0.append("25w09b");
       if (frd.e().a()) {
          $$0.append(" (modded)");
       }

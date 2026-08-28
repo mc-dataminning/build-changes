@@ -27,11 +27,16 @@ public class fit extends fig {
       }
    }
 
-   protected void d() {
+   protected void e() {
       if (!this.d) {
          GlStateManager._glBindBuffer(GlConst.toGl(this.b()), this.f);
          GlStateManager._glBindBuffer(GlConst.toGl(this.b()), 0);
       }
+   }
+
+   @Override
+   public boolean d() {
+      return this.c;
    }
 
    @Override

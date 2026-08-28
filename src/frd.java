@@ -287,6 +287,7 @@ public class frd extends btk<Runnable> implements fkl {
       this.p = new frc(this);
       this.p.a(this.S.h());
       RenderSystem.initRenderer(this.S.h(), this.n.t, false, ($$0x, $$1x) -> this.ab().a($$0x, $$1x), $$0.d.g);
+      G.info("Using optional rendering extensions: {}", String.join(", ", RenderSystem.getDevice().l()));
       this.aq = new fjn(this.S.k(), this.S.l());
       this.ak = new avc(att.a);
       this.an.a();
@@ -2027,7 +2028,7 @@ public class frd extends btk<Runnable> implements fkl {
       $$0.a("Backend API", RenderSystem::getApiDescription);
       $$0.a("Window size", () -> $$1 != null ? $$1.S.k() + "x" + $$1.S.l() : "<not initialized>");
       $$0.a("GFLW Platform", fkk::a);
-      $$0.a("GL Caps", RenderSystem::getCapsString);
+      $$0.a("Render Extensions", () -> String.join(", ", RenderSystem.getDevice().l()));
       $$0.a("GL debug messages", () -> {
          fla $$0x = RenderSystem.tryGetDevice();
          if ($$0x == null) {

@@ -248,13 +248,15 @@ public class gvq {
                                     $$1.a()
                                  )
                            );
-                        } else {
+                        } else if (!$$4.a.d()) {
                            $$3.a($$4.a, $$1.a(), 0);
                         }
 
                         if ($$1.b() != null) {
                            if ($$4.b != null && $$4.b.a() >= $$1.b().remaining()) {
-                              $$3.a($$4.b, $$1.b(), 0);
+                              if (!$$4.b.d()) {
+                                 $$3.a($$4.b, $$1.b(), 0);
+                              }
                            } else {
                               if ($$4.b != null) {
                                  $$4.b.close();
@@ -334,7 +336,9 @@ public class gvq {
                         );
                      } else {
                         fkz $$4 = RenderSystem.getDevice().b();
-                        $$4.a($$3.b, $$0.a(), 0);
+                        if (!$$3.b.d()) {
+                           $$4.a($$3.b, $$0.a(), 0);
+                        }
                      }
 
                      $$0.close();

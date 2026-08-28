@@ -213,11 +213,6 @@ public class RenderSystem {
       GLX._setGlfwErrorCallback($$0);
    }
 
-   public static String getCapsString() {
-      assertOnRenderThread();
-      return "Using framebuffer using OpenGL 3.2";
-   }
-
    public static void setupDefaultState() {
       projectionMatrix.identity();
       savedProjectionMatrix.identity();

@@ -400,7 +400,7 @@ public class un implements DynamicOps<uy> {
    }
 
    public uy b(Stream<uy> $$0) {
-      return new uf($$0.toList());
+      return new uf($$0.collect(ag.b()));
    }
 
    public uy a(uy $$0, String $$1) {

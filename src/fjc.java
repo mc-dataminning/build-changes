@@ -34,7 +34,7 @@ public class fjc extends flh {
       int $$2 = $$1 == null ? 0 : ((fjc)$$1).a;
       return this.i.computeIfAbsent($$2, $$2x -> {
          int $$3 = $$0.a();
-         $$0.a($$3, this.a, $$2, 0);
+         $$0.a($$3, this.a, $$2, 0, false);
          return $$3;
       });
    }

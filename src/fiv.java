@@ -5,6 +5,7 @@ import com.mojang.blaze3d.platform.GLX;
 import com.mojang.logging.LogUtils;
 import java.util.List;
 import java.util.Queue;
+import java.util.Set;
 import javax.annotation.Nullable;
 import org.lwjgl.opengl.ARBDebugOutput;
 import org.lwjgl.opengl.GL;
@@ -113,38 +114,40 @@ public class fiv {
    }
 
    @Nullable
-   public static fiv a(int $$0, boolean $$1) {
+   public static fiv a(int $$0, boolean $$1, Set<String> $$2) {
       if ($$0 <= 0) {
          return null;
       } else {
-         GLCapabilities $$2 = GL.getCapabilities();
-         if ($$2.GL_KHR_debug) {
-            fiv $$3 = new fiv();
+         GLCapabilities $$3 = GL.getCapabilities();
+         if ($$3.GL_KHR_debug && fix.b) {
+            fiv $$4 = new fiv();
+            $$2.add("GL_KHR_debug");
             GL11.glEnable(37600);
             if ($$1) {
                GL11.glEnable(33346);
             }
 
-            for (int $$4 = 0; $$4 < e.size(); $$4++) {
-               boolean $$5 = $$4 < $$0;
-               KHRDebug.glDebugMessageControl(4352, 4352, e.get($$4), (int[])null, $$5);
+            for (int $$5 = 0; $$5 < e.size(); $$5++) {
+               boolean $$6 = $$5 < $$0;
+               KHRDebug.glDebugMessageControl(4352, 4352, e.get($$5), (int[])null, $$6);
             }
 
-            KHRDebug.glDebugMessageCallback(GLX.make(GLDebugMessageCallback.create($$3::a), fjv::a), 0L);
-            return $$3;
-         } else if ($$2.GL_ARB_debug_output) {
-            fiv $$6 = new fiv();
+            KHRDebug.glDebugMessageCallback(GLX.make(GLDebugMessageCallback.create($$4::a), fjv::a), 0L);
+            return $$4;
+         } else if ($$3.GL_ARB_debug_output && fix.d) {
+            fiv $$7 = new fiv();
+            $$2.add("GL_ARB_debug_output");
             if ($$1) {
                GL11.glEnable(33346);
             }
 
-            for (int $$7 = 0; $$7 < f.size(); $$7++) {
-               boolean $$8 = $$7 < $$0;
-               ARBDebugOutput.glDebugMessageControlARB(4352, 4352, f.get($$7), (int[])null, $$8);
+            for (int $$8 = 0; $$8 < f.size(); $$8++) {
+               boolean $$9 = $$8 < $$0;
+               ARBDebugOutput.glDebugMessageControlARB(4352, 4352, f.get($$8), (int[])null, $$9);
             }
 
-            ARBDebugOutput.glDebugMessageCallbackARB(GLX.make(GLDebugMessageARBCallback.create($$6::a), fjv::a), 0L);
-            return $$6;
+            ARBDebugOutput.glDebugMessageCallbackARB(GLX.make(GLDebugMessageARBCallback.create($$7::a), fjv::a), 0L);
+            return $$7;
          } else {
             return null;
          }

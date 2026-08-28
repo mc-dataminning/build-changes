@@ -38,4 +38,6 @@ public interface fla {
    fjm b(fjp var1, @Nullable BiFunction<ali, fkw, String> var2);
 
    void k();
+
+   List<String> l();
 }

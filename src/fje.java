@@ -3,13 +3,19 @@ import com.mojang.blaze3d.platform.GlStateManager;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 import javax.annotation.Nullable;
 import org.lwjgl.opengl.ARBVertexAttribBinding;
 import org.lwjgl.opengl.GLCapabilities;
 
 public abstract class fje {
-   public static fje a(GLCapabilities $$0, fiw $$1) {
-      return (fje)($$0.GL_ARB_vertex_attrib_binding ? new fje.b($$1) : new fje.a($$1));
+   public static fje a(GLCapabilities $$0, fiw $$1, Set<String> $$2) {
+      if ($$0.GL_ARB_vertex_attrib_binding && fix.a) {
+         $$2.add("GL_ARB_vertex_attrib_binding");
+         return new fje.b($$1);
+      } else {
+         return new fje.a($$1);
+      }
    }
 
    public abstract void a(fls var1, fit var2);

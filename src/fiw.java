@@ -1,4 +1,5 @@
 import com.mojang.logging.LogUtils;
+import java.util.Set;
 import java.util.function.Supplier;
 import org.lwjgl.opengl.EXTDebugLabel;
 import org.lwjgl.opengl.GL11;
@@ -24,13 +25,15 @@ public abstract class fiw {
    public void a(fje.c $$0) {
    }
 
-   public static fiw a(GLCapabilities $$0, boolean $$1) {
+   public static fiw a(GLCapabilities $$0, boolean $$1, Set<String> $$2) {
       if ($$1) {
-         if ($$0.GL_KHR_debug) {
+         if ($$0.GL_KHR_debug && fix.b) {
+            $$2.add("GL_KHR_debug");
             return new fiw.a();
          }
 
-         if ($$0.GL_EXT_debug_label) {
+         if ($$0.GL_EXT_debug_label && fix.c) {
+            $$2.add("GL_EXT_debug_label");
             return new fiw.c();
          }
 
@@ -49,7 +52,7 @@ public abstract class fiw {
 
       @Override
       public void a(fit $$0) {
-         $$0.d();
+         $$0.e();
          Supplier<String> $$1 = $$0.e;
          if ($$1 != null) {
             KHRDebug.glObjectLabel(33504, $$0.f, ban.a($$1.get(), this.a, true));
@@ -88,7 +91,7 @@ public abstract class fiw {
    static class c extends fiw {
       @Override
       public void a(fit $$0) {
-         $$0.d();
+         $$0.e();
          Supplier<String> $$1 = $$0.e;
          if ($$1 != null) {
             EXTDebugLabel.glLabelObjectEXT(37201, $$0.f, ban.a($$1.get(), 256, true));
