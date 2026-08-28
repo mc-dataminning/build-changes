@@ -1,88 +1,84 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
+import java.util.Optional;
 
-public record xl(String b, List<xl.a> c, yl d) {
+public record xl(xm j, xm k) {
    public static final Codec<xl> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               Codec.STRING.fieldOf("translation_key").forGetter(xl::a),
-               xl.a.d.listOf().fieldOf("parameters").forGetter(xl::b),
-               yl.b.b.optionalFieldOf("style", yl.a).forGetter(xl::c)
-            )
-            .apply($$0, xl::new)
+      $$0 -> $$0.group(xm.a.fieldOf("chat").forGetter(xl::a), xm.a.fieldOf("narration").forGetter(xl::b)).apply($$0, xl::new)
    );
+   public static final xm b = xm.a("chat.type.text");
+   public static final ale<xl> c = a("chat");
+   public static final ale<xl> d = a("say_command");
+   public static final ale<xl> e = a("msg_command_incoming");
+   public static final ale<xl> f = a("msg_command_outgoing");
+   public static final ale<xl> g = a("team_msg_command_incoming");
+   public static final ale<xl> h = a("team_msg_command_outgoing");
+   public static final ale<xl> i = a("emote_command");
 
-   public static xl a(String $$0) {
-      return new xl($$0, List.of(xl.a.a, xl.a.c), yl.a);
+   private static ale<xl> a(String $$0) {
+      return ale.a(lq.aA, new alf($$0));
    }
 
-   public static xl b(String $$0) {
-      yl $$1 = yl.a.a(n.h).b(true);
-      return new xl($$0, List.of(xl.a.a, xl.a.c), $$1);
+   public static void a(rc<xl> $$0) {
+      $$0.a(c, new xl(b, xm.a("chat.type.text.narrate")));
+      $$0.a(d, new xl(xm.a("chat.type.announcement"), xm.a("chat.type.text.narrate")));
+      $$0.a(e, new xl(xm.b("commands.message.display.incoming"), xm.a("chat.type.text.narrate")));
+      $$0.a(f, new xl(xm.c("commands.message.display.outgoing"), xm.a("chat.type.text.narrate")));
+      $$0.a(g, new xl(xm.d("chat.type.team.text"), xm.a("chat.type.text.narrate")));
+      $$0.a(h, new xl(xm.d("chat.type.team.sent"), xm.a("chat.type.text.narrate")));
+      $$0.a(i, new xl(xm.a("chat.type.emote"), xm.a("chat.type.emote")));
    }
 
-   public static xl c(String $$0) {
-      yl $$1 = yl.a.a(n.h).b(true);
-      return new xl($$0, List.of(xl.a.b, xl.a.c), $$1);
+   public static xl.a a(ale<xl> $$0, bsu $$1) {
+      return a($$0, $$1.dP().H_(), $$1.O_());
    }
 
-   public static xl d(String $$0) {
-      return new xl($$0, List.of(xl.a.b, xl.a.a, xl.a.c), yl.a);
+   public static xl.a a(ale<xl> $$0, ep $$1) {
+      return a($$0, $$1.v(), $$1.b());
    }
 
-   public xo a(xo $$0, xk.a $$1) {
-      Object[] $$2 = this.b($$0, $$1);
-      return xo.a(this.b, $$2).c(this.d);
+   public static xl.a a(ale<xl> $$0, jw $$1, xp $$2) {
+      jv<xl> $$3 = $$1.d(lq.aA);
+      return new xl.a($$3.g($$0), $$2);
    }
 
-   private xo[] b(xo $$0, xk.a $$1) {
-      xo[] $$2 = new xo[this.c.size()];
+   public xm a() {
+      return this.j;
+   }
 
-      for (int $$3 = 0; $$3 < $$2.length; $$3++) {
-         xl.a $$4 = this.c.get($$3);
-         $$2[$$3] = $$4.a($$0, $$1);
+   public xm b() {
+      return this.k;
+   }
+
+   public static record a(ji<xl> b, xp c, Optional<xp> d) {
+      public static final zn<xa, xl.a> a = zn.a(zl.b(lq.aA), xl.a::a, xr.d, xl.a::b, xr.e, xl.a::c, xl.a::new);
+
+      a(ji<xl> $$0, xp $$1) {
+         this($$0, $$1, Optional.empty());
       }
 
-      return $$2;
-   }
-
-   public String a() {
-      return this.b;
-   }
-
-   public List<xl.a> b() {
-      return this.c;
-   }
-
-   public yl c() {
-      return this.d;
-   }
-
-   public static enum a implements azt {
-      a("sender", ($$0, $$1) -> $$1.b()),
-      b("target", ($$0, $$1) -> $$1.c().orElse(xn.a)),
-      c("content", ($$0, $$1) -> $$0);
-
-      public static final Codec<xl.a> d = azt.a(xl.a::values);
-      private final String e;
-      private final xl.a.a f;
-
-      private a(final String $$0, final xl.a.a $$1) {
-         this.e = $$0;
-         this.f = $$1;
+      public xp a(xp $$0) {
+         return this.b.a().a().a($$0, this);
       }
 
-      public xo a(xo $$0, xk.a $$1) {
-         return this.f.select($$0, $$1);
+      public xp b(xp $$0) {
+         return this.b.a().b().a($$0, this);
       }
 
-      @Override
-      public String c() {
-         return this.e;
+      public xl.a c(xp $$0) {
+         return new xl.a(this.b, this.c, Optional.of($$0));
       }
 
-      public interface a {
-         xo select(xo var1, xk.a var2);
+      public ji<xl> a() {
+         return this.b;
+      }
+
+      public xp b() {
+         return this.c;
+      }
+
+      public Optional<xp> c() {
+         return this.d;
       }
    }
 }

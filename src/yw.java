@@ -1,119 +1,53 @@
-import com.mojang.brigadier.StringReader;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import javax.annotation.Nullable;
-import net.minecraft.server.MinecraftServer;
+import java.util.Optional;
 
-public class yw implements xp {
-   public static final MapCodec<yw> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(Codec.STRING.fieldOf("name").forGetter(yw::b), Codec.STRING.fieldOf("objective").forGetter(yw::d)).apply($$0, yw::new)
-   );
-   public static final MapCodec<yw> b = a.fieldOf("score");
-   public static final xp.a<yw> c = new xp.a<>(b, "score");
-   private final String d;
-   @Nullable
-   private final he e;
-   private final String f;
-
-   @Nullable
-   private static he a(String $$0) {
-      try {
-         return new hf(new StringReader($$0)).t();
-      } catch (CommandSyntaxException var2) {
-         return null;
-      }
-   }
-
-   public yw(String $$0, String $$1) {
-      this.d = $$0;
-      this.e = a($$0);
-      this.f = $$1;
-   }
-
-   @Override
-   public xp.a<?> a() {
-      return c;
-   }
-
-   public String b() {
-      return this.d;
-   }
-
-   @Nullable
-   public he c() {
-      return this.e;
-   }
-
-   public String d() {
-      return this.f;
-   }
-
-   private ewt a(ep $$0) throws CommandSyntaxException {
-      if (this.e != null) {
-         List<? extends bst> $$1 = this.e.b($$0);
-         if (!$$1.isEmpty()) {
-            if ($$1.size() != 1) {
-               throw fc.a.create();
-            }
-
-            return $$1.get(0);
-         }
+public interface yw extends xq {
+   MapCodec<yw> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(Codec.STRING.fieldOf("text").forGetter(yw::b)).apply($$0, yw::a));
+   xq.a<yw> b = new xq.a<>(a, "text");
+   yw c = new yw() {
+      @Override
+      public String toString() {
+         return "empty";
       }
 
-      return ewt.c(this.d);
+      @Override
+      public String b() {
+         return "";
+      }
+   };
+
+   static yw a(String $$0) {
+      return (yw)($$0.isEmpty() ? c : new yw.a($$0));
    }
 
-   private yc a(ewt $$0, ep $$1) {
-      MinecraftServer $$2 = $$1.l();
-      if ($$2 != null) {
-         ewu $$3 = $$2.aK();
-         ewm $$4 = $$3.a(this.f);
-         if ($$4 != null) {
-            ewq $$5 = $$3.d($$0, $$4);
-            if ($$5 != null) {
-               return $$5.a($$4.a(zh.b));
-            }
-         }
+   String b();
+
+   @Override
+   default xq.a<?> a() {
+      return b;
+   }
+
+   public static record a(String d) implements yw {
+      @Override
+      public <T> Optional<T> a(xu.a<T> $$0) {
+         return $$0.accept(this.d);
       }
 
-      return xo.i();
-   }
-
-   @Override
-   public yc a(@Nullable ep $$0, @Nullable bst $$1, int $$2) throws CommandSyntaxException {
-      if ($$0 == null) {
-         return xo.i();
-      } else {
-         ewt $$3 = this.a($$0);
-         ewt $$4 = (ewt)($$1 != null && $$3.equals(ewt.cy) ? $$1 : $$3);
-         return this.a($$4, $$0);
+      @Override
+      public <T> Optional<T> a(xu.b<T> $$0, ym $$1) {
+         return $$0.accept($$1, this.d);
       }
-   }
 
-   @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else {
-         if ($$0 instanceof yw $$1 && this.d.equals($$1.d) && this.f.equals($$1.f)) {
-            return true;
-         }
-
-         return false;
+      @Override
+      public String toString() {
+         return "literal{" + this.d + "}";
       }
-   }
 
-   @Override
-   public int hashCode() {
-      int $$0 = this.d.hashCode();
-      return 31 * $$0 + this.f.hashCode();
-   }
-
-   @Override
-   public String toString() {
-      return "score{name='" + this.d + "', objective='" + this.f + "'}";
+      @Override
+      public String b() {
+         return this.d;
+      }
    }
 }

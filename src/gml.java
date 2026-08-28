@@ -1,24 +1,16 @@
-public class gml extends gmt<cjo, ftt<cjo>> {
-   private static final ale a = new ale("textures/entity/creeper/creeper_armor.png");
-   private final ftt<cjo> b;
+public class gml extends gnj<cfi, ftl<cfi>> {
+   private static final alf a = new alf("textures/entity/cat/cat_collar.png");
+   private final ftl<cfi> b;
 
-   public gml(gks<cjo, ftt<cjo>> $$0, fwv $$1) {
+   public gml(gkt<cfi, ftl<cfi>> $$0, fww $$1) {
       super($$0);
-      this.b = new ftt<>($$1.a(fwy.I));
+      this.b = new ftl<>($$1.a(fwz.u));
    }
 
-   @Override
-   protected float a(float $$0) {
-      return $$0 * 0.01F;
-   }
-
-   @Override
-   protected ale a() {
-      return a;
-   }
-
-   @Override
-   protected ftz<cjo> b() {
-      return this.b;
+   public void a(ezy $$0, gdo $$1, int $$2, cfi $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
+      if ($$3.s()) {
+         float[] $$10 = $$3.gz().d();
+         a(this.c(), this.b, a, $$0, $$1, $$2, $$3, $$4, $$5, $$7, $$8, $$9, $$6, $$10[0], $$10[1], $$10[2]);
+      }
    }
 }

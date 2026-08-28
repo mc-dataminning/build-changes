@@ -1,15 +1,23 @@
-public interface dqe extends bqm {
-   evl p_ = dey.a(0.0, 11.0, 0.0, 16.0, 32.0, 16.0).e().get(0);
+public class dqe extends dqr {
+   private static final int a = 60;
+   private static final int b = 9;
 
-   default evl ai_() {
-      return p_;
+   public dqe(iz $$0, dsc $$1) {
+      super(dpj.i, $$0, $$1);
    }
 
-   double H();
+   @Override
+   public int b() {
+      return 9;
+   }
 
-   double I();
+   @Override
+   public int c() {
+      return 60;
+   }
 
-   double J();
-
-   boolean K();
+   @Override
+   public avz d() {
+      return awa.BW;
+   }
 }

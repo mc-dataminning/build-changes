@@ -1,44 +1,45 @@
-import java.util.function.BiFunction;
+public class aco implements zw<aci> {
+   public static final zn<wm, aco> a = zw.a(aco::a, aco::new);
+   private final int b;
+   private final iz c;
+   private final int d;
 
-public class aco implements zv<ach> {
-   public static final zm<wz, aco> a = zm.a(iz.b, aco::b, zk.a(lq.h), aco::e, zk.p, aco::f, aco::new);
-   private final iz b;
-   private final dpi<?> c;
-   private final ur d;
-
-   public static aco a(dpg $$0, BiFunction<dpg, jw, ur> $$1) {
-      jw $$2 = $$0.i().H_();
-      return new aco($$0.ay_(), $$0.r(), $$1.apply($$0, $$2));
-   }
-
-   public static aco a(dpg $$0) {
-      return a($$0, dpg::a);
-   }
-
-   private aco(iz $$0, dpi<?> $$1, ur $$2) {
+   public aco(int $$0, iz $$1, int $$2) {
       this.b = $$0;
       this.c = $$1;
       this.d = $$2;
    }
 
-   @Override
-   public zx<aco> a() {
-      return agt.i;
+   private aco(wm $$0) {
+      this.b = $$0.l();
+      this.c = $$0.e();
+      this.d = $$0.readUnsignedByte();
    }
 
-   public void a(ach $$0) {
+   private void a(wm $$0) {
+      $$0.c(this.b);
+      $$0.a(this.c);
+      $$0.k(this.d);
+   }
+
+   @Override
+   public zy<aco> a() {
+      return agu.h;
+   }
+
+   public void a(aci $$0) {
       $$0.a(this);
    }
 
-   public iz b() {
+   public int b() {
       return this.b;
    }
 
-   public dpi<?> e() {
+   public iz e() {
       return this.c;
    }
 
-   public ur f() {
+   public int f() {
       return this.d;
    }
 }

@@ -1,20 +1,25 @@
-public record adj(ya.a b) implements zv<ach> {
-   public static final zm<wl, adj> a = zv.a(adj::a, adj::new);
+public record adj(long[] b, blv c) implements zw<aci> {
+   public static final zn<wm, adj> a = zw.a(adj::a, adj::new);
 
-   private adj(wl $$0) {
-      this(ya.a.a($$0));
+   private adj(wm $$0) {
+      this($$0.d(), $$0.b(blv.class));
    }
 
-   private void a(wl $$0) {
-      ya.a.a($$0, this.b);
+   private void a(wm $$0) {
+      $$0.a(this.b);
+      $$0.a(this.c);
    }
 
    @Override
-   public zx<adj> a() {
-      return agt.B;
+   public zy<adj> a() {
+      return agu.A;
    }
 
-   public void a(ach $$0) {
+   public void a(aci $$0) {
       $$0.a(this);
+   }
+
+   public blv e() {
+      return this.c;
    }
 }

@@ -3,7 +3,7 @@ import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Optional;
 import java.util.function.Predicate;
 
-public record cv(Optional<bc<arv<xo>, cv.a>> c, Optional<String> d, Optional<String> e, de.d f, Optional<Boolean> g) implements ds<cxx> {
+public record cv(Optional<bc<arw<xp>, cv.a>> c, Optional<String> d, Optional<String> e, de.d f, Optional<Boolean> g) implements ds<cxy> {
    public static final Codec<cv> a = RecordCodecBuilder.create(
       $$0 -> $$0.group(
                bc.a(cv.a.a).optionalFieldOf("pages").forGetter(cv::b),
@@ -16,11 +16,11 @@ public record cv(Optional<bc<arv<xo>, cv.a>> c, Optional<String> d, Optional<Str
    );
 
    @Override
-   public kl<cxx> a() {
+   public kl<cxy> a() {
       return km.J;
    }
 
-   public boolean a(cuo $$0, cxx $$1) {
+   public boolean a(cup $$0, cxy $$1) {
       if (this.d.isPresent() && !this.d.get().equals($$1.e())) {
          return false;
       } else if (this.e.isPresent() && !this.e.get().equals($$1.d().a())) {
@@ -32,7 +32,7 @@ public record cv(Optional<bc<arv<xo>, cv.a>> c, Optional<String> d, Optional<Str
       }
    }
 
-   public Optional<bc<arv<xo>, cv.a>> b() {
+   public Optional<bc<arw<xp>, cv.a>> b() {
       return this.c;
    }
 
@@ -52,14 +52,14 @@ public record cv(Optional<bc<arv<xo>, cv.a>> c, Optional<String> d, Optional<Str
       return this.g;
    }
 
-   public static record a(xo b) implements Predicate<arv<xo>> {
-      public static final Codec<cv.a> a = xq.a.xmap(cv.a::new, cv.a::a);
+   public static record a(xp b) implements Predicate<arw<xp>> {
+      public static final Codec<cv.a> a = xr.a.xmap(cv.a::new, cv.a::a);
 
-      public boolean a(arv<xo> $$0) {
+      public boolean a(arw<xp> $$0) {
          return $$0.a().equals(this.b);
       }
 
-      public xo a() {
+      public xp a() {
          return this.b;
       }
    }

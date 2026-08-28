@@ -1,122 +1,113 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Maps;
+import com.mojang.datafixers.util.Pair;
 import java.util.List;
 import java.util.Map;
-import java.util.Optional;
+import java.util.Set;
+import java.util.Map.Entry;
+import java.util.function.Consumer;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
-public class bvw extends bvh<cmj> {
-   private static final int c = 5;
-   private static final int d = 600;
-   private static final int e = 6600;
-   private static final int f = 20;
-   private static final Map<cmm, ald<eqm>> g = ac.a(Maps.newHashMap(), $$0 -> {
-      $$0.put(cmm.c, eqd.aH);
-      $$0.put(cmm.d, eqd.aI);
-      $$0.put(cmm.e, eqd.aJ);
-      $$0.put(cmm.f, eqd.aK);
-      $$0.put(cmm.g, eqd.aL);
-      $$0.put(cmm.h, eqd.aM);
-      $$0.put(cmm.i, eqd.aN);
-      $$0.put(cmm.j, eqd.aO);
-      $$0.put(cmm.k, eqd.aP);
-      $$0.put(cmm.l, eqd.aQ);
-      $$0.put(cmm.n, eqd.aR);
-      $$0.put(cmm.o, eqd.aS);
-      $$0.put(cmm.p, eqd.aT);
-   });
-   private static final float h = 0.5F;
-   private int i = 600;
-   private boolean j;
-   private long k;
+public class bvw<E extends btp> implements bvj<E> {
+   private final Map<cct<?>, ccu> a;
+   private final Set<cct<?>> b;
+   private final bvw.a c;
+   private final bvw.b d;
+   private final bxr<bvj<? super E>> e = new bxr<>();
+   private bvi.a f = bvi.a.a;
 
-   public bvw(int $$0) {
-      super(ImmutableMap.of(ccs.m, cct.c, ccs.n, cct.c, ccs.q, cct.c, ccs.k, cct.a), $$0);
+   public bvw(Map<cct<?>, ccu> $$0, Set<cct<?>> $$1, bvw.a $$2, bvw.b $$3, List<Pair<? extends bvj<? super E>, Integer>> $$4) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+      this.d = $$3;
+      $$4.forEach($$0x -> this.e.a((bvj<? super E>)$$0x.getFirst(), (Integer)$$0x.getSecond()));
    }
 
-   protected boolean a(are $$0, cmj $$1) {
-      if (!this.b($$1)) {
-         return false;
-      } else if (this.i > 0) {
-         this.i--;
-         return false;
-      } else {
+   @Override
+   public bvi.a a() {
+      return this.f;
+   }
+
+   private boolean a(E $$0) {
+      for (Entry<cct<?>, ccu> $$1 : this.a.entrySet()) {
+         cct<?> $$2 = $$1.getKey();
+         ccu $$3 = $$1.getValue();
+         if (!$$0.dS().a($$2, $$3)) {
+            return false;
+         }
+      }
+
+      return true;
+   }
+
+   @Override
+   public final boolean e(arf $$0, E $$1, long $$2) {
+      if (this.a($$1)) {
+         this.f = bvi.a.b;
+         this.c.a(this.e);
+         this.d.a(this.e.b(), $$0, $$1, $$2);
          return true;
-      }
-   }
-
-   protected void a(are $$0, cmj $$1, long $$2) {
-      this.j = false;
-      this.k = $$2;
-      cmw $$3 = this.c($$1).get();
-      $$1.dS().a(ccs.q, $$3);
-      bvj.a($$1, $$3);
-   }
-
-   protected boolean b(are $$0, cmj $$1, long $$2) {
-      return this.b($$1) && !this.j;
-   }
-
-   protected void c(are $$0, cmj $$1, long $$2) {
-      cmw $$3 = this.c($$1).get();
-      bvj.a($$1, $$3);
-      if (this.a($$1, $$3)) {
-         if ($$2 - this.k > 20L) {
-            this.a($$1, (bto)$$3);
-            this.j = true;
-         }
       } else {
-         bvj.a($$1, $$3, 0.5F, 5);
+         return false;
       }
    }
 
-   protected void d(are $$0, cmj $$1, long $$2) {
-      this.i = a($$0);
-      $$1.dS().b(ccs.q);
-      $$1.dS().b(ccs.m);
-      $$1.dS().b(ccs.n);
-   }
-
-   private void a(cmj $$0, bto $$1) {
-      for (cuo $$3 : this.a($$0)) {
-         bvj.a($$0, $$3, $$1.dn());
+   @Override
+   public final void f(arf $$0, E $$1, long $$2) {
+      this.e.b().filter($$0x -> $$0x.a() == bvi.a.b).forEach($$3 -> $$3.f($$0, $$1, $$2));
+      if (this.e.b().noneMatch($$0x -> $$0x.a() == bvi.a.b)) {
+         this.g($$0, $$1, $$2);
       }
    }
 
-   private List<cuo> a(cmj $$0) {
-      if ($$0.p_()) {
-         return ImmutableList.of(new cuo(cur.dl));
-      } else {
-         cmm $$1 = $$0.gB().b();
-         if (g.containsKey($$1)) {
-            eqm $$2 = $$0.dP().o().be().b(g.get($$1));
-            eqk $$3 = new eqk.a((are)$$0.dP()).a(etd.f, $$0.dn()).a(etd.a, $$0).a(etc.j);
-            return $$2.a($$3);
-         } else {
-            return ImmutableList.of(new cuo(cur.pv));
+   @Override
+   public final void g(arf $$0, E $$1, long $$2) {
+      this.f = bvi.a.a;
+      this.e.b().filter($$0x -> $$0x.a() == bvi.a.b).forEach($$3 -> $$3.g($$0, $$1, $$2));
+      this.b.forEach($$1.dS()::b);
+   }
+
+   @Override
+   public String b() {
+      return this.getClass().getSimpleName();
+   }
+
+   @Override
+   public String toString() {
+      Set<? extends bvj<? super E>> $$0 = this.e.b().filter($$0x -> $$0x.a() == bvi.a.b).collect(Collectors.toSet());
+      return "(" + this.getClass().getSimpleName() + "): " + $$0;
+   }
+
+   public static enum a {
+      a($$0 -> {
+      }),
+      b(bxr::a);
+
+      private final Consumer<bxr<?>> c;
+
+      private a(final Consumer<bxr<?>> $$0) {
+         this.c = $$0;
+      }
+
+      public void a(bxr<?> $$0) {
+         this.c.accept($$0);
+      }
+   }
+
+   public static enum b {
+      a {
+         @Override
+         public <E extends btp> void a(Stream<bvj<? super E>> $$0, arf $$1, E $$2, long $$3) {
+            $$0.filter($$0x -> $$0x.a() == bvi.a.a).filter($$3x -> $$3x.e($$1, $$2, $$3)).findFirst();
          }
-      }
-   }
+      },
+      b {
+         @Override
+         public <E extends btp> void a(Stream<bvj<? super E>> $$0, arf $$1, E $$2, long $$3) {
+            $$0.filter($$0x -> $$0x.a() == bvi.a.a).forEach($$3x -> $$3x.e($$1, $$2, $$3));
+         }
+      };
 
-   private boolean b(cmj $$0) {
-      return this.c($$0).isPresent();
-   }
-
-   private Optional<cmw> c(cmj $$0) {
-      return $$0.dS().c(ccs.k).filter(this::a);
-   }
-
-   private boolean a(cmw $$0) {
-      return $$0.b(bsd.F);
-   }
-
-   private boolean a(cmj $$0, cmw $$1) {
-      iz $$2 = $$1.dp();
-      iz $$3 = $$0.dp();
-      return $$3.a($$2, 5.0);
-   }
-
-   private static int a(are $$0) {
-      return 600 + $$0.z.a(6001);
+      public abstract <E extends btp> void a(Stream<bvj<? super E>> var1, arf var2, E var3, long var4);
    }
 }

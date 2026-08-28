@@ -11,14 +11,14 @@ import java.util.concurrent.CompletableFuture;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-public class fd implements ArgumentType<dbu> {
-   private static final Collection<String> a = Stream.of(dbu.a, dbu.b).map(dbu::b).collect(Collectors.toList());
-   private static final dbu[] b = dbu.values();
-   private static final DynamicCommandExceptionType c = new DynamicCommandExceptionType($$0 -> xo.b("argument.gamemode.invalid", $$0));
+public class fd implements ArgumentType<dbv> {
+   private static final Collection<String> a = Stream.of(dbv.a, dbv.b).map(dbv::b).collect(Collectors.toList());
+   private static final dbv[] b = dbv.values();
+   private static final DynamicCommandExceptionType c = new DynamicCommandExceptionType($$0 -> xp.b("argument.gamemode.invalid", $$0));
 
-   public dbu a(StringReader $$0) throws CommandSyntaxException {
+   public dbv a(StringReader $$0) throws CommandSyntaxException {
       String $$1 = $$0.readUnquotedString();
-      dbu $$2 = dbu.a($$1, null);
+      dbv $$2 = dbv.a($$1, null);
       if ($$2 == null) {
          throw c.createWithContext($$0, $$1);
       } else {
@@ -27,7 +27,7 @@ public class fd implements ArgumentType<dbu> {
    }
 
    public <S> CompletableFuture<Suggestions> listSuggestions(CommandContext<S> $$0, SuggestionsBuilder $$1) {
-      return $$0.getSource() instanceof eu ? eu.b(Arrays.stream(b).map(dbu::b), $$1) : Suggestions.empty();
+      return $$0.getSource() instanceof eu ? eu.b(Arrays.stream(b).map(dbv::b), $$1) : Suggestions.empty();
    }
 
    public Collection<String> getExamples() {
@@ -38,7 +38,7 @@ public class fd implements ArgumentType<dbu> {
       return new fd();
    }
 
-   public static dbu a(CommandContext<ep> $$0, String $$1) throws CommandSyntaxException {
-      return (dbu)$$0.getArgument($$1, dbu.class);
+   public static dbv a(CommandContext<ep> $$0, String $$1) throws CommandSyntaxException {
+      return (dbv)$$0.getArgument($$1, dbv.class);
    }
 }

@@ -1,60 +1,88 @@
-import java.util.UUID;
-import javax.annotation.Nullable;
+public class aei implements zw<aci> {
+   public static final zn<wm, aei> a = zw.a(aei::a, aei::new);
+   private static final int b = 1;
+   private static final int c = 2;
+   private static final int d = 4;
+   private static final int e = 8;
+   private final boolean f;
+   private final boolean g;
+   private final boolean h;
+   private final boolean i;
+   private final float j;
+   private final float k;
 
-public record aei(UUID b, int c, @Nullable ya d, yh.a e, @Nullable xo f, xs g, xk.a h) implements zv<ach> {
-   public static final zm<wz, aei> a = zv.a(aei::a, aei::new);
-
-   private aei(wz $$0) {
-      this($$0.n(), $$0.l(), $$0.c(ya::a), new yh.a($$0), wl.a($$0, xq.d), xs.a($$0), xk.a.a.decode($$0));
+   public aei(cmu $$0) {
+      this.f = $$0.a;
+      this.g = $$0.b;
+      this.h = $$0.c;
+      this.i = $$0.d;
+      this.j = $$0.a();
+      this.k = $$0.b();
    }
 
-   private void a(wz $$0) {
-      $$0.a(this.b);
-      $$0.c(this.c);
-      $$0.a(this.d, ya::a);
-      this.e.a($$0);
-      wl.a($$0, this.f, xq.d);
-      xs.a($$0, this.g);
-      xk.a.a.encode($$0, this.h);
+   private aei(wm $$0) {
+      byte $$1 = $$0.readByte();
+      this.f = ($$1 & 1) != 0;
+      this.g = ($$1 & 2) != 0;
+      this.h = ($$1 & 4) != 0;
+      this.i = ($$1 & 8) != 0;
+      this.j = $$0.readFloat();
+      this.k = $$0.readFloat();
+   }
+
+   private void a(wm $$0) {
+      byte $$1 = 0;
+      if (this.f) {
+         $$1 = (byte)($$1 | 1);
+      }
+
+      if (this.g) {
+         $$1 = (byte)($$1 | 2);
+      }
+
+      if (this.h) {
+         $$1 = (byte)($$1 | 4);
+      }
+
+      if (this.i) {
+         $$1 = (byte)($$1 | 8);
+      }
+
+      $$0.k($$1);
+      $$0.a(this.j);
+      $$0.a(this.k);
    }
 
    @Override
-   public zx<aei> a() {
-      return agt.aa;
+   public zy<aei> a() {
+      return agu.Z;
    }
 
-   public void a(ach $$0) {
+   public void a(aci $$0) {
       $$0.a(this);
    }
 
-   @Override
-   public boolean c() {
-      return true;
-   }
-
-   public int e() {
-      return this.c;
-   }
-
-   @Nullable
-   public ya f() {
-      return this.d;
-   }
-
-   public yh.a g() {
-      return this.e;
-   }
-
-   @Nullable
-   public xo h() {
+   public boolean b() {
       return this.f;
    }
 
-   public xs i() {
+   public boolean e() {
       return this.g;
    }
 
-   public xk.a j() {
+   public boolean f() {
       return this.h;
+   }
+
+   public boolean g() {
+      return this.i;
+   }
+
+   public float h() {
+      return this.j;
+   }
+
+   public float i() {
+      return this.k;
    }
 }

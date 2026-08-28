@@ -1,63 +1,127 @@
-import com.google.common.annotations.VisibleForTesting;
-import com.google.common.base.Charsets;
-import com.google.common.hash.HashFunction;
-import com.google.common.hash.Hashing;
-import com.google.common.primitives.Longs;
-import java.util.concurrent.atomic.AtomicLong;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 
 public final class dyi {
-   public static final long a = -7046029254386353131L;
-   public static final long b = 7640891576956012809L;
-   private static final HashFunction c = Hashing.md5();
-   private static final AtomicLong d = new AtomicLong(8682522807148012L);
+   final dyh a;
+   private final jj<emy.a> b;
+   private final dya c;
+   private final ddg.f d;
+   private final dym e;
+   private final dyh f;
+   private final dyh g;
+   private final Map<ale<emy.a>, emy> h;
+   private final Map<alf, dyh> i;
 
-   @VisibleForTesting
-   public static long a(long $$0) {
-      $$0 = ($$0 ^ $$0 >>> 30) * -4658895280553007687L;
-      $$0 = ($$0 ^ $$0 >>> 27) * -7723592293110705685L;
-      return $$0 ^ $$0 >>> 31;
+   public static dyi a(jj.a $$0, ale<dxz> $$1, long $$2) {
+      return a($$0.b(lq.aG).b($$1).a(), $$0.b(lq.aH), $$2);
    }
 
-   public static dyi.a b(long $$0) {
-      long $$1 = $$0 ^ 7640891576956012809L;
-      long $$2 = $$1 + -7046029254386353131L;
-      return new dyi.a($$1, $$2);
+   public static dyi a(dxz $$0, jj<emy.a> $$1, long $$2) {
+      return new dyi($$0, $$1, $$2);
    }
 
-   public static dyi.a c(long $$0) {
-      return b($$0).a();
+   private dyi(dxz $$0, jj<emy.a> $$1, final long $$2) {
+      this.a = $$0.d().a($$2).e();
+      this.b = $$1;
+      this.f = this.a.a(new alf("aquifer")).e();
+      this.g = this.a.a(new alf("ore")).e();
+      this.h = new ConcurrentHashMap<>();
+      this.i = new ConcurrentHashMap<>();
+      this.e = new dym(this, $$0.g(), $$0.l(), this.a);
+      final boolean $$3 = $$0.n();
+
+      class a implements dxn.f {
+         private final Map<dxn, dxn> d = new HashMap<>();
+
+         private azh a(long $$0) {
+            return new dxv($$2 + $$0);
+         }
+
+         @Override
+         public dxn.c a(dxn.c $$0) {
+            ji<emy.a> $$1 = $$0.b();
+            if ($$3) {
+               if ($$1.a(dyd.a)) {
+                  emy $$2 = emy.a(this.a(0L), new emy.a(-7, 1.0, 1.0));
+                  return new dxn.c($$1, $$2);
+               }
+
+               if ($$1.a(dyd.b)) {
+                  emy $$3 = emy.a(this.a(1L), new emy.a(-7, 1.0, 1.0));
+                  return new dxn.c($$1, $$3);
+               }
+
+               if ($$1.a(dyd.j)) {
+                  emy $$4 = emy.b(dyi.this.a.a(dyd.j.a()), new emy.a(0, 0.0));
+                  return new dxn.c($$1, $$4);
+               }
+            }
+
+            emy $$5 = dyi.this.a($$1.e().orElseThrow());
+            return new dxn.c($$1, $$5);
+         }
+
+         private dxn a(dxn $$0) {
+            if ($$0 instanceof emv $$1) {
+               azh $$2 = $$3 ? this.a(0L) : dyi.this.a.a(new alf("terrain"));
+               return $$1.a($$2);
+            } else {
+               return (dxn)($$0 instanceof dxo.i ? new dxo.i($$2) : $$0);
+            }
+         }
+
+         @Override
+         public dxn apply(dxn $$0) {
+            return this.d.computeIfAbsent($$0, this::a);
+         }
+      }
+
+      this.c = $$0.i().a(new a());
+      dxn.f $$4 = new dxn.f() {
+         private final Map<dxn, dxn> a = new HashMap<>();
+
+         private dxn a(dxn $$0) {
+            if ($$0 instanceof dxo.j $$1) {
+               return $$1.j().a();
+            } else {
+               return $$0 instanceof dxo.l $$2 ? $$2.k() : $$0;
+            }
+         }
+
+         @Override
+         public dxn apply(dxn $$0) {
+            return this.a.computeIfAbsent($$0, this::a);
+         }
+      };
+      this.d = new ddg.f(this.c.e().a($$4), this.c.f().a($$4), this.c.g().a($$4), this.c.h().a($$4), this.c.i().a($$4), this.c.j().a($$4), $$0.k());
    }
 
-   public static dyi.a a(String $$0) {
-      byte[] $$1 = c.hashString($$0, Charsets.UTF_8).asBytes();
-      long $$2 = Longs.fromBytes($$1[0], $$1[1], $$1[2], $$1[3], $$1[4], $$1[5], $$1[6], $$1[7]);
-      long $$3 = Longs.fromBytes($$1[8], $$1[9], $$1[10], $$1[11], $$1[12], $$1[13], $$1[14], $$1[15]);
-      return new dyi.a($$2, $$3);
+   public emy a(ale<emy.a> $$0) {
+      return this.h.computeIfAbsent($$0, $$1 -> dyd.a(this.b, this.a, $$0));
    }
 
-   public static long a() {
-      return d.updateAndGet($$0 -> $$0 * 1181783497276652981L) ^ System.nanoTime();
+   public dyh a(alf $$0) {
+      return this.i.computeIfAbsent($$0, $$1 -> this.a.a($$0).e());
    }
 
-   public static record a(long a, long b) {
-      public dyi.a a(long $$0, long $$1) {
-         return new dyi.a(this.a ^ $$0, this.b ^ $$1);
-      }
+   public dya a() {
+      return this.c;
+   }
 
-      public dyi.a a(dyi.a $$0) {
-         return this.a($$0.a, $$0.b);
-      }
+   public ddg.f b() {
+      return this.d;
+   }
 
-      public dyi.a a() {
-         return new dyi.a(dyi.a(this.a), dyi.a(this.b));
-      }
+   public dym c() {
+      return this.e;
+   }
 
-      public long b() {
-         return this.a;
-      }
+   public dyh d() {
+      return this.f;
+   }
 
-      public long c() {
-         return this.b;
-      }
+   public dyh e() {
+      return this.g;
    }
 }

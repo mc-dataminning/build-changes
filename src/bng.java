@@ -1,32 +1,12 @@
-import java.nio.file.Path;
-import java.util.List;
+import java.util.Set;
+import javax.annotation.Nullable;
+import org.apache.commons.lang3.tuple.Pair;
 
-public interface bng {
-   char d = '\u001e';
+public interface bng extends bni {
+   bnh d();
 
-   List<bnj> a(String var1);
+   @Nullable
+   bnb.a c(String var1);
 
-   boolean a(Path var1);
-
-   long a();
-
-   int b();
-
-   long c();
-
-   int d();
-
-   default long g() {
-      return this.c() - this.a();
-   }
-
-   default int f() {
-      return this.d() - this.b();
-   }
-
-   String e();
-
-   static String b(String $$0) {
-      return $$0.replace('\u001e', '.');
-   }
+   Set<Pair<String, boo>> e();
 }

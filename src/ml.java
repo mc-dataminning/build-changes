@@ -16,8 +16,8 @@ public class ml implements lw {
    private static final Logger d = LogUtils.getLogger();
    private final Path e;
    private final CompletableFuture<jk.a> f;
-   private static final MapCodec<ald<dcw>> g = ald.a(lq.az).fieldOf("biome");
-   private static final Codec<ddf.c<ald<dcw>>> h = ddf.c.a(g).fieldOf("biomes").codec();
+   private static final MapCodec<ale<dcx>> g = ale.a(lq.az).fieldOf("biome");
+   private static final Codec<ddg.c<ale<dcx>>> h = ddg.c.a(g).fieldOf("biomes").codec();
 
    public ml(ly $$0, CompletableFuture<jk.a> $$1) {
       this.e = $$0.a(ly.b.c).resolve("biome_parameters");
@@ -29,7 +29,7 @@ public class ml implements lw {
       return this.f.thenCompose($$1 -> {
          DynamicOps<JsonElement> $$2 = $$1.a(JsonOps.INSTANCE);
          List<CompletableFuture<?>> $$3 = new ArrayList<>();
-         ddk.b().forEach(($$3x, $$4) -> $$3.add(a(this.a($$3x.b()), $$0, $$2, h, $$4)));
+         ddl.b().forEach(($$3x, $$4) -> $$3.add(a(this.a($$3x.b()), $$0, $$2, h, $$4)));
          return CompletableFuture.allOf($$3.toArray(CompletableFuture[]::new));
       });
    }
@@ -39,7 +39,7 @@ public class ml implements lw {
       return $$5.isPresent() ? lw.a($$1, $$5.get(), $$0) : CompletableFuture.completedFuture(null);
    }
 
-   private Path a(ale $$0) {
+   private Path a(alf $$0) {
       return this.e.resolve($$0.b()).resolve($$0.a() + ".json");
    }
 

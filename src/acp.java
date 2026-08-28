@@ -1,37 +1,32 @@
-public class acp implements zv<ach> {
-   public static final zm<wz, acp> a = zv.a(acp::a, acp::new);
+import java.util.function.BiFunction;
+
+public class acp implements zw<aci> {
+   public static final zn<xa, acp> a = zn.a(iz.b, acp::b, zl.a(lq.h), acp::e, zl.p, acp::f, acp::new);
    private final iz b;
-   private final int c;
-   private final int d;
-   private final dey e;
+   private final dpj<?> c;
+   private final us d;
 
-   public acp(iz $$0, dey $$1, int $$2, int $$3) {
+   public static acp a(dph $$0, BiFunction<dph, jw, us> $$1) {
+      jw $$2 = $$0.i().H_();
+      return new acp($$0.ay_(), $$0.r(), $$1.apply($$0, $$2));
+   }
+
+   public static acp a(dph $$0) {
+      return a($$0, dph::a);
+   }
+
+   private acp(iz $$0, dpj<?> $$1, us $$2) {
       this.b = $$0;
-      this.e = $$1;
-      this.c = $$2;
-      this.d = $$3;
-   }
-
-   private acp(wz $$0) {
-      this.b = $$0.e();
-      this.c = $$0.readUnsignedByte();
-      this.d = $$0.readUnsignedByte();
-      this.e = zk.a(lq.f).decode($$0);
-   }
-
-   private void a(wz $$0) {
-      $$0.a(this.b);
-      $$0.k(this.c);
-      $$0.k(this.d);
-      zk.a(lq.f).encode($$0, this.e);
+      this.c = $$1;
+      this.d = $$2;
    }
 
    @Override
-   public zx<acp> a() {
-      return agt.j;
+   public zy<acp> a() {
+      return agu.i;
    }
 
-   public void a(ach $$0) {
+   public void a(aci $$0) {
       $$0.a(this);
    }
 
@@ -39,15 +34,11 @@ public class acp implements zv<ach> {
       return this.b;
    }
 
-   public int e() {
+   public dpj<?> e() {
       return this.c;
    }
 
-   public int f() {
+   public us f() {
       return this.d;
-   }
-
-   public dey g() {
-      return this.e;
    }
 }

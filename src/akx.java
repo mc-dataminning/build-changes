@@ -1,33 +1,184 @@
+import com.mojang.datafixers.util.Pair;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.DynamicOps;
+import com.mojang.serialization.ListBuilder;
+import com.mojang.serialization.MapLike;
+import com.mojang.serialization.RecordBuilder;
+import com.mojang.serialization.ListBuilder.Builder;
+import com.mojang.serialization.RecordBuilder.MapBuilder;
+import java.nio.ByteBuffer;
 import java.util.List;
 import java.util.Map;
+import java.util.function.BiConsumer;
+import java.util.function.Consumer;
+import java.util.stream.IntStream;
+import java.util.stream.LongStream;
+import java.util.stream.Stream;
 
-public class akx {
-   private final String a;
-   private final String b;
+public abstract class akx<T> implements DynamicOps<T> {
+   protected final DynamicOps<T> a;
 
-   public akx(String $$0, String $$1) {
+   protected akx(DynamicOps<T> $$0) {
       this.a = $$0;
-      this.b = $$1;
    }
 
-   public static akx a(String $$0) {
-      return new akx($$0, ".json");
+   public T empty() {
+      return (T)this.a.empty();
    }
 
-   public ale a(ale $$0) {
-      return $$0.c(this.a + "/" + $$0.a() + this.b);
+   public T emptyMap() {
+      return (T)this.a.emptyMap();
    }
 
-   public ale b(ale $$0) {
-      String $$1 = $$0.a();
-      return $$0.c($$1.substring(this.a.length() + 1, $$1.length() - this.b.length()));
+   public T emptyList() {
+      return (T)this.a.emptyList();
    }
 
-   public Map<ale, aum> a(auo $$0) {
-      return $$0.b(this.a, $$0x -> $$0x.a().endsWith(this.b));
+   public <U> U convertTo(DynamicOps<U> $$0, T $$1) {
+      return (U)this.a.convertTo($$0, $$1);
    }
 
-   public Map<ale, List<aum>> b(auo $$0) {
-      return $$0.c(this.a, $$0x -> $$0x.a().endsWith(this.b));
+   public DataResult<Number> getNumberValue(T $$0) {
+      return this.a.getNumberValue($$0);
+   }
+
+   public T createNumeric(Number $$0) {
+      return (T)this.a.createNumeric($$0);
+   }
+
+   public T createByte(byte $$0) {
+      return (T)this.a.createByte($$0);
+   }
+
+   public T createShort(short $$0) {
+      return (T)this.a.createShort($$0);
+   }
+
+   public T createInt(int $$0) {
+      return (T)this.a.createInt($$0);
+   }
+
+   public T createLong(long $$0) {
+      return (T)this.a.createLong($$0);
+   }
+
+   public T createFloat(float $$0) {
+      return (T)this.a.createFloat($$0);
+   }
+
+   public T createDouble(double $$0) {
+      return (T)this.a.createDouble($$0);
+   }
+
+   public DataResult<Boolean> getBooleanValue(T $$0) {
+      return this.a.getBooleanValue($$0);
+   }
+
+   public T createBoolean(boolean $$0) {
+      return (T)this.a.createBoolean($$0);
+   }
+
+   public DataResult<String> getStringValue(T $$0) {
+      return this.a.getStringValue($$0);
+   }
+
+   public T createString(String $$0) {
+      return (T)this.a.createString($$0);
+   }
+
+   public DataResult<T> mergeToList(T $$0, T $$1) {
+      return this.a.mergeToList($$0, $$1);
+   }
+
+   public DataResult<T> mergeToList(T $$0, List<T> $$1) {
+      return this.a.mergeToList($$0, $$1);
+   }
+
+   public DataResult<T> mergeToMap(T $$0, T $$1, T $$2) {
+      return this.a.mergeToMap($$0, $$1, $$2);
+   }
+
+   public DataResult<T> mergeToMap(T $$0, MapLike<T> $$1) {
+      return this.a.mergeToMap($$0, $$1);
+   }
+
+   public DataResult<T> mergeToMap(T $$0, Map<T, T> $$1) {
+      return this.a.mergeToMap($$0, $$1);
+   }
+
+   public DataResult<T> mergeToPrimitive(T $$0, T $$1) {
+      return this.a.mergeToPrimitive($$0, $$1);
+   }
+
+   public DataResult<Stream<Pair<T, T>>> getMapValues(T $$0) {
+      return this.a.getMapValues($$0);
+   }
+
+   public DataResult<Consumer<BiConsumer<T, T>>> getMapEntries(T $$0) {
+      return this.a.getMapEntries($$0);
+   }
+
+   public T createMap(Map<T, T> $$0) {
+      return (T)this.a.createMap($$0);
+   }
+
+   public T createMap(Stream<Pair<T, T>> $$0) {
+      return (T)this.a.createMap($$0);
+   }
+
+   public DataResult<MapLike<T>> getMap(T $$0) {
+      return this.a.getMap($$0);
+   }
+
+   public DataResult<Stream<T>> getStream(T $$0) {
+      return this.a.getStream($$0);
+   }
+
+   public DataResult<Consumer<Consumer<T>>> getList(T $$0) {
+      return this.a.getList($$0);
+   }
+
+   public T createList(Stream<T> $$0) {
+      return (T)this.a.createList($$0);
+   }
+
+   public DataResult<ByteBuffer> getByteBuffer(T $$0) {
+      return this.a.getByteBuffer($$0);
+   }
+
+   public T createByteList(ByteBuffer $$0) {
+      return (T)this.a.createByteList($$0);
+   }
+
+   public DataResult<IntStream> getIntStream(T $$0) {
+      return this.a.getIntStream($$0);
+   }
+
+   public T createIntList(IntStream $$0) {
+      return (T)this.a.createIntList($$0);
+   }
+
+   public DataResult<LongStream> getLongStream(T $$0) {
+      return this.a.getLongStream($$0);
+   }
+
+   public T createLongList(LongStream $$0) {
+      return (T)this.a.createLongList($$0);
+   }
+
+   public T remove(T $$0, String $$1) {
+      return (T)this.a.remove($$0, $$1);
+   }
+
+   public boolean compressMaps() {
+      return this.a.compressMaps();
+   }
+
+   public ListBuilder<T> listBuilder() {
+      return new Builder(this);
+   }
+
+   public RecordBuilder<T> mapBuilder() {
+      return new MapBuilder(this);
    }
 }

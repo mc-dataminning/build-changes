@@ -1,19 +1,19 @@
-public class gjh extends gkc<cjx, fum<cjx>> {
-   private static final ale a = new ale("textures/entity/zombie/zombie.png");
-   private final float i;
+public class gjh extends gkd<cjx, fue<cjx>> {
+   private static final alf a = new alf("textures/entity/ghast/ghast.png");
+   private static final alf i = new alf("textures/entity/ghast/ghast_shooting.png");
 
-   public gjh(giw.a $$0, float $$1) {
-      super($$0, new fue($$0.a(fwy.ah)), 0.5F * $$1);
-      this.i = $$1;
-      this.a(new gnb<>(this, $$0.d()));
-      this.a(new gmy<>(this, new fue($$0.a(fwy.ai)), new fue($$0.a(fwy.aj)), $$0.g()));
+   public gjh(gix.a $$0) {
+      super($$0, new fue<>($$0.a(fwz.ag)), 1.5F);
    }
 
-   protected void a(cjx $$0, ezx $$1, float $$2) {
-      $$1.b(this.i, this.i, this.i);
+   public alf a(cjx $$0) {
+      return $$0.s() ? i : a;
    }
 
-   public ale a(cjx $$0) {
-      return a;
+   protected void a(cjx $$0, ezy $$1, float $$2) {
+      float $$3 = 1.0F;
+      float $$4 = 4.5F;
+      float $$5 = 4.5F;
+      $$1.b(4.5F, 4.5F, 4.5F);
    }
 }

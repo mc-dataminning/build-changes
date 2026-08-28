@@ -1,37 +1,29 @@
-public class afi implements zv<ach> {
-   public static final zm<wl, afi> a = zv.a(afi::a, afi::new);
+public class afi implements zw<aci> {
+   public static final zn<wm, afi> a = zw.a(afi::a, afi::new);
    private final int b;
-   private final int c;
 
-   public afi(int $$0, int $$1) {
+   public afi(int $$0) {
       this.b = $$0;
-      this.c = $$1;
    }
 
-   private afi(wl $$0) {
-      this.b = $$0.l();
-      this.c = $$0.l();
+   private afi(wm $$0) {
+      this.b = $$0.readByte();
    }
 
-   private void a(wl $$0) {
-      $$0.c(this.b);
-      $$0.c(this.c);
+   private void a(wm $$0) {
+      $$0.k(this.b);
    }
 
    @Override
-   public zx<afi> a() {
-      return agt.ay;
+   public zy<afi> a() {
+      return agu.ax;
    }
 
-   public void a(ach $$0) {
+   public void a(aci $$0) {
       $$0.a(this);
    }
 
    public int b() {
       return this.b;
-   }
-
-   public int e() {
-      return this.c;
    }
 }

@@ -26,21 +26,21 @@ import org.slf4j.Logger;
 
 public class jq<T> implements ke<T> {
    private static final Logger b = LogUtils.getLogger();
-   final ald<? extends jv<T>> c;
+   final ale<? extends jv<T>> c;
    private final ObjectList<ji.c<T>> d = new ObjectArrayList(256);
    private final Reference2IntMap<T> e = ac.a(new Reference2IntOpenHashMap(), $$0x -> $$0x.defaultReturnValue(-1));
-   private final Map<ale, ji.c<T>> f = new HashMap<>();
-   private final Map<ald<T>, ji.c<T>> g = new HashMap<>();
+   private final Map<alf, ji.c<T>> f = new HashMap<>();
+   private final Map<ale<T>, ji.c<T>> g = new HashMap<>();
    private final Map<T, ji.c<T>> h = new IdentityHashMap<>();
-   private final Map<ald<T>, ju> i = new IdentityHashMap<>();
+   private final Map<ale<T>, ju> i = new IdentityHashMap<>();
    private Lifecycle j;
-   private volatile Map<axe<T>, jm.c<T>> k = new IdentityHashMap<>();
+   private volatile Map<axf<T>, jm.c<T>> k = new IdentityHashMap<>();
    private boolean l;
    @Nullable
    private Map<T, ji.c<T>> m;
    private final jk.b<T> n = new jk.b<T>() {
       @Override
-      public ald<? extends jv<? extends T>> f() {
+      public ale<? extends jv<? extends T>> f() {
          return jq.this.c;
       }
 
@@ -50,7 +50,7 @@ public class jq<T> implements ke<T> {
       }
 
       @Override
-      public Optional<ji.c<T>> a(ald<T> $$0) {
+      public Optional<ji.c<T>> a(ale<T> $$0) {
          return jq.this.b($$0);
       }
 
@@ -60,7 +60,7 @@ public class jq<T> implements ke<T> {
       }
 
       @Override
-      public Optional<jm.c<T>> a(axe<T> $$0) {
+      public Optional<jm.c<T>> a(axf<T> $$0) {
          return jq.this.b($$0);
       }
 
@@ -70,11 +70,11 @@ public class jq<T> implements ke<T> {
       }
    };
 
-   public jq(ald<? extends jv<T>> $$0, Lifecycle $$1) {
+   public jq(ale<? extends jv<T>> $$0, Lifecycle $$1) {
       this($$0, $$1, false);
    }
 
-   public jq(ald<? extends jv<T>> $$0, Lifecycle $$1, boolean $$2) {
+   public jq(ale<? extends jv<T>> $$0, Lifecycle $$1, boolean $$2) {
       this.c = $$0;
       this.j = $$1;
       if ($$2) {
@@ -83,7 +83,7 @@ public class jq<T> implements ke<T> {
    }
 
    @Override
-   public ald<? extends jv<T>> c() {
+   public ale<? extends jv<T>> c() {
       return this.c;
    }
 
@@ -98,14 +98,14 @@ public class jq<T> implements ke<T> {
       }
    }
 
-   private void h(ald<T> $$0) {
+   private void h(ale<T> $$0) {
       if (this.l) {
          throw new IllegalStateException("Registry is already frozen (trying to add key " + $$0 + ")");
       }
    }
 
    @Override
-   public ji.c<T> a(ald<T> $$0, T $$1, ju $$2) {
+   public ji.c<T> a(ale<T> $$0, T $$1, ju $$2) {
       this.h($$0);
       Objects.requireNonNull($$0);
       Objects.requireNonNull($$1);
@@ -142,13 +142,13 @@ public class jq<T> implements ke<T> {
 
    @Nullable
    @Override
-   public ale b(T $$0) {
+   public alf b(T $$0) {
       ji.c<T> $$1 = this.h.get($$0);
       return $$1 != null ? $$1.h().a() : null;
    }
 
    @Override
-   public Optional<ald<T>> d(T $$0) {
+   public Optional<ale<T>> d(T $$0) {
       return Optional.ofNullable(this.h.get($$0)).map(ji.c::h);
    }
 
@@ -159,7 +159,7 @@ public class jq<T> implements ke<T> {
 
    @Nullable
    @Override
-   public T a(@Nullable ald<T> $$0) {
+   public T a(@Nullable ale<T> $$0) {
       return a(this.g.get($$0));
    }
 
@@ -175,12 +175,12 @@ public class jq<T> implements ke<T> {
    }
 
    @Override
-   public Optional<ji.c<T>> c(ale $$0) {
+   public Optional<ji.c<T>> c(alf $$0) {
       return Optional.ofNullable(this.f.get($$0));
    }
 
    @Override
-   public Optional<ji.c<T>> b(ald<T> $$0) {
+   public Optional<ji.c<T>> b(ale<T> $$0) {
       return Optional.ofNullable(this.g.get($$0));
    }
 
@@ -190,7 +190,7 @@ public class jq<T> implements ke<T> {
       return (ji<T>)($$1 != null ? $$1 : ji.a($$0));
    }
 
-   ji.c<T> i(ald<T> $$0) {
+   ji.c<T> i(ale<T> $$0) {
       return this.g.computeIfAbsent($$0, $$0x -> {
          if (this.m != null) {
             throw new IllegalStateException("This registry can't create new holders without value");
@@ -207,7 +207,7 @@ public class jq<T> implements ke<T> {
    }
 
    @Override
-   public Optional<ju> c(ald<T> $$0) {
+   public Optional<ju> c(ale<T> $$0) {
       return Optional.ofNullable(this.i.get($$0));
    }
 
@@ -223,7 +223,7 @@ public class jq<T> implements ke<T> {
 
    @Nullable
    @Override
-   public T a(@Nullable ale $$0) {
+   public T a(@Nullable alf $$0) {
       ji.c<T> $$1 = this.f.get($$0);
       return a($$1);
    }
@@ -234,17 +234,17 @@ public class jq<T> implements ke<T> {
    }
 
    @Override
-   public Set<ale> e() {
+   public Set<alf> e() {
       return Collections.unmodifiableSet(this.f.keySet());
    }
 
    @Override
-   public Set<ald<T>> f() {
+   public Set<ale<T>> f() {
       return Collections.unmodifiableSet(this.g.keySet());
    }
 
    @Override
-   public Set<Entry<ald<T>, T>> g() {
+   public Set<Entry<ale<T>, T>> g() {
       return Collections.unmodifiableSet(Maps.transformValues(this.g, ji::a).entrySet());
    }
 
@@ -254,16 +254,16 @@ public class jq<T> implements ke<T> {
    }
 
    @Override
-   public Stream<Pair<axe<T>, jm.c<T>>> i() {
+   public Stream<Pair<axf<T>, jm.c<T>>> i() {
       return this.k.entrySet().stream().map($$0 -> Pair.of($$0.getKey(), $$0.getValue()));
    }
 
    @Override
-   public jm.c<T> a(axe<T> $$0) {
+   public jm.c<T> a(axf<T> $$0) {
       jm.c<T> $$1 = this.k.get($$0);
       if ($$1 == null) {
          $$1 = this.d($$0);
-         Map<axe<T>, jm.c<T>> $$2 = new IdentityHashMap<>(this.k);
+         Map<axf<T>, jm.c<T>> $$2 = new IdentityHashMap<>(this.k);
          $$2.put($$0, $$1);
          this.k = $$2;
       }
@@ -271,12 +271,12 @@ public class jq<T> implements ke<T> {
       return $$1;
    }
 
-   private jm.c<T> d(axe<T> $$0) {
+   private jm.c<T> d(axf<T> $$0) {
       return new jm.c<>(this.o(), $$0);
    }
 
    @Override
-   public Stream<axe<T>> j() {
+   public Stream<axf<T>> j() {
       return this.k.keySet().stream();
    }
 
@@ -286,17 +286,17 @@ public class jq<T> implements ke<T> {
    }
 
    @Override
-   public Optional<ji.c<T>> a(azg $$0) {
+   public Optional<ji.c<T>> a(azh $$0) {
       return ac.b(this.d, $$0);
    }
 
    @Override
-   public boolean d(ale $$0) {
+   public boolean d(alf $$0) {
       return this.f.containsKey($$0);
    }
 
    @Override
-   public boolean d(ald<T> $$0) {
+   public boolean d(ale<T> $$0) {
       return this.g.containsKey($$0);
    }
 
@@ -307,7 +307,7 @@ public class jq<T> implements ke<T> {
       } else {
          this.l = true;
          this.h.forEach(($$0x, $$1) -> $$1.b((T)$$0x));
-         List<ale> $$0 = this.g.entrySet().stream().filter($$0x -> !((ji.c)$$0x.getValue()).b()).map($$0x -> ((ald)$$0x.getKey()).a()).sorted().toList();
+         List<alf> $$0 = this.g.entrySet().stream().filter($$0x -> !((ji.c)$$0x.getValue()).b()).map($$0x -> ((ale)$$0x.getKey()).a()).sorted().toList();
          if (!$$0.isEmpty()) {
             throw new IllegalStateException("Unbound values in registry " + this.c() + ": " + $$0);
          } else {
@@ -335,13 +335,13 @@ public class jq<T> implements ke<T> {
    }
 
    @Override
-   public Optional<jm.c<T>> b(axe<T> $$0) {
+   public Optional<jm.c<T>> b(axf<T> $$0) {
       return Optional.ofNullable(this.k.get($$0));
    }
 
    @Override
-   public void a(Map<axe<T>, List<ji<T>>> $$0) {
-      Map<ji.c<T>, List<axe<T>>> $$1 = new IdentityHashMap<>();
+   public void a(Map<axf<T>, List<ji<T>>> $$0) {
+      Map<ji.c<T>, List<axf<T>>> $$1 = new IdentityHashMap<>();
       this.g.values().forEach($$1x -> $$1.put($$1x, new ArrayList<>()));
       $$0.forEach(($$1x, $$2x) -> {
          for (ji<T> $$3x : $$2x) {
@@ -356,7 +356,7 @@ public class jq<T> implements ke<T> {
             $$1.get($$4).add($$1x);
          }
       });
-      Set<axe<T>> $$2 = Sets.difference(this.k.keySet(), $$0.keySet());
+      Set<axf<T>> $$2 = Sets.difference(this.k.keySet(), $$0.keySet());
       if (!$$2.isEmpty()) {
          b.warn(
             "Not all defined tags for registry {} are present in data pack: {}",
@@ -365,7 +365,7 @@ public class jq<T> implements ke<T> {
          );
       }
 
-      Map<axe<T>, jm.c<T>> $$3 = new IdentityHashMap<>(this.k);
+      Map<axf<T>, jm.c<T>> $$3 = new IdentityHashMap<>(this.k);
       $$0.forEach(($$1x, $$2x) -> $$3.computeIfAbsent($$1x, this::d).b($$2x));
       $$1.forEach(ji.c::a);
       this.k = $$3;
@@ -382,22 +382,22 @@ public class jq<T> implements ke<T> {
       this.a();
       return new jj<T>() {
          @Override
-         public Optional<ji.c<T>> a(ald<T> $$0) {
+         public Optional<ji.c<T>> a(ale<T> $$0) {
             return Optional.of(this.b($$0));
          }
 
          @Override
-         public ji.c<T> b(ald<T> $$0) {
+         public ji.c<T> b(ale<T> $$0) {
             return jq.this.i($$0);
          }
 
          @Override
-         public Optional<jm.c<T>> a(axe<T> $$0) {
+         public Optional<jm.c<T>> a(axf<T> $$0) {
             return Optional.of(this.b($$0));
          }
 
          @Override
-         public jm.c<T> b(axe<T> $$0) {
+         public jm.c<T> b(axf<T> $$0) {
             return jq.this.a($$0);
          }
       };

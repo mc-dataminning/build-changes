@@ -1,69 +1,59 @@
-import java.util.List;
-
-public class ctt extends cuj implements cvg {
-   public static final byte[] a = new byte[]{1, 2, 3};
-   public static final double b = 0.15;
-
-   public ctt(cuj.a $$0) {
+public class ctt extends cuk implements cvh {
+   public ctt(cuk.a $$0) {
       super($$0);
    }
 
    @Override
-   public bqt a(cyb $$0) {
-      dbx $$1 = $$0.q();
-      if (!$$1.B) {
-         cuo $$2 = $$0.n();
-         evq $$3 = $$0.l();
-         je $$4 = $$0.k();
-         cnj $$5 = new cnj($$1, $$0.o(), $$3.c + (double)$$4.j() * 0.15, $$3.d + (double)$$4.k() * 0.15, $$3.e + (double)$$4.l() * 0.15, $$2);
-         $$1.b($$5);
-         $$2.h(1);
-      }
-
-      return bqt.a($$1.B);
-   }
-
-   @Override
-   public bqu<cuo> a(dbx $$0, cmw $$1, bqs $$2) {
-      if ($$1.fE()) {
-         cuo $$3 = $$1.b($$2);
-         if (!$$0.B) {
-            cnj $$4 = new cnj($$0, $$3, $$1);
-            $$0.b($$4);
-            $$3.a(1, $$1);
-            $$1.b(awj.c.b(this));
+   public bqu a(cyc $$0) {
+      dby $$1 = $$0.q();
+      iz $$2 = $$0.a();
+      dsc $$3 = $$1.a_($$2);
+      boolean $$4 = false;
+      if (!dfn.h($$3) && !dfo.g($$3) && !dfp.g($$3)) {
+         $$2 = $$2.a($$0.k());
+         if (dem.a($$1, $$2, $$0.g())) {
+            this.a($$1, $$2);
+            $$1.b($$2, dem.a($$1, $$2));
+            $$1.a($$0.o(), dwv.i, $$2);
+            $$4 = true;
          }
-
-         return bqu.a($$1.b($$2), $$0.x_());
       } else {
-         return bqu.c($$1.b($$2));
+         this.a($$1, $$2);
+         $$1.b($$2, $$3.a(dss.r, Boolean.valueOf(true)));
+         $$1.a($$0.o(), dwv.c, $$2);
+         $$4 = true;
+      }
+
+      if ($$4) {
+         $$0.n().h(1);
+         return bqu.a($$1.B);
+      } else {
+         return bqu.f;
       }
    }
 
-   @Override
-   public void a(cuo $$0, cuj.b $$1, List<xo> $$2, cwh $$3) {
-      cxi $$4 = $$0.a(km.U);
-      if ($$4 != null) {
-         $$4.a($$1, $$2::add, $$3);
-      }
+   private void a(dby $$0, iz $$1) {
+      azh $$2 = $$0.E_();
+      $$0.a(null, $$1, awa.iK, awb.e, 1.0F, ($$2.i() - $$2.i()) * 0.2F + 1.0F);
    }
 
    @Override
-   public cno a(dbx $$0, js $$1, cuo $$2, je $$3) {
-      return new cnj($$0, $$2.c(1), $$1.a(), $$1.b(), $$1.c(), true);
+   public cnp a(dby $$0, js $$1, cup $$2, je $$3) {
+      azh $$4 = $$0.E_();
+      double $$5 = $$4.a((double)$$3.j(), 0.11485000000000001);
+      double $$6 = $$4.a((double)$$3.k(), 0.11485000000000001);
+      double $$7 = $$4.a((double)$$3.l(), 0.11485000000000001);
+      cnt $$8 = new cnt($$0, $$1.a(), $$1.b(), $$1.c(), $$5, $$6, $$7);
+      $$8.a($$2);
+      return $$8;
    }
 
    @Override
-   public cvg.a c() {
-      return cvg.a.a().a(ctt::a).a(1.0F).b(0.5F).a(1004).a();
+   public void a(cnp $$0, double $$1, double $$2, double $$3, float $$4, float $$5) {
    }
 
-   private static evq a(kq $$0, je $$1) {
-      return $$0.a()
-         .b(
-            (double)$$1.j() * (0.5000099999997474 - (double)bsz.P.l() / 2.0),
-            (double)$$1.k() * (0.5000099999997474 - (double)bsz.P.m() / 2.0) - (double)bsz.P.m() / 2.0,
-            (double)$$1.l() * (0.5000099999997474 - (double)bsz.P.l() / 2.0)
-         );
+   @Override
+   public cvh.a c() {
+      return cvh.a.a().a(($$0, $$1) -> dhe.a($$0, 1.0, evr.b)).a(6.6666665F).b(1.0F).a(1018).a();
    }
 }

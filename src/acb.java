@@ -1,3 +1,8 @@
-public interface acb extends wg {
-   void a(acc var1);
+import javax.annotation.ParametersAreNonnullByDefault;
+
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface acb {
 }

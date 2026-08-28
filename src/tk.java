@@ -1,20 +1,5 @@
-import javax.annotation.Nullable;
+public interface tk {
+   void a(ti var1);
 
-class tk {
-   @Nullable
-   public final Long a;
-   public final Runnable b;
-
-   private tk(@Nullable Long $$0, Runnable $$1) {
-      this.a = $$0;
-      this.b = $$1;
-   }
-
-   static tk a(Runnable $$0) {
-      return new tk(null, $$0);
-   }
-
-   static tk a(long $$0, Runnable $$1) {
-      return new tk($$0, $$1);
-   }
+   void b(ti var1);
 }

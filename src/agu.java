@@ -1,188 +1,173 @@
 public class agu {
-   public static final ww.a<agv, wz> a = aaa.c(
-      wk.b,
-      $$0 -> $$0.a(agt.bf, agx.a)
-            .a(agt.bg, agy.a)
-            .a(agt.bh, agz.a)
-            .a(agt.bi, aha.a)
-            .a(agt.bj, ahb.a)
-            .a(agt.bk, ahc.a)
-            .a(agt.bl, ahd.a)
-            .a(agt.bm, ahe.a)
-            .a(agt.bn, ahf.a)
-            .a(agt.bo, ahg.a)
-            .a(aal.j, aan.a)
-            .a(agt.bp, ahh.a)
-            .a(agt.bq, ahi.b)
-            .a(agt.br, ahj.a)
-            .a(agt.bs, ahk.a)
-            .a(agt.bt, ahl.a)
-            .a(agt.bu, ahm.a)
-            .a(acd.b, acf.a)
-            .a(aal.k, aao.a)
-            .a(agt.bv, ahn.a)
-            .a(agt.bw, aho.b)
-            .a(agt.bx, ahp.a)
-            .a(agt.by, ahq.a)
-            .a(agt.bz, ahr.a)
-            .a(aal.l, aap.a)
-            .a(agt.bA, ahs.a)
-            .a(agt.bB, aht.a.i)
-            .a(agt.bC, aht.b.i)
-            .a(agt.bD, aht.c.i)
-            .a(agt.bE, aht.d.i)
-            .a(agt.bF, ahu.a)
-            .a(agt.bG, ahv.a)
-            .a(agt.bH, ahw.a)
-            .a(ajx.b, ajz.a)
-            .a(agt.bI, ahx.a)
-            .a(agt.bJ, ahy.a)
-            .a(agt.bK, ahz.a)
-            .a(agt.bL, aia.a)
-            .a(agt.bM, aib.a)
-            .a(aal.m, aaq.a)
-            .a(agt.bN, aic.a)
-            .a(agt.bO, aid.a)
-            .a(agt.bP, aie.a)
-            .a(aal.n, aar.a)
-            .a(agt.bQ, aif.a)
-            .a(agt.bR, aig.a)
-            .a(agt.bS, aih.a)
-            .a(agt.bT, aii.a)
-            .a(agt.bU, aij.a)
-            .a(agt.bV, aik.a)
-            .a(agt.bW, ail.a)
-            .a(agt.bX, aim.a)
-            .a(agt.bY, ain.a)
-            .a(agt.bZ, aio.a)
-            .a(agt.ca, aip.a)
-            .a(agt.cb, aiq.a)
-            .a(agt.cc, air.a)
-            .a(agt.cd, ais.a)
-   );
-   public static final ww.a<ach, wz> b = aaa.d(
-      wk.b,
-      $$0 -> $$0.a(agt.a, act::new, new acs())
-            .a(agt.c, aci.a)
-            .a(agt.d, acj.a)
-            .a(agt.e, ack.a)
-            .a(agt.f, acl.a)
-            .a(agt.g, acm.a)
-            .a(agt.h, acn.a)
-            .a(agt.i, aco.a)
-            .a(agt.j, acp.a)
-            .a(agt.k, acq.a)
-            .a(agt.l, acr.a)
-            .a(agt.m, acu.a)
-            .a(agt.n, acv.a)
-            .a(agt.o, acw.b)
-            .a(agt.p, acx.a)
-            .a(agt.q, acy.a)
-            .a(agt.r, acz.a)
-            .a(agt.s, ada.a)
-            .a(agt.t, adb.a)
-            .a(agt.u, adc.a)
-            .a(agt.v, add.a)
-            .a(agt.w, ade.a)
-            .a(acd.a, acc.a)
-            .a(agt.x, adf.a)
-            .a(agt.y, adg.a)
-            .a(aal.a, aac.a)
-            .a(agt.z, adh.a)
-            .a(agt.A, adi.a)
-            .a(agt.B, adj.a)
-            .a(aal.b, aad.a)
-            .a(agt.C, adk.a)
-            .a(agt.D, adl.a)
-            .a(agt.E, adm.a)
-            .a(agt.F, adn.a)
-            .a(agt.G, ado.a)
-            .a(agt.H, adp.a)
-            .a(agt.I, adq.a)
-            .a(agt.J, adr.a)
-            .a(aal.c, aae.a)
-            .a(agt.K, adt.a)
-            .a(agt.L, adu.a)
-            .a(agt.M, adv.a)
-            .a(agt.N, adw.a)
-            .a(agt.O, ady.a)
-            .a(agt.P, adz.a)
-            .a(agt.Q, aea.a)
-            .a(agt.R, aeb.a.j)
-            .a(agt.S, aeb.b.j)
-            .a(agt.T, aeb.c.j)
-            .a(agt.U, aec.a)
-            .a(agt.V, aed.a)
-            .a(agt.W, aee.a)
-            .a(agt.X, aef.a)
-            .a(aal.d, aaf.a)
-            .a(ajx.a, ajw.a)
-            .a(agt.Y, aeg.a)
-            .a(agt.Z, aeh.a)
-            .a(agt.aa, aei.a)
-            .a(agt.ab, aej.a)
-            .a(agt.ac, aek.b)
-            .a(agt.ad, ael.a)
-            .a(agt.ae, aem.a)
-            .a(agt.af, aen.a)
-            .a(agt.ag, aeo.a)
-            .a(agt.ah, aep.a)
-            .a(agt.ai, aer.a)
-            .a(agt.aj, aes.a)
-            .a(agt.ak, aet.a)
-            .a(agt.ce, aeu.a)
-            .a(aal.e, aag.a)
-            .a(aal.f, aah.b)
-            .a(agt.al, aev.a)
-            .a(agt.am, aew.a)
-            .a(agt.an, aex.a)
-            .a(agt.ao, aey.a)
-            .a(agt.ap, aez.a)
-            .a(agt.aq, afa.a)
-            .a(agt.ar, afb.a)
-            .a(agt.as, afc.a)
-            .a(agt.at, afd.a)
-            .a(agt.au, afe.a)
-            .a(agt.av, aff.a)
-            .a(agt.aw, afg.a)
-            .a(agt.ax, afh.a)
-            .a(agt.ay, afi.a)
-            .a(agt.az, afj.a)
-            .a(agt.aA, afk.a)
-            .a(agt.aB, afl.a)
-            .a(agt.aC, afm.a)
-            .a(agt.aD, afn.a)
-            .a(agt.aE, afo.a)
-            .a(agt.aF, afp.a)
-            .a(agt.aG, afq.a)
-            .a(agt.aH, afr.a)
-            .a(agt.aI, afs.a)
-            .a(agt.aJ, aft.a)
-            .a(agt.aK, afu.a)
-            .a(agt.aL, afv.a)
-            .a(agt.aM, afw.a)
-            .a(agt.aN, afx.a)
-            .a(agt.aO, afy.a)
-            .a(agt.aP, afz.a)
-            .a(agt.aQ, aga.a)
-            .a(agt.aR, agb.a)
-            .a(agt.aS, agc.a)
-            .a(agt.aT, agd.b)
-            .a(agt.aU, age.a)
-            .a(aal.g, aai.a)
-            .a(agt.aV, agf.a)
-            .a(agt.aW, agg.a)
-            .a(agt.aX, agh.a)
-            .a(agt.aY, agi.a)
-            .a(agt.aZ, agj.a)
-            .a(agt.cf, agk.a)
-            .a(agt.cg, agl.a)
-            .a(aal.h, aaj.a)
-            .a(agt.ba, agm.a)
-            .a(agt.bb, agn.a)
-            .a(agt.bc, ago.a)
-            .a(agt.bd, agp.a)
-            .a(aal.i, aak.a)
-            .a(agt.be, aeq.a)
-   );
+   public static final zy<acu> a = a("bundle");
+   public static final zy<act> b = a("bundle_delimiter");
+   public static final zy<acj> c = a("add_entity");
+   public static final zy<ack> d = a("add_experience_orb");
+   public static final zy<acl> e = a("animate");
+   public static final zy<acm> f = a("award_stats");
+   public static final zy<acn> g = a("block_changed_ack");
+   public static final zy<aco> h = a("block_destruction");
+   public static final zy<acp> i = a("block_entity_data");
+   public static final zy<acq> j = a("block_event");
+   public static final zy<acr> k = a("block_update");
+   public static final zy<acs> l = a("boss_event");
+   public static final zy<acv> m = a("change_difficulty");
+   public static final zy<acw> n = a("chunk_batch_finished");
+   public static final zy<acx> o = a("chunk_batch_start");
+   public static final zy<acy> p = a("chunks_biomes");
+   public static final zy<acz> q = a("clear_titles");
+   public static final zy<ada> r = a("command_suggestions");
+   public static final zy<adb> s = a("commands");
+   public static final zy<adc> t = a("container_close");
+   public static final zy<add> u = a("container_set_content");
+   public static final zy<ade> v = a("container_set_data");
+   public static final zy<adf> w = a("container_set_slot");
+   public static final zy<adg> x = a("cooldown");
+   public static final zy<adh> y = a("custom_chat_completions");
+   public static final zy<adi> z = a("damage_event");
+   public static final zy<adj> A = a("debug_sample");
+   public static final zy<adk> B = a("delete_chat");
+   public static final zy<adl> C = a("disguised_chat");
+   public static final zy<adm> D = a("entity_event");
+   public static final zy<adn> E = a("explode");
+   public static final zy<ado> F = a("forget_level_chunk");
+   public static final zy<adp> G = a("game_event");
+   public static final zy<adq> H = a("horse_screen_open");
+   public static final zy<adr> I = a("hurt_animation");
+   public static final zy<ads> J = a("initialize_border");
+   public static final zy<adu> K = a("level_chunk_with_light");
+   public static final zy<adv> L = a("level_event");
+   public static final zy<adw> M = a("level_particles");
+   public static final zy<adx> N = a("light_update");
+   public static final zy<adz> O = a("login");
+   public static final zy<aea> P = a("map_item_data");
+   public static final zy<aeb> Q = a("merchant_offers");
+   public static final zy<aec.a> R = a("move_entity_pos");
+   public static final zy<aec.b> S = a("move_entity_pos_rot");
+   public static final zy<aec.c> T = a("move_entity_rot");
+   public static final zy<aed> U = a("move_vehicle");
+   public static final zy<aee> V = a("open_book");
+   public static final zy<aef> W = a("open_screen");
+   public static final zy<aeg> X = a("open_sign_editor");
+   public static final zy<aeh> Y = a("place_ghost_recipe");
+   public static final zy<aei> Z = a("player_abilities");
+   public static final zy<aej> aa = a("player_chat");
+   public static final zy<aek> ab = a("player_combat_end");
+   public static final zy<ael> ac = a("player_combat_enter");
+   public static final zy<aem> ad = a("player_combat_kill");
+   public static final zy<aen> ae = a("player_info_remove");
+   public static final zy<aeo> af = a("player_info_update");
+   public static final zy<aep> ag = a("player_look_at");
+   public static final zy<aeq> ah = a("player_position");
+   public static final zy<aes> ai = a("recipe");
+   public static final zy<aet> aj = a("remove_entities");
+   public static final zy<aeu> ak = a("remove_mob_effect");
+   public static final zy<aew> al = a("respawn");
+   public static final zy<aex> am = a("rotate_head");
+   public static final zy<aey> an = a("section_blocks_update");
+   public static final zy<aez> ao = a("select_advancements_tab");
+   public static final zy<afa> ap = a("server_data");
+   public static final zy<afb> aq = a("set_action_bar_text");
+   public static final zy<afc> ar = a("set_border_center");
+   public static final zy<afd> as = a("set_border_lerp_size");
+   public static final zy<afe> at = a("set_border_size");
+   public static final zy<aff> au = a("set_border_warning_delay");
+   public static final zy<afg> av = a("set_border_warning_distance");
+   public static final zy<afh> aw = a("set_camera");
+   public static final zy<afi> ax = a("set_carried_item");
+   public static final zy<afj> ay = a("set_chunk_cache_center");
+   public static final zy<afk> az = a("set_chunk_cache_radius");
+   public static final zy<afl> aA = a("set_default_spawn_position");
+   public static final zy<afm> aB = a("set_display_objective");
+   public static final zy<afn> aC = a("set_entity_data");
+   public static final zy<afo> aD = a("set_entity_link");
+   public static final zy<afp> aE = a("set_entity_motion");
+   public static final zy<afq> aF = a("set_equipment");
+   public static final zy<afr> aG = a("set_experience");
+   public static final zy<afs> aH = a("set_health");
+   public static final zy<aft> aI = a("set_objective");
+   public static final zy<afu> aJ = a("set_passengers");
+   public static final zy<afv> aK = a("set_player_team");
+   public static final zy<afw> aL = a("set_score");
+   public static final zy<afx> aM = a("set_simulation_distance");
+   public static final zy<afy> aN = a("set_subtitle_text");
+   public static final zy<afz> aO = a("set_time");
+   public static final zy<aga> aP = a("set_title_text");
+   public static final zy<agb> aQ = a("set_titles_animation");
+   public static final zy<agc> aR = a("sound_entity");
+   public static final zy<agd> aS = a("sound");
+   public static final zy<age> aT = a("start_configuration");
+   public static final zy<agf> aU = a("stop_sound");
+   public static final zy<agg> aV = a("system_chat");
+   public static final zy<agh> aW = a("tab_list");
+   public static final zy<agi> aX = a("tag_query");
+   public static final zy<agj> aY = a("take_item_entity");
+   public static final zy<agk> aZ = a("teleport_entity");
+   public static final zy<agn> ba = a("update_advancements");
+   public static final zy<ago> bb = a("update_attributes");
+   public static final zy<agp> bc = a("update_mob_effect");
+   public static final zy<agq> bd = a("update_recipes");
+   public static final zy<aer> be = a("projectile_power");
+   public static final zy<agy> bf = b("accept_teleportation");
+   public static final zy<agz> bg = b("block_entity_tag_query");
+   public static final zy<aha> bh = b("change_difficulty");
+   public static final zy<ahb> bi = b("chat_ack");
+   public static final zy<ahc> bj = b("chat_command");
+   public static final zy<ahd> bk = b("chat_command_signed");
+   public static final zy<ahe> bl = b("chat");
+   public static final zy<ahf> bm = b("chat_session_update");
+   public static final zy<ahg> bn = b("chunk_batch_received");
+   public static final zy<ahh> bo = b("client_command");
+   public static final zy<ahi> bp = b("command_suggestion");
+   public static final zy<ahj> bq = b("configuration_acknowledged");
+   public static final zy<ahk> br = b("container_button_click");
+   public static final zy<ahl> bs = b("container_click");
+   public static final zy<ahm> bt = b("container_close");
+   public static final zy<ahn> bu = b("container_slot_state_changed");
+   public static final zy<aho> bv = b("debug_sample_subscription");
+   public static final zy<ahp> bw = b("edit_book");
+   public static final zy<ahq> bx = b("entity_tag_query");
+   public static final zy<ahr> by = b("interact");
+   public static final zy<ahs> bz = b("jigsaw_generate");
+   public static final zy<aht> bA = b("lock_difficulty");
+   public static final zy<ahu.a> bB = b("move_player_pos");
+   public static final zy<ahu.b> bC = b("move_player_pos_rot");
+   public static final zy<ahu.c> bD = b("move_player_rot");
+   public static final zy<ahu.d> bE = b("move_player_status_only");
+   public static final zy<ahv> bF = b("move_vehicle");
+   public static final zy<ahw> bG = b("paddle_boat");
+   public static final zy<ahx> bH = b("pick_item");
+   public static final zy<ahy> bI = b("place_recipe");
+   public static final zy<ahz> bJ = b("player_abilities");
+   public static final zy<aia> bK = b("player_action");
+   public static final zy<aib> bL = b("player_command");
+   public static final zy<aic> bM = b("player_input");
+   public static final zy<aid> bN = b("recipe_book_change_settings");
+   public static final zy<aie> bO = b("recipe_book_seen_recipe");
+   public static final zy<aif> bP = b("rename_item");
+   public static final zy<aig> bQ = b("seen_advancements");
+   public static final zy<aih> bR = b("select_trade");
+   public static final zy<aii> bS = b("set_beacon");
+   public static final zy<aij> bT = b("set_carried_item");
+   public static final zy<aik> bU = b("set_command_block");
+   public static final zy<ail> bV = b("set_command_minecart");
+   public static final zy<aim> bW = b("set_creative_mode_slot");
+   public static final zy<ain> bX = b("set_jigsaw_block");
+   public static final zy<aio> bY = b("set_structure_block");
+   public static final zy<aip> bZ = b("sign_update");
+   public static final zy<aiq> ca = b("swing");
+   public static final zy<air> cb = b("teleport_to_entity");
+   public static final zy<ais> cc = b("use_item_on");
+   public static final zy<ait> cd = b("use_item");
+   public static final zy<aev> ce = a("reset_score");
+   public static final zy<agl> cf = a("ticking_state");
+   public static final zy<agm> cg = a("ticking_step");
+
+   private static <T extends zw<aci>> zy<T> a(String $$0) {
+      return new zy<>(zx.b, new alf($$0));
+   }
+
+   private static <T extends zw<agw>> zy<T> b(String $$0) {
+      return new zy<>(zx.a, new alf($$0));
+   }
 }

@@ -1,32 +1,29 @@
-import javax.annotation.Nullable;
-
-public class afg implements zv<ach> {
-   public static final zm<wl, afg> a = zv.a(afg::a, afg::new);
+public class afg implements zw<aci> {
+   public static final zn<wm, afg> a = zw.a(afg::a, afg::new);
    private final int b;
 
-   public afg(bst $$0) {
-      this.b = $$0.al();
+   public afg(dtt $$0) {
+      this.b = $$0.r();
    }
 
-   private afg(wl $$0) {
+   private afg(wm $$0) {
       this.b = $$0.l();
    }
 
-   private void a(wl $$0) {
+   private void a(wm $$0) {
       $$0.c(this.b);
    }
 
    @Override
-   public zx<afg> a() {
-      return agt.aw;
+   public zy<afg> a() {
+      return agu.av;
    }
 
-   public void a(ach $$0) {
+   public void a(aci $$0) {
       $$0.a(this);
    }
 
-   @Nullable
-   public bst a(dbx $$0) {
-      return $$0.a(this.b);
+   public int b() {
+      return this.b;
    }
 }

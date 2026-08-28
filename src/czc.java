@@ -1,224 +1,121 @@
-import com.google.common.annotations.VisibleForTesting;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import it.unimi.dsi.fastutil.chars.CharArraySet;
-import it.unimi.dsi.fastutil.chars.CharSet;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
-import java.util.function.Function;
 
-public record czc(int c, int d, jr<cyr> e, Optional<czc.a> f) {
-   private static final int g = 3;
-   public static final MapCodec<czc> a = czc.a.a
-      .flatXmap(czc::a, $$0 -> $$0.d().<DataResult>map(DataResult::success).orElseGet(() -> DataResult.error(() -> "Cannot encode unpacked recipe")));
-   public static final zm<wz, czc> b = zm.a(czc::a, czc::b);
+public class czc implements cym {
+   final czd a;
+   final cup b;
+   final String c;
+   final cyl d;
+   final boolean e;
 
-   public static czc a(Map<Character, cyr> $$0, String... $$1) {
-      return a($$0, List.of($$1));
+   public czc(String $$0, cyl $$1, czd $$2, cup $$3, boolean $$4) {
+      this.c = $$0;
+      this.d = $$1;
+      this.a = $$2;
+      this.b = $$3;
+      this.e = $$4;
    }
 
-   public static czc a(Map<Character, cyr> $$0, List<String> $$1) {
-      czc.a $$2 = new czc.a($$0, $$1);
-      return (czc)a($$2).getOrThrow();
+   public czc(String $$0, cyl $$1, czd $$2, cup $$3) {
+      this($$0, $$1, $$2, $$3, true);
    }
 
-   private static DataResult<czc> a(czc.a $$0) {
-      String[] $$1 = a($$0.c);
-      int $$2 = $$1[0].length();
-      int $$3 = $$1.length;
-      jr<cyr> $$4 = jr.a($$2 * $$3, cyr.a);
-      CharSet $$5 = new CharArraySet($$0.b.keySet());
-
-      for (int $$6 = 0; $$6 < $$1.length; $$6++) {
-         String $$7 = $$1[$$6];
-
-         for (int $$8 = 0; $$8 < $$7.length(); $$8++) {
-            char $$9 = $$7.charAt($$8);
-            cyr $$10 = $$9 == ' ' ? cyr.a : $$0.b.get($$9);
-            if ($$10 == null) {
-               return DataResult.error(() -> "Pattern references symbol '" + $$9 + "' but it's not defined in the key");
-            }
-
-            $$5.remove($$9);
-            $$4.set($$8 + $$2 * $$6, $$10);
-         }
-      }
-
-      return !$$5.isEmpty()
-         ? DataResult.error(() -> "Key defines symbols that aren't used in pattern: " + $$5)
-         : DataResult.success(new czc($$2, $$3, $$4, Optional.of($$0)));
+   @Override
+   public cyz<?> ao_() {
+      return cyz.a;
    }
 
-   @VisibleForTesting
-   static String[] a(List<String> $$0) {
-      int $$1 = Integer.MAX_VALUE;
-      int $$2 = 0;
-      int $$3 = 0;
-      int $$4 = 0;
-
-      for (int $$5 = 0; $$5 < $$0.size(); $$5++) {
-         String $$6 = $$0.get($$5);
-         $$1 = Math.min($$1, a($$6));
-         int $$7 = b($$6);
-         $$2 = Math.max($$2, $$7);
-         if ($$7 < 0) {
-            if ($$3 == $$5) {
-               $$3++;
-            }
-
-            $$4++;
-         } else {
-            $$4 = 0;
-         }
-      }
-
-      if ($$0.size() == $$4) {
-         return new String[0];
-      } else {
-         String[] $$8 = new String[$$0.size() - $$4 - $$3];
-
-         for (int $$9 = 0; $$9 < $$8.length; $$9++) {
-            $$8[$$9] = $$0.get($$9 + $$3).substring($$1, $$2 + 1);
-         }
-
-         return $$8;
-      }
-   }
-
-   private static int a(String $$0) {
-      int $$1 = 0;
-
-      while ($$1 < $$0.length() && $$0.charAt($$1) == ' ') {
-         $$1++;
-      }
-
-      return $$1;
-   }
-
-   private static int b(String $$0) {
-      int $$1 = $$0.length() - 1;
-
-      while ($$1 >= 0 && $$0.charAt($$1) == ' ') {
-         $$1--;
-      }
-
-      return $$1;
-   }
-
-   public boolean a(cqj $$0) {
-      for (int $$1 = 0; $$1 <= $$0.f() - this.c; $$1++) {
-         for (int $$2 = 0; $$2 <= $$0.g() - this.d; $$2++) {
-            if (this.a($$0, $$1, $$2, true)) {
-               return true;
-            }
-
-            if (this.a($$0, $$1, $$2, false)) {
-               return true;
-            }
-         }
-      }
-
-      return false;
-   }
-
-   private boolean a(cqj $$0, int $$1, int $$2, boolean $$3) {
-      for (int $$4 = 0; $$4 < $$0.f(); $$4++) {
-         for (int $$5 = 0; $$5 < $$0.g(); $$5++) {
-            int $$6 = $$4 - $$1;
-            int $$7 = $$5 - $$2;
-            cyr $$8 = cyr.a;
-            if ($$6 >= 0 && $$7 >= 0 && $$6 < this.c && $$7 < this.d) {
-               if ($$3) {
-                  $$8 = this.e.get(this.c - $$6 - 1 + $$7 * this.c);
-               } else {
-                  $$8 = this.e.get($$6 + $$7 * this.c);
-               }
-            }
-
-            if (!$$8.a($$0.a($$4 + $$5 * $$0.f()))) {
-               return false;
-            }
-         }
-      }
-
-      return true;
-   }
-
-   private void a(wz $$0) {
-      $$0.c(this.c);
-      $$0.c(this.d);
-
-      for (cyr $$1 : this.e) {
-         cyr.b.encode($$0, $$1);
-      }
-   }
-
-   private static czc b(wz $$0) {
-      int $$1 = $$0.l();
-      int $$2 = $$0.l();
-      jr<cyr> $$3 = jr.a($$1 * $$2, cyr.a);
-      $$3.replaceAll($$1x -> cyr.b.decode($$0));
-      return new czc($$1, $$2, $$3, Optional.empty());
-   }
-
-   public int a() {
+   @Override
+   public String c() {
       return this.c;
    }
 
-   public int b() {
+   @Override
+   public cyl d() {
       return this.d;
    }
 
-   public jr<cyr> c() {
+   @Override
+   public cup a(jk.a $$0) {
+      return this.b;
+   }
+
+   @Override
+   public jr<cys> a() {
+      return this.a.c();
+   }
+
+   @Override
+   public boolean h() {
       return this.e;
    }
 
-   public Optional<czc.a> d() {
-      return this.f;
+   @Override
+   public boolean a(int $$0, int $$1) {
+      return $$0 >= this.a.a() && $$1 >= this.a.b();
    }
 
-   public static record a(Map<Character, cyr> b, List<String> c) {
-      private static final Codec<List<String>> d = Codec.STRING.listOf().comapFlatMap($$0 -> {
-         if ($$0.size() > 3) {
-            return DataResult.error(() -> "Invalid pattern: too many rows, 3 is maximum");
-         } else if ($$0.isEmpty()) {
-            return DataResult.error(() -> "Invalid pattern: empty pattern not allowed");
-         } else {
-            int $$1 = ((String)$$0.get(0)).length();
+   public boolean a(cqk $$0, dby $$1) {
+      return this.a.a($$0);
+   }
 
-            for (String $$2 : $$0) {
-               if ($$2.length() > 3) {
-                  return DataResult.error(() -> "Invalid pattern: too many columns, 3 is maximum");
-               }
+   public cup a(cqk $$0, jk.a $$1) {
+      return this.a($$1).s();
+   }
 
-               if ($$1 != $$2.length()) {
-                  return DataResult.error(() -> "Invalid pattern: each row must be the same width");
-               }
-            }
+   public int j() {
+      return this.a.a();
+   }
 
-            return DataResult.success($$0);
-         }
-      }, Function.identity());
-      private static final Codec<Character> e = Codec.STRING.comapFlatMap($$0 -> {
-         if ($$0.length() != 1) {
-            return DataResult.error(() -> "Invalid key entry: '" + $$0 + "' is an invalid symbol (must be 1 character only).");
-         } else {
-            return " ".equals($$0) ? DataResult.error(() -> "Invalid key entry: ' ' is a reserved symbol.") : DataResult.success($$0.charAt(0));
-         }
-      }, String::valueOf);
-      public static final MapCodec<czc.a> a = RecordCodecBuilder.mapCodec(
-         $$0 -> $$0.group(ayg.b(e, cyr.d).fieldOf("key").forGetter($$0x -> $$0x.b), d.fieldOf("pattern").forGetter($$0x -> $$0x.c)).apply($$0, czc.a::new)
+   public int k() {
+      return this.a.b();
+   }
+
+   @Override
+   public boolean i() {
+      jr<cys> $$0 = this.a();
+      return $$0.isEmpty() || $$0.stream().filter($$0x -> !$$0x.c()).anyMatch($$0x -> $$0x.a().length == 0);
+   }
+
+   public static class a implements cyz<czc> {
+      public static final MapCodec<czc> x = RecordCodecBuilder.mapCodec(
+         $$0 -> $$0.group(
+                  Codec.STRING.optionalFieldOf("group", "").forGetter($$0x -> $$0x.c),
+                  cyl.e.fieldOf("category").orElse(cyl.d).forGetter($$0x -> $$0x.d),
+                  czd.a.forGetter($$0x -> $$0x.a),
+                  cup.d.fieldOf("result").forGetter($$0x -> $$0x.b),
+                  Codec.BOOL.optionalFieldOf("show_notification", true).forGetter($$0x -> $$0x.e)
+               )
+               .apply($$0, czc::new)
       );
+      public static final zn<xa, czc> y = zn.a(czc.a::a, czc.a::a);
 
-      public Map<Character, cyr> a() {
-         return this.b;
+      @Override
+      public MapCodec<czc> a() {
+         return x;
       }
 
-      public List<String> b() {
-         return this.c;
+      @Override
+      public zn<xa, czc> b() {
+         return y;
+      }
+
+      private static czc a(xa $$0) {
+         String $$1 = $$0.p();
+         cyl $$2 = $$0.b(cyl.class);
+         czd $$3 = czd.b.decode($$0);
+         cup $$4 = cup.i.decode($$0);
+         boolean $$5 = $$0.readBoolean();
+         return new czc($$1, $$2, $$3, $$4, $$5);
+      }
+
+      private static void a(xa $$0, czc $$1) {
+         $$0.a($$1.c);
+         $$0.a($$1.d);
+         czd.b.encode($$0, $$1.a);
+         cup.i.encode($$0, $$1.b);
+         $$0.a($$1.e);
       }
    }
 }

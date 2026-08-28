@@ -1,17 +1,17 @@
 import java.io.IOException;
 
-public class gps extends aut<int[]> {
-   private static final ale a = new ale("textures/colormap/grass.png");
+public class gps extends auu<int[]> {
+   private static final alf a = new alf("textures/colormap/foliage.png");
 
-   protected int[] a(auo $$0, bnh $$1) {
+   protected int[] a(aup $$0, bni $$1) {
       try {
-         return gpu.a($$0, a);
+         return gpv.a($$0, a);
       } catch (IOException var4) {
-         throw new IllegalStateException("Failed to load grass color texture", var4);
+         throw new IllegalStateException("Failed to load foliage color texture", var4);
       }
    }
 
-   protected void a(int[] $$0, auo $$1, bnh $$2) {
-      dbv.a($$0);
+   protected void a(int[] $$0, aup $$1, bni $$2) {
+      dbs.a($$0);
    }
 }

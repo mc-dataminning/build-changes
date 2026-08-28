@@ -1,41 +1,75 @@
-import com.mojang.authlib.GameProfile;
-import java.util.UUID;
+import java.nio.file.FileSystems;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.util.Map;
+import java.util.Optional;
+import java.util.function.BiConsumer;
+import java.util.function.Function;
+import javax.annotation.Nullable;
 
-public class gpq {
-   private static final gpy[] a = new gpy[]{
-      a("textures/entity/player/slim/alex.png", gpy.a.a),
-      a("textures/entity/player/slim/ari.png", gpy.a.a),
-      a("textures/entity/player/slim/efe.png", gpy.a.a),
-      a("textures/entity/player/slim/kai.png", gpy.a.a),
-      a("textures/entity/player/slim/makena.png", gpy.a.a),
-      a("textures/entity/player/slim/noor.png", gpy.a.a),
-      a("textures/entity/player/slim/steve.png", gpy.a.a),
-      a("textures/entity/player/slim/sunny.png", gpy.a.a),
-      a("textures/entity/player/slim/zuri.png", gpy.a.a),
-      a("textures/entity/player/wide/alex.png", gpy.a.b),
-      a("textures/entity/player/wide/ari.png", gpy.a.b),
-      a("textures/entity/player/wide/efe.png", gpy.a.b),
-      a("textures/entity/player/wide/kai.png", gpy.a.b),
-      a("textures/entity/player/wide/makena.png", gpy.a.b),
-      a("textures/entity/player/wide/noor.png", gpy.a.b),
-      a("textures/entity/player/wide/steve.png", gpy.a.b),
-      a("textures/entity/player/wide/sunny.png", gpy.a.b),
-      a("textures/entity/player/wide/zuri.png", gpy.a.b)
-   };
+public class gpq extends atu {
+   private static final atq d = new atq(xp.c("resourcePack.vanilla.description"), aa.b().a(atd.a), Optional.empty());
+   private static final ast e = ast.a(atq.b, d);
+   public static final String c = "high_contrast";
+   private static final Map<String, xp> f = Map.of(
+      "programmer_art", xp.c("resourcePack.programmer_art.name"), "high_contrast", xp.c("resourcePack.high_contrast.name")
+   );
+   private static final ata g = new ata("vanilla", xp.c("resourcePack.vanilla.name"), aub.c, Optional.of(b));
+   private static final atc h = new atc(true, atx.b.b, false);
+   private static final atc i = new atc(false, atx.b.a, false);
+   private static final alf j = new alf("minecraft", "resourcepacks");
+   @Nullable
+   private final Path k;
 
-   public static ale a() {
-      return a[6].a();
+   public gpq(Path $$0, evh $$1) {
+      super(atd.a, b($$0), j, $$1);
+      this.k = this.a($$0);
    }
 
-   public static gpy a(UUID $$0) {
-      return a[Math.floorMod($$0.hashCode(), a.length)];
+   private static ata a(String $$0, xp $$1) {
+      return new ata($$0, $$1, aub.c, Optional.of(atw.a($$0)));
    }
 
-   public static gpy a(GameProfile $$0) {
-      return a($$0.getId());
+   @Nullable
+   private Path a(Path $$0) {
+      if (aa.aX && $$0.getFileSystem() == FileSystems.getDefault()) {
+         Path $$1 = $$0.getParent().resolve("resourcepacks");
+         if (Files.isDirectory($$1)) {
+            return $$1;
+         }
+      }
+
+      return null;
    }
 
-   private static gpy a(String $$0, gpy.a $$1) {
-      return new gpy(new ale($$0), null, null, null, $$1, true);
+   private static atf b(Path $$0) {
+      atg $$1 = new atg().a(e).a("minecraft", "realms");
+      return $$1.b().a().a(atd.a, $$0).a(g);
+   }
+
+   @Override
+   protected xp a(String $$0) {
+      xp $$1 = f.get($$0);
+      return (xp)($$1 != null ? $$1 : xp.b($$0));
+   }
+
+   @Nullable
+   @Override
+   protected atx a(atb $$0) {
+      return atx.a(g, b($$0), atd.a, h);
+   }
+
+   @Nullable
+   @Override
+   protected atx a(String $$0, atx.c $$1, xp $$2) {
+      return atx.a(a($$0, $$2), $$1, atd.a, i);
+   }
+
+   @Override
+   protected void a(BiConsumer<String, Function<String, atx>> $$0) {
+      super.a($$0);
+      if (this.k != null) {
+         this.a(this.k, $$0);
+      }
    }
 }

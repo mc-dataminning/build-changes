@@ -1,23 +1,24 @@
 import com.mojang.serialization.MapCodec;
 
-public class ddw extends dey {
+public class ddw extends dez {
    public static final MapCodec<ddw> a = b(ddw::new);
 
    @Override
-   public MapCodec<? extends ddw> a() {
+   public MapCodec<ddw> a() {
       return a;
    }
 
-   public ddw(dsa.d $$0) {
+   public ddw(dsb.d $$0) {
       super($$0);
    }
 
    @Override
-   protected void a(dbx $$0, dsb $$1, evm $$2, cno $$3) {
-      if (!$$0.B) {
-         iz $$4 = $$2.a();
-         $$0.a(null, $$4, avz.G, awa.e, 1.0F, 0.5F + $$0.z.i() * 1.2F);
-         $$0.a(null, $$4, avz.E, awa.e, 1.0F, 0.5F + $$0.z.i() * 1.2F);
-      }
+   protected dlf a_(dsc $$0) {
+      return dlf.a;
+   }
+
+   @Override
+   protected ewk a(dsc $$0, dbe $$1, iz $$2, evw $$3) {
+      return ewh.a();
    }
 }

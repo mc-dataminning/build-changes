@@ -1,99 +1,54 @@
-import java.util.Optional;
-
-public class gby extends gcb {
-   gby(fxu $$0, gbw $$1, double $$2, double $$3, double $$4) {
-      super($$0, $$2, $$3 - 0.125, $$4);
-      this.b(0.01F, 0.01F);
-      this.a($$1);
-      this.D = this.D * (this.r.i() * 0.6F + 0.2F);
-      this.t = (int)(16.0 / (Math.random() * 0.8 + 0.2));
+public class gby extends gbo {
+   gby(fxv $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, int $$7, gbx $$8) {
+      super($$0, $$1, $$2, $$3, $$8, 0.0F);
+      this.B = 0.92F;
+      this.D = 0.5F;
+      this.e(1.0F);
+      this.a((float)ayj.b.b($$7), (float)ayj.b.c($$7), (float)ayj.b.d($$7));
+      this.t = (int)((double)(this.D * 12.0F) / (Math.random() * 0.8F + 0.2F));
+      this.b($$8);
       this.n = false;
-      this.B = 1.0F;
-      this.u = 0.0F;
-   }
-
-   gby(fxu $$0, gbw $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-      super($$0, $$2, $$3 - 0.125, $$4, $$5, $$6, $$7);
-      this.b(0.01F, 0.01F);
-      this.a($$1);
-      this.D = this.D * (this.r.i() * 0.6F + 0.6F);
-      this.t = (int)(16.0 / (Math.random() * 0.8 + 0.2));
-      this.n = false;
-      this.B = 1.0F;
-      this.u = 0.0F;
+      this.j = $$4;
+      this.k = $$5;
+      this.l = $$6;
    }
 
    @Override
-   public gbf b() {
-      return gbf.b;
-   }
+   public void a() {
+      super.a();
+      if (!this.o) {
+         this.b(this.a);
+         if (this.s > this.t / 2) {
+            this.e(1.0F - ((float)this.s - (float)(this.t / 2)) / (float)this.t);
+         }
 
-   public static class a implements gbe<lm> {
-      private final gbw a;
-
-      public a(gbw $$0) {
-         this.a = $$0;
-      }
-
-      public gbb a(lm $$0, fxu $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         azg $$8 = $$1.z;
-         double $$9 = $$8.k() * 1.0E-6F;
-         double $$10 = $$8.k() * 1.0E-4F;
-         double $$11 = $$8.k() * 1.0E-6F;
-         gby $$12 = new gby($$1, this.a, $$2, $$3, $$4, $$9, $$10, $$11);
-         $$12.a(0.9F, 0.4F, 0.5F);
-         return $$12;
+         if (this.c.a_(iz.a(this.g, this.h, this.i)).i()) {
+            this.k -= 0.0074F;
+         }
       }
    }
 
-   public static class b implements gbe<lm> {
-      private final gbw a;
+   public static class a implements gbf<lm> {
+      private final gbx a;
 
-      public b(gbw $$0) {
+      public a(gbx $$0) {
          this.a = $$0;
       }
 
-      public gbb a(lm $$0, fxu $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         gby $$8 = new gby($$1, this.a, $$2, $$3, $$4, 0.0, -0.8F, 0.0) {
-            @Override
-            public Optional<lf> o() {
-               return Optional.of(lf.a);
-            }
-         };
-         $$8.t = ayy.b($$1.z, 500, 1000);
-         $$8.u = 0.01F;
-         $$8.a(0.32F, 0.5F, 0.22F);
-         return $$8;
+      public gbc a(lm $$0, fxv $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new gby($$1, $$2, $$3, $$4, $$5, $$6, $$7, ayj.b.a(255, 204, 31, 102), this.a);
       }
    }
 
-   public static class c implements gbe<lm> {
-      private final gbw a;
+   public static class b implements gbf<lm> {
+      private final gbx a;
 
-      public c(gbw $$0) {
+      public b(gbx $$0) {
          this.a = $$0;
       }
 
-      public gbb a(lm $$0, fxu $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         gby $$8 = new gby($$1, this.a, $$2, $$3, $$4);
-         $$8.a(0.4F, 0.4F, 0.7F);
-         return $$8;
-      }
-   }
-
-   public static class d implements gbe<lm> {
-      private final gbw a;
-
-      public d(gbw $$0) {
-         this.a = $$0;
-      }
-
-      public gbb a(lm $$0, fxu $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         double $$8 = (double)$$1.z.i() * -1.9 * (double)$$1.z.i() * 0.1;
-         gby $$9 = new gby($$1, this.a, $$2, $$3, $$4, 0.0, $$8, 0.0);
-         $$9.a(0.1F, 0.1F, 0.3F);
-         $$9.b(0.001F, 0.001F);
-         return $$9;
+      public gbc a(lm $$0, fxv $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new gby($$1, $$2, $$3, $$4, $$5, $$6, $$7, ayj.b.a(255, 255, 255, 255), this.a);
       }
    }
 }

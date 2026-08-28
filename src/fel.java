@@ -1,14 +1,14 @@
 import com.mojang.logging.LogUtils;
 import org.slf4j.Logger;
 
-public class fel extends fee {
+public class fel extends fef {
    private static final Logger b = LogUtils.getLogger();
-   private static final xo c = xo.c("mco.minigame.world.starting.screen.title");
-   private final long d;
-   private final fbv e;
-   private final fcn f;
+   private static final xp c = xp.c("mco.backup.restoring");
+   private final fau d;
+   private final long e;
+   private final fco f;
 
-   public fel(long $$0, fbv $$1, fcn $$2) {
+   public fel(fau $$0, long $$1, fco $$2) {
       this.d = $$0;
       this.e = $$1;
       this.f = $$2;
@@ -16,37 +16,52 @@ public class fel extends fee {
 
    @Override
    public void run() {
-      fan $$0 = fan.a();
+      fao $$0 = fao.a();
+      int $$1 = 0;
 
-      for (int $$1 = 0; $$1 < 25; $$1++) {
+      while ($$1 < 25) {
          try {
             if (this.d()) {
                return;
             }
 
-            if ($$0.c(this.d, this.e.a)) {
-               a(this.f);
-               break;
+            $$0.b(this.e, this.d.a);
+            a(1L);
+            if (this.d()) {
+               return;
             }
-         } catch (fcb var4) {
+
+            a(this.f.f());
+            return;
+         } catch (fcc var4) {
             if (this.d()) {
                return;
             }
 
             a((long)var4.c);
-         } catch (Exception var5) {
+            $$1++;
+         } catch (fcb var5) {
             if (this.d()) {
                return;
             }
 
-            b.error("Couldn't start mini game!");
-            this.a(var5);
+            b.error("Couldn't restore backup", var5);
+            a(new fcs(var5, this.f));
+            return;
+         } catch (Exception var6) {
+            if (this.d()) {
+               return;
+            }
+
+            b.error("Couldn't restore backup", var6);
+            this.a(var6);
+            return;
          }
       }
    }
 
    @Override
-   public xo a() {
+   public xp a() {
       return c;
    }
 }

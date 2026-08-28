@@ -1,24 +1,79 @@
-public class gcg extends gcb {
-   private final gbw a;
+import java.util.Optional;
+import java.util.function.Consumer;
+import org.joml.Quaternionf;
+import org.joml.Vector3f;
 
-   gcg(fxu $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, gbw $$7) {
+public class gcg extends gcc {
+   private final dwz a;
+   private float b;
+   private float F;
+   private float G;
+   private float H;
+
+   gcg(fxv $$0, double $$1, double $$2, double $$3, dwz $$4, int $$5) {
       super($$0, $$1, $$2, $$3, 0.0, 0.0, 0.0);
-      this.a = $$7;
-      this.j *= 0.3F;
-      this.k = Math.random() * 0.2F + 0.1F;
-      this.l *= 0.3F;
-      this.b(0.01F, 0.01F);
-      this.t = (int)(8.0 / (Math.random() * 0.8 + 0.2));
-      this.b($$7);
-      this.u = 0.0F;
-      this.j = $$4;
-      this.k = $$5;
-      this.l = $$6;
+      this.D = 0.3F;
+      this.a = $$4;
+      this.t = $$5;
+      Optional<evr> $$6 = $$4.a($$0);
+      if ($$6.isPresent()) {
+         evr $$7 = $$6.get();
+         double $$8 = $$1 - $$7.a();
+         double $$9 = $$2 - $$7.b();
+         double $$10 = $$3 - $$7.c();
+         this.F = this.b = (float)ayz.d($$8, $$10);
+         this.H = this.G = (float)ayz.d($$9, Math.sqrt($$8 * $$8 + $$10 * $$10));
+      }
    }
 
    @Override
-   public gbf b() {
-      return gbf.b;
+   public void a(fac $$0, feq $$1, float $$2) {
+      float $$3 = ayz.a(((float)this.s + $$2 - (float) (Math.PI * 2)) * 0.05F) * 2.0F;
+      float $$4 = ayz.i($$2, this.F, this.b);
+      float $$5 = ayz.i($$2, this.H, this.G) + (float) (Math.PI / 2);
+      this.a($$0, $$1, $$2, $$3x -> $$3x.rotateY($$4).rotateX(-$$5).rotateY($$3));
+      this.a($$0, $$1, $$2, $$3x -> $$3x.rotateY((float) -Math.PI + $$4).rotateX($$5).rotateY($$3));
+   }
+
+   private void a(fac $$0, feq $$1, float $$2, Consumer<Quaternionf> $$3) {
+      evr $$4 = $$1.b();
+      float $$5 = (float)(ayz.d((double)$$2, this.d, this.g) - $$4.a());
+      float $$6 = (float)(ayz.d((double)$$2, this.e, this.h) - $$4.b());
+      float $$7 = (float)(ayz.d((double)$$2, this.f, this.i) - $$4.c());
+      Vector3f $$8 = new Vector3f(0.5F, 0.5F, 0.5F).normalize();
+      Quaternionf $$9 = new Quaternionf().setAngleAxis(0.0F, $$8.x(), $$8.y(), $$8.z());
+      $$3.accept($$9);
+      Vector3f[] $$10 = new Vector3f[]{
+         new Vector3f(-1.0F, -1.0F, 0.0F), new Vector3f(-1.0F, 1.0F, 0.0F), new Vector3f(1.0F, 1.0F, 0.0F), new Vector3f(1.0F, -1.0F, 0.0F)
+      };
+      float $$11 = this.b($$2);
+
+      for (int $$12 = 0; $$12 < 4; $$12++) {
+         Vector3f $$13 = $$10[$$12];
+         $$13.rotate($$9);
+         $$13.mul($$11);
+         $$13.add($$5, $$6, $$7);
+      }
+
+      float $$14 = this.c();
+      float $$15 = this.d();
+      float $$16 = this.e();
+      float $$17 = this.f();
+      int $$18 = this.a($$2);
+      $$0.a((double)$$10[0].x(), (double)$$10[0].y(), (double)$$10[0].z()).a($$15, $$17).a(this.v, this.w, this.x, this.y).b($$18).e();
+      $$0.a((double)$$10[1].x(), (double)$$10[1].y(), (double)$$10[1].z()).a($$15, $$16).a(this.v, this.w, this.x, this.y).b($$18).e();
+      $$0.a((double)$$10[2].x(), (double)$$10[2].y(), (double)$$10[2].z()).a($$14, $$16).a(this.v, this.w, this.x, this.y).b($$18).e();
+      $$0.a((double)$$10[3].x(), (double)$$10[3].y(), (double)$$10[3].z()).a($$14, $$17).a(this.v, this.w, this.x, this.y).b($$18).e();
+   }
+
+   @Override
+   public int a(float $$0) {
+      return 240;
+   }
+
+   @Override
+   public gbg b() {
+      return gbg.c;
    }
 
    @Override
@@ -26,30 +81,42 @@ public class gcg extends gcb {
       this.d = this.g;
       this.e = this.h;
       this.f = this.i;
-      int $$0 = 60 - this.t;
-      if (this.t-- <= 0) {
+      if (this.s++ >= this.t) {
          this.k();
       } else {
-         this.k = this.k - (double)this.u;
-         this.a(this.j, this.k, this.l);
-         this.j *= 0.98F;
-         this.k *= 0.98F;
-         this.l *= 0.98F;
-         float $$1 = (float)$$0 * 0.001F;
-         this.b($$1, $$1);
-         this.a(this.a.a($$0 % 4, 4));
+         Optional<evr> $$0 = this.a.a(this.c);
+         if ($$0.isEmpty()) {
+            this.k();
+         } else {
+            int $$1 = this.t - this.s;
+            double $$2 = 1.0 / (double)$$1;
+            evr $$3 = $$0.get();
+            this.g = ayz.d($$2, this.g, $$3.a());
+            this.h = ayz.d($$2, this.h, $$3.b());
+            this.i = ayz.d($$2, this.i, $$3.c());
+            double $$4 = this.g - $$3.a();
+            double $$5 = this.h - $$3.b();
+            double $$6 = this.i - $$3.c();
+            this.F = this.b;
+            this.b = (float)ayz.d($$4, $$6);
+            this.H = this.G;
+            this.G = (float)ayz.d($$5, Math.sqrt($$4 * $$4 + $$6 * $$6));
+         }
       }
    }
 
-   public static class a implements gbe<lm> {
-      private final gbw a;
+   public static class a implements gbf<ln> {
+      private final gbx a;
 
-      public a(gbw $$0) {
+      public a(gbx $$0) {
          this.a = $$0;
       }
 
-      public gbb a(lm $$0, fxu $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new gcg($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
+      public gbc a(ln $$0, fxv $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         gcg $$8 = new gcg($$1, $$2, $$3, $$4, $$0.b(), $$0.c());
+         $$8.a(this.a);
+         $$8.e(1.0F);
+         return $$8;
       }
    }
 }

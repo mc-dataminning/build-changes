@@ -1,33 +1,28 @@
-public class cnt extends cnv {
-   public cnt(bsz<? extends cnt> $$0, dbx $$1) {
+public class cnt extends cnj {
+   public cnt(bta<? extends cnt> $$0, dby $$1) {
       super($$0, $$1);
    }
 
-   public cnt(dbx $$0, bto $$1) {
-      super(bsz.aT, $$1, $$0);
+   public cnt(dby $$0, btp $$1, double $$2, double $$3, double $$4) {
+      super(bta.aQ, $$1, $$2, $$3, $$4, $$0);
    }
 
-   public cnt(dbx $$0, double $$1, double $$2, double $$3) {
-      super(bsz.aT, $$1, $$2, $$3, $$0);
-   }
-
-   @Override
-   protected cuj u() {
-      return cur.qC;
-   }
-
-   private lg v() {
-      cuo $$0 = this.p();
-      return (lg)(!$$0.e() && !$$0.a(this.u()) ? new le(li.S, $$0) : li.W);
+   public cnt(dby $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6) {
+      super(bta.aQ, $$1, $$2, $$3, $$4, $$5, $$6, $$0);
    }
 
    @Override
-   public void b(byte $$0) {
-      if ($$0 == 3) {
-         lg $$1 = this.v();
-
-         for (int $$2 = 0; $$2 < 8; $$2++) {
-            this.dP().a($$1, this.du(), this.dw(), this.dA(), 0.0, 0.0, 0.0);
+   protected void a(evo $$0) {
+      super.a($$0);
+      if (!this.dP().B) {
+         bsu $$1 = $$0.a();
+         bsu $$2 = this.s();
+         int $$3 = $$1.aB();
+         $$1.g(5);
+         if (!$$1.a(this.dQ().a((cnj)this, $$2), 5.0F)) {
+            $$1.i($$3);
+         } else if ($$2 instanceof btp) {
+            this.a((btp)$$2, $$1);
          }
       }
    }
@@ -35,17 +30,27 @@ public class cnt extends cnv {
    @Override
    protected void a(evn $$0) {
       super.a($$0);
-      bst $$1 = $$0.a();
-      int $$2 = $$1 instanceof cjl ? 3 : 0;
-      $$1.a(this.dQ().b(this, this.s()), (float)$$2);
+      if (!this.dP().B) {
+         bsu $$1 = this.s();
+         if (!($$1 instanceof btr) || this.dP().ab().b(dbu.c)) {
+            iz $$2 = $$0.a().a($$0.b());
+            if (this.dP().u($$2)) {
+               this.dP().b($$2, dem.a(this.dP(), $$2));
+            }
+         }
+      }
    }
 
    @Override
-   protected void a(evo $$0) {
+   protected void a(evp $$0) {
       super.a($$0);
       if (!this.dP().B) {
-         this.dP().a(this, (byte)3);
          this.ao();
       }
+   }
+
+   @Override
+   public boolean a(brn $$0, float $$1) {
+      return false;
    }
 }

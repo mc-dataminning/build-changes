@@ -1,45 +1,64 @@
-import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import javax.annotation.Nullable;
+import it.unimi.dsi.fastutil.ints.IntArrayList;
+import it.unimi.dsi.fastutil.ints.IntIterator;
+import java.util.List;
+import java.util.stream.IntStream;
 
-public class elq extends emg {
+public class elq extends emh {
    public static final MapCodec<elq> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(dxt.a.g.fieldOf("heightmap").orElse(dxt.a.a).forGetter($$0x -> $$0x.b), Codec.INT.fieldOf("offset").orElse(0).forGetter($$0x -> $$0x.c))
-            .apply($$0, elq::new)
+      $$0 -> $$0.group(emj.a.fieldOf("delegate").forGetter($$0x -> $$0x.b), bpz.e.fieldOf("limit").forGetter($$0x -> $$0x.c)).apply($$0, elq::new)
    );
-   private final dxt.a b;
-   private final int c;
+   private final emh b;
+   private final bpz c;
 
-   public elq(dxt.a $$0, int $$1) {
+   public elq(emh $$0, bpz $$1) {
       this.b = $$0;
       this.c = $$1;
    }
 
-   @Nullable
    @Override
-   public emj.c a(dca $$0, iz $$1, iz $$2, emj.c $$3, emj.c $$4, emf $$5) {
-      dxt.a $$6;
-      if ($$0 instanceof are) {
-         if (this.b == dxt.a.a) {
-            $$6 = dxt.a.b;
-         } else if (this.b == dxt.a.c) {
-            $$6 = dxt.a.d;
-         } else {
-            $$6 = this.b;
-         }
-      } else {
-         $$6 = this.b;
-      }
-
-      iz $$10 = $$4.a();
-      int $$11 = $$0.a($$6, $$10.u(), $$10.w()) + this.c;
-      int $$12 = $$3.a().v();
-      return new emj.c(new iz($$10.u(), $$11 + $$12, $$10.w()), $$4.b(), $$4.c());
+   protected emj<?> a() {
+      return emj.o;
    }
 
    @Override
-   protected emi<?> a() {
-      return emi.g;
+   public final List<emk.c> a(dcn $$0, iz $$1, iz $$2, List<emk.c> $$3, List<emk.c> $$4, emg $$5) {
+      if (this.c.b() != 0 && !$$4.isEmpty()) {
+         if ($$3.size() != $$4.size()) {
+            ac.a(
+               "Original block info list not in sync with processed list, skipping processing. Original size: "
+                  + $$3.size()
+                  + ", Processed size: "
+                  + $$4.size()
+            );
+            return $$4;
+         } else {
+            azh $$6 = azh.a($$0.E().C()).e().a($$1);
+            int $$7 = Math.min(this.c.a($$6), $$4.size());
+            if ($$7 < 1) {
+               return $$4;
+            } else {
+               IntArrayList $$8 = ac.a(IntStream.range(0, $$4.size()), $$6);
+               IntIterator $$9 = $$8.intIterator();
+               int $$10 = 0;
+
+               while ($$9.hasNext() && $$10 < $$7) {
+                  int $$11 = $$9.nextInt();
+                  emk.c $$12 = $$3.get($$11);
+                  emk.c $$13 = $$4.get($$11);
+                  emk.c $$14 = this.b.a($$0, $$1, $$2, $$12, $$13, $$5);
+                  if ($$14 != null && !$$13.equals($$14)) {
+                     $$10++;
+                     $$4.set($$11, $$14);
+                  }
+               }
+
+               return $$4;
+            }
+         }
+      } else {
+         return $$4;
+      }
    }
 }

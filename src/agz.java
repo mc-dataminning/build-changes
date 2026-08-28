@@ -1,29 +1,37 @@
-public class agz implements zv<agv> {
-   public static final zm<wl, agz> a = zv.a(agz::a, agz::new);
-   private final bqq b;
+public class agz implements zw<agw> {
+   public static final zn<wm, agz> a = zw.a(agz::a, agz::new);
+   private final int b;
+   private final iz c;
 
-   public agz(bqq $$0) {
+   public agz(int $$0, iz $$1) {
       this.b = $$0;
+      this.c = $$1;
    }
 
-   private agz(wl $$0) {
-      this.b = bqq.a($$0.readUnsignedByte());
+   private agz(wm $$0) {
+      this.b = $$0.l();
+      this.c = $$0.e();
    }
 
-   private void a(wl $$0) {
-      $$0.k(this.b.a());
+   private void a(wm $$0) {
+      $$0.c(this.b);
+      $$0.a(this.c);
    }
 
    @Override
-   public zx<agz> a() {
-      return agt.bh;
+   public zy<agz> a() {
+      return agu.bg;
    }
 
-   public void a(agv $$0) {
+   public void a(agw $$0) {
       $$0.a(this);
    }
 
-   public bqq b() {
+   public int b() {
       return this.b;
+   }
+
+   public iz e() {
+      return this.c;
    }
 }

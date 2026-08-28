@@ -1,175 +1,740 @@
-public abstract class cpu extends crg<bqm> {
-   public static final int k = 0;
-   public static final int l = 1;
-   public static final int m = 2;
-   public static final int n = 3;
-   public static final int o = 4;
-   private static final int q = 3;
-   private static final int r = 30;
-   private static final int s = 30;
-   private static final int t = 39;
-   private final bqm u;
-   private final cqd v;
-   protected final dbx p;
-   private final cyz<? extends cyd> w;
-   private final crh x;
+import com.google.common.base.Suppliers;
+import com.google.common.collect.HashBasedTable;
+import com.google.common.collect.Lists;
+import com.google.common.collect.Sets;
+import com.google.common.collect.Table;
+import com.mojang.logging.LogUtils;
+import it.unimi.dsi.fastutil.ints.IntArrayList;
+import it.unimi.dsi.fastutil.ints.IntList;
+import java.util.List;
+import java.util.Optional;
+import java.util.OptionalInt;
+import java.util.Set;
+import java.util.function.Supplier;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-   protected cpu(cra<?> $$0, cyz<? extends cyd> $$1, crh $$2, int $$3, cmv $$4) {
-      this($$0, $$1, $$2, $$3, $$4, new brc(3), new crn(4));
+public abstract class cpu {
+   private static final Logger k = LogUtils.getLogger();
+   public static final int a = -999;
+   public static final int b = 0;
+   public static final int c = 1;
+   public static final int d = 2;
+   public static final int e = 0;
+   public static final int f = 1;
+   public static final int g = 2;
+   public static final int h = Integer.MAX_VALUE;
+   private final jr<cup> l = jr.a();
+   public final jr<crp> i = jr.a();
+   private final List<cqm> m = Lists.newArrayList();
+   private cup n = cup.l;
+   private final jr<cup> o = jr.a();
+   private final IntList p = new IntArrayList();
+   private cup q = cup.l;
+   private int r;
+   @Nullable
+   private final crb<?> s;
+   public final int j;
+   private int t = -1;
+   private int u;
+   private final Set<crp> v = Sets.newHashSet();
+   private final List<cqg> w = Lists.newArrayList();
+   @Nullable
+   private cqh x;
+   private boolean y;
+
+   protected cpu(@Nullable crb<?> $$0, int $$1) {
+      this.s = $$0;
+      this.j = $$1;
    }
 
-   protected cpu(cra<?> $$0, cyz<? extends cyd> $$1, crh $$2, int $$3, cmv $$4, bqm $$5, cqd $$6) {
-      super($$0, $$3);
-      this.w = $$1;
-      this.x = $$2;
-      a($$5, 3);
-      a($$6, 4);
-      this.u = $$5;
-      this.v = $$6;
-      this.p = $$4.l.dP();
-      this.a(new cro($$5, 0, 56, 17));
-      this.a(new cqo(this, $$5, 1, 56, 53));
-      this.a(new cqq($$4.l, $$5, 2, 116, 35));
+   protected static boolean a(cqf $$0, cmx $$1, dez $$2) {
+      return $$0.a(($$2x, $$3) -> !$$2x.a_($$3).a($$2) ? false : $$1.a($$3, 4.0), true);
+   }
 
-      for (int $$7 = 0; $$7 < 3; $$7++) {
-         for (int $$8 = 0; $$8 < 9; $$8++) {
-            this.a(new cro($$4, $$8 + $$7 * 9 + 9, 8 + $$8 * 18, 84 + $$7 * 18));
+   public crb<?> a() {
+      if (this.s == null) {
+         throw new UnsupportedOperationException("Unable to construct this menu by type");
+      } else {
+         return this.s;
+      }
+   }
+
+   protected static void a(bqn $$0, int $$1) {
+      int $$2 = $$0.b();
+      if ($$2 < $$1) {
+         throw new IllegalArgumentException("Container size " + $$2 + " is smaller than expected " + $$1);
+      }
+   }
+
+   protected static void a(cqe $$0, int $$1) {
+      int $$2 = $$0.a();
+      if ($$2 < $$1) {
+         throw new IllegalArgumentException("Container data count " + $$2 + " is smaller than expected " + $$1);
+      }
+   }
+
+   public boolean a(int $$0) {
+      return $$0 == -1 || $$0 == -999 || $$0 < this.i.size();
+   }
+
+   protected crp a(crp $$0) {
+      $$0.d = this.i.size();
+      this.i.add($$0);
+      this.l.add(cup.l);
+      this.o.add(cup.l);
+      return $$0;
+   }
+
+   protected cqm a(cqm $$0) {
+      this.m.add($$0);
+      this.p.add(0);
+      return $$0;
+   }
+
+   protected void a(cqe $$0) {
+      for (int $$1 = 0; $$1 < $$0.a(); $$1++) {
+         this.a(cqm.a($$0, $$1));
+      }
+   }
+
+   public void a(cqg $$0) {
+      if (!this.w.contains($$0)) {
+         this.w.add($$0);
+         this.d();
+      }
+   }
+
+   public void a(cqh $$0) {
+      this.x = $$0;
+      this.b();
+   }
+
+   public void b() {
+      int $$0 = 0;
+
+      for (int $$1 = this.i.size(); $$0 < $$1; $$0++) {
+         this.o.set($$0, this.i.get($$0).g().s());
+      }
+
+      this.q = this.g().s();
+      $$0 = 0;
+
+      for (int $$3 = this.m.size(); $$0 < $$3; $$0++) {
+         this.p.set($$0, this.m.get($$0).b());
+      }
+
+      if (this.x != null) {
+         this.x.a(this, this.o, this.q, this.p.toIntArray());
+      }
+   }
+
+   public void b(cqg $$0) {
+      this.w.remove($$0);
+   }
+
+   public jr<cup> c() {
+      jr<cup> $$0 = jr.a();
+
+      for (crp $$1 : this.i) {
+         $$0.add($$1.g());
+      }
+
+      return $$0;
+   }
+
+   public void d() {
+      for (int $$0 = 0; $$0 < this.i.size(); $$0++) {
+         cup $$1 = this.i.get($$0).g();
+         Supplier<cup> $$2 = Suppliers.memoize($$1::s);
+         this.a($$0, $$1, $$2);
+         this.b($$0, $$1, $$2);
+      }
+
+      this.l();
+
+      for (int $$3 = 0; $$3 < this.m.size(); $$3++) {
+         cqm $$4 = this.m.get($$3);
+         int $$5 = $$4.b();
+         if ($$4.c()) {
+            this.c($$3, $$5);
+         }
+
+         this.d($$3, $$5);
+      }
+   }
+
+   public void e() {
+      for (int $$0 = 0; $$0 < this.i.size(); $$0++) {
+         cup $$1 = this.i.get($$0).g();
+         this.a($$0, $$1, $$1::s);
+      }
+
+      for (int $$2 = 0; $$2 < this.m.size(); $$2++) {
+         cqm $$3 = this.m.get($$2);
+         if ($$3.c()) {
+            this.c($$2, $$3.b());
          }
       }
 
-      for (int $$9 = 0; $$9 < 9; $$9++) {
-         this.a(new cro($$4, $$9, 8 + $$9 * 18, 142));
-      }
-
-      this.a($$6);
+      this.b();
    }
 
-   @Override
-   public void a(cna $$0) {
-      if (this.u instanceof crt) {
-         ((crt)this.u).a($$0);
+   private void c(int $$0, int $$1) {
+      for (cqg $$2 : this.w) {
+         $$2.a(this, $$0, $$1);
       }
    }
 
-   @Override
-   public void l() {
-      this.b(0).f(cuo.l);
-      this.b(2).f(cuo.l);
-   }
+   private void a(int $$0, cup $$1, Supplier<cup> $$2) {
+      cup $$3 = this.l.get($$0);
+      if (!cup.a($$3, $$1)) {
+         cup $$4 = $$2.get();
+         this.l.set($$0, $$4);
 
-   @Override
-   public boolean a(cyw<? extends cyu<bqm>> $$0) {
-      return $$0.b().a(this.u, this.p);
-   }
-
-   @Override
-   public int m() {
-      return 2;
-   }
-
-   @Override
-   public int n() {
-      return 1;
-   }
-
-   @Override
-   public int o() {
-      return 1;
-   }
-
-   @Override
-   public int p() {
-      return 3;
-   }
-
-   @Override
-   public boolean a(cmw $$0) {
-      return this.u.a($$0);
-   }
-
-   @Override
-   public cuo a(cmw $$0, int $$1) {
-      cuo $$2 = cuo.l;
-      cro $$3 = this.i.get($$1);
-      if ($$3 != null && $$3.h()) {
-         cuo $$4 = $$3.g();
-         $$2 = $$4.s();
-         if ($$1 == 2) {
-            if (!this.a($$4, 3, 39, true)) {
-               return cuo.l;
-            }
-
-            $$3.b($$4, $$2);
-         } else if ($$1 != 1 && $$1 != 0) {
-            if (this.c($$4)) {
-               if (!this.a($$4, 0, 1, false)) {
-                  return cuo.l;
-               }
-            } else if (this.d($$4)) {
-               if (!this.a($$4, 1, 2, false)) {
-                  return cuo.l;
-               }
-            } else if ($$1 >= 3 && $$1 < 30) {
-               if (!this.a($$4, 30, 39, false)) {
-                  return cuo.l;
-               }
-            } else if ($$1 >= 30 && $$1 < 39 && !this.a($$4, 3, 30, false)) {
-               return cuo.l;
-            }
-         } else if (!this.a($$4, 3, 39, false)) {
-            return cuo.l;
+         for (cqg $$5 : this.w) {
+            $$5.a(this, $$0, $$4);
          }
+      }
+   }
 
-         if ($$4.e()) {
-            $$3.e(cuo.l);
+   private void b(int $$0, cup $$1, Supplier<cup> $$2) {
+      if (!this.y) {
+         cup $$3 = this.o.get($$0);
+         if (!cup.a($$3, $$1)) {
+            cup $$4 = $$2.get();
+            this.o.set($$0, $$4);
+            if (this.x != null) {
+               this.x.a(this, $$0, $$4);
+            }
+         }
+      }
+   }
+
+   private void d(int $$0, int $$1) {
+      if (!this.y) {
+         int $$2 = this.p.getInt($$0);
+         if ($$2 != $$1) {
+            this.p.set($$0, $$1);
+            if (this.x != null) {
+               this.x.a(this, $$0, $$1);
+            }
+         }
+      }
+   }
+
+   private void l() {
+      if (!this.y) {
+         if (!cup.a(this.g(), this.q)) {
+            this.q = this.g().s();
+            if (this.x != null) {
+               this.x.a(this, this.q);
+            }
+         }
+      }
+   }
+
+   public void a(int $$0, cup $$1) {
+      this.o.set($$0, $$1.s());
+   }
+
+   public void b(int $$0, cup $$1) {
+      if ($$0 >= 0 && $$0 < this.o.size()) {
+         this.o.set($$0, $$1);
+      } else {
+         k.debug("Incorrect slot index: {} available slots: {}", $$0, this.o.size());
+      }
+   }
+
+   public void a(cup $$0) {
+      this.q = $$0.s();
+   }
+
+   public boolean b(cmx $$0, int $$1) {
+      return false;
+   }
+
+   public crp b(int $$0) {
+      return this.i.get($$0);
+   }
+
+   public abstract cup a(cmx var1, int var2);
+
+   public void a(int $$0, int $$1, cqd $$2, cmx $$3) {
+      try {
+         this.b($$0, $$1, $$2, $$3);
+      } catch (Exception var8) {
+         o $$5 = o.a(var8, "Container click");
+         p $$6 = $$5.a("Click info");
+         $$6.a("Menu Type", () -> this.s != null ? lp.r.b(this.s).toString() : "<no type>");
+         $$6.a("Menu Class", () -> this.getClass().getCanonicalName());
+         $$6.a("Slot Count", this.i.size());
+         $$6.a("Slot", $$0);
+         $$6.a("Button", $$1);
+         $$6.a("Type", $$2);
+         throw new y($$5);
+      }
+   }
+
+   private void b(int $$0, int $$1, cqd $$2, cmx $$3) {
+      cmw $$4 = $$3.gc();
+      if ($$2 == cqd.f) {
+         int $$5 = this.u;
+         this.u = d($$1);
+         if (($$5 != 1 || this.u != 2) && $$5 != this.u) {
+            this.f();
+         } else if (this.g().e()) {
+            this.f();
+         } else if (this.u == 0) {
+            this.t = c($$1);
+            if (a(this.t, $$3)) {
+               this.u = 1;
+               this.v.clear();
+            } else {
+               this.f();
+            }
+         } else if (this.u == 1) {
+            crp $$6 = this.i.get($$0);
+            cup $$7 = this.g();
+            if (a($$6, $$7, true) && $$6.a($$7) && (this.t == 2 || $$7.I() > this.v.size()) && this.b($$6)) {
+               this.v.add($$6);
+            }
+         } else if (this.u == 2) {
+            if (!this.v.isEmpty()) {
+               if (this.v.size() == 1) {
+                  int $$8 = this.v.iterator().next().d;
+                  this.f();
+                  this.b($$8, this.t, cqd.a, $$3);
+                  return;
+               }
+
+               cup $$9 = this.g().s();
+               if ($$9.e()) {
+                  this.f();
+                  return;
+               }
+
+               int $$10 = this.g().I();
+
+               for (crp $$11 : this.v) {
+                  cup $$12 = this.g();
+                  if ($$11 != null && a($$11, $$12, true) && $$11.a($$12) && (this.t == 2 || $$12.I() >= this.v.size()) && this.b($$11)) {
+                     int $$13 = $$11.h() ? $$11.g().I() : 0;
+                     int $$14 = Math.min($$9.j(), $$11.a_($$9));
+                     int $$15 = Math.min(a(this.v, this.t, $$9) + $$13, $$14);
+                     $$10 -= $$15 - $$13;
+                     $$11.e($$9.c($$15));
+                  }
+               }
+
+               $$9.e($$10);
+               this.b($$9);
+            }
+
+            this.f();
          } else {
-            $$3.b();
+            this.f();
+         }
+      } else if (this.u != 0) {
+         this.f();
+      } else if (($$2 == cqd.a || $$2 == cqd.b) && ($$1 == 0 || $$1 == 1)) {
+         cqc $$16 = $$1 == 0 ? cqc.a : cqc.b;
+         if ($$0 == -999) {
+            if (!this.g().e()) {
+               if ($$16 == cqc.a) {
+                  $$3.a(this.g(), true);
+                  this.b(cup.l);
+               } else {
+                  $$3.a(this.g().a(1), true);
+               }
+            }
+         } else if ($$2 == cqd.b) {
+            if ($$0 < 0) {
+               return;
+            }
+
+            crp $$17 = this.i.get($$0);
+            if (!$$17.a($$3)) {
+               return;
+            }
+
+            cup $$18 = this.a($$3, $$0);
+
+            while (!$$18.e() && cup.b($$17.g(), $$18)) {
+               $$18 = this.a($$3, $$0);
+            }
+         } else {
+            if ($$0 < 0) {
+               return;
+            }
+
+            crp $$19 = this.i.get($$0);
+            cup $$20 = $$19.g();
+            cup $$21 = this.g();
+            $$3.a($$21, $$19.g(), $$16);
+            if (!this.a($$3, $$16, $$19, $$20, $$21)) {
+               if ($$20.e()) {
+                  if (!$$21.e()) {
+                     int $$22 = $$16 == cqc.a ? $$21.I() : 1;
+                     this.b($$19.b($$21, $$22));
+                  }
+               } else if ($$19.a($$3)) {
+                  if ($$21.e()) {
+                     int $$23 = $$16 == cqc.a ? $$20.I() : ($$20.I() + 1) / 2;
+                     Optional<cup> $$24 = $$19.a($$23, Integer.MAX_VALUE, $$3);
+                     $$24.ifPresent($$2x -> {
+                        this.b($$2x);
+                        $$19.a($$3, $$2x);
+                     });
+                  } else if ($$19.a($$21)) {
+                     if (cup.c($$20, $$21)) {
+                        int $$25 = $$16 == cqc.a ? $$21.I() : 1;
+                        this.b($$19.b($$21, $$25));
+                     } else if ($$21.I() <= $$19.a_($$21)) {
+                        this.b($$20);
+                        $$19.e($$21);
+                     }
+                  } else if (cup.c($$20, $$21)) {
+                     Optional<cup> $$26 = $$19.a($$20.I(), $$21.j() - $$21.I(), $$3);
+                     $$26.ifPresent($$3x -> {
+                        $$21.g($$3x.I());
+                        $$19.a($$3, $$3x);
+                     });
+                  }
+               }
+            }
+
+            $$19.b();
+         }
+      } else if ($$2 == cqd.c && ($$1 >= 0 && $$1 < 9 || $$1 == 40)) {
+         cup $$27 = $$4.a($$1);
+         crp $$28 = this.i.get($$0);
+         cup $$29 = $$28.g();
+         if (!$$27.e() || !$$29.e()) {
+            if ($$27.e()) {
+               if ($$28.a($$3)) {
+                  $$4.a($$1, $$29);
+                  $$28.b($$29.I());
+                  $$28.e(cup.l);
+                  $$28.a($$3, $$29);
+               }
+            } else if ($$29.e()) {
+               if ($$28.a($$27)) {
+                  int $$30 = $$28.a_($$27);
+                  if ($$27.I() > $$30) {
+                     $$28.e($$27.a($$30));
+                  } else {
+                     $$4.a($$1, cup.l);
+                     $$28.e($$27);
+                  }
+               }
+            } else if ($$28.a($$3) && $$28.a($$27)) {
+               int $$31 = $$28.a_($$27);
+               if ($$27.I() > $$31) {
+                  $$28.e($$27.a($$31));
+                  $$28.a($$3, $$29);
+                  if (!$$4.f($$29)) {
+                     $$3.a($$29, true);
+                  }
+               } else {
+                  $$4.a($$1, $$29);
+                  $$28.e($$27);
+                  $$28.a($$3, $$29);
+               }
+            }
+         }
+      } else if ($$2 == cqd.d && $$3.fP() && this.g().e() && $$0 >= 0) {
+         crp $$32 = this.i.get($$0);
+         if ($$32.h()) {
+            cup $$33 = $$32.g();
+            this.b($$33.c($$33.j()));
+         }
+      } else if ($$2 == cqd.e && this.g().e() && $$0 >= 0) {
+         crp $$34 = this.i.get($$0);
+         int $$35 = $$1 == 0 ? 1 : $$34.g().I();
+         cup $$36 = $$34.b($$35, Integer.MAX_VALUE, $$3);
+         $$3.a($$36, true);
+      } else if ($$2 == cqd.g && $$0 >= 0) {
+         crp $$37 = this.i.get($$0);
+         cup $$38 = this.g();
+         if (!$$38.e() && (!$$37.h() || !$$37.a($$3))) {
+            int $$39 = $$1 == 0 ? 0 : this.i.size() - 1;
+            int $$40 = $$1 == 0 ? 1 : -1;
+
+            for (int $$41 = 0; $$41 < 2; $$41++) {
+               for (int $$42 = $$39; $$42 >= 0 && $$42 < this.i.size() && $$38.I() < $$38.j(); $$42 += $$40) {
+                  crp $$43 = this.i.get($$42);
+                  if ($$43.h() && a($$43, $$38, true) && $$43.a($$3) && this.a($$38, $$43)) {
+                     cup $$44 = $$43.g();
+                     if ($$41 != 0 || $$44.I() != $$44.j()) {
+                        cup $$45 = $$43.b($$44.I(), $$38.j() - $$38.I(), $$3);
+                        $$38.g($$45.I());
+                     }
+                  }
+               }
+            }
+         }
+      }
+   }
+
+   private boolean a(cmx $$0, cqc $$1, crp $$2, cup $$3, cup $$4) {
+      cpl $$5 = $$0.dP().J();
+      return $$4.a($$5) && $$4.a($$2, $$1, $$0) ? true : $$3.a($$5) && $$3.a($$4, $$2, $$1, $$0, this.m());
+   }
+
+   private buh m() {
+      return new buh() {
+         @Override
+         public cup a() {
+            return cpu.this.g();
          }
 
-         if ($$4.I() == $$2.I()) {
-            return cuo.l;
+         @Override
+         public boolean a(cup $$0) {
+            cpu.this.b($$0);
+            return true;
          }
+      };
+   }
 
-         $$3.a($$0, $$4);
+   public boolean a(cup $$0, crp $$1) {
+      return true;
+   }
+
+   public void b(cmx $$0) {
+      if ($$0 instanceof arg) {
+         cup $$1 = this.g();
+         if (!$$1.e()) {
+            if ($$0.bD() && !((arg)$$0).v()) {
+               $$0.gc().g($$1);
+            } else {
+               $$0.a($$1, false);
+            }
+
+            this.b(cup.l);
+         }
+      }
+   }
+
+   protected void a(cmx $$0, bqn $$1) {
+      if (!$$0.bD() || $$0 instanceof arg && ((arg)$$0).v()) {
+         for (int $$2 = 0; $$2 < $$1.b(); $$2++) {
+            $$0.a($$1.b($$2), false);
+         }
+      } else {
+         for (int $$3 = 0; $$3 < $$1.b(); $$3++) {
+            cmw $$4 = $$0.gc();
+            if ($$4.l instanceof arg) {
+               $$4.g($$1.b($$3));
+            }
+         }
+      }
+   }
+
+   public void a(bqn $$0) {
+      this.d();
+   }
+
+   public void a(int $$0, int $$1, cup $$2) {
+      this.b($$0).f($$2);
+      this.r = $$1;
+   }
+
+   public void a(int $$0, List<cup> $$1, cup $$2) {
+      for (int $$3 = 0; $$3 < $$1.size(); $$3++) {
+         this.b($$3).f($$1.get($$3));
       }
 
-      return $$2;
+      this.n = $$2;
+      this.r = $$0;
    }
 
-   protected boolean c(cuo $$0) {
-      return this.p.r().a(this.w, new brc($$0), this.p).isPresent();
+   public void a(int $$0, int $$1) {
+      this.m.get($$0).a($$1);
    }
 
-   protected boolean d(cuo $$0) {
-      return dou.c($$0);
+   public abstract boolean a(cmx var1);
+
+   protected boolean a(cup $$0, int $$1, int $$2, boolean $$3) {
+      boolean $$4 = false;
+      int $$5 = $$1;
+      if ($$3) {
+         $$5 = $$2 - 1;
+      }
+
+      if ($$0.k()) {
+         while (!$$0.e() && ($$3 ? $$5 >= $$1 : $$5 < $$2)) {
+            crp $$6 = this.i.get($$5);
+            cup $$7 = $$6.g();
+            if (!$$7.e() && cup.c($$0, $$7)) {
+               int $$8 = $$7.I() + $$0.I();
+               int $$9 = $$6.a_($$7);
+               if ($$8 <= $$9) {
+                  $$0.e(0);
+                  $$7.e($$8);
+                  $$6.b();
+                  $$4 = true;
+               } else if ($$7.I() < $$9) {
+                  $$0.h($$9 - $$7.I());
+                  $$7.e($$9);
+                  $$6.b();
+                  $$4 = true;
+               }
+            }
+
+            if ($$3) {
+               $$5--;
+            } else {
+               $$5++;
+            }
+         }
+      }
+
+      if (!$$0.e()) {
+         if ($$3) {
+            $$5 = $$2 - 1;
+         } else {
+            $$5 = $$1;
+         }
+
+         while ($$3 ? $$5 >= $$1 : $$5 < $$2) {
+            crp $$10 = this.i.get($$5);
+            cup $$11 = $$10.g();
+            if ($$11.e() && $$10.a($$0)) {
+               int $$12 = $$10.a_($$0);
+               $$10.e($$0.a(Math.min($$0.I(), $$12)));
+               $$10.b();
+               $$4 = true;
+               break;
+            }
+
+            if ($$3) {
+               $$5--;
+            } else {
+               $$5++;
+            }
+         }
+      }
+
+      return $$4;
    }
 
-   public float q() {
-      int $$0 = this.v.a(2);
-      int $$1 = this.v.a(3);
-      return $$1 != 0 && $$0 != 0 ? ayy.a((float)$$0 / (float)$$1, 0.0F, 1.0F) : 0.0F;
+   public static int c(int $$0) {
+      return $$0 >> 2 & 3;
    }
 
-   public float r() {
-      int $$0 = this.v.a(1);
+   public static int d(int $$0) {
+      return $$0 & 3;
+   }
+
+   public static int b(int $$0, int $$1) {
+      return $$0 & 3 | ($$1 & 3) << 2;
+   }
+
+   public static boolean a(int $$0, cmx $$1) {
       if ($$0 == 0) {
-         $$0 = 200;
+         return true;
+      } else {
+         return $$0 == 1 ? true : $$0 == 2 && $$1.fP();
+      }
+   }
+
+   protected void f() {
+      this.u = 0;
+      this.v.clear();
+   }
+
+   public static boolean a(@Nullable crp $$0, cup $$1, boolean $$2) {
+      boolean $$3 = $$0 == null || !$$0.h();
+      return !$$3 && cup.c($$1, $$0.g()) ? $$0.g().I() + ($$2 ? 0 : $$1.I()) <= $$1.j() : $$3;
+   }
+
+   public static int a(Set<crp> $$0, int $$1, cup $$2) {
+      return switch ($$1) {
+         case 0 -> ayz.d((float)$$2.I() / (float)$$0.size());
+         case 1 -> 1;
+         case 2 -> $$2.j();
+         default -> $$2.I();
+      };
+   }
+
+   public boolean b(crp $$0) {
+      return true;
+   }
+
+   public static int a(@Nullable dph $$0) {
+      return $$0 instanceof bqn ? b((bqn)$$0) : 0;
+   }
+
+   public static int b(@Nullable bqn $$0) {
+      if ($$0 == null) {
+         return 0;
+      } else {
+         float $$1 = 0.0F;
+
+         for (int $$2 = 0; $$2 < $$0.b(); $$2++) {
+            cup $$3 = $$0.a($$2);
+            if (!$$3.e()) {
+               $$1 += (float)$$3.I() / (float)$$0.e_($$3);
+            }
+         }
+
+         $$1 /= (float)$$0.b();
+         return ayz.b($$1, 0, 15);
+      }
+   }
+
+   public void b(cup $$0) {
+      this.n = $$0;
+   }
+
+   public cup g() {
+      return this.n;
+   }
+
+   public void h() {
+      this.y = true;
+   }
+
+   public void i() {
+      this.y = false;
+   }
+
+   public void a(cpu $$0) {
+      Table<bqn, Integer, Integer> $$1 = HashBasedTable.create();
+
+      for (int $$2 = 0; $$2 < $$0.i.size(); $$2++) {
+         crp $$3 = $$0.i.get($$2);
+         $$1.put($$3.c, $$3.i(), $$2);
       }
 
-      return ayy.a((float)this.v.a(0) / (float)$$0, 0.0F, 1.0F);
+      for (int $$4 = 0; $$4 < this.i.size(); $$4++) {
+         crp $$5 = this.i.get($$4);
+         Integer $$6 = (Integer)$$1.get($$5.c, $$5.i());
+         if ($$6 != null) {
+            this.l.set($$4, $$0.l.get($$6));
+            this.o.set($$4, $$0.o.get($$6));
+         }
+      }
    }
 
-   public boolean s() {
-      return this.v.a(0) > 0;
+   public OptionalInt b(bqn $$0, int $$1) {
+      for (int $$2 = 0; $$2 < this.i.size(); $$2++) {
+         crp $$3 = this.i.get($$2);
+         if ($$3.c == $$0 && $$1 == $$3.i()) {
+            return OptionalInt.of($$2);
+         }
+      }
+
+      return OptionalInt.empty();
    }
 
-   @Override
-   public crh t() {
-      return this.x;
+   public int j() {
+      return this.r;
    }
 
-   @Override
-   public boolean e(int $$0) {
-      return $$0 != 1;
+   public int k() {
+      this.r = this.r + 1 & 32767;
+      return this.r;
    }
 }

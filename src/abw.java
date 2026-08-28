@@ -1,23 +1,17 @@
 public class abw {
-   public static final ww<abx> a = aaa.a(
-      wk.e, $$0 -> $$0.a(aal.j, aan.a).a(acd.b, acf.a).a(aal.k, aao.a).a(abv.f, aby.b).a(aal.l, aap.a).a(aal.m, aaq.a).a(aal.n, aar.a).a(abv.g, abz.a)
-   );
-   public static final ww<abp> b = aaa.b(
-      wk.e,
-      $$0 -> $$0.a(acd.a, acc.a)
-            .a(aal.a, aac.b)
-            .a(aal.b, aad.a)
-            .a(abv.a, abq.b)
-            .a(aal.c, aae.a)
-            .a(aal.d, aaf.a)
-            .a(abv.e, abs.b)
-            .a(abv.b, abr.a)
-            .a(aal.e, aag.a)
-            .a(aal.f, aah.b)
-            .a(aal.g, aai.a)
-            .a(aal.h, aaj.a)
-            .a(abv.c, abu.a)
-            .a(aal.i, aak.a)
-            .a(abv.d, abt.a)
-   );
+   public static final zy<abr> a = a("finish_configuration");
+   public static final zy<abs> b = a("registry_data");
+   public static final zy<abv> c = a("update_enabled_features");
+   public static final zy<abu> d = a("select_known_packs");
+   public static final zy<abt> e = a("reset_chat");
+   public static final zy<abz> f = b("finish_configuration");
+   public static final zy<aca> g = b("select_known_packs");
+
+   private static <T extends zw<abq>> zy<T> a(String $$0) {
+      return new zy<>(zx.b, new alf($$0));
+   }
+
+   private static <T extends zw<aby>> zy<T> b(String $$0) {
+      return new zy<>(zx.a, new alf($$0));
+   }
 }

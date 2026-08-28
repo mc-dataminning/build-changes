@@ -1,15 +1,16 @@
-public class gpx extends gqb {
-   private static final ale a = new ale("back");
-
-   public gpx(goz $$0) {
-      super($$0, new ale("textures/atlas/paintings.png"), new ale("paintings"));
+public class gpx extends gqc {
+   public gpx(gpa $$0) {
+      super($$0, new alf("textures/atlas/mob_effects.png"), new alf("mob_effects"));
    }
 
-   public goy a(cjc $$0) {
-      return this.a(lp.l.b($$0));
-   }
+   public goz a(ji<bsa> $$0) {
+      if ($$0 == bse.E) {
+         fxv $$1 = fff.Q().r;
+         if ($$1 != null && $$1.J().b(cpn.c)) {
+            return this.a(new alf("bad_omen_121"));
+         }
+      }
 
-   public goy a() {
-      return this.a(a);
+      return this.a($$0.e().map(ale::a).orElseGet(gop::b));
    }
 }

@@ -1,22 +1,19 @@
-public class cwe extends cuj {
-   private final cwd a;
+import java.util.List;
 
-   public cwe(cwd $$0, cuj.a $$1) {
-      super($$1.b($$0.a()));
-      this.a = $$0;
-   }
+public interface cwe {
+   int a();
 
-   public cwd h() {
-      return this.a;
-   }
+   float b();
 
-   @Override
-   public int g() {
-      return this.a.e();
-   }
+   float c();
 
-   @Override
-   public boolean a(cuo $$0, cuo $$1) {
-      return this.a.f().a($$1) || super.a($$0, $$1);
+   axf<dez> d();
+
+   int e();
+
+   cys f();
+
+   default cxu a(axf<dez> $$0) {
+      return new cxu(List.of(cxu.a.a(this.d()), cxu.a.a($$0, this.b())), 1.0F, 1);
    }
 }

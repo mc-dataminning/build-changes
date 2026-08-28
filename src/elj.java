@@ -1,65 +1,49 @@
-import com.google.common.collect.Maps;
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
-import java.util.Map;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class elj extends emg {
-   public static final MapCodec<elj> a = MapCodec.unit(() -> elj.b);
-   public static final elj b = new elj();
-   private final Map<dey, dey> c = ac.a(Maps.newHashMap(), $$0 -> {
-      $$0.put(dfa.m, dfa.pr);
-      $$0.put(dfa.cn, dfa.pr);
-      $$0.put(dfa.b, dfa.pv);
-      $$0.put(dfa.eH, dfa.pw);
-      $$0.put(dfa.eI, dfa.pw);
-      $$0.put(dfa.cQ, dfa.ps);
-      $$0.put(dfa.ni, dfa.ps);
-      $$0.put(dfa.nk, dfa.pD);
-      $$0.put(dfa.fj, dfa.pA);
-      $$0.put(dfa.ng, dfa.pA);
-      $$0.put(dfa.jI, dfa.pu);
-      $$0.put(dfa.nw, dfa.pu);
-      $$0.put(dfa.jE, dfa.pE);
-      $$0.put(dfa.jD, dfa.pE);
-      $$0.put(dfa.jK, dfa.pz);
-      $$0.put(dfa.nu, dfa.pz);
-      $$0.put(dfa.nK, dfa.pB);
-      $$0.put(dfa.nI, dfa.pB);
-      $$0.put(dfa.fP, dfa.pt);
-      $$0.put(dfa.fQ, dfa.pt);
-      $$0.put(dfa.eK, dfa.py);
-      $$0.put(dfa.eJ, dfa.px);
-      $$0.put(dfa.eW, dfa.eX);
-   });
+public class elj extends elx {
+   public static final MapCodec<elj> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(
+               Codec.FLOAT.fieldOf("min_chance").orElse(0.0F).forGetter($$0x -> $$0x.b),
+               Codec.FLOAT.fieldOf("max_chance").orElse(0.0F).forGetter($$0x -> $$0x.d),
+               Codec.INT.fieldOf("min_dist").orElse(0).forGetter($$0x -> $$0x.e),
+               Codec.INT.fieldOf("max_dist").orElse(0).forGetter($$0x -> $$0x.f),
+               je.a.e.fieldOf("axis").orElse(je.a.b).forGetter($$0x -> $$0x.g)
+            )
+            .apply($$0, elj::new)
+   );
+   private final float b;
+   private final float d;
+   private final int e;
+   private final int f;
+   private final je.a g;
 
-   private elj() {
-   }
-
-   @Override
-   public emj.c a(dca $$0, iz $$1, iz $$2, emj.c $$3, emj.c $$4, emf $$5) {
-      dey $$6 = this.c.get($$4.b().b());
-      if ($$6 == null) {
-         return $$4;
+   public elj(float $$0, float $$1, int $$2, int $$3, je.a $$4) {
+      if ($$2 >= $$3) {
+         throw new IllegalArgumentException("Invalid range: [" + $$2 + "," + $$3 + "]");
       } else {
-         dsb $$7 = $$4.b();
-         dsb $$8 = $$6.o();
-         if ($$7.b(dms.b)) {
-            $$8 = $$8.a(dms.b, $$7.c(dms.b));
-         }
-
-         if ($$7.b(dms.c)) {
-            $$8 = $$8.a(dms.c, $$7.c(dms.c));
-         }
-
-         if ($$7.b(dmb.b)) {
-            $$8 = $$8.a(dmb.b, $$7.c(dmb.b));
-         }
-
-         return new emj.c($$4.a(), $$8, $$4.c());
+         this.b = $$0;
+         this.d = $$1;
+         this.e = $$2;
+         this.f = $$3;
+         this.g = $$4;
       }
    }
 
    @Override
-   protected emi<?> a() {
-      return emi.l;
+   public boolean a(iz $$0, iz $$1, iz $$2, azh $$3) {
+      je $$4 = je.a(je.b.a, this.g);
+      float $$5 = (float)Math.abs(($$1.u() - $$2.u()) * $$4.j());
+      float $$6 = (float)Math.abs(($$1.v() - $$2.v()) * $$4.k());
+      float $$7 = (float)Math.abs(($$1.w() - $$2.w()) * $$4.l());
+      int $$8 = (int)($$5 + $$6 + $$7);
+      float $$9 = $$3.i();
+      return $$9 <= ayz.b(this.b, this.d, ayz.g((float)$$8, (float)this.e, (float)this.f));
+   }
+
+   @Override
+   protected ely<?> a() {
+      return ely.c;
    }
 }

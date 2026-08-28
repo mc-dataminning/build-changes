@@ -1,46 +1,25 @@
-import com.google.common.annotations.VisibleForTesting;
+import com.google.common.collect.Lists;
+import com.google.gson.JsonArray;
 import com.google.gson.JsonDeserializationContext;
 import com.google.gson.JsonDeserializer;
 import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
 import com.google.gson.JsonParseException;
 import java.lang.reflect.Type;
-import java.util.Objects;
+import java.util.Collection;
+import java.util.List;
+import java.util.function.Function;
+import java.util.stream.Collectors;
+import javax.annotation.Nullable;
 
-public class gey implements grh {
-   private final ale a;
-   private final j b;
-   private final boolean c;
-   private final int d;
+public class gey implements grl {
+   private final List<gez> a;
 
-   public gey(ale $$0, j $$1, boolean $$2, int $$3) {
+   public gey(List<gez> $$0) {
       this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
    }
 
-   public ale a() {
+   public List<gez> a() {
       return this.a;
-   }
-
-   @Override
-   public j b() {
-      return this.b;
-   }
-
-   @Override
-   public boolean c() {
-      return this.c;
-   }
-
-   public int d() {
-      return this.d;
-   }
-
-   @Override
-   public String toString() {
-      return "Variant{modelLocation=" + this.a + ", rotation=" + this.b + ", uvLock=" + this.c + ", weight=" + this.d + "}";
    }
 
    @Override
@@ -48,63 +27,59 @@ public class gey implements grh {
       if (this == $$0) {
          return true;
       } else {
-         return !($$0 instanceof gey $$1) ? false : this.a.equals($$1.a) && Objects.equals(this.b, $$1.b) && this.c == $$1.c && this.d == $$1.d;
+         return $$0 instanceof gey $$1 ? this.a.equals($$1.a) : false;
       }
    }
 
    @Override
    public int hashCode() {
-      int $$0 = this.a.hashCode();
-      $$0 = 31 * $$0 + this.b.hashCode();
-      $$0 = 31 * $$0 + Boolean.valueOf(this.c).hashCode();
-      return 31 * $$0 + this.d;
+      return this.a.hashCode();
+   }
+
+   @Override
+   public Collection<alf> f() {
+      return this.a().stream().map(gez::a).collect(Collectors.toSet());
+   }
+
+   @Override
+   public void a(Function<alf, grl> $$0) {
+      this.a().stream().map(gez::a).distinct().forEach($$1 -> $$0.apply($$1).a($$0));
+   }
+
+   @Nullable
+   @Override
+   public gra a(gre $$0, Function<grd, goz> $$1, gri $$2, alf $$3) {
+      if (this.a().isEmpty()) {
+         return null;
+      } else {
+         grm.a $$4 = new grm.a();
+
+         for (gez $$5 : this.a()) {
+            gra $$6 = $$0.a($$5.a(), $$5);
+            $$4.a($$6, $$5.d());
+         }
+
+         return $$4.a();
+      }
    }
 
    public static class a implements JsonDeserializer<gey> {
-      @VisibleForTesting
-      static final boolean a = false;
-      @VisibleForTesting
-      static final int b = 1;
-      @VisibleForTesting
-      static final int c = 0;
-      @VisibleForTesting
-      static final int d = 0;
-
       public gey a(JsonElement $$0, Type $$1, JsonDeserializationContext $$2) throws JsonParseException {
-         JsonObject $$3 = $$0.getAsJsonObject();
-         ale $$4 = this.b($$3);
-         gra $$5 = this.a($$3);
-         boolean $$6 = this.d($$3);
-         int $$7 = this.c($$3);
-         return new gey($$4, $$5.b(), $$6, $$7);
-      }
+         List<gez> $$3 = Lists.newArrayList();
+         if ($$0.isJsonArray()) {
+            JsonArray $$4 = $$0.getAsJsonArray();
+            if ($$4.size() == 0) {
+               throw new JsonParseException("Empty variant array");
+            }
 
-      private boolean d(JsonObject $$0) {
-         return ayo.a($$0, "uvlock", false);
-      }
-
-      protected gra a(JsonObject $$0) {
-         int $$1 = ayo.a($$0, "x", 0);
-         int $$2 = ayo.a($$0, "y", 0);
-         gra $$3 = gra.a($$1, $$2);
-         if ($$3 == null) {
-            throw new JsonParseException("Invalid BlockModelRotation x: " + $$1 + ", y: " + $$2);
+            for (JsonElement $$5 : $$4) {
+               $$3.add((gez)$$2.deserialize($$5, gez.class));
+            }
          } else {
-            return $$3;
+            $$3.add((gez)$$2.deserialize($$0, gez.class));
          }
-      }
 
-      protected ale b(JsonObject $$0) {
-         return new ale(ayo.i($$0, "model"));
-      }
-
-      protected int c(JsonObject $$0) {
-         int $$1 = ayo.a($$0, "weight", 1);
-         if ($$1 < 1) {
-            throw new JsonParseException("Invalid weight " + $$1 + " found, expected integer >= 1");
-         } else {
-            return $$1;
-         }
+         return new gey($$3);
       }
    }
 }

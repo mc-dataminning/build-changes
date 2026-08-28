@@ -1,8 +1,61 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+import java.util.function.Consumer;
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface fkw {
+public class fkw implements fkt {
+   private int a;
+   private int b;
+   private final int c;
+   private final int d;
+
+   public fkw(int $$0, int $$1) {
+      this(0, 0, $$0, $$1);
+   }
+
+   public fkw(int $$0, int $$1, int $$2, int $$3) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+      this.d = $$3;
+   }
+
+   public static fkw a(int $$0) {
+      return new fkw($$0, 0);
+   }
+
+   public static fkw b(int $$0) {
+      return new fkw(0, $$0);
+   }
+
+   @Override
+   public void m(int $$0) {
+      this.a = $$0;
+   }
+
+   @Override
+   public void n(int $$0) {
+      this.b = $$0;
+   }
+
+   @Override
+   public int C() {
+      return this.a;
+   }
+
+   @Override
+   public int D() {
+      return this.b;
+   }
+
+   @Override
+   public int x() {
+      return this.c;
+   }
+
+   @Override
+   public int v() {
+      return this.d;
+   }
+
+   @Override
+   public void a(Consumer<fhc> $$0) {
+   }
 }

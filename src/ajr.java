@@ -1,5 +1,7 @@
-public record ajr(ale a) implements ajp {
+public record ajr() implements ajp {
+   public static final ajr a = new ajr();
+
    @Override
-   public void a(wl $$0) {
+   public void a(wm $$0) {
    }
 }

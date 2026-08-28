@@ -1,41 +1,64 @@
-import java.util.List;
+import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
+import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
+import it.unimi.dsi.fastutil.objects.Object2ObjectMap;
+import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
+import java.io.IOException;
+import java.util.Optional;
+import java.util.function.UnaryOperator;
 
-public class gnu<T extends cma, M extends fwl<T>> extends gni<T, M> {
-   private final ale a;
-   private final gnu.a<T> b;
-   private final gnu.b<T, M> c;
+public class gnu<T extends btp & cmm, M extends fua<T> & fwk> extends gnj<T, M> {
+   private static final Int2ObjectMap<alf> a = ac.a(new Int2ObjectOpenHashMap(), $$0 -> {
+      $$0.put(1, new alf("stone"));
+      $$0.put(2, new alf("iron"));
+      $$0.put(3, new alf("gold"));
+      $$0.put(4, new alf("emerald"));
+      $$0.put(5, new alf("diamond"));
+   });
+   private final Object2ObjectMap<cmp, gqn.a> b = new Object2ObjectOpenHashMap();
+   private final Object2ObjectMap<cmn, gqn.a> c = new Object2ObjectOpenHashMap();
+   private final aup d;
+   private final String e;
 
-   public gnu(gks<T, M> $$0, ale $$1, gnu.a<T> $$2, gnu.b<T, M> $$3) {
+   public gnu(gkt<T, M> $$0, aup $$1, String $$2) {
       super($$0);
-      this.a = $$1;
-      this.b = $$2;
-      this.c = $$3;
+      this.d = $$1;
+      this.e = $$2;
    }
 
-   public void a(ezx $$0, gdn $$1, int $$2, T $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
+   public void a(ezy $$0, gdo $$1, int $$2, T $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
       if (!$$3.ch()) {
-         this.a();
-         fab $$10 = $$1.getBuffer(gdv.j(this.a));
-         this.c().a($$0, $$10, $$2, gjx.c($$3, 0.0F), 1.0F, 1.0F, 1.0F, this.b.apply($$3, $$6, $$7));
-         this.b();
+         cml $$10 = $$3.gB();
+         cmp $$11 = $$10.a();
+         cmn $$12 = $$10.b();
+         gqn.a $$13 = this.a(this.b, "type", lp.y, $$11);
+         gqn.a $$14 = this.a(this.c, "profession", lp.z, $$12);
+         M $$15 = this.c();
+         $$15.a($$14 == gqn.a.a || $$14 == gqn.a.b && $$13 != gqn.a.c);
+         alf $$16 = this.a("type", lp.y.b($$11));
+         a($$15, $$16, $$0, $$1, $$2, $$3, 1.0F, 1.0F, 1.0F);
+         $$15.a(true);
+         if ($$12 != cmn.b && !$$3.p_()) {
+            alf $$17 = this.a("profession", lp.z.b($$12));
+            a($$15, $$17, $$0, $$1, $$2, $$3, 1.0F, 1.0F, 1.0F);
+            if ($$12 != cmn.m) {
+               alf $$18 = this.a("profession_level", (alf)a.get(ayz.a($$10.c(), 1, a.size())));
+               a($$15, $$18, $$0, $$1, $$2, $$3, 1.0F, 1.0F, 1.0F);
+            }
+         }
       }
    }
 
-   private void a() {
-      List<fwz> $$0 = this.c.getPartsToDraw(this.c());
-      this.c().a().e().forEach($$0x -> $$0x.l = true);
-      $$0.forEach($$0x -> $$0x.l = false);
+   private alf a(String $$0, alf $$1) {
+      return $$1.a((UnaryOperator<String>)($$1x -> "textures/entity/" + this.e + "/" + $$0 + "/" + $$1x + ".png"));
    }
 
-   private void b() {
-      this.c().a().e().forEach($$0 -> $$0.l = false);
-   }
-
-   public interface a<T extends cma> {
-      float apply(T var1, float var2, float var3);
-   }
-
-   public interface b<T extends cma, M extends ftz<T>> {
-      List<fwz> getPartsToDraw(M var1);
+   public <K> gqn.a a(Object2ObjectMap<K, gqn.a> $$0, String $$1, jd<K> $$2, K $$3) {
+      return (gqn.a)$$0.computeIfAbsent($$3, $$3x -> this.d.getResource(this.a($$1, $$2.b($$3))).flatMap($$0xx -> {
+            try {
+               return $$0xx.f().a(gqn.a).map(gqn::a);
+            } catch (IOException var2x) {
+               return Optional.empty();
+            }
+         }).orElse(gqn.a.a));
    }
 }

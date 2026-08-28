@@ -1,31 +1,28 @@
-import com.google.common.collect.Lists;
-import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
 import com.mojang.logging.LogUtils;
-import java.util.Iterator;
-import java.util.List;
+import java.util.Date;
+import java.util.UUID;
 import org.slf4j.Logger;
 
-public class fay extends fbt {
-   private static final Logger b = LogUtils.getLogger();
-   public List<fax> a = Lists.newArrayList();
+public class fay extends fbu {
+   private static final Logger f = LogUtils.getLogger();
+   public String a;
+   public String b;
+   public String c;
+   public UUID d;
+   public Date e;
 
-   public static fay a(String $$0) {
+   public static fay a(JsonObject $$0) {
       fay $$1 = new fay();
 
       try {
-         JsonParser $$2 = new JsonParser();
-         JsonObject $$3 = $$2.parse($$0).getAsJsonObject();
-         if ($$3.get("invites").isJsonArray()) {
-            Iterator<JsonElement> $$4 = $$3.get("invites").getAsJsonArray().iterator();
-
-            while ($$4.hasNext()) {
-               $$1.a.add(fax.a($$4.next().getAsJsonObject()));
-            }
-         }
-      } catch (Exception var5) {
-         b.error("Could not parse PendingInvitesList: {}", var5.getMessage());
+         $$1.a = fdr.b("invitationId", $$0, "");
+         $$1.b = fdr.b("worldName", $$0, "");
+         $$1.c = fdr.b("worldOwnerName", $$0, "");
+         $$1.d = fdr.a("worldOwnerUuid", $$0, ac.e);
+         $$1.e = fdr.b("date", $$0);
+      } catch (Exception var3) {
+         f.error("Could not parse PendingInvite: {}", var3.getMessage());
       }
 
       return $$1;

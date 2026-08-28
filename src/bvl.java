@@ -1,49 +1,34 @@
-import com.google.common.collect.ImmutableMap;
-import it.unimi.dsi.fastutil.ints.IntList;
-import java.util.List;
-import javax.annotation.Nullable;
+public class bvl implements bww {
+   private final iz a;
+   private final evr b;
 
-public class bvl extends bvh<cmj> {
-   @Nullable
-   private coh c;
-
-   public bvl(int $$0, int $$1) {
-      super(ImmutableMap.of(), $$0, $$1);
+   public bvl(iz $$0) {
+      this.a = $$0.i();
+      this.b = evr.b($$0);
    }
 
-   protected boolean a(are $$0, cmj $$1) {
-      iz $$2 = $$1.dp();
-      this.c = $$0.d($$2);
-      return this.c != null && this.c.e() && bwq.a($$0, $$1, $$2);
+   public bvl(evr $$0) {
+      this.a = iz.a($$0);
+      this.b = $$0;
    }
 
-   protected boolean a(are $$0, cmj $$1, long $$2) {
-      return this.c != null && !this.c.d();
+   @Override
+   public evr a() {
+      return this.b;
    }
 
-   protected void b(are $$0, cmj $$1, long $$2) {
-      this.c = null;
-      $$1.dS().a($$0.aa(), $$0.Z());
+   @Override
+   public iz b() {
+      return this.a;
    }
 
-   protected void c(are $$0, cmj $$1, long $$2) {
-      azg $$3 = $$1.el();
-      if ($$3.a(100) == 0) {
-         $$1.gv();
-      }
-
-      if ($$3.a(200) == 0 && bwq.a($$0, $$1, $$1.dp())) {
-         cth $$4 = ac.a(cth.values(), $$3);
-         int $$5 = $$3.a(3);
-         cuo $$6 = this.a($$4, $$5);
-         cnj $$7 = new cnj($$1.dP(), $$1, $$1.du(), $$1.dy(), $$1.dA(), $$6);
-         $$1.dP().b($$7);
-      }
+   @Override
+   public boolean a(btp $$0) {
+      return true;
    }
 
-   private cuo a(cth $$0, int $$1) {
-      cuo $$2 = new cuo(cur.uu);
-      $$2.b(km.U, new cxi((byte)$$1, List.of(new cxh(cxh.a.e, IntList.of($$0.f()), IntList.of(), false, false))));
-      return $$2;
+   @Override
+   public String toString() {
+      return "BlockPosTracker{blockPos=" + this.a + ", centerPosition=" + this.b + "}";
    }
 }

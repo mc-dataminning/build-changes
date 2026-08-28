@@ -8,8 +8,8 @@ public class ec extends dr<ec.a> {
       return ec.a.a;
    }
 
-   public void a(arf $$0, cme $$1, cuo $$2) {
-      eqh $$3 = bu.b($$0, $$1);
+   public void a(arg $$0, cmf $$1, cup $$2) {
+      eqi $$3 = bu.b($$0, $$1);
       this.a($$0, $$2x -> $$2x.a($$3, $$2));
    }
 
@@ -31,7 +31,7 @@ public class ec extends dr<ec.a> {
          return am.t.a(new ec.a(Optional.of(bu.a($$0)), Optional.empty(), Optional.empty()));
       }
 
-      public boolean a(eqh $$0, cuo $$1) {
+      public boolean a(eqi $$0, cup $$1) {
          return this.c.isPresent() && !this.c.get().a($$0) ? false : !this.d.isPresent() || this.d.get().a($$1);
       }
 

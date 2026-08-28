@@ -1,11 +1,7 @@
-import javax.annotation.Nullable;
+import java.util.function.BiConsumer;
 
-public interface duk {
-   @Nullable
-   duj c(int var1, int var2);
+public interface duk extends dbe {
+   void a(BiConsumer<iz, dsc> var1);
 
-   default void a(dcg $$0, kb $$1) {
-   }
-
-   dbd q();
+   enf B();
 }

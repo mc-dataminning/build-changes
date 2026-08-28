@@ -1,131 +1,87 @@
-import java.util.List;
+public class gfj implements gfo<dow> {
+   private static final int b = 20;
+   private static final int c = 40;
+   private static final int d = 16;
+   public static final String a = "flag";
+   private static final String e = "pole";
+   private static final String f = "bar";
+   private final fxa g;
+   private final fxa h;
+   private final fxa i;
 
-public class gfj implements gfn<dpb> {
-   public static final ale a = new ale("textures/entity/beacon_beam.png");
-   public static final int b = 1024;
-
-   public gfj(gfo.a $$0) {
+   public gfj(gfp.a $$0) {
+      fxa $$1 = $$0.a(fwz.g);
+      this.g = $$1.b("flag");
+      this.h = $$1.b("pole");
+      this.i = $$1.b("bar");
    }
 
-   public void a(dpb $$0, float $$1, ezx $$2, gdn $$3, int $$4, int $$5) {
-      long $$6 = $$0.i().Z();
-      List<dpb.a> $$7 = $$0.b();
-      int $$8 = 0;
+   public static fxg a() {
+      fxi $$0 = new fxi();
+      fxj $$1 = $$0.a();
+      $$1.a("flag", fxf.c().a(0, 0).a(-10.0F, 0.0F, -2.0F, 20.0F, 40.0F, 1.0F), fxc.a);
+      $$1.a("pole", fxf.c().a(44, 0).a(-1.0F, -30.0F, -1.0F, 2.0F, 42.0F, 2.0F), fxc.a);
+      $$1.a("bar", fxf.c().a(0, 42).a(-10.0F, -32.0F, -1.0F, 20.0F, 2.0F, 2.0F), fxc.a);
+      return fxg.a($$0, 64, 64);
+   }
 
-      for (int $$9 = 0; $$9 < $$7.size(); $$9++) {
-         dpb.a $$10 = $$7.get($$9);
-         a($$2, $$3, $$1, $$6, $$8, $$9 == $$7.size() - 1 ? 1024 : $$10.c(), $$10.b());
-         $$8 += $$10.c();
+   public void a(dow $$0, float $$1, ezy $$2, gdo $$3, int $$4, int $$5) {
+      float $$6 = 0.6666667F;
+      boolean $$7 = $$0.i() == null;
+      $$2.a();
+      long $$8;
+      if ($$7) {
+         $$8 = 0L;
+         $$2.a(0.5F, 0.5F, 0.5F);
+         this.h.k = true;
+      } else {
+         $$8 = $$0.i().Z();
+         dsc $$10 = $$0.n();
+         if ($$10.b() instanceof dee) {
+            $$2.a(0.5F, 0.5F, 0.5F);
+            float $$11 = -dti.b($$10.c(dee.b));
+            $$2.a(a.d.rotationDegrees($$11));
+            this.h.k = true;
+         } else {
+            $$2.a(0.5F, -0.16666667F, 0.5F);
+            float $$12 = -$$10.c(dnw.b).p();
+            $$2.a(a.d.rotationDegrees($$12));
+            $$2.a(0.0F, -0.3125F, -0.4375F);
+            this.h.k = false;
+         }
+      }
+
+      $$2.a();
+      $$2.b(0.6666667F, -0.6666667F, -0.6666667F);
+      fac $$13 = grf.f.a($$3, gdw::c);
+      this.h.a($$2, $$13, $$4, $$5);
+      this.i.a($$2, $$13, $$4, $$5);
+      iz $$14 = $$0.ay_();
+      float $$15 = ((float)Math.floorMod((long)($$14.u() * 7 + $$14.v() * 9 + $$14.w() * 13) + $$8, 100L) + $$1) / 100.0F;
+      this.g.e = (-0.0125F + 0.01F * ayz.b((float) (Math.PI * 2) * $$15)) * (float) Math.PI;
+      this.g.c = -32.0F;
+      a($$2, $$3, $$4, $$5, this.g, grf.f, true, $$0.f(), $$0.b());
+      $$2.b();
+      $$2.b();
+   }
+
+   public static void a(ezy $$0, gdo $$1, int $$2, int $$3, fxa $$4, grd $$5, boolean $$6, cti $$7, doy $$8) {
+      a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8, false);
+   }
+
+   public static void a(ezy $$0, gdo $$1, int $$2, int $$3, fxa $$4, grd $$5, boolean $$6, cti $$7, doy $$8, boolean $$9) {
+      $$4.a($$0, $$5.a($$1, gdw::c, $$9), $$2, $$3);
+      a($$0, $$1, $$2, $$3, $$4, $$6 ? ged.m : ged.n, $$7);
+
+      for (int $$10 = 0; $$10 < 16 && $$10 < $$8.b().size(); $$10++) {
+         doy.b $$11 = $$8.b().get($$10);
+         grd $$12 = $$6 ? ged.a($$11.b()) : ged.b($$11.b());
+         a($$0, $$1, $$2, $$3, $$4, $$12, $$11.c());
       }
    }
 
-   private static void a(ezx $$0, gdn $$1, float $$2, long $$3, int $$4, int $$5, float[] $$6) {
-      a($$0, $$1, a, $$2, 1.0F, $$3, $$4, $$5, $$6, 0.2F, 0.25F);
-   }
-
-   public static void a(ezx $$0, gdn $$1, ale $$2, float $$3, float $$4, long $$5, int $$6, int $$7, float[] $$8, float $$9, float $$10) {
-      int $$11 = $$6 + $$7;
-      $$0.a();
-      $$0.a(0.5, 0.0, 0.5);
-      float $$12 = (float)Math.floorMod($$5, 40) + $$3;
-      float $$13 = $$7 < 0 ? $$12 : -$$12;
-      float $$14 = ayy.h($$13 * 0.2F - (float)ayy.d($$13 * 0.1F));
-      float $$15 = $$8[0];
-      float $$16 = $$8[1];
-      float $$17 = $$8[2];
-      $$0.a();
-      $$0.a(a.d.rotationDegrees($$12 * 2.25F - 45.0F));
-      float $$18 = 0.0F;
-      float $$21 = 0.0F;
-      float $$22 = -$$9;
-      float $$23 = 0.0F;
-      float $$24 = 0.0F;
-      float $$25 = -$$9;
-      float $$26 = 0.0F;
-      float $$27 = 1.0F;
-      float $$28 = -1.0F + $$14;
-      float $$29 = (float)$$7 * $$4 * (0.5F / $$9) + $$28;
-      a($$0, $$1.getBuffer(gdv.e($$2, false)), $$15, $$16, $$17, 1.0F, $$6, $$11, 0.0F, $$9, $$9, 0.0F, $$22, 0.0F, 0.0F, $$25, 0.0F, 1.0F, $$29, $$28);
-      $$0.b();
-      $$18 = -$$10;
-      float $$31 = -$$10;
-      $$21 = -$$10;
-      $$22 = -$$10;
-      $$26 = 0.0F;
-      $$27 = 1.0F;
-      $$28 = -1.0F + $$14;
-      $$29 = (float)$$7 * $$4 + $$28;
-      a($$0, $$1.getBuffer(gdv.e($$2, true)), $$15, $$16, $$17, 0.125F, $$6, $$11, $$18, $$31, $$10, $$21, $$22, $$10, $$10, $$10, 0.0F, 1.0F, $$29, $$28);
-      $$0.b();
-   }
-
-   private static void a(
-      ezx $$0,
-      fab $$1,
-      float $$2,
-      float $$3,
-      float $$4,
-      float $$5,
-      int $$6,
-      int $$7,
-      float $$8,
-      float $$9,
-      float $$10,
-      float $$11,
-      float $$12,
-      float $$13,
-      float $$14,
-      float $$15,
-      float $$16,
-      float $$17,
-      float $$18,
-      float $$19
-   ) {
-      ezx.a $$20 = $$0.c();
-      a($$20, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8, $$9, $$10, $$11, $$16, $$17, $$18, $$19);
-      a($$20, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$14, $$15, $$12, $$13, $$16, $$17, $$18, $$19);
-      a($$20, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$10, $$11, $$14, $$15, $$16, $$17, $$18, $$19);
-      a($$20, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$12, $$13, $$8, $$9, $$16, $$17, $$18, $$19);
-   }
-
-   private static void a(
-      ezx.a $$0,
-      fab $$1,
-      float $$2,
-      float $$3,
-      float $$4,
-      float $$5,
-      int $$6,
-      int $$7,
-      float $$8,
-      float $$9,
-      float $$10,
-      float $$11,
-      float $$12,
-      float $$13,
-      float $$14,
-      float $$15
-   ) {
-      a($$0, $$1, $$2, $$3, $$4, $$5, $$7, $$8, $$9, $$13, $$14);
-      a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$8, $$9, $$13, $$15);
-      a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$10, $$11, $$12, $$15);
-      a($$0, $$1, $$2, $$3, $$4, $$5, $$7, $$10, $$11, $$12, $$14);
-   }
-
-   private static void a(ezx.a $$0, fab $$1, float $$2, float $$3, float $$4, float $$5, int $$6, float $$7, float $$8, float $$9, float $$10) {
-      $$1.a($$0, $$7, (float)$$6, $$8).a($$2, $$3, $$4, $$5).a($$9, $$10).c(gop.d).b(15728880).b($$0, 0.0F, 1.0F, 0.0F).e();
-   }
-
-   public boolean a(dpb $$0) {
-      return true;
-   }
-
-   @Override
-   public int aP_() {
-      return 256;
-   }
-
-   public boolean a(dpb $$0, evq $$1) {
-      return evq.b($$0.ay_()).d(1.0, 0.0, 1.0).a((js)$$1.d(1.0, 0.0, 1.0), (double)this.aP_());
+   private static void a(ezy $$0, gdo $$1, int $$2, int $$3, fxa $$4, grd $$5, cti $$6) {
+      float[] $$7 = $$6.d();
+      $$4.a($$0, $$5.a($$1, gdw::m), $$2, $$3, $$7[0], $$7[1], $$7[2], 1.0F);
    }
 }

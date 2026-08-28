@@ -1,28 +1,34 @@
+import com.mojang.datafixers.util.Either;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.io.IOException;
 
-public enum fkg implements azt {
-   a("bitmap", fkd.a.a),
-   b("ttf", fki.a),
-   c("space", eyc.a.a),
-   d("unihex", fkj.b.a),
-   e("reference", fkh.a);
+public interface fkg {
+   MapCodec<fkg> b = fkh.f.dispatchMap(fkg::a, fkh::a);
 
-   public static final Codec<fkg> f = azt.a(fkg::values);
-   private final String g;
-   private final MapCodec<? extends fkf> h;
+   fkh a();
 
-   private fkg(final String $$0, final MapCodec<? extends fkf> $$1) {
-      this.g = $$0;
-      this.h = $$1;
+   Either<fkg.b, fkg.c> b();
+
+   public static record a(fkg b, fju.a c) {
+      public static final Codec<fkg.a> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(fkg.b.forGetter(fkg.a::a), fju.a.a.optionalFieldOf("filter", fju.a.b).forGetter(fkg.a::b)).apply($$0, fkg.a::new)
+      );
+
+      public fkg a() {
+         return this.b;
+      }
+
+      public fju.a b() {
+         return this.c;
+      }
    }
 
-   @Override
-   public String c() {
-      return this.g;
+   public interface b {
+      eyb load(aup var1) throws IOException;
    }
 
-   public MapCodec<? extends fkf> a() {
-      return this.h;
+   public static record c(alf a) {
    }
 }

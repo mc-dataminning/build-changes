@@ -1,33 +1,32 @@
-public class agi implements zv<ach> {
-   public static final zm<wl, agi> a = zv.a(agi::a, agi::new);
-   private final int b;
-   private final int c;
-   private final int d;
+import javax.annotation.Nullable;
 
-   public agi(int $$0, int $$1, int $$2) {
+public class agi implements zw<aci> {
+   public static final zn<wm, agi> a = zw.a(agi::a, agi::new);
+   private final int b;
+   @Nullable
+   private final us c;
+
+   public agi(int $$0, @Nullable us $$1) {
       this.b = $$0;
       this.c = $$1;
-      this.d = $$2;
    }
 
-   private agi(wl $$0) {
+   private agi(wm $$0) {
       this.b = $$0.l();
-      this.c = $$0.l();
-      this.d = $$0.l();
+      this.c = $$0.o();
    }
 
-   private void a(wl $$0) {
+   private void a(wm $$0) {
       $$0.c(this.b);
-      $$0.c(this.c);
-      $$0.c(this.d);
+      $$0.a((vp)this.c);
    }
 
    @Override
-   public zx<agi> a() {
-      return agt.aY;
+   public zy<agi> a() {
+      return agu.aX;
    }
 
-   public void a(ach $$0) {
+   public void a(aci $$0) {
       $$0.a(this);
    }
 
@@ -35,11 +34,13 @@ public class agi implements zv<ach> {
       return this.b;
    }
 
-   public int e() {
+   @Nullable
+   public us e() {
       return this.c;
    }
 
-   public int f() {
-      return this.d;
+   @Override
+   public boolean c() {
+      return true;
    }
 }

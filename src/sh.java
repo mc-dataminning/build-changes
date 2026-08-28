@@ -1,54 +1,17 @@
-import java.util.List;
+import com.google.common.collect.ImmutableList;
 
 public class sh {
-   public static void a(rc<eak<?, ?>> $$0) {
-      se.a($$0);
-      sf.a($$0);
-      sg.a($$0);
-      si.a($$0);
-      sj.a($$0);
-      sk.a($$0);
-      sl.a($$0);
-      sm.a($$0);
-      sn.a($$0);
-   }
+   public static final ale<eal<?, ?>> a = si.a("end_spike");
+   public static final ale<eal<?, ?>> b = si.a("end_gateway_return");
+   public static final ale<eal<?, ?>> c = si.a("end_gateway_delayed");
+   public static final ale<eal<?, ?>> d = si.a("chorus_plant");
+   public static final ale<eal<?, ?>> e = si.a("end_island");
 
-   private static dza a(List<dey> $$0) {
-      dza $$1;
-      if (!$$0.isEmpty()) {
-         $$1 = dza.a(dza.c, dza.a(je.a.q(), $$0));
-      } else {
-         $$1 = dza.c;
-      }
-
-      return $$1;
-   }
-
-   public static edo a(int $$0, ji<ehn> $$1) {
-      return new edo($$0, 7, 3, $$1);
-   }
-
-   public static <FC extends edb, F extends eax<FC>> edo a(F $$0, FC $$1, List<dey> $$2, int $$3) {
-      return a($$3, sw.a($$0, $$1, a($$2)));
-   }
-
-   public static <FC extends edb, F extends eax<FC>> edo a(F $$0, FC $$1, List<dey> $$2) {
-      return a($$0, $$1, $$2, 96);
-   }
-
-   public static <FC extends edb, F extends eax<FC>> edo a(F $$0, FC $$1) {
-      return a($$0, $$1, List.of(), 96);
-   }
-
-   public static ald<eak<?, ?>> a(String $$0) {
-      return ald.a(lq.aC, new ale($$0));
-   }
-
-   public static void a(rc<eak<?, ?>> $$0, ald<eak<?, ?>> $$1, eax<edi> $$2) {
-      a($$0, $$1, $$2, edb.m);
-   }
-
-   public static <FC extends edb, F extends eax<FC>> void a(rc<eak<?, ?>> $$0, ald<eak<?, ?>> $$1, F $$2, FC $$3) {
-      $$0.a($$1, new eak($$2, $$3));
+   public static void a(rc<eal<?, ?>> $$0) {
+      si.a($$0, a, eay.J, new edw(false, ImmutableList.of(), null));
+      si.a($$0, b, eay.L, edb.a(arf.a, true));
+      si.a($$0, c, eay.L, edb.a());
+      si.a($$0, d, eay.l);
+      si.a($$0, e, eay.K);
    }
 }

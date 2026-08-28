@@ -1,75 +1,44 @@
-import com.mojang.brigadier.ParseResults;
-import com.mojang.brigadier.context.CommandContextBuilder;
-import com.mojang.brigadier.context.ParsedArgument;
-import com.mojang.brigadier.context.ParsedCommandNode;
-import com.mojang.brigadier.tree.ArgumentCommandNode;
-import com.mojang.brigadier.tree.CommandNode;
-import java.util.ArrayList;
-import java.util.List;
-import javax.annotation.Nullable;
+import com.mojang.authlib.GameProfile;
+import java.time.Duration;
+import java.util.UUID;
 
-public record yg<S>(List<yg.a<S>> a) {
-   public static <S> boolean a(ParseResults<S> $$0) {
-      return !b($$0).a().isEmpty();
+public record yg(UUID a, cna b) {
+   public yl a(Duration $$0) {
+      return new yl.a(this.b.a(), () -> this.b.b().a($$0));
    }
 
-   public static <S> yg<S> b(ParseResults<S> $$0) {
-      String $$1 = $$0.getReader().getString();
-      CommandContextBuilder<S> $$2 = $$0.getContext();
-      CommandContextBuilder<S> $$3 = $$2;
-      List<yg.a<S>> $$4 = a($$1, $$2);
-
-      CommandContextBuilder<S> $$5;
-      while (($$5 = $$3.getChild()) != null && $$5.getRootNode() != $$2.getRootNode()) {
-         $$4.addAll(a($$1, $$5));
-         $$3 = $$5;
-      }
-
-      return new yg<>($$4);
+   public yj.b a(UUID $$0) {
+      return new yj($$0, this.a).a(this.b);
    }
 
-   private static <S> List<yg.a<S>> a(String $$0, CommandContextBuilder<S> $$1) {
-      List<yg.a<S>> $$2 = new ArrayList<>();
-
-      for (ParsedCommandNode<S> $$3 : $$1.getNodes()) {
-         CommandNode $$5 = $$3.getNode();
-         if ($$5 instanceof ArgumentCommandNode) {
-            ArgumentCommandNode<S, ?> $$4 = (ArgumentCommandNode<S, ?>)$$5;
-            if ($$4.getType() instanceof fw) {
-               ParsedArgument<S, ?> $$5x = (ParsedArgument<S, ?>)$$1.getArguments().get($$4.getName());
-               if ($$5x != null) {
-                  String $$6 = $$5x.getRange().get($$0);
-                  $$2.add(new yg.a<>($$4, $$6));
-               }
-            }
-         }
-      }
-
-      return $$2;
+   public yg.a a() {
+      return new yg.a(this.a, this.b.b());
    }
 
-   @Nullable
-   public yg.a<S> a(String $$0) {
-      for (yg.a<S> $$1 : this.a) {
-         if ($$0.equals($$1.a())) {
-            return $$1;
-         }
-      }
-
-      return null;
+   public boolean b() {
+      return this.b.b().a();
    }
 
-   public static record a<S>(ArgumentCommandNode<S, ?> a, String b) {
-      public String a() {
-         return this.a.getName();
+   public UUID c() {
+      return this.a;
+   }
+
+   public cna d() {
+      return this.b;
+   }
+
+   public static record a(UUID a, cna.a b) {
+      public static yg.a a(wm $$0) {
+         return new yg.a($$0.n(), new cna.a($$0));
       }
 
-      public ArgumentCommandNode<S, ?> b() {
-         return this.a;
+      public static void a(wm $$0, yg.a $$1) {
+         $$0.a($$1.a);
+         $$1.b.a($$0);
       }
 
-      public String c() {
-         return this.b;
+      public yg a(GameProfile $$0, azm $$1) throws cna.b {
+         return new yg(this.a, cna.a($$1, $$0.getId(), this.b));
       }
    }
 }

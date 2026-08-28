@@ -1,26 +1,23 @@
-public record aay(ald<dwu> c, evq d) implements aaw {
-   public static final zm<wl, aay> a = aaw.a(aay::a, aay::new);
-   public static final aaw.b<aay> b = aaw.a("debug/game_event");
-
-   private aay(wl $$0) {
-      this($$0.a(lq.C), $$0.k());
-   }
-
-   private void a(wl $$0) {
-      $$0.b(this.c);
-      $$0.a(this.d);
+public record aay(alf a) implements aax {
+   public static <T extends wm> zn<T, aay> a(alf $$0, int $$1) {
+      return aax.a(($$0x, $$1x) -> {
+      }, $$2 -> {
+         int $$3 = $$2.readableBytes();
+         if ($$3 >= 0 && $$3 <= $$1) {
+            $$2.j($$3);
+            return new aay($$0);
+         } else {
+            throw new IllegalArgumentException("Payload may not be larger than " + $$1 + " bytes");
+         }
+      });
    }
 
    @Override
-   public aaw.b<aay> a() {
-      return b;
+   public aax.b<aay> a() {
+      return new aax.b<>(this.a);
    }
 
-   public ald<dwu> b() {
-      return this.c;
-   }
-
-   public evq c() {
-      return this.d;
+   public alf b() {
+      return this.a;
    }
 }

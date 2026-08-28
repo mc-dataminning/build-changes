@@ -1,42 +1,85 @@
-import java.util.Collection;
-import java.util.List;
-import java.util.Optional;
-import javax.annotation.Nullable;
+import com.google.common.collect.Sets;
+import java.util.Set;
 
-public record adz(eph b, byte c, boolean d, Optional<List<epd>> e, Optional<epj.b> f) implements zv<ach> {
-   public static final zm<wz, adz> a = zm.a(eph.b, adz::b, zk.c, adz::e, zk.b, adz::f, epd.a.a(zk.a()).a(zk::a), adz::g, epj.b.a, adz::h, adz::new);
+public record adz(int b, boolean c, Set<ale<dby>> d, int e, int f, int g, boolean h, boolean i, boolean j, agr k, boolean l) implements zw<aci> {
+   public static final zn<xa, adz> a = zw.a(adz::a, adz::new);
 
-   public adz(eph $$0, byte $$1, boolean $$2, @Nullable Collection<epd> $$3, @Nullable epj.b $$4) {
-      this($$0, $$1, $$2, $$3 != null ? Optional.of(List.copyOf($$3)) : Optional.empty(), Optional.ofNullable($$4));
+   private adz(xa $$0) {
+      this(
+         $$0.readInt(),
+         $$0.readBoolean(),
+         $$0.a(Sets::newHashSetWithExpectedSize, $$0x -> $$0x.a(lq.aS)),
+         $$0.l(),
+         $$0.l(),
+         $$0.l(),
+         $$0.readBoolean(),
+         $$0.readBoolean(),
+         $$0.readBoolean(),
+         new agr($$0),
+         $$0.readBoolean()
+      );
+   }
+
+   private void a(xa $$0) {
+      $$0.p(this.b);
+      $$0.a(this.c);
+      $$0.a(this.d, wm::b);
+      $$0.c(this.e);
+      $$0.c(this.f);
+      $$0.c(this.g);
+      $$0.a(this.h);
+      $$0.a(this.i);
+      $$0.a(this.j);
+      this.k.a($$0);
+      $$0.a(this.l);
    }
 
    @Override
-   public zx<adz> a() {
-      return agt.P;
+   public zy<adz> a() {
+      return agu.O;
    }
 
-   public void a(ach $$0) {
+   public void a(aci $$0) {
       $$0.a(this);
    }
 
-   public void a(epj $$0) {
-      this.e.ifPresent($$0::a);
-      this.f.ifPresent($$1 -> $$1.a($$0));
-   }
-
-   public byte e() {
+   public boolean e() {
       return this.c;
    }
 
-   public boolean f() {
+   public Set<ale<dby>> f() {
       return this.d;
    }
 
-   public Optional<List<epd>> g() {
+   public int g() {
       return this.e;
    }
 
-   public Optional<epj.b> h() {
+   public int h() {
       return this.f;
+   }
+
+   public int i() {
+      return this.g;
+   }
+
+   public boolean j() {
+      return this.h;
+   }
+
+   public boolean k() {
+      return this.i;
+   }
+
+   public boolean l() {
+      return this.j;
+   }
+
+   public agr m() {
+      return this.k;
+   }
+
+   public boolean n() {
+      return this.l;
    }
 }

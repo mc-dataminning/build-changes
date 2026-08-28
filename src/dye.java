@@ -1,95 +1,68 @@
-public class dye implements dbk {
-   private int a;
+public final class dye {
+   private static final float a = 0.4F;
+   private static final int b = 20;
+   private static final double c = 0.2;
+   private static final float d = 0.7F;
+   private static final float e = 0.1F;
+   private static final float f = 0.3F;
+   private static final float g = 0.6F;
+   private static final float h = 0.02F;
+   private static final float i = -0.3F;
 
-   @Override
-   public int a(are $$0, boolean $$1, boolean $$2) {
-      if (!$$1) {
-         return 0;
-      } else if (!$$0.ab().b(dbt.K)) {
-         return 0;
-      } else {
-         azg $$3 = $$0.z;
-         this.a--;
-         if (this.a > 0) {
-            return 0;
-         } else {
-            this.a = this.a + 12000 + $$3.a(1200);
-            long $$4 = $$0.aa() / 24000L;
-            if ($$4 < 5L || !$$0.R()) {
-               return 0;
-            } else if ($$3.a(5) != 0) {
-               return 0;
+   private dye() {
+   }
+
+   protected static dxy.c a(dxn $$0, dxn $$1, dxn $$2, dyh $$3) {
+      dsc $$4 = null;
+      return $$5 -> {
+         double $$6 = $$0.a($$5);
+         int $$7 = $$5.b();
+         dye.a $$8 = $$6 > 0.0 ? dye.a.a : dye.a.b;
+         double $$9 = Math.abs($$6);
+         int $$10 = $$8.d - $$7;
+         int $$11 = $$7 - $$8.c;
+         if ($$11 >= 0 && $$10 >= 0) {
+            int $$12 = Math.min($$10, $$11);
+            double $$13 = ayz.a((double)$$12, 0.0, 20.0, -0.2, 0.0);
+            if ($$9 + $$13 < 0.4F) {
+               return $$4;
             } else {
-               int $$5 = $$0.x().size();
-               if ($$5 < 1) {
-                  return 0;
+               azh $$14 = $$3.a($$5.a(), $$7, $$5.c());
+               if ($$14.i() > 0.7F) {
+                  return $$4;
+               } else if ($$1.a($$5) >= 0.0) {
+                  return $$4;
                } else {
-                  cmw $$6 = $$0.x().get($$3.a($$5));
-                  if ($$6.N_()) {
-                     return 0;
-                  } else if ($$0.a($$6.dp(), 2)) {
-                     return 0;
+                  double $$15 = ayz.a($$9, 0.4F, 0.6F, 0.1F, 0.3F);
+                  if ((double)$$14.i() < $$15 && $$2.a($$5) > -0.3F) {
+                     return $$14.i() < 0.02F ? $$8.f : $$8.e;
                   } else {
-                     int $$7 = (24 + $$3.a(24)) * ($$3.h() ? -1 : 1);
-                     int $$8 = (24 + $$3.a(24)) * ($$3.h() ? -1 : 1);
-                     iz.a $$9 = $$6.dp().j().e($$7, 0, $$8);
-                     int $$10 = 10;
-                     if (!$$0.b($$9.u() - 10, $$9.w() - 10, $$9.u() + 10, $$9.w() + 10)) {
-                        return 0;
-                     } else {
-                        ji<dcw> $$11 = $$0.t($$9);
-                        if ($$11.a(awn.ag)) {
-                           return 0;
-                        } else {
-                           int $$12 = 0;
-                           int $$13 = (int)Math.ceil((double)$$0.d_($$9).b()) + 1;
-
-                           for (int $$14 = 0; $$14 < $$13; $$14++) {
-                              $$12++;
-                              $$9.q($$0.a(dxt.a.f, $$9).v());
-                              if ($$14 == 0) {
-                                 if (!this.a($$0, $$9, $$3, true)) {
-                                    break;
-                                 }
-                              } else {
-                                 this.a($$0, $$9, $$3, false);
-                              }
-
-                              $$9.p($$9.u() + $$3.a(5) - $$3.a(5));
-                              $$9.r($$9.w() + $$3.a(5) - $$3.a(5));
-                           }
-
-                           return $$12;
-                        }
-                     }
+                     return $$8.g;
                   }
                }
             }
+         } else {
+            return $$4;
          }
-      }
+      };
    }
 
-   private boolean a(are $$0, iz $$1, azg $$2, boolean $$3) {
-      dsb $$4 = $$0.a_($$1);
-      if (!dci.a($$0, $$1, $$4, $$4.u(), bsz.aC)) {
-         return false;
-      } else if (!ckd.b(bsz.aC, $$0, bts.p, $$1, $$2)) {
-         return false;
-      } else {
-         ckd $$5 = bsz.aC.a((dbx)$$0);
-         if ($$5 != null) {
-            if ($$3) {
-               $$5.w(true);
-               $$5.gy();
-            }
+   protected static enum a {
+      a(dfb.ra.o(), dfb.tg.o(), dfb.c.o(), 0, 50),
+      b(dfb.Q.o(), dfb.tf.o(), dfb.qz.o(), -60, -8);
 
-            $$5.a_((double)$$1.u(), (double)$$1.v(), (double)$$1.w());
-            $$5.a($$0, $$0.d_($$1), bts.p, null);
-            $$0.a_($$5);
-            return true;
-         } else {
-            return false;
-         }
+      final dsc e;
+      final dsc f;
+      final dsc g;
+      protected final int c;
+      protected final int d;
+
+      private a(final dsc $$0, final dsc $$1, final dsc $$2, final int $$3, final int $$4) {
+         this.e = $$0;
+         this.f = $$1;
+         this.g = $$2;
+         this.c = $$3;
+         this.d = $$4;
       }
    }
 }

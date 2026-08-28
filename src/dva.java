@@ -1,2 +1,6 @@
-public record dva(are a, dty b, emk c, arh d) {
+import java.util.concurrent.CompletableFuture;
+
+@FunctionalInterface
+public interface dva {
+   CompletableFuture<dty> apply(dty var1);
 }

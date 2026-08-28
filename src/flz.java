@@ -1,31 +1,42 @@
-public class flz extends fnc {
-   private fhw a;
-   private final Runnable b;
-   private final Runnable c;
+public class flz extends fnd {
+   private static final int a = 8;
+   private static final int b = 210;
+   private static final xp c = xp.c("credits_and_attribution.screen.title");
+   private static final xp d = xp.c("credits_and_attribution.button.credits");
+   private static final xp r = xp.c("credits_and_attribution.button.attribution");
+   private static final xp s = xp.c("credits_and_attribution.button.licenses");
+   private final fnd u;
+   private final fkr v = new fkr(this);
 
-   public flz(Runnable $$0, Runnable $$1) {
-      super(xo.c("datapackFailure.title"));
-      this.a = fhw.a;
-      this.b = $$0;
-      this.c = $$1;
+   public flz(fnd $$0) {
+      super(c);
+      this.u = $$0;
    }
 
    @Override
    protected void aM_() {
-      super.aM_();
-      this.a = fhw.a(this.p, this.n(), this.n - 50);
-      this.c(fhd.a(xo.c("datapackFailure.safeMode"), $$0 -> this.c.run()).a(this.n / 2 - 155, this.o / 6 + 96, 150, 20).a());
-      this.c(fhd.a(xn.k, $$0 -> this.b.run()).a(this.n / 2 - 155 + 160, this.o / 6 + 96, 150, 20).a());
+      this.v.a(c, this.p);
+      fkv $$0 = this.v.c(fkv.d()).a(8);
+      $$0.c().b();
+      $$0.a(fhe.a(d, $$0x -> this.m()).a(210).a());
+      $$0.a(fhe.a(r, flu.b(this, "https://aka.ms/MinecraftJavaAttribution")).a(210).a());
+      $$0.a(fhe.a(s, flu.b(this, "https://aka.ms/MinecraftJavaLicenses")).a(210).a());
+      this.v.b(fhe.a(xo.d, $$0x -> this.d()).a(200).a());
+      this.v.a();
+      this.v.a(this::c);
    }
 
    @Override
-   public void a(fgq $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      this.a.a($$0, this.n / 2, 70);
+   protected void c() {
+      this.v.a();
+   }
+
+   private void m() {
+      this.m.a(new fnl(false, () -> this.m.a(this)));
    }
 
    @Override
-   public boolean aC_() {
-      return false;
+   public void d() {
+      this.m.a(this.u);
    }
 }

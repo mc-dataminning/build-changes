@@ -1,61 +1,195 @@
-public class btk {
-   private static final int a = 140;
-   private static final int b = 700;
-   private final akn c;
-   private final akj<Integer> d;
-   private final akj<Boolean> e;
-   private boolean f;
-   private int g;
+import com.mojang.logging.LogUtils;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.UUID;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-   public btk(akn $$0, akj<Integer> $$1, akj<Boolean> $$2) {
-      this.c = $$0;
-      this.d = $$1;
-      this.e = $$2;
+public class btk extends bsu implements bsr, bun {
+   private static final Logger b = LogUtils.getLogger();
+   private static final akk<Float> c = ako.a(btk.class, akm.d);
+   private static final akk<Float> d = ako.a(btk.class, akm.d);
+   private static final akk<Boolean> e = ako.a(btk.class, akm.k);
+   private static final String f = "width";
+   private static final String g = "height";
+   private static final String h = "attack";
+   private static final String i = "interaction";
+   private static final String j = "response";
+   @Nullable
+   private btk.a k;
+   @Nullable
+   private btk.a l;
+
+   public btk(bta<?> $$0, dby $$1) {
+      super($$0, $$1);
+      this.ag = true;
    }
 
-   public void a() {
-      this.f = true;
-      this.g = 0;
+   @Override
+   protected void a(ako.a $$0) {
+      $$0.a(c, 1.0F);
+      $$0.a(d, 1.0F);
+      $$0.a(e, false);
    }
 
-   public boolean a(azg $$0) {
-      if (this.f) {
-         return false;
+   @Override
+   protected void a(us $$0) {
+      if ($$0.b("width", 99)) {
+         this.a($$0.j("width"));
+      }
+
+      if ($$0.b("height", 99)) {
+         this.b($$0.j("height"));
+      }
+
+      if ($$0.e("attack")) {
+         btk.a.a.decode(vg.a, $$0.c("attack")).resultOrPartial(ac.a("Interaction entity", b::error)).ifPresent($$0x -> this.k = (btk.a)$$0x.getFirst());
       } else {
-         this.f = true;
-         this.g = 0;
-         this.c.a(this.d, $$0.a(841) + 140);
-         return true;
+         this.k = null;
+      }
+
+      if ($$0.e("interaction")) {
+         btk.a.a.decode(vg.a, $$0.c("interaction")).resultOrPartial(ac.a("Interaction entity", b::error)).ifPresent($$0x -> this.l = (btk.a)$$0x.getFirst());
+      } else {
+         this.l = null;
+      }
+
+      this.a($$0.q("response"));
+      this.a(this.as());
+   }
+
+   @Override
+   protected void b(us $$0) {
+      $$0.a("width", this.s());
+      $$0.a("height", this.u());
+      if (this.k != null) {
+         btk.a.a.encodeStart(vg.a, this.k).ifSuccess($$1 -> $$0.a("attack", $$1));
+      }
+
+      if (this.l != null) {
+         btk.a.a.encodeStart(vg.a, this.l).ifSuccess($$1 -> $$0.a("interaction", $$1));
+      }
+
+      $$0.a("response", this.v());
+   }
+
+   @Override
+   public void a(akk<?> $$0) {
+      super.a($$0);
+      if (d.equals($$0) || c.equals($$0)) {
+         this.a(this.as());
       }
    }
 
-   public void b() {
-      if (this.f && this.g++ > this.e()) {
-         this.f = false;
+   @Override
+   public boolean by() {
+      return false;
+   }
+
+   @Override
+   public boolean bz() {
+      return true;
+   }
+
+   @Override
+   public eoa k_() {
+      return eoa.d;
+   }
+
+   @Override
+   public boolean r_() {
+      return true;
+   }
+
+   @Override
+   public boolean u(bsu $$0) {
+      if ($$0 instanceof cmx $$1) {
+         this.k = new btk.a($$1.cz(), this.dP().Z());
+         if ($$1 instanceof arg $$2) {
+            am.h.a($$2, this, $$1.dQ().n(), 1.0F, 1.0F, false);
+         }
+
+         return !this.v();
+      } else {
+         return false;
       }
    }
 
-   public float c() {
-      return this.f ? 1.0F + 1.15F * ayy.a((float)this.g / (float)this.e() * (float) Math.PI) : 1.0F;
+   @Override
+   public bqu a(cmx $$0, bqt $$1) {
+      if (this.dP().B) {
+         return this.v() ? bqu.a : bqu.c;
+      } else {
+         this.l = new btk.a($$0.cz(), this.dP().Z());
+         return bqu.c;
+      }
    }
 
-   private int e() {
-      return this.c.a(this.d);
+   @Override
+   public void l() {
    }
 
-   public void a(ur $$0) {
-      $$0.a("Saddle", this.d());
+   @Nullable
+   @Override
+   public btp T_() {
+      return this.k != null ? this.dP().b(this.k.a()) : null;
    }
 
-   public void b(ur $$0) {
-      this.a($$0.q("Saddle"));
+   @Nullable
+   @Override
+   public btp p() {
+      return this.l != null ? this.dP().b(this.l.a()) : null;
    }
 
-   public void a(boolean $$0) {
-      this.c.a(this.e, $$0);
+   private void a(float $$0) {
+      this.ao.a(c, $$0);
    }
 
-   public boolean d() {
-      return this.c.a(this.e);
+   private float s() {
+      return this.ao.a(c);
+   }
+
+   private void b(float $$0) {
+      this.ao.a(d, $$0);
+   }
+
+   private float u() {
+      return this.ao.a(d);
+   }
+
+   private void a(boolean $$0) {
+      this.ao.a(e, $$0);
+   }
+
+   private boolean v() {
+      return this.ao.a(e);
+   }
+
+   private bsx w() {
+      return bsx.b(this.s(), this.u());
+   }
+
+   @Override
+   public bsx a(bub $$0) {
+      return this.w();
+   }
+
+   @Override
+   protected evm as() {
+      return this.w().a(this.dn());
+   }
+
+   static record a(UUID b, long c) {
+      public static final Codec<btk.a> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(kc.a.fieldOf("player").forGetter(btk.a::a), Codec.LONG.fieldOf("timestamp").forGetter(btk.a::b)).apply($$0, btk.a::new)
+      );
+
+      public UUID a() {
+         return this.b;
+      }
+
+      public long b() {
+         return this.c;
+      }
    }
 }

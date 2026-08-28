@@ -1,25 +1,38 @@
-public class fwe extends fuv {
-   public static final ale a = new ale("textures/entity/trident.png");
-   private final fwz b;
+import com.google.common.collect.ImmutableList;
 
-   public fwe(fwz $$0) {
-      super(gdv::c);
-      this.b = $$0;
+public class fwe<T extends chc> extends fsv<T> {
+   private final fxa a;
+   private final fxa b;
+
+   public fwe(fxa $$0) {
+      super(true, 8.0F, 3.35F);
+      this.a = $$0;
+      this.b = $$0.b("tail");
    }
 
-   public static fxf a() {
-      fxh $$0 = new fxh();
-      fxi $$1 = $$0.a();
-      fxi $$2 = $$1.a("pole", fxe.c().a(0, 6).a(-0.5F, 2.0F, -0.5F, 1.0F, 25.0F, 1.0F), fxb.a);
-      $$2.a("base", fxe.c().a(4, 0).a(-1.5F, 0.0F, -0.5F, 3.0F, 2.0F, 1.0F), fxb.a);
-      $$2.a("left_spike", fxe.c().a(4, 3).a(-2.5F, -3.0F, -0.5F, 1.0F, 4.0F, 1.0F), fxb.a);
-      $$2.a("middle_spike", fxe.c().a(0, 0).a(-0.5F, -4.0F, -0.5F, 1.0F, 4.0F, 1.0F), fxb.a);
-      $$2.a("right_spike", fxe.c().a(4, 3).a().a(1.5F, -3.0F, -0.5F, 1.0F, 4.0F, 1.0F), fxb.a);
-      return fxf.a($$0, 32, 32);
+   public static fxg c() {
+      fxi $$0 = new fxi();
+      fxj $$1 = $$0.a();
+      float $$2 = 0.0F;
+      float $$3 = 22.0F;
+      float $$4 = -3.0F;
+      $$1.a("body", fxf.c().a(0, 0).a(-1.5F, -1.0F, 0.0F, 3.0F, 2.0F, 3.0F), fxc.a(0.0F, 22.0F, -3.0F));
+      $$1.a("tail", fxf.c().a(0, 0).a(0.0F, -1.0F, 0.0F, 0.0F, 2.0F, 7.0F), fxc.a(0.0F, 22.0F, 0.0F));
+      return fxg.a($$0, 16, 16);
    }
 
    @Override
-   public void a(ezx $$0, fab $$1, int $$2, int $$3, float $$4, float $$5, float $$6, float $$7) {
-      this.b.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
+   protected Iterable<fxa> a() {
+      return ImmutableList.of(this.a);
+   }
+
+   @Override
+   protected Iterable<fxa> b() {
+      return ImmutableList.of(this.b);
+   }
+
+   public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
+      float $$6 = $$0.be() ? 1.0F : 1.5F;
+      this.b.f = -$$6 * 0.25F * ayz.a(0.3F * $$3);
    }
 }

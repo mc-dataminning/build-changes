@@ -1,34 +1,57 @@
-import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.Codec;
 
-public class djw extends dey implements dfb {
-   public static final MapCodec<djw> a = b(djw::new);
+public enum djw implements azu {
+   a("none", h.a),
+   b("left_right", h.B),
+   c("front_back", h.z);
 
-   @Override
-   public MapCodec<djw> a() {
-      return a;
+   public static final Codec<djw> d = azu.a(djw::values);
+   private final String e;
+   private final xp f;
+   private final h g;
+
+   private djw(final String $$0, final h $$1) {
+      this.e = $$0;
+      this.f = xp.c("mirror." + $$0);
+      this.g = $$1;
    }
 
-   public djw(dsa.d $$0) {
-      super($$0);
+   public int a(int $$0, int $$1) {
+      int $$2 = $$1 / 2;
+      int $$3 = $$0 > $$2 ? $$0 - $$1 : $$0;
+      switch (this) {
+         case b:
+            return ($$2 - $$3 + $$1) % $$1;
+         case c:
+            return ($$1 - $$3) % $$1;
+         default:
+            return $$0;
+      }
+   }
+
+   public dlm a(je $$0) {
+      je.a $$1 = $$0.o();
+      return (this != b || $$1 != je.a.c) && (this != c || $$1 != je.a.a) ? dlm.a : dlm.c;
+   }
+
+   public je b(je $$0) {
+      if (this == c && $$0.o() == je.a.a) {
+         return $$0.g();
+      } else {
+         return this == b && $$0.o() == je.a.c ? $$0.g() : $$0;
+      }
+   }
+
+   public h a() {
+      return this.g;
+   }
+
+   public xp b() {
+      return this.f;
    }
 
    @Override
-   public boolean b(dca $$0, iz $$1, dsb $$2) {
-      return $$0.a_($$1.c()).i();
-   }
-
-   @Override
-   public boolean a(dbx $$0, azg $$1, iz $$2, dsb $$3) {
-      return true;
-   }
-
-   @Override
-   public void a(are $$0, azg $$1, iz $$2, dsb $$3) {
-      $$0.H_().c(lq.aC).flatMap($$0x -> $$0x.b(sf.n)).ifPresent($$3x -> ((eak)$$3x.a()).a($$0, $$0.l().g(), $$1, $$2.c()));
-   }
-
-   @Override
-   public dfb.a ap_() {
-      return dfb.a.a;
+   public String c() {
+      return this.e;
    }
 }

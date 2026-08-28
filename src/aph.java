@@ -1,219 +1,48 @@
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import com.mojang.brigadier.builder.RequiredArgumentBuilder;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
 import com.mojang.brigadier.tree.LiteralCommandNode;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.EnumSet;
-import java.util.Locale;
-import java.util.Set;
-import javax.annotation.Nullable;
+import java.util.List;
 
 public class aph {
-   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(xo.c("commands.teleport.invalidPosition"));
+   private static final ym a = ym.a.a(new xv(xv.a.a, xp.c("chat.type.team.hover"))).a(new xn(xn.a.d, "/teammsg "));
+   private static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(xp.c("commands.teammsg.failed.noteam"));
 
    public static void a(CommandDispatcher<ep> $$0) {
-      LiteralCommandNode<ep> $$1 = $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)eq.a("teleport").requires($$0x -> $$0x.c(2)))
-                  .then(
-                     eq.a("location", gs.a())
-                        .executes(
-                           $$0x -> a(
-                                 (ep)$$0x.getSource(),
-                                 Collections.singleton(((ep)$$0x.getSource()).g()),
-                                 ((ep)$$0x.getSource()).e(),
-                                 gs.b($$0x, "location"),
-                                 gu.d(),
-                                 null
-                              )
-                        )
-                  ))
-               .then(
-                  eq.a("destination", fc.a())
-                     .executes($$0x -> a((ep)$$0x.getSource(), Collections.singleton(((ep)$$0x.getSource()).g()), fc.a($$0x, "destination")))
-               ))
-            .then(
-               ((RequiredArgumentBuilder)eq.a("targets", fc.b())
-                     .then(
-                        ((RequiredArgumentBuilder)((RequiredArgumentBuilder)eq.a("location", gs.a())
-                                 .executes(
-                                    $$0x -> a((ep)$$0x.getSource(), fc.b($$0x, "targets"), ((ep)$$0x.getSource()).e(), gs.b($$0x, "location"), null, null)
-                                 ))
-                              .then(
-                                 eq.a("rotation", gp.a())
-                                    .executes(
-                                       $$0x -> a(
-                                             (ep)$$0x.getSource(),
-                                             fc.b($$0x, "targets"),
-                                             ((ep)$$0x.getSource()).e(),
-                                             gs.b($$0x, "location"),
-                                             gp.a($$0x, "rotation"),
-                                             null
-                                          )
-                                    )
-                              ))
-                           .then(
-                              ((LiteralArgumentBuilder)eq.a("facing")
-                                    .then(
-                                       eq.a("entity")
-                                          .then(
-                                             ((RequiredArgumentBuilder)eq.a("facingEntity", fc.a())
-                                                   .executes(
-                                                      $$0x -> a(
-                                                            (ep)$$0x.getSource(),
-                                                            fc.b($$0x, "targets"),
-                                                            ((ep)$$0x.getSource()).e(),
-                                                            gs.b($$0x, "location"),
-                                                            null,
-                                                            new aph.b(fc.a($$0x, "facingEntity"), fb.a.a)
-                                                         )
-                                                   ))
-                                                .then(
-                                                   eq.a("facingAnchor", fb.a())
-                                                      .executes(
-                                                         $$0x -> a(
-                                                               (ep)$$0x.getSource(),
-                                                               fc.b($$0x, "targets"),
-                                                               ((ep)$$0x.getSource()).e(),
-                                                               gs.b($$0x, "location"),
-                                                               null,
-                                                               new aph.b(fc.a($$0x, "facingEntity"), fb.a($$0x, "facingAnchor"))
-                                                            )
-                                                      )
-                                                )
-                                          )
-                                    ))
-                                 .then(
-                                    eq.a("facingLocation", gs.a())
-                                       .executes(
-                                          $$0x -> a(
-                                                (ep)$$0x.getSource(),
-                                                fc.b($$0x, "targets"),
-                                                ((ep)$$0x.getSource()).e(),
-                                                gs.b($$0x, "location"),
-                                                null,
-                                                new aph.c(gs.a($$0x, "facingLocation"))
-                                             )
-                                       )
-                                 )
-                           )
-                     ))
-                  .then(eq.a("destination", fc.a()).executes($$0x -> a((ep)$$0x.getSource(), fc.b($$0x, "targets"), fc.a($$0x, "destination"))))
-            )
-      );
-      $$0.register((LiteralArgumentBuilder)((LiteralArgumentBuilder)eq.a("tp").requires($$0x -> $$0x.c(2))).redirect($$1));
-   }
-
-   private static int a(ep $$0, Collection<? extends bst> $$1, bst $$2) throws CommandSyntaxException {
-      for (bst $$3 : $$1) {
-         a($$0, $$3, (are)$$2.dP(), $$2.du(), $$2.dw(), $$2.dA(), EnumSet.noneOf(buc.class), $$2.dF(), $$2.dH(), null);
-      }
-
-      if ($$1.size() == 1) {
-         $$0.a(() -> xo.a("commands.teleport.success.entity.single", $$1.iterator().next().O_(), $$2.O_()), true);
-      } else {
-         $$0.a(() -> xo.a("commands.teleport.success.entity.multiple", $$1.size(), $$2.O_()), true);
-      }
-
-      return $$1.size();
-   }
-
-   private static int a(ep $$0, Collection<? extends bst> $$1, are $$2, gn $$3, @Nullable gn $$4, @Nullable aph.a $$5) throws CommandSyntaxException {
-      evq $$6 = $$3.a($$0);
-      evp $$7 = $$4 == null ? null : $$4.b($$0);
-      Set<buc> $$8 = EnumSet.noneOf(buc.class);
-      if ($$3.a()) {
-         $$8.add(buc.a);
-      }
-
-      if ($$3.b()) {
-         $$8.add(buc.b);
-      }
-
-      if ($$3.c()) {
-         $$8.add(buc.c);
-      }
-
-      if ($$4 == null) {
-         $$8.add(buc.e);
-         $$8.add(buc.d);
-      } else {
-         if ($$4.a()) {
-            $$8.add(buc.e);
-         }
-
-         if ($$4.b()) {
-            $$8.add(buc.d);
-         }
-      }
-
-      for (bst $$9 : $$1) {
-         if ($$4 == null) {
-            a($$0, $$9, $$2, $$6.c, $$6.d, $$6.e, $$8, $$9.dF(), $$9.dH(), $$5);
+      LiteralCommandNode<ep> $$1 = $$0.register((LiteralArgumentBuilder)eq.a("teammsg").then(eq.a("message", fg.a()).executes($$0x -> {
+         ep $$1x = (ep)$$0x.getSource();
+         bsu $$2 = $$1x.g();
+         ewq $$3 = $$2.cj();
+         if ($$3 == null) {
+            throw b.create();
          } else {
-            a($$0, $$9, $$2, $$6.c, $$6.d, $$6.e, $$8, $$7.j, $$7.i, $$5);
-         }
-      }
-
-      if ($$1.size() == 1) {
-         $$0.a(() -> xo.a("commands.teleport.success.location.single", $$1.iterator().next().O_(), a($$6.c), a($$6.d), a($$6.e)), true);
-      } else {
-         $$0.a(() -> xo.a("commands.teleport.success.location.multiple", $$1.size(), a($$6.c), a($$6.d), a($$6.e)), true);
-      }
-
-      return $$1.size();
-   }
-
-   private static String a(double $$0) {
-      return String.format(Locale.ROOT, "%f", $$0);
-   }
-
-   private static void a(ep $$0, bst $$1, are $$2, double $$3, double $$4, double $$5, Set<buc> $$6, float $$7, float $$8, @Nullable aph.a $$9) throws CommandSyntaxException {
-      iz $$10 = iz.a($$3, $$4, $$5);
-      if (!dbx.l($$10)) {
-         throw a.create();
-      } else {
-         float $$11 = ayy.g($$7);
-         float $$12 = ayy.g($$8);
-         if ($$1.a($$2, $$3, $$4, $$5, $$6, $$11, $$12)) {
-            if ($$9 != null) {
-               $$9.perform($$0, $$1);
+            List<arg> $$4 = $$1x.l().ah().t().stream().filter($$2x -> $$2x == $$2 || $$2x.cj() == $$3).toList();
+            if (!$$4.isEmpty()) {
+               fg.a($$0x, "message", $$4x -> a($$1x, $$2, $$3, $$4, $$4x));
             }
 
-            if (!($$1 instanceof bto $$13) || !$$13.fE()) {
-               $$1.h($$1.ds().d(1.0, 0.0, 1.0));
-               $$1.d(true);
-            }
-
-            if ($$1 instanceof btx $$14) {
-               $$14.K().n();
-            }
+            return $$4.size();
          }
+      })));
+      $$0.register((LiteralArgumentBuilder)eq.a("tm").redirect($$1));
+   }
+
+   private static void a(ep $$0, bsu $$1, ewq $$2, List<arg> $$3, yf $$4) {
+      xp $$5 = $$2.d().c(a);
+      xl.a $$6 = xl.a(xl.g, $$0).c($$5);
+      xl.a $$7 = xl.a(xl.h, $$0).c($$5);
+      ye $$8 = ye.a($$4);
+      boolean $$9 = false;
+
+      for (arg $$10 : $$3) {
+         xl.a $$11 = $$10 == $$1 ? $$7 : $$6;
+         boolean $$12 = $$0.a($$10);
+         $$10.a($$8, $$12, $$11);
+         $$9 |= $$12 && $$4.j();
       }
-   }
 
-   @FunctionalInterface
-   interface a {
-      void perform(ep var1, bst var2);
-   }
-
-   static record b(bst a, fb.a b) implements aph.a {
-      @Override
-      public void perform(ep $$0, bst $$1) {
-         if ($$1 instanceof arf $$2) {
-            $$2.a($$0.m(), this.a, this.b);
-         } else {
-            $$1.a($$0.m(), this.b.a(this.a));
-         }
-      }
-   }
-
-   static record c(evq a) implements aph.a {
-      @Override
-      public void perform(ep $$0, bst $$1) {
-         $$1.a($$0.m(), this.a);
+      if ($$9) {
+         $$0.a(avd.e);
       }
    }
 }

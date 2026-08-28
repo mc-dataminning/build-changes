@@ -1,30 +1,58 @@
-public class gfs implements gfn<dpm> {
-   private static final float a = 0.375F;
-   private final gju b;
+public class gfs implements gfo<dpl> {
+   private final gjv a;
 
-   public gfs(gfo.a $$0) {
-      this.b = $$0.d();
+   public gfs(gfp.a $$0) {
+      this.a = $$0.d();
    }
 
-   public void a(dpm $$0, float $$1, ezx $$2, gdn $$3, int $$4, int $$5) {
-      je $$6 = $$0.n().c(dfm.f);
-      jr<cuo> $$7 = $$0.b();
-      int $$8 = (int)$$0.ay_().a();
-
-      for (int $$9 = 0; $$9 < $$7.size(); $$9++) {
-         cuo $$10 = $$7.get($$9);
-         if ($$10 != cuo.l) {
-            $$2.a();
-            $$2.a(0.5F, 0.44921875F, 0.5F);
-            je $$11 = je.b(($$9 + $$6.e()) % 4);
-            float $$12 = -$$11.p();
-            $$2.a(a.d.rotationDegrees($$12));
-            $$2.a(a.b.rotationDegrees(90.0F));
-            $$2.a(-0.3125F, -0.3125F, 0.0F);
-            $$2.b(0.375F, 0.375F, 0.375F);
-            this.b.a($$10, cul.i, $$4, $$5, $$2, $$3, $$0.i(), $$8 + $$9);
-            $$2.b();
+   public void a(dpl $$0, float $$1, ezy $$2, gdo $$3, int $$4, int $$5) {
+      if ($$0.i() != null) {
+         int $$6 = $$0.n().c(dss.bv);
+         if ($$6 > 0) {
+            je $$7 = $$0.d();
+            if ($$7 != null) {
+               cup $$8 = $$0.f();
+               if (!$$8.e()) {
+                  $$2.a();
+                  $$2.a(0.0F, 0.5F, 0.0F);
+                  float[] $$9 = this.a($$7, $$6);
+                  $$2.a($$9[0], $$9[1], $$9[2]);
+                  $$2.a(a.d.rotationDegrees(75.0F));
+                  boolean $$10 = $$7 == je.f || $$7 == je.e;
+                  $$2.a(a.d.rotationDegrees((float)(($$10 ? 90 : 0) + 11)));
+                  $$2.b(0.5F, 0.5F, 0.5F);
+                  int $$11 = gdm.a($$0.i(), $$0.n(), $$0.ay_().a($$7));
+                  this.a.a($$8, cum.i, $$11, goq.d, $$2, $$3, $$0.i(), 0);
+                  $$2.b();
+               }
+            }
          }
       }
+   }
+
+   private float[] a(je $$0, int $$1) {
+      float[] $$2 = new float[]{0.5F, 0.0F, 0.5F};
+      float $$3 = (float)$$1 / 10.0F * 0.75F;
+      switch ($$0) {
+         case f:
+            $$2[0] = 0.73F + $$3;
+            break;
+         case e:
+            $$2[0] = 0.25F - $$3;
+            break;
+         case b:
+            $$2[1] = 0.25F + $$3;
+            break;
+         case a:
+            $$2[1] = -0.23F - $$3;
+            break;
+         case c:
+            $$2[2] = 0.25F - $$3;
+            break;
+         case d:
+            $$2[2] = 0.73F + $$3;
+      }
+
+      return $$2;
    }
 }

@@ -1,59 +1,173 @@
-import java.util.function.BiFunction;
-import java.util.function.UnaryOperator;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
+import java.util.function.BooleanSupplier;
+import java.util.function.Consumer;
+import javax.annotation.Nullable;
 
-public record frz(dyr a, jv<dvu> b, dyo c, jp<aln> d, alp e, dcr f) {
-   public frz(dyp $$0, jp<aln> $$1, alp $$2, dcr $$3) {
-      this($$0.a(), $$0.b(), $$1, $$2, $$3);
+class frz {
+   private static final int a = 44;
+   private final List<frz.c> b;
+
+   frz(List<frz.c> $$0) {
+      this.b = $$0;
    }
 
-   public frz(dyr $$0, dyo $$1, jp<aln> $$2, alp $$3, dcr $$4) {
-      this($$0, $$2.a(aln.c).d(lq.aT), $$1, $$2.a(aln.c), $$3, $$4);
+   public void a() {
+      this.b.forEach(frz.c::a);
    }
 
-   public frz a(dyr $$0, dyo $$1) {
-      return new frz($$0, this.b, $$1, this.d, this.e, this.f);
+   public static frz.a a(int $$0) {
+      return new frz.a($$0);
    }
 
-   public frz a(frz.b $$0) {
-      return new frz($$0.apply(this.a), this.b, this.c, this.d, this.e, this.f);
+   public static class a {
+      final int a;
+      private final List<frz.d> b = new ArrayList<>();
+      int c;
+      int d = 4;
+      int e;
+      Optional<frz.b> f = Optional.empty();
+
+      public a(int $$0) {
+         this.a = $$0;
+      }
+
+      void a() {
+         this.e++;
+      }
+
+      public frz.d a(xp $$0, BooleanSupplier $$1, Consumer<Boolean> $$2) {
+         frz.d $$3 = new frz.d($$0, $$1, $$2, 44);
+         this.b.add($$3);
+         return $$3;
+      }
+
+      public frz.a a(int $$0) {
+         this.c = $$0;
+         return this;
+      }
+
+      public frz.a b(int $$0) {
+         this.d = $$0;
+         return this;
+      }
+
+      public frz a(Consumer<fkt> $$0) {
+         fkq $$1 = new fkq().b(this.d);
+         $$1.a(fkw.a(this.a - 44), 0, 0);
+         $$1.a(fkw.a(44), 0, 1);
+         List<frz.c> $$2 = new ArrayList<>();
+         this.e = 0;
+
+         for (frz.d $$3 : this.b) {
+            $$2.add($$3.a(this, $$1, 0));
+         }
+
+         $$1.a();
+         $$0.accept($$1);
+         frz $$4 = new frz($$2);
+         $$4.a();
+         return $$4;
+      }
+
+      public frz.a a(int $$0, boolean $$1) {
+         this.f = Optional.of(new frz.b($$0, $$1));
+         return this;
+      }
    }
 
-   public frz a(frz.a $$0) {
-      return new frz(this.a, this.b, $$0.apply(this.a(), this.c), this.d, this.e, this.f);
+   static record b(int a, boolean b) {
    }
 
-   public jw.b a() {
-      return this.d.a();
+   static record c(fhl<Boolean> a, BooleanSupplier b, @Nullable BooleanSupplier c) {
+      public void a() {
+         this.a.a(this.b.getAsBoolean());
+         if (this.c != null) {
+            this.a.j = this.c.getAsBoolean();
+         }
+      }
+
+      public fhl<Boolean> b() {
+         return this.a;
+      }
+
+      public BooleanSupplier c() {
+         return this.b;
+      }
+
+      @Nullable
+      public BooleanSupplier d() {
+         return this.c;
+      }
    }
 
-   public dyr b() {
-      return this.a;
-   }
+   public static class d {
+      private final xp a;
+      private final BooleanSupplier b;
+      private final Consumer<Boolean> c;
+      @Nullable
+      private xp d;
+      @Nullable
+      private BooleanSupplier e;
+      private final int f;
 
-   public jv<dvu> c() {
-      return this.b;
-   }
+      d(xp $$0, BooleanSupplier $$1, Consumer<Boolean> $$2, int $$3) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
+         this.f = $$3;
+      }
 
-   public dyo d() {
-      return this.c;
-   }
+      public frz.d a(BooleanSupplier $$0) {
+         this.e = $$0;
+         return this;
+      }
 
-   public jp<aln> e() {
-      return this.d;
-   }
+      public frz.d a(xp $$0) {
+         this.d = $$0;
+         return this;
+      }
 
-   public alp f() {
-      return this.e;
-   }
+      frz.c a(frz.a $$0, fkq $$1, int $$2) {
+         $$0.a();
+         fil $$3 = new fil(this.a, fff.Q().h).c();
+         $$1.a($$3, $$0.e, $$2, $$1.b().a(0.0F, 0.5F).b($$0.c));
+         Optional<frz.b> $$4 = $$0.f;
+         fhl.a<Boolean> $$5 = fhl.b(this.b.getAsBoolean());
+         $$5.a();
+         boolean $$6 = this.d != null && $$4.isEmpty();
+         if ($$6) {
+            fip $$7 = fip.a(this.d);
+            $$5.a($$1x -> $$7);
+         }
 
-   public dcr g() {
-      return this.f;
-   }
+         if (this.d != null && !$$6) {
+            $$5.a($$0x -> xo.a(this.a, $$0x.c(), this.d));
+         } else {
+            $$5.a($$0x -> xo.a(this.a, $$0x.c()));
+         }
 
-   @FunctionalInterface
-   public interface a extends BiFunction<jw.b, dyo, dyo> {
-   }
+         fhl<Boolean> $$8 = $$5.a(0, 0, this.f, 20, xp.i(), ($$0x, $$1x) -> this.c.accept($$1x));
+         if (this.e != null) {
+            $$8.j = this.e.getAsBoolean();
+         }
 
-   public interface b extends UnaryOperator<dyr> {
+         $$1.a($$8, $$0.e, $$2 + 1, $$1.b().c());
+         if (this.d != null) {
+            $$4.ifPresent($$3x -> {
+               xp $$4x = this.d.f().a(n.h);
+               fgp $$5x = fff.Q().h;
+               fhy $$6x = new fhy($$4x, $$5x);
+               $$6x.d($$0.a - $$0.c - this.f);
+               $$6x.e($$3x.a());
+               $$0.a();
+               int $$7 = $$3x.b ? 9 * $$3x.a - $$6x.v() : 0;
+               $$1.a($$6x, $$0.e, $$2, $$1.b().c(-$$0.d).e($$7));
+            });
+         }
+
+         return new frz.c($$8, this.b, this.e);
+      }
    }
 }

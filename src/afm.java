@@ -1,52 +1,45 @@
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Objects;
+import javax.annotation.Nullable;
 
-public record afm(int c, List<akn.c<?>> d) implements zv<ach> {
-   public static final zm<wz, afm> a = zv.a(afm::b, afm::new);
-   public static final int b = 255;
+public class afm implements zw<aci> {
+   public static final zn<wm, afm> a = zw.a(afm::a, afm::new);
+   private final ewm b;
+   private final String c;
 
-   private afm(wz $$0) {
-      this($$0.l(), a($$0));
-   }
-
-   private static void a(List<akn.c<?>> $$0, wz $$1) {
-      for (akn.c<?> $$2 : $$0) {
-         $$2.a($$1);
+   public afm(ewm $$0, @Nullable ewn $$1) {
+      this.b = $$0;
+      if ($$1 == null) {
+         this.c = "";
+      } else {
+         this.c = $$1.b();
       }
-
-      $$1.k(255);
    }
 
-   private static List<akn.c<?>> a(wz $$0) {
-      List<akn.c<?>> $$1 = new ArrayList<>();
-
-      int $$2;
-      while (($$2 = $$0.readUnsignedByte()) != 255) {
-         $$1.add(akn.c.a($$0, $$2));
-      }
-
-      return $$1;
+   private afm(wm $$0) {
+      this.b = $$0.a(ewm.u);
+      this.c = $$0.p();
    }
 
-   private void b(wz $$0) {
-      $$0.c(this.c);
-      a(this.d, $$0);
+   private void a(wm $$0) {
+      $$0.a(ewm::a, this.b);
+      $$0.a(this.c);
    }
 
    @Override
-   public zx<afm> a() {
-      return agt.aC;
+   public zy<afm> a() {
+      return agu.aB;
    }
 
-   public void a(ach $$0) {
+   public void a(aci $$0) {
       $$0.a(this);
    }
 
-   public int b() {
-      return this.c;
+   public ewm b() {
+      return this.b;
    }
 
-   public List<akn.c<?>> e() {
-      return this.d;
+   @Nullable
+   public String e() {
+      return Objects.equals(this.c, "") ? null : this.c;
    }
 }

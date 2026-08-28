@@ -1,94 +1,62 @@
+import com.mojang.logging.LogUtils;
 import com.mojang.serialization.MapCodec;
-import java.util.List;
-import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class dhk extends dek {
-   public static final MapCodec<dhk> a = b(dhk::new);
-   protected static final ewj b = dey.a(0.0, 0.0, 0.0, 16.0, 12.0, 16.0);
-   public static final List<iz> c = iz.a(-2, 0, -2, 2, 1, 2).filter($$0 -> Math.abs($$0.u()) == 2 || Math.abs($$0.w()) == 2).map(iz::i).toList();
+public class dhk extends dhe {
+   private static final Logger f = LogUtils.getLogger();
+   public static final MapCodec<dhk> e = b(dhk::new);
+   private static final kt g = new ks();
 
    @Override
    public MapCodec<dhk> a() {
-      return a;
+      return e;
    }
 
-   protected dhk(dsa.d $$0) {
+   public dhk(dsb.d $$0) {
       super($$0);
    }
 
-   public static boolean a(dbx $$0, iz $$1, iz $$2) {
-      return $$0.a_($$1.a((kd)$$2)).a(awo.cv) && $$0.a_($$1.b($$2.u() / 2, $$2.v(), $$2.w() / 2)).a(awo.cw);
+   @Override
+   protected kt a(dby $$0, cup $$1) {
+      return g;
    }
 
    @Override
-   protected boolean f_(dsb $$0) {
-      return true;
-   }
-
-   @Override
-   protected ewj a(dsb $$0, dbd $$1, iz $$2, evv $$3) {
-      return b;
-   }
-
-   @Override
-   public void a(dsb $$0, dbx $$1, iz $$2, azg $$3) {
-      super.a($$0, $$1, $$2, $$3);
-
-      for (iz $$4 : c) {
-         if ($$3.a(16) == 0 && a($$1, $$2, $$4)) {
-            $$1.a(
-               li.s,
-               (double)$$2.u() + 0.5,
-               (double)$$2.v() + 2.0,
-               (double)$$2.w() + 0.5,
-               (double)((float)$$4.u() + $$3.i()) - 0.5,
-               (double)((float)$$4.v() - $$3.i() - 1.0F),
-               (double)((float)$$4.w() + $$3.i()) - 0.5
-            );
-         }
-      }
-   }
-
-   @Override
-   protected dle a_(dsb $$0) {
-      return dle.c;
-   }
-
-   @Override
-   public dpg a(iz $$0, dsb $$1) {
+   public dph a(iz $$0, dsc $$1) {
       return new dqa($$0, $$1);
    }
 
-   @Nullable
    @Override
-   public <T extends dpg> dph<T> a(dbx $$0, dsb $$1, dpi<T> $$2) {
-      return $$0.B ? a($$2, dpi.m, dqa::a) : null;
-   }
-
-   @Override
-   protected bqt a(dsb $$0, dbx $$1, iz $$2, cmw $$3, evm $$4) {
-      if ($$1.B) {
-         return bqt.a;
+   protected void a(arf $$0, dsc $$1, iz $$2) {
+      dpz $$3 = $$0.a($$2, dpj.g).orElse(null);
+      if ($$3 == null) {
+         f.warn("Ignoring dispensing attempt for Dropper without matching block entity at {}", $$2);
       } else {
-         $$3.a($$0.b($$1, $$2));
-         return bqt.c;
-      }
-   }
+         kq $$4 = new kq($$0, $$2, $$1, $$3);
+         int $$5 = $$3.a($$0.z);
+         if ($$5 < 0) {
+            $$0.c(1001, $$2, 0);
+         } else {
+            cup $$6 = $$3.a($$5);
+            if (!$$6.e()) {
+               je $$7 = $$0.a_($$2).c(b);
+               bqn $$8 = dqg.a($$0, $$2.a($$7));
+               cup $$9;
+               if ($$8 == null) {
+                  $$9 = g.dispense($$4, $$6);
+               } else {
+                  $$9 = dqg.a($$3, $$8, $$6.s().a(1), $$7.g());
+                  if ($$9.e()) {
+                     $$9 = $$6.s();
+                     $$9.h(1);
+                  } else {
+                     $$9 = $$6.s();
+                  }
+               }
 
-   @Nullable
-   @Override
-   protected bqx b(dsb $$0, dbx $$1, iz $$2) {
-      dpg $$3 = $$1.c_($$2);
-      if ($$3 instanceof dqa) {
-         xo $$4 = ((bqy)$$3).O_();
-         return new brd(($$2x, $$3x, $$4x) -> new cqn($$2x, $$3x, cqe.a($$1, $$2)), $$4);
-      } else {
-         return null;
+               $$3.a($$5, $$9);
+            }
+         }
       }
-   }
-
-   @Override
-   protected boolean a(dsb $$0, eoj $$1) {
-      return false;
    }
 }

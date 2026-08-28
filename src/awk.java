@@ -1,28 +1,98 @@
-import it.unimi.dsi.fastutil.objects.Object2IntMap;
-import it.unimi.dsi.fastutil.objects.Object2IntMaps;
-import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
-
 public class awk {
-   protected final Object2IntMap<awg<?>> a = Object2IntMaps.synchronize(new Object2IntOpenHashMap());
+   public static final awj<dez> a = a("mined", lp.e);
+   public static final awj<cuk> b = a("crafted", lp.h);
+   public static final awj<cuk> c = a("used", lp.h);
+   public static final awj<cuk> d = a("broken", lp.h);
+   public static final awj<cuk> e = a("picked_up", lp.h);
+   public static final awj<cuk> f = a("dropped", lp.h);
+   public static final awj<bta<?>> g = a("killed", lp.g);
+   public static final awj<bta<?>> h = a("killed_by", lp.g);
+   public static final awj<alf> i = a("custom", lp.m);
+   public static final alf j = a("leave_game", awi.b);
+   public static final alf k = a("play_time", awi.e);
+   public static final alf l = a("total_world_time", awi.e);
+   public static final alf m = a("time_since_death", awi.e);
+   public static final alf n = a("time_since_rest", awi.e);
+   public static final alf o = a("sneak_time", awi.e);
+   public static final alf p = a("walk_one_cm", awi.d);
+   public static final alf q = a("crouch_one_cm", awi.d);
+   public static final alf r = a("sprint_one_cm", awi.d);
+   public static final alf s = a("walk_on_water_one_cm", awi.d);
+   public static final alf t = a("fall_one_cm", awi.d);
+   public static final alf u = a("climb_one_cm", awi.d);
+   public static final alf v = a("fly_one_cm", awi.d);
+   public static final alf w = a("walk_under_water_one_cm", awi.d);
+   public static final alf x = a("minecart_one_cm", awi.d);
+   public static final alf y = a("boat_one_cm", awi.d);
+   public static final alf z = a("pig_one_cm", awi.d);
+   public static final alf A = a("horse_one_cm", awi.d);
+   public static final alf B = a("aviate_one_cm", awi.d);
+   public static final alf C = a("swim_one_cm", awi.d);
+   public static final alf D = a("strider_one_cm", awi.d);
+   public static final alf E = a("jump", awi.b);
+   public static final alf F = a("drop", awi.b);
+   public static final alf G = a("damage_dealt", awi.c);
+   public static final alf H = a("damage_dealt_absorbed", awi.c);
+   public static final alf I = a("damage_dealt_resisted", awi.c);
+   public static final alf J = a("damage_taken", awi.c);
+   public static final alf K = a("damage_blocked_by_shield", awi.c);
+   public static final alf L = a("damage_absorbed", awi.c);
+   public static final alf M = a("damage_resisted", awi.c);
+   public static final alf N = a("deaths", awi.b);
+   public static final alf O = a("mob_kills", awi.b);
+   public static final alf P = a("animals_bred", awi.b);
+   public static final alf Q = a("player_kills", awi.b);
+   public static final alf R = a("fish_caught", awi.b);
+   public static final alf S = a("talked_to_villager", awi.b);
+   public static final alf T = a("traded_with_villager", awi.b);
+   public static final alf U = a("eat_cake_slice", awi.b);
+   public static final alf V = a("fill_cauldron", awi.b);
+   public static final alf W = a("use_cauldron", awi.b);
+   public static final alf X = a("clean_armor", awi.b);
+   public static final alf Y = a("clean_banner", awi.b);
+   public static final alf Z = a("clean_shulker_box", awi.b);
+   public static final alf aa = a("interact_with_brewingstand", awi.b);
+   public static final alf ab = a("interact_with_beacon", awi.b);
+   public static final alf ac = a("inspect_dropper", awi.b);
+   public static final alf ad = a("inspect_hopper", awi.b);
+   public static final alf ae = a("inspect_dispenser", awi.b);
+   public static final alf af = a("play_noteblock", awi.b);
+   public static final alf ag = a("tune_noteblock", awi.b);
+   public static final alf ah = a("pot_flower", awi.b);
+   public static final alf ai = a("trigger_trapped_chest", awi.b);
+   public static final alf aj = a("open_enderchest", awi.b);
+   public static final alf ak = a("enchant_item", awi.b);
+   public static final alf al = a("play_record", awi.b);
+   public static final alf am = a("interact_with_furnace", awi.b);
+   public static final alf an = a("interact_with_crafting_table", awi.b);
+   public static final alf ao = a("open_chest", awi.b);
+   public static final alf ap = a("sleep_in_bed", awi.b);
+   public static final alf aq = a("open_shulker_box", awi.b);
+   public static final alf ar = a("open_barrel", awi.b);
+   public static final alf as = a("interact_with_blast_furnace", awi.b);
+   public static final alf at = a("interact_with_smoker", awi.b);
+   public static final alf au = a("interact_with_lectern", awi.b);
+   public static final alf av = a("interact_with_campfire", awi.b);
+   public static final alf aw = a("interact_with_cartography_table", awi.b);
+   public static final alf ax = a("interact_with_loom", awi.b);
+   public static final alf ay = a("interact_with_stonecutter", awi.b);
+   public static final alf az = a("bell_ring", awi.b);
+   public static final alf aA = a("raid_trigger", awi.b);
+   public static final alf aB = a("raid_win", awi.b);
+   public static final alf aC = a("interact_with_anvil", awi.b);
+   public static final alf aD = a("interact_with_grindstone", awi.b);
+   public static final alf aE = a("target_hit", awi.b);
+   public static final alf aF = a("interact_with_smithing_table", awi.b);
 
-   public awk() {
-      this.a.defaultReturnValue(0);
+   private static alf a(String $$0, awi $$1) {
+      alf $$2 = new alf($$0);
+      jv.a(lp.m, $$0, $$2);
+      i.a($$2, $$1);
+      return $$2;
    }
 
-   public void b(cmw $$0, awg<?> $$1, int $$2) {
-      int $$3 = (int)Math.min((long)this.a($$1) + (long)$$2, 2147483647L);
-      this.a($$0, $$1, $$3);
-   }
-
-   public void a(cmw $$0, awg<?> $$1, int $$2) {
-      this.a.put($$1, $$2);
-   }
-
-   public <T> int a(awi<T> $$0, T $$1) {
-      return $$0.a($$1) ? this.a($$0.b($$1)) : 0;
-   }
-
-   public int a(awg<?> $$0) {
-      return this.a.getInt($$0);
+   private static <T> awj<T> a(String $$0, jv<T> $$1) {
+      xp $$2 = xp.c("stat_type.minecraft." + $$0);
+      return jv.a(lp.x, $$0, new awj<>($$1, $$2));
    }
 }

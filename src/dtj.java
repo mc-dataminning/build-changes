@@ -1,7 +1,7 @@
-public enum dtj implements azt {
-   a("top"),
-   b("bottom"),
-   c("double");
+public enum dtj implements azu {
+   a("inactive"),
+   b("active"),
+   c("cooldown");
 
    private final String d;
 

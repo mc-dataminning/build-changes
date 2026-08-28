@@ -1,138 +1,118 @@
-public class cpb extends cos {
-   private static final akj<Boolean> e = akn.a(cpb.class, akl.k);
-   private int i;
-   public double c;
-   public double d;
-   private static final cyr j = cyr.a(cur.ow, cur.ox);
+public class cpb extends cot {
+   static final akk<String> c = ako.a(cpb.class, akm.e);
+   static final akk<xp> d = ako.a(cpb.class, akm.f);
+   private final daz e = new cpb.a();
+   private static final int i = 4;
+   private int j;
 
-   public cpb(bsz<? extends cpb> $$0, dbx $$1) {
+   public cpb(bta<? extends cpb> $$0, dby $$1) {
       super($$0, $$1);
    }
 
-   public cpb(dbx $$0, double $$1, double $$2, double $$3) {
-      super(bsz.S, $$0, $$1, $$2, $$3);
+   public cpb(dby $$0, double $$1, double $$2, double $$3) {
+      super(bta.v, $$0, $$1, $$2, $$3);
    }
 
    @Override
-   public cos.a v() {
-      return cos.a.c;
+   protected cuk ag_() {
+      return cus.nM;
    }
 
    @Override
-   protected void a(akn.a $$0) {
+   protected void a(ako.a $$0) {
       super.a($$0);
-      $$0.a(e, false);
+      $$0.a(c, "");
+      $$0.a(d, xo.a);
    }
 
    @Override
-   public void l() {
-      super.l();
-      if (!this.dP().x_()) {
-         if (this.i > 0) {
-            this.i--;
-         }
-
-         if (this.i <= 0) {
-            this.c = 0.0;
-            this.d = 0.0;
-         }
-
-         this.b(this.i > 0);
-      }
-
-      if (this.B() && this.ah.a(4) == 0) {
-         this.dP().a(li.X, this.du(), this.dw() + 0.8, this.dA(), 0.0, 0.0, 0.0);
-      }
+   protected void a(us $$0) {
+      super.a($$0);
+      this.e.b($$0, this.dR());
+      this.ap().a(c, this.B().m());
+      this.ap().a(d, this.B().l());
    }
 
    @Override
-   protected double p() {
-      return (this.be() ? 3.0 : 4.0) / 20.0;
-   }
-
-   @Override
-   protected cuj ag_() {
-      return cur.nO;
-   }
-
-   @Override
-   protected void c(iz $$0, dsb $$1) {
-      double $$2 = 1.0E-4;
-      double $$3 = 0.001;
-      super.c($$0, $$1);
-      evq $$4 = this.ds();
-      double $$5 = $$4.i();
-      double $$6 = this.c * this.c + this.d * this.d;
-      if ($$6 > 1.0E-4 && $$5 > 0.001) {
-         double $$7 = Math.sqrt($$5);
-         double $$8 = Math.sqrt($$6);
-         this.c = $$4.c / $$7 * $$8;
-         this.d = $$4.e / $$7 * $$8;
-      }
-   }
-
-   @Override
-   protected void u() {
-      double $$0 = this.c * this.c + this.d * this.d;
-      if ($$0 > 1.0E-7) {
-         $$0 = Math.sqrt($$0);
-         this.c /= $$0;
-         this.d /= $$0;
-         evq $$1 = this.ds().d(0.8, 0.0, 0.8).b(this.c, 0.0, this.d);
-         if (this.be()) {
-            $$1 = $$1.a(0.1);
-         }
-
-         this.h($$1);
-      } else {
-         this.h(this.ds().d(0.98, 0.0, 0.98));
-      }
-
-      super.u();
-   }
-
-   @Override
-   public bqt a(cmw $$0, bqs $$1) {
-      cuo $$2 = $$0.b($$1);
-      if (j.a($$2) && this.i + 3600 <= 32000) {
-         $$2.a(1, $$0);
-         this.i += 3600;
-      }
-
-      if (this.i > 0) {
-         this.c = this.du() - $$0.du();
-         this.d = this.dA() - $$0.dA();
-      }
-
-      return bqt.a(this.dP().B);
-   }
-
-   @Override
-   protected void b(ur $$0) {
+   protected void b(us $$0) {
       super.b($$0);
-      $$0.a("PushX", this.c);
-      $$0.a("PushZ", this.d);
-      $$0.a("Fuel", (short)this.i);
+      this.e.a($$0, this.dR());
    }
 
    @Override
-   protected void a(ur $$0) {
+   public cot.a v() {
+      return cot.a.g;
+   }
+
+   @Override
+   public dsc x() {
+      return dfb.fN.o();
+   }
+
+   public daz B() {
+      return this.e;
+   }
+
+   @Override
+   public void a(int $$0, int $$1, int $$2, boolean $$3) {
+      if ($$3 && this.ai - this.j >= 4) {
+         this.B().a(this.dP());
+         this.j = this.ai;
+      }
+   }
+
+   @Override
+   public bqu a(cmx $$0, bqt $$1) {
+      return this.e.a($$0);
+   }
+
+   @Override
+   public void a(akk<?> $$0) {
       super.a($$0);
-      this.c = $$0.k("PushX");
-      this.d = $$0.k("PushZ");
-      this.i = $$0.g("Fuel");
-   }
-
-   protected boolean B() {
-      return this.ao.a(e);
-   }
-
-   protected void b(boolean $$0) {
-      this.ao.a(e, $$0);
+      if (d.equals($$0)) {
+         try {
+            this.e.c(this.ap().a(d));
+         } catch (Throwable var3) {
+         }
+      } else if (c.equals($$0)) {
+         this.e.a(this.ap().a(c));
+      }
    }
 
    @Override
-   public dsb x() {
-      return dfa.cD.o().a(dif.a, je.c).a(dif.b, Boolean.valueOf(this.B()));
+   public boolean cP() {
+      return true;
+   }
+
+   public class a extends daz {
+      @Override
+      public arf e() {
+         return (arf)cpb.this.dP();
+      }
+
+      @Override
+      public void f() {
+         cpb.this.ap().a(cpb.c, this.m());
+         cpb.this.ap().a(cpb.d, this.l());
+      }
+
+      @Override
+      public evr g() {
+         return cpb.this.dn();
+      }
+
+      public cpb h() {
+         return cpb.this;
+      }
+
+      @Override
+      public ep i() {
+         return new ep(this, cpb.this.dn(), cpb.this.bM(), this.e(), 2, this.n().getString(), cpb.this.O_(), this.e().o(), cpb.this);
+      }
+
+      @Override
+      public boolean j() {
+         return !cpb.this.dK();
+      }
    }
 }

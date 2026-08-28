@@ -1,22 +1,126 @@
-public record aqt(String b, int c, cmu d, boolean e, int f, bti g, boolean h, boolean i) {
-   public static final int a = 16;
+import com.google.common.annotations.VisibleForTesting;
+import java.util.function.Consumer;
 
-   public aqt(wl $$0) {
-      this($$0.d(16), $$0.readByte(), $$0.b(cmu.class), $$0.readBoolean(), $$0.readUnsignedByte(), $$0.b(bti.class), $$0.readBoolean(), $$0.readBoolean());
+public interface aqt {
+   aqt a = new aqt() {
+      @Override
+      public boolean a(int $$0, int $$1, boolean $$2) {
+         return false;
+      }
+
+      @Override
+      public void a(Consumer<dbf> $$0) {
+      }
+   };
+
+   static aqt a(dbf $$0, int $$1) {
+      return new aqt.a($$0, $$1);
    }
 
-   public void a(wl $$0) {
-      $$0.a(this.b);
-      $$0.k(this.c);
-      $$0.a(this.d);
-      $$0.a(this.e);
-      $$0.k(this.f);
-      $$0.a(this.g);
-      $$0.a(this.h);
-      $$0.a(this.i);
+   static void a(aqt $$0, aqt $$1, Consumer<dbf> $$2, Consumer<dbf> $$3) {
+      if (!$$0.equals($$1)) {
+         if ($$0 instanceof aqt.a $$4 && $$1 instanceof aqt.a $$5 && $$4.a($$5)) {
+            int $$6 = Math.min($$4.c(), $$5.c());
+            int $$7 = Math.min($$4.d(), $$5.d());
+            int $$8 = Math.max($$4.e(), $$5.e());
+            int $$9 = Math.max($$4.f(), $$5.f());
+
+            for (int $$10 = $$6; $$10 <= $$8; $$10++) {
+               for (int $$11 = $$7; $$11 <= $$9; $$11++) {
+                  boolean $$12 = $$4.a($$10, $$11);
+                  boolean $$13 = $$5.a($$10, $$11);
+                  if ($$12 != $$13) {
+                     if ($$13) {
+                        $$2.accept(new dbf($$10, $$11));
+                     } else {
+                        $$3.accept(new dbf($$10, $$11));
+                     }
+                  }
+               }
+            }
+
+            return;
+         }
+
+         $$0.a($$3);
+         $$1.a($$2);
+      }
    }
 
-   public static aqt a() {
-      return new aqt("en_us", 2, cmu.a, true, 0, cmw.bF, false, false);
+   default boolean a(dbf $$0) {
+      return this.a($$0.e, $$0.f);
+   }
+
+   default boolean a(int $$0, int $$1) {
+      return this.a($$0, $$1, true);
+   }
+
+   boolean a(int var1, int var2, boolean var3);
+
+   void a(Consumer<dbf> var1);
+
+   default boolean b(int $$0, int $$1) {
+      return this.a($$0, $$1, false);
+   }
+
+   static boolean a(int $$0, int $$1, int $$2, int $$3, int $$4) {
+      return a($$0, $$1, $$2, $$3, $$4, false);
+   }
+
+   static boolean a(int $$0, int $$1, int $$2, int $$3, int $$4, boolean $$5) {
+      int $$6 = Math.max(0, Math.abs($$3 - $$0) - 1);
+      int $$7 = Math.max(0, Math.abs($$4 - $$1) - 1);
+      long $$8 = (long)Math.max(0, Math.max($$6, $$7) - ($$5 ? 1 : 0));
+      long $$9 = (long)Math.min($$6, $$7);
+      long $$10 = $$9 * $$9 + $$8 * $$8;
+      int $$11 = $$2 * $$2;
+      return $$10 < (long)$$11;
+   }
+
+   public static record a(dbf b, int c) implements aqt {
+      int c() {
+         return this.b.e - this.c - 1;
+      }
+
+      int d() {
+         return this.b.f - this.c - 1;
+      }
+
+      int e() {
+         return this.b.e + this.c + 1;
+      }
+
+      int f() {
+         return this.b.f + this.c + 1;
+      }
+
+      @VisibleForTesting
+      protected boolean a(aqt.a $$0) {
+         return this.c() <= $$0.e() && this.e() >= $$0.c() && this.d() <= $$0.f() && this.f() >= $$0.d();
+      }
+
+      @Override
+      public boolean a(int $$0, int $$1, boolean $$2) {
+         return aqt.a(this.b.e, this.b.f, this.c, $$0, $$1, $$2);
+      }
+
+      @Override
+      public void a(Consumer<dbf> $$0) {
+         for (int $$1 = this.c(); $$1 <= this.e(); $$1++) {
+            for (int $$2 = this.d(); $$2 <= this.f(); $$2++) {
+               if (this.a($$1, $$2)) {
+                  $$0.accept(new dbf($$1, $$2));
+               }
+            }
+         }
+      }
+
+      public dbf a() {
+         return this.b;
+      }
+
+      public int b() {
+         return this.c;
+      }
    }
 }

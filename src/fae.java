@@ -1,207 +1,182 @@
-import java.util.function.Consumer;
+import com.mojang.blaze3d.platform.GlStateManager;
 
 public class fae {
-   public static fab a() {
-      throw new IllegalArgumentException();
+   private final fae.a a;
+   private final fae.b b;
+   private final int c;
+   private final int d;
+   private final int e;
+
+   public fae(int $$0, fae.a $$1, fae.b $$2, int $$3) {
+      if (this.a($$0, $$2)) {
+         this.b = $$2;
+         this.a = $$1;
+         this.c = $$0;
+         this.d = $$3;
+         this.e = $$1.a() * this.d;
+      } else {
+         throw new IllegalStateException("Multiple vertex elements of the same type other than UVs are not supported");
+      }
    }
 
-   public static fab a(fab $$0) {
-      return $$0;
+   private boolean a(int $$0, fae.b $$1) {
+      return $$0 == 0 || $$1 == fae.b.d;
    }
 
-   public static fab a(fab $$0, fab $$1) {
-      return new fae.a($$0, $$1);
+   public final fae.a a() {
+      return this.a;
    }
 
-   public static fab a(fab... $$0) {
-      return new fae.b($$0);
+   public final fae.b b() {
+      return this.b;
    }
 
-   static class a implements fab {
-      private final fab a;
-      private final fab b;
+   public final int c() {
+      return this.d;
+   }
 
-      public a(fab $$0, fab $$1) {
-         if ($$0 == $$1) {
-            throw new IllegalArgumentException("Duplicate delegates");
+   public final int d() {
+      return this.c;
+   }
+
+   @Override
+   public String toString() {
+      return this.d + "," + this.b.a() + "," + this.a.b();
+   }
+
+   public final int e() {
+      return this.e;
+   }
+
+   public final boolean f() {
+      return this.b == fae.b.a;
+   }
+
+   @Override
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else if ($$0 != null && this.getClass() == $$0.getClass()) {
+         fae $$1 = (fae)$$0;
+         if (this.d != $$1.d) {
+            return false;
+         } else if (this.c != $$1.c) {
+            return false;
          } else {
-            this.a = $$0;
-            this.b = $$1;
+            return this.a != $$1.a ? false : this.b == $$1.b;
          }
-      }
-
-      @Override
-      public fab a(double $$0, double $$1, double $$2) {
-         this.a.a($$0, $$1, $$2);
-         this.b.a($$0, $$1, $$2);
-         return this;
-      }
-
-      @Override
-      public fab a(int $$0, int $$1, int $$2, int $$3) {
-         this.a.a($$0, $$1, $$2, $$3);
-         this.b.a($$0, $$1, $$2, $$3);
-         return this;
-      }
-
-      @Override
-      public fab a(float $$0, float $$1) {
-         this.a.a($$0, $$1);
-         this.b.a($$0, $$1);
-         return this;
-      }
-
-      @Override
-      public fab a(int $$0, int $$1) {
-         this.a.a($$0, $$1);
-         this.b.a($$0, $$1);
-         return this;
-      }
-
-      @Override
-      public fab b(int $$0, int $$1) {
-         this.a.b($$0, $$1);
-         this.b.b($$0, $$1);
-         return this;
-      }
-
-      @Override
-      public fab a(float $$0, float $$1, float $$2) {
-         this.a.a($$0, $$1, $$2);
-         this.b.a($$0, $$1, $$2);
-         return this;
-      }
-
-      @Override
-      public void a(
-         float $$0,
-         float $$1,
-         float $$2,
-         float $$3,
-         float $$4,
-         float $$5,
-         float $$6,
-         float $$7,
-         float $$8,
-         int $$9,
-         int $$10,
-         float $$11,
-         float $$12,
-         float $$13
-      ) {
-         this.a.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8, $$9, $$10, $$11, $$12, $$13);
-         this.b.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8, $$9, $$10, $$11, $$12, $$13);
-      }
-
-      @Override
-      public void e() {
-         this.a.e();
-         this.b.e();
-      }
-
-      @Override
-      public void b(int $$0, int $$1, int $$2, int $$3) {
-         this.a.b($$0, $$1, $$2, $$3);
-         this.b.b($$0, $$1, $$2, $$3);
-      }
-
-      @Override
-      public void l() {
-         this.a.l();
-         this.b.l();
+      } else {
+         return false;
       }
    }
 
-   static class b implements fab {
-      private final fab[] a;
+   @Override
+   public int hashCode() {
+      int $$0 = this.a.hashCode();
+      $$0 = 31 * $$0 + this.b.hashCode();
+      $$0 = 31 * $$0 + this.c;
+      return 31 * $$0 + this.d;
+   }
 
-      public b(fab[] $$0) {
-         for (int $$1 = 0; $$1 < $$0.length; $$1++) {
-            for (int $$2 = $$1 + 1; $$2 < $$0.length; $$2++) {
-               if ($$0[$$1] == $$0[$$2]) {
-                  throw new IllegalArgumentException("Duplicate delegates");
-               }
-            }
+   public void a(int $$0, long $$1, int $$2) {
+      this.b.a(this.d, this.a.c(), $$2, $$1, this.c, $$0);
+   }
+
+   public void a(int $$0) {
+      this.b.a(this.c, $$0);
+   }
+
+   public static enum a {
+      a(4, "Float", 5126),
+      b(1, "Unsigned Byte", 5121),
+      c(1, "Byte", 5120),
+      d(2, "Unsigned Short", 5123),
+      e(2, "Short", 5122),
+      f(4, "Unsigned Int", 5125),
+      g(4, "Int", 5124);
+
+      private final int h;
+      private final String i;
+      private final int j;
+
+      private a(final int $$0, final String $$1, final int $$2) {
+         this.h = $$0;
+         this.i = $$1;
+         this.j = $$2;
+      }
+
+      public int a() {
+         return this.h;
+      }
+
+      public String b() {
+         return this.i;
+      }
+
+      public int c() {
+         return this.j;
+      }
+   }
+
+   public static enum b {
+      a("Position", ($$0, $$1, $$2, $$3, $$4, $$5) -> {
+         GlStateManager._enableVertexAttribArray($$5);
+         GlStateManager._vertexAttribPointer($$5, $$0, $$1, false, $$2, $$3);
+      }, ($$0, $$1) -> GlStateManager._disableVertexAttribArray($$1)),
+      b("Normal", ($$0, $$1, $$2, $$3, $$4, $$5) -> {
+         GlStateManager._enableVertexAttribArray($$5);
+         GlStateManager._vertexAttribPointer($$5, $$0, $$1, true, $$2, $$3);
+      }, ($$0, $$1) -> GlStateManager._disableVertexAttribArray($$1)),
+      c("Vertex Color", ($$0, $$1, $$2, $$3, $$4, $$5) -> {
+         GlStateManager._enableVertexAttribArray($$5);
+         GlStateManager._vertexAttribPointer($$5, $$0, $$1, true, $$2, $$3);
+      }, ($$0, $$1) -> GlStateManager._disableVertexAttribArray($$1)),
+      d("UV", ($$0, $$1, $$2, $$3, $$4, $$5) -> {
+         GlStateManager._enableVertexAttribArray($$5);
+         if ($$1 == 5126) {
+            GlStateManager._vertexAttribPointer($$5, $$0, $$1, false, $$2, $$3);
+         } else {
+            GlStateManager._vertexAttribIPointer($$5, $$0, $$1, $$2, $$3);
          }
+      }, ($$0, $$1) -> GlStateManager._disableVertexAttribArray($$1)),
+      e("Padding", ($$0, $$1, $$2, $$3, $$4, $$5) -> {
+      }, ($$0, $$1) -> {
+      }),
+      f("Generic", ($$0, $$1, $$2, $$3, $$4, $$5) -> {
+         GlStateManager._enableVertexAttribArray($$5);
+         GlStateManager._vertexAttribPointer($$5, $$0, $$1, false, $$2, $$3);
+      }, ($$0, $$1) -> GlStateManager._disableVertexAttribArray($$1));
 
-         this.a = $$0;
+      private final String g;
+      private final fae.b.b h;
+      private final fae.b.a i;
+
+      private b(final String $$0, final fae.b.b $$1, final fae.b.a $$2) {
+         this.g = $$0;
+         this.h = $$1;
+         this.i = $$2;
       }
 
-      private void a(Consumer<fab> $$0) {
-         for (fab $$1 : this.a) {
-            $$0.accept($$1);
-         }
+      void a(int $$0, int $$1, int $$2, long $$3, int $$4, int $$5) {
+         this.h.setupBufferState($$0, $$1, $$2, $$3, $$4, $$5);
       }
 
-      @Override
-      public fab a(double $$0, double $$1, double $$2) {
-         this.a($$3 -> $$3.a($$0, $$1, $$2));
-         return this;
+      public void a(int $$0, int $$1) {
+         this.i.clearBufferState($$0, $$1);
       }
 
-      @Override
-      public fab a(int $$0, int $$1, int $$2, int $$3) {
-         this.a($$4 -> $$4.a($$0, $$1, $$2, $$3));
-         return this;
+      public String a() {
+         return this.g;
       }
 
-      @Override
-      public fab a(float $$0, float $$1) {
-         this.a($$2 -> $$2.a($$0, $$1));
-         return this;
+      @FunctionalInterface
+      interface a {
+         void clearBufferState(int var1, int var2);
       }
 
-      @Override
-      public fab a(int $$0, int $$1) {
-         this.a($$2 -> $$2.a($$0, $$1));
-         return this;
-      }
-
-      @Override
-      public fab b(int $$0, int $$1) {
-         this.a($$2 -> $$2.b($$0, $$1));
-         return this;
-      }
-
-      @Override
-      public fab a(float $$0, float $$1, float $$2) {
-         this.a($$3 -> $$3.a($$0, $$1, $$2));
-         return this;
-      }
-
-      @Override
-      public void a(
-         float $$0,
-         float $$1,
-         float $$2,
-         float $$3,
-         float $$4,
-         float $$5,
-         float $$6,
-         float $$7,
-         float $$8,
-         int $$9,
-         int $$10,
-         float $$11,
-         float $$12,
-         float $$13
-      ) {
-         this.a($$14 -> $$14.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8, $$9, $$10, $$11, $$12, $$13));
-      }
-
-      @Override
-      public void e() {
-         this.a(fab::e);
-      }
-
-      @Override
-      public void b(int $$0, int $$1, int $$2, int $$3) {
-         this.a($$4 -> $$4.b($$0, $$1, $$2, $$3));
-      }
-
-      @Override
-      public void l() {
-         this.a(fab::l);
+      @FunctionalInterface
+      interface b {
+         void setupBufferState(int var1, int var2, int var3, long var4, int var6, int var7);
       }
    }
 }

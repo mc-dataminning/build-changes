@@ -1,68 +1,57 @@
 import com.mojang.serialization.MapCodec;
 
-public class dkg extends dey implements dfb {
+public class dkg extends dfi {
    public static final MapCodec<dkg> a = b(dkg::new);
+   public static final int b = 3;
+   public static final dtc c = dss.as;
+   private static final ewk[] d = new ewk[]{
+      dez.a(0.0, 0.0, 0.0, 16.0, 5.0, 16.0),
+      dez.a(0.0, 0.0, 0.0, 16.0, 8.0, 16.0),
+      dez.a(0.0, 0.0, 0.0, 16.0, 11.0, 16.0),
+      dez.a(0.0, 0.0, 0.0, 16.0, 14.0, 16.0)
+   };
 
    @Override
    public MapCodec<dkg> a() {
       return a;
    }
 
-   public dkg(dsa.d $$0) {
+   protected dkg(dsb.d $$0) {
       super($$0);
+      this.k(this.E.b().a(c, Integer.valueOf(0)));
    }
 
    @Override
-   public boolean b(dca $$0, iz $$1, dsb $$2) {
-      if (!$$0.a_($$1.c()).a((dbd)$$0, $$1)) {
-         return false;
-      } else {
-         for (iz $$3 : iz.c($$1.b(-1, -1, -1), $$1.b(1, 1, 1))) {
-            if ($$0.a_($$3).a(awo.aL)) {
-               return true;
-            }
-         }
+   protected ewk a(dsc $$0, dbe $$1, iz $$2, evw $$3) {
+      return d[$$0.c(c)];
+   }
 
-         return false;
+   @Override
+   protected boolean b(dsc $$0, dbe $$1, iz $$2) {
+      return $$0.a(dfb.dW);
+   }
+
+   @Override
+   protected boolean d_(dsc $$0) {
+      return $$0.c(c) < 3;
+   }
+
+   @Override
+   protected void b(dsc $$0, arf $$1, iz $$2, azh $$3) {
+      int $$4 = $$0.c(c);
+      if ($$4 < 3 && $$3.a(10) == 0) {
+         $$0 = $$0.a(c, Integer.valueOf($$4 + 1));
+         $$1.a($$2, $$0, 2);
       }
    }
 
    @Override
-   public boolean a(dbx $$0, azg $$1, iz $$2, dsb $$3) {
-      return true;
+   public cup a(dcb $$0, iz $$1, dsc $$2) {
+      return new cup(cus.sj);
    }
 
    @Override
-   public void a(are $$0, azg $$1, iz $$2, dsb $$3) {
-      boolean $$4 = false;
-      boolean $$5 = false;
-
-      for (iz $$6 : iz.c($$2.b(-1, -1, -1), $$2.b(1, 1, 1))) {
-         dsb $$7 = $$0.a_($$6);
-         if ($$7.a(dfa.on)) {
-            $$5 = true;
-         }
-
-         if ($$7.a(dfa.ow)) {
-            $$4 = true;
-         }
-
-         if ($$5 && $$4) {
-            break;
-         }
-      }
-
-      if ($$5 && $$4) {
-         $$0.a($$2, $$1.h() ? dfa.on.o() : dfa.ow.o(), 3);
-      } else if ($$5) {
-         $$0.a($$2, dfa.on.o(), 3);
-      } else if ($$4) {
-         $$0.a($$2, dfa.ow.o(), 3);
-      }
-   }
-
-   @Override
-   public dfb.a ap_() {
-      return dfb.a.a;
+   protected void a(dsd.a<dez, dsc> $$0) {
+      $$0.a(c);
    }
 }

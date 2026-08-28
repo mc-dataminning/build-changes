@@ -1,80 +1,96 @@
 import com.mojang.brigadier.StringReader;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.logging.LogUtils;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
+import java.util.List;
 import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import net.minecraft.server.MinecraftServer;
 
-public class yx implements xp {
-   private static final Logger d = LogUtils.getLogger();
+public class yx implements xq {
    public static final MapCodec<yx> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(Codec.STRING.fieldOf("selector").forGetter(yx::b), xq.a.optionalFieldOf("separator").forGetter(yx::d)).apply($$0, yx::new)
+      $$0 -> $$0.group(Codec.STRING.fieldOf("name").forGetter(yx::b), Codec.STRING.fieldOf("objective").forGetter(yx::d)).apply($$0, yx::new)
    );
-   public static final xp.a<yx> b = new xp.a<>(a, "selector");
-   private final String e;
+   public static final MapCodec<yx> b = a.fieldOf("score");
+   public static final xq.a<yx> c = new xq.a<>(b, "score");
+   private final String d;
    @Nullable
-   private final he f;
-   protected final Optional<xo> c;
-
-   public yx(String $$0, Optional<xo> $$1) {
-      this.e = $$0;
-      this.c = $$1;
-      this.f = a($$0);
-   }
+   private final he e;
+   private final String f;
 
    @Nullable
    private static he a(String $$0) {
-      he $$1 = null;
-
       try {
-         hf $$2 = new hf(new StringReader($$0));
-         $$1 = $$2.t();
-      } catch (CommandSyntaxException var3) {
-         d.warn("Invalid selector component: {}: {}", $$0, var3.getMessage());
+         return new hf(new StringReader($$0)).t();
+      } catch (CommandSyntaxException var2) {
+         return null;
       }
+   }
 
-      return $$1;
+   public yx(String $$0, String $$1) {
+      this.d = $$0;
+      this.e = a($$0);
+      this.f = $$1;
    }
 
    @Override
-   public xp.a<?> a() {
-      return b;
+   public xq.a<?> a() {
+      return c;
    }
 
    public String b() {
-      return this.e;
+      return this.d;
    }
 
    @Nullable
    public he c() {
+      return this.e;
+   }
+
+   public String d() {
       return this.f;
    }
 
-   public Optional<xo> d() {
-      return this.c;
-   }
+   private ewu a(ep $$0) throws CommandSyntaxException {
+      if (this.e != null) {
+         List<? extends bsu> $$1 = this.e.b($$0);
+         if (!$$1.isEmpty()) {
+            if ($$1.size() != 1) {
+               throw fc.a.create();
+            }
 
-   @Override
-   public yc a(@Nullable ep $$0, @Nullable bst $$1, int $$2) throws CommandSyntaxException {
-      if ($$0 != null && this.f != null) {
-         Optional<? extends xo> $$3 = xr.a($$0, this.c, $$1, $$2);
-         return xr.a(this.f.b($$0), $$3, bst::O_);
-      } else {
-         return xo.i();
+            return $$1.get(0);
+         }
       }
+
+      return ewu.c(this.d);
+   }
+
+   private yd a(ewu $$0, ep $$1) {
+      MinecraftServer $$2 = $$1.l();
+      if ($$2 != null) {
+         ewv $$3 = $$2.aK();
+         ewn $$4 = $$3.a(this.f);
+         if ($$4 != null) {
+            ewr $$5 = $$3.d($$0, $$4);
+            if ($$5 != null) {
+               return $$5.a($$4.a(zi.b));
+            }
+         }
+      }
+
+      return xp.i();
    }
 
    @Override
-   public <T> Optional<T> a(xt.b<T> $$0, yl $$1) {
-      return $$0.accept($$1, this.e);
-   }
-
-   @Override
-   public <T> Optional<T> a(xt.a<T> $$0) {
-      return $$0.accept(this.e);
+   public yd a(@Nullable ep $$0, @Nullable bsu $$1, int $$2) throws CommandSyntaxException {
+      if ($$0 == null) {
+         return xp.i();
+      } else {
+         ewu $$3 = this.a($$0);
+         ewu $$4 = (ewu)($$1 != null && $$3.equals(ewu.cy) ? $$1 : $$3);
+         return this.a($$4, $$0);
+      }
    }
 
    @Override
@@ -82,7 +98,7 @@ public class yx implements xp {
       if (this == $$0) {
          return true;
       } else {
-         if ($$0 instanceof yx $$1 && this.e.equals($$1.e) && this.c.equals($$1.c)) {
+         if ($$0 instanceof yx $$1 && this.d.equals($$1.d) && this.f.equals($$1.f)) {
             return true;
          }
 
@@ -92,12 +108,12 @@ public class yx implements xp {
 
    @Override
    public int hashCode() {
-      int $$0 = this.e.hashCode();
-      return 31 * $$0 + this.c.hashCode();
+      int $$0 = this.d.hashCode();
+      return 31 * $$0 + this.f.hashCode();
    }
 
    @Override
    public String toString() {
-      return "pattern{" + this.e + "}";
+      return "score{name='" + this.d + "', objective='" + this.f + "'}";
    }
 }

@@ -1,38 +1,39 @@
-import com.mojang.authlib.GameProfile;
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
+import com.mojang.brigadier.tree.LiteralCommandNode;
 import java.util.Collection;
 
 public class anx {
-   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(xo.c("commands.op.failed"));
-
    public static void a(CommandDispatcher<ep> $$0) {
-      $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)eq.a("op").requires($$0x -> $$0x.c(3))).then(eq.a("targets", fe.a()).suggests(($$0x, $$1) -> {
-            avc $$2 = ((ep)$$0x.getSource()).l().ah();
-            return eu.b($$2.t().stream().filter($$1x -> !$$2.f($$1x.gb())).map($$0xx -> $$0xx.gb().getName()), $$1);
-         }).executes($$0x -> a((ep)$$0x.getSource(), fe.a($$0x, "targets"))))
+      LiteralCommandNode<ep> $$1 = $$0.register(
+         (LiteralArgumentBuilder)eq.a("msg").then(eq.a("targets", fc.d()).then(eq.a("message", fg.a()).executes($$0x -> {
+            Collection<arg> $$1x = fc.f($$0x, "targets");
+            if (!$$1x.isEmpty()) {
+               fg.a($$0x, "message", $$2 -> a((ep)$$0x.getSource(), $$1x, $$2));
+            }
+
+            return $$1x.size();
+         })))
       );
+      $$0.register((LiteralArgumentBuilder)eq.a("tell").redirect($$1));
+      $$0.register((LiteralArgumentBuilder)eq.a("w").redirect($$1));
    }
 
-   private static int a(ep $$0, Collection<GameProfile> $$1) throws CommandSyntaxException {
-      avc $$2 = $$0.l().ah();
-      int $$3 = 0;
+   private static void a(ep $$0, Collection<arg> $$1, yf $$2) {
+      xl.a $$3 = xl.a(xl.e, $$0);
+      ye $$4 = ye.a($$2);
+      boolean $$5 = false;
 
-      for (GameProfile $$4 : $$1) {
-         if (!$$2.f($$4)) {
-            $$2.a($$4);
-            $$3++;
-            $$0.a(() -> xo.a("commands.op.success", $$1.iterator().next().getName()), true);
-         }
+      for (arg $$6 : $$1) {
+         xl.a $$7 = xl.a(xl.f, $$0).c($$6.O_());
+         $$0.a($$4, false, $$7);
+         boolean $$8 = $$0.a($$6);
+         $$6.a($$4, $$8, $$3);
+         $$5 |= $$8 && $$2.j();
       }
 
-      if ($$3 == 0) {
-         throw a.create();
-      } else {
-         return $$3;
+      if ($$5) {
+         $$0.a(avd.e);
       }
    }
 }

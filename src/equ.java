@@ -1,30 +1,70 @@
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableList.Builder;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
-import java.util.function.Consumer;
 
-public class equ extends eqz {
-   public static final MapCodec<equ> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(lp.h.r().fieldOf("name").forGetter($$0x -> $$0x.j)).and(b($$0)).apply($$0, equ::new)
-   );
-   private final ji<cuj> j;
+public class equ extends eqr {
+   public static final MapCodec<equ> a = a(equ::new);
 
-   private equ(ji<cuj> $$0, int $$1, int $$2, List<etr> $$3, List<eru> $$4) {
-      super($$1, $$2, $$3, $$4);
-      this.j = $$0;
+   equ(List<eqy> $$0, List<ets> $$1) {
+      super($$0, $$1);
    }
 
    @Override
-   public eqy a() {
-      return eqv.c;
+   public eqz a() {
+      return eqw.i;
    }
 
    @Override
-   public void a(Consumer<cuo> $$0, eqh $$1) {
-      $$0.accept(new cuo(this.j));
+   protected eqq a(List<? extends eqq> $$0) {
+      return switch ($$0.size()) {
+         case 0 -> c;
+         case 1 -> (eqq)$$0.get(0);
+         case 2 -> {
+            eqq $$1 = $$0.get(0);
+            eqq $$2 = $$0.get(1);
+            yield ($$2x, $$3) -> {
+               $$1.expand($$2x, $$3);
+               $$2.expand($$2x, $$3);
+               return true;
+            };
+         }
+         default -> ($$1x, $$2x) -> {
+         for (eqq $$3 : $$0) {
+            $$3.expand($$1x, $$2x);
+         }
+
+         return true;
+      };
+      };
    }
 
-   public static eqz.a<?> a(dbw $$0) {
-      return a(($$1, $$2, $$3, $$4) -> new equ($$0.r().o(), $$1, $$2, $$3, $$4));
+   public static equ.a a(eqy.a<?>... $$0) {
+      return new equ.a($$0);
+   }
+
+   public static class a extends eqy.a<equ.a> {
+      private final Builder<eqy> a = ImmutableList.builder();
+
+      public a(eqy.a<?>... $$0) {
+         for (eqy.a<?> $$1 : $$0) {
+            this.a.add($$1.b());
+         }
+      }
+
+      protected equ.a a() {
+         return this;
+      }
+
+      @Override
+      public equ.a b(eqy.a<?> $$0) {
+         this.a.add($$0.b());
+         return this;
+      }
+
+      @Override
+      public eqy b() {
+         return new equ(this.a.build(), this.f());
+      }
    }
 }

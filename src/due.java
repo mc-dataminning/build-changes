@@ -1,58 +1,69 @@
-import java.util.List;
-import java.util.function.Predicate;
+import javax.annotation.Nullable;
 
-public class due<T> implements dun<T> {
-   private final jn<T> a;
+public class due extends dui {
+   private final ji<dcx> n;
 
-   public due(jn<T> $$0) {
-      this.a = $$0;
-   }
-
-   public static <A> dun<A> a(int $$0, jn<A> $$1, duo<A> $$2, List<A> $$3) {
-      return new due<>($$1);
+   public due(dby $$0, dbf $$1, ji<dcx> $$2) {
+      super($$0, $$1);
+      this.n = $$2;
    }
 
    @Override
-   public int a(T $$0) {
-      int $$1 = this.a.a($$0);
-      return $$1 == -1 ? 0 : $$1;
+   public dsc a_(iz $$0) {
+      return dfb.nb.o();
+   }
+
+   @Nullable
+   @Override
+   public dsc a(iz $$0, dsc $$1, boolean $$2) {
+      return null;
    }
 
    @Override
-   public boolean a(Predicate<T> $$0) {
+   public env b_(iz $$0) {
+      return enw.a.g();
+   }
+
+   @Override
+   public int i(iz $$0) {
+      return 0;
+   }
+
+   @Nullable
+   @Override
+   public dph a(iz $$0, dui.b $$1) {
+      return null;
+   }
+
+   @Override
+   public void b(dph $$0) {
+   }
+
+   @Override
+   public void a(dph $$0) {
+   }
+
+   @Override
+   public void d(iz $$0) {
+   }
+
+   @Override
+   public boolean C() {
       return true;
    }
 
    @Override
-   public T a(int $$0) {
-      T $$1 = this.a.a($$0);
-      if ($$1 == null) {
-         throw new dum($$0);
-      } else {
-         return $$1;
-      }
+   public boolean a(int $$0, int $$1) {
+      return true;
    }
 
    @Override
-   public void a(wl $$0) {
+   public aqy D() {
+      return aqy.b;
    }
 
    @Override
-   public void b(wl $$0) {
-   }
-
-   @Override
-   public int a() {
-      return 0;
-   }
-
-   @Override
-   public int b() {
-      return this.a.b();
-   }
-
-   @Override
-   public dun<T> c() {
-      return this;
+   public ji<dcx> getNoiseBiome(int $$0, int $$1, int $$2) {
+      return this.n;
    }
 }

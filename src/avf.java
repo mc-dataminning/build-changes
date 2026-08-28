@@ -1,45 +1,57 @@
-import java.util.List;
+import com.google.gson.JsonObject;
+import com.mojang.authlib.GameProfile;
+import java.util.UUID;
+import javax.annotation.Nullable;
 
-public class avf {
-   private int a;
-   private int b;
+public class avf extends avh<GameProfile> {
+   private final int a;
+   private final boolean b;
 
-   public boolean a(int $$0) {
-      return this.b >= this.b($$0);
+   public avf(GameProfile $$0, int $$1, boolean $$2) {
+      super($$0);
+      this.a = $$1;
+      this.b = $$2;
    }
 
-   public boolean a(int $$0, List<arf> $$1) {
-      int $$2 = (int)$$1.stream().filter(cmw::gf).count();
-      return $$2 >= this.b($$0);
+   public avf(JsonObject $$0) {
+      super(b($$0));
+      this.a = $$0.has("level") ? $$0.get("level").getAsInt() : 0;
+      this.b = $$0.has("bypassesPlayerLimit") && $$0.get("bypassesPlayerLimit").getAsBoolean();
    }
 
-   public int b(int $$0) {
-      return Math.max(1, ayy.f((float)(this.a * $$0) / 100.0F));
+   public int a() {
+      return this.a;
    }
 
-   public void a() {
-      this.b = 0;
-   }
-
-   public int b() {
+   public boolean b() {
       return this.b;
    }
 
-   public boolean a(List<arf> $$0) {
-      int $$1 = this.a;
-      int $$2 = this.b;
-      this.a = 0;
-      this.b = 0;
-
-      for (arf $$3 : $$0) {
-         if (!$$3.N_()) {
-            this.a++;
-            if ($$3.fL()) {
-               this.b++;
-            }
-         }
+   @Override
+   protected void a(JsonObject $$0) {
+      if (this.g() != null) {
+         $$0.addProperty("uuid", this.g().getId().toString());
+         $$0.addProperty("name", this.g().getName());
+         $$0.addProperty("level", this.a);
+         $$0.addProperty("bypassesPlayerLimit", this.b);
       }
+   }
 
-      return ($$2 > 0 || this.b > 0) && ($$1 != this.a || $$2 != this.b);
+   @Nullable
+   private static GameProfile b(JsonObject $$0) {
+      if ($$0.has("uuid") && $$0.has("name")) {
+         String $$1 = $$0.get("uuid").getAsString();
+
+         UUID $$2;
+         try {
+            $$2 = UUID.fromString($$1);
+         } catch (Throwable var4) {
+            return null;
+         }
+
+         return new GameProfile($$2, $$0.get("name").getAsString());
+      } else {
+         return null;
+      }
    }
 }

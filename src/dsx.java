@@ -1,16 +1,6 @@
-public enum dsx implements azt {
-   a(je.a),
-   b(je.b);
-
-   private final je c;
-
-   private dsx(final je $$0) {
-      this.c = $$0;
-   }
-
-   public je a() {
-      return this.c;
-   }
+public enum dsx implements azu {
+   a,
+   b;
 
    @Override
    public String toString() {
@@ -19,10 +9,6 @@ public enum dsx implements azt {
 
    @Override
    public String c() {
-      return this == a ? "upper" : "lower";
-   }
-
-   public dsx b() {
-      return this == a ? b : a;
+      return this == a ? "left" : "right";
    }
 }

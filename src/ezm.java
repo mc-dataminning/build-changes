@@ -1,42 +1,101 @@
+import com.google.common.collect.Maps;
 import com.mojang.blaze3d.platform.GlStateManager;
 import com.mojang.blaze3d.systems.RenderSystem;
-import com.mojang.logging.LogUtils;
 import java.io.IOException;
-import org.slf4j.Logger;
+import java.io.InputStream;
+import java.nio.charset.StandardCharsets;
+import java.util.Map;
+import org.apache.commons.io.IOUtils;
+import org.apache.commons.lang3.StringUtils;
 
 public class ezm {
-   private static final Logger a = LogUtils.getLogger();
+   private static final int a = 32768;
+   private final ezm.a b;
+   private final String c;
+   private int d;
 
-   public static void a(int $$0) {
-      RenderSystem.assertOnRenderThread();
-      GlStateManager._glUseProgram($$0);
+   protected ezm(ezm.a $$0, int $$1, String $$2) {
+      this.b = $$0;
+      this.d = $$1;
+      this.c = $$2;
    }
 
-   public static void a(ezn $$0) {
+   public void a(ezo $$0) {
       RenderSystem.assertOnRenderThread();
-      $$0.d().a();
-      $$0.c().a();
-      GlStateManager.glDeleteProgram($$0.a());
+      GlStateManager.glAttachShader($$0.a(), this.c());
    }
 
-   public static int a() throws IOException {
-      RenderSystem.assertOnRenderThread();
-      int $$0 = GlStateManager.glCreateProgram();
-      if ($$0 <= 0) {
-         throw new IOException("Could not create shader program (returned program ID " + $$0 + ")");
-      } else {
-         return $$0;
+   public void a() {
+      if (this.d != -1) {
+         RenderSystem.assertOnRenderThread();
+         GlStateManager.glDeleteShader(this.d);
+         this.d = -1;
+         this.b.c().remove(this.c);
       }
    }
 
-   public static void b(ezn $$0) {
+   public String b() {
+      return this.c;
+   }
+
+   public static ezm a(ezm.a $$0, String $$1, InputStream $$2, String $$3, ezf $$4) throws IOException {
       RenderSystem.assertOnRenderThread();
-      $$0.e();
-      GlStateManager.glLinkProgram($$0.a());
-      int $$1 = GlStateManager.glGetProgrami($$0.a(), 35714);
-      if ($$1 == 0) {
-         a.warn("Error encountered when linking program containing VS {} and FS {}. Log output:", $$0.c().b(), $$0.d().b());
-         a.warn(GlStateManager.glGetProgramInfoLog($$0.a(), 32768));
+      int $$5 = b($$0, $$1, $$2, $$3, $$4);
+      ezm $$6 = new ezm($$0, $$5, $$1);
+      $$0.c().put($$1, $$6);
+      return $$6;
+   }
+
+   protected static int b(ezm.a $$0, String $$1, InputStream $$2, String $$3, ezf $$4) throws IOException {
+      String $$5 = IOUtils.toString($$2, StandardCharsets.UTF_8);
+      if ($$5 == null) {
+         throw new IOException("Could not load program " + $$0.a());
+      } else {
+         int $$6 = GlStateManager.glCreateShader($$0.d());
+         GlStateManager.glShaderSource($$6, $$4.a($$5));
+         GlStateManager.glCompileShader($$6);
+         if (GlStateManager.glGetShaderi($$6, 35713) == 0) {
+            String $$7 = StringUtils.trim(GlStateManager.glGetShaderInfoLog($$6, 32768));
+            throw new IOException("Couldn't compile " + $$0.a() + " program (" + $$3 + ", " + $$1 + ") : " + $$7);
+         } else {
+            return $$6;
+         }
+      }
+   }
+
+   protected int c() {
+      return this.d;
+   }
+
+   public static enum a {
+      a("vertex", ".vsh", 35633),
+      b("fragment", ".fsh", 35632);
+
+      private final String c;
+      private final String d;
+      private final int e;
+      private final Map<String, ezm> f = Maps.newHashMap();
+
+      private a(final String $$0, final String $$1, final int $$2) {
+         this.c = $$0;
+         this.d = $$1;
+         this.e = $$2;
+      }
+
+      public String a() {
+         return this.c;
+      }
+
+      public String b() {
+         return this.d;
+      }
+
+      int d() {
+         return this.e;
+      }
+
+      public Map<String, ezm> c() {
+         return this.f;
       }
    }
 }

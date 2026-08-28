@@ -1,37 +1,42 @@
-import it.unimi.dsi.fastutil.ints.IntOpenHashSet;
-import it.unimi.dsi.fastutil.ints.IntSet;
+import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.Lists;
+import java.util.List;
+import java.util.Set;
 
-public class cdx {
-   private final btq a;
-   private final IntSet b = new IntOpenHashSet();
-   private final IntSet c = new IntOpenHashSet();
+public class cdx extends cdz<cmk> {
+   private static final int a = 40;
 
-   public cdx(btq $$0) {
-      this.a = $$0;
+   public cdx() {
+      super(40);
    }
 
-   public void a() {
-      this.b.clear();
-      this.c.clear();
-   }
+   protected void a(arf $$0, cmk $$1) {
+      ale<dby> $$2 = $$0.af();
+      iz $$3 = $$1.dp();
+      List<jh> $$4 = Lists.newArrayList();
+      int $$5 = 4;
 
-   public boolean a(bst $$0) {
-      int $$1 = $$0.al();
-      if (this.b.contains($$1)) {
-         return true;
-      } else if (this.c.contains($$1)) {
-         return false;
-      } else {
-         this.a.dP().ag().a("hasLineOfSight");
-         boolean $$2 = this.a.E($$0);
-         this.a.dP().ag().c();
-         if ($$2) {
-            this.b.add($$1);
-         } else {
-            this.c.add($$1);
+      for (int $$6 = -4; $$6 <= 4; $$6++) {
+         for (int $$7 = -2; $$7 <= 2; $$7++) {
+            for (int $$8 = -4; $$8 <= 4; $$8++) {
+               iz $$9 = $$3.b($$6, $$7, $$8);
+               if ($$1.gB().b().e().contains($$0.a_($$9).b())) {
+                  $$4.add(jh.a($$2, $$9));
+               }
+            }
          }
-
-         return $$2;
       }
+
+      bur<?> $$10 = $$1.dS();
+      if (!$$4.isEmpty()) {
+         $$10.a(cct.f, $$4);
+      } else {
+         $$10.b(cct.f);
+      }
+   }
+
+   @Override
+   public Set<cct<?>> a() {
+      return ImmutableSet.of(cct.f);
    }
 }

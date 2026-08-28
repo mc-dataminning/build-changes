@@ -1,19 +1,18 @@
-public class cve extends cvz {
-   public cve(dey $$0, dey $$1, cuj.a $$2) {
-      super($$0, $$1, $$2, je.a);
+public class cve extends csn {
+   public cve(dez $$0, cuk.a $$1) {
+      super($$0, $$1);
    }
 
    @Override
-   public xo o(cuo $$0) {
-      cxq $$1 = $$0.a(km.V);
-      return (xo)($$1 != null && $$1.c().isPresent() ? xo.a(this.a() + ".named", $$1.c().get()) : super.o($$0));
+   public bqu a(cyc $$0) {
+      return bqu.e;
    }
 
    @Override
-   public void n(cuo $$0) {
-      cxq $$1 = $$0.a(km.V);
-      if ($$1 != null && !$$1.b()) {
-         $$1.a().thenAcceptAsync($$1x -> $$0.b(km.V, $$1x), dqs.a);
-      }
+   public bqv<cup> a(dby $$0, cmx $$1, bqt $$2) {
+      evn $$3 = a($$0, $$1, dbh.b.b);
+      evn $$4 = $$3.a($$3.a().c());
+      bqu $$5 = super.a(new cyc($$1, $$2, $$4));
+      return new bqv<>($$5, $$1.b($$2));
    }
 }

@@ -1,18 +1,20 @@
-import io.netty.buffer.ByteBuf;
+public record acw(int b) implements zw<aci> {
+   public static final zn<wm, acw> a = zw.a(acw::a, acw::new);
 
-public class acw implements zv<ach> {
-   public static final acw a = new acw();
-   public static final zm<ByteBuf, acw> b = zm.a(a);
+   private acw(wm $$0) {
+      this($$0.l());
+   }
 
-   private acw() {
+   private void a(wm $$0) {
+      $$0.c(this.b);
    }
 
    @Override
-   public zx<acw> a() {
-      return agt.o;
+   public zy<acw> a() {
+      return agu.n;
    }
 
-   public void a(ach $$0) {
+   public void a(aci $$0) {
       $$0.a(this);
    }
 }

@@ -1,131 +1,104 @@
-import javax.annotation.Nullable;
+import com.google.common.collect.Lists;
+import com.google.common.collect.Sets;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Optional;
+import java.util.Set;
 
-public record dwu(int aj) {
-   public static final ji.c<dwu> a = a("block_activate");
-   public static final ji.c<dwu> b = a("block_attach");
-   public static final ji.c<dwu> c = a("block_change");
-   public static final ji.c<dwu> d = a("block_close");
-   public static final ji.c<dwu> e = a("block_deactivate");
-   public static final ji.c<dwu> f = a("block_destroy");
-   public static final ji.c<dwu> g = a("block_detach");
-   public static final ji.c<dwu> h = a("block_open");
-   public static final ji.c<dwu> i = a("block_place");
-   public static final ji.c<dwu> j = a("container_close");
-   public static final ji.c<dwu> k = a("container_open");
-   public static final ji.c<dwu> l = a("drink");
-   public static final ji.c<dwu> m = a("eat");
-   public static final ji.c<dwu> n = a("elytra_glide");
-   public static final ji.c<dwu> o = a("entity_damage");
-   public static final ji.c<dwu> p = a("entity_die");
-   public static final ji.c<dwu> q = a("entity_dismount");
-   public static final ji.c<dwu> r = a("entity_interact");
-   public static final ji.c<dwu> s = a("entity_mount");
-   public static final ji.c<dwu> t = a("entity_place");
-   public static final ji.c<dwu> u = a("entity_action");
-   public static final ji.c<dwu> v = a("equip");
-   public static final ji.c<dwu> w = a("explode");
-   public static final ji.c<dwu> x = a("flap");
-   public static final ji.c<dwu> y = a("fluid_pickup");
-   public static final ji.c<dwu> z = a("fluid_place");
-   public static final ji.c<dwu> A = a("hit_ground");
-   public static final ji.c<dwu> B = a("instrument_play");
-   public static final ji.c<dwu> C = a("item_interact_finish");
-   public static final ji.c<dwu> D = a("item_interact_start");
-   public static final ji.c<dwu> E = a("jukebox_play", 10);
-   public static final ji.c<dwu> F = a("jukebox_stop_play", 10);
-   public static final ji.c<dwu> G = a("lightning_strike");
-   public static final ji.c<dwu> H = a("note_block_play");
-   public static final ji.c<dwu> I = a("prime_fuse");
-   public static final ji.c<dwu> J = a("projectile_land");
-   public static final ji.c<dwu> K = a("projectile_shoot");
-   public static final ji.c<dwu> L = a("sculk_sensor_tendrils_clicking");
-   public static final ji.c<dwu> M = a("shear");
-   public static final ji.c<dwu> N = a("shriek", 32);
-   public static final ji.c<dwu> O = a("splash");
-   public static final ji.c<dwu> P = a("step");
-   public static final ji.c<dwu> Q = a("swim");
-   public static final ji.c<dwu> R = a("teleport");
-   public static final ji.c<dwu> S = a("unequip");
-   public static final ji.c<dwu> T = a("resonate_1");
-   public static final ji.c<dwu> U = a("resonate_2");
-   public static final ji.c<dwu> V = a("resonate_3");
-   public static final ji.c<dwu> W = a("resonate_4");
-   public static final ji.c<dwu> X = a("resonate_5");
-   public static final ji.c<dwu> Y = a("resonate_6");
-   public static final ji.c<dwu> Z = a("resonate_7");
-   public static final ji.c<dwu> aa = a("resonate_8");
-   public static final ji.c<dwu> ab = a("resonate_9");
-   public static final ji.c<dwu> ac = a("resonate_10");
-   public static final ji.c<dwu> ad = a("resonate_11");
-   public static final ji.c<dwu> ae = a("resonate_12");
-   public static final ji.c<dwu> af = a("resonate_13");
-   public static final ji.c<dwu> ag = a("resonate_14");
-   public static final ji.c<dwu> ah = a("resonate_15");
-   public static final int ai = 16;
+public class dwu implements dwy {
+   private final List<dwx> b = Lists.newArrayList();
+   private final Set<dwx> c = Sets.newHashSet();
+   private final List<dwx> d = Lists.newArrayList();
+   private boolean e;
+   private final arf f;
+   private final int g;
+   private final dwu.a h;
 
-   public static ji<dwu> a(jv<dwu> $$0) {
-      return a;
+   public dwu(arf $$0, int $$1, dwu.a $$2) {
+      this.f = $$0;
+      this.g = $$1;
+      this.h = $$2;
    }
 
-   public int a() {
-      return this.aj;
+   @Override
+   public boolean a() {
+      return this.b.isEmpty();
    }
 
-   private static ji.c<dwu> a(String $$0) {
-      return a($$0, 16);
-   }
-
-   private static ji.c<dwu> a(String $$0, int $$1) {
-      return jv.b(lp.a, new ale($$0), new dwu($$1));
-   }
-
-   public static record a(@Nullable bst a, @Nullable dsb b) {
-      public static dwu.a a(@Nullable bst $$0) {
-         return new dwu.a($$0, null);
+   @Override
+   public void a(dwx $$0) {
+      if (this.e) {
+         this.d.add($$0);
+      } else {
+         this.b.add($$0);
       }
 
-      public static dwu.a a(@Nullable dsb $$0) {
-         return new dwu.a(null, $$0);
+      agt.a(this.f, $$0);
+   }
+
+   @Override
+   public void b(dwx $$0) {
+      if (this.e) {
+         this.c.add($$0);
+      } else {
+         this.b.remove($$0);
       }
 
-      public static dwu.a a(@Nullable bst $$0, @Nullable dsb $$1) {
-         return new dwu.a($$0, $$1);
+      if (this.b.isEmpty()) {
+         this.h.apply(this.g);
       }
    }
 
-   public static final class b implements Comparable<dwu.b> {
-      private final ji<dwu> a;
-      private final evq b;
-      private final dwu.a c;
-      private final dww d;
-      private final double e;
+   @Override
+   public boolean a(ji<dwv> $$0, evr $$1, dwv.a $$2, dwy.a $$3) {
+      this.e = true;
+      boolean $$4 = false;
 
-      public b(ji<dwu> $$0, evq $$1, dwu.a $$2, dww $$3, evq $$4) {
-         this.a = $$0;
-         this.b = $$1;
-         this.c = $$2;
-         this.d = $$3;
-         this.e = $$1.g($$4);
+      try {
+         Iterator<dwx> $$5 = this.b.iterator();
+
+         while ($$5.hasNext()) {
+            dwx $$6 = $$5.next();
+            if (this.c.remove($$6)) {
+               $$5.remove();
+            } else {
+               Optional<evr> $$7 = a(this.f, $$1, $$6);
+               if ($$7.isPresent()) {
+                  $$3.visit($$6, $$7.get());
+                  $$4 = true;
+               }
+            }
+         }
+      } finally {
+         this.e = false;
       }
 
-      public int a(dwu.b $$0) {
-         return Double.compare(this.e, $$0.e);
+      if (!this.d.isEmpty()) {
+         this.b.addAll(this.d);
+         this.d.clear();
       }
 
-      public ji<dwu> a() {
-         return this.a;
+      if (!this.c.isEmpty()) {
+         this.b.removeAll(this.c);
+         this.c.clear();
       }
 
-      public evq b() {
-         return this.b;
-      }
+      return $$4;
+   }
 
-      public dwu.a c() {
-         return this.c;
+   private static Optional<evr> a(arf $$0, evr $$1, dwx $$2) {
+      Optional<evr> $$3 = $$2.a().a($$0);
+      if ($$3.isEmpty()) {
+         return Optional.empty();
+      } else {
+         double $$4 = iz.a($$3.get()).j(iz.a($$1));
+         int $$5 = $$2.b() * $$2.b();
+         return $$4 > (double)$$5 ? Optional.empty() : $$3;
       }
+   }
 
-      public dww d() {
-         return this.d;
-      }
+   @FunctionalInterface
+   public interface a {
+      void apply(int var1);
    }
 }

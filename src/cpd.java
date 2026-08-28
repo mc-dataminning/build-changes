@@ -1,70 +1,111 @@
-public class cpd extends cos {
-   private final daz c = new daz() {
-      @Override
-      public void a(dbx $$0, iz $$1, int $$2) {
-         $$0.a(cpd.this, (byte)$$2);
-      }
-   };
-   private final Runnable d;
+public class cpd extends cou implements dqf {
+   private boolean c = true;
 
-   public cpd(bsz<? extends cpd> $$0, dbx $$1) {
+   public cpd(bta<? extends cpd> $$0, dby $$1) {
       super($$0, $$1);
-      this.d = this.b($$1);
    }
 
-   public cpd(dbx $$0, double $$1, double $$2, double $$3) {
-      super(bsz.aU, $$0, $$1, $$2, $$3);
-      this.d = this.b($$0);
-   }
-
-   @Override
-   protected cuj ag_() {
-      return cur.nM;
-   }
-
-   private Runnable b(dbx $$0) {
-      return $$0 instanceof are ? () -> this.c.a((are)$$0, this.dp()) : () -> this.c.a($$0, this.dp());
+   public cpd(dby $$0, double $$1, double $$2, double $$3) {
+      super(bta.aa, $$1, $$2, $$3, $$0);
    }
 
    @Override
-   public cos.a v() {
-      return cos.a.e;
+   public cot.a v() {
+      return cot.a.f;
    }
 
    @Override
-   public dsb x() {
-      return dfa.ct.o();
+   public dsc x() {
+      return dfb.hc.o();
    }
 
    @Override
-   protected void a(ur $$0) {
-      super.a($$0);
-      this.c.a(this.dP(), this.dp(), $$0);
+   public int z() {
+      return 1;
    }
 
    @Override
-   protected void b(ur $$0) {
-      super.b($$0);
-      this.c.a($$0);
+   public int b() {
+      return 5;
    }
 
    @Override
-   public void b(byte $$0) {
-      this.c.a(this.dP(), $$0);
+   public void a(int $$0, int $$1, int $$2, boolean $$3) {
+      boolean $$4 = !$$3;
+      if ($$4 != this.G()) {
+         this.b($$4);
+      }
+   }
+
+   public boolean G() {
+      return this.c;
+   }
+
+   public void b(boolean $$0) {
+      this.c = $$0;
+   }
+
+   @Override
+   public double H() {
+      return this.du();
+   }
+
+   @Override
+   public double I() {
+      return this.dw() + 0.5;
+   }
+
+   @Override
+   public double J() {
+      return this.dA();
+   }
+
+   @Override
+   public boolean K() {
+      return false;
    }
 
    @Override
    public void l() {
       super.l();
-      this.d.run();
+      if (!this.dP().B && this.bD() && this.G() && this.M()) {
+         this.e();
+      }
    }
 
-   public daz B() {
-      return this.c;
+   public boolean M() {
+      if (dqg.a(this.dP(), this)) {
+         return true;
+      } else {
+         for (cjh $$1 : this.dP().a(cjh.class, this.cK().c(0.25, 0.0, 0.25), bsz.a)) {
+            if (dqg.a(this, $$1)) {
+               return true;
+            }
+         }
+
+         return false;
+      }
    }
 
    @Override
-   public boolean cP() {
-      return true;
+   protected cuk ag_() {
+      return cus.nQ;
+   }
+
+   @Override
+   protected void b(us $$0) {
+      super.b($$0);
+      $$0.a("Enabled", this.c);
+   }
+
+   @Override
+   protected void a(us $$0) {
+      super.a($$0);
+      this.c = $$0.e("Enabled") ? $$0.q("Enabled") : true;
+   }
+
+   @Override
+   public cpu a(int $$0, cmw $$1) {
+      return new cqt($$0, $$1, this);
    }
 }

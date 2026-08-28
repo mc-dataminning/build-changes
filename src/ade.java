@@ -1,55 +1,45 @@
-public class ade implements zv<ach> {
-   public static final zm<wz, ade> a = zv.a(ade::a, ade::new);
-   public static final int b = -1;
-   public static final int c = -2;
+public class ade implements zw<aci> {
+   public static final zn<wm, ade> a = zw.a(ade::a, ade::new);
+   private final int b;
+   private final int c;
    private final int d;
-   private final int e;
-   private final int f;
-   private final cuo g;
 
-   public ade(int $$0, int $$1, int $$2, cuo $$3) {
-      this.d = $$0;
-      this.e = $$1;
-      this.f = $$2;
-      this.g = $$3.s();
+   public ade(int $$0, int $$1, int $$2) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
    }
 
-   private ade(wz $$0) {
-      this.d = $$0.readByte();
-      this.e = $$0.l();
-      this.f = $$0.readShort();
-      this.g = cuo.h.decode($$0);
+   private ade(wm $$0) {
+      this.b = $$0.readUnsignedByte();
+      this.c = $$0.readShort();
+      this.d = $$0.readShort();
    }
 
-   private void a(wz $$0) {
-      $$0.k(this.d);
-      $$0.c(this.e);
-      $$0.l(this.f);
-      cuo.h.encode($$0, this.g);
+   private void a(wm $$0) {
+      $$0.k(this.b);
+      $$0.l(this.c);
+      $$0.l(this.d);
    }
 
    @Override
-   public zx<ade> a() {
-      return agt.w;
+   public zy<ade> a() {
+      return agu.v;
    }
 
-   public void a(ach $$0) {
+   public void a(aci $$0) {
       $$0.a(this);
    }
 
    public int b() {
-      return this.d;
+      return this.b;
    }
 
    public int e() {
-      return this.f;
+      return this.c;
    }
 
-   public cuo f() {
-      return this.g;
-   }
-
-   public int g() {
-      return this.e;
+   public int f() {
+      return this.d;
    }
 }

@@ -1,132 +1,32 @@
-import com.google.common.annotations.VisibleForTesting;
 import com.mojang.serialization.Codec;
+import java.util.stream.LongStream;
 
-public class dyu implements azg {
-   private static final float c = 5.9604645E-8F;
-   private static final double d = 1.110223E-16F;
-   public static final Codec<dyu> b = dyt.a.xmap($$0 -> new dyu($$0), $$0 -> $$0.e);
-   private dyt e;
-   private final dxv f = new dxv(this);
+public class dyu {
+   private long b;
+   private long c;
+   public static final Codec<dyu> a = Codec.LONG_STREAM
+      .comapFlatMap($$0 -> ac.a($$0, 2).map($$0x -> new dyu($$0x[0], $$0x[1])), $$0 -> LongStream.of($$0.b, $$0.c));
 
-   public dyu(long $$0) {
-      this.e = new dyt(dyi.c($$0));
-   }
-
-   public dyu(dyi.a $$0) {
-      this.e = new dyt($$0);
+   public dyu(dyj.a $$0) {
+      this($$0.b(), $$0.c());
    }
 
    public dyu(long $$0, long $$1) {
-      this.e = new dyt($$0, $$1);
-   }
-
-   private dyu(dyt $$0) {
-      this.e = $$0;
-   }
-
-   @Override
-   public azg d() {
-      return new dyu(this.e.a(), this.e.a());
-   }
-
-   @Override
-   public dyg e() {
-      return new dyu.a(this.e.a(), this.e.a());
-   }
-
-   @Override
-   public void b(long $$0) {
-      this.e = new dyt(dyi.c($$0));
-      this.f.a();
-   }
-
-   @Override
-   public int f() {
-      return (int)this.e.a();
-   }
-
-   @Override
-   public int a(int $$0) {
-      if ($$0 <= 0) {
-         throw new IllegalArgumentException("Bound must be positive");
-      } else {
-         long $$1 = Integer.toUnsignedLong(this.f());
-         long $$2 = $$1 * (long)$$0;
-         long $$3 = $$2 & 4294967295L;
-         if ($$3 < (long)$$0) {
-            for (int $$4 = Integer.remainderUnsigned(~$$0 + 1, $$0); $$3 < (long)$$4; $$3 = $$2 & 4294967295L) {
-               $$1 = Integer.toUnsignedLong(this.f());
-               $$2 = $$1 * (long)$$0;
-            }
-         }
-
-         long $$5 = $$2 >> 32;
-         return (int)$$5;
+      this.b = $$0;
+      this.c = $$1;
+      if ((this.b | this.c) == 0L) {
+         this.b = -7046029254386353131L;
+         this.c = 7640891576956012809L;
       }
    }
 
-   @Override
-   public long g() {
-      return this.e.a();
-   }
-
-   @Override
-   public boolean h() {
-      return (this.e.a() & 1L) != 0L;
-   }
-
-   @Override
-   public float i() {
-      return (float)this.c(24) * 5.9604645E-8F;
-   }
-
-   @Override
-   public double j() {
-      return (double)this.c(53) * 1.110223E-16F;
-   }
-
-   @Override
-   public double k() {
-      return this.f.b();
-   }
-
-   @Override
-   public void b(int $$0) {
-      for (int $$1 = 0; $$1 < $$0; $$1++) {
-         this.e.a();
-      }
-   }
-
-   private long c(int $$0) {
-      return this.e.a() >>> 64 - $$0;
-   }
-
-   public static class a implements dyg {
-      private final long a;
-      private final long b;
-
-      public a(long $$0, long $$1) {
-         this.a = $$0;
-         this.b = $$1;
-      }
-
-      @Override
-      public azg a(int $$0, int $$1, int $$2) {
-         long $$3 = ayy.b($$0, $$1, $$2);
-         long $$4 = $$3 ^ this.a;
-         return new dyu($$4, this.b);
-      }
-
-      @Override
-      public azg a(String $$0) {
-         dyi.a $$1 = dyi.a($$0);
-         return new dyu($$1.a(this.a, this.b));
-      }
-
-      @VisibleForTesting
-      @Override
-      public void a(StringBuilder $$0) {
-         $$0.append("seedLo: ").append(this.a).append(", seedHi: ").append(this.b);
-      }
+   public long a() {
+      long $$0 = this.b;
+      long $$1 = this.c;
+      long $$2 = Long.rotateLeft($$0 + $$1, 17) + $$0;
+      $$1 ^= $$0;
+      this.b = Long.rotateLeft($$0, 49) ^ $$1 ^ $$1 << 21;
+      this.c = Long.rotateLeft($$1, 28);
+      return $$2;
    }
 }

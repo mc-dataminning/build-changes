@@ -1,61 +1,64 @@
-import com.mojang.serialization.Codec;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableList.Builder;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
-import java.util.function.Consumer;
 
-public class erc extends eqz {
-   public static final MapCodec<erc> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(axe.a(lq.G).fieldOf("name").forGetter($$0x -> $$0x.j), Codec.BOOL.fieldOf("expand").forGetter($$0x -> $$0x.k))
-            .and(b($$0))
-            .apply($$0, erc::new)
-   );
-   private final axe<cuj> j;
-   private final boolean k;
+public class erc extends eqr {
+   public static final MapCodec<erc> a = a(erc::new);
 
-   private erc(axe<cuj> $$0, boolean $$1, int $$2, int $$3, List<etr> $$4, List<eru> $$5) {
-      super($$2, $$3, $$4, $$5);
-      this.j = $$0;
-      this.k = $$1;
+   erc(List<eqy> $$0, List<ets> $$1) {
+      super($$0, $$1);
    }
 
    @Override
-   public eqy a() {
-      return eqv.f;
+   public eqz a() {
+      return eqw.h;
    }
 
    @Override
-   public void a(Consumer<cuo> $$0, eqh $$1) {
-      lp.h.c(this.j).forEach($$1x -> $$0.accept(new cuo($$1x)));
-   }
-
-   private boolean a(eqh $$0, Consumer<eqw> $$1) {
-      if (!this.a($$0)) {
-         return false;
-      } else {
-         for (final ji<cuj> $$2 : lp.h.c(this.j)) {
-            $$1.accept(new eqz.c() {
-               @Override
-               public void a(Consumer<cuo> $$0, eqh $$1) {
-                  $$0.accept(new cuo($$2));
-               }
-            });
+   protected eqq a(List<? extends eqq> $$0) {
+      return switch ($$0.size()) {
+         case 0 -> c;
+         case 1 -> (eqq)$$0.get(0);
+         case 2 -> $$0.get(0).and($$0.get(1));
+         default -> ($$1, $$2) -> {
+         for (eqq $$3 : $$0) {
+            if (!$$3.expand($$1, $$2)) {
+               return false;
+            }
          }
 
          return true;
+      };
+      };
+   }
+
+   public static erc.a a(eqy.a<?>... $$0) {
+      return new erc.a($$0);
+   }
+
+   public static class a extends eqy.a<erc.a> {
+      private final Builder<eqy> a = ImmutableList.builder();
+
+      public a(eqy.a<?>... $$0) {
+         for (eqy.a<?> $$1 : $$0) {
+            this.a.add($$1.b());
+         }
       }
-   }
 
-   @Override
-   public boolean expand(eqh $$0, Consumer<eqw> $$1) {
-      return this.k ? this.a($$0, $$1) : super.expand($$0, $$1);
-   }
+      protected erc.a a() {
+         return this;
+      }
 
-   public static eqz.a<?> a(axe<cuj> $$0) {
-      return a(($$1, $$2, $$3, $$4) -> new erc($$0, false, $$1, $$2, $$3, $$4));
-   }
+      @Override
+      public erc.a c(eqy.a<?> $$0) {
+         this.a.add($$0.b());
+         return this;
+      }
 
-   public static eqz.a<?> b(axe<cuj> $$0) {
-      return a(($$1, $$2, $$3, $$4) -> new erc($$0, true, $$1, $$2, $$3, $$4));
+      @Override
+      public eqy b() {
+         return new erc(this.a.build(), this.f());
+      }
    }
 }

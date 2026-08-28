@@ -1,18 +1,35 @@
-public class giz<T extends ckm> extends gjp<T> {
-   private static final ale a = new ale("textures/entity/illager/evoker.png");
+public class giz extends giw<cnh> {
+   private static final alf a = new alf("textures/entity/illager/evoker_fangs.png");
+   private final fub<cnh> f;
 
-   public giz(giw.a $$0) {
-      super($$0, new fun<>($$0.a(fwy.ab)), 0.5F);
-      this.a(new gnb<T, fun<T>>(this, $$0.d()) {
-         public void a(ezx $$0, gdn $$1, int $$2, T $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-            if ($$3.gA()) {
-               super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8, $$9);
-            }
-         }
-      });
+   public giz(gix.a $$0) {
+      super($$0);
+      this.f = new fub<>($$0.a(fwz.ac));
    }
 
-   public ale a(T $$0) {
+   public void a(cnh $$0, float $$1, float $$2, ezy $$3, gdo $$4, int $$5) {
+      float $$6 = $$0.a($$2);
+      if ($$6 != 0.0F) {
+         float $$7 = 2.0F;
+         if ($$6 > 0.9F) {
+            $$7 *= (1.0F - $$6) / 0.1F;
+         }
+
+         $$3.a();
+         $$3.a(a.d.rotationDegrees(90.0F - $$0.dF()));
+         $$3.b(-$$7, -$$7, $$7);
+         float $$8 = 0.03125F;
+         $$3.a(0.0, -0.626, 0.0);
+         $$3.b(0.5F, 0.5F, 0.5F);
+         this.f.a($$0, $$6, 0.0F, 0.0F, $$0.dF(), $$0.dH());
+         fac $$9 = $$4.getBuffer(this.f.a(a));
+         this.f.a($$3, $$9, $$5, goq.d, 1.0F, 1.0F, 1.0F, 1.0F);
+         $$3.b();
+         super.a($$0, $$1, $$2, $$3, $$4, $$5);
+      }
+   }
+
+   public alf a(cnh $$0) {
       return a;
    }
 }

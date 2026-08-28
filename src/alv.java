@@ -1,17 +1,9 @@
-public interface alv extends alu {
-   aqb a();
+public interface alv {
+   String af();
 
-   String b();
+   String L();
 
-   int d();
+   int M();
 
-   String h();
-
-   String[] O();
-
-   String s();
-
-   String u();
-
-   String a(String var1);
+   int N();
 }

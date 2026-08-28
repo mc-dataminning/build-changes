@@ -1,57 +1,158 @@
 import com.mojang.serialization.Codec;
-import java.util.Optional;
+import java.util.BitSet;
+import java.util.function.Function;
 
-public class ebt extends eax<edk> {
+public class ebt extends eay<edk> {
    public ebt(Codec<edk> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(eaz<edk> $$0) {
-      dby $$1 = $$0.b();
+   public boolean a(eba<edk> $$0) {
+      azh $$1 = $$0.d();
       iz $$2 = $$0.e();
-      azg $$3 = $$0.d();
+      dct $$3 = $$0.b();
       edk $$4 = $$0.f();
-      Optional<je> $$5 = a($$1, $$2, $$3);
-      if ($$5.isEmpty()) {
-         return false;
-      } else {
-         iz $$6 = $$2.a($$5.get().g());
-         a($$1, $$3, $$6, $$4);
-         int $$7 = $$3.i() < $$4.b && eat.c($$1.a_($$2.a($$5.get()))) ? 2 : 1;
-         eat.a($$1, $$2, $$5.get(), $$7, false);
-         return true;
+      float $$5 = $$1.i() * (float) Math.PI;
+      float $$6 = (float)$$4.c / 8.0F;
+      int $$7 = ayz.f(((float)$$4.c / 16.0F * 2.0F + 1.0F) / 2.0F);
+      double $$8 = (double)$$2.u() + Math.sin((double)$$5) * (double)$$6;
+      double $$9 = (double)$$2.u() - Math.sin((double)$$5) * (double)$$6;
+      double $$10 = (double)$$2.w() + Math.cos((double)$$5) * (double)$$6;
+      double $$11 = (double)$$2.w() - Math.cos((double)$$5) * (double)$$6;
+      int $$12 = 2;
+      double $$13 = (double)($$2.v() + $$1.a(3) - 2);
+      double $$14 = (double)($$2.v() + $$1.a(3) - 2);
+      int $$15 = $$2.u() - ayz.f($$6) - $$7;
+      int $$16 = $$2.v() - 2 - $$7;
+      int $$17 = $$2.w() - ayz.f($$6) - $$7;
+      int $$18 = 2 * (ayz.f($$6) + $$7);
+      int $$19 = 2 * (2 + $$7);
+
+      for (int $$20 = $$15; $$20 <= $$15 + $$18; $$20++) {
+         for (int $$21 = $$17; $$21 <= $$17 + $$18; $$21++) {
+            if ($$16 <= $$3.a(dxu.a.c, $$20, $$21)) {
+               return this.a($$3, $$1, $$4, $$8, $$9, $$10, $$11, $$13, $$14, $$15, $$16, $$17, $$18, $$19);
+            }
+         }
       }
+
+      return false;
    }
 
-   private static Optional<je> a(dby $$0, iz $$1, azg $$2) {
-      boolean $$3 = eat.b($$0.a_($$1.c()));
-      boolean $$4 = eat.b($$0.a_($$1.d()));
-      if ($$3 && $$4) {
-         return Optional.of($$2.h() ? je.a : je.b);
-      } else if ($$3) {
-         return Optional.of(je.a);
-      } else {
-         return $$4 ? Optional.of(je.b) : Optional.empty();
+   protected boolean a(
+      dct $$0, azh $$1, edk $$2, double $$3, double $$4, double $$5, double $$6, double $$7, double $$8, int $$9, int $$10, int $$11, int $$12, int $$13
+   ) {
+      int $$14 = 0;
+      BitSet $$15 = new BitSet($$12 * $$13 * $$12);
+      iz.a $$16 = new iz.a();
+      int $$17 = $$2.c;
+      double[] $$18 = new double[$$17 * 4];
+
+      for (int $$19 = 0; $$19 < $$17; $$19++) {
+         float $$20 = (float)$$19 / (float)$$17;
+         double $$21 = ayz.d((double)$$20, $$3, $$4);
+         double $$22 = ayz.d((double)$$20, $$7, $$8);
+         double $$23 = ayz.d((double)$$20, $$5, $$6);
+         double $$24 = $$1.j() * (double)$$17 / 16.0;
+         double $$25 = ((double)(ayz.a((float) Math.PI * $$20) + 1.0F) * $$24 + 1.0) / 2.0;
+         $$18[$$19 * 4 + 0] = $$21;
+         $$18[$$19 * 4 + 1] = $$22;
+         $$18[$$19 * 4 + 2] = $$23;
+         $$18[$$19 * 4 + 3] = $$25;
       }
-   }
 
-   private static void a(dby $$0, azg $$1, iz $$2, edk $$3) {
-      eat.c($$0, $$2);
-
-      for (je $$4 : je.c.a) {
-         if (!($$1.i() > $$3.c)) {
-            iz $$5 = $$2.a($$4);
-            eat.c($$0, $$5);
-            if (!($$1.i() > $$3.d)) {
-               iz $$6 = $$5.a(je.b($$1));
-               eat.c($$0, $$6);
-               if (!($$1.i() > $$3.e)) {
-                  iz $$7 = $$6.a(je.b($$1));
-                  eat.c($$0, $$7);
+      for (int $$26 = 0; $$26 < $$17 - 1; $$26++) {
+         if (!($$18[$$26 * 4 + 3] <= 0.0)) {
+            for (int $$27 = $$26 + 1; $$27 < $$17; $$27++) {
+               if (!($$18[$$27 * 4 + 3] <= 0.0)) {
+                  double $$28 = $$18[$$26 * 4 + 0] - $$18[$$27 * 4 + 0];
+                  double $$29 = $$18[$$26 * 4 + 1] - $$18[$$27 * 4 + 1];
+                  double $$30 = $$18[$$26 * 4 + 2] - $$18[$$27 * 4 + 2];
+                  double $$31 = $$18[$$26 * 4 + 3] - $$18[$$27 * 4 + 3];
+                  if ($$31 * $$31 > $$28 * $$28 + $$29 * $$29 + $$30 * $$30) {
+                     if ($$31 > 0.0) {
+                        $$18[$$27 * 4 + 3] = -1.0;
+                     } else {
+                        $$18[$$26 * 4 + 3] = -1.0;
+                     }
+                  }
                }
             }
          }
+      }
+
+      try (dtw $$32 = new dtw($$0)) {
+         for (int $$33 = 0; $$33 < $$17; $$33++) {
+            double $$34 = $$18[$$33 * 4 + 3];
+            if (!($$34 < 0.0)) {
+               double $$35 = $$18[$$33 * 4 + 0];
+               double $$36 = $$18[$$33 * 4 + 1];
+               double $$37 = $$18[$$33 * 4 + 2];
+               int $$38 = Math.max(ayz.a($$35 - $$34), $$9);
+               int $$39 = Math.max(ayz.a($$36 - $$34), $$10);
+               int $$40 = Math.max(ayz.a($$37 - $$34), $$11);
+               int $$41 = Math.max(ayz.a($$35 + $$34), $$38);
+               int $$42 = Math.max(ayz.a($$36 + $$34), $$39);
+               int $$43 = Math.max(ayz.a($$37 + $$34), $$40);
+
+               for (int $$44 = $$38; $$44 <= $$41; $$44++) {
+                  double $$45 = ((double)$$44 + 0.5 - $$35) / $$34;
+                  if ($$45 * $$45 < 1.0) {
+                     for (int $$46 = $$39; $$46 <= $$42; $$46++) {
+                        double $$47 = ((double)$$46 + 0.5 - $$36) / $$34;
+                        if ($$45 * $$45 + $$47 * $$47 < 1.0) {
+                           for (int $$48 = $$40; $$48 <= $$43; $$48++) {
+                              double $$49 = ((double)$$48 + 0.5 - $$37) / $$34;
+                              if ($$45 * $$45 + $$47 * $$47 + $$49 * $$49 < 1.0 && !$$0.d($$46)) {
+                                 int $$50 = $$44 - $$9 + ($$46 - $$10) * $$12 + ($$48 - $$11) * $$12 * $$13;
+                                 if (!$$15.get($$50)) {
+                                    $$15.set($$50);
+                                    $$16.d($$44, $$46, $$48);
+                                    if ($$0.f_($$16)) {
+                                       duj $$51 = $$32.a($$16);
+                                       if ($$51 != null) {
+                                          int $$52 = kb.b($$44);
+                                          int $$53 = kb.b($$46);
+                                          int $$54 = kb.b($$48);
+                                          dsc $$55 = $$51.a($$52, $$53, $$54);
+
+                                          for (edk.a $$56 : $$2.b) {
+                                             if (a($$55, $$32::b, $$1, $$2, $$56, $$16)) {
+                                                $$51.a($$52, $$53, $$54, $$56.c, false);
+                                                $$14++;
+                                                break;
+                                             }
+                                          }
+                                       }
+                                    }
+                                 }
+                              }
+                           }
+                        }
+                     }
+                  }
+               }
+            }
+         }
+      }
+
+      return $$14 > 0;
+   }
+
+   public static boolean a(dsc $$0, Function<iz, dsc> $$1, azh $$2, edk $$3, edk.a $$4, iz.a $$5) {
+      if (!$$4.b.a($$0, $$2)) {
+         return false;
+      } else {
+         return a($$2, $$3.d) ? true : !a($$1, $$5);
+      }
+   }
+
+   protected static boolean a(azh $$0, float $$1) {
+      if ($$1 <= 0.0F) {
+         return true;
+      } else {
+         return $$1 >= 1.0F ? false : $$0.i() >= $$1;
       }
    }
 }

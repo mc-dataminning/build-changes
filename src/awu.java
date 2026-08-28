@@ -1,11 +1,10 @@
-public final class awu {
-   public static final axe<ent> a = a("water");
-   public static final axe<ent> b = a("lava");
+public class awu {
+   public static final axf<egl> a = a("visible");
 
    private awu() {
    }
 
-   private static axe<ent> a(String $$0) {
-      return axe.a(lq.z, new ale($$0));
+   private static axf<egl> a(String $$0) {
+      return axf.a(lq.aF, new alf($$0));
    }
 }

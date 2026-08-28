@@ -1,65 +1,156 @@
-import com.mojang.brigadier.StringReader;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.suggestion.Suggestions;
-import com.mojang.brigadier.suggestion.SuggestionsBuilder;
 import java.util.List;
 import java.util.Optional;
-import java.util.concurrent.CompletableFuture;
-import java.util.stream.Collectors;
+import org.apache.commons.lang3.mutable.MutableBoolean;
 
-public record bmr<T>(bmj<StringReader> a, bmh<T> b) {
-   public Optional<T> a(bmm<StringReader> $$0) {
-      return $$0.a(this.b);
+public interface bmr<S> {
+   boolean a(bmn<S> var1, bmp var2, bmj var3);
+
+   static <S> bmr<S> a(bmi<?> $$0) {
+      return new bmr.d<>($$0);
    }
 
-   public T a(StringReader $$0) throws CommandSyntaxException {
-      bmk.a<StringReader> $$1 = new bmk.a<>();
-      bmv $$2 = new bmv(this.a(), $$1, $$0);
-      Optional<T> $$3 = this.a($$2);
-      if ($$3.isPresent()) {
-         return $$3.get();
-      } else {
-         List<Exception> $$4 = $$1.a().stream().<Exception>mapMulti(($$0x, $$1x) -> {
-            if ($$0x.c() instanceof Exception $$3x) {
-               $$1x.accept($$3x);
-            }
-         }).toList();
+   static <S, T> bmr<S> a(bmi<T> $$0, T $$1) {
+      return new bmr.b<>($$0, $$1);
+   }
 
-         for (Exception $$5 : $$4) {
-            if ($$5 instanceof CommandSyntaxException $$6) {
-               throw $$6;
-            }
+   @SafeVarargs
+   static <S> bmr<S> a(bmr<S>... $$0) {
+      return new bmr.e<>(List.of($$0));
+   }
+
+   @SafeVarargs
+   static <S> bmr<S> b(bmr<S>... $$0) {
+      return new bmr.a<>(List.of($$0));
+   }
+
+   static <S> bmr<S> a(bmr<S> $$0) {
+      return new bmr.c<>($$0);
+   }
+
+   static <S> bmr<S> a() {
+      return new bmr<S>() {
+         @Override
+         public boolean a(bmn<S> $$0, bmp $$1, bmj $$2) {
+            $$2.cut();
+            return true;
          }
 
-         if ($$4.size() == 1 && $$4.get(0) instanceof RuntimeException $$7) {
-            throw $$7;
-         } else {
-            throw new IllegalStateException("Failed to parse: " + $$1.a().stream().map(bml::toString).collect(Collectors.joining(", ")));
+         @Override
+         public String toString() {
+            return "↑";
          }
+      };
+   }
+
+   static <S> bmr<S> b() {
+      return new bmr<S>() {
+         @Override
+         public boolean a(bmn<S> $$0, bmp $$1, bmj $$2) {
+            return true;
+         }
+
+         @Override
+         public String toString() {
+            return "ε";
+         }
+      };
+   }
+
+   public static record a<S>(List<bmr<S>> a) implements bmr<S> {
+      @Override
+      public boolean a(bmn<S> $$0, bmp $$1, bmj $$2) {
+         MutableBoolean $$3 = new MutableBoolean();
+         bmj $$4 = $$3::setTrue;
+         int $$5 = $$0.c();
+
+         for (bmr<S> $$6 : this.a) {
+            if ($$3.isTrue()) {
+               break;
+            }
+
+            bmp $$7 = new bmp();
+            if ($$6.a($$0, $$7, $$4)) {
+               $$1.a($$7);
+               return true;
+            }
+
+            $$0.a($$5);
+         }
+
+         return false;
+      }
+
+      public List<bmr<S>> c() {
+         return this.a;
       }
    }
 
-   public CompletableFuture<Suggestions> a(SuggestionsBuilder $$0) {
-      StringReader $$1 = new StringReader($$0.getInput());
-      $$1.setCursor($$0.getStart());
-      bmk.a<StringReader> $$2 = new bmk.a<>();
-      bmv $$3 = new bmv(this.a(), $$2, $$1);
-      this.a($$3);
-      List<bml<StringReader>> $$4 = $$2.a();
-      if ($$4.isEmpty()) {
-         return $$0.buildFuture();
-      } else {
-         SuggestionsBuilder $$5 = $$0.createOffset($$2.b());
+   public static record b<S, T>(bmi<T> a, T b) implements bmr<S> {
+      @Override
+      public boolean a(bmn<S> $$0, bmp $$1, bmj $$2) {
+         $$1.a(this.a, this.b);
+         return true;
+      }
 
-         for (bml<StringReader> $$6 : $$4) {
-            if ($$6.b() instanceof bmu $$7) {
-               eu.a($$7.a(), $$5);
-            } else {
-               eu.b($$6.b().possibleValues($$3), $$5);
+      public bmi<T> c() {
+         return this.a;
+      }
+
+      public T d() {
+         return this.b;
+      }
+   }
+
+   public static record c<S>(bmr<S> a) implements bmr<S> {
+      @Override
+      public boolean a(bmn<S> $$0, bmp $$1, bmj $$2) {
+         int $$3 = $$0.c();
+         if (!this.a.a($$0, $$1, $$2)) {
+            $$0.a($$3);
+         }
+
+         return true;
+      }
+
+      public bmr<S> c() {
+         return this.a;
+      }
+   }
+
+   public static record d<S, T>(bmi<T> a) implements bmr<S> {
+      @Override
+      public boolean a(bmn<S> $$0, bmp $$1, bmj $$2) {
+         Optional<T> $$3 = $$0.b(this.a);
+         if ($$3.isEmpty()) {
+            return false;
+         } else {
+            $$1.a(this.a, $$3.get());
+            return true;
+         }
+      }
+
+      public bmi<T> c() {
+         return this.a;
+      }
+   }
+
+   public static record e<S>(List<bmr<S>> a) implements bmr<S> {
+      @Override
+      public boolean a(bmn<S> $$0, bmp $$1, bmj $$2) {
+         int $$3 = $$0.c();
+
+         for (bmr<S> $$4 : this.a) {
+            if (!$$4.a($$0, $$1, $$2)) {
+               $$0.a($$3);
+               return false;
             }
          }
 
-         return $$5.buildFuture();
+         return true;
+      }
+
+      public List<bmr<S>> c() {
+         return this.a;
       }
    }
 }

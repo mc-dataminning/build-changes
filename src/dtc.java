@@ -1,62 +1,71 @@
-public enum dtc implements azt {
-   a("harp", avz.rV, dtc.a.a),
-   b("basedrum", avz.rP, dtc.a.a),
-   c("snare", avz.rY, dtc.a.a),
-   d("hat", avz.rW, dtc.a.a),
-   e("bass", avz.rQ, dtc.a.a),
-   f("flute", avz.rT, dtc.a.a),
-   g("bell", avz.rR, dtc.a.a),
-   h("guitar", avz.rU, dtc.a.a),
-   i("chime", avz.rS, dtc.a.a),
-   j("xylophone", avz.rZ, dtc.a.a),
-   k("iron_xylophone", avz.sa, dtc.a.a),
-   l("cow_bell", avz.sb, dtc.a.a),
-   m("didgeridoo", avz.sc, dtc.a.a),
-   n("bit", avz.sd, dtc.a.a),
-   o("banjo", avz.se, dtc.a.a),
-   p("pling", avz.rX, dtc.a.a),
-   q("zombie", avz.sf, dtc.a.b),
-   r("skeleton", avz.sg, dtc.a.b),
-   s("creeper", avz.sh, dtc.a.b),
-   t("dragon", avz.si, dtc.a.b),
-   u("wither_skeleton", avz.sj, dtc.a.b),
-   v("piglin", avz.sk, dtc.a.b),
-   w("custom_head", avz.Ao, dtc.a.c);
+import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.Sets;
+import java.util.Collection;
+import java.util.Optional;
+import java.util.Set;
 
-   private final String x;
-   private final ji<avy> y;
-   private final dtc.a z;
+public class dtc extends dtf<Integer> {
+   private final ImmutableSet<Integer> a;
+   private final int b;
+   private final int c;
 
-   private dtc(final String $$0, final ji<avy> $$1, final dtc.a $$2) {
-      this.x = $$0;
-      this.y = $$1;
-      this.z = $$2;
+   protected dtc(String $$0, int $$1, int $$2) {
+      super($$0, Integer.class);
+      if ($$1 < 0) {
+         throw new IllegalArgumentException("Min value of " + $$0 + " must be 0 or greater");
+      } else if ($$2 <= $$1) {
+         throw new IllegalArgumentException("Max value of " + $$0 + " must be greater than min (" + $$1 + ")");
+      } else {
+         this.b = $$1;
+         this.c = $$2;
+         Set<Integer> $$3 = Sets.newHashSet();
+
+         for (int $$4 = $$1; $$4 <= $$2; $$4++) {
+            $$3.add($$4);
+         }
+
+         this.a = ImmutableSet.copyOf($$3);
+      }
    }
 
    @Override
-   public String c() {
-      return this.x;
+   public Collection<Integer> a() {
+      return this.a;
    }
 
-   public ji<avy> a() {
-      return this.y;
+   @Override
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else {
+         if ($$0 instanceof dtc $$1 && super.equals($$0)) {
+            return this.a.equals($$1.a);
+         }
+
+         return false;
+      }
    }
 
-   public boolean b() {
-      return this.z == dtc.a.a;
+   @Override
+   public int b() {
+      return 31 * super.b() + this.a.hashCode();
    }
 
-   public boolean d() {
-      return this.z == dtc.a.c;
+   public static dtc a(String $$0, int $$1, int $$2) {
+      return new dtc($$0, $$1, $$2);
    }
 
-   public boolean e() {
-      return this.z != dtc.a.a;
+   @Override
+   public Optional<Integer> b(String $$0) {
+      try {
+         Integer $$1 = Integer.valueOf($$0);
+         return $$1 >= this.b && $$1 <= this.c ? Optional.of($$1) : Optional.empty();
+      } catch (NumberFormatException var3) {
+         return Optional.empty();
+      }
    }
 
-   static enum a {
-      a,
-      b,
-      c;
+   public String a(Integer $$0) {
+      return $$0.toString();
    }
 }

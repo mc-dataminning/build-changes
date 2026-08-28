@@ -1,25 +1,50 @@
-public class baa<A, B> {
-   private A a;
-   private B b;
+import it.unimi.dsi.fastutil.floats.Float2FloatFunction;
+import java.util.function.Function;
 
-   public baa(A $$0, B $$1) {
-      this.a = $$0;
-      this.b = $$1;
+public interface baa<C> {
+   baa<Float> a = a($$0 -> $$0);
+
+   float a(C var1);
+
+   float b();
+
+   float c();
+
+   static baa<Float> a(final Float2FloatFunction $$0) {
+      return new baa<Float>() {
+         public float a(Float $$0x) {
+            return (Float)$$0.apply($$0);
+         }
+
+         @Override
+         public float b() {
+            return Float.NEGATIVE_INFINITY;
+         }
+
+         @Override
+         public float c() {
+            return Float.POSITIVE_INFINITY;
+         }
+      };
    }
 
-   public A a() {
-      return this.a;
-   }
+   default <C2> baa<C2> a(final Function<C2, C> $$0) {
+      final baa<C> $$1 = this;
+      return new baa<C2>() {
+         @Override
+         public float a(C2 $$0x) {
+            return $$1.a($$0.apply($$0));
+         }
 
-   public void a(A $$0) {
-      this.a = $$0;
-   }
+         @Override
+         public float b() {
+            return $$1.b();
+         }
 
-   public B b() {
-      return this.b;
-   }
-
-   public void b(B $$0) {
-      this.b = $$0;
+         @Override
+         public float c() {
+            return $$1.c();
+         }
+      };
    }
 }

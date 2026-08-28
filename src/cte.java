@@ -1,16 +1,18 @@
-import java.util.List;
+public class cte extends cwf {
+   protected cte(cwe $$0, axf<dez> $$1, cuk.a $$2) {
+      super($$0, $$2.a(km.x, $$0.a($$1)));
+   }
 
-public class cte extends cuj {
-   public cte(cuj.a $$0) {
-      super($$0);
+   public static cxk a(cwe $$0, float $$1, float $$2) {
+      return cxk.a()
+         .a(bux.c, new buv(e, "Tool modifier", (double)($$1 + $$0.c()), buv.a.a), btc.b)
+         .a(bux.e, new buv(f, "Tool modifier", (double)$$2, buv.a.a), btc.b)
+         .a();
    }
 
    @Override
-   public void a(cuo $$0, cuj.b $$1, List<xo> $$2, cwh $$3) {
-      $$2.add(this.c().a(n.h));
-   }
-
-   public yc c() {
-      return xo.c(this.a() + ".desc");
+   public boolean a(cup $$0, btp $$1, btp $$2) {
+      $$0.a(2, $$2, btb.a);
+      return true;
    }
 }

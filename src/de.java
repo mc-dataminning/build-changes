@@ -10,8 +10,8 @@ import java.util.function.Function;
 import java.util.function.Supplier;
 
 public interface de<T extends Number> {
-   SimpleCommandExceptionType a = new SimpleCommandExceptionType(xo.c("argument.range.empty"));
-   SimpleCommandExceptionType b = new SimpleCommandExceptionType(xo.c("argument.range.swapped"));
+   SimpleCommandExceptionType a = new SimpleCommandExceptionType(xp.c("argument.range.empty"));
+   SimpleCommandExceptionType b = new SimpleCommandExceptionType(xp.c("argument.range.swapped"));
 
    Optional<T> a();
 

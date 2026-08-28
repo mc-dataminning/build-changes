@@ -1,8 +1,3 @@
-import javax.annotation.ParametersAreNonnullByDefault;
-
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface byy {
+public interface byy<E extends btp> {
+   boolean trigger(arf var1, E var2, long var3);
 }

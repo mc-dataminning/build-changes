@@ -1,5 +1,13 @@
-public interface buf {
-   void a(awa var1);
+import javax.annotation.Nullable;
 
-   boolean a();
+public interface buf {
+   boolean f();
+
+   void a(@Nullable awb var1);
+
+   default avz Y_() {
+      return awa.mQ;
+   }
+
+   boolean i();
 }

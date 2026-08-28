@@ -1,16 +1,41 @@
+import java.util.function.Predicate;
 import javax.annotation.Nullable;
 
-public class cby extends cbz {
-   public cby(btx $$0, double $$1) {
-      super($$0, $$1);
+public class cby<T extends btr> extends can {
+   private final T a;
+   private final cup b;
+   private final Predicate<? super T> c;
+   @Nullable
+   private final avz d;
+
+   public cby(T $$0, cup $$1, @Nullable avz $$2, Predicate<? super T> $$3) {
+      this.a = $$0;
+      this.b = $$1;
+      this.d = $$2;
+      this.c = $$3;
    }
 
-   @Nullable
    @Override
-   protected evq h() {
-      evq $$0 = this.b.f(0.0F);
-      int $$1 = 8;
-      evq $$2 = cel.a(this.b, 8, 7, $$0.c, $$0.e, (float) (Math.PI / 2), 3, 1);
-      return $$2 != null ? $$2 : ceh.a(this.b, 8, 4, -2, $$0.c, $$0.e, (float) (Math.PI / 2));
+   public boolean a() {
+      return this.c.test(this.a);
+   }
+
+   @Override
+   public boolean b() {
+      return this.a.fv();
+   }
+
+   @Override
+   public void c() {
+      this.a.a(btb.a, this.b.s());
+      this.a.c(bqt.a);
+   }
+
+   @Override
+   public void d() {
+      this.a.a(btb.a, cup.l);
+      if (this.d != null) {
+         this.a.a(this.d, 1.0F, this.a.el().i() * 0.2F + 0.9F);
+      }
    }
 }

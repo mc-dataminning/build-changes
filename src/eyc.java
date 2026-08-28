@@ -1,47 +1,35 @@
-import com.mojang.datafixers.util.Either;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
-import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
-import it.unimi.dsi.fastutil.ints.IntSet;
-import it.unimi.dsi.fastutil.ints.IntSets;
-import java.util.Map;
-import javax.annotation.Nullable;
+public interface eyc {
+   int a();
 
-public class eyc implements eya {
-   private final Int2ObjectMap<exz.a> b;
+   int b();
 
-   public eyc(Map<Integer, Float> $$0) {
-      this.b = new Int2ObjectOpenHashMap($$0.size());
-      $$0.forEach(($$0x, $$1) -> this.b.put($$0x, (exz.a)() -> $$1));
+   void a(int var1, int var2);
+
+   boolean c();
+
+   float d();
+
+   default float e() {
+      return this.i();
    }
 
-   @Nullable
-   @Override
-   public exz a(int $$0) {
-      return (exz)this.b.get($$0);
+   default float f() {
+      return this.e() + (float)this.a() / this.d();
    }
 
-   @Override
-   public IntSet a() {
-      return IntSets.unmodifiable(this.b.keySet());
+   default float g() {
+      return 7.0F - this.j();
    }
 
-   public static record a(Map<Integer, Float> c) implements fkf {
-      public static final MapCodec<eyc.a> a = RecordCodecBuilder.mapCodec(
-         $$0 -> $$0.group(Codec.unboundedMap(ayg.z, Codec.FLOAT).fieldOf("advances").forGetter(eyc.a::c)).apply($$0, eyc.a::new)
-      );
+   default float h() {
+      return this.g() + (float)this.b() / this.d();
+   }
 
-      @Override
-      public fkg a() {
-         return fkg.c;
-      }
+   default float i() {
+      return 0.0F;
+   }
 
-      @Override
-      public Either<fkf.b, fkf.c> b() {
-         fkf.b $$0 = $$0x -> new eyc(this.c);
-         return Either.left($$0);
-      }
+   default float j() {
+      return 7.0F;
    }
 }

@@ -1,52 +1,61 @@
-import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
-import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
-import it.unimi.dsi.fastutil.objects.ObjectIterator;
-import java.util.List;
+import com.google.common.collect.Maps;
+import java.util.Map;
 
-public class ghc implements ggz.a {
-   private static final int a = 160;
-   private final ffe b;
-   private final Int2ObjectMap<ghc.a> c = new Int2ObjectOpenHashMap();
+public class ghc implements gha.a {
+   private static final float a = 0.02F;
+   private final Map<iz, ghc.a> b = Maps.newHashMap();
+
+   public void a(iz $$0, int $$1, String $$2, int $$3) {
+      this.b.put($$0, new ghc.a($$1, $$2, ac.c() + (long)$$3));
+   }
 
    @Override
    public void a() {
-      this.c.clear();
-   }
-
-   public void a(int $$0, iz $$1, List<abc.a> $$2) {
-      this.c.put($$0, new ghc.a($$1, $$2));
-   }
-
-   public void a(int $$0) {
-      this.c.remove($$0);
-   }
-
-   public ghc(ffe $$0) {
-      this.b = $$0;
+      this.b.clear();
    }
 
    @Override
-   public void a(ezx $$0, gdn $$1, double $$2, double $$3, double $$4) {
-      fep $$5 = this.b.j.l();
-      iz $$6 = iz.a($$5.b().c, 0.0, $$5.b().e);
-      ObjectIterator var11 = this.c.values().iterator();
+   public void a(ezy $$0, gdo $$1, double $$2, double $$3, double $$4) {
+      long $$5 = ac.c();
+      this.b.entrySet().removeIf($$1x -> $$5 > ((ghc.a)$$1x.getValue()).c);
+      this.b.forEach(($$2x, $$3x) -> this.a($$0, $$1, $$2x, $$3x));
+   }
 
-      while (var11.hasNext()) {
-         ghc.a $$7 = (ghc.a)var11.next();
-         iz $$8 = $$7.a;
-         if ($$6.a($$8, 160.0)) {
-            for (int $$9 = 0; $$9 < $$7.b.size(); $$9++) {
-               abc.a $$10 = $$7.b.get($$9);
-               double $$11 = (double)$$8.u() + 0.5;
-               double $$12 = (double)$$8.v() + 2.0 + (double)$$9 * 0.25;
-               double $$13 = (double)$$8.w() + 0.5;
-               int $$14 = $$10.b() ? -16711936 : -3355444;
-               ggz.a($$0, $$1, $$10.c(), $$11, $$12, $$13, $$14);
-            }
-         }
+   private void a(ezy $$0, gdo $$1, iz $$2, ghc.a $$3) {
+      gha.a($$0, $$1, $$2, 0.02F, $$3.a(), $$3.b(), $$3.c(), $$3.d() * 0.75F);
+      if (!$$3.b.isEmpty()) {
+         double $$4 = (double)$$2.u() + 0.5;
+         double $$5 = (double)$$2.v() + 1.2;
+         double $$6 = (double)$$2.w() + 0.5;
+         gha.a($$0, $$1, $$3.b, $$4, $$5, $$6, -1, 0.01F, true, 0.0F, true);
       }
    }
 
-   static record a(iz a, List<abc.a> b) {
+   static class a {
+      public int a;
+      public String b;
+      public long c;
+
+      public a(int $$0, String $$1, long $$2) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
+      }
+
+      public float a() {
+         return (float)(this.a >> 16 & 0xFF) / 255.0F;
+      }
+
+      public float b() {
+         return (float)(this.a >> 8 & 0xFF) / 255.0F;
+      }
+
+      public float c() {
+         return (float)(this.a & 0xFF) / 255.0F;
+      }
+
+      public float d() {
+         return (float)(this.a >> 24 & 0xFF) / 255.0F;
+      }
    }
 }

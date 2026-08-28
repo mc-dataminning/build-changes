@@ -1,51 +1,61 @@
-import io.netty.buffer.ByteBuf;
-import java.util.List;
-import java.util.Map;
-import java.util.stream.Collectors;
+import java.util.UUID;
 
-public interface aaw {
-   aaw.b<? extends aaw> a();
+public record aaw(aaw.a c) implements aax {
+   public static final zn<wm, aaw> a = aax.a(aaw::a, aaw::new);
+   public static final aax.b<aaw> b = aax.a("debug/breeze");
 
-   static <B extends ByteBuf, T extends aaw> zm<B, T> a(zp<B, T> $$0, zn<B, T> $$1) {
-      return zm.a($$0, $$1);
+   private aaw(wm $$0) {
+      this(new aaw.a($$0));
    }
 
-   static <T extends aaw> aaw.b<T> a(String $$0) {
-      return new aaw.b<>(new ale($$0));
+   private void a(wm $$0) {
+      this.c.a($$0);
    }
 
-   static <B extends wl> zm<B, aaw> a(final aaw.a<B> $$0, List<aaw.c<? super B, ?>> $$1) {
-      final Map<ale, zm<? super B, ? extends aaw>> $$2 = $$1.stream().collect(Collectors.toUnmodifiableMap($$0x -> $$0x.a().a(), aaw.c::b));
-      return new zm<B, aaw>() {
-         private zm<? super B, ? extends aaw> a(ale $$0x) {
-            zm<? super B, ? extends aaw> $$1 = $$2.get($$0);
-            return $$1 != null ? $$1 : $$0.create($$0);
-         }
-
-         private <T extends aaw> void a(B $$0x, aaw.b<T> $$1, aaw $$2x) {
-            $$0.a($$1.a());
-            zm<B, T> $$3 = this.a($$1.a);
-            $$3.encode($$0, (T)$$2);
-         }
-
-         public void a(B $$0x, aaw $$1) {
-            this.a($$0, $$1.a(), $$1);
-         }
-
-         public aaw a(B $$0x) {
-            ale $$1 = $$0.q();
-            return (aaw)this.a($$1).decode($$0);
-         }
-      };
+   @Override
+   public aax.b<aaw> a() {
+      return b;
    }
 
-   public interface a<B extends wl> {
-      zm<B, ? extends aaw> create(ale var1);
+   public aaw.a b() {
+      return this.c;
    }
 
-   public static record b<T extends aaw>(ale a) {
-   }
+   public static record a(UUID a, int b, Integer c, iz d) {
+      public a(wm $$0) {
+         this($$0.n(), $$0.readInt(), $$0.c(wm::readInt), $$0.c(iz.b));
+      }
 
-   public static record c<B extends wl, T extends aaw>(aaw.b<T> a, zm<B, T> b) {
+      public void a(wm $$0) {
+         $$0.a(this.a);
+         $$0.p(this.b);
+         $$0.a(this.c, wm::p);
+         $$0.a(this.d, iz.b);
+      }
+
+      public String a() {
+         return ags.a(this.a);
+      }
+
+      @Override
+      public String toString() {
+         return this.a();
+      }
+
+      public UUID b() {
+         return this.a;
+      }
+
+      public int c() {
+         return this.b;
+      }
+
+      public Integer d() {
+         return this.c;
+      }
+
+      public iz e() {
+         return this.d;
+      }
    }
 }

@@ -1,9 +1,19 @@
-import java.util.List;
+public class cqj extends crp {
+   private final cqi a;
 
-public interface cqj extends bqm, crt {
-   int f();
+   public cqj(bqn $$0, int $$1, int $$2, int $$3, cqi $$4) {
+      super($$0, $$1, $$2, $$3);
+      this.a = $$4;
+   }
 
-   int g();
+   @Override
+   public boolean a(cup $$0) {
+      return !this.a.e(this.d) && super.a($$0);
+   }
 
-   List<cuo> h();
+   @Override
+   public void b() {
+      super.b();
+      this.a.a(this.c);
+   }
 }

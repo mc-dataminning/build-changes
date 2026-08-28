@@ -75,10 +75,10 @@ public class pj implements lw {
          Path var7;
          try (
             InputStream $$4 = Files.newInputStream($$1);
-            InputStream $$5 = new ayh($$4);
+            InputStream $$5 = new ayi($$4);
          ) {
             Path $$6 = $$3.resolve($$2 + ".snbt");
-            a($$0, $$6, vg.a(ve.a($$5, va.a())));
+            a($$0, $$6, vh.a(vf.a($$5, vb.a())));
             d.info("Converted {} from NBT to SNBT", $$2);
             var7 = $$6;
          }

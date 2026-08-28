@@ -30,7 +30,7 @@ public interface lw {
    String a();
 
    static <T> CompletableFuture<?> a(lu $$0, jk.a $$1, Codec<T> $$2, T $$3, Path $$4) {
-      alc<JsonElement> $$5 = $$1.a(JsonOps.INSTANCE);
+      ald<JsonElement> $$5 = $$1.a(JsonOps.INSTANCE);
       JsonElement $$6 = (JsonElement)$$2.encodeStart($$5, $$3).getOrThrow();
       return a($$0, $$6, $$4);
    }
@@ -45,7 +45,7 @@ public interface lw {
             try {
                $$5.setSerializeNulls(false);
                $$5.setIndent("  ");
-               ayo.a($$5, $$1, b);
+               ayp.a($$5, $$1, b);
             } catch (Throwable var9) {
                try {
                   $$5.close();

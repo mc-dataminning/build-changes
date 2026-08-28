@@ -1,7 +1,7 @@
 import java.util.List;
 
 public interface id<T> {
-   ale a();
+   alf a();
 
    List<hs<T>> b();
 }

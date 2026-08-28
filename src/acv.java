@@ -1,20 +1,37 @@
-public record acv(int b) implements zv<ach> {
-   public static final zm<wl, acv> a = zv.a(acv::a, acv::new);
+public class acv implements zw<aci> {
+   public static final zn<wm, acv> a = zw.a(acv::a, acv::new);
+   private final bqr b;
+   private final boolean c;
 
-   private acv(wl $$0) {
-      this($$0.l());
+   public acv(bqr $$0, boolean $$1) {
+      this.b = $$0;
+      this.c = $$1;
    }
 
-   private void a(wl $$0) {
-      $$0.c(this.b);
+   private acv(wm $$0) {
+      this.b = bqr.a($$0.readUnsignedByte());
+      this.c = $$0.readBoolean();
+   }
+
+   private void a(wm $$0) {
+      $$0.k(this.b.a());
+      $$0.a(this.c);
    }
 
    @Override
-   public zx<acv> a() {
-      return agt.n;
+   public zy<acv> a() {
+      return agu.m;
    }
 
-   public void a(ach $$0) {
+   public void a(aci $$0) {
       $$0.a(this);
+   }
+
+   public boolean b() {
+      return this.c;
+   }
+
+   public bqr e() {
+      return this.b;
    }
 }

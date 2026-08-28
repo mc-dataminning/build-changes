@@ -1,17 +1,41 @@
-import java.io.IOException;
+import com.mojang.authlib.GameProfile;
+import java.util.UUID;
 
-public class gpr extends aut<int[]> {
-   private static final ale a = new ale("textures/colormap/foliage.png");
+public class gpr {
+   private static final gpz[] a = new gpz[]{
+      a("textures/entity/player/slim/alex.png", gpz.a.a),
+      a("textures/entity/player/slim/ari.png", gpz.a.a),
+      a("textures/entity/player/slim/efe.png", gpz.a.a),
+      a("textures/entity/player/slim/kai.png", gpz.a.a),
+      a("textures/entity/player/slim/makena.png", gpz.a.a),
+      a("textures/entity/player/slim/noor.png", gpz.a.a),
+      a("textures/entity/player/slim/steve.png", gpz.a.a),
+      a("textures/entity/player/slim/sunny.png", gpz.a.a),
+      a("textures/entity/player/slim/zuri.png", gpz.a.a),
+      a("textures/entity/player/wide/alex.png", gpz.a.b),
+      a("textures/entity/player/wide/ari.png", gpz.a.b),
+      a("textures/entity/player/wide/efe.png", gpz.a.b),
+      a("textures/entity/player/wide/kai.png", gpz.a.b),
+      a("textures/entity/player/wide/makena.png", gpz.a.b),
+      a("textures/entity/player/wide/noor.png", gpz.a.b),
+      a("textures/entity/player/wide/steve.png", gpz.a.b),
+      a("textures/entity/player/wide/sunny.png", gpz.a.b),
+      a("textures/entity/player/wide/zuri.png", gpz.a.b)
+   };
 
-   protected int[] a(auo $$0, bnh $$1) {
-      try {
-         return gpu.a($$0, a);
-      } catch (IOException var4) {
-         throw new IllegalStateException("Failed to load foliage color texture", var4);
-      }
+   public static alf a() {
+      return a[6].a();
    }
 
-   protected void a(int[] $$0, auo $$1, bnh $$2) {
-      dbr.a($$0);
+   public static gpz a(UUID $$0) {
+      return a[Math.floorMod($$0.hashCode(), a.length)];
+   }
+
+   public static gpz a(GameProfile $$0) {
+      return a($$0.getId());
+   }
+
+   private static gpz a(String $$0, gpz.a $$1) {
+      return new gpz(new alf($$0), null, null, null, $$1, true);
    }
 }

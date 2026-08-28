@@ -1,48 +1,53 @@
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
-import java.util.function.Consumer;
+public class ekr {
+   private static final alf[] a = new alf[]{
+      new alf("nether_fossils/fossil_1"),
+      new alf("nether_fossils/fossil_2"),
+      new alf("nether_fossils/fossil_3"),
+      new alf("nether_fossils/fossil_4"),
+      new alf("nether_fossils/fossil_5"),
+      new alf("nether_fossils/fossil_6"),
+      new alf("nether_fossils/fossil_7"),
+      new alf("nether_fossils/fossil_8"),
+      new alf("nether_fossils/fossil_9"),
+      new alf("nether_fossils/fossil_10"),
+      new alf("nether_fossils/fossil_11"),
+      new alf("nether_fossils/fossil_12"),
+      new alf("nether_fossils/fossil_13"),
+      new alf("nether_fossils/fossil_14")
+   };
 
-public class ekr extends eij {
-   public static final MapCodec<ekr> d = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(a($$0), egq.c.fieldOf("height").forGetter($$0x -> $$0x.e)).apply($$0, ekr::new)
-   );
-   public final egq e;
-
-   public ekr(eij.c $$0, egq $$1) {
-      super($$0);
-      this.e = $$1;
+   public static void a(eml $$0, eip $$1, azh $$2, iz $$3) {
+      dlm $$4 = dlm.a($$2);
+      $$1.a(new ekr.a($$0, ac.a(a, $$2), $$3, $$4));
    }
 
-   @Override
-   public Optional<eij.b> a(eij.a $$0) {
-      dys $$1 = $$0.f();
-      int $$2 = $$0.h().d() + $$1.a(16);
-      int $$3 = $$0.h().e() + $$1.a(16);
-      int $$4 = $$0.b().f();
-      dyq $$5 = new dyq($$0.b(), $$0.i());
-      int $$6 = this.e.a($$1, $$5);
-      dcj $$7 = $$0.b().a($$2, $$3, $$0.i(), $$0.d());
-      iz.a $$8 = new iz.a($$2, $$6, $$3);
-
-      while ($$6 > $$4) {
-         dsb $$9 = $$7.a($$6);
-         dsb $$10 = $$7.a(--$$6);
-         if ($$9.i() && ($$10.a(dfa.dW) || $$10.d(dbm.a, $$8.q($$6), je.b))) {
-            break;
-         }
+   public static class a extends eiu {
+      public a(eml $$0, alf $$1, iz $$2, dlm $$3) {
+         super(ejb.ac, 0, $$0, $$1, $$1.toString(), a($$3), $$2);
       }
 
-      if ($$6 <= $$4) {
-         return Optional.empty();
-      } else {
-         iz $$11 = new iz($$2, $$6, $$3);
-         return Optional.of(new eij.b($$11, (Consumer<ejb>)($$3x -> ekq.a($$0.e(), $$3x, $$1, $$11))));
+      public a(eml $$0, us $$1) {
+         super(ejb.ac, $$1, $$0, $$1x -> a(dlm.valueOf($$1.l("Rot"))));
       }
-   }
 
-   @Override
-   public eis<?> e() {
-      return eis.i;
+      private static emg a(dlm $$0) {
+         return new emg().a($$0).a(djw.a).a(elm.d);
+      }
+
+      @Override
+      protected void a(eja $$0, us $$1) {
+         super.a($$0, $$1);
+         $$1.a("Rot", this.c.d().name());
+      }
+
+      @Override
+      protected void a(String $$0, iz $$1, dcn $$2, azh $$3, eic $$4) {
+      }
+
+      @Override
+      public void a(dct $$0, dcr $$1, dtz $$2, azh $$3, eic $$4, dbf $$5, iz $$6) {
+         $$4.b(this.b.b(this.c, this.d));
+         super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6);
+      }
    }
 }

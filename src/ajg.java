@@ -1,29 +1,29 @@
-public class ajg implements zv<ajb> {
-   public static final zm<wl, ajg> a = zv.a(ajg::a, ajg::new);
-   private final xo b;
+public class ajg implements zw<ajc> {
+   public static final zn<wm, ajg> a = zw.a(ajg::a, ajg::new);
+   private final int b;
 
-   public ajg(xo $$0) {
+   public ajg(int $$0) {
       this.b = $$0;
    }
 
-   private ajg(wl $$0) {
-      this.b = xo.a.b($$0.d(262144), jw.b);
+   private ajg(wm $$0) {
+      this.b = $$0.l();
    }
 
-   private void a(wl $$0) {
-      $$0.a(xo.a.a(this.b, jw.b));
+   private void a(wm $$0) {
+      $$0.c(this.b);
    }
 
    @Override
-   public zx<ajg> a() {
-      return ajh.e;
+   public zy<ajg> a() {
+      return aji.d;
    }
 
-   public void a(ajb $$0) {
+   public void a(ajc $$0) {
       $$0.a(this);
    }
 
-   public xo b() {
+   public int b() {
       return this.b;
    }
 }

@@ -5,16 +5,16 @@ public class kx extends ku {
    private static final Logger c = LogUtils.getLogger();
 
    @Override
-   protected cuo a(kq $$0, cuo $$1) {
+   protected cup a(kq $$0, cup $$1) {
       this.a(false);
-      cuj $$2 = $$1.g();
-      if ($$2 instanceof csm) {
-         je $$3 = $$0.d().c(dhd.b);
+      cuk $$2 = $$1.g();
+      if ($$2 instanceof csn) {
+         je $$3 = $$0.d().c(dhe.b);
          iz $$4 = $$0.c().a($$3);
          je $$5 = $$0.b().u($$4.d()) ? $$3 : je.b;
 
          try {
-            this.a(((csm)$$2).a((cxz)(new cya($$0.b(), $$4, $$3, $$1, $$5))).a());
+            this.a(((csn)$$2).a((cya)(new cyb($$0.b(), $$4, $$3, $$1, $$5))).a());
          } catch (Exception var8) {
             c.error("Error trying to place shulker box at {}", $$4, var8);
          }

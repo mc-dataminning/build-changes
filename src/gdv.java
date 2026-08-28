@@ -1,478 +1,247 @@
 import com.google.common.collect.ImmutableList;
-import java.util.List;
+import com.google.common.collect.UnmodifiableIterator;
+import com.google.common.collect.ImmutableList.Builder;
+import com.mojang.blaze3d.platform.GlStateManager;
+import com.mojang.blaze3d.systems.RenderSystem;
+import java.util.Objects;
 import java.util.Optional;
 import java.util.OptionalDouble;
-import java.util.function.BiFunction;
-import java.util.function.Function;
+import java.util.function.Supplier;
+import org.apache.commons.lang3.tuple.Triple;
+import org.joml.Matrix4f;
+import org.joml.Matrix4fStack;
 
-public abstract class gdv extends gdu {
-   private static final int aY = 1048576;
-   public static final int aT = 4194304;
-   public static final int aU = 786432;
-   public static final int aV = 1536;
-   private static final gdv aZ = a("solid", ezv.j, fac.b.h, 4194304, true, false, gdv.b.a().a(at).a(p).a(an).a(true));
-   private static final gdv ba = a("cutout_mipped", ezv.j, fac.b.h, 4194304, true, false, gdv.b.a().a(at).a(q).a(an).a(true));
-   private static final gdv bb = a("cutout", ezv.j, fac.b.h, 786432, true, false, gdv.b.a().a(at).a(r).a(ao).a(true));
-   private static final gdv bc = a("translucent", ezv.j, fac.b.h, 786432, true, true, a(s));
-   private static final gdv bd = a("translucent_moving_block", ezv.j, fac.b.h, 786432, false, true, Q());
-   private static final Function<ale, gdv> be = ac.b($$0 -> a("armor_cutout_no_cull", $$0, false));
-   private static final Function<ale, gdv> bf = ac.b($$0 -> {
-      gdv.b $$1 = gdv.b.a().a(v).a(new gdu.n($$0, false, false)).a(c).a(at).a(av).a(true);
-      return a("entity_solid", ezv.k, fac.b.h, 1536, true, false, $$1);
+public abstract class gdv {
+   private static final float aT = 0.99975586F;
+   public static final double a = 8.0;
+   protected final String b;
+   private final Runnable aU;
+   private final Runnable aV;
+   protected static final gdv.p c = new gdv.p("no_transparency", () -> RenderSystem.disableBlend(), () -> {
    });
-   private static final Function<ale, gdv> bg = ac.b($$0 -> {
-      gdv.b $$1 = gdv.b.a().a(w).a(new gdu.n($$0, false, false)).a(c).a(at).a(av).a(true);
-      return a("entity_cutout", ezv.k, fac.b.h, 1536, true, false, $$1);
+   protected static final gdv.p d = new gdv.p("additive_transparency", () -> {
+      RenderSystem.enableBlend();
+      RenderSystem.blendFunc(GlStateManager.SourceFactor.ONE, GlStateManager.DestFactor.ONE);
+   }, () -> {
+      RenderSystem.disableBlend();
+      RenderSystem.defaultBlendFunc();
    });
-   private static final BiFunction<ale, Boolean, gdv> bh = ac.a(($$0, $$1) -> {
-      gdv.b $$2 = gdv.b.a().a(x).a(new gdu.n($$0, false, false)).a(c).a(ay).a(at).a(av).a($$1);
-      return a("entity_cutout_no_cull", ezv.k, fac.b.h, 1536, true, false, $$2);
+   protected static final gdv.p e = new gdv.p("lightning_transparency", () -> {
+      RenderSystem.enableBlend();
+      RenderSystem.blendFunc(GlStateManager.SourceFactor.SRC_ALPHA, GlStateManager.DestFactor.ONE);
+   }, () -> {
+      RenderSystem.disableBlend();
+      RenderSystem.defaultBlendFunc();
    });
-   private static final BiFunction<ale, Boolean, gdv> bi = ac.a(($$0, $$1) -> {
-      gdv.b $$2 = gdv.b.a().a(y).a(new gdu.n($$0, false, false)).a(c).a(ay).a(at).a(av).a(aI).a($$1);
-      return a("entity_cutout_no_cull_z_offset", ezv.k, fac.b.h, 1536, true, false, $$2);
-   });
-   private static final Function<ale, gdv> bj = ac.b($$0 -> {
-      gdv.b $$1 = gdv.b.a().a(z).a(new gdu.n($$0, false, false)).a(h).a(aP).a(at).a(av).a(gdu.aD).a(true);
-      return a("item_entity_translucent_cull", ezv.k, fac.b.h, 1536, true, true, $$1);
-   });
-   private static final Function<ale, gdv> bk = ac.b($$0 -> {
-      gdv.b $$1 = gdv.b.a().a(A).a(new gdu.n($$0, false, false)).a(h).a(at).a(av).a(true);
-      return a("entity_translucent_cull", ezv.k, fac.b.h, 1536, true, true, $$1);
-   });
-   private static final BiFunction<ale, Boolean, gdv> bl = ac.a(($$0, $$1) -> {
-      gdv.b $$2 = gdv.b.a().a(B).a(new gdu.n($$0, false, false)).a(h).a(ay).a(at).a(av).a($$1);
-      return a("entity_translucent", ezv.k, fac.b.h, 1536, true, true, $$2);
-   });
-   private static final BiFunction<ale, Boolean, gdv> bm = ac.a(($$0, $$1) -> {
-      gdv.b $$2 = gdv.b.a().a(C).a(new gdu.n($$0, false, false)).a(h).a(ay).a(aE).a(av).a($$1);
-      return a("entity_translucent_emissive", ezv.k, fac.b.h, 1536, true, true, $$2);
-   });
-   private static final Function<ale, gdv> bn = ac.b($$0 -> {
-      gdv.b $$1 = gdv.b.a().a(D).a(new gdu.n($$0, false, false)).a(ay).a(at).a(true);
-      return a("entity_smooth_cutout", ezv.k, fac.b.h, 1536, $$1);
-   });
-   private static final BiFunction<ale, Boolean, gdv> bo = ac.a(($$0, $$1) -> {
-      gdv.b $$2 = gdv.b.a().a(E).a(new gdu.n($$0, false, false)).a($$1 ? h : c).a($$1 ? aE : aD).a(false);
-      return a("beacon_beam", ezv.j, fac.b.h, 1536, false, true, $$2);
-   });
-   private static final Function<ale, gdv> bp = ac.b($$0 -> {
-      gdv.b $$1 = gdv.b.a().a(F).a(new gdu.n($$0, false, false)).a(aA).a(ay).a(at).a(av).a(false);
-      return a("entity_decal", ezv.k, fac.b.h, 1536, $$1);
-   });
-   private static final Function<ale, gdv> bq = ac.b($$0 -> {
-      gdv.b $$1 = gdv.b.a().a(G).a(new gdu.n($$0, false, false)).a(h).a(ay).a(at).a(av).a(aE).a(false);
-      return a("entity_no_outline", ezv.k, fac.b.h, 1536, false, true, $$1);
-   });
-   private static final Function<ale, gdv> br = ac.b($$0 -> {
-      gdv.b $$1 = gdv.b.a().a(H).a(new gdu.n($$0, false, false)).a(h).a(ax).a(at).a(av).a(aE).a(aB).a(aI).a(false);
-      return a("entity_shadow", ezv.k, fac.b.h, 1536, false, false, $$1);
-   });
-   private static final Function<ale, gdv> bs = ac.b($$0 -> {
-      gdv.b $$1 = gdv.b.a().a(I).a(new gdu.n($$0, false, false)).a(ay).a(true);
-      return a("entity_alpha", ezv.k, fac.b.h, 1536, $$1);
-   });
-   private static final BiFunction<ale, gdu.p, gdv> bt = ac.a(($$0, $$1) -> {
-      gdu.n $$2 = new gdu.n($$0, false, false);
-      return a("eyes", ezv.k, fac.b.h, 1536, false, true, gdv.b.a().a(J).a($$2).a($$1).a(aE).a(false));
-   });
-   private static final gdv bu = a("leash", ezv.p, fac.b.f, 1536, gdv.b.a().a(L).a(ap).a(ay).a(at).a(false));
-   private static final gdv bv = a("water_mask", ezv.m, fac.b.h, 1536, gdv.b.a().a(M).a(ap).a(aF).a(false));
-   private static final gdv bw = a(
-      "armor_glint", ezv.q, fac.b.h, 1536, gdv.b.a().a(O).a(new gdu.n(gju.a, true, false)).a(aE).a(ay).a(aA).a(f).a(ar).a(aI).a(false)
-   );
-   private static final gdv bx = a(
-      "armor_entity_glint", ezv.q, fac.b.h, 1536, gdv.b.a().a(P).a(new gdu.n(gju.a, true, false)).a(aE).a(ay).a(aA).a(f).a(as).a(aI).a(false)
-   );
-   private static final gdv by = a(
-      "glint_translucent", ezv.q, fac.b.h, 1536, gdv.b.a().a(Q).a(new gdu.n(gju.b, true, false)).a(aE).a(ay).a(aA).a(f).a(ar).a(aP).a(false)
-   );
-   private static final gdv bz = a("glint", ezv.q, fac.b.h, 1536, gdv.b.a().a(R).a(new gdu.n(gju.b, true, false)).a(aE).a(ay).a(aA).a(f).a(ar).a(false));
-   private static final gdv bA = a("glint_direct", ezv.q, fac.b.h, 1536, gdv.b.a().a(S).a(new gdu.n(gju.b, true, false)).a(aE).a(ay).a(aA).a(f).a(ar).a(false));
-   private static final gdv bB = a(
-      "entity_glint", ezv.q, fac.b.h, 1536, gdv.b.a().a(T).a(new gdu.n(gju.a, true, false)).a(aE).a(ay).a(aA).a(f).a(aP).a(as).a(false)
-   );
-   private static final gdv bC = a(
-      "entity_glint_direct", ezv.q, fac.b.h, 1536, gdv.b.a().a(U).a(new gdu.n(gju.a, true, false)).a(aE).a(ay).a(aA).a(f).a(as).a(false)
-   );
-   private static final Function<ale, gdv> bD = ac.b($$0 -> {
-      gdu.n $$1 = new gdu.n($$0, false, false);
-      return a("crumbling", ezv.j, fac.b.h, 1536, false, true, gdv.b.a().a(V).a($$1).a(g).a(aE).a(aH).a(false));
-   });
-   private static final Function<ale, gdv> bE = ac.b(
-      $$0 -> a("text", ezv.t, fac.b.h, 786432, false, true, gdv.b.a().a(W).a(new gdu.n($$0, false, false)).a(h).a(at).a(false))
-   );
-   private static final gdv bF = a("text_background", ezv.p, fac.b.h, 1536, false, true, gdv.b.a().a(X).a(ap).a(h).a(at).a(false));
-   private static final Function<ale, gdv> bG = ac.b(
-      $$0 -> a("text_intensity", ezv.t, fac.b.h, 786432, false, true, gdv.b.a().a(Y).a(new gdu.n($$0, false, false)).a(h).a(at).a(false))
-   );
-   private static final Function<ale, gdv> bH = ac.b(
-      $$0 -> a("text_polygon_offset", ezv.t, fac.b.h, 1536, false, true, gdv.b.a().a(W).a(new gdu.n($$0, false, false)).a(h).a(at).a(aH).a(false))
-   );
-   private static final Function<ale, gdv> bI = ac.b(
-      $$0 -> a("text_intensity_polygon_offset", ezv.t, fac.b.h, 1536, false, true, gdv.b.a().a(Y).a(new gdu.n($$0, false, false)).a(h).a(at).a(aH).a(false))
-   );
-   private static final Function<ale, gdv> bJ = ac.b(
-      $$0 -> a("text_see_through", ezv.t, fac.b.h, 1536, false, true, gdv.b.a().a(Z).a(new gdu.n($$0, false, false)).a(h).a(at).a(az).a(aE).a(false))
-   );
-   private static final gdv bK = a("text_background_see_through", ezv.p, fac.b.h, 1536, false, true, gdv.b.a().a(aa).a(ap).a(h).a(at).a(az).a(aE).a(false));
-   private static final Function<ale, gdv> bL = ac.b(
-      $$0 -> a("text_intensity_see_through", ezv.t, fac.b.h, 1536, false, true, gdv.b.a().a(ab).a(new gdu.n($$0, false, false)).a(h).a(at).a(az).a(aE).a(false))
-   );
-   private static final gdv bM = a("lightning", ezv.n, fac.b.h, 1536, false, true, gdv.b.a().a(ac).a(aD).a(e).a(aN).a(false));
-   private static final gdv bN = a("tripwire", ezv.j, fac.b.h, 1536, true, true, R());
-   private static final gdv bO = a(
-      "end_portal", ezv.m, fac.b.h, 1536, false, false, gdv.b.a().a(ae).a(gdu.i.d().a(ggg.a, false, false).a(ggg.b, false, false).a()).a(false)
-   );
-   private static final gdv bP = a(
-      "end_gateway", ezv.m, fac.b.h, 1536, false, false, gdv.b.a().a(af).a(gdu.i.d().a(ggg.a, false, false).a(ggg.b, false, false).a()).a(false)
-   );
-   private static final gdv bQ = a(false);
-   private static final gdv bR = a(true);
-   public static final gdv.a aW = a("lines", ezv.o, fac.b.a, 1536, gdv.b.a().a(ah).a(new gdu.h(OptionalDouble.empty())).a(aI).a(h).a(aP).a(aD).a(ay).a(false));
-   public static final gdv.a aX = a(
-      "line_strip", ezv.o, fac.b.b, 1536, gdv.b.a().a(ah).a(new gdu.h(OptionalDouble.empty())).a(aI).a(h).a(aP).a(aD).a(ay).a(false)
-   );
-   private static final Function<Double, gdv.a> bS = ac.b(
-      $$0 -> a("debug_line_strip", ezv.n, fac.b.d, 1536, gdv.b.a().a(o).a(new gdu.h(OptionalDouble.of($$0))).a(c).a(ay).a(false))
-   );
-   private static final gdv.a bT = a("debug_filled_box", ezv.n, fac.b.f, 1536, false, true, gdv.b.a().a(o).a(aI).a(h).a(false));
-   private static final gdv.a bU = a("debug_quads", ezv.n, fac.b.h, 1536, false, true, gdv.b.a().a(o).a(h).a(ay).a(false));
-   private static final gdv.a bV = a("debug_section_quads", ezv.n, fac.b.h, 1536, false, true, gdv.b.a().a(o).a(aI).a(h).a(ax).a(false));
-   private static final gdv.a bW = a("gui", ezv.n, fac.b.h, 786432, gdv.b.a().a(ai).a(h).a(aB).a(false));
-   private static final gdv.a bX = a("gui_overlay", ezv.n, fac.b.h, 1536, gdv.b.a().a(aj).a(h).a(az).a(aE).a(false));
-   private static final gdv.a bY = a("gui_text_highlight", ezv.n, fac.b.h, 1536, gdv.b.a().a(ak).a(h).a(az).a(aS).a(false));
-   private static final gdv.a bZ = a("gui_ghost_recipe_overlay", ezv.n, fac.b.h, 1536, gdv.b.a().a(al).a(h).a(aC).a(aE).a(false));
-   private static final ImmutableList<gdv> ca = ImmutableList.of(c(), d(), e(), f(), t());
-   private final fac cb;
-   private final fac.b cc;
-   private final int cd;
-   private final boolean ce;
-   private final boolean cf;
-   private final Optional<gdv> cg;
-
-   public static gdv c() {
-      return aZ;
-   }
-
-   public static gdv d() {
-      return ba;
-   }
-
-   public static gdv e() {
-      return bb;
-   }
-
-   private static gdv.b a(gdu.m $$0) {
-      return gdv.b.a().a(at).a($$0).a(an).a(h).a(aL).a(true);
-   }
-
-   public static gdv f() {
-      return bc;
-   }
-
-   private static gdv.b Q() {
-      return gdv.b.a().a(at).a(t).a(an).a(h).a(aP).a(true);
-   }
-
-   public static gdv g() {
-      return bd;
-   }
-
-   private static gdv.a a(String $$0, ale $$1, boolean $$2) {
-      gdv.b $$3 = gdv.b.a().a(u).a(new gdu.n($$1, false, false)).a(c).a(ay).a(at).a(av).a(aI).a($$2 ? aA : aB).a(true);
-      return a($$0, ezv.k, fac.b.h, 1536, true, false, $$3);
-   }
-
-   public static gdv a(ale $$0) {
-      return be.apply($$0);
-   }
-
-   public static gdv b(ale $$0) {
-      return a("armor_decal_cutout_no_cull", $$0, true);
-   }
-
-   public static gdv c(ale $$0) {
-      return bf.apply($$0);
-   }
-
-   public static gdv d(ale $$0) {
-      return bg.apply($$0);
-   }
-
-   public static gdv a(ale $$0, boolean $$1) {
-      return bh.apply($$0, $$1);
-   }
-
-   public static gdv e(ale $$0) {
-      return a($$0, true);
-   }
-
-   public static gdv b(ale $$0, boolean $$1) {
-      return bi.apply($$0, $$1);
-   }
-
-   public static gdv f(ale $$0) {
-      return b($$0, true);
-   }
-
-   public static gdv g(ale $$0) {
-      return bj.apply($$0);
-   }
-
-   public static gdv h(ale $$0) {
-      return bk.apply($$0);
-   }
-
-   public static gdv c(ale $$0, boolean $$1) {
-      return bl.apply($$0, $$1);
-   }
-
-   public static gdv i(ale $$0) {
-      return c($$0, true);
-   }
-
-   public static gdv d(ale $$0, boolean $$1) {
-      return bm.apply($$0, $$1);
-   }
-
-   public static gdv j(ale $$0) {
-      return d($$0, true);
-   }
-
-   public static gdv k(ale $$0) {
-      return bn.apply($$0);
-   }
-
-   public static gdv e(ale $$0, boolean $$1) {
-      return bo.apply($$0, $$1);
-   }
-
-   public static gdv l(ale $$0) {
-      return bp.apply($$0);
-   }
-
-   public static gdv m(ale $$0) {
-      return bq.apply($$0);
-   }
-
-   public static gdv n(ale $$0) {
-      return br.apply($$0);
-   }
-
-   public static gdv o(ale $$0) {
-      return bs.apply($$0);
-   }
-
-   public static gdv p(ale $$0) {
-      return bt.apply($$0, d);
-   }
-
-   public static gdv q(ale $$0) {
-      return bm.apply($$0, false);
-   }
-
-   public static gdv a(ale $$0, float $$1, float $$2) {
-      return a(
-         "breeze_wind",
-         ezv.k,
-         fac.b.h,
-         1536,
-         false,
-         true,
-         gdv.b.a().a(am).a(new gdu.n($$0, false, false)).a(new gdu.j($$1, $$2)).a(h).a(ay).a(at).a(aw).a(false)
-      );
-   }
-
-   public static gdv b(ale $$0, float $$1, float $$2) {
-      return a(
-         "energy_swirl",
-         ezv.k,
-         fac.b.h,
-         1536,
-         false,
-         true,
-         gdv.b.a().a(K).a(new gdu.n($$0, false, false)).a(new gdu.j($$1, $$2)).a(d).a(ay).a(at).a(av).a(false)
-      );
-   }
-
-   public static gdv h() {
-      return bu;
-   }
-
-   public static gdv i() {
-      return bv;
-   }
-
-   public static gdv r(ale $$0) {
-      return gdv.a.aY.apply($$0, ay);
-   }
-
-   public static gdv j() {
-      return bw;
-   }
-
-   public static gdv k() {
-      return bx;
-   }
-
-   public static gdv l() {
-      return by;
-   }
-
-   public static gdv m() {
-      return bz;
-   }
-
-   public static gdv n() {
-      return bA;
-   }
-
-   public static gdv o() {
-      return bB;
-   }
-
-   public static gdv p() {
-      return bC;
-   }
-
-   public static gdv s(ale $$0) {
-      return bD.apply($$0);
-   }
-
-   public static gdv t(ale $$0) {
-      return bE.apply($$0);
-   }
-
-   public static gdv q() {
-      return bF;
-   }
-
-   public static gdv u(ale $$0) {
-      return bG.apply($$0);
-   }
-
-   public static gdv v(ale $$0) {
-      return bH.apply($$0);
-   }
-
-   public static gdv w(ale $$0) {
-      return bI.apply($$0);
-   }
-
-   public static gdv x(ale $$0) {
-      return bJ.apply($$0);
-   }
-
-   public static gdv r() {
-      return bK;
-   }
-
-   public static gdv y(ale $$0) {
-      return bL.apply($$0);
-   }
-
-   public static gdv s() {
-      return bM;
-   }
-
-   private static gdv.b R() {
-      return gdv.b.a().a(at).a(ad).a(an).a(h).a(aN).a(true);
-   }
-
-   public static gdv t() {
-      return bN;
-   }
-
-   public static gdv u() {
-      return bO;
-   }
-
-   public static gdv v() {
-      return bP;
-   }
-
-   private static gdv.a a(boolean $$0) {
-      return a("clouds", ezv.v, fac.b.h, 786432, false, false, gdv.b.a().a(ag).a(new gdu.n(gdl.c, false, false)).a(h).a(ay).a($$0 ? aF : aD).a(aO).a(true));
-   }
-
-   public static gdv w() {
-      return bQ;
-   }
-
-   public static gdv x() {
-      return bR;
-   }
-
-   public static gdv y() {
-      return aW;
-   }
-
-   public static gdv z() {
-      return aX;
-   }
-
-   public static gdv a(double $$0) {
-      return bS.apply($$0);
-   }
-
-   public static gdv A() {
-      return bT;
-   }
-
-   public static gdv B() {
-      return bU;
-   }
-
-   public static gdv C() {
-      return bV;
-   }
-
-   public static gdv D() {
-      return bW;
-   }
-
-   public static gdv E() {
-      return bX;
-   }
-
-   public static gdv F() {
-      return bY;
-   }
-
-   public static gdv G() {
-      return bZ;
-   }
-
-   public gdv(String $$0, fac $$1, fac.b $$2, int $$3, boolean $$4, boolean $$5, Runnable $$6, Runnable $$7) {
-      super($$0, $$6, $$7);
-      this.cb = $$1;
-      this.cc = $$2;
-      this.cd = $$3;
-      this.ce = $$4;
-      this.cf = $$5;
-      this.cg = Optional.of(this);
-   }
-
-   static gdv.a a(String $$0, fac $$1, fac.b $$2, int $$3, gdv.b $$4) {
-      return a($$0, $$1, $$2, $$3, false, false, $$4);
-   }
-
-   private static gdv.a a(String $$0, fac $$1, fac.b $$2, int $$3, boolean $$4, boolean $$5, gdv.b $$6) {
-      return new gdv.a($$0, $$1, $$2, $$3, $$4, $$5, $$6);
-   }
-
-   public void a(ezs $$0, faf $$1) {
-      if ($$0.k()) {
-         if (this.cf) {
-            $$0.a($$1);
-         }
-
-         ezs.b $$2 = $$0.d();
-         this.a();
-         ezt.a($$2);
-         this.b();
+   protected static final gdv.p f = new gdv.p(
+      "glint_transparency",
+      () -> {
+         RenderSystem.enableBlend();
+         RenderSystem.blendFuncSeparate(
+            GlStateManager.SourceFactor.SRC_COLOR, GlStateManager.DestFactor.ONE, GlStateManager.SourceFactor.ZERO, GlStateManager.DestFactor.ONE
+         );
+      },
+      () -> {
+         RenderSystem.disableBlend();
+         RenderSystem.defaultBlendFunc();
       }
+   );
+   protected static final gdv.p g = new gdv.p(
+      "crumbling_transparency",
+      () -> {
+         RenderSystem.enableBlend();
+         RenderSystem.blendFuncSeparate(
+            GlStateManager.SourceFactor.DST_COLOR, GlStateManager.DestFactor.SRC_COLOR, GlStateManager.SourceFactor.ONE, GlStateManager.DestFactor.ZERO
+         );
+      },
+      () -> {
+         RenderSystem.disableBlend();
+         RenderSystem.defaultBlendFunc();
+      }
+   );
+   protected static final gdv.p h = new gdv.p(
+      "translucent_transparency",
+      () -> {
+         RenderSystem.enableBlend();
+         RenderSystem.blendFuncSeparate(
+            GlStateManager.SourceFactor.SRC_ALPHA,
+            GlStateManager.DestFactor.ONE_MINUS_SRC_ALPHA,
+            GlStateManager.SourceFactor.ONE,
+            GlStateManager.DestFactor.ONE_MINUS_SRC_ALPHA
+         );
+      },
+      () -> {
+         RenderSystem.disableBlend();
+         RenderSystem.defaultBlendFunc();
+      }
+   );
+   protected static final gdv.m i = new gdv.m();
+   protected static final gdv.m j = new gdv.m(gdh::u);
+   protected static final gdv.m k = new gdv.m(gdh::o);
+   protected static final gdv.m l = new gdv.m(gdh::q);
+   protected static final gdv.m m = new gdv.m(gdh::r);
+   protected static final gdv.m n = new gdv.m(gdh::v);
+   protected static final gdv.m o = new gdv.m(gdh::p);
+   protected static final gdv.m p = new gdv.m(gdh::w);
+   protected static final gdv.m q = new gdv.m(gdh::x);
+   protected static final gdv.m r = new gdv.m(gdh::y);
+   protected static final gdv.m s = new gdv.m(gdh::z);
+   protected static final gdv.m t = new gdv.m(gdh::A);
+   protected static final gdv.m u = new gdv.m(gdh::B);
+   protected static final gdv.m v = new gdv.m(gdh::C);
+   protected static final gdv.m w = new gdv.m(gdh::D);
+   protected static final gdv.m x = new gdv.m(gdh::E);
+   protected static final gdv.m y = new gdv.m(gdh::F);
+   protected static final gdv.m z = new gdv.m(gdh::G);
+   protected static final gdv.m A = new gdv.m(gdh::H);
+   protected static final gdv.m B = new gdv.m(gdh::I);
+   protected static final gdv.m C = new gdv.m(gdh::J);
+   protected static final gdv.m D = new gdv.m(gdh::K);
+   protected static final gdv.m E = new gdv.m(gdh::L);
+   protected static final gdv.m F = new gdv.m(gdh::M);
+   protected static final gdv.m G = new gdv.m(gdh::N);
+   protected static final gdv.m H = new gdv.m(gdh::O);
+   protected static final gdv.m I = new gdv.m(gdh::P);
+   protected static final gdv.m J = new gdv.m(gdh::Q);
+   protected static final gdv.m K = new gdv.m(gdh::R);
+   protected static final gdv.m L = new gdv.m(gdh::T);
+   protected static final gdv.m M = new gdv.m(gdh::U);
+   protected static final gdv.m N = new gdv.m(gdh::V);
+   protected static final gdv.m O = new gdv.m(gdh::W);
+   protected static final gdv.m P = new gdv.m(gdh::X);
+   protected static final gdv.m Q = new gdv.m(gdh::Y);
+   protected static final gdv.m R = new gdv.m(gdh::Z);
+   protected static final gdv.m S = new gdv.m(gdh::aa);
+   protected static final gdv.m T = new gdv.m(gdh::ab);
+   protected static final gdv.m U = new gdv.m(gdh::ac);
+   protected static final gdv.m V = new gdv.m(gdh::ap);
+   protected static final gdv.m W = new gdv.m(gdh::ad);
+   protected static final gdv.m X = new gdv.m(gdh::ae);
+   protected static final gdv.m Y = new gdv.m(gdh::af);
+   protected static final gdv.m Z = new gdv.m(gdh::ag);
+   protected static final gdv.m aa = new gdv.m(gdh::ah);
+   protected static final gdv.m ab = new gdv.m(gdh::ai);
+   protected static final gdv.m ac = new gdv.m(gdh::aj);
+   protected static final gdv.m ad = new gdv.m(gdh::ak);
+   protected static final gdv.m ae = new gdv.m(gdh::al);
+   protected static final gdv.m af = new gdv.m(gdh::am);
+   protected static final gdv.m ag = new gdv.m(gdh::an);
+   protected static final gdv.m ah = new gdv.m(gdh::ao);
+   protected static final gdv.m ai = new gdv.m(gdh::aq);
+   protected static final gdv.m aj = new gdv.m(gdh::ar);
+   protected static final gdv.m ak = new gdv.m(gdh::as);
+   protected static final gdv.m al = new gdv.m(gdh::at);
+   protected static final gdv.m am = new gdv.m(gdh::S);
+   protected static final gdv.n an = new gdv.n(goy.e, false, true);
+   protected static final gdv.n ao = new gdv.n(goy.e, false, false);
+   protected static final gdv.e ap = new gdv.e();
+   protected static final gdv.o aq = new gdv.o("default_texturing", () -> {
+   }, () -> {
+   });
+   protected static final gdv.o ar = new gdv.o("glint_texturing", () -> a(8.0F), () -> RenderSystem.resetTextureMatrix());
+   protected static final gdv.o as = new gdv.o("entity_glint_texturing", () -> a(0.16F), () -> RenderSystem.resetTextureMatrix());
+   protected static final gdv.g at = new gdv.g(true);
+   protected static final gdv.g au = new gdv.g(false);
+   protected static final gdv.l av = new gdv.l(true);
+   protected static final gdv.l aw = new gdv.l(false);
+   protected static final gdv.c ax = new gdv.c(true);
+   protected static final gdv.c ay = new gdv.c(false);
+   protected static final gdv.d az = new gdv.d("always", 519);
+   protected static final gdv.d aA = new gdv.d("==", 514);
+   protected static final gdv.d aB = new gdv.d("<=", 515);
+   protected static final gdv.d aC = new gdv.d(">", 516);
+   protected static final gdv.q aD = new gdv.q(true, true);
+   protected static final gdv.q aE = new gdv.q(true, false);
+   protected static final gdv.q aF = new gdv.q(false, true);
+   protected static final gdv.f aG = new gdv.f("no_layering", () -> {
+   }, () -> {
+   });
+   protected static final gdv.f aH = new gdv.f("polygon_offset_layering", () -> {
+      RenderSystem.polygonOffset(-1.0F, -10.0F);
+      RenderSystem.enablePolygonOffset();
+   }, () -> {
+      RenderSystem.polygonOffset(0.0F, 0.0F);
+      RenderSystem.disablePolygonOffset();
+   });
+   protected static final gdv.f aI = new gdv.f("view_offset_z_layering", () -> {
+      Matrix4fStack $$0 = RenderSystem.getModelViewStack();
+      $$0.pushMatrix();
+      $$0.scale(0.99975586F, 0.99975586F, 0.99975586F);
+      RenderSystem.applyModelViewMatrix();
+   }, () -> {
+      Matrix4fStack $$0 = RenderSystem.getModelViewStack();
+      $$0.popMatrix();
+      RenderSystem.applyModelViewMatrix();
+   });
+   protected static final gdv.k aJ = new gdv.k("main_target", () -> {
+   }, () -> {
+   });
+   protected static final gdv.k aK = new gdv.k("outline_target", () -> fff.Q().f.s().a(false), () -> fff.Q().h().a(false));
+   protected static final gdv.k aL = new gdv.k("translucent_target", () -> {
+      if (fff.O()) {
+         fff.Q().f.t().a(false);
+      }
+   }, () -> {
+      if (fff.O()) {
+         fff.Q().h().a(false);
+      }
+   });
+   protected static final gdv.k aM = new gdv.k("particles_target", () -> {
+      if (fff.O()) {
+         fff.Q().f.v().a(false);
+      }
+   }, () -> {
+      if (fff.O()) {
+         fff.Q().h().a(false);
+      }
+   });
+   protected static final gdv.k aN = new gdv.k("weather_target", () -> {
+      if (fff.O()) {
+         fff.Q().f.w().a(false);
+      }
+   }, () -> {
+      if (fff.O()) {
+         fff.Q().h().a(false);
+      }
+   });
+   protected static final gdv.k aO = new gdv.k("clouds_target", () -> {
+      if (fff.O()) {
+         fff.Q().f.x().a(false);
+      }
+   }, () -> {
+      if (fff.O()) {
+         fff.Q().h().a(false);
+      }
+   });
+   protected static final gdv.k aP = new gdv.k("item_entity_target", () -> {
+      if (fff.O()) {
+         fff.Q().f.u().a(false);
+      }
+   }, () -> {
+      if (fff.O()) {
+         fff.Q().h().a(false);
+      }
+   });
+   protected static final gdv.h aQ = new gdv.h(OptionalDouble.of(1.0));
+   protected static final gdv.b aR = new gdv.b("no_color_logic", () -> RenderSystem.disableColorLogicOp(), () -> {
+   });
+   protected static final gdv.b aS = new gdv.b("or_reverse", () -> {
+      RenderSystem.enableColorLogicOp();
+      RenderSystem.logicOp(GlStateManager.g.n);
+   }, () -> RenderSystem.disableColorLogicOp());
+
+   public gdv(String $$0, Runnable $$1, Runnable $$2) {
+      this.b = $$0;
+      this.aU = $$1;
+      this.aV = $$2;
+   }
+
+   public void a() {
+      this.aU.run();
+   }
+
+   public void b() {
+      this.aV.run();
    }
 
    @Override
@@ -480,254 +249,293 @@ public abstract class gdv extends gdu {
       return this.b;
    }
 
-   public static List<gdv> H() {
-      return ca;
+   private static void a(float $$0) {
+      long $$1 = (long)((double)ac.c() * fff.Q().m.am().c() * 8.0);
+      float $$2 = (float)($$1 % 110000L) / 110000.0F;
+      float $$3 = (float)($$1 % 30000L) / 30000.0F;
+      Matrix4f $$4 = new Matrix4f().translation(-$$2, $$3, 0.0F);
+      $$4.rotateZ((float) (Math.PI / 18)).scale($$0);
+      RenderSystem.setTextureMatrix($$4);
    }
 
-   public int I() {
-      return this.cd;
-   }
+   static class a extends gdv {
+      private final boolean aT;
 
-   public fac J() {
-      return this.cb;
-   }
-
-   public fac.b K() {
-      return this.cc;
-   }
-
-   public Optional<gdv> L() {
-      return Optional.empty();
-   }
-
-   public boolean M() {
-      return false;
-   }
-
-   public boolean N() {
-      return this.ce;
-   }
-
-   public boolean O() {
-      return !this.cc.l;
-   }
-
-   public Optional<gdv> P() {
-      return this.cg;
-   }
-
-   static final class a extends gdv {
-      static final BiFunction<ale, gdu.c, gdv> aY = ac.a(
-         ($$0, $$1) -> gdv.a("outline", ezv.r, fac.b.h, 1536, gdv.b.a().a(N).a(new gdu.n($$0, false, false)).a($$1).a(az).a(aK).a(gdv.c.b))
-      );
-      private final gdv.b aZ;
-      private final Optional<gdv> ba;
-      private final boolean bb;
-
-      a(String $$0, fac $$1, fac.b $$2, int $$3, boolean $$4, boolean $$5, gdv.b $$6) {
-         super($$0, $$1, $$2, $$3, $$4, $$5, () -> $$6.o.forEach(gdu::a), () -> $$6.o.forEach(gdu::b));
-         this.aZ = $$6;
-         this.ba = $$6.n == gdv.c.c ? $$6.a.c().map($$1x -> aY.apply($$1x, $$6.e)) : Optional.empty();
-         this.bb = $$6.n == gdv.c.b;
-      }
-
-      @Override
-      public Optional<gdv> L() {
-         return this.ba;
-      }
-
-      @Override
-      public boolean M() {
-         return this.bb;
-      }
-
-      protected final gdv.b Q() {
-         return this.aZ;
+      public a(String $$0, Runnable $$1, Runnable $$2, boolean $$3) {
+         super($$0, $$1, $$2);
+         this.aT = $$3;
       }
 
       @Override
       public String toString() {
-         return "RenderType[" + this.b + ":" + this.aZ + "]";
+         return this.b + "[" + this.aT + "]";
       }
    }
 
-   protected static final class b {
-      final gdu.e a;
-      private final gdu.m b;
-      private final gdu.p c;
-      private final gdu.d d;
-      final gdu.c e;
-      private final gdu.g f;
-      private final gdu.l g;
-      private final gdu.f h;
-      private final gdu.k i;
-      private final gdu.o j;
-      private final gdu.q k;
-      private final gdu.h l;
-      private final gdu.b m;
-      final gdv.c n;
-      final ImmutableList<gdu> o;
+   protected static class b extends gdv {
+      public b(String $$0, Runnable $$1, Runnable $$2) {
+         super($$0, $$1, $$2);
+      }
+   }
 
-      b(
-         gdu.e $$0,
-         gdu.m $$1,
-         gdu.p $$2,
-         gdu.d $$3,
-         gdu.c $$4,
-         gdu.g $$5,
-         gdu.l $$6,
-         gdu.f $$7,
-         gdu.k $$8,
-         gdu.o $$9,
-         gdu.q $$10,
-         gdu.h $$11,
-         gdu.b $$12,
-         gdv.c $$13
-      ) {
-         this.a = $$0;
-         this.b = $$1;
-         this.c = $$2;
-         this.d = $$3;
-         this.e = $$4;
-         this.f = $$5;
-         this.g = $$6;
-         this.h = $$7;
-         this.i = $$8;
-         this.j = $$9;
-         this.k = $$10;
-         this.l = $$11;
-         this.m = $$12;
-         this.n = $$13;
-         this.o = ImmutableList.of(this.a, this.b, this.c, this.d, this.e, this.f, this.g, this.h, this.i, this.j, this.k, this.m, new gdu[]{this.l});
+   protected static class c extends gdv.a {
+      public c(boolean $$0) {
+         super("cull", () -> {
+            if (!$$0) {
+               RenderSystem.disableCull();
+            }
+         }, () -> {
+            if (!$$0) {
+               RenderSystem.enableCull();
+            }
+         }, $$0);
+      }
+   }
+
+   protected static class d extends gdv {
+      private final String aT;
+
+      public d(String $$0, int $$1) {
+         super("depth_test", () -> {
+            if ($$1 != 519) {
+               RenderSystem.enableDepthTest();
+               RenderSystem.depthFunc($$1);
+            }
+         }, () -> {
+            if ($$1 != 519) {
+               RenderSystem.disableDepthTest();
+               RenderSystem.depthFunc(515);
+            }
+         });
+         this.aT = $$0;
       }
 
       @Override
       public String toString() {
-         return "CompositeState[" + this.o + ", outlineProperty=" + this.n + "]";
-      }
-
-      public static gdv.b.a a() {
-         return new gdv.b.a();
-      }
-
-      public static class a {
-         private gdu.e a = gdu.ap;
-         private gdu.m b = gdu.i;
-         private gdu.p c;
-         private gdu.d d;
-         private gdu.c e;
-         private gdu.g f;
-         private gdu.l g;
-         private gdu.f h;
-         private gdu.k i;
-         private gdu.o j;
-         private gdu.q k;
-         private gdu.h l;
-         private gdu.b m;
-
-         a() {
-            this.c = gdu.c;
-            this.d = gdu.aB;
-            this.e = gdu.ax;
-            this.f = gdu.au;
-            this.g = gdu.aw;
-            this.h = gdu.aG;
-            this.i = gdu.aJ;
-            this.j = gdu.aq;
-            this.k = gdu.aD;
-            this.l = gdu.aQ;
-            this.m = gdu.aR;
-         }
-
-         public gdv.b.a a(gdu.e $$0) {
-            this.a = $$0;
-            return this;
-         }
-
-         public gdv.b.a a(gdu.m $$0) {
-            this.b = $$0;
-            return this;
-         }
-
-         public gdv.b.a a(gdu.p $$0) {
-            this.c = $$0;
-            return this;
-         }
-
-         public gdv.b.a a(gdu.d $$0) {
-            this.d = $$0;
-            return this;
-         }
-
-         public gdv.b.a a(gdu.c $$0) {
-            this.e = $$0;
-            return this;
-         }
-
-         public gdv.b.a a(gdu.g $$0) {
-            this.f = $$0;
-            return this;
-         }
-
-         public gdv.b.a a(gdu.l $$0) {
-            this.g = $$0;
-            return this;
-         }
-
-         public gdv.b.a a(gdu.f $$0) {
-            this.h = $$0;
-            return this;
-         }
-
-         public gdv.b.a a(gdu.k $$0) {
-            this.i = $$0;
-            return this;
-         }
-
-         public gdv.b.a a(gdu.o $$0) {
-            this.j = $$0;
-            return this;
-         }
-
-         public gdv.b.a a(gdu.q $$0) {
-            this.k = $$0;
-            return this;
-         }
-
-         public gdv.b.a a(gdu.h $$0) {
-            this.l = $$0;
-            return this;
-         }
-
-         public gdv.b.a a(gdu.b $$0) {
-            this.m = $$0;
-            return this;
-         }
-
-         public gdv.b a(boolean $$0) {
-            return this.a($$0 ? gdv.c.c : gdv.c.a);
-         }
-
-         public gdv.b a(gdv.c $$0) {
-            return new gdv.b(this.a, this.b, this.c, this.d, this.e, this.f, this.g, this.h, this.i, this.j, this.k, this.l, this.m, $$0);
-         }
+         return this.b + "[" + this.aT + "]";
       }
    }
 
-   static enum c {
-      a("none"),
-      b("is_outline"),
-      c("affects_outline");
+   protected static class e extends gdv {
+      public e(Runnable $$0, Runnable $$1) {
+         super("texture", $$0, $$1);
+      }
 
-      private final String d;
+      e() {
+         super("texture", () -> {
+         }, () -> {
+         });
+      }
 
-      private c(final String $$0) {
-         this.d = $$0;
+      protected Optional<alf> c() {
+         return Optional.empty();
+      }
+   }
+
+   protected static class f extends gdv {
+      public f(String $$0, Runnable $$1, Runnable $$2) {
+         super($$0, $$1, $$2);
+      }
+   }
+
+   protected static class g extends gdv.a {
+      public g(boolean $$0) {
+         super("lightmap", () -> {
+            if ($$0) {
+               fff.Q().j.m().c();
+            }
+         }, () -> {
+            if ($$0) {
+               fff.Q().j.m().b();
+            }
+         }, $$0);
+      }
+   }
+
+   protected static class h extends gdv {
+      private final OptionalDouble aT;
+
+      public h(OptionalDouble $$0) {
+         super("line_width", () -> {
+            if (!Objects.equals($$0, OptionalDouble.of(1.0))) {
+               if ($$0.isPresent()) {
+                  RenderSystem.lineWidth((float)$$0.getAsDouble());
+               } else {
+                  RenderSystem.lineWidth(Math.max(2.5F, (float)fff.Q().aO().k() / 1920.0F * 2.5F));
+               }
+            }
+         }, () -> {
+            if (!Objects.equals($$0, OptionalDouble.of(1.0))) {
+               RenderSystem.lineWidth(1.0F);
+            }
+         });
+         this.aT = $$0;
       }
 
       @Override
       public String toString() {
-         return this.d;
+         return this.b + "[" + (this.aT.isPresent() ? this.aT.getAsDouble() : "window_scale") + "]";
+      }
+   }
+
+   protected static class i extends gdv.e {
+      private final Optional<alf> aT;
+
+      i(ImmutableList<Triple<alf, Boolean, Boolean>> $$0) {
+         super(() -> {
+            int $$1 = 0;
+            UnmodifiableIterator var2 = $$0.iterator();
+
+            while (var2.hasNext()) {
+               Triple<alf, Boolean, Boolean> $$2 = (Triple<alf, Boolean, Boolean>)var2.next();
+               gpa $$3 = fff.Q().aa();
+               $$3.b((alf)$$2.getLeft()).a((Boolean)$$2.getMiddle(), (Boolean)$$2.getRight());
+               RenderSystem.setShaderTexture($$1++, (alf)$$2.getLeft());
+            }
+         }, () -> {
+         });
+         this.aT = $$0.stream().findFirst().map(Triple::getLeft);
+      }
+
+      @Override
+      protected Optional<alf> c() {
+         return this.aT;
+      }
+
+      public static gdv.i.a d() {
+         return new gdv.i.a();
+      }
+
+      public static final class a {
+         private final Builder<Triple<alf, Boolean, Boolean>> a = new Builder();
+
+         public gdv.i.a a(alf $$0, boolean $$1, boolean $$2) {
+            this.a.add(Triple.of($$0, $$1, $$2));
+            return this;
+         }
+
+         public gdv.i a() {
+            return new gdv.i(this.a.build());
+         }
+      }
+   }
+
+   protected static final class j extends gdv.o {
+      public j(float $$0, float $$1) {
+         super("offset_texturing", () -> RenderSystem.setTextureMatrix(new Matrix4f().translation($$0, $$1, 0.0F)), () -> RenderSystem.resetTextureMatrix());
+      }
+   }
+
+   protected static class k extends gdv {
+      public k(String $$0, Runnable $$1, Runnable $$2) {
+         super($$0, $$1, $$2);
+      }
+   }
+
+   protected static class l extends gdv.a {
+      public l(boolean $$0) {
+         super("overlay", () -> {
+            if ($$0) {
+               fff.Q().j.n().a();
+            }
+         }, () -> {
+            if ($$0) {
+               fff.Q().j.n().b();
+            }
+         }, $$0);
+      }
+   }
+
+   protected static class m extends gdv {
+      private final Optional<Supplier<gec>> aT;
+
+      public m(Supplier<gec> $$0) {
+         super("shader", () -> RenderSystem.setShader($$0), () -> {
+         });
+         this.aT = Optional.of($$0);
+      }
+
+      public m() {
+         super("shader", () -> RenderSystem.setShader(() -> null), () -> {
+         });
+         this.aT = Optional.empty();
+      }
+
+      @Override
+      public String toString() {
+         return this.b + "[" + this.aT + "]";
+      }
+   }
+
+   protected static class n extends gdv.e {
+      private final Optional<alf> aT;
+      private final boolean aU;
+      private final boolean aV;
+
+      public n(alf $$0, boolean $$1, boolean $$2) {
+         super(() -> {
+            gpa $$3 = fff.Q().aa();
+            $$3.b($$0).a($$1, $$2);
+            RenderSystem.setShaderTexture(0, $$0);
+         }, () -> {
+         });
+         this.aT = Optional.of($$0);
+         this.aU = $$1;
+         this.aV = $$2;
+      }
+
+      @Override
+      public String toString() {
+         return this.b + "[" + this.aT + "(blur=" + this.aU + ", mipmap=" + this.aV + ")]";
+      }
+
+      @Override
+      protected Optional<alf> c() {
+         return this.aT;
+      }
+   }
+
+   protected static class o extends gdv {
+      public o(String $$0, Runnable $$1, Runnable $$2) {
+         super($$0, $$1, $$2);
+      }
+   }
+
+   protected static class p extends gdv {
+      public p(String $$0, Runnable $$1, Runnable $$2) {
+         super($$0, $$1, $$2);
+      }
+   }
+
+   protected static class q extends gdv {
+      private final boolean aT;
+      private final boolean aU;
+
+      public q(boolean $$0, boolean $$1) {
+         super("write_mask_state", () -> {
+            if (!$$1) {
+               RenderSystem.depthMask($$1);
+            }
+
+            if (!$$0) {
+               RenderSystem.colorMask($$0, $$0, $$0, $$0);
+            }
+         }, () -> {
+            if (!$$1) {
+               RenderSystem.depthMask(true);
+            }
+
+            if (!$$0) {
+               RenderSystem.colorMask(true, true, true, true);
+            }
+         });
+         this.aT = $$0;
+         this.aU = $$1;
+      }
+
+      @Override
+      public String toString() {
+         return this.b + "[writeColor=" + this.aT + ", writeDepth=" + this.aU + "]";
       }
    }
 }

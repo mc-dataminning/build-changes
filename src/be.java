@@ -8,7 +8,7 @@ public class be extends dr<be.a> {
       return be.a.a;
    }
 
-   public void a(arf $$0, cuo $$1) {
+   public void a(arg $$0, cup $$1) {
       this.a($$0, $$1x -> $$1x.a($$1));
    }
 
@@ -21,7 +21,7 @@ public class be extends dr<be.a> {
          return am.A.a(new be.a(Optional.empty(), Optional.empty()));
       }
 
-      public static an<be.a> a(dbw $$0) {
+      public static an<be.a> a(dbx $$0) {
          return a(cp.a.a().a($$0.r()));
       }
 
@@ -29,7 +29,7 @@ public class be extends dr<be.a> {
          return am.A.a(new be.a(Optional.empty(), Optional.of($$0.b())));
       }
 
-      public boolean a(cuo $$0) {
+      public boolean a(cup $$0) {
          return this.c.isEmpty() || this.c.get().a($$0);
       }
 

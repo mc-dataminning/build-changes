@@ -1,30 +1,40 @@
-public class cbw extends cam {
-   private final btx a;
+import java.util.EnumSet;
 
-   public cbw(btx $$0) {
+public class cbw extends can {
+   private final cmf a;
+
+   public cbw(cmf $$0) {
       this.a = $$0;
+      this.a(EnumSet.of(can.a.c, can.a.a));
    }
 
    @Override
    public boolean a() {
-      return this.a.aE() && !this.a.dP().b_(this.a.dp()).a(awu.a);
+      if (!this.a.bD()) {
+         return false;
+      } else if (this.a.be()) {
+         return false;
+      } else if (!this.a.aE()) {
+         return false;
+      } else if (this.a.U) {
+         return false;
+      } else {
+         cmx $$0 = this.a.gq();
+         if ($$0 == null) {
+            return false;
+         } else {
+            return this.a.g($$0) > 16.0 ? false : $$0.cb != null;
+         }
+      }
    }
 
    @Override
    public void c() {
-      iz $$0 = null;
+      this.a.K().n();
+   }
 
-      for (iz $$2 : iz.b(
-         ayy.a(this.a.du() - 2.0), ayy.a(this.a.dw() - 2.0), ayy.a(this.a.dA() - 2.0), ayy.a(this.a.du() + 2.0), this.a.dv(), ayy.a(this.a.dA() + 2.0)
-      )) {
-         if (this.a.dP().b_($$2).a(awu.a)) {
-            $$0 = $$2;
-            break;
-         }
-      }
-
-      if ($$0 != null) {
-         this.a.H().a((double)$$0.u(), (double)$$0.v(), (double)$$0.w(), 1.0);
-      }
+   @Override
+   public void d() {
+      this.a.f(null);
    }
 }

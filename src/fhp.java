@@ -1,22 +1,50 @@
-public class fhp extends fhd {
-   protected final fiq a;
+public class fhp extends fhy {
+   private static final int a = 4;
+   private final boolean b;
+   private final int c;
 
-   public fhp(int $$0, int $$1, int $$2, int $$3, fiq $$4, fhd.c $$5) {
-      this($$0, $$1, $$2, $$3, $$4, $$5, xn.a);
+   public fhp(int $$0, xp $$1, fgp $$2) {
+      this($$0, $$1, $$2, 4);
    }
 
-   public fhp(int $$0, int $$1, int $$2, int $$3, fiq $$4, fhd.c $$5, xo $$6) {
-      super($$0, $$1, $$2, $$3, $$6, $$5, q);
-      this.a = $$4;
+   public fhp(int $$0, xp $$1, fgp $$2, int $$3) {
+      this($$0, $$1, $$2, true, $$3);
    }
 
-   public fhp(int $$0, int $$1, fiq $$2, fhd.c $$3, xo $$4) {
-      this(0, 0, $$0, $$1, $$2, $$3, $$4);
+   public fhp(int $$0, xp $$1, fgp $$2, boolean $$3, int $$4) {
+      super($$1, $$2);
+      this.d($$0);
+      this.b(true);
+      this.j = true;
+      this.b = $$3;
+      this.c = $$4;
+   }
+
+   public void b(int $$0) {
+      this.d($$0 - this.c * 4);
    }
 
    @Override
-   public void b(fgq $$0, int $$1, int $$2, float $$3) {
-      ale $$4 = this.a.a(this.B(), this.A());
-      $$0.a($$4, this.C(), this.D(), this.g, this.h);
+   protected void a(fla $$0) {
+      $$0.a(fkz.a, this.y());
+   }
+
+   @Override
+   public void b(fgr $$0, int $$1, int $$2, float $$3) {
+      if (this.aH_() || this.b) {
+         int $$4 = this.C() - this.c;
+         int $$5 = this.D() - this.c;
+         int $$6 = this.x() + this.c * 2;
+         int $$7 = this.v() + this.c * 2;
+         int $$8 = this.b ? (this.aH_() ? -1 : -6250336) : -1;
+         $$0.a($$4 + 1, $$5, $$4 + $$6, $$5 + $$7, -16777216);
+         $$0.b($$4, $$5, $$6, $$7, $$8);
+      }
+
+      super.b($$0, $$1, $$2, $$3);
+   }
+
+   @Override
+   public void a(gtv $$0) {
    }
 }

@@ -1,28 +1,39 @@
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
 import com.mojang.brigadier.builder.RequiredArgumentBuilder;
+import java.util.Collection;
+import java.util.Collections;
 
 public class aox {
    public static void a(CommandDispatcher<ep> $$0) {
       $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)eq.a("setworldspawn").requires($$0x -> $$0x.c(2)))
-               .executes($$0x -> a((ep)$$0x.getSource(), iz.a(((ep)$$0x.getSource()).d()), 0.0F)))
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)eq.a("spawnpoint").requires($$0x -> $$0x.c(2)))
+               .executes($$0x -> a((ep)$$0x.getSource(), Collections.singleton(((ep)$$0x.getSource()).h()), iz.a(((ep)$$0x.getSource()).d()), 0.0F)))
             .then(
-               ((RequiredArgumentBuilder)eq.a("pos", gl.a()).executes($$0x -> a((ep)$$0x.getSource(), gl.c($$0x, "pos"), 0.0F)))
-                  .then(eq.a("angle", ev.a()).executes($$0x -> a((ep)$$0x.getSource(), gl.c($$0x, "pos"), ev.a($$0x, "angle"))))
+               ((RequiredArgumentBuilder)eq.a("targets", fc.d())
+                     .executes($$0x -> a((ep)$$0x.getSource(), fc.f($$0x, "targets"), iz.a(((ep)$$0x.getSource()).d()), 0.0F)))
+                  .then(
+                     ((RequiredArgumentBuilder)eq.a("pos", gl.a()).executes($$0x -> a((ep)$$0x.getSource(), fc.f($$0x, "targets"), gl.c($$0x, "pos"), 0.0F)))
+                        .then(eq.a("angle", ev.a()).executes($$0x -> a((ep)$$0x.getSource(), fc.f($$0x, "targets"), gl.c($$0x, "pos"), ev.a($$0x, "angle"))))
+                  )
             )
       );
    }
 
-   private static int a(ep $$0, iz $$1, float $$2) {
-      are $$3 = $$0.e();
-      if ($$3.af() != dbx.h) {
-         $$0.b(xo.c("commands.setworldspawn.failure.not_overworld"));
-         return 0;
-      } else {
-         $$3.a($$1, $$2);
-         $$0.a(() -> xo.a("commands.setworldspawn.success", $$1.u(), $$1.v(), $$1.w(), $$2), true);
-         return 1;
+   private static int a(ep $$0, Collection<arg> $$1, iz $$2, float $$3) {
+      ale<dby> $$4 = $$0.e().af();
+
+      for (arg $$5 : $$1) {
+         $$5.a($$4, $$2, $$3, true, false);
       }
+
+      String $$6 = $$4.a().toString();
+      if ($$1.size() == 1) {
+         $$0.a(() -> xp.a("commands.spawnpoint.success.single", $$2.u(), $$2.v(), $$2.w(), $$3, $$6, $$1.iterator().next().O_()), true);
+      } else {
+         $$0.a(() -> xp.a("commands.spawnpoint.success.multiple", $$2.u(), $$2.v(), $$2.w(), $$3, $$6, $$1.size()), true);
+      }
+
+      return $$1.size();
    }
 }

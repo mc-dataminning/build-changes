@@ -1,11 +1,16 @@
-public class gjj extends gkc<che, fuf<che>> {
-   private static final ale a = new ale("textures/entity/goat/goat.png");
+public class gjj extends glf<bth> {
+   private static final alf a = new alf("textures/entity/squid/glow_squid.png");
 
-   public gjj(giw.a $$0) {
-      super($$0, new fuf<>($$0.a(fwy.al)), 0.7F);
+   public gjj(gix.a $$0, fwc<bth> $$1) {
+      super($$0, $$1);
    }
 
-   public ale a(che $$0) {
+   public alf a(bth $$0) {
       return a;
+   }
+
+   protected int a(bth $$0, iz $$1) {
+      int $$2 = (int)ayz.b(0.0F, 15.0F, 1.0F - (float)$$0.y() / 10.0F);
+      return $$2 == 15 ? 15 : Math.max($$2, super.a($$0, $$1));
    }
 }

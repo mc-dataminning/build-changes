@@ -1,33 +1,38 @@
+import javax.annotation.Nullable;
+
 public class cek {
-   public static boolean a(btq $$0) {
-      return $$0.K() instanceof ccz;
+   @Nullable
+   public static evr a(bty $$0, int $$1, int $$2) {
+      boolean $$3 = cel.a($$0, $$1);
+      return ceo.a($$0, () -> {
+         iz $$4 = ceo.a($$0.el(), $$1, $$2);
+         return a($$0, $$1, $$3, $$4);
+      });
    }
 
-   public static boolean a(btx $$0, int $$1) {
-      return $$0.gb() && $$0.fY().a($$0.dn(), (double)($$0.fZ() + (float)$$1) + 1.0);
+   @Nullable
+   public static evr a(bty $$0, int $$1, int $$2, evr $$3, double $$4) {
+      evr $$5 = $$3.a($$0.du(), $$0.dw(), $$0.dA());
+      boolean $$6 = cel.a($$0, $$1);
+      return ceo.a($$0, () -> {
+         iz $$6x = ceo.a($$0.el(), $$1, $$2, 0, $$5.c, $$5.e, $$4);
+         return $$6x == null ? null : a($$0, $$1, $$6, $$6x);
+      });
    }
 
-   public static boolean a(iz $$0, btx $$1) {
-      return $$0.v() < $$1.dP().I_() || $$0.v() > $$1.dP().am();
+   @Nullable
+   public static evr a(bty $$0, int $$1, int $$2, evr $$3) {
+      evr $$4 = $$0.dn().d($$3);
+      boolean $$5 = cel.a($$0, $$1);
+      return ceo.a($$0, () -> {
+         iz $$5x = ceo.a($$0.el(), $$1, $$2, 0, $$4.c, $$4.e, (float) (Math.PI / 2));
+         return $$5x == null ? null : a($$0, $$1, $$5, $$5x);
+      });
    }
 
-   public static boolean a(boolean $$0, btx $$1, iz $$2) {
-      return $$0 && !$$1.a($$2);
-   }
-
-   public static boolean a(cda $$0, iz $$1) {
-      return !$$0.a($$1);
-   }
-
-   public static boolean a(btx $$0, iz $$1) {
-      return $$0.dP().b_($$1).a(awu.a);
-   }
-
-   public static boolean b(btx $$0, iz $$1) {
-      return $$0.a(eoq.b($$0, $$1)) != 0.0F;
-   }
-
-   public static boolean c(btx $$0, iz $$1) {
-      return $$0.dP().a_($$1).e();
+   @Nullable
+   private static iz a(bty $$0, int $$1, boolean $$2, iz $$3) {
+      iz $$4 = ceo.a($$0, $$1, $$0.el(), $$3);
+      return !cel.a($$4, $$0) && !cel.a($$2, $$0, $$4) && !cel.a($$0.K(), $$4) && !cel.b($$0, $$4) ? $$4 : null;
    }
 }

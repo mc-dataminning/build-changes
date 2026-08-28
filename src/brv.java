@@ -1,36 +1,36 @@
-import javax.annotation.Nullable;
-
-class brv extends bry {
-   private final boolean a;
-
-   public brv(bsa $$0, int $$1, boolean $$2) {
+class brv extends bsa {
+   protected brv(bsb $$0, int $$1) {
       super($$0, $$1);
-      this.a = $$2;
    }
 
    @Override
-   public boolean a(bto $$0, int $$1) {
-      if (this.a == $$0.ez()) {
-         $$0.c((float)Math.max(4 << $$1, 0));
-      } else {
-         $$0.a($$0.dQ().o(), (float)(6 << $$1));
+   public boolean a(int $$0, int $$1) {
+      return true;
+   }
+
+   @Override
+   public boolean a(btp $$0, int $$1) {
+      if ($$0 instanceof arg $$2 && !$$2.N_()) {
+         arf $$3 = $$2.z();
+         if (!$$3.J().b(cpn.c)) {
+            return this.a($$2, $$3);
+         }
+
+         if ($$3.al() != bqr.a && $$3.c($$2.dp())) {
+            coi $$4 = $$3.d($$2.dp());
+            if ($$4 == null || $$4.m() < $$4.l()) {
+               $$2.b(new bsc(bse.I, 600, $$1));
+               $$2.d($$2.dp());
+               return false;
+            }
+         }
       }
 
       return true;
    }
 
-   @Override
-   public void a(@Nullable bst $$0, @Nullable bst $$1, bto $$2, int $$3, double $$4) {
-      if (this.a == $$2.ez()) {
-         int $$5 = (int)($$4 * (double)(4 << $$3) + 0.5);
-         $$2.c((float)$$5);
-      } else {
-         int $$6 = (int)($$4 * (double)(6 << $$3) + 0.5);
-         if ($$0 == null) {
-            $$2.a($$2.dQ().o(), (float)$$6);
-         } else {
-            $$2.a($$2.dQ().c($$0, $$1), (float)$$6);
-         }
-      }
+   private boolean a(arg $$0, arf $$1) {
+      iz $$2 = $$0.dp();
+      return $$1.al() != bqr.a && $$1.c($$2) ? $$1.z().a($$0, $$2) == null : true;
    }
 }

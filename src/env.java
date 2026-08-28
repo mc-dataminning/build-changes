@@ -1,24 +1,118 @@
-import com.google.common.collect.UnmodifiableIterator;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import it.unimi.dsi.fastutil.objects.Reference2ObjectArrayMap;
+import java.util.stream.Stream;
+import javax.annotation.Nullable;
 
-public class env {
-   public static final ent a = a("empty", new enr());
-   public static final ens b = a("flowing_water", new eoa.a());
-   public static final ens c = a("water", new eoa.b());
-   public static final ens d = a("flowing_lava", new enx.a());
-   public static final ens e = a("lava", new enx.b());
+public final class env extends dse<enu, env> {
+   public static final Codec<env> a = a(lp.c.q(), enu::g).stable();
+   public static final int b = 9;
+   public static final int g = 8;
 
-   private static <T extends ent> T a(String $$0, T $$1) {
-      return jv.a(lp.c, $$0, $$1);
+   public env(enu $$0, Reference2ObjectArrayMap<dtf<?>, Comparable<?>> $$1, MapCodec<env> $$2) {
+      super($$0, $$1, $$2);
    }
 
-   static {
-      for (ent $$0 : lp.c) {
-         UnmodifiableIterator var2 = $$0.f().a().iterator();
+   public enu a() {
+      return this.e;
+   }
 
-         while (var2.hasNext()) {
-            enu $$1 = (enu)var2.next();
-            ent.c.b($$1);
+   public boolean b() {
+      return this.a().c(this);
+   }
+
+   public boolean a(enu $$0) {
+      return this.e == $$0 && this.e.c(this);
+   }
+
+   public boolean c() {
+      return this.a().b();
+   }
+
+   public float a(dbe $$0, iz $$1) {
+      return this.a().a(this, $$0, $$1);
+   }
+
+   public float d() {
+      return this.a().a(this);
+   }
+
+   public int e() {
+      return this.a().d(this);
+   }
+
+   public boolean b(dbe $$0, iz $$1) {
+      for (int $$2 = -1; $$2 <= 1; $$2++) {
+         for (int $$3 = -1; $$3 <= 1; $$3++) {
+            iz $$4 = $$1.b($$2, 0, $$3);
+            env $$5 = $$0.b_($$4);
+            if (!$$5.a().a(this.a()) && !$$0.a_($$4).i($$0, $$4)) {
+               return true;
+            }
          }
       }
+
+      return false;
+   }
+
+   public void a(dby $$0, iz $$1) {
+      this.a().b($$0, $$1, this);
+   }
+
+   public void a(dby $$0, iz $$1, azh $$2) {
+      this.a().a($$0, $$1, this, $$2);
+   }
+
+   public boolean f() {
+      return this.a().i();
+   }
+
+   public void b(dby $$0, iz $$1, azh $$2) {
+      this.a().b($$0, $$1, this, $$2);
+   }
+
+   public evr c(dbe $$0, iz $$1) {
+      return this.a().a($$0, $$1, this);
+   }
+
+   public dsc g() {
+      return this.a().b(this);
+   }
+
+   @Nullable
+   public lg h() {
+      return this.a().h();
+   }
+
+   public boolean a(axf<enu> $$0) {
+      return this.a().k().a($$0);
+   }
+
+   public boolean a(jm<enu> $$0) {
+      return $$0.a(this.a().k());
+   }
+
+   public boolean b(enu $$0) {
+      return this.a() == $$0;
+   }
+
+   public float i() {
+      return this.a().c();
+   }
+
+   public boolean a(dbe $$0, iz $$1, enu $$2, je $$3) {
+      return this.a().a(this, $$0, $$1, $$2, $$3);
+   }
+
+   public ewk d(dbe $$0, iz $$1) {
+      return this.a().b(this, $$0, $$1);
+   }
+
+   public ji<enu> j() {
+      return this.e.k();
+   }
+
+   public Stream<axf<enu>> k() {
+      return this.e.k().c();
    }
 }

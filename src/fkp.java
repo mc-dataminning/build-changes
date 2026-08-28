@@ -2,217 +2,110 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Consumer;
 
-public class fkp extends fkl {
-   private final List<fks> c = new ArrayList<>();
-   private final List<fkp.a> d = new ArrayList<>();
-   private final fkt e = fkt.i();
-   private int f = 0;
-   private int g = 0;
+public class fkp extends fkm {
+   private final List<fkp.a> c = new ArrayList<>();
+   private int d;
+   private int e;
+   private final fku f = fku.i().a(0.5F, 0.5F);
 
    public fkp() {
-      this(0, 0);
+      this(0, 0, 0, 0);
    }
 
    public fkp(int $$0, int $$1) {
-      super($$0, $$1, 0, 0);
+      this(0, 0, $$0, $$1);
+   }
+
+   public fkp(int $$0, int $$1, int $$2, int $$3) {
+      super($$0, $$1, $$2, $$3);
+      this.a($$2, $$3);
+   }
+
+   public fkp a(int $$0, int $$1) {
+      return this.b($$0).a($$1);
+   }
+
+   public fkp a(int $$0) {
+      this.e = $$0;
+      return this;
+   }
+
+   public fkp b(int $$0) {
+      this.d = $$0;
+      return this;
+   }
+
+   public fku b() {
+      return this.f.g();
+   }
+
+   public fku c() {
+      return this.f;
    }
 
    @Override
    public void a() {
       super.a();
-      int $$0 = 0;
-      int $$1 = 0;
+      int $$0 = this.d;
+      int $$1 = this.e;
 
-      for (fkp.a $$2 : this.d) {
-         $$0 = Math.max($$2.c(), $$0);
-         $$1 = Math.max($$2.d(), $$1);
+      for (fkp.a $$2 : this.c) {
+         $$0 = Math.max($$0, $$2.b());
+         $$1 = Math.max($$1, $$2.a());
       }
 
-      int[] $$3 = new int[$$1 + 1];
-      int[] $$4 = new int[$$0 + 1];
-
-      for (fkp.a $$5 : this.d) {
-         int $$6 = $$5.a() - ($$5.e - 1) * this.f;
-         c $$7 = new c($$6, $$5.e);
-
-         for (int $$8 = $$5.c; $$8 <= $$5.c(); $$8++) {
-            $$4[$$8] = Math.max($$4[$$8], $$7.nextInt());
-         }
-
-         int $$9 = $$5.b() - ($$5.f - 1) * this.g;
-         c $$10 = new c($$9, $$5.f);
-
-         for (int $$11 = $$5.d; $$11 <= $$5.d(); $$11++) {
-            $$3[$$11] = Math.max($$3[$$11], $$10.nextInt());
-         }
+      for (fkp.a $$3 : this.c) {
+         $$3.a(this.C(), $$0);
+         $$3.b(this.D(), $$1);
       }
 
-      int[] $$12 = new int[$$1 + 1];
-      int[] $$13 = new int[$$0 + 1];
-      $$12[0] = 0;
-
-      for (int $$14 = 1; $$14 <= $$1; $$14++) {
-         $$12[$$14] = $$12[$$14 - 1] + $$3[$$14 - 1] + this.g;
-      }
-
-      $$13[0] = 0;
-
-      for (int $$15 = 1; $$15 <= $$0; $$15++) {
-         $$13[$$15] = $$13[$$15 - 1] + $$4[$$15 - 1] + this.f;
-      }
-
-      for (fkp.a $$16 : this.d) {
-         int $$17 = 0;
-
-         for (int $$18 = $$16.d; $$18 <= $$16.d(); $$18++) {
-            $$17 += $$3[$$18];
-         }
-
-         $$17 += this.g * ($$16.f - 1);
-         $$16.a(this.C() + $$12[$$16.d], $$17);
-         int $$19 = 0;
-
-         for (int $$20 = $$16.c; $$20 <= $$16.c(); $$20++) {
-            $$19 += $$4[$$20];
-         }
-
-         $$19 += this.f * ($$16.e - 1);
-         $$16.b(this.D() + $$13[$$16.c], $$19);
-      }
-
-      this.a = $$12[$$1] + $$3[$$1];
-      this.b = $$13[$$0] + $$4[$$0];
+      this.a = $$0;
+      this.b = $$1;
    }
 
-   public <T extends fks> T a(T $$0, int $$1, int $$2) {
-      return this.a($$0, $$1, $$2, this.b());
+   public <T extends fkt> T a(T $$0) {
+      return this.a($$0, this.b());
    }
 
-   public <T extends fks> T a(T $$0, int $$1, int $$2, fkt $$3) {
-      return this.a($$0, $$1, $$2, 1, 1, $$3);
+   public <T extends fkt> T a(T $$0, fku $$1) {
+      this.c.add(new fkp.a($$0, $$1));
+      return $$0;
    }
 
-   public <T extends fks> T a(T $$0, int $$1, int $$2, Consumer<fkt> $$3) {
-      return this.a($$0, $$1, $$2, 1, 1, ac.a(this.b(), $$3));
-   }
-
-   public <T extends fks> T a(T $$0, int $$1, int $$2, int $$3, int $$4) {
-      return this.a($$0, $$1, $$2, $$3, $$4, this.b());
-   }
-
-   public <T extends fks> T a(T $$0, int $$1, int $$2, int $$3, int $$4, fkt $$5) {
-      if ($$3 < 1) {
-         throw new IllegalArgumentException("Occupied rows must be at least 1");
-      } else if ($$4 < 1) {
-         throw new IllegalArgumentException("Occupied columns must be at least 1");
-      } else {
-         this.d.add(new fkp.a($$0, $$1, $$2, $$3, $$4, $$5));
-         this.c.add($$0);
-         return $$0;
-      }
-   }
-
-   public <T extends fks> T a(T $$0, int $$1, int $$2, int $$3, int $$4, Consumer<fkt> $$5) {
-      return this.a($$0, $$1, $$2, $$3, $$4, ac.a(this.b(), $$5));
-   }
-
-   public fkp a(int $$0) {
-      this.g = $$0;
-      return this;
-   }
-
-   public fkp b(int $$0) {
-      this.f = $$0;
-      return this;
-   }
-
-   public fkp c(int $$0) {
-      return this.a($$0).b($$0);
+   public <T extends fkt> T a(T $$0, Consumer<fku> $$1) {
+      return this.a($$0, ac.a(this.b(), $$1));
    }
 
    @Override
-   public void b(Consumer<fks> $$0) {
-      this.c.forEach($$0);
+   public void b(Consumer<fkt> $$0) {
+      this.c.forEach($$1 -> $$0.accept($$1.a));
    }
 
-   public fkt b() {
-      return this.e.g();
+   public static void a(fkt $$0, int $$1, int $$2, int $$3, int $$4) {
+      a($$0, $$1, $$2, $$3, $$4, 0.5F, 0.5F);
    }
 
-   public fkt c() {
-      return this.e;
+   public static void a(fkt $$0, flk $$1) {
+      a($$0, $$1.f().a(), $$1.f().b(), $$1.g(), $$1.h());
    }
 
-   public fkp.b d(int $$0) {
-      return new fkp.b($$0);
+   public static void a(fkt $$0, flk $$1, float $$2, float $$3) {
+      a($$0, $$1.d(), $$1.b(), $$1.g(), $$1.h(), $$2, $$3);
    }
 
-   static class a extends fkl.a {
-      final int c;
-      final int d;
-      final int e;
-      final int f;
-
-      a(fks $$0, int $$1, int $$2, int $$3, int $$4, fkt $$5) {
-         super($$0, $$5.h());
-         this.c = $$1;
-         this.d = $$2;
-         this.e = $$3;
-         this.f = $$4;
-      }
-
-      public int c() {
-         return this.c + this.e - 1;
-      }
-
-      public int d() {
-         return this.d + this.f - 1;
-      }
+   public static void a(fkt $$0, int $$1, int $$2, int $$3, int $$4, float $$5, float $$6) {
+      a($$1, $$3, $$0.x(), $$0::m, $$5);
+      a($$2, $$4, $$0.v(), $$0::n, $$6);
    }
 
-   public final class b {
-      private final int b;
-      private int c;
+   public static void a(int $$0, int $$1, int $$2, Consumer<Integer> $$3, float $$4) {
+      int $$5 = (int)ayz.i($$4, 0.0F, (float)($$1 - $$2));
+      $$3.accept($$0 + $$5);
+   }
 
-      b(final int $$1) {
-         this.b = $$1;
-      }
-
-      public <T extends fks> T a(T $$0) {
-         return this.a($$0, 1);
-      }
-
-      public <T extends fks> T a(T $$0, int $$1) {
-         return this.a($$0, $$1, this.c());
-      }
-
-      public <T extends fks> T a(T $$0, fkt $$1) {
-         return this.a($$0, 1, $$1);
-      }
-
-      public <T extends fks> T a(T $$0, int $$1, fkt $$2) {
-         int $$3 = this.c / this.b;
-         int $$4 = this.c % this.b;
-         if ($$4 + $$1 > this.b) {
-            $$3++;
-            $$4 = 0;
-            this.c = ayy.d(this.c, this.b);
-         }
-
-         this.c += $$1;
-         return fkp.this.a($$0, $$3, $$4, 1, $$1, $$2);
-      }
-
-      public fkp a() {
-         return fkp.this;
-      }
-
-      public fkt b() {
-         return fkp.this.b();
-      }
-
-      public fkt c() {
-         return fkp.this.c();
+   static class a extends fkm.a {
+      protected a(fkt $$0, fku $$1) {
+         super($$0, $$1);
       }
    }
 }

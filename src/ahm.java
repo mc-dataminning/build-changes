@@ -1,30 +1,29 @@
-public record ahm(int b, int c, boolean d) implements zv<agv> {
-   public static final zm<wl, ahm> a = zv.a(ahm::a, ahm::new);
+public class ahm implements zw<agw> {
+   public static final zn<wm, ahm> a = zw.a(ahm::a, ahm::new);
+   private final int b;
 
-   private ahm(wl $$0) {
-      this($$0.l(), $$0.l(), $$0.readBoolean());
+   public ahm(int $$0) {
+      this.b = $$0;
    }
 
-   private void a(wl $$0) {
-      $$0.c(this.b);
-      $$0.c(this.c);
-      $$0.a(this.d);
+   private ahm(wm $$0) {
+      this.b = $$0.readByte();
+   }
+
+   private void a(wm $$0) {
+      $$0.k(this.b);
    }
 
    @Override
-   public zx<ahm> a() {
-      return agt.bu;
+   public zy<ahm> a() {
+      return agu.bt;
    }
 
-   public void a(agv $$0) {
+   public void a(agw $$0) {
       $$0.a(this);
    }
 
-   public int e() {
-      return this.c;
-   }
-
-   public boolean f() {
-      return this.d;
+   public int b() {
+      return this.b;
    }
 }

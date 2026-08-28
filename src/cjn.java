@@ -1,44 +1,123 @@
-import javax.annotation.Nullable;
+import it.unimi.dsi.fastutil.objects.ObjectListIterator;
 
-public class cjn extends ckn {
-   public cjn(bsz<? extends cjn> $$0, dbx $$1) {
+public class cjn extends cjl implements bug {
+   private static final int c = 50;
+   private static final int d = 70;
+   private static final akk<Boolean> e = ako.a(cjn.class, akm.k);
+   public static final String b = "sheared";
+
+   public static buw.a gt() {
+      return cjl.s().a(bux.q, 16.0);
+   }
+
+   public cjn(bta<? extends cjn> $$0, dby $$1) {
       super($$0, $$1);
    }
 
-   public static buv.a s() {
-      return ckn.u().a(buw.q, 12.0);
+   @Override
+   protected void a(ako.a $$0) {
+      super.a($$0);
+      $$0.a(e, false);
    }
 
    @Override
-   public boolean C(bst $$0) {
-      if (super.C($$0)) {
-         if ($$0 instanceof bto) {
-            int $$1 = 0;
-            if (this.dP().al() == bqq.c) {
-               $$1 = 7;
-            } else if (this.dP().al() == bqq.d) {
-               $$1 = 15;
-            }
+   public void b(us $$0) {
+      super.b($$0);
+      $$0.a("sheared", this.gu());
+   }
 
-            if ($$1 > 0) {
-               ((bto)$$0).b(new bsb(bsd.s, $$1 * 20, 0), this);
-            }
+   @Override
+   public void a(us $$0) {
+      super.a($$0);
+      this.w($$0.q("sheared"));
+   }
+
+   public boolean gu() {
+      return this.ao.a(e);
+   }
+
+   public void w(boolean $$0) {
+      this.ao.a(e, $$0);
+   }
+
+   @Override
+   protected bqu b(cmx $$0, bqt $$1) {
+      cup $$2 = $$0.b($$1);
+      if ($$2.a(cus.rV) && this.a()) {
+         this.a(awb.h);
+         this.a(dwv.M, $$0);
+         if (!this.dP().B) {
+            $$2.a(1, $$0, d($$1));
          }
 
-         return true;
+         return bqu.a(this.dP().B);
       } else {
-         return false;
+         return super.b($$0, $$1);
       }
    }
 
-   @Nullable
    @Override
-   public buh a(dcm $$0, bqr $$1, bts $$2, @Nullable buh $$3) {
-      return $$3;
+   protected avz v() {
+      return awa.cn;
    }
 
    @Override
-   public evq l(bst $$0) {
-      return $$0.dj() <= this.dj() ? new evq(0.0, 0.21875 * (double)this.ee(), 0.0) : super.l($$0);
+   protected avz d(brn $$0) {
+      return awa.cp;
+   }
+
+   @Override
+   protected avz o_() {
+      return awa.co;
+   }
+
+   @Override
+   protected avz u() {
+      return awa.cr;
+   }
+
+   @Override
+   protected cnd b(cup $$0, float $$1) {
+      cnd $$2 = super.b($$0, $$1);
+      if ($$2 instanceof cnf $$3) {
+         $$3.a(new bsc(bse.s, 100));
+      }
+
+      return $$2;
+   }
+
+   @Override
+   protected int gq() {
+      return 50;
+   }
+
+   @Override
+   protected int gr() {
+      return 70;
+   }
+
+   @Override
+   public void a(awb $$0) {
+      this.dP().a(null, this, awa.cq, $$0, 1.0F, 1.0F);
+      this.gx();
+      this.w(true);
+   }
+
+   private void gx() {
+      if (this.dP() instanceof arf $$0 && $$0.ab().b(dbu.f)) {
+         eqn $$1 = $$0.o().be().b(eqe.bc);
+         eql $$2 = new eql.a($$0).a(ete.f, this.dn()).a(ete.a, this).a(etd.s);
+         ObjectListIterator var4 = $$1.a($$2).iterator();
+
+         while (var4.hasNext()) {
+            cup $$3 = (cup)var4.next();
+            this.b($$3);
+         }
+      }
+   }
+
+   @Override
+   public boolean a() {
+      return !this.gu() && this.bD();
    }
 }

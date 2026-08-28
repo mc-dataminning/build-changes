@@ -1,37 +1,46 @@
 import com.mojang.logging.LogUtils;
 import io.netty.buffer.ByteBuf;
 import io.netty.channel.ChannelHandlerContext;
-import io.netty.handler.codec.MessageToByteEncoder;
+import io.netty.handler.codec.ByteToMessageDecoder;
+import java.io.IOException;
+import java.util.List;
 import org.slf4j.Logger;
 
-public class wt<T extends wu> extends MessageToByteEncoder<zv<T>> {
+public class wt<T extends wv> extends ByteToMessageDecoder implements wy {
    private static final Logger a = LogUtils.getLogger();
-   private final ww<T> b;
+   private final wx<T> b;
 
-   public wt(ww<T> $$0) {
+   public wt(wx<T> $$0) {
       this.b = $$0;
    }
 
-   protected void a(ChannelHandlerContext $$0, zv<T> $$1, ByteBuf $$2) throws Exception {
-      zx<? extends zv<? super T>> $$3 = $$1.a();
+   protected void decode(ChannelHandlerContext $$0, ByteBuf $$1, List<Object> $$2) throws Exception {
+      int $$3 = $$1.readableBytes();
+      if ($$3 != 0) {
+         zw<? super T> $$4 = this.b.c().decode($$1);
+         zy<? extends zw<? super T>> $$5 = $$4.a();
+         bno.f.a(this.b.a(), $$5, $$0.channel().remoteAddress(), $$3);
+         if ($$1.readableBytes() > 0) {
+            throw new IOException(
+               "Packet "
+                  + this.b.a().a()
+                  + "/"
+                  + $$5
+                  + " ("
+                  + $$4.getClass().getSimpleName()
+                  + ") was larger than I expected, found "
+                  + $$1.readableBytes()
+                  + " bytes extra whilst reading packet "
+                  + $$5
+            );
+         } else {
+            $$2.add($$4);
+            if (a.isDebugEnabled()) {
+               a.debug(wk.c, " IN: [{}:{}] {} -> {} bytes", new Object[]{this.b.a().a(), $$5, $$4.getClass().getName(), $$3});
+            }
 
-      try {
-         this.b.c().encode($$2, $$1);
-         int $$4 = $$2.readableBytes();
-         if (a.isDebugEnabled()) {
-            a.debug(wj.d, "OUT: [{}:{}] {} -> {} bytes", new Object[]{this.b.a().a(), $$3, $$1.getClass().getName(), $$4});
+            wy.a($$0, $$4);
          }
-
-         bnn.f.b(this.b.a(), $$3, $$0.channel().remoteAddress(), $$4);
-      } catch (Throwable var9) {
-         a.error("Error sending packet {}", $$3, var9);
-         if ($$1.c()) {
-            throw new xb(var9);
-         }
-
-         throw var9;
-      } finally {
-         wx.b($$0, $$1);
       }
    }
 }

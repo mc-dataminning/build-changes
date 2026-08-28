@@ -3,211 +3,211 @@ import java.util.Map;
 import java.util.stream.Stream;
 
 public class ls {
-   private static final Map<dey, lt> ap = Maps.newHashMap();
+   private static final Map<dez, lt> ap = Maps.newHashMap();
    private static final String aq = "wooden";
    private static final String ar = "has_planks";
-   public static final lt a = a(dfa.r)
-      .a(dfa.gz)
-      .h(dfa.kg)
-      .j(dfa.jY)
-      .m(dfa.dD)
-      .a(dfa.cH, dfa.cU)
-      .k(dfa.jx)
-      .l(dfa.hP)
-      .f(dfa.ko)
-      .o(dfa.eC)
+   public static final lt a = a(dfb.r)
+      .a(dfb.gz)
+      .h(dfb.kg)
+      .j(dfb.jY)
+      .m(dfb.dD)
+      .a(dfb.cH, dfb.cU)
+      .k(dfb.jx)
+      .l(dfb.hP)
+      .f(dfb.ko)
+      .o(dfb.eC)
       .a("wooden")
       .b("has_planks")
       .a();
-   public static final lt b = a(dfa.s)
-      .a(dfa.gA)
-      .h(dfa.kh)
-      .j(dfa.jZ)
-      .m(dfa.dE)
-      .a(dfa.cI, dfa.cV)
-      .k(dfa.jy)
-      .l(dfa.hQ)
-      .f(dfa.kp)
-      .o(dfa.eD)
+   public static final lt b = a(dfb.s)
+      .a(dfb.gA)
+      .h(dfb.kh)
+      .j(dfb.jZ)
+      .m(dfb.dE)
+      .a(dfb.cI, dfb.cV)
+      .k(dfb.jy)
+      .l(dfb.hQ)
+      .f(dfb.kp)
+      .o(dfb.eD)
       .a("wooden")
       .b("has_planks")
       .a();
-   public static final lt c = a(dfa.p)
-      .a(dfa.gx)
-      .h(dfa.ke)
-      .j(dfa.jW)
-      .m(dfa.dB)
-      .a(dfa.cG, dfa.cT)
-      .k(dfa.jv)
-      .l(dfa.fL)
-      .f(dfa.km)
-      .o(dfa.eA)
+   public static final lt c = a(dfb.p)
+      .a(dfb.gx)
+      .h(dfb.ke)
+      .j(dfb.jW)
+      .m(dfb.dB)
+      .a(dfb.cG, dfb.cT)
+      .k(dfb.jv)
+      .l(dfb.fL)
+      .f(dfb.km)
+      .o(dfb.eA)
       .a("wooden")
       .b("has_planks")
       .a();
-   public static final lt d = a(dfa.oE)
-      .a(dfa.oS)
-      .h(dfa.oK)
-      .j(dfa.oO)
-      .m(dfa.oI)
-      .a(dfa.oW, dfa.oY)
-      .k(dfa.oG)
-      .l(dfa.oQ)
-      .f(dfa.oU)
-      .o(dfa.oM)
+   public static final lt d = a(dfb.oE)
+      .a(dfb.oS)
+      .h(dfb.oK)
+      .j(dfb.oO)
+      .m(dfb.oI)
+      .a(dfb.oW, dfb.oY)
+      .k(dfb.oG)
+      .l(dfb.oQ)
+      .f(dfb.oU)
+      .o(dfb.oM)
       .a("wooden")
       .b("has_planks")
       .a();
-   public static final lt e = a(dfa.q)
-      .a(dfa.gy)
-      .h(dfa.kf)
-      .j(dfa.jX)
-      .m(dfa.dC)
-      .a(dfa.cJ, dfa.cW)
-      .k(dfa.jw)
-      .l(dfa.fM)
-      .f(dfa.kn)
-      .o(dfa.eB)
+   public static final lt e = a(dfb.q)
+      .a(dfb.gy)
+      .h(dfb.kf)
+      .j(dfb.jX)
+      .m(dfb.dC)
+      .a(dfb.cJ, dfb.cW)
+      .k(dfb.jw)
+      .l(dfb.fM)
+      .f(dfb.kn)
+      .o(dfb.eB)
       .a("wooden")
       .b("has_planks")
       .a();
-   public static final lt f = a(dfa.n)
-      .a(dfa.gv)
-      .h(dfa.dU)
-      .j(dfa.fh)
-      .m(dfa.dz)
-      .a(dfa.cE, dfa.cR)
-      .k(dfa.jt)
-      .l(dfa.cu)
-      .f(dfa.cN)
-      .o(dfa.ey)
+   public static final lt f = a(dfb.n)
+      .a(dfb.gv)
+      .h(dfb.dU)
+      .j(dfb.fh)
+      .m(dfb.dz)
+      .a(dfb.cE, dfb.cR)
+      .k(dfb.jt)
+      .l(dfb.cu)
+      .f(dfb.cN)
+      .o(dfb.ey)
       .a("wooden")
       .b("has_planks")
       .a();
-   public static final lt g = a(dfa.t)
-      .a(dfa.gB)
-      .h(dfa.ki)
-      .j(dfa.ka)
-      .m(dfa.dF)
-      .a(dfa.cK, dfa.cX)
-      .k(dfa.jz)
-      .l(dfa.hR)
-      .f(dfa.kq)
-      .o(dfa.eE)
+   public static final lt g = a(dfb.t)
+      .a(dfb.gB)
+      .h(dfb.ki)
+      .j(dfb.ka)
+      .m(dfb.dF)
+      .a(dfb.cK, dfb.cX)
+      .k(dfb.jz)
+      .l(dfb.hR)
+      .f(dfb.kq)
+      .o(dfb.eE)
       .a("wooden")
       .b("has_planks")
       .a();
-   public static final lt h = a(dfa.o)
-      .a(dfa.gw)
-      .h(dfa.kd)
-      .j(dfa.jV)
-      .m(dfa.dA)
-      .a(dfa.cF, dfa.cS)
-      .k(dfa.ju)
-      .l(dfa.fK)
-      .f(dfa.kl)
-      .o(dfa.ez)
+   public static final lt h = a(dfb.o)
+      .a(dfb.gw)
+      .h(dfb.kd)
+      .j(dfb.jV)
+      .m(dfb.dA)
+      .a(dfb.cF, dfb.cS)
+      .k(dfb.ju)
+      .l(dfb.fK)
+      .f(dfb.kl)
+      .o(dfb.ez)
       .a("wooden")
       .b("has_planks")
       .a();
-   public static final lt i = a(dfa.oF)
-      .a(dfa.oT)
-      .h(dfa.oL)
-      .j(dfa.oP)
-      .m(dfa.oJ)
-      .a(dfa.oX, dfa.oZ)
-      .k(dfa.oH)
-      .l(dfa.oR)
-      .f(dfa.oV)
-      .o(dfa.oN)
+   public static final lt i = a(dfb.oF)
+      .a(dfb.oT)
+      .h(dfb.oL)
+      .j(dfb.oP)
+      .m(dfb.oJ)
+      .a(dfb.oX, dfb.oZ)
+      .k(dfb.oH)
+      .l(dfb.oR)
+      .f(dfb.oV)
+      .o(dfb.oN)
       .a("wooden")
       .b("has_planks")
       .a();
-   public static final lt j = a(dfa.u)
-      .a(dfa.gC)
-      .k(dfa.jA)
-      .l(dfa.hS)
-      .h(dfa.kj)
-      .j(dfa.kb)
-      .m(dfa.dG)
-      .a(dfa.cL, dfa.cY)
-      .f(dfa.kr)
-      .o(dfa.eF)
+   public static final lt j = a(dfb.u)
+      .a(dfb.gC)
+      .k(dfb.jA)
+      .l(dfb.hS)
+      .h(dfb.kj)
+      .j(dfb.kb)
+      .m(dfb.dG)
+      .a(dfb.cL, dfb.cY)
+      .f(dfb.kr)
+      .o(dfb.eF)
       .a("wooden")
       .b("has_planks")
       .a();
-   public static final lt k = a(dfa.v)
-      .a(dfa.gD)
-      .k(dfa.jB)
-      .l(dfa.hT)
-      .g(dfa.kk)
-      .i(dfa.kc)
-      .m(dfa.dH)
-      .a(dfa.cM, dfa.cZ)
-      .f(dfa.ks)
-      .o(dfa.eG)
-      .c(dfa.w)
+   public static final lt k = a(dfb.v)
+      .a(dfb.gD)
+      .k(dfb.jB)
+      .l(dfb.hT)
+      .g(dfb.kk)
+      .i(dfb.kc)
+      .m(dfb.dH)
+      .a(dfb.cM, dfb.cZ)
+      .f(dfb.ks)
+      .o(dfb.eG)
+      .c(dfb.w)
       .a("wooden")
       .b("has_planks")
       .a();
-   public static final lt l = a(dfa.w).k(dfa.jC).l(dfa.hU).a();
-   public static final lt m = a(dfa.eM).p(dfa.nL).l(dfa.fk).k(dfa.jL).a();
-   public static final lt n = a(dfa.g).p(dfa.nN).l(dfa.no).k(dfa.nB).n(dfa.h).a();
-   public static final lt o = a(dfa.h).l(dfa.nq).k(dfa.nD).a();
-   public static final lt p = a(dfa.pr).p(dfa.pt).l(dfa.ps).k(dfa.pu).n(dfa.pv).a();
-   public static final lt q = a(dfa.pv).p(dfa.pH).m(dfa.pF).a(dfa.pG).l(dfa.pD).k(dfa.pE).n(dfa.pw).b(dfa.py).a();
-   public static final lt r = a(dfa.pw).p(dfa.pB).l(dfa.pA).k(dfa.pz).d(dfa.px).a();
-   public static final lt s = a(dfa.cj).p(dfa.nF).l(dfa.fi).k(dfa.jJ).a();
-   public static final lt t = a(dfa.kz).p(dfa.nQ).l(dfa.nj).k(dfa.nx).a();
-   public static final lt u = a(dfa.eI).p(dfa.nI).l(dfa.ng).k(dfa.nu).a();
-   public static final lt v = a(dfa.qW).e(dfa.rf).f(dfa.rM).o(dfa.rU).b().a();
-   public static final lt w = a(dfa.rf).k(dfa.rv).l(dfa.rr).b(dfa.rj).b().a();
-   public static final lt x = a(dfa.rw).e(dfa.rD).f(dfa.rQ).o(dfa.rY).a("waxed_cut_copper").b().a();
-   public static final lt y = a(dfa.rD).k(dfa.rL).l(dfa.rH).b(dfa.rn).a("waxed_cut_copper").b().a();
-   public static final lt z = a(dfa.qX).e(dfa.re).f(dfa.rN).o(dfa.rV).b().a();
-   public static final lt A = a(dfa.re).k(dfa.ru).l(dfa.rq).b(dfa.ri).b().a();
-   public static final lt B = a(dfa.ry).e(dfa.rC).f(dfa.rR).o(dfa.rZ).a("waxed_exposed_cut_copper").b().a();
-   public static final lt C = a(dfa.rC).k(dfa.rK).l(dfa.rG).b(dfa.rm).a("waxed_exposed_cut_copper").b().a();
-   public static final lt D = a(dfa.qY).e(dfa.rd).f(dfa.rP).o(dfa.rX).b().a();
-   public static final lt E = a(dfa.rd).k(dfa.rt).l(dfa.rp).b(dfa.rh).b().a();
-   public static final lt F = a(dfa.rx).e(dfa.rB).f(dfa.rT).o(dfa.sb).a("waxed_weathered_cut_copper").b().a();
-   public static final lt G = a(dfa.rB).k(dfa.rJ).l(dfa.rF).b(dfa.rl).a("waxed_weathered_cut_copper").b().a();
-   public static final lt H = a(dfa.qZ).e(dfa.rc).f(dfa.rO).o(dfa.rW).b().a();
-   public static final lt I = a(dfa.rc).k(dfa.rs).l(dfa.ro).b(dfa.rg).b().a();
-   public static final lt J = a(dfa.rz).e(dfa.rA).f(dfa.rS).o(dfa.sa).a("waxed_oxidized_cut_copper").b().a();
-   public static final lt K = a(dfa.rA).k(dfa.rI).l(dfa.rE).b(dfa.rk).a("waxed_oxidized_cut_copper").b().a();
-   public static final lt L = a(dfa.m).p(dfa.fP).l(dfa.cQ).k(dfa.jI).a();
-   public static final lt M = a(dfa.cn).p(dfa.fQ).l(dfa.ni).k(dfa.nw).a();
-   public static final lt N = a(dfa.e).p(dfa.nR).l(dfa.nr).k(dfa.nE).n(dfa.f).a();
-   public static final lt O = a(dfa.f).l(dfa.nh).k(dfa.nv).a();
-   public static final lt P = a(dfa.c).p(dfa.nJ).l(dfa.nn).k(dfa.nA).n(dfa.d).a();
-   public static final lt Q = a(dfa.d).l(dfa.ne).k(dfa.ns).a();
-   public static final lt R = a(dfa.qz).p(dfa.qC).l(dfa.qB).k(dfa.qA).b(dfa.qH).n(dfa.qD).a();
-   public static final lt S = a(dfa.qD).p(dfa.qG).l(dfa.qF).k(dfa.qE).n(dfa.qI).a();
-   public static final lt T = a(dfa.qI).p(dfa.qL).l(dfa.qK).k(dfa.qJ).b(dfa.qM).a();
-   public static final lt U = a(dfa.fn).h(dfa.fo).p(dfa.nM).l(dfa.fp).k(dfa.jM).b(dfa.pI).d(dfa.pJ).a();
-   public static final lt V = a(dfa.kL).k(dfa.nC).l(dfa.np).p(dfa.nO).a();
-   public static final lt W = a(dfa.hZ).p(dfa.nG).l(dfa.ic).k(dfa.if).a();
-   public static final lt X = a(dfa.kw).l(dfa.ky).k(dfa.jQ).c().a();
-   public static final lt Y = a(dfa.ia).l(dfa.id).k(dfa.ig).a();
-   public static final lt Z = a(dfa.ib).l(dfa.ie).k(dfa.ih).a();
-   public static final lt aa = a(dfa.hd).l(dfa.hg).k(dfa.jN).b(dfa.he).c().a();
-   public static final lt ab = a(dfa.jT).l(dfa.nm).k(dfa.nz).a();
-   public static final lt ac = a(dfa.aV).p(dfa.nP).l(dfa.fD).k(dfa.jF).b(dfa.aW).e(dfa.aX).c().a();
-   public static final lt ad = a(dfa.aX).k(dfa.jG).a();
-   public static final lt ae = a(dfa.jS).k(dfa.ny).l(dfa.nl).a();
-   public static final lt af = a(dfa.jp).p(dfa.nH).l(dfa.js).k(dfa.jO).b(dfa.jq).e(dfa.jr).c().a();
-   public static final lt ag = a(dfa.jr).k(dfa.jP).a();
-   public static final lt ah = a(dfa.jU).k(dfa.nt).l(dfa.nf).a();
-   public static final lt ai = a(dfa.b).k(dfa.jD).m(dfa.dx).a(dfa.dM).l(dfa.nk).a();
-   public static final lt aj = a(dfa.eH).p(dfa.nK).l(dfa.fj).k(dfa.jK).b(dfa.eK).d(dfa.eJ).c().a();
-   public static final lt ak = a(dfa.sJ).a();
-   public static final lt al = a(dfa.sK).k(dfa.sM).l(dfa.sL).p(dfa.sN).b(dfa.ta).n(dfa.sO).a();
-   public static final lt am = a(dfa.sO).k(dfa.sQ).l(dfa.sP).p(dfa.sR).a();
-   public static final lt an = a(dfa.sW).k(dfa.sY).l(dfa.sX).p(dfa.sZ).d(dfa.tb).a();
-   public static final lt ao = a(dfa.sS).k(dfa.sU).l(dfa.sT).p(dfa.sV).d(dfa.tc).a();
+   public static final lt l = a(dfb.w).k(dfb.jC).l(dfb.hU).a();
+   public static final lt m = a(dfb.eM).p(dfb.nL).l(dfb.fk).k(dfb.jL).a();
+   public static final lt n = a(dfb.g).p(dfb.nN).l(dfb.no).k(dfb.nB).n(dfb.h).a();
+   public static final lt o = a(dfb.h).l(dfb.nq).k(dfb.nD).a();
+   public static final lt p = a(dfb.pr).p(dfb.pt).l(dfb.ps).k(dfb.pu).n(dfb.pv).a();
+   public static final lt q = a(dfb.pv).p(dfb.pH).m(dfb.pF).a(dfb.pG).l(dfb.pD).k(dfb.pE).n(dfb.pw).b(dfb.py).a();
+   public static final lt r = a(dfb.pw).p(dfb.pB).l(dfb.pA).k(dfb.pz).d(dfb.px).a();
+   public static final lt s = a(dfb.cj).p(dfb.nF).l(dfb.fi).k(dfb.jJ).a();
+   public static final lt t = a(dfb.kz).p(dfb.nQ).l(dfb.nj).k(dfb.nx).a();
+   public static final lt u = a(dfb.eI).p(dfb.nI).l(dfb.ng).k(dfb.nu).a();
+   public static final lt v = a(dfb.qW).e(dfb.rf).f(dfb.rM).o(dfb.rU).b().a();
+   public static final lt w = a(dfb.rf).k(dfb.rv).l(dfb.rr).b(dfb.rj).b().a();
+   public static final lt x = a(dfb.rw).e(dfb.rD).f(dfb.rQ).o(dfb.rY).a("waxed_cut_copper").b().a();
+   public static final lt y = a(dfb.rD).k(dfb.rL).l(dfb.rH).b(dfb.rn).a("waxed_cut_copper").b().a();
+   public static final lt z = a(dfb.qX).e(dfb.re).f(dfb.rN).o(dfb.rV).b().a();
+   public static final lt A = a(dfb.re).k(dfb.ru).l(dfb.rq).b(dfb.ri).b().a();
+   public static final lt B = a(dfb.ry).e(dfb.rC).f(dfb.rR).o(dfb.rZ).a("waxed_exposed_cut_copper").b().a();
+   public static final lt C = a(dfb.rC).k(dfb.rK).l(dfb.rG).b(dfb.rm).a("waxed_exposed_cut_copper").b().a();
+   public static final lt D = a(dfb.qY).e(dfb.rd).f(dfb.rP).o(dfb.rX).b().a();
+   public static final lt E = a(dfb.rd).k(dfb.rt).l(dfb.rp).b(dfb.rh).b().a();
+   public static final lt F = a(dfb.rx).e(dfb.rB).f(dfb.rT).o(dfb.sb).a("waxed_weathered_cut_copper").b().a();
+   public static final lt G = a(dfb.rB).k(dfb.rJ).l(dfb.rF).b(dfb.rl).a("waxed_weathered_cut_copper").b().a();
+   public static final lt H = a(dfb.qZ).e(dfb.rc).f(dfb.rO).o(dfb.rW).b().a();
+   public static final lt I = a(dfb.rc).k(dfb.rs).l(dfb.ro).b(dfb.rg).b().a();
+   public static final lt J = a(dfb.rz).e(dfb.rA).f(dfb.rS).o(dfb.sa).a("waxed_oxidized_cut_copper").b().a();
+   public static final lt K = a(dfb.rA).k(dfb.rI).l(dfb.rE).b(dfb.rk).a("waxed_oxidized_cut_copper").b().a();
+   public static final lt L = a(dfb.m).p(dfb.fP).l(dfb.cQ).k(dfb.jI).a();
+   public static final lt M = a(dfb.cn).p(dfb.fQ).l(dfb.ni).k(dfb.nw).a();
+   public static final lt N = a(dfb.e).p(dfb.nR).l(dfb.nr).k(dfb.nE).n(dfb.f).a();
+   public static final lt O = a(dfb.f).l(dfb.nh).k(dfb.nv).a();
+   public static final lt P = a(dfb.c).p(dfb.nJ).l(dfb.nn).k(dfb.nA).n(dfb.d).a();
+   public static final lt Q = a(dfb.d).l(dfb.ne).k(dfb.ns).a();
+   public static final lt R = a(dfb.qz).p(dfb.qC).l(dfb.qB).k(dfb.qA).b(dfb.qH).n(dfb.qD).a();
+   public static final lt S = a(dfb.qD).p(dfb.qG).l(dfb.qF).k(dfb.qE).n(dfb.qI).a();
+   public static final lt T = a(dfb.qI).p(dfb.qL).l(dfb.qK).k(dfb.qJ).b(dfb.qM).a();
+   public static final lt U = a(dfb.fn).h(dfb.fo).p(dfb.nM).l(dfb.fp).k(dfb.jM).b(dfb.pI).d(dfb.pJ).a();
+   public static final lt V = a(dfb.kL).k(dfb.nC).l(dfb.np).p(dfb.nO).a();
+   public static final lt W = a(dfb.hZ).p(dfb.nG).l(dfb.ic).k(dfb.if).a();
+   public static final lt X = a(dfb.kw).l(dfb.ky).k(dfb.jQ).c().a();
+   public static final lt Y = a(dfb.ia).l(dfb.id).k(dfb.ig).a();
+   public static final lt Z = a(dfb.ib).l(dfb.ie).k(dfb.ih).a();
+   public static final lt aa = a(dfb.hd).l(dfb.hg).k(dfb.jN).b(dfb.he).c().a();
+   public static final lt ab = a(dfb.jT).l(dfb.nm).k(dfb.nz).a();
+   public static final lt ac = a(dfb.aV).p(dfb.nP).l(dfb.fD).k(dfb.jF).b(dfb.aW).e(dfb.aX).c().a();
+   public static final lt ad = a(dfb.aX).k(dfb.jG).a();
+   public static final lt ae = a(dfb.jS).k(dfb.ny).l(dfb.nl).a();
+   public static final lt af = a(dfb.jp).p(dfb.nH).l(dfb.js).k(dfb.jO).b(dfb.jq).e(dfb.jr).c().a();
+   public static final lt ag = a(dfb.jr).k(dfb.jP).a();
+   public static final lt ah = a(dfb.jU).k(dfb.nt).l(dfb.nf).a();
+   public static final lt ai = a(dfb.b).k(dfb.jD).m(dfb.dx).a(dfb.dM).l(dfb.nk).a();
+   public static final lt aj = a(dfb.eH).p(dfb.nK).l(dfb.fj).k(dfb.jK).b(dfb.eK).d(dfb.eJ).c().a();
+   public static final lt ak = a(dfb.sJ).a();
+   public static final lt al = a(dfb.sK).k(dfb.sM).l(dfb.sL).p(dfb.sN).b(dfb.ta).n(dfb.sO).a();
+   public static final lt am = a(dfb.sO).k(dfb.sQ).l(dfb.sP).p(dfb.sR).a();
+   public static final lt an = a(dfb.sW).k(dfb.sY).l(dfb.sX).p(dfb.sZ).d(dfb.tb).a();
+   public static final lt ao = a(dfb.sS).k(dfb.sU).l(dfb.sT).p(dfb.sV).d(dfb.tc).a();
 
-   private static lt.a a(dey $$0) {
+   private static lt.a a(dez $$0) {
       lt.a $$1 = new lt.a($$0);
       lt $$2 = ap.put($$0, $$1.a());
       if ($$2 != null) {

@@ -1,9 +1,11 @@
-public class gmc extends ghr<ckv, fwr<ckv>> {
-   public gmc(giw.a $$0) {
-      this($$0, fwy.cf, fwy.ci, fwy.cj);
+public class gmc extends gkd<ckv, fuk<ckv>> {
+   private static final alf a = new alf("textures/entity/hoglin/zoglin.png");
+
+   public gmc(gix.a $$0) {
+      super($$0, new fuk<>($$0.a(fwz.ce)), 0.7F);
    }
 
-   public gmc(giw.a $$0, fwx $$1, fwx $$2, fwx $$3) {
-      super($$0, new fwr<>($$0.a($$1)), new fwr<>($$0.a($$2)), new fwr<>($$0.a($$3)));
+   public alf a(ckv $$0) {
+      return a;
    }
 }

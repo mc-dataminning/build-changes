@@ -1,17 +1,12 @@
-public enum dsn implements azt {
-   a("none"),
-   b("small"),
-   c("large");
+public enum dsn implements azu {
+   a("floor"),
+   b("wall"),
+   c("ceiling");
 
    private final String d;
 
    private dsn(final String $$0) {
       this.d = $$0;
-   }
-
-   @Override
-   public String toString() {
-      return this.d;
    }
 
    @Override

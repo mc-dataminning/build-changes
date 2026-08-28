@@ -1,69 +1,42 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Maps;
-import com.mojang.logging.LogUtils;
-import java.io.IOException;
-import java.io.InputStream;
-import java.util.List;
-import java.util.Locale;
-import java.util.Map;
-import org.slf4j.Logger;
+import java.util.Set;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.Executor;
 
-public class gqc extends um {
-   private static final Logger b = LogUtils.getLogger();
-   private final Map<String, String> c;
-   private final boolean d;
+public abstract class gqc implements auj, AutoCloseable {
+   private final goy a;
+   private final alf b;
+   private final Set<ato<?>> c;
 
-   private gqc(Map<String, String> $$0, boolean $$1) {
-      this.c = $$0;
-      this.d = $$1;
+   public gqc(gpa $$0, alf $$1, alf $$2) {
+      this($$0, $$1, $$2, gou.a);
    }
 
-   public static gqc a(auo $$0, List<String> $$1, boolean $$2) {
-      Map<String, String> $$3 = Maps.newHashMap();
-
-      for (String $$4 : $$1) {
-         String $$5 = String.format(Locale.ROOT, "lang/%s.json", $$4);
-
-         for (String $$6 : $$0.a()) {
-            try {
-               ale $$7 = new ale($$6, $$5);
-               a($$4, $$0.a($$7), $$3);
-            } catch (Exception var10) {
-               b.warn("Skipped language file: {}:{} ({})", new Object[]{$$6, $$5, var10.toString()});
-            }
-         }
-      }
-
-      return new gqc(ImmutableMap.copyOf($$3), $$2);
+   public gqc(gpa $$0, alf $$1, alf $$2, Set<ato<?>> $$3) {
+      this.b = $$2;
+      this.a = new goy($$1);
+      $$0.a(this.a.g(), this.a);
+      this.c = $$3;
    }
 
-   private static void a(String $$0, List<aum> $$1, Map<String, String> $$2) {
-      for (aum $$3 : $$1) {
-         try (InputStream $$4 = $$3.d()) {
-            um.a($$4, $$2::put);
-         } catch (IOException var10) {
-            b.warn("Failed to load translations for {} from pack {}", new Object[]{$$0, $$3.b(), var10});
-         }
-      }
+   protected goz a(alf $$0) {
+      return this.a.a($$0);
    }
 
    @Override
-   public String a(String $$0, String $$1) {
-      return this.c.getOrDefault($$0, $$1);
+   public final CompletableFuture<Void> a(auj.a $$0, aup $$1, bni $$2, bni $$3, Executor $$4, Executor $$5) {
+      return gou.a(this.a).a($$1, this.b, 0, $$4, this.c).thenCompose(gou.a::a).thenCompose($$0::a).thenAcceptAsync($$1x -> this.a($$1x, $$3), $$5);
+   }
+
+   private void a(gou.a $$0, bni $$1) {
+      $$1.a();
+      $$1.a("upload");
+      this.a.a($$0);
+      $$1.c();
+      $$1.b();
    }
 
    @Override
-   public boolean b(String $$0) {
-      return this.c.containsKey($$0);
-   }
-
-   @Override
-   public boolean b() {
-      return this.d;
-   }
-
-   @Override
-   public ayk a(xt $$0) {
-      return gqd.a($$0, this.d);
+   public void close() {
+      this.a.f();
    }
 }

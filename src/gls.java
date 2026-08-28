@@ -1,18 +1,24 @@
-public class gls extends gjp<ckr> {
-   private static final ale a = new ale("textures/entity/illager/vindicator.png");
+public class gls extends gkd<cmk, fwl<cmk>> {
+   private static final alf a = new alf("textures/entity/villager/villager.png");
 
-   public gls(giw.a $$0) {
-      super($$0, new fun<>($$0.a(fwy.bQ)), 0.5F);
-      this.a(new gnb<ckr, fun<ckr>>(this, $$0.d()) {
-         public void a(ezx $$0, gdn $$1, int $$2, ckr $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-            if ($$3.gi()) {
-               super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8, $$9);
-            }
-         }
-      });
+   public gls(gix.a $$0) {
+      super($$0, new fwl<>($$0.a(fwz.bP)), 0.5F);
+      this.a(new gmo<>(this, $$0.f(), $$0.d()));
+      this.a(new gnu<>(this, $$0.e(), "villager"));
+      this.a(new gmn<>(this, $$0.d()));
    }
 
-   public ale a(ckr $$0) {
+   public alf a(cmk $$0) {
       return a;
+   }
+
+   protected void a(cmk $$0, ezy $$1, float $$2) {
+      float $$3 = 0.9375F * $$0.ed();
+      $$1.b($$3, $$3, $$3);
+   }
+
+   protected float b(cmk $$0) {
+      float $$1 = super.b($$0);
+      return $$0.p_() ? $$1 * 0.5F : $$1;
    }
 }

@@ -1,10 +1,8 @@
-public abstract class cey extends btq {
-   protected cey(bsz<? extends cey> $$0, dbx $$1) {
-      super($$0, $$1);
-   }
+import javax.annotation.ParametersAreNonnullByDefault;
 
-   @Override
-   public boolean a(cmw $$0) {
-      return false;
-   }
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface cey {
 }

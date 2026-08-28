@@ -8,7 +8,7 @@ public class dw extends dr<dw.a> {
       return dw.a.a;
    }
 
-   public void a(arf $$0) {
+   public void a(arg $$0) {
       this.a($$0, $$0x -> true);
    }
 

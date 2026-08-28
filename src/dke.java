@@ -1,19 +1,25 @@
-public class dke {
-   private static final double b = 0.826;
-   public static final double a = 0.1;
+import com.mojang.serialization.MapCodec;
 
-   public static boolean a(dsb $$0) {
-      return $$0.i();
+public class dke extends dfi {
+   public static final MapCodec<dke> a = b(dke::new);
+   protected static final ewk b = dez.a(2.0, 0.0, 2.0, 14.0, 3.0, 14.0);
+
+   @Override
+   public MapCodec<dke> a() {
+      return a;
    }
 
-   public static int a(azg $$0) {
-      double $$1 = 1.0;
+   public dke(dsb.d $$0) {
+      super($$0);
+   }
 
-      int $$2;
-      for ($$2 = 0; $$0.j() < $$1; $$2++) {
-         $$1 *= 0.826;
-      }
+   @Override
+   protected ewk a(dsc $$0, dbe $$1, iz $$2, evw $$3) {
+      return b;
+   }
 
-      return $$2;
+   @Override
+   protected boolean b(dsc $$0, dbe $$1, iz $$2) {
+      return $$0.a(awp.aL) || $$0.a(dfb.dX) || super.b($$0, $$1, $$2);
    }
 }

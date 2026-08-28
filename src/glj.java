@@ -1,23 +1,40 @@
-public class glj extends giv<cob> {
-   public static final ale a = new ale("textures/entity/trident.png");
-   private final fwe f;
+public class glj<T extends bsu & cnm> extends giw<T> {
+   private static final float a = 12.25F;
+   private final gjv f;
+   private final float g;
+   private final boolean h;
 
-   public glj(giw.a $$0) {
+   public glj(gix.a $$0, float $$1, boolean $$2) {
       super($$0);
-      this.f = new fwe($$0.a(fwy.bI));
+      this.f = $$0.b();
+      this.g = $$1;
+      this.h = $$2;
    }
 
-   public void a(cob $$0, float $$1, float $$2, ezx $$3, gdn $$4, int $$5) {
-      $$3.a();
-      $$3.a(a.d.rotationDegrees(ayy.i($$2, $$0.O, $$0.dF()) - 90.0F));
-      $$3.a(a.f.rotationDegrees(ayy.i($$2, $$0.P, $$0.dH()) + 90.0F));
-      fab $$6 = gju.c($$4, this.f.a(this.a($$0)), false, $$0.H());
-      this.f.a($$3, $$6, $$5, gop.d, 1.0F, 1.0F, 1.0F, 1.0F);
-      $$3.b();
-      super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   public glj(gix.a $$0) {
+      this($$0, 1.0F, false);
    }
 
-   public ale a(cob $$0) {
-      return a;
+   @Override
+   protected int a(T $$0, iz $$1) {
+      return this.h ? 15 : super.a($$0, $$1);
+   }
+
+   @Override
+   public void a(T $$0, float $$1, float $$2, ezy $$3, gdo $$4, int $$5) {
+      if ($$0.ai >= 2 || !(this.c.b.g().g($$0) < 12.25)) {
+         $$3.a();
+         $$3.b(this.g, this.g, this.g);
+         $$3.a(this.c.b());
+         $$3.a(a.d.rotationDegrees(180.0F));
+         this.f.a($$0.p(), cum.h, $$5, goq.d, $$3, $$4, $$0.dP(), $$0.al());
+         $$3.b();
+         super.a($$0, $$1, $$2, $$3, $$4, $$5);
+      }
+   }
+
+   @Override
+   public alf a(bsu $$0) {
+      return goy.e;
    }
 }

@@ -1,49 +1,31 @@
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
 
-public class dmf extends ddt {
-   public static final MapCodec<dmf> c = b(dmf::new);
+public class dmf extends dgt {
+   public static final MapCodec<dmf> b = b(dmf::new);
+   private static final xp c = xp.c("container.upgrade");
 
    @Override
    public MapCodec<dmf> a() {
-      return c;
+      return b;
    }
 
-   protected dmf(dsa.d $$0) {
+   protected dmf(dsb.d $$0) {
       super($$0);
    }
 
    @Override
-   public dpg a(iz $$0, dsb $$1) {
-      return new dqt($$0, $$1);
-   }
-
-   @Nullable
-   @Override
-   public <T extends dpg> dph<T> a(dbx $$0, dsb $$1, dpi<T> $$2) {
-      return a($$0, $$2, dpi.B);
+   protected bqy b(dsc $$0, dby $$1, iz $$2) {
+      return new bre(($$2x, $$3, $$4) -> new crs($$2x, $$3, cqf.a($$1, $$2)), c);
    }
 
    @Override
-   protected void a(dbx $$0, iz $$1, cmw $$2) {
-      dpg $$3 = $$0.c_($$1);
-      if ($$3 instanceof dqt) {
-         $$2.a((bqx)$$3);
-         $$2.a(awj.at);
-      }
-   }
-
-   @Override
-   public void a(dsb $$0, dbx $$1, iz $$2, azg $$3) {
-      if ($$0.c(b)) {
-         double $$4 = (double)$$2.u() + 0.5;
-         double $$5 = (double)$$2.v();
-         double $$6 = (double)$$2.w() + 0.5;
-         if ($$3.j() < 0.1) {
-            $$1.a($$4, $$5, $$6, avz.yh, awa.e, 1.0F, 1.0F, false);
-         }
-
-         $$1.a(li.ae, $$4, $$5 + 1.1, $$6, 0.0, 0.0, 0.0);
+   protected bqu a(dsc $$0, dby $$1, iz $$2, cmx $$3, evn $$4) {
+      if ($$1.B) {
+         return bqu.a;
+      } else {
+         $$3.a($$0.b($$1, $$2));
+         $$3.a(awk.aF);
+         return bqu.c;
       }
    }
 }

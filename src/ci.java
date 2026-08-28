@@ -4,7 +4,7 @@ public record ci(dg c) implements cq {
    public static final Codec<ci> a = dg.a.xmap(ci::new, ci::a);
 
    @Override
-   public boolean a(cuo $$0) {
+   public boolean a(cup $$0) {
       return this.c.a($$0);
    }
 

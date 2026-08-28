@@ -1,10 +1,23 @@
-public class csl extends csm {
-   public csl(dey $$0, cuj.a $$1) {
-      super($$0, $$1);
+import java.util.List;
+
+public class csl extends cuk {
+   private final axf<dox> a;
+
+   public csl(axf<dox> $$0, cuk.a $$1) {
+      super($$1);
+      this.a = $$0;
+   }
+
+   public axf<dox> b() {
+      return this.a;
    }
 
    @Override
-   protected boolean a(cxz $$0, dsb $$1) {
-      return $$0.q().a($$0.a(), $$1, 26);
+   public void a(cup $$0, cuk.b $$1, List<xp> $$2, cwi $$3) {
+      $$2.add(this.c().a(n.h));
+   }
+
+   public yd c() {
+      return xp.c(this.a() + ".desc");
    }
 }

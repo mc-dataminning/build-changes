@@ -1,42 +1,51 @@
-public class czq extends cym {
-   public czq(cyk $$0) {
+public class czq extends cyn {
+   public czq(cyl $$0) {
       super($$0);
    }
 
-   public boolean a(cqj $$0, dbx $$1) {
-      if ($$0.f() == 3 && $$0.g() == 3) {
-         for (int $$2 = 0; $$2 < $$0.f(); $$2++) {
-            for (int $$3 = 0; $$3 < $$0.g(); $$3++) {
-               cuo $$4 = $$0.a($$2 + $$3 * $$0.f());
-               if ($$4.e()) {
+   public boolean a(cqk $$0, dby $$1) {
+      boolean $$2 = false;
+      boolean $$3 = false;
+      boolean $$4 = false;
+      boolean $$5 = false;
+
+      for (int $$6 = 0; $$6 < $$0.b(); $$6++) {
+         cup $$7 = $$0.a($$6);
+         if (!$$7.e()) {
+            if ($$7.a(dfb.cf.r()) && !$$4) {
+               $$4 = true;
+            } else if ($$7.a(dfb.cg.r()) && !$$3) {
+               $$3 = true;
+            } else if ($$7.a(awy.O) && !$$2) {
+               $$2 = true;
+            } else {
+               if (!$$7.a(cus.pq) || $$5) {
                   return false;
                }
 
-               if ($$2 == 1 && $$3 == 1) {
-                  if (!$$4.a(cur.vr)) {
-                     return false;
-                  }
-               } else if (!$$4.a(cur.ov)) {
-                  return false;
-               }
+               $$5 = true;
             }
          }
-
-         return true;
-      } else {
-         return false;
       }
+
+      return $$2 && $$4 && $$3 && $$5;
    }
 
-   public cuo a(cqj $$0, jk.a $$1) {
-      cuo $$2 = $$0.a(1 + $$0.f());
-      if (!$$2.a(cur.vr)) {
-         return cuo.l;
-      } else {
-         cuo $$3 = new cuo(cur.vq, 8);
-         $$3.b(km.G, $$2.a(km.G));
-         return $$3;
+   public cup a(cqk $$0, jk.a $$1) {
+      cup $$2 = new cup(cus.vU, 1);
+
+      for (int $$3 = 0; $$3 < $$0.b(); $$3++) {
+         cup $$4 = $$0.a($$3);
+         if (!$$4.e()) {
+            dnb $$5 = dnb.a($$4.g());
+            if ($$5 != null) {
+               $$2.b(km.H, $$5.b());
+               break;
+            }
+         }
       }
+
+      return $$2;
    }
 
    @Override
@@ -45,7 +54,7 @@ public class czq extends cym {
    }
 
    @Override
-   public cyy<?> ao_() {
-      return cyy.j;
+   public cyz<?> ao_() {
+      return cyz.n;
    }
 }

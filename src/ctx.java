@@ -1,32 +1,40 @@
-public class ctx<T extends bst & btl> extends cuj {
-   private final bsz<T> a;
-   private final int b;
-
-   public ctx(cuj.a $$0, bsz<T> $$1, int $$2) {
+public class ctx extends cuk {
+   public ctx(cuk.a $$0) {
       super($$0);
-      this.a = $$1;
-      this.b = $$2;
    }
 
    @Override
-   public bqu<cuo> a(dbx $$0, cmw $$1, bqs $$2) {
-      cuo $$3 = $$1.b($$2);
-      if ($$0.B) {
-         return bqu.c($$3);
-      } else {
-         bst $$4 = $$1.dd();
-         if ($$1.bR() && $$4 instanceof btl $$5 && $$4.ak() == this.a && $$5.a()) {
-            $$3.a(this.b, $$1, bto.d($$2));
-            if ($$3.e()) {
-               cuo $$6 = $$3.b(cur.qV, 1);
-               return bqu.a($$6);
+   public bqu a(cyc $$0) {
+      cmx $$1 = $$0.o();
+      dby $$2 = $$0.q();
+      iz $$3 = $$0.a();
+      dsc $$4 = $$2.a_($$3);
+      if (!dfn.h($$4) && !dfo.g($$4) && !dfp.g($$4)) {
+         iz $$5 = $$3.a($$0.k());
+         if (dem.a($$2, $$5, $$0.g())) {
+            $$2.a($$1, $$5, awa.iZ, awb.e, 1.0F, $$2.E_().i() * 0.4F + 0.8F);
+            dsc $$6 = dem.a($$2, $$5);
+            $$2.a($$5, $$6, 11);
+            $$2.a($$1, dwv.i, $$3);
+            cup $$7 = $$0.n();
+            if ($$1 instanceof arg) {
+               am.z.a((arg)$$1, $$5, $$7);
+               $$7.a(1, $$1, btp.d($$0.p()));
             }
 
-            return bqu.a($$3);
+            return bqu.a($$2.x_());
+         } else {
+            return bqu.f;
+         }
+      } else {
+         $$2.a($$1, $$3, awa.iZ, awb.e, 1.0F, $$2.E_().i() * 0.4F + 0.8F);
+         $$2.a($$3, $$4.a(dss.r, Boolean.valueOf(true)), 11);
+         $$2.a($$1, dwv.c, $$3);
+         if ($$1 != null) {
+            $$0.n().a(1, $$1, btp.d($$0.p()));
          }
 
-         $$1.b(awj.c.b(this));
-         return bqu.c($$3);
+         return bqu.a($$2.x_());
       }
    }
 }

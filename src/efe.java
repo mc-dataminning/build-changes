@@ -1,51 +1,24 @@
-import com.google.common.collect.Lists;
-import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
 
-public class efe extends efg {
-   public static final MapCodec<efe> b = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(
-               ayq.a(Codec.INT, 1, 64).fieldOf("variety").forGetter($$0x -> $$0x.i),
-               emx.a.a.fieldOf("slow_noise").forGetter($$0x -> $$0x.j),
-               ayg.m.fieldOf("slow_scale").forGetter($$0x -> $$0x.k)
-            )
-            .and(b($$0))
-            .apply($$0, efe::new)
-   );
-   private final ayq<Integer> i;
-   private final emx.a j;
-   private final float k;
-   private final emx l;
+public class efe<P extends efd> {
+   public static final efe<efm> a = a("simple_state_provider", efm.b);
+   public static final efe<efn> b = a("weighted_state_provider", efn.b);
+   public static final efe<efi> c = a("noise_threshold_provider", efi.b);
+   public static final efe<efh> d = a("noise_provider", efh.g);
+   public static final efe<eff> e = a("dual_noise_provider", eff.b);
+   public static final efe<efk> f = a("rotated_block_provider", efk.b);
+   public static final efe<efj> g = a("randomized_int_state_provider", efj.b);
+   private final MapCodec<P> h;
 
-   public efe(ayq<Integer> $$0, emx.a $$1, float $$2, long $$3, emx.a $$4, float $$5, List<dsb> $$6) {
-      super($$3, $$4, $$5, $$6);
-      this.i = $$0;
-      this.j = $$1;
-      this.k = $$2;
-      this.l = emx.b(new dys(new dxu($$3)), $$1);
+   private static <P extends efd> efe<P> a(String $$0, MapCodec<P> $$1) {
+      return jv.a(lp.V, $$0, new efe<>($$1));
    }
 
-   @Override
-   protected efd<?> a() {
-      return efd.e;
+   private efe(MapCodec<P> $$0) {
+      this.h = $$0;
    }
 
-   @Override
-   public dsb a(azg $$0, iz $$1) {
-      double $$2 = this.a($$1);
-      int $$3 = (int)ayy.a($$2, -1.0, 1.0, (double)this.i.a().intValue(), (double)(this.i.b() + 1));
-      List<dsb> $$4 = Lists.newArrayListWithCapacity($$3);
-
-      for (int $$5 = 0; $$5 < $$3; $$5++) {
-         $$4.add(this.a(this.h, this.a($$1.b($$5 * 54545, 0, $$5 * 34234))));
-      }
-
-      return this.a($$4, $$1, (double)this.e);
-   }
-
-   protected double a(iz $$0) {
-      return this.l.a((double)((float)$$0.u() * this.k), (double)((float)$$0.v() * this.k), (double)((float)$$0.w() * this.k));
+   public MapCodec<P> a() {
+      return this.h;
    }
 }

@@ -5,17 +5,17 @@ import javax.annotation.Nullable;
 
 public class ou implements oo {
    private final op b;
-   private final cyj c;
-   private final cuj d;
-   private final cyr e;
+   private final cyk c;
+   private final cuk d;
+   private final cys e;
    private final float f;
    private final int g;
    private final Map<String, an<?>> h = new LinkedHashMap<>();
    @Nullable
    private String i;
-   private final cyd.a<?> j;
+   private final cye.a<?> j;
 
-   private ou(op $$0, cyj $$1, dbw $$2, cyr $$3, float $$4, int $$5, cyd.a<?> $$6) {
+   private ou(op $$0, cyk $$1, dbx $$2, cys $$3, float $$4, int $$5, cye.a<?> $$6) {
       this.b = $$0;
       this.c = $$1;
       this.d = $$2.r();
@@ -25,24 +25,24 @@ public class ou implements oo {
       this.j = $$6;
    }
 
-   public static <T extends cyd> ou a(cyr $$0, op $$1, dbw $$2, float $$3, int $$4, cyy<T> $$5, cyd.a<T> $$6) {
+   public static <T extends cye> ou a(cys $$0, op $$1, dbx $$2, float $$3, int $$4, cyz<T> $$5, cye.a<T> $$6) {
       return new ou($$1, a($$5, $$2), $$2, $$0, $$3, $$4, $$6);
    }
 
-   public static ou a(cyr $$0, op $$1, dbw $$2, float $$3, int $$4) {
-      return new ou($$1, cyj.a, $$2, $$0, $$3, $$4, cyi::new);
+   public static ou a(cys $$0, op $$1, dbx $$2, float $$3, int $$4) {
+      return new ou($$1, cyk.a, $$2, $$0, $$3, $$4, cyj::new);
    }
 
-   public static ou b(cyr $$0, op $$1, dbw $$2, float $$3, int $$4) {
-      return new ou($$1, c($$2), $$2, $$0, $$3, $$4, cyg::new);
+   public static ou b(cys $$0, op $$1, dbx $$2, float $$3, int $$4) {
+      return new ou($$1, c($$2), $$2, $$0, $$3, $$4, cyh::new);
    }
 
-   public static ou c(cyr $$0, op $$1, dbw $$2, float $$3, int $$4) {
-      return new ou($$1, b($$2), $$2, $$0, $$3, $$4, czj::new);
+   public static ou c(cys $$0, op $$1, dbx $$2, float $$3, int $$4) {
+      return new ou($$1, b($$2), $$2, $$0, $$3, $$4, czk::new);
    }
 
-   public static ou d(cyr $$0, op $$1, dbw $$2, float $$3, int $$4) {
-      return new ou($$1, cyj.a, $$2, $$0, $$3, $$4, czn::new);
+   public static ou d(cys $$0, op $$1, dbx $$2, float $$3, int $$4) {
+      return new ou($$1, cyk.a, $$2, $$0, $$3, $$4, czo::new);
    }
 
    public ou b(String $$0, an<?> $$1) {
@@ -56,44 +56,44 @@ public class ou implements oo {
    }
 
    @Override
-   public cuj a() {
+   public cuk a() {
       return this.d;
    }
 
    @Override
-   public void a(oq $$0, ale $$1) {
+   public void a(oq $$0, alf $$1) {
       this.a($$1);
       ae.a $$2 = $$0.a().a("has_the_recipe", dp.a($$1)).a(aj.a.a($$1)).a(ai.a.b);
       this.h.forEach($$2::a);
-      cyd $$3 = this.j.create(Objects.requireNonNullElse(this.i, ""), this.c, this.e, new cuo(this.d), this.f, this.g);
+      cye $$3 = this.j.create(Objects.requireNonNullElse(this.i, ""), this.c, this.e, new cup(this.d), this.f, this.g);
       $$0.a($$1, $$3, $$2.b($$1.d("recipes/" + this.b.a() + "/")));
    }
 
-   private static cyj b(dbw $$0) {
+   private static cyk b(dbx $$0) {
       if ($$0.r().p().b(km.v)) {
-         return cyj.a;
+         return cyk.a;
       } else {
-         return $$0.r() instanceof csm ? cyj.b : cyj.c;
+         return $$0.r() instanceof csn ? cyk.b : cyk.c;
       }
    }
 
-   private static cyj c(dbw $$0) {
-      return $$0.r() instanceof csm ? cyj.b : cyj.c;
+   private static cyk c(dbx $$0) {
+      return $$0.r() instanceof csn ? cyk.b : cyk.c;
    }
 
-   private static cyj a(cyy<? extends cyd> $$0, dbw $$1) {
-      if ($$0 == cyy.p) {
+   private static cyk a(cyz<? extends cye> $$0, dbx $$1) {
+      if ($$0 == cyz.p) {
          return b($$1);
-      } else if ($$0 == cyy.q) {
+      } else if ($$0 == cyz.q) {
          return c($$1);
-      } else if ($$0 != cyy.r && $$0 != cyy.s) {
+      } else if ($$0 != cyz.r && $$0 != cyz.s) {
          throw new IllegalStateException("Unknown cooking recipe type");
       } else {
-         return cyj.a;
+         return cyk.a;
       }
    }
 
-   private void a(ale $$0) {
+   private void a(alf $$0) {
       if (this.h.isEmpty()) {
          throw new IllegalStateException("No way of obtaining recipe " + $$0);
       }

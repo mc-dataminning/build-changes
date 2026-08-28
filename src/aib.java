@@ -1,64 +1,61 @@
-public class aib implements zv<agv> {
-   public static final zm<wl, aib> a = zv.a(aib::a, aib::new);
-   private static final int b = 1;
-   private static final int c = 2;
-   private final float d;
-   private final float e;
-   private final boolean f;
-   private final boolean g;
+public class aib implements zw<agw> {
+   public static final zn<wm, aib> a = zw.a(aib::a, aib::new);
+   private final int b;
+   private final aib.a c;
+   private final int d;
 
-   public aib(float $$0, float $$1, boolean $$2, boolean $$3) {
-      this.d = $$0;
-      this.e = $$1;
-      this.f = $$2;
-      this.g = $$3;
+   public aib(bsu $$0, aib.a $$1) {
+      this($$0, $$1, 0);
    }
 
-   private aib(wl $$0) {
-      this.d = $$0.readFloat();
-      this.e = $$0.readFloat();
-      byte $$1 = $$0.readByte();
-      this.f = ($$1 & 1) > 0;
-      this.g = ($$1 & 2) > 0;
+   public aib(bsu $$0, aib.a $$1, int $$2) {
+      this.b = $$0.al();
+      this.c = $$1;
+      this.d = $$2;
    }
 
-   private void a(wl $$0) {
-      $$0.a(this.d);
-      $$0.a(this.e);
-      byte $$1 = 0;
-      if (this.f) {
-         $$1 = (byte)($$1 | 1);
-      }
+   private aib(wm $$0) {
+      this.b = $$0.l();
+      this.c = $$0.b(aib.a.class);
+      this.d = $$0.l();
+   }
 
-      if (this.g) {
-         $$1 = (byte)($$1 | 2);
-      }
-
-      $$0.k($$1);
+   private void a(wm $$0) {
+      $$0.c(this.b);
+      $$0.a(this.c);
+      $$0.c(this.d);
    }
 
    @Override
-   public zx<aib> a() {
-      return agt.bM;
+   public zy<aib> a() {
+      return agu.bL;
    }
 
-   public void a(agv $$0) {
+   public void a(agw $$0) {
       $$0.a(this);
    }
 
-   public float b() {
+   public int b() {
+      return this.b;
+   }
+
+   public aib.a e() {
+      return this.c;
+   }
+
+   public int f() {
       return this.d;
    }
 
-   public float e() {
-      return this.e;
-   }
-
-   public boolean f() {
-      return this.f;
-   }
-
-   public boolean g() {
-      return this.g;
+   public static enum a {
+      a,
+      b,
+      c,
+      d,
+      e,
+      f,
+      g,
+      h,
+      i;
    }
 }

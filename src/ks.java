@@ -1,21 +1,21 @@
 public class ks implements kt {
    @Override
-   public final cuo dispense(kq $$0, cuo $$1) {
-      cuo $$2 = this.a($$0, $$1);
+   public final cup dispense(kq $$0, cup $$1) {
+      cup $$2 = this.a($$0, $$1);
       this.a($$0);
-      this.a($$0, $$0.d().c(dhd.b));
+      this.a($$0, $$0.d().c(dhe.b));
       return $$2;
    }
 
-   protected cuo a(kq $$0, cuo $$1) {
-      je $$2 = $$0.d().c(dhd.b);
-      js $$3 = dhd.a($$0);
-      cuo $$4 = $$1.a(1);
+   protected cup a(kq $$0, cup $$1) {
+      je $$2 = $$0.d().c(dhe.b);
+      js $$3 = dhe.a($$0);
+      cup $$4 = $$1.a(1);
       a($$0.b(), $$4, 6, $$2, $$3);
       return $$1;
    }
 
-   public static void a(dbx $$0, cuo $$1, int $$2, je $$3, js $$4) {
+   public static void a(dby $$0, cup $$1, int $$2, je $$3, js $$4) {
       double $$5 = $$4.a();
       double $$6 = $$4.b();
       double $$7 = $$4.c();
@@ -25,7 +25,7 @@ public class ks implements kt {
          $$6 -= 0.15625;
       }
 
-      cjg $$8 = new cjg($$0, $$5, $$6, $$7, $$1);
+      cjh $$8 = new cjh($$0, $$5, $$6, $$7, $$1);
       double $$9 = $$0.z.j() * 0.1 + 0.2;
       $$8.o(
          $$0.z.a((double)$$3.j() * $$9, 0.0172275 * (double)$$2),

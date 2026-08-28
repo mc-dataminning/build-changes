@@ -1,65 +1,45 @@
-import com.mojang.serialization.DataResult;
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Optional;
-import java.util.Set;
 
-public record etq(ji<dey> b, Optional<dx> c) implements etr {
+public record etq(Optional<dc> b, iz c) implements ets {
+   private static final MapCodec<iz> d = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(
+               Codec.INT.optionalFieldOf("offsetX", 0).forGetter(kd::u),
+               Codec.INT.optionalFieldOf("offsetY", 0).forGetter(kd::v),
+               Codec.INT.optionalFieldOf("offsetZ", 0).forGetter(kd::w)
+            )
+            .apply($$0, iz::new)
+   );
    public static final MapCodec<etq> a = RecordCodecBuilder.mapCodec(
-         $$0 -> $$0.group(lp.e.r().fieldOf("block").forGetter(etq::c), dx.a.optionalFieldOf("properties").forGetter(etq::d)).apply($$0, etq::new)
-      )
-      .validate(etq::a);
-
-   private static DataResult<etq> a(etq $$0) {
-      return $$0.d()
-         .flatMap($$1 -> $$1.a($$0.c().a().l()))
-         .map($$1 -> DataResult.error(() -> "Block " + $$0.c() + " has no property" + $$1))
-         .orElse(DataResult.success($$0));
-   }
+      $$0 -> $$0.group(dc.a.optionalFieldOf("predicate").forGetter(etq::c), d.forGetter(etq::d)).apply($$0, etq::new)
+   );
 
    @Override
-   public ets b() {
-      return ett.k;
+   public ett b() {
+      return etu.p;
    }
 
-   @Override
-   public Set<eta<?>> a() {
-      return Set.of(etd.g);
+   public boolean a(eqi $$0) {
+      evr $$1 = $$0.c(ete.f);
+      return $$1 != null
+         && (this.b.isEmpty() || this.b.get().a($$0.d(), $$1.a() + (double)this.c.u(), $$1.b() + (double)this.c.v(), $$1.c() + (double)this.c.w()));
    }
 
-   public boolean a(eqh $$0) {
-      dsb $$1 = $$0.c(etd.g);
-      return $$1 != null && $$1.a(this.b) && (this.c.isEmpty() || this.c.get().a($$1));
+   public static ets.a a(dc.a $$0) {
+      return () -> new etq(Optional.of($$0.b()), iz.c);
    }
 
-   public static etq.a a(dey $$0) {
-      return new etq.a($$0);
+   public static ets.a a(dc.a $$0, iz $$1) {
+      return () -> new etq(Optional.of($$0.b()), $$1);
    }
 
-   public ji<dey> c() {
+   public Optional<dc> c() {
       return this.b;
    }
 
-   public Optional<dx> d() {
+   public iz d() {
       return this.c;
-   }
-
-   public static class a implements etr.a {
-      private final ji<dey> a;
-      private Optional<dx> b = Optional.empty();
-
-      public a(dey $$0) {
-         this.a = $$0.s();
-      }
-
-      public etq.a a(dx.a $$0) {
-         this.b = $$0.b();
-         return this;
-      }
-
-      @Override
-      public etr build() {
-         return new etq(this.a, this.b);
-      }
    }
 }

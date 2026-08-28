@@ -1,51 +1,13 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import javax.annotation.Nullable;
+import com.mojang.serialization.MapCodec;
 
-public class ely {
-   public static final emq a = emq.a;
-   public static final Codec<ely> b = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               emd.c.fieldOf("input_predicate").forGetter($$0x -> $$0x.c),
-               emd.c.fieldOf("location_predicate").forGetter($$0x -> $$0x.d),
-               elw.c.lenientOptionalFieldOf("position_predicate", elv.b).forGetter($$0x -> $$0x.e),
-               dsb.b.fieldOf("output_state").forGetter($$0x -> $$0x.f),
-               emr.c.lenientOptionalFieldOf("block_entity_modifier", a).forGetter($$0x -> $$0x.g)
-            )
-            .apply($$0, ely::new)
-   );
-   private final emd c;
-   private final emd d;
-   private final elw e;
-   private final dsb f;
-   private final emr g;
+public interface ely<P extends elx> {
+   ely<elw> a = a("always_true", elw.a);
+   ely<elu> b = a("linear_pos", elu.a);
+   ely<elj> c = a("axis_aligned_linear_pos", elj.a);
 
-   public ely(emd $$0, emd $$1, dsb $$2) {
-      this($$0, $$1, elv.b, $$2);
-   }
+   MapCodec<P> codec();
 
-   public ely(emd $$0, emd $$1, elw $$2, dsb $$3) {
-      this($$0, $$1, $$2, $$3, a);
-   }
-
-   public ely(emd $$0, emd $$1, elw $$2, dsb $$3, emr $$4) {
-      this.c = $$0;
-      this.d = $$1;
-      this.e = $$2;
-      this.f = $$3;
-      this.g = $$4;
-   }
-
-   public boolean a(dsb $$0, dsb $$1, iz $$2, iz $$3, iz $$4, azg $$5) {
-      return this.c.a($$0, $$5) && this.d.a($$1, $$5) && this.e.a($$2, $$3, $$4, $$5);
-   }
-
-   public dsb a() {
-      return this.f;
-   }
-
-   @Nullable
-   public ur a(azg $$0, @Nullable ur $$1) {
-      return this.g.a($$0, $$1);
+   static <P extends elx> ely<P> a(String $$0, MapCodec<P> $$1) {
+      return jv.a(lp.q, $$0, () -> $$1);
    }
 }

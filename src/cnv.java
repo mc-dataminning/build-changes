@@ -1,47 +1,49 @@
-public abstract class cnv extends cnw implements cnl {
-   private static final akj<cuo> b = akn.a(cnv.class, akl.h);
+public class cnv extends cnd {
+   private int f = 200;
 
-   public cnv(bsz<? extends cnv> $$0, dbx $$1) {
+   public cnv(bta<? extends cnv> $$0, dby $$1) {
       super($$0, $$1);
    }
 
-   public cnv(bsz<? extends cnv> $$0, double $$1, double $$2, double $$3, dbx $$4) {
-      super($$0, $$1, $$2, $$3, $$4);
+   public cnv(dby $$0, btp $$1, cup $$2) {
+      super(bta.aV, $$1, $$0, $$2);
    }
 
-   public cnv(bsz<? extends cnv> $$0, bto $$1, dbx $$2) {
-      super($$0, $$1, $$2);
-   }
-
-   public void a(cuo $$0) {
-      this.ap().a(b, $$0.c(1));
-   }
-
-   protected abstract cuj u();
-
-   @Override
-   public cuo p() {
-      return this.ap().a(b);
+   public cnv(dby $$0, double $$1, double $$2, double $$3, cup $$4) {
+      super(bta.aV, $$1, $$2, $$3, $$0, $$4);
    }
 
    @Override
-   protected void a(akn.a $$0) {
-      $$0.a(b, new cuo(this.u()));
-   }
-
-   @Override
-   public void b(ur $$0) {
-      super.b($$0);
-      $$0.a("Item", this.p().a(this.dR()));
-   }
-
-   @Override
-   public void a(ur $$0) {
-      super.a($$0);
-      if ($$0.b("Item", 10)) {
-         this.a(cuo.a(this.dR(), (vo)$$0.p("Item")).orElseGet(() -> new cuo(this.u())));
-      } else {
-         this.a(new cuo(this.u()));
+   public void l() {
+      super.l();
+      if (this.dP().B && !this.b) {
+         this.dP().a(li.R, this.du(), this.dw(), this.dA(), 0.0, 0.0, 0.0);
       }
+   }
+
+   @Override
+   protected void a(btp $$0) {
+      super.a($$0);
+      bsc $$1 = new bsc(bse.x, this.f, 0);
+      $$0.b($$1, this.I());
+   }
+
+   @Override
+   public void a(us $$0) {
+      super.a($$0);
+      if ($$0.e("Duration")) {
+         this.f = $$0.h("Duration");
+      }
+   }
+
+   @Override
+   public void b(us $$0) {
+      super.b($$0);
+      $$0.a("Duration", this.f);
+   }
+
+   @Override
+   protected cup x() {
+      return new cup(cus.vp);
    }
 }

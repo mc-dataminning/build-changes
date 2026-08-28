@@ -1,8 +1,3 @@
-public interface aiz extends agw {
-   @Override
-   default wk b() {
-      return wk.a;
-   }
-
-   void a(aiw var1);
+public class aiz {
+   public static final wx<aja> a = aab.a(wl.a, $$0 -> $$0.a(aiy.a, aix.a));
 }

@@ -1,5 +1,5 @@
-public class dak extends czz {
-   public dak(czz.b $$0) {
+public class dak extends daa {
+   public dak(daa.b $$0) {
       super($$0);
    }
 

@@ -1,639 +1,92 @@
-import com.google.common.collect.Lists;
 import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.arguments.BoolArgumentType;
 import com.mojang.brigadier.arguments.IntegerArgumentType;
 import com.mojang.brigadier.arguments.StringArgumentType;
-import com.mojang.brigadier.builder.ArgumentBuilder;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
 import com.mojang.brigadier.builder.RequiredArgumentBuilder;
-import com.mojang.brigadier.context.CommandContext;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.Dynamic2CommandExceptionType;
+import com.mojang.brigadier.exceptions.DynamicCommandExceptionType;
 import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
-import com.mojang.brigadier.suggestion.Suggestions;
-import com.mojang.brigadier.suggestion.SuggestionsBuilder;
-import it.unimi.dsi.fastutil.objects.Object2IntMap;
-import it.unimi.dsi.fastutil.objects.Object2IntMaps;
+import com.mojang.brigadier.suggestion.SuggestionProvider;
+import com.mojang.datafixers.util.Either;
+import com.mojang.datafixers.util.Pair;
 import java.util.Collection;
-import java.util.List;
-import java.util.concurrent.CompletableFuture;
-import javax.annotation.Nullable;
+import net.minecraft.server.MinecraftServer;
 
 public class aor {
-   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(xo.c("commands.scoreboard.objectives.add.duplicate"));
-   private static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(xo.c("commands.scoreboard.objectives.display.alreadyEmpty"));
-   private static final SimpleCommandExceptionType c = new SimpleCommandExceptionType(xo.c("commands.scoreboard.objectives.display.alreadySet"));
-   private static final SimpleCommandExceptionType d = new SimpleCommandExceptionType(xo.c("commands.scoreboard.players.enable.failed"));
-   private static final SimpleCommandExceptionType e = new SimpleCommandExceptionType(xo.c("commands.scoreboard.players.enable.invalid"));
-   private static final Dynamic2CommandExceptionType f = new Dynamic2CommandExceptionType(($$0, $$1) -> xo.b("commands.scoreboard.players.get.null", $$0, $$1));
+   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(xp.c("commands.schedule.same_tick"));
+   private static final DynamicCommandExceptionType b = new DynamicCommandExceptionType($$0 -> xp.b("commands.schedule.cleared.failure", $$0));
+   private static final SuggestionProvider<ep> c = ($$0, $$1) -> eu.b(((ep)$$0.getSource()).l().bb().I().s().a(), $$1);
 
-   public static void a(CommandDispatcher<ep> $$0, el $$1) {
+   public static void a(CommandDispatcher<ep> $$0) {
       $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)eq.a("scoreboard").requires($$0x -> $$0x.c(2)))
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)eq.a("schedule").requires($$0x -> $$0x.c(2)))
                .then(
-                  ((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)eq.a("objectives")
-                                 .then(eq.a("list").executes($$0x -> b((ep)$$0x.getSource()))))
-                              .then(
-                                 eq.a("add")
-                                    .then(
-                                       eq.a("objective", StringArgumentType.word())
-                                          .then(
-                                             ((RequiredArgumentBuilder)eq.a("criteria", fk.a())
-                                                   .executes(
-                                                      $$0x -> a(
-                                                            (ep)$$0x.getSource(),
-                                                            StringArgumentType.getString($$0x, "objective"),
-                                                            fk.a($$0x, "criteria"),
-                                                            xo.b(StringArgumentType.getString($$0x, "objective"))
-                                                         )
-                                                   ))
-                                                .then(
-                                                   eq.a("displayName", ey.a($$1))
-                                                      .executes(
-                                                         $$0x -> a(
-                                                               (ep)$$0x.getSource(),
-                                                               StringArgumentType.getString($$0x, "objective"),
-                                                               fk.a($$0x, "criteria"),
-                                                               ey.a($$0x, "displayName")
-                                                            )
-                                                      )
-                                                )
-                                          )
-                                    )
-                              ))
-                           .then(
-                              eq.a("modify")
-                                 .then(
-                                    ((RequiredArgumentBuilder)((RequiredArgumentBuilder)((RequiredArgumentBuilder)eq.a("objective", fj.a())
-                                                .then(
-                                                   eq.a("displayname")
-                                                      .then(
-                                                         eq.a("displayName", ey.a($$1))
-                                                            .executes($$0x -> a((ep)$$0x.getSource(), fj.a($$0x, "objective"), ey.a($$0x, "displayName")))
-                                                      )
-                                                ))
-                                             .then(a()))
-                                          .then(
-                                             eq.a("displayautoupdate")
-                                                .then(
-                                                   eq.a("value", BoolArgumentType.bool())
-                                                      .executes(
-                                                         $$0x -> a((ep)$$0x.getSource(), fj.a($$0x, "objective"), BoolArgumentType.getBool($$0x, "value"))
-                                                      )
-                                                )
-                                          ))
-                                       .then(a($$1, eq.a("numberformat"), ($$0x, $$1x) -> a((ep)$$0x.getSource(), fj.a($$0x, "objective"), $$1x)))
-                                 )
-                           ))
-                        .then(eq.a("remove").then(eq.a("objective", fj.a()).executes($$0x -> a((ep)$$0x.getSource(), fj.a($$0x, "objective"))))))
+                  eq.a("function")
                      .then(
-                        eq.a("setdisplay")
+                        eq.a("function", gx.a())
+                           .suggests(anl.b)
                            .then(
-                              ((RequiredArgumentBuilder)eq.a("slot", fv.a()).executes($$0x -> a((ep)$$0x.getSource(), fv.a($$0x, "slot"))))
-                                 .then(eq.a("objective", fj.a()).executes($$0x -> a((ep)$$0x.getSource(), fv.a($$0x, "slot"), fj.a($$0x, "objective"))))
+                              ((RequiredArgumentBuilder)((RequiredArgumentBuilder)eq.a("time", ge.a())
+                                       .executes($$0x -> a((ep)$$0x.getSource(), gx.b($$0x, "function"), IntegerArgumentType.getInteger($$0x, "time"), true)))
+                                    .then(
+                                       eq.a("append")
+                                          .executes(
+                                             $$0x -> a((ep)$$0x.getSource(), gx.b($$0x, "function"), IntegerArgumentType.getInteger($$0x, "time"), false)
+                                          )
+                                    ))
+                                 .then(
+                                    eq.a("replace")
+                                       .executes($$0x -> a((ep)$$0x.getSource(), gx.b($$0x, "function"), IntegerArgumentType.getInteger($$0x, "time"), true))
+                                 )
                            )
                      )
                ))
             .then(
-               ((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)eq.a(
-                                             "players"
-                                          )
-                                          .then(
-                                             ((LiteralArgumentBuilder)eq.a("list").executes($$0x -> a((ep)$$0x.getSource())))
-                                                .then(eq.a("target", fu.a()).suggests(fu.a).executes($$0x -> a((ep)$$0x.getSource(), fu.a($$0x, "target"))))
-                                          ))
-                                       .then(
-                                          eq.a("set")
-                                             .then(
-                                                eq.a("targets", fu.b())
-                                                   .suggests(fu.a)
-                                                   .then(
-                                                      eq.a("objective", fj.a())
-                                                         .then(
-                                                            eq.a("score", IntegerArgumentType.integer())
-                                                               .executes(
-                                                                  $$0x -> a(
-                                                                        (ep)$$0x.getSource(),
-                                                                        fu.c($$0x, "targets"),
-                                                                        fj.b($$0x, "objective"),
-                                                                        IntegerArgumentType.getInteger($$0x, "score")
-                                                                     )
-                                                               )
-                                                         )
-                                                   )
-                                             )
-                                       ))
-                                    .then(
-                                       eq.a("get")
-                                          .then(
-                                             eq.a("target", fu.a())
-                                                .suggests(fu.a)
-                                                .then(
-                                                   eq.a("objective", fj.a())
-                                                      .executes($$0x -> a((ep)$$0x.getSource(), fu.a($$0x, "target"), fj.a($$0x, "objective")))
-                                                )
-                                          )
-                                    ))
-                                 .then(
-                                    eq.a("add")
-                                       .then(
-                                          eq.a("targets", fu.b())
-                                             .suggests(fu.a)
-                                             .then(
-                                                eq.a("objective", fj.a())
-                                                   .then(
-                                                      eq.a("score", IntegerArgumentType.integer(0))
-                                                         .executes(
-                                                            $$0x -> b(
-                                                                  (ep)$$0x.getSource(),
-                                                                  fu.c($$0x, "targets"),
-                                                                  fj.b($$0x, "objective"),
-                                                                  IntegerArgumentType.getInteger($$0x, "score")
-                                                               )
-                                                         )
-                                                   )
-                                             )
-                                       )
-                                 ))
-                              .then(
-                                 eq.a("remove")
-                                    .then(
-                                       eq.a("targets", fu.b())
-                                          .suggests(fu.a)
-                                          .then(
-                                             eq.a("objective", fj.a())
-                                                .then(
-                                                   eq.a("score", IntegerArgumentType.integer(0))
-                                                      .executes(
-                                                         $$0x -> c(
-                                                               (ep)$$0x.getSource(),
-                                                               fu.c($$0x, "targets"),
-                                                               fj.b($$0x, "objective"),
-                                                               IntegerArgumentType.getInteger($$0x, "score")
-                                                            )
-                                                      )
-                                                )
-                                          )
-                                    )
-                              ))
-                           .then(
-                              eq.a("reset")
-                                 .then(
-                                    ((RequiredArgumentBuilder)eq.a("targets", fu.b())
-                                          .suggests(fu.a)
-                                          .executes($$0x -> a((ep)$$0x.getSource(), fu.c($$0x, "targets"))))
-                                       .then(
-                                          eq.a("objective", fj.a()).executes($$0x -> b((ep)$$0x.getSource(), fu.c($$0x, "targets"), fj.a($$0x, "objective")))
-                                       )
-                                 )
-                           ))
-                        .then(
-                           eq.a("enable")
-                              .then(
-                                 eq.a("targets", fu.b())
-                                    .suggests(fu.a)
-                                    .then(
-                                       eq.a("objective", fj.a())
-                                          .suggests(($$0x, $$1x) -> a((ep)$$0x.getSource(), fu.c($$0x, "targets"), $$1x))
-                                          .executes($$0x -> a((ep)$$0x.getSource(), fu.c($$0x, "targets"), fj.a($$0x, "objective")))
-                                    )
-                              )
-                        ))
-                     .then(
-                        ((LiteralArgumentBuilder)eq.a("display")
-                              .then(
-                                 eq.a("name")
-                                    .then(
-                                       eq.a("targets", fu.b())
-                                          .suggests(fu.a)
-                                          .then(
-                                             ((RequiredArgumentBuilder)eq.a("objective", fj.a())
-                                                   .then(
-                                                      eq.a("name", ey.a($$1))
-                                                         .executes(
-                                                            $$0x -> a((ep)$$0x.getSource(), fu.c($$0x, "targets"), fj.a($$0x, "objective"), ey.a($$0x, "name"))
-                                                         )
-                                                   ))
-                                                .executes($$0x -> a((ep)$$0x.getSource(), fu.c($$0x, "targets"), fj.a($$0x, "objective"), null))
-                                          )
-                                    )
-                              ))
-                           .then(
-                              eq.a("numberformat")
-                                 .then(
-                                    eq.a("targets", fu.b())
-                                       .suggests(fu.a)
-                                       .then(
-                                          a(
-                                             $$1,
-                                             eq.a("objective", fj.a()),
-                                             ($$0x, $$1x) -> a((ep)$$0x.getSource(), fu.c($$0x, "targets"), fj.a($$0x, "objective"), $$1x)
-                                          )
-                                       )
-                                 )
-                           )
-                     ))
+               eq.a("clear")
                   .then(
-                     eq.a("operation")
-                        .then(
-                           eq.a("targets", fu.b())
-                              .suggests(fu.a)
-                              .then(
-                                 eq.a("targetObjective", fj.a())
-                                    .then(
-                                       eq.a("operation", fl.a())
-                                          .then(
-                                             eq.a("source", fu.b())
-                                                .suggests(fu.a)
-                                                .then(
-                                                   eq.a("sourceObjective", fj.a())
-                                                      .executes(
-                                                         $$0x -> a(
-                                                               (ep)$$0x.getSource(),
-                                                               fu.c($$0x, "targets"),
-                                                               fj.b($$0x, "targetObjective"),
-                                                               fl.a($$0x, "operation"),
-                                                               fu.c($$0x, "source"),
-                                                               fj.a($$0x, "sourceObjective")
-                                                            )
-                                                      )
-                                                )
-                                          )
-                                    )
-                              )
-                        )
+                     eq.a("function", StringArgumentType.greedyString())
+                        .suggests(c)
+                        .executes($$0x -> a((ep)$$0x.getSource(), StringArgumentType.getString($$0x, "function")))
                   )
             )
       );
    }
 
-   private static ArgumentBuilder<ep, ?> a(el $$0, ArgumentBuilder<ep, ?> $$1, aor.a $$2) {
-      return $$1.then(eq.a("blank").executes($$1x -> $$2.run($$1x, zc.a))).then(eq.a("fixed").then(eq.a("contents", ey.a($$0)).executes($$1x -> {
-         xo $$2x = ey.a($$1x, "contents");
-         return $$2.run($$1x, new zd($$2x));
-      }))).then(eq.a("styled").then(eq.a("style", ga.a($$0)).executes($$1x -> {
-         yl $$2x = ga.a($$1x, "style");
-         return $$2.run($$1x, new zh($$2x));
-      }))).executes($$1x -> $$2.run($$1x, null));
-   }
-
-   private static LiteralArgumentBuilder<ep> a() {
-      LiteralArgumentBuilder<ep> $$0 = eq.a("rendertype");
-
-      for (ewx.a $$1 : ewx.a.values()) {
-         $$0.then(eq.a($$1.a()).executes($$1x -> a((ep)$$1x.getSource(), fj.a($$1x, "objective"), $$1)));
-      }
-
-      return $$0;
-   }
-
-   private static CompletableFuture<Suggestions> a(ep $$0, Collection<ewt> $$1, SuggestionsBuilder $$2) {
-      List<String> $$3 = Lists.newArrayList();
-      ewu $$4 = $$0.l().aK();
-
-      for (ewm $$5 : $$4.c()) {
-         if ($$5.c() == ewx.c) {
-            boolean $$6 = false;
-
-            for (ewt $$7 : $$1) {
-               ewq $$8 = $$4.d($$7, $$5);
-               if ($$8 == null || $$8.b()) {
-                  $$6 = true;
-                  break;
-               }
-            }
-
-            if ($$6) {
-               $$3.add($$5.b());
-            }
-         }
-      }
-
-      return eu.b($$3, $$2);
-   }
-
-   private static int a(ep $$0, ewt $$1, ewm $$2) throws CommandSyntaxException {
-      ewu $$3 = $$0.l().aK();
-      ewq $$4 = $$3.d($$1, $$2);
-      if ($$4 == null) {
-         throw f.create($$2.b(), $$1.he());
-      } else {
-         $$0.a(() -> xo.a("commands.scoreboard.players.get.success", $$1.he(), $$4.a(), $$2.g()), false);
-         return $$4.a();
-      }
-   }
-
-   private static xo a(Collection<ewt> $$0) {
-      return $$0.iterator().next().he();
-   }
-
-   private static int a(ep $$0, Collection<ewt> $$1, ewm $$2, fl.a $$3, Collection<ewt> $$4, ewm $$5) throws CommandSyntaxException {
-      ewu $$6 = $$0.l().aK();
-      int $$7 = 0;
-
-      for (ewt $$8 : $$1) {
-         ews $$9 = $$6.c($$8, $$2);
-
-         for (ewt $$10 : $$4) {
-            ews $$11 = $$6.c($$10, $$5);
-            $$3.apply($$9, $$11);
-         }
-
-         $$7 += $$9.a();
-      }
-
-      if ($$1.size() == 1) {
-         int $$12 = $$7;
-         $$0.a(() -> xo.a("commands.scoreboard.players.operation.success.single", $$2.g(), a($$1), $$12), true);
-      } else {
-         $$0.a(() -> xo.a("commands.scoreboard.players.operation.success.multiple", $$2.g(), $$1.size()), true);
-      }
-
-      return $$7;
-   }
-
-   private static int a(ep $$0, Collection<ewt> $$1, ewm $$2) throws CommandSyntaxException {
-      if ($$2.c() != ewx.c) {
-         throw e.create();
-      } else {
-         ewu $$3 = $$0.l().aK();
-         int $$4 = 0;
-
-         for (ewt $$5 : $$1) {
-            ews $$6 = $$3.c($$5, $$2);
-            if ($$6.d()) {
-               $$6.e();
-               $$4++;
-            }
-         }
-
-         if ($$4 == 0) {
-            throw d.create();
-         } else {
-            if ($$1.size() == 1) {
-               $$0.a(() -> xo.a("commands.scoreboard.players.enable.success.single", $$2.g(), a($$1)), true);
-            } else {
-               $$0.a(() -> xo.a("commands.scoreboard.players.enable.success.multiple", $$2.g(), $$1.size()), true);
-            }
-
-            return $$4;
-         }
-      }
-   }
-
-   private static int a(ep $$0, Collection<ewt> $$1) {
-      ewu $$2 = $$0.l().aK();
-
-      for (ewt $$3 : $$1) {
-         $$2.b($$3);
-      }
-
-      if ($$1.size() == 1) {
-         $$0.a(() -> xo.a("commands.scoreboard.players.reset.all.single", a($$1)), true);
-      } else {
-         $$0.a(() -> xo.a("commands.scoreboard.players.reset.all.multiple", $$1.size()), true);
-      }
-
-      return $$1.size();
-   }
-
-   private static int b(ep $$0, Collection<ewt> $$1, ewm $$2) {
-      ewu $$3 = $$0.l().aK();
-
-      for (ewt $$4 : $$1) {
-         $$3.e($$4, $$2);
-      }
-
-      if ($$1.size() == 1) {
-         $$0.a(() -> xo.a("commands.scoreboard.players.reset.specific.single", $$2.g(), a($$1)), true);
-      } else {
-         $$0.a(() -> xo.a("commands.scoreboard.players.reset.specific.multiple", $$2.g(), $$1.size()), true);
-      }
-
-      return $$1.size();
-   }
-
-   private static int a(ep $$0, Collection<ewt> $$1, ewm $$2, int $$3) {
-      ewu $$4 = $$0.l().aK();
-
-      for (ewt $$5 : $$1) {
-         $$4.c($$5, $$2).a($$3);
-      }
-
-      if ($$1.size() == 1) {
-         $$0.a(() -> xo.a("commands.scoreboard.players.set.success.single", $$2.g(), a($$1), $$3), true);
-      } else {
-         $$0.a(() -> xo.a("commands.scoreboard.players.set.success.multiple", $$2.g(), $$1.size(), $$3), true);
-      }
-
-      return $$3 * $$1.size();
-   }
-
-   private static int a(ep $$0, Collection<ewt> $$1, ewm $$2, @Nullable xo $$3) {
-      ewu $$4 = $$0.l().aK();
-
-      for (ewt $$5 : $$1) {
-         $$4.c($$5, $$2).a($$3);
-      }
-
-      if ($$3 == null) {
-         if ($$1.size() == 1) {
-            $$0.a(() -> xo.a("commands.scoreboard.players.display.name.clear.success.single", a($$1), $$2.g()), true);
-         } else {
-            $$0.a(() -> xo.a("commands.scoreboard.players.display.name.clear.success.multiple", $$1.size(), $$2.g()), true);
-         }
-      } else if ($$1.size() == 1) {
-         $$0.a(() -> xo.a("commands.scoreboard.players.display.name.set.success.single", $$3, a($$1), $$2.g()), true);
-      } else {
-         $$0.a(() -> xo.a("commands.scoreboard.players.display.name.set.success.multiple", $$3, $$1.size(), $$2.g()), true);
-      }
-
-      return $$1.size();
-   }
-
-   private static int a(ep $$0, Collection<ewt> $$1, ewm $$2, @Nullable ze $$3) {
-      ewu $$4 = $$0.l().aK();
-
-      for (ewt $$5 : $$1) {
-         $$4.c($$5, $$2).a($$3);
-      }
-
-      if ($$3 == null) {
-         if ($$1.size() == 1) {
-            $$0.a(() -> xo.a("commands.scoreboard.players.display.numberFormat.clear.success.single", a($$1), $$2.g()), true);
-         } else {
-            $$0.a(() -> xo.a("commands.scoreboard.players.display.numberFormat.clear.success.multiple", $$1.size(), $$2.g()), true);
-         }
-      } else if ($$1.size() == 1) {
-         $$0.a(() -> xo.a("commands.scoreboard.players.display.numberFormat.set.success.single", a($$1), $$2.g()), true);
-      } else {
-         $$0.a(() -> xo.a("commands.scoreboard.players.display.numberFormat.set.success.multiple", $$1.size(), $$2.g()), true);
-      }
-
-      return $$1.size();
-   }
-
-   private static int b(ep $$0, Collection<ewt> $$1, ewm $$2, int $$3) {
-      ewu $$4 = $$0.l().aK();
-      int $$5 = 0;
-
-      for (ewt $$6 : $$1) {
-         ews $$7 = $$4.c($$6, $$2);
-         $$7.a($$7.a() + $$3);
-         $$5 += $$7.a();
-      }
-
-      if ($$1.size() == 1) {
-         int $$8 = $$5;
-         $$0.a(() -> xo.a("commands.scoreboard.players.add.success.single", $$3, $$2.g(), a($$1), $$8), true);
-      } else {
-         $$0.a(() -> xo.a("commands.scoreboard.players.add.success.multiple", $$3, $$2.g(), $$1.size()), true);
-      }
-
-      return $$5;
-   }
-
-   private static int c(ep $$0, Collection<ewt> $$1, ewm $$2, int $$3) {
-      ewu $$4 = $$0.l().aK();
-      int $$5 = 0;
-
-      for (ewt $$6 : $$1) {
-         ews $$7 = $$4.c($$6, $$2);
-         $$7.a($$7.a() - $$3);
-         $$5 += $$7.a();
-      }
-
-      if ($$1.size() == 1) {
-         int $$8 = $$5;
-         $$0.a(() -> xo.a("commands.scoreboard.players.remove.success.single", $$3, $$2.g(), a($$1), $$8), true);
-      } else {
-         $$0.a(() -> xo.a("commands.scoreboard.players.remove.success.multiple", $$3, $$2.g(), $$1.size()), true);
-      }
-
-      return $$5;
-   }
-
-   private static int a(ep $$0) {
-      Collection<ewt> $$1 = $$0.l().aK().e();
-      if ($$1.isEmpty()) {
-         $$0.a(() -> xo.c("commands.scoreboard.players.list.empty"), false);
-      } else {
-         $$0.a(() -> xo.a("commands.scoreboard.players.list.success", $$1.size(), xr.b($$1, ewt::he)), false);
-      }
-
-      return $$1.size();
-   }
-
-   private static int a(ep $$0, ewt $$1) {
-      Object2IntMap<ewm> $$2 = $$0.l().aK().c($$1);
-      if ($$2.isEmpty()) {
-         $$0.a(() -> xo.a("commands.scoreboard.players.list.entity.empty", $$1.he()), false);
-      } else {
-         $$0.a(() -> xo.a("commands.scoreboard.players.list.entity.success", $$1.he(), $$2.size()), false);
-         Object2IntMaps.fastForEach(
-            $$2, $$1x -> $$0.a(() -> xo.a("commands.scoreboard.players.list.entity.entry", ((ewm)$$1x.getKey()).g(), $$1x.getIntValue()), false)
-         );
-      }
-
-      return $$2.size();
-   }
-
-   private static int a(ep $$0, ewl $$1) throws CommandSyntaxException {
-      ewu $$2 = $$0.l().aK();
-      if ($$2.a($$1) == null) {
-         throw b.create();
-      } else {
-         $$2.a($$1, null);
-         $$0.a(() -> xo.a("commands.scoreboard.objectives.display.cleared", $$1.c()), true);
-         return 0;
-      }
-   }
-
-   private static int a(ep $$0, ewl $$1, ewm $$2) throws CommandSyntaxException {
-      ewu $$3 = $$0.l().aK();
-      if ($$3.a($$1) == $$2) {
-         throw c.create();
-      } else {
-         $$3.a($$1, $$2);
-         $$0.a(() -> xo.a("commands.scoreboard.objectives.display.set", $$1.c(), $$2.d()), true);
-         return 0;
-      }
-   }
-
-   private static int a(ep $$0, ewm $$1, xo $$2) {
-      if (!$$1.d().equals($$2)) {
-         $$1.a($$2);
-         $$0.a(() -> xo.a("commands.scoreboard.objectives.modify.displayname", $$1.b(), $$1.g()), true);
-      }
-
-      return 0;
-   }
-
-   private static int a(ep $$0, ewm $$1, boolean $$2) {
-      if ($$1.e() != $$2) {
-         $$1.a($$2);
-         if ($$2) {
-            $$0.a(() -> xo.a("commands.scoreboard.objectives.modify.displayAutoUpdate.enable", $$1.b(), $$1.g()), true);
-         } else {
-            $$0.a(() -> xo.a("commands.scoreboard.objectives.modify.displayAutoUpdate.disable", $$1.b(), $$1.g()), true);
-         }
-      }
-
-      return 0;
-   }
-
-   private static int a(ep $$0, ewm $$1, @Nullable ze $$2) {
-      $$1.b($$2);
-      if ($$2 != null) {
-         $$0.a(() -> xo.a("commands.scoreboard.objectives.modify.objectiveFormat.set", $$1.b()), true);
-      } else {
-         $$0.a(() -> xo.a("commands.scoreboard.objectives.modify.objectiveFormat.clear", $$1.b()), true);
-      }
-
-      return 0;
-   }
-
-   private static int a(ep $$0, ewm $$1, ewx.a $$2) {
-      if ($$1.h() != $$2) {
-         $$1.a($$2);
-         $$0.a(() -> xo.a("commands.scoreboard.objectives.modify.rendertype", $$1.g()), true);
-      }
-
-      return 0;
-   }
-
-   private static int a(ep $$0, ewm $$1) {
-      ewu $$2 = $$0.l().aK();
-      $$2.j($$1);
-      $$0.a(() -> xo.a("commands.scoreboard.objectives.remove.success", $$1.g()), true);
-      return $$2.c().size();
-   }
-
-   private static int a(ep $$0, String $$1, ewx $$2, xo $$3) throws CommandSyntaxException {
-      ewu $$4 = $$0.l().aK();
-      if ($$4.a($$1) != null) {
+   private static int a(ep $$0, Pair<alf, Either<ib<ep>, Collection<ib<ep>>>> $$1, int $$2, boolean $$3) throws CommandSyntaxException {
+      if ($$2 == 0) {
          throw a.create();
       } else {
-         $$4.a($$1, $$2, $$3, $$2.f(), false, null);
-         ewm $$5 = $$4.a($$1);
-         $$0.a(() -> xo.a("commands.scoreboard.objectives.add.success", $$5.g()), true);
-         return $$4.c().size();
+         long $$4 = $$0.e().Z() + (long)$$2;
+         alf $$5 = (alf)$$1.getFirst();
+         eve<MinecraftServer> $$6 = $$0.l().bb().I().s();
+         ((Either)$$1.getSecond()).ifLeft($$6x -> {
+            String $$7 = $$5.toString();
+            if ($$3) {
+               $$6.a($$7);
+            }
+
+            $$6.a($$7, $$4, new eva($$5));
+            $$0.a(() -> xp.a("commands.schedule.created.function", xp.a($$5), $$2, $$4), true);
+         }).ifRight($$6x -> {
+            String $$7 = "#" + $$5;
+            if ($$3) {
+               $$6.a($$7);
+            }
+
+            $$6.a($$7, $$4, new evb($$5));
+            $$0.a(() -> xp.a("commands.schedule.created.tag", xp.a($$5), $$2, $$4), true);
+         });
+         return Math.floorMod($$4, Integer.MAX_VALUE);
       }
    }
 
-   private static int b(ep $$0) {
-      Collection<ewm> $$1 = $$0.l().aK().c();
-      if ($$1.isEmpty()) {
-         $$0.a(() -> xo.c("commands.scoreboard.objectives.list.empty"), false);
+   private static int a(ep $$0, String $$1) throws CommandSyntaxException {
+      int $$2 = $$0.l().bb().I().s().a($$1);
+      if ($$2 == 0) {
+         throw b.create($$1);
       } else {
-         $$0.a(() -> xo.a("commands.scoreboard.objectives.list.success", $$1.size(), xr.b($$1, ewm::g)), false);
+         $$0.a(() -> xp.a("commands.schedule.cleared.success", $$2, $$1), true);
+         return $$2;
       }
-
-      return $$1.size();
-   }
-
-   @FunctionalInterface
-   public interface a {
-      int run(CommandContext<ep> var1, @Nullable ze var2) throws CommandSyntaxException;
    }
 }

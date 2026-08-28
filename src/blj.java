@@ -8,14 +8,9 @@ public class blj extends Schema {
       super($$0, $$1);
    }
 
-   protected static void a(Schema $$0, Map<String, Supplier<TypeTemplate>> $$1, String $$2) {
-      $$0.register($$1, $$2, () -> bii.a($$0));
-   }
-
    public Map<String, Supplier<TypeTemplate>> registerEntities(Schema $$0) {
       Map<String, Supplier<TypeTemplate>> $$1 = super.registerEntities($$0);
-      a($$0, $$1, "WitherSkeleton");
-      a($$0, $$1, "Stray");
+      $$0.register($$1, "ElderGuardian", () -> bij.a($$0));
       return $$1;
    }
 }

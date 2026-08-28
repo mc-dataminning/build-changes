@@ -8,7 +8,7 @@ public class bd extends dr<bd.a> {
       return bd.a.a;
    }
 
-   public void a(arf $$0, int $$1) {
+   public void a(arg $$0, int $$1) {
       this.a($$0, $$1x -> $$1x.a($$1));
    }
 

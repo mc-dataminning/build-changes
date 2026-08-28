@@ -1,71 +1,70 @@
-public class dyc {
-   public static final ald<emx.a> a = a("temperature");
-   public static final ald<emx.a> b = a("vegetation");
-   public static final ald<emx.a> c = a("continentalness");
-   public static final ald<emx.a> d = a("erosion");
-   public static final ald<emx.a> e = a("temperature_large");
-   public static final ald<emx.a> f = a("vegetation_large");
-   public static final ald<emx.a> g = a("continentalness_large");
-   public static final ald<emx.a> h = a("erosion_large");
-   public static final ald<emx.a> i = a("ridge");
-   public static final ald<emx.a> j = a("offset");
-   public static final ald<emx.a> k = a("aquifer_barrier");
-   public static final ald<emx.a> l = a("aquifer_fluid_level_floodedness");
-   public static final ald<emx.a> m = a("aquifer_lava");
-   public static final ald<emx.a> n = a("aquifer_fluid_level_spread");
-   public static final ald<emx.a> o = a("pillar");
-   public static final ald<emx.a> p = a("pillar_rareness");
-   public static final ald<emx.a> q = a("pillar_thickness");
-   public static final ald<emx.a> r = a("spaghetti_2d");
-   public static final ald<emx.a> s = a("spaghetti_2d_elevation");
-   public static final ald<emx.a> t = a("spaghetti_2d_modulator");
-   public static final ald<emx.a> u = a("spaghetti_2d_thickness");
-   public static final ald<emx.a> v = a("spaghetti_3d_1");
-   public static final ald<emx.a> w = a("spaghetti_3d_2");
-   public static final ald<emx.a> x = a("spaghetti_3d_rarity");
-   public static final ald<emx.a> y = a("spaghetti_3d_thickness");
-   public static final ald<emx.a> z = a("spaghetti_roughness");
-   public static final ald<emx.a> A = a("spaghetti_roughness_modulator");
-   public static final ald<emx.a> B = a("cave_entrance");
-   public static final ald<emx.a> C = a("cave_layer");
-   public static final ald<emx.a> D = a("cave_cheese");
-   public static final ald<emx.a> E = a("ore_veininess");
-   public static final ald<emx.a> F = a("ore_vein_a");
-   public static final ald<emx.a> G = a("ore_vein_b");
-   public static final ald<emx.a> H = a("ore_gap");
-   public static final ald<emx.a> I = a("noodle");
-   public static final ald<emx.a> J = a("noodle_thickness");
-   public static final ald<emx.a> K = a("noodle_ridge_a");
-   public static final ald<emx.a> L = a("noodle_ridge_b");
-   public static final ald<emx.a> M = a("jagged");
-   public static final ald<emx.a> N = a("surface");
-   public static final ald<emx.a> O = a("surface_secondary");
-   public static final ald<emx.a> P = a("clay_bands_offset");
-   public static final ald<emx.a> Q = a("badlands_pillar");
-   public static final ald<emx.a> R = a("badlands_pillar_roof");
-   public static final ald<emx.a> S = a("badlands_surface");
-   public static final ald<emx.a> T = a("iceberg_pillar");
-   public static final ald<emx.a> U = a("iceberg_pillar_roof");
-   public static final ald<emx.a> V = a("iceberg_surface");
-   public static final ald<emx.a> W = a("surface_swamp");
-   public static final ald<emx.a> X = a("calcite");
-   public static final ald<emx.a> Y = a("gravel");
-   public static final ald<emx.a> Z = a("powder_snow");
-   public static final ald<emx.a> aa = a("packed_ice");
-   public static final ald<emx.a> ab = a("ice");
-   public static final ald<emx.a> ac = a("soul_sand_layer");
-   public static final ald<emx.a> ad = a("gravel_layer");
-   public static final ald<emx.a> ae = a("patch");
-   public static final ald<emx.a> af = a("netherrack");
-   public static final ald<emx.a> ag = a("nether_wart");
-   public static final ald<emx.a> ah = a("nether_state_selector");
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.function.Function;
 
-   private static ald<emx.a> a(String $$0) {
-      return ald.a(lq.aH, new ale($$0));
+public record dyc(int g, int h, int i, int j) {
+   public static final Codec<dyc> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(
+                  Codec.intRange(dvu.e, dvu.d).fieldOf("min_y").forGetter(dyc::c),
+                  Codec.intRange(0, dvu.c).fieldOf("height").forGetter(dyc::d),
+                  Codec.intRange(1, 4).fieldOf("size_horizontal").forGetter(dyc::e),
+                  Codec.intRange(1, 4).fieldOf("size_vertical").forGetter(dyc::f)
+               )
+               .apply($$0, dyc::new)
+      )
+      .comapFlatMap(dyc::a, Function.identity());
+   protected static final dyc b = a(-64, 384, 1, 2);
+   protected static final dyc c = a(0, 128, 1, 2);
+   protected static final dyc d = a(0, 128, 2, 1);
+   protected static final dyc e = a(-64, 192, 1, 2);
+   protected static final dyc f = a(0, 256, 2, 1);
+
+   private static DataResult<dyc> a(dyc $$0) {
+      if ($$0.c() + $$0.d() > dvu.d + 1) {
+         return DataResult.error(() -> "min_y + height cannot be higher than: " + (dvu.d + 1));
+      } else if ($$0.d() % 16 != 0) {
+         return DataResult.error(() -> "height has to be a multiple of 16");
+      } else {
+         return $$0.c() % 16 != 0 ? DataResult.error(() -> "min_y has to be a multiple of 16") : DataResult.success($$0);
+      }
    }
 
-   public static emx a(jj<emx.a> $$0, dyg $$1, ald<emx.a> $$2) {
-      ji<emx.a> $$3 = $$0.b($$2);
-      return emx.b($$1.a($$3.e().orElseThrow().a()), $$3.a());
+   public static dyc a(int $$0, int $$1, int $$2, int $$3) {
+      dyc $$4 = new dyc($$0, $$1, $$2, $$3);
+      a($$4).error().ifPresent($$0x -> {
+         throw new IllegalStateException($$0x.message());
+      });
+      return $$4;
+   }
+
+   public int a() {
+      return jt.c(this.f());
+   }
+
+   public int b() {
+      return jt.c(this.e());
+   }
+
+   public dyc a(dca $$0) {
+      int $$1 = Math.max(this.g, $$0.I_());
+      int $$2 = Math.min(this.g + this.h, $$0.am()) - $$1;
+      return new dyc($$1, $$2, this.i, this.j);
+   }
+
+   public int c() {
+      return this.g;
+   }
+
+   public int d() {
+      return this.h;
+   }
+
+   public int e() {
+      return this.i;
+   }
+
+   public int f() {
+      return this.j;
    }
 }

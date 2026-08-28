@@ -1,14 +1,14 @@
 import java.util.concurrent.CompletableFuture;
 
-public class px extends qd<cug> {
+public class px extends qd<cuh> {
    public px(ly $$0, CompletableFuture<jk.a> $$1) {
       super($$0, lq.E, $$1);
    }
 
    @Override
    protected void a(jk.a $$0) {
-      this.b(aww.a).a(cui.c).a(cui.d).a(cui.e).a(cui.f);
-      this.b(aww.b).a(cui.g).a(cui.h).a(cui.i).a(cui.j);
-      this.b(aww.c).b(aww.a).b(aww.b);
+      this.b(awx.a).a(cuj.c).a(cuj.d).a(cuj.e).a(cuj.f);
+      this.b(awx.b).a(cuj.g).a(cuj.h).a(cuj.i).a(cuj.j);
+      this.b(awx.c).b(awx.a).b(awx.b);
    }
 }

@@ -1,51 +1,18 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import io.netty.buffer.ByteBuf;
-import java.util.Optional;
-
 public class avy {
-   public static final Codec<avy> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(ale.a.fieldOf("sound_id").forGetter(avy::a), Codec.FLOAT.lenientOptionalFieldOf("range").forGetter(avy::b)).apply($$0, avy::a)
-   );
-   public static final Codec<ji<avy>> b = ala.a(lq.ag, a);
-   public static final zm<ByteBuf, avy> c = zm.a(ale.b, avy::a, zk.i.a(zk::a), avy::b, avy::a);
-   public static final zm<wz, ji<avy>> d = zk.a(lq.ag, c);
-   private static final float e = 16.0F;
-   private final ale f;
-   private final float g;
-   private final boolean h;
+   private static final int h = 20;
+   private static final int i = 600;
+   private static final int j = 12000;
+   private static final int k = 24000;
+   private static final int l = 6000;
+   public static final avx a = new avx(awa.pZ, 20, 600, true);
+   public static final avx b = new avx(awa.pE, 12000, 24000, false);
+   public static final avx c = new avx(awa.pF, 0, 0, true);
+   public static final avx d = new avx(awa.pW, 0, 0, true);
+   public static final avx e = new avx(awa.pX, 6000, 24000, true);
+   public static final avx f = a(awa.qy);
+   public static final avx g = a(awa.pY);
 
-   private static avy a(ale $$0, Optional<Float> $$1) {
-      return $$1.<avy>map($$1x -> a($$0, $$1x.floatValue())).orElseGet(() -> a($$0));
-   }
-
-   public static avy a(ale $$0) {
-      return new avy($$0, 16.0F, false);
-   }
-
-   public static avy a(ale $$0, float $$1) {
-      return new avy($$0, $$1, true);
-   }
-
-   private avy(ale $$0, float $$1, boolean $$2) {
-      this.f = $$0;
-      this.g = $$1;
-      this.h = $$2;
-   }
-
-   public ale a() {
-      return this.f;
-   }
-
-   public float a(float $$0) {
-      if (this.h) {
-         return this.g;
-      } else {
-         return $$0 > 1.0F ? 16.0F * $$0 : 16.0F;
-      }
-   }
-
-   private Optional<Float> b() {
-      return this.h ? Optional.of(this.g) : Optional.empty();
+   public static avx a(ji<avz> $$0) {
+      return new avx($$0, 12000, 24000, false);
    }
 }

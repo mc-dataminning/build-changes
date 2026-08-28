@@ -1,8 +1,12 @@
 public class akv {
-   public static final ald<cuj> a = a("pumpkin_seeds");
-   public static final ald<cuj> b = a("melon_seeds");
+   public static final ale<dez> a = a("pumpkin");
+   public static final ale<dez> b = a("pumpkin_stem");
+   public static final ale<dez> c = a("attached_pumpkin_stem");
+   public static final ale<dez> d = a("melon");
+   public static final ale<dez> e = a("melon_stem");
+   public static final ale<dez> f = a("attached_melon_stem");
 
-   private static ald<cuj> a(String $$0) {
-      return ald.a(lq.G, new ale($$0));
+   private static ale<dez> a(String $$0) {
+      return ale.a(lq.f, new alf($$0));
    }
 }

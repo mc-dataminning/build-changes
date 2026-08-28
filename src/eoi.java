@@ -1,201 +1,91 @@
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
-import javax.annotation.Nullable;
+import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
+import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
 
-public class eoi {
-   private final List<eog> a;
-   @Nullable
-   private eoi.a b;
-   private int c;
-   private final iz d;
-   private final float e;
-   private final boolean f;
+public abstract class eoi {
+   protected eoo a;
+   protected btr b;
+   protected final Int2ObjectMap<eoh> c = new Int2ObjectOpenHashMap();
+   protected int d;
+   protected int e;
+   protected int f;
+   protected boolean g;
+   protected boolean h;
+   protected boolean i;
+   protected boolean j;
 
-   public eoi(List<eog> $$0, iz $$1, boolean $$2) {
-      this.a = $$0;
-      this.d = $$1;
-      this.e = $$0.isEmpty() ? Float.MAX_VALUE : this.a.get(this.a.size() - 1).c(this.d);
-      this.f = $$2;
+   public void a(dcl $$0, btr $$1) {
+      this.a = new eoo($$0, $$1);
+      this.b = $$1;
+      this.c.clear();
+      this.d = ayz.d($$1.dj() + 1.0F);
+      this.e = ayz.d($$1.dk() + 1.0F);
+      this.f = ayz.d($$1.dj() + 1.0F);
    }
 
-   public void a() {
-      this.c++;
+   public void b() {
+      this.a = null;
+      this.b = null;
    }
 
-   public boolean b() {
-      return this.c <= 0;
+   protected eoh b(iz $$0) {
+      return this.c($$0.u(), $$0.v(), $$0.w());
    }
 
-   public boolean c() {
-      return this.c >= this.a.size();
+   protected eoh c(int $$0, int $$1, int $$2) {
+      return (eoh)this.c.computeIfAbsent(eoh.b($$0, $$1, $$2), $$3 -> new eoh($$0, $$1, $$2));
    }
 
-   @Nullable
-   public eog d() {
-      return !this.a.isEmpty() ? this.a.get(this.a.size() - 1) : null;
+   public abstract eoh a();
+
+   public abstract eoq a(double var1, double var3, double var5);
+
+   protected eoq b(double $$0, double $$1, double $$2) {
+      return new eoq(this.c(ayz.a($$0), ayz.a($$1), ayz.a($$2)));
    }
 
-   public eog a(int $$0) {
-      return this.a.get($$0);
+   public abstract int a(eoh[] var1, eoh var2);
+
+   public abstract eom a(eoo var1, int var2, int var3, int var4, btr var5);
+
+   public abstract eom a(eoo var1, int var2, int var3, int var4);
+
+   public eom a(btr $$0, iz $$1) {
+      return this.a(new eoo($$0.dP(), $$0), $$1.u(), $$1.v(), $$1.w());
    }
 
-   public void b(int $$0) {
-      if (this.a.size() > $$0) {
-         this.a.subList($$0, this.a.size()).clear();
-      }
+   public void a(boolean $$0) {
+      this.g = $$0;
    }
 
-   public void a(int $$0, eog $$1) {
-      this.a.set($$0, $$1);
+   public void b(boolean $$0) {
+      this.h = $$0;
    }
 
-   public int e() {
-      return this.a.size();
+   public void c(boolean $$0) {
+      this.i = $$0;
    }
 
-   public int f() {
-      return this.c;
+   public void d(boolean $$0) {
+      this.j = $$0;
    }
 
-   public void c(int $$0) {
-      this.c = $$0;
+   public boolean d() {
+      return this.g;
    }
 
-   public evq a(bst $$0, int $$1) {
-      eog $$2 = this.a.get($$1);
-      double $$3 = (double)$$2.a + (double)((int)($$0.dj() + 1.0F)) * 0.5;
-      double $$4 = (double)$$2.b;
-      double $$5 = (double)$$2.c + (double)((int)($$0.dj() + 1.0F)) * 0.5;
-      return new evq($$3, $$4, $$5);
+   public boolean e() {
+      return this.h;
    }
 
-   public iz d(int $$0) {
-      return this.a.get($$0).a();
+   public boolean f() {
+      return this.i;
    }
 
-   public evq a(bst $$0) {
-      return this.a($$0, this.c);
+   public boolean g() {
+      return this.j;
    }
 
-   public iz g() {
-      return this.a.get(this.c).a();
-   }
-
-   public eog h() {
-      return this.a.get(this.c);
-   }
-
-   @Nullable
-   public eog i() {
-      return this.c > 0 ? this.a.get(this.c - 1) : null;
-   }
-
-   public boolean a(@Nullable eoi $$0) {
-      if ($$0 == null) {
-         return false;
-      } else if ($$0.a.size() != this.a.size()) {
-         return false;
-      } else {
-         for (int $$1 = 0; $$1 < this.a.size(); $$1++) {
-            eog $$2 = this.a.get($$1);
-            eog $$3 = $$0.a.get($$1);
-            if ($$2.a != $$3.a || $$2.b != $$3.b || $$2.c != $$3.c) {
-               return false;
-            }
-         }
-
-         return true;
-      }
-   }
-
-   public boolean j() {
-      return this.f;
-   }
-
-   @bac
-   void a(eog[] $$0, eog[] $$1, Set<eop> $$2) {
-      this.b = new eoi.a($$0, $$1, $$2);
-   }
-
-   @Nullable
-   public eoi.a k() {
-      return this.b;
-   }
-
-   public void a(wl $$0) {
-      if (this.b != null && !this.b.c.isEmpty()) {
-         $$0.a(this.f);
-         $$0.p(this.c);
-         $$0.a(this.d);
-         $$0.a(this.a, ($$0x, $$1) -> $$1.a($$0x));
-         this.b.a($$0);
-      }
-   }
-
-   public static eoi b(wl $$0) {
-      boolean $$1 = $$0.readBoolean();
-      int $$2 = $$0.readInt();
-      iz $$3 = $$0.e();
-      List<eog> $$4 = $$0.a(eog::b);
-      eoi.a $$5 = eoi.a.b($$0);
-      eoi $$6 = new eoi($$4, $$3, $$1);
-      $$6.b = $$5;
-      $$6.c = $$2;
-      return $$6;
-   }
-
-   @Override
-   public String toString() {
-      return "Path(length=" + this.a.size() + ")";
-   }
-
-   public iz l() {
-      return this.d;
-   }
-
-   public float m() {
-      return this.e;
-   }
-
-   static eog[] c(wl $$0) {
-      eog[] $$1 = new eog[$$0.l()];
-
-      for (int $$2 = 0; $$2 < $$1.length; $$2++) {
-         $$1[$$2] = eog.b($$0);
-      }
-
-      return $$1;
-   }
-
-   static void a(wl $$0, eog[] $$1) {
-      $$0.c($$1.length);
-
-      for (eog $$2 : $$1) {
-         $$2.a($$0);
-      }
-   }
-
-   public eoi n() {
-      eoi $$0 = new eoi(this.a, this.d, this.f);
-      $$0.b = this.b;
-      $$0.c = this.c;
-      return $$0;
-   }
-
-   public static record a(eog[] a, eog[] b, Set<eop> c) {
-
-      public void a(wl $$0) {
-         $$0.a(this.c, ($$0x, $$1) -> $$1.a($$0x));
-         eoi.a($$0, this.a);
-         eoi.a($$0, this.b);
-      }
-
-      public static eoi.a b(wl $$0) {
-         HashSet<eop> $$1 = $$0.a(HashSet::new, eop::c);
-         eog[] $$2 = eoi.c($$0);
-         eog[] $$3 = eoi.c($$0);
-         return new eoi.a($$2, $$3, $$1);
-      }
+   public static boolean a(dsc $$0) {
+      return $$0.a(awp.aK) || $$0.a(dfb.H) || $$0.a(dfb.kJ) || dfn.g($$0) || $$0.a(dfb.fv);
    }
 }

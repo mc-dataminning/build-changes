@@ -1,104 +1,87 @@
-import org.joml.Matrix4f;
+public class gkc<T extends cot> extends giw<T> {
+   private static final alf f = new alf("textures/entity/minecart.png");
+   protected final fua<T> a;
+   private final gei g;
 
-public abstract class gkc<T extends btq, M extends ftz<T>> extends gjx<T, M> {
-   public static final int h = 24;
-
-   public gkc(giw.a $$0, M $$1, float $$2) {
-      super($$0, $$1, $$2);
+   public gkc(gix.a $$0, fwy $$1) {
+      super($$0);
+      this.d = 0.7F;
+      this.a = new fuv<>($$0.a($$1));
+      this.g = $$0.c();
    }
 
-   protected boolean a(T $$0) {
-      return super.b($$0) && ($$0.cF() || $$0.ag() && $$0 == this.c.c);
-   }
-
-   public boolean a(T $$0, ggr $$1, double $$2, double $$3, double $$4) {
-      if (super.a($$0, $$1, $$2, $$3, $$4)) {
-         return true;
-      } else {
-         bst $$5 = $$0.gf();
-         return $$5 != null ? $$1.a($$5.h_()) : false;
-      }
-   }
-
-   public void a(T $$0, float $$1, float $$2, ezx $$3, gdn $$4, int $$5) {
+   public void a(T $$0, float $$1, float $$2, ezy $$3, gdo $$4, int $$5) {
       super.a($$0, $$1, $$2, $$3, $$4, $$5);
-      bst $$6 = $$0.gf();
-      if ($$6 != null) {
-         this.a($$0, $$2, $$3, $$4, $$6);
-      }
-   }
+      $$3.a();
+      long $$6 = (long)$$0.al() * 493286711L;
+      $$6 = $$6 * $$6 * 4392167121L + $$6 * 98761L;
+      float $$7 = (((float)($$6 >> 16 & 7L) + 0.5F) / 8.0F - 0.5F) * 0.004F;
+      float $$8 = (((float)($$6 >> 20 & 7L) + 0.5F) / 8.0F - 0.5F) * 0.004F;
+      float $$9 = (((float)($$6 >> 24 & 7L) + 0.5F) / 8.0F - 0.5F) * 0.004F;
+      $$3.a($$7, $$8, $$9);
+      double $$10 = ayz.d((double)$$2, $$0.ad, $$0.du());
+      double $$11 = ayz.d((double)$$2, $$0.ae, $$0.dw());
+      double $$12 = ayz.d((double)$$2, $$0.af, $$0.dA());
+      double $$13 = 0.3F;
+      evr $$14 = $$0.q($$10, $$11, $$12);
+      float $$15 = ayz.i($$2, $$0.P, $$0.dH());
+      if ($$14 != null) {
+         evr $$16 = $$0.a($$10, $$11, $$12, 0.3F);
+         evr $$17 = $$0.a($$10, $$11, $$12, -0.3F);
+         if ($$16 == null) {
+            $$16 = $$14;
+         }
 
-   private <E extends bst> void a(T $$0, float $$1, ezx $$2, gdn $$3, E $$4) {
-      $$2.a();
-      evq $$5 = $$4.q($$1);
-      double $$6 = (double)(ayy.i($$1, $$0.aZ, $$0.aY) * (float) (Math.PI / 180.0)) + (Math.PI / 2);
-      evq $$7 = $$0.p($$1);
-      double $$8 = Math.cos($$6) * $$7.e + Math.sin($$6) * $$7.c;
-      double $$9 = Math.sin($$6) * $$7.e - Math.cos($$6) * $$7.c;
-      double $$10 = ayy.d((double)$$1, $$0.L, $$0.du()) + $$8;
-      double $$11 = ayy.d((double)$$1, $$0.M, $$0.dw()) + $$7.d;
-      double $$12 = ayy.d((double)$$1, $$0.N, $$0.dA()) + $$9;
-      $$2.a($$8, $$7.d, $$9);
-      float $$13 = (float)($$5.c - $$10);
-      float $$14 = (float)($$5.d - $$11);
-      float $$15 = (float)($$5.e - $$12);
-      float $$16 = 0.025F;
-      fab $$17 = $$3.getBuffer(gdv.h());
-      Matrix4f $$18 = $$2.c().a();
-      float $$19 = ayy.i($$13 * $$13 + $$15 * $$15) * 0.025F / 2.0F;
-      float $$20 = $$15 * $$19;
-      float $$21 = $$13 * $$19;
-      iz $$22 = iz.a($$0.j($$1));
-      iz $$23 = iz.a($$4.j($$1));
-      int $$24 = this.a($$0, $$22);
-      int $$25 = this.c.a($$4).a($$4, $$23);
-      int $$26 = $$0.dP().a(dcg.a, $$22);
-      int $$27 = $$0.dP().a(dcg.a, $$23);
+         if ($$17 == null) {
+            $$17 = $$14;
+         }
 
-      for (int $$28 = 0; $$28 <= 24; $$28++) {
-         a($$17, $$18, $$13, $$14, $$15, $$24, $$25, $$26, $$27, 0.025F, 0.025F, $$20, $$21, $$28, false);
+         $$3.a($$14.c - $$10, ($$16.d + $$17.d) / 2.0 - $$11, $$14.e - $$12);
+         evr $$18 = $$17.b(-$$16.c, -$$16.d, -$$16.e);
+         if ($$18.f() != 0.0) {
+            $$18 = $$18.d();
+            $$1 = (float)(Math.atan2($$18.e, $$18.c) * 180.0 / Math.PI);
+            $$15 = (float)(Math.atan($$18.d) * 73.0);
+         }
       }
 
-      for (int $$29 = 24; $$29 >= 0; $$29--) {
-         a($$17, $$18, $$13, $$14, $$15, $$24, $$25, $$26, $$27, 0.025F, 0.0F, $$20, $$21, $$29, true);
+      $$3.a(0.0F, 0.375F, 0.0F);
+      $$3.a(a.d.rotationDegrees(180.0F - $$1));
+      $$3.a(a.f.rotationDegrees(-$$15));
+      float $$19 = (float)$$0.O() - $$2;
+      float $$20 = $$0.N() - $$2;
+      if ($$20 < 0.0F) {
+         $$20 = 0.0F;
       }
 
-      $$2.b();
+      if ($$19 > 0.0F) {
+         $$3.a(a.b.rotationDegrees(ayz.a($$19) * $$19 * $$20 / 10.0F * (float)$$0.P()));
+      }
+
+      int $$21 = $$0.y();
+      dsc $$22 = $$0.w();
+      if ($$22.l() != dlf.a) {
+         $$3.a();
+         float $$23 = 0.75F;
+         $$3.b(0.75F, 0.75F, 0.75F);
+         $$3.a(-0.5F, (float)($$21 - 8) / 16.0F, 0.5F);
+         $$3.a(a.d.rotationDegrees(90.0F));
+         this.a($$0, $$2, $$22, $$3, $$4, $$5);
+         $$3.b();
+      }
+
+      $$3.b(-1.0F, -1.0F, 1.0F);
+      this.a.a($$0, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F);
+      fac $$24 = $$4.getBuffer(this.a.a(this.a($$0)));
+      this.a.a($$3, $$24, $$5, goq.d, 1.0F, 1.0F, 1.0F, 1.0F);
+      $$3.b();
    }
 
-   private static void a(
-      fab $$0,
-      Matrix4f $$1,
-      float $$2,
-      float $$3,
-      float $$4,
-      int $$5,
-      int $$6,
-      int $$7,
-      int $$8,
-      float $$9,
-      float $$10,
-      float $$11,
-      float $$12,
-      int $$13,
-      boolean $$14
-   ) {
-      float $$15 = (float)$$13 / 24.0F;
-      int $$16 = (int)ayy.i($$15, (float)$$5, (float)$$6);
-      int $$17 = (int)ayy.i($$15, (float)$$7, (float)$$8);
-      int $$18 = gdm.a($$16, $$17);
-      float $$19 = $$13 % 2 == ($$14 ? 1 : 0) ? 0.7F : 1.0F;
-      float $$20 = 0.5F * $$19;
-      float $$21 = 0.4F * $$19;
-      float $$22 = 0.3F * $$19;
-      float $$23 = $$2 * $$15;
-      float $$24 = $$3 > 0.0F ? $$3 * $$15 * $$15 : $$3 - $$3 * (1.0F - $$15) * (1.0F - $$15);
-      float $$25 = $$4 * $$15;
-      $$0.a($$1, $$23 - $$11, $$24 + $$10, $$25 + $$12).a($$20, $$21, $$22, 1.0F).b($$18).e();
-      $$0.a($$1, $$23 + $$11, $$24 + $$9 - $$10, $$25 - $$12).a($$20, $$21, $$22, 1.0F).b($$18).e();
+   public alf a(T $$0) {
+      return f;
    }
 
-   protected float b(T $$0) {
-      return super.f($$0) * $$0.ed();
+   protected void a(T $$0, float $$1, dsc $$2, ezy $$3, gdo $$4, int $$5) {
+      this.g.a($$2, $$3, $$4, $$5, goq.d);
    }
 }

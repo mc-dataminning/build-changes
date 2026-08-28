@@ -1,102 +1,188 @@
-public interface agv extends aam, ajy {
-   @Override
-   default wk b() {
-      return wk.b;
-   }
-
-   void a(aip var1);
-
-   void a(ahd var1);
-
-   void a(ahb var1);
-
-   void a(ahc var1);
-
-   void a(aha var1);
-
-   void a(ahg var1);
-
-   void a(ahj var1);
-
-   void a(ahk var1);
-
-   void a(ahx var1);
-
-   void a(ahl var1);
-
-   void a(ahq var1);
-
-   void a(aht var1);
-
-   void a(ahy var1);
-
-   void a(ahz var1);
-
-   void a(aia var1);
-
-   void a(aib var1);
-
-   void a(aii var1);
-
-   void a(ail var1);
-
-   void a(aio var1);
-
-   void a(air var1);
-
-   void a(ais var1);
-
-   void a(aiq var1);
-
-   void a(ahv var1);
-
-   void a(ahu var1);
-
-   void a(agx var1);
-
-   void a(aid var1);
-
-   void a(aic var1);
-
-   void a(aif var1);
-
-   void a(ahh var1);
-
-   void a(aij var1);
-
-   void a(aik var1);
-
-   void a(ahw var1);
-
-   void a(aie var1);
-
-   void a(aih var1);
-
-   void a(ain var1);
-
-   void a(aig var1);
-
-   void a(aho var1);
-
-   void a(ahp var1);
-
-   void a(ahm var1);
-
-   void a(agy var1);
-
-   void a(aim var1);
-
-   void a(ahr var1);
-
-   void a(agz var1);
-
-   void a(ahs var1);
-
-   void a(ahe var1);
-
-   void a(ahi var1);
-
-   void a(ahf var1);
-
-   void a(ahn var1);
+public class agv {
+   public static final wx.a<agw, xa> a = aab.c(
+      wl.b,
+      $$0 -> $$0.a(agu.bf, agy.a)
+            .a(agu.bg, agz.a)
+            .a(agu.bh, aha.a)
+            .a(agu.bi, ahb.a)
+            .a(agu.bj, ahc.a)
+            .a(agu.bk, ahd.a)
+            .a(agu.bl, ahe.a)
+            .a(agu.bm, ahf.a)
+            .a(agu.bn, ahg.a)
+            .a(agu.bo, ahh.a)
+            .a(aam.j, aao.a)
+            .a(agu.bp, ahi.a)
+            .a(agu.bq, ahj.b)
+            .a(agu.br, ahk.a)
+            .a(agu.bs, ahl.a)
+            .a(agu.bt, ahm.a)
+            .a(agu.bu, ahn.a)
+            .a(ace.b, acg.a)
+            .a(aam.k, aap.a)
+            .a(agu.bv, aho.a)
+            .a(agu.bw, ahp.b)
+            .a(agu.bx, ahq.a)
+            .a(agu.by, ahr.a)
+            .a(agu.bz, ahs.a)
+            .a(aam.l, aaq.a)
+            .a(agu.bA, aht.a)
+            .a(agu.bB, ahu.a.i)
+            .a(agu.bC, ahu.b.i)
+            .a(agu.bD, ahu.c.i)
+            .a(agu.bE, ahu.d.i)
+            .a(agu.bF, ahv.a)
+            .a(agu.bG, ahw.a)
+            .a(agu.bH, ahx.a)
+            .a(ajy.b, aka.a)
+            .a(agu.bI, ahy.a)
+            .a(agu.bJ, ahz.a)
+            .a(agu.bK, aia.a)
+            .a(agu.bL, aib.a)
+            .a(agu.bM, aic.a)
+            .a(aam.m, aar.a)
+            .a(agu.bN, aid.a)
+            .a(agu.bO, aie.a)
+            .a(agu.bP, aif.a)
+            .a(aam.n, aas.a)
+            .a(agu.bQ, aig.a)
+            .a(agu.bR, aih.a)
+            .a(agu.bS, aii.a)
+            .a(agu.bT, aij.a)
+            .a(agu.bU, aik.a)
+            .a(agu.bV, ail.a)
+            .a(agu.bW, aim.a)
+            .a(agu.bX, ain.a)
+            .a(agu.bY, aio.a)
+            .a(agu.bZ, aip.a)
+            .a(agu.ca, aiq.a)
+            .a(agu.cb, air.a)
+            .a(agu.cc, ais.a)
+            .a(agu.cd, ait.a)
+   );
+   public static final wx.a<aci, xa> b = aab.d(
+      wl.b,
+      $$0 -> $$0.a(agu.a, acu::new, new act())
+            .a(agu.c, acj.a)
+            .a(agu.d, ack.a)
+            .a(agu.e, acl.a)
+            .a(agu.f, acm.a)
+            .a(agu.g, acn.a)
+            .a(agu.h, aco.a)
+            .a(agu.i, acp.a)
+            .a(agu.j, acq.a)
+            .a(agu.k, acr.a)
+            .a(agu.l, acs.a)
+            .a(agu.m, acv.a)
+            .a(agu.n, acw.a)
+            .a(agu.o, acx.b)
+            .a(agu.p, acy.a)
+            .a(agu.q, acz.a)
+            .a(agu.r, ada.a)
+            .a(agu.s, adb.a)
+            .a(agu.t, adc.a)
+            .a(agu.u, add.a)
+            .a(agu.v, ade.a)
+            .a(agu.w, adf.a)
+            .a(ace.a, acd.a)
+            .a(agu.x, adg.a)
+            .a(agu.y, adh.a)
+            .a(aam.a, aad.a)
+            .a(agu.z, adi.a)
+            .a(agu.A, adj.a)
+            .a(agu.B, adk.a)
+            .a(aam.b, aae.a)
+            .a(agu.C, adl.a)
+            .a(agu.D, adm.a)
+            .a(agu.E, adn.a)
+            .a(agu.F, ado.a)
+            .a(agu.G, adp.a)
+            .a(agu.H, adq.a)
+            .a(agu.I, adr.a)
+            .a(agu.J, ads.a)
+            .a(aam.c, aaf.a)
+            .a(agu.K, adu.a)
+            .a(agu.L, adv.a)
+            .a(agu.M, adw.a)
+            .a(agu.N, adx.a)
+            .a(agu.O, adz.a)
+            .a(agu.P, aea.a)
+            .a(agu.Q, aeb.a)
+            .a(agu.R, aec.a.j)
+            .a(agu.S, aec.b.j)
+            .a(agu.T, aec.c.j)
+            .a(agu.U, aed.a)
+            .a(agu.V, aee.a)
+            .a(agu.W, aef.a)
+            .a(agu.X, aeg.a)
+            .a(aam.d, aag.a)
+            .a(ajy.a, ajx.a)
+            .a(agu.Y, aeh.a)
+            .a(agu.Z, aei.a)
+            .a(agu.aa, aej.a)
+            .a(agu.ab, aek.a)
+            .a(agu.ac, ael.b)
+            .a(agu.ad, aem.a)
+            .a(agu.ae, aen.a)
+            .a(agu.af, aeo.a)
+            .a(agu.ag, aep.a)
+            .a(agu.ah, aeq.a)
+            .a(agu.ai, aes.a)
+            .a(agu.aj, aet.a)
+            .a(agu.ak, aeu.a)
+            .a(agu.ce, aev.a)
+            .a(aam.e, aah.a)
+            .a(aam.f, aai.b)
+            .a(agu.al, aew.a)
+            .a(agu.am, aex.a)
+            .a(agu.an, aey.a)
+            .a(agu.ao, aez.a)
+            .a(agu.ap, afa.a)
+            .a(agu.aq, afb.a)
+            .a(agu.ar, afc.a)
+            .a(agu.as, afd.a)
+            .a(agu.at, afe.a)
+            .a(agu.au, aff.a)
+            .a(agu.av, afg.a)
+            .a(agu.aw, afh.a)
+            .a(agu.ax, afi.a)
+            .a(agu.ay, afj.a)
+            .a(agu.az, afk.a)
+            .a(agu.aA, afl.a)
+            .a(agu.aB, afm.a)
+            .a(agu.aC, afn.a)
+            .a(agu.aD, afo.a)
+            .a(agu.aE, afp.a)
+            .a(agu.aF, afq.a)
+            .a(agu.aG, afr.a)
+            .a(agu.aH, afs.a)
+            .a(agu.aI, aft.a)
+            .a(agu.aJ, afu.a)
+            .a(agu.aK, afv.a)
+            .a(agu.aL, afw.a)
+            .a(agu.aM, afx.a)
+            .a(agu.aN, afy.a)
+            .a(agu.aO, afz.a)
+            .a(agu.aP, aga.a)
+            .a(agu.aQ, agb.a)
+            .a(agu.aR, agc.a)
+            .a(agu.aS, agd.a)
+            .a(agu.aT, age.b)
+            .a(agu.aU, agf.a)
+            .a(aam.g, aaj.a)
+            .a(agu.aV, agg.a)
+            .a(agu.aW, agh.a)
+            .a(agu.aX, agi.a)
+            .a(agu.aY, agj.a)
+            .a(agu.aZ, agk.a)
+            .a(agu.cf, agl.a)
+            .a(agu.cg, agm.a)
+            .a(aam.h, aak.a)
+            .a(agu.ba, agn.a)
+            .a(agu.bb, ago.a)
+            .a(agu.bc, agp.a)
+            .a(agu.bd, agq.a)
+            .a(aam.i, aal.a)
+            .a(agu.be, aer.a)
+   );
 }

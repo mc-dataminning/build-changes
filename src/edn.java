@@ -1,22 +1,21 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
 import java.util.stream.Stream;
 
-public class edn implements edb {
+public class edn implements edc {
    public static final Codec<edn> a = RecordCodecBuilder.create(
-      $$0 -> $$0.apply2(edn::new, ecr.a.listOf().fieldOf("features").forGetter($$0x -> $$0x.b), ehn.b.fieldOf("default").forGetter($$0x -> $$0x.c))
+      $$0 -> $$0.group(eho.b.fieldOf("feature_true").forGetter($$0x -> $$0x.b), eho.b.fieldOf("feature_false").forGetter($$0x -> $$0x.c)).apply($$0, edn::new)
    );
-   public final List<ecr> b;
-   public final ji<ehn> c;
+   public final ji<eho> b;
+   public final ji<eho> c;
 
-   public edn(List<ecr> $$0, ji<ehn> $$1) {
+   public edn(ji<eho> $$0, ji<eho> $$1) {
       this.b = $$0;
       this.c = $$1;
    }
 
    @Override
-   public Stream<eak<?, ?>> e() {
-      return Stream.concat(this.b.stream().flatMap($$0 -> $$0.b.a().a()), this.c.a().a());
+   public Stream<eal<?, ?>> e() {
+      return Stream.concat(this.b.a().a(), this.c.a().a());
    }
 }

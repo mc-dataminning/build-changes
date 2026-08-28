@@ -1,48 +1,101 @@
-import java.util.BitSet;
-import javax.annotation.Nullable;
+public class adw implements zw<aci> {
+   public static final zn<xa, adw> a = zw.a(adw::a, adw::new);
+   private final double b;
+   private final double c;
+   private final double d;
+   private final float e;
+   private final float f;
+   private final float g;
+   private final float h;
+   private final int i;
+   private final boolean j;
+   private final lg k;
 
-public class adw implements zv<ach> {
-   public static final zm<wl, adw> a = zv.a(adw::a, adw::new);
-   private final int b;
-   private final int c;
-   private final adx d;
-
-   public adw(dbe $$0, enj $$1, @Nullable BitSet $$2, @Nullable BitSet $$3) {
-      this.b = $$0.e;
-      this.c = $$0.f;
-      this.d = new adx($$0, $$1, $$2, $$3);
+   public <T extends lg> adw(T $$0, boolean $$1, double $$2, double $$3, double $$4, float $$5, float $$6, float $$7, float $$8, int $$9) {
+      this.k = $$0;
+      this.j = $$1;
+      this.b = $$2;
+      this.c = $$3;
+      this.d = $$4;
+      this.e = $$5;
+      this.f = $$6;
+      this.g = $$7;
+      this.h = $$8;
+      this.i = $$9;
    }
 
-   private adw(wl $$0) {
-      this.b = $$0.l();
-      this.c = $$0.l();
-      this.d = new adx($$0, this.b, this.c);
+   private adw(xa $$0) {
+      this.j = $$0.readBoolean();
+      this.b = $$0.readDouble();
+      this.c = $$0.readDouble();
+      this.d = $$0.readDouble();
+      this.e = $$0.readFloat();
+      this.f = $$0.readFloat();
+      this.g = $$0.readFloat();
+      this.h = $$0.readFloat();
+      this.i = $$0.readInt();
+      this.k = li.bg.decode($$0);
    }
 
-   private void a(wl $$0) {
-      $$0.c(this.b);
-      $$0.c(this.c);
-      this.d.a($$0);
+   private void a(xa $$0) {
+      $$0.a(this.j);
+      $$0.a(this.b);
+      $$0.a(this.c);
+      $$0.a(this.d);
+      $$0.a(this.e);
+      $$0.a(this.f);
+      $$0.a(this.g);
+      $$0.a(this.h);
+      $$0.p(this.i);
+      li.bg.encode($$0, this.k);
    }
 
    @Override
-   public zx<adw> a() {
-      return agt.N;
+   public zy<adw> a() {
+      return agu.M;
    }
 
-   public void a(ach $$0) {
+   public void a(aci $$0) {
       $$0.a(this);
    }
 
-   public int b() {
+   public boolean b() {
+      return this.j;
+   }
+
+   public double e() {
       return this.b;
    }
 
-   public int e() {
+   public double f() {
       return this.c;
    }
 
-   public adx f() {
+   public double g() {
       return this.d;
+   }
+
+   public float h() {
+      return this.e;
+   }
+
+   public float i() {
+      return this.f;
+   }
+
+   public float j() {
+      return this.g;
+   }
+
+   public float k() {
+      return this.h;
+   }
+
+   public int l() {
+      return this.i;
+   }
+
+   public lg m() {
+      return this.k;
    }
 }

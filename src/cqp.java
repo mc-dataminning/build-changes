@@ -1,9 +1,22 @@
-public class cqp extends cpu {
-   public cqp(int $$0, cmv $$1) {
-      super(cra.o, cyz.b, crh.b, $$0, $$1);
+public class cqp extends crp {
+   private final cpv a;
+
+   public cqp(cpv $$0, bqn $$1, int $$2, int $$3, int $$4) {
+      super($$1, $$2, $$3, $$4);
+      this.a = $$0;
    }
 
-   public cqp(int $$0, cmv $$1, bqm $$2, cqd $$3) {
-      super(cra.o, cyz.b, crh.b, $$0, $$1, $$2, $$3);
+   @Override
+   public boolean a(cup $$0) {
+      return this.a.d($$0) || c($$0);
+   }
+
+   @Override
+   public int a_(cup $$0) {
+      return c($$0) ? 1 : super.a_($$0);
+   }
+
+   public static boolean c(cup $$0) {
+      return $$0.a(cus.qy);
    }
 }

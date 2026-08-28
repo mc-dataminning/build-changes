@@ -1,142 +1,104 @@
 import com.mojang.serialization.MapCodec;
-import java.util.Optional;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import javax.annotation.Nullable;
 
-public class dfe extends dey implements dff {
-   public static final MapCodec<dfe> a = b(dfe::new);
-   public static final dss b = dsr.e;
-   private static final int c = 5;
+public class dfe extends del implements dhu {
+   public static final MapCodec<dfe> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(
+               lp.e.q().fieldOf("turns_into").forGetter(dfe::b),
+               lp.b.q().fieldOf("brush_sound").forGetter(dfe::c),
+               lp.b.q().fieldOf("brush_comleted_sound").forGetter(dfe::d),
+               u()
+            )
+            .apply($$0, dfe::new)
+   );
+   private static final dtc c = dss.bv;
+   public static final int b = 2;
+   private final dez d;
+   private final avz e;
+   private final avz f;
 
    @Override
    public MapCodec<dfe> a() {
       return a;
    }
 
-   public dfe(dsa.d $$0) {
-      super($$0);
-      this.k(this.E.b().a(b, Boolean.valueOf(true)));
+   public dfe(dez $$0, avz $$1, avz $$2, dsb.d $$3) {
+      super($$3);
+      this.d = $$0;
+      this.e = $$1;
+      this.f = $$2;
+      this.k(this.E.b().a(c, Integer.valueOf(0)));
    }
 
    @Override
-   protected void a(dsb $$0, dbx $$1, iz $$2, bst $$3) {
-      dsb $$4 = $$1.a_($$2.c());
-      if ($$4.i()) {
-         $$3.l($$0.c(b));
-         if (!$$1.B) {
-            are $$5 = (are)$$1;
-
-            for (int $$6 = 0; $$6 < 2; $$6++) {
-               $$5.a(li.am, (double)$$2.u() + $$1.z.j(), (double)($$2.v() + 1), (double)$$2.w() + $$1.z.j(), 1, 0.0, 0.0, 0.0, 1.0);
-               $$5.a(li.d, (double)$$2.u() + $$1.z.j(), (double)($$2.v() + 1), (double)$$2.w() + $$1.z.j(), 1, 0.0, 0.01, 0.0, 0.2);
-            }
-         }
-      } else {
-         $$3.m($$0.c(b));
-      }
+   protected void a(dsd.a<dez, dsc> $$0) {
+      $$0.a(c);
    }
 
    @Override
-   protected void a(dsb $$0, are $$1, iz $$2, azg $$3) {
-      a($$1, $$2, $$0, $$1.a_($$2.d()));
+   public dlf a_(dsc $$0) {
+      return dlf.c;
    }
 
    @Override
-   protected enu b_(dsb $$0) {
-      return env.c.a(false);
-   }
-
-   public static void b(dby $$0, iz $$1, dsb $$2) {
-      a($$0, $$1, $$0.a_($$1), $$2);
-   }
-
-   public static void a(dby $$0, iz $$1, dsb $$2, dsb $$3) {
-      if (m($$2)) {
-         dsb $$4 = n($$3);
-         $$0.a($$1, $$4, 2);
-         iz.a $$5 = $$1.j().c(je.b);
-
-         while (m($$0.a_($$5))) {
-            if (!$$0.a($$5, $$4, 2)) {
-               return;
-            }
-
-            $$5.c(je.b);
-         }
-      }
-   }
-
-   private static boolean m(dsb $$0) {
-      return $$0.a(dfa.nd) || $$0.a(dfa.G) && $$0.u().e() >= 8 && $$0.u().b();
-   }
-
-   private static dsb n(dsb $$0) {
-      if ($$0.a(dfa.nd)) {
-         return $$0;
-      } else if ($$0.a(dfa.dW)) {
-         return dfa.nd.o().a(b, Boolean.valueOf(false));
-      } else {
-         return $$0.a(dfa.kJ) ? dfa.nd.o().a(b, Boolean.valueOf(true)) : dfa.G.o();
-      }
+   public void b(dsc $$0, dby $$1, iz $$2, dsc $$3, boolean $$4) {
+      $$1.a($$2, this, 2);
    }
 
    @Override
-   public void a(dsb $$0, dbx $$1, iz $$2, azg $$3) {
-      double $$4 = (double)$$2.u();
-      double $$5 = (double)$$2.v();
-      double $$6 = (double)$$2.w();
-      if ($$0.c(b)) {
-         $$1.b(li.ap, $$4 + 0.5, $$5 + 0.8, $$6, 0.0, 0.0, 0.0);
-         if ($$3.a(200) == 0) {
-            $$1.a($$4, $$5, $$6, avz.da, awa.e, 0.2F + $$3.i() * 0.2F, 0.9F + $$3.i() * 0.15F, false);
-         }
-      } else {
-         $$1.b(li.aq, $$4 + 0.5, $$5, $$6 + 0.5, 0.0, 0.04, 0.0);
-         $$1.b(li.aq, $$4 + (double)$$3.i(), $$5 + (double)$$3.i(), $$6 + (double)$$3.i(), 0.0, 0.04, 0.0);
-         if ($$3.a(200) == 0) {
-            $$1.a($$4, $$5, $$6, avz.cY, awa.e, 0.2F + $$3.i() * 0.2F, 0.9F + $$3.i() * 0.15F, false);
-         }
-      }
-   }
-
-   @Override
-   protected dsb a(dsb $$0, je $$1, dsb $$2, dby $$3, iz $$4, iz $$5) {
-      $$3.a($$4, env.c, env.c.a($$3));
-      if (!$$0.a($$3, $$4) || $$1 == je.a || $$1 == je.b && !$$2.a(dfa.nd) && m($$2)) {
-         $$3.a($$4, this, 5);
-      }
-
+   public dsc a(dsc $$0, je $$1, dsc $$2, dbz $$3, iz $$4, iz $$5) {
+      $$3.a($$4, this, 2);
       return super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
    @Override
-   protected boolean a(dsb $$0, dca $$1, iz $$2) {
-      dsb $$3 = $$1.a_($$2.d());
-      return $$3.a(dfa.nd) || $$3.a(dfa.kJ) || $$3.a(dfa.dW);
+   public void a(dsc $$0, arf $$1, iz $$2, azh $$3) {
+      if ($$1.c_($$2) instanceof dpl $$4) {
+         $$4.b();
+      }
+
+      if (dhv.m($$1.a_($$2.d())) && $$2.v() >= $$1.I_()) {
+         cjg $$5 = cjg.a($$1, $$2, $$0);
+         $$5.s();
+      }
    }
 
    @Override
-   protected ewj a(dsb $$0, dbd $$1, iz $$2, evv $$3) {
-      return ewg.a();
+   public void a(dby $$0, iz $$1, cjg $$2) {
+      evr $$3 = $$2.cK().f();
+      $$0.c(2001, iz.a($$3), dez.i($$2.u()));
+      $$0.a($$2, dwv.f, $$3);
    }
 
    @Override
-   protected dle a_(dsb $$0) {
-      return dle.a;
+   public void a(dsc $$0, dby $$1, iz $$2, azh $$3) {
+      if ($$3.a(16) == 0) {
+         iz $$4 = $$2.d();
+         if (dhv.m($$1.a_($$4))) {
+            double $$5 = (double)$$2.u() + $$3.j();
+            double $$6 = (double)$$2.v() - 0.05;
+            double $$7 = (double)$$2.w() + $$3.j();
+            $$1.a(new la(li.C, $$0), $$5, $$6, $$7, 0.0, 0.0, 0.0);
+         }
+      }
    }
 
+   @Nullable
    @Override
-   protected void a(dsc.a<dey, dsb> $$0) {
-      $$0.a(b);
+   public dph a(iz $$0, dsc $$1) {
+      return new dpl($$0, $$1);
    }
 
-   @Override
-   public cuo a(@Nullable cmw $$0, dby $$1, iz $$2, dsb $$3) {
-      $$1.a($$2, dfa.a.o(), 11);
-      return new cuo(cur.qz);
+   public dez b() {
+      return this.d;
    }
 
-   @Override
-   public Optional<avy> ar_() {
-      return env.c.j();
+   public avz c() {
+      return this.e;
+   }
+
+   public avz d() {
+      return this.f;
    }
 }

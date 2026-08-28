@@ -1,8 +1,61 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
+import java.util.function.Consumer;
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface erd {
+public class erd extends era {
+   public static final MapCodec<erd> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(axf.a(lq.G).fieldOf("name").forGetter($$0x -> $$0x.j), Codec.BOOL.fieldOf("expand").forGetter($$0x -> $$0x.k))
+            .and(b($$0))
+            .apply($$0, erd::new)
+   );
+   private final axf<cuk> j;
+   private final boolean k;
+
+   private erd(axf<cuk> $$0, boolean $$1, int $$2, int $$3, List<ets> $$4, List<erv> $$5) {
+      super($$2, $$3, $$4, $$5);
+      this.j = $$0;
+      this.k = $$1;
+   }
+
+   @Override
+   public eqz a() {
+      return eqw.f;
+   }
+
+   @Override
+   public void a(Consumer<cup> $$0, eqi $$1) {
+      lp.h.c(this.j).forEach($$1x -> $$0.accept(new cup($$1x)));
+   }
+
+   private boolean a(eqi $$0, Consumer<eqx> $$1) {
+      if (!this.a($$0)) {
+         return false;
+      } else {
+         for (final ji<cuk> $$2 : lp.h.c(this.j)) {
+            $$1.accept(new era.c() {
+               @Override
+               public void a(Consumer<cup> $$0, eqi $$1) {
+                  $$0.accept(new cup($$2));
+               }
+            });
+         }
+
+         return true;
+      }
+   }
+
+   @Override
+   public boolean expand(eqi $$0, Consumer<eqx> $$1) {
+      return this.k ? this.a($$0, $$1) : super.expand($$0, $$1);
+   }
+
+   public static era.a<?> a(axf<cuk> $$0) {
+      return a(($$1, $$2, $$3, $$4) -> new erd($$0, false, $$1, $$2, $$3, $$4));
+   }
+
+   public static era.a<?> b(axf<cuk> $$0) {
+      return a(($$1, $$2, $$3, $$4) -> new erd($$0, true, $$1, $$2, $$3, $$4));
+   }
 }

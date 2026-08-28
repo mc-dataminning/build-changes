@@ -2,14 +2,14 @@ import io.netty.buffer.ByteBuf;
 import java.util.Iterator;
 
 public record ix(iz b, iz c) implements Iterable<iz> {
-   public static final zm<ByteBuf, ix> a = new zm<ByteBuf, ix>() {
+   public static final zn<ByteBuf, ix> a = new zn<ByteBuf, ix>() {
       public ix a(ByteBuf $$0) {
-         return new ix(wl.b($$0), wl.b($$0));
+         return new ix(wm.b($$0), wm.b($$0));
       }
 
       public void a(ByteBuf $$0, ix $$1) {
-         wl.a($$0, $$1.f());
-         wl.a($$0, $$1.g());
+         wm.a($$0, $$1.f());
+         wm.a($$0, $$1.g());
       }
    };
 
@@ -38,8 +38,8 @@ public record ix(iz b, iz c) implements Iterable<iz> {
       return $$0.u() >= this.b.u() && $$0.v() >= this.b.v() && $$0.w() >= this.b.w() && $$0.u() <= this.c.u() && $$0.v() <= this.c.v() && $$0.w() <= this.c.w();
    }
 
-   public evl b() {
-      return evl.a(this.b, this.c);
+   public evm b() {
+      return evm.a(this.b, this.c);
    }
 
    @Override

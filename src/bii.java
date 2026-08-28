@@ -1,84 +1,42 @@
-import com.mojang.datafixers.DSL;
+import com.mojang.datafixers.DSL.TypeReference;
 import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.templates.TypeTemplate;
-import java.util.Map;
-import java.util.function.Supplier;
+import com.mojang.datafixers.types.Type;
+import com.mojang.datafixers.types.templates.Const.PrimitiveType;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.DynamicOps;
+import com.mojang.serialization.codecs.PrimitiveCodec;
 
 public class bii extends Schema {
+   public static final PrimitiveCodec<String> a = new PrimitiveCodec<String>() {
+      public <T> DataResult<String> read(DynamicOps<T> $$0, T $$1) {
+         return $$0.getStringValue($$1).map(bii::a);
+      }
+
+      public <T> T a(DynamicOps<T> $$0, String $$1) {
+         return (T)$$0.createString($$1);
+      }
+
+      @Override
+      public String toString() {
+         return "NamespacedString";
+      }
+   };
+   private static final Type<String> b = new PrimitiveType(a);
+
    public bii(int $$0, Schema $$1) {
       super($$0, $$1);
    }
 
-   protected static TypeTemplate a(Schema $$0) {
-      return DSL.optionalFields("ArmorItems", DSL.list(bgw.t.in($$0)), "HandItems", DSL.list(bgw.t.in($$0)), "body_armor_item", bgw.t.in($$0));
+   public static String a(String $$0) {
+      alf $$1 = alf.a($$0);
+      return $$1 != null ? $$1.toString() : $$0;
    }
 
-   protected static void a(Schema $$0, Map<String, Supplier<TypeTemplate>> $$1, String $$2) {
-      $$0.register($$1, $$2, () -> a($$0));
+   public static Type<String> a() {
+      return b;
    }
 
-   public Map<String, Supplier<TypeTemplate>> registerEntities(Schema $$0) {
-      Map<String, Supplier<TypeTemplate>> $$1 = super.registerEntities($$0);
-      a($$0, $$1, "ArmorStand");
-      a($$0, $$1, "Creeper");
-      a($$0, $$1, "Skeleton");
-      a($$0, $$1, "Spider");
-      a($$0, $$1, "Giant");
-      a($$0, $$1, "Zombie");
-      a($$0, $$1, "Slime");
-      a($$0, $$1, "Ghast");
-      a($$0, $$1, "PigZombie");
-      $$0.register($$1, "Enderman", $$1x -> DSL.optionalFields("carried", bgw.C.in($$0), a($$0)));
-      a($$0, $$1, "CaveSpider");
-      a($$0, $$1, "Silverfish");
-      a($$0, $$1, "Blaze");
-      a($$0, $$1, "LavaSlime");
-      a($$0, $$1, "EnderDragon");
-      a($$0, $$1, "WitherBoss");
-      a($$0, $$1, "Bat");
-      a($$0, $$1, "Witch");
-      a($$0, $$1, "Endermite");
-      a($$0, $$1, "Guardian");
-      a($$0, $$1, "Pig");
-      a($$0, $$1, "Sheep");
-      a($$0, $$1, "Cow");
-      a($$0, $$1, "Chicken");
-      a($$0, $$1, "Squid");
-      a($$0, $$1, "Wolf");
-      a($$0, $$1, "MushroomCow");
-      a($$0, $$1, "SnowMan");
-      a($$0, $$1, "Ozelot");
-      a($$0, $$1, "VillagerGolem");
-      $$0.register(
-         $$1, "EntityHorse", $$1x -> DSL.optionalFields("Items", DSL.list(bgw.t.in($$0)), "ArmorItem", bgw.t.in($$0), "SaddleItem", bgw.t.in($$0), a($$0))
-      );
-      a($$0, $$1, "Rabbit");
-      $$0.register(
-         $$1,
-         "Villager",
-         $$1x -> DSL.optionalFields("Inventory", DSL.list(bgw.t.in($$0)), "Offers", DSL.optionalFields("Recipes", DSL.list(bgw.x.in($$0))), a($$0))
-      );
-      a($$0, $$1, "Shulker");
-      $$0.register($$1, "AreaEffectCloud", $$1x -> DSL.optionalFields("Particle", bgw.y.in($$0)));
-      $$0.registerSimple($$1, "ShulkerBullet");
-      return $$1;
-   }
-
-   public void registerTypes(Schema $$0, Map<String, Supplier<TypeTemplate>> $$1, Map<String, Supplier<TypeTemplate>> $$2) {
-      super.registerTypes($$0, $$1, $$2);
-      $$0.registerType(
-         false,
-         bgw.f,
-         () -> DSL.optionalFields(
-               "entities",
-               DSL.list(DSL.optionalFields("nbt", bgw.A.in($$0))),
-               "blocks",
-               DSL.list(DSL.optionalFields("nbt", bgw.s.in($$0))),
-               "palette",
-               DSL.list(bgw.u.in($$0))
-            )
-      );
-      $$0.registerType(false, bgw.u, DSL::remainder);
-      $$0.registerType(false, bgw.v, DSL::remainder);
+   public Type<?> getChoiceType(TypeReference $$0, String $$1) {
+      return super.getChoiceType($$0, a($$1));
    }
 }

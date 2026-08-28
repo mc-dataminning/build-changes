@@ -1,15 +1,82 @@
-public class sl {
-   public static final ald<eak<?, ?>> a = sh.a("pile_hay");
-   public static final ald<eak<?, ?>> b = sh.a("pile_melon");
-   public static final ald<eak<?, ?>> c = sh.a("pile_snow");
-   public static final ald<eak<?, ?>> d = sh.a("pile_ice");
-   public static final ald<eak<?, ?>> e = sh.a("pile_pumpkin");
+import java.util.List;
 
-   public static void a(rc<eak<?, ?>> $$0) {
-      sh.a($$0, a, eax.j, new ect(new efj(dfa.ij)));
-      sh.a($$0, b, eax.j, new ect(efc.a(dfa.fa)));
-      sh.a($$0, c, eax.j, new ect(efc.a(dfa.dN)));
-      sh.a($$0, d, eax.j, new ect(new efm(bpd.<dsb>a().a(dfa.mW.o(), 1).a(dfa.iC.o(), 5))));
-      sh.a($$0, e, eax.j, new ect(new efm(bpd.<dsb>a().a(dfa.eZ.o(), 19).a(dfa.ef.o(), 1))));
+public class sl {
+   public static final ale<eal<?, ?>> a = si.a("ore_magma");
+   public static final ale<eal<?, ?>> b = si.a("ore_soul_sand");
+   public static final ale<eal<?, ?>> c = si.a("ore_nether_gold");
+   public static final ale<eal<?, ?>> d = si.a("ore_quartz");
+   public static final ale<eal<?, ?>> e = si.a("ore_gravel_nether");
+   public static final ale<eal<?, ?>> f = si.a("ore_blackstone");
+   public static final ale<eal<?, ?>> g = si.a("ore_dirt");
+   public static final ale<eal<?, ?>> h = si.a("ore_gravel");
+   public static final ale<eal<?, ?>> i = si.a("ore_granite");
+   public static final ale<eal<?, ?>> j = si.a("ore_diorite");
+   public static final ale<eal<?, ?>> k = si.a("ore_andesite");
+   public static final ale<eal<?, ?>> l = si.a("ore_tuff");
+   public static final ale<eal<?, ?>> m = si.a("ore_coal");
+   public static final ale<eal<?, ?>> n = si.a("ore_coal_buried");
+   public static final ale<eal<?, ?>> o = si.a("ore_iron");
+   public static final ale<eal<?, ?>> p = si.a("ore_iron_small");
+   public static final ale<eal<?, ?>> q = si.a("ore_gold");
+   public static final ale<eal<?, ?>> r = si.a("ore_gold_buried");
+   public static final ale<eal<?, ?>> s = si.a("ore_redstone");
+   public static final ale<eal<?, ?>> t = si.a("ore_diamond_small");
+   public static final ale<eal<?, ?>> u = si.a("ore_diamond_medium");
+   public static final ale<eal<?, ?>> v = si.a("ore_diamond_large");
+   public static final ale<eal<?, ?>> w = si.a("ore_diamond_buried");
+   public static final ale<eal<?, ?>> x = si.a("ore_lapis");
+   public static final ale<eal<?, ?>> y = si.a("ore_lapis_buried");
+   public static final ale<eal<?, ?>> z = si.a("ore_infested");
+   public static final ale<eal<?, ?>> A = si.a("ore_emerald");
+   public static final ale<eal<?, ?>> B = si.a("ore_ancient_debris_large");
+   public static final ale<eal<?, ?>> C = si.a("ore_ancient_debris_small");
+   public static final ale<eal<?, ?>> D = si.a("ore_copper_small");
+   public static final ale<eal<?, ?>> E = si.a("ore_copper_large");
+   public static final ale<eal<?, ?>> F = si.a("ore_clay");
+
+   public static void a(rc<eal<?, ?>> $$0) {
+      eme $$1 = new emm(awp.be);
+      eme $$2 = new emm(awp.bf);
+      eme $$3 = new emm(awp.bg);
+      eme $$4 = new eln(dfb.dV);
+      eme $$5 = new emm(awp.bh);
+      List<edk.a> $$6 = List.of(edk.a($$2, dfb.P.o()), edk.a($$3, dfb.Q.o()));
+      List<edk.a> $$7 = List.of(edk.a($$2, dfb.N.o()), edk.a($$3, dfb.O.o()));
+      List<edk.a> $$8 = List.of(edk.a($$2, dfb.cx.o()), edk.a($$3, dfb.cy.o()));
+      List<edk.a> $$9 = List.of(edk.a($$2, dfb.aR.o()), edk.a($$3, dfb.aS.o()));
+      List<edk.a> $$10 = List.of(edk.a($$2, dfb.ra.o()), edk.a($$3, dfb.rb.o()));
+      List<edk.a> $$11 = List.of(edk.a($$2, dfb.R.o()), edk.a($$3, dfb.S.o()));
+      si.a($$0, a, eay.I, new edk($$4, dfb.kJ.o(), 33));
+      si.a($$0, b, eay.I, new edk($$4, dfb.dW.o(), 12));
+      si.a($$0, c, eay.I, new edk($$4, dfb.T.o(), 10));
+      si.a($$0, d, eay.I, new edk($$4, dfb.hb.o(), 14));
+      si.a($$0, e, eay.I, new edk($$4, dfb.L.o(), 33));
+      si.a($$0, f, eay.I, new edk($$4, dfb.pr.o(), 33));
+      si.a($$0, g, eay.I, new edk($$1, dfb.j.o(), 33));
+      si.a($$0, h, eay.I, new edk($$1, dfb.L.o(), 33));
+      si.a($$0, i, eay.I, new edk($$1, dfb.c.o(), 64));
+      si.a($$0, j, eay.I, new edk($$1, dfb.e.o(), 64));
+      si.a($$0, k, eay.I, new edk($$1, dfb.g.o(), 64));
+      si.a($$0, l, eay.I, new edk($$1, dfb.qz.o(), 64));
+      si.a($$0, m, eay.I, new edk($$11, 17));
+      si.a($$0, n, eay.I, new edk($$11, 17, 0.5F));
+      si.a($$0, o, eay.I, new edk($$6, 9));
+      si.a($$0, p, eay.I, new edk($$6, 4));
+      si.a($$0, q, eay.I, new edk($$7, 9));
+      si.a($$0, r, eay.I, new edk($$7, 9, 0.5F));
+      si.a($$0, s, eay.I, new edk(List.of(edk.a($$2, dfb.dI.o()), edk.a($$3, dfb.dJ.o())), 8));
+      si.a($$0, t, eay.I, new edk($$8, 4, 0.5F));
+      si.a($$0, v, eay.I, new edk($$8, 12, 0.7F));
+      si.a($$0, w, eay.I, new edk($$8, 8, 1.0F));
+      si.a($$0, u, eay.I, new edk($$8, 8, 0.5F));
+      si.a($$0, x, eay.I, new edk($$9, 7));
+      si.a($$0, y, eay.I, new edk($$9, 7, 1.0F));
+      si.a($$0, z, eay.I, new edk(List.of(edk.a($$2, dfb.eN.o()), edk.a($$3, dfb.td.o())), 9));
+      si.a($$0, A, eay.I, new edk(List.of(edk.a($$2, dfb.fE.o()), edk.a($$3, dfb.fF.o())), 3));
+      si.a($$0, B, eay.ae, new edk($$5, dfb.pj.o(), 3, 1.0F));
+      si.a($$0, C, eay.ae, new edk($$5, dfb.pj.o(), 2, 1.0F));
+      si.a($$0, D, eay.I, new edk($$10, 10));
+      si.a($$0, E, eay.I, new edk($$10, 20));
+      si.a($$0, F, eay.I, new edk($$1, dfb.dR.o(), 33));
    }
 }

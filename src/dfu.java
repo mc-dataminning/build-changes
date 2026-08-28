@@ -1,29 +1,62 @@
-import java.util.function.ToIntFunction;
-import javax.annotation.Nullable;
+import com.mojang.serialization.MapCodec;
 
-public interface dfu {
-   ewj q_ = dey.a(1.0, 0.0, 1.0, 15.0, 16.0, 15.0);
-   dss r_ = dsr.D;
+public class dfu extends dds {
+   public static final MapCodec<dfu> d = b(dfu::new);
+   private static final float e = 0.05F;
+   private static final float f = 0.1F;
 
-   static bqt a(@Nullable bst $$0, dsb $$1, dbx $$2, iz $$3) {
-      if ($$1.c(r_)) {
-         dey.a($$2, $$3, new cuo(cur.ws, 1));
-         float $$4 = ayy.b($$2.z, 0.8F, 1.2F);
-         $$2.a(null, $$3, avz.ee, awa.e, 1.0F, $$4);
-         dsb $$5 = $$1.a(r_, Boolean.valueOf(false));
-         $$2.a($$3, $$5, 2);
-         $$2.a(dwu.c, $$3, dwu.a.a($$0, $$5));
-         return bqt.a($$2.B);
+   @Override
+   public MapCodec<dfu> a() {
+      return d;
+   }
+
+   public dfu(dsb.d $$0) {
+      super($$0, kf.c);
+   }
+
+   @Override
+   public boolean d(dsc $$0) {
+      return false;
+   }
+
+   protected static boolean a(dby $$0, dcx.c $$1) {
+      if ($$1 == dcx.c.b) {
+         return $$0.E_().i() < 0.05F;
       } else {
-         return bqt.e;
+         return $$1 == dcx.c.c ? $$0.E_().i() < 0.1F : false;
       }
    }
 
-   static boolean h_(dsb $$0) {
-      return $$0.b(r_) && $$0.c(r_);
+   @Override
+   public void a(dsc $$0, dby $$1, iz $$2, dcx.c $$3) {
+      if (a($$1, $$3)) {
+         if ($$3 == dcx.c.b) {
+            $$1.b($$2, dfb.fu.o());
+            $$1.a(null, dwv.c, $$2);
+         } else if ($$3 == dcx.c.c) {
+            $$1.b($$2, dfb.fw.o());
+            $$1.a(null, dwv.c, $$2);
+         }
+      }
    }
 
-   static ToIntFunction<dsb> h_(int $$0) {
-      return $$1 -> $$1.c(dsr.D) ? $$0 : 0;
+   @Override
+   protected boolean a(enu $$0) {
+      return true;
+   }
+
+   @Override
+   protected void a(dsc $$0, dby $$1, iz $$2, enu $$3) {
+      if ($$3 == enw.c) {
+         dsc $$4 = dfb.fu.o();
+         $$1.b($$2, $$4);
+         $$1.a(dwv.c, $$2, dwv.a.a($$4));
+         $$1.c(1047, $$2, 0);
+      } else if ($$3 == enw.e) {
+         dsc $$5 = dfb.fv.o();
+         $$1.b($$2, $$5);
+         $$1.a(dwv.c, $$2, dwv.a.a($$5));
+         $$1.c(1046, $$2, 0);
+      }
    }
 }

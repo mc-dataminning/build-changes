@@ -1,53 +1,131 @@
-public class gfk implements gfn<dpc> {
-   private final fwz a;
-   private final fwz b;
+import java.util.List;
 
-   public gfk(gfo.a $$0) {
-      this.a = $$0.a(fwy.j);
-      this.b = $$0.a(fwy.i);
+public class gfk implements gfo<dpc> {
+   public static final alf a = new alf("textures/entity/beacon_beam.png");
+   public static final int b = 1024;
+
+   public gfk(gfp.a $$0) {
    }
 
-   public static fxf b() {
-      fxh $$0 = new fxh();
-      fxi $$1 = $$0.a();
-      $$1.a("main", fxe.c().a(0, 0).a(0.0F, 0.0F, 0.0F, 16.0F, 16.0F, 6.0F), fxb.a);
-      $$1.a("left_leg", fxe.c().a(50, 6).a(0.0F, 6.0F, 0.0F, 3.0F, 3.0F, 3.0F), fxb.b((float) (Math.PI / 2), 0.0F, (float) (Math.PI / 2)));
-      $$1.a("right_leg", fxe.c().a(50, 18).a(-16.0F, 6.0F, 0.0F, 3.0F, 3.0F, 3.0F), fxb.b((float) (Math.PI / 2), 0.0F, (float) Math.PI));
-      return fxf.a($$0, 64, 64);
-   }
+   public void a(dpc $$0, float $$1, ezy $$2, gdo $$3, int $$4, int $$5) {
+      long $$6 = $$0.i().Z();
+      List<dpc.a> $$7 = $$0.b();
+      int $$8 = 0;
 
-   public static fxf c() {
-      fxh $$0 = new fxh();
-      fxi $$1 = $$0.a();
-      $$1.a("main", fxe.c().a(0, 22).a(0.0F, 0.0F, 0.0F, 16.0F, 16.0F, 6.0F), fxb.a);
-      $$1.a("left_leg", fxe.c().a(50, 0).a(0.0F, 6.0F, -16.0F, 3.0F, 3.0F, 3.0F), fxb.b((float) (Math.PI / 2), 0.0F, 0.0F));
-      $$1.a("right_leg", fxe.c().a(50, 12).a(-16.0F, 6.0F, -16.0F, 3.0F, 3.0F, 3.0F), fxb.b((float) (Math.PI / 2), 0.0F, (float) (Math.PI * 3.0 / 2.0)));
-      return fxf.a($$0, 64, 64);
-   }
-
-   public void a(dpc $$0, float $$1, ezx $$2, gdn $$3, int $$4, int $$5) {
-      grc $$6 = gec.p[$$0.c().a()];
-      dbx $$7 = $$0.i();
-      if ($$7 != null) {
-         dsb $$8 = $$0.n();
-         dhf.c<? extends dpc> $$9 = dhf.a(dpi.y, der::h, der::g, dgb.c, $$8, $$7, $$0.ay_(), ($$0x, $$1x) -> false);
-         int $$10 = $$9.apply(new gfq<>()).get($$4);
-         this.a($$2, $$3, $$8.c(der.b) == dso.a ? this.a : this.b, $$8.c(der.aE), $$6, $$10, $$5, false);
-      } else {
-         this.a($$2, $$3, this.a, je.d, $$6, $$4, $$5, false);
-         this.a($$2, $$3, this.b, je.d, $$6, $$4, $$5, true);
+      for (int $$9 = 0; $$9 < $$7.size(); $$9++) {
+         dpc.a $$10 = $$7.get($$9);
+         a($$2, $$3, $$1, $$6, $$8, $$9 == $$7.size() - 1 ? 1024 : $$10.c(), $$10.b());
+         $$8 += $$10.c();
       }
    }
 
-   private void a(ezx $$0, gdn $$1, fwz $$2, je $$3, grc $$4, int $$5, int $$6, boolean $$7) {
+   private static void a(ezy $$0, gdo $$1, float $$2, long $$3, int $$4, int $$5, float[] $$6) {
+      a($$0, $$1, a, $$2, 1.0F, $$3, $$4, $$5, $$6, 0.2F, 0.25F);
+   }
+
+   public static void a(ezy $$0, gdo $$1, alf $$2, float $$3, float $$4, long $$5, int $$6, int $$7, float[] $$8, float $$9, float $$10) {
+      int $$11 = $$6 + $$7;
       $$0.a();
-      $$0.a(0.0F, 0.5625F, $$7 ? -1.0F : 0.0F);
-      $$0.a(a.b.rotationDegrees(90.0F));
-      $$0.a(0.5F, 0.5F, 0.5F);
-      $$0.a(a.f.rotationDegrees(180.0F + $$3.p()));
-      $$0.a(-0.5F, -0.5F, -0.5F);
-      fab $$8 = $$4.a($$1, gdv::c);
-      $$2.a($$0, $$8, $$5, $$6);
+      $$0.a(0.5, 0.0, 0.5);
+      float $$12 = (float)Math.floorMod($$5, 40) + $$3;
+      float $$13 = $$7 < 0 ? $$12 : -$$12;
+      float $$14 = ayz.h($$13 * 0.2F - (float)ayz.d($$13 * 0.1F));
+      float $$15 = $$8[0];
+      float $$16 = $$8[1];
+      float $$17 = $$8[2];
+      $$0.a();
+      $$0.a(a.d.rotationDegrees($$12 * 2.25F - 45.0F));
+      float $$18 = 0.0F;
+      float $$21 = 0.0F;
+      float $$22 = -$$9;
+      float $$23 = 0.0F;
+      float $$24 = 0.0F;
+      float $$25 = -$$9;
+      float $$26 = 0.0F;
+      float $$27 = 1.0F;
+      float $$28 = -1.0F + $$14;
+      float $$29 = (float)$$7 * $$4 * (0.5F / $$9) + $$28;
+      a($$0, $$1.getBuffer(gdw.e($$2, false)), $$15, $$16, $$17, 1.0F, $$6, $$11, 0.0F, $$9, $$9, 0.0F, $$22, 0.0F, 0.0F, $$25, 0.0F, 1.0F, $$29, $$28);
       $$0.b();
+      $$18 = -$$10;
+      float $$31 = -$$10;
+      $$21 = -$$10;
+      $$22 = -$$10;
+      $$26 = 0.0F;
+      $$27 = 1.0F;
+      $$28 = -1.0F + $$14;
+      $$29 = (float)$$7 * $$4 + $$28;
+      a($$0, $$1.getBuffer(gdw.e($$2, true)), $$15, $$16, $$17, 0.125F, $$6, $$11, $$18, $$31, $$10, $$21, $$22, $$10, $$10, $$10, 0.0F, 1.0F, $$29, $$28);
+      $$0.b();
+   }
+
+   private static void a(
+      ezy $$0,
+      fac $$1,
+      float $$2,
+      float $$3,
+      float $$4,
+      float $$5,
+      int $$6,
+      int $$7,
+      float $$8,
+      float $$9,
+      float $$10,
+      float $$11,
+      float $$12,
+      float $$13,
+      float $$14,
+      float $$15,
+      float $$16,
+      float $$17,
+      float $$18,
+      float $$19
+   ) {
+      ezy.a $$20 = $$0.c();
+      a($$20, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8, $$9, $$10, $$11, $$16, $$17, $$18, $$19);
+      a($$20, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$14, $$15, $$12, $$13, $$16, $$17, $$18, $$19);
+      a($$20, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$10, $$11, $$14, $$15, $$16, $$17, $$18, $$19);
+      a($$20, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$12, $$13, $$8, $$9, $$16, $$17, $$18, $$19);
+   }
+
+   private static void a(
+      ezy.a $$0,
+      fac $$1,
+      float $$2,
+      float $$3,
+      float $$4,
+      float $$5,
+      int $$6,
+      int $$7,
+      float $$8,
+      float $$9,
+      float $$10,
+      float $$11,
+      float $$12,
+      float $$13,
+      float $$14,
+      float $$15
+   ) {
+      a($$0, $$1, $$2, $$3, $$4, $$5, $$7, $$8, $$9, $$13, $$14);
+      a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$8, $$9, $$13, $$15);
+      a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$10, $$11, $$12, $$15);
+      a($$0, $$1, $$2, $$3, $$4, $$5, $$7, $$10, $$11, $$12, $$14);
+   }
+
+   private static void a(ezy.a $$0, fac $$1, float $$2, float $$3, float $$4, float $$5, int $$6, float $$7, float $$8, float $$9, float $$10) {
+      $$1.a($$0, $$7, (float)$$6, $$8).a($$2, $$3, $$4, $$5).a($$9, $$10).c(goq.d).b(15728880).b($$0, 0.0F, 1.0F, 0.0F).e();
+   }
+
+   public boolean a(dpc $$0) {
+      return true;
+   }
+
+   @Override
+   public int aP_() {
+      return 256;
+   }
+
+   public boolean a(dpc $$0, evr $$1) {
+      return evr.b($$0.ay_()).d(1.0, 0.0, 1.0).a((js)$$1.d(1.0, 0.0, 1.0), (double)this.aP_());
    }
 }

@@ -1,39 +1,48 @@
+import com.mojang.brigadier.StringReader;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
-import java.util.function.Supplier;
+import java.util.List;
+import java.util.stream.Stream;
 import javax.annotation.Nullable;
 
-public class ys implements xp {
-   public static final MapCodec<ys> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(Codec.STRING.fieldOf("keybind").forGetter($$0x -> $$0x.c)).apply($$0, ys::new)
-   );
-   public static final xp.a<ys> b = new xp.a<>(a, "keybind");
-   private final String c;
-   @Nullable
-   private Supplier<xo> d;
+public record ys(String d, @Nullable he e) implements yr {
+   public static final MapCodec<ys> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(Codec.STRING.fieldOf("entity").forGetter(ys::b)).apply($$0, ys::new));
+   public static final yr.a<ys> b = new yr.a<>(a, "entity");
 
    public ys(String $$0) {
-      this.c = $$0;
+      this($$0, a($$0));
    }
 
-   private xo c() {
-      if (this.d == null) {
-         this.d = yt.a.apply(this.c);
+   @Nullable
+   private static he a(String $$0) {
+      try {
+         hf $$1 = new hf(new StringReader($$0));
+         return $$1.t();
+      } catch (CommandSyntaxException var2) {
+         return null;
       }
-
-      return this.d.get();
    }
 
    @Override
-   public <T> Optional<T> a(xt.a<T> $$0) {
-      return this.c().a($$0);
+   public Stream<us> a(ep $$0) throws CommandSyntaxException {
+      if (this.e != null) {
+         List<? extends bsu> $$1 = this.e.b($$0);
+         return $$1.stream().map(dg::b);
+      } else {
+         return Stream.empty();
+      }
    }
 
    @Override
-   public <T> Optional<T> a(xt.b<T> $$0, yl $$1) {
-      return this.c().a($$0, $$1);
+   public yr.a<?> a() {
+      return b;
+   }
+
+   @Override
+   public String toString() {
+      return "entity=" + this.d;
    }
 
    @Override
@@ -41,7 +50,7 @@ public class ys implements xp {
       if (this == $$0) {
          return true;
       } else {
-         if ($$0 instanceof ys $$1 && this.c.equals($$1.c)) {
+         if ($$0 instanceof ys $$1 && this.d.equals($$1.d)) {
             return true;
          }
 
@@ -51,20 +60,15 @@ public class ys implements xp {
 
    @Override
    public int hashCode() {
-      return this.c.hashCode();
-   }
-
-   @Override
-   public String toString() {
-      return "keybind{" + this.c + "}";
+      return this.d.hashCode();
    }
 
    public String b() {
-      return this.c;
+      return this.d;
    }
 
-   @Override
-   public xp.a<?> a() {
-      return b;
+   @Nullable
+   public he c() {
+      return this.e;
    }
 }

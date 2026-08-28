@@ -1,15 +1,16 @@
-public class gry extends grz {
-   public gry(cff $$0) {
-      super($$0, avz.bR, awa.g);
+public class gry extends gsa {
+   public gry(cfg $$0) {
+      super($$0, awa.bQ, awb.g);
+      this.j = 0;
    }
 
    @Override
-   protected grv o() {
-      return new grx(this.n);
+   protected grw o() {
+      return new grz(this.n);
    }
 
    @Override
    protected boolean p() {
-      return this.n.Z_();
+      return !this.n.Z_();
    }
 }

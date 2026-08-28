@@ -2,29 +2,39 @@ import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class ehw extends ehp {
+public class ehw extends ehq {
    public static final MapCodec<ehw> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(Codec.INT.fieldOf("max_water_depth").forGetter($$0x -> $$0x.c)).apply($$0, ehw::new)
+      $$0 -> $$0.group(
+               dxu.a.g.fieldOf("heightmap").forGetter($$0x -> $$0x.c),
+               Codec.INT.optionalFieldOf("min_inclusive", Integer.MIN_VALUE).forGetter($$0x -> $$0x.d),
+               Codec.INT.optionalFieldOf("max_inclusive", Integer.MAX_VALUE).forGetter($$0x -> $$0x.e)
+            )
+            .apply($$0, ehw::new)
    );
-   private final int c;
+   private final dxu.a c;
+   private final int d;
+   private final int e;
 
-   private ehw(int $$0) {
+   private ehw(dxu.a $$0, int $$1, int $$2) {
       this.c = $$0;
+      this.d = $$1;
+      this.e = $$2;
    }
 
-   public static ehw a(int $$0) {
-      return new ehw($$0);
-   }
-
-   @Override
-   protected boolean a(eho $$0, azg $$1, iz $$2) {
-      int $$3 = $$0.a(dxt.a.d, $$2.u(), $$2.w());
-      int $$4 = $$0.a(dxt.a.b, $$2.u(), $$2.w());
-      return $$4 - $$3 <= this.c;
+   public static ehw a(dxu.a $$0, int $$1, int $$2) {
+      return new ehw($$0, $$1, $$2);
    }
 
    @Override
-   public ehr<?> b() {
-      return ehr.d;
+   protected boolean a(ehp $$0, azh $$1, iz $$2) {
+      long $$3 = (long)$$0.a(this.c, $$2.u(), $$2.w());
+      long $$4 = $$3 + (long)this.d;
+      long $$5 = $$3 + (long)this.e;
+      return $$4 <= (long)$$2.v() && (long)$$2.v() <= $$5;
+   }
+
+   @Override
+   public ehs<?> b() {
+      return ehs.c;
    }
 }

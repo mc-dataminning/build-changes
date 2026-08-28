@@ -1,32 +1,33 @@
-public abstract class gnr<T extends bto, M extends fve<T>> extends gni<T, M> {
-   public gnr(gjx<T, M> $$0) {
+public class gnr<T extends btp> extends gnj<T, fvf<T>> {
+   public static final alf a = new alf("textures/entity/trident_riptide.png");
+   public static final String b = "box";
+   private final fxa c;
+
+   public gnr(gkt<T, fvf<T>> $$0, fww $$1) {
       super($$0);
+      fxa $$2 = $$1.a(fwz.aZ);
+      this.c = $$2.b("box");
    }
 
-   protected abstract int a(T var1);
+   public static fxg a() {
+      fxi $$0 = new fxi();
+      fxj $$1 = $$0.a();
+      $$1.a("box", fxf.c().a(0, 0).a(-8.0F, -16.0F, -8.0F, 16.0F, 32.0F, 16.0F), fxc.a);
+      return fxg.a($$0, 64, 64);
+   }
 
-   protected abstract void a(ezx var1, gdn var2, int var3, bst var4, float var5, float var6, float var7, float var8);
+   public void a(ezy $$0, gdo $$1, int $$2, T $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
+      if ($$3.fr()) {
+         fac $$10 = $$1.getBuffer(gdw.e(a));
 
-   public void a(ezx $$0, gdn $$1, int $$2, T $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-      int $$10 = this.a($$3);
-      azg $$11 = azg.a((long)$$3.al());
-      if ($$10 > 0) {
-         for (int $$12 = 0; $$12 < $$10; $$12++) {
+         for (int $$11 = 0; $$11 < 3; $$11++) {
             $$0.a();
-            fwz $$13 = this.c().a($$11);
-            fwz.a $$14 = $$13.a($$11);
-            $$13.a($$0);
-            float $$15 = $$11.i();
-            float $$16 = $$11.i();
-            float $$17 = $$11.i();
-            float $$18 = ayy.i($$15, $$14.a, $$14.d) / 16.0F;
-            float $$19 = ayy.i($$16, $$14.b, $$14.e) / 16.0F;
-            float $$20 = ayy.i($$17, $$14.c, $$14.f) / 16.0F;
-            $$0.a($$18, $$19, $$20);
-            $$15 = -1.0F * ($$15 * 2.0F - 1.0F);
-            $$16 = -1.0F * ($$16 * 2.0F - 1.0F);
-            $$17 = -1.0F * ($$17 * 2.0F - 1.0F);
-            this.a($$0, $$1, $$2, $$3, $$15, $$16, $$17, $$6);
+            float $$12 = $$7 * (float)(-(45 + $$11 * 5));
+            $$0.a(a.d.rotationDegrees($$12));
+            float $$13 = 0.75F * (float)$$11;
+            $$0.b($$13, $$13, $$13);
+            $$0.a(0.0F, -0.2F + 0.6F * (float)$$11, 0.0F);
+            this.c.a($$0, $$10, $$2, goq.d);
             $$0.b();
          }
       }

@@ -1,22 +1,28 @@
-public class fmv extends fnc {
-   private static final xo a = xo.c("outOfMemory.title");
-   private static final xo b = xo.c("outOfMemory.message");
-   private static final int c = 300;
-   private final fkq d = new fkq(this);
+public class fmv extends fnd {
+   protected final fnd b;
+   protected final ffj c;
+   public final fkr d = new fkr(this);
 
-   public fmv() {
-      super(a);
+   public fmv(fnd $$0, ffj $$1, xp $$2) {
+      super($$2);
+      this.b = $$0;
+      this.c = $$1;
    }
 
    @Override
    protected void aM_() {
-      this.d.a(a, this.p);
-      this.d.c(new fho(300, b, this.p));
-      fku $$0 = this.d.b(fku.e().a(8));
-      $$0.a(fhd.a(xn.l, $$0x -> this.m.a(new fnh())).a());
-      $$0.a(fhd.a(xo.c("menu.quit"), $$0x -> this.m.q()).a());
+      this.m();
+      this.h();
       this.d.a(this::c);
       this.c();
+   }
+
+   protected void m() {
+      this.d.a(this.l, this.p);
+   }
+
+   protected void h() {
+      this.d.b(fhe.a(xo.d, $$0 -> this.d()).a(200).a());
    }
 
    @Override
@@ -25,7 +31,18 @@ public class fmv extends fnc {
    }
 
    @Override
-   public boolean aC_() {
-      return false;
+   public void j() {
+      this.m.m.av();
+   }
+
+   @Override
+   public void d() {
+      for (fja $$0 : this.aD_()) {
+         if ($$0 instanceof fib $$1) {
+            $$1.c();
+         }
+      }
+
+      this.m.a(this.b);
    }
 }

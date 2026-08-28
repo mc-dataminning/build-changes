@@ -1,28 +1,22 @@
-public class glx extends gkc<ciu, fwp<ciu>> {
-   private static final ale a = new ale("textures/entity/wither/wither_invulnerable.png");
-   private static final ale i = new ale("textures/entity/wither/wither.png");
+public class glx extends gkd<ckt, fwp<ckt>> {
+   private static final alf a = new alf("textures/entity/witch.png");
 
-   public glx(giw.a $$0) {
-      super($$0, new fwp<>($$0.a(fwy.bV)), 1.0F);
-      this.a(new gnw(this, $$0.f()));
+   public glx(gix.a $$0) {
+      super($$0, new fwp<>($$0.a(fwz.bU)), 0.5F);
+      this.a(new gnw<>(this, $$0.d()));
    }
 
-   protected int a(ciu $$0, iz $$1) {
-      return 15;
+   public void a(ckt $$0, float $$1, float $$2, ezy $$3, gdo $$4, int $$5) {
+      this.f.b(!$$0.eX().e());
+      super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
-   public ale a(ciu $$0) {
-      int $$1 = $$0.y();
-      return $$1 > 0 && ($$1 > 80 || $$1 / 5 % 2 != 1) ? a : i;
+   public alf a(ckt $$0) {
+      return a;
    }
 
-   protected void a(ciu $$0, ezx $$1, float $$2) {
-      float $$3 = 2.0F;
-      int $$4 = $$0.y();
-      if ($$4 > 0) {
-         $$3 -= ((float)$$4 - $$2) / 220.0F * 0.5F;
-      }
-
-      $$1.b($$3, $$3, $$3);
+   protected void a(ckt $$0, ezy $$1, float $$2) {
+      float $$3 = 0.9375F;
+      $$1.b(0.9375F, 0.9375F, 0.9375F);
    }
 }

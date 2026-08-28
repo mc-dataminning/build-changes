@@ -1,56 +1,168 @@
-public class cwq {
-   public static final ji<cwn> a = a("water", new cwn());
-   public static final ji<cwn> b = a("mundane", new cwn());
-   public static final ji<cwn> c = a("thick", new cwn());
-   public static final ji<cwn> d = a("awkward", new cwn());
-   public static final ji<cwn> e = a("night_vision", new cwn(new bsb(bsd.p, 3600)));
-   public static final ji<cwn> f = a("long_night_vision", new cwn("night_vision", new bsb(bsd.p, 9600)));
-   public static final ji<cwn> g = a("invisibility", new cwn(new bsb(bsd.n, 3600)));
-   public static final ji<cwn> h = a("long_invisibility", new cwn("invisibility", new bsb(bsd.n, 9600)));
-   public static final ji<cwn> i = a("leaping", new cwn(new bsb(bsd.h, 3600)));
-   public static final ji<cwn> j = a("long_leaping", new cwn("leaping", new bsb(bsd.h, 9600)));
-   public static final ji<cwn> k = a("strong_leaping", new cwn("leaping", new bsb(bsd.h, 1800, 1)));
-   public static final ji<cwn> l = a("fire_resistance", new cwn(new bsb(bsd.l, 3600)));
-   public static final ji<cwn> m = a("long_fire_resistance", new cwn("fire_resistance", new bsb(bsd.l, 9600)));
-   public static final ji<cwn> n = a("swiftness", new cwn(new bsb(bsd.a, 3600)));
-   public static final ji<cwn> o = a("long_swiftness", new cwn("swiftness", new bsb(bsd.a, 9600)));
-   public static final ji<cwn> p = a("strong_swiftness", new cwn("swiftness", new bsb(bsd.a, 1800, 1)));
-   public static final ji<cwn> q = a("slowness", new cwn(new bsb(bsd.b, 1800)));
-   public static final ji<cwn> r = a("long_slowness", new cwn("slowness", new bsb(bsd.b, 4800)));
-   public static final ji<cwn> s = a("strong_slowness", new cwn("slowness", new bsb(bsd.b, 400, 3)));
-   public static final ji<cwn> t = a("turtle_master", new cwn("turtle_master", new bsb(bsd.b, 400, 3), new bsb(bsd.k, 400, 2)));
-   public static final ji<cwn> u = a("long_turtle_master", new cwn("turtle_master", new bsb(bsd.b, 800, 3), new bsb(bsd.k, 800, 2)));
-   public static final ji<cwn> v = a("strong_turtle_master", new cwn("turtle_master", new bsb(bsd.b, 400, 5), new bsb(bsd.k, 400, 3)));
-   public static final ji<cwn> w = a("water_breathing", new cwn(new bsb(bsd.m, 3600)));
-   public static final ji<cwn> x = a("long_water_breathing", new cwn("water_breathing", new bsb(bsd.m, 9600)));
-   public static final ji<cwn> y = a("healing", new cwn(new bsb(bsd.f, 1)));
-   public static final ji<cwn> z = a("strong_healing", new cwn("healing", new bsb(bsd.f, 1, 1)));
-   public static final ji<cwn> A = a("harming", new cwn(new bsb(bsd.g, 1)));
-   public static final ji<cwn> B = a("strong_harming", new cwn("harming", new bsb(bsd.g, 1, 1)));
-   public static final ji<cwn> C = a("poison", new cwn(new bsb(bsd.s, 900)));
-   public static final ji<cwn> D = a("long_poison", new cwn("poison", new bsb(bsd.s, 1800)));
-   public static final ji<cwn> E = a("strong_poison", new cwn("poison", new bsb(bsd.s, 432, 1)));
-   public static final ji<cwn> F = a("regeneration", new cwn(new bsb(bsd.j, 900)));
-   public static final ji<cwn> G = a("long_regeneration", new cwn("regeneration", new bsb(bsd.j, 1800)));
-   public static final ji<cwn> H = a("strong_regeneration", new cwn("regeneration", new bsb(bsd.j, 450, 1)));
-   public static final ji<cwn> I = a("strength", new cwn(new bsb(bsd.e, 3600)));
-   public static final ji<cwn> J = a("long_strength", new cwn("strength", new bsb(bsd.e, 9600)));
-   public static final ji<cwn> K = a("strong_strength", new cwn("strength", new bsb(bsd.e, 1800, 1)));
-   public static final ji<cwn> L = a("weakness", new cwn(new bsb(bsd.r, 1800)));
-   public static final ji<cwn> M = a("long_weakness", new cwn("weakness", new bsb(bsd.r, 4800)));
-   public static final ji<cwn> N = a("luck", new cwn("luck", new bsb(bsd.z, 6000)));
-   public static final ji<cwn> O = a("slow_falling", new cwn(new bsb(bsd.B, 1800)));
-   public static final ji<cwn> P = a("long_slow_falling", new cwn("slow_falling", new bsb(bsd.B, 4800)));
-   public static final ji<cwn> Q = a("wind_charged", new cwn("wind_charged", new bsb(bsd.J, 3600)).a(cpm.c));
-   public static final ji<cwn> R = a("weaving", new cwn("weaving", new bsb(bsd.K, 3600)).a(cpm.c));
-   public static final ji<cwn> S = a("oozing", new cwn("oozing", new bsb(bsd.L, 3600)).a(cpm.c));
-   public static final ji<cwn> T = a("infested", new cwn("infested", new bsb(bsd.M, 3600)).a(cpm.c));
+import com.google.common.collect.Iterables;
+import com.google.common.collect.Lists;
+import com.mojang.datafixers.util.Pair;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
+import java.util.Optional;
+import java.util.OptionalInt;
+import java.util.function.Consumer;
 
-   private static ji<cwn> a(String $$0, cwn $$1) {
-      return jv.b(lp.i, new ale($$0), $$1);
+public record cwq(Optional<ji<cwo>> d, Optional<Integer> e, List<bsc> f) {
+   public static final cwq a = new cwq(Optional.empty(), Optional.empty(), List.of());
+   private static final xp g = xp.c("effect.none").a(n.h);
+   private static final int h = -524040;
+   private static final int i = -13083194;
+   private static final Codec<cwq> j = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               lp.i.r().optionalFieldOf("potion").forGetter(cwq::e),
+               Codec.INT.optionalFieldOf("custom_color").forGetter(cwq::f),
+               bsc.d.listOf().optionalFieldOf("custom_effects", List.of()).forGetter(cwq::d)
+            )
+            .apply($$0, cwq::new)
+   );
+   public static final Codec<cwq> b = Codec.withAlternative(j, lp.i.r(), cwq::new);
+   public static final zn<xa, cwq> c = zn.a(zl.b(lq.Y).a(zl::a), cwq::e, zl.f.a(zl::a), cwq::f, bsc.e.a(zl.a()), cwq::d, cwq::new);
+
+   public cwq(ji<cwo> $$0) {
+      this(Optional.of($$0), Optional.empty(), List.of());
    }
 
-   public static ji<cwn> a(jv<cwn> $$0) {
-      return a;
+   public static cup a(cuk $$0, ji<cwo> $$1) {
+      cup $$2 = new cup($$0);
+      $$2.b(km.G, new cwq($$1));
+      return $$2;
+   }
+
+   public boolean a(ji<cwo> $$0) {
+      return this.d.isPresent() && this.d.get().a($$0) && this.f.isEmpty();
+   }
+
+   public Iterable<bsc> a() {
+      if (this.d.isEmpty()) {
+         return this.f;
+      } else {
+         return (Iterable<bsc>)(this.f.isEmpty() ? this.d.get().a().a() : Iterables.concat(this.d.get().a().a(), this.f));
+      }
+   }
+
+   public void a(Consumer<bsc> $$0) {
+      if (this.d.isPresent()) {
+         for (bsc $$1 : this.d.get().a().a()) {
+            $$0.accept(new bsc($$1));
+         }
+      }
+
+      for (bsc $$2 : this.f) {
+         $$0.accept(new bsc($$2));
+      }
+   }
+
+   public cwq b(ji<cwo> $$0) {
+      return new cwq(Optional.of($$0), this.e, this.f);
+   }
+
+   public cwq a(bsc $$0) {
+      return new cwq(this.d, this.e, ac.a(this.f, $$0));
+   }
+
+   public int b() {
+      return this.e.isPresent() ? this.e.get() : a(this.a());
+   }
+
+   public static int c(ji<cwo> $$0) {
+      return a($$0.a().a());
+   }
+
+   public static int a(Iterable<bsc> $$0) {
+      return b($$0).orElse(-13083194);
+   }
+
+   public static OptionalInt b(Iterable<bsc> $$0) {
+      int $$1 = 0;
+      int $$2 = 0;
+      int $$3 = 0;
+      int $$4 = 0;
+
+      for (bsc $$5 : $$0) {
+         if ($$5.g()) {
+            int $$6 = $$5.c().a().g();
+            int $$7 = $$5.e() + 1;
+            $$1 += $$7 * ayj.b.b($$6);
+            $$2 += $$7 * ayj.b.c($$6);
+            $$3 += $$7 * ayj.b.d($$6);
+            $$4 += $$7;
+         }
+      }
+
+      return $$4 == 0 ? OptionalInt.empty() : OptionalInt.of(ayj.b.a($$1 / $$4, $$2 / $$4, $$3 / $$4));
+   }
+
+   public boolean c() {
+      return !this.f.isEmpty() ? true : this.d.isPresent() && !this.d.get().a().a().isEmpty();
+   }
+
+   public List<bsc> d() {
+      return Lists.transform(this.f, bsc::new);
+   }
+
+   public void a(Consumer<xp> $$0, float $$1, float $$2) {
+      a(this.a(), $$0, $$1, $$2);
+   }
+
+   public static void a(Iterable<bsc> $$0, Consumer<xp> $$1, float $$2, float $$3) {
+      List<Pair<ji<bus>, buv>> $$4 = Lists.newArrayList();
+      boolean $$5 = true;
+
+      for (bsc $$6 : $$0) {
+         $$5 = false;
+         yd $$7 = xp.c($$6.i());
+         ji<bsa> $$8 = $$6.c();
+         $$8.a().a($$6.e(), ($$1x, $$2x) -> $$4.add(new Pair($$1x, $$2x)));
+         if ($$6.e() > 0) {
+            $$7 = xp.a("potion.withAmplifier", $$7, xp.c("potion.potency." + $$6.e()));
+         }
+
+         if (!$$6.a(20)) {
+            $$7 = xp.a("potion.withDuration", $$7, bsd.a($$6, $$2, $$3));
+         }
+
+         $$1.accept($$7.a($$8.a().f().a()));
+      }
+
+      if ($$5) {
+         $$1.accept(g);
+      }
+
+      if (!$$4.isEmpty()) {
+         $$1.accept(xo.a);
+         $$1.accept(xp.c("potion.whenDrank").a(n.f));
+
+         for (Pair<ji<bus>, buv> $$9 : $$4) {
+            buv $$10 = (buv)$$9.getSecond();
+            double $$11 = $$10.d();
+            double $$13;
+            if ($$10.e() != buv.a.b && $$10.e() != buv.a.c) {
+               $$13 = $$10.d();
+            } else {
+               $$13 = $$10.d() * 100.0;
+            }
+
+            if ($$11 > 0.0) {
+               $$1.accept(xp.a("attribute.modifier.plus." + $$10.e().a(), cxk.d.format($$13), xp.c(((bus)((ji)$$9.getFirst()).a()).c())).a(n.j));
+            } else if ($$11 < 0.0) {
+               $$13 *= -1.0;
+               $$1.accept(xp.a("attribute.modifier.take." + $$10.e().a(), cxk.d.format($$13), xp.c(((bus)((ji)$$9.getFirst()).a()).c())).a(n.m));
+            }
+         }
+      }
+   }
+
+   public Optional<ji<cwo>> e() {
+      return this.d;
+   }
+
+   public Optional<Integer> f() {
+      return this.e;
    }
 }

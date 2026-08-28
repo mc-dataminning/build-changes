@@ -1,58 +1,59 @@
-import com.mojang.datafixers.util.Unit;
-import com.mojang.serialization.Codec;
-import java.util.ArrayList;
-import java.util.List;
-import javax.annotation.Nullable;
+public class fms extends fnd {
+   private static final xp a = xp.c("symlink_warning.title.world").a(n.r);
+   private static final xp b = xp.a("symlink_warning.message.world", "https://aka.ms/MinecraftSymLinks");
+   private static final xp c = xp.c("symlink_warning.title.pack").a(n.r);
+   private static final xp d = xp.a("symlink_warning.message.pack", "https://aka.ms/MinecraftSymLinks");
+   private final xp r;
+   private final String s;
+   private final Runnable u;
+   private final fkq v = new fkq().b(10);
 
-public class fms extends fne {
-   private static final xo a = xo.c("options.online.title");
-   @Nullable
-   private final ffh<Unit> u;
-
-   public static fms a(ffe $$0, fnc $$1, ffi $$2) {
-      List<ffh<?>> $$3 = new ArrayList<>();
-      $$3.add($$2.T());
-      $$3.add($$2.U());
-      ffh<Unit> $$4 = x.a(
-         $$0.r,
-         $$0x -> {
-            bqq $$1x = $$0x.al();
-            return new ffh<>(
-               "options.difficulty.online",
-               ffh.a(),
-               ($$1xx, $$2x) -> $$1x.b(),
-               new ffh.e<>(List.of(Unit.INSTANCE), Codec.EMPTY.codec()),
-               Unit.INSTANCE,
-               $$0xx -> {
-               }
-            );
-         }
-      );
-      if ($$4 != null) {
-         $$3.add($$4);
-      }
-
-      return new fms($$1, $$2, $$3.toArray(new ffh[0]), $$4);
+   public fms(xp $$0, xp $$1, String $$2, Runnable $$3) {
+      super($$0);
+      this.r = $$1;
+      this.s = $$2;
+      this.u = $$3;
    }
 
-   private fms(fnc $$0, ffi $$1, ffh<?>[] $$2, @Nullable ffh<Unit> $$3) {
-      super($$0, $$1, a, $$2);
-      this.u = $$3;
+   public static fnd a(Runnable $$0) {
+      return new fms(a, b, "https://aka.ms/MinecraftSymLinks", $$0);
+   }
+
+   public static fnd b(Runnable $$0) {
+      return new fms(c, d, "https://aka.ms/MinecraftSymLinks", $$0);
    }
 
    @Override
    protected void aM_() {
       super.aM_();
-      if (this.u != null) {
-         fhb $$0 = this.s.b(this.u);
-         if ($$0 != null) {
-            $$0.j = false;
-         }
-      }
+      this.v.c().b();
+      fkq.b $$0 = this.v.d(1);
+      $$0.a(new fil(this.l, this.p));
+      $$0.a(new fhy(this.r, this.p).d(this.n - 50).b(true));
+      int $$1 = 120;
+      fkq $$2 = new fkq().a(5);
+      fkq.b $$3 = $$2.d(3);
+      $$3.a(fhe.a(xo.n, $$0x -> ac.k().a(this.s)).b(120, 20).a());
+      $$3.a(fhe.a(xo.o, $$0x -> this.m.o.a(this.s)).b(120, 20).a());
+      $$3.a(fhe.a(xo.k, $$0x -> this.d()).b(120, 20).a());
+      $$0.a($$2);
+      this.c();
+      this.v.a(this::c);
+   }
 
-      fhb $$1 = this.s.b(this.c.ai());
-      if ($$1 != null) {
-         $$1.j = this.m.D();
-      }
+   @Override
+   protected void c() {
+      this.v.a();
+      fkp.a(this.v, this.G());
+   }
+
+   @Override
+   public xp i() {
+      return xo.a(super.i(), this.r);
+   }
+
+   @Override
+   public void d() {
+      this.u.run();
    }
 }

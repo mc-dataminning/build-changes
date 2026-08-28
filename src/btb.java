@@ -1,55 +1,76 @@
-import com.mojang.serialization.Codec;
-import io.netty.buffer.ByteBuf;
-import java.util.function.IntFunction;
-import java.util.function.Predicate;
+public enum btb implements azu {
+   a(btb.a.a, 0, 0, "mainhand"),
+   b(btb.a.a, 1, 5, "offhand"),
+   c(btb.a.b, 0, 1, "feet"),
+   d(btb.a.b, 1, 2, "legs"),
+   e(btb.a.b, 2, 3, "chest"),
+   f(btb.a.b, 3, 4, "head"),
+   g(btb.a.c, 0, 6, "body");
 
-public enum btb implements azt {
-   a(0, "any", $$0 -> true),
-   b(1, "mainhand", bta.a),
-   c(2, "offhand", bta.b),
-   d(3, "hand", $$0 -> $$0.a() == bta.a.a),
-   e(4, "feet", bta.c),
-   f(5, "legs", bta.d),
-   g(6, "chest", bta.e),
-   h(7, "head", bta.f),
-   i(8, "armor", bta::f),
-   j(9, "body", bta.g);
+   public static final azu.a<btb> h = azu.a(btb::values);
+   private final btb.a i;
+   private final int j;
+   private final int k;
+   private final String l;
 
-   public static final IntFunction<btb> k = axo.a($$0 -> $$0.n, values(), axo.a.a);
-   public static final Codec<btb> l = azt.a(btb::values);
-   public static final zm<ByteBuf, btb> m = zk.a(k, $$0 -> $$0.n);
-   private final int n;
-   private final String o;
-   private final Predicate<bta> p;
-
-   private btb(final int $$0, final String $$1, final Predicate<bta> $$2) {
-      this.n = $$0;
-      this.o = $$1;
-      this.p = $$2;
+   private btb(final btb.a $$0, final int $$1, final int $$2, final String $$3) {
+      this.i = $$0;
+      this.j = $$1;
+      this.k = $$2;
+      this.l = $$3;
    }
 
-   private btb(final int $$0, final String $$1, final bta $$2) {
-      this($$0, $$1, $$1x -> $$1x == $$2);
+   public btb.a a() {
+      return this.i;
    }
 
-   public static btb a(bta $$0) {
-      return switch ($$0) {
-         case a -> b;
-         case b -> c;
-         case c -> e;
-         case d -> f;
-         case e -> g;
-         case f -> h;
-         case g -> j;
-      };
+   public int b() {
+      return this.j;
+   }
+
+   public int a(int $$0) {
+      return $$0 + this.j;
+   }
+
+   public int d() {
+      return this.k;
+   }
+
+   public String e() {
+      return this.l;
+   }
+
+   public boolean f() {
+      return this.i == btb.a.b;
    }
 
    @Override
    public String c() {
-      return this.o;
+      return this.l;
    }
 
-   public boolean b(bta $$0) {
-      return this.p.test($$0);
+   public static btb a(String $$0) {
+      btb $$1 = h.a($$0);
+      if ($$1 != null) {
+         return $$1;
+      } else {
+         throw new IllegalArgumentException("Invalid slot '" + $$0 + "'");
+      }
+   }
+
+   public static btb a(btb.a $$0, int $$1) {
+      for (btb $$2 : values()) {
+         if ($$2.a() == $$0 && $$2.b() == $$1) {
+            return $$2;
+         }
+      }
+
+      throw new IllegalArgumentException("Invalid slot '" + $$0 + "': " + $$1);
+   }
+
+   public static enum a {
+      a,
+      b,
+      c;
    }
 }

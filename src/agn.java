@@ -1,61 +1,59 @@
-import com.google.common.collect.Lists;
-import io.netty.buffer.ByteBuf;
-import java.util.ArrayList;
+import com.google.common.collect.Sets;
 import java.util.Collection;
 import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
-public class agn implements zv<ach> {
-   public static final zm<wz, agn> a = zm.a(zk.g, agn::b, agn.a.b.a(zk.a()), agn::e, agn::new);
-   private final int b;
-   private final List<agn.a> c;
+public class agn implements zw<aci> {
+   public static final zn<xa, agn> a = zw.a(agn::a, agn::new);
+   private final boolean b;
+   private final List<af> c;
+   private final Set<alf> d;
+   private final Map<alf, ah> e;
 
-   public agn(int $$0, Collection<bus> $$1) {
+   public agn(boolean $$0, Collection<af> $$1, Set<alf> $$2, Map<alf, ah> $$3) {
       this.b = $$0;
-      this.c = Lists.newArrayList();
-
-      for (bus $$2 : $$1) {
-         this.c.add(new agn.a($$2.a(), $$2.b(), $$2.c()));
-      }
+      this.c = List.copyOf($$1);
+      this.d = Set.copyOf($$2);
+      this.e = Map.copyOf($$3);
    }
 
-   private agn(int $$0, List<agn.a> $$1) {
-      this.b = $$0;
-      this.c = $$1;
+   private agn(xa $$0) {
+      this.b = $$0.readBoolean();
+      this.c = af.b.decode($$0);
+      this.d = $$0.a(Sets::newLinkedHashSetWithExpectedSize, wm::q);
+      this.e = $$0.a(wm::q, ah::b);
+   }
+
+   private void a(xa $$0) {
+      $$0.a(this.b);
+      af.b.encode($$0, this.c);
+      $$0.a(this.d, wm::a);
+      $$0.a(this.e, wm::a, ($$0x, $$1) -> $$1.a($$0x));
    }
 
    @Override
-   public zx<agn> a() {
-      return agt.bb;
+   public zy<agn> a() {
+      return agu.ba;
    }
 
-   public void a(ach $$0) {
+   public void a(aci $$0) {
       $$0.a(this);
    }
 
-   public int b() {
-      return this.b;
-   }
-
-   public List<agn.a> e() {
+   public List<af> b() {
       return this.c;
    }
 
-   public static record a(ji<bur> c, double d, Collection<buu> e) {
-      public static final zm<ByteBuf, buu> a = zm.a(
-         kc.g, buu::b, zk.j, buu::d, buu.a.e, buu::e, ($$0, $$1, $$2) -> new buu($$0, "Unknown synced attribute modifier", $$1, $$2)
-      );
-      public static final zm<wz, agn.a> b = zm.a(zk.b(lq.c), agn.a::a, zk.j, agn.a::b, a.a(zk.a(ArrayList::new)), agn.a::c, agn.a::new);
+   public Set<alf> e() {
+      return this.d;
+   }
 
-      public ji<bur> a() {
-         return this.c;
-      }
+   public Map<alf, ah> f() {
+      return this.e;
+   }
 
-      public double b() {
-         return this.d;
-      }
-
-      public Collection<buu> c() {
-         return this.e;
-      }
+   public boolean g() {
+      return this.b;
    }
 }

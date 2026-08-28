@@ -1,20 +1,29 @@
-public record aha(int b) implements zv<agv> {
-   public static final zm<wl, aha> a = zv.a(aha::a, aha::new);
+public class aha implements zw<agw> {
+   public static final zn<wm, aha> a = zw.a(aha::a, aha::new);
+   private final bqr b;
 
-   private aha(wl $$0) {
-      this($$0.l());
+   public aha(bqr $$0) {
+      this.b = $$0;
    }
 
-   private void a(wl $$0) {
-      $$0.c(this.b);
+   private aha(wm $$0) {
+      this.b = bqr.a($$0.readUnsignedByte());
+   }
+
+   private void a(wm $$0) {
+      $$0.k(this.b.a());
    }
 
    @Override
-   public zx<aha> a() {
-      return agt.bi;
+   public zy<aha> a() {
+      return agu.bh;
    }
 
-   public void a(agv $$0) {
+   public void a(agw $$0) {
       $$0.a(this);
+   }
+
+   public bqr b() {
+      return this.b;
    }
 }

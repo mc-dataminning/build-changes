@@ -1,4 +1,4 @@
-// 1.20.5 Pre-Release 3	2026-08-28T02:05:31.3270626	vanilla/Tags for minecraft:block
+// 1.20.5 Pre-Release 4	2026-08-28T02:08:12.7007661	vanilla/Tags for minecraft:block
 882f7161808179f92ed953b9200fdaf74eec6c36 data\minecraft\tags\blocks\infiniburn_overworld.json
 84150f9be2fa26f9202962b031c722718dd23ca0 data\minecraft\tags\blocks\stone_ore_replaceables.json
 60f661a9b26b7f6b1910e5390a40644354fe0919 data\minecraft\tags\blocks\frogs_spawnable_on.json
@@ -140,8 +140,8 @@ da1d12f678963493519caaff63a76241b220579f data\minecraft\tags\blocks\axolotls_spa
 12567916f0340a8d2a6baf0d253dcc8f8b4817b5 data\minecraft\tags\blocks\overworld_natural_logs.json
 0cc76a2a135e15e63ba435b9ae22e215cc9637fb data\minecraft\tags\blocks\replaceable.json
 6434eab593808ccdda380aa89dbf4977e908d7b4 data\minecraft\tags\blocks\mangrove_roots_can_grow_through.json
-042f4a31ec358e6815cd7410f054de80cc7c8fb7 data\minecraft\tags\blocks\cherry_logs.json
 fef1644c33bdd401b55824ed29a4df7cd9464fd0 data\minecraft\tags\blocks\wool.json
+042f4a31ec358e6815cd7410f054de80cc7c8fb7 data\minecraft\tags\blocks\cherry_logs.json
 35fe618c61441f3d81e2e483e2ab88847ac90a63 data\minecraft\tags\blocks\ceiling_hanging_signs.json
 65111dce44b1fa957a52d1cce0ae3f4eebfe803f data\minecraft\tags\blocks\frog_prefer_jump_to.json
 64b66f0912167ef1fa6a5673e31b46d65e27c9af data\minecraft\tags\blocks\dragon_immune.json

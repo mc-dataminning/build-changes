@@ -1,125 +1,94 @@
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.Sets;
+import com.mojang.blaze3d.systems.RenderSystem;
+import java.util.Map;
+import java.util.Objects;
 import java.util.Optional;
+import java.util.Set;
 
-public class gdo implements gdn {
-   private final gdn.a a;
-   private final gdn.a b = gdn.a(new ezs(1536));
-   private int c = 255;
-   private int d = 255;
-   private int e = 255;
-   private int f = 255;
-
-   public gdo(gdn.a $$0) {
-      this.a = $$0;
+public interface gdo {
+   static gdo.a a(ezt $$0) {
+      return a(ImmutableMap.of(), $$0);
    }
 
-   @Override
-   public fab getBuffer(gdv $$0) {
-      if ($$0.M()) {
-         fab $$1 = this.b.getBuffer($$0);
-         return new gdo.a($$1, this.c, this.d, this.e, this.f);
-      } else {
-         fab $$2 = this.a.getBuffer($$0);
-         Optional<gdv> $$3 = $$0.L();
-         if ($$3.isPresent()) {
-            fab $$4 = this.b.getBuffer($$3.get());
-            gdo.a $$5 = new gdo.a($$4, this.c, this.d, this.e, this.f);
-            return fae.a($$5, $$2);
-         } else {
-            return $$2;
+   static gdo.a a(Map<gdw, ezt> $$0, ezt $$1) {
+      return new gdo.a($$1, $$0);
+   }
+
+   fac getBuffer(gdw var1);
+
+   public static class a implements gdo {
+      protected final ezt a;
+      protected final Map<gdw, ezt> b;
+      protected Optional<gdw> c = Optional.empty();
+      protected final Set<ezt> d = Sets.newHashSet();
+
+      protected a(ezt $$0, Map<gdw, ezt> $$1) {
+         this.a = $$0;
+         this.b = $$1;
+      }
+
+      @Override
+      public fac getBuffer(gdw $$0) {
+         Optional<gdw> $$1 = $$0.P();
+         ezt $$2 = this.b($$0);
+         if (!Objects.equals(this.c, $$1) || !$$0.O()) {
+            if (this.c.isPresent()) {
+               gdw $$3 = this.c.get();
+               if (!this.b.containsKey($$3)) {
+                  this.a($$3);
+               }
+            }
+
+            if (this.d.add($$2)) {
+               $$2.a($$0.K(), $$0.J());
+            }
+
+            this.c = $$1;
+         }
+
+         return $$2;
+      }
+
+      private ezt b(gdw $$0) {
+         return this.b.getOrDefault($$0, this.a);
+      }
+
+      public void a() {
+         if (this.c.isPresent()) {
+            gdw $$0 = this.c.get();
+            if (!this.b.containsKey($$0)) {
+               this.a($$0);
+            }
+
+            this.c = Optional.empty();
          }
       }
-   }
 
-   public void a(int $$0, int $$1, int $$2, int $$3) {
-      this.c = $$0;
-      this.d = $$1;
-      this.e = $$2;
-      this.f = $$3;
-   }
+      public void b() {
+         this.c.ifPresent($$0x -> {
+            fac $$1 = this.getBuffer($$0x);
+            if ($$1 == this.a) {
+               this.a($$0x);
+            }
+         });
 
-   public void a() {
-      this.b.b();
-   }
-
-   static class a extends ezw {
-      private final fab f;
-      private double g;
-      private double h;
-      private double i;
-      private float j;
-      private float k;
-
-      a(fab $$0, int $$1, int $$2, int $$3, int $$4) {
-         this.f = $$0;
-         super.b($$1, $$2, $$3, $$4);
+         for (gdw $$0 : this.b.keySet()) {
+            this.a($$0);
+         }
       }
 
-      @Override
-      public void b(int $$0, int $$1, int $$2, int $$3) {
-      }
-
-      @Override
-      public void l() {
-      }
-
-      @Override
-      public fab a(double $$0, double $$1, double $$2) {
-         this.g = $$0;
-         this.h = $$1;
-         this.i = $$2;
-         return this;
-      }
-
-      @Override
-      public fab a(int $$0, int $$1, int $$2, int $$3) {
-         return this;
-      }
-
-      @Override
-      public fab a(float $$0, float $$1) {
-         this.j = $$0;
-         this.k = $$1;
-         return this;
-      }
-
-      @Override
-      public fab a(int $$0, int $$1) {
-         return this;
-      }
-
-      @Override
-      public fab b(int $$0, int $$1) {
-         return this;
-      }
-
-      @Override
-      public fab a(float $$0, float $$1, float $$2) {
-         return this;
-      }
-
-      @Override
-      public void a(
-         float $$0,
-         float $$1,
-         float $$2,
-         float $$3,
-         float $$4,
-         float $$5,
-         float $$6,
-         float $$7,
-         float $$8,
-         int $$9,
-         int $$10,
-         float $$11,
-         float $$12,
-         float $$13
-      ) {
-         this.f.a((double)$$0, (double)$$1, (double)$$2).a(this.b, this.c, this.d, this.e).a($$7, $$8).e();
-      }
-
-      @Override
-      public void e() {
-         this.f.a(this.g, this.h, this.i).a(this.b, this.c, this.d, this.e).a(this.j, this.k).e();
+      public void a(gdw $$0) {
+         ezt $$1 = this.b($$0);
+         boolean $$2 = Objects.equals(this.c, $$0.P());
+         if ($$2 || $$1 != this.a) {
+            if (this.d.remove($$1)) {
+               $$0.a($$1, RenderSystem.getVertexSorting());
+               if ($$2) {
+                  this.c = Optional.empty();
+               }
+            }
+         }
       }
    }
 }

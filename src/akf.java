@@ -1,18 +1,8 @@
-import io.netty.buffer.ByteBuf;
-
-public class akf implements zv<ake> {
-   public static final akf a = new akf();
-   public static final zm<ByteBuf, akf> b = zm.a(a);
-
-   private akf() {
-   }
-
+public interface akf extends agx, ajz {
    @Override
-   public zx<akf> a() {
-      return akg.b;
+   default wl b() {
+      return wl.c;
    }
 
-   public void a(ake $$0) {
-      $$0.a(this);
-   }
+   void a(akg var1);
 }

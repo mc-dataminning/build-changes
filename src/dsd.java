@@ -1,169 +1,159 @@
-import com.google.common.collect.ArrayTable;
-import com.google.common.collect.HashBasedTable;
-import com.google.common.collect.Table;
+import com.google.common.base.MoreObjects;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableSortedMap;
+import com.google.common.collect.Lists;
+import com.google.common.collect.Maps;
+import com.google.common.collect.UnmodifiableIterator;
+import com.mojang.datafixers.util.Pair;
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.Decoder;
+import com.mojang.serialization.Encoder;
 import com.mojang.serialization.MapCodec;
-import it.unimi.dsi.fastutil.objects.ObjectIterator;
 import it.unimi.dsi.fastutil.objects.Reference2ObjectArrayMap;
 import java.util.Collection;
 import java.util.Collections;
-import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
-import java.util.Optional;
 import java.util.Map.Entry;
 import java.util.function.Function;
+import java.util.function.Supplier;
+import java.util.regex.Pattern;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 import javax.annotation.Nullable;
 
-public abstract class dsd<O, S> {
-   public static final String c = "Name";
-   public static final String d = "Properties";
-   private static final Function<Entry<dte<?>, Comparable<?>>, String> a = new Function<Entry<dte<?>, Comparable<?>>, String>() {
-      public String a(@Nullable Entry<dte<?>, Comparable<?>> $$0) {
-         if ($$0 == null) {
-            return "<NULL>";
-         } else {
-            dte<?> $$1 = $$0.getKey();
-            return $$1.f() + "=" + this.a($$1, $$0.getValue());
-         }
-      }
+public class dsd<O, S extends dse<O, S>> {
+   static final Pattern a = Pattern.compile("^[a-z0-9_]+$");
+   private final O b;
+   private final ImmutableSortedMap<String, dtf<?>> c;
+   private final ImmutableList<S> d;
 
-      private <T extends Comparable<T>> String a(dte<T> $$0, Comparable<?> $$1) {
-         return $$0.a((T)$$1);
-      }
-   };
-   protected final O e;
-   private final Reference2ObjectArrayMap<dte<?>, Comparable<?>> b;
-   private Table<dte<?>, Comparable<?>, S> g;
-   protected final MapCodec<S> f;
-
-   protected dsd(O $$0, Reference2ObjectArrayMap<dte<?>, Comparable<?>> $$1, MapCodec<S> $$2) {
-      this.e = $$0;
+   protected dsd(Function<O, S> $$0, O $$1, dsd.b<O, S> $$2, Map<String, dtf<?>> $$3) {
       this.b = $$1;
-      this.f = $$2;
-   }
+      this.c = ImmutableSortedMap.copyOf($$3);
+      Supplier<S> $$4 = () -> $$0.apply($$1);
+      MapCodec<S> $$5 = MapCodec.of(Encoder.empty(), Decoder.unit($$4));
+      UnmodifiableIterator $$7 = this.c.entrySet().iterator();
 
-   public <T extends Comparable<T>> S a(dte<T> $$0) {
-      return this.a($$0, a($$0.a(), this.c($$0)));
-   }
-
-   protected static <T> T a(Collection<T> $$0, T $$1) {
-      Iterator<T> $$2 = $$0.iterator();
-
-      while ($$2.hasNext()) {
-         if ($$2.next().equals($$1)) {
-            if ($$2.hasNext()) {
-               return $$2.next();
-            }
-
-            return $$0.iterator().next();
-         }
+      while ($$7.hasNext()) {
+         Entry<String, dtf<?>> $$6 = (Entry<String, dtf<?>>)$$7.next();
+         $$5 = a($$5, $$4, $$6.getKey(), $$6.getValue());
       }
 
-      return $$2.next();
+      MapCodec<S> $$7x = $$5;
+      Map<Map<dtf<?>, Comparable<?>>, S> $$8 = Maps.newLinkedHashMap();
+      List<S> $$9 = Lists.newArrayList();
+      Stream<List<Pair<dtf<?>, Comparable<?>>>> $$10 = Stream.of(Collections.emptyList());
+      UnmodifiableIterator var11 = this.c.values().iterator();
+
+      while (var11.hasNext()) {
+         dtf<?> $$11 = (dtf<?>)var11.next();
+         $$10 = $$10.flatMap($$1x -> $$11.a().stream().map($$2x -> {
+               List<Pair<dtf<?>, Comparable<?>>> $$3x = Lists.newArrayList($$1x);
+               $$3x.add(Pair.of($$11, $$2x));
+               return $$3x;
+            }));
+      }
+
+      $$10.forEach($$5x -> {
+         Reference2ObjectArrayMap<dtf<?>, Comparable<?>> $$6 = new Reference2ObjectArrayMap($$5x.size());
+
+         for (Pair<dtf<?>, Comparable<?>> $$7xx : $$5x) {
+            $$6.put((dtf)$$7xx.getFirst(), (Comparable)$$7xx.getSecond());
+         }
+
+         S $$8x = $$2.create($$1, $$6, $$7);
+         $$8.put($$6, $$8x);
+         $$9.add($$8x);
+      });
+
+      for (S $$12 : $$9) {
+         $$12.a($$8);
+      }
+
+      this.d = ImmutableList.copyOf($$9);
+   }
+
+   private static <S extends dse<?, S>, T extends Comparable<T>> MapCodec<S> a(MapCodec<S> $$0, Supplier<S> $$1, String $$2, dtf<T> $$3) {
+      return Codec.mapPair($$0, $$3.e().fieldOf($$2).orElseGet($$0x -> {
+      }, () -> $$3.a($$1.get()))).xmap($$1x -> (dse)((dse)$$1x.getFirst()).a($$3, ((dtf.a)$$1x.getSecond()).b()), $$1x -> Pair.of($$1x, $$3.a($$1x)));
+   }
+
+   public ImmutableList<S> a() {
+      return this.d;
+   }
+
+   public S b() {
+      return (S)this.d.get(0);
+   }
+
+   public O c() {
+      return this.b;
+   }
+
+   public Collection<dtf<?>> d() {
+      return this.c.values();
    }
 
    @Override
    public String toString() {
-      StringBuilder $$0 = new StringBuilder();
-      $$0.append(this.e);
-      if (!this.C().isEmpty()) {
-         $$0.append('[');
-         $$0.append(this.C().entrySet().stream().map(a).collect(Collectors.joining(",")));
-         $$0.append(']');
+      return MoreObjects.toStringHelper(this)
+         .add("block", this.b)
+         .add("properties", this.c.values().stream().map(dtf::f).collect(Collectors.toList()))
+         .toString();
+   }
+
+   @Nullable
+   public dtf<?> a(String $$0) {
+      return (dtf<?>)this.c.get($$0);
+   }
+
+   public static class a<O, S extends dse<O, S>> {
+      private final O a;
+      private final Map<String, dtf<?>> b = Maps.newHashMap();
+
+      public a(O $$0) {
+         this.a = $$0;
       }
 
-      return $$0.toString();
-   }
-
-   public Collection<dte<?>> B() {
-      return Collections.unmodifiableCollection(this.b.keySet());
-   }
-
-   public <T extends Comparable<T>> boolean b(dte<T> $$0) {
-      return this.b.containsKey($$0);
-   }
-
-   public <T extends Comparable<T>> T c(dte<T> $$0) {
-      Comparable<?> $$1 = (Comparable<?>)this.b.get($$0);
-      if ($$1 == null) {
-         throw new IllegalArgumentException("Cannot get property " + $$0 + " as it does not exist in " + this.e);
-      } else {
-         return $$0.g().cast($$1);
-      }
-   }
-
-   public <T extends Comparable<T>> Optional<T> d(dte<T> $$0) {
-      Comparable<?> $$1 = (Comparable<?>)this.b.get($$0);
-      return $$1 == null ? Optional.empty() : Optional.of($$0.g().cast($$1));
-   }
-
-   public <T extends Comparable<T>, V extends T> S a(dte<T> $$0, V $$1) {
-      Comparable<?> $$2 = (Comparable<?>)this.b.get($$0);
-      if ($$2 == null) {
-         throw new IllegalArgumentException("Cannot set property " + $$0 + " as it does not exist in " + this.e);
-      } else if ($$2.equals($$1)) {
-         return (S)this;
-      } else {
-         S $$3 = (S)this.g.get($$0, $$1);
-         if ($$3 == null) {
-            throw new IllegalArgumentException("Cannot set property " + $$0 + " to " + $$1 + " on " + this.e + ", it is not an allowed value");
-         } else {
-            return $$3;
+      public dsd.a<O, S> a(dtf<?>... $$0) {
+         for (dtf<?> $$1 : $$0) {
+            this.a($$1);
+            this.b.put($$1.f(), $$1);
          }
-      }
-   }
 
-   public <T extends Comparable<T>, V extends T> S b(dte<T> $$0, V $$1) {
-      Comparable<?> $$2 = (Comparable<?>)this.b.get($$0);
-      if ($$2 != null && !$$2.equals($$1)) {
-         S $$3 = (S)this.g.get($$0, $$1);
-         if ($$3 == null) {
-            throw new IllegalArgumentException("Cannot set property " + $$0 + " to " + $$1 + " on " + this.e + ", it is not an allowed value");
+         return this;
+      }
+
+      private <T extends Comparable<T>> void a(dtf<T> $$0) {
+         String $$1 = $$0.f();
+         if (!dsd.a.matcher($$1).matches()) {
+            throw new IllegalArgumentException(this.a + " has invalidly named property: " + $$1);
          } else {
-            return $$3;
-         }
-      } else {
-         return (S)this;
-      }
-   }
+            Collection<T> $$2 = $$0.a();
+            if ($$2.size() <= 1) {
+               throw new IllegalArgumentException(this.a + " attempted use property " + $$1 + " with <= 1 possible values");
+            } else {
+               for (T $$3 : $$2) {
+                  String $$4 = $$0.a($$3);
+                  if (!dsd.a.matcher($$4).matches()) {
+                     throw new IllegalArgumentException(this.a + " has property: " + $$1 + " with invalidly named value: " + $$4);
+                  }
+               }
 
-   public void a(Map<Map<dte<?>, Comparable<?>>, S> $$0) {
-      if (this.g != null) {
-         throw new IllegalStateException();
-      } else {
-         Table<dte<?>, Comparable<?>, S> $$1 = HashBasedTable.create();
-         ObjectIterator var3 = this.b.entrySet().iterator();
-
-         while (var3.hasNext()) {
-            Entry<dte<?>, Comparable<?>> $$2 = (Entry<dte<?>, Comparable<?>>)var3.next();
-            dte<?> $$3 = $$2.getKey();
-
-            for (Comparable<?> $$4 : $$3.a()) {
-               if (!$$4.equals($$2.getValue())) {
-                  $$1.put($$3, $$4, $$0.get(this.c($$3, $$4)));
+               if (this.b.containsKey($$1)) {
+                  throw new IllegalArgumentException(this.a + " has duplicate property: " + $$1);
                }
             }
          }
+      }
 
-         this.g = (Table<dte<?>, Comparable<?>, S>)($$1.isEmpty() ? $$1 : ArrayTable.create($$1));
+      public dsd<O, S> a(Function<O, S> $$0, dsd.b<O, S> $$1) {
+         return new dsd<>($$0, this.a, $$1, this.b);
       }
    }
 
-   private Map<dte<?>, Comparable<?>> c(dte<?> $$0, Comparable<?> $$1) {
-      Map<dte<?>, Comparable<?>> $$2 = new Reference2ObjectArrayMap(this.b);
-      $$2.put($$0, $$1);
-      return $$2;
-   }
-
-   public Map<dte<?>, Comparable<?>> C() {
-      return this.b;
-   }
-
-   protected static <O, S extends dsd<O, S>> Codec<S> a(Codec<O> $$0, Function<O, S> $$1) {
-      return $$0.dispatch("Name", $$0x -> $$0x.e, $$1x -> {
-         S $$2 = $$1.apply((O)$$1x);
-         return $$2.C().isEmpty() ? MapCodec.unit($$2) : $$2.f.codec().lenientOptionalFieldOf("Properties").xmap($$1xx -> $$1xx.orElse($$2), Optional::of);
-      });
+   public interface b<O, S> {
+      S create(O var1, Reference2ObjectArrayMap<dtf<?>, Comparable<?>> var2, MapCodec<S> var3);
    }
 }

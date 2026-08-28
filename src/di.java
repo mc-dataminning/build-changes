@@ -8,8 +8,8 @@ public class di extends dr<di.a> {
       return di.a.a;
    }
 
-   public void a(arf $$0, bst $$1, brm $$2, float $$3, float $$4, boolean $$5) {
-      eqh $$6 = bu.b($$0, $$1);
+   public void a(arg $$0, bsu $$1, brn $$2, float $$3, float $$4, boolean $$5) {
+      eqi $$6 = bu.b($$0, $$1);
       this.a($$0, $$6x -> $$6x.a($$0, $$6, $$2, $$3, $$4, $$5));
    }
 
@@ -47,7 +47,7 @@ public class di extends dr<di.a> {
          return am.h.a(new di.a(Optional.empty(), Optional.of($$0.b()), bu.a($$1)));
       }
 
-      public boolean a(arf $$0, eqh $$1, brm $$2, float $$3, float $$4, boolean $$5) {
+      public boolean a(arg $$0, eqi $$1, brn $$2, float $$3, float $$4, boolean $$5) {
          return this.c.isPresent() && !this.c.get().a($$0, $$2, $$3, $$4, $$5) ? false : !this.d.isPresent() || this.d.get().a($$1);
       }
 

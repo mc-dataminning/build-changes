@@ -18,13 +18,13 @@ public class in<A extends ArgumentType<?>> implements ik<A, in<A>.a> {
       return new in<>($$0);
    }
 
-   public void a(in<A>.a $$0, wl $$1) {
+   public void a(in<A>.a $$0, wm $$1) {
    }
 
    public void a(in<A>.a $$0, JsonObject $$1) {
    }
 
-   public in<A>.a a(wl $$0) {
+   public in<A>.a a(wm $$0) {
       return this.a;
    }
 

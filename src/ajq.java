@@ -1,7 +1,5 @@
-public record ajq() implements ajo {
-   public static final ajq a = new ajq();
+public interface ajq {
+   alf a();
 
-   @Override
-   public void a(wl $$0) {
-   }
+   void a(wm var1);
 }

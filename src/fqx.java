@@ -1,15 +1,15 @@
 import java.util.Set;
 
-public class fqx extends fql {
-   private static final xo i = xo.c("gui.recipebook.toggleRecipes.smokable");
+public class fqx extends fqm {
+   private static final xp i = xp.c("gui.recipebook.toggleRecipes.smeltable");
 
    @Override
-   protected xo c() {
+   protected xp c() {
       return i;
    }
 
    @Override
-   protected Set<cuj> b() {
-      return dou.g().keySet();
+   protected Set<cuk> b() {
+      return dov.g().keySet();
    }
 }

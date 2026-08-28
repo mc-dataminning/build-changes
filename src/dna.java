@@ -1,25 +1,28 @@
-import java.util.List;
-import java.util.Objects;
-import java.util.stream.Collectors;
-import javax.annotation.Nullable;
-
-public interface dna {
-   cxs b();
-
-   static List<dna> c() {
-      return lp.h.s().map(dna::a).filter(Objects::nonNull).collect(Collectors.toList());
-   }
-
-   @Nullable
-   static dna a(dbw $$0) {
-      if ($$0.r() instanceof csm $$1) {
-         dey var6 = $$1.d();
-         if (var6 instanceof dna) {
-            return (dna)var6;
-         }
+public enum dna {
+   a {
+      @Override
+      public boolean a(dsc $$0, dbe $$1, iz $$2, je $$3) {
+         return dez.a($$0.l($$1, $$2), $$3);
       }
+   },
+   b {
+      private final int d = 1;
+      private final ewk e = dez.a(7.0, 0.0, 7.0, 9.0, 10.0, 9.0);
 
-      cuj $$2 = $$0.r();
-      return $$2 instanceof dna ? (dna)$$2 : null;
-   }
+      @Override
+      public boolean a(dsc $$0, dbe $$1, iz $$2, je $$3) {
+         return !ewh.c($$0.l($$1, $$2).a($$3), this.e, evv.c);
+      }
+   },
+   c {
+      private final int d = 2;
+      private final ewk e = ewh.a(ewh.b(), dez.a(2.0, 0.0, 2.0, 14.0, 16.0, 14.0), evv.e);
+
+      @Override
+      public boolean a(dsc $$0, dbe $$1, iz $$2, je $$3) {
+         return !ewh.c($$0.l($$1, $$2).a($$3), this.e, evv.c);
+      }
+   };
+
+   public abstract boolean a(dsc var1, dbe var2, iz var3, je var4);
 }

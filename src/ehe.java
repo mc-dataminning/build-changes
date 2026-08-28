@@ -1,30 +1,26 @@
-import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import java.util.stream.Stream;
 
-public enum ehe implements azt {
-   a(je.b, 1, "ceiling"),
-   b(je.a, -1, "floor");
+public class ehe extends ehr {
+   public static final MapCodec<ehe> a = dxq.a.c.fieldOf("step").xmap(ehe::new, $$0 -> $$0.c);
+   private final dxq.a c;
 
-   public static final Codec<ehe> c = azt.a(ehe::values);
-   private final je d;
-   private final int e;
-   private final String f;
-
-   private ehe(final je $$0, final int $$1, final String $$2) {
-      this.d = $$0;
-      this.e = $$1;
-      this.f = $$2;
+   private ehe(dxq.a $$0) {
+      this.c = $$0;
    }
 
-   public je a() {
-      return this.d;
-   }
-
-   public int b() {
-      return this.e;
+   public static ehe a(dxq.a $$0) {
+      return new ehe($$0);
    }
 
    @Override
-   public String c() {
-      return this.f;
+   public Stream<iz> a_(ehp $$0, azh $$1, iz $$2) {
+      dbf $$3 = new dbf($$2);
+      return $$0.a($$3, this.c).a($$3);
+   }
+
+   @Override
+   public ehs<?> b() {
+      return ehs.o;
    }
 }

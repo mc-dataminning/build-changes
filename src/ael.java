@@ -1,21 +1,18 @@
-public record ael(int b, xo c) implements zv<ach> {
-   public static final zm<wz, ael> a = zm.a(zk.g, ael::b, xq.d, ael::e, ael::new);
+import io.netty.buffer.ByteBuf;
 
-   @Override
-   public zx<ael> a() {
-      return agt.ad;
+public class ael implements zw<aci> {
+   public static final ael a = new ael();
+   public static final zn<ByteBuf, ael> b = zn.a(a);
+
+   private ael() {
    }
 
-   public void a(ach $$0) {
+   @Override
+   public zy<ael> a() {
+      return agu.ac;
+   }
+
+   public void a(aci $$0) {
       $$0.a(this);
-   }
-
-   @Override
-   public boolean c() {
-      return true;
-   }
-
-   public xo e() {
-      return this.c;
    }
 }

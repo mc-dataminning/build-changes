@@ -1,59 +1,73 @@
 import com.mojang.serialization.Codec;
 
-public class eab extends eax<edl> {
-   private static final dsb a = dfa.mZ.o().a(dec.h, Integer.valueOf(1)).a(dec.i, dsn.a).a(dec.j, Integer.valueOf(0));
-   private static final dsb b = a.a(dec.i, dsn.c).a(dec.j, Integer.valueOf(1));
-   private static final dsb c = a.a(dec.i, dsn.c);
-   private static final dsb d = a.a(dec.i, dsn.b);
-
-   public eab(Codec<edl> $$0) {
+public abstract class eab extends eay<ede> {
+   public eab(Codec<ede> $$0) {
       super($$0);
    }
 
-   @Override
-   public boolean a(eaz<edl> $$0) {
-      int $$1 = 0;
-      iz $$2 = $$0.e();
-      dcs $$3 = $$0.b();
-      azg $$4 = $$0.d();
-      edl $$5 = $$0.f();
-      iz.a $$6 = $$2.j();
-      iz.a $$7 = $$2.j();
-      if ($$3.u($$6)) {
-         if (dfa.mZ.o().a($$3, $$6)) {
-            int $$8 = $$4.a(12) + 5;
-            if ($$4.i() < $$5.l) {
-               int $$9 = $$4.a(4) + 1;
+   protected void a(dbz $$0, azh $$1, iz $$2, ede $$3, int $$4, iz.a $$5) {
+      for (int $$6 = 0; $$6 < $$4; $$6++) {
+         $$5.g($$2).c(je.b, $$6);
+         if (!$$0.a_($$5).i($$0, $$5)) {
+            this.a($$0, $$5, $$3.c.a($$1, $$2));
+         }
+      }
+   }
 
-               for (int $$10 = $$2.u() - $$9; $$10 <= $$2.u() + $$9; $$10++) {
-                  for (int $$11 = $$2.w() - $$9; $$11 <= $$2.w() + $$9; $$11++) {
-                     int $$12 = $$10 - $$2.u();
-                     int $$13 = $$11 - $$2.w();
-                     if ($$12 * $$12 + $$13 * $$13 <= $$9 * $$9) {
-                        $$7.d($$10, $$3.a(dxt.a.b, $$10, $$11) - 1, $$11);
-                        if (b($$3.a_($$7))) {
-                           $$3.a($$7, dfa.l.o(), 2);
-                        }
+   protected int a(azh $$0) {
+      int $$1 = $$0.a(3) + 4;
+      if ($$0.a(12) == 0) {
+         $$1 *= 2;
+      }
+
+      return $$1;
+   }
+
+   protected boolean a(dbz $$0, iz $$1, int $$2, iz.a $$3, ede $$4) {
+      int $$5 = $$1.v();
+      if ($$5 >= $$0.I_() + 1 && $$5 + $$2 + 1 < $$0.am()) {
+         dsc $$6 = $$0.a_($$1.d());
+         if (!b($$6) && !$$6.a(awp.ba)) {
+            return false;
+         } else {
+            for (int $$7 = 0; $$7 <= $$2; $$7++) {
+               int $$8 = this.a(-1, -1, $$4.d, $$7);
+
+               for (int $$9 = -$$8; $$9 <= $$8; $$9++) {
+                  for (int $$10 = -$$8; $$10 <= $$8; $$10++) {
+                     dsc $$11 = $$0.a_($$3.a($$1, $$9, $$7, $$10));
+                     if (!$$11.i() && !$$11.a(awp.O)) {
+                        return false;
                      }
                   }
                }
             }
 
-            for (int $$14 = 0; $$14 < $$8 && $$3.u($$6); $$14++) {
-               $$3.a($$6, a, 2);
-               $$6.c(je.b, 1);
-            }
-
-            if ($$6.v() - $$2.v() >= 3) {
-               $$3.a($$6, b, 2);
-               $$3.a($$6.c(je.a, 1), c, 2);
-               $$3.a($$6.c(je.a, 1), d, 2);
-            }
+            return true;
          }
-
-         $$1++;
+      } else {
+         return false;
       }
-
-      return $$1 > 0;
    }
+
+   @Override
+   public boolean a(eba<ede> $$0) {
+      dct $$1 = $$0.b();
+      iz $$2 = $$0.e();
+      azh $$3 = $$0.d();
+      ede $$4 = $$0.f();
+      int $$5 = this.a($$3);
+      iz.a $$6 = new iz.a();
+      if (!this.a($$1, $$2, $$5, $$6, $$4)) {
+         return false;
+      } else {
+         this.a($$1, $$3, $$2, $$5, $$6, $$4);
+         this.a($$1, $$3, $$2, $$4, $$5, $$6);
+         return true;
+      }
+   }
+
+   protected abstract int a(int var1, int var2, int var3, int var4);
+
+   protected abstract void a(dbz var1, azh var2, iz var3, int var4, iz.a var5, ede var6);
 }

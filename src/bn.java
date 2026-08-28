@@ -9,8 +9,8 @@ public class bn extends dr<bn.a> {
       return bn.a.a;
    }
 
-   public void a(arf $$0, @Nullable bst $$1) {
-      eqh $$2 = $$1 != null ? bu.b($$0, $$1) : null;
+   public void a(arg $$0, @Nullable bsu $$1) {
+      eqi $$2 = $$1 != null ? bu.b($$0, $$1) : null;
       this.a($$0, $$2x -> $$2x.a($$0, $$2));
    }
 
@@ -32,8 +32,8 @@ public class bn extends dr<bn.a> {
          return am.B.a(new bn.a(Optional.empty(), Optional.empty(), Optional.of(bu.a($$0.b()))));
       }
 
-      public boolean a(arf $$0, @Nullable eqh $$1) {
-         return this.c.isPresent() && !this.c.get().a((bto)$$0) ? false : !this.d.isPresent() || $$1 != null && this.d.get().a($$1);
+      public boolean a(arg $$0, @Nullable eqi $$1) {
+         return this.c.isPresent() && !this.c.get().a((btp)$$0) ? false : !this.d.isPresent() || $$1 != null && this.d.get().a($$1);
       }
 
       @Override

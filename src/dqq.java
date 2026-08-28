@@ -1,251 +1,227 @@
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.DynamicOps;
 import java.util.List;
-import java.util.UUID;
-import java.util.function.UnaryOperator;
+import java.util.stream.IntStream;
 import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
-public class dqq extends dpg {
-   private static final Logger a = LogUtils.getLogger();
-   private static final int b = 90;
-   private static final int c = 10;
+public class dqq extends dqm implements brg {
+   public static final int d = 9;
+   public static final int e = 3;
+   public static final int f = 27;
+   public static final int g = 1;
+   public static final int h = 10;
+   public static final float i = 0.5F;
+   public static final float j = 270.0F;
+   private static final int[] k = IntStream.range(0, 27).toArray();
+   private jr<cup> q = jr.a(27, cup.l);
+   private int r;
+   private dqq.a s = dqq.a.a;
+   private float t;
+   private float u;
    @Nullable
-   private UUID d;
-   private dqr e = this.f();
-   private dqr f = this.f();
-   private boolean g;
+   private final cti v;
 
-   public dqq(iz $$0, dsb $$1) {
-      this(dpi.h, $$0, $$1);
+   public dqq(@Nullable cti $$0, iz $$1, dsc $$2) {
+      super(dpj.x, $$1, $$2);
+      this.v = $$0;
    }
 
-   public dqq(dpi $$0, iz $$1, dsb $$2) {
-      super($$0, $$1, $$2);
+   public dqq(iz $$0, dsc $$1) {
+      super(dpj.x, $$0, $$1);
+      this.v = dly.a($$1.b());
    }
 
-   protected dqr f() {
-      return new dqr();
+   public static void a(dby $$0, iz $$1, dsc $$2, dqq $$3) {
+      $$3.b($$0, $$1, $$2);
    }
 
-   public boolean a(cmw $$0) {
-      if (this.n().b() instanceof dly $$1) {
-         evq $$2 = $$1.m(this.n());
-         double $$3 = $$0.du() - ((double)this.ay_().u() + $$2.c);
-         double $$4 = $$0.dA() - ((double)this.ay_().w() + $$2.e);
-         float $$5 = $$1.g(this.n());
-         float $$6 = (float)(ayy.d($$4, $$3) * 180.0F / (float)Math.PI) - 90.0F;
-         return ayy.d($$5, $$6) <= 90.0F;
-      } else {
-         return false;
+   private void b(dby $$0, iz $$1, dsc $$2) {
+      this.u = this.t;
+      switch (this.s) {
+         case a:
+            this.t = 0.0F;
+            break;
+         case b:
+            this.t += 0.1F;
+            if (this.u == 0.0F) {
+               d($$0, $$1, $$2);
+            }
+
+            if (this.t >= 1.0F) {
+               this.s = dqq.a.c;
+               this.t = 1.0F;
+               d($$0, $$1, $$2);
+            }
+
+            this.c($$0, $$1, $$2);
+            break;
+         case c:
+            this.t = 1.0F;
+            break;
+         case d:
+            this.t -= 0.1F;
+            if (this.u == 1.0F) {
+               d($$0, $$1, $$2);
+            }
+
+            if (this.t <= 0.0F) {
+               this.s = dqq.a.a;
+               this.t = 0.0F;
+               d($$0, $$1, $$2);
+            }
       }
    }
 
-   public dqr a(boolean $$0) {
-      return $$0 ? this.e : this.f;
+   public dqq.a l() {
+      return this.s;
    }
 
-   public dqr j() {
-      return this.e;
+   public evm a(dsc $$0) {
+      return ckj.a(1.0F, $$0.c(dly.b), 0.5F * this.a(1.0F));
    }
 
-   public dqr k() {
-      return this.f;
+   private void c(dby $$0, iz $$1, dsc $$2) {
+      if ($$2.b() instanceof dly) {
+         je $$3 = $$2.c(dly.b);
+         evm $$4 = ckj.a(1.0F, $$3, this.u, this.t).a($$1);
+         List<bsu> $$5 = $$0.a_(null, $$4);
+         if (!$$5.isEmpty()) {
+            for (bsu $$6 : $$5) {
+               if ($$6.k_() != eoa.d) {
+                  $$6.a(btu.d, new evr(($$4.b() + 0.01) * (double)$$3.j(), ($$4.c() + 0.01) * (double)$$3.k(), ($$4.d() + 0.01) * (double)$$3.l()));
+               }
+            }
+         }
+      }
    }
 
+   @Override
    public int b() {
-      return 10;
-   }
-
-   public int c() {
-      return 90;
+      return this.q.size();
    }
 
    @Override
-   protected void b(ur $$0, jk.a $$1) {
-      super.b($$0, $$1);
-      DynamicOps<vo> $$2 = $$1.a(vf.a);
-      dqr.a.encodeStart($$2, this.e).resultOrPartial(a::error).ifPresent($$1x -> $$0.a("front_text", $$1x));
-      dqr.a.encodeStart($$2, this.f).resultOrPartial(a::error).ifPresent($$1x -> $$0.a("back_text", $$1x));
-      $$0.a("is_waxed", this.g);
+   public boolean a_(int $$0, int $$1) {
+      if ($$0 == 1) {
+         this.r = $$1;
+         if ($$1 == 0) {
+            this.s = dqq.a.d;
+         }
+
+         if ($$1 == 1) {
+            this.s = dqq.a.b;
+         }
+
+         return true;
+      } else {
+         return super.a_($$0, $$1);
+      }
+   }
+
+   private static void d(dby $$0, iz $$1, dsc $$2) {
+      $$2.a($$0, $$1, 3);
+      $$0.a($$1, $$2.b());
    }
 
    @Override
-   protected void a(ur $$0, jk.a $$1) {
+   public void d_(cmx $$0) {
+      if (!this.p && !$$0.N_()) {
+         if (this.r < 0) {
+            this.r = 0;
+         }
+
+         this.r++;
+         this.n.a(this.o, this.n().b(), 1, this.r);
+         if (this.r == 1) {
+            this.n.a($$0, dwv.k, this.o);
+            this.n.a(null, this.o, awa.wK, awb.e, 0.5F, this.n.z.i() * 0.1F + 0.9F);
+         }
+      }
+   }
+
+   @Override
+   public void c(cmx $$0) {
+      if (!this.p && !$$0.N_()) {
+         this.r--;
+         this.n.a(this.o, this.n().b(), 1, this.r);
+         if (this.r <= 0) {
+            this.n.a($$0, dwv.j, this.o);
+            this.n.a(null, this.o, awa.wJ, awb.e, 0.5F, this.n.z.i() * 0.1F + 0.9F);
+         }
+      }
+   }
+
+   @Override
+   protected xp k() {
+      return xp.c("container.shulkerBox");
+   }
+
+   @Override
+   protected void a(us $$0, jk.a $$1) {
       super.a($$0, $$1);
-      DynamicOps<vo> $$2 = $$1.a(vf.a);
-      if ($$0.e("front_text")) {
-         dqr.a.parse($$2, $$0.p("front_text")).resultOrPartial(a::error).ifPresent($$0x -> this.e = this.a($$0x));
-      }
-
-      if ($$0.e("back_text")) {
-         dqr.a.parse($$2, $$0.p("back_text")).resultOrPartial(a::error).ifPresent($$0x -> this.f = this.a($$0x));
-      }
-
-      this.g = $$0.q("is_waxed");
-   }
-
-   private dqr a(dqr $$0) {
-      for (int $$1 = 0; $$1 < 4; $$1++) {
-         xo $$2 = this.a($$0.a($$1, false));
-         xo $$3 = this.a($$0.a($$1, true));
-         $$0 = $$0.a($$1, $$2, $$3);
-      }
-
-      return $$0;
-   }
-
-   private xo a(xo $$0) {
-      if (this.n instanceof are $$1) {
-         try {
-            return xr.a(a(null, $$1, this.o), $$0, null, 0);
-         } catch (CommandSyntaxException var4) {
-         }
-      }
-
-      return $$0;
-   }
-
-   public void a(cmw $$0, boolean $$1, List<arw> $$2) {
-      if (!this.v() && $$0.cz().equals(this.u()) && this.n != null) {
-         this.a($$2x -> this.a($$0, $$2, $$2x), $$1);
-         this.a(null);
-         this.n.a(this.ay_(), this.n(), this.n(), 3);
-      } else {
-         a.warn("Player {} just tried to change non-editable sign", $$0.af().getString());
-      }
-   }
-
-   public boolean a(UnaryOperator<dqr> $$0, boolean $$1) {
-      dqr $$2 = this.a($$1);
-      return this.a($$0.apply($$2), $$1);
-   }
-
-   private dqr a(cmw $$0, List<arw> $$1, dqr $$2) {
-      for (int $$3 = 0; $$3 < $$1.size(); $$3++) {
-         arw $$4 = $$1.get($$3);
-         yl $$5 = $$2.a($$3, $$0.Y()).a();
-         if ($$0.Y()) {
-            $$2 = $$2.a($$3, xo.b($$4.b()).b($$5));
-         } else {
-            $$2 = $$2.a($$3, xo.b($$4.d()).b($$5), xo.b($$4.b()).b($$5));
-         }
-      }
-
-      return $$2;
-   }
-
-   public boolean a(dqr $$0, boolean $$1) {
-      return $$1 ? this.c($$0) : this.b($$0);
-   }
-
-   private boolean b(dqr $$0) {
-      if ($$0 != this.f) {
-         this.f = $$0;
-         this.w();
-         return true;
-      } else {
-         return false;
-      }
-   }
-
-   private boolean c(dqr $$0) {
-      if ($$0 != this.e) {
-         this.e = $$0;
-         this.w();
-         return true;
-      } else {
-         return false;
-      }
-   }
-
-   public boolean a(boolean $$0, cmw $$1) {
-      return this.v() && this.a($$0).b($$1);
-   }
-
-   public boolean a(cmw $$0, dbx $$1, iz $$2, boolean $$3) {
-      boolean $$4 = false;
-
-      for (xo $$5 : this.a($$3).b($$0.Y())) {
-         yl $$6 = $$5.a();
-         xm $$7 = $$6.h();
-         if ($$7 != null && $$7.a() == xm.a.c) {
-            $$0.cO().aH().a(a($$0, $$1, $$2), $$7.b());
-            $$4 = true;
-         }
-      }
-
-      return $$4;
-   }
-
-   private static ep a(@Nullable cmw $$0, dbx $$1, iz $$2) {
-      String $$3 = $$0 == null ? "Sign" : $$0.af().getString();
-      xo $$4 = (xo)($$0 == null ? xo.b("Sign") : $$0.O_());
-      return new ep(eo.a, evq.b($$2), evp.a, (are)$$1, 2, $$3, $$4, $$1.o(), $$0);
-   }
-
-   public aco l() {
-      return aco.a(this);
+      this.e($$0, $$1);
    }
 
    @Override
-   public ur a(jk.a $$0) {
-      return this.e($$0);
+   protected void b(us $$0, jk.a $$1) {
+      super.b($$0, $$1);
+      if (!this.b_($$0)) {
+         bqo.a($$0, this.q, false, $$1);
+      }
+   }
+
+   public void e(us $$0, jk.a $$1) {
+      this.q = jr.a(this.b(), cup.l);
+      if (!this.a_($$0) && $$0.b("Items", 9)) {
+         bqo.b($$0, this.q, $$1);
+      }
    }
 
    @Override
-   public boolean q() {
+   protected jr<cup> j() {
+      return this.q;
+   }
+
+   @Override
+   protected void a(jr<cup> $$0) {
+      this.q = $$0;
+   }
+
+   @Override
+   public int[] a(je $$0) {
+      return k;
+   }
+
+   @Override
+   public boolean a(int $$0, cup $$1, @Nullable je $$2) {
+      return !(dez.a($$1.g()) instanceof dly);
+   }
+
+   @Override
+   public boolean b(int $$0, cup $$1, je $$2) {
       return true;
    }
 
-   public void a(@Nullable UUID $$0) {
-      this.d = $$0;
+   public float a(float $$0) {
+      return ayz.i($$0, this.u, this.t);
    }
 
    @Nullable
-   public UUID u() {
-      return this.d;
+   public cti u() {
+      return this.v;
    }
 
-   private void w() {
-      this.e();
-      this.n.a(this.ay_(), this.n(), this.n(), 3);
+   @Override
+   protected cpu a(int $$0, cmw $$1) {
+      return new crm($$0, $$1, this);
    }
 
    public boolean v() {
-      return this.g;
+      return this.s == dqq.a.a;
    }
 
-   public boolean b(boolean $$0) {
-      if (this.g != $$0) {
-         this.g = $$0;
-         this.w();
-         return true;
-      } else {
-         return false;
-      }
-   }
-
-   public boolean b(UUID $$0) {
-      cmw $$1 = this.n.b($$0);
-      return $$1 == null || !$$1.a(this.ay_(), 4.0);
-   }
-
-   public static void a(dbx $$0, iz $$1, dsb $$2, dqq $$3) {
-      UUID $$4 = $$3.u();
-      if ($$4 != null) {
-         $$3.a($$3, $$0, $$4);
-      }
-   }
-
-   private void a(dqq $$0, dbx $$1, UUID $$2) {
-      if ($$0.b($$2)) {
-         $$0.a(null);
-      }
-   }
-
-   public avy d() {
-      return avz.BX;
+   public static enum a {
+      a,
+      b,
+      c,
+      d;
    }
 }

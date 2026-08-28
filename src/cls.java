@@ -2,17 +2,16 @@ import com.mojang.datafixers.kinds.App;
 import java.util.function.Function;
 
 public class cls {
-   public static bvi<bto> a(int $$0) {
-      return byu.a(
-         (Function<byu.b<bto>, ? extends App<byu.c<bto>, byx<bto>>>)($$1 -> $$1.group($$1.b(ccs.L), $$1.c(ccs.ad), $$1.c(ccs.ag), $$1.c(ccs.af))
-               .apply($$1, ($$2, $$3, $$4, $$5) -> ($$4x, $$5x, $$6) -> {
-                     cjg $$7 = $$1.b($$2);
-                     if (!cln.a($$7.p())) {
-                        return false;
-                     } else {
-                        $$3.a(true, (long)$$0);
-                        return true;
+   public static bvj<btp> a() {
+      return byv.a(
+         (Function<byv.b<btp>, ? extends App<byv.c<btp>, byy<btp>>>)($$0 -> $$0.group($$0.b(cct.o), $$0.a(cct.ah))
+               .apply($$0, ($$1, $$2) -> ($$3, $$4, $$5) -> {
+                     btp $$6 = $$0.b($$1);
+                     if ($$6.ak() == bta.Z && $$6.eB()) {
+                        $$2.a(true, (long)clo.d.a($$4.dP().z));
                      }
+
+                     return true;
                   }))
       );
    }

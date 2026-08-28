@@ -1,549 +1,207 @@
-import com.mojang.datafixers.util.Pair;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.DynamicOps;
-import com.mojang.serialization.MapLike;
-import com.mojang.serialization.RecordBuilder;
-import com.mojang.serialization.RecordBuilder.AbstractStringBuilder;
-import it.unimi.dsi.fastutil.bytes.ByteArrayList;
-import it.unimi.dsi.fastutil.ints.IntArrayList;
-import it.unimi.dsi.fastutil.longs.LongArrayList;
-import java.nio.ByteBuffer;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
-import java.util.Map.Entry;
-import java.util.function.BiConsumer;
-import java.util.function.Consumer;
-import java.util.stream.IntStream;
-import java.util.stream.LongStream;
-import java.util.stream.Stream;
+import java.io.BufferedOutputStream;
+import java.io.DataInput;
+import java.io.DataInputStream;
+import java.io.DataOutput;
+import java.io.DataOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.io.UTFDataFormatException;
+import java.nio.file.Files;
+import java.nio.file.OpenOption;
+import java.nio.file.Path;
+import java.nio.file.StandardOpenOption;
+import java.util.zip.GZIPInputStream;
+import java.util.zip.GZIPOutputStream;
 import javax.annotation.Nullable;
 
-public class vf implements DynamicOps<vo> {
-   public static final vf a = new vf();
-   private static final String b = "";
+public class vf {
+   private static final OpenOption[] a = new OpenOption[]{
+      StandardOpenOption.SYNC, StandardOpenOption.WRITE, StandardOpenOption.CREATE, StandardOpenOption.TRUNCATE_EXISTING
+   };
 
-   protected vf() {
+   public static us a(Path $$0, vb $$1) throws IOException {
+      us var4;
+      try (
+         InputStream $$2 = Files.newInputStream($$0);
+         InputStream $$3 = new ayi($$2);
+      ) {
+         var4 = a($$3, $$1);
+      }
+
+      return var4;
    }
 
-   public vo a() {
-      return ut.b;
+   private static DataInputStream a(InputStream $$0) throws IOException {
+      return new DataInputStream(new ayi(new GZIPInputStream($$0)));
    }
 
-   public <U> U a(DynamicOps<U> $$0, vo $$1) {
-      return (U)(switch ($$1.b()) {
-         case 0 -> (Object)$$0.empty();
-         case 1 -> (Object)$$0.createByte(((vh)$$1).i());
-         case 2 -> (Object)$$0.createShort(((vh)$$1).h());
-         case 3 -> (Object)$$0.createInt(((vh)$$1).g());
-         case 4 -> (Object)$$0.createLong(((vh)$$1).f());
-         case 5 -> (Object)$$0.createFloat(((vh)$$1).k());
-         case 6 -> (Object)$$0.createDouble(((vh)$$1).j());
-         case 7 -> (Object)$$0.createByteList(ByteBuffer.wrap(((uo)$$1).e()));
-         case 8 -> (Object)$$0.createString($$1.s_());
-         case 9 -> (Object)this.convertList($$0, $$1);
-         case 10 -> (Object)this.convertMap($$0, $$1);
-         case 11 -> (Object)$$0.createIntList(Arrays.stream(((uv)$$1).g()));
-         case 12 -> (Object)$$0.createLongList(Arrays.stream(((uy)$$1).g()));
-         default -> throw new IllegalStateException("Unknown tag type: " + $$1);
-      });
+   private static DataOutputStream a(OutputStream $$0) throws IOException {
+      return new DataOutputStream(new BufferedOutputStream(new GZIPOutputStream($$0)));
    }
 
-   public DataResult<Number> a(vo $$0) {
-      return $$0 instanceof vh $$1 ? DataResult.success($$1.l()) : DataResult.error(() -> "Not a number");
+   public static us a(InputStream $$0, vb $$1) throws IOException {
+      us var3;
+      try (DataInputStream $$2 = a($$0)) {
+         var3 = a((DataInput)$$2, $$1);
+      }
+
+      return var3;
    }
 
-   public vo a(Number $$0) {
-      return us.a($$0.doubleValue());
+   public static void a(Path $$0, vm $$1, vb $$2) throws IOException {
+      try (
+         InputStream $$3 = Files.newInputStream($$0);
+         InputStream $$4 = new ayi($$3);
+      ) {
+         a($$4, $$1, $$2);
+      }
    }
 
-   public vo a(byte $$0) {
-      return up.a($$0);
+   public static void a(InputStream $$0, vm $$1, vb $$2) throws IOException {
+      try (DataInputStream $$3 = a($$0)) {
+         a((DataInput)$$3, $$1, $$2);
+      }
    }
 
-   public vo a(short $$0) {
-      return vj.a($$0);
+   public static void a(us $$0, Path $$1) throws IOException {
+      try (
+         OutputStream $$2 = Files.newOutputStream($$1, a);
+         OutputStream $$3 = new BufferedOutputStream($$2);
+      ) {
+         a($$0, $$3);
+      }
    }
 
-   public vo a(int $$0) {
-      return uw.a($$0);
+   public static void a(us $$0, OutputStream $$1) throws IOException {
+      try (DataOutputStream $$2 = a($$1)) {
+         a($$0, (DataOutput)$$2);
+      }
    }
 
-   public vo a(long $$0) {
-      return uz.a($$0);
+   public static void b(us $$0, Path $$1) throws IOException {
+      try (
+         OutputStream $$2 = Files.newOutputStream($$1, a);
+         OutputStream $$3 = new BufferedOutputStream($$2);
+         DataOutputStream $$4 = new DataOutputStream($$3);
+      ) {
+         a($$0, (DataOutput)$$4);
+      }
    }
 
-   public vo a(float $$0) {
-      return uu.a($$0);
-   }
-
-   public vo a(double $$0) {
-      return us.a($$0);
-   }
-
-   public vo a(boolean $$0) {
-      return up.a($$0);
-   }
-
-   public DataResult<String> b(vo $$0) {
-      return $$0 instanceof vm $$1 ? DataResult.success($$1.s_()) : DataResult.error(() -> "Not a string");
-   }
-
-   public vo a(String $$0) {
-      return vm.a($$0);
-   }
-
-   public DataResult<vo> a(vo $$0, vo $$1) {
-      return k($$0).map($$1x -> DataResult.success($$1x.a($$1).a())).orElseGet(() -> DataResult.error(() -> "mergeToList called with not a list: " + $$0, $$0));
-   }
-
-   public DataResult<vo> a(vo $$0, List<vo> $$1) {
-      return k($$0).map($$1x -> DataResult.success($$1x.a($$1).a())).orElseGet(() -> DataResult.error(() -> "mergeToList called with not a list: " + $$0, $$0));
-   }
-
-   public DataResult<vo> a(vo $$0, vo $$1, vo $$2) {
-      if (!($$0 instanceof ur) && !($$0 instanceof ut)) {
-         return DataResult.error(() -> "mergeToMap called with not a map: " + $$0, $$0);
-      } else if (!($$1 instanceof vm)) {
-         return DataResult.error(() -> "key is not a string: " + $$1, $$0);
+   @Nullable
+   public static us a(Path $$0) throws IOException {
+      if (!Files.exists($$0)) {
+         return null;
       } else {
-         ur $$4 = $$0 instanceof ur $$3 ? $$3.h() : new ur();
-         $$4.a($$1.s_(), $$2);
-         return DataResult.success($$4);
+         us var3;
+         try (
+            InputStream $$1 = Files.newInputStream($$0);
+            DataInputStream $$2 = new DataInputStream($$1);
+         ) {
+            var3 = a((DataInput)$$2, vb.a());
+         }
+
+         return var3;
       }
    }
 
-   public DataResult<vo> a(vo $$0, MapLike<vo> $$1) {
-      if (!($$0 instanceof ur) && !($$0 instanceof ut)) {
-         return DataResult.error(() -> "mergeToMap called with not a map: " + $$0, $$0);
+   public static us a(DataInput $$0) throws IOException {
+      return a($$0, vb.a());
+   }
+
+   public static us a(DataInput $$0, vb $$1) throws IOException {
+      vp $$2 = c($$0, $$1);
+      if ($$2 instanceof us) {
+         return (us)$$2;
       } else {
-         ur $$3 = $$0 instanceof ur $$2 ? $$2.h() : new ur();
-         List<vo> $$4 = new ArrayList<>();
-         $$1.entries().forEach($$2x -> {
-            vo $$3x = (vo)$$2x.getFirst();
-            if (!($$3x instanceof vm)) {
-               $$4.add($$3x);
-            } else {
-               $$3.a($$3x.s_(), (vo)$$2x.getSecond());
-            }
-         });
-         return !$$4.isEmpty() ? DataResult.error(() -> "some keys are not strings: " + $$4, $$3) : DataResult.success($$3);
+         throw new IOException("Root tag must be a named compound tag");
       }
    }
 
-   public DataResult<vo> a(vo $$0, Map<vo, vo> $$1) {
-      if (!($$0 instanceof ur) && !($$0 instanceof ut)) {
-         return DataResult.error(() -> "mergeToMap called with not a map: " + $$0, $$0);
+   public static void a(us $$0, DataOutput $$1) throws IOException {
+      c($$0, $$1);
+   }
+
+   public static void a(DataInput $$0, vm $$1, vb $$2) throws IOException {
+      vr<?> $$3 = vs.a($$0.readByte());
+      if ($$3 == uu.a) {
+         if ($$1.b(uu.a) == vm.b.a) {
+            $$1.a();
+         }
       } else {
-         ur $$3 = $$0 instanceof ur $$2 ? $$2.h() : new ur();
-         List<vo> $$4 = new ArrayList<>();
-
-         for (Entry<vo, vo> $$5 : $$1.entrySet()) {
-            vo $$6 = $$5.getKey();
-            if ($$6 instanceof vm) {
-               $$3.a($$6.s_(), $$5.getValue());
-            } else {
-               $$4.add($$6);
-            }
+         switch ($$1.b($$3)) {
+            case c:
+            default:
+               break;
+            case b:
+               vn.a($$0);
+               $$3.b($$0, $$2);
+               break;
+            case a:
+               vn.a($$0);
+               $$3.a($$0, $$1, $$2);
          }
+      }
+   }
 
-         return !$$4.isEmpty() ? DataResult.error(() -> "some keys are not strings: " + $$4, $$3) : DataResult.success($$3);
+   public static vp b(DataInput $$0, vb $$1) throws IOException {
+      byte $$2 = $$0.readByte();
+      return (vp)($$2 == 0 ? uu.b : a($$0, $$1, $$2));
+   }
+
+   public static void a(vp $$0, DataOutput $$1) throws IOException {
+      $$1.writeByte($$0.b());
+      if ($$0.b() != 0) {
+         $$0.a($$1);
       }
    }
 
-   public DataResult<Stream<Pair<vo, vo>>> c(vo $$0) {
-      return $$0 instanceof ur $$1
-         ? DataResult.success($$1.j().stream().map($$0x -> Pair.of(this.a((String)$$0x.getKey()), (vo)$$0x.getValue())))
-         : DataResult.error(() -> "Not a map: " + $$0);
-   }
-
-   public DataResult<Consumer<BiConsumer<vo, vo>>> d(vo $$0) {
-      return $$0 instanceof ur $$1 ? DataResult.success((Consumer<BiConsumer>)$$1x -> {
-         for (Entry<String, vo> $$2 : $$1.j()) {
-            $$1x.accept(this.a($$2.getKey()), $$2.getValue());
-         }
-      }) : DataResult.error(() -> "Not a map: " + $$0);
-   }
-
-   public DataResult<MapLike<vo>> e(vo $$0) {
-      return $$0 instanceof ur $$1 ? DataResult.success(new MapLike<vo>() {
-         @Nullable
-         public vo a(vo $$0) {
-            return $$1.c($$0.s_());
-         }
-
-         @Nullable
-         public vo a(String $$0) {
-            return $$1.c($$0);
-         }
-
-         public Stream<Pair<vo, vo>> entries() {
-            return $$1.j().stream().map($$0 -> Pair.of(vf.this.a($$0.getKey()), $$0.getValue()));
-         }
-
-         @Override
-         public String toString() {
-            return "MapLike[" + $$1 + "]";
-         }
-      }) : DataResult.error(() -> "Not a map: " + $$0);
-   }
-
-   public vo a(Stream<Pair<vo, vo>> $$0) {
-      ur $$1 = new ur();
-      $$0.forEach($$1x -> $$1.a(((vo)$$1x.getFirst()).s_(), (vo)$$1x.getSecond()));
-      return $$1;
-   }
-
-   private static vo a(ur $$0) {
-      if ($$0.f() == 1) {
-         vo $$1 = $$0.c("");
-         if ($$1 != null) {
-            return $$1;
-         }
+   public static void b(vp $$0, DataOutput $$1) throws IOException {
+      $$1.writeByte($$0.b());
+      if ($$0.b() != 0) {
+         $$1.writeUTF("");
+         $$0.a($$1);
       }
-
-      return $$0;
    }
 
-   public DataResult<Stream<vo>> f(vo $$0) {
-      if ($$0 instanceof ux $$1) {
-         return $$1.f() == 10 ? DataResult.success($$1.stream().map($$0x -> a((ur)$$0x))) : DataResult.success($$1.stream());
+   public static void c(vp $$0, DataOutput $$1) throws IOException {
+      b($$0, new vf.a($$1));
+   }
+
+   private static vp c(DataInput $$0, vb $$1) throws IOException {
+      byte $$2 = $$0.readByte();
+      if ($$2 == 0) {
+         return uu.b;
       } else {
-         return $$0 instanceof uq<?> $$2 ? DataResult.success($$2.stream().map($$0x -> $$0x)) : DataResult.error(() -> "Not a list");
+         vn.a($$0);
+         return a($$0, $$1, $$2);
       }
    }
 
-   public DataResult<Consumer<Consumer<vo>>> g(vo $$0) {
-      if ($$0 instanceof ux $$1) {
-         return $$1.f() == 10 ? DataResult.success((Consumer<Consumer>)$$1x -> {
-            for (vo $$2x : $$1) {
-               $$1x.accept(a((ur)$$2x));
-            }
-         }) : DataResult.success($$1::forEach);
-      } else {
-         return $$0 instanceof uq<?> $$2 ? DataResult.success($$2::forEach) : DataResult.error(() -> "Not a list: " + $$0);
+   private static vp a(DataInput $$0, vb $$1, byte $$2) {
+      try {
+         return vs.a($$2).c($$0, $$1);
+      } catch (IOException var6) {
+         o $$4 = o.a(var6, "Loading NBT data");
+         p $$5 = $$4.a("NBT Tag");
+         $$5.a("Tag type", $$2);
+         throw new vj($$4);
       }
    }
 
-   public DataResult<ByteBuffer> h(vo $$0) {
-      return $$0 instanceof uo $$1 ? DataResult.success(ByteBuffer.wrap($$1.e())) : super.getByteBuffer($$0);
-   }
-
-   public vo a(ByteBuffer $$0) {
-      ByteBuffer $$1 = $$0.duplicate().clear();
-      byte[] $$2 = new byte[$$0.capacity()];
-      $$1.get(0, $$2, 0, $$2.length);
-      return new uo($$2);
-   }
-
-   public DataResult<IntStream> i(vo $$0) {
-      return $$0 instanceof uv $$1 ? DataResult.success(Arrays.stream($$1.g())) : super.getIntStream($$0);
-   }
-
-   public vo a(IntStream $$0) {
-      return new uv($$0.toArray());
-   }
-
-   public DataResult<LongStream> j(vo $$0) {
-      return $$0 instanceof uy $$1 ? DataResult.success(Arrays.stream($$1.g())) : super.getLongStream($$0);
-   }
-
-   public vo a(LongStream $$0) {
-      return new uy($$0.toArray());
-   }
-
-   public vo b(Stream<vo> $$0) {
-      return vf.d.a.a($$0).a();
-   }
-
-   public vo a(vo $$0, String $$1) {
-      if ($$0 instanceof ur $$2) {
-         ur $$3 = $$2.h();
-         $$3.r($$1);
-         return $$3;
-      } else {
-         return $$0;
-      }
-   }
-
-   @Override
-   public String toString() {
-      return "NBT";
-   }
-
-   public RecordBuilder<vo> mapBuilder() {
-      return new vf.h();
-   }
-
-   private static Optional<vf.f> k(vo $$0) {
-      if ($$0 instanceof ut) {
-         return Optional.of(vf.d.a);
-      } else {
-         if ($$0 instanceof uq<?> $$1) {
-            if ($$1.isEmpty()) {
-               return Optional.of(vf.d.a);
-            }
-
-            if ($$1 instanceof ux $$2) {
-               return switch ($$2.f()) {
-                  case 0 -> Optional.of(vf.d.a);
-                  case 10 -> Optional.of(new vf.b($$2));
-                  default -> Optional.of(new vf.c($$2));
-               };
-            }
-
-            if ($$1 instanceof uo $$3) {
-               return Optional.of(new vf.a($$3.e()));
-            }
-
-            if ($$1 instanceof uv $$4) {
-               return Optional.of(new vf.e($$4.g()));
-            }
-
-            if ($$1 instanceof uy $$5) {
-               return Optional.of(new vf.g($$5.g()));
-            }
-         }
-
-         return Optional.empty();
-      }
-   }
-
-   static class a implements vf.f {
-      private final ByteArrayList a = new ByteArrayList();
-
-      public a(byte $$0) {
-         this.a.add($$0);
-      }
-
-      public a(byte[] $$0) {
-         this.a.addElements(0, $$0);
+   public static class a extends ayc {
+      public a(DataOutput $$0) {
+         super($$0);
       }
 
       @Override
-      public vf.f a(vo $$0) {
-         if ($$0 instanceof up $$1) {
-            this.a.add($$1.i());
-            return this;
-         } else {
-            return new vf.b(this.a).a($$0);
-         }
-      }
-
-      @Override
-      public vo a() {
-         return new uo(this.a.toByteArray());
-      }
-   }
-
-   static class b implements vf.f {
-      private final ux a = new ux();
-
-      public b() {
-      }
-
-      public b(Collection<vo> $$0) {
-         this.a.addAll($$0);
-      }
-
-      public b(IntArrayList $$0) {
-         $$0.forEach($$0x -> this.a.add(c(uw.a($$0x))));
-      }
-
-      public b(ByteArrayList $$0) {
-         $$0.forEach($$0x -> this.a.add(c(up.a($$0x))));
-      }
-
-      public b(LongArrayList $$0) {
-         $$0.forEach($$0x -> this.a.add(c(uz.a($$0x))));
-      }
-
-      private static boolean a(ur $$0) {
-         return $$0.f() == 1 && $$0.e("");
-      }
-
-      private static vo b(vo $$0) {
-         if ($$0 instanceof ur $$1 && !a($$1)) {
-            return $$1;
-         }
-
-         return c($$0);
-      }
-
-      private static ur c(vo $$0) {
-         ur $$1 = new ur();
-         $$1.a("", $$0);
-         return $$1;
-      }
-
-      @Override
-      public vf.f a(vo $$0) {
-         this.a.add(b($$0));
-         return this;
-      }
-
-      @Override
-      public vo a() {
-         return this.a;
-      }
-   }
-
-   static class c implements vf.f {
-      private final ux a = new ux();
-
-      c(vo $$0) {
-         this.a.add($$0);
-      }
-
-      c(ux $$0) {
-         this.a.addAll($$0);
-      }
-
-      @Override
-      public vf.f a(vo $$0) {
-         if ($$0.b() != this.a.f()) {
-            return new vf.b().a(this.a).a($$0);
-         } else {
-            this.a.add($$0);
-            return this;
-         }
-      }
-
-      @Override
-      public vo a() {
-         return this.a;
-      }
-   }
-
-   static class d implements vf.f {
-      public static final vf.d a = new vf.d();
-
-      private d() {
-      }
-
-      @Override
-      public vf.f a(vo $$0) {
-         if ($$0 instanceof ur $$1) {
-            return new vf.b().a($$1);
-         } else if ($$0 instanceof up $$2) {
-            return new vf.a($$2.i());
-         } else if ($$0 instanceof uw $$3) {
-            return new vf.e($$3.g());
-         } else {
-            return (vf.f)($$0 instanceof uz $$4 ? new vf.g($$4.f()) : new vf.c($$0));
-         }
-      }
-
-      @Override
-      public vo a() {
-         return new ux();
-      }
-   }
-
-   static class e implements vf.f {
-      private final IntArrayList a = new IntArrayList();
-
-      public e(int $$0) {
-         this.a.add($$0);
-      }
-
-      public e(int[] $$0) {
-         this.a.addElements(0, $$0);
-      }
-
-      @Override
-      public vf.f a(vo $$0) {
-         if ($$0 instanceof uw $$1) {
-            this.a.add($$1.g());
-            return this;
-         } else {
-            return new vf.b(this.a).a($$0);
-         }
-      }
-
-      @Override
-      public vo a() {
-         return new uv(this.a.toIntArray());
-      }
-   }
-
-   interface f {
-      vf.f a(vo var1);
-
-      default vf.f a(Iterable<vo> $$0) {
-         vf.f $$1 = this;
-
-         for (vo $$2 : $$0) {
-            $$1 = $$1.a($$2);
-         }
-
-         return $$1;
-      }
-
-      default vf.f a(Stream<vo> $$0) {
-         return this.a($$0::iterator);
-      }
-
-      vo a();
-   }
-
-   static class g implements vf.f {
-      private final LongArrayList a = new LongArrayList();
-
-      public g(long $$0) {
-         this.a.add($$0);
-      }
-
-      public g(long[] $$0) {
-         this.a.addElements(0, $$0);
-      }
-
-      @Override
-      public vf.f a(vo $$0) {
-         if ($$0 instanceof uz $$1) {
-            this.a.add($$1.f());
-            return this;
-         } else {
-            return new vf.b(this.a).a($$0);
-         }
-      }
-
-      @Override
-      public vo a() {
-         return new uy(this.a.toLongArray());
-      }
-   }
-
-   class h extends AbstractStringBuilder<vo, ur> {
-      protected h() {
-         super(vf.this);
-      }
-
-      protected ur a() {
-         return new ur();
-      }
-
-      protected ur a(String $$0, vo $$1, ur $$2) {
-         $$2.a($$0, $$1);
-         return $$2;
-      }
-
-      protected DataResult<vo> a(ur $$0, vo $$1) {
-         if ($$1 == null || $$1 == ut.b) {
-            return DataResult.success($$0);
-         } else if (!($$1 instanceof ur $$2)) {
-            return DataResult.error(() -> "mergeToMap called with not a map: " + $$1, $$1);
-         } else {
-            ur $$3 = $$2.h();
-
-            for (Entry<String, vo> $$4 : $$0.j()) {
-               $$3.a($$4.getKey(), $$4.getValue());
-            }
-
-            return DataResult.success($$3);
+      public void writeUTF(String $$0) throws IOException {
+         try {
+            super.writeUTF($$0);
+         } catch (UTFDataFormatException var3) {
+            ac.a("Failed to write NBT String", var3);
+            super.writeUTF("");
          }
       }
    }

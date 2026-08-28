@@ -1,38 +1,18 @@
-import com.google.common.math.IntMath;
 import it.unimi.dsi.fastutil.doubles.DoubleList;
 
-public final class evy implements ewc {
-   private final evw a;
-   private final int b;
-   private final int c;
-
-   evy(int $$0, int $$1) {
-      this.a = new evw((int)ewg.a($$0, $$1));
-      int $$2 = IntMath.gcd($$0, $$1);
-      this.b = $$0 / $$2;
-      this.c = $$1 / $$2;
+public final class evy extends ewk {
+   protected evy(ewa $$0) {
+      super($$0);
    }
 
    @Override
-   public boolean a(ewc.a $$0) {
-      int $$1 = this.a.size() - 1;
-
-      for (int $$2 = 0; $$2 < $$1; $$2++) {
-         if (!$$0.merge($$2 / this.c, $$2 / this.b, $$2)) {
-            return false;
-         }
-      }
-
-      return true;
+   protected DoubleList a(je.a $$0) {
+      return new evx(this.a.c($$0));
    }
 
    @Override
-   public int size() {
-      return this.a.size();
-   }
-
-   @Override
-   public DoubleList a() {
-      return this.a;
+   protected int a(je.a $$0, double $$1) {
+      int $$2 = this.a.c($$0);
+      return ayz.a(ayz.a($$1 * (double)$$2, -1.0, (double)$$2));
    }
 }

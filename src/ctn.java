@@ -1,44 +1,16 @@
-import java.util.List;
-
-public class ctn extends cuj {
-   public ctn(cuj.a $$0) {
+public class ctn extends cuk {
+   public ctn(cuk.a $$0) {
       super($$0);
    }
 
    @Override
-   public bqt a(cyb $$0) {
-      dbx $$1 = $$0.q();
-      iz $$2 = $$0.a();
-      dsb $$3 = $$1.a_($$2);
-      if (!$$3.a(dfa.co) && !$$3.a(dfa.F)) {
-         return bqt.f;
-      } else {
-         iz $$4 = $$2.c();
-         if (!$$1.u($$4)) {
-            return bqt.f;
-         } else {
-            double $$5 = (double)$$4.u();
-            double $$6 = (double)$$4.v();
-            double $$7 = (double)$$4.w();
-            List<bst> $$8 = $$1.a_(null, new evl($$5, $$6, $$7, $$5 + 1.0, $$6 + 2.0, $$7 + 1.0));
-            if (!$$8.isEmpty()) {
-               return bqt.f;
-            } else {
-               if ($$1 instanceof are) {
-                  chz $$9 = new chz($$1, $$5 + 0.5, $$6, $$7 + 0.5);
-                  $$9.a(false);
-                  $$1.b($$9);
-                  $$1.a($$0.o(), dwu.t, $$4);
-                  dvw $$10 = ((are)$$1).D();
-                  if ($$10 != null) {
-                     $$10.g();
-                  }
-               }
+   public boolean a(cup $$0) {
+      return false;
+   }
 
-               $$0.n().h(1);
-               return bqt.a($$1.B);
-            }
-         }
-      }
+   public static cup a(dac $$0) {
+      cup $$1 = new cup(cus.uw);
+      $$1.a($$0.a, $$0.b);
+      return $$1;
    }
 }

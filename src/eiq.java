@@ -1,33 +1,44 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
 
-public record eiq(eiq.a b, bph<ddi.c> c) {
+public record eiq(List<eiq.a> c, ejh d) {
    public static final Codec<eiq> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(eiq.a.c.fieldOf("bounding_box").forGetter(eiq::a), bph.c(ddi.c.a).fieldOf("spawns").forGetter(eiq::b)).apply($$0, eiq::new)
+      $$0 -> $$0.group(eiq.a.a.listOf().fieldOf("structures").forGetter(eiq::a), ejh.b.fieldOf("placement").forGetter(eiq::b)).apply($$0, eiq::new)
    );
+   public static final Codec<ji<eiq>> b = alb.a(lq.aL, a);
 
-   public eiq.a a() {
-      return this.b;
+   public eiq(ji<eik> $$0, ejh $$1) {
+      this(List.of(new eiq.a($$0, 1)), $$1);
    }
 
-   public bph<ddi.c> b() {
+   public static eiq.a a(ji<eik> $$0, int $$1) {
+      return new eiq.a($$0, $$1);
+   }
+
+   public static eiq.a a(ji<eik> $$0) {
+      return new eiq.a($$0, 1);
+   }
+
+   public List<eiq.a> a() {
       return this.c;
    }
 
-   public static enum a implements azt {
-      a("piece"),
-      b("full");
+   public ejh b() {
+      return this.d;
+   }
 
-      public static final Codec<eiq.a> c = azt.a(eiq.a::values);
-      private final String d;
+   public static record a(ji<eik> b, int c) {
+      public static final Codec<eiq.a> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(eik.b.fieldOf("structure").forGetter(eiq.a::a), ayh.l.fieldOf("weight").forGetter(eiq.a::b)).apply($$0, eiq.a::new)
+      );
 
-      private a(final String $$0) {
-         this.d = $$0;
+      public ji<eik> a() {
+         return this.b;
       }
 
-      @Override
-      public String c() {
-         return this.d;
+      public int b() {
+         return this.c;
       }
    }
 }

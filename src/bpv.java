@@ -1,45 +1,45 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 
-public class bpv extends bpy {
-   public static final bpv a = new bpv(0);
-   public static final MapCodec<bpv> b = Codec.INT.fieldOf("value").xmap(bpv::a, bpv::d);
-   private final int f;
+public class bpv extends bpx {
+   public static final bpv a = new bpv(0.0F);
+   public static final MapCodec<bpv> b = Codec.FLOAT.fieldOf("value").xmap(bpv::a, bpv::d);
+   private final float d;
 
-   public static bpv a(int $$0) {
-      return $$0 == 0 ? a : new bpv($$0);
+   public static bpv a(float $$0) {
+      return $$0 == 0.0F ? a : new bpv($$0);
    }
 
-   private bpv(int $$0) {
-      this.f = $$0;
+   private bpv(float $$0) {
+      this.d = $$0;
    }
 
-   public int d() {
-      return this.f;
-   }
-
-   @Override
-   public int a(azg $$0) {
-      return this.f;
+   public float d() {
+      return this.d;
    }
 
    @Override
-   public int a() {
-      return this.f;
+   public float a(azh $$0) {
+      return this.d;
    }
 
    @Override
-   public int b() {
-      return this.f;
+   public float a() {
+      return this.d;
    }
 
    @Override
-   public bpz<?> c() {
-      return bpz.a;
+   public float b() {
+      return this.d + 1.0F;
+   }
+
+   @Override
+   public bpy<?> c() {
+      return bpy.a;
    }
 
    @Override
    public String toString() {
-      return Integer.toString(this.f);
+      return Float.toString(this.d);
    }
 }

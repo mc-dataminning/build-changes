@@ -1,89 +1,61 @@
+import com.google.common.collect.Maps;
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Map;
 
-public class dee extends dek {
-   public static final MapCodec<dee> a = b(dee::new);
-   public static final dsv b = dsr.P;
-   public static final dss c = dsr.u;
+public class dee extends ddq {
+   public static final MapCodec<dee> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(cti.q.fieldOf("color").forGetter(ddq::b), u()).apply($$0, dee::new));
+   public static final dtc b = dss.ba;
+   private static final Map<cti, dez> c = Maps.newHashMap();
+   private static final ewk d = dez.a(4.0, 0.0, 4.0, 12.0, 16.0, 12.0);
 
    @Override
    public MapCodec<dee> a() {
       return a;
    }
 
-   public dee(dsa.d $$0) {
-      super($$0);
-      this.k(this.E.b().a(b, je.c).a(c, Boolean.valueOf(false)));
+   public dee(cti $$0, dsb.d $$1) {
+      super($$0, $$1);
+      this.k(this.E.b().a(b, Integer.valueOf(0)));
+      c.put($$0, this);
    }
 
    @Override
-   protected bqt a(dsb $$0, dbx $$1, iz $$2, cmw $$3, evm $$4) {
-      if ($$1.B) {
-         return bqt.a;
-      } else {
-         dpg $$5 = $$1.c_($$2);
-         if ($$5 instanceof doz) {
-            $$3.a((doz)$$5);
-            $$3.a(awj.ar);
-            cln.a($$3, true);
-         }
-
-         return bqt.c;
-      }
+   protected boolean a(dsc $$0, dcb $$1, iz $$2) {
+      return $$1.a_($$2.d()).e();
    }
 
    @Override
-   protected void a(dsb $$0, dbx $$1, iz $$2, dsb $$3, boolean $$4) {
-      bqp.a($$0, $$3, $$1, $$2);
-      super.a($$0, $$1, $$2, $$3, $$4);
+   protected ewk a(dsc $$0, dbe $$1, iz $$2, evw $$3) {
+      return d;
    }
 
    @Override
-   protected void a(dsb $$0, are $$1, iz $$2, azg $$3) {
-      dpg $$4 = $$1.c_($$2);
-      if ($$4 instanceof doz) {
-         ((doz)$$4).l();
-      }
-   }
-
-   @Nullable
-   @Override
-   public dpg a(iz $$0, dsb $$1) {
-      return new doz($$0, $$1);
+   public dsc a(cya $$0) {
+      return this.o().a(b, Integer.valueOf(dti.a($$0.i() + 180.0F)));
    }
 
    @Override
-   protected dle a_(dsb $$0) {
-      return dle.c;
+   protected dsc a(dsc $$0, je $$1, dsc $$2, dbz $$3, iz $$4, iz $$5) {
+      return $$1 == je.a && !$$0.a($$3, $$4) ? dfb.a.o() : super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
    @Override
-   protected boolean c_(dsb $$0) {
-      return true;
+   protected dsc a(dsc $$0, dlm $$1) {
+      return $$0.a(b, Integer.valueOf($$1.a($$0.c(b), 16)));
    }
 
    @Override
-   protected int a(dsb $$0, dbx $$1, iz $$2) {
-      return cpt.a($$1.c_($$2));
+   protected dsc a(dsc $$0, djw $$1) {
+      return $$0.a(b, Integer.valueOf($$1.a($$0.c(b), 16)));
    }
 
    @Override
-   protected dsb a(dsb $$0, dll $$1) {
-      return $$0.a(b, $$1.a($$0.c(b)));
+   protected void a(dsd.a<dez, dsc> $$0) {
+      $$0.a(b);
    }
 
-   @Override
-   protected dsb a(dsb $$0, djv $$1) {
-      return $$0.a($$1.a($$0.c(b)));
-   }
-
-   @Override
-   protected void a(dsc.a<dey, dsb> $$0) {
-      $$0.a(b, c);
-   }
-
-   @Override
-   public dsb a(cxz $$0) {
-      return this.o().a(b, $$0.d().g());
+   public static dez a(cti $$0) {
+      return c.getOrDefault($$0, dfb.iJ);
    }
 }

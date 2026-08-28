@@ -12,20 +12,20 @@ import java.util.concurrent.CompletableFuture;
 
 public class gl implements ArgumentType<gn> {
    private static final Collection<String> d = Arrays.asList("0 0 0", "~ ~ ~", "^ ^ ^", "^1 ^ ^-5", "~0.5 ~1 ~-5");
-   public static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(xo.c("argument.pos.unloaded"));
-   public static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(xo.c("argument.pos.outofworld"));
-   public static final SimpleCommandExceptionType c = new SimpleCommandExceptionType(xo.c("argument.pos.outofbounds"));
+   public static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(xp.c("argument.pos.unloaded"));
+   public static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(xp.c("argument.pos.outofworld"));
+   public static final SimpleCommandExceptionType c = new SimpleCommandExceptionType(xp.c("argument.pos.outofbounds"));
 
    public static gl a() {
       return new gl();
    }
 
    public static iz a(CommandContext<ep> $$0, String $$1) throws CommandSyntaxException {
-      are $$2 = ((ep)$$0.getSource()).e();
+      arf $$2 = ((ep)$$0.getSource()).e();
       return a($$0, $$2, $$1);
    }
 
-   public static iz a(CommandContext<ep> $$0, are $$1, String $$2) throws CommandSyntaxException {
+   public static iz a(CommandContext<ep> $$0, arf $$1, String $$2) throws CommandSyntaxException {
       iz $$3 = b($$0, $$2);
       if (!$$1.B($$3)) {
          throw a.create();
@@ -42,7 +42,7 @@ public class gl implements ArgumentType<gn> {
 
    public static iz c(CommandContext<ep> $$0, String $$1) throws CommandSyntaxException {
       iz $$2 = b($$0, $$1);
-      if (!dbx.l($$2)) {
+      if (!dby.l($$2)) {
          throw c.create();
       } else {
          return $$2;

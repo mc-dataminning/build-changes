@@ -1,33 +1,29 @@
-public class aee implements zv<ach> {
-   public static final zm<wz, aee> a = zm.a(zk.g, aee::b, zk.a(lq.Q), aee::e, xq.d, aee::f, aee::new);
-   private final int b;
-   private final cra<?> c;
-   private final xo d;
+public class aee implements zw<aci> {
+   public static final zn<wm, aee> a = zw.a(aee::a, aee::new);
+   private final bqt b;
 
-   public aee(int $$0, cra<?> $$1, xo $$2) {
+   public aee(bqt $$0) {
       this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
+   }
+
+   private aee(wm $$0) {
+      this.b = $$0.b(bqt.class);
+   }
+
+   private void a(wm $$0) {
+      $$0.a(this.b);
    }
 
    @Override
-   public zx<aee> a() {
-      return agt.W;
+   public zy<aee> a() {
+      return agu.V;
    }
 
-   public void a(ach $$0) {
+   public void a(aci $$0) {
       $$0.a(this);
    }
 
-   public int b() {
+   public bqt b() {
       return this.b;
-   }
-
-   public cra<?> e() {
-      return this.c;
-   }
-
-   public xo f() {
-      return this.d;
    }
 }

@@ -1,50 +1,46 @@
+import com.mojang.logging.LogUtils;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
+import org.slf4j.Logger;
 
-public class cut extends cuj {
-   public cut(cuj.a $$0) {
+public class cut extends cuk {
+   private static final Logger a = LogUtils.getLogger();
+
+   public cut(cuk.a $$0) {
       super($$0);
    }
 
    @Override
-   public bqt a(cyb $$0) {
-      dbx $$1 = $$0.q();
-      iz $$2 = $$0.a();
-      dsb $$3 = $$1.a_($$2);
-      if ($$3.a(awo.S)) {
-         cmw $$4 = $$0.o();
-         if (!$$1.B && $$4 != null) {
-            a($$4, $$1, $$2);
-         }
-
-         return bqt.a($$1.B);
-      } else {
-         return bqt.e;
-      }
-   }
-
-   public static bqt a(cmw $$0, dbx $$1, iz $$2) {
-      cja $$3 = null;
-      double $$4 = 7.0;
-      int $$5 = $$2.u();
-      int $$6 = $$2.v();
-      int $$7 = $$2.w();
-      evl $$8 = new evl((double)$$5 - 7.0, (double)$$6 - 7.0, (double)$$7 - 7.0, (double)$$5 + 7.0, (double)$$6 + 7.0, (double)$$7 + 7.0);
-      List<btq> $$9 = $$1.a(btq.class, $$8, $$1x -> $$1x.gf() == $$0);
-
-      for (btq $$10 : $$9) {
-         if ($$3 == null) {
-            $$3 = cja.b($$1, $$2);
-            $$3.C();
-         }
-
-         $$10.b($$3, true);
+   public bqv<cup> a(dby $$0, cmx $$1, bqt $$2) {
+      cup $$3 = $$1.b($$2);
+      if (!$$1.fP()) {
+         $$1.a($$2, cup.l);
       }
 
-      if (!$$9.isEmpty()) {
-         $$1.a(dwu.b, $$2, dwu.a.a($$0));
-         return bqt.a;
+      List<alf> $$4 = $$3.a(km.R, List.of());
+      if ($$4.isEmpty()) {
+         return bqv.d($$3);
       } else {
-         return bqt.e;
+         if (!$$0.B) {
+            cyy $$5 = $$0.o().aJ();
+            List<cyx<?>> $$6 = new ArrayList<>($$4.size());
+
+            for (alf $$7 : $$4) {
+               Optional<cyx<?>> $$8 = $$5.a($$7);
+               if (!$$8.isPresent()) {
+                  a.error("Invalid recipe: {}", $$7);
+                  return bqv.d($$3);
+               }
+
+               $$6.add($$8.get());
+            }
+
+            $$1.a($$6);
+            $$1.b(awk.c.b(this));
+         }
+
+         return bqv.a($$3, $$0.x_());
       }
    }
 }

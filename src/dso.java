@@ -1,20 +1,21 @@
-public enum dso implements azt {
-   a("head"),
-   b("foot");
+public enum dso implements azu {
+   a("none"),
+   b("small"),
+   c("large");
 
-   private final String c;
+   private final String d;
 
    private dso(final String $$0) {
-      this.c = $$0;
+      this.d = $$0;
    }
 
    @Override
    public String toString() {
-      return this.c;
+      return this.d;
    }
 
    @Override
    public String c() {
-      return this.c;
+      return this.d;
    }
 }

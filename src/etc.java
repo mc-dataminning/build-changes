@@ -1,49 +1,70 @@
-import com.google.common.collect.BiMap;
-import com.google.common.collect.HashBiMap;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import java.util.Optional;
-import java.util.function.Consumer;
+import com.google.common.base.Joiner;
+import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.Sets;
+import java.util.Set;
 
 public class etc {
-   private static final BiMap<ale, etb> t = HashBiMap.create();
-   public static final Codec<etb> a = ale.a
-      .comapFlatMap(
-         $$0 -> Optional.ofNullable((etb)t.get($$0))
-               .<DataResult>map(DataResult::success)
-               .orElseGet(() -> DataResult.error(() -> "No parameter set exists with id: '" + $$0 + "'")),
-         t.inverse()::get
-      );
-   public static final etb b = a("empty", $$0 -> {
-   });
-   public static final etb c = a("chest", $$0 -> $$0.a(etd.f).b(etd.a));
-   public static final etb d = a("command", $$0 -> $$0.a(etd.f).b(etd.a));
-   public static final etb e = a("selector", $$0 -> $$0.a(etd.f).a(etd.a));
-   public static final etb f = a("fishing", $$0 -> $$0.a(etd.f).a(etd.i).b(etd.a));
-   public static final etb g = a("entity", $$0 -> $$0.a(etd.a).a(etd.f).a(etd.c).b(etd.d).b(etd.e).b(etd.b));
-   public static final etb h = a("equipment", $$0 -> $$0.a(etd.f).a(etd.a));
-   public static final etb i = a("archaeology", $$0 -> $$0.a(etd.f).b(etd.a));
-   public static final etb j = a("gift", $$0 -> $$0.a(etd.f).a(etd.a));
-   public static final etb k = a("barter", $$0 -> $$0.a(etd.a));
-   public static final etb l = a("vault", $$0 -> $$0.a(etd.f).b(etd.a));
-   public static final etb m = a("advancement_reward", $$0 -> $$0.a(etd.a).a(etd.f));
-   public static final etb n = a("advancement_entity", $$0 -> $$0.a(etd.a).a(etd.f));
-   public static final etb o = a("advancement_location", $$0 -> $$0.a(etd.a).a(etd.f).a(etd.i).a(etd.g));
-   public static final etb p = a("block_use", $$0 -> $$0.a(etd.a).a(etd.f).a(etd.g));
-   public static final etb q = a("generic", $$0 -> $$0.a(etd.a).a(etd.b).a(etd.c).a(etd.d).a(etd.e).a(etd.f).a(etd.g).a(etd.h).a(etd.i).a(etd.j));
-   public static final etb r = a("block", $$0 -> $$0.a(etd.g).a(etd.f).a(etd.i).b(etd.a).b(etd.h).b(etd.j));
-   public static final etb s = a("shearing", $$0 -> $$0.a(etd.f).b(etd.a));
+   private final Set<etb<?>> a;
+   private final Set<etb<?>> b;
 
-   private static etb a(String $$0, Consumer<etb.a> $$1) {
-      etb.a $$2 = new etb.a();
-      $$1.accept($$2);
-      etb $$3 = $$2.a();
-      ale $$4 = new ale($$0);
-      etb $$5 = (etb)t.put($$4, $$3);
-      if ($$5 != null) {
-         throw new IllegalStateException("Loot table parameter set " + $$4 + " is already registered");
-      } else {
-         return $$3;
+   etc(Set<etb<?>> $$0, Set<etb<?>> $$1) {
+      this.a = ImmutableSet.copyOf($$0);
+      this.b = ImmutableSet.copyOf(Sets.union($$0, $$1));
+   }
+
+   public boolean a(etb<?> $$0) {
+      return this.b.contains($$0);
+   }
+
+   public Set<etb<?>> a() {
+      return this.a;
+   }
+
+   public Set<etb<?>> b() {
+      return this.b;
+   }
+
+   @Override
+   public String toString() {
+      return "[" + Joiner.on(", ").join(this.b.stream().map($$0 -> (this.a.contains($$0) ? "!" : "") + $$0.a()).iterator()) + "]";
+   }
+
+   public void a(eqo $$0, eqj $$1) {
+      Set<etb<?>> $$2 = $$1.a();
+      Set<etb<?>> $$3 = Sets.difference($$2, this.b);
+      if (!$$3.isEmpty()) {
+         $$0.b("Parameters " + $$3 + " are not provided in this context");
+      }
+   }
+
+   public static etc.a c() {
+      return new etc.a();
+   }
+
+   public static class a {
+      private final Set<etb<?>> a = Sets.newIdentityHashSet();
+      private final Set<etb<?>> b = Sets.newIdentityHashSet();
+
+      public etc.a a(etb<?> $$0) {
+         if (this.b.contains($$0)) {
+            throw new IllegalArgumentException("Parameter " + $$0.a() + " is already optional");
+         } else {
+            this.a.add($$0);
+            return this;
+         }
+      }
+
+      public etc.a b(etb<?> $$0) {
+         if (this.a.contains($$0)) {
+            throw new IllegalArgumentException("Parameter " + $$0.a() + " is already required");
+         } else {
+            this.b.add($$0);
+            return this;
+         }
+      }
+
+      public etc a() {
+         return new etc(this.a, this.b);
       }
    }
 }

@@ -1,23 +1,46 @@
-import io.netty.buffer.ByteBuf;
+import java.security.PrivateKey;
+import java.security.PublicKey;
+import java.util.Arrays;
+import javax.crypto.SecretKey;
 
-public class ajn implements zv<ajj> {
-   public static final ajn a = new ajn();
-   public static final zm<ByteBuf, ajn> b = zm.a(a);
+public class ajn implements zw<ajk> {
+   public static final zn<wm, ajn> a = zw.a(ajn::a, ajn::new);
+   private final byte[] b;
+   private final byte[] c;
 
-   private ajn() {
+   public ajn(SecretKey $$0, PublicKey $$1, byte[] $$2) throws axx {
+      this.b = axw.a($$1, $$0.getEncoded());
+      this.c = axw.a($$1, $$2);
+   }
+
+   private ajn(wm $$0) {
+      this.b = $$0.b();
+      this.c = $$0.b();
+   }
+
+   private void a(wm $$0) {
+      $$0.a(this.b);
+      $$0.a(this.c);
    }
 
    @Override
-   public zx<ajn> a() {
-      return ajh.i;
+   public zy<ajn> a() {
+      return aji.h;
    }
 
-   public void a(ajj $$0) {
+   public void a(ajk $$0) {
       $$0.a(this);
    }
 
-   @Override
-   public boolean d() {
-      return true;
+   public SecretKey a(PrivateKey $$0) throws axx {
+      return axw.a($$0, this.b);
+   }
+
+   public boolean a(byte[] $$0, PrivateKey $$1) {
+      try {
+         return Arrays.equals($$0, axw.b($$1, this.c));
+      } catch (axx var4) {
+         return false;
+      }
    }
 }

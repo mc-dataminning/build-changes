@@ -1,17 +1,17 @@
-public class gih extends gkc<cfj, fto<cfj>> {
-   private static final ale a = new ale("textures/entity/chicken.png");
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.Maps;
+import java.util.Map;
 
-   public gih(giw.a $$0) {
-      super($$0, new fto<>($$0.a(fwy.z)), 0.3F);
+public class gih<T extends chi> extends ghr<T, fto<T>> {
+   private static final Map<bta<?>, alf> a = Maps.newHashMap(
+      ImmutableMap.of(bta.z, new alf("textures/entity/horse/donkey.png"), bta.at, new alf("textures/entity/horse/mule.png"))
+   );
+
+   public gih(gix.a $$0, float $$1, fwy $$2) {
+      super($$0, new fto<>($$0.a($$2)), $$1);
    }
 
-   public ale a(cfj $$0) {
-      return a;
-   }
-
-   protected float a(cfj $$0, float $$1) {
-      float $$2 = ayy.i($$1, $$0.cc, $$0.bY);
-      float $$3 = ayy.i($$1, $$0.cb, $$0.bZ);
-      return (ayy.a($$2) + 1.0F) * $$3;
+   public alf a(T $$0) {
+      return a.get($$0.ak());
    }
 }

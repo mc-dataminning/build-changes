@@ -1,77 +1,86 @@
-import java.util.List;
+import java.util.Set;
 import java.util.function.Predicate;
 
-public class bqn {
-   public static final String a = "Items";
+public interface bqn extends bql {
+   float o_ = 4.0F;
 
-   public static cuo a(List<cuo> $$0, int $$1, int $$2) {
-      return $$1 >= 0 && $$1 < $$0.size() && !$$0.get($$1).e() && $$2 > 0 ? $$0.get($$1).a($$2) : cuo.l;
+   int b();
+
+   boolean c();
+
+   cup a(int var1);
+
+   cup a(int var1, int var2);
+
+   cup b(int var1);
+
+   void a(int var1, cup var2);
+
+   default int ah_() {
+      return 99;
    }
 
-   public static cuo a(List<cuo> $$0, int $$1) {
-      return $$1 >= 0 && $$1 < $$0.size() ? $$0.set($$1, cuo.l) : cuo.l;
+   default int e_(cup $$0) {
+      return Math.min(this.ah_(), $$0.j());
    }
 
-   public static ur a(ur $$0, jr<cuo> $$1, jk.a $$2) {
-      return a($$0, $$1, true, $$2);
+   void e();
+
+   boolean a(cmx var1);
+
+   default void d_(cmx $$0) {
    }
 
-   public static ur a(ur $$0, jr<cuo> $$1, boolean $$2, jk.a $$3) {
-      ux $$4 = new ux();
+   default void c(cmx $$0) {
+   }
 
-      for (int $$5 = 0; $$5 < $$1.size(); $$5++) {
-         cuo $$6 = $$1.get($$5);
-         if (!$$6.e()) {
-            ur $$7 = new ur();
-            $$7.a("Slot", (byte)$$5);
-            $$4.add($$6.b($$3, $$7));
+   default boolean b(int $$0, cup $$1) {
+      return true;
+   }
+
+   default boolean a(bqn $$0, int $$1, cup $$2) {
+      return true;
+   }
+
+   default int a_(cuk $$0) {
+      int $$1 = 0;
+
+      for (int $$2 = 0; $$2 < this.b(); $$2++) {
+         cup $$3 = this.a($$2);
+         if ($$3.g().equals($$0)) {
+            $$1 += $$3.I();
          }
       }
 
-      if (!$$4.isEmpty() || $$2) {
-         $$0.a("Items", $$4);
-      }
-
-      return $$0;
+      return $$1;
    }
 
-   public static void b(ur $$0, jr<cuo> $$1, jk.a $$2) {
-      ux $$3 = $$0.c("Items", 10);
+   default boolean a(Set<cuk> $$0) {
+      return this.a_($$1 -> !$$1.e() && $$0.contains($$1.g()));
+   }
 
-      for (int $$4 = 0; $$4 < $$3.size(); $$4++) {
-         ur $$5 = $$3.a($$4);
-         int $$6 = $$5.f("Slot") & 255;
-         if ($$6 >= 0 && $$6 < $$1.size()) {
-            $$1.set($$6, cuo.a($$2, (vo)$$5).orElse(cuo.l));
+   default boolean a_(Predicate<cup> $$0) {
+      for (int $$1 = 0; $$1 < this.b(); $$1++) {
+         cup $$2 = this.a($$1);
+         if ($$0.test($$2)) {
+            return true;
          }
       }
+
+      return false;
    }
 
-   public static int a(bqm $$0, Predicate<cuo> $$1, int $$2, boolean $$3) {
-      int $$4 = 0;
-
-      for (int $$5 = 0; $$5 < $$0.b(); $$5++) {
-         cuo $$6 = $$0.a($$5);
-         int $$7 = a($$6, $$1, $$2 - $$4, $$3);
-         if ($$7 > 0 && !$$3 && $$6.e()) {
-            $$0.a($$5, cuo.l);
-         }
-
-         $$4 += $$7;
-      }
-
-      return $$4;
+   static boolean a(dph $$0, cmx $$1) {
+      return a($$0, $$1, 4.0F);
    }
 
-   public static int a(cuo $$0, Predicate<cuo> $$1, int $$2, boolean $$3) {
-      if ($$0.e() || !$$1.test($$0)) {
-         return 0;
-      } else if ($$3) {
-         return $$0.I();
+   static boolean a(dph $$0, cmx $$1, float $$2) {
+      dby $$3 = $$0.i();
+      iz $$4 = $$0.ay_();
+      if ($$3 == null) {
+         return false;
       } else {
-         int $$4 = $$2 < 0 ? $$0.I() : Math.min($$2, $$0.I());
-         $$0.h($$4);
-         return $$4;
+         return $$3.c_($$4) != $$0 ? false : $$1.a($$4, (double)$$2);
       }
    }
 }

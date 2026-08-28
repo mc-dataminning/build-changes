@@ -1,307 +1,83 @@
-import com.google.common.collect.Lists;
-import it.unimi.dsi.fastutil.ints.Int2IntMap;
-import it.unimi.dsi.fastutil.ints.Int2IntOpenHashMap;
-import it.unimi.dsi.fastutil.ints.IntAVLTreeSet;
-import it.unimi.dsi.fastutil.ints.IntArrayList;
-import it.unimi.dsi.fastutil.ints.IntCollection;
-import it.unimi.dsi.fastutil.ints.IntIterator;
-import it.unimi.dsi.fastutil.ints.IntList;
-import it.unimi.dsi.fastutil.ints.IntListIterator;
-import java.util.BitSet;
-import java.util.List;
-import javax.annotation.Nullable;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.nio.ByteBuffer;
+import java.nio.ByteOrder;
+import java.security.PublicKey;
+import java.time.Duration;
+import java.time.Instant;
+import java.util.Arrays;
+import java.util.UUID;
 
-public class cna {
-   private static final int b = 0;
-   public final Int2IntMap a = new Int2IntOpenHashMap();
+public record cna(cna.a d) {
+   public static final xp a = xp.c("multiplayer.disconnect.expired_public_key");
+   private static final xp e = xp.c("multiplayer.disconnect.invalid_public_key_signature.new");
+   public static final Duration b = Duration.ofHours(8L);
+   public static final Codec<cna> c = cna.a.a.xmap(cna::new, cna::b);
 
-   public void a(cuo $$0) {
-      if (!$$0.m() && !$$0.B() && !$$0.b(km.g)) {
-         this.b($$0);
-      }
-   }
-
-   public void b(cuo $$0) {
-      this.a($$0, $$0.j());
-   }
-
-   public void a(cuo $$0, int $$1) {
-      if (!$$0.e()) {
-         int $$2 = c($$0);
-         int $$3 = Math.min($$1, $$0.I());
-         this.b($$2, $$3);
-      }
-   }
-
-   public static int c(cuo $$0) {
-      return lp.h.a($$0.g());
-   }
-
-   boolean b(int $$0) {
-      return this.a.get($$0) > 0;
-   }
-
-   int a(int $$0, int $$1) {
-      int $$2 = this.a.get($$0);
-      if ($$2 >= $$1) {
-         this.a.put($$0, $$2 - $$1);
-         return $$0;
+   public static cna a(azm $$0, UUID $$1, cna.a $$2) throws cna.b {
+      if (!$$2.a($$0, $$1)) {
+         throw new cna.b(e);
       } else {
-         return 0;
+         return new cna($$2);
       }
    }
 
-   void b(int $$0, int $$1) {
-      this.a.put($$0, this.a.get($$0) + $$1);
+   public azm a() {
+      return azm.a(this.d.c, "SHA256withRSA");
    }
 
-   public boolean a(cyu<?> $$0, @Nullable IntList $$1) {
-      return this.a($$0, $$1, 1);
+   public cna.a b() {
+      return this.d;
    }
 
-   public boolean a(cyu<?> $$0, @Nullable IntList $$1, int $$2) {
-      return new cna.a($$0).a($$2, $$1);
+   public static record a(Instant b, PublicKey c, byte[] d) {
+      private static final int e = 4096;
+      public static final Codec<cna.a> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(
+                  ayh.o.fieldOf("expires_at").forGetter(cna.a::b), axw.f.fieldOf("key").forGetter(cna.a::c), ayh.p.fieldOf("signature_v2").forGetter(cna.a::d)
+               )
+               .apply($$0, cna.a::new)
+      );
+
+      public a(wm $$0) {
+         this($$0.t(), $$0.u(), $$0.a(4096));
+      }
+
+      public void a(wm $$0) {
+         $$0.a(this.b);
+         $$0.a(this.c);
+         $$0.a(this.d);
+      }
+
+      boolean a(azm $$0, UUID $$1) {
+         return $$0.a(this.a($$1), this.d);
+      }
+
+      private byte[] a(UUID $$0) {
+         byte[] $$1 = this.c.getEncoded();
+         byte[] $$2 = new byte[24 + $$1.length];
+         ByteBuffer $$3 = ByteBuffer.wrap($$2).order(ByteOrder.BIG_ENDIAN);
+         $$3.putLong($$0.getMostSignificantBits()).putLong($$0.getLeastSignificantBits()).putLong(this.b.toEpochMilli()).put($$1);
+         return $$2;
+      }
+
+      public boolean a() {
+         return this.b.isBefore(Instant.now());
+      }
+
+      public boolean a(Duration $$0) {
+         return this.b.plus($$0).isBefore(Instant.now());
+      }
+
+      @Override
+      public boolean equals(Object $$0) {
+         return !($$0 instanceof cna.a $$1) ? false : this.b.equals($$1.b) && this.c.equals($$1.c) && Arrays.equals(this.d, $$1.d);
+      }
    }
 
-   public int a(cyw<?> $$0, @Nullable IntList $$1) {
-      return this.a($$0, Integer.MAX_VALUE, $$1);
-   }
-
-   public int a(cyw<?> $$0, int $$1, @Nullable IntList $$2) {
-      return new cna.a($$0.b()).b($$1, $$2);
-   }
-
-   public static cuo a(int $$0) {
-      return $$0 == 0 ? cuo.l : new cuo(cuj.b($$0));
-   }
-
-   public void a() {
-      this.a.clear();
-   }
-
-   class a {
-      private final cyu<?> b;
-      private final List<cyr> c = Lists.newArrayList();
-      private final int d;
-      private final int[] e;
-      private final int f;
-      private final BitSet g;
-      private final IntList h = new IntArrayList();
-
-      public a(final cyu<?> $$0) {
-         this.b = $$0;
-         this.c.addAll($$0.a());
-         this.c.removeIf(cyr::c);
-         this.d = this.c.size();
-         this.e = this.a();
-         this.f = this.e.length;
-         this.g = new BitSet(this.d + this.f + this.d + this.d * this.f);
-
-         for (int $$1 = 0; $$1 < this.c.size(); $$1++) {
-            IntList $$2 = this.c.get($$1).b();
-
-            for (int $$3 = 0; $$3 < this.f; $$3++) {
-               if ($$2.contains(this.e[$$3])) {
-                  this.g.set(this.d(true, $$3, $$1));
-               }
-            }
-         }
-      }
-
-      public boolean a(int $$0, @Nullable IntList $$1) {
-         if ($$0 <= 0) {
-            return true;
-         } else {
-            int $$2;
-            for ($$2 = 0; this.a($$0); $$2++) {
-               cna.this.a(this.e[this.h.getInt(0)], $$0);
-               int $$3 = this.h.size() - 1;
-               this.c(this.h.getInt($$3));
-
-               for (int $$4 = 0; $$4 < $$3; $$4++) {
-                  this.c(($$4 & 1) == 0, this.h.get($$4), this.h.get($$4 + 1));
-               }
-
-               this.h.clear();
-               this.g.clear(0, this.d + this.f);
-            }
-
-            boolean $$5 = $$2 == this.d;
-            boolean $$6 = $$5 && $$1 != null;
-            if ($$6) {
-               $$1.clear();
-            }
-
-            this.g.clear(0, this.d + this.f + this.d);
-            int $$7 = 0;
-
-            for (cyr $$9 : this.b.a()) {
-               if ($$6 && $$9.c()) {
-                  $$1.add(0);
-               } else {
-                  for (int $$10 = 0; $$10 < this.f; $$10++) {
-                     if (this.b(false, $$7, $$10)) {
-                        this.c(true, $$10, $$7);
-                        cna.this.b(this.e[$$10], $$0);
-                        if ($$6) {
-                           $$1.add(this.e[$$10]);
-                        }
-                     }
-                  }
-
-                  $$7++;
-               }
-            }
-
-            return $$5;
-         }
-      }
-
-      private int[] a() {
-         IntCollection $$0 = new IntAVLTreeSet();
-
-         for (cyr $$1 : this.c) {
-            $$0.addAll($$1.b());
-         }
-
-         IntIterator $$2 = $$0.iterator();
-
-         while ($$2.hasNext()) {
-            if (!cna.this.b($$2.nextInt())) {
-               $$2.remove();
-            }
-         }
-
-         return $$0.toIntArray();
-      }
-
-      private boolean a(int $$0) {
-         int $$1 = this.f;
-
-         for (int $$2 = 0; $$2 < $$1; $$2++) {
-            if (cna.this.a.get(this.e[$$2]) >= $$0) {
-               this.a(false, $$2);
-
-               while (!this.h.isEmpty()) {
-                  int $$3 = this.h.size();
-                  boolean $$4 = ($$3 & 1) == 1;
-                  int $$5 = this.h.getInt($$3 - 1);
-                  if (!$$4 && !this.b($$5)) {
-                     break;
-                  }
-
-                  int $$6 = $$4 ? this.d : $$1;
-                  int $$7 = 0;
-
-                  while (true) {
-                     if ($$7 < $$6) {
-                        if (this.b($$4, $$7) || !this.a($$4, $$5, $$7) || !this.b($$4, $$5, $$7)) {
-                           $$7++;
-                           continue;
-                        }
-
-                        this.a($$4, $$7);
-                     }
-
-                     $$7 = this.h.size();
-                     if ($$7 == $$3) {
-                        this.h.removeInt($$7 - 1);
-                     }
-                     break;
-                  }
-               }
-
-               if (!this.h.isEmpty()) {
-                  return true;
-               }
-            }
-         }
-
-         return false;
-      }
-
-      private boolean b(int $$0) {
-         return this.g.get(this.d($$0));
-      }
-
-      private void c(int $$0) {
-         this.g.set(this.d($$0));
-      }
-
-      private int d(int $$0) {
-         return this.d + this.f + $$0;
-      }
-
-      private boolean a(boolean $$0, int $$1, int $$2) {
-         return this.g.get(this.d($$0, $$1, $$2));
-      }
-
-      private boolean b(boolean $$0, int $$1, int $$2) {
-         return $$0 != this.g.get(1 + this.d($$0, $$1, $$2));
-      }
-
-      private void c(boolean $$0, int $$1, int $$2) {
-         this.g.flip(1 + this.d($$0, $$1, $$2));
-      }
-
-      private int d(boolean $$0, int $$1, int $$2) {
-         int $$3 = $$0 ? $$1 * this.d + $$2 : $$2 * this.d + $$1;
-         return this.d + this.f + this.d + 2 * $$3;
-      }
-
-      private void a(boolean $$0, int $$1) {
-         this.g.set(this.c($$0, $$1));
-         this.h.add($$1);
-      }
-
-      private boolean b(boolean $$0, int $$1) {
-         return this.g.get(this.c($$0, $$1));
-      }
-
-      private int c(boolean $$0, int $$1) {
-         return ($$0 ? 0 : this.d) + $$1;
-      }
-
-      public int b(int $$0, @Nullable IntList $$1) {
-         int $$2 = 0;
-         int $$3 = Math.min($$0, this.b()) + 1;
-
-         while (true) {
-            int $$4 = ($$2 + $$3) / 2;
-            if (this.a($$4, null)) {
-               if ($$3 - $$2 <= 1) {
-                  if ($$4 > 0) {
-                     this.a($$4, $$1);
-                  }
-
-                  return $$4;
-               }
-
-               $$2 = $$4;
-            } else {
-               $$3 = $$4;
-            }
-         }
-      }
-
-      private int b() {
-         int $$0 = Integer.MAX_VALUE;
-
-         for (cyr $$1 : this.c) {
-            int $$2 = 0;
-            IntListIterator var5 = $$1.b().iterator();
-
-            while (var5.hasNext()) {
-               int $$3 = (Integer)var5.next();
-               $$2 = Math.max($$2, cna.this.a.get($$3));
-            }
-
-            if ($$0 > 0) {
-               $$0 = Math.min($$0, $$2);
-            }
-         }
-
-         return $$0;
+   public static class b extends yp {
+      public b(xp $$0) {
+         super($$0);
       }
    }
 }

@@ -1,26 +1,61 @@
-import java.util.Map;
+import com.google.gson.JsonObject;
+import com.mojang.logging.LogUtils;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.nio.charset.StandardCharsets;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class ass {
-   private static final ass a = new ass(Map.of());
-   private final Map<atn<?>, ?> b;
+public abstract class ass implements atb {
+   private static final Logger c = LogUtils.getLogger();
+   private final ata d;
 
-   private ass(Map<atn<?>, ?> $$0) {
-      this.b = $$0;
+   protected ass(ata $$0) {
+      this.d = $$0;
    }
 
-   public <T> T a(atn<T> $$0) {
-      return (T)this.b.get($$0);
+   @Nullable
+   @Override
+   public <T> T a(ato<T> $$0) throws IOException {
+      auh<InputStream> $$1 = this.a(new String[]{"pack.mcmeta"});
+      if ($$1 == null) {
+         return null;
+      } else {
+         Object var4;
+         try (InputStream $$2 = $$1.get()) {
+            var4 = a($$0, $$2);
+         }
+
+         return (T)var4;
+      }
    }
 
-   public static ass a() {
-      return a;
+   @Nullable
+   public static <T> T a(ato<T> $$0, InputStream $$1) {
+      JsonObject $$3;
+      try (BufferedReader $$2 = new BufferedReader(new InputStreamReader($$1, StandardCharsets.UTF_8))) {
+         $$3 = ayp.a($$2);
+      } catch (Exception var9) {
+         c.error("Couldn't load {} metadata", $$0.a(), var9);
+         return null;
+      }
+
+      if (!$$3.has($$0.a())) {
+         return null;
+      } else {
+         try {
+            return $$0.a(ayp.u($$3, $$0.a()));
+         } catch (Exception var7) {
+            c.error("Couldn't load {} metadata", $$0.a(), var7);
+            return null;
+         }
+      }
    }
 
-   public static <T> ass a(atn<T> $$0, T $$1) {
-      return new ass(Map.of($$0, $$1));
-   }
-
-   public static <T1, T2> ass a(atn<T1> $$0, T1 $$1, atn<T2> $$2, T2 $$3) {
-      return new ass(Map.of($$0, $$1, $$2, (T1)$$3));
+   @Override
+   public ata a() {
+      return this.d;
    }
 }

@@ -1,17 +1,17 @@
-public class glq extends gkc<ckq, fwi> {
-   private static final ale a = new ale("textures/entity/illager/vex.png");
-   private static final ale i = new ale("textures/entity/illager/vex_charging.png");
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.Maps;
+import java.util.Map;
 
-   public glq(giw.a $$0) {
-      super($$0, new fwi($$0.a(fwy.bO)), 0.3F);
-      this.a(new gnb<>(this, $$0.d()));
+public class glq extends ghr<chj, ful<chj>> {
+   private static final Map<bta<?>, alf> a = Maps.newHashMap(
+      ImmutableMap.of(bta.bv, new alf("textures/entity/horse/horse_zombie.png"), bta.aO, new alf("textures/entity/horse/horse_skeleton.png"))
+   );
+
+   public glq(gix.a $$0, fwy $$1) {
+      super($$0, new ful<>($$0.a($$1)), 1.0F);
    }
 
-   protected int a(ckq $$0, iz $$1) {
-      return 15;
-   }
-
-   public ale a(ckq $$0) {
-      return $$0.gr() ? i : a;
+   public alf a(chj $$0) {
+      return a.get($$0.ak());
    }
 }

@@ -12,7 +12,7 @@ public final class kk implements Predicate<ki> {
          $$0 -> new kk($$0.entrySet().stream().map(ko::a).collect(Collectors.toList())),
          $$0 -> $$0.d.stream().filter($$0x -> !$$0x.a().d()).collect(Collectors.toMap(ko::a, ko::b))
       );
-   public static final zm<wz, kk> b = ko.a.a(zk.a()).a(kk::new, $$0 -> $$0.d);
+   public static final zn<xa, kk> b = ko.a.a(zl.a()).a(kk::new, $$0 -> $$0.d);
    public static final kk c = new kk(List.of());
    private final List<ko<?>> d;
 

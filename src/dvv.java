@@ -1,91 +1,19 @@
-import com.google.common.collect.ImmutableList;
-import java.util.List;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public enum dvv {
-   a {
-      @Override
-      public void a(are $$0, dvw $$1, List<chz> $$2, int $$3, iz $$4) {
-         iz $$5 = new iz(0, 128, 0);
+public record dvv(ji<dvu> e, dtz f) {
+   public static final Codec<dvv> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(dvu.j.fieldOf("type").forGetter(dvv::a), dtz.a.fieldOf("generator").forGetter(dvv::b)).apply($$0, $$0.stable(dvv::new))
+   );
+   public static final ale<dvv> b = ale.a(lq.aT, new alf("overworld"));
+   public static final ale<dvv> c = ale.a(lq.aT, new alf("the_nether"));
+   public static final ale<dvv> d = ale.a(lq.aT, new alf("the_end"));
 
-         for (chz $$6 : $$2) {
-            $$6.a($$5);
-         }
+   public ji<dvu> a() {
+      return this.e;
+   }
 
-         $$1.a(b);
-      }
-   },
-   b {
-      @Override
-      public void a(are $$0, dvw $$1, List<chz> $$2, int $$3, iz $$4) {
-         if ($$3 < 100) {
-            if ($$3 == 0 || $$3 == 50 || $$3 == 51 || $$3 == 52 || $$3 >= 95) {
-               $$0.c(3001, new iz(0, 128, 0), 0);
-            }
-         } else {
-            $$1.a(c);
-         }
-      }
-   },
-   c {
-      @Override
-      public void a(are $$0, dvw $$1, List<chz> $$2, int $$3, iz $$4) {
-         int $$5 = 40;
-         boolean $$6 = $$3 % 40 == 0;
-         boolean $$7 = $$3 % 40 == 39;
-         if ($$6 || $$7) {
-            List<ech.a> $$8 = ech.a($$0);
-            int $$9 = $$3 / 40;
-            if ($$9 < $$8.size()) {
-               ech.a $$10 = $$8.get($$9);
-               if ($$6) {
-                  for (chz $$11 : $$2) {
-                     $$11.a(new iz($$10.a(), $$10.d() + 1, $$10.b()));
-                  }
-               } else {
-                  int $$12 = 10;
-
-                  for (iz $$13 : iz.c(new iz($$10.a() - 10, $$10.d() - 10, $$10.b() - 10), new iz($$10.a() + 10, $$10.d() + 10, $$10.b() + 10))) {
-                     $$0.a($$13, false);
-                  }
-
-                  $$0.a(null, (double)((float)$$10.a() + 0.5F), (double)$$10.d(), (double)((float)$$10.b() + 0.5F), 5.0F, dbx.a.b);
-                  edv $$14 = new edv(true, ImmutableList.of($$10), new iz(0, 128, 0));
-                  eax.J.a($$14, $$0, $$0.l().g(), azg.a(), new iz($$10.a(), 45, $$10.b()));
-               }
-            } else if ($$6) {
-               $$1.a(d);
-            }
-         }
-      }
-   },
-   d {
-      @Override
-      public void a(are $$0, dvw $$1, List<chz> $$2, int $$3, iz $$4) {
-         if ($$3 >= 100) {
-            $$1.a(e);
-            $$1.h();
-
-            for (chz $$5 : $$2) {
-               $$5.a(null);
-               $$0.a($$5, $$5.du(), $$5.dw(), $$5.dA(), 6.0F, dbx.a.a);
-               $$5.ao();
-            }
-         } else if ($$3 >= 80) {
-            $$0.c(3001, new iz(0, 128, 0), 0);
-         } else if ($$3 == 0) {
-            for (chz $$6 : $$2) {
-               $$6.a(new iz(0, 128, 0));
-            }
-         } else if ($$3 < 5) {
-            $$0.c(3001, new iz(0, 128, 0), 0);
-         }
-      }
-   },
-   e {
-      @Override
-      public void a(are $$0, dvw $$1, List<chz> $$2, int $$3, iz $$4) {
-      }
-   };
-
-   public abstract void a(are var1, dvw var2, List<chz> var3, int var4, iz var5);
+   public dtz b() {
+      return this.f;
+   }
 }

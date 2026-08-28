@@ -1,101 +1,204 @@
-import com.mojang.logging.LogUtils;
+import com.google.common.annotations.VisibleForTesting;
+import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.Maps;
+import it.unimi.dsi.fastutil.objects.Object2ObjectArrayMap;
 import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
-import it.unimi.dsi.fastutil.objects.ObjectOpenHashSet;
 import java.util.Collection;
 import java.util.Map;
 import java.util.Set;
 import java.util.UUID;
-import java.util.stream.Collectors;
+import java.util.function.Consumer;
 import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
 public class but {
-   private static final Logger a = LogUtils.getLogger();
-   private final Map<ji<bur>, bus> b = new Object2ObjectOpenHashMap();
-   private final Set<bus> c = new ObjectOpenHashSet();
-   private final buv d;
+   private final ji<bus> a;
+   private final Map<buv.a, Map<UUID, buv>> b = Maps.newEnumMap(buv.a.class);
+   private final Map<UUID, buv> c = new Object2ObjectArrayMap();
+   private final Map<UUID, buv> d = new Object2ObjectArrayMap();
+   private double e;
+   private boolean f = true;
+   private double g;
+   private final Consumer<but> h;
 
-   public but(buv $$0) {
-      this.d = $$0;
+   public but(ji<bus> $$0, Consumer<but> $$1) {
+      this.a = $$0;
+      this.h = $$1;
+      this.e = $$0.a().a();
    }
 
-   private void a(bus $$0) {
-      if ($$0.a().a().b()) {
-         this.c.add($$0);
+   public ji<bus> a() {
+      return this.a;
+   }
+
+   public double b() {
+      return this.e;
+   }
+
+   public void a(double $$0) {
+      if ($$0 != this.e) {
+         this.e = $$0;
+         this.d();
       }
    }
 
-   public Set<bus> a() {
-      return this.c;
+   @VisibleForTesting
+   Map<UUID, buv> a(buv.a $$0) {
+      return this.b.computeIfAbsent($$0, $$0x -> new Object2ObjectOpenHashMap());
    }
 
-   public Collection<bus> b() {
-      return this.b.values().stream().filter($$0 -> $$0.a().a().b()).collect(Collectors.toList());
+   public Set<buv> c() {
+      return ImmutableSet.copyOf(this.c.values());
    }
 
    @Nullable
-   public bus a(ji<bur> $$0) {
-      return this.b.computeIfAbsent($$0, $$0x -> this.d.a(this::a, $$0x));
+   public buv a(UUID $$0) {
+      return this.c.get($$0);
    }
 
-   public boolean b(ji<bur> $$0) {
-      return this.b.get($$0) != null || this.d.c($$0);
+   public boolean a(buv $$0) {
+      return this.c.get($$0.b()) != null;
    }
 
-   public boolean a(ji<bur> $$0, UUID $$1) {
-      bus $$2 = this.b.get($$0);
-      return $$2 != null ? $$2.a($$1) != null : this.d.b($$0, $$1);
+   private void f(buv $$0) {
+      buv $$1 = this.c.putIfAbsent($$0.b(), $$0);
+      if ($$1 != null) {
+         throw new IllegalArgumentException("Modifier is already applied on this attribute!");
+      } else {
+         this.a($$0.e()).put($$0.b(), $$0);
+         this.d();
+      }
    }
 
-   public double c(ji<bur> $$0) {
-      bus $$1 = this.b.get($$0);
-      return $$1 != null ? $$1.f() : this.d.a($$0);
+   public void b(buv $$0) {
+      buv $$1 = this.c.put($$0.b(), $$0);
+      if ($$0 != $$1) {
+         this.a($$0.e()).put($$0.b(), $$0);
+         this.d();
+      }
    }
 
-   public double d(ji<bur> $$0) {
-      bus $$1 = this.b.get($$0);
-      return $$1 != null ? $$1.b() : this.d.b($$0);
+   public void c(buv $$0) {
+      this.f($$0);
    }
 
-   public double b(ji<bur> $$0, UUID $$1) {
-      bus $$2 = this.b.get($$0);
-      return $$2 != null ? $$2.a($$1).d() : this.d.a($$0, $$1);
+   public void d(buv $$0) {
+      this.f($$0);
+      this.d.put($$0.b(), $$0);
+   }
+
+   protected void d() {
+      this.f = true;
+      this.h.accept(this);
+   }
+
+   public void e(buv $$0) {
+      this.b($$0.b());
+   }
+
+   public void b(UUID $$0) {
+      buv $$1 = this.c.remove($$0);
+      if ($$1 != null) {
+         this.a($$1.e()).remove($$0);
+         this.d.remove($$0);
+         this.d();
+      }
+   }
+
+   public boolean c(UUID $$0) {
+      buv $$1 = this.d.remove($$0);
+      if ($$1 == null) {
+         return false;
+      } else {
+         this.a($$1.e()).remove($$1.b());
+         this.c.remove($$0);
+         this.d();
+         return true;
+      }
+   }
+
+   public void e() {
+      for (buv $$0 : this.c()) {
+         this.e($$0);
+      }
+   }
+
+   public double f() {
+      if (this.f) {
+         this.g = this.h();
+         this.f = false;
+      }
+
+      return this.g;
+   }
+
+   private double h() {
+      double $$0 = this.b();
+
+      for (buv $$1 : this.b(buv.a.a)) {
+         $$0 += $$1.d();
+      }
+
+      double $$2 = $$0;
+
+      for (buv $$3 : this.b(buv.a.b)) {
+         $$2 += $$0 * $$3.d();
+      }
+
+      for (buv $$4 : this.b(buv.a.c)) {
+         $$2 *= 1.0 + $$4.d();
+      }
+
+      return this.a.a().a($$2);
+   }
+
+   private Collection<buv> b(buv.a $$0) {
+      return this.b.getOrDefault($$0, Map.of()).values();
    }
 
    public void a(but $$0) {
-      $$0.b.values().forEach($$0x -> {
-         bus $$1 = this.a($$0x.a());
-         if ($$1 != null) {
-            $$1.a($$0x);
-         }
-      });
+      this.e = $$0.e;
+      this.c.clear();
+      this.c.putAll($$0.c);
+      this.d.clear();
+      this.d.putAll($$0.d);
+      this.b.clear();
+      $$0.b.forEach(($$0x, $$1) -> this.a($$0x).putAll((Map<? extends UUID, ? extends buv>)$$1));
+      this.d();
    }
 
-   public ux c() {
-      ux $$0 = new ux();
+   public us g() {
+      us $$0 = new us();
+      ale<bus> $$1 = this.a.e().orElseThrow(() -> new IllegalStateException("Tried to serialize unregistered attribute"));
+      $$0.a("Name", $$1.a().toString());
+      $$0.a("Base", this.e);
+      if (!this.d.isEmpty()) {
+         uy $$2 = new uy();
 
-      for (bus $$1 : this.b.values()) {
-         $$0.add($$1.g());
+         for (buv $$3 : this.d.values()) {
+            $$2.add($$3.a());
+         }
+
+         $$0.a("Modifiers", $$2);
       }
 
       return $$0;
    }
 
-   public void a(ux $$0) {
-      for (int $$1 = 0; $$1 < $$0.size(); $$1++) {
-         ur $$2 = $$0.a($$1);
-         String $$3 = $$2.l("Name");
-         ale $$4 = ale.a($$3);
-         if ($$4 != null) {
-            ac.a(lp.u.c($$4), $$1x -> {
-               bus $$2x = this.a($$1x);
-               if ($$2x != null) {
-                  $$2x.a($$2);
-               }
-            }, () -> a.warn("Ignoring unknown attribute '{}'", $$4));
-         } else {
-            a.warn("Ignoring malformed attribute '{}'", $$3);
+   public void a(us $$0) {
+      this.e = $$0.k("Base");
+      if ($$0.b("Modifiers", 9)) {
+         uy $$1 = $$0.c("Modifiers", 10);
+
+         for (int $$2 = 0; $$2 < $$1.size(); $$2++) {
+            buv $$3 = buv.a($$1.a($$2));
+            if ($$3 != null) {
+               this.c.put($$3.b(), $$3);
+               this.a($$3.e()).put($$3.b(), $$3);
+               this.d.put($$3.b(), $$3);
+            }
          }
       }
+
+      this.d();
    }
 }

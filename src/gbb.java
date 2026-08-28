@@ -1,244 +1,40 @@
-import java.util.List;
-import java.util.Optional;
-
-public abstract class gbb {
-   private static final evl a = new evl(0.0, 0.0, 0.0, 0.0, 0.0, 0.0);
-   private static final double b = ayy.k(100.0);
-   protected final fxu c;
-   protected double d;
-   protected double e;
-   protected double f;
-   protected double g;
-   protected double h;
-   protected double i;
-   protected double j;
-   protected double k;
-   protected double l;
-   private evl D = a;
-   protected boolean m;
-   protected boolean n = true;
-   private boolean E;
-   protected boolean o;
-   protected float p = 0.6F;
-   protected float q = 1.8F;
-   protected final azg r = azg.a();
-   protected int s;
-   protected int t;
-   protected float u;
-   protected float v = 1.0F;
-   protected float w = 1.0F;
-   protected float x = 1.0F;
-   protected float y = 1.0F;
-   protected float z;
-   protected float A;
-   protected float B = 0.98F;
-   protected boolean C = false;
-
-   protected gbb(fxu $$0, double $$1, double $$2, double $$3) {
-      this.c = $$0;
-      this.b(0.2F, 0.2F);
-      this.c($$1, $$2, $$3);
-      this.d = $$1;
-      this.e = $$2;
-      this.f = $$3;
-      this.t = (int)(4.0F / (this.r.i() * 0.9F + 0.1F));
+public class gbb extends gcc {
+   gbb(fxv $$0, double $$1, double $$2, double $$3, double $$4) {
+      super($$0, $$1, $$2, $$3, 0.0, 0.0, 0.0);
+      this.B = 0.66F;
+      this.C = true;
+      this.j *= 0.01F;
+      this.k *= 0.01F;
+      this.l *= 0.01F;
+      this.k += 0.2;
+      this.v = Math.max(0.0F, ayz.a(((float)$$4 + 0.0F) * (float) (Math.PI * 2)) * 0.65F + 0.35F);
+      this.w = Math.max(0.0F, ayz.a(((float)$$4 + 0.33333334F) * (float) (Math.PI * 2)) * 0.65F + 0.35F);
+      this.x = Math.max(0.0F, ayz.a(((float)$$4 + 0.6666667F) * (float) (Math.PI * 2)) * 0.65F + 0.35F);
+      this.D *= 1.5F;
+      this.t = 6;
    }
-
-   public gbb(fxu $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6) {
-      this($$0, $$1, $$2, $$3);
-      this.j = $$4 + (Math.random() * 2.0 - 1.0) * 0.4F;
-      this.k = $$5 + (Math.random() * 2.0 - 1.0) * 0.4F;
-      this.l = $$6 + (Math.random() * 2.0 - 1.0) * 0.4F;
-      double $$7 = (Math.random() + Math.random() + 1.0) * 0.15F;
-      double $$8 = Math.sqrt(this.j * this.j + this.k * this.k + this.l * this.l);
-      this.j = this.j / $$8 * $$7 * 0.4F;
-      this.k = this.k / $$8 * $$7 * 0.4F + 0.1F;
-      this.l = this.l / $$8 * $$7 * 0.4F;
-   }
-
-   public gbb c(float $$0) {
-      this.j *= (double)$$0;
-      this.k = (this.k - 0.1F) * (double)$$0 + 0.1F;
-      this.l *= (double)$$0;
-      return this;
-   }
-
-   public void b(double $$0, double $$1, double $$2) {
-      this.j = $$0;
-      this.k = $$1;
-      this.l = $$2;
-   }
-
-   public gbb d(float $$0) {
-      this.b(0.2F * $$0, 0.2F * $$0);
-      return this;
-   }
-
-   public void a(float $$0, float $$1, float $$2) {
-      this.v = $$0;
-      this.w = $$1;
-      this.x = $$2;
-   }
-
-   protected void e(float $$0) {
-      this.y = $$0;
-   }
-
-   public void a(int $$0) {
-      this.t = $$0;
-   }
-
-   public int j() {
-      return this.t;
-   }
-
-   public void a() {
-      this.d = this.g;
-      this.e = this.h;
-      this.f = this.i;
-      if (this.s++ >= this.t) {
-         this.k();
-      } else {
-         this.k = this.k - 0.04 * (double)this.u;
-         this.a(this.j, this.k, this.l);
-         if (this.C && this.h == this.e) {
-            this.j *= 1.1;
-            this.l *= 1.1;
-         }
-
-         this.j = this.j * (double)this.B;
-         this.k = this.k * (double)this.B;
-         this.l = this.l * (double)this.B;
-         if (this.m) {
-            this.j *= 0.7F;
-            this.l *= 0.7F;
-         }
-      }
-   }
-
-   public abstract void a(fab var1, fep var2, float var3);
-
-   public abstract gbf b();
 
    @Override
-   public String toString() {
-      return this.getClass().getSimpleName()
-         + ", Pos ("
-         + this.g
-         + ","
-         + this.h
-         + ","
-         + this.i
-         + "), RGBA ("
-         + this.v
-         + ","
-         + this.w
-         + ","
-         + this.x
-         + ","
-         + this.y
-         + "), Age "
-         + this.s;
+   public gbg b() {
+      return gbg.b;
    }
 
-   public void k() {
-      this.o = true;
+   @Override
+   public float b(float $$0) {
+      return this.D * ayz.a(((float)this.s + $$0) / (float)this.t * 32.0F, 0.0F, 1.0F);
    }
 
-   protected void b(float $$0, float $$1) {
-      if ($$0 != this.p || $$1 != this.q) {
-         this.p = $$0;
-         this.q = $$1;
-         evl $$2 = this.n();
-         double $$3 = ($$2.a + $$2.d - (double)$$0) / 2.0;
-         double $$4 = ($$2.c + $$2.f - (double)$$0) / 2.0;
-         this.a(new evl($$3, $$2.b, $$4, $$3 + (double)this.p, $$2.b + (double)this.q, $$4 + (double)this.p));
-      }
-   }
+   public static class a implements gbf<lm> {
+      private final gbx a;
 
-   public void c(double $$0, double $$1, double $$2) {
-      this.g = $$0;
-      this.h = $$1;
-      this.i = $$2;
-      float $$3 = this.p / 2.0F;
-      float $$4 = this.q;
-      this.a(new evl($$0 - (double)$$3, $$1, $$2 - (double)$$3, $$0 + (double)$$3, $$1 + (double)$$4, $$2 + (double)$$3));
-   }
-
-   public void a(double $$0, double $$1, double $$2) {
-      if (!this.E) {
-         double $$3 = $$0;
-         double $$4 = $$1;
-         double $$5 = $$2;
-         if (this.n && ($$0 != 0.0 || $$1 != 0.0 || $$2 != 0.0) && $$0 * $$0 + $$1 * $$1 + $$2 * $$2 < b) {
-            evq $$6 = bst.a(null, new evq($$0, $$1, $$2), this.n(), this.c, List.of());
-            $$0 = $$6.c;
-            $$1 = $$6.d;
-            $$2 = $$6.e;
-         }
-
-         if ($$0 != 0.0 || $$1 != 0.0 || $$2 != 0.0) {
-            this.a(this.n().d($$0, $$1, $$2));
-            this.l();
-         }
-
-         if (Math.abs($$4) >= 1.0E-5F && Math.abs($$1) < 1.0E-5F) {
-            this.E = true;
-         }
-
-         this.m = $$4 != $$1 && $$4 < 0.0;
-         if ($$3 != $$0) {
-            this.j = 0.0;
-         }
-
-         if ($$5 != $$2) {
-            this.l = 0.0;
-         }
-      }
-   }
-
-   protected void l() {
-      evl $$0 = this.n();
-      this.g = ($$0.a + $$0.d) / 2.0;
-      this.h = $$0.b;
-      this.i = ($$0.c + $$0.f) / 2.0;
-   }
-
-   protected int a(float $$0) {
-      iz $$1 = iz.a(this.g, this.h, this.i);
-      return this.c.B($$1) ? gdl.a(this.c, $$1) : 0;
-   }
-
-   public boolean m() {
-      return !this.o;
-   }
-
-   public evl n() {
-      return this.D;
-   }
-
-   public void a(evl $$0) {
-      this.D = $$0;
-   }
-
-   public Optional<lf> o() {
-      return Optional.empty();
-   }
-
-   public static record a(float b, float c, float d, float e) {
-      public static final gbb.a a = new gbb.a(1.0F, 1.0F, 0.0F, 1.0F);
-
-      public boolean a() {
-         return this.b >= 1.0F && this.c >= 1.0F;
+      public a(gbx $$0) {
+         this.a = $$0;
       }
 
-      public float a(int $$0, int $$1, float $$2) {
-         if (ayy.a(this.b, this.c)) {
-            return this.b;
-         } else {
-            float $$3 = ayy.g(((float)$$0 + $$2) / (float)$$1, this.d, this.e);
-            return ayy.b(this.b, this.c, $$3);
-         }
+      public gbc a(lm $$0, fxv $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         gbb $$8 = new gbb($$1, $$2, $$3, $$4, $$5);
+         $$8.a(this.a);
+         return $$8;
       }
    }
 }

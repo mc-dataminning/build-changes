@@ -1,21 +1,37 @@
 import java.util.function.Predicate;
 import javax.annotation.Nullable;
 
-public class cci<T extends bto> extends ccf<T> {
-   private final bul i;
+public class cci<T extends btp> extends ccg<T> {
+   private static final int i = 200;
+   private int j = 0;
 
-   public cci(bul $$0, Class<T> $$1, boolean $$2, @Nullable Predicate<bto> $$3) {
-      super($$0, $$1, 10, $$2, false, $$3);
-      this.i = $$0;
+   public cci(coj $$0, Class<T> $$1, boolean $$2, @Nullable Predicate<btp> $$3) {
+      super($$0, $$1, 500, $$2, false, $$3);
+   }
+
+   public int i() {
+      return this.j;
+   }
+
+   public void k() {
+      this.j--;
    }
 
    @Override
    public boolean a() {
-      return !this.i.s() && super.a();
+      if (this.j > 0 || !this.e.el().h()) {
+         return false;
+      } else if (!((coj)this.e).gH()) {
+         return false;
+      } else {
+         this.h();
+         return this.c != null;
+      }
    }
 
    @Override
-   public boolean b() {
-      return this.d != null ? this.d.a(this.e, this.c) : super.b();
+   public void c() {
+      this.j = b(200);
+      super.c();
    }
 }

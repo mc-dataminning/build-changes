@@ -1,45 +1,9 @@
-public class cqq extends cro {
-   private final cmw a;
-   private int b;
-
-   public cqq(cmw $$0, bqm $$1, int $$2, int $$3, int $$4) {
-      super($$1, $$2, $$3, $$4);
-      this.a = $$0;
+public class cqq extends cpv {
+   public cqq(int $$0, cmw $$1) {
+      super(crb.o, cza.b, cri.b, $$0, $$1);
    }
 
-   @Override
-   public boolean a(cuo $$0) {
-      return false;
-   }
-
-   @Override
-   public cuo a(int $$0) {
-      if (this.h()) {
-         this.b = this.b + Math.min($$0, this.g().I());
-      }
-
-      return super.a($$0);
-   }
-
-   @Override
-   public void a(cmw $$0, cuo $$1) {
-      this.b_($$1);
-      super.a($$0, $$1);
-   }
-
-   @Override
-   protected void a(cuo $$0, int $$1) {
-      this.b += $$1;
-      this.b_($$0);
-   }
-
-   @Override
-   protected void b_(cuo $$0) {
-      $$0.a(this.a.dP(), this.a, this.b);
-      if (this.a instanceof arf $$1 && this.c instanceof dou $$2) {
-         $$2.a($$1);
-      }
-
-      this.b = 0;
+   public cqq(int $$0, cmw $$1, bqn $$2, cqe $$3) {
+      super(crb.o, cza.b, cri.b, $$0, $$1, $$2, $$3);
    }
 }

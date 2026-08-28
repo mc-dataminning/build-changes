@@ -1,59 +1,71 @@
 import com.mojang.serialization.MapCodec;
+import javax.annotation.Nullable;
 
-public class dgm extends dey {
+public class dgm extends del implements dma {
    public static final MapCodec<dgm> a = b(dgm::new);
-   public static final dss b = dsr.w;
-   public static final dss c = dsr.r;
+   public static final dst b = dss.C;
+   private static final int d = 3;
+   protected static final ewk c = dez.a(5.0, 5.0, 5.0, 11.0, 11.0, 11.0);
 
    @Override
-   protected MapCodec<? extends dgm> a() {
+   public MapCodec<dgm> a() {
       return a;
    }
 
-   public dgm(dsa.d $$0) {
+   public dgm(dsb.d $$0) {
       super($$0);
-      this.k(this.o().a(c, Boolean.valueOf(false)).a(b, Boolean.valueOf(false)));
+      this.k(this.E.b().a(b, Boolean.valueOf(true)));
    }
 
    @Override
-   protected void b(dsb $$0, dbx $$1, iz $$2, dsb $$3, boolean $$4) {
-      if ($$3.b() != $$0.b() && $$1 instanceof are $$5) {
-         this.a($$0, $$5, $$2);
+   protected void a(dsd.a<dez, dsc> $$0) {
+      $$0.a(b);
+   }
+
+   @Override
+   public dph a(iz $$0, dsc $$1) {
+      return new dpt($$0, $$1);
+   }
+
+   @Nullable
+   @Override
+   public <T extends dph> dpi<T> a(dby $$0, dsc $$1, dpj<T> $$2) {
+      return a($$2, dpj.z, $$0.B ? dpt::a : dpt::b);
+   }
+
+   @Override
+   protected dlf a_(dsc $$0) {
+      return dlf.b;
+   }
+
+   @Override
+   protected env b_(dsc $$0) {
+      return $$0.c(b) ? enw.c.a(false) : super.b_($$0);
+   }
+
+   @Override
+   protected dsc a(dsc $$0, je $$1, dsc $$2, dbz $$3, iz $$4, iz $$5) {
+      if ($$0.c(b)) {
+         $$3.a($$4, enw.c, enw.c.a($$3));
       }
+
+      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
    @Override
-   protected void a(dsb $$0, dbx $$1, iz $$2, dey $$3, iz $$4, boolean $$5) {
-      if ($$1 instanceof are $$6) {
-         this.a($$0, $$6, $$2);
-      }
+   protected ewk a(dsc $$0, dbe $$1, iz $$2, evw $$3) {
+      return c;
    }
 
-   public void a(dsb $$0, are $$1, iz $$2) {
-      boolean $$3 = $$1.C($$2);
-      if ($$3 != $$0.c(b)) {
-         dsb $$4 = $$0;
-         if (!$$0.c(b)) {
-            $$4 = $$0.a(c);
-            $$1.a(null, $$2, $$4.c(c) ? avz.fG : avz.fH, awa.e);
-         }
-
-         $$1.a($$2, $$4.a(b, Boolean.valueOf($$3)), 3);
-      }
+   @Nullable
+   @Override
+   public dsc a(cya $$0) {
+      env $$1 = $$0.q().b_($$0.a());
+      return this.o().a(b, Boolean.valueOf($$1.a(awv.a) && $$1.e() == 8));
    }
 
    @Override
-   protected void a(dsc.a<dey, dsb> $$0) {
-      $$0.a(c, b);
-   }
-
-   @Override
-   protected boolean c_(dsb $$0) {
-      return true;
-   }
-
-   @Override
-   protected int a(dsb $$0, dbx $$1, iz $$2) {
-      return $$1.a_($$2).c(c) ? 15 : 0;
+   protected boolean a(dsc $$0, eok $$1) {
+      return false;
    }
 }

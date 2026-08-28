@@ -1,34 +1,53 @@
-public class fea extends fee {
-   private static final xo b = xo.c("mco.connect.connecting");
-   private final gvc c;
-   private final fbe d;
-   private final fbf e;
+import com.mojang.logging.LogUtils;
+import org.slf4j.Logger;
 
-   public fea(fnc $$0, fbe $$1, fbf $$2) {
-      this.d = $$1;
-      this.e = $$2;
-      this.c = new gvc($$0);
+public class fea extends fef {
+   private static final Logger b = LogUtils.getLogger();
+   private static final xp c = xp.c("mco.configure.world.closing");
+   private final fbf d;
+   private final fco e;
+
+   public fea(fbf $$0, fco $$1) {
+      this.d = $$0;
+      this.e = $$1;
    }
 
    @Override
    public void run() {
-      this.c.a(this.d, fzl.a(this.e.a));
+      fao $$0 = fao.a();
+
+      for (int $$1 = 0; $$1 < 25; $$1++) {
+         if (this.d()) {
+            return;
+         }
+
+         try {
+            boolean $$2 = $$0.g(this.d.a);
+            if ($$2) {
+               this.e.b();
+               this.d.e = fbf.c.a;
+               a(this.e);
+               break;
+            }
+         } catch (fcc var4) {
+            if (this.d()) {
+               return;
+            }
+
+            a((long)var4.c);
+         } catch (Exception var5) {
+            if (this.d()) {
+               return;
+            }
+
+            b.error("Failed to close server", var5);
+            this.a(var5);
+         }
+      }
    }
 
    @Override
-   public void b() {
-      super.b();
-      this.c.a();
-      ffe.Q().ae().i();
-   }
-
-   @Override
-   public void c() {
-      this.c.b();
-   }
-
-   @Override
-   public xo a() {
-      return b;
+   public xp a() {
+      return c;
    }
 }

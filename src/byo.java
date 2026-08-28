@@ -1,97 +1,215 @@
+import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.ImmutableSet;
+import com.mojang.datafixers.util.Pair;
 import java.util.Optional;
 
-public class byo extends bvh<cmj> {
-   private long c;
+public class byo {
+   private static final float d = 0.4F;
+   public static final int a = 5;
+   public static final int b = 2;
+   public static final float c = 0.5F;
 
-   public byo() {
-      super(ImmutableMap.of(ccs.r, cct.a, ccs.h, cct.a), 350, 350);
-   }
-
-   protected boolean a(are $$0, cmj $$1) {
-      return this.a($$1);
-   }
-
-   protected boolean a(are $$0, cmj $$1, long $$2) {
-      return $$2 <= this.c && this.a($$1);
-   }
-
-   protected void b(are $$0, cmj $$1, long $$2) {
-      bsn $$3 = $$1.dS().c(ccs.r).get();
-      bvj.a($$1, $$3, 0.5F, 2);
-      $$0.a($$3, (byte)18);
-      $$0.a($$1, (byte)18);
-      int $$4 = 275 + $$1.el().a(50);
-      this.c = $$2 + (long)$$4;
-   }
-
-   protected void c(are $$0, cmj $$1, long $$2) {
-      cmj $$3 = (cmj)$$1.dS().c(ccs.r).get();
-      if (!($$1.g($$3) > 5.0)) {
-         bvj.a($$1, $$3, 0.5F, 2);
-         if ($$2 >= this.c) {
-            $$1.gH();
-            $$3.gH();
-            this.a($$0, $$1, $$3);
-         } else if ($$1.el().a(35) == 0) {
-            $$0.a($$3, (byte)12);
-            $$0.a($$1, (byte)12);
+   public static ImmutableList<Pair<Integer, ? extends bvj<? super cmk>>> a(cmn $$0, float $$1) {
+      return ImmutableList.of(
+         Pair.of(0, new byc(0.8F)),
+         Pair.of(0, bwg.a()),
+         Pair.of(0, new bwo(45, 90)),
+         Pair.of(0, new byq()),
+         Pair.of(0, byr.a()),
+         Pair.of(0, bxb.a()),
+         Pair.of(0, bxl.a()),
+         Pair.of(0, byl.a($$0.b(), cct.c)),
+         Pair.of(0, byl.a($$0.c(), cct.d)),
+         Pair.of(1, new bws()),
+         Pair.of(2, bwv.a()),
+         Pair.of(3, new bwn($$1)),
+         new Pair[]{
+            Pair.of(5, bwc.a($$1, false, 4)),
+            Pair.of(6, bvb.a($$0.c(), cct.c, cct.d, true, Optional.empty())),
+            Pair.of(7, new bwa($$1)),
+            Pair.of(8, byu.a($$1)),
+            Pair.of(10, bvb.a($$0x -> $$0x.a(cex.n), cct.b, false, Optional.of((byte)14))),
+            Pair.of(10, bvb.a($$0x -> $$0x.a(cex.o), cct.e, true, Optional.of((byte)14))),
+            Pair.of(10, bve.a()),
+            Pair.of(10, bxc.a())
          }
-      }
+      );
    }
 
-   private void a(are $$0, cmj $$1, cmj $$2) {
-      Optional<iz> $$3 = this.b($$0, $$1);
-      if ($$3.isEmpty()) {
-         $$0.a($$2, (byte)13);
-         $$0.a($$1, (byte)13);
+   public static ImmutableList<Pair<Integer, ? extends bvj<? super cmk>>> b(cmn $$0, float $$1) {
+      byt $$2;
+      if ($$0 == cmn.g) {
+         $$2 = new bys();
       } else {
-         Optional<cmj> $$4 = this.b($$0, $$1, $$2);
-         if ($$4.isPresent()) {
-            this.a($$0, $$4.get(), $$3.get());
-         } else {
-            $$0.y().b($$3.get());
-            ags.c($$0, $$3.get());
-         }
+         $$2 = new byt();
       }
+
+      return ImmutableList.of(
+         b(),
+         Pair.of(
+            5,
+            new bxf(
+               ImmutableList.of(
+                  Pair.of($$2, 7),
+                  Pair.of(bxz.a(cct.c, 0.4F, 4), 2),
+                  Pair.of(bya.a(cct.c, 0.4F, 1, 10), 5),
+                  Pair.of(byb.a(cct.f, $$1, 1, 6, cct.c), 5),
+                  Pair.of(new bwd(), $$0 == cmn.g ? 2 : 5),
+                  Pair.of(new byk(), $$0 == cmn.g ? 4 : 7)
+               )
+            )
+         ),
+         Pair.of(10, new bxq(400, 1600)),
+         Pair.of(10, bxk.a(bta.by, 4)),
+         Pair.of(2, bxo.a(cct.c, $$1, 9, 100, 1200)),
+         Pair.of(3, new bvx(100)),
+         Pair.of(99, byj.a())
+      );
    }
 
-   protected void d(are $$0, cmj $$1, long $$2) {
-      $$1.dS().b(ccs.r);
+   public static ImmutableList<Pair<Integer, ? extends bvj<? super cmk>>> a(float $$0) {
+      return ImmutableList.of(
+         Pair.of(0, new bws(80, 120)),
+         a(),
+         Pair.of(5, bwu.a()),
+         Pair.of(
+            5,
+            new bxf(
+               ImmutableMap.of(cct.i, ccu.b),
+               ImmutableList.of(
+                  Pair.of(bwf.a(bta.bj, 8, cct.q, $$0, 2), 2),
+                  Pair.of(bwf.a(bta.p, 8, cct.q, $$0, 2), 1),
+                  Pair.of(bym.a($$0), 1),
+                  Pair.of(bxp.a($$0, 2), 1),
+                  Pair.of(new bwh($$0), 2),
+                  Pair.of(new bvs(20, 40), 2)
+               )
+            )
+         ),
+         Pair.of(99, byj.a())
+      );
    }
 
-   private boolean a(cmj $$0) {
-      buq<cmj> $$1 = $$0.dS();
-      Optional<bsn> $$2 = $$1.c(ccs.r).filter($$0x -> $$0x.ak() == bsz.bj);
-      return $$2.isEmpty() ? false : bvj.a($$1, ccs.r, bsz.bj) && $$0.X_() && $$2.get().X_();
+   public static ImmutableList<Pair<Integer, ? extends bvj<? super cmk>>> c(cmn $$0, float $$1) {
+      return ImmutableList.of(
+         Pair.of(2, bxo.a(cct.b, $$1, 1, 150, 1200)),
+         Pair.of(3, byl.a($$0x -> $$0x.a(cex.n), cct.b)),
+         Pair.of(3, new bxs()),
+         Pair.of(
+            5,
+            new bxf(
+               ImmutableMap.of(cct.b, ccu.b),
+               ImmutableList.of(Pair.of(bxg.a($$1), 1), Pair.of(bwe.a($$1), 4), Pair.of(bvz.a($$1, 4), 2), Pair.of(new bvs(20, 40), 2))
+            )
+         ),
+         b(),
+         Pair.of(99, byj.a())
+      );
    }
 
-   private Optional<iz> b(are $$0, cmj $$1) {
-      return $$0.y().a($$0x -> $$0x.a(cew.n), ($$1x, $$2) -> this.a($$1, $$2, $$1x), $$1.dp(), 48);
+   public static ImmutableList<Pair<Integer, ? extends bvj<? super cmk>>> d(cmn $$0, float $$1) {
+      return ImmutableList.of(
+         Pair.of(2, bye.a(ImmutableList.of(Pair.of(bxz.a(cct.e, 0.4F, 40), 2), Pair.of(bxt.a(), 2)))),
+         Pair.of(10, new bxq(400, 1600)),
+         Pair.of(10, bxk.a(bta.by, 4)),
+         Pair.of(2, bxo.a(cct.e, $$1, 6, 100, 200)),
+         Pair.of(3, new bvx(100)),
+         Pair.of(3, byl.a($$0x -> $$0x.a(cex.o), cct.e)),
+         Pair.of(3, new bvw(ImmutableMap.of(), ImmutableSet.of(cct.q), bvw.a.a, bvw.b.a, ImmutableList.of(Pair.of(new byd(), 1)))),
+         a(),
+         Pair.of(99, byj.a())
+      );
    }
 
-   private boolean a(cmj $$0, iz $$1, ji<cev> $$2) {
-      eoi $$3 = $$0.K().a($$1, $$2.a().c());
-      return $$3 != null && $$3.j();
+   public static ImmutableList<Pair<Integer, ? extends bvj<? super cmk>>> e(cmn $$0, float $$1) {
+      return ImmutableList.of(
+         Pair.of(
+            2,
+            new bxf(
+               ImmutableList.of(
+                  Pair.of(bwf.a(bta.bj, 8, cct.q, $$1, 2), 2),
+                  Pair.of(bwf.a(bta.bj, 8, bso::X_, bso::X_, cct.r, $$1, 2), 1),
+                  Pair.of(bwf.a(bta.p, 8, cct.q, $$1, 2), 1),
+                  Pair.of(bym.a($$1), 1),
+                  Pair.of(bxp.a($$1, 2), 1),
+                  Pair.of(new bwh($$1), 1),
+                  Pair.of(new bvs(30, 60), 1)
+               )
+            )
+         ),
+         Pair.of(3, new bvx(100)),
+         Pair.of(3, bxk.a(bta.by, 4)),
+         Pair.of(3, new bxq(400, 1600)),
+         Pair.of(3, new bvw(ImmutableMap.of(), ImmutableSet.of(cct.q), bvw.a.a, bvw.b.a, ImmutableList.of(Pair.of(new byd(), 1)))),
+         Pair.of(3, new bvw(ImmutableMap.of(), ImmutableSet.of(cct.r), bvw.a.a, bvw.b.a, ImmutableList.of(Pair.of(new byp(), 1)))),
+         a(),
+         Pair.of(99, byj.a())
+      );
    }
 
-   private Optional<cmj> b(are $$0, cmj $$1, cmj $$2) {
-      cmj $$3 = $$1.b($$0, $$2);
-      if ($$3 == null) {
-         return Optional.empty();
-      } else {
-         $$1.c_(6000);
-         $$2.c_(6000);
-         $$3.c_(-24000);
-         $$3.b($$1.du(), $$1.dw(), $$1.dA(), 0.0F, 0.0F);
-         $$0.a_($$3);
-         $$0.a($$3, (byte)12);
-         return Optional.of($$3);
-      }
+   public static ImmutableList<Pair<Integer, ? extends bvj<? super cmk>>> f(cmn $$0, float $$1) {
+      float $$2 = $$1 * 1.5F;
+      return ImmutableList.of(
+         Pair.of(0, byn.a()), Pair.of(1, bxm.b(cct.A, $$2, 6, false)), Pair.of(1, bxm.b(cct.y, $$2, 6, false)), Pair.of(3, bym.a($$2, 2, 2)), b()
+      );
    }
 
-   private void a(are $$0, cmj $$1, iz $$2) {
-      jh $$3 = jh.a($$0.af(), $$2);
-      $$1.dS().a(ccs.b, $$3);
+   public static ImmutableList<Pair<Integer, ? extends bvj<? super cmk>>> g(cmn $$0, float $$1) {
+      return ImmutableList.of(
+         Pair.of(0, bxe.a()),
+         Pair.of(0, bye.a(ImmutableList.of(Pair.of(bxo.a(cct.e, $$1 * 1.5F, 2, 150, 200), 6), Pair.of(bym.a($$1 * 1.5F), 2)))),
+         b(),
+         Pair.of(99, bxd.a())
+      );
+   }
+
+   public static ImmutableList<Pair<Integer, ? extends bvj<? super cmk>>> h(cmn $$0, float $$1) {
+      return ImmutableList.of(
+         Pair.of(0, byv.a(byv.a(byo::b), bye.a(ImmutableList.of(Pair.of(bwr.a($$1), 5), Pair.of(bym.a($$1 * 1.1F), 2))))),
+         Pair.of(0, new bvm(600, 600)),
+         Pair.of(2, byv.a(byv.a(byo::a), bwi.a(24, $$1 * 1.4F, 1))),
+         b(),
+         Pair.of(99, bxd.a())
+      );
+   }
+
+   public static ImmutableList<Pair<Integer, ? extends bvj<? super cmk>>> i(cmn $$0, float $$1) {
+      int $$2 = 2;
+      return ImmutableList.of(Pair.of(0, bxj.a(15, 3)), Pair.of(1, bwi.a(32, $$1 * 1.25F, 2)), b());
+   }
+
+   private static Pair<Integer, bvj<btp>> a() {
+      return Pair.of(
+         5,
+         new bxf(
+            ImmutableList.of(
+               Pair.of(bxh.a(bta.p, 8.0F), 8),
+               Pair.of(bxh.a(bta.bj, 8.0F), 2),
+               Pair.of(bxh.a(bta.by, 8.0F), 2),
+               Pair.of(bxh.a(bts.b, 8.0F), 1),
+               Pair.of(bxh.a(bts.f, 8.0F), 1),
+               Pair.of(bxh.a(bts.d, 8.0F), 1),
+               Pair.of(bxh.a(bts.e, 8.0F), 1),
+               Pair.of(bxh.a(bts.g, 8.0F), 1),
+               Pair.of(bxh.a(bts.a, 8.0F), 1),
+               Pair.of(new bvs(30, 60), 2)
+            )
+         )
+      );
+   }
+
+   private static Pair<Integer, bvj<btp>> b() {
+      return Pair.of(5, new bxf(ImmutableList.of(Pair.of(bxh.a(bta.bj, 8.0F), 2), Pair.of(bxh.a(bta.by, 8.0F), 2), Pair.of(new bvs(30, 60), 8))));
+   }
+
+   private static boolean a(arf $$0, btp $$1) {
+      coi $$2 = $$0.d($$1.dp());
+      return $$2 != null && $$2.u() && !$$2.e() && !$$2.f();
+   }
+
+   private static boolean b(arf $$0, btp $$1) {
+      coi $$2 = $$0.d($$1.dp());
+      return $$2 != null && $$2.e();
    }
 }

@@ -1,31 +1,53 @@
-public class acq implements zv<ach> {
-   public static final zm<wz, acq> a = zm.a(iz.b, acq::e, zk.a(dey.q), acq::b, acq::new);
+public class acq implements zw<aci> {
+   public static final zn<xa, acq> a = zw.a(acq::a, acq::new);
    private final iz b;
-   private final dsb c;
+   private final int c;
+   private final int d;
+   private final dez e;
 
-   public acq(iz $$0, dsb $$1) {
+   public acq(iz $$0, dez $$1, int $$2, int $$3) {
       this.b = $$0;
-      this.c = $$1;
+      this.e = $$1;
+      this.c = $$2;
+      this.d = $$3;
    }
 
-   public acq(dbd $$0, iz $$1) {
-      this($$1, $$0.a_($$1));
+   private acq(xa $$0) {
+      this.b = $$0.e();
+      this.c = $$0.readUnsignedByte();
+      this.d = $$0.readUnsignedByte();
+      this.e = zl.a(lq.f).decode($$0);
+   }
+
+   private void a(xa $$0) {
+      $$0.a(this.b);
+      $$0.k(this.c);
+      $$0.k(this.d);
+      zl.a(lq.f).encode($$0, this.e);
    }
 
    @Override
-   public zx<acq> a() {
-      return agt.k;
+   public zy<acq> a() {
+      return agu.j;
    }
 
-   public void a(ach $$0) {
+   public void a(aci $$0) {
       $$0.a(this);
    }
 
-   public dsb b() {
+   public iz b() {
+      return this.b;
+   }
+
+   public int e() {
       return this.c;
    }
 
-   public iz e() {
-      return this.b;
+   public int f() {
+      return this.d;
+   }
+
+   public dez g() {
+      return this.e;
    }
 }

@@ -1,50 +1,58 @@
-public class aia implements zv<agv> {
-   public static final zm<wl, aia> a = zv.a(aia::a, aia::new);
-   private final int b;
-   private final aia.a c;
-   private final int d;
+public class aia implements zw<agw> {
+   public static final zn<wm, aia> a = zw.a(aia::a, aia::new);
+   private final iz b;
+   private final je c;
+   private final aia.a d;
+   private final int e;
 
-   public aia(bst $$0, aia.a $$1) {
-      this($$0, $$1, 0);
+   public aia(aia.a $$0, iz $$1, je $$2, int $$3) {
+      this.d = $$0;
+      this.b = $$1.i();
+      this.c = $$2;
+      this.e = $$3;
    }
 
-   public aia(bst $$0, aia.a $$1, int $$2) {
-      this.b = $$0.al();
-      this.c = $$1;
-      this.d = $$2;
+   public aia(aia.a $$0, iz $$1, je $$2) {
+      this($$0, $$1, $$2, 0);
    }
 
-   private aia(wl $$0) {
-      this.b = $$0.l();
-      this.c = $$0.b(aia.a.class);
-      this.d = $$0.l();
+   private aia(wm $$0) {
+      this.d = $$0.b(aia.a.class);
+      this.b = $$0.e();
+      this.c = je.a($$0.readUnsignedByte());
+      this.e = $$0.l();
    }
 
-   private void a(wl $$0) {
-      $$0.c(this.b);
-      $$0.a(this.c);
-      $$0.c(this.d);
+   private void a(wm $$0) {
+      $$0.a(this.d);
+      $$0.a(this.b);
+      $$0.k(this.c.d());
+      $$0.c(this.e);
    }
 
    @Override
-   public zx<aia> a() {
-      return agt.bL;
+   public zy<aia> a() {
+      return agu.bK;
    }
 
-   public void a(agv $$0) {
+   public void a(agw $$0) {
       $$0.a(this);
    }
 
-   public int b() {
+   public iz b() {
       return this.b;
    }
 
-   public aia.a e() {
+   public je e() {
       return this.c;
    }
 
-   public int f() {
+   public aia.a f() {
       return this.d;
+   }
+
+   public int g() {
+      return this.e;
    }
 
    public static enum a {
@@ -54,8 +62,6 @@ public class aia implements zv<agv> {
       d,
       e,
       f,
-      g,
-      h,
-      i;
+      g;
    }
 }

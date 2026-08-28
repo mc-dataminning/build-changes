@@ -1,61 +1,41 @@
 import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.DataFixUtils;
-import com.mojang.datafixers.OpticFinder;
-import com.mojang.datafixers.TypeRewriteRule;
 import com.mojang.datafixers.Typed;
 import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.Type;
 import com.mojang.serialization.Dynamic;
-import java.util.function.UnaryOperator;
+import java.util.Optional;
 
-public class bas extends DataFix {
-   private final String a;
-   private final UnaryOperator<String> b;
-
-   public bas(Schema $$0, String $$1, UnaryOperator<String> $$2) {
-      super($$0, false);
-      this.a = $$1;
-      this.b = $$2;
+public class bas extends bfv {
+   public bas(Schema $$0) {
+      super($$0, false, "AreaEffectCloudPotionFix", bgx.B, "minecraft:area_effect_cloud");
    }
 
-   protected TypeRewriteRule makeRule() {
-      Type<?> $$0 = this.getInputSchema().getType(bgw.t);
-      OpticFinder<?> $$1 = $$0.findField("tag");
-      return TypeRewriteRule.seq(
-         this.fixTypeEverywhereTyped(this.a + " (ItemStack)", $$0, $$1x -> $$1x.updateTyped($$1, this::a)),
-         new TypeRewriteRule[]{
-            this.fixTypeEverywhereTyped(this.a + " (Entity)", this.getInputSchema().getType(bgw.B), this::b),
-            this.fixTypeEverywhereTyped(this.a + " (Player)", this.getInputSchema().getType(bgw.b), this::b)
+   @Override
+   protected Typed<?> a(Typed<?> $$0) {
+      return $$0.update(DSL.remainderFinder(), this::a);
+   }
+
+   private <T> Dynamic<T> a(Dynamic<T> $$0) {
+      Optional<Dynamic<T>> $$1 = $$0.get("Color").result();
+      Optional<Dynamic<T>> $$2 = $$0.get("effects").result();
+      Optional<Dynamic<T>> $$3 = $$0.get("Potion").result();
+      $$0 = $$0.remove("Color").remove("effects").remove("Potion");
+      if ($$1.isEmpty() && $$2.isEmpty() && $$3.isEmpty()) {
+         return $$0;
+      } else {
+         Dynamic<T> $$4 = $$0.emptyMap();
+         if ($$1.isPresent()) {
+            $$4 = $$4.set("custom_color", $$1.get());
          }
-      );
-   }
 
-   private Dynamic<?> a(Dynamic<?> $$0) {
-      return (Dynamic<?>)DataFixUtils.orElse($$0.asString().result().map(this.b).map($$0::createString), $$0);
-   }
+         if ($$2.isPresent()) {
+            $$4 = $$4.set("custom_effects", $$2.get());
+         }
 
-   private Typed<?> a(Typed<?> $$0) {
-      return $$0.update(
-         DSL.remainderFinder(),
-         $$0x -> $$0x.update(
-               "AttributeModifiers",
-               $$0xx -> (Dynamic)DataFixUtils.orElse(
-                     $$0xx.asStreamOpt().result().map($$0xxx -> $$0xxx.map($$0xxxx -> $$0xxxx.update("AttributeName", this::a))).map($$0xx::createList), $$0xx
-                  )
-            )
-      );
-   }
+         if ($$3.isPresent()) {
+            $$4 = $$4.set("potion", $$3.get());
+         }
 
-   private Typed<?> b(Typed<?> $$0) {
-      return $$0.update(
-         DSL.remainderFinder(),
-         $$0x -> $$0x.update(
-               "Attributes",
-               $$0xx -> (Dynamic)DataFixUtils.orElse(
-                     $$0xx.asStreamOpt().result().map($$0xxx -> $$0xxx.map($$0xxxx -> $$0xxxx.update("Name", this::a))).map($$0xx::createList), $$0xx
-                  )
-            )
-      );
+         return $$0.set("potion_contents", $$4);
+      }
    }
 }

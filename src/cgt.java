@@ -1,21 +1,22 @@
-import com.mojang.datafixers.kinds.App;
-import java.util.function.Function;
+import com.google.common.collect.ImmutableMap;
 
-public class cgt {
-   public static bvi<bto> a() {
-      return byu.a(
-         (Function<byu.b<bto>, ? extends App<byu.c<bto>, byx<bto>>>)($$0 -> $$0.group($$0.b(ccs.N), $$0.a(ccs.y)).apply($$0, ($$1, $$2) -> ($$3, $$4, $$5) -> {
-                  int $$6 = $$0.<Integer>b($$1);
-                  if ($$6 <= 0) {
-                     $$1.b();
-                     $$2.b();
-                     $$4.dS().f();
-                  } else {
-                     $$1.a($$6 - 1);
-                  }
+public class cgt extends bvi<cgr> {
+   public cgt() {
+      super(ImmutableMap.of(cct.N, ccu.a, cct.y, ccu.a), 200);
+   }
 
-                  return true;
-               }))
-      );
+   protected boolean a(arf $$0, cgr $$1) {
+      return $$1.bh();
+   }
+
+   protected boolean a(arf $$0, cgr $$1, long $$2) {
+      return $$1.bh() && $$1.dS().a(cct.N);
+   }
+
+   protected void b(arf $$0, cgr $$1, long $$2) {
+      bur<cgr> $$3 = $$1.dS();
+      $$3.b(cct.m);
+      $$3.b(cct.n);
+      $$1.b(new bsc(bse.j, 200, 0));
    }
 }

@@ -1,24 +1,33 @@
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dol extends dey {
-   public static final MapCodec<dol> a = b(dol::new);
+public class dol extends dnm implements doe {
+   public static final MapCodec<dol> m = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(dsr.a.fieldOf("block_set_type").forGetter(dnm::m), doe.a.e.fieldOf("weathering_state").forGetter(dol::n), u()).apply($$0, dol::new)
+   );
+   private final doe.a n;
 
    @Override
    public MapCodec<dol> a() {
-      return a;
+      return m;
    }
 
-   public dol(dsa.d $$0) {
-      super($$0);
+   protected dol(dsr $$0, doe.a $$1, dsb.d $$2) {
+      super($$0, $$2);
+      this.n = $$1;
    }
 
    @Override
-   protected void a(dsb $$0, dbx $$1, iz $$2, bst $$3) {
-      evq $$4 = new evq(0.25, 0.05F, 0.25);
-      if ($$3 instanceof bto $$5 && $$5.b(bsd.K)) {
-         $$4 = new evq(0.5, 0.25, 0.5);
-      }
+   protected void b(dsc $$0, arf $$1, iz $$2, azh $$3) {
+      this.a_($$0, $$1, $$2, $$3);
+   }
 
-      $$3.a($$0, $$4);
+   @Override
+   protected boolean d_(dsc $$0) {
+      return doe.c($$0.b()).isPresent();
+   }
+
+   public doe.a n() {
+      return this.n;
    }
 }

@@ -1,12 +1,5 @@
-public class fca extends Exception {
-   public final fap a;
-
-   public fca(fap $$0) {
-      this.a = $$0;
-   }
-
-   @Override
-   public String getMessage() {
-      return this.a.c();
+public class fca extends RuntimeException {
+   public fca(String $$0, Exception $$1) {
+      super($$0, $$1);
    }
 }

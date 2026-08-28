@@ -1,53 +1,57 @@
-public class adu implements zv<ach> {
-   public static final zm<wl, adu> a = zv.a(adu::a, adu::new);
+import java.util.BitSet;
+import javax.annotation.Nullable;
+
+public class adu implements zw<aci> {
+   public static final zn<xa, adu> a = zw.a(adu::a, adu::new);
    private final int b;
-   private final iz c;
-   private final int d;
-   private final boolean e;
+   private final int c;
+   private final adt d;
+   private final ady e;
 
-   public adu(int $$0, iz $$1, int $$2, boolean $$3) {
-      this.b = $$0;
-      this.c = $$1.i();
-      this.d = $$2;
-      this.e = $$3;
+   public adu(dui $$0, enk $$1, @Nullable BitSet $$2, @Nullable BitSet $$3) {
+      dbf $$4 = $$0.f();
+      this.b = $$4.e;
+      this.c = $$4.f;
+      this.d = new adt($$0);
+      this.e = new ady($$4, $$1, $$2, $$3);
    }
 
-   private adu(wl $$0) {
+   private adu(xa $$0) {
       this.b = $$0.readInt();
-      this.c = $$0.e();
-      this.d = $$0.readInt();
-      this.e = $$0.readBoolean();
+      this.c = $$0.readInt();
+      this.d = new adt($$0, this.b, this.c);
+      this.e = new ady($$0, this.b, this.c);
    }
 
-   private void a(wl $$0) {
+   private void a(xa $$0) {
       $$0.p(this.b);
-      $$0.a(this.c);
-      $$0.p(this.d);
-      $$0.a(this.e);
+      $$0.p(this.c);
+      this.d.a($$0);
+      this.e.a($$0);
    }
 
    @Override
-   public zx<adu> a() {
-      return agt.L;
+   public zy<adu> a() {
+      return agu.K;
    }
 
-   public void a(ach $$0) {
+   public void a(aci $$0) {
       $$0.a(this);
    }
 
-   public boolean b() {
-      return this.e;
-   }
-
-   public int e() {
+   public int b() {
       return this.b;
    }
 
-   public int f() {
+   public int e() {
+      return this.c;
+   }
+
+   public adt f() {
       return this.d;
    }
 
-   public iz g() {
-      return this.c;
+   public ady g() {
+      return this.e;
    }
 }

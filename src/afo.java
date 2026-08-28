@@ -1,45 +1,31 @@
-public class afo implements zv<ach> {
-   public static final zm<wl, afo> a = zv.a(afo::a, afo::new);
+import javax.annotation.Nullable;
+
+public class afo implements zw<aci> {
+   public static final zn<wm, afo> a = zw.a(afo::a, afo::new);
    private final int b;
    private final int c;
-   private final int d;
-   private final int e;
 
-   public afo(bst $$0) {
-      this($$0.al(), $$0.ds());
+   public afo(bsu $$0, @Nullable bsu $$1) {
+      this.b = $$0.al();
+      this.c = $$1 != null ? $$1.al() : 0;
    }
 
-   public afo(int $$0, evq $$1) {
-      this.b = $$0;
-      double $$2 = 3.9;
-      double $$3 = ayy.a($$1.c, -3.9, 3.9);
-      double $$4 = ayy.a($$1.d, -3.9, 3.9);
-      double $$5 = ayy.a($$1.e, -3.9, 3.9);
-      this.c = (int)($$3 * 8000.0);
-      this.d = (int)($$4 * 8000.0);
-      this.e = (int)($$5 * 8000.0);
+   private afo(wm $$0) {
+      this.b = $$0.readInt();
+      this.c = $$0.readInt();
    }
 
-   private afo(wl $$0) {
-      this.b = $$0.l();
-      this.c = $$0.readShort();
-      this.d = $$0.readShort();
-      this.e = $$0.readShort();
-   }
-
-   private void a(wl $$0) {
-      $$0.c(this.b);
-      $$0.l(this.c);
-      $$0.l(this.d);
-      $$0.l(this.e);
+   private void a(wm $$0) {
+      $$0.p(this.b);
+      $$0.p(this.c);
    }
 
    @Override
-   public zx<afo> a() {
-      return agt.aE;
+   public zy<afo> a() {
+      return agu.aD;
    }
 
-   public void a(ach $$0) {
+   public void a(aci $$0) {
       $$0.a(this);
    }
 
@@ -49,13 +35,5 @@ public class afo implements zv<ach> {
 
    public int e() {
       return this.c;
-   }
-
-   public int f() {
-      return this.d;
-   }
-
-   public int g() {
-      return this.e;
    }
 }

@@ -1,110 +1,73 @@
-public class guu implements guy {
-   private static final int a = 40;
-   private static final int b = 40;
-   private static final int c = 100;
-   private static final int d = 20;
-   private static final int e = -1;
-   private static final xo f = xo.a("tutorial.move.title", gux.a("forward"), gux.a("left"), gux.a("back"), gux.a("right"));
-   private static final xo g = xo.a("tutorial.move.description", gux.a("jump"));
-   private static final xo h = xo.c("tutorial.look.title");
-   private static final xo i = xo.c("tutorial.look.description");
-   private final gux j;
-   private fjo k;
-   private fjo l;
-   private int m;
-   private int n;
-   private int o;
-   private boolean p;
-   private boolean q;
-   private int r = -1;
-   private int s = -1;
+public class guu implements guz {
+   private static final int a = 6000;
+   private static final xp b = xp.c("tutorial.find_tree.title");
+   private static final xp c = xp.c("tutorial.find_tree.description");
+   private final guy d;
+   private fjp e;
+   private int f;
 
-   public guu(gux $$0) {
-      this.j = $$0;
+   public guu(guy $$0) {
+      this.d = $$0;
    }
 
    @Override
    public void a() {
-      this.m++;
-      if (this.p) {
-         this.n++;
-         this.p = false;
-      }
-
-      if (this.q) {
-         this.o++;
-         this.q = false;
-      }
-
-      if (this.r == -1 && this.n > 40) {
-         if (this.k != null) {
-            this.k.c();
-            this.k = null;
+      this.f++;
+      if (!this.d.f()) {
+         this.d.a(gva.f);
+      } else {
+         if (this.f == 1) {
+            gcq $$0 = this.d.e().s;
+            if ($$0 != null && (b($$0) || a($$0))) {
+               this.d.a(gva.e);
+               return;
+            }
          }
 
-         this.r = this.m;
-      }
-
-      if (this.s == -1 && this.o > 40) {
-         if (this.l != null) {
-            this.l.c();
-            this.l = null;
-         }
-
-         this.s = this.m;
-      }
-
-      if (this.r != -1 && this.s != -1) {
-         if (this.j.f()) {
-            this.j.a(guz.b);
-         } else {
-            this.j.a(guz.f);
-         }
-      }
-
-      if (this.k != null) {
-         this.k.a((float)this.n / 40.0F);
-      }
-
-      if (this.l != null) {
-         this.l.a((float)this.o / 40.0F);
-      }
-
-      if (this.m >= 100) {
-         if (this.r == -1 && this.k == null) {
-            this.k = new fjo(fjo.a.a, f, g, true);
-            this.j.e().ax().a(this.k);
-         } else if (this.r != -1 && this.m - this.r >= 20 && this.s == -1 && this.l == null) {
-            this.l = new fjo(fjo.a.b, h, i, true);
-            this.j.e().ax().a(this.l);
+         if (this.f >= 6000 && this.e == null) {
+            this.e = new fjp(fjp.a.c, b, c, false);
+            this.d.e().ax().a(this.e);
          }
       }
    }
 
    @Override
    public void b() {
-      if (this.k != null) {
-         this.k.c();
-         this.k = null;
-      }
-
-      if (this.l != null) {
-         this.l.c();
-         this.l = null;
+      if (this.e != null) {
+         this.e.c();
+         this.e = null;
       }
    }
 
    @Override
-   public void a(gcn $$0) {
-      if ($$0.c || $$0.d || $$0.e || $$0.f || $$0.g) {
-         this.p = true;
+   public void a(fxv $$0, evp $$1) {
+      if ($$1.c() == evp.a.b) {
+         dsc $$2 = $$0.a_(((evn)$$1).a());
+         if ($$2.a(awp.aj)) {
+            this.d.a(gva.c);
+         }
       }
    }
 
    @Override
-   public void a(double $$0, double $$1) {
-      if (Math.abs($$0) > 0.01 || Math.abs($$1) > 0.01) {
-         this.q = true;
+   public void a(cup $$0) {
+      if ($$0.a(awy.aM)) {
+         this.d.a(gva.e);
       }
+   }
+
+   private static boolean b(gcq $$0) {
+      return $$0.gc().a_($$0x -> $$0x.a(awy.aM));
+   }
+
+   public static boolean a(gcq $$0) {
+      for (ji<dez> $$1 : lp.e.c(awp.aj)) {
+         dez $$2 = $$1.a();
+         if ($$0.j().a(awk.a.b($$2)) > 0) {
+            return true;
+         }
+      }
+
+      return false;
    }
 }

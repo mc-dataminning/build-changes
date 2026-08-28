@@ -1,137 +1,47 @@
-import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Lists;
-import com.google.common.collect.UnmodifiableIterator;
 import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.arguments.BoolArgumentType;
-import com.mojang.brigadier.arguments.IntegerArgumentType;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import com.mojang.brigadier.builder.RequiredArgumentBuilder;
-import com.mojang.datafixers.util.Unit;
 import com.mojang.logging.LogUtils;
-import java.util.List;
-import java.util.Locale;
-import java.util.concurrent.CompletableFuture;
+import java.util.Collection;
+import net.minecraft.server.MinecraftServer;
 import org.slf4j.Logger;
 
 public class aoj {
    private static final Logger a = LogUtils.getLogger();
 
-   public static void a(CommandDispatcher<ep> $$0) {
-      $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)eq.a("resetchunks").requires($$0x -> $$0x.c(2)))
-               .executes($$0x -> a((ep)$$0x.getSource(), 0, true)))
-            .then(
-               ((RequiredArgumentBuilder)eq.a("range", IntegerArgumentType.integer(0, 5))
-                     .executes($$0x -> a((ep)$$0x.getSource(), IntegerArgumentType.getInteger($$0x, "range"), true)))
-                  .then(
-                     eq.a("skipOldChunks", BoolArgumentType.bool())
-                        .executes(
-                           $$0x -> a((ep)$$0x.getSource(), IntegerArgumentType.getInteger($$0x, "range"), BoolArgumentType.getBool($$0x, "skipOldChunks"))
-                        )
-                  )
-            )
-      );
+   public static void a(Collection<String> $$0, ep $$1) {
+      $$1.l().a($$0).exceptionally($$1x -> {
+         a.warn("Failed to execute reload", $$1x);
+         $$1.b(xp.c("commands.reload.failure"));
+         return null;
+      });
    }
 
-   private static int a(ep $$0, int $$1, boolean $$2) {
-      are $$3 = $$0.e();
-      arc $$4 = $$3.l();
-      $$4.a.d();
-      evq $$5 = $$0.d();
-      dbe $$6 = new dbe(iz.a($$5));
-      int $$7 = $$6.f - $$1;
-      int $$8 = $$6.f + $$1;
-      int $$9 = $$6.e - $$1;
-      int $$10 = $$6.e + $$1;
+   private static Collection<String> a(aua $$0, eqc $$1, Collection<String> $$2) {
+      $$0.a();
+      Collection<String> $$3 = Lists.newArrayList($$2);
+      Collection<String> $$4 = $$1.D().a().b();
 
-      for (int $$11 = $$7; $$11 <= $$8; $$11++) {
-         for (int $$12 = $$9; $$12 <= $$10; $$12++) {
-            dbe $$13 = new dbe($$12, $$11);
-            duh $$14 = $$4.a($$12, $$11, false);
-            if ($$14 != null && (!$$2 || !$$14.s())) {
-               for (iz $$15 : iz.b($$13.d(), $$3.I_(), $$13.e(), $$13.f(), $$3.am() - 1, $$13.g())) {
-                  $$3.a($$15, dfa.a.o(), 16);
-               }
-            }
+      for (String $$5 : $$0.b()) {
+         if (!$$4.contains($$5) && !$$3.contains($$5)) {
+            $$3.add($$5);
          }
       }
 
-      bpm<Runnable> $$16 = bpm.a(ac.g(), "worldgen-resetchunks");
-      long $$17 = System.currentTimeMillis();
-      int $$18 = ($$1 * 2 + 1) * ($$1 * 2 + 1);
-      UnmodifiableIterator var34 = ImmutableList.of(duw.f, duw.g, duw.h, duw.i, duw.j, duw.k).iterator();
+      return $$3;
+   }
 
-      while (var34.hasNext()) {
-         duw $$19 = (duw)var34.next();
-         long $$20 = System.currentTimeMillis();
-         CompletableFuture<Unit> $$21 = CompletableFuture.supplyAsync(() -> Unit.INSTANCE, $$16::a);
-         dva $$22 = new dva($$3, $$4.g(), $$3.q(), $$4.a());
-
-         for (int $$23 = $$6.f - $$1; $$23 <= $$6.f + $$1; $$23++) {
-            for (int $$24 = $$6.e - $$1; $$24 <= $$6.e + $$1; $$24++) {
-               dbe $$25 = new dbe($$24, $$23);
-               duh $$26 = $$4.a($$24, $$23, false);
-               if ($$26 != null && (!$$2 || !$$26.s())) {
-                  List<dtx> $$27 = Lists.newArrayList();
-                  int $$28 = Math.max(1, $$19.e());
-
-                  for (int $$29 = $$25.f - $$28; $$29 <= $$25.f + $$28; $$29++) {
-                     for (int $$30 = $$25.e - $$28; $$30 <= $$25.e + $$28; $$30++) {
-                        dtx $$31 = $$4.a($$30, $$29, $$19.d(), true);
-                        dtx $$32;
-                        if ($$31 instanceof dug) {
-                           $$32 = new dug(((dug)$$31).C(), true);
-                        } else if ($$31 instanceof duh) {
-                           $$32 = new dug((duh)$$31, true);
-                        } else {
-                           $$32 = $$31;
-                        }
-
-                        $$27.add($$32);
-                     }
-                  }
-
-                  $$21 = $$21.thenComposeAsync($$4x -> $$19.a($$22, $$16::a, $$0xx -> {
-                        throw new UnsupportedOperationException("Not creating full chunks here");
-                     }, $$27).thenApply($$1xx -> {
-                        if ($$19 == duw.g) {
-                           dxt.a($$1xx, duw.b);
-                        }
-
-                        return Unit.INSTANCE;
-                     }), $$16::a);
-               }
-            }
-         }
-
-         $$0.l().c($$21::isDone);
-         a.debug($$19 + " took " + (System.currentTimeMillis() - $$20) + " ms");
-      }
-
-      long $$35 = System.currentTimeMillis();
-
-      for (int $$36 = $$6.f - $$1; $$36 <= $$6.f + $$1; $$36++) {
-         for (int $$37 = $$6.e - $$1; $$37 <= $$6.e + $$1; $$37++) {
-            dbe $$38 = new dbe($$37, $$36);
-            duh $$39 = $$4.a($$37, $$36, false);
-            if ($$39 != null && (!$$2 || !$$39.s())) {
-               for (iz $$40 : iz.b($$38.d(), $$3.I_(), $$38.e(), $$38.f(), $$3.am() - 1, $$38.g())) {
-                  $$4.a($$40);
-               }
-            }
-         }
-      }
-
-      a.debug("blockChanged took " + (System.currentTimeMillis() - $$35) + " ms");
-      long $$41 = System.currentTimeMillis() - $$17;
-      $$0.a(
-         () -> xo.b(
-               String.format(
-                  Locale.ROOT, "%d chunks have been reset. This took %d ms for %d chunks, or %02f ms per chunk", $$18, $$41, $$18, (float)$$41 / (float)$$18
-               )
-            ),
-         true
-      );
-      return 1;
+   public static void a(CommandDispatcher<ep> $$0) {
+      $$0.register((LiteralArgumentBuilder)((LiteralArgumentBuilder)eq.a("reload").requires($$0x -> $$0x.c(2))).executes($$0x -> {
+         ep $$1 = (ep)$$0x.getSource();
+         MinecraftServer $$2 = $$1.l();
+         aua $$3 = $$2.aG();
+         eqc $$4 = $$2.bb();
+         Collection<String> $$5 = $$3.d();
+         Collection<String> $$6 = a($$3, $$4, $$5);
+         $$1.a(() -> xp.c("commands.reload.success"), true);
+         a($$6, $$1);
+         return 0;
+      }));
    }
 }

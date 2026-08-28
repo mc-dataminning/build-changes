@@ -1,124 +1,37 @@
-import com.google.common.collect.ImmutableMap;
+import com.mojang.datafixers.kinds.App;
 import java.util.Optional;
+import java.util.function.Function;
 import javax.annotation.Nullable;
 
-public class bwr extends bvh<btq> {
-   private static final int c = 40;
-   private int d;
+public class bwr {
+   public static bwt<btp> a(float $$0) {
+      return byv.a((Function<byv.b<btp>, ? extends App<byv.c<btp>, byy<btp>>>)($$1 -> $$1.group($$1.c(cct.m)).apply($$1, $$1x -> ($$2, $$3, $$4) -> {
+               if ($$2.h($$3.dp())) {
+                  return false;
+               } else {
+                  Optional<evr> $$5 = Optional.ofNullable(a($$2, $$3));
+                  $$5.ifPresent($$2x -> $$1x.a(new ccw($$2x, $$0, 0)));
+                  return true;
+               }
+            })));
+   }
+
    @Nullable
-   private eoi e;
-   @Nullable
-   private iz f;
-   private float g;
+   private static evr a(arf $$0, btp $$1) {
+      azh $$2 = $$1.el();
+      iz $$3 = $$1.dp();
 
-   public bwr() {
-      this(150, 250);
-   }
-
-   public bwr(int $$0, int $$1) {
-      super(ImmutableMap.of(ccs.E, cct.c, ccs.t, cct.b, ccs.m, cct.a), $$0, $$1);
-   }
-
-   protected boolean a(are $$0, btq $$1) {
-      if (this.d > 0) {
-         this.d--;
-         return false;
-      } else {
-         buq<?> $$2 = $$1.dS();
-         ccv $$3 = $$2.c(ccs.m).get();
-         boolean $$4 = this.a($$1, $$3);
-         if (!$$4 && this.a($$1, $$3, $$0.Z())) {
-            this.f = $$3.a().b();
-            return true;
-         } else {
-            $$2.b(ccs.m);
-            if ($$4) {
-               $$2.b(ccs.E);
-            }
-
-            return false;
-         }
-      }
-   }
-
-   protected boolean a(are $$0, btq $$1, long $$2) {
-      if (this.e != null && this.f != null) {
-         Optional<ccv> $$3 = $$1.dS().c(ccs.m);
-         boolean $$4 = $$3.<Boolean>map(bwr::a).orElse(false);
-         cda $$5 = $$1.K();
-         return !$$5.l() && $$3.isPresent() && !this.a($$1, $$3.get()) && !$$4;
-      } else {
-         return false;
-      }
-   }
-
-   protected void b(are $$0, btq $$1, long $$2) {
-      if ($$1.dS().a(ccs.m) && !this.a($$1, $$1.dS().c(ccs.m).get()) && $$1.K().r()) {
-         this.d = $$0.E_().a(40);
-      }
-
-      $$1.K().n();
-      $$1.dS().b(ccs.m);
-      $$1.dS().b(ccs.t);
-      this.e = null;
-   }
-
-   protected void c(are $$0, btq $$1, long $$2) {
-      $$1.dS().a(ccs.t, this.e);
-      $$1.K().a(this.e, (double)this.g);
-   }
-
-   protected void d(are $$0, btq $$1, long $$2) {
-      eoi $$3 = $$1.K().j();
-      buq<?> $$4 = $$1.dS();
-      if (this.e != $$3) {
-         this.e = $$3;
-         $$4.a(ccs.t, $$3);
-      }
-
-      if ($$3 != null && this.f != null) {
-         ccv $$5 = $$4.c(ccs.m).get();
-         if ($$5.a().b().j(this.f) > 4.0 && this.a($$1, $$5, $$0.Z())) {
-            this.f = $$5.a().b();
-            this.c($$0, $$1, $$2);
-         }
-      }
-   }
-
-   private boolean a(btq $$0, ccv $$1, long $$2) {
-      iz $$3 = $$1.a().b();
-      this.e = $$0.K().a($$3, 0);
-      this.g = $$1.b();
-      buq<?> $$4 = $$0.dS();
-      if (this.a($$0, $$1)) {
-         $$4.b(ccs.E);
-      } else {
-         boolean $$5 = this.e != null && this.e.j();
-         if ($$5) {
-            $$4.b(ccs.E);
-         } else if (!$$4.a(ccs.E)) {
-            $$4.a(ccs.E, $$2);
-         }
-
-         if (this.e != null) {
-            return true;
-         }
-
-         evq $$6 = cej.a((btx)$$0, 10, 7, evq.c($$3), (float) (Math.PI / 2));
-         if ($$6 != null) {
-            this.e = $$0.K().a($$6.c, $$6.d, $$6.e, 0);
-            return this.e != null;
+      for (int $$4 = 0; $$4 < 10; $$4++) {
+         iz $$5 = $$3.b($$2.a(20) - 10, $$2.a(6) - 3, $$2.a(20) - 10);
+         if (a($$0, $$1, $$5)) {
+            return evr.c($$5);
          }
       }
 
-      return false;
+      return null;
    }
 
-   private boolean a(btq $$0, ccv $$1) {
-      return $$1.a().b().k($$0.dp()) <= $$1.c();
-   }
-
-   private static boolean a(ccv $$0) {
-      return $$0.a() instanceof bvs $$2 ? $$2.c().N_() : false;
+   public static boolean a(arf $$0, btp $$1, iz $$2) {
+      return $$0.h($$2) && (double)$$0.a(dxu.a.e, $$2).v() <= $$1.dw();
    }
 }

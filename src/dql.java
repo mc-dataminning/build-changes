@@ -1,103 +1,61 @@
+import com.mojang.serialization.Codec;
+import java.util.List;
+import java.util.Optional;
+import java.util.stream.Stream;
 import javax.annotation.Nullable;
 
-public abstract class dql extends dpa implements brb {
-   @Nullable
-   protected ald<eqm> l;
-   protected long m = 0L;
+public record dql(Optional<cuk> d, Optional<cuk> e, Optional<cuk> f, Optional<cuk> g) {
+   public static final dql a = new dql(Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty());
+   public static final Codec<dql> b = lp.h.q().sizeLimitedListOf(4).xmap(dql::new, dql::a);
+   public static final zn<xa, dql> c = zl.a(lq.G).a(zl.c(4)).a(dql::new, dql::a);
 
-   protected dql(dpi<?> $$0, iz $$1, dsb $$2) {
-      super($$0, $$1, $$2);
+   private dql(List<cuk> $$0) {
+      this(a($$0, 0), a($$0, 1), a($$0, 2), a($$0, 3));
    }
 
-   @Nullable
-   @Override
-   public ald<eqm> aw_() {
-      return this.l;
+   public dql(cuk $$0, cuk $$1, cuk $$2, cuk $$3) {
+      this(List.of($$0, $$1, $$2, $$3));
    }
 
-   @Override
-   public void a(@Nullable ald<eqm> $$0) {
-      this.l = $$0;
-   }
-
-   @Override
-   public long ax_() {
-      return this.m;
-   }
-
-   @Override
-   public void a(long $$0) {
-      this.m = $$0;
-   }
-
-   @Override
-   public boolean c() {
-      this.e_(null);
-      return super.c();
-   }
-
-   @Override
-   public cuo a(int $$0) {
-      this.e_(null);
-      return super.a($$0);
-   }
-
-   @Override
-   public cuo a(int $$0, int $$1) {
-      this.e_(null);
-      return super.a($$0, $$1);
-   }
-
-   @Override
-   public cuo b(int $$0) {
-      this.e_(null);
-      return super.b($$0);
-   }
-
-   @Override
-   public void a(int $$0, cuo $$1) {
-      this.e_(null);
-      super.a($$0, $$1);
-   }
-
-   @Override
-   public boolean d(cmw $$0) {
-      return super.d($$0) && (this.l == null || !$$0.N_());
-   }
-
-   @Nullable
-   @Override
-   public cpt createMenu(int $$0, cmv $$1, cmw $$2) {
-      if (this.d($$2)) {
-         this.e_($$1.l);
-         return this.a($$0, $$1);
+   private static Optional<cuk> a(List<cuk> $$0, int $$1) {
+      if ($$1 >= $$0.size()) {
+         return Optional.empty();
       } else {
-         return null;
+         cuk $$2 = $$0.get($$1);
+         return $$2 == cus.qL ? Optional.empty() : Optional.of($$2);
       }
    }
 
-   @Override
-   protected void a(dpg.b $$0) {
-      super.a($$0);
-      cxr $$1 = $$0.a(km.ae);
-      if ($$1 != null) {
-         this.l = $$1.a();
-         this.m = $$1.b();
+   public us a(us $$0) {
+      if (this.equals(a)) {
+         return $$0;
+      } else {
+         $$0.a("sherds", (vp)b.encodeStart(vg.a, this).getOrThrow());
+         return $$0;
       }
    }
 
-   @Override
-   protected void a(ki.a $$0) {
-      super.a($$0);
-      if (this.l != null) {
-         $$0.a(km.ae, new cxr(this.l, this.m));
-      }
+   public List<cuk> a() {
+      return Stream.of(this.d, this.e, this.f, this.g).map($$0 -> $$0.orElse(cus.qL)).toList();
    }
 
-   @Override
-   public void a(ur $$0) {
-      super.a($$0);
-      $$0.r("LootTable");
-      $$0.r("LootTableSeed");
+   public static dql b(@Nullable us $$0) {
+      return $$0 != null && $$0.e("sherds") ? b.parse(vg.a, $$0.c("sherds")).result().orElse(a) : a;
+   }
+
+   public Optional<cuk> b() {
+      return this.d;
+   }
+
+   public Optional<cuk> c() {
+      return this.e;
+   }
+
+   public Optional<cuk> d() {
+      return this.f;
+   }
+
+   public Optional<cuk> e() {
+      return this.g;
    }
 }

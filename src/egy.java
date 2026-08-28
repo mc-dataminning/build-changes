@@ -1,6 +1,17 @@
+import java.util.List;
 import javax.annotation.Nullable;
 
-public interface egy {
+public record egy(List<dxy.c> a) implements dxy.c {
    @Nullable
-   dsb a(dxx var1, int var2, int var3, int var4);
+   @Override
+   public dsc calculate(dxn.b $$0) {
+      for (dxy.c $$1 : this.a) {
+         dsc $$2 = $$1.calculate($$0);
+         if ($$2 != null) {
+            return $$2;
+         }
+      }
+
+      return null;
+   }
 }

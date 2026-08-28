@@ -1,261 +1,218 @@
-import com.google.common.collect.ImmutableList;
-import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.logging.LogUtils;
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.time.Duration;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-import java.util.Objects;
-import java.util.UUID;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.nio.charset.StandardCharsets;
+import java.util.concurrent.atomic.AtomicReferenceArray;
 import java.util.function.BooleanSupplier;
+import java.util.function.Consumer;
 import javax.annotation.Nullable;
 import org.slf4j.Logger;
 
-public abstract class fxr implements aab {
-   private static final xo i = xo.c("disconnect.lost");
-   private static final Logger j = LogUtils.getLogger();
-   protected final ffe a;
-   protected final wj b;
-   @Nullable
-   protected final fyi c;
-   @Nullable
-   protected String d;
-   protected final guh e;
-   @Nullable
-   protected final fnc f;
-   protected boolean g;
-   private final List<fxr.a> k = new ArrayList<>();
-   protected final Map<ale, byte[]> h;
+public class fxr extends duc {
+   static final Logger a = LogUtils.getLogger();
+   private final dui b;
+   private final enk c;
+   volatile fxr.a d;
+   final fxv e;
 
-   protected fxr(ffe $$0, wj $$1, fxy $$2) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2.f();
-      this.d = $$2.e();
-      this.e = $$2.b();
-      this.f = $$2.g();
-      this.h = $$2.h();
+   public fxr(fxv $$0, int $$1) {
+      this.e = $$0;
+      this.b = new due($$0, new dbf(0, 0), $$0.H_().d(lq.az).g(dde.b));
+      this.c = new enk(this, true, $$0.D_().g());
+      this.d = new fxr.a(b($$1));
    }
 
    @Override
-   public void a(zv $$0, Exception $$1) {
-      j.error("Failed to handle packet {}, disconnecting", $$0, $$1);
-      aab.super.a($$0, $$1);
-      this.b.a(xo.c("disconnect.packetError"));
+   public enk p() {
+      return this.c;
    }
 
-   @Override
-   public boolean a(zv<?> $$0) {
-      return aab.super.a($$0) ? true : this.g && ($$0 instanceof aai || $$0 instanceof aaj);
-   }
-
-   @Override
-   public void a(aae $$0) {
-      this.a(new aap($$0.b()), () -> !RenderSystem.isFrozenAtPollEvents(), Duration.ofMinutes(1L));
-   }
-
-   @Override
-   public void a(aaf $$0) {
-      zy.a($$0, this, this.a);
-      this.b(new aaq($$0.b()));
-   }
-
-   @Override
-   public void a(aac $$0) {
-      aaw $$1 = $$0.b();
-      if (!($$1 instanceof aax)) {
-         zy.a($$0, this, this.a);
-         if ($$1 instanceof aau $$2) {
-            this.d = $$2.b();
-            this.e.a($$2.b());
-         } else {
-            this.a($$1);
-         }
-      }
-   }
-
-   protected abstract void a(aaw var1);
-
-   @Override
-   public void a(aah $$0) {
-      zy.a($$0, this, this.a);
-      UUID $$1 = $$0.b();
-      URL $$2 = a($$0.e());
-      if ($$2 == null) {
-         this.b.a(new aar($$1, aar.a.f));
+   private static boolean a(@Nullable dui $$0, int $$1, int $$2) {
+      if ($$0 == null) {
+         return false;
       } else {
-         String $$3 = $$0.f();
-         boolean $$4 = $$0.g();
-         fyi.a $$5 = this.c != null ? this.c.b() : fyi.a.c;
-         if ($$5 != fyi.a.c && (!$$4 || $$5 != fyi.a.b)) {
-            this.a.ae().a($$1, $$2, $$3);
-         } else {
-            this.a.a(this.a($$1, $$2, $$3, $$4, $$0.h().orElse(null)));
+         dbf $$3 = $$0.f();
+         return $$3.e == $$1 && $$3.f == $$2;
+      }
+   }
+
+   public void a(dbf $$0) {
+      if (this.d.b($$0.e, $$0.f)) {
+         int $$1 = this.d.a($$0.e, $$0.f);
+         dui $$2 = this.d.a($$1);
+         if (a($$2, $$0.e, $$0.f)) {
+            this.d.a($$1, $$2, null);
          }
       }
    }
 
-   @Override
-   public void a(aag $$0) {
-      zy.a($$0, this, this.a);
-      $$0.b().ifPresentOrElse($$0x -> this.a.ae().a($$0x), () -> this.a.ae().e());
+   @Nullable
+   public dui b(int $$0, int $$1, dux $$2, boolean $$3) {
+      if (this.d.b($$0, $$1)) {
+         dui $$4 = this.d.a(this.d.a($$0, $$1));
+         if (a($$4, $$0, $$1)) {
+            return $$4;
+         }
+      }
+
+      return $$3 ? this.b : null;
    }
 
-   static xo a(xo $$0, @Nullable xo $$1) {
-      return (xo)($$1 == null ? $$0 : xo.a("multiplayer.texturePrompt.serverPrompt", $$0, $$1));
+   @Override
+   public dbe q() {
+      return this.e;
+   }
+
+   public void a(int $$0, int $$1, wm $$2) {
+      if (!this.d.b($$0, $$1)) {
+         a.warn("Ignoring chunk since it's not in the view range: {}, {}", $$0, $$1);
+      } else {
+         int $$3 = this.d.a($$0, $$1);
+         dui $$4 = this.d.b.get($$3);
+         if (!a($$4, $$0, $$1)) {
+            a.warn("Ignoring chunk since it's not present: {}, {}", $$0, $$1);
+         } else {
+            $$4.a($$2);
+         }
+      }
    }
 
    @Nullable
-   private static URL a(String $$0) {
-      try {
-         URL $$1 = new URL($$0);
-         String $$2 = $$1.getProtocol();
-         return !"http".equals($$2) && !"https".equals($$2) ? null : $$1;
-      } catch (MalformedURLException var3) {
+   public dui a(int $$0, int $$1, wm $$2, us $$3, Consumer<adt.b> $$4) {
+      if (!this.d.b($$0, $$1)) {
+         a.warn("Ignoring chunk since it's not in the view range: {}, {}", $$0, $$1);
          return null;
-      }
-   }
-
-   @Override
-   public void a(acc $$0) {
-      zy.a($$0, this, this.a);
-      this.b.a(new acf($$0.b(), this.h.get($$0.b())));
-   }
-
-   @Override
-   public void a(aai $$0) {
-      zy.a($$0, this, this.a);
-      this.h.put($$0.b(), $$0.e());
-   }
-
-   @Override
-   public void a(aaj $$0) {
-      this.g = true;
-      zy.a($$0, this, this.a);
-      if (this.c == null) {
-         throw new IllegalStateException("Cannot transfer to server from singleplayer");
       } else {
-         this.b.a(xo.c("disconnect.transfer"));
-         this.b.m();
-         this.b.n();
-         fzl $$1 = new fzl($$0.b(), $$0.e());
-         flv.a(Objects.requireNonNullElseGet(this.f, fnh::new), this.a, $$1, this.c, false, new fym(this.h));
+         int $$5 = this.d.a($$0, $$1);
+         dui $$6 = this.d.b.get($$5);
+         dbf $$7 = new dbf($$0, $$1);
+         if (!a($$6, $$0, $$1)) {
+            $$6 = new dui(this.e, $$7);
+            $$6.a($$2, $$3, $$4);
+            this.d.a($$5, $$6);
+         } else {
+            $$6.a($$2, $$3, $$4);
+         }
+
+         this.e.a($$7);
+         return $$6;
       }
    }
 
    @Override
-   public void a(aad $$0) {
-      this.b.a($$0.b());
+   public void a(BooleanSupplier $$0, boolean $$1) {
    }
 
-   protected void e() {
-      Iterator<fxr.a> $$0 = this.k.iterator();
+   public void d(int $$0, int $$1) {
+      this.d.e = $$0;
+      this.d.f = $$1;
+   }
 
-      while ($$0.hasNext()) {
-         fxr.a $$1 = $$0.next();
-         if ($$1.b().getAsBoolean()) {
-            this.b($$1.a);
-            $$0.remove();
-         } else if ($$1.c() <= ac.c()) {
-            $$0.remove();
+   public void a(int $$0) {
+      int $$1 = this.d.c;
+      int $$2 = b($$0);
+      if ($$1 != $$2) {
+         fxr.a $$3 = new fxr.a($$2);
+         $$3.e = this.d.e;
+         $$3.f = this.d.f;
+
+         for (int $$4 = 0; $$4 < this.d.b.length(); $$4++) {
+            dui $$5 = this.d.b.get($$4);
+            if ($$5 != null) {
+               dbf $$6 = $$5.f();
+               if ($$3.b($$6.e, $$6.f)) {
+                  $$3.a($$3.a($$6.e, $$6.f), $$5);
+               }
+            }
+         }
+
+         this.d = $$3;
+      }
+   }
+
+   private static int b(int $$0) {
+      return Math.max(2, $$0) + 3;
+   }
+
+   @Override
+   public String e() {
+      return this.d.b.length() + ", " + this.j();
+   }
+
+   @Override
+   public int j() {
+      return this.d.g;
+   }
+
+   @Override
+   public void a(dch $$0, kb $$1) {
+      fff.Q().f.b($$1.a(), $$1.b(), $$1.c());
+   }
+
+   final class a {
+      final AtomicReferenceArray<dui> b;
+      final int c;
+      private final int d;
+      volatile int e;
+      volatile int f;
+      int g;
+
+      a(final int $$0) {
+         this.c = $$0;
+         this.d = $$0 * 2 + 1;
+         this.b = new AtomicReferenceArray<>(this.d * this.d);
+      }
+
+      int a(int $$0, int $$1) {
+         return Math.floorMod($$1, this.d) * this.d + Math.floorMod($$0, this.d);
+      }
+
+      protected void a(int $$0, @Nullable dui $$1) {
+         dui $$2 = this.b.getAndSet($$0, $$1);
+         if ($$2 != null) {
+            this.g--;
+            fxr.this.e.a($$2);
+         }
+
+         if ($$1 != null) {
+            this.g++;
          }
       }
-   }
 
-   public void b(zv<?> $$0) {
-      this.b.a($$0);
-   }
+      protected dui a(int $$0, dui $$1, @Nullable dui $$2) {
+         if (this.b.compareAndSet($$0, $$1, $$2) && $$2 == null) {
+            this.g--;
+         }
 
-   @Override
-   public void a(xo $$0) {
-      this.e.c();
-      this.a.a(this.b($$0), this.g);
-      j.warn("Client disconnected with reason: {}", $$0.getString());
-   }
-
-   @Override
-   public void a(p $$0) {
-      $$0.a("Server type", () -> this.c != null ? this.c.f().toString() : "<none>");
-      $$0.a("Server brand", () -> this.d);
-   }
-
-   protected fnc b(xo $$0) {
-      fnc $$1 = Objects.requireNonNullElseGet(this.f, () -> new fqa(new fnh()));
-      return (fnc)(this.c != null && this.c.e() ? new gvb($$1, i, $$0) : new fmd($$1, i, $$0));
-   }
-
-   @Nullable
-   public String f() {
-      return this.d;
-   }
-
-   private void a(zv<? extends xa> $$0, BooleanSupplier $$1, Duration $$2) {
-      if ($$1.getAsBoolean()) {
-         this.b($$0);
-      } else {
-         this.k.add(new fxr.a($$0, $$1, ac.c() + $$2.toMillis()));
+         fxr.this.e.a($$1);
+         return $$1;
       }
-   }
 
-   private fnc a(UUID $$0, URL $$1, String $$2, boolean $$3, @Nullable xo $$4) {
-      fnc $$5 = this.a.y;
-      return $$5 instanceof fxr.b $$6 ? $$6.a(this.a, $$0, $$1, $$2, $$3, $$4) : new fxr.b(this.a, $$5, List.of(new fxr.b.a($$0, $$1, $$2)), $$3, $$4);
-   }
+      boolean b(int $$0, int $$1) {
+         return Math.abs($$0 - this.e) <= this.c && Math.abs($$1 - this.f) <= this.c;
+      }
 
-   static record a(zv<? extends xa> a, BooleanSupplier b, long c) {
-   }
-
-   class b extends flu {
-      private final List<fxr.b.a> r;
       @Nullable
-      private final fnc s;
-
-      b(final ffe $$0, @Nullable final fnc $$1, final List<fxr.b.a> $$2, final boolean $$3, @Nullable final xo $$4) {
-         super(
-            $$5 -> {
-               $$0.a($$1);
-               gro $$6 = $$0.ae();
-               if ($$5) {
-                  if (fxr.this.c != null) {
-                     fxr.this.c.a(fyi.a.a);
-                  }
-
-                  $$6.g();
-               } else {
-                  $$6.h();
-                  if ($$3) {
-                     fxr.this.b.a(xo.c("multiplayer.requiredTexturePrompt.disconnect"));
-                  } else if (fxr.this.c != null) {
-                     fxr.this.c.a(fyi.a.b);
-                  }
-               }
-
-               for (fxr.b.a $$7 : $$2) {
-                  $$6.a($$7.a, $$7.b, $$7.c);
-               }
-
-               if (fxr.this.c != null) {
-                  fyj.b(fxr.this.c);
-               }
-            },
-            $$3 ? xo.c("multiplayer.requiredTexturePrompt.line1") : xo.c("multiplayer.texturePrompt.line1"),
-            fxr.a($$3 ? xo.c("multiplayer.requiredTexturePrompt.line2").a(n.o, n.r) : xo.c("multiplayer.texturePrompt.line2"), $$4),
-            $$3 ? xn.i : xn.f,
-            $$3 ? xn.p : xn.g
-         );
-         this.r = $$2;
-         this.s = $$1;
+      protected dui a(int $$0) {
+         return this.b.get($$0);
       }
 
-      public fxr.b a(ffe $$0, UUID $$1, URL $$2, String $$3, boolean $$4, @Nullable xo $$5) {
-         List<fxr.b.a> $$6 = ImmutableList.builderWithExpectedSize(this.r.size() + 1).addAll(this.r).add(new fxr.b.a($$1, $$2, $$3)).build();
-         return fxr.this.new b($$0, this.s, $$6, $$4, $$5);
-      }
+      private void a(String $$0) {
+         try (FileOutputStream $$1 = new FileOutputStream($$0)) {
+            int $$2 = fxr.this.d.c;
 
-      static record a(UUID a, URL b, String c) {
+            for (int $$3 = this.f - $$2; $$3 <= this.f + $$2; $$3++) {
+               for (int $$4 = this.e - $$2; $$4 <= this.e + $$2; $$4++) {
+                  dui $$5 = fxr.this.d.b.get(fxr.this.d.a($$4, $$3));
+                  if ($$5 != null) {
+                     dbf $$6 = $$5.f();
+                     $$1.write(($$6.e + "\t" + $$6.f + "\t" + $$5.C() + "\n").getBytes(StandardCharsets.UTF_8));
+                  }
+               }
+            }
+         } catch (IOException var10) {
+            fxr.a.error("Failed to dump chunks to file {}", $$0, var10);
+         }
       }
    }
 }

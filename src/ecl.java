@@ -1,56 +1,79 @@
 import com.mojang.serialization.Codec;
-import java.util.Optional;
-import java.util.OptionalInt;
-import java.util.function.Predicate;
 
-public class ecl extends eax<edz> {
+public class ecl extends eay<edz> {
    public ecl(Codec<edz> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(eaz<edz> $$0) {
-      dcs $$1 = $$0.b();
+   public boolean a(eba<edz> $$0) {
+      dct $$1 = $$0.b();
       iz $$2 = $$0.e();
-      edz $$3 = $$0.f();
-      azg $$4 = $$0.d();
-      OptionalInt $$5 = a($$1, $$2, $$3);
-      if ($$5.isEmpty()) {
+      if (a($$1, $$2)) {
          return false;
       } else {
-         iz $$6 = $$2.h($$5.getAsInt());
-         kd $$7 = new kd($$3.c, $$3.c, $$3.c);
-         eib $$8 = eib.a($$6.b($$7), $$6.a($$7));
-         return iz.a($$8).filter($$2x -> $$4.i() < $$3.d).filter($$1x -> this.b($$1, $$1x)).mapToInt($$1x -> {
-            $$1.a($$1x, dfa.kJ.o(), 2);
-            return 1;
-         }).sum() > 0;
-      }
-   }
+         azh $$3 = $$0.d();
+         edz $$4 = $$0.f();
+         int $$5 = $$4.a();
+         int $$6 = $$4.b();
+         int $$7 = $$4.c();
+         iz.a $$8 = new iz.a();
 
-   private static OptionalInt a(dcs $$0, iz $$1, edz $$2) {
-      Predicate<dsb> $$3 = $$0x -> $$0x.a(dfa.G);
-      Predicate<dsb> $$4 = $$0x -> !$$0x.a(dfa.G);
-      Optional<dxj> $$5 = dxj.a($$0, $$1, $$2.b, $$3, $$4);
-      return $$5.<OptionalInt>map(dxj::c).orElseGet(OptionalInt::empty);
-   }
+         for (int $$9 = 0; $$9 < $$5 * $$5; $$9++) {
+            $$8.g($$2).e(ayz.a($$3, -$$5, $$5), ayz.a($$3, -$$6, $$6), ayz.a($$3, -$$5, $$5));
+            if (a($$1, $$8) && !a($$1, (iz)$$8)) {
+               int $$10 = ayz.a($$3, 1, $$7);
+               if ($$3.a(6) == 0) {
+                  $$10 *= 2;
+               }
 
-   private boolean b(dcs $$0, iz $$1) {
-      if (!this.a($$0, $$1) && !this.a($$0, $$1.d())) {
-         for (je $$2 : je.c.a) {
-            if (this.a($$0, $$1.a($$2))) {
-               return false;
+               if ($$3.a(5) == 0) {
+                  $$10 = 1;
+               }
+
+               int $$11 = 17;
+               int $$12 = 25;
+               a($$1, $$3, $$8, $$10, 17, 25);
             }
          }
 
          return true;
-      } else {
-         return false;
       }
    }
 
-   private boolean a(dby $$0, iz $$1) {
-      dsb $$2 = $$0.a_($$1);
-      return $$2.a(dfa.G) || $$2.i();
+   private static boolean a(dbz $$0, iz.a $$1) {
+      do {
+         $$1.e(0, -1, 0);
+         if ($$0.s($$1)) {
+            return false;
+         }
+      } while ($$0.a_($$1).i());
+
+      $$1.e(0, 1, 0);
+      return true;
+   }
+
+   public static void a(dbz $$0, azh $$1, iz.a $$2, int $$3, int $$4, int $$5) {
+      for (int $$6 = 1; $$6 <= $$3; $$6++) {
+         if ($$0.u($$2)) {
+            if ($$6 == $$3 || !$$0.u($$2.c())) {
+               $$0.a($$2, dfb.oB.o().a(dio.e, Integer.valueOf(ayz.a($$1, $$4, $$5))), 2);
+               break;
+            }
+
+            $$0.a($$2, dfb.oC.o(), 2);
+         }
+
+         $$2.c(je.b);
+      }
+   }
+
+   private static boolean a(dbz $$0, iz $$1) {
+      if (!$$0.u($$1)) {
+         return true;
+      } else {
+         dsc $$2 = $$0.a_($$1.d());
+         return !$$2.a(dfb.dV) && !$$2.a(dfb.on) && !$$2.a(dfb.op);
+      }
    }
 }

@@ -14,7 +14,7 @@ public record bs(Optional<Boolean> b, Optional<Boolean> c, Optional<Boolean> d, 
             .apply($$0, bs::new)
    );
 
-   public boolean a(bst $$0) {
+   public boolean a(bsu $$0) {
       if (this.b.isPresent() && $$0.bQ() != this.b.get()) {
          return false;
       } else if (this.c.isPresent() && $$0.ca() != this.c.get()) {
@@ -24,7 +24,7 @@ public record bs(Optional<Boolean> b, Optional<Boolean> c, Optional<Boolean> d, 
       } else if (this.e.isPresent() && $$0.cc() != this.e.get()) {
          return false;
       } else {
-         if (this.f.isPresent() && $$0 instanceof bto $$1 && $$1.p_() != this.f.get()) {
+         if (this.f.isPresent() && $$0 instanceof btp $$1 && $$1.p_() != this.f.get()) {
             return false;
          }
 

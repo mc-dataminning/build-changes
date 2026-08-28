@@ -1,45 +1,37 @@
-import java.util.Objects;
-import javax.annotation.Nullable;
+public class afl implements zw<aci> {
+   public static final zn<wm, afl> a = zw.a(afl::a, afl::new);
+   private final iz b;
+   private final float c;
 
-public class afl implements zv<ach> {
-   public static final zm<wl, afl> a = zv.a(afl::a, afl::new);
-   private final ewl b;
-   private final String c;
-
-   public afl(ewl $$0, @Nullable ewm $$1) {
+   public afl(iz $$0, float $$1) {
       this.b = $$0;
-      if ($$1 == null) {
-         this.c = "";
-      } else {
-         this.c = $$1.b();
-      }
+      this.c = $$1;
    }
 
-   private afl(wl $$0) {
-      this.b = $$0.a(ewl.u);
-      this.c = $$0.p();
+   private afl(wm $$0) {
+      this.b = $$0.e();
+      this.c = $$0.readFloat();
    }
 
-   private void a(wl $$0) {
-      $$0.a(ewl::a, this.b);
+   private void a(wm $$0) {
+      $$0.a(this.b);
       $$0.a(this.c);
    }
 
    @Override
-   public zx<afl> a() {
-      return agt.aB;
+   public zy<afl> a() {
+      return agu.aA;
    }
 
-   public void a(ach $$0) {
+   public void a(aci $$0) {
       $$0.a(this);
    }
 
-   public ewl b() {
+   public iz b() {
       return this.b;
    }
 
-   @Nullable
-   public String e() {
-      return Objects.equals(this.c, "") ? null : this.c;
+   public float e() {
+      return this.c;
    }
 }

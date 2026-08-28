@@ -1,69 +1,30 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import java.util.Map;
-import java.util.stream.Collectors;
+import java.util.function.UnaryOperator;
 import java.util.stream.Stream;
 
-public interface eqf {
-   eqe<cxk> a = new eqe<cxk>() {
-      @Override
-      public kl<cxk> a() {
-         return km.aa;
-      }
+public interface eqf<T> {
+   kl<T> a();
 
-      public Stream<cuo> a(cxk $$0) {
-         return $$0.b();
-      }
+   T b();
 
-      public cxk c() {
-         return cxk.a;
-      }
+   T a(T var1, Stream<cup> var2);
 
-      public cxk a(cxk $$0, Stream<cuo> $$1) {
-         return cxk.a($$1.toList());
-      }
-   };
-   eqe<cxb> b = new eqe<cxb>() {
-      @Override
-      public kl<cxb> a() {
-         return km.F;
-      }
+   Stream<cup> a(T var1);
 
-      public cxb c() {
-         return cxb.a;
-      }
+   default void a(cup $$0, T $$1, Stream<cup> $$2) {
+      T $$3 = $$0.a(this.a(), $$1);
+      T $$4 = this.a($$3, $$2);
+      $$0.b(this.a(), $$4);
+   }
 
-      public Stream<cuo> a(cxb $$0) {
-         return $$0.a();
-      }
+   default void a(cup $$0, Stream<cup> $$1) {
+      this.a($$0, this.b(), $$1);
+   }
 
-      public cxb a(cxb $$0, Stream<cuo> $$1) {
-         cxb.a $$2 = new cxb.a($$0).a();
-         $$1.forEach($$2::a);
-         return $$2.d();
+   default void a(cup $$0, UnaryOperator<cup> $$1) {
+      T $$2 = $$0.a(this.a());
+      if ($$2 != null) {
+         UnaryOperator<cup> $$3 = $$1x -> $$1x.e() ? $$1x : $$1.apply($$1x);
+         this.a($$0, this.a($$2).map($$3));
       }
-   };
-   eqe<cxc> c = new eqe<cxc>() {
-      @Override
-      public kl<cxc> a() {
-         return km.E;
-      }
-
-      public cxc c() {
-         return cxc.a;
-      }
-
-      public Stream<cuo> a(cxc $$0) {
-         return $$0.a().stream();
-      }
-
-      public cxc a(cxc $$0, Stream<cuo> $$1) {
-         return cxc.a($$1.toList());
-      }
-   };
-   Map<kl<?>, eqe<?>> d = Stream.of(a, b, c).collect(Collectors.toMap(eqe::a, $$0 -> (eqe<?>)$$0));
-   Codec<eqe<?>> e = lp.as.q().comapFlatMap($$0 -> {
-      eqe<?> $$1 = d.get($$0);
-      return $$1 != null ? DataResult.success($$1) : DataResult.error(() -> "No items in component");
-   }, eqe::a);
+   }
 }

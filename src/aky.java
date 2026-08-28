@@ -1,90 +1,33 @@
-import com.mojang.datafixers.util.Either;
-import com.mojang.datafixers.util.Pair;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.DynamicOps;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
+import java.util.Map;
 
-public class aky<E> implements Codec<jm<E>> {
-   private final ald<? extends jv<E>> a;
-   private final Codec<ji<E>> b;
-   private final Codec<List<ji<E>>> c;
-   private final Codec<Either<axe<E>, List<ji<E>>>> d;
+public class aky {
+   private final String a;
+   private final String b;
 
-   private static <E> Codec<List<ji<E>>> a(Codec<ji<E>> $$0, boolean $$1) {
-      Codec<List<ji<E>>> $$2 = $$0.listOf().validate(ayg.b(ji::f));
-      return $$1
-         ? $$2
-         : Codec.either($$2, $$0)
-            .xmap($$0x -> (List)$$0x.map($$0xx -> $$0xx, List::of), $$0x -> $$0x.size() == 1 ? Either.right((ji)$$0x.get(0)) : Either.left($$0x));
-   }
-
-   public static <E> Codec<jm<E>> a(ald<? extends jv<E>> $$0, Codec<ji<E>> $$1, boolean $$2) {
-      return new aky<>($$0, $$1, $$2);
-   }
-
-   private aky(ald<? extends jv<E>> $$0, Codec<ji<E>> $$1, boolean $$2) {
+   public aky(String $$0, String $$1) {
       this.a = $$0;
       this.b = $$1;
-      this.c = a($$1, $$2);
-      this.d = Codec.either(axe.b($$0), this.c);
    }
 
-   public <T> DataResult<Pair<jm<E>, T>> decode(DynamicOps<T> $$0, T $$1) {
-      if ($$0 instanceof alc<T> $$2) {
-         Optional<jj<E>> $$3 = $$2.b(this.a);
-         if ($$3.isPresent()) {
-            jj<E> $$4 = $$3.get();
-            return this.d.decode($$0, $$1).flatMap($$1x -> {
-               DataResult<jm<E>> $$2x = (DataResult<jm<E>>)((Either)$$1x.getFirst()).map($$1xx -> a($$4, $$1xx), $$0xx -> DataResult.success(jm.a($$0xx)));
-               return $$2x.map($$1xx -> Pair.of($$1xx, $$1x.getSecond()));
-            });
-         }
-      }
-
-      return this.a($$0, $$1);
+   public static aky a(String $$0) {
+      return new aky($$0, ".json");
    }
 
-   private static <E> DataResult<jm<E>> a(jj<E> $$0, axe<E> $$1) {
-      return $$0.a($$1)
-         .<DataResult<jm<E>>>map(DataResult::success)
-         .orElseGet(() -> DataResult.error(() -> "Missing tag: '" + $$1.b() + "' in '" + $$1.a().a() + "'"));
+   public alf a(alf $$0) {
+      return $$0.c(this.a + "/" + $$0.a() + this.b);
    }
 
-   public <T> DataResult<T> a(jm<E> $$0, DynamicOps<T> $$1, T $$2) {
-      if ($$1 instanceof alc<T> $$3) {
-         Optional<jl<E>> $$4 = $$3.a(this.a);
-         if ($$4.isPresent()) {
-            if (!$$0.a($$4.get())) {
-               return DataResult.error(() -> "HolderSet " + $$0 + " is not valid in current registry set");
-            }
-
-            return this.d.encode($$0.c().mapRight(List::copyOf), $$1, $$2);
-         }
-      }
-
-      return this.b($$0, $$1, $$2);
+   public alf b(alf $$0) {
+      String $$1 = $$0.a();
+      return $$0.c($$1.substring(this.a.length() + 1, $$1.length() - this.b.length()));
    }
 
-   private <T> DataResult<Pair<jm<E>, T>> a(DynamicOps<T> $$0, T $$1) {
-      return this.b.listOf().decode($$0, $$1).flatMap($$0x -> {
-         List<ji.a<E>> $$1x = new ArrayList<>();
-
-         for (ji<E> $$2 : (List)$$0x.getFirst()) {
-            if (!($$2 instanceof ji.a<E> $$3)) {
-               return DataResult.error(() -> "Can't decode element " + $$2 + " without registry");
-            }
-
-            $$1x.add($$3);
-         }
-
-         return DataResult.success(new Pair(jm.a($$1x), $$0x.getSecond()));
-      });
+   public Map<alf, aun> a(aup $$0) {
+      return $$0.b(this.a, $$0x -> $$0x.a().endsWith(this.b));
    }
 
-   private <T> DataResult<T> b(jm<E> $$0, DynamicOps<T> $$1, T $$2) {
-      return this.c.encode($$0.a().toList(), $$1, $$2);
+   public Map<alf, List<aun>> b(aup $$0) {
+      return $$0.c(this.a, $$0x -> $$0x.a().endsWith(this.b));
    }
 }

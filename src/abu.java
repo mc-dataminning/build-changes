@@ -1,23 +1,15 @@
-import java.util.HashSet;
-import java.util.Set;
+import io.netty.buffer.ByteBuf;
+import java.util.List;
 
-public record abu(Set<ale> b) implements zv<abp> {
-   public static final zm<wl, abu> a = zv.a(abu::a, abu::new);
-
-   private abu(wl $$0) {
-      this($$0.a(HashSet::new, wl::q));
-   }
-
-   private void a(wl $$0) {
-      $$0.a(this.b, wl::a);
-   }
+public record abu(List<atw> b) implements zw<abq> {
+   public static final zn<ByteBuf, abu> a = zn.a(atw.a.a(zl.a()), abu::b, abu::new);
 
    @Override
-   public zx<abu> a() {
-      return abv.c;
+   public zy<abu> a() {
+      return abw.d;
    }
 
-   public void a(abp $$0) {
+   public void a(abq $$0) {
       $$0.a(this);
    }
 }

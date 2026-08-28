@@ -1,46 +1,29 @@
-public record abm(iz c, float d, float e, float f, float g, float h) implements aaw {
-   public static final zm<wl, abm> a = aaw.a(abm::a, abm::new);
-   public static final aaw.b<abm> b = aaw.a("debug/worldgen_attempt");
+import java.util.HashSet;
+import java.util.Set;
 
-   private abm(wl $$0) {
-      this($$0.e(), $$0.readFloat(), $$0.readFloat(), $$0.readFloat(), $$0.readFloat(), $$0.readFloat());
+public record abm(Set<kb> c, Set<kb> d) implements aax {
+   public static final zn<wm, abm> a = aax.a(abm::a, abm::new);
+   public static final aax.b<abm> b = aax.a("debug/village_sections");
+
+   private abm(wm $$0) {
+      this($$0.a(HashSet::new, wm::g), $$0.a(HashSet::new, wm::g));
    }
 
-   private void a(wl $$0) {
-      $$0.a(this.c);
-      $$0.a(this.d);
-      $$0.a(this.e);
-      $$0.a(this.f);
-      $$0.a(this.g);
-      $$0.a(this.h);
+   private void a(wm $$0) {
+      $$0.a(this.c, wm::a);
+      $$0.a(this.d, wm::a);
    }
 
    @Override
-   public aaw.b<abm> a() {
+   public aax.b<abm> a() {
       return b;
    }
 
-   public iz b() {
+   public Set<kb> b() {
       return this.c;
    }
 
-   public float c() {
+   public Set<kb> c() {
       return this.d;
-   }
-
-   public float d() {
-      return this.e;
-   }
-
-   public float e() {
-      return this.f;
-   }
-
-   public float f() {
-      return this.g;
-   }
-
-   public float g() {
-      return this.h;
    }
 }

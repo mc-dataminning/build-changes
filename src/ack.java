@@ -1,42 +1,61 @@
-public class ack implements zv<ach> {
-   public static final zm<wl, ack> a = zv.a(ack::a, ack::new);
-   public static final int b = 0;
-   public static final int c = 2;
-   public static final int d = 3;
-   public static final int e = 4;
-   public static final int f = 5;
-   private final int g;
-   private final int h;
+public class ack implements zw<aci> {
+   public static final zn<wm, ack> a = zw.a(ack::a, ack::new);
+   private final int b;
+   private final double c;
+   private final double d;
+   private final double e;
+   private final int f;
 
-   public ack(bst $$0, int $$1) {
-      this.g = $$0.al();
-      this.h = $$1;
+   public ack(btf $$0) {
+      this.b = $$0.al();
+      this.c = $$0.du();
+      this.d = $$0.dw();
+      this.e = $$0.dA();
+      this.f = $$0.p();
    }
 
-   private ack(wl $$0) {
-      this.g = $$0.l();
-      this.h = $$0.readUnsignedByte();
+   private ack(wm $$0) {
+      this.b = $$0.l();
+      this.c = $$0.readDouble();
+      this.d = $$0.readDouble();
+      this.e = $$0.readDouble();
+      this.f = $$0.readShort();
    }
 
-   private void a(wl $$0) {
-      $$0.c(this.g);
-      $$0.k(this.h);
+   private void a(wm $$0) {
+      $$0.c(this.b);
+      $$0.a(this.c);
+      $$0.a(this.d);
+      $$0.a(this.e);
+      $$0.l(this.f);
    }
 
    @Override
-   public zx<ack> a() {
-      return agt.e;
+   public zy<ack> a() {
+      return agu.d;
    }
 
-   public void a(ach $$0) {
+   public void a(aci $$0) {
       $$0.a(this);
    }
 
    public int b() {
-      return this.g;
+      return this.b;
    }
 
-   public int e() {
-      return this.h;
+   public double e() {
+      return this.c;
+   }
+
+   public double f() {
+      return this.d;
+   }
+
+   public double g() {
+      return this.e;
+   }
+
+   public int h() {
+      return this.f;
    }
 }

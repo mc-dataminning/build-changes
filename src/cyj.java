@@ -1,17 +1,15 @@
-public enum cyj implements azt {
-   a("food"),
-   b("blocks"),
-   c("misc");
-
-   public static final azt.a<cyj> d = azt.a(cyj::values);
-   private final String e;
-
-   private cyj(final String $$0) {
-      this.e = $$0;
+public class cyj extends cye {
+   public cyj(String $$0, cyk $$1, cys $$2, cup $$3, float $$4, int $$5) {
+      super(cza.e, $$0, $$1, $$2, $$3, $$4, $$5);
    }
 
    @Override
-   public String c() {
-      return this.e;
+   public cup g() {
+      return new cup(dfb.og);
+   }
+
+   @Override
+   public cyz<?> ao_() {
+      return cyz.s;
    }
 }

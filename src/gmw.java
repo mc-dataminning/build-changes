@@ -1,34 +1,45 @@
-public class gmw extends gni<chk, fuk<chk>> {
-   private final fuk<chk> a;
+public class gmw extends gnj<cfp, fuc<cfp>> {
+   private final gdk a;
 
-   public gmw(gks<chk, fuk<chk>> $$0, fwv $$1) {
+   public gmw(gkt<cfp, fuc<cfp>> $$0, gdk $$1) {
       super($$0);
-      this.a = new fuk<>($$1.a(fwy.aq));
+      this.a = $$1;
    }
 
-   public void a(ezx $$0, gdn $$1, int $$2, chk $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-      cuo $$10 = $$3.fR();
-      if ($$10.g() instanceof csc $$11 && $$11.d() == csc.a.a) {
-         this.c().a(this.a);
-         this.a.a($$3, $$4, $$5, $$6);
-         this.a.a($$3, $$4, $$5, $$7, $$8, $$9);
-         float $$15;
-         float $$16;
-         float $$14;
-         if ($$10.a(awx.by)) {
-            int $$13 = cxg.a($$10, -6265536);
-            $$14 = (float)ayi.b.b($$13) / 255.0F;
-            $$15 = (float)ayi.b.c($$13) / 255.0F;
-            $$16 = (float)ayi.b.d($$13) / 255.0F;
-         } else {
-            $$14 = 1.0F;
-            $$15 = 1.0F;
-            $$16 = 1.0F;
-         }
-
-         fab $$20 = $$1.getBuffer(gdv.e($$11.b()));
-         this.a.a($$0, $$20, $$2, gop.d, $$14, $$15, $$16, 1.0F);
-         return;
+   public void a(ezy $$0, gdo $$1, int $$2, cfp $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
+      boolean $$10 = $$3.fL();
+      boolean $$11 = $$3.p_();
+      $$0.a();
+      if ($$11) {
+         float $$12 = 0.75F;
+         $$0.b(0.75F, 0.75F, 0.75F);
+         $$0.a(0.0F, 0.5F, 0.209375F);
       }
+
+      $$0.a(this.c().a.b / 16.0F, this.c().a.c / 16.0F, this.c().a.d / 16.0F);
+      float $$13 = $$3.G($$6);
+      $$0.a(a.f.rotation($$13));
+      $$0.a(a.d.rotationDegrees($$8));
+      $$0.a(a.b.rotationDegrees($$9));
+      if ($$3.p_()) {
+         if ($$10) {
+            $$0.a(0.4F, 0.26F, 0.15F);
+         } else {
+            $$0.a(0.06F, 0.26F, -0.5F);
+         }
+      } else if ($$10) {
+         $$0.a(0.46F, 0.26F, 0.22F);
+      } else {
+         $$0.a(0.06F, 0.27F, -0.5F);
+      }
+
+      $$0.a(a.b.rotationDegrees(90.0F));
+      if ($$10) {
+         $$0.a(a.f.rotationDegrees(90.0F));
+      }
+
+      cup $$14 = $$3.a(btb.a);
+      this.a.a($$3, $$14, cum.h, false, $$0, $$1, $$2);
+      $$0.b();
    }
 }

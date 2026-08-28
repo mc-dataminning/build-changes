@@ -1,50 +1,13 @@
-import it.unimi.dsi.fastutil.floats.Float2FloatFunction;
-import java.util.function.Function;
+import java.util.concurrent.TimeUnit;
 
-public interface azz<C> {
-   azz<Float> a = a($$0 -> $$0);
+public class azz {
+   public static final long a = TimeUnit.SECONDS.toNanos(1L);
+   public static final long b = TimeUnit.MILLISECONDS.toNanos(1L);
+   public static final long c = TimeUnit.SECONDS.toMillis(1L);
+   public static final long d = TimeUnit.HOURS.toSeconds(1L);
+   public static final int e = (int)TimeUnit.MINUTES.toSeconds(1L);
 
-   float a(C var1);
-
-   float b();
-
-   float c();
-
-   static azz<Float> a(final Float2FloatFunction $$0) {
-      return new azz<Float>() {
-         public float a(Float $$0x) {
-            return (Float)$$0.apply($$0);
-         }
-
-         @Override
-         public float b() {
-            return Float.NEGATIVE_INFINITY;
-         }
-
-         @Override
-         public float c() {
-            return Float.POSITIVE_INFINITY;
-         }
-      };
-   }
-
-   default <C2> azz<C2> a(final Function<C2, C> $$0) {
-      final azz<C> $$1 = this;
-      return new azz<C2>() {
-         @Override
-         public float a(C2 $$0x) {
-            return $$1.a($$0.apply($$0));
-         }
-
-         @Override
-         public float b() {
-            return $$1.b();
-         }
-
-         @Override
-         public float c() {
-            return $$1.c();
-         }
-      };
+   public static bqf a(int $$0, int $$1) {
+      return bqf.a($$0 * 20, $$1 * 20);
    }
 }

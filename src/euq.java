@@ -1,42 +1,48 @@
-import com.google.common.collect.Sets;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Set;
+import java.util.List;
+import java.util.Optional;
 
-public record euq(eum b, eum c) implements eum {
+public record euq(alf b, fh.g c) implements eun {
    public static final MapCodec<euq> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(eun.a.fieldOf("min").forGetter(euq::c), eun.a.fieldOf("max").forGetter(euq::d)).apply($$0, euq::new)
+      $$0 -> $$0.group(alf.a.fieldOf("storage").forGetter(euq::c), fh.g.a.fieldOf("path").forGetter(euq::d)).apply($$0, euq::new)
    );
 
    @Override
-   public eul b() {
-      return eun.c;
+   public eum b() {
+      return euo.f;
    }
 
-   public static euq a(float $$0, float $$1) {
-      return new euq(euk.a($$0), euk.a($$1));
+   private Optional<vi> c(eqi $$0) {
+      us $$1 = $$0.d().o().aL().a(this.b);
+
+      try {
+         List<vp> $$2 = this.c.a($$1);
+         if ($$2.size() == 1 && $$2.get(0) instanceof vi $$3) {
+            return Optional.of($$3);
+         }
+      } catch (CommandSyntaxException var6) {
+      }
+
+      return Optional.empty();
    }
 
    @Override
-   public int a(eqh $$0) {
-      return ayy.a($$0.b(), this.b.a($$0), this.c.a($$0));
+   public float b(eqi $$0) {
+      return this.c($$0).map(vi::k).orElse(0.0F);
    }
 
    @Override
-   public float b(eqh $$0) {
-      return ayy.a($$0.b(), this.b.b($$0), this.c.b($$0));
+   public int a(eqi $$0) {
+      return this.c($$0).map(vi::g).orElse(0);
    }
 
-   @Override
-   public Set<eta<?>> a() {
-      return Sets.union(this.b.a(), this.c.a());
-   }
-
-   public eum c() {
+   public alf c() {
       return this.b;
    }
 
-   public eum d() {
+   public fh.g d() {
       return this.c;
    }
 }

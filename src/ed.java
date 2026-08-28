@@ -8,7 +8,7 @@ public class ed extends dr<ed.a> {
       return ed.a.a;
    }
 
-   public void a(arf $$0, iz $$1) {
+   public void a(arg $$0, iz $$1) {
       double $$2 = $$0.du() - (double)$$1.u();
       double $$3 = $$0.dA() - (double)$$1.w();
       double $$4 = $$2 * $$2 + $$3 * $$3;

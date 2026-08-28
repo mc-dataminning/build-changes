@@ -2,9 +2,9 @@ import java.util.function.BiConsumer;
 
 public class ni implements mu {
    @Override
-   public void generate(jk.a $$0, BiConsumer<ald<eqm>, eqm.a> $$1) {
-      $$1.accept(eqd.aj, eqm.b());
-      $$1.accept(eqd.al, eqm.b());
-      $$1.accept(eqd.ak, eqm.b());
+   public void generate(jk.a $$0, BiConsumer<ale<eqn>, eqn.a> $$1) {
+      $$1.accept(eqe.aj, eqn.b());
+      $$1.accept(eqe.al, eqn.b());
+      $$1.accept(eqe.ak, eqn.b());
    }
 }

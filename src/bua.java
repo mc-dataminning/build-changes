@@ -1,35 +1,13 @@
-import io.netty.buffer.ByteBuf;
-import java.util.function.IntFunction;
+public interface bua extends btz {
+   void b(int var1);
 
-public enum bua {
-   a(0),
-   b(1),
-   c(2),
-   d(3),
-   e(4),
-   f(5),
-   g(6),
-   h(7),
-   i(8),
-   j(9),
-   k(10),
-   l(11),
-   m(12),
-   n(13),
-   o(14),
-   p(15),
-   q(16),
-   r(17);
+   boolean a();
 
-   public static final IntFunction<bua> s = axo.a(bua::a, values(), axo.a.a);
-   public static final zm<ByteBuf, bua> t = zk.a(s, bua::a);
-   private final int u;
+   void c(int var1);
 
-   private bua(final int $$0) {
-      this.u = $$0;
-   }
+   void b();
 
-   public int a() {
-      return this.u;
+   default int c() {
+      return 0;
    }
 }

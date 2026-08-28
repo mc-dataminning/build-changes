@@ -1,17 +1,23 @@
-public class abv {
-   public static final zx<abq> a = a("finish_configuration");
-   public static final zx<abr> b = a("registry_data");
-   public static final zx<abu> c = a("update_enabled_features");
-   public static final zx<abt> d = a("select_known_packs");
-   public static final zx<abs> e = a("reset_chat");
-   public static final zx<aby> f = b("finish_configuration");
-   public static final zx<abz> g = b("select_known_packs");
+import java.util.HashSet;
+import java.util.Set;
 
-   private static <T extends zv<abp>> zx<T> a(String $$0) {
-      return new zx<>(zw.b, new ale($$0));
+public record abv(Set<alf> b) implements zw<abq> {
+   public static final zn<wm, abv> a = zw.a(abv::a, abv::new);
+
+   private abv(wm $$0) {
+      this($$0.a(HashSet::new, wm::q));
    }
 
-   private static <T extends zv<abx>> zx<T> b(String $$0) {
-      return new zx<>(zw.a, new ale($$0));
+   private void a(wm $$0) {
+      $$0.a(this.b, wm::a);
+   }
+
+   @Override
+   public zy<abv> a() {
+      return abw.c;
+   }
+
+   public void a(abq $$0) {
+      $$0.a(this);
    }
 }

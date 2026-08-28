@@ -1,39 +1,22 @@
-import com.mojang.serialization.DynamicOps;
-import java.util.List;
-import java.util.Set;
+import java.util.Optional;
 import java.util.function.Consumer;
+import net.minecraft.server.MinecraftServer;
 
-public class asn implements aru {
-   public static final aru.a a = new aru.a("synchronize_registries");
-   private final List<atv> b;
-   private final jp<aln> c;
+public class asn implements arv {
+   public static final arv.a a = new arv.a("server_resource_pack");
+   private final MinecraftServer.b b;
 
-   public asn(List<atv> $$0, jp<aln> $$1) {
+   public asn(MinecraftServer.b $$0) {
       this.b = $$0;
-      this.c = $$1;
    }
 
    @Override
-   public void a(Consumer<zv<?>> $$0) {
-      $$0.accept(new abt(this.b));
-   }
-
-   private void a(Consumer<zv<?>> $$0, Set<atv> $$1) {
-      DynamicOps<vo> $$2 = this.c.a().a(vf.a);
-      jz.a($$2, this.c.c(aln.b), $$1, ($$1x, $$2x) -> $$0.accept(new abr($$1x, $$2x)));
-      $$0.accept(new aak(axh.a(this.c)));
-   }
-
-   public void a(List<atv> $$0, Consumer<zv<?>> $$1) {
-      if ($$0.equals(this.b)) {
-         this.a($$1, Set.copyOf(this.b));
-      } else {
-         this.a($$1, Set.of());
-      }
+   public void a(Consumer<zw<?>> $$0) {
+      $$0.accept(new aai(this.b.a(), this.b.b(), this.b.c(), this.b.d(), Optional.ofNullable(this.b.e())));
    }
 
    @Override
-   public aru.a a() {
+   public arv.a a() {
       return a;
    }
 }

@@ -1,38 +1,27 @@
-import java.util.function.Supplier;
-import javax.annotation.Nullable;
-
 public interface wv {
-   static wv a(final Runnable $$0) {
-      return new wv() {
-         @Override
-         public void a() {
-            $$0.run();
-         }
+   zx a();
 
-         @Nullable
-         @Override
-         public zv<?> b() {
-            $$0.run();
-            return null;
-         }
-      };
+   wl b();
+
+   void a(xp var1);
+
+   default void a(zw $$0, Exception $$1) throws y {
+      throw zz.a($$1, $$0, this);
    }
 
-   static wv a(final Supplier<zv<?>> $$0) {
-      return new wv() {
-         @Nullable
-         @Override
-         public zv<?> b() {
-            return $$0.get();
-         }
-      };
+   boolean c();
+
+   default boolean a(zw<?> $$0) {
+      return this.c();
    }
 
-   default void a() {
+   default void a(o $$0) {
+      p $$1 = $$0.a("Connection");
+      $$1.a("Protocol", () -> this.b().a());
+      $$1.a("Flow", () -> this.a().toString());
+      this.a($$1);
    }
 
-   @Nullable
-   default zv<?> b() {
-      return null;
+   default void a(p $$0) {
    }
 }

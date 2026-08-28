@@ -1,135 +1,55 @@
-import javax.annotation.Nullable;
+public class crb<T extends cpu> implements cpi {
+   public static final crb<cqb> a = a("generic_9x1", cqb::a);
+   public static final crb<cqb> b = a("generic_9x2", cqb::b);
+   public static final crb<cqb> c = a("generic_9x3", cqb::c);
+   public static final crb<cqb> d = a("generic_9x4", cqb::d);
+   public static final crb<cqb> e = a("generic_9x5", cqb::e);
+   public static final crb<cqb> f = a("generic_9x6", cqb::f);
+   public static final crb<cqn> g = a("generic_3x3", cqn::new);
+   public static final crb<cqi> h = a("crafter_3x3", cqi::new);
+   public static final crb<cpw> i = a("anvil", cpw::new);
+   public static final crb<cpx> j = a("beacon", cpx::new);
+   public static final crb<cpy> k = a("blast_furnace", cpy::new);
+   public static final crb<cpz> l = a("brewing_stand", cpz::new);
+   public static final crb<cql> m = a("crafting", cql::new);
+   public static final crb<cqo> n = a("enchantment", cqo::new);
+   public static final crb<cqq> o = a("furnace", cqq::new);
+   public static final crb<cqs> p = a("grindstone", cqs::new);
+   public static final crb<cqt> q = a("hopper", cqt::new);
+   public static final crb<cqy> r = a("lectern", ($$0, $$1) -> new cqy($$0));
+   public static final crb<cqz> s = a("loom", cqz::new);
+   public static final crb<crd> t = a("merchant", crd::new);
+   public static final crb<crm> u = a("shulker_box", crm::new);
+   public static final crb<crs> v = a("smithing", crs::new);
+   public static final crb<crt> w = a("smoker", crt::new);
+   public static final crb<cqa> x = a("cartography_table", cqa::new);
+   public static final crb<crv> y = a("stonecutter", crv::new);
+   private final cpl z;
+   private final crb.a<T> A;
 
-public class crb implements bqm {
-   private final dau b;
-   private final jr<cuo> c = jr.a(3, cuo.l);
-   @Nullable
-   private dav d;
-   private int e;
-   private int f;
+   private static <T extends cpu> crb<T> a(String $$0, crb.a<T> $$1) {
+      return jv.a(lp.r, $$0, new crb<>($$1, cpn.g));
+   }
 
-   public crb(dau $$0) {
-      this.b = $$0;
+   private static <T extends cpu> crb<T> a(String $$0, crb.a<T> $$1, cpj... $$2) {
+      return jv.a(lp.r, $$0, new crb<>($$1, cpn.e.a($$2)));
+   }
+
+   private crb(crb.a<T> $$0, cpl $$1) {
+      this.A = $$0;
+      this.z = $$1;
+   }
+
+   public T a(int $$0, cmw $$1) {
+      return this.A.create($$0, $$1);
    }
 
    @Override
-   public int b() {
-      return this.c.size();
+   public cpl i() {
+      return this.z;
    }
 
-   @Override
-   public boolean c() {
-      for (cuo $$0 : this.c) {
-         if (!$$0.e()) {
-            return false;
-         }
-      }
-
-      return true;
-   }
-
-   @Override
-   public cuo a(int $$0) {
-      return this.c.get($$0);
-   }
-
-   @Override
-   public cuo a(int $$0, int $$1) {
-      cuo $$2 = this.c.get($$0);
-      if ($$0 == 2 && !$$2.e()) {
-         return bqn.a(this.c, $$0, $$2.I());
-      } else {
-         cuo $$3 = bqn.a(this.c, $$0, $$1);
-         if (!$$3.e() && this.d($$0)) {
-            this.f();
-         }
-
-         return $$3;
-      }
-   }
-
-   private boolean d(int $$0) {
-      return $$0 == 0 || $$0 == 1;
-   }
-
-   @Override
-   public cuo b(int $$0) {
-      return bqn.a(this.c, $$0);
-   }
-
-   @Override
-   public void a(int $$0, cuo $$1) {
-      this.c.set($$0, $$1);
-      $$1.f(this.e_($$1));
-      if (this.d($$0)) {
-         this.f();
-      }
-   }
-
-   @Override
-   public boolean a(cmw $$0) {
-      return this.b.gq() == $$0;
-   }
-
-   @Override
-   public void e() {
-      this.f();
-   }
-
-   public void f() {
-      this.d = null;
-      cuo $$0;
-      cuo $$1;
-      if (this.c.get(0).e()) {
-         $$0 = this.c.get(1);
-         $$1 = cuo.l;
-      } else {
-         $$0 = this.c.get(0);
-         $$1 = this.c.get(1);
-      }
-
-      if ($$0.e()) {
-         this.a(2, cuo.l);
-         this.f = 0;
-      } else {
-         daw $$4 = this.b.gs();
-         if (!$$4.isEmpty()) {
-            dav $$5 = $$4.a($$0, $$1, this.e);
-            if ($$5 == null || $$5.r()) {
-               this.d = $$5;
-               $$5 = $$4.a($$1, $$0, this.e);
-            }
-
-            if ($$5 != null && !$$5.r()) {
-               this.d = $$5;
-               this.a(2, $$5.h());
-               this.f = $$5.q();
-            } else {
-               this.a(2, cuo.l);
-               this.f = 0;
-            }
-         }
-
-         this.b.n(this.a(2));
-      }
-   }
-
-   @Nullable
-   public dav g() {
-      return this.d;
-   }
-
-   public void c(int $$0) {
-      this.e = $$0;
-      this.f();
-   }
-
-   @Override
-   public void a() {
-      this.c.clear();
-   }
-
-   public int h() {
-      return this.f;
+   interface a<T extends cpu> {
+      T create(int var1, cmw var2);
    }
 }

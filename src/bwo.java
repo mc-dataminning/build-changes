@@ -1,29 +1,19 @@
-import com.mojang.datafixers.kinds.App;
-import java.util.function.Function;
+import com.google.common.collect.ImmutableMap;
 
-public class bwo {
-   public static bws<btq> a(int $$0) {
-      return byu.a(
-         (Function<byu.b<btq>, ? extends App<byu.c<btq>, byx<btq>>>)($$1 -> $$1.group($$1.a(ccs.n), $$1.b(ccs.o), $$1.c(ccs.p), $$1.b(ccs.h))
-               .apply($$1, ($$2, $$3, $$4, $$5) -> ($$6, $$7, $$8) -> {
-                     bto $$9 = $$1.b($$3);
-                     if (!a($$7) && $$7.i($$9) && $$1.<ccu>b($$5).a($$9)) {
-                        $$2.a(new bvs($$9, true));
-                        $$7.a(bqs.a);
-                        $$7.C($$9);
-                        $$4.a(true, (long)$$0);
-                        return true;
-                     } else {
-                        return false;
-                     }
-                  }))
-      );
+public class bwo extends bvi<btr> {
+   public bwo(int $$0, int $$1) {
+      super(ImmutableMap.of(cct.n, ccu.a), $$0, $$1);
    }
 
-   private static boolean a(btq $$0) {
-      return $$0.b($$1 -> {
-         cuj $$2 = $$1.g();
-         return $$2 instanceof cvh && $$0.a((cvh)$$2);
-      });
+   protected boolean a(arf $$0, btr $$1, long $$2) {
+      return $$1.dS().c(cct.n).filter($$1x -> $$1x.a($$1)).isPresent();
+   }
+
+   protected void b(arf $$0, btr $$1, long $$2) {
+      $$1.dS().b(cct.n);
+   }
+
+   protected void c(arf $$0, btr $$1, long $$2) {
+      $$1.dS().c(cct.n).ifPresent($$1x -> $$1.G().a($$1x.a()));
    }
 }

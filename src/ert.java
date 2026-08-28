@@ -1,80 +1,199 @@
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableList.Builder;
-import com.mojang.datafixers.Products.P1;
-import com.mojang.serialization.codecs.RecordCodecBuilder.Instance;
-import com.mojang.serialization.codecs.RecordCodecBuilder.Mu;
+import com.mojang.logging.LogUtils;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
-import java.util.function.Function;
-import java.util.function.Predicate;
+import java.util.Optional;
+import java.util.stream.Stream;
+import org.slf4j.Logger;
 
-public abstract class ert implements eru {
-   protected final List<etr> g;
-   private final Predicate<eqh> a;
+public interface ert {
+   MapCodec<ert> a = a(Integer.MAX_VALUE);
 
-   protected ert(List<etr> $$0) {
-      this.g = $$0;
-      this.a = ac.a($$0);
+   static MapCodec<ert> a(int $$0) {
+      return ert.f.e.dispatchMap("mode", ert::a, $$0x -> $$0x.g).validate($$1 -> {
+         if ($$1 instanceof ert.d $$2 && $$2.c().isPresent()) {
+            int $$3 = $$2.c().get();
+            if ($$3 > $$0) {
+               return DataResult.error(() -> "Size value too large: " + $$3 + ", max size is " + $$0);
+            }
+         }
+
+         return DataResult.success($$1);
+      });
    }
 
-   @Override
-   public abstract erv<? extends ert> b();
+   ert.f a();
 
-   protected static <T extends ert> P1<Mu<T>, List<etr>> a(Instance<T> $$0) {
-      return $$0.group(ett.a.listOf().optionalFieldOf("conditions", List.of()).forGetter($$0x -> $$0x.g));
+   default <T> List<T> a(List<T> $$0, List<T> $$1) {
+      return this.a($$0, $$1, Integer.MAX_VALUE);
    }
 
-   public final cuo b(cuo $$0, eqh $$1) {
-      return this.a.test($$1) ? this.a($$0, $$1) : $$0;
-   }
+   <T> List<T> a(List<T> var1, List<T> var2, int var3);
 
-   protected abstract cuo a(cuo var1, eqh var2);
+   public static class a implements ert {
+      private static final Logger d = LogUtils.getLogger();
+      public static final ert.a b = new ert.a();
+      public static final MapCodec<ert.a> c = MapCodec.unit(() -> b);
 
-   @Override
-   public void a(eqn $$0) {
-      eru.super.a($$0);
-
-      for (int $$1 = 0; $$1 < this.g.size(); $$1++) {
-         this.g.get($$1).a($$0.a(".conditions[" + $$1 + "]"));
-      }
-   }
-
-   protected static ert.a<?> a(Function<List<etr>, eru> $$0) {
-      return new ert.b($$0);
-   }
-
-   public abstract static class a<T extends ert.a<T>> implements eru.a, etk<T> {
-      private final Builder<etr> a = ImmutableList.builder();
-
-      public T a(etr.a $$0) {
-         this.a.add($$0.build());
-         return this.c();
-      }
-
-      public final T f() {
-         return this.c();
-      }
-
-      protected abstract T c();
-
-      protected List<etr> g() {
-         return this.a.build();
-      }
-   }
-
-   static final class b extends ert.a<ert.b> {
-      private final Function<List<etr>, eru> a;
-
-      public b(Function<List<etr>, eru> $$0) {
-         this.a = $$0;
-      }
-
-      protected ert.b a() {
-         return this;
+      private a() {
       }
 
       @Override
-      public eru b() {
-         return this.a.apply(this.g());
+      public ert.f a() {
+         return ert.f.d;
+      }
+
+      @Override
+      public <T> List<T> a(List<T> $$0, List<T> $$1, int $$2) {
+         if ($$0.size() + $$1.size() > $$2) {
+            d.error("Contents overflow in section append");
+            return $$0;
+         } else {
+            return Stream.concat($$0.stream(), $$1.stream()).toList();
+         }
+      }
+   }
+
+   public static record b(int c) implements ert {
+      private static final Logger d = LogUtils.getLogger();
+      public static final MapCodec<ert.b> b = RecordCodecBuilder.mapCodec(
+         $$0 -> $$0.group(ayh.k.optionalFieldOf("offset", 0).forGetter(ert.b::b)).apply($$0, ert.b::new)
+      );
+
+      @Override
+      public ert.f a() {
+         return ert.f.c;
+      }
+
+      @Override
+      public <T> List<T> a(List<T> $$0, List<T> $$1, int $$2) {
+         int $$3 = $$0.size();
+         if (this.c > $$3) {
+            d.error("Cannot insert when offset is out of bounds");
+            return $$0;
+         } else if ($$3 + $$1.size() > $$2) {
+            d.error("Contents overflow in section insertion");
+            return $$0;
+         } else {
+            Builder<T> $$4 = ImmutableList.builder();
+            $$4.addAll($$0.subList(0, this.c));
+            $$4.addAll($$1);
+            $$4.addAll($$0.subList(this.c, $$3));
+            return $$4.build();
+         }
+      }
+
+      public int b() {
+         return this.c;
+      }
+   }
+
+   public static class c implements ert {
+      public static final ert.c b = new ert.c();
+      public static final MapCodec<ert.c> c = MapCodec.unit(() -> b);
+
+      private c() {
+      }
+
+      @Override
+      public ert.f a() {
+         return ert.f.a;
+      }
+
+      @Override
+      public <T> List<T> a(List<T> $$0, List<T> $$1, int $$2) {
+         return $$1;
+      }
+   }
+
+   public static record d(int c, Optional<Integer> d) implements ert {
+      private static final Logger e = LogUtils.getLogger();
+      public static final MapCodec<ert.d> b = RecordCodecBuilder.mapCodec(
+         $$0 -> $$0.group(ayh.k.optionalFieldOf("offset", 0).forGetter(ert.d::b), ayh.k.optionalFieldOf("size").forGetter(ert.d::c)).apply($$0, ert.d::new)
+      );
+
+      public d(int $$0) {
+         this($$0, Optional.empty());
+      }
+
+      @Override
+      public ert.f a() {
+         return ert.f.b;
+      }
+
+      @Override
+      public <T> List<T> a(List<T> $$0, List<T> $$1, int $$2) {
+         int $$3 = $$0.size();
+         if (this.c > $$3) {
+            e.error("Cannot replace when offset is out of bounds");
+            return $$0;
+         } else {
+            Builder<T> $$4 = ImmutableList.builder();
+            $$4.addAll($$0.subList(0, this.c));
+            $$4.addAll($$1);
+            int $$5 = this.c + this.d.orElse($$1.size());
+            if ($$5 < $$3) {
+               $$4.addAll($$0.subList($$5, $$3));
+            }
+
+            List<T> $$6 = $$4.build();
+            if ($$6.size() > $$2) {
+               e.error("Contents overflow in section replacement");
+               return $$0;
+            } else {
+               return $$6;
+            }
+         }
+      }
+
+      public int b() {
+         return this.c;
+      }
+
+      public Optional<Integer> c() {
+         return this.d;
+      }
+   }
+
+   public static record e<T>(List<T> a, ert b) {
+      public static <T> Codec<ert.e<T>> a(Codec<T> $$0, int $$1) {
+         return RecordCodecBuilder.create(
+            $$2 -> $$2.group($$0.sizeLimitedListOf($$1).fieldOf("values").forGetter($$0xx -> $$0xx.a), ert.a($$1).forGetter($$0xx -> $$0xx.b))
+                  .apply($$2, ert.e::new)
+         );
+      }
+
+      public List<T> a(List<T> $$0) {
+         return this.b.a($$0, this.a);
+      }
+   }
+
+   public static enum f implements azu {
+      a("replace_all", ert.c.c),
+      b("replace_section", ert.d.b),
+      c("insert", ert.b.b),
+      d("append", ert.a.c);
+
+      public static final Codec<ert.f> e = azu.a(ert.f::values);
+      private final String f;
+      final MapCodec<? extends ert> g;
+
+      private f(final String $$0, final MapCodec<? extends ert> $$1) {
+         this.f = $$0;
+         this.g = $$1;
+      }
+
+      public MapCodec<? extends ert> a() {
+         return this.g;
+      }
+
+      @Override
+      public String c() {
+         return this.f;
       }
    }
 }

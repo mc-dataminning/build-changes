@@ -1,4 +1,4 @@
-import io.netty.channel.ChannelOutboundHandlerAdapter;
+import io.netty.channel.ChannelInboundHandlerAdapter;
 
-public class wp extends ChannelOutboundHandlerAdapter {
+public class wp extends ChannelInboundHandlerAdapter {
 }

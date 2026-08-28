@@ -1,8 +1,15 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+import java.util.Set;
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface fqy {
+public class fqy extends fqm {
+   private static final xp i = xp.c("gui.recipebook.toggleRecipes.smokable");
+
+   @Override
+   protected xp c() {
+      return i;
+   }
+
+   @Override
+   protected Set<cuk> b() {
+      return dov.g().keySet();
+   }
 }

@@ -1,95 +1,71 @@
 import java.util.List;
 
 public class sx {
-   public static final ald<ehn> a = sw.a("crimson_fungi");
-   public static final ald<ehn> b = sw.a("warped_fungi");
-   public static final ald<ehn> c = sw.a("oak_checked");
-   public static final ald<ehn> d = sw.a("dark_oak_checked");
-   public static final ald<ehn> e = sw.a("birch_checked");
-   public static final ald<ehn> f = sw.a("acacia_checked");
-   public static final ald<ehn> g = sw.a("spruce_checked");
-   public static final ald<ehn> h = sw.a("mangrove_checked");
-   public static final ald<ehn> i = sw.a("cherry_checked");
-   public static final ald<ehn> j = sw.a("pine_on_snow");
-   public static final ald<ehn> k = sw.a("spruce_on_snow");
-   public static final ald<ehn> l = sw.a("pine_checked");
-   public static final ald<ehn> m = sw.a("jungle_tree");
-   public static final ald<ehn> n = sw.a("fancy_oak_checked");
-   public static final ald<ehn> o = sw.a("mega_jungle_tree_checked");
-   public static final ald<ehn> p = sw.a("mega_spruce_checked");
-   public static final ald<ehn> q = sw.a("mega_pine_checked");
-   public static final ald<ehn> r = sw.a("tall_mangrove_checked");
-   public static final ald<ehn> s = sw.a("jungle_bush");
-   public static final ald<ehn> t = sw.a("super_birch_bees_0002");
-   public static final ald<ehn> u = sw.a("super_birch_bees");
-   public static final ald<ehn> v = sw.a("oak_bees_0002");
-   public static final ald<ehn> w = sw.a("oak_bees_002");
-   public static final ald<ehn> x = sw.a("birch_bees_0002");
-   public static final ald<ehn> y = sw.a("birch_bees_002");
-   public static final ald<ehn> z = sw.a("fancy_oak_bees_0002");
-   public static final ald<ehn> A = sw.a("fancy_oak_bees_002");
-   public static final ald<ehn> B = sw.a("fancy_oak_bees");
-   public static final ald<ehn> C = sw.a("cherry_bees_005");
+   public static final ehr a = ehk.a(dxu.a.e);
+   public static final ehr b = ehk.a(dxu.a.c);
+   public static final ehr c = ehk.a(dxu.a.a);
+   public static final ehr d = ehk.a(dxu.a.d);
+   public static final ehr e = ehj.a(dyo.a(), dyo.b());
+   public static final ehr f = ehj.a(dyo.b(10), dyo.c(10));
+   public static final ehr g = ehj.a(dyo.b(8), dyo.c(8));
+   public static final ehr h = ehj.a(dyo.b(4), dyo.c(4));
+   public static final ehr i = ehj.a(dyo.a(), dyo.a(256));
 
-   public static void a(rc<ehn> $$0) {
-      jj<eak<?, ?>> $$1 = $$0.a(lq.aC);
-      ji<eak<?, ?>> $$2 = $$1.b(sm.a);
-      ji<eak<?, ?>> $$3 = $$1.b(sm.c);
-      ji<eak<?, ?>> $$4 = $$1.b(sm.g);
-      ji<eak<?, ?>> $$5 = $$1.b(sm.h);
-      ji<eak<?, ?>> $$6 = $$1.b(sm.i);
-      ji<eak<?, ?>> $$7 = $$1.b(sm.j);
-      ji<eak<?, ?>> $$8 = $$1.b(sm.k);
-      ji<eak<?, ?>> $$9 = $$1.b(sm.x);
-      ji<eak<?, ?>> $$10 = $$1.b(sm.z);
-      ji<eak<?, ?>> $$11 = $$1.b(sm.l);
-      ji<eak<?, ?>> $$12 = $$1.b(sm.m);
-      ji<eak<?, ?>> $$13 = $$1.b(sm.n);
-      ji<eak<?, ?>> $$14 = $$1.b(sm.p);
-      ji<eak<?, ?>> $$15 = $$1.b(sm.q);
-      ji<eak<?, ?>> $$16 = $$1.b(sm.r);
-      ji<eak<?, ?>> $$17 = $$1.b(sm.y);
-      ji<eak<?, ?>> $$18 = $$1.b(sm.v);
-      ji<eak<?, ?>> $$19 = $$1.b(sm.s);
-      ji<eak<?, ?>> $$20 = $$1.b(sm.t);
-      ji<eak<?, ?>> $$21 = $$1.b(sm.A);
-      ji<eak<?, ?>> $$22 = $$1.b(sm.B);
-      ji<eak<?, ?>> $$23 = $$1.b(sm.D);
-      ji<eak<?, ?>> $$24 = $$1.b(sm.E);
-      ji<eak<?, ?>> $$25 = $$1.b(sm.G);
-      ji<eak<?, ?>> $$26 = $$1.b(sm.H);
-      ji<eak<?, ?>> $$27 = $$1.b(sm.J);
-      ji<eak<?, ?>> $$28 = $$1.b(sm.K);
-      sw.a($$0, a, $$2, ehf.a(8), ehb.a());
-      sw.a($$0, b, $$3, ehf.a(8), ehb.a());
-      sw.a($$0, c, $$4, sw.a(dfa.x));
-      sw.a($$0, d, $$5, sw.a(dfa.D));
-      sw.a($$0, e, $$6, sw.a(dfa.z));
-      sw.a($$0, f, $$7, sw.a(dfa.B));
-      sw.a($$0, g, $$8, sw.a(dfa.y));
-      sw.a($$0, h, $$9, sw.a(dfa.E));
-      sw.a($$0, i, $$10, sw.a(dfa.C));
-      dza $$29 = dza.a(je.a.q(), dfa.dP, dfa.qP);
-      List<ehq> $$30 = List.of(ehh.a(je.b, dza.a(dza.a(dfa.qP)), 8), ehc.a($$29));
-      sw.a($$0, j, $$11, $$30);
-      sw.a($$0, k, $$8, $$30);
-      sw.a($$0, l, $$11, sw.a(dfa.y));
-      sw.a($$0, m, $$12, sw.a(dfa.A));
-      sw.a($$0, n, $$13, sw.a(dfa.x));
-      sw.a($$0, o, $$14, sw.a(dfa.A));
-      sw.a($$0, p, $$15, sw.a(dfa.y));
-      sw.a($$0, q, $$16, sw.a(dfa.y));
-      sw.a($$0, r, $$17, sw.a(dfa.E));
-      sw.a($$0, s, $$18, sw.a(dfa.x));
-      sw.a($$0, t, $$19, sw.a(dfa.z));
-      sw.a($$0, u, $$20, sw.a(dfa.z));
-      sw.a($$0, v, $$21, sw.a(dfa.x));
-      sw.a($$0, w, $$22, sw.a(dfa.x));
-      sw.a($$0, x, $$23, sw.a(dfa.z));
-      sw.a($$0, y, $$24, sw.a(dfa.z));
-      sw.a($$0, z, $$25, sw.a(dfa.x));
-      sw.a($$0, A, $$26, sw.a(dfa.x));
-      sw.a($$0, B, $$27, sw.a(dfa.x));
-      sw.a($$0, C, $$28, sw.a(dfa.C));
+   public static void a(rc<eho> $$0) {
+      sr.a($$0);
+      ss.a($$0);
+      st.a($$0);
+      su.a($$0);
+      sv.a($$0);
+      sw.a($$0);
+      sy.a($$0);
+      sz.a($$0);
+      ta.a($$0);
+   }
+
+   public static ale<eho> a(String $$0) {
+      return ale.a(lq.aI, new alf($$0));
+   }
+
+   public static void a(rc<eho> $$0, ale<eho> $$1, ji<eal<?, ?>> $$2, List<ehr> $$3) {
+      $$0.a($$1, new eho($$2, List.copyOf($$3)));
+   }
+
+   public static void a(rc<eho> $$0, ale<eho> $$1, ji<eal<?, ?>> $$2, ehr... $$3) {
+      a($$0, $$1, $$2, List.of($$3));
+   }
+
+   public static ehr a(int $$0, float $$1, int $$2) {
+      float $$3 = 1.0F / $$1;
+      if (Math.abs($$3 - (float)((int)$$3)) > 1.0E-5F) {
+         throw new IllegalStateException("Chance data cannot be represented as list weight");
+      } else {
+         bpe<bpz> $$4 = bpe.<bpz>a().a(bpw.a($$0), (int)$$3 - 1).a(bpw.a($$0 + $$2), 1).a();
+         return ehh.a(new bqg($$4));
+      }
+   }
+
+   public static ehq a() {
+      return ehd.a(dzb.c);
+   }
+
+   public static ehd a(dez $$0) {
+      return ehd.a(dzb.a($$0.o(), iz.c));
+   }
+
+   public static ji<eho> a(ji<eal<?, ?>> $$0, ehr... $$1) {
+      return ji.a(new eho($$0, List.of($$1)));
+   }
+
+   public static <FC extends edc, F extends eay<FC>> ji<eho> a(F $$0, FC $$1, ehr... $$2) {
+      return a(ji.a(new eal($$0, $$1)), $$2);
+   }
+
+   public static <FC extends edc, F extends eay<FC>> ji<eho> a(F $$0, FC $$1) {
+      return a($$0, $$1, dzb.c);
+   }
+
+   public static <FC extends edc, F extends eay<FC>> ji<eho> a(F $$0, FC $$1, dzb $$2) {
+      return a($$0, $$1, ehd.a($$2));
    }
 }

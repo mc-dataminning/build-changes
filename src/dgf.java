@@ -1,125 +1,96 @@
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
 
-public class dgf extends diu implements dfb {
+public class dgf extends dkn {
    public static final MapCodec<dgf> a = b(dgf::new);
-   public static final int b = 2;
-   public static final dtb c = dsr.ar;
-   protected static final int d = 4;
-   protected static final int e = 5;
-   protected static final int f = 2;
-   protected static final int g = 6;
-   protected static final int h = 7;
-   protected static final int i = 3;
-   protected static final int j = 8;
-   protected static final int k = 9;
-   protected static final int l = 4;
-   protected static final ewj[] m = new ewj[]{
-      dey.a(11.0, 7.0, 6.0, 15.0, 12.0, 10.0), dey.a(9.0, 5.0, 5.0, 15.0, 12.0, 11.0), dey.a(7.0, 3.0, 4.0, 15.0, 12.0, 12.0)
-   };
-   protected static final ewj[] n = new ewj[]{
-      dey.a(1.0, 7.0, 6.0, 5.0, 12.0, 10.0), dey.a(1.0, 5.0, 5.0, 7.0, 12.0, 11.0), dey.a(1.0, 3.0, 4.0, 9.0, 12.0, 12.0)
-   };
-   protected static final ewj[] o = new ewj[]{
-      dey.a(6.0, 7.0, 1.0, 10.0, 12.0, 5.0), dey.a(5.0, 5.0, 1.0, 11.0, 12.0, 7.0), dey.a(4.0, 3.0, 1.0, 12.0, 12.0, 9.0)
-   };
-   protected static final ewj[] F = new ewj[]{
-      dey.a(6.0, 7.0, 11.0, 10.0, 12.0, 15.0), dey.a(5.0, 5.0, 9.0, 11.0, 12.0, 15.0), dey.a(4.0, 3.0, 7.0, 12.0, 12.0, 15.0)
-   };
 
    @Override
    public MapCodec<dgf> a() {
       return a;
    }
 
-   public dgf(dsa.d $$0) {
-      super($$0);
-      this.k(this.E.b().a(aE, je.c).a(c, Integer.valueOf(0)));
+   protected dgf(dsb.d $$0) {
+      super(0.3125F, $$0);
+      this.k(
+         this.E
+            .b()
+            .a(b, Boolean.valueOf(false))
+            .a(c, Boolean.valueOf(false))
+            .a(d, Boolean.valueOf(false))
+            .a(e, Boolean.valueOf(false))
+            .a(f, Boolean.valueOf(false))
+            .a(g, Boolean.valueOf(false))
+      );
    }
 
    @Override
-   protected boolean d_(dsb $$0) {
-      return $$0.c(c) < 2;
+   public dsc a(cya $$0) {
+      return a($$0.q(), $$0.a(), this.o());
+   }
+
+   public static dsc a(dbe $$0, iz $$1, dsc $$2) {
+      dsc $$3 = $$0.a_($$1.d());
+      dsc $$4 = $$0.a_($$1.c());
+      dsc $$5 = $$0.a_($$1.e());
+      dsc $$6 = $$0.a_($$1.h());
+      dsc $$7 = $$0.a_($$1.f());
+      dsc $$8 = $$0.a_($$1.g());
+      dez $$9 = $$2.b();
+      return $$2.b(g, Boolean.valueOf($$3.a($$9) || $$3.a(dfb.kv) || $$3.a(dfb.fz)))
+         .b(f, Boolean.valueOf($$4.a($$9) || $$4.a(dfb.kv)))
+         .b(b, Boolean.valueOf($$5.a($$9) || $$5.a(dfb.kv)))
+         .b(c, Boolean.valueOf($$6.a($$9) || $$6.a(dfb.kv)))
+         .b(d, Boolean.valueOf($$7.a($$9) || $$7.a(dfb.kv)))
+         .b(e, Boolean.valueOf($$8.a($$9) || $$8.a(dfb.kv)));
    }
 
    @Override
-   protected void b(dsb $$0, are $$1, iz $$2, azg $$3) {
-      if ($$1.z.a(5) == 0) {
-         int $$4 = $$0.c(c);
-         if ($$4 < 2) {
-            $$1.a($$2, $$0.a(c, Integer.valueOf($$4 + 1)), 2);
-         }
+   protected dsc a(dsc $$0, je $$1, dsc $$2, dbz $$3, iz $$4, iz $$5) {
+      if (!$$0.a($$3, $$4)) {
+         $$3.a($$4, this, 1);
+         return super.a($$0, $$1, $$2, $$3, $$4, $$5);
+      } else {
+         boolean $$6 = $$2.a(this) || $$2.a(dfb.kv) || $$1 == je.a && $$2.a(dfb.fz);
+         return $$0.a(h.get($$1), Boolean.valueOf($$6));
       }
    }
 
    @Override
-   protected boolean a(dsb $$0, dca $$1, iz $$2) {
-      dsb $$3 = $$1.a_($$2.a($$0.c(aE)));
-      return $$3.a(awo.z);
-   }
-
-   @Override
-   protected ewj a(dsb $$0, dbd $$1, iz $$2, evv $$3) {
-      int $$4 = $$0.c(c);
-      switch ((je)$$0.c(aE)) {
-         case d:
-            return F[$$4];
-         case c:
-         default:
-            return o[$$4];
-         case e:
-            return n[$$4];
-         case f:
-            return m[$$4];
+   protected void a(dsc $$0, arf $$1, iz $$2, azh $$3) {
+      if (!$$0.a($$1, $$2)) {
+         $$1.b($$2, true);
       }
    }
 
-   @Nullable
    @Override
-   public dsb a(cxz $$0) {
-      dsb $$1 = this.o();
-      dca $$2 = $$0.q();
-      iz $$3 = $$0.a();
+   protected boolean a(dsc $$0, dcb $$1, iz $$2) {
+      dsc $$3 = $$1.a_($$2.d());
+      boolean $$4 = !$$1.a_($$2.c()).i() && !$$3.i();
 
-      for (je $$4 : $$0.f()) {
-         if ($$4.o().d()) {
-            $$1 = $$1.a(aE, $$4);
-            if ($$1.a($$2, $$3)) {
-               return $$1;
+      for (je $$5 : je.c.a) {
+         iz $$6 = $$2.a($$5);
+         dsc $$7 = $$1.a_($$6);
+         if ($$7.a(this)) {
+            if ($$4) {
+               return false;
+            }
+
+            dsc $$8 = $$1.a_($$6.d());
+            if ($$8.a(this) || $$8.a(dfb.fz)) {
+               return true;
             }
          }
       }
 
-      return null;
+      return $$3.a(this) || $$3.a(dfb.fz);
    }
 
    @Override
-   protected dsb a(dsb $$0, je $$1, dsb $$2, dby $$3, iz $$4, iz $$5) {
-      return $$1 == $$0.c(aE) && !$$0.a($$3, $$4) ? dfa.a.o() : super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   protected void a(dsd.a<dez, dsc> $$0) {
+      $$0.a(b, c, d, e, f, g);
    }
 
    @Override
-   public boolean b(dca $$0, iz $$1, dsb $$2) {
-      return $$2.c(c) < 2;
-   }
-
-   @Override
-   public boolean a(dbx $$0, azg $$1, iz $$2, dsb $$3) {
-      return true;
-   }
-
-   @Override
-   public void a(are $$0, azg $$1, iz $$2, dsb $$3) {
-      $$0.a($$2, $$3.a(c, Integer.valueOf($$3.c(c) + 1)), 2);
-   }
-
-   @Override
-   protected void a(dsc.a<dey, dsb> $$0) {
-      $$0.a(aE, c);
-   }
-
-   @Override
-   protected boolean a(dsb $$0, eoj $$1) {
+   protected boolean a(dsc $$0, eok $$1) {
       return false;
    }
 }

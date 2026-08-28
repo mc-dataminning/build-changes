@@ -1,72 +1,29 @@
-import com.mojang.serialization.MapCodec;
+import java.util.function.ToIntFunction;
+import javax.annotation.Nullable;
 
-public class dfv extends din implements dfb, dfu {
-   public static final MapCodec<dfv> c = b(dfv::new);
-   private static final float g = 0.11F;
+public interface dfv {
+   ewk q_ = dez.a(1.0, 0.0, 1.0, 15.0, 16.0, 15.0);
+   dst r_ = dss.D;
 
-   @Override
-   public MapCodec<dfv> a() {
-      return c;
+   static bqu a(@Nullable bsu $$0, dsc $$1, dby $$2, iz $$3) {
+      if ($$1.c(r_)) {
+         dez.a($$2, $$3, new cup(cus.ws, 1));
+         float $$4 = ayz.b($$2.z, 0.8F, 1.2F);
+         $$2.a(null, $$3, awa.ee, awb.e, 1.0F, $$4);
+         dsc $$5 = $$1.a(r_, Boolean.valueOf(false));
+         $$2.a($$3, $$5, 2);
+         $$2.a(dwv.c, $$3, dwv.a.a($$0, $$5));
+         return bqu.a($$2.B);
+      } else {
+         return bqu.e;
+      }
    }
 
-   public dfv(dsa.d $$0) {
-      super($$0, je.a, q_, false, 0.1);
-      this.k(this.E.b().a(e, Integer.valueOf(0)).a(r_, Boolean.valueOf(false)));
+   static boolean h_(dsc $$0) {
+      return $$0.b(r_) && $$0.c(r_);
    }
 
-   @Override
-   protected int a(azg $$0) {
-      return 1;
-   }
-
-   @Override
-   protected boolean g(dsb $$0) {
-      return $$0.i();
-   }
-
-   @Override
-   protected dey b() {
-      return dfa.sw;
-   }
-
-   @Override
-   protected dsb a(dsb $$0, dsb $$1) {
-      return $$1.a(r_, $$0.c(r_));
-   }
-
-   @Override
-   protected dsb a(dsb $$0, azg $$1) {
-      return super.a($$0, $$1).a(r_, Boolean.valueOf($$1.i() < 0.11F));
-   }
-
-   @Override
-   public cuo a(dca $$0, iz $$1, dsb $$2) {
-      return new cuo(cur.ws);
-   }
-
-   @Override
-   protected bqt a(dsb $$0, dbx $$1, iz $$2, cmw $$3, evm $$4) {
-      return dfu.a($$3, $$0, $$1, $$2);
-   }
-
-   @Override
-   protected void a(dsc.a<dey, dsb> $$0) {
-      super.a($$0);
-      $$0.a(r_);
-   }
-
-   @Override
-   public boolean b(dca $$0, iz $$1, dsb $$2) {
-      return !$$2.c(r_);
-   }
-
-   @Override
-   public boolean a(dbx $$0, azg $$1, iz $$2, dsb $$3) {
-      return true;
-   }
-
-   @Override
-   public void a(are $$0, azg $$1, iz $$2, dsb $$3) {
-      $$0.a($$2, $$3.a(r_, Boolean.valueOf(true)), 2);
+   static ToIntFunction<dsc> h_(int $$0) {
+      return $$1 -> $$1.c(dss.D) ? $$0 : 0;
    }
 }

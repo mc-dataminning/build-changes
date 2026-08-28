@@ -1,29 +1,29 @@
-public class afe implements zv<ach> {
-   public static final zm<wl, afe> a = zv.a(afe::a, afe::new);
-   private final int b;
+public class afe implements zw<aci> {
+   public static final zn<wm, afe> a = zw.a(afe::a, afe::new);
+   private final double b;
 
-   public afe(dts $$0) {
-      this.b = $$0.q();
+   public afe(dtt $$0) {
+      this.b = $$0.k();
    }
 
-   private afe(wl $$0) {
-      this.b = $$0.l();
+   private afe(wm $$0) {
+      this.b = $$0.readDouble();
    }
 
-   private void a(wl $$0) {
-      $$0.c(this.b);
+   private void a(wm $$0) {
+      $$0.a(this.b);
    }
 
    @Override
-   public zx<afe> a() {
-      return agt.au;
+   public zy<afe> a() {
+      return agu.at;
    }
 
-   public void a(ach $$0) {
+   public void a(aci $$0) {
       $$0.a(this);
    }
 
-   public int b() {
+   public double b() {
       return this.b;
    }
 }

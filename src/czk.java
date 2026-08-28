@@ -1,22 +1,15 @@
-public interface czk extends cyu<bqm> {
-   @Override
-   default cyz<?> e() {
-      return cyz.g;
+public class czk extends cye {
+   public czk(String $$0, cyk $$1, cys $$2, cup $$3, float $$4, int $$5) {
+      super(cza.b, $$0, $$1, $$2, $$3, $$4, $$5);
    }
 
    @Override
-   default boolean a(int $$0, int $$1) {
-      return $$0 >= 3 && $$1 >= 1;
+   public cup g() {
+      return new cup(dfb.cD);
    }
 
    @Override
-   default cuo g() {
-      return new cuo(dfa.ob);
+   public cyz<?> ao_() {
+      return cyz.p;
    }
-
-   boolean a(cuo var1);
-
-   boolean b(cuo var1);
-
-   boolean c(cuo var1);
 }

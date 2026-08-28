@@ -1,14 +1,13 @@
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.Typed;
 import com.mojang.datafixers.schemas.Schema;
+import com.mojang.serialization.Dynamic;
 
-public class bec extends bfu {
+public class bec extends bfb {
    public bec(Schema $$0) {
-      super($$0, false, "Remove filtered text from signs", bgw.s, "minecraft:sign");
+      super($$0, "Remove filtered text from books", $$0x -> $$0x.equals("minecraft:writable_book") || $$0x.equals("minecraft:written_book"));
    }
 
    @Override
-   protected Typed<?> a(Typed<?> $$0) {
-      return $$0.update(DSL.remainderFinder(), $$0x -> $$0x.remove("FilteredText1").remove("FilteredText2").remove("FilteredText3").remove("FilteredText4"));
+   protected <T> Dynamic<T> a(Dynamic<T> $$0) {
+      return $$0.remove("filtered_title").remove("filtered_pages");
    }
 }

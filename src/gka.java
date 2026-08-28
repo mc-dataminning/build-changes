@@ -1,27 +1,25 @@
-public class gka extends gkc<ckb, fup<ckb>> {
-   private static final ale a = new ale("textures/entity/slime/magmacube.png");
+public class gka extends giw<cno> {
+   private static final alf a = new alf("textures/entity/llama/spit.png");
+   private final fuu<cno> f;
 
-   public gka(giw.a $$0) {
-      super($$0, new fup<>($$0.a(fwy.aA)), 0.25F);
+   public gka(gix.a $$0) {
+      super($$0);
+      this.f = new fuu<>($$0.a(fwz.az));
    }
 
-   protected int a(ckb $$0, iz $$1) {
-      return 15;
-   }
-
-   public ale a(ckb $$0) {
-      return a;
-   }
-
-   public void a(ckb $$0, float $$1, float $$2, ezx $$3, gdn $$4, int $$5) {
-      this.d = 0.25F * (float)$$0.gr();
+   public void a(cno $$0, float $$1, float $$2, ezy $$3, gdo $$4, int $$5) {
+      $$3.a();
+      $$3.a(0.0F, 0.15F, 0.0F);
+      $$3.a(a.d.rotationDegrees(ayz.i($$2, $$0.O, $$0.dF()) - 90.0F));
+      $$3.a(a.f.rotationDegrees(ayz.i($$2, $$0.P, $$0.dH())));
+      this.f.a($$0, $$2, 0.0F, -0.1F, 0.0F, 0.0F);
+      fac $$6 = $$4.getBuffer(this.f.a(a));
+      this.f.a($$3, $$6, $$5, goq.d, 1.0F, 1.0F, 1.0F, 1.0F);
+      $$3.b();
       super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
-   protected void a(ckb $$0, ezx $$1, float $$2) {
-      int $$3 = $$0.gr();
-      float $$4 = ayy.i($$2, $$0.bY, $$0.bX) / ((float)$$3 * 0.5F + 1.0F);
-      float $$5 = 1.0F / ($$4 + 1.0F);
-      $$1.b($$5 * (float)$$3, 1.0F / $$5 * (float)$$3, $$5 * (float)$$3);
+   public alf a(cno $$0) {
+      return a;
    }
 }

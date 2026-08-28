@@ -1,151 +1,100 @@
-import com.google.common.collect.Maps;
-import java.util.Map;
 import javax.annotation.Nullable;
 
-public class gof {
-   private static final Map<ale, gog> a = Maps.newHashMap();
-   private static final ale b = new ale("damaged");
-   private static final ale c = new ale("damage");
-   private static final god d = ($$0x, $$1, $$2, $$3) -> $$0x.m() ? 1.0F : 0.0F;
-   private static final god e = ($$0x, $$1, $$2, $$3) -> ayy.a((float)$$0x.n() / (float)$$0x.o(), 0.0F, 1.0F);
-   private static final Map<cuj, Map<ale, gog>> f = Maps.newHashMap();
+public class gof implements goe {
+   public static final int a = 0;
+   private final gof.b c = new gof.b();
+   private final gof.b d = new gof.b();
+   public final gof.a b;
 
-   private static god a(ale $$0, god $$1) {
-      a.put($$0, $$1);
-      return $$1;
+   public gof(gof.a $$0) {
+      this.b = $$0;
    }
 
-   private static void a(gog $$0) {
-      a.put(new ale("custom_model_data"), $$0);
+   @Override
+   public float unclampedCall(cup $$0, @Nullable fxv $$1, @Nullable btp $$2, int $$3) {
+      bsu $$4 = (bsu)($$2 != null ? $$2 : $$0.F());
+      if ($$4 == null) {
+         return 0.0F;
+      } else {
+         $$1 = this.a($$4, $$1);
+         return $$1 == null ? 0.0F : this.a($$0, $$1, $$3, $$4);
+      }
    }
 
-   private static void a(cuj $$0, ale $$1, god $$2) {
-      f.computeIfAbsent($$0, $$0x -> Maps.newHashMap()).put($$1, $$2);
+   private float a(cup $$0, fxv $$1, int $$2, bsu $$3) {
+      jh $$4 = this.b.getPos($$1, $$0, $$3);
+      long $$5 = $$1.Z();
+      return !this.a($$3, $$4) ? this.a($$2, $$5) : this.a($$3, $$5, $$4.b());
+   }
+
+   private float a(int $$0, long $$1) {
+      if (this.d.a($$1)) {
+         this.d.a($$1, Math.random());
+      }
+
+      double $$2 = this.d.a + (double)((float)this.a($$0) / 2.1474836E9F);
+      return ayz.b((float)$$2, 1.0F);
+   }
+
+   private float a(bsu $$0, long $$1, iz $$2) {
+      double $$3 = this.a($$0, $$2);
+      double $$4 = this.a($$0);
+      if ($$0 instanceof cmx $$5 && $$5.g() && $$5.dP().s().i()) {
+         if (this.c.a($$1)) {
+            this.c.a($$1, 0.5 - ($$4 - 0.25));
+         }
+
+         double $$6 = $$3 + this.c.a;
+         return ayz.b((float)$$6, 1.0F);
+      }
+
+      double $$7 = 0.5 - ($$4 - 0.25 - $$3);
+      return ayz.b((float)$$7, 1.0F);
    }
 
    @Nullable
-   public static gog a(cuo $$0, ale $$1) {
-      if ($$0.o() > 0) {
-         if (c.equals($$1)) {
-            return e;
-         }
-
-         if (b.equals($$1)) {
-            return d;
-         }
-      }
-
-      gog $$2 = a.get($$1);
-      if ($$2 != null) {
-         return $$2;
-      } else {
-         Map<ale, gog> $$3 = f.get($$0.g());
-         return $$3 == null ? null : $$3.get($$1);
-      }
+   private fxv a(bsu $$0, @Nullable fxv $$1) {
+      return $$1 == null && $$0.dP() instanceof fxv ? (fxv)$$0.dP() : $$1;
    }
 
-   static {
-      a(new ale("lefthanded"), ($$0x, $$1, $$2, $$3) -> $$2 != null && $$2.fu() != bti.b ? 1.0F : 0.0F);
-      a(new ale("cooldown"), ($$0x, $$1, $$2, $$3) -> $$2 instanceof cmw ? ((cmw)$$2).gx().a($$0x.g(), 0.0F) : 0.0F);
-      god $$0 = ($$0x, $$1, $$2, $$3) -> {
-         cws $$4 = $$0x.a(km.K);
-         return $$4 != null ? $$4.b().a().c() : Float.NEGATIVE_INFINITY;
-      };
-      a(ns.a, $$0);
-      a(($$0x, $$1, $$2, $$3) -> (float)$$0x.a(km.o, cxe.a).a());
-      a(cur.ou, new ale("pull"), ($$0x, $$1, $$2, $$3) -> {
-         if ($$2 == null) {
-            return 0.0F;
-         } else {
-            return $$2.fx() != $$0x ? 0.0F : (float)($$0x.u() - $$2.fy()) / 20.0F;
-         }
-      });
-      a(cur.xr, new ale("brushing"), ($$0x, $$1, $$2, $$3) -> $$2 != null && $$2.fx() == $$0x ? (float)($$2.fy() % 10) / 10.0F : 0.0F);
-      a(cur.ou, new ale("pulling"), ($$0x, $$1, $$2, $$3) -> $$2 != null && $$2.fv() && $$2.fx() == $$0x ? 1.0F : 0.0F);
-      a(cur.qU, new ale("filled"), ($$0x, $$1, $$2, $$3) -> csv.d($$0x));
-      a(cur.qW, new ale("time"), new god() {
-         private double a;
-         private double b;
-         private long c;
+   private boolean a(bsu $$0, @Nullable jh $$1) {
+      return $$1 != null && $$1.a() == $$0.dP().af() && !($$1.b().b($$0.dn()) < 1.0E-5F);
+   }
 
-         @Override
-         public float unclampedCall(cuo $$0, @Nullable fxu $$1, @Nullable bto $$2, int $$3) {
-            bst $$4 = (bst)($$2 != null ? $$2 : $$0.F());
-            if ($$4 == null) {
-               return 0.0F;
-            } else {
-               if ($$1 == null && $$4.dP() instanceof fxu) {
-                  $$1 = (fxu)$$4.dP();
-               }
+   private double a(bsu $$0, iz $$1) {
+      evr $$2 = evr.b($$1);
+      return Math.atan2($$2.c() - $$0.dA(), $$2.a() - $$0.du()) / (float) (Math.PI * 2);
+   }
 
-               if ($$1 == null) {
-                  return 0.0F;
-               } else {
-                  double $$5;
-                  if ($$1.D_().j()) {
-                     $$5 = (double)$$1.f(1.0F);
-                  } else {
-                     $$5 = Math.random();
-                  }
+   private double a(bsu $$0) {
+      return ayz.c((double)($$0.dG() / 360.0F), 1.0);
+   }
 
-                  $$5 = this.a($$1, $$5);
-                  return (float)$$5;
-               }
-            }
-         }
+   private int a(int $$0) {
+      return $$0 * 1327217883;
+   }
 
-         private double a(dbx $$0, double $$1) {
-            if ($$0.Z() != this.c) {
-               this.c = $$0.Z();
-               double $$2 = $$1 - this.a;
-               $$2 = ayy.c($$2 + 0.5, 1.0) - 0.5;
-               this.b += $$2 * 0.1;
-               this.b *= 0.9;
-               this.a = ayy.c(this.a + this.b, 1.0);
-            }
+   public interface a {
+      @Nullable
+      jh getPos(fxv var1, cup var2, bsu var3);
+   }
 
-            return this.a;
-         }
-      });
-      a(cur.qS, new ale("angle"), new goe(($$0x, $$1, $$2) -> {
-         cxm $$3 = $$1.a(km.S);
-         return $$3 != null ? $$3.a().orElse(null) : csx.a($$0x);
-      }));
-      a(cur.qT, new ale("angle"), new goe(($$0x, $$1, $$2) -> $$2 instanceof cmw $$3 ? $$3.gB().orElse(null) : null));
-      a(cur.vT, new ale("pull"), ($$0x, $$1, $$2, $$3) -> {
-         if ($$2 == null) {
-            return 0.0F;
-         } else {
-            return ctb.j($$0x) ? 0.0F : (float)($$0x.u() - $$2.fy()) / (float)ctb.l($$0x);
-         }
-      });
-      a(cur.vT, new ale("pulling"), ($$0x, $$1, $$2, $$3) -> $$2 != null && $$2.fv() && $$2.fx() == $$0x && !ctb.j($$0x) ? 1.0F : 0.0F);
-      a(cur.vT, new ale("charged"), ($$0x, $$1, $$2, $$3) -> ctb.j($$0x) ? 1.0F : 0.0F);
-      a(cur.vT, new ale("firework"), ($$0x, $$1, $$2, $$3) -> {
-         cxc $$4 = $$0x.a(km.E);
-         return $$4 != null && $$4.a(cur.uu) ? 1.0F : 0.0F;
-      });
-      a(cur.nT, new ale("broken"), ($$0x, $$1, $$2, $$3) -> ctk.j($$0x) ? 0.0F : 1.0F);
-      a(cur.qV, new ale("cast"), ($$0x, $$1, $$2, $$3) -> {
-         if ($$2 == null) {
-            return 0.0F;
-         } else {
-            boolean $$4 = $$2.eX() == $$0x;
-            boolean $$5 = $$2.eY() == $$0x;
-            if ($$2.eX().g() instanceof ctv) {
-               $$5 = false;
-            }
+   static class b {
+      double a;
+      private double b;
+      private long c;
 
-            return ($$4 || $$5) && $$2 instanceof cmw && ((cmw)$$2).ct != null ? 1.0F : 0.0F;
-         }
-      });
-      a(cur.vs, new ale("blocking"), ($$0x, $$1, $$2, $$3) -> $$2 != null && $$2.fv() && $$2.fx() == $$0x ? 1.0F : 0.0F);
-      a(cur.vP, new ale("throwing"), ($$0x, $$1, $$2, $$3) -> $$2 != null && $$2.fv() && $$2.fx() == $$0x ? 1.0F : 0.0F);
-      a(cur.hC, new ale("level"), ($$0x, $$1, $$2, $$3) -> {
-         cwz $$4 = $$0x.a(km.ab, cwz.a);
-         Integer $$5 = $$4.a(djm.c);
-         return $$5 != null ? (float)$$5.intValue() / 16.0F : 1.0F;
-      });
-      a(cur.we, new ale("tooting"), ($$0x, $$1, $$2, $$3) -> $$2 != null && $$2.fv() && $$2.fx() == $$0x ? 1.0F : 0.0F);
+      boolean a(long $$0) {
+         return this.c != $$0;
+      }
+
+      void a(long $$0, double $$1) {
+         this.c = $$0;
+         double $$2 = $$1 - this.a;
+         $$2 = ayz.c($$2 + 0.5, 1.0) - 0.5;
+         this.b += $$2 * 0.1;
+         this.b *= 0.8;
+         this.a = ayz.c(this.a + this.b, 1.0);
+      }
    }
 }

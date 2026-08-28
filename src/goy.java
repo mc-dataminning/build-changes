@@ -1,121 +1,156 @@
+import com.mojang.blaze3d.platform.TextureUtil;
+import com.mojang.blaze3d.systems.RenderSystem;
+import com.mojang.logging.LogUtils;
+import java.io.IOException;
+import java.io.Writer;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Locale;
+import java.util.Map;
+import java.util.Map.Entry;
 import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class goy {
-   private final ale a;
-   private final gos b;
-   final int c;
-   final int d;
-   private final float e;
-   private final float f;
-   private final float g;
-   private final float h;
-
-   protected goy(ale $$0, gos $$1, int $$2, int $$3, int $$4, int $$5) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$4;
-      this.d = $$5;
-      this.e = (float)$$4 / (float)$$2;
-      this.f = (float)($$4 + $$1.a()) / (float)$$2;
-      this.g = (float)$$5 / (float)$$3;
-      this.h = (float)($$5 + $$1.b()) / (float)$$3;
-   }
-
-   public int a() {
-      return this.c;
-   }
-
-   public int b() {
-      return this.d;
-   }
-
-   public float c() {
-      return this.e;
-   }
-
-   public float d() {
-      return this.f;
-   }
-
-   public gos e() {
-      return this.b;
-   }
-
+public class goy extends gok implements gol, gpb {
+   private static final Logger g = LogUtils.getLogger();
+   @Deprecated
+   public static final alf e = cqv.x;
+   @Deprecated
+   public static final alf f = new alf("textures/atlas/particles.png");
+   private List<got> h = List.of();
+   private List<goz.a> i = List.of();
+   private Map<alf, goz> j = Map.of();
    @Nullable
-   public goy.a f() {
-      final gou $$0 = this.b.e();
-      return $$0 != null ? new goy.a() {
-         @Override
-         public void a() {
-            $$0.a(goy.this.c, goy.this.d);
-         }
+   private goz k;
+   private final alf l;
+   private final int m;
+   private int n;
+   private int o;
+   private int p;
 
-         @Override
-         public void close() {
-            $$0.close();
-         }
-      } : null;
-   }
-
-   public float a(float $$0) {
-      float $$1 = this.f - this.e;
-      return this.e + $$1 * $$0;
-   }
-
-   public float b(float $$0) {
-      float $$1 = this.f - this.e;
-      return ($$0 - this.e) / $$1;
-   }
-
-   public float g() {
-      return this.g;
-   }
-
-   public float h() {
-      return this.h;
-   }
-
-   public float c(float $$0) {
-      float $$1 = this.h - this.g;
-      return this.g + $$1 * $$0;
-   }
-
-   public float d(float $$0) {
-      float $$1 = this.h - this.g;
-      return ($$0 - this.g) / $$1;
-   }
-
-   public ale i() {
-      return this.a;
+   public goy(alf $$0) {
+      this.l = $$0;
+      this.m = RenderSystem.maxSupportedTextureSize();
    }
 
    @Override
-   public String toString() {
-      return "TextureAtlasSprite{contents='" + this.b + "', u0=" + this.e + ", u1=" + this.f + ", v0=" + this.g + ", v1=" + this.h + "}";
+   public void a(aup $$0) {
    }
 
-   public void j() {
-      this.b.a(this.c, this.d);
+   public void a(gou.a $$0) {
+      g.info("Created: {}x{}x{} {}-atlas", new Object[]{$$0.b(), $$0.c(), $$0.d(), this.l});
+      TextureUtil.prepareImage(this.a(), $$0.d(), $$0.b(), $$0.c());
+      this.n = $$0.b();
+      this.o = $$0.c();
+      this.p = $$0.d();
+      this.f();
+      this.j = Map.copyOf($$0.f());
+      this.k = this.j.get(gop.b());
+      if (this.k == null) {
+         throw new IllegalStateException("Atlas '" + this.l + "' (" + this.j.size() + " sprites) has no missing texture sprite");
+      } else {
+         List<got> $$1 = new ArrayList<>();
+         List<goz.a> $$2 = new ArrayList<>();
+
+         for (goz $$3 : $$0.f().values()) {
+            $$1.add($$3.e());
+
+            try {
+               $$3.j();
+            } catch (Throwable var9) {
+               o $$5 = o.a(var9, "Stitching texture atlas");
+               p $$6 = $$5.a("Texture being stitched together");
+               $$6.a("Atlas path", this.l);
+               $$6.a("Sprite", $$3);
+               throw new y($$5);
+            }
+
+            goz.a $$7 = $$3.f();
+            if ($$7 != null) {
+               $$2.add($$7);
+            }
+         }
+
+         this.h = List.copyOf($$1);
+         this.i = List.copyOf($$2);
+      }
    }
 
-   private float l() {
-      float $$0 = (float)this.b.a() / (this.f - this.e);
-      float $$1 = (float)this.b.b() / (this.h - this.g);
-      return Math.max($$1, $$0);
+   @Override
+   public void a(alf $$0, Path $$1) throws IOException {
+      String $$2 = $$0.c();
+      TextureUtil.writeAsPNG($$1, $$2, this.a(), this.p, this.n, this.o);
+      a($$1, $$2, this.j);
    }
 
-   public float k() {
-      return 4.0F / this.l();
+   private static void a(Path $$0, String $$1, Map<alf, goz> $$2) {
+      Path $$3 = $$0.resolve($$1 + ".txt");
+
+      try (Writer $$4 = Files.newBufferedWriter($$3)) {
+         for (Entry<alf, goz> $$5 : $$2.entrySet().stream().sorted(Entry.comparingByKey()).toList()) {
+            goz $$6 = $$5.getValue();
+            $$4.write(String.format(Locale.ROOT, "%s\tx=%d\ty=%d\tw=%d\th=%d%n", $$5.getKey(), $$6.a(), $$6.b(), $$6.e().a(), $$6.e().b()));
+         }
+      } catch (IOException var10) {
+         g.warn("Failed to write file {}", $$3, var10);
+      }
    }
 
-   public fab a(fab $$0) {
-      return new ged($$0, this);
+   @Override
+   public void d() {
+      this.c();
+
+      for (goz.a $$0 : this.i) {
+         $$0.a();
+      }
    }
 
-   public interface a extends AutoCloseable {
-      void a();
+   @Override
+   public void e() {
+      if (!RenderSystem.isOnRenderThread()) {
+         RenderSystem.recordRenderCall(this::d);
+      } else {
+         this.d();
+      }
+   }
 
-      @Override
-      void close();
+   public goz a(alf $$0) {
+      goz $$1 = this.j.getOrDefault($$0, this.k);
+      if ($$1 == null) {
+         throw new IllegalStateException("Tried to lookup sprite, but atlas is not initialized");
+      } else {
+         return $$1;
+      }
+   }
+
+   public void f() {
+      this.h.forEach(got::close);
+      this.i.forEach(goz.a::close);
+      this.h = List.of();
+      this.i = List.of();
+      this.j = Map.of();
+      this.k = null;
+   }
+
+   public alf g() {
+      return this.l;
+   }
+
+   public int h() {
+      return this.m;
+   }
+
+   int i() {
+      return this.n;
+   }
+
+   int j() {
+      return this.o;
+   }
+
+   public void b(gou.a $$0) {
+      this.a(false, $$0.d() > 0);
    }
 }

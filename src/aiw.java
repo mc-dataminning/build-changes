@@ -1,49 +1,26 @@
-public record aiw(int b, String c, int d, aiv e) implements zv<aiz> {
-   public static final zm<wl, aiw> a = zv.a(aiw::a, aiw::new);
-   private static final int f = 255;
+public enum aiw {
+   a,
+   b,
+   c;
 
-   @Deprecated
-   public aiw(int b, String c, int d, aiv e) {
-      this.b = b;
-      this.c = c;
-      this.d = d;
-      this.e = e;
+   private static final int d = 1;
+   private static final int e = 2;
+   private static final int f = 3;
+
+   public static aiw a(int $$0) {
+      return switch ($$0) {
+         case 1 -> a;
+         case 2 -> b;
+         case 3 -> c;
+         default -> throw new IllegalArgumentException("Unknown connection intent: " + $$0);
+      };
    }
 
-   private aiw(wl $$0) {
-      this($$0.l(), $$0.d(255), $$0.readUnsignedShort(), aiv.a($$0.l()));
-   }
-
-   private void a(wl $$0) {
-      $$0.c(this.b);
-      $$0.a(this.c);
-      $$0.l(this.d);
-      $$0.c(this.e.a());
-   }
-
-   @Override
-   public zx<aiw> a() {
-      return aix.a;
-   }
-
-   public void a(aiz $$0) {
-      $$0.a(this);
-   }
-
-   @Override
-   public boolean d() {
-      return true;
-   }
-
-   public String e() {
-      return this.c;
-   }
-
-   public int f() {
-      return this.d;
-   }
-
-   public aiv g() {
-      return this.e;
+   public int a() {
+      return switch (this) {
+         case a -> 1;
+         case b -> 2;
+         case c -> 3;
+      };
    }
 }

@@ -30,8 +30,8 @@ public class pl implements lw {
       return this;
    }
 
-   private ur a(String $$0, ur $$1) {
-      ur $$2 = $$1;
+   private us a(String $$0, us $$1) {
+      us $$2 = $$1;
 
       for (pl.a $$3 : this.g) {
          $$2 = $$3.apply($$0, $$2);
@@ -81,10 +81,10 @@ public class pl implements lw {
          pl.c var10;
          try (BufferedReader $$2 = Files.newBufferedReader($$0)) {
             String $$3 = IOUtils.toString($$2);
-            ur $$4 = this.a($$1, vg.a($$3));
+            us $$4 = this.a($$1, vh.a($$3));
             ByteArrayOutputStream $$5 = new ByteArrayOutputStream();
             HashingOutputStream $$6 = new HashingOutputStream(Hashing.sha1(), $$5);
-            ve.a($$4, $$6);
+            vf.a($$4, $$6);
             byte[] $$7 = $$5.toByteArray();
             HashCode $$8 = $$6.hash();
             var10 = new pl.c($$1, $$7, $$8);
@@ -108,7 +108,7 @@ public class pl implements lw {
 
    @FunctionalInterface
    public interface a {
-      ur apply(String var1, ur var2);
+      us apply(String var1, us var2);
    }
 
    static class b extends RuntimeException {

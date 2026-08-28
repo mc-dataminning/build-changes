@@ -1,130 +1,63 @@
-import com.google.common.collect.Lists;
+import it.unimi.dsi.fastutil.objects.ObjectOpenHashSet;
+import java.util.ArrayDeque;
 import java.util.List;
-import java.util.Objects;
-import java.util.function.UnaryOperator;
+import java.util.Set;
 import javax.annotation.Nullable;
+import org.jetbrains.annotations.VisibleForTesting;
 
-public class yc implements xo {
-   private final xp c;
-   private final List<xo> d;
-   private yl e;
-   private ayk f = ayk.a;
+public class yc {
+   public static final int a = -1;
+   private static final int b = 128;
+   private final yb[] c;
+
+   public yc(int $$0) {
+      this.c = new yb[$$0];
+   }
+
+   public static yc a() {
+      return new yc(128);
+   }
+
+   public int a(yb $$0) {
+      for (int $$1 = 0; $$1 < this.c.length; $$1++) {
+         if ($$0.equals(this.c[$$1])) {
+            return $$1;
+         }
+      }
+
+      return -1;
+   }
+
    @Nullable
-   private um g;
-
-   yc(xp $$0, List<xo> $$1, yl $$2) {
-      this.c = $$0;
-      this.d = $$1;
-      this.e = $$2;
+   public yb a(int $$0) {
+      return this.c[$$0];
    }
 
-   public static yc a(xp $$0) {
-      return new yc($$0, Lists.newArrayList(), yl.a);
-   }
-
-   @Override
-   public xp b() {
-      return this.c;
-   }
-
-   @Override
-   public List<xo> c() {
-      return this.d;
-   }
-
-   public yc b(yl $$0) {
-      this.e = $$0;
-      return this;
-   }
-
-   @Override
-   public yl a() {
-      return this.e;
-   }
-
-   public yc f(String $$0) {
-      return this.b(xo.b($$0));
-   }
-
-   public yc b(xo $$0) {
-      this.d.add($$0);
-      return this;
-   }
-
-   public yc a(UnaryOperator<yl> $$0) {
-      this.b($$0.apply(this.a()));
-      return this;
-   }
-
-   public yc c(yl $$0) {
-      this.b($$0.a(this.a()));
-      return this;
-   }
-
-   public yc a(n... $$0) {
-      this.b(this.a().a($$0));
-      return this;
-   }
-
-   public yc a(n $$0) {
-      this.b(this.a().b($$0));
-      return this;
-   }
-
-   public yc b(int $$0) {
-      this.b(this.a().a($$0));
-      return this;
-   }
-
-   @Override
-   public ayk g() {
-      um $$0 = um.a();
-      if (this.g != $$0) {
-         this.f = $$0.a(this);
-         this.g = $$0;
+   public void a(yi $$0, @Nullable yb $$1) {
+      List<yb> $$2 = $$0.d().a();
+      ArrayDeque<yb> $$3 = new ArrayDeque<>($$2.size() + 1);
+      $$3.addAll($$2);
+      if ($$1 != null) {
+         $$3.add($$1);
       }
 
-      return this.f;
+      this.a($$3);
    }
 
-   @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else {
-         return !($$0 instanceof yc $$1) ? false : this.c.equals($$1.c) && this.e.equals($$1.e) && this.d.equals($$1.d);
+   @VisibleForTesting
+   void a(List<yb> $$0) {
+      this.a(new ArrayDeque<>($$0));
+   }
+
+   private void a(ArrayDeque<yb> $$0) {
+      Set<yb> $$1 = new ObjectOpenHashSet($$0);
+
+      for (int $$2 = 0; !$$0.isEmpty() && $$2 < this.c.length; $$2++) {
+         yb $$3 = this.c[$$2];
+         this.c[$$2] = $$0.removeLast();
+         if ($$3 != null && !$$1.contains($$3)) {
+            $$0.addFirst($$3);
+         }
       }
-   }
-
-   @Override
-   public int hashCode() {
-      return Objects.hash(this.c, this.e, this.d);
-   }
-
-   @Override
-   public String toString() {
-      StringBuilder $$0 = new StringBuilder(this.c.toString());
-      boolean $$1 = !this.e.g();
-      boolean $$2 = !this.d.isEmpty();
-      if ($$1 || $$2) {
-         $$0.append('[');
-         if ($$1) {
-            $$0.append("style=");
-            $$0.append(this.e);
-         }
-
-         if ($$1 && $$2) {
-            $$0.append(", ");
-         }
-
-         if ($$2) {
-            $$0.append("siblings=");
-            $$0.append(this.d);
-         }
-
-         $$0.append(']');
-      }
-
-      return $$0.toString();
    }
 }

@@ -1,48 +1,34 @@
-public class gns extends gni<cge, ftr<cge>> {
-   private static final ale a = new ale("textures/entity/fish/tropical_a_pattern_1.png");
-   private static final ale b = new ale("textures/entity/fish/tropical_a_pattern_2.png");
-   private static final ale c = new ale("textures/entity/fish/tropical_a_pattern_3.png");
-   private static final ale d = new ale("textures/entity/fish/tropical_a_pattern_4.png");
-   private static final ale e = new ale("textures/entity/fish/tropical_a_pattern_5.png");
-   private static final ale f = new ale("textures/entity/fish/tropical_a_pattern_6.png");
-   private static final ale g = new ale("textures/entity/fish/tropical_b_pattern_1.png");
-   private static final ale h = new ale("textures/entity/fish/tropical_b_pattern_2.png");
-   private static final ale i = new ale("textures/entity/fish/tropical_b_pattern_3.png");
-   private static final ale j = new ale("textures/entity/fish/tropical_b_pattern_4.png");
-   private static final ale k = new ale("textures/entity/fish/tropical_b_pattern_5.png");
-   private static final ale l = new ale("textures/entity/fish/tropical_b_pattern_6.png");
-   private final fwf<cge> m;
-   private final fwg<cge> n;
-
-   public gns(gks<cge, ftr<cge>> $$0, fwv $$1) {
+public abstract class gns<T extends btp, M extends fvf<T>> extends gnj<T, M> {
+   public gns(gjy<T, M> $$0) {
       super($$0);
-      this.m = new fwf<>($$1.a(fwy.bM));
-      this.n = new fwg<>($$1.a(fwy.bK));
    }
 
-   public void a(ezx $$0, gdn $$1, int $$2, cge $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-      cge.b $$10 = $$3.gB();
+   protected abstract int a(T var1);
 
-      ftz<cge> $$11 = (ftz<cge>)(switch ($$10.a()) {
-         case a -> this.m;
-         case b -> this.n;
-      });
+   protected abstract void a(ezy var1, gdo var2, int var3, bsu var4, float var5, float var6, float var7, float var8);
 
-      ale $$12 = switch ($$10) {
-         case a -> a;
-         case b -> b;
-         case c -> c;
-         case d -> d;
-         case e -> e;
-         case f -> f;
-         case g -> g;
-         case h -> h;
-         case i -> i;
-         case j -> j;
-         case k -> k;
-         case l -> l;
-      };
-      float[] $$13 = $$3.gA().d();
-      a(this.c(), $$11, $$12, $$0, $$1, $$2, $$3, $$4, $$5, $$7, $$8, $$9, $$6, $$13[0], $$13[1], $$13[2]);
+   public void a(ezy $$0, gdo $$1, int $$2, T $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
+      int $$10 = this.a($$3);
+      azh $$11 = azh.a((long)$$3.al());
+      if ($$10 > 0) {
+         for (int $$12 = 0; $$12 < $$10; $$12++) {
+            $$0.a();
+            fxa $$13 = this.c().a($$11);
+            fxa.a $$14 = $$13.a($$11);
+            $$13.a($$0);
+            float $$15 = $$11.i();
+            float $$16 = $$11.i();
+            float $$17 = $$11.i();
+            float $$18 = ayz.i($$15, $$14.a, $$14.d) / 16.0F;
+            float $$19 = ayz.i($$16, $$14.b, $$14.e) / 16.0F;
+            float $$20 = ayz.i($$17, $$14.c, $$14.f) / 16.0F;
+            $$0.a($$18, $$19, $$20);
+            $$15 = -1.0F * ($$15 * 2.0F - 1.0F);
+            $$16 = -1.0F * ($$16 * 2.0F - 1.0F);
+            $$17 = -1.0F * ($$17 * 2.0F - 1.0F);
+            this.a($$0, $$1, $$2, $$3, $$15, $$16, $$17, $$6);
+            $$0.b();
+         }
+      }
    }
 }

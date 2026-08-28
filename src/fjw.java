@@ -1,17 +1,115 @@
-public record fjw(gdv a, gdv b, gdv c) {
-   public static fjw a(ale $$0) {
-      return new fjw(gdv.u($$0), gdv.y($$0), gdv.w($$0));
+import com.mojang.blaze3d.platform.TextureUtil;
+import java.nio.file.Path;
+import javax.annotation.Nullable;
+
+public class fjw extends gok implements gol {
+   private static final int e = 256;
+   private final fjx f;
+   private final boolean g;
+   private final fjw.a h;
+
+   public fjw(fjx $$0, boolean $$1) {
+      this.g = $$1;
+      this.h = new fjw.a(0, 0, 256, 256);
+      TextureUtil.prepareImage($$1 ? eyz.b.a : eyz.b.d, this.a(), 256, 256);
+      this.f = $$0;
    }
 
-   public static fjw b(ale $$0) {
-      return new fjw(gdv.t($$0), gdv.x($$0), gdv.v($$0));
+   @Override
+   public void a(aup $$0) {
    }
 
-   public gdv a(fgo.a $$0) {
-      return switch ($$0) {
-         case a -> this.a;
-         case b -> this.b;
-         case c -> this.c;
-      };
+   @Override
+   public void close() {
+      this.b();
+   }
+
+   @Nullable
+   public fjz a(eyc $$0) {
+      if ($$0.c() != this.g) {
+         return null;
+      } else {
+         fjw.a $$1 = this.h.a($$0);
+         if ($$1 != null) {
+            this.c();
+            $$0.a($$1.a, $$1.b);
+            float $$2 = 256.0F;
+            float $$3 = 256.0F;
+            float $$4 = 0.01F;
+            return new fjz(
+               this.f,
+               ((float)$$1.a + 0.01F) / 256.0F,
+               ((float)$$1.a - 0.01F + (float)$$0.a()) / 256.0F,
+               ((float)$$1.b + 0.01F) / 256.0F,
+               ((float)$$1.b - 0.01F + (float)$$0.b()) / 256.0F,
+               $$0.e(),
+               $$0.f(),
+               $$0.g(),
+               $$0.h()
+            );
+         } else {
+            return null;
+         }
+      }
+   }
+
+   @Override
+   public void a(alf $$0, Path $$1) {
+      String $$2 = $$0.c();
+      TextureUtil.writeAsPNG($$1, $$2, this.a(), 0, 256, 256, $$0x -> ($$0x & 0xFF000000) == 0 ? -16777216 : $$0x);
+   }
+
+   static class a {
+      final int a;
+      final int b;
+      private final int c;
+      private final int d;
+      @Nullable
+      private fjw.a e;
+      @Nullable
+      private fjw.a f;
+      private boolean g;
+
+      a(int $$0, int $$1, int $$2, int $$3) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
+         this.d = $$3;
+      }
+
+      @Nullable
+      fjw.a a(eyc $$0) {
+         if (this.e != null && this.f != null) {
+            fjw.a $$1 = this.e.a($$0);
+            if ($$1 == null) {
+               $$1 = this.f.a($$0);
+            }
+
+            return $$1;
+         } else if (this.g) {
+            return null;
+         } else {
+            int $$2 = $$0.a();
+            int $$3 = $$0.b();
+            if ($$2 > this.c || $$3 > this.d) {
+               return null;
+            } else if ($$2 == this.c && $$3 == this.d) {
+               this.g = true;
+               return this;
+            } else {
+               int $$4 = this.c - $$2;
+               int $$5 = this.d - $$3;
+               if ($$4 > $$5) {
+                  this.e = new fjw.a(this.a, this.b, $$2, this.d);
+                  this.f = new fjw.a(this.a + $$2 + 1, this.b, this.c - $$2 - 1, this.d);
+               } else {
+                  this.e = new fjw.a(this.a, this.b, this.c, $$3);
+                  this.f = new fjw.a(this.a, this.b + $$3 + 1, this.c, this.d - $$3 - 1);
+               }
+
+               return this.e.a($$0);
+            }
+         }
+      }
    }
 }

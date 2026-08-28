@@ -1,29 +1,45 @@
-public record adq(int b, float c) implements zv<ach> {
-   public static final zm<wl, adq> a = zv.a(adq::a, adq::new);
+public class adq implements zw<aci> {
+   public static final zn<wm, adq> a = zw.a(adq::a, adq::new);
+   private final int b;
+   private final int c;
+   private final int d;
 
-   public adq(bto $$0) {
-      this($$0.al(), $$0.eJ());
+   public adq(int $$0, int $$1, int $$2) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
    }
 
-   private adq(wl $$0) {
-      this($$0.l(), $$0.readFloat());
+   private adq(wm $$0) {
+      this.b = $$0.readUnsignedByte();
+      this.c = $$0.l();
+      this.d = $$0.readInt();
    }
 
-   private void a(wl $$0) {
-      $$0.c(this.b);
-      $$0.a(this.c);
+   private void a(wm $$0) {
+      $$0.k(this.b);
+      $$0.c(this.c);
+      $$0.p(this.d);
    }
 
    @Override
-   public zx<adq> a() {
-      return agt.I;
+   public zy<adq> a() {
+      return agu.H;
    }
 
-   public void a(ach $$0) {
+   public void a(aci $$0) {
       $$0.a(this);
    }
 
-   public float e() {
+   public int b() {
+      return this.b;
+   }
+
+   public int e() {
       return this.c;
+   }
+
+   public int f() {
+      return this.d;
    }
 }

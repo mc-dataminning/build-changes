@@ -1,107 +1,55 @@
-public class gbt extends gcb {
-   private static final azg a = azg.a();
-   private final gbw b;
-   private float F = 1.0F;
+public class gbt extends gbk {
+   private final gbx b;
+   protected boolean a;
 
-   gbt(fxu $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, gbw $$7) {
-      super($$0, $$1, $$2, $$3, 0.5 - a.j(), $$5, 0.5 - a.j());
-      this.B = 0.96F;
-      this.u = -0.1F;
-      this.C = true;
+   gbt(fxv $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, gbx $$7) {
+      super($$0, $$1, $$2, $$3, $$4, $$5, $$6);
       this.b = $$7;
-      this.k *= 0.2F;
-      if ($$4 == 0.0 && $$6 == 0.0) {
-         this.j *= 0.1F;
-         this.l *= 0.1F;
-      }
-
-      this.D *= 0.75F;
-      this.t = (int)(8.0 / (Math.random() * 0.8 + 0.2));
-      this.n = false;
+      this.d(1.5F);
       this.b($$7);
-      if (this.g()) {
-         this.e(0.0F);
-      }
    }
 
    @Override
-   public gbf b() {
-      return gbf.c;
+   public int a(float $$0) {
+      return this.a ? 240 : super.a($$0);
+   }
+
+   @Override
+   public gbg b() {
+      return gbg.c;
    }
 
    @Override
    public void a() {
       super.a();
       this.b(this.b);
-      if (this.g()) {
-         this.y = 0.0F;
-      } else {
-         this.y = ayy.i(0.05F, this.y, this.F);
-      }
    }
 
-   @Override
-   protected void e(float $$0) {
-      super.e($$0);
-      this.F = $$0;
-   }
+   public static class a implements gbf<lm> {
+      private final gbx a;
 
-   private boolean g() {
-      ffe $$0 = ffe.Q();
-      gcp $$1 = $$0.s;
-      return $$1 != null && $$1.bx().c(this.g, this.h, this.i) <= 9.0 && $$0.m.aA().a() && $$1.gA();
-   }
-
-   public static class a implements gbe<lm> {
-      private final gbw a;
-
-      public a(gbw $$0) {
+      public a(gbx $$0) {
          this.a = $$0;
       }
 
-      public gbb a(lm $$0, fxu $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new gbt($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
-      }
-   }
-
-   public static class b implements gbe<lb> {
-      private final gbw a;
-
-      public b(gbw $$0) {
-         this.a = $$0;
-      }
-
-      public gbb a(lb $$0, fxu $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         gbb $$8 = new gbt($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
-         $$8.a($$0.b(), $$0.c(), $$0.d());
-         $$8.e($$0.e());
+      public gbc a(lm $$0, fxv $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         gbt $$8 = new gbt($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
+         $$8.e(1.0F);
+         $$8.a = true;
          return $$8;
       }
    }
 
-   public static class c implements gbe<lm> {
-      private final gbw a;
+   public static class b implements gbf<lm> {
+      private final gbx a;
 
-      public c(gbw $$0) {
+      public b(gbx $$0) {
          this.a = $$0;
       }
 
-      public gbb a(lm $$0, fxu $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new gbt($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
-      }
-   }
-
-   public static class d implements gbe<lm> {
-      private final gbw a;
-
-      public d(gbw $$0) {
-         this.a = $$0;
-      }
-
-      public gbb a(lm $$0, fxu $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+      public gbc a(lm $$0, fxv $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
          gbt $$8 = new gbt($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
-         float $$9 = $$1.z.i() * 0.5F + 0.35F;
-         $$8.a(1.0F * $$9, 0.0F * $$9, 1.0F * $$9);
+         $$8.e(1.0F);
          return $$8;
       }
    }

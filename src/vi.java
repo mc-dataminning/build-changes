@@ -1,5 +1,23 @@
-public class vi extends y {
-   public vi(o $$0) {
-      super($$0);
+public abstract class vi implements vp {
+   protected vi() {
+   }
+
+   public abstract long f();
+
+   public abstract int g();
+
+   public abstract short h();
+
+   public abstract byte i();
+
+   public abstract double j();
+
+   public abstract float k();
+
+   public abstract Number l();
+
+   @Override
+   public String toString() {
+      return this.s_();
    }
 }

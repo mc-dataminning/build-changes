@@ -1,7 +1,14 @@
+import java.time.Duration;
 import jdk.jfr.consumer.RecordedEvent;
 
-public record boc(String a, String b, int c, int d) {
+public record boc(Duration a, dbf b, aqv c, dux d, String e) implements bol {
    public static boc a(RecordedEvent $$0) {
-      return new boc($$0.getString("level"), $$0.getString("dimension"), $$0.getInt("chunkPosX"), $$0.getInt("chunkPosZ"));
+      return new boc(
+         $$0.getDuration(),
+         new dbf($$0.getInt("chunkPosX"), $$0.getInt("chunkPosX")),
+         new aqv($$0.getInt("worldPosX"), $$0.getInt("worldPosZ")),
+         dux.a($$0.getString("status")),
+         $$0.getString("level")
+      );
    }
 }

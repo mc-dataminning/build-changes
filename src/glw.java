@@ -1,22 +1,25 @@
-public class glw extends gkc<cks, fwo<cks>> {
-   private static final ale a = new ale("textures/entity/witch.png");
+public class glw extends giw<cof> {
+   private static final alf a = new alf("textures/entity/projectiles/wind_charge.png");
+   private final fwo f;
 
-   public glw(giw.a $$0) {
-      super($$0, new fwo<>($$0.a(fwy.bU)), 0.5F);
-      this.a(new gnv<>(this, $$0.d()));
+   public glw(gix.a $$0) {
+      super($$0);
+      this.f = new fwo($$0.a(fwz.bT));
    }
 
-   public void a(cks $$0, float $$1, float $$2, ezx $$3, gdn $$4, int $$5) {
-      this.f.b(!$$0.eX().e());
+   public void a(cof $$0, float $$1, float $$2, ezy $$3, gdo $$4, int $$5) {
+      float $$6 = (float)$$0.ai + $$2;
+      fac $$7 = $$4.getBuffer(gdw.a(a, this.a($$6) % 1.0F, 0.0F));
+      this.f.a($$0, 0.0F, 0.0F, $$6, 0.0F, 0.0F);
+      this.f.a($$3, $$7, $$5, goq.d, 1.0F, 1.0F, 1.0F, 1.0F);
       super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
-   public ale a(cks $$0) {
-      return a;
+   protected float a(float $$0) {
+      return $$0 * 0.03F;
    }
 
-   protected void a(cks $$0, ezx $$1, float $$2) {
-      float $$3 = 0.9375F;
-      $$1.b(0.9375F, 0.9375F, 0.9375F);
+   public alf a(cof $$0) {
+      return a;
    }
 }

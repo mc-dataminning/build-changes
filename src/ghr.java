@@ -1,16 +1,13 @@
-public abstract class ghr<T extends ckv, M extends fwr<T>> extends gjn<T, M> {
-   private static final ale a = new ale("textures/entity/zombie/zombie.png");
+public abstract class ghr<T extends chj, M extends ful<T>> extends gkd<T, M> {
+   private final float a;
 
-   protected ghr(giw.a $$0, M $$1, M $$2, M $$3) {
-      super($$0, $$1, 0.5F);
-      this.a(new gmy<>(this, $$2, $$3, $$0.g()));
+   public ghr(gix.a $$0, M $$1, float $$2) {
+      super($$0, $$1, 0.75F);
+      this.a = $$2;
    }
 
-   public ale a(ckv $$0) {
-      return a;
-   }
-
-   protected boolean b(T $$0) {
-      return super.a($$0) || $$0.gx();
+   protected void a(T $$0, ezy $$1, float $$2) {
+      $$1.b(this.a, this.a, this.a);
+      super.a($$0, $$1, $$2);
    }
 }

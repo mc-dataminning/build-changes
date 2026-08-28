@@ -1,33 +1,29 @@
-import java.util.UUID;
-import javax.annotation.Nullable;
+public class aiq implements zw<agw> {
+   public static final zn<wm, aiq> a = zw.a(aiq::a, aiq::new);
+   private final bqt b;
 
-public class aiq implements zv<agv> {
-   public static final zm<wl, aiq> a = zv.a(aiq::a, aiq::new);
-   private final UUID b;
-
-   public aiq(UUID $$0) {
+   public aiq(bqt $$0) {
       this.b = $$0;
    }
 
-   private aiq(wl $$0) {
-      this.b = $$0.n();
+   private aiq(wm $$0) {
+      this.b = $$0.b(bqt.class);
    }
 
-   private void a(wl $$0) {
+   private void a(wm $$0) {
       $$0.a(this.b);
    }
 
    @Override
-   public zx<aiq> a() {
-      return agt.cb;
+   public zy<aiq> a() {
+      return agu.ca;
    }
 
-   public void a(agv $$0) {
+   public void a(agw $$0) {
       $$0.a(this);
    }
 
-   @Nullable
-   public bst a(are $$0) {
-      return $$0.a(this.b);
+   public bqt b() {
+      return this.b;
    }
 }

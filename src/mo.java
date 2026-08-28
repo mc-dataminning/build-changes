@@ -20,11 +20,11 @@ public class mo implements lw {
       Path $$1 = this.d.a(ly.b.c).resolve("items.json");
       return this.e.thenCompose($$2 -> {
          JsonObject $$3 = new JsonObject();
-         alc<JsonElement> $$4 = $$2.a(JsonOps.INSTANCE);
+         ald<JsonElement> $$4 = $$2.a(JsonOps.INSTANCE);
          $$2.b(lq.G).b().forEach($$2x -> {
             JsonObject $$3x = new JsonObject();
             JsonArray $$4x = new JsonArray();
-            ((cuj)$$2x.a()).p().forEach($$2xx -> $$4x.add(a($$2xx, $$4)));
+            ((cuk)$$2x.a()).p().forEach($$2xx -> $$4x.add(a($$2xx, $$4)));
             $$3x.add("components", $$4x);
             $$3.add($$2x.g(), $$3x);
          });
@@ -33,7 +33,7 @@ public class mo implements lw {
    }
 
    private static <T> JsonElement a(ko<T> $$0, DynamicOps<JsonElement> $$1) {
-      ale $$2 = lp.as.b($$0.a());
+      alf $$2 = lp.as.b($$0.a());
       JsonElement $$3 = (JsonElement)$$0.a($$1).getOrThrow($$1x -> new IllegalStateException("Failed to serialize component " + $$2 + ": " + $$1x));
       JsonObject $$4 = new JsonObject();
       $$4.addProperty("type", $$2.toString());

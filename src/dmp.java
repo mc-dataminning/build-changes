@@ -1,46 +1,53 @@
 import com.mojang.serialization.MapCodec;
 
-public abstract class dmp extends dmi {
-   protected dmp(dsa.d $$0) {
+public class dmp extends dez {
+   public static final MapCodec<dmp> a = b(dmp::new);
+   private static final ewk b = dez.a(2.0, 13.0, 2.0, 14.0, 16.0, 14.0);
+   private static final int c = 14;
+   private static final int d = 10;
+   private static final int e = 10;
+
+   @Override
+   public MapCodec<dmp> a() {
+      return a;
+   }
+
+   public dmp(dsb.d $$0) {
       super($$0);
    }
 
-   private static boolean b(dsb $$0, dca $$1, iz $$2) {
-      iz $$3 = $$2.c();
-      dsb $$4 = $$1.a_($$3);
-      if ($$4.a(dfa.dN) && $$4.c(dmh.c) == 1) {
-         return true;
-      } else if ($$4.u().e() == 8) {
-         return false;
-      } else {
-         int $$5 = enl.a($$1, $$0, $$2, $$4, $$3, je.b, $$4.b($$1, $$3));
-         return $$5 < $$1.Q();
-      }
+   @Override
+   protected boolean a(dsc $$0, dcb $$1, iz $$2) {
+      return dez.a($$1, $$2.c(), je.a) && !$$1.z($$2);
    }
 
    @Override
-   protected abstract MapCodec<? extends dmp> a();
-
-   private static boolean c(dsb $$0, dca $$1, iz $$2) {
-      iz $$3 = $$2.c();
-      return b($$0, $$1, $$2) && !$$1.b_($$3).a(awu.a);
+   protected dsc a(dsc $$0, je $$1, dsc $$2, dbz $$3, iz $$4, iz $$5) {
+      return $$1 == je.b && !this.a($$0, $$3, $$4) ? dfb.a.o() : super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
    @Override
-   protected void b(dsb $$0, are $$1, iz $$2, azg $$3) {
-      if (!b($$0, $$1, $$2)) {
-         $$1.b($$2, dfa.j.o());
-      } else {
-         if ($$1.A($$2.c()) >= 9) {
-            dsb $$4 = this.o();
+   public void a(dsc $$0, dby $$1, iz $$2, azh $$3) {
+      int $$4 = $$2.u();
+      int $$5 = $$2.v();
+      int $$6 = $$2.w();
+      double $$7 = (double)$$4 + $$3.j();
+      double $$8 = (double)$$5 + 0.7;
+      double $$9 = (double)$$6 + $$3.j();
+      $$1.a(li.az, $$7, $$8, $$9, 0.0, 0.0, 0.0);
+      iz.a $$10 = new iz.a();
 
-            for (int $$5 = 0; $$5 < 4; $$5++) {
-               iz $$6 = $$2.b($$3.a(3) - 1, $$3.a(5) - 3, $$3.a(3) - 1);
-               if ($$1.a_($$6).a(dfa.j) && c($$4, $$1, $$6)) {
-                  $$1.b($$6, $$4.a(c, Boolean.valueOf($$1.a_($$6.c()).a(dfa.dN))));
-               }
-            }
+      for (int $$11 = 0; $$11 < 14; $$11++) {
+         $$10.d($$4 + ayz.a($$3, -10, 10), $$5 - $$3.a(10), $$6 + ayz.a($$3, -10, 10));
+         dsc $$12 = $$1.a_($$10);
+         if (!$$12.r($$1, $$10)) {
+            $$1.a(li.aD, (double)$$10.u() + $$3.j(), (double)$$10.v() + $$3.j(), (double)$$10.w() + $$3.j(), 0.0, 0.0, 0.0);
          }
       }
+   }
+
+   @Override
+   protected ewk a(dsc $$0, dbe $$1, iz $$2, evw $$3) {
+      return b;
    }
 }

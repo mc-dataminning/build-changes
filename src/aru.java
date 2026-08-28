@@ -1,14 +1,7 @@
-import java.util.function.Consumer;
+import com.mojang.authlib.GameProfile;
 
-public interface aru {
-   void a(Consumer<zv<?>> var1);
-
-   aru.a a();
-
-   public static record a(String a) {
-      @Override
-      public String toString() {
-         return this.a;
-      }
+public record aru(GameProfile a, int b, aqu c, boolean d) {
+   public static aru a(GameProfile $$0, boolean $$1) {
+      return new aru($$0, 0, aqu.a(), $$1);
    }
 }

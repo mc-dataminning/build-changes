@@ -1,9 +1,11 @@
-public interface aww {
-   axe<cug> a = a("regular_goat_horns");
-   axe<cug> b = a("screaming_goat_horns");
-   axe<cug> c = a("goat_horns");
+public class aww {
+   public static final axf<dwv> a = a("vibrations");
+   public static final axf<dwv> b = a("warden_can_listen");
+   public static final axf<dwv> c = a("shrieker_can_listen");
+   public static final axf<dwv> d = a("ignore_vibrations_sneaking");
+   public static final axf<dwv> e = a("allay_can_listen");
 
-   private static axe<cug> a(String $$0) {
-      return axe.a(lq.E, new ale($$0));
+   private static axf<dwv> a(String $$0) {
+      return axf.a(lq.C, new alf($$0));
    }
 }

@@ -1,67 +1,544 @@
-import java.util.Locale;
+import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.Sets;
+import com.mojang.logging.LogUtils;
+import com.mojang.serialization.Dynamic;
+import com.mojang.serialization.DynamicOps;
+import com.mojang.serialization.Lifecycle;
+import java.util.HashSet;
+import java.util.Set;
 import java.util.UUID;
+import java.util.stream.Collectors;
 import javax.annotation.Nullable;
 import net.minecraft.server.MinecraftServer;
+import org.slf4j.Logger;
 
-public interface eqa extends eqc {
-   @Override
-   String e();
+public class eqa implements eqb, eqc {
+   private static final Logger f = LogUtils.getLogger();
+   public static final String a = "LevelName";
+   protected static final String b = "Player";
+   protected static final String c = "WorldGenSettings";
+   private dcc g;
+   private final dys h;
+   private final eqa.a i;
+   private final Lifecycle j;
+   private iz k;
+   private float l;
+   private long m;
+   private long n;
+   @Nullable
+   private final us o;
+   private final int p;
+   private int q;
+   private boolean r;
+   private int s;
+   private boolean t;
+   private int u;
+   private boolean v;
+   private boolean w;
+   private dtt.c x;
+   private dvx.a y;
+   @Nullable
+   private us z;
+   private int A;
+   private int B;
+   @Nullable
+   private UUID C;
+   private final Set<String> D;
+   private boolean E;
+   private final Set<String> F;
+   private final eve<MinecraftServer> G;
 
-   void a(boolean var1);
-
-   int j();
-
-   void c(int var1);
-
-   void b(int var1);
-
-   int h();
-
-   @Override
-   default void a(p $$0, dbz $$1) {
-      eqc.super.a($$0, $$1);
-      $$0.a("Level name", this::e);
-      $$0.a(
-         "Level game mode",
-         () -> String.format(Locale.ROOT, "Game mode: %s (ID %d). Hardcore: %b. Commands: %b", this.k().b(), this.k().a(), this.l(), this.m())
-      );
-      $$0.a("Level weather", () -> String.format(Locale.ROOT, "Rain time: %d (now: %b), thunder time: %d (now: %b)", this.j(), this.i(), this.h(), this.g()));
+   private eqa(
+      @Nullable us $$0,
+      boolean $$1,
+      iz $$2,
+      float $$3,
+      long $$4,
+      long $$5,
+      int $$6,
+      int $$7,
+      int $$8,
+      boolean $$9,
+      int $$10,
+      boolean $$11,
+      boolean $$12,
+      boolean $$13,
+      dtt.c $$14,
+      int $$15,
+      int $$16,
+      @Nullable UUID $$17,
+      Set<String> $$18,
+      Set<String> $$19,
+      eve<MinecraftServer> $$20,
+      @Nullable us $$21,
+      dvx.a $$22,
+      dcc $$23,
+      dys $$24,
+      eqa.a $$25,
+      Lifecycle $$26
+   ) {
+      this.E = $$1;
+      this.k = $$2;
+      this.l = $$3;
+      this.m = $$4;
+      this.n = $$5;
+      this.p = $$6;
+      this.q = $$7;
+      this.s = $$8;
+      this.r = $$9;
+      this.u = $$10;
+      this.t = $$11;
+      this.v = $$12;
+      this.w = $$13;
+      this.x = $$14;
+      this.A = $$15;
+      this.B = $$16;
+      this.C = $$17;
+      this.D = $$18;
+      this.F = $$19;
+      this.o = $$0;
+      this.G = $$20;
+      this.z = $$21;
+      this.y = $$22;
+      this.g = $$23;
+      this.h = $$24;
+      this.i = $$25;
+      this.j = $$26;
    }
 
-   int f();
+   public eqa(dcc $$0, dys $$1, eqa.a $$2, Lifecycle $$3) {
+      this(
+         null,
+         false,
+         iz.c,
+         0.0F,
+         0L,
+         0L,
+         19133,
+         0,
+         0,
+         false,
+         0,
+         false,
+         false,
+         false,
+         dtt.d,
+         0,
+         0,
+         null,
+         Sets.newLinkedHashSet(),
+         new HashSet<>(),
+         new eve<>(evd.a),
+         null,
+         dvx.a.b,
+         $$0.h(),
+         $$1,
+         $$2,
+         $$3
+      );
+   }
 
-   void a(int var1);
+   public static <T> eqa a(Dynamic<T> $$0, dcc $$1, eqa.a $$2, dys $$3, Lifecycle $$4) {
+      long $$5 = $$0.get("Time").asLong(0L);
+      return new eqa(
+         (us)$$0.get("Player").flatMap(us.a::parse).result().orElse(null),
+         $$0.get("WasModded").asBoolean(false),
+         new iz($$0.get("SpawnX").asInt(0), $$0.get("SpawnY").asInt(0), $$0.get("SpawnZ").asInt(0)),
+         $$0.get("SpawnAngle").asFloat(0.0F),
+         $$5,
+         $$0.get("DayTime").asLong($$5),
+         epy.a($$0).a(),
+         $$0.get("clearWeatherTime").asInt(0),
+         $$0.get("rainTime").asInt(0),
+         $$0.get("raining").asBoolean(false),
+         $$0.get("thunderTime").asInt(0),
+         $$0.get("thundering").asBoolean(false),
+         $$0.get("initialized").asBoolean(true),
+         $$0.get("DifficultyLocked").asBoolean(false),
+         dtt.c.a($$0, dtt.d),
+         $$0.get("WanderingTraderSpawnDelay").asInt(0),
+         $$0.get("WanderingTraderSpawnChance").asInt(0),
+         (UUID)$$0.get("WanderingTraderId").read(kc.a).result().orElse(null),
+         $$0.get("ServerBrands").asStream().flatMap($$0x -> $$0x.asString().result().stream()).collect(Collectors.toCollection(Sets::newLinkedHashSet)),
+         $$0.get("removed_features").asStream().flatMap($$0x -> $$0x.asString().result().stream()).collect(Collectors.toSet()),
+         new eve<>(evd.a, $$0.get("ScheduledEvents").asStream()),
+         (us)$$0.get("CustomBossEvents").orElseEmptyMap().getValue(),
+         $$0.get("DragonFight").read(dvx.a.a).resultOrPartial(f::error).orElse(dvx.a.b),
+         $$1,
+         $$3,
+         $$2,
+         $$4
+      );
+   }
 
-   int t();
+   @Override
+   public us a(jw $$0, @Nullable us $$1) {
+      if ($$1 == null) {
+         $$1 = this.o;
+      }
 
-   void d(int var1);
+      us $$2 = new us();
+      this.a($$0, $$2, $$1);
+      return $$2;
+   }
 
-   int u();
+   private void a(jw $$0, us $$1, @Nullable us $$2) {
+      $$1.a("ServerBrands", a(this.D));
+      $$1.a("WasModded", this.E);
+      if (!this.F.isEmpty()) {
+         $$1.a("removed_features", a(this.F));
+      }
 
-   void e(int var1);
+      us $$3 = new us();
+      $$3.a("Name", aa.b().c());
+      $$3.a("Id", aa.b().d().c());
+      $$3.a("Snapshot", !aa.b().g());
+      $$3.a("Series", aa.b().d().b());
+      $$1.a("Version", $$3);
+      vh.e($$1);
+      DynamicOps<vp> $$4 = $$0.a(vg.a);
+      dyq.a($$4, this.h, $$0).resultOrPartial(ac.a("WorldGenSettings: ", f::error)).ifPresent($$1x -> $$1.a("WorldGenSettings", $$1x));
+      $$1.a("GameType", this.g.b().a());
+      $$1.a("SpawnX", this.k.u());
+      $$1.a("SpawnY", this.k.v());
+      $$1.a("SpawnZ", this.k.w());
+      $$1.a("SpawnAngle", this.l);
+      $$1.a("Time", this.m);
+      $$1.a("DayTime", this.n);
+      $$1.a("LastPlayed", ac.e());
+      $$1.a("LevelName", this.g.a());
+      $$1.a("version", 19133);
+      $$1.a("clearWeatherTime", this.q);
+      $$1.a("rainTime", this.s);
+      $$1.a("raining", this.r);
+      $$1.a("thunderTime", this.u);
+      $$1.a("thundering", this.t);
+      $$1.a("hardcore", this.g.c());
+      $$1.a("allowCommands", this.g.e());
+      $$1.a("initialized", this.v);
+      this.x.a($$1);
+      $$1.a("Difficulty", (byte)this.g.d().a());
+      $$1.a("DifficultyLocked", this.w);
+      $$1.a("GameRules", this.g.f().a());
+      $$1.a("DragonFight", (vp)dvx.a.a.encodeStart(vg.a, this.y).getOrThrow());
+      if ($$2 != null) {
+         $$1.a("Player", $$2);
+      }
+
+      dcs.b.encodeStart(vg.a, this.g.g()).ifSuccess($$1x -> $$1.a((us)$$1x)).ifError($$0x -> f.warn("Failed to encode configuration {}", $$0x.message()));
+      if (this.z != null) {
+         $$1.a("CustomBossEvents", this.z);
+      }
+
+      $$1.a("ScheduledEvents", this.G.b());
+      $$1.a("WanderingTraderSpawnDelay", this.A);
+      $$1.a("WanderingTraderSpawnChance", this.B);
+      if (this.C != null) {
+         $$1.a("WanderingTraderId", this.C);
+      }
+   }
+
+   private static uy a(Set<String> $$0) {
+      uy $$1 = new uy();
+      $$0.stream().map(vn::a).forEach($$1::add);
+      return $$1;
+   }
+
+   @Override
+   public iz a() {
+      return this.k;
+   }
+
+   @Override
+   public float b() {
+      return this.l;
+   }
+
+   @Override
+   public long c() {
+      return this.m;
+   }
+
+   @Override
+   public long d() {
+      return this.n;
+   }
 
    @Nullable
-   UUID v();
+   @Override
+   public us w() {
+      return this.o;
+   }
 
-   void a(UUID var1);
+   @Override
+   public void a(long $$0) {
+      this.m = $$0;
+   }
 
-   dbu k();
+   @Override
+   public void b(long $$0) {
+      this.n = $$0;
+   }
 
-   void a(dts.c var1);
+   @Override
+   public void a(iz $$0, float $$1) {
+      this.k = $$0.i();
+      this.l = $$1;
+   }
 
-   dts.c p();
+   @Override
+   public String e() {
+      return this.g.a();
+   }
 
-   boolean n();
+   @Override
+   public int x() {
+      return this.p;
+   }
 
-   void c(boolean var1);
+   @Override
+   public int f() {
+      return this.q;
+   }
 
-   boolean m();
+   @Override
+   public void a(int $$0) {
+      this.q = $$0;
+   }
 
-   void a(dbu var1);
+   @Override
+   public boolean g() {
+      return this.t;
+   }
 
-   evd<MinecraftServer> s();
+   @Override
+   public void a(boolean $$0) {
+      this.t = $$0;
+   }
 
-   void a(long var1);
+   @Override
+   public int h() {
+      return this.u;
+   }
 
-   void b(long var1);
+   @Override
+   public void b(int $$0) {
+      this.u = $$0;
+   }
+
+   @Override
+   public boolean i() {
+      return this.r;
+   }
+
+   @Override
+   public void b(boolean $$0) {
+      this.r = $$0;
+   }
+
+   @Override
+   public int j() {
+      return this.s;
+   }
+
+   @Override
+   public void c(int $$0) {
+      this.s = $$0;
+   }
+
+   @Override
+   public dbv k() {
+      return this.g.b();
+   }
+
+   @Override
+   public void a(dbv $$0) {
+      this.g = this.g.a($$0);
+   }
+
+   @Override
+   public boolean l() {
+      return this.g.c();
+   }
+
+   @Override
+   public boolean m() {
+      return this.g.e();
+   }
+
+   @Override
+   public boolean n() {
+      return this.v;
+   }
+
+   @Override
+   public void c(boolean $$0) {
+      this.v = $$0;
+   }
+
+   @Override
+   public dbu o() {
+      return this.g.f();
+   }
+
+   @Override
+   public dtt.c p() {
+      return this.x;
+   }
+
+   @Override
+   public void a(dtt.c $$0) {
+      this.x = $$0;
+   }
+
+   @Override
+   public bqr q() {
+      return this.g.d();
+   }
+
+   @Override
+   public void a(bqr $$0) {
+      this.g = this.g.a($$0);
+   }
+
+   @Override
+   public boolean r() {
+      return this.w;
+   }
+
+   @Override
+   public void d(boolean $$0) {
+      this.w = $$0;
+   }
+
+   @Override
+   public eve<MinecraftServer> s() {
+      return this.G;
+   }
+
+   @Override
+   public void a(p $$0, dca $$1) {
+      eqb.super.a($$0, $$1);
+      eqc.super.a($$0);
+   }
+
+   @Override
+   public dys y() {
+      return this.h;
+   }
+
+   @Override
+   public boolean z() {
+      return this.i == eqa.a.b;
+   }
+
+   @Override
+   public boolean A() {
+      return this.i == eqa.a.c;
+   }
+
+   @Override
+   public Lifecycle B() {
+      return this.j;
+   }
+
+   @Override
+   public dvx.a C() {
+      return this.y;
+   }
+
+   @Override
+   public void a(dvx.a $$0) {
+      this.y = $$0;
+   }
+
+   @Override
+   public dcs D() {
+      return this.g.g();
+   }
+
+   @Override
+   public void a(dcs $$0) {
+      this.g = this.g.a($$0);
+   }
+
+   @Nullable
+   @Override
+   public us E() {
+      return this.z;
+   }
+
+   @Override
+   public void a(@Nullable us $$0) {
+      this.z = $$0;
+   }
+
+   @Override
+   public int t() {
+      return this.A;
+   }
+
+   @Override
+   public void d(int $$0) {
+      this.A = $$0;
+   }
+
+   @Override
+   public int u() {
+      return this.B;
+   }
+
+   @Override
+   public void e(int $$0) {
+      this.B = $$0;
+   }
+
+   @Nullable
+   @Override
+   public UUID v() {
+      return this.C;
+   }
+
+   @Override
+   public void a(UUID $$0) {
+      this.C = $$0;
+   }
+
+   @Override
+   public void a(String $$0, boolean $$1) {
+      this.D.add($$0);
+      this.E |= $$1;
+   }
+
+   @Override
+   public boolean F() {
+      return this.E;
+   }
+
+   @Override
+   public Set<String> G() {
+      return ImmutableSet.copyOf(this.D);
+   }
+
+   @Override
+   public Set<String> H() {
+      return Set.copyOf(this.F);
+   }
+
+   @Override
+   public eqb I() {
+      return this;
+   }
+
+   @Override
+   public dcc J() {
+      return this.g.h();
+   }
+
+   @Deprecated
+   public static enum a {
+      a,
+      b,
+      c;
+   }
 }

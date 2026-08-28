@@ -1,24 +1,31 @@
-public class gkk extends gkc<cke, fva<cke>> {
-   private static final ale a = new ale("textures/entity/phantom.png");
+public class gkk extends gkd<cfv, fva> {
+   private static final alf a = new alf("textures/entity/parrot/parrot_red_blue.png");
+   private static final alf i = new alf("textures/entity/parrot/parrot_blue.png");
+   private static final alf j = new alf("textures/entity/parrot/parrot_green.png");
+   private static final alf k = new alf("textures/entity/parrot/parrot_yellow_blue.png");
+   private static final alf l = new alf("textures/entity/parrot/parrot_grey.png");
 
-   public gkk(giw.a $$0) {
-      super($$0, new fva<>($$0.a(fwy.aH)), 0.75F);
-      this.a(new gng<>(this));
+   public gkk(gix.a $$0) {
+      super($$0, new fva($$0.a(fwz.aG)), 0.3F);
    }
 
-   public ale a(cke $$0) {
-      return a;
+   public alf a(cfv $$0) {
+      return a($$0.gy());
    }
 
-   protected void a(cke $$0, ezx $$1, float $$2) {
-      int $$3 = $$0.s();
-      float $$4 = 1.0F + 0.15F * (float)$$3;
-      $$1.b($$4, $$4, $$4);
-      $$1.a(0.0F, 1.3125F, 0.1875F);
+   public static alf a(cfv.b $$0) {
+      return switch ($$0) {
+         case a -> a;
+         case b -> i;
+         case c -> j;
+         case d -> k;
+         case e -> l;
+      };
    }
 
-   protected void a(cke $$0, ezx $$1, float $$2, float $$3, float $$4, float $$5) {
-      super.a($$0, $$1, $$2, $$3, $$4, $$5);
-      $$1.a(a.b.rotationDegrees($$0.dH()));
+   public float a(cfv $$0, float $$1) {
+      float $$2 = ayz.i($$1, $$0.ce, $$0.cb);
+      float $$3 = ayz.i($$1, $$0.cd, $$0.cc);
+      return (ayz.a($$2) + 1.0F) * $$3;
    }
 }

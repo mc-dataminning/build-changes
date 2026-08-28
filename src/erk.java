@@ -1,88 +1,62 @@
-import com.mojang.logging.LogUtils;
+import com.google.common.collect.ImmutableSet;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
-import org.slf4j.Logger;
+import java.util.Set;
 
-public class erk extends ert {
-   private static final Logger b = LogUtils.getLogger();
-   private static final Codec<jm<czz>> c = lp.f.r().listOf().xmap(jm::a, $$0 -> $$0.a().toList());
+public class erk extends eru {
    public static final MapCodec<erk> a = RecordCodecBuilder.mapCodec(
-      $$0 -> a($$0).and(c.optionalFieldOf("enchantments").forGetter($$0x -> $$0x.d)).apply($$0, erk::new)
+      $$0 -> a($$0).and(erk.a.e.fieldOf("source").forGetter($$0x -> $$0x.b)).apply($$0, erk::new)
    );
-   private final Optional<jm<czz>> d;
+   private final erk.a b;
 
-   erk(List<etr> $$0, Optional<jm<czz>> $$1) {
+   private erk(List<ets> $$0, erk.a $$1) {
       super($$0);
-      this.d = $$1;
+      this.b = $$1;
    }
 
    @Override
-   public erv<erk> b() {
-      return erw.h;
+   public erw<erk> b() {
+      return erx.s;
    }
 
    @Override
-   public cuo a(cuo $$0, eqh $$1) {
-      azg $$2 = $$1.b();
-      Optional<ji<czz>> $$3 = this.d
-         .<ji<czz>>flatMap($$1x -> $$1x.a($$2))
-         .or(
-            () -> {
-               boolean $$3x = $$0.a(cur.qP);
-               List<ji.c<czz>> $$4 = lp.f
-                  .h()
-                  .filter($$1xx -> ((czz)$$1xx.a()).a($$1.d().J()))
-                  .filter($$0xx -> ((czz)$$0xx.a()).l())
-                  .filter($$2xx -> $$3x || ((czz)$$2xx.a()).b($$0))
-                  .toList();
-               return ac.b($$4, $$2);
-            }
-         );
-      if ($$3.isEmpty()) {
-         b.warn("Couldn't find a compatible enchantment for {}", $$0);
-         return $$0;
-      } else {
-         return a($$0, $$3.get().a(), $$2);
-      }
+   public Set<etb<?>> a() {
+      return ImmutableSet.of(this.b.g);
    }
 
-   private static cuo a(cuo $$0, czz $$1, azg $$2) {
-      int $$3 = ayy.a($$2, $$1.f(), $$1.g());
-      if ($$0.a(cur.qP)) {
-         $$0 = new cuo(cur.uw);
+   @Override
+   public cup a(cup $$0, eqi $$1) {
+      if ($$1.c(this.b.g) instanceof bqz $$3) {
+         $$0.b(km.g, $$3.ah());
       }
 
-      $$0.a($$1, $$3);
       return $$0;
    }
 
-   public static erk.a c() {
-      return new erk.a();
+   public static eru.a<?> a(erk.a $$0) {
+      return a($$1 -> new erk($$1, $$0));
    }
 
-   public static ert.a<?> d() {
-      return a($$0 -> new erk($$0, Optional.empty()));
-   }
+   public static enum a implements azu {
+      a("this", ete.a),
+      b("killer", ete.d),
+      c("killer_player", ete.b),
+      d("block_entity", ete.h);
 
-   public static class a extends ert.a<erk.a> {
-      private final List<ji<czz>> a = new ArrayList<>();
+      public static final Codec<erk.a> e = azu.a(erk.a::values);
+      private final String f;
+      final etb<?> g;
 
-      protected erk.a a() {
-         return this;
-      }
-
-      public erk.a a(czz $$0) {
-         this.a.add($$0.m());
-         return this;
+      private a(final String $$0, final etb<?> $$1) {
+         this.f = $$0;
+         this.g = $$1;
       }
 
       @Override
-      public eru b() {
-         return new erk(this.g(), this.a.isEmpty() ? Optional.empty() : Optional.of(jm.a(this.a)));
+      public String c() {
+         return this.f;
       }
    }
 }

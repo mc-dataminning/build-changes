@@ -1,94 +1,61 @@
-public class ago implements zv<ach> {
-   public static final zm<wz, ago> a = zv.a(ago::a, ago::new);
-   private static final int b = 1;
-   private static final int c = 2;
-   private static final int d = 4;
-   private static final int e = 8;
-   private final int f;
-   private final ji<brz> g;
-   private final int h;
-   private final int i;
-   private final byte j;
+import com.google.common.collect.Lists;
+import io.netty.buffer.ByteBuf;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
 
-   public ago(int $$0, bsb $$1, boolean $$2) {
-      this.f = $$0;
-      this.g = $$1.c();
-      this.h = $$1.e();
-      this.i = $$1.d();
-      byte $$3 = 0;
-      if ($$1.f()) {
-         $$3 = (byte)($$3 | 1);
+public class ago implements zw<aci> {
+   public static final zn<xa, ago> a = zn.a(zl.g, ago::b, ago.a.b.a(zl.a()), ago::e, ago::new);
+   private final int b;
+   private final List<ago.a> c;
+
+   public ago(int $$0, Collection<but> $$1) {
+      this.b = $$0;
+      this.c = Lists.newArrayList();
+
+      for (but $$2 : $$1) {
+         this.c.add(new ago.a($$2.a(), $$2.b(), $$2.c()));
       }
-
-      if ($$1.g()) {
-         $$3 = (byte)($$3 | 2);
-      }
-
-      if ($$1.h()) {
-         $$3 = (byte)($$3 | 4);
-      }
-
-      if ($$2) {
-         $$3 = (byte)($$3 | 8);
-      }
-
-      this.j = $$3;
    }
 
-   private ago(wz $$0) {
-      this.f = $$0.l();
-      this.g = zk.b(lq.R).decode($$0);
-      this.h = $$0.l();
-      this.i = $$0.l();
-      this.j = $$0.readByte();
-   }
-
-   private void a(wz $$0) {
-      $$0.c(this.f);
-      zk.b(lq.R).encode($$0, this.g);
-      $$0.c(this.h);
-      $$0.c(this.i);
-      $$0.k(this.j);
+   private ago(int $$0, List<ago.a> $$1) {
+      this.b = $$0;
+      this.c = $$1;
    }
 
    @Override
-   public zx<ago> a() {
-      return agt.bc;
+   public zy<ago> a() {
+      return agu.bb;
    }
 
-   public void a(ach $$0) {
+   public void a(aci $$0) {
       $$0.a(this);
    }
 
    public int b() {
-      return this.f;
+      return this.b;
    }
 
-   public ji<brz> e() {
-      return this.g;
+   public List<ago.a> e() {
+      return this.c;
    }
 
-   public int f() {
-      return this.h;
-   }
+   public static record a(ji<bus> c, double d, Collection<buv> e) {
+      public static final zn<ByteBuf, buv> a = zn.a(
+         kc.g, buv::b, zl.j, buv::d, buv.a.e, buv::e, ($$0, $$1, $$2) -> new buv($$0, "Unknown synced attribute modifier", $$1, $$2)
+      );
+      public static final zn<xa, ago.a> b = zn.a(zl.b(lq.c), ago.a::a, zl.j, ago.a::b, a.a(zl.a(ArrayList::new)), ago.a::c, ago.a::new);
 
-   public int g() {
-      return this.i;
-   }
+      public ji<bus> a() {
+         return this.c;
+      }
 
-   public boolean h() {
-      return (this.j & 2) != 0;
-   }
+      public double b() {
+         return this.d;
+      }
 
-   public boolean i() {
-      return (this.j & 1) != 0;
-   }
-
-   public boolean j() {
-      return (this.j & 4) != 0;
-   }
-
-   public boolean k() {
-      return (this.j & 8) != 0;
+      public Collection<buv> c() {
+         return this.e;
+      }
    }
 }

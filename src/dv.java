@@ -3,11 +3,11 @@ import it.unimi.dsi.fastutil.ints.IntList;
 import java.util.Map;
 import java.util.Map.Entry;
 
-public record dv(Map<crp, cp> b) {
-   public static final Codec<dv> a = Codec.unboundedMap(crq.a, cp.a).xmap(dv::new, dv::a);
+public record dv(Map<crq, cp> b) {
+   public static final Codec<dv> a = Codec.unboundedMap(crr.a, cp.a).xmap(dv::new, dv::a);
 
-   public boolean a(bst $$0) {
-      for (Entry<crp, cp> $$1 : this.b.entrySet()) {
+   public boolean a(bsu $$0) {
+      for (Entry<crq, cp> $$1 : this.b.entrySet()) {
          if (!a($$0, $$1.getValue(), $$1.getKey().a())) {
             return false;
          }
@@ -16,10 +16,10 @@ public record dv(Map<crp, cp> b) {
       return true;
    }
 
-   private static boolean a(bst $$0, cp $$1, IntList $$2) {
+   private static boolean a(bsu $$0, cp $$1, IntList $$2) {
       for (int $$3 = 0; $$3 < $$2.size(); $$3++) {
          int $$4 = $$2.getInt($$3);
-         bug $$5 = $$0.a_($$4);
+         buh $$5 = $$0.a_($$4);
          if ($$1.a($$5.a())) {
             return true;
          }
@@ -28,7 +28,7 @@ public record dv(Map<crp, cp> b) {
       return false;
    }
 
-   public Map<crp, cp> a() {
+   public Map<crq, cp> a() {
       return this.b;
    }
 }

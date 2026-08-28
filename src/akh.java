@@ -1,4 +1,12 @@
 public class akh {
-   public static final ww<ake> a = aaa.a(wk.c, $$0 -> $$0.a(akg.b, akf.b).a(ajx.b, ajz.a));
-   public static final ww<akb> b = aaa.b(wk.c, $$0 -> $$0.a(akg.a, akc.a).a(ajx.a, ajw.a));
+   public static final zy<akd> a = a("status_response");
+   public static final zy<akg> b = b("status_request");
+
+   private static <T extends zw<akc>> zy<T> a(String $$0) {
+      return new zy<>(zx.b, new alf($$0));
+   }
+
+   private static <T extends zw<akf>> zy<T> b(String $$0) {
+      return new zy<>(zx.a, new alf($$0));
+   }
 }

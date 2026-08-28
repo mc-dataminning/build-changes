@@ -1,53 +1,20 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
 
-public record ecs(List<ecs.a> b, je c, dza d, boolean e) implements edb {
+public class ecs {
    public static final Codec<ecs> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               ecs.a.a.listOf().fieldOf("layers").forGetter(ecs::a),
-               je.g.fieldOf("direction").forGetter(ecs::b),
-               dza.b.fieldOf("allowed_placement").forGetter(ecs::c),
-               Codec.BOOL.fieldOf("prioritize_tip").forGetter(ecs::d)
-            )
+      $$0 -> $$0.group(eho.b.fieldOf("feature").forGetter($$0x -> $$0x.b), Codec.floatRange(0.0F, 1.0F).fieldOf("chance").forGetter($$0x -> $$0x.c))
             .apply($$0, ecs::new)
    );
+   public final ji<eho> b;
+   public final float c;
 
-   public static ecs.a a(bpy $$0, efc $$1) {
-      return new ecs.a($$0, $$1);
+   public ecs(ji<eho> $$0, float $$1) {
+      this.b = $$0;
+      this.c = $$1;
    }
 
-   public static ecs b(bpy $$0, efc $$1) {
-      return new ecs(List.of(a($$0, $$1)), je.b, dza.c, false);
-   }
-
-   public List<ecs.a> a() {
-      return this.b;
-   }
-
-   public je b() {
-      return this.c;
-   }
-
-   public dza c() {
-      return this.d;
-   }
-
-   public boolean d() {
-      return this.e;
-   }
-
-   public static record a(bpy b, efc c) {
-      public static final Codec<ecs.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(bpy.d.fieldOf("height").forGetter(ecs.a::a), efc.a.fieldOf("provider").forGetter(ecs.a::b)).apply($$0, ecs.a::new)
-      );
-
-      public bpy a() {
-         return this.b;
-      }
-
-      public efc b() {
-         return this.c;
-      }
+   public boolean a(dct $$0, dtz $$1, azh $$2, iz $$3) {
+      return this.b.a().a($$0, $$1, $$2, $$3);
    }
 }

@@ -1,29 +1,45 @@
-public class afd implements zv<ach> {
-   public static final zm<wl, afd> a = zv.a(afd::a, afd::new);
+public class afd implements zw<aci> {
+   public static final zn<wm, afd> a = zw.a(afd::a, afd::new);
    private final double b;
+   private final double c;
+   private final long d;
 
-   public afd(dts $$0) {
-      this.b = $$0.k();
+   public afd(dtt $$0) {
+      this.b = $$0.i();
+      this.c = $$0.k();
+      this.d = $$0.j();
    }
 
-   private afd(wl $$0) {
+   private afd(wm $$0) {
       this.b = $$0.readDouble();
+      this.c = $$0.readDouble();
+      this.d = $$0.m();
    }
 
-   private void a(wl $$0) {
+   private void a(wm $$0) {
       $$0.a(this.b);
+      $$0.a(this.c);
+      $$0.a(this.d);
    }
 
    @Override
-   public zx<afd> a() {
-      return agt.at;
+   public zy<afd> a() {
+      return agu.as;
    }
 
-   public void a(ach $$0) {
+   public void a(aci $$0) {
       $$0.a(this);
    }
 
    public double b() {
       return this.b;
+   }
+
+   public double e() {
+      return this.c;
+   }
+
+   public long f() {
+      return this.d;
    }
 }

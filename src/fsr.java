@@ -1,8 +1,9 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+public class fsr extends RuntimeException {
+   public fsr(String $$0) {
+      super($$0);
+   }
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface fsr {
+   public fsr(String $$0, Throwable $$1) {
+      super($$0, $$1);
+   }
 }

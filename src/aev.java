@@ -1,36 +1,28 @@
-public record aev(agq e, byte f) implements zv<ach> {
-   public static final zm<wz, aev> a = zv.a(aev::a, aev::new);
-   public static final byte b = 1;
-   public static final byte c = 2;
-   public static final byte d = 3;
+import javax.annotation.Nullable;
 
-   private aev(wz $$0) {
-      this(new agq($$0), $$0.readByte());
+public record aev(String b, @Nullable String c) implements zw<aci> {
+   public static final zn<wm, aev> a = zw.a(aev::a, aev::new);
+
+   private aev(wm $$0) {
+      this($$0.p(), $$0.c(wm::p));
    }
 
-   private void a(wz $$0) {
-      this.e.a($$0);
-      $$0.k(this.f);
+   private void a(wm $$0) {
+      $$0.a(this.b);
+      $$0.a(this.c, wm::a);
    }
 
    @Override
-   public zx<aev> a() {
-      return agt.al;
+   public zy<aev> a() {
+      return agu.ce;
    }
 
-   public void a(ach $$0) {
+   public void a(aci $$0) {
       $$0.a(this);
    }
 
-   public boolean a(byte $$0) {
-      return (this.f & $$0) != 0;
-   }
-
-   public agq b() {
-      return this.e;
-   }
-
-   public byte e() {
-      return this.f;
+   @Nullable
+   public String e() {
+      return this.c;
    }
 }

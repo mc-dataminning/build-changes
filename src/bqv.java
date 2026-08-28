@@ -1,26 +1,37 @@
-public enum bqv {
-   a,
-   b,
-   c,
-   d,
-   e,
-   f;
+public class bqv<T> {
+   private final bqu a;
+   private final T b;
 
-   public boolean a() {
-      return this.b().a();
+   public bqv(bqu $$0, T $$1) {
+      this.a = $$0;
+      this.b = $$1;
    }
 
-   public static bqv a(boolean $$0) {
-      return $$0 ? a : b;
+   public bqu a() {
+      return this.a;
    }
 
-   public bqt b() {
-      return switch (this) {
-         case a -> bqt.a;
-         case b -> bqt.c;
-         case c -> bqt.d;
-         case d, e -> bqt.e;
-         case f -> bqt.f;
-      };
+   public T b() {
+      return this.b;
+   }
+
+   public static <T> bqv<T> a(T $$0) {
+      return new bqv<>(bqu.a, $$0);
+   }
+
+   public static <T> bqv<T> b(T $$0) {
+      return new bqv<>(bqu.c, $$0);
+   }
+
+   public static <T> bqv<T> c(T $$0) {
+      return new bqv<>(bqu.e, $$0);
+   }
+
+   public static <T> bqv<T> d(T $$0) {
+      return new bqv<>(bqu.f, $$0);
+   }
+
+   public static <T> bqv<T> a(T $$0, boolean $$1) {
+      return $$1 ? a($$0) : b($$0);
    }
 }

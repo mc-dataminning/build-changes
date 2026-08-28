@@ -1,43 +1,11 @@
-public class gjq extends gjp<cka> {
-   private static final ale a = new ale("textures/entity/illager/illusioner.png");
-
-   public gjq(giw.a $$0) {
-      super($$0, new fun<>($$0.a(fwy.au)), 0.5F);
-      this.a(new gnb<cka, fun<cka>>(this, $$0.d()) {
-         public void a(ezx $$0, gdn $$1, int $$2, cka $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-            if ($$3.gA() || $$3.gi()) {
-               super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8, $$9);
-            }
-         }
-      });
-      this.f.c().k = true;
+public abstract class gjq<T extends cjk> extends gkd<T, fuo<T>> {
+   protected gjq(gix.a $$0, fuo<T> $$1, float $$2) {
+      super($$0, $$1, $$2);
+      this.a(new gmo<>(this, $$0.f(), $$0.d()));
    }
 
-   public ale a(cka $$0) {
-      return a;
-   }
-
-   public void a(cka $$0, float $$1, float $$2, ezx $$3, gdn $$4, int $$5) {
-      if ($$0.ch()) {
-         evq[] $$6 = $$0.G($$2);
-         float $$7 = this.a($$0, $$2);
-
-         for (int $$8 = 0; $$8 < $$6.length; $$8++) {
-            $$3.a();
-            $$3.a(
-               $$6[$$8].c + (double)ayy.b((float)$$8 + $$7 * 0.5F) * 0.025,
-               $$6[$$8].d + (double)ayy.b((float)$$8 + $$7 * 0.75F) * 0.0125,
-               $$6[$$8].e + (double)ayy.b((float)$$8 + $$7 * 0.7F) * 0.025
-            );
-            super.a($$0, $$1, $$2, $$3, $$4, $$5);
-            $$3.b();
-         }
-      } else {
-         super.a($$0, $$1, $$2, $$3, $$4, $$5);
-      }
-   }
-
-   protected boolean b(cka $$0) {
-      return true;
+   protected void a(T $$0, ezy $$1, float $$2) {
+      float $$3 = 0.9375F;
+      $$1.b(0.9375F, 0.9375F, 0.9375F);
    }
 }

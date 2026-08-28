@@ -1,37 +1,24 @@
-public class bqu<T> {
-   private final bqt a;
-   private final T b;
+public enum bqu {
+   a,
+   b,
+   c,
+   d,
+   e,
+   f;
 
-   public bqu(bqt $$0, T $$1) {
-      this.a = $$0;
-      this.b = $$1;
+   public boolean a() {
+      return this == a || this == c || this == d || this == b;
    }
 
-   public bqt a() {
-      return this.a;
+   public boolean b() {
+      return this == a || this == b;
    }
 
-   public T b() {
-      return this.b;
+   public boolean c() {
+      return this == a || this == c;
    }
 
-   public static <T> bqu<T> a(T $$0) {
-      return new bqu<>(bqt.a, $$0);
-   }
-
-   public static <T> bqu<T> b(T $$0) {
-      return new bqu<>(bqt.c, $$0);
-   }
-
-   public static <T> bqu<T> c(T $$0) {
-      return new bqu<>(bqt.e, $$0);
-   }
-
-   public static <T> bqu<T> d(T $$0) {
-      return new bqu<>(bqt.f, $$0);
-   }
-
-   public static <T> bqu<T> a(T $$0, boolean $$1) {
-      return $$1 ? a($$0) : b($$0);
+   public static bqu a(boolean $$0) {
+      return $$0 ? a : c;
    }
 }

@@ -1,9 +1,9 @@
-public class czy extends czz {
-   protected czy(czz.b $$0) {
-      super($$0);
+public class czy extends daa {
+   public czy() {
+      super(daa.a(awy.bR, 10, 5, daa.a(1, 11), daa.a(21, 11), 1, cpl.a(cpn.c), btb.a));
    }
 
-   public static boolean a(cuo $$0, int $$1, azg $$2) {
-      return $$0.g() instanceof csd && $$2.i() < 0.6F ? false : $$2.a($$1 + 1) > 0;
+   public static float a(int $$0, float $$1) {
+      return $$1 * (float)$$0;
    }
 }

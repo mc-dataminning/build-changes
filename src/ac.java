@@ -85,7 +85,7 @@ public class ac {
    private static final DateTimeFormatter n = DateTimeFormatter.ofPattern("yyyy-MM-dd_HH.mm.ss", Locale.ROOT);
    public static final int a = 8;
    public static final long b = 1000000L;
-   public static azx.a c = System::nanoTime;
+   public static azy.a c = System::nanoTime;
    public static final Ticker d = new Ticker() {
       public long read() {
          return ac.c.getAsLong();
@@ -108,11 +108,11 @@ public class ac {
       return Collectors.toCollection(Lists::newArrayList);
    }
 
-   public static <T extends Comparable<T>> String a(dte<T> $$0, Object $$1) {
+   public static <T extends Comparable<T>> String a(dtf<T> $$0, Object $$1) {
       return $$0.a((T)$$1);
    }
 
-   public static String a(String $$0, @Nullable ale $$1) {
+   public static String a(String $$0, @Nullable alf $$1) {
       return $$1 == null ? $$0 + ".unregistered_sadface" : $$0 + "." + $$1.b() + "." + $$1.a().replace('/', '.');
    }
 
@@ -133,7 +133,7 @@ public class ac {
    }
 
    private static ExecutorService b(String $$0) {
-      int $$1 = ayy.a(Runtime.getRuntime().availableProcessors() - 1, 1, n());
+      int $$1 = ayz.a(Runtime.getRuntime().availableProcessors() - 1, 1, n());
       ExecutorService $$2;
       if ($$1 <= 0) {
          $$2 = MoreExecutors.newDirectExecutorService();
@@ -232,7 +232,7 @@ public class ac {
       }
 
       if ($$1 instanceof y $$2) {
-         alg.a($$2.a().e());
+         alh.a($$2.a().e());
          System.exit(-1);
       }
 
@@ -249,7 +249,7 @@ public class ac {
       Type<?> $$2 = null;
 
       try {
-         $$2 = bag.a().getSchema(DataFixUtils.makeKey(aa.b().d().c())).getChoiceType($$0, $$1);
+         $$2 = bah.a().getSchema(DataFixUtils.makeKey(aa.b().d().c())).getChoiceType($$0, $$1);
       } catch (IllegalArgumentException var4) {
          g.error("No data fixer registered for {}", $$1);
          if (aa.aX) {
@@ -292,7 +292,7 @@ public class ac {
    }
 
    public static <T> String a(jv<T> $$0, T $$1) {
-      ale $$2 = $$0.b($$1);
+      alf $$2 = $$0.b($$1);
       return $$2 == null ? "[unregistered]" : $$2.toString();
    }
 
@@ -514,19 +514,19 @@ public class ac {
       }
    }
 
-   public static <T> T a(T[] $$0, azg $$1) {
+   public static <T> T a(T[] $$0, azh $$1) {
       return $$0[$$1.a($$0.length)];
    }
 
-   public static int a(int[] $$0, azg $$1) {
+   public static int a(int[] $$0, azh $$1) {
       return $$0[$$1.a($$0.length)];
    }
 
-   public static <T> T a(List<T> $$0, azg $$1) {
+   public static <T> T a(List<T> $$0, azh $$1) {
       return $$0.get($$1.a($$0.size()));
    }
 
-   public static <T> Optional<T> b(List<T> $$0, azg $$1) {
+   public static <T> Optional<T> b(List<T> $$0, azh $$1) {
       return $$0.isEmpty() ? Optional.empty() : Optional.of(a($$0, $$1));
    }
 
@@ -721,8 +721,8 @@ public class ac {
       return $$0.toLowerCase(Locale.ROOT).chars().mapToObj($$1x -> $$1.test((char)$$1x) ? Character.toString((char)$$1x) : "_").collect(Collectors.joining());
    }
 
-   public static <K, V> azo<K, V> a(Function<K, V> $$0) {
-      return new azo<>($$0);
+   public static <K, V> azp<K, V> a(Function<K, V> $$0) {
+      return new azp<>($$0);
    }
 
    public static <T, R> Function<T, R> b(final Function<T, R> $$0) {
@@ -757,13 +757,13 @@ public class ac {
       };
    }
 
-   public static <T> List<T> a(Stream<T> $$0, azg $$1) {
+   public static <T> List<T> a(Stream<T> $$0, azh $$1) {
       ObjectArrayList<T> $$2 = $$0.collect(ObjectArrayList.toList());
       c($$2, $$1);
       return $$2;
    }
 
-   public static IntArrayList a(IntStream $$0, azg $$1) {
+   public static IntArrayList a(IntStream $$0, azh $$1) {
       IntArrayList $$2 = IntArrayList.wrap($$0.toArray());
       int $$3 = $$2.size();
 
@@ -775,19 +775,19 @@ public class ac {
       return $$2;
    }
 
-   public static <T> List<T> b(T[] $$0, azg $$1) {
+   public static <T> List<T> b(T[] $$0, azh $$1) {
       ObjectArrayList<T> $$2 = new ObjectArrayList($$0);
       c($$2, $$1);
       return $$2;
    }
 
-   public static <T> List<T> a(ObjectArrayList<T> $$0, azg $$1) {
+   public static <T> List<T> a(ObjectArrayList<T> $$0, azh $$1) {
       ObjectArrayList<T> $$2 = new ObjectArrayList($$0);
       c($$2, $$1);
       return $$2;
    }
 
-   public static <T> void c(List<T> $$0, azg $$1) {
+   public static <T> void c(List<T> $$0, azh $$1) {
       int $$2 = $$0.size();
 
       for (int $$3 = $$2; $$3 > 1; $$3--) {

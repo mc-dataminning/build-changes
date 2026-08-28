@@ -1,35 +1,47 @@
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
+import com.mojang.brigadier.builder.RequiredArgumentBuilder;
 import com.mojang.brigadier.context.CommandContext;
+import java.util.Collection;
+import java.util.Collections;
 
 public class anm {
+   public static final int a = 2;
+
    public static void a(CommandDispatcher<ep> $$0) {
-      final LiteralArgumentBuilder<ep> $$1 = (LiteralArgumentBuilder<ep>)eq.a("gamerule").requires($$0x -> $$0x.c(2));
-      dbt.a(
-         new dbt.c() {
-            @Override
-            public <T extends dbt.g<T>> void a(dbt.e<T> $$0, dbt.f<T> $$1x) {
-               $$1.then(
-                  ((LiteralArgumentBuilder)eq.a($$0.a()).executes($$1xxx -> anm.a((ep)$$1xxx.getSource(), $$0)))
-                     .then($$1.a("value").executes($$1xxx -> anm.a($$1xxx, $$0)))
-               );
-            }
-         }
+      $$0.register(
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)eq.a("gamemode").requires($$0x -> $$0x.c(2)))
+            .then(
+               ((RequiredArgumentBuilder)eq.a("gamemode", fd.a())
+                     .executes($$0x -> a($$0x, Collections.singleton(((ep)$$0x.getSource()).h()), fd.a($$0x, "gamemode"))))
+                  .then(eq.a("target", fc.d()).executes($$0x -> a($$0x, fc.f($$0x, "target"), fd.a($$0x, "gamemode"))))
+            )
       );
-      $$0.register($$1);
    }
 
-   static <T extends dbt.g<T>> int a(CommandContext<ep> $$0, dbt.e<T> $$1) {
-      ep $$2 = (ep)$$0.getSource();
-      T $$3 = $$2.l().aM().a($$1);
-      $$3.b($$0, "value");
-      $$2.a(() -> xo.a("commands.gamerule.set", $$1.a(), $$3.toString()), true);
-      return $$3.c();
+   private static void a(ep $$0, arg $$1, dbv $$2) {
+      xp $$3 = xp.c("gameMode." + $$2.b());
+      if ($$0.f() == $$1) {
+         $$0.a(() -> xp.a("commands.gamemode.success.self", $$3), true);
+      } else {
+         if ($$0.e().ab().b(dbu.p)) {
+            $$1.a(xp.a("gameMode.changed", $$3));
+         }
+
+         $$0.a(() -> xp.a("commands.gamemode.success.other", $$1.O_(), $$3), true);
+      }
    }
 
-   static <T extends dbt.g<T>> int a(ep $$0, dbt.e<T> $$1) {
-      T $$2 = $$0.l().aM().a($$1);
-      $$0.a(() -> xo.a("commands.gamerule.query", $$1.a(), $$2.toString()), false);
-      return $$2.c();
+   private static int a(CommandContext<ep> $$0, Collection<arg> $$1, dbv $$2) {
+      int $$3 = 0;
+
+      for (arg $$4 : $$1) {
+         if ($$4.a($$2)) {
+            a((ep)$$0.getSource(), $$4, $$2);
+            $$3++;
+         }
+      }
+
+      return $$3;
    }
 }

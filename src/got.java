@@ -1,138 +1,316 @@
+import com.google.common.collect.ImmutableList;
+import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.logging.LogUtils;
-import java.util.Collection;
-import java.util.HashMap;
+import it.unimi.dsi.fastutil.ints.IntOpenHashSet;
+import it.unimi.dsi.fastutil.ints.IntSet;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Iterator;
 import java.util.List;
-import java.util.Locale;
-import java.util.Map;
-import java.util.Objects;
-import java.util.Set;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.Executor;
-import java.util.function.Function;
-import java.util.stream.Collectors;
+import java.util.stream.IntStream;
+import javax.annotation.Nullable;
 import org.slf4j.Logger;
 
-public class got {
-   public static final Set<atn<?>> a = Set.of(gqj.a);
-   private static final Logger b = LogUtils.getLogger();
-   private final ale c;
-   private final int d;
-   private final int e;
-   private final int f;
+public class got implements gow.a, AutoCloseable {
+   private static final Logger a = LogUtils.getLogger();
+   private final alf b;
+   final int c;
+   final int d;
+   private final eyz e;
+   eyz[] f;
+   @Nullable
+   private final got.a g;
+   private final aur h;
 
-   public got(ale $$0, int $$1, int $$2, int $$3) {
-      this.c = $$0;
-      this.d = $$1;
+   public got(alf $$0, gqm $$1, eyz $$2, aur $$3) {
+      this.b = $$0;
+      this.c = $$1.a();
+      this.d = $$1.b();
+      this.h = $$3;
+      gqk $$4 = $$3.a(gqk.a).orElse(gqk.e);
+      this.g = this.a($$1, $$2.a(), $$2.b(), $$4);
       this.e = $$2;
-      this.f = $$3;
+      this.f = new eyz[]{this.e};
    }
 
-   public static got a(gox $$0) {
-      return new got($$0.g(), $$0.h(), $$0.i(), $$0.j());
+   public void a(int $$0) {
+      try {
+         this.f = goo.a(this.f, $$0);
+      } catch (Throwable var6) {
+         o $$2 = o.a(var6, "Generating mipmaps for frame");
+         p $$3 = $$2.a("Sprite being mipmapped");
+         $$3.a("First frame", () -> {
+            StringBuilder $$0x = new StringBuilder();
+            if ($$0x.length() > 0) {
+               $$0x.append(", ");
+            }
+
+            $$0x.append(this.e.a()).append("x").append(this.e.b());
+            return $$0x.toString();
+         });
+         p $$4 = $$2.a("Frame being iterated");
+         $$4.a("Sprite name", this.b);
+         $$4.a("Sprite size", () -> this.c + " x " + this.d);
+         $$4.a("Sprite frames", () -> this.g() + " frames");
+         $$4.a("Mipmap levels", $$0);
+         throw new y($$2);
+      }
    }
 
-   public got.a a(List<gos> $$0, int $$1, Executor $$2) {
-      int $$3 = this.d;
-      gov<gos> $$4 = new gov<>($$3, $$3, $$1);
-      int $$5 = Integer.MAX_VALUE;
-      int $$6 = 1 << $$1;
+   private int g() {
+      return this.g != null ? this.g.b.size() : 1;
+   }
 
-      for (gos $$7 : $$0) {
-         $$5 = Math.min($$5, Math.min($$7.a(), $$7.b()));
-         int $$8 = Math.min(Integer.lowestOneBit($$7.a()), Integer.lowestOneBit($$7.b()));
-         if ($$8 < $$6) {
-            b.warn("Texture {} with size {}x{} limits mip level from {} to {}", new Object[]{$$7.c(), $$7.a(), $$7.b(), ayy.f($$6), ayy.f($$8)});
-            $$6 = $$8;
+   @Nullable
+   private got.a a(gqm $$0, int $$1, int $$2, gqk $$3) {
+      int $$4 = $$1 / $$0.a();
+      int $$5 = $$2 / $$0.b();
+      int $$6 = $$4 * $$5;
+      List<got.b> $$7 = new ArrayList<>();
+      $$3.a(($$1x, $$2x) -> $$7.add(new got.b($$1x, $$2x)));
+      if ($$7.isEmpty()) {
+         for (int $$8 = 0; $$8 < $$6; $$8++) {
+            $$7.add(new got.b($$8, $$3.a()));
+         }
+      } else {
+         int $$9 = 0;
+         IntSet $$10 = new IntOpenHashSet();
+
+         for (Iterator<got.b> $$11 = $$7.iterator(); $$11.hasNext(); $$9++) {
+            got.b $$12 = $$11.next();
+            boolean $$13 = true;
+            if ($$12.b <= 0) {
+               a.warn("Invalid frame duration on sprite {} frame {}: {}", new Object[]{this.b, $$9, $$12.b});
+               $$13 = false;
+            }
+
+            if ($$12.a < 0 || $$12.a >= $$6) {
+               a.warn("Invalid frame index on sprite {} frame {}: {}", new Object[]{this.b, $$9, $$12.a});
+               $$13 = false;
+            }
+
+            if ($$13) {
+               $$10.add($$12.a);
+            } else {
+               $$11.remove();
+            }
          }
 
-         $$4.a($$7);
+         int[] $$14 = IntStream.range(0, $$6).filter($$1x -> !$$10.contains($$1x)).toArray();
+         if ($$14.length > 0) {
+            a.warn("Unused frames in sprite {}: {}", this.b, Arrays.toString($$14));
+         }
       }
 
-      int $$9 = Math.min($$5, $$6);
-      int $$10 = ayy.f($$9);
-      int $$11;
-      if ($$10 < $$1) {
-         b.warn("{}: dropping miplevel from {} to {}, because of minimum power of two: {}", new Object[]{this.c, $$1, $$10, $$9});
-         $$11 = $$10;
+      return $$7.size() <= 1 ? null : new got.a(ImmutableList.copyOf($$7), $$4, $$3.b());
+   }
+
+   void a(int $$0, int $$1, int $$2, int $$3, eyz[] $$4) {
+      for (int $$5 = 0; $$5 < this.f.length; $$5++) {
+         $$4[$$5].a($$5, $$0 >> $$5, $$1 >> $$5, $$2 >> $$5, $$3 >> $$5, this.c >> $$5, this.d >> $$5, this.f.length > 1, false);
+      }
+   }
+
+   @Override
+   public int a() {
+      return this.c;
+   }
+
+   @Override
+   public int b() {
+      return this.d;
+   }
+
+   @Override
+   public alf c() {
+      return this.b;
+   }
+
+   public IntStream d() {
+      return this.g != null ? this.g.b() : IntStream.of(1);
+   }
+
+   @Nullable
+   public gov e() {
+      return this.g != null ? this.g.a() : null;
+   }
+
+   public aur f() {
+      return this.h;
+   }
+
+   @Override
+   public void close() {
+      for (eyz $$0 : this.f) {
+         $$0.close();
+      }
+   }
+
+   @Override
+   public String toString() {
+      return "SpriteContents{name=" + this.b + ", frameCount=" + this.g() + ", height=" + this.d + ", width=" + this.c + "}";
+   }
+
+   public boolean a(int $$0, int $$1, int $$2) {
+      int $$3 = $$1;
+      int $$4 = $$2;
+      if (this.g != null) {
+         $$3 = $$1 + this.g.a($$0) * this.c;
+         $$4 = $$2 + this.g.b($$0) * this.d;
+      }
+
+      return (this.e.a($$3, $$4) >> 24 & 0xFF) == 0;
+   }
+
+   public void a(int $$0, int $$1) {
+      if (this.g != null) {
+         this.g.a($$0, $$1);
       } else {
-         $$11 = $$1;
+         this.a($$0, $$1, 0, 0, this.f);
       }
-
-      try {
-         $$4.c();
-      } catch (gow var16) {
-         o $$14 = o.a(var16, "Stitching");
-         p $$15 = $$14.a("Stitcher");
-         $$15.a(
-            "Sprites", var16.a().stream().map($$0x -> String.format(Locale.ROOT, "%s[%dx%d]", $$0x.c(), $$0x.a(), $$0x.b())).collect(Collectors.joining(","))
-         );
-         $$15.a("Max Texture Size", $$3);
-         throw new y($$14);
-      }
-
-      int $$16 = Math.max($$4.a(), this.e);
-      int $$17 = Math.max($$4.b(), this.f);
-      Map<ale, goy> $$18 = this.a($$4, $$16, $$17);
-      goy $$19 = $$18.get(goo.b());
-      CompletableFuture<Void> $$20;
-      if ($$11 > 0) {
-         $$20 = CompletableFuture.runAsync(() -> $$18.values().forEach($$1xx -> $$1xx.e().a($$11)), $$2);
-      } else {
-         $$20 = CompletableFuture.completedFuture(null);
-      }
-
-      return new got.a($$16, $$17, $$11, $$19, $$18, $$20);
    }
 
-   public static CompletableFuture<List<gos>> a(gpb $$0, List<Function<gpb, gos>> $$1, Executor $$2) {
-      List<CompletableFuture<gos>> $$3 = $$1.stream().map($$2x -> CompletableFuture.supplyAsync(() -> (gos)$$2x.apply($$0), $$2)).toList();
-      return ac.d($$3).thenApply($$0x -> $$0x.stream().filter(Objects::nonNull).toList());
+   class a {
+      final List<got.b> b;
+      private final int c;
+      private final boolean d;
+
+      a(final List<got.b> $$0, final int $$1, final boolean $$2) {
+         this.b = $$0;
+         this.c = $$1;
+         this.d = $$2;
+      }
+
+      int a(int $$0) {
+         return $$0 % this.c;
+      }
+
+      int b(int $$0) {
+         return $$0 / this.c;
+      }
+
+      void a(int $$0, int $$1, int $$2) {
+         int $$3 = this.a($$2) * got.this.c;
+         int $$4 = this.b($$2) * got.this.d;
+         got.this.a($$0, $$1, $$3, $$4, got.this.f);
+      }
+
+      public gov a() {
+         return got.this.new d(this, this.d ? got.this.new c() : null);
+      }
+
+      public void a(int $$0, int $$1) {
+         this.a($$0, $$1, this.b.get(0).a);
+      }
+
+      public IntStream b() {
+         return this.b.stream().mapToInt($$0 -> $$0.a).distinct();
+      }
    }
 
-   public CompletableFuture<got.a> a(auo $$0, ale $$1, int $$2, Executor $$3) {
-      return this.a($$0, $$1, $$2, $$3, a);
+   static class b {
+      final int a;
+      final int b;
+
+      b(int $$0, int $$1) {
+         this.a = $$0;
+         this.b = $$1;
+      }
    }
 
-   public CompletableFuture<got.a> a(auo $$0, ale $$1, int $$2, Executor $$3, Collection<atn<?>> $$4) {
-      gpb $$5 = gpb.create($$4);
-      return CompletableFuture.<List<Function<gpb, gos>>>supplyAsync(() -> gpd.a($$0, $$1).a($$0), $$3)
-         .thenCompose($$2x -> a($$5, $$2x, $$3))
-         .thenApply($$2x -> this.a($$2x, $$2, $$3));
+   final class c implements AutoCloseable {
+      private final eyz[] b = new eyz[got.this.f.length];
+
+      c() {
+         for (int $$0 = 0; $$0 < this.b.length; $$0++) {
+            int $$1 = got.this.c >> $$0;
+            int $$2 = got.this.d >> $$0;
+            this.b[$$0] = new eyz($$1, $$2, false);
+         }
+      }
+
+      void a(int $$0, int $$1, got.d $$2) {
+         got.a $$3 = $$2.c;
+         List<got.b> $$4 = $$3.b;
+         got.b $$5 = $$4.get($$2.a);
+         double $$6 = 1.0 - (double)$$2.b / (double)$$5.b;
+         int $$7 = $$5.a;
+         int $$8 = $$4.get(($$2.a + 1) % $$4.size()).a;
+         if ($$7 != $$8) {
+            for (int $$9 = 0; $$9 < this.b.length; $$9++) {
+               int $$10 = got.this.c >> $$9;
+               int $$11 = got.this.d >> $$9;
+
+               for (int $$12 = 0; $$12 < $$11; $$12++) {
+                  for (int $$13 = 0; $$13 < $$10; $$13++) {
+                     int $$14 = this.a($$3, $$7, $$9, $$13, $$12);
+                     int $$15 = this.a($$3, $$8, $$9, $$13, $$12);
+                     int $$16 = this.a($$6, $$14 >> 16 & 0xFF, $$15 >> 16 & 0xFF);
+                     int $$17 = this.a($$6, $$14 >> 8 & 0xFF, $$15 >> 8 & 0xFF);
+                     int $$18 = this.a($$6, $$14 & 0xFF, $$15 & 0xFF);
+                     this.b[$$9].a($$13, $$12, $$14 & 0xFF000000 | $$16 << 16 | $$17 << 8 | $$18);
+                  }
+               }
+            }
+
+            got.this.a($$0, $$1, 0, 0, this.b);
+         }
+      }
+
+      private int a(got.a $$0, int $$1, int $$2, int $$3, int $$4) {
+         return got.this.f[$$2].a($$3 + ($$0.a($$1) * got.this.c >> $$2), $$4 + ($$0.b($$1) * got.this.d >> $$2));
+      }
+
+      private int a(double $$0, int $$1, int $$2) {
+         return (int)($$0 * (double)$$1 + (1.0 - $$0) * (double)$$2);
+      }
+
+      @Override
+      public void close() {
+         for (eyz $$0 : this.b) {
+            $$0.close();
+         }
+      }
    }
 
-   private Map<ale, goy> a(gov<gos> $$0, int $$1, int $$2) {
-      Map<ale, goy> $$3 = new HashMap<>();
-      $$0.a(($$3x, $$4, $$5) -> $$3.put($$3x.c(), new goy(this.c, $$3x, $$1, $$2, $$4, $$5)));
-      return $$3;
-   }
+   class d implements gov {
+      int a;
+      int b;
+      final got.a c;
+      @Nullable
+      private final got.c d;
 
-   public static record a(int a, int b, int c, goy d, Map<ale, goy> e, CompletableFuture<Void> f) {
-      public CompletableFuture<got.a> a() {
-         return this.f.thenApply($$0 -> this);
+      d(final got.a $$0, @Nullable final got.c $$1) {
+         this.c = $$0;
+         this.d = $$1;
       }
 
-      public int b() {
-         return this.a;
+      @Override
+      public void a(int $$0, int $$1) {
+         this.b++;
+         got.b $$2 = this.c.b.get(this.a);
+         if (this.b >= $$2.b) {
+            int $$3 = $$2.a;
+            this.a = (this.a + 1) % this.c.b.size();
+            this.b = 0;
+            int $$4 = this.c.b.get(this.a).a;
+            if ($$3 != $$4) {
+               this.c.a($$0, $$1, $$4);
+            }
+         } else if (this.d != null) {
+            if (!RenderSystem.isOnRenderThread()) {
+               RenderSystem.recordRenderCall(() -> this.d.a($$0, $$1, this));
+            } else {
+               this.d.a($$0, $$1, this);
+            }
+         }
       }
 
-      public int c() {
-         return this.b;
-      }
-
-      public int d() {
-         return this.c;
-      }
-
-      public goy e() {
-         return this.d;
-      }
-
-      public Map<ale, goy> f() {
-         return this.e;
-      }
-
-      public CompletableFuture<Void> g() {
-         return this.f;
+      @Override
+      public void close() {
+         if (this.d != null) {
+            this.d.close();
+         }
       }
    }
 }

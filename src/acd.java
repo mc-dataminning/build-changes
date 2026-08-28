@@ -1,12 +1,20 @@
-public class acd {
-   public static final zx<acc> a = a("cookie_request");
-   public static final zx<acf> b = b("cookie_response");
+public record acd(alf b) implements zw<acc> {
+   public static final zn<wm, acd> a = zw.a(acd::a, acd::new);
 
-   private static <T extends zv<acb>> zx<T> a(String $$0) {
-      return new zx<>(zw.b, new ale($$0));
+   private acd(wm $$0) {
+      this($$0.q());
    }
 
-   private static <T extends zv<ace>> zx<T> b(String $$0) {
-      return new zx<>(zw.a, new ale($$0));
+   private void a(wm $$0) {
+      $$0.a(this.b);
+   }
+
+   @Override
+   public zy<acd> a() {
+      return ace.a;
+   }
+
+   public void a(acc $$0) {
+      $$0.a(this);
    }
 }

@@ -2,37 +2,36 @@ import java.io.DataInput;
 import java.io.DataOutput;
 import java.io.IOException;
 
-public class uu extends vh {
-   private static final int c = 12;
-   public static final uu a = new uu(0.0F);
-   public static final vq<uu> b = new vq.a<uu>() {
-      public uu a(DataInput $$0, va $$1) throws IOException {
-         return uu.a(d($$0, $$1));
+public class uu implements vp {
+   private static final int c = 8;
+   public static final vr<uu> a = new vr<uu>() {
+      public uu a(DataInput $$0, vb $$1) {
+         $$1.b(8L);
+         return uu.b;
       }
 
       @Override
-      public vl.b a(DataInput $$0, vl $$1, va $$2) throws IOException {
-         return $$1.a(d($$0, $$2));
-      }
-
-      private static float d(DataInput $$0, va $$1) throws IOException {
-         $$1.b(12L);
-         return $$0.readFloat();
+      public vm.b a(DataInput $$0, vm $$1, vb $$2) {
+         $$2.b(8L);
+         return $$1.a();
       }
 
       @Override
-      public int c() {
-         return 4;
+      public void a(DataInput $$0, int $$1, vb $$2) {
+      }
+
+      @Override
+      public void b(DataInput $$0, vb $$1) {
       }
 
       @Override
       public String a() {
-         return "FLOAT";
+         return "END";
       }
 
       @Override
       public String b() {
-         return "TAG_Float";
+         return "TAG_End";
       }
 
       @Override
@@ -40,34 +39,33 @@ public class uu extends vh {
          return true;
       }
    };
-   private final float w;
+   public static final uu b = new uu();
 
-   private uu(float $$0) {
-      this.w = $$0;
-   }
-
-   public static uu a(float $$0) {
-      return $$0 == 0.0F ? a : new uu($$0);
+   private uu() {
    }
 
    @Override
    public void a(DataOutput $$0) throws IOException {
-      $$0.writeFloat(this.w);
    }
 
    @Override
    public int a() {
-      return 12;
+      return 8;
    }
 
    @Override
    public byte b() {
-      return 5;
+      return 0;
    }
 
    @Override
-   public vq<uu> c() {
-      return b;
+   public vr<uu> c() {
+      return a;
+   }
+
+   @Override
+   public String toString() {
+      return this.s_();
    }
 
    public uu e() {
@@ -75,57 +73,12 @@ public class uu extends vh {
    }
 
    @Override
-   public boolean equals(Object $$0) {
-      return this == $$0 ? true : $$0 instanceof uu && this.w == ((uu)$$0).w;
-   }
-
-   @Override
-   public int hashCode() {
-      return Float.floatToIntBits(this.w);
-   }
-
-   @Override
-   public void a(vs $$0) {
+   public void a(vt $$0) {
       $$0.a(this);
    }
 
    @Override
-   public long f() {
-      return (long)this.w;
-   }
-
-   @Override
-   public int g() {
-      return ayy.d(this.w);
-   }
-
-   @Override
-   public short h() {
-      return (short)(ayy.d(this.w) & 65535);
-   }
-
-   @Override
-   public byte i() {
-      return (byte)(ayy.d(this.w) & 0xFF);
-   }
-
-   @Override
-   public double j() {
-      return (double)this.w;
-   }
-
-   @Override
-   public float k() {
-      return this.w;
-   }
-
-   @Override
-   public Number l() {
-      return this.w;
-   }
-
-   @Override
-   public vl.b a(vl $$0) {
-      return $$0.a(this.w);
+   public vm.b a(vm $$0) {
+      return $$0.a();
    }
 }

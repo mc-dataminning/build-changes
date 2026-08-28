@@ -5,7 +5,7 @@ import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
 import java.util.Optional;
 
-public record bj(List<dz<bro>> b, Optional<bu> c, Optional<bu> d) {
+public record bj(List<dz<brp>> b, Optional<bu> c, Optional<bu> d) {
    public static final Codec<bj> a = RecordCodecBuilder.create(
       $$0 -> $$0.group(
                dz.a(lq.s).listOf().optionalFieldOf("tags", List.of()).forGetter(bj::a),
@@ -15,12 +15,12 @@ public record bj(List<dz<bro>> b, Optional<bu> c, Optional<bu> d) {
             .apply($$0, bj::new)
    );
 
-   public boolean a(arf $$0, brm $$1) {
+   public boolean a(arg $$0, brn $$1) {
       return this.a($$0.z(), $$0.dn(), $$1);
    }
 
-   public boolean a(are $$0, evq $$1, brm $$2) {
-      for (dz<bro> $$3 : this.b) {
+   public boolean a(arf $$0, evr $$1, brn $$2) {
+      for (dz<brp> $$3 : this.b) {
          if (!$$3.a($$2.k())) {
             return false;
          }
@@ -29,7 +29,7 @@ public record bj(List<dz<bro>> b, Optional<bu> c, Optional<bu> d) {
       return this.c.isPresent() && !this.c.get().a($$0, $$1, $$2.c()) ? false : !this.d.isPresent() || this.d.get().a($$0, $$1, $$2.d());
    }
 
-   public List<dz<bro>> a() {
+   public List<dz<brp>> a() {
       return this.b;
    }
 
@@ -42,7 +42,7 @@ public record bj(List<dz<bro>> b, Optional<bu> c, Optional<bu> d) {
    }
 
    public static class a {
-      private final Builder<dz<bro>> a = ImmutableList.builder();
+      private final Builder<dz<brp>> a = ImmutableList.builder();
       private Optional<bu> b = Optional.empty();
       private Optional<bu> c = Optional.empty();
 
@@ -50,7 +50,7 @@ public record bj(List<dz<bro>> b, Optional<bu> c, Optional<bu> d) {
          return new bj.a();
       }
 
-      public bj.a a(dz<bro> $$0) {
+      public bj.a a(dz<brp> $$0) {
          this.a.add($$0);
          return this;
       }

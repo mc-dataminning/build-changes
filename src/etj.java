@@ -1,57 +1,60 @@
-import com.mojang.logging.LogUtils;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableList.Builder;
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import org.slf4j.Logger;
+import java.util.List;
+import java.util.function.Function;
+import java.util.function.Predicate;
 
-public record etj(ald<etr> b) implements etr {
-   private static final Logger c = LogUtils.getLogger();
-   public static final MapCodec<etj> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(ald.a(lq.aW).fieldOf("name").forGetter(etj::c)).apply($$0, etj::new));
+public abstract class etj implements ets {
+   protected final List<ets> c;
+   private final Predicate<eqi> a;
 
-   @Override
-   public ets b() {
-      return ett.r;
+   protected etj(List<ets> $$0, Predicate<eqi> $$1) {
+      this.c = $$0;
+      this.a = $$1;
+   }
+
+   protected static <T extends etj> MapCodec<T> a(Function<List<ets>, T> $$0) {
+      return RecordCodecBuilder.mapCodec($$1 -> $$1.group(etu.a.listOf().fieldOf("terms").forGetter($$0xx -> $$0xx.c)).apply($$1, $$0));
+   }
+
+   protected static <T extends etj> Codec<T> b(Function<List<ets>, T> $$0) {
+      return etu.a.listOf().xmap($$0, $$0x -> $$0x.c);
+   }
+
+   public final boolean a(eqi $$0) {
+      return this.a.test($$0);
    }
 
    @Override
-   public void a(eqn $$0) {
-      if ($$0.a(this.b)) {
-         $$0.b("Condition " + this.b.a() + " is recursively called");
-      } else {
-         etr.super.a($$0);
-         $$0.a()
-            .a(lq.aW, this.b)
-            .ifPresentOrElse($$1 -> $$1.a().a($$0.a(".{" + this.b.a() + "}", this.b)), () -> $$0.b("Unknown condition table called " + this.b.a()));
+   public void a(eqo $$0) {
+      ets.super.a($$0);
+
+      for (int $$1 = 0; $$1 < this.c.size(); $$1++) {
+         this.c.get($$1).a($$0.a(".term[" + $$1 + "]"));
       }
    }
 
-   public boolean a(eqh $$0) {
-      etr $$1 = $$0.a().a(lq.aW, this.b).map(ji.c::a).orElse(null);
-      if ($$1 == null) {
-         c.warn("Tried using unknown condition table called {}", this.b.a());
-         return false;
-      } else {
-         eqh.c<?> $$2 = eqh.a($$1);
-         if ($$0.b($$2)) {
-            boolean var4;
-            try {
-               var4 = $$1.test($$0);
-            } finally {
-               $$0.c($$2);
-            }
+   public abstract static class a implements ets.a {
+      private final Builder<ets> a = ImmutableList.builder();
 
-            return var4;
-         } else {
-            c.warn("Detected infinite loop in loot tables");
-            return false;
+      protected a(ets.a... $$0) {
+         for (ets.a $$1 : $$0) {
+            this.a.add($$1.build());
          }
       }
-   }
 
-   public static etr.a a(ald<etr> $$0) {
-      return () -> new etj($$0);
-   }
+      public void a(ets.a $$0) {
+         this.a.add($$0.build());
+      }
 
-   public ald<etr> c() {
-      return this.b;
+      @Override
+      public ets build() {
+         return this.a(this.a.build());
+      }
+
+      protected abstract ets a(List<ets> var1);
    }
 }

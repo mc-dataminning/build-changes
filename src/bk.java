@@ -8,11 +8,11 @@ public class bk extends dr<bk.a> {
       return bk.a.a;
    }
 
-   public void a(arf $$0, iz $$1) {
-      are $$2 = $$0.z();
-      dsb $$3 = $$2.a_($$1);
-      eqk $$4 = new eqk.a($$2).a(etd.f, $$1.b()).a(etd.a, $$0).a(etd.g, $$3).a(etc.p);
-      eqh $$5 = new eqh.a($$4).a(Optional.empty());
+   public void a(arg $$0, iz $$1) {
+      arf $$2 = $$0.z();
+      dsc $$3 = $$2.a_($$1);
+      eql $$4 = new eql.a($$2).a(ete.f, $$1.b()).a(ete.a, $$0).a(ete.g, $$3).a(etd.p);
+      eqi $$5 = new eqi.a($$4).a(Optional.empty());
       this.a($$0, $$1x -> $$1x.a($$5));
    }
 
@@ -21,14 +21,14 @@ public class bk extends dr<bk.a> {
          $$0 -> $$0.group(bu.b.optionalFieldOf("player").forGetter(bk.a::a), bf.a.optionalFieldOf("location").forGetter(bk.a::b)).apply($$0, bk.a::new)
       );
 
-      public boolean a(eqh $$0) {
+      public boolean a(eqi $$0) {
          return this.c.isEmpty() || this.c.get().a($$0);
       }
 
       @Override
       public void a(bg $$0) {
          dr.a.super.a($$0);
-         this.c.ifPresent($$1 -> $$0.a($$1, etc.p, ".location"));
+         this.c.ifPresent($$1 -> $$0.a($$1, etd.p, ".location"));
       }
 
       @Override

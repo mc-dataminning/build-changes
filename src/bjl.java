@@ -1,26 +1,21 @@
-import com.mojang.datafixers.DSL;
 import com.mojang.datafixers.schemas.Schema;
 import com.mojang.datafixers.types.templates.TypeTemplate;
 import java.util.Map;
 import java.util.function.Supplier;
 
-public class bjl extends bih {
+public class bjl extends bii {
    public bjl(int $$0, Schema $$1) {
       super($$0, $$1);
    }
 
+   protected static void a(Schema $$0, Map<String, Supplier<TypeTemplate>> $$1, String $$2) {
+      $$0.register($$1, $$2, () -> bij.a($$0));
+   }
+
    public Map<String, Supplier<TypeTemplate>> registerEntities(Schema $$0) {
       Map<String, Supplier<TypeTemplate>> $$1 = super.registerEntities($$0);
-      $$0.register(
-         $$1,
-         "minecraft:wandering_trader",
-         $$1x -> DSL.optionalFields("Inventory", DSL.list(bgw.t.in($$0)), "Offers", DSL.optionalFields("Recipes", DSL.list(bgw.x.in($$0))), bii.a($$0))
-      );
-      $$0.register(
-         $$1,
-         "minecraft:trader_llama",
-         $$1x -> DSL.optionalFields("Items", DSL.list(bgw.t.in($$0)), "SaddleItem", bgw.t.in($$0), "DecorItem", bgw.t.in($$0), bii.a($$0))
-      );
+      $$1.remove("minecraft:illager_beast");
+      a($$0, $$1, "minecraft:ravager");
       return $$1;
    }
 }

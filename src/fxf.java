@@ -1,17 +1,83 @@
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.Lists;
+import java.util.EnumSet;
+import java.util.List;
+import java.util.Set;
+
 public class fxf {
-   private final fxh a;
-   private final fxg b;
+   private static final Set<je> a = EnumSet.allOf(je.class);
+   private final List<fxd> b = Lists.newArrayList();
+   private int c;
+   private int d;
+   private boolean e;
 
-   private fxf(fxh $$0, fxg $$1) {
-      this.a = $$0;
-      this.b = $$1;
+   public fxf a(int $$0, int $$1) {
+      this.c = $$0;
+      this.d = $$1;
+      return this;
    }
 
-   public fwz a() {
-      return this.a.a().a(this.b.a, this.b.b);
+   public fxf a() {
+      return this.a(true);
    }
 
-   public static fxf a(fxh $$0, int $$1, int $$2) {
-      return new fxf($$0, new fxg($$1, $$2));
+   public fxf a(boolean $$0) {
+      this.e = $$0;
+      return this;
+   }
+
+   public fxf a(String $$0, float $$1, float $$2, float $$3, int $$4, int $$5, int $$6, fxe $$7, int $$8, int $$9) {
+      this.a($$8, $$9);
+      this.b.add(new fxd($$0, (float)this.c, (float)this.d, $$1, $$2, $$3, (float)$$4, (float)$$5, (float)$$6, $$7, this.e, 1.0F, 1.0F, a));
+      return this;
+   }
+
+   public fxf a(String $$0, float $$1, float $$2, float $$3, int $$4, int $$5, int $$6, int $$7, int $$8) {
+      this.a($$7, $$8);
+      this.b.add(new fxd($$0, (float)this.c, (float)this.d, $$1, $$2, $$3, (float)$$4, (float)$$5, (float)$$6, fxe.a, this.e, 1.0F, 1.0F, a));
+      return this;
+   }
+
+   public fxf a(float $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
+      this.b.add(new fxd(null, (float)this.c, (float)this.d, $$0, $$1, $$2, $$3, $$4, $$5, fxe.a, this.e, 1.0F, 1.0F, a));
+      return this;
+   }
+
+   public fxf a(float $$0, float $$1, float $$2, float $$3, float $$4, float $$5, Set<je> $$6) {
+      this.b.add(new fxd(null, (float)this.c, (float)this.d, $$0, $$1, $$2, $$3, $$4, $$5, fxe.a, this.e, 1.0F, 1.0F, $$6));
+      return this;
+   }
+
+   public fxf a(String $$0, float $$1, float $$2, float $$3, float $$4, float $$5, float $$6) {
+      this.b.add(new fxd($$0, (float)this.c, (float)this.d, $$1, $$2, $$3, $$4, $$5, $$6, fxe.a, this.e, 1.0F, 1.0F, a));
+      return this;
+   }
+
+   public fxf a(String $$0, float $$1, float $$2, float $$3, float $$4, float $$5, float $$6, fxe $$7) {
+      this.b.add(new fxd($$0, (float)this.c, (float)this.d, $$1, $$2, $$3, $$4, $$5, $$6, $$7, this.e, 1.0F, 1.0F, a));
+      return this;
+   }
+
+   public fxf a(float $$0, float $$1, float $$2, float $$3, float $$4, float $$5, boolean $$6) {
+      this.b.add(new fxd(null, (float)this.c, (float)this.d, $$0, $$1, $$2, $$3, $$4, $$5, fxe.a, $$6, 1.0F, 1.0F, a));
+      return this;
+   }
+
+   public fxf a(float $$0, float $$1, float $$2, float $$3, float $$4, float $$5, fxe $$6, float $$7, float $$8) {
+      this.b.add(new fxd(null, (float)this.c, (float)this.d, $$0, $$1, $$2, $$3, $$4, $$5, $$6, this.e, $$7, $$8, a));
+      return this;
+   }
+
+   public fxf a(float $$0, float $$1, float $$2, float $$3, float $$4, float $$5, fxe $$6) {
+      this.b.add(new fxd(null, (float)this.c, (float)this.d, $$0, $$1, $$2, $$3, $$4, $$5, $$6, this.e, 1.0F, 1.0F, a));
+      return this;
+   }
+
+   public List<fxd> b() {
+      return ImmutableList.copyOf(this.b);
+   }
+
+   public static fxf c() {
+      return new fxf();
    }
 }

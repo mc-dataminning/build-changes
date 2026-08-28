@@ -1,60 +1,20 @@
-import javax.annotation.Nullable;
-
-public class cvl extends csm {
-   public cvl(dey $$0, cuj.a $$1) {
-      super($$0, $$1);
+public class cvl extends cuk {
+   public cvl(cuk.a $$0) {
+      super($$0);
    }
 
-   @Nullable
    @Override
-   public cxz b(cxz $$0) {
-      iz $$1 = $$0.a();
-      dbx $$2 = $$0.q();
-      dsb $$3 = $$2.a_($$1);
-      dey $$4 = this.d();
-      if (!$$3.a($$4)) {
-         return dln.a($$2, $$1) == 7 ? null : $$0;
-      } else {
-         je $$5;
-         if ($$0.h()) {
-            $$5 = $$0.m() ? $$0.k().g() : $$0.k();
-         } else {
-            $$5 = $$0.k() == je.b ? $$0.g() : je.b;
+   public bqu a(cup $$0, cmx $$1, btp $$2, bqt $$3) {
+      if ($$2 instanceof buf $$4 && $$2.bD() && !$$4.i() && $$4.f()) {
+         if (!$$1.dP().B) {
+            $$4.a(awb.g);
+            $$2.dP().a($$2, dwv.v, $$2.dn());
+            $$0.h(1);
          }
 
-         int $$7 = 0;
-         iz.a $$8 = $$1.j().c($$5);
-
-         while ($$7 < 7) {
-            if (!$$2.B && !$$2.k($$8)) {
-               cmw $$9 = $$0.o();
-               int $$10 = $$2.am();
-               if ($$9 instanceof arf && $$8.v() >= $$10) {
-                  ((arf)$$9).b(xo.a("build.tooHigh", $$10 - 1).a(n.m), true);
-               }
-               break;
-            }
-
-            $$3 = $$2.a_($$8);
-            if (!$$3.a(this.d())) {
-               if ($$3.a($$0)) {
-                  return cxz.a($$0, $$8, $$5);
-               }
-               break;
-            }
-
-            $$8.c($$5);
-            if ($$5.o().d()) {
-               $$7++;
-            }
-         }
-
-         return null;
+         return bqu.a($$1.dP().B);
       }
-   }
 
-   @Override
-   protected boolean c() {
-      return false;
+      return bqu.e;
    }
 }

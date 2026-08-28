@@ -1,190 +1,173 @@
-public class cpz extends cpt {
-   public static final int k = 0;
-   public static final int l = 1;
-   public static final int m = 2;
-   private static final int o = 3;
-   private static final int p = 30;
-   private static final int q = 30;
-   private static final int r = 39;
-   private final cqe s;
-   long t;
-   public final bqm n = new brc(2) {
-      @Override
-      public void e() {
-         cpz.this.a(this);
-         super.e();
-      }
-   };
-   private final crj u = new crj() {
-      @Override
-      public void e() {
-         cpz.this.a(this);
-         super.e();
-      }
-   };
+import java.util.Optional;
 
-   public cpz(int $$0, cmv $$1) {
-      this($$0, $$1, cqe.a);
+public class cpz extends cpu {
+   private static final int k = 0;
+   private static final int l = 2;
+   private static final int m = 3;
+   private static final int n = 4;
+   private static final int o = 5;
+   private static final int p = 2;
+   private static final int q = 5;
+   private static final int r = 32;
+   private static final int s = 32;
+   private static final int t = 41;
+   private final bqn u;
+   private final cqe v;
+   private final crp w;
+
+   public cpz(int $$0, cmw $$1) {
+      this($$0, $$1, new brd(5), new cro(2));
    }
 
-   public cpz(int $$0, cmv $$1, final cqe $$2) {
-      super(cra.x, $$0);
-      this.s = $$2;
-      this.a(new cro(this.n, 0, 15, 15) {
-         @Override
-         public boolean a(cuo $$0) {
-            return $$0.a(cur.rU);
-         }
-      });
-      this.a(new cro(this.n, 1, 15, 52) {
-         @Override
-         public boolean a(cuo $$0) {
-            return $$0.a(cur.qO) || $$0.a(cur.uj) || $$0.a(cur.fT);
-         }
-      });
-      this.a(new cro(this.u, 2, 145, 39) {
-         @Override
-         public boolean a(cuo $$0) {
-            return false;
-         }
+   public cpz(int $$0, cmw $$1, bqn $$2, cqe $$3) {
+      super(crb.l, $$0);
+      a($$2, 5);
+      a($$3, 2);
+      this.u = $$2;
+      this.v = $$3;
+      cwp $$4 = $$1.l.dP().K();
+      this.a(new cpz.c($$2, 0, 56, 51));
+      this.a(new cpz.c($$2, 1, 79, 58));
+      this.a(new cpz.c($$2, 2, 102, 51));
+      this.w = this.a(new cpz.b($$4, $$2, 3, 79, 17));
+      this.a(new cpz.a($$2, 4, 17, 17));
+      this.a($$3);
 
-         @Override
-         public void a(cmw $$0, cuo $$1) {
-            cpz.this.i.get(0).a(1);
-            cpz.this.i.get(1).a(1);
-            $$1.g().b($$1, $$0.dP(), $$0);
-            $$2.a(($$0x, $$1x) -> {
-               long $$2xx = $$0x.Z();
-               if (cpz.this.t != $$2xx) {
-                  $$0x.a(null, $$1x, avz.Ar, awa.e, 1.0F, 1.0F);
-                  cpz.this.t = $$2xx;
-               }
-            });
-            super.a($$0, $$1);
-         }
-      });
-
-      for (int $$3 = 0; $$3 < 3; $$3++) {
-         for (int $$4 = 0; $$4 < 9; $$4++) {
-            this.a(new cro($$1, $$4 + $$3 * 9 + 9, 8 + $$4 * 18, 84 + $$3 * 18));
+      for (int $$5 = 0; $$5 < 3; $$5++) {
+         for (int $$6 = 0; $$6 < 9; $$6++) {
+            this.a(new crp($$1, $$6 + $$5 * 9 + 9, 8 + $$6 * 18, 84 + $$5 * 18));
          }
       }
 
-      for (int $$5 = 0; $$5 < 9; $$5++) {
-         this.a(new cro($$1, $$5, 8 + $$5 * 18, 142));
+      for (int $$7 = 0; $$7 < 9; $$7++) {
+         this.a(new crp($$1, $$7, 8 + $$7 * 18, 142));
       }
    }
 
    @Override
-   public boolean a(cmw $$0) {
-      return a(this.s, $$0, dfa.nX);
+   public boolean a(cmx $$0) {
+      return this.u.a($$0);
    }
 
    @Override
-   public void a(bqm $$0) {
-      cuo $$1 = this.n.a(0);
-      cuo $$2 = this.n.a(1);
-      cuo $$3 = this.u.a(2);
-      if ($$3.e() || !$$1.e() && !$$2.e()) {
-         if (!$$1.e() && !$$2.e()) {
-            this.a($$1, $$2, $$3);
-         }
-      } else {
-         this.u.b(2);
-      }
-   }
-
-   private void a(cuo $$0, cuo $$1, cuo $$2) {
-      this.s.a(($$3, $$4) -> {
-         epj $$5 = cuw.b($$0, $$3);
-         if ($$5 != null) {
-            cuo $$6;
-            if ($$1.a(cur.qO) && !$$5.h && $$5.f < 4) {
-               $$6 = $$0.c(1);
-               $$6.b(km.D, cxp.b);
-               this.d();
-            } else if ($$1.a(cur.fT) && !$$5.h) {
-               $$6 = $$0.c(1);
-               $$6.b(km.D, cxp.a);
-               this.d();
-            } else {
-               if (!$$1.a(cur.uj)) {
-                  this.u.b(2);
-                  this.d();
-                  return;
-               }
-
-               $$6 = $$0.c(2);
-               this.d();
-            }
-
-            if (!cuo.a($$6, $$2)) {
-               this.u.a(2, $$6);
-               this.d();
-            }
-         }
-      });
-   }
-
-   @Override
-   public boolean a(cuo $$0, cro $$1) {
-      return $$1.c != this.u && super.a($$0, $$1);
-   }
-
-   @Override
-   public cuo a(cmw $$0, int $$1) {
-      cuo $$2 = cuo.l;
-      cro $$3 = this.i.get($$1);
+   public cup a(cmx $$0, int $$1) {
+      cup $$2 = cup.l;
+      crp $$3 = this.i.get($$1);
       if ($$3 != null && $$3.h()) {
-         cuo $$4 = $$3.g();
+         cup $$4 = $$3.g();
          $$2 = $$4.s();
-         if ($$1 == 2) {
-            $$4.g().b($$4, $$0.dP(), $$0);
-            if (!this.a($$4, 3, 39, true)) {
-               return cuo.l;
+         if (($$1 < 0 || $$1 > 2) && $$1 != 3 && $$1 != 4) {
+            if (cpz.a.b($$2)) {
+               if (this.a($$4, 4, 5, false) || this.w.a($$4) && !this.a($$4, 3, 4, false)) {
+                  return cup.l;
+               }
+            } else if (this.w.a($$4)) {
+               if (!this.a($$4, 3, 4, false)) {
+                  return cup.l;
+               }
+            } else if (cpz.c.b($$2)) {
+               if (!this.a($$4, 0, 3, false)) {
+                  return cup.l;
+               }
+            } else if ($$1 >= 5 && $$1 < 32) {
+               if (!this.a($$4, 32, 41, false)) {
+                  return cup.l;
+               }
+            } else if ($$1 >= 32 && $$1 < 41) {
+               if (!this.a($$4, 5, 32, false)) {
+                  return cup.l;
+               }
+            } else if (!this.a($$4, 5, 41, false)) {
+               return cup.l;
+            }
+         } else {
+            if (!this.a($$4, 5, 41, true)) {
+               return cup.l;
             }
 
             $$3.b($$4, $$2);
-         } else if ($$1 != 1 && $$1 != 0) {
-            if ($$4.a(cur.rU)) {
-               if (!this.a($$4, 0, 1, false)) {
-                  return cuo.l;
-               }
-            } else if (!$$4.a(cur.qO) && !$$4.a(cur.uj) && !$$4.a(cur.fT)) {
-               if ($$1 >= 3 && $$1 < 30) {
-                  if (!this.a($$4, 30, 39, false)) {
-                     return cuo.l;
-                  }
-               } else if ($$1 >= 30 && $$1 < 39 && !this.a($$4, 3, 30, false)) {
-                  return cuo.l;
-               }
-            } else if (!this.a($$4, 1, 2, false)) {
-               return cuo.l;
-            }
-         } else if (!this.a($$4, 3, 39, false)) {
-            return cuo.l;
          }
 
          if ($$4.e()) {
-            $$3.e(cuo.l);
+            $$3.e(cup.l);
+         } else {
+            $$3.b();
          }
 
-         $$3.b();
          if ($$4.I() == $$2.I()) {
-            return cuo.l;
+            return cup.l;
          }
 
          $$3.a($$0, $$4);
-         this.d();
       }
 
       return $$2;
    }
 
-   @Override
-   public void b(cmw $$0) {
-      super.b($$0);
-      this.u.b(2);
-      this.s.a(($$1, $$2) -> this.a($$0, this.n));
+   public int l() {
+      return this.v.a(1);
+   }
+
+   public int m() {
+      return this.v.a(0);
+   }
+
+   static class a extends crp {
+      public a(bqn $$0, int $$1, int $$2, int $$3) {
+         super($$0, $$1, $$2, $$3);
+      }
+
+      @Override
+      public boolean a(cup $$0) {
+         return b($$0);
+      }
+
+      public static boolean b(cup $$0) {
+         return $$0.a(cus.so);
+      }
+   }
+
+   static class b extends crp {
+      private final cwp a;
+
+      public b(cwp $$0, bqn $$1, int $$2, int $$3, int $$4) {
+         super($$1, $$2, $$3, $$4);
+         this.a = $$0;
+      }
+
+      @Override
+      public boolean a(cup $$0) {
+         return this.a.a($$0);
+      }
+   }
+
+   static class c extends crp {
+      public c(bqn $$0, int $$1, int $$2, int $$3) {
+         super($$0, $$1, $$2, $$3);
+      }
+
+      @Override
+      public boolean a(cup $$0) {
+         return b($$0);
+      }
+
+      @Override
+      public int a() {
+         return 1;
+      }
+
+      @Override
+      public void a(cmx $$0, cup $$1) {
+         Optional<ji<cwo>> $$2 = $$1.a(km.G, cwq.a).e();
+         if ($$2.isPresent() && $$0 instanceof arg $$3) {
+            am.l.a($$3, $$2.get());
+         }
+
+         super.a($$0, $$1);
+      }
+
+      public static boolean b(cup $$0) {
+         return $$0.a(cus.sk) || $$0.a(cus.vo) || $$0.a(cus.vr) || $$0.a(cus.sl);
+      }
    }
 }

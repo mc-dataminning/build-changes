@@ -1,33 +1,48 @@
-public class ctr extends cuj implements cvg {
-   public ctr(cuj.a $$0) {
-      super($$0);
+import javax.annotation.Nullable;
+
+public interface ctr {
+   btb m();
+
+   default ji<avz> n() {
+      return awa.as;
    }
 
-   @Override
-   public bqu<cuo> a(dbx $$0, cmw $$1, bqs $$2) {
-      cuo $$3 = $$1.b($$2);
-      $$0.a(null, $$1.du(), $$1.dw(), $$1.dA(), avz.iG, awa.g, 0.5F, 0.4F / ($$0.E_().i() * 0.4F + 0.8F));
-      if (!$$0.B) {
-         cnz $$4 = new cnz($$0, $$1);
-         $$4.a($$3);
-         $$4.a($$1, $$1.dH(), $$1.dF(), -20.0F, 0.7F, 1.0F);
-         $$0.b($$4);
+   default bqv<cup> a(cuk $$0, dby $$1, cmx $$2, bqt $$3) {
+      cup $$4 = $$2.b($$3);
+      btb $$5 = btr.h($$4);
+      if (!$$2.d($$5)) {
+         return bqv.c($$4);
+      } else {
+         cup $$6 = $$2.a($$5);
+         if ((!dab.f($$6) || $$2.f()) && !cup.a($$4, $$6)) {
+            if (!$$1.x_()) {
+               $$2.b(awk.c.b($$0));
+            }
+
+            cup $$7 = $$6.e() ? $$4 : $$6.f();
+            cup $$8 = $$2.f() ? $$4.s() : $$4.f();
+            $$2.a($$5, $$8);
+            return bqv.a($$7, $$1.x_());
+         } else {
+            return bqv.d($$4);
+         }
       }
-
-      $$1.b(awj.c.b(this));
-      $$3.a(1, $$1);
-      return bqu.a($$3, $$0.x_());
    }
 
-   @Override
-   public cno a(dbx $$0, js $$1, cuo $$2, je $$3) {
-      cnz $$4 = new cnz($$0, $$1.a(), $$1.b(), $$1.c());
-      $$4.a($$2);
-      return $$4;
-   }
+   @Nullable
+   static ctr c_(cup $$0) {
+      cuk $$3 = $$0.g();
+      if ($$3 instanceof ctr) {
+         return (ctr)$$3;
+      } else {
+         if ($$0.g() instanceof csn $$2) {
+            dez var6 = $$2.d();
+            if (var6 instanceof ctr) {
+               return (ctr)var6;
+            }
+         }
 
-   @Override
-   public cvg.a c() {
-      return cvg.a.a().a(cvg.a.a.c() * 0.5F).b(cvg.a.a.d() * 1.25F).a();
+         return null;
+      }
    }
 }

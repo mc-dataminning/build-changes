@@ -1,72 +1,35 @@
 import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.arguments.IntegerArgumentType;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import com.mojang.brigadier.builder.RequiredArgumentBuilder;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import java.util.Collection;
+import com.mojang.brigadier.context.CommandContext;
 
 public class ann {
-   public static final int a = 100;
-
-   public static void a(CommandDispatcher<ep> $$0, el $$1) {
-      $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)eq.a("give").requires($$0x -> $$0x.c(2)))
-            .then(
-               eq.a("targets", fc.d())
-                  .then(
-                     ((RequiredArgumentBuilder)eq.a("item", gy.a($$1)).executes($$0x -> a((ep)$$0x.getSource(), gy.a($$0x, "item"), fc.f($$0x, "targets"), 1)))
-                        .then(
-                           eq.a("count", IntegerArgumentType.integer(1))
-                              .executes(
-                                 $$0x -> a((ep)$$0x.getSource(), gy.a($$0x, "item"), fc.f($$0x, "targets"), IntegerArgumentType.getInteger($$0x, "count"))
-                              )
-                        )
-                  )
-            )
-      );
-   }
-
-   private static int a(ep $$0, gz $$1, Collection<arf> $$2, int $$3) throws CommandSyntaxException {
-      cuo $$4 = $$1.a(1, false);
-      int $$5 = $$4.j();
-      int $$6 = $$5 * 100;
-      if ($$3 > $$6) {
-         $$0.b(xo.a("commands.give.failed.toomanyitems", $$6, $$4.G()));
-         return 0;
-      } else {
-         for (arf $$7 : $$2) {
-            int $$8 = $$3;
-
-            while ($$8 > 0) {
-               int $$9 = Math.min($$5, $$8);
-               $$8 -= $$9;
-               cuo $$10 = $$1.a($$9, false);
-               boolean $$11 = $$7.gc().f($$10);
-               if ($$11 && $$10.e()) {
-                  cjg $$13 = $$7.a($$4, false);
-                  if ($$13 != null) {
-                     $$13.B();
-                  }
-
-                  $$7.dP().a(null, $$7.du(), $$7.dw(), $$7.dA(), avz.nC, awa.h, 0.2F, (($$7.el().i() - $$7.el().i()) * 0.7F + 1.0F) * 2.0F);
-                  $$7.cb.d();
-               } else {
-                  cjg $$12 = $$7.a($$10, false);
-                  if ($$12 != null) {
-                     $$12.w();
-                     $$12.b($$7.cz());
-                  }
-               }
+   public static void a(CommandDispatcher<ep> $$0) {
+      final LiteralArgumentBuilder<ep> $$1 = (LiteralArgumentBuilder<ep>)eq.a("gamerule").requires($$0x -> $$0x.c(2));
+      dbu.a(
+         new dbu.c() {
+            @Override
+            public <T extends dbu.g<T>> void a(dbu.e<T> $$0, dbu.f<T> $$1x) {
+               $$1.then(
+                  ((LiteralArgumentBuilder)eq.a($$0.a()).executes($$1xxx -> ann.a((ep)$$1xxx.getSource(), $$0)))
+                     .then($$1.a("value").executes($$1xxx -> ann.a($$1xxx, $$0)))
+               );
             }
          }
+      );
+      $$0.register($$1);
+   }
 
-         if ($$2.size() == 1) {
-            $$0.a(() -> xo.a("commands.give.success.single", $$3, $$4.G(), $$2.iterator().next().O_()), true);
-         } else {
-            $$0.a(() -> xo.a("commands.give.success.single", $$3, $$4.G(), $$2.size()), true);
-         }
+   static <T extends dbu.g<T>> int a(CommandContext<ep> $$0, dbu.e<T> $$1) {
+      ep $$2 = (ep)$$0.getSource();
+      T $$3 = $$2.l().aM().a($$1);
+      $$3.b($$0, "value");
+      $$2.a(() -> xp.a("commands.gamerule.set", $$1.a(), $$3.toString()), true);
+      return $$3.c();
+   }
 
-         return $$2.size();
-      }
+   static <T extends dbu.g<T>> int a(ep $$0, dbu.e<T> $$1) {
+      T $$2 = $$0.l().aM().a($$1);
+      $$0.a(() -> xp.a("commands.gamerule.query", $$1.a(), $$2.toString()), false);
+      return $$2.c();
    }
 }

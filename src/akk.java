@@ -1,20 +1,23 @@
-public interface akk<T> {
-   zm<? super wz, T> codec();
-
-   default akj<T> a(int $$0) {
-      return new akj<>($$0, this);
-   }
-
-   T copy(T var1);
-
-   static <T> akk<T> a(zm<? super wz, T> $$0) {
-      return () -> $$0;
-   }
-
-   public interface a<T> extends akk<T> {
-      @Override
-      default T copy(T $$0) {
-         return $$0;
+public record akk<T>(int a, akl<T> b) {
+   @Override
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else if ($$0 != null && this.getClass() == $$0.getClass()) {
+         akk<?> $$1 = (akk<?>)$$0;
+         return this.a == $$1.a;
+      } else {
+         return false;
       }
+   }
+
+   @Override
+   public int hashCode() {
+      return this.a;
+   }
+
+   @Override
+   public String toString() {
+      return "<entity data: " + this.a + ">";
    }
 }

@@ -1,33 +1,37 @@
 import com.google.common.collect.ImmutableList;
-import java.util.Comparator;
+import java.util.Iterator;
 import java.util.List;
 import java.util.function.Function;
-import java.util.function.ToIntFunction;
 import java.util.stream.Stream;
 
-public class gss<T> implements gsw<T> {
-   protected final Comparator<T> a;
-   protected final gsx<T> b;
+public class gss<T> extends gst<T> {
+   private final List<T> c;
+   private final Function<T, Stream<String>> d;
+   private gsw<T> e = gsw.a();
 
-   public gss(Function<T, Stream<ale>> $$0, List<T> $$1) {
-      ToIntFunction<T> $$2 = ac.g($$1);
-      this.a = Comparator.comparingInt($$2);
-      this.b = gsx.a($$1, $$0);
+   public gss(Function<T, Stream<String>> $$0, Function<T, Stream<alf>> $$1, List<T> $$2) {
+      super($$1, $$2);
+      this.c = $$2;
+      this.d = $$0;
    }
 
    @Override
-   public List<T> search(String $$0) {
-      int $$1 = $$0.indexOf(58);
-      return $$1 == -1 ? this.a($$0) : this.a($$0.substring(0, $$1).trim(), $$0.substring($$1 + 1).trim());
+   public void a() {
+      super.a();
+      this.e = gsw.a(this.c, this.d);
    }
 
+   @Override
    protected List<T> a(String $$0) {
-      return this.b.b($$0);
+      return this.e.search($$0);
    }
 
+   @Override
    protected List<T> a(String $$0, String $$1) {
       List<T> $$2 = this.b.a($$0);
       List<T> $$3 = this.b.b($$1);
-      return ImmutableList.copyOf(new gst<T>($$2.iterator(), $$3.iterator(), this.a));
+      List<T> $$4 = this.e.search($$1);
+      Iterator<T> $$5 = new gsv<T>($$3.iterator(), $$4.iterator(), this.a);
+      return ImmutableList.copyOf(new gsu<T>($$2.iterator(), $$5, this.a));
    }
 }

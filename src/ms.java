@@ -10,40 +10,40 @@ import java.util.stream.Collectors;
 
 public abstract class ms implements mu {
    protected static final bu.a a = bu.a.a().a(bs.a.a().a(true));
-   private static final Set<bsz<?>> b = ImmutableSet.of(bsz.by, bsz.d, bsz.af, bsz.aS, bsz.bj);
-   private final cpk c;
-   private final cpk d;
-   private final Map<bsz<?>, Map<ald<eqm>, eqm.a>> e = Maps.newHashMap();
+   private static final Set<bta<?>> b = ImmutableSet.of(bta.by, bta.d, bta.af, bta.aS, bta.bj);
+   private final cpl c;
+   private final cpl d;
+   private final Map<bta<?>, Map<ale<eqn>, eqn.a>> e = Maps.newHashMap();
 
-   protected ms(cpk $$0) {
+   protected ms(cpl $$0) {
       this($$0, $$0);
    }
 
-   protected ms(cpk $$0, cpk $$1) {
+   protected ms(cpl $$0, cpl $$1) {
       this.c = $$0;
       this.d = $$1;
    }
 
-   protected static eqm.a a(dbw $$0) {
-      return eqm.b().a(eql.a().a(euk.a(1.0F)).a(equ.a($$0))).a(eql.a().a(euk.a(1.0F)).a(era.a(bsz.aJ.k())));
+   protected static eqn.a a(dbx $$0) {
+      return eqn.b().a(eqm.a().a(eul.a(1.0F)).a(eqv.a($$0))).a(eqm.a().a(eul.a(1.0F)).a(erb.a(bta.aJ.k())));
    }
 
    public abstract void a();
 
    @Override
-   public void generate(jk.a $$0, BiConsumer<ald<eqm>, eqm.a> $$1) {
+   public void generate(jk.a $$0, BiConsumer<ale<eqn>, eqn.a> $$1) {
       this.a();
-      Set<ald<eqm>> $$2 = new HashSet<>();
+      Set<ale<eqn>> $$2 = new HashSet<>();
       lp.g
          .h()
          .forEach(
             $$2x -> {
-               bsz<?> $$3 = (bsz<?>)$$2x.a();
+               bta<?> $$3 = (bta<?>)$$2x.a();
                if ($$3.a(this.c)) {
                   if (a($$3)) {
-                     Map<ald<eqm>, eqm.a> $$4 = this.e.remove($$3);
-                     ald<eqm> $$5 = $$3.k();
-                     if ($$5 != eqd.a && $$3.a(this.d) && ($$4 == null || !$$4.containsKey($$5))) {
+                     Map<ale<eqn>, eqn.a> $$4 = this.e.remove($$3);
+                     ale<eqn> $$5 = $$3.k();
+                     if ($$5 != eqe.a && $$3.a(this.d) && ($$4 == null || !$$4.containsKey($$5))) {
                         throw new IllegalStateException(String.format(Locale.ROOT, "Missing loottable '%s' for '%s'", $$5, $$2x.h().a()));
                      }
 
@@ -57,7 +57,7 @@ public abstract class ms implements mu {
                         });
                      }
                   } else {
-                     Map<ald<eqm>, eqm.a> $$6 = this.e.remove($$3);
+                     Map<ale<eqn>, eqn.a> $$6 = this.e.remove($$3);
                      if ($$6 != null) {
                         throw new IllegalStateException(
                            String.format(
@@ -77,23 +77,23 @@ public abstract class ms implements mu {
       }
    }
 
-   private static boolean a(bsz<?> $$0) {
-      return b.contains($$0) || $$0.f() != btr.h;
+   private static boolean a(bta<?> $$0) {
+      return b.contains($$0) || $$0.f() != bts.h;
    }
 
-   protected etr.a b() {
-      return etl.a(bj.a.a().b(bu.a.a().a(bsz.R)));
+   protected ets.a b() {
+      return etm.a(bj.a.a().b(bu.a.a().a(bta.R)));
    }
 
-   protected etr.a a(ald<cfp> $$0) {
-      return etl.a(bj.a.a().b(bu.a.a().a(bsz.R).a(bw.b(lp.al.g($$0)))));
+   protected ets.a a(ale<cfq> $$0) {
+      return etm.a(bj.a.a().b(bu.a.a().a(bta.R).a(bw.b(lp.al.g($$0)))));
    }
 
-   protected void a(bsz<?> $$0, eqm.a $$1) {
+   protected void a(bta<?> $$0, eqn.a $$1) {
       this.a($$0, $$0.k(), $$1);
    }
 
-   protected void a(bsz<?> $$0, ald<eqm> $$1, eqm.a $$2) {
+   protected void a(bta<?> $$0, ale<eqn> $$1, eqn.a $$2) {
       this.e.computeIfAbsent($$0, $$0x -> new HashMap<>()).put($$1, $$2);
    }
 }

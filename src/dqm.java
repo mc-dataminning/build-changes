@@ -1,97 +1,103 @@
-import com.google.common.annotations.VisibleForTesting;
+import javax.annotation.Nullable;
 
-public class dqm extends dpg implements dww.b<dqm.a> {
-   private final dqm.a a;
+public abstract class dqm extends dpb implements brc {
+   @Nullable
+   protected ale<eqn> l;
+   protected long m = 0L;
 
-   public dqm(iz $$0, dsb $$1) {
-      super(dpi.K, $$0, $$1);
-      this.a = new dqm.a($$1, new dwq($$0));
+   protected dqm(dpj<?> $$0, iz $$1, dsc $$2) {
+      super($$0, $$1, $$2);
    }
 
-   public static void a(dbx $$0, iz $$1, dsb $$2, dqm $$3) {
-      $$3.a.d().a($$0, $$1, $$0.E_(), true);
+   @Nullable
+   @Override
+   public ale<eqn> aw_() {
+      return this.l;
    }
 
    @Override
-   protected void a(ur $$0, jk.a $$1) {
+   public void a(@Nullable ale<eqn> $$0) {
+      this.l = $$0;
+   }
+
+   @Override
+   public long ax_() {
+      return this.m;
+   }
+
+   @Override
+   public void a(long $$0) {
+      this.m = $$0;
+   }
+
+   @Override
+   public boolean c() {
+      this.e_(null);
+      return super.c();
+   }
+
+   @Override
+   public cup a(int $$0) {
+      this.e_(null);
+      return super.a($$0);
+   }
+
+   @Override
+   public cup a(int $$0, int $$1) {
+      this.e_(null);
+      return super.a($$0, $$1);
+   }
+
+   @Override
+   public cup b(int $$0) {
+      this.e_(null);
+      return super.b($$0);
+   }
+
+   @Override
+   public void a(int $$0, cup $$1) {
+      this.e_(null);
       super.a($$0, $$1);
-      this.a.b.a($$0);
    }
 
    @Override
-   protected void b(ur $$0, jk.a $$1) {
-      this.a.b.b($$0);
-      super.b($$0, $$1);
+   public boolean d(cmx $$0) {
+      return super.d($$0) && (this.l == null || !$$0.N_());
    }
 
-   public dqm.a b() {
-      return this.a;
+   @Nullable
+   @Override
+   public cpu createMenu(int $$0, cmw $$1, cmx $$2) {
+      if (this.d($$2)) {
+         this.e_($$1.l);
+         return this.a($$0, $$1);
+      } else {
+         return null;
+      }
    }
 
-   public static class a implements dww {
-      public static final int a = 8;
-      final dlt b;
-      private final dsb c;
-      private final dwy d;
-
-      public a(dsb $$0, dwy $$1) {
-         this.c = $$0;
-         this.d = $$1;
-         this.b = dlt.a();
+   @Override
+   protected void a(dph.b $$0) {
+      super.a($$0);
+      cxs $$1 = $$0.a(km.ae);
+      if ($$1 != null) {
+         this.l = $$1.a();
+         this.m = $$1.b();
       }
+   }
 
-      @Override
-      public dwy a() {
-         return this.d;
+   @Override
+   protected void a(ki.a $$0) {
+      super.a($$0);
+      if (this.l != null) {
+         $$0.a(km.ae, new cxs(this.l, this.m));
       }
+   }
 
-      @Override
-      public int b() {
-         return 8;
-      }
-
-      @Override
-      public dww.a c() {
-         return dww.a.b;
-      }
-
-      @Override
-      public boolean a(are $$0, ji<dwu> $$1, dwu.a $$2, evq $$3) {
-         if ($$1.a(dwu.p) && $$2.a() instanceof bto $$4) {
-            if (!$$4.eI()) {
-               int $$5 = $$4.ej();
-               if ($$4.eh() && $$5 > 0) {
-                  this.b.a(iz.a($$3.a(je.b, 0.5)), $$5);
-                  this.a($$0, $$4);
-               }
-
-               $$4.eH();
-               this.d.a($$0).ifPresent($$1x -> this.a($$0, iz.a($$1x), this.c, $$0.E_()));
-            }
-
-            return true;
-         } else {
-            return false;
-         }
-      }
-
-      @VisibleForTesting
-      public dlt d() {
-         return this.b;
-      }
-
-      private void a(are $$0, iz $$1, dsb $$2, azg $$3) {
-         $$0.a($$1, $$2.a(dlq.b, Boolean.valueOf(true)), 3);
-         $$0.a($$1, $$2.b(), 8);
-         $$0.a(li.I, (double)$$1.u() + 0.5, (double)$$1.v() + 1.15, (double)$$1.w() + 0.5, 2, 0.2, 0.0, 0.2, 0.0);
-         $$0.a(null, $$1, avz.vX, awa.e, 2.0F, 0.6F + $$3.i() * 0.4F);
-      }
-
-      private void a(dbx $$0, bto $$1) {
-         if ($$1.em() instanceof arf $$3) {
-            brm $$4 = $$1.eC() == null ? $$0.aj().a((cmw)$$3) : $$1.eC();
-            am.Z.a($$3, $$1, $$4);
-         }
-      }
+   @Override
+   public void a(us $$0) {
+      super.a($$0);
+      $$0.r("LootTable");
+      $$0.r("LootTableSeed");
    }
 }

@@ -1,8 +1,16 @@
-import javax.annotation.Nullable;
+import java.util.List;
 
-public interface ctf {
-   default void a(@Nullable cmw $$0, dbx $$1, cuo $$2, iz $$3) {
+public class ctf extends cuk {
+   public ctf(cuk.a $$0) {
+      super($$0);
    }
 
-   boolean a(@Nullable cmw var1, dbx var2, iz var3, @Nullable evm var4);
+   @Override
+   public void a(cup $$0, cuk.b $$1, List<xp> $$2, cwi $$3) {
+      $$2.add(this.c().a(n.h));
+   }
+
+   public yd c() {
+      return xp.c(this.a() + ".desc");
+   }
 }

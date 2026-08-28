@@ -1,44 +1,41 @@
-import java.util.Optional;
+public class bvs implements bvj<btp> {
+   private final int a;
+   private final int b;
+   private bvi.a c = bvi.a.a;
+   private long d;
 
-public class bvs implements bwv {
-   private final bst a;
-   private final boolean b;
-
-   public bvs(bst $$0, boolean $$1) {
+   public bvs(int $$0, int $$1) {
       this.a = $$0;
       this.b = $$1;
    }
 
    @Override
-   public evq a() {
-      return this.b ? this.a.dn().b(0.0, (double)this.a.cL(), 0.0) : this.a.dn();
+   public bvi.a a() {
+      return this.c;
    }
 
    @Override
-   public iz b() {
-      return this.a.dp();
+   public final boolean e(arf $$0, btp $$1, long $$2) {
+      this.c = bvi.a.b;
+      int $$3 = this.a + $$0.E_().a(this.b + 1 - this.a);
+      this.d = $$2 + (long)$$3;
+      return true;
    }
 
    @Override
-   public boolean a(bto $$0) {
-      if (this.a instanceof bto $$1) {
-         if (!$$1.bD()) {
-            return false;
-         } else {
-            Optional<ccu> $$3 = $$0.dS().c(ccs.h);
-            return $$3.isPresent() && $$3.get().a($$1);
-         }
-      } else {
-         return true;
+   public final void f(arf $$0, btp $$1, long $$2) {
+      if ($$2 > this.d) {
+         this.g($$0, $$1, $$2);
       }
    }
 
-   public bst c() {
-      return this.a;
+   @Override
+   public final void g(arf $$0, btp $$1, long $$2) {
+      this.c = bvi.a.a;
    }
 
    @Override
-   public String toString() {
-      return "EntityTracker for " + this.a;
+   public String b() {
+      return this.getClass().getSimpleName();
    }
 }

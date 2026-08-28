@@ -1,63 +1,105 @@
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import com.mojang.serialization.Codec;
+import java.util.List;
 
-public class dlm extends dfh implements dfb {
-   public static final MapCodec<dlm> e = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(drq.a.fieldOf("tree").forGetter($$0x -> $$0x.i), u()).apply($$0, dlm::new)
-   );
-   public static final dtb f = dsr.aU;
-   protected static final float g = 6.0F;
-   protected static final ewj h = dey.a(2.0, 0.0, 2.0, 14.0, 12.0, 14.0);
-   protected final drq i;
+public enum dlm implements azu {
+   a("none", h.a),
+   b("clockwise_90", h.u),
+   c("180", h.c),
+   d("counterclockwise_90", h.v);
 
-   @Override
-   public MapCodec<? extends dlm> a() {
-      return e;
+   public static final Codec<dlm> e = azu.a(dlm::values);
+   private final String f;
+   private final h g;
+
+   private dlm(final String $$0, final h $$1) {
+      this.f = $$0;
+      this.g = $$1;
    }
 
-   protected dlm(drq $$0, dsa.d $$1) {
-      super($$1);
-      this.i = $$0;
-      this.k(this.E.b().a(f, Integer.valueOf(0)));
-   }
-
-   @Override
-   protected ewj a(dsb $$0, dbd $$1, iz $$2, evv $$3) {
-      return h;
-   }
-
-   @Override
-   protected void b(dsb $$0, are $$1, iz $$2, azg $$3) {
-      if ($$1.A($$2.c()) >= 9 && $$3.a(7) == 0) {
-         this.a($$1, $$2, $$0, $$3);
+   public dlm a(dlm $$0) {
+      switch ($$0) {
+         case c:
+            switch (this) {
+               case a:
+                  return c;
+               case b:
+                  return d;
+               case c:
+                  return a;
+               case d:
+                  return b;
+            }
+         case d:
+            switch (this) {
+               case a:
+                  return d;
+               case b:
+                  return a;
+               case c:
+                  return b;
+               case d:
+                  return c;
+            }
+         case b:
+            switch (this) {
+               case a:
+                  return b;
+               case b:
+                  return c;
+               case c:
+                  return d;
+               case d:
+                  return a;
+            }
+         default:
+            return this;
       }
    }
 
-   public void a(are $$0, iz $$1, dsb $$2, azg $$3) {
-      if ($$2.c(f) == 0) {
-         $$0.a($$1, $$2.a(f), 4);
+   public h a() {
+      return this.g;
+   }
+
+   public je a(je $$0) {
+      if ($$0.o() == je.a.b) {
+         return $$0;
       } else {
-         this.i.a($$0, $$0.l().g(), $$1, $$2, $$3);
+         switch (this) {
+            case b:
+               return $$0.h();
+            case c:
+               return $$0.g();
+            case d:
+               return $$0.i();
+            default:
+               return $$0;
+         }
       }
    }
 
-   @Override
-   public boolean b(dca $$0, iz $$1, dsb $$2) {
-      return true;
+   public int a(int $$0, int $$1) {
+      switch (this) {
+         case b:
+            return ($$0 + $$1 / 4) % $$1;
+         case c:
+            return ($$0 + $$1 / 2) % $$1;
+         case d:
+            return ($$0 + $$1 * 3 / 4) % $$1;
+         default:
+            return $$0;
+      }
+   }
+
+   public static dlm a(azh $$0) {
+      return ac.a(values(), $$0);
+   }
+
+   public static List<dlm> b(azh $$0) {
+      return ac.b(values(), $$0);
    }
 
    @Override
-   public boolean a(dbx $$0, azg $$1, iz $$2, dsb $$3) {
-      return (double)$$0.z.i() < 0.45;
-   }
-
-   @Override
-   public void a(are $$0, azg $$1, iz $$2, dsb $$3) {
-      this.a($$0, $$2, $$3, $$1);
-   }
-
-   @Override
-   protected void a(dsc.a<dey, dsb> $$0) {
-      $$0.a(f);
+   public String c() {
+      return this.f;
    }
 }

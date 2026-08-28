@@ -1,91 +1,73 @@
 import com.mojang.serialization.MapCodec;
+import javax.annotation.Nullable;
 
-public class dnf extends dey {
-   public static final MapCodec<dnf> a = b(dnf::new);
-   private static final dtb b = dsr.aT;
-   private static final int c = 20;
-   private static final int d = 8;
+public class dnf extends dhh implements djq {
+   public static final MapCodec<dnf> c = b(dnf::new);
+   public static final dta<dsy> d = dhh.b;
+   protected static final float e = 6.0F;
+   protected static final ewk f = dez.a(2.0, 0.0, 2.0, 14.0, 16.0, 14.0);
 
    @Override
    public MapCodec<dnf> a() {
-      return a;
+      return c;
    }
 
-   public dnf(dsa.d $$0) {
+   public dnf(dsb.d $$0) {
       super($$0);
-      this.k(this.E.b().a(b, Integer.valueOf(0)));
    }
 
    @Override
-   protected void a(dbx $$0, dsb $$1, evm $$2, cno $$3) {
-      int $$4 = a((dby)$$0, $$1, $$2, (bst)$$3);
-      if ($$3.s() instanceof arf $$6) {
-         $$6.a(awj.aE);
-         am.M.a($$6, $$3, $$2.e(), $$4);
-      }
-   }
-
-   private static int a(dby $$0, dsb $$1, evm $$2, bst $$3) {
-      int $$4 = a($$2, $$2.e());
-      int $$5 = $$3 instanceof cnc ? 20 : 8;
-      if (!$$0.P().a($$2.a(), $$1.b())) {
-         a($$0, $$1, $$4, $$2.a(), $$5);
-      }
-
-      return $$4;
-   }
-
-   private static int a(evm $$0, evq $$1) {
-      je $$2 = $$0.b();
-      double $$3 = Math.abs(ayy.e($$1.c) - 0.5);
-      double $$4 = Math.abs(ayy.e($$1.d) - 0.5);
-      double $$5 = Math.abs(ayy.e($$1.e) - 0.5);
-      je.a $$6 = $$2.o();
-      double $$7;
-      if ($$6 == je.a.b) {
-         $$7 = Math.max($$3, $$5);
-      } else if ($$6 == je.a.c) {
-         $$7 = Math.max($$3, $$4);
-      } else {
-         $$7 = Math.max($$4, $$5);
-      }
-
-      return Math.max(1, ayy.c(15.0 * ayy.a((0.5 - $$7) / 0.5, 0.0, 1.0)));
-   }
-
-   private static void a(dby $$0, dsb $$1, int $$2, iz $$3, int $$4) {
-      $$0.a($$3, $$1.a(b, Integer.valueOf($$2)), 3);
-      $$0.a($$3, $$1.b(), $$4);
+   protected ewk a(dsc $$0, dbe $$1, iz $$2, evw $$3) {
+      return f;
    }
 
    @Override
-   protected void a(dsb $$0, are $$1, iz $$2, azg $$3) {
-      if ($$0.c(b) != 0) {
-         $$1.a($$2, $$0.a(b, Integer.valueOf(0)), 3);
-      }
+   protected boolean b(dsc $$0, dbe $$1, iz $$2) {
+      return $$0.d($$1, $$2, je.b) && !$$0.a(dfb.kJ);
    }
 
    @Override
-   protected int a(dsb $$0, dbd $$1, iz $$2, je $$3) {
-      return $$0.c(b);
+   public cup a(dcb $$0, iz $$1, dsc $$2) {
+      return new cup(dfb.bw);
    }
 
+   @Nullable
    @Override
-   protected boolean e_(dsb $$0) {
-      return true;
-   }
-
-   @Override
-   protected void a(dsc.a<dey, dsb> $$0) {
-      $$0.a(b);
-   }
-
-   @Override
-   protected void b(dsb $$0, dbx $$1, iz $$2, dsb $$3, boolean $$4) {
-      if (!$$1.x_() && !$$0.a($$3.b())) {
-         if ($$0.c(b) > 0 && !$$1.P().a($$2, this)) {
-            $$1.a($$2, $$0.a(b, Integer.valueOf(0)), 18);
+   public dsc a(cya $$0) {
+      dsc $$1 = super.a($$0);
+      if ($$1 != null) {
+         env $$2 = $$0.q().b_($$0.a().c());
+         if ($$2.a(awv.a) && $$2.e() == 8) {
+            return $$1;
          }
       }
+
+      return null;
+   }
+
+   @Override
+   protected boolean a(dsc $$0, dcb $$1, iz $$2) {
+      if ($$0.c(d) == dsy.a) {
+         dsc $$3 = $$1.a_($$2.d());
+         return $$3.a(this) && $$3.c(d) == dsy.b;
+      } else {
+         env $$4 = $$1.b_($$2);
+         return super.a($$0, $$1, $$2) && $$4.a(awv.a) && $$4.e() == 8;
+      }
+   }
+
+   @Override
+   protected env b_(dsc $$0) {
+      return enw.c.a(false);
+   }
+
+   @Override
+   public boolean a(@Nullable cmx $$0, dbe $$1, iz $$2, dsc $$3, enu $$4) {
+      return false;
+   }
+
+   @Override
+   public boolean a(dbz $$0, iz $$1, dsc $$2, env $$3) {
+      return false;
    }
 }

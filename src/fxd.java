@@ -1,24 +1,61 @@
-public class fxd {
-   public static final fxd a = new fxd(0.0F);
-   final float b;
-   final float c;
-   final float d;
+import java.util.Set;
+import javax.annotation.Nullable;
+import org.joml.Vector3f;
 
-   public fxd(float $$0, float $$1, float $$2) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
+public final class fxd {
+   @Nullable
+   private final String a;
+   private final Vector3f b;
+   private final Vector3f c;
+   private final fxe d;
+   private final boolean e;
+   private final fxk f;
+   private final fxk g;
+   private final Set<je> h;
+
+   protected fxd(
+      @Nullable String $$0,
+      float $$1,
+      float $$2,
+      float $$3,
+      float $$4,
+      float $$5,
+      float $$6,
+      float $$7,
+      float $$8,
+      fxe $$9,
+      boolean $$10,
+      float $$11,
+      float $$12,
+      Set<je> $$13
+   ) {
+      this.a = $$0;
+      this.f = new fxk($$1, $$2);
+      this.b = new Vector3f($$3, $$4, $$5);
+      this.c = new Vector3f($$6, $$7, $$8);
+      this.d = $$9;
+      this.e = $$10;
+      this.g = new fxk($$11, $$12);
+      this.h = $$13;
    }
 
-   public fxd(float $$0) {
-      this($$0, $$0, $$0);
-   }
-
-   public fxd a(float $$0) {
-      return new fxd(this.b + $$0, this.c + $$0, this.d + $$0);
-   }
-
-   public fxd a(float $$0, float $$1, float $$2) {
-      return new fxd(this.b + $$0, this.c + $$1, this.d + $$2);
+   public fxa.a a(int $$0, int $$1) {
+      return new fxa.a(
+         (int)this.f.a(),
+         (int)this.f.b(),
+         this.b.x(),
+         this.b.y(),
+         this.b.z(),
+         this.c.x(),
+         this.c.y(),
+         this.c.z(),
+         this.d.b,
+         this.d.c,
+         this.d.d,
+         this.e,
+         (float)$$0 * this.g.a(),
+         (float)$$1 * this.g.b(),
+         this.h
+      );
    }
 }

@@ -1,25 +1,19 @@
-public class cdg extends cds {
-   public static final float a = 8.0F;
+import com.google.common.collect.ImmutableSet;
+import java.util.Optional;
+import java.util.Set;
 
+public class cdg extends cdz<bso> {
    @Override
-   protected boolean a(bto $$0, bto $$1) {
-      return this.f($$0, $$1) && $$1.bh() && (this.b($$1) || this.e($$0, $$1)) && cdy.c($$0, $$1);
+   public Set<cct<?>> a() {
+      return ImmutableSet.of(cct.K, cct.h);
    }
 
-   private boolean e(bto $$0, bto $$1) {
-      return !$$0.dS().a(ccs.U) && $$1.ak().a(aws.j);
+   protected void a(arf $$0, bso $$1) {
+      $$1.dS().c(cct.h).ifPresent($$1x -> this.a($$1, $$1x));
    }
 
-   private boolean b(bto $$0) {
-      return $$0.ak().a(aws.i);
-   }
-
-   private boolean f(bto $$0, bto $$1) {
-      return $$1.g((bst)$$0) <= 64.0;
-   }
-
-   @Override
-   protected ccs<bto> b() {
-      return ccs.B;
+   private void a(bso $$0, ccv $$1) {
+      Optional<bso> $$2 = $$1.a($$1x -> $$1x.ak() == $$0.ak() && !$$1x.p_()).map(bso.class::cast);
+      $$0.dS().a(cct.K, $$2);
    }
 }

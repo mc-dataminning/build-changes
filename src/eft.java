@@ -1,66 +1,60 @@
 import com.mojang.serialization.Codec;
-import it.unimi.dsi.fastutil.objects.ObjectArrayList;
-import java.util.Comparator;
-import java.util.Set;
-import java.util.function.BiConsumer;
+import com.mojang.serialization.MapCodec;
 
-public abstract class eft {
-   public static final Codec<eft> h = lp.Z.q().dispatch(eft::a, efu::a);
+public class eft extends efu {
+   public static final MapCodec<eft> a = Codec.floatRange(0.0F, 1.0F).fieldOf("probability").xmap(eft::new, $$0 -> $$0.b);
+   private final float b;
 
-   protected abstract efu<?> a();
+   @Override
+   protected efv<?> a() {
+      return efv.b;
+   }
 
-   public abstract void a(eft.a var1);
+   public eft(float $$0) {
+      this.b = $$0;
+   }
 
-   public static final class a {
-      private final dcd a;
-      private final BiConsumer<iz, dsb> b;
-      private final azg c;
-      private final ObjectArrayList<iz> d;
-      private final ObjectArrayList<iz> e;
-      private final ObjectArrayList<iz> f;
+   @Override
+   public void a(efu.a $$0) {
+      azh $$1 = $$0.b();
+      $$0.d().forEach($$2 -> {
+         if ($$1.i() < this.b) {
+            iz $$3 = $$2.g();
+            if ($$0.a($$3)) {
+               a($$3, dnv.d, $$0);
+            }
+         }
 
-      public a(dcd $$0, BiConsumer<iz, dsb> $$1, azg $$2, Set<iz> $$3, Set<iz> $$4, Set<iz> $$5) {
-         this.a = $$0;
-         this.b = $$1;
-         this.c = $$2;
-         this.f = new ObjectArrayList($$5);
-         this.d = new ObjectArrayList($$3);
-         this.e = new ObjectArrayList($$4);
-         this.d.sort(Comparator.comparingInt(kd::v));
-         this.e.sort(Comparator.comparingInt(kd::v));
-         this.f.sort(Comparator.comparingInt(kd::v));
-      }
+         if ($$1.i() < this.b) {
+            iz $$4 = $$2.h();
+            if ($$0.a($$4)) {
+               a($$4, dnv.f, $$0);
+            }
+         }
 
-      public void a(iz $$0, dss $$1) {
-         this.a($$0, dfa.ff.o().a($$1, Boolean.valueOf(true)));
-      }
+         if ($$1.i() < this.b) {
+            iz $$5 = $$2.e();
+            if ($$0.a($$5)) {
+               a($$5, dnv.e, $$0);
+            }
+         }
 
-      public void a(iz $$0, dsb $$1) {
-         this.b.accept($$0, $$1);
-      }
+         if ($$1.i() < this.b) {
+            iz $$6 = $$2.f();
+            if ($$0.a($$6)) {
+               a($$6, dnv.c, $$0);
+            }
+         }
+      });
+   }
 
-      public boolean a(iz $$0) {
-         return this.a.a($$0, dsa.a::i);
-      }
+   private static void a(iz $$0, dst $$1, efu.a $$2) {
+      $$2.a($$0, $$1);
+      int $$3 = 4;
 
-      public dcd a() {
-         return this.a;
-      }
-
-      public azg b() {
-         return this.c;
-      }
-
-      public ObjectArrayList<iz> c() {
-         return this.d;
-      }
-
-      public ObjectArrayList<iz> d() {
-         return this.e;
-      }
-
-      public ObjectArrayList<iz> e() {
-         return this.f;
+      for (iz var4 = $$0.d(); $$2.a(var4) && $$3 > 0; $$3--) {
+         $$2.a(var4, $$1);
+         var4 = var4.d();
       }
    }
 }

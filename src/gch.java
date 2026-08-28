@@ -1,21 +1,24 @@
-public class gch extends gcb {
-   private float a;
+public class gch extends gcc {
+   private final gbx a;
 
-   gch(fxu $$0, double $$1, double $$2, double $$3) {
-      super($$0, $$1, $$2, $$3);
-      this.t = (int)(Math.random() * 60.0) + 30;
-      this.n = false;
-      this.j = 0.0;
-      this.k = -0.05;
-      this.l = 0.0;
-      this.b(0.02F, 0.02F);
-      this.D = this.D * (this.r.i() * 0.6F + 0.2F);
-      this.u = 0.002F;
+   gch(fxv $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, gbx $$7) {
+      super($$0, $$1, $$2, $$3, 0.0, 0.0, 0.0);
+      this.a = $$7;
+      this.j *= 0.3F;
+      this.k = Math.random() * 0.2F + 0.1F;
+      this.l *= 0.3F;
+      this.b(0.01F, 0.01F);
+      this.t = (int)(8.0 / (Math.random() * 0.8 + 0.2));
+      this.b($$7);
+      this.u = 0.0F;
+      this.j = $$4;
+      this.k = $$5;
+      this.l = $$6;
    }
 
    @Override
-   public gbf b() {
-      return gbf.b;
+   public gbg b() {
+      return gbg.b;
    }
 
    @Override
@@ -23,34 +26,30 @@ public class gch extends gcb {
       this.d = this.g;
       this.e = this.h;
       this.f = this.i;
-      if (this.s++ >= this.t) {
+      int $$0 = 60 - this.t;
+      if (this.t-- <= 0) {
          this.k();
       } else {
-         float $$0 = 0.6F;
-         this.j = this.j + (double)(0.6F * ayy.b(this.a));
-         this.l = this.l + (double)(0.6F * ayy.a(this.a));
-         this.j *= 0.07;
-         this.l *= 0.07;
+         this.k = this.k - (double)this.u;
          this.a(this.j, this.k, this.l);
-         if (!this.c.b_(iz.a(this.g, this.h, this.i)).a(awu.a) || this.m) {
-            this.k();
-         }
-
-         this.a += 0.08F;
+         this.j *= 0.98F;
+         this.k *= 0.98F;
+         this.l *= 0.98F;
+         float $$1 = (float)$$0 * 0.001F;
+         this.b($$1, $$1);
+         this.a(this.a.a($$0 % 4, 4));
       }
    }
 
-   public static class a implements gbe<lm> {
-      private final gbw a;
+   public static class a implements gbf<lm> {
+      private final gbx a;
 
-      public a(gbw $$0) {
+      public a(gbx $$0) {
          this.a = $$0;
       }
 
-      public gbb a(lm $$0, fxu $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         gch $$8 = new gch($$1, $$2, $$3, $$4);
-         $$8.a(this.a);
-         return $$8;
+      public gbc a(lm $$0, fxv $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new gch($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
       }
    }
 }

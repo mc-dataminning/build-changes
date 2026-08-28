@@ -1,29 +1,86 @@
-import java.util.List;
-import org.apache.commons.lang3.Validate;
+import com.google.common.collect.ImmutableMap.Builder;
+import java.util.Map;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
-public class csj extends cvz {
-   public csj(dey $$0, dey $$1, cuj.a $$2) {
-      super($$0, $$1, $$2, je.a);
-      Validate.isInstanceOf(ddp.class, $$0);
-      Validate.isInstanceOf(ddp.class, $$1);
+public class csj extends cte {
+   protected static final Map<dez, dez> a = new Builder()
+      .put(dfb.ao, dfb.aw)
+      .put(dfb.U, dfb.al)
+      .put(dfb.au, dfb.aC)
+      .put(dfb.aa, dfb.ak)
+      .put(dfb.as, dfb.aA)
+      .put(dfb.Y, dfb.ai)
+      .put(dfb.at, dfb.aB)
+      .put(dfb.Z, dfb.aj)
+      .put(dfb.aq, dfb.ay)
+      .put(dfb.W, dfb.ag)
+      .put(dfb.ar, dfb.az)
+      .put(dfb.X, dfb.ah)
+      .put(dfb.ap, dfb.ax)
+      .put(dfb.V, dfb.af)
+      .put(dfb.oj, dfb.ok)
+      .put(dfb.ol, dfb.om)
+      .put(dfb.os, dfb.ot)
+      .put(dfb.ou, dfb.ov)
+      .put(dfb.av, dfb.aD)
+      .put(dfb.ab, dfb.am)
+      .put(dfb.ae, dfb.an)
+      .build();
+
+   public csj(cwe $$0, cuk.a $$1) {
+      super($$0, awp.bA, $$1);
    }
 
-   public static void a(cuo $$0, List<xo> $$1) {
-      dox $$2 = $$0.a(km.X);
-      if ($$2 != null) {
-         for (int $$3 = 0; $$3 < Math.min($$2.b().size(), 6); $$3++) {
-            dox.b $$4 = $$2.b().get($$3);
-            $$1.add($$4.a().a(n.h));
+   @Override
+   public bqu a(cyc $$0) {
+      dby $$1 = $$0.q();
+      iz $$2 = $$0.a();
+      cmx $$3 = $$0.o();
+      Optional<dsc> $$4 = this.a($$1, $$2, $$3, $$1.a_($$2));
+      if ($$4.isEmpty()) {
+         return bqu.e;
+      } else {
+         cup $$5 = $$0.n();
+         if ($$3 instanceof arg) {
+            am.N.a((arg)$$3, $$2, $$5);
+         }
+
+         $$1.a($$2, $$4.get(), 11);
+         $$1.a(dwv.c, $$2, dwv.a.a($$3, $$4.get()));
+         if ($$3 != null) {
+            $$5.a(1, $$3, btp.d($$0.p()));
+         }
+
+         return bqu.a($$1.B);
+      }
+   }
+
+   private Optional<dsc> a(dby $$0, iz $$1, @Nullable cmx $$2, dsc $$3) {
+      Optional<dsc> $$4 = this.a($$3);
+      if ($$4.isPresent()) {
+         $$0.a($$2, $$1, awa.aH, awb.e, 1.0F, 1.0F);
+         return $$4;
+      } else {
+         Optional<dsc> $$5 = doe.b($$3);
+         if ($$5.isPresent()) {
+            $$0.a($$2, $$1, awa.aI, awb.e, 1.0F, 1.0F);
+            $$0.a($$2, 3005, $$1, 0);
+            return $$5;
+         } else {
+            Optional<dsc> $$6 = Optional.ofNullable((dez)cuf.b.get().get($$3.b())).map($$1x -> $$1x.l($$3));
+            if ($$6.isPresent()) {
+               $$0.a($$2, $$1, awa.aJ, awb.e, 1.0F, 1.0F);
+               $$0.a($$2, 3004, $$1, 0);
+               return $$6;
+            } else {
+               return Optional.empty();
+            }
          }
       }
    }
 
-   public cth b() {
-      return ((ddp)this.d()).b();
-   }
-
-   @Override
-   public void a(cuo $$0, cuj.b $$1, List<xo> $$2, cwh $$3) {
-      a($$0, $$2);
+   private Optional<dsc> a(dsc $$0) {
+      return Optional.ofNullable(a.get($$0.b())).map($$1 -> $$1.o().a(dll.i, $$0.c(dll.i)));
    }
 }

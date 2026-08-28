@@ -1,118 +1,55 @@
-public class cpa extends cos {
-   static final akj<String> c = akn.a(cpa.class, akl.e);
-   static final akj<xo> d = akn.a(cpa.class, akl.f);
-   private final day e = new cpa.a();
-   private static final int i = 4;
-   private int j;
-
-   public cpa(bsz<? extends cpa> $$0, dbx $$1) {
+public class cpa extends cou {
+   public cpa(bta<? extends cpa> $$0, dby $$1) {
       super($$0, $$1);
    }
 
-   public cpa(dbx $$0, double $$1, double $$2, double $$3) {
-      super(bsz.v, $$0, $$1, $$2, $$3);
+   public cpa(dby $$0, double $$1, double $$2, double $$3) {
+      super(bta.s, $$1, $$2, $$3, $$0);
    }
 
    @Override
-   protected cuj ag_() {
-      return cur.nM;
+   protected cuk ag_() {
+      return cus.nN;
    }
 
    @Override
-   protected void a(akn.a $$0) {
-      super.a($$0);
-      $$0.a(c, "");
-      $$0.a(d, xn.a);
+   public int b() {
+      return 27;
    }
 
    @Override
-   protected void a(ur $$0) {
-      super.a($$0);
-      this.e.b($$0, this.dR());
-      this.ap().a(c, this.B().m());
-      this.ap().a(d, this.B().l());
+   public cot.a v() {
+      return cot.a.b;
    }
 
    @Override
-   protected void b(ur $$0) {
-      super.b($$0);
-      this.e.a($$0, this.dR());
+   public dsc x() {
+      return dfb.cv.o().a(dgc.c, je.c);
    }
 
    @Override
-   public cos.a v() {
-      return cos.a.g;
+   public int z() {
+      return 8;
    }
 
    @Override
-   public dsb x() {
-      return dfa.fN.o();
-   }
-
-   public day B() {
-      return this.e;
+   public cpu a(int $$0, cmw $$1) {
+      return cqb.a($$0, $$1, this);
    }
 
    @Override
-   public void a(int $$0, int $$1, int $$2, boolean $$3) {
-      if ($$3 && this.ai - this.j >= 4) {
-         this.B().a(this.dP());
-         this.j = this.ai;
-      }
+   public void c(cmx $$0) {
+      this.dP().a(dwv.j, this.dn(), dwv.a.a($$0));
    }
 
    @Override
-   public bqt a(cmw $$0, bqs $$1) {
-      return this.e.a($$0);
-   }
-
-   @Override
-   public void a(akj<?> $$0) {
-      super.a($$0);
-      if (d.equals($$0)) {
-         try {
-            this.e.c(this.ap().a(d));
-         } catch (Throwable var3) {
-         }
-      } else if (c.equals($$0)) {
-         this.e.a(this.ap().a(c));
-      }
-   }
-
-   @Override
-   public boolean cP() {
-      return true;
-   }
-
-   public class a extends day {
-      @Override
-      public are e() {
-         return (are)cpa.this.dP();
+   public bqu a(cmx $$0, bqt $$1) {
+      bqu $$2 = this.c_($$0);
+      if ($$2.a()) {
+         this.a(dwv.k, $$0);
+         clo.a($$0, true);
       }
 
-      @Override
-      public void f() {
-         cpa.this.ap().a(cpa.c, this.m());
-         cpa.this.ap().a(cpa.d, this.l());
-      }
-
-      @Override
-      public evq g() {
-         return cpa.this.dn();
-      }
-
-      public cpa h() {
-         return cpa.this;
-      }
-
-      @Override
-      public ep i() {
-         return new ep(this, cpa.this.dn(), cpa.this.bM(), this.e(), 2, this.n().getString(), cpa.this.O_(), this.e().o(), cpa.this);
-      }
-
-      @Override
-      public boolean j() {
-         return !cpa.this.dK();
-      }
+      return $$2;
    }
 }

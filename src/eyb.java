@@ -1,35 +1,24 @@
-public interface eyb {
-   int a();
+import it.unimi.dsi.fastutil.ints.IntSet;
+import javax.annotation.Nullable;
 
-   int b();
+public interface eyb extends AutoCloseable {
+   float a = 7.0F;
 
-   void a(int var1, int var2);
-
-   boolean c();
-
-   float d();
-
-   default float e() {
-      return this.i();
+   @Override
+   default void close() {
    }
 
-   default float f() {
-      return this.e() + (float)this.a() / this.d();
+   @Nullable
+   default eya a(int $$0) {
+      return null;
    }
 
-   default float g() {
-      return 7.0F - this.j();
-   }
+   IntSet a();
 
-   default float h() {
-      return this.g() + (float)this.b() / this.d();
-   }
-
-   default float i() {
-      return 0.0F;
-   }
-
-   default float j() {
-      return 7.0F;
+   public static record a(eyb a, fju.a b) implements AutoCloseable {
+      @Override
+      public void close() {
+         this.a.close();
+      }
    }
 }

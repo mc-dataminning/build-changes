@@ -1,81 +1,73 @@
-import java.util.EnumMap;
+import com.mojang.serialization.Codec;
 import java.util.List;
+import java.util.Map;
 import java.util.function.Supplier;
+import java.util.function.UnaryOperator;
 
-public class csf {
-   public static final ji<cse> a = a("leather", ac.a(new EnumMap<>(csd.a.class), $$0 -> {
-      $$0.put(csd.a.d, 1);
-      $$0.put(csd.a.c, 2);
-      $$0.put(csd.a.b, 3);
-      $$0.put(csd.a.a, 1);
-      $$0.put(csd.a.e, 3);
-   }), 15, avz.av, 0.0F, 0.0F, () -> cyr.a(cur.qD), List.of(new cse.a(new ale("leather"), "", true), new cse.a(new ale("leather"), "_overlay", false)));
-   public static final ji<cse> b = a("chainmail", ac.a(new EnumMap<>(csd.a.class), $$0 -> {
-      $$0.put(csd.a.d, 1);
-      $$0.put(csd.a.c, 4);
-      $$0.put(csd.a.b, 5);
-      $$0.put(csd.a.a, 2);
-      $$0.put(csd.a.e, 4);
-   }), 12, avz.ap, 0.0F, 0.0F, () -> cyr.a(cur.oE));
-   public static final ji<cse> c = a("iron", ac.a(new EnumMap<>(csd.a.class), $$0 -> {
-      $$0.put(csd.a.d, 2);
-      $$0.put(csd.a.c, 5);
-      $$0.put(csd.a.b, 6);
-      $$0.put(csd.a.a, 2);
-      $$0.put(csd.a.e, 5);
-   }), 9, avz.au, 0.0F, 0.0F, () -> cyr.a(cur.oE));
-   public static final ji<cse> d = a("gold", ac.a(new EnumMap<>(csd.a.class), $$0 -> {
-      $$0.put(csd.a.d, 1);
-      $$0.put(csd.a.c, 3);
-      $$0.put(csd.a.b, 5);
-      $$0.put(csd.a.a, 2);
-      $$0.put(csd.a.e, 7);
-   }), 25, avz.at, 0.0F, 0.0F, () -> cyr.a(cur.oI));
-   public static final ji<cse> e = a("diamond", ac.a(new EnumMap<>(csd.a.class), $$0 -> {
-      $$0.put(csd.a.d, 3);
-      $$0.put(csd.a.c, 6);
-      $$0.put(csd.a.b, 8);
-      $$0.put(csd.a.a, 3);
-      $$0.put(csd.a.e, 11);
-   }), 10, avz.aq, 2.0F, 0.0F, () -> cyr.a(cur.oy));
-   public static final ji<cse> f = a("turtle", ac.a(new EnumMap<>(csd.a.class), $$0 -> {
-      $$0.put(csd.a.d, 2);
-      $$0.put(csd.a.c, 5);
-      $$0.put(csd.a.b, 6);
-      $$0.put(csd.a.a, 2);
-      $$0.put(csd.a.e, 5);
-   }), 9, avz.ax, 0.0F, 0.0F, () -> cyr.a(cur.op));
-   public static final ji<cse> g = a("netherite", ac.a(new EnumMap<>(csd.a.class), $$0 -> {
-      $$0.put(csd.a.d, 3);
-      $$0.put(csd.a.c, 6);
-      $$0.put(csd.a.b, 8);
-      $$0.put(csd.a.a, 3);
-      $$0.put(csd.a.e, 11);
-   }), 15, avz.aw, 3.0F, 0.1F, () -> cyr.a(cur.oJ));
-   public static final ji<cse> h = a("armadillo", ac.a(new EnumMap<>(csd.a.class), $$0 -> {
-      $$0.put(csd.a.d, 3);
-      $$0.put(csd.a.c, 6);
-      $$0.put(csd.a.b, 8);
-      $$0.put(csd.a.a, 3);
-      $$0.put(csd.a.e, 11);
-   }), 10, avz.ay, 0.0F, 0.0F, () -> cyr.a(cur.oq));
+public record csf(Map<cse.a, Integer> b, int c, ji<avz> d, Supplier<cys> e, List<csf.a> f, float g, float h) {
+   public static final Codec<ji<csf>> a = lp.ar.r();
 
-   public static ji<cse> a(jv<cse> $$0) {
-      return a;
+   public int a(cse.a $$0) {
+      return this.b.getOrDefault($$0, 0);
    }
 
-   private static ji<cse> a(String $$0, EnumMap<csd.a, Integer> $$1, int $$2, ji<avy> $$3, float $$4, float $$5, Supplier<cyr> $$6) {
-      List<cse.a> $$7 = List.of(new cse.a(new ale($$0)));
-      return a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
+   public Map<cse.a, Integer> a() {
+      return this.b;
    }
 
-   private static ji<cse> a(String $$0, EnumMap<csd.a, Integer> $$1, int $$2, ji<avy> $$3, float $$4, float $$5, Supplier<cyr> $$6, List<cse.a> $$7) {
-      EnumMap<csd.a, Integer> $$8 = new EnumMap<>(csd.a.class);
+   public int b() {
+      return this.c;
+   }
 
-      for (csd.a $$9 : csd.a.values()) {
-         $$8.put($$9, $$1.get($$9));
+   public ji<avz> c() {
+      return this.d;
+   }
+
+   public Supplier<cys> d() {
+      return this.e;
+   }
+
+   public List<csf.a> e() {
+      return this.f;
+   }
+
+   public float f() {
+      return this.g;
+   }
+
+   public float g() {
+      return this.h;
+   }
+
+   public static final class a {
+      private final alf a;
+      private final String b;
+      private final boolean c;
+      private final alf d;
+      private final alf e;
+
+      public a(alf $$0, String $$1, boolean $$2) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
+         this.d = this.b(true);
+         this.e = this.b(false);
       }
 
-      return jv.b(lp.ar, new ale($$0), new cse($$8, $$2, $$3, $$6, $$7, $$4, $$5));
+      public a(alf $$0) {
+         this($$0, "", false);
+      }
+
+      private alf b(boolean $$0) {
+         return this.a.a((UnaryOperator<String>)($$1 -> "textures/models/armor/" + this.a.a() + "_layer_" + ($$0 ? 2 : 1) + this.b + ".png"));
+      }
+
+      public alf a(boolean $$0) {
+         return $$0 ? this.d : this.e;
+      }
+
+      public boolean a() {
+         return this.c;
+      }
    }
 }

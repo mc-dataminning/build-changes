@@ -1,118 +1,93 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import it.unimi.dsi.fastutil.objects.Reference2ObjectArrayMap;
-import java.util.stream.Stream;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
-public final class enu extends dsd<ent, enu> {
-   public static final Codec<enu> a = a(lp.c.q(), ent::g).stable();
-   public static final int b = 9;
-   public static final int g = 8;
+public abstract class enu {
+   public static final jo<env> c = new jo<>();
+   protected final dsd<enu, env> d;
+   private env a;
+   private final ji.c<enu> b = lp.c.f(this);
 
-   public enu(ent $$0, Reference2ObjectArrayMap<dte<?>, Comparable<?>> $$1, MapCodec<enu> $$2) {
-      super($$0, $$1, $$2);
+   protected enu() {
+      dsd.a<enu, env> $$0 = new dsd.a<>(this);
+      this.a($$0);
+      this.d = $$0.a(enu::g, env::new);
+      this.f(this.d.b());
    }
 
-   public ent a() {
-      return this.e;
+   protected void a(dsd.a<enu, env> $$0) {
    }
 
-   public boolean b() {
-      return this.a().c(this);
+   public dsd<enu, env> f() {
+      return this.d;
    }
 
-   public boolean a(ent $$0) {
-      return this.e == $$0 && this.e.c(this);
+   protected final void f(env $$0) {
+      this.a = $$0;
    }
 
-   public boolean c() {
-      return this.a().b();
+   public final env g() {
+      return this.a;
    }
 
-   public float a(dbd $$0, iz $$1) {
-      return this.a().a(this, $$0, $$1);
+   public abstract cuk a();
+
+   protected void a(dby $$0, iz $$1, env $$2, azh $$3) {
    }
 
-   public float d() {
-      return this.a().a(this);
+   protected void b(dby $$0, iz $$1, env $$2) {
    }
 
-   public int e() {
-      return this.a().d(this);
-   }
-
-   public boolean b(dbd $$0, iz $$1) {
-      for (int $$2 = -1; $$2 <= 1; $$2++) {
-         for (int $$3 = -1; $$3 <= 1; $$3++) {
-            iz $$4 = $$1.b($$2, 0, $$3);
-            enu $$5 = $$0.b_($$4);
-            if (!$$5.a().a(this.a()) && !$$0.a_($$4).i($$0, $$4)) {
-               return true;
-            }
-         }
-      }
-
-      return false;
-   }
-
-   public void a(dbx $$0, iz $$1) {
-      this.a().b($$0, $$1, this);
-   }
-
-   public void a(dbx $$0, iz $$1, azg $$2) {
-      this.a().a($$0, $$1, this, $$2);
-   }
-
-   public boolean f() {
-      return this.a().i();
-   }
-
-   public void b(dbx $$0, iz $$1, azg $$2) {
-      this.a().b($$0, $$1, this, $$2);
-   }
-
-   public evq c(dbd $$0, iz $$1) {
-      return this.a().a($$0, $$1, this);
-   }
-
-   public dsb g() {
-      return this.a().b(this);
+   protected void b(dby $$0, iz $$1, env $$2, azh $$3) {
    }
 
    @Nullable
-   public lg h() {
-      return this.a().h();
+   protected lg h() {
+      return null;
    }
 
-   public boolean a(axe<ent> $$0) {
-      return this.a().k().a($$0);
+   protected abstract boolean a(env var1, dbe var2, iz var3, enu var4, je var5);
+
+   protected abstract evr a(dbe var1, iz var2, env var3);
+
+   public abstract int a(dcb var1);
+
+   protected boolean i() {
+      return false;
    }
 
-   public boolean a(jm<ent> $$0) {
-      return $$0.a(this.a().k());
+   protected boolean b() {
+      return false;
    }
 
-   public boolean b(ent $$0) {
-      return this.a() == $$0;
+   protected abstract float c();
+
+   public abstract float a(env var1, dbe var2, iz var3);
+
+   public abstract float a(env var1);
+
+   protected abstract dsc b(env var1);
+
+   public abstract boolean c(env var1);
+
+   public abstract int d(env var1);
+
+   public boolean a(enu $$0) {
+      return $$0 == this;
    }
 
-   public float i() {
-      return this.a().c();
+   @Deprecated
+   public boolean a(axf<enu> $$0) {
+      return this.b.a($$0);
    }
 
-   public boolean a(dbd $$0, iz $$1, ent $$2, je $$3) {
-      return this.a().a(this, $$0, $$1, $$2, $$3);
+   public abstract ewk b(env var1, dbe var2, iz var3);
+
+   public Optional<avz> j() {
+      return Optional.empty();
    }
 
-   public ewj d(dbd $$0, iz $$1) {
-      return this.a().b(this, $$0, $$1);
-   }
-
-   public ji<ent> j() {
-      return this.e.k();
-   }
-
-   public Stream<axe<ent>> k() {
-      return this.e.k().c();
+   @Deprecated
+   public ji.c<enu> k() {
+      return this.b;
    }
 }

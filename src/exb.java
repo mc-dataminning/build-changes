@@ -1,59 +1,45 @@
-public interface exb extends bqm {
-   cuo f();
-
-   default cuo c(int $$0) {
-      return this.f().a($$0);
-   }
-
-   void b(cuo var1);
-
-   default cuo h() {
-      return this.c(this.ah_());
-   }
-
-   @Override
-   default int b() {
-      return 1;
-   }
-
-   @Override
-   default boolean c() {
-      return this.f().e();
-   }
-
-   @Override
-   default void a() {
-      this.h();
-   }
-
-   @Override
-   default cuo b(int $$0) {
-      return this.a($$0, this.ah_());
-   }
-
-   @Override
-   default cuo a(int $$0) {
-      return $$0 == 0 ? this.f() : cuo.l;
-   }
-
-   @Override
-   default cuo a(int $$0, int $$1) {
-      return $$0 != 0 ? cuo.l : this.c($$1);
-   }
-
-   @Override
-   default void a(int $$0, cuo $$1) {
-      if ($$0 == 0) {
-         this.b($$1);
+public class exb {
+   private static final exl<Object> a = new exl<Object>() {
+      @Override
+      public void a(exi<Object> $$0) {
       }
-   }
-
-   public interface a extends exb {
-      dpg v();
 
       @Override
-      default boolean a(cmw $$0) {
-         return bqm.a(this.v(), $$0);
+      public boolean a(iz $$0, Object $$1) {
+         return false;
       }
+
+      @Override
+      public int a() {
+         return 0;
+      }
+   };
+   private static final exe<Object> b = new exe<Object>() {
+      @Override
+      public void a(exi<Object> $$0) {
+      }
+
+      @Override
+      public boolean a(iz $$0, Object $$1) {
+         return false;
+      }
+
+      @Override
+      public boolean b(iz $$0, Object $$1) {
+         return false;
+      }
+
+      @Override
+      public int a() {
+         return 0;
+      }
+   };
+
+   public static <T> exl<T> a() {
+      return (exl<T>)a;
+   }
+
+   public static <T> exe<T> b() {
+      return (exe<T>)b;
    }
 }

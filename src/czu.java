@@ -1,15 +1,10 @@
-public class czu extends czz {
-   public czu(czz.b $$0) {
+public class czu extends daa {
+   public czu(daa.b $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a() {
-      return true;
-   }
-
-   @Override
-   public boolean b() {
-      return true;
+   public boolean a(daa $$0) {
+      return super.a($$0) && $$0 != dad.I;
    }
 }

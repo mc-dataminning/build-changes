@@ -1,30 +1,24 @@
 import com.mojang.serialization.MapCodec;
 
-public class dom extends din {
-   public static final MapCodec<dom> c = b(dom::new);
-   protected static final ewj g = dey.a(4.0, 9.0, 4.0, 12.0, 16.0, 12.0);
+public class dom extends dez {
+   public static final MapCodec<dom> a = b(dom::new);
 
    @Override
    public MapCodec<dom> a() {
-      return c;
+      return a;
    }
 
-   public dom(dsa.d $$0) {
-      super($$0, je.a, g, false, 0.1);
-   }
-
-   @Override
-   protected int a(azg $$0) {
-      return dke.a($$0);
+   public dom(dsb.d $$0) {
+      super($$0);
    }
 
    @Override
-   protected dey b() {
-      return dfa.oA;
-   }
+   protected void a(dsc $$0, dby $$1, iz $$2, bsu $$3) {
+      evr $$4 = new evr(0.25, 0.05F, 0.25);
+      if ($$3 instanceof btp $$5 && $$5.b(bse.K)) {
+         $$4 = new evr(0.5, 0.25, 0.5);
+      }
 
-   @Override
-   protected boolean g(dsb $$0) {
-      return dke.a($$0);
+      $$3.a($$0, $$4);
    }
 }

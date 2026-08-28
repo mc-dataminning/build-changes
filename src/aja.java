@@ -1,8 +1,8 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+public interface aja extends agx {
+   @Override
+   default wl b() {
+      return wl.a;
+   }
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface aja {
+   void a(aix var1);
 }

@@ -1,20 +1,219 @@
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
+import com.mojang.brigadier.builder.RequiredArgumentBuilder;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
+import com.mojang.brigadier.tree.LiteralCommandNode;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.EnumSet;
+import java.util.Locale;
+import java.util.Set;
+import javax.annotation.Nullable;
 
 public class api {
-   public static void a(CommandDispatcher<ep> $$0, el $$1) {
-      $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)eq.a("tellraw").requires($$0x -> $$0x.c(2)))
-            .then(eq.a("targets", fc.d()).then(eq.a("message", ey.a($$1)).executes($$0x -> {
-               int $$1x = 0;
+   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(xp.c("commands.teleport.invalidPosition"));
 
-               for (arf $$2 : fc.f($$0x, "targets")) {
-                  $$2.b(xr.a((ep)$$0x.getSource(), ey.a($$0x, "message"), $$2, 0), false);
-                  $$1x++;
-               }
-
-               return $$1x;
-            })))
+   public static void a(CommandDispatcher<ep> $$0) {
+      LiteralCommandNode<ep> $$1 = $$0.register(
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)eq.a("teleport").requires($$0x -> $$0x.c(2)))
+                  .then(
+                     eq.a("location", gs.a())
+                        .executes(
+                           $$0x -> a(
+                                 (ep)$$0x.getSource(),
+                                 Collections.singleton(((ep)$$0x.getSource()).g()),
+                                 ((ep)$$0x.getSource()).e(),
+                                 gs.b($$0x, "location"),
+                                 gu.d(),
+                                 null
+                              )
+                        )
+                  ))
+               .then(
+                  eq.a("destination", fc.a())
+                     .executes($$0x -> a((ep)$$0x.getSource(), Collections.singleton(((ep)$$0x.getSource()).g()), fc.a($$0x, "destination")))
+               ))
+            .then(
+               ((RequiredArgumentBuilder)eq.a("targets", fc.b())
+                     .then(
+                        ((RequiredArgumentBuilder)((RequiredArgumentBuilder)eq.a("location", gs.a())
+                                 .executes(
+                                    $$0x -> a((ep)$$0x.getSource(), fc.b($$0x, "targets"), ((ep)$$0x.getSource()).e(), gs.b($$0x, "location"), null, null)
+                                 ))
+                              .then(
+                                 eq.a("rotation", gp.a())
+                                    .executes(
+                                       $$0x -> a(
+                                             (ep)$$0x.getSource(),
+                                             fc.b($$0x, "targets"),
+                                             ((ep)$$0x.getSource()).e(),
+                                             gs.b($$0x, "location"),
+                                             gp.a($$0x, "rotation"),
+                                             null
+                                          )
+                                    )
+                              ))
+                           .then(
+                              ((LiteralArgumentBuilder)eq.a("facing")
+                                    .then(
+                                       eq.a("entity")
+                                          .then(
+                                             ((RequiredArgumentBuilder)eq.a("facingEntity", fc.a())
+                                                   .executes(
+                                                      $$0x -> a(
+                                                            (ep)$$0x.getSource(),
+                                                            fc.b($$0x, "targets"),
+                                                            ((ep)$$0x.getSource()).e(),
+                                                            gs.b($$0x, "location"),
+                                                            null,
+                                                            new api.b(fc.a($$0x, "facingEntity"), fb.a.a)
+                                                         )
+                                                   ))
+                                                .then(
+                                                   eq.a("facingAnchor", fb.a())
+                                                      .executes(
+                                                         $$0x -> a(
+                                                               (ep)$$0x.getSource(),
+                                                               fc.b($$0x, "targets"),
+                                                               ((ep)$$0x.getSource()).e(),
+                                                               gs.b($$0x, "location"),
+                                                               null,
+                                                               new api.b(fc.a($$0x, "facingEntity"), fb.a($$0x, "facingAnchor"))
+                                                            )
+                                                      )
+                                                )
+                                          )
+                                    ))
+                                 .then(
+                                    eq.a("facingLocation", gs.a())
+                                       .executes(
+                                          $$0x -> a(
+                                                (ep)$$0x.getSource(),
+                                                fc.b($$0x, "targets"),
+                                                ((ep)$$0x.getSource()).e(),
+                                                gs.b($$0x, "location"),
+                                                null,
+                                                new api.c(gs.a($$0x, "facingLocation"))
+                                             )
+                                       )
+                                 )
+                           )
+                     ))
+                  .then(eq.a("destination", fc.a()).executes($$0x -> a((ep)$$0x.getSource(), fc.b($$0x, "targets"), fc.a($$0x, "destination"))))
+            )
       );
+      $$0.register((LiteralArgumentBuilder)((LiteralArgumentBuilder)eq.a("tp").requires($$0x -> $$0x.c(2))).redirect($$1));
+   }
+
+   private static int a(ep $$0, Collection<? extends bsu> $$1, bsu $$2) throws CommandSyntaxException {
+      for (bsu $$3 : $$1) {
+         a($$0, $$3, (arf)$$2.dP(), $$2.du(), $$2.dw(), $$2.dA(), EnumSet.noneOf(bud.class), $$2.dF(), $$2.dH(), null);
+      }
+
+      if ($$1.size() == 1) {
+         $$0.a(() -> xp.a("commands.teleport.success.entity.single", $$1.iterator().next().O_(), $$2.O_()), true);
+      } else {
+         $$0.a(() -> xp.a("commands.teleport.success.entity.multiple", $$1.size(), $$2.O_()), true);
+      }
+
+      return $$1.size();
+   }
+
+   private static int a(ep $$0, Collection<? extends bsu> $$1, arf $$2, gn $$3, @Nullable gn $$4, @Nullable api.a $$5) throws CommandSyntaxException {
+      evr $$6 = $$3.a($$0);
+      evq $$7 = $$4 == null ? null : $$4.b($$0);
+      Set<bud> $$8 = EnumSet.noneOf(bud.class);
+      if ($$3.a()) {
+         $$8.add(bud.a);
+      }
+
+      if ($$3.b()) {
+         $$8.add(bud.b);
+      }
+
+      if ($$3.c()) {
+         $$8.add(bud.c);
+      }
+
+      if ($$4 == null) {
+         $$8.add(bud.e);
+         $$8.add(bud.d);
+      } else {
+         if ($$4.a()) {
+            $$8.add(bud.e);
+         }
+
+         if ($$4.b()) {
+            $$8.add(bud.d);
+         }
+      }
+
+      for (bsu $$9 : $$1) {
+         if ($$4 == null) {
+            a($$0, $$9, $$2, $$6.c, $$6.d, $$6.e, $$8, $$9.dF(), $$9.dH(), $$5);
+         } else {
+            a($$0, $$9, $$2, $$6.c, $$6.d, $$6.e, $$8, $$7.j, $$7.i, $$5);
+         }
+      }
+
+      if ($$1.size() == 1) {
+         $$0.a(() -> xp.a("commands.teleport.success.location.single", $$1.iterator().next().O_(), a($$6.c), a($$6.d), a($$6.e)), true);
+      } else {
+         $$0.a(() -> xp.a("commands.teleport.success.location.multiple", $$1.size(), a($$6.c), a($$6.d), a($$6.e)), true);
+      }
+
+      return $$1.size();
+   }
+
+   private static String a(double $$0) {
+      return String.format(Locale.ROOT, "%f", $$0);
+   }
+
+   private static void a(ep $$0, bsu $$1, arf $$2, double $$3, double $$4, double $$5, Set<bud> $$6, float $$7, float $$8, @Nullable api.a $$9) throws CommandSyntaxException {
+      iz $$10 = iz.a($$3, $$4, $$5);
+      if (!dby.l($$10)) {
+         throw a.create();
+      } else {
+         float $$11 = ayz.g($$7);
+         float $$12 = ayz.g($$8);
+         if ($$1.a($$2, $$3, $$4, $$5, $$6, $$11, $$12)) {
+            if ($$9 != null) {
+               $$9.perform($$0, $$1);
+            }
+
+            if (!($$1 instanceof btp $$13) || !$$13.fE()) {
+               $$1.h($$1.ds().d(1.0, 0.0, 1.0));
+               $$1.d(true);
+            }
+
+            if ($$1 instanceof bty $$14) {
+               $$14.K().n();
+            }
+         }
+      }
+   }
+
+   @FunctionalInterface
+   interface a {
+      void perform(ep var1, bsu var2);
+   }
+
+   static record b(bsu a, fb.a b) implements api.a {
+      @Override
+      public void perform(ep $$0, bsu $$1) {
+         if ($$1 instanceof arg $$2) {
+            $$2.a($$0.m(), this.a, this.b);
+         } else {
+            $$1.a($$0.m(), this.b.a(this.a));
+         }
+      }
+   }
+
+   static record c(evr a) implements api.a {
+      @Override
+      public void perform(ep $$0, bsu $$1) {
+         $$1.a($$0.m(), this.a);
+      }
    }
 }

@@ -1,30 +1,84 @@
+import com.google.common.collect.Maps;
+import java.util.Map;
+import java.util.stream.Stream;
+
 public class epn {
-   private final int b;
-   private final String c;
-   public static String a = "main";
+   private static final String a = "command_storage_";
+   private final Map<String, epn.a> b = Maps.newHashMap();
+   private final epq c;
 
-   public epn(int $$0) {
-      this($$0, a);
+   public epn(epq $$0) {
+      this.c = $$0;
    }
 
-   public epn(int $$0, String $$1) {
-      this.b = $$0;
-      this.c = $$1;
+   private epn.a a(String $$0) {
+      epn.a $$1 = new epn.a();
+      this.b.put($$0, $$1);
+      return $$1;
    }
 
-   public boolean a() {
-      return !this.c.equals(a);
+   private epc.a<epn.a> b(String $$0) {
+      return new epc.a<>(() -> this.a($$0), ($$1, $$2) -> this.a($$0).a($$1), bag.h);
    }
 
-   public String b() {
-      return this.c;
+   public us a(alf $$0) {
+      String $$1 = $$0.b();
+      epn.a $$2 = this.c.b(this.b($$1), c($$1));
+      return $$2 != null ? $$2.a($$0.a()) : new us();
    }
 
-   public int c() {
-      return this.b;
+   public void a(alf $$0, us $$1) {
+      String $$2 = $$0.b();
+      this.c.a(this.b($$2), c($$2)).a($$0.a(), $$1);
    }
 
-   public boolean a(epn $$0) {
-      return this.b().equals($$0.b());
+   public Stream<alf> a() {
+      return this.b.entrySet().stream().flatMap($$0 -> $$0.getValue().b($$0.getKey()));
+   }
+
+   private static String c(String $$0) {
+      return "command_storage_" + $$0;
+   }
+
+   static class a extends epc {
+      private static final String a = "contents";
+      private final Map<String, us> b = Maps.newHashMap();
+
+      epn.a a(us $$0) {
+         us $$1 = $$0.p("contents");
+
+         for (String $$2 : $$1.e()) {
+            this.b.put($$2, $$1.p($$2));
+         }
+
+         return this;
+      }
+
+      @Override
+      public us a(us $$0, jk.a $$1) {
+         us $$2 = new us();
+         this.b.forEach(($$1x, $$2x) -> $$2.a($$1x, $$2x.i()));
+         $$0.a("contents", $$2);
+         return $$0;
+      }
+
+      public us a(String $$0) {
+         us $$1 = this.b.get($$0);
+         return $$1 != null ? $$1 : new us();
+      }
+
+      public void a(String $$0, us $$1) {
+         if ($$1.g()) {
+            this.b.remove($$0);
+         } else {
+            this.b.put($$0, $$1);
+         }
+
+         this.c();
+      }
+
+      public Stream<alf> b(String $$0) {
+         return this.b.keySet().stream().map($$1 -> new alf($$0, $$1));
+      }
    }
 }

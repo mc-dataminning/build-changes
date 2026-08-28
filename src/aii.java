@@ -1,29 +1,18 @@
-public class aii implements zv<agv> {
-   public static final zm<wl, aii> a = zv.a(aii::a, aii::new);
-   private final int b;
+import java.util.Optional;
 
-   public aii(int $$0) {
-      this.b = $$0;
-   }
-
-   private aii(wl $$0) {
-      this.b = $$0.readShort();
-   }
-
-   private void a(wl $$0) {
-      $$0.l(this.b);
-   }
+public record aii(Optional<ji<bsa>> b, Optional<ji<bsa>> c) implements zw<agw> {
+   public static final zn<xa, aii> a = zn.a(zl.b(lq.R).a(zl::a), aii::b, zl.b(lq.R).a(zl::a), aii::e, aii::new);
 
    @Override
-   public zx<aii> a() {
-      return agt.bT;
+   public zy<aii> a() {
+      return agu.bS;
    }
 
-   public void a(agv $$0) {
+   public void a(agw $$0) {
       $$0.a(this);
    }
 
-   public int b() {
-      return this.b;
+   public Optional<ji<bsa>> e() {
+      return this.c;
    }
 }

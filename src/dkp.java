@@ -1,6 +1,6 @@
 import com.mojang.serialization.MapCodec;
 
-public class dkp extends dnz {
+public class dkp extends dmb {
    public static final MapCodec<dkp> b = b(dkp::new);
 
    @Override
@@ -8,7 +8,7 @@ public class dkp extends dnz {
       return b;
    }
 
-   protected dkp(dsa.d $$0) {
-      super(dma.b.e, $$0);
+   protected dkp(dsb.d $$0) {
+      super(dmb.b.e, $$0);
    }
 }

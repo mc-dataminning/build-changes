@@ -3,11 +3,11 @@ import com.mojang.brigadier.arguments.StringArgumentType;
 import com.mojang.brigadier.arguments.StringArgumentType.StringType;
 
 public class it implements ik<StringArgumentType, it.a> {
-   public void a(it.a $$0, wl $$1) {
+   public void a(it.a $$0, wm $$1) {
       $$1.a((Enum<?>)$$0.b);
    }
 
-   public it.a a(wl $$0) {
+   public it.a a(wm $$0) {
       StringType $$1 = $$0.b(StringType.class);
       return new it.a($$1);
    }

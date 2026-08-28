@@ -1,42 +1,150 @@
-import com.google.common.collect.Lists;
+import com.google.common.collect.Iterables;
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.function.Consumer;
+import java.util.OptionalInt;
+import java.util.stream.Stream;
 
-public record cxl(List<xo> e, List<xo> f) implements cxu {
-   public static final cxl a = new cxl(List.of());
-   public static final int b = 256;
-   private static final yl g = yl.a.a(n.f).b(true);
-   public static final Codec<cxl> c = xq.g.sizeLimitedListOf(256).xmap(cxl::new, cxl::a);
-   public static final zm<wz, cxl> d = xq.b.a(zk.c(256)).a(cxl::new, cxl::a);
+public final class cxl {
+   private static final int d = -1;
+   private static final int e = 256;
+   public static final cxl a = new cxl(jr.a());
+   public static final Codec<cxl> b = cxl.a.a.sizeLimitedListOf(256).xmap(cxl::b, cxl::f);
+   public static final zn<xa, cxl> c = cup.h.a(zl.c(256)).a(cxl::new, $$0 -> $$0.f);
+   private final jr<cup> f;
+   private final int g;
 
-   public cxl(List<xo> $$0) {
-      this($$0, Lists.transform($$0, $$0x -> xr.a($$0x.f(), g)));
-   }
-
-   public cxl(List<xo> e, List<xo> f) {
-      if (e.size() > 256) {
-         throw new IllegalArgumentException("Got " + e.size() + " lines, but maximum is 256");
+   private cxl(jr<cup> $$0) {
+      if ($$0.size() > 256) {
+         throw new IllegalArgumentException("Got " + $$0.size() + " items, but maximum is 256");
       } else {
-         this.e = e;
-         this.f = f;
+         this.f = $$0;
+         this.g = cup.a($$0);
       }
    }
 
-   public cxl a(xo $$0) {
-      return new cxl(ac.a(this.e, $$0));
+   private cxl(int $$0) {
+      this(jr.a($$0, cup.l));
+   }
+
+   private cxl(List<cup> $$0) {
+      this($$0.size());
+
+      for (int $$1 = 0; $$1 < $$0.size(); $$1++) {
+         this.f.set($$1, $$0.get($$1));
+      }
+   }
+
+   private static cxl b(List<cxl.a> $$0) {
+      OptionalInt $$1 = $$0.stream().mapToInt(cxl.a::a).max();
+      if ($$1.isEmpty()) {
+         return a;
+      } else {
+         cxl $$2 = new cxl($$1.getAsInt() + 1);
+
+         for (cxl.a $$3 : $$0) {
+            $$2.f.set($$3.a(), $$3.b());
+         }
+
+         return $$2;
+      }
+   }
+
+   public static cxl a(List<cup> $$0) {
+      int $$1 = c($$0);
+      if ($$1 == -1) {
+         return a;
+      } else {
+         cxl $$2 = new cxl($$1 + 1);
+
+         for (int $$3 = 0; $$3 <= $$1; $$3++) {
+            $$2.f.set($$3, $$0.get($$3).s());
+         }
+
+         return $$2;
+      }
+   }
+
+   private static int c(List<cup> $$0) {
+      for (int $$1 = $$0.size() - 1; $$1 >= 0; $$1--) {
+         if (!$$0.get($$1).e()) {
+            return $$1;
+         }
+      }
+
+      return -1;
+   }
+
+   private List<cxl.a> f() {
+      List<cxl.a> $$0 = new ArrayList<>();
+
+      for (int $$1 = 0; $$1 < this.f.size(); $$1++) {
+         cup $$2 = this.f.get($$1);
+         if (!$$2.e()) {
+            $$0.add(new cxl.a($$1, $$2));
+         }
+      }
+
+      return $$0;
+   }
+
+   public void a(jr<cup> $$0) {
+      for (int $$1 = 0; $$1 < $$0.size(); $$1++) {
+         cup $$2 = $$1 < this.f.size() ? this.f.get($$1) : cup.l;
+         $$0.set($$1, $$2.s());
+      }
+   }
+
+   public cup a() {
+      return this.f.isEmpty() ? cup.l : this.f.get(0).s();
+   }
+
+   public Stream<cup> b() {
+      return this.f.stream().map(cup::s);
+   }
+
+   public Stream<cup> c() {
+      return this.f.stream().filter($$0 -> !$$0.e()).map(cup::s);
+   }
+
+   public Iterable<cup> d() {
+      return Iterables.filter(this.f, $$0 -> !$$0.e());
+   }
+
+   public Iterable<cup> e() {
+      return Iterables.transform(this.d(), cup::s);
    }
 
    @Override
-   public void a(cuj.b $$0, Consumer<xo> $$1, cwh $$2) {
-      this.f.forEach($$1);
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else {
+         if ($$0 instanceof cxl $$1 && cup.a(this.f, $$1.f)) {
+            return true;
+         }
+
+         return false;
+      }
    }
 
-   public List<xo> a() {
-      return this.e;
+   @Override
+   public int hashCode() {
+      return this.g;
    }
 
-   public List<xo> b() {
-      return this.f;
+   static record a(int b, cup c) {
+      public static final Codec<cxl.a> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(Codec.intRange(0, 255).fieldOf("slot").forGetter(cxl.a::a), cup.b.fieldOf("item").forGetter(cxl.a::b)).apply($$0, cxl.a::new)
+      );
+
+      public int a() {
+         return this.b;
+      }
+
+      public cup b() {
+         return this.c;
+      }
    }
 }

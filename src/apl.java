@@ -1,126 +1,54 @@
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.arguments.IntegerArgumentType;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import com.mojang.brigadier.builder.RequiredArgumentBuilder;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import java.util.Collection;
-import java.util.function.Function;
 
 public class apl {
-   public static void a(CommandDispatcher<ep> $$0, el $$1) {
+   public static void a(CommandDispatcher<ep> $$0) {
       $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)eq.a("title").requires($$0x -> $$0x.c(2)))
-            .then(
-               ((RequiredArgumentBuilder)((RequiredArgumentBuilder)((RequiredArgumentBuilder)((RequiredArgumentBuilder)((RequiredArgumentBuilder)eq.a(
-                                    "targets", fc.d()
-                                 )
-                                 .then(eq.a("clear").executes($$0x -> a((ep)$$0x.getSource(), fc.f($$0x, "targets")))))
-                              .then(eq.a("reset").executes($$0x -> b((ep)$$0x.getSource(), fc.f($$0x, "targets")))))
-                           .then(
-                              eq.a("title")
-                                 .then(
-                                    eq.a("title", ey.a($$1))
-                                       .executes($$0x -> a((ep)$$0x.getSource(), fc.f($$0x, "targets"), ey.a($$0x, "title"), "title", afz::new))
-                                 )
-                           ))
-                        .then(
-                           eq.a("subtitle")
-                              .then(
-                                 eq.a("title", ey.a($$1))
-                                    .executes($$0x -> a((ep)$$0x.getSource(), fc.f($$0x, "targets"), ey.a($$0x, "title"), "subtitle", afx::new))
-                              )
-                        ))
-                     .then(
-                        eq.a("actionbar")
-                           .then(
-                              eq.a("title", ey.a($$1))
-                                 .executes($$0x -> a((ep)$$0x.getSource(), fc.f($$0x, "targets"), ey.a($$0x, "title"), "actionbar", afa::new))
-                           )
-                     ))
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)eq.a("time").requires($$0x -> $$0x.c(2)))
                   .then(
-                     eq.a("times")
-                        .then(
-                           eq.a("fadeIn", ge.a())
-                              .then(
-                                 eq.a("stay", ge.a())
-                                    .then(
-                                       eq.a("fadeOut", ge.a())
-                                          .executes(
-                                             $$0x -> a(
-                                                   (ep)$$0x.getSource(),
-                                                   fc.f($$0x, "targets"),
-                                                   IntegerArgumentType.getInteger($$0x, "fadeIn"),
-                                                   IntegerArgumentType.getInteger($$0x, "stay"),
-                                                   IntegerArgumentType.getInteger($$0x, "fadeOut")
-                                                )
-                                          )
-                                    )
-                              )
-                        )
-                  )
+                     ((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)eq.a("set")
+                                    .then(eq.a("day").executes($$0x -> a((ep)$$0x.getSource(), 1000))))
+                                 .then(eq.a("noon").executes($$0x -> a((ep)$$0x.getSource(), 6000))))
+                              .then(eq.a("night").executes($$0x -> a((ep)$$0x.getSource(), 13000))))
+                           .then(eq.a("midnight").executes($$0x -> a((ep)$$0x.getSource(), 18000))))
+                        .then(eq.a("time", ge.a()).executes($$0x -> a((ep)$$0x.getSource(), IntegerArgumentType.getInteger($$0x, "time"))))
+                  ))
+               .then(eq.a("add").then(eq.a("time", ge.a()).executes($$0x -> b((ep)$$0x.getSource(), IntegerArgumentType.getInteger($$0x, "time"))))))
+            .then(
+               ((LiteralArgumentBuilder)((LiteralArgumentBuilder)eq.a("query")
+                        .then(eq.a("daytime").executes($$0x -> c((ep)$$0x.getSource(), a(((ep)$$0x.getSource()).e())))))
+                     .then(eq.a("gametime").executes($$0x -> c((ep)$$0x.getSource(), (int)(((ep)$$0x.getSource()).e().Z() % 2147483647L)))))
+                  .then(eq.a("day").executes($$0x -> c((ep)$$0x.getSource(), (int)(((ep)$$0x.getSource()).e().aa() / 24000L % 2147483647L))))
             )
       );
    }
 
-   private static int a(ep $$0, Collection<arf> $$1) {
-      acy $$2 = new acy(false);
-
-      for (arf $$3 : $$1) {
-         $$3.c.b($$2);
-      }
-
-      if ($$1.size() == 1) {
-         $$0.a(() -> xo.a("commands.title.cleared.single", $$1.iterator().next().O_()), true);
-      } else {
-         $$0.a(() -> xo.a("commands.title.cleared.multiple", $$1.size()), true);
-      }
-
-      return $$1.size();
+   private static int a(arf $$0) {
+      return (int)($$0.aa() % 24000L);
    }
 
-   private static int b(ep $$0, Collection<arf> $$1) {
-      acy $$2 = new acy(true);
-
-      for (arf $$3 : $$1) {
-         $$3.c.b($$2);
-      }
-
-      if ($$1.size() == 1) {
-         $$0.a(() -> xo.a("commands.title.reset.single", $$1.iterator().next().O_()), true);
-      } else {
-         $$0.a(() -> xo.a("commands.title.reset.multiple", $$1.size()), true);
-      }
-
-      return $$1.size();
+   private static int c(ep $$0, int $$1) {
+      $$0.a(() -> xp.a("commands.time.query", $$1), false);
+      return $$1;
    }
 
-   private static int a(ep $$0, Collection<arf> $$1, xo $$2, String $$3, Function<xo, zv<?>> $$4) throws CommandSyntaxException {
-      for (arf $$5 : $$1) {
-         $$5.c.b($$4.apply(xr.a($$0, $$2, $$5, 0)));
+   public static int a(ep $$0, int $$1) {
+      for (arf $$2 : $$0.l().K()) {
+         $$2.b((long)$$1);
       }
 
-      if ($$1.size() == 1) {
-         $$0.a(() -> xo.a("commands.title.show." + $$3 + ".single", $$1.iterator().next().O_()), true);
-      } else {
-         $$0.a(() -> xo.a("commands.title.show." + $$3 + ".multiple", $$1.size()), true);
-      }
-
-      return $$1.size();
+      $$0.a(() -> xp.a("commands.time.set", $$1), true);
+      return a($$0.e());
    }
 
-   private static int a(ep $$0, Collection<arf> $$1, int $$2, int $$3, int $$4) {
-      aga $$5 = new aga($$2, $$3, $$4);
-
-      for (arf $$6 : $$1) {
-         $$6.c.b($$5);
+   public static int b(ep $$0, int $$1) {
+      for (arf $$2 : $$0.l().K()) {
+         $$2.b($$2.aa() + (long)$$1);
       }
 
-      if ($$1.size() == 1) {
-         $$0.a(() -> xo.a("commands.title.times.single", $$1.iterator().next().O_()), true);
-      } else {
-         $$0.a(() -> xo.a("commands.title.times.multiple", $$1.size()), true);
-      }
-
-      return $$1.size();
+      int $$3 = a($$0.e());
+      $$0.a(() -> xp.a("commands.time.set", $$3), true);
+      return $$3;
    }
 }

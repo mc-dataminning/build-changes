@@ -1,34 +1,20 @@
 public interface dwx {
-   dwx a = new dwx() {
-      @Override
-      public boolean a() {
-         return true;
-      }
+   dwz a();
 
-      @Override
-      public void a(dww $$0) {
-      }
+   int b();
 
-      @Override
-      public void b(dww $$0) {
-      }
+   boolean a(arf var1, ji<dwv> var2, dwv.a var3, evr var4);
 
-      @Override
-      public boolean a(ji<dwu> $$0, evq $$1, dwu.a $$2, dwx.a $$3) {
-         return false;
-      }
-   };
+   default dwx.a c() {
+      return dwx.a.a;
+   }
 
-   boolean a();
+   public static enum a {
+      a,
+      b;
+   }
 
-   void a(dww var1);
-
-   void b(dww var1);
-
-   boolean a(ji<dwu> var1, evq var2, dwu.a var3, dwx.a var4);
-
-   @FunctionalInterface
-   public interface a {
-      void visit(dww var1, evq var2);
+   public interface b<T extends dwx> {
+      T c();
    }
 }

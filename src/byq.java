@@ -1,15 +1,40 @@
-import com.mojang.datafixers.kinds.App;
-import java.util.function.Function;
+import com.google.common.collect.ImmutableMap;
 
-public class byq {
-   public static bvi<bto> a() {
-      return byu.a((Function<byu.b<bto>, ? extends App<byu.c<bto>, byx<bto>>>)($$0 -> $$0.a((byx<bto>)(($$0x, $$1, $$2) -> {
-            if (!$$1.dS().c(col.e) && $$1.fL()) {
-               $$1.fM();
-               return true;
-            } else {
-               return false;
-            }
-         }))));
+public class byq extends bvi<cmk> {
+   public byq() {
+      super(ImmutableMap.of());
+   }
+
+   protected boolean a(arf $$0, cmk $$1, long $$2) {
+      return c($$1) || b($$1);
+   }
+
+   protected void b(arf $$0, cmk $$1, long $$2) {
+      if (c($$1) || b($$1)) {
+         bur<?> $$3 = $$1.dS();
+         if (!$$3.c(com.g)) {
+            $$3.b(cct.t);
+            $$3.b(cct.m);
+            $$3.b(cct.n);
+            $$3.b(cct.r);
+            $$3.b(cct.q);
+         }
+
+         $$3.a(com.g);
+      }
+   }
+
+   protected void c(arf $$0, cmk $$1, long $$2) {
+      if ($$2 % 100L == 0L) {
+         $$1.a($$0, $$2, 3);
+      }
+   }
+
+   public static boolean b(btp $$0) {
+      return $$0.dS().a(cct.A);
+   }
+
+   public static boolean c(btp $$0) {
+      return $$0.dS().a(cct.x);
    }
 }

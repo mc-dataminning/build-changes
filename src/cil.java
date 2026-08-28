@@ -1,30 +1,26 @@
-public class cil extends cid {
-   private static final int b = 40;
-   private int c;
+import javax.annotation.Nullable;
 
-   public cil(cia $$0) {
-      super($$0);
-   }
+public interface cil {
+   boolean a();
 
-   @Override
-   public void b() {
-      this.a.dP().a(this.a.du(), this.a.dw(), this.a.dA(), avz.ie, this.a.de(), 2.5F, 0.8F + this.a.el().i() * 0.3F, false);
-   }
+   void b();
 
-   @Override
-   public void c() {
-      if (this.c++ >= 40) {
-         this.a.gn().a(ciq.f);
-      }
-   }
+   void c();
 
-   @Override
-   public void d() {
-      this.c = 0;
-   }
+   void a(cia var1, iz var2, brn var3, @Nullable cmx var4);
 
-   @Override
-   public ciq<cil> i() {
-      return ciq.h;
-   }
+   void d();
+
+   void e();
+
+   float f();
+
+   float h();
+
+   cir<? extends cil> i();
+
+   @Nullable
+   evr g();
+
+   float a(brn var1, float var2);
 }

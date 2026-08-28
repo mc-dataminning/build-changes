@@ -1,29 +1,45 @@
-public class aid implements zv<agv> {
-   public static final zm<wl, aid> a = zv.a(aid::a, aid::new);
-   private final ale b;
+public class aid implements zw<agw> {
+   public static final zn<wm, aid> a = zw.a(aid::a, aid::new);
+   private final cri b;
+   private final boolean c;
+   private final boolean d;
 
-   public aid(cyw<?> $$0) {
-      this.b = $$0.a();
+   public aid(cri $$0, boolean $$1, boolean $$2) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
    }
 
-   private aid(wl $$0) {
-      this.b = $$0.q();
+   private aid(wm $$0) {
+      this.b = $$0.b(cri.class);
+      this.c = $$0.readBoolean();
+      this.d = $$0.readBoolean();
    }
 
-   private void a(wl $$0) {
+   private void a(wm $$0) {
       $$0.a(this.b);
+      $$0.a(this.c);
+      $$0.a(this.d);
    }
 
    @Override
-   public zx<aid> a() {
-      return agt.bO;
+   public zy<aid> a() {
+      return agu.bN;
    }
 
-   public void a(agv $$0) {
+   public void a(agw $$0) {
       $$0.a(this);
    }
 
-   public ale b() {
+   public cri b() {
       return this.b;
+   }
+
+   public boolean e() {
+      return this.c;
+   }
+
+   public boolean f() {
+      return this.d;
    }
 }

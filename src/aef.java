@@ -1,37 +1,33 @@
-public class aef implements zv<ach> {
-   public static final zm<wl, aef> a = zv.a(aef::a, aef::new);
-   private final iz b;
-   private final boolean c;
+public class aef implements zw<aci> {
+   public static final zn<xa, aef> a = zn.a(zl.g, aef::b, zl.a(lq.Q), aef::e, xr.d, aef::f, aef::new);
+   private final int b;
+   private final crb<?> c;
+   private final xp d;
 
-   public aef(iz $$0, boolean $$1) {
+   public aef(int $$0, crb<?> $$1, xp $$2) {
       this.b = $$0;
       this.c = $$1;
-   }
-
-   private aef(wl $$0) {
-      this.b = $$0.e();
-      this.c = $$0.readBoolean();
-   }
-
-   private void a(wl $$0) {
-      $$0.a(this.b);
-      $$0.a(this.c);
+      this.d = $$2;
    }
 
    @Override
-   public zx<aef> a() {
-      return agt.X;
+   public zy<aef> a() {
+      return agu.W;
    }
 
-   public void a(ach $$0) {
+   public void a(aci $$0) {
       $$0.a(this);
    }
 
-   public iz b() {
+   public int b() {
       return this.b;
    }
 
-   public boolean e() {
+   public crb<?> e() {
       return this.c;
+   }
+
+   public xp f() {
+      return this.d;
    }
 }

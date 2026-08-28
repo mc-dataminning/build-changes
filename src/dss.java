@@ -1,47 +1,133 @@
-import com.google.common.collect.ImmutableSet;
-import java.util.Collection;
-import java.util.Optional;
-
-public class dss extends dte<Boolean> {
-   private final ImmutableSet<Boolean> a = ImmutableSet.of(true, false);
-
-   protected dss(String $$0) {
-      super($$0, Boolean.class);
-   }
-
-   @Override
-   public Collection<Boolean> a() {
-      return this.a;
-   }
-
-   public static dss a(String $$0) {
-      return new dss($$0);
-   }
-
-   @Override
-   public Optional<Boolean> b(String $$0) {
-      return !"true".equals($$0) && !"false".equals($$0) ? Optional.empty() : Optional.of(Boolean.valueOf($$0));
-   }
-
-   public String a(Boolean $$0) {
-      return $$0.toString();
-   }
-
-   @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else {
-         if ($$0 instanceof dss $$1 && super.equals($$0)) {
-            return this.a.equals($$1.a);
-         }
-
-         return false;
-      }
-   }
-
-   @Override
-   public int b() {
-      return 31 * super.b() + this.a.hashCode();
-   }
+public class dss {
+   public static final dst a = dst.a("attached");
+   public static final dst b = dst.a("bottom");
+   public static final dst c = dst.a("conditional");
+   public static final dst d = dst.a("disarmed");
+   public static final dst e = dst.a("drag");
+   public static final dst f = dst.a("enabled");
+   public static final dst g = dst.a("extended");
+   public static final dst h = dst.a("eye");
+   public static final dst i = dst.a("falling");
+   public static final dst j = dst.a("hanging");
+   public static final dst k = dst.a("has_bottle_0");
+   public static final dst l = dst.a("has_bottle_1");
+   public static final dst m = dst.a("has_bottle_2");
+   public static final dst n = dst.a("has_record");
+   public static final dst o = dst.a("has_book");
+   public static final dst p = dst.a("inverted");
+   public static final dst q = dst.a("in_wall");
+   public static final dst r = dst.a("lit");
+   public static final dst s = dst.a("locked");
+   public static final dst t = dst.a("occupied");
+   public static final dst u = dst.a("open");
+   public static final dst v = dst.a("persistent");
+   public static final dst w = dst.a("powered");
+   public static final dst x = dst.a("short");
+   public static final dst y = dst.a("signal_fire");
+   public static final dst z = dst.a("snowy");
+   public static final dst A = dst.a("triggered");
+   public static final dst B = dst.a("unstable");
+   public static final dst C = dst.a("waterlogged");
+   public static final dst D = dst.a("berries");
+   public static final dst E = dst.a("bloom");
+   public static final dst F = dst.a("shrieking");
+   public static final dst G = dst.a("can_summon");
+   public static final dta<je.a> H = dta.a("axis", je.a.class, je.a.a, je.a.c);
+   public static final dta<je.a> I = dta.a("axis", je.a.class);
+   public static final dst J = dst.a("up");
+   public static final dst K = dst.a("down");
+   public static final dst L = dst.a("north");
+   public static final dst M = dst.a("east");
+   public static final dst N = dst.a("south");
+   public static final dst O = dst.a("west");
+   public static final dsw P = dsw.a("facing", je.c, je.f, je.d, je.e, je.b, je.a);
+   public static final dsw Q = dsw.a("facing", $$0 -> $$0 != je.b);
+   public static final dsw R = dsw.a("facing", je.c.a);
+   public static final dtc S = dtc.a("flower_amount", 1, 4);
+   public static final dta<jg> T = dta.a("orientation", jg.class);
+   public static final dta<dsn> U = dta.a("face", dsn.class);
+   public static final dta<dsq> V = dta.a("attachment", dsq.class);
+   public static final dta<dto> W = dta.a("east", dto.class);
+   public static final dta<dto> X = dta.a("north", dto.class);
+   public static final dta<dto> Y = dta.a("south", dto.class);
+   public static final dta<dto> Z = dta.a("west", dto.class);
+   public static final dta<dth> aa = dta.a("east", dth.class);
+   public static final dta<dth> ab = dta.a("north", dth.class);
+   public static final dta<dth> ac = dta.a("south", dth.class);
+   public static final dta<dth> ad = dta.a("west", dth.class);
+   public static final dta<dsy> ae = dta.a("half", dsy.class);
+   public static final dta<dtb> af = dta.a("half", dtb.class);
+   public static final dta<dtg> ag = dta.a("shape", dtg.class);
+   public static final dta<dtg> ah = dta.a("shape", dtg.class, $$0 -> $$0 != dtg.j && $$0 != dtg.i && $$0 != dtg.g && $$0 != dtg.h);
+   public static final int ai = 1;
+   public static final int aj = 2;
+   public static final int ak = 3;
+   public static final int al = 4;
+   public static final int am = 5;
+   public static final int an = 7;
+   public static final int ao = 15;
+   public static final int ap = 25;
+   public static final dtc aq = dtc.a("age", 0, 1);
+   public static final dtc ar = dtc.a("age", 0, 2);
+   public static final dtc as = dtc.a("age", 0, 3);
+   public static final dtc at = dtc.a("age", 0, 4);
+   public static final dtc au = dtc.a("age", 0, 5);
+   public static final dtc av = dtc.a("age", 0, 7);
+   public static final dtc aw = dtc.a("age", 0, 15);
+   public static final dtc ax = dtc.a("age", 0, 25);
+   public static final dtc ay = dtc.a("bites", 0, 6);
+   public static final dtc az = dtc.a("candles", 1, 4);
+   public static final dtc aA = dtc.a("delay", 1, 4);
+   public static final int aB = 7;
+   public static final dtc aC = dtc.a("distance", 1, 7);
+   public static final dtc aD = dtc.a("eggs", 1, 4);
+   public static final dtc aE = dtc.a("hatch", 0, 2);
+   public static final dtc aF = dtc.a("layers", 1, 8);
+   public static final int aG = 0;
+   public static final int aH = 1;
+   public static final int aI = 3;
+   public static final int aJ = 8;
+   public static final dtc aK = dtc.a("level", 1, 3);
+   public static final dtc aL = dtc.a("level", 0, 8);
+   public static final dtc aM = dtc.a("level", 1, 8);
+   public static final dtc aN = dtc.a("honey_level", 0, 5);
+   public static final int aO = 15;
+   public static final dtc aP = dtc.a("level", 0, 15);
+   public static final dtc aQ = dtc.a("moisture", 0, 7);
+   public static final dtc aR = dtc.a("note", 0, 24);
+   public static final dtc aS = dtc.a("pickles", 1, 4);
+   public static final dtc aT = dtc.a("power", 0, 15);
+   public static final dtc aU = dtc.a("stage", 0, 1);
+   public static final int aV = 7;
+   public static final dtc aW = dtc.a("distance", 0, 7);
+   public static final int aX = 0;
+   public static final int aY = 4;
+   public static final dtc aZ = dtc.a("charges", 0, 4);
+   public static final dtc ba = dtc.a("rotation", 0, dti.a());
+   public static final dta<dsp> bb = dta.a("part", dsp.class);
+   public static final dta<dsu> bc = dta.a("type", dsu.class);
+   public static final dta<dsv> bd = dta.a("mode", dsv.class);
+   public static final dta<dsx> be = dta.a("hinge", dsx.class);
+   public static final dta<dtd> bf = dta.a("instrument", dtd.class);
+   public static final dta<dte> bg = dta.a("type", dte.class);
+   public static final dta<dtk> bh = dta.a("type", dtk.class);
+   public static final dta<dtl> bi = dta.a("shape", dtl.class);
+   public static final dta<dtm> bj = dta.a("mode", dtm.class);
+   public static final dta<dso> bk = dta.a("leaves", dso.class);
+   public static final dta<dtn> bl = dta.a("tilt", dtn.class);
+   public static final dsw bm = dsw.a("vertical_direction", je.b, je.a);
+   public static final dta<dsz> bn = dta.a("thickness", dsz.class);
+   public static final dta<dtj> bo = dta.a("sculk_sensor_phase", dtj.class);
+   public static final dst bp = dst.a("slot_0_occupied");
+   public static final dst bq = dst.a("slot_1_occupied");
+   public static final dst br = dst.a("slot_2_occupied");
+   public static final dst bs = dst.a("slot_3_occupied");
+   public static final dst bt = dst.a("slot_4_occupied");
+   public static final dst bu = dst.a("slot_5_occupied");
+   public static final dtc bv = dtc.a("dusted", 0, 3);
+   public static final dst bw = dst.a("cracked");
+   public static final dst bx = dst.a("crafting");
+   public static final dta<dri> by = dta.a("trial_spawner_state", dri.class);
+   public static final dta<drp> bz = dta.a("vault_state", drp.class);
+   public static final dst bA = dst.a("ominous");
 }

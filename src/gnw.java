@@ -1,24 +1,23 @@
-public class gnw extends gmt<ciu, fwp<ciu>> {
-   private static final ale a = new ale("textures/entity/wither/wither_armor.png");
-   private final fwp<ciu> b;
-
-   public gnw(gks<ciu, fwp<ciu>> $$0, fwv $$1) {
-      super($$0);
-      this.b = new fwp<>($$1.a(fwy.bW));
+public class gnw<T extends btp> extends gmn<T, fwp<T>> {
+   public gnw(gkt<T, fwp<T>> $$0, gdk $$1) {
+      super($$0, $$1);
    }
 
    @Override
-   protected float a(float $$0) {
-      return ayy.b($$0 * 0.02F) * 3.0F;
-   }
+   public void a(ezy $$0, gdo $$1, int $$2, T $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
+      cup $$10 = $$3.eX();
+      $$0.a();
+      if ($$10.a(cus.sk)) {
+         this.c().d().a($$0);
+         this.c().e().a($$0);
+         $$0.a(0.0625F, 0.25F, 0.0F);
+         $$0.a(a.f.rotationDegrees(180.0F));
+         $$0.a(a.b.rotationDegrees(140.0F));
+         $$0.a(a.f.rotationDegrees(10.0F));
+         $$0.a(0.0F, -0.4F, 0.4F);
+      }
 
-   @Override
-   protected ale a() {
-      return a;
-   }
-
-   @Override
-   protected ftz<ciu> b() {
-      return this.b;
+      super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8, $$9);
+      $$0.b();
    }
 }

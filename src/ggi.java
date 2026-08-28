@@ -1,30 +1,19 @@
-public class ggi implements gfn<drj> {
-   private final gju a;
-   private final azg b = azg.a();
+public class ggi implements gfo<drb> {
+   private final giv a;
 
-   public ggi(gfo.a $$0) {
-      this.a = $$0.d();
+   public ggi(gfp.a $$0) {
+      this.a = $$0.c();
    }
 
-   public void a(drj $$0, float $$1, ezx $$2, gdn $$3, int $$4, int $$5) {
-      if (drj.a.a($$0.c())) {
-         dbx $$6 = $$0.i();
-         if ($$6 != null) {
-            cuo $$7 = $$0.c().a();
-            if (!$$7.e()) {
-               this.b.b((long)gjs.a($$7));
-               drk $$8 = $$0.d();
-               a($$1, $$6, $$2, $$3, $$4, $$7, this.a, $$8.b(), $$8.a(), this.b);
-            }
+   public void a(drb $$0, float $$1, ezy $$2, gdo $$3, int $$4, int $$5) {
+      dby $$6 = $$0.i();
+      if ($$6 != null) {
+         drf $$7 = $$0.c();
+         drh $$8 = $$7.f();
+         bsu $$9 = $$8.a($$7, $$6, $$7.i());
+         if ($$9 != null) {
+            gge.a($$1, $$2, $$3, $$4, $$9, this.a, $$8.d(), $$8.c());
          }
       }
-   }
-
-   public static void a(float $$0, dbx $$1, ezx $$2, gdn $$3, int $$4, cuo $$5, gju $$6, float $$7, float $$8, azg $$9) {
-      $$2.a();
-      $$2.a(0.5F, 0.4F, 0.5F);
-      $$2.a(a.d.rotationDegrees(ayy.j($$0, $$7, $$8)));
-      gjs.a($$6, $$2, $$3, $$4, $$5, $$9, $$1);
-      $$2.b();
    }
 }

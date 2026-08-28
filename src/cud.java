@@ -1,58 +1,73 @@
-public class cud extends cuj {
-   private static final int a = 40;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.Maps;
+import com.mojang.datafixers.util.Pair;
+import java.util.Map;
+import java.util.function.Consumer;
+import java.util.function.Predicate;
 
-   public cud(cuj.a $$0) {
-      super($$0);
+public class cud extends cte {
+   protected static final Map<dez, Pair<Predicate<cyc>, Consumer<cyc>>> a = Maps.newHashMap(
+      ImmutableMap.of(
+         dfb.i,
+         Pair.of(cud::b, a(dfb.cC.o())),
+         dfb.kE,
+         Pair.of(cud::b, a(dfb.cC.o())),
+         dfb.j,
+         Pair.of(cud::b, a(dfb.cC.o())),
+         dfb.k,
+         Pair.of(cud::b, a(dfb.j.o())),
+         dfb.sH,
+         Pair.of((Predicate<cyc>)$$0 -> true, a(dfb.j.o(), cus.dO))
+      )
+   );
+
+   public cud(cwe $$0, cuk.a $$1) {
+      super($$0, awp.bB, $$1);
    }
 
    @Override
-   public cuo a(cuo $$0, dbx $$1, bto $$2) {
-      super.a($$0, $$1, $$2);
-      if ($$2 instanceof arf $$3) {
-         am.A.a($$3, $$0);
-         $$3.b(awj.c.b(this));
-      }
-
-      if (!$$1.B) {
-         $$2.e(bsd.s);
-      }
-
-      if ($$0.e()) {
-         return new cuo(cur.sl);
+   public bqu a(cyc $$0) {
+      dby $$1 = $$0.q();
+      iz $$2 = $$0.a();
+      Pair<Predicate<cyc>, Consumer<cyc>> $$3 = a.get($$1.a_($$2).b());
+      if ($$3 == null) {
+         return bqu.e;
       } else {
-         if ($$2 instanceof cmw $$4 && !$$4.fP()) {
-            cuo $$5 = new cuo(cur.sl);
-            if (!$$4.gc().f($$5)) {
-               $$4.a($$5, false);
+         Predicate<cyc> $$4 = (Predicate<cyc>)$$3.getFirst();
+         Consumer<cyc> $$5 = (Consumer<cyc>)$$3.getSecond();
+         if ($$4.test($$0)) {
+            cmx $$6 = $$0.o();
+            $$1.a($$6, $$2, awa.mn, awb.e, 1.0F, 1.0F);
+            if (!$$1.B) {
+               $$5.accept($$0);
+               if ($$6 != null) {
+                  $$0.n().a(1, $$6, btp.d($$0.p()));
+               }
             }
-         }
 
-         return $$0;
+            return bqu.a($$1.B);
+         } else {
+            return bqu.e;
+         }
       }
    }
 
-   @Override
-   public int b(cuo $$0) {
-      return 40;
+   public static Consumer<cyc> a(dsc $$0) {
+      return $$1 -> {
+         $$1.q().a($$1.a(), $$0, 11);
+         $$1.q().a(dwv.c, $$1.a(), dwv.a.a($$1.o(), $$0));
+      };
    }
 
-   @Override
-   public cwj c(cuo $$0) {
-      return cwj.c;
+   public static Consumer<cyc> a(dsc $$0, dbx $$1) {
+      return $$2 -> {
+         $$2.q().a($$2.a(), $$0, 11);
+         $$2.q().a(dwv.c, $$2.a(), dwv.a.a($$2.o(), $$0));
+         dez.a($$2.q(), $$2.a(), $$2.k(), new cup($$1));
+      };
    }
 
-   @Override
-   public avy ak_() {
-      return avz.mD;
-   }
-
-   @Override
-   public avy al_() {
-      return avz.mD;
-   }
-
-   @Override
-   public bqu<cuo> a(dbx $$0, cmw $$1, bqs $$2) {
-      return cuq.a($$0, $$1, $$2);
+   public static boolean b(cyc $$0) {
+      return $$0.k() != je.a && $$0.q().a_($$0.a().c()).i();
    }
 }

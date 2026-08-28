@@ -1,11 +1,17 @@
-public class cvx extends cwc {
-   public cvx(cuj.a $$0) {
+public class cvx extends csi {
+   public cvx(cuk.a $$0) {
       super($$0);
    }
 
    @Override
-   public bqu<cuo> a(dbx $$0, cmw $$1, bqs $$2) {
-      $$0.a(null, $$1.du(), $$1.dw(), $$1.dA(), avz.yN, awa.h, 0.5F, 0.4F / ($$0.E_().i() * 0.4F + 0.8F));
-      return super.a($$0, $$1, $$2);
+   public cnd a(dby $$0, cup $$1, btp $$2) {
+      return new cnv($$0, $$2, $$1.c(1));
+   }
+
+   @Override
+   public cnp a(dby $$0, js $$1, cup $$2, je $$3) {
+      cnv $$4 = new cnv($$0, $$1.a(), $$1.b(), $$1.c(), $$2.c(1));
+      $$4.d = cnd.a.b;
+      return $$4;
    }
 }

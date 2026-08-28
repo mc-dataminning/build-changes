@@ -2,43 +2,62 @@ import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
-import java.util.Optional;
 
-public class esc extends ert {
+public class esc extends eru {
    public static final MapCodec<esc> a = RecordCodecBuilder.mapCodec(
       $$0 -> a($$0)
-            .and(
-               $$0.group(
-                  arv.a(Codec.string(0, 32)).optionalFieldOf("title").forGetter($$0x -> $$0x.c),
-                  Codec.STRING.optionalFieldOf("author").forGetter($$0x -> $$0x.b),
-                  ayg.a(0, 3).optionalFieldOf("generation").forGetter($$0x -> $$0x.d)
-               )
-            )
+            .and($$0.group(doy.b.fieldOf("patterns").forGetter($$0x -> $$0x.b), Codec.BOOL.fieldOf("append").forGetter($$0x -> $$0x.c)))
             .apply($$0, esc::new)
    );
-   private final Optional<String> b;
-   private final Optional<arv<String>> c;
-   private final Optional<Integer> d;
+   private final doy b;
+   private final boolean c;
 
-   public esc(List<etr> $$0, Optional<arv<String>> $$1, Optional<String> $$2, Optional<Integer> $$3) {
+   esc(List<ets> $$0, doy $$1, boolean $$2) {
       super($$0);
-      this.b = $$2;
-      this.c = $$1;
-      this.d = $$3;
+      this.b = $$1;
+      this.c = $$2;
    }
 
    @Override
-   protected cuo a(cuo $$0, eqh $$1) {
-      $$0.a(km.J, cxx.a, this::a);
+   protected cup a(cup $$0, eqi $$1) {
+      if (this.c) {
+         $$0.a(km.X, doy.a, this.b, ($$0x, $$1x) -> new doy.a().a($$0x).a($$1x).a());
+      } else {
+         $$0.b(km.X, this.b);
+      }
+
       return $$0;
    }
 
-   private cxx a(cxx $$0) {
-      return new cxx(this.c.orElseGet($$0::d), this.b.orElseGet($$0::e), this.d.orElseGet($$0::f), $$0.a(), $$0.g());
+   @Override
+   public erw<esc> b() {
+      return erx.E;
    }
 
-   @Override
-   public erv<esc> b() {
-      return erw.M;
+   public static esc.a a(boolean $$0) {
+      return new esc.a($$0);
+   }
+
+   public static class a extends eru.a<esc.a> {
+      private final doy.a a = new doy.a();
+      private final boolean b;
+
+      a(boolean $$0) {
+         this.b = $$0;
+      }
+
+      protected esc.a a() {
+         return this;
+      }
+
+      @Override
+      public erv b() {
+         return new esc(this.g(), this.a.a(), this.b);
+      }
+
+      public esc.a a(ji<dox> $$0, cti $$1) {
+         this.a.a($$0, $$1);
+         return this;
+      }
    }
 }

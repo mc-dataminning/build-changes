@@ -1,45 +1,166 @@
-public class ahr implements zv<agv> {
-   public static final zm<wl, ahr> a = zv.a(ahr::a, ahr::new);
-   private final iz b;
-   private final int c;
-   private final boolean d;
+import java.util.function.Function;
+import javax.annotation.Nullable;
 
-   public ahr(iz $$0, int $$1, boolean $$2) {
+public class ahr implements zw<agw> {
+   public static final zn<wm, ahr> a = zw.a(ahr::a, ahr::new);
+   private final int b;
+   private final ahr.a c;
+   private final boolean d;
+   static final ahr.a e = new ahr.a() {
+      @Override
+      public ahr.b a() {
+         return ahr.b.b;
+      }
+
+      @Override
+      public void a(ahr.c $$0) {
+         $$0.a();
+      }
+
+      @Override
+      public void a(wm $$0) {
+      }
+   };
+
+   private ahr(int $$0, boolean $$1, ahr.a $$2) {
       this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
+      this.c = $$2;
+      this.d = $$1;
    }
 
-   private ahr(wl $$0) {
-      this.b = $$0.e();
-      this.c = $$0.l();
+   public static ahr a(bsu $$0, boolean $$1) {
+      return new ahr($$0.al(), $$1, e);
+   }
+
+   public static ahr a(bsu $$0, boolean $$1, bqt $$2) {
+      return new ahr($$0.al(), $$1, new ahr.d($$2));
+   }
+
+   public static ahr a(bsu $$0, boolean $$1, bqt $$2, evr $$3) {
+      return new ahr($$0.al(), $$1, new ahr.e($$2, $$3));
+   }
+
+   private ahr(wm $$0) {
+      this.b = $$0.l();
+      ahr.b $$1 = $$0.b(ahr.b.class);
+      this.c = $$1.d.apply($$0);
       this.d = $$0.readBoolean();
    }
 
-   private void a(wl $$0) {
-      $$0.a(this.b);
-      $$0.c(this.c);
+   private void a(wm $$0) {
+      $$0.c(this.b);
+      $$0.a(this.c.a());
+      this.c.a($$0);
       $$0.a(this.d);
    }
 
    @Override
-   public zx<ahr> a() {
-      return agt.bz;
+   public zy<ahr> a() {
+      return agu.by;
    }
 
-   public void a(agv $$0) {
+   public void a(agw $$0) {
       $$0.a(this);
    }
 
-   public iz b() {
-      return this.b;
+   @Nullable
+   public bsu a(arf $$0) {
+      return $$0.b(this.b);
    }
 
-   public int e() {
-      return this.c;
-   }
-
-   public boolean f() {
+   public boolean b() {
       return this.d;
+   }
+
+   public void a(ahr.c $$0) {
+      this.c.a($$0);
+   }
+
+   interface a {
+      ahr.b a();
+
+      void a(ahr.c var1);
+
+      void a(wm var1);
+   }
+
+   static enum b {
+      a(ahr.d::new),
+      b($$0 -> ahr.e),
+      c(ahr.e::new);
+
+      final Function<wm, ahr.a> d;
+
+      private b(final Function<wm, ahr.a> $$0) {
+         this.d = $$0;
+      }
+   }
+
+   public interface c {
+      void a(bqt var1);
+
+      void a(bqt var1, evr var2);
+
+      void a();
+   }
+
+   static class d implements ahr.a {
+      private final bqt a;
+
+      d(bqt $$0) {
+         this.a = $$0;
+      }
+
+      private d(wm $$0) {
+         this.a = $$0.b(bqt.class);
+      }
+
+      @Override
+      public ahr.b a() {
+         return ahr.b.a;
+      }
+
+      @Override
+      public void a(ahr.c $$0) {
+         $$0.a(this.a);
+      }
+
+      @Override
+      public void a(wm $$0) {
+         $$0.a(this.a);
+      }
+   }
+
+   static class e implements ahr.a {
+      private final bqt a;
+      private final evr b;
+
+      e(bqt $$0, evr $$1) {
+         this.a = $$0;
+         this.b = $$1;
+      }
+
+      private e(wm $$0) {
+         this.b = new evr((double)$$0.readFloat(), (double)$$0.readFloat(), (double)$$0.readFloat());
+         this.a = $$0.b(bqt.class);
+      }
+
+      @Override
+      public ahr.b a() {
+         return ahr.b.c;
+      }
+
+      @Override
+      public void a(ahr.c $$0) {
+         $$0.a(this.a, this.b);
+      }
+
+      @Override
+      public void a(wm $$0) {
+         $$0.a((float)this.b.c);
+         $$0.a((float)this.b.d);
+         $$0.a((float)this.b.e);
+         $$0.a(this.a);
+      }
    }
 }

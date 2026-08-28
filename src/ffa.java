@@ -1,66 +1,74 @@
-import com.mojang.datafixers.DataFixer;
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.DataResult;
-import java.nio.file.Path;
-import org.slf4j.Logger;
+import javax.annotation.Nullable;
 
-public class ffa {
-   private static final Logger b = LogUtils.getLogger();
-   public static final int a = 9;
-   private final Path c;
-   private final DataFixer d;
-   private final gcr[] e = new gcr[9];
-   private boolean f;
+public record ffa(int a, @Nullable ffa.a b, @Nullable xp c, @Nullable String d) {
+   private static final xp e = xp.c("chat.tag.system");
+   private static final xp f = xp.c("chat.tag.system_single_player");
+   private static final xp g = xp.c("chat.tag.not_secure");
+   private static final xp h = xp.c("chat.tag.modified");
+   private static final xp i = xp.c("chat.tag.error");
+   private static final int j = 13684944;
+   private static final int k = 6316128;
+   private static final ffa l = new ffa(13684944, null, e, "System");
+   private static final ffa m = new ffa(13684944, null, f, "System");
+   private static final ffa n = new ffa(13684944, null, g, "Not Secure");
+   private static final ffa o = new ffa(16733525, null, i, "Chat Error");
 
-   public ffa(Path $$0, DataFixer $$1) {
-      this.c = $$0.resolve("hotbar.nbt");
-      this.d = $$1;
-
-      for (int $$2 = 0; $$2 < 9; $$2++) {
-         this.e[$$2] = new gcr();
-      }
+   public static ffa a() {
+      return l;
    }
 
-   private void b() {
-      try {
-         ur $$0 = ve.a(this.c);
-         if ($$0 == null) {
-            return;
-         }
-
-         int $$1 = vg.b($$0, 1343);
-         $$0 = baf.d.a(this.d, $$0, $$1);
-
-         for (int $$2 = 0; $$2 < 9; $$2++) {
-            this.e[$$2] = gcr.a.parse(vf.a, $$0.c(String.valueOf($$2))).resultOrPartial($$0x -> b.warn("Failed to parse hotbar: {}", $$0x)).orElseGet(gcr::new);
-         }
-      } catch (Exception var4) {
-         b.error("Failed to load creative mode options", var4);
-      }
+   public static ffa b() {
+      return m;
    }
 
-   public void a() {
-      try {
-         ur $$0 = vg.e(new ur());
-
-         for (int $$1 = 0; $$1 < 9; $$1++) {
-            gcr $$2 = this.a($$1);
-            DataResult<vo> $$3 = gcr.a.encodeStart(vf.a, $$2);
-            $$0.a(String.valueOf($$1), (vo)$$3.getOrThrow());
-         }
-
-         ve.b($$0, this.c);
-      } catch (Exception var5) {
-         b.error("Failed to save creative mode options", var5);
-      }
+   public static ffa c() {
+      return n;
    }
 
-   public gcr a(int $$0) {
-      if (!this.f) {
-         this.b();
-         this.f = true;
+   public static ffa a(String $$0) {
+      xp $$1 = xp.b($$0).a(n.h);
+      xp $$2 = xp.i().b(h).b(xo.s).b($$1);
+      return new ffa(6316128, ffa.a.a, $$2, "Modified");
+   }
+
+   public static ffa d() {
+      return o;
+   }
+
+   public int e() {
+      return this.a;
+   }
+
+   @Nullable
+   public ffa.a f() {
+      return this.b;
+   }
+
+   @Nullable
+   public xp g() {
+      return this.c;
+   }
+
+   @Nullable
+   public String h() {
+      return this.d;
+   }
+
+   public static enum a {
+      a(new alf("icon/chat_modified"), 9, 9);
+
+      public final alf b;
+      public final int c;
+      public final int d;
+
+      private a(final alf $$0, final int $$1, final int $$2) {
+         this.b = $$0;
+         this.c = $$1;
+         this.d = $$2;
       }
 
-      return this.e[$$0];
+      public void a(fgr $$0, int $$1, int $$2) {
+         $$0.a(this.b, $$1, $$2, this.c, this.d);
+      }
    }
 }

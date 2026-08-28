@@ -1,45 +1,33 @@
-public class air implements zv<agv> {
-   public static final zm<wl, air> a = zv.a(air::a, air::new);
-   private final evm b;
-   private final bqs c;
-   private final int d;
+import java.util.UUID;
+import javax.annotation.Nullable;
 
-   public air(bqs $$0, evm $$1, int $$2) {
-      this.c = $$0;
-      this.b = $$1;
-      this.d = $$2;
+public class air implements zw<agw> {
+   public static final zn<wm, air> a = zw.a(air::a, air::new);
+   private final UUID b;
+
+   public air(UUID $$0) {
+      this.b = $$0;
    }
 
-   private air(wl $$0) {
-      this.c = $$0.b(bqs.class);
-      this.b = $$0.v();
-      this.d = $$0.l();
+   private air(wm $$0) {
+      this.b = $$0.n();
    }
 
-   private void a(wl $$0) {
-      $$0.a(this.c);
+   private void a(wm $$0) {
       $$0.a(this.b);
-      $$0.c(this.d);
    }
 
    @Override
-   public zx<air> a() {
-      return agt.cc;
+   public zy<air> a() {
+      return agu.cb;
    }
 
-   public void a(agv $$0) {
+   public void a(agw $$0) {
       $$0.a(this);
    }
 
-   public bqs b() {
-      return this.c;
-   }
-
-   public evm e() {
-      return this.b;
-   }
-
-   public int f() {
-      return this.d;
+   @Nullable
+   public bsu a(arf $$0) {
+      return $$0.a(this.b);
    }
 }

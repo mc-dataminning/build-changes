@@ -1,121 +1,75 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import com.mojang.datafixers.util.Pair;
+import javax.annotation.Nullable;
 
-public class czb implements cyl {
-   final czc a;
-   final cuo b;
-   final String c;
-   final cyk d;
-   final boolean e;
-
-   public czb(String $$0, cyk $$1, czc $$2, cuo $$3, boolean $$4) {
-      this.c = $$0;
-      this.d = $$1;
-      this.a = $$2;
-      this.b = $$3;
-      this.e = $$4;
+public class czb extends cyn {
+   public czb(cyl $$0) {
+      super($$0);
    }
 
-   public czb(String $$0, cyk $$1, czc $$2, cuo $$3) {
-      this($$0, $$1, $$2, $$3, true);
+   @Nullable
+   private Pair<cup, cup> a(cqk $$0) {
+      cup $$1 = null;
+      cup $$2 = null;
+
+      for (int $$3 = 0; $$3 < $$0.b(); $$3++) {
+         cup $$4 = $$0.a($$3);
+         if (!$$4.e()) {
+            if ($$1 == null) {
+               $$1 = $$4;
+            } else {
+               if ($$2 != null) {
+                  return null;
+               }
+
+               $$2 = $$4;
+            }
+         }
+      }
+
+      return $$1 != null && $$2 != null && a($$1, $$2) ? Pair.of($$1, $$2) : null;
    }
 
-   @Override
-   public cyy<?> ao_() {
-      return cyy.a;
+   private static boolean a(cup $$0, cup $$1) {
+      return $$1.a($$0.g()) && $$0.I() == 1 && $$1.I() == 1 && $$0.b(km.d) && $$1.b(km.d) && $$0.b(km.e) && $$1.b(km.e);
    }
 
-   @Override
-   public String c() {
-      return this.c;
+   public boolean a(cqk $$0, dby $$1) {
+      return this.a($$0) != null;
    }
 
-   @Override
-   public cyk d() {
-      return this.d;
-   }
-
-   @Override
-   public cuo a(jk.a $$0) {
-      return this.b;
-   }
-
-   @Override
-   public jr<cyr> a() {
-      return this.a.c();
-   }
-
-   @Override
-   public boolean h() {
-      return this.e;
+   public cup a(cqk $$0, jk.a $$1) {
+      Pair<cup, cup> $$2 = this.a($$0);
+      if ($$2 == null) {
+         return cup.l;
+      } else {
+         cup $$3 = (cup)$$2.getFirst();
+         cup $$4 = (cup)$$2.getSecond();
+         int $$5 = Math.max($$3.o(), $$4.o());
+         int $$6 = $$3.o() - $$3.n();
+         int $$7 = $$4.o() - $$4.n();
+         int $$8 = $$6 + $$7 + $$5 * 5 / 100;
+         cup $$9 = new cup($$3.g());
+         $$9.b(km.d, Integer.valueOf($$5));
+         $$9.b(Math.max($$5 - $$8, 0));
+         daf $$10 = dab.b($$3);
+         daf $$11 = dab.b($$4);
+         dab.a($$9, $$3x -> $$1.b(lq.u).b().map(ji::a).filter(daa::b).forEach($$3xx -> {
+               int $$4x = Math.max($$10.a($$3xx), $$11.a($$3xx));
+               if ($$4x > 0) {
+                  $$3x.b($$3xx, $$4x);
+               }
+            }));
+         return $$9;
+      }
    }
 
    @Override
    public boolean a(int $$0, int $$1) {
-      return $$0 >= this.a.a() && $$1 >= this.a.b();
-   }
-
-   public boolean a(cqj $$0, dbx $$1) {
-      return this.a.a($$0);
-   }
-
-   public cuo a(cqj $$0, jk.a $$1) {
-      return this.a($$1).s();
-   }
-
-   public int j() {
-      return this.a.a();
-   }
-
-   public int k() {
-      return this.a.b();
+      return $$0 * $$1 >= 2;
    }
 
    @Override
-   public boolean i() {
-      jr<cyr> $$0 = this.a();
-      return $$0.isEmpty() || $$0.stream().filter($$0x -> !$$0x.c()).anyMatch($$0x -> $$0x.a().length == 0);
-   }
-
-   public static class a implements cyy<czb> {
-      public static final MapCodec<czb> x = RecordCodecBuilder.mapCodec(
-         $$0 -> $$0.group(
-                  Codec.STRING.optionalFieldOf("group", "").forGetter($$0x -> $$0x.c),
-                  cyk.e.fieldOf("category").orElse(cyk.d).forGetter($$0x -> $$0x.d),
-                  czc.a.forGetter($$0x -> $$0x.a),
-                  cuo.d.fieldOf("result").forGetter($$0x -> $$0x.b),
-                  Codec.BOOL.optionalFieldOf("show_notification", true).forGetter($$0x -> $$0x.e)
-               )
-               .apply($$0, czb::new)
-      );
-      public static final zm<wz, czb> y = zm.a(czb.a::a, czb.a::a);
-
-      @Override
-      public MapCodec<czb> a() {
-         return x;
-      }
-
-      @Override
-      public zm<wz, czb> b() {
-         return y;
-      }
-
-      private static czb a(wz $$0) {
-         String $$1 = $$0.p();
-         cyk $$2 = $$0.b(cyk.class);
-         czc $$3 = czc.b.decode($$0);
-         cuo $$4 = cuo.i.decode($$0);
-         boolean $$5 = $$0.readBoolean();
-         return new czb($$1, $$2, $$3, $$4, $$5);
-      }
-
-      private static void a(wz $$0, czb $$1) {
-         $$0.a($$1.c);
-         $$0.a($$1.d);
-         czc.b.encode($$0, $$1.a);
-         cuo.i.encode($$0, $$1.b);
-         $$0.a($$1.e);
-      }
+   public cyz<?> ao_() {
+      return cyz.o;
    }
 }

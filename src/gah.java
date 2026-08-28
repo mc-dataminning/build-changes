@@ -1,30 +1,37 @@
-public class gah extends fzt {
-   private static final int a = 12235202;
+public class gah<T extends lj> extends gcc {
+   private final gbx a;
 
-   protected gah(fxu $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, float $$7, gbw $$8) {
-      super($$0, $$1, $$2, $$3, 0.7F, 0.6F, 0.7F, $$4, $$5 + 0.15F, $$6, $$7, $$8, 0.5F, 7, 0.5F, false);
-      float $$9 = (float)Math.random() * 0.2F;
-      this.v = (float)ayi.b.b(12235202) / 255.0F - $$9;
-      this.w = (float)ayi.b.c(12235202) / 255.0F - $$9;
-      this.x = (float)ayi.b.d(12235202) / 255.0F - $$9;
+   protected gah(fxv $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, T $$7, gbx $$8) {
+      super($$0, $$1, $$2, $$3, $$4, $$5, $$6);
+      this.B = 0.96F;
+      this.C = true;
+      this.a = $$8;
+      this.j *= 0.1F;
+      this.k *= 0.1F;
+      this.l *= 0.1F;
+      this.D = this.D * 0.75F * $$7.d();
+      int $$9 = (int)(8.0 / (this.r.j() * 0.8 + 0.2));
+      this.t = (int)Math.max((float)$$9 * $$7.d(), 1.0F);
+      this.b($$8);
+   }
+
+   protected float a(float $$0, float $$1) {
+      return (this.r.i() * 0.2F + 0.8F) * $$0 * $$1;
+   }
+
+   @Override
+   public gbg b() {
+      return gbg.b;
+   }
+
+   @Override
+   public float b(float $$0) {
+      return this.D * ayz.a(((float)this.s + $$0) / (float)this.t * 32.0F, 0.0F, 1.0F);
    }
 
    @Override
    public void a() {
-      this.u = 0.88F * this.u;
-      this.B = 0.92F * this.B;
       super.a();
-   }
-
-   public static class a implements gbe<lm> {
-      private final gbw a;
-
-      public a(gbw $$0) {
-         this.a = $$0;
-      }
-
-      public gbb a(lm $$0, fxu $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new gah($$1, $$2, $$3, $$4, $$5, $$6, $$7, 1.0F, this.a);
-      }
+      this.b(this.a);
    }
 }

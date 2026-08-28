@@ -2,26 +2,28 @@ import com.mojang.datafixers.kinds.App;
 import java.util.function.Function;
 
 public class bwp {
-   private static final int a = 1;
-
-   public static bvi<bto> a(float $$0) {
-      return byu.a(
-         (Function<byu.b<bto>, ? extends App<byu.c<bto>, byx<bto>>>)($$1 -> $$1.group($$1.a(ccs.n), $$1.c(ccs.m), $$1.b(ccs.s))
-               .apply($$1, ($$2, $$3, $$4) -> ($$5, $$6, $$7) -> {
-                     if ($$6.bR()) {
-                        return false;
-                     } else {
-                        bst $$8 = $$1.b($$4);
-                        if ($$8.a($$6, 1.0)) {
-                           $$6.n($$8);
-                        } else {
-                           $$2.a(new bvs($$8, true));
-                           $$3.a(new ccv(new bvs($$8, false), $$0, 1));
-                        }
-
+   public static bwt<btr> a(int $$0) {
+      return byv.a(
+         (Function<byv.b<btr>, ? extends App<byv.c<btr>, byy<btr>>>)($$1 -> $$1.group($$1.a(cct.n), $$1.b(cct.o), $$1.c(cct.p), $$1.b(cct.h))
+               .apply($$1, ($$2, $$3, $$4, $$5) -> ($$6, $$7, $$8) -> {
+                     btp $$9 = $$1.b($$3);
+                     if (!a($$7) && $$7.i($$9) && $$1.<ccv>b($$5).a($$9)) {
+                        $$2.a(new bvt($$9, true));
+                        $$7.a(bqt.a);
+                        $$7.C($$9);
+                        $$4.a(true, (long)$$0);
                         return true;
+                     } else {
+                        return false;
                      }
                   }))
       );
+   }
+
+   private static boolean a(btr $$0) {
+      return $$0.b($$1 -> {
+         cuk $$2 = $$1.g();
+         return $$2 instanceof cvi && $$0.a((cvi)$$2);
+      });
    }
 }

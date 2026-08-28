@@ -1,9 +1,15 @@
-public class ayt {
-   private static final long a = 6364136223846793005L;
-   private static final long b = 1442695040888963407L;
+import com.google.common.base.Suppliers;
+import java.util.function.Supplier;
 
-   public static long a(long $$0, long $$1) {
-      $$0 *= $$0 * 6364136223846793005L + 1442695040888963407L;
-      return $$0 + $$1;
+@Deprecated
+public class ayt<T> {
+   private final Supplier<T> a;
+
+   public ayt(Supplier<T> $$0) {
+      this.a = Suppliers.memoize($$0::get);
+   }
+
+   public T a() {
+      return this.a.get();
    }
 }

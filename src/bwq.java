@@ -1,37 +1,27 @@
 import com.mojang.datafixers.kinds.App;
-import java.util.Optional;
 import java.util.function.Function;
-import javax.annotation.Nullable;
 
 public class bwq {
-   public static bws<bto> a(float $$0) {
-      return byu.a((Function<byu.b<bto>, ? extends App<byu.c<bto>, byx<bto>>>)($$1 -> $$1.group($$1.c(ccs.m)).apply($$1, $$1x -> ($$2, $$3, $$4) -> {
-               if ($$2.h($$3.dp())) {
-                  return false;
-               } else {
-                  Optional<evq> $$5 = Optional.ofNullable(a($$2, $$3));
-                  $$5.ifPresent($$2x -> $$1x.a(new ccv($$2x, $$0, 0)));
-                  return true;
-               }
-            })));
-   }
+   private static final int a = 1;
 
-   @Nullable
-   private static evq a(are $$0, bto $$1) {
-      azg $$2 = $$1.el();
-      iz $$3 = $$1.dp();
+   public static bvj<btp> a(float $$0) {
+      return byv.a(
+         (Function<byv.b<btp>, ? extends App<byv.c<btp>, byy<btp>>>)($$1 -> $$1.group($$1.a(cct.n), $$1.c(cct.m), $$1.b(cct.s))
+               .apply($$1, ($$2, $$3, $$4) -> ($$5, $$6, $$7) -> {
+                     if ($$6.bR()) {
+                        return false;
+                     } else {
+                        bsu $$8 = $$1.b($$4);
+                        if ($$8.a($$6, 1.0)) {
+                           $$6.n($$8);
+                        } else {
+                           $$2.a(new bvt($$8, true));
+                           $$3.a(new ccw(new bvt($$8, false), $$0, 1));
+                        }
 
-      for (int $$4 = 0; $$4 < 10; $$4++) {
-         iz $$5 = $$3.b($$2.a(20) - 10, $$2.a(6) - 3, $$2.a(20) - 10);
-         if (a($$0, $$1, $$5)) {
-            return evq.c($$5);
-         }
-      }
-
-      return null;
-   }
-
-   public static boolean a(are $$0, bto $$1, iz $$2) {
-      return $$0.h($$2) && (double)$$0.a(dxt.a.e, $$2).v() <= $$1.dw();
+                        return true;
+                     }
+                  }))
+      );
    }
 }

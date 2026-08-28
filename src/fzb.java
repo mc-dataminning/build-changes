@@ -1,17 +1,37 @@
 import java.util.Locale;
 
 public enum fzb {
-   a("chat"),
-   b("skin"),
-   c("username");
+   a("generic"),
+   b("hate_speech"),
+   c("harassment_or_bullying"),
+   d("self_harm_or_suicide"),
+   e("imminent_harm"),
+   f("defamation_impersonation_false_information"),
+   g("alcohol_tobacco_drugs"),
+   h("child_sexual_exploitation_or_abuse"),
+   i("terrorism_or_violent_extremism"),
+   j("non_consensual_intimate_imagery");
 
-   private final String d;
+   private final String k;
+   private final xp l;
+   private final xp m;
 
    private fzb(final String $$0) {
-      this.d = $$0.toUpperCase(Locale.ROOT);
+      this.k = $$0.toUpperCase(Locale.ROOT);
+      String $$1 = "gui.abuseReport.reason." + $$0;
+      this.l = xp.c($$1);
+      this.m = xp.c($$1 + ".description");
    }
 
    public String a() {
-      return this.d;
+      return this.k;
+   }
+
+   public xp b() {
+      return this.l;
+   }
+
+   public xp c() {
+      return this.m;
    }
 }

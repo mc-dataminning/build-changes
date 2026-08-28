@@ -1,27 +1,7 @@
-public interface vs {
-   void a(vm var1);
+public class vs {
+   private static final vr<?>[] a = new vr[]{uu.a, uq.a, vk.a, ux.a, va.a, uv.b, ut.b, up.a, vn.a, uy.a, us.b, uw.a, uz.a};
 
-   void a(up var1);
-
-   void a(vj var1);
-
-   void a(uw var1);
-
-   void a(uz var1);
-
-   void a(uu var1);
-
-   void a(us var1);
-
-   void a(uo var1);
-
-   void a(uv var1);
-
-   void a(uy var1);
-
-   void a(ux var1);
-
-   void a(ur var1);
-
-   void a(ut var1);
+   public static vr<?> a(int $$0) {
+      return $$0 >= 0 && $$0 < a.length ? a[$$0] : vr.a($$0);
+   }
 }

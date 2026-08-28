@@ -1,23 +1,26 @@
-import java.util.List;
+public record abj(iz c, int d) implements aax {
+   public static final zn<wm, abj> a = aax.a(abj::a, abj::new);
+   public static final aax.b<abj> b = aax.a("debug/poi_ticket_count");
 
-public record abj(List<iz> c) implements aaw {
-   public static final zm<wl, abj> a = aaw.a(abj::a, abj::new);
-   public static final aaw.b<abj> b = aaw.a("debug/raids");
-
-   private abj(wl $$0) {
-      this($$0.a(iz.b));
+   private abj(wm $$0) {
+      this($$0.e(), $$0.readInt());
    }
 
-   private void a(wl $$0) {
-      $$0.a(this.c, iz.b);
+   private void a(wm $$0) {
+      $$0.a(this.c);
+      $$0.p(this.d);
    }
 
    @Override
-   public aaw.b<abj> a() {
+   public aax.b<abj> a() {
       return b;
    }
 
-   public List<iz> b() {
+   public iz b() {
       return this.c;
+   }
+
+   public int c() {
+      return this.d;
    }
 }

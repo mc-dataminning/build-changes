@@ -1,48 +1,22 @@
-import javax.annotation.Nullable;
-
-public interface ctq {
-   bta m();
-
-   default ji<avy> n() {
-      return avz.as;
+public class ctq extends cuk {
+   public ctq(cuk.a $$0) {
+      super($$0);
    }
 
-   default bqu<cuo> a(cuj $$0, dbx $$1, cmw $$2, bqs $$3) {
-      cuo $$4 = $$2.b($$3);
-      bta $$5 = btq.h($$4);
-      if (!$$2.d($$5)) {
-         return bqu.c($$4);
-      } else {
-         cuo $$6 = $$2.a($$5);
-         if ((!daa.f($$6) || $$2.f()) && !cuo.a($$4, $$6)) {
-            if (!$$1.x_()) {
-               $$2.b(awj.c.b($$0));
-            }
-
-            cuo $$7 = $$6.e() ? $$4 : $$6.f();
-            cuo $$8 = $$2.f() ? $$4.s() : $$4.f();
-            $$2.a($$5, $$8);
-            return bqu.a($$7, $$1.x_());
-         } else {
-            return bqu.d($$4);
-         }
+   @Override
+   public bqv<cup> a(dby $$0, cmx $$1, bqt $$2) {
+      cup $$3 = $$1.b($$2);
+      $$0.a(null, $$1.du(), $$1.dw(), $$1.dA(), awa.it, awb.g, 0.5F, 0.4F / ($$0.E_().i() * 0.4F + 0.8F));
+      $$1.gx().a(this, 20);
+      if (!$$0.B) {
+         cnz $$4 = new cnz($$0, $$1);
+         $$4.a($$3);
+         $$4.a($$1, $$1.dH(), $$1.dF(), 0.0F, 1.5F, 1.0F);
+         $$0.b($$4);
       }
-   }
 
-   @Nullable
-   static ctq c_(cuo $$0) {
-      cuj $$3 = $$0.g();
-      if ($$3 instanceof ctq) {
-         return (ctq)$$3;
-      } else {
-         if ($$0.g() instanceof csm $$2) {
-            dey var6 = $$2.d();
-            if (var6 instanceof ctq) {
-               return (ctq)var6;
-            }
-         }
-
-         return null;
-      }
+      $$1.b(awk.c.b(this));
+      $$3.a(1, $$1);
+      return bqv.a($$3, $$0.x_());
    }
 }

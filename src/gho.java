@@ -1,45 +1,44 @@
-import com.google.common.collect.Lists;
-import java.util.List;
+public class gho implements gha.a {
+   private final fff a;
 
-public class gho implements ggz.a {
-   private final List<iz> a = Lists.newArrayList();
-   private final List<Float> b = Lists.newArrayList();
-   private final List<Float> c = Lists.newArrayList();
-   private final List<Float> d = Lists.newArrayList();
-   private final List<Float> e = Lists.newArrayList();
-   private final List<Float> f = Lists.newArrayList();
-
-   public void a(iz $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
-      this.a.add($$0);
-      this.b.add($$1);
-      this.c.add($$5);
-      this.d.add($$2);
-      this.e.add($$3);
-      this.f.add($$4);
+   public gho(fff $$0) {
+      this.a = $$0;
    }
 
    @Override
-   public void a(ezx $$0, gdn $$1, double $$2, double $$3, double $$4) {
-      fab $$5 = $$1.getBuffer(gdv.A());
+   public void a(ezy $$0, gdo $$1, double $$2, double $$3, double $$4) {
+      iz $$5 = this.a.s.dp();
+      dcb $$6 = this.a.s.dP();
 
-      for (int $$6 = 0; $$6 < this.a.size(); $$6++) {
-         iz $$7 = this.a.get($$6);
-         Float $$8 = this.b.get($$6);
-         float $$9 = $$8 / 2.0F;
-         gdl.b(
-            $$0,
-            $$5,
-            (double)((float)$$7.u() + 0.5F - $$9) - $$2,
-            (double)((float)$$7.v() + 0.5F - $$9) - $$3,
-            (double)((float)$$7.w() + 0.5F - $$9) - $$4,
-            (double)((float)$$7.u() + 0.5F + $$9) - $$2,
-            (double)((float)$$7.v() + 0.5F + $$9) - $$3,
-            (double)((float)$$7.w() + 0.5F + $$9) - $$4,
-            this.d.get($$6),
-            this.e.get($$6),
-            this.f.get($$6),
-            this.c.get($$6)
-         );
+      for (iz $$7 : iz.c($$5.b(-10, -10, -10), $$5.b(10, 10, 10))) {
+         env $$8 = $$6.b_($$7);
+         if ($$8.a(awv.a)) {
+            double $$9 = (double)((float)$$7.v() + $$8.a($$6, $$7));
+            gha.a(
+               $$0,
+               $$1,
+               new evm(
+                     (double)((float)$$7.u() + 0.01F),
+                     (double)((float)$$7.v() + 0.01F),
+                     (double)((float)$$7.w() + 0.01F),
+                     (double)((float)$$7.u() + 0.99F),
+                     $$9,
+                     (double)((float)$$7.w() + 0.99F)
+                  )
+                  .d(-$$2, -$$3, -$$4),
+               0.0F,
+               1.0F,
+               0.0F,
+               0.15F
+            );
+         }
+      }
+
+      for (iz $$10 : iz.c($$5.b(-10, -10, -10), $$5.b(10, 10, 10))) {
+         env $$11 = $$6.b_($$10);
+         if ($$11.a(awv.a)) {
+            gha.a($$0, $$1, String.valueOf($$11.e()), (double)$$10.u() + 0.5, (double)((float)$$10.v() + $$11.a($$6, $$10)), (double)$$10.w() + 0.5, -16777216);
+         }
       }
    }
 }

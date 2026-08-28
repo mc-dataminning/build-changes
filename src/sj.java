@@ -1,53 +1,55 @@
 import java.util.List;
 
 public class sj {
-   public static final ald<eak<?, ?>> a = sh.a("delta");
-   public static final ald<eak<?, ?>> b = sh.a("small_basalt_columns");
-   public static final ald<eak<?, ?>> c = sh.a("large_basalt_columns");
-   public static final ald<eak<?, ?>> d = sh.a("basalt_blobs");
-   public static final ald<eak<?, ?>> e = sh.a("blackstone_blobs");
-   public static final ald<eak<?, ?>> f = sh.a("glowstone_extra");
-   public static final ald<eak<?, ?>> g = sh.a("crimson_forest_vegetation");
-   public static final ald<eak<?, ?>> h = sh.a("crimson_forest_vegetation_bonemeal");
-   public static final ald<eak<?, ?>> i = sh.a("warped_forest_vegetation");
-   public static final ald<eak<?, ?>> j = sh.a("warped_forest_vegetation_bonemeal");
-   public static final ald<eak<?, ?>> k = sh.a("nether_sprouts");
-   public static final ald<eak<?, ?>> l = sh.a("nether_sprouts_bonemeal");
-   public static final ald<eak<?, ?>> m = sh.a("twisting_vines");
-   public static final ald<eak<?, ?>> n = sh.a("twisting_vines_bonemeal");
-   public static final ald<eak<?, ?>> o = sh.a("weeping_vines");
-   public static final ald<eak<?, ?>> p = sh.a("patch_crimson_roots");
-   public static final ald<eak<?, ?>> q = sh.a("basalt_pillar");
-   public static final ald<eak<?, ?>> r = sh.a("spring_lava_nether");
-   public static final ald<eak<?, ?>> s = sh.a("spring_nether_closed");
-   public static final ald<eak<?, ?>> t = sh.a("spring_nether_open");
-   public static final ald<eak<?, ?>> u = sh.a("patch_fire");
-   public static final ald<eak<?, ?>> v = sh.a("patch_soul_fire");
+   public static final ale<eal<?, ?>> a = si.a("ice_spike");
+   public static final ale<eal<?, ?>> b = si.a("ice_patch");
+   public static final ale<eal<?, ?>> c = si.a("forest_rock");
+   public static final ale<eal<?, ?>> d = si.a("iceberg_packed");
+   public static final ale<eal<?, ?>> e = si.a("iceberg_blue");
+   public static final ale<eal<?, ?>> f = si.a("blue_ice");
+   public static final ale<eal<?, ?>> g = si.a("lake_lava");
+   public static final ale<eal<?, ?>> h = si.a("disk_clay");
+   public static final ale<eal<?, ?>> i = si.a("disk_gravel");
+   public static final ale<eal<?, ?>> j = si.a("disk_sand");
+   public static final ale<eal<?, ?>> k = si.a("freeze_top_layer");
+   public static final ale<eal<?, ?>> l = si.a("disk_grass");
+   public static final ale<eal<?, ?>> m = si.a("bonus_chest");
+   public static final ale<eal<?, ?>> n = si.a("void_start_platform");
+   public static final ale<eal<?, ?>> o = si.a("desert_well");
+   public static final ale<eal<?, ?>> p = si.a("spring_lava_overworld");
+   public static final ale<eal<?, ?>> q = si.a("spring_lava_frozen");
+   public static final ale<eal<?, ?>> r = si.a("spring_water");
 
-   public static void a(rc<eak<?, ?>> $$0) {
-      sh.a($$0, a, eax.Z, new ecx(dfa.H.o(), dfa.kJ.o(), bqe.a(3, 7), bqe.a(0, 2)));
-      sh.a($$0, b, eax.Y, new ecv(bpv.a(1), bqe.a(1, 4)));
-      sh.a($$0, c, eax.Y, new ecv(bqe.a(2, 3), bqe.a(5, 10)));
-      sh.a($$0, d, eax.aa, new edq(dfa.dV.o(), dfa.dY.o(), bqe.a(3, 7)));
-      sh.a($$0, e, eax.aa, new edq(dfa.dV.o(), dfa.pr.o(), bqe.a(3, 7)));
-      sh.a($$0, f, eax.t);
-      efm $$1 = new efm(bpd.<dsb>a().a(dfa.oD.o(), 87).a(dfa.ox.o(), 11).a(dfa.oo.o(), 1));
-      sh.a($$0, g, eax.V, new edh($$1, 8, 4));
-      sh.a($$0, h, eax.V, new edh($$1, 3, 1));
-      efm $$2 = new efm(bpd.<dsb>a().a(dfa.oq.o(), 85).a(dfa.oD.o(), 1).a(dfa.oo.o(), 13).a(dfa.ox.o(), 1));
-      sh.a($$0, i, eax.V, new edh($$2, 8, 4));
-      sh.a($$0, j, eax.V, new edh($$2, 3, 1));
-      sh.a($$0, k, eax.V, new edh(efc.a(dfa.or), 8, 4));
-      sh.a($$0, l, eax.V, new edh(efc.a(dfa.or), 3, 1));
-      sh.a($$0, m, eax.X, new edy(8, 4, 8));
-      sh.a($$0, n, eax.X, new edy(3, 1, 2));
-      sh.a($$0, o, eax.W);
-      sh.a($$0, p, eax.i, sh.a(eax.S, new edt(efc.a(dfa.oD))));
-      sh.a($$0, q, eax.ad);
-      sh.a($$0, r, eax.k, new edw(env.e.g(), true, 4, 1, jm.a(dey::s, dfa.dV, dfa.dW, dfa.L, dfa.kJ, dfa.pr)));
-      sh.a($$0, s, eax.k, new edw(env.e.g(), false, 5, 0, jm.a(dey::s, dfa.dV)));
-      sh.a($$0, t, eax.k, new edw(env.e.g(), false, 4, 1, jm.a(dey::s, dfa.dV)));
-      sh.a($$0, u, eax.i, sh.a(eax.S, new edt(efc.a(dfa.cr)), List.of(dfa.dV)));
-      sh.a($$0, v, eax.i, sh.a(eax.S, new edt(efc.a(dfa.cs)), List.of(dfa.dX)));
+   public static void a(rc<eal<?, ?>> $$0) {
+      si.a($$0, a, eay.s);
+      si.a($$0, b, eay.G, new ecz(efl.a(dfb.iC), dzb.c(List.of(dfb.j, dfb.i, dfb.l, dfb.k, dfb.fl, dfb.dP, dfb.dO)), bqf.a(2, 3), 1));
+      si.a($$0, c, eay.F, new ecv(dfb.cn.o()));
+      si.a($$0, d, eay.E, new ecv(dfb.iC.o()));
+      si.a($$0, e, eay.E, new ecv(dfb.mW.o()));
+      si.a($$0, f, eay.D);
+      si.a($$0, g, eay.H, new ebn.a(efd.a(dfb.H.o()), efd.a(dfb.b.o())));
+      si.a($$0, h, eay.G, new ecz(efl.a(dfb.dR), dzb.c(List.of(dfb.j, dfb.dR)), bqf.a(2, 3), 1));
+      si.a($$0, i, eay.G, new ecz(efl.a(dfb.L), dzb.c(List.of(dfb.j, dfb.i)), bqf.a(2, 5), 2));
+      si.a(
+         $$0, j, eay.G, new ecz(new efl(efd.a(dfb.I), List.of(new efl.a(dzb.a(je.a.q(), dfb.a), efd.a(dfb.aV)))), dzb.c(List.of(dfb.j, dfb.i)), bqf.a(2, 6), 2)
+      );
+      si.a($$0, k, eay.u);
+      si.a(
+         $$0,
+         l,
+         eay.G,
+         new ecz(
+            new efl(efd.a(dfb.j), List.of(new efl.a(dzb.a(dzb.b(dzb.b(je.b.q()), dzb.a(je.b.q(), enw.c))), efd.a(dfb.i)))),
+            dzb.c(List.of(dfb.j, dfb.sI)),
+            bqf.a(2, 6),
+            2
+         )
+      );
+      si.a($$0, m, eay.ac);
+      si.a($$0, n, eay.n);
+      si.a($$0, o, eay.o);
+      si.a($$0, p, eay.k, new edx(enw.e.g(), true, 4, 1, jm.a(dez::s, dfb.b, dfb.c, dfb.e, dfb.g, dfb.sJ, dfb.qz, dfb.qN, dfb.j)));
+      si.a($$0, q, eay.k, new edx(enw.e.g(), true, 4, 1, jm.a(dez::s, dfb.dP, dfb.qP, dfb.iC)));
+      si.a($$0, r, eay.k, new edx(enw.c.g(), true, 4, 1, jm.a(dez::s, dfb.b, dfb.c, dfb.e, dfb.g, dfb.sJ, dfb.qz, dfb.qN, dfb.j, dfb.dP, dfb.qP, dfb.iC)));
    }
 }

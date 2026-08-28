@@ -1,146 +1,136 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.Lists;
-import com.google.common.collect.ImmutableList.Builder;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.function.BiFunction;
+import com.google.common.collect.Maps;
+import com.google.common.collect.Sets;
+import java.util.Map;
+import java.util.NoSuchElementException;
+import java.util.Set;
 import java.util.function.Consumer;
-import java.util.function.Predicate;
-import org.apache.commons.lang3.mutable.MutableInt;
+import javax.annotation.Nullable;
 
 public class eql {
-   public static final Codec<eql> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               eqv.a.listOf().fieldOf("entries").forGetter($$0x -> $$0x.b),
-               ett.a.listOf().optionalFieldOf("conditions", List.of()).forGetter($$0x -> $$0x.c),
-               erw.c.listOf().optionalFieldOf("functions", List.of()).forGetter($$0x -> $$0x.e),
-               eun.a.fieldOf("rolls").forGetter($$0x -> $$0x.g),
-               eun.a.fieldOf("bonus_rolls").orElse(euk.a(0.0F)).forGetter($$0x -> $$0x.h)
-            )
-            .apply($$0, eql::new)
-   );
-   private final List<eqx> b;
-   private final List<etr> c;
-   private final Predicate<eqh> d;
-   private final List<eru> e;
-   private final BiFunction<cuo, eqh, cuo> f;
-   private final eum g;
-   private final eum h;
+   private final arf a;
+   private final Map<etb<?>, Object> b;
+   private final Map<alf, eql.b> c;
+   private final float d;
 
-   eql(List<eqx> $$0, List<etr> $$1, List<eru> $$2, eum $$3, eum $$4) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = ac.a($$1);
-      this.e = $$2;
-      this.f = erw.a($$2);
-      this.g = $$3;
-      this.h = $$4;
+   public eql(arf $$0, Map<etb<?>, Object> $$1, Map<alf, eql.b> $$2, float $$3) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+      this.d = $$3;
    }
 
-   private void b(Consumer<cuo> $$0, eqh $$1) {
-      azg $$2 = $$1.b();
-      List<eqw> $$3 = Lists.newArrayList();
-      MutableInt $$4 = new MutableInt();
+   public arf a() {
+      return this.a;
+   }
 
-      for (eqx $$5 : this.b) {
-         $$5.expand($$1, $$3x -> {
-            int $$4x = $$3x.a($$1.c());
-            if ($$4x > 0) {
-               $$3.add($$3x);
-               $$4.add($$4x);
-            }
-         });
+   public boolean a(etb<?> $$0) {
+      return this.b.containsKey($$0);
+   }
+
+   public <T> T b(etb<T> $$0) {
+      T $$1 = (T)this.b.get($$0);
+      if ($$1 == null) {
+         throw new NoSuchElementException($$0.a().toString());
+      } else {
+         return $$1;
+      }
+   }
+
+   @Nullable
+   public <T> T c(etb<T> $$0) {
+      return (T)this.b.get($$0);
+   }
+
+   @Nullable
+   public <T> T d(etb<T> $$0) {
+      return (T)this.b.get($$0);
+   }
+
+   public void a(alf $$0, Consumer<cup> $$1) {
+      eql.b $$2 = this.c.get($$0);
+      if ($$2 != null) {
+         $$2.add($$1);
+      }
+   }
+
+   public float b() {
+      return this.d;
+   }
+
+   public static class a {
+      private final arf a;
+      private final Map<etb<?>, Object> b = Maps.newIdentityHashMap();
+      private final Map<alf, eql.b> c = Maps.newHashMap();
+      private float d;
+
+      public a(arf $$0) {
+         this.a = $$0;
       }
 
-      int $$6 = $$3.size();
-      if ($$4.intValue() != 0 && $$6 != 0) {
-         if ($$6 == 1) {
-            $$3.get(0).a($$0, $$1);
+      public arf a() {
+         return this.a;
+      }
+
+      public <T> eql.a a(etb<T> $$0, T $$1) {
+         this.b.put($$0, $$1);
+         return this;
+      }
+
+      public <T> eql.a b(etb<T> $$0, @Nullable T $$1) {
+         if ($$1 == null) {
+            this.b.remove($$0);
          } else {
-            int $$7 = $$2.a($$4.intValue());
+            this.b.put($$0, $$1);
+         }
 
-            for (eqw $$8 : $$3) {
-               $$7 -= $$8.a($$1.c());
-               if ($$7 < 0) {
-                  $$8.a($$0, $$1);
-                  return;
-               }
-            }
+         return this;
+      }
+
+      public <T> T a(etb<T> $$0) {
+         T $$1 = (T)this.b.get($$0);
+         if ($$1 == null) {
+            throw new NoSuchElementException($$0.a().toString());
+         } else {
+            return $$1;
          }
       }
-   }
 
-   public void a(Consumer<cuo> $$0, eqh $$1) {
-      if (this.d.test($$1)) {
-         Consumer<cuo> $$2 = eru.a(this.f, $$0, $$1);
-         int $$3 = this.g.a($$1) + ayy.d(this.h.b($$1) * $$1.c());
+      @Nullable
+      public <T> T b(etb<T> $$0) {
+         return (T)this.b.get($$0);
+      }
 
-         for (int $$4 = 0; $$4 < $$3; $$4++) {
-            this.b($$2, $$1);
+      public eql.a a(alf $$0, eql.b $$1) {
+         eql.b $$2 = this.c.put($$0, $$1);
+         if ($$2 != null) {
+            throw new IllegalStateException("Duplicated dynamic drop '" + this.c + "'");
+         } else {
+            return this;
          }
       }
-   }
 
-   public void a(eqn $$0) {
-      for (int $$1 = 0; $$1 < this.c.size(); $$1++) {
-         this.c.get($$1).a($$0.a(".condition[" + $$1 + "]"));
-      }
-
-      for (int $$2 = 0; $$2 < this.e.size(); $$2++) {
-         this.e.get($$2).a($$0.a(".functions[" + $$2 + "]"));
-      }
-
-      for (int $$3 = 0; $$3 < this.b.size(); $$3++) {
-         this.b.get($$3).a($$0.a(".entries[" + $$3 + "]"));
-      }
-
-      this.g.a($$0.a(".rolls"));
-      this.h.a($$0.a(".bonusRolls"));
-   }
-
-   public static eql.a a() {
-      return new eql.a();
-   }
-
-   public static class a implements erq<eql.a>, etk<eql.a> {
-      private final Builder<eqx> a = ImmutableList.builder();
-      private final Builder<etr> b = ImmutableList.builder();
-      private final Builder<eru> c = ImmutableList.builder();
-      private eum d = euk.a(1.0F);
-      private eum e = euk.a(0.0F);
-
-      public eql.a a(eum $$0) {
+      public eql.a a(float $$0) {
          this.d = $$0;
          return this;
       }
 
-      public eql.a a() {
-         return this;
+      public eql a(etc $$0) {
+         Set<etb<?>> $$1 = Sets.difference(this.b.keySet(), $$0.b());
+         if (!$$1.isEmpty()) {
+            throw new IllegalArgumentException("Parameters not allowed in this parameter set: " + $$1);
+         } else {
+            Set<etb<?>> $$2 = Sets.difference($$0.a(), this.b.keySet());
+            if (!$$2.isEmpty()) {
+               throw new IllegalArgumentException("Missing required parameters: " + $$2);
+            } else {
+               return new eql(this.a, this.b, this.c, this.d);
+            }
+         }
       }
+   }
 
-      public eql.a b(eum $$0) {
-         this.e = $$0;
-         return this;
-      }
-
-      public eql.a a(eqx.a<?> $$0) {
-         this.a.add($$0.b());
-         return this;
-      }
-
-      public eql.a a(etr.a $$0) {
-         this.b.add($$0.build());
-         return this;
-      }
-
-      public eql.a a(eru.a $$0) {
-         this.c.add($$0.b());
-         return this;
-      }
-
-      public eql b() {
-         return new eql(this.a.build(), this.b.build(), this.c.build(), this.d, this.e);
-      }
+   @FunctionalInterface
+   public interface b {
+      void add(Consumer<cup> var1);
    }
 }

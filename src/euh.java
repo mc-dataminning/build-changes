@@ -1,29 +1,16 @@
-import com.google.common.collect.ImmutableSet;
+import com.mojang.datafixers.util.Either;
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Set;
-import javax.annotation.Nullable;
 
-public record euh(ale b) implements euf {
-   public static final MapCodec<euh> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(ale.a.fieldOf("source").forGetter(euh::c)).apply($$0, euh::new));
+public class euh {
+   private static final Codec<eug> d = lp.J.q().dispatch(eug::a, euf::a);
+   public static final Codec<eug> a = Codec.lazyInitialized(
+      () -> Codec.either(eue.c, d).xmap(Either::unwrap, $$0 -> $$0 instanceof eue $$1 ? Either.left($$1) : Either.right($$0))
+   );
+   public static final euf b = a("storage", eui.a);
+   public static final euf c = a("context", eue.b);
 
-   @Override
-   public eue a() {
-      return eug.b;
-   }
-
-   @Nullable
-   @Override
-   public vo a(eqh $$0) {
-      return $$0.d().o().aL().a(this.b);
-   }
-
-   @Override
-   public Set<eta<?>> b() {
-      return ImmutableSet.of();
-   }
-
-   public ale c() {
-      return this.b;
+   private static euf a(String $$0, MapCodec<? extends eug> $$1) {
+      return jv.a(lp.J, new alf($$0), new euf($$1));
    }
 }

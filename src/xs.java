@@ -1,160 +1,131 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import java.util.BitSet;
-import java.util.function.Supplier;
+import com.google.common.collect.Lists;
+import com.mojang.brigadier.Message;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.datafixers.DataFixUtils;
+import java.util.Collection;
+import java.util.List;
+import java.util.Optional;
+import java.util.function.Function;
 import javax.annotation.Nullable;
-import org.apache.commons.lang3.StringUtils;
 
 public class xs {
-   public static final Codec<xs> a = azt.a(xs.a::values).dispatch(xs::c, xs.a::a);
-   public static final xs b = new xs(new BitSet(0), xs.a.b);
-   public static final xs c = new xs(new BitSet(0), xs.a.a);
-   public static final yl d = yl.a.a(n.i).a(new xu(xu.a.a, xo.c("chat.filtered")));
-   static final MapCodec<xs> e = MapCodec.unit(c);
-   static final MapCodec<xs> f = MapCodec.unit(b);
-   static final MapCodec<xs> g = ayg.u.xmap(xs::new, xs::d).fieldOf("value");
-   private static final char h = '#';
-   private final BitSet i;
-   private final xs.a j;
+   public static final String a = ", ";
+   public static final xp b = xp.b(", ").a(n.h);
+   public static final xp c = xp.b(", ");
 
-   private xs(BitSet $$0, xs.a $$1) {
-      this.i = $$0;
-      this.j = $$1;
-   }
-
-   private xs(BitSet $$0) {
-      this.i = $$0;
-      this.j = xs.a.c;
-   }
-
-   public xs(int $$0) {
-      this(new BitSet($$0), xs.a.c);
-   }
-
-   private xs.a c() {
-      return this.j;
-   }
-
-   private BitSet d() {
-      return this.i;
-   }
-
-   public static xs a(wl $$0) {
-      xs.a $$1 = $$0.b(xs.a.class);
-
-      return switch ($$1) {
-         case a -> c;
-         case b -> b;
-         case c -> new xs($$0.w(), xs.a.c);
-      };
-   }
-
-   public static void a(wl $$0, xs $$1) {
-      $$0.a($$1.j);
-      if ($$1.j == xs.a.c) {
-         $$0.a($$1.i);
-      }
-   }
-
-   public void a(int $$0) {
-      this.i.set($$0);
-   }
-
-   @Nullable
-   public String a(String $$0) {
-      return switch (this.j) {
-         case a -> $$0;
-         case b -> null;
-         case c -> {
-            char[] $$1 = $$0.toCharArray();
-
-            for (int $$2 = 0; $$2 < $$1.length && $$2 < this.i.length(); $$2++) {
-               if (this.i.get($$2)) {
-                  $$1[$$2] = '#';
-               }
-            }
-
-            yield new String($$1);
-         }
-      };
-   }
-
-   @Nullable
-   public xo b(String $$0) {
-      return switch (this.j) {
-         case a -> xo.b($$0);
-         case b -> null;
-         case c -> {
-            yc $$1 = xo.i();
-            int $$2 = 0;
-            boolean $$3 = this.i.get(0);
-
-            while (true) {
-               int $$4 = $$3 ? this.i.nextClearBit($$2) : this.i.nextSetBit($$2);
-               $$4 = $$4 < 0 ? $$0.length() : $$4;
-               if ($$4 == $$2) {
-                  yield $$1;
-               }
-
-               if ($$3) {
-                  $$1.b(xo.b(StringUtils.repeat('#', $$4 - $$2)).c(d));
-               } else {
-                  $$1.f($$0.substring($$2, $$4));
-               }
-
-               $$3 = !$$3;
-               $$2 = $$4;
-            }
-         }
-      };
-   }
-
-   public boolean a() {
-      return this.j == xs.a.a;
-   }
-
-   public boolean b() {
-      return this.j == xs.a.b;
-   }
-
-   @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else if ($$0 != null && this.getClass() == $$0.getClass()) {
-         xs $$1 = (xs)$$0;
-         return this.i.equals($$1.i) && this.j == $$1.j;
+   public static yd a(yd $$0, ym $$1) {
+      if ($$1.g()) {
+         return $$0;
       } else {
-         return false;
+         ym $$2 = $$0.a();
+         if ($$2.g()) {
+            return $$0.b($$1);
+         } else {
+            return $$2.equals($$1) ? $$0 : $$0.b($$2.a($$1));
+         }
       }
    }
 
-   @Override
-   public int hashCode() {
-      int $$0 = this.i.hashCode();
-      return 31 * $$0 + this.j.hashCode();
+   public static Optional<yd> a(@Nullable ep $$0, Optional<xp> $$1, @Nullable bsu $$2, int $$3) throws CommandSyntaxException {
+      return $$1.isPresent() ? Optional.of(a($$0, $$1.get(), $$2, $$3)) : Optional.empty();
    }
 
-   static enum a implements azt {
-      a("pass_through", () -> xs.e),
-      b("fully_filtered", () -> xs.f),
-      c("partially_filtered", () -> xs.g);
+   public static yd a(@Nullable ep $$0, xp $$1, @Nullable bsu $$2, int $$3) throws CommandSyntaxException {
+      if ($$3 > 100) {
+         return $$1.f();
+      } else {
+         yd $$4 = $$1.b().a($$0, $$2, $$3 + 1);
 
-      private final String d;
-      private final Supplier<MapCodec<xs>> e;
+         for (xp $$5 : $$1.c()) {
+            $$4.b(a($$0, $$5, $$2, $$3 + 1));
+         }
 
-      private a(final String $$0, final Supplier<MapCodec<xs>> $$1) {
-         this.d = $$0;
-         this.e = $$1;
+         return $$4.c(a($$0, $$1.a(), $$2, $$3));
+      }
+   }
+
+   private static ym a(@Nullable ep $$0, ym $$1, @Nullable bsu $$2, int $$3) throws CommandSyntaxException {
+      xv $$4 = $$1.i();
+      if ($$4 != null) {
+         xp $$5 = $$4.a(xv.a.a);
+         if ($$5 != null) {
+            xv $$6 = new xv(xv.a.a, a($$0, $$5, $$2, $$3 + 1));
+            return $$1.a($$6);
+         }
       }
 
-      @Override
-      public String c() {
-         return this.d;
-      }
+      return $$1;
+   }
 
-      private MapCodec<xs> a() {
-         return this.e.get();
+   public static xp a(Collection<String> $$0) {
+      return a($$0, $$0x -> xp.b($$0x).a(n.k));
+   }
+
+   public static <T extends Comparable<T>> xp a(Collection<T> $$0, Function<T, xp> $$1) {
+      if ($$0.isEmpty()) {
+         return xo.a;
+      } else if ($$0.size() == 1) {
+         return $$1.apply($$0.iterator().next());
+      } else {
+         List<T> $$2 = Lists.newArrayList($$0);
+         $$2.sort(Comparable::compareTo);
+         return b($$2, $$1);
       }
+   }
+
+   public static <T> xp b(Collection<? extends T> $$0, Function<T, xp> $$1) {
+      return a($$0, b, $$1);
+   }
+
+   public static <T> yd a(Collection<? extends T> $$0, Optional<? extends xp> $$1, Function<T, xp> $$2) {
+      return a($$0, (xp)DataFixUtils.orElse($$1, b), $$2);
+   }
+
+   public static xp a(Collection<? extends xp> $$0, xp $$1) {
+      return a($$0, $$1, Function.identity());
+   }
+
+   public static <T> yd a(Collection<? extends T> $$0, xp $$1, Function<T, xp> $$2) {
+      if ($$0.isEmpty()) {
+         return xp.i();
+      } else if ($$0.size() == 1) {
+         return $$2.apply((T)$$0.iterator().next()).f();
+      } else {
+         yd $$3 = xp.i();
+         boolean $$4 = true;
+
+         for (T $$5 : $$0) {
+            if (!$$4) {
+               $$3.b($$1);
+            }
+
+            $$3.b($$2.apply($$5));
+            $$4 = false;
+         }
+
+         return $$3;
+      }
+   }
+
+   public static yd a(xp $$0) {
+      return xp.a("chat.square_brackets", $$0);
+   }
+
+   public static xp a(Message $$0) {
+      return (xp)($$0 instanceof xp ? (xp)$$0 : xp.b($$0.getString()));
+   }
+
+   public static boolean b(@Nullable xp $$0) {
+      if ($$0 != null && $$0.b() instanceof za $$1) {
+         String $$2 = $$1.b();
+         String $$3 = $$1.c();
+         return $$3 != null || un.a().b($$2);
+      } else {
+         return true;
+      }
+   }
+
+   public static yd a(String $$0) {
+      return a((xp)xp.b($$0).a($$1 -> $$1.a(n.k).a(new xn(xn.a.f, $$0)).a(new xv(xv.a.a, xp.c("chat.copy.click"))).a($$0)));
    }
 }

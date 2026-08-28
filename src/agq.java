@@ -1,24 +1,24 @@
-import java.util.Optional;
-import javax.annotation.Nullable;
+import java.util.Collection;
+import java.util.List;
 
-public record agq(ji<dvt> a, ald<dbx> b, long c, dbu d, @Nullable dbu e, boolean f, boolean g, Optional<jh> h, int i) {
-   private static final zm<wz, ji<dvt>> j = zk.b(lq.aE);
+public class agq implements zw<aci> {
+   public static final zn<xa, agq> a = zn.a(cyx.a.a(zl.a()), $$0 -> $$0.b, agq::new);
+   private final List<cyx<?>> b;
 
-   public agq(wz $$0) {
-      this(
-         j.decode($$0), $$0.a(lq.aS), $$0.readLong(), dbu.a($$0.readByte()), dbu.b($$0.readByte()), $$0.readBoolean(), $$0.readBoolean(), $$0.b(wl::h), $$0.l()
-      );
+   public agq(Collection<cyx<?>> $$0) {
+      this.b = List.copyOf($$0);
    }
 
-   public void a(wz $$0) {
-      j.encode($$0, this.a);
-      $$0.b(this.b);
-      $$0.b(this.c);
-      $$0.k(this.d.a());
-      $$0.k(dbu.a(this.e));
-      $$0.a(this.f);
-      $$0.a(this.g);
-      $$0.a(this.h, wl::a);
-      $$0.c(this.i);
+   @Override
+   public zy<agq> a() {
+      return agu.bd;
+   }
+
+   public void a(aci $$0) {
+      $$0.a(this);
+   }
+
+   public List<cyx<?>> b() {
+      return this.b;
    }
 }

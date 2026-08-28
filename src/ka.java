@@ -1,7 +1,7 @@
 import io.netty.buffer.ByteBuf;
 
 public class ka {
-   public static final zm<ByteBuf, ka> a = new zm<ByteBuf, ka>() {
+   public static final zn<ByteBuf, ka> a = new zn<ByteBuf, ka>() {
       public ka a(ByteBuf $$0) {
          return new ka($$0.readFloat(), $$0.readFloat(), $$0.readFloat());
       }
@@ -22,15 +22,15 @@ public class ka {
       this.d = !Float.isInfinite($$2) && !Float.isNaN($$2) ? $$2 % 360.0F : 0.0F;
    }
 
-   public ka(ux $$0) {
+   public ka(uy $$0) {
       this($$0.i(0), $$0.i(1), $$0.i(2));
    }
 
-   public ux a() {
-      ux $$0 = new ux();
-      $$0.add(uu.a(this.b));
-      $$0.add(uu.a(this.c));
-      $$0.add(uu.a(this.d));
+   public uy a() {
+      uy $$0 = new uy();
+      $$0.add(uv.a(this.b));
+      $$0.add(uv.a(this.c));
+      $$0.add(uv.a(this.d));
       return $$0;
    }
 
@@ -52,14 +52,14 @@ public class ka {
    }
 
    public float e() {
-      return ayy.g(this.b);
+      return ayz.g(this.b);
    }
 
    public float f() {
-      return ayy.g(this.c);
+      return ayz.g(this.c);
    }
 
    public float g() {
-      return ayy.g(this.d);
+      return ayz.g(this.d);
    }
 }

@@ -1,33 +1,36 @@
-import com.google.common.collect.ImmutableList;
-import java.util.List;
-import java.util.concurrent.CompletableFuture;
+public class asj implements akf {
+   private static final xp b = xp.c("multiplayer.status.request_handled");
+   private final ake c;
+   private final wk d;
+   private boolean e;
 
-public interface asj {
-   asj a = new asj() {
-      @Override
-      public void a() {
+   public asj(ake $$0, wk $$1) {
+      this.c = $$0;
+      this.d = $$1;
+   }
+
+   @Override
+   public void a(xp $$0) {
+   }
+
+   @Override
+   public boolean c() {
+      return this.d.i();
+   }
+
+   @Override
+   public void a(akg $$0) {
+      if (this.e) {
+         this.d.a(b);
+      } else {
+         this.e = true;
+         this.d.a(new akd(this.c));
       }
+   }
 
-      @Override
-      public void b() {
-      }
-
-      @Override
-      public CompletableFuture<arw> a(String $$0) {
-         return CompletableFuture.completedFuture(arw.a($$0));
-      }
-
-      @Override
-      public CompletableFuture<List<arw>> a(List<String> $$0) {
-         return CompletableFuture.completedFuture($$0.stream().map(arw::a).collect(ImmutableList.toImmutableList()));
-      }
-   };
-
-   void a();
-
-   void b();
-
-   CompletableFuture<arw> a(String var1);
-
-   CompletableFuture<List<arw>> a(List<String> var1);
+   @Override
+   public void a(aka $$0) {
+      this.d.a(new ajx($$0.b()));
+      this.d.a(b);
+   }
 }

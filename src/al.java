@@ -1,26 +1,26 @@
 import com.mojang.serialization.Codec;
 
-public enum al implements azt {
+public enum al implements azu {
    a("task", n.k),
    b("challenge", n.f),
    c("goal", n.k);
 
-   public static final Codec<al> d = azt.a(al::values);
+   public static final Codec<al> d = azu.a(al::values);
    private final String e;
    private final n f;
-   private final xo g;
+   private final xp g;
 
    private al(final String $$0, final n $$1) {
       this.e = $$0;
       this.f = $$1;
-      this.g = xo.c("advancements.toast." + $$0);
+      this.g = xp.c("advancements.toast." + $$0);
    }
 
    public n a() {
       return this.f;
    }
 
-   public xo b() {
+   public xp b() {
       return this.g;
    }
 
@@ -29,7 +29,7 @@ public enum al implements azt {
       return this.e;
    }
 
-   public yc a(af $$0, arf $$1) {
-      return xo.a("chat.type.advancement." + this.e, $$1.O_(), ae.a($$0));
+   public yd a(af $$0, arg $$1) {
+      return xp.a("chat.type.advancement." + this.e, $$1.O_(), ae.a($$0));
    }
 }

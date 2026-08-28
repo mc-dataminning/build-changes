@@ -1,19 +1,96 @@
-import com.mojang.serialization.Codec;
+public interface brq {
+   ale<brp> a = ale.a(lq.s, new alf("in_fire"));
+   ale<brp> b = ale.a(lq.s, new alf("lightning_bolt"));
+   ale<brp> c = ale.a(lq.s, new alf("on_fire"));
+   ale<brp> d = ale.a(lq.s, new alf("lava"));
+   ale<brp> e = ale.a(lq.s, new alf("hot_floor"));
+   ale<brp> f = ale.a(lq.s, new alf("in_wall"));
+   ale<brp> g = ale.a(lq.s, new alf("cramming"));
+   ale<brp> h = ale.a(lq.s, new alf("drown"));
+   ale<brp> i = ale.a(lq.s, new alf("starve"));
+   ale<brp> j = ale.a(lq.s, new alf("cactus"));
+   ale<brp> k = ale.a(lq.s, new alf("fall"));
+   ale<brp> l = ale.a(lq.s, new alf("fly_into_wall"));
+   ale<brp> m = ale.a(lq.s, new alf("out_of_world"));
+   ale<brp> n = ale.a(lq.s, new alf("generic"));
+   ale<brp> o = ale.a(lq.s, new alf("magic"));
+   ale<brp> p = ale.a(lq.s, new alf("wither"));
+   ale<brp> q = ale.a(lq.s, new alf("dragon_breath"));
+   ale<brp> r = ale.a(lq.s, new alf("dry_out"));
+   ale<brp> s = ale.a(lq.s, new alf("sweet_berry_bush"));
+   ale<brp> t = ale.a(lq.s, new alf("freeze"));
+   ale<brp> u = ale.a(lq.s, new alf("stalagmite"));
+   ale<brp> v = ale.a(lq.s, new alf("falling_block"));
+   ale<brp> w = ale.a(lq.s, new alf("falling_anvil"));
+   ale<brp> x = ale.a(lq.s, new alf("falling_stalactite"));
+   ale<brp> y = ale.a(lq.s, new alf("sting"));
+   ale<brp> z = ale.a(lq.s, new alf("mob_attack"));
+   ale<brp> A = ale.a(lq.s, new alf("mob_attack_no_aggro"));
+   ale<brp> B = ale.a(lq.s, new alf("player_attack"));
+   ale<brp> C = ale.a(lq.s, new alf("arrow"));
+   ale<brp> D = ale.a(lq.s, new alf("trident"));
+   ale<brp> E = ale.a(lq.s, new alf("mob_projectile"));
+   ale<brp> F = ale.a(lq.s, new alf("spit"));
+   ale<brp> G = ale.a(lq.s, new alf("wind_charge"));
+   ale<brp> H = ale.a(lq.s, new alf("fireworks"));
+   ale<brp> I = ale.a(lq.s, new alf("fireball"));
+   ale<brp> J = ale.a(lq.s, new alf("unattributed_fireball"));
+   ale<brp> K = ale.a(lq.s, new alf("wither_skull"));
+   ale<brp> L = ale.a(lq.s, new alf("thrown"));
+   ale<brp> M = ale.a(lq.s, new alf("indirect_magic"));
+   ale<brp> N = ale.a(lq.s, new alf("thorns"));
+   ale<brp> O = ale.a(lq.s, new alf("explosion"));
+   ale<brp> P = ale.a(lq.s, new alf("player_explosion"));
+   ale<brp> Q = ale.a(lq.s, new alf("sonic_boom"));
+   ale<brp> R = ale.a(lq.s, new alf("bad_respawn_point"));
+   ale<brp> S = ale.a(lq.s, new alf("outside_border"));
+   ale<brp> T = ale.a(lq.s, new alf("generic_kill"));
 
-public enum brq implements azt {
-   a("default"),
-   b("fall_variants"),
-   c("intentional_game_design");
-
-   public static final Codec<brq> d = azt.a(brq::values);
-   private final String e;
-
-   private brq(final String $$0) {
-      this.e = $$0;
-   }
-
-   @Override
-   public String c() {
-      return this.e;
+   static void a(rc<brp> $$0) {
+      $$0.a(a, new brp("inFire", 0.1F, brl.d));
+      $$0.a(b, new brp("lightningBolt", 0.1F));
+      $$0.a(c, new brp("onFire", 0.0F, brl.d));
+      $$0.a(d, new brp("lava", 0.1F, brl.d));
+      $$0.a(e, new brp("hotFloor", 0.1F, brl.d));
+      $$0.a(f, new brp("inWall", 0.0F));
+      $$0.a(g, new brp("cramming", 0.0F));
+      $$0.a(h, new brp("drown", 0.0F, brl.c));
+      $$0.a(i, new brp("starve", 0.0F));
+      $$0.a(j, new brp("cactus", 0.1F));
+      $$0.a(k, new brp("fall", brm.b, 0.0F, brl.a, brr.b));
+      $$0.a(l, new brp("flyIntoWall", 0.0F));
+      $$0.a(m, new brp("outOfWorld", 0.0F));
+      $$0.a(n, new brp("generic", 0.0F));
+      $$0.a(o, new brp("magic", 0.0F));
+      $$0.a(p, new brp("wither", 0.0F));
+      $$0.a(q, new brp("dragonBreath", 0.0F));
+      $$0.a(r, new brp("dryout", 0.1F));
+      $$0.a(s, new brp("sweetBerryBush", 0.1F, brl.e));
+      $$0.a(t, new brp("freeze", 0.0F, brl.f));
+      $$0.a(u, new brp("stalagmite", 0.0F));
+      $$0.a(v, new brp("fallingBlock", 0.1F));
+      $$0.a(w, new brp("anvil", 0.1F));
+      $$0.a(x, new brp("fallingStalactite", 0.1F));
+      $$0.a(y, new brp("sting", 0.1F));
+      $$0.a(z, new brp("mob", 0.1F));
+      $$0.a(A, new brp("mob", 0.1F));
+      $$0.a(B, new brp("player", 0.1F));
+      $$0.a(C, new brp("arrow", 0.1F));
+      $$0.a(D, new brp("trident", 0.1F));
+      $$0.a(E, new brp("mob", 0.1F));
+      $$0.a(F, new brp("mob", 0.1F));
+      $$0.a(H, new brp("fireworks", 0.1F));
+      $$0.a(J, new brp("onFire", 0.1F, brl.d));
+      $$0.a(I, new brp("fireball", 0.1F, brl.d));
+      $$0.a(K, new brp("witherSkull", 0.1F));
+      $$0.a(L, new brp("thrown", 0.1F));
+      $$0.a(M, new brp("indirectMagic", 0.0F));
+      $$0.a(N, new brp("thorns", 0.1F, brl.b));
+      $$0.a(O, new brp("explosion", brm.c, 0.1F));
+      $$0.a(P, new brp("explosion.player", brm.c, 0.1F));
+      $$0.a(Q, new brp("sonic_boom", brm.c, 0.0F));
+      $$0.a(R, new brp("badRespawnPoint", brm.c, 0.1F, brl.a, brr.c));
+      $$0.a(S, new brp("outsideBorder", 0.0F));
+      $$0.a(T, new brp("genericKill", 0.0F));
    }
 }

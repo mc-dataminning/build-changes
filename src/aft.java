@@ -1,44 +1,74 @@
-import java.util.List;
+import java.util.Optional;
 
-public class aft implements zv<ach> {
-   public static final zm<wl, aft> a = zv.a(aft::a, aft::new);
-   private final int b;
-   private final int[] c;
+public class aft implements zw<aci> {
+   public static final zn<xa, aft> a = zw.a(aft::a, aft::new);
+   public static final int b = 0;
+   public static final int c = 1;
+   public static final int d = 2;
+   private final String e;
+   private final xp f;
+   private final ewy.a g;
+   private final Optional<zf> h;
+   private final int i;
 
-   public aft(bst $$0) {
-      this.b = $$0.al();
-      List<bst> $$1 = $$0.cS();
-      this.c = new int[$$1.size()];
+   public aft(ewn $$0, int $$1) {
+      this.e = $$0.b();
+      this.f = $$0.d();
+      this.g = $$0.h();
+      this.h = Optional.ofNullable($$0.f());
+      this.i = $$1;
+   }
 
-      for (int $$2 = 0; $$2 < $$1.size(); $$2++) {
-         this.c[$$2] = $$1.get($$2).al();
+   private aft(xa $$0) {
+      this.e = $$0.p();
+      this.i = $$0.readByte();
+      if (this.i != 0 && this.i != 2) {
+         this.f = xo.a;
+         this.g = ewy.a.a;
+         this.h = Optional.empty();
+      } else {
+         this.f = xr.d.decode($$0);
+         this.g = $$0.b(ewy.a.class);
+         this.h = zh.d.decode($$0);
       }
    }
 
-   private aft(wl $$0) {
-      this.b = $$0.l();
-      this.c = $$0.c();
-   }
-
-   private void a(wl $$0) {
-      $$0.c(this.b);
-      $$0.a(this.c);
+   private void a(xa $$0) {
+      $$0.a(this.e);
+      $$0.k(this.i);
+      if (this.i == 0 || this.i == 2) {
+         xr.d.encode($$0, this.f);
+         $$0.a(this.g);
+         zh.d.encode($$0, this.h);
+      }
    }
 
    @Override
-   public zx<aft> a() {
-      return agt.aJ;
+   public zy<aft> a() {
+      return agu.aI;
    }
 
-   public void a(ach $$0) {
+   public void a(aci $$0) {
       $$0.a(this);
    }
 
-   public int[] b() {
-      return this.c;
+   public String b() {
+      return this.e;
    }
 
-   public int e() {
-      return this.b;
+   public xp e() {
+      return this.f;
+   }
+
+   public int f() {
+      return this.i;
+   }
+
+   public ewy.a g() {
+      return this.g;
+   }
+
+   public Optional<zf> h() {
+      return this.h;
    }
 }

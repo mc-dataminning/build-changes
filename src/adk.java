@@ -1,21 +1,20 @@
-public record adk(xo b, xk.a c) implements zv<ach> {
-   public static final zm<wz, adk> a = zm.a(xq.d, adk::b, xk.a.a, adk::e, adk::new);
+public record adk(yb.a b) implements zw<aci> {
+   public static final zn<wm, adk> a = zw.a(adk::a, adk::new);
 
-   @Override
-   public zx<adk> a() {
-      return agt.C;
+   private adk(wm $$0) {
+      this(yb.a.a($$0));
    }
 
-   public void a(ach $$0) {
+   private void a(wm $$0) {
+      yb.a.a($$0, this.b);
+   }
+
+   @Override
+   public zy<adk> a() {
+      return agu.B;
+   }
+
+   public void a(aci $$0) {
       $$0.a(this);
-   }
-
-   @Override
-   public boolean c() {
-      return true;
-   }
-
-   public xk.a e() {
-      return this.c;
    }
 }

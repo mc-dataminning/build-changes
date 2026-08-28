@@ -1,35 +1,20 @@
-import com.google.common.collect.ImmutableMap;
+import com.mojang.datafixers.kinds.App;
+import java.util.Optional;
+import java.util.function.Function;
 
-public class bzg<E extends cma> extends bvh<E> {
-   private static final double c = 6.0;
-   private static final double d = 20.0;
-
-   public bzg(int $$0) {
-      super(ImmutableMap.of(ccs.aB, cct.a, ccs.o, cct.b, ccs.m, cct.b, ccs.n, cct.c, ccs.B, cct.c, ccs.az, cct.c, ccs.aG, cct.c), $$0);
-   }
-
-   protected boolean a(are $$0, E $$1, long $$2) {
-      return true;
-   }
-
-   protected void b(are $$0, E $$1, long $$2) {
-      $$1.a(avz.BR, 5.0F, 1.0F);
-   }
-
-   protected void c(are $$0, E $$1, long $$2) {
-      if ($$1.c(bua.m)) {
-         $$1.b(bua.a);
-      }
-
-      $$1.dS().b(ccs.aB);
-      $$1.dS().c(ccs.B).filter($$1::b).ifPresent($$1x -> {
-         if ($$1.a($$1x, 6.0, 20.0)) {
-            $$1.d($$1x);
-         }
-
-         if (!$$1.dS().a(ccs.az)) {
-            cmb.a($$1, $$1x.dp());
-         }
-      });
+public class bzg {
+   public static bvj<btp> a() {
+      return byv.a(
+         (Function<byv.b<btp>, ? extends App<byv.c<btp>, byy<btp>>>)($$0 -> $$0.group($$0.a(cct.n), $$0.a(cct.az), $$0.a(cct.ay), $$0.c(cct.o))
+               .apply($$0, ($$1, $$2, $$3, $$4) -> ($$4x, $$5, $$6) -> {
+                     Optional<iz> $$7 = $$0.<btp>a($$3).map(bsu::dp).or(() -> $$0.a($$2));
+                     if ($$7.isEmpty()) {
+                        return false;
+                     } else {
+                        $$1.a(new bvl($$7.get()));
+                        return true;
+                     }
+                  }))
+      );
    }
 }

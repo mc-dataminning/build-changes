@@ -1,34 +1,43 @@
 import com.mojang.serialization.MapCodec;
 
-public class djs extends dji implements dfb {
+public class djs extends dez {
    public static final MapCodec<djs> a = b(djs::new);
+   private static final int b = 20;
 
    @Override
    public MapCodec<djs> a() {
       return a;
    }
 
-   public djs(dsa.d $$0) {
+   public djs(dsb.d $$0) {
       super($$0);
    }
 
    @Override
-   public boolean b(dca $$0, iz $$1, dsb $$2) {
-      return $$0.a_($$1.d()).i();
+   public void a(dby $$0, iz $$1, dsc $$2, bsu $$3) {
+      if (!$$3.bW() && $$3 instanceof btp && !dab.j((btp)$$3)) {
+         $$3.a($$0.aj().e(), 1.0F);
+      }
+
+      super.a($$0, $$1, $$2, $$3);
    }
 
    @Override
-   public boolean a(dbx $$0, azg $$1, iz $$2, dsb $$3) {
-      return true;
+   protected void a(dsc $$0, arf $$1, iz $$2, azh $$3) {
+      dff.b($$1, $$2.c(), $$0);
    }
 
    @Override
-   public void a(are $$0, azg $$1, iz $$2, dsb $$3) {
-      $$0.a($$2.d(), djt.c(), 2);
+   protected dsc a(dsc $$0, je $$1, dsc $$2, dbz $$3, iz $$4, iz $$5) {
+      if ($$1 == je.b && $$2.a(dfb.G)) {
+         $$3.a($$4, this, 20);
+      }
+
+      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
    @Override
-   public iz a(iz $$0) {
-      return $$0.d();
+   protected void b(dsc $$0, dby $$1, iz $$2, dsc $$3, boolean $$4) {
+      $$1.a($$2, this, 20);
    }
 }

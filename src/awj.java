@@ -1,98 +1,45 @@
-public class awj {
-   public static final awi<dey> a = a("mined", lp.e);
-   public static final awi<cuj> b = a("crafted", lp.h);
-   public static final awi<cuj> c = a("used", lp.h);
-   public static final awi<cuj> d = a("broken", lp.h);
-   public static final awi<cuj> e = a("picked_up", lp.h);
-   public static final awi<cuj> f = a("dropped", lp.h);
-   public static final awi<bsz<?>> g = a("killed", lp.g);
-   public static final awi<bsz<?>> h = a("killed_by", lp.g);
-   public static final awi<ale> i = a("custom", lp.m);
-   public static final ale j = a("leave_game", awh.b);
-   public static final ale k = a("play_time", awh.e);
-   public static final ale l = a("total_world_time", awh.e);
-   public static final ale m = a("time_since_death", awh.e);
-   public static final ale n = a("time_since_rest", awh.e);
-   public static final ale o = a("sneak_time", awh.e);
-   public static final ale p = a("walk_one_cm", awh.d);
-   public static final ale q = a("crouch_one_cm", awh.d);
-   public static final ale r = a("sprint_one_cm", awh.d);
-   public static final ale s = a("walk_on_water_one_cm", awh.d);
-   public static final ale t = a("fall_one_cm", awh.d);
-   public static final ale u = a("climb_one_cm", awh.d);
-   public static final ale v = a("fly_one_cm", awh.d);
-   public static final ale w = a("walk_under_water_one_cm", awh.d);
-   public static final ale x = a("minecart_one_cm", awh.d);
-   public static final ale y = a("boat_one_cm", awh.d);
-   public static final ale z = a("pig_one_cm", awh.d);
-   public static final ale A = a("horse_one_cm", awh.d);
-   public static final ale B = a("aviate_one_cm", awh.d);
-   public static final ale C = a("swim_one_cm", awh.d);
-   public static final ale D = a("strider_one_cm", awh.d);
-   public static final ale E = a("jump", awh.b);
-   public static final ale F = a("drop", awh.b);
-   public static final ale G = a("damage_dealt", awh.c);
-   public static final ale H = a("damage_dealt_absorbed", awh.c);
-   public static final ale I = a("damage_dealt_resisted", awh.c);
-   public static final ale J = a("damage_taken", awh.c);
-   public static final ale K = a("damage_blocked_by_shield", awh.c);
-   public static final ale L = a("damage_absorbed", awh.c);
-   public static final ale M = a("damage_resisted", awh.c);
-   public static final ale N = a("deaths", awh.b);
-   public static final ale O = a("mob_kills", awh.b);
-   public static final ale P = a("animals_bred", awh.b);
-   public static final ale Q = a("player_kills", awh.b);
-   public static final ale R = a("fish_caught", awh.b);
-   public static final ale S = a("talked_to_villager", awh.b);
-   public static final ale T = a("traded_with_villager", awh.b);
-   public static final ale U = a("eat_cake_slice", awh.b);
-   public static final ale V = a("fill_cauldron", awh.b);
-   public static final ale W = a("use_cauldron", awh.b);
-   public static final ale X = a("clean_armor", awh.b);
-   public static final ale Y = a("clean_banner", awh.b);
-   public static final ale Z = a("clean_shulker_box", awh.b);
-   public static final ale aa = a("interact_with_brewingstand", awh.b);
-   public static final ale ab = a("interact_with_beacon", awh.b);
-   public static final ale ac = a("inspect_dropper", awh.b);
-   public static final ale ad = a("inspect_hopper", awh.b);
-   public static final ale ae = a("inspect_dispenser", awh.b);
-   public static final ale af = a("play_noteblock", awh.b);
-   public static final ale ag = a("tune_noteblock", awh.b);
-   public static final ale ah = a("pot_flower", awh.b);
-   public static final ale ai = a("trigger_trapped_chest", awh.b);
-   public static final ale aj = a("open_enderchest", awh.b);
-   public static final ale ak = a("enchant_item", awh.b);
-   public static final ale al = a("play_record", awh.b);
-   public static final ale am = a("interact_with_furnace", awh.b);
-   public static final ale an = a("interact_with_crafting_table", awh.b);
-   public static final ale ao = a("open_chest", awh.b);
-   public static final ale ap = a("sleep_in_bed", awh.b);
-   public static final ale aq = a("open_shulker_box", awh.b);
-   public static final ale ar = a("open_barrel", awh.b);
-   public static final ale as = a("interact_with_blast_furnace", awh.b);
-   public static final ale at = a("interact_with_smoker", awh.b);
-   public static final ale au = a("interact_with_lectern", awh.b);
-   public static final ale av = a("interact_with_campfire", awh.b);
-   public static final ale aw = a("interact_with_cartography_table", awh.b);
-   public static final ale ax = a("interact_with_loom", awh.b);
-   public static final ale ay = a("interact_with_stonecutter", awh.b);
-   public static final ale az = a("bell_ring", awh.b);
-   public static final ale aA = a("raid_trigger", awh.b);
-   public static final ale aB = a("raid_win", awh.b);
-   public static final ale aC = a("interact_with_anvil", awh.b);
-   public static final ale aD = a("interact_with_grindstone", awh.b);
-   public static final ale aE = a("target_hit", awh.b);
-   public static final ale aF = a("interact_with_smithing_table", awh.b);
+import java.util.IdentityHashMap;
+import java.util.Iterator;
+import java.util.Map;
 
-   private static ale a(String $$0, awh $$1) {
-      ale $$2 = new ale($$0);
-      jv.a(lp.m, $$0, $$2);
-      i.a($$2, $$1);
-      return $$2;
+public class awj<T> implements Iterable<awh<T>> {
+   private final jv<T> a;
+   private final Map<T, awh<T>> b = new IdentityHashMap<>();
+   private final xp c;
+   private final zn<xa, awh<T>> d;
+
+   public awj(jv<T> $$0, xp $$1) {
+      this.a = $$0;
+      this.c = $$1;
+      this.d = zl.a($$0.c()).a(this::b, awh::b);
    }
 
-   private static <T> awi<T> a(String $$0, jv<T> $$1) {
-      xo $$2 = xo.c("stat_type.minecraft." + $$0);
-      return jv.a(lp.x, $$0, new awi<>($$1, $$2));
+   public zn<xa, awh<T>> a() {
+      return this.d;
+   }
+
+   public boolean a(T $$0) {
+      return this.b.containsKey($$0);
+   }
+
+   public awh<T> a(T $$0, awi $$1) {
+      return this.b.computeIfAbsent($$0, $$1x -> new awh<>(this, (T)$$1x, $$1));
+   }
+
+   public jv<T> b() {
+      return this.a;
+   }
+
+   @Override
+   public Iterator<awh<T>> iterator() {
+      return this.b.values().iterator();
+   }
+
+   public awh<T> b(T $$0) {
+      return this.a($$0, awi.b);
+   }
+
+   public xp c() {
+      return this.c;
    }
 }

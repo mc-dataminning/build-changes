@@ -1,78 +1,26 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Lists;
-import com.mojang.logging.LogUtils;
-import java.util.List;
-import java.util.Locale;
-import java.util.Map;
-import org.slf4j.Logger;
+import java.util.Optional;
+import java.util.function.Predicate;
 
-public record eiy(List<ein> a) {
-   private static final Logger b = LogUtils.getLogger();
-   private static final ale c = new ale("jigsaw");
-   private static final Map<ale, ale> d = ImmutableMap.builder()
-      .put(new ale("nvi"), c)
-      .put(new ale("pcp"), c)
-      .put(new ale("bastionremnant"), c)
-      .put(new ale("runtime"), c)
-      .build();
+@FunctionalInterface
+public interface eiy<C extends edc> {
+   Optional<eix<C>> createGenerator(eiy.a<C> var1);
 
-   public eiy(final List<ein> a) {
-      this.a = List.copyOf(a);
+   static <C extends edc> eiy<C> simple(Predicate<eiy.a<C>> $$0, eix<C> $$1) {
+      Optional<eix<C>> $$2 = Optional.of($$1);
+      return $$2x -> $$0.test($$2x) ? $$2 : Optional.empty();
    }
 
-   public boolean a() {
-      return this.a.isEmpty();
+   static <C extends edc> Predicate<eiy.a<C>> checkForBiomeOnTop(dxu.a $$0) {
+      return $$1 -> $$1.a($$0);
    }
 
-   public boolean a(iz $$0) {
-      for (ein $$1 : this.a) {
-         if ($$1.f().b($$0)) {
-            return true;
-         }
+   public static record a<C extends edc>(dtz a, ddb b, dyi c, long d, dbf e, C f, dca g, Predicate<ji<dcx>> h, eml i, jw j) {
+      public boolean a(dxu.a $$0) {
+         int $$1 = this.e.b();
+         int $$2 = this.e.c();
+         int $$3 = this.a.c($$1, $$2, $$0, this.g, this.c);
+         ji<dcx> $$4 = this.a.d().getNoiseBiome(jt.a($$1), jt.a($$3), jt.a($$2), this.c.b());
+         return this.h.test($$4);
       }
-
-      return false;
-   }
-
-   public vo a(eiz $$0) {
-      ux $$1 = new ux();
-
-      for (ein $$2 : this.a) {
-         $$1.add($$2.a($$0));
-      }
-
-      return $$1;
-   }
-
-   public static eiy a(ux $$0, eiz $$1) {
-      List<ein> $$2 = Lists.newArrayList();
-
-      for (int $$3 = 0; $$3 < $$0.size(); $$3++) {
-         ur $$4 = $$0.a($$3);
-         String $$5 = $$4.l("id").toLowerCase(Locale.ROOT);
-         ale $$6 = new ale($$5);
-         ale $$7 = d.getOrDefault($$6, $$6);
-         eja $$8 = lp.S.a($$7);
-         if ($$8 == null) {
-            b.error("Unknown structure piece id: {}", $$7);
-         } else {
-            try {
-               ein $$9 = $$8.load($$1, $$4);
-               $$2.add($$9);
-            } catch (Exception var10) {
-               b.error("Exception loading structure piece with id {}", $$7, var10);
-            }
-         }
-      }
-
-      return new eiy($$2);
-   }
-
-   public eib b() {
-      return ein.a(this.a.stream());
-   }
-
-   public List<ein> c() {
-      return this.a;
    }
 }

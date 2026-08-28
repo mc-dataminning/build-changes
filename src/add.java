@@ -1,33 +1,44 @@
-public class add implements zv<ach> {
-   public static final zm<wl, add> a = zv.a(add::a, add::new);
+import java.util.List;
+
+public class add implements zw<aci> {
+   public static final zn<xa, add> a = zw.a(add::a, add::new);
    private final int b;
    private final int c;
-   private final int d;
+   private final List<cup> d;
+   private final cup e;
 
-   public add(int $$0, int $$1, int $$2) {
+   public add(int $$0, int $$1, jr<cup> $$2, cup $$3) {
       this.b = $$0;
       this.c = $$1;
-      this.d = $$2;
+      this.d = jr.a($$2.size(), cup.l);
+
+      for (int $$4 = 0; $$4 < $$2.size(); $$4++) {
+         this.d.set($$4, $$2.get($$4).s());
+      }
+
+      this.e = $$3.s();
    }
 
-   private add(wl $$0) {
+   private add(xa $$0) {
       this.b = $$0.readUnsignedByte();
-      this.c = $$0.readShort();
-      this.d = $$0.readShort();
+      this.c = $$0.l();
+      this.d = cup.j.decode($$0);
+      this.e = cup.h.decode($$0);
    }
 
-   private void a(wl $$0) {
+   private void a(xa $$0) {
       $$0.k(this.b);
-      $$0.l(this.c);
-      $$0.l(this.d);
+      $$0.c(this.c);
+      cup.j.encode($$0, this.d);
+      cup.h.encode($$0, this.e);
    }
 
    @Override
-   public zx<add> a() {
-      return agt.v;
+   public zy<add> a() {
+      return agu.u;
    }
 
-   public void a(ach $$0) {
+   public void a(aci $$0) {
       $$0.a(this);
    }
 
@@ -35,11 +46,15 @@ public class add implements zv<ach> {
       return this.b;
    }
 
-   public int e() {
-      return this.c;
+   public List<cup> e() {
+      return this.d;
    }
 
-   public int f() {
-      return this.d;
+   public cup f() {
+      return this.e;
+   }
+
+   public int g() {
+      return this.c;
    }
 }

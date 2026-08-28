@@ -1,26 +1,16 @@
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
+import java.util.function.Function;
 
-public class dzd implements dza {
-   private final kd e;
-   private final je f;
-   public static final MapCodec<dzd> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(kd.v(16).optionalFieldOf("offset", kd.g).forGetter($$0x -> $$0x.e), je.g.fieldOf("direction").forGetter($$0x -> $$0x.f))
-            .apply($$0, dzd::new)
-   );
+abstract class dzd implements dzb {
+   protected final List<dzb> e;
 
-   public dzd(kd $$0, je $$1) {
+   protected dzd(List<dzb> $$0) {
       this.e = $$0;
-      this.f = $$1;
    }
 
-   public boolean a(dcs $$0, iz $$1) {
-      iz $$2 = $$1.a(this.e);
-      return $$0.a_($$2).d($$0, $$2, this.f);
-   }
-
-   @Override
-   public dzb<?> a() {
-      return dzb.d;
+   public static <T extends dzd> MapCodec<T> a(Function<List<dzb>, T> $$0) {
+      return RecordCodecBuilder.mapCodec($$1 -> $$1.group(dzb.b.listOf().fieldOf("predicates").forGetter($$0xx -> $$0xx.e)).apply($$1, $$0));
    }
 }

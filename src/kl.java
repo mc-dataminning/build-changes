@@ -6,7 +6,7 @@ import javax.annotation.Nullable;
 
 public interface kl<T> {
    Codec<kl<?>> a = Codec.lazyInitialized(() -> lp.as.q());
-   zm<wz, kl<?>> b = zm.a($$0 -> zk.a(lq.av));
+   zn<xa, kl<?>> b = zn.a($$0 -> zl.a(lq.av));
    Codec<kl<?>> c = a.validate($$0 -> $$0.d() ? DataResult.error(() -> "Encountered transient component " + lp.as.b($$0)) : DataResult.success($$0));
    Codec<Map<kl<?>, Object>> d = Codec.dispatchedMap(c, kl::c);
 
@@ -30,13 +30,13 @@ public interface kl<T> {
       return this.b() == null;
    }
 
-   zm<? super wz, T> e();
+   zn<? super xa, T> e();
 
    public static class a<T> {
       @Nullable
       private Codec<T> a;
       @Nullable
-      private zm<? super wz, T> b;
+      private zn<? super xa, T> b;
       private boolean c;
 
       public kl.a<T> a(Codec<T> $$0) {
@@ -44,7 +44,7 @@ public interface kl<T> {
          return this;
       }
 
-      public kl.a<T> a(zm<? super wz, T> $$0) {
+      public kl.a<T> a(zn<? super xa, T> $$0) {
          this.b = $$0;
          return this;
       }
@@ -55,7 +55,7 @@ public interface kl<T> {
       }
 
       public kl<T> b() {
-         zm<? super wz, T> $$0 = Objects.requireNonNullElseGet(this.b, () -> zk.d(Objects.requireNonNull(this.a, "Missing Codec for component")));
+         zn<? super xa, T> $$0 = Objects.requireNonNullElseGet(this.b, () -> zl.d(Objects.requireNonNull(this.a, "Missing Codec for component")));
          Codec<T> $$1 = this.c && this.a != null ? km.a.a(this.a) : this.a;
          return new kl.a.a<>($$1, $$0);
       }
@@ -63,9 +63,9 @@ public interface kl<T> {
       static class a<T> implements kl<T> {
          @Nullable
          private final Codec<T> e;
-         private final zm<? super wz, T> f;
+         private final zn<? super xa, T> f;
 
-         a(@Nullable Codec<T> $$0, zm<? super wz, T> $$1) {
+         a(@Nullable Codec<T> $$0, zn<? super xa, T> $$1) {
             this.e = $$0;
             this.f = $$1;
          }
@@ -77,7 +77,7 @@ public interface kl<T> {
          }
 
          @Override
-         public zm<? super wz, T> e() {
+         public zn<? super xa, T> e() {
             return this.f;
          }
 

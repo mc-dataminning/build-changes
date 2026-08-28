@@ -1,45 +1,63 @@
-import com.mojang.logging.LogUtils;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import java.lang.reflect.Constructor;
+import java.util.Arrays;
 
-public class cir {
-   private static final Logger a = LogUtils.getLogger();
-   private final cia b;
-   private final cik[] c = new cik[ciq.c()];
-   @Nullable
-   private cik d;
+public class cir<T extends cil> {
+   private static cir<?>[] l = new cir[0];
+   public static final cir<cih> a = a(cih.class, "HoldingPattern");
+   public static final cir<cip> b = a(cip.class, "StrafePlayer");
+   public static final cir<cij> c = a(cij.class, "LandingApproach");
+   public static final cir<cik> d = a(cik.class, "Landing");
+   public static final cir<ciq> e = a(ciq.class, "Takeoff");
+   public static final cir<cin> f = a(cin.class, "SittingFlaming");
+   public static final cir<cio> g = a(cio.class, "SittingScanning");
+   public static final cir<cim> h = a(cim.class, "SittingAttacking");
+   public static final cir<cif> i = a(cif.class, "ChargingPlayer");
+   public static final cir<cig> j = a(cig.class, "Dying");
+   public static final cir<cii> k = a(cii.class, "Hover");
+   private final Class<? extends cil> m;
+   private final int n;
+   private final String o;
 
-   public cir(cia $$0) {
-      this.b = $$0;
-      this.a(ciq.k);
+   private cir(int $$0, Class<? extends cil> $$1, String $$2) {
+      this.n = $$0;
+      this.m = $$1;
+      this.o = $$2;
    }
 
-   public void a(ciq<?> $$0) {
-      if (this.d == null || $$0 != this.d.i()) {
-         if (this.d != null) {
-            this.d.e();
-         }
-
-         this.d = this.b((ciq<cik>)$$0);
-         if (!this.b.dP().B) {
-            this.b.ap().a(cia.b, $$0.b());
-         }
-
-         a.debug("Dragon is now in phase {} on the {}", $$0, this.b.dP().B ? "client" : "server");
-         this.d.d();
+   public cil a(cib $$0) {
+      try {
+         Constructor<? extends cil> $$1 = this.a();
+         return $$1.newInstance($$0);
+      } catch (Exception var3) {
+         throw new Error(var3);
       }
    }
 
-   public cik a() {
-      return this.d;
+   protected Constructor<? extends cil> a() throws NoSuchMethodException {
+      return this.m.getConstructor(cib.class);
    }
 
-   public <T extends cik> T b(ciq<T> $$0) {
-      int $$1 = $$0.b();
-      if (this.c[$$1] == null) {
-         this.c[$$1] = $$0.a(this.b);
-      }
+   public int b() {
+      return this.n;
+   }
 
-      return (T)this.c[$$1];
+   @Override
+   public String toString() {
+      return this.o + " (#" + this.n + ")";
+   }
+
+   public static cir<?> a(int $$0) {
+      return $$0 >= 0 && $$0 < l.length ? l[$$0] : a;
+   }
+
+   public static int c() {
+      return l.length;
+   }
+
+   private static <T extends cil> cir<T> a(Class<T> $$0, String $$1) {
+      cir<T> $$2 = new cir<>(l.length, $$0, $$1);
+      l = Arrays.copyOf(l, l.length + 1);
+      l[$$2.b()] = $$2;
+      return $$2;
    }
 }

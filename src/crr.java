@@ -1,116 +1,89 @@
+import com.mojang.serialization.Codec;
+import it.unimi.dsi.fastutil.ints.IntArrayList;
+import it.unimi.dsi.fastutil.ints.IntList;
+import it.unimi.dsi.fastutil.ints.IntLists;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.OptionalInt;
+import java.util.function.Function;
+import java.util.stream.Stream;
 import javax.annotation.Nullable;
 
-public class crr extends cqv {
-   public static final int k = 0;
-   public static final int l = 1;
-   public static final int m = 2;
-   public static final int n = 3;
-   public static final int s = 8;
-   public static final int t = 26;
-   public static final int u = 44;
-   private static final int w = 98;
-   public static final int v = 48;
-   private final dbx x;
+public class crr {
+   private static final List<crq> b = ac.a(new ArrayList<>(), $$0 -> {
+      a($$0, "contents", 0);
+      a($$0, "container.", 0, 54);
+      a($$0, "hotbar.", 0, 9);
+      a($$0, "inventory.", 9, 27);
+      a($$0, "enderchest.", 200, 27);
+      a($$0, "villager.", 300, 8);
+      a($$0, "horse.", 500, 15);
+      int $$1 = btb.a.a(98);
+      int $$2 = btb.b.a(98);
+      a($$0, "weapon", $$1);
+      a($$0, "weapon.mainhand", $$1);
+      a($$0, "weapon.offhand", $$2);
+      a($$0, "weapon.*", $$1, $$2);
+      $$1 = btb.f.a(100);
+      $$2 = btb.e.a(100);
+      int $$5 = btb.d.a(100);
+      int $$6 = btb.c.a(100);
+      int $$7 = btb.g.a(105);
+      a($$0, "armor.head", $$1);
+      a($$0, "armor.chest", $$2);
+      a($$0, "armor.legs", $$5);
+      a($$0, "armor.feet", $$6);
+      a($$0, "armor.body", $$7);
+      a($$0, "armor.*", $$1, $$2, $$5, $$6, $$7);
+      a($$0, "horse.saddle", 400);
+      a($$0, "horse.chest", 499);
+      a($$0, "player.cursor", 499);
+      a($$0, "player.crafting.", 500, 4);
+   });
+   public static final Codec<crq> a = azu.b(() -> b.toArray(new crq[0]));
+   private static final Function<String, crq> c = azu.a(b.toArray(new crq[0]), $$0 -> $$0);
+
+   private static crq a(String $$0, int $$1) {
+      return crq.a($$0, IntLists.singleton($$1));
+   }
+
+   private static crq a(String $$0, IntList $$1) {
+      return crq.a($$0, IntLists.unmodifiable($$1));
+   }
+
+   private static crq a(String $$0, int... $$1) {
+      return crq.a($$0, IntList.of($$1));
+   }
+
+   private static void a(List<crq> $$0, String $$1, int $$2) {
+      $$0.add(a($$1, $$2));
+   }
+
+   private static void a(List<crq> $$0, String $$1, int $$2, int $$3) {
+      IntList $$4 = new IntArrayList($$3);
+
+      for (int $$5 = 0; $$5 < $$3; $$5++) {
+         int $$6 = $$2 + $$5;
+         $$0.add(a($$1 + $$5, $$6));
+         $$4.add($$6);
+      }
+
+      $$0.add(a($$1 + "*", $$4));
+   }
+
+   private static void a(List<crq> $$0, String $$1, int... $$2) {
+      $$0.add(a($$1, $$2));
+   }
+
    @Nullable
-   private cyw<czk> y;
-   private final List<cyw<czk>> z;
-
-   public crr(int $$0, cmv $$1) {
-      this($$0, $$1, cqe.a);
+   public static crq a(String $$0) {
+      return c.apply($$0);
    }
 
-   public crr(int $$0, cmv $$1, cqe $$2) {
-      super(cra.v, $$0, $$1, $$2);
-      this.x = $$1.l.dP();
-      this.z = this.x.r().a(cyz.g);
+   public static Stream<String> a() {
+      return b.stream().map(azu::c);
    }
 
-   @Override
-   protected cqw l() {
-      return cqw.a()
-         .a(0, 8, 48, $$0 -> this.z.stream().anyMatch($$1 -> $$1.b().a($$0)))
-         .a(1, 26, 48, $$0 -> this.z.stream().anyMatch($$1 -> $$1.b().b($$0)))
-         .a(2, 44, 48, $$0 -> this.z.stream().anyMatch($$1 -> $$1.b().c($$0)))
-         .a(3, 98, 48)
-         .a();
-   }
-
-   @Override
-   protected boolean a(dsb $$0) {
-      return $$0.a(dfa.ob);
-   }
-
-   @Override
-   protected boolean a(cmw $$0, boolean $$1) {
-      return this.y != null && this.y.b().a(this.q, this.x);
-   }
-
-   @Override
-   protected void a(cmw $$0, cuo $$1) {
-      $$1.a($$0.dP(), $$0, $$1.I());
-      this.r.a($$0, this.n());
-      this.e(0);
-      this.e(1);
-      this.e(2);
-      this.o.a(($$0x, $$1x) -> $$0x.c(1044, $$1x, 0));
-   }
-
-   private List<cuo> n() {
-      return List.of(this.q.a(0), this.q.a(1), this.q.a(2));
-   }
-
-   private void e(int $$0) {
-      cuo $$1 = this.q.a($$0);
-      if (!$$1.e()) {
-         $$1.h(1);
-         this.q.a($$0, $$1);
-      }
-   }
-
-   @Override
-   public void m() {
-      List<cyw<czk>> $$0 = this.x.r().b(cyz.g, this.q, this.x);
-      if ($$0.isEmpty()) {
-         this.r.a(0, cuo.l);
-      } else {
-         cyw<czk> $$1 = $$0.get(0);
-         cuo $$2 = $$1.b().a(this.q, this.x.H_());
-         if ($$2.a(this.x.J())) {
-            this.y = $$1;
-            this.r.a($$1);
-            this.r.a(0, $$2);
-         }
-      }
-   }
-
-   @Override
-   public int d(cuo $$0) {
-      return this.e($$0).orElse(0);
-   }
-
-   private static OptionalInt a(czk $$0, cuo $$1) {
-      if ($$0.a($$1)) {
-         return OptionalInt.of(0);
-      } else if ($$0.b($$1)) {
-         return OptionalInt.of(1);
-      } else {
-         return $$0.c($$1) ? OptionalInt.of(2) : OptionalInt.empty();
-      }
-   }
-
-   @Override
-   public boolean a(cuo $$0, cro $$1) {
-      return $$1.c != this.r && super.a($$0, $$1);
-   }
-
-   @Override
-   public boolean c(cuo $$0) {
-      return this.e($$0).isPresent();
-   }
-
-   private OptionalInt e(cuo $$0) {
-      return this.z.stream().flatMapToInt($$1 -> a($$1.b(), $$0).stream()).filter($$0x -> !this.b($$0x).h()).findFirst();
+   public static Stream<String> b() {
+      return b.stream().filter($$0 -> $$0.b() == 1).map(azu::c);
    }
 }

@@ -1,52 +1,36 @@
-import com.mojang.serialization.Codec;
+import com.google.common.collect.Sets;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
+import java.util.Set;
 
-public record eub(Optional<Boolean> b, Optional<Boolean> c) implements etr {
+public record eub(eun b, eqh c) implements ets {
    public static final MapCodec<eub> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(Codec.BOOL.optionalFieldOf("raining").forGetter(eub::d), Codec.BOOL.optionalFieldOf("thundering").forGetter(eub::e))
-            .apply($$0, eub::new)
+      $$0 -> $$0.group(euo.a.fieldOf("value").forGetter(eub::c), eqh.a.fieldOf("range").forGetter(eub::d)).apply($$0, eub::new)
    );
 
    @Override
-   public ets b() {
-      return ett.q;
+   public ett b() {
+      return etu.t;
    }
 
-   public boolean a(eqh $$0) {
-      are $$1 = $$0.d();
-      return this.b.isPresent() && this.b.get() != $$1.ad() ? false : !this.c.isPresent() || this.c.get() == $$1.ac();
+   @Override
+   public Set<etb<?>> a() {
+      return Sets.union(this.b.a(), this.c.a());
    }
 
-   public static eub.a c() {
-      return new eub.a();
+   public boolean a(eqi $$0) {
+      return this.c.b($$0, this.b.a($$0));
    }
 
-   public Optional<Boolean> d() {
+   public static ets.a a(eun $$0, eqh $$1) {
+      return () -> new eub($$0, $$1);
+   }
+
+   public eun c() {
       return this.b;
    }
 
-   public Optional<Boolean> e() {
+   public eqh d() {
       return this.c;
-   }
-
-   public static class a implements etr.a {
-      private Optional<Boolean> a = Optional.empty();
-      private Optional<Boolean> b = Optional.empty();
-
-      public eub.a a(boolean $$0) {
-         this.a = Optional.of($$0);
-         return this;
-      }
-
-      public eub.a b(boolean $$0) {
-         this.b = Optional.of($$0);
-         return this;
-      }
-
-      public eub a() {
-         return new eub(this.a, this.b);
-      }
    }
 }

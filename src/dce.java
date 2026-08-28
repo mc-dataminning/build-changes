@@ -1,15 +1,12 @@
-public interface dce extends dca {
-   long ak();
+import java.util.Optional;
+import java.util.function.Predicate;
 
-   default float aq() {
-      return dvt.i[this.D_().b(this.ak())];
-   }
+public interface dce {
+   boolean a(iz var1, Predicate<dsc> var2);
 
-   default float f(float $$0) {
-      return this.D_().a(this.ak());
-   }
+   boolean b(iz var1, Predicate<env> var2);
 
-   default int ar() {
-      return this.D_().b(this.ak());
-   }
+   <T extends dph> Optional<T> a(iz var1, dpj<T> var2);
+
+   iz a(dxu.a var1, iz var2);
 }

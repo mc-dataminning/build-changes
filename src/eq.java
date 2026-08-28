@@ -35,105 +35,105 @@ public class eq {
    private final CommandDispatcher<ep> h = new CommandDispatcher();
 
    public eq(eq.a $$0, el $$1) {
-      amk.a(this.h);
-      aml.a(this.h, $$1);
-      anf.a(this.h, $$1);
-      amp.a(this.h, $$1);
-      amr.a(this.h, $$1);
+      aml.a(this.h);
+      amm.a(this.h, $$1);
+      ang.a(this.h, $$1);
+      amq.a(this.h, $$1);
       ams.a(this.h, $$1);
       amt.a(this.h, $$1);
-      apu.a(this.h);
-      amu.a(this.h);
-      amw.a(this.h);
-      ana.a(this.h);
+      amu.a(this.h, $$1);
+      apv.a(this.h);
+      amv.a(this.h);
+      amx.a(this.h);
       anb.a(this.h);
-      anc.a(this.h, $$1);
-      and.a(this.h);
-      ane.a(this.h, $$1);
-      ang.a(this.h);
+      anc.a(this.h);
+      and.a(this.h, $$1);
+      ane.a(this.h);
+      anf.a(this.h, $$1);
+      anh.a(this.h);
+      anj.a(this.h, $$1);
       ani.a(this.h, $$1);
-      anh.a(this.h, $$1);
-      anj.a(this.h);
       ank.a(this.h);
       anl.a(this.h);
       anm.a(this.h);
-      ann.a(this.h, $$1);
-      ano.a(this.h);
-      anp.a(this.h, $$1);
-      anr.a(this.h);
+      ann.a(this.h);
+      ano.a(this.h, $$1);
+      anp.a(this.h);
+      anq.a(this.h, $$1);
       ans.a(this.h);
       ant.a(this.h);
-      anu.a(this.h, $$1);
+      anu.a(this.h);
       anv.a(this.h, $$1);
-      anw.a(this.h);
-      aoa.a(this.h, $$1);
-      aoc.a(this.h);
+      anw.a(this.h, $$1);
+      anx.a(this.h);
+      aob.a(this.h, $$1);
       aod.a(this.h);
-      aog.a(this.h);
-      aoi.a(this.h);
+      aoe.a(this.h);
       aoh.a(this.h);
-      aok.a(this.h);
+      aoj.a(this.h);
+      aoi.a(this.h);
       aol.a(this.h);
-      aop.a(this.h);
+      aom.a(this.h);
       aoq.a(this.h);
-      aor.a(this.h, $$1);
-      aos.a(this.h, $$0 != eq.a.c);
-      aou.a(this.h, $$1);
-      aow.a(this.h);
+      aor.a(this.h);
+      aos.a(this.h, $$1);
+      aot.a(this.h, $$0 != eq.a.c);
+      aov.a(this.h, $$1);
       aox.a(this.h);
-      aoz.a(this.h);
+      aoy.a(this.h);
       apa.a(this.h);
-      apc.a(this.h);
-      apd.a(this.h, $$1);
-      ape.a(this.h);
-      apf.a(this.h, $$1);
-      apg.a(this.h);
+      apb.a(this.h);
+      apd.a(this.h);
+      ape.a(this.h, $$1);
+      apf.a(this.h);
+      apg.a(this.h, $$1);
       aph.a(this.h);
-      api.a(this.h, $$1);
-      apj.a(this.h);
+      api.a(this.h);
+      apj.a(this.h, $$1);
       apk.a(this.h);
-      apl.a(this.h, $$1);
-      apn.a(this.h);
-      app.a(this.h);
-      apr.a(this.h);
-      if (bnn.f.d()) {
-         anq.a(this.h);
+      apl.a(this.h);
+      apm.a(this.h, $$1);
+      apo.a(this.h);
+      apq.a(this.h);
+      aps.a(this.h);
+      if (bno.f.d()) {
+         anr.a(this.h);
       }
 
       if (aa.aX) {
-         uf.a(this.h);
-         aoj.a(this.h);
-         aof.a(this.h, $$1);
+         ug.a(this.h);
+         aok.a(this.h);
+         aog.a(this.h, $$1);
+         ana.a(this.h);
          amz.a(this.h);
-         amy.a(this.h);
-         apo.a(this.h);
-         aoy.a(this.h);
-         aot.a(this.h);
+         app.a(this.h);
+         aoz.a(this.h);
+         aou.a(this.h);
          if ($$0.e) {
-            amx.a(this.h);
+            amy.a(this.h);
          }
       }
 
       if ($$0.e) {
-         amm.a(this.h);
          amn.a(this.h);
          amo.a(this.h);
-         amv.a(this.h);
-         anx.a(this.h);
+         amp.a(this.h);
+         amw.a(this.h);
          any.a(this.h);
          anz.a(this.h);
-         aob.a(this.h);
-         aom.a(this.h);
+         aoa.a(this.h);
+         aoc.a(this.h);
          aon.a(this.h);
          aoo.a(this.h);
-         aov.a(this.h);
-         apb.a(this.h);
-         apm.a(this.h);
-         apq.a(this.h);
+         aop.a(this.h);
+         aow.a(this.h);
+         apc.a(this.h);
+         apn.a(this.h);
+         apr.a(this.h);
       }
 
       if ($$0.d) {
-         aoe.a(this.h);
+         aof.a(this.h);
       }
 
       this.h.setConsumer(er.b_());
@@ -160,7 +160,7 @@ public class eq {
             a($$2, $$3x -> ho.a($$3x, $$1, $$3, $$2, em.a));
          }
       } catch (Exception var12) {
-         yc $$5 = xo.b(var12.getMessage() == null ? var12.getClass().getName() : var12.getMessage());
+         yd $$5 = xp.b(var12.getMessage() == null ? var12.getClass().getName() : var12.getMessage());
          if (g.isDebugEnabled()) {
             g.error("Command exception: /{}", $$1, var12);
             StackTraceElement[] $$6 = var12.getStackTrace();
@@ -170,9 +170,9 @@ public class eq {
             }
          }
 
-         $$2.b(xo.c("command.failed").a($$1x -> $$1x.a(new xu(xu.a.a, $$5))));
+         $$2.b(xp.c("command.failed").a($$1x -> $$1x.a(new xv(xv.a.a, $$5))));
          if (aa.aX) {
-            $$2.b(xo.b(ac.c(var12)));
+            $$2.b(xp.b(ac.c(var12)));
             g.error("'/{}' threw an exception", $$1, var12);
          }
       } finally {
@@ -187,21 +187,21 @@ public class eq {
          return (ContextChain<ep>)ContextChain.tryFlatten($$0.getContext().build($$1))
             .orElseThrow(() -> CommandSyntaxException.BUILT_IN_EXCEPTIONS.dispatcherUnknownCommand().createWithContext($$0.getReader()));
       } catch (CommandSyntaxException var7) {
-         $$2.b(xr.a(var7.getRawMessage()));
+         $$2.b(xs.a(var7.getRawMessage()));
          if (var7.getInput() != null && var7.getCursor() >= 0) {
             int $$4 = Math.min(var7.getInput().length(), var7.getCursor());
-            yc $$5 = xo.i().a(n.h).a($$1x -> $$1x.a(new xm(xm.a.d, "/" + $$1)));
+            yd $$5 = xp.i().a(n.h).a($$1x -> $$1x.a(new xn(xn.a.d, "/" + $$1)));
             if ($$4 > 10) {
-               $$5.b(xn.u);
+               $$5.b(xo.u);
             }
 
             $$5.f(var7.getInput().substring(Math.max(0, $$4 - 10), $$4));
             if ($$4 < var7.getInput().length()) {
-               xo $$6 = xo.b(var7.getInput().substring($$4)).a(n.m, n.t);
+               xp $$6 = xp.b(var7.getInput().substring($$4)).a(n.m, n.t);
                $$5.b($$6);
             }
 
-            $$5.b(xo.c("command.context.here").a(n.m, n.u));
+            $$5.b(xp.c("command.context.here").a(n.m, n.u));
             $$2.b($$5);
          }
 
@@ -214,8 +214,8 @@ public class eq {
       ho<ep> $$3 = f.get();
       boolean $$4 = $$3 == null;
       if ($$4) {
-         int $$5 = Math.max(1, $$2.aM().c(dbt.x));
-         int $$6 = $$2.aM().c(dbt.y);
+         int $$5 = Math.max(1, $$2.aM().c(dbu.x));
+         int $$6 = $$2.aM().c(dbu.y);
 
          try (ho<ep> $$7 = new ho<>($$5, $$6, $$2.aT())) {
             f.set($$7);
@@ -229,12 +229,12 @@ public class eq {
       }
    }
 
-   public void a(arf $$0) {
+   public void a(arg $$0) {
       Map<CommandNode<ep>, CommandNode<eu>> $$1 = Maps.newHashMap();
       RootCommandNode<eu> $$2 = new RootCommandNode();
       $$1.put(this.h.getRoot(), $$2);
       this.a(this.h.getRoot(), $$2, $$0.dg(), $$1);
-      $$0.c.b(new ada($$2));
+      $$0.c.b(new adb($$2));
    }
 
    private void a(CommandNode<ep> $$0, CommandNode<eu> $$1, ep $$2, Map<CommandNode<ep>, CommandNode<eu>> $$3) {
@@ -313,12 +313,12 @@ public class eq {
    public static el a(final jk.a $$0) {
       return new el() {
          @Override
-         public Stream<ald<? extends jv<?>>> a() {
+         public Stream<ale<? extends jv<?>>> a() {
             return $$0.a();
          }
 
          @Override
-         public <T> Optional<jk.b<T>> a(ald<? extends jv<? extends T>> $$0x) {
+         public <T> Optional<jk.b<T>> a(ale<? extends jv<? extends T>> $$0x) {
             return $$0.a($$0).map(this::a);
          }
 
@@ -330,12 +330,12 @@ public class eq {
                }
 
                @Override
-               public Optional<jm.c<T>> a(axe<T> $$0xx) {
+               public Optional<jm.c<T>> a(axf<T> $$0xx) {
                   return Optional.of(this.b($$0));
                }
 
                @Override
-               public jm.c<T> b(axe<T> $$0xx) {
+               public jm.c<T> b(axf<T> $$0xx) {
                   Optional<jm.c<T>> $$1 = this.a().a($$0);
                   return $$1.orElseGet(() -> jm.a(this.a(), $$0));
                }

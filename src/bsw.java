@@ -1,43 +1,98 @@
-public record bsw(float a, float b, float c, bsv d, boolean e) {
-   private bsw(float $$0, float $$1, boolean $$2) {
-      this($$0, $$1, c($$1), bsv.a($$0, $$1), $$2);
+import java.util.ArrayList;
+import java.util.EnumMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+import javax.annotation.Nullable;
+
+public class bsw {
+   private final Map<bsv, List<evr>> a;
+
+   bsw(Map<bsv, List<evr>> $$0) {
+      this.a = $$0;
    }
 
-   private static float c(float $$0) {
-      return $$0 * 0.85F;
+   public static bsw a(float $$0, float $$1) {
+      return a().a($$0, $$1);
    }
 
-   public evl a(evq $$0) {
-      return this.a($$0.c, $$0.d, $$0.e);
+   public static bsw.a a() {
+      return new bsw.a();
    }
 
-   public evl a(double $$0, double $$1, double $$2) {
-      float $$3 = this.a / 2.0F;
-      float $$4 = this.b;
-      return new evl($$0 - (double)$$3, $$1, $$2 - (double)$$3, $$0 + (double)$$3, $$1 + (double)$$4, $$2 + (double)$$3);
+   public bsw a(float $$0, float $$1, float $$2) {
+      Map<bsv, List<evr>> $$3 = new EnumMap<>(bsv.class);
+
+      for (Entry<bsv, List<evr>> $$4 : this.a.entrySet()) {
+         $$3.put($$4.getKey(), a($$4.getValue(), $$0, $$1, $$2));
+      }
+
+      return new bsw($$3);
    }
 
-   public bsw a(float $$0) {
-      return this.a($$0, $$0);
+   private static List<evr> a(List<evr> $$0, float $$1, float $$2, float $$3) {
+      List<evr> $$4 = new ArrayList<>($$0.size());
+
+      for (evr $$5 : $$0) {
+         $$4.add($$5.d((double)$$1, (double)$$2, (double)$$3));
+      }
+
+      return $$4;
    }
 
-   public bsw a(float $$0, float $$1) {
-      return !this.e && ($$0 != 1.0F || $$1 != 1.0F) ? new bsw(this.a * $$0, this.b * $$1, this.c * $$1, this.d.a($$0, $$1, $$0), false) : this;
+   @Nullable
+   public evr a(bsv $$0, int $$1, float $$2) {
+      List<evr> $$3 = this.a.get($$0);
+      return $$1 >= 0 && $$1 < $$3.size() ? a($$3.get($$1), $$2) : null;
    }
 
-   public static bsw b(float $$0, float $$1) {
-      return new bsw($$0, $$1, false);
+   public evr b(bsv $$0, int $$1, float $$2) {
+      evr $$3 = this.a($$0, $$1, $$2);
+      if ($$3 == null) {
+         throw new IllegalStateException("Had no attachment point of type: " + $$0 + " for index: " + $$1);
+      } else {
+         return $$3;
+      }
    }
 
-   public static bsw c(float $$0, float $$1) {
-      return new bsw($$0, $$1, true);
+   public evr c(bsv $$0, int $$1, float $$2) {
+      List<evr> $$3 = this.a.get($$0);
+      if ($$3.isEmpty()) {
+         throw new IllegalStateException("Had no attachment points of type: " + $$0);
+      } else {
+         evr $$4 = $$3.get(ayz.a($$1, 0, $$3.size() - 1));
+         return a($$4, $$2);
+      }
    }
 
-   public bsw b(float $$0) {
-      return new bsw(this.a, this.b, $$0, this.d, this.e);
+   private static evr a(evr $$0, float $$1) {
+      return $$0.b(-$$1 * (float) (Math.PI / 180.0));
    }
 
-   public bsw a(bsv.a $$0) {
-      return new bsw(this.a, this.b, this.c, $$0.a(this.a, this.b), this.e);
+   public static class a {
+      private final Map<bsv, List<evr>> a = new EnumMap<>(bsv.class);
+
+      a() {
+      }
+
+      public bsw.a a(bsv $$0, float $$1, float $$2, float $$3) {
+         return this.a($$0, new evr((double)$$1, (double)$$2, (double)$$3));
+      }
+
+      public bsw.a a(bsv $$0, evr $$1) {
+         this.a.computeIfAbsent($$0, $$0x -> new ArrayList<>(1)).add($$1);
+         return this;
+      }
+
+      public bsw a(float $$0, float $$1) {
+         Map<bsv, List<evr>> $$2 = new EnumMap<>(bsv.class);
+
+         for (bsv $$3 : bsv.values()) {
+            List<evr> $$4 = this.a.get($$3);
+            $$2.put($$3, $$4 != null ? List.copyOf($$4) : $$3.a($$0, $$1));
+         }
+
+         return new bsw($$2);
+      }
    }
 }

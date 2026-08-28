@@ -1,37 +1,29 @@
-public class afk implements zv<ach> {
-   public static final zm<wl, afk> a = zv.a(afk::a, afk::new);
-   private final iz b;
-   private final float c;
+public class afk implements zw<aci> {
+   public static final zn<wm, afk> a = zw.a(afk::a, afk::new);
+   private final int b;
 
-   public afk(iz $$0, float $$1) {
+   public afk(int $$0) {
       this.b = $$0;
-      this.c = $$1;
    }
 
-   private afk(wl $$0) {
-      this.b = $$0.e();
-      this.c = $$0.readFloat();
+   private afk(wm $$0) {
+      this.b = $$0.l();
    }
 
-   private void a(wl $$0) {
-      $$0.a(this.b);
-      $$0.a(this.c);
+   private void a(wm $$0) {
+      $$0.c(this.b);
    }
 
    @Override
-   public zx<afk> a() {
-      return agt.aA;
+   public zy<afk> a() {
+      return agu.az;
    }
 
-   public void a(ach $$0) {
+   public void a(aci $$0) {
       $$0.a(this);
    }
 
-   public iz b() {
+   public int b() {
       return this.b;
-   }
-
-   public float e() {
-      return this.c;
    }
 }

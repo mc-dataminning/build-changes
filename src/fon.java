@@ -1,99 +1,100 @@
-public class fon extends foa<cqk> implements fqv {
-   private static final ale D = new ale("textures/gui/container/crafting_table.png");
-   private final fqp E = new fqp();
-   private boolean F;
+public class fon extends fob<cqi> {
+   private static final alf D = new alf("container/crafter/disabled_slot");
+   private static final alf E = new alf("container/crafter/powered_redstone");
+   private static final alf F = new alf("container/crafter/unpowered_redstone");
+   private static final alf G = new alf("textures/gui/container/crafter.png");
+   private static final xp H = xp.c("gui.togglable_slot");
+   private final cmx I;
 
-   public fon(cqk $$0, cmv $$1, xo $$2) {
+   public fon(cqi $$0, cmw $$1, xp $$2) {
       super($$0, $$1, $$2);
+      this.I = $$1.l;
    }
 
    @Override
    protected void aM_() {
       super.aM_();
-      this.F = this.n < 379;
-      this.E.a(this.n, this.o, this.m, this.F, this.w);
-      this.z = this.E.a(this.n, this.c);
-      this.c(new fhp(this.z + 5, this.o / 2 - 49, 20, 18, fqp.a, $$0 -> {
-         this.E.e();
-         this.z = this.E.a(this.n, this.c);
-         $$0.c(this.z + 5, this.o / 2 - 49);
-      }));
-      this.d(this.E);
-      this.r = 29;
+      this.r = (this.c - this.p.a(this.l)) / 2;
    }
 
    @Override
-   public void E() {
-      super.E();
-      this.E.h();
-   }
-
-   @Override
-   public void a(fgq $$0, int $$1, int $$2, float $$3) {
-      if (this.E.f() && this.F) {
-         this.b($$0, $$1, $$2, $$3);
-         this.E.a($$0, $$1, $$2, $$3);
-      } else {
-         super.a($$0, $$1, $$2, $$3);
-         this.E.a($$0, $$1, $$2, $$3);
-         this.E.a($$0, this.z, this.A, true, $$3);
+   protected void a(crp $$0, int $$1, int $$2, cqd $$3) {
+      if ($$0 instanceof cqj && !$$0.h() && !this.I.N_()) {
+         switch ($$3) {
+            case a:
+               if (this.w.e($$1)) {
+                  this.a($$1);
+               } else if (this.w.g().e()) {
+                  this.b($$1);
+               }
+               break;
+            case c:
+               cup $$4 = this.I.gc().a($$2);
+               if (this.w.e($$1) && !$$4.e()) {
+                  this.a($$1);
+               }
+         }
       }
 
-      this.a($$0, $$1, $$2);
-      this.E.a($$0, this.z, this.A, $$1, $$2);
-   }
-
-   @Override
-   protected void a(fgq $$0, float $$1, int $$2, int $$3) {
-      int $$4 = this.z;
-      int $$5 = (this.o - this.d) / 2;
-      $$0.a(D, $$4, $$5, 0, 0, this.c, this.d);
-   }
-
-   @Override
-   public boolean a(int $$0, int $$1, int $$2) {
-      return this.E.a($$0, $$1, $$2) ? true : super.a($$0, $$1, $$2);
-   }
-
-   @Override
-   public boolean a(char $$0, int $$1) {
-      return this.E.a($$0, $$1) ? true : super.a($$0, $$1);
-   }
-
-   @Override
-   protected boolean a(int $$0, int $$1, int $$2, int $$3, double $$4, double $$5) {
-      return (!this.F || !this.E.f()) && super.a($$0, $$1, $$2, $$3, $$4, $$5);
-   }
-
-   @Override
-   public boolean a(double $$0, double $$1, int $$2) {
-      if (this.E.a($$0, $$1, $$2)) {
-         this.a(this.E);
-         return true;
-      } else {
-         return this.F && this.E.f() ? true : super.a($$0, $$1, $$2);
-      }
-   }
-
-   @Override
-   protected boolean a(double $$0, double $$1, int $$2, int $$3, int $$4) {
-      boolean $$5 = $$0 < (double)$$2 || $$1 < (double)$$3 || $$0 >= (double)($$2 + this.c) || $$1 >= (double)($$3 + this.d);
-      return this.E.a($$0, $$1, this.z, this.A, this.c, this.d, $$4) && $$5;
-   }
-
-   @Override
-   protected void a(cro $$0, int $$1, int $$2, cqc $$3) {
       super.a($$0, $$1, $$2, $$3);
-      this.E.a($$0);
+   }
+
+   private void a(int $$0) {
+      this.a($$0, true);
+   }
+
+   private void b(int $$0) {
+      this.a($$0, false);
+   }
+
+   private void a(int $$0, boolean $$1) {
+      this.w.a($$0, $$1);
+      super.a($$0, this.w.j, $$1);
+      float $$2 = $$1 ? 1.0F : 0.75F;
+      this.I.a(awa.Ao.a(), 0.4F, $$2);
    }
 
    @Override
-   public void I() {
-      this.E.i();
+   public void a(fgr $$0, crp $$1) {
+      if ($$1 instanceof cqj $$2 && this.w.e($$1.d)) {
+         this.a($$0, $$2);
+         return;
+      }
+
+      super.a($$0, $$1);
+   }
+
+   private void a(fgr $$0, cqj $$1) {
+      $$0.a(D, $$1.e - 1, $$1.f - 1, 18, 18);
    }
 
    @Override
-   public fqp J() {
-      return this.E;
+   public void a(fgr $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      this.c($$0);
+      this.a($$0, $$1, $$2);
+      if (this.y instanceof cqj && !this.w.e(this.y.d) && this.w.g().e() && !this.y.h() && !this.I.N_()) {
+         $$0.a(this.p, H, $$1, $$2);
+      }
+   }
+
+   private void c(fgr $$0) {
+      int $$1 = this.n / 2 + 9;
+      int $$2 = this.o / 2 - 48;
+      alf $$3;
+      if (this.w.l()) {
+         $$3 = E;
+      } else {
+         $$3 = F;
+      }
+
+      $$0.a($$3, $$1, $$2, 16, 16);
+   }
+
+   @Override
+   protected void a(fgr $$0, float $$1, int $$2, int $$3) {
+      int $$4 = (this.n - this.c) / 2;
+      int $$5 = (this.o - this.d) / 2;
+      $$0.a(G, $$4, $$5, 0, 0, this.c, this.d);
    }
 }

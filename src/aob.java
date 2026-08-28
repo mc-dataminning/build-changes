@@ -1,84 +1,130 @@
 import com.mojang.brigadier.CommandDispatcher;
+import com.mojang.brigadier.arguments.FloatArgumentType;
+import com.mojang.brigadier.arguments.IntegerArgumentType;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
+import com.mojang.brigadier.builder.RequiredArgumentBuilder;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
-import com.mojang.logging.LogUtils;
-import java.io.IOException;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.util.Locale;
-import java.util.function.Consumer;
-import net.minecraft.server.MinecraftServer;
-import org.apache.commons.io.FileUtils;
-import org.slf4j.Logger;
+import java.util.Collection;
 
 public class aob {
-   private static final Logger a = LogUtils.getLogger();
-   private static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(xo.c("commands.perf.notRunning"));
-   private static final SimpleCommandExceptionType c = new SimpleCommandExceptionType(xo.c("commands.perf.alreadyRunning"));
+   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(xp.c("commands.particle.failed"));
 
-   public static void a(CommandDispatcher<ep> $$0) {
+   public static void a(CommandDispatcher<ep> $$0, el $$1) {
       $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)eq.a("perf").requires($$0x -> $$0x.c(4)))
-               .then(eq.a("start").executes($$0x -> a((ep)$$0x.getSource()))))
-            .then(eq.a("stop").executes($$0x -> b((ep)$$0x.getSource())))
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)eq.a("particle").requires($$0x -> $$0x.c(2)))
+            .then(
+               ((RequiredArgumentBuilder)eq.a("name", fm.a($$1))
+                     .executes(
+                        $$0x -> a(
+                              (ep)$$0x.getSource(), fm.a($$0x, "name"), ((ep)$$0x.getSource()).d(), evr.b, 0.0F, 0, false, ((ep)$$0x.getSource()).l().ah().t()
+                           )
+                     ))
+                  .then(
+                     ((RequiredArgumentBuilder)eq.a("pos", gs.a())
+                           .executes(
+                              $$0x -> a((ep)$$0x.getSource(), fm.a($$0x, "name"), gs.a($$0x, "pos"), evr.b, 0.0F, 0, false, ((ep)$$0x.getSource()).l().ah().t())
+                           ))
+                        .then(
+                           eq.a("delta", gs.a(false))
+                              .then(
+                                 eq.a("speed", FloatArgumentType.floatArg(0.0F))
+                                    .then(
+                                       ((RequiredArgumentBuilder)((RequiredArgumentBuilder)eq.a("count", IntegerArgumentType.integer(0))
+                                                .executes(
+                                                   $$0x -> a(
+                                                         (ep)$$0x.getSource(),
+                                                         fm.a($$0x, "name"),
+                                                         gs.a($$0x, "pos"),
+                                                         gs.a($$0x, "delta"),
+                                                         FloatArgumentType.getFloat($$0x, "speed"),
+                                                         IntegerArgumentType.getInteger($$0x, "count"),
+                                                         false,
+                                                         ((ep)$$0x.getSource()).l().ah().t()
+                                                      )
+                                                ))
+                                             .then(
+                                                ((LiteralArgumentBuilder)eq.a("force")
+                                                      .executes(
+                                                         $$0x -> a(
+                                                               (ep)$$0x.getSource(),
+                                                               fm.a($$0x, "name"),
+                                                               gs.a($$0x, "pos"),
+                                                               gs.a($$0x, "delta"),
+                                                               FloatArgumentType.getFloat($$0x, "speed"),
+                                                               IntegerArgumentType.getInteger($$0x, "count"),
+                                                               true,
+                                                               ((ep)$$0x.getSource()).l().ah().t()
+                                                            )
+                                                      ))
+                                                   .then(
+                                                      eq.a("viewers", fc.d())
+                                                         .executes(
+                                                            $$0x -> a(
+                                                                  (ep)$$0x.getSource(),
+                                                                  fm.a($$0x, "name"),
+                                                                  gs.a($$0x, "pos"),
+                                                                  gs.a($$0x, "delta"),
+                                                                  FloatArgumentType.getFloat($$0x, "speed"),
+                                                                  IntegerArgumentType.getInteger($$0x, "count"),
+                                                                  true,
+                                                                  fc.f($$0x, "viewers")
+                                                               )
+                                                         )
+                                                   )
+                                             ))
+                                          .then(
+                                             ((LiteralArgumentBuilder)eq.a("normal")
+                                                   .executes(
+                                                      $$0x -> a(
+                                                            (ep)$$0x.getSource(),
+                                                            fm.a($$0x, "name"),
+                                                            gs.a($$0x, "pos"),
+                                                            gs.a($$0x, "delta"),
+                                                            FloatArgumentType.getFloat($$0x, "speed"),
+                                                            IntegerArgumentType.getInteger($$0x, "count"),
+                                                            false,
+                                                            ((ep)$$0x.getSource()).l().ah().t()
+                                                         )
+                                                   ))
+                                                .then(
+                                                   eq.a("viewers", fc.d())
+                                                      .executes(
+                                                         $$0x -> a(
+                                                               (ep)$$0x.getSource(),
+                                                               fm.a($$0x, "name"),
+                                                               gs.a($$0x, "pos"),
+                                                               gs.a($$0x, "delta"),
+                                                               FloatArgumentType.getFloat($$0x, "speed"),
+                                                               IntegerArgumentType.getInteger($$0x, "count"),
+                                                               false,
+                                                               fc.f($$0x, "viewers")
+                                                            )
+                                                      )
+                                                )
+                                          )
+                                    )
+                              )
+                        )
+                  )
+            )
       );
    }
 
-   private static int a(ep $$0) throws CommandSyntaxException {
-      MinecraftServer $$1 = $$0.l();
-      if ($$1.aV()) {
-         throw c.create();
+   private static int a(ep $$0, lg $$1, evr $$2, evr $$3, float $$4, int $$5, boolean $$6, Collection<arg> $$7) throws CommandSyntaxException {
+      int $$8 = 0;
+
+      for (arg $$9 : $$7) {
+         if ($$0.e().a($$9, $$1, $$6, $$2.c, $$2.d, $$2.e, $$5, $$3.c, $$3.d, $$3.e, (double)$$4)) {
+            $$8++;
+         }
+      }
+
+      if ($$8 == 0) {
+         throw a.create();
       } else {
-         Consumer<bng> $$2 = $$1x -> a($$0, $$1x);
-         Consumer<Path> $$3 = $$2x -> a($$0, $$2x, $$1);
-         $$1.a($$2, $$3);
-         $$0.a(() -> xo.c("commands.perf.started"), false);
-         return 0;
-      }
-   }
-
-   private static int b(ep $$0) throws CommandSyntaxException {
-      MinecraftServer $$1 = $$0.l();
-      if (!$$1.aV()) {
-         throw b.create();
-      } else {
-         $$1.aX();
-         return 0;
-      }
-   }
-
-   private static void a(ep $$0, Path $$1, MinecraftServer $$2) {
-      String $$3 = String.format(Locale.ROOT, "%s-%s-%s", ac.f(), $$2.bb().e(), aa.b().b());
-
-      String $$4;
-      try {
-         $$4 = v.a(boz.a, $$3, ".zip");
-      } catch (IOException var11) {
-         $$0.b(xo.c("commands.perf.reportFailed"));
-         a.error("Failed to create report name", var11);
-         return;
-      }
-
-      try (ayj $$7 = new ayj(boz.a.resolve($$4))) {
-         $$7.a(Paths.get("system.txt"), $$2.b(new ab()).a());
-         $$7.a($$1);
-      }
-
-      try {
-         FileUtils.forceDelete($$1.toFile());
-      } catch (IOException var9) {
-         a.warn("Failed to delete temporary profiling file {}", $$1, var9);
-      }
-
-      $$0.a(() -> xo.a("commands.perf.reportSaved", $$4), false);
-   }
-
-   private static void a(ep $$0, bng $$1) {
-      if ($$1 != bnc.a) {
-         int $$2 = $$1.f();
-         double $$3 = (double)$$1.g() / (double)azy.a;
-         $$0.a(() -> xo.a("commands.perf.stopped", String.format(Locale.ROOT, "%.2f", $$3), $$2, String.format(Locale.ROOT, "%.2f", (double)$$2 / $$3)), false);
+         $$0.a(() -> xp.a("commands.particle.success", lp.j.b($$1.a()).toString()), true);
+         return $$8;
       }
    }
 }

@@ -1,7 +1,7 @@
 public interface eo {
    eo a = new eo() {
       @Override
-      public void a(xo $$0) {
+      public void a(xp $$0) {
       }
 
       @Override
@@ -20,7 +20,7 @@ public interface eo {
       }
    };
 
-   void a(xo var1);
+   void a(xp var1);
 
    boolean l_();
 

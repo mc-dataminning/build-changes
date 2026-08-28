@@ -1,220 +1,84 @@
 import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.arguments.FloatArgumentType;
-import com.mojang.brigadier.arguments.IntegerArgumentType;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import com.mojang.brigadier.builder.RequiredArgumentBuilder;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.DynamicCommandExceptionType;
 import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
-import com.mojang.brigadier.suggestion.SuggestionProvider;
-import java.util.Optional;
+import com.mojang.logging.LogUtils;
+import java.io.IOException;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.Locale;
+import java.util.function.Consumer;
+import net.minecraft.server.MinecraftServer;
+import org.apache.commons.io.FileUtils;
+import org.slf4j.Logger;
 
 public class aoc {
-   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(xo.c("commands.place.feature.failed"));
-   private static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(xo.c("commands.place.jigsaw.failed"));
-   private static final SimpleCommandExceptionType c = new SimpleCommandExceptionType(xo.c("commands.place.structure.failed"));
-   private static final DynamicCommandExceptionType d = new DynamicCommandExceptionType($$0 -> xo.b("commands.place.template.invalid", $$0));
-   private static final SimpleCommandExceptionType e = new SimpleCommandExceptionType(xo.c("commands.place.template.failed"));
-   private static final SuggestionProvider<ep> f = ($$0, $$1) -> {
-      emk $$2 = ((ep)$$0.getSource()).e().q();
-      return eu.a($$2.a(), $$1);
-   };
+   private static final Logger a = LogUtils.getLogger();
+   private static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(xp.c("commands.perf.notRunning"));
+   private static final SimpleCommandExceptionType c = new SimpleCommandExceptionType(xp.c("commands.perf.alreadyRunning"));
 
    public static void a(CommandDispatcher<ep> $$0) {
       $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)eq.a("place")
-                        .requires($$0x -> $$0x.c(2)))
-                     .then(
-                        eq.a("feature")
-                           .then(
-                              ((RequiredArgumentBuilder)eq.a("feature", fp.a(lq.aC))
-                                    .executes($$0x -> a((ep)$$0x.getSource(), fp.a($$0x, "feature"), iz.a(((ep)$$0x.getSource()).d()))))
-                                 .then(eq.a("pos", gl.a()).executes($$0x -> a((ep)$$0x.getSource(), fp.a($$0x, "feature"), gl.a($$0x, "pos"))))
-                           )
-                     ))
-                  .then(
-                     eq.a("jigsaw")
-                        .then(
-                           eq.a("pool", fp.a(lq.aM))
-                              .then(
-                                 eq.a("target", fq.a())
-                                    .then(
-                                       ((RequiredArgumentBuilder)eq.a("max_depth", IntegerArgumentType.integer(1, 20))
-                                             .executes(
-                                                $$0x -> a(
-                                                      (ep)$$0x.getSource(),
-                                                      fp.c($$0x, "pool"),
-                                                      fq.c($$0x, "target"),
-                                                      IntegerArgumentType.getInteger($$0x, "max_depth"),
-                                                      iz.a(((ep)$$0x.getSource()).d())
-                                                   )
-                                             ))
-                                          .then(
-                                             eq.a("position", gl.a())
-                                                .executes(
-                                                   $$0x -> a(
-                                                         (ep)$$0x.getSource(),
-                                                         fp.c($$0x, "pool"),
-                                                         fq.c($$0x, "target"),
-                                                         IntegerArgumentType.getInteger($$0x, "max_depth"),
-                                                         gl.a($$0x, "position")
-                                                      )
-                                                )
-                                          )
-                                    )
-                              )
-                        )
-                  ))
-               .then(
-                  eq.a("structure")
-                     .then(
-                        ((RequiredArgumentBuilder)eq.a("structure", fp.a(lq.aJ))
-                              .executes($$0x -> b((ep)$$0x.getSource(), fp.b($$0x, "structure"), iz.a(((ep)$$0x.getSource()).d()))))
-                           .then(eq.a("pos", gl.a()).executes($$0x -> b((ep)$$0x.getSource(), fp.b($$0x, "structure"), gl.a($$0x, "pos"))))
-                     )
-               ))
-            .then(
-               eq.a("template")
-                  .then(
-                     ((RequiredArgumentBuilder)eq.a("template", fq.a())
-                           .suggests(f)
-                           .executes($$0x -> a((ep)$$0x.getSource(), fq.c($$0x, "template"), iz.a(((ep)$$0x.getSource()).d()), dll.a, djv.a, 1.0F, 0)))
-                        .then(
-                           ((RequiredArgumentBuilder)eq.a("pos", gl.a())
-                                 .executes($$0x -> a((ep)$$0x.getSource(), fq.c($$0x, "template"), gl.a($$0x, "pos"), dll.a, djv.a, 1.0F, 0)))
-                              .then(
-                                 ((RequiredArgumentBuilder)eq.a("rotation", gd.a())
-                                       .executes(
-                                          $$0x -> a((ep)$$0x.getSource(), fq.c($$0x, "template"), gl.a($$0x, "pos"), gd.a($$0x, "rotation"), djv.a, 1.0F, 0)
-                                       ))
-                                    .then(
-                                       ((RequiredArgumentBuilder)eq.a("mirror", gc.a())
-                                             .executes(
-                                                $$0x -> a(
-                                                      (ep)$$0x.getSource(),
-                                                      fq.c($$0x, "template"),
-                                                      gl.a($$0x, "pos"),
-                                                      gd.a($$0x, "rotation"),
-                                                      gc.a($$0x, "mirror"),
-                                                      1.0F,
-                                                      0
-                                                   )
-                                             ))
-                                          .then(
-                                             ((RequiredArgumentBuilder)eq.a("integrity", FloatArgumentType.floatArg(0.0F, 1.0F))
-                                                   .executes(
-                                                      $$0x -> a(
-                                                            (ep)$$0x.getSource(),
-                                                            fq.c($$0x, "template"),
-                                                            gl.a($$0x, "pos"),
-                                                            gd.a($$0x, "rotation"),
-                                                            gc.a($$0x, "mirror"),
-                                                            FloatArgumentType.getFloat($$0x, "integrity"),
-                                                            0
-                                                         )
-                                                   ))
-                                                .then(
-                                                   eq.a("seed", IntegerArgumentType.integer())
-                                                      .executes(
-                                                         $$0x -> a(
-                                                               (ep)$$0x.getSource(),
-                                                               fq.c($$0x, "template"),
-                                                               gl.a($$0x, "pos"),
-                                                               gd.a($$0x, "rotation"),
-                                                               gc.a($$0x, "mirror"),
-                                                               FloatArgumentType.getFloat($$0x, "integrity"),
-                                                               IntegerArgumentType.getInteger($$0x, "seed")
-                                                            )
-                                                      )
-                                                )
-                                          )
-                                    )
-                              )
-                        )
-                  )
-            )
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)eq.a("perf").requires($$0x -> $$0x.c(4)))
+               .then(eq.a("start").executes($$0x -> a((ep)$$0x.getSource()))))
+            .then(eq.a("stop").executes($$0x -> b((ep)$$0x.getSource())))
       );
    }
 
-   public static int a(ep $$0, ji.c<eak<?, ?>> $$1, iz $$2) throws CommandSyntaxException {
-      are $$3 = $$0.e();
-      eak<?, ?> $$4 = $$1.a();
-      dbe $$5 = new dbe($$2);
-      a($$3, new dbe($$5.e - 1, $$5.f - 1), new dbe($$5.e + 1, $$5.f + 1));
-      if (!$$4.a($$3, $$3.l().g(), $$3.E_(), $$2)) {
-         throw a.create();
-      } else {
-         String $$6 = $$1.h().a().toString();
-         $$0.a(() -> xo.a("commands.place.feature.success", $$6, $$2.u(), $$2.v(), $$2.w()), true);
-         return 1;
-      }
-   }
-
-   public static int a(ep $$0, ji<ejs> $$1, ale $$2, int $$3, iz $$4) throws CommandSyntaxException {
-      are $$5 = $$0.e();
-      dbe $$6 = new dbe($$4);
-      a($$5, $$6, $$6);
-      if (!ejm.a($$5, $$1, $$2, $$3, $$4, false)) {
-         throw b.create();
-      } else {
-         $$0.a(() -> xo.a("commands.place.jigsaw.success", $$4.u(), $$4.v(), $$4.w()), true);
-         return 1;
-      }
-   }
-
-   public static int b(ep $$0, ji.c<eij> $$1, iz $$2) throws CommandSyntaxException {
-      are $$3 = $$0.e();
-      eij $$4 = $$1.a();
-      dty $$5 = $$3.l().g();
-      eir $$6 = $$4.a($$0.v(), $$5, $$5.d(), $$3.l().i(), $$3.q(), $$3.C(), new dbe($$2), 0, $$3, $$0x -> true);
-      if (!$$6.b()) {
+   private static int a(ep $$0) throws CommandSyntaxException {
+      MinecraftServer $$1 = $$0.l();
+      if ($$1.aV()) {
          throw c.create();
       } else {
-         eib $$7 = $$6.a();
-         dbe $$8 = new dbe(kb.a($$7.h()), kb.a($$7.j()));
-         dbe $$9 = new dbe(kb.a($$7.k()), kb.a($$7.m()));
-         a($$3, $$8, $$9);
-         dbe.a($$8, $$9).forEach($$3x -> $$6.a($$3, $$3.a(), $$5, $$3.E_(), new eib($$3x.d(), $$3.I_(), $$3x.e(), $$3x.f(), $$3.am(), $$3x.g()), $$3x));
-         String $$10 = $$1.h().a().toString();
-         $$0.a(() -> xo.a("commands.place.structure.success", $$10, $$2.u(), $$2.v(), $$2.w()), true);
-         return 1;
+         Consumer<bnh> $$2 = $$1x -> a($$0, $$1x);
+         Consumer<Path> $$3 = $$2x -> a($$0, $$2x, $$1);
+         $$1.a($$2, $$3);
+         $$0.a(() -> xp.c("commands.perf.started"), false);
+         return 0;
       }
    }
 
-   public static int a(ep $$0, ale $$1, iz $$2, dll $$3, djv $$4, float $$5, int $$6) throws CommandSyntaxException {
-      are $$7 = $$0.e();
-      emk $$8 = $$7.q();
-
-      Optional<emj> $$9;
-      try {
-         $$9 = $$8.b($$1);
-      } catch (z var13) {
-         throw d.create($$1);
-      }
-
-      if ($$9.isEmpty()) {
-         throw d.create($$1);
+   private static int b(ep $$0) throws CommandSyntaxException {
+      MinecraftServer $$1 = $$0.l();
+      if (!$$1.aV()) {
+         throw b.create();
       } else {
-         emj $$12 = $$9.get();
-         a($$7, new dbe($$2), new dbe($$2.a($$12.a())));
-         emf $$13 = new emf().a($$4).a($$3);
-         if ($$5 < 1.0F) {
-            $$13.b().a(new eln($$5)).a(dqv.b((long)$$6));
-         }
-
-         boolean $$14 = $$12.a($$7, $$2, $$2, $$13, dqv.b((long)$$6), 2);
-         if (!$$14) {
-            throw e.create();
-         } else {
-            $$0.a(() -> xo.a("commands.place.template.success", xo.a($$1), $$2.u(), $$2.v(), $$2.w()), true);
-            return 1;
-         }
+         $$1.aX();
+         return 0;
       }
    }
 
-   private static void a(are $$0, dbe $$1, dbe $$2) throws CommandSyntaxException {
-      if (dbe.a($$1, $$2).filter($$1x -> !$$0.p($$1x.l())).findAny().isPresent()) {
-         throw gl.a.create();
+   private static void a(ep $$0, Path $$1, MinecraftServer $$2) {
+      String $$3 = String.format(Locale.ROOT, "%s-%s-%s", ac.f(), $$2.bb().e(), aa.b().b());
+
+      String $$4;
+      try {
+         $$4 = v.a(bpa.a, $$3, ".zip");
+      } catch (IOException var11) {
+         $$0.b(xp.c("commands.perf.reportFailed"));
+         a.error("Failed to create report name", var11);
+         return;
+      }
+
+      try (ayk $$7 = new ayk(bpa.a.resolve($$4))) {
+         $$7.a(Paths.get("system.txt"), $$2.b(new ab()).a());
+         $$7.a($$1);
+      }
+
+      try {
+         FileUtils.forceDelete($$1.toFile());
+      } catch (IOException var9) {
+         a.warn("Failed to delete temporary profiling file {}", $$1, var9);
+      }
+
+      $$0.a(() -> xp.a("commands.perf.reportSaved", $$4), false);
+   }
+
+   private static void a(ep $$0, bnh $$1) {
+      if ($$1 != bnd.a) {
+         int $$2 = $$1.f();
+         double $$3 = (double)$$1.g() / (double)azz.a;
+         $$0.a(() -> xp.a("commands.perf.stopped", String.format(Locale.ROOT, "%.2f", $$3), $$2, String.format(Locale.ROOT, "%.2f", (double)$$2 / $$3)), false);
       }
    }
 }

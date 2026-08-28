@@ -1,61 +1,100 @@
-public class cin extends cid {
-   private static final int b = 100;
-   private static final int c = 10;
-   private static final int d = 20;
-   private static final int e = 150;
-   private static final cef f = cef.a().a(150.0);
-   private final cef g;
-   private int h;
+import javax.annotation.Nullable;
 
-   public cin(cia $$0) {
+public class cin extends cie {
+   private static final int b = 200;
+   private static final int c = 4;
+   private static final int d = 10;
+   private int e;
+   private int f;
+   @Nullable
+   private bsq g;
+
+   public cin(cib $$0) {
       super($$0);
-      this.g = cef.a().a(20.0).a($$1 -> Math.abs($$1.dw() - $$0.dw()) <= 10.0);
    }
 
    @Override
-   public void c() {
-      this.h++;
-      bto $$0 = this.a.dP().a(this.g, this.a, this.a.du(), this.a.dw(), this.a.dA());
-      if ($$0 != null) {
-         if (this.h > 25) {
-            this.a.gn().a(ciq.h);
-         } else {
-            evq $$1 = new evq($$0.du() - this.a.du(), 0.0, $$0.dA() - this.a.dA()).d();
-            evq $$2 = new evq((double)ayy.a(this.a.dF() * (float) (Math.PI / 180.0)), 0.0, (double)(-ayy.b(this.a.dF() * (float) (Math.PI / 180.0)))).d();
-            float $$3 = (float)$$2.b($$1);
-            float $$4 = (float)(Math.acos((double)$$3) * 180.0F / (float)Math.PI) + 0.5F;
-            if ($$4 < 0.0F || $$4 > 10.0F) {
-               double $$5 = $$0.du() - this.a.e.du();
-               double $$6 = $$0.dA() - this.a.e.dA();
-               double $$7 = ayy.a(ayy.d(180.0 - ayy.d($$5, $$6) * 180.0F / (float)Math.PI - (double)this.a.dF()), -100.0, 100.0);
-               this.a.cb *= 0.8F;
-               float $$8 = (float)Math.sqrt($$5 * $$5 + $$6 * $$6) + 1.0F;
-               float $$9 = $$8;
-               if ($$8 > 40.0F) {
-                  $$8 = 40.0F;
-               }
+   public void b() {
+      this.e++;
+      if (this.e % 2 == 0 && this.e < 10) {
+         evr $$0 = this.a.F(1.0F).d();
+         $$0.b((float) (-Math.PI / 4));
+         double $$1 = this.a.e.du();
+         double $$2 = this.a.e.e(0.5);
+         double $$3 = this.a.e.dA();
 
-               this.a.cb += (float)$$7 * (0.7F / $$8 / $$9);
-               this.a.r(this.a.dF() + this.a.cb);
+         for (int $$4 = 0; $$4 < 8; $$4++) {
+            double $$5 = $$1 + this.a.el().k() / 2.0;
+            double $$6 = $$2 + this.a.el().k() / 2.0;
+            double $$7 = $$3 + this.a.el().k() / 2.0;
+
+            for (int $$8 = 0; $$8 < 6; $$8++) {
+               this.a.dP().a(li.h, $$5, $$6, $$7, -$$0.c * 0.08F * (double)$$8, -$$0.d * 0.6F, -$$0.e * 0.08F * (double)$$8);
             }
-         }
-      } else if (this.h >= 100) {
-         $$0 = this.a.dP().a(f, this.a, this.a.du(), this.a.dw(), this.a.dA());
-         this.a.gn().a(ciq.e);
-         if ($$0 != null) {
-            this.a.gn().a(ciq.i);
-            this.a.gn().b(ciq.i).a(new evq($$0.du(), $$0.dw(), $$0.dA()));
+
+            $$0.b((float) (Math.PI / 16));
          }
       }
    }
 
    @Override
-   public void d() {
-      this.h = 0;
+   public void c() {
+      this.e++;
+      if (this.e >= 200) {
+         if (this.f >= 4) {
+            this.a.gn().a(cir.e);
+         } else {
+            this.a.gn().a(cir.g);
+         }
+      } else if (this.e == 10) {
+         evr $$0 = new evr(this.a.e.du() - this.a.du(), 0.0, this.a.e.dA() - this.a.dA()).d();
+         float $$1 = 5.0F;
+         double $$2 = this.a.e.du() + $$0.c * 5.0 / 2.0;
+         double $$3 = this.a.e.dA() + $$0.e * 5.0 / 2.0;
+         double $$4 = this.a.e.e(0.5);
+         double $$5 = $$4;
+         iz.a $$6 = new iz.a($$2, $$4, $$3);
+
+         while (this.a.dP().u($$6)) {
+            if (--$$5 < 0.0) {
+               $$5 = $$4;
+               break;
+            }
+
+            $$6.b($$2, $$5, $$3);
+         }
+
+         $$5 = (double)(ayz.a($$5) + 1);
+         this.g = new bsq(this.a.dP(), $$2, $$5, $$3);
+         this.g.a(this.a);
+         this.g.a(5.0F);
+         this.g.a(200);
+         this.g.a(li.h);
+         this.g.a(new bsc(bse.g));
+         this.a.dP().b(this.g);
+      }
    }
 
    @Override
-   public ciq<cin> i() {
-      return ciq.g;
+   public void d() {
+      this.e = 0;
+      this.f++;
+   }
+
+   @Override
+   public void e() {
+      if (this.g != null) {
+         this.g.ao();
+         this.g = null;
+      }
+   }
+
+   @Override
+   public cir<cin> i() {
+      return cir.f;
+   }
+
+   public void j() {
+      this.f = 0;
    }
 }

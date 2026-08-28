@@ -1,33 +1,33 @@
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class doj extends dms implements dod {
-   public static final MapCodec<doj> I = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(dod.a.e.fieldOf("weathering_state").forGetter(dfz::c), dsb.b.fieldOf("base_state").forGetter($$0x -> $$0x.H), u()).apply($$0, doj::new)
+public class doj extends dmc implements doe {
+   public static final MapCodec<doj> f = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(doe.a.e.fieldOf("weathering_state").forGetter(dga::c), u()).apply($$0, doj::new)
    );
-   private final dod.a J;
+   private final doe.a g;
 
    @Override
    public MapCodec<doj> a() {
-      return I;
+      return f;
    }
 
-   public doj(dod.a $$0, dsb $$1, dsa.d $$2) {
-      super($$1, $$2);
-      this.J = $$0;
+   public doj(doe.a $$0, dsb.d $$1) {
+      super($$1);
+      this.g = $$0;
    }
 
    @Override
-   protected void b(dsb $$0, are $$1, iz $$2, azg $$3) {
+   protected void b(dsc $$0, arf $$1, iz $$2, azh $$3) {
       this.a_($$0, $$1, $$2, $$3);
    }
 
    @Override
-   protected boolean d_(dsb $$0) {
-      return dod.c($$0.b()).isPresent();
+   protected boolean d_(dsc $$0) {
+      return doe.c($$0.b()).isPresent();
    }
 
-   public dod.a m() {
-      return this.J;
+   public doe.a m() {
+      return this.g;
    }
 }

@@ -1,43 +1,57 @@
-public class gar extends gaz {
-   private final double a;
-   private final int b;
+public class gar extends gcc {
+   private final gbx a;
 
-   gar(fxu $$0, double $$1, double $$2, double $$3, double $$4, int $$5, int $$6) {
-      super($$0, $$1, $$2, $$3, 0.0, 0.0, 0.0);
+   protected gar(fxv $$0, double $$1, double $$2, double $$3, gbx $$4) {
+      super($$0, $$1, $$2, $$3);
       this.a = $$4;
-      this.t = $$5;
-      this.b = $$6;
+      this.b($$4);
+      this.t = 12 + this.r.a(4);
+      this.D = 1.0F;
+      this.b(1.0F, 1.0F);
+   }
+
+   @Override
+   public gbg b() {
+      return gbg.d;
+   }
+
+   @Override
+   public int a(float $$0) {
+      return 15728880;
    }
 
    @Override
    public void a() {
-      if (this.s % (this.b + 1) == 0) {
-         for (int $$0 = 0; $$0 < 3; $$0++) {
-            double $$1 = this.g + (this.r.j() - this.r.j()) * this.a;
-            double $$2 = this.h + (this.r.j() - this.r.j()) * this.a;
-            double $$3 = this.i + (this.r.j() - this.r.j()) * this.a;
-            this.c.a(li.x, $$1, $$2, $$3, (double)((float)this.s / (float)this.t), 0.0, 0.0);
-         }
-      }
-
-      if (this.s++ == this.t) {
+      if (this.s++ >= this.t) {
          this.k();
+      } else {
+         this.b(this.a);
       }
    }
 
-   public static class a implements gbe<lm> {
-      private final double a;
-      private final int b;
-      private final int c;
+   public static class a implements gbf<lm> {
+      private final gbx a;
 
-      public a(double $$0, int $$1, int $$2) {
+      public a(gbx $$0) {
          this.a = $$0;
-         this.b = $$1;
-         this.c = $$2;
       }
 
-      public gbb a(lm $$0, fxu $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new gar($$1, $$2, $$3, $$4, this.a, this.b, this.c);
+      public gbc a(lm $$0, fxv $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new gar($$1, $$2, $$3, $$4, this.a);
+      }
+   }
+
+   public static class b implements gbf<lm> {
+      private final gbx a;
+
+      public b(gbx $$0) {
+         this.a = $$0;
+      }
+
+      public gbc a(lm $$0, fxv $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         gbc $$8 = new gar($$1, $$2, $$3, $$4, this.a);
+         $$8.d(0.15F);
+         return $$8;
       }
    }
 }

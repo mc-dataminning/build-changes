@@ -1,20 +1,20 @@
-public record ahb(String b) implements zv<agv> {
-   public static final zm<wl, ahb> a = zv.a(ahb::a, ahb::new);
+public record ahb(int b) implements zw<agw> {
+   public static final zn<wm, ahb> a = zw.a(ahb::a, ahb::new);
 
-   private ahb(wl $$0) {
-      this($$0.p());
+   private ahb(wm $$0) {
+      this($$0.l());
    }
 
-   private void a(wl $$0) {
-      $$0.a(this.b);
+   private void a(wm $$0) {
+      $$0.c(this.b);
    }
 
    @Override
-   public zx<ahb> a() {
-      return agt.bj;
+   public zy<ahb> a() {
+      return agu.bi;
    }
 
-   public void a(agv $$0) {
+   public void a(agw $$0) {
       $$0.a(this);
    }
 }

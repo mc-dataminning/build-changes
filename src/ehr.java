@@ -1,25 +1,10 @@
-import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.Codec;
+import java.util.stream.Stream;
 
-public interface ehr<P extends ehq> {
-   ehr<ehc> a = a("block_predicate_filter", ehc.a);
-   ehr<eht> b = a("rarity_filter", eht.a);
-   ehr<ehv> c = a("surface_relative_threshold_filter", ehv.a);
-   ehr<ehw> d = a("surface_water_depth_filter", ehw.a);
-   ehr<ehb> e = a("biome", ehb.a);
-   ehr<ehg> f = a("count", ehg.a);
-   ehr<ehl> g = a("noise_based_count", ehl.a);
-   ehr<ehm> h = a("noise_threshold_count", ehm.a);
-   ehr<ehf> i = a("count_on_every_layer", ehf.a);
-   ehr<ehh> j = a("environment_scan", ehh.a);
-   ehr<ehj> k = a("heightmap", ehj.a);
-   ehr<ehi> l = a("height_range", ehi.a);
-   ehr<ehk> m = a("in_square", ehk.a);
-   ehr<ehs> n = a("random_offset", ehs.a);
-   ehr<ehd> o = a("carving_mask", ehd.a);
+public abstract class ehr {
+   public static final Codec<ehr> b = lp.U.q().dispatch(ehr::b, ehs::codec);
 
-   MapCodec<P> codec();
+   public abstract Stream<iz> a_(ehp var1, azh var2, iz var3);
 
-   private static <P extends ehq> ehr<P> a(String $$0, MapCodec<P> $$1) {
-      return jv.a(lp.U, $$0, () -> $$1);
-   }
+   public abstract ehs<?> b();
 }

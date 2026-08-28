@@ -1,37 +1,35 @@
+import com.mojang.datafixers.DSL;
 import com.mojang.datafixers.DataFix;
+import com.mojang.datafixers.DataFixUtils;
 import com.mojang.datafixers.TypeRewriteRule;
 import com.mojang.datafixers.DSL.TypeReference;
 import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.templates.TaggedChoice.TaggedChoiceType;
-import java.util.Locale;
+import com.mojang.datafixers.types.Type;
+import com.mojang.serialization.Dynamic;
 
 public class bao extends DataFix {
    private final String a;
-   private final TypeReference b;
+   private final boolean b;
+   private final String c;
+   private final TypeReference d;
 
-   public bao(Schema $$0, String $$1, TypeReference $$2) {
+   public bao(Schema $$0, TypeReference $$1, String $$2, boolean $$3) {
       super($$0, true);
-      this.a = $$1;
-      this.b = $$2;
+      this.b = $$3;
+      this.c = $$2;
+      this.a = "AddFlagIfNotPresentFix_" + this.c + "=" + this.b + " for " + $$0.getVersionKey();
+      this.d = $$1;
    }
 
-   public TypeRewriteRule makeRule() {
-      TaggedChoiceType<?> $$0 = this.getInputSchema().findChoiceType(this.b);
-      TaggedChoiceType<?> $$1 = this.getOutputSchema().findChoiceType(this.b);
-      return this.a($$0, $$1);
-   }
-
-   private <K> TypeRewriteRule a(TaggedChoiceType<K> $$0, TaggedChoiceType<?> $$1) {
-      if ($$0.getKeyType() != $$1.getKeyType()) {
-         throw new IllegalStateException("Could not inject: key type is not the same");
-      } else {
-         return this.fixTypeEverywhere(this.a, $$0, $$1, $$1x -> $$1xx -> {
-               if (!$$1.hasType($$1xx.getFirst())) {
-                  throw new IllegalArgumentException(String.format(Locale.ROOT, "%s: Unknown type %s in '%s'", this.a, $$1xx.getFirst(), this.b.typeName()));
-               } else {
-                  return $$1xx;
-               }
-            });
-      }
+   protected TypeRewriteRule makeRule() {
+      Type<?> $$0 = this.getInputSchema().getType(this.d);
+      return this.fixTypeEverywhereTyped(
+         this.a,
+         $$0,
+         $$0x -> $$0x.update(
+               DSL.remainderFinder(),
+               $$0xx -> $$0xx.set(this.c, (Dynamic)DataFixUtils.orElseGet($$0xx.get(this.c).result(), () -> $$0xx.createBoolean(this.b)))
+            )
+      );
    }
 }

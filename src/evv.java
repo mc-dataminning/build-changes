@@ -1,17 +1,20 @@
 public interface evv {
-   static evv a() {
-      return ewa.a;
-   }
+   evv a = ($$0, $$1) -> false;
+   evv b = ($$0, $$1) -> !$$0 && !$$1;
+   evv c = ($$0, $$1) -> $$1 && !$$0;
+   evv d = ($$0, $$1) -> !$$0;
+   evv e = ($$0, $$1) -> $$0 && !$$1;
+   evv f = ($$0, $$1) -> !$$1;
+   evv g = ($$0, $$1) -> $$0 != $$1;
+   evv h = ($$0, $$1) -> !$$0 || !$$1;
+   evv i = ($$0, $$1) -> $$0 && $$1;
+   evv j = ($$0, $$1) -> $$0 == $$1;
+   evv k = ($$0, $$1) -> $$1;
+   evv l = ($$0, $$1) -> !$$0 || $$1;
+   evv m = ($$0, $$1) -> $$0;
+   evv n = ($$0, $$1) -> $$0 || !$$1;
+   evv o = ($$0, $$1) -> $$0 || $$1;
+   evv p = ($$0, $$1) -> true;
 
-   static evv a(bst $$0) {
-      return new ewa($$0);
-   }
-
-   boolean b();
-
-   boolean a(ewj var1, iz var2, boolean var3);
-
-   boolean a(cuj var1);
-
-   boolean a(enu var1, enu var2);
+   boolean apply(boolean var1, boolean var2);
 }

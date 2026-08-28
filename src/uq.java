@@ -1,15 +1,149 @@
-import java.util.AbstractList;
+import java.io.DataInput;
+import java.io.DataOutput;
+import java.io.IOException;
 
-public abstract class uq<T extends vo> extends AbstractList<T> implements vo {
-   public abstract T d(int var1, T var2);
+public class uq extends vi {
+   private static final int w = 9;
+   public static final vr<uq> a = new vr.a<uq>() {
+      public uq a(DataInput $$0, vb $$1) throws IOException {
+         return uq.a(d($$0, $$1));
+      }
 
-   public abstract void c(int var1, T var2);
+      @Override
+      public vm.b a(DataInput $$0, vm $$1, vb $$2) throws IOException {
+         return $$1.a(d($$0, $$2));
+      }
 
-   public abstract T c(int var1);
+      private static byte d(DataInput $$0, vb $$1) throws IOException {
+         $$1.b(9L);
+         return $$0.readByte();
+      }
 
-   public abstract boolean a(int var1, vo var2);
+      @Override
+      public int c() {
+         return 1;
+      }
 
-   public abstract boolean b(int var1, vo var2);
+      @Override
+      public String a() {
+         return "BYTE";
+      }
 
-   public abstract byte f();
+      @Override
+      public String b() {
+         return "TAG_Byte";
+      }
+
+      @Override
+      public boolean d() {
+         return true;
+      }
+   };
+   public static final uq b = a((byte)0);
+   public static final uq c = a((byte)1);
+   private final byte x;
+
+   uq(byte $$0) {
+      this.x = $$0;
+   }
+
+   public static uq a(byte $$0) {
+      return uq.a.a[128 + $$0];
+   }
+
+   public static uq a(boolean $$0) {
+      return $$0 ? c : b;
+   }
+
+   @Override
+   public void a(DataOutput $$0) throws IOException {
+      $$0.writeByte(this.x);
+   }
+
+   @Override
+   public int a() {
+      return 9;
+   }
+
+   @Override
+   public byte b() {
+      return 1;
+   }
+
+   @Override
+   public vr<uq> c() {
+      return a;
+   }
+
+   public uq e() {
+      return this;
+   }
+
+   @Override
+   public boolean equals(Object $$0) {
+      return this == $$0 ? true : $$0 instanceof uq && this.x == ((uq)$$0).x;
+   }
+
+   @Override
+   public int hashCode() {
+      return this.x;
+   }
+
+   @Override
+   public void a(vt $$0) {
+      $$0.a(this);
+   }
+
+   @Override
+   public long f() {
+      return (long)this.x;
+   }
+
+   @Override
+   public int g() {
+      return this.x;
+   }
+
+   @Override
+   public short h() {
+      return (short)this.x;
+   }
+
+   @Override
+   public byte i() {
+      return this.x;
+   }
+
+   @Override
+   public double j() {
+      return (double)this.x;
+   }
+
+   @Override
+   public float k() {
+      return (float)this.x;
+   }
+
+   @Override
+   public Number l() {
+      return this.x;
+   }
+
+   @Override
+   public vm.b a(vm $$0) {
+      return $$0.a(this.x);
+   }
+
+   static class a {
+      static final uq[] a = new uq[256];
+
+      private a() {
+      }
+
+      static {
+         for (int $$0 = 0; $$0 < a.length; $$0++) {
+            a[$$0] = new uq((byte)($$0 - 128));
+         }
+      }
+   }
 }

@@ -1,30 +1,22 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
+import java.util.stream.Stream;
 
-public record edo(int b, int c, int d, ji<ehn> e) implements edb {
+public class edo implements edc {
    public static final Codec<edo> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               ayg.l.fieldOf("tries").orElse(128).forGetter(edo::a),
-               ayg.k.fieldOf("xz_spread").orElse(7).forGetter(edo::b),
-               ayg.k.fieldOf("y_spread").orElse(3).forGetter(edo::c),
-               ehn.b.fieldOf("feature").forGetter(edo::d)
-            )
-            .apply($$0, edo::new)
+      $$0 -> $$0.apply2(edo::new, ecs.a.listOf().fieldOf("features").forGetter($$0x -> $$0x.b), eho.b.fieldOf("default").forGetter($$0x -> $$0x.c))
    );
+   public final List<ecs> b;
+   public final ji<eho> c;
 
-   public int a() {
-      return this.b;
+   public edo(List<ecs> $$0, ji<eho> $$1) {
+      this.b = $$0;
+      this.c = $$1;
    }
 
-   public int b() {
-      return this.c;
-   }
-
-   public int c() {
-      return this.d;
-   }
-
-   public ji<ehn> d() {
-      return this.e;
+   @Override
+   public Stream<eal<?, ?>> e() {
+      return Stream.concat(this.b.stream().flatMap($$0 -> $$0.b.a().a()), this.c.a().a());
    }
 }

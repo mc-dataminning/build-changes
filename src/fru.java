@@ -1,81 +1,141 @@
-import com.google.common.collect.Lists;
-import it.unimi.dsi.fastutil.objects.Object2BooleanLinkedOpenHashMap;
-import it.unimi.dsi.fastutil.objects.Object2BooleanMap;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.function.Consumer;
+import com.mojang.logging.LogUtils;
+import it.unimi.dsi.fastutil.booleans.BooleanConsumer;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import org.apache.commons.io.FileUtils;
+import org.slf4j.Logger;
 
-public class fru extends fnc {
-   private static final xo a = xo.c("selectWorld.experiments");
-   private static final xo b = xo.c("selectWorld.experiments.info").a(n.m);
-   private static final int c = 310;
-   private final fkq d = new fkq(this);
-   private final fnc r;
-   private final atz s;
-   private final Consumer<atz> u;
-   private final Object2BooleanMap<atw> v = new Object2BooleanLinkedOpenHashMap();
+public class fru extends fnd {
+   private static final Logger a = LogUtils.getLogger();
+   private static final xp b = xp.c("selectWorld.enterName").a(n.h);
+   private static final xp c = xp.c("selectWorld.edit.resetIcon");
+   private static final xp d = xp.c("selectWorld.edit.openFolder");
+   private static final xp r = xp.c("selectWorld.edit.backup");
+   private static final xp s = xp.c("selectWorld.edit.backupFolder");
+   private static final xp u = xp.c("selectWorld.edit.optimize");
+   private static final xp v = xp.c("optimizeWorld.confirm.title");
+   private static final xp w = xp.c("optimizeWorld.confirm.description");
+   private static final xp x = xp.c("selectWorld.edit.save");
+   private static final int y = 200;
+   private static final int z = 4;
+   private static final int A = 98;
+   private final fkv B = fkv.d().a(5);
+   private final BooleanConsumer C;
+   private final epw.c D;
+   private final fhn E;
 
-   public fru(fnc $$0, atz $$1, Consumer<atz> $$2) {
-      super(a);
-      this.r = $$0;
-      this.s = $$1;
-      this.u = $$2;
+   public static fru a(fff $$0, epw.c $$1, BooleanConsumer $$2) throws IOException {
+      epx $$3 = $$1.a($$1.h());
+      return new fru($$0, $$1, $$3.b(), $$2);
+   }
 
-      for (atw $$3 : $$1.c()) {
-         if ($$3.l() == aua.d) {
-            this.v.put($$3, $$1.f().contains($$3));
+   private fru(fff $$0, epw.c $$1, String $$2, BooleanConsumer $$3) {
+      super(xp.c("selectWorld.edit.title"));
+      this.C = $$3;
+      this.D = $$1;
+      fgp $$4 = $$0.h;
+      this.B.a(new fkw(200, 20));
+      this.B.a(new fil(b, $$4));
+      this.E = this.B.a(new fhn($$4, 200, 20, b));
+      this.E.a($$2);
+      fkv $$5 = fkv.e().a(4);
+      fhe $$6 = $$5.a(fhe.a(x, $$0x -> this.a(this.E.a())).a(98).a());
+      $$5.a(fhe.a(xo.e, $$0x -> this.d()).a(98).a());
+      this.E.b($$1x -> $$6.j = !azv.h($$1x));
+      this.B.a(fhe.a(c, $$1x -> {
+         $$1.j().ifPresent($$0xx -> FileUtils.deleteQuietly($$0xx.toFile()));
+         $$1x.j = false;
+      }).a(200).a()).j = $$1.j().filter($$0x -> Files.isRegularFile($$0x)).isPresent();
+      this.B.a(fhe.a(d, $$1x -> ac.k().a($$1.a(epu.l).toFile())).a(200).a());
+      this.B.a(fhe.a(r, $$1x -> {
+         boolean $$2x = a($$1);
+         this.C.accept(!$$2x);
+      }).a(200).a());
+      this.B.a(fhe.a(s, $$1x -> {
+         epw $$2x = $$0.m();
+         Path $$3x = $$2x.d();
+
+         try {
+            v.c($$3x);
+         } catch (IOException var5x) {
+            throw new RuntimeException(var5x);
          }
-      }
+
+         ac.k().a($$3x.toFile());
+      }).a(200).a());
+      this.B.a(fhe.a(u, $$2x -> $$0.a(new flq(() -> $$0.a(this), ($$2xx, $$3x) -> {
+            if ($$2xx) {
+               a($$1);
+            }
+
+            $$0.a(frw.a($$0, this.C, $$0.as(), $$1, $$3x));
+         }, v, w, true))).a(200).a());
+      this.B.a(new fkw(200, 20));
+      this.B.a($$5);
+      this.B.a($$1x -> {
+         fhc var10000 = this.c($$1x);
+      });
+   }
+
+   @Override
+   protected void aB_() {
+      this.b(this.E);
    }
 
    @Override
    protected void aM_() {
-      this.d.a(a, this.p);
-      fku $$0 = this.d.c(fku.d());
-      $$0.a(new fhx(b, this.p).d(310), $$0x -> $$0x.e(15));
-      fry.a $$1 = fry.a(310).a(2, true).b(4);
-      this.v.forEach(($$1x, $$2x) -> $$1.a(a($$1x), () -> this.v.getBoolean($$1x), $$1xx -> this.v.put($$1x, $$1xx)).a($$1x.c()));
-      $$1.a($$0::a);
-      fku $$2 = this.d.b(fku.e().a(8));
-      $$2.a(fhd.a(xn.d, $$0x -> this.m()).a());
-      $$2.a(fhd.a(xn.e, $$0x -> this.d()).a());
-      this.d.a($$1x -> {
-         fhb var10000 = this.c($$1x);
-      });
       this.c();
-   }
-
-   private static xo a(atw $$0) {
-      String $$1 = "dataPack." + $$0.g() + ".name";
-      return (xo)(gqe.a($$1) ? xo.c($$1) : $$0.b());
    }
 
    @Override
    protected void c() {
-      this.d.a();
-   }
-
-   @Override
-   public xo i() {
-      return xn.a(super.i(), b);
+      this.B.a();
+      fkp.a(this.B, this.G());
    }
 
    @Override
    public void d() {
-      this.m.a(this.r);
+      this.C.accept(false);
    }
 
-   private void m() {
-      List<atw> $$0 = new ArrayList<>(this.s.f());
-      List<atw> $$1 = new ArrayList<>();
-      this.v.forEach(($$2, $$3) -> {
-         $$0.remove($$2);
-         if ($$3) {
-            $$1.add($$2);
-         }
-      });
-      $$0.addAll(Lists.reverse($$1));
-      this.s.b($$0.stream().map(atw::g).toList());
-      this.u.accept(this.s);
+   private void a(String $$0) {
+      try {
+         this.D.a($$0);
+      } catch (vd | vj | IOException var3) {
+         a.error("Failed to access world '{}'", this.D.f(), var3);
+         fjm.a(this.m, this.D.f());
+      }
+
+      this.C.accept(true);
+   }
+
+   public static boolean a(epw.c $$0) {
+      long $$1 = 0L;
+      IOException $$2 = null;
+
+      try {
+         $$1 = $$0.l();
+      } catch (IOException var6) {
+         $$2 = var6;
+      }
+
+      if ($$2 != null) {
+         xp $$4 = xp.c("selectWorld.edit.backupFailed");
+         xp $$5 = xp.b($$2.getMessage());
+         fff.Q().ax().a(new fjm(fjm.a.b, $$4, $$5));
+         return false;
+      } else {
+         xp $$6 = xp.a("selectWorld.edit.backupCreated", $$0.f());
+         xp $$7 = xp.a("selectWorld.edit.backupSize", ayz.c((double)$$1 / 1048576.0));
+         fff.Q().ax().a(new fjm(fjm.a.b, $$6, $$7));
+         return true;
+      }
+   }
+
+   @Override
+   public void a(fgr $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      $$0.a(this.p, this.l, this.n / 2, 15, 16777215);
    }
 }

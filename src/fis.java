@@ -1,89 +1,55 @@
-public abstract class fis {
-   protected static final int a = 14737632;
-   protected static final int b = 60;
-   protected static final int c = 1;
-   protected final fgo d;
-   protected final blx e;
+import java.time.Duration;
+import javax.annotation.Nullable;
 
-   protected fis(fgo $$0, blx $$1) {
-      this.d = $$0;
-      this.e = $$1;
+public class fis {
+   @Nullable
+   private fip a;
+   private Duration b = Duration.ZERO;
+   private long c;
+   private boolean d;
+
+   public void a(Duration $$0) {
+      this.b = $$0;
    }
 
-   public int a(int $$0) {
-      return Math.min(this.e.c() + 2, $$0);
+   public void a(@Nullable fip $$0) {
+      this.a = $$0;
    }
 
-   public void a(fgq $$0, int $$1, int $$2) {
-      int $$3 = $$0.b();
-      $$0.a(gdv.E(), $$1, $$3 - 60, $$1 + $$2, $$3, -1873784752);
-      long $$4 = 0L;
-      long $$5 = 2147483647L;
-      long $$6 = -2147483648L;
-      int $$7 = Math.max(0, this.e.c() - ($$2 - 2));
-      int $$8 = this.e.d() - $$7;
+   @Nullable
+   public fip a() {
+      return this.a;
+   }
 
-      for (int $$9 = 0; $$9 < $$8; $$9++) {
-         int $$10 = $$1 + $$9 + 1;
-         int $$11 = $$7 + $$9;
-         long $$12 = this.b($$11);
-         $$5 = Math.min($$5, $$12);
-         $$6 = Math.max($$6, $$12);
-         $$4 += $$12;
-         this.a($$0, $$3, $$10, $$11);
+   public void a(boolean $$0, boolean $$1, flk $$2) {
+      if (this.a == null) {
+         this.d = false;
+      } else {
+         boolean $$3 = $$0 || $$1 && fff.Q().aW().b();
+         if ($$3 != this.d) {
+            if ($$3) {
+               this.c = ac.c();
+            }
+
+            this.d = $$3;
+         }
+
+         if ($$3 && ac.c() - this.c > this.b.toMillis()) {
+            fnd $$4 = fff.Q().y;
+            if ($$4 != null) {
+               $$4.a(this.a, this.a($$2, $$0, $$1), $$1);
+            }
+         }
       }
+   }
 
-      $$0.a(gdv.E(), $$1, $$1 + $$2 - 1, $$3 - 60, -1);
-      $$0.a(gdv.E(), $$1, $$1 + $$2 - 1, $$3 - 1, -1);
-      $$0.b(gdv.E(), $$1, $$3 - 60, $$3, -1);
-      $$0.b(gdv.E(), $$1 + $$2 - 1, $$3 - 60, $$3, -1);
-      if ($$8 > 0) {
-         String $$13 = this.a((double)$$5) + " min";
-         String $$14 = this.a((double)$$4 / (double)$$8) + " avg";
-         String $$15 = this.a((double)$$6) + " max";
-         $$0.b(this.d, $$13, $$1 + 2, $$3 - 60 - 9, 14737632);
-         $$0.a(this.d, $$14, $$1 + $$2 / 2, $$3 - 60 - 9, 14737632);
-         $$0.b(this.d, $$15, $$1 + $$2 - this.d.b($$15) - 2, $$3 - 60 - 9, 14737632);
+   private fpw a(flk $$0, boolean $$1, boolean $$2) {
+      return (fpw)(!$$1 && $$2 && fff.Q().aW().b() ? new fps($$0) : new fpy($$0));
+   }
+
+   public void a(fla $$0) {
+      if (this.a != null) {
+         this.a.b($$0);
       }
-
-      this.d($$0, $$1, $$2, $$3);
-   }
-
-   protected void a(fgq $$0, int $$1, int $$2, int $$3) {
-      this.b($$0, $$1, $$2, $$3);
-      this.c($$0, $$1, $$2, $$3);
-   }
-
-   protected void b(fgq $$0, int $$1, int $$2, int $$3) {
-      long $$4 = this.e.a($$3);
-      int $$5 = this.b((double)$$4);
-      int $$6 = this.a($$4);
-      $$0.a(gdv.E(), $$2, $$1 - $$5, $$2 + 1, $$1, $$6);
-   }
-
-   protected void c(fgq $$0, int $$1, int $$2, int $$3) {
-   }
-
-   protected long b(int $$0) {
-      return this.e.a($$0);
-   }
-
-   protected void d(fgq $$0, int $$1, int $$2, int $$3) {
-   }
-
-   protected void a(fgq $$0, String $$1, int $$2, int $$3) {
-      $$0.a(gdv.E(), $$2, $$3, $$2 + this.d.b($$1) + 1, $$3 + 9, -1873784752);
-      $$0.a(this.d, $$1, $$2 + 1, $$3 + 1, 14737632, false);
-   }
-
-   protected abstract String a(double var1);
-
-   protected abstract int b(double var1);
-
-   protected abstract int a(long var1);
-
-   protected int a(double $$0, double $$1, int $$2, double $$3, int $$4, double $$5, int $$6) {
-      $$0 = ayy.a($$0, $$1, $$5);
-      return $$0 < $$3 ? ayi.b.a((float)(($$0 - $$1) / ($$3 - $$1)), $$2, $$4) : ayi.b.a((float)(($$0 - $$3) / ($$5 - $$3)), $$4, $$6);
    }
 }

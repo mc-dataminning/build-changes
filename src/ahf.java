@@ -1,20 +1,20 @@
-public record ahf(float b) implements zv<agv> {
-   public static final zm<wl, ahf> a = zv.a(ahf::a, ahf::new);
+public record ahf(yg.a b) implements zw<agw> {
+   public static final zn<wm, ahf> a = zw.a(ahf::a, ahf::new);
 
-   private ahf(wl $$0) {
-      this($$0.readFloat());
+   private ahf(wm $$0) {
+      this(yg.a.a($$0));
    }
 
-   private void a(wl $$0) {
-      $$0.a(this.b);
+   private void a(wm $$0) {
+      yg.a.a($$0, this.b);
    }
 
    @Override
-   public zx<ahf> a() {
-      return agt.bn;
+   public zy<ahf> a() {
+      return agu.bm;
    }
 
-   public void a(agv $$0) {
+   public void a(agw $$0) {
       $$0.a(this);
    }
 }

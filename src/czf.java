@@ -1,52 +1,65 @@
-public class czf extends cym {
-   public czf(cyk $$0) {
+public class czf extends cyn {
+   public czf(cyl $$0) {
       super($$0);
    }
 
-   public boolean a(cqj $$0, dbx $$1) {
-      int $$2 = 0;
-      int $$3 = 0;
+   public boolean a(cqk $$0, dby $$1) {
+      cup $$2 = cup.l;
+      cup $$3 = cup.l;
 
       for (int $$4 = 0; $$4 < $$0.b(); $$4++) {
-         cuo $$5 = $$0.a($$4);
+         cup $$5 = $$0.a($$4);
          if (!$$5.e()) {
-            if (dey.a($$5.g()) instanceof dlx) {
-               $$2++;
-            } else {
-               if (!($$5.g() instanceof cti)) {
+            if ($$5.g() instanceof csk) {
+               if (!$$3.e()) {
                   return false;
                }
 
-               $$3++;
-            }
+               $$3 = $$5;
+            } else {
+               if (!$$5.a(cus.vs)) {
+                  return false;
+               }
 
-            if ($$3 > 1 || $$2 > 1) {
-               return false;
+               if (!$$2.e()) {
+                  return false;
+               }
+
+               doy $$6 = $$5.a(km.X, doy.a);
+               if (!$$6.b().isEmpty()) {
+                  return false;
+               }
+
+               $$2 = $$5;
             }
          }
       }
 
-      return $$2 == 1 && $$3 == 1;
+      return !$$2.e() && !$$3.e();
    }
 
-   public cuo a(cqj $$0, jk.a $$1) {
-      cuo $$2 = cuo.l;
-      cti $$3 = (cti)cur.ri;
+   public cup a(cqk $$0, jk.a $$1) {
+      cup $$2 = cup.l;
+      cup $$3 = cup.l;
 
       for (int $$4 = 0; $$4 < $$0.b(); $$4++) {
-         cuo $$5 = $$0.a($$4);
+         cup $$5 = $$0.a($$4);
          if (!$$5.e()) {
-            cuj $$6 = $$5.g();
-            if (dey.a($$6) instanceof dlx) {
+            if ($$5.g() instanceof csk) {
                $$2 = $$5;
-            } else if ($$6 instanceof cti) {
-               $$3 = (cti)$$6;
+            } else if ($$5.a(cus.vs)) {
+               $$3 = $$5.s();
             }
          }
       }
 
-      dey $$7 = dlx.a($$3.c());
-      return $$2.a($$7, 1);
+      if ($$3.e()) {
+         return $$3;
+      } else {
+         $$3.b(km.X, $$2.a(km.X));
+         $$3.b(km.Y, ((csk)$$2.g()).b());
+         return $$3;
+      }
    }
 
    @Override
@@ -55,7 +68,7 @@ public class czf extends cym {
    }
 
    @Override
-   public cyy<?> ao_() {
-      return cyy.m;
+   public cyz<?> ao_() {
+      return cyz.l;
    }
 }

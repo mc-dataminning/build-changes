@@ -1,31 +1,25 @@
-import java.util.Map;
+public record aak(String b, int c) implements zw<aac> {
+   public static final zn<wm, aak> a = zw.a(aak::a, aak::new);
 
-public class aak implements zv<aab> {
-   public static final zm<wl, aak> a = zv.a(aak::a, aak::new);
-   private final Map<ald<? extends jv<?>>, axh.a> b;
-
-   public aak(Map<ald<? extends jv<?>>, axh.a> $$0) {
-      this.b = $$0;
+   private aak(wm $$0) {
+      this($$0.p(), $$0.l());
    }
 
-   private aak(wl $$0) {
-      this.b = $$0.a(wl::r, axh.a::b);
-   }
-
-   private void a(wl $$0) {
-      $$0.a(this.b, wl::b, ($$0x, $$1) -> $$1.a($$0x));
+   private void a(wm $$0) {
+      $$0.a(this.b);
+      $$0.c(this.c);
    }
 
    @Override
-   public zx<aak> a() {
-      return aal.i;
+   public zy<aak> a() {
+      return aam.h;
    }
 
-   public void a(aab $$0) {
+   public void a(aac $$0) {
       $$0.a(this);
    }
 
-   public Map<ald<? extends jv<?>>, axh.a> b() {
-      return this.b;
+   public int e() {
+      return this.c;
    }
 }

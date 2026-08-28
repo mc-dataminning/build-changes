@@ -1,18 +1,29 @@
-import java.util.Optional;
+public class aih implements zw<agw> {
+   public static final zn<wm, aih> a = zw.a(aih::a, aih::new);
+   private final int b;
 
-public record aih(Optional<ji<brz>> b, Optional<ji<brz>> c) implements zv<agv> {
-   public static final zm<wz, aih> a = zm.a(zk.b(lq.R).a(zk::a), aih::b, zk.b(lq.R).a(zk::a), aih::e, aih::new);
-
-   @Override
-   public zx<aih> a() {
-      return agt.bS;
+   public aih(int $$0) {
+      this.b = $$0;
    }
 
-   public void a(agv $$0) {
+   private aih(wm $$0) {
+      this.b = $$0.l();
+   }
+
+   private void a(wm $$0) {
+      $$0.c(this.b);
+   }
+
+   @Override
+   public zy<aih> a() {
+      return agu.bR;
+   }
+
+   public void a(agw $$0) {
       $$0.a(this);
    }
 
-   public Optional<ji<brz>> e() {
-      return this.c;
+   public int b() {
+      return this.b;
    }
 }

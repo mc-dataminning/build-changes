@@ -10,7 +10,7 @@ public class bli extends Schema {
 
    public Map<String, Supplier<TypeTemplate>> registerEntities(Schema $$0) {
       Map<String, Supplier<TypeTemplate>> $$1 = super.registerEntities($$0);
-      $$0.register($$1, "ElderGuardian", () -> bii.a($$0));
+      $$0.register($$1, "PolarBear", () -> bij.a($$0));
       return $$1;
    }
 }

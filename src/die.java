@@ -1,55 +1,87 @@
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
 
-public class die extends dfh implements dfb {
-   public static final MapCodec<die> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(ald.a(lq.aC).fieldOf("feature").forGetter($$0x -> $$0x.e), lp.e.q().fieldOf("grows_on").forGetter($$0x -> $$0x.d), u())
-            .apply($$0, die::new)
-   );
-   protected static final ewj b = dey.a(4.0, 0.0, 4.0, 12.0, 9.0, 12.0);
-   private static final double c = 0.4;
-   private final dey d;
-   private final ald<eak<?, ?>> e;
+public class die extends dix {
+   public static final MapCodec<die> a = b(die::new);
+   public static final int b = 3;
+   public static final dtc c = dss.as;
+   private static final int f = 4;
+   private static final int g = 2;
 
    @Override
    public MapCodec<die> a() {
       return a;
    }
 
-   protected die(ald<eak<?, ?>> $$0, dey $$1, dsa.d $$2) {
-      super($$2);
-      this.e = $$0;
-      this.d = $$1;
+   public die(dsb.d $$0) {
+      super($$0);
+      this.k(this.E.b().a(c, Integer.valueOf(0)));
    }
 
    @Override
-   protected ewj a(dsb $$0, dbd $$1, iz $$2, evv $$3) {
-      return b;
+   protected void b(dsc $$0, arf $$1, iz $$2, azh $$3) {
+      this.a($$0, $$1, $$2, $$3);
    }
 
    @Override
-   protected boolean b(dsb $$0, dbd $$1, iz $$2) {
-      return $$0.a(awo.aL) || $$0.a(dfa.fl) || $$0.a(dfa.dX) || super.b($$0, $$1, $$2);
+   protected void a(dsc $$0, arf $$1, iz $$2, azh $$3) {
+      if (($$3.a(3) == 0 || this.a($$1, $$2, 4)) && $$1.A($$2) > 11 - $$0.c(c) - $$0.b($$1, $$2) && this.e($$0, $$1, $$2)) {
+         iz.a $$4 = new iz.a();
+
+         for (je $$5 : je.values()) {
+            $$4.a($$2, $$5);
+            dsc $$6 = $$1.a_($$4);
+            if ($$6.a(this) && !this.e($$6, $$1, $$4)) {
+               $$1.a($$4, this, ayz.a($$3, 20, 40));
+            }
+         }
+      } else {
+         $$1.a($$2, this, ayz.a($$3, 20, 40));
+      }
    }
 
-   private Optional<? extends ji<eak<?, ?>>> a(dca $$0) {
-      return $$0.H_().d(lq.aC).b(this.e);
+   private boolean e(dsc $$0, dby $$1, iz $$2) {
+      int $$3 = $$0.c(c);
+      if ($$3 < 3) {
+         $$1.a($$2, $$0.a(c, Integer.valueOf($$3 + 1)), 2);
+         return false;
+      } else {
+         this.d($$0, $$1, $$2);
+         return true;
+      }
    }
 
    @Override
-   public boolean b(dca $$0, iz $$1, dsb $$2) {
-      dsb $$3 = $$0.a_($$1.d());
-      return $$3.a(this.d);
+   protected void a(dsc $$0, dby $$1, iz $$2, dez $$3, iz $$4, boolean $$5) {
+      if ($$3.o().a(this) && this.a($$1, $$2, 2)) {
+         this.d($$0, $$1, $$2);
+      }
+
+      super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   }
+
+   private boolean a(dbe $$0, iz $$1, int $$2) {
+      int $$3 = 0;
+      iz.a $$4 = new iz.a();
+
+      for (je $$5 : je.values()) {
+         $$4.a($$1, $$5);
+         if ($$0.a_($$4).a(this)) {
+            if (++$$3 >= $$2) {
+               return false;
+            }
+         }
+      }
+
+      return true;
    }
 
    @Override
-   public boolean a(dbx $$0, azg $$1, iz $$2, dsb $$3) {
-      return (double)$$1.i() < 0.4;
+   protected void a(dsd.a<dez, dsc> $$0) {
+      $$0.a(c);
    }
 
    @Override
-   public void a(are $$0, azg $$1, iz $$2, dsb $$3) {
-      this.a($$0).ifPresent($$3x -> ((eak)$$3x.a()).a($$0, $$0.l().g(), $$1, $$2));
+   public cup a(dcb $$0, iz $$1, dsc $$2) {
+      return cup.l;
    }
 }

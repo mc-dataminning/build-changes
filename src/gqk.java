@@ -1,71 +1,58 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableList.Builder;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParseException;
-import javax.annotation.Nullable;
-import org.apache.commons.lang3.Validate;
+import com.google.common.collect.Lists;
+import java.util.List;
 
-public class gqk implements atn<gqj> {
-   public gqj b(JsonObject $$0) {
-      Builder<gqi> $$1 = ImmutableList.builder();
-      int $$2 = ayo.a($$0, "frametime", 1);
-      if ($$2 != 1) {
-         Validate.inclusiveBetween(1L, 2147483647L, (long)$$2, "Invalid default frame time");
+public class gqk {
+   public static final gql a = new gql();
+   public static final String b = "animation";
+   public static final int c = 1;
+   public static final int d = -1;
+   public static final gqk e = new gqk(Lists.newArrayList(), -1, -1, 1, false) {
+      @Override
+      public gqm a(int $$0, int $$1) {
+         return new gqm($$0, $$1);
       }
+   };
+   private final List<gqj> f;
+   private final int g;
+   private final int h;
+   private final int i;
+   private final boolean j;
 
-      if ($$0.has("frames")) {
-         try {
-            JsonArray $$3 = ayo.v($$0, "frames");
-
-            for (int $$4 = 0; $$4 < $$3.size(); $$4++) {
-               JsonElement $$5 = $$3.get($$4);
-               gqi $$6 = this.a($$4, $$5);
-               if ($$6 != null) {
-                  $$1.add($$6);
-               }
-            }
-         } catch (ClassCastException var8) {
-            throw new JsonParseException("Invalid animation->frames: expected array, was " + $$0.get("frames"), var8);
-         }
-      }
-
-      int $$8 = ayo.a($$0, "width", -1);
-      int $$9 = ayo.a($$0, "height", -1);
-      if ($$8 != -1) {
-         Validate.inclusiveBetween(1L, 2147483647L, (long)$$8, "Invalid width");
-      }
-
-      if ($$9 != -1) {
-         Validate.inclusiveBetween(1L, 2147483647L, (long)$$9, "Invalid height");
-      }
-
-      boolean $$10 = ayo.a($$0, "interpolate", false);
-      return new gqj($$1.build(), $$8, $$9, $$2, $$10);
+   public gqk(List<gqj> $$0, int $$1, int $$2, int $$3, boolean $$4) {
+      this.f = $$0;
+      this.g = $$1;
+      this.h = $$2;
+      this.i = $$3;
+      this.j = $$4;
    }
 
-   @Nullable
-   private gqi a(int $$0, JsonElement $$1) {
-      if ($$1.isJsonPrimitive()) {
-         return new gqi(ayo.g($$1, "frames[" + $$0 + "]"));
-      } else if ($$1.isJsonObject()) {
-         JsonObject $$2 = ayo.m($$1, "frames[" + $$0 + "]");
-         int $$3 = ayo.a($$2, "time", -1);
-         if ($$2.has("time")) {
-            Validate.inclusiveBetween(1L, 2147483647L, (long)$$3, "Invalid frame time");
-         }
-
-         int $$4 = ayo.o($$2, "index");
-         Validate.inclusiveBetween(0L, 2147483647L, (long)$$4, "Invalid frame index");
-         return new gqi($$4, $$3);
+   public gqm a(int $$0, int $$1) {
+      if (this.g != -1) {
+         return this.h != -1 ? new gqm(this.g, this.h) : new gqm(this.g, $$1);
+      } else if (this.h != -1) {
+         return new gqm($$0, this.h);
       } else {
-         return null;
+         int $$2 = Math.min($$0, $$1);
+         return new gqm($$2, $$2);
       }
    }
 
-   @Override
-   public String a() {
-      return "animation";
+   public int a() {
+      return this.i;
+   }
+
+   public boolean b() {
+      return this.j;
+   }
+
+   public void a(gqk.a $$0) {
+      for (gqj $$1 : this.f) {
+         $$0.accept($$1.a(), $$1.a(this.i));
+      }
+   }
+
+   @FunctionalInterface
+   public interface a {
+      void accept(int var1, int var2);
    }
 }

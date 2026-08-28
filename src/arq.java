@@ -1,43 +1,61 @@
-import java.util.concurrent.Executor;
+import com.mojang.logging.LogUtils;
 import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class arq implements arn {
-   private final arn a;
-   private final bpm<Runnable> b;
-   private boolean c;
+public class arq implements aro {
+   private static final Logger a = LogUtils.getLogger();
+   private final int b;
+   private int c;
+   private long d;
+   private long e = Long.MAX_VALUE;
 
-   private arq(arn $$0, Executor $$1) {
-      this.a = $$0;
-      this.b = bpm.a($$1, "progressListener");
+   private arq(int $$0) {
+      this.b = $$0;
    }
 
-   public static arq a(arn $$0, Executor $$1) {
-      arq $$2 = new arq($$0, $$1);
-      $$2.a();
-      return $$2;
+   public static arq b(int $$0) {
+      return $$0 > 0 ? c($$0 + 1) : c();
+   }
+
+   public static arq c(int $$0) {
+      int $$1 = aro.a($$0);
+      return new arq($$1 * $$1);
+   }
+
+   public static arq c() {
+      return new arq(0);
    }
 
    @Override
-   public void a(dbe $$0) {
-      this.b.a(() -> this.a.a($$0));
+   public void a(dbf $$0) {
+      this.e = ac.c();
+      this.d = this.e;
    }
 
    @Override
-   public void a(dbe $$0, @Nullable duw $$1) {
-      if (this.c) {
-         this.b.a(() -> this.a.a($$0, $$1));
+   public void a(dbf $$0, @Nullable dux $$1) {
+      if ($$1 == dux.n) {
+         this.c++;
+      }
+
+      int $$2 = this.d();
+      if (ac.c() > this.e) {
+         this.e += 500L;
+         a.info(xp.a("menu.preparingSpawn", ayz.a($$2, 0, 100)).getString());
       }
    }
 
    @Override
    public void a() {
-      this.c = true;
-      this.b.a(this.a::a);
    }
 
    @Override
    public void b() {
-      this.c = false;
-      this.b.a(this.a::b);
+      a.info("Time elapsed: {} ms", ac.c() - this.d);
+      this.e = Long.MAX_VALUE;
+   }
+
+   public int d() {
+      return this.b == 0 ? 100 : ayz.d((float)this.c * 100.0F / (float)this.b);
    }
 }

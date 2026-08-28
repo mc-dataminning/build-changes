@@ -1,29 +1,29 @@
-public class aie implements zv<agv> {
-   public static final zm<wl, aie> a = zv.a(aie::a, aie::new);
-   private final String b;
+public class aie implements zw<agw> {
+   public static final zn<wm, aie> a = zw.a(aie::a, aie::new);
+   private final alf b;
 
-   public aie(String $$0) {
-      this.b = $$0;
+   public aie(cyx<?> $$0) {
+      this.b = $$0.a();
    }
 
-   private aie(wl $$0) {
-      this.b = $$0.p();
+   private aie(wm $$0) {
+      this.b = $$0.q();
    }
 
-   private void a(wl $$0) {
+   private void a(wm $$0) {
       $$0.a(this.b);
    }
 
    @Override
-   public zx<aie> a() {
-      return agt.bP;
+   public zy<aie> a() {
+      return agu.bO;
    }
 
-   public void a(agv $$0) {
+   public void a(agw $$0) {
       $$0.a(this);
    }
 
-   public String b() {
+   public alf b() {
       return this.b;
    }
 }

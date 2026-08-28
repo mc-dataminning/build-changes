@@ -1,13 +1,29 @@
-public interface bov {
-   void a();
+public class bov implements bow {
+   public static final bow a = new bov();
 
-   void b();
+   @Override
+   public void a() {
+   }
 
-   void c();
+   @Override
+   public void b() {
+   }
 
-   boolean e();
+   @Override
+   public void c() {
+   }
 
-   bnh f();
+   @Override
+   public boolean e() {
+      return false;
+   }
 
-   void d();
+   @Override
+   public bni f() {
+      return bnf.a;
+   }
+
+   @Override
+   public void d() {
+   }
 }

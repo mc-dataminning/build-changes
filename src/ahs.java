@@ -1,29 +1,45 @@
-public class ahs implements zv<agv> {
-   public static final zm<wl, ahs> a = zv.a(ahs::a, ahs::new);
-   private final boolean b;
+public class ahs implements zw<agw> {
+   public static final zn<wm, ahs> a = zw.a(ahs::a, ahs::new);
+   private final iz b;
+   private final int c;
+   private final boolean d;
 
-   public ahs(boolean $$0) {
+   public ahs(iz $$0, int $$1, boolean $$2) {
       this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
    }
 
-   private ahs(wl $$0) {
-      this.b = $$0.readBoolean();
+   private ahs(wm $$0) {
+      this.b = $$0.e();
+      this.c = $$0.l();
+      this.d = $$0.readBoolean();
    }
 
-   private void a(wl $$0) {
+   private void a(wm $$0) {
       $$0.a(this.b);
+      $$0.c(this.c);
+      $$0.a(this.d);
    }
 
    @Override
-   public zx<ahs> a() {
-      return agt.bA;
+   public zy<ahs> a() {
+      return agu.bz;
    }
 
-   public void a(agv $$0) {
+   public void a(agw $$0) {
       $$0.a(this);
    }
 
-   public boolean b() {
+   public iz b() {
       return this.b;
+   }
+
+   public int e() {
+      return this.c;
+   }
+
+   public boolean f() {
+      return this.d;
    }
 }

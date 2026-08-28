@@ -1,8 +1,11 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+public class axj {
+   public static final axf<ehz> a = a("normal");
+   public static final axf<ehz> b = a("extended");
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface axj {
+   private axj() {
+   }
+
+   private static axf<ehz> a(String $$0) {
+      return axf.a(lq.aQ, new alf($$0));
+   }
 }

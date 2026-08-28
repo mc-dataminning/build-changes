@@ -1,142 +1,255 @@
 import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Maps;
+import com.google.common.collect.ImmutableMap.Builder;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Map;
-import javax.annotation.Nullable;
 
-public class dnx extends dly {
-   public static final MapCodec<dnx> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(dto.a.fieldOf("wood_type").forGetter(dly::d), u()).apply($$0, dnx::new));
-   public static final dsv b = diu.aE;
-   public static final ewj c = dey.a(0.0, 14.0, 6.0, 16.0, 16.0, 10.0);
-   public static final ewj d = dey.a(6.0, 14.0, 0.0, 10.0, 16.0, 16.0);
-   public static final ewj e = ewg.a(c, dey.a(1.0, 0.0, 7.0, 15.0, 10.0, 9.0));
-   public static final ewj i = ewg.a(d, dey.a(7.0, 0.0, 1.0, 9.0, 10.0, 15.0));
-   private static final Map<je, ewj> j = Maps.newEnumMap(ImmutableMap.of(je.c, e, je.d, e, je.f, i, je.e, i));
+public class dnx extends dez implements dma {
+   public static final MapCodec<dnx> a = b(dnx::new);
+   public static final dst b = dss.J;
+   public static final dta<dto> c = dss.W;
+   public static final dta<dto> d = dss.X;
+   public static final dta<dto> e = dss.Y;
+   public static final dta<dto> f = dss.Z;
+   public static final dst g = dss.C;
+   private final Map<dsc, ewk> h;
+   private final Map<dsc, ewk> i;
+   private static final int j = 3;
+   private static final int k = 14;
+   private static final int l = 4;
+   private static final int m = 1;
+   private static final int n = 7;
+   private static final int o = 9;
+   private static final ewk F = dez.a(7.0, 0.0, 7.0, 9.0, 16.0, 9.0);
+   private static final ewk G = dez.a(7.0, 0.0, 0.0, 9.0, 16.0, 9.0);
+   private static final ewk H = dez.a(7.0, 0.0, 7.0, 9.0, 16.0, 16.0);
+   private static final ewk I = dez.a(0.0, 0.0, 7.0, 9.0, 16.0, 9.0);
+   private static final ewk J = dez.a(7.0, 0.0, 7.0, 16.0, 16.0, 9.0);
 
    @Override
    public MapCodec<dnx> a() {
       return a;
    }
 
-   public dnx(dto $$0, dsa.d $$1) {
-      super($$0, $$1.a($$0.e()));
-      this.k(this.E.b().a(b, je.c).a(f, Boolean.valueOf(false)));
+   public dnx(dsb.d $$0) {
+      super($$0);
+      this.k(this.E.b().a(b, Boolean.valueOf(true)).a(d, dto.a).a(c, dto.a).a(e, dto.a).a(f, dto.a).a(g, Boolean.valueOf(false)));
+      this.h = this.a(4.0F, 3.0F, 16.0F, 0.0F, 14.0F, 16.0F);
+      this.i = this.a(4.0F, 3.0F, 24.0F, 0.0F, 24.0F, 24.0F);
    }
 
-   @Override
-   protected bqv a(cuo $$0, dsb $$1, dbx $$2, iz $$3, cmw $$4, bqs $$5, evm $$6) {
-      if ($$2.c_($$3) instanceof dqq $$7 && this.a($$1, $$4, $$6, $$7, $$0)) {
-         return bqv.e;
-      }
-
-      return super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6);
-   }
-
-   private boolean a(dsb $$0, cmw $$1, evm $$2, dqq $$3, cuo $$4) {
-      return !$$3.a($$3.a($$1), $$1) && $$4.g() instanceof cub && !this.a($$2, $$0);
-   }
-
-   private boolean a(evm $$0, dsb $$1) {
-      return $$0.b().o() == $$1.c(b).o();
-   }
-
-   @Override
-   public String g() {
-      return this.r().a();
-   }
-
-   @Override
-   protected ewj a(dsb $$0, dbd $$1, iz $$2, evv $$3) {
-      return j.get($$0.c(b));
-   }
-
-   @Override
-   protected ewj b_(dsb $$0, dbd $$1, iz $$2) {
-      return this.a($$0, $$1, $$2, evv.a());
-   }
-
-   @Override
-   protected ewj b(dsb $$0, dbd $$1, iz $$2, evv $$3) {
-      switch ((je)$$0.c(b)) {
-         case f:
-         case e:
-            return d;
-         default:
-            return c;
+   private static ewk a(ewk $$0, dto $$1, ewk $$2, ewk $$3) {
+      if ($$1 == dto.c) {
+         return ewh.a($$0, $$3);
+      } else {
+         return $$1 == dto.b ? ewh.a($$0, $$2) : $$0;
       }
    }
 
-   public boolean b(dsb $$0, dca $$1, iz $$2) {
-      je $$3 = $$0.c(b).h();
-      je $$4 = $$0.c(b).i();
-      return this.a($$1, $$0, $$2.a($$3), $$4) || this.a($$1, $$0, $$2.a($$4), $$3);
-   }
+   private Map<dsc, ewk> a(float $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
+      float $$6 = 8.0F - $$0;
+      float $$7 = 8.0F + $$0;
+      float $$8 = 8.0F - $$1;
+      float $$9 = 8.0F + $$1;
+      ewk $$10 = dez.a((double)$$6, 0.0, (double)$$6, (double)$$7, (double)$$2, (double)$$7);
+      ewk $$11 = dez.a((double)$$8, (double)$$3, 0.0, (double)$$9, (double)$$4, (double)$$9);
+      ewk $$12 = dez.a((double)$$8, (double)$$3, (double)$$8, (double)$$9, (double)$$4, 16.0);
+      ewk $$13 = dez.a(0.0, (double)$$3, (double)$$8, (double)$$9, (double)$$4, (double)$$9);
+      ewk $$14 = dez.a((double)$$8, (double)$$3, (double)$$8, 16.0, (double)$$4, (double)$$9);
+      ewk $$15 = dez.a((double)$$8, (double)$$3, 0.0, (double)$$9, (double)$$5, (double)$$9);
+      ewk $$16 = dez.a((double)$$8, (double)$$3, (double)$$8, (double)$$9, (double)$$5, 16.0);
+      ewk $$17 = dez.a(0.0, (double)$$3, (double)$$8, (double)$$9, (double)$$5, (double)$$9);
+      ewk $$18 = dez.a((double)$$8, (double)$$3, (double)$$8, 16.0, (double)$$5, (double)$$9);
+      Builder<dsc, ewk> $$19 = ImmutableMap.builder();
 
-   public boolean a(dca $$0, dsb $$1, iz $$2, je $$3) {
-      dsb $$4 = $$0.a_($$2);
-      return $$4.a(awo.az) ? $$4.c(b).o().a($$1.c(b)) : $$4.a($$0, $$2, $$3, dmz.a);
-   }
+      for (Boolean $$20 : b.a()) {
+         for (dto $$21 : c.a()) {
+            for (dto $$22 : d.a()) {
+               for (dto $$23 : f.a()) {
+                  for (dto $$24 : e.a()) {
+                     ewk $$25 = ewh.a();
+                     $$25 = a($$25, $$21, $$14, $$18);
+                     $$25 = a($$25, $$23, $$13, $$17);
+                     $$25 = a($$25, $$22, $$11, $$15);
+                     $$25 = a($$25, $$24, $$12, $$16);
+                     if ($$20) {
+                        $$25 = ewh.a($$25, $$10);
+                     }
 
-   @Nullable
-   @Override
-   public dsb a(cxz $$0) {
-      dsb $$1 = this.o();
-      enu $$2 = $$0.q().b_($$0.a());
-      dca $$3 = $$0.q();
-      iz $$4 = $$0.a();
-
-      for (je $$5 : $$0.f()) {
-         if ($$5.o().d() && !$$5.o().a($$0.k())) {
-            je $$6 = $$5.g();
-            $$1 = $$1.a(b, $$6);
-            if ($$1.a($$3, $$4) && this.b($$1, $$3, $$4)) {
-               return $$1.a(f, Boolean.valueOf($$2.a() == env.c));
+                     dsc $$26 = this.o().a(b, $$20).a(c, $$21).a(f, $$23).a(d, $$22).a(e, $$24);
+                     $$19.put($$26.a(g, Boolean.valueOf(false)), $$25);
+                     $$19.put($$26.a(g, Boolean.valueOf(true)), $$25);
+                  }
+               }
             }
          }
       }
 
-      return null;
+      return $$19.build();
    }
 
    @Override
-   protected dsb a(dsb $$0, je $$1, dsb $$2, dby $$3, iz $$4, iz $$5) {
-      return $$1.o() == $$0.c(b).h().o() && !$$0.a($$3, $$4) ? dfa.a.o() : super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   protected ewk a(dsc $$0, dbe $$1, iz $$2, evw $$3) {
+      return this.h.get($$0);
    }
 
    @Override
-   public float g(dsb $$0) {
-      return $$0.c(b).p();
+   protected ewk b(dsc $$0, dbe $$1, iz $$2, evw $$3) {
+      return this.i.get($$0);
    }
 
    @Override
-   protected dsb a(dsb $$0, dll $$1) {
-      return $$0.a(b, $$1.a($$0.c(b)));
-   }
-
-   @Override
-   protected dsb a(dsb $$0, djv $$1) {
-      return $$0.a($$1.a($$0.c(b)));
-   }
-
-   @Override
-   protected void a(dsc.a<dey, dsb> $$0) {
-      $$0.a(b, f);
-   }
-
-   @Override
-   public dpg a(iz $$0, dsb $$1) {
-      return new dqd($$0, $$1);
-   }
-
-   @Override
-   protected boolean a(dsb $$0, eoj $$1) {
+   protected boolean a(dsc $$0, eok $$1) {
       return false;
    }
 
-   @Nullable
+   private boolean a(dsc $$0, boolean $$1, je $$2) {
+      dez $$3 = $$0.b();
+      boolean $$4 = $$3 instanceof dhy && dhy.a($$0, $$2);
+      return $$0.a(awp.L) || !j($$0) && $$1 || $$3 instanceof dja || $$4;
+   }
+
    @Override
-   public <T extends dpg> dph<T> a(dbx $$0, dsb $$1, dpi<T> $$2) {
-      return a($$2, dpi.i, dqq::a);
+   public dsc a(cya $$0) {
+      dcb $$1 = $$0.q();
+      iz $$2 = $$0.a();
+      env $$3 = $$0.q().b_($$0.a());
+      iz $$4 = $$2.e();
+      iz $$5 = $$2.h();
+      iz $$6 = $$2.f();
+      iz $$7 = $$2.g();
+      iz $$8 = $$2.c();
+      dsc $$9 = $$1.a_($$4);
+      dsc $$10 = $$1.a_($$5);
+      dsc $$11 = $$1.a_($$6);
+      dsc $$12 = $$1.a_($$7);
+      dsc $$13 = $$1.a_($$8);
+      boolean $$14 = this.a($$9, $$9.d($$1, $$4, je.d), je.d);
+      boolean $$15 = this.a($$10, $$10.d($$1, $$5, je.e), je.e);
+      boolean $$16 = this.a($$11, $$11.d($$1, $$6, je.c), je.c);
+      boolean $$17 = this.a($$12, $$12.d($$1, $$7, je.f), je.f);
+      dsc $$18 = this.o().a(g, Boolean.valueOf($$3.a() == enw.c));
+      return this.a($$1, $$18, $$8, $$13, $$14, $$15, $$16, $$17);
+   }
+
+   @Override
+   protected dsc a(dsc $$0, je $$1, dsc $$2, dbz $$3, iz $$4, iz $$5) {
+      if ($$0.c(g)) {
+         $$3.a($$4, enw.c, enw.c.a($$3));
+      }
+
+      if ($$1 == je.a) {
+         return super.a($$0, $$1, $$2, $$3, $$4, $$5);
+      } else {
+         return $$1 == je.b ? this.a($$3, $$0, $$5, $$2) : this.a($$3, $$4, $$0, $$5, $$2, $$1);
+      }
+   }
+
+   private static boolean a(dsc $$0, dtf<dto> $$1) {
+      return $$0.c($$1) != dto.a;
+   }
+
+   private static boolean a(ewk $$0, ewk $$1) {
+      return !ewh.c($$1, $$0, evv.e);
+   }
+
+   private dsc a(dcb $$0, dsc $$1, iz $$2, dsc $$3) {
+      boolean $$4 = a($$1, d);
+      boolean $$5 = a($$1, c);
+      boolean $$6 = a($$1, e);
+      boolean $$7 = a($$1, f);
+      return this.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
+   }
+
+   private dsc a(dcb $$0, iz $$1, dsc $$2, iz $$3, dsc $$4, je $$5) {
+      je $$6 = $$5.g();
+      boolean $$7 = $$5 == je.c ? this.a($$4, $$4.d($$0, $$3, $$6), $$6) : a($$2, d);
+      boolean $$8 = $$5 == je.f ? this.a($$4, $$4.d($$0, $$3, $$6), $$6) : a($$2, c);
+      boolean $$9 = $$5 == je.d ? this.a($$4, $$4.d($$0, $$3, $$6), $$6) : a($$2, e);
+      boolean $$10 = $$5 == je.e ? this.a($$4, $$4.d($$0, $$3, $$6), $$6) : a($$2, f);
+      iz $$11 = $$1.c();
+      dsc $$12 = $$0.a_($$11);
+      return this.a($$0, $$2, $$11, $$12, $$7, $$8, $$9, $$10);
+   }
+
+   private dsc a(dcb $$0, dsc $$1, iz $$2, dsc $$3, boolean $$4, boolean $$5, boolean $$6, boolean $$7) {
+      ewk $$8 = $$3.k($$0, $$2).a(je.a);
+      dsc $$9 = this.a($$1, $$4, $$5, $$6, $$7, $$8);
+      return $$9.a(b, Boolean.valueOf(this.a($$9, $$3, $$8)));
+   }
+
+   private boolean a(dsc $$0, dsc $$1, ewk $$2) {
+      boolean $$3 = $$1.b() instanceof dnx && $$1.c(b);
+      if ($$3) {
+         return true;
+      } else {
+         dto $$4 = $$0.c(d);
+         dto $$5 = $$0.c(e);
+         dto $$6 = $$0.c(c);
+         dto $$7 = $$0.c(f);
+         boolean $$8 = $$5 == dto.a;
+         boolean $$9 = $$7 == dto.a;
+         boolean $$10 = $$6 == dto.a;
+         boolean $$11 = $$4 == dto.a;
+         boolean $$12 = $$11 && $$8 && $$9 && $$10 || $$11 != $$8 || $$9 != $$10;
+         if ($$12) {
+            return true;
+         } else {
+            boolean $$13 = $$4 == dto.c && $$5 == dto.c || $$6 == dto.c && $$7 == dto.c;
+            return $$13 ? false : $$1.a(awp.aO) || a($$2, F);
+         }
+      }
+   }
+
+   private dsc a(dsc $$0, boolean $$1, boolean $$2, boolean $$3, boolean $$4, ewk $$5) {
+      return $$0.a(d, this.a($$1, $$5, G)).a(c, this.a($$2, $$5, J)).a(e, this.a($$3, $$5, H)).a(f, this.a($$4, $$5, I));
+   }
+
+   private dto a(boolean $$0, ewk $$1, ewk $$2) {
+      if ($$0) {
+         return a($$1, $$2) ? dto.c : dto.b;
+      } else {
+         return dto.a;
+      }
+   }
+
+   @Override
+   protected env b_(dsc $$0) {
+      return $$0.c(g) ? enw.c.a(false) : super.b_($$0);
+   }
+
+   @Override
+   protected boolean a_(dsc $$0, dbe $$1, iz $$2) {
+      return !$$0.c(g);
+   }
+
+   @Override
+   protected void a(dsd.a<dez, dsc> $$0) {
+      $$0.a(b, d, c, f, e, g);
+   }
+
+   @Override
+   protected dsc a(dsc $$0, dlm $$1) {
+      switch ($$1) {
+         case c:
+            return $$0.a(d, $$0.c(e)).a(c, $$0.c(f)).a(e, $$0.c(d)).a(f, $$0.c(c));
+         case d:
+            return $$0.a(d, $$0.c(c)).a(c, $$0.c(e)).a(e, $$0.c(f)).a(f, $$0.c(d));
+         case b:
+            return $$0.a(d, $$0.c(f)).a(c, $$0.c(d)).a(e, $$0.c(c)).a(f, $$0.c(e));
+         default:
+            return $$0;
+      }
+   }
+
+   @Override
+   protected dsc a(dsc $$0, djw $$1) {
+      switch ($$1) {
+         case b:
+            return $$0.a(d, $$0.c(e)).a(e, $$0.c(d));
+         case c:
+            return $$0.a(c, $$0.c(f)).a(f, $$0.c(c));
+         default:
+            return super.a($$0, $$1);
+      }
    }
 }

@@ -2,31 +2,31 @@ import java.util.function.BiConsumer;
 
 public class nm implements mu {
    @Override
-   public void generate(jk.a $$0, BiConsumer<ald<eqm>, eqm.a> $$1) {
+   public void generate(jk.a $$0, BiConsumer<ale<eqn>, eqn.a> $$1) {
       $$1.accept(
-         eqd.aW,
-         eqm.b()
+         eqe.aW,
+         eqn.b()
             .a(
-               eql.a()
-                  .a(euk.a(1.0F))
-                  .a(equ.a(cur.qP).a(5).a(new erk.a().a(dac.l)))
-                  .a(equ.a(cur.pJ).a(8).a(new erk.a().a(dac.l)))
-                  .a(equ.a(cur.sk).a(8).a(ess.a(cwq.l)))
-                  .a(equ.a(cur.vo).a(8).a(ess.a(cwq.l)))
-                  .a(equ.a(cur.sk).a(10).a(ess.a(cwq.a)))
-                  .a(equ.a(cur.vv).a(10).a(esm.a(euq.a(10.0F, 36.0F))))
-                  .a(equ.a(cur.sf).a(10).a(esm.a(euq.a(2.0F, 4.0F))))
-                  .a(equ.a(cur.ps).a(20).a(esm.a(euq.a(3.0F, 9.0F))))
-                  .a(equ.a(cur.oB).a(20).a(esm.a(euq.a(5.0F, 12.0F))))
-                  .a(equ.a(cur.eE).a(40))
-                  .a(equ.a(cur.wC).a(40).a(esm.a(euq.a(1.0F, 3.0F))))
-                  .a(equ.a(cur.tX).a(40))
-                  .a(equ.a(cur.qD).a(40).a(esm.a(euq.a(2.0F, 4.0F))))
-                  .a(equ.a(cur.fo).a(40).a(esm.a(euq.a(2.0F, 8.0F))))
-                  .a(equ.a(cur.ux).a(40).a(esm.a(euq.a(2.0F, 8.0F))))
-                  .a(equ.a(cur.vp).a(40).a(esm.a(euq.a(6.0F, 12.0F))))
-                  .a(equ.a(cur.aj).a(40).a(esm.a(euq.a(8.0F, 16.0F))))
-                  .a(equ.a(cur.wD).a(40).a(esm.a(euq.a(8.0F, 16.0F))))
+               eqm.a()
+                  .a(eul.a(1.0F))
+                  .a(eqv.a(cus.qP).a(5).a(new erl.a().a(dad.l)))
+                  .a(eqv.a(cus.pJ).a(8).a(new erl.a().a(dad.l)))
+                  .a(eqv.a(cus.sk).a(8).a(est.a(cwr.l)))
+                  .a(eqv.a(cus.vo).a(8).a(est.a(cwr.l)))
+                  .a(eqv.a(cus.sk).a(10).a(est.a(cwr.a)))
+                  .a(eqv.a(cus.vv).a(10).a(esn.a(eur.a(10.0F, 36.0F))))
+                  .a(eqv.a(cus.sf).a(10).a(esn.a(eur.a(2.0F, 4.0F))))
+                  .a(eqv.a(cus.ps).a(20).a(esn.a(eur.a(3.0F, 9.0F))))
+                  .a(eqv.a(cus.oB).a(20).a(esn.a(eur.a(5.0F, 12.0F))))
+                  .a(eqv.a(cus.eE).a(40))
+                  .a(eqv.a(cus.wC).a(40).a(esn.a(eur.a(1.0F, 3.0F))))
+                  .a(eqv.a(cus.tX).a(40))
+                  .a(eqv.a(cus.qD).a(40).a(esn.a(eur.a(2.0F, 4.0F))))
+                  .a(eqv.a(cus.fo).a(40).a(esn.a(eur.a(2.0F, 8.0F))))
+                  .a(eqv.a(cus.ux).a(40).a(esn.a(eur.a(2.0F, 8.0F))))
+                  .a(eqv.a(cus.vp).a(40).a(esn.a(eur.a(6.0F, 12.0F))))
+                  .a(eqv.a(cus.aj).a(40).a(esn.a(eur.a(8.0F, 16.0F))))
+                  .a(eqv.a(cus.wD).a(40).a(esn.a(eur.a(8.0F, 16.0F))))
             )
       );
    }

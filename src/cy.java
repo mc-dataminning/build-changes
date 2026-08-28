@@ -8,7 +8,7 @@ public class cy extends dr<cy.a> {
       return cy.a.a;
    }
 
-   public void a(arf $$0, evq $$1, int $$2) {
+   public void a(arg $$0, evr $$1, int $$2) {
       this.a($$0, $$3 -> $$3.a($$0, $$1, $$2));
    }
 
@@ -26,7 +26,7 @@ public class cy extends dr<cy.a> {
          return am.v.a(new cy.a(Optional.empty(), Optional.of($$0), de.d.c));
       }
 
-      public boolean a(arf $$0, evq $$1, int $$2) {
+      public boolean a(arg $$0, evr $$1, int $$2) {
          return this.c.isPresent() && !this.c.get().a($$1.c, $$1.d, $$1.e, $$0.du(), $$0.dw(), $$0.dA()) ? false : this.d.d($$2);
       }
 

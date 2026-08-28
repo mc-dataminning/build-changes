@@ -1,15 +1,14 @@
-public class ctz extends cuj implements cvq {
-   public ctz(cuj.a $$0) {
-      super($$0);
+import javax.annotation.Nullable;
+
+public class ctz extends csn {
+   public ctz(dez $$0, cuk.a $$1) {
+      super($$0, $$1);
    }
 
+   @Nullable
    @Override
-   public boolean a(dbx $$0, dqq $$1, boolean $$2, cmw $$3) {
-      if ($$1.a($$0x -> $$0x.a(true), $$2)) {
-         $$0.a(null, $$1.ay_(), avz.kA, awa.e, 1.0F, 1.0F);
-         return true;
-      } else {
-         return false;
-      }
+   protected dsc c(cya $$0) {
+      cmx $$1 = $$0.o();
+      return $$1 != null && !$$1.gz() ? null : super.c($$0);
    }
 }

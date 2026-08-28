@@ -1,19 +1,16 @@
-import com.mojang.serialization.MapCodec;
+import javax.annotation.Nullable;
 
-public class dhr extends dfs implements ctq {
-   public static final MapCodec<dhr> c = b(dhr::new);
+public interface dhr {
+   @Nullable
+   dph a(iz var1, dsc var2);
 
-   @Override
-   public MapCodec<dhr> a() {
-      return c;
+   @Nullable
+   default <T extends dph> dpi<T> a(dby $$0, dsc $$1, dpj<T> $$2) {
+      return null;
    }
 
-   protected dhr(dsa.d $$0) {
-      super($$0);
-   }
-
-   @Override
-   public bta m() {
-      return bta.f;
+   @Nullable
+   default <T extends dph> dwx a(arf $$0, T $$1) {
+      return $$1 instanceof dwx.b<?> $$2 ? $$2.c() : null;
    }
 }

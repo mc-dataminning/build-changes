@@ -22,12 +22,12 @@ public class pe implements lw {
    public CompletableFuture<?> a(lu $$0) {
       return this.f.thenCompose($$1 -> {
          DynamicOps<JsonElement> $$2 = $$1.a(JsonOps.INSTANCE);
-         return CompletableFuture.allOf(akz.a.stream().flatMap($$3 -> this.a($$0, $$1, $$2, (akz.c<?>)$$3).stream()).toArray(CompletableFuture[]::new));
+         return CompletableFuture.allOf(ala.a.stream().flatMap($$3 -> this.a($$0, $$1, $$2, (ala.c<?>)$$3).stream()).toArray(CompletableFuture[]::new));
       });
    }
 
-   private <T> Optional<CompletableFuture<?>> a(lu $$0, jk.a $$1, DynamicOps<JsonElement> $$2, akz.c<T> $$3) {
-      ald<? extends jv<T>> $$4 = $$3.a();
+   private <T> Optional<CompletableFuture<?>> a(lu $$0, jk.a $$1, DynamicOps<JsonElement> $$2, ala.c<T> $$3) {
+      ale<? extends jv<T>> $$4 = $$3.a();
       return $$1.a($$4).map($$4x -> {
          ly.a $$5 = this.e.a(ly.b.a, $$4.a().a());
          return CompletableFuture.allOf($$4x.b().map($$4xx -> a($$5.a($$4xx.h().a()), $$0, $$2, $$3.b(), $$4xx.a())).toArray(CompletableFuture[]::new));

@@ -1,37 +1,38 @@
-public class ahp implements zv<agv> {
-   public static final zm<wl, ahp> a = zv.a(ahp::a, ahp::new);
-   private final int b;
-   private final int c;
+import java.util.List;
+import java.util.Optional;
 
-   public ahp(int $$0, int $$1) {
-      this.b = $$0;
-      this.c = $$1;
-   }
+public record ahp(int c, List<String> d, Optional<String> e) implements zw<agw> {
+   public static final int a = 4;
+   private static final int f = 128;
+   private static final int g = 8192;
+   private static final int h = 200;
+   public static final zn<wm, ahp> b = zn.a(zl.g, ahp::b, zl.b(8192).a(zl.c(200)), ahp::e, zl.b(128).a(zl::a), ahp::f, ahp::new);
 
-   private ahp(wl $$0) {
-      this.b = $$0.l();
-      this.c = $$0.l();
-   }
-
-   private void a(wl $$0) {
-      $$0.c(this.b);
-      $$0.c(this.c);
+   public ahp(int c, List<String> d, Optional<String> e) {
+      d = List.copyOf(d);
+      this.c = c;
+      this.d = d;
+      this.e = e;
    }
 
    @Override
-   public zx<ahp> a() {
-      return agt.bx;
+   public zy<ahp> a() {
+      return agu.bw;
    }
 
-   public void a(agv $$0) {
+   public void a(agw $$0) {
       $$0.a(this);
    }
 
    public int b() {
-      return this.b;
+      return this.c;
    }
 
-   public int e() {
-      return this.c;
+   public List<String> e() {
+      return this.d;
+   }
+
+   public Optional<String> f() {
+      return this.e;
    }
 }

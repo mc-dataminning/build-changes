@@ -1,23 +1,36 @@
-import javax.annotation.Nullable;
+import it.unimi.dsi.fastutil.ints.IntArrayList;
+import it.unimi.dsi.fastutil.ints.IntList;
 
-public record aet(int b, ji<brz> c) implements zv<ach> {
-   public static final zm<wz, aet> a = zm.a(zk.g, $$0 -> $$0.b, zk.b(lq.R), aet::e, aet::new);
+public class aet implements zw<aci> {
+   public static final zn<wm, aet> a = zw.a(aet::a, aet::new);
+   private final IntList b;
 
-   @Override
-   public zx<aet> a() {
-      return agt.ak;
+   public aet(IntList $$0) {
+      this.b = new IntArrayList($$0);
    }
 
-   public void a(ach $$0) {
+   public aet(int... $$0) {
+      this.b = new IntArrayList($$0);
+   }
+
+   private aet(wm $$0) {
+      this.b = $$0.a();
+   }
+
+   private void a(wm $$0) {
+      $$0.a(this.b);
+   }
+
+   @Override
+   public zy<aet> a() {
+      return agu.aj;
+   }
+
+   public void a(aci $$0) {
       $$0.a(this);
    }
 
-   @Nullable
-   public bst a(dbx $$0) {
-      return $$0.a(this.b);
-   }
-
-   public ji<brz> e() {
-      return this.c;
+   public IntList b() {
+      return this.b;
    }
 }

@@ -1,116 +1,76 @@
-public enum dro implements azt {
-   a("inactive", dro.a.a) {
-      @Override
-      protected void a(are $$0, iz $$1, drl $$2, drn $$3, boolean $$4) {
-         $$3.a(cuo.l);
-         $$0.c(3016, $$1, $$4 ? 1 : 0);
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import it.unimi.dsi.fastutil.objects.ObjectLinkedOpenHashSet;
+import java.util.Set;
+import java.util.UUID;
+import java.util.stream.Collectors;
+
+public class dro {
+   static final String a = "shared_data";
+   static Codec<dro> b = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               cup.a("display_item").forGetter($$0x -> $$0x.d),
+               kc.c.lenientOptionalFieldOf("connected_players", Set.of()).forGetter($$0x -> $$0x.e),
+               Codec.DOUBLE.lenientOptionalFieldOf("connected_particles_range", drm.b.d()).forGetter($$0x -> $$0x.f)
+            )
+            .apply($$0, dro::new)
+   );
+   private cup d = cup.l;
+   private Set<UUID> e = new ObjectLinkedOpenHashSet();
+   private double f = drm.b.d();
+   boolean c;
+
+   dro(cup $$0, Set<UUID> $$1, double $$2) {
+      this.d = $$0;
+      this.e.addAll($$1);
+      this.f = $$2;
+   }
+
+   dro() {
+   }
+
+   public cup a() {
+      return this.d;
+   }
+
+   public boolean b() {
+      return !this.d.e();
+   }
+
+   public void a(cup $$0) {
+      if (!cup.a(this.d, $$0)) {
+         this.d = $$0.s();
+         this.f();
       }
-   },
-   b("active", dro.a.b) {
-      @Override
-      protected void a(are $$0, iz $$1, drl $$2, drn $$3, boolean $$4) {
-         if (!$$3.b()) {
-            drj.b.a($$0, this, $$2, $$3, $$1);
-         }
+   }
 
-         $$0.c(3015, $$1, $$4 ? 1 : 0);
+   boolean c() {
+      return !this.e.isEmpty();
+   }
+
+   Set<UUID> d() {
+      return this.e;
+   }
+
+   double e() {
+      return this.f;
+   }
+
+   void a(arf $$0, iz $$1, drn $$2, drm $$3, double $$4) {
+      Set<UUID> $$5 = $$3.a().detect($$0, $$3.g(), $$1, $$4, false).stream().filter($$1x -> !$$2.b().contains($$1x)).collect(Collectors.toSet());
+      if (!this.e.equals($$5)) {
+         this.e = $$5;
+         this.f();
       }
-   },
-   c("unlocking", dro.a.b) {
-      @Override
-      protected void a(are $$0, iz $$1, drl $$2, drn $$3, boolean $$4) {
-         $$0.a(null, $$1, avz.AF, awa.e);
-      }
-   },
-   d("ejecting", dro.a.b) {
-      @Override
-      protected void a(are $$0, iz $$1, drl $$2, drn $$3, boolean $$4) {
-         $$0.a(null, $$1, avz.AH, awa.e);
-      }
-
-      @Override
-      protected void a(are $$0, iz $$1, drl $$2, drn $$3) {
-         $$0.a(null, $$1, avz.AA, awa.e);
-      }
-   };
-
-   private static final int e = 20;
-   private static final int f = 20;
-   private static final int g = 20;
-   private static final int h = 20;
-   private final String i;
-   private final dro.a j;
-
-   dro(final String $$0, final dro.a $$1) {
-      this.i = $$0;
-      this.j = $$1;
    }
 
-   @Override
-   public String c() {
-      return this.i;
+   private void f() {
+      this.c = true;
    }
 
-   public int a() {
-      return this.j.c;
-   }
-
-   public dro a(are $$0, iz $$1, drl $$2, drm $$3, drn $$4) {
-      return switch (this) {
-         case a -> a($$0, $$1, $$2, $$3, $$4, $$2.c());
-         case b -> a($$0, $$1, $$2, $$3, $$4, $$2.d());
-         case c -> {
-            $$3.b($$0.Z() + 20L);
-            yield d;
-         }
-         case d -> {
-            if ($$3.d().isEmpty()) {
-               $$3.e();
-               yield a($$0, $$1, $$2, $$3, $$4, $$2.d());
-            } else {
-               float $$5 = $$3.h();
-               this.a($$0, $$1, $$3.g(), $$5);
-               $$4.a($$3.f());
-               boolean $$6 = $$3.d().isEmpty();
-               int $$7 = $$6 ? 20 : 20;
-               $$3.b($$0.Z() + (long)$$7);
-               yield d;
-            }
-         }
-      };
-   }
-
-   private static dro a(are $$0, iz $$1, drl $$2, drm $$3, drn $$4, double $$5) {
-      $$4.a($$0, $$1, $$3, $$2, $$5);
-      $$3.b($$0.Z() + 20L);
-      return $$4.c() ? b : a;
-   }
-
-   public void a(are $$0, iz $$1, dro $$2, drl $$3, drn $$4, boolean $$5) {
-      this.a($$0, $$1, $$3, $$4);
-      $$2.a($$0, $$1, $$3, $$4, $$5);
-   }
-
-   protected void a(are $$0, iz $$1, drl $$2, drn $$3, boolean $$4) {
-   }
-
-   protected void a(are $$0, iz $$1, drl $$2, drn $$3) {
-   }
-
-   private void a(are $$0, iz $$1, cuo $$2, float $$3) {
-      ks.a($$0, $$2, 2, je.b, evq.c($$1).a(je.b, 1.2));
-      $$0.c(3017, $$1, 0);
-      $$0.a(null, $$1, avz.AC, awa.e, 1.0F, 0.8F + 0.4F * $$3);
-   }
-
-   static enum a {
-      a(6),
-      b(12);
-
-      final int c;
-
-      private a(final int $$0) {
-         this.c = $$0;
-      }
+   void a(dro $$0) {
+      this.d = $$0.d;
+      this.e = $$0.e;
+      this.f = $$0.f;
    }
 }

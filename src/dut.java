@@ -1,18 +1,89 @@
-import it.unimi.dsi.fastutil.longs.LongSet;
-import java.util.Map;
+import java.util.List;
+import java.util.function.Predicate;
 import javax.annotation.Nullable;
+import org.apache.commons.lang3.Validate;
 
-public interface dut {
+public class dut<T> implements duo<T> {
+   private final jn<T> a;
    @Nullable
-   eir a(eij var1);
+   private T b;
+   private final dup<T> c;
 
-   void a(eij var1, eir var2);
+   public dut(jn<T> $$0, dup<T> $$1, List<T> $$2) {
+      this.a = $$0;
+      this.c = $$1;
+      if ($$2.size() > 0) {
+         Validate.isTrue($$2.size() <= 1, "Can't initialize SingleValuePalette with %d values.", (long)$$2.size());
+         this.b = $$2.get(0);
+      }
+   }
 
-   LongSet b(eij var1);
+   public static <A> duo<A> a(int $$0, jn<A> $$1, dup<A> $$2, List<A> $$3) {
+      return new dut<>($$1, $$2, $$3);
+   }
 
-   void a(eij var1, long var2);
+   @Override
+   public int a(T $$0) {
+      if (this.b != null && this.b != $$0) {
+         return this.c.onResize(1, $$0);
+      } else {
+         this.b = $$0;
+         return 0;
+      }
+   }
 
-   Map<eij, LongSet> h();
+   @Override
+   public boolean a(Predicate<T> $$0) {
+      if (this.b == null) {
+         throw new IllegalStateException("Use of an uninitialized palette");
+      } else {
+         return $$0.test(this.b);
+      }
+   }
 
-   void b(Map<eij, LongSet> var1);
+   @Override
+   public T a(int $$0) {
+      if (this.b != null && $$0 == 0) {
+         return this.b;
+      } else {
+         throw new IllegalStateException("Missing Palette entry for id " + $$0 + ".");
+      }
+   }
+
+   @Override
+   public void a(wm $$0) {
+      this.b = this.a.b($$0.l());
+   }
+
+   @Override
+   public void b(wm $$0) {
+      if (this.b == null) {
+         throw new IllegalStateException("Use of an uninitialized palette");
+      } else {
+         $$0.c(this.a.a(this.b));
+      }
+   }
+
+   @Override
+   public int a() {
+      if (this.b == null) {
+         throw new IllegalStateException("Use of an uninitialized palette");
+      } else {
+         return xg.a(this.a.a(this.b));
+      }
+   }
+
+   @Override
+   public int b() {
+      return 1;
+   }
+
+   @Override
+   public duo<T> c() {
+      if (this.b == null) {
+         throw new IllegalStateException("Use of an uninitialized palette");
+      } else {
+         return this;
+      }
+   }
 }

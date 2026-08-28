@@ -1,84 +1,76 @@
-import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.Sets;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
-import java.util.Set;
+import java.util.function.BiFunction;
 
-public class erx extends ert {
-   public static final int a = 0;
-   public static final MapCodec<erx> b = RecordCodecBuilder.mapCodec(
-      $$0 -> a($$0)
-            .and($$0.group(eun.a.fieldOf("count").forGetter($$0x -> $$0x.c), Codec.INT.optionalFieldOf("limit", 0).forGetter($$0x -> $$0x.d)))
-            .apply($$0, erx::new)
-   );
-   private final eum c;
-   private final int d;
+public class erx {
+   public static final BiFunction<cup, eqi, cup> a = ($$0, $$1) -> $$0;
+   public static final Codec<erv> b = lp.G.q().dispatch("function", erv::b, erw::a);
+   public static final Codec<erv> c = Codec.lazyInitialized(() -> Codec.withAlternative(b, esa.b));
+   public static final Codec<ji<erv>> d = alb.a(lq.aV, c);
+   public static final erw<esn> e = a("set_count", esn.a);
+   public static final erw<esp> f = a("set_item", esp.a);
+   public static final erw<erm> g = a("enchant_with_levels", erm.a);
+   public static final erw<erl> h = a("enchant_randomly", erl.a);
+   public static final erw<esj> i = a("set_enchantments", esj.a);
+   public static final erw<esh> j = a("set_custom_data", esh.a);
+   public static final erw<ese> k = a("set_components", ese.a);
+   public static final erw<esx> l = a("furnace_smelt", esx.a);
+   public static final erw<ery> m = a("looting_enchant", ery.b);
+   public static final erw<eso> n = a("set_damage", eso.a);
+   public static final erw<esb> o = a("set_attributes", esb.a);
+   public static final erw<esr> p = a("set_name", esr.a);
+   public static final erw<ern> q = a("exploration_map", ern.f);
+   public static final erw<esu> r = a("set_stew_effect", esu.a);
+   public static final erw<erk> s = a("copy_name", erk.a);
+   public static final erw<esf> t = a("set_contents", esf.a);
+   public static final erw<erz> u = a("modify_contents", erz.a);
+   public static final erw<erp> v = a("filtered", erp.a);
+   public static final erw<ers> w = a("limit_count", ers.a);
+   public static final erw<erf> x = a("apply_bonus", erf.a);
+   public static final erw<esg> y = a("set_loot_table", esg.a);
+   public static final erw<erg> z = a("explosion_decay", erg.a);
+   public static final erw<esq> A = a("set_lore", esq.a);
+   public static final erw<ero> B = a("fill_player_head", ero.a);
+   public static final erw<erj> C = a("copy_custom_data", erj.a);
+   public static final erw<erh> D = a("copy_state", erh.a);
+   public static final erw<esc> E = a("set_banner_pattern", esc.a);
+   public static final erw<est> F = a("set_potion", est.a);
+   public static final erw<esm> G = a("set_instrument", esm.a);
+   public static final erw<erq> H = a("reference", erq.a);
+   public static final erw<esa> I = a("sequence", esa.a);
+   public static final erw<eri> J = a("copy_components", eri.a);
+   public static final erw<esl> K = a("set_fireworks", esl.a);
+   public static final erw<esk> L = a("set_firework_explosion", esk.a);
+   public static final erw<esd> M = a("set_book_cover", esd.a);
+   public static final erw<esw> N = a("set_written_book_pages", esw.b);
+   public static final erw<esv> O = a("set_writable_book_pages", esv.a);
+   public static final erw<esy> P = a("toggle_tooltips", esy.a);
+   public static final erw<ess> Q = a("set_ominous_bottle_amplifier", ess.a);
+   public static final erw<esi> R = a("set_custom_model_data", esi.a);
 
-   erx(List<etr> $$0, eum $$1, int $$2) {
-      super($$0);
-      this.c = $$1;
-      this.d = $$2;
+   private static <T extends erv> erw<T> a(String $$0, MapCodec<T> $$1) {
+      return jv.a(lp.G, new alf($$0), new erw<>($$1));
    }
 
-   @Override
-   public erv<erx> b() {
-      return erw.m;
-   }
+   public static BiFunction<cup, eqi, cup> a(List<? extends BiFunction<cup, eqi, cup>> $$0) {
+      List<BiFunction<cup, eqi, cup>> $$1 = List.copyOf($$0);
 
-   @Override
-   public Set<eta<?>> a() {
-      return Sets.union(ImmutableSet.of(etd.d), this.c.a());
-   }
-
-   private boolean c() {
-      return this.d > 0;
-   }
-
-   @Override
-   public cuo a(cuo $$0, eqh $$1) {
-      bst $$2 = $$1.c(etd.d);
-      if ($$2 instanceof bto) {
-         int $$3 = daa.h((bto)$$2);
-         if ($$3 == 0) {
-            return $$0;
+      return switch ($$1.size()) {
+         case 0 -> a;
+         case 1 -> (BiFunction)$$1.get(0);
+         case 2 -> {
+            BiFunction<cup, eqi, cup> $$2 = $$1.get(0);
+            BiFunction<cup, eqi, cup> $$3 = $$1.get(1);
+            yield ($$2x, $$3x) -> $$3.apply($$2.apply($$2x, $$3x), $$3x);
+         }
+         default -> ($$1x, $$2x) -> {
+         for (BiFunction<cup, eqi, cup> $$3x : $$1) {
+            $$1x = $$3x.apply($$1x, $$2x);
          }
 
-         float $$4 = (float)$$3 * this.c.b($$1);
-         $$0.g(Math.round($$4));
-         if (this.c()) {
-            $$0.f(this.d);
-         }
-      }
-
-      return $$0;
-   }
-
-   public static erx.a a(eum $$0) {
-      return new erx.a($$0);
-   }
-
-   public static class a extends ert.a<erx.a> {
-      private final eum a;
-      private int b = 0;
-
-      public a(eum $$0) {
-         this.a = $$0;
-      }
-
-      protected erx.a a() {
-         return this;
-      }
-
-      public erx.a a(int $$0) {
-         this.b = $$0;
-         return this;
-      }
-
-      @Override
-      public eru b() {
-         return new erx(this.g(), this.a, this.b);
-      }
+         return $$1x;
+      };
+      };
    }
 }

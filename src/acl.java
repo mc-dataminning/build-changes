@@ -1,16 +1,42 @@
-import it.unimi.dsi.fastutil.objects.Object2IntMap;
-import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
+public class acl implements zw<aci> {
+   public static final zn<wm, acl> a = zw.a(acl::a, acl::new);
+   public static final int b = 0;
+   public static final int c = 2;
+   public static final int d = 3;
+   public static final int e = 4;
+   public static final int f = 5;
+   private final int g;
+   private final int h;
 
-public record acl(Object2IntMap<awg<?>> b) implements zv<ach> {
-   private static final zm<wz, Object2IntMap<awg<?>>> c = zk.a(Object2IntOpenHashMap::new, awg.a, zk.g);
-   public static final zm<wz, acl> a = c.a(acl::new, acl::b);
-
-   @Override
-   public zx<acl> a() {
-      return agt.f;
+   public acl(bsu $$0, int $$1) {
+      this.g = $$0.al();
+      this.h = $$1;
    }
 
-   public void a(ach $$0) {
+   private acl(wm $$0) {
+      this.g = $$0.l();
+      this.h = $$0.readUnsignedByte();
+   }
+
+   private void a(wm $$0) {
+      $$0.c(this.g);
+      $$0.k(this.h);
+   }
+
+   @Override
+   public zy<acl> a() {
+      return agu.e;
+   }
+
+   public void a(aci $$0) {
       $$0.a(this);
+   }
+
+   public int b() {
+      return this.g;
+   }
+
+   public int e() {
+      return this.h;
    }
 }

@@ -1,42 +1,81 @@
-import java.util.function.Consumer;
+import java.util.EnumMap;
+import java.util.List;
+import java.util.function.Supplier;
 
-public class csg extends cuj {
-   public csg(cuj.a $$0) {
-      super($$0);
+public class csg {
+   public static final ji<csf> a = a("leather", ac.a(new EnumMap<>(cse.a.class), $$0 -> {
+      $$0.put(cse.a.d, 1);
+      $$0.put(cse.a.c, 2);
+      $$0.put(cse.a.b, 3);
+      $$0.put(cse.a.a, 1);
+      $$0.put(cse.a.e, 3);
+   }), 15, awa.av, 0.0F, 0.0F, () -> cys.a(cus.qD), List.of(new csf.a(new alf("leather"), "", true), new csf.a(new alf("leather"), "_overlay", false)));
+   public static final ji<csf> b = a("chainmail", ac.a(new EnumMap<>(cse.a.class), $$0 -> {
+      $$0.put(cse.a.d, 1);
+      $$0.put(cse.a.c, 4);
+      $$0.put(cse.a.b, 5);
+      $$0.put(cse.a.a, 2);
+      $$0.put(cse.a.e, 4);
+   }), 12, awa.ap, 0.0F, 0.0F, () -> cys.a(cus.oE));
+   public static final ji<csf> c = a("iron", ac.a(new EnumMap<>(cse.a.class), $$0 -> {
+      $$0.put(cse.a.d, 2);
+      $$0.put(cse.a.c, 5);
+      $$0.put(cse.a.b, 6);
+      $$0.put(cse.a.a, 2);
+      $$0.put(cse.a.e, 5);
+   }), 9, awa.au, 0.0F, 0.0F, () -> cys.a(cus.oE));
+   public static final ji<csf> d = a("gold", ac.a(new EnumMap<>(cse.a.class), $$0 -> {
+      $$0.put(cse.a.d, 1);
+      $$0.put(cse.a.c, 3);
+      $$0.put(cse.a.b, 5);
+      $$0.put(cse.a.a, 2);
+      $$0.put(cse.a.e, 7);
+   }), 25, awa.at, 0.0F, 0.0F, () -> cys.a(cus.oI));
+   public static final ji<csf> e = a("diamond", ac.a(new EnumMap<>(cse.a.class), $$0 -> {
+      $$0.put(cse.a.d, 3);
+      $$0.put(cse.a.c, 6);
+      $$0.put(cse.a.b, 8);
+      $$0.put(cse.a.a, 3);
+      $$0.put(cse.a.e, 11);
+   }), 10, awa.aq, 2.0F, 0.0F, () -> cys.a(cus.oy));
+   public static final ji<csf> f = a("turtle", ac.a(new EnumMap<>(cse.a.class), $$0 -> {
+      $$0.put(cse.a.d, 2);
+      $$0.put(cse.a.c, 5);
+      $$0.put(cse.a.b, 6);
+      $$0.put(cse.a.a, 2);
+      $$0.put(cse.a.e, 5);
+   }), 9, awa.ax, 0.0F, 0.0F, () -> cys.a(cus.op));
+   public static final ji<csf> g = a("netherite", ac.a(new EnumMap<>(cse.a.class), $$0 -> {
+      $$0.put(cse.a.d, 3);
+      $$0.put(cse.a.c, 6);
+      $$0.put(cse.a.b, 8);
+      $$0.put(cse.a.a, 3);
+      $$0.put(cse.a.e, 11);
+   }), 15, awa.aw, 3.0F, 0.1F, () -> cys.a(cus.oJ));
+   public static final ji<csf> h = a("armadillo", ac.a(new EnumMap<>(cse.a.class), $$0 -> {
+      $$0.put(cse.a.d, 3);
+      $$0.put(cse.a.c, 6);
+      $$0.put(cse.a.b, 8);
+      $$0.put(cse.a.a, 3);
+      $$0.put(cse.a.e, 11);
+   }), 10, awa.ay, 0.0F, 0.0F, () -> cys.a(cus.oq));
+
+   public static ji<csf> a(jv<csf> $$0) {
+      return a;
    }
 
-   @Override
-   public bqt a(cyb $$0) {
-      je $$1 = $$0.k();
-      if ($$1 == je.a) {
-         return bqt.f;
-      } else {
-         dbx $$2 = $$0.q();
-         cxz $$3 = new cxz($$0);
-         iz $$4 = $$3.a();
-         cuo $$5 = $$0.n();
-         evq $$6 = evq.c($$4);
-         evl $$7 = bsz.d.n().a($$6.a(), $$6.b(), $$6.c());
-         if ($$2.a(null, $$7) && $$2.a_(null, $$7).isEmpty()) {
-            if ($$2 instanceof are $$8) {
-               Consumer<ciw> $$9 = bsz.a($$8, $$5, $$0.o());
-               ciw $$10 = bsz.d.b($$8, $$9, $$4, bts.m, true, true);
-               if ($$10 == null) {
-                  return bqt.f;
-               }
+   private static ji<csf> a(String $$0, EnumMap<cse.a, Integer> $$1, int $$2, ji<avz> $$3, float $$4, float $$5, Supplier<cys> $$6) {
+      List<csf.a> $$7 = List.of(new csf.a(new alf($$0)));
+      return a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
+   }
 
-               float $$11 = (float)ayy.d((ayy.g($$0.i() - 180.0F) + 22.5F) / 45.0F) * 45.0F;
-               $$10.b($$10.du(), $$10.dw(), $$10.dA(), $$11, 0.0F);
-               $$8.a_($$10);
-               $$2.a(null, $$10.du(), $$10.dw(), $$10.dA(), avz.aD, awa.e, 0.75F, 0.8F);
-               $$10.a(dwu.t, $$0.o());
-            }
+   private static ji<csf> a(String $$0, EnumMap<cse.a, Integer> $$1, int $$2, ji<avz> $$3, float $$4, float $$5, Supplier<cys> $$6, List<csf.a> $$7) {
+      EnumMap<cse.a, Integer> $$8 = new EnumMap<>(cse.a.class);
 
-            $$5.h(1);
-            return bqt.a($$2.B);
-         } else {
-            return bqt.f;
-         }
+      for (cse.a $$9 : cse.a.values()) {
+         $$8.put($$9, $$1.get($$9));
       }
+
+      return jv.b(lp.ar, new alf($$0), new csf($$8, $$2, $$3, $$6, $$7, $$4, $$5));
    }
 }

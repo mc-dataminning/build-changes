@@ -1,3 +1,8 @@
-public interface ajv extends wu {
-   void a(ajw var1);
+import javax.annotation.ParametersAreNonnullByDefault;
+
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface ajv {
 }

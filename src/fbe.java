@@ -1,383 +1,179 @@
-import com.google.common.base.Joiner;
-import com.google.common.collect.ComparisonChain;
-import com.google.common.collect.Lists;
-import com.google.common.collect.Maps;
-import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
-import com.mojang.authlib.minecraft.MinecraftSessionService;
-import com.mojang.authlib.yggdrasil.ProfileResult;
 import com.mojang.logging.LogUtils;
-import java.util.Comparator;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Locale;
-import java.util.Map;
-import java.util.Objects;
 import java.util.UUID;
-import java.util.Map.Entry;
+import java.util.function.Consumer;
 import javax.annotation.Nullable;
-import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.slf4j.Logger;
 
-public class fbe extends fbt {
-   private static final Logger w = LogUtils.getLogger();
-   private static final int x = -1;
-   public long a;
-   public String b;
-   public String c;
-   public String d;
-   public fbe.c e;
-   public String f;
-   public UUID g = ac.e;
-   public List<fba> h;
-   public Map<Integer, fbl> i;
-   public boolean j;
-   public boolean k;
-   public int l;
-   public fbe.d m;
-   public int n;
-   @Nullable
-   public String o;
-   public int p;
-   public String q;
-   public long r = -1L;
-   @Nullable
-   public String s;
-   public String t = "";
-   public fbe.a u = fbe.a.a;
-   public fbh v = new fbh();
+public class fbe {
+   static final Logger a = LogUtils.getLogger();
+   private static final String b = "notificationUuid";
+   private static final String c = "dismissable";
+   private static final String d = "seen";
+   private static final String e = "type";
+   private static final String f = "visitUrl";
+   private static final String g = "infoPopup";
+   static final xp h = xp.c("mco.notification.visitUrl.buttonText.default");
+   final UUID i;
+   final boolean j;
+   final boolean k;
+   final String l;
 
-   public String a() {
-      return this.d;
+   fbe(UUID $$0, boolean $$1, boolean $$2, String $$3) {
+      this.i = $$0;
+      this.j = $$1;
+      this.k = $$2;
+      this.l = $$3;
    }
 
-   public String b() {
-      return this.c;
+   public boolean a() {
+      return this.k;
    }
 
-   @Nullable
-   public String c() {
-      return this.o;
+   public boolean b() {
+      return this.j;
    }
 
-   public void a(String $$0) {
-      this.c = $$0;
+   public UUID c() {
+      return this.i;
    }
 
-   public void b(String $$0) {
-      this.d = $$0;
-   }
-
-   public void a(fbi $$0) {
-      List<String> $$1 = Lists.newArrayList();
-      int $$2 = 0;
-      MinecraftSessionService $$3 = ffe.Q().al();
-
-      for (UUID $$4 : $$0.b) {
-         if (!ffe.Q().b($$4)) {
-            try {
-               ProfileResult $$5 = $$3.fetchProfile($$4, false);
-               if ($$5 != null) {
-                  $$1.add($$5.profile().getName());
-               }
-
-               $$2++;
-            } catch (Exception var8) {
-               w.error("Could not get name for {}", $$4, var8);
-            }
-         }
-      }
-
-      this.v.a = String.valueOf($$2);
-      this.v.b = Joiner.on('\n').join($$1);
-   }
-
-   public static fbe a(JsonObject $$0) {
-      fbe $$1 = new fbe();
+   public static List<fbe> a(String $$0) {
+      List<fbe> $$1 = new ArrayList<>();
 
       try {
-         $$1.a = fdq.a("id", $$0, -1L);
-         $$1.b = fdq.b("remoteSubscriptionId", $$0, null);
-         $$1.c = fdq.b("name", $$0, null);
-         $$1.d = fdq.b("motd", $$0, null);
-         $$1.e = f(fdq.b("state", $$0, fbe.c.a.name()));
-         $$1.f = fdq.b("owner", $$0, null);
-         if ($$0.get("players") != null && $$0.get("players").isJsonArray()) {
-            $$1.h = a($$0.get("players").getAsJsonArray());
-            a($$1);
-         } else {
-            $$1.h = Lists.newArrayList();
+         for (JsonElement $$3 : JsonParser.parseString($$0).getAsJsonObject().get("notifications").getAsJsonArray()) {
+            $$1.add(a($$3.getAsJsonObject()));
          }
-
-         $$1.l = fdq.a("daysLeft", $$0, 0);
-         $$1.j = fdq.a("expired", $$0, false);
-         $$1.k = fdq.a("expiredTrial", $$0, false);
-         $$1.m = g(fdq.b("worldType", $$0, fbe.d.a.name()));
-         $$1.g = fdq.a("ownerUUID", $$0, ac.e);
-         if ($$0.get("slots") != null && $$0.get("slots").isJsonArray()) {
-            $$1.i = b($$0.get("slots").getAsJsonArray());
-         } else {
-            $$1.i = i();
-         }
-
-         $$1.o = fdq.b("minigameName", $$0, null);
-         $$1.n = fdq.a("activeSlot", $$0, -1);
-         $$1.p = fdq.a("minigameId", $$0, -1);
-         $$1.q = fdq.b("minigameImage", $$0, null);
-         $$1.r = fdq.a("parentWorldId", $$0, -1L);
-         $$1.s = fdq.b("parentWorldName", $$0, null);
-         $$1.t = fdq.b("activeVersion", $$0, "");
-         $$1.u = d(fdq.b("compatibility", $$0, fbe.a.a.name()));
-      } catch (Exception var3) {
-         w.error("Could not parse McoServer: {}", var3.getMessage());
+      } catch (Exception var5) {
+         a.error("Could not parse list of RealmsNotifications", var5);
       }
 
       return $$1;
    }
 
-   private static void a(fbe $$0) {
-      $$0.h
-         .sort(
-            ($$0x, $$1) -> ComparisonChain.start()
-                  .compareFalseFirst($$1.d(), $$0x.d())
-                  .compare($$0x.a().toLowerCase(Locale.ROOT), $$1.a().toLowerCase(Locale.ROOT))
-                  .result()
-         );
-   }
-
-   private static List<fba> a(JsonArray $$0) {
-      List<fba> $$1 = Lists.newArrayList();
-
-      for (JsonElement $$2 : $$0) {
-         try {
-            JsonObject $$3 = $$2.getAsJsonObject();
-            fba $$4 = new fba();
-            $$4.a(fdq.b("name", $$3, null));
-            $$4.a(fdq.a("uuid", $$3, ac.e));
-            $$4.a(fdq.a("operator", $$3, false));
-            $$4.b(fdq.a("accepted", $$3, false));
-            $$4.c(fdq.a("online", $$3, false));
-            $$1.add($$4);
-         } catch (Exception var6) {
-         }
-      }
-
-      return $$1;
-   }
-
-   private static Map<Integer, fbl> b(JsonArray $$0) {
-      Map<Integer, fbl> $$1 = Maps.newHashMap();
-
-      for (JsonElement $$2 : $$0) {
-         try {
-            JsonObject $$3 = $$2.getAsJsonObject();
-            JsonParser $$4 = new JsonParser();
-            JsonElement $$5 = $$4.parse($$3.get("options").getAsString());
-            fbl $$6;
-            if ($$5 == null) {
-               $$6 = fbl.a();
-            } else {
-               $$6 = fbl.a($$5.getAsJsonObject());
-            }
-
-            int $$8 = fdq.a("slotId", $$3, -1);
-            $$1.put($$8, $$6);
-         } catch (Exception var9) {
-         }
-      }
-
-      for (int $$9 = 1; $$9 <= 3; $$9++) {
-         if (!$$1.containsKey($$9)) {
-            $$1.put($$9, fbl.b());
-         }
-      }
-
-      return $$1;
-   }
-
-   private static Map<Integer, fbl> i() {
-      Map<Integer, fbl> $$0 = Maps.newHashMap();
-      $$0.put(1, fbl.b());
-      $$0.put(2, fbl.b());
-      $$0.put(3, fbl.b());
-      return $$0;
-   }
-
-   public static fbe c(String $$0) {
-      try {
-         return a(new JsonParser().parse($$0).getAsJsonObject());
-      } catch (Exception var2) {
-         w.error("Could not parse McoServer: {}", var2.getMessage());
-         return new fbe();
-      }
-   }
-
-   private static fbe.c f(String $$0) {
-      try {
-         return fbe.c.valueOf($$0);
-      } catch (Exception var2) {
-         return fbe.c.a;
-      }
-   }
-
-   private static fbe.d g(String $$0) {
-      try {
-         return fbe.d.valueOf($$0);
-      } catch (Exception var2) {
-         return fbe.d.a;
-      }
-   }
-
-   public static fbe.a d(@Nullable String $$0) {
-      try {
-         return fbe.a.valueOf($$0);
-      } catch (Exception var2) {
-         return fbe.a.a;
-      }
-   }
-
-   public boolean d() {
-      return this.u.a();
-   }
-
-   public boolean e() {
-      return this.u.b();
-   }
-
-   public boolean f() {
-      return this.u.c();
-   }
-
-   @Override
-   public int hashCode() {
-      return Objects.hash(this.a, this.c, this.d, this.e, this.f, this.j);
-   }
-
-   @Override
-   public boolean equals(Object $$0) {
-      if ($$0 == null) {
-         return false;
-      } else if ($$0 == this) {
-         return true;
-      } else if ($$0.getClass() != this.getClass()) {
-         return false;
+   private static fbe a(JsonObject $$0) {
+      UUID $$1 = fdr.a("notificationUuid", $$0, null);
+      if ($$1 == null) {
+         throw new IllegalStateException("Missing required property notificationUuid");
       } else {
-         fbe $$1 = (fbe)$$0;
-         return new EqualsBuilder()
-            .append(this.a, $$1.a)
-            .append(this.c, $$1.c)
-            .append(this.d, $$1.d)
-            .append(this.e, $$1.e)
-            .append(this.f, $$1.f)
-            .append(this.j, $$1.j)
-            .append(this.m, this.m)
-            .isEquals();
+         boolean $$2 = fdr.a("dismissable", $$0, true);
+         boolean $$3 = fdr.a("seen", $$0, false);
+         String $$4 = fdr.a("type", $$0);
+         fbe $$5 = new fbe($$1, $$2, $$3, $$4);
+
+         return (fbe)(switch ($$4) {
+            case "visitUrl" -> fbe.c.a($$5, $$0);
+            case "infoPopup" -> fbe.a.a($$5, $$0);
+            default -> $$5;
+         });
       }
    }
 
-   public fbe g() {
-      fbe $$0 = new fbe();
-      $$0.a = this.a;
-      $$0.b = this.b;
-      $$0.c = this.c;
-      $$0.d = this.d;
-      $$0.e = this.e;
-      $$0.f = this.f;
-      $$0.h = this.h;
-      $$0.i = this.a(this.i);
-      $$0.j = this.j;
-      $$0.k = this.k;
-      $$0.l = this.l;
-      $$0.v = new fbh();
-      $$0.v.a = this.v.a;
-      $$0.v.b = this.v.b;
-      $$0.m = this.m;
-      $$0.g = this.g;
-      $$0.o = this.o;
-      $$0.n = this.n;
-      $$0.p = this.p;
-      $$0.q = this.q;
-      $$0.s = this.s;
-      $$0.r = this.r;
-      $$0.t = this.t;
-      $$0.u = this.u;
-      return $$0;
-   }
+   public static class a extends fbe {
+      private static final String a = "title";
+      private static final String b = "message";
+      private static final String c = "image";
+      private static final String d = "urlButton";
+      private final fbl e;
+      private final fbl f;
+      private final alf g;
+      @Nullable
+      private final fbe.b h;
 
-   public Map<Integer, fbl> a(Map<Integer, fbl> $$0) {
-      Map<Integer, fbl> $$1 = Maps.newHashMap();
-
-      for (Entry<Integer, fbl> $$2 : $$0.entrySet()) {
-         $$1.put($$2.getKey(), $$2.getValue().d());
+      private a(fbe $$0, fbl $$1, fbl $$2, alf $$3, @Nullable fbe.b $$4) {
+         super($$0.i, $$0.j, $$0.k, $$0.l);
+         this.e = $$1;
+         this.f = $$2;
+         this.g = $$3;
+         this.h = $$4;
       }
 
-      return $$1;
-   }
-
-   public boolean h() {
-      return this.r != -1L;
-   }
-
-   public String a(int $$0) {
-      return this.c + " (" + this.i.get($$0).a($$0) + ")";
-   }
-
-   public fyi e(String $$0) {
-      return new fyi(this.c, $$0, fyi.c.b);
-   }
-
-   public static enum a {
-      a,
-      b,
-      c,
-      d,
-      e;
-
-      public boolean a() {
-         return this == e;
+      public static fbe.a a(fbe $$0, JsonObject $$1) {
+         fbl $$2 = fdr.a("title", $$1, fbl::a);
+         fbl $$3 = fdr.a("message", $$1, fbl::a);
+         alf $$4 = new alf(fdr.a("image", $$1));
+         fbe.b $$5 = fdr.b("urlButton", $$1, fbe.b::a);
+         return new fbe.a($$0, $$2, $$3, $$4, $$5);
       }
 
-      public boolean b() {
-         return this == d;
-      }
+      @Nullable
+      public fig a(fnd $$0, Consumer<UUID> $$1) {
+         xp $$2 = this.e.a();
+         if ($$2 == null) {
+            fbe.a.warn("Realms info popup had title with no available translation: {}", this.e);
+            return null;
+         } else {
+            fig.a $$3 = new fig.a($$0, $$2).a(this.g).a(this.f.a(xo.a));
+            if (this.h != null) {
+               $$3.a(this.h.b.a(fbe.h), $$2x -> {
+                  fff $$3x = fff.Q();
+                  $$3x.a(new flu($$3xx -> {
+                     if ($$3xx) {
+                        ac.k().a(this.h.a);
+                        $$3x.a($$0);
+                     } else {
+                        $$3x.a($$2x);
+                     }
+                  }, this.h.a, true));
+                  $$1.accept(this.c());
+               });
+            }
 
-      public boolean c() {
-         return this == c;
+            $$3.a(xo.h, $$1x -> {
+               $$1x.d();
+               $$1.accept(this.c());
+            });
+            $$3.a(() -> $$1.accept(this.c()));
+            return $$3.a();
+         }
       }
    }
 
-   public static class b implements Comparator<fbe> {
-      private final String a;
+   static record b(String a, fbl b) {
+      private static final String c = "url";
+      private static final String d = "urlText";
 
-      public b(String $$0) {
-         this.a = $$0;
-      }
-
-      public int a(fbe $$0, fbe $$1) {
-         return ComparisonChain.start()
-            .compareTrueFirst($$0.h(), $$1.h())
-            .compareTrueFirst($$0.e == fbe.c.c, $$1.e == fbe.c.c)
-            .compareTrueFirst($$0.k, $$1.k)
-            .compareTrueFirst($$0.f.equals(this.a), $$1.f.equals(this.a))
-            .compareFalseFirst($$0.j, $$1.j)
-            .compareTrueFirst($$0.e == fbe.c.b, $$1.e == fbe.c.b)
-            .compare($$0.a, $$1.a)
-            .result();
+      public static fbe.b a(JsonObject $$0) {
+         String $$1 = fdr.a("url", $$0);
+         fbl $$2 = fdr.a("urlText", $$0, fbl::a);
+         return new fbe.b($$1, $$2);
       }
    }
 
-   public static enum c {
-      a,
-      b,
-      c;
-   }
+   public static class c extends fbe {
+      private static final String a = "url";
+      private static final String b = "buttonText";
+      private static final String c = "message";
+      private final String d;
+      private final fbl e;
+      private final fbl f;
 
-   public static enum d {
-      a,
-      b,
-      c,
-      d,
-      e;
+      private c(fbe $$0, String $$1, fbl $$2, fbl $$3) {
+         super($$0.i, $$0.j, $$0.k, $$0.l);
+         this.d = $$1;
+         this.e = $$2;
+         this.f = $$3;
+      }
+
+      public static fbe.c a(fbe $$0, JsonObject $$1) {
+         String $$2 = fdr.a("url", $$1);
+         fbl $$3 = fdr.a("buttonText", $$1, fbl::a);
+         fbl $$4 = fdr.a("message", $$1, fbl::a);
+         return new fbe.c($$0, $$2, $$3, $$4);
+      }
+
+      public xp d() {
+         return this.f.a(xp.c("mco.notification.visitUrl.message.default"));
+      }
+
+      public fhe a(fnd $$0) {
+         xp $$1 = this.e.a(fbe.h);
+         return fhe.a($$1, flu.b($$0, this.d)).a();
+      }
    }
 }

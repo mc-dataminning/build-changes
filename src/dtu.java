@@ -1,5 +1,8 @@
-public interface dtu {
-   dsb a(int var1);
+import javax.annotation.ParametersAreNonnullByDefault;
 
-   void a(int var1, dsb var2);
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface dtu {
 }

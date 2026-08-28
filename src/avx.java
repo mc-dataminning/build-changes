@@ -1,18 +1,41 @@
-public class avx {
-   private static final int h = 20;
-   private static final int i = 600;
-   private static final int j = 12000;
-   private static final int k = 24000;
-   private static final int l = 6000;
-   public static final avw a = new avw(avz.pZ, 20, 600, true);
-   public static final avw b = new avw(avz.pE, 12000, 24000, false);
-   public static final avw c = new avw(avz.pF, 0, 0, true);
-   public static final avw d = new avw(avz.pW, 0, 0, true);
-   public static final avw e = new avw(avz.pX, 6000, 24000, true);
-   public static final avw f = a(avz.qy);
-   public static final avw g = a(avz.pY);
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-   public static avw a(ji<avy> $$0) {
-      return new avw($$0, 12000, 24000, false);
+public class avx {
+   public static final Codec<avx> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               avz.b.fieldOf("sound").forGetter($$0x -> $$0x.b),
+               Codec.INT.fieldOf("min_delay").forGetter($$0x -> $$0x.c),
+               Codec.INT.fieldOf("max_delay").forGetter($$0x -> $$0x.d),
+               Codec.BOOL.fieldOf("replace_current_music").forGetter($$0x -> $$0x.e)
+            )
+            .apply($$0, avx::new)
+   );
+   private final ji<avz> b;
+   private final int c;
+   private final int d;
+   private final boolean e;
+
+   public avx(ji<avz> $$0, int $$1, int $$2, boolean $$3) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
+      this.e = $$3;
+   }
+
+   public ji<avz> a() {
+      return this.b;
+   }
+
+   public int b() {
+      return this.c;
+   }
+
+   public int c() {
+      return this.d;
+   }
+
+   public boolean d() {
+      return this.e;
    }
 }

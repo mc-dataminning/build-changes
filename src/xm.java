@@ -1,81 +1,88 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.Lifecycle;
-import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
 
-public class xm {
+public record xm(String b, List<xm.a> c, ym d) {
    public static final Codec<xm> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(xm.a.h.forGetter($$0x -> $$0x.b), Codec.STRING.fieldOf("value").forGetter($$0x -> $$0x.c)).apply($$0, xm::new)
+      $$0 -> $$0.group(
+               Codec.STRING.fieldOf("translation_key").forGetter(xm::a),
+               xm.a.d.listOf().fieldOf("parameters").forGetter(xm::b),
+               ym.b.b.optionalFieldOf("style", ym.a).forGetter(xm::c)
+            )
+            .apply($$0, xm::new)
    );
-   private final xm.a b;
-   private final String c;
 
-   public xm(xm.a $$0, String $$1) {
-      this.b = $$0;
-      this.c = $$1;
+   public static xm a(String $$0) {
+      return new xm($$0, List.of(xm.a.a, xm.a.c), ym.a);
    }
 
-   public xm.a a() {
+   public static xm b(String $$0) {
+      ym $$1 = ym.a.a(n.h).b(true);
+      return new xm($$0, List.of(xm.a.a, xm.a.c), $$1);
+   }
+
+   public static xm c(String $$0) {
+      ym $$1 = ym.a.a(n.h).b(true);
+      return new xm($$0, List.of(xm.a.b, xm.a.c), $$1);
+   }
+
+   public static xm d(String $$0) {
+      return new xm($$0, List.of(xm.a.b, xm.a.a, xm.a.c), ym.a);
+   }
+
+   public xp a(xp $$0, xl.a $$1) {
+      Object[] $$2 = this.b($$0, $$1);
+      return xp.a(this.b, $$2).c(this.d);
+   }
+
+   private xp[] b(xp $$0, xl.a $$1) {
+      xp[] $$2 = new xp[this.c.size()];
+
+      for (int $$3 = 0; $$3 < $$2.length; $$3++) {
+         xm.a $$4 = this.c.get($$3);
+         $$2[$$3] = $$4.a($$0, $$1);
+      }
+
+      return $$2;
+   }
+
+   public String a() {
       return this.b;
    }
 
-   public String b() {
+   public List<xm.a> b() {
       return this.c;
    }
 
-   @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else if ($$0 != null && this.getClass() == $$0.getClass()) {
-         xm $$1 = (xm)$$0;
-         return this.b == $$1.b && this.c.equals($$1.c);
-      } else {
-         return false;
-      }
+   public ym c() {
+      return this.d;
    }
 
-   @Override
-   public String toString() {
-      return "ClickEvent{action=" + this.b + ", value='" + this.c + "'}";
-   }
+   public static enum a implements azu {
+      a("sender", ($$0, $$1) -> $$1.b()),
+      b("target", ($$0, $$1) -> $$1.c().orElse(xo.a)),
+      c("content", ($$0, $$1) -> $$0);
 
-   @Override
-   public int hashCode() {
-      int $$0 = this.b.hashCode();
-      return 31 * $$0 + this.c.hashCode();
-   }
+      public static final Codec<xm.a> d = azu.a(xm.a::values);
+      private final String e;
+      private final xm.a.a f;
 
-   public static enum a implements azt {
-      a("open_url", true),
-      b("open_file", false),
-      c("run_command", true),
-      d("suggest_command", true),
-      e("change_page", true),
-      f("copy_to_clipboard", true);
-
-      public static final MapCodec<xm.a> g = azt.a(xm.a::values).fieldOf("action");
-      public static final MapCodec<xm.a> h = g.validate(xm.a::a);
-      private final boolean i;
-      private final String j;
-
-      private a(final String $$0, final boolean $$1) {
-         this.j = $$0;
-         this.i = $$1;
+      private a(final String $$0, final xm.a.a $$1) {
+         this.e = $$0;
+         this.f = $$1;
       }
 
-      public boolean a() {
-         return this.i;
+      public xp a(xp $$0, xl.a $$1) {
+         return this.f.select($$0, $$1);
       }
 
       @Override
       public String c() {
-         return this.j;
+         return this.e;
       }
 
-      public static DataResult<xm.a> a(xm.a $$0) {
-         return !$$0.a() ? DataResult.error(() -> "Action not allowed: " + $$0) : DataResult.success($$0, Lifecycle.stable());
+      public interface a {
+         xp select(xp var1, xl.a var2);
       }
    }
 }

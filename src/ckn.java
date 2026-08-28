@@ -1,187 +1,195 @@
+import java.util.EnumSet;
+import java.util.function.IntFunction;
 import javax.annotation.Nullable;
 
-public class ckn extends ckc {
-   private static final akj<Byte> b = akn.a(ckn.class, akl.a);
-   private static final float c = 0.1F;
+public abstract class ckn extends cjk {
+   private static final akk<Byte> e = ako.a(ckn.class, akm.a);
+   protected int b;
+   private ckn.a bY = ckn.a.a;
 
-   public ckn(bsz<? extends ckn> $$0, dbx $$1) {
+   protected ckn(bta<? extends ckn> $$0, dby $$1) {
       super($$0, $$1);
    }
 
    @Override
-   protected void z() {
-      this.bS.a(1, new cag(this));
-      this.bS.a(2, new bzt<>(this, cgn.class, 6.0F, 1.0, 1.2, $$0 -> !((cgn)$$0).u()));
-      this.bS.a(3, new cas(this, 0.4F));
-      this.bS.a(4, new ckn.a(this));
-      this.bS.a(5, new cbz(this, 0.8));
-      this.bS.a(6, new cau(this, cmw.class, 8.0F));
-      this.bS.a(6, new cbh(this));
-      this.bT.a(1, new cce(this));
-      this.bT.a(2, new ckn.c<>(this, cmw.class));
-      this.bT.a(3, new ckn.c<>(this, cfq.class));
-   }
-
-   @Override
-   protected cda b(dbx $$0) {
-      return new cdb(this, $$0);
-   }
-
-   @Override
-   protected void a(akn.a $$0) {
+   protected void a(ako.a $$0) {
       super.a($$0);
-      $$0.a(b, (byte)0);
+      $$0.a(e, (byte)0);
+   }
+
+   @Override
+   public void a(us $$0) {
+      super.a($$0);
+      this.b = $$0.h("SpellTicks");
+   }
+
+   @Override
+   public void b(us $$0) {
+      super.b($$0);
+      $$0.a("SpellTicks", this.b);
+   }
+
+   @Override
+   public cjk.a s() {
+      if (this.gA()) {
+         return cjk.a.c;
+      } else {
+         return this.gJ() ? cjk.a.g : cjk.a.a;
+      }
+   }
+
+   public boolean gA() {
+      return this.dP().B ? this.ao.a(e) > 0 : this.b > 0;
+   }
+
+   public void a(ckn.a $$0) {
+      this.bY = $$0;
+      this.ao.a(e, (byte)$$0.h);
+   }
+
+   protected ckn.a gB() {
+      return !this.dP().B ? this.bY : ckn.a.a(this.ao.a(e));
+   }
+
+   @Override
+   protected void Z() {
+      super.Z();
+      if (this.b > 0) {
+         this.b--;
+      }
    }
 
    @Override
    public void l() {
       super.l();
-      if (!this.dP().B) {
-         this.w(this.Q);
+      if (this.dP().B && this.gA()) {
+         ckn.a $$0 = this.gB();
+         float $$1 = (float)$$0.i[0];
+         float $$2 = (float)$$0.i[1];
+         float $$3 = (float)$$0.i[2];
+         float $$4 = this.aY * (float) (Math.PI / 180.0) + ayz.b((float)this.ai * 0.6662F) * 0.25F;
+         float $$5 = ayz.b($$4);
+         float $$6 = ayz.a($$4);
+         double $$7 = 0.6 * (double)this.ee();
+         double $$8 = 1.8 * (double)this.ee();
+         this.dP().a(lb.a(li.u, $$1, $$2, $$3), this.du() + (double)$$5 * $$7, this.dw() + $$8, this.dA() + (double)$$6 * $$7, 0.0, 0.0, 0.0);
+         this.dP().a(lb.a(li.u, $$1, $$2, $$3), this.du() - (double)$$5 * $$7, this.dw() + $$8, this.dA() - (double)$$6 * $$7, 0.0, 0.0, 0.0);
       }
    }
 
-   public static buv.a u() {
-      return ckc.gw().a(buw.q, 16.0).a(buw.r, 0.3F);
+   protected int gC() {
+      return this.b;
    }
 
-   @Override
-   protected avy v() {
-      return avz.yI;
-   }
+   protected abstract avz gq();
 
-   @Override
-   protected avy d(brm $$0) {
-      return avz.yK;
-   }
+   protected static enum a {
+      a(0, 0.0, 0.0, 0.0),
+      b(1, 0.7, 0.7, 0.8),
+      c(2, 0.4, 0.3, 0.35),
+      d(3, 0.7, 0.5, 0.2),
+      e(4, 0.3, 0.3, 0.8),
+      f(5, 0.1, 0.1, 0.2);
 
-   @Override
-   protected avy o_() {
-      return avz.yJ;
-   }
+      private static final IntFunction<ckn.a> g = axp.a($$0 -> $$0.h, values(), axp.a.a);
+      final int h;
+      final double[] i;
 
-   @Override
-   protected void b(iz $$0, dsb $$1) {
-      this.a(avz.yL, 0.15F, 1.0F);
-   }
+      private a(final int $$0, final double $$1, final double $$2, final double $$3) {
+         this.h = $$0;
+         this.i = new double[]{$$1, $$2, $$3};
+      }
 
-   @Override
-   public boolean q_() {
-      return this.y();
-   }
-
-   @Override
-   public void a(dsb $$0, evq $$1) {
-      if (!$$0.a(dfa.bs)) {
-         super.a($$0, $$1);
+      public static ckn.a a(int $$0) {
+         return g.apply($$0);
       }
    }
 
-   @Override
-   public boolean c(bsb $$0) {
-      return $$0.a(bsd.s) ? false : super.c($$0);
-   }
-
-   public boolean y() {
-      return (this.ao.a(b) & 1) != 0;
-   }
-
-   public void w(boolean $$0) {
-      byte $$1 = this.ao.a(b);
-      if ($$0) {
-         $$1 = (byte)($$1 | 1);
-      } else {
-         $$1 = (byte)($$1 & -2);
-      }
-
-      this.ao.a(b, $$1);
-   }
-
-   @Nullable
-   @Override
-   public buh a(dcm $$0, bqr $$1, bts $$2, @Nullable buh $$3) {
-      $$3 = super.a($$0, $$1, $$2, $$3);
-      azg $$4 = $$0.E_();
-      if ($$4.a(100) == 0) {
-         ckk $$5 = bsz.aN.a(this.dP());
-         if ($$5 != null) {
-            $$5.b(this.du(), this.dw(), this.dA(), this.dF(), 0.0F);
-            $$5.a($$0, $$1, $$2, null);
-            $$5.n(this);
-         }
-      }
-
-      if ($$3 == null) {
-         $$3 = new ckn.b();
-         if ($$0.al() == bqq.d && $$4.i() < 0.1F * $$1.d()) {
-            ((ckn.b)$$3).a($$4);
-         }
-      }
-
-      if ($$3 instanceof ckn.b $$6) {
-         ji<brz> $$7 = $$6.a;
-         if ($$7 != null) {
-            this.b(new bsb($$7, -1));
-         }
-      }
-
-      return $$3;
-   }
-
-   @Override
-   public evq l(bst $$0) {
-      return $$0.dj() <= this.dj() ? new evq(0.0, 0.3125 * (double)this.ee(), 0.0) : super.l($$0);
-   }
-
-   static class a extends caw {
-      public a(ckn $$0) {
-         super($$0, 1.0, true);
+   protected class b extends can {
+      public b() {
+         this.a(EnumSet.of(can.a.a, can.a.b));
       }
 
       @Override
       public boolean a() {
-         return super.a() && !this.a.bS();
+         return ckn.this.gC() > 0;
+      }
+
+      @Override
+      public void c() {
+         super.c();
+         ckn.this.bR.n();
+      }
+
+      @Override
+      public void d() {
+         super.d();
+         ckn.this.a(ckn.a.a);
+      }
+
+      @Override
+      public void e() {
+         if (ckn.this.p() != null) {
+            ckn.this.G().a(ckn.this.p(), (float)ckn.this.ab(), (float)ckn.this.aa());
+         }
+      }
+   }
+
+   protected abstract class c extends can {
+      protected int b;
+      protected int c;
+
+      @Override
+      public boolean a() {
+         btp $$0 = ckn.this.p();
+         if ($$0 == null || !$$0.bD()) {
+            return false;
+         } else {
+            return ckn.this.gA() ? false : ckn.this.ai >= this.c;
+         }
       }
 
       @Override
       public boolean b() {
-         float $$0 = this.a.bt();
-         if ($$0 >= 0.5F && this.a.el().a(100) == 0) {
-            this.a.h(null);
-            return false;
-         } else {
-            return super.b();
-         }
-      }
-   }
-
-   public static class b implements buh {
-      @Nullable
-      public ji<brz> a;
-
-      public void a(azg $$0) {
-         int $$1 = $$0.a(5);
-         if ($$1 <= 1) {
-            this.a = bsd.a;
-         } else if ($$1 <= 2) {
-            this.a = bsd.e;
-         } else if ($$1 <= 3) {
-            this.a = bsd.j;
-         } else if ($$1 <= 4) {
-            this.a = bsd.n;
-         }
-      }
-   }
-
-   static class c<T extends bto> extends ccf<T> {
-      public c(ckn $$0, Class<T> $$1) {
-         super($$0, $$1, true);
+         btp $$0 = ckn.this.p();
+         return $$0 != null && $$0.bD() && this.b > 0;
       }
 
       @Override
-      public boolean a() {
-         float $$0 = this.e.bt();
-         return $$0 >= 0.5F ? false : super.a();
+      public void c() {
+         this.b = this.a(this.n());
+         ckn.this.b = this.h();
+         this.c = ckn.this.ai + this.i();
+         avz $$0 = this.l();
+         if ($$0 != null) {
+            ckn.this.a($$0, 1.0F, 1.0F);
+         }
+
+         ckn.this.a(this.m());
       }
+
+      @Override
+      public void e() {
+         this.b--;
+         if (this.b == 0) {
+            this.k();
+            ckn.this.a(ckn.this.gq(), 1.0F, 1.0F);
+         }
+      }
+
+      protected abstract void k();
+
+      protected int n() {
+         return 20;
+      }
+
+      protected abstract int h();
+
+      protected abstract int i();
+
+      @Nullable
+      protected abstract avz l();
+
+      protected abstract ckn.a m();
    }
 }

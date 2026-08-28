@@ -1,23 +1,21 @@
-import java.util.List;
-import java.util.UUID;
+public record aem(int b, xp c) implements zw<aci> {
+   public static final zn<xa, aem> a = zn.a(zl.g, aem::b, xr.d, aem::e, aem::new);
 
-public record aem(List<UUID> b) implements zv<ach> {
-   public static final zm<wl, aem> a = zv.a(aem::a, aem::new);
-
-   private aem(wl $$0) {
-      this($$0.a(kc.g));
+   @Override
+   public zy<aem> a() {
+      return agu.ad;
    }
 
-   private void a(wl $$0) {
-      $$0.a(this.b, kc.g);
+   public void a(aci $$0) {
+      $$0.a(this);
    }
 
    @Override
-   public zx<aem> a() {
-      return agt.ae;
+   public boolean c() {
+      return true;
    }
 
-   public void a(ach $$0) {
-      $$0.a(this);
+   public xp e() {
+      return this.c;
    }
 }

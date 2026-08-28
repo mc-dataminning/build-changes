@@ -1,12 +1,11 @@
-public class glb extends gkc<cgc, fvz<cgc>> {
-   private static final ale a = new ale("textures/entity/snow_golem.png");
+public class glb extends gkd<chw, fvz<chw>> {
+   private static final alf a = new alf("textures/entity/sniffer/sniffer.png");
 
-   public glb(giw.a $$0) {
-      super($$0, new fvz<>($$0.a(fwy.bv)), 0.5F);
-      this.a(new gno(this, $$0.c(), $$0.b()));
+   public glb(gix.a $$0) {
+      super($$0, new fvz<>($$0.a(fwz.bu)), 1.1F);
    }
 
-   public ale a(cgc $$0) {
+   public alf a(chw $$0) {
       return a;
    }
 }

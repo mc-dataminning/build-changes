@@ -1,47 +1,30 @@
-import com.google.common.collect.ImmutableSet;
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
-import java.util.Set;
 
-public record etu(Optional<bu> b, eqh.b c) implements etr {
-   public static final MapCodec<etu> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(bu.a.optionalFieldOf("predicate").forGetter(etu::c), eqh.b.e.fieldOf("entity").forGetter(etu::d)).apply($$0, etu::new)
-   );
+public class etu {
+   private static final Codec<ets> u = lp.H.q().dispatch("condition", ets::b, ett::a);
+   public static final Codec<ets> a = Codec.lazyInitialized(() -> Codec.withAlternative(u, etg.b));
+   public static final Codec<ji<ets>> b = alb.a(lq.aW, a);
+   public static final ett c = a("inverted", etp.a);
+   public static final ett d = a("any_of", eth.a);
+   public static final ett e = a("all_of", etg.a);
+   public static final ett f = a("random_chance", etx.a);
+   public static final ett g = a("random_chance_with_looting", ety.a);
+   public static final ett h = a("entity_properties", etv.a);
+   public static final ett i = a("killed_by_player", etw.a);
+   public static final ett j = a("entity_scores", etn.a);
+   public static final ett k = a("block_state_property", etr.a);
+   public static final ett l = a("match_tool", etz.a);
+   public static final ett m = a("table_bonus", eti.a);
+   public static final ett n = a("survives_explosion", eto.a);
+   public static final ett o = a("damage_source_properties", etm.a);
+   public static final ett p = a("location_check", etq.a);
+   public static final ett q = a("weather_check", euc.a);
+   public static final ett r = a("reference", etk.a);
+   public static final ett s = a("time_check", eua.a);
+   public static final ett t = a("value_check", eub.a);
 
-   @Override
-   public ets b() {
-      return ett.h;
-   }
-
-   @Override
-   public Set<eta<?>> a() {
-      return ImmutableSet.of(etd.f, this.c.a());
-   }
-
-   public boolean a(eqh $$0) {
-      bst $$1 = $$0.c(this.c.a());
-      evq $$2 = $$0.c(etd.f);
-      return this.b.isEmpty() || this.b.get().a($$0.d(), $$2, $$1);
-   }
-
-   public static etr.a a(eqh.b $$0) {
-      return a($$0, bu.a.a());
-   }
-
-   public static etr.a a(eqh.b $$0, bu.a $$1) {
-      return () -> new etu(Optional.of($$1.b()), $$0);
-   }
-
-   public static etr.a a(eqh.b $$0, bu $$1) {
-      return () -> new etu(Optional.of($$1), $$0);
-   }
-
-   public Optional<bu> c() {
-      return this.b;
-   }
-
-   public eqh.b d() {
-      return this.c;
+   private static ett a(String $$0, MapCodec<? extends ets> $$1) {
+      return jv.a(lp.H, new alf($$0), new ett($$1));
    }
 }

@@ -34,13 +34,13 @@ public class ao {
       return "CriterionProgress{obtained=" + (this.a == null ? "false" : this.a) + "}";
    }
 
-   public void a(wl $$0) {
-      $$0.a(this.a, wl::a);
+   public void a(wm $$0) {
+      $$0.a(this.a, wm::a);
    }
 
-   public static ao b(wl $$0) {
+   public static ao b(wm $$0) {
       ao $$1 = new ao();
-      $$1.a = $$0.c(wl::t);
+      $$1.a = $$0.c(wm::t);
       return $$1;
    }
 }

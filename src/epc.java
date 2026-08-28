@@ -1,53 +1,44 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.Optional;
-import javax.annotation.Nullable;
+import com.mojang.logging.LogUtils;
+import java.io.File;
+import java.io.IOException;
+import java.util.function.BiFunction;
+import java.util.function.Supplier;
+import org.slf4j.Logger;
 
-public record epc(iz c, cth d, Optional<xo> e) {
-   public static final Codec<epc> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               iz.a.fieldOf("pos").forGetter(epc::c),
-               cth.q.lenientOptionalFieldOf("color", cth.a).forGetter(epc::d),
-               xq.g.lenientOptionalFieldOf("name").forGetter(epc::e)
-            )
-            .apply($$0, epc::new)
-   );
-   public static final Codec<List<epc>> b = a.listOf();
+public abstract class epc {
+   private static final Logger a = LogUtils.getLogger();
+   private boolean b;
 
-   @Nullable
-   public static epc a(dbd $$0, iz $$1) {
-      if ($$0.c_($$1) instanceof dov $$3) {
-         cth $$4 = $$3.f();
-         Optional<xo> $$5 = Optional.ofNullable($$3.ah());
-         return new epc($$1, $$4, $$5);
-      } else {
-         return null;
+   public abstract us a(us var1, jk.a var2);
+
+   public void c() {
+      this.a(true);
+   }
+
+   public void a(boolean $$0) {
+      this.b = $$0;
+   }
+
+   public boolean d() {
+      return this.b;
+   }
+
+   public void a(File $$0, jk.a $$1) {
+      if (this.d()) {
+         us $$2 = new us();
+         $$2.a("data", this.a(new us(), $$1));
+         vh.e($$2);
+
+         try {
+            vf.a($$2, $$0.toPath());
+         } catch (IOException var5) {
+            a.error("Could not save data {}", this, var5);
+         }
+
+         this.a(false);
       }
    }
 
-   public ji<epe> a() {
-      return switch (this.d) {
-         case a -> epf.k;
-         case b -> epf.l;
-         case c -> epf.m;
-         case d -> epf.n;
-         case e -> epf.o;
-         case f -> epf.p;
-         case g -> epf.q;
-         case h -> epf.r;
-         case i -> epf.s;
-         case j -> epf.t;
-         case k -> epf.u;
-         case l -> epf.v;
-         case m -> epf.w;
-         case n -> epf.x;
-         case o -> epf.y;
-         case p -> epf.z;
-      };
-   }
-
-   public String b() {
-      return "banner-" + this.c.u() + "," + this.c.v() + "," + this.c.w();
+   public static record a<T extends epc>(Supplier<T> a, BiFunction<us, jk.a, T> b, bag c) {
    }
 }

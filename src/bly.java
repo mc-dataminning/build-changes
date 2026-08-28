@@ -1,6 +1,11 @@
-public enum bly {
-   a,
-   b,
-   c,
-   d;
+public interface bly {
+   int c();
+
+   int d();
+
+   long a(int var1);
+
+   long a(int var1, int var2);
+
+   void e();
 }

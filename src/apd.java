@@ -1,61 +1,44 @@
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
 import com.mojang.brigadier.builder.RequiredArgumentBuilder;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
+import java.util.Collection;
+import javax.annotation.Nullable;
 
 public class apd {
-   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(xo.c("commands.summon.failed"));
-   private static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(xo.c("commands.summon.failed.uuid"));
-   private static final SimpleCommandExceptionType c = new SimpleCommandExceptionType(xo.c("commands.summon.invalidPosition"));
+   public static void a(CommandDispatcher<ep> $$0) {
+      RequiredArgumentBuilder<ep, he> $$1 = (RequiredArgumentBuilder<ep, he>)((RequiredArgumentBuilder)eq.a("targets", fc.d())
+            .executes($$0x -> a((ep)$$0x.getSource(), fc.f($$0x, "targets"), null, null)))
+         .then(eq.a("*").then(eq.a("sound", fq.a()).suggests(io.c).executes($$0x -> a((ep)$$0x.getSource(), fc.f($$0x, "targets"), null, fq.c($$0x, "sound")))));
 
-   public static void a(CommandDispatcher<ep> $$0, el $$1) {
-      $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)eq.a("summon").requires($$0x -> $$0x.c(2)))
-            .then(
-               ((RequiredArgumentBuilder)eq.a("entity", fo.a($$1, lq.v))
-                     .suggests(io.d)
-                     .executes($$0x -> b((ep)$$0x.getSource(), fo.e($$0x, "entity"), ((ep)$$0x.getSource()).d(), new ur(), true)))
-                  .then(
-                     ((RequiredArgumentBuilder)eq.a("pos", gs.a())
-                           .executes($$0x -> b((ep)$$0x.getSource(), fo.e($$0x, "entity"), gs.a($$0x, "pos"), new ur(), true)))
-                        .then(eq.a("nbt", ez.a()).executes($$0x -> b((ep)$$0x.getSource(), fo.e($$0x, "entity"), gs.a($$0x, "pos"), ez.a($$0x, "nbt"), false)))
-                  )
-            )
-      );
-   }
-
-   public static bst a(ep $$0, ji.c<bsz<?>> $$1, evq $$2, ur $$3, boolean $$4) throws CommandSyntaxException {
-      iz $$5 = iz.a($$2);
-      if (!dbx.l($$5)) {
-         throw c.create();
-      } else {
-         ur $$6 = $$3.i();
-         $$6.a("id", $$1.h().a().toString());
-         are $$7 = $$0.e();
-         bst $$8 = bsz.a($$6, $$7, $$1x -> {
-            $$1x.b($$2.c, $$2.d, $$2.e, $$1x.dF(), $$1x.dH());
-            return $$1x;
-         });
-         if ($$8 == null) {
-            throw a.create();
-         } else {
-            if ($$4 && $$8 instanceof btq) {
-               ((btq)$$8).a($$0.e(), $$0.e().d_($$8.dp()), bts.n, null);
-            }
-
-            if (!$$7.e($$8)) {
-               throw b.create();
-            } else {
-               return $$8;
-            }
-         }
+      for (awb $$2 : awb.values()) {
+         $$1.then(
+            ((LiteralArgumentBuilder)eq.a($$2.a()).executes($$1x -> a((ep)$$1x.getSource(), fc.f($$1x, "targets"), $$2, null)))
+               .then(eq.a("sound", fq.a()).suggests(io.c).executes($$1x -> a((ep)$$1x.getSource(), fc.f($$1x, "targets"), $$2, fq.c($$1x, "sound"))))
+         );
       }
+
+      $$0.register((LiteralArgumentBuilder)((LiteralArgumentBuilder)eq.a("stopsound").requires($$0x -> $$0x.c(2))).then($$1));
    }
 
-   private static int b(ep $$0, ji.c<bsz<?>> $$1, evq $$2, ur $$3, boolean $$4) throws CommandSyntaxException {
-      bst $$5 = a($$0, $$1, $$2, $$3, $$4);
-      $$0.a(() -> xo.a("commands.summon.success", $$5.O_()), true);
-      return 1;
+   private static int a(ep $$0, Collection<arg> $$1, @Nullable awb $$2, @Nullable alf $$3) {
+      agf $$4 = new agf($$3, $$2);
+
+      for (arg $$5 : $$1) {
+         $$5.c.b($$4);
+      }
+
+      if ($$2 != null) {
+         if ($$3 != null) {
+            $$0.a(() -> xp.a("commands.stopsound.success.source.sound", xp.a($$3), $$2.a()), true);
+         } else {
+            $$0.a(() -> xp.a("commands.stopsound.success.source.any", $$2.a()), true);
+         }
+      } else if ($$3 != null) {
+         $$0.a(() -> xp.a("commands.stopsound.success.sourceless.sound", xp.a($$3)), true);
+      } else {
+         $$0.a(() -> xp.c("commands.stopsound.success.sourceless.any"), true);
+      }
+
+      return $$1.size();
    }
 }

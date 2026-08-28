@@ -1,11 +1,16 @@
-public class ght extends gkc<cgn, fsx> {
-   private static final ale a = new ale("textures/entity/armadillo.png");
+public class ght extends gkd<cgl, fsw> {
+   private static final alf a = new alf("textures/entity/allay/allay.png");
 
-   public ght(giw.a $$0) {
-      super($$0, new fsx($$0.a(fwy.b)), 0.4F);
+   public ght(gix.a $$0) {
+      super($$0, new fsw($$0.a(fwz.a)), 0.4F);
+      this.a(new gnc<>(this, $$0.d()));
    }
 
-   public ale a(cgn $$0) {
+   public alf a(cgl $$0) {
       return a;
+   }
+
+   protected int a(cgl $$0, iz $$1) {
+      return 15;
    }
 }

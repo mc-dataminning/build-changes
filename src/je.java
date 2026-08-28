@@ -16,7 +16,7 @@ import org.joml.Quaternionf;
 import org.joml.Vector3f;
 import org.joml.Vector4f;
 
-public enum je implements azt {
+public enum je implements azu {
    a(0, 1, -1, "down", je.b.b, je.a.b, new kd(0, -1, 0)),
    b(1, 0, -1, "up", je.b.a, je.a.b, new kd(0, 1, 0)),
    c(2, 3, 2, "north", je.b.b, je.a.c, new kd(0, 0, -1)),
@@ -24,10 +24,10 @@ public enum je implements azt {
    e(4, 5, 1, "west", je.b.b, je.a.a, new kd(-1, 0, 0)),
    f(5, 4, 3, "east", je.b.a, je.a.a, new kd(1, 0, 0));
 
-   public static final azt.a<je> g = azt.a(je::values);
+   public static final azu.a<je> g = azu.a(je::values);
    public static final Codec<je> h = g.validate(je::a);
-   public static final IntFunction<je> i = axo.a(je::d, values(), axo.a.b);
-   public static final zm<ByteBuf, je> j = zk.a(i, je::d);
+   public static final IntFunction<je> i = axp.a(je::d, values(), axp.a.b);
+   public static final zn<ByteBuf, je> j = zl.a(i, je::d);
    private final int k;
    private final int l;
    private final int m;
@@ -49,13 +49,13 @@ public enum je implements azt {
       this.q = $$6;
    }
 
-   public static je[] a(bst $$0) {
+   public static je[] a(bsu $$0) {
       float $$1 = $$0.g(1.0F) * (float) (Math.PI / 180.0);
       float $$2 = -$$0.h(1.0F) * (float) (Math.PI / 180.0);
-      float $$3 = ayy.a($$1);
-      float $$4 = ayy.b($$1);
-      float $$5 = ayy.a($$2);
-      float $$6 = ayy.b($$2);
+      float $$3 = ayz.a($$1);
+      float $$4 = ayz.b($$1);
+      float $$5 = ayz.a($$2);
+      float $$6 = ayz.b($$2);
       boolean $$7 = $$5 > 0.0F;
       boolean $$8 = $$3 < 0.0F;
       boolean $$9 = $$6 > 0.0F;
@@ -90,7 +90,7 @@ public enum je implements azt {
       return a($$3.x(), $$3.y(), $$3.z());
    }
 
-   public static Collection<je> a(azg $$0) {
+   public static Collection<je> a(azh $$0) {
       return ac.b(values(), $$0);
    }
 
@@ -121,7 +121,7 @@ public enum je implements azt {
       return this.p;
    }
 
-   public static je a(bst $$0, je.a $$1) {
+   public static je a(bsu $$0, je.a $$1) {
       return switch ($$1) {
          case a -> f.a($$0.h(1.0F)) ? f : e;
          case b -> $$0.g(1.0F) < 0.0F ? b : a;
@@ -239,11 +239,11 @@ public enum je implements azt {
    }
 
    public static je a(int $$0) {
-      return s[ayy.a($$0 % s.length)];
+      return s[ayz.a($$0 % s.length)];
    }
 
    public static je b(int $$0) {
-      return t[ayy.a($$0 % t.length)];
+      return t[ayz.a($$0 % t.length)];
    }
 
    @Nullable
@@ -276,7 +276,7 @@ public enum je implements azt {
    }
 
    public static je a(double $$0) {
-      return b(ayy.a($$0 / 90.0 + 0.5) & 3);
+      return b(ayz.a($$0 / 90.0 + 0.5) & 3);
    }
 
    public static je a(je.a $$0, je.b $$1) {
@@ -291,7 +291,7 @@ public enum je implements azt {
       return (float)((this.m & 3) * 90);
    }
 
-   public static je b(azg $$0) {
+   public static je b(azh $$0) {
       return ac.a(r, $$0);
    }
 
@@ -314,7 +314,7 @@ public enum je implements azt {
       return $$3;
    }
 
-   public static je a(evq $$0) {
+   public static je a(evr $$0) {
       return a($$0.c, $$0.d, $$0.e);
    }
 
@@ -348,12 +348,12 @@ public enum je implements azt {
 
    public boolean a(float $$0) {
       float $$1 = $$0 * (float) (Math.PI / 180.0);
-      float $$2 = -ayy.a($$1);
-      float $$3 = ayy.b($$1);
+      float $$2 = -ayz.a($$1);
+      float $$3 = ayz.b($$1);
       return (float)this.q.u() * $$2 + (float)this.q.w() * $$3 > 0.0F;
    }
 
-   public static enum a implements azt, Predicate<je> {
+   public static enum a implements azu, Predicate<je> {
       a("x") {
          @Override
          public int a(int $$0, int $$1, int $$2) {
@@ -389,7 +389,7 @@ public enum je implements azt {
       };
 
       public static final je.a[] d = values();
-      public static final azt.a<je.a> e = azt.a(je.a::values);
+      public static final azu.a<je.a> e = azu.a(je.a::values);
       private final String f;
 
       a(final String $$0) {
@@ -418,7 +418,7 @@ public enum je implements azt {
          return this.f;
       }
 
-      public static je.a a(azg $$0) {
+      public static je.a a(azh $$0) {
          return ac.a(d, $$0);
       }
 
@@ -485,11 +485,11 @@ public enum je implements azt {
          this.d = $$1;
       }
 
-      public je a(azg $$0) {
+      public je a(azh $$0) {
          return ac.a(this.c, $$0);
       }
 
-      public je.a b(azg $$0) {
+      public je.a b(azh $$0) {
          return ac.a(this.d, $$0);
       }
 
@@ -506,7 +506,7 @@ public enum je implements azt {
          return Arrays.stream(this.c);
       }
 
-      public List<je> c(azg $$0) {
+      public List<je> c(azh $$0) {
          return ac.b(this.c, $$0);
       }
 

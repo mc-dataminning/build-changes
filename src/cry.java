@@ -1,2 +1,2 @@
-public interface cry {
+public record cry(cxc a) implements crz {
 }

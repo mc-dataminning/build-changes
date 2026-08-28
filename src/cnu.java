@@ -1,49 +1,51 @@
-public class cnu extends cnc {
-   private int f = 200;
-
-   public cnu(bsz<? extends cnu> $$0, dbx $$1) {
+public class cnu extends cnw {
+   public cnu(bta<? extends cnu> $$0, dby $$1) {
       super($$0, $$1);
    }
 
-   public cnu(dbx $$0, bto $$1, cuo $$2) {
-      super(bsz.aV, $$1, $$0, $$2);
+   public cnu(dby $$0, btp $$1) {
+      super(bta.aT, $$1, $$0);
    }
 
-   public cnu(dbx $$0, double $$1, double $$2, double $$3, cuo $$4) {
-      super(bsz.aV, $$1, $$2, $$3, $$0, $$4);
+   public cnu(dby $$0, double $$1, double $$2, double $$3) {
+      super(bta.aT, $$1, $$2, $$3, $$0);
    }
 
    @Override
-   public void l() {
-      super.l();
-      if (this.dP().B && !this.b) {
-         this.dP().a(li.R, this.du(), this.dw(), this.dA(), 0.0, 0.0, 0.0);
+   protected cuk u() {
+      return cus.qC;
+   }
+
+   private lg v() {
+      cup $$0 = this.p();
+      return (lg)(!$$0.e() && !$$0.a(this.u()) ? new le(li.S, $$0) : li.W);
+   }
+
+   @Override
+   public void b(byte $$0) {
+      if ($$0 == 3) {
+         lg $$1 = this.v();
+
+         for (int $$2 = 0; $$2 < 8; $$2++) {
+            this.dP().a($$1, this.du(), this.dw(), this.dA(), 0.0, 0.0, 0.0);
+         }
       }
    }
 
    @Override
-   protected void a(bto $$0) {
+   protected void a(evo $$0) {
       super.a($$0);
-      bsb $$1 = new bsb(bsd.x, this.f, 0);
-      $$0.b($$1, this.I());
+      bsu $$1 = $$0.a();
+      int $$2 = $$1 instanceof cjm ? 3 : 0;
+      $$1.a(this.dQ().b(this, this.s()), (float)$$2);
    }
 
    @Override
-   public void a(ur $$0) {
+   protected void a(evp $$0) {
       super.a($$0);
-      if ($$0.e("Duration")) {
-         this.f = $$0.h("Duration");
+      if (!this.dP().B) {
+         this.dP().a(this, (byte)3);
+         this.ao();
       }
-   }
-
-   @Override
-   public void b(ur $$0) {
-      super.b($$0);
-      $$0.a("Duration", this.f);
-   }
-
-   @Override
-   protected cuo x() {
-      return new cuo(cur.vp);
    }
 }

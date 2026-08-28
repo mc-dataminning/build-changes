@@ -20,31 +20,31 @@ public class ie<T extends er<T>> implements ib<T> {
    private static final int b = 8;
    private final List<String> c;
    private final Object2ObjectLinkedOpenHashMap<List<String>, id<T>> d = new Object2ObjectLinkedOpenHashMap(8, 0.25F);
-   private final ale e;
+   private final alf e;
    private final List<ie.a<T>> f;
 
-   public ie(ale $$0, List<ie.a<T>> $$1, List<String> $$2) {
+   public ie(alf $$0, List<ie.a<T>> $$1, List<String> $$2) {
       this.e = $$0;
       this.f = $$1;
       this.c = $$2;
    }
 
    @Override
-   public ale a() {
+   public alf a() {
       return this.e;
    }
 
    @Override
-   public id<T> a(@Nullable ur $$0, CommandDispatcher<T> $$1) throws es {
+   public id<T> a(@Nullable us $$0, CommandDispatcher<T> $$1) throws es {
       if ($$0 == null) {
-         throw new es(xo.a("commands.function.error.missing_arguments", xo.a(this.a())));
+         throw new es(xp.a("commands.function.error.missing_arguments", xp.a(this.a())));
       } else {
          List<String> $$2 = new ArrayList<>(this.c.size());
 
          for (String $$3 : this.c) {
-            vo $$4 = $$0.c($$3);
+            vp $$4 = $$0.c($$3);
             if ($$4 == null) {
-               throw new es(xo.a("commands.function.error.missing_argument", xo.a(this.a()), $$3));
+               throw new es(xp.a("commands.function.error.missing_argument", xp.a(this.a()), $$3));
             }
 
             $$2.add(a($$4));
@@ -65,17 +65,17 @@ public class ie<T extends er<T>> implements ib<T> {
       }
    }
 
-   private static String a(vo $$0) {
-      if ($$0 instanceof uu $$1) {
+   private static String a(vp $$0) {
+      if ($$0 instanceof uv $$1) {
          return a.format((double)$$1.k());
-      } else if ($$0 instanceof us $$2) {
+      } else if ($$0 instanceof ut $$2) {
          return a.format($$2.j());
-      } else if ($$0 instanceof up $$3) {
+      } else if ($$0 instanceof uq $$3) {
          return String.valueOf($$3.i());
-      } else if ($$0 instanceof vj $$4) {
+      } else if ($$0 instanceof vk $$4) {
          return String.valueOf($$4.h());
       } else {
-         return $$0 instanceof uz $$5 ? String.valueOf($$5.f()) : $$0.s_();
+         return $$0 instanceof va $$5 ? String.valueOf($$5.f()) : $$0.s_();
       }
    }
 
@@ -99,7 +99,7 @@ public class ie<T extends er<T>> implements ib<T> {
    interface a<T> {
       IntList a();
 
-      hs<T> a(List<String> var1, CommandDispatcher<T> var2, ale var3) throws es;
+      hs<T> a(List<String> var1, CommandDispatcher<T> var2, alf var3) throws es;
    }
 
    static class b<T extends er<T>> implements ie.a<T> {
@@ -119,13 +119,13 @@ public class ie<T extends er<T>> implements ib<T> {
       }
 
       @Override
-      public hs<T> a(List<String> $$0, CommandDispatcher<T> $$1, ale $$2) throws es {
+      public hs<T> a(List<String> $$0, CommandDispatcher<T> $$1, alf $$2) throws es {
          String $$3 = this.a.a($$0);
 
          try {
             return ib.a($$1, this.c, new StringReader($$3));
          } catch (CommandSyntaxException var6) {
-            throw new es(xo.a("commands.function.error.parse", xo.a($$2), $$3, var6.getMessage()));
+            throw new es(xp.a("commands.function.error.parse", xp.a($$2), $$3, var6.getMessage()));
          }
       }
    }
@@ -143,7 +143,7 @@ public class ie<T extends er<T>> implements ib<T> {
       }
 
       @Override
-      public hs<T> a(List<String> $$0, CommandDispatcher<T> $$1, ale $$2) {
+      public hs<T> a(List<String> $$0, CommandDispatcher<T> $$1, alf $$2) {
          return this.a;
       }
    }

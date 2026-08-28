@@ -1,31 +1,26 @@
-public record abf(int c, eoi d, float e) implements aaw {
-   public static final zm<wl, abf> a = aaw.a(abf::a, abf::new);
-   public static final aaw.b<abf> b = aaw.a("debug/path");
+public record abf(long c, iz d) implements aax {
+   public static final zn<wm, abf> a = aax.a(abf::a, abf::new);
+   public static final aax.b<abf> b = aax.a("debug/neighbors_update");
 
-   private abf(wl $$0) {
-      this($$0.readInt(), eoi.b($$0), $$0.readFloat());
+   private abf(wm $$0) {
+      this($$0.m(), $$0.e());
    }
 
-   private void a(wl $$0) {
-      $$0.p(this.c);
-      this.d.a($$0);
-      $$0.a(this.e);
+   private void a(wm $$0) {
+      $$0.a(this.c);
+      $$0.a(this.d);
    }
 
    @Override
-   public aaw.b<abf> a() {
+   public aax.b<abf> a() {
       return b;
    }
 
-   public int b() {
+   public long b() {
       return this.c;
    }
 
-   public eoi c() {
+   public iz c() {
       return this.d;
-   }
-
-   public float d() {
-      return this.e;
    }
 }

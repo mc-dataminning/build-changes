@@ -1,61 +1,52 @@
-public abstract class ara extends eng {
-   protected ara(int $$0, int $$1, int $$2) {
-      super($$0, $$1, $$2);
-   }
+import javax.annotation.Nullable;
 
-   @Override
-   protected void a(long $$0, int $$1, boolean $$2) {
-      if (!$$2 || $$1 < this.f - 2) {
-         for (int $$3 = -1; $$3 <= 1; $$3++) {
-            for (int $$4 = -1; $$4 <= 1; $$4++) {
-               for (int $$5 = -1; $$5 <= 1; $$5++) {
-                  long $$6 = kb.a($$0, $$3, $$4, $$5);
-                  if ($$6 != $$0) {
-                     this.b($$0, $$6, $$1, $$2);
-                  }
+public class ara {
+   @Nullable
+   protected static iz a(arf $$0, int $$1, int $$2) {
+      boolean $$3 = $$0.D_().h();
+      dui $$4 = $$0.d(kb.a($$1), kb.a($$2));
+      int $$5 = $$3 ? $$0.l().g().a($$0) : $$4.a(dxu.a.e, $$1 & 15, $$2 & 15);
+      if ($$5 < $$0.I_()) {
+         return null;
+      } else {
+         int $$6 = $$4.a(dxu.a.b, $$1 & 15, $$2 & 15);
+         if ($$6 <= $$5 && $$6 > $$4.a(dxu.a.d, $$1 & 15, $$2 & 15)) {
+            return null;
+         } else {
+            iz.a $$7 = new iz.a();
+
+            for (int $$8 = $$5 + 1; $$8 >= $$0.I_(); $$8--) {
+               $$7.d($$1, $$8, $$2);
+               dsc $$9 = $$0.a_($$7);
+               if (!$$9.u().c()) {
+                  break;
+               }
+
+               if (dez.a($$9.k($$0, $$7), je.b)) {
+                  return $$7.c().i();
                }
             }
+
+            return null;
          }
       }
    }
 
-   @Override
-   protected int a(long $$0, long $$1, int $$2) {
-      int $$3 = $$2;
-
-      for (int $$4 = -1; $$4 <= 1; $$4++) {
-         for (int $$5 = -1; $$5 <= 1; $$5++) {
-            for (int $$6 = -1; $$6 <= 1; $$6++) {
-               long $$7 = kb.a($$0, $$4, $$5, $$6);
-               if ($$7 == $$0) {
-                  $$7 = Long.MAX_VALUE;
-               }
-
-               if ($$7 != $$1) {
-                  int $$8 = this.b($$7, $$0, this.c($$7));
-                  if ($$3 > $$8) {
-                     $$3 = $$8;
-                  }
-
-                  if ($$3 == 0) {
-                     return $$3;
-                  }
+   @Nullable
+   public static iz a(arf $$0, dbf $$1) {
+      if (aa.a($$1)) {
+         return null;
+      } else {
+         for (int $$2 = $$1.d(); $$2 <= $$1.f(); $$2++) {
+            for (int $$3 = $$1.e(); $$3 <= $$1.g(); $$3++) {
+               iz $$4 = a($$0, $$2, $$3);
+               if ($$4 != null) {
+                  return $$4;
                }
             }
          }
+
+         return null;
       }
-
-      return $$3;
-   }
-
-   @Override
-   protected int b(long $$0, long $$1, int $$2) {
-      return this.a($$0) ? this.b($$1) : $$2 + 1;
-   }
-
-   protected abstract int b(long var1);
-
-   public void b(long $$0, int $$1, boolean $$2) {
-      this.a(Long.MAX_VALUE, $$0, $$1, $$2);
    }
 }

@@ -1,79 +1,49 @@
-import it.unimi.dsi.fastutil.booleans.BooleanConsumer;
+public class fmc extends fnd {
+   private static final alf a = new alf("textures/gui/demo_background.png");
+   private fhx b = fhx.a;
+   private fhx c = fhx.a;
 
-public class fmc extends fnc {
-   private static final xo a = xo.c("addServer.enterIp");
-   private fhd b;
-   private final fyi c;
-   private fhm d;
-   private final BooleanConsumer r;
-   private final fnc s;
-
-   public fmc(fnc $$0, BooleanConsumer $$1, fyi $$2) {
-      super(xo.c("selectServer.direct"));
-      this.s = $$0;
-      this.c = $$2;
-      this.r = $$1;
-   }
-
-   @Override
-   public boolean a(int $$0, int $$1, int $$2) {
-      if (!this.b.j || this.aG_() != this.d || $$0 != 257 && $$0 != 335) {
-         return super.a($$0, $$1, $$2);
-      } else {
-         this.m();
-         return true;
-      }
+   public fmc() {
+      super(xp.c("demo.help.title"));
    }
 
    @Override
    protected void aM_() {
-      this.d = new fhm(this.p, this.n / 2 - 100, 116, 200, 20, xo.c("addServer.enterIp"));
-      this.d.f(128);
-      this.d.a(this.m.m.Z);
-      this.d.b($$0 -> this.E());
-      this.d(this.d);
-      this.b = this.c(fhd.a(xo.c("selectServer.select"), $$0 -> this.m()).a(this.n / 2 - 100, this.o / 4 + 96 + 12, 200, 20).a());
-      this.c(fhd.a(xn.e, $$0 -> this.r.accept(false)).a(this.n / 2 - 100, this.o / 4 + 120 + 12, 200, 20).a());
-      this.E();
+      int $$0 = -16;
+      this.c(fhe.a(xp.c("demo.help.buy"), $$0x -> {
+         $$0x.j = false;
+         ac.k().a("https://aka.ms/BuyMinecraftJava");
+      }).a(this.n / 2 - 116, this.o / 2 + 62 + -16, 114, 20).a());
+      this.c(fhe.a(xp.c("demo.help.later"), $$0x -> {
+         this.m.a(null);
+         this.m.n.i();
+      }).a(this.n / 2 + 2, this.o / 2 + 62 + -16, 114, 20).a());
+      ffj $$1 = this.m.m;
+      this.b = fhx.a(
+         this.p,
+         xp.a("demo.help.movementShort", $$1.w.k(), $$1.x.k(), $$1.y.k(), $$1.z.k()),
+         xp.c("demo.help.movementMouse"),
+         xp.a("demo.help.jump", $$1.A.k()),
+         xp.a("demo.help.inventory", $$1.D.k())
+      );
+      this.c = fhx.a(this.p, xp.c("demo.help.fullWrapped"), 218);
    }
 
    @Override
-   protected void aB_() {
-      this.b(this.d);
+   public void b(fgr $$0, int $$1, int $$2, float $$3) {
+      super.b($$0, $$1, $$2, $$3);
+      int $$4 = (this.n - 248) / 2;
+      int $$5 = (this.o - 166) / 2;
+      $$0.a(a, $$4, $$5, 0, 0, 248, 166);
    }
 
    @Override
-   public void a(ffe $$0, int $$1, int $$2) {
-      String $$3 = this.d.a();
-      this.b($$0, $$1, $$2);
-      this.d.a($$3);
-   }
-
-   private void m() {
-      this.c.b = this.d.a();
-      this.r.accept(true);
-   }
-
-   @Override
-   public void d() {
-      this.m.a(this.s);
-   }
-
-   @Override
-   public void j() {
-      this.m.m.Z = this.d.a();
-      this.m.m.av();
-   }
-
-   private void E() {
-      this.b.j = fzl.b(this.d.a());
-   }
-
-   @Override
-   public void a(fgq $$0, int $$1, int $$2, float $$3) {
+   public void a(fgr $$0, int $$1, int $$2, float $$3) {
       super.a($$0, $$1, $$2, $$3);
-      $$0.a(this.p, this.l, this.n / 2, 20, 16777215);
-      $$0.b(this.p, a, this.n / 2 - 100 + 1, 100, 10526880);
-      this.d.a($$0, $$1, $$2, $$3);
+      int $$4 = (this.n - 248) / 2 + 10;
+      int $$5 = (this.o - 166) / 2 + 8;
+      $$0.a(this.p, this.l, $$4, $$5, 2039583, false);
+      $$5 = this.b.c($$0, $$4, $$5 + 12, 12, 5197647);
+      this.c.c($$0, $$4, $$5 + 20, 9, 2039583);
    }
 }

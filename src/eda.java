@@ -1,32 +1,46 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
 
-public class eda implements edb {
+public class eda implements edc {
    public static final Codec<eda> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(iz.a.optionalFieldOf("exit").forGetter($$0x -> $$0x.b), Codec.BOOL.fieldOf("exact").forGetter($$0x -> $$0x.c)).apply($$0, eda::new)
+      $$0 -> $$0.group(
+               Codec.intRange(1, 512).fieldOf("floor_to_ceiling_search_range").forGetter($$0x -> $$0x.b),
+               bpz.b(1, 128).fieldOf("height").forGetter($$0x -> $$0x.c),
+               bpz.b(1, 128).fieldOf("radius").forGetter($$0x -> $$0x.d),
+               Codec.intRange(0, 64).fieldOf("max_stalagmite_stalactite_height_diff").forGetter($$0x -> $$0x.e),
+               Codec.intRange(1, 64).fieldOf("height_deviation").forGetter($$0x -> $$0x.f),
+               bpz.b(0, 128).fieldOf("dripstone_block_layer_thickness").forGetter($$0x -> $$0x.g),
+               bpx.a(0.0F, 2.0F).fieldOf("density").forGetter($$0x -> $$0x.h),
+               bpx.a(0.0F, 2.0F).fieldOf("wetness").forGetter($$0x -> $$0x.i),
+               Codec.floatRange(0.0F, 1.0F).fieldOf("chance_of_dripstone_column_at_max_distance_from_center").forGetter($$0x -> $$0x.j),
+               Codec.intRange(1, 64).fieldOf("max_distance_from_edge_affecting_chance_of_dripstone_column").forGetter($$0x -> $$0x.k),
+               Codec.intRange(1, 64).fieldOf("max_distance_from_center_affecting_height_bias").forGetter($$0x -> $$0x.l)
+            )
+            .apply($$0, eda::new)
    );
-   private final Optional<iz> b;
-   private final boolean c;
+   public final int b;
+   public final bpz c;
+   public final bpz d;
+   public final int e;
+   public final int f;
+   public final bpz g;
+   public final bpx h;
+   public final bpx i;
+   public final float j;
+   public final int k;
+   public final int l;
 
-   private eda(Optional<iz> $$0, boolean $$1) {
+   public eda(int $$0, bpz $$1, bpz $$2, int $$3, int $$4, bpz $$5, bpx $$6, bpx $$7, float $$8, int $$9, int $$10) {
       this.b = $$0;
       this.c = $$1;
-   }
-
-   public static eda a(iz $$0, boolean $$1) {
-      return new eda(Optional.of($$0), $$1);
-   }
-
-   public static eda a() {
-      return new eda(Optional.empty(), false);
-   }
-
-   public Optional<iz> b() {
-      return this.b;
-   }
-
-   public boolean c() {
-      return this.c;
+      this.d = $$2;
+      this.e = $$3;
+      this.f = $$4;
+      this.g = $$5;
+      this.h = $$6;
+      this.i = $$7;
+      this.j = $$8;
+      this.k = $$9;
+      this.l = $$10;
    }
 }

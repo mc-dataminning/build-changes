@@ -21,7 +21,7 @@ public class mp implements lw {
    private static <T> JsonElement a(jv<T> $$0) {
       JsonObject $$1 = new JsonObject();
       if ($$0 instanceof jd) {
-         ale $$2 = ((jd)$$0).a();
+         alf $$2 = ((jd)$$0).a();
          $$1.addProperty("default", $$2.toString());
       }
 

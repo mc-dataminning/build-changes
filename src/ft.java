@@ -15,17 +15,17 @@ import java.util.function.Predicate;
 
 public class ft<T> implements ArgumentType<ft.c<T>> {
    private static final Collection<String> a = Arrays.asList("foo", "foo:bar", "012", "#skeletons", "#minecraft:skeletons");
-   final ald<? extends jv<T>> b;
+   final ale<? extends jv<T>> b;
 
-   public ft(ald<? extends jv<T>> $$0) {
+   public ft(ale<? extends jv<T>> $$0) {
       this.b = $$0;
    }
 
-   public static <T> ft<T> a(ald<? extends jv<T>> $$0) {
+   public static <T> ft<T> a(ale<? extends jv<T>> $$0) {
       return new ft<>($$0);
    }
 
-   public static <T> ft.c<T> a(CommandContext<ep> $$0, String $$1, ald<jv<T>> $$2, DynamicCommandExceptionType $$3) throws CommandSyntaxException {
+   public static <T> ft.c<T> a(CommandContext<ep> $$0, String $$1, ale<jv<T>> $$2, DynamicCommandExceptionType $$3) throws CommandSyntaxException {
       ft.c<?> $$4 = (ft.c<?>)$$0.getArgument($$1, ft.c.class);
       Optional<ft.c<T>> $$5 = $$4.a($$2);
       return $$5.orElseThrow(() -> $$3.create($$4));
@@ -37,15 +37,15 @@ public class ft<T> implements ArgumentType<ft.c<T>> {
 
          try {
             $$0.skip();
-            ale $$2 = ale.a($$0);
-            return new ft.d<>(axe.a(this.b, $$2));
+            alf $$2 = alf.a($$0);
+            return new ft.d<>(axf.a(this.b, $$2));
          } catch (CommandSyntaxException var4) {
             $$0.setCursor($$1);
             throw var4;
          }
       } else {
-         ale $$4 = ale.a($$0);
-         return new ft.b<>(ald.a(this.b, $$4));
+         alf $$4 = alf.a($$0);
+         return new ft.b<>(ale.a(this.b, $$4));
       }
    }
 
@@ -58,11 +58,11 @@ public class ft<T> implements ArgumentType<ft.c<T>> {
    }
 
    public static class a<T> implements ik<ft<T>, ft.a<T>.a> {
-      public void a(ft.a<T>.a $$0, wl $$1) {
+      public void a(ft.a<T>.a $$0, wm $$1) {
          $$1.b($$0.b);
       }
 
-      public ft.a<T>.a a(wl $$0) {
+      public ft.a<T>.a a(wm $$0) {
          return new ft.a.a($$0.r());
       }
 
@@ -75,9 +75,9 @@ public class ft<T> implements ArgumentType<ft.c<T>> {
       }
 
       public final class a implements ik.a<ft<T>> {
-         final ald<? extends jv<T>> b;
+         final ale<? extends jv<T>> b;
 
-         a(final ald<? extends jv<T>> $$1) {
+         a(final ale<? extends jv<T>> $$1) {
             this.b = $$1;
          }
 
@@ -92,14 +92,14 @@ public class ft<T> implements ArgumentType<ft.c<T>> {
       }
    }
 
-   static record b<T>(ald<T> a) implements ft.c<T> {
+   static record b<T>(ale<T> a) implements ft.c<T> {
       @Override
-      public Either<ald<T>, axe<T>> a() {
+      public Either<ale<T>, axf<T>> a() {
          return Either.left(this.a);
       }
 
       @Override
-      public <E> Optional<ft.c<E>> a(ald<? extends jv<E>> $$0) {
+      public <E> Optional<ft.c<E>> a(ale<? extends jv<E>> $$0) {
          return this.a.d($$0).map(ft.b::new);
       }
 
@@ -112,27 +112,27 @@ public class ft<T> implements ArgumentType<ft.c<T>> {
          return this.a.a().toString();
       }
 
-      public ald<T> c() {
+      public ale<T> c() {
          return this.a;
       }
    }
 
    public interface c<T> extends Predicate<ji<T>> {
-      Either<ald<T>, axe<T>> a();
+      Either<ale<T>, axf<T>> a();
 
-      <E> Optional<ft.c<E>> a(ald<? extends jv<E>> var1);
+      <E> Optional<ft.c<E>> a(ale<? extends jv<E>> var1);
 
       String b();
    }
 
-   static record d<T>(axe<T> a) implements ft.c<T> {
+   static record d<T>(axf<T> a) implements ft.c<T> {
       @Override
-      public Either<ald<T>, axe<T>> a() {
+      public Either<ale<T>, axf<T>> a() {
          return Either.right(this.a);
       }
 
       @Override
-      public <E> Optional<ft.c<E>> a(ald<? extends jv<E>> $$0) {
+      public <E> Optional<ft.c<E>> a(ale<? extends jv<E>> $$0) {
          return this.a.d($$0).map(ft.d::new);
       }
 
@@ -145,7 +145,7 @@ public class ft<T> implements ArgumentType<ft.c<T>> {
          return "#" + this.a.b();
       }
 
-      public axe<T> c() {
+      public axf<T> c() {
          return this.a;
       }
    }

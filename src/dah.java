@@ -1,10 +1,10 @@
-public class dah extends czz {
-   public dah(czz.b $$0) {
+public class dah extends daa {
+   public dah(daa.b $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(czz $$0) {
-      return super.a($$0) && $$0 != dac.K;
+   public boolean a() {
+      return true;
    }
 }

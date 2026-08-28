@@ -1,14 +1,11 @@
-import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.Codec;
+import java.util.Optional;
 
-public interface dwz<T extends dwy> {
-   dwz<dwq> a = a("block", new dwq.a());
-   dwz<dws> b = a("entity", new dws.a());
+public interface dwz {
+   Codec<dwz> c = lp.v.q().dispatch(dwz::a, dxa::a);
+   zn<xa, dwz> d = zl.a(lq.W).b(dwz::a, dxa::b);
 
-   MapCodec<T> a();
+   Optional<evr> a(dby var1);
 
-   zm<? super wz, T> b();
-
-   static <S extends dwz<T>, T extends dwy> S a(String $$0, S $$1) {
-      return jv.a(lp.v, $$0, $$1);
-   }
+   dxa<? extends dwz> a();
 }

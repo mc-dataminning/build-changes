@@ -1,191 +1,53 @@
-import com.google.common.collect.Lists;
-import com.mojang.logging.LogUtils;
-import it.unimi.dsi.fastutil.ints.IntArrayList;
-import it.unimi.dsi.fastutil.ints.IntList;
-import it.unimi.dsi.fastutil.ints.IntListIterator;
 import java.util.Iterator;
-import java.util.List;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
-public class aks<C extends bqm> implements akr<Integer> {
-   private static final Logger d = LogUtils.getLogger();
-   protected final cna a = new cna();
-   protected cmv b;
-   protected crg<C> c;
+public interface aks<T> {
+   default void a(int $$0, int $$1, int $$2, cyx<?> $$3, Iterator<T> $$4, int $$5) {
+      int $$6 = $$0;
+      int $$7 = $$1;
+      if ($$3.b() instanceof czc $$9) {
+         $$6 = $$9.j();
+         $$7 = $$9.k();
+      }
 
-   public aks(crg<C> $$0) {
-      this.c = $$0;
-   }
+      int $$10 = 0;
 
-   public void a(arf $$0, @Nullable cyw<? extends cyu<C>> $$1, boolean $$2) {
-      if ($$1 != null && $$0.I().b($$1)) {
-         this.b = $$0.gc();
-         if (this.b() || $$0.f()) {
-            this.a.a();
-            $$0.gc().a(this.a);
-            this.c.a(this.a);
-            if (this.a.a((cyu<?>)$$1.b(), null)) {
-               this.a($$1, $$2);
-            } else {
-               this.a();
-               $$0.c.b(new aeg($$0.cb.j, $$1));
+      for (int $$11 = 0; $$11 < $$1; $$11++) {
+         if ($$10 == $$2) {
+            $$10++;
+         }
+
+         boolean $$12 = (float)$$7 < (float)$$1 / 2.0F;
+         int $$13 = ayz.d((float)$$1 / 2.0F - (float)$$7 / 2.0F);
+         if ($$12 && $$13 > $$11) {
+            $$10 += $$0;
+            $$11++;
+         }
+
+         for (int $$14 = 0; $$14 < $$0; $$14++) {
+            if (!$$4.hasNext()) {
+               return;
             }
 
-            $$0.gc().e();
-         }
-      }
-   }
-
-   protected void a() {
-      for (int $$0 = 0; $$0 < this.c.p(); $$0++) {
-         if (this.c.e($$0)) {
-            cuo $$1 = this.c.b($$0).g().s();
-            this.b.a($$1, false);
-            this.c.b($$0).f($$1);
-         }
-      }
-
-      this.c.l();
-   }
-
-   protected void a(cyw<? extends cyu<C>> $$0, boolean $$1) {
-      boolean $$2 = this.c.a($$0);
-      int $$3 = this.a.a($$0, null);
-      if ($$2) {
-         for (int $$4 = 0; $$4 < this.c.o() * this.c.n() + 1; $$4++) {
-            if ($$4 != this.c.m()) {
-               cuo $$5 = this.c.b($$4).g();
-               if (!$$5.e() && Math.min($$3, $$5.j()) < $$5.I() + 1) {
-                  return;
-               }
-            }
-         }
-      }
-
-      int $$6 = this.a($$1, $$3, $$2);
-      IntList $$7 = new IntArrayList();
-      if (this.a.a((cyu<?>)$$0.b(), $$7, $$6)) {
-         int $$8 = $$6;
-         IntListIterator var8 = $$7.iterator();
-
-         while (var8.hasNext()) {
-            int $$9 = (Integer)var8.next();
-            cuo $$10 = cna.a($$9);
-            if (!$$10.e()) {
-               int $$11 = $$10.j();
-               if ($$11 < $$8) {
-                  $$8 = $$11;
-               }
-            }
-         }
-
-         if (this.a.a((cyu<?>)$$0.b(), $$7, $$8)) {
-            this.a();
-            this.a(this.c.n(), this.c.o(), this.c.m(), $$0, $$7.iterator(), $$8);
-         }
-      }
-   }
-
-   @Override
-   public void a(Iterator<Integer> $$0, int $$1, int $$2, int $$3, int $$4) {
-      cro $$5 = this.c.b($$1);
-      cuo $$6 = cna.a($$0.next());
-      if (!$$6.e()) {
-         for (int $$7 = 0; $$7 < $$2; $$7++) {
-            this.a($$5, $$6);
-         }
-      }
-   }
-
-   protected int a(boolean $$0, int $$1, boolean $$2) {
-      int $$3 = 1;
-      if ($$0) {
-         $$3 = $$1;
-      } else if ($$2) {
-         $$3 = Integer.MAX_VALUE;
-
-         for (int $$4 = 0; $$4 < this.c.n() * this.c.o() + 1; $$4++) {
-            if ($$4 != this.c.m()) {
-               cuo $$5 = this.c.b($$4).g();
-               if (!$$5.e() && $$3 > $$5.I()) {
-                  $$3 = $$5.I();
-               }
-            }
-         }
-
-         if ($$3 != Integer.MAX_VALUE) {
-            $$3++;
-         }
-      }
-
-      return $$3;
-   }
-
-   protected void a(cro $$0, cuo $$1) {
-      int $$2 = this.b.d($$1);
-      if ($$2 != -1) {
-         cuo $$3 = this.b.a($$2);
-         if (!$$3.e()) {
-            if ($$3.I() > 1) {
-               this.b.a($$2, 1);
-            } else {
-               this.b.b($$2);
+            $$12 = (float)$$6 < (float)$$0 / 2.0F;
+            $$13 = ayz.d((float)$$0 / 2.0F - (float)$$6 / 2.0F);
+            int $$15 = $$6;
+            boolean $$16 = $$14 < $$6;
+            if ($$12) {
+               $$15 = $$13 + $$6;
+               $$16 = $$13 <= $$14 && $$14 < $$13 + $$6;
             }
 
-            if ($$0.g().e()) {
-               $$0.f($$3.c(1));
-            } else {
-               $$0.g().g(1);
+            if ($$16) {
+               this.a($$4, $$10, $$5, $$11, $$14);
+            } else if ($$15 == $$14) {
+               $$10 += $$0 - $$14;
+               break;
             }
+
+            $$10++;
          }
       }
    }
 
-   private boolean b() {
-      List<cuo> $$0 = Lists.newArrayList();
-      int $$1 = this.c();
-
-      for (int $$2 = 0; $$2 < this.c.n() * this.c.o() + 1; $$2++) {
-         if ($$2 != this.c.m()) {
-            cuo $$3 = this.c.b($$2).g().s();
-            if (!$$3.e()) {
-               int $$4 = this.b.e($$3);
-               if ($$4 == -1 && $$0.size() <= $$1) {
-                  for (cuo $$5 : $$0) {
-                     if (cuo.b($$5, $$3) && $$5.I() != $$5.j() && $$5.I() + $$3.I() <= $$5.j()) {
-                        $$5.g($$3.I());
-                        $$3.e(0);
-                        break;
-                     }
-                  }
-
-                  if (!$$3.e()) {
-                     if ($$0.size() >= $$1) {
-                        return false;
-                     }
-
-                     $$0.add($$3);
-                  }
-               } else if ($$4 == -1) {
-                  return false;
-               }
-            }
-         }
-      }
-
-      return true;
-   }
-
-   private int c() {
-      int $$0 = 0;
-
-      for (cuo $$1 : this.b.h) {
-         if ($$1.e()) {
-            $$0++;
-         }
-      }
-
-      return $$0;
-   }
+   void a(Iterator<T> var1, int var2, int var3, int var4, int var5);
 }

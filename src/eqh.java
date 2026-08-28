@@ -1,142 +1,109 @@
-import com.google.common.collect.Sets;
+import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.ImmutableSet.Builder;
+import com.mojang.datafixers.util.Either;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Objects;
 import java.util.Optional;
+import java.util.OptionalInt;
 import java.util.Set;
-import java.util.function.Consumer;
+import java.util.function.Function;
 import javax.annotation.Nullable;
-import net.minecraft.server.MinecraftServer;
 
 public class eqh {
-   private final eqk a;
-   private final azg b;
-   private final jj.a c;
-   private final Set<eqh.c<?>> d = Sets.newLinkedHashSet();
-
-   eqh(eqk $$0, azg $$1, jj.a $$2) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-   }
-
-   public boolean a(eta<?> $$0) {
-      return this.a.a($$0);
-   }
-
-   public <T> T b(eta<T> $$0) {
-      return this.a.b($$0);
-   }
-
-   public void a(ale $$0, Consumer<cuo> $$1) {
-      this.a.a($$0, $$1);
-   }
-
+   private static final Codec<eqh> b = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               euo.a.optionalFieldOf("min").forGetter($$0x -> Optional.ofNullable($$0x.c)),
+               euo.a.optionalFieldOf("max").forGetter($$0x -> Optional.ofNullable($$0x.d))
+            )
+            .apply($$0, eqh::new)
+   );
+   public static final Codec<eqh> a = Codec.either(Codec.INT, b).xmap($$0 -> (eqh)$$0.map(eqh::a, Function.identity()), $$0 -> {
+      OptionalInt $$1 = $$0.b();
+      return $$1.isPresent() ? Either.left($$1.getAsInt()) : Either.right($$0);
+   });
    @Nullable
-   public <T> T c(eta<T> $$0) {
-      return this.a.d($$0);
-   }
+   private final eun c;
+   @Nullable
+   private final eun d;
+   private final eqh.b e;
+   private final eqh.a f;
 
-   public boolean a(eqh.c<?> $$0) {
-      return this.d.contains($$0);
-   }
-
-   public boolean b(eqh.c<?> $$0) {
-      return this.d.add($$0);
-   }
-
-   public void c(eqh.c<?> $$0) {
-      this.d.remove($$0);
-   }
-
-   public jj.a a() {
-      return this.c;
-   }
-
-   public azg b() {
-      return this.b;
-   }
-
-   public float c() {
-      return this.a.b();
-   }
-
-   public are d() {
-      return this.a.a();
-   }
-
-   public static eqh.c<eqm> a(eqm $$0) {
-      return new eqh.c<>(eqj.c, $$0);
-   }
-
-   public static eqh.c<etr> a(etr $$0) {
-      return new eqh.c<>(eqj.a, $$0);
-   }
-
-   public static eqh.c<eru> a(eru $$0) {
-      return new eqh.c<>(eqj.b, $$0);
-   }
-
-   public static class a {
-      private final eqk a;
-      @Nullable
-      private azg b;
-
-      public a(eqk $$0) {
-         this.a = $$0;
+   public Set<etb<?>> a() {
+      Builder<etb<?>> $$0 = ImmutableSet.builder();
+      if (this.c != null) {
+         $$0.addAll(this.c.a());
       }
 
-      public eqh.a a(long $$0) {
-         if ($$0 != 0L) {
-            this.b = azg.a($$0);
-         }
-
-         return this;
+      if (this.d != null) {
+         $$0.addAll(this.d.a());
       }
 
-      public are a() {
-         return this.a.a();
-      }
-
-      public eqh a(Optional<ale> $$0) {
-         are $$1 = this.a();
-         MinecraftServer $$2 = $$1.o();
-         azg $$3 = Optional.ofNullable(this.b).or(() -> $$0.map($$1::a)).orElseGet($$1::E_);
-         return new eqh(this.a, $$3, $$2.be().b());
-      }
+      return $$0.build();
    }
 
-   public static enum b implements azt {
-      a("this", etd.a),
-      b("killer", etd.d),
-      c("direct_killer", etd.e),
-      d("killer_player", etd.b);
+   private eqh(Optional<eun> $$0, Optional<eun> $$1) {
+      this($$0.orElse(null), $$1.orElse(null));
+   }
 
-      public static final azt.a<eqh.b> e = azt.a(eqh.b::values);
-      private final String f;
-      private final eta<? extends bst> g;
-
-      private b(final String $$0, final eta<? extends bst> $$1) {
-         this.f = $$0;
-         this.g = $$1;
-      }
-
-      public eta<? extends bst> a() {
-         return this.g;
-      }
-
-      public static eqh.b a(String $$0) {
-         eqh.b $$1 = e.a($$0);
-         if ($$1 != null) {
-            return $$1;
+   private eqh(@Nullable eun $$0, @Nullable eun $$1) {
+      this.c = $$0;
+      this.d = $$1;
+      if ($$0 == null) {
+         if ($$1 == null) {
+            this.e = ($$0x, $$1x) -> $$1x;
+            this.f = ($$0x, $$1x) -> true;
          } else {
-            throw new IllegalArgumentException("Invalid entity target " + $$0);
+            this.e = ($$1x, $$2) -> Math.min($$1.a($$1x), $$2);
+            this.f = ($$1x, $$2) -> $$2 <= $$1.a($$1x);
          }
-      }
-
-      @Override
-      public String c() {
-         return this.f;
+      } else if ($$1 == null) {
+         this.e = ($$1x, $$2) -> Math.max($$0.a($$1x), $$2);
+         this.f = ($$1x, $$2) -> $$2 >= $$0.a($$1x);
+      } else {
+         this.e = ($$2, $$3) -> ayz.a($$3, $$0.a($$2), $$1.a($$2));
+         this.f = ($$2, $$3) -> $$3 >= $$0.a($$2) && $$3 <= $$1.a($$2);
       }
    }
 
-   public static record c<T>(eqj<T> a, T b) {
+   public static eqh a(int $$0) {
+      eul $$1 = eul.a((float)$$0);
+      return new eqh(Optional.of($$1), Optional.of($$1));
+   }
+
+   public static eqh a(int $$0, int $$1) {
+      return new eqh(Optional.of(eul.a((float)$$0)), Optional.of(eul.a((float)$$1)));
+   }
+
+   public static eqh b(int $$0) {
+      return new eqh(Optional.of(eul.a((float)$$0)), Optional.empty());
+   }
+
+   public static eqh c(int $$0) {
+      return new eqh(Optional.empty(), Optional.of(eul.a((float)$$0)));
+   }
+
+   public int a(eqi $$0, int $$1) {
+      return this.e.apply($$0, $$1);
+   }
+
+   public boolean b(eqi $$0, int $$1) {
+      return this.f.test($$0, $$1);
+   }
+
+   private OptionalInt b() {
+      return Objects.equals(this.c, this.d) && this.c instanceof eul $$0 && Math.floor((double)$$0.c()) == (double)$$0.c()
+         ? OptionalInt.of((int)$$0.c())
+         : OptionalInt.empty();
+   }
+
+   @FunctionalInterface
+   interface a {
+      boolean test(eqi var1, int var2);
+   }
+
+   @FunctionalInterface
+   interface b {
+      int apply(eqi var1, int var2);
    }
 }

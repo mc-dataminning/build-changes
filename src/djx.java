@@ -1,40 +1,34 @@
 import com.mojang.serialization.MapCodec;
 
-public class djx extends dey {
+public class djx extends dez implements dfc {
    public static final MapCodec<djx> a = b(djx::new);
-   protected static final ewj b = dey.a(0.0, 0.0, 0.0, 16.0, 14.0, 16.0);
 
    @Override
    public MapCodec<djx> a() {
       return a;
    }
 
-   public djx(dsa.d $$0) {
+   public djx(dsb.d $$0) {
       super($$0);
    }
 
    @Override
-   protected ewj b(dsb $$0, dbd $$1, iz $$2, evv $$3) {
-      return b;
+   public boolean b(dcb $$0, iz $$1, dsc $$2) {
+      return $$0.a_($$1.c()).i();
    }
 
    @Override
-   protected ewj b_(dsb $$0, dbd $$1, iz $$2) {
-      return ewg.b();
+   public boolean a(dby $$0, azh $$1, iz $$2, dsc $$3) {
+      return true;
    }
 
    @Override
-   protected ewj c(dsb $$0, dbd $$1, iz $$2, evv $$3) {
-      return ewg.b();
+   public void a(arf $$0, azh $$1, iz $$2, dsc $$3) {
+      $$0.H_().c(lq.aC).flatMap($$0x -> $$0x.b(sg.n)).ifPresent($$3x -> ((eal)$$3x.a()).a($$0, $$0.l().g(), $$1, $$2.c()));
    }
 
    @Override
-   protected boolean a(dsb $$0, eoj $$1) {
-      return false;
-   }
-
-   @Override
-   protected float d(dsb $$0, dbd $$1, iz $$2) {
-      return 0.2F;
+   public dfc.a ap_() {
+      return dfc.a.a;
    }
 }

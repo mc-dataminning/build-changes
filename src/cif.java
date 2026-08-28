@@ -1,44 +1,41 @@
+import com.mojang.logging.LogUtils;
 import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class cif extends cic {
+public class cif extends cid {
+   private static final Logger b = LogUtils.getLogger();
+   private static final int c = 10;
    @Nullable
-   private evq b;
-   private int c;
+   private evr d;
+   private int e;
 
-   public cif(cia $$0) {
+   public cif(cib $$0) {
       super($$0);
    }
 
    @Override
-   public void b() {
-      if (this.c++ % 10 == 0) {
-         float $$0 = (this.a.el().i() - 0.5F) * 8.0F;
-         float $$1 = (this.a.el().i() - 0.5F) * 4.0F;
-         float $$2 = (this.a.el().i() - 0.5F) * 8.0F;
-         this.a.dP().a(li.v, this.a.du() + (double)$$0, this.a.dw() + 2.0 + (double)$$1, this.a.dA() + (double)$$2, 0.0, 0.0, 0.0);
-      }
-   }
-
-   @Override
    public void c() {
-      this.c++;
-      if (this.b == null) {
-         iz $$0 = this.a.dP().a(dxt.a.e, eaw.a(this.a.s()));
-         this.b = evq.c($$0);
-      }
-
-      double $$1 = this.b.c(this.a.du(), this.a.dw(), this.a.dA());
-      if (!($$1 < 100.0) && !($$1 > 22500.0) && !this.a.Q && !this.a.R) {
-         this.a.t(1.0F);
+      if (this.d == null) {
+         b.warn("Aborting charge player as no target was set.");
+         this.a.gn().a(cir.a);
+      } else if (this.e > 0 && this.e++ >= 10) {
+         this.a.gn().a(cir.a);
       } else {
-         this.a.t(0.0F);
+         double $$0 = this.d.c(this.a.du(), this.a.dw(), this.a.dA());
+         if ($$0 < 100.0 || $$0 > 22500.0 || this.a.Q || this.a.R) {
+            this.e++;
+         }
       }
    }
 
    @Override
    public void d() {
-      this.b = null;
-      this.c = 0;
+      this.d = null;
+      this.e = 0;
+   }
+
+   public void a(evr $$0) {
+      this.d = $$0;
    }
 
    @Override
@@ -48,12 +45,12 @@ public class cif extends cic {
 
    @Nullable
    @Override
-   public evq g() {
-      return this.b;
+   public evr g() {
+      return this.d;
    }
 
    @Override
-   public ciq<cif> i() {
-      return ciq.j;
+   public cir<cif> i() {
+      return cir.i;
    }
 }

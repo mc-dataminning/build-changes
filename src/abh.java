@@ -1,21 +1,31 @@
-public record abh(iz c) implements aaw {
-   public static final zm<wl, abh> a = aaw.a(abh::a, abh::new);
-   public static final aaw.b<abh> b = aaw.a("debug/poi_removed");
+public record abh(iz c, String d, int e) implements aax {
+   public static final zn<wm, abh> a = aax.a(abh::a, abh::new);
+   public static final aax.b<abh> b = aax.a("debug/poi_added");
 
-   private abh(wl $$0) {
-      this($$0.e());
+   private abh(wm $$0) {
+      this($$0.e(), $$0.p(), $$0.readInt());
    }
 
-   private void a(wl $$0) {
+   private void a(wm $$0) {
       $$0.a(this.c);
+      $$0.a(this.d);
+      $$0.p(this.e);
    }
 
    @Override
-   public aaw.b<abh> a() {
+   public aax.b<abh> a() {
       return b;
    }
 
    public iz b() {
       return this.c;
+   }
+
+   public String c() {
+      return this.d;
+   }
+
+   public int d() {
+      return this.e;
    }
 }

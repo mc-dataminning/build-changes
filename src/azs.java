@@ -1,144 +1,69 @@
 import java.util.Optional;
 
 public class azs {
-   private static final char a = '�';
-   private static final Optional<Object> b = Optional.of(bab.a);
+   public static <T extends btr> Optional<T> a(bta<T> $$0, btt $$1, arf $$2, iz $$3, int $$4, int $$5, int $$6, azs.a $$7) {
+      iz.a $$8 = $$3.j();
 
-   private static boolean a(yl $$0, ayl $$1, int $$2, char $$3) {
-      return Character.isSurrogate($$3) ? $$1.accept($$2, $$0, 65533) : $$1.accept($$2, $$0, $$3);
-   }
-
-   public static boolean a(String $$0, yl $$1, ayl $$2) {
-      int $$3 = $$0.length();
-
-      for (int $$4 = 0; $$4 < $$3; $$4++) {
-         char $$5 = $$0.charAt($$4);
-         if (Character.isHighSurrogate($$5)) {
-            if ($$4 + 1 >= $$3) {
-               if (!$$2.accept($$4, $$1, 65533)) {
-                  return false;
-               }
-               break;
-            }
-
-            char $$6 = $$0.charAt($$4 + 1);
-            if (Character.isLowSurrogate($$6)) {
-               if (!$$2.accept($$4, $$1, Character.toCodePoint($$5, $$6))) {
-                  return false;
+      for (int $$9 = 0; $$9 < $$4; $$9++) {
+         int $$10 = ayz.b($$2.z, -$$5, $$5);
+         int $$11 = ayz.b($$2.z, -$$5, $$5);
+         $$8.a($$3, $$10, $$6, $$11);
+         if ($$2.C_().a($$8) && a($$2, $$6, $$8, $$7)) {
+            T $$12 = (T)$$0.b($$2, null, $$8, $$1, false, false);
+            if ($$12 != null) {
+               if ($$12.a($$2, $$1) && $$12.a($$2)) {
+                  $$2.a_($$12);
+                  return Optional.of($$12);
                }
 
-               $$4++;
-            } else if (!$$2.accept($$4, $$1, 65533)) {
-               return false;
+               $$12.ao();
             }
-         } else if (!a($$1, $$2, $$4, $$5)) {
-            return false;
          }
       }
 
-      return true;
+      return Optional.empty();
    }
 
-   public static boolean b(String $$0, yl $$1, ayl $$2) {
-      int $$3 = $$0.length();
+   private static boolean a(arf $$0, int $$1, iz.a $$2, azs.a $$3) {
+      iz.a $$4 = new iz.a().g($$2);
+      dsc $$5 = $$0.a_($$4);
 
-      for (int $$4 = $$3 - 1; $$4 >= 0; $$4--) {
-         char $$5 = $$0.charAt($$4);
-         if (Character.isLowSurrogate($$5)) {
-            if ($$4 - 1 < 0) {
-               if (!$$2.accept(0, $$1, 65533)) {
-                  return false;
-               }
-               break;
-            }
-
-            char $$6 = $$0.charAt($$4 - 1);
-            if (Character.isHighSurrogate($$6)) {
-               if (!$$2.accept(--$$4, $$1, Character.toCodePoint($$6, $$5))) {
-                  return false;
-               }
-            } else if (!$$2.accept($$4, $$1, 65533)) {
-               return false;
-            }
-         } else if (!a($$1, $$2, $$4, $$5)) {
-            return false;
+      for (int $$6 = $$1; $$6 >= -$$1; $$6--) {
+         $$2.c(je.a);
+         $$4.a($$2, je.b);
+         dsc $$7 = $$0.a_($$2);
+         if ($$3.canSpawnOn($$0, $$2, $$7, $$4, $$5)) {
+            $$2.c(je.b);
+            return true;
          }
+
+         $$5 = $$7;
       }
 
-      return true;
+      return false;
    }
 
-   public static boolean c(String $$0, yl $$1, ayl $$2) {
-      return a($$0, 0, $$1, $$2);
-   }
+   public interface a {
+      @Deprecated
+      azs.a a = ($$0, $$1, $$2, $$3, $$4) -> !$$2.a(dfb.bs)
+               && !$$2.a(dfb.dQ)
+               && !$$2.a(dfb.eY)
+               && !($$2.b() instanceof dms)
+               && !($$2.b() instanceof dmr)
+               && !($$2.b() instanceof djj)
+               && !$$2.a(dfb.mX)
+               && !$$2.a(dfb.dO)
+               && !$$2.a(dfb.ck)
+               && !$$2.a(dfb.ec)
+               && !$$2.a(dfb.fO)
+               && !$$2.a(dfb.ii)
+               && !$$2.a(dfb.kI)
+               && !$$2.a(dfb.qO)
+               && !$$2.a(dfb.aQ)
+            ? ($$4.i() || $$4.k()) && ($$2.e() || $$2.a(dfb.qP))
+            : false;
+      azs.a b = ($$0, $$1, $$2, $$3, $$4) -> $$4.k($$0, $$3).c() && dez.a($$2.k($$0, $$1), je.b);
 
-   public static boolean a(String $$0, int $$1, yl $$2, ayl $$3) {
-      return a($$0, $$1, $$2, $$2, $$3);
-   }
-
-   public static boolean a(String $$0, int $$1, yl $$2, yl $$3, ayl $$4) {
-      int $$5 = $$0.length();
-      yl $$6 = $$2;
-
-      for (int $$7 = $$1; $$7 < $$5; $$7++) {
-         char $$8 = $$0.charAt($$7);
-         if ($$8 == 167) {
-            if ($$7 + 1 >= $$5) {
-               break;
-            }
-
-            char $$9 = $$0.charAt($$7 + 1);
-            n $$10 = n.a($$9);
-            if ($$10 != null) {
-               $$6 = $$10 == n.v ? $$3 : $$6.c($$10);
-            }
-
-            $$7++;
-         } else if (Character.isHighSurrogate($$8)) {
-            if ($$7 + 1 >= $$5) {
-               if (!$$4.accept($$7, $$6, 65533)) {
-                  return false;
-               }
-               break;
-            }
-
-            char $$11 = $$0.charAt($$7 + 1);
-            if (Character.isLowSurrogate($$11)) {
-               if (!$$4.accept($$7, $$6, Character.toCodePoint($$8, $$11))) {
-                  return false;
-               }
-
-               $$7++;
-            } else if (!$$4.accept($$7, $$6, 65533)) {
-               return false;
-            }
-         } else if (!a($$6, $$4, $$7, $$8)) {
-            return false;
-         }
-      }
-
-      return true;
-   }
-
-   public static boolean a(xt $$0, yl $$1, ayl $$2) {
-      return $$0.a(($$1x, $$2x) -> a($$2x, 0, $$1x, $$2) ? Optional.empty() : b, $$1).isEmpty();
-   }
-
-   public static String a(String $$0) {
-      StringBuilder $$1 = new StringBuilder();
-      a($$0, yl.a, ($$1x, $$2, $$3) -> {
-         $$1.appendCodePoint($$3);
-         return true;
-      });
-      return $$1.toString();
-   }
-
-   public static String a(xt $$0) {
-      StringBuilder $$1 = new StringBuilder();
-      a($$0, yl.a, ($$1x, $$2, $$3) -> {
-         $$1.appendCodePoint($$3);
-         return true;
-      });
-      return $$1.toString();
+      boolean canSpawnOn(arf var1, iz var2, dsc var3, iz var4, dsc var5);
    }
 }

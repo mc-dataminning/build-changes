@@ -1,111 +1,82 @@
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import it.unimi.dsi.fastutil.objects.Object2ObjectArrayMap;
+import java.util.Map;
 
-public class dmb extends dey implements dlz {
-   public static final MapCodec<dmb> a = b(dmb::new);
-   public static final dsz<dtj> b = dsr.bh;
-   public static final dss c = dsr.C;
-   protected static final ewj d = dey.a(0.0, 0.0, 0.0, 16.0, 8.0, 16.0);
-   protected static final ewj e = dey.a(0.0, 8.0, 0.0, 16.0, 16.0, 16.0);
+public class dmb extends ddv {
+   public static final MapCodec<dmb> c = RecordCodecBuilder.mapCodec($$0 -> $$0.group(dmb.a.b.fieldOf("kind").forGetter(ddv::b), u()).apply($$0, dmb::new));
+   public static final int d = dti.a();
+   private static final int b = d + 1;
+   public static final dtc e = dss.ba;
+   protected static final ewk f = dez.a(4.0, 0.0, 4.0, 12.0, 8.0, 12.0);
+   protected static final ewk g = dez.a(3.0, 0.0, 3.0, 13.0, 8.0, 13.0);
 
    @Override
    public MapCodec<? extends dmb> a() {
-      return a;
+      return c;
    }
 
-   public dmb(dsa.d $$0) {
-      super($$0);
-      this.k(this.o().a(b, dtj.b).a(c, Boolean.valueOf(false)));
-   }
-
-   @Override
-   protected boolean f_(dsb $$0) {
-      return $$0.c(b) != dtj.c;
+   protected dmb(dmb.a $$0, dsb.d $$1) {
+      super($$0, $$1);
+      this.k(this.o().a(e, Integer.valueOf(0)));
    }
 
    @Override
-   protected void a(dsc.a<dey, dsb> $$0) {
-      $$0.a(b, c);
+   protected ewk a(dsc $$0, dbe $$1, iz $$2, evw $$3) {
+      return this.b() == dmb.b.h ? g : f;
    }
 
    @Override
-   protected ewj a(dsb $$0, dbd $$1, iz $$2, evv $$3) {
-      dtj $$4 = $$0.c(b);
-      switch ($$4) {
-         case c:
-            return ewg.b();
-         case a:
-            return e;
-         default:
-            return d;
-      }
-   }
-
-   @Nullable
-   @Override
-   public dsb a(cxz $$0) {
-      iz $$1 = $$0.a();
-      dsb $$2 = $$0.q().a_($$1);
-      if ($$2.a(this)) {
-         return $$2.a(b, dtj.c).a(c, Boolean.valueOf(false));
-      } else {
-         enu $$3 = $$0.q().b_($$1);
-         dsb $$4 = this.o().a(b, dtj.b).a(c, Boolean.valueOf($$3.a() == env.c));
-         je $$5 = $$0.k();
-         return $$5 != je.a && ($$5 == je.b || !($$0.l().d - (double)$$1.v() > 0.5)) ? $$4 : $$4.a(b, dtj.a);
-      }
+   protected ewk f(dsc $$0, dbe $$1, iz $$2) {
+      return ewh.a();
    }
 
    @Override
-   protected boolean a(dsb $$0, cxz $$1) {
-      cuo $$2 = $$1.n();
-      dtj $$3 = $$0.c(b);
-      if ($$3 == dtj.c || !$$2.a(this.r())) {
-         return false;
-      } else if ($$1.c()) {
-         boolean $$4 = $$1.l().d - (double)$$1.a().v() > 0.5;
-         je $$5 = $$1.k();
-         return $$3 == dtj.b ? $$5 == je.b || $$4 && $$5.o().d() : $$5 == je.a || !$$4 && $$5.o().d();
-      } else {
-         return true;
-      }
+   public dsc a(cya $$0) {
+      return super.a($$0).a(e, Integer.valueOf(dti.a($$0.i())));
    }
 
    @Override
-   protected enu b_(dsb $$0) {
-      return $$0.c(c) ? env.c.a(false) : super.b_($$0);
+   protected dsc a(dsc $$0, dlm $$1) {
+      return $$0.a(e, Integer.valueOf($$1.a($$0.c(e), b)));
    }
 
    @Override
-   public boolean a(dby $$0, iz $$1, dsb $$2, enu $$3) {
-      return $$2.c(b) != dtj.c ? dlz.super.a($$0, $$1, $$2, $$3) : false;
+   protected dsc a(dsc $$0, djw $$1) {
+      return $$0.a(e, Integer.valueOf($$1.a($$0.c(e), b)));
    }
 
    @Override
-   public boolean a(@Nullable cmw $$0, dbd $$1, iz $$2, dsb $$3, ent $$4) {
-      return $$3.c(b) != dtj.c ? dlz.super.a($$0, $$1, $$2, $$3, $$4) : false;
+   protected void a(dsd.a<dez, dsc> $$0) {
+      super.a($$0);
+      $$0.a(e);
    }
 
-   @Override
-   protected dsb a(dsb $$0, je $$1, dsb $$2, dby $$3, iz $$4, iz $$5) {
-      if ($$0.c(c)) {
-         $$3.a($$4, env.c, env.c.a($$3));
+   public interface a extends azu {
+      Map<String, dmb.a> a = new Object2ObjectArrayMap();
+      Codec<dmb.a> b = Codec.stringResolver(azu::c, a::get);
+   }
+
+   public static enum b implements dmb.a {
+      c("skeleton"),
+      d("wither_skeleton"),
+      e("player"),
+      f("zombie"),
+      g("creeper"),
+      h("piglin"),
+      i("dragon");
+
+      private final String j;
+
+      private b(final String $$0) {
+         this.j = $$0;
+         a.put($$0, this);
       }
 
-      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
-   }
-
-   @Override
-   protected boolean a(dsb $$0, eoj $$1) {
-      switch ($$1) {
-         case a:
-            return false;
-         case b:
-            return $$0.u().a(awu.a);
-         case c:
-            return false;
-         default:
-            return false;
+      @Override
+      public String c() {
+         return this.j;
       }
    }
 }

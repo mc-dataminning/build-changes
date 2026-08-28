@@ -1,25 +1,25 @@
-public class aff implements zv<ach> {
-   public static final zm<wl, aff> a = zv.a(aff::a, aff::new);
+public class aff implements zw<aci> {
+   public static final zn<wm, aff> a = zw.a(aff::a, aff::new);
    private final int b;
 
-   public aff(dts $$0) {
-      this.b = $$0.r();
+   public aff(dtt $$0) {
+      this.b = $$0.q();
    }
 
-   private aff(wl $$0) {
+   private aff(wm $$0) {
       this.b = $$0.l();
    }
 
-   private void a(wl $$0) {
+   private void a(wm $$0) {
       $$0.c(this.b);
    }
 
    @Override
-   public zx<aff> a() {
-      return agt.av;
+   public zy<aff> a() {
+      return agu.au;
    }
 
-   public void a(ach $$0) {
+   public void a(aci $$0) {
       $$0.a(this);
    }
 

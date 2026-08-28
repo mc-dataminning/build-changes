@@ -1,50 +1,72 @@
-public class fho extends fhx {
-   private static final int a = 4;
-   private final boolean b;
-   private final int c;
+public class fho extends fgy {
+   private final fgp a;
+   private final fhy b;
 
-   public fho(int $$0, xo $$1, fgo $$2) {
-      this($$0, $$1, $$2, 4);
+   public fho(int $$0, int $$1, int $$2, int $$3, xp $$4, fgp $$5) {
+      super($$0, $$1, $$2, $$3, $$4);
+      this.a = $$5;
+      this.b = new fhy($$4, $$5).d(this.x() - this.b());
    }
 
-   public fho(int $$0, xo $$1, fgo $$2, int $$3) {
-      this($$0, $$1, $$2, true, $$3);
-   }
-
-   public fho(int $$0, xo $$1, fgo $$2, boolean $$3, int $$4) {
-      super($$1, $$2);
-      this.d($$0);
-      this.b(true);
-      this.j = true;
-      this.b = $$3;
-      this.c = $$4;
-   }
-
-   public void b(int $$0) {
-      this.d($$0 - this.c * 4);
+   public fho a(int $$0) {
+      this.b.c($$0);
+      return this;
    }
 
    @Override
-   protected void a(fkz $$0) {
-      $$0.a(fky.a, this.y());
+   public void k(int $$0) {
+      super.k($$0);
+      this.b.d(this.x() - this.b());
    }
 
    @Override
-   public void b(fgq $$0, int $$1, int $$2, float $$3) {
-      if (this.aH_() || this.b) {
-         int $$4 = this.C() - this.c;
-         int $$5 = this.D() - this.c;
-         int $$6 = this.x() + this.c * 2;
-         int $$7 = this.v() + this.c * 2;
-         int $$8 = this.b ? (this.aH_() ? -1 : -6250336) : -1;
-         $$0.a($$4 + 1, $$5, $$4 + $$6, $$5 + $$7, -16777216);
-         $$0.b($$4, $$5, $$6, $$7, $$8);
+   protected int h() {
+      return this.b.v();
+   }
+
+   @Override
+   protected double i() {
+      return 9.0;
+   }
+
+   @Override
+   protected void b(fgr $$0) {
+      if (this.e()) {
+         super.b($$0);
+      } else if (this.aH_()) {
+         this.a($$0, this.C() - this.a(), this.D() - this.a(), this.x() + this.b(), this.v() + this.b());
       }
-
-      super.b($$0, $$1, $$2, $$3);
    }
 
    @Override
-   public void a(gtu $$0) {
+   public void b(fgr $$0, int $$1, int $$2, float $$3) {
+      if (this.k) {
+         if (!this.e()) {
+            this.b($$0);
+            $$0.c().a();
+            $$0.c().a((float)this.C(), (float)this.D(), 0.0F);
+            this.b.a($$0, $$1, $$2, $$3);
+            $$0.c().b();
+         } else {
+            super.b($$0, $$1, $$2, $$3);
+         }
+      }
+   }
+
+   public boolean j() {
+      return super.e();
+   }
+
+   @Override
+   protected void c(fgr $$0, int $$1, int $$2, float $$3) {
+      $$0.c().a();
+      $$0.c().a((float)(this.C() + this.a()), (float)(this.D() + this.a()), 0.0F);
+      this.b.a($$0, $$1, $$2, $$3);
+      $$0.c().b();
+   }
+
+   @Override
+   protected void a(fla $$0) {
+      $$0.a(fkz.a, this.y());
    }
 }

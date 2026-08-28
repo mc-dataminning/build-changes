@@ -1,36 +1,25 @@
-public class fwf<T extends bst> extends ftr<T> {
-   private final fwz a;
-   private final fwz b;
+public class fwf extends fuw {
+   public static final alf a = new alf("textures/entity/trident.png");
+   private final fxa b;
 
-   public fwf(fwz $$0) {
-      this.a = $$0;
-      this.b = $$0.b("tail");
+   public fwf(fxa $$0) {
+      super(gdw::c);
+      this.b = $$0;
    }
 
-   public static fxf a(fxd $$0) {
-      fxh $$1 = new fxh();
-      fxi $$2 = $$1.a();
-      int $$3 = 22;
-      $$2.a("body", fxe.c().a(0, 0).a(-1.0F, -1.5F, -3.0F, 2.0F, 3.0F, 6.0F, $$0), fxb.a(0.0F, 22.0F, 0.0F));
-      $$2.a("tail", fxe.c().a(22, -6).a(0.0F, -1.5F, 0.0F, 0.0F, 3.0F, 6.0F, $$0), fxb.a(0.0F, 22.0F, 3.0F));
-      $$2.a("right_fin", fxe.c().a(2, 16).a(-2.0F, -1.0F, 0.0F, 2.0F, 2.0F, 0.0F, $$0), fxb.a(-1.0F, 22.5F, 0.0F, 0.0F, (float) (Math.PI / 4), 0.0F));
-      $$2.a("left_fin", fxe.c().a(2, 12).a(0.0F, -1.0F, 0.0F, 2.0F, 2.0F, 0.0F, $$0), fxb.a(1.0F, 22.5F, 0.0F, 0.0F, (float) (-Math.PI / 4), 0.0F));
-      $$2.a("top_fin", fxe.c().a(10, -5).a(0.0F, -3.0F, 0.0F, 0.0F, 3.0F, 6.0F, $$0), fxb.a(0.0F, 20.5F, -3.0F));
-      return fxf.a($$1, 32, 32);
-   }
-
-   @Override
-   public fwz a() {
-      return this.a;
+   public static fxg a() {
+      fxi $$0 = new fxi();
+      fxj $$1 = $$0.a();
+      fxj $$2 = $$1.a("pole", fxf.c().a(0, 6).a(-0.5F, 2.0F, -0.5F, 1.0F, 25.0F, 1.0F), fxc.a);
+      $$2.a("base", fxf.c().a(4, 0).a(-1.5F, 0.0F, -0.5F, 3.0F, 2.0F, 1.0F), fxc.a);
+      $$2.a("left_spike", fxf.c().a(4, 3).a(-2.5F, -3.0F, -0.5F, 1.0F, 4.0F, 1.0F), fxc.a);
+      $$2.a("middle_spike", fxf.c().a(0, 0).a(-0.5F, -4.0F, -0.5F, 1.0F, 4.0F, 1.0F), fxc.a);
+      $$2.a("right_spike", fxf.c().a(4, 3).a().a(1.5F, -3.0F, -0.5F, 1.0F, 4.0F, 1.0F), fxc.a);
+      return fxg.a($$0, 32, 32);
    }
 
    @Override
-   public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
-      float $$6 = 1.0F;
-      if (!$$0.be()) {
-         $$6 = 1.5F;
-      }
-
-      this.b.f = -$$6 * 0.45F * ayy.a(0.6F * $$3);
+   public void a(ezy $$0, fac $$1, int $$2, int $$3, float $$4, float $$5, float $$6, float $$7) {
+      this.b.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
    }
 }

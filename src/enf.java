@@ -1,77 +1,166 @@
-import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
-import javax.annotation.Nullable;
+public class enf {
+   private static final int b = 16;
+   public static final int a = Integer.MIN_VALUE;
+   private final int c;
+   private final axn d;
+   private final iz.a e = new iz.a();
+   private final iz.a f = new iz.a();
 
-public abstract class enf<M extends enf<M>> {
-   private static final int b = 2;
-   private final long[] c = new long[2];
-   private final duc[] d = new duc[2];
-   private boolean e;
-   protected final Long2ObjectOpenHashMap<duc> a;
-
-   protected enf(Long2ObjectOpenHashMap<duc> $$0) {
-      this.a = $$0;
-      this.c();
-      this.e = true;
+   public enf(dca $$0) {
+      this.c = $$0.I_() - 1;
+      int $$1 = $$0.am();
+      int $$2 = ayz.e($$1 - this.c + 1);
+      this.d = new azo($$2, 256);
    }
 
-   public abstract M b();
-
-   public duc a(long $$0) {
-      duc $$1 = ((duc)this.a.get($$0)).b();
-      this.a.put($$0, $$1);
-      this.c();
-      return $$1;
-   }
-
-   public boolean b(long $$0) {
-      return this.a.containsKey($$0);
-   }
-
-   @Nullable
-   public duc c(long $$0) {
-      if (this.e) {
-         for (int $$1 = 0; $$1 < 2; $$1++) {
-            if ($$0 == this.c[$$1]) {
-               return this.d[$$1];
-            }
-         }
-      }
-
-      duc $$2 = (duc)this.a.get($$0);
-      if ($$2 == null) {
-         return null;
+   public void a(dty $$0) {
+      int $$1 = $$0.a();
+      if ($$1 == -1) {
+         this.a(this.c);
       } else {
-         if (this.e) {
-            for (int $$3 = 1; $$3 > 0; $$3--) {
-               this.c[$$3] = this.c[$$3 - 1];
-               this.d[$$3] = this.d[$$3 - 1];
+         for (int $$2 = 0; $$2 < 16; $$2++) {
+            for (int $$3 = 0; $$3 < 16; $$3++) {
+               int $$4 = Math.max(this.a($$0, $$1, $$3, $$2), this.c);
+               this.b(c($$3, $$2), $$4);
             }
+         }
+      }
+   }
 
-            this.c[0] = $$0;
-            this.d[0] = $$2;
+   private int a(dty $$0, int $$1, int $$2, int $$3) {
+      int $$4 = kb.c($$0.g($$1) + 1);
+      iz.a $$5 = this.e.d($$2, $$4, $$3);
+      iz.a $$6 = this.f.a($$5, je.a);
+      dsc $$7 = dfb.a.o();
+
+      for (int $$8 = $$1; $$8 >= 0; $$8--) {
+         duj $$9 = $$0.b($$8);
+         if ($$9.c()) {
+            $$7 = dfb.a.o();
+            int $$10 = $$0.g($$8);
+            $$5.q(kb.c($$10));
+            $$6.q($$5.v() - 1);
+         } else {
+            for (int $$11 = 15; $$11 >= 0; $$11--) {
+               dsc $$12 = $$9.a($$2, $$11, $$3);
+               if (a($$0, $$5, $$7, $$6, $$12)) {
+                  return $$5.v();
+               }
+
+               $$7 = $$12;
+               $$5.g($$6);
+               $$6.c(je.a);
+            }
+         }
+      }
+
+      return this.c;
+   }
+
+   public boolean a(dbe $$0, int $$1, int $$2, int $$3) {
+      int $$4 = $$2 + 1;
+      int $$5 = c($$1, $$3);
+      int $$6 = this.b($$5);
+      if ($$4 < $$6) {
+         return false;
+      } else {
+         iz $$7 = this.e.d($$1, $$2 + 1, $$3);
+         dsc $$8 = $$0.a_($$7);
+         iz $$9 = this.f.d($$1, $$2, $$3);
+         dsc $$10 = $$0.a_($$9);
+         if (this.a($$0, $$5, $$6, $$7, $$8, $$9, $$10)) {
+            return true;
+         } else {
+            iz $$11 = this.e.d($$1, $$2 - 1, $$3);
+            dsc $$12 = $$0.a_($$11);
+            return this.a($$0, $$5, $$6, $$9, $$10, $$11, $$12);
+         }
+      }
+   }
+
+   private boolean a(dbe $$0, int $$1, int $$2, iz $$3, dsc $$4, iz $$5, dsc $$6) {
+      int $$7 = $$3.v();
+      if (a($$0, $$3, $$4, $$5, $$6)) {
+         if ($$7 > $$2) {
+            this.b($$1, $$7);
+            return true;
+         }
+      } else if ($$7 == $$2) {
+         this.b($$1, this.a($$0, $$5, $$6));
+         return true;
+      }
+
+      return false;
+   }
+
+   private int a(dbe $$0, iz $$1, dsc $$2) {
+      iz.a $$3 = this.e.g($$1);
+      iz.a $$4 = this.f.a($$1, je.a);
+      dsc $$5 = $$2;
+
+      while ($$4.v() >= this.c) {
+         dsc $$6 = $$0.a_($$4);
+         if (a($$0, $$3, $$5, $$4, $$6)) {
+            return $$3.v();
          }
 
-         return $$2;
+         $$5 = $$6;
+         $$3.g($$4);
+         $$4.c(je.a);
+      }
+
+      return this.c;
+   }
+
+   private static boolean a(dbe $$0, iz $$1, dsc $$2, iz $$3, dsc $$4) {
+      if ($$4.b($$0, $$3) != 0) {
+         return true;
+      } else {
+         ewk $$5 = enm.a($$0, $$1, $$2, je.a);
+         ewk $$6 = enm.a($$0, $$3, $$4, je.b);
+         return ewh.b($$5, $$6);
       }
    }
 
-   @Nullable
-   public duc d(long $$0) {
-      return (duc)this.a.remove($$0);
+   public int a(int $$0, int $$1) {
+      int $$2 = this.b(c($$0, $$1));
+      return this.c($$2);
    }
 
-   public void a(long $$0, duc $$1) {
-      this.a.put($$0, $$1);
+   public int a() {
+      int $$0 = Integer.MIN_VALUE;
+
+      for (int $$1 = 0; $$1 < this.d.b(); $$1++) {
+         int $$2 = this.d.a($$1);
+         if ($$2 > $$0) {
+            $$0 = $$2;
+         }
+      }
+
+      return this.c($$0 + this.c);
    }
 
-   public void c() {
-      for (int $$0 = 0; $$0 < 2; $$0++) {
-         this.c[$$0] = Long.MAX_VALUE;
-         this.d[$$0] = null;
+   private void a(int $$0) {
+      int $$1 = $$0 - this.c;
+
+      for (int $$2 = 0; $$2 < this.d.b(); $$2++) {
+         this.d.b($$2, $$1);
       }
    }
 
-   public void d() {
-      this.e = false;
+   private void b(int $$0, int $$1) {
+      this.d.b($$0, $$1 - this.c);
+   }
+
+   private int b(int $$0) {
+      return this.d.a($$0) + this.c;
+   }
+
+   private int c(int $$0) {
+      return $$0 == this.c ? Integer.MIN_VALUE : $$0;
+   }
+
+   private static int c(int $$0, int $$1) {
+      return $$0 + $$1 * 16;
    }
 }

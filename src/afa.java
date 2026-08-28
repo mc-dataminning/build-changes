@@ -1,12 +1,19 @@
-public record afa(xo b) implements zv<ach> {
-   public static final zm<wz, afa> a = zm.a(xq.d, afa::b, afa::new);
+import io.netty.buffer.ByteBuf;
+import java.util.Optional;
+
+public record afa(xp b, Optional<byte[]> c) implements zw<aci> {
+   public static final zn<ByteBuf, afa> a = zn.a(xr.f, afa::b, zl.k.a(zl::a), afa::e, afa::new);
 
    @Override
-   public zx<afa> a() {
-      return agt.aq;
+   public zy<afa> a() {
+      return agu.ap;
    }
 
-   public void a(ach $$0) {
+   public void a(aci $$0) {
       $$0.a(this);
+   }
+
+   public Optional<byte[]> e() {
+      return this.c;
    }
 }

@@ -1,49 +1,44 @@
-import java.util.function.IntFunction;
-import javax.annotation.Nullable;
-
-public enum bqq implements azt {
-   a(0, "peaceful"),
-   b(1, "easy"),
-   c(2, "normal"),
-   d(3, "hard");
-
-   public static final azt.a<bqq> e = azt.a(bqq::values);
-   private static final IntFunction<bqq> f = axo.a(bqq::a, values(), axo.a.b);
-   private final int g;
-   private final String h;
-
-   private bqq(final int $$0, final String $$1) {
-      this.g = $$0;
-      this.h = $$1;
+public class bqq {
+   public static void a(dby $$0, iz $$1, bqn $$2) {
+      a($$0, (double)$$1.u(), (double)$$1.v(), (double)$$1.w(), $$2);
    }
 
-   public int a() {
-      return this.g;
+   public static void a(dby $$0, bsu $$1, bqn $$2) {
+      a($$0, $$1.du(), $$1.dw(), $$1.dA(), $$2);
    }
 
-   public xo b() {
-      return xo.c("options.difficulty." + this.h);
+   private static void a(dby $$0, double $$1, double $$2, double $$3, bqn $$4) {
+      for (int $$5 = 0; $$5 < $$4.b(); $$5++) {
+         a($$0, $$1, $$2, $$3, $$4.a($$5));
+      }
    }
 
-   public xo d() {
-      return xo.c("options.difficulty." + this.h + ".info");
+   public static void a(dby $$0, iz $$1, jr<cup> $$2) {
+      $$2.forEach($$2x -> a($$0, (double)$$1.u(), (double)$$1.v(), (double)$$1.w(), $$2x));
    }
 
-   public static bqq a(int $$0) {
-      return f.apply($$0);
+   public static void a(dby $$0, double $$1, double $$2, double $$3, cup $$4) {
+      double $$5 = (double)bta.ag.l();
+      double $$6 = 1.0 - $$5;
+      double $$7 = $$5 / 2.0;
+      double $$8 = Math.floor($$1) + $$0.z.j() * $$6 + $$7;
+      double $$9 = Math.floor($$2) + $$0.z.j() * $$6;
+      double $$10 = Math.floor($$3) + $$0.z.j() * $$6 + $$7;
+
+      while (!$$4.e()) {
+         cjh $$11 = new cjh($$0, $$8, $$9, $$10, $$4.a($$0.z.a(21) + 10));
+         float $$12 = 0.05F;
+         $$11.o($$0.z.a(0.0, 0.11485000171139836), $$0.z.a(0.2, 0.11485000171139836), $$0.z.a(0.0, 0.11485000171139836));
+         $$0.b($$11);
+      }
    }
 
-   @Nullable
-   public static bqq a(String $$0) {
-      return e.a($$0);
-   }
-
-   public String e() {
-      return this.h;
-   }
-
-   @Override
-   public String c() {
-      return this.h;
+   public static void a(dsc $$0, dsc $$1, dby $$2, iz $$3) {
+      if (!$$0.a($$1.b())) {
+         if ($$2.c_($$3) instanceof bqn $$5) {
+            a($$2, $$3, $$5);
+            $$2.c($$3, $$0.b());
+         }
+      }
    }
 }

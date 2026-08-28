@@ -1,34 +1,29 @@
-public class gse extends grv {
-   private static final float n = 0.0F;
-   private static final float o = 1.0F;
-   private static final float p = 0.7F;
-   private static final float q = 0.5F;
-   private final cjy r;
+public class gse extends grw {
+   private final bsu n;
 
-   public gse(cjy $$0) {
-      super(avz.ls, awa.f, gsm.t());
-      this.r = $$0;
-      this.k = gsm.a.a;
-      this.i = true;
-      this.j = 0;
+   public gse(avz $$0, awb $$1, float $$2, float $$3, bsu $$4, long $$5) {
+      super($$0, $$1, azh.a($$5));
+      this.d = $$2;
+      this.e = $$3;
+      this.n = $$4;
+      this.f = (double)((float)this.n.du());
+      this.g = (double)((float)this.n.dw());
+      this.h = (double)((float)this.n.dA());
    }
 
    @Override
    public boolean s() {
-      return !this.r.aW();
+      return !this.n.aW();
    }
 
    @Override
    public void q() {
-      if (!this.r.dK() && this.r.p() == null) {
-         this.f = (double)((float)this.r.du());
-         this.g = (double)((float)this.r.dw());
-         this.h = (double)((float)this.r.dA());
-         float $$0 = this.r.I(0.0F);
-         this.d = 0.0F + 1.0F * $$0 * $$0;
-         this.e = 0.7F + 0.5F * $$0;
-      } else {
+      if (this.n.dK()) {
          this.n();
+      } else {
+         this.f = (double)((float)this.n.du());
+         this.g = (double)((float)this.n.dw());
+         this.h = (double)((float)this.n.dA());
       }
    }
 }

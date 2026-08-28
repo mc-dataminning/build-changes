@@ -1,60 +1,19 @@
-public class bre {
-   public static final float a = 1.0F;
-   protected float b = 20.0F;
-   protected long c = azy.a / 20L;
-   protected int d = 0;
-   protected boolean e = true;
-   protected boolean f = false;
+public final class bre implements bqy {
+   private final xp a;
+   private final cra b;
 
-   public void a(float $$0) {
-      this.b = Math.max($$0, 1.0F);
-      this.c = (long)((double)azy.a / (double)this.b);
+   public bre(cra $$0, xp $$1) {
+      this.b = $$0;
+      this.a = $$1;
    }
 
-   public float f() {
-      return this.b;
+   @Override
+   public xp O_() {
+      return this.a;
    }
 
-   public float g() {
-      return (float)this.c / (float)azy.b;
-   }
-
-   public long h() {
-      return this.c;
-   }
-
-   public boolean i() {
-      return this.e;
-   }
-
-   public boolean j() {
-      return this.d > 0;
-   }
-
-   public void c(int $$0) {
-      this.d = $$0;
-   }
-
-   public int k() {
-      return this.d;
-   }
-
-   public void a(boolean $$0) {
-      this.f = $$0;
-   }
-
-   public boolean l() {
-      return this.f;
-   }
-
-   public void m() {
-      this.e = !this.f || this.d > 0;
-      if (this.d > 0) {
-         this.d--;
-      }
-   }
-
-   public boolean a(bst $$0) {
-      return !this.i() && !($$0 instanceof cmw) && $$0.cX() <= 0;
+   @Override
+   public cpu createMenu(int $$0, cmw $$1, cmx $$2) {
+      return this.b.createMenu($$0, $$1, $$2);
    }
 }

@@ -1,48 +1,62 @@
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.Optional;
+import java.util.Set;
 
-public record eup(ale b, fh.g c) implements eum {
+public record eup(euw b, String c, float d) implements eun {
    public static final MapCodec<eup> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(ale.a.fieldOf("storage").forGetter(eup::c), fh.g.a.fieldOf("path").forGetter(eup::d)).apply($$0, eup::new)
+      $$0 -> $$0.group(
+               eux.a.fieldOf("target").forGetter(eup::c),
+               Codec.STRING.fieldOf("score").forGetter(eup::d),
+               Codec.FLOAT.fieldOf("scale").orElse(1.0F).forGetter(eup::e)
+            )
+            .apply($$0, eup::new)
    );
 
    @Override
-   public eul b() {
-      return eun.f;
+   public eum b() {
+      return euo.e;
    }
 
-   private Optional<vh> c(eqh $$0) {
-      ur $$1 = $$0.d().o().aL().a(this.b);
+   @Override
+   public Set<etb<?>> a() {
+      return this.b.b();
+   }
 
-      try {
-         List<vo> $$2 = this.c.a($$1);
-         if ($$2.size() == 1 && $$2.get(0) instanceof vh $$3) {
-            return Optional.of($$3);
+   public static eup a(eqi.b $$0, String $$1) {
+      return a($$0, $$1, 1.0F);
+   }
+
+   public static eup a(eqi.b $$0, String $$1, float $$2) {
+      return new eup(eut.a($$0), $$1, $$2);
+   }
+
+   @Override
+   public float b(eqi $$0) {
+      ewu $$1 = this.b.a($$0);
+      if ($$1 == null) {
+         return 0.0F;
+      } else {
+         ewv $$2 = $$0.d().f();
+         ewn $$3 = $$2.a(this.c);
+         if ($$3 == null) {
+            return 0.0F;
+         } else {
+            ewr $$4 = $$2.d($$1, $$3);
+            return $$4 == null ? 0.0F : (float)$$4.a() * this.d;
          }
-      } catch (CommandSyntaxException var6) {
       }
-
-      return Optional.empty();
    }
 
-   @Override
-   public float b(eqh $$0) {
-      return this.c($$0).map(vh::k).orElse(0.0F);
-   }
-
-   @Override
-   public int a(eqh $$0) {
-      return this.c($$0).map(vh::g).orElse(0);
-   }
-
-   public ale c() {
+   public euw c() {
       return this.b;
    }
 
-   public fh.g d() {
+   public String d() {
       return this.c;
+   }
+
+   public float e() {
+      return this.d;
    }
 }

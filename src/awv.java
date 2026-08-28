@@ -1,11 +1,11 @@
-public class awv {
-   public static final axe<dwu> a = a("vibrations");
-   public static final axe<dwu> b = a("warden_can_listen");
-   public static final axe<dwu> c = a("shrieker_can_listen");
-   public static final axe<dwu> d = a("ignore_vibrations_sneaking");
-   public static final axe<dwu> e = a("allay_can_listen");
+public final class awv {
+   public static final axf<enu> a = a("water");
+   public static final axf<enu> b = a("lava");
 
-   private static axe<dwu> a(String $$0) {
-      return axe.a(lq.C, new ale($$0));
+   private awv() {
+   }
+
+   private static axf<enu> a(String $$0) {
+      return axf.a(lq.z, new alf($$0));
    }
 }

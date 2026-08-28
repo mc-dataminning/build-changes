@@ -7,33 +7,33 @@ import java.util.List;
 import java.util.Optional;
 import net.minecraft.server.MinecraftServer;
 
-public record aj(int c, List<ald<eqm>> d, List<ale> e, Optional<ek> f) {
+public record aj(int c, List<ale<eqn>> d, List<alf> e, Optional<ek> f) {
    public static final Codec<aj> a = RecordCodecBuilder.create(
       $$0 -> $$0.group(
                Codec.INT.optionalFieldOf("experience", 0).forGetter(aj::a),
-               ald.a(lq.aU).listOf().optionalFieldOf("loot", List.of()).forGetter(aj::b),
-               ale.a.listOf().optionalFieldOf("recipes", List.of()).forGetter(aj::c),
+               ale.a(lq.aU).listOf().optionalFieldOf("loot", List.of()).forGetter(aj::b),
+               alf.a.listOf().optionalFieldOf("recipes", List.of()).forGetter(aj::c),
                ek.a.optionalFieldOf("function").forGetter(aj::d)
             )
             .apply($$0, aj::new)
    );
    public static final aj b = new aj(0, List.of(), List.of(), Optional.empty());
 
-   public void a(arf $$0) {
+   public void a(arg $$0) {
       $$0.d(this.c);
-      eqk $$1 = new eqk.a($$0.z()).a(etd.a, $$0).a(etd.f, $$0.dn()).a(etc.m);
+      eql $$1 = new eql.a($$0.z()).a(ete.a, $$0).a(ete.f, $$0.dn()).a(etd.m);
       boolean $$2 = false;
 
-      for (ald<eqm> $$3 : this.d) {
+      for (ale<eqn> $$3 : this.d) {
          ObjectListIterator var6 = $$0.d.be().b($$3).a($$1).iterator();
 
          while (var6.hasNext()) {
-            cuo $$4 = (cuo)var6.next();
+            cup $$4 = (cup)var6.next();
             if ($$0.i($$4)) {
-               $$0.dP().a(null, $$0.du(), $$0.dw(), $$0.dA(), avz.nC, awa.h, 0.2F, (($$0.el().i() - $$0.el().i()) * 0.7F + 1.0F) * 2.0F);
+               $$0.dP().a(null, $$0.du(), $$0.dw(), $$0.dA(), awa.nC, awb.h, 0.2F, (($$0.el().i() - $$0.el().i()) * 0.7F + 1.0F) * 2.0F);
                $$2 = true;
             } else {
-               cjg $$5 = $$0.a($$4, false);
+               cjh $$5 = $$0.a($$4, false);
                if ($$5 != null) {
                   $$5.w();
                   $$5.b($$0.cz());
@@ -58,11 +58,11 @@ public record aj(int c, List<ald<eqm>> d, List<ale> e, Optional<ek> f) {
       return this.c;
    }
 
-   public List<ald<eqm>> b() {
+   public List<ale<eqn>> b() {
       return this.d;
    }
 
-   public List<ale> c() {
+   public List<alf> c() {
       return this.e;
    }
 
@@ -72,9 +72,9 @@ public record aj(int c, List<ald<eqm>> d, List<ale> e, Optional<ek> f) {
 
    public static class a {
       private int a;
-      private final Builder<ald<eqm>> b = ImmutableList.builder();
-      private final Builder<ale> c = ImmutableList.builder();
-      private Optional<ale> d = Optional.empty();
+      private final Builder<ale<eqn>> b = ImmutableList.builder();
+      private final Builder<alf> c = ImmutableList.builder();
+      private Optional<alf> d = Optional.empty();
 
       public static aj.a a(int $$0) {
          return new aj.a().b($$0);
@@ -85,29 +85,29 @@ public record aj(int c, List<ald<eqm>> d, List<ale> e, Optional<ek> f) {
          return this;
       }
 
-      public static aj.a a(ald<eqm> $$0) {
+      public static aj.a a(ale<eqn> $$0) {
          return new aj.a().b($$0);
       }
 
-      public aj.a b(ald<eqm> $$0) {
+      public aj.a b(ale<eqn> $$0) {
          this.b.add($$0);
          return this;
       }
 
-      public static aj.a a(ale $$0) {
+      public static aj.a a(alf $$0) {
          return new aj.a().b($$0);
       }
 
-      public aj.a b(ale $$0) {
+      public aj.a b(alf $$0) {
          this.c.add($$0);
          return this;
       }
 
-      public static aj.a c(ale $$0) {
+      public static aj.a c(alf $$0) {
          return new aj.a().d($$0);
       }
 
-      public aj.a d(ale $$0) {
+      public aj.a d(alf $$0) {
          this.d = Optional.of($$0);
          return this;
       }

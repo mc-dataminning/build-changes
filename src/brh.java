@@ -1,4 +1,3 @@
-import javax.annotation.Nullable;
-
-public record brh(brm a, float b, @Nullable brr c, float d) {
+public interface brh {
+   brg a(dsc var1, dbz var2, iz var3);
 }

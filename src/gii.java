@@ -1,21 +1,17 @@
-public class gii extends gkc<cfk, ftp<cfk>> {
-   private static final ale a = new ale("textures/entity/fish/cod.png");
+public class gii extends gkd<cfk, ftp<cfk>> {
+   private static final alf a = new alf("textures/entity/chicken.png");
 
-   public gii(giw.a $$0) {
-      super($$0, new ftp<>($$0.a(fwy.A)), 0.3F);
+   public gii(gix.a $$0) {
+      super($$0, new ftp<>($$0.a(fwz.z)), 0.3F);
    }
 
-   public ale a(cfk $$0) {
+   public alf a(cfk $$0) {
       return a;
    }
 
-   protected void a(cfk $$0, ezx $$1, float $$2, float $$3, float $$4, float $$5) {
-      super.a($$0, $$1, $$2, $$3, $$4, $$5);
-      float $$6 = 4.3F * ayy.a(0.6F * $$2);
-      $$1.a(a.d.rotationDegrees($$6));
-      if (!$$0.be()) {
-         $$1.a(0.1F, 0.1F, -0.1F);
-         $$1.a(a.f.rotationDegrees(90.0F));
-      }
+   protected float a(cfk $$0, float $$1) {
+      float $$2 = ayz.i($$1, $$0.cc, $$0.bY);
+      float $$3 = ayz.i($$1, $$0.cb, $$0.bZ);
+      return (ayz.a($$2) + 1.0F) * $$3;
    }
 }

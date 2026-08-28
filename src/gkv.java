@@ -1,38 +1,12 @@
-public class gkv extends giv<cnr> {
-   private static final ale a = new ale("textures/entity/shulker/spark.png");
-   private static final gdv f = gdv.i(a);
-   private final fvr<cnr> g;
+public class gkv extends gkd<cgb, fvq<cgb>> {
+   private static final alf a = new alf("textures/entity/sheep/sheep.png");
 
-   public gkv(giw.a $$0) {
-      super($$0);
-      this.g = new fvr<>($$0.a(fwy.bl));
+   public gkv(gix.a $$0) {
+      super($$0, new fvq<>($$0.a(fwz.bh)), 0.7F);
+      this.a(new gnl(this, $$0.f()));
    }
 
-   protected int a(cnr $$0, iz $$1) {
-      return 15;
-   }
-
-   public void a(cnr $$0, float $$1, float $$2, ezx $$3, gdn $$4, int $$5) {
-      $$3.a();
-      float $$6 = ayy.j($$2, $$0.O, $$0.dF());
-      float $$7 = ayy.i($$2, $$0.P, $$0.dH());
-      float $$8 = (float)$$0.ai + $$2;
-      $$3.a(0.0F, 0.15F, 0.0F);
-      $$3.a(a.d.rotationDegrees(ayy.a($$8 * 0.1F) * 180.0F));
-      $$3.a(a.b.rotationDegrees(ayy.b($$8 * 0.1F) * 180.0F));
-      $$3.a(a.f.rotationDegrees(ayy.a($$8 * 0.15F) * 360.0F));
-      $$3.b(-0.5F, -0.5F, 0.5F);
-      this.g.a($$0, 0.0F, 0.0F, 0.0F, $$6, $$7);
-      fab $$9 = $$4.getBuffer(this.g.a(a));
-      this.g.a($$3, $$9, $$5, gop.d, 1.0F, 1.0F, 1.0F, 1.0F);
-      $$3.b(1.5F, 1.5F, 1.5F);
-      fab $$10 = $$4.getBuffer(f);
-      this.g.a($$3, $$10, $$5, gop.d, 1.0F, 1.0F, 1.0F, 0.15F);
-      $$3.b();
-      super.a($$0, $$1, $$2, $$3, $$4, $$5);
-   }
-
-   public ale a(cnr $$0) {
+   public alf a(cgb $$0) {
       return a;
    }
 }

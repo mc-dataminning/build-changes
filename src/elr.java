@@ -1,46 +1,45 @@
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.logging.LogUtils;
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
-public class elr extends emg {
-   private static final Logger c = LogUtils.getLogger();
-   public static final MapCodec<elr> a = MapCodec.unit(() -> elr.b);
-   public static final elr b = new elr();
+public class elr extends emh {
+   public static final MapCodec<elr> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(dxu.a.g.fieldOf("heightmap").orElse(dxu.a.a).forGetter($$0x -> $$0x.b), Codec.INT.fieldOf("offset").orElse(0).forGetter($$0x -> $$0x.c))
+            .apply($$0, elr::new)
+   );
+   private final dxu.a b;
+   private final int c;
 
-   private elr() {
+   public elr(dxu.a $$0, int $$1) {
+      this.b = $$0;
+      this.c = $$1;
    }
 
    @Nullable
    @Override
-   public emj.c a(dca $$0, iz $$1, iz $$2, emj.c $$3, emj.c $$4, emf $$5) {
-      dsb $$6 = $$4.b();
-      if ($$6.a(dfa.pb)) {
-         if ($$4.c() == null) {
-            c.warn("Jigsaw block at {} is missing nbt, will not replace", $$1);
-            return $$4;
+   public emk.c a(dcb $$0, iz $$1, iz $$2, emk.c $$3, emk.c $$4, emg $$5) {
+      dxu.a $$6;
+      if ($$0 instanceof arf) {
+         if (this.b == dxu.a.a) {
+            $$6 = dxu.a.b;
+         } else if (this.b == dxu.a.c) {
+            $$6 = dxu.a.d;
          } else {
-            String $$7 = $$4.c().l("final_state");
-
-            dsb $$9;
-            try {
-               gj.a $$8 = gj.a($$0.a(lq.f), $$7, true);
-               $$9 = $$8.a();
-            } catch (CommandSyntaxException var11) {
-               c.error("Failed to parse jigsaw replacement state '{}' at {}: {}", new Object[]{$$7, $$1, var11.getMessage()});
-               return null;
-            }
-
-            return $$9.a(dfa.kN) ? null : new emj.c($$4.a(), $$9, null);
+            $$6 = this.b;
          }
       } else {
-         return $$4;
+         $$6 = this.b;
       }
+
+      iz $$10 = $$4.a();
+      int $$11 = $$0.a($$6, $$10.u(), $$10.w()) + this.c;
+      int $$12 = $$3.a().v();
+      return new emk.c(new iz($$10.u(), $$11 + $$12, $$10.w()), $$4.b(), $$4.c());
    }
 
    @Override
-   protected emi<?> a() {
-      return emi.h;
+   protected emj<?> a() {
+      return emj.g;
    }
 }

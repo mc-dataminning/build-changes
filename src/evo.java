@@ -1,26 +1,21 @@
-public abstract class evo {
-   protected final evq a;
+public class evo extends evp {
+   private final bsu b;
 
-   protected evo(evq $$0) {
-      this.a = $$0;
+   public evo(bsu $$0) {
+      this($$0, $$0.dn());
    }
 
-   public double a(bst $$0) {
-      double $$1 = this.a.c - $$0.du();
-      double $$2 = this.a.d - $$0.dw();
-      double $$3 = this.a.e - $$0.dA();
-      return $$1 * $$1 + $$2 * $$2 + $$3 * $$3;
+   public evo(bsu $$0, evr $$1) {
+      super($$1);
+      this.b = $$0;
    }
 
-   public abstract evo.a c();
-
-   public evq e() {
-      return this.a;
+   public bsu a() {
+      return this.b;
    }
 
-   public static enum a {
-      a,
-      b,
-      c;
+   @Override
+   public evp.a c() {
+      return evp.a.c;
    }
 }

@@ -1,376 +1,166 @@
-import com.google.common.collect.Sets;
 import com.mojang.logging.LogUtils;
-import java.nio.IntBuffer;
-import java.util.Collections;
-import java.util.List;
-import java.util.Locale;
-import java.util.Objects;
-import java.util.OptionalLong;
-import java.util.Set;
+import java.io.IOException;
+import java.nio.ByteBuffer;
+import java.util.concurrent.atomic.AtomicBoolean;
 import javax.annotation.Nullable;
-import org.lwjgl.openal.AL;
+import javax.sound.sampled.AudioFormat;
 import org.lwjgl.openal.AL10;
-import org.lwjgl.openal.ALC;
-import org.lwjgl.openal.ALC10;
-import org.lwjgl.openal.ALC11;
-import org.lwjgl.openal.ALCCapabilities;
-import org.lwjgl.openal.ALCapabilities;
-import org.lwjgl.openal.ALUtil;
-import org.lwjgl.openal.SOFTHRTF;
-import org.lwjgl.system.MemoryStack;
 import org.slf4j.Logger;
 
 public class ext {
-   static final Logger a = LogUtils.getLogger();
-   private static final int b = 0;
-   private static final int c = 30;
-   private long d;
-   private long e;
-   private boolean f;
+   private static final Logger b = LogUtils.getLogger();
+   private static final int c = 4;
+   public static final int a = 1;
+   private final int d;
+   private final AtomicBoolean e = new AtomicBoolean(true);
+   private int f = 16384;
    @Nullable
-   private String g;
-   private static final ext.a h = new ext.a() {
-      @Nullable
-      @Override
-      public exs a() {
-         return null;
-      }
-
-      @Override
-      public boolean a(exs $$0) {
-         return false;
-      }
-
-      @Override
-      public void b() {
-      }
-
-      @Override
-      public int c() {
-         return 0;
-      }
-
-      @Override
-      public int d() {
-         return 0;
-      }
-   };
-   private ext.a i = h;
-   private ext.a j = h;
-   private final exu k = new exu();
-
-   public ext() {
-      this.g = a();
-   }
-
-   public void a(@Nullable String $$0, boolean $$1) {
-      this.d = a($$0);
-      this.f = false;
-      ALCCapabilities $$2 = ALC.createCapabilities(this.d);
-      if (exw.a(this.d, "Get capabilities")) {
-         throw new IllegalStateException("Failed to get OpenAL capabilities");
-      } else if (!$$2.OpenALC11) {
-         throw new IllegalStateException("OpenAL 1.1 not supported");
-      } else {
-         this.a($$2.ALC_SOFT_HRTF && $$1);
-         MemoryStack $$3 = MemoryStack.stackPush();
-
-         try {
-            IntBuffer $$4 = $$3.callocInt(3).put(6554).put(1).put(0).flip();
-            this.e = ALC10.alcCreateContext(this.d, $$4);
-         } catch (Throwable var9) {
-            if ($$3 != null) {
-               try {
-                  $$3.close();
-               } catch (Throwable var8) {
-                  var9.addSuppressed(var8);
-               }
-            }
-
-            throw var9;
-         }
-
-         if ($$3 != null) {
-            $$3.close();
-         }
-
-         if (exw.a(this.d, "Create context")) {
-            throw new IllegalStateException("Unable to create OpenAL context");
-         } else {
-            ALC10.alcMakeContextCurrent(this.e);
-            int $$5 = this.i();
-            int $$6 = ayy.a((int)ayy.c((float)$$5), 2, 8);
-            int $$7 = ayy.a($$5 - $$6, 8, 255);
-            this.i = new ext.b($$7);
-            this.j = new ext.b($$6);
-            ALCapabilities $$8 = AL.createCapabilities($$2);
-            exw.a("Initialization");
-            if (!$$8.AL_EXT_source_distance_model) {
-               throw new IllegalStateException("AL_EXT_source_distance_model is not supported");
-            } else {
-               AL10.alEnable(512);
-               if (!$$8.AL_EXT_LINEAR_DISTANCE) {
-                  throw new IllegalStateException("AL_EXT_LINEAR_DISTANCE is not supported");
-               } else {
-                  exw.a("Enable per-source distance models");
-                  a.info("OpenAL initialized on device {}", this.b());
-                  this.f = ALC10.alcIsExtensionPresent(this.d, "ALC_EXT_disconnect");
-               }
-            }
-         }
-      }
-   }
-
-   private void a(boolean $$0) {
-      int $$1 = ALC10.alcGetInteger(this.d, 6548);
-      if ($$1 > 0) {
-         MemoryStack $$2 = MemoryStack.stackPush();
-
-         try {
-            IntBuffer $$3 = $$2.callocInt(10).put(6546).put($$0 ? 1 : 0).put(6550).put(0).put(0).flip();
-            if (!SOFTHRTF.alcResetDeviceSOFT(this.d, $$3)) {
-               a.warn("Failed to reset device: {}", ALC10.alcGetString(this.d, ALC10.alcGetError(this.d)));
-            }
-         } catch (Throwable var7) {
-            if ($$2 != null) {
-               try {
-                  $$2.close();
-               } catch (Throwable var6) {
-                  var7.addSuppressed(var6);
-               }
-            }
-
-            throw var7;
-         }
-
-         if ($$2 != null) {
-            $$2.close();
-         }
-      }
-   }
-
-   private int i() {
-      MemoryStack $$0 = MemoryStack.stackPush();
-
-      int var7;
-      label58: {
-         try {
-            int $$1 = ALC10.alcGetInteger(this.d, 4098);
-            if (exw.a(this.d, "Get attributes size")) {
-               throw new IllegalStateException("Failed to get OpenAL attributes");
-            }
-
-            IntBuffer $$2 = $$0.mallocInt($$1);
-            ALC10.alcGetIntegerv(this.d, 4099, $$2);
-            if (exw.a(this.d, "Get attributes")) {
-               throw new IllegalStateException("Failed to get OpenAL attributes");
-            }
-
-            int $$3 = 0;
-
-            while ($$3 < $$1) {
-               int $$4 = $$2.get($$3++);
-               if ($$4 == 0) {
-                  break;
-               }
-
-               int $$5 = $$2.get($$3++);
-               if ($$4 == 4112) {
-                  var7 = $$5;
-                  break label58;
-               }
-            }
-         } catch (Throwable var9) {
-            if ($$0 != null) {
-               try {
-                  $$0.close();
-               } catch (Throwable var8) {
-                  var9.addSuppressed(var8);
-               }
-            }
-
-            throw var9;
-         }
-
-         if ($$0 != null) {
-            $$0.close();
-         }
-
-         return 30;
-      }
-
-      if ($$0 != null) {
-         $$0.close();
-      }
-
-      return var7;
-   }
+   private gtj g;
 
    @Nullable
-   public static String a() {
-      if (!ALC10.alcIsExtensionPresent(0L, "ALC_ENUMERATE_ALL_EXT")) {
-         return null;
-      } else {
-         ALUtil.getStringList(0L, 4115);
-         return ALC10.alcGetString(0L, 4114);
+   static ext a() {
+      int[] $$0 = new int[1];
+      AL10.alGenSources($$0);
+      return exx.a("Allocate new source") ? null : new ext($$0[0]);
+   }
+
+   private ext(int $$0) {
+      this.d = $$0;
+   }
+
+   public void b() {
+      if (this.e.compareAndSet(true, false)) {
+         AL10.alSourceStop(this.d);
+         exx.a("Stop");
+         if (this.g != null) {
+            try {
+               this.g.close();
+            } catch (IOException var2) {
+               b.error("Failed to close audio stream", var2);
+            }
+
+            this.l();
+            this.g = null;
+         }
+
+         AL10.alDeleteSources(new int[]{this.d});
+         exx.a("Cleanup");
       }
    }
 
-   public String b() {
-      String $$0 = ALC10.alcGetString(this.d, 4115);
-      if ($$0 == null) {
-         $$0 = ALC10.alcGetString(this.d, 4101);
-      }
-
-      if ($$0 == null) {
-         $$0 = "Unknown";
-      }
-
-      return $$0;
+   public void c() {
+      AL10.alSourcePlay(this.d);
    }
 
-   public synchronized boolean c() {
-      String $$0 = a();
-      if (Objects.equals(this.g, $$0)) {
-         return false;
-      } else {
-         this.g = $$0;
-         return true;
-      }
-   }
-
-   private static long a(@Nullable String $$0) {
-      OptionalLong $$1 = OptionalLong.empty();
-      if ($$0 != null) {
-         $$1 = b($$0);
-      }
-
-      if ($$1.isEmpty()) {
-         $$1 = b(a());
-      }
-
-      if ($$1.isEmpty()) {
-         $$1 = b(null);
-      }
-
-      if ($$1.isEmpty()) {
-         throw new IllegalStateException("Failed to open OpenAL device");
-      } else {
-         return $$1.getAsLong();
-      }
-   }
-
-   private static OptionalLong b(@Nullable String $$0) {
-      long $$1 = ALC10.alcOpenDevice($$0);
-      return $$1 != 0L && !exw.a($$1, "Open device") ? OptionalLong.of($$1) : OptionalLong.empty();
+   private int k() {
+      return !this.e.get() ? 4116 : AL10.alGetSourcei(this.d, 4112);
    }
 
    public void d() {
-      this.i.b();
-      this.j.b();
-      ALC10.alcDestroyContext(this.e);
-      if (this.d != 0L) {
-         ALC10.alcCloseDevice(this.d);
+      if (this.k() == 4114) {
+         AL10.alSourcePause(this.d);
       }
    }
 
-   public exu e() {
-      return this.k;
-   }
-
-   @Nullable
-   public exs a(ext.c $$0) {
-      return ($$0 == ext.c.b ? this.j : this.i).a();
-   }
-
-   public void a(exs $$0) {
-      if (!this.i.a($$0) && !this.j.a($$0)) {
-         throw new IllegalStateException("Tried to release unknown channel");
+   public void e() {
+      if (this.k() == 4115) {
+         AL10.alSourcePlay(this.d);
       }
    }
 
-   public String f() {
-      return String.format(Locale.ROOT, "Sounds: %d/%d + %d/%d", this.i.d(), this.i.c(), this.j.d(), this.j.c());
+   public void f() {
+      if (this.e.get()) {
+         AL10.alSourceStop(this.d);
+         exx.a("Stop");
+      }
    }
 
-   public List<String> g() {
-      List<String> $$0 = ALUtil.getStringList(0L, 4115);
-      return $$0 == null ? Collections.emptyList() : $$0;
+   public boolean g() {
+      return this.k() == 4114;
    }
 
    public boolean h() {
-      return this.f && ALC11.alcGetInteger(this.d, 787) == 0;
+      return this.k() == 4116;
    }
 
-   interface a {
-      @Nullable
-      exs a();
-
-      boolean a(exs var1);
-
-      void b();
-
-      int c();
-
-      int d();
+   public void a(evr $$0) {
+      AL10.alSourcefv(this.d, 4100, new float[]{(float)$$0.c, (float)$$0.d, (float)$$0.e});
    }
 
-   static class b implements ext.a {
-      private final int a;
-      private final Set<exs> b = Sets.newIdentityHashSet();
+   public void a(float $$0) {
+      AL10.alSourcef(this.d, 4099, $$0);
+   }
 
-      public b(int $$0) {
-         this.a = $$0;
-      }
+   public void a(boolean $$0) {
+      AL10.alSourcei(this.d, 4103, $$0 ? 1 : 0);
+   }
 
-      @Nullable
-      @Override
-      public exs a() {
-         if (this.b.size() >= this.a) {
-            if (aa.aX) {
-               ext.a.warn("Maximum sound pool size {} reached", this.a);
+   public void b(float $$0) {
+      AL10.alSourcef(this.d, 4106, $$0);
+   }
+
+   public void i() {
+      AL10.alSourcei(this.d, 53248, 0);
+   }
+
+   public void c(float $$0) {
+      AL10.alSourcei(this.d, 53248, 53251);
+      AL10.alSourcef(this.d, 4131, $$0);
+      AL10.alSourcef(this.d, 4129, 1.0F);
+      AL10.alSourcef(this.d, 4128, 0.0F);
+   }
+
+   public void b(boolean $$0) {
+      AL10.alSourcei(this.d, 514, $$0 ? 1 : 0);
+   }
+
+   public void a(exy $$0) {
+      $$0.a().ifPresent($$0x -> AL10.alSourcei(this.d, 4105, $$0x));
+   }
+
+   public void a(gtj $$0) {
+      this.g = $$0;
+      AudioFormat $$1 = $$0.a();
+      this.f = a($$1, 1);
+      this.a(4);
+   }
+
+   private static int a(AudioFormat $$0, int $$1) {
+      return (int)((float)($$1 * $$0.getSampleSizeInBits()) / 8.0F * (float)$$0.getChannels() * $$0.getSampleRate());
+   }
+
+   private void a(int $$0) {
+      if (this.g != null) {
+         try {
+            for (int $$1 = 0; $$1 < $$0; $$1++) {
+               ByteBuffer $$2 = this.g.a(this.f);
+               if ($$2 != null) {
+                  new exy($$2, this.g.a()).c().ifPresent($$0x -> AL10.alSourceQueueBuffers(this.d, new int[]{$$0x}));
+               }
             }
-
-            return null;
-         } else {
-            exs $$0 = exs.a();
-            if ($$0 != null) {
-               this.b.add($$0);
-            }
-
-            return $$0;
+         } catch (IOException var4) {
+            b.error("Failed to read from audio stream", var4);
          }
       }
+   }
 
-      @Override
-      public boolean a(exs $$0) {
-         if (!this.b.remove($$0)) {
-            return false;
-         } else {
-            $$0.b();
-            return true;
-         }
-      }
-
-      @Override
-      public void b() {
-         this.b.forEach(exs::b);
-         this.b.clear();
-      }
-
-      @Override
-      public int c() {
-         return this.a;
-      }
-
-      @Override
-      public int d() {
-         return this.b.size();
+   public void j() {
+      if (this.g != null) {
+         int $$0 = this.l();
+         this.a($$0);
       }
    }
 
-   public static enum c {
-      a,
-      b;
+   private int l() {
+      int $$0 = AL10.alGetSourcei(this.d, 4118);
+      if ($$0 > 0) {
+         int[] $$1 = new int[$$0];
+         AL10.alSourceUnqueueBuffers(this.d, $$1);
+         exx.a("Unqueue buffers");
+         AL10.alDeleteBuffers($$1);
+         exx.a("Remove processed buffers");
+      }
+
+      return $$0;
    }
 }

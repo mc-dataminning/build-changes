@@ -1,31 +1,20 @@
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import javax.annotation.Nullable;
 
-public class dot extends dfp implements ctq {
-   public static final MapCodec<dot> c = RecordCodecBuilder.mapCodec($$0 -> $$0.group(cth.q.fieldOf("color").forGetter(dot::b), u()).apply($$0, dot::new));
-   private final cth d;
+public class dot extends doa {
+   public static final MapCodec<dot> b = b(dot::new);
 
    @Override
    public MapCodec<dot> a() {
-      return c;
+      return b;
    }
 
-   protected dot(cth $$0, dsa.d $$1) {
-      super($$1);
-      this.d = $$0;
-   }
-
-   public cth b() {
-      return this.d;
+   protected dot(dsb.d $$0) {
+      super(dmb.b.d, $$0);
    }
 
    @Override
-   public bta m() {
-      return bta.g;
-   }
-
-   @Override
-   public ji<avy> n() {
-      return avz.og;
+   public void a(dby $$0, iz $$1, dsc $$2, @Nullable btp $$3, cup $$4) {
+      dos.a($$0, $$1);
    }
 }

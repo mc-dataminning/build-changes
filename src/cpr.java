@@ -1,55 +1,98 @@
-public class cpr {
-   public static final cpq a = new cpq.a().a(4).a(0.3F).c();
-   public static final cpq b = new cpq.a().a(5).a(0.6F).c();
-   public static final cpq c = new cpq.a().a(3).a(0.3F).c();
-   public static final cpq d = new cpq.a().a(1).a(0.6F).c();
-   public static final cpq e = a(6).c();
-   public static final cpq f = new cpq.a().a(5).a(0.6F).c();
-   public static final cpq g = new cpq.a().a(3).a(0.6F).c();
-   public static final cpq h = new cpq.a().a(2).a(0.3F).a(new bsb(bsd.q, 600, 0), 0.3F).c();
-   public static final cpq i = new cpq.a().a(4).a(0.3F).a().c();
-   public static final cpq j = new cpq.a().a(2).a(0.1F).c();
-   public static final cpq k = new cpq.a().a(8).a(0.8F).c();
-   public static final cpq l = new cpq.a().a(6).a(0.6F).c();
-   public static final cpq m = new cpq.a().a(5).a(0.6F).c();
-   public static final cpq n = new cpq.a().a(6).a(0.8F).c();
-   public static final cpq o = new cpq.a().a(8).a(0.8F).c();
-   public static final cpq p = new cpq.a().a(5).a(0.6F).c();
-   public static final cpq q = new cpq.a().a(6).a(0.8F).c();
-   public static final cpq r = new cpq.a().a(2).a(0.1F).c();
-   public static final cpq s = new cpq.a().a(1).a(0.3F).b().c();
-   public static final cpq t = new cpq.a()
-      .a(4)
-      .a(1.2F)
-      .a(new bsb(bsd.j, 400, 1), 1.0F)
-      .a(new bsb(bsd.k, 6000, 0), 1.0F)
-      .a(new bsb(bsd.l, 6000, 0), 1.0F)
-      .a(new bsb(bsd.v, 2400, 3), 1.0F)
-      .a()
-      .c();
-   public static final cpq u = new cpq.a().a(4).a(1.2F).a(new bsb(bsd.j, 100, 1), 1.0F).a(new bsb(bsd.v, 2400, 0), 1.0F).a().c();
-   public static final cpq v = new cpq.a().a(6).a(1.2F).c();
-   public static final cpq w = new cpq.a().a(6).a(0.1F).c();
-   public static final cpq x = new cpq.a().a(2).a(0.3F).c();
-   public static final cpq y = a(6).c();
-   public static final cpq z = new cpq.a().a(2).a(0.3F).c();
-   public static final cpq A = new cpq.a().a(2).a(0.3F).a(new bsb(bsd.s, 100, 0), 0.6F).c();
-   public static final cpq B = new cpq.a().a(3).a(0.3F).c();
-   public static final cpq C = new cpq.a().a(1).a(0.3F).c();
-   public static final cpq D = new cpq.a().a(1).a(0.1F).a(new bsb(bsd.s, 1200, 1), 1.0F).a(new bsb(bsd.q, 300, 2), 1.0F).a(new bsb(bsd.i, 300, 0), 1.0F).c();
-   public static final cpq E = new cpq.a().a(8).a(0.3F).c();
-   public static final cpq F = new cpq.a().a(3).a(0.3F).c();
-   public static final cpq G = a(10).c();
-   public static final cpq H = new cpq.a().a(4).a(0.1F).a(new bsb(bsd.q, 600, 0), 0.8F).c();
-   public static final cpq I = new cpq.a().a(2).a(0.1F).c();
-   public static final cpq J = new cpq.a().a(2).a(0.8F).a(new bsb(bsd.s, 100, 0), 1.0F).c();
-   public static final cpq K = a(6).a().c();
-   public static final cpq L = new cpq.a().a(2).a(0.1F).c();
-   public static final cpq M = new cpq.a().a(2).a(0.1F).c();
-   public static final cpq N = new cpq.a().a(1).a(0.1F).c();
-   public static final cpq O = new cpq.a().a(1).a(0.1F).c();
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableList.Builder;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
 
-   private static cpq.a a(int $$0) {
-      return new cpq.a().a($$0).a(0.6F);
+public record cpr(int c, float d, boolean e, float f, List<cpr.b> g) {
+   private static final float h = 1.6F;
+   public static final Codec<cpr> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               ayh.k.fieldOf("nutrition").forGetter(cpr::b),
+               Codec.FLOAT.fieldOf("saturation").forGetter(cpr::c),
+               Codec.BOOL.optionalFieldOf("can_always_eat", false).forGetter(cpr::d),
+               ayh.m.optionalFieldOf("eat_seconds", 1.6F).forGetter(cpr::e),
+               cpr.b.a.listOf().optionalFieldOf("effects", List.of()).forGetter(cpr::f)
+            )
+            .apply($$0, cpr::new)
+   );
+   public static final zn<xa, cpr> b = zn.a(zl.g, cpr::b, zl.i, cpr::c, zl.b, cpr::d, zl.i, cpr::e, cpr.b.b.a(zl.a()), cpr::f, cpr::new);
+
+   public int a() {
+      return (int)(this.f * 20.0F);
+   }
+
+   public int b() {
+      return this.c;
+   }
+
+   public float c() {
+      return this.d;
+   }
+
+   public boolean d() {
+      return this.e;
+   }
+
+   public float e() {
+      return this.f;
+   }
+
+   public List<cpr.b> f() {
+      return this.g;
+   }
+
+   public static class a {
+      private int a;
+      private float b;
+      private boolean c;
+      private float d = 1.6F;
+      private final Builder<cpr.b> e = ImmutableList.builder();
+
+      public cpr.a a(int $$0) {
+         this.a = $$0;
+         return this;
+      }
+
+      public cpr.a a(float $$0) {
+         this.b = $$0;
+         return this;
+      }
+
+      public cpr.a a() {
+         this.c = true;
+         return this;
+      }
+
+      public cpr.a b() {
+         this.d = 0.8F;
+         return this;
+      }
+
+      public cpr.a a(bsc $$0, float $$1) {
+         this.e.add(new cpr.b($$0, $$1));
+         return this;
+      }
+
+      public cpr c() {
+         float $$0 = cpp.a(this.a, this.b);
+         return new cpr(this.a, $$0, this.c, this.d, this.e.build());
+      }
+   }
+
+   public static record b(bsc c, float d) {
+      public static final Codec<cpr.b> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(bsc.d.fieldOf("effect").forGetter(cpr.b::a), Codec.floatRange(0.0F, 1.0F).optionalFieldOf("probability", 1.0F).forGetter(cpr.b::b))
+               .apply($$0, cpr.b::new)
+      );
+      public static final zn<xa, cpr.b> b = zn.a(bsc.e, cpr.b::a, zl.i, cpr.b::b, cpr.b::new);
+
+      public bsc a() {
+         return new bsc(this.c);
+      }
+
+      public float b() {
+         return this.d;
+      }
    }
 }

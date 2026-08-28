@@ -1,16 +1,12 @@
-public class gko extends gkc<cfw, fvf<cfw>> {
-   private static final ale a = new ale("textures/entity/bear/polarbear.png");
+public class gko extends gjq<ckg> {
+   private static final alf a = new alf("textures/entity/illager/pillager.png");
 
-   public gko(giw.a $$0) {
-      super($$0, new fvf<>($$0.a(fwy.ba)), 0.9F);
+   public gko(gix.a $$0) {
+      super($$0, new fuo<>($$0.a(fwz.aR)), 0.5F);
+      this.a(new gnc<>(this, $$0.d()));
    }
 
-   public ale a(cfw $$0) {
+   public alf a(ckg $$0) {
       return a;
-   }
-
-   protected void a(cfw $$0, ezx $$1, float $$2) {
-      $$1.b(1.2F, 1.2F, 1.2F);
-      super.a($$0, $$1, $$2);
    }
 }

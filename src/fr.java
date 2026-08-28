@@ -12,13 +12,13 @@ import javax.annotation.Nullable;
 
 public class fr<T> implements ArgumentType<ji<T>> {
    private static final Collection<String> b = List.of("foo", "foo:bar", "012", "{}", "true");
-   public static final DynamicCommandExceptionType a = new DynamicCommandExceptionType($$0 -> xo.b("argument.resource_or_id.failed_to_parse", $$0));
-   private static final SimpleCommandExceptionType c = new SimpleCommandExceptionType(xo.c("argument.resource_or_id.invalid"));
+   public static final DynamicCommandExceptionType a = new DynamicCommandExceptionType($$0 -> xp.b("argument.resource_or_id.failed_to_parse", $$0));
+   private static final SimpleCommandExceptionType c = new SimpleCommandExceptionType(xp.c("argument.resource_or_id.invalid"));
    private final jk.a d;
    private final boolean e;
    private final Codec<ji<T>> f;
 
-   protected fr(el $$0, ald<jv<T>> $$1, Codec<ji<T>> $$2) {
+   protected fr(el $$0, ale<jv<T>> $$1, Codec<ji<T>> $$2) {
       this.d = $$0;
       this.e = $$0.a($$1).isPresent();
       this.f = $$2;
@@ -28,7 +28,7 @@ public class fr<T> implements ArgumentType<ji<T>> {
       return new fr.c($$0);
    }
 
-   public static ji<eqm> a(CommandContext<ep> $$0, String $$1) throws CommandSyntaxException {
+   public static ji<eqn> a(CommandContext<ep> $$0, String $$1) throws CommandSyntaxException {
       return d($$0, $$1);
    }
 
@@ -36,7 +36,7 @@ public class fr<T> implements ArgumentType<ji<T>> {
       return new fr.a($$0);
    }
 
-   public static ji<eru> b(CommandContext<ep> $$0, String $$1) {
+   public static ji<erv> b(CommandContext<ep> $$0, String $$1) {
       return d($$0, $$1);
    }
 
@@ -44,7 +44,7 @@ public class fr<T> implements ArgumentType<ji<T>> {
       return new fr.b($$0);
    }
 
-   public static ji<etr> c(CommandContext<ep> $$0, String $$1) {
+   public static ji<ets> c(CommandContext<ep> $$0, String $$1) {
       return d($$0, $$1);
    }
 
@@ -54,26 +54,26 @@ public class fr<T> implements ArgumentType<ji<T>> {
 
    @Nullable
    public ji<T> a(StringReader $$0) throws CommandSyntaxException {
-      vo $$1 = b($$0);
+      vp $$1 = b($$0);
       if (!this.e) {
          return null;
       } else {
-         alc<vo> $$2 = this.d.a(vf.a);
+         ald<vp> $$2 = this.d.a(vg.a);
          return (ji<T>)this.f.parse($$2, $$1).getOrThrow($$1x -> a.createWithContext($$0, $$1x));
       }
    }
 
    @VisibleForTesting
-   static vo b(StringReader $$0) throws CommandSyntaxException {
+   static vp b(StringReader $$0) throws CommandSyntaxException {
       int $$1 = $$0.getCursor();
-      vo $$2 = new vp($$0).d();
+      vp $$2 = new vq($$0).d();
       if (c($$0)) {
          return $$2;
       } else {
          $$0.setCursor($$1);
-         ale $$3 = ale.a($$0);
+         alf $$3 = alf.a($$0);
          if (c($$0)) {
-            return vm.a($$3.toString());
+            return vn.a($$3.toString());
          } else {
             $$0.setCursor($$1);
             throw c.createWithContext($$0);
@@ -89,21 +89,21 @@ public class fr<T> implements ArgumentType<ji<T>> {
       return b;
    }
 
-   public static class a extends fr<eru> {
+   public static class a extends fr<erv> {
       protected a(el $$0) {
-         super($$0, lq.aV, erw.d);
+         super($$0, lq.aV, erx.d);
       }
    }
 
-   public static class b extends fr<etr> {
+   public static class b extends fr<ets> {
       protected b(el $$0) {
-         super($$0, lq.aW, ett.b);
+         super($$0, lq.aW, etu.b);
       }
    }
 
-   public static class c extends fr<eqm> {
+   public static class c extends fr<eqn> {
       protected c(el $$0) {
-         super($$0, lq.aU, eqm.e);
+         super($$0, lq.aU, eqn.e);
       }
    }
 }
