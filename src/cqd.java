@@ -114,11 +114,6 @@ public abstract class cqd extends cqp {
    @Override
    public void h() {
       boolean $$0 = !this.B();
-      if ($$0 && !this.l()) {
-         this.bf();
-      }
-
-      this.D();
       fbx $$1 = this.dz();
       if (this.O == 0.0F && this.N == 0.0F) {
          double $$2 = $$1.i();
@@ -203,6 +198,11 @@ public abstract class cqd extends cqp {
          } else {
             this.b($$8.e($$1));
             this.aK();
+         }
+
+         this.D();
+         if ($$0) {
+            this.bf();
          }
 
          super.h();

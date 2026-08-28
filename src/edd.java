@@ -58,7 +58,7 @@ public final class edd {
    }
 
    public void b(eaj $$0) {
-      dhj $$1 = $$0.A();
+      dhj $$1 = $$0.B();
       int $$2 = $$1.L_();
       int $$3 = $$1.am();
 
@@ -84,7 +84,7 @@ public final class edd {
    }
 
    public static dim a(dim $$0, dzp $$1) {
-      if (!$$1.z()) {
+      if (!$$1.A()) {
          return $$0;
       } else {
          Predicate<aly<dij>> $$2 = f::contains;

@@ -82,7 +82,7 @@ public class eam {
          a($$0, $$1);
       }
 
-      dhh $$2 = $$0.G();
+      dhh $$2 = $$0.H();
       this.f.forEach($$1x -> {
          dkl $$2x = $$1x.a() == dkn.a ? $$2.a_($$1x.b()).b() : (dkl)$$1x.a();
          $$2.a($$1x.b(), $$2x, $$1x.c(), $$1x.d());
@@ -95,8 +95,8 @@ public class eam {
    }
 
    private static void a(dzz $$0, jn $$1) {
-      dhh $$2 = $$0.G();
-      if ($$0.s().e.remove($$1)) {
+      dhh $$2 = $$0.H();
+      if ($$0.t().e.remove($$1)) {
          Set<jm> $$3 = $$1.a();
          int $$4 = 0;
          int $$5 = 15;
@@ -135,7 +135,7 @@ public class eam {
       jh.a $$1 = new jh.a();
       jh.a $$2 = new jh.a();
       dgn $$3 = $$0.f();
-      dhi $$4 = $$0.G();
+      dhi $$4 = $$0.H();
 
       for (int $$5 = 0; $$5 < this.h.length; $$5++) {
          eaa $$6 = $$0.b($$5);

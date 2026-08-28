@@ -1221,8 +1221,8 @@ public class gfk extends gfg implements acr, xj {
    private void a(flq $$0) {
       $$0.c();
       this.Z.a($$0, this.s);
-      if (this.a.z instanceof fxz) {
-         ((fxz)this.a.z).L();
+      if (this.a.z instanceof fxz $$1) {
+         $$1.L();
       }
    }
 

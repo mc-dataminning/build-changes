@@ -261,76 +261,80 @@ public record ebk(
    }
 
    public static ebk a(ash $$0, dzp $$1) {
-      dgn $$2 = $$1.f();
-      List<ebk.b> $$3 = new ArrayList<>();
-      eaa[] $$4 = $$1.d();
-      etl $$5 = $$0.m().a();
+      if (!$$1.s()) {
+         throw new IllegalArgumentException("Chunk can't be serialized: " + $$1);
+      } else {
+         dgn $$2 = $$1.f();
+         List<ebk.b> $$3 = new ArrayList<>();
+         eaa[] $$4 = $$1.d();
+         etl $$5 = $$0.m().a();
 
-      for (int $$6 = $$5.d(); $$6 < $$5.e(); $$6++) {
-         int $$7 = $$1.g($$6);
-         boolean $$8 = $$7 >= 0 && $$7 < $$4.length;
-         dzu $$9 = $$5.a(dhq.b).a(kj.a($$2, $$6));
-         dzu $$10 = $$5.a(dhq.a).a(kj.a($$2, $$6));
-         dzu $$11 = $$9 != null && !$$9.d() ? $$9.b() : null;
-         dzu $$12 = $$10 != null && !$$10.d() ? $$10.b() : null;
-         if ($$8 || $$11 != null || $$12 != null) {
-            eaa $$13 = $$8 ? $$4[$$7].k() : null;
-            $$3.add(new ebk.b($$6, $$13, $$11, $$12));
+         for (int $$6 = $$5.d(); $$6 < $$5.e(); $$6++) {
+            int $$7 = $$1.g($$6);
+            boolean $$8 = $$7 >= 0 && $$7 < $$4.length;
+            dzu $$9 = $$5.a(dhq.b).a(kj.a($$2, $$6));
+            dzu $$10 = $$5.a(dhq.a).a(kj.a($$2, $$6));
+            dzu $$11 = $$9 != null && !$$9.d() ? $$9.b() : null;
+            dzu $$12 = $$10 != null && !$$10.d() ? $$10.b() : null;
+            if ($$8 || $$11 != null || $$12 != null) {
+               eaa $$13 = $$8 ? $$4[$$7].k() : null;
+               $$3.add(new ebk.b($$6, $$13, $$11, $$12));
+            }
          }
-      }
 
-      List<ux> $$14 = new ArrayList<>($$1.c().size());
+         List<ux> $$14 = new ArrayList<>($$1.c().size());
 
-      for (jh $$15 : $$1.c()) {
-         ux $$16 = $$1.a($$15, $$0.K_());
-         if ($$16 != null) {
-            $$14.add($$16);
+         for (jh $$15 : $$1.c()) {
+            ux $$16 = $$1.a($$15, $$0.K_());
+            if ($$16 != null) {
+               $$14.add($$16);
+            }
          }
-      }
 
-      List<ux> $$17 = new ArrayList<>();
-      long[] $$18 = null;
-      if ($$1.n().d() == eau.a) {
-         eaj $$19 = (eaj)$$1;
-         $$17.addAll($$19.H());
-         dzo $$20 = $$19.D();
-         if ($$20 != null) {
-            $$18 = $$20.a();
+         List<ux> $$17 = new ArrayList<>();
+         long[] $$18 = null;
+         if ($$1.n().d() == eau.a) {
+            eaj $$19 = (eaj)$$1;
+            $$17.addAll($$19.I());
+            dzo $$20 = $$19.E();
+            if ($$20 != null) {
+               $$18 = $$20.a();
+            }
          }
-      }
 
-      Map<edp.a, long[]> $$21 = new EnumMap<>(edp.a.class);
+         Map<edp.a, long[]> $$21 = new EnumMap<>(edp.a.class);
 
-      for (Entry<edp.a, edp> $$22 : $$1.e()) {
-         if ($$1.n().e().contains($$22.getKey())) {
-            long[] $$23 = $$22.getValue().a();
-            $$21.put($$22.getKey(), (long[])$$23.clone());
+         for (Entry<edp.a, edp> $$22 : $$1.e()) {
+            if ($$1.n().e().contains($$22.getKey())) {
+               long[] $$23 = $$22.getValue().a();
+               $$21.put($$22.getKey(), (long[])$$23.clone());
+            }
          }
-      }
 
-      dzp.a $$24 = $$1.a($$0.ac());
-      ShortList[] $$25 = Arrays.stream($$1.p()).map($$0x -> $$0x != null ? new ShortArrayList($$0x) : null).toArray(ShortList[]::new);
-      ux $$26 = a(eoz.a($$0), $$2, $$1.g(), $$1.h());
-      return new ebk(
-         $$0.K_().e(mb.aI),
-         $$2,
-         $$1.ao(),
-         $$0.ac(),
-         $$1.v(),
-         $$1.n(),
-         x.a($$1.u(), ees::a),
-         $$1.y(),
-         $$1.s().c(),
-         $$18,
-         $$21,
-         $$24,
-         $$25,
-         $$1.w(),
-         $$3,
-         $$17,
-         $$14,
-         $$26
-      );
+         dzp.a $$24 = $$1.a($$0.ac());
+         ShortList[] $$25 = Arrays.stream($$1.p()).map($$0x -> $$0x != null ? new ShortArrayList($$0x) : null).toArray(ShortList[]::new);
+         ux $$26 = a(eoz.a($$0), $$2, $$1.g(), $$1.h());
+         return new ebk(
+            $$0.K_().e(mb.aI),
+            $$2,
+            $$1.ao(),
+            $$0.ac(),
+            $$1.w(),
+            $$1.n(),
+            x.a($$1.v(), ees::a),
+            $$1.z(),
+            $$1.t().c(),
+            $$18,
+            $$21,
+            $$24,
+            $$25,
+            $$1.x(),
+            $$3,
+            $$17,
+            $$14,
+            $$26
+         );
+      }
    }
 
    public ux a() {

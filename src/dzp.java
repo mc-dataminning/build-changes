@@ -242,7 +242,7 @@ public abstract class dzp implements dil.a, eab, eal {
 
    public eaq o() {
       eaq $$0 = this.n();
-      edd $$1 = this.y();
+      edd $$1 = this.z();
       if ($$1 != null) {
          eaq $$2 = $$1.a();
          return eaq.a($$2, $$0);
@@ -308,22 +308,26 @@ public abstract class dzp implements dil.a, eab, eal {
 
    public abstract fds<etv> r();
 
+   public boolean s() {
+      return true;
+   }
+
    public abstract dzp.a a(long var1);
 
-   public eam s() {
+   public eam t() {
       return this.e;
    }
 
-   public boolean t() {
+   public boolean u() {
       return this.f != null;
    }
 
    @Nullable
-   public ees u() {
+   public ees v() {
       return this.f;
    }
 
-   public long v() {
+   public long w() {
       return this.r;
    }
 
@@ -343,7 +347,7 @@ public abstract class dzp implements dil.a, eab, eal {
       return $$0[$$1];
    }
 
-   public boolean w() {
+   public boolean x() {
       return this.q;
    }
 
@@ -399,7 +403,7 @@ public abstract class dzp implements dil.a, eab, eal {
       dgn $$2 = this.f();
       int $$3 = kb.a($$2.d());
       int $$4 = kb.a($$2.e());
-      dhj $$5 = this.A();
+      dhj $$5 = this.B();
 
       for (int $$6 = $$5.ao(); $$6 <= $$5.ap(); $$6++) {
          eaa $$7 = this.b(this.g($$6));
@@ -408,29 +412,29 @@ public abstract class dzp implements dil.a, eab, eal {
       }
    }
 
-   public boolean x() {
+   public boolean y() {
       return !this.h().isEmpty();
    }
 
    @Nullable
-   public edd y() {
+   public edd z() {
       return null;
    }
 
-   public boolean z() {
-      return this.y() != null;
+   public boolean A() {
+      return this.z() != null;
    }
 
-   public dhj A() {
+   public dhj B() {
       return this;
    }
 
-   public void B() {
+   public void C() {
       this.i.a(this);
    }
 
    @Override
-   public etg C() {
+   public etg D() {
       return this.i;
    }
 

@@ -1,4 +1,4 @@
-// 1.21.2 Pre-Release 3	2026-08-28T02:44:25.455276665	vanilla/Loot Tables
+// 1.21.2 Pre-Release 4	2026-08-28T02:46:29.74413637	vanilla/Loot Tables
 6a9c523b197b53b50ee100e38af9bba416c8381d data/minecraft/loot_table/gameplay/chicken_lay.json
 0f905afcf3733f9f7ce32d8b48e4a2041b7aefdd data/minecraft/loot_table/blocks/waxed_oxidized_copper.json
 c4dbb75007d3c56c0793952d0e1581a79319e798 data/minecraft/loot_table/blocks/birch_wood.json
@@ -383,8 +383,8 @@ cd3f584411306d018f4ad99ad77f211f36a1ad72 data/minecraft/loot_table/blocks/acacia
 05cec0d5d8338ad43ae4ad8a7f818d67b6717094 data/minecraft/loot_table/gameplay/hero_of_the_village/baby_gift.json
 675dc2064aed465b7efbf0ace2559506dcd758a2 data/minecraft/loot_table/blocks/blue_concrete_powder.json
 6414ab55db894af38b37e536b0dbbc7897e803f2 data/minecraft/loot_table/entities/witch.json
-aa9ec61bb1c5930f38c714bf2bf4d47d9b880f3c data/minecraft/loot_table/entities/sheep/green.json
 fde526fefdfb73cfe8a9ce3c7e753a7266b56877 data/minecraft/loot_table/entities/sheep/brown.json
+aa9ec61bb1c5930f38c714bf2bf4d47d9b880f3c data/minecraft/loot_table/entities/sheep/green.json
 3702b8e1f73f43be7dd722d0f013e76a0ea121ac data/minecraft/loot_table/blocks/waxed_oxidized_cut_copper.json
 519e15df3f60a78e0ec3fa90d75acbda4f381f46 data/minecraft/loot_table/blocks/polished_tuff.json
 1dc67cc8cc34bfb1078c0f0289bd3a95f016d351 data/minecraft/loot_table/blocks/yellow_banner.json
@@ -655,8 +655,8 @@ f4f7b70a74ee8f7061684cc91c5318f08a8f9d2d data/minecraft/loot_table/blocks/shroom
 74ac6e108425f914d80809a29e18ad10f8d15720 data/minecraft/loot_table/blocks/purpur_slab.json
 0944e60328d4fbcf822be24667d24996f0387813 data/minecraft/loot_table/blocks/oak_fence_gate.json
 e0f872036e2ef96b73eed9421e78fd9c79b1c41c data/minecraft/loot_table/blocks/stonecutter.json
-0505ac1f22067fdffbd82d9cc5fe9756497fc428 data/minecraft/loot_table/blocks/weathered_cut_copper_stairs.json
 c524c3ad713981ed1b101df8eacfe7624b13e240 data/minecraft/loot_table/shearing/bogged.json
+0505ac1f22067fdffbd82d9cc5fe9756497fc428 data/minecraft/loot_table/blocks/weathered_cut_copper_stairs.json
 1497da094b68adb7ce7913df069b3f7a897ad601 data/minecraft/loot_table/entities/frog.json
 646e3c32bdf5f578758ceaa773aa590decc61c97 data/minecraft/loot_table/blocks/mud_bricks.json
 e0c13bd414aeef81949720407b2ec7c15a78d21a data/minecraft/loot_table/entities/magma_cube.json

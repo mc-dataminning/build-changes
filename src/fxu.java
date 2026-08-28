@@ -72,7 +72,7 @@ public abstract class fxu<T extends cuq> implements fpi, fqc, fsa {
    }
 
    private void i() {
-      boolean $$0 = this.o();
+      boolean $$0 = this.p();
       this.o = this.I ? 0 : 86;
       int $$1 = this.k();
       int $$2 = this.j();
@@ -106,8 +106,9 @@ public abstract class fxu<T extends cuq> implements fpi, fqc, fsa {
       }
 
       this.w.b(true);
-      this.a(false, $$0);
+      this.n();
       this.c($$0);
+      this.a(false, $$0);
    }
 
    private int j() {
@@ -168,7 +169,15 @@ public abstract class fxu<T extends cuq> implements fpi, fqc, fsa {
          this.s = null;
          this.u.a();
          if (this.d()) {
-            this.n();
+            this.o();
+         }
+      }
+   }
+
+   private void n() {
+      for (fxu.a $$0 : this.z) {
+         for (fxy $$1 : this.A.a($$0.c())) {
+            this.a($$1, this.E);
          }
       }
    }
@@ -177,7 +186,6 @@ public abstract class fxu<T extends cuq> implements fpi, fqc, fsa {
 
    private void a(boolean $$0, boolean $$1) {
       List<fxy> $$2 = this.A.a(this.w.b());
-      $$2.forEach($$0x -> this.a($$0x, this.E));
       List<fxy> $$3 = Lists.newArrayList($$2);
       $$3.removeIf($$0x -> !$$0x.b());
       String $$4 = this.x.a();
@@ -222,20 +230,20 @@ public abstract class fxu<T extends cuq> implements fpi, fqc, fsa {
 
       if (this.d()) {
          if (this.F != this.g.t.gi().l()) {
-            this.n();
+            this.o();
             this.F = this.g.t.gi().l();
          }
       }
    }
 
-   private void n() {
+   private void o() {
       this.E.a();
       this.g.t.gi().a(this.E);
       this.f.a(this.E);
-      this.a(false, this.o());
+      this.a(false, this.p());
    }
 
-   private boolean o() {
+   private boolean p() {
       return this.A.b(this.f.an_());
    }
 
@@ -289,7 +297,7 @@ public abstract class fxu<T extends cuq> implements fpi, fqc, fsa {
 
                this.D = $$4;
                this.C = $$3;
-               if (!this.r()) {
+               if (!this.s()) {
                   this.b(false);
                }
             }
@@ -307,7 +315,7 @@ public abstract class fxu<T extends cuq> implements fpi, fqc, fsa {
             }
 
             if (this.e.a($$0, $$1, $$2)) {
-               boolean $$6 = this.p();
+               boolean $$6 = this.q();
                this.e.b($$6);
                this.l();
                this.h();
@@ -323,7 +331,7 @@ public abstract class fxu<T extends cuq> implements fpi, fqc, fsa {
 
                         this.w = $$7;
                         this.w.b(true);
-                        this.a(true, this.o());
+                        this.a(true, this.p());
                      }
 
                      return true;
@@ -349,7 +357,7 @@ public abstract class fxu<T extends cuq> implements fpi, fqc, fsa {
       }
    }
 
-   private boolean p() {
+   private boolean q() {
       cur $$0 = this.f.an_();
       boolean $$1 = !this.A.b($$0);
       this.A.b($$0, $$1);
@@ -371,11 +379,11 @@ public abstract class fxu<T extends cuq> implements fpi, fqc, fsa {
       this.G = false;
       if (!this.d() || this.g.t.aa_()) {
          return false;
-      } else if ($$0 == 256 && !this.r()) {
+      } else if ($$0 == 256 && !this.s()) {
          this.b(false);
          return true;
       } else if (this.x.a($$0, $$1, $$2)) {
-         this.q();
+         this.r();
          return true;
       } else if (this.x.aN_() && this.x.i() && $$0 != 256) {
          return true;
@@ -404,7 +412,7 @@ public abstract class fxu<T extends cuq> implements fpi, fqc, fsa {
       } else if (!this.d() || this.g.t.aa_()) {
          return false;
       } else if (this.x.a($$0, $$1)) {
-         this.q();
+         this.r();
          return true;
       } else {
          return fqc.super.a($$0, $$1);
@@ -425,11 +433,11 @@ public abstract class fxu<T extends cuq> implements fpi, fqc, fsa {
       return false;
    }
 
-   private void q() {
+   private void r() {
       String $$0 = this.x.a().toLowerCase(Locale.ROOT);
       this.a($$0);
       if (!$$0.equals(this.y)) {
-         this.a(false, this.o());
+         this.a(false, this.p());
          this.y = $$0;
       }
    }
@@ -450,14 +458,15 @@ public abstract class fxu<T extends cuq> implements fpi, fqc, fsa {
       }
    }
 
-   private boolean r() {
+   private boolean s() {
       return this.o == 86;
    }
 
    public void g() {
-      this.c(this.o());
+      this.n();
+      this.c(this.p());
       if (this.d()) {
-         this.a(false, this.o());
+         this.a(false, this.p());
       }
    }
 

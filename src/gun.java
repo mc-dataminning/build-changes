@@ -11,11 +11,6 @@ public class gun extends gsv<cpo, had, gdx> {
       return a;
    }
 
-   protected void a(had $$0, fgr $$1) {
-      float $$2 = 0.9375F;
-      $$1.b(0.9375F, 0.9375F, 0.9375F);
-   }
-
    public had b() {
       return new had();
    }

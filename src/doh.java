@@ -2,9 +2,9 @@ import com.mojang.serialization.MapCodec;
 
 public class doh extends doc {
    public static final MapCodec<doh> a = b(doh::new);
-   private static final double c = 0.2058;
-   private static final double e = 0.1568;
-   private static final double f = 0.1274;
+   private static final double c = 0.13;
+   private static final double e = 0.08;
+   private static final double f = 0.05;
    private static final int g = 20;
    protected static final fcr b = dkl.a(1.0, 0.0, 1.0, 15.0, 15.0, 15.0);
 
@@ -49,12 +49,20 @@ public class doh extends doc {
       super.a($$0, $$1, $$2, $$3);
    }
 
+   private static double a(double $$0) {
+      return $$0 / 0.98F + 0.08;
+   }
+
+   private static double b(double $$0) {
+      return ($$0 - 0.08) * 0.98F;
+   }
+
    private boolean a(jh $$0, bvj $$1) {
       if ($$1.aJ()) {
          return false;
       } else if ($$1.dD() > (double)$$0.v() + 0.9375 - 1.0E-7) {
          return false;
-      } else if ($$1.dz().e >= -0.1568) {
+      } else if (a($$1.dz().e) >= -0.08) {
          return false;
       } else {
          double $$2 = Math.abs((double)$$0.u() + 0.5 - $$1.dB());
@@ -72,12 +80,11 @@ public class doh extends doc {
 
    private void d(bvj $$0) {
       fbx $$1 = $$0.dz();
-      if ($$0.dz().e < -0.2058) {
-         double $$2 = $$0.dz().e / 0.98F + 0.08;
-         double $$3 = -0.1274 / $$2;
-         $$0.h(new fbx($$1.d * $$3, -0.1274, $$1.f * $$3));
+      if (a($$0.dz().e) < -0.13) {
+         double $$2 = -0.05 / a($$0.dz().e);
+         $$0.h(new fbx($$1.d * $$2, b(-0.05), $$1.f * $$2));
       } else {
-         $$0.h(new fbx($$1.d, -0.1274, $$1.f));
+         $$0.h(new fbx($$1.d, b(-0.05), $$1.f));
       }
 
       $$0.k();

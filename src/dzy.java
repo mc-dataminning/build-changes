@@ -9,7 +9,7 @@ public class dzy extends eaj {
    private final boolean o;
 
    public dzy(dzz $$0, boolean $$1) {
-      super($$0.f(), eam.a, $$0.l, $$0.G().K_().e(mb.aI), $$0.u());
+      super($$0.f(), eam.a, $$0.l, $$0.H().K_().e(mb.aI), $$0.v());
       this.n = $$0;
       this.o = $$1;
    }
@@ -142,8 +142,13 @@ public class dzy extends eaj {
    }
 
    @Override
+   public boolean s() {
+      return false;
+   }
+
+   @Override
    public boolean j() {
-      return this.n.j();
+      return false;
    }
 
    @Override
@@ -202,17 +207,8 @@ public class dzy extends eaj {
 
    @Nullable
    @Override
-   public ees u() {
-      return this.n.u();
-   }
-
-   @Override
-   public dzo D() {
-      if (this.o) {
-         return super.D();
-      } else {
-         throw (UnsupportedOperationException)ae.b(new UnsupportedOperationException("Meaningless in this context"));
-      }
+   public ees v() {
+      return this.n.v();
    }
 
    @Override
@@ -224,13 +220,22 @@ public class dzy extends eaj {
       }
    }
 
-   public dzz F() {
+   @Override
+   public dzo F() {
+      if (this.o) {
+         return super.F();
+      } else {
+         throw (UnsupportedOperationException)ae.b(new UnsupportedOperationException("Meaningless in this context"));
+      }
+   }
+
+   public dzz G() {
       return this.n;
    }
 
    @Override
-   public boolean w() {
-      return this.n.w();
+   public boolean x() {
+      return this.n.x();
    }
 
    @Override
@@ -246,12 +251,12 @@ public class dzy extends eaj {
    }
 
    @Override
-   public void B() {
-      this.n.B();
+   public void C() {
+      this.n.C();
    }
 
    @Override
-   public etg C() {
-      return this.n.C();
+   public etg D() {
+      return this.n.D();
    }
 }

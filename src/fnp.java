@@ -40,19 +40,23 @@ public class fnp {
    }
 
    public int a(String $$0, float $$1, float $$2, int $$3, boolean $$4, Matrix4f $$5, glk $$6, fnp.a $$7, int $$8, int $$9) {
-      return this.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8, $$9, this.a());
-   }
+      if (this.a()) {
+         $$0 = this.a($$0);
+      }
 
-   public int a(String $$0, float $$1, float $$2, int $$3, boolean $$4, Matrix4f $$5, glk $$6, fnp.a $$7, int $$8, int $$9, boolean $$10) {
-      return this.b($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8, $$9, $$10);
+      return this.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8, $$9, true);
    }
 
    public int a(xv $$0, float $$1, float $$2, int $$3, boolean $$4, Matrix4f $$5, glk $$6, fnp.a $$7, int $$8, int $$9) {
-      return this.a($$0.g(), $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8, $$9);
+      return this.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8, $$9, true);
+   }
+
+   public int a(xv $$0, float $$1, float $$2, int $$3, boolean $$4, Matrix4f $$5, glk $$6, fnp.a $$7, int $$8, int $$9, boolean $$10) {
+      return this.a($$0.g(), $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8, $$9, $$10);
    }
 
    public int a(azq $$0, float $$1, float $$2, int $$3, boolean $$4, Matrix4f $$5, glk $$6, fnp.a $$7, int $$8, int $$9) {
-      return this.b($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8, $$9);
+      return this.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8, $$9, true);
    }
 
    public void a(azq $$0, float $$1, float $$2, int $$3, int $$4, Matrix4f $$5, glk $$6, int $$7) {
@@ -69,8 +73,8 @@ public class fnp {
                   boolean $$9x = $$7x.b();
                   fqx $$10x = this.a($$7x.k());
                   fep $$11x = $$10x.a($$8x, this.g);
-                  $$9.j = $$12[0] + (float)$$13 * $$11x.b();
-                  $$9.k = $$2 + (float)$$14 * $$11x.b();
+                  $$9.k = $$12[0] + (float)$$13 * $$11x.b();
+                  $$9.l = $$2 + (float)$$14 * $$11x.b();
                   $$12[0] += $$11x.a($$9x);
                   return $$9.accept($$6x, $$7x.a($$8), $$8x);
                });
@@ -88,44 +92,40 @@ public class fnp {
       return ($$0 & -67108864) == 0 ? ayp.f($$0) : $$0;
    }
 
-   private int b(String $$0, float $$1, float $$2, int $$3, boolean $$4, Matrix4f $$5, glk $$6, fnp.a $$7, int $$8, int $$9, boolean $$10) {
-      if ($$10) {
-         $$0 = this.a($$0);
-      }
-
+   private int a(String $$0, float $$1, float $$2, int $$3, boolean $$4, Matrix4f $$5, glk $$6, fnp.a $$7, int $$8, int $$9, boolean $$10) {
       $$3 = a($$3);
       Matrix4f $$11 = new Matrix4f($$5);
       if ($$4) {
-         this.b($$0, $$1, $$2, $$3, true, $$5, $$6, $$7, $$8, $$9);
+         this.b($$0, $$1, $$2, $$3, true, $$5, $$6, $$7, $$8, $$9, $$10);
          $$11.translate(e);
       }
 
-      $$1 = this.b($$0, $$1, $$2, $$3, false, $$11, $$6, $$7, $$8, $$9);
+      $$1 = this.b($$0, $$1, $$2, $$3, false, $$11, $$6, $$7, $$8, $$9, $$10);
       return (int)$$1 + ($$4 ? 1 : 0);
    }
 
-   private int b(azq $$0, float $$1, float $$2, int $$3, boolean $$4, Matrix4f $$5, glk $$6, fnp.a $$7, int $$8, int $$9) {
+   private int a(azq $$0, float $$1, float $$2, int $$3, boolean $$4, Matrix4f $$5, glk $$6, fnp.a $$7, int $$8, int $$9, boolean $$10) {
       $$3 = a($$3);
-      Matrix4f $$10 = new Matrix4f($$5);
+      Matrix4f $$11 = new Matrix4f($$5);
       if ($$4) {
-         this.c($$0, $$1, $$2, $$3, true, $$5, $$6, $$7, $$8, $$9);
-         $$10.translate(e);
+         this.b($$0, $$1, $$2, $$3, true, $$5, $$6, $$7, $$8, $$9, $$10);
+         $$11.translate(e);
       }
 
-      $$1 = this.c($$0, $$1, $$2, $$3, false, $$10, $$6, $$7, $$8, $$9);
+      $$1 = this.b($$0, $$1, $$2, $$3, false, $$11, $$6, $$7, $$8, $$9, $$10);
       return (int)$$1 + ($$4 ? 1 : 0);
    }
 
-   private float b(String $$0, float $$1, float $$2, int $$3, boolean $$4, Matrix4f $$5, glk $$6, fnp.a $$7, int $$8, int $$9) {
-      fnp.b $$10 = new fnp.b(this, $$6, $$1, $$2, $$3, $$8, $$4, $$5, $$7, $$9);
-      baz.c($$0, ys.a, $$10);
-      return $$10.a($$1);
+   private float b(String $$0, float $$1, float $$2, int $$3, boolean $$4, Matrix4f $$5, glk $$6, fnp.a $$7, int $$8, int $$9, boolean $$10) {
+      fnp.b $$11 = new fnp.b(this, $$6, $$1, $$2, $$3, $$8, $$4, $$5, $$7, $$9, $$10);
+      baz.c($$0, ys.a, $$11);
+      return $$11.a($$1);
    }
 
-   private float c(azq $$0, float $$1, float $$2, int $$3, boolean $$4, Matrix4f $$5, glk $$6, fnp.a $$7, int $$8, int $$9) {
-      fnp.b $$10 = new fnp.b(this, $$6, $$1, $$2, $$3, $$8, $$4, $$5, $$7, $$9);
-      $$0.accept($$10);
-      return $$10.a($$1);
+   private float b(azq $$0, float $$1, float $$2, int $$3, boolean $$4, Matrix4f $$5, glk $$6, fnp.a $$7, int $$8, int $$9, boolean $$10) {
+      fnp.b $$11 = new fnp.b(this, $$6, $$1, $$2, $$3, $$8, $$4, $$5, $$7, $$9, $$10);
+      $$0.accept($$11);
+      return $$11.a($$1);
    }
 
    public int b(String $$0) {
@@ -187,18 +187,19 @@ public class fnp {
       private final Matrix4f g;
       private final fnp.a h;
       private final int i;
-      float j;
+      private final boolean j;
       float k;
-      private final List<frb.b> l;
+      float l;
+      private final List<frb.b> m;
       @Nullable
-      private List<frb.a> m;
+      private List<frb.a> n;
 
       private void a(frb.a $$0) {
-         if (this.m == null) {
-            this.m = Lists.newArrayList();
+         if (this.n == null) {
+            this.n = Lists.newArrayList();
          }
 
-         this.m.add($$0);
+         this.n.add($$0);
       }
 
       public b(
@@ -212,7 +213,7 @@ public class fnp {
          final fnp.a $$6,
          final int $$7
       ) {
-         this(var1, $$0, $$1, $$2, $$3, 0, $$4, $$5, $$6, $$7);
+         this(var1, $$0, $$1, $$2, $$3, 0, $$4, $$5, $$6, $$7, true);
       }
 
       public b(
@@ -225,13 +226,14 @@ public class fnp {
          final boolean $$5,
          final Matrix4f $$6,
          final fnp.a $$7,
-         final int $$8
+         final int $$8,
+         final boolean $$9
       ) {
          this.b = var1;
-         this.l = new ArrayList<>();
+         this.m = new ArrayList<>();
          this.a = $$0;
-         this.j = $$1;
-         this.k = $$2;
+         this.k = $$1;
+         this.l = $$2;
          this.c = $$5;
          this.d = $$5 ? 0.25F : 1.0F;
          this.e = ayp.a($$3, this.d);
@@ -239,6 +241,7 @@ public class fnp {
          this.g = $$6;
          this.h = $$7;
          this.i = $$8;
+         this.j = $$9;
       }
 
       @Override
@@ -250,57 +253,65 @@ public class fnp {
          yu $$7 = $$1.a();
          int $$8 = $$7 != null ? ayp.c(ayp.a(this.e), ayp.a($$7.a(), this.d)) : this.e;
          float $$9 = $$4.a($$6);
-         float $$10 = $$0 == 0 ? this.j - 1.0F : this.j;
+         float $$10 = $$0 == 0 ? this.k - 1.0F : this.k;
          if (!($$5 instanceof frc)) {
             float $$11 = $$6 ? $$4.a() : 0.0F;
             float $$12 = this.c ? $$4.b() : 0.0F;
-            this.l.add(new frb.b(this.j + $$12, this.k + $$12, $$8, $$5, $$1, $$11));
+            this.m.add(new frb.b(this.k + $$12, this.l + $$12, $$8, $$5, $$1, $$11));
          }
 
          float $$13 = this.c ? 1.0F : 0.0F;
          if ($$1.d()) {
-            this.a(new frb.a($$10 + $$13, this.k + $$13 + 4.5F, this.j + $$13 + $$9, this.k + $$13 + 4.5F - 1.0F, 0.01F, $$8));
+            this.a(new frb.a($$10 + $$13, this.l + $$13 + 4.5F, this.k + $$13 + $$9, this.l + $$13 + 4.5F - 1.0F, this.b(), $$8));
          }
 
          if ($$1.e()) {
-            this.a(new frb.a($$10 + $$13, this.k + $$13 + 9.0F, this.j + $$13 + $$9, this.k + $$13 + 9.0F - 1.0F, 0.01F, $$8));
+            this.a(new frb.a($$10 + $$13, this.l + $$13 + 9.0F, this.k + $$13 + $$9, this.l + $$13 + 9.0F - 1.0F, this.b(), $$8));
          }
 
-         this.j += $$9;
+         this.k += $$9;
          return true;
       }
 
       float a(float $$0) {
          frb $$1 = null;
          if (this.f != 0) {
-            frb.a $$2 = new frb.a($$0 - 1.0F, this.k + 9.0F, this.j, this.k - 1.0F, -0.01F, this.f);
+            frb.a $$2 = new frb.a($$0 - 1.0F, this.l + 9.0F, this.k, this.l - 1.0F, this.c(), this.f);
             $$1 = this.b.a(ys.b).b();
             fgv $$3 = this.a.getBuffer($$1.a(this.h));
             $$1.a($$2, this.g, $$3, this.i);
          }
 
          this.a();
-         if (this.m != null) {
+         if (this.n != null) {
             if ($$1 == null) {
                $$1 = this.b.a(ys.b).b();
             }
 
             fgv $$4 = this.a.getBuffer($$1.a(this.h));
 
-            for (frb.a $$5 : this.m) {
+            for (frb.a $$5 : this.n) {
                $$1.a($$5, this.g, $$4, this.i);
             }
          }
 
-         return this.j;
+         return this.k;
       }
 
       void a() {
-         for (frb.b $$0 : this.l) {
+         for (frb.b $$0 : this.m) {
             frb $$1 = $$0.d();
             fgv $$2 = this.a.getBuffer($$1.a(this.h));
             $$1.a($$0, this.g, $$2, this.i);
          }
+      }
+
+      private float b() {
+         return this.j ? 0.01F : -0.01F;
+      }
+
+      private float c() {
+         return this.j ? -0.01F : 0.01F;
       }
    }
 }

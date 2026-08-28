@@ -193,8 +193,8 @@ public class asp implements dif {
       int $$4 = Math.abs($$3.g - $$1);
       int $$5 = Math.abs($$3.h - $$2);
       if ($$4 <= this.m.d() && $$5 <= this.m.d()) {
-         if (this.c.z()) {
-            dhj $$6 = this.c.A();
+         if (this.c.A()) {
+            dhj $$6 = this.c.B();
             if ($$6.e($$0.v())) {
                return false;
             }

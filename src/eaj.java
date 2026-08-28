@@ -134,7 +134,7 @@ public class eaj extends dzp {
       return this.k.get($$0);
    }
 
-   public Map<jh, duw> G() {
+   public Map<jh, duw> H() {
       return this.k;
    }
 
@@ -153,10 +153,10 @@ public class eaj extends dzp {
 
    @Override
    public void a(eoj $$0, eor $$1) {
-      edd $$2 = this.y();
+      edd $$2 = this.z();
       if ($$2 != null && $$1.b()) {
          eob $$3 = $$1.a();
-         dhj $$4 = this.A();
+         dhj $$4 = this.B();
          if ($$3.i() < $$4.L_() || $$3.l() > $$4.am()) {
             return;
          }
@@ -165,7 +165,7 @@ public class eaj extends dzp {
       super.a($$0, $$1);
    }
 
-   public List<ux> H() {
+   public List<ux> I() {
       return this.p;
    }
 
@@ -221,7 +221,7 @@ public class eaj extends dzp {
       dzp.a(this.b, $$1).addAll($$0);
    }
 
-   public Map<jh, ux> I() {
+   public Map<jh, ux> J() {
       return Collections.unmodifiableMap(this.j);
    }
 
@@ -239,11 +239,11 @@ public class eaj extends dzp {
    }
 
    @Nullable
-   public dzo D() {
+   public dzo E() {
       return this.q;
    }
 
-   public dzo E() {
+   public dzo F() {
       if (this.q == null) {
          this.q = new dzo(this.M_(), this.L_());
       }
@@ -265,7 +265,7 @@ public class eaj extends dzp {
 
    @Nullable
    @Override
-   public edd y() {
+   public edd z() {
       return this.r;
    }
 
@@ -273,16 +273,16 @@ public class eaj extends dzp {
       return new fdk<>($$0.b());
    }
 
-   public fdk<dkl> J() {
+   public fdk<dkl> K() {
       return a(this.s);
    }
 
-   public fdk<etv> K() {
+   public fdk<etv> L() {
       return a(this.t);
    }
 
    @Override
-   public dhj A() {
-      return (dhj)(this.z() ? edd.b : this);
+   public dhj B() {
+      return (dhj)(this.A() ? edd.b : this);
    }
 }

@@ -48,7 +48,7 @@ public class glj {
                $$1.a((float)$$8.b / 2.0F + 64.0F - $$13 * $$14 / 2.0F, (float)$$8.c / 2.0F + 64.0F + 4.0F, -0.025F);
                $$1.b($$14, $$14, 1.0F);
                $$1.a(0.0F, 0.0F, -0.1F);
-               $$12.a($$8.f, 0.0F, 0.0F, -1, false, $$1.c().a(), $$2, fnp.a.b, Integer.MIN_VALUE, $$4);
+               $$12.a($$8.f, 0.0F, 0.0F, -1, false, $$1.c().a(), $$2, fnp.a.a, Integer.MIN_VALUE, $$4, false);
                $$1.b();
             }
 

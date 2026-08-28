@@ -188,8 +188,8 @@ public final class eds extends dzq {
       dgn $$9 = $$5.f();
       edt $$10 = $$5.a($$3x -> this.a($$3x, $$4, eer.a($$0), $$2));
       edb $$11 = $$10.i();
-      efq $$12 = new efq(this, $$0.K_(), $$5.A(), $$10, $$2, this.e.a().j());
-      dzo $$13 = ((eaj)$$5).E();
+      efq $$12 = new efq(this, $$0.K_(), $$5.B(), $$10, $$2, this.e.a().j());
+      dzo $$13 = ((eaj)$$5).F();
 
       for (int $$14 = -8; $$14 <= 8; $$14++) {
          for (int $$15 = -8; $$15 <= 8; $$15++) {
@@ -214,7 +214,7 @@ public final class eds extends dzq {
 
    @Override
    public CompletableFuture<dzp> a(eer $$0, eed $$1, did $$2, dzp $$3) {
-      edx $$4 = this.e.a().f().a($$3.A());
+      edx $$4 = this.e.a().f().a($$3.B());
       int $$5 = $$4.c();
       int $$6 = bae.a($$5, $$4.a());
       int $$7 = bae.a($$4.d(), $$4.a());

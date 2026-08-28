@@ -256,7 +256,7 @@ public class fom {
          $$25.add(String.format(Locale.ROOT, "Chunk: %d %d %d [%d %d in r.%d.%d.mca]", $$22.g, kj.a($$14.v()), $$22.h, $$22.j(), $$22.k(), $$22.h(), $$22.i()));
          $$25.add(String.format(Locale.ROOT, "Facing: %s (%s) (%.1f / %.1f)", $$16, $$21, bae.h($$15.dM()), bae.h($$15.dO())));
          dzz $$27 = this.u();
-         if ($$27.D()) {
+         if ($$27.E()) {
             $$25.add("Waiting for chunk...");
          } else {
             int $$28 = this.f.s.h().p().a($$14, 0);
@@ -292,7 +292,7 @@ public class fom {
                $$25.add("Biome: " + a(this.f.s.t($$14)));
                if ($$31 != null) {
                   float $$35 = $$23.aq();
-                  long $$36 = $$31.v();
+                  long $$36 = $$31.w();
                   btg $$37 = new btg($$23.al(), $$23.ad(), $$36, $$35);
                   $$25.add(String.format(Locale.ROOT, "Local Difficulty: %.2f // %.2f (Day %d)", $$37.b(), $$37.d(), this.f.s.ad() / 24000L));
                } else {
@@ -300,7 +300,7 @@ public class fom {
                }
             }
 
-            if ($$31 != null && $$31.t()) {
+            if ($$31 != null && $$31.u()) {
                $$25.add("Blending: Old");
             }
          }

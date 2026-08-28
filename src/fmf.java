@@ -2340,7 +2340,7 @@ public class fmf extends bsb<Runnable> implements ffv {
    public xv a(File $$0, int $$1, int $$2) {
       int $$3 = this.S.k();
       int $$4 = this.S.l();
-      ffb $$5 = new ffc($$1, $$2, true);
+      ffb $$5 = this.h();
       float $$6 = this.t.dO();
       float $$7 = this.t.dM();
       float $$8 = this.t.O;
@@ -2352,6 +2352,7 @@ public class fmf extends bsb<Runnable> implements ffv {
          this.j.c(true);
          this.S.a($$1);
          this.S.b($$2);
+         $$5.a($$1, $$2);
 
          for (int $$10 = 0; $$10 < 6; $$10++) {
             switch ($$10) {
@@ -2408,7 +2409,7 @@ public class fmf extends bsb<Runnable> implements ffv {
          this.j.b(true);
          this.S.a($$3);
          this.S.b($$4);
-         $$5.a();
+         $$5.a($$3, $$4);
          this.j.c(false);
          this.h().a(true);
       }

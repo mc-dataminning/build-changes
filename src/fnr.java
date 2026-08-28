@@ -185,7 +185,7 @@ public class fnr {
    }
 
    public int a(fnp $$0, @Nullable String $$1, int $$2, int $$3, int $$4, boolean $$5) {
-      return $$1 == null ? 0 : $$0.a($$1, (float)$$2, (float)$$3, $$4, $$5, this.e.c().a(), this.f, fnp.a.a, 0, 15728880, $$0.a());
+      return $$1 == null ? 0 : $$0.a($$1, (float)$$2, (float)$$3, $$4, $$5, this.e.c().a(), this.f, fnp.a.a, 0, 15728880);
    }
 
    public int b(fnp $$0, azq $$1, int $$2, int $$3, int $$4) {
@@ -581,8 +581,10 @@ public class fnr {
    private void b(fnp $$0, cxo $$1, int $$2, int $$3, @Nullable String $$4) {
       if ($$1.L() != 1 || $$4 != null) {
          String $$5 = $$4 == null ? String.valueOf($$1.L()) : $$4;
+         this.e.a();
          this.e.a(0.0F, 0.0F, 200.0F);
          this.a($$0, $$5, $$2 + 19 - 2 - $$0.b($$5), $$3 + 6 + 3, -1, true);
+         this.e.b();
       }
    }
 

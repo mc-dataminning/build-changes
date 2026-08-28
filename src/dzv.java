@@ -48,7 +48,7 @@ public class dzv extends dzz {
    }
 
    @Override
-   public boolean D() {
+   public boolean E() {
       return true;
    }
 
@@ -63,7 +63,7 @@ public class dzv extends dzz {
    }
 
    @Override
-   public arw E() {
+   public arw F() {
       return arw.b;
    }
 

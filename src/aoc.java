@@ -302,7 +302,7 @@ public class aoc {
    private static boolean a(ash $$0, jh $$1) {
       dgn $$2 = new dgn($$1);
       dzz $$3 = $$0.m().a($$2.g, $$2.h);
-      return $$3 == null ? false : $$3.E() == arw.d && $$0.c($$2.a());
+      return $$3 == null ? false : $$3.F() == arw.d && $$0.c($$2.a());
    }
 
    private static ArgumentBuilder<ew, ?> a(CommandNode<ew> $$0, LiteralArgumentBuilder<ew> $$1, boolean $$2, es $$3) {
