@@ -1,4 +1,4 @@
-// 1.21.2 Release Candidate 2	2026-08-28T02:53:53.190591963	vanilla/Tags for minecraft:block
+// 1.21.2	2026-08-28T02:56:36.902139612	vanilla/Tags for minecraft:block
 1b34690c952fb0cae947d85b752e19a7a83a453b data/minecraft/tags/block/oak_logs.json
 1dfe6273688ebbb262b42c16e2c05f6c27e6d54b data/minecraft/tags/block/flower_pots.json
 2279d1f34e9b03831a4631584ee0fcdf1ea0fc66 data/minecraft/tags/block/rails.json
@@ -134,8 +134,8 @@ da1d12f678963493519caaff63a76241b220579f data/minecraft/tags/block/axolotls_spaw
 4161727d1e5d26faf957fabebe6b6c8cc6e884f2 data/minecraft/tags/block/leaves.json
 f8f437f299af14e5c9c0453089d4e03d42015d2e data/minecraft/tags/block/terracotta.json
 090e10929cf921bcfe7ca9e263679610ff359335 data/minecraft/tags/block/wart_blocks.json
-b5b3e2fe97bef01741a9b3e3b0aeb5aaac962f4b data/minecraft/tags/block/mineable/pickaxe.json
 c9aa61b07ecba39e82b67d0fa0ebbcf0f82b45f5 data/minecraft/tags/block/needs_stone_tool.json
+b5b3e2fe97bef01741a9b3e3b0aeb5aaac962f4b data/minecraft/tags/block/mineable/pickaxe.json
 031ce19c9707a4d8e85bc799d69543917c962fad data/minecraft/tags/block/pressure_plates.json
 d5aebde1fd1141df86b6ed4ace3f720504b32ab2 data/minecraft/tags/block/wither_summon_base_blocks.json
 158a4877fad0ee79d00e8c9f641ad661e822cdb5 data/minecraft/tags/block/sniffer_egg_hatch_boost.json
@@ -144,8 +144,8 @@ d5aebde1fd1141df86b6ed4ace3f720504b32ab2 data/minecraft/tags/block/wither_summon
 49fc3802397b9999fbbc71f9d4e9c1962cab6506 data/minecraft/tags/block/anvil.json
 54ce76b81f7f86116493bdcb069428c6fd16ef11 data/minecraft/tags/block/air.json
 c2b28c0ec59c7268d451b0fb6e852b3d8db182a6 data/minecraft/tags/block/snow.json
-f90b8e6674252583fae1583255b371b3c95c36d5 data/minecraft/tags/block/mooshrooms_spawnable_on.json
 17bf02f1662de477e421a897a9b1a092da3fd1b4 data/minecraft/tags/block/candle_cakes.json
+f90b8e6674252583fae1583255b371b3c95c36d5 data/minecraft/tags/block/mooshrooms_spawnable_on.json
 e1aa1c0a968ded1719ec54dfd3d540a19ab16f67 data/minecraft/tags/block/coral_plants.json
 a2c241225b687d962d7c986e6cbe8be5184f847c data/minecraft/tags/block/doors.json
 d19277bda7fab58f7d36ca6d828bbaaa6531b042 data/minecraft/tags/block/gold_ores.json

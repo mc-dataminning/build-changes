@@ -23,9 +23,9 @@ public class t implements af {
 
    private t() {
       this.c = UUID.randomUUID().toString().replaceAll("-", "");
-      this.d = "1.21.2-rc2";
-      this.e = false;
-      this.f = new evu(4079, "main");
+      this.d = "1.21.2";
+      this.e = true;
+      this.f = new evu(4080, "main");
       this.g = ab.c();
       this.h = 42;
       this.i = 57;
