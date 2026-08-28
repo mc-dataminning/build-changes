@@ -1,4 +1,4 @@
-// 26.3-snapshot-10	2026-08-28T16:17:24.1381047	vanilla/Tags for minecraft:potion
+// 26.3-snapshot-10	2026-08-28T16:22:29.6289071	vanilla/Tags for minecraft:potion
 cf3608bd187922aeb48c566c19e8482b0dca34c7 data\minecraft\tags\potion\extinguishes_entities.json
 cf3608bd187922aeb48c566c19e8482b0dca34c7 data\minecraft\tags\potion\douses_fire.json
 cf3608bd187922aeb48c566c19e8482b0dca34c7 data\minecraft\tags\potion\hurts_water_sensitive_entities.json
